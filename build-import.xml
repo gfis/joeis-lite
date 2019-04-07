@@ -55,8 +55,6 @@
     <property name="ant.project.name"   value="dbat"/>
     <property name="app.version"        value="1.4"/>
     <property name="app.main-class"     value="org.teherba.dbat.Dbat"/>
-    <property name="tomcat.base"        value="/var/lib/tomcat" />
-    <property name="tomcat.home"        value="/usr/share/tomcat" />
 -->
     <property name="app.path"           value="." />
     <property name="build.home"         value="${basedir}/target" />
@@ -64,7 +62,6 @@
     <property name="build.expand"       value="${basedir}/expand" />
     <property name="build.api"          value="${build.home}/api" />
     <property name="dist.home"          value="${basedir}/dist" />
-    <property name="tomcat.port"        value="8080" />
     <property name="etc.home"           value="${basedir}/etc" />
     <property name="lib.home"           value="${basedir}/lib" />
     <property name="src.home"           value="${basedir}/src" />
@@ -84,9 +81,6 @@
         <fileset dir="${lib.home}">
             <include name="*.jar"/>
         </fileset>
-        <fileset dir="${tomcat.home}/lib"><!-- contains the servlet-api jar -->
-            <include name="*.jar"/>
-        </fileset>
     </path>
 
     <!-- ============= all ==============================================
@@ -100,6 +94,7 @@
         <mkdir dir="${docs.home}"/>
         <mkdir dir="${dist.home}"/>
         <mkdir dir="${lib.home}"/>
+        <mkdir dir="${web.home}"/>
 
         <delete dir="${build.home}" failonerror="false" quiet="true"/>
         <delete dir="${docs.home}"  failonerror="false" quiet="true"/>
@@ -126,35 +121,9 @@
         <mkdir dir="${docs.home}"/>
         <mkdir dir="${docs.home}/api"/>
         <mkdir dir="${dist.home}"/>
-        <!-- The following line must be expanded in (Apache Tomcat)/conf/catalina.properties:
-        common.loader="c:/var/lib/tomcat/openlib/*.jar","${catalina.base}/lib","${catalina.base}/lib/*.jar","${catalina.home}/lib","${catalina.home}/lib/*.jar"
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        Tomcat must be restarted for this to work.
-        xxpreservelastmodified="true"
-        -->
-        <mkdir dir="${tomcat.base}/openlib" />
     </target>
 
     <target name="clean" depends="empty,fill.lib">
-        <!-- only when Tomcat is stopped -->
-    <!--
-        Normally the libraries are overwritten.
-        Caution, if the name (it's version number) is changed, the library must be removed manually.
-
-        <delete failonerror="false" verbose="true" >
-            <fileset dir="${tomcat.base}/openlib">
-                <include name="**/*.jar" />
-            </fileset>
-        </delete>
-        <available file="${tomcat.base}/openlib/activation.jar" property="not.deleted" />
-        <fail message="Tomcat must be stopped for clean" if="${not.deleted}"  />
-    -->
-        <copy todir="${tomcat.base}/openlib" verbose="true">
-            <fileset dir="${lib.home}">
-                <include name="*.jar" />
-            </fileset>
-        </copy>
-
         <unzip dest="${build.expand}">
             <fileset dir="${lib.home}">
                 <include name="*.jar" />
@@ -310,28 +279,9 @@
         -->
     </target>
 
-    <!-- ============= (un-) deployment to Tomcat and Axis =====================
+    <!-- ============= (un-) deployment =====================
     -->
-    <target name="deploy" depends="dist,deploy.webapps" />
-
-    <!-- Tomcat -->
-    <target name="deploy.webapps" depends="dist">
-        <touch file="${dist.home}/${ant.project.name}.war" />
-        <copy file="${dist.home}/${ant.project.name}.war"          tofile="${tomcat.base}/webapps/${ant.project.name}.wr"  />
-        <move file="${tomcat.base}/webapps/${ant.project.name}.wr" tofile="${tomcat.base}/webapps/${ant.project.name}.war" />
-    </target>
-
-    <target name="deploy.ear" >
-        <copy todir="${axis.lib}">
-            <fileset dir="${dist.home}">
-                <include name="*.jar"/>
-                <exclude name="*.war"/>
-            </fileset>
-        </copy>
-        <java classname="org.apache.axis.client.AdminClient" classpathref="compile.classpath" fork="true">
-            <arg line="-lhttp://localhost:${tomcat.port}/axis/services/AdminService etc/deploy.wsdd" />
-        </java>
-    </target>
+    <target name="deploy" depends="dist" />
 
     <target name="run">
         <java classname="${class}" classpathref="compile.classpath" fork="true">

@@ -9,17 +9,8 @@
     <property name="app.name"           value="joeis-lit"/>
     <property name="app.version"        value="1.1"/>
     <property name="app.main-class"     value="irvine.test.BatchTest"/>
-    <property name="tomcat.base"        value="/var/lib/tomcat" />
-    <property name="tomcat.home"        value="/usr/share/tomcat" />
     <property name="test"               value="%" />
     <import file="build-import.xml" />
-
-    <target name="regression">
-        <java classname="org.teherba.common.RegressionTester" classpathref="compile.classpath" fork="true">
-            <arg value="test/all.tests" />
-            <arg value="${test}" />
-        </java>
-    </target>
 
     <target name="generate">
     </target>
