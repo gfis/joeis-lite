@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    J2EE application descriptor
+    @(#) $Id: application.xml 970 2012-10-25 16:49:32Z  $
+    2019-04-06, Georg Fischer: copied from ramath
+-->
+<application
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/j2ee/application_5.xsd"
+        version="5"
+        >
+    <description>Java implementation of the OEIS</description>
+    <display-name>joeis</display-name>
+
+    <module>
+        <web>
+            <web-uri>joeis.war</web-uri>
+            <context-root>/joeis</context-root>
+        </web>
+    </module>
+</application>

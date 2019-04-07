@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!--
+    ant-buildfile for commandline, web application and web service
+    @(#) $Id: 08b49ddc73ef271c7054bb70acb278bcff247562 $
+    2019-04-06, Georg Fischer: copied from ramath
+    2016-09-16: manifest("-core"), core.jar, manifest("") for dbat.Configuration.versionString
+    2016-09-12: fill.lib depends on clean
+    2016-08-29: 'clean' does no longer delete in openlib (check manually if necessary)
+    2016-07-31: 'clean' target checks that Tomcat is stopped
+    2016-07-30: merge dbat/expand into dbat.jar and use c:/var/lib/tomcat/openlib/*.jar with slim dbat.war
+    2016-04-16: MANIFEST.MF back in etc/META-INF, with CVS Id
+    2015-02-02: copy to webapps replaced by copy to *.wr and rename to *.war
+    2014-11-11: tomcat.base|home moved to build.xml; no catalina-task
+    2014-11-08: cleanup; remove Axis / atll web service functionality, and JSPs
+    2012-06-25: .ear contains .war and META-INF only
+    2012-03-08: with .ear and WEB-INF/application.xml; copy JSPs, but do not compile them
+    2012-01-28: addWebXmlMappings="true" includes generated_web.xml in web.xml; don't copy JSPs to target
+    2011-09-09: delete SUN_MICR.* in clean task
+    2010-12-04: <metainf> in war target
+    2010-09-15: strange problems with outdated JSPs, and moving ${build.classes}/COM/ibm/db2 to com/...
+    2010-06-01: empty before clean
+    2010-04-13: jspc again
+    2009-11-17: tomcat6
+    2009-04-24: Tomcat-port was 8180 (Debian)
+    2008-06-26: exclude dependencies.txt from .war
+    2008-02-22: manifest - copy META-INF/services/*
+    2008-02-13: jdk.version was 1.4
+    2008-01-09: excludes **/web.xml in dist target
+    2007-12-08: MANIFEST.MF was lowercase
+    2007-04-12: mkdir WEB-INF/src
+    2007-02-12: use ant import feature
+    2007-01-15: refactored for teherba
+-->
+<!--
+ * Copyright 2007 Dr. Georg Fischer <punctum at punctum dot kom>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<project name="unused"
+        xmlns:if    ="ant:if"
+        xmlns:unless="ant:unless"
+        >
+<!-- needs these 5 properties from the importing ant build.xml file:
+    <property name="ant.project.name"   value="dbat"/>
+    <property name="app.version"        value="1.4"/>
+    <property name="app.main-class"     value="org.teherba.dbat.Dbat"/>
+    <property name="tomcat.base"        value="/var/lib/tomcat" />
+    <property name="tomcat.home"        value="/usr/share/tomcat" />
+-->
+    <property name="app.path"           value="." />
+    <property name="build.home"         value="${basedir}/target" />
+    <property name="build.classes"      value="${build.home}/WEB-INF/classes" />
+    <property name="build.expand"       value="${basedir}/expand" />
+    <property name="build.api"          value="${build.home}/api" />
+    <property name="dist.home"          value="${basedir}/dist" />
+    <property name="tomcat.port"        value="8080" />
+    <property name="etc.home"           value="${basedir}/etc" />
+    <property name="lib.home"           value="${basedir}/lib" />
+    <property name="src.home"           value="${basedir}/src" />
+    <property name="web.home"           value="${basedir}/web" />
+    <property name="webapp.path"        value="${build.home}" />
+    <property name="docs.home"          value="${build.home}/docs" />
+    <property name="docs.api"           value="${docs.home}/api" />
+    <property name="test.home"          value="${basedir}/test" />
+    <property name="javac.debug"        value="on" />
+    <property name="javac.debuglevel"   value="lines,vars,source" />
+    <property name="jdk.version"        value="1.8" />
+
+    <path id="compile.classpath">
+        <fileset dir="${dist.home}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.home}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/lib"><!-- contains the servlet-api jar -->
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- ============= all ==============================================
+    -->
+    <target name="all" depends="clean,prepare,generate,javadoc,dist,directories,deploy,test"/>
+
+    <!-- ============= empty, clean ==============================================
+    -->
+    <target name="empty">
+        <mkdir dir="${build.home}"/>
+        <mkdir dir="${docs.home}"/>
+        <mkdir dir="${dist.home}"/>
+        <mkdir dir="${lib.home}"/>
+
+        <delete dir="${build.home}" failonerror="false" quiet="true"/>
+        <delete dir="${docs.home}"  failonerror="false" quiet="true"/>
+        <delete failonerror="false" quiet="true">
+            <fileset dir="${basedir}">
+                <include name="**/*.bak"/>
+                <include name="**/*.tmp"/>
+            </fileset>
+            <fileset dir="${dist.home}">
+                <include name="**/*.?ar"/>
+            </fileset>
+        </delete>
+        <delete failonerror="false" quiet="true">
+            <fileset dir="${webapp.path}/WEB-INF/src"/>
+            <fileset dir="${webapp.path}/WEB-INF/classes/org/apache/jsp"/>
+        </delete>
+
+        <mkdir dir="${build.home}"/>
+        <mkdir dir="${build.home}/WEB-INF"/>
+        <mkdir dir="${build.classes}"/>
+        <mkdir dir="${build.classes}/META-INF"/>
+        <mkdir dir="${build.expand}"/>
+        <mkdir dir="${build.home}/WEB-INF/src"/>
+        <mkdir dir="${docs.home}"/>
+        <mkdir dir="${docs.home}/api"/>
+        <mkdir dir="${dist.home}"/>
+        <!-- The following line must be expanded in (Apache Tomcat)/conf/catalina.properties:
+        common.loader="c:/var/lib/tomcat/openlib/*.jar","${catalina.base}/lib","${catalina.base}/lib/*.jar","${catalina.home}/lib","${catalina.home}/lib/*.jar"
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        Tomcat must be restarted for this to work.
+        xxpreservelastmodified="true"
+        -->
+        <mkdir dir="${tomcat.base}/openlib" />
+    </target>
+
+    <target name="clean" depends="empty,fill.lib">
+        <!-- only when Tomcat is stopped -->
+    <!--
+        Normally the libraries are overwritten.
+        Caution, if the name (it's version number) is changed, the library must be removed manually.
+
+        <delete failonerror="false" verbose="true" >
+            <fileset dir="${tomcat.base}/openlib">
+                <include name="**/*.jar" />
+            </fileset>
+        </delete>
+        <available file="${tomcat.base}/openlib/activation.jar" property="not.deleted" />
+        <fail message="Tomcat must be stopped for clean" if="${not.deleted}"  />
+    -->
+        <copy todir="${tomcat.base}/openlib" verbose="true">
+            <fileset dir="${lib.home}">
+                <include name="*.jar" />
+            </fileset>
+        </copy>
+
+        <unzip dest="${build.expand}">
+            <fileset dir="${lib.home}">
+                <include name="*.jar" />
+            </fileset>
+        </unzip>
+
+        <delete failonerror="false" quiet="true" verbose="true">
+            <fileset dir="${build.expand}/META-INF" includes="SUN_MICR.*" />
+        </delete>
+        <available property="wrong.COM.ibm" filepath="${build.expand}/COM/ibm/db2/app" file="Blob.class" />
+        <antcall target="wrong.clean.COM" />
+    </target>
+    <target name="wrong.clean.COM" if="wrong.COM.ibm">
+        <echo message="moving ${build.expand}/COM/ibm/db2 to ${build.expand}/com/ibm/db2" />
+        <move todir="${build.expand}/com">
+            <fileset dir="${build.expand}/COM" />
+        </move>
+    </target>
+    <!-- ============= echoproperties ==============================================
+    -->
+    <target name="ep">
+        <echoproperties format="text" />
+    </target>
+
+    <!-- ============= prepare =========================================
+    -->
+    <target name="prepare">
+        <propertyfile file="build.number">
+            <entry key="build.name"   value="${ant.project.name}" />
+            <entry key="build.number" type="int"  value="1"   operation="+" />
+            <entry key="build.date"   type="date" value="now" pattern="yyyy-MM-dd HH.mm.ss" />
+            <entry key="build.jdk"                value="for JDK ${jdk.version}" />
+        </propertyfile>
+
+        <!-- copy any properties (especially log4j.properties) to build directory -->
+        <copy todir="${build.classes}">
+            <fileset dir="${etc.home}">
+                <include name="*.properties"/>
+            </fileset>
+            <fileset dir="${app.path}">
+                <include name="LICENSE.txt"/>
+                <include name="NOTICE.txt"/>
+            </fileset>
+        </copy>
+
+        <!-- copy web.xml and application.xml to build directory
+        -->
+        <copy todir="${build.home}/WEB-INF">
+            <fileset dir="${etc.home}/WEB-INF">
+                <include name="web.xml"/>
+            </fileset>
+        </copy>
+
+        <!-- copy all XML specs, stylesheets, HTML pages, Javascript and images -->
+        <copy todir="${build.home}">
+            <fileset dir="${web.home}">
+                <exclude name="**/*.bak"/>
+            </fileset>
+        </copy>
+
+        <fixcrlf srcdir="${build.home}" includes="**/*.html,**/*.css,**/*.inc,**/*.xml,**/*.js" eol="lf" />
+    </target>
+
+    <!-- ============= compile ==========================================
+    -->
+    <target name="compile"  depends="generate">
+        <depend srcdir="${src.home}" destdir="${build.classes}" cache="${build.home}" dump="yes" />
+        <javac  srcdir="${src.home}" destdir="${build.classes}" listfiles="yes"
+                encoding="utf8"
+                includeantruntime="false"
+                source="${jdk.version}" target="${jdk.version}"
+                debug="${javac.debug}" debuglevel="${javac.debuglevel}">
+            <compilerarg line="-Xlint:unchecked -Xlint:deprecation" />
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- ============= manifest =========================================
+    -->
+    <target name="manifest">
+        <loadproperties srcFile="build.number" />
+        <delete failonerror="false" file="${build.classes}/META-INF/MANIFEST.MF" />
+        <manifest file="${etc.home}/META-INF/MANIFEST.MF">
+            <attribute name="Built-By" value="${user.name}"/>
+            <attribute name="Main-Class" value="${app.main-class}"/>
+            <!--Caution, the following are read by ../web/MetaInfPage.getVersionString, 
+                be careful with changing!
+                for appl-core.jar, the property ${core} must be set to "-core"
+                for appl.jar     , the property ${core} must be set to ""      
+            -->
+            <section name="${ant.project.name}">
+                <attribute name="Specification-Title"       value="${ant.project.name}${core}"/>
+                <attribute name="Specification-Version"     value="${app.version} ${build.jdk}"/>
+                <attribute name="Specification-Vendor"      value="Dr. Georg Fischer, D-79341 Kenzingen, Germany"/>
+                <attribute name="Implementation-Title"      value="teherba.org/${ant.project.name}${core}"/>
+                <attribute name="Implementation-Version"    value="${build.number} ${build.date}"/>
+                <attribute name="Implementation-Vendor"     value="www.teherba.org"/>
+            </section>
+        </manifest>
+        <copy todir="${build.classes}/META-INF">
+            <fileset dir="${etc.home}/META-INF">
+                <exclude name="**/*application.xml"/>
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- ============= dist ==============================================
+        create the binary distributions: jar and war
+        target core.jar must be defined somehow (maybe empty) in build.xml
+    -->
+    <target name="dist"     depends="prepare,compile"><!-- ,manifest,core.jar" -->
+    <!--
+        <antcall target="manifest">
+            <param name="core" value="-core"  />
+        </antcall>
+        <antcall target="core.jar" />
+    -->
+        <antcall target="manifest">
+            <param name="core" value=""  />
+        </antcall>
+        <!-- with libraries, with web files -->
+        <jar jarfile="${dist.home}/${ant.project.name}.jar"
+                basedir="${build.classes}"
+                manifest="${build.classes}/META-INF/MANIFEST.MF"
+                >
+            <fileset dir="${build.expand}" />
+        </jar>
+        <!-- without libraries, with web files 
+        <war destfile="${dist.home}/${ant.project.name}.war"
+                basedir="${build.home}"
+                manifest="${build.classes}/META-INF/MANIFEST.MF"
+                excludes="**/web.xml,dependencies.txt"
+                webxml="${build.home}/WEB-INF/web.xml"
+                defaultexcludes="no"
+                >
+            <metainf dir="${etc.home}/META-INF" includes="*.xml" />
+        </war>
+        <copy todir="${build.home}/META-INF">
+            <fileset dir="${etc.home}/META-INF">
+                <include name="geronimo-application.xml" />
+            </fileset>
+        </copy>
+        <ear destfile="${dist.home}/${ant.project.name}.ear"
+                basedir="${etc.home}/META-INF"
+                excludes="**/application.xml,dependencies.txt"
+                appxml="${etc.home}/META-INF/application.xml"
+                >
+            <fileset dir="${dist.home}" includes="*.war" />
+        </ear>
+        -->
+    </target>
+
+    <!-- ============= (un-) deployment to Tomcat and Axis =====================
+    -->
+    <target name="deploy" depends="dist,deploy.webapps" />
+
+    <!-- Tomcat -->
+    <target name="deploy.webapps" depends="dist">
+        <touch file="${dist.home}/${ant.project.name}.war" />
+        <copy file="${dist.home}/${ant.project.name}.war"          tofile="${tomcat.base}/webapps/${ant.project.name}.wr"  />
+        <move file="${tomcat.base}/webapps/${ant.project.name}.wr" tofile="${tomcat.base}/webapps/${ant.project.name}.war" />
+    </target>
+
+    <target name="deploy.ear" >
+        <copy todir="${axis.lib}">
+            <fileset dir="${dist.home}">
+                <include name="*.jar"/>
+                <exclude name="*.war"/>
+            </fileset>
+        </copy>
+        <java classname="org.apache.axis.client.AdminClient" classpathref="compile.classpath" fork="true">
+            <arg line="-lhttp://localhost:${tomcat.port}/axis/services/AdminService etc/deploy.wsdd" />
+        </java>
+    </target>
+
+    <target name="run">
+        <java classname="${class}" classpathref="compile.classpath" fork="true">
+            <arg line="${args}" />
+        </java>
+    </target>
+
+    <!-- ============= javadoc ==========================================
+    -->
+    <target name="javadoc">
+        <mkdir dir="${docs.home}/api"/>
+        <javadoc locale="de_DE" sourcepath="${src.home}" destdir="${docs.home}/api"
+                Author="true" Version="true" use="true" Private="yes"
+                encoding="UTF-8" docencoding="UTF-8" charset="UTF-8"
+                packagenames="org.*"
+                additionalparam="-linksource -sourcetab 4 -keywords"
+                >
+            <!--
+                packagenames="org.teherba.${ant.project.name}.*"
+                excludepackagenames="org.apache.*"
+            -->
+            <classpath refid="compile.classpath"/>
+        </javadoc>
+    </target>
+
+    <!-- ============= Listing of the jar and war files' contents ======
+    -->
+    <target name="directories" depends="dist">
+        <mkdir dir="${docs.home}/api/directories" />
+        <exec dir="${basedir}" executable="unzip" output="${docs.home}/api/directories/${ant.project.name}.jar.lst" >
+            <arg value="-v" /><arg value="dist/${ant.project.name}.jar" />
+        </exec>
+        <mkdir dir="${docs.home}/api/directories" />
+        <exec dir="${basedir}" executable="unzip" output="${docs.home}/api/directories/${ant.project.name}.war.lst" >
+            <arg value="-v" /><arg value="dist/${ant.project.name}.war" />
+        </exec>
+    </target>
+
+    <!-- ============= Check whether all files got a  SCCS Id ======
+    -->
+    <target name="checkid">
+        <exec dir="${basedir}"
+        command="find . -type f | grep -vE &quot;\.svn&quot; | grep -vE &quot;.*~&quot; | grep -v &quot;/target&quot; | xargs -l ident 2>&amp;1 | grep &quot;no id keywords&quot;" />
+    </target>
+    <!-- ============= distribution zip ================================
+    -->
+    <target name="site" >
+        <delete file="${ant.project.name}.${build.date}.zip" quiet="true" />
+        <zip destfile="site/dist/${ant.project.name}.${build.date}.zip" basedir="."
+                includes="${ant.project.name}/**"
+                excludes="${ant.project.name}/**.zip ${ant.project.name}/**.tgz" />
+    </target>
+
+    <target name="subdir" >
+        <mkdir dir="${dir}/src/main/java/org/teherba/${dir}" />
+        <mkdir dir="${dir}/src/main/webapp" />
+    </target>
+
+</project>
