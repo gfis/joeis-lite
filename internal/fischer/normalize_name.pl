@@ -1,9 +1,8 @@
 #!perl
 
-# Generate a series of Java sources for jOEIS
+# Convert names to regular expressions
 # @(#) $Id$
-# 2019-04-05: -t targetdir (default "./temp")
-# 2019-04-04, Georg Fischer
+# 2019-04-06, Georg Fischer
 #
 #:# Usage:
 #:#   perl normalize_name.pl [-d debug] $(COMMON)/names > normalized_names
@@ -24,20 +23,20 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
+
 while (<>) { # read inputfile
     next if m{\A\s*\#}; # skip comment lines
     next if m{\A\s*\Z}; # skip empty lines
-    my $name = $_;
+    my ($aseqno, $name) = split(/\s+/, $_, 2);
     if ($debug >= 1) {
         print "$name\n";
     }
     $name =~ s/\s*\Z//; # remove trailing spaces
     $name =~ s/\.\Z//; # remove trailing dot
     $name =~ s/\s*\Z//; # remove trailing spaces
-    # $name =~ s{\s*([\-\+\=\*\/]\^\(\)\[\]\{\}\.\:\;\,\<\>\'\")\s*}{\\$1}g;
     $name =~ s{\s+([\-\+\=\*\/\^])\s+}{$1}g; # remove space around operators
     $name =~ s{(\d+)}{\(\\d+\)}g;
-		print "$name\n";
+		print "$aseqno $name\n";
 } # while <>
 #---------------------------------------
 __DATA__

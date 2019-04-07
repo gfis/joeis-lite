@@ -17,20 +17,21 @@ all:
 	grep -E "^[a-z]" makefile
 #--------------------------
 joeis_load: # populate a table with A-numbers and superclass names of implemented sequences
-	make joeis_list
 	$(DBAT) -f joeis.create.sql
 	sed -e "s/ /\t/" joeis_list.txt | grep -E "^A" \
 	| $(DBAT) -m csv -r joeis
 	$(DBAT) -4 joeis
 	$(DBAT) -n joeis
-joeis_list:
+joeis_list: joeis_list1 joeis_List2
+joeis_list1:
 	find $(JOEIS)/src/irvine/oeis -iname "A??????.java" \
-	| xargs -l grep -E " extends" > $@.1.tmp
-	grep -E "^public class" $@.1.tmp \
-	| cut -b14- | sed -e "s/ extends / /" -e "s/ {.*//" \
-	>        $@.txt
-	head -n4 $@.txt
-	wc -l    $@.txt
+	| xargs -l grep -E " extends" > $joeis_list.1.tmp
+joeis_list2:
+	grep -E "^public class" joeis_list.1.tmp \
+	| sed -e "s/public class *//" -e "s/ extends / /" -e "s/ {.*//" \
+	>        joeis_list.txt
+	head -n4 joeis_list.txt
+	wc -l    joeis_list.txt
 joeis_stat:
 	$(DBAT) -x "SELECT count(superclass), superclass \
 		FROM joeis \
@@ -43,22 +44,24 @@ joeis_stat:
 #--------------------------
 analog: analog1 analog2 analog3
 analog1:
-	cut -b9- $(COMMON)/names \
-	| perl normalize_name.pl \
-	| sort | uniq -c | sort -rn \
-	| grep -vE "^ *[1-5]*[0-9] " \
-	> $@.tmp
+	perl normalize_name.pl $(COMMON)/names \
+	| sed -e "s/ / -o- /" > $@.tmp 
 analog2:
-	$(DBAT) -x "SELECT aseqno FROM joeis" > joeis_impl.txt
+	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass <> 'LinearRecurrence'" \
+	| sed -e "s/\r//" > joeis_impl.txt
 	grep -f joeis_impl.txt $(COMMON)/names \
 	| perl normalize_name.pl \
-	| sort | uniq -c | sort -rn \
-	> $@.tmp
+	| sed -e "s/ / +j+ /" > $@.tmp
 analog3:
-	sed -e "s/^/1/" analog1.tmp >  x.tmp
-	sed -e "s/^/2/" analog2.tmp >> x.tmp
-	sort -k3 -
-	
+	sort -k3 -k2 analog1.tmp analog2.tmp \
+	      > $@.txt
+	head -4 $@.txt
+	wc -l   $@.txt
+analog4:
+	perl get_stretchables.pl analog3.txt \
+	>       $@.txt
+	head -4 $@.txt
+	wc   -l $@.txt
 #--------------------------
 batch_mma:
 	cut -b1-7 errors-2019-04-02.txt > x.tmp
