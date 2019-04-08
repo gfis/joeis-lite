@@ -60,16 +60,18 @@ public class BatchTest {
           String aseqno  = parts[0];
           String[] terms = parts[1].replaceAll("\\,\\Z", "").split("\\,");
           Sequence seq   = null;
+          String message = "\tconstruction failed: ";
           try {
             seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno).newInstance();
           } catch (Exception exc) {
             // remains null for any errors
+            message += exc.getMessage();
           }
           if (seq != null) {
             int termNo     = terms.length; // Math.min(terms.length, maxTerms());
             boolean okay   = true;
             int n = 0;
-            while (okay && n < termNo) {
+            while (okay && n < termNo) {	
               String result = seq.next().toString();
               if (! result.equals(terms[n])) {
                 okay = false;
@@ -84,7 +86,7 @@ public class BatchTest {
               ((Closeable) seq).close();
             }
           } else {
-          	System.out.println(aseqno + " not found");
+          	System.out.println(aseqno + message);
           }
         } // line != null
       } // while ! eof

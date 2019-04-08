@@ -6,9 +6,9 @@
 # 2019-04-04, Georg Fischer
 #
 #:# Usage:
-#:#   perl gen_joeis.pl [-d debug] [-a author] [-n namesfile] [-p patfile] [-t targetdir] infile > logfile
-#:#       infile has the format: ASEQNO PARM1 PARM2 ...
-#:#       pattern my contain $(NAME), $(AUTHOR), $(ASEQNO) = $(PARM0), $(DATE), $(PACK), $(PARM1), $(PARM2) ...
+#:#   perl gen_joeis.pl [-d debug] [-a author] [-n namesfile] [-p patprefix] [-t targetdir] infile > logfile
+#:#       infile has the format: ASEQNO CALLPATTERN PARM1 PARM2 ...
+#:#       pattern may contain $(NAME), $(AUTHOR), $(ASEQNO) = $(PARM0), $(DATE), $(PACK), $(PARM1), $(PARM2) ...
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -24,7 +24,10 @@ if (scalar(@ARGV) == 0) {
     exit;
 }
 my $author    = "Georg Fischer";
-my $patfile   = "./cfsqrtPattern.jav";
+my $patprefix = "./Invoke";
+my $patext    = ".jpat";
+my $call_pattern = "LinearRecurrence";
+my %patterns  = ();
 my $basedir   = "../../../OEIS-mat/common";
 my $namesfile = "$basedir/names"; 
 my $targetdir = "../../src/irvine/oeis";
@@ -38,7 +41,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     } elsif ($opt  =~ m{n}) {
         $namesfile = shift(@ARGV);
     } elsif ($opt  =~ m{p}) {
-        $patfile   = shift(@ARGV);
+        $patprefix = shift(@ARGV);
     } elsif ($opt  =~ m{t}) {
         $targetdir = shift(@ARGV);
     } else {
@@ -46,7 +49,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 my @names   = &read_names($namesfile);
-my $pattern = &read_pattern($patfile);
+my $pattern;
 mkdir $targetdir;
 my $aseqno;
 my @parms;
@@ -62,8 +65,17 @@ while (<>) { # read inputfile
         print "$line\n";
     }
     @parms = split(/\t/, $line);
+    $aseqno = shift(@parms);
     my $iparm = 0;
-    $aseqno = $parms[$iparm ++];
+    $call_pattern = $parms[$iparm ++];
+    my $pattern = $patterns{$call_pattern};
+    if (! defined($pattern)) { # new pattern
+    	$pattern = &read_pattern("$patprefix$call_pattern$patext");
+    	$patterns{$call_pattern} = $pattern;
+    	if ($debug >= 1) {
+    		print STDERR "read $patprefix$call_pattern$patext\n";
+    	}
+    } # new pattern
     my $seqno = substr($aseqno, 1) + 0; # without "A" and leading zeroes
     my $package = "a" . substr($aseqno, 1, 3);
     my $copy = $pattern;

@@ -170,12 +170,12 @@
         </copy>
 
         <!-- copy web.xml and application.xml to build directory
-        -->
         <copy todir="${build.home}/WEB-INF">
             <fileset dir="${etc.home}/WEB-INF">
                 <include name="web.xml"/>
             </fileset>
         </copy>
+        -->
 
         <!-- copy all XML specs, stylesheets, HTML pages, Javascript and images -->
         <copy todir="${build.home}">

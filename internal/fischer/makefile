@@ -11,6 +11,7 @@ COMMON=$(GITS)/OEIS-mat/common
 LINREC=$(GITS)/OEIS-mat/linrec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 MANY=44444
+D=0
 
 all: 
 	# Possible targets:
@@ -63,7 +64,15 @@ analog4:
 	head -4 $@.txt
 	wc   -l $@.txt
 #--------------------------
-batch_mma:
+gen_mmac:
+	# Caution, change .man -> .tmp next time!
+	head -n$(MANY) $(LINREC)/mmac_err02.man \
+	| perl patch_parms.pl -d $(D) \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@.tmp
+	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
+batch_mmac:
 	cut -b1-7 errors-2019-04-02.txt > x.tmp
 	grep -f x.tmp $(COMMON)/stripped > subset.tmp
 	wc -l subset.tmp
@@ -99,12 +108,12 @@ mmacall:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 gen_linrec:
-	rm -rf oeis
-	mkdir  oeis ||:
+	# rm -rf oeis
+	# mkdir  oeis ||:
 	perl gen_linrec.pl mmacall.txt 
 #--------------------------
 zip: # ZIP file with all newly generated Java sequences
-	zip -r fini.`date +%Y-%m-%d`.zip *.pl sqrt1000.txt mmacall.txt cfsqrt5.tmp subset.tmp makefile *.jav temp oeis
+	zip -r error42.`date +%Y-%m-%d`.zip ../../src/irvine/oeis/a*
 #---------------------------
 mmacheck:
 	sed -e "s/ /\t/g" mmacall.txt | cut -f1,3 > $@.tmp
