@@ -4,7 +4,8 @@
 # 2019-04-06: for joeis-lite
 # 2019-03-28, Georg Fischer
 #
-BATCH=java -jar ../../dist/joeis-lite.jar -v
+B=
+BATCH=java -jar ../../dist/joeis-lite.jar -v $(B)
 GITS=../../..
 JOEIS=$(GITS)/../gitups/joeis
 COMMON=$(GITS)/OEIS-mat/common
