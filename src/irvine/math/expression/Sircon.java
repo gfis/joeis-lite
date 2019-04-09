@@ -1,8 +1,8 @@
 package irvine.math.expression;
-
+/*
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-
+*/
 /**
  * Expression evaluator.
  * @author Sean A. Irvine
@@ -17,6 +17,7 @@ public final class Sircon {
    * @return value of expression
    */
   public static Expression parse(final String expression) {
+  /*
     final ANTLRInputStream input = new ANTLRInputStream(expression);
     final GrammarLexer lexer = new GrammarLexer(input);
     final CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -26,6 +27,8 @@ public final class Sircon {
     //tree.inspect(parser); // show in gui
     //System.out.println(tree.toStringTree(parser));
     return tree.v;
+  */
+  	return null;
   }
 
   /**
