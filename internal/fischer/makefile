@@ -4,19 +4,43 @@
 # 2019-04-06: for joeis-lite
 # 2019-03-28, Georg Fischer
 #
-B=
+B=-b $(COMMON)/bfile
 BATCH=java -jar ../../dist/joeis-lite.jar -v $(B)
 GITS=../../..
 JOEIS=$(GITS)/../gitups/joeis
 COMMON=$(GITS)/OEIS-mat/common
 LINREC=$(GITS)/OEIS-mat/linrec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
-MANY=44444
+MANY=444444
 D=0
 
 all: 
 	# Possible targets:
 	grep -E "^[a-z]" makefile
+#--------------------------
+# Generation of groups of sequences
+BaseTwoDigits:
+	cat represented-by-2-digits.group > group.tmp 
+	make gen-compile-test PATTERN=$@
+#---
+gen-compile-test:
+	perl gen_pattern.pl -n $(COMMON)/names group.tmp
+	cd ../.. ; ant dist
+	cut -b1-7 group.tmp > aseqnos.tmp
+	grep -f  aseqnos.tmp $(COMMON)/stripped > stripped.tmp
+	wc -l    stripped.tmp
+	make test
+	make tgz
+test: # Run the tests for this group
+	$(BATCH) stripped.tmp
+tgz: # ZIP the generated sources for this group
+	tar -czvf $(PATTERN).`date +%Y-%m-%d`.tgz ../../src/irvine/oeis/a*
+	ls -al *.tgz
+#---------------------------
+purge: # remove all oeis/annn directories
+	rm -vrf ../../src/irvine/oeis/a???
+	rm -vrf ../../target/WEB-INF/classes/irvine/oeis/a???
+#--------------------
 #--------------------------
 joeis_load: # populate a table with A-numbers and superclass names of implemented sequences
 	$(DBAT) -f joeis.create.sql
@@ -24,16 +48,19 @@ joeis_load: # populate a table with A-numbers and superclass names of implemente
 	| $(DBAT) -m csv -r joeis
 	$(DBAT) -4 joeis
 	$(DBAT) -n joeis
-joeis_list: joeis_list1 joeis_List2
+joeis_list: joeis_list1 joeis_list2
 joeis_list1:
 	find $(JOEIS)/src/irvine/oeis -iname "A??????.java" \
-	| xargs -l grep -E " extends" > $joeis_list.1.tmp
+	| xargs -l grep -E " extends" > joeis_list.1.tmp || :
+	head -n4  joeis_list.1.tmp
+	wc -l     joeis_list.1.tmp
 joeis_list2:
 	grep -E "^public class" joeis_list.1.tmp \
 	| sed -e "s/public class *//" -e "s/ extends / /" -e "s/ {.*//" \
-	>        joeis_list.txt
-	head -n4 joeis_list.txt
-	wc -l    joeis_list.txt
+	>         joeis_list.txt
+	head -n4  joeis_list.txt
+	wc -l     joeis_list.txt
+	cut -b1-7 joeis_list.txt | sort > joeis_aseqno.txt
 joeis_stat:
 	$(DBAT) -x "SELECT count(superclass), superclass \
 		FROM joeis \
@@ -42,6 +69,15 @@ joeis_stat:
 		ORDER BY 1 DESC" \
 	>        $@.tmp
 	head -n4 $@.tmp
+	wc -l    $@.tmp
+isin_joeis:
+	sed -s "s/^\(A[0-9]*\) /\1\t/" $(INFO) > $@.1.tmp
+	make seq2 INFO=$@.1.tmp
+	$(DBAT) -x "SELECT j.aseqno, j.superclass, s.info \
+		FROM joeis j, seq2 s \
+		WHERE j.aseqno = s.aseqno \
+		ORDER BY 1" \
+	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------------------------
 analog: analog1 analog2 analog3
@@ -86,8 +122,6 @@ batch_cfsqrt:
 batch_fini: # fini_check
 	cat fini_check.txt > subset.tmp
 	make test
-test:
-	$(BATCH) subset.tmp
 #-------------------
 power:
 	perl -ne 'print if m{\AA\d+\s+a\(n\)\s*\=\s*\d+\*?n\^\d+\s*(\-|\+)\s*\d+[\.\s]*\Z}i' $(COMMON)/names
@@ -113,9 +147,6 @@ gen_linrec:
 	# mkdir  oeis ||:
 	perl gen_linrec.pl mmacall.txt 
 #--------------------------
-zip: # ZIP file with all newly generated Java sequences
-	zip -r error42.`date +%Y-%m-%d`.zip ../../src/irvine/oeis/a*
-#---------------------------
 mmacheck:
 	sed -e "s/ /\t/g" mmacall.txt | cut -f1,3 > $@.tmp
 	perl gen_linrec.pl mmacall.tmp 

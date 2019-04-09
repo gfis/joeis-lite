@@ -57,7 +57,7 @@ my $old_package = "";
 my $gen_count = 0;
 
 while (<>) { # read inputfile
-    next if m{\A\s*\#}; # skip comment lines
+		s{\#.*}{}; # remove comments
     next if m{\A\s*\Z}; # skip empty lines
     my $line = $_;
     $line =~ s/\s+\Z//; # chompr
@@ -117,7 +117,6 @@ while (<>) { # read inputfile
     }
 } # while <>
 print STDERR "# $gen_count sequences generated\n";
-#--------------------------------------------
 #----------------------------------------
 sub read_names { # read names into an array indexed by seqno (without "A") and returns that array
     my ($namesfile) = @_;

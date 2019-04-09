@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-04-09: read freom b-file
  *  2019-04-05, Georg Fischer: copied from org.teherba.ramath.util.ExpressionReader
  */
 package irvine.test;
@@ -56,7 +57,7 @@ public class BatchTest {
           if (hashPos >= 0) { // hash found
             line = line.substring(0, hashPos); // remove comment
           }
-          line.replaceAll("\\s+", " "); // beware of \t, \r
+          line = line.replaceAll("\\s+", " "); // beware of \t, \r
           line = line.trim(); // remove any surrounding space
           if (line.length() > 0) { // line not empty
             int spacePos = line.indexOf(' ');
@@ -92,8 +93,8 @@ public class BatchTest {
     String computed = seq.next().toString();
     if (! computed.equals(expected)) {
       result = 0;
-      System.out.println(aseqno + "\tFAILED, expected @" + count + " = " + expected 
-          + "\tcomputed: " + computed);
+      System.out.println(aseqno + "\tFAILED, expected @" + count + " = \"" + expected 
+          + "\"\tcomputed: \"" + computed + "\"");
     } 
     return result;
   } // testNext
@@ -107,7 +108,8 @@ public class BatchTest {
     Sequence seq   = null; // invoke this sequence
     String message = "\tconstruction failed: ";
     try {
-      seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno).newInstance();
+      seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno)
+          .getConstructor().newInstance();
     } catch (Exception exc) {
       // remains null for any errors
       message += exc.getMessage();
