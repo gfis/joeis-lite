@@ -103,22 +103,22 @@ while (<>) { # read inputfile
         my $term;
         my $len;
         my $parm = join(", ", map {
-        				$term = $_;
-        				if (0) {
-        				} elsif ($max_term_len  <  9) { # leave it as 'int'
-        				} elsif ($max_term_len <= 16) { # make 'long' constant
-        				    $term .= "L";
-        				} else { # construct new Z(String)
-        				    $term = "new Z(\"$term\")";
-        				}  
-        				$len = length($term);
-        				if ($line_len >= $max_line_len) {
-        					$term = "\n" . (' ' x $indent) . $term;
-        					$line_len =           $indent;
-        				}
-        				$line_len += $len + 2; # 2 for ", ";
-        				$term     
-        		} @terms);
+                $term = $_;
+                if (0) {
+                } elsif ($max_term_len  <  9) { # leave it as 'int'
+                } elsif ($max_term_len <= 16) { # make 'long' constant
+                    $term .= "L";
+                } else { # construct new Z(String)
+                    $term = "new Z(\"$term\")";
+                }  
+                $len = length($term);
+                if ($line_len >= $max_line_len) {
+                  $term = "\n" . (' ' x $indent) . $term;
+                  $line_len =           $indent;
+                }
+                $line_len += $len + 2; # 2 for ", ";
+                $term     
+            } @terms);
         $copy =~ s{\$\(PARM$iparm\)}{$parm}g;
         $iparm ++;
     } # while $iparm
@@ -133,8 +133,8 @@ while (<>) { # read inputfile
         print OUT $copy;
         close(OUT);
         if ($debug >= 1) {
-        	print "--------------------------------\n";
-        	print $copy;
+          print "--------------------------------\n";
+          print $copy;
         }
         print "$aseqno $name\n";
         $gen_count ++;

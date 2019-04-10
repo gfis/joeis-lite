@@ -1,10 +1,12 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-04-10: Sequence.next() may return null
  *  2019-04-09: read freom b-file
  *  2019-04-05, Georg Fischer: copied from org.teherba.ramath.util.ExpressionReader
  */
 package irvine.test;
 import  irvine.oeis.Sequence;
+import  irvine.math.z.Z;
 import  java.io.BufferedReader;
 import  java.io.Closeable;
 import  java.io.FileInputStream;
@@ -90,11 +92,18 @@ public class BatchTest {
    */     
   private int testNext(String aseqno, Sequence seq, int count, String expected) {
     int result = 1;
-    String computed = seq.next().toString();
-    if (! computed.equals(expected)) {
-      result = 0;
+    Z term = seq.next();
+    if (term== null) { // e.g. beyond end of FiniteSequence
+    	result = 0;
       System.out.println(aseqno + "\tFAILED, expected @" + count + " = \"" + expected 
-          + "\"\tcomputed: \"" + computed + "\"");
+          + "\"\tcomputed: null");
+    } else {
+    	String computed = term.toString();
+			if (! computed.equals(expected)) {
+      	result = 0;
+      	System.out.println(aseqno + "\tFAILED, expected @" + count + " = \"" + expected 
+        	  + "\"\tcomputed: \"" + computed + "\"");
+    	}
     } 
     return result;
   } // testNext

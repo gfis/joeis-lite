@@ -11,7 +11,7 @@ JOEIS=$(GITS)/../gitups/joeis
 COMMON=$(GITS)/OEIS-mat/common
 LINREC=$(GITS)/OEIS-mat/linrec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
-MANY=10
+MANY=444444
 D=0
 
 all: 
@@ -31,14 +31,18 @@ gen-compile-test:
 	| perl gen_pattern.pl -d $(D) -n $(COMMON)/names
 	cd ../.. ; ant dist
 	cut -b1-7 group.tmp > aseqnos.tmp
-	grep -f  aseqnos.tmp $(COMMON)/stripped > stripped.tmp
+	grep -f  aseqnos.tmp $(COMMON)/stripped \
+	| head -n$(MANY) > stripped.tmp
 	wc -l    stripped.tmp
 	make test
 	make tgz
 test: # Run the tests for this group
-	$(BATCH) stripped.tmp
+	$(BATCH) stripped.tmp 2>&1 > $(PATTERN).`date +%Y-%m-%d`.log
+	grep  FAIL $(PATTERN).`date +%Y-%m-%d`.log \
+	| tee fail.$(PATTERN).`date +%Y-%m-%d`.log
 tgz: # ZIP the generated sources for this group
-	tar -czvf $(PATTERN).`date +%Y-%m-%d`.tgz ../../src/irvine/oeis/a*
+	tar -czf $(PATTERN).`date +%Y-%m-%d`.tgz ../../src/irvine/oeis/a*
+	tar -tzf $(PATTERN).`date +%Y-%m-%d`.tgz | grep -E "A[0-9]*.java" | wc -l
 	ls -al *.tgz
 #---------------------------
 purge: # remove all oeis/annn directories
@@ -189,9 +193,14 @@ finifu_check: # Sequences with keywords "fini,full"
 	      AND a.aseqno NOT IN (SELECT j.aseqno FROM joeis j) \
 	      AND a.keyword LIKE '%fini%'  \
 	      AND a.keyword LIKE '%full%'  \
-	      AND COALESCE(a.termno, \
-	      	(SELECT b.bfimax - b.bfimin + 1 FROM bfinfo b WHERE b.aseqno = a.aseqno) \
-	      	) - a.termno <= 0 \
+	      AND (a.keyword LIKE '%synth%'  \
+	       OR EXISTS  \
+	              ( SELECT b.aseqno \
+	                  FROM bfinfo b \
+	                  WHERE b.aseqno = a.aseqno \
+	                    AND b.bfimax - b.bfimin + 1 <= a.termno \
+	              ) \
+	      ) \
 	    ORDER BY 1" \
 	>        $@.txt
 	head -n4 $@.txt
@@ -199,9 +208,6 @@ finifu_check: # Sequences with keywords "fini,full"
 #
 dummy:
 		echo " \
-	      AND COALESCE(a.termno, \
-	      	(SELECT b.bfimax - b.bfimin + 1 FROM bfinfo b WHERE b.aseqno = a.aseqno) \
-	      	) - a.termno <= 0 \
 	  "
 #----
 fininof_check: # Sequences with keywords "fini", but no "full"
@@ -219,6 +225,7 @@ finibf_check: # Sequences with keywords "fini,full", but full terms are in b-fil
 	    FROM  asinfo i \
 	    LEFT JOIN bfinfo b ON b.aseqno = i.aseqno \
 	    WHERE i.termno < b.bfimax - b.bfimin + 1 \
+	      AND b.bfimax - b.bfimin + 1 <= 256 \
 	      AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
 	      AND i.keyword LIKE '%fini%'  \
 	      AND i.keyword LIKE '%full%'  \
