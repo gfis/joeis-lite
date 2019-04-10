@@ -5,7 +5,7 @@ import irvine.math.z.Z;
 import irvine.oeis.Sequence;
 
 /**
- * $(NAME) 
+ * $(ASEQNO) $(NAME) 
  * Integers in base $(PARM1) with each base $(PARM1) digit represented by 2 decimal digits.
  * @author $(AUTHOR)
  */
@@ -15,6 +15,6 @@ public class $(ASEQNO) implements Sequence  {
 
   @Override
   public Z next() {
-    return new Z((new Z(Long.toString(++mN))).toTwoDigits($(PARM1)));
+    return new Z(Z.valueOf(++mN).toTwoDigits($(PARM1)));
   }
 }
