@@ -6,7 +6,8 @@
 # 2019-04-04, Georg Fischer
 #
 #:# Usage:
-#:#   perl gen_joeis.pl [-d debug] [-a author] [-n namesfile] [-p patprefix] [-t targetdir] infile > logfile
+#:#   perl gen_joeis.pl [-d debug] [-a author] [-n namesfile] [-l maxlen]
+#;#          [-p patprefix] [-t targetdir] infile > logfile
 #:#       infile has the format: ASEQNO CALLPATTERN PARM1 PARM2 ...
 #:#       pattern may contain $(NAME), $(AUTHOR), $(ASEQNO) = $(PARM0), $(DATE), $(PACK), $(PARM1), $(PARM2) ...
 #--------------------------------------------------------
@@ -18,6 +19,8 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
 my $max_term = 16;
 my $max_size = 16; 
+my $max_line_len = 80;
+my $indent = 6;
 my $debug = 0;
 if (scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
@@ -38,6 +41,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $author    = shift(@ARGV);
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
+    } elsif ($opt  =~ m{l}) {
+        $max_line_len = shift(@ARGV);
     } elsif ($opt  =~ m{n}) {
         $namesfile = shift(@ARGV);
     } elsif ($opt  =~ m{p}) {
@@ -57,7 +62,7 @@ my $old_package = "";
 my $gen_count = 0;
 
 while (<>) { # read inputfile
-		s{\#.*}{}; # remove comments
+    s{\#.*}{}; # remove comments
     next if m{\A\s*\Z}; # skip empty lines
     my $line = $_;
     $line =~ s/\s+\Z//; # chompr
@@ -70,11 +75,11 @@ while (<>) { # read inputfile
     $call_pattern = $parms[$iparm ++];
     my $pattern = $patterns{$call_pattern};
     if (! defined($pattern)) { # new pattern
-    	$pattern = &read_pattern("$patprefix$call_pattern$patext");
-    	$patterns{$call_pattern} = $pattern;
-    	if ($debug >= 1) {
-    		print STDERR "read $patprefix$call_pattern$patext\n";
-    	}
+      $pattern = &read_pattern("$patprefix$call_pattern$patext");
+      $patterns{$call_pattern} = $pattern;
+      if ($debug >= 1) {
+        print STDERR "read $patprefix$call_pattern$patext\n";
+      }
     } # new pattern
     my $seqno = substr($aseqno, 1) + 0; # without "A" and leading zeroes
     my $package = "a" . substr($aseqno, 1, 3);
@@ -86,21 +91,38 @@ while (<>) { # read inputfile
     $copy =~ s{\$\(DATE\)}      {$timestamp}g;
     $copy =~ s{\$\(NAME\)}      {$name}g;
     $copy =~ s{\$\(PACK\)}      {$package}g;
-    my $not_huge = 1; # assume success
-    while ($not_huge >= 1 and $iparm < scalar(@parms)) {
-        my $parm = join(", ", map { my $term = $_;
-                if (length($term) > 16) {
-                    $not_huge = 0;
-                } elsif (length($term) >= 9) {
-                    $term .= "L";
-                }
-                $term
-            } split(/\,\s*/, $parms[$iparm])
-            );
+    while ($iparm < scalar(@parms)) {
+        my $max_term_len = 0;
+        my @terms = map {
+              if (length > $max_term_len) {
+                $max_term_len = length;
+              } 
+              $_
+            } split(/\,\s*/, $parms[$iparm]);
+        my $line_len = index($line, '$(PARM' . $iparm . ')');
+        my $term;
+        my $len;
+        my $parm = join(", ", map {
+        				$term = $_;
+        				if (0) {
+        				} elsif ($max_term_len  <  9) { # leave it as 'int'
+        				} elsif ($max_term_len <= 16) { # make 'long' constant
+        				    $term .= "L";
+        				} else { # construct new Z(String)
+        				    $term = "new Z(\"$term\")";
+        				}  
+        				$len = length($term);
+        				if ($line_len >= $max_line_len) {
+        					$term = "\n" . (' ' x $indent) . $term;
+        					$line_len =           $indent;
+        				}
+        				$line_len += $len + 2; # 2 for ", ";
+        				$term     
+        		} @terms);
         $copy =~ s{\$\(PARM$iparm\)}{$parm}g;
         $iparm ++;
     } # while $iparm
-    if($not_huge >= 1) {
+    if(1) {
         my $packdir = "$targetdir/$package";
         if ($old_package ne $package) {
             mkdir $packdir;
@@ -110,6 +132,10 @@ while (<>) { # read inputfile
         open(OUT, ">", $filename) || die "cannot write \"$filename\"\n";
         print OUT $copy;
         close(OUT);
+        if ($debug >= 1) {
+        	print "--------------------------------\n";
+        	print $copy;
+        }
         print "$aseqno $name\n";
         $gen_count ++;
     } else {

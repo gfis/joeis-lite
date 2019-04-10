@@ -11,7 +11,7 @@ JOEIS=$(GITS)/../gitups/joeis
 COMMON=$(GITS)/OEIS-mat/common
 LINREC=$(GITS)/OEIS-mat/linrec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
-MANY=444444
+MANY=10
 D=0
 
 all: 
@@ -22,9 +22,13 @@ all:
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp 
 	make gen-compile-test PATTERN=$@
+FiniteSequence:
+	cat finifu_check.txt > group.tmp
+	make gen-compile-test PATTERN=$@
 #---
 gen-compile-test:
-	perl gen_pattern.pl -n $(COMMON)/names group.tmp
+	head -n$(MANY) group.tmp \
+	| perl gen_pattern.pl -d $(D) -n $(COMMON)/names
 	cd ../.. ; ant dist
 	cut -b1-7 group.tmp > aseqnos.tmp
 	grep -f  aseqnos.tmp $(COMMON)/stripped > stripped.tmp
@@ -40,23 +44,55 @@ tgz: # ZIP the generated sources for this group
 purge: # remove all oeis/annn directories
 	rm -vrf ../../src/irvine/oeis/a???
 	rm -vrf ../../target/WEB-INF/classes/irvine/oeis/a???
+#--------------------------51th.txt
+gen_mmac:
+	# Caution, change .man -> .tmp next time!
+	head -n$(MANY) $(LINREC)/mmac_err02.man \
+	| perl patch_parms.pl -d $(D) \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@.tmp
+	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
+batch_mmac:
+	cut -b1-7 errors-2019-04-02.txt > x.tmp
+	grep -f x.tmp $(COMMON)/stripped > subset.tmp
+	wc -l subset.tmp
+	make test
+batch_cfsqrt: 
+	cut -b1-7 cfsqrt_gen.log > x.tmp
+	grep -f x.tmp $(COMMON)/stripped > subset.tmp
+	wc -l subset.tmp
+	make test
+batch_fini: # fini_check
+	cat fini_check.txt > subset.tmp
+	make test
 #--------------------
+cf_convergents:
+	grep "continued fraction convergents" $(COMMON)/names \
+	| grep -P "sqrt\(\d+\)\." \
+	>     $@.tmp
+	wc -l $@.tmp
+	make notin_joeis INFO=$@.tmp
 #--------------------------
 joeis_load: # populate a table with A-numbers and superclass names of implemented sequences
 	$(DBAT) -f joeis.create.sql
-	sed -e "s/ /\t/" joeis_list.txt | grep -E "^A" \
+	cat joeis_list.txt \
 	| $(DBAT) -m csv -r joeis
 	$(DBAT) -4 joeis
 	$(DBAT) -n joeis
 joeis_list: joeis_list1 joeis_list2
 joeis_list1:
 	find $(JOEIS)/src/irvine/oeis -iname "A??????.java" \
-	| xargs -l grep -E " extends" > joeis_list.1.tmp || :
+	| xargs -l grep -E "( extends | implements )" > joeis_list.1.tmp || :
 	head -n4  joeis_list.1.tmp
 	wc -l     joeis_list.1.tmp
 joeis_list2:
-	grep -E "^public class" joeis_list.1.tmp \
-	| sed -e "s/public class *//" -e "s/ extends / /" -e "s/ {.*//" \
+	grep -E "^public class *A" joeis_list.1.tmp \
+	| sed -e "s/public class *A/A/" \
+			-e "s/ extends / /" \
+			-e "s/ implements / /" \
+			-e "s/ *[^A-Za-z0-9 ].*//" \
+			-e "s/ /\t/" \
 	>         joeis_list.txt
 	head -n4  joeis_list.txt
 	wc -l     joeis_list.txt
@@ -76,6 +112,15 @@ isin_joeis:
 	$(DBAT) -x "SELECT j.aseqno, j.superclass, s.info \
 		FROM joeis j, seq2 s \
 		WHERE j.aseqno = s.aseqno \
+		ORDER BY 1" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+notin_joeis:
+	sed -s "s/^\(A[0-9]*\) /\1\t/" $(INFO) > $@.1.tmp
+	make seq2 INFO=$@.1.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.info \
+		FROM  seq2 s \
+		WHERE s.aseqno NOT IN (SELECT aseqno FROM joeis) \
 		ORDER BY 1" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
@@ -100,28 +145,6 @@ analog4:
 	>       $@.txt
 	head -4 $@.txt
 	wc   -l $@.txt
-#--------------------------
-gen_mmac:
-	# Caution, change .man -> .tmp next time!
-	head -n$(MANY) $(LINREC)/mmac_err02.man \
-	| perl patch_parms.pl -d $(D) \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
-	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
-batch_mmac:
-	cut -b1-7 errors-2019-04-02.txt > x.tmp
-	grep -f x.tmp $(COMMON)/stripped > subset.tmp
-	wc -l subset.tmp
-	make test
-batch_cfsqrt: 
-	cut -b1-7 cfsqrt_gen.log > x.tmp
-	grep -f x.tmp $(COMMON)/stripped > subset.tmp
-	wc -l subset.tmp
-	make test
-batch_fini: # fini_check
-	cat fini_check.txt > subset.tmp
-	make test
 #-------------------
 power:
 	perl -ne 'print if m{\AA\d+\s+a\(n\)\s*\=\s*\d+\*?n\^\d+\s*(\-|\+)\s*\d+[\.\s]*\Z}i' $(COMMON)/names
@@ -157,17 +180,52 @@ indx_nojoeis:
 	    WHERE 'A' || seqno NOT IN (SELECT aseqno FROM joeis) \
 	"
 #----------------
-fini_check: 
-	$(DBAT) -x "SELECT i.aseqno, d.data \
-	    FROM  asinfo i, asdata d \
-	    WHERE i.aseqno = d.aseqno \
+finifu_check: # Sequences with keywords "fini,full"
+	$(DBAT) -x "SELECT a.aseqno, 'FiniteSequence', d.data \
+			, '# ' || a.termno || ' ' || n.name \
+	    FROM  asinfo a, asdata d, asname n \
+	    WHERE a.aseqno = d.aseqno \
+	      AND a.aseqno = n.aseqno \
+	      AND a.aseqno NOT IN (SELECT j.aseqno FROM joeis j) \
+	      AND a.keyword LIKE '%fini%'  \
+	      AND a.keyword LIKE '%full%'  \
+	      AND COALESCE(a.termno, \
+	      	(SELECT b.bfimax - b.bfimin + 1 FROM bfinfo b WHERE b.aseqno = a.aseqno) \
+	      	) - a.termno <= 0 \
+	    ORDER BY 1" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt 
+#
+dummy:
+		echo " \
+	      AND COALESCE(a.termno, \
+	      	(SELECT b.bfimax - b.bfimin + 1 FROM bfinfo b WHERE b.aseqno = a.aseqno) \
+	      	) - a.termno <= 0 \
+	  "
+#----
+fininof_check: # Sequences with keywords "fini", but no "full"
+	$(DBAT) -x "SELECT i.aseqno, i.termno \
+	    FROM  asinfo i \
+	    WHERE i.keyword     LIKE '%fini%'  \
+	      AND i.keyword NOT LIKE '%full%'  \
+	    ORDER BY 1" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt 
+#----
+finibf_check: # Sequences with keywords "fini,full", but full terms are in b-file only
+	$(DBAT) -x "SELECT i.aseqno, i.termno, b.bfimax - b.bfimin + 1 \
+	    FROM  asinfo i \
+	    LEFT JOIN bfinfo b ON b.aseqno = i.aseqno \
+	    WHERE i.termno < b.bfimax - b.bfimin + 1 \
 	      AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
-	      AND keyword LIKE '%fini%'  \
-	      AND keyword LIKE '%full%'  \
-	      AND keyword LIKE '%synth%' \
-	" \
-	| tee $@.txt
-	wc -l $@.txt 
+	      AND i.keyword LIKE '%fini%'  \
+	      AND i.keyword LIKE '%full%'  \
+	    ORDER BY 1" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt 
 #----
 fini_gen:
 	head -n$(MANY) fini_check.txt \
