@@ -93,16 +93,16 @@ public class BatchTest {
   private int testNext(String aseqno, Sequence seq, int count, String expected) {
     int result = 1;
     Z term = seq.next();
-    if (term== null) { // e.g. beyond end of FiniteSequence
+    if (term == null) { // e.g. beyond end of FiniteSequence
     	result = 0;
-      System.out.println(aseqno + "\tFAILED, expected @" + count + " = \"" + expected 
-          + "\"\tcomputed: null");
+      System.out.println(aseqno + "\t" + count + "\tFAIL\t\"" + expected 
+          + "\"\tcomputed: \tnull");
     } else {
     	String computed = term.toString();
 			if (! computed.equals(expected)) {
       	result = 0;
-      	System.out.println(aseqno + "\tFAILED, expected @" + count + " = \"" + expected 
-        	  + "\"\tcomputed: \"" + computed + "\"");
+	      System.out.println(aseqno + "\t" + count + "\tFAIL\t\"" + expected 
+  	        + "\"\tcomputed: \t\"" + computed + "\"");
     	}
     } 
     return result;
@@ -115,10 +115,11 @@ public class BatchTest {
    */
   private void testSequence(String aseqno, String[] terms) {
     Sequence seq   = null; // invoke this sequence
-    String message = "\tconstruction failed: ";
+    String message = "\t0\tFATAL: construction failed: ";
     try {
       seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno)
-          .getConstructor().newInstance();
+          // .getConstructor().newInstance();
+          .newInstance();
     } catch (Exception exc) {
       // remains null for any errors
       message += exc.getMessage();
@@ -144,14 +145,14 @@ public class BatchTest {
         }
       } // terms from 'stripped'
       if (result >= 1 && verbosity >= 1) {
-        System.out.println(aseqno + "\tpassed: " + result + " terms");
+	      System.out.println(aseqno + "\t" + result + "\tpass");
       } 
       try {
         if (seq instanceof Closeable) {
           ((Closeable) seq).close();
         }
       } catch (Exception exc) {
-        System.err.println(aseqno + "\tcould not close seq: " + exc.getMessage());
+        System.err.println(aseqno + "\t0\t\"FATAL: could not close seq: " + exc.getMessage());
         exc.printStackTrace();
       }
     } else {

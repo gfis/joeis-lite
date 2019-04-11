@@ -6,7 +6,7 @@
 # 2019-04-04, Georg Fischer
 #
 #:# Usage:
-#:#   perl gen_joeis.pl [-d debug] [-a author] [-n namesfile] [-l maxlen]
+#:#   perl gen_pattern.pl [-d debug] [-a author] [-n namesfile] [-l maxlen]
 #;#          [-p patprefix] [-t targetdir] infile > logfile
 #:#       infile has the format: ASEQNO CALLPATTERN PARM1 PARM2 ...
 #:#       pattern may contain $(NAME), $(AUTHOR), $(ASEQNO) = $(PARM0), $(DATE), $(PACK), $(PARM1), $(PARM2) ...
@@ -14,6 +14,8 @@
 use strict;
 use integer;
 use warnings;
+use English; # PREMATCH
+
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min, $sec);
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
@@ -72,7 +74,7 @@ while (<>) { # read inputfile
     @parms = split(/\t/, $line);
     $aseqno = shift(@parms);
     my $iparm = 0;
-    $call_pattern = $parms[$iparm ++];
+    $call_pattern = $parms[$iparm ++]; # [0]
     my $pattern = $patterns{$call_pattern};
     if (! defined($pattern)) { # new pattern
       $pattern = &read_pattern("$patprefix$call_pattern$patext");
@@ -91,6 +93,7 @@ while (<>) { # read inputfile
     $copy =~ s{\$\(DATE\)}      {$timestamp}g;
     $copy =~ s{\$\(NAME\)}      {$name}g;
     $copy =~ s{\$\(PACK\)}      {$package}g;
+    my $do_generate = 1;
     while ($iparm < scalar(@parms)) {
         my $max_term_len = 0;
         my @terms = map {
@@ -99,30 +102,46 @@ while (<>) { # read inputfile
               } 
               $_
             } split(/\,\s*/, $parms[$iparm]);
-        my $line_len = index($line, '$(PARM' . $iparm . ')');
+        $copy =~ m{\$\(PARM$iparm(\.\w+)?\)}i;
+        my $type = $1 || "";
+        my $line_len = length($PREMATCH);
         my $term;
         my $len;
-        my $parm = join(", ", map {
-                $term = $_;
-                if (0) {
-                } elsif ($max_term_len  <  9) { # leave it as 'int'
-                } elsif ($max_term_len <= 16) { # make 'long' constant
-                    $term .= "L";
-                } else { # construct new Z(String)
-                    $term = "new Z(\"$term\")";
-                }  
-                $len = length($term);
-                if ($line_len >= $max_line_len) {
-                  $term = "\n" . (' ' x $indent) . $term;
-                  $line_len =           $indent;
+        my @typed_terms = ();
+        foreach my $term (@terms) {
+            if ($term =~ m{\/\*\*\/}) {
+                $term = "";
+            } 
+            if ($debug >= 2) {
+                print "# before: type(PARM$iparm) = \"$type\", term=\"$term\"\n";
+            }
+            if (($term =~ m{[^ \-\,0-9]}) or ($term !~ m{\d})) {
+                $do_generate = 0;
+            } elsif (length($type) == 0) { # leave it as it is
+            } elsif ($type =~ m{L}i)     { # make 'long' constant
+                if (length($term) > 16) {
+                    $do_generate = 0;
                 }
-                $line_len += $len + 2; # 2 for ", ";
-                $term     
-            } @terms);
-        $copy =~ s{\$\(PARM$iparm\)}{$parm}g;
+                $term .= "L";
+            } elsif ($type =~ m{Z}i)     { # construct new Z(String)
+                $term = "new Z(\"$term\")";
+            }  
+            $len = length($term);
+            if ($line_len >= $max_line_len) {
+                $term = "\n" . (' ' x $indent) . $term;
+                $line_len =           $indent;
+            }
+            $line_len += $len + 2; # 2 for ", ";
+            if ($debug >= 2) {
+                print "# after : type(PARM$iparm) = \"$type\", term=\"$term\"\n";
+            }
+            push(@typed_terms, $term)     
+        } # foreach $term
+        my $parm = join(", ", @typed_terms);
+        $copy =~ s{\$\(PARM$iparm(\.\w+)?\)}{$parm}g;
         $iparm ++;
     } # while $iparm
-    if(1) {
+    if ($do_generate > 0) {
         my $packdir = "$targetdir/$package";
         if ($old_package ne $package) {
             mkdir $packdir;
@@ -133,10 +152,12 @@ while (<>) { # read inputfile
         print OUT $copy;
         close(OUT);
         if ($debug >= 1) {
-          print "--------------------------------\n";
-          print $copy;
-        }
-        print "$aseqno $name\n";
+            print "$aseqno $name\n";
+            if ($debug >= 1) {
+                print "--------------------------------\n";
+                print $copy;
+            }
+        } # debug
         $gen_count ++;
     } else {
         print "# $aseqno has too big parameter values\n";

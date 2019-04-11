@@ -13,6 +13,7 @@ LINREC=$(GITS)/OEIS-mat/linrec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 MANY=444444
 D=0
+INIT=0
 
 all: 
 	# Possible targets:
@@ -21,34 +22,81 @@ all:
 # Generation of groups of sequences
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp 
-	make gen-compile-test PATTERN=$@
+	make run PATTERN=$@
 FiniteSequence:
 	cat finifu_check.txt > group.tmp
-	make gen-compile-test PATTERN=$@
-#---
-gen-compile-test:
-	head -n$(MANY) group.tmp \
-	| perl gen_pattern.pl -d $(D) -n $(COMMON)/names
-	cd ../.. ; ant dist
-	cut -b1-7 group.tmp > aseqnos.tmp
-	grep -f  aseqnos.tmp $(COMMON)/stripped \
-	| head -n$(MANY) > stripped.tmp
-	wc -l    stripped.tmp
-	make test
-	make tgz
-test: # Run the tests for this group
-	$(BATCH) stripped.tmp 2>&1 > $(PATTERN).`date +%Y-%m-%d`.log
-	grep  FAIL $(PATTERN).`date +%Y-%m-%d`.log \
-	| tee fail.$(PATTERN).`date +%Y-%m-%d`.log
-tgz: # ZIP the generated sources for this group
-	tar -czf $(PATTERN).`date +%Y-%m-%d`.tgz ../../src/irvine/oeis/a*
-	tar -tzf $(PATTERN).`date +%Y-%m-%d`.tgz | grep -E "A[0-9]*.java" | wc -l
-	ls -al *.tgz
+	make run PATTERN=$@
 #---------------------------
 purge: # remove all oeis/annn directories
 	rm -vrf ../../src/irvine/oeis/a???
 	rm -vrf ../../target/WEB-INF/classes/irvine/oeis/a???
-#--------------------------51th.txt
+	rm -vf *.bak
+#---------------------------
+lrixall:
+	$(DBAT) -x "SELECT DISTINCT 'A' || i.seqno \
+		FROM  lrindx i \
+		WHERE 'A' || i.seqno NOT IN (SELECT aseqno FROM joeis) \
+		ORDER BY 1 " \
+	>     $@.tmp
+	wc -l $@.tmp
+	make lrgroup LIST=$@.tmp INIT=0
+lrstart:
+	make lrgroup LIST=err-04-11.log 
+lrgroup: # parameter LIST, INIT
+	make seq # LIST
+	$(DBAT) -x "SELECT s.aseqno, 'LinearRecurrence2' \
+	  , i.signature, d.data \
+		FROM seq s, lrindx i, asdata d \
+		WHERE s.aseqno = 'A' || i.seqno \
+		  AND s.aseqno = d.aseqno \
+		ORDER BY 1" \
+	> 			 $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	perl patch_parms.pl -a lrstrip -i $(INIT) $@.tmp \
+	>        group.tmp
+	head -n4 group.tmp
+	wc   -l  group.tmp
+#---
+gen-compile-test: run
+run: # parameter MANY, PATTERN, INIT
+	head -n$(MANY) group.tmp \
+	| perl gen_pattern.pl -d $(D) -n $(COMMON)/names 
+	cd ../.. ; ant -silent dist
+	make strip
+	make test
+	make evaluate
+strip: # attach terms from 'stripped' to A-numbers for BatchTest
+	cut -b1-7  group.tmp > aseqnos.tmp
+	grep -f    aseqnos.tmp $(COMMON)/stripped \
+	| head -n$(MANY) > strip.tmp
+	wc -l      strip.tmp
+test: # Run BatchTest for this group
+	$(BATCH)   strip.tmp 2>&1 > batch.log
+evaluate:
+	grep  FA   batch.log | tee fail.log
+	grep  pass batch.log | tee pass.log
+	wc -l      fail.log pass.log
+	cp         fail.log fail.$(INIT).log
+	cut -b1-7  pass.log > pass.an.tmp
+	cut -b1-7  fail.log > fail.an.tmp
+	grep -f    pass.an.tmp group.tmp > group.pass.$(INIT).txt || :
+	grep -f    fail.an.tmp group.tmp > group.fail.$(INIT).txt || :
+	wc -l      *.log
+tgz: # ZIP the generated sources for this group
+	tar -czf   Gen.$(PATTERN).`date +%Y-%m-%d`.tgz ../../src/irvine/oeis/a* strip.tmp group.tmp fail.log pass.log batch.log
+	tar -tzf   Gen.$(PATTERN).`date +%Y-%m-%d`.tgz | grep -E "A[0-9]*.java" | wc -l
+	ls -al *.tgz
+#--------------------------
+lrjoeis_test:
+	$(DBAT) -x "SELECT j.aseqno \
+		FROM joeis j \
+		WHERE j.superclass = 'LinearRecurrence' \
+		ORDER BY 1" \
+	>        group.tmp
+	wc -l    group.tmp
+	make strip
+#-------------------------
 gen_mmac:
 	# Caution, change .man -> .tmp next time!
 	head -n$(MANY) $(LINREC)/mmac_err02.man \
@@ -67,16 +115,13 @@ batch_cfsqrt:
 	grep -f x.tmp $(COMMON)/stripped > subset.tmp
 	wc -l subset.tmp
 	make test
-batch_fini: # fini_check
-	cat fini_check.txt > subset.tmp
-	make test
 #--------------------
 cf_convergents:
 	grep "continued fraction convergents" $(COMMON)/names \
 	| grep -P "sqrt\(\d+\)\." \
 	>     $@.tmp
 	wc -l $@.tmp
-	make notin_joeis INFO=$@.tmp
+	make notin_joeis LIST=$@.tmp
 #--------------------------
 joeis_load: # populate a table with A-numbers and superclass names of implemented sequences
 	$(DBAT) -f joeis.create.sql
@@ -111,8 +156,8 @@ joeis_stat:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 isin_joeis:
-	sed -s "s/^\(A[0-9]*\) /\1\t/" $(INFO) > $@.1.tmp
-	make seq2 INFO=$@.1.tmp
+	sed -s "s/^\(A[0-9]*\) /\1\t/" $(LIST) > $@.1.tmp
+	make seq2 LIST=$@.1.tmp
 	$(DBAT) -x "SELECT j.aseqno, j.superclass, s.info \
 		FROM joeis j, seq2 s \
 		WHERE j.aseqno = s.aseqno \
@@ -120,8 +165,8 @@ isin_joeis:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 notin_joeis:
-	sed -s "s/^\(A[0-9]*\) /\1\t/" $(INFO) > $@.1.tmp
-	make seq2 INFO=$@.1.tmp
+	sed -s "s/^\(A[0-9]*\) /\1\t/" $(LIST) > $@.1.tmp
+	make seq2 LIST=$@.1.tmp
 	$(DBAT) -x "SELECT s.aseqno, s.info \
 		FROM  seq2 s \
 		WHERE s.aseqno NOT IN (SELECT aseqno FROM joeis) \
@@ -161,7 +206,7 @@ power:
 #--------------------------
 #--------------------------
 mmacall:
-	make seq2 INFO=$(LINREC)/lrlink_mma2.tmp
+	make seq2 LIST=$(LINREC)/lrlink_mma2.tmp
 	$(DBAT) -x "SELECT aseqno, info \
 		FROM seq2 \
 		WHERE aseqno NOT IN (SELECT aseqno FROM seq) \
@@ -233,11 +278,6 @@ finibf_check: # Sequences with keywords "fini,full", but full terms are in b-fil
 	>        $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt 
-#----
-fini_gen:
-	head -n$(MANY) fini_check.txt \
-	| perl gen_pattern.pl -n $(COMMON)/names -p finiPattern.jav \
-	| tee $@.log 
 #---------------------------
 cofr_joeis:
 	$(DBAT) "SELECT COUNT(aseqno) \
@@ -279,7 +319,7 @@ cfsqrt_gen:
 cofr_sqrt:
 	grep -E "Continued fraction for sqrt\([0-9]" $(COMMON)/names \
 	> $@.tmp
-	make seq INFO=$@.tmp
+	make seq LIST=$@.tmp
 	$(DBAT) "SELECT aseqno \
 	    FROM  seq \
 	    WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
@@ -287,15 +327,15 @@ cofr_sqrt:
 	| tee $@.tmp
 	wc -l $@.tmp
 #----------------
-seq: # parameter: $(INFO)
+seq: # parameter: $(LIST)
 	$(DBAT) -f $(COMMON)/seq.create.sql
-	cut -b1-7 $(INFO) | grep -E "^A" | $(DBAT) -m csv -r seq
+	cut -b1-7 $(LIST) | grep -E "^A" | $(DBAT) -m csv -r seq
 	$(DBAT) -n seq
-seq2: # parameter: $(INFO)
+seq2: # parameter: $(LIST)
 	$(DBAT) -f $(COMMON)/seq2.create.sql
-	cat $(INFO) | grep -E "^A" | sort | uniq > seq2.tmp
+	cat $(LIST) | grep -E "^A" | sort | uniq > seq2.tmp
 	$(DBAT) -m csv -r seq2 < seq2.tmp
 	$(DBAT) -4 seq2
 	$(DBAT) -n seq2
-delseq: seq # parameters: $(TAB) $(INFO)
+delseq: seq # parameters: $(TAB) $(LIST)
 	$(DBAT) -v "DELETE FROM $(TAB) WHERE aseqno IN (SELECT aseqno FROM seq)"
