@@ -141,7 +141,11 @@ while (<>) { # read inputfile
         $copy =~ s{\$\(PARM$iparm(\.\w+)?\)}{$parm}g;
         $iparm ++;
     } # while $iparm
-    if ($do_generate > 0) {
+    
+    if (0) {
+	  } elsif ($copy =~ m{\$\((PARM\d)}) {
+        print "# $aseqno $1 not replaced - skipped\n";  	
+    } elsif ($do_generate > 0) {
         my $packdir = "$targetdir/$package";
         if ($old_package ne $package) {
             mkdir $packdir;
@@ -160,7 +164,7 @@ while (<>) { # read inputfile
         } # debug
         $gen_count ++;
     } else {
-        print "# $aseqno has too big parameter values\n";
+        print "# $aseqno has too big parameter values - skipped\n";
     }
 } # while <>
 print STDERR "# $gen_count sequences generated\n";

@@ -28,8 +28,8 @@ FiniteSequence:
 	make run PATTERN=$@
 #---------------------------
 purge: # remove all oeis/annn directories
-	rm -vrf ../../src/irvine/oeis/a???
-	rm -vrf ../../target/WEB-INF/classes/irvine/oeis/a???
+	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
+	rm -vrf ../../src/irvine/oeis/a??? | grep directory
 	rm -vf *.bak
 #---------------------------
 lrixall:
@@ -46,7 +46,7 @@ lrgroup: # parameter LIST, INIT
 	make seq # LIST
 	$(DBAT) -x "SELECT s.aseqno, 'LinearRecurrence2' \
 	  , i.signature, d.data \
-		FROM seq s, lrindx i, asdata d \
+		FROM seq s, lrindx i, bfdata d \
 		WHERE s.aseqno = 'A' || i.seqno \
 		  AND s.aseqno = d.aseqno \
 		ORDER BY 1" \
@@ -57,6 +57,7 @@ lrgroup: # parameter LIST, INIT
 	>        group.tmp
 	head -n4 group.tmp
 	wc   -l  group.tmp
+	make run
 #---
 gen-compile-test: run
 run: # parameter MANY, PATTERN, INIT
