@@ -64,11 +64,11 @@ run: # parameter MANY, PATTERN, INIT
 	head -n$(MANY) group.tmp \
 	| perl gen_pattern.pl -d $(D) -n $(COMMON)/names 
 	cd ../.. ; ant -silent dist
-	make strip
+	make strip LIST=group.tmp
 	make test
 	make evaluate
 strip: # attach terms from 'stripped' to A-numbers for BatchTest
-	cut -b1-7  group.tmp > aseqnos.tmp
+	cut -b1-7  $(LIST) > aseqnos.tmp
 	grep -f    aseqnos.tmp $(COMMON)/stripped \
 	| head -n$(MANY) > strip.tmp
 	wc -l      strip.tmp
@@ -97,32 +97,6 @@ lrjoeis_test:
 	>        group.tmp
 	wc -l    group.tmp
 	make strip
-#-------------------------
-gen_mmac:
-	# Caution, change .man -> .tmp next time!
-	head -n$(MANY) $(LINREC)/mmac_err02.man \
-	| perl patch_parms.pl -d $(D) \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
-	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
-batch_mmac:
-	cut -b1-7 errors-2019-04-02.txt > x.tmp
-	grep -f x.tmp $(COMMON)/stripped > subset.tmp
-	wc -l subset.tmp
-	make test
-batch_cfsqrt: 
-	cut -b1-7 cfsqrt_gen.log > x.tmp
-	grep -f x.tmp $(COMMON)/stripped > subset.tmp
-	wc -l subset.tmp
-	make test
-#--------------------
-cf_convergents:
-	grep "continued fraction convergents" $(COMMON)/names \
-	| grep -P "sqrt\(\d+\)\." \
-	>     $@.tmp
-	wc -l $@.tmp
-	make notin_joeis LIST=$@.tmp
 #--------------------------
 joeis_load: # populate a table with A-numbers and superclass names of implemented sequences
 	$(DBAT) -f joeis.create.sql
@@ -174,6 +148,32 @@ notin_joeis:
 		ORDER BY 1" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+#-------------------------
+gen_mmac:
+	# Caution, change .man -> .tmp next time!
+	head -n$(MANY) $(LINREC)/mmac_err02.man \
+	| perl patch_parms.pl -d $(D) \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@.tmp
+	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
+batch_mmac:
+	cut -b1-7 errors-2019-04-02.txt > x.tmp
+	grep -f x.tmp $(COMMON)/stripped > subset.tmp
+	wc -l subset.tmp
+	make test
+batch_cfsqrt: 
+	cut -b1-7 cfsqrt_gen.log > x.tmp
+	grep -f x.tmp $(COMMON)/stripped > subset.tmp
+	wc -l subset.tmp
+	make test
+#--------------------
+cf_convergents:
+	grep "continued fraction convergents" $(COMMON)/names \
+	| grep -P "sqrt\(\d+\)\." \
+	>     $@.tmp
+	wc -l $@.tmp
+	make notin_joeis LIST=$@.tmp
 #--------------------------
 analog: analog1 analog2 analog3
 analog1:
