@@ -73,7 +73,7 @@ strip: # attach terms from 'stripped' to A-numbers for BatchTest
 	| head -n$(MANY) > strip.tmp
 	wc -l      strip.tmp
 test: # Run BatchTest for this group
-	$(BATCH)   strip.tmp 2>&1 > batch.log
+	$(BATCH)   strip.tmp &> batch.log
 evaluate:
 	grep  FA   batch.log | tee fail.log
 	grep  pass batch.log | tee pass.log
