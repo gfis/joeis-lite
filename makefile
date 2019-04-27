@@ -1,25 +1,43 @@
 #!make
 
+# makefile in gits/joeis-lite
 # @(#) $Id$
+# 2019-04-27: loop for monitor.pl
 # 2019-04-13: test all sequences, with timeout
 # 2019-04-09, Georg Fischer
 #----------------
 JOEIS=../../gitups/joeis
-GITS=../../gits
+GITS=..
 LITE=$(GITS)/joeis-lite
+FISCHER=$(LITE)/internal/fischer
 COMMON=$(GITS)/OEIS-mat/common
 LINREC=$(GITS)/OEIS-mat/linrec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
-# BATCH=java -Xms1024m -Xmx2048m -cp build.tmp/joeis.jar irvine.test.BatchTest -v
-BATCH=java -cp build.tmp/joeis.jar irvine.test.BatchTest -v
+# BATCH=java -Xms1024m -Xmx2048m -cp $(JOEIS)build.tmp/joeis.jar irvine.test.BatchTest -v
+BATCH=java -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v
 LIST=strip.tmp
-WITHB=-b ../../gits/OEIS-mat/common/bfile 
+WITHB=-b $(COMMON)/bfile 
 TO=2
 MANY=999999
 START=A
+DEBUG=1
 #----
 
 all: joeis_list strip testb
+#----
+loop:
+	while [ true ]; do \
+		echo start at `date +%H:%M:%S`; \
+		make loop1 ; \
+	done
+loop1:
+	perl $(FISCHER)/next_aseqno.pl -l batch.log strip.txt > strip.tmp
+	$(BATCH) $(WITHB) -t $(TO) strip.tmp 2>&1 | tee -a batch.log
+	grep -vE "pass"  batch.log >> fail.`date +%Y-%m-%d`.log
+#----
+monitor:
+	ps -efa | grep BatchTest
+	perl $(FISCHER)/monitor.pl -d $(DEBUG)  -l $(LITE)/batch.log
 #----
 testloop:
 	for number in 1 2 3 4 ; do \
@@ -32,8 +50,8 @@ testb:# Test against b-files, fallback stripped
 	grep -vf  exclude.tmp strip.txt | head -n$(MANY) \
 	| sed -n "/^$(START)/,/^A999999/p" > strip.tmp
 	$(BATCH) $(WITHB) -t $(TO) \
-			strip.tmp   2>&1 > batch.log
-	grep -E "FA| at "  batch.log | tee fail.log
+			strip.tmp   2>&1 | tee batch.log
+	grep -E "FA|at *irvine|Exception"  batch.log | tee fail.log
 	grep -E "pass"     batch.log >     pass.log
 	cp  fail.log fail.`date +%Y-%m-%d.%H:%M:%S`.log
 	wc -l  *.log

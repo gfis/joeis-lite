@@ -1,24 +1,31 @@
 #!make
 
-# Makefile for joeis sequence geneariton and testing 
+# Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing 
+# @(#) $Id$
+# 2019-04-15: makefile for gitups/joeis incorporated
 # 2019-04-06: for joeis-lite
 # 2019-03-28, Georg Fischer
 #
-B=-b $(COMMON)/bfile
-BATCH=java -jar ../../dist/joeis-lite.jar -v $(B)
 GITS=../../..
 JOEIS=$(GITS)/../gitups/joeis
 COMMON=$(GITS)/OEIS-mat/common
 LINREC=$(GITS)/OEIS-mat/linrec
+LITE=$(GITS)/joeis-lite
+WITHB=-b $(COMMON)/bfile 
+BATLIT=java -jar $(LITE)/dist/joeis-lite.jar  -v $(WITHB)
+BATJOE=java -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB)
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
-MANY=444444
 D=0
 INIT=0
+TO=2
+MANY=999999
+START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
+#----------------
 
 all: 
 	# Possible targets:
 	grep -E "^[a-z]" makefile
-#--------------------------
+#----------------
 # Generation of groups of sequences
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp 
@@ -26,7 +33,7 @@ BaseTwoDigits:
 FiniteSequence:
 	cat finifu_check.txt > group.tmp
 	make run PATTERN=$@
-#---------------------------
+#----------------
 purge: # remove all oeis/annn directories
 	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
 	rm -vrf ../../src/irvine/oeis/a??? | grep directory
@@ -64,16 +71,16 @@ run: # parameter MANY, PATTERN, INIT
 	head -n$(MANY) group.tmp \
 	| perl gen_pattern.pl -d $(D) -n $(COMMON)/names 
 	cd ../.. ; ant -silent dist
-	make strip LIST=group.tmp
+	make stripgr LIST=group.tmp
 	make test
 	make evaluate
-strip: # attach terms from 'stripped' to A-numbers for BatchTest
+stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	cut -b1-7  $(LIST) > aseqnos.tmp
 	grep -f    aseqnos.tmp $(COMMON)/stripped \
 	| head -n$(MANY) > strip.tmp
 	wc -l      strip.tmp
 test: # Run BatchTest for this group
-	$(BATCH)   strip.tmp &> batch.log
+	$(BATLIT)  strip.tmp &> batch.log
 evaluate:
 	grep  FA   batch.log | tee fail.log
 	grep  pass batch.log | tee pass.log
@@ -88,6 +95,62 @@ tgz: # ZIP the generated sources for this group
 	tar -czf   Gen.$(PATTERN).`date +%Y-%m-%d`.tgz ../../src/irvine/oeis/a* strip.tmp group.tmp fail.log pass.log batch.log
 	tar -tzf   Gen.$(PATTERN).`date +%Y-%m-%d`.tgz | grep -E "A[0-9]*.java" | wc -l
 	ls -al *.tgz
+#==========================
+#----
+testloop:
+	for number in 1 2 3 4 ; do \
+		make testb ; \
+	done
+#----
+batest:# Test against b-files, fallback stripped
+	cut -b1-7 exclude.man | sed -e "s/\r//" | sort | uniq > exclude.tmp
+	# START=`grep "restart point"   batch.log | tail -n1 | cut -b1-7` 
+	# export START=`cat batch.log | tail -n1 | cut -b1-7`
+	# echo START=`cat batch.log | tail -n1 | cut -b1-7`
+	grep -vf  exclude.tmp strip.txt | head -n$(MANY) \
+	| sed -n "/^$(START)/,/^A999999/p" > strip.tmp
+	$(BATJOE) $(WITHB) -t $(TO) \
+			strip.tmp   2>&1 | tee batch.log
+	grep -E "FA|at *irvine|Exception"  batch.log | tee fail.log
+	grep -E "pass"     batch.log >     pass.log
+	cp  fail.log fail.`date +%Y-%m-%d.%H:%M:%S`.log
+	wc -l  *.log
+#----
+tests: # Test against stripped only
+	make testb WITHB=
+#----
+looptest:
+		# for number in 1 2 3 4 ; do 
+		while [ true ]; do \
+			export START=`cat batch.log | tail -n1 | cut -b1-7` ; \
+    	echo `date +%H:%M:%S` $$START ; \
+    	sleep 2 ; \
+		done
+#----
+killbat:
+	ps -efa | grep java | grep BatchTest | gawk -e '{ print $$2 }' | xargs -l echo kill -9 
+#----
+dirs:
+	ls -al $(JOEIS)/t*.pl            $(JOEIS)/src/irvine/test/BatchTest* \
+		$(LITE)/internal/fischer/t*.pl  $(LITE)/src/irvine/test/BatchTest* \
+		$(LITE)/makefile               $(JOEIS)/makefile  
+	grep "BatchTest V" $(JOEIS)/src/irvine/test/BatchTest*
+	grep "timeguard V" $(JOEIS)/timeguard*
+#----------------
+copylite: # refresh BatchTest.java from joeis-lite
+	cp -pv $(LITE)/makefile                           $(JOEIS)
+	cp -pv $(LITE)/internal/fischer/timeguard.pl      $(JOEIS)
+	cp -pv $(LITE)/src/irvine/test/BatchTest.java     $(JOEIS)/src/irvine/test/BatchTest.java 
+	make dirs
+#----
+bastrip: # attach terms from 'stripped' to A-numbers for BatchTest
+	cut -b1-7 joeis_list.txt > aseqnos.tmp
+	grep -f   aseqnos.tmp $(COMMON)/stripped \
+	>         $@.txt
+	head -n4  $@.txt
+	wc -l     $@.txt
+#----
+#==========================
 #--------------------------
 lrjoeis_test:
 	$(DBAT) -x "SELECT j.aseqno \
