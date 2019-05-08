@@ -13,10 +13,11 @@ FISCHER=$(LITE)/internal/fischer
 COMMON=$(GITS)/OEIS-mat/common
 LINREC=$(GITS)/OEIS-mat/linrec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
-# BATCH=java -Xms1024m -Xmx2048m -cp $(JOEIS)build.tmp/joeis.jar irvine.test.BatchTest -v
-BATCH=java -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v
-LIST=strip.tmp
 WITHB=-b $(COMMON)/bfile 
+JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
+BATLIT=java $(JOPT) -jar $(LITE)/dist/joeis-lite.jar  -v $(WITHB)
+BATCH=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB)
+LIST=strip.tmp
 TO=2
 MANY=999999
 START=A
@@ -32,13 +33,17 @@ loop:
 	done
 loop1:
 	perl $(FISCHER)/next_aseqno.pl -l batch.log strip.txt > strip.tmp
-	$(BATCH) $(WITHB) -t $(TO) strip.tmp 2>&1 | tee -a batch.log
+	$(BATCH) -t $(TO) strip.tmp 2>&1 | tee -a batch.log
 	grep -vE "pass"  batch.log >> fail.`date +%Y-%m-%d`.log
 #----
 monitor:
 	ps -efa | grep BatchTest
 	perl $(FISCHER)/monitor.pl -d $(DEBUG)  -l $(LITE)/batch.log
 #----
+single:
+	java -cp $(JOEIS)/build.tmp/joeis.jar irvine.oeis.SequenceFactory A$(SEQNO) \
+	| cat -n | tee b$(SEQNO).txt
+#----	
 testloop:
 	for number in 1 2 3 4 ; do \
 		make testb ; \

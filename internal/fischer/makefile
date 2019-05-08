@@ -12,8 +12,9 @@ COMMON=$(GITS)/OEIS-mat/common
 LINREC=$(GITS)/OEIS-mat/linrec
 LITE=$(GITS)/joeis-lite
 WITHB=-b $(COMMON)/bfile 
-BATLIT=java -jar $(LITE)/dist/joeis-lite.jar  -v $(WITHB)
-BATJOE=java -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB)
+JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
+BATLIT=java $(JOPT) -jar $(LITE)/dist/joeis-lite.jar  -v $(WITHB)
+BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB)
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 D=0
 INIT=0
@@ -29,6 +30,10 @@ all:
 # Generation of groups of sequences
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp 
+	make run PATTERN=$@
+CoxeterSequence:
+	cat $(LINREC)/coxf1.tmp \
+	| sed -e "s/coxf/CoxeterSequence/" > group.tmp
 	make run PATTERN=$@
 FiniteSequence:
 	cat finifu_check.txt > group.tmp

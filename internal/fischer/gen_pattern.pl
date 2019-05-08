@@ -103,8 +103,8 @@ while (<>) { # read inputfile
               $_
             } split(/\,\s*/, $parms[$iparm]);
         $copy =~ m{\$\(PARM$iparm(\.\w+)?\)}i;
-        my $type = $1 || "";
         my $line_len = length($PREMATCH);
+        my $type = $1 || "";
         my $term;
         my $len;
         my @typed_terms = ();
@@ -118,6 +118,8 @@ while (<>) { # read inputfile
             if (($term =~ m{[^ \-\,0-9]}) or ($term !~ m{\d})) {
                 $do_generate = 0;
             } elsif (length($type) == 0) { # leave it as it is
+            } elsif ($type =~ m{I}i)     { # normal int
+                # term is unchanged
             } elsif ($type =~ m{L}i)     { # make 'long' constant
                 if (length($term) > 16) {
                     $do_generate = 0;
