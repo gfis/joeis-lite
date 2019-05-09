@@ -212,9 +212,9 @@ public class BatchTest {
       }
 
       int termNo = terms.length; // Math.min(terms.length, maxTerms());
-			if (debug >= 2) {
-				System.err.println("BatchTest starts " + aseqno + " with " + termNo + " terms");
-			}
+      if (debug >= 2) {
+        System.err.println("BatchTest starts " + aseqno + " with " + termNo + " terms");
+      }
       int result = 1; // assume passed
       count = 0;
       if (readFromBFile) { // try the b-file first
@@ -275,9 +275,9 @@ public class BatchTest {
       String line = null;
       while ((line = lineReader.readLine()) != null) { // read and process lines
         if (line != null) {
-					if (debug >= 2) {
-						System.err.println("BatchTest read \"" + line + "\"");
-					}
+          if (debug >= 2) {
+            System.err.println("BatchTest read \"" + line + "\"");
+          }
           if (line.startsWith("A")) { // valid A-number
             String[] parts = line.split("\\s\\,?");
             aseqno  = parts[0];
@@ -331,7 +331,7 @@ public class BatchTest {
         try {
           debug = Integer.parseInt(args[iarg ++]);
         } catch (Exception exc) {
-     			// silently assume default
+          // silently assume default
         } 
       } else if (arg.startsWith("-t")) {
         try {
@@ -353,9 +353,9 @@ public class BatchTest {
     if (iarg < args.length) {
       fileName = args[iarg ++];
     }
-		if (debug > 0) {
-			System.err.println("BatchTest reads from \"" + fileName + "\"");
-		}
+    if (debug > 0) {
+      System.err.println("BatchTest reads from \"" + fileName + "\"");
+    }
     processBatch(fileName); 
   } // processArguments
 
