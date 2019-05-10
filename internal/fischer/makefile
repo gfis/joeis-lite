@@ -32,11 +32,20 @@ BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp 
 	make run PATTERN=$@
 CoxeterSequence:
-	cat $(LINREC)/coxf1.tmp \
+	cp  $(LINREC)/coxf1.tmp coxf1.txt
+	cat           coxf1.txt \
 	| sed -e "s/coxf/CoxeterSequence/" > group.tmp
 	make run PATTERN=$@
 FiniteSequence:
 	cat finifu_check.txt > group.tmp
+	make run PATTERN=$@
+GeneratingFunctionSequence:
+	cp  $(LINREC)/catgf2.txt catgf2.txt
+	make notin_joeis LIST=catgf2.txt
+	cut -b1-7 notin_joeis.tmp > notin.tmp
+	grep -vf notin.tmp catgf2.txt \
+	| sed -e "s/\t/\tGeneratingFunctionSequence\t/" > group.tmp
+	wc -l group.tmp
 	make run PATTERN=$@
 #----------------
 purge: # remove all oeis/annn directories
@@ -73,8 +82,11 @@ lrgroup: # parameter LIST, INIT
 #---
 gen-compile-test: run
 run: # parameter MANY, PATTERN, INIT
-	head -n$(MANY) group.tmp \
-	| perl gen_pattern.pl -d $(D) -n $(COMMON)/names 
+	rm -vf batch.log
+	head -n$(MANY) group.tmp                       > ghead.tmp
+	cut -b1-7 ghead.tmp > gaseqno.tmp
+	grep -f gaseqno.tmp $(COMMON)/names > gnames.tmp
+	perl gen_pattern.pl -d $(D)        -n gnames.tmp ghead.tmp
 	cd ../.. ; ant -silent dist
 	make stripgr LIST=group.tmp
 	make test
@@ -205,7 +217,7 @@ isin_joeis:
 		FROM joeis j, seq2 s \
 		WHERE j.aseqno = s.aseqno \
 		ORDER BY 1" \
-	| tee    $@.tmp
+	>        $@.tmp
 	wc -l    $@.tmp
 notin_joeis:
 	sed -s "s/^\(A[0-9]*\) /\1\t/" $(LIST) > $@.1.tmp
@@ -214,7 +226,7 @@ notin_joeis:
 		FROM  seq2 s \
 		WHERE s.aseqno NOT IN (SELECT aseqno FROM joeis) \
 		ORDER BY 1" \
-	| tee    $@.tmp
+	>        $@.tmp
 	wc -l    $@.tmp
 #-------------------------
 gen_mmac:
