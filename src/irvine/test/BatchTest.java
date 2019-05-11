@@ -1,9 +1,10 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-05-11: FAIL shows several terms
  *  2019-04-14: programmatic getShortTrace
  *  2019-04-13: with timeGuard
  *  2019-04-10: Sequence.next() may return null
- *  2019-04-09: read freom b-file
+ *  2019-04-09: read from b-file
  *  2019-04-05, Georg Fischer: copied from org.teherba.ramath.util.ExpressionReader
  */
 package irvine.test;
@@ -25,28 +26,43 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.06";
+  private static String VERSION = "BatchTest V1.07";
   
   /** A-number of sequence currently tested */
   private String  aseqno;   
   
+  /** Directory where b-files can be found */
+  private String  bFileDirectory;
+
   /** Number of terms already computed by the sequence */
   private int     count;
+  
+  /** String of terms which were computed differently */
+  private String  diffComputed;
+  
+  /** String of terms which were expected differently */
+  private String  diffExpected;
+  
+  /** Maximum length of term difference Strings */
+  private static final int MAX_LENGTH = 64;
+  
+  /** Number of successive failures */
+  private int     failCount;
+  
+  /** Allowed number of successive failures */
+  private int     maxFailCount;
   
   /** Debugging level: 0 = none, 1 = some, 2 = more */
   private int     debug;
   
-  /** Whether to read terms from corresponding b-file */
-  private boolean readFromBFile;
-
-  /** Directory where b-files can be found */
-  private String  bFileDirectory;
-
-  /** Indicator for b-file read error */
-  private static int READ_ERROR = -29061947; // more than any b-file index
-
   /** How many milliseconds should a single sequence be allowed to run */
   private long    millisToRun; 
+
+  /** Indicator for b-file read error */
+  private static final int READ_ERROR = -29061947; // more than any b-file index
+
+  /** Whether to read terms from corresponding b-file */
+  private boolean readFromBFile;
 
   /** Flag which is reset when the timer has expired */
   public boolean  sequenceMayRun;
@@ -57,12 +73,6 @@ public class BatchTest {
   /** Level of output verbosity (0-3, default 0) */
   private int     verbosity;
 
-  /** Thread for the limitation of time a sequence may run */
-  public Thread   timeGuard;
-  
-  /** Whether to use the timeGuard */
-  private boolean useTimeGuard;
-    
   /** the sequence may run up to this Linux time */
   private long    endTime = System.currentTimeMillis();
   
@@ -71,31 +81,13 @@ public class BatchTest {
   public BatchTest() {
     // set default for variables and arguments
     debug          = 0; 
+    maxFailCount   = 4;
     millisToRun    = 4000L;
     sequenceMayRun = true;
     bFileDirectory = "./bfile";
     readFromBFile  = false;
     verbosity      = 1;
     srcEncoding    = "UTF-8";
-    useTimeGuard   = false;
-    if (useTimeGuard) {
-      timeGuard = new Thread(
-        new Runnable() { // set the alarm clock
-          public void run() {
-            try {
-              Thread.sleep(millisToRun);
-              sequenceMayRun = false; // alarm -> do no longer compute sequence.next()
-            } catch (InterruptedException exc) {
-              // normal at end of sequence - do nothing
-            } catch (Exception exc) { // other
-              System.err.println("Exception in thread: " + exc.getMessage());
-              exc.printStackTrace();
-            }
-            // this thread dies
-          }
-        } // Runnable
-        );
-    } // if useTimeGuard
   } // no-args Constructor
 
   /** Returns the abbreviated stack trace information.
@@ -119,33 +111,40 @@ public class BatchTest {
   
   /** Test the next term computed by the sequence
    *  @param  seq Sequence to be tested
-   *  @param  expected exprected term for a(n)
-   *  @return 1 = passed, 0 = failed
+   *  @param  expected expected term for a(n)
+   *  @return 0 = passed, 1 = failed
    */     
   private int testNext(Sequence seq, String expected) {
-    int result = 1; // assume pass
+    int failure = 0; // assume pass
     try {
       Z term = seq.next();
       count ++; // one more is computed
       if (term == null) { // e.g. beyond end of FiniteSequence
-        result = 0; // FAIL
+        failure = 1; // FAIL
         System.out.println    (aseqno + "\t" + count + "\tFAIL\t"     + expected + "\tcomputed:\tnull");
       } else {
         String computed = term.toString();
         if (! computed.equals(expected)) {
-          result = 0; // FAIL
-          System.out.println  (aseqno + "\t" + count + "\tFAIL\t"     + expected + "\tcomputed:\t" + computed + "");
+          diffComputed += "," + computed;
+          diffExpected += "," + expected;
+          failCount ++; // maybe FAIL
+          if (failCount >= maxFailCount) {
+          	failure = 1;
+          	System.out.println  (aseqno + "\t" + count 
+          		+ "\tFAIL\t" 	  + diffExpected.substring(1) 
+          		+ "\tcomputed:\t" + diffComputed.substring(1) + "");
+          }
         } else if (! sequenceMayRun) {
-          result = 0; // FAIL
+          failure = 1; // FAIL
           System.out.println  (aseqno + "\t" + count + "\tFATAL\t"    + millisToRun + " ms timeout expired");
         }
       }
     } catch (Exception exc) {
-      result = 0; // FAIL
+      failure = 1; // FAIL
       System.out.println      (aseqno + "\t" + count + "\tFATAL\tException\t"     
           + exc.getMessage() + ", Stack: " + getShortTrace(exc));
     } 
-    return result;
+    return failure;
   } // testNext
 
   /** Tests a sequence against the terms in a b-file.
@@ -153,24 +152,24 @@ public class BatchTest {
    *  @return &gt;= 1: passed (number of terms), &lt;= 0 failed (-index of failure), -1 = could not read b-file
    */
   private int testAgainstBFile(Sequence seq) {
-    int result = 1; // assume pass
+    int failure = 0; // assume pass
     try {
       String fileName = bFileDirectory + "/b" + aseqno.substring(1) + ".txt";
       ReadableByteChannel lineChannel = (new FileInputStream(fileName)).getChannel();
       BufferedReader lineReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
       String line = null;
-      while (sequenceMayRun && result == 1 && (line = lineReader.readLine()) != null) { // read and process lines
+      while (sequenceMayRun && failure == 0 && (line = lineReader.readLine()) != null) { // read and process lines
         if (line != null) {
           int hashPos = line.indexOf('#');
           if (hashPos >= 0) { // hash found
             line = line.substring(0, hashPos); // remove comment
           }
-          line = line.replaceAll("\\s+", " "); // beware of \t, \r
+          line = line.replaceAll("\\s+", " "); // beware of \t, \r whitespace
           line = line.trim(); // remove any surrounding space
           if (line.length() > 0) { // line not empty
             int spacePos = line.indexOf(' ');
             String expected = line.substring(spacePos + 1);
-            result = testNext(seq, expected);
+            failure = testNext(seq, expected);
             // count is incremented in testNext
           } // line not empty
         } // line != null
@@ -182,9 +181,9 @@ public class BatchTest {
     } catch (Exception exc) {
       System.out.println      (aseqno + "\t" + count + "\tFATAL - read b-file error: " 
           + exc.getMessage() + ", Stack: " + getShortTrace(exc));
-      result = READ_ERROR; // read failure
+      failure = READ_ERROR; // read failure
     } // try
-    return result;
+    return failure;
   } // testAgainstBFile
 
   /** Test one sequences with an array of terms
@@ -204,30 +203,30 @@ public class BatchTest {
     }
 
     if (seq != null) {
+      failCount = 0;
+      diffComputed = "";
+      diffExpected = "";
       // cf. <https://stackoverflow.com/questions/2550536/java-loop-for-a-certain-duration>
       // and <http://tutorials.jenkov.com/java-concurrency/creating-and-starting-threads.html#stop-a-thread>
       endTime = System.currentTimeMillis() + millisToRun;
       sequenceMayRun = true;
-      if (useTimeGuard) {
-        timeGuard.start();
-      }
 
       int termNo = terms.length; // Math.min(terms.length, maxTerms());
       if (debug >= 2) {
         System.err.println("BatchTest starts " + aseqno + " with " + termNo + " terms");
       }
-      int result = 1; // assume passed
+      int failure = 0; // assume passed
       count = 0;
       if (readFromBFile) { // try the b-file first
-        result = testAgainstBFile(seq);
+        failure = testAgainstBFile(seq);
       }
       Long timeDiff = 0L;
-      if ((result == READ_ERROR && termNo > 0) || ! readFromBFile) { 
+      if ((failure == READ_ERROR && termNo > 0) || ! readFromBFile) { 
         // test against terms from 'stripped', maybe as fallback
         count = 0; // number of evaluated tests
-        result = 1; // assume pass
-        while (sequenceMayRun && result == 1 && count < termNo) {  
-          result = testNext(seq, terms[count]);
+        failure = 0; // assume pass
+        while (sequenceMayRun && failure == 0 && count < termNo) {  
+          failure = testNext(seq, terms[count]);
           // count is incremented in testNext
           timeDiff = System.currentTimeMillis() - endTime;
           if (timeDiff > 0) {
@@ -238,17 +237,12 @@ public class BatchTest {
       if (! sequenceMayRun) {
         System.out.println    (aseqno + "\t" + count + "\tFAIL - timeout " 
             + (timeDiff + millisToRun) + " > " + millisToRun + " ms");
-      } else if (result >= 1 && verbosity >= 1) {
+      } else if (failure == 0 && verbosity >= 1) {
         System.out.println    (aseqno + "\t" + count + "\tpass");
       }
       try {
         if (seq instanceof Closeable) {
           ((Closeable) seq).close();
-        }
-        if (sequenceMayRun) { // still guarding
-          if (useTimeGuard) {
-            timeGuard.interrupt();
-          }
         }
       } catch (Exception exc) {
         System.out.println      (aseqno + "\t" + count + "\tFATAL - could not close sequence, " 

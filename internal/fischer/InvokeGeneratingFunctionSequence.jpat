@@ -11,6 +11,6 @@ public class $(ASEQNO) extends GeneratingFunctionSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(new long[] {$(PARM1.L)}, new long[] {$(PARM2.L)});
+    super($(PARM1), new long[] {$(PARM2.L)}, new long[] {$(PARM3.L)});
   }
 }
