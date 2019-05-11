@@ -112,6 +112,22 @@ tgz: # ZIP the generated sources for this group
 	tar -czf   Gen.$(PATTERN).`date +%Y-%m-%d`.tgz ../../src/irvine/oeis/a* strip.tmp group.tmp fail.log pass.log batch.log
 	tar -tzf   Gen.$(PATTERN).`date +%Y-%m-%d`.tgz | grep -E "A[0-9]*.java" | wc -l
 	ls -al *.tgz
+#--------------------------
+SOURCES=GeneratingFunctionSequence.java \
+	CoxeterSequence.java \
+	DeadSequence.java \
+	FiniteSequence.java \
+	GeneratingFunctionSequence.java \
+	LinearRecurrence.java \
+	PeriodicSequence.java \
+	PrependSequence.java \
+	ReaderSequence.java \ 
+	Sequence.java \
+	SequenceFactory.java \
+joeis_pull:
+	cd $(LITE)/src/irvine/oeis  ; cp -v $(SOURCES) ../../../$(JOEIS)/src/irvine/oeis/
+joeis_push:
+	cd $(JOEIS)/src/irvine/oeis ; cp -v $(SOURCES) ../../../$(LITE)/src/irvine/oeis/
 #==========================
 #----
 testloop:
