@@ -1,39 +1,25 @@
-package irvine.oeis;
-// 2019-05-09, Georg Fischer: joeis-lite version, writes b-file format
+/* Test a single sequence, and write a b-file
+ * @(#) $Id$
+ * 2019-05-11: renamed from ../oeis/SequenceFactory.java
+ * 2019-05-09, Georg Fischer: joeis-lite version, writes b-file format
+ * 2019-01-01: Sean Irvine, class SequenceFactory
+ */
+package irvine.test;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import irvine.math.z.Z;
-import irvine.oeis.DeadSequence;
 import irvine.oeis.Sequence;
-import irvine.util.string.Casing;
-import irvine.util.string.StringUtils;
 
 /**
- * A factory providing methods to get an object capable to generating a
- * specified sequence in the OEIS.
- * @author Sean A. Irvine
+ * Print the terms of a single sequence, possibly in b-file format.
+ * @author Georg Fischer
  */
-public final class SequenceFactory {
+public final class SequenceTest {
 
-  private SequenceFactory() { }
-  private static Set<String> sDead = null;
-  private static final Sequence DEAD_SEQUENCE = new DeadSequence();
-
-  private static synchronized boolean isDead(final String aNumber) {
-    if (sDead == null) {
-      try {
-        sDead = new HashSet<>(StringUtils.suckInWords(SequenceFactory.class.getResourceAsStream("/irvine/oeis/dead.lst"), Casing.NONE));
-      } catch (final IOException e) {
-        throw new RuntimeException(e);
-      }
-    }
-    return sDead.contains(aNumber);
-  }
+  private SequenceTest() { }
 
   /**
    * Return the sequence for the specified id. The sequence is not
@@ -56,14 +42,11 @@ public final class SequenceFactory {
       try {
         return (Sequence) Class.forName("irvine.oeis.a" + canonicalId.substring(1, 4) + '.' + canonicalId).newInstance();
       } catch (final ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-        if (isDead(canonicalId)) {
-          return DEAD_SEQUENCE;
-        }
         throw new UnsupportedOperationException();
       }
     }
     throw new UnsupportedOperationException();
-  }
+  } // sequence
 
   /**
    * Generate terms from specified sequence, writing a b-file with one term per line
@@ -71,7 +54,7 @@ public final class SequenceFactory {
    */
   public static void main(final String[] args) {
     if (args == null || args.length == 0) {
-      System.err.println("Usage: SequenceFactory sequence-id [no-terms [offset1]]");
+      System.err.println("Usage: SequenceTest a-number [no-terms [offset1]]");
       return;
     }
     boolean generated = false;
@@ -123,6 +106,5 @@ public final class SequenceFactory {
         throw e;
       }
     }
-  }
-}
-
+  } // main
+} // SequenceTest

@@ -113,21 +113,11 @@ tgz: # ZIP the generated sources for this group
 	tar -tzf   Gen.$(PATTERN).`date +%Y-%m-%d`.tgz | grep -E "A[0-9]*.java" | wc -l
 	ls -al *.tgz
 #--------------------------
-SOURCES=GeneratingFunctionSequence.java \
-	CoxeterSequence.java \
-	DeadSequence.java \
-	FiniteSequence.java \
-	GeneratingFunctionSequence.java \
-	LinearRecurrence.java \
-	PeriodicSequence.java \
-	PrependSequence.java \
-	ReaderSequence.java \ 
-	Sequence.java \
-	SequenceFactory.java \
-joeis_pull:
-	cd $(LITE)/src/irvine/oeis  ; cp -v $(SOURCES) ../../../$(JOEIS)/src/irvine/oeis/
+SOURCES=CoxeterSequence.java GeneratingFunctionSequence.java DeadSequence.java FiniteSequence.java LinearRecurrence.java PeriodicSequence.java PrependSequence.java ReaderSequence.java Sequence.java
 joeis_push:
-	cd $(JOEIS)/src/irvine/oeis ; cp -v $(SOURCES) ../../../$(LITE)/src/irvine/oeis/
+	cd $(LITE)/src/irvine/oeis  ; pwd ; cp -upv $(SOURCES) ../../../../../gitups/joeis/src/irvine/oeis/
+joeis_pull:
+	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
 #==========================
 #----
 testloop:

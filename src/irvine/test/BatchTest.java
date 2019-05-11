@@ -7,8 +7,9 @@
  *  2019-04-05, Georg Fischer: copied from org.teherba.ramath.util.ExpressionReader
  */
 package irvine.test;
-import  irvine.oeis.Sequence;
 import  irvine.math.z.Z;
+import  irvine.oeis.Sequence;
+
 import  java.io.BufferedReader;
 import  java.io.Closeable;
 import  java.io.FileInputStream;
