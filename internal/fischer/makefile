@@ -39,14 +39,21 @@ CoxeterSequence:
 FiniteSequence:
 	cat finifu_check.txt > group.tmp
 	make run PATTERN=$@
-GeneratingFunctionSequence:
+genf1:
 	cp  $(LINREC)/catgf2.txt catgf2.txt
 	make notin_joeis LIST=catgf2.txt
 	cut -b1-7 notin_joeis.tmp > notin.tmp
-	grep -vf notin.tmp catgf2.txt \
+	grep -f notin.tmp catgf2.txt \
 	| sed -e "s/\t/\tGeneratingFunctionSequence\t/" > group.tmp
 	wc -l group.tmp
-	make run PATTERN=$@
+	make run PATTERN=GeneratingFunctionSequence
+genf2:
+	cp  $(LINREC)/catgf2.txt catgf2.txt
+	cat catgf2.txt \
+	| sed -e "s/\t/\tGeneratingFunctionSequence\t/" > group.tmp
+	wc -l group.tmp
+genf3:
+	make run PATTERN=GeneratingFunctionSequence
 #----------------
 purge: # remove all oeis/annn directories
 	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
