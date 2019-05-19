@@ -130,9 +130,6 @@ public class BatchTest {
           failCount ++; // maybe FAIL
           if (failCount >= maxFailCount) {
             failure = 1;
-            System.out.println  (aseqno + "\t" + count
-                + "\tFAIL\t"      + diffExpected.substring(1)
-                + "\tcomputed:\t" + diffComputed.substring(1) + "");
           }
         } else if (! sequenceMayRun) {
           failure = 1; // FAIL
@@ -237,8 +234,14 @@ public class BatchTest {
       if (! sequenceMayRun) {
         System.out.println    (aseqno + "\t" + count + "\tFAIL - timeout "
             + (timeDiff + millisToRun) + " > " + millisToRun + " ms");
-      } else if (failure == 0 && verbosity >= 1) {
-        System.out.println    (aseqno + "\t" + count + "\tpass");
+      } else if (failure == 0) {
+      	if (verbosity >= 1) {
+        	System.out.println    (aseqno + "\t" + count + "\tpass");
+        }
+      } else if (failure != 0) {
+            System.out.println  (aseqno + "\t" + count
+                + "\tFAIL\t"      + diffExpected
+                + "\tcomputed:\t" + diffComputed + "");
       }
       try {
         if (seq instanceof Closeable) {

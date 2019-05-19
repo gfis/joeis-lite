@@ -44,13 +44,15 @@ genf1:
 	make notin_joeis LIST=catgf2.txt
 	cut -b1-7 notin_joeis.tmp > notin.tmp
 	grep -f notin.tmp catgf2.txt \
-	| sed -e "s/\t/\tGeneratingFunctionSequence\t/" > group.tmp
+	| grep -E "orgf" \
+	| sed -e "s/orgf/GeneratingFunctionSequence/" > group.tmp
 	wc -l group.tmp
 	make run PATTERN=GeneratingFunctionSequence
 genf2:
 	cp  $(LINREC)/catgf2.txt catgf2.txt
 	cat catgf2.txt \
-	| sed -e "s/\t/\tGeneratingFunctionSequence\t/" > group.tmp
+	| grep -E "orgf" \
+	| sed -e "s/\torgf\t/\tGeneratingFunctionSequence\t/" > group.tmp
 	wc -l group.tmp
 genf3:
 	make run PATTERN=GeneratingFunctionSequence

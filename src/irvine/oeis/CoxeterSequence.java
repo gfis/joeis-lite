@@ -1,9 +1,3 @@
-/* Coxeter group sequences 
- * @(#) $Id$
- * 2019-05-11: Georg Fischer A000217.triangular incorporated
- * 2019-05-10: Sean Irvine, Z parameters
- * 2019-05-09: Georg Fischer
- */
 package irvine.oeis;
 
 import irvine.math.z.Z;
@@ -73,6 +67,6 @@ public class CoxeterSequence extends GeneratingFunctionSequence {
    * @param ngen number of generators
    */
   public CoxeterSequence(final int pwr, final int ngen) {
-    this(pwr, Z.valueOf(ngen).multiply(ngen + 1).divide2(), Z.valueOf(2 - ngen));
+    this(pwr, Z.valueOf(ngen - 2).multiply(ngen - 1).divide2(), Z.valueOf(2 - ngen));
   }
 }

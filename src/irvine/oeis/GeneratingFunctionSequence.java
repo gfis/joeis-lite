@@ -1,4 +1,4 @@
-/* Coxeter group sequences 
+/* Coxeter group sequences
  * @(#) $Id$
  * 2019-05-11: Georg Fischer, 3rd parameter offset
  * 2019-05-10: Sean Irvine, Z parameters
@@ -20,46 +20,33 @@ public class GeneratingFunctionSequence implements Sequence {
 
   protected Z[] mNum; // coefficients of the numerator   polynomial, index is the exponent
   protected Z[] mDen; // coefficients of the denominator polynomial
-  protected int mIndex; // index of next term to be generated
+  protected int mIndex = 0; // index of next term to be generated
 
-  protected GeneratingFunctionSequence() { 
-  	mIndex = 0;
-  }
+  protected GeneratingFunctionSequence() { }
 
-  /**
+ /**
    * Construct a new rational integer polynomial generating function sequence.
    * @param offset first valid term has this index
    * @param num numerator
    * @param den denominator
    */
   public GeneratingFunctionSequence(final int offset, final Z[] num, final Z[] den) {
-    mNum = Arrays.copyOf(num, num.length); // copy because this class is destructive
+    mNum = Arrays.copyOf(num, num.length); // copy because this class modifies num
     mDen = Arrays.copyOf(den, den.length);
-	mIndex = 0;
-	while (mIndex < offset) { // skip over leading coefficients
-	  next();
-	  mIndex ++;
-	} // while
+    mIndex = 0;
+    while (mIndex < offset) { // skip over leading coefficients
+      next();
+      ++mIndex;
+    } // while
   }
 
   /**
    * Construct a new rational integer polynomial generating function sequence.
-   * @param offset first valid term has this index
    * @param num numerator
    * @param den denominator
    */
   public GeneratingFunctionSequence(final Z[] num, final Z[] den) {
-  	this(0, num, den);
-  }
-  
-  /**
-   * Construct the specified generating function.
-   * @param offset first valid term has this index
-   * @param num coefficients of the numerator   polynomial
-   * @param den coefficients of the denominator polynomial
-   */
-  public GeneratingFunctionSequence(final int offset, final long[] num, final long[] den) {
-    this(offset, ZUtils.toZ(num), ZUtils.toZ(den));
+    this(0, num, den);
   }
 
   /**
@@ -68,17 +55,7 @@ public class GeneratingFunctionSequence implements Sequence {
    * @param den coefficients of the denominator polynomial
    */
   public GeneratingFunctionSequence(final long[] num, final long[] den) {
-    this(0,      ZUtils.toZ(num), ZUtils.toZ(den));
-  }
-
-  /**
-   * Construct a new rational integer polynomial generating function sequence.
-   * @param offset first valid term has this index
-   * @param num numerator
-   * @param den denominator
-   */
-  public GeneratingFunctionSequence(final int offset, final Polynomial<Z> num, final Polynomial<Z> den) {
-    this(offset, num.toArray(new Z[num.size()]), den.toArray(new Z[den.size()]));
+    this(ZUtils.toZ(num), ZUtils.toZ(den));
   }
 
   /**
@@ -87,13 +64,9 @@ public class GeneratingFunctionSequence implements Sequence {
    * @param den denominator
    */
   public GeneratingFunctionSequence(final Polynomial<Z> num, final Polynomial<Z> den) {
-    this(0,      num.toArray(new Z[num.size()]), den.toArray(new Z[den.size()]));
+    this(num.toArray(new Z[num.size()]), den.toArray(new Z[den.size()]));
   }
 
-  /**
-   * Returns the next term of the sequence
-   * @return Z term
-   */
   @Override
   public Z next() {
     final Z divisor = mDen[0];
