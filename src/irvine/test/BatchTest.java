@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-05-24: FAIL if failCount > 0
  *  2019-05-11: FAIL shows several terms
  *  2019-04-14: programmatic getShortTrace
  *  2019-04-13: with timeGuard
@@ -234,11 +235,11 @@ public class BatchTest {
       if (! sequenceMayRun) {
         System.out.println    (aseqno + "\t" + count + "\tFAIL - timeout "
             + (timeDiff + millisToRun) + " > " + millisToRun + " ms");
-      } else if (failure == 0) {
+      } else if (failCount == 0) {
       	if (verbosity >= 1) {
         	System.out.println    (aseqno + "\t" + count + "\tpass");
         }
-      } else if (failure != 0) {
+      } else if (failCount > 0) {
             System.out.println  (aseqno + "\t" + count
                 + "\tFAIL\t"      + diffExpected
                 + "\tcomputed:\t" + diffComputed + "");

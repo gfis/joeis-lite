@@ -222,9 +222,9 @@ joeis_stat:
 		WHERE superclass NOT LIKE 'A______'  \
 		GROUP BY superclass \
 		ORDER BY 1 DESC" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
+	>         $@.tmp
+	head -n32 $@.tmp
+	wc -l     $@.tmp
 isin_joeis:
 	sed -s "s/^\(A[0-9]*\) /\1\t/" $(LIST) > $@.1.tmp
 	make seq2 LIST=$@.1.tmp
