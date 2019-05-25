@@ -1,5 +1,6 @@
-/* Coxeter group sequences
+/* Ordinary generating functions
  * @(#) $Id$
+ * 2019-05-25: negative offsets
  * 2019-05-11: Georg Fischer, 3rd parameter offset
  * 2019-05-10: Sean Irvine, Z parameters
  * 2019-05-09: Georg Fischer
@@ -26,17 +27,22 @@ public class GeneratingFunctionSequence implements Sequence {
 
  /**
    * Construct a new rational integer polynomial generating function sequence.
-   * @param offset first valid term has this index
+  * @param offset first valid term has this index
    * @param num numerator
    * @param den denominator
    */
   public GeneratingFunctionSequence(final int offset, final Z[] num, final Z[] den) {
-    mNum = Arrays.copyOf(num, num.length); // copy because this class modifies num
-    mDen = Arrays.copyOf(den, den.length);
-    mIndex = 0;
+    mIndex = 0; // assume offset 0
+    int inzDen = 0; // index of first element in <em>den</em> which is not zero
+    while (inzDen < den.length - 1 && den[inzDen].equals(Z.ZERO)) { // care for negative offsets
+        inzDen ++;
+        mIndex --;
+    } // while ZERO
+    mNum = Arrays.copyOfRange(num, 0     , num.length); // copy because this class modifies num
+    mDen = Arrays.copyOfRange(den, inzDen, den.length);
     while (mIndex < offset) { // skip over leading coefficients
       next();
-      ++mIndex;
+      ++ mIndex;
     } // while
   }
 
@@ -55,7 +61,17 @@ public class GeneratingFunctionSequence implements Sequence {
    * @param den coefficients of the denominator polynomial
    */
   public GeneratingFunctionSequence(final long[] num, final long[] den) {
-    this(ZUtils.toZ(num), ZUtils.toZ(den));
+    this(0, ZUtils.toZ(num), ZUtils.toZ(den));
+  }
+
+  /**
+   * Construct the specified generating function.
+   * @param offset first valid term has this index
+   * @param num coefficients of the numerator   polynomial
+   * @param den coefficients of the denominator polynomial
+   */
+  public GeneratingFunctionSequence(final int offset, final long[] num, final long[] den) {
+    this(offset, ZUtils.toZ(num), ZUtils.toZ(den));
   }
 
   /**
