@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-06-04: increase version to V1.10
  *  2019-05-24: FAIL if failCount > 0
  *  2019-05-11: FAIL shows several terms
  *  2019-04-14: programmatic getShortTrace
@@ -27,7 +28,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.07";
+  private static String VERSION = "BatchTest V1.10";
 
   /** A-number of sequence currently tested */
   private String  aseqno;

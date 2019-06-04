@@ -26,6 +26,9 @@ START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 all: 
 	# Possible targets:
 	grep -E "^[a-z]" makefile
+#----
+monitor: # Monitor a BatchTest running in githups/joies, started with make loop START=Annnnnn
+	perl monitor.pl -l $(JOEIS)/batch.log
 #----------------
 # Generation of groups of sequences
 BaseTwoDigits:
@@ -193,12 +196,6 @@ lrjoeis_test:
 	wc -l    group.tmp
 	make strip
 #--------------------------
-joeis_load: # populate a table with A-numbers and superclass names of implemented sequences
-	$(DBAT) -f joeis.create.sql
-	cat joeis_list.txt \
-	| $(DBAT) -m csv -r joeis
-	$(DBAT) -4 joeis
-	$(DBAT) -n joeis
 joeis_list: joeis_list1 joeis_list2
 joeis_list1:
 	find $(JOEIS)/src/irvine/oeis -iname "A??????.java" \
@@ -216,6 +213,14 @@ joeis_list2:
 	head -n4  joeis_list.txt
 	wc -l     joeis_list.txt
 	cut -b1-7 joeis_list.txt | sort > joeis_aseqno.txt
+#----
+joeis_load: # populate a table with A-numbers and superclass names of implemented sequences
+	$(DBAT) -f joeis.create.sql
+	cat joeis_list.txt \
+	| $(DBAT) -m csv -r joeis
+	$(DBAT) -4 joeis
+	$(DBAT) -n joeis
+#----
 joeis_stat:
 	$(DBAT) -x "SELECT count(superclass), superclass \
 		FROM joeis \

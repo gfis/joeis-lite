@@ -163,6 +163,7 @@ decexp_nimpl: # names: Annnnnn Decimal expansion of ... and NOT in jOEIS
 	wc   -l $@.tmp
 decexp_extr:
 	perl extract_decexp.pl decexp_nimpl.tmp \
+	| grep -vE "^#" \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
