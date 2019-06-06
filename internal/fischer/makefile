@@ -18,7 +18,7 @@ BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 D=0
 INIT=0
-TO=2
+TO=6
 MANY=999999
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 #----------------
@@ -28,7 +28,7 @@ all:
 	grep -E "^[a-z]" makefile
 #----
 monitor: # Monitor a BatchTest running in githups/joies, started with make loop START=Annnnnn
-	perl monitor.pl -l $(JOEIS)/batch.log
+	perl monitor.pl -t $(TO) -l $(JOEIS)/batch.log
 #----------------
 # Generation of groups of sequences
 BaseTwoDigits:
@@ -64,6 +64,8 @@ purge: # remove all oeis/annn directories
 	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
 	rm -vrf ../../src/irvine/oeis/a??? | grep directory
 	rm -vf *.bak
+dist:
+	cd ../.. ; ant dist 
 #---------------------------
 lrixall:
 	$(DBAT) -x "SELECT DISTINCT 'A' || i.seqno \
@@ -220,6 +222,22 @@ joeis_load: # populate a table with A-numbers and superclass names of implemente
 	| $(DBAT) -m csv -r joeis
 	$(DBAT) -4 joeis
 	$(DBAT) -n joeis
+fail06:
+	sort $(JOEIS)/*.2019-06-*.log | uniq \
+	| grep -E "^A" \
+	| sed -e "s/FAIL - timeout 2000\.*/FAtime2/" \
+	| gawk -e '{ print $$1 "\t" $$3 }' \
+	| grep -vE "start" \
+	| tee $@.tmp
+joeis_update:
+	sort fail06.tmp | uniq > x.tmp
+	make seq2 LIST=x.tmp
+	$(DBAT) -v "UPDATE joeis j SET j.status = COALESCE((SELECT s.info FROM seq2 s WHERE s.aseqno = j.aseqno), ' ')"
+joeis_test:
+	$(DBAT) -x "SELECT aseqno FROM joeis WHERE status <> 'pass' ORDER BY 1" \
+	>       $@.tmp	
+	head -4 $@.tmp	
+	wc -l   $@.tmp	
 #----
 joeis_stat:
 	$(DBAT) -x "SELECT count(superclass), superclass \

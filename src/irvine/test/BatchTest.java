@@ -1,6 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
- *  2019-06-04: increase version to V1.10
+ *  2019-06-04: increase version to V1.11; abbreviated terms
  *  2019-05-24: FAIL if failCount > 0
  *  2019-05-11: FAIL shows several terms
  *  2019-04-14: programmatic getShortTrace
@@ -28,7 +28,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.10";
+  private static String VERSION = "BatchTest V1.11";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -46,7 +46,7 @@ public class BatchTest {
   private String  diffExpected;
 
   /** Maximum length of term difference Strings */
-  private static final int MAX_LENGTH = 64;
+  private static final int MAX_LENGTH = 32;
 
   /** Number of successive failures */
   private int     failCount;
@@ -111,6 +111,19 @@ public class BatchTest {
     return result.substring(2); // remove first ", ";
   } // getShortTrace
 
+  /*  Get a term, possibly abbreviated 
+   *  @param term original term
+   *  @return term with middle digits replace by "..." if it was longer than MAX_LENGTH
+   */
+  private String abbrev(String term) {
+  	  String result = term;
+  	  int tlen = term.length();
+  	  if (tlen > MAX_LENGTH) {
+  	  	  result = term.substring(0, MAX_LENGTH/2) + "..." + term.substring(tlen - MAX_LENGTH/2);
+  	  }
+  	  return result;
+  } // abbrev
+  
   /** Test the next term computed by the sequence
    *  @param  seq Sequence to be tested
    *  @param  expected expected term for a(n)
@@ -127,8 +140,10 @@ public class BatchTest {
       } else {
         String computed = term.toString();
         if (! computed.equals(expected) || failCount > 0) {
-          diffComputed += "," + computed;
-          diffExpected += "," + expected;
+          int clen = computed.length();
+          int elen = expected.length();
+          diffComputed += "," + abbrev(computed);
+          diffExpected += "," + abbrev(expected);
           failCount ++; // maybe FAIL
           if (failCount >= maxFailCount) {
             failure = 1;
