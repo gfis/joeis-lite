@@ -328,6 +328,15 @@ cfsqrt_gen:
 	head -n$(MANY) cfsqrt5.tmp \
 	| perl gen_pattern.pl -n $(COMMON)/names -p cfsqrtPattern.jav \
 	| tee $@.log 
+#----
+cfconv:
+	grep -i "continued fraction convergents to sqrt" $(COMMON)/names \
+	>     $@.tmp
+	wc -l $@.tmp
+	make -f gener.make -s njoeis LIST=$@.tmp
+# A040966 Continued fraction for sqrt(998)
+# A042932 num sign(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1968153802, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1)
+# A042933 den sign(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1968153802, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1)
 #---------------------------
 cofr_sqrt:
 	grep -E "Continued fraction for sqrt\([0-9]" $(COMMON)/names \
@@ -352,3 +361,14 @@ seq2: # parameter: $(LIST)
 	$(DBAT) -n seq2
 delseq: seq # parameters: $(TAB) $(LIST)
 	$(DBAT) -v "DELETE FROM $(TAB) WHERE aseqno IN (SELECT aseqno FROM seq)"
+#--------
+njoeis: # LIST
+	make seq 
+	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq \
+	WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
+	$(DBAT) -x "SELECT j.aseqno, j.superclass FROM seq s, joeis j \
+	WHERE s.aseqno = j.aseqno ORDER BY 1" \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+#--------

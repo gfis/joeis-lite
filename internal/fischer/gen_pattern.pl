@@ -116,12 +116,14 @@ while (<>) { # read inputfile
                 print "# before: type(PARM$iparm) = \"$type\", term=\"$term\"\n";
             }
             if (($term =~ m{[^ \-\,0-9]}) or ($term !~ m{\d})) {
+       			print "# $aseqno \"$term\" contains non-digits\n";
                 $do_generate = 0;
             } elsif (length($type) == 0) { # leave it as it is
             } elsif ($type =~ m{I}i)     { # normal int
                 # term is unchanged
             } elsif ($type =~ m{L}i)     { # make 'long' constant
                 if (length($term) > 16) {
+        			print "# $aseqno length($term) > 16\n";
                     $do_generate = 0;
                 }
                 $term .= "L";

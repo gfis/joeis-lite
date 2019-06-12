@@ -12,6 +12,6 @@ public class $(ASEQNO) extends LinearRecurrence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(new long[] {$(PARM1.L)}, new Z[] {$(PARM2.Z)}, new Z[] {$(PARM3.Z)});
+    super(new Z[] {$(PARM1.Z)}, new Z[] {$(PARM2.Z)}, new Z[] {$(PARM3.Z)});
   }
 }

@@ -13,7 +13,7 @@ LINREC=$(GITS)/OEIS-mat/linrec
 LITE=$(GITS)/joeis-lite
 WITHB=-b $(COMMON)/bfile 
 JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
-BATLIT=java $(JOPT) -jar $(LITE)/dist/joeis-lite.jar  -v $(WITHB)
+BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar irvine.test.BatchTest -v $(WITHB)
 BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB)
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 D=0
@@ -85,7 +85,7 @@ lrgroup: # parameter LIST, INIT
 		WHERE s.aseqno = 'A' || i.seqno \
 		  AND s.aseqno = d.aseqno \
 		ORDER BY 1" \
-	> 			 $@.tmp
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 	perl patch_parms.pl -a lrstrip -i $(INIT) $@.tmp \
