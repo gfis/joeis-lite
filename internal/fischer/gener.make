@@ -337,6 +337,13 @@ cfconv:
 # A040966 Continued fraction for sqrt(998)
 # A042932 num sign(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1968153802, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1)
 # A042933 den sign(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1968153802, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1)
+#----
+cfsall:
+	grep -i "continued" $(COMMON)/names | grep sqrt \
+	| sed -e "s/ /\t/" \
+	>     $@.tmp
+	wc -l $@.tmp
+	make  -f gener.make joeis2 LIST=$@.tmp
 #---------------------------
 cofr_sqrt:
 	grep -E "Continued fraction for sqrt\([0-9]" $(COMMON)/names \
@@ -367,6 +374,18 @@ njoeis: # LIST
 	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq \
 	WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 	$(DBAT) -x "SELECT j.aseqno, j.superclass FROM seq s, joeis j \
+	WHERE s.aseqno = j.aseqno ORDER BY 1" \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+joeis2: # LIST
+	make seq2 
+	$(DBAT) -x "SELECT s.aseqno, s.info FROM seq2 s \
+	WHERE s.aseqno NOT IN (SELECT j.aseqno FROM joeis j) ORDER BY 1" \
+	>       n$@.tmp
+	head -4 n$@.tmp
+	wc -l   n$@.tmp
+	$(DBAT) -x "SELECT j.aseqno, j.superclass, s.info FROM seq2 s, joeis j \
 	WHERE s.aseqno = j.aseqno ORDER BY 1" \
 	>       $@.tmp
 	head -4 $@.tmp
