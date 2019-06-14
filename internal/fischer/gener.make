@@ -1,6 +1,6 @@
 #!make
 
-# Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing 
+# Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing
 # @(#) $Id$
 # 2019-05-20, Georg Fischer: copied from makefile
 #
@@ -11,15 +11,88 @@ LINREC=$(GITS)/OEIS-mat/linrec
 LITE=$(GITS)/joeis-lite
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
+MANY=999999
+D=0
+WITHB=-b $(COMMON)/bfile 
+JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
+BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar irvine.test.BatchTest -v $(WITHB)
+BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB)
+INIT=0
+TO=6
+START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 #----------------
 
-all: 
+all:
 	# Possible targets:
 	grep -E "^[a-z]" makefile
-#----------------
+#----------------------------------
 # Generation of groups of sequences
+#----------------------------------
+SOURCES=CoxeterSequence.java GeneratingFunctionSequence.java DeadSequence.java FiniteSequence.java LinearRecurrence.java PeriodicSequence.java \
+	PrependSequence.java ReaderSequence.java Sequence.java SqrtContinuedFraction.java
+joeis_push:
+	cd $(LITE)/src/irvine/oeis  ; pwd ; cp -upv $(SOURCES) ../../../../../gitups/joeis/src/irvine/oeis/
+joeis_pull:
+	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
+#==========================
+gener: # parameter MANY, CC
+	head -n$(MANY) $(CC).tmp > ghead.tmp
+	perl gen_seq4.pl -d $(D)   ghead.tmp
+	cd ../.. ; ant -silent dist
+test:
+	rm -f batch.log
+	make -f gener.make stripgr LIST=ghead.tmp
+	make -f gener.make runbt
+	make -f gener.make evaluate
+stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
+	cut -b1-7  $(LIST) > aseqnos.tmp
+	grep -f    aseqnos.tmp $(COMMON)/stripped \
+	| head -n$(MANY) > strip.tmp
+	wc -l      strip.tmp
+runbt: # Run BatchTest for this group
+	$(BATLIT)  strip.tmp 2>&1 | tee -a batch.log
+evaluate:
+	grep  pass batch.log >     pass.log
+	grep  FA   batch.log | tee fail.log
+	wc -l      fail.log pass.log
+#--------------------------
+# A041009 Denominators of continued fraction convergents to sqrt(7).
+# A041010 Numerators of continued fraction convergents to sqrt(8).
+cfsnd: cfsnum cfsden
+	sort cfsnum.tmp cfsden.tmp | sed -e "s/den/   /" > $@.tmp
+	less $@.tmp
+cfsnum:
+	perl -ne 'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
+		$(COMMON)/names \
+		  > $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+	make -f gener.make seq4 LIST=$@.tmp
+	$(DBAT) "UPDATE seq4 s \
+		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
+	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)" 
+	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3, parm4, name FROM seq4 ORDER BY 1" \
+		  > $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+cfsden:
+	perl -ne 'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
+		$(COMMON)/names \
+		  > $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+	make -f gener.make seq4 LIST=$@.tmp
+	$(DBAT) "UPDATE seq4 s \
+		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
+	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)" 
+	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3, parm4, name FROM seq4 ORDER BY 1" \
+		  > $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+#----
+#==========================
 BaseTwoDigits:
-	cat represented-by-2-digits.group > group.tmp 
+	cat represented-by-2-digits.group > group.tmp
 	make run PATTERN=$@
 CoxeterSequence:
 	cp  $(LINREC)/coxf1.tmp coxf1.txt
@@ -56,7 +129,7 @@ lrixall:
 	wc -l $@.tmp
 	make lrgroup LIST=$@.tmp INIT=0
 lrstart:
-	make lrgroup LIST=err-04-11.log 
+	make lrgroup LIST=err-04-11.log
 lrgroup: # parameter LIST, INIT
 	make seq # LIST
 	$(DBAT) -x "SELECT s.aseqno, 'LinearRecurrence2' \
@@ -74,15 +147,6 @@ lrgroup: # parameter LIST, INIT
 	wc   -l  group.tmp
 	make run
 #---
-#--------------------------
-SOURCES=CoxeterSequence.java GeneratingFunctionSequence.java DeadSequence.java FiniteSequence.java LinearRecurrence.java PeriodicSequence.java PrependSequence.java ReaderSequence.java Sequence.java
-joeis_push:
-	cd $(LITE)/src/irvine/oeis  ; pwd ; cp -upv $(SOURCES) ../../../../../gitups/joeis/src/irvine/oeis/
-joeis_pull:
-	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
-#==========================
-#----
-#==========================
 #--------------------------
 lrjoeis_test:
 	$(DBAT) -x "SELECT j.aseqno \
@@ -106,7 +170,7 @@ batch_mmac:
 	grep -f x.tmp $(COMMON)/stripped > subset.tmp
 	wc -l subset.tmp
 	make test
-batch_cfsqrt: 
+batch_cfsqrt:
 	cut -b1-7 cfsqrt_gen.log > x.tmp
 	grep -f x.tmp $(COMMON)/stripped > subset.tmp
 	wc -l subset.tmp
@@ -115,7 +179,7 @@ batch_cfsqrt:
 analog: analog1 analog2 analog3
 analog1:
 	perl normalize_name.pl $(COMMON)/names \
-	| sed -e "s/ / -o- /" > $@.tmp 
+	| sed -e "s/ / -o- /" > $@.tmp
 analog2:
 	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass <> 'LinearRecurrence'" \
 	| sed -e "s/\r//" > joeis_impl.txt
@@ -231,13 +295,13 @@ mmacall:
 gen_linrec:
 	# rm -rf oeis
 	# mkdir  oeis ||:
-	perl gen_linrec.pl mmacall.txt 
+	perl gen_linrec.pl mmacall.txt
 #--------------------------
 mmacheck:
 	sed -e "s/ /\t/g" mmacall.txt | cut -f1,3 > $@.tmp
-	perl gen_linrec.pl mmacall.tmp 
+	perl gen_linrec.pl mmacall.tmp
 #--------------------------
-indx_nojoeis: 
+indx_nojoeis:
 	$(DBAT) "SELECT COUNT(seqno) \
 	    FROM  lrindx i \
 	    WHERE 'A' || seqno NOT IN (SELECT aseqno FROM joeis) \
@@ -263,7 +327,7 @@ finifu_check: # Sequences with keywords "fini,full"
 	    ORDER BY 1" \
 	>        $@.txt
 	head -n4 $@.txt
-	wc -l    $@.txt 
+	wc -l    $@.txt
 #
 dummy:
 		echo " \
@@ -277,7 +341,7 @@ fininof_check: # Sequences with keywords "fini", but no "full"
 	    ORDER BY 1" \
 	>        $@.txt
 	head -n4 $@.txt
-	wc -l    $@.txt 
+	wc -l    $@.txt
 #----
 finibf_check: # Sequences with keywords "fini,full", but full terms are in b-file only
 	$(DBAT) -x "SELECT i.aseqno, i.termno, b.bfimax - b.bfimin + 1 \
@@ -291,7 +355,7 @@ finibf_check: # Sequences with keywords "fini,full", but full terms are in b-fil
 	    ORDER BY 1" \
 	>        $@.txt
 	head -n4 $@.txt
-	wc -l    $@.txt 
+	wc -l    $@.txt
 #---------------------------
 cofr_joeis:
 	$(DBAT) "SELECT COUNT(aseqno) \
@@ -317,7 +381,7 @@ cfsqrt3:
 	grep -E "Continued fraction for sqrt\([0-9][0-9]*\)" $(COMMON)/names \
 	| grep -vE "sqrt\(2\)" \
 	| sed -e "s/ Continued fraction for sqrt(\([0-9][0-9]*\)).*/\t\1\t\1/" \
-	| sort -k2 | tee $@.tmp 
+	| sort -k2 | tee $@.tmp
 cfsqrt4:
 	join -1 1 -2 2 -t"	" -o 2.1,2.2,1.2 cfsqrt2.tmp cfsqrt3.tmp > $@.tmp
 	grep -vf in_joeis.tmp $@.tmp \
@@ -327,7 +391,7 @@ cfsqrt4:
 cfsqrt_gen:
 	head -n$(MANY) cfsqrt5.tmp \
 	| perl gen_pattern.pl -n $(COMMON)/names -p cfsqrtPattern.jav \
-	| tee $@.log 
+	| tee $@.log
 #----
 cfconv:
 	grep -i "continued fraction convergents to sqrt" $(COMMON)/names \
@@ -366,11 +430,17 @@ seq2: # parameter: $(LIST)
 	$(DBAT) -m csv -r seq2 < seq2.tmp
 	$(DBAT) -4 seq2
 	$(DBAT) -n seq2
+seq4: # parameter: $(LIST) with aseqno, offset, parm1, parm2, parm3, parm4, name
+	$(DBAT) -f seq4.create.sql
+	cat $(LIST) | grep -E "^A" | sort | uniq > seq4.tmp
+	$(DBAT) -m csv -r seq4 < seq4.tmp
+	$(DBAT) -4 seq4
+	$(DBAT) -n seq4
 delseq: seq # parameters: $(TAB) $(LIST)
 	$(DBAT) -v "DELETE FROM $(TAB) WHERE aseqno IN (SELECT aseqno FROM seq)"
 #--------
 njoeis: # LIST
-	make seq 
+	make seq
 	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq \
 	WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 	$(DBAT) -x "SELECT j.aseqno, j.superclass FROM seq s, joeis j \
@@ -379,7 +449,7 @@ njoeis: # LIST
 	head -4 $@.tmp
 	wc -l   $@.tmp
 joeis2: # LIST
-	make seq2 
+	make seq2
 	$(DBAT) -x "SELECT s.aseqno, s.info FROM seq2 s \
 	WHERE s.aseqno NOT IN (SELECT j.aseqno FROM joeis j) ORDER BY 1" \
 	>       n$@.tmp

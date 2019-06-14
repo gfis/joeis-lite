@@ -1,15 +1,14 @@
 #!perl
 
-# Generate a series of Java sources for jOEIS
+# Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
-# 2019-04-05: -t targetdir (default "./temp")
-# 2019-04-04, Georg Fischer
+# 2019-06-13, Georg Fischer: derived from gen_pattern.pl
 #
 #:# Usage:
-#:#   perl gen_pattern.pl [-d debug] [-a author] [-n namesfile] [-l maxlen]
+#:#   perl gen_seq4.pl [-d debug] [-a author] [-l maxlen]
 #;#          [-p patprefix] [-t targetdir] infile > logfile
-#:#       infile has the format: ASEQNO CALLPATTERN PARM1 PARM2 ...
-#:#       pattern may contain $(NAME), $(AUTHOR), $(ASEQNO) = $(PARM0), $(DATE), $(PACK), $(PARM1), $(PARM2) ...
+#:#       infile has the format: ASEQNO CALLCODE OFFSET PARM1 PARM2 PARM3 PARM4 NAME
+#:#       pattern may contain all of these and $(AUTHOR), $(DATE), $(PACK)
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -29,12 +28,11 @@ if (scalar(@ARGV) == 0) {
     exit;
 }
 my $author    = "Georg Fischer";
-my $patprefix = "./Invoke";
+my $patprefix = "./";
 my $patext    = ".jpat";
-my $call_pattern = "LinearRecurrence";
-my %patterns  = ();
+my $callcode  = "cfsnum";
+my %patterncache  = (); # empty at the beginning
 my $basedir   = "../../../OEIS-mat/common";
-my $namesfile = "$basedir/names"; 
 my $targetdir = "../../src/irvine/oeis";
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
@@ -45,8 +43,6 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $debug     = shift(@ARGV);
     } elsif ($opt  =~ m{l}) {
         $max_line_len = shift(@ARGV);
-    } elsif ($opt  =~ m{n}) {
-        $namesfile = shift(@ARGV);
     } elsif ($opt  =~ m{p}) {
         $patprefix = shift(@ARGV);
     } elsif ($opt  =~ m{t}) {
@@ -55,13 +51,14 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
-my @names   = &read_names($namesfile);
 my $pattern;
-mkdir $targetdir;
+my $offset = "0";
 my $aseqno;
 my @parms;
 my $old_package = "";
 my $gen_count = 0;
+
+mkdir $targetdir;
 
 while (<>) { # read inputfile
     s{\#.*}{}; # remove comments
@@ -71,30 +68,31 @@ while (<>) { # read inputfile
     if ($debug >= 1) {
         print "$line\n";
     }
-    @parms = split(/\t/, $line);
-    $aseqno = shift(@parms);
+    @parms    = split(/\t/, $line); # this is a row from db table 'seq4'
+    $aseqno   = shift(@parms);
+    $callcode = shift(@parms);
     my $iparm = 0;
-    $call_pattern = $parms[$iparm ++]; # [0]
-    my $pattern = $patterns{$call_pattern};
+    $offset   = $parms[$iparm ++]; # PARM1, PARM2 .. follow
+    $pattern  = $patterncache{$callcode};
+    my $name  = $parms[scalar(@parms) - 1]; # last parameter
     if (! defined($pattern)) { # new pattern
-      $pattern = &read_pattern("$patprefix$call_pattern$patext");
-      $patterns{$call_pattern} = $pattern;
-      if ($debug >= 1) {
-        print STDERR "read $patprefix$call_pattern$patext\n";
-      }
+		$pattern = &read_pattern("$patprefix$callcode$patext");
+		$patterncache{$callcode} = $pattern;
+		if ($debug >= 1) {
+		    print STDERR "read $patprefix$callcode$patext\n";
+		}
     } # new pattern
-    my $seqno = substr($aseqno, 1) + 0; # without "A" and leading zeroes
-    my $package = "a" . substr($aseqno, 1, 3);
+    my $package = lc(substr($aseqno, 0, 4));
     my $copy = $pattern;
-    my $name = $names[$seqno];
     $copy =~ s{\$\(ASEQNO\)}    {$aseqno}g;
     $copy =~ s{\$\(AUTHOR\)}    {$author}g;
-    $copy =~ s{\$\(ASEQNO\)}    {$aseqno}g;
+    $copy =~ s{\$\(CALLCODE\)}  {$callcode}g;
     $copy =~ s{\$\(DATE\)}      {$timestamp}g;
     $copy =~ s{\$\(NAME\)}      {$name}g;
+    $copy =~ s{\$\(OFFSET\)}    {$offset}g;
     $copy =~ s{\$\(PACK\)}      {$package}g;
     my $do_generate = 1;
-    while ($iparm < scalar(@parms)) {
+    while ($iparm < scalar(@parms) - 1) {
         my $max_term_len = 0;
         my @terms = map {
               if (length > $max_term_len) {
@@ -103,7 +101,7 @@ while (<>) { # read inputfile
               $_
             } split(/\,\s*/, $parms[$iparm]);
         $copy =~ m{\$\(PARM$iparm(\.\w+)?\)}i;
-        my $line_len = length($PREMATCH);
+        my $line_len = length($PREMATCH) || 0;
         my $type = $1 || "";
         my $term;
         my $len;
@@ -116,12 +114,14 @@ while (<>) { # read inputfile
                 print "# before: type(PARM$iparm) = \"$type\", term=\"$term\"\n";
             }
             if (($term =~ m{[^ \-\,0-9]}) or ($term !~ m{\d})) {
+                print "# $aseqno \"$term\" contains non-digits\n";
                 $do_generate = 0;
             } elsif (length($type) == 0) { # leave it as it is
             } elsif ($type =~ m{I}i)     { # normal int
                 # term is unchanged
             } elsif ($type =~ m{L}i)     { # make 'long' constant
                 if (length($term) > 16) {
+                    print "# $aseqno length($term) > 16\n";
                     $do_generate = 0;
                 }
                 $term .= "L";
@@ -145,8 +145,8 @@ while (<>) { # read inputfile
     } # while $iparm
     
     if (0) {
-	  } elsif ($copy =~ m{\$\((PARM\d)}) {
-        print "# $aseqno $1 not replaced - skipped\n";  	
+      } elsif ($copy =~ m{\$\((PARM\d)}) {
+        print "# $aseqno $1 not replaced - skipped\n";      
     } elsif ($do_generate > 0) {
         my $packdir = "$targetdir/$package";
         if ($old_package ne $package) {
@@ -171,36 +171,9 @@ while (<>) { # read inputfile
 } # while <>
 print STDERR "# $gen_count sequences generated\n";
 #----------------------------------------
-sub read_names { # read names into an array indexed by seqno (without "A") and returns that array
-    my ($namesfile) = @_;
-    print STDERR "# reading from $namesfile ... ";
-    open(NAM, "<", $namesfile) or die "cannot read $namesfile\n";
-    my @nawol = (); # without links
-    my $count = 0;
-    while (<NAM>) {
-        s/\s+\Z//; # chompr
-        next if m{\A\s*\#}; # skip comments
-        $count ++;
-        my $line  = $_;
-        $line     =~ m{^(\w)(\d+)\s+(.*)};
-        my $seqno = $2;
-        my $name  = $3;
-        $name =~ s{\s+}{ }g;
-        $name =~ s{\&}{\&amp;}g;
-        $name =~ s{\<}{\&lt;}g;
-        $name =~ s{\>}{\&gt;}g;
-        $name =~ s{\'}{\&apos;}g;
-        $name =~ s{\"}{\&quot;}g;
-        $nawol[$seqno] = $name;
-    } # while <NAM>
-    close(NAM);
-    print STDERR "$count names read\n";
-    return @nawol;  
-} # read_names
-#----------------------------------------
 sub read_pattern { # read the pattern and return it
     my ($patfile) = @_;
-    open(PAT, "<", $patfile) or die "cannot read $patfile\n";
+    open(PAT, "<", $patfile) or die "cannot read \"$patfile\"\n";
     my $result = "";
     while (<PAT>) {
         if ($debug >= 1) {
