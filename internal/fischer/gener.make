@@ -73,6 +73,13 @@ evaluate:
 single:
 	java -jar ../../dist/joeis-lite.jar $(SEQ) $(N) $(OFS)
 #--------------------------
+cfp_select: 
+	make -f gener.make select CC=cfp
+	make -f gener.make select CC=cfpcount
+	make -f gener.make select CC=cfplen
+	make -f gener.make select CC=cfpleast
+	make -f gener.make select CC=cfpmidpar
+#----
 # A041009 Denominators of continued fraction convergents to sqrt(7).
 # A041010 Numerators of continued fraction convergents to sqrt(8).
 cfsnum:
