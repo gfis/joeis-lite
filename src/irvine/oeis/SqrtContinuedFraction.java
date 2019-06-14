@@ -173,11 +173,12 @@ public class SqrtContinuedFraction implements Sequence {
 
   /** 
    * Gets the least element in the period 
-   * The caller must already have filled the period.
+   * The caller must already have filled the period, 
+   * and it must hava a length >= 1 (no perfect square).
    * @return the least element
    */
-  public Z getPeriodLeast() {
-    int iper = mPeriod.size();
+  public Z getLeastInPeriod() {
+    int iper = mPeriod.size() - 1;
     Z least = mPeriod.get(0);
     while (iper > 0) {
       Z element = mPeriod.get(iper);
@@ -187,17 +188,7 @@ public class SqrtContinuedFraction implements Sequence {
       iper --;
     } // while iper
     return least;
-  } // getPeriodLeast
-
-  /** 
-   * Determine whether the period has some property.
-   * The caller must already have filled the period.
-   * This method will typically be overwritten.
-   * @return true iff the period has this property
-   */
-  public boolean isOk() {
-    return getPeriodLeast().equals(Z.ONE);
-  } // isOk
+  } // getLeastInPeriod
 
   //=====================================
   /** 
@@ -235,7 +226,7 @@ public class SqrtContinuedFraction implements Sequence {
     while (loopCheck > 0) {
       mN = mN.add(Z.ONE);
       initAndFill();
-      if (hasProperty()) {
+      if (isOk()) {
         loopCheck = -1;
       } 
       loopCheck --;
@@ -260,16 +251,27 @@ public class SqrtContinuedFraction implements Sequence {
 
   /** 
    * Determine whether the period of the continued fraction for sqrt(n) 
-   * has even length.
+   * has an even length.
    * This method is an example only.
    * It is typically overwritten in order to return some other property.
    * The caller must ensure that the period is already filled.
+   * @return true iff the continued fraction for the square root
+   * of the current number <em>mN</em> has some property.
+   */
+  protected boolean isOk() {
+    return (mPeriod.size() & 1) == 0;
+  } // isOk
+
+  /** 
+   * Determine whether the least term in the period has the specified value.
+   * The caller must ensure that the period is already filled.
+   * @param least the desired least period element value
    * @return true iff the period of the continued fraction for the square root
    * of the current number <em>mN</em> has this property.
    */
-  protected boolean hasProperty() {
-    return (mPeriod.size() & 1) == 0;
-  } // hasProperty
+  protected boolean isLeastInPeriod(int least) {
+  	return mPeriod.size() > 0 && Z.valueOf(least).equals(getLeastInPeriod());
+  } // isLeastInPeriod
 
   /** 
    * Get the index of the current term of the sequence.
@@ -354,9 +356,9 @@ public class SqrtContinuedFraction implements Sequence {
       while (iterm < noterms) {
       	Z prop = cf.getNextProperty();
         System.out.println(cf.getN()
-            + ":\tsize="    + prop
+            + ":\tsize="  + prop
             + ", period=" + cf.mPeriod
-            + ", even="    + cf.hasProperty()
+            + ", even="   + cf.isOk()
             );
         iterm ++;
       } // while iterm

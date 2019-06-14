@@ -110,7 +110,7 @@ public class BatchTest {
       }
       icall ++;
     } // while icall
-    return result.substring(2); // remove first ", ";
+    return result;
   } // getShortTrace
 
   /*  Get a term, possibly abbreviated 

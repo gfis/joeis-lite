@@ -13,12 +13,14 @@ DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 MANY=999999
 D=0
-WITHB=-b $(COMMON)/bfile 
+TO=4
+N=16
+OFS=1
+WITHB=-b $(COMMON)/bfile -t $(TO)
 JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
 BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar irvine.test.BatchTest -v $(WITHB)
 BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB)
 INIT=0
-TO=6
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 #----------------
 
@@ -35,11 +37,24 @@ joeis_push:
 joeis_pull:
 	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
 #==========================
+select: # parameter: CC
+	make -f gener.make $(CC)
+	head -4 $(CC).gen
+	wc -l   $(CC).gen
+	make -f gener.make seq4 LIST=$(CC).gen
+	$(DBAT) "UPDATE seq4 s \
+		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
+	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)" 
+	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3, parm4, name FROM seq4 ORDER BY 1" \
+		  > $(CC).gen
+	head -4 $(CC).gen
+	wc -l   $(CC).gen
+	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 gener: # parameter MANY, CC
-	head -n$(MANY) $(CC).tmp > ghead.tmp
+	head -n$(MANY) $(CC).gen > ghead.tmp
 	perl gen_seq4.pl -d $(D)   ghead.tmp
 	cd ../.. ; ant -silent dist
-test:
+test: # parameter CC
 	rm -f batch.log
 	make -f gener.make stripgr LIST=ghead.tmp
 	make -f gener.make runbt
@@ -52,44 +67,66 @@ stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 runbt: # Run BatchTest for this group
 	$(BATLIT)  strip.tmp 2>&1 | tee -a batch.log
 evaluate:
-	grep  pass batch.log >     pass.log
-	grep  FA   batch.log | tee fail.log
-	wc -l      fail.log pass.log
+	grep  pass batch.log >     $(CC).pass.log
+	grep  FA   batch.log | tee $(CC).fail.log
+	wc -l $(CC).*.log
+single:
+	java -jar ../../dist/joeis-lite.jar $(SEQ) $(N) $(OFS)
 #--------------------------
 # A041009 Denominators of continued fraction convergents to sqrt(7).
 # A041010 Numerators of continued fraction convergents to sqrt(8).
-cfsnd: cfsnum cfsden
-	sort cfsnum.tmp cfsden.tmp | sed -e "s/den/   /" > $@.tmp
-	less $@.tmp
 cfsnum:
-	perl -ne 'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
-		$(COMMON)/names \
-		  > $@.tmp
-	head -4 $@.tmp
-	wc -l   $@.tmp
-	make -f gener.make seq4 LIST=$@.tmp
-	$(DBAT) "UPDATE seq4 s \
-		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
-	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)" 
-	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3, parm4, name FROM seq4 ORDER BY 1" \
-		  > $@.tmp
-	head -4 $@.tmp
-	wc -l   $@.tmp
+	perl -ne \
+	'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
+	$(COMMON)/names > $@.gen
 cfsden:
-	perl -ne 'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
-		$(COMMON)/names \
-		  > $@.tmp
-	head -4 $@.tmp
-	wc -l   $@.tmp
-	make -f gener.make seq4 LIST=$@.tmp
-	$(DBAT) "UPDATE seq4 s \
-		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
-	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)" 
-	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3, parm4, name FROM seq4 ORDER BY 1" \
-		  > $@.tmp
-	head -4 $@.tmp
-	wc -l   $@.tmp
+	perl -ne \
+	'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
+	$(COMMON)/names > $@.gen
 #----
+# A003285	Period of continued fraction for square root of n (or 0 if n is a square). 
+# A097853	Period of continued fraction for square root of n (or 1 if n is a square).
+cfp:
+	perl -ne \
+	'if (m{^(A\d+) Period of continued fraction for square root of n \(or (\-?\d+) if n is a square\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
+	$(COMMON)/names > $@.gen
+#----
+# A013643	Numbers n such that continued fraction for sqrt(n) has period 3.
+# A013644	Numbers n such that the continued fraction for sqrt(n) has period 4.
+# + A002522	a(n) = n^2 + 1 for period 1
+cfplen:
+	perl -ne \
+	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has period (\d+)\.}) { print "$$1\t$@\t0\t$$3\n" }' \
+	$(COMMON)/names > $@.gen
+#----
+# A031700	Least term in period of continued fraction for sqrt(n) is 22.
+# A031701	Numbers n such that the least term in the period of the continued fraction for sqrt(n) is 23.
+# PARM1=22
+cfpleast: 
+	perl -ne \
+	'if (m{^(A\d+) (Numbers n such that )?(the )?[Ll]east term in (the )?period of (the )?continued fraction for sqrt\(n\) is (\d+)\.}) { print "$$1\t$@\t0\t$$6\n" }' \
+	$(COMMON)/names > $@.gen
+#----
+# A013643	Numbers n such that continued fraction for sqrt(n) has period 3.
+# A013644	Numbers n such that the continued fraction for sqrt(n) has period 4.
+# + A002522	a(n) = n^2 + 1 for period 1
+cfpcount:
+	perl -ne \
+	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has period (\d+)\.}) { print "$$1\t$@\t0\t$$3\n" }' \
+	$(COMMON)/names > $@.gen
+#----
+# A031598	Numbers n such that continued fraction for sqrt(n) has even period and central term 100.
+# A031600	Numbers n such that continued fraction for sqrt(n) has odd period and central terms 12.
+# A031413	Numbers n such that continued fraction for sqrt(n) has even period 2*m and the m-th term is 10.
+# A031414	Numbers n such that continued fraction for sqrt(n) has odd period and a pair of central terms both equal to 1.
+#           1                             2                                              3                 4           5                                            6                                      7                                     
+cfpmidpar:
+	perl -ne \
+	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (even|odd) period (2\*m )?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.}) { print "$$1\t$@\t0\t$$3\t$$7\n" }' \
+	$(COMMON)/names \
+	| sed -e "s/\teven/\t0/" -e "s/\todd/\t1/ " \
+	> $@.gen
+	# PARM1=parity, PARM2=central
 #==========================
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp
