@@ -10,6 +10,8 @@ import irvine.math.z.Z;
  */
 public class $(ASEQNO) extends SqrtContinuedFraction {
 
+  private final Z mLeast = Z.valueOf($(PARM2));
+
   public $(ASEQNO)() {
     super($(OFFSET));
   }
@@ -18,7 +20,7 @@ public class $(ASEQNO) extends SqrtContinuedFraction {
   protected boolean isOk() {
     return (mPerLen & 1) == $(PARM1) 
         && mPerLen >= 1
-        && mPeriod.get(((mPerLen + 1) >> 1) - 1).equals(Z.valueOf($(PARM2)));
+        && mPeriod.get(((mPerLen + 1) >> 1) - 1).equals(mLeast);
   }
 
   @Override

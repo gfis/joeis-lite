@@ -10,19 +10,22 @@ import irvine.math.z.Z;
  */
 public class $(ASEQNO) extends SqrtContinuedFraction {
 
-  private final Z mValue = Z.valueOf($(PARM3));
+  private Z mNLocal;
+  private Z mParm1 = Z.valueOf($(PARM1));
 
   public $(ASEQNO)() {
     super($(OFFSET));
+    mNLocal = Z.valueOf($(OFFSET));
   }
 
-  @Override
-  protected boolean isOk() {
-    return mPeriod.size() >= $(PARM2) && getCountInPeriod(mValue) $(PARM1) $(PARM2);
+  protected Z getProperty() {
+    return Z.valueOf(mPeriod.size());
   }
 
   @Override
   public Z next() {
-    return getNextWithProperty();
+	mN = mParm1.multiply(mNLocal).multiply(mNLocal).subtract(Z.ONE);
+	mNLocal = mNLocal.add(Z.ONE);
+    return getNextProperty();
   }
 }

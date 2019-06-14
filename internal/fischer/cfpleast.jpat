@@ -10,13 +10,15 @@ import irvine.math.z.Z;
  */
 public class $(ASEQNO) extends SqrtContinuedFraction {
 
+  private final Z mLeast = Z.valueOf($(PARM1));
+
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
   @Override
   protected boolean isOk() {
-    return isLeastInPeriod($(PARM1));
+    return mPeriod.size() >= 1 && getLeastInPeriod().equals(mLeast);
   }
 
   @Override

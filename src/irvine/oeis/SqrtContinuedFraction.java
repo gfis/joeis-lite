@@ -172,6 +172,25 @@ public class SqrtContinuedFraction implements Sequence {
   } // hasPeriodCentral
 
   /** 
+   * Gets the count of some value in the period 
+   * The caller must already have filled the period, 
+   * and it must hava a length >= 1 (no perfect square).
+   * @param value the desired value to be counted
+   * @return the least element
+   */
+  public int getCountInPeriod(Z value) {
+    int iper = mPeriod.size() - 1;
+    int result = 0;
+    while (iper > 0) {
+      if (mPeriod.get(iper).equals(value)) {
+        result ++;
+      }
+      iper --;
+    } // while iper
+    return result;
+  } // getCountInPeriod
+
+  /** 
    * Gets the least element in the period 
    * The caller must already have filled the period, 
    * and it must hava a length >= 1 (no perfect square).

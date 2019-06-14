@@ -83,12 +83,10 @@ cfp_select:
 # A041009 Denominators of continued fraction convergents to sqrt(7).
 # A041010 Numerators of continued fraction convergents to sqrt(8).
 cfsnum:
-	perl -ne \
-	'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
+	perl -ne 'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
 cfsden:
-	perl -ne \
-	'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
+	perl -ne 'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
 #----
 # A003285	Period of continued fraction for square root of n (or 0 if n is a square). 
@@ -98,13 +96,28 @@ cfp:
 	'if (m{^(A\d+) Period of continued fraction for square root of n \(or (\-?\d+) if n is a square\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
 #----
-# A013643	Numbers n such that continued fraction for sqrt(n) has period 3.
-# A013644	Numbers n such that the continued fraction for sqrt(n) has period 4.
-# + A002522	a(n) = n^2 + 1 for period 1
-cfplen:
+# A013647	Period of continued fraction for sqrt(n) contains no 1's.
+# A013648	Numbers n such that period of continued fraction for sqrt(n) contains a single 1.
+# A013649	Period of continued fraction for sqrt(n) contains exactly two 1's.
+# A013650	Period of continued fraction for sqrt(n) contains exactly three 1's.
+# A013651	Period of continued fraction for sqrt(n) contains at least two 1's.
+# A013652	Period of continued fraction for sqrt(n) contains at least three 1's.
+# A020440	Period of continued fraction for sqrt(n) contains exactly four 1's.
+# A020441	Period of continued fraction for sqrt(n) contains exactly five 1's.
+# A020442	Period of continued fraction for sqrt(n) contains exactly six 1's.
+# A020443	Period of continued fraction for sqrt(n) contains exactly seven 1's.
+# A020444	Period of continued fraction for sqrt(n) contains exactly eight 1's.
+# A020445	Period of continued fraction for sqrt(n) contains exactly nine 1's.
+# A020446	Period of continued fraction for sqrt(n) contains exactly ten 1's.
+# A031779	Period of continued fraction for sqrt(n) contains exactly 11 ones.
+# A031780	Period of continued fraction for sqrt(n) contains exactly 12 ones.
+# PARM1="==" PARM2=11 PARM3=1
+cfpcount:
 	perl -ne \
-	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has period (\d+)\.}) { print "$$1\t$@\t0\t$$3\n" }' \
-	$(COMMON)/names > $@.gen
+	'if (m{^(A\d+) (Numbers [nk] such that )?[Pp]eriod of continued fraction for sqrt\([kn]\) contains (exactly )?(\d+) (one)s\.}) { print "$$1\t$@\t1\t$$3\t$$4\t$$5\n" }' \
+	$(COMMON)/names \
+	| sed -e "s/\texactly /\t==/" -e "s/\tone/\t1/ " \
+	> $@.gen
 #----
 # A031700	Least term in period of continued fraction for sqrt(n) is 22.
 # A031701	Numbers n such that the least term in the period of the continued fraction for sqrt(n) is 23.
@@ -117,9 +130,16 @@ cfpleast:
 # A013643	Numbers n such that continued fraction for sqrt(n) has period 3.
 # A013644	Numbers n such that the continued fraction for sqrt(n) has period 4.
 # + A002522	a(n) = n^2 + 1 for period 1
-cfpcount:
+cfplen:
 	perl -ne \
 	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has period (\d+)\.}) { print "$$1\t$@\t0\t$$3\n" }' \
+	$(COMMON)/names > $@.gen
+#----
+# A064848	Period of continued fraction for sqrt(2)*n.
+# Offset is 1
+cfplenmult:
+	perl -ne \
+	'if (m{^(A\d+) Period (length )?of (the )?continued fraction for sqrt\((\d+)\)\*n\.}) { print "$$1\t$@\t0\t$$4\n" }' \
 	$(COMMON)/names > $@.gen
 #----
 # A031598	Numbers n such that continued fraction for sqrt(n) has even period and central term 100.
