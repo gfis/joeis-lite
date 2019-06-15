@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-06-15: timeDiff behind "pass"
  *  2019-06-06: write "aseqno start" V1.12
  *  2019-06-04: increase version to V1.11; abbreviated terms
  *  2019-05-24: FAIL if failCount > 0
@@ -30,7 +31,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.12";
+  private static String VERSION = "BatchTest V1.13";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -77,8 +78,10 @@ public class BatchTest {
   /** Level of output verbosity (0-3, default 0) */
   private int     verbosity;
 
-  /** the sequence may run up to this Linux time */
-  private long    endTime = System.currentTimeMillis();
+  /** the sequence started at this Linux time */
+  private long    startTime; 
+  /** difference between current time and {@link #startTime} */
+  private long    timeDiff; 
 
   /** No-args Constructor
    */
@@ -138,7 +141,8 @@ public class BatchTest {
       count ++; // one more is computed
       if (term == null) { // e.g. beyond end of FiniteSequence
         failure = 1; // FAIL
-        System.out.println    (aseqno + "\t" + count + "\tFAIL\t"     + expected + "\tcomputed:\tnull");
+        System.out.println    (aseqno + "\t" + count + "\tFAIL\t"     
+            + expected + "\tcomputed:\tnull");
       } else {
         String computed = term.toString();
         if (! computed.equals(expected) || failCount > 0) {
@@ -152,7 +156,8 @@ public class BatchTest {
           }
         } else if (! sequenceMayRun) {
           failure = 1; // FAIL
-          System.out.println  (aseqno + "\t" + count + "\tFATAL\t"    + millisToRun + " ms timeout expired");
+          System.out.println  (aseqno + "\t" + count + "\tFATAL\t"    
+              + timeDiff + " ms timeout expired");
         }
       }
     } catch (Exception exc) {
@@ -189,7 +194,8 @@ public class BatchTest {
             // count is incremented in testNext
           } // line not empty
         } // line != null
-        if (System.currentTimeMillis() > endTime) {
+        timeDiff = System.currentTimeMillis() - startTime;
+        if (timeDiff > millisToRun) {
           sequenceMayRun = false;
         }
       } // while ! eof
@@ -210,7 +216,8 @@ public class BatchTest {
     Sequence seq   = null; // invoke this sequence
     String message = "\t0\tFATAL: construction failed: ";
     try {
-      seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno)
+      seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) 
+          + '.' + aseqno)
           // .getConstructor().newInstance();
           .newInstance();
     } catch (Exception exc) {
@@ -224,7 +231,7 @@ public class BatchTest {
       diffExpected = "";
       // cf. <https://stackoverflow.com/questions/2550536/java-loop-for-a-certain-duration>
       // and <http://tutorials.jenkov.com/java-concurrency/creating-and-starting-threads.html#stop-a-thread>
-      endTime = System.currentTimeMillis() + millisToRun;
+      startTime = System.currentTimeMillis();
       sequenceMayRun = true;
 
       int termNo = terms.length; // Math.min(terms.length, maxTerms());
@@ -236,7 +243,6 @@ public class BatchTest {
       if (readFromBFile) { // try the b-file first
         failure = testAgainstBFile(seq);
       }
-      Long timeDiff = 0L;
       if ((failure == READ_ERROR && termNo > 0) || ! readFromBFile) {
         // test against terms from 'stripped', maybe as fallback
         count = 0; // number of evaluated tests
@@ -244,18 +250,18 @@ public class BatchTest {
         while (sequenceMayRun && failure == 0 && count < termNo) {
           failure = testNext(seq, terms[count]);
           // count is incremented in testNext
-          timeDiff = System.currentTimeMillis() - endTime;
-          if (timeDiff > 0) {
+          timeDiff = System.currentTimeMillis() - startTime;
+          if (timeDiff > millisToRun) {
             sequenceMayRun = false;
           }
         } // while n
       } // terms from 'stripped'
       if (! sequenceMayRun) {
         System.out.println    (aseqno + "\t" + count + "\tFAIL - timeout "
-            + (timeDiff + millisToRun) + " > " + millisToRun + " ms");
+            + timeDiff + " > " + millisToRun + " ms");
       } else if (failCount == 0) {
       	if (verbosity >= 1) {
-        	System.out.println    (aseqno + "\t" + count + "\tpass");
+        	System.out.println    (aseqno + "\t" + count + "\tpass\t" + timeDiff + " ms");
         }
       } else if (failCount > 0) {
             System.out.println  (aseqno + "\t" + count

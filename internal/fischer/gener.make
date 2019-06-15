@@ -80,6 +80,12 @@ cfp_select:
 	make -f gener.make select CC=cfpleast
 	make -f gener.make select CC=cfpmidpar
 #----
+# A010121	Continued fraction for sqrt(7).
+# A040002	Continued fraction for sqrt(5).
+cfs:
+	perl -ne 'if (m{^(A\d+) Continued fraction for sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
+	$(COMMON)/names > $@.gen
+#----
 # A041009 Denominators of continued fraction convergents to sqrt(7).
 # A041010 Numerators of continued fraction convergents to sqrt(8).
 cfsnum:
@@ -210,7 +216,6 @@ lrgroup: # parameter LIST, INIT
 	head -n4 group.tmp
 	wc   -l  group.tmp
 	make run
-#---
 #--------------------------
 lrjoeis_test:
 	$(DBAT) -x "SELECT j.aseqno \
@@ -240,36 +245,8 @@ batch_cfsqrt:
 	wc -l subset.tmp
 	make test
 #--------------------------
-analog: analog1 analog2 analog3
-analog1:
-	perl normalize_name.pl $(COMMON)/names \
-	| sed -e "s/ / -o- /" > $@.tmp
-analog2:
-	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass <> 'LinearRecurrence'" \
-	| sed -e "s/\r//" > joeis_impl.txt
-	grep -f joeis_impl.txt $(COMMON)/names \
-	| perl normalize_name.pl \
-	| sed -e "s/ / +j+ /" > $@.tmp
-analog3:
-	sort -k3 -k2 analog1.tmp analog2.tmp \
-	      > $@.txt
-	head -4 $@.txt
-	wc -l   $@.txt
-analog4:
-	perl get_stretchables.pl analog3.txt \
-	>       $@.txt
-	head -4 $@.txt
-	wc   -l $@.txt
-#--------------------
-cf_convergents:
-	grep "continued fraction convergents" $(COMMON)/names \
-	| grep -P "sqrt\(\d+\)\." \
-	>     $@.tmp
-	wc -l $@.tmp
-	make notin_joeis LIST=$@.tmp
-#--------------------------
-decexp: decexp_impl decexp_nimpl
-decexp_impl: # names: Annnnnn Decimal expansion of ... and in jOEIS
+dex: dex_impl dex_nimpl
+dex_impl: # names: Annnnnn Decimal expansion of ... and in jOEIS
 	$(DBAT) "SELECT a.aseqno, n.name, j.superclass, a.keyword \
 		FROM asinfo a, asname n, joeis j \
 		WHERE a.aseqno = n.aseqno \
@@ -279,7 +256,7 @@ decexp_impl: # names: Annnnnn Decimal expansion of ... and in jOEIS
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
-decexp_nimpl: # names: Annnnnn Decimal expansion of ... and NOT in jOEIS
+dex_nimpl: # names: Annnnnn Decimal expansion of ... and NOT in jOEIS
 	$(DBAT) "SELECT a.aseqno, n.name, a.keyword \
 		FROM asinfo a, asname n\
 		WHERE a.aseqno = n.aseqno \
@@ -289,14 +266,14 @@ decexp_nimpl: # names: Annnnnn Decimal expansion of ... and NOT in jOEIS
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
-decexp_extr:
-	perl extract_decexp.pl decexp_nimpl.tmp \
+dex_extr:
+	perl extract_dex.pl dex_nimpl.tmp \
 	| grep -vE "^#" \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
-decexp_joeis:
-	$(RAMATH).symbolic.ShuntingYard joeis -f decexp_extr.tmp \
+dex_joeis:
+	$(RAMATH).symbolic.ShuntingYard joeis -f dex_extr.tmp \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
@@ -457,15 +434,6 @@ cfsqrt_gen:
 	| perl gen_pattern.pl -n $(COMMON)/names -p cfsqrtPattern.jav \
 	| tee $@.log
 #----
-cfconv:
-	grep -i "continued fraction convergents to sqrt" $(COMMON)/names \
-	>     $@.tmp
-	wc -l $@.tmp
-	make -f gener.make -s njoeis LIST=$@.tmp
-# A040966 Continued fraction for sqrt(998)
-# A042932 num sign(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1968153802, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1)
-# A042933 den sign(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1968153802, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1)
-#----
 cfsall:
 	grep -i "continued" $(COMMON)/names | grep sqrt \
 	| sed -e "s/ /\t/" \
@@ -524,4 +492,25 @@ joeis2: # LIST
 	>       $@.tmp
 	head -4 $@.tmp
 	wc -l   $@.tmp
+#--------------------------
+analog: analog1 analog2 analog3
+analog1:
+	perl normalize_name.pl $(COMMON)/names \
+	| sed -e "s/ / -o- /" > $@.tmp
+analog2:
+	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass <> 'LinearRecurrence'" \
+	| sed -e "s/\r//" > joeis_impl.txt
+	grep -f joeis_impl.txt $(COMMON)/names \
+	| perl normalize_name.pl \
+	| sed -e "s/ / +j+ /" > $@.tmp
+analog3:
+	sort -k3 -k2 analog1.tmp analog2.tmp \
+	      > $@.txt
+	head -4 $@.txt
+	wc -l   $@.txt
+analog4:
+	perl get_stretchables.pl analog3.txt \
+	>       $@.txt
+	head -4 $@.txt
+	wc   -l $@.txt
 #--------

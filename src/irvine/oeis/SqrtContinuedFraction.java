@@ -4,114 +4,151 @@ import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
 import java.util.ArrayList;
 /**
- * Properties of a (simple) periodic continued fraction 
+ * Properties of a (simple) periodic continued fraction
  * for the square root of a number,
  * its numerators, denominators and period elements.
  * This class is used for the continued fraction
- * of a single square root, and for the property sequences for 
+ * of a single square root, and for the property sequences for
  * the continued fractions of all square roots.
  * @author Georg Fischer
  */
 public class SqrtContinuedFraction implements Sequence {
 
-  protected int mIndex; // index of current term to be returned, always starting at 0
-  protected Z mN; // compute the sqrt of this number
-  protected Z mRoot; // the integer root, floor(sqrt(n))          
-  protected Z mB0; // numerator   of old partial fraction       
-  protected Z mB1; // denominator of new partial fraction       
-  protected Z mC0; // old convergent numerator   
+  protected int mN; // index of current term to be returned
+  protected Z mK; // compute the sqrt of this number
+  protected boolean mIsPow2; // whether mK is a square
+  protected Z mRoot; // the integer root, floor(sqrt(n))
+  protected Z mB0; // numerator   of old partial fraction
+  protected Z mB1; // denominator of new partial fraction
+  protected Z mC0; // old convergent numerator
   protected Z mC1; // new convergent numerator
-  protected Z mD0; // old convergent denominator 
-  protected Z mD1; // new convergent denominator 
-  protected Z mP0; // numerator   of old partial fraction       
-  protected Z mP1; // denominator of new partial fraction       
-  protected Z mQ0; // numominator of old partial fraction       
-  protected Z mQ1; // denominator of new partial fraction       
+  protected Z mD0; // old convergent denominator
+  protected Z mD1; // new convergent denominator
+  protected Z mP0; // numerator   of old partial fraction
+  protected Z mP1; // denominator of new partial fraction
+  protected Z mQ0; // numominator of old partial fraction
+  protected Z mQ1; // denominator of new partial fraction
   protected int mPerInd; // index  in period
   protected int mPerLen; // length of period
+  protected Z mPerMid; // element in the middle of the period
+  protected Z mPerLeast; // least element of the period
+  protected int mPerCount1; // number of ONEs in the period
   protected ArrayList<Z> mPeriod;
 
   /**
    * Construct an instance which selects all numbers
-   * that have some property in the continued fractions 
+   * that have some property in the continued fractions
    * of their square roots.
    * @param offset first valid term has this index
    */
   protected SqrtContinuedFraction(final int offset) {
-    mIndex  = offset;
-    mN = Z.valueOf(offset).subtract(Z.ONE); // will be increased in first call of getNext(With)Property
+    mN  = offset;
+    mK = Z.valueOf(offset).subtract(Z.ONE); // will be increased in first call of getNext(With)Property
   }
 
   /**
-   * Construct the continued fraction for the square root 
+   * Construct the continued fraction for the square root
    * of a single, specified number.
    * @param offset first valid term has this index
-   * @param n compute the sqrt of this non-negative number 
+   * @param k compute the sqrt of this non-negative number
    */
-  protected SqrtContinuedFraction(final int offset, final long n) {
-    this(offset, Z.valueOf(n));
-  }
-
-  /**
-   * Construct the continued fraction for the square root 
-   * of a single, specified number.
-   * @param offset first valid term has this index
-   * @param n compute the sqrt of this non-negative number 
-   */
-  protected SqrtContinuedFraction(final int offset, final Z n) {
-    mIndex  = offset;
-    mN = n;
+  protected SqrtContinuedFraction(final int offset, final Z k) {
+    mN  = offset;
+    mK      = k;
     initialize();
+    mPeriod = new ArrayList<Z>(16);
+    mC0     = Z.ONE;
+    mD0     = Z.ZERO;
+    mC1     = mRoot;
+    mD1     = Z.ONE;
   }
 
-  /** 
+  /**
+   * Construct the continued fraction for the square root
+   * of a single, specified number.
+   * @param offset first valid term has this index
+   * @param k compute the sqrt of this non-negative number
+   */
+  protected SqrtContinuedFraction(final int offset, final long k) {
+    this(offset, Z.valueOf(k));
+  }
+
+  /**
    * Initialize the member properties.
-   * The caller must already have set <em>mN, mIndex</em>.
+   * The caller must already have set <em>mK, mN</em>.
    * This method is used for the continued fraction
-   * of a single square root, and for the property sequences for 
+   * of a single square root, and for the property sequences for
    * the continued fractions of all square roots.
    */
-  public void initialize() {
-    mRoot   = mN.sqrt();
+  protected void initialize() {
+    Z[] tmp = mK.sqrtAndRemainder();
+    mRoot   = tmp[0];
+    mIsPow2 = tmp[1].equals(Z.ZERO);
     mP0     = Z.ZERO;
     mQ0     = Z.ONE ;
     mB0     = mRoot;
     mP1     = Z.ZERO;
     mQ1     = Z.ZERO;
     mB1     = Z.ONE;
-    mPerInd = 0; // index in mPeriod
     mPerLen = -1; // undefined so far
-    mPeriod = new ArrayList<Z>(16);
-    mC0     = Z.ONE;
-    mD0     = Z.ZERO;
-    mC1     = mRoot;
-    mD1     = Z.ONE;
+    mPerInd = 0; // index in mPeriod
   } // initialize
 
-  /** 
+  /**
    * Initialize the member properties, and fill the period.
-   * The caller must already have set <em>mN, mIndex</em>.
+   * The caller must already have set <em>mK, mN</em>.
    * This method is used for the selection of some
    * property of the continued fractions of the square roots
-   * o fall numbers.
+   * of all numbers.
    */
-  public void initAndFill() {
+  protected void fillPeriod() {
     initialize();
-    while (mPerLen < 0 || mPerInd < mPerLen) { // fill
-      iterate();
-    } // while filling
-  } // initAndFill
+    mPerCount1 = 0;
+    if (! mIsPow2) { // no square number
+      while (mPerLen < 0 || mPerInd < mPerLen) { // fill
+        mN ++;
+        mP1 = mB0.multiply(mQ0).subtract(mP0);
+        mQ1 = mK.subtract(mP1.multiply(mP1)).divide(mQ0);
+        mB1 = mRoot.add(mP1).divide(mQ1);
+        if (mPerLen < 0) {
+          if (mQ0.compareTo(mQ1) == 0) {
+            mPerLen = mPerInd * 2 + 1;
+            mPerMid = mB0;
+          } else if (mP0.compareTo(mP1) == 0) {
+            mPerLen = mPerInd * 2;
+            mPerMid = mB0;
+          }
+        }
+        if (mPerInd == 0) { // first period element
+          mPerLeast = mB1;
+        } else if (mB1.compareTo(mPerLeast) < 0) {
+          mPerLeast = mB1;
+        }
+        if (mB1.equals(Z.ONE)) {
+          mPerCount1 ++;
+        }
+        mPerInd ++;
+        mP0 = mP1;
+        mQ0 = mQ1;
+        mB0 = mB1;
+      } // while filling
+    } else {
+      mPerLen = 0;
+      mPerInd = 0;
+      mPerLeast = Z.ZERO;
+    }
+  } // fillPeriod
 
-  /** 
+  /**
    * Compute the elements for the next partial fraction.
    * This method must be called <em>after</em> fetching any
-   * sequence element from the member properties. 
+   * sequence element from the member properties.
    */
-  public void iterate() {
-    mIndex ++;
-    if (mRoot.multiply(mRoot).compareTo(mN) != 0) { // no square number
+  protected void iterate() {
+    mN ++;
+    if (! mIsPow2) { // no square number
       mP1 = mB0.multiply(mQ0).subtract(mP0);
-      mQ1 = mN.subtract(mP1.multiply(mP1)).divide(mQ0);
+      mQ1 = mK.subtract(mP1.multiply(mP1)).divide(mQ0);
       mB1 = mRoot.add(mP1).divide(mQ1);
       if (mPerLen < 0) {
         if (mQ0.compareTo(mQ1) == 0) {
@@ -141,7 +178,7 @@ public class SqrtContinuedFraction implements Sequence {
     } // no square number
   } // iterate
 
-  /** 
+  /**
    * Determine whether the period is completely filled
    * @return true iff filled
    */
@@ -149,7 +186,7 @@ public class SqrtContinuedFraction implements Sequence {
     return mPerLen >= 0 && mPerInd >= mPerLen;
   } // hasFilledPeriod
 
-  /** 
+  /**
    * Determine whether the period has a specified length.
    * The caller must already have filled the period.
    * @param len desired length of the period
@@ -159,7 +196,7 @@ public class SqrtContinuedFraction implements Sequence {
     return mPerLen == len;
   } // hasFilledPeriod
 
-  /** 
+  /**
    * Determine whether the period has a length of some parity
    * and a specified central element.
    * The caller must already have filled the period.
@@ -171,9 +208,9 @@ public class SqrtContinuedFraction implements Sequence {
     return (mPerLen & 1) == parity && mPeriod.get(mPerLen >> 1).equals(Z.valueOf(element));
   } // hasPeriodCentral
 
-  /** 
-   * Gets the count of some value in the period 
-   * The caller must already have filled the period, 
+  /**
+   * Gets the count of some value in the period
+   * The caller must already have filled the period,
    * and it must hava a length >= 1 (no perfect square).
    * @param value the desired value to be counted
    * @return the least element
@@ -181,7 +218,7 @@ public class SqrtContinuedFraction implements Sequence {
   public int getCountInPeriod(Z value) {
     int iper = mPeriod.size() - 1;
     int result = 0;
-    while (iper > 0) {
+    while (iper >= 0) {
       if (mPeriod.get(iper).equals(value)) {
         result ++;
       }
@@ -190,9 +227,9 @@ public class SqrtContinuedFraction implements Sequence {
     return result;
   } // getCountInPeriod
 
-  /** 
-   * Gets the least element in the period 
-   * The caller must already have filled the period, 
+  /**
+   * Gets the least element in the period
+   * The caller must already have filled the period,
    * and it must hava a length >= 1 (no perfect square).
    * @return the least element
    */
@@ -210,9 +247,9 @@ public class SqrtContinuedFraction implements Sequence {
   } // getLeastInPeriod
 
   //=====================================
-  /** 
+  /**
    * Get the next term of the sequence.
-   * This is an example only. 
+   * This is an example only.
    * The method is typically overwritten to get some other
    * element related to the continued fraction of the square root
    * of this number.
@@ -225,17 +262,17 @@ public class SqrtContinuedFraction implements Sequence {
     return result;
   } // next
 
-  /** 
+  /**
    * Get some property of the period of the continued fraction for sqrt(n).
    * @return property of the next number
    */
   protected Z getNextProperty() {
-    mN = mN.add(Z.ONE);
-    initAndFill();
+    mK = mK.add(Z.ONE);
+    fillPeriod();
     return getProperty();
   } // getNextProperty
 
-  /** 
+  /**
    * Get the next term of a sequence which fulfills some property
    * of the period of the continued fraction for the square root of the term.
    * @return the next number with the property
@@ -243,72 +280,72 @@ public class SqrtContinuedFraction implements Sequence {
   protected Z getNextWithProperty() {
     int loopCheck = 1000000;
     while (loopCheck > 0) {
-      mN = mN.add(Z.ONE);
-      initAndFill();
+      mK = mK.add(Z.ONE);
+      fillPeriod();
       if (isOk()) {
         loopCheck = -1;
-      } 
+      }
       loopCheck --;
     } // while busy
     if (loopCheck == 0) {
       System.err.println("more the 1 million iterations in SqrtCOntinuedFraction.getNextWithProperty()");
     }
-    return mN;
+    return mK;
   } // next(boolean)
 
-  /** 
+  /**
    * Get the size of the period of the continued fraction for sqrt(n).
    * This method is an example only.
    * It is typically overwritten in order to return some other property.
    * The caller must ensure that the period is already filled.
    * @return property of the period of the continued fraction for the square root
-   * of the current number <em>mN</em>.
+   * of the current number <em>mK</em>.
    */
   protected Z getProperty() {
     return Z.valueOf(mPeriod.size());
   } // getProperty
 
-  /** 
-   * Determine whether the period of the continued fraction for sqrt(n) 
+  /**
+   * Determine whether the period of the continued fraction for sqrt(n)
    * has an even length.
    * This method is an example only.
    * It is typically overwritten in order to return some other property.
    * The caller must ensure that the period is already filled.
    * @return true iff the continued fraction for the square root
-   * of the current number <em>mN</em> has some property.
+   * of the current number <em>mK</em> has some property.
    */
   protected boolean isOk() {
     return (mPeriod.size() & 1) == 0;
   } // isOk
 
-  /** 
+  /**
    * Determine whether the least term in the period has the specified value.
    * The caller must ensure that the period is already filled.
    * @param least the desired least period element value
    * @return true iff the period of the continued fraction for the square root
-   * of the current number <em>mN</em> has this property.
+   * of the current number <em>mK</em> has this property.
    */
   protected boolean isLeastInPeriod(int least) {
-  	return mPeriod.size() > 0 && Z.valueOf(least).equals(getLeastInPeriod());
+    return mPeriod.size() > 0 && Z.valueOf(least).equals(getLeastInPeriod());
   } // isLeastInPeriod
 
-  /** 
+  /**
    * Get the index of the current term of the sequence.
    * @return the index starting with the offset of the sequence
    */
   protected int getIndex() {
-    return mIndex;
+    return mN;
   } // getIndex
 
-  /** 
+  /**
    * Get the number whose square root is calculated
    * @return current number whose quare root was expanded into a continued fraction
    */
   protected Z getN() {
-    return mN;
+    return mK;
   } // getN
 
-  /** 
+  /**
    * Get the next term of the sequence.
    * @return numerator of the convergent
    */
@@ -316,14 +353,14 @@ public class SqrtContinuedFraction implements Sequence {
     return mC1;
   } // getNumerator
 
-  /** 
+  /**
    * Get the next term of the sequence.
    * @return denominator of the convergent
    */
   protected Z getDenominator() {
     return mD1;
   } // getDenominator
-  
+
   //=====================================
   /** Test method.
    *  @param args command line arguments: [n [noterms]]
@@ -346,7 +383,7 @@ public class SqrtContinuedFraction implements Sequence {
       } catch (Exception exc) {
       }
     }
-    SqrtContinuedFraction cf = null; 
+    SqrtContinuedFraction cf = null;
     int iterm = 0;
     if (n >= 0) { // properties of a single nubmer
       cf = new SqrtContinuedFraction(1, n);
@@ -373,7 +410,7 @@ public class SqrtContinuedFraction implements Sequence {
     } else { // properties of all numbers
       cf = new SqrtContinuedFraction(1); // always offset 1 ?!
       while (iterm < noterms) {
-      	Z prop = cf.getNextProperty();
+        Z prop = cf.getNextProperty();
         System.out.println(cf.getN()
             + ":\tsize="  + prop
             + ", period=" + cf.mPeriod
@@ -383,5 +420,5 @@ public class SqrtContinuedFraction implements Sequence {
       } // while iterm
     } // all
   } // main
-  
+
 } // SqrtContinuedFraction

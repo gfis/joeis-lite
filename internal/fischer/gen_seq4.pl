@@ -16,8 +16,9 @@ use warnings;
 use English; # PREMATCH
 
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
-my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min, $sec);
-$timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
+my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
+# $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
+my $program = "gen_seq4.pl V1.03";
 my $max_term = 16;
 my $max_size = 16; 
 my $max_line_len = 80;
@@ -88,6 +89,7 @@ while (<>) { # read inputfile
     $copy =~ s{\$\(AUTHOR\)}    {$author}g;
     $copy =~ s{\$\(CALLCODE\)}  {$callcode}g;
     $copy =~ s{\$\(DATE\)}      {$timestamp}g;
+    $copy =~ s{\$\(PROG\)}      {$program}g;
     $copy =~ s{\$\(NAME\)}      {$name}g;
     $copy =~ s{\$\(OFFSET\)}    {$offset}g;
     $copy =~ s{\$\(PACK\)}      {$package}g;

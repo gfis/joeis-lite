@@ -11,17 +11,15 @@ import irvine.math.z.Z;
  */
 public class $(ASEQNO) extends SqrtContinuedFraction {
 
+  /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET));
+    super($(OFFSET), $(PARM1.L));
   }
-
-  @Override
-  protected boolean isOk() {
-    return mPerLen == $(PARM1);
-  }
-
+  
   @Override
   public Z next() {
-    return getNextWithProperty();
-  }
+    Z result = mB0; 
+    iterate();
+    return result;
+  } // next
 }
