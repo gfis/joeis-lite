@@ -11,22 +11,19 @@ import irvine.math.z.Z;
  */
 public class $(ASEQNO) extends SqrtContinuedFraction {
 
-  private Z mNLocal;
-  private Z mParm1 = Z.valueOf($(PARM1));
+  private final Z mParm = Z.valueOf($(PARM1));
 
   public $(ASEQNO)() {
     super($(OFFSET));
-    mNLocal = Z.valueOf($(OFFSET));
   }
 
-  protected Z getProperty() {
-    return Z.valueOf(mPerLen);
+  @Override
+  protected boolean isOk() { 
+    return (mPerLen & 1) == 1 && mPerLen >= 2 && mPerMid.equals(mParm); // odd
   }
 
   @Override
   public Z next() {
-	mK = mParm1.multiply(mNLocal).multiply(mNLocal).subtract(Z.ONE);
-	mNLocal = mNLocal.add(Z.ONE);
-    return getNextProperty();
+    return getNextWithProperty();
   }
 }

@@ -76,24 +76,29 @@ single:
 cfp_select: 
 	make -f gener.make select CC=cfp
 	make -f gener.make select CC=cfpcount
-	make -f gener.make select CC=cfplen
 	make -f gener.make select CC=cfpleast
-	make -f gener.make select CC=cfpmidpar
+	make -f gener.make select CC=cfplen
+	make -f gener.make select CC=cfplenmult
+	make -f gener.make select CC=cfpmid0
+	make -f gener.make select CC=cfpmid1
 #----
 # A010121	Continued fraction for sqrt(7).
 # A040002	Continued fraction for sqrt(5).
 cfs:
 	perl -ne 'if (m{^(A\d+) Continued fraction for sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 # A041009 Denominators of continued fraction convergents to sqrt(7).
 # A041010 Numerators of continued fraction convergents to sqrt(8).
 cfsnum:
 	perl -ne 'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 cfsden:
 	perl -ne 'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 # A003285	Period of continued fraction for square root of n (or 0 if n is a square). 
 # A097853	Period of continued fraction for square root of n (or 1 if n is a square).
@@ -101,6 +106,7 @@ cfp:
 	perl -ne \
 	'if (m{^(A\d+) Period of continued fraction for square root of n \(or (\-?\d+) if n is a square\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 # A013647	Period of continued fraction for sqrt(n) contains no 1's.
 # A013648	Numbers n such that period of continued fraction for sqrt(n) contains a single 1.
@@ -124,6 +130,7 @@ cfpcount:
 	$(COMMON)/names \
 	| sed -e "s/\texactly /\t==/" -e "s/\tone/\t1/ " \
 	> $@.gen
+	perl callcode_wiki.pl -p 2 $@.gen > $@.wiki
 #----
 # A031700	Least term in period of continued fraction for sqrt(n) is 22.
 # A031701	Numbers n such that the least term in the period of the continued fraction for sqrt(n) is 23.
@@ -132,6 +139,7 @@ cfpleast:
 	perl -ne \
 	'if (m{^(A\d+) (Numbers n such that )?(the )?[Ll]east term in (the )?period of (the )?continued fraction for sqrt\(n\) is (\d+)\.}) { print "$$1\t$@\t0\t$$6\n" }' \
 	$(COMMON)/names > $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 # A013643	Numbers n such that continued fraction for sqrt(n) has period 3.
 # A013644	Numbers n such that the continued fraction for sqrt(n) has period 4.
@@ -140,6 +148,7 @@ cfplen:
 	perl -ne \
 	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has period (\d+)\.}) { print "$$1\t$@\t0\t$$3\n" }' \
 	$(COMMON)/names > $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 # A064848	Period of continued fraction for sqrt(2)*n.
 # Offset is 1
@@ -147,11 +156,13 @@ cfplenmult:
 	perl -ne \
 	'if (m{^(A\d+) Period (length )?of (the )?continued fraction for sqrt\((\d+)\)\*n\.}) { print "$$1\t$@\t0\t$$4\n" }' \
 	$(COMMON)/names > $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 # A031598	Numbers n such that continued fraction for sqrt(n) has even period and central term 100.
 # A031600	Numbers n such that continued fraction for sqrt(n) has odd period and central terms 12.
 # A031413	Numbers n such that continued fraction for sqrt(n) has even period 2*m and the m-th term is 10.
 # A031414	Numbers n such that continued fraction for sqrt(n) has odd period and a pair of central terms both equal to 1.
+# PARM1=parity, PARM2=central
 #           1                             2                                              3                 4           5                                            6                                      7                                     
 cfpmidpar:
 	perl -ne \
@@ -159,7 +170,32 @@ cfpmidpar:
 	$(COMMON)/names \
 	| sed -e "s/\teven/\t0/" -e "s/\todd/\t1/ " \
 	> $@.gen
-	# PARM1=parity, PARM2=central
+	perl callcode_wiki.pl -p 2 $@.gen > $@.wiki
+cfpmid0:
+	perl -ne \
+	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (even) period (2\*m )?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.}) { print "$$1\t$@\t0\t$$7\n" }' \
+	$(COMMON)/names \
+	> $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+cfpmid1:
+	perl -ne \
+	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (odd) period (2\*m\s?\+\s?1)?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.}) { print "$$1\t$@\t0\t$$7\n" }' \
+	$(COMMON)/names \
+	> $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+cfp_dww:
+	# make -f gener.make select CC=cfpmidpar
+	$(DBAT) "SELECT s.aseqno, s.parm1, s.parm2 , CAST(s.parm2 AS INT)*CAST(s.parm2 AS INT)+1, \
+		substr(d.data, 1, 10) FROM seq4 s, asdata d \
+		WHERE s.aseqno = d.aseqno \
+		  AND substr(d.data, 1, 10) LIKE CAST(CAST(s.parm2 AS INT)*CAST(s.parm2 AS INT)+1 AS CHAR) || '%' \
+		ORDER BY 1"
+mod:
+	perl -ne \
+	'if (m{^(A\d+) Numbers that are congruent to \{?([0-9\-\,]+)}) { print "$$1\t$@\t1\t1\t1\t$$2\n" }' \
+	$(COMMON)/names \
+	> $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #==========================
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp
