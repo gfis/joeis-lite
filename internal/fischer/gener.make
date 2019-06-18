@@ -282,22 +282,13 @@ batch_cfsqrt:
 	make test
 #--------------------------
 dex: dex_impl dex_nimpl
-dex_impl: # names: Annnnnn Decimal expansion of ... and in jOEIS
-	$(DBAT) "SELECT a.aseqno, n.name, j.superclass, a.keyword \
-		FROM asinfo a, asname n, joeis j \
+dex_sel: # names: Annnnnn Decimal expansion of ... and in jOEIS
+	$(DBAT) "SELECT a.aseqno, substr(j.superclass, 1, 8), n.name, a.keyword \
+		FROM asinfo a, bfinfo b, asname n LEFT JOIN joeis j ON n.aseqno = j.aseqno \
 		WHERE a.aseqno = n.aseqno \
-		  AND n.aseqno = j.aseqno \
-		  AND keyword LIKE '%cons%' \
-		ORDER BY 1" \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
-dex_nimpl: # names: Annnnnn Decimal expansion of ... and NOT in jOEIS
-	$(DBAT) "SELECT a.aseqno, n.name, a.keyword \
-		FROM asinfo a, asname n\
-		WHERE a.aseqno = n.aseqno \
-		  AND n.aseqno NOT IN (SELECT aseqno FROM joeis) \
-		  AND keyword LIKE '%cons%' \
+		  AND b.aseqno = n.aseqno \
+		  AND a.keyword LIKE '%cons%' \
+		  AND b.maxlen = 1 \
 		ORDER BY 1" \
 	>       $@.tmp
 	head -4 $@.tmp
@@ -313,6 +304,28 @@ dex_joeis:
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
+#--------
+juxall:
+	grep -Ei "(Champernowne|juxtapose)" $(COMMON)/names > $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+#----
+juxn:
+	perl -ne \
+	'if (m{^(A\d+)\s+(The almost\-natural numbers\: )?[Ww]rite n in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$3) . "\n" }' \
+	$(COMMON)/names \
+	> $@.gen
+	wc -l $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+juxdig12b:
+	perl -ne \
+	'if (m{^(A\d+)\s+(Numbers n such that )?(\d+) and (\d+) occur juxtaposed in the base (\d+) representation of n but not of n([\-\+]1)\.}) { print join("\t", $$1, "$@", 1, $$3, $$4, $$5, $$6) . "\n" }' \
+	$(COMMON)/names \
+	| sed -e "s/\t\-1/\tsubtract/" -e "s/\t+1/\tadd/ " \
+	> $@.gen
+	wc -l $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
