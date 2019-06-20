@@ -112,3 +112,5 @@ strip: # attach terms from 'stripped' to A-numbers for BatchTest
 	head -n4  $@.txt
 	wc -l     $@.txt
 #----
+update: purge
+	find src

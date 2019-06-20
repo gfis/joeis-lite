@@ -162,7 +162,6 @@ public final class ZUtils {
 
   /**
    * Reverse the digits of a number in specified base.
-   *
    * @param n number to reverse
    * @param base base to use
    * @return reversed number
@@ -181,7 +180,6 @@ public final class ZUtils {
 
   /**
    * Reverse the decimal digits of a number.
-   *
    * @param n number to reverse
    * @return reversed number
    */
@@ -190,9 +188,7 @@ public final class ZUtils {
   }
 
   /**
-   * Describe the number. For example, 3445, is one 3, two 4s, one 5 to give
-   * 132415.
-   *
+   * Describe the number. For example, 3445, is one 3, two 4s, one 5 to give 132415.
    * @param n number to describe
    * @return description of the number
    */
@@ -220,16 +216,27 @@ public final class ZUtils {
    * of the digits in the number.  That is, all permutations of the same
    * digits will have the same syndrome.
    *
-   * @param n number to get syndrome of
+   * @param s string to get syndrome of
    * @return the syndrome
    */
-  public static String syndrome(final Z n) {
-    final String s = n.toString();
+  public static String syndrome(final String s) {
     final int[] c = new int[10];
     for (int k = 0; k < s.length(); ++k) {
       c[s.charAt(k) - '0']++;
     }
     return Arrays.toString(c);
+  }
+
+  /**
+   * Return a string that has the same value independent of the permutation
+   * of the digits in the number.  That is, all permutations of the same
+   * digits will have the same syndrome.
+   *
+   * @param n number to get syndrome of
+   * @return the syndrome
+   */
+  public static String syndrome(final Z n) {
+    return syndrome(n.toString());
   }
 
   /**

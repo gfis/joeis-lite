@@ -1,4 +1,3 @@
-// 2019-06-12, Georg Fischer: Z[] recurrence, was long[]
 package irvine.oeis;
 
 import java.util.Arrays;
@@ -16,7 +15,7 @@ public class LinearRecurrence implements Sequence {
 
   private Z[] mPreTerms;
   private Z[] mPrev;
-  private Z[] mRecur;
+  private long[] mRecur;
   private int mN;
 
   private static void checkLength(final int a, final int b) {
@@ -31,7 +30,7 @@ public class LinearRecurrence implements Sequence {
    * @param terms initial terms of the recurrence
    * @param preTerms terms to produce before the recurrence
    */
-  protected LinearRecurrence(final Z[] recurrence, final Z[] terms, final Z... preTerms) {
+  protected LinearRecurrence(final long[] recurrence, final Z[] terms, final Z... preTerms) {
     checkLength(recurrence.length, terms.length);
     mPreTerms = Arrays.copyOf(preTerms, preTerms.length);
     mPrev = Arrays.copyOf(terms, terms.length);
@@ -45,18 +44,8 @@ public class LinearRecurrence implements Sequence {
    * @param terms initial terms of the recurrence
    * @param preTerms terms to produce before the recurrence
    */
-  protected LinearRecurrence(final long[] recurrence, final Z[] terms, final Z... preTerms) {
-    this(ZUtils.toZ(recurrence), terms, preTerms);
-  }
-
-  /**
-   * Construct the specified recurrence.
-   * @param recurrence multipliers on the coefficients with the oldest term first
-   * @param terms initial terms of the recurrence
-   * @param preTerms terms to produce before the recurrence
-   */
   public LinearRecurrence(final long[] recurrence, final long[] terms, final long... preTerms) {
-    this(ZUtils.toZ(recurrence), ZUtils.toZ(terms), ZUtils.toZ(preTerms));
+    this(recurrence, ZUtils.toZ(terms), ZUtils.toZ(preTerms));
   }
 
   /**
@@ -65,7 +54,7 @@ public class LinearRecurrence implements Sequence {
    * @param terms initial terms of the recurrence
    */
   public LinearRecurrence(final long[] recurrence, final long[] terms) {
-    this(ZUtils.toZ(recurrence), ZUtils.toZ(terms), EMPTY);
+    this(recurrence, ZUtils.toZ(terms), EMPTY);
   }
 
   /**
@@ -74,7 +63,7 @@ public class LinearRecurrence implements Sequence {
    * @param terms initial terms of the recurrence
    */
   protected LinearRecurrence(final long[] recurrence, final Z[] terms) {
-    this(ZUtils.toZ(recurrence), terms, EMPTY);
+    this(recurrence, terms, EMPTY);
   }
 
   @Override

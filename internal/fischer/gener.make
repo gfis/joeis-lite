@@ -305,6 +305,20 @@ dex_joeis:
 	head -4 $@.tmp
 	wc   -l $@.tmp
 #--------
+# A030801 [ exp(17/24)*n! ].
+# A030802 a(n) = floor( exp(13/24)*n! ).
+# A030810 Floor(exp(19/23) * n!).
+
+flexfact:
+	perl -ne \
+	'if (m{^(A\d+)\s+\[\s*exp\((\d+)\/(\d+)\)\s*\*\s*n\s*\!\s*\]}) { print join("\t", $$1, "$@", 0, $$2, $$3) . "\n" }' \
+	$(COMMON)/names \
+	> $@.gen
+	perl -ne \
+	'if (m{^(A\d+)\s+(a\(n\)\s*\=\s*)?[fF]loor\s*\(\s*exp\(\s*(\d+)\/(\d+)\)\s*\*\s*n\!\s*\)}) { print join("\t", $$1, "$@", 0, $$3, $$4) . "\n" }' \
+	$(COMMON)/names \
+	| tee -a $@.gen
+#--------
 juxall:
 	grep -Ei "(Champernowne|juxtapose)" $(COMMON)/names > $@.tmp
 	head -4 $@.tmp
@@ -326,6 +340,13 @@ juxdig12b:
 	> $@.gen
 	wc -l $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#--------------------------
+palb:
+	perl -ne \
+	'if (m{^(A\d+)\s+.*palindrom(es|ic)\s+in\s+base\s+(\d+)}) { print join("\t", $$1, "$@", 1, $$3) . "\n" }' \
+	$(COMMON)/names \
+	> $@.gen
+	wc -l $@.gen
 #--------------------------
 polyn:
 	cat $(COMMON)/names \

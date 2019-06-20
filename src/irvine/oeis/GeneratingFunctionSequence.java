@@ -1,6 +1,5 @@
-/* Ordinary generating functions
+/* Coxeter group sequences
  * @(#) $Id$
- * 2019-05-25: negative offsets
  * 2019-05-11: Georg Fischer, 3rd parameter offset
  * 2019-05-10: Sean Irvine, Z parameters
  * 2019-05-09: Georg Fischer
@@ -32,17 +31,12 @@ public class GeneratingFunctionSequence implements Sequence {
    * @param den denominator
    */
   public GeneratingFunctionSequence(final int offset, final Z[] num, final Z[] den) {
-    mIndex = 0; // assume offset 0
-    int inzDen = 0; // index of first element in <em>den</em> which is not zero
-    while (inzDen < den.length - 1 && den[inzDen].equals(Z.ZERO)) { // care for negative offsets
-        inzDen ++;
-        mIndex --;
-    } // while ZERO
-    mNum = Arrays.copyOfRange(num, 0     , num.length); // copy because this class modifies num
-    mDen = Arrays.copyOfRange(den, inzDen, den.length);
+    mNum = Arrays.copyOf(num, num.length); // copy because this class modifies num
+    mDen = Arrays.copyOf(den, den.length);
+    mIndex = 0;
     while (mIndex < offset) { // skip over leading coefficients
       next();
-      ++ mIndex;
+      ++mIndex;
     } // while
   }
 

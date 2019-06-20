@@ -66,6 +66,8 @@ purge: # remove all oeis/annn directories
 	rm -vf *.bak
 dist:
 	cd ../.. ; ant dist 
+update: purge
+	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
 cfstest:
 	java -cp ../../dist/joeis-lite.jar irvine.oeis.SqrtContinuedFraction $(TEST)
 #---------------------------

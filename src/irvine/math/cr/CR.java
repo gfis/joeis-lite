@@ -673,6 +673,18 @@ public abstract class CR extends Number implements Comparable<CR> {
     }
   }
 
+  private static final int DEFAULT_FLOOR_EXTRA_BITS = 64;
+
+  /**
+   * Return the floor function of this computable real accurate to 64-bits
+   * beyond the decimal point.  The value can be out by 1 if the value is
+   * very close to an integer.
+   * @return floor of the computable real
+   */
+  public Z floor() {
+    return floor(toZ().bitLength() + DEFAULT_FLOOR_EXTRA_BITS);
+  }
+
   /**
    * Return the ceiling function of this computable real accurate to the given
    * precision.  The value can be out by 1 if the value is very close to an
@@ -687,6 +699,25 @@ public abstract class CR extends Number implements Comparable<CR> {
     } else {
       return approx.add(Z.ONE.shiftLeft(precision).subtract(1)).shiftRight(precision);
     }
+  }
+
+  /**
+   * Return the ceiling function of this computable real accurate to the given
+   * precision.  The value can be out by 1 if the value is very close to an
+   * integer.
+   * @return floor of the computable real
+   */
+  public Z ceil() {
+    return ceil(toZ().bitLength() + DEFAULT_FLOOR_EXTRA_BITS);
+  }
+
+  /**
+   * Return the nearest integer to this number.
+   * @return rounded value
+   */
+  public Z round() {
+    final int sign = toZ().signum();
+    return sign >= 0 ? subtract(CR.HALF).ceil() : add(CR.HALF).floor();
   }
 
   /**

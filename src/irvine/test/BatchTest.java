@@ -31,7 +31,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.13";
+  private static String VERSION = "BatchTest V1.14";
 
   /** A-number of sequence currently tested */
   private String  aseqno;

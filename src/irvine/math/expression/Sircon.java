@@ -1,3 +1,6 @@
+/* Stripped-down version for joeis-lite withozt ANTLR classes
+ * 2019-04-09, Georg Fischer
+ */ 
 package irvine.math.expression;
 /*
 import org.antlr.v4.runtime.ANTLRInputStream;
