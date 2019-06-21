@@ -88,7 +88,7 @@ while (<>) { # read inputfile
     $copy =~ s{\$\(ASEQNO\)}    {$aseqno}g;
     $copy =~ s{\$\(AUTHOR\)}    {$author}g;
     $copy =~ s{\$\(CALLCODE\)}  {$callcode}g;
-    $copy =~ s{\$\(DATE\)}      {$timestamp}g;
+    $copy =~ s{\$\(GEN\)}       {$0}g;
     $copy =~ s{\$\(PROG\)}      {$program}g;
     $copy =~ s{\$\(NAME\)}      {$name}g;
     $copy =~ s{\$\(OFFSET\)}    {$offset}g;

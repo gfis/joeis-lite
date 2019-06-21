@@ -1,0 +1,504 @@
+A007494	mod	0	1	1	0		Numbers that are congruent to 0 or 2 mod 3.
+A008854	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4} mod 5.
+A029739	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4} mod 6.
+A032766	mod	0	1	1	0		Numbers that are congruent to 0 or 1 (mod 3).
+A032769	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4} mod 5.
+A032775	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 5, 6} mod 7.
+A032793	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4} mod 5.
+A032796	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 5, 6} mod 7.
+A047202	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4} mod 5.
+A047203	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4} mod 5.
+A047204	mod	1	1	1	3,		Numbers that are congruent to {3, 4} mod 5.
+A047205	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4} mod 5.
+A047206	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4} mod 5.
+A047207	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4} mod 5.
+A047208	mod	1	1	1	0,		Numbers that are congruent to {0, 4} mod 5.
+A047209	mod	1	1	1	1,		Numbers that are congruent to {1, 4} mod 5.
+A047211	mod	1	1	1	2,		Numbers that are congruent to {2, 4} mod 5.
+A047212	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4} mod 5.
+A047215	mod	0	1	1	0,		Numbers that are congruent to {0, 2} mod 5.
+A047216	mod	1	1	1	1,		Numbers that are congruent to {1, 2} mod 5.
+A047217	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2} mod 5.
+A047218	mod	1	1	1	0,		Numbers that are congruent to {0, 3} mod 5.
+A047219	mod	1	1	1	1,		Numbers that are congruent to {1, 3} mod 5.
+A047220	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3} mod 5.
+A047221	mod	1	1	1	2,		Numbers that are congruent to {2, 3} mod 5.
+A047222	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3} mod 5.
+A047223	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3} mod 5.
+A047225	mod	1	1	1	0,		Numbers that are congruent to {0, 1} mod 6.
+A047226	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4} mod 6; a(n)=floor(6(n-1)/5).
+A047227	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4} mod 6.
+A047228	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4} mod 6.
+A047229	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4} mod 6.
+A047230	mod	1	1	1	3,		Numbers that are congruent to {3, 4} mod 6.
+A047231	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4} mod 6.
+A047233	mod	1	1	1	0,		Numbers that are congruent to {0, 4} mod 6.
+A047234	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4} mod 6.
+A047235	mod	1	1	1	2,		Numbers that are congruent to {2, 4} mod 6.
+A047236	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4} mod 6.
+A047237	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4} mod 6.
+A047238	mod	1	1	1	0,		Numbers that are congruent to {0, 2} mod 6.
+A047239	mod	1	1	1	1,		Numbers that are congruent to {1, 2} mod 6.
+A047240	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2} mod 6.
+A047241	mod	1	1	1	1,		Numbers that are congruent to {1, 3} mod 6.
+A047242	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3} mod 6.
+A047243	mod	1	1	1	2,		Numbers that are congruent to {2, 3} mod 6.
+A047244	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3} mod 6.
+A047245	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3} mod 6.
+A047246	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3} mod 6.
+A047247	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 5} mod 6.
+A047248	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 5} mod 6.
+A047249	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 5} mod 6.
+A047250	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 5} mod 6.
+A047251	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 5} mod 6.
+A047252	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 5} mod 6.
+A047253	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 5} mod 6.
+A047254	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 5} mod 6.
+A047255	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 5} mod 6.
+A047256	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 5} mod 6.
+A047257	mod	1	1	1	4,		Numbers that are congruent to {4, 5} mod 6.
+A047258	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 5} mod 6.
+A047259	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 5} mod 6.
+A047260	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 5} mod 6.
+A047261	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 5} mod 6.
+A047262	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5} mod 6.
+A047263	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 5} mod 6.
+A047264	mod	1	1	1	0		Numbers that are congruent to 0 or 5 mod 6.
+A047266	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 5} mod 6.
+A047267	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 5} mod 6.
+A047268	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 5} mod 6.
+A047269	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 5} mod 6.
+A047270	mod	1	1	1	3,		Numbers that are congruent to {3, 5} mod 6.
+A047271	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 5} mod 6.
+A047273	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5} mod 6.
+A047274	mod	1	1	1	0,		Numbers that are congruent to {0, 1} mod 7.
+A047275	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 6} mod 7.
+A047276	mod	1	1	1	2,		Numbers that are congruent to {2, 6} mod 7.
+A047277	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 6} mod 7.
+A047278	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 6} mod 7.
+A047279	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 6} mod 7.
+A047280	mod	1	1	1	3,		Numbers that are congruent to {3, 6} mod 7.
+A047281	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 6} mod 7.
+A047282	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 6} mod 7.
+A047283	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 6} mod 7.
+A047284	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 6} mod 7.
+A047285	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 6} mod 7.
+A047286	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 6} mod 7.
+A047287	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 6} mod 7.
+A047288	mod	1	1	1	4,		Numbers that are congruent to {4, 6} mod 7.
+A047289	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 6} mod 7.
+A047290	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 6} mod 7.
+A047291	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 6} mod 7.
+A047292	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 6} mod 7.
+A047293	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 6} mod 7.
+A047294	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 6} mod 7.
+A047295	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 6} mod 7.
+A047296	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 6} mod 7.
+A047297	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 6} mod 7.
+A047298	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 6} mod 7.
+A047299	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 6} mod 7.
+A047300	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 6} mod 7.
+A047301	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 6} mod 7.
+A047302	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 6} mod 7.
+A047303	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4, 6} mod 7.
+A047305	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 5, 6} mod 7.
+A047306	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 5, 6} mod 7.
+A047307	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 5, 6} mod 7.
+A047308	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 5, 6} mod 7.
+A047309	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 5, 6} mod 7.
+A047310	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 5, 6} mod 7.
+A047311	mod	1	1	1	4,		Numbers that are congruent to {4, 5, 6} mod 7.
+A047312	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 5, 6} mod 7.
+A047313	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 5, 6} mod 7.
+A047314	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 5, 6} mod 7.
+A047315	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 5, 6} mod 7.
+A047316	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5, 6} mod 7.
+A047317	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 5, 6} mod 7.
+A047318	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 5, 6} mod 7.
+A047319	mod	1	1	1	5,		Numbers that are congruent to {5, 6} mod 7.
+A047320	mod	1	1	1	0,		Numbers that are congruent to {0, 5, 6} mod 7.
+A047321	mod	1	1	1	1,		Numbers that are congruent to {1, 5, 6} mod 7.
+A047322	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 5, 6} mod 7.
+A047323	mod	1	1	1	2,		Numbers that are congruent to {2, 5, 6} mod 7.
+A047324	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 5, 6} mod 7.
+A047325	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 5, 6} mod 7.
+A047326	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 5, 6} mod 7.
+A047327	mod	1	1	1	3,		Numbers that are congruent to {3, 5, 6} mod 7.
+A047328	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 5, 6} mod 7.
+A047329	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 5, 6} mod 7.
+A047330	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5, 6} mod 7.
+A047331	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 5, 6} mod 7.
+A047332	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5, 6} mod 7.
+A047335	mod	1	1	1	0,		Numbers that are congruent to {0, 6} mod 7.
+A047336	mod	1	1	1	1,		Numbers that are congruent to {1, 6} mod 7.
+A047337	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4} mod 7.
+A047338	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4} mod 7.
+A047339	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4} mod 7.
+A047340	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4} mod 7.
+A047341	mod	1	1	1	3,		Numbers that are congruent to {3, 4} mod 7.
+A047342	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4} mod 7.
+A047343	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4} mod 7.
+A047344	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4} mod 7.
+A047345	mod	1	1	1	0,		Numbers that are congruent to {0, 4} mod 7.
+A047346	mod	1	1	1	1,		Numbers that are congruent to {1, 4} mod 7.
+A047347	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4} mod 7.
+A047348	mod	1	1	1	2,		Numbers that are congruent to {2, 4} mod 7.
+A047349	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4} mod 7.
+A047350	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4} mod 7.
+A047351	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4} mod 7.
+A047352	mod	1	1	1	0,		Numbers that are congruent to {0, 2} mod 7.
+A047353	mod	1	1	1	1,		Numbers that are congruent to {1, 2} mod 7.
+A047354	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2} mod 7.
+A047355	mod	1	1	1	0,		Numbers that are congruent to {0, 3} mod 7.
+A047356	mod	1	1	1	1,		Numbers that are congruent to {1, 3} mod 7.
+A047357	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3} mod 7.
+A047358	mod	1	1	1	2,		Numbers that are congruent to {2, 3} mod 7.
+A047359	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3} mod 7.
+A047360	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3} mod 7.
+A047361	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3} mod 7.
+A047362	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 5} mod 7.
+A047363	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 5} mod 7.
+A047364	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 5} mod 7.
+A047365	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 5} mod 7.
+A047366	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 5} mod 7.
+A047367	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 5} mod 7.
+A047368	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4, 5} mod 7; a(n)=floor(7(n-1)/6).
+A047369	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 5} mod 7.
+A047370	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 5} mod 7.
+A047371	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5} mod 7.
+A047372	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 5} mod 7.
+A047373	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 5} mod 7.
+A047374	mod	1	1	1	4,		Numbers that are congruent to {4, 5} mod 7.
+A047375	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 5} mod 7.
+A047376	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 5} mod 7.
+A047377	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 5} mod 7.
+A047378	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 5} mod 7.
+A047379	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5} mod 7.
+A047380	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 5} mod 7.
+A047381	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 5} mod 7.
+A047382	mod	1	1	1	0,		Numbers that are congruent to {0, 5} mod 7.
+A047383	mod	1	1	1	1,		Numbers that are congruent to {1, 5} mod 7.
+A047384	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 5} mod 7.
+A047385	mod	1	1	1	2,		Numbers that are congruent to {2, 5} mod 7.
+A047386	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 5} mod 7.
+A047387	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 5} mod 7.
+A047388	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 5} mod 7.
+A047389	mod	1	1	1	3,		Numbers that are congruent to {3, 5} mod 7.
+A047390	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 5} mod 7.
+A047391	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 5} mod 7.
+A047392	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5} mod 7.
+A047393	mod	1	1	1	0,		Numbers that are congruent to {0, 1} mod 8.
+A047394	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 6} mod 8.
+A047395	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 6} mod 8.
+A047396	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 6} mod 8.
+A047397	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 6} mod 8.
+A047398	mod	1	1	1	3,		Numbers that are congruent to {3, 6} mod 8.
+A047399	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 6} mod 8.
+A047400	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 6} mod 8.
+A047401	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 6} mod 8.
+A047402	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 6} mod 8.
+A047403	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 6} mod 8.
+A047404	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 6} mod 8.
+A047405	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 6} mod 8.
+A047406	mod	1	1	1	4,		Numbers that are congruent to {4, 6} mod 8.
+A047407	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 6} mod 8.
+A047408	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 6} mod 8.
+A047409	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 6} mod 8.
+A047410	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 6} mod 8.
+A047411	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 6} mod 8.
+A047412	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 6} mod 8.
+A047413	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 6} mod 8.
+A047414	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 6} mod 8.
+A047415	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 6} mod 8.
+A047416	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 6} mod 8.
+A047417	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 6} mod 8.
+A047418	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 6} mod 8.
+A047419	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 6} mod 8.
+A047420	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4, 6} mod 8.
+A047422	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 5, 6} mod 8.
+A047423	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 5, 6} mod 8.
+A047424	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 5, 6} mod 8.
+A047425	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 5, 6} mod 8.
+A047426	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 5, 6} mod 8.
+A047427	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 5, 6} mod 8.
+A047428	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 5, 6} mod 8.
+A047429	mod	1	1	1	4,		Numbers that are congruent to {4, 5, 6} mod 8.
+A047430	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 5, 6} mod 8.
+A047431	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 5, 6} mod 8.
+A047432	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 5, 6} mod 8.
+A047433	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 5, 6} mod 8.
+A047434	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5, 6} mod 8.
+A047435	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 5, 6} mod 8.
+A047436	mod	1	1	1	5,		Numbers that are congruent to {5, 6} mod 8.
+A047437	mod	1	1	1	0,		Numbers that are congruent to {0, 5, 6} mod 8.
+A047438	mod	1	1	1	1,		Numbers that are congruent to {1, 5, 6} mod 8.
+A047439	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 5, 6} mod 8.
+A047440	mod	1	1	1	2,		Numbers that are congruent to {2, 5, 6} mod 8.
+A047441	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 5, 6} mod 8.
+A047442	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 5, 6} mod 8.
+A047443	mod	1	1	1	3,		Numbers that are congruent to {3, 5, 6} mod 8.
+A047444	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 5, 6} mod 8.
+A047445	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 5, 6} mod 8.
+A047446	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5, 6} mod 8.
+A047447	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 5, 6} mod 8.
+A047448	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5, 6} mod 8.
+A047450	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 5, 6} mod 8.
+A047451	mod	1	1	1	0,		Numbers that are congruent to {0, 6} mod 8.
+A047452	mod	1	1	1	1,		Numbers that are congruent to {1, 6} mod 8.
+A047453	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4} mod 8.
+A047454	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4} mod 8.
+A047455	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4} mod 8.
+A047456	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4} mod 8.
+A047457	mod	1	1	1	3,		Numbers that are congruent to {3, 4} mod 8.
+A047458	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4} mod 8.
+A047459	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4} mod 8.
+A047460	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4} mod 8.
+A047461	mod	1	1	1	1,		Numbers that are congruent to {1, 4} mod 8.
+A047462	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4} mod 8.
+A047463	mod	1	1	1	2,		Numbers that are congruent to {2, 4} mod 8.
+A047464	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4} mod 8.
+A047465	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4} mod 8.
+A047466	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4} mod 8.
+A047467	mod	1	1	1	0,		Numbers that are congruent to {0, 2} mod 8.
+A047468	mod	1	1	1	1,		Numbers that are congruent to {1, 2} mod 8.
+A047469	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2} mod 8.
+A047470	mod	1	1	1	0,		Numbers that are congruent to {0, 3} mod 8.
+A047471	mod	1	1	1	1,		Numbers that are congruent to {1, 3} mod 8.
+A047472	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3} mod 8.
+A047473	mod	1	1	1	2,		Numbers that are congruent to {2, 3} mod 8.
+A047474	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3} mod 8.
+A047475	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3} mod 8.
+A047476	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3} mod 8.
+A047477	mod	1	1	1	0,		Numbers that are congruent to {0, 5, 7} mod 8.
+A047478	mod	1	1	1	1,		Numbers that are congruent to {1, 5, 7} mod 8.
+A047479	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 5, 7} mod 8.
+A047480	mod	1	1	1	2,		Numbers that are congruent to {2, 5, 7} mod 8.
+A047481	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 5, 7} mod 8.
+A047482	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 5, 7} mod 8.
+A047483	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 5, 7} mod 8.
+A047484	mod	1	1	1	3,		Numbers that are congruent to {3, 5, 7} mod 8.
+A047485	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 5, 7} mod 8.
+A047486	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5, 7} mod 8.
+A047487	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 5, 7} mod 8.
+A047488	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5, 7} mod 8.
+A047489	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 5, 7} mod 8.
+A047490	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 5, 7} mod 8.
+A047491	mod	1	1	1	4,		Numbers that are congruent to {4, 5, 7} mod 8.
+A047492	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 5, 7} mod 8.
+A047493	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 5, 7} mod 8.
+A047494	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 5, 7} mod 8.
+A047495	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 5, 7} mod 8.
+A047496	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5, 7} mod 8.
+A047497	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 5, 7} mod 8.
+A047498	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 5, 7} mod 8.
+A047499	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 5, 7} mod 8.
+A047500	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 5, 7} mod 8.
+A047501	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 5, 7} mod 8.
+A047502	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 5, 7} mod 8.
+A047503	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 5, 7} mod 8.
+A047504	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 5, 7} mod 8.
+A047505	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 6, 7} mod 8.
+A047506	mod	1	1	1	4,		Numbers that are congruent to {4, 6, 7} mod 8.
+A047507	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 6, 7} mod 8.
+A047508	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 6, 7} mod 8.
+A047509	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 6, 7} mod 8.
+A047510	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 6, 7} mod 8.
+A047511	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 6, 7} mod 8.
+A047512	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 6, 7} mod 8.
+A047513	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 6, 7} mod 8.
+A047514	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 6, 7} mod 8.
+A047515	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 6, 7} mod 8.
+A047516	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 6, 7} mod 8.
+A047517	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 6, 7} mod 8.
+A047518	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 6, 7} mod 8.
+A047519	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 6, 7} mod 8.
+A047521	mod	1	1	1	0,		Numbers that are congruent to {0, 7} mod 8.
+A047522	mod	1	1	1	1,		Numbers that are congruent to {1, 7} mod 8.
+A047523	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 7} mod 8.
+A047524	mod	1	1	1	2,		Numbers that are congruent to {2, 7} mod 8.
+A047525	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 7} mod 8.
+A047526	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 7} mod 8.
+A047527	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 7} mod 8.
+A047528	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 7} mod 8.
+A047529	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 7} mod 8.
+A047530	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 7} mod 8.
+A047531	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 7} mod 8.
+A047532	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 7} mod 8.
+A047533	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 7} mod 8.
+A047534	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 7} mod 8.
+A047535	mod	1	1	1	4,		Numbers that are congruent to {4, 7} mod 8.
+A047536	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 7} mod 8.
+A047537	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 7} mod 8.
+A047538	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 7} mod 8.
+A047539	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 7} mod 8.
+A047540	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 7} mod 8.
+A047541	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 7} mod 8.
+A047542	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 7} mod 8.
+A047543	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 7} mod 8.
+A047544	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 7} mod 8.
+A047545	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 7} mod 8.
+A047546	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 7} mod 8.
+A047547	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 7} mod 8.
+A047548	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 7} mod 8.
+A047549	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4, 7} mod 8.
+A047550	mod	1	1	1	5,		Numbers that are congruent to {5, 7} mod 8.
+A047551	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 6, 7} mod 8.
+A047552	mod	1	1	1	2,		Numbers that are congruent to {2, 6, 7} mod 8.
+A047553	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 6, 7} mod 8.
+A047554	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 6, 7} mod 8.
+A047555	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 6, 7} mod 8.
+A047556	mod	1	1	1	3,		Numbers that are congruent to {3, 6, 7} mod 8.
+A047557	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 6, 7} mod 8.
+A047558	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 6, 7} mod 8.
+A047559	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 6, 7} mod 8.
+A047560	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 6, 7} mod 8.
+A047561	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 6, 7} mod 8.
+A047562	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 5, 6, 7} mod 8.
+A047563	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 5, 6, 7} mod 8.
+A047564	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 5, 6, 7} mod 8.
+A047565	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 5, 6, 7} mod 8.
+A047566	mod	1	1	1	4,		Numbers that are congruent to {4, 5, 6, 7} mod 8.
+A047567	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 5, 6, 7} mod 8.
+A047568	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 5, 6, 7} mod 8.
+A047569	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 5, 6, 7} mod 8.
+A047570	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 5, 6, 7} mod 8.
+A047571	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5, 6, 7} mod 8.
+A047572	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 5, 6, 7} mod 8.
+A047573	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 5, 6, 7} mod 8.
+A047574	mod	1	1	1	5,		Numbers that are congruent to {5, 6, 7} mod 8.
+A047575	mod	1	1	1	0,		Numbers that are congruent to {0, 5, 6, 7} mod 8.
+A047576	mod	1	1	1	1,		Numbers that are congruent to {1, 5, 6, 7} mod 8.
+A047577	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 5, 6, 7} mod 8.
+A047578	mod	1	1	1	2,		Numbers that are congruent to {2, 5, 6, 7} mod 8.
+A047579	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 5, 6, 7} mod 8.
+A047580	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 5, 6, 7} mod 8.
+A047581	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 5, 6, 7} mod 8.
+A047582	mod	1	1	1	3,		Numbers that are congruent to {3, 5, 6, 7} mod 8.
+A047583	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 5, 6, 7} mod 8.
+A047584	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 5, 6, 7} mod 8.
+A047585	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5, 6, 7} mod 8.
+A047586	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 5, 6, 7} mod 8.
+A047587	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5, 6, 7} mod 8.
+A047588	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 5, 6, 7} mod 8.
+A047589	mod	1	1	1	6,		Numbers that are congruent to {6, 7} mod 8.
+A047590	mod	1	1	1	0,		Numbers that are congruent to {0, 6, 7} mod 8.
+A047591	mod	1	1	1	1,		Numbers that are congruent to {1, 6, 7} mod 8.
+A047592	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 5, 6, 7} mod 8.
+A047593	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 5, 6, 7} mod 8.
+A047594	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 5, 6, 7} mod 8.
+A047595	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4, 5, 7} mod 8.
+A047596	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 4, 5} mod 8.
+A047597	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 4, 5} mod 8.
+A047598	mod	1	1	1	3,		Numbers that are congruent to {3, 4, 5} mod 8.
+A047599	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 5} mod 8.
+A047600	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 4, 5} mod 8.
+A047601	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 4, 5} mod 8.
+A047602	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 4, 5} mod 8.
+A047603	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 4, 5} mod 8.
+A047604	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 5} mod 8.
+A047605	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5} mod 8.
+A047606	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 3, 5} mod 8.
+A047607	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 3, 5} mod 8.
+A047608	mod	1	1	1	4,		Numbers that are congruent to {4, 5} mod 8.
+A047609	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 5} mod 8.
+A047611	mod	1	1	1	2,		Numbers that are congruent to {2, 4, 5} mod 8.
+A047612	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5} mod 8.
+A047613	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 4, 5} mod 8.
+A047614	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 4, 5} mod 8.
+A047615	mod	1	1	1	0,		Numbers that are congruent to {0, 5} mod 8.
+A047616	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 5} mod 8.
+A047617	mod	1	1	1	2,		Numbers that are congruent to {2, 5} mod 8.
+A047618	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 5} mod 8.
+A047619	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 5} mod 8.
+A047620	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 2, 5} mod 8.
+A047621	mod	1	1	1	3,		Numbers that are congruent to {3, 5} mod 8.
+A047622	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 5} mod 8.
+A047623	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 5} mod 8.
+A047624	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5} mod 8.
+A054966	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 8} mod 9.
+A054967	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 9} mod 10.
+A056081	mod	1	1	1	1,26		Numbers that are congruent to {1,26} mod 27.
+A060107	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5, 7, 8, 10} mod 12. The ivory keys on a piano.
+A078309	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 7} mod 10.
+A082977	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5, 6, 8, 10} mod 12.
+A083026	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5, 7, 9, 11} mod 12.
+A083028	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5, 7, 8, 11} mod 12.
+A083030	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 7} mod 12.
+A083031	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 7} mod 12.
+A083032	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 7, 10} mod 12.
+A083033	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5, 7, 9, 10} mod 12.
+A083034	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5, 7, 8, 10} mod 12.
+A083089	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 6, 7, 9, 11} mod 12.
+A083120	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 5, 7, 9, 10} mod 12.
+A087444	mod	1	1	1	1,		Numbers that are congruent to {1, 4} mod 9.
+A087445	mod	1	1	1	1		Numbers that are congruent to 1 or 5 mod 12.
+A087446	mod	1	1	1	1,		Numbers that are congruent to {1, 6} mod 15.
+A090570	mod	1	1	1	0,		Numbers that are congruent to {0, 1} mod 9.
+A090771	mod	1	1	1	1,		Numbers that are congruent to {1, 9} mod 10.
+A090772	mod	1	1	1	2,		Numbers that are congruent to {2, 8} mod 10.
+A090773	mod	1	1	1	4,		Numbers that are congruent to {4, 6} mod 10.
+A091998	mod	1	1	1	1,		Numbers that are congruent to {1, 11} mod 12.
+A091999	mod	1	1	1	2,		Numbers that are congruent to {2, 10} mod 12.
+A092242	mod	1	1	1	5,		Numbers that are congruent to {5, 7} mod 12.
+A092259	mod	1	1	1	4,		Numbers that are congruent to {4, 8} mod 12.
+A092476	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 9} mod 13.
+A096022	mod	1	1	1	15,		Numbers that are congruent to {15, 27, 39, 51} mod 60.
+A113801	mod	1	1	1	1,		Numbers that are congruent to {1, 13} mod 14.
+A113802	mod	1	1	1	2,		Numbers that are congruent to {2, 12} mod 14.
+A113803	mod	1	1	1	3,		Numbers that are congruent to {3, 11} mod 14.
+A113804	mod	1	1	1	4		Numbers that are congruent to 4 or 10 mod 14.
+A113805	mod	1	1	1	5,		Numbers that are congruent to {5, 9} mod 14.
+A113806	mod	1	1	1	6,		Numbers that are congruent to {6, 8} mod 14.
+A128464	mod	1	1	1	11,		Numbers that are congruent to {11, 17, 29} mod 30.
+A130877	mod	1	1	1	0,		Numbers that are congruent to {0, 5} mod 9.
+A146509	mod	1	1	1	1,		Numbers that are congruent to {1, 5} mod 18.
+A151972	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 6, 10} mod 15.
+A151977	mod	1	1	1	0,		Numbers that are congruent to {0, 1} mod 16.
+A151978	mod	1	1	1	0,		Numbers that are congruent to {0, 1} mod 17.
+A151984	mod	1	1	1	0,		Numbers that are congruent to {0, 1} mod 64.
+A154571	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 4, 5, 7, 8} mod 12.
+A168465	mod	1	1	1	2		Numbers that are congruent to 2 or 7 mod 11.
+A168484	mod	1	1	1	2,		Numbers that are congruent to {2, 3, 5, 7} mod 11.
+A168486	mod	1	1	1	2,		Numbers that are congruent to {2, 5} mod 11.
+A168489	mod	1	1	1	7,11		Numbers that are congruent to {7,11} mod 12.
+A168670	mod	1	1	1	1,		Numbers that are congruent to {1, 8} mod 11.
+A168671	mod	1	1	1	1,		Numbers that are congruent to {1, 10} mod 13.
+A168672	mod	1	1	1	2,13		Numbers that are congruent to {2,13} mod 17.
+A169597	mod	1	1	1	2,		Numbers that are congruent to {2, 15} mod 19.
+A169598	mod	1	1	1	3,18		Numbers that are congruent to {3,18} mod 23.
+A169599	mod	1	1	1	4,		Numbers that are congruent to {4, 23} mod 29.
+A169600	mod	1	1	1	4,		Numbers that are congruent to {4, 25} mod 31.
+A169610	mod	1	1	1	5,		Numbers that are congruent to {5, 30} mod 37.
+A171141	mod	1	1	1	6,33		Numbers that are congruent to {6,33} mod 41.
+A174398	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 5, 8} mod 12.
+A174438	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 5, 8} mod 9.
+A175884	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 4, 7, 9} mod 12.
+A175885	mod	1	1	1	1,		Numbers that are congruent to {1, 10} mod 11.
+A175886	mod	1	1	1	1,		Numbers that are congruent to {1, 12} mod 13.
+A175887	mod	1	1	1	1,		Numbers that are congruent to {1, 14} mod 15.
+A190719	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5, 7, 8, 11} mod 12.
+A190785	mod	1	1	1	0,		Numbers that are congruent to {0, 2, 3, 5, 7, 9, 11} mod 12.
+A191275	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 3, 5, 7, 9, 11} mod 12.
+A191276	mod	1	1	1	0,		Numbers that are congruent to {0, 1, 4, 5, 7, 9, 11} mod 12.
+A197652	mod	1	1	1	0		Numbers that are congruent to 0 or 1 mod 10.
+A204542	mod	1	1	1	1,		Numbers that are congruent to {1, 4, 11, 14} mod 15.
+A227144	mod	1	1	1	1,		Numbers that are congruent to {1, 2, 7, 17, 23} modulo 24.
+A227146	mod	1	1	1	5,		Numbers that are congruent to {5, 11, 13, 14, 19} modulo 24.
+A228137	mod	1	1	1	1,		Numbers that are congruent to {1, 4} mod 12.
+A228141	mod	1	1	1	1,		Numbers that are congruent to {1, 5} mod 20.
+A243520	mod	0	1	1	0,		Numbers that are congruent to {0, 8} mod 11.
+A259749	mod	1	1	1	1,2,5,7,10,11,13,17,19,23		Numbers that are congruent to {1,2,5,7,10,11,13,17,19,23} mod 24.
+A259750	mod	1	1	1	14,22		Numbers that are congruent to {14,22} mod 24.
+A259751	mod	1	1	1	8,16		Numbers that are congruent to {8,16} mod 24.
+A259754	mod	1	1	1	3,9,15,18,21		Numbers that are congruent to {3,9,15,18,21} mod 24.
+A259755	mod	1	1	1	4,20		Numbers that are congruent to {4,20} mod 24.
+A269819	mod	1	1	1	5,		Numbers that are congruent to {5, 11, 13, 19} mod 24.
+A271508	mod	1	1	1	1,4		Numbers that are congruent to {1,4} mod 10.
+A272975	mod	1	1	1	0,7		Numbers that are congruent to {0,7} mod 12.
+A273929	mod	1	1	1	5,		Numbers that are congruent to {5, 6, 7} mod 8 and are squarefree.
+A305859	mod	1	1	1	1,		Numbers that are congruent to {1, 3, 11} mod 12.
+A319279	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 7, 10} mod 12.
+A319280	mod	1	1	1	0,		Numbers that are congruent to {0, 4, 7, 11} mod 12.
+A319451	mod	0	1	1	0,		Numbers that are congruent to {0, 3, 6} mod 12; a(n) = 3*floor(4*n/3).
+A319452	mod	1	1	1	0,		Numbers that are congruent to {0, 3, 6, 10} mod 12.
+A321212	mod	1	1	1	2,		Numbers that are congruent to {2, 3} mod 16.

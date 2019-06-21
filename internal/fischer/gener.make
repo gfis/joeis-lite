@@ -323,13 +323,32 @@ juxall:
 	grep -Ei "(Champernowne|juxtapose)" $(COMMON)/names > $@.tmp
 	head -4 $@.tmp
 	wc -l   $@.tmp
+#--------
+jux: jux2n_1 juxdiff juxdig12b juxleast juxn juxncomp juxpos
 #----
-juxn:
+# A031057		Write 2n-1 in base 8 and juxtapose.	nonn,base,synth
+jux2n_1:
 	perl -ne \
-	'if (m{^(A\d+)\s+(The almost\-natural numbers\: )?[Ww]rite n in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$3) . "\n" }' \
-	$(COMMON)/names \
-	> $@.gen
-	wc -l $@.gen
+	'if (m{^(A\d+)\s+Write (the odd numbers )?(2n\-1) in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$4) . "\n" }' \
+	$(COMMON)/names | tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030413         Write (n+1)st Fibonacci number in base 4 and juxtapose. nonn,synth
+# A030604         Write the Fibonacci numbers in base 6 and juxtapose.    nonn,easy,base,synth
+# A031027         Write the (n+1)st Fibonacci number in base 7 and juxtapose.     nonn,base,synth# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.
+juxfib:
+	perl -ne \
+	'if (m{^(A\d+)\s+Write (the )?(\(n\s*\+\s*1\)st )?Fibonacci numbers? in base (\d+) (for \S+ )?and juxtapose}) { print join("\t", $$1, "$@", 0, $$4) . "\n" }' \
+	$(COMMON)/names | tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030349		(# 1''s)-(# 0''s) in first n terms of A030341.	nonn,synth
+juxdiff:
+	perl -ne \
+	'if (m{^(A\d+)\s+\(\#\s*(\d+)[^\#]+\#\s*(\d+)\S+ in first n terms of (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
+	$(COMMON)/names | tee $@.gen
+#	'if (m{^(A\d+)\s+\(\#\s*(\d+)\x22\x22\w\)-\(\#\s*(\d+)\x22\x22\w\) in first n terms of (A\d+)}) { print join("\t", $$1, "$@", 0, $$4, $$5) . "\n" }' \
+#	$(COMMON)/names | tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 juxdig12b:
@@ -337,6 +356,35 @@ juxdig12b:
 	'if (m{^(A\d+)\s+(Numbers n such that )?(\d+) and (\d+) occur juxtaposed in the base (\d+) representation of n but not of n([\-\+]1)\.}) { print join("\t", $$1, "$@", 1, $$3, $$4, $$5, $$6) . "\n" }' \
 	$(COMMON)/names \
 	| sed -e "s/\t\-1/\tsubtract/" -e "s/\t+1/\tadd/ " \
+	> $@.gen
+	wc -l $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030304		Least k such that base 2 representation of n begins at s(k), where s=A030190 (or equally A030302).	nonn,base,synth
+juxleast:
+	perl -ne \
+	'if (m{^(A\d+)\s+(a\(n\)=)?[Ll]east k such that (the )?base (\d+) representation of n begins at s\(k\)\, where s=(A\d+)}) { print join("\t", $$1, "$@", 0, $$4, $$5) . "\n" }' \
+	$(COMMON)/names | tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030998		Write n in base 7 and juxtapose.	nonn,base,cons,easy,tabf,synth
+juxn:
+	perl -ne \
+	'if (m{^(A\d+)\s+(The almost\-natural numbers\: )?[Ww]rite n in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$3) . "\n" }' \
+	$(COMMON)/names | tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A031016		Write n in base 7, then complement each digit (d -> 6-d) and juxtapose.	nonn,base,synth
+juxncomp:
+	perl -ne \
+	'if (m{^(A\d+)\s+Write n in base (\d+)\, (then )?complement each digit \(d\s*\-\>\s*(\d+)\-d\) and juxtapose}) { print join("\t", $$1, "$@", 0, $$2, $$4) . "\n" }' \
+	$(COMMON)/names | tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+juxpos:
+	perl -ne \
+	'if (m{^(A\d+)\s+Position of n-th (\d+) in (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3) . "\n" }' \
+	$(COMMON)/names \
 	> $@.gen
 	wc -l $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki

@@ -11,7 +11,7 @@ import irvine.oeis.Sequence;
  * @author $(AUTHOR)
  */
 public class $(ASEQNO) implements Sequence {
- 
+
   private long mN = $(OFFSET);
   private Z mF = Z.ONE;
   private CR mFract = CR.valueOf($(PARM1)).divide(CR.valueOf($(PARM2)));
