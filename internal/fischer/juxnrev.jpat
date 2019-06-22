@@ -3,6 +3,7 @@ package irvine.oeis.$(PACK);
 // DO NOT EDIT here!
 
 import irvine.math.z.Z;
+import irvine.math.z.ZUtils;
 import irvine.oeis.Sequence;
 
 /**
@@ -17,16 +18,16 @@ public class $(ASEQNO) implements Sequence {
 
   public $(ASEQNO) () {
     mN = Z.valueOf($(OFFSET));
-    mS = mN.toString($(PARM1));
+    mS = new StringBuilder(mN.toString($(PARM1))).reverse().toString();
     mPos = 0;
   }
 
   @Override
   public Z next() {
-    int result = $(PARM1) - 1 - (mS.charAt(mPos++) - '0');
+    int result = mS.charAt(mPos++) - '0';
     if (mPos >= mS.length()) {
       mN = mN.add(1);
-      mS = mN.toString($(PARM1));
+      mS = new StringBuilder(mN.toString($(PARM1))).reverse().toString();
       mPos = 0;
     }
     return Z.valueOf(result);

@@ -1,12 +1,37 @@
-A030304	juxleast	0	2	A030190			Least k such that base 2 representation of n begins at s(k), where s=A030190 (or equally A030302).
-A030311	juxleast	1	2	A030308			Least k such that base 2 representation of n begins at s(k), where s=A030308.
-A030316	juxleast	1	2	A030315			Least k such that base 2 representation of n begins at s(k), where s=A030315.
-A030320	juxleast	1	2	A030317			Least k such that base 2 representation of n begins at s(k), where s=A030317.
-A030352	juxleast	1	3	A030351			Least k such that base 3 representation of n begins at s(k), where s=A030351.
-A030378	juxleast	1	4	A030373			Least k such that base 4 representation of n begins at s(k), where s=A030373.
-A030418	juxleast	1	4	A030413			Least k such that the base 4 representation of n begins at s(k), where s=A030413.
-A030587	juxleast	1	6	A030586			Least k such that base 6 representation of n begins at s(k), where s=A030586.
-A030595	juxleast	1	6	A030588			Least k such that base 6 representation of n begins at s(k), where s=A030588.
-A031066	juxleast	1	8	A031057			Least k such that base 8 representation of n begins at s(k), where s=A031057.
-A031252	juxleast	1	5	A031251			Least k such that base 5 representation of n begins at s(k), where s=A031251.
-A031323	juxleast	1	10	A031312			Least k such that base 10 representation of n begins at s(k), where s=A031312.
+A030304	juxleast	0	2	A030190	a030		Least k such that base 2 representation of n begins at s(k), where s=A030190 (or equally A030302).
+A030311	juxleast	1	2	A030308	a030		Least k such that base 2 representation of n begins at s(k), where s=A030308.
+A030316	juxleast	1	2	A030315	a030		Least k such that base 2 representation of n begins at s(k), where s=A030315.
+A030320	juxleast	1	2	A030317	a030		Least k such that base 2 representation of n begins at s(k), where s=A030317.
+A030345	juxleast	1	3	A030341	a030		a(n)=least k such that base 3 representation of n begins at s(k), where s=A030341.
+A030352	juxleast	1	3	A030351	a030		Least k such that base 3 representation of n begins at s(k), where s=A030351.
+A030367	juxleast	1	3	A030363	a030		a(n)=least k such that base 3 representation of n begins at s(k), where s=A030363.
+A030378	juxleast	1	4	A030373	a030		Least k such that base 4 representation of n begins at s(k), where s=A030373.
+A030391	juxleast	1	4	A030386	a030		a(n)=least k such that base 4 representation of n begins at s(k), where s=A030386.
+A030400	juxleast	0	4	A030399	a030		a(n)=least k such that base 4 representation of n begins at s(k), where s=A030399.
+A030406	juxleast	1	4	A030401	a030		a(n)=least k such that base 4 representation of n begins at s(k), where s=A030401.
+A030418	juxleast	1	4	A030413	a030		Least k such that the base 4 representation of n begins at s(k), where s=A030413.
+A030555	juxleast	1	6	A030548	a030		a(n)=least k such that base 6 representation of n begins at s(k), where s=A030548.
+A030574	juxleast	1	6	A030567	a030		a(n)=least k such that base 6 representation of n begins at s(k), where s=A030567.
+A030587	juxleast	1	6	A030586	a030		Least k such that base 6 representation of n begins at s(k), where s=A030586.
+A030595	juxleast	1	6	A030588	a030		Least k such that base 6 representation of n begins at s(k), where s=A030588.
+A030611	juxleast	1	6	A030604	a030		a(n)=least k such that the base 6 representation of n begins at s(k), where s=A030604.
+A031006	juxleast	1	7	A030998	a030		a(n)=least k such that base 7 representation of n begins at s(k), where s=A030998.
+A031015	juxleast	1	7	A031007	a031		a(n)=least k such that base 7 representation of n begins at s(k), where s=A031007.
+A031017	juxleast	1	7	A031016	a031		a(n)=least k such that the base 7 representation of n begins at s(k), where s=A031016.
+A031026	juxleast	1	7	A031018	a031		a(n)=least k such that the base 7 representation of n begins at s(k), where s=A031018.
+A031044	juxleast	1	8	A031035	a031		a(n)=least k such that base 8 representation of n begins at s(k), where s=A031035.
+A031054	juxleast	1	8	A031045	a031		a(n)=least k such that base 8 representation of n begins at s(k), where s=A031045.
+A031056	juxleast	1	8	A031055	a031		a(n)=least k such that base 8 representation of n begins at s(k), where s=A031055.
+A031066	juxleast	1	8	A031057	a031		Least k such that base 8 representation of n begins at s(k), where s=A031057.
+A031086	juxleast	1	9	A031076	a031		a(n)=least k such that base 9 representation of n begins at s(k), where s=A031076.
+A031097	juxleast	1	9	A031087	a031		a(n)=least k such that base 9 representation of n begins at s(k), where s=A031087.
+A031099	juxleast	1	9	A031098	a031		a(n)=least k such that base 9 representation of n begins at s(k), where s=A031098.
+A031110	juxleast	1	9	A031100	a031		a(n)=least k such that base 9 representation of n begins at s(k), where s=A031100.
+A031225	juxleast	1	5	A031219	a031		a(n)=least k such that base 5 representation of n begins at s(k), where s=A031219.
+A031241	juxleast	1	5	A031235	a031		a(n)=least k such that base 5 representation of n begins at s(k), where s=A031235.
+A031252	juxleast	1	5	A031251	a031		Least k such that base 5 representation of n begins at s(k), where s=A031251.
+A031259	juxleast	1	5	A031253	a031		a(n)=least k such that base 5 representation of n begins at s(k), where s=A031253.
+A031275	juxleast	1	5	A031269	a031		a(n)=least k such that the base 5 representation of n begins at s(k), where s=A031269.
+A031309	juxleast	1	10	A031298	a031		a(n)=least k such that base 10 representation of n begins at s(k), where s=A031298.
+A031311	juxleast	1	10	A031310	a031		a(n)=least k such that base 10 representation of n begins at s(k), where s=A031310.
+A031323	juxleast	1	10	A031312	a031		Least k such that base 10 representation of n begins at s(k), where s=A031312.

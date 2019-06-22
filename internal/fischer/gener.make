@@ -36,7 +36,21 @@ joeis_push:
 	cd $(LITE)/src/irvine/oeis  ; pwd ; cp -upv $(SOURCES) ../../../../../gitups/joeis/src/irvine/oeis/
 joeis_pull:
 	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
+#----
+purge: # remove all oeis/annn directories
+	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
+	rm -vrf                    ../../src/irvine/oeis/a??? | grep directory
+	rm -vf *.bak
+dist:
+	cd ../.. ; ant -silent dist 
+update: purge
+	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
 #==========================
+remove: # parameter: CC
+	rm -f remlist.tmp
+	perl -ne 'm{^A(\d\d\d)(\d+)}; print "a$$1/A$$1$$2.java\n";' $(CC).gen > remlist.tmp
+	cat remlist.tmp | xargs -l -i{} rm  -f ../../target/WEB-INF/classes/irvine/oeis/{} 
+	cat remlist.tmp | xargs -l -i{} rm -vf                    ../../src/irvine/oeis/{} 
 select: # parameter: CC
 	make -f gener.make $(CC)
 	head -4 $(CC).gen
@@ -51,11 +65,11 @@ select: # parameter: CC
 	wc -l   $(CC).gen
 	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 gener: # parameter MANY, CC
-	head -n$(MANY) $(CC).gen > ghead.tmp
-	perl gen_seq4.pl -d $(D)   ghead.tmp
-	cd ../.. ; ant -silent dist
+	head -n$(MANY) $(CC).gen      > ghead.tmp
+	perl gen_seq4.pl -d $(D)        ghead.tmp
 test: # parameter CC
 	rm -f batch.log
+	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make -f gener.make stripgr LIST=ghead.tmp
 	make -f gener.make runbt
 	make -f gener.make evaluate
@@ -326,29 +340,32 @@ juxall:
 #--------
 jux: jux2n_1 juxdiff juxdig12b juxleast juxn juxncomp juxpos
 #----
-# A031057		Write 2n-1 in base 8 and juxtapose.	nonn,base,synth
+# A031057 Write 2n-1 in base 8 and juxtapose.	nonn,base,synth
 jux2n_1:
 	perl -ne \
 	'if (m{^(A\d+)\s+Write (the odd numbers )?(2n\-1) in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$4) . "\n" }' \
-	$(COMMON)/names | tee $@.gen
+	$(COMMON)/names                  > $@.gen
+	echo "A031312	jux2n_1	0	10" >> $@.gen
+	cat $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
-# A030413         Write (n+1)st Fibonacci number in base 4 and juxtapose. nonn,synth
-# A030604         Write the Fibonacci numbers in base 6 and juxtapose.    nonn,easy,base,synth
-# A031027         Write the (n+1)st Fibonacci number in base 7 and juxtapose.     nonn,base,synth# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.
+# A030413 Write (n+1)st Fibonacci number in base 4 and juxtapose. nonn,synth
+# A030604 Write the Fibonacci numbers in base 6 and juxtapose.    nonn,easy,base,synth
+# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.     nonn,base,synth# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.
 juxfib:
 	perl -ne \
 	'if (m{^(A\d+)\s+Write (the )?(\(n\s*\+\s*1\)st )?Fibonacci numbers? in base (\d+) (for \S+ )?and juxtapose}) { print join("\t", $$1, "$@", 0, $$4) . "\n" }' \
-	$(COMMON)/names | tee $@.gen
+	$(COMMON)/names >                  $@.gen
+	echo "A030324	juxfib	0	2"  >> $@.gen
+	echo "A031324	juxfib	0	10" >> $@.gen
+	cat $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
-# A030349		(# 1''s)-(# 0''s) in first n terms of A030341.	nonn,synth
+# A030349 (# 1''s)-(# 0''s) in first n terms of A030341.	nonn,synth
 juxdiff:
 	perl -ne \
 	'if (m{^(A\d+)\s+\(\#\s*(\d+)[^\#]+\#\s*(\d+)\S+ in first n terms of (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
 	$(COMMON)/names | tee $@.gen
-#	'if (m{^(A\d+)\s+\(\#\s*(\d+)\x22\x22\w\)-\(\#\s*(\d+)\x22\x22\w\) in first n terms of (A\d+)}) { print join("\t", $$1, "$@", 0, $$4, $$5) . "\n" }' \
-#	$(COMMON)/names | tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 juxdig12b:
@@ -360,33 +377,54 @@ juxdig12b:
 	wc -l $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
-# A030304		Least k such that base 2 representation of n begins at s(k), where s=A030190 (or equally A030302).	nonn,base,synth
+# A030304 Least k such that base 2 representation of n begins at s(k), where s=A030190 (or equally A030302).	nonn,base,synth
 juxleast:
 	perl -ne \
-	'if (m{^(A\d+)\s+(a\(n\)=)?[Ll]east k such that (the )?base (\d+) representation of n begins at s\(k\)\, where s=(A\d+)}) { print join("\t", $$1, "$@", 0, $$4, $$5) . "\n" }' \
+	'if (m{^(A\d+)\s+(a\(n\)=)?[Ll]east k such that (the )?base (\d+) representation of n begins at s\(k\)\, where s=(A\d+)}) { print join("\t", $$1, "$@", 0, $$4, $$5, substr(lc($$5), 0, 4)) . "\n" }' \
 	$(COMMON)/names | tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
-# A030998		Write n in base 7 and juxtapose.	nonn,base,cons,easy,tabf,synth
+# A030998 Write n in base 7 and juxtapose.	nonn,base,cons,easy,tabf,synth
 juxn:
 	perl -ne \
 	'if (m{^(A\d+)\s+(The almost\-natural numbers\: )?[Ww]rite n in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$3) . "\n" }' \
-	$(COMMON)/names | tee $@.gen
+	$(COMMON)/names                  > $@.gen
+	echo "A030190	juxn	0	2"  >> $@.gen
+	cat $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
-# A031016		Write n in base 7, then complement each digit (d -> 6-d) and juxtapose.	nonn,base,synth
+# A031016 Write n in base 7, then complement each digit (d -> 6-d) and juxtapose.	nonn,base,synth
 juxncomp:
 	perl -ne \
-	'if (m{^(A\d+)\s+Write n in base (\d+)\, (then )?complement each digit \(d\s*\-\>\s*(\d+)\-d\) and juxtapose}) { print join("\t", $$1, "$@", 0, $$2, $$4) . "\n" }' \
+	'if (m{^(A\d+)\s+Write n in base (\d+)\, (then )?complement each digit (\(d\s*\-\>\s*(\d+)\-d\) )?and juxtapose}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
 	$(COMMON)/names | tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
+# A030324 Triangle read by rows, where row k consists of the binary digits of Fibonacci(k+1)
+juxnrev:
+	perl -ne \
+	'if (m{^(A\d+)\s+Triangle T\(n\,k\)\: [Ww]rite n in base (\d+)\, reverse order of digits}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
+	$(COMMON)/names \
+	| grep -vE "A262" \
+ 	| tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030318 Position of n-th 0 in A030317
 juxpos:
 	perl -ne \
-	'if (m{^(A\d+)\s+Position of n-th (\d+) in (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3) . "\n" }' \
+	'if (m{^(A\d+)\s+Position of n-th (\d+) in (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3, substr(lc($$3), 0, 4)) . "\n" }' \
 	$(COMMON)/names \
+	| grep -vE "A0209|A0540|A030298|A030496" \
 	> $@.gen
 	wc -l $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030305 Length of n-th run of 0''s in A030302.	nonn,synth
+# A030336 Length of n-th run of digit 0 in A003137.
+juxrun:
+	perl -ne \
+	'if (m{^(A\d+)\s+Length of n\-th run of (digit )?(\d+)[^A]+(A\d+)}) { print join("\t", $$1, "$@", 0, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
+	$(COMMON)/names | tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #--------------------------
 palb:
