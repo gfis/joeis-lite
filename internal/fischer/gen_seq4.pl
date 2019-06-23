@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2019-06-23: up to 8 $(PARMi) in seq4
 # 2019-06-13, Georg Fischer: derived from gen_pattern.pl
 #
 #:# Usage:
@@ -20,8 +21,8 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $md
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
 my $program = "gen_seq4.pl V1.03";
 my $max_term = 16;
-my $max_size = 16; 
-my $max_line_len = 80;
+my $max_size = 16;
+my $max_line_len = 120;
 my $indent = 6;
 my $debug = 0;
 if (scalar(@ARGV) == 0) {
@@ -73,15 +74,15 @@ while (<>) { # read inputfile
     $aseqno   = shift(@parms);
     $callcode = shift(@parms);
     my $iparm = 0;
-    $offset   = $parms[$iparm ++]; # PARM1, PARM2 .. follow
+    $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
     $pattern  = $patterncache{$callcode};
     my $name  = $parms[scalar(@parms) - 1]; # last parameter
     if (! defined($pattern)) { # new pattern
-		$pattern = &read_pattern("$patprefix$callcode$patext");
-		$patterncache{$callcode} = $pattern;
-		if ($debug >= 1) {
-		    print STDERR "read $patprefix$callcode$patext\n";
-		}
+        $pattern = &read_pattern("$patprefix$callcode$patext");
+        $patterncache{$callcode} = $pattern;
+        if ($debug >= 1) {
+            print STDERR "read $patprefix$callcode$patext\n";
+        }
     } # new pattern
     my $package = lc(substr($aseqno, 0, 4));
     my $copy = $pattern;
@@ -99,7 +100,7 @@ while (<>) { # read inputfile
         my @terms = map {
               if (length > $max_term_len) {
                 $max_term_len = length;
-              } 
+              }
               $_
             } split(/\,\s*/, $parms[$iparm]);
         $copy =~ m{\$\(PARM$iparm(\.\w+)?\)}i;
@@ -111,7 +112,7 @@ while (<>) { # read inputfile
         foreach my $term (@terms) {
             if ($term =~ m{\/\*\*\/}) {
                 $term = "";
-            } 
+            }
             if ($debug >= 2) {
                 print "# before: type(PARM$iparm) = \"$type\", term=\"$term\"\n";
             }
@@ -130,7 +131,7 @@ while (<>) { # read inputfile
                 $term .= "L";
             } elsif ($type =~ m{Z}i)     { # construct new Z(String)
                 $term = "new Z(\"$term\")";
-            }  
+            }
             $len = length($term);
             if ($line_len >= $max_line_len) {
                 $term = "\n" . (' ' x $indent) . $term;
@@ -140,16 +141,19 @@ while (<>) { # read inputfile
             if ($debug >= 2) {
                 print "# after : type(PARM$iparm) = \"$type\", term=\"$term\"\n";
             }
-            push(@typed_terms, $term)     
+            push(@typed_terms, $term)
         } # foreach $term
         my $parm = join(", ", @typed_terms);
         $copy =~ s{\$\(PARM$iparm(\.\w+)?\)}{$parm}g;
         $iparm ++;
     } # while $iparm
-    
+
     if (0) {
-      } elsif ($copy =~ m{\$\((PARM\d)}) {
-        print "# $aseqno $1 not replaced - skipped\n";      
+    } elsif ($copy =~ m{\$\((PARM\d)}) {
+        print "# $aseqno $1 not replaced - skipped\n";
+        if ($debug >= 1) {
+            print "$copy\n================================\n";
+        }
     } elsif ($do_generate > 0) {
         my $packdir = "$targetdir/$package";
         if ($old_package ne $package) {
@@ -185,7 +189,7 @@ sub read_pattern { # read the pattern and return it
         $result .= $_;
     } # while <PAT>
     close(PAT);
-    return $result; 
+    return $result;
 } # read_pattern
 #---------------------------------------
 __DATA__

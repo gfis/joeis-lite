@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-06-23: print "start" with -vv only
  *  2019-06-15: timeDiff behind "pass"
  *  2019-06-06: write "aseqno start" V1.12
  *  2019-06-04: increase version to V1.11; abbreviated terms
@@ -31,7 +32,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.14";
+  private static String VERSION = "BatchTest V1.15";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -304,7 +305,9 @@ public class BatchTest {
           if (line.startsWith("A")) { // valid A-number
             String[] parts = line.split("\\s\\,?");
             aseqno  = parts[0];
+           	if (verbosity >= 2) {
         	  System.out.println(aseqno + "\tstart");
+        	}
             if (readFromBFile) {
               if (parts.length > 0) {
                 testSequence(parts[1].replaceAll("\\,\\Z", "").split("\\,")); // for fallback
