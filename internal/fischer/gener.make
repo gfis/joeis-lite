@@ -47,6 +47,10 @@ update: purge
 	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
 count:
 	cd ../.. ; find src -iname "A??????.java" | wc -l
+pack:
+	cd ../.. ; find src -iname "A??????.java" > pack.$(NAME).lst \
+	; head -4 pack.$(NAME).lst ; wc -l pack.$(NAME).lst
+	cd ../.. ; tar --files-from=pack.$(NAME).lst -czf $(NAME).`date +%Y-%m-%d.%H`.tar 
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
@@ -166,6 +170,15 @@ cfpleast:
 cfplen:
 	perl -ne \
 	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has period (\d+)\.}) { print "$$1\t$@\t0\t$$3\n" }' \
+	$(COMMON)/names > $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A064925		Period of continued fraction for sqrt(21)*n.	nonn,synth	1..77
+# A064926		Period of continued fraction for sqrt(22)*n.	nonn,synth	1..71
+# A064927		Period of continued fraction for sqrt(23)*n.	nonn,synth	1..75
+cfpn:
+	perl -ne \
+	'if (m{^(A\d+) Period of continued fraction for sqrt\((\d+)\)\*n}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
