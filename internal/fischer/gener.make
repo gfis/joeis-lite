@@ -50,7 +50,10 @@ count:
 pack:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(NAME).lst \
 	; head -4 pack.$(NAME).lst ; wc -l pack.$(NAME).lst
-	cd ../.. ; tar --files-from=pack.$(NAME).lst -czf $(NAME).`date +%Y-%m-%d.%H`.tar 
+	cd ../.. ; tar --files-from=pack.$(NAME).lst -czf $(NAME).`date +%Y-%m-%d.%H`.tar
+rename:
+	find . -name "cf*.jpat" | xargs -l \
+	  perl -i.bak -pe "s{SqrtContinuedFraction}{ContinuedFractionOfSqrt}g;" 
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
@@ -104,10 +107,23 @@ cfp_select:
 	make -f gener.make select CC=cfplenmult
 	make -f gener.make select CC=cfpmid0
 	make -f gener.make select CC=cfpmid1
+cfs_select:
+	make -f gener.make select gener CC=cfsper       
+	make -f gener.make select gener CC=cfsperno  
+	make -f gener.make select gener CC=cfspermin  
+	make -f gener.make select gener CC=cfsperlen    
+	make -f gener.make select gener CC=cfsperlemul
+	make -f gener.make select gener CC=cfspercent0   
+	make -f gener.make select gener CC=cfspercent1   
+	make -f gener.make select gener CC=cfspertin      
+	make -f gener.make select gener CC=cfsqrt       
+	make -f gener.make select gener CC=cfsqden    
+	make -f gener.make select gener CC=cfsqnum    
 #----
 # A010121	Continued fraction for sqrt(7).
 # A040002	Continued fraction for sqrt(5).
 cfs:
+cfsqrt:
 	perl -ne 'if (m{^(A\d+) Continued fraction for sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
@@ -115,10 +131,12 @@ cfs:
 # A041009 Denominators of continued fraction convergents to sqrt(7).
 # A041010 Numerators of continued fraction convergents to sqrt(8).
 cfsnum:
+cfsqnum:
 	perl -ne 'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 cfsden:
+cfsqden:
 	perl -ne 'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
@@ -126,6 +144,7 @@ cfsden:
 # A003285	Period of continued fraction for square root of n (or 0 if n is a square). 
 # A097853	Period of continued fraction for square root of n (or 1 if n is a square).
 cfp:
+cfsper:
 	perl -ne \
 	'if (m{^(A\d+) Period of continued fraction for square root of n \(or (\-?\d+) if n is a square\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
@@ -148,6 +167,7 @@ cfp:
 # A031780	Period of continued fraction for sqrt(n) contains exactly 12 ones.
 # PARM1="==" PARM2=11 PARM3=1
 cfpcount:
+cfsperno:
 	perl -ne \
 	'if (m{^(A\d+) (Numbers [nk] such that )?[Pp]eriod of continued fraction for sqrt\([kn]\) contains (exactly )?(\d+) (one)s\.}) { print "$$1\t$@\t1\t$$3\t$$4\t$$5\n" }' \
 	$(COMMON)/names \
@@ -158,7 +178,8 @@ cfpcount:
 # A031700	Least term in period of continued fraction for sqrt(n) is 22.
 # A031701	Numbers n such that the least term in the period of the continued fraction for sqrt(n) is 23.
 # PARM1=22
-cfpleast: 
+cfpleast:
+cfspermin: 
 	perl -ne \
 	'if (m{^(A\d+) (Numbers n such that )?(the )?[Ll]east term in (the )?period of (the )?continued fraction for sqrt\(n\) is (\d+)\.}) { print "$$1\t$@\t0\t$$6\n" }' \
 	$(COMMON)/names > $@.gen
@@ -168,6 +189,7 @@ cfpleast:
 # A013644	Numbers n such that the continued fraction for sqrt(n) has period 4.
 # + A002522	a(n) = n^2 + 1 for period 1
 cfplen:
+cfsperlen:
 	perl -ne \
 	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has period (\d+)\.}) { print "$$1\t$@\t0\t$$3\n" }' \
 	$(COMMON)/names > $@.gen
@@ -177,6 +199,7 @@ cfplen:
 # A064926		Period of continued fraction for sqrt(22)*n.	nonn,synth	1..71
 # A064927		Period of continued fraction for sqrt(23)*n.	nonn,synth	1..75
 cfpn:
+cfspertin:
 	perl -ne \
 	'if (m{^(A\d+) Period of continued fraction for sqrt\((\d+)\)\*n}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
@@ -185,6 +208,7 @@ cfpn:
 # A064848	Period of continued fraction for sqrt(2)*n.
 # Offset is 1
 cfplenmult:
+cfsperlemul:
 	perl -ne \
 	'if (m{^(A\d+) Period (length )?of (the )?continued fraction for sqrt\((\d+)\)\*n\.}) { print "$$1\t$@\t0\t$$4\n" }' \
 	$(COMMON)/names > $@.gen
@@ -196,20 +220,15 @@ cfplenmult:
 # A031414	Numbers n such that continued fraction for sqrt(n) has odd period and a pair of central terms both equal to 1.
 # PARM1=parity, PARM2=central
 #           1                             2                                              3                 4           5                                            6                                      7                                     
-cfpmidpar:
-	perl -ne \
-	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (even|odd) period (2\*m )?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.}) { print "$$1\t$@\t0\t$$3\t$$7\n" }' \
-	$(COMMON)/names \
-	| sed -e "s/\teven/\t0/" -e "s/\todd/\t1/ " \
-	> $@.gen
-	perl callcode_wiki.pl -p 2 $@.gen > $@.wiki
 cfpmid0:
+cfspercent0:
 	perl -ne \
 	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (even) period (2\*m )?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.}) { print "$$1\t$@\t0\t$$7\n" }' \
 	$(COMMON)/names \
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 cfpmid1:
+cfspercent1:
 	perl -ne \
 	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (odd) period (2\*m\s?\+\s?1)?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.}) { print "$$1\t$@\t0\t$$7\n" }' \
 	$(COMMON)/names \
@@ -228,6 +247,11 @@ mod:
 	$(COMMON)/names \
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+cfptest:
+	java -cp ../../dist/joeis-lite.jar irvine.oeis.SqrtContinuedFraction $(NUM)
+cfstest:
+	java -cp ../../dist/joeis-lite.jar irvine.oeis.ContinuedFractionOfSqrtSequence $(NUM)
 #==========================
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp
@@ -673,7 +697,7 @@ cofr_joeis:
 	      AND i.keyword LIKE '%cofr%' \
 	"
 #---------------------------
-cfsqrt: cfsqrt_prep cfsqrt_gen
+cfsqrt_old: cfsqrt_prep cfsqrt_gen
 cfsqrt_prep: cfsqrt1 cfsqrt2 cfsqrt3 cfsqrt4 # Generate sequences for continued fraction of sqrt(n)
 cfsqrt1:
 	$(RAMATH).ContinuedFraction -sqrt2 1 1000 > $@.tmp

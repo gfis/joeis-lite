@@ -41,7 +41,7 @@ public class RunsBaseSequence implements Sequence {
    * of their square roots.
    * @param offset first valid term has this index
    */
-  protected ContinuedFractionOfSequence(final int offset) {
+  protected RunsBaseSequence(final int offset) {
     mN  = offset;
     mK = Z.valueOf(offset).subtract(Z.ONE); // will be increased in first call of getNext(With)Property
   }
@@ -52,7 +52,7 @@ public class RunsBaseSequence implements Sequence {
    * @param offset first valid term has this index
    * @param k compute the sqrt of this non-negative number
    */
-  protected ContinuedFractionoFSequence(final int offset, final Z k) {
+  protected RunsBaseSequence(final int offset, final Z k) {
     mN  = offset;
     mK      = k;
     initialize();
@@ -69,7 +69,7 @@ public class RunsBaseSequence implements Sequence {
    * @param offset first valid term has this index
    * @param k compute the sqrt of this non-negative number
    */
-  protected ContinuedFractionoFSequence(final int offset, final long k) {
+  protected RunsBaseSequence(final int offset, final long k) {
     this(offset, Z.valueOf(k));
   }
 
@@ -288,7 +288,7 @@ public class RunsBaseSequence implements Sequence {
       loopCheck --;
     } // while busy
     if (loopCheck == 0) {
-      System.err.println("more the 1 million iterations in ContinuedFractionoFSequence.getNextWithProperty()");
+      System.err.println("more the 1 million iterations in RunsBaseSequence.getNextWithProperty()");
     }
     return mK;
   } // next(boolean)
@@ -383,10 +383,10 @@ public class RunsBaseSequence implements Sequence {
       } catch (Exception exc) {
       }
     }
-    ContinuedFractionoFSequence cf = null;
+    RunsBaseSequence cf = null;
     int iterm = 0;
     if (n >= 0) { // properties of a single nubmer
-      cf = new ContinuedFractionoFSequence(1, n);
+      cf = new RunsBaseSequence(1, n);
       while (iterm < noterms) {
         System.out.print(iterm
            + ":\tB0=" + cf.mB0
@@ -408,7 +408,7 @@ public class RunsBaseSequence implements Sequence {
       } // while iterm
       System.out.println(cf.mPeriod + " length=" + cf.mPeriod.size());
     } else { // properties of all numbers
-      cf = new ContinuedFractionoFSequence(1); // always offset 1 ?!
+      cf = new RunsBaseSequence(1); // always offset 1 ?!
       while (iterm < noterms) {
         Z prop = cf.getNextProperty();
         System.out.println(cf.getN()
@@ -421,4 +421,4 @@ public class RunsBaseSequence implements Sequence {
     } // all
   } // main
 
-} // ContinuedFractionoFSequence
+} // RunsBaseSequence
