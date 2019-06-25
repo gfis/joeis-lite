@@ -30,8 +30,8 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
   protected int mQ1; // denominator of new partial fraction
   protected int mPerInd; // index  in period
   protected int mPerLen; // length of period
-  protected int mPerCent; // element in the middle of the period
-  protected int mPerMin; // least element of the period
+  protected int mPerMid; // element in the middle of the period
+  protected int mPerLeast; // least element of the period
   protected int mPerCount1; // number of ONEs in the period
   protected int [] mPeriod;
 
@@ -56,7 +56,7 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
     mN  = offset;
     mK  = k;
     initialize();
-    mPeriod = new int[8192];
+    mPeriod = new int[mRoot + 4];
     mC0     = Z.ONE;
     mD0     = Z.ZERO;
     mC1     = Z.valueOf(mRoot);
@@ -71,9 +71,8 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
    * the continued fractions of all square roots.
    */
   protected void initialize() {
-    mRoot   = (int) Math.floor(Math.sqrt(mK));
+    mRoot   = (int)(java.lang.Math.sqrt(mK));
     mIsPow2 = mRoot * mRoot == mK;
-    mPeriod = new int[mRoot + 4];
     mP0     = 0;
     mQ0     = 1;
     mB0     = mRoot;
@@ -93,6 +92,7 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
    */
   protected void fillPeriod() {
     initialize();
+    mPeriod = new int[mRoot + 4];
     mPerCount1 = 0;
     if (! mIsPow2) { // no square number
       while (mPerLen < 0 || mPerInd < mPerLen) { // fill
@@ -103,16 +103,16 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
         if (mPerLen < 0) {
           if (mQ0 == mQ1) {
             mPerLen = mPerInd * 2 + 1;
-            mPerCent = mB0;
+            mPerMid = mB0;
           } else if (mP0 == mP1) {
             mPerLen = mPerInd * 2;
-            mPerCent = mB0;
+            mPerMid = mB0;
           }
         }
         if (mPerInd == 0) { // first period element
-          mPerMin = mB1;
-        } else if (mB1 < mPerMin) {
-          mPerMin = mB1;
+          mPerLeast = mB1;
+        } else if (mB1 < mPerLeast) {
+          mPerLeast = mB1;
         }
         if (mB1 == 1) {
           mPerCount1 ++;
@@ -121,11 +121,14 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
         mP0 = mP1;
         mQ0 = mQ1;
         mB0 = mB1;
+        if (mPerLen < 0 || mPerInd <= mPerLen) {
+          mPeriod[mPerInd - 1] = mB1;
+        }
       } // while filling
     } else {
       mPerLen = 0;
       mPerInd = 0;
-      mPerMin = 0;
+      mPerLeast = 0;
     }
   } // fillPeriod
 
@@ -154,7 +157,7 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
       mQ0 = mQ1;
       mB0 = mB1;
       if (mPerLen < 0 || mPerInd <= mPerLen) {
-        mPeriod[mPerInd] = mB1;
+        mPeriod[mPerInd - 1] = mB1;
       }
       final Z mC2 = Z.valueOf(mB1).multiply(mC1).add(mC0);
       mC0 = mC1;
@@ -351,7 +354,26 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
     return mD1;
   } // getDenominator
 
-  //=====================================
+  //==== for test only ===
+  /**
+   * Show the period and its properties.
+   */
+  private void printPeriod() {
+    System.out.print(" isPow2=" + mIsPow2 + ", len=" + mPerLen + ", ind=" + mPerInd 
+        + ", mid=" + mPerMid + ", least=" + mPerLeast 
+        + ", count1=" + mPerCount1);
+    if (mPeriod != null && mPeriod.length >= mPerLen) {
+      System.out.print("\tperiod:");
+      for (int iper = 0; iper < mPerLen; iper ++) {
+        if (iper > 0) {
+          System.out.print(", ");
+        }
+        System.out.print(mPeriod[iper]);
+      } // for
+      System.out.println();
+    }
+  } // printPeriod
+
   /** Test method.
    *  @param args command line arguments: [n [noterms]]
    *  Show various elements related to the continued fraction for the square root of n.
@@ -366,7 +388,7 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
       } catch (Exception exc) {
       }
     }
-    int noterms = 16;
+    int noterms = 8;
     if (iarg < args.length) {
       try {
         noterms = Integer.parseInt(args[iarg ++]);
@@ -375,37 +397,33 @@ public class ContinuedFractionOfSqrtSequence implements Sequence {
     }
     ContinuedFractionOfSqrtSequence cf = null;
     int iterm = 0;
-    if (n >= 0) { // properties of a single nubmer
+    if (n > 0) { // properties of a single nubmer
       cf = new ContinuedFractionOfSqrtSequence(1, n);
       while (iterm < noterms) {
-        System.out.print(iterm
-           + ":\tB0=" + cf.mB0
-           +  ", B1=" + cf.mB1
-           +  ", P0=" + cf.mP0
-           +  ", P1=" + cf.mP1
-           +  ", Q0=" + cf.mQ0
-           +  ", Q1=" + cf.mQ1
-           +  ", C0=" + cf.mC0
-           +  ", C1=" + cf.mC1
-           +  ", D0=" + cf.mD0
-           +  ", D1=" + cf.mD1
-           + ",\tPerLen=" + cf.mPerLen
-           +  ", PerInd=" + cf.mPerInd
-           + "\t"     + cf.mC0 + "/" + cf.mD0
+        System.out.println(String.format("%4d:", iterm)
+           + " "    + cf.mB0
+           + " B1=" + cf.mB1
+           + " P0=" + cf.mP0
+           + " P1=" + cf.mP1
+           + " Q0=" + cf.mQ0
+           + " Q1=" + cf.mQ1
+           + " PerLen=" + cf.mPerLen
+           + " PerInd=" + cf.mPerInd
+           + "\t" + cf.mC0 + "/" + cf.mD0
+           + " C1=" + cf.mC1
+           + " D1=" + cf.mD1
            );
-        System.out.println("\t-> "  + cf.next().toString());
+        cf.next();
         iterm ++;
       } // while iterm
-      System.out.println(cf.mPeriod + " length=" + cf.mPerLen);
     } else { // properties of all numbers
-      cf = new ContinuedFractionOfSqrtSequence(1); // always offset 1 ?!
+      cf = new ContinuedFractionOfSqrtSequence(0); 
       while (iterm < noterms) {
-        Z prop = cf.getNextProperty();
-        System.out.println(cf.mK
-            + ":\tsize="  + prop
-            + ", period=" + cf.mPeriod
-            + ", even="   + cf.isOk()
-            );
+        cf.getNextProperty();
+        if (! cf.mIsPow2) {
+          System.out.print(String.format("%4d:", iterm));
+          cf.printPeriod();
+        }
         iterm ++;
       } // while iterm
     } // all

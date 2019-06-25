@@ -103,6 +103,7 @@ public class SqrtContinuedFraction implements Sequence {
    */
   protected void fillPeriod() {
     initialize();
+    mPeriod = new ArrayList<Z>(16);
     mPerCount1 = 0;
     if (! mIsPow2) { // no square number
       while (mPerLen < 0 || mPerInd < mPerLen) { // fill
@@ -131,6 +132,9 @@ public class SqrtContinuedFraction implements Sequence {
         mP0 = mP1;
         mQ0 = mQ1;
         mB0 = mB1;
+        if (mPerLen < 0 || mPerInd <= mPerLen) {
+          mPeriod.add(mB1);
+        }
       } // while filling
     } else {
       mPerLen = 0;
@@ -361,7 +365,26 @@ public class SqrtContinuedFraction implements Sequence {
     return mD1;
   } // getDenominator
 
-  //=====================================
+  //==== for test only ===
+  /**
+   * Show the period and its properties.
+   */
+  private void printPeriod() {
+    System.out.print(" isPow2=" + mIsPow2 + ", len=" + mPerLen + ", ind=" + mPerInd 
+        + ", mid=" + mPerMid + ", least=" + mPerLeast 
+        + ", count1=" + mPerCount1);
+    if (mPeriod != null && mPeriod.size() >= mPerLen) {
+      System.out.print("\tperiod:");
+      for (int iper = 0; iper < mPerLen; iper ++) {
+        if (iper > 0) {
+          System.out.print(", ");
+        }
+        System.out.print(mPeriod.get(iper));
+      } // for
+      System.out.println();
+    }
+  } // printPeriod
+
   /** Test method.
    *  @param args command line arguments: [n [noterms]]
    *  Show various elements related to the continued fraction for the square root of n.
@@ -376,7 +399,7 @@ public class SqrtContinuedFraction implements Sequence {
       } catch (Exception exc) {
       }
     }
-    int noterms = 16;
+    int noterms = 8;
     if (iarg < args.length) {
       try {
         noterms = Integer.parseInt(args[iarg ++]);
@@ -385,37 +408,33 @@ public class SqrtContinuedFraction implements Sequence {
     }
     SqrtContinuedFraction cf = null;
     int iterm = 0;
-    if (n >= 0) { // properties of a single nubmer
+    if (n > 0) { // properties of a single nubmer
       cf = new SqrtContinuedFraction(1, n);
       while (iterm < noterms) {
-        System.out.print(iterm
-           + ":\tB0=" + cf.mB0
-           +  ", B1=" + cf.mB1
-           +  ", P0=" + cf.mP0
-           +  ", P1=" + cf.mP1
-           +  ", Q0=" + cf.mQ0
-           +  ", Q1=" + cf.mQ1
-           +  ", C0=" + cf.mC0
-           +  ", C1=" + cf.mC1
-           +  ", D0=" + cf.mD0
-           +  ", D1=" + cf.mD1
-           + ",\tPerLen=" + cf.mPerLen
-           +  ", PerInd=" + cf.mPerInd
-           + "\t"     + cf.mC0 + "/" + cf.mD0
+        System.out.println(String.format("%4d:", iterm)
+           + " "    + cf.mB0
+           + " B1=" + cf.mB1
+           + " P0=" + cf.mP0
+           + " P1=" + cf.mP1
+           + " Q0=" + cf.mQ0
+           + " Q1=" + cf.mQ1
+           + " PerLen=" + cf.mPerLen
+           + " PerInd=" + cf.mPerInd
+           + "\t" + cf.mC0 + "/" + cf.mD0
+           + " C1=" + cf.mC1
+           + " D1=" + cf.mD1
            );
-        System.out.println("\t-> "  + cf.next().toString());
+        cf.next();
         iterm ++;
       } // while iterm
-      System.out.println(cf.mPeriod + " length=" + cf.mPeriod.size());
     } else { // properties of all numbers
-      cf = new SqrtContinuedFraction(1); // always offset 1 ?!
+      cf = new SqrtContinuedFraction(0);
       while (iterm < noterms) {
-        Z prop = cf.getNextProperty();
-        System.out.println(cf.getN()
-            + ":\tsize="  + prop
-            + ", period=" + cf.mPeriod
-            + ", even="   + cf.isOk()
-            );
+        cf.getNextProperty();
+        if (! cf.mIsPow2) {
+          System.out.print(String.format("%4d:", iterm));
+          cf.printPeriod();
+        }
         iterm ++;
       } // while iterm
     } // all
