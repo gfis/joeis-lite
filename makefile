@@ -65,11 +65,11 @@ tests: # Test against stripped only
 	make testb WITHB=
 #----
 looptest:
-		# for number in 1 2 3 4 ; do 
-		while [ true ]; do \
-			export START=`grep restart batch.log | tail -n1 | cut -b1-7` ; \
-    	echo `date +%H:%M:%S` $$START ; \
-		done
+	# for number in 1 2 3 4 ; do 
+	while [ true ]; do \
+		export START=`grep restart batch.log | tail -n1 | cut -b1-7` ; \
+		echo `date +%H:%M:%S` $$START ; \
+	done
 #----
 killbat:
 	ps -efa | grep java | grep BatchTest | gawk -e '{ print $$2 }' | xargs -l echo kill -9 
