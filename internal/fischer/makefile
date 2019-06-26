@@ -52,8 +52,8 @@ pack:
 	; head -4 pack.$(NAME).lst ; wc -l pack.$(NAME).lst
 	cd ../.. ; tar --files-from=pack.$(NAME).lst -czf $(NAME).`date +%Y-%m-%d.%H`.tar
 rename:
-	echo cfs.jpat cfsden.jpat cfsnum.jpat | xargs \
-	  perl -i.bak -pe "s{ContinuedFractionOfSqrt}{SqrtContinuedFraction}g;" 
+	echo cfs*.jpat | xargs -l \
+	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;" 
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
@@ -76,10 +76,10 @@ select: # parameter: CC, OFS
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
 	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
-gener: # parameter MANY, CC
+gener: # parameter: MANY, CC
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	perl gen_seq4.pl -d $(D)        ghead.tmp
-test: # parameter CC
+test: # parameter: CC
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make stripgr LIST=ghead.tmp
@@ -99,26 +99,29 @@ evaluate:
 single:
 	java -jar ../../dist/joeis-lite.jar $(SEQ) $(N) $(OFS)
 #--------------------------
-cfp_select: 
-	make select CC=cfp
-	make select CC=cfpcount
-	make select CC=cfpleast
-	make select CC=cfplen
-	make select CC=cfplenmult
-	make select CC=cfpmid0
-	make select CC=cfpmid1
-cfs_select:
-	make select gener CC=cfsper       
-	make select gener CC=cfsperno  
-	make select gener CC=cfspermin  
-	make select gener CC=cfsperlen    
-	make select gener CC=cfsperlemul
-	make select gener CC=cfspercent0   
-	make select gener CC=cfspercent1   
-	make select gener CC=cfspertin      
-	make select gener CC=cfsqrt       
-	make select gener CC=cfsqden    
-	make select gener CC=cfsqnum    
+cfp_all:
+	make cfp_all1 TARGET="select gener"
+cfp_all1: # parameter: TARGET 
+	make $(TARGET) CC=cfp
+	make $(TARGET) CC=cfpcount
+	make $(TARGET) CC=cfpleast
+	make $(TARGET) CC=cfplen
+	make $(TARGET) CC=cfplenmult
+	make $(TARGET) CC=cfpmid0
+	make $(TARGET) CC=cfpmid1
+cfs_all:
+	make cfs_all1 TARGET="select gener"
+cfs_all1: # parameter TARGET s
+	make $(TARGET) CC=cfsqrt       
+	make $(TARGET) CC=cfsqden    
+	make $(TARGET) CC=cfsqnum    
+	make $(TARGET) CC=cfsper       
+	make $(TARGET) CC=cfspercount 
+	make $(TARGET) CC=cfsperleast  
+	make $(TARGET) CC=cfsperlen    
+	make $(TARGET) CC=cfspercent0   
+	make $(TARGET) CC=cfspercent1   
+	make $(TARGET) CC=cfspertin      
 #----
 # A010121	Continued fraction for sqrt(7).
 # A040002	Continued fraction for sqrt(5).
@@ -133,12 +136,16 @@ cfsqrt:
 cfsnum:
 cfsqnum:
 	perl -ne 'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
-	$(COMMON)/names > $@.gen
+	$(COMMON)/names \
+	| grep -v "^A00" \
+	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 cfsden:
 cfsqden:
 	perl -ne 'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
-	$(COMMON)/names > $@.gen
+	$(COMMON)/names \
+	| grep -v "^A00" \
+	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 # A003285	Period of continued fraction for square root of n (or 0 if n is a square). 
@@ -167,7 +174,7 @@ cfsper:
 # A031780	Period of continued fraction for sqrt(n) contains exactly 12 ones.
 # PARM1="==" PARM2=11 PARM3=1
 cfpcount:
-cfsperno:
+cfspercount:
 	perl -ne \
 	'if (m{^(A\d+) (Numbers [nk] such that )?[Pp]eriod of continued fraction for sqrt\([kn]\) contains (exactly )?(\d+) (one)s\.}) { print "$$1\t$@\t1\t$$3\t$$4\t$$5\n" }' \
 	$(COMMON)/names \
@@ -179,7 +186,7 @@ cfsperno:
 # A031701	Numbers n such that the least term in the period of the continued fraction for sqrt(n) is 23.
 # PARM1=22
 cfpleast:
-cfspermin: 
+cfsperleast: 
 	perl -ne \
 	'if (m{^(A\d+) (Numbers n such that )?(the )?[Ll]east term in (the )?period of (the )?continued fraction for sqrt\(n\) is (\d+)\.}) { print "$$1\t$@\t0\t$$6\n" }' \
 	$(COMMON)/names > $@.gen

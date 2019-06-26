@@ -371,13 +371,13 @@ public class SqrtContinuedFraction implements Sequence {
    */
   private void printPeriod() {
     System.out.print(" isPow2=" + mIsPow2 + ", len=" + mPerLen + ", ind=" + mPerInd 
-        + ", mid=" + mPerMid + ", least=" + mPerLeast 
+        + ", center=" + mPerMid + ", least=" + mPerLeast 
         + ", count1=" + mPerCount1);
     if (mPeriod != null && mPeriod.size() >= mPerLen) {
-      System.out.print("\tperiod:");
+      System.out.print("\tperiod: ");
       for (int iper = 0; iper < mPerLen; iper ++) {
         if (iper > 0) {
-          System.out.print(", ");
+          System.out.print(",");
         }
         System.out.print(mPeriod.get(iper));
       } // for
