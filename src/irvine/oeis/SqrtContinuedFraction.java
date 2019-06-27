@@ -370,8 +370,8 @@ public class SqrtContinuedFraction implements Sequence {
    * Show the period and its properties.
    */
   private void printPeriod() {
-    System.out.print(" isPow2=" + mIsPow2 + ", len=" + mPerLen + ", ind=" + mPerInd 
-        + ", center=" + mPerMid + ", least=" + mPerLeast 
+    System.out.print(" isPow2=" + mIsPow2 + ", len=" + mPerLen + ", ind=" + mPerInd
+        + ", center=" + mPerMid + ", least=" + mPerLeast
         + ", count1=" + mPerCount1);
     if (mPeriod != null && mPeriod.size() >= mPerLen) {
       System.out.print("\tperiod: ");

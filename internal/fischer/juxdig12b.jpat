@@ -38,7 +38,7 @@ public class $(ASEQNO) implements Sequence {
     } // while busy
     mN++;
     if (loopCheck == 0) {
-      System.err.println("more the 1 million iterations in $(ASEQNO)");
+      throw new IllegalArgumentException("more than 10^6 iterations in $(ASEQNO)");
     }
     return mK;
   }

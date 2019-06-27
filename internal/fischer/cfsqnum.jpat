@@ -15,11 +15,12 @@ public class $(ASEQNO) extends ContinuedFractionOfSqrtSequence {
   public $(ASEQNO)() {
     super($(OFFSET), $(PARM1.L));
   }
-  
+
   @Override
   public Z next() {
-    Z result = getNumerator(); 
+    Z result = getNumerator();
     iterate();
+    iterateConvergents();
     return result;
   } // next
 }

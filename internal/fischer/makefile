@@ -39,10 +39,10 @@ joeis_pull:
 #----
 purge: # remove all oeis/annn directories
 	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
-	rm -vrf                    ../../src/irvine/oeis/a??? | grep directory
+	rm -vrf                    ../../src/irvine/oeis/a???
 	rm -vf *.bak
 dist:
-	cd ../.. ; ant -silent dist 
+	cd ../.. ; ant -silent dist
 update: purge
 	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
 count:
@@ -53,13 +53,13 @@ pack:
 	cd ../.. ; tar --files-from=pack.$(NAME).lst -czf $(NAME).`date +%Y-%m-%d.%H`.tar
 rename:
 	echo cfs*.jpat | xargs -l \
-	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;" 
+	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
 	perl -ne 'm{^A(\d\d\d)(\d+)}; print "a$$1/A$$1$$2.java\n";' $(CC).gen > remlist.tmp
-	cat remlist.tmp | xargs -l -i{} rm  -f ../../target/WEB-INF/classes/irvine/oeis/{} 
-	cat remlist.tmp | xargs -l -i{} rm -vf                    ../../src/irvine/oeis/{} 
+	cat remlist.tmp | xargs -l -i{} rm  -f ../../target/WEB-INF/classes/irvine/oeis/{}
+	cat remlist.tmp | xargs -l -i{} rm -vf                    ../../src/irvine/oeis/{}
 OFS=offset
 select: # parameter: CC, OFS
 	make $(CC)
@@ -68,7 +68,7 @@ select: # parameter: CC, OFS
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s \
 		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
-	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)" 
+	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
@@ -98,10 +98,152 @@ evaluate:
 	wc -l $(CC).*.log
 single:
 	java -jar ../../dist/joeis-lite.jar $(SEQ) $(N) $(OFS)
+#=========================================================
+bas_sel:
+	make bas_all TARGET=select
+	cat bas*.gen > basall.gen
+bas_gen:
+	make bas_all TARGET=gener
+bas_all:
+	make $(TARGET) CC=basdig1
+	make $(TARGET) CC=basdig2
+	make $(TARGET) CC=basdig3
+	make $(TARGET) CC=basrun
+	make $(TARGET) CC=basruneq
+	make $(TARGET) CC=basrunmod
+	make $(TARGET) CC=basrunpar
+	wc -l bas*.gen
+#----
+# A043408 Numbers n such that number of 3's in base 7 is 4.	nonn,base,synth	1..35
+# A043409 Numbers whose number of 4's in base 7 is 1.	nonn,base,easy,changed,synth	1..52
+# A043506 Integers n such that number of 4's in base 10 is 2.	nonn,base,synth	1..43
+# A043509 Numbers that contain exactly one 5.	nonn,base,easy,	1..2000
+basdig1:
+	perl -ne \
+	'if (m{^(A\d+)\s+(Integers|Numbers) (such that|[nk] such that|whose) number of (\d+).s in base (\d+) is (\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$5, $$4, $$6) . "\n" }' \
+	$(COMMON)/names \
+	>   $@.tmp
+	perl -ne \
+	'if (m{^(A\d+)\s+(Integers|Numbers) ([nk] )?(that|which) contain (exactly one|a single) (\d+) in base (\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$7, $$6, 1) . "\n" }' \
+	$(COMMON)/names \
+	>>   $@.tmp
+	perl -ne \
+	'if (m{^(A\d+)\s+(Integers|Numbers) ([nk] )?(that|which) contain (exactly one|a single) (\d+)\.})'\
+	'{ print join("\t", $$1, "$@", 0, 10, $$6, 1) . "\n" }' \
+	$(COMMON)/names \
+	>>    $@.tmp
+	sort  $@.tmp > $@.gen
+	head -4 $@.gen
+	wc -l   $@.gen
+#----
+# A039092 Numbers whose base-9 representation has the same number of 2's and 4's.	nonn,base,easy,changed,synth
+# A039093 Numbers n such that representation in base 9 has same number of 2's and 5's.	nonn,base,easy,synth
+# A039124 Numbers n such that representation in base 10 has same number of 1's and 6's.	nonn,base,easy,synth	1..69
+# A039125 Numbers n whose base-10 representation has the same number of 1's and 7's.	nonn,base,easy,	1..5000
+# A039603 Numbers n such that representation in base 12 has same nonzero number of 0's and 11's.
+# A039225 Numbers n whose base-12 representation has the same number of 1's and 7's.
+basdig2:
+	perl -ne \
+	'if (m{^(A\d+)\s+Numbers [nk] such that representation in base.(\d+) has (the )?same (nonzero )?number of (\d+)\Ds and (\d+)\Ds})'\
+	'{ print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6) . "\n" }' \
+	$(COMMON)/names \
+	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
+	>   $@.gen
+	perl -ne \
+	'if (m{^(A\d+)\s+Numbers [^b]+base.(\d+) representation has (the )?same (nonzero )?number of (\d+)\Ds and (\d+)\Ds})'\
+	'{ print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6) . "\n" }' \
+	$(COMMON)/names \
+	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
+	>>  $@.gen
+	cat $@.gen
+#----
+# A039589 Numbers n such that representation in base 6 has same number of 2's, 3's and 4's.
+basdig3:
+	perl -ne \
+	'if (m{^(A\d+)\s+Numbers [nk] such that representation in base.(\d+) has (the )?same (nonzero )?number of (\d+)\Ds\, (\d+)\Ds and (\d+)\Ds})'\
+	'{ print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6, $$7) . "\n" }' \
+	$(COMMON)/names \
+	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
+	>   $@.gen
+	perl -ne \
+	'if (m{^(A\d+)\s+Numbers [^b]+base.(\d+) representation has (the )?same (nonzero )?number of (\d+)\Ds\, (\d+)\Ds and (\d+)\Ds})'\
+	'{ print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6, $$7) . "\n" }' \
+	$(COMMON)/names \
+	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
+	>>  $@.gen
+	cat $@.gen
+#---
+# A043555 Number of runs in base-3 representation of n.	nonn,base,easy,	0..1000
+basrun:
+	perl -ne \
+	'if (m{^(A\d+)\s+Number of runs in base.(\d+) representation of [nk]})'\
+	'{ print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
+	$(COMMON)/names \
+	> $@.gen
+	cat $@.gen
+#----
+# A043569 Numbers n such that base 2 representation has exactly 2 runs.	nonn,base,	1..10000
+basruneq:
+	perl -ne \
+	'if (m{^(A\d+)\s+Numbers [nk] (such that|whose) (the )?base.(\d+) representation has exactly (\d+) runs})'\
+	'{ print join("\t", $$1, "$@", 0, $$4, $$5) . "\n" }' \
+	$(COMMON)/names \
+	| grep -vE "A043569|A043570|A043638|A043675" \
+	> $@.gen
+	wc -l $@.gen
+	# look for more efficient advancing:
+	# A043569 = 2 runs in base  2 up to 10000 - replace "10" by "11"?
+	# A043569 = 3 runs in base  2 up to 10000 - varying number of "0" in the middle?
+	# A043638 = 2 runs in base 10 up to 10000 - replace "777..77|" by "888..88|" ?
+	# A043675 = 2 runs in base 16 up to 10000 - similiar
+#----
+# A043796 Number of runs in the base 3 representation of n is congruent to 5 mod 7.	nonn,base,changed,synth	1..46
+# A043797 Numbers n such that number of runs in the base 3 representation of n is congruent to 6 mod 7.	nonn,base,synth	1..45
+basrunmod:
+	perl -ne \
+	'if (m{^(A\d+)\s+(Numbers [nk] such that )?[Nn]umber of runs in (the )?base.(\d+) representation of [nk] is congruent (to )?(\d+) mod (\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$4, $$6, $$7) . "\n" }' \
+	$(COMMON)/names \
+	> $@.gen
+	cat $@.gen
+#----
+#A043705 Numbers n such that number of runs in the base 16 representation of n is even.	nonn,base,synth	1..60
+#A043706 Numbers n such that number of runs in the base 3 representation of n is odd.	nonn,base,synth	1..59
+#A043707 Numbers n such that number of runs in base 4 representation of n is odd.	nonn,base,synth	1..60
+basrunpar:
+	perl -ne \
+	'if (m{^(A\d+)\s+Numbers [nk] such that number of runs in (the )?base.(\d+) representation of [nk] is (even|odd)})'\
+	'{ print join("\t", $$1, "$@", 0, $$3, $$4) . "\n" }' \
+	$(COMMON)/names \
+	| sed -e "s/even/0/" -e "s/odd/1/" \
+	> $@.gen
+	cat $@.gen
 #--------------------------
-cfp_all:
-	make cfp_all1 TARGET="select gener"
-cfp_all1: # parameter: TARGET 
+# new, using ContinuedFractionOfSqrtSequence
+cfs_sel:
+	make cfs_all TARGET=select
+	cat cfs*.gen > cfsall.gen
+cfs_gen:
+	make cfs_all TARGET=gener
+cfs_all: # parameter: TARGET
+	make $(TARGET) CC=cfsqrt
+	make $(TARGET) CC=cfsqden
+	make $(TARGET) CC=cfsqnum
+	make $(TARGET) CC=cfsper
+	make $(TARGET) CC=cfspercount
+	make $(TARGET) CC=cfsperleast
+	make $(TARGET) CC=cfsperlen
+	make $(TARGET) CC=cfspercent0 TO=60
+	make $(TARGET) CC=cfspercent1 TO=60
+	make $(TARGET) CC=cfspertin
+	wc -l cfs*.gen
+#----
+# deprecated, using SqrtContinuedFraction
+cfp_gen:
+	make cfp_all TARGET=gener
+cfp_all: # parameter: TARGET
 	make $(TARGET) CC=cfp
 	make $(TARGET) CC=cfpcount
 	make $(TARGET) CC=cfpleast
@@ -109,19 +251,6 @@ cfp_all1: # parameter: TARGET
 	make $(TARGET) CC=cfplenmult
 	make $(TARGET) CC=cfpmid0
 	make $(TARGET) CC=cfpmid1
-cfs_all:
-	make cfs_all1 TARGET="select gener"
-cfs_all1: # parameter TARGET s
-	make $(TARGET) CC=cfsqrt       
-	make $(TARGET) CC=cfsqden    
-	make $(TARGET) CC=cfsqnum    
-	make $(TARGET) CC=cfsper       
-	make $(TARGET) CC=cfspercount 
-	make $(TARGET) CC=cfsperleast  
-	make $(TARGET) CC=cfsperlen    
-	make $(TARGET) CC=cfspercent0   
-	make $(TARGET) CC=cfspercent1   
-	make $(TARGET) CC=cfspertin      
 #----
 # A010121	Continued fraction for sqrt(7).
 # A040002	Continued fraction for sqrt(5).
@@ -148,7 +277,7 @@ cfsqden:
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
-# A003285	Period of continued fraction for square root of n (or 0 if n is a square). 
+# A003285	Period of continued fraction for square root of n (or 0 if n is a square).
 # A097853	Period of continued fraction for square root of n (or 1 if n is a square).
 cfp:
 cfsper:
@@ -186,7 +315,7 @@ cfspercount:
 # A031701	Numbers n such that the least term in the period of the continued fraction for sqrt(n) is 23.
 # PARM1=22
 cfpleast:
-cfsperleast: 
+cfsperleast:
 	perl -ne \
 	'if (m{^(A\d+) (Numbers n such that )?(the )?[Ll]east term in (the )?period of (the )?continued fraction for sqrt\(n\) is (\d+)\.}) { print "$$1\t$@\t0\t$$6\n" }' \
 	$(COMMON)/names > $@.gen
@@ -217,7 +346,7 @@ cfspertin:
 # A031413	Numbers n such that continued fraction for sqrt(n) has even period 2*m and the m-th term is 10.
 # A031414	Numbers n such that continued fraction for sqrt(n) has odd period and a pair of central terms both equal to 1.
 # PARM1=parity, PARM2=central
-#           1                             2                                              3                 4           5                                            6                                      7                                     
+#           1                             2                                              3                 4           5                                            6                                      7
 cfpmid0:
 cfspercent0:
 	perl -ne \
@@ -232,24 +361,142 @@ cfspercent1:
 	$(COMMON)/names \
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-cfp_dww:
-	# make select CC=cfpmidpar
-	$(DBAT) "SELECT s.aseqno, s.parm1, s.parm2 , CAST(s.parm2 AS INT)*CAST(s.parm2 AS INT)+1, \
-		substr(d.data, 1, 10) FROM seq4 s, asdata d \
-		WHERE s.aseqno = d.aseqno \
-		  AND substr(d.data, 1, 10) LIKE CAST(CAST(s.parm2 AS INT)*CAST(s.parm2 AS INT)+1 AS CHAR) || '%' \
-		ORDER BY 1"
-mod:
+#-------------------------------
+jux_sel:
+	rm -f jux*.gen
+	make jux_nodep TARGET=select
+	cat jux*.gen > juxnodep.gen
+	make jux_isdep TARGET=select
+jux_gen:
+	make jux_all TARGET=gener
+jux_all: jux_nodep jux_isdep # parameter: TARGET
+jux_nodep: # parameter: TARGET
+	make $(TARGET) CC=jux2n_1
+	make $(TARGET) CC=juxdig12b
+	# make $(TARGET) CC=juxdiv  # later, all involve huge numbers
+	make $(TARGET) CC=juxfib
+	make $(TARGET) CC=juxn
+	make $(TARGET) CC=juxncomp
+	make $(TARGET) CC=juxnrev
+jux_isdep: # parameter: TARGET
+	make $(TARGET) CC=juxdiff
+	make $(TARGET) CC=juxleast
+	make $(TARGET) CC=juxpos
+	make $(TARGET) CC=juxrun
+	wc -l jux*.gen
+juxgrep:
+	grep -Ei "(Champernowne|juxtapose)" $(COMMON)/names > $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+#--------
+# A031057 Write 2n-1 in base 8 and juxtapose.	nonn,base,synth
+jux2n_1:
 	perl -ne \
-	'if (m{^(A\d+) Numbers that are congruent to \{?([0-9\-\,]+)}) { print "$$1\t$@\t1\t1\t1\t$$2\n" }' \
-	$(COMMON)/names \
-	> $@.gen
+	'if (m{^(A\d+)\s+Write (the odd numbers )?(2n\-1) in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$4) . "\n" }' \
+	$(COMMON)/names                  > $@.gen
+	echo "A031312	jux2n_1	0	10" >> $@.gen
+	cat $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
-cfptest:
-	java -cp ../../dist/joeis-lite.jar irvine.oeis.SqrtContinuedFraction $(NUM)
-cfstest:
-	java -cp ../../dist/joeis-lite.jar irvine.oeis.ContinuedFractionOfSqrtSequence $(NUM)
+# A030413 Write (n+1)st Fibonacci number in base 4 and juxtapose. nonn,synth
+# A030604 Write the Fibonacci numbers in base 6 and juxtapose.    nonn,easy,base,synth
+# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.     nonn,base,synth# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.
+juxfib:
+	perl -ne \
+	'if (m{^(A\d+)\s+Write (the )?(\(n\s*\+\s*1\)st )?Fibonacci numbers? in base (\d+) (for \S+ )?and juxtapose}) { print join("\t", $$1, "$@", 0, $$4) . "\n" }' \
+	$(COMMON)/names \
+	| grep -vE "^A030604" \
+	>                  $@.gen
+	echo "A030324	juxfib	0	2"  >> $@.gen
+	# echo "A031324	juxfib	0	10" >> $@.gen
+	cat $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030349 (# 1's)-(# 0's) in first n terms of A030341.	nonn,synth
+juxdiff:
+	perl -ne \
+	'if (m{^(A\d+)\s+\(\#\s*(\d+)[^\#]+\#\s*(\d+)\S+ in first n terms of (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
+	$(COMMON)/names \
+	| grep -vE "^A0306(18|21)" \
+	| tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A043099 Numbers n such that 1 and 2 occur juxtaposed in the base 3 representation of n but not of n-1.	nonn,base,synth	1..50
+# A043100 0 and 1 occur juxtaposed in the base 4 representation of n but not of n-1.	nonn,base,synth	1..48
+juxdig12b:
+	perl -ne \
+	'if (m{^(A\d+)\s+(Numbers n such that )?(\d+) and (\d+) occur juxtaposed in the base (\d+) representation of n but not of n([\-\+]1)\.}) { print join("\t", $$1, "$@", 1, $$3, $$4, $$5, $$6) . "\n" }' \
+	$(COMMON)/names \
+	| sed -e "s/\t\-1/\tsubtract/" -e "s/\t+1/\tadd/ " \
+	> $@.gen
+	wc -l $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A029494 Numbers n such that n divides the (left) concatenation of all numbers <= n written in base 25 (most significant digit on left).	nonn,base,synth
+# A029495 Numbers n such that n divides the (right) concatenation of all numbers <= n written in base 2 (most significant digit on right).	nonn,base,bref,synth
+# A061931 Numbers n such that n divides the (right) concatenation of all numbers <= n written in base 2 (most significant digit on right).	nonn,base,more,synth
+juxdiv:
+	perl -ne \
+	'if (m{^(A\d+)\s+Numbers \w such that \w divides the \((left|right)\) concatenation of all numbers \<\= \w written in base (\d+) \(most significant digit on (left|right)\)}) { print join("\t", $$1, "$@" . substr($$2, 0, 1) . substr($$4, 0, 1), 0, $$3) . "\n" }' \
+	$(COMMON)/names \
+	| perl -pe 'if (m{A06}) { s{juxdiv}{juxdjv} }' \
+	| tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030304 Least k such that base 2 representation of n begins at s(k), where s=A030190 (or equally A030302).	nonn,base,synth
+juxleast:
+	perl -ne \
+	'if (m{^(A\d+)\s+(a\(n\)=)?[Ll]east k such that (the )?base (\d+) representation of n begins at s\(k\)\, where s=(A\d+)}) { print join("\t", $$1, "$@", 0, $$4, $$5, substr(lc($$5), 0, 4)) . "\n" }' \
+	$(COMMON)/names \
+	| grep -v "^A030611" \
+	| tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030998 Write n in base 7 and juxtapose.	nonn,base,cons,easy,tabf,synth
+juxn:
+	perl -ne \
+	'if (m{^(A\d+)\s+(The almost\-natural numbers\: )?[Ww]rite n in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$3) . "\n" }' \
+	$(COMMON)/names                  > $@.gen
+	echo "A030190	juxn	0	2"  >> $@.gen
+	cat $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A031016 Write n in base 7, then complement each digit (d -> 6-d) and juxtapose.	nonn,base,synth
+juxncomp:
+	perl -ne \
+	'if (m{^(A\d+)\s+Write n in base (\d+)\, (then )?complement each digit (\(d\s*\-\>\s*(\d+)\-d\) )?and juxtapose}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
+	$(COMMON)/names | tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030324 Triangle read by rows, where row k consists of the binary digits of Fibonacci(k+1)
+juxnrev:
+	perl -ne \
+	'if (m{^(A\d+)\s+Triangle T\(n\,k\)\: [Ww]rite n in base (\d+)\, reverse order of digits}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
+	$(COMMON)/names \
+	| grep -vE "A262" \
+ 	| tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030318 Position of n-th 0 in A030317
+juxpos:
+	perl -ne \
+	'if (m{^(A\d+)\s+Position of n-th (\d+) in (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3, substr(lc($$3), 0, 4)) . "\n" }' \
+	$(COMMON)/names \
+	| grep -vE "A0209|A0540|A030298|A030496" \
+	| grep -vE "A0306(05|06|07|08|09|10)|A0313(25|26|27|28|29|30|31|32|33|34)" \
+	> $@.gen
+	wc -l $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A030305 Length of n-th run of 0's in A030302.	nonn,synth
+# A030336 Length of n-th run of digit 0 in A003137.
+juxrun:
+	perl -ne \
+	'if (m{^(A\d+)\s+Length of n\-th run of (digit )?(\d+)[^A]+(A\d+)}) { print join("\t", $$1, "$@", 0, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
+	$(COMMON)/names \
+	| grep -vE "A0306(12|13|14|15|16)" \
+	| tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #==========================
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp
@@ -334,84 +581,7 @@ batch_cfsqrt:
 	grep -f x.tmp $(COMMON)/stripped > subset.tmp
 	wc -l subset.tmp
 	make test
-#--------------------------
-basdig: basdig2 basdig2t basdig3
-#----
-# A043408 Numbers n such that number of 3's in base 7 is 4.	nonn,base,synth	1..35
-# A043409 Numbers whose number of 4's in base 7 is 1.	nonn,base,easy,changed,synth	1..52
-basdig1:
-	perl -ne \
-	'if (m{^(A\d+)\s+(Integers|Numbers) (such that|[a-z] such that|whose) number of (\d+).s in base (\d+) is (\d+)}) { print join("\t", $$1, "$@", 0, $$5, $$4, $$6) . "\n" }' \
-	$(COMMON)/names \
-	>   $@.gen
-	echo "A043494	basdig1	1	10	1	1" >> $@.gen
-	echo "A043509	basdig1	1	10	5	1" >> $@.gen
-	cat $@.gen
-#----
-# A039092 Numbers whose base-9 representation has the same number of 2's and 4's.	nonn,base,easy,changed,synth
-# A039093 Numbers n such that representation in base 9 has same number of 2's and 5's.	nonn,base,easy,synth
-# A039124 Numbers n such that representation in base 10 has same number of 1's and 6's.	nonn,base,easy,synth	1..69
-# A039125 Numbers n whose base-10 representation has the same number of 1's and 7's.	nonn,base,easy,	1..5000
-basdig2:
-	perl -ne \
-	'if (m{^(A\d+)\s+Numbers n such that representation in base (\d0?) has (the )?same (nonzero )?number of (\d)\Ds and (\d)\Ds}) { print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6) . "\n" }' \
-	$(COMMON)/names \
-	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
-	>   $@.gen
-	perl -ne \
-	'if (m{^(A\d+)\s+Numbers [^b]+base.(\d0?) representation has (the )?same (nonzero )?number of (\d)\Ds and (\d)\Ds}) { print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6) . "\n" }' \
-	$(COMMON)/names \
-	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
-	>>  $@.gen
-	cat $@.gen
-#----
-# A039603 Numbers n such that representation in base 12 has same nonzero number of 0's and 11's.
-# A039225 Numbers n whose base-12 representation has the same number of 1's and 7's.
-basdig2t:
-	perl -ne \
-	'if (m{^(A\d+)\s+Numbers (n such that representation in base (\d[12])|whose base[ \-](\d[12]) representation) has (the )?same (nonzero )?number of (\d+)\D+(\d+)}) { print join("\t", $$1, "$@", 0, $$3, $$6, $$7, $$8) . "\n" }' \
-	$(COMMON)/names \
-	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
-	| tee $@.gen
-#----
-# A039589 Numbers n such that representation in base 6 has same number of 2's, 3's and 4's.
-basdig3:
-	perl -ne \
-	'if (m{^(A\d+)\s+Numbers n such that representation in base (\d0?) has (the )?same (nonzero )?number of (\d)\Ds\, (\d)\Ds and (\d)\Ds}) { print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6, $$7) . "\n" }' \
-	$(COMMON)/names \
-	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
-	>   $@.gen
-	perl -ne \
-	'if (m{^(A\d+)\s+Numbers [^b]+base.(\d0?) representation has (the )?same (nonzero )?number of (\d)\Ds\, (\d)\Ds and (\d)\Ds}) { print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6, $$7) . "\n" }' \
-	$(COMMON)/names \
-	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
-	>>  $@.gen
-	cat $@.gen
-#---
-# A043555 Number of runs in base-3 representation of n.	nonn,base,easy,	0..1000
-basrun:
-	perl -ne \
-	'if (m{^(A\d+)\s+Number of runs in base.(\d+) representation of n}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
-	$(COMMON)/names \
-	> $@.gen
-	cat $@.gen
-#----
-# A043569 Numbers n such that base 2 representation has exactly 2 runs.	nonn,base,	1..10000
-basrunc:
-	perl -ne \
-	'if (m{^(A\d+)\s+Numbers n such that base (\d+) representation has exactly (\d+) runs}) { print join("\t", $$1, "$@", 0, $$2, $$3) . "\n" }' \
-	$(COMMON)/names \
-	> $@.gen
-	cat $@.gen
-#----
-# A043796 Number of runs in the base 3 representation of n is congruent to 5 mod 7.	nonn,base,changed,synth	1..46
-# A043797 Numbers n such that number of runs in the base 3 representation of n is congruent to 6 mod 7.	nonn,base,synth	1..45
-basrunm:
-	perl -ne \
-	'if (m{^(A\d+)\s+(Numbers [a-z] such that )?[Nn]umber of runs in the base (\d+) representation of [a-z] is congruent to (\d+) mod (\d+)}) { print join("\t", $$1, "$@", 0, $$3, $$4, $$5) . "\n" }' \
-	$(COMMON)/names \
-	> $@.gen
-	cat $@.gen
+
 #--------------------------
 dex: dex_impl dex_nimpl
 dex_sel: # names: Annnnnn Decimal expansion of ... and in jOEIS
@@ -450,111 +620,6 @@ flexfact:
 	'if (m{^(A\d+)\s+(a\(n\)\s*\=\s*)?[fF]loor\s*\(\s*exp\(\s*(\d+)\/(\d+)\)\s*\*\s*n\!\s*\)}) { print join("\t", $$1, "$@", 0, $$3, $$4) . "\n" }' \
 	$(COMMON)/names \
 	| tee -a $@.gen
-#--------
-juxall:
-	grep -Ei "(Champernowne|juxtapose)" $(COMMON)/names > $@.tmp
-	head -4 $@.tmp
-	wc -l   $@.tmp
-#--------
-jux: jux2n_1 juxdiff juxdig12b juxleast juxn juxncomp juxpos
-#----
-# A031057 Write 2n-1 in base 8 and juxtapose.	nonn,base,synth
-jux2n_1:
-	perl -ne \
-	'if (m{^(A\d+)\s+Write (the odd numbers )?(2n\-1) in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$4) . "\n" }' \
-	$(COMMON)/names                  > $@.gen
-	echo "A031312	jux2n_1	0	10" >> $@.gen
-	cat $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A030413 Write (n+1)st Fibonacci number in base 4 and juxtapose. nonn,synth
-# A030604 Write the Fibonacci numbers in base 6 and juxtapose.    nonn,easy,base,synth
-# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.     nonn,base,synth# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.
-juxfib:
-	perl -ne \
-	'if (m{^(A\d+)\s+Write (the )?(\(n\s*\+\s*1\)st )?Fibonacci numbers? in base (\d+) (for \S+ )?and juxtapose}) { print join("\t", $$1, "$@", 0, $$4) . "\n" }' \
-	$(COMMON)/names >                  $@.gen
-	echo "A030324	juxfib	0	2"  >> $@.gen
-	echo "A031324	juxfib	0	10" >> $@.gen
-	cat $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A030349 (# 1's)-(# 0's) in first n terms of A030341.	nonn,synth
-juxdiff:
-	perl -ne \
-	'if (m{^(A\d+)\s+\(\#\s*(\d+)[^\#]+\#\s*(\d+)\S+ in first n terms of (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
-	$(COMMON)/names | tee $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-juxdig12b:
-	perl -ne \
-	'if (m{^(A\d+)\s+(Numbers n such that )?(\d+) and (\d+) occur juxtaposed in the base (\d+) representation of n but not of n([\-\+]1)\.}) { print join("\t", $$1, "$@", 1, $$3, $$4, $$5, $$6) . "\n" }' \
-	$(COMMON)/names \
-	| sed -e "s/\t\-1/\tsubtract/" -e "s/\t+1/\tadd/ " \
-	> $@.gen
-	wc -l $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A029494 Numbers n such that n divides the (left) concatenation of all numbers <= n written in base 25 (most significant digit on left).	nonn,base,synth
-# A029495 Numbers n such that n divides the (right) concatenation of all numbers <= n written in base 2 (most significant digit on right).	nonn,base,bref,synth
-# A061931 Numbers n such that n divides the (right) concatenation of all numbers <= n written in base 2 (most significant digit on right).	nonn,base,more,synth
-juxdiv:
-	perl -ne \
-	'if (m{^(A\d+)\s+Numbers \w such that \w divides the \((left|right)\) concatenation of all numbers \<\= \w written in base (\d+) \(most significant digit on (left|right)\)}) { print join("\t", $$1, "$@" . substr($$2, 0, 1) . substr($$4, 0, 1), 0, $$3) . "\n" }' \
-	$(COMMON)/names \
-	| perl -pe 'if (m{A06}) { s{juxdiv}{juxdjv} }' \
-	| tee $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A030304 Least k such that base 2 representation of n begins at s(k), where s=A030190 (or equally A030302).	nonn,base,synth
-juxleast:
-	perl -ne \
-	'if (m{^(A\d+)\s+(a\(n\)=)?[Ll]east k such that (the )?base (\d+) representation of n begins at s\(k\)\, where s=(A\d+)}) { print join("\t", $$1, "$@", 0, $$4, $$5, substr(lc($$5), 0, 4)) . "\n" }' \
-	$(COMMON)/names | tee $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A030998 Write n in base 7 and juxtapose.	nonn,base,cons,easy,tabf,synth
-juxn:
-	perl -ne \
-	'if (m{^(A\d+)\s+(The almost\-natural numbers\: )?[Ww]rite n in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$3) . "\n" }' \
-	$(COMMON)/names                  > $@.gen
-	echo "A030190	juxn	0	2"  >> $@.gen
-	cat $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A031016 Write n in base 7, then complement each digit (d -> 6-d) and juxtapose.	nonn,base,synth
-juxncomp:
-	perl -ne \
-	'if (m{^(A\d+)\s+Write n in base (\d+)\, (then )?complement each digit (\(d\s*\-\>\s*(\d+)\-d\) )?and juxtapose}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
-	$(COMMON)/names | tee $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A030324 Triangle read by rows, where row k consists of the binary digits of Fibonacci(k+1)
-juxnrev:
-	perl -ne \
-	'if (m{^(A\d+)\s+Triangle T\(n\,k\)\: [Ww]rite n in base (\d+)\, reverse order of digits}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
-	$(COMMON)/names \
-	| grep -vE "A262" \
- 	| tee $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A030318 Position of n-th 0 in A030317
-juxpos:
-	perl -ne \
-	'if (m{^(A\d+)\s+Position of n-th (\d+) in (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3, substr(lc($$3), 0, 4)) . "\n" }' \
-	$(COMMON)/names \
-	| grep -vE "A0209|A0540|A030298|A030496" \
-	> $@.gen
-	wc -l $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
-# A030305 Length of n-th run of 0's in A030302.	nonn,synth
-# A030336 Length of n-th run of digit 0 in A003137.
-juxrun:
-	perl -ne \
-	'if (m{^(A\d+)\s+Length of n\-th run of (digit )?(\d+)[^A]+(A\d+)}) { print join("\t", $$1, "$@", 0, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
-	$(COMMON)/names | tee $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #--------------------------
 palb:
 	perl -ne \

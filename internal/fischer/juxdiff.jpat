@@ -12,24 +12,24 @@ import irvine.oeis.$(PARM4).$(PARM3);
  */
 public class $(ASEQNO) implements Sequence {
  
-  private Z mCountA;
-  private Z mCountB;
+  private int mCountA;
+  private int mCountB;
   private Sequence mSeq;
 
   public $(ASEQNO) () {
     mSeq = new $(PARM3)();
-    mCountA = Z.ZERO;
-    mCountB = Z.ZERO;
+    mCountA = 0;
+    mCountB = 0;
   }
 
   @Override
   public Z next() {
     int seqResult = mSeq.next().intValue();
     if (seqResult == $(PARM1)) {
-      mCountA = mCountA.add(Z.ONE);
+      mCountA ++;
     } else if (seqResult == $(PARM2)) {
-      mCountB = mCountB.add(Z.ONE);
+      mCountB ++;
     }
-    return mCountA.subtract(mCountB);
+    return Z.valueOf(mCountA - mCountB);
   }
 }

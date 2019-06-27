@@ -16,19 +16,19 @@ public class $(ASEQNO) implements Sequence {
   private Z mN;
 
   public $(ASEQNO) () {
-    mN = Z.valueOf($(OFFSET));
-    mS = mN.toString($(PARM1));
+    mN = Z.valueOf($(OFFSET) - 1);
+    mS = "";
     mPos = 0;
   }
 
   @Override
   public Z next() {
-    int result = $(PARM1) - 1 - (mS.charAt(mPos++) - '0');
+    ++mPos;
     if (mPos >= mS.length()) {
       mN = mN.add(1);
       mS = mN.toString($(PARM1));
       mPos = 0;
     }
-    return Z.valueOf(result);
+    return Z.valueOf($(PARM1) - 1 - (mS.charAt(mPos) - '0'));
   }
 }

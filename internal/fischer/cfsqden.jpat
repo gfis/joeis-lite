@@ -20,6 +20,7 @@ public class $(ASEQNO) extends ContinuedFractionOfSqrtSequence {
   public Z next() {
     Z result = getDenominator(); 
     iterate();
+    iterateConvergents();
     return result;
   } // next
 }

@@ -15,25 +15,8 @@ import java.util.ArrayList;
 public class RunsBaseSequence implements Sequence {
 
   protected int mN; // index of current term to be returned
-  protected Z mK; // compute the sqrt of this number
-  protected boolean mIsPow2; // whether mK is a square
-  protected Z mRoot; // the integer root, floor(sqrt(n))
-  protected Z mB0; // numerator   of old partial fraction
-  protected Z mB1; // denominator of new partial fraction
-  protected Z mC0; // old convergent numerator
-  protected Z mC1; // new convergent numerator
-  protected Z mD0; // old convergent denominator
-  protected Z mD1; // new convergent denominator
-  protected Z mP0; // numerator   of old partial fraction
-  protected Z mP1; // denominator of new partial fraction
-  protected Z mQ0; // numominator of old partial fraction
-  protected Z mQ1; // denominator of new partial fraction
-  protected int mPerInd; // index  in period
-  protected int mPerLen; // length of period
-  protected Z mPerMid; // element in the middle of the period
-  protected Z mPerLeast; // least element of the period
-  protected int mPerCount1; // number of ONEs in the period
-  protected ArrayList<Z> mPeriod;
+  protected Z mK; // current number with some property
+  protected int mOffset; // OEIS offset1 as of generation time
 
   /**
    * Construct an instance which selects all numbers
@@ -42,8 +25,9 @@ public class RunsBaseSequence implements Sequence {
    * @param offset first valid term has this index
    */
   protected RunsBaseSequence(final int offset) {
-    mN  = offset;
-    mK = Z.valueOf(offset).subtract(Z.ONE); // will be increased in first call of getNext(With)Property
+    mOffset = offset;
+    mN = offset - 1;
+    mK = Z.valueOf(mN);
   }
 
   /**
@@ -52,199 +36,129 @@ public class RunsBaseSequence implements Sequence {
    * @param offset first valid term has this index
    * @param k compute the sqrt of this non-negative number
    */
-  protected RunsBaseSequence(final int offset, final Z k) {
-    mN  = offset;
-    mK      = k;
-    initialize();
-    mPeriod = new ArrayList<Z>(16);
-    mC0     = Z.ONE;
-    mD0     = Z.ZERO;
-    mC1     = mRoot;
-    mD1     = Z.ONE;
+  protected RunsBaseSequence(final int offset, final int k) {
+    this(offset);
+    mK = Z.valueOf(k);
   }
 
   /**
-   * Construct the continued fraction for the square root
-   * of a single, specified number.
-   * @param offset first valid term has this index
-   * @param k compute the sqrt of this non-negative number
+   * Ensure that the current number has at least a specified number of digits.
+   * @param width number of required digits
+   * @param base represent the number in this base
    */
-  protected RunsBaseSequence(final int offset, final long k) {
-    this(offset, Z.valueOf(k));
-  }
+  protected Z ensureWidth(int len, int base) {
+    int num = 1;
+    int iwid = len - 1;
+    while (iwid > 0) {
+      num *= base;
+      --iwid;
+    } // while 
+    return Z.valueOf(--num);
+  } // ensureWidth
 
   /**
-   * Initialize the member properties.
-   * The caller must already have set <em>mK, mN</em>.
-   * This method is used for the continued fraction
-   * of a single square root, and for the property sequences for
-   * the continued fractions of all square roots.
+   * Get the number of runs from a number represented in some base.
+   * @param number get the run count from this number
+   * @param base represent in this base
+   * @return number of subsequences with identical digits
    */
-  protected void initialize() {
-    Z[] tmp = mK.sqrtAndRemainder();
-    mRoot   = tmp[0];
-    mIsPow2 = tmp[1].equals(Z.ZERO);
-    mP0     = Z.ZERO;
-    mQ0     = Z.ONE ;
-    mB0     = mRoot;
-    mP1     = Z.ZERO;
-    mQ1     = Z.ZERO;
-    mB1     = Z.ONE;
-    mPerLen = -1; // undefined so far
-    mPerInd = 0; // index in mPeriod
-  } // initialize
-
-  /**
-   * Initialize the member properties, and fill the period.
-   * The caller must already have set <em>mK, mN</em>.
-   * This method is used for the selection of some
-   * property of the continued fractions of the square roots
-   * of all numbers.
-   */
-  protected void fillPeriod() {
-    initialize();
-    mPerCount1 = 0;
-    if (! mIsPow2) { // no square number
-      while (mPerLen < 0 || mPerInd < mPerLen) { // fill
-        mN ++;
-        mP1 = mB0.multiply(mQ0).subtract(mP0);
-        mQ1 = mK.subtract(mP1.multiply(mP1)).divide(mQ0);
-        mB1 = mRoot.add(mP1).divide(mQ1);
-        if (mPerLen < 0) {
-          if (mQ0.compareTo(mQ1) == 0) {
-            mPerLen = mPerInd * 2 + 1;
-            mPerMid = mB0;
-          } else if (mP0.compareTo(mP1) == 0) {
-            mPerLen = mPerInd * 2;
-            mPerMid = mB0;
-          }
-        }
-        if (mPerInd == 0) { // first period element
-          mPerLeast = mB1;
-        } else if (mB1.compareTo(mPerLeast) < 0) {
-          mPerLeast = mB1;
-        }
-        if (mB1.equals(Z.ONE)) {
-          mPerCount1 ++;
-        }
-        mPerInd ++;
-        mP0 = mP1;
-        mQ0 = mQ1;
-        mB0 = mB1;
-      } // while filling
-    } else {
-      mPerLen = 0;
-      mPerInd = 0;
-      mPerLeast = Z.ZERO;
-    }
-  } // fillPeriod
-
-  /**
-   * Compute the elements for the next partial fraction.
-   * This method must be called <em>after</em> fetching any
-   * sequence element from the member properties.
-   */
-  protected void iterate() {
-    mN ++;
-    if (! mIsPow2) { // no square number
-      mP1 = mB0.multiply(mQ0).subtract(mP0);
-      mQ1 = mK.subtract(mP1.multiply(mP1)).divide(mQ0);
-      mB1 = mRoot.add(mP1).divide(mQ1);
-      if (mPerLen < 0) {
-        if (mQ0.compareTo(mQ1) == 0) {
-          mPerLen = mPerInd * 2 + 1;
-        }
-        else
-        if (mP0.compareTo(mP1) == 0) {
-          mPerLen = mPerInd * 2;
-        }
+  protected int getRunCount(Z number, int base) {
+    String digits;
+    int dlen = 1; // assume 1 character per digit
+    if (base <= 10) { // one character per digit
+      digits = number.toString(base);
+    } else { // two characters per digit
+      dlen = 2;
+      digits = number.toTwoDigits(base);
+      if ((digits.length() & 1) == 1) { // odd
+        digits = "0" + digits; // make sure that there are pairs
       }
-      mPerInd ++;
-      mP0 = mP1;
-      mQ0 = mQ1;
-      mB0 = mB1;
-      if (mPerLen < 0 || mPerInd <= mPerLen) {
-        mPeriod.add(mB1);
+    } // > 10
+    int idig = digits.length() - dlen;
+
+    String runElem = digits.substring(idig, idig + dlen);
+    int count = 1; // there is always one element = 1 run
+    idig -= dlen;
+    while (idig >= 0) {
+      if (! digits.substring(idig, idig + dlen).equals(runElem)) {
+        ++count;
+        runElem = digits.substring(idig, idig + dlen);
       }
-      final Z mC2 = mB1.multiply(mC1).add(mC0);
-      mC0 = mC1;
-      mC1 = mC2;
-      final Z mD2 = mB1.multiply(mD1).add(mD0);
-      mD0 = mD1;
-      mD1 = mD2;
-    } else {
-      mB0 = Z.ZERO;
-      mPerLen = 0;
-    } // no square number
-  } // iterate
+      idig -= dlen;
+    } // while
+    return count;
+  } // getRunCount
 
   /**
-   * Determine whether the period is completely filled
-   * @return true iff filled
+   * Determine whether the number of runs in a number represented 
+   * in some base has a specific value.
+   * @param number get the run count from this number
+   * @param base represent in this base
+   * @param value so many runs are required
+   * @return true if the number of run has the value <em>count</em>
    */
-  public boolean hasFilledPeriod() {
-    return mPerLen >= 0 && mPerInd >= mPerLen;
-  } // hasFilledPeriod
-
-  /**
-   * Determine whether the period has a specified length.
-   * The caller must already have filled the period.
-   * @param len desired length of the period
-   * @return true iff the period has this length
-   */
-  public boolean hasPeriodLength(int len) {
-    return mPerLen == len;
-  } // hasFilledPeriod
-
-  /**
-   * Determine whether the period has a length of some parity
-   * and a specified central element.
-   * The caller must already have filled the period.
-   * @param element desired element of the period
-   * @param parity parity of the period length: 0 = even, 1 = odd
-   * @return true iff the period has this element
-   */
-  public boolean hasPeriodCentral(int parity, long element) {
-    return (mPerLen & 1) == parity && mPeriod.get(mPerLen >> 1).equals(Z.valueOf(element));
-  } // hasPeriodCentral
-
-  /**
-   * Gets the count of some value in the period
-   * The caller must already have filled the period,
-   * and it must hava a length >= 1 (no perfect square).
-   * @param value the desired value to be counted
-   * @return the least element
-   */
-  public int getCountInPeriod(Z value) {
-    int iper = mPeriod.size() - 1;
-    int result = 0;
-    while (iper >= 0) {
-      if (mPeriod.get(iper).equals(value)) {
-        result ++;
+  protected boolean hasRunCount(Z number, int base, int value) {
+    String digits;
+    int dlen = 1; // assume 1 character per digit
+    if (base <= 10) { // one character per digit
+      digits = number.toString(base);
+    } else { // two characters per digit
+      dlen = 2;
+      digits = number.toTwoDigits(base);
+      if ((digits.length() & 1) == 1) { // odd
+        digits = "0" + digits; // make sure that there are pairs
       }
-      iper --;
-    } // while iper
-    return result;
-  } // getCountInPeriod
+    } // > 10
+    int idig = digits.length() - dlen;
+
+    String runElem = digits.substring(idig, idig + dlen);
+    int count = 1; // there is always one element = 1 run
+    idig -= dlen;
+    boolean busy = true;
+    while (busy && idig >= 0) {
+      if (! digits.substring(idig, idig + dlen).equals(runElem)) {
+        ++count;
+        busy = count <= value; // false if >
+        runElem = digits.substring(idig, idig + dlen);
+      }
+      idig -= dlen;
+    } // while
+    return busy && count == value;
+  } // hasRunCount
 
   /**
-   * Gets the least element in the period
-   * The caller must already have filled the period,
-   * and it must hava a length >= 1 (no perfect square).
-   * @return the least element
+   * Get the number of digits in the base representation of number.
+   * @param number number to be investigated
+   * @param base represent in this base
+   * @param digit count this digit (two characters for base > 10)
+   * @return the count of digit in number
    */
-  public Z getLeastInPeriod() {
-    int iper = mPeriod.size() - 1;
-    Z least = mPeriod.get(0);
-    while (iper > 0) {
-      Z element = mPeriod.get(iper);
-      if (element.compareTo(least) < 0) {
-        least = element;
+  protected int getDigitCount(Z number, int base, int digit) {
+    String digits;
+    String search;
+    int dlen = 1; // assume 1 character per digit
+    if (base <= 10) { // one character per digit
+      digits = number.toString(base);
+      search = String.valueOf(digit);
+    } else { // two characters per digit
+      dlen = 2;
+      digits = number.toTwoDigits(base);
+      search = String.format("%02d", digit);
+      if ((digits.length() & 1) == 1) { // odd
+        digits = "0" + digits; // make sure that there are pairs
       }
-      iper --;
-    } // while iper
-    return least;
-  } // getLeastInPeriod
+    } // > 10
+    int idig = digits.length() - dlen;
+
+    int count = 0;
+    while (idig >= 0) {
+      if (digits.substring(idig, idig + dlen).equals(search)) {
+        count++;
+      }
+      idig -= dlen;
+    } // while
+    return count;
+  } // getDigitCount
 
   //=====================================
   /**
@@ -257,77 +171,59 @@ public class RunsBaseSequence implements Sequence {
    */
   @Override
   public Z next() {
-    Z result = mB0; // member of the periodic continued fraction
-    iterate();
-    return result;
+    ++mN;
+    return Z.valueOf(mN);
   } // next
 
   /**
-   * Get some property of the period of the continued fraction for sqrt(n).
+   * Get some property of the next number.
+   * This method is an example only.
+   * It is typically overwritten in order to return some other property.
    * @return property of the next number
    */
   protected Z getNextProperty() {
     mK = mK.add(Z.ONE);
-    fillPeriod();
     return getProperty();
   } // getNextProperty
 
   /**
-   * Get the next term of a sequence which fulfills some property
-   * of the period of the continued fraction for the square root of the term.
+   * Get the next term of a sequence which fulfills some property.
    * @return the next number with the property
    */
   protected Z getNextWithProperty() {
-    int loopCheck = 1000000;
+    long loopCheck = 100000000L;
     while (loopCheck > 0) {
       mK = mK.add(Z.ONE);
-      fillPeriod();
       if (isOk()) {
         loopCheck = -1;
       }
       loopCheck --;
     } // while busy
     if (loopCheck == 0) {
-      System.err.println("more the 1 million iterations in RunsBaseSequence.getNextWithProperty()");
+      throw new IllegalArgumentException("more than 10^8 iterations in RunsBaseSequence.getNextWithProperty()");
     }
     return mK;
-  } // next(boolean)
+  } // getNextWithProperty
 
   /**
-   * Get the size of the period of the continued fraction for sqrt(n).
+   * Get some property of the current number.
    * This method is an example only.
    * It is typically overwritten in order to return some other property.
-   * The caller must ensure that the period is already filled.
-   * @return property of the period of the continued fraction for the square root
-   * of the current number <em>mK</em>.
+   * @return a property of the current number <em>mK</em>.
    */
   protected Z getProperty() {
-    return Z.valueOf(mPeriod.size());
+    return mK;
   } // getProperty
 
   /**
-   * Determine whether the period of the continued fraction for sqrt(n)
-   * has an even length.
+   * Determine whether the current number has the property which includes it in the sequence.
    * This method is an example only.
-   * It is typically overwritten in order to return some other property.
-   * The caller must ensure that the period is already filled.
-   * @return true iff the continued fraction for the square root
-   * of the current number <em>mK</em> has some property.
+   * It is typically overwritten in order to test some other property.
+   * @return true iff the current number <em>mK</em> has some property.
    */
   protected boolean isOk() {
-    return (mPeriod.size() & 1) == 0;
+    return true;
   } // isOk
-
-  /**
-   * Determine whether the least term in the period has the specified value.
-   * The caller must ensure that the period is already filled.
-   * @param least the desired least period element value
-   * @return true iff the period of the continued fraction for the square root
-   * of the current number <em>mK</em> has this property.
-   */
-  protected boolean isLeastInPeriod(int least) {
-    return mPeriod.size() > 0 && Z.valueOf(least).equals(getLeastInPeriod());
-  } // isLeastInPeriod
 
   /**
    * Get the index of the current term of the sequence.
@@ -337,32 +233,8 @@ public class RunsBaseSequence implements Sequence {
     return mN;
   } // getIndex
 
-  /**
-   * Get the number whose square root is calculated
-   * @return current number whose quare root was expanded into a continued fraction
-   */
-  protected Z getN() {
-    return mK;
-  } // getN
-
-  /**
-   * Get the next term of the sequence.
-   * @return numerator of the convergent
-   */
-  protected Z getNumerator() {
-    return mC1;
-  } // getNumerator
-
-  /**
-   * Get the next term of the sequence.
-   * @return denominator of the convergent
-   */
-  protected Z getDenominator() {
-    return mD1;
-  } // getDenominator
-
   //=====================================
-  /** Test method.
+  /** Test method - not yet implemented.
    *  @param args command line arguments: [n [noterms]]
    *  Show various elements related to the continued fraction for the square root of n.
    *  If n is &lt; 0, several properties of the period for all numbers are shown.
@@ -383,42 +255,6 @@ public class RunsBaseSequence implements Sequence {
       } catch (Exception exc) {
       }
     }
-    RunsBaseSequence cf = null;
-    int iterm = 0;
-    if (n >= 0) { // properties of a single nubmer
-      cf = new RunsBaseSequence(1, n);
-      while (iterm < noterms) {
-        System.out.print(iterm
-           + ":\tB0=" + cf.mB0
-           +  ", B1=" + cf.mB1
-           +  ", P0=" + cf.mP0
-           +  ", P1=" + cf.mP1
-           +  ", Q0=" + cf.mQ0
-           +  ", Q1=" + cf.mQ1
-           +  ", C0=" + cf.mC0
-           +  ", C1=" + cf.mC1
-           +  ", D0=" + cf.mD0
-           +  ", D1=" + cf.mD1
-           + ",\tPerLen=" + cf.mPerLen
-           +  ", PerInd=" + cf.mPerInd
-           + "\t"     + cf.mC0 + "/" + cf.mD0
-           );
-        System.out.println("\t-> "  + cf.next().toString());
-        iterm ++;
-      } // while iterm
-      System.out.println(cf.mPeriod + " length=" + cf.mPeriod.size());
-    } else { // properties of all numbers
-      cf = new RunsBaseSequence(1); // always offset 1 ?!
-      while (iterm < noterms) {
-        Z prop = cf.getNextProperty();
-        System.out.println(cf.getN()
-            + ":\tsize="  + prop
-            + ", period=" + cf.mPeriod
-            + ", even="   + cf.isOk()
-            );
-        iterm ++;
-      } // while iterm
-    } // all
   } // main
 
 } // RunsBaseSequence

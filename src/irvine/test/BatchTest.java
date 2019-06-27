@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-06-26: print total elapsed time in ms at the end
  *  2019-06-23: print "start" with -vv only
  *  2019-06-15: timeDiff behind "pass"
  *  2019-06-06: write "aseqno start" V1.12
@@ -24,7 +25,7 @@ import  java.nio.channels.Channels;
 import  java.nio.channels.ReadableByteChannel;
 import  java.util.ArrayList;
 
-/** Reads a subset of OEIS 'stripped', calls jOEIS sequence classes 
+/** Reads a subset of OEIS 'stripped', calls jOEIS sequence classes
  *  and compares the results
  *  @author Dr. Georg Fischer
  */
@@ -32,7 +33,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.15";
+  private static String VERSION = "BatchTest V1.17";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -80,9 +81,9 @@ public class BatchTest {
   private int     verbosity;
 
   /** the sequence started at this Linux time */
-  private long    startTime; 
+  private long    startTime;
   /** difference between current time and {@link #startTime} */
-  private long    timeDiff; 
+  private long    timeDiff;
 
   /** No-args Constructor
    */
@@ -117,19 +118,19 @@ public class BatchTest {
     return result;
   } // getShortTrace
 
-  /*  Get a term, possibly abbreviated 
+  /*  Get a term, possibly abbreviated
    *  @param term original term
    *  @return term with middle digits replace by "..." if it was longer than MAX_LENGTH
    */
   private String abbrev(String term) {
-  	  String result = term;
-  	  int tlen = term.length();
-  	  if (tlen > MAX_LENGTH) {
-  	  	  result = term.substring(0, MAX_LENGTH/2) + "..." + term.substring(tlen - MAX_LENGTH/2);
-  	  }
-  	  return result;
+      String result = term;
+      int tlen = term.length();
+      if (tlen > MAX_LENGTH) {
+          result = term.substring(0, MAX_LENGTH/2) + "..." + term.substring(tlen - MAX_LENGTH/2);
+      }
+      return result;
   } // abbrev
-  
+
   /** Test the next term computed by the sequence
    *  @param  seq Sequence to be tested
    *  @param  expected expected term for a(n)
@@ -142,7 +143,7 @@ public class BatchTest {
       count ++; // one more is computed
       if (term == null) { // e.g. beyond end of FiniteSequence
         failure = 1; // FAIL
-        System.out.println    (aseqno + "\t" + count + "\tFAIL\t"     
+        System.out.println    (aseqno + "\t" + count + "\tFAIL\t"
             + expected + "\tcomputed:\tnull");
       } else {
         String computed = term.toString();
@@ -157,7 +158,7 @@ public class BatchTest {
           }
         } else if (! sequenceMayRun) {
           failure = 1; // FAIL
-          System.out.println  (aseqno + "\t" + count + "\tFATAL\t"    
+          System.out.println  (aseqno + "\t" + count + "\tFATAL\t"
               + timeDiff + " ms timeout expired");
         }
       }
@@ -217,7 +218,7 @@ public class BatchTest {
     Sequence seq   = null; // invoke this sequence
     String message = "\t0\tFATAL: construction failed: ";
     try {
-      seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) 
+      seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4)
           + '.' + aseqno)
           // .getConstructor().newInstance();
           .newInstance();
@@ -261,8 +262,8 @@ public class BatchTest {
         System.out.println    (aseqno + "\t" + count + "\tFAIL - timeout "
             + timeDiff + " > " + millisToRun + " ms");
       } else if (failCount == 0) {
-      	if (verbosity >= 1) {
-        	System.out.println    (aseqno + "\t" + count + "\tpass\t" + timeDiff + " ms");
+        if (verbosity >= 1) {
+            System.out.println    (aseqno + "\t" + count + "\tpass\t" + timeDiff + " ms");
         }
       } else if (failCount > 0) {
             System.out.println  (aseqno + "\t" + count
@@ -289,6 +290,8 @@ public class BatchTest {
    */
   public void processBatch(String fileName) {
     BufferedReader lineReader = null;
+    long totalTime = System.currentTimeMillis();
+    int lineNo = 0;
     try {
       if (fileName == null || fileName.length() <= 0 || fileName.equals("-")) {
         lineReader = new BufferedReader(new InputStreamReader(System.in, srcEncoding));
@@ -298,6 +301,7 @@ public class BatchTest {
       }
       String line = null;
       while ((line = lineReader.readLine()) != null) { // read and process lines
+      	lineNo ++;
         if (line != null) {
           if (debug >= 2) {
             System.err.println("BatchTest read \"" + line + "\"");
@@ -305,9 +309,9 @@ public class BatchTest {
           if (line.startsWith("A")) { // valid A-number
             String[] parts = line.split("\\s\\,?");
             aseqno  = parts[0];
-           	if (verbosity >= 2) {
-        	  System.out.println(aseqno + "\tstart");
-        	}
+            if (verbosity >= 2) {
+              System.out.println(aseqno + "\tstart");
+            }
             if (readFromBFile) {
               if (parts.length > 0) {
                 testSequence(parts[1].replaceAll("\\,\\Z", "").split("\\,")); // for fallback
@@ -327,6 +331,8 @@ public class BatchTest {
         System.out.println      (aseqno + "\t" + count + "\tFATAL - input read error, "
           + exc.getMessage() + ", Stack: " + getShortTrace(exc));
     } // try
+    System.out.println("Total\t" + lineNo + "\tpass+f\t" 
+        + String.valueOf(System.currentTimeMillis() - totalTime) + " ms");
   } // processBatch
 
   /** Processes the commandline arguments

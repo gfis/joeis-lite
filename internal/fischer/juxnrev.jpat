@@ -17,19 +17,19 @@ public class $(ASEQNO) implements Sequence {
   private Z mN;
 
   public $(ASEQNO) () {
-    mN = Z.valueOf($(OFFSET));
-    mS = new StringBuilder(mN.toString($(PARM1))).reverse().toString();
+    mN = Z.valueOf($(OFFSET) - 1);
+    mS = "";
     mPos = 0;
   }
 
   @Override
   public Z next() {
-    int result = mS.charAt(mPos++) - '0';
+    ++mPos;
     if (mPos >= mS.length()) {
       mN = mN.add(1);
       mS = new StringBuilder(mN.toString($(PARM1))).reverse().toString();
       mPos = 0;
     }
-    return Z.valueOf(result);
+    return Z.valueOf(mS.charAt(mPos) - '0');
   }
 }

@@ -3,43 +3,27 @@ package irvine.oeis.$(PACK);
 // DO NOT EDIT here!
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.RunsBaseSequence;
 
 /**
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) implements Sequence {
-
-  private Z mN;
+public class $(ASEQNO) extends RunsBaseSequence {
 
   public $(ASEQNO) () {
-    mN = Z.valueOf($(OFFSET));
+    super($(OFFSET), -1);
   }
 
-  private boolean isOk(Z an) {
-    String digits = an.toString($(PARM1));
-    int count1 = 0;
-    int count2 = 0;
-    int idig = digits.length() - 1;
-    while (idig >= 0) {
-      if (digits.charAt(idig) == '$(PARM3)') {
-        count1++;
-      } else if (digits.charAt(idig) == '$(PARM4)') {
-        count2++;
-      }
-      idig--;
-    }
-    return $(PARM2) count1 == count2;
+  @Override
+  protected boolean isOk() {
+    int count1 =  getDigitCount(Z.valueOf(mK), $(PARM1), $(PARM3));
+    return $(PARM2) 
+        count1 == getDigitCount(Z.valueOf(mK), $(PARM1), $(PARM4));
   }
 
   @Override
   public Z next() {
-    while (! isOk(mN)) {
-      mN = mN.add(1);
-    }
-    Z result = mN;
-    mN = mN.add(1);
-    return result;
+    return getNextWithProperty();
   }
 }

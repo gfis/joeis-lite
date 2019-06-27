@@ -19,18 +19,18 @@ public class $(ASEQNO) implements Sequence {
   public $(ASEQNO) () {
     mBuf = new StringBuffer(256);
     mSeq = new $(PARM2)();
-    mN = Z.valueOf($(OFFSET));
+    mN = Z.valueOf($(OFFSET) - 1);
   }
 
   @Override
   public Z next() {
+    mN = mN.add(1);
     String sn = mN.toString($(PARM1));
     int k = mBuf.indexOf(sn);
     while (k < 0) {
       mBuf.append(mSeq.next().toString());
       k = mBuf.indexOf(sn);
     }
-    mN = mN.add(1);
     return Z.valueOf(k + 1);
   }
 }
