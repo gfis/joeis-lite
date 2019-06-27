@@ -33,7 +33,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.17";
+  private static String VERSION = "BatchTest V1.18";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -219,9 +219,7 @@ public class BatchTest {
     String message = "\t0\tFATAL: construction failed: ";
     try {
       seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4)
-          + '.' + aseqno)
-          // .getConstructor().newInstance();
-          .newInstance();
+          + '.' + aseqno).getDeclaredConstructor().newInstance();
     } catch (Exception exc) {
       // seq remains null for any errors
       message += exc.getMessage() + getShortTrace(exc);
