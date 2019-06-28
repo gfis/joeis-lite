@@ -15,7 +15,8 @@ public class $(ASEQNO) implements Sequence {
   private String mDigits;
   private int mIncr;
 
-  public $(ASEQNO) () {
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
     mN = Z.valueOf($(OFFSET));
     advance($(PARM2), $(PARM1));
   }

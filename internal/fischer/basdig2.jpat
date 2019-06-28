@@ -11,7 +11,8 @@ import irvine.oeis.RunsBaseSequence;
  */
 public class $(ASEQNO) extends RunsBaseSequence {
 
-  public $(ASEQNO) () {
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
     super($(OFFSET), -1);
   }
 
