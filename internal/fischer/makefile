@@ -15,12 +15,13 @@ RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 MANY=999999
 D=0
 TO=4
+GU=0
 N=1000
 OFS=1
 WITHB=-b $(COMMON)/bfile -t $(TO)
 JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
-BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar irvine.test.BatchTest -v $(WITHB)
-BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB)
+BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
+BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 #----------------
@@ -49,9 +50,10 @@ update: purge
 count:
 	cd ../.. ; find src -iname "A??????.java" | wc -l
 pack:
-	cd ../.. ; find src -iname "A??????.java" > pack.$(NAME).lst \
-	; head -4 pack.$(NAME).lst ; wc -l pack.$(NAME).lst
-	cd ../.. ; tar --files-from=pack.$(NAME).lst -czf $(NAME).`date +%Y-%m-%d.%H`.tar
+	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
+	; head -4 pack.$(CC).lst ; wc -l            pack.$(CC).lst \
+	; find internal/fischer/$(CC).*.log >>      pack.$(CC).lst 
+	cd ../.. ; tar --files-from=pack.$(CC).lst -czf $(CC).`date +%Y-%m-%d.%H`.tgz
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
@@ -109,6 +111,12 @@ bfile:
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 #=========================================================
+bas:
+	make bas_all TARGET=gener
+	cat $@?*.gen > $@.gen
+	make dist
+	make test CC=$@
+	make pack CC=$@
 bas_sel:
 	make bas_all TARGET=select
 	cat bas*.gen > basall.gen
@@ -118,6 +126,7 @@ bas_all:
 	make $(TARGET) CC=basdig1
 	make $(TARGET) CC=basdig2
 	make $(TARGET) CC=basdig3
+	make $(TARGET) CC=basdig4
 	make $(TARGET) CC=basrun
 	make $(TARGET) CC=basruneq
 	make $(TARGET) CC=basrunmod
@@ -250,6 +259,12 @@ basrunpar:
 	cat $@.gen
 #--------------------------
 # new, using ContinuedFractionOfSqrtSequence
+cfs:
+	make cfs_all TARGET=gener
+	cat $@?*.gen > $@.gen
+	make dist
+	make test CC=$@
+	make pack CC=$@
 cfs_sel:
 	make cfs_all TARGET=select
 	cat cfs*.gen > cfsall.gen
@@ -390,14 +405,17 @@ cfspercent1:
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #-------------------------------
+jux:
+	make jux_nodep TARGET=gener
+	cat $@?*.gen > $@.gen
+	make dist
+	make test CC=$@
+	make pack CC=$@
 jux_sel:
 	rm -f jux*.gen
 	make jux_nodep TARGET=select
-	cat jux*.gen > juxnodep.gen
-	make jux_isdep TARGET=select
-jux_gen:
-	make jux_all TARGET=gener
-jux_all: jux_nodep jux_isdep # parameter: TARGET
+	# cat jux*.gen > juxnodep.gen
+	# make jux_isdep TARGET=select
 jux_nodep: # parameter: TARGET
 	make $(TARGET) CC=jux2n_1
 	make $(TARGET) CC=juxdig12b

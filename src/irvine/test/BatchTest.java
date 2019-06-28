@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-06-28: -u giveUpLimit
  *  2019-06-26: print total elapsed time in ms at the end
  *  2019-06-23: print "start" with -vv only
  *  2019-06-15: timeDiff behind "pass"
@@ -33,7 +34,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.18";
+  private static String VERSION = "BatchTest V1.19";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -56,6 +57,9 @@ public class BatchTest {
   /** Number of successive failures */
   private int     failCount;
 
+  /** Give up after so many terms */
+  private int     giveUpLimit;
+
   /** Allowed number of successive failures */
   private int     maxFailCount;
 
@@ -66,7 +70,7 @@ public class BatchTest {
   private long    millisToRun;
 
   /** Indicator for b-file read error */
-  private static final int READ_ERROR = -29061947; // more than any b-file index
+  private static final int READ_ERROR = -29061947; // different from any b-file index
 
   /** Whether to read terms from corresponding b-file */
   private boolean readFromBFile;
@@ -90,6 +94,7 @@ public class BatchTest {
   public BatchTest() {
     // set default for variables and arguments
     debug          = 0;
+    giveUpLimit    = 0; // process all b-file terms
     maxFailCount   = 4;
     millisToRun    = 4000L;
     sequenceMayRun = true;
@@ -181,7 +186,13 @@ public class BatchTest {
       ReadableByteChannel lineChannel = (new FileInputStream(fileName)).getChannel();
       BufferedReader lineReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
       String line = null;
-      while (sequenceMayRun && failure == 0 && (line = lineReader.readLine()) != null) { // read and process lines
+      int termNoLimit = 29061947; // high than any b-file index
+      if (giveUpLimit > 0) {
+      	termNoLimit = giveUpLimit;
+      }
+      count = 0;
+      while (sequenceMayRun && failure == 0 && count < termNoLimit
+          && (line = lineReader.readLine()) != null) { // read and process lines
         if (line != null) {
           int hashPos = line.indexOf('#');
           if (hashPos >= 0) { // hash found
@@ -235,11 +246,14 @@ public class BatchTest {
       sequenceMayRun = true;
 
       int termNo = terms.length; // Math.min(terms.length, maxTerms());
+      int termNoLimit = termNo;
+      if (giveUpLimit > 0 && giveUpLimit < termNo) {
+      	termNoLimit = giveUpLimit;
+      }
       if (debug >= 2) {
         System.err.println("BatchTest starts " + aseqno + " with " + termNo + " terms");
       }
       int failure = 0; // assume passed
-      count = 0;
       if (readFromBFile) { // try the b-file first
         failure = testAgainstBFile(seq);
       }
@@ -247,7 +261,8 @@ public class BatchTest {
         // test against terms from 'stripped', maybe as fallback
         count = 0; // number of evaluated tests
         failure = 0; // assume pass
-        while (sequenceMayRun && failure == 0 && count < termNo) {
+        while (sequenceMayRun && failure == 0 && count < termNoLimit
+            ) {
           failure = testNext(seq, terms[count]);
           // count is incremented in testNext
           timeDiff = System.currentTimeMillis() - startTime;
@@ -261,7 +276,9 @@ public class BatchTest {
             + timeDiff + " > " + millisToRun + " ms");
       } else if (failCount == 0) {
         if (verbosity >= 1) {
-            System.out.println    (aseqno + "\t" + count + "\tpass\t" + timeDiff + " ms");
+            System.out.println    (aseqno + "\t" + termNo + "\tpass" 
+            // + (count < termNo ? "=" + count : "" ) 
+            + "\t" + timeDiff + " ms");
         }
       } else if (failCount > 0) {
             System.out.println  (aseqno + "\t" + count
@@ -299,7 +316,7 @@ public class BatchTest {
       }
       String line = null;
       while ((line = lineReader.readLine()) != null) { // read and process lines
-      	lineNo ++;
+        lineNo ++;
         if (line != null) {
           if (debug >= 2) {
             System.err.println("BatchTest read \"" + line + "\"");
@@ -338,6 +355,8 @@ public class BatchTest {
    *  <ul>
    *  <li>-b b-file-directory</li>
    *  <li>-v, -vv, -vvv: level of verbosity</li>
+   *  <li>-t seconds    interrupt a sequence after this time (default: 4 s)</li>
+   *  <li>-u limit      give up after limit terms (default: process whole b-file)</li>
    *  <li>input filename or "-" for STDIN</li>
    *  </ul>
    */
@@ -348,6 +367,7 @@ public class BatchTest {
           + "    -b directory  check against b-files in this directory (default: off)\n"
           + "    -v, -vv, -vvv verbosity level\n"
           + "    -t seconds    interrupt a sequence after this time (default: 4 s)\n"
+          + "    -u limit      give up after limit terms (default: process whole b-file)\n"
           );
       return;
     }
@@ -374,6 +394,12 @@ public class BatchTest {
           }
         } catch (Exception exc) {
           // silently assume the default
+        }
+      } else if (arg.startsWith("-u")) {
+        try {
+          giveUpLimit = Integer.parseInt(args[iarg ++]);
+        } catch (Exception exc) {
+          // silently assume default
         }
       } else if (arg.startsWith("-v")) {
         verbosity = arg.length() - 1;
