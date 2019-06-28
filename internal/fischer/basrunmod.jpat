@@ -21,7 +21,7 @@ public class $(ASEQNO) implements Sequence {
     advance($(PARM2), $(PARM1));
   }
 
-  protected void advance(int len, int base) {
+  protected void advance(final int len, final int base) {
     if (base <= 10) {
       mIncr = 1;
       mDigits = mN.toString(base);
@@ -31,7 +31,7 @@ public class $(ASEQNO) implements Sequence {
       }
     } else {
       mIncr = 2;
-      int len2 = len * 2;
+      final int len2 = len * 2;
       mDigits = mN.toTwoDigits(base);
       if ((mDigits.length() & 1) != 0) {
         mDigits = "0" + mDigits;
@@ -46,7 +46,7 @@ public class $(ASEQNO) implements Sequence {
     }
   }
 
-  protected int runCount(Z an, int base) {
+  protected int runCount(final Z an, final int base) {
     if (base <= 10) {
       mIncr = 1;
       mDigits = mN.toString(base);
@@ -62,7 +62,7 @@ public class $(ASEQNO) implements Sequence {
     String runElem = mDigits.substring(idig, idig + mIncr);
     idig -= mIncr;
     while (idig >= 0) {
-      if (! mDigits.substring(idig, idig + mIncr).equals(runElem)) {
+      if (!mDigits.substring(idig, idig + mIncr).equals(runElem)) {
         count++;
         runElem = mDigits.substring(idig, idig + mIncr);
       }
@@ -76,7 +76,7 @@ public class $(ASEQNO) implements Sequence {
     while (runCount(mN, $(PARM1)) % $(PARM3) != $(PARM2)) {
       mN = mN.add(1);
     }
-    Z result = mN;
+    final Z result = mN;
     mN = mN.add(1);
     return result;
   }
