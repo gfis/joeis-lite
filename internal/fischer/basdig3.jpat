@@ -3,7 +3,6 @@ package irvine.oeis.$(PACK);
 // DO NOT EDIT here!
 
 import irvine.math.z.Z;
-import irvine.math.z.Z;
 import irvine.oeis.RunsBaseSequence;
 
 /**
@@ -12,14 +11,15 @@ import irvine.oeis.RunsBaseSequence;
  */
 public class $(ASEQNO) extends RunsBaseSequence {
 
-  public $(ASEQNO) () {
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
     super($(OFFSET), -1);
   }
 
   @Override
   protected boolean isOk() {
-    int count1 =  getDigitCount(mK, $(PARM1), $(PARM3));
-    int count2 =  getDigitCount(mK, $(PARM1), $(PARM4));
+    final int count1 =  getDigitCount(mK, $(PARM1), $(PARM3));
+    final int count2 =  getDigitCount(mK, $(PARM1), $(PARM4));
     return $(PARM2) 
         count1 == getDigitCount(mK, $(PARM1), $(PARM5))
         && count1 == count2;
