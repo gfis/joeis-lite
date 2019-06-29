@@ -13,10 +13,11 @@ import irvine.oeis.$(PARM3).$(PARM2);
 public class $(ASEQNO) implements Sequence {
 
   private Z mN;
-  private Sequence mSeq;
-  private StringBuffer mBuf;
+  private final Sequence mSeq;
+  private final StringBuffer mBuf;
 
-  public $(ASEQNO) () {
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
     mBuf = new StringBuffer(256);
     mSeq = new $(PARM2)();
     mN = Z.valueOf($(OFFSET) - 1);

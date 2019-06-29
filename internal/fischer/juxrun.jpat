@@ -3,31 +3,24 @@ package irvine.oeis.$(PACK);
 // DO NOT EDIT here!
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
 import irvine.oeis.$(PARM3).$(PARM2);
 
 /**
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) implements Sequence {
-
-  private Sequence mSeq;
-
-  public $(ASEQNO) () {
-    mSeq = new $(PARM2)();
-  }
+public class $(ASEQNO) extends $(PARM2) {
 
   @Override
   public Z next() {
-    int sk = mSeq.next().intValue();
+    int sk = super.next().intValueExact();
     while (sk != $(PARM1)) {
-      sk = mSeq.next().intValue();
+      sk = super.next().intValueExact();
     }  
     int runLen = 0;
     while (sk == $(PARM1)) {
-      runLen ++;
-      sk = mSeq.next().intValue();
+      ++runLen;
+      sk = super.next().intValueExact();
     }  
     return Z.valueOf(runLen);
   }

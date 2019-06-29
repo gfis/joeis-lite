@@ -13,14 +13,15 @@ public class $(ASEQNO) extends RunsBaseSequence {
 
   private final String mP12 = "$(PARM1)$(PARM2)";
 
-  public $(ASEQNO) () {
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
     super($(OFFSET), -1);
   }
 
   @Override
   protected boolean isOk() {
     return mK.toString($(PARM3)).contains(mP12) 
-      && ! mK.$(PARM4)(Z.ONE).toString($(PARM3)).contains(mP12);
+      && !mK.$(PARM4)(Z.ONE).toString($(PARM3)).contains(mP12);
   }
 
   @Override

@@ -11,15 +11,9 @@ import irvine.oeis.Sequence;
  */
 public class $(ASEQNO) implements Sequence {
  
-  private String mS;
-  private int mPos;
-  private Z mN;
-
-  public $(ASEQNO) () {
-    mN = Z.valueOf($(OFFSET) - 1);
-    mS = "";
-    mPos = 0;
-  }
+  private String mS = "";
+  private int mPos = 0;
+  private Z mN = Z.valueOf($(OFFSET) - 1);
 
   @Override
   public Z next() {

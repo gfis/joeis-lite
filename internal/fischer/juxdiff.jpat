@@ -3,33 +3,24 @@ package irvine.oeis.$(PACK);
 // DO NOT EDIT here!
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
 import irvine.oeis.$(PARM4).$(PARM3);
 
 /**
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) implements Sequence {
+public class $(ASEQNO) extends $(PARM3) {
  
-  private int mCountA;
-  private int mCountB;
-  private Sequence mSeq;
-
-  public $(ASEQNO) () {
-    mSeq = new $(PARM3)();
-    mCountA = 0;
-    mCountB = 0;
-  }
+  private long mCount = 0;
 
   @Override
   public Z next() {
-    int seqResult = mSeq.next().intValue();
+    final long seqResult = super.next().longValueExact();
     if (seqResult == $(PARM1)) {
-      mCountA ++;
+      ++mCount;
     } else if (seqResult == $(PARM2)) {
-      mCountB ++;
+      --mCount;
     }
-    return Z.valueOf(mCountA - mCountB);
+    return Z.valueOf(mCount);
   }
 }

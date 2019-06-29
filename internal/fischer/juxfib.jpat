@@ -11,25 +11,18 @@ import irvine.oeis.Sequence;
  */
 public class $(ASEQNO) implements Sequence {
  
-  private String mS;
-  private int mPos;
-  private Z mN;
-  private Z mN_1;
-
-  public $(ASEQNO) () {
-    mN_1 = Z.ZERO;
-    mN = Z.ONE;
-    mS = "";
-    mPos = 0;
-  }
+  private String mS = "";
+  private int mPos = 0;
+  private Z mN = Z.ONE;
+  private Z mN1 = Z.ZERO;
 
   @Override
   public Z next() {
     ++mPos;
     if (mPos >= mS.length()) {
-      final Z mFib = mN.add(mN_1);
+      final Z mFib = mN.add(mN1);
       mS = mFib.toString($(PARM1));
-      mN_1 = mN;
+      mN1 = mN;
       mN = mFib;
       mPos = 0;
     }
