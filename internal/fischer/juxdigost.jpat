@@ -11,7 +11,7 @@ import irvine.oeis.RunsBaseSequence;
  */
 public class $(ASEQNO) extends RunsBaseSequence {
 
-  private final String mP12 = "$(PARM1)$(PARM2)";
+  private static final String P12 = "$(PARM1)$(PARM2)";
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
@@ -20,8 +20,8 @@ public class $(ASEQNO) extends RunsBaseSequence {
 
   @Override
   protected boolean isOk() {
-    return mK.toString($(PARM3)).contains(mP12) 
-      && !mK.$(PARM4)(Z.ONE).toString($(PARM3)).contains(mP12);
+    return mK.toString($(PARM3)).contains(P12)
+      && !mK.$(PARM4)(Z.ONE).toString($(PARM3)).contains(P12);
   }
 
   @Override
