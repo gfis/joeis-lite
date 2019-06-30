@@ -196,6 +196,7 @@ public class RunsBaseSequence implements Sequence {
       mK = mK.add(Z.ONE);
       if (isOk()) {
         loopCheck = -1;
+        break;
       }
       loopCheck --;
     } // while busy
