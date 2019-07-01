@@ -20,6 +20,7 @@ N=1000
 OFS=1
 WITHB=-b $(COMMON)/bfile -t $(TO)
 JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
+# BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar:$(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
 BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
 BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
 INIT=0
@@ -32,8 +33,9 @@ all:
 #----------------------------------
 # Generation of groups of sequences
 #----------------------------------
-SOURCES=CoxeterSequence.java GeneratingFunctionSequence.java DeadSequence.java FiniteSequence.java LinearRecurrence.java PeriodicSequence.java \
-	PrependSequence.java ReaderSequence.java Sequence.java SqrtContinuedFraction.java
+SOURCES=ContinuedFractionOfSqrtSequence.java CoxeterSequence.java GeneratingFunctionSequence.java \
+	DeadSequence.java FiniteSequence.java LinearRecurrence.java PeriodicSequence.java \
+	PrependSequence.java ReaderSequence.java RunsBaseSequence.java Sequence.java 
 joeis_push:
 	cd $(LITE)/src/irvine/oeis  ; pwd ; cp -upv $(SOURCES) ../../../../../gitups/joeis/src/irvine/oeis/
 joeis_pull:
@@ -201,9 +203,9 @@ basdig3:
 # A045004 In base 3 the numbers of 0's and 2's are 3 and 0, respectively.	nonn,base,synth	1..43
 basdig4:
 	perl -ne \
-	'if (m{^(A\d+)\s+(Numbers [nk] with (the )?property that )?[Ii]n base.(\d+)'\
-	'\s*representation the numbers of (\d+).s and (\d+).s are (\d+) and (\d+)})'\
-	'{ print join("\t", $$1, "$@", 0, $$4, $$5, $$6, $$7, $$8) . "\n" }' \
+	'if (m{^(A\d+)\s+(Numbers [nk] with (the )?property that )?[Ii]n base.(\d+) '\
+	'(representation )?the numbers of (\d+).s and (\d+).s are (\d+) and (\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$4, $$6, $$7, $$8, $$9) . "\n" }' \
 	$(COMMON)/names \
 	>     $@.gen
 	# A044987 Numbers k whose base-3 representation has four 0's and two 1's.	nonn,base,changed,synth	1..42
@@ -283,21 +285,8 @@ cfs_all: # parameter: TARGET
 	make $(TARGET) CC=cfspertin
 	wc -l cfs*.gen
 #----
-# deprecated, using SqrtContinuedFraction
-cfp_gen:
-	make cfp_all TARGET=gener
-cfp_all: # parameter: TARGET
-	make $(TARGET) CC=cfp
-	make $(TARGET) CC=cfpcount
-	make $(TARGET) CC=cfpleast
-	make $(TARGET) CC=cfplen
-	make $(TARGET) CC=cfplenmult
-	make $(TARGET) CC=cfpmid0
-	make $(TARGET) CC=cfpmid1
-#----
 # A010121	Continued fraction for sqrt(7).
 # A040002	Continued fraction for sqrt(5).
-cfs:
 cfsqrt:
 	perl -ne 'if (m{^(A\d+) Continued fraction for sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names > $@.gen
@@ -305,14 +294,12 @@ cfsqrt:
 #----
 # A041009 Denominators of continued fraction convergents to sqrt(7).
 # A041010 Numerators of continued fraction convergents to sqrt(8).
-cfsnum:
 cfsqnum:
 	perl -ne 'if (m{^(A\d+) Numerators of continued fraction convergents to sqrt\((\d+)\)\.})   { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names \
 	| grep -v "^A00" \
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-cfsden:
 cfsqden:
 	perl -ne 'if (m{^(A\d+) Denominators of continued fraction convergents to sqrt\((\d+)\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
 	$(COMMON)/names \
@@ -322,7 +309,6 @@ cfsqden:
 #----
 # A003285	Period of continued fraction for square root of n (or 0 if n is a square).
 # A097853	Period of continued fraction for square root of n (or 1 if n is a square).
-cfp:
 cfsper:
 	perl -ne \
 	'if (m{^(A\d+) Period of continued fraction for square root of n \(or (\-?\d+) if n is a square\)\.}) { print "$$1\t$@\t0\t$$2\n" }' \
@@ -345,7 +331,6 @@ cfsper:
 # A031779	Period of continued fraction for sqrt(n) contains exactly 11 ones.
 # A031780	Period of continued fraction for sqrt(n) contains exactly 12 ones.
 # PARM1="==" PARM2=11 PARM3=1
-cfpcount:
 cfspercount:
 	perl -ne \
 	'if (m{^(A\d+) (Numbers [nk] such that )?[Pp]eriod of continued fraction for sqrt\([kn]\) contains (exactly )?(\d+) (one)s\.}) { print "$$1\t$@\t1\t$$3\t$$4\t$$5\n" }' \
@@ -357,7 +342,6 @@ cfspercount:
 # A031700	Least term in period of continued fraction for sqrt(n) is 22.
 # A031701	Numbers n such that the least term in the period of the continued fraction for sqrt(n) is 23.
 # PARM1=22
-cfpleast:
 cfsperleast:
 	perl -ne \
 	'if (m{^(A\d+) (Numbers n such that )?(the )?[Ll]east term in (the )?period of (the )?continued fraction for sqrt\(n\) is (\d+)\.}) { print "$$1\t$@\t0\t$$6\n" }' \
@@ -367,7 +351,6 @@ cfsperleast:
 # A013643	Numbers n such that continued fraction for sqrt(n) has period 3.
 # A013644	Numbers n such that the continued fraction for sqrt(n) has period 4.
 # + A002522	a(n) = n^2 + 1 for period 1
-cfplen:
 cfsperlen:
 	perl -ne \
 	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has period (\d+)\.}) { print "$$1\t$@\t0\t$$3\n" }' \
@@ -376,7 +359,6 @@ cfsperlen:
 #----
 # A064848 Period of continued fraction for sqrt(2)*n.
 # A064927 Period of continued fraction for sqrt(23)*n.	nonn,synth	1..75
-cfpn:
 cfspertin:
 	perl -ne \
 	'if (m{^(A\d+) Period of continued fraction for sqrt\((\d+)\)\*n}) { print "$$1\t$@\t0\t$$2\n" }' \
@@ -390,20 +372,38 @@ cfspertin:
 # A031414	Numbers n such that continued fraction for sqrt(n) has odd period and a pair of central terms both equal to 1.
 # PARM1=parity, PARM2=central
 #           1                             2                                              3                 4           5                                            6                                      7
-cfpmid0:
 cfspercent0:
 	perl -ne \
-	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (even) period (2\*m )?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.}) { print "$$1\t$@\t0\t$$7\n" }' \
+	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (even) period (2\*m )?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.})'\
+	'{ print "$$1\t$@\t0\t$$7\n" }' \
 	$(COMMON)/names \
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-cfpmid1:
 cfspercent1:
 	perl -ne \
-	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (odd) period (2\*m\s?\+\s?1)?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.}) { print "$$1\t$@\t0\t$$7\n" }' \
+	'if (m{^(A\d+) Numbers [nk] such that (the )?continued fraction for sqrt\([kn]\) has (odd) period (2\*m\s?\+\s?1)?and (the m\-th|central|a pair of central) terms? (is |both equal to |of the period is |)(\d+)\.})'\
+	'{ print "$$1\t$@\t0\t$$7\n" }' \
 	$(COMMON)/names \
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#-------------------------------
+dupl:
+	perl -ne \
+	'if (m{^(A\d+) (Duplicate of |Essentially the same as |Same as )(A\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$3, substr(lc($$3), 0, 4)) . "\n" }' \
+	$(COMMON)/names \
+	>         $@.gen
+	wc -l     $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+dupl_cut:
+	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
+	    FROM seq4 s \
+	    WHERE parm1 IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1" \
+	| perl -pe "s{\'\'}{\'}g" \
+	>         dupl.gen
+	head -n 4 dupl.gen
+	wc -l     dupl.gen
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener
@@ -504,7 +504,8 @@ juxdigost:
 # A061931 Numbers n such that n divides the (right) concatenation of all numbers <= n written in base 2 (most significant digit on right).	nonn,base,more,synth
 juxdiv:
 	perl -ne \
-	'if (m{^(A\d+)\s+Numbers \w such that \w divides the \((left|right)\) concatenation of all numbers \<\= \w written in base (\d+) \(most significant digit on (left|right)\)}) { print join("\t", $$1, "$@" . substr($$2, 0, 1) . substr($$4, 0, 1), 0, $$3) . "\n" }' \
+	'if (m{^(A\d+)\s+Numbers \w such that \w divides the \((left|right)\) concatenation of all numbers \<\= \w written in base (\d+) \(most significant digit on (left|right)\)})'\
+	'{ print join("\t", $$1, "$@" . substr($$2, 0, 1) . substr($$4, 0, 1), 0, $$3) . "\n" }' \
 	$(COMMON)/names \
 	| perl -pe 'if (m{A06}) { s{juxdiv}{juxdjv} }' \
 	| tee $@.gen
@@ -513,7 +514,8 @@ juxdiv:
 # A030304 Least k such that base 2 representation of n begins at s(k), where s=A030190 (or equally A030302).	nonn,base,synth
 juxleast:
 	perl -ne \
-	'if (m{^(A\d+)\s+(a\(n\)=)?[Ll]east k such that (the )?base (\d+) representation of n begins at s\(k\)\, where s=(A\d+)}) { print join("\t", $$1, "$@", 0, $$4, $$5, substr(lc($$5), 0, 4)) . "\n" }' \
+	'if (m{^(A\d+)\s+(a\(n\)=)?[Ll]east k such that (the )?base (\d+) representation of n begins at s\(k\)\, where s=(A\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$4, $$5, substr(lc($$5), 0, 4)) . "\n" }' \
 	$(COMMON)/names \
 	| grep -v "^A030611" \
 	| tee $@.gen
@@ -522,7 +524,8 @@ juxleast:
 # A030998 Write n in base 7 and juxtapose.	nonn,base,cons,easy,tabf,synth
 juxn:
 	perl -ne \
-	'if (m{^(A\d+)\s+(The almost\-natural numbers\: )?[Ww]rite n in base (\d+) and juxtapose}) { print join("\t", $$1, "$@", 0, $$3) . "\n" }' \
+	'if (m{^(A\d+)\s+(The almost\-natural numbers\: )?[Ww]rite n in base (\d+) and juxtapose})'\
+	'{ print join("\t", $$1, "$@", 0, $$3) . "\n" }' \
 	$(COMMON)/names                  > $@.gen
 	echo "A030190	juxn	0	2"  >> $@.gen
 	cat $@.gen
@@ -531,14 +534,16 @@ juxn:
 # A031016 Write n in base 7, then complement each digit (d -> 6-d) and juxtapose.	nonn,base,synth
 juxncomp:
 	perl -ne \
-	'if (m{^(A\d+)\s+Write n in base (\d+)\, (then )?complement each digit (\(d\s*\-\>\s*(\d+)\-d\) )?and juxtapose}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
+	'if (m{^(A\d+)\s+Write n in base (\d+)\, (then )?complement each digit (\(d\s*\-\>\s*(\d+)\-d\) )?and juxtapose})'\
+	'{ print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
 	$(COMMON)/names | tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
 # A030324 Triangle read by rows, where row k consists of the binary digits of Fibonacci(k+1)
 juxnrev:
 	perl -ne \
-	'if (m{^(A\d+)\s+Triangle T\(n\,k\)\: [Ww]rite n in base (\d+)\, reverse order of digits}) { print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
+	'if (m{^(A\d+)\s+Triangle T\(n\,k\)\: [Ww]rite n in base (\d+)\, reverse order of digits})'\
+	'{ print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
 	$(COMMON)/names \
 	| grep -vE "A262" \
  	| tee $@.gen
@@ -547,7 +552,8 @@ juxnrev:
 # A030318 Position of n-th 0 in A030317
 juxpos:
 	perl -ne \
-	'if (m{^(A\d+)\s+Position of n-th (\d+) in (A\d+)}) { print join("\t", $$1, "$@", 0, $$2, $$3, substr(lc($$3), 0, 4)) . "\n" }' \
+	'if (m{^(A\d+)\s+Position of n-th (\d+) in (A\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$2, $$3, substr(lc($$3), 0, 4)) . "\n" }' \
 	$(COMMON)/names \
 	| grep -vE "A0209|A0540|A030298|A030496" \
 	| grep -vE "A0306(05|06|07|08|09|10)|A0313(25|26|27|28|29|30|31|32|33|34)" \
@@ -559,10 +565,53 @@ juxpos:
 # A030336 Length of n-th run of digit 0 in A003137.
 juxrun:
 	perl -ne \
-	'if (m{^(A\d+)\s+Length of n\-th run of (digit )?(\d+)[^A]+(A\d+)}) { print join("\t", $$1, "$@", 0, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
+	'if (m{^(A\d+)\s+Length of n\-th run of (digit )?(\d+)[^A]+(A\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$3, $$4, substr(lc($$4), 0, 4)) . "\n" }' \
 	$(COMMON)/names \
 	| grep -vE "A0306(12|13|14|15|16)" \
 	| tee $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A151255 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
+#   and consisting of n steps taken from {(-1, -1), (-1, 1), (1, 0)}	nonn,walk,synth	0..34
+# A151373 Number of walks within N^2 (the first quadrant of Z^2) starting
+#   and ending at (0,0) and consisting of n steps taken from {(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, 0), (1, 1)}	nonn,walk,synth	0..26
+# A151508 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
+#   , ending on the vertical axis and consisting of n steps taken from {(-1, -1), (-1, 0), (-1, 1), (0, -1), (1, -1), (1, 0)}.	nonn,walk,	0..440
+walk2:
+	perl -ne \
+	'if (m{^(A\d+)\s+Number of walks within N\^2 \(the first quadrant of Z\^2\) starting '\
+	'(at \(0\,0\) and |and ending at \(0\,0\) and |at \(0\,0\)\, ending on the vertical axis and )'\
+	'consisting of ((2)[ \*])?[nk] steps taken from \{([^\}]+)\}})'\
+	'{ my ($$aseqno, $$text, $$dummy, $$no, $$steps) = ($$1,$$2,$$3,$$4,$$5); $$steps =~ s{\s}{}g;'\
+	'$$text =~ s{\W}{}g;'\
+	'print join("\t", $$aseqno, "$@", 0, $$text, $$no, $$steps) . "\n" }' \
+	$(COMMON)/names \
+	>        $@.gen
+	cut -f 4 $@.gen | sort | uniq -c
+	head -n2 $@.gen
+	tail -n2 $@.gen
+	wc -l    $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+# A147999 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0) 
+#    and consisting of n steps taken from {(-1, -1, -1), (-1, -1, 1), (-1, 1, 0), (1, 0, 0)}	nonn,walk,synth	0..33
+# A151254 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0) 
+#   and consisting of n steps taken from {(-1, 0, 0), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)}	nonn,walk,synth	0..25
+walk3:
+	perl -ne \
+	'if (m{^(A\d+)\s+Number of walks within N\^3 \(the first octant of Z\^3\) starting '\
+	'(at \(0\,0\,0\) and )'\
+	'consisting of ((2)[ \*])?[nk] steps taken from \{([^\}]+)\}})'\
+	'{ my ($$aseqno, $$text, $$dummy, $$no, $$steps) = ($$1,$$2,$$3,$$4,$$5); $$steps =~ s{\s}{}g;'\
+	'$$text =~ s{\W}{}g;'\
+	'print join("\t", $$aseqno, "$@", 0, $$text, $$no, $$steps) . "\n" }' \
+	$(COMMON)/names \
+	>        $@.gen
+	cut -f 4 $@.gen | sort | uniq -c
+	head -n2 $@.gen
+	tail -n2 $@.gen
+	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #==========================
 BaseTwoDigits:
@@ -648,7 +697,6 @@ batch_cfsqrt:
 	grep -f x.tmp $(COMMON)/stripped > subset.tmp
 	wc -l subset.tmp
 	make test
-
 #--------------------------
 dex: dex_impl dex_nimpl
 dex_sel: # names: Annnnnn Decimal expansion of ... and in jOEIS
@@ -677,7 +725,6 @@ dex_joeis:
 # A030801 [ exp(17/24)*n! ].
 # A030802 a(n) = floor( exp(13/24)*n! ).
 # A030810 Floor(exp(19/23) * n!).
-
 flexfact:
 	perl -ne \
 	'if (m{^(A\d+)\s+\[\s*exp\((\d+)\/(\d+)\)\s*\*\s*n\s*\!\s*\]}) { print join("\t", $$1, "$@", 0, $$2, $$3) . "\n" }' \
@@ -697,7 +744,9 @@ palb:
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
-	| perl -ne 'if (! m{\.\.\.} and m{\A(A\d{6}\s+\w\(([a-z])\)\s*\=\s*[ \d\+\-\*\/\!ank\[\]\{\}\(\)\^]+)\.}) { print "$$1\n"; }' \
+	| perl -ne \
+	'if (! m{\.\.\.} and m{\A(A\d{6}\s+\w\(([a-z])\)\s*\=\s*[ \d\+\-\*\/\!ank\[\]\{\}\(\)\^]+)\.})'\
+	'{ print "$$1\n"; }' \
 	| sed -e "s/ /\t/" -e "s/ //g" -e "y/[]{}/()()/" \
 	| grep -v '\.\.' \
 	>       $@.tmp

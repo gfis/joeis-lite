@@ -1,15 +1,11 @@
 package irvine.oeis;
 
 import irvine.math.z.Z;
-import irvine.math.z.ZUtils;
-import java.util.ArrayList;
 /**
- * Properties of a (simple) periodic continued fraction
- * for the square root of a number,
- * its numerators, denominators and period elements.
- * This class is used for the continued fraction
- * of a single square root, and for the property sequences for
- * the continued fractions of all square roots.
+ * Properties of the runs of digits of a number,
+ * This class is used for the runs of a single number, 
+ * and for the property sequences for
+ * the runs of digits in all numbers.
  * @author Georg Fischer
  */
 public class RunsBaseSequence implements Sequence {
@@ -20,8 +16,7 @@ public class RunsBaseSequence implements Sequence {
 
   /**
    * Construct an instance which selects all numbers
-   * that have some property in the continued fractions
-   * of their square roots.
+   * that have some property in the runs of digits to some base.
    * @param offset first valid term has this index
    */
   protected RunsBaseSequence(final int offset) {
@@ -31,10 +26,10 @@ public class RunsBaseSequence implements Sequence {
   }
 
   /**
-   * Construct the continued fraction for the square root
+   * Construct a sequence for runs of digits
    * of a single, specified number.
    * @param offset first valid term has this index
-   * @param k compute the sqrt of this non-negative number
+   * @param k investigate the runs of digtis in this non-negative number
    */
   protected RunsBaseSequence(final int offset, final int k) {
     this(offset);
@@ -46,9 +41,9 @@ public class RunsBaseSequence implements Sequence {
    * @param width number of required digits
    * @param base represent the number in this base
    */
-  protected Z ensureWidth(int len, int base) {
+  protected Z ensureWidth(int width, int base) {
     int num = 1;
-    int iwid = len - 1;
+    int iwid = width - 1;
     while (iwid > 0) {
       num *= base;
       --iwid;
@@ -165,9 +160,8 @@ public class RunsBaseSequence implements Sequence {
    * Get the next term of the sequence.
    * This is an example only.
    * The method is typically overwritten to get some other
-   * element related to the continued fraction of the square root
-   * of this number.
-   * @return the next element of the continued fraction
+   * element related to the runs of digits in this number.
+   * @return the next term
    */
   @Override
   public Z next() {
@@ -237,8 +231,7 @@ public class RunsBaseSequence implements Sequence {
   //=====================================
   /** Test method - not yet implemented.
    *  @param args command line arguments: [n [noterms]]
-   *  Show various elements related to the continued fraction for the square root of n.
-   *  If n is &lt; 0, several properties of the period for all numbers are shown.
+   *  Show various elements related to the runds of digits for some base in n.
    */
   public static void main(String[] args) {
     int n = -1;
