@@ -12,7 +12,7 @@ import irvine.oeis.RunsBaseSequence;
 public class $(ASEQNO) extends RunsBaseSequence {
 
   /** Construct the sequence. */
- public $(ASEQNO)() {
+  public $(ASEQNO)() {
     super($(OFFSET));
     // mK = ensureWidth($(PARM3), $(PARM2));
   }
