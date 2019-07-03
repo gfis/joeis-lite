@@ -18,8 +18,8 @@ public class $(ASEQNO) extends SqrtContinuedFraction {
   
   @Override
   public Z next() {
-    Z result = mB0; 
+    final Z result = mB0; 
     iterate();
     return result;
-  } // next
+  }
 }
