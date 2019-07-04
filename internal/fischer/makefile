@@ -405,6 +405,18 @@ dupl_cut:
 	head -n 4 dupl.gen
 	wc -l     dupl.gen
 #-------------------------------
+# Triangles
+# A038220 Triangle whose (i,j)-th entry is binomial(i,j)*3^(i-j)*2^j.	nonn,tabl,easy,	0..8000
+# A038226 Triangle read by rows: (i,j)-th entry is binomial(i,j)*3^(i-j)*8^j.	nonn,tabl,easy,synth	0..36
+gtpas:
+	perl -ne \
+	'if (m{^(A\d+) Triangle (whose |read by rows\: )\(i\,j\)\-th entry is binomial\(i\,j\)\*(\d+)\^\(i\-j\)\*(\d+)\^j})'\
+	'{ print join("\t", $$1, "$@", 0, 1, "1,-$$3,-$$4") . "\n" }' \
+	$(COMMON)/names \
+	>         $@.gen
+	wc -l     $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#-------------------------------
 jux:
 	make jux_nodep TARGET=gener
 	cat $@?*.gen > $@.gen
@@ -687,16 +699,6 @@ gen_mmac:
 	head -4 $@.tmp
 	wc   -l $@.tmp
 	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
-batch_mmac:
-	cut -b1-7 errors-2019-04-02.txt > x.tmp
-	grep -f x.tmp $(COMMON)/stripped > subset.tmp
-	wc -l subset.tmp
-	make test
-batch_cfsqrt:
-	cut -b1-7 cfsqrt_gen.log > x.tmp
-	grep -f x.tmp $(COMMON)/stripped > subset.tmp
-	wc -l subset.tmp
-	make test
 #--------------------------
 dex: dex_impl dex_nimpl
 dex_sel: # names: Annnnnn Decimal expansion of ... and in jOEIS

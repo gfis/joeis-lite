@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2019-07-04: V1.4, no real change
 # 2019-06-23: up to 8 $(PARMi) in seq4
 # 2019-06-13, Georg Fischer: derived from gen_pattern.pl
 #
@@ -19,7 +20,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V1.03";
+my $program = "gen_seq4.pl V1.4";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;

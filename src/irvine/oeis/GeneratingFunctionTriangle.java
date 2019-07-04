@@ -1,6 +1,6 @@
 /* Generating functions with 2 variables yielding a (lower left) triangle
  * @(#) $Id$
- * 2019-06-06, Georg Fischer: copied from GeneratingFunctionSequence
+ * 2019-07-04, Georg Fischer: copied from GeneratingFunctionSequence
  */
 package irvine.oeis;
 
