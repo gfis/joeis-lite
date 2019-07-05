@@ -2,15 +2,19 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
-# 2019-07-04: V1.4, no real change
+# 2019-07-04: V1.5 -m: only those not already in $maindir
 # 2019-06-23: up to 8 $(PARMi) in seq4
 # 2019-06-13, Georg Fischer: derived from gen_pattern.pl
 #
 #:# Usage:
 #:#   perl gen_seq4.pl [-d debug] [-a author] [-l maxlen]
-#;#          [-p patprefix] [-t targetdir] infile > logfile
-#:#       infile has the format: ASEQNO CALLCODE OFFSET PARM1 PARM2 PARM3 PARM4 NAME
-#:#       pattern may contain all of these and $(AUTHOR), $(DATE), $(PACK)
+#:#          [-p patprefix] [-t targetdir] [-nc] infile > logfile
+#:#   -l maxlen     maximum length of a line during $(PARMi) expansion
+#:#   -nc           do not overwrite if already present in $maindir
+#:#   -p patprefix  directory prefix where to find the *.jpat pattern file(s)
+#:#   infile lines have the format: ASEQNO CALLCODE OFFSET PARM1 PARM2 PARM3 PARM4 ... PARM8 NAME
+#:#   The pattern file(s) may contain all of these 
+#:#   and $(AUTHOR), $(DATE), $(GEN), $(PACK), $(PROG).
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -20,7 +24,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V1.4";
+my $program = "gen_seq4.pl V1.5";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -37,6 +41,8 @@ my $callcode  = "cfsnum";
 my %patterncache  = (); # empty at the beginning
 my $basedir   = "../../../OEIS-mat/common";
 my $targetdir = "../../src/irvine/oeis";
+my $maindir   = "../../../../gitups/joeis/src/irvine/oeis";
+my $clobber = 1; # overwrite even if already present in $maindir
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -46,6 +52,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $debug     = shift(@ARGV);
     } elsif ($opt  =~ m{l}) {
         $max_line_len = shift(@ARGV);
+    } elsif ($opt  =~ m{nc}) {
+        $clobber   = 0;
     } elsif ($opt  =~ m{p}) {
         $patprefix = shift(@ARGV);
     } elsif ($opt  =~ m{t}) {
@@ -119,9 +127,6 @@ while (<>) { # read inputfile
                 print "# before: type(PARM$iparm) = \"$type\", term=\"$term\"\n";
             }
             if (0) {
-        #   } elsif (($term =~ m{[^ \-\,0-9]}) or ($term !~ m{\d})) {
-        #       print "# $aseqno \"$term\" contains non-digits\n";
-        #       $do_generate = 0;
             } elsif (length($type) == 0) { # leave it as it is
             } elsif ($type =~ m{I}i)     { # normal int
                 # term is unchanged
@@ -157,6 +162,18 @@ while (<>) { # read inputfile
             print "$copy\n================================\n";
         }
     } elsif ($do_generate > 0) {
+        &write_output($copy, $aseqno);
+    } else {
+        print "# $aseqno has too big parameter values - skipped\n";
+    }
+} # while <>
+print STDERR "# $gen_count sequences generated\n";
+#-----------------
+sub write_output {
+    my ($copy, $aseqno) = @_; # global $old_package, $gen_count, $debug
+    my $package = lc(substr($aseqno, 0, 4));
+    # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
+    if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.java")) { # overwrite or does not yet exist
         my $packdir = "$targetdir/$package";
         if ($old_package ne $package) {
             mkdir $packdir;
@@ -167,18 +184,12 @@ while (<>) { # read inputfile
         print OUT $copy;
         close(OUT);
         if ($debug >= 1) {
-            print "$aseqno $name\n";
-            if ($debug >= 1) {
-                print "--------------------------------\n";
-                print $copy;
-            }
+            print "--------------------------------\n";
+            print $copy;
         } # debug
         $gen_count ++;
-    } else {
-        print "# $aseqno has too big parameter values - skipped\n";
-    }
-} # while <>
-print STDERR "# $gen_count sequences generated\n";
+    } # overwrite
+} # write_output
 #----------------------------------------
 sub read_pattern { # read the pattern and return it
     my ($patfile) = @_;

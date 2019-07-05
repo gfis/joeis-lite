@@ -17,6 +17,7 @@ D=0
 TO=4
 GU=0
 N=1000
+NC=
 OFS=1
 WITHB=-b $(COMMON)/bfile -t $(TO)
 JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
@@ -50,7 +51,9 @@ dist:
 update: purge
 	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
 count:
-	cd ../.. ; find src -iname "A??????.java" | wc -l
+	find ../../src -iname "A??????.java" | wc -l
+list:
+	find ../../src -iname "A??????.java" -ls 
 pack:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; head -4 pack.$(CC).lst ; wc -l            pack.$(CC).lst \
@@ -81,13 +84,20 @@ select: # parameter: CC, OFS
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
 	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
-gener: # parameter: MANY, CC
+gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	head -n$(MANY) $(CC).gen      > ghead.tmp
-	perl gen_seq4.pl -d $(D)        ghead.tmp
+	perl gen_seq4.pl -d $(D) $(NC)  ghead.tmp
 test: # parameter: CC
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make stripgr LIST=ghead.tmp
+	make runbt
+	make evaluate
+testex: # parameter: CC; test all existing (generated) sequences
+	rm -f batch.log
+	find ../../src -iname "A??????.java" -printf "%f\n" | cut -b1-7 \
+	| head -n$(MANY) > ghead.tmp
+	make stripgr  LIST=ghead.tmp
 	make runbt
 	make evaluate
 stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
@@ -168,10 +178,12 @@ basdig1:
 # A039125 Numbers n whose base-10 representation has the same number of 1's and 7's.	nonn,base,easy,	1..5000
 # A039603 Numbers n such that representation in base 12 has same nonzero number of 0's and 11's.
 # A039225 Numbers n whose base-12 representation has the same number of 1's and 7's.
+# A039473 Numbers such that representation in base 11 has the same nonzero number of 4's and 6's.	nonn,base,easy,changed,synth	1..50
+
 basdig2:
 	perl -ne \
-	'if (m{^(A\d+)\s+Numbers [nk] such that representation in base.(\d+) has (the )?same (nonzero )?number of (\d+)\Ds and (\d+)\Ds})'\
-	'{ print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6) . "\n" }' \
+	'if (m{^(A\d+)\s+Numbers ([nk] such that|such that|whose) representation in base.(\d+) has (the )?same (nonzero )?number of (\d+)\Ds and (\d+)\Ds})'\
+	'{ print join("\t", $$1, "$@", 0, $$3, $$5, $$6, $$7) . "\n" }' \
 	$(COMMON)/names \
 	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
 	>   $@.gen
@@ -487,7 +499,7 @@ juxdiff:
 # A043100 0 and 1 occur juxtaposed in the base 4 representation of n but not of n-1.	nonn,base,synth	1..48
 juxdig12b:
 	perl -ne \
-	'if (m{^(A\d+)\s+(Numbers n such that )?(\d+) and (\d+) occur juxtaposed in the base (\d+) representation of n but not of n([\-\+]1)\.})'\
+	'if (m{^(A\d+)\s+(Numbers [nk] such that )?(\d+) and (\d+) occur juxtaposed in the base (\d+) representation of [nk] but not of [nk]([\-\+]1)\.})'\
 	'{ print join("\t", $$1, "$@", 1, $$3, $$4, $$5, $$6) . "\n" }' \
 	$(COMMON)/names \
 	| sed -e "s/\t\-1/\tsubtract/" -e "s/\t+1/\tadd/ " \
@@ -499,7 +511,7 @@ juxdig12b:
 # A044075 Numbers k such that the string 3,2 occurs in the base-4 representation of k but not of k-1.	nonn,base,easy,changed,	1..10000
 juxdigost:
 	perl -ne \
-	'if (m{^(A\d+)\s+Numbers [nk] such that (the )?string (\d+),(\d+) occurs in (the )?base.(\d+) representation of [nk] but not of n([\-\+]1)\.})'\
+	'if (m{^(A\d+)\s+Numbers [nk] such that (the )?string (\d+),(\d+) occurs in (the )?base.(\d+) representation of [nk] but not of [nk]([\-\+]1)\.})'\
 	'{ print join("\t", $$1, "$@", 1, $$3, $$4, $$6, $$7) . "\n" }' \
 	$(COMMON)/names \
 	| sed -e "s/\t\-1/\tsubtract/" -e "s/\t+1/\tadd/ " \
@@ -617,12 +629,14 @@ walk3:
 	'consisting of ((2)[ \*])?[nk] steps taken from \{([^\}]+)\}})'\
 	'{ my ($$aseqno, $$text, $$dummy, $$no, $$steps) = ($$1,$$2,$$3,$$4,$$5); $$steps =~ s{\s}{}g;'\
 	'$$text =~ s{\W}{}g;'\
+	'$$steps =~ s{\-1}{2}g; $$steps =~ s{\D}{}g;'\
 	'print join("\t", $$aseqno, "$@", 0, $$text, $$no, $$steps) . "\n" }' \
 	$(COMMON)/names \
 	>        $@.gen
 	cut -f 4 $@.gen | sort | uniq -c
 	head -n2 $@.gen
 	tail -n2 $@.gen
+	cut -f6  $@.gen | sort | uniq -c | grep -v " 1 " || :
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #==========================

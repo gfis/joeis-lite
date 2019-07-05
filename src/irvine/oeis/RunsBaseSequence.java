@@ -231,7 +231,7 @@ public class RunsBaseSequence implements Sequence {
   //=====================================
   /** Test method - not yet implemented.
    *  @param args command line arguments: [n [noterms]]
-   *  Show various elements related to the runds of digits for some base in n.
+   *  Show various elements related to the runs of digits for some base in n.
    */
   public static void main(String[] args) {
     int n = -1;
@@ -242,10 +242,10 @@ public class RunsBaseSequence implements Sequence {
       } catch (Exception exc) {
       }
     }
-    int noterms = 16;
+    int noTerms = 16;
     if (iarg < args.length) {
       try {
-        noterms = Integer.parseInt(args[iarg ++]);
+        noTerms = Integer.parseInt(args[iarg ++]);
       } catch (Exception exc) {
       }
     }
