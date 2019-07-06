@@ -140,7 +140,7 @@ while (<>) { # read inputfile
                 $term = "new Z(\"$term\")";
             }
             $len = length($term);
-            if ($line_len >= $max_line_len) {
+            if (0 and $line_len >= $max_line_len) {
                 $term = "\n" . (' ' x $indent) . $term;
                 $line_len =           $indent;
             }

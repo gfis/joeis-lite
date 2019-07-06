@@ -17,6 +17,8 @@ D=0
 TO=4
 GU=0
 N=1000
+NT=32
+SC=222221210100
 NC=
 OFS=1
 WITHB=-b $(COMMON)/bfile -t $(TO)
@@ -602,43 +604,31 @@ juxrun:
 #   and ending at (0,0) and consisting of n steps taken from {(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, 0), (1, 1)}	nonn,walk,synth	0..26
 # A151508 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
 #   , ending on the vertical axis and consisting of n steps taken from {(-1, -1), (-1, 0), (-1, 1), (0, -1), (1, -1), (1, 0)}.	nonn,walk,	0..440
-walk2:
-	perl -ne \
-	'if (m{^(A\d+)\s+Number of walks within N\^2 \(the first quadrant of Z\^2\) starting '\
-	'(at \(0\,0\) and |and ending at \(0\,0\) and |at \(0\,0\)\, ending on the vertical axis and )'\
-	'consisting of ((2)[ \*])?[nk] steps taken from \{([^\}]+)\}})'\
-	'{ my ($$aseqno, $$text, $$dummy, $$no, $$steps) = ($$1,$$2,$$3,$$4,$$5); $$steps =~ s{\s}{}g;'\
-	'$$text =~ s{\W}{}g;'\
-	'print join("\t", $$aseqno, "$@", 0, $$text, $$no, $$steps) . "\n" }' \
-	$(COMMON)/names \
-	>        $@.gen
-	cut -f 4 $@.gen | sort | uniq -c
-	head -n2 $@.gen
-	tail -n2 $@.gen
-	wc -l    $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
 # A147999 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0) 
-#    and consisting of n steps taken from {(-1, -1, -1), (-1, -1, 1), (-1, 1, 0), (1, 0, 0)}	nonn,walk,synth	0..33
+#   and consisting of n steps taken from {(-1, -1, -1), (-1, -1, 1), (-1, 1, 0), (1, 0, 0)}	nonn,walk,synth	0..33
 # A151254 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0) 
 #   and consisting of n steps taken from {(-1, 0, 0), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)}	nonn,walk,synth	0..25
-walk3:
+walk23:
 	perl -ne \
-	'if (m{^(A\d+)\s+Number of walks within N\^3 \(the first octant of Z\^3\) starting '\
-	'(at \(0\,0\,0\) and )'\
-	'consisting of ((2)[ \*])?[nk] steps taken from \{([^\}]+)\}})'\
-	'{ my ($$aseqno, $$text, $$dummy, $$no, $$steps) = ($$1,$$2,$$3,$$4,$$5); $$steps =~ s{\s}{}g;'\
-	'$$text =~ s{\W}{}g;'\
-	'$$steps =~ s{\-1}{2}g; $$steps =~ s{\D}{}g;'\
-	'print join("\t", $$aseqno, "$@", 0, $$text, $$no, $$steps) . "\n" }' \
+	'if (m{^(A\d+)\s+Number of walks within N\^(\d) \(the first \w+ of Z\^\d\) starting '\
+	'(at \([^\)]+\) |and ending at \([^\)]+\) |at \([^\)]+\)\, ending on the vertical axis )'\
+	'and consisting of ((\d)[ \*]*)?[nk] steps taken from \{([^\}]+)\}})'\
+	'{ my ($$aseqno, $$dim, $$text, $$dummy, $$no, $$stepCode) = ($$1,$$2,$$3,$$4,$$5,$$6);'\
+	'$$text =~ s{\W}{}g; $$text =~ s{^at0+}{}; $$text =~ s{andendingat0}{e}; $$text =~ s{endingonthev.*}{ey};'\
+	'$$stepCode =~ s{\-1}{2}g; $$stepCode =~ s{\D}{}g; my $$stepNo = length($$stepCode) / $$dim;'\
+	'print join("\t", $$aseqno, "$@", 0, $$dim, $$stepNo, $$text, $$stepCode, $$no) . "\n" }' \
 	$(COMMON)/names \
 	>        $@.gen
 	cut -f 4 $@.gen | sort | uniq -c
 	head -n2 $@.gen
 	tail -n2 $@.gen
-	cut -f6  $@.gen | sort | uniq -c | grep -v " 1 " || :
+	# cut -f6  $@.gen | sort | uniq -c | grep -v " 1 " || :
+	cut -f4-6  $@.gen | sed -e "s/[ \t]*//g" | sort | uniq -c 
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+walktest:
+	java -cp ../../dist/joeis-lite.jar irvine.oeis.WalkCubeSequence $(NT) 3 $(SC)
+	# perl -ne "print if m{\t2\t3\t\t};" walk23.gen > walk23en.gen
 #==========================
 BaseTwoDigits:
 	cat represented-by-2-digits.group > group.tmp
