@@ -613,10 +613,10 @@ walk23:
 	'if (m{^(A\d+)\s+Number of walks within N\^(\d) \(the first \w+ of Z\^\d\) starting '\
 	'(at \([^\)]+\) |and ending at \([^\)]+\) |at \([^\)]+\)\, ending on the vertical axis )'\
 	'and consisting of ((\d)[ \*]*)?[nk] steps taken from \{([^\}]+)\}})'\
-	'{ my ($$aseqno, $$dim, $$text, $$dummy, $$no, $$stepCode) = ($$1,$$2,$$3,$$4,$$5,$$6);'\
-	'$$text =~ s{\W}{}g; $$text =~ s{^at0+}{}; $$text =~ s{andendingat0}{e}; $$text =~ s{endingonthev.*}{ey};'\
-	'$$stepCode =~ s{\-1}{2}g; $$stepCode =~ s{\D}{}g; my $$stepNo = length($$stepCode) / $$dim;'\
-	'print join("\t", $$aseqno, "$@", 0, $$dim, $$stepNo, $$text, $$stepCode, $$no) . "\n" }' \
+	'{ my ($$aseqno, $$dim, $$endCode, $$dummy, $$factor, $$stepCode) = ($$1,$$2,$$3,$$4,$$5 || 1,$$6);'\
+	'$$endCode =~ s{\W}{}g; $$endCode =~ s{^at0+}{}; $$endCode =~ s{andendingat0}{e}; $$endCode =~ s{endingonthev.*}{ey};'\
+	'$$stepCode =~ s{\-1}{2}g; $$stepCode =~ s{\D}{}g; my $$noSteps = length($$stepCode) / $$dim;'\
+	'print join("\t", $$aseqno, "$@", 0, $$dim, $$noSteps, $$endCode, $$factor, $$stepCode) . "\n" }' \
 	$(COMMON)/names \
 	>        $@.gen
 	cut -f 4 $@.gen | sort | uniq -c

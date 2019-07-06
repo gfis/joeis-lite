@@ -45,47 +45,43 @@ public class WalkCubeSequence implements Sequence {
   protected int mOffset; // OEIS offset1 as of generation time
   protected HashMap<String, Z> mCache; // simulate Maple's "option remember"
   protected int[][] mMatrix; // 3 coordinate increments (columns) per step (row)
-  protected int mStepNo; // number of steps possible at one point
-
-  /**
-   * Construct an instance which computes the walks
-   * for the default sequence: A147999.
-   * @param offset first valid term has this index
-   */
-  protected WalkCubeSequence(final int offset) {
-    mOffset = offset;
-    mN = offset - 1;
-    mK = Z.valueOf(mN);
-    mCache = new HashMap<String, Z>(16384);
-    // A147999 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0)
-    // and consisting of n steps taken from {(-1, -1, -1), (-1, -1, 1), (-1, 1, 0), (1, 0, 0)}
-    mMatrix = new int[][]
-        { { -1, -1, -1 }
-        , { -1, -1,  1 }
-        , { -1,  1,  0 }
-        , {  1,  0,  0 }
-        };
-    mStepNo = 4;
-  }
-
+  protected int mDim; // dimension: 2 for square, 3 for cube
+  protected int mNoSteps; // number of steps possible at one point
+  protected int mFactor; // factor for number of steps (only for 2D)
+  protected String mEndCode; // empty, or "e0" = anding at (0,0[,0]), "ey" = ending at the vertical axis
+  protected int mMulti; // factor for start of i loop (only for 2D)
+  protected int mMultj; // factor for start of j loop (only for 2D)
+  
   /**
    * Construct an instance which computes the walks
    * for the specified step matrix.
    * @param offset first valid term has this index
    * @param dim dimension, 2 or 3
+   * @param noSteps number of steps to be selected
+   * @param endCode empty, or "e0" = anding at (0,0[,0]), "ey" = ending at the vertical axis
+   * @param factor 1 for n steps, 2 for 2n steps, 4 for 4n steps
    * @param stepCode step matrix encoded as <em>dim</em> digits per step (row),
    * 0, 1 and 2 =&gt; -1, for example 222221210100, dim = 2 =&gt;
    * (-1, -1, -1), (-1, -1, 1), (-1, 1, 0), (1, 0, 0)
    */
-  protected WalkCubeSequence(final int offset, int dim, String stepCode) {
+  protected WalkCubeSequence(final int offset, int dim, int noSteps, String endCode, int factor, String stepCode) {
     mOffset = offset;
-    mN = offset - 1;
-    mK = Z.valueOf(mN);
-    mCache = new HashMap<String, Z>(16384);
-    mStepNo = stepCode.length() / dim;
-    mMatrix = new int[mStepNo][dim];
+    mDim = dim;
+    mNoSteps = noSteps; // assert: = stepCode.length() / dim;
+    mEndCode = endCode;
+    mFactor = factor;
+    mMulti = mFactor;
+    mMultj = mFactor;
+    if (endCode.equals("e0")) { // ending at (0,0)
+    	mMulti = 0;
+    	mMultj = 0;
+    }
+    if (endCode.equals("ey")) { // ending on vertical axis
+    	mMulti = 0;
+     }
+    mMatrix = new int[mNoSteps][dim];
     int icode = 0;
-    for (int irow = 0; irow < mStepNo; irow ++) { // translate the stepCode to the ste increment matrix
+    for (int irow = 0; irow < mNoSteps; irow ++) { // translate the stepCode to the ste increment matrix
       for (int icol = 0; icol < dim; icol ++) {
         int code = stepCode.charAt(icode ++) - '0';
         if (code == 2) {
@@ -94,6 +90,35 @@ public class WalkCubeSequence implements Sequence {
         mMatrix[irow][icol] = code;
       } // for icol
     } // for irow
+    mN = offset - 1;
+    mK = Z.valueOf(mN);
+    mCache = new HashMap<String, Z>(16384);
+  }
+
+  /**
+   * Construct an instance which computes the walks
+   * for the default sequence: A147999.
+   * @param offset first valid term has this index
+   */
+  protected WalkCubeSequence(final int offset) {
+    mOffset = offset;
+    mDim = 3;
+    mNoSteps = 4;
+    mEndCode = "";
+    mFactor = 1;
+    mMulti = mFactor;
+    mMultj = mFactor;
+    // A147999 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0)
+    // and consisting of n steps taken from {(-1, -1, -1), (-1, -1, 1), (-1, 1, 0), (1, 0, 0)}
+    mMatrix = new int[][]
+        { { -1, -1, -1 }
+        , { -1, -1,  1 }
+        , { -1,  1,  0 }
+        , {  1,  0,  0 }
+        };
+    mN = offset - 1;
+    mK = Z.valueOf(mN);
+    mCache = new HashMap<String, Z>(16384);
   }
 
 /* A151255		Number of walks within N^2 (the first quadrant of Z^2) starting 
@@ -116,11 +141,11 @@ A151255 walk23  0       2       3               222110
   protected Z next23() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        sum = sum.add(aux23(i, j, m));
+    int i, j;
+    final int m = mN;
+    for (i = m * mMulti; i >= 0; i--) {
+      for (j = m * mMultj; j >= 0; j--) {
+        sum = sum.add(aux23(i, j, m * mFactor));
       } // for j
     } // for i
     return sum;
@@ -167,11 +192,11 @@ A151255 walk23  0       2       3               222110
   protected Z next24() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        sum = sum.add(aux24(i, j, m));
+    int i, j;
+    final int m = mN;
+    for (i = m * mMulti; i >= 0; i--) {
+      for (j = m * mMultj; j >= 0; j--) {
+        sum = sum.add(aux24(i, j, m * mFactor));
       } // for j
     } // for i
     return sum;
@@ -219,11 +244,11 @@ A151255 walk23  0       2       3               222110
   protected Z next25() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        sum = sum.add(aux25(i, j, m));
+    int i, j;
+    final int m = mN;
+    for (i = m * mMulti; i >= 0; i--) {
+      for (j = m * mMultj; j >= 0; j--) {
+        sum = sum.add(aux25(i, j, m * mFactor));
       } // for j
     } // for i
     return sum;
@@ -272,11 +297,11 @@ A151255 walk23  0       2       3               222110
   protected Z next26() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        sum = sum.add(aux26(i, j, m));
+    int i, j;
+    final int m = mN;
+    for (i = m * mMulti; i >= 0; i--) {
+      for (j = m * mMultj; j >= 0; j--) {
+        sum = sum.add(aux26(i, j, m * mFactor));
       } // for j
     } // for i
     return sum;
@@ -326,11 +351,11 @@ A151255 walk23  0       2       3               222110
   protected Z next27() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        sum = sum.add(aux27(i, j, m));
+    int i, j;
+    final int m = mN;
+    for (i = m * mMulti; i >= 0; i--) {
+      for (j = m * mMultj; j >= 0; j--) {
+        sum = sum.add(aux27(i, j, m * mFactor));
       } // for j
     } // for i
     return sum;
@@ -381,11 +406,11 @@ A151255 walk23  0       2       3               222110
   protected Z next28() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        sum = sum.add(aux28(i, j, m));
+    int i, j;
+    final int m = mN;
+    for (i = m * mMulti; i >= 0; i--) {
+      for (j = m * mMultj; j >= 0; j--) {
+        sum = sum.add(aux28(i, j, m * mFactor));
       } // for j
     } // for i
     return sum;
@@ -437,11 +462,11 @@ A151255 walk23  0       2       3               222110
   protected Z next33() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        for (k = 0; k <= m; k ++) {
+    int i, j, k;
+    final int m = mN;
+    for (i = m; i >= 0; i--) {
+      for (j = m; j >= 0; j--) {
+        for (k = m; k >= 0; k--) {
           sum = sum.add(aux33(i, j, k, m));
         } // for k
       } // for j
@@ -491,11 +516,11 @@ A151255 walk23  0       2       3               222110
   protected Z next34() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        for (k = 0; k <= m; k ++) {
+    int i, j, k;
+    final int m = mN;
+    for (i = m; i >= 0; i--) {
+      for (j = m; j >= 0; j--) {
+        for (k = m; k >= 0; k--) {
           sum = sum.add(aux34(i, j, k, m));
         } // for k
       } // for j
@@ -546,11 +571,11 @@ A151255 walk23  0       2       3               222110
   protected Z next35() {
     ++mN;
     Z sum = Z.ZERO;
-    int i, j, k, m;
-    m = mN;
-    for (i = 0; i <= m; i ++) {
-      for (j = 0; j <= m; j ++) {
-        for (k = 0; k <= m; k ++) {
+    int i, j, k;
+    final int m = mN;
+    for (i = m; i >= 0; i--) {
+      for (j = m * mMultj; j >= 0; j--) {
+        for (k = m; k >= 0; k--) {
           sum = sum.add(aux35(i, j, k, m));
         } // for k
       } // for j
@@ -628,7 +653,7 @@ A151255 walk23  0       2       3               222110
     }
     if (iarg < args.length) {
       String stepCode = args[iarg ++];
-      seq = new WalkCubeSequence(1, dim, stepCode);
+      seq = new WalkCubeSequence(1, dim, 4, "", 1, stepCode);
     } else { // show default: A147999
       seq = new WalkCubeSequence(1); // the devaul / example: A147999
     }
