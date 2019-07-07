@@ -1,6 +1,8 @@
 package irvine.oeis;
 
 import irvine.math.z.Z;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  * Properties of the runs of digits of a number,
  * This class is used for the runs of a single number, 
@@ -13,7 +15,17 @@ public class RunsBaseSequence implements Sequence {
   protected int mN; // index of current term to be returned
   protected Z mK; // current number with some property
   protected int mOffset; // OEIS offset1 as of generation time
-
+  protected Pattern mSubsetPattern; // pattern matching the subset of allowed decimal digits 
+  protected String mSubset; // the decimal digits of the subset in ascending order
+  protected int mSubilast; // index of last character in mSubset
+  protected char mSubFirst; // first character in mSubset
+  protected char mSubLow; // first character in mSubset, or second if first is '0'
+  protected int mBase; // base of the numbers: 2-99
+  protected int mMode; // type of the test: 2 = digits in square
+  private static final int MAX_MOD = 10000;
+  private static final int LEN_MOD = 4;
+  protected boolean[] mPreMod; // true iff square(last 2 digits) is possible
+  protected StringBuffer mBuffer; // for subset increment
   /**
    * Construct an instance which selects all numbers
    * that have some property in the runs of digits to some base.
@@ -29,11 +41,44 @@ public class RunsBaseSequence implements Sequence {
    * Construct a sequence for runs of digits
    * of a single, specified number.
    * @param offset first valid term has this index
-   * @param k investigate the runs of digtis in this non-negative number
+   * @param k investigate the runs of digits in this non-negative number
    */
   protected RunsBaseSequence(final int offset, final int k) {
     this(offset);
     mK = Z.valueOf(k);
+  }
+
+  /**
+   * Construct a sequence of numbers containing some subset of digits only.
+   * @param offset first valid term has this index
+   * @param base base of the numbers: 2-99
+   * @param mode type of the test to be applied to the digits: 2 = digits in square
+   * @param subset pattern matching the subset of allowed decimal digits 
+   */
+  protected RunsBaseSequence(final int offset, final int base, final int mode, final String subset) {
+    this(offset);
+    mBase = base;
+    mMode = mode;
+    mSubset = subset;
+    mSubilast = mSubset.length() - 1;
+    mSubFirst = mSubset.charAt(0);
+    mSubLow = mSubFirst;
+    if (mSubFirst == '0') {
+      mSubLow = mSubset.charAt(1);
+    }
+    mSubsetPattern = Pattern.compile("[" + subset + "]+");
+    switch (mode) {
+      case 2: 
+        mN = 0; // post increment because of advanceSubset(mK)
+        mPreMod = new boolean[MAX_MOD];
+        for (int imod = 0; imod < MAX_MOD; imod ++) {
+          mPreMod[imod] = mSubsetPattern.matcher(String.format("%04d", imod)).matches()
+              &&          mSubsetPattern.matcher(String.format("%08d", imod * imod).substring(4, 8)).matches();
+        } // for imod
+        break;
+    } // switch
+    mBuffer = new StringBuffer(1024);
+    mBuffer.append(String.valueOf(mN));
   }
 
   /**
@@ -122,6 +167,22 @@ public class RunsBaseSequence implements Sequence {
   } // hasRunCount
 
   /**
+   * Determine whether the square of some number uses a subset of digits only.
+   * @param number test the square of this number
+   * @param base represent in this base
+   * @param subset list of allowed digits
+   * @return true if the number of run has the value <em>count</em>
+   */
+  protected boolean hasSquareDigits(Z number) {
+    boolean result = mSubsetPattern.matcher((number.multiply(number)).toString(mBase)).matches();
+  /*
+    System.err.println("hasSquareDigits, number=" + number.toString() 
+        + ": " + (number.multiply(number)).toString(mBase) + ", result=" + String.valueOf(result));
+  */
+    return result;
+  } // hasSquareDigits
+
+  /**
    * Get the number of digits in the base representation of number.
    * @param number number to be investigated
    * @param base represent in this base
@@ -181,6 +242,63 @@ public class RunsBaseSequence implements Sequence {
   } // getNextProperty
 
   /**
+   * Advance the buffer to the next integer which contains the specified decimal digits only.
+   */
+  protected void advanceSubset() {
+    boolean carry = true;
+    int ipos = mBuffer.length() - 1;
+    while (carry && ipos >= 0) { // advance the digit at ipos
+      char digit = mBuffer.charAt(ipos);
+      int dpos = mSubset.indexOf(digit);
+      // assert dpos >= 0
+      if (dpos < mSubilast) {
+        mBuffer.setCharAt(ipos, mSubset.charAt(dpos + 1));
+        carry = false;
+      } else { // highest digit of subset
+        mBuffer.setCharAt(ipos, mSubFirst);
+      }
+      --ipos;
+    } // while ipos
+    if (carry) { 
+      mBuffer.insert(0, mSubLow);
+    }
+  } // advanceSubset  
+
+  /**
+   * Get the next term of a sequence which has a specified subseet of decimal digits only
+   * @return the next number with the property
+   */
+  protected Z getNextWithDigits() {
+    long loopCheck = 100000000L;
+    String result = "";
+    while (loopCheck > 0) {
+      int kpos = mBuffer.length();
+      int index =       (mBuffer.charAt(--kpos) - '0');
+      if (kpos > 0) {
+      	index += 10   * (mBuffer.charAt(--kpos) - '0');
+      }
+      if (kpos > 0) {
+      	index += 100  * (mBuffer.charAt(--kpos) - '0');
+      }
+      if (kpos > 0) {
+      	index += 1000 * (mBuffer.charAt(--kpos) - '0');
+      }
+      if (mPreMod[index]) { // last few digits of square are possible
+        result = mBuffer.toString();
+        if (hasSquareDigits(new Z(result))) {
+          loopCheck = -1;
+        }
+      }
+      advanceSubset(); // post-increment because advanceSubset cannot handle negative
+      loopCheck --;
+    } // while busy
+    if (loopCheck == 0) {
+      throw new IllegalArgumentException("more than 10^8 iterations in RunsBaseSequence.getNextWithDigits()");
+    }
+    return new Z(result);
+  } // getNextWithDigits  
+
+  /**
    * Get the next term of a sequence which fulfills some property.
    * @return the next number with the property
    */
@@ -229,26 +347,27 @@ public class RunsBaseSequence implements Sequence {
   } // getIndex
 
   //=====================================
-  /** Test method - not yet implemented.
+  /** Test method - for advanceSubset
    *  @param args command line arguments: [n [noterms]]
    *  Show various elements related to the runs of digits for some base in n.
    */
   public static void main(String[] args) {
-    int n = -1;
-    int iarg = 0;
-    if (iarg < args.length) {
-      try {
-        n = Integer.parseInt(args[iarg ++]);
-      } catch (Exception exc) {
-      }
-    }
+    int n = 0;
     int noTerms = 16;
+    int iarg = 0;
     if (iarg < args.length) {
       try {
         noTerms = Integer.parseInt(args[iarg ++]);
       } catch (Exception exc) {
       }
     }
+    String subset = args[iarg ++];
+    RunsBaseSequence seq = new RunsBaseSequence(1, 10, 2, subset);
+    while (n < noTerms) {
+      System.out.println(n + " " + seq.mBuffer.toString());
+      seq.advanceSubset();
+      n ++;
+    } // while n
   } // main
 
 } // RunsBaseSequence

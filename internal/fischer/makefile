@@ -597,7 +597,22 @@ juxrun:
 	| grep -vE "A0306(12|13|14|15|16)" \
 	| tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
+#----------------
+# A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
+sqsubset: # Jonathan Wellons A136nnn
+	perl -ne \
+	'if (m{^(A\d+)\s+Numbers [nk] such that [nk] and the square of [nk] use only the digits ([^\.]+)\.}) '\
+	'{ my ($$aseqno, $$subset) = ($$1,$$2); '\
+	'$$subset =~ s{\D}{}g; print join("\t", $$aseqno, "$@", 0, $$subset) . "\n"; }' \
+	$(COMMON)/names \
+	>        $@.gen
+	head -n2 $@.gen
+	tail -n2 $@.gen
+	wc -l    $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+sqsubset_test:
+	java -cp ../../dist/joeis-lite.jar irvine.oeis.RunsBaseSequence $(NT) $(SC)
+#----------------
 # A151255 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
 #   and consisting of n steps taken from {(-1, -1), (-1, 1), (1, 0)}	nonn,walk,synth	0..34
 # A151373 Number of walks within N^2 (the first quadrant of Z^2) starting

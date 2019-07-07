@@ -34,7 +34,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.19";
+  private static String VERSION = "BatchTest V1.2";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -276,7 +276,7 @@ public class BatchTest {
             + timeDiff + " > " + millisToRun + " ms");
       } else if (failCount == 0) {
         if (verbosity >= 1) {
-            System.out.println    (aseqno + "\t" + termNo + "\tpass" 
+            System.out.println    (aseqno + "\t" + count + "\tpass" 
             // + (count < termNo ? "=" + count : "" ) 
             + "\t" + timeDiff + " ms");
         }
