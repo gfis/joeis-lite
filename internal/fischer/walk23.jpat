@@ -15,9 +15,4 @@ public class $(ASEQNO) extends WalkCubeSequence {
   public $(ASEQNO)() {
     super($(OFFSET), $(PARM1), $(PARM2), "$(PARM3)", $(PARM4), "$(PARM5)");
   }
-  
-  @Override
-  public Z next() {
-    return next$(PARM1)$(PARM2)();
-  }
 }
