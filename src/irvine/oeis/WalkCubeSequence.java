@@ -110,7 +110,7 @@ public class WalkCubeSequence implements Sequence {
           mGen = new W2Sequence(new W27());
           break;
         case 8:
-          mGen = new W2Sequence(new W26());
+          mGen = new W2Sequence(new W28());
           break;
         default:
           throw new RuntimeException();
