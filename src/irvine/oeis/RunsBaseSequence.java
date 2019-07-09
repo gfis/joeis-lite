@@ -15,17 +15,7 @@ public class RunsBaseSequence implements Sequence {
   protected int mN; // index of current term to be returned
   protected Z mK; // current number with some property
   protected int mOffset; // OEIS offset1 as of generation time
-  protected Pattern mSubsetPattern; // pattern matching the subset of allowed decimal digits 
-  protected String mSubset; // the decimal digits of the subset in ascending order
-  protected int mSubilast; // index of last character in mSubset
-  protected char mSubFirst; // first character in mSubset
-  protected char mSubLow; // first character in mSubset, or second if first is '0'
-  protected int mBase; // base of the numbers: 2-99
-  protected int mMode; // type of the test: 2 = digits in square
-  private static final int MAX_MOD = 10000;
-  private static final int LEN_MOD = 4;
-  protected boolean[] mPreMod; // true iff square(last 2 digits) is possible
-  protected StringBuffer mBuffer; // for subset increment
+
   /**
    * Construct an instance which selects all numbers
    * that have some property in the runs of digits to some base.
@@ -60,25 +50,7 @@ public class RunsBaseSequence implements Sequence {
     mBase = base;
     mMode = mode;
     mSubset = subset;
-    mSubilast = mSubset.length() - 1;
-    mSubFirst = mSubset.charAt(0);
-    mSubLow = mSubFirst;
-    if (mSubFirst == '0') {
-      mSubLow = mSubset.charAt(1);
-    }
-    mSubsetPattern = Pattern.compile("[" + subset + "]+");
-    switch (mode) {
-      case 2: 
-        mN = 0; // post increment because of advanceSubset(mK)
-        mPreMod = new boolean[MAX_MOD];
-        for (int imod = 0; imod < MAX_MOD; imod ++) {
-          mPreMod[imod] = mSubsetPattern.matcher(String.format("%04d", imod)).matches()
-              &&          mSubsetPattern.matcher(String.format("%08d", imod * imod).substring(4, 8)).matches();
-        } // for imod
-        break;
-    } // switch
-    mBuffer = new StringBuffer(1024);
-    mBuffer.append(String.valueOf(mN));
+    initializeSubset();
   }
 
   /**
@@ -167,22 +139,6 @@ public class RunsBaseSequence implements Sequence {
   } // hasRunCount
 
   /**
-   * Determine whether the square of some number uses a subset of digits only.
-   * @param number test the square of this number
-   * @param base represent in this base
-   * @param subset list of allowed digits
-   * @return true if the number of run has the value <em>count</em>
-   */
-  protected boolean hasSquareDigits(Z number) {
-    boolean result = mSubsetPattern.matcher((number.multiply(number)).toString(mBase)).matches();
-  /*
-    System.err.println("hasSquareDigits, number=" + number.toString() 
-        + ": " + (number.multiply(number)).toString(mBase) + ", result=" + String.valueOf(result));
-  */
-    return result;
-  } // hasSquareDigits
-
-  /**
    * Get the number of digits in the base representation of number.
    * @param number number to be investigated
    * @param base represent in this base
@@ -242,63 +198,6 @@ public class RunsBaseSequence implements Sequence {
   } // getNextProperty
 
   /**
-   * Advance the buffer to the next integer which contains the specified decimal digits only.
-   */
-  protected void advanceSubset() {
-    boolean carry = true;
-    int ipos = mBuffer.length() - 1;
-    while (carry && ipos >= 0) { // advance the digit at ipos
-      char digit = mBuffer.charAt(ipos);
-      int dpos = mSubset.indexOf(digit);
-      // assert dpos >= 0
-      if (dpos < mSubilast) {
-        mBuffer.setCharAt(ipos, mSubset.charAt(dpos + 1));
-        carry = false;
-      } else { // highest digit of subset
-        mBuffer.setCharAt(ipos, mSubFirst);
-      }
-      --ipos;
-    } // while ipos
-    if (carry) { 
-      mBuffer.insert(0, mSubLow);
-    }
-  } // advanceSubset  
-
-  /**
-   * Get the next term of a sequence which has a specified subseet of decimal digits only
-   * @return the next number with the property
-   */
-  protected Z getNextWithDigits() {
-    long loopCheck = 100000000L;
-    String result = "";
-    while (loopCheck > 0) {
-      int kpos = mBuffer.length();
-      int index =       (mBuffer.charAt(--kpos) - '0');
-      if (kpos > 0) {
-      	index += 10   * (mBuffer.charAt(--kpos) - '0');
-      }
-      if (kpos > 0) {
-      	index += 100  * (mBuffer.charAt(--kpos) - '0');
-      }
-      if (kpos > 0) {
-      	index += 1000 * (mBuffer.charAt(--kpos) - '0');
-      }
-      if (mPreMod[index]) { // last few digits of square are possible
-        result = mBuffer.toString();
-        if (hasSquareDigits(new Z(result))) {
-          loopCheck = -1;
-        }
-      }
-      advanceSubset(); // post-increment because advanceSubset cannot handle negative
-      loopCheck --;
-    } // while busy
-    if (loopCheck == 0) {
-      throw new IllegalArgumentException("more than 10^8 iterations in RunsBaseSequence.getNextWithDigits()");
-    }
-    return new Z(result);
-  } // getNextWithDigits  
-
-  /**
    * Get the next term of a sequence which fulfills some property.
    * @return the next number with the property
    */
@@ -345,6 +244,150 @@ public class RunsBaseSequence implements Sequence {
   protected int getIndex() {
     return mN;
   } // getIndex
+
+  //=====================================
+  // Subset of digits in squares, A136nnn
+  protected Pattern mSubsetPattern; // pattern matching the subset of allowed decimal digits 
+  protected String mSubset; // the decimal digits of the subset in ascending order
+  protected int subILast; // index of last character in mSubset
+  protected char mSubFirst; // first character in mSubset
+  protected char mSubLow; // first character in mSubset, or second if first is '0'
+  protected int mBase; // base of the numbers: 2-99
+  protected int mMode; // type of the test: 2 = digits in square
+  protected boolean[] mHeadMod; // true iff square(first 2 digits) is possible
+  protected boolean[] mTailMod; // true iff square(last  2 digits) is possible
+  protected boolean[] mPossMod; // true iff 2 digits are possible
+  protected StringBuffer mBuffer; // for subset increment
+  private static final int MAX_MOD = 100;
+  private static final int LEN_MOD = 2;
+
+  /**
+   * Initialize the buffer for advancing.
+   */
+  protected void initializeSubset() {
+    subILast = mSubset.length() - 1;
+    mSubFirst = mSubset.charAt(0);
+    mSubLow = mSubFirst;
+    if (mSubFirst == '0') {
+      mSubLow = mSubset.charAt(1);
+    }
+    mSubsetPattern = Pattern.compile("[" + mSubset + "]+");
+    switch (mMode) {
+      case 2: // digits of square 
+        mN = 0; // post increment because of advanceSubset(mK)
+        mPossMod = new boolean[MAX_MOD];
+        int imod;
+        for (imod = 0; imod < MAX_MOD; imod ++) { // 0..99
+          mPossMod[imod] = mSubsetPattern.matcher(String.format("%02d", imod)).matches();
+        } // for imod
+        mHeadMod = new boolean[MAX_MOD];
+        mTailMod = new boolean[MAX_MOD];
+        for (imod = 0; imod < MAX_MOD; imod ++) { // 0..99
+          int imod2 = imod * imod;
+          int tail2 = imod2 % 100;
+          mTailMod[imod] = mPossMod[tail2]; 
+          int head2 = (imod2 - tail2) / 100;
+          int next2 = (imod2 + imod + imod + 1) / 100;
+          boolean possible = mPossMod[head2];
+          int jmod = head2 + 1; 
+          while (! possible && jmod < next2) {
+            possible = mPossMod[jmod];
+            jmod++;
+          } // while ! possible
+          mTailMod[imod] = possible;
+        } // for imod
+        break;
+    } // switch
+    mBuffer = new StringBuffer(1024);
+    mBuffer.append(String.valueOf(mN));
+  } // initializeSubset  
+
+  /**
+   * Get up to LEN_MOD digits from a String.
+   * @param source get the digits from this String
+   * @param posLSD position of the least significant digit in source
+   * @return an integer 0..99
+   */ 
+  protected int getMod(StringBuffer source, int posLSD) {
+    int result = source.charAt(posLSD--) - '0';
+    if (posLSD >= 0) {
+      result += 10 * (source.charAt(posLSD) - '0');
+    }
+    return result;
+  } // getMod
+  
+  /**
+   * Advance the buffer to the next integer which contains the specified decimal digits only.
+   */
+  protected void advanceSubset() {
+    boolean carry = true;
+    int ipos = mBuffer.length() - 1;
+    while (carry && ipos >= 0) { // advance the digit at ipos
+      char digit = mBuffer.charAt(ipos);
+      int dpos = mSubset.indexOf(digit);
+      // assert dpos >= 0
+      if (dpos < subILast) {
+        mBuffer.setCharAt(ipos, mSubset.charAt(dpos + 1));
+        carry = false;
+      } else { // highest digit of subset
+        mBuffer.setCharAt(ipos, mSubFirst);
+      }
+      --ipos;
+    } // while ipos
+    if (carry) { 
+      mBuffer.insert(0, mSubLow);
+    }
+  } // advanceSubset  
+
+  /**
+   * Determine whether the square of some number uses a subset of digits only.
+   * @param number test the square of this number
+   * @param base represent in this base
+   * @param subset list of allowed digits
+   * @return true if the number of run has the value <em>count</em>
+   */
+  protected boolean hasSquareDigits(Z number) {
+    boolean result = mSubsetPattern.matcher((number.multiply(number)).toString(mBase)).matches();
+  /*
+    System.err.println("hasSquareDigits, number=" + number.toString() 
+        + ": " + (number.multiply(number)).toString(mBase) + ", result=" + String.valueOf(result));
+  */
+    return result;
+  } // hasSquareDigits
+
+  /**
+   * Get the next term of a sequence which has a specified subseet of decimal digits only
+   * @return the next number with the property
+   */
+  protected Z getNextWithDigits() {
+    long loopCheck = 100000000L;
+    String result = "";
+    while (loopCheck > 0) {
+      int kpos = mBuffer.length();
+      int index =       (mBuffer.charAt(--kpos) - '0');
+      if (kpos > 0) {
+        index += 10   * (mBuffer.charAt(--kpos) - '0');
+      }
+      if (kpos > 0) {
+        index += 100  * (mBuffer.charAt(--kpos) - '0');
+      }
+      if (kpos > 0) {
+        index += 1000 * (mBuffer.charAt(--kpos) - '0');
+      }
+      if (mTailMod[index]) { // last few digits of square are possible
+        result = mBuffer.toString();
+        if (hasSquareDigits(new Z(result))) {
+          loopCheck = -1;
+        }
+      }
+      advanceSubset(); // post-increment because advanceSubset cannot handle negative
+      loopCheck --;
+    } // while busy
+    if (loopCheck == 0) {
+      throw new IllegalArgumentException("more than 10^8 iterations in RunsBaseSequence.getNextWithDigits()");
+    }
+    return new Z(result);
+  } // getNextWithDigits  
 
   //=====================================
   /** Test method - for advanceSubset
