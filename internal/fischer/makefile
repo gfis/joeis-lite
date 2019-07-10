@@ -22,7 +22,7 @@ SC=222221210100
 NC=
 OFS=1
 WITHB=-b $(COMMON)/bfile -t $(TO)
-JOPT=-Doeis.big-factor-limit=1000000000 -Xmx2g
+JOPT=-Doeis.big-factor-limit=1000000000 -Xmx4g
 # BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar:$(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
 BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
 BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
@@ -102,6 +102,13 @@ testex: # parameter: CC; test all existing (generated) sequences
 	make stripgr  LIST=ghead.tmp
 	make runbt
 	make evaluate
+retest: # run the failed ones again (with a higher timeout)
+	cut -b1-7 $(CC).fail.log > failed.tmp
+	grep -f failed.tmp $(CC).gen > $(CC).gen.fail.tmp
+	make stripgr LIST=$(CC).gen.fail.tmp
+	$(BATLIT)  strip.tmp 2>&1 | tee batch.log
+	grep  pass batch.log >>    $(CC).pass.log
+	grep  FA   batch.log | tee $(CC).fail.log
 stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	cut -b1-7  $(LIST) > aseqnos.tmp
 	grep -f    aseqnos.tmp $(COMMON)/stripped \

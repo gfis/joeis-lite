@@ -6,7 +6,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
  * Numbers that contain only a subset of decimal digits in the number 
- * and in its square.
+ * and in its square. For some subsets of the 10 digits there are 
+ * only rare or no solutions. 
+ * The algorithm processes a queue of blocks of possible numbers of length <em>width</em>.
+ * Any digit from the subset is prefixed to each member of a block,
+ * and then the squares are checked. The numbers are requeued 
+ * if and only if the square mod 10^width has possible digits only.
+ * If the subset contains '0', a number starting with '0' 
+ * may not be output (again).
  * @author Georg Fischer
  */
 public class SquareDigitsSequence implements Sequence {
@@ -61,9 +68,6 @@ public class SquareDigitsSequence implements Sequence {
 
   /**
    * Get the next term of the sequence.
-   * This is an example only.
-   * The method is typically overwritten to get some other
-   * element related to the runs of digits in this number.
    * @return the next term
    */
   @Override
@@ -73,7 +77,7 @@ public class SquareDigitsSequence implements Sequence {
     while (! found) { 
       if (mIndDig >= mDigLen) { // increase width - start a new Queue
         mWidth ++;
-        // mQueue.removeRange(0, mOldLen);
+        // maybe mQueue.removeRange(0, mOldLen); - but with resetting the indexes old/new
         mOldLen = mNewLen;
         mNewLen = mQueue.size();
         mQueue.ensureCapacity(mOldLen + mOldLen * mDigLen);
@@ -87,24 +91,22 @@ public class SquareDigitsSequence implements Sequence {
         if (mAllowPattern.matcher(num2).matches()) { // contains valid digits only
           if (mDigits[mIndDig].charAt(0) != '0' || mWidth <= 1) {
             found = true;
+          /*
             if (mDebug >= 1) {
               System.out.println("push-num " + mQueue.size() + ": " + number.toString() + " " + num2);
             }
+          */
           }
           mQueue.add(number);
         } else { // test whether square mod width matches
           int len2 = num2.length();
           if (mAllowPattern.matcher(num2.substring(len2 - number.length(), len2)).matches()) { // and queue then
+          /*  
             if (mDebug >= 1) {
               System.out.println("push-sqp " + mQueue.size() + ": " + number.toString() + " " + num2);
             }
-            mQueue.add(number);
-          } else {
-          /*
-            if (mDebug >= 1) {
-              System.out.println("push-sqf " + mQueue.size() + ": " + number.toString() + " " + num2);
-            }
           */
+            mQueue.add(number);
           }
         }
         mIndQ ++;
@@ -118,10 +120,11 @@ public class SquareDigitsSequence implements Sequence {
   } // next
 
   //=====================================
-  /** Test method 
+  /*  Test method 
    *  @param args command line arguments: [noterms [digits]]
    *  Show various elements related to the runs of digits for some base in n.
    */
+/*
   public static void main(String[] args) {
     int index = 1;
     int noTerms = 32;
@@ -143,5 +146,5 @@ public class SquareDigitsSequence implements Sequence {
       index ++;
     } // while index
   } // main
-
+*/
 } // SquareDigitsSequence
