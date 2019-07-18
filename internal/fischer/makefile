@@ -2,14 +2,15 @@
 
 # Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing
 # @(#) $Id$
+# 2019-07-15: joeis parallel to joeis-lite
 # 2019-05-20, Georg Fischer: copied from makefile
 #
 GITS=../../..
-JOEIS=$(GITS)/../gitups/joeis
+LITE=$(GITS)/joeis-lite
+JOEIS=$(GITS)/joeis
 COMMON=$(GITS)/OEIS-mat/common
 CONTRIB=$(GITS)/OEIS-mat/contrib
 LINREC=$(GITS)/OEIS-mat/linrec
-LITE=$(GITS)/joeis-lite
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 MANY=999999
@@ -604,7 +605,34 @@ juxrun:
 	| grep -vE "A0306(12|13|14|15|16)" \
 	| tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----------------
+#----
+# A288596 Fixed point of the mapping 00->0101, 1->1000, starting with 00. nonn,easy,      1..10000
+# A104521 Fixed point of the morphism 0->{1}, 1->{1,0,1}. nonn,synth      0..104
+# A159689 Fixed point of the morphism 0 -> 0,1,0; 1 -> 1,1; starting from a(0)=0.
+# A286937 {111->null}-transform of the Sturmian word A080764.     nonn,easy,      1..10000
+# A286987 {111->1}-transform of the Sturmian word A080764.        nonn,easy,      1..10000morfix:
+# A286804 {000->null}-transform of the Pell word, A171588.        nonn,easy,      1..10000
+# A285952 {0->1, 1->10}-transform of the Thue-Morse word A010060. nonn,easy,synth 1..86	perl -ne \
+# A285589 {00->0, 11->1}-transform of A285565.    nonn,easy,      1..10000
+# A284387 {010->2}-transform of the infinite Fibonacci word A003849.      nonn,easy,changed,      1..10000
+morfix:
+	perl -ne \
+	'my $$line = $$_;'\
+	'if ($$line =~ m{^(A\d+)\s+.*[Ff]ixed point (under |of )(the )?(mapping |morphism |\:)([ 0-9\-\>\,\;\{\}\(\)\[\]]+)})'\
+	'{ my ($$aseqno, $$map) = ($$1, $$5); $$map =~ s{\s}{}g; $$map =~ tr{\[\]\(\)}{\{\}\{\}};'\
+	'  $$map =~ s{\}\,}{\}\;}g; $$map =~ s{[\,\;]\Z}{}; if ($$map =~ m{[\}\;]}) { $$map =~ s{[\{\}\,]}{}g; };'\
+	'  $$map =~ s{\;}{\,}g; '\
+	'  $$map =~ m{\A(\d+)}; my $$start = $$1; if ($$line =~ m{(start |starting |apply |applied )(with |from |to )([a-z]\(\d\)\D*)?(\d+)}i) { $$start = $$4; }'\
+	'  print join("\t", $$aseqno, "$@", 0, $$start, $$start, $$map) . "\n"; }' \
+	$(COMMON)/names \
+	| grep -vE "A106437|A119647|A176416|A30549[56]|A317198" \
+	| perl  -pe "s/morfix	\d	0	0	0\-\>1(\d*)\,1/morfix	1	1	1	0->1\1,1/;" \
+	| tee $@.gen
+	wc -l $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+morfix_test:
+	java -cp ../../dist/joeis-lite.jar irvine.oeis.MorphismSequence $(NT) $(SC)
+##----------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
 	perl -ne \

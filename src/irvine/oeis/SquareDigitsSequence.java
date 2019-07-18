@@ -57,21 +57,22 @@ public class SquareDigitsSequence implements Sequence {
     for (int isub = 0; isub < mDigLen; isub++) {
       mDigits[isub] = mSubset.substring(isub, isub + 1);
     } // for isub
-    mIndDig = 0;
     mWidth = 0;
+    mIndDig = 0;
+    mIndDig = mDigLen; // increases width soon
     mQueue = new ArrayList<String>(1024);  
     mQueue.add("");
     mOldLen = 0;
     mNewLen = 0;
     mIndQ = 0;
+    mIndQ = mOldLen;
   }
 
   /**
    * Get the next term of the sequence.
    * @return the next term
    */
-  @Override
-  public Z next() { 
+  public Z next_old() { 
     Z result = null;
     boolean found = false;
     while (! found) { 
@@ -117,6 +118,66 @@ public class SquareDigitsSequence implements Sequence {
     } // while not found 
     ++mN;
     return result;
+  } // next_old
+
+  /**
+   * Get the next term of the sequence.
+   * @return the next term
+   */
+  @Override
+  public Z next() { 
+    Z result = null;
+    boolean found = false;
+    while (! found) { 
+      if (mIndDig >= mDigLen) { // increase width - start a new Queue
+        mWidth ++;
+        // maybe mQueue.removeRange(0, mOldLen); - but with resetting the indexes old/new
+        mOldLen = mNewLen;
+        mNewLen = mQueue.size();
+        mQueue.ensureCapacity(mOldLen + mOldLen * mDigLen);
+        mIndDig = 0;
+        mIndQ = mOldLen;
+      } 
+      if (mIndQ < mNewLen) { // prefix current digit to all in Queue
+        char dig0 = mDigits[mIndDig].charAt(0);
+        String snum = mDigits[mIndDig] + mQueue.get(mIndQ); // contains valid digits only, by construction
+        String num0 = snum.replaceAll("0+\\Z", "");
+        int lenDiff= snum.length() - num0.length();
+        String num2 = num0.length() == 0 ? "0" : new Z(num0).square().toString();
+
+        if (mAllowPattern.matcher(num2).matches()) { // square matches
+          /*  
+            if (mDebug >= 1) {
+              System.out.println("pushq: " + ": " + snum.toString() + " " + num2 + " " + mQueue.size());
+            }
+          */
+          mQueue.add(snum);
+          if (dig0 != '0' || mWidth <= 1) {
+            found = true;
+	        result = new Z(snum);
+          } // else it was already output
+        } else {
+          int pos2 = num2.length() - mWidth + lenDiff;
+          if (pos2 < 0) {
+          	pos2 =0;
+          }
+          if (mWidth <= 1 || mAllowPattern.matcher(num2.substring(pos2)).matches()) { // lower part matches - queue it
+          /*  
+            if (mDebug >= 1) {
+              System.out.println("push0: " + ": " + snum.toString() + " " + num2 + " " + mQueue.size());
+            }
+          */
+            mQueue.add(snum);
+          }
+        }
+        mIndQ ++;
+      } else { // Queue is exhausted for current digit, take next digit 
+        mIndDig++;
+        mIndQ = mOldLen;
+      } // next digit
+    } // while not found 
+    ++mN;
+    return result;
   } // next
 
   //=====================================
@@ -124,7 +185,7 @@ public class SquareDigitsSequence implements Sequence {
    *  @param args command line arguments: [noterms [digits]]
    *  Show various elements related to the runs of digits for some base in n.
    */
-/*
+
   public static void main(String[] args) {
     int index = 1;
     int noTerms = 32;
@@ -146,5 +207,5 @@ public class SquareDigitsSequence implements Sequence {
       index ++;
     } // while index
   } // main
-*/
+
 } // SquareDigitsSequence

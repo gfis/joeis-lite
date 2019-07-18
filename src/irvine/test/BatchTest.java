@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2019-07-11: catch Throwable instead of Exception
  *  2019-06-28: -u giveUpLimit
  *  2019-06-26: print total elapsed time in ms at the end
  *  2019-06-23: print "start" with -vv only
@@ -34,7 +35,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.2";
+  private static String VERSION = "BatchTest V1.3";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -167,7 +168,7 @@ public class BatchTest {
               + timeDiff + " ms timeout expired");
         }
       }
-    } catch (Exception exc) {
+    } catch (Throwable exc) {
       failure = 1; // FAIL
       System.out.println      (aseqno + "\t" + count + "\tFATAL\tException\t"
           + exc.getMessage() + ", Stack: " + getShortTrace(exc));
@@ -213,7 +214,7 @@ public class BatchTest {
         }
       } // while ! eof
       lineReader.close();
-    } catch (Exception exc) {
+    } catch (Throwable exc) {
       System.out.println      (aseqno + "\t" + count + "\tFATAL - read b-file error: "
           + exc.getMessage() + ", Stack: " + getShortTrace(exc));
       failure = READ_ERROR; // read failure
@@ -231,7 +232,7 @@ public class BatchTest {
     try {
       seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4)
           + '.' + aseqno).getDeclaredConstructor().newInstance();
-    } catch (Exception exc) {
+    } catch (Throwable exc) {
       // seq remains null for any errors
       message += exc.getMessage() + getShortTrace(exc);
     }
@@ -289,7 +290,7 @@ public class BatchTest {
         if (seq instanceof Closeable) {
           ((Closeable) seq).close();
         }
-      } catch (Exception exc) {
+      } catch (Throwable exc) {
         System.out.println      (aseqno + "\t" + count + "\tFATAL - could not close sequence, "
           + exc.getMessage() + ", Stack: " + getShortTrace(exc));
       }
@@ -342,7 +343,7 @@ public class BatchTest {
         } // line != null
       } // while ! eof
       lineReader.close();
-    } catch (Exception exc) {
+    } catch (Throwable exc) {
         System.out.println      (aseqno + "\t" + count + "\tFATAL - input read error, "
           + exc.getMessage() + ", Stack: " + getShortTrace(exc));
     } // try
@@ -381,7 +382,7 @@ public class BatchTest {
       } else if (arg.startsWith("-d")) {
         try {
           debug = Integer.parseInt(args[iarg ++]);
-        } catch (Exception exc) {
+        } catch (Throwable exc) {
           // silently assume default
         }
       } else if (arg.startsWith("-t")) {
@@ -392,13 +393,13 @@ public class BatchTest {
           } else { // negative: milliseconds
             millisToRun = - tsecs;
           }
-        } catch (Exception exc) {
+        } catch (Throwable exc) {
           // silently assume the default
         }
       } else if (arg.startsWith("-u")) {
         try {
           giveUpLimit = Integer.parseInt(args[iarg ++]);
-        } catch (Exception exc) {
+        } catch (Throwable exc) {
           // silently assume default
         }
       } else if (arg.startsWith("-v")) {

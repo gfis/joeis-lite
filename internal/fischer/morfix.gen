@@ -1,0 +1,169 @@
+A080846	morfix	0	0	0	0->010,1->011						Fixed point of the morphism 0->010, 1->011, starting from a(1) = 0.
+A091297	morfix	1	0	0	0->02,1->02,2->11						A fixed point of the morphism 0 ->02, 1 ->02, 2 ->11, starting from 0.
+A092400	morfix	1	1	1	1->1121211,2->1121212121211						Fixed point of the morphism 1 -> 1121211, 2 -> 1121212121211, starting from a(1) = 1.
+A092412	morfix	1	1	1	0->11,1->12,2->13,3->10						Fixed point of the morphism 0->11, 1->12, 2->13, 3->10, starting from a(1) = 1.
+A092606	morfix	1	0	0	0->021,1->0,2->0						Fixed point of the morphism 0 -> 021, 1 -> 0, 2 -> 0; starting with a(1) = 0.
+A092782	morfix	1	1	1	1->12,2->13,3->1						The ternary tribonacci word; also a Rauzy fractal sequence: fixed point of the morphism 1 -> 12, 2 -> 13, 3 -> 1, starting from a(1) = 1.
+A096268	morfix	0	0	0	0->01,1->00						Period-doubling sequence (or period-doubling word): fixed point of the morphism 0 -> 01, 1 -> 00.
+A096270	morfix	0	0	0	0->01,1->011						Fixed point of the morphism 0->01, 1->011.
+A096271	morfix	0	0	0	0->01,1->02,2->00						Ternary sequence that is a fixed point of the morphism 0 -> 01, 1 -> 02, 2 -> 00.
+A100260	morfix	1	0	0	0->01,1->02,2->31,3->32						Fixed point of morphism 0 -> 01, 1 -> 02, 2 -> 31, 3 -> 32.
+A100619	morfix	1	1	1	1->12,2->31,3->1						Fixed point of the morphism 1 -> 12, 2 -> 31, 3 -> 1, starting from a(1) = 1.
+A101614	morfix	0	0	0	0->01,1->02,2->10						Fixed point of morphism 0 -> 01, 1 -> 02, 2 -> 10.
+A101659	morfix	0	0	0	0->01,1->02,2->11						Fixed point of morphism 0 -> 01, 1 -> 02, 2 -> 11.
+A101660	morfix	0	0	0	0->01,1->02,2->12						Fixed point of morphism 0 -> 01, 1 -> 02, 2 -> 12.
+A101661	morfix	0	0	0	0->01,1->02,2->20						Fixed point of morphism 0 -> 01, 1 -> 02, 2 -> 20.
+A101662	morfix	0	0	0	0->01,1->02,2->21						Fixed point of morphism 0 -> 01, 1 -> 02, 2 -> 21.
+A101663	morfix	0	0	0	0->01,1->02,2->22						Fixed point of morphism 0 -> 01, 1 -> 02, 2 -> 22.
+A101664	morfix	0	0	0	0->01,1->12,2->00						Fixed point of morphism 0 -> 01, 1 -> 12, 2 -> 00.
+A101665	morfix	0	0	0	0->01,1->12,2->02						Fixed point of morphism 0 -> 01, 1 -> 12, 2 -> 02.
+A101666	morfix	0	0	0	0->01,1->12,2->10						Fixed point of morphism 0 -> 01, 1 -> 12, 2 -> 10, starting with 0.
+A101668	morfix	0	0	0	0->01,1->20,2->00						Fixed point of morphism 0 -> 01, 1 -> 20, 2 -> 00.
+A101669	morfix	0	0	0	0->01,1->20,2->01						Fixed point of morphism 0 -> 01, 1 -> 20, 2 -> 01.
+A101670	morfix	0	0	0	0->01,1->20,2->02						Fixed point of morphism 0 -> 01, 1 -> 20, 2 -> 02.
+A101671	morfix	0	0	0	0->01,1->20,2->10						Fixed point of morphism 0 -> 01, 1 -> 20, 2 -> 10.
+A101672	morfix	0	0	0	0->01,1->20,2->11						Fixed point of morphism 0 -> 01, 1 -> 20, 2 -> 11.
+A101673	morfix	0	0	0	0->01,1->20,2->20						Fixed point of morphism 0 -> 01, 1 -> 20, 2 -> 20.
+A101674	morfix	0	0	0	0->01,1->20,2->21						Fixed point of morphism 0 -> 01, 1 -> 20, 2 -> 21.
+A102005	morfix	0	1	1	1->12,2->111						Fixed point of the morphism 1 -> 12, 2 -> 111.
+A102668	morfix	0	1	1	1->3,2->1,3->212						Fixed point of the morphism 1 -> 3, 2 -> 1, 3 -> 212, starting with 1.
+A104521	morfix	0	1	1	0->1,1->101						Fixed point of the morphism 0->{1}, 1->{1,0,1}.
+A105584	morfix	0	1	1	1->34,2->32,3->12,4->14						Fixed point of the morphism 1 -> 34, 2 -> 32, 3 -> 12, 4 -> 14, starting from a(0) = 1.
+A105646	morfix	0	1	1	1->121,2->343,3->434,4->212						Fixed point of the morphism 1 -> 121, 2 -> 343, 3 -> 434, 4 -> 212, starting from a(0) = 1.
+A105698	morfix	0	1	1	1->1421,2->2132,3->3243,4->4134						Fixed point of morphism 1->{1, 4, 2, 1}, 2->{2, 1, 3, 2}, 3->{3, 2, 4, 3}, 4->{4, 1, 3, 4}.
+A105789	morfix	0	1	1	1->12321,2->43234,3->21412,4->34143						Fixed point of the morphism 1 -> 12321, 2 -> 43234, 3 -> 21412, 4 -> 34143, starting from a(0) = 1.
+A105969	morfix	0	1	1	1->123,2->212,3->345,4->434,5->561,6->656						Fixed point of the morphism 1 -> 123, 2 -> 212, 3 -> 345, 4 -> 434, 5 -> 561, 6 -> 656, starting from a(0) = 1.
+A106055	morfix	0	1	1	1->21212,2->3,3->43434,4->1						Fixed point of the morphism 1 -> 21212,  2 -> 3,  3 -> 43434,  4 -> 1, applied 4*k times to 1.
+A137893	morfix	1	1	1	0->100,1->101						Fixed point of the morphism 0->100, 1->101, starting from a(1) = 1.
+A156595	morfix	0	0	0	0->011,1->010						Fixed point of the morphism 0->011, 1->010.
+A159689	morfix	0	0	0	0->010,1->11						Fixed point of the morphism 0 -> 0,1,0; 1 -> 1,1; starting from a(0)=0.
+A159917	morfix	0	0	0	0->01,1->2,2->01						Fixed point of the morphism 0 -> 01, 1 -> 2, 2 -> 01, starting from a(0) = 0.
+A171588	morfix	1	0	0	0->001,1->0						The Pell word: Fixed point of the morphism 0->001, 1->0.
+A175337	morfix	0	0	0	0->00110,1->00111						Fixed point of morphism 0 -> 00110, 1 -> 00111
+A176405	morfix	0	0	0	0->0100110,1->0110110						Fixed point of morphism 0->0100110, 1->0110110
+A189476	morfix	1	0	0	0->01,1->100						Fixed point of the morphism 0->01, 1->100.
+A189479	morfix	1	0	0	0->01,1->101						Fixed point of the morphism 0->01, 1->101.
+A189572	morfix	1	0	0	0->01,1->001						Fixed point of the morphism 0->01, 1->001.
+A189576	morfix	1	0	0	0->01,1->110						Fixed point of the morphism 0->01, 1->110.
+A189624	morfix	1	0	0	0->001,1->10						Fixed point of the morphism 0->001, 1->10.
+A189628	morfix	1	0	0	0->001,1->010						Fixed point of the morphism 0->001, 1->010.
+A189632	morfix	1	0	0	0->001,1->100						Fixed point of the morphism 0->001, 1->100.
+A189640	morfix	1	0	0	0->001,1->101						Fixed point of the morphism 0->001, 1->101.
+A189661	morfix	1	0	0	0->010,1->10						Fixed point of the morphism 0->010, 1->10 starting with 0.
+A189664	morfix	1	0	0	0->010,1->001						Fixed point of the morphism 0->010, 1->001.
+A189668	morfix	1	0	0	0->010,1->100						Fixed point of the morphism 0->010, 1->100.
+A189673	morfix	1	0	0	0->010,1->110						Fixed point of the morphism 0->010, 1->110.
+A189687	morfix	1	0	0	0->011,1->01						Fixed point of the morphism 0->011, 1->01.
+A189702	morfix	1	0	0	0->011,1->10						Fixed point of the morphism 0->011, 1->10.
+A189706	morfix	1	0	0	0->011,1->001						Fixed point of the morphism 0->011, 1->001.
+A189718	morfix	0	0	0	0->011,1->100						Fixed point of the morphism 0->011, 1->100.
+A189723	morfix	1	0	0	0->011,1->101						Fixed point of the morphism 0->011, 1->101.
+A189727	morfix	1	0	0	0->011,1->110						Fixed point of the morphism 0->011, 1->110.
+A191250	morfix	1	0	0	0->01,1->02,2->001						Fixed point of the morphism 0 -> 01, 1 -> 02, 2 -> 001.
+A191254	morfix	1	0	0	0->01,1->02,2->01						Fixed point of the morphism 0 -> 01, 1 -> 02, 2 -> 01.
+A191255	morfix	1	0	0	0->01,1->02,2->03,3->01						Fixed point of the morphism 0 -> 01, 1 -> 02, 2 -> 03, 3 -> 01.
+A191258	morfix	1	0	0	0->01,1->02,2->03,3->001						Fixed point of the morphism 0->01, 1->02, 2->03, 3->001.
+A191261	morfix	1	0	0	0->01,1->002,2->01						Fixed point of the morphism 0 -> 01, 1 -> 002, 2 -> 01.
+A191265	morfix	1	0	0	0->001,1->002,2->01						Fixed point of the morphism 0 -> 001, 1 -> 002, 2 -> 01.
+A191269	morfix	1	0	0	0->001,1->02,2->01						Fixed point of the morphism 0 -> 001, 1 -> 02, 2 -> 01.
+A227339	morfix	1	1	1	1->131,2->312,3->2						Fixed point of the morphism 1 -> 131, 2 -> 312, 3 -> 2.
+A254990	morfix	0	0	0	0->01,1->02,2->03,3->0						4-bonacci word. Fixed point of morphism 0->01, 1->02, 2->03, 3->0.
+A275855	morfix	1	0	0	0->0001,1->001						Platinum mean sequence: fixed point of the morphism 0 -> 0001, 1 -> 001.
+A277731	morfix	1	0	0	0->01,1->012,2->0						Fixed point of the morphism 0 -> 01, 1 -> 012, 2 -> 0; starting with a(1) = 0.
+A277735	morfix	1	0	0	0->01,1->20,2->0						Fixed point of the morphism 0 -> 01, 1 -> 20, 2 -> 0; starting with a(1) = 0.
+A277744	morfix	1	1	1	1->23,2->14,3->21,4->56,5->63,6->54						Fixed point of the morphism 1->23, 2->14, 3->21, 4->56, 5->63, 6->54; starting with a(1) = 1.
+A283963	morfix	1	1	1	0->1,1->1010						Fixed point of the morphism 0 -> 1, 1 -> 1010.
+A283966	morfix	1	1	1	0->1,1->10101						Fixed point of the morphism 0 -> 1, 1 -> 10101.
+A284364	morfix	1	1	1	0->1,1->101010						Fixed point of the morphism 0->1, 1->101010.
+A284368	morfix	1	1	1	0->1,1->1011						Fixed point of the morphism 0->1, 1->1011.
+A284369	morfix	1	1	1	0->1,1->1001						Fixed point of the morphism 0->1, 1->1001.
+A284386	morfix	1	1	1	0->1,1->1101						Fixed point of the morphism 0->1, 1->1101.
+A284505	morfix	1	1	1	0->1,1->1100						Fixed point of the morphism 0->1, 1->1100.
+A284680	morfix	1	1	1	0->1,1->1000						Fixed point of the morphism 0->1, 1->1000.
+A284683	morfix	1	0	0	0->01,1->0000						Fixed point of the morphism 0 -> 01, 1 -> 0000
+A284745	morfix	1	0	0	0->01,1->000						Fixed point of the morphism 0 -> 01, 1 -> 000.
+A284751	morfix	1	0	0	0->01,1->0001						Fixed point of the morphism 0 -> 01, 1 -> 0001.
+A284772	morfix	1	0	0	0->01,1->0010						Fixed point of the morphism 0 -> 01, 1 -> 0010.
+A284775	morfix	1	0	0	0->01,1->0011						Fixed point of the morphism 0 -> 01, 1 -> 0011.
+A284851	morfix	1	0	0	0->01,1->0100						Fixed point of the morphism 0 -> 01, 1 -> 0100.
+A284878	morfix	1	0	0	0->01,1->0110						Fixed point of the morphism 0 -> 01, 1 -> 0110.
+A284893	morfix	1	0	0	0->01,1->0111						Fixed point of the morphism 0 -> 01, 1 -> 0111.
+A284901	morfix	1	0	0	0->01,1->1000						Fixed point of the morphism 0 -> 01, 1 -> 1000.
+A284905	morfix	1	0	0	0->01,1->1001						Fixed point of the morphism 0 -> 01, 1 -> 1001.
+A284912	morfix	1	0	0	0->01,1->1010						Fixed point of the morphism 0 -> 01, 1 -> 1010.
+A284929	morfix	1	0	0	0->01,1->1011						Fixed point of the morphism 0 -> 01, 1 -> 1011.
+A284932	morfix	1	00	00	00->001,1->10						Fixed point of the mapping 00->001, 1->10, starting with 00.
+A284935	morfix	1	0	0	0->01,1->1100						Fixed point of the morphism 0 -> 01, 1 -> 1100.
+A284939	morfix	1	0	0	0->01,1->1101						Fixed point of the morphism 0 -> 01, 1 -> 1101, starting with 0.
+A284944	morfix	1	0	0	0->01,1->1110						Fixed point of the morphism 0 -> 01, 1 -> 1110.
+A285301	morfix	1	1	1	0->10,1->1000						Fixed point of the morphism 0 -> 10, 1 -> 1000.
+A285305	morfix	1	1	1	0->10,1->1001						Fixed point of the morphism 0 -> 10, 1 -> 1001.
+A285341	morfix	1	1	1	0->10,1->1011						Fixed point of the morphism 0 -> 10, 1 -> 1011.
+A285345	morfix	1	1	1	0->10,1->1100						Fixed point of the morphism 0 -> 10, 1 -> 1100.
+A285358	morfix	1	1	1	0->10,1->1101						Fixed point of the morphism 0 -> 10, 1 -> 1101.
+A285373	morfix	1	1	1	0->10,1->1110						Fixed point of the morphism 0 -> 10, 1 -> 1110.
+A285427	morfix	1	1	1	0->11,1->100						Fixed point of the morphism 0->11, 1-> 100.
+A285430	morfix	1	1	1	0->11,1->101						Fixed point of the morphism 0->11, 1-> 101.
+A285431	morfix	1	1	1	0->11,1->110						Fixed point of the morphism 0->11, 1-> 110.
+A285617	morfix	1	1	1	0->11,1->1000						Fixed point of the morphism 0->11, 1->1000.
+A285621	morfix	1	1	1	0->11,1->1001						Fixed point of the morphism 0->11, 1->1001.
+A285625	morfix	1	1	1	0->11,1->1010						Fixed point of the morphism 0->11, 1->1010.
+A285657	morfix	1	1	1	0->11,1->1011						Fixed point of the morphism 0->11, 1->1011.
+A285661	morfix	1	1	1	0->11,1->1100						Fixed point of the morphism 0->11, 1->1100.
+A285666	morfix	1	00	00	00->001,1->010						Fixed point of the mapping 00->001, 1->010, starting with 00.
+A285668	morfix	1	1	1	0->11,1->1101						Fixed point of the morphism 0->11, 1->1101.
+A285671	morfix	1	1	1	0->11,1->1110						Fixed point of the morphism 0->11, 1->1110.
+A286059	morfix	1	00	00	00->001,1->011						Fixed point of the mapping 00->001, 1->011, starting with 00.
+A286063	morfix	1	00	00	00->001,1->100						Fixed point of the mapping 00->001, 1->100, starting with 00.
+A286807	morfix	1	00	00	00->001,1->101						Fixed point of the mapping 00->001, 1->101, starting with 00.
+A286939	morfix	1	00	00	00->001,1->000						Fixed point of the mapping 00->001, 1->000, starting with 00.
+A287125	morfix	1	00	00	00->001,1->110						Fixed point of the mapping 00->001, 1->110, starting with 00.
+A287931	morfix	1	00	00	00->0010,1->10						Fixed point of the mapping 00->0010, 1->10, starting with 00.
+A288106	morfix	1	00	00	00->0010,1->00						Fixed point of the mapping 00->0010, 1->00, starting with 00.
+A288132	morfix	1	00	00	00->0010,1->11						Fixed point of the mapping 00->0010, 1->11, starting with 00.
+A288167	morfix	1	00	00	00->0010,1->000						Fixed point of the mapping 00->0010, 1->000, starting with 00.
+A288173	morfix	1	00	00	00->0010,1->001						Fixed point of the mapping 00->0010, 1->001, starting with 00.
+A288203	morfix	1	00	00	00->0010,1->010						Fixed point of the mapping 00->0010, 1->010, starting with 00.
+A288213	morfix	1	00	00	00->0010,1->011						Fixed point of the mapping 00->0010, 1->011, starting with 00.
+A288257	morfix	1	00	00	00->0010,1->100						Fixed point of the mapping 00->0010, 1->100, starting with 00.
+A288306	morfix	1	00	00	00->0010,1->110						Fixed point of the mapping 00->0010, 1->110, starting with 00.
+A288314	morfix	1	00	00	00->0001,1->00						Fixed point of the mapping 00->0001, 1->00, starting with 00.
+A288372	morfix	1	00	00	00->0001,1->01						Fixed point of the mapping 00->0001, 1->01, starting with 00.
+A288375	morfix	1	00	00	00->10000,10->1001						Fixed point of the mapping 00->10000, 10->1001, starting at 00.
+A288377	morfix	1	00	00	00->0001,1->10						Fixed point of the mapping 00->0001, 1->10, starting with 00.
+A288381	morfix	1	00	00	00->0001,1->11						Fixed point of the mapping 00->0001, 1->11, starting with 00.
+A288426	morfix	1	00	00	00->0101,10->100						Fixed point of the mapping 00->0101, 10->100, starting with 00.
+A288462	morfix	1	00	00	00->0101,1->10						Fixed point of the mapping 00->0101, 1->10, starting with 00.
+A288466	morfix	1	00	00	00->0101,1->010						Fixed point of the mapping 00->0101, 1->010, starting with 00.
+A288478	morfix	1	00	00	00->0101,1->110						Fixed point of the mapping 00->0101, 1->110, starting with 00.
+A288596	morfix	1	00	00	00->0101,1->1000						Fixed point of the mapping 00->0101, 1->1000, starting with 00.
+A288600	morfix	1	00	00	00->0101,1->1001						Fixed point of the mapping 00->0101, 1->1001, starting with 00.
+A288633	morfix	1	00	00	00->0110,1->10						Fixed point of the mapping 00->0110, 1->10, starting with 00.
+A288694	morfix	1	00	00	00->0110,10->100						Fixed point of the mapping 00->0110, 10->100, starting with 00.
+A288929	morfix	1	00	00	00->1000,1->10011						Fixed point of the mapping 00->1000, 1->10011, starting with 00.
+A288932	morfix	1	00	00	00->1000,1->10101						Fixed point of the mapping 00->1000, 1->10101, starting with 00.
+A288936	morfix	1	00	00	00->0010,01->011,10->011						Fixed point of the mapping 00->0010, 01->011, 10->011, starting with 00.
+A288991	morfix	1	00	00	00->0010,01->001,10->000						Fixed point of the mapping 00->0010, 01->001, 10->000, starting with 00.
+A288997	morfix	1	00	00	00->0010,01->001,10->001						Fixed point of the mapping 00->0010, 01->001, 10->001, starting with 00.
+A289001	morfix	1	00	00	00->0010,01->001,10->010						Fixed point of the mapping 00->0010, 01->001, 10->010, starting with 00.
+A289007	morfix	1	00	00	00->0010,01->001,10->011						Fixed point of the mapping 00->0010, 01->001, 10->011, starting with 00.
+A289011	morfix	1	00	00	00->0010,01->001,10->100						Fixed point of the mapping 00->0010, 01->001, 10->100, starting with 00.
+A289016	morfix	1	00	00	00->0010,01->010,10->000						Fixed point of the mapping 00->0010, 01->010, 10->000, starting with 00.
+A289025	morfix	1	00	00	00->0010,01->010,10->001						Fixed point of the mapping 00->0010, 01->010, 10->001, starting with 00.
+A289034	morfix	1	1	1	0->010,1->10						Fixed point of the morphism 0->010, 1->10 starting with 1.
+A289035	morfix	1	00	00	00->0010,01->010,10->010						Fixed point of the mapping 00->0010, 01->010, 10->010, starting with 00.
+A289057	morfix	1	00	00	00->0010,01->010,10->011						Fixed point of the mapping 00->0010, 01->010, 10->011, starting with 00.
+A289071	morfix	1	00	00	00->0010,01->010,10->100						Fixed point of the mapping 00->0010, 01->010, 10->100, starting with 00.
+A289074	morfix	1	00	00	00->0010,01->011,10->100						Fixed point of the mapping 00->0010, 01->011, 10->100, starting with 00.
+A289104	morfix	1	00	00	00->0010,01->011,10->000						Fixed point of the mapping 00->0010, 01->011, 10->000, starting with 00.
+A289112	morfix	1	00	00	00->0010,01->011,10->001						Fixed point of the mapping 00->0010, 01->011, 10->001, starting with 00.
+A289128	morfix	1	00	00	00->0010,01->011,10->010						Fixed point of the mapping 00->0010, 01->011, 10->010, starting with 00.
+A289165	morfix	1	00	00	00->0010,01->100,10->001						Fixed point of the mapping 00->0010, 01->100, 10->001, starting with 00.
+A289174	morfix	1	00	00	00->0010,01->100,10->011						Fixed point of the mapping 00->0010, 01->100, 10->011, starting with 00.
+A289235	morfix	1	00	00	00->0010,01->100,10->000						Fixed point of the mapping 00->0010, 01->100, 10->000, starting with 00.
+A289239	morfix	1	00	00	00->0010,01->100,10->010						Fixed point of the mapping 00->0010, 01->100, 10->010, starting with 00.
+A289242	morfix	1	00	00	00->0010,01->100,10->100						Fixed point of the mapping 00->0010, 01->100, 10->100, starting with 00.
+A298231	morfix	1	1	1	1->1221,2->122						Fixed point of the morphism 1->1221, 2->122.
+A305490	morfix	1	1	1	0->120,1->110,2->100						Fixed point of the morphism 0->120, 1->110, 2->100.
+A317954	morfix	1	1	1	1->12,2->13,3->14,4->1						Fixed point of the morphism 1 -> 12, 2 -> 13, 3 -> 14, 4 -> 1, starting from a(1) = 1.
+A323116	morfix	1	1	1	1->221,2->2211						Fixed point of the morphism 1->221, 2->2211.

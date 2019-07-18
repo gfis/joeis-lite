@@ -79,7 +79,7 @@
         <fileset dir="${dist.home}">
             <include name="*.jar"/>
         </fileset>
-        <fileset dir="../../gitups/joeis/build.tmp">
+        <fileset dir="../joeis/build.tmp">
             <include name="*.jar"/>
         </fileset>
         <fileset dir="${lib.home}">
