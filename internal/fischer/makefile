@@ -625,10 +625,12 @@ morfix:
 	'  $$map =~ m{\A(\d+)}; my $$start = $$1; if ($$line =~ m{(start |starting |apply |applied )(with |from |to )([a-z]\(\d\)\D*)?(\d+)}i) { $$start = $$4; }'\
 	'  print join("\t", $$aseqno, "$@", 0, $$start, $$start, $$map) . "\n"; }' \
 	$(COMMON)/names \
-	| grep -vE "A106437|A119647|A176416|A30549[56]|A317198" \
-	| perl  -pe "s/morfix	\d	0	0	0\-\>1(\d*)\,1/morfix	1	1	1	0->1\1,1/;" \
 	| tee $@.gen
 	wc -l $@.gen
+	echo xx
+	| perl  -pe "s/morfix	\d	0	0	0\-\>1(\d*)\,1/morfix	1	1	1	0->1\1,1/;" \
+	| grep -vE "A106437|A119647|A176416|A30549[56]|A317198" \
+	> x.tmp
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 morfix_test:
 	java -cp ../../dist/joeis-lite.jar irvine.oeis.MorphismSequence $(NT) $(SC)
