@@ -73,7 +73,7 @@ public class MorphismSequence implements Sequence {
         mMap[imap ++] = pair[0];
         mMap[imap ++] = pair[1];
     } // for ipair
-    if (start.length() > 0) {
+    if (start.length() >= 1 && mMap[0].length() <= start.length()) {
       mStart = start;
     } else {
       mStart = mMap[0];

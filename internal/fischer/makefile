@@ -55,7 +55,9 @@ pack:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
-	; echo src/irvine/oeis/$(CLASS).java     >> pack.$(CC).lst 
+	; echo src/irvine/oeis/$(CLASS).java     >> pack.$(CC).lst \
+	; echo internal/fischer/$(CC).gen        >> pack.$(CC).lst \
+	; echo internal/fischer/$(CC).jpat       >> pack.$(CC).lst \
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\S*}{}" | uniq -c
 rename:
@@ -628,6 +630,8 @@ juxrun:
 # A285589 {00->0, 11->1}-transform of A285565.    nonn,easy,      1..10000
 # A284387 {010->2}-transform of the infinite Fibonacci word A003849.      nonn,easy,changed,      1..10000
 # A105203 Trajectory of 1 under the morphism f: 1->{1,2,1}, 2->{2,3,2}, 3->{3,1,3}.	
+# A212810 Iterate the morphism 1->122, 2->1112 starting with 1.
+# A284388 0-limiting word of the morphism 0 -> 1, 1 -> 001.
 morfix:
 	CLASS=MorphismSequence
 	perl -ne \
@@ -636,8 +640,7 @@ morfix:
 	'(the )?(mapping |map |morphism |morphing |\:|)([ 0-9\-\>\,\;\{\}\(\)\[\]]+)} )'\
 	'{ my ($$aseqno, $$map) = ($$1, $$7); $$map =~ s{\s}{}g; $$map =~ tr{\[\]\(\)}{\{\}\{\}};'\
 	'  $$map =~ s{\}\,}{\}\;}g; $$map =~ s{[\,\;]\Z}{}; if ($$map =~ m{[\}\;]}) { $$map =~ s{[\{\}\,]}{}g; };'\
-	'  $$map =~ s{\;}{\,}g; '\
-	'  $$map =~ m{\A(\d+)}; my $$start = ""; '\
+	'  $$map =~ s{\;}{\,}g; $$map =~ m{\A(\d+)}; my $$start = ""; '\
 	'if ($$line =~ m{(start |starting |apply |applied )(with |from |to )([a-z]\(\d\)\D*)?(\d+)}i) { $$start = $$4; }'\
 	'if ($$line =~ m{\-\>}) { print join("\t", $$aseqno, "$@", 0, $$start, "", $$map) . "\n"; }}' \
 	$(COMMON)/names \
@@ -646,12 +649,12 @@ morfix:
 	# mortix:
 	perl -ne \
 	'my $$line = $$_;'\
-	'if ($$line =~ m{^(A\d+)\s+.*[Tt]rajectory of (\d+) (under |of )(the )?'\
+	'if ($$line =~ m{^(A\d+)\s+.*([Tt]rajectory of (\d+) |Image of (\d+) |(\d+)\-limiting word |[Ll]imiting (\d+)\-word )'\
+	'(under (repeated applications? of )?|of )(the )?'\
 	'(mapping|map|morphism)\:? ([ 0-9\-\>\,\;\{\}\(\)\[\]]+)})'\
-	'{ my ($$aseqno, $$start, $$map) = ($$1, $$2, $$6); $$map =~ s{\s}{}g; $$map =~ tr{\[\]\(\)}{\{\}\{\}};'\
+	'{ my ($$aseqno, $$start, $$map) = ($$1, $$2, $$11); $$map =~ s{\s}{}g; $$map =~ tr{\[\]\(\)}{\{\}\{\}};'\
 	'  $$map =~ s{\}\,}{\}\;}g; $$map =~ s{[\,\;]\Z}{}; if ($$map =~ m{[\}\;]}) { $$map =~ s{[\{\}\,]}{}g; };'\
-	'  $$map =~ s{\;}{\,}g; '\
-	'  $$map =~ m{\A(\d+)}; '\
+	'  $$map =~ s{\;}{\,}g; $$map =~ m{\A(\d+)}; $$start =~ s{\D}{}g; '\
 	'  print join("\t", $$aseqno, "morfix", 0, $$start, $$start, $$map) . "\n"; }' \
 	$(COMMON)/names \
 	| grep -vE "A007001|A119647|A176416|A229830" \
