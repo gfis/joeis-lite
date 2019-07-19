@@ -22,12 +22,13 @@ public class MorphismSequence implements Sequence {
   protected String mLimit; // start of the desired limiting word
   protected int mFactor; // each iterate increases the length roughly by this factor
 
-  private String mOldWord; // current word expanded so far
-  private StringBuffer mNewWord; // assemble the new word here
+  private String mOldWord; // previous word
+  private String mCurWord; // current word expanded so far
   private String[] mMap; // pairs of String->String, flattened
-  private int mPos; // current position in mOldWord
+  private int mPos; // current position in mCurWord
   private int mMaxPos; // assume that digits are safe up to this position
   public  int mDebug = 0; // 0 = none, 1 = some, 2 = more debugging putput
+  private final static int POS_FRACTION = 3; // 1 / (how much of mCurWord is reliable)
 
   /**
    * Empty constructor.
@@ -39,8 +40,8 @@ public class MorphismSequence implements Sequence {
   /**
    * Construct an instance which generates the fixed point of this morphism.
    * @param offset first valid term has this index
+   * @param limit start of the desired limiting word (ignored)
    * @param start start with this word
-   * @param limit start of the desired limiting word
    * @param mappings pairs of digit string mappings, for example "0->001,1->0"
    */
   protected MorphismSequence(final int offset, final String start, final String limit, final String mappings) {
@@ -51,12 +52,11 @@ public class MorphismSequence implements Sequence {
   /**
    * Construct an instance which generates the fixed point of this morphism.
    * @param offset first valid term has this index
+   * @param limit start of the desired limiting word (ignored)
    * @param start start with this word
-   * @param limit start of the desired limiting word
    * @param mappings pairs of digit string mappings, for example "0->001,1->0"
    */
   protected void initialize(final String start, final String limit, final String mappings) {
-    mLimit  = limit;
     mFactor = 2;
     mN = 0;
     mK = Z.ZERO;
@@ -65,25 +65,36 @@ public class MorphismSequence implements Sequence {
     int imap = 0;
     for (int ipair = 0; ipair < pairs.length; ipair ++) {
         String[] pair = pairs[ipair].split("\\-\\>");
+        if (pair.length == 1) {
+          pair = new String[] { pair[0], "" };
+        } else if (pairs[ipair].startsWith("->")) {
+          pair = new String[] { "", pair[0] };
+        }
         mMap[imap ++] = pair[0];
         mMap[imap ++] = pair[1];
     } // for ipair
-    mStart  = mMap[0]; // start;
-    mOldWord = mStart;
+    if (start.length() > 0) {
+      mStart = start;
+    } else {
+      mStart = mMap[0];
+    }
+    mCurWord = mStart;
     String[] iterates = new String[5];
-    int iexp = 0; 
+    int iexp = 0;
     while (iexp < iterates.length - 1) { // expand a few times
-    	iterates[iexp] = mOldWord;
+        iterates[iexp] = mCurWord;
         expandWord();
         iexp ++;
     } // while iexp
-   	iterates[iexp] = mOldWord;
-    mLimit = iterates[iexp].substring(0, 2);
-    if (! mLimit.equals(iterates[iexp - 1].substring(0, 2))) {
+    iterates[iexp] = mCurWord;
+    mOldWord = iterates[iexp - 1];
+    mLimit = mCurWord.substring(0, 2);
+    if (! mLimit.equals(mOldWord.substring(0, 2))) {
       mLimit = mStart;
+      mOldWord = mStart; // = iterates[0];
     }
     mPos = 0;
-    mMaxPos = mOldWord.length() / 3;
+    mMaxPos = mCurWord.length() / POS_FRACTION;
   } // initialize
 
   /**
@@ -92,33 +103,33 @@ public class MorphismSequence implements Sequence {
   public void expandWord() {
     StringBuffer newWord = new StringBuffer(mPos * mFactor);
     int ipos = 0;
-    while (ipos < mOldWord.length()) {
+    while (ipos < mCurWord.length()) {
       int imap = 0;
       boolean busy = true;
       while (busy && imap < mMap.length) {
         String search  = mMap[imap ++];
         String replace = mMap[imap ++];
-        if (mOldWord.startsWith(search, ipos)) {
+        if (mCurWord.startsWith(search, ipos)) {
           newWord.append(replace);
           ipos += search.length();
           busy = false;
-        } 
+        }
       } // while imap
       if (busy) { // no mapping could be applied
-        newWord.append(mOldWord.charAt(ipos ++)); // copy character unchanged
+        newWord.append(mCurWord.charAt(ipos ++)); // copy character unchanged
       }
     } // while ipos
-    mOldWord = newWord.toString();
-    mMaxPos = mOldWord.length() / 3;
+    mCurWord = newWord.toString();
+    mMaxPos = mCurWord.length() / POS_FRACTION;
     if (mDebug > 0) {
-    	int len = mOldWord.length();
-        System.out.println("# limit=" + mLimit 
-            + " pos=" + String.format("%4d", mPos) 
-            + " max=" + String.format("%4d", mMaxPos) 
-            + " " + (len < 96 ? mOldWord : mOldWord.substring(0, 96) + " ..."));
+        int len = mCurWord.length();
+        System.out.println("# limit=" + mLimit
+            + " pos=" + String.format("%4d", mPos)
+            + " max=" + String.format("%4d", mMaxPos)
+            + " " + (len < 96 ? mCurWord : mCurWord.substring(0, 96) + " ..."));
     }
-    if (mOldWord.length() > 1000000) {
-      throw new IllegalArgumentException("mOldWord longer than 10^6 characters");
+    if (mCurWord.length() > 1000000) {
+      throw new IllegalArgumentException("mCurWord longer than 10^6 characters");
     }
   } // expandWord
 
@@ -128,27 +139,27 @@ public class MorphismSequence implements Sequence {
    */
   @Override
   public Z next() {
-  	if (mPos >= mMaxPos) {
+    if (mPos >= mMaxPos) {
       int iexp = 4;
       while (iexp > 0) { // expand to next possible
         expandWord();
-        if (mOldWord.startsWith(mLimit)) {
+        if (mCurWord.startsWith(mLimit)) {
           iexp = 0;
-        } 
+        }
         iexp --;
       } // while expanding
       // iexp = -1 if some next was possible
       if (iexp == 0 && mDebug > 0) { // not possible
-        System.err.println("assertion iexp in MorphismSequence.next, pos = " + mPos 
-            + ", word = \"" + mOldWord + "\"");
+        System.err.println("assertion iexp in MorphismSequence.next, pos = " + mPos
+            + ", word = \"" + mCurWord + "\"");
       }
       if (mPos >= mMaxPos && mDebug > 0) {
-        System.err.println("assertion maxPos in MorphismSequence.next, maxPos = " + mMaxPos 
-            + ", word = \"" + mOldWord + "\"");
+        System.err.println("assertion maxPos in MorphismSequence.next, maxPos = " + mMaxPos
+            + ", word = \"" + mCurWord + "\"");
       }
-	}
+    }
     // take next from current word
-    return Z.valueOf(mOldWord.charAt(mPos ++) - '0');
+    return Z.valueOf(mCurWord.charAt(mPos ++) - '0');
   } // next
 
   //=====================================
