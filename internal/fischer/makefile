@@ -296,6 +296,71 @@ basrunpar:
 	> $@.gen
 	cat $@.gen
 #--------------------------
+ca_rules:
+	perl -ne 'if (m{\"Rule (\d+)\"}) { print "$1\n" }' jnames.txt \
+	> $@.tmp
+	wc -l $@.tmp
+mma_uniqc:
+	cut -b1-10 $(COMMON)/cat25.txt | grep -E "^%t" | uniq -c | grep " 1 " | cut -b 12-18 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#	      2 %t A000001
+mma_single:
+	grep -E "^%t" $(COMMON)/cat25.txt \
+	| perl mma_single.pl \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp	
+mma_joeis:
+	make seq2 LIST=mma_single.tmp
+	$(DBAT) "SELECT m.aseqno, SUBSTR(j.superclass, 1, 3), m.info FROM seq2 m LEFT JOIN joeis j ON m.aseqno = j.aseqno \
+		ORDER BY 3" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt	
+#--------
+# A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
+A272999:
+	perl -ne \
+	's/ //g; s/\t\w*\t/\t/; '\
+	'if (m{^(A\d{6})\tSelect\[Range\[(\d+(,\d+)*)\]\,PrimeQ\[\(?(\d+)\*(\d+)\^\#([\+\-])(\d+)\)?(\/(\d+))?\]\&\]})'\
+	'{ my ($$aseqno, $$range, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, "$$5$$6", $$8); if (length($$div) > 0) { $$div = ".divide($$div)"; } '\
+	'print join("\t", $$aseqno, "$@", 0, $$range, $$num, $$base, $$add, $$div) . "\n" }' \
+	mma_joeis.txt \
+	>     $@.gen
+	cat   $@.gen
+	wc -l $@.gen
+#------
+# A102709		Join[{1,3125,1075,985},LinearRecurrence[{-1,-2,-2,-2,-1,0,1,2,2,2,1,1},{580,1281,295,1305,580,925,631,1305,220,1305,655,901},45]](*_RayChandler_,Sep082015*)
+joinlr:
+	perl -ne \
+	's/ //g; if (m{^\w+\t\t}) { '\
+	'if (m{^(A\d{6})\t\tJoin\[\{([^\}]+)\}\,LinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}})'\
+	'{ my ($$aseqno, $$join, $$recur, $$inits) = ($$1, $$2, $$3, $$4); '\
+	' $$recur = join(",", reverse(split(/\,/, $$recur))); '\
+	'print join("\t", $$aseqno, "$@", 0, 0, 0, $$recur, $$inits, $$join) . "\n" }}'\
+	mma_joeis.txt \
+	| grep -vE "A286069" \
+	>     $@.gen
+	perl -ne \
+	's/ //g; if (m{^\w+\t\t}) { '\
+	'if (m{^(A\d{6})\t\tLinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}})'\
+	'{ my ($$aseqno, $$recur, $$inits) = ($$1, $$2, $$3); '\
+	' my @recur = reverse(split(/\,/, $$recur)); '\
+	' my @inits =         split(/\,/, $$inits) ; '\
+	' if (scalar(@inits) > scalar(@recur)) { '\
+	'    my $$join = join(",", splice(@inits, 0, scalar(@inits) - scalar(@recur)));'\
+	'    $$inits   = join(",",        @inits);'\
+	'    print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$join) . "\n"; } else {'\
+	'    print join("\t", $$aseqno, "linrec", 0, 0, 0, $$recur, $$inits        ) . "\n"; }'\
+	'}}'\
+	mma_joeis.txt \
+	| grep -vE "A064584|A288917" \
+	>>    $@.gen
+	cat   $@.gen
+	wc -l $@.gen
+#--------------------------
 # new, using ContinuedFractionOfSqrtSequence
 cfs:
 	make cfs_all TARGET=gener

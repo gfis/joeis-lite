@@ -11,13 +11,13 @@ CREATE  TABLE            seq4
     , offset   VARCHAR(16)           -- offset
     , parm1    VARCHAR(16)           -- (base)
     , parm2    VARCHAR(32)           
-    , parm3    VARCHAR(64)           
-    , parm4    VARCHAR(32)          
-    , parm5    VARCHAR(32)          
-    , parm6    VARCHAR(32)          
+    , parm3    VARCHAR(128)           
+    , parm4    VARCHAR(256)          
+    , parm5    VARCHAR(256)          
+    , parm6    VARCHAR(128)          
     , parm7    VARCHAR(128)          
     , parm8    VARCHAR(128)          
-    , name     VARCHAR(256)  
+    , name     VARCHAR(1024)  
     , status   VARCHAR(16)           -- pass, FAIL       
     , PRIMARY KEY(aseqno)
     );
