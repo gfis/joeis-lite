@@ -39,7 +39,7 @@ all:
 #----------------------------------
 SOURCES=ContinuedFractionOfSqrtSequence.java CoxeterSequence.java GeneratingFunctionSequence.java \
 	DeadSequence.java FiniteSequence.java LinearRecurrence.java PeriodicSequence.java \
-	PrependSequence.java ReaderSequence.java RunsBaseSequence.java Sequence.java 
+	PrependSequence.java ReaderSequence.java RunsBaseSequence.java Sequence.java
 joeis_push:
 	cd $(LITE)/src/irvine/oeis  ; pwd ; cp -upv $(SOURCES) ../../../../../gitups/joeis/src/irvine/oeis/
 joeis_pull:
@@ -50,14 +50,14 @@ update: purge
 count:
 	find ../../src -iname "A??????.java" | wc -l
 list:
-	find ../../src -iname "A??????.java" -ls 
+	find ../../src -iname "A??????.java" -ls
 pack:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
 	; echo src/irvine/oeis/$(CLASS).java     >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC).gen        >> pack.$(CC).lst \
-	; echo internal/fischer/$(CC).jpat       >> pack.$(CC).lst 
+	; echo internal/fischer/$(CC).jpat       >> pack.$(CC).lst
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\S*}{}" | uniq -c
 rename:
@@ -371,14 +371,14 @@ mma_single:
 	| perl mma_single.pl \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc -l    $@.tmp	
+	wc -l    $@.tmp
 mma_joeis:
 	make seq2 LIST=mma_single.tmp
 	$(DBAT) "SELECT m.aseqno, SUBSTR(j.superclass, 1, 3), m.info FROM seq2 m LEFT JOIN joeis j ON m.aseqno = j.aseqno \
 		ORDER BY 3" \
 	>        $@.txt
 	head -n4 $@.txt
-	wc -l    $@.txt	
+	wc -l    $@.txt
 #--------
 # A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
 A272999:
@@ -395,41 +395,47 @@ A272999:
 # A102709		Join[{1,3125,1075,985},LinearRecurrence[{-1,-2,-2,-2,-1,0,1,2,2,2,1,1},{580,1281,295,1305,580,925,631,1305,220,1305,655,901},45]](*_RayChandler_,Sep082015*)
 joinlr:
 	perl -ne \
-	'if (m{^(A\d{6})\t\tJoin\[\{([^\}]+)\}\,LinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}})'\
-	'{ my ($$aseqno, $$join, $$recur, $$inits) = ($$1, $$2, $$3, $$4); '\
-	' $$recur = join(",", reverse(split(/\,/, $$recur))); '\
-	'print join("\t", $$aseqno, "$@", 0, 0, 0, $$recur, $$inits, $$join) . "\n" }'\
-	mma_joeis.txt 
-joinlr1:
-	perl -ne \
-	's/ //g; if (m{^\w+\t\t}) { '\
-	'if (m{^(A\d{6})\t\tJoin\[\{([^\}]+)\}\,LinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}})'\
-	'{ my ($$aseqno, $$join, $$recur, $$inits) = ($$1, $$2, $$3, $$4); '\
-	' $$recur = join(",", reverse(split(/\,/, $$recur))); '\
-	'print join("\t", $$aseqno, "$@", 0, 0, 0, $$recur, $$inits, $$join) . "\n" }}'\
-	mma_joeis.txt 
-xx:
-	echo \
-	| grep -vE "A286069" \
-	>     $@.gen
-	perl -ne \
-	's/ //g; if (m{^\w+\t\t}) { '\
-	'if (m{^(A\d{6})\t\tLinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}})'\
-	'{ my ($$aseqno, $$recur, $$inits) = ($$1, $$2, $$3); '\
+	's/ //g; '\
+	'if (m{^(A\d{6})\t\tJoin\[\{([^\}]+)\}\,LinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}}) {'\
+	' my ($$aseqno, $$joins, $$recur, $$inits) = ($$1, $$2, $$3, $$4); '\
 	' my @recur = reverse(split(/\,/, $$recur)); '\
 	' my @inits =         split(/\,/, $$inits) ; '\
-	' my $$join = "EMPTY";
+	' my @joins =         split(/\,/, $$joins) ; '\
 	' if (scalar(@inits) > scalar(@recur)) { '\
-	'    $$join = join("L,", splice(@inits, 0, scalar(@inits) - scalar(@recur))) . "L"; }'\
-	' $$inits   = join("L,",        @inits) . "L";'\
-	' $$recur   = join("L,",        @recur) . "L";'\
-	' print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$join) . "\n";'\
-	'}}'\
+	'   @joins = join(@joins, splice(@inits, 0, scalar(@inits) - scalar(@recur))); '\
+	' }'\
+	' $$joins = "new long[] {" . join("L,", @joins) . "L}"; '\
+	' if (scalar(@joins) == 0) { $$joins = "EMPTY"; } '\
+	' $$inits = "new long[] {" . join("L,", @inits) . "L}";'\
+	' $$recur = "new long[] {" . join("L,", @recur) . "L}";'\
+	' print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$joins) . "\n";'\
+	'}' \
 	mma_joeis.txt \
-	| grep -vE "A064584|A288917" \
-	>>    $@.gen
-	cat   $@.gen
-	wc -l $@.gen
+	| grep -vE "A064584|A18718|A286069|A288917" \
+	>        $@.gen
+	wc -l    $@.gen
+	#--
+	perl -ne \
+	's/ //g; '\
+	'if (m{^(A\d{6})\t\tLinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}}) {'\
+	' my ($$aseqno, $$recur, $$inits) = ($$1, $$2, $$3); '\
+	' my @recur = reverse(split(/\,/, $$recur)); '\
+	' my @inits =         split(/\,/, $$inits) ; '\
+	' my @joins = (); '\
+	' if (scalar(@inits) > scalar(@recur)) { '\
+	'   @joins = splice(@inits, 0, scalar(@inits) - scalar(@recur)); '\
+	' }'\
+	' $$joins = "new long[] {" . join("L,", @joins) . "L}"; '\
+	' if (scalar(@joins) == 0) { $$joins = "new long[] {}"; } '\
+	' $$inits = "new long[] {" . join("L,", @inits) . "L}";'\
+	' $$recur = "new long[] {" . join("L,", @recur) . "L}";'\
+	' print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$joins) . "\n";'\
+	'}' \
+	mma_joeis.txt \
+	| grep -vE "A064584|A18718|A286069|A288917" \
+	>>       $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------
 # new, using ContinuedFractionOfSqrtSequence
 cfs:
@@ -631,7 +637,7 @@ jux2n_1:
 #----
 # A030413 Write (n+1)st Fibonacci number in base 4 and juxtapose. nonn,synth
 # A030604 Write the Fibonacci numbers in base 6 and juxtapose.    nonn,easy,base,synth
-# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.     nonn,base,synth# 
+# A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.     nonn,base,synth#
 juxfib:
 	perl -ne \
 	'if (m{^(A\d+)\s+Write (the )?(\(n\s*\+\s*1\)st )?Fibonacci numbers? in base (\d+) (for \S+ )?and juxtapose})'\
@@ -677,8 +683,8 @@ juxdigost:
 	> $@.gen
 	# A044140 Numbers k such that substring "02" occurs in the base-7 representation of k but not of k-1.	nonn,base,changed,synth	1..42
 	# A044416 Numbers n such that string '84' occurs in the base 10 representation of n but not of n-1.	nonn,base,synth	1..39
-	echo "A044140	juxdigost	0	0	2	7	subtract" >> $@.gen 
-	echo "A044416	juxdigost	0	8	4	10	subtract" >> $@.gen 
+	echo "A044140	juxdigost	0	0	2	7	subtract" >> $@.gen
+	echo "A044416	juxdigost	0	8	4	10	subtract" >> $@.gen
 	wc -l $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
@@ -764,7 +770,7 @@ juxrun:
 # A285952 {0->1, 1->10}-transform of the Thue-Morse word A010060. nonn,easy,synth 1..86	perl -ne \
 # A285589 {00->0, 11->1}-transform of A285565.    nonn,easy,      1..10000
 # A284387 {010->2}-transform of the infinite Fibonacci word A003849.      nonn,easy,changed,      1..10000
-# A105203 Trajectory of 1 under the morphism f: 1->{1,2,1}, 2->{2,3,2}, 3->{3,1,3}.	
+# A105203 Trajectory of 1 under the morphism f: 1->{1,2,1}, 2->{2,3,2}, 3->{3,1,3}.
 # A212810 Iterate the morphism 1->122, 2->1112 starting with 1.
 # A284388 0-limiting word of the morphism 0 -> 1, 1 -> 001.
 morfix:
@@ -847,9 +853,9 @@ squaredig_width:
 #   and ending at (0,0) and consisting of n steps taken from {(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, 0), (1, 1)}	nonn,walk,synth	0..26
 # A151508 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
 #   , ending on the vertical axis and consisting of n steps taken from {(-1, -1), (-1, 0), (-1, 1), (0, -1), (1, -1), (1, 0)}.	nonn,walk,	0..440
-# A147999 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0) 
+# A147999 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0)
 #   and consisting of n steps taken from {(-1, -1, -1), (-1, -1, 1), (-1, 1, 0), (1, 0, 0)}	nonn,walk,synth	0..33
-# A151254 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0) 
+# A151254 Number of walks within N^3 (the first octant of Z^3) starting at (0,0,0)
 #   and consisting of n steps taken from {(-1, 0, 0), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)}	nonn,walk,synth	0..25
 walk23:
 	perl -ne \
@@ -866,7 +872,7 @@ walk23:
 	head -n2 $@.gen
 	tail -n2 $@.gen
 	# cut -f6  $@.gen | sort | uniq -c | grep -v " 1 " || :
-	cut -f4-6  $@.gen | sed -e "s/[ \t]*//g" | sort | uniq -c 
+	cut -f4-6  $@.gen | sed -e "s/[ \t]*//g" | sort | uniq -c
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 walktest:
