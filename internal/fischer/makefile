@@ -57,7 +57,7 @@ pack:
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
 	; echo src/irvine/oeis/$(CLASS).java     >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC).gen        >> pack.$(CC).lst \
-	; echo internal/fischer/$(CC).jpat       >> pack.$(CC).lst \
+	; echo internal/fischer/$(CC).jpat       >> pack.$(CC).lst 
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\S*}{}" | uniq -c
 rename:
@@ -296,10 +296,70 @@ basrunpar:
 	> $@.gen
 	cat $@.gen
 #--------------------------
-ca_rules:
-	perl -ne 'if (m{\"Rule (\d+)\"}) { print "$1\n" }' jnames.txt \
-	> $@.tmp
+carule0:
+	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \
+	$(COMMON)/jnames.txt \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
+carule:
+	perl carule.pl \
+	$(COMMON)/names \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
+caruniq:
+	perl carule.pl -t \
+	$(COMMON)/names \
+	| sort | uniq -c \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#	perl -ne 'if ((m{cellular automat}) and ( m{Rule (\d+)})) { s{\"?Rule (\d+)\"?}{Rule 17}ig; print substr($$_, 8); }' \
+#-----------
+# A030465 Numbers n such that n concatenated with n+1 is a square.
+# A030466 Squares that are concatenations of two consecutive nonzero numbers.
+# A030467 Numbers n such that n^2 is a concatenation of two successive numbers.
+# A116353	null	Numbers n such that n times n+7 gives the concatenation of two numbers m and m+9.	nonn,base,synth	1..5
+# A116354	null	n times n+8 gives the concatenation of two numbers m and m+9.	nonn,base,synth	1..23
+# A115437	null	Numbers n such that the concatenation of n with n+4 gives a square.	base,nonn,synth	1..24
+# A115438	null	Numbers n such that the square of n is the concatenation of two numbers k and k+4.	base,nonn,synth	1..25
+# A115527	null	Numbers n such that the concatenation of n with 2*n gives a square.	nonn,base,synth	1..5
+# A115528	null	Numbers n such that the square of n is the concatenation of two numbers m and 2*m.	nonn,base,synth	1..5
+# A116094 Numbers n such that n concatenated with n-9 gives the product of two numbers which differ by 1.
+
+conc0:
+	perl -ne \
+	'if (m{concaten}) { print; }' \
+	$(COMMON)/names \
+	>     $@.tmp
 	wc -l $@.tmp
+concprod:
+	perl -n concprod.pl \
+	$(COMMON)/names \
+	>     $@.gen
+	wc -l $@.gen
+concprod2:
+	perl -ne \
+	's{Numbers \w such that }{}; '\
+	'if (m{^(A\d+)\s+(the concatenation of \w with [\w\+\-\*\d]{3}|\w concatenated with [\w\+\-\*\d]{3}|the square of \w|\w times [\w\+\-\*\d]{3}) (gives|is) '\
+	'(the concatenation of two numbers \w and [\w\+\-\*\d]{3}|the product of two numbers which differ by \d+|a square)})'\
+	'{ my ($$aseqno, @both) = ($$1, $$2, $$4); '\
+	'  my ($$left, $$right) = map { s{times}{\*}; s{concatenated with}{\/\/}; '\
+	'  s{the concatenation of (\w) with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
+	'  s{(\w) concatenated with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
+	'  s{the concatenation of two numbers (\w) and ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
+	'  s{the product of two numbers which differ by (\d+)}{m \* (m\+$$1)};'\
+	'  s{the square of (\w)}{$$1 * $$1}; s{a square}{n * n};'\
+	'  $$_} @both;'\
+	'  $$left =~ s{[a-z]}{k}g; $$right =~ s{[a-z]}{m}g;'\
+	'  print join("\t", $$aseqno, "$@", 0, $$left, " ; $$right") . "\n"; }' \
+	$(COMMON)/names \
+	>     $@.gen
+	wc -l $@.gen
+#----------
 mma_uniqc:
 	cut -b1-10 $(COMMON)/cat25.txt | grep -E "^%t" | uniq -c | grep " 1 " | cut -b 12-18 \
 	>        $@.tmp
@@ -325,7 +385,7 @@ A272999:
 	perl -ne \
 	's/ //g; s/\t\w*\t/\t/; '\
 	'if (m{^(A\d{6})\tSelect\[Range\[(\d+(,\d+)*)\]\,PrimeQ\[\(?(\d+)\*(\d+)\^\#([\+\-])(\d+)\)?(\/(\d+))?\]\&\]})'\
-	'{ my ($$aseqno, $$range, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, "$$5$$6", $$8); if (length($$div) > 0) { $$div = ".divide($$div)"; } '\
+	'{ my ($$aseqno, $$range, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, "$$5$$6", $$9); if (length($$div) > 0) { $$div = ".divide($$div)"; } '\
 	'print join("\t", $$aseqno, "$@", 0, $$range, $$num, $$base, $$add, $$div) . "\n" }' \
 	mma_joeis.txt \
 	>     $@.gen
@@ -335,12 +395,21 @@ A272999:
 # A102709		Join[{1,3125,1075,985},LinearRecurrence[{-1,-2,-2,-2,-1,0,1,2,2,2,1,1},{580,1281,295,1305,580,925,631,1305,220,1305,655,901},45]](*_RayChandler_,Sep082015*)
 joinlr:
 	perl -ne \
+	'if (m{^(A\d{6})\t\tJoin\[\{([^\}]+)\}\,LinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}})'\
+	'{ my ($$aseqno, $$join, $$recur, $$inits) = ($$1, $$2, $$3, $$4); '\
+	' $$recur = join(",", reverse(split(/\,/, $$recur))); '\
+	'print join("\t", $$aseqno, "$@", 0, 0, 0, $$recur, $$inits, $$join) . "\n" }'\
+	mma_joeis.txt 
+joinlr1:
+	perl -ne \
 	's/ //g; if (m{^\w+\t\t}) { '\
 	'if (m{^(A\d{6})\t\tJoin\[\{([^\}]+)\}\,LinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}})'\
 	'{ my ($$aseqno, $$join, $$recur, $$inits) = ($$1, $$2, $$3, $$4); '\
 	' $$recur = join(",", reverse(split(/\,/, $$recur))); '\
 	'print join("\t", $$aseqno, "$@", 0, 0, 0, $$recur, $$inits, $$join) . "\n" }}'\
-	mma_joeis.txt \
+	mma_joeis.txt 
+xx:
+	echo \
 	| grep -vE "A286069" \
 	>     $@.gen
 	perl -ne \
@@ -349,11 +418,12 @@ joinlr:
 	'{ my ($$aseqno, $$recur, $$inits) = ($$1, $$2, $$3); '\
 	' my @recur = reverse(split(/\,/, $$recur)); '\
 	' my @inits =         split(/\,/, $$inits) ; '\
+	' my $$join = "EMPTY";
 	' if (scalar(@inits) > scalar(@recur)) { '\
-	'    my $$join = join(",", splice(@inits, 0, scalar(@inits) - scalar(@recur)));'\
-	'    $$inits   = join(",",        @inits);'\
-	'    print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$join) . "\n"; } else {'\
-	'    print join("\t", $$aseqno, "linrec", 0, 0, 0, $$recur, $$inits        ) . "\n"; }'\
+	'    $$join = join("L,", splice(@inits, 0, scalar(@inits) - scalar(@recur))) . "L"; }'\
+	' $$inits   = join("L,",        @inits) . "L";'\
+	' $$recur   = join("L,",        @recur) . "L";'\
+	' print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$join) . "\n";'\
 	'}}'\
 	mma_joeis.txt \
 	| grep -vE "A064584|A288917" \
@@ -740,7 +810,17 @@ morfix_grep:
 	'if ((m{\-\>}) and (m{^(A\d+)\D+(\d[ 0-9\-\>\,\;\{\}\(\)\[\]]{9,})})) { print; }' \
 	$(COMMON)/jnames.txt | tee x.tmp
 	wc -l x.tmp
-##----------------
+#
+#----------------
+negpos:
+	cat ../../../fasces/oeis/A131393/negpos.gen \
+	| grep -E "ak|dk" \
+	| sed -e "s/\t/\tnegpos\t0\t/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
 	perl -ne \
