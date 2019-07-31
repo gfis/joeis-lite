@@ -24,9 +24,7 @@ NC=
 OFS=1
 WITHB=-b $(COMMON)/bfile -t $(TO)
 JOPT=-Doeis.big-factor-limit=1000000000 -Xmx4g
-# BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar:$(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
-BATLIT=java $(JOPT) -cp  $(LITE)/dist/joeis-lite.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
-BATJOE=java $(JOPT) -cp $(JOEIS)/build.tmp/joeis.jar irvine.test.BatchTest -v $(WITHB) -u $(GU)
+BATLIT=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar;$(JOEIS)/build.tmp/joeis.jar" irvine.test.BatchTest -v $(WITHB) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 #----------------
@@ -380,14 +378,57 @@ mma_joeis:
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------
+# A272999 Numbers k such that (11*10^k + 49)/3 is prime.
+pfprime:
+	perl -ne \
+	's/ /\t/; '\
+	'if (m{^(A\d{6})\t(Numbers|Integers) \w such that \(?(\d+)\s*\*\s*(\d+)\^\w\s*([\+\-0-9 ]+)\)?\s*(\/\s*(\d+))? is prime\.}) {'\
+	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$3, $$4, $$5, $$7); '\
+	' $$add =~ s{ }{}g; if (length($$div) == 0) { $$div = 0; } '\
+	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
+	$(COMMON)/names \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+	# A101001 Indices of primes in sequence defined by A(0) = 91, A(n) = 10*A(n-1) + 11 for n > 0.
+	# => Numbers n such that (830*10^n - 11)/9 is prime
+	perl -ne \
+	's/ /\t/; '\
+	'if (m{^(A\d{6})\tIndices of primes in sequence defined by'\
+	' A\(\d\)\s*\=\s*(\d+)\,\s*A\(\w\)\s*\=\s*(\d+)\*A\(n\s*\-\s*\w\)\s*([\+\-0-9 ]+)\s*for}) {'\
+	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, 9); '\
+	' $$add =~ s{ }{}g; $$num = $$num * $$div + $$add; $$add = -$$add; '\
+	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
+	$(COMMON)/names \
+	>>       $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+	sort     $@.tmp \
+	| grep -vE "A098466|A098467" \
+	> $@.gen
+	make seq4 LIST=$(CC).gen
+	$(DBAT) "UPDATE seq4 s SET PARM1 = (SELECT SUBSTR(data, 1, INSTR(data, ',') - 1) \
+	    FROM asdata d WHERE d.aseqno = s.aseqno)"
+	$(DBAT) -x "SELECT * FROM seq4 WHERE PARM1 < 10 AND PARM2 < 1000 ORDER BY aseqno" > $@.gen
+pfprimex:
+	cp pfprime.gen pfprime.tmp
+	perl -pe 's{^(A032373|A050413|A050544|A050847|A050885|A056245|A056248|A056258|A059454'\
+	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
+	pfprime.tmp > pfprime.gen
+#----
+xx:|A056245
+	'
 # A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
 A272999:
 	perl -ne \
 	's/ //g; s/\t\w*\t/\t/; '\
-	'if (m{^(A\d{6})\tSelect\[Range\[(\d+(,\d+)*)\]\,PrimeQ\[\(?(\d+)\*(\d+)\^\#([\+\-])(\d+)\)?(\/(\d+))?\]\&\]})'\
-	'{ my ($$aseqno, $$range, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, "$$5$$6", $$9); if (length($$div) > 0) { $$div = ".divide($$div)"; } '\
-	'print join("\t", $$aseqno, "$@", 0, $$range, $$num, $$base, $$add, $$div) . "\n" }' \
+	'if (m{^(A\d{6})\tSelect\[Range\[(\d+)(\,\d+)?\]\,PrimeQ\[\(?(\d+)\*(\d+)\^\#([\+\-])(\d+)\)?(\/(\d+))?\]\&\]}) {'\
+	' my ($$aseqno, $$start, $$s2, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, $$5, "$$6$$7", $$9); '\
+	' if (length($$div) > 0) { $$div = ".divide($$div)"; } '\
+	' if (length($$s2) == 0) { $$start = 0; } '\
+	' print join("\t", $$aseqno, "$@", 0, $$start, $$num, $$base, $$add, $$div) . "\n" }' \
 	mma_joeis.txt \
+	| sort \
 	>     $@.gen
 	cat   $@.gen
 	wc -l $@.gen
@@ -955,18 +996,19 @@ gen_mmac:
 #--------------------------
 dex: dex_impl dex_nimpl
 dex_sel: # names: Annnnnn Decimal expansion of ... and in jOEIS
-	$(DBAT) "SELECT a.aseqno, substr(j.superclass, 1, 8), n.name, a.keyword \
-		FROM asinfo a, bfinfo b, asname n LEFT JOIN joeis j ON n.aseqno = j.aseqno \
+	$(DBAT) "SELECT a.aseqno, n.name, a.keyword \
+		FROM asinfo a, bfinfo b, asname n \
 		WHERE a.aseqno = n.aseqno \
 		  AND b.aseqno = n.aseqno \
 		  AND a.keyword LIKE '%cons%' \
 		  AND b.maxlen = 1 \
+		  AND a.aseqno NOT IN (SELECT aseqno FROM joeis) \
 		ORDER BY 1" \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
 dex_extr:
-	perl extract_dex.pl dex_nimpl.tmp \
+	perl extract_dex.pl dex_sel.tmp \
 	| grep -vE "^#" \
 	>       $@.tmp
 	head -4 $@.tmp

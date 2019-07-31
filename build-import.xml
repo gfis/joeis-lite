@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: 08b49ddc73ef271c7054bb70acb278bcff247562 $
+    2019-07-25: joeis-lite.jar before joeis.jar
     2019-07-25: joeis.jar before joeis-lite.jar
     2019-04-09: delete ./expand
     2019-04-06, Georg Fischer: copied from ramath
@@ -77,10 +78,10 @@
     <property name="jdk.version"        value="1.8" />
 
     <path id="compile.classpath">
-        <fileset dir="../joeis/build.tmp">
+        <fileset dir="${dist.home}">
             <include name="*.jar"/>
         </fileset>
-        <fileset dir="${dist.home}">
+        <fileset dir="../joeis/build.tmp">
             <include name="*.jar"/>
         </fileset>
         <fileset dir="${lib.home}">
