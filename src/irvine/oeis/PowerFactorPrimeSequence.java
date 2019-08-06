@@ -56,7 +56,7 @@ public class PowerFactorPrimeSequence implements Sequence {
         }
       }
       if (mBase == 2) {
-        mA = mA.shiftLeft(1); // .multiply(2)
+        mA = mA.multiply2();
       } else { // mBase != 2
         mA = mA.multiply(mBase);
       }
