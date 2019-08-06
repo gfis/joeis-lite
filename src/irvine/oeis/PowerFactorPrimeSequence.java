@@ -6,7 +6,7 @@ import irvine.math.z.Z;
  * Sequences with names like 
  * <pre>
  * A295967 Numbers k such that (35*10^k - 377)/9 is prime
- * A100999 Indices of primes in sequence defined by A(0) = 97, A(n) = 10*A(n-1) - 53 for n > 0.
+ * A100999 Indices of primes in sequence defined by A(0) = 97, A(n) = 10*A(n-1) - 53 for n &gt; 0.
  * </pre>
  * The formula is (num * base ^ k + add) / div.
  * @author Georg Fischer
