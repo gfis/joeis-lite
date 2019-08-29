@@ -785,7 +785,31 @@ juxrun:
 	| grep -vE "A0306(12|13|14|15|16)" \
 	| tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
+#----------------------------------------------
+# Linear Recurrences and generating functions
+linr_count:
+	$(DBAT) "SELECT COUNT(aseqno) FROM joeis j \
+		WHERE superclass LIKE 'LinearRecurrence%' \
+		   OR superclass LIKE 'GeneratingFunction%' "
+linrgf:
+	$(DBAT) "SELECT aseqno FROM joeis j \
+		WHERE superclass LIKE 'LinearRecurrence%' \
+		   OR superclass LIKE 'GeneratingFunction%' \
+		ORDER BY 1" \
+	>         $@.tmp
+	head -n 4 $@.tmp
+	wc -l     $@.tmp
+linr1:
+	$(DBAT) "SELECT 'A' || i.seqno, i.sigorder, i.signature, n.name \
+		FROM lrindx i, asname n \
+		WHERE 'A' || i.seqno = n.aseqno \
+		  AND 'A' || i.seqno NOT IN (SELECT aseqno FROM joeis) \
+		  AND i.compsig NOT LIKE '%888888%' \
+		ORDER BY 1" \
+	>         $@.tmp
+	head -n 4 $@.tmp
+	wc -l     $@.tmp
+#----------------------------------------------
 # A288596 Fixed point of the mapping 00->0101, 1->1000, starting with 00. nonn,easy,      1..10000
 # A104521 Fixed point of the morphism 0->{1}, 1->{1,0,1}. nonn,synth      0..104
 # A159689 Fixed point of the morphism 0 -> 0,1,0; 1 -> 1,1; starting from a(0)=0.
@@ -842,7 +866,7 @@ morfix_grep:
 	$(COMMON)/jnames.txt | tee x.tmp
 	wc -l x.tmp
 #
-#----------------
+#------------------------------------------------------
 negpos:
 	cat ../../../fasces/oeis/A131393/negpos.gen \
 	| grep -E "ak|dk" \
@@ -1095,7 +1119,7 @@ indx_nojoeis:
 	"
 #----------------
 finifu_check: # Sequences with keywords "fini,full"
-	$(DBAT) -x "SELECT a.aseqno, 'FiniteSequence', d.data \
+	$(DBAT) -x "SELECT a.aseqno, 'not-in-joeis', d.data \
 			, '# ' || a.termno || ' ' || n.name \
 	    FROM  asinfo a, asdata d, asname n \
 	    WHERE a.aseqno = d.aseqno \
@@ -1115,15 +1139,13 @@ finifu_check: # Sequences with keywords "fini,full"
 	>        $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
-#
-dummy:
-		echo " \
-	  "
 #----
 fininof_check: # Sequences with keywords "fini", but no "full"
-	$(DBAT) -x "SELECT i.aseqno, i.termno \
-	    FROM  asinfo i \
-	    WHERE i.keyword     LIKE '%fini%'  \
+	$(DBAT) -x "SELECT i.aseqno, j.superclass, i.termno, n.name \
+	    FROM  asinfo i, asname n, joeis j \
+	    WHERE i.aseqno = n.aseqno \
+	      and i.aseqno = j.aseqno \
+	      AND i.keyword     LIKE '%fini%'  \
 	      AND i.keyword NOT LIKE '%full%'  \
 	    ORDER BY 1" \
 	>        $@.txt
@@ -1131,9 +1153,10 @@ fininof_check: # Sequences with keywords "fini", but no "full"
 	wc -l    $@.txt
 #----
 finibf_check: # Sequences with keywords "fini,full", but full terms are in b-file only
-	$(DBAT) -x "SELECT i.aseqno, i.termno, b.bfimax - b.bfimin + 1 \
+	$(DBAT) -x "SELECT i.aseqno, j.superclass, i.termno, b.bfimax - b.bfimin + 1 \
 	    FROM  asinfo i \
-	    LEFT JOIN bfinfo b ON b.aseqno = i.aseqno \
+	    LEFT JOIN bfinfo b ON i.aseqno = b.aseqno \
+	    LEFT JOIN joeis  j ON b.aseqno = j.aseqno \
 	    WHERE i.termno < b.bfimax - b.bfimin + 1 \
 	      AND b.bfimax - b.bfimin + 1 <= 256 \
 	      AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
@@ -1239,10 +1262,41 @@ joeis2: # LIST
 	head -4 $@.tmp
 	wc -l   $@.tmp
 #--------------------------
-analog: analog1 analog2 analog3
+analog: analog1 anasort anastret
 analog1:
-	perl normalize_name.pl $(COMMON)/names \
-	| sed -e "s/ / -o- /" > $@.tmp
+	perl normalize_name.pl $(COMMON)/jnames.txt \
+	>         $@.tmp
+	wc -l     $@.tmp
+anasort: 
+	sort -k3 -k2 -k1 -t "	" analog1.tmp \
+	>         $@.tmp
+	head -n 4 $@.tmp
+	wc -l     $@.tmp
+anastret:
+	perl stretchable.pl anasort.tmp \
+	>         $@.txt
+	head -n 4 $@.txt
+	wc   -l   $@.txt
+#--
+analog4:
+	make seq4 LIST=analog1.tmp
+	$(DBAT) -n seq4
+	$(DBAT) -4 seq4
+analogx:
+	$(DBAT) -x "SELECT b.aseqno, a.aseqno, a.callcode, b.name\
+		FROM seq4 a, seq4 b \
+		WHERE a.name = b.name  \
+		  AND substr(b.callcode, 1, 2) =  'ZZ' \
+		  AND substr(a.callcode, 1, 2) <> 'ZZ' \
+		  AND a.aseqno < b.aseqno \
+		  ORDER BY b.name, b.aseqno "
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+anadel1:
+	# does not work
+	$(DBAT) -x "DELETE   FROM seq4   WHERE SUBSTR(  callcode, 1, 2) =  'ZZ' AND NOT EXISTS \
+	    (SELECT b.aseqno FROM seq4 b WHERE SUBSTR(b.callcode, 1, 2) <> 'ZZ' AND name = b.name)"
 analog2:
 	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass <> 'LinearRecurrence'" \
 	| sed -e "s/\r//" > joeis_impl.txt
@@ -1250,11 +1304,11 @@ analog2:
 	| perl normalize_name.pl \
 	| sed -e "s/ / +j+ /" > $@.tmp
 analog3:
-	sort -k3 -k2 analog1.tmp analog2.tmp \
+	sort -k3 -k2 -k1 -t "	" analog1.tmp analog2.tmp \
 	      > $@.txt
 	head -4 $@.txt
 	wc -l   $@.txt
-analog4:
+analog5:
 	perl get_stretchables.pl analog3.txt \
 	>       $@.txt
 	head -4 $@.txt
