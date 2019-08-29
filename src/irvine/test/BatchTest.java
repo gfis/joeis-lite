@@ -187,9 +187,9 @@ public class BatchTest {
       ReadableByteChannel lineChannel = (new FileInputStream(fileName)).getChannel();
       BufferedReader lineReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
       String line = null;
-      int termNoLimit = 29061947; // high than any b-file index
+      int termNoLimit = 29061947; // higher than any b-file index
       if (giveUpLimit > 0) {
-      	termNoLimit = giveUpLimit;
+        termNoLimit = giveUpLimit;
       }
       count = 0;
       while (sequenceMayRun && failure == 0 && count < termNoLimit
@@ -249,7 +249,7 @@ public class BatchTest {
       int termNo = terms.length; // Math.min(terms.length, maxTerms());
       int termNoLimit = termNo;
       if (giveUpLimit > 0 && giveUpLimit < termNo) {
-      	termNoLimit = giveUpLimit;
+        termNoLimit = giveUpLimit;
       }
       if (debug >= 2) {
         System.err.println("BatchTest starts " + aseqno + " with " + termNo + " terms");
@@ -277,8 +277,8 @@ public class BatchTest {
             + timeDiff + " > " + millisToRun + " ms");
       } else if (failCount == 0) {
         if (verbosity >= 1) {
-            System.out.println    (aseqno + "\t" + count + "\tpass" 
-            // + (count < termNo ? "=" + count : "" ) 
+            System.out.println    (aseqno + "\t" + count + "\tpass"
+            // + (count < termNo ? "=" + count : "" )
             + "\t" + timeDiff + " ms");
         }
       } else if (failCount > 0) {
@@ -347,7 +347,7 @@ public class BatchTest {
         System.out.println      (aseqno + "\t" + count + "\tFATAL - input read error, "
           + exc.getMessage() + ", Stack: " + getShortTrace(exc));
     } // try
-    System.out.println("Total\t" + lineNo + "\tpass+f\t" 
+    System.out.println("Total\t" + lineNo + "\tpass+f\t"
         + String.valueOf(System.currentTimeMillis() - totalTime) + " ms");
   } // processBatch
 

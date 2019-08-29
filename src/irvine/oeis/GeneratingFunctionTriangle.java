@@ -1,5 +1,6 @@
 /* Generating functions with 2 variables yielding a (lower left) triangle
  * @(#) $Id$
+ * 2019-08-25: Constructor for Riodan arrays
  * 2019-07-04, Georg Fischer: copied from GeneratingFunctionSequence
  */
 package irvine.oeis;
@@ -188,13 +189,13 @@ public class GeneratingFunctionTriangle implements Sequence {
    */
   public static void main(String[] args) {
     GeneratingFunctionTriangle triangle = new GeneratingFunctionTriangle
-        (0, new long[] { 1 }, new long[] { 1, -1, -1 }); // A007318: G.f.: 1 / (1-x-x*y).
+        (0, new long[] { 1 }, new long[] { 1, -1, -1 }); // Pascal's triangle A007318: G.f.: 1 / (1-x-x*y).
     int noTerms = 48;
     int iarg = 0;
     if (iarg < args.length) { // with arguments
-    	try {
-    		noTerms = Integer.parseInt(args[iarg ++]);
-      } catch (Exception exc) {}  		
+        try {
+            noTerms = Integer.parseInt(args[iarg ++]);
+      } catch (Exception exc) {}        
       String[] nums = args[iarg ++].split("\\,");
       String[] dens = args[iarg ++].split("\\,");
       long[] num = new long[nums.length];

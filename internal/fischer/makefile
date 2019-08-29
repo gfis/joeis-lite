@@ -378,6 +378,7 @@ mma_joeis:
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------
+# A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
 # A272999 Numbers k such that (11*10^k + 49)/3 is prime.
 pfprime:
 	perl -ne \
@@ -415,25 +416,8 @@ pfprimex:
 	perl -pe 's{^(A032373|A050413|A050544|A050847|A050885|A056245|A056248|A056258|A059454'\
 	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
 	pfprime.tmp > pfprime.gen
-#----
-xx:|A056245
-	'
-# A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
-A272999:
-	perl -ne \
-	's/ //g; s/\t\w*\t/\t/; '\
-	'if (m{^(A\d{6})\tSelect\[Range\[(\d+)(\,\d+)?\]\,PrimeQ\[\(?(\d+)\*(\d+)\^\#([\+\-])(\d+)\)?(\/(\d+))?\]\&\]}) {'\
-	' my ($$aseqno, $$start, $$s2, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, $$5, "$$6$$7", $$9); '\
-	' if (length($$div) > 0) { $$div = ".divide($$div)"; } '\
-	' if (length($$s2) == 0) { $$start = 0; } '\
-	' print join("\t", $$aseqno, "$@", 0, $$start, $$num, $$base, $$add, $$div) . "\n" }' \
-	mma_joeis.txt \
-	| sort \
-	>     $@.gen
-	cat   $@.gen
-	wc -l $@.gen
 #------
-# A102709		Join[{1,3125,1075,985},LinearRecurrence[{-1,-2,-2,-2,-1,0,1,2,2,2,1,1},{580,1281,295,1305,580,925,631,1305,220,1305,655,901},45]](*_RayChandler_,Sep082015*)
+# A102709 Join[{1,3125,1075,985},LinearRecurrence[{-1,-2,-2,-2,-1,0,1,2,2,2,1,1},{580,1281,295,1305,580,925,631,1305,220,1305,655,901},45]](*_RayChandler_,Sep082015*)
 joinlr:
 	perl -ne \
 	's/ //g; '\
@@ -1008,8 +992,7 @@ dex_sel: # names: Annnnnn Decimal expansion of ... and in jOEIS
 	head -4 $@.tmp
 	wc   -l $@.tmp
 dex_extr:
-	perl extract_dex.pl dex_sel.tmp \
-	| grep -vE "^#" \
+	perl extract_dex.pl $(COMMON)/jnames.txt \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp

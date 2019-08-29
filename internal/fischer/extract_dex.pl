@@ -6,8 +6,7 @@
 # 2019-05-28, Georg Fischer
 #
 #:# Usage:
-#:#   make -f gener.make dex_nimpl
-#:#   perl extract_dex.pl [-d debug] dex_nimpl.tmp > outfile
+#:#   perl extract_dex.pl [-d debug] jnames.txt > outfile
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -38,39 +37,36 @@ my $content;
 while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
-    my ($aseqno, $form, @rest) = split(/\t/, $line);
-    $form =~ s{Decimal\s+expansion\s+of\s+(the\s+constant\s+)?}{};
-    $form =~ s{\s*\.\s*\Z}{};
-    $form =~ s{[\,\:\;\=].*}{}; # remove right side
-    $form =~ s{\s}{}g;
-    $form = lc($form);
-    $form =~ s{\)andofarc.*}{};
-    my @words = grep {! m{\A(e|pi|log|log_|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan|cot|csc|sec|cosecans|secans|)h?))\Z}} ($form =~ m{[a-z\_]+}g);
-    if ($form =~ m{(\.\.|\')}) { # ignore those with ellipsis or apostrophe
-    } elsif (scalar(@words) == 0) {
-        $form =~ tr{\{\}\[\]}
-                   {\(\)\(\)};
-        print join("\t", $aseqno, $form) . "\n";
-    } else {
-        print "# " . join("\t", $aseqno, $form) . "\n";
-    }
+    my ($aseqno, $class, $name, $keywords, $range) = split(/\t/, $line);
+    if ($name =~ m{Decimal\s+expansion\s+of\s+(the\s+constant\s+)?(.*)}) {
+        $name = $2;
+        $name =~ s{\s*\.\s*\Z}{};
+        $name =~ s{[\,\:\;\=].*}{}; # remove right side
+        # $name =~ s{\s}{}g;
+        $name = lc($name);
+        $name =~ s{\) and of arc.*}{};
+        my @words = grep {! m{\A(e|pi|log|log_|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan|cot|csc|sec|cosecans|secans|)h?))\Z}} ($name =~ m{[a-z\_]+}g);
+	    next if $class ne "null"; # nyi in jOEIS
+        next if $name =~ m{[Aa]\d{6}}; # no A-number
+        next if $name =~ m{\!}; # no factorial
+        if ($name =~ m{(\.\.|\')}) { # ignore those with ellipsis or apostrophe
+        } elsif (scalar(@words) == 0) {
+            $name =~ tr{\{\}\[\]}
+                       {\(\)\(\)};
+            print        join("\t", $aseqno, $class, $name
+                    # , $keywords, $range
+                    ) . "\n";
+        } else {
+            # print "# " . join("\t", $aseqno, $class, $name, $keywords, $range) . "\n";
+        }
+    } # if $name =~ m
 } # while <>
 #----
-sub nesting_diff {
-    my ($parm) = @_;
-    if (! defined($parm)) {
-        $parm = "";
-    }
-    my $op = ($parm =~ s/\(/\{/g);
-    my $cp = ($parm =~ s/\)/\}/g);
-    return $op - $cp;
-} # nesting_diff
 #--------------------------------------------
 __DATA__
 # OEIS as of February 28 14:44 EST 2019
 A037222 Decimal expansion of Pi*e^2.    nonn,cons,synth
 A037996 Decimal expansion of Pi*exp(2*Pi-Pi^2/2).   cons,nonn,synth
-
 
 package irvine.oeis.a086;
 
