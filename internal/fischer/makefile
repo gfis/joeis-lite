@@ -619,6 +619,15 @@ gtpas:
 	wc -l     $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #-------------------------------
+# HolonomicSequence
+holos:
+	cat $(LINREC)/rectab4.tmp \
+	| sort | uniq -w 7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#-------------------------------
 jux:
 	make jux_nodep TARGET=gener
 	cat $@?*.gen > $@.gen

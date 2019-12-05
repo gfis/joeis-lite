@@ -107,7 +107,7 @@ public class HolonomicSequence implements Sequence {
       }
       -- k;
     } // while k
-    mNdPowers = new Z[mMaxDegree];
+    mNdPowers = new Z[mMaxDegree + 2]; // ensure that [0], [1] always exist
     mNdPowers[0] = Z.ONE;
   } // initialize
   
@@ -118,8 +118,8 @@ public class HolonomicSequence implements Sequence {
   public Z next() {
     Z result = null;
     mN ++;
-    if (mN < mInitTerms.length) {
-      result = mInitTerms[mN];
+    if (mN - mOffset < mInitTerms.length) {
+      result = mInitTerms[mN - mOffset];
     } else {
       int nd = mN - mNDist;
       mNdPowers[1] = Z.valueOf(nd);
@@ -151,17 +151,17 @@ public class HolonomicSequence implements Sequence {
       Z sum = pvals[0]; // the constant term (without a(k)) in the recurrence, mostly ZERO
       for (k = 1; k <= mOrder; k ++) { // sum all previous elements of the recurrence
         if (debug >= 1) { 
-        	System.out.println("nd=" + nd + ", k=" + k);
-        	System.out.println("    mBuffer[" +  ((mN - mOrder - 1 + k) % mOrder) + "]=" 
-        			+                         mBuffer[(mN - mOrder - 1 + k) % mOrder] 
-        			+ ", old_sum=" + sum);
+          System.out.println("nd=" + nd + ", k=" + k);
+          System.out.println("    mBuffer[" +  ((mN - mOrder - 1 + k) % mOrder) + "]=" 
+              +                         mBuffer[(mN - mOrder - 1 + k) % mOrder] 
+              + ", old_sum=" + sum);
         }
         sum = sum.add(pvals[k].multiply(mBuffer[(mN - mOrder - 1 + k) % mOrder]));
         if (debug >= 1) { System.out.println("new_sum=" + sum); }
       } // for k - summing
       Z[] quotRemd = sum.negate().divideAndRemainder(pvals[mOrder + 1]);
       if (! quotRemd[1].equals(Z.ZERO)) {
-        System.out.println("assertion: division with rest" + quotRemd[1].toString());
+        System.out.println("assertion: division with rest " + quotRemd[1].toString());
       }
       result = quotRemd[0];
     }
@@ -185,6 +185,8 @@ public class HolonomicSequence implements Sequence {
     String matrix    = "[[0],[-4,4],[-1,-2],[1]]";
     String initTerms = "[1,3,11]";
     int nDist        = 0;
+    String aseqno    = "A000000";
+    String callCode  = "holos";
 
     HolonomicSequence holo = null;
     if (args.length == 0) {
@@ -193,7 +195,14 @@ public class HolonomicSequence implements Sequence {
     } else {
       int iarg = 0;
       try {
-        debug     = Integer.parseInt(args[iarg ++]);
+        if (args[iarg].equals("-d")) {
+          iarg ++;
+          debug   = Integer.parseInt(args[iarg ++]);
+        }
+        if (args[iarg].startsWith("A")) {
+          aseqno  =                  args[iarg ++] ;
+          callCode=                  args[iarg ++] ;
+        }
         offset    = Integer.parseInt(args[iarg ++]);
         matrix    =                  args[iarg ++];
         initTerms =                  args[iarg ++];
@@ -203,10 +212,12 @@ public class HolonomicSequence implements Sequence {
       holo = new HolonomicSequence(offset, matrix, initTerms, nDist);
     }
     int n = 0;
+    System.out.print(aseqno + "\t");
     while (n < maxTerms) {
-      System.out.println(n + " " + holo.next().toString());
+      System.out.print(holo.next().toString() + ",");
       n ++;
     } // while n
+    System.out.println();
   } // main
   
 } // HolonomicSequence
