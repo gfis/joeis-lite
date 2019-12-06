@@ -1,29 +1,32 @@
-/* Holonomic sequences where the recurrence equation for a(n) 
+/* Holonomic sequences where the recurrence equation for a(n)
  * has polynomials in n as coefficients.
  * @(#) $Id$
  * 2019-04-12, Georg Fischer
  */
 package irvine.oeis;
 
-import java.util.ArrayList;
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
+import java.util.ArrayList;
 
 /**
- * A Holonomic sequence is defined by a recurrence equation 
- * where the factors of <em>a[n-i], i=0..k</em> are not constant
- * (like in LinearRecurrence.java), but are polynomials in <em>n</em>..
+ * A Holonomic sequence is defined by a recurrence equation
+ * where the factors of <em>a[n-i], i=0..k</em> are either constant
+ * (like in LinearRecurrence.java), or are polynomials in <em>n</em>..
  * The equation is written in the form of an <em>annihilator</em>:
  * <pre>
  * p[0]*1 + p[1]*a[n-k+1] + p[2]*a[n-k+2] + ...+ p[k-1]*a[n-k+k-1] + p[k]*a[n] = 0
  * </pre>
- * <em>k-1</em> is the order of the recurrence, 
- * and <em>p[i], i= 0..k</em> are the polynomials in <em>n</em>.
+ * <em>k-1</em> is the order of the recurrence,
+ * and <em>p[i], i= 0..k</em> are the polynomials (or constants) in <em>n</em>.
+ * <em>a[n]</em> is the next term to be computed.
+ * The recurrence equation may have a term <em>p[0]</em> which is independant
+ * of any sequence term.
  * @author Georg Fischer
  */
-public class HolonomicSequence implements Sequence {
+public class HolonomicRecurrence implements Sequence {
   protected static int debug = 0;
-  
+
   protected Z[] mInitTerms; // initial terms for a(n)
   protected int mNDist; // d > 0 if a(n+d) is the highest and next element to be computed (0 <= d <= k).
   protected int mMaxDegree; // maximum degree of polynomials in n; = 0 for linear recurrences
@@ -33,11 +36,11 @@ public class HolonomicSequence implements Sequence {
   protected int mOrder; // order k-1 of the recurrence, number of previous sequence elements used to compute a(n)
   protected ArrayList<Z[]> mPolyList; // polynomials as coefficients of <em>n^i, i=0..m</em>
   protected Z[] mBuffer; // ring buffer for the elements involved in the recurrence, indexed with mN modulo mOrder
-  
-  /** 
+
+  /**
    * Empty constructor
    */
-  protected HolonomicSequence() { 
+  protected HolonomicRecurrence() {
     mOffset    = 0;
     mNDist     = 0;
     mPolyList  = new ArrayList<Z[]>(16);
@@ -46,13 +49,13 @@ public class HolonomicSequence implements Sequence {
   }
 
   /**
-   * Construct a holonomic sequence from Z parameters.
+   * Construct a holonomic recurrence sequence from Z parameters.
    * @param offset first valid term has this index
    * @param poly polynomials as coefficients of <em>n^i, i=0..m</em>
    * @param initTerms initial values of a[0..k]
-   * @param nDist index distance between the highest recurrence element and a[n]: 0..k-1 
+   * @param nDist index distance between the highest recurrence element and a[n]: 0..k-1
    */
-  public HolonomicSequence(final int offset, final ArrayList<Z[]> polyList, final Z[] initTerms, final int nDist) {
+  public HolonomicRecurrence(final int offset, final ArrayList<Z[]> polyList, final Z[] initTerms, final int nDist) {
     mOffset    = offset;
     mNDist     = nDist;
     mPolyList  = polyList;
@@ -61,14 +64,15 @@ public class HolonomicSequence implements Sequence {
   } // Constructor
 
   /**
-   * Construct a holonomic sequence from String parameters.
+   * Construct a holonomic recurrence sequence from String parameters.
    * @param offset first valid term has this index
-   * @param matrix polynomials as coefficients of <em>n^i, i=0..m</em>, 
+   * @param matrix polynomials as coefficients of <em>n^i, i=0..m</em>,
    * as an array of String vectors, for example "[[0,1,2],[0],[17,0,18]]"
+   * in the holonomic case, or a simple vector "[0,1,2]" in the linear case.
    * @param initTerms initial values of a[0..k], as a String vector, for example "[0,1,2,3]"
-   * @param nDist index distance between the highest recurrence element and a[n]: 0..k-1 
+   * @param nDist index distance between the highest recurrence element and a[n]: 0..k-1
    */
-  public HolonomicSequence(final int offset, final String matrix, final String initTerms, final int nDist) {
+  public HolonomicRecurrence(final int offset, final String matrix, final String initTerms, final int nDist) {
     mOffset    = offset;
     mNDist     = nDist;
     int start  = 0;
@@ -79,18 +83,26 @@ public class HolonomicSequence implements Sequence {
     while (matrix.charAt(behind - 1) == ']') {
       -- behind;
     }
-    final String[] polys = matrix.substring(start, behind).split("\\]\\s*\\,\\s*\\[");
     mPolyList = new ArrayList<Z[]>(16);
-    for (int k = 0; k < polys.length; k ++) {
-      if (debug >= 1) { System.out.println("polys[" + k + "]=" + polys[k]); }
-      mPolyList.add(ZUtils.toZ(polys[k]));
-    } // for k
+    if (start <= 1) { // linear case, only a vector of the form "[0,1,2,...]"
+      final String[] polys = matrix.substring(start, behind).split("\\s*\\,\\s*\\");
+      for (int k = 0; k < polys.length; k ++) {
+        if (debug >= 1) { System.out.println("polys[" + k + "]=" + polys[k]); }
+        mPolyList.add(new Z[] { new Z(polys[k]) });
+      } // for k
+    } else { // matrix, holonomic case
+      final String[] polys = matrix.substring(start, behind).split("\\]\\s*\\,\\s*\\[");
+      for (int k = 0; k < polys.length; k ++) {
+        if (debug >= 1) { System.out.println("polys[" + k + "]=" + polys[k]); }
+        mPolyList.add(ZUtils.toZ(polys[k]));
+      } // for k
+    }
     mInitTerms = ZUtils.toZ(initTerms);
     initialize();
   } // Constructor
 
   /**
-   * Initialize the sequence. 
+   * Initialize the sequence.
    * This code is common to all constructors
    */
   private void initialize() {
@@ -110,7 +122,7 @@ public class HolonomicSequence implements Sequence {
     mNdPowers = new Z[mMaxDegree + 2]; // ensure that [0], [1] always exist
     mNdPowers[0] = Z.ONE;
   } // initialize
-  
+
   /**
    * Gets the next term of the sequence.
    */
@@ -131,8 +143,15 @@ public class HolonomicSequence implements Sequence {
       while (k >= 0) { // evaluate all polynomials
         Z pvalk = Z.ZERO; // one coefficient = value of a polynomial in n
         Z[] poly = mPolyList.get(k);
-        for (int i = poly.length - 1; i >= 0; -- i) { // evaluate polynomial in nd
-          Z coeffi = poly[i];
+        Z coeffi = null;
+        { // handle the linear case separately
+          coeffi = poly[0];
+          if ( ! coeffi.equals(Z.ZERO)) {
+            pvalk = pvalk.add(coeffi);
+          }
+        } // linear
+        for (int i = 1; i < poly.length; i ++) { // possibly holonomic: evaluate polynomial in nd
+          coeffi = poly[i];
           if (       coeffi.equals(Z.ZERO   )) {
             // ignore
           } else if (coeffi.equals(Z.ONE    )) {
@@ -150,10 +169,10 @@ public class HolonomicSequence implements Sequence {
       // pvals[0..mOrder] now contain the coefficients of the recurrence equation
       Z sum = pvals[0]; // the constant term (without a(k)) in the recurrence, mostly ZERO
       for (k = 1; k <= mOrder; k ++) { // sum all previous elements of the recurrence
-        if (debug >= 1) { 
+        if (debug >= 1) {
           System.out.println("nd=" + nd + ", k=" + k);
-          System.out.println("    mBuffer[" +  ((mN - mOrder - 1 + k) % mOrder) + "]=" 
-              +                         mBuffer[(mN - mOrder - 1 + k) % mOrder] 
+          System.out.println("    mBuffer[" +  ((mN - mOrder - 1 + k) % mOrder) + "]="
+              +                         mBuffer[(mN - mOrder - 1 + k) % mOrder]
               + ", old_sum=" + sum);
         }
         sum = sum.add(pvals[k].multiply(mBuffer[(mN - mOrder - 1 + k) % mOrder]));
@@ -161,15 +180,17 @@ public class HolonomicSequence implements Sequence {
       } // for k - summing
       Z[] quotRemd = sum.negate().divideAndRemainder(pvals[mOrder + 1]);
       if (! quotRemd[1].equals(Z.ZERO)) {
-        System.out.println("assertion: division with rest " + quotRemd[1].toString());
+        if (debug >= 1) { System.out.println("assertion: division with rest " + quotRemd[1].toString()); }
+        result = null;
+      } else {
+        result = quotRemd[0];
       }
-      result = quotRemd[0];
     }
     mBuffer[mN % mOrder] = result;
     return result;
   } // next
-  
-  /** 
+
+  /**
    * Test method
    * @param args command line arguments: offset, matrix, initTerms, nDist
    */
@@ -178,8 +199,8 @@ public class HolonomicSequence implements Sequence {
     /* A081367 E.g.f.: exp(2*x)/sqrt(1-2*x).
        Recurrence: a(n) = (2*n+1)*a(n-1) - 4*(n-1)*a(n-2)
        MMA: RecurrenceTable[{a[0]==1,a[1]==3,a[n]==(2*n+1)*a[n-1]-4*(n-1)*a[n-2]},a[n],{n,0,10}]
-       java -cp dist/joeis-lite.jar;../joeis/build.tmp/joeis.jar irvine.oeis.HolonomicSequence \
-       0 "[[0],[-4,4],[-1,-2],[1]]" "[1,3,11]" 0 
+       java -cp dist/joeis-lite.jar;../joeis/build.tmp/joeis.jar irvine.oeis.HolonomicRecurrence \
+       0 "[[0],[-4,4],[-1,-2],[1]]" "[1,3,11]" 0
     */
     int offset       = 0;
     String matrix    = "[[0],[-4,4],[-1,-2],[1]]";
@@ -188,9 +209,9 @@ public class HolonomicSequence implements Sequence {
     String aseqno    = "A000000";
     String callCode  = "holos";
 
-    HolonomicSequence holo = null;
+    HolonomicRecurrence holRec = null;
     if (args.length == 0) {
-      holo = new HolonomicSequence(offset, matrix, initTerms, nDist);
+      holRec = new HolonomicRecurrence(offset, matrix, initTerms, nDist);
       System.out.println("1, 3, 11, 53, 345, 2947, 31411, 400437, 5927921, 99816515, 1882741659, 39310397557"); // A081367
     } else {
       int iarg = 0;
@@ -209,15 +230,15 @@ public class HolonomicSequence implements Sequence {
         nDist = Integer.parseInt    (args[iarg ++]);
       } catch (Exception exc) {
       }
-      holo = new HolonomicSequence(offset, matrix, initTerms, nDist);
+      holRec = new HolonomicRecurrence(offset, matrix, initTerms, nDist);
     }
     int n = 0;
     System.out.print(aseqno + "\t");
     while (n < maxTerms) {
-      System.out.print(holo.next().toString() + ",");
+      System.out.print(holRec.next().toString() + ",");
       n ++;
     } // while n
     System.out.println();
   } // main
-  
-} // HolonomicSequence
+
+} // HolonomicRecurrence
