@@ -275,7 +275,7 @@ public class BatchTest {
       if (! sequenceMayRun) {
         System.out.println    (aseqno + "\t" + count + "\tFAIL - timeout "
             + timeDiff + " > " + millisToRun + " ms");
-      } else if (failCount == 0) {
+      } else if (failCount == 0 && failure == 0) {
         if (verbosity >= 1) {
             System.out.println    (aseqno + "\t" + count + "\tpass"
             // + (count < termNo ? "=" + count : "" )

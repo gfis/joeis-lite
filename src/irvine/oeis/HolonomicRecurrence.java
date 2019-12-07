@@ -85,7 +85,7 @@ public class HolonomicRecurrence implements Sequence {
     }
     mPolyList = new ArrayList<Z[]>(16);
     if (start <= 1) { // linear case, only a vector of the form "[0,1,2,...]"
-      final String[] polys = matrix.substring(start, behind).split("\\s*\\,\\s*\\");
+      final String[] polys = matrix.substring(start, behind).split("\\s*\\,\\s*");
       for (int k = 0; k < polys.length; k ++) {
         if (debug >= 1) { System.out.println("polys[" + k + "]=" + polys[k]); }
         mPolyList.add(new Z[] { new Z(polys[k]) });
@@ -186,7 +186,11 @@ public class HolonomicRecurrence implements Sequence {
         result = quotRemd[0];
       }
     }
-    mBuffer[mN % mOrder] = result;
+    if (mOrder > 0) {
+        mBuffer[mN % mOrder] = result;
+    } else {
+        mBuffer[0] = result;
+    }
     return result;
   } // next
 
@@ -227,15 +231,24 @@ public class HolonomicRecurrence implements Sequence {
         offset    = Integer.parseInt(args[iarg ++]);
         matrix    =                  args[iarg ++];
         initTerms =                  args[iarg ++];
-        nDist = Integer.parseInt    (args[iarg ++]);
+        if (iarg < args.length) {
+          nDist   = Integer.parseInt(args[iarg ++]);
+        }
       } catch (Exception exc) {
       }
       holRec = new HolonomicRecurrence(offset, matrix, initTerms, nDist);
     }
     int n = 0;
     System.out.print(aseqno + "\t");
-    while (n < maxTerms) {
-      System.out.print(holRec.next().toString() + ",");
+    boolean busy = true;
+    while (n < maxTerms && busy) {
+      Z term = holRec.next();
+      if (term != null) {
+        System.out.print(term.toString() + ",");
+      } else {
+        busy = false;
+        System.out.print("null");
+      }
       n ++;
     } // while n
     System.out.println();

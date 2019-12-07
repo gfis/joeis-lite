@@ -24,7 +24,13 @@ NC=
 OFS=1
 WITHB=-b $(COMMON)/bfile -t $(TO)
 JOPT=-Doeis.big-factor-limit=1000000000 -Xmx4g
-BATLIT=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar;$(JOEIS)/build.tmp/joeis.jar" irvine.test.BatchTest -v $(WITHB) -u $(GU)
+ifeq ($(OS),Windows_NT)
+    CPS=;
+else
+    CPS=:
+endif
+JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
+BATLIT=$(JAVA) irvine.test.BatchTest -v $(WITHB) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 #----------------
@@ -144,6 +150,12 @@ bfile:
 	>> $(CONTRIB)/b$(SEQ).txt
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
+joeins:
+	$(DBAT) -v "INSERT INTO joeis (SELECT aseqno, 'HolonomicRec', 'new' FROM seq4);"
+OFS=1
+DIST=0
+runholo:
+	$(JAVA) irvine.oeis.HolonomicRecurrence $(OFS) $(MATRIX) $(INIT) $(DIST)
 #=========================================================
 bas:
 	make bas_all TARGET=gener
@@ -627,6 +639,17 @@ holos:
 	head -n4 $@.gen
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#--
+# HolonomicSequence
+holof:
+	cat $(LINREC)/recuf7.tmp \
+	| grep holo \
+	| grep -vE "A194566" \
+	| sort | uniq -w 7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener
@@ -1075,12 +1098,30 @@ polyn:
 #-------------------
 power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
 	perl -ne 'print if m{\AA\d+\s+a\(n\)\s*\=\s*\d+\*?n\^\d+\s*(\-|\+)\s*\d+[\.\s]*\Z}i' \
-	$(COMMON)/names | tee $@.tmp
+	$(COMMON)/names \
+	| tee   $@.gen
 # A158627 a(n) = 484*n^2-22.
 # A158643 a(n) = 676*n^2 + 26.
 # A158644 a(n) = 52*n^2 + 1.
 # A158645 a(n) = 729*n^2 + 27.
 # A158646 a(n) = 54*n^2 + 1.
+#-------------------
+# %N A139739 a(n) = 10^n mod 9^n.
+# %N A139786 a(n) = 7^n mod 6^n.
+# %F A153130 a(n) = 2^n mod 9. - _Nikita Sadkov_, Oct 06 2018
+# %F A153727 a(n) = 4^n mod 7. - _Zerinvary Lajos_, Nov 25 2009
+# %N A167426 a(n) = 2^n mod 28.
+# %N A168399 a(n) = 3^n mod 13.
+# %N A168428 a(n) = 4^n mod 10.
+# %N A168429 a(n) = 4^n mod 11.
+# %N A168430 a(n) = 4^n mod 13.
+powmod: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
+	cat $(COMMON)/names \
+	| perl -ne \
+	'if (m{^(A\d+)\s+a\([nk]\)\s*\=\s*(\d+)\^[nk]\s+mod\s*(\d+)\s*\.}) { \
+	print join("\t", $$1, "$@", 1, $$2, $$3) . "\n" }' \
+	$(COMMON)/names \
+	|   tee $@.gen
 #-------------------
 such_prime:
 	grep Numbers $(COMMON)/names | grep -E 'such *that' | grep -E 'is *prime' \
