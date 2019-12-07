@@ -20,7 +20,6 @@ A045798	holos	1	[[-20],[-1],[0],[0],[0],[1]]	[11,13,17,19,31]	4						Oddish numb
 A046994	holos	1	[[0],[4],[-2],[-2],[1]]	[1,3,8,17]	0						Number of Greek-key tours on a 3 X n board; i.e., self-avoiding walks on a 3 X n grid starting in the top left corner.
 A049114	holos	1	[[-1],[1],[1],[-3],[-1],[1]]	[1,1,5,7,21]	1						2-ranks of difference sets constructed from Glynn type II hyperovals.
 A050190	holos	1	[[0],[1],[-4],[6],[-4],[1],[-2],[8],[-12],[8],[-2],[1],[-4],[6],[-4],[1]]	[0,6,21,56,126,250,462,792,1287,2002,3000,4368,6188,8568,11628]	0						T(n,5), array T as in A050186; a count of aperiodic binary words.
-A052771	holos	1	[[0],[16],[-32],[24],[-8],[1]]	[0,0,0,6,48]	0						E.g.f.: x^3*exp(x)^2.
 A054447	holos	1	[[0],[1],[4],[2],[-4],[1]]	[1,3,9,26,73]	0						Row sums of triangle A054446 (partial row sums triangle of Fibonacci convolution triangle).
 A055792	holos	1	[[0],[-1],[35],[-35],[1]]	[0,1,9,289]	0						a(n) and floor(a(n)/2) are both squares; i.e., squares which remain squares when written in base 2 and last digit is removed.
 A056542	holos	1	[[-1],[0,-1],[1]]	[0,1]	0						a(n) = n*a(n-1) + 1, a(1) = 0.
@@ -68,6 +67,7 @@ A070609	holos	1	[[0],[-1],[0],[0],[0],[0],[1]]	[0,1,7,18,24,0]	0						a(n) = n^5
 A070638	holos	1	[[0],[-1],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[1]]	[0,1,4,9,1,10,6,4,4,6,10,1,9,4,1,0]	0						n^6 mod 15.
 A070782	holos	1	[[0],[32],[-353],[-21],[1]]	[1,2,254,6008]	0						a(n) = Sum_{k=0..n} binomial(5*n,5*k).
 A071230	holos	1	[[0],[1],[-4],[6],[-4],[1]]	[0,1,13,54,142]	0						a(n) = n*(6*n^2 - 7*n + 3)/2.
+A071233	holos	1	[[2,-2,2,-2],[1]]	[0]	0						a(n) = 2*(n-1)*(n^2 + 1).
 A071281	holos	1	[[0],[1],[0],[0],[0],[0],[0],[-2],[0],[0],[0],[0],[0],[1]]	[0,0,0,1,1,2,2,3,1,4,3,5,4]	0						Numerators of Peirce sequence of order 3.
 A071684	holos	1	[[0],[0,32,64],[-96,-144,-48],[-72,-8,8],[-36,-40,-8],[-60,-22,-2],[30,11,1]]	[1,1,2,7,22,66]	5						Number of plane trees with n edges and having an odd number of leaves.
 A072372	holos	1	[[0],[-1,4,-4],[-2],[1]]	[1,1,11]	1						a(1) = 1, a(2) = 1, a(n+1) = 2*a(n) + (2*n-1)^2*a(n-1).
@@ -101,6 +101,7 @@ A081250	holos	1	[[0],[3],[-1],[-3],[1]]	[1,3,11,33]	0						Numbers k such that A
 A081321	holos	1	[[0],[0,0,6,27,27],[400,1233,1373,648,108],[-8,-12,-4]]	[6,300,47040]	2						a(n) = (2/3)*(2*n+1)*(2*n-1)!*binomial(3*n,2*n).
 A084131	holos	1	[[0],[17],[-10],[1]]	[1,5,33]	0						a(n)=10a(n-1)-17a(n-2), a(0)=0,a(1)=5.
 A084871	holos	1	[[0],[-696729600],[1445575680],[-1304341632],[678011136],[-226259000],[51019100],[-7947786],[856713],[-62700],[2970],[-82],[1]]	[1,2,7,41,398,6177,128232,2881531,62769238,1288737197,25012685732,463681018671]	0						Number of 4-multiantichains of an n-set.
+A085479	holos	1	[[0,0,0,0,0,0,0,-728],[1]]	[728]	0						Product of three solutions of the Diophantine equation x^3 - y^3 = z^2.
 A086030	holos	1	[[0],[-216,-108,-18,-1],[215,111,15,2],[1,-3,3,-1]]	[1,513,47169]	0						a(n) = Sum_{i=1..n} C(i+6,7)^3.
 A086349	holos	1	[[0],[-8],[-12],[-2],[1]]	[1,9,40,200]	0						On a 3 X 3 board, the number of n-move paths for a chess king.
 A086901	holos	1	[[0],[-3],[-4],[1]]	[1,1,7]	0						a(1) = a(2) = 1; for n>2, a(n) = 4*a(n-1) + 3*a(n-2).
@@ -109,7 +110,6 @@ A087640	holos	1	[[0],[1],[-3],[-1],[1]]	[1,1,2,5]	0						To obtain a(n+1), take 
 A088305	holos	1	[[0],[1],[-3],[1]]	[1,1,3]	1						a(0) = 1, a(n) = Fibonacci(2*n). It has the property: a(n) = 1*a(n-1) + 2*a(n-2) + 3*a(n-3) + 4*a(n-4) + ...
 A089644	holos	1	[[21,-21],[1],[1]]	[7,14]	0						Numbers n such that 7 divides the numerator of B(2n) where B(2n) = the 2n-th Bernoulli number.
 A090010	holos	1	[[0],[1,-1],[-5,-1],[1]]	[6,43,356]	0						Permanent of (0,1)-matrix of size n X (n+d) with d=6 and n zeros not on a line.
-A090012	holos	1	[[0],[2,-1],[-1,-1],[1]]	[3,9,39]	0						Permanent of (0,1)-matrix of size n X (n+d) with d=2 and n-1 zeros not on a line.
 A090013	holos	1	[[0],[2,-1],[-2,-1],[1]]	[4,16,84]	0						Permanent of (0,1)-matrix of size n X (n+d) with d=3 and n-1 zeros not on a line.
 A090014	holos	1	[[0],[2,-1],[-3,-1],[1]]	[5,25,155]	0						Permanent of (0,1)-matrix of size n X (n+d) with d=4 and n-1 zeros not on a line.
 A090015	holos	1	[[0],[2,-1],[-4,-1],[1]]	[6,36,258]	0						Permanent of (0,1)-matrix of size n X (n+d) with d=5 and n-1 zeros not on a line.
@@ -135,7 +135,6 @@ A097861	holos	1	[[0],[6,-9,3],[-3,4,-1],[-3,7,-3],[0,-2,1]]	[0,1,3,9]	0						Num
 A099213	holos	1	[[0],[-3],[-1],[-1],[1]]	[1,1,1,5]	0						a(n)=a(n-1)+a(n-2)+3a(n-3).
 A099922	holos	1	[[0],[1],[-9],[16],[-9],[1]]	[1,17,138,979,6755]	0						a(n) = F(4n) - 2n, where F(n) = Fibonacci numbers A000045.
 A100216	holos	1	[[0],[-4],[6],[-4],[1]]	[1,4,9,16]	3						Relates row sums of Pascal's triangle to expansion of cos(x)/exp(x).
-A102038	holos	1	[[0],[-1],[0,-1],[1]]	[1,2,5]	1						a(n+1) = n*a(n) + a(n-1), a(1)=1, a(2)=2.
 A102039	holos	1	[[0],[1],[-2],[2],[-2],[1]]	[1,2,4,8,16]	0						a(n) = a(n-1) + last digit of a(n-1), starting at 1.
 A103213	holos	1	[[0],[-24,-32,-14,-2],[39,28,5],[-13,-4],[1]]	[1,5,29,206]	4						a(n) = n! * Sum_{k=1..n} C(n,k)/k.
 A104563	holos	1	[[0],[-1],[3],[-4],[4],[-3],[1]]	[0,1,3,5,8,13]	0						A floretion-generated sequence relating to centered square numbers.
@@ -148,7 +147,6 @@ A105476	holos	1	[[0],[-3],[-1],[1]]	[1,1,3]	0						Number of compositions of n w
 A105579	holos	1	[[0],[-2],[3],[-2],[1]]	[1,3,4,1]	3						a(n+3) = 2a(n+2) - 3a(n+1) + 2a(n); a(0) = 1, a(1) = 3, a(2) = 4.
 A107373	holos	1	[[0],[16,-8],[-8,4],[-2,2],[1,-1]]	[0,0,1,2]	0						a(n) = (n/2)*binomial(n-1, floor((n-1)/2)) - 2^(n-2).
 A107382	holos	1	[[0],[1],[4],[0],[-4],[1]]	[4,4,16,52,188]	0						a(n) = 4*a(n-1)-4*a(n-3)-a(n-4).
-A108261	holos	1	[[4],[1],[-6],[1]]	[2,3,12]	0						2nd order recursive series having the property that the product of any two adjacent terms is a triangular number, T(b) = b(b+1)/2 where b equals term a(n) of related series A108262.
 A108262	holos	1	[[6],[1],[-6],[1]]	[3,8,39]	0						Second order recursive series having the property that the product of any two adjacent terms equals 4 times a triangular number. That is a(n)*a(n+1)= 4*T(c) = 2c(c+1), where c = the term a(n+1) of related series A108261.
 A108898	holos	1	[[0],[2],[0],[-3],[1]]	[-1,1,3,11]	3						a(n+3) = 3*a(n+2) - 2*a(n), a(0) = -1, a(1) = 1, a(2) = 3.
 A109014	holos	1	[[0],[-1],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[1]]	[11,1,1,1,1,1,1,1,1,1,1,11]	0						a(n) = gcd(n,11).
@@ -159,10 +157,12 @@ A110212	holos	1	[[0],[-6],[0],[5],[1]]	[-1,5,-25,119]	3						a(n+3) = 6*a(n) - 5
 A111108	holos	1	[[0],[-2],[-5],[0],[1]]	[0,5,3,25]	0						a(n) = A001333(n) - (-2)^(n-1), n > 0.
 A111709	holos	1	[[0],[1],[-1],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[-1],[1]]	[1,0,0,0,1,1,1,0,1,2,2,1,3,2]	0						Expansion of (x^8-x^7+x^5-x+1)*(x^4+1) / ((x+1)*(x^2+1)*(x^4-x^2+1)*(x^2-x+1)*(x^2+x+1)*(x-1)^2)).
 A113596	holos	1	[[0],[-1],[9],[-36],[84],[-126],[126],[-84],[36],[-9],[1]]	[0,1,19,200,1320,6230,23086,71484,192900,467115]	0						P(P(n))-P(P(n-1)), where P(n) = n(n+1)(n+2)/6 (cf. A000292).
+A114364	holos	1	[[0,-1,-2,-1],[1]]	[4]	0						a(n) = n*(n+1)^2.
 A114743	holos	1	[[0],[-2],[0],[0],[1]]	[4,6,10,8]	0						a(1) =4, a(2) = 6, a(n+1) = least composite number of the form k*(a(n-1)) - a(n), not included earlier.
 A114960	holos	1	[[0],[4],[-10],[6],[3],[-4],[1]]	[1,1,6,11,30,57]	0						Expansion of (-1+3*x-5*x^2+4*x^3) / ((1-2*x)*(2*x^2-1)*(x-1)^2).
 A116150	holos	1	[[0],[6],[-5],[-2],[1]]	[1,14,33,130]	0						a(n) = Sum_{j=1..n} (3^j + (-2)^j).
 A116470	holos	1	[[0],[-1],[0],[-1],[0],[1]]	[0,1,2,3,4,5,7]	0						All distinct Fibonacci and Lucas numbers.
+A117197	holos	1	[[1,0,0,-3,0,0,3,0,0,-1],[1]]	[0]	0						a(n) = (n^3 - 1)^3.
 A120465	holos	1	[[0],[-204],[0],[1]]	[1,36,204]	0						a(0)=1, a(1)=36, a(n)=204*a(n-2).
 A120747	holos	1	[[0],[-1],[1],[4],[-3],[-3],[1]]	[0,1,4,14,50,175]	0						Sequence relating to the hendecagon (11-gon).
 A120989	holos	1	[[0],[0,26,66,28],[24,10,-27,-7]]	[2,9]	0						Level of the first leaf (in preorder traversal) of a binary tree, summed over all binary trees with n edges. A binary tree is a rooted tree in which each vertex has at most two children and each child of a vertex is designated as its left or right child.
@@ -170,10 +170,8 @@ A121446	holos	1	[[0],[-60,81,-27],[0,-6,4]]	[3,3]	0						Number of ternary trees
 A121509	holos	1	[[0],[-1],[2],[0],[-2],[1]]	[1,3,11,23,41]	0						5*n^2/2 -5*n +13/4 -(-1)^n/4.
 A121638	holos	1	[[0],[-1],[0],[1,-1],[1]]	[1,1,2,7]	0						Number of deco polyominoes of height n, having no 2-cell columns. A deco polyomino is a directed column-convex polyomino in which the height, measured along the diagonal, is attained only in the last column.
 A121907	holos	1	[[0],[-2],[-2],[1]]	[1,3,9]	0						Expansion of g.f.: (1 + x + x^2)/(1 - 2*x - 2*x^2).
-A121953	holos	1	[[0],[-1],[2,-1],[0],[1]]	[0,1,1,2]	0						a(n) = (n-2)*a(n-2) + a(n-3), with a(1)=0, a(2)=1, a(3)=1.
 A122756	holos	1	[[0],[-4],[0],[1]]	[1,2,6]	0						Odd indexed terms, a(n) = 2^n. Even indexed terms, a(n) = floor(2^n+2^(n-1)).
 A122886	holos	1	[[0],[2],[0],[0],[-11],[0],[0],[-4],[0],[0],[1]]	[0,0,1,1,1,1,3,7,13,23]	0						Interlaced merger of A122883, A122884 and A122885.
-A122972	holos	1	[[0],[0,-1],[1,-1],[1]]	[1,2,4]	1						a(1) = 1, a(2) = 2; for n>2, a(n+1) = a(n)*(n-1) + a(n-1)*n.
 A123178	holos	1	[[0],[1566720,8604288,18687040,21196800,13723840,5112192,1020160,84480],[-11744640,-50841696,-92893296,-92767344,-54631536,-18955728,-3585600,-285120],[536176800,2382454200,4356422232,4280584326,2452910826,822530934,149825430,11458260],[-6834240,-29848104,-53445006,-51242247,-28553634,-9279684,-1632960,-120285]]	[14,968,75920,6288296]	3						Define K(n) = Integral_{t=-1..1} (t^(2n)*(1-t^2)^(2n)/(1+it)^(3n+1))dt, and write K(n) = a(n)*Pi - b(n)/c(n) where a(n), b(n), c(n) are positive integers; the sequence gives a(n).
 A123189	holos	1	[[0],[4],[-3],[-3],[1]]	[1,1,6,17]	0						a(1)=1; a(2)=1; a(3)=6; a(n)=3a(n-1)+3a(n-2)-4a(n-3) for n >=4.
 A123691	holos	1	[[0],[-24,54,-27],[0,2,1]]	[1,3]	0						a(n) = number of standard Young tableaux of type (n,n-1,n-1).
@@ -183,7 +181,7 @@ A126019	holos	1	[[-5],[-4],[-3],[1]]	[1,2,15]	0						a(0)=1, a(1)=2; for n>1, a(
 A127065	holos	1	[[0],[42,-25,2],[-53,97,-25],[-74,-91,23],[116,-23]]	[0,2,5,20]	0						a(n) = n! - (n-2)^2.
 A127226	holos	1	[[0],[-6],[-2],[1]]	[2,2,16]	0						a(0)=2, a(1)=2, a(n) = 2*a(n-1) + 6*a(n-2).
 A129869	holos	1	[[0],[-50,20],[14,-13],[0,2]]	[-1,1,5]	0						Number of positive clusters of type D_n.
-A129997	holos	1	[[0],[6,-1],[-4],[1]]	[0,1,4]	0						a(n) = 4*a(n-1) + (n-6)*a(n-2).
+A130713	holos	1	[[0],[1]]	[1,2,1]	0						a(0)=a(2)=1, a(1)=2, a(n)=0 for n>2.
 A131036	holos	1	[[0],[-1],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[1]]	[1,1,3,-3,7,-9,9,-1,-3,3,-7,-1,1]	0						First differences of A131711.
 A131589	holos	1	[[0],[1],[4],[4],[1]]	[-3,3,-2,-1]	0						Expansion of (3+9*x+2*x^2)/((x+1)*(x^2+3*x+1)).
 A132074	holos	1	[[0],[-2],[5],[-4],[1]]	[1,4,9,16]	0						Row sums of triangle A132073.
@@ -192,7 +190,6 @@ A134138	holos	1	[[0],[6,-11,6,-1],[6,-9,3],[4,-3],[1]]	[1,2,4,2]	0						Alternat
 A134326	holos	1	[[0],[5],[8],[-42],[-37],[19],[23],[-5],[-4],[1]]	[3,11,34,112,359,1167,3764,12191,39391]	0						The sum of the elements in the first, middle and last row of the n-th power of the 9-by-9 matrix defined in the formula.
 A135405	holos	1	[[0],[-1],[2],[0],[-2],[1]]	[0,1,8,8,17]	0						Sequence where the sum of each pair of consecutive elements is a square.
 A137340	holos	1	[[0],[-3],[-2],[1]]	[1,9,21]	0						a(n)=2a(n-1)+3a(n-2).
-A137344	holos	1	[[0],[-4],[0],[1]]	[3,9,12]	0						a(n)=4a(n-2). Also 3*A084221.
 A137529	holos	1	[[0],[-8],[0],[0],[0],[1]]	[1,3,4,4,8]	0						a(n)=8a(n-4).
 A138784	holos	1	[[0],[400470592,-711697898,221984020,89243286],[3150537632,317158871,-15080676,-37614591],[561019149,-299850156,37614591]]	[0,0,108]	0						a(n) = n*(n-1)*(n-2)(27*n^3 - 174*n^2 + 511*n - 552)*n!/48.
 A138999	holos	1	[[0],[1],[0],[0],[0],[0],[0],[0],[-2],[0],[0],[0],[0],[0],[0],[1]]	[1,1,1,1,1,1,10,2,2,2,2,2,2,18,3]	0						First differences of Frobenius numbers for 8 successive numbers A138988.
@@ -208,17 +205,12 @@ A141495	holos	1	[[0],[-3],[1]]	[1,3,7]	0						a(n) = 3*a(n-1) for n>2; a(0)=1, a
 A141533	holos	1	[[0],[-6],[-3],[1],[-1],[1]]	[1,-1,-2,23,28]	0						The first subdiagonal of the array of A141425 and its higher order differences.
 A141726	holos	1	[[0],[-1],[0],[0],[0],[0],[0],[0],[0],[0],[1]]	[8,7,6,5,4,3,2,1,0,8]	0						Sawtooth with period length 9: repeat 8, 7, 6, 5, 4, 3, 2, 1, 0.
 A142069	holos	1	[[0],[-1],[0],[0],[0],[0],[0],[0],[0],[0],[1]]	[3,7,2,6,1,5,0,4,8,3]	0						Period length 9: repeat 3, 7, 2, 6, 1, 5, 0, 4, 8 .
-A142979	holos	1	[[0],[-1,-2,-1],[-3],[1]]	[1,3,13]	2						a(1) = 1, a(2) = 3, a(n+2) = 3*a(n+1)+(n+1)^2*a(n).
 A142980	holos	1	[[0],[-1,-2,-1],[-5],[1]]	[1,5,29]	2						a(1) = 1, a(2) = 5, a(n+2) = 5*a(n+1)+(n+1)^2*a(n).
 A142981	holos	1	[[0],[-1,-2,-1],[-7],[1]]	[1,7,53]	2						a(1) = 1, a(2) = 7, a(n+2) = 7*a(n+1)+(n+1)^2*a(n).
 A142982	holos	1	[[0],[-1,-2,-1],[-9],[1]]	[1,9,85]	2						a(1) = 1, a(2) = 9, a(n+2) = 9*a(n+1)+(n+1)^2*a(n).
 A142983	holos	1	[[0],[-2,-3,-1],[-2],[1]]	[1,2,10]	2						a(1) = 1, a(2) = 2, a(n+2) = 2*a(n+1) + (n+1)*(n+2)*a(n).
 A142984	holos	1	[[0],[-2,-3,-1],[-4],[1]]	[1,4,22]	2						a(1) = 1, a(2) = 4, a(n+2) = 4*a(n+1) + (n+1)*(n+2)*a(n).
-A142985	holos	1	[[0],[-2,-3,-1],[-6],[1]]	[1,6,42]	2						a(1) = 1, a(2) = 6, a(n+2) = 6*a(n+1) + (n+1)*(n+2)*a(n).
-A142986	holos	1	[[0],[-2,-3,-1],[-8],[1]]	[1,8,70]	2						a(1) = 1, a(2) = 8, a(n+2) = 8*a(n+1) + (n+1)*(n+2)*a(n).
 A142987	holos	1	[[0],[-2,-3,-1],[-10],[1]]	[1,10,106]	2						a(1) = 1, a(2) = 10, a(n+2) = 10*a(n+1) + (n+1)*(n+2)*a(n).
-A142988	holos	1	[[0],[-3,-4,-1],[-3],[1]]	[1,3,17]	2						a(1) = 1, a(2) = 3, a(n+2) = 3*a(n+1)+(n+1)*(n+3)*a(n).
-A142989	holos	1	[[0],[-3,-4,-1],[-5],[1]]	[1,5,33]	2						a(1) = 1, a(2) = 5, a(n+2) = 5*a(n+1)+(n+1)*(n+3)*a(n).
 A142990	holos	1	[[0],[-3,-4,-1],[-7],[1]]	[1,7,57]	2						a(1) = 1, a(2) = 7, a(n+2) = 7*a(n+1)+(n+1)*(n+3)*a(n).
 A142991	holos	1	[[0],[-3,-4,-1],[-9],[1]]	[1,9,89]	2						a(1) = 1, a(2) = 9, a(n+2) = 9*a(n+1)+(n+1)*(n+3)*a(n).
 A143056	holos	1	[[0],[1],[2],[0],[-2],[1]]	[0,1,1,1,0]	0						a(n) = Re(b(n)) where b(n)=(1+i)*b(n-1)+b(n-2), with b(1)=0, b(2)=1.
@@ -263,6 +255,7 @@ A157706	holos	1	[[0],[-1],[7],[-21],[35],[-35],[21],[-7],[1]]	[7,75,385,1365,385
 A157707	holos	1	[[0],[-1],[7],[-21],[35],[-35],[21],[-7],[1]]	[16,205,1165,4415,13055,32606,72030,144930]	0						The z^2 coefficients of the polynomials in the GF3 denominators of A156927 divided by 2
 A157708	holos	1	[[0],[-1],[7],[-21],[35],[-35],[21],[-7],[1]]	[18,254,1571,6335,19615,50743,115234,237066]	0						The z^2 coefficients of the polynomials in the GF4 denominators of A156933
 A157823	holos	1	[[0],[-2],[1]]	[-5,-1]	0						a(n) = A156591(n) + A156591(n+1).
+A158799	holos	1	[[-3],[1]]	[1,2]	0						a(0)=1, a(1)=2, a(n)=3 for n>=2.
 A158938	holos	1	[[-64],[-1],[0],[0],[0],[0],[0],[0],[0],[1]]	[-3,7,9,11,13,23,25,27,61]	0						Numbers congruent to {-3,7,9,11,13,23,25,27} mod 64.
 A158943	holos	1	[[0],[1],[0],[-2],[-1],[1]]	[1,1,3,5,10]	0						INVERT transform of A027656: (1, 0, 2, 0, 3, 0, 4, 0, 5, ...).
 A159058	holos	1	[[0],[1],[0],[0],[0],[0],[0],[0],[0],[-1]]	[0,3,6,5,4,7,2,1,0]	8						A102370(n) modulo 8 .
@@ -307,6 +300,10 @@ A203298	holos	1	[[0],[-1],[2],[2],[-6],[0],[6],[-2],[-2],[1]]	[2,8,23,47,91,151,
 A204200	holos	1	[[0],[-1],[3],[-4],[1]]	[1,1,2,6]	0						INVERT transform of [1, 0, 1, 3, 9, 27, 81, ...].
 A206839	holos	1	[[0],[-1],[2],[0],[-4],[1]]	[1,4,16,62,241]	0						Number of 1 X n 0..3 arrays avoiding the pattern z-2 z-1 z in any row, column, nw-to-se diagonal or ne-to-sw antidiagonal.
 A206840	holos	1	[[0],[-1],[4],[-7],[0],[42],[84],[-282],[120],[7],[-16],[1]]	[1,16,256,3844,58081,876096,13220496,199487376,3010168225,45421839376,685391917456]	0						Number of 2 X n 0..3 arrays avoiding the pattern z-2 z-1 z in any row, column, nw-to-se diagonal or ne-to-sw antidiagonal.
+A209595	holos	1	[[-1,-14,-89,-340,-870,-1572,-2058,-1968,-1365,-670,-221,-44,-4],[1]]	[9216]	0						Number of 4X4 0..n arrays with every element equal to a diagonal or antidiagonal reflection
+A209596	holos	1	[[-1,-21,-206,-1254,-5307,-16575,-39572,-73788,-108823,-127699,-119262,-88166,-50973,-22569,-7392,-1688,-240,-16],[1]]	[663552]	0						Number of 5X5 0..n arrays with every element equal to a diagonal or antidiagonal reflection
+A209597	holos	1	[[-1,-30,-429,-3892,-25152,-123240,-475780,-1484640,-3811230,-8149460,-14640774,-22225800,-28605356,-31249128,-28949028,-22672832,-14930505,-8197758,-3707509,-1357284,-392172,-86080,-13488,-1344,-64],[1]]	[191102976]	0						Number of 6X6 0..n arrays with every element equal to a diagonal or antidiagonal reflection
+A209598	holos	1	[[-1,-40,-771,-9538,-85099,-583380,-3196641,-14380266,-54132138,-172929664,-473816398,-1122460836,-2313126214,-4165456792,-6576018066,-9120293892,-11123946549,-11932813656,-11247635903,-9297467354,-6719079423,-4226553716,-2300409629,-1074801042,-426589296,-141838368,-38765664,-8480192,-1427456,-173568,-13568,-512],[1]]	[82556485632]	0						Number of 7X7 0..n arrays with every element equal to a diagonal or antidiagonal reflection
 A211615	holos	1	[[0],[-1],[3],[-3],[1]]	[0,6,24,60]	0						Number of ordered triples (w,x,y) with all terms in {-n,...-1,1,...,n} and -1<=w+x+y<=1.
 A212135	holos	1	[[0],[-1],[5],[-10],[10],[-5],[1]]	[0,0,4,24,84,220]	0						Number of (w,x,y,z) with all terms in {1,...,n} and median<mean.
 A212393	holos	1	[[0],[-1],[5],[-10],[10],[-5],[1]]	[1,1,2,5,14,30,72,195,485]	0						Expansion of (1-4*x+7*x^2-5*x^3+4*x^4-6*x^5+21*x^6+18*x^7-5*x^8)/(1-x)^5.
@@ -333,6 +330,7 @@ A226958	holos	1	[[0],[1],[3],[-6],[-3],[1]]	[2,0,10,24,130]	0						a(n) = Fibona
 A226976	holos	1	[[0],[1],[3],[-6],[-3],[1]]	[1,9,28,133,539]	0						Fibonacci(n)^3 + Fibonacci(n+2)^3
 A228478	holos	1	[[0],[1],[-3],[1],[6],[-4],[-15],[-10],[-1],[1]]	[3,9,41,172,728,3084,13050,55252,233875]	0						Number of n X 4 binary arrays with top left value 1 and no two ones adjacent horizontally, vertically or antidiagonally.
 A228693	holos	1	[[0],[2],[0],[-3],[0],[1]]	[1,1,2,2,3]	0						Largest number of maximal independent sets of nodes in any tree on n nodes.
+A228889	holos	1	[[0,-6,-27,-27],[1]]	[60]	0						a(n) = 3*n*(3*n + 1)*(3*n + 2).
 A229111	holos	1	[[0],[-125,375,-375,125],[-5,21,-33,22],[0,0,0,1]]	[1,-5,35]	1						Expansion of the g.f. of A053723 in powers of the g.f. of A121591.
 A229526	holos	1	[[0],[-1],[0],[3],[0],[-3],[0],[1]]	[5,1,1,-1,-11,-5,-31]	0						The c coefficients of the transform ax^2 + (4a/k - b)x + 4a/k^2 + 2b/k + c= 0 for a,b,c = 1,-1,-1, k = 1,2,3...
 A230193	holos	1	[[-33],[-1],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[1]]	[3,6,9,11,12,15,18,21,22,24,27,30,33,36]	13						Numbers divisible by 3 or 11.
@@ -342,6 +340,7 @@ A236185	holos	1	[[0],[-1],[0],[0],[0],[0],[0],[0],[0],[1]]	[4,2,4,2,4,6,2,6,4]	8
 A236988	holos	1	[[0],[-80,104,-58,16,-2],[0,8,4,-3,1],[-6,-1,2],[1]]	[1,-20,140,200]	0						Real part of the product of all the Gaussian integers in the rectangle [1, 1] to [2, n].
 A238806	holos	1	[[0],[1],[-4],[6],[-4],[1]]	[3,8,15,25,39]	0						Number of n X 2 0..2 arrays with no element equal to one plus the sum of elements to its left or one plus the sum of the sum of elements above it, modulo 3.
 A240022	holos	1	[[0],[100],[0],[-20],[0],[1]]	[10,18,270,360,4500]	0						Total number of digits in palindromes with n digits.
+A242570	holos	1	[[252,-252],[1]]	[0]	0						Multiples of 252.
 A243101	holos	1	[[0],[0,3,11,9,2],[-4,-28,-62,-48,-12],[-2,-3,5,7,2]]	[-1,2,37]	2						a(n) = (sum_{k=0}^{n-1}(4*k^3-1)*C(n-1,k)*C(n+k,k))/n^2, where C(m,k) denotes the binomial coefficient m!/(k!*(m-k)!).
 A244620	holos	1	[[0],[1],[-1],[-1],[1]]	[3521210,6178458,13220900,15878148]	0						Initial terms of Erd?s-Wood intervals of length 22.
 A244713	holos	1	[[0],[1],[-1],[0],[0],[0],[0],[0],[0],[0],[0],[0],[-1],[1]]	[1,4,7,10,13,16,18,19,22,25,27,28,31]	0						Positive numbers primitively represented by the binary quadratic form (1, 1, -2).
@@ -362,12 +361,11 @@ A249966	holos	1	[[0],[1],[-12],[66],[-220],[495],[-792],[924],[-792],[495],[-220
 A249967	holos	1	[[0],[-1],[13],[-78],[286],[-715],[1287],[-1716],[1716],[-1287],[715],[-286],[78],[-13],[1]]	[15,8823,709814,18707320,251002319,2149795141,13385651492,65717571120,268511791119,948021599547,2972106528666,8443442678840,22076610372895,53774915777897]	0						Number of length 7+5 0..n arrays with no six consecutive terms having the maximum of any two terms equal to the minimum of the remaining four terms.
 A250063	holos	1	[[0],[1],[-12],[66],[-220],[495],[-792],[924],[-792],[495],[-220],[66],[-12],[1]]	[21,7054,348066,6415638,65419155,449532868,2330996068,9790907652,34925259201,109359675810,307898807590,793597679082,1898570817663]	0						Number of length 5+6 0..n arrays with no seven consecutive terms having the maximum of any two terms equal to the minimum of the remaining five terms.
 A250065	holos	1	[[0],[-1],[13],[-78],[286],[-715],[1287],[-1716],[1716],[-1287],[715],[-286],[78],[-13],[1]]	[21,12284,915064,22838540,295152625,2461761504,15032948568,72725094312,293743941525,1027603529940,3197464381472,9027047995732,23478340317185,56931986760280]	0						Number of length 6+6 0..n arrays with no seven consecutive terms having the maximum of any two terms equal to the minimum of the remaining five terms.
-A250212	holos	1	[[0,0,0,0,0,0,0,-1],[1],[-2],[1]]	[1,130,2446]	0						Second partial sums of seventh powers (A001015).
-A253712	holos	1	[[0,0,0,0,0,0,0,0,0,0,0,0,-1],[1],[-2],[1]]	[1,4098,539636]	0						Second partial sums of 12th powers (A008456).
 A253713	holos	1	[[0,0,0,0,0,0,0,0,0,0,0,0,0,-1],[1],[-2],[1]]	[1,8194,1610710]	0						Second partial sums of 13th powers (A010801).
 A254322	holos	1	[[0],[12,-11],[1]]	[1,10]	0						E.g.f.: (1-11*x)^(-10/11).
 A256535	holos	1	[[0],[-1],[2],[-1],[0],[1],[-2],[1]]	[0,0,1,4,5,8,11]	0						The largest number of T-tetrominos that fit within an n X n square.
 A256881	holos	1	[[0],[0,2,3,1],[2,1],[-3,-1]]	[1,2,3]	2						a(n) = n!/ceiling(n/2).
+A257925	holos	1	[[1,-2,1,0,-1],[1]]	[1]	0						a(n) = (n^2 - n + 1)*(n^2 + n - 1).
 A261048	holos	1	[[0],[11487000,-10424800,2633000,1600,-48800],[-2535960,3636204,-1518168,115256,29008],[68820,-253734,238882,-54646,-4842],[0,-4370,-4387,7345,32],[0,-462,-722,-228,32]]	[1,4,16,67,294]	0						Second column of the triangle A085843.
 A261065	holos	1	[[0],[0,2,-3,-2],[-1,0,1]]	[1,8]	0						Second column of A086872.
 A262147	holos	1	[[0],[49],[0],[0],[0],[0],[0],[-50],[0],[0],[0],[0],[0],[1]]	[3,13,115,125,19,141,1011,1021,7171,7181,1027,7197,50403]	0						Numerators of domain values whose images via the flowsnake Q-function follow a spiral trajectory (see comments).
@@ -386,6 +384,7 @@ A276139	holos	1	[[0],[-5],[-3],[1]]	[1,5,24]	0						Series expansion of (1 + 2x 
 A276316	holos	1	[[0],[3,0,-27],[-92,-276,-184],[24,36,12]]	[1,4,31]	2						G.f. A(x) satisfies: x = A(x)-4*A(x)^2+A(x)^3.
 A277132	holos	1	[[0],[0,0,1],[-1,-2],[1]]	[1,3,14]	0						The first subdiagonal of triangle A196842.
 A279321	holos	1	[[0],[-1],[0],[0],[0],[0],[0],[0],[1]]	[1,3,5,7,5,3,1,1]	0						Period 7: repeat [1, 3, 5, 7, 5, 3, 1].
+A280428	holos	1	[[0,0,0,-1729],[1]]	[1729]	0						a(n) = 1729*n^3.
 A286810	holos	1	[[0],[-1],[8],[-8],[1]]	[1,9,49,324]	0						Number of non-attacking bishop positions on a cylindrical 2 X 2n chessboard.
 A289715	holos	1	[[0],[-40,46,-12],[96,-105,27],[-48,72,-18],[10,-13,3]]	[1,4,24,128]	0						The order of the semigroup of orientation-preserving full transformations on n elements.
 A290442	holos	1	[[0],[-180,192,-48],[6,8,-8],[0,2,1]]	[1,2,8]	0						a(n) = Catalan(n-1)*Motzkin(n).

@@ -93,7 +93,7 @@ select: # parameter: CC, OFS
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
 	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
-clean: # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
+clean: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
 	wc -l $(CC).gen
 	cut -b1-7 $(CC).fail.log > clean.tmp
 	grep -vf clean.tmp $(CC).gen > $(CC).tmp
