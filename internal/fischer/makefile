@@ -11,8 +11,11 @@ JOEIS=$(GITS)/joeis
 COMMON=$(GITS)/OEIS-mat/common
 CONTRIB=$(GITS)/OEIS-mat/contrib
 LINREC=$(GITS)/OEIS-mat/linrec
+HOLREC=$(GITS)/OEIS-mat/holrec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
+MAXT=32
+HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 MANY=999999
 D=0
 TO=4
@@ -49,6 +52,9 @@ joeis_push:
 joeis_pull:
 	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
 #----
+raupdate:
+	cp -v ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
+	cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
 update: purge
 	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
 count:
@@ -152,10 +158,13 @@ bfile:
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 joeins:
 	$(DBAT) -v "INSERT INTO joeis (SELECT aseqno, 'HolonomicRec', 'new' FROM seq4);"
+#----
 OFS=1
 DIST=0
 runholo:
-	$(JAVA) irvine.oeis.HolonomicRecurrence $(OFS) $(MATRIX) $(INIT) $(DIST)
+	$(HOLT) $(OFS) $(MATRIX) $(INIT) $(DIST)
+holt: # parameter GEN=
+	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
 #=========================================================
 bas:
 	make bas_all TARGET=gener
@@ -633,7 +642,7 @@ gtpas:
 #-------------------------------
 # HolonomicSequence
 holos:
-	cat $(LINREC)/rectab4.tmp \
+	cat $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \
 	>        $@.gen
 	head -n4 $@.gen
@@ -641,8 +650,9 @@ holos:
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #--
 # HolonomicSequence
-holof:
-	cat $(LINREC)/recuf7.tmp \
+holof: holof0 holof1
+holof0:
+	cat $(HOLREC)/recuf7.tmp \
 	| grep holo \
 	| grep -vE "A194566" \
 	| sort | uniq -w 7 \
@@ -650,6 +660,29 @@ holof:
 	head -n4 $@.gen
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----
+holof1:
+	grep -vE "A110041|A153180|A156924|A162010" holof.gen \
+	>        holof.tmp
+	make GEN=holof.tmp holt > $@.tmp
+	head -n8 $@.tmp
+	wc -l    $@.tmp
+#----
+holor: holor1 holor2
+holor1:
+	grep -vE "A110041|A153180|A156924|A162010" holof.gen \
+	| sed -e "s/holos/holor/" \
+	>        holor.tmp
+	make GEN=holor.tmp holt > $@.tmp
+	head -n8 $@.tmp
+	wc -l    $@.tmp
+holor2:
+	sort -r holof1.tmp holor1.tmp \
+	| grep -E "^A" \
+	| grep -vE "xholo.1" > $@.tmp
+	head -n8 $@.tmp
+	grep -E "\-\-\-\-"     $@.tmp | wc -l
+	grep holor1 $@.tmp | grep -v null | wc -l
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener

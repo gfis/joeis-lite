@@ -14,24 +14,24 @@ import irvine.math.z.ZUtils;
 
 /**
  * A holonomic sequence is defined by a recurrence equation
- * where the factors of <code>a[n-i], i=0..k</code> are either constant
+ * where the factors <code>P[i], i=0..k</code> of <code>a[n-i], i=0..k</code> are either constant
  * (like in <code>LinearRecurrence.java</code>), or are polynomials in <code>n</code>..
  * The equation is written in the form of an <code>annihilator</code>:
  * <pre>
- * p[0]*1 + p[1]*a[n-k+1] + p[2]*a[n-k+2] + ...+ p[k-1]*a[n-k+k-1] + p[k]*a[n] = 0
+ * P[0]*1 + P[1]*a[n-k+1] + P[2]*a[n-k+2] + ...+ P[k-1]*a[n-k+k-1] + P[k]*a[n] = 0
  * </pre>
  * <code>k-1</code> is the order of the recurrence,
  * and <code>p[i], i= 0..k</code> are the polynomials (or constants) in <code>n</code>.
  * <code>a[n]</code> is the next term to be computed.
- * The recurrence equation may have a term <code>p[0]</code> which is independent
+ * The recurrence equation may have a term <code>P[0]</code> which is independent
  * of any sequence term.
  * @author Georg Fischer
  */
 public class HolonomicRecurrence implements Sequence {
-  protected static int sDebug = 0;
+  public static int sDebug = 0;
 
   protected Z[] mInitTerms; // initial terms for a(n)
-  protected int mNDist; // d > 0 if a(n+d) is the highest and next element to be computed (0 <= d <= k).
+  protected int mNDist; // d >= 0 when a(n+d) is the highest and next element to be computed (0 <= d <= k).
   protected int mMaxDegree; // maximum degree of polynomials in n; = 0 for linear recurrences
   protected int mN; // index of the next sequence element to be computed
   protected Z[] mNdPowers; // powers of mNDist for exponents 0..mMaxDegree
@@ -46,7 +46,7 @@ public class HolonomicRecurrence implements Sequence {
   protected HolonomicRecurrence() {
     mOffset = 0;
     mNDist = 0;
-    mPolyList = new ArrayList<>(16);
+    mPolyList = new ArrayList<Z[]>(16);
     mInitTerms = new Z[] {Z.ZERO};
     initialize();
   }
@@ -74,6 +74,7 @@ public class HolonomicRecurrence implements Sequence {
    * @param matrix    polynomials as coefficients of <code>n^i, i=0..m</code>,
    *                  as an array of String vectors, for example "[[0,1,2],[0],[17,0,18]]"
    *                  in the holonomic case, or a simple vector "[0,1,2]" in the linear case.
+   *                  The brackets must be spedified accordingly.
    * @param initTerms initial values of a[0..k], as a String vector, for example "[0,1,2,3]"
    * @param nDist     index distance between the highest recurrence element and a[n]: 0..k-1
    */
@@ -88,8 +89,8 @@ public class HolonomicRecurrence implements Sequence {
     while (matrix.charAt(behind - 1) == ']') {
       --behind;
     }
-    mPolyList = new ArrayList<>(16);
-    if (start <= 1) { // linear case, only a vector of the form "[0,1,2,...]"
+    mPolyList = new ArrayList<Z[]>(16);
+    if (start <= 1) { // linear case, simple vector of the form "[0,1,2,...]"
       final String[] polys = matrix.substring(start, behind).split("\\s*,\\s*");
       for (int k = 0; k < polys.length; ++k) {
         if (sDebug >= 1) {
@@ -97,7 +98,7 @@ public class HolonomicRecurrence implements Sequence {
         }
         mPolyList.add(new Z[] {new Z(polys[k])});
       } // for k
-    } else { // matrix, holonomic case
+    } else { // holonomic case, vector list "[[0,1,2],[0],[17,0,18]]"
       final String[] polys = matrix.substring(start, behind).split("]\\s*,\\s*\\[");
       for (int k = 0; k < polys.length; ++k) {
         if (sDebug >= 1) {
@@ -181,80 +182,82 @@ public class HolonomicRecurrence implements Sequence {
       // pvals[0..mOrder] now contain the coefficients of the recurrence equation
       Z sum = pvals[0]; // the constant term (without a(k)) in the recurrence, mostly ZERO
       for (k = 1; k <= mOrder; ++k) { // sum all previous elements of the recurrence
+        int indAk = mN - mOrder - 1 + k; // index of previous recurrence element a[n-i]
+        while (indAk < 0) {
+          indAk += mBufSize;
+        }
+        indAk %= mBufSize;
         if (sDebug >= 1) {
           System.out.println("nd=" + nd + ", k=" + k);
-          System.out.println("    mBuffer[" + ((mN - mOrder - 1 + k) % mBufSize) + "]="
-            + mBuffer[(mN - mOrder - 1 + k) % mBufSize]
-            + ", old_sum=" + sum);
+          System.out.println("    mBuffer[" +  indAk + "]=" + mBuffer[indAk] + ", old_sum=" + sum);
         }
-        sum = sum.add(pvals[k].multiply(mBuffer[(mN - mOrder - 1 + k) % mBufSize]));
+        sum = sum.add(pvals[k].multiply(mBuffer[indAk]));
         if (sDebug >= 1) {
           System.out.println("new_sum=" + sum);
         }
       } // for k - summing
-      final Z[] quotRemd = sum.negate().divideAndRemainder(pvals[mOrder + 1]);
-      if (!quotRemd[1].equals(Z.ZERO)) {
+      if (! pvals[mOrder + 1].equals(Z.ZERO)) {
+        final Z[] quotRemd = sum.negate().divideAndRemainder(pvals[mOrder + 1]);
+        if (!quotRemd[1].equals(Z.ZERO)) {
+          if (sDebug >= 1) {
+            System.out.println("assertion: division with rest " + quotRemd[1].toString());
+          }
+          result = null;
+        } else {
+          result = quotRemd[0];
+        }
+      } else {
         if (sDebug >= 1) {
-          System.out.println("assertion: division with rest " + quotRemd[1].toString());
+          System.out.println("assertion: division by zero " );
         }
         result = null;
-      } else {
-        result = quotRemd[0];
       }
     }
-    mBuffer[mN % mBufSize] = result;
+    mBuffer[(mN < 0 ? mN + mBufSize : mN) % mBufSize] = result;
     return result;
   } // next
 
-//  /**
-//   * Test method
-//   * @param args command line arguments: offset, matrix, initTerms, nDist
-//   */
-//  public static void main(String[] args) {
-//    int maxTerms     = 16;
-//    /* A081367 E.g.f.: exp(2*x)/sqrt(1-2*x).
-//       Recurrence: a(n) = (2*n+1)*a(n-1) - 4*(n-1)*a(n-2)
-//       MMA: RecurrenceTable[{a[0]==1,a[1]==3,a[n]==(2*n+1)*a[n-1]-4*(n-1)*a[n-2]},a[n],{n,0,10}]
-//       java -cp dist/joeis-lite.jar;../joeis/build.tmp/joeis.jar irvine.oeis.HolonomicRecurrence \
-//       0 "[[0],[-4,4],[-1,-2],[1]]" "[1,3,11]" 0
-//    */
-//    int offset       = 0;
-//    String matrix    = "[[0],[-4,4],[-1,-2],[1]]";
-//    String initTerms = "[1,3,11]";
-//    int nDist        = 0;
-//    String aseqno    = "A000000";
-//    String callCode  = "holos";
-//
-//    HolonomicRecurrence holRec = null;
-//    if (args.length == 0) {
-//      holRec = new HolonomicRecurrence(offset, matrix, initTerms, nDist);
-//      System.out.println("1, 3, 11, 53, 345, 2947, 31411, 400437, 5927921, 99816515, 1882741659, 39310397557"); // A081367
-//    } else {
-//      int iarg = 0;
-//      try {
-//        if (args[iarg].equals("-d")) {
-//          iarg ++;
-//          debug   = Integer.parseInt(args[iarg ++]);
-//        }
-//        if (args[iarg].startsWith("A")) {
-//          aseqno  =                  args[iarg ++] ;
-//          callCode=                  args[iarg ++] ;
-//        }
-//        offset    = Integer.parseInt(args[iarg ++]);
-//        matrix    =                  args[iarg ++];
-//        initTerms =                  args[iarg ++];
-//        nDist = Integer.parseInt    (args[iarg ++]);
-//      } catch (Exception exc) {
-//      }
-//      holRec = new HolonomicRecurrence(offset, matrix, initTerms, nDist);
-//    }
-//    int n = 0;
-//    System.out.print(aseqno + "\t");
-//    while (n < maxTerms) {
-//      System.out.print(holRec.next().toString() + ",");
-//      n ++;
-//    } // while n
-//    System.out.println();
-//  } // main
+  /**
+   * Gets the offset
+   * @return the index where the sequence elements start
+   */
+  public int getOffset() {
+    return mOffset;
+  }
+
+  /**
+   * Gets the order of <code>this</code> recurrence
+   * @return number of sequence elements in the recurrence equation, minus one.
+   * The vector for the equation has an additional element for the constant,
+   * and another for the new sequence element to be computed.
+   * @return a number &gt;= 0
+   */
+  public int getOrder() {
+    return mOrder;
+  }
+
+  /**
+   * Gets the vectors for the cofficient polynomials.
+   * @return a list of coefficient vectors for the powers of <code>n</code>.
+   */
+  public ArrayList<Z[]> getPolyList() {
+    return mPolyList;
+  }
+
+  /**
+   * Gets the vector for the initial terms.
+   * @return a vector for the initial values of the sequence.
+   */
+  public Z[] getInitTerms() {
+    return mInitTerms;
+  }
+
+  /**
+   * Gets the index distance between the highest recurrence element and a[n]: 0..k-1
+   * @return a non-negative number
+   */
+  public int getDistance() {
+    return mNDist;
+  }
 
 } // HolonomicRecurrence
