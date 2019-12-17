@@ -9,8 +9,8 @@ CREATE  TABLE            seq4
     ( aseqno   VARCHAR(10) NOT NULL  -- A322469
     , callcode VARCHAR(32)           -- cfsnum
     , offset   VARCHAR(16)           -- offset
-    , parm1    VARCHAR(768)          --         
-    , parm2    VARCHAR(256)          
+    , parm1    VARCHAR(1024)
+    , parm2    VARCHAR(1024)
     , parm3    VARCHAR(128)           
     , parm4    VARCHAR(256)          
     , parm5    VARCHAR(256)          

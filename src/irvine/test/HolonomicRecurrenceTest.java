@@ -117,11 +117,14 @@ public class HolonomicRecurrenceTest {
 //  } // getMathematica
 
   /**
-   * Reverse <code>this</code> recurrence
+   * Reverse <code>this</code> recurrence, that is
+   * reverse the order of the polynomials and of the initial terms,
+   * but do not change any sign.
    * @param holRec instance to be reversed
+   * @param initSize number of initial terms to be kept (from the end)
    * @return a new HolonomicRecurrence which will run backwards
    */
-  private static HolonomicRecurrence reverse(HolonomicRecurrence holRec) {
+  private static HolonomicRecurrence reverse(HolonomicRecurrence holRec, int initSize) {
     ArrayList<Z[]> polyList = holRec.getPolyList();
     ArrayList<Z[]> rPolyList = new ArrayList<Z[]>(16);
     rPolyList.add(polyList.get(0)); // the constant
@@ -131,12 +134,24 @@ public class HolonomicRecurrenceTest {
     } // for ind - polynomials
 
     Z[] initTerms = holRec.getInitTerms();
-    Z[] rInitTerms = new Z[initTerms.length];
+    Z[] rInitTerms = new Z[initSize];
     int rind = 0;
-    for (ind = initTerms.length - 1; ind >= 0; ind --) { // initial terms
-      rInitTerms[rind ++] = initTerms[ind];
-    } // for ind - initial terms
+    ind = initTerms.length - 1;
+    while (ind >= 0 && rind < initSize) { // initial terms
+      rInitTerms[rind ++] = initTerms[ind --];
+    } // while initial terms
     return new HolonomicRecurrence(holRec.getOffset(), rPolyList, rInitTerms, holRec.getDistance());
+  } // reverse
+
+  /**
+   * Reverse <code>this</code> recurrence, that is
+   * reverse the order of the polynomials and of all initial terms,
+   * but do not change any sign.
+   * @param holRec instance to be reversed
+   * @return a new HolonomicRecurrence which will run backwards
+   */
+  private static HolonomicRecurrence reverse(HolonomicRecurrence holRec) {
+    return reverse(holRec, holRec.getInitTerms().length); 
   } // reverse
 
   /**
@@ -145,7 +160,7 @@ public class HolonomicRecurrenceTest {
    * @param holRec instance to be evaluated
    * @return a list of polynomials of the form "[[0,1],[1,2],[1]]".
    */
-  private String getPolyList(HolonomicRecurrence holRec) {
+  private String getPolyString(HolonomicRecurrence holRec) {
     StringBuffer result = new StringBuffer(256);
     ArrayList<Z[]> polyList = holRec.getPolyList();
     for (int i = 0; i < polyList.size(); i ++) { // polynomials
@@ -159,24 +174,55 @@ public class HolonomicRecurrenceTest {
     } // for i
     result.append(']');
     return result.toString();
-  } // getPolyList
+  } // getPolyString
 
   /**
    * Gets a String representation
    * of the initial terms.
    * @param holRec instance to be evaluated
-   * @return a list terms of the form "[0,1,1,2,1]".
+   * @param offset starting index (first is 0)
+   * @param len number of terms to be included
+   * @return a list of terms of the form "[0,1,1,2,1]".
    */
-  private String getInitTerms(HolonomicRecurrence holRec) {
+  private String getInitString(HolonomicRecurrence holRec, int offset, int len) {
     StringBuffer result = new StringBuffer(256);
     Z[] initTerms = holRec.getInitTerms();
-    for (int j = 0; j < initTerms.length; j ++) {
-      result.append(j == 0 ? '[' : ',');
-      result.append(initTerms[j].toString());
-    } // for j
+    int j = 0; 
+    while (j < len) {
+      if (offset + j < initTerms.length) {
+        result.append(j == 0 ? '[' : ',');
+        result.append(initTerms[offset + j].toString());
+      } else {
+        // System.out.println("# signature longer (" + String.valueOf(offset + j) + ") than initTerms (" + initTerms.length + ")");
+        result.append(",??");
+        j = len; // break loop
+      }
+      j ++;
+    } // while j
     result.append(']');
     return result.toString();
-  } // getInitTerms
+  } // getInitString(int, int)
+
+  /**
+   * Gets a String representation
+   * of the initial terms.
+   * @param holRec instance to be evaluated
+   * @param len number of terms to be included
+   * @return a list of terms of the form "[0,1,1,2,1]".
+   */
+  private String getInitString(HolonomicRecurrence holRec, int len) {
+    return getInitString(holRec, 0, len);
+  } // getInitString(int)
+
+  /**
+   * Gets a String representation
+   * of the initial terms.
+   * @param holRec instance to be evaluated
+   * @return a list of terms of the form "[0,1,1,2,1]".
+   */
+  private String getInitString(HolonomicRecurrence holRec) {
+    return getInitString(holRec, 0, holRec.getInitTerms().length);
+  } // getInitString()
 
   /**
    * Evaluate a HolonomicRecurrence and gets a list
@@ -225,15 +271,46 @@ public class HolonomicRecurrenceTest {
     mHolRec = new HolonomicRecurrence(mOffset, mPolyList, mInitTerms, mNDist); // instance to be tested
 
     if (false) {
+    } else if (callCode.startsWith("holog")) { // determine the prefixed initial terms
+      Z[] sInits = mHolRec.getInitTerms(); // initial terms from 'stripped'
+      int termNo = sInits.length;
+      Z[] nInits = new Z[termNo];
+      HolonomicRecurrence rHolRec = reverse(mHolRec, mHolRec.getPolyList().size());
+      int iterm = termNo - 1; // start at the end
+      Z rTerm = rHolRec.next();
+      if (sDebug >= 1) {
+        System.out.println(aseqno + "\t" + getPolyString(rHolRec) + "\t" + getInitString(rHolRec));
+        System.out.println("sInits[" + iterm + "]=" + sInits[iterm].toString() 
+            + ", rTerm=" + (rTerm == null ? "null" : rTerm.toString()));
+      }
+      while (iterm >= 0 && rTerm != null && rTerm.equals(sInits[iterm])) {
+        if (sDebug >= 1) {
+          System.out.println("sInits[" + iterm + "]=" + sInits[iterm].toString() 
+              + ", rTerm=" + (rTerm == null ? "null" : rTerm.toString()));
+        }
+        rTerm = rHolRec.next();
+        iterm --;
+      } // while iterm
+      if (sDebug >= 1) {
+        System.out.println("stopping rTerm= " + (rTerm == null ? "null" : rTerm.toString()));
+      }
+      int offset = iterm + 1;
+      int len    = mHolRec.getOrder();
+      parms[1] = callCode + "1";
+      if (offset == 0) {
+        parms[4] =  getInitString(mHolRec, 0, len)      .replaceAll("\\[", "[  ");
+      } else {
+        parms[4] = (getInitString(mHolRec, 0, offset) 
+                  + getInitString(mHolRec, offset, len)).replaceAll("\\]\\[", ",  ");
+      }
+      reproduce();
+
     } else if (callCode.startsWith("holos")) { // getTermList
       System.out.println(aseqno + "\t" + callCode + "1" + "\t" + mOffset + "\t" + getDataList(mHolRec));
-      /*
-      System.out.println(aseqno + "\t" + "--------"); // will remain there even after sort
-      */
     } else if (callCode.startsWith("holor")) { // getTermList(reverse)
       HolonomicRecurrence rHolRec = reverse(mHolRec);
-      parms[3] = getPolyList (rHolRec);
-      parms[4] = getInitTerms(rHolRec);
+      parms[3] = getPolyString (rHolRec);
+      parms[4] = getInitString(rHolRec);
       reproduce(6);
       System.out.println(aseqno + "\t" + callCode + "1" + "\t" + mOffset + "\t" + getDataList(rHolRec));
       System.out.println(aseqno + "\t" + "========"); // will remain there even after sort

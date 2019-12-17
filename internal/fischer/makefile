@@ -93,12 +93,14 @@ select: # parameter: CC, OFS
 		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
-	    FROM seq4 ORDER BY 1" \
+	    FROM seq4 \
+	    WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  > $(CC).gen
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
-	$(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
+	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 clean: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
 	wc -l $(CC).gen
 	cut -b1-7 $(CC).fail.log > clean.tmp
@@ -158,13 +160,6 @@ bfile:
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 joeins:
 	$(DBAT) -v "INSERT INTO joeis (SELECT aseqno, 'HolonomicRec', 'new' FROM seq4);"
-#----
-OFS=1
-DIST=0
-runholo:
-	$(HOLT) $(OFS) $(MATRIX) $(INIT) $(DIST)
-holt: # parameter GEN=
-	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
 #=========================================================
 bas:
 	make bas_all TARGET=gener
@@ -641,6 +636,15 @@ gtpas:
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #-------------------------------
 # HolonomicSequence
+#----
+OFS=1
+DIST=0
+runholo:
+	$(HOLT) -n $(MAXT) -p $(MATRIX) -i $(INIT) 
+holt: # parameter GEN=
+	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
+
+#----
 holos:
 	cat $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \
@@ -683,6 +687,55 @@ holor2:
 	head -n8 $@.tmp
 	grep -E "\-\-\-\-"     $@.tmp | wc -l
 	grep holor1 $@.tmp | grep -v null | wc -l
+#----
+holog_test:
+	$(HOLT) -d $(D) -n $(MAXT) -f $(LINREC)/raeval_holog.tmp
+holog0: 
+	# sed -e "s/\t/\tholog\t0\t/" -e "s/$$/\t0/" 
+	cat $(LINREC)/raeval_holog.tmp \
+	>        $@.1.tmp
+	head -n8 $@.1.tmp
+	wc -l    $@.1.tmp
+	$(HOLT) -d $(D) -n $(MAXT) -f $@.1.tmp \
+	>        $@.2.tmp
+	head -n8 $@.2.tmp
+	wc -l    $@.2.tmp
+holog:
+	sed -e "s/holog1/holos/" \
+	-e "s/  //" holog0.2.tmp \
+	>        $@.gen
+#----
+holol0: holol1 holol2 holol3
+# get all from lrlink which are not in joeis
+holol1:
+	$(DBAT) -x "SELECT l.aseqno, 'holog', i.offset1, l.signature, d.data, '0' \
+	    FROM lrlink l, asinfo i, asdata d \
+	    WHERE l.aseqno = i.aseqno \
+	      AND l.aseqno = d.aseqno \
+	      AND l.aseqno NOT IN (select aseqno FROM joeis) \
+	      AND l.sigorder < 64 AND l.sigorder >= 1 \
+	      AND l.signature <> '88888888' \
+	      ORDER BY 1" \
+	| perl $(LINREC)/reverse_signature.pl -h -i 3 \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+holol2:
+	head -n$(MANY) holol1.tmp \
+	>                             $@.1.tmp
+	$(HOLT) -d $(D) -n $(MAXT) -f $@.1.tmp \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+holol3:
+	grep -vE "\?\?" holol2.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+holol:
+	sed -e "s/holog1/holos/" -e "s/  //" holol3.tmp \
+	>        $@.gen
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener
