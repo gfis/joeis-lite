@@ -397,32 +397,34 @@ public class HolonomicRecurrenceTest {
     HolonomicRecurrenceTest holTest = new HolonomicRecurrenceTest();
     holTest.numTerms = 16;
     holTest.mOffset  = 0;
-    String fileName = "-"; // assume STDIN
-    String polyList = null;
+    String fileName  = "-"; // assume STDIN
+    String polyList  = null;
     String initTerms = null;
     while (iarg < args.length) { // consume all arguments
       String opt = args[iarg ++];
-      if (false) {
-      } else if (opt.equals    ("-d")     ) {
-        sDebug = 1;
-        try {
-            sDebug = Integer.parseInt(args[iarg ++]);
-        } catch (Exception exc) { // take default
+      try {
+        if (false) {
+        } else if (opt.equals    ("-d")     ) {
+          sDebug = 1;
+          try {
+              sDebug = Integer.parseInt(args[iarg ++]);
+          } catch (Exception exc) { // take default
+          }
+        } else if (opt.equals    ("-f")     ) {
+          fileName = args[iarg ++];
+        } else if (opt.equals    ("-i")     ) {
+          initTerms = args[iarg ++];
+        } else if (opt.equals    ("-n")     ) {
+          holTest.numTerms = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-o")     ) {
+          holTest.mOffset  = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-p")     ) {
+          polyList = args[iarg ++];
+  
+        } else {
+          System.err.println("??? invalid option: \"" + opt + "\"");
         }
-      } else if (opt.equals    ("-f")     ) {
-        fileName = args[iarg ++];
-      } else if (opt.equals    ("-i")     ) {
-        initTerms = args[iarg ++];
-      } else if (opt.equals    ("-n")     ) {
-        try {
-            holTest.numTerms = Integer.parseInt(args[iarg ++]);
-        } catch (Exception exc) { // take default
-        }
-      } else if (opt.equals    ("-p")     ) {
-        polyList = args[iarg ++];
-
-      } else {
-        System.err.println("??? invalid option: \"" + opt + "\"");
+      } catch (Exception exc) { // take default
       }
     } // while args
     if (polyList != null) {

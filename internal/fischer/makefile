@@ -84,6 +84,7 @@ OFS=offset
 ccall: select clean purge gener dist test pack
 # parameter: CC
 #----
+NOT=NOT
 select: # parameter: CC, OFS
 	make $(CC)
 	head -4 $(CC).gen
@@ -94,7 +95,7 @@ select: # parameter: CC, OFS
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 \
-	    WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    WHERE aseqno $(NOT) IN (SELECT aseqno FROM joeis) \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  > $(CC).gen
@@ -637,14 +638,28 @@ gtpas:
 #-------------------------------
 # HolonomicSequence
 #----
-OFS=1
 DIST=0
+fholo:
+	grep -E "^$(S)" $(COMMON)/asdata.txt
+	grep $(S) holos.gen | tee x.tmp 
+	$(HOLT) -f x.tmp
 runholo:
-	$(HOLT) -n $(MAXT) -p $(MATRIX) -i $(INIT) 
+	$(HOLT) -n $(MAXT) -p $(MATRIX) -o $(OFFSET) -i $(INIT) 
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
-
+#-------------------
+# A054122
+# +(-8*n+4*n^2)*a(n-2) + (-4+12n-8n^2)*a(n-1) + (0-1*n+1n^2)*a(n)  = 0.
+# make runholo MATRIX="[[0],[0,-8,4],[-4,12,-8],[0,-1,1]]" INIT="[1,3]"
+# n*a(n) +3*(-3*n+2)*a(n-1) +12*(n-2)*a(n-2) +4*(-n+3)*a(n-3)=0. - R. J. Mathar, Jun 13 2013
+#  (12-4n)*a(n-3) + (-24 + 12n)*a(n-2) + (6-9*n)*a(n-1) + (0+1n)*a(n) = 0 
+# make runholo MATRIX="[[0],[12,-4],[-24,12],[6,9],[0,1]]" INIT="[1,3,18]"
 #----
+holregen:
+	cat $(HOLREC)/holregen.tmp \
+	| grep -E "Linear|Holo" \
+	| grep -v A145418 \
+	>   $(HOLREC)/rectab4.tmp
 holos:
 	cat $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \
@@ -734,6 +749,9 @@ holol3:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 holol:
+	sed -e "s/holog1/holos/" holol3.tmp \
+	>        $@.gen
+holold:
 	sed -e "s/holog1/holos/" -e "s/  //" holol3.tmp \
 	>        $@.gen
 #-------------------------------
