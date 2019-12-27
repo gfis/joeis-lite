@@ -660,6 +660,10 @@ holregen:
 	| grep -E "Linear|Holo" \
 	| grep -v A145418 \
 	>   $(HOLREC)/rectab4.tmp
+holgf:
+	cat $(HOLREC)/holgf.tmp \
+	| sed -e "s/\tholgf1\t/\tholos\t/" \
+	>   $(HOLREC)/rectab4.tmp
 holos:
 	cat $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \

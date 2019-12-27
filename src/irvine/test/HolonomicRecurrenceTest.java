@@ -52,7 +52,7 @@ public class HolonomicRecurrenceTest {
   private String callCode;
 
   /** Number of terms to be generated */
-  private int numTerms;
+  private static int numTerms;
 
   /** Offset of the sequence, as String */
   private int mOffset;
@@ -61,10 +61,10 @@ public class HolonomicRecurrenceTest {
   private int mNDist;
 
   /** List of vectors for the coefficient polynomials */
-  private String mPolyList;
+  private String mPolyString;
 
   /** Vectors for the initial terms */
-  private String mInitTerms;
+  private String mInitString;
 
   /** Current index for {@link #parms} */
   private int iparm;
@@ -88,8 +88,8 @@ public class HolonomicRecurrenceTest {
 //    StringBuffer result = new StringBuffer(256);
 //    int ind = 0;
 //    result.append("RecurrenceTable[{");
-//    for (ind = 0; ind < mPolyList.size(); ind ++) { // polynomials
-//      Z[] poly = mPolyList.get(ind);
+//    for (ind = 0; ind < mPolyString.size(); ind ++) { // polynomials
+//      Z[] poly = mPolyString.get(ind);
 //      for (int iexp = 0; iexp < poly.length; iexp ++) {
 //        if (iexp > 0) {
 //          result.append(',');
@@ -98,15 +98,15 @@ public class HolonomicRecurrenceTest {
 //      result.append(",a[");
 //      result.append(ind);
 //      result.append("]=");
-//      result.append(mInitTerms[ind]);
+//      result.append(mInitString[ind]);
 //    } // for ind - polynomials
 //
 //    result.append("=0, ");
-//    for (ind = 0; ind < mInitTerms.size(); ind ++) { // initial terms
+//    for (ind = 0; ind < mInitString.size(); ind ++) { // initial terms
 //      result.append(",a[");
 //      result.append(ind);
 //      result.append("]=");
-//      result.append(mInitTerms[ind]);
+//      result.append(mInitString[ind]);
 //    } // for ind - initial
 //    result.append("},a,{n,");
 //    result.append(mOffset);
@@ -115,6 +115,22 @@ public class HolonomicRecurrenceTest {
 //    result.append("}]");
 //    return result.toString();
 //  } // getMathematica
+
+  /**
+   * Reverse a comma separated list of coefficients,
+   * but do not change any sign.
+   * @param coeffs source String, for example "1,-1,-2,0"
+   * @return a new comma separated list in vector form, for example "[0,-2,-1,1]"
+   */
+  private static String reverse(String coeffs) {
+    StringBuffer result = new StringBuffer(256);
+    String[] rcoeffs = coeffs.replaceAll("[\\}\\]\\)\\{\\[\\(\\s]", "").split("\\,");
+    for (int icoeff = rcoeffs.length - 1; icoeff >= 0; icoeff --) {
+        result.append(',');
+        result.append(rcoeffs[icoeff]);
+    } // for icoeff
+    return "[" + result.substring(1) + "]";
+  } // reverse(String)
 
   /**
    * Reverse <code>this</code> recurrence, that is
@@ -141,7 +157,7 @@ public class HolonomicRecurrenceTest {
       rInitTerms[rind ++] = initTerms[ind --];
     } // while initial terms
     return new HolonomicRecurrence(holRec.getOffset(), rPolyList, rInitTerms, holRec.getDistance());
-  } // reverse
+  } // reverse(HolonomicRecurrence,int)
 
   /**
    * Reverse <code>this</code> recurrence, that is
@@ -151,8 +167,8 @@ public class HolonomicRecurrenceTest {
    * @return a new HolonomicRecurrence which will run backwards
    */
   private static HolonomicRecurrence reverse(HolonomicRecurrence holRec) {
-    return reverse(holRec, holRec.getInitTerms().length); 
-  } // reverse
+    return reverse(holRec, holRec.getInitTerms().length);
+  } // reverse(HolonomicRecurrence)
 
   /**
    * Gets a String representation
@@ -160,7 +176,7 @@ public class HolonomicRecurrenceTest {
    * @param holRec instance to be evaluated
    * @return a list of polynomials of the form "[[0,1],[1,2],[1]]".
    */
-  private String getPolyString(HolonomicRecurrence holRec) {
+  private static String getPolyString(HolonomicRecurrence holRec) {
     StringBuffer result = new StringBuffer(256);
     ArrayList<Z[]> polyList = holRec.getPolyList();
     for (int i = 0; i < polyList.size(); i ++) { // polynomials
@@ -184,10 +200,10 @@ public class HolonomicRecurrenceTest {
    * @param len number of terms to be included
    * @return a list of terms of the form "[0,1,1,2,1]".
    */
-  private String getInitString(HolonomicRecurrence holRec, int offset, int len) {
+  private static String getInitString(HolonomicRecurrence holRec, int offset, int len) {
     StringBuffer result = new StringBuffer(256);
     Z[] initTerms = holRec.getInitTerms();
-    int j = 0; 
+    int j = 0;
     while (j < len) {
       if (offset + j < initTerms.length) {
         result.append(j == 0 ? '[' : ',');
@@ -210,7 +226,7 @@ public class HolonomicRecurrenceTest {
    * @param len number of terms to be included
    * @return a list of terms of the form "[0,1,1,2,1]".
    */
-  private String getInitString(HolonomicRecurrence holRec, int len) {
+  private static String getInitString(HolonomicRecurrence holRec, int len) {
     return getInitString(holRec, 0, len);
   } // getInitString(int)
 
@@ -220,7 +236,7 @@ public class HolonomicRecurrenceTest {
    * @param holRec instance to be evaluated
    * @return a list of terms of the form "[0,1,1,2,1]".
    */
-  private String getInitString(HolonomicRecurrence holRec) {
+  private static String getInitString(HolonomicRecurrence holRec) {
     return getInitString(holRec, 0, holRec.getInitTerms().length);
   } // getInitString()
 
@@ -228,9 +244,10 @@ public class HolonomicRecurrenceTest {
    * Evaluate a HolonomicRecurrence and gets a list
    * 22of the resulting data terms.
    * @param holRec instance to be evaluated
+   * @param numTerms how many terms should be returned
    * @return a list of terms of the form "0,1,1,2,3,5,8".
    */
-  private String getDataList(HolonomicRecurrence holRec) {
+  private static String getDataList(HolonomicRecurrence holRec, int numTerms) {
     StringBuffer result = new StringBuffer(256);
     int n = 0;
     boolean busy = true;
@@ -249,29 +266,104 @@ public class HolonomicRecurrenceTest {
     return result.toString();
   } // getDataList
 
+  /** 
+   * Compute the initial terms of an ordinary (rational) generating function.
+   * @param offset number of leading zeroes in <code>nums</code> and initial terms
+   * @param nums numerator   as a comma separated list
+   * @param dens denominator as a comma separated list
+   * @return a new comma separated list with the computed initial termspolynomial
+   */
+  public static String computeInitialTerms(int offset, String nums, String dens) {
+    Z[] temp = ZUtils.toZ(nums);
+    int leadz = 0; // number of leading zeroes
+    while (leadz < temp.length && temp[leadz].equals(Z.ZERO)) {
+      leadz ++;
+    } // while leadz
+    Z[] pDen = ZUtils.toZ(dens);
+    int pDenLen = pDen.length;
+    int pNumLen = Math.max(pDenLen, temp.length + leadz); // + offset); // pNum is always same or longer than pDen
+    if (sDebug >= 1) {
+      System.out.println("# holgf1: nums=" + nums + ", dens=" + dens 
+          + ", pNumLen=" + pNumLen + ", pDenLen=" + pDenLen);
+    }
+    Z[] pNum = new Z[pNumLen]; // accumulate new initial terms here
+    for (int ind = 0; ind < pNumLen; ind ++) { // copy all coefficients (polynomials of degree 0)
+      pNum[ind] = ind < temp.length ? temp[ind] : Z.ZERO;
+    } // for ind - copy
+    
+    final Z divisor = pDen[0];
+    if (divisor.equals(Z.ZERO)) {
+      throw new IllegalArgumentException("divisor is zero");
+    }
+    StringBuffer nInits = new StringBuffer(256);
+    for (int inum = 0; inum < pNumLen; inum ++) { // compute new initial terms
+      // similiar code in GeneratingFunctionSequence.next()
+      final Z[] quotRest = pNum[inum].divideAndRemainder(divisor);
+      nInits.append(',');
+      nInits.append(quotRest[0].toString());
+      final Z factor = quotRest[0].negate();
+      if (! quotRest[1].equals(Z.ZERO)) {
+        throw new IllegalArgumentException("no even division");
+      }
+      for (int iden = 0; iden < pDenLen; iden ++) {
+        int knum = inum + iden;
+        if (knum < pNumLen) {
+          pNum[knum] = pNum[knum].add(pDen[iden].multiply(factor));
+        }
+      } // for iden
+      if (sDebug >= 1) {
+        System.out.println("# holgf2: factor=" + factor 
+            + ", summand= " + pDen[0].multiply(factor)
+            + ", pnum[" + inum + "]=" + pNum[inum]);
+      }
+    } // for inum - compute
+    return nInits.substring(1); //  + 2 * offset); // remove leading zeroes
+  } // computeInitialterms
+  
   /**
    * Process one input line, and determine
    * whether it should be written to the output.
+   * The following <code>callCode</code>s are processed:
+   * <ul>
+   * <li><code>holgf</code> - GeneratingFunction parameters -&gt; HolonomicRecurrence
+   * <li><code>holog</code> - determine the prefixed initial terms</li>
+   * <li><code>holor</code> - try to evaluate the recurrence backwards</li>
+   * <li><code>holos</code> - evaluate the recurrence <code>numTerms</code> times</li>
+   * </ul>
    */
   private void processRecord() {
     boolean result = false;
-    mInitTerms = ""; // initial terms for a(n)
+    mInitString = ""; // initial terms for a(n)
     int n = 0; // index of the next sequence element to be computed
-    mPolyList = ""; // polynomials as coefficients of <code>n^i, i=0..m</code>
+    mPolyString = ""; // polynomials as coefficients of <code>n^i, i=0..m</code>
     // input record is: aseqno callCode mOffset polyList initTerms mNDist data
     iparm = 2;
     try {
       mOffset = Integer.parseInt(parms[iparm ++]); // [2]
-      mPolyList = parms[iparm ++];  // [3]
-      mInitTerms = parms[iparm ++]; // [4]
+      mPolyString = parms[iparm ++];  // [3]
+      mInitString = parms[iparm ++]; // [4]
       mNDist = 0;
       mNDist = Integer.parseInt(parms[iparm ++]); // [5]
     } catch (Exception exc) {
     }
-    mHolRec = new HolonomicRecurrence(mOffset, mPolyList, mInitTerms, mNDist); // instance to be tested
 
     if (false) {
+        
+    } else if (callCode.startsWith("holgf")) { // GeneratingFunction parameters -> HolonomicRecurrence
+      // parameters are numerator, denominator polynomials
+      String temp = mPolyString;
+      mPolyString = mInitString;
+      mInitString = temp; // exchange both
+      int iparm = 1;
+      parms[iparm ++] = callCode + "1";
+      parms[iparm ++] = String.valueOf(mOffset);
+      parms[iparm ++] = reverse("[" + mPolyString + ",0]");
+      parms[iparm ++] = "[" + computeInitialTerms(mOffset, mInitString, mPolyString) + "]"; // nums. densgetInitString (mHolRec);
+      parms[iparm ++] = "0";
+      reproduce();
+
     } else if (callCode.startsWith("holog")) { // determine the prefixed initial terms
+      mHolRec = new HolonomicRecurrence(mOffset, mPolyString, mInitString, mNDist); // instance to be tested
       Z[] sInits = mHolRec.getInitTerms(); // initial terms from 'stripped'
       int termNo = sInits.length;
       Z[] nInits = new Z[termNo];
@@ -280,12 +372,12 @@ public class HolonomicRecurrenceTest {
       Z rTerm = rHolRec.next();
       if (sDebug >= 1) {
         System.out.println(aseqno + "\t" + getPolyString(rHolRec) + "\t" + getInitString(rHolRec));
-        System.out.println("sInits[" + iterm + "]=" + sInits[iterm].toString() 
+        System.out.println("sInits[" + iterm + "]=" + sInits[iterm].toString()
             + ", rTerm=" + (rTerm == null ? "null" : rTerm.toString()));
       }
       while (iterm >= 0 && rTerm != null && rTerm.equals(sInits[iterm])) {
         if (sDebug >= 1) {
-          System.out.println("sInits[" + iterm + "]=" + sInits[iterm].toString() 
+          System.out.println("sInits[" + iterm + "]=" + sInits[iterm].toString()
               + ", rTerm=" + (rTerm == null ? "null" : rTerm.toString()));
         }
         rTerm = rHolRec.next();
@@ -300,20 +392,23 @@ public class HolonomicRecurrenceTest {
       if (offset == 0) {
         parms[4] =  getInitString(mHolRec, 0, len)      .replaceAll("\\[", "[  ");
       } else {
-        parms[4] = (getInitString(mHolRec, 0, offset) 
+        parms[4] = (getInitString(mHolRec, 0, offset)
                   + getInitString(mHolRec, offset, len)).replaceAll("\\]\\[", ",  ");
       }
       reproduce();
 
-    } else if (callCode.startsWith("holos")) { // getTermList
-      System.out.println(aseqno + "\t" + callCode + "1" + "\t" + mOffset + "\t" + getDataList(mHolRec));
     } else if (callCode.startsWith("holor")) { // getTermList(reverse)
+      mHolRec = new HolonomicRecurrence(mOffset, mPolyString, mInitString, mNDist); // instance to be tested
       HolonomicRecurrence rHolRec = reverse(mHolRec);
       parms[3] = getPolyString (rHolRec);
       parms[4] = getInitString(rHolRec);
       reproduce(6);
-      System.out.println(aseqno + "\t" + callCode + "1" + "\t" + mOffset + "\t" + getDataList(rHolRec));
+      System.out.println(aseqno + "\t" + callCode + "1" + "\t" + mOffset + "\t" + getDataList(rHolRec, numTerms));
       System.out.println(aseqno + "\t" + "========"); // will remain there even after sort
+
+    } else if (callCode.startsWith("holos")) { // getTermList
+      mHolRec = new HolonomicRecurrence(mOffset, mPolyString, mInitString, mNDist); // instance to be tested
+      System.out.println(aseqno + "\t" + callCode + "1" + "\t" + mOffset + "\t" + getDataList(mHolRec, numTerms));
 
     } else {
       reproduce();
@@ -420,7 +515,7 @@ public class HolonomicRecurrenceTest {
           holTest.mOffset  = Integer.parseInt(args[iarg ++]);
         } else if (opt.equals    ("-p")     ) {
           polyList = args[iarg ++];
-  
+
         } else {
           System.err.println("??? invalid option: \"" + opt + "\"");
         }
@@ -429,7 +524,7 @@ public class HolonomicRecurrenceTest {
     } // while args
     if (polyList != null) {
       holTest.mHolRec = new HolonomicRecurrence(0, polyList, initTerms, 0);
-      System.out.println(holTest.getDataList(holTest.mHolRec));
+      System.out.println(holTest.getDataList(holTest.mHolRec, holTest.numTerms));
     } else {
       holTest.processFile(fileName);
     }
