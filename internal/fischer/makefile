@@ -21,6 +21,7 @@ D=0
 TO=4
 GU=0
 N=1000
+NUM=999
 NT=32
 SC=222221210100
 NC=
@@ -36,6 +37,7 @@ JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis
 BATLIT=$(JAVA) irvine.test.BatchTest -v $(WITHB) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
+REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
 #----------------
 
 all:
@@ -106,6 +108,12 @@ clean: purge # parameter: CC; $(CC).fail.log from previous test is stripped off 
 	wc -l $(CC).gen
 	cut -b1-7 $(CC).fail.log > clean.tmp
 	grep -vf clean.tmp $(CC).gen > $(CC).tmp
+	cp -v $(CC).tmp $(CC).gen
+	wc -l $(CC).gen
+dirty:
+	wc -l $(CC).gen
+	cut -b1-7 $(CC).pass.log > dirty.tmp
+	grep -vf dirty.tmp $(CC).gen > $(CC).tmp
 	cp -v $(CC).tmp $(CC).gen
 	wc -l $(CC).gen
 purge: # remove all oeis/annn directories
@@ -671,6 +679,15 @@ holos:
 	head -n4 $@.gen
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+holosrem: hrem1 hrem2
+hrem1:
+	scp holos.gen $(REMOTE)
+	ssh gfis@atair 'cd ~/work/gits/joeis-lite/internal/fischer ; make CC=holos purge gener dist test'
+hrem2:
+	scp $(REMOTE)/holos.????.log .
+	cp holos.fail.log holos.$(NUM).fail.log
+	cp holos.pass.log holos.$(NUM).pass.log
+	cd $(COMMON) ; make -f checks.make joeis_check LOG=holos.$(NUM)
 #--
 # HolonomicSequence
 holof: holof0 holof1

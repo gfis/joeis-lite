@@ -179,6 +179,9 @@ public class HolonomicRecurrence implements Sequence {
     int k = mPolyList.size() - 1;
     mBufSize = k + 2; // at least 1
     mBuffer = new Z[mBufSize];
+    for (int ibuf = 0; ibuf < mBufSize; ibuf ++) {
+      mBuffer[ibuf] = Z.ZERO; // why? accessed and null for A027770
+    }
     mOrder = k - 1;
     if (sDebug >= 1) {
       System.out.println("order=" + mOrder);
@@ -199,7 +202,7 @@ public class HolonomicRecurrence implements Sequence {
    */
   @Override
   public Z next() {
-  	int ibuf; // index in mBuffer
+    int ibuf; // index in mBuffer
     final Z result;
     ++mN;
     if (mN - mOffset < mInitTerms.length) {
@@ -239,7 +242,7 @@ public class HolonomicRecurrence implements Sequence {
         --k;
       } // while k - coefficients of the recurrence
       // pvals[0..mOrder] now contain the coefficients of the recurrence equation
-      Z sum = pvals[0]; // the constant term (without a(k)) in the recurrence, mostly ZERO
+      Z sum = pvals[0]; // k=0, the constant term (without a(k)) in the recurrence, mostly ZERO
       for (k = 1; k <= mOrder; ++k) { // sum all previous elements of the recurrence
         ibuf = mN - mOrder - 1 + k; // index of previous recurrence element a[n-i]
         while (ibuf < 0) {
@@ -247,7 +250,8 @@ public class HolonomicRecurrence implements Sequence {
         }
         ibuf %= mBufSize;
         if (sDebug >= 1) {
-          System.out.println("nd=" + nd + ", k=" + k);
+          System.out.println("mN=" + mN + ", nd=" + nd + ", k=" + k 
+              + ", mBufSize=" + mBufSize + ", mOrder=" + mOrder);
           System.out.println("    mBuffer[" +  ibuf + "]=" + mBuffer[ibuf] + ", old_sum=" + sum);
         }
         sum = sum.add(pvals[k].multiply(mBuffer[ibuf]));
