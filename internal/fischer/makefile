@@ -87,10 +87,12 @@ ccall: select clean purge gener dist test pack
 # parameter: CC
 #----
 NOT=NOT
-select: # parameter: CC, OFS
+select: select1 select2 # parameter: CC, OFS
+select1:
 	make $(CC)
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
+select2:
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s \
 		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
@@ -112,6 +114,7 @@ clean: purge # parameter: CC; $(CC).fail.log from previous test is stripped off 
 	wc -l $(CC).gen
 dirty:
 	wc -l $(CC).gen
+	cp    $(CC).gen $(CC).old.tmp
 	cut -b1-7 $(CC).pass.log > dirty.tmp
 	grep -vf dirty.tmp $(CC).gen > $(CC).tmp
 	cp -v $(CC).tmp $(CC).gen
@@ -682,7 +685,7 @@ holos:
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 LOG=holos
-holosrem: hrem1 hrem2 hrem3
+holosrem: hrem1 hrem2 hrem3 hrem4
 hrem1:
 	scp holos.gen $(REMOTE)
 	ssh gfis@atair 'cd ~/work/gits/joeis-lite/internal/fischer ; make CC=holos purge gener dist test'
@@ -696,6 +699,11 @@ hrem4:
 hrem5:
 	cp $(LOG).fail.log holos.fail.log
 	cp $(LOG).pass.log holos.pass.log 
+hrem6:
+	$(DBAT) "SELECT aseqno, SUBSTR(parm1, 1, 8), SUBSTR(parm2, 1, 8), parm4 FROM seq4 ORDER BY 1"
+holpatch:
+	make CC=holos NOT= select2
+	$(DBAT) "UPDATE seq4 
 #--
 # HolonomicSequence
 holof: holof0 holof1

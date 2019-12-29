@@ -350,8 +350,8 @@ public class HolonomicRecurrenceTest {
    * @return comma separated list with the (maybe truncated) initial terms
    */
   public String adjustOffset2(String[] terms, int offset2) {
-  	if (offset2 == 1) {
-  	  offset2 = 0;
+    if (offset2 == 1 && terms[0].matches("\\-?[01]")) {
+      offset2 = 0;
     }
     StringBuffer result = new StringBuffer(256);
     int count2 = 0; // count (starting from 1) of first term with abs() >= 2; 0 if not yet determined
