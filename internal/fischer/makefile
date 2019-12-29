@@ -669,25 +669,33 @@ holregen:
 	| grep -v A145418 \
 	>   $(HOLREC)/rectab4.tmp
 holgf:
-	cat $(HOLREC)/holgf.tmp \
+	cat $(HOLREC)/holgf2.tmp \
 	| sed -e "s/\tholgf1\t/\tholos\t/" \
-	>   $(HOLREC)/rectab4.tmp
+	>        $(HOLREC)/rectab4.tmp
+	head -n4 $(HOLREC)/rectab4.tmp
+	wc -l    $(HOLREC)/rectab4.tmp
 holos:
-	cat $(HOLREC)/rectab4.tmp \
+	grep -E "holos" $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-holosrem: hrem1 hrem2
+LOG=holos
+holosrem: hrem1 hrem2 hrem3
 hrem1:
 	scp holos.gen $(REMOTE)
 	ssh gfis@atair 'cd ~/work/gits/joeis-lite/internal/fischer ; make CC=holos purge gener dist test'
 hrem2:
 	scp $(REMOTE)/holos.????.log .
-	cp holos.fail.log holos.$(NUM).fail.log
-	cp holos.pass.log holos.$(NUM).pass.log
-	cd $(COMMON) ; make -f checks.make joeis_check LOG=holos.$(NUM)
+hrem3:
+	cp holos.fail.log $(LOG).fail.log
+	cp holos.pass.log $(LOG).pass.log
+hrem4:
+	cd $(COMMON) ; make -f checks.make joeis_check LOG=$(LOG)
+hrem5:
+	cp $(LOG).fail.log holos.fail.log
+	cp $(LOG).pass.log holos.pass.log 
 #--
 # HolonomicSequence
 holof: holof0 holof1

@@ -265,6 +265,28 @@ public class HolonomicRecurrenceTest {
     return result.substring(1); // without leading comma
   } // getDataList
 
+/*
+  public CoxeterSequence(final int pwr, final Z c1, final Z c2) {
+    super();
+    mNum = new Z[pwr + 1];
+    mDen = new Z[pwr + 1];
+    mNum[pwr] = Z.ONE;
+    mNum[0] = Z.ONE;
+    mDen[pwr] = c1;
+    mDen[0] = Z.ONE;
+    int ipwr = pwr - 1;
+    while (ipwr > 0) {
+      mNum[ipwr] = Z.TWO;
+      mDen[ipwr] = c2;
+      --ipwr;
+    } // while ipwr
+  }
+
+  public CoxeterSequence(final int pwr, final int ngen) {
+    this(pwr, Z.valueOf(ngen - 2).multiply(ngen - 1).divide2(), Z.valueOf(2 - ngen));
+  }
+*/
+
   /**
    * Compute the initial terms of an ordinary (rational) generating function.
    * @param nums numerator   as a comma separated list
@@ -328,6 +350,9 @@ public class HolonomicRecurrenceTest {
    * @return comma separated list with the (maybe truncated) initial terms
    */
   public String adjustOffset2(String[] terms, int offset2) {
+  	if (offset2 == 1) {
+  	  offset2 = 0;
+    }
     StringBuffer result = new StringBuffer(256);
     int count2 = 0; // count (starting from 1) of first term with abs() >= 2; 0 if not yet determined
     int iterm  = 0; // index of term to be investigated
@@ -342,6 +367,9 @@ public class HolonomicRecurrenceTest {
       iterm ++;
     } // while iterm
     int start = 1; // skip over leading comma
+    if (count2 == 0) { // cannot adjust
+      count2 = offset2;
+    }
     if (count2 > offset2) { // needs adjustment - remove count2 - offset2 leading zeroes
       int iadj = count2;
       while (iadj > offset2) {
