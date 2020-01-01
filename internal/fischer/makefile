@@ -92,6 +92,7 @@ select1:
 	make $(CC)
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
+EX=
 select2:
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s \
@@ -99,7 +100,7 @@ select2:
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 \
-	    WHERE aseqno $(NOT) IN (SELECT aseqno FROM joeis) \
+	    WHERE aseqno NOT IN (SELECT '$(EX)' || aseqno FROM joeis) \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  > $(CC).gen
@@ -677,6 +678,12 @@ holgf:
 	>        $(HOLREC)/rectab4.tmp
 	head -n4 $(HOLREC)/rectab4.tmp
 	wc -l    $(HOLREC)/rectab4.tmp
+holsq:
+	cat $(HOLREC)/gfsqrt4.tmp \
+	| sed -e "s/\tholos\t/\tholos\t/" \
+	>        $(HOLREC)/rectab4.tmp
+	head -n4 $(HOLREC)/rectab4.tmp
+	wc -l    $(HOLREC)/rectab4.tmp
 holos:
 	grep -E "holos" $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \
@@ -791,6 +798,21 @@ holol:
 holold:
 	sed -e "s/holog1/holos/" -e "s/  //" holol3.tmp \
 	>        $@.gen
+#------------------------------
+holsq2:
+	cat $(HOLREC)/holsq2.gen \
+	| sed -e "s/\tholos\t/\tholos\t/" \
+	| tee    holos.gen
+	wc -l    holos.gen
+holsq3:
+    #               1        2                 34                      5                            6                          7
+	perl -ne \
+	'if (m{\A\%\w\s+(A\d+)\s+(Expansion of\s*)?(([EO]\.)?G\.f\.\:?\s*)?(\d+)\/\s*sqrt\(1\s*[\+\-]\s*(\d*)\s*\*?\s*x\s*[\+\-]\s*(\d*)\s*\*?\s*x\^2\)\s*\.}i) { \
+	my $$b = $$6 / 2; my $$d = $$7; my $$bm2 = - $$b*$$b; my $$dm = - $$d; \
+	print join("\t", $$1, "holos", 0, "[[0]],\[$$dm,$$d],\[$$b,$$bm2],[0,1]]", "[1,$$b]", 0) . "\n" }' \
+	$(COMMON)/cat25.txt      > $@.gen
+	cat $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener
