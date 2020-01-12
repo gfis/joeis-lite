@@ -34,7 +34,7 @@ else
     CPS=:
 endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
-BATLIT=$(JAVA) irvine.test.BatchTest -v $(WITHB) -u $(GU)
+BATLIT=$(JAVA) irvine.test.BatchTest -v $(WITHB) -d $(D) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
@@ -158,7 +158,7 @@ runbt: # Run BatchTest for this group
 	$(BATLIT)  strip.tmp 2>&1 | tee -a batch.log
 evaluate:
 	grep  pass batch.log >     $(CC).pass.log
-	grep  FA   batch.log | tee $(CC).fail.log
+	grep  FAIL batch.log | tee $(CC).fail.log
 	wc -l $(CC).*.log
 bfile:
 	echo make bfile SEQ=123456 N=1000 OFS=1
@@ -651,12 +651,13 @@ gtpas:
 # HolonomicSequence
 #----
 DIST=0
+OFFSET=0
 fholo:
 	grep -E "^$(S)" $(COMMON)/asdata.txt
 	grep $(S) holos.gen | tee x.tmp 
 	$(HOLT) -f x.tmp
 runholo:
-	$(HOLT) -n $(MAXT) -p $(MATRIX) -o $(OFFSET) -i $(INIT) 
+	$(HOLT) -n $(MAXT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D)
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
 #-------------------
