@@ -1072,6 +1072,24 @@ negpos:
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----------------
+# %C A070365 Period 6: repeat [1, 5, 4, 6, 2, 3].
+# %F A118822 Period 8 sequence: [2,-1,0,-1,-2,1,0,1].
+# %C A175408 Period of length 10: {7,2,6,3,5,4,4,5,3,1}.
+# %N A257931 Period length 24 sequence [0, 1, 1, 0, -2, -1, 0, 1, 0, 0, -1, -1, 0, 1, 1, 0, 0, -1, 0, 1, 2, 0, -1, -1].
+period: # PeriodicSequence
+	perl -ne \
+	'if (m{^(\%\w) (A\d+)\s+Period [^\{\(\[]*[\{\(\[]([\- \d\,]+)})'\
+	'{ my ($$aseqno, $$list) = ($$2, $$3); '\
+	'$$list =~ s{ }{}g; print join("\t", $$aseqno, "$@", 0, $$list) . "\n"; }' \
+	$(COMMON)/cat25.txt \
+	| grep -v A210188 \
+	>        $@.gen
+	head -n2 $@.gen
+	tail -n2 $@.gen
+	wc -l    $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+	# ([ \d\,]+)[\}\)\]]})'\
+#----------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
 	perl -ne \
@@ -1234,6 +1252,23 @@ flexfact:
 	'if (m{^(A\d+)\s+(a\(n\)\s*\=\s*)?[fF]loor\s*\(\s*exp\(\s*(\d+)\/(\d+)\)\s*\*\s*n\!\s*\)}) { print join("\t", $$1, "$@", 0, $$3, $$4) . "\n" }' \
 	$(COMMON)/names \
 	| tee -a $@.gen
+#-------------------
+# A109718 Periodic sequence with period {0,1,0,3}, or n^3 mod 4.
+# A109720 Periodic sequence {0,1,1,1,1,1,1} or n^6 mod 7.       
+# A109753 n^3 mod 8; the periodic sequence {0,1,0,3,0,5,0,7}.   
+# A159852 n^2 mod 60.                                           
+# A167129 n^7 mod 21.                                           
+# A167166 a(n) = n^7 mod 16.                                    
+modpow: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
+	cat $(COMMON)/names \
+	| perl -ne \
+	'if (m{[^\(a-z]n\^(\d+) mod (\d+)(.)}) { '\
+	'if ($$3 ne "^") { '\
+	'print join("\t", substr($$_, 0, 7), "$@", 0, $$1, $$2, $$3) . "\n"; }}' \
+	| uniq -w 7 \
+	| tee   $@.gen
+	head -4 $@.gen
+	wc   -l $@.gen
 #--------------------------
 palb:
 	perl -ne \
@@ -1269,23 +1304,6 @@ power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
 # A158644 a(n) = 52*n^2 + 1.
 # A158645 a(n) = 729*n^2 + 27.
 # A158646 a(n) = 54*n^2 + 1.
-#-------------------
-# %N A139739 a(n) = 10^n mod 9^n.
-# %N A139786 a(n) = 7^n mod 6^n.
-# %F A153130 a(n) = 2^n mod 9. - _Nikita Sadkov_, Oct 06 2018
-# %F A153727 a(n) = 4^n mod 7. - _Zerinvary Lajos_, Nov 25 2009
-# %N A167426 a(n) = 2^n mod 28.
-# %N A168399 a(n) = 3^n mod 13.
-# %N A168428 a(n) = 4^n mod 10.
-# %N A168429 a(n) = 4^n mod 11.
-# %N A168430 a(n) = 4^n mod 13.
-powmod: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
-	cat $(COMMON)/names \
-	| perl -ne \
-	'if (m{^(A\d+)\s+a\([nk]\)\s*\=\s*(\d+)\^[nk]\s+mod\s*(\d+)\s*\.}) { \
-	print join("\t", $$1, "$@", 1, $$2, $$3) . "\n" }' \
-	$(COMMON)/names \
-	|   tee $@.gen
 #-------------------
 such_prime:
 	grep Numbers $(COMMON)/names | grep -E 'such *that' | grep -E 'is *prime' \
