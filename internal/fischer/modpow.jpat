@@ -12,8 +12,8 @@ import irvine.oeis.Sequence;
 public class $(ASEQNO) implements Sequence {
 
   private int mN = $(OFFSET);
-  private Z mExp = Z.valueOf($(PARM1));
-  private Z mMod = Z.valueOf($(PARM2));
+  private final Z mExp = Z.valueOf($(PARM1));
+  private final Z mMod = Z.valueOf($(PARM2));
 
   @Override
   public Z next() {
