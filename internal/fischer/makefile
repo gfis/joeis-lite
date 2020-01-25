@@ -661,6 +661,16 @@ runholo:
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
 #-------------------
+holco:
+	grep -E "CoefficientList\[Series" $(COMMON)/cat25.txt \
+	| grep -viE "Sum|Product|Bessel|Elliptic|Hyper|theta|catalan|Drop|Pochhammer|Lambert|Continued" \
+	| cut -b4- \
+	| uniq -w7 \
+	| sed "s/ /\t$@\t0\t/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#-------------------
 # A054122
 # +(-8*n+4*n^2)*a(n-2) + (-4+12n-8n^2)*a(n-1) + (0-1*n+1n^2)*a(n)  = 0.
 # make runholo MATRIX="[[0],[0,-8,4],[-4,12,-8],[0,-1,1]]" INIT="[1,3]"
@@ -1170,6 +1180,63 @@ genf2:
 	wc -l group.tmp
 genf3:
 	make run PATTERN=GeneratingFunctionSequence
+#---------------------------
+# A176832 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
+# a(0)=1, a(1)=5, k=1 and l=-1.
+# A176854 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
+# a(0)=1, a(1)=0, k=-1 and l=0.
+choulet: choulet1 choulet2 choulet3
+choulet1:
+	perl -ne \
+	'my $$line = $$_; if ($$line =~ m{^(A\d+)\s+Sequence defined by the recurrence formula a})'\
+	'{ my $$aseqno = $$1;  '\
+	'$$line =~ m{a\(0\)\s*\=\s*(\-?\d+)\s*\,\s*a\(1\)\s*\=\s*(\-?\d+)\s*\,\s*k\s*\=\s*(\-?\d+)\s*and\s*l\s*\=\s*(\-?\d+)};'\
+	'my ($$a0, $$a1, $$k, $$l) = ($$1, $$2, $$3, $$4);'\
+	'print join("\t", $$aseqno, "$@", 0, $$a0, $$a1, $$k, $$l) . "\n" }' \
+	$(COMMON)/names \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+choulet2:
+	make seq4 LIST=choulet1.tmp
+	$(DBAT) "UPDATE seq4 s SET parm5 = (SELECT substr(d.data, 1, 32) FROM asdata d WHERE s.aseqno = d.aseqno)"
+	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3, parm4, parm5 \
+	    FROM seq4 \
+	    ORDER BY 1" \
+		  > $@.tmp
+	head -4 $@.tmp
+	wc -l   $@.tmp
+choulet3:
+	perl choulet.pl choulet2.tmp | tee holos.gen
+choulet_bf:
+	$(JAVA) irvine.test.SequenceTest A176604 $(N) 0
+#----
+# %F A008544 Conjecture: a(n) + (1-3*n)*a(n-1) + a(n-2) + (7-3*n)*a(n-3) = 0. - _R. J. Mathar_, Nov 14 2011
+conjmath:
+	perl -ne \
+	'my $$line = $$_; if ($$line =~ m{^\%\w (A\d+)\s+Conjecture\:\s*([an0-9 \+\-\*\(\)\^\=]+)\.}) { '\
+	'my ($$aseqno, $$re, $$date) = ($$1, $$2, "yyyy mm dd"); '\
+	'if ($$line =~ m{Mathar\_?\,?\s*(\w+ \d+ \d+)}) { $$date = $$1; '\
+	'$$re =~ s{ }{}g; $$re =~ s{\=}{\=\=}; $$re =~ s{a\(n([\+\-]\d+)?\)}{a\[n$$1\]}g; '\
+	'print join("\t", $$aseqno, "$@", 0, $$date, $$re) . "\n" }}' \
+	$(COMMON)/cat25.txt \
+	| uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#---------------------------
+finifull:
+	$(DBAT) "SELECT i.aseqno, '$@', 0, d.data \
+		FROM asinfo i, bfinfo b, bfdata d \
+		WHERE i.aseqno = b.aseqno \
+		  AND b.aseqno = d.aseqno \
+		  AND i.keyword like '%full%' \
+		  AND b.bfimax - b.bfimin <= d.termno \
+		ORDER BY 1 " \
+	| perl finifull.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #---------------------------
 lrixall:
 	$(DBAT) -x "SELECT DISTINCT 'A' || i.seqno \
