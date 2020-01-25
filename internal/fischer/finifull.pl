@@ -23,21 +23,36 @@ while(<>) {
     s{\s+\Z}{}; # chompr
     $line = $_;
     next if $line =~ m{^\s*\#};
-    my ($aseqno, $callcode, $offset, $init, @rest) = split(/\t/, $line);
-    my $isZ = 0;
-    $init = join(",", 
-        map {
-            my $term = $_;
-            if (0) {
-            } elsif (length($term) > 18) {
-                $isZ = 1;
-            } elsif (length($term) >  9) {
-                $term .= "L";
-            }
-            $term
-        } split(/\,/, $init));
-    if ($isZ == 0 and length($init) <= 1024) {
-        print join("\t", ($aseqno, $callcode, $offset, $init, @rest)) . "\n";
+    my  ($aseqno, $callcode, $offset, $init, @rest) = split(/\t/, $line);
+    my  $isZ = 0;
+    my  $init2 = join(",", 
+            map {
+                my $term = $_;
+                if (0) {
+                } elsif (length($term) > 18) {
+                    $isZ = 1;
+                } elsif (length($term) >  9) {
+                    $term .= "L";
+                }
+                $term
+            } split(/\,/, $init));
+    if ($isZ == 1) {
+        $init2 = "new Z[]{" . join(",", 
+            map {
+                my $term = $_;
+                if (0) {
+                } elsif ($term eq "0") {
+                    $term = "Z.ZERO";
+                } elsif ($term eq "1") {
+                    $term = "Z.ONE";
+                } else {
+                    $term = "new Z(\"$term\")";
+                }
+                $term
+            } split(/\,/, $init)) . "}";
+    }
+    if (length($init2) <= 1024) {
+        print join("\t", ($aseqno, $callcode, $offset, $init2, @rest)) . "\n";
     }
 } # while
 __DATA__

@@ -407,6 +407,61 @@ mma_joeis:
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------
+# %F A238745 a(n) = A181819(A124859(n)).
+chain2:
+	grep -E "a\(n\) *= *A[0-9][0-9]*\(A[0-9][0-9]*\(n\)\)" $(COMMON)/cat25.txt \
+	| perl -ne 'my $$line = $$_; '\
+	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *(A\d+)\((A\d+)\(n\)\)\s*\.}) {'\
+	'print join("\t", $$1, "$@", 0, $$2, $$3) . "\n"; }'\
+	| uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, j.superclass\
+		FROM seq4 s LEFT JOIN joeis j ON s.aseqno = j.aseqno \
+		WHERE parm1 IN (SELECT aseqno FROM joeis) \
+		  AND parm2 IN (SELECT aseqno FROM joeis) \
+		ORDER BY 1"\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+# %F A238745 a(n) = A181819(A124859(n)).
+seqop:
+	grep -E "a\(n\) *= *A[0-9][0-9]*(\([a-z]\))? *[\+\-\*\/m]" $(COMMON)/cat25.txt \
+	| perl -ne 'my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
+	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *(A\d+)(\(\w\))?\s*([\+\-\*\/]|mod)\s*([a-z0-9])\.}) { '\
+	'my ($$aseqno, $$bseqno, $$op, $$term) = ($$1, $$2, $$4, $$5); $$term =~ s{n}{mN}; '\
+	'my %ops = ("+","add", "-", "subtract", "*", "multiply", "/", "divide", "mod", "mod(Z.valueOf"); '\
+	'my $$suffix = "$$ops{$$op}($$term)" . ($$op eq mod ? ")" : ""); '\
+	'print join("\t", $$aseqno, "$@", 0, lc(substr($$bseqno,0,4)), $$bseqno, $$suffix) . "\n"; } '\
+	| uniq -w7 \
+	>         $@.tmp
+	head -n16 $@.tmp
+	wc -l     $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3 \
+		, (SELECT i.offset1 FROM asinfo i WHERE s.parm2 = i.aseqno) \
+		, j.superclass\
+		FROM seq4 s LEFT JOIN joeis j ON s.aseqno = j.aseqno \
+		WHERE parm2        IN (SELECT aseqno FROM joeis) \
+		  AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+		ORDER BY 1"\
+	>         $@.gen
+	head -n4  $@.gen
+	wc -l     $@.gen
+addseq:
+	grep -E "a\(n\) *= *([a-z]|[\+\-\* ])([a-z]|[\+\-\*])* *A[0-9][0-9]*(\([a-z]\))?" $(COMMON)/cat25.txt \
+	| perl -ne 'my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
+	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *([a-z\+\-\* ])+(A\d+)(\(\w\))?\.}) {'\
+	'print join("\t", $$1, "$@", 0, $$3, $$2, substr($$line, 3, 128)) . "\n"; }'\
+	| uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq4 LIST=addseq.tmp
+#--------
 # A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
 # A272999 Numbers k such that (11*10^k + 49)/3 is prime.
 pfprime:
@@ -621,10 +676,11 @@ cfspercent1:
 dupl:
 	perl -ne \
 	'if (m{^(A\d+) (Duplicate of |Essentially the same as |Same as )(A\d+)})'\
-	'{ print join("\t", $$1, "$@", 0, $$3, substr(lc($$3), 0, 4)) . "\n" }' \
+	'{ print join("\t", $$1, "$@", 0, $$3, substr(lc($$3), 0, 4), $$2) . "\n" }' \
 	$(COMMON)/names \
-	>         $@.gen
-	wc -l     $@.gen
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 dupl_cut:
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
@@ -632,9 +688,36 @@ dupl_cut:
 	    WHERE parm1 IN (SELECT aseqno FROM joeis) \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
-	>         dupl.gen
-	head -n 4 dupl.gen
-	wc -l     dupl.gen
+	>        dupl.gen
+	head -n4 dupl.gen
+	wc -l    dupl.gen
+#----
+dead:
+	$(DBAT) -x "SELECT i.aseqno, n.name, 0 \
+	    FROM asinfo i, asname n \
+	    WHERE i.aseqno = n.aseqno \
+	      AND i.keyword LIKE '%dead%' \
+	    ORDER BY 1" \
+	| perl -ne 'my ($$aseqno, $$name, $$rest) = split(/\t/); $$name =~ m{(A\d\d\d+)}; my $$bseqno = $$1; '\
+	' my $$code = lc(substr($$name, 0, 4)); $$code =~ s{inco|not |van |appa|appe}{erro}i; '\
+	' print join("\t", $$aseqno, "$@", 0, $$bseqno, $$code, substr($$name, 0, 64)) . "\n";'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	make seq4 LIST=$@.gen
+dead_check: # Where are dead, erroneous sequences still referenced?
+	$(DBAT) "SELECT r.aseqno, b.keyword, s.aseqno, s.parm2, a.keyword \
+		FROM asxref r, seq4 s, asinfo a, asinfo b \
+		WHERE r.aseqno = b.aseqno \
+		  AND s.aseqno = r.rseqno \
+		  AND s.aseqno = a.aseqno \
+		  AND s.parm1 <> r.aseqno \
+		  AND s.parm2 =  'erro'   \
+		  AND b.keyword NOT LIKE '%dead%' \
+		ORDER BY 1" \
+	| tee    $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
 #-------------------------------
 # Triangles
 # A038220 Triangle whose (i,j)-th entry is binomial(i,j)*3^(i-j)*2^j.	nonn,tabl,easy,	0..8000
@@ -1231,7 +1314,7 @@ finifull:
 		WHERE i.aseqno = b.aseqno \
 		  AND b.aseqno = d.aseqno \
 		  AND i.keyword like '%full%' \
-		  AND b.bfimax - b.bfimin <= d.termno \
+		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
 		ORDER BY 1 " \
 	| perl finifull.pl \
 	>        $@.gen
