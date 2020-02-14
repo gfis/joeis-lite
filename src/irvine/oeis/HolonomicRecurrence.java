@@ -1,7 +1,7 @@
 /* Holonomic sequences where the recurrence equation for a(n)
  * has polynomials in n as coefficients.
  * @(#) $Id$
- * 2020-01-07: preset mBuffer with ZEROes b.o. problems; alos for single/self start
+ * 2020-01-07: preset mBuffer with ZEROes because of problems; also for single/self start
  * 2019-12-17: Constructors with prefix
  * 2019-12-08, Georg Fischer: optimize for the linear case
  * 2019-12-07, Sean Irvine: jOEIS conventions

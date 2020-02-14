@@ -142,6 +142,8 @@ testex: # parameter: CC; test all existing (generated) sequences
 	make stripgr  LIST=ghead.tmp
 	make runbt
 	make evaluate
+log: # generate an HTML page for the failed tests
+	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
 retest: # run the failed ones again (with a higher timeout)
 	cut -b1-7 $(CC).fail.log > failed.tmp
 	grep -f failed.tmp $(CC).gen > $(CC).gen.fail.tmp
@@ -740,7 +742,7 @@ fholo:
 	grep $(S) holos.gen | tee x.tmp 
 	$(HOLT) -f x.tmp
 runholo:
-	$(HOLT) -n $(MAXT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D)
+	$(HOLT) -n $(MAXT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST)
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
 #-------------------
@@ -1304,6 +1306,14 @@ conjmath:
 	'print join("\t", $$aseqno, "$@", 0, $$date, $$re) . "\n" }}' \
 	$(COMMON)/cat25.txt \
 	| uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+conjmath2:
+	$(DBAT) "SELECT s.aseqno, j.superclass \
+	    FROM seq4 s, joeis j \
+	    WHERE s.aseqno = j.aseqno \
+	    ORDER BY 1" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
