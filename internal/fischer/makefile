@@ -12,6 +12,7 @@ COMMON=$(GITS)/OEIS-mat/common
 CONTRIB=$(GITS)/OEIS-mat/contrib
 LINREC=$(GITS)/OEIS-mat/linrec
 HOLREC=$(GITS)/OEIS-mat/holrec
+TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 MAXT=32
@@ -688,8 +689,10 @@ dupl_cut:
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 s \
 	    WHERE parm1 IN (SELECT aseqno FROM joeis) \
+	      AND parm3 like 'Duplicate%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
+	| grep -vE "A082627|A174781" \
 	>        dupl.gen
 	head -n4 dupl.gen
 	wc -l    dupl.gen
@@ -714,7 +717,7 @@ dead_check: # Where are dead, erroneous sequences still referenced?
 		  AND s.aseqno = r.rseqno \
 		  AND s.aseqno = a.aseqno \
 		  AND s.parm1 <> r.aseqno \
-		  AND s.parm2 =  'erro'   \
+		  AND (s.parm2 =  'erro' OR s.parm2 =  'dupl') \
 		  AND b.keyword NOT LIKE '%dead%' \
 		ORDER BY 1" \
 	| tee    $@.txt
@@ -724,14 +727,32 @@ dead_check: # Where are dead, erroneous sequences still referenced?
 # Triangles
 # A038220 Triangle whose (i,j)-th entry is binomial(i,j)*3^(i-j)*2^j.	nonn,tabl,easy,	0..8000
 # A038226 Triangle read by rows: (i,j)-th entry is binomial(i,j)*3^(i-j)*8^j.	nonn,tabl,easy,synth	0..36
-gtpas:
+trigf:
 	perl -ne \
 	'if (m{^(A\d+) Triangle (whose |read by rows\: )\(i\,j\)\-th entry is binomial\(i\,j\)\*(\d+)\^\(i\-j\)\*(\d+)\^j})'\
 	'{ print join("\t", $$1, "$@", 0, 1, "1,-$$3,-$$4") . "\n" }' \
 	$(COMMON)/names \
-	>         $@.gen
-	wc -l     $@.gen
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+dhdop:
+	sed -e "s/dhd/trigf/" $(TRIREC)/dhd_gf.tmp \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
+fract21:
+	grep -E  "fract21"  $(TRIREC)/fract2.tmp \
+	| sed -e "s/fract21/trigf/" \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
+fract22:
+	grep -E  "fract22"  $(TRIREC)/fract2.tmp \
+	| sed -e "s/fract22/trigf/" \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
 #-------------------------------
 # HolonomicSequence
 #----
