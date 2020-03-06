@@ -101,7 +101,7 @@ select2:
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 \
-	    WHERE aseqno NOT IN (SELECT '$(EX)' || aseqno FROM joeis) \
+	    WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  > $(CC).gen
@@ -176,6 +176,8 @@ bfile:
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 joeins:
 	$(DBAT) -v "INSERT INTO joeis (SELECT aseqno, 'HolonomicRec', 'new' FROM seq4);"
+seqtest:
+	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(N) $(OFFSET)
 #=========================================================
 bas:
 	make bas_all TARGET=gener
@@ -738,6 +740,12 @@ trigf:
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 dhdop:
 	sed -e "s/dhd/trigf/" $(TRIREC)/dhd_gf.tmp \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
+rio:
+	grep -E  "fract21"  $(TRIREC)/rio3.tmp \
+	| sed -e "s/fract21/trigf/" \
 	>        trigf.gen
 	tail -n4 trigf.gen
 	wc -l    trigf.gen
@@ -1335,6 +1343,19 @@ conjmath2:
 	    FROM seq4 s, joeis j \
 	    WHERE s.aseqno = j.aseqno \
 	    ORDER BY 1" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#---------------------------
+eulerper:
+	perl -ne \
+	'my $$line = $$_; if ($$line =~ m{Euler transform of period\s+(\d+)\s+(sequence\s+)?\[?([\d\s\,\-]+)}) { '\
+	'my ($$perlen, $$period) = ($$1, $$3); '\
+	'$$line =~ m{^\%\w (A\d+)}; my $$aseqno = $$1;'\
+	'$$period =~ s{\s}{}g; $$period =~ s{\.\.\.}{}; '\
+	'print join("\t", $$aseqno, "$@", 0, $$perlen, $$period) . "\n" }' \
+	$(COMMON)/cat25.txt \
+	| uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
