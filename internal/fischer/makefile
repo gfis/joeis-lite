@@ -101,7 +101,7 @@ select2:
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 \
-	    WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    WHERE aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  > $(CC).gen
@@ -1347,6 +1347,10 @@ conjmath2:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #---------------------------
+euler:
+	echo "$(PER)" | tr , '\n' | $(JAVA) irvine.oeis.EulerTransformSequence $(OFFSET) | less
+
+
 eulerper:
 	perl eulerper.pl $(COMMON)/cat25.txt \
 	| uniq   -w7 \
