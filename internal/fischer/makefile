@@ -1392,10 +1392,16 @@ euleras_dep:
 		  > $(CC).gen
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
+#---------
 evconst:
 	perl evconst.pl \
 		  > $(CC).gen
 	head -4 $(CC).gen
+	wc -l   $(CC).gen
+#--------------------
+kblocks:
+	perl kblocks.pl \
+	| tee   $(CC).gen
 	wc -l   $(CC).gen
 #---------------------------
 finifull:
