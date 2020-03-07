@@ -1348,17 +1348,51 @@ conjmath2:
 	wc -l    $@.gen
 #---------------------------
 eulerper:
+	perl eulerper.pl $(COMMON)/cat25.txt \
+	| uniq   -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+euleras:
 	perl -ne \
-	'my $$line = $$_; if ($$line =~ m{Euler transform of period\s+(\d+)\s+(sequence\s+)?\[?([\d\s\,\-]+)}) { '\
-	'my ($$perlen, $$period) = ($$1, $$3); '\
+	'my $$line = $$_; if ($$line =~ m{Euler transform of (A\d+)}) { '\
+	'my ($$adepend) = ($$1); '\
+	'if (1) {'\
 	'$$line =~ m{^\%\w (A\d+)}; my $$aseqno = $$1;'\
-	'$$period =~ s{\s}{}g; $$period =~ s{\.\.\.}{}; '\
-	'print join("\t", $$aseqno, "$@", 0, $$perlen, $$period) . "\n" }' \
+	'print join("\t", $$aseqno, "$@", 0, lc(substr($$adepend, 0,4)), $$adepend) . "\n" }}' \
 	$(COMMON)/cat25.txt \
 	| uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+eulerlen:
+	perl -ne \
+	'my $$line = $$_; if ($$line =~ m{Euler transform of length[ \-](\d+)\s+(sequence\s+)?\[?([\d \,\-\.]+)}) { '\
+	'my ($$perlen, $$period) = ($$1, $$3); '\
+	'$$period =~ s{\s}{}g; $$period =~ s{\.\.\.}{}; '\
+	'if ($$period =~ m{\A(\-?\d+)(\,\-?\d+)*\Z}) {'\
+	'$$line =~ m{^\%\w (A\d+)}; my $$aseqno = $$1;'\
+	'print join("\t", $$aseqno, "$@", 0, $$perlen, $$period) . "\n" }}' \
+	$(COMMON)/cat25.txt \
+	| uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+euleras_dep:
+	$(DBAT) "DELETE FROM seq4 WHERE parm2 NOT IN (SELECT aseqno FROM joeis);"
+	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
+	    FROM seq4 \
+	    WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1" \
+	| perl -pe "s{\'\'}{\'}g" \
+		  > $(CC).gen
+	head -4 $(CC).gen
+	wc -l   $(CC).gen
+evconst:
+	perl evconst.pl \
+		  > $(CC).gen
+	head -4 $(CC).gen
+	wc -l   $(CC).gen
 #---------------------------
 finifull:
 	$(DBAT) "SELECT i.aseqno, '$@', 0, d.data \
