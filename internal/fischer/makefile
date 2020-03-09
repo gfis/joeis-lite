@@ -1349,17 +1349,15 @@ conjmath2:
 #---------------------------
 euler:
 	echo "$(PER)" | tr , '\n' | $(JAVA) irvine.oeis.EulerTransformSequence $(OFFSET) | less
-
-
 eulerper:
 	perl eulerper.pl $(COMMON)/cat25.txt \
 	| uniq   -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-euleras:
+euleras: # difficult initial terms
 	perl -ne \
-	'my $$line = $$_; if ($$line =~ m{Euler transform of (A\d+)}) { '\
+	'my $$line = $$_; if (($$line =~ m{Euler transform of (A\d+)}) and ($$line !~ m{Inverse Euler})) { '\
 	'my ($$adepend) = ($$1); '\
 	'if (1) {'\
 	'$$line =~ m{^\%\w (A\d+)}; my $$aseqno = $$1;'\
@@ -1369,14 +1367,13 @@ euleras:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-eulerlen:
+eulerasinv: # about 24, with difficult initial terms
 	perl -ne \
-	'my $$line = $$_; if ($$line =~ m{Euler transform of length[ \-](\d+)\s+(sequence\s+)?\[?([\d \,\-\.]+)}) { '\
-	'my ($$perlen, $$period) = ($$1, $$3); '\
-	'$$period =~ s{\s}{}g; $$period =~ s{\.\.\.}{}; '\
-	'if ($$period =~ m{\A(\-?\d+)(\,\-?\d+)*\Z}) {'\
+	'my $$line = $$_; if (($$line =~ m{Inverse Euler transform of (A\d+)})) { '\
+	'my ($$adepend) = ($$1); '\
+	'if (1) {'\
 	'$$line =~ m{^\%\w (A\d+)}; my $$aseqno = $$1;'\
-	'print join("\t", $$aseqno, "$@", 0, $$perlen, $$period) . "\n" }}' \
+	'print join("\t", $$aseqno, "$@", 0, lc(substr($$adepend, 0,4)), $$adepend) . "\n" }}' \
 	$(COMMON)/cat25.txt \
 	| uniq -w7 \
 	>        $@.gen
@@ -1414,6 +1411,9 @@ finifull:
 		ORDER BY 1 " \
 	| perl finifull.pl \
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+logmod:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #---------------------------
@@ -1513,6 +1513,19 @@ modpow: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 	'print join("\t", substr($$_, 0, 7), "$@", 0, $$1, $$2, $$3) . "\n"; }}' \
 	| uniq -w 7 \
 	| tee   $@.gen
+	head -4 $@.gen
+	wc   -l $@.gen
+#-------------------
+# A036160	null	3^n mod 223.	nonn,easy,synth	1
+# A036161	null	a(n) = 2^n mod 227.	nonn,easy,changed,	1
+modpow2: # names: Annnnnn [a(n) = ](\d+)^n mod (\d+)
+	perl -ne \
+	' if (m{\A(A\d+)\s+(a\(n\)\s*\=\s*)?(\d+)\^n\s+mod\s+(\d+)([^\.]*)\.}) {'\
+	' my ($$aseqno, $$base, $$mod, $$rest) = ($$1, $$3, $$4, $$5); $$rest =~ s{\s}{}g;'\
+	' if ($$rest eq "" or $$rest eq "^n") {'\
+	' print join("\t", $$aseqno, ($$rest eq "" ? "modpow2" : "modpow3"), 0, $$base, $$mod) . "\n"; }}' \
+	$(COMMON)/names \
+	>       $@.gen
 	head -4 $@.gen
 	wc   -l $@.gen
 #--------------------------
