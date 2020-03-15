@@ -1632,16 +1632,19 @@ finifu_check: # Sequences with keywords "fini,full"
 	wc -l    $@.txt
 #----
 fininof_check: # Sequences with keywords "fini", but no "full"
-	$(DBAT) -x "SELECT i.aseqno, j.superclass, i.termno, n.name \
-	    FROM  asinfo i, asname n, joeis j \
+	$(DBAT) "SELECT i.aseqno, j.superclass, i.termno, n.name \
+	    FROM  asinfo i, asname n \
+	    LEFT JOIN joeis j ON n.aseqno = j.aseqno \
 	    WHERE i.aseqno = n.aseqno \
-	      and i.aseqno = j.aseqno \
-	      AND i.keyword     LIKE '%fini%'  \
-	      AND i.keyword NOT LIKE '%full%'  \
+	      AND i.keyword     LIKE '%fini%' \
+	      AND i.keyword NOT LIKE '%full%' \
 	    ORDER BY 1" \
 	>        $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
+	cp -v    $@.txt $(COMMON)
+	cd $(COMMON) ; make html_checks 
+	rm -vf $(COMMON)/$@.txt
 #----
 finibf_check: # Sequences with keywords "fini,full", but full terms are in b-file only
 	$(DBAT) -x "SELECT i.aseqno, j.superclass, i.termno, b.bfimax - b.bfimin + 1 \
@@ -1657,6 +1660,7 @@ finibf_check: # Sequences with keywords "fini,full", but full terms are in b-fil
 	>        $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
+#---------------------------
 #---------------------------
 cofr_joeis:
 	$(DBAT) "SELECT COUNT(aseqno) \
@@ -1711,6 +1715,32 @@ cofr_sqrt:
 	" \
 	| tee $@.tmp
 	wc -l $@.tmp
+#--------------------------
+weight_check:
+	grep "Weight distr" $(COMMON)/names \
+	| sed -e "s/ /\tweight\t0\t/" \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) "SELECT s.aseqno, s.parm1, i.termno, i.keyword, i.author \
+		FROM  seq4 s, asinfo i \
+		WHERE s.aseqno NOT IN (SELECT aseqno FROM JOEIS) \
+		  AND s.aseqno = i.aseqno \
+		ORDER BY 1" \
+	>       $@.txt
+	head -4 $@.txt
+	wc   -l $@.txt
+	cp -v   $@.txt $(COMMON)/$@.txt
+	cd $(COMMON) ; make html_checks
+	rm -v   $(COMMON)/$@.txt
+weight2:
+	$(DBAT) "SELECT j.aseqno, j.superclass \
+		FROM  seq2 s, joeis j \
+		WHERE s.aseqno = j.aseqno \
+		ORDER BY 1" \
+	>       $@.j.txt
+	wc   -l $@.j.txt
 #----------------
 seq: # parameter: $(LIST)
 	$(DBAT) -f $(COMMON)/seq.create.sql
