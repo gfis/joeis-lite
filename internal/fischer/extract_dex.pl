@@ -40,6 +40,7 @@ while (<>) {
     my ($aseqno, $class, $offset1, $name) = split(/\t/, $line);
     if ($name =~ m{Decimal\s+expansion\s+of\s+(the\s+)?(constant\s+)?(.*)}) {
         $name = $3;
+        next if $name =~ m{\A\[| the }; # "[Phi, Phi" or "[5,5,...]"
         $name =~ s{\s*\.\s*\Z}{};
         $name =~ s{[\,\:\;\=].*}{}; # remove right side
         # $name =~ s{\s}{}g;
@@ -59,7 +60,6 @@ while (<>) {
         }
     } # if $name =~ m
 } # while <>
-#----
 #--------------------------------------------
 __DATA__
 # OEIS as of February 28 14:44 EST 2019

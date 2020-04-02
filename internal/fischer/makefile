@@ -1490,7 +1490,8 @@ dex4:
 	perl prep_dex.pl dex3.tmp \
 	>       $@.tmp
 	head -4 $@.tmp
-	wc   -l $@.tmp		
+	wc   -l $@.tmp	
+	grep -vE "^#" $@.tmp | wc -l	
 dex:
 	cp dex4.tmp dex.gen
 #--------

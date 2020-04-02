@@ -36,20 +36,28 @@ my %hash =
     , "/", "divide"
     , "^", "ComputableReals.SINGLETON.pow"
     );
+my @number_words = qw(ZERO ONE TWO THREE FOUR FIVE);  # SIX SEVEN EIGHT NINE TEN => undefined
 my $line;
 while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
     if ($line =~ m{\AA\d+\t}) { # starts with aseqno
         my ($aseqno, $callcode, $offset, $postfix, $name) = split(/\t/, $line);
-        my $sep = substr($postfix, 0, 1); # first character is separator
-        $postfix = join(",", map {
+        my $s = substr($postfix, 0, 1); # first character is separator (";")
+        $postfix =~ s{\;2\;pi\;\*\;}{\;tau\;}g;
+        # $postfix =~ s{\;sqrt\(\;2\;sqrt\)\;}{\;sqrt2\;}g;
+        $postfix =~ s{\;1\;2\;\/\;}{\;half\;}g;
+        $postfix =~ s{\;1\;3\;\/\;}{\;one_third\;}g;
+
+        $postfix = join($s, map {
             my $op = $_;
-            if (($op =~ m{\A\d+\Z}) and length($op) >= 10) {
-                $op .= "L";
+            if ($op =~ m{\A\d+\Z}) { # number
+            	if (length($op) >= 10) {
+                	$op .= "L";
+                }
             }
             $op
-            } split(/$sep/, substr($postfix, 1)));
+            } split(/$s/, $postfix));
         # $callcode = "dex" might be changed to "dexcr" (if ComputableReals must be included)
         my @ops = map {
                 my $op = $_; 
@@ -59,29 +67,38 @@ while (<>) {
                 } elsif ($op =~ m{[\^]}) {
                     $callcode = "dexcr";
                     $op = "^?";
-                } elsif ($op =~ m{\A(\d+L?)\Z}) { # number
-                    $op = "CR.valueOf($op)";
-                } elsif ($op =~ m{\A(e|pi)\Z}) { # constant
+                } elsif ($op =~ m{\A(\d+L?)\Z}) { 
+                	$op = "CR.valueOf($op)";
+                } elsif ($op =~ m{\A(e|half|one_third|phi|pi|tau|sqrt2)\Z}) { # constants
                     $op = "CR." . uc($1);
                 } else {
                     $op = "?";
                 }
                 $op
-            } split(/\,/, $postfix);
+            } split(/${s}/, $postfix);
+            	
         my $result = "";
-        if (0) {
-        } elsif (scalar(@ops) == 3) {
-            $result = "($ops[0]$ops[2]$ops[1])";
-        # A176533   dex 2   15,4,sqrt(),15,funct,*,+,3,/    (15+4*sqrt(15))/3
-        } elsif ($postfix =~ m{\A(\d+L?)\,(\d+L?)\,sqrt\(\),(\d+L?)\,funct\,\*\,\+\,(\d+L?)\,\/\Z}) {
-            $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4))";
-        # A176534   dex 2   35,sqrt(),1295,funct,+,7,/  (35+sqrt(1295))/7
-        } elsif ($postfix =~ m{\A(\d+L?)\,sqrt\(\),(\d+L?)\,funct\,\+\,(\d+L?)\,\/\Z}) {
+        if (0) { # always $ops[0] = "" 
+        } elsif (scalar(@ops) == 2) { 
+            $result = "$ops[1]";
+        } elsif (scalar(@ops) == 4) {
+            $result = "($ops[1]$ops[3]$ops[2])";
+        # A176534	dex	2	;35;sqrt(;1295;sqrt);+;7;/	(35+sqrt(1295))/7
+        } elsif ($postfix =~ m{\A\;(\d+L?)\;sqrt\(\;(\d+L?)\;sqrt\)\;\+\;(\d+L?)\;\/\Z}) {
             $result = "(CR.valueOf($1).add(CR.valueOf($2).sqrt())).divide(CR.valueOf($3))";
+        # A176533	dex	2	;15;4;sqrt(;15;sqrt);*;+;3;/	(15+4*sqrt(15))/3
+        } elsif ($postfix =~ m{\A\;(\d+L?)\;(\d+L?)\;sqrt\(\;(\d+L?)\;sqrt\)\;\*\;\+\;(\d+L?)\;\/\Z}) {
+            $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4))";
+        # A159811	dex	1	;105507;65798;sqrt(;2;sqrt);*;+;223;2;^;/	(105507 + 65798*sqrt(2))/223^2
+        } elsif ($postfix =~ m{\A\;(\d+L?);(\d+L?)\;sqrt\(\;(\d+L?)\;sqrt\)\;\*\;\+\;(\d+L?)\;2\;\^\;\/\Z}) {
+            $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4).multiply(CR.valueOf($4)))";
         } else {
             $result = "?";
+            print "# " . join("\t", $aseqno, $callcode, $offset, $postfix, join(";", @ops), $name) . "\n";
         }
         if ($result !~ m{\?}) {
+        	$result =~ s{CR\.valueOf\(2\)\.sqrt\(\)}{CR\.SQRT2}g; 
+        	$result =~ s{CR\.valueOf\(([0-5])\)}{CR\.$number_words[$1]}g; # known number constants
             print join("\t", $aseqno, $callcode, $offset, $result, $name) . "\n";
         }
     } # if aseqno
