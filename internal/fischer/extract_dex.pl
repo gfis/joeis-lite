@@ -6,7 +6,7 @@
 # 2019-05-28, Georg Fischer
 #
 #:# Usage:
-#:#   perl extract_dex.pl [-d debug] jnames.txt > outfile
+#:#   perl extract_dex.pl [-d debug] $(COMMON)/joeis_names.txt > outfile
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -37,27 +37,25 @@ my $content;
 while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
-    my ($aseqno, $class, $name, $keywords, $range) = split(/\t/, $line);
-    if ($name =~ m{Decimal\s+expansion\s+of\s+(the\s+constant\s+)?(.*)}) {
-        $name = $2;
+    my ($aseqno, $class, $offset1, $name) = split(/\t/, $line);
+    if ($name =~ m{Decimal\s+expansion\s+of\s+(the\s+)?(constant\s+)?(.*)}) {
+        $name = $3;
         $name =~ s{\s*\.\s*\Z}{};
         $name =~ s{[\,\:\;\=].*}{}; # remove right side
         # $name =~ s{\s}{}g;
         $name = lc($name);
         $name =~ s{\) and of arc.*}{};
-        my @words = grep {! m{\A(e|pi|log|log_|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan|cot|csc|sec|cosecans|secans|)h?))\Z}} ($name =~ m{[a-z\_]+}g);
-	    next if $class ne "null"; # nyi in jOEIS
-        next if $name =~ m{[Aa]\d{6}}; # no A-number
-        next if $name =~ m{\!}; # no factorial
-        if ($name =~ m{(\.\.|\')}) { # ignore those with ellipsis or apostrophe
+        my @words = grep 
+            {! m{\A(e|pi|log|log_|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan|cot|csc|sec|cosecans|secans|)h?))\Z}} 
+            ($name =~ m{[a-z\_]+}g);
+        if ($name =~ m{[Aa]\d{6}|!|\.\.|\'|\^\D}) { # no A-number, factorial, ellipsis, derivative, non-integer exponent
         } elsif (scalar(@words) == 0) {
             $name =~ tr{\{\}\[\]}
                        {\(\)\(\)};
-            print        join("\t", $aseqno, $class, $name
-                    # , $keywords, $range
-                    ) . "\n";
+            print join("\t", $aseqno, $class, $offset1, "", $name) . "\n";
         } else {
-            # print "# " . join("\t", $aseqno, $class, $name, $keywords, $range) . "\n";
+            print "# ";
+            print join("\t", $aseqno, $class, $offset1, "", $name) . "\n";
         }
     } # if $name =~ m
 } # while <>

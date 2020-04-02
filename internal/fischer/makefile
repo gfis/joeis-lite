@@ -1462,29 +1462,37 @@ gen_mmac:
 	wc   -l $@.tmp
 	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
 #--------------------------
-dex: dex_impl dex_nimpl
-dex_sel: # names: Annnnnn Decimal expansion of ... and in jOEIS
-	$(DBAT) "SELECT a.aseqno, n.name, a.keyword \
+dex0: dex1 dex2 dex3 dex4
+dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
+	$(DBAT) -x "SELECT a.aseqno, 'dex', a.offset1, n.name, a.keyword \
 		FROM asinfo a, bfinfo b, asname n \
 		WHERE a.aseqno = n.aseqno \
 		  AND b.aseqno = n.aseqno \
 		  AND a.keyword LIKE '%cons%' \
+		  AND n.name    LIKE 'Decimal expansion of%' \
 		  AND b.maxlen = 1 \
 		  AND a.aseqno NOT IN (SELECT aseqno FROM joeis) \
 		ORDER BY 1" \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
-dex_extr:
-	perl extract_dex.pl $(COMMON)/jnames.txt \
+dex2:
+	perl extract_dex.pl dex1.tmp \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
-dex_joeis:
-	$(RAMATH).symbolic.ShuntingYard joeis -f dex_extr.tmp \
+dex3:
+	$(RAMATH).sequence.JoeisPreparer -f dex2.tmp \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
+dex4:
+	perl prep_dex.pl dex3.tmp \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@.tmp		
+dex:
+	cp dex4.tmp dex.gen
 #--------
 # A030801 [ exp(17/24)*n! ].
 # A030802 a(n) = floor( exp(13/24)*n! ).
