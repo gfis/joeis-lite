@@ -1471,6 +1471,7 @@ dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
 		  AND a.keyword LIKE '%cons%' \
 		  AND n.name    LIKE 'Decimal expansion of%' \
 		  AND b.maxlen = 1 \
+		  AND a.aseqno NOT IN ('A117853') \
 		  AND a.aseqno NOT IN (SELECT aseqno FROM joeis) \
 		ORDER BY 1" \
 	>       $@.tmp
@@ -1478,6 +1479,7 @@ dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
 	wc   -l $@.tmp
 dex2:
 	perl extract_dex.pl dex1.tmp \
+	| sed -e "s/pi log/pi\*log/" \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp
@@ -1487,7 +1489,8 @@ dex3:
 	head -4 $@.tmp
 	wc   -l $@.tmp
 dex4:
-	perl prep_dex.pl dex3.tmp \
+	# perl prep_dex.pl dex3.tmp 
+	perl infix_dex.pl dex3.tmp \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp	

@@ -4,6 +4,8 @@ package irvine.oeis.$(PACK);
 
 import irvine.math.cr.CR;
 import irvine.math.cr.ComputableReals;
+import irvine.math.cr.EulerGamma;
+import irvine.math.cr.Zeta;
 import irvine.oeis.DecimalExpansionSequence;
 
 /**
@@ -12,6 +14,7 @@ import irvine.oeis.DecimalExpansionSequence;
  */
 public class $(ASEQNO) extends DecimalExpansionSequence {
 
+  private static final ComputableReals REALS = ComputableReals.SINGLETON;
   private static final CR N = $(PARM1);
 
   @Override

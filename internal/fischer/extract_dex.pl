@@ -44,8 +44,10 @@ while (<>) {
         $name =~ s{\s*\.\s*\Z}{};
         $name =~ s{[\,\:\;\=].*}{}; # remove right side
         # $name =~ s{\s}{}g;
+        $name =~ s{\s([\+\-\*\/])\s}{$1}g;
         $name = lc($name);
         $name =~ s{\) and of arc.*}{};
+        $name =~ s{\A(\S+) (\S+)\Z}{$1\($2\)}; # e.g. "log 1/3"
         my @words = grep 
             {! m{\A(e|pi|log|log_|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan|cot|csc|sec|cosecans|secans|)h?))\Z}} 
             ($name =~ m{[a-z\_]+}g);
@@ -82,6 +84,23 @@ public class A086201 extends DecimalExpansionSequence {
   @Override
   protected CR getCR() {
     return N;
+  }
+}
+
+/**
+ * A004593 Expansion of e in base 2.
+ * @author Sean A. Irvine
+ */
+public class A004593 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A004593() {
+    super(false, 2);
+  }
+
+  @Override
+  protected CR getCR() {
+    return CR.E;
   }
 }
 

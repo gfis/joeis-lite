@@ -2,10 +2,10 @@
 
 # Prepare formulas for decimal expansion using CR functions
 # @(#) $Id$
-# 2020-04-01, Georg Fischer
+# 2020-04-03, Georg Fischer: copied from prep_dex.pl
 #
 #:# Usage:
-#:#   perl prep_dex.pl [-d debug] dex3.tmp > outfile
+#:#   perl infix_dex.pl [-d debug] dex3.tmp > outfile
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -29,12 +29,21 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 
+my $CRS = "REALS";
 my %hash = 
-    ( "+", "add"
-    , "-", "subtract"
-    , "*", "multiply"
-    , "/", "divide"
-    , "^", "ComputableReals.SINGLETON.pow"
+    ( "arccos",     "$CRS.acos"
+    , "arcsin",     "$CRS.asin"
+    , "arctan",     "$CRS.atan"
+    , "arccot",     "$CRS.acot"
+    , "cosh",       "$CRS.cosh"
+    , "sinh",       "$CRS.sinh"
+    , "tan",        "$CRS.tan"
+    , "tanh",       "$CRS.tanh"
+    , "cot",        "$CRS.cot"
+    , "coth",       "$CRS.coth"
+    , "csc",        "$CRS.csc"
+    , "csch",       "$CRS.csch"
+    , "sech",       "$CRS.sech"
     );
 my @number_words = qw(ZERO ONE TWO THREE FOUR FIVE);  # SIX SEVEN EIGHT NINE TEN => undefined
 my $line;
@@ -52,44 +61,108 @@ while (<>) {
         $postfix = join($s, map {
             my $op = $_;
             if ($op =~ m{\A\d+\Z}) { # number
-            	if (length($op) >= 10) {
-                	$op .= "L";
+                if (length($op) >= 10) {
+                    $op .= "L";
                 }
             }
             $op
             } split(/$s/, $postfix));
         # $callcode = "dex" might be changed to "dexcr" (if ComputableReals must be included)
-        my @ops = map {
-                my $op = $_; 
+        my @ops = split(/${s}/, substr($postfix, 1));
+        my @stack = ();
+        my ($op1, $op2);
+        my $iop = 0;
+        my $error = 0;
+        while ($iop < scalar(@ops) and $error == 0) { 
+            my $op = $ops[$iop]; 
+            if (0) {
+            } elsif ($op =~ m{\A(\d+L?)\Z}) { # number
+                $op = "CR.valueOf($op)";
+                push(@stack, $op);
+            } elsif ($op =~ m{\A(e|half|one_third|phi|pi|tau|sqrt2)\Z}) { # named constant
+                $op = "(CR." . uc($1) . ")";
+                push(@stack, $op);
+            } elsif ($op eq "+") { # +
+                $op2 = pop(@stack);
+                $op1 = pop(@stack);
+                push(@stack, "$op1.add($op2)");
+            } elsif ($op eq "-") { # -
+                $op2 = pop(@stack);
+                $op1 = pop(@stack);
+                push(@stack, "$op1.subtract($op2)");
+            } elsif ($op eq "*") { # *
+                $op2 = pop(@stack);
+                $op1 = pop(@stack);
+                push(@stack, "$op1.multiply($op2)");
+            } elsif ($op eq "/") { # /
+                $op2 = pop(@stack);
+                $op1 = pop(@stack);
+                push(@stack, "$op1.divide($op2)");
+            } elsif ($op eq "^") { # ^
+                $op2 = pop(@stack);
+                $op1 = pop(@stack);
                 if (0) {
-                } elsif ($op =~ m{[\+\-\*\/]}) {
-                    $op = ").$hash{$op}(";
-                } elsif ($op =~ m{[\^]}) {
+                } elsif ($op2 eq "CR.TWO") {
+                    push(@stack, "$op1.multiply($op1)");
+                } elsif ($op1 eq "CR.E") {
+                    push(@stack, "$op2.exp()");
+                } else {
+                    # ComputableReals.SINGLETON.pow(CR.FOUR, CR.THREE.inverse());
                     $callcode = "dexcr";
-                    $op = "^?";
-                } elsif ($op =~ m{\A(\d+L?)\Z}) { 
-                	$op = "CR.valueOf($op)";
-                } elsif ($op =~ m{\A(e|half|one_third|phi|pi|tau|sqrt2)\Z}) { # constants
-                    $op = "CR." . uc($1);
+                    push(@stack, "$CRS.pow($op1, $op2)");
+                }
+            } elsif ($op =~ m{\(\Z}) { # start of function call
+                # ignore
+            } elsif ($op =~ m{\A(arcsin|arccos|arctan|sinh|cosh|tan|tanh|cot|coth|csc|csch|sech)\)\Z}) { # end of function call
+                $op = $1;
+                $op1 = pop(@stack);
+                $callcode = "dexcr";
+                push(@stack, "$hash{$op}($op1)");
+            } elsif ($op =~ m{\A(sqrt|log|exp|sin|cos)\)\Z}) { # end of function call
+                $op1 = pop(@stack);
+                $op =~ s{\)}{\(\)};
+                push(@stack, "$op1.$op");
+            } elsif ($op =~ m{\A(zeta)\)\Z}) { # end of zeta call
+                $op1 = pop(@stack);
+                if ($op1 =~ m{\ACR.valueOf\((\d+)\)\Z}) { # int parameter; 2nd would be precision?
+                	$op1 = $1;
+                    $callcode = "dexcr";
+                    push(@stack, "Zeta.zeta($op1)");
                 } else {
                     $op = "?";
+                    $error = 1;
                 }
-                $op
-            } split(/${s}/, $postfix);
-            	
+            } elsif ($op =~ m{\A(gamma|eulergamma)\Z}) { # EulerGamma
+                $callcode = "dexcr";
+                push(@stack, "(EulerGamma.SINGLETON)");
+            } elsif ($op =~ m{\A(log_(10|2))\)\Z}) { # log_10
+                my $base = $2;
+                $op1 = pop(@stack);
+                push(@stack, "$op1.log().divide(CR.valueOf($base).log())");
+            } else {
+                $op = "?";
+                $iop = scalar(@ops); # break loop
+                $error = 1;
+            }
+            $ops[$iop] = $op;
+            $iop ++;
+        } # while $iop
+                
         my $result = "";
         if (0) { # always $ops[0] = "" 
-        } elsif (scalar(@ops) == 2) { 
+        } elsif (scalar(@stack) == 1 and $error == 0) {
+            $result = pop(@stack);
+        } elsif (scalar(@ops) == 1) { 
             $result = "$ops[1]";
-        } elsif (scalar(@ops) == 4) {
-            $result = "($ops[1]$ops[3]$ops[2])";
-        # A176534	dex	2	;35;sqrt(;1295;sqrt);+;7;/	(35+sqrt(1295))/7
+        } elsif (scalar(@ops) == 3) {
+            $result = "($ops[0]$ops[2]$ops[1])";
+        # A176534   dex 2   ;35;sqrt(;1295;sqrt);+;7;/  (35+sqrt(1295))/7
         } elsif ($postfix =~ m{\A\;(\d+L?)\;sqrt\(\;(\d+L?)\;sqrt\)\;\+\;(\d+L?)\;\/\Z}) {
             $result = "(CR.valueOf($1).add(CR.valueOf($2).sqrt())).divide(CR.valueOf($3))";
-        # A176533	dex	2	;15;4;sqrt(;15;sqrt);*;+;3;/	(15+4*sqrt(15))/3
+        # A176533   dex 2   ;15;4;sqrt(;15;sqrt);*;+;3;/    (15+4*sqrt(15))/3
         } elsif ($postfix =~ m{\A\;(\d+L?)\;(\d+L?)\;sqrt\(\;(\d+L?)\;sqrt\)\;\*\;\+\;(\d+L?)\;\/\Z}) {
             $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4))";
-        # A159811	dex	1	;105507;65798;sqrt(;2;sqrt);*;+;223;2;^;/	(105507 + 65798*sqrt(2))/223^2
+        # A159811   dex 1   ;105507;65798;sqrt(;2;sqrt);*;+;223;2;^;/   (105507 + 65798*sqrt(2))/223^2
         } elsif ($postfix =~ m{\A\;(\d+L?);(\d+L?)\;sqrt\(\;(\d+L?)\;sqrt\)\;\*\;\+\;(\d+L?)\;2\;\^\;\/\Z}) {
             $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4).multiply(CR.valueOf($4)))";
         } else {
@@ -97,8 +170,8 @@ while (<>) {
             print "# " . join("\t", $aseqno, $callcode, $offset, $postfix, join(";", @ops), $name) . "\n";
         }
         if ($result !~ m{\?}) {
-        	$result =~ s{CR\.valueOf\(2\)\.sqrt\(\)}{CR\.SQRT2}g; 
-        	$result =~ s{CR\.valueOf\(([0-5])\)}{CR\.$number_words[$1]}g; # known number constants
+            $result =~ s{CR\.valueOf\(2\)\.sqrt\(\)}{CR\.SQRT2}g; # simplify sqrt(2)
+            $result =~ s{CR\.valueOf\(([0-5])\)}{\(CR\.$number_words[$1]\)}g; # known number constants
             print join("\t", $aseqno, $callcode, $offset, $result, $name) . "\n";
         }
     } # if aseqno
@@ -157,10 +230,6 @@ public class A020759 extends DecimalExpansionSequence {
  * A091724 Decimal expansion of <code>e^(2*EulerGamma)</code>.
 public class A091724 extends DecimalExpansionSequence {
   private static final CR N = EulerGamma.SINGLETON.multiply(CR.TWO).exp();
-
-   * A053511 Decimal expansion of <code>log_10</code> (Pi).
-public class A053511 extends DecimalExpansionSequence {
-  private static final CR N = CR.PI.log().divide(CR.valueOf(10).log());
 
  * A060295 Decimal expansion of <code>exp(Pi*sqrt(163))</code>.
 public class A060295 extends DecimalExpansionSequence {
