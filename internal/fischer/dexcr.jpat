@@ -14,12 +14,13 @@ import irvine.oeis.DecimalExpansionSequence;
  */
 public class $(ASEQNO) extends DecimalExpansionSequence {
 
+  private static final ComputableReals REALS = ComputableReals.SINGLETON;
+  private static final CR N = $(PARM1);
+
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(PARM2), $(PARM3));
   }
-  private static final ComputableReals REALS = ComputableReals.SINGLETON;
-  private static final CR N = $(PARM1);
 
   @Override
   protected CR getCR() {
