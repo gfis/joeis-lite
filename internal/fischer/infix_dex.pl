@@ -51,13 +51,13 @@ while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
     if ($line =~ m{\AA\d+\t}) { # starts with aseqno
-        my ($aseqno, $callcode, $offset, $postfix, $name) = split(/\t/, $line);
+        my ($aseqno, $callcode, $offset, $postfix, $keep0, $base, $name) = split(/\t/, $line);
         my $s = substr($postfix, 0, 1); # first character is separator (";")
         $postfix =~ s{\;2\;pi\;\*\;}{\;tau\;}g;
         # $postfix =~ s{\;sqrt\(\;2\;sqrt\)\;}{\;sqrt2\;}g;
         $postfix =~ s{\;1\;2\;\/\;}{\;half\;}g;
         $postfix =~ s{\;1\;3\;\/\;}{\;one_third\;}g;
-
+        $postfix =~ s{\s+}{}g;
         $postfix = join($s, map {
             my $op = $_;
             if ($op =~ m{\A\d+\Z}) { # number
@@ -149,7 +149,8 @@ while (<>) {
         } # while $iop
                 
         my $result = "";
-        if (0) { # always $ops[0] = "" 
+        if ($base > 36) { # jOEIS DecimalExpansion restriction
+            $result = "?";
         } elsif (scalar(@stack) == 1 and $error == 0) {
             $result = pop(@stack);
         } elsif (scalar(@ops) == 1) { 
@@ -167,12 +168,12 @@ while (<>) {
             $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4).multiply(CR.valueOf($4)))";
         } else {
             $result = "?";
-            print "# " . join("\t", $aseqno, $callcode, $offset, $postfix, join(";", @ops), $name) . "\n";
+            print "# " . join("\t", $aseqno, $callcode, $offset, $postfix, $keep0, $base, join(";", @ops), $name) . "\n";
         }
         if ($result !~ m{\?}) {
             $result =~ s{CR\.valueOf\(2\)\.sqrt\(\)}{CR\.SQRT2}g; # simplify sqrt(2)
             $result =~ s{CR\.valueOf\(([0-5])\)}{\(CR\.$number_words[$1]\)}g; # known number constants
-            print join("\t", $aseqno, $callcode, $offset, $result, $name) . "\n";
+            print join("\t", $aseqno, $callcode, $offset, $result, $keep0, $base, $name) . "\n";
         }
     } # if aseqno
 } # while <>

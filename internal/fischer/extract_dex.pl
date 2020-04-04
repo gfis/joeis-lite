@@ -2,6 +2,7 @@
 
 # Extract formulas for decimal expansion sequences
 # @(#) $Id$
+# 2020-04-04: other bases
 # 2019-06-15: renamed from extract_decexp.pl
 # 2019-05-28, Georg Fischer
 #
@@ -30,38 +31,74 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 
+my %bases = qw(binary 2 digital 2 ternary 3 duodecimal 12 hexadecimal 16 sexagesimal 60);
 my $line;
-my $code;
-my $comt     = "";
-my $content;
+my $base  = 10;
+my $keep0 = "true"; # whether to keep leading zeroes
+my ($aseqno, $class, $offset1, $name);
 while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
-    my ($aseqno, $class, $offset1, $name) = split(/\t/, $line);
-    if ($name =~ m{Decimal\s+expansion\s+of\s+(the\s+)?(constant\s+)?(.*)}) {
-        $name = $3;
-        next if $name =~ m{\A\[| the }; # "[Phi, Phi" or "[5,5,...]"
-        $name =~ s{\s*\.\s*\Z}{};
-        $name =~ s{[\,\:\;\=].*}{}; # remove right side
-        # $name =~ s{\s}{}g;
-        $name =~ s{\s([\+\-\*\/])\s}{$1}g;
-        $name = lc($name);
-        $name =~ s{\) and of arc.*}{};
-        $name =~ s{\A(\S+) (\S+)\Z}{$1\($2\)}; # e.g. "log 1/3"
-        my @words = grep 
-            {! m{\A(e|pi|log|log_|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan|cot|csc|sec|cosecans|secans|)h?))\Z}} 
-            ($name =~ m{[a-z\_]+}g);
-        if ($name =~ m{[Aa]\d{6}|!|\.\.|\'|\^\D}) { # no A-number, factorial, ellipsis, derivative, non-integer exponent
-        } elsif (scalar(@words) == 0) {
-            $name =~ tr{\{\}\[\]}
-                       {\(\)\(\)};
-            print join("\t", $aseqno, $class, $offset1, "", $name) . "\n";
-        } else {
-            print "# ";
-            print join("\t", $aseqno, $class, $offset1, "", $name) . "\n";
+    ($aseqno, $class, $offset1, $name) = split(/\t/, $line);
+    $name =~ s{Base\-60 \(Babylonian or sexagesimal\)}{Sexagesimal};
+    $base = 10;
+    if ($name =~ m{\.\.\.}) { 
+    	# ignore if ellipsis
+    	
+    } elsif ($name =~ m{(The |\A)Decimal\s+(expansion|representation)\s+of\s+(the\s+)?(constant\s+)?(.*)}i) {
+        #               1                 2                                 3        4             5
+        # order of elsif matters!
+        $name = $5;
+        $base = 10;
+        &evaluate();    
+
+    } elsif ($name =~ m{(The\s+)?(Binary|DigitalTernary|Duodecimal|Hexadecimal|Sexagesimal|Base[\- ](\d+)|)\s*(Expansion|Representation)\s+of\s+(the\s+)?(constant\s+)?([^\.\;\,\<\>\=]+)}i) {
+        #               1        2                                                                  3          4                                5        6             7          
+        my $basew = $2 || "";
+        my $baseb = $3 || "";
+        $name = $7     || "";
+        if ($name =~ m{\s+in base[\- ](\d+)}   ) {
+            $base = $1;
+            $name =~ s{in base[\- ](\d+)}{};
+        } elsif (length($basew) > 0) {
+            if ($basew =~ m{base}i) {
+                $base = $baseb;
+            } else {
+                $basew = $bases{lc($basew)} || "";
+                if (length($basew) > 0) {
+                    $base = $basew;
+                }
+            }
         }
+        &evaluate();
+        
     } # if $name =~ m
 } # while <>
+#----
+sub evaluate {
+    $keep0 = ($offset1 < 0 or ($aseqno =~ m{A0197[29]|A22206[67]})) ? "false" : "true";
+    return if $name =~ m{\A\[| the }; # "[Phi, Phi" or "[5,5,...]"
+    $name =~ s{\s*\.\s*\Z}{};
+    $name =~ s{[\,\:\;].*}{}; # remove all behind formula
+    $name =~ s{\s*([\+\-\*\/])\s*}{$1}g;
+    $name =  lc($name);
+    $name =~ s{\) and of arc.*}{};
+    $name =~ s{(\W\d+) ([A-Za-z])}{$1\*$2}g; # A177067, 
+    $name =~ s{\A(\S+)\s+(\S+)\Z}{$1\($2\)}; # e.g. "log 1/3"
+    $name =~ s{\s}{}g;
+    my @words = grep 
+        {! m{\A(e|pi|log|log_\d+|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan|cot|csc|sec|cosecans|secans|)h?))\Z}} 
+        ($name =~ m{([a-z][a-z0-9\_]+)}g);
+    if ($name =~ m{[Aa]\d{6}|!|\.|\=|\'}) { # no A-number, factorial, ellipsis, derivative
+    } elsif (scalar(@words) == 0) {
+        $name =~ tr{\{\}\[\]}
+                   {\(\)\(\)};
+        print join("\t", $aseqno, $class, $offset1, "postfix", $keep0, $base, $name, "A", "B") . "\n";
+    } else {
+        print "# ";
+        print join("\t", $aseqno, $class, $offset1, "postfix", $keep0, $base, $name, "a", "a") . "\n";
+    }
+} # evaluate
 #--------------------------------------------
 __DATA__
 # OEIS as of February 28 14:44 EST 2019

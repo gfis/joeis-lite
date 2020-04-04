@@ -1464,15 +1464,13 @@ gen_mmac:
 #--------------------------
 dex0: dex1 dex2 dex3 dex4
 dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
+	$(DBAT) "UPDATE asname SET name = 'Decimal expansion of 2*(5-3*exp(1/2))/(2*exp(1/2)-3).' WHERE aseqno = 'A108813'"
 	$(DBAT) -x "SELECT a.aseqno, 'dex', a.offset1, n.name, a.keyword \
 		FROM asinfo a, bfinfo b, asname n \
 		WHERE a.aseqno = n.aseqno \
 		  AND b.aseqno = n.aseqno \
-		  AND a.keyword LIKE '%cons%' \
-		  AND n.name    LIKE 'Decimal expansion of%' \
-		  AND b.maxlen = 1 \
-		  AND a.aseqno NOT IN ('A117853') \
-		  AND a.aseqno NOT IN (SELECT aseqno FROM joeis) \
+		  AND a.keyword    LIKE '%cons%' \
+		  AND b.maxlen <= 2 \
 		ORDER BY 1" \
 	>       $@.tmp
 	head -4 $@.tmp
@@ -1489,8 +1487,8 @@ dex3:
 	head -4 $@.tmp
 	wc   -l $@.tmp
 dex4:
-	# perl prep_dex.pl dex3.tmp 
 	perl infix_dex.pl dex3.tmp \
+	| grep -vE "^(A114054|A117853|A202955|A248622)" \
 	>       $@.tmp
 	head -4 $@.tmp
 	wc   -l $@.tmp	
