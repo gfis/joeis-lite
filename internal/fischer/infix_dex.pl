@@ -86,6 +86,9 @@ while (<>) {
                 $op2 = pop(@stack);
                 $op1 = pop(@stack);
                 push(@stack, "$op1.add($op2)");
+            } elsif ($op eq "-.") { # unary -
+                $op1 = pop(@stack);
+                push(@stack, "$op1.negate()");
             } elsif ($op eq "-") { # -
                 $op2 = pop(@stack);
                 $op1 = pop(@stack);

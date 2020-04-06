@@ -762,6 +762,15 @@ fract22:
 	tail -n4 trigf.gen
 	wc -l    trigf.gen
 #-------------------------------
+hosqrt: hosqrt1 
+hosqrt1:
+	perl extract_hosqrt.pl $(COMMON)/cat25.txt \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+hosqrt2:
+	#
+#-------------------------------
 # HolonomicSequence
 #----
 DIST=0
