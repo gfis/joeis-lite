@@ -762,14 +762,8 @@ fract22:
 	tail -n4 trigf.gen
 	wc -l    trigf.gen
 #-------------------------------
-hosqrt: hosqrt1 
-hosqrt1:
-	perl extract_hosqrt.pl $(COMMON)/cat25.txt \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-hosqrt2:
-	#
+# homgf: # g.f.s of type (o) ordinary or (e)xponential
+#	cp -v $(HOLREC)/homgf3.tmp homgf.gen
 #-------------------------------
 # HolonomicSequence
 #----
@@ -818,13 +812,19 @@ holsq:
 	>        $(HOLREC)/rectab4.tmp
 	head -n4 $(HOLREC)/rectab4.tmp
 	wc -l    $(HOLREC)/rectab4.tmp
+homgf:
+	cat $(HOLREC)/homgf6.tmp \
+	| perl -ne 'print if ! m{\te\t};' \
+	>        $(HOLREC)/rectab4.tmp
+	head -n4 $(HOLREC)/rectab4.tmp
+	wc -l    $(HOLREC)/rectab4.tmp
 holos:
 	grep -E "holos" $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+	# perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 LOG=holos
 holosrem: hrem1 hrem2 hrem3 hrem4
 hrem1:
@@ -896,7 +896,7 @@ holog0:
 holog:
 	sed -e "s/holog1/holos/" \
 	-e "s/  //" holog0.2.tmp \
-	>        $@.gen
+	>        $@.gen	
 #----
 holol0: holol1 holol2 holol3
 # get all from lrlink which are not in joeis
