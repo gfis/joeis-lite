@@ -769,12 +769,13 @@ fract22:
 #----
 DIST=0
 OFFSET=0
+GFTYPE=0
 fholo:
 	grep -E "^$(S)" $(COMMON)/asdata.txt
 	grep $(S) holos.gen | tee x.tmp 
 	$(HOLT) -f x.tmp
 runholo:
-	$(HOLT) -n $(MAXT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST)
+	$(HOLT) -n $(MAXT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
 #-------------------
@@ -814,7 +815,7 @@ holsq:
 	wc -l    $(HOLREC)/rectab4.tmp
 homgf:
 	cat $(HOLREC)/homgf6.tmp \
-	| perl -ne 'print if ! m{\te\t};' \
+	| perl -ne 'print if ! m{\te(gf)?\t};' \
 	>        $(HOLREC)/rectab4.tmp
 	head -n4 $(HOLREC)/rectab4.tmp
 	wc -l    $(HOLREC)/rectab4.tmp
