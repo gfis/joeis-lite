@@ -7,6 +7,7 @@
  * 2019-12-08, Georg Fischer: optimize for the linear case
  * 2019-12-07, Sean Irvine: jOEIS conventions
  * 2019-12-04, Georg Fischer
+ * 2020-04-13, Sean Irvine: jOEIS conventions
  */
 package irvine.oeis;
 
@@ -92,7 +93,7 @@ public class HolonomicRecurrence implements Sequence {
    * @param matrix    polynomials as coefficients of <code>n^i, i=0..m</code>,
    *                  as an array of String vectors, for example "[[0,1,2],[0],[17,0,18]]"
    *                  in the holonomic case, or a simple vector "[0,1,2]" in the linear case.
-   *                  The brackets must be spedified accordingly.
+   *                  The brackets must be specified accordingly.
    * @param initTerms initial values of a[0..k], as a String vector, for example "[0,1,2,3]"
    * @param nDist     index distance between the highest recurrence element and a[n]: 0..k-1
    */
@@ -136,13 +137,13 @@ public class HolonomicRecurrence implements Sequence {
    * @param matrix    polynomials as coefficients of <code>n^i, i=0..m</code>,
    *                  as an array of String vectors, for example "[[0,1,2],[0],[17,0,18]]"
    *                  in the holonomic case, or a simple vector "[0,1,2]" in the linear case.
-   *                  The brackets must be spedified accordingly.
+   *                  The brackets must be specified accordingly.
    * @param prefix    initial values of the sequence which do not participate in the recurrence
    * @param initTerms initial values of a[0..k], as a String vector, for example "[0,1,2,3]"
    * @param nDist     index distance between the highest recurrence element and a[n]: 0..k-1
    */
   public HolonomicRecurrence(final int offset, final String matrix, final String prefix, final String initTerms, final int nDist) {
-    this(offset, matrix, (prefix + "," + initTerms).replaceAll("\\s*\\]\\s*\\,\\s*\\[\\s*", ","), nDist);
+    this(offset, matrix, (prefix + "," + initTerms).replaceAll("\\s*]\\s*,\\s*\\[\\s*", ","), nDist);
   } // Constructor
 
   /**
@@ -152,13 +153,13 @@ public class HolonomicRecurrence implements Sequence {
    * @param matrix    polynomials as coefficients of <code>n^i, i=0..m</code>,
    *                  as an array of String vectors, for example "[[0,1,2],[0],[17,0,18]]"
    *                  in the holonomic case, or a simple vector "[0,1,2]" in the linear case.
-   *                  The brackets must be spedified accordingly.
+   *                  The brackets must be specified accordingly.
    * @param prefix    initial values of the sequence which do not participate in the recurrence
    * @param initTerms initial values of a[0..k], as a String vector, for example "[0,1,2,3]"
    */
   public HolonomicRecurrence(final int offset, final String matrix, final String prefix, final String initTerms) {
-    this(offset, matrix, ((prefix.length() == 0 || prefix.equals("[]") ? "" : prefix + ",") 
-        + initTerms).replaceAll("\\s*\\]\\s*\\,\\s*\\[\\s*", ","), 0);
+    this(offset, matrix, ((prefix.isEmpty() || prefix.equals("[]") ? "" : prefix + ",")
+        + initTerms).replaceAll("\\s*]\\s*,\\s*\\[\\s*", ","), 0);
   } // Constructor
 
   /**
@@ -168,7 +169,7 @@ public class HolonomicRecurrence implements Sequence {
    * @param matrix    polynomials as coefficients of <code>n^i, i=0..m</code>,
    *                  as an array of String vectors, for example "[[0,1,2],[0],[17,0,18]]"
    *                  in the holonomic case, or a simple vector "[0,1,2]" in the linear case.
-   *                  The brackets must be spedified accordingly.
+   *                  The brackets must be specified accordingly.
    * @param initTerms initial values of a[0..k], as a String vector, for example "[0,1,2,3]"
    */
   public HolonomicRecurrence(final int offset, final String matrix, final String initTerms) {
@@ -352,14 +353,13 @@ public class HolonomicRecurrence implements Sequence {
    * @return number of sequence elements in the recurrence equation, minus one.
    * The vector for the equation has an additional element for the constant,
    * and another for the new sequence element to be computed.
-   * @return a number &gt;= 0
    */
   public int getOrder() {
     return mOrder;
   }
 
   /**
-   * Gets the vectors for the cofficient polynomials.
+   * Gets the vectors for the coefficient polynomials.
    * @return a list of coefficient vectors for the powers of <code>n</code>.
    */
   public ArrayList<Z[]> getPolyList() {
