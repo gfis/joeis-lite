@@ -615,7 +615,7 @@ public class HolonomicRecurrenceTest {
     if (polyList != null) {
       holTest.mHolRec = new HolonomicRecurrence(holTest.mOffset1, polyList, initTerms, dist);
       holTest.mHolRec.setGfType(holTest.mGfType);
-      // holTest.mHolRec.sDebug = sDebug;
+      holTest.mHolRec.setDebug(sDebug);
       System.out.println(holTest.getDataList(holTest.mHolRec, holTest.numTerms));
     } else {
       holTest.processFile(fileName);

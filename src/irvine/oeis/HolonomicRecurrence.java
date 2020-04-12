@@ -32,7 +32,7 @@ import irvine.math.z.ZUtils;
  * @author Georg Fischer
  */
 public class HolonomicRecurrence implements Sequence {
-  protected static final int DEBUG = 0;
+  protected static int sDebug = 0;
 
   protected Z[] mInitTerms; // initial terms for a(n)
   protected int mNDist; // d >= 0 if a(n+d) is the highest and next element to be computed (0 <= d <= k).
@@ -111,7 +111,7 @@ public class HolonomicRecurrence implements Sequence {
     if (start <= 1) { // linear case, simple vector of the form "[0,1,2,...]"
       final String[] polys = matrix.substring(start, behind).split("\\s*,\\s*");
       for (int k = 0; k < polys.length; ++k) {
-        if (DEBUG >= 1) {
+        if (sDebug >= 1) {
           System.out.println("polys[" + k + "]=" + polys[k]);
         }
         mPolyList.add(new Z[] {new Z(polys[k])});
@@ -119,7 +119,7 @@ public class HolonomicRecurrence implements Sequence {
     } else { // holonomic case, vector list "[[0,1,2],[0],[17,0,18]]"
       final String[] polys = matrix.substring(start, behind).split("]\\s*,\\s*\\[");
       for (int k = 0; k < polys.length; ++k) {
-        if (DEBUG >= 1) {
+        if (sDebug >= 1) {
           System.out.println("polys[" + k + "]=" + polys[k]);
         }
         mPolyList.add(ZUtils.toZ(polys[k]));
@@ -191,6 +191,14 @@ public class HolonomicRecurrence implements Sequence {
     mGfType = gfType;
   }
   
+  /** 
+   * Set the debugging level.
+   * @param level code for the debugging level: 0 = none, 1 = some, 2 = more.
+   */
+  public void setDebug(int level) {
+    sDebug = level;
+  }
+  
   /**
    * Initialize the sequence.
    * This code is common to all constructors.
@@ -205,7 +213,7 @@ public class HolonomicRecurrence implements Sequence {
     mBuffer = new Z[mBufSize];
     Arrays.fill(mBuffer, Z.ZERO);
     mOrder = k - 1;
-    if (DEBUG >= 1) {
+    if (sDebug >= 1) {
       System.out.println("order=" + mOrder);
     }
     while (k >= 0) { // determine mMaxDegree
@@ -258,7 +266,7 @@ public class HolonomicRecurrence implements Sequence {
           }
         } // for i - terms of one polynomial in nd
         pvals[k] = pvalk;
-        if (DEBUG >= 1) {
+        if (sDebug >= 1) {
           System.out.println("pvals[" + k + "]=" + pvals[k]);
         }
         --k;
@@ -271,38 +279,44 @@ public class HolonomicRecurrence implements Sequence {
           ibuf += mBufSize;
         }
         ibuf %= mBufSize;
-        if (DEBUG >= 1) {
+        if (sDebug >= 1) {
           System.out.println("mN=" + mN + ", nd=" + nd + ", k=" + k 
               + ", mBufSize=" + mBufSize + ", mOrder=" + mOrder);
           System.out.println("    mBuffer[" +  ibuf + "]=" + mBuffer[ibuf] + ", old_sum=" + sum);
         }
         sum = sum.add(pvals[k].multiply(mBuffer[ibuf]));
-        if (DEBUG >= 1) {
-          System.out.println("new_sum=" + sum);
+        if (sDebug >= 1) {
+          System.out.println("    new_sum=" + sum);
         }
       } // for k - summing
       if (! pvals[mOrder + 1].equals(Z.ZERO)) {
+        if (mGfType == 1 && mN >= 2) { // exponential: multiply by mN 
+          sum = sum.multiply(Z.valueOf(mN));
+        }
         final Z[] quotRemd = sum.negate().divideAndRemainder(pvals[mOrder + 1]);
         if (!quotRemd[1].equals(Z.ZERO)) {
-          if (DEBUG >= 1) {
-            System.out.println("assertion: division with rest " + quotRemd[1].toString());
+          if (sDebug >= 1) {
+            System.out.println("assertion: division with rest " + quotRemd[1].toString() 
+                + " for " + sum.negate() + " / " + pvals[mOrder + 1]);
           }
           result = null;
         } else {
           result = quotRemd[0];
         }
       } else {
-        if (DEBUG >= 1) {
+        if (sDebug >= 1) {
           System.out.println("assertion: division by zero " );
         }
         result = null;
       }
     }
-    if (mGfType == 1 && result != null) {
-        if (mN >= 1) {
-            mFactorial = mFactorial.multiply(mNdPowers[1]); // Z.valueOf(nd)
+    if (mGfType == 1 && result != null) { // exponential: multiply buffer by mN 
+      Z zmN = Z.valueOf(mN);
+      for (ibuf = 0; ibuf < mBufSize; ++ibuf) {
+        if (mBuffer[ibuf] != null) {
+          mBuffer[ibuf] = mBuffer[ibuf].multiply(zmN);
         }
-        result = result.multiply(mFactorial);
+      }
     }
     ibuf = mN;
     while (ibuf < 0) {
@@ -310,7 +324,19 @@ public class HolonomicRecurrence implements Sequence {
     }
     ibuf %= mBufSize;
     mBuffer[ibuf] = result;
-    return result;
+    if (sDebug >= 1) {
+      String sep = "[";
+      System.out.print("next.mBuffer = ");
+      for (int jbuf = 0; jbuf < mBufSize; ++jbuf) {
+        System.out.print(sep + mBuffer[jbuf]);
+        if (ibuf == jbuf) {
+          System.out.print("*");
+        }
+        sep = ",";
+      } // for
+      System.out.println("]");
+    }
+     return result;
   } // next
 
   /**
@@ -384,7 +410,7 @@ public class HolonomicRecurrence implements Sequence {
 //      try {
 //        if (args[iarg].equals("-d")) {
 //          iarg ++;
-//          debug   = Integer.parseInt(args[iarg ++]);
+//          sDebug   = Integer.parseInt(args[iarg ++]);
 //        }
 //        if (args[iarg].startsWith("A")) {
 //          aseqno  =                  args[iarg ++] ;

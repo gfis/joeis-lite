@@ -1,5 +1,6 @@
---  Table for OEIS - working table for sequence numbers and 4 parameter fields
+--  Table for OEIS - working table for sequence numbers and 8 parameter fields
 --  @(#) $Id$
+--  2020-04-11: callcode in key
 --  2019-07-18: parm3 VARCHAR(64), was 32
 --  2019-06-23: 4 parms -> 8
 --  2019-06-13: Georg Fischer ,
@@ -19,6 +20,6 @@ CREATE  TABLE            seq4
     , parm8    VARCHAR(128)          
     , name     VARCHAR(1024)  
     , status   VARCHAR(16)           -- pass, FAIL       
-    , PRIMARY KEY(aseqno)
+    , PRIMARY KEY(aseqno, callcode)
     );
 COMMIT;

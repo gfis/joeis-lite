@@ -15,7 +15,7 @@ HOLREC=$(GITS)/OEIS-mat/holrec
 TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
-MAXT=32
+MAXT=16
 HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 MANY=999999
 D=0
@@ -58,6 +58,9 @@ joeis_pull:
 raupdate:
 	cp -v ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
 	cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
+radiff:
+	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
+	diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
 update: purge
 	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
 count:
@@ -76,6 +79,12 @@ pack:
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
+poeis_insert:
+	cut -b1-7 $(CC).gen \
+	| sed -e "s/$$/\t$(CLASS)\t/" \
+	| $(DBAT) -m csv -r poeis
+	$(DBAT) -4 poeis
+	$(DBAT) -n poeis
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
@@ -762,9 +771,6 @@ fract22:
 	tail -n4 trigf.gen
 	wc -l    trigf.gen
 #-------------------------------
-# homgf: # g.f.s of type (o) ordinary or (e)xponential
-#	cp -v $(HOLREC)/homgf3.tmp homgf.gen
-#-------------------------------
 # HolonomicSequence
 #----
 DIST=0
@@ -814,11 +820,11 @@ holsq:
 	head -n4 $(HOLREC)/rectab4.tmp
 	wc -l    $(HOLREC)/rectab4.tmp
 homgf:
-	cat $(HOLREC)/homgf6.tmp \
-	| perl -ne 'print if ! m{\te(gf)?\t};' \
+	cat $(HOLREC)/homgf7.tmp \
 	>        $(HOLREC)/rectab4.tmp
 	head -n4 $(HOLREC)/rectab4.tmp
 	wc -l    $(HOLREC)/rectab4.tmp
+	# | perl -ne 'print if ! m{\te(gf)?\t};' 
 holos:
 	grep -E "holos" $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \
