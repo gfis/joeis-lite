@@ -55,12 +55,17 @@ joeis_push:
 joeis_pull:
 	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
 #----
-raupdate:
+from_ramath:
 	cp -v ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
 	cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
-radiff:
+to_ramath:
+	cp -v ../../src/irvine/oeis/HolonomicRecurrence.java     ../../../ramath/src/main/java/irvine/oeis
+	cp -v ../../src/irvine/test/HolonomicRecurrenceTest.java ../../../ramath/src/main/java/irvine/test
+diff_ramath:
 	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
 	diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
+diff_joeis:
+	diff -wC0 ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
 update: purge
 	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
 count:
@@ -79,7 +84,9 @@ pack:
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
-poeis_insert:
+pocre:
+	$(DBAT) -f $(COMMON)/poeis.create.sql
+poins:
 	cut -b1-7 $(CC).gen \
 	| sed -e "s/$$/\t$(CLASS)\t/" \
 	| $(DBAT) -m csv -r poeis
@@ -186,7 +193,7 @@ bfile:
 joeins:
 	$(DBAT) -v "INSERT INTO joeis (SELECT aseqno, 'HolonomicRec', 'new' FROM seq4);"
 seqtest:
-	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(N) $(OFFSET)
+	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(MAXT) $(OFFSET)
 #=========================================================
 bas:
 	make bas_all TARGET=gener
@@ -1293,6 +1300,7 @@ CoxeterSequence:
 FiniteSequence:
 	cat finifu_check.txt > group.tmp
 	make run PATTERN=$@
+#-----------------------------
 genf1:
 	cp  $(LINREC)/catgf2.txt catgf2.txt
 	make notin_joeis LIST=catgf2.txt
@@ -1310,6 +1318,10 @@ genf2:
 	wc -l group.tmp
 genf3:
 	make run PATTERN=GeneratingFunctionSequence
+lingf:
+	uniq -w7 $(HOLREC)/lingf2.tmp \
+	| sed -e "s/lingfo/lingf/" \
+	> lingf.gen
 #---------------------------
 # A176832 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
 # a(0)=1, a(1)=5, k=1 and l=-1.
