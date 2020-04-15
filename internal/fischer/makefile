@@ -92,6 +92,8 @@ poins:
 	| $(DBAT) -m csv -r poeis
 	$(DBAT) -4 poeis
 	$(DBAT) -n poeis
+bfresh: # CC=
+	cd $(COMMON) ; make bfresh 
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
@@ -117,7 +119,9 @@ select2:
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 \
-	    WHERE aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) \
+	    WHERE (aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis)) \
+	      AND (aseqno NOT IN (SELECT aseqno FROM poeis)) \
+	      AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM colin)) \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  > $(CC).gen
@@ -176,8 +180,8 @@ stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 runbt: # Run BatchTest for this group
 	$(BATLIT)  strip.tmp 2>&1 | tee -a batch.log
 evaluate:
-	grep  pass batch.log >     $(CC).pass.log
-	grep  FAIL batch.log | tee $(CC).fail.log
+	uniq -w7 batch.log | grep -E "pass" >             $(CC).pass.log
+	uniq -w7 batch.log | grep -E "(FAIL|FATAL)" | tee $(CC).fail.log
 	wc -l $(CC).*.log
 bfile:
 	echo make bfile SEQ=123456 N=1000 OFS=1
@@ -1318,10 +1322,16 @@ genf2:
 	wc -l group.tmp
 genf3:
 	make run PATTERN=GeneratingFunctionSequence
+#----
 lingf:
 	uniq -w7 $(HOLREC)/lingf2.tmp \
 	| sed -e "s/lingfo/lingf/" \
 	> lingf.gen
+lingf_offset:
+	cp   lingf.gen lingf.gen.bak
+	perl lingf_offset.pl lingf.gen > x.tmp
+	cp   x.tmp     lingf.gen 
+	diff -w -C0 lingf.gen.bak lingf.gen || :
 #---------------------------
 # A176832 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
 # a(0)=1, a(1)=5, k=1 and l=-1.
