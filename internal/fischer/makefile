@@ -10,6 +10,7 @@ LITE=$(GITS)/joeis-lite
 JOEIS=$(GITS)/joeis
 COMMON=$(GITS)/OEIS-mat/common
 CONTRIB=$(GITS)/OEIS-mat/contrib
+COORS=$(GITS)/OEIS-mat/coors
 LINREC=$(GITS)/OEIS-mat/linrec
 HOLREC=$(GITS)/OEIS-mat/holrec
 TRIREC=$(GITS)/OEIS-mat/trirec
@@ -72,15 +73,19 @@ count:
 	find ../../src -iname "A??????.java" | wc -l
 list:
 	find ../../src -iname "A??????.java" -ls
-pack:
+pack: pack1 pack2
+pack1:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
 	; echo src/irvine/oeis/$(CLASS).java     >> pack.$(CC).lst \
-	; echo internal/fischer/$(CC).gen        >> pack.$(CC).lst \
-	; echo internal/fischer/$(CC).jpat       >> pack.$(CC).lst
+	; echo internal/fischer/$(CC)*.gen       >> pack.$(CC).lst \
+	; echo internal/fischer/$(CC)*.jpat      >> pack.$(CC).lst
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\S*}{}" | uniq -c
+pack2:
+	git commit -a
+	git push origin master
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
@@ -121,7 +126,7 @@ select2:
 	    FROM seq4 \
 	    WHERE (aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis)) \
 	      AND (aseqno NOT IN (SELECT aseqno FROM poeis)) \
-	      AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM colin)) \
+	      AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  > $(CC).gen
@@ -1261,6 +1266,24 @@ squaredig_width:
 	  AND s.aseqno = n.aseqno \
 	  ORDER BY 1" | tee @$.tmp
 #----------------
+tile:
+	$(DBAT) -x "SELECT aseqno, 'tile', 0, galid, vtype, tarots \
+	  FROM coors \
+	  ORDER BY tilingno, galid" \
+	| perl tile_collect.pl \
+	>        $@.gen
+	tail -n8 $@.gen
+	wc -l    $@.gen
+#----
+TARGET=$(LITE)/src/org/teherba/tile
+tilepack:
+	# rm -rf $(TARGET)
+	mkdir -p $(TARGET)
+	find $(COORS) -name "*.java" -printf "%P\n" \
+	| grep -vE "^Z.java" \
+	| xargs -l -i{} \
+	perl tilepack.pl -p org.teherba.tile $(COORS)/{} $(TARGET)/{}
+#----------------
 # A151255 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
 #   and consisting of n steps taken from {(-1, -1), (-1, 1), (1, 0)}	nonn,walk,synth	0..34
 # A151373 Number of walks within N^2 (the first quadrant of Z^2) starting
@@ -1332,6 +1355,11 @@ lingf_offset:
 	perl lingf_offset.pl lingf.gen > x.tmp
 	cp   x.tmp     lingf.gen 
 	diff -w -C0 lingf.gen.bak lingf.gen || :
+#----
+tilegf:
+	uniq -w7 $(COORS)/tilegf.tmp \
+	| sed -e "s/lingfo/lingf/" \
+	> tilegf.gen
 #---------------------------
 # A176832 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
 # a(0)=1, a(1)=5, k=1 and l=-1.

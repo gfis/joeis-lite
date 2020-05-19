@@ -2,7 +2,8 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
-# 2019-12-06: V1.6no spaces in vectors
+# 2020-05-19: V1.7 replace ~~ in $(PARMi) -> newline + 8 spaces
+# 2019-12-06: V1.6 no spaces in vectors
 # 2019-07-04: V1.5 -m: only those not already in $maindir
 # 2019-06-23: up to 8 $(PARMi) in seq4
 # 2019-06-13, Georg Fischer: derived from gen_pattern.pl
@@ -25,7 +26,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V1.6";
+my $program = "gen_seq4.pl V1.7";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -128,7 +129,8 @@ while (<>) { # read inputfile
                 print "# before: type(PARM$iparm) = \"$type\", term=\"$term\"\n";
             }
             if (0) {
-            } elsif (length($type) == 0) { # leave it as it is
+            } elsif (length($type) == 0) { # leave it, but replace "~~" -> newline
+            	$term =~ s{\~\~}{\"\n        , \"}g;
             } elsif ($type =~ m{I}i)     { # normal int
                 # term is unchanged
             } elsif ($type =~ m{L}i)     { # make 'long' constant
@@ -141,10 +143,6 @@ while (<>) { # read inputfile
                 $term = "new Z(\"$term\")";
             }
             $len = length($term);
-            if (0 and $line_len >= $max_line_len) {
-                $term = "\n" . (' ' x $indent) . $term;
-                $line_len =           $indent;
-            }
             $line_len += $len + 1; # 1 for ",";
             if ($debug >= 2) {
                 print "# after : type(PARM$iparm) = \"$type\", term=\"$term\"\n";
