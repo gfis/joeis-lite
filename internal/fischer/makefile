@@ -203,6 +203,8 @@ joeins:
 	$(DBAT) -v "INSERT INTO joeis (SELECT aseqno, 'HolonomicRec', 'new' FROM seq4);"
 seqtest:
 	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(MAXT) $(OFFSET)
+tiletest:
+	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
 #=========================================================
 bas:
 	make bas_all TARGET=gener
@@ -1267,9 +1269,12 @@ squaredig_width:
 	  ORDER BY 1" | tee @$.tmp
 #----------------
 tile:
-	$(DBAT) -x "SELECT aseqno, 'tile', 0, galid, vtype, tarots \
-	  FROM coors \
-	  ORDER BY tilingno, galid" \
+	$(DBAT) -x "SELECT c.aseqno, 'tile', 0, c.galid, c.stdnot, c.vtype, c.tarots \
+	  FROM coors c, bfinfo b \
+	  WHERE c.galid LIKE 'Gal._.1.%' \
+	    AND c.aseqno = b.aseqno \
+	    AND b.bfimax <= 100 \
+	  ORDER BY c.tilingno, c.galid" \
 	| perl tile_collect.pl \
 	>        $@.gen
 	tail -n8 $@.gen
@@ -1280,7 +1285,7 @@ tilepack:
 	# rm -rf $(TARGET)
 	mkdir -p $(TARGET)
 	find $(COORS) -name "*.java" -printf "%P\n" \
-	| grep -vE "^Z.java" \
+	| grep -vE "^(Z\.java|Sequence\.java)" \
 	| xargs -l -i{} \
 	perl tilepack.pl -p org.teherba.tile $(COORS)/{} $(TARGET)/{}
 #----------------

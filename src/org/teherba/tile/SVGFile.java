@@ -36,6 +36,7 @@ public class SVGFile {
    */
   public SVGFile() {
     sFileName = "Test.svg";
+    sEnabled  = false;
   } // Constructor()
 
   /**
@@ -113,43 +114,43 @@ public class SVGFile {
   private static final int COLOR_MOD = 3;
   
   /**
-   * Writes an edge from the focus to a successur {@link Vertex} to the SVG file.
+   * Writes an edge from the focus to a neighbouring {@link Vertex} to the SVG file.
    * @param focus starting Vertex
-   * @param succ  ending   Vertex
+   * @param proxy ending   Vertex
    * @param distance distance from baseVertex, for coloring
-   * @param mode  0=normal, 1=tentative, 2=test
+   * @param mode 0=normal, 1=tentative, 2=test
    */
-  public static void writeEdge(Vertex focus, Vertex succ, int distance, int mode) {
+  public static void writeEdge(Vertex focus, Vertex proxy, int distance, int mode) {
     switch (mode) {
       default:
       case 0: // normal
         write("<line class=\"l" + String.valueOf(distance % COLOR_MOD)
             + "\" x1=\"" + focus.expos.getX()
             + "\" y1=\"" + focus.expos.getY()
-            + "\" x2=\"" + succ.expos.getX()
-            + "\" y2=\"" + succ.expos.getY()
+            + "\" x2=\"" + proxy.expos.getX()
+            + "\" y2=\"" + proxy.expos.getY()
             + "\"><title>" + focus.index + focus.getName()
-            + "->"         + succ .index + succ .getName()
+            + "->"         + proxy.index + proxy .getName()
             + "</title></line>");
         break;
       case 1: // tentative
         write("<line class=\"tent dash"
             + "\" x1=\"" + focus.expos.getX()
             + "\" y1=\"" + focus.expos.getY()
-            + "\" x2=\"" + succ.expos.getX()
-            + "\" y2=\"" + succ.expos.getY()
+            + "\" x2=\"" + proxy.expos.getX()
+            + "\" y2=\"" + proxy.expos.getY()
             + "\"><title>" + focus.index + focus.getName()
-            + "->"         + succ .index + succ .getName()
+            + "->"         + proxy.index + proxy .getName()
             + "</title></line>");
         break;
       case 2: // test
         write("<line class=\"test dash"
             + "\" x1=\"" + focus.expos.getX()
             + "\" y1=\"" + focus.expos.getY()
-            + "\" x2=\"" + succ.expos.getX()
-            + "\" y2=\"" + succ.expos.getY()
+            + "\" x2=\"" + proxy.expos.getX()
+            + "\" y2=\"" + proxy.expos.getY()
             + "\"><title>" + focus.index + focus.getName()
-            + "->"         + succ .index + succ .getName()
+            + "->"         + proxy.index + proxy .getName()
             + "</title></line>");
         break;
     } // switch (mode)

@@ -78,6 +78,7 @@ public class TilingSequence implements Serializable, Sequence
     mOffset = offset;
     mDistance = 0;
     configure(typeArray);
+    sDebug = 0;
   } // Constructor(int)
 
   /**
@@ -104,12 +105,13 @@ public class TilingSequence implements Serializable, Sequence
   protected void configure(final VertexTypeArray typeArray) {
     mTypeArray = typeArray;
     mTypeArray.complete();
-    initialize(1);
+    initialize(0);
   } // initialize(VertexTypeArray)
 
   /**
    * Initializes the tiling's dynamic data structures only.
-   * @param baseIndex {@link Vertex} for the start of the coordination sequence
+   * @param baseIndex {@link Vertex} for the start of the coordination sequence.
+   * This index starts at 0! 
    */
   protected void initialize(final int baseIndex) {
     mBaseIndex  = baseIndex;
@@ -118,6 +120,9 @@ public class TilingSequence implements Serializable, Sequence
     mQueue      = new LinkedList<Integer>();
     mQueue.add(addVertex(new Vertex(mTypeArray.get(baseIndex))));
     mShellCount = 1;
+    if (sDebug >= 1) {
+        System.out.println(toJSON());
+    }
   } // initialize(int)
 
   /**
@@ -148,7 +153,8 @@ public class TilingSequence implements Serializable, Sequence
   public String toJSON() {
     return mTypeArray .toJSON()
         +  mVertexList.toJSON()
-        +  mPosMap    .toJSON();
+        +  mPosMap    .toJSON()
+        +  "\n, mBaseIndex: " + mBaseIndex;
   } // toJSON
 
   /**
@@ -214,11 +220,6 @@ public class TilingSequence implements Serializable, Sequence
    */
   public static void main(String[] args) {
     final long startTime  = System.currentTimeMillis();
-    final TilingSequence mTiling = new TilingSequence(0, new String[] // Gal.2.1.1:
-        { "12.6.4;A180-,A120-,B90+"
-        , "6.4.3.4;A270+,A210-,B120+,B240+"
-        });
-    mTiling.initialize(1);
     int mMaxDistance = 16;
     try {
       int iarg = 0;
@@ -226,7 +227,7 @@ public class TilingSequence implements Serializable, Sequence
         String opt       = args[iarg ++];
         if (false) {
         } else if (opt.equals("-d")     ) {
-          mTiling.sDebug = Integer.parseInt(args[iarg ++]);
+          TilingSequence.sDebug = Integer.parseInt(args[iarg ++]);
         } else if (opt.equals("-n")     ) {
           mMaxDistance   = Integer.parseInt(args[iarg ++]);
         } else {
@@ -234,14 +235,20 @@ public class TilingSequence implements Serializable, Sequence
         }
       } // while args
       
-      for (int index = 0; index < mMaxDistance; index ++) {
-          System.out.println(index + " " + mTiling.next());
-      } // for index
     } catch (Exception exc) {
       // log.error(exc.getMessage(), exc);
       System.err.println(exc.getMessage());
       exc.printStackTrace();
     }
+
+    final TilingSequence mTiling = new TilingSequence(0, new String[] // Gal.2.1.1:
+        { "12.6.4;A180-,A120-,B90+"
+        , "6.4.3.4;A270+,A210-,B120+,B240+"
+        });
+    mTiling.initialize(0);
+    for (int index = 0; index < mMaxDistance; index ++) {
+      System.out.println(index + " " + mTiling.next());
+    } // for index
     System.err.println("# elapsed: " + String.valueOf(System.currentTimeMillis() - startTime) + " ms");
   } // main
 

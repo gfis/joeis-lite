@@ -197,13 +197,13 @@ public class TilingTest implements Serializable {
     } // first
     mTypeArray.setAngleNotation(aSeqNo, galId, vertexId, taRotList, sequence); // increments mTAFree
     if (gutv[3].equals(gutv[1])) { // last of new tiling
-      if (sDebug >= 1) {
-        System.out.println(mTiling.toJSON());
-      }
       mTiling = new TilingSequence(0, mTypeArray);
       TilingSequence.sDebug = sDebug;
       Vertex.sDebug = sDebug;
       VertexType.sDebug = sDebug;
+      if (sDebug >= 1) {
+        System.out.println(mTiling.toJSON());
+      }
       // compute the nets
       for (int baseIndex = 0; baseIndex < mTypeArray.size(); baseIndex ++) {
         if (mGalId == null || mTiling.getVertexType(baseIndex).galId.equals(mGalId)) { 
@@ -214,6 +214,9 @@ public class TilingTest implements Serializable {
           if (false) { // case for different actions
           } else if (BFile.sEnabled) {
             BFile.open(mASeqNo);
+            if (sDebug >= 1) {
+              System.out.println("# writing b-file for " + mASeqNo);
+            }
             for (int index = 0; index < mMaxDistance; index ++) {
               BFile.write(index + " " + mTiling.next());
             } // for index

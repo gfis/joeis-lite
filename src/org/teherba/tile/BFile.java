@@ -48,6 +48,7 @@ public class BFile {
   public BFile() {
     setPrefix("./");
     sBFileCount = 0;
+    sEnabled    = false;
   } // Constructor()
 
   /**
