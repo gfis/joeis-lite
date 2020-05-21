@@ -15,6 +15,6 @@ public class $(ASEQNO) extends TilingSequence {
     super($(OFFSET), new String[]
         { "$(PARM1)"
         });
-    initialize($(PARM2));
+    setBaseIndex($(PARM3));
   }
 }

@@ -43,6 +43,8 @@ public final class SequenceTest {
         return (Sequence) Class.forName("irvine.oeis.a" + canonicalId.substring(1, 4) + '.' + canonicalId)
             .getDeclaredConstructor().newInstance();
       } catch (Exception exc) {
+        System.err.println(exc.getMessage());
+        exc.printStackTrace();
         throw new UnsupportedOperationException();
       }
     }

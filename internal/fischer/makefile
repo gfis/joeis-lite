@@ -203,6 +203,8 @@ joeins:
 	$(DBAT) -v "INSERT INTO joeis (SELECT aseqno, 'HolonomicRec', 'new' FROM seq4);"
 seqtest:
 	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(MAXT) $(OFFSET)
+spectest:
+	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
 #=========================================================
@@ -1268,17 +1270,48 @@ squaredig_width:
 	  AND s.aseqno = n.aseqno \
 	  ORDER BY 1" | tee @$.tmp
 #----------------
+# DO NOT select by bfimax - we need all
 tile:
 	$(DBAT) -x "SELECT c.aseqno, 'tile', 0, c.galid, c.stdnot, c.vtype, c.tarots \
 	  FROM coors c, bfinfo b \
-	  WHERE c.galid LIKE 'Gal._.1.%' \
-	    AND c.aseqno = b.aseqno \
-	    AND b.bfimax <= 100 \
+	  WHERE c.aseqno = b.aseqno \
 	  ORDER BY c.tilingno, c.galid" \
-	| perl tile_collect.pl \
+	>        $@.tmp
+	head -n8 $@.tmp
+	wc -l    $@.tmp
+	perl tile_collect.pl -full tile.tmp \
+	| perl genuniq.pl 2> tile_skipped.gen \
+	| perl reduce_tile.pl \
 	>        $@.gen
 	tail -n8 $@.gen
-	wc -l    $@.gen
+	wc -l    $@*.gen
+#----
+tileold:
+	$(DBAT) -x "SELECT c.aseqno, 'tile', 0, c.galid, c.stdnot, c.vtype, c.tarots \
+	  FROM coors c, bfinfo b \
+	  WHERE c.aseqno = b.aseqno \
+	    AND b.bfimax < 1000 \
+	    AND (c.galid LIKE '%.1' OR NOT EXISTS \
+	      ( SELECT d.galid \
+	        FROM coors d \
+	        WHERE d.aseqno = c.aseqno \
+	          AND d.galid <> c.galid \
+	          AND d.galid LIKE '%.1' \
+	      )) \
+	  ORDER BY c.tilingno, c.galid" \
+	>        $@.tmp
+#----
+tilecheck1:
+	cut -b1-7 tile.tmp | sort | uniq -c | grep -vE "^  *1 "
+tilecheck2:
+	cd $(COMMON) ; make seq LIST=../coors/duplicates.man
+	$(DBAT) -x "SELECT c.aseqno, c.galid \
+	  FROM coors c, seq s \
+	  WHERE c.aseqno = s.aseqno \
+	  ORDER BY c.tilingno, c.galid" \
+	| sort \
+	| tee    $@.tmp
+	wc -l    $@.tmp
 #----
 TARGET=$(LITE)/src/org/teherba/tile
 tilepack:
