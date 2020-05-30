@@ -43,7 +43,7 @@ public class PositionMap {
    * @param vertex the Vertex to be stored
    */
   public void put(final Vertex vertex) {
-    mPositionHash.put(vertex.expos.toString(), new Integer(vertex.index));
+    mPositionHash.put(vertex.expos.toString(), Integer.valueOf(vertex.index));
   } // put
 
   /**

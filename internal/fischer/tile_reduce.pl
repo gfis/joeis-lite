@@ -1,10 +1,11 @@
 #!perl
 
-# Replace the full notation by a call to the class for vertex id 1
+# Replace the full notation by a call to the Java class for some vertex with a lower id
+# 2020-05-30: revised logic
 # 2020-05-21, Georg Fischer
 #
 #:# Usage:
-#:#   perl reduce_tile.pl infile > outfile
+#:#   perl tile_reduce.pl infile > outfile
 #
 # Cf. tile_collect.pl
 #----------------------------------------------------------------
@@ -16,19 +17,18 @@ my %hash = ();
 while (<>) {
     s{\s+\Z}{}; # chompr
     my $line = $_;
-    my ($aseqno, $callcode, $offset, $type_array, $zero, $ibase, $galid) = split(/\t/, $line);
-    $galid = m{(\w+\.\d+)\.(\d+)};
+    my      ($aseqno, $callcode, $offset, $type_array,    $zero,   $ibase, $galid, $tilingno) = split(/\t/, $line);
+    $galid =~ m{(\w+\.\d+\.\d+)\.(\d+)};
     my $gal = $1;
     my $id  = $2;
-    if ($id == 1) {
-        $hash{$galid} = $aseqno;
-    } else { # $id > 1
-        if (defined($hash{"$gal.1"})) {
-            my $rseqno = $hash{"$gal.1"};
-        	$callcode =~ s{1}{6};
-            $line = join("\t", ($aseqno, $callcode, $offset, &aseq($rseqno), $rseqno, $ibase, $galid)) . "\n";
-        }
-    } # $id > 1
+    if (! defined($hash{$gal})) {
+        $hash{$gal} = "$aseqno;$id";
+    } else { # defined
+        my ($rseqno, $rid) = split(/\;/, $hash{$gal});
+        $callcode =~ s{1}{6};
+        $line = join("\t", 
+            ($aseqno, $callcode, $offset, &aseq($rseqno), $rseqno, $ibase, $galid, $tilingno));
+    } # defined
     print "$line\n";
 } # while <>
 #----

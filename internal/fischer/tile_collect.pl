@@ -1,24 +1,22 @@
 #!perl
 
 # Decide between first and subsequent callcodes tile1, tile6
+# 2020-05-30: revised logic
 # 2020-05-19, Georg Fischer
 #
 #:# Usage:
-#:#   perl tile_collect.pl [-full] tile.tmp > tile.gen
+#:#   perl tile_collect.pl tile.tmp > tile.gen
 #--------------------------------------------------------
 use strict;
 use integer;
 use warnings;
 
 my $debug = 0;
-my $full  = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
-    } elsif ($opt  =~ m{full}) {
-        $full      = 1;
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -28,45 +26,37 @@ my $ogal    = ""; # old galid
 my $buffer1 = "";
 my $buffer6 = "";
 my $aseqn1;
+my $tilen1;
+my ($aseqno, $callcode, $offset, $ngalid, $stdnot, $vertexid, $tarots, $tilingno);
 while (<>) {
     s{\s+\Z}{}; # chompr
     my $line = $_;
-    my ($aseqno, $callcode, $offset, $ngalid, $stdnot, $vertexid, $tarots) = split(/\t/, $line);
+    # $(DBAT) -x "SELECT c.aseqno, 'tile1', 0, c.galid, c.stdnot, c.vtype, c.tarots, c.tilingno 
+    ($aseqno, $callcode, $offset, $ngalid, $stdnot, $vertexid, $tarots, $tilingno) = split(/\t/, $line);
     $ngalid =~ m{(Gal\.\d+\.\d+)\.(\d+)};
     my $ngal = $1;
-    my $vid = $2;
+    my $vid  = $2;
     if ($ogal ne $ngal) { # start of new tiling Gal.u.t.v with v=1
         if ($ogal ne "") {
             &output();
         }
         $ogal = $ngal;
         $aseqn1 = $aseqno;
+        $tilen1 = $tilingno;
     } # start of new tiling
     $buffer1 .= "~~$vertexid;$tarots";
     if ($vid gt "1") {
-        if ($full == 0) {
-            $buffer6 .= join("\t", $aseqno, "tile6", 0, &aseq($aseqn1), $aseqn1, $vid - 1, $ngalid) . "\n";
-        } else {
-            $buffer6 .= join("\t", $aseqno, "tile1", 0, "\$(PARM)"    , 0      , $vid - 1, $ngalid) . "\n";
-        }
+        $buffer6 .= join("\t", $aseqno, $callcode, $offset, "\$(PARM)"    , 0      , $vid - 1, $ngalid, $tilingno) . "\n";
     } # vid > 1
 } # while <>
 if ($ogal ne "") {
    &output();
 }
 #----
-sub aseq {
-    my ($aseqno) = @_;
-    return lc(substr($aseqno, 0, 4));
-} # package
-#----
 sub output {
-    my $type_array = substr($buffer1, 2);
-    print join("\t", $aseqn1, 'tile1', 0, $type_array, 0, 0, "$ogal.1") . "\n";
-    if ($full == 0) {
-    } else { # full
-        $buffer6 =~ s{\$\(PARM\)}{$type_array}g;
-    } # full
+    $buffer1 = substr($buffer1, 2); # remove initial "~~"
+    print join("\t", $aseqn1, $callcode, $offset, $buffer1, 0, 0, "$ogal.1", $tilen1) . "\n";
+    $buffer6 =~ s{\$\(PARM\)}{$buffer1}g;
     print $buffer6;
     $buffer1 = "";
     $buffer6 = "";

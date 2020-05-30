@@ -5,7 +5,7 @@ package irvine.oeis.$(PACK);
 import org.teherba.tile.TilingSequence;
 
 /**
- * $(ASEQNO) $(NAME)
+ * $(ASEQNO) Tiling $(PARM5), vertex type $(PARM4)
  * @author $(AUTHOR)
  */
 public class $(ASEQNO) extends TilingSequence {
@@ -15,6 +15,6 @@ public class $(ASEQNO) extends TilingSequence {
     super($(OFFSET), new String[]
         { "$(PARM1)"
         });
-    setBaseIndex($(PARM3));
+    defineBaseSet($(PARM3));
   }
 }

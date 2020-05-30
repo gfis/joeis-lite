@@ -1270,35 +1270,63 @@ squaredig_width:
 	  AND s.aseqno = n.aseqno \
 	  ORDER BY 1" | tee @$.tmp
 #----------------
-# DO NOT select by bfimax - we need all
-tile:
-	$(DBAT) -x "SELECT c.aseqno, 'tile', 0, c.galid, c.stdnot, c.vtype, c.tarots \
+tileprep: tilepre1 tilepre2 tilepre3
+tilepre1:
+	# DO NOT select by bfimax - we need all
+	$(DBAT) -x "SELECT c.aseqno, 'tile1', 0, c.galid, c.stdnot, c.vtype, c.tarots, c.tilingno \
 	  FROM coors c \
 	  ORDER BY c.tilingno, c.galid" \
+	| perl tile_collect.pl \
 	>        $@.tmp
-	head -n8 $@.tmp
+	tail -n8 $@.tmp
 	wc -l    $@.tmp
-	perl tile_collect.pl -full tile.tmp \
+tilepre2:
+	sort tilepre1.tmp \
+	| perl genuniq.pl 2> tilepre2.dupl.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+tilepre3:
+	make seq4 LIST=tilepre2.tmp
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"
+	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3, parm4, parm5 \
+	  FROM seq4 \
+	  ORDER BY CAST(parm5 AS INT), parm4" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+tilepre4:
+	perl tile_reduce.pl tilepre3.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+tile:
+	cp tilepre4.tmp tile.gen
+tilepre5:
+	grep -vf tilepre2.tmp tilepre1.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq4 LIST=$@.2.tmp
+	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
+	    FROM seq4 \
+	    WHERE (aseqno NOT IN (SELECT aseqno FROM joeis)) \
+	    ORDER BY parm5, parm4" \
+	| perl -pe "s{\'\'}{\'}g" \
+		  >  $@.tmp
+	head -4  $@.tmp
+	wc -l    $@.tmp
+tile2:	
+	$(DBAT) -x "SELECT c.aseqno, 'tile', 0, c.galid, c.stdnot, c.vtype, c.tarots, c.tilingno \
+	  FROM coors c \
+	  WHERE c.aseqno NOT IN (SELECT j.aseqno FROM joeis j) \
+	  ORDER BY c.aseqno, c.tilingno, c.galid" \
+	| perl tile_collect.pl tile.tmp \
 	| perl genuniq.pl 2> tile_skipped.gen \
-	| perl reduce_tile.pl \
+	perl tile_reduce.pl tile.3.tmp \
 	>        $@.gen
 	tail -n8 $@.gen
 	wc -l    $@*.gen
-#----
-tileold:
-	$(DBAT) -x "SELECT c.aseqno, 'tile', 0, c.galid, c.stdnot, c.vtype, c.tarots \
-	  FROM coors c, bfinfo b \
-	  WHERE c.aseqno = b.aseqno \
-	    AND b.bfimax < 1000 \
-	    AND (c.galid LIKE '%.1' OR NOT EXISTS \
-	      ( SELECT d.galid \
-	        FROM coors d \
-	        WHERE d.aseqno = c.aseqno \
-	          AND d.galid <> c.galid \
-	          AND d.galid LIKE '%.1' \
-	      )) \
-	  ORDER BY c.tilingno, c.galid" \
-	>        $@.tmp
 #----
 tilecheck1:
 	cut -b1-7 tile.tmp | sort | uniq -c | grep -vE "^  *1 "

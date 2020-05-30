@@ -1,6 +1,7 @@
 #!perl
 
-# Take first occurence of all A-numbers only, and split the following into a separate file
+# Take the first occurrence of all A-numbers only, 
+# and write the following occurrences into a separate file
 # 2020-05-20, Georg Fischer
 #
 #:# Usage:
