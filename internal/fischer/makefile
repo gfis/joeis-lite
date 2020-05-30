@@ -1273,8 +1273,7 @@ squaredig_width:
 # DO NOT select by bfimax - we need all
 tile:
 	$(DBAT) -x "SELECT c.aseqno, 'tile', 0, c.galid, c.stdnot, c.vtype, c.tarots \
-	  FROM coors c, bfinfo b \
-	  WHERE c.aseqno = b.aseqno \
+	  FROM coors c \
 	  ORDER BY c.tilingno, c.galid" \
 	>        $@.tmp
 	head -n8 $@.tmp
@@ -1318,9 +1317,8 @@ tilepack:
 	# rm -rf $(TARGET)
 	mkdir -p $(TARGET)
 	find $(COORS) -name "*.java" -printf "%P\n" \
-	| grep -vE "^(Z\.java|Sequence\.java)" \
-	| xargs -l -i{} \
-	perl tilepack.pl -p org.teherba.tile $(COORS)/{} $(TARGET)/{}
+	| grep -vE "^(BFile|SVGFile|TilingTest|Sequence|Tiler[12]|Z)\.java" \
+	| xargs -l -i{} perl tilepack.pl -t -p org.teherba.tile $(COORS)/{} $(TARGET)/{}
 #----------------
 # A151255 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
 #   and consisting of n steps taken from {(-1, -1), (-1, 1), (1, 0)}	nonn,walk,synth	0..34

@@ -1,11 +1,20 @@
 #!perl
 
 # Copy Java sources and replcae the package names
+# 2020-05-29: switch "start test code"
 # 2020-05-19, Georg Fischer
 #
 #:# Usage:
-#:#   perl tilepack.pl [-p package] srcfile tarfile
+#:#   perl tilepack.pl [-p package] [-t] srcfile tarfile
 #:#       -p package name (default org.teherba.tile)
+#:#       -t enclose test code by comment brackets
+#
+# The sources may contain comment brackets of the following form:
+#   // start test code //
+#     Java for debugging purposes only
+#   // end   test code */
+#
+# The first "//" is replaced by "/*" for these brackets.
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -14,6 +23,7 @@ use warnings;
 # my $srcdir = "../../../OEIS-mat/coors";
 # my $tardir = "../../src";
 my $pack = "org.teherba.tile";
+my $remtest = 0; # default: keep test code
 my $debug = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
@@ -22,6 +32,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $debug     = shift(@ARGV);
     } elsif ($opt  =~ m{p}) {
         $pack   = shift(@ARGV);
+    } elsif ($opt  =~ m{t}) {
+        $remtest   = 1;
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -43,7 +55,10 @@ while (<SRC>) {
         } else {
             $line =~ s{\$\(PACK\)}{$pack};
         }
-    } # with $(PACK)
+        # with $(PACK)
+    } elsif ($remtest == 1 and ($line =~ m{\/\/ start test code})) {
+        $line =~   s{\/\/ start test code}{\/\* start test code};
+    }
     print TAR $line;
 } # while <>
 print STDERR "$srcfile -> $tarfile\n";

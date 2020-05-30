@@ -5,10 +5,8 @@
  */
 package org.teherba.tile;
 import org.teherba.tile.Position;
-import org.teherba.tile.SVGFile;
 import org.teherba.tile.VertexType;
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  * This class represents a vertex in a tiling.
@@ -27,8 +25,7 @@ public class Vertex implements Serializable {
   public int distance;     // length of shortest path to origin, for coloring
   public int rotate;       // the vertex type was rotated clockwise by so many degrees
   public Position expos;   // exact Position of the Vertex
-  public int fixedEdges;   // number of allocated neighbours = edges
-  public Vertex[] proxies; // array of neighbouring vertices at the end of the edges
+  public int[] pxInds;     // array of neighbouring vertices at the end of the edges
 
   /**
    * Empty constructor, not used
@@ -40,21 +37,23 @@ public class Vertex implements Serializable {
   /**
    * Constructor with a {@link VertexType}.
    * @param vtype type of vertex with general properties,
-   * is even for clockwise, odd for clockwise orientation
-   */
+  */
   public Vertex(final VertexType vtype) {
     this.vtype = vtype;
-    orient     = 1; // assume normal orientation
-    distance   = 0;
+    orient     = +1; // assume normal orientation
+    distance   = -1; // unknown so far
     rotate     = 0;
     expos      = new Position();
-    proxies    = new Vertex[vtype.edgeNo];
+    pxInds     = new int[vtype.edgeNo];
+    for (int iedge = 0; iedge < vtype.edgeNo; iedge ++) {
+      pxInds[iedge] = -1; // proxy vertex indices are unknown so far
+    }
    } // Vertex(VertexType)
 
   /**
    * Constructor with a {@link VertexType} and an orientation.
    * @param vtype type of vertex with general properties
-   * @param orient 1 for normal (clockwise), -1 for opposite (counter-clockwise) orientation
+   * @param orient = +1 for normal (clockwise), -1 for opposite (counter-clockwise) orientation
    */
   public Vertex(final VertexType vtype, final int orient) {
     this(vtype);
@@ -70,13 +69,11 @@ public class Vertex implements Serializable {
   } // getType
 
   /**
-   * Gets the name (via the {@link #VertexType}) of <em>this</em> Vertex
-   * @return uppercase letter (for non-flipped) or lowercase letter (for flipped)
+   * Gets the name (via the {@link VertexType}) of <em>this</em> Vertex
+   * @return uppercase letter (for normal orientation) or lowercase letter (for opposite orientation)
    */
   public String getName() {
-    return orient == 1
-        ? vtype.name
-        : vtype.name.toLowerCase();
+    return orient == 1 ? vtype.name : vtype.name.toLowerCase();
   } // getName
 
   /**
@@ -87,7 +84,7 @@ public class Vertex implements Serializable {
     StringBuffer result = new StringBuffer(128);
     for (int iedge = 0; iedge < vtype.edgeNo; iedge ++) {
       result.append(',');
-      result.append(String.valueOf(proxies[iedge] == null ? -1 : proxies[iedge].index));
+      result.append(String.valueOf(pxInds[iedge]));
     } // for iedge
     return result.substring(1);
   } // getProxyList
@@ -98,30 +95,29 @@ public class Vertex implements Serializable {
    */
   public String toJSON() {
     final String result
-        = "{ \"i\": "          + String.format("%4d", index)
-        + ", \"type\": "       + String.format("%2d", vtype.index)
-        + ", \"name\": "       + getName()
-        + ", \"orient\": "     + String.format("%3d", orient)
-        + ", \"rot\": "        + String.format("%3d", rotate)
-        + ", \"fix\": "        + fixedEdges
-        + ", \"proxies\": ["   + getProxyList() + "]"
-        + ", \"pos\": \""      + expos.toString()  + "\""
-        + ", \"dist\": \""     + distance + "\""
+        = "{ \"i\": "       + String.format("%4d", index)
+        + ", \"type\": "    + String.format("%2d", vtype.index)
+        + ", \"name\": "    + getName()
+        + ", \"orient\": "  + String.format("%3d", orient)
+        + ", \"rot\": "     + String.format("%3d", rotate)
+        + ", \"pxInds\": [" + getProxyList() + "]"
+        + ", \"pos\": \""   + expos.toString()  + "\""
+        + ", \"dist\": \""  + distance + "\""
         + " }\n";
     return result;
-  } // Vertex.toJSON
+  } // toJSON
 
   /**
    * Returns a representation of the Vertex
-   * @return JSON for edges
+   * @return the more important propertiesin human readable form
    */
   public String toString() {
     return index + getName() + " @" + rotate + expos + "->" + getProxyList();
-  } // Vertex.toString
+  } // toString
 
- /**
+  /**
    * Normalizes an angle
-   * @param angle in degrees, maybe negative or >= 360
+   * @param angle in degrees, maybe negative or &gt;= 360
    * @return non-negative degrees mod 360
    */
   protected static int normAngle(int angle) {
@@ -132,57 +128,58 @@ public class Vertex implements Serializable {
   } // normAngle
 
   /**
-   * Gets the absolute angle where an edge of <em>this</em> {@link Vertex}
+   * Normalizes an edge
+   * @param iedge, zero based, maybe negative or &gt;= edgeNo
+   * @return integer between 0 and edgeNo - 1.
+   */
+  protected int normEdge(int iedge) {
+    while (iedge < 0) {
+      iedge += vtype.edgeNo;
+    }
+    return iedge % vtype.edgeNo;
+  } // normEdge
+
+  /**
+   * Gets the absolute angle where an edge from <em>this</em> {@link Vertex}
    * (which is already rotated) is pointing to.
    * This is the only place where the orientation of the Vertex is relevant.
    * The orientation is implemented by a proper access to <em>sweeps</em>.
-   * This method corresponds with {@link #getEdge}.
-   * @param iedge number of the edge
+   * @param iedge number of the edge, 0 based
    * @return degrees [0..360) where the edge points to,
    * relative to a right horizontal edge from (x,y)=(0,0) to (x,y)=(0,1),
    * turning clockwise := positive (downwards, because of SVG's y axis)
    */
   protected int getAngle(final int iedge) {
-    final int result = normAngle(rotate + orient * vtype.pxSweeps[iedge]);
+    final int result = normAngle(rotate + orient * vtype.sweeps[iedge]);
+  /* start test code //
     if (sDebug >= 2) {
         System.out.println("#         getAngle(iedge "         + iedge + ")." + index + getName() + "@" + rotate + expos
             + ", focus.orient " + orient + ", => " + result);
     }
+  // end   test code */
     return result;
   } // getAngle
 
   /**
-   * Determines the {@link Position} of a proxy {@link Vertex} at the end of the specified edge
-   * @param iedge=0..edgeNo -1; the successor is at the end of this edge
-   * @return exact Position which is then checked whether it is occupied
+   * Searches for the focus in the array <em>pxInds</em> of a proxy
+   * @param proxy a neighbour of the focus Vertex
+   * @return the index where the focus is stored in the proxy,
+   * or -1 if it was not found
    */
-  public Position getProxyPosition(final int iedge) {
-    final Position result = expos.moveUnit(getAngle(iedge));
-    if (sDebug >= 2) {
-        System.out.println("#         getProxyPosition(iedge " + iedge + ")." + index + getName() + "@" + rotate + expos
-            + ", focus.orient " + orient + " => " + result.toString());
-    }
+  protected int findProxyEdge(final Vertex proxy) {
+    int result = -1; // assume: not found
+    boolean busy = true;
+    int kedge = 0;
+    while (busy && kedge < proxy.vtype.edgeNo) {
+      if (index == proxy.pxInds[kedge]) { // found
+        busy = false;
+        result = kedge;
+      } else {
+        kedge ++;
+      }
+    } // while busy
     return result;
-  } // getProxyPosition
-
-  /**
-   * Creates and returns a new successor {@link #Vertex} of <em>this</em> Vertex (which is already rotated).
-   * @param iedge=0..edgeNo -1; the successor is at the end of this edge
-   * @return successor Vertex which is properly rotated and linked back to <em>this</em>
-   */
-  public Vertex createProxy(final int iedge, final Position proxyPos) {
-    final Vertex proxy = new Vertex(vtype.pxTypes[iedge], orient * vtype.pxOrients[iedge]); // create a new Vertex
-    final int pxAngle  = this.getAngle(iedge); // points to the proxy
-    proxy.expos  = expos.moveUnit(pxAngle);
-    final int pxRota   = orient * vtype.pxRotats[iedge];
-    proxy.rotate = normAngle(rotate + pxRota);
-    if (sDebug >= 2) {
-      System.out.println("#     createProxy(iedge " + iedge + "proxyPos " + proxyPos.toString()
-          + ")." + index + getName() + "@" + rotate + expos
-          + " -> pxType " + proxy.vtype.index + ", pxRota " + pxRota + ", pxAngle " + pxAngle
-          + " => " + proxy.toString());
-    }
-    return proxy;
-  } // createProxy
+  } // findProxyEdge
 
 } // class Vertex
+

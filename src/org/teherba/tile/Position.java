@@ -27,9 +27,9 @@ public class Position implements Serializable {
   private static final Double SQRT6 = Math.sqrt(6.0);
 
   /** Horizontal coordinate, left is negative */
-  protected int/*s*/[] xtuple;
+  public int/*s*/[] xtuple;
   /** Vertical coordinate, up is negative */
-  protected int/*s*/[] ytuple;
+  public int/*s*/[] ytuple;
 
   /**
    * Empty constructor - creates the origin (0,0).
@@ -52,10 +52,11 @@ public class Position implements Serializable {
   } // Position(int/*s*/[], int/*s*/[])
 
   /**
-   * Computes the cartesian coordinate value from an exact position tuple
+   * Computes the cartesian coordinate value from an exact {@link Position} tuple
+   * @param tuple x or y values of the vector defining the exact position
    * @return a double value
    */
-  public Double cartesian(final int/*s*/[] tuple) {
+  public static Double cartesian(final int/*s*/[] tuple) {
     return 
         ( tuple[0]
         + tuple[1] * SQRT2
@@ -110,6 +111,15 @@ public class Position implements Serializable {
   } // Position.toString
 
   /**
+   * Gets the cartesian coordinate from a double
+   * @param parm double value
+   * @return a String with 4 decimal digits
+   */
+  public static String get(double parm) {
+    return String.format("%.4f", parm).replaceAll("\\,", "."); // for German Locale
+  } // getX
+
+  /**
    * Gets the cartesian x coordinate (to the right) from <em>this</em> Position
    * @return a String with 4 decimal digits
    */
@@ -153,7 +163,7 @@ public class Position implements Serializable {
       , new Position(new int/*s*/[] { 0, 1, 0, 1}, new int/*s*/[] { 0, 1, 0,-1}) // [23] 345     0.9659,   -0.2588
       };
 
-  /** Angles in degrees for regular polygones */
+  /** Angles in degrees for regular polygons */
   public static final int[] mRegularAngles = new int[] { 0
       , 360 // [ 1] full circle
       , 180 // [ 2] half circle
@@ -183,6 +193,7 @@ public class Position implements Serializable {
    * Tests the computation of all 24 exact {@link Position}s
    */
   public static void testCirclePositions() {
+  /* start test code //
     Position origin = new Position();
     SVGFile.sEnabled = true;
     if (SVGFile.sEnabled) {
@@ -206,6 +217,7 @@ public class Position implements Serializable {
       System.out.println(String.format("[%2d] + [%2d] = %8s,%8s"
           , ipos, ipos8, hexPos.getX(), hexPos.getY()));
     } // for ipos
+  // end   test code */
   } // testCirclePositions
 
   /**
@@ -213,6 +225,7 @@ public class Position implements Serializable {
    * @param args command line arguments: -circle
    */
   public static void main(String[] args) {
+  /* start test code //
     try {
       int iarg = 0;
       while (iarg < args.length) { // consume all arguments
@@ -229,6 +242,7 @@ public class Position implements Serializable {
       System.err.println(exc.getMessage());
       exc.printStackTrace();
     }
+  // end   test code */
   } // main
 
 } // class Position
