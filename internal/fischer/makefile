@@ -122,6 +122,7 @@ select2:
 	$(DBAT) "UPDATE seq4 s \
 		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
+	$(DBAT) -v -f $(CC).sql || :
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 \
 	    WHERE (aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis)) \
@@ -139,7 +140,7 @@ clean: purge # parameter: CC; $(CC).fail.log from previous test is stripped off 
 	grep -vf clean.tmp $(CC).gen > $(CC).tmp
 	cp -v $(CC).tmp $(CC).gen
 	wc -l $(CC).gen
-dirty:
+dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
 	wc -l $(CC).gen
 	cp    $(CC).gen $(CC).old.tmp
 	cut -b1-7 $(CC).pass.log > dirty.tmp
@@ -974,6 +975,16 @@ holsq3:
 	$(COMMON)/cat25.txt      > $@.gen
 	cat $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----------------
+homapgf:
+	grep -E "^%p" $(COMMON)/cat25.txt | grep -iE "gf *:=" \
+	| cut -b 4- | sed -e "s/ /\t/" | sort | uniq -w7 > x.tmp
+	make seq2 LIST=x.tmp
+	$(DBAT) "SELECT * FROM seq2 WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  ORDER BY aseqno " \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener
@@ -1249,6 +1260,22 @@ period: # PeriodicSequence
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 	# ([ \d\,]+)[\}\)\]]})'\
+#-------------------------------
+# Positions of ... in (the decimal expansion of |Annnnnn)
+posins:
+	perl posins.pl -d 0 $(COMMON)/joeis_names.txt \
+	2>       $@.rest \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.*
+	# perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#----------------
+confra2:
+	grep -E "Decimal expansion of|Continued fraction of|Numerators of|Denominators of" \
+	  $(COMMON)/joeis_names.txt \
+	| cut -b1-80 \
+	| grep -vE "^A0[0-2]" \
+	| tee    $@.tmp
 #----------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
