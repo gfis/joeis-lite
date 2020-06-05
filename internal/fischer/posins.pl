@@ -128,7 +128,7 @@ while (<>) {
                 $parm5 = "next();";
             }
             $rseq = lc(substr($rseqno, 0, 4));
-            print join("\t", $aseqno, $callcode, $offset, $rseq, $rseqno, $roffset, $value, $parm5) . "\n";
+            print join("\t", $aseqno, $callcode, $offset, $rseq, $rseqno, $roffset, $value, $parm5, $name) . "\n";
         } else {
             print STDERR join("\t", $aseqno, $superclass, $name, @rest) . "\n";
         }

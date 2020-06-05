@@ -707,27 +707,6 @@ cfspercent1:
 	$(COMMON)/names \
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#-------------------------------
-dupl:
-	perl -ne \
-	'if (m{^(A\d+) (Duplicate of |Essentially the same as |Same as )(A\d+)})'\
-	'{ print join("\t", $$1, "$@", 0, $$3, substr(lc($$3), 0, 4), $$2) . "\n" }' \
-	$(COMMON)/names \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-dupl_cut:
-	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
-	    FROM seq4 s \
-	    WHERE parm1 IN (SELECT aseqno FROM joeis) \
-	      AND parm3 like 'Duplicate%' \
-	    ORDER BY 1" \
-	| perl -pe "s{\'\'}{\'}g" \
-	| grep -vE "A082627|A174781" \
-	>        dupl.gen
-	head -n4 dupl.gen
-	wc -l    dupl.gen
 #----
 dead:
 	$(DBAT) -x "SELECT i.aseqno, n.name, 0 \
@@ -755,6 +734,34 @@ dead_check: # Where are dead, erroneous sequences still referenced?
 	| tee    $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
+#-------------------------------
+decofr:
+	perl decofr.pl -i 0 $(COMMON)/joeis_names.txt \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	# perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#-------------------------------
+dupl:
+	perl -ne \
+	'if (m{^(A\d+) (Duplicate of |Essentially the same as |Same as )(A\d+)})'\
+	'{ print join("\t", $$1, "$@", 0, $$3, substr(lc($$3), 0, 4), $$2) . "\n" }' \
+	$(COMMON)/names \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+dupl_cut:
+	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
+	    FROM seq4 s \
+	    WHERE parm1 IN (SELECT aseqno FROM joeis) \
+	      AND parm3 like 'Duplicate%' \
+	    ORDER BY 1" \
+	| perl -pe "s{\'\'}{\'}g" \
+	| grep -vE "A082627|A174781" \
+	>        dupl.gen
+	head -n4 dupl.gen
+	wc -l    dupl.gen
 #-------------------------------
 # Triangles
 # A038220 Triangle whose (i,j)-th entry is binomial(i,j)*3^(i-j)*2^j.	nonn,tabl,easy,	0..8000
@@ -1652,6 +1659,25 @@ dex4:
 	grep -vE "^#" $@.tmp | wc -l	
 dex:
 	cp dex4.tmp dex.gen
+#--------
+# A163241	null	Simple self-inverse permutation: Write n in base 4, then replace each digit '2' with '3' and vice versa, then convert back to decimal.	nonn,base,easy,	0..1023
+# A171013	null	In the sequence of prime numbers, replace all digits '1' with '0' and vice versa.	nonn,base,easy,	1..1000
+# A171014	null	In the sequence of prime numbers, replace all the '2' digits with '0' and vice versa.	nonn,base,easy,	1..1000
+# A222212	null	In the number n, replace all (decimal) digits '0' with '3' and vice versa.	nonn,base,easy,	0..1000
+# A222213	null	Replace all (decimal) digits '0' with '4' and vice versa.	nonn,base,easy,	0..1000
+# A222216	null	In the number n, replace all (decimal) digits 0 with 7 and vice versa.	nonn,base,easy,	0..1000
+digexch:
+	grep -E "vice versa" $(COMMON)/names \
+	| perl -ne 'my $$base = 10; s{digits? }{}; my $$line = $$_; '\
+	' ;'\
+	' if (m{eplace\D*(\d)\D? with *\D?(\d)}) { my ($$dig1, $$dig2) = ($$1, $$2); '\
+	'   if (m{ base +(\d+)}) { $$base = $$1; }; '\
+	'   print join("\t", substr($$line, 0, 7), "digexch", 0, (($$line =~ m{prime num}) ? "a000\tA000040" : "a001\tA001477")'\
+	'     , $$base,$$dig1, $$dig2) . "\n"; '\
+	' }'\
+	>       $@.gen
+	head -4 $@.gen
+	wc   -l $@.gen	
 #--------
 # A030801 [ exp(17/24)*n! ].
 # A030802 a(n) = floor( exp(13/24)*n! ).
