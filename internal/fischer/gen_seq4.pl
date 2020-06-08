@@ -130,7 +130,7 @@ while (<>) { # read inputfile
             }
             if (0) {
             } elsif (length($type) == 0) { # leave it, but replace "~~" -> newline
-            	$term =~ s{\~\~}{\"\n        , \"}g;
+                $term =~ s{\~\~}{\"\n        , \"}g;
             } elsif ($type =~ m{I}i)     { # normal int
                 # term is unchanged
             } elsif ($type =~ m{L}i)     { # make 'long' constant

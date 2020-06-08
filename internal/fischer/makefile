@@ -1692,6 +1692,14 @@ flexfact:
 	$(COMMON)/names \
 	| tee -a $@.gen
 #-------------------
+floors:
+	perl floors.pl $(COMMON)/joeis_names.txt \
+	2>      $@.rest \
+	| grep -v 7777 \
+	>       $@.gen 
+	head -4 $@.gen
+	wc   -l $@*.*
+#-------------------
 # A109718 Periodic sequence with period {0,1,0,3}, or n^3 mod 4.
 # A109720 Periodic sequence {0,1,1,1,1,1,1} or n^6 mod 7.       
 # A109753 n^3 mod 8; the periodic sequence {0,1,0,3,0,5,0,7}.   

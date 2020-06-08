@@ -7,7 +7,7 @@ import irvine.math.z.Z;
  * Derived from RecordPositionSequence.
  * @author Georg Fischer
  */
-public class PositionsInSequence implements Sequence {
+public class PositionSequence implements Sequence {
 
   private final Sequence mSeq; // the underlying sequence
   private Z mValue; // return the positions of this number
@@ -19,7 +19,7 @@ public class PositionsInSequence implements Sequence {
    * @param offset offset of <code>seq</code>
    * @param value the positions of this number are returned
    */
-  public PositionsInSequence(final int offset, final Sequence seq, final long value) {
+  public PositionSequence(final int offset, final Sequence seq, final long value) {
     mSeq = seq;
     mValue = Z.valueOf(value);
     mN = offset - 1;

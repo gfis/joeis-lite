@@ -1,6 +1,6 @@
 #!perl
 
-# Extract parameters for PositionsInSequence.java
+# Extract parameters for PositionSequence.java
 # @(#) $Id$
 # 2020-06-04, Georg Fischer
 #
@@ -128,7 +128,7 @@ while (<>) {
                 $parm5 = "next();";
             }
             $rseq = lc(substr($rseqno, 0, 4));
-            print join("\t", $aseqno, $callcode, $offset, $rseq, $rseqno, $roffset, $value, $parm5, $name) . "\n";
+            print join("\t", $aseqno, $callcode, $offset, $rseq, $rseqno, $roffset, $value, $parm5, substr($name, 0, 128)) . "\n";
         } else {
             print STDERR join("\t", $aseqno, $superclass, $name, @rest) . "\n";
         }

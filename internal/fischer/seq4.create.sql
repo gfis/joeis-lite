@@ -13,13 +13,13 @@ CREATE  TABLE            seq4
     , parm1    VARCHAR(4096)
     , parm2    VARCHAR(1024)
     , parm3    VARCHAR(256)
-    , parm4    VARCHAR(4096)          
-    , parm5    VARCHAR(256)          
-    , parm6    VARCHAR(128)          
-    , parm7    VARCHAR(128)          
-    , parm8    VARCHAR(128)          
-    , name     VARCHAR(1024)  
-    , status   VARCHAR(16)           -- pass, FAIL       
+    , parm4    VARCHAR(4096)
+    , parm5    VARCHAR(256)
+    , parm6    VARCHAR(128)
+    , parm7    VARCHAR(128)
+    , parm8    VARCHAR(128)
+    , name     VARCHAR(1024)
+    , status   VARCHAR(16)           -- pass, FAIL
     , PRIMARY KEY(aseqno, callcode)
     );
 COMMIT;
