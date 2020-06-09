@@ -52,6 +52,7 @@ while (<>) {
     $line =~ s/\s+\Z//; # chompr
     if ($line =~ m{\AA\d+\t}) { # starts with aseqno
         my ($aseqno, $callcode, $offset, $postfix, $keep0, $base, $name) = split(/\t/, $line);
+        my $callext = ""; # maybe "cr"
         my $s = substr($postfix, 0, 1); # first character is separator (";")
         $postfix =~ s{\;2\;pi\;\*\;}{\;tau\;}g;
         # $postfix =~ s{\;sqrt\(\;2\;sqrt\)\;}{\;sqrt2\;}g;
@@ -79,7 +80,7 @@ while (<>) {
             } elsif ($op =~ m{\A(\d+L?)\Z}) { # number
                 $op = "CR.valueOf($op)";
                 push(@stack, $op);
-            } elsif ($op =~ m{\A(e|half|one_third|phi|pi|tau|sqrt2)\Z}) { # named constant
+            } elsif ($op =~ m{\A(e|half|one_third|phi|pi|tau|sqrt2)\Z}i) { # named constant
                 $op = "(CR." . uc($1) . ")";
                 push(@stack, $op);
             } elsif ($op eq "+") { # +
@@ -111,38 +112,43 @@ while (<>) {
                     push(@stack, "$op2.exp()");
                 } else {
                     # ComputableReals.SINGLETON.pow(CR.FOUR, CR.THREE.inverse());
-                    $callcode = "dexcr";
-                    push(@stack, "$CRS.pow($op1, $op2)");
+                    $callext = "cr";
+                    push(@stack, "$CRS.pow($op1,$op2)");
                 }
             } elsif ($op =~ m{\(\Z}) { # start of function call
                 # ignore
             } elsif ($op =~ m{\A(arcsin|arccos|arctan|sinh|cosh|tan|tanh|cot|coth|csc|csch|sech)\)\Z}) { # end of function call
                 $op = $1;
                 $op1 = pop(@stack);
-                $callcode = "dexcr";
+                $callext = "cr";
                 push(@stack, "$hash{$op}($op1)");
-            } elsif ($op =~ m{\A(sqrt|log|exp|sin|cos)\)\Z}) { # end of function call
+            } elsif ($op =~ m{\A(sqrt|log|exp|sin|cos|floor)\)\Z}) { # end of function call
                 $op1 = pop(@stack);
                 $op =~ s{\)}{\(\)};
                 push(@stack, "$op1.$op");
             } elsif ($op =~ m{\A(zeta)\)\Z}) { # end of zeta call
                 $op1 = pop(@stack);
                 if ($op1 =~ m{\ACR.valueOf\((\d+)\)\Z}) { # int parameter; 2nd would be precision?
-                	$op1 = $1;
-                    $callcode = "dexcr";
+                    $op1 = $1;
+                    $callext = "cr";
                     push(@stack, "Zeta.zeta($op1)");
                 } else {
                     $op = "?";
                     $error = 1;
                 }
             } elsif ($op =~ m{\A(gamma|eulergamma)\Z}) { # EulerGamma
-                $callcode = "dexcr";
+                $callext = "cr";
                 push(@stack, "(EulerGamma.SINGLETON)");
             } elsif ($op =~ m{\A(log_(10|2))\)\Z}) { # log_10
                 my $base = $2;
                 $op1 = pop(@stack);
                 push(@stack, "$op1.log().divide(CR.valueOf($base).log())");
+            } elsif ($op =~ m{\A[a-z]\Z}) { # single letter variable
+                push(@stack, $op);
             } else {
+                if ($debug >= 1) {
+                    print "#    op1=$op1, op=$op\n";
+                } 
                 $op = "?";
                 $iop = scalar(@ops); # break loop
                 $error = 1;
@@ -171,12 +177,15 @@ while (<>) {
             $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4).multiply(CR.valueOf($4)))";
         } else {
             $result = "?";
-            print "# " . join("\t", $aseqno, $callcode, $offset, $postfix, $keep0, $base, join(";", @ops), $name) . "\n";
         }
         if ($result !~ m{\?}) {
             $result =~ s{CR\.valueOf\(2\)\.sqrt\(\)}{CR\.SQRT2}g; # simplify sqrt(2)
             $result =~ s{CR\.valueOf\(([0-5])\)}{\(CR\.$number_words[$1]\)}g; # known number constants
-            print join("\t", $aseqno, $callcode, $offset, $result, $keep0, $base, $name) . "\n";
+            print join("\t", $aseqno, "$callcode$callext", $offset, $result, $keep0, $base, $name) . "\n";
+        } else {
+            if ($debug >= 1) {
+                print "# assertion3 " . join("\t", $aseqno, $callcode, $offset, $postfix, $keep0, $base, join(";", @ops), $name) . "\n";
+            }
         }
     } # if aseqno
 } # while <>

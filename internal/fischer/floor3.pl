@@ -1,11 +1,11 @@
 #!perl
 
-# Extract Kimberling sequences with "[ ] = floor" 
+# Extract sequences with "[ ] = floor" 
 # @(#) $Id$
-# 2020-06-05, Georg Fischer
+# 2020-06-09, Georg Fischer: 3rd attempt
 #
 #:# Usage:
-#:#   perl floors.pl [-d debug] $(COMMON)/joeis_names.txt > floors.gen
+#:#   perl floor3.pl [-d debug] $(COMMON)/joeis_names.txt > floors.gen
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -32,115 +32,123 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 
-my @digits = qw(ZERO ONE TWO THREE FOUR FIVE);
-sub crdigits {
-    my ($n) = @_;
-    return ($n >= 0 and $n <= 5) ? "CR.$digits[$n]" : "CR.valueOf($n)";
-} # crdigits
-my $callcode = "floor1";
-my $constant;
-my $rseqno = "";
+my @known_words = 
+my %known = ();
+map { $known{$_} = 1; $_
+    } qw(floor sqrt log exp sin cos
+    arcsin arccos arctan sinh cosh tan tanh cot coth csc csch sech 
+    e half one_third phi pi tau sqrt2 gamma eulergamma log_2 log_10 log);
+my $callcode = "dex";
 my $offset = 0;
-my ($r, $s, $t, $u, $v, $w, $x);
 my $formula;
-my $stasep = "~~";
-my @parm = ();
- while (<>) {
+my $condlist;
+my ($aseqno, $superclass, $joeis_name, @rest);
+my @vars;
+my @values;
+
+while (<>) {
     my $line = $_;
     next if $line !~ m{\AA\d+};
     $line =~ s/\s+\Z//; # chompr
-    my ($aseqno, $superclass, $joeis_name, @rest) = split(/\t/, $line);
+    ($aseqno, $superclass, $joeis_name, @rest) = split(/\t/, $line);
+    my $name = $joeis_name;
+    next if $name =~ m{\.\.| if |\[x\^\(?n|A\d{6}};
     if ($ignore == 1 or $superclass eq "null") {
-        my $name = $joeis_name;
-        $name =~ s{\Aa\(n\) *\= *}{};
-        $name =~ s{\..*}{};
-        my $with_floor = $name =~ s{\[[ \.]*\] *\=? *floor}{};
-        $name =~ s{(\;| and )}{\,}g;
-        $name =~ s{\s}{}g;
-        $name =~ s{\,\,+}{\,}g;
-        @parm = &eval_where($name);
-        $formula = ""; # assume not found
-        if (0) {
-        } elsif (($name =~ m{\A\[n\*?r\] *\- *\[n\*?r *\- *k\*?r\] *\- *\[k\*?r\]}) 
-              or ($name =~ m{\A\[n\*?r\] *\- *\[k\*?r\] *\- *\[n\*?r *\- *k\*?r\]})) {
-            # A188009	null	[nr]-[nr-kr]-[kr], where r=(1+sqrt(5))/2, k=2, [ ]=floor.	nonn,synth	1..136
-            # [nr]-[kr]-[nr-kr]
-            $formula = "nN.multiply(mR).floor()"
-                . ".subtract(mK.multiply(mR).floor())"
-                . ".subtract(nN.multiply(mR).subtract(mK.multiply(mR)).floor())";
-        } elsif ($name =~ m{\A\[n\*?r *\+ *k\*?r\] *\- *\[n\*?r\] *\- *\[k\*?r\]}) {
-            # [nr+kr]-[nr]-[kr]
-            $formula = "nN.multiply(mR).add(mK.multiply(mR)).floor()"
-                . ".subtract(nN.multiply(mR).floor())"
-                . ".subtract(mK.multiply(mR).floor())";
-                
-        } elsif ($with_floor > 0) {
-            print STDERR "# " . join("\t", $aseqno, $superclass, $joeis_name, @rest) . "\n";
-        } else {
-        }
-        my $plen = scalar(@parm);
-        if (length($formula) > 0 and $plen > 0) {
-            print join("\t", $aseqno, "floor$plen", $offset, $formula, @parm, $joeis_name) . "\n";
-        }
+        $name =~ s{\Aa\(n\) *\= *}{}; # remove "a(n) = "
+        $name =~ s{floor\(}{\[}g;
+        if ($name =~ m{\A(n *[\+\-] *)?\[}) { # starts with "floor"
+            $name =~ s{\..*}{}; # remove "." and all behind
+            $name =~ s{\[[ \.]*\] *\=? *floor}{};
+            $name =~ s{(\;| and | where )}{\,}g; # " and " -> ","
+            $name =~ s{\,( *\,)+}{\,}g; # keep single comma only
+            $name =~ m{\A([^\,]+)(\, *(.*))?};
+            $formula  = $1 || ""; 
+            $condlist = $3 || "";
+            $formula  =~ s{ }{}g;
+            $condlist =~ s{ }{}g;
+            if ($debug >= 1) {
+                print "# $aseqno name=\"$name\", condlist=\"$condlist\", formula=\"$formula\"\n";
+            }
+            my $count = &eval_where($condlist);
+            $count +=   &eval_expression($formula);
+            if ($count == 0) {
+                print STDERR "# " . join("\t", $aseqno, $superclass, $joeis_name, @rest) . "\n";
+            }
+        } # starts with "["
     } # ne null
 } # while
 #----
 sub eval_where { # lists of variables and values behind ";" or ", where"
-    my ($name) = @_;
-    my @vars;
-    my @values;
+    my ($condlist) = @_;
+    my $result = 0;
+    $condlist =~ s{ }{}g;
     my $ind;
-    $name =~ m{\A([^\,\;]+)(\, *where|\;) *([^\.]*)};
-    my $form = $1; # ignore
-    my $cond = $3 || "";
-    $cond =~ s{\s}{}g;
-    if ($debug >= 1) {
-        print "cond=\"$cond\"\n";
-    }
+    @vars   = ();
+    @values = ();
     if (0) {
-    } elsif ($cond =~m{\(([^\)]+)\)\=\(([^\)]+)\)}) {
-        @vars   = map { "m" . uc($_) } split(/\,/, $1);
-        @values = split(/\,/, $2);
-    } else {
+    } elsif ($condlist =~m{\(([^\)]+)\)\=\((.+)\)\Z}) { # (r,s,t)=(expr1,expr2,expr3)
+        my ($list1, $list2) = ($1,$2);
+        @vars   = split(/\,/, $list1);
+        @values = split(/\,/, $list2);
+    } else { # r=expr1,s=expr2,t=expr3
         $ind = 0;
-        @values =  map { 
+        @values = map { 
                 my $pair = $_; 
                 my ($var, $value) = split(/\=/, $pair);
-                $vars[$ind ++] = "m" . uc($var || 7777);
-                $value
-            } split(/\,/, $cond);
+                $vars[$ind ++] = $var || 7777;
+                $value || "7777"
+            } split(/\,/, $condlist);
     }
-    @values = map { my $p = $_; &get_const($p) } @values;
-    if ($debug >= 1) {
+    @values = map { my $p = $_; $p =~ s{goldenratio}{\(\(1+sqrt\(5\)\)\/2\)}g; $p } @values;
+    if ($debug >= 3) {
         print "  => [" . join(", ", @vars) . "] =[" . join(", ", @values) . "]\n";
     }
     $ind = 0;
-    return map { my $value = $_; $vars[$ind ++] . " = $value" } @values;
+    foreach my $var(@vars) { # insert "*" in products
+        if ($ind < scalar(@values) and ($var  =~ m{\A[a-z]\Z})) {
+            print join("\t", $aseqno, $callcode . $var, $offset, "postfix", "true", 10, $values[$ind] || 7777) . "\n";
+            $ind ++;
+            $result ++;
+        }
+    } # while
+    return $result;
 } # eval_where
 #----
-sub get_const { # constant sqrt(2), (1+sqrt(5))/2 etc.
-    my ($const) = @_;
-    $const .= "";
-    my $result = "CR.valueOf(7777)";
-    my $inner = 2;
-    if (0) {
-    } elsif ($const =~ m{\A(\d+)\Z}) {
-        $inner = $1;
-        $result = &crdigits($inner);
-    } elsif ($const =~ m{sqrt\((\d+)\)}) {
-        $inner = $1;
-        $result = &crdigits($inner) . ".sqrt()";
-        if (0) {
-        } elsif (($inner eq 5) and ($const =~ m{\/2})) {
-            $result .= ".add(CR.ONE).divide(CR.TWO)";
-        } elsif ($const =~ m{\A1\/sqrt}) {
-            $result  =  "CR.ONE.divide(" . &crdigits($inner) . ".sqrt())";
+sub eval_expression { 
+    my ($expr) = @_;
+    my $result = 0;
+    $expr =~ s{ }{}g;
+    my $varno = scalar(@vars);
+    push(@vars, "n");
+    foreach my $var(@vars) { # insert "*" in products
+        if ($var  =~ m{\A[a-z]\Z}) {
+            $expr =~ s{$var}{$var\*}g;
         }
-    } elsif ($const =~ m{golden ?ratio}) {
-            $result = "CR.FIVE.sqrt().add(CR.ONE).divide(CR.TWO)";
+    }
+    $expr =~ s{(\W)\*(\w)}{$1$2}g; # repair
+    $expr =~ s{(\w)\*(\W)}{$1$2}g; # repair
+    $expr =~ s{\*\Z}{}g; # repair
+    $expr =~ s{(\w)([\[\(])}{$1\*$2}g; # digit * 
+    $expr =~ m{([a-z][a-z]+)};
+    my $ok = 1; # assume all lowercased words with length >= 2 are known
+    map {   my $word = $_;
+            if (($word =~ m{\A[A-Za-z]\w+}) and ! defined($known{lc($word)})) {
+                $ok = 0;
+            }
+            $_
+        } split(/\b/, $expr); # split on word boundaries
+    if ($ok == 0) { # bad word occurred
+        if ($debug >= 1) {
+            print "#    $aseqno expr=\"$expr\"\n";
+        }
+    } else {
+        $expr =~ s{\[}{floor\(}g; # normalize to "floor"s
+        $expr =~ s{\]}{\)}g; # normalize to "floor"s
+        print join("\t", $aseqno, $callcode . $varno, $offset, "postfix", "true", 10, $expr) . "\n";
+        $result ++;
     }
     return $result;
-} # get_const
+} # eval_expression
 #----------------
 __DATA__
 A188295	null	[nr]-[nr-r], where r=1/sqrt(2), [ ]=floor.	nonn,synth	1..123

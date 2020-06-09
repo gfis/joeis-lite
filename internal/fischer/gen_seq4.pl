@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2020-06-09: V1.8 leading "~~;  private final CR ~~parm2~~parm2~~...
 # 2020-05-19: V1.7 replace ~~ in $(PARMi) -> newline + 8 spaces
 # 2019-12-06: V1.6 no spaces in vectors
 # 2019-07-04: V1.5 -m: only those not already in $maindir
@@ -26,7 +27,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V1.7";
+my $program = "gen_seq4.pl V1.8";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -109,12 +110,17 @@ while (<>) { # read inputfile
     my $do_generate = 1;
     while ($iparm < scalar(@parms) - 1) {
         my $max_term_len = 0;
-        my @terms = map {
-              if (length > $max_term_len) {
-                $max_term_len = length;
-              }
-              $_
+        my @terms;
+        if ($parms[$iparm] !~ m{\~\~}) {
+            @terms = map {
+                if (length > $max_term_len) {
+                    $max_term_len = length;
+                }
+                $_
             } split(/\,\s*/, $parms[$iparm]);
+        } else {
+            @terms = ($parms[$iparm]);
+        }
         $copy =~ m{\$\(PARM$iparm(\.\w+)?\)}i;
         my $line_len = length($PREMATCH) || 0;
         my $type = $1 || "";
@@ -129,8 +135,21 @@ while (<>) { # read inputfile
                 print "# before: type(PARM$iparm) = \"$type\", term=\"$term\"\n";
             }
             if (0) {
-            } elsif (length($type) == 0) { # leave it, but replace "~~" -> newline
-                $term =~ s{\~\~}{\"\n        , \"}g;
+            } elsif (length($type) == 0) { # leave it, but replace "~~" -> newlines
+                if ($term =~ m{\A\~\~([^\~]*)}) { # leading ~~ - special separator
+                    my $separator = $1;
+                    $separator =~ m{\A(\S*)(\s+.*)}; # separator has the form: head spaces tail
+                    my $head = $1;
+                    my $tail = $2;
+                    $term =~ s{\A\~\~([^\~]*)(\~\~)?}{}; # remove the separator
+                    my $statements = "";
+                    foreach my $part (split(/\~\~/, $term)) {
+                        $statements .= "$tail$part$head\n";
+                    }
+                    $term = $statements;
+                } else { # infix ~~
+                    $term =~ s{\~\~}{\"\n        , \"}g; # 8 spaces and comma
+                }
             } elsif ($type =~ m{I}i)     { # normal int
                 # term is unchanged
             } elsif ($type =~ m{L}i)     { # make 'long' constant

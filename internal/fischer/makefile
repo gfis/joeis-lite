@@ -140,6 +140,16 @@ clean: purge # parameter: CC; $(CC).fail.log from previous test is stripped off 
 	grep -vf clean.tmp $(CC).gen > $(CC).tmp
 	cp -v $(CC).tmp $(CC).gen
 	wc -l $(CC).gen
+#--
+# ... oeis\a062\A062724.java:23: error: no suitable method found for add(CR)
+prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
+	cat dist.log \
+	| perl -ne 'if (m{(A\d+)\.java\:\d*\:\s*error\:}) { print "$$1\n"; } '\
+	| cut -b1-7 > prune.tmp
+	wc -l    prune.tmp
+	grep -vf prune.tmp $(CC).gen > $(CC).tmp
+	sed -e "s/\r//" $(CC).tmp > $(CC).gen
+	wc -l $(CC).*
 dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
 	wc -l $(CC).gen
 	cp    $(CC).gen $(CC).old.tmp
@@ -155,7 +165,10 @@ gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	perl gen_seq4.pl -d $(D) $(NC)  ghead.tmp
 dist:
-	cd ../.. ; ant -silent dist
+	rm -f dist.log
+	make dist1 2>&1 | tee dist.log
+dist1:
+	cd ../.. ; ant -silent dist 2>&1
 test: # parameter: CC
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen      > ghead.tmp
@@ -1692,13 +1705,35 @@ flexfact:
 	$(COMMON)/names \
 	| tee -a $@.gen
 #-------------------
-floors:
-	perl floors.pl $(COMMON)/joeis_names.txt \
-	2>      $@.rest \
-	| grep -v 7777 \
-	>       $@.gen 
-	head -4 $@.gen
+floor0: floor1 floor2 floor3 floor4 floor5
+floor1:
+	grep -E "\[|floor" $(COMMON)/joeis_names.txt \
+	| grep "null" \
+	>       $@.tmp
 	wc   -l $@*.*
+floor2:
+	perl floor3.pl -d              $(D) floor1.tmp \
+	2>      $@.rest \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@*.*
+floor3:
+	$(RAMATH).sequence.JoeisPreparer -f floor2.tmp \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@.tmp
+floor4:
+	perl infix_dex.pl           -d $(D) floor3.tmp \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@.tmp	
+floor5:
+	perl floor5.pl              -d $(D) floor4.tmp \
+	>       $@.tmp
+	head -4 $@.tmp
+	wc   -l $@.tmp	
+floor:
+	cp floor5.tmp floor.gen
 #-------------------
 # A109718 Periodic sequence with period {0,1,0,3}, or n^3 mod 4.
 # A109720 Periodic sequence {0,1,1,1,1,1,1} or n^6 mod 7.       
