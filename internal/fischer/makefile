@@ -114,15 +114,15 @@ NOT=NOT
 select: select1 select2 # parameter: CC, OFS
 select1:
 	make $(CC)
-	head -4 $(CC).gen
-	wc -l   $(CC).gen
+	head -n4 $(CC).gen
+	wc   -l  $(CC).gen
 EX=
 select2:
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s \
 		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
-	$(DBAT) -v -f $(CC).sql || :
+	$(DBAT) -v -f $(CC).sql > $(CC).rest.tmp || :
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 \
 	    WHERE (aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis)) \
@@ -130,9 +130,9 @@ select2:
 	      AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
-		  > $(CC).gen
-	head -4 $(CC).gen
-	wc -l   $(CC).gen
+		  >  $(CC).gen
+	head -n4 $(CC).gen
+	wc -l    $(CC).gen
 	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 clean: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
 	wc -l $(CC).gen
@@ -253,23 +253,23 @@ basdig1:
 	'if (m{^(A\d+)\s+(Integers|Numbers) (such that|[nk] such that|whose) number of (\d+).s in base (\d+) is (\d+)})'\
 	'{ print join("\t", $$1, "$@", 0, 1, $$5, $$4, $$6) . "\n" }' \
 	$(COMMON)/names \
-	>   $@.tmp
+	>        $@.tmp
 	perl -ne \
 	'if (m{^(A\d+)\s+(Integers|Numbers) ([nk] )?(that|which) contain (exactly one|a single) (\d+) in base (\d+)})'\
 	'{ print join("\t", $$1, "$@", 0, 1, $$7, $$6, 1) . "\n" }' \
 	$(COMMON)/names \
-	>>   $@.tmp
+	>>       $@.tmp
 	perl -ne \
 	'if (m{^(A\d+)\s+(Integers|Numbers) ([nk] )?(that|which) contain (exactly one|a single) (\d+)\.})'\
 	'{ print join("\t", $$1, "$@", 0, 1, 10, $$6, 1) . "\n" }' \
 	$(COMMON)/names \
-	>>    $@.tmp
-	sort  $@.tmp \
+	>>       $@.tmp
+	sort     $@.tmp \
 	| sed -e "s/A043489\t$@\t0\t1/A043489\t$@\t0\t0/" \
-	> $@.gen
+	>        $@.gen
 	# A043489 exceoptionally starts with 0
-	head -4 $@.gen
-	wc -l   $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 # A039092 Numbers whose base-9 representation has the same number of 2's and 4's.	nonn,base,easy,changed,synth
 # A039093 Numbers n such that representation in base 9 has same number of 2's and 5's.	nonn,base,easy,synth
@@ -1664,7 +1664,7 @@ dex3:
 	head -4 $@.tmp
 	wc   -l $@.tmp
 dex4:
-	perl infix_dex.pl dex3.tmp \
+	perl cr_infix.pl dex3.tmp \
 	| grep -vE "^(A114054|A117853|A202955|A248622)" \
 	>       $@.tmp
 	head -4 $@.tmp
@@ -1709,31 +1709,46 @@ floor0: floor1 floor2 floor3 floor4 floor5
 floor1:
 	grep -E "\[|floor" $(COMMON)/joeis_names.txt \
 	| grep "null" \
-	>       $@.tmp
-	wc   -l $@*.*
+	| grep -viE "prime|sum|binomial|triangle|base|cofr|\!|\.\.\." \
+	>        $@.tmp
+	wc   -l  $@*.*
 floor2:
-	perl floor3.pl -d              $(D) floor1.tmp \
-	2>      $@.rest \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@*.*
+	perl floor_split.pl         -d $(D) floor1.tmp \
+	2>       $@.rest \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@*.*
+	head -n4 $@.rest
+	wc   -l  $@.rest
 floor3:
 	$(RAMATH).sequence.JoeisPreparer -f floor2.tmp \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	grep "#" $@.tmp \
+	>        $@.rest || :
+	head -n4 $@.rest
+	wc   -l  $@.rest
 floor4:
-	perl infix_dex.pl           -d $(D) floor3.tmp \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp	
+	perl cr_infix.pl            -d $(D) floor3.tmp \
+	2>&1 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp	
+	grep "#" $@.tmp \
+	>        $@.rest || :
+	head -n4 $@.rest
+	wc   -l  $@.rest
 floor5:
-	perl floor5.pl              -d $(D) floor4.tmp \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp	
-floor:
-	cp floor5.tmp floor.gen
+	perl floor_combine.pl       -d $(D) floor4.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+floor: floor5
+	grep A floor5.tmp > $@.gen
+	# cp floor5.tmp $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #-------------------
 # A109718 Periodic sequence with period {0,1,0,3}, or n^3 mod 4.
 # A109720 Periodic sequence {0,1,1,1,1,1,1} or n^6 mod 7.       
@@ -1748,9 +1763,9 @@ modpow: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 	'if ($$3 ne "^") { '\
 	'print join("\t", substr($$_, 0, 7), "$@", 0, $$1, $$2, $$3) . "\n"; }}' \
 	| uniq -w 7 \
-	| tee   $@.gen
-	head -4 $@.gen
-	wc   -l $@.gen
+	| tee    $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
 #-------------------
 # A036160	null	3^n mod 223.	nonn,easy,synth	1
 # A036161	null	a(n) = 2^n mod 227.	nonn,easy,changed,	1
@@ -1761,16 +1776,16 @@ modpow2: # names: Annnnnn [a(n) = ](\d+)^n mod (\d+)
 	' if ($$rest eq "" or $$rest eq "^n") {'\
 	' print join("\t", $$aseqno, ($$rest eq "" ? "modpow2" : "modpow3"), 0, $$base, $$mod) . "\n"; }}' \
 	$(COMMON)/names \
-	>       $@.gen
-	head -4 $@.gen
-	wc   -l $@.gen
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
 #--------------------------
 palb:
 	perl -ne \
 	'if (m{^(A\d+)\s+.*palindrom(es|ic)\s+in\s+base\s+(\d+)}) { print join("\t", $$1, "$@", 1, $$3) . "\n" }' \
 	$(COMMON)/names \
-	> $@.gen
-	wc -l $@.gen
+	>        $@.gen
+	wc -l    $@.gen
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
@@ -1779,9 +1794,9 @@ polyn:
 	'{ print "$$1\n"; }' \
 	| sed -e "s/ /\t/" -e "s/ //g" -e "y/[]{}/()()/" \
 	| grep -v '\.\.' \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
 	make seq2 LIST=$@.tmp
 	$(DBAT) "SELECT aseqno, info \
 		FROM  seq2 \
@@ -1804,9 +1819,9 @@ such_prime:
 	grep Numbers $(COMMON)/names | grep -E 'such *that' | grep -E 'is *prime' \
 	| grep -v '[BRZFGPofgd]' \
 	| sed -e "s/ /\t/" \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
 	make seq2 LIST=$@.tmp
 	$(DBAT) "SELECT aseqno, info \
 		FROM  seq2 \
@@ -1955,21 +1970,21 @@ cofr_sqrt:
 weight_check:
 	grep "Weight distr" $(COMMON)/names \
 	| sed -e "s/ /\tweight\t0\t/" \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
 	make seq4 LIST=$@.tmp
 	$(DBAT) "SELECT s.aseqno, s.parm1, i.termno, i.keyword, i.author \
 		FROM  seq4 s, asinfo i \
 		WHERE s.aseqno NOT IN (SELECT aseqno FROM JOEIS) \
 		  AND s.aseqno = i.aseqno \
 		ORDER BY 1" \
-	>       $@.txt
-	head -4 $@.txt
-	wc   -l $@.txt
-	cp -v   $@.txt $(COMMON)/$@.txt
+	>        $@.txt
+	head -n4 $@.txt
+	wc   -l  $@.txt
+	cp -v    $@.txt $(COMMON)/$@.txt
 	cd $(COMMON) ; make html_checks
-	rm -v   $(COMMON)/$@.txt
+	rm -v    $(COMMON)/$@.txt
 weight2:
 	$(DBAT) "SELECT j.aseqno, j.superclass \
 		FROM  seq2 s, joeis j \
@@ -2003,37 +2018,37 @@ njoeis: # LIST
 	WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 	$(DBAT) -x "SELECT j.aseqno, j.superclass FROM seq s, joeis j \
 	WHERE s.aseqno = j.aseqno ORDER BY 1" \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc -l   $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 joeis2: # LIST
 	make seq2
 	$(DBAT) -x "SELECT s.aseqno, s.info FROM seq2 s \
 	WHERE s.aseqno NOT IN (SELECT j.aseqno FROM joeis j) ORDER BY 1" \
-	>       n$@.tmp
-	head -4 n$@.tmp
-	wc -l   n$@.tmp
+	>        n$@.tmp
+	head -n4 n$@.tmp
+	wc -l    n$@.tmp
 	$(DBAT) -x "SELECT j.aseqno, j.superclass, s.info FROM seq2 s, joeis j \
 	WHERE s.aseqno = j.aseqno ORDER BY 1" \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc -l   $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------------------------
 analog: analog1 anasort anastret
 analog1:
 	perl normalize_name.pl $(COMMON)/jnames.txt \
-	>         $@.tmp
-	wc -l     $@.tmp
+	>        $@.tmp
+	wc -l    $@.tmp
 anasort: 
 	sort -k3 -k2 -k1 -t "	" analog1.tmp \
-	>         $@.tmp
-	head -n 4 $@.tmp
-	wc -l     $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 anastret:
 	perl stretchable.pl anasort.tmp \
-	>         $@.txt
-	head -n 4 $@.txt
-	wc   -l   $@.txt
+	>        $@.txt
+	head -n4 $@.txt
+	wc   -l  $@.txt
 #--
 analog4:
 	make seq4 LIST=analog1.tmp
@@ -2062,12 +2077,12 @@ analog2:
 	| sed -e "s/ / +j+ /" > $@.tmp
 analog3:
 	sort -k3 -k2 -k1 -t "	" analog1.tmp analog2.tmp \
-	      > $@.txt
-	head -4 $@.txt
-	wc -l   $@.txt
+	      >  @.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
 analog5:
 	perl get_stretchables.pl analog3.txt \
-	>       $@.txt
-	head -4 $@.txt
-	wc   -l $@.txt
+	>        $@.txt
+	head -n4 $@.txt
+	wc   -l  $@.txt
 #--------

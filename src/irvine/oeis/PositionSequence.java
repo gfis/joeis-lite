@@ -4,14 +4,14 @@ import irvine.math.z.Z;
 
 /**
  * A sequence consisting of position of consecutive records in another sequence.
- * Derived from RecordPositionSequence.
+ * Derived from <code>RecordPositionSequence</code>.
  * @author Georg Fischer
  */
 public class PositionSequence implements Sequence {
 
-  private final Sequence mSeq; // the underlying sequence
-  private Z mValue; // return the positions of this number
-  private long mN; // current index
+  protected final Sequence mSeq; // the underlying sequence; "mSeq.next();" is needed for A327175-A327224
+  protected Z mValue; // return the positions of this number
+  protected long mN; // current index
 
   /**
    * Creates a sequence of the positions where a digit occurs in another sequence.
@@ -31,7 +31,7 @@ public class PositionSequence implements Sequence {
    * This method may be overwritten in order to test some other property.
    * @return true iff the current number <code>mK</code> has some property.
    */
-  protected boolean isOk(Z term) {
+  protected boolean isOk(final Z term) {
     return term.compareTo(mValue) == 0;
   } // isOk
 

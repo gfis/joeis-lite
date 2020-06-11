@@ -54,7 +54,7 @@ while (<>) {
         my ($aseqno, $callcode, $offset, $postfix, $keep0, $base, $name) = split(/\t/, $line);
         my $callext = ""; # maybe "cr"
         my $s = substr($postfix, 0, 1); # first character is separator (";")
-        $postfix =~ s{\;2\;pi\;\*\;}{\;tau\;}g;
+        # $postfix =~ s{\;2\;pi\;\*\;}{\;tau\;}g;
         # $postfix =~ s{\;sqrt\(\;2\;sqrt\)\;}{\;sqrt2\;}g;
         $postfix =~ s{\;1\;2\;\/\;}{\;half\;}g;
         $postfix =~ s{\;1\;3\;\/\;}{\;one_third\;}g;
@@ -68,7 +68,7 @@ while (<>) {
             }
             $op
             } split(/$s/, $postfix));
-        # $callcode = "dex" might be changed to "dexcr" (if ComputableReals must be included)
+        # $callcode = "dex_" might be changed to "dex_cr" (if ComputableReals must be included)
         my @ops = split(/${s}/, substr($postfix, 1));
         my @stack = ();
         my ($op1, $op2);
@@ -80,7 +80,7 @@ while (<>) {
             } elsif ($op =~ m{\A(\d+L?)\Z}) { # number
                 $op = "CR.valueOf($op)";
                 push(@stack, $op);
-            } elsif ($op =~ m{\A(e|half|one_third|phi|pi|tau|sqrt2)\Z}i) { # named constant
+            } elsif ($op =~ m{\A(e|half|one_third|pi|sqrt2)\Z}i) { # named constant
                 $op = "(CR." . uc($1) . ")";
                 push(@stack, $op);
             } elsif ($op eq "+") { # +
@@ -146,6 +146,7 @@ while (<>) {
             } elsif ($op =~ m{\A[a-z]\Z}) { # single letter variable
                 push(@stack, $op);
             } else {
+                $op1 = pop(@stack);
                 if ($debug >= 1) {
                     print "#    op1=$op1, op=$op\n";
                 } 
@@ -183,9 +184,7 @@ while (<>) {
             $result =~ s{CR\.valueOf\(([0-5])\)}{\(CR\.$number_words[$1]\)}g; # known number constants
             print join("\t", $aseqno, "$callcode$callext", $offset, $result, $keep0, $base, $name) . "\n";
         } else {
-            if ($debug >= 1) {
-                print "# assertion3 " . join("\t", $aseqno, $callcode, $offset, $postfix, $keep0, $base, join(";", @ops), $name) . "\n";
-            }
+            print "# $aseqno assertion 3: result=$result, ops=" . join(";", @ops) . ", name=$name\n";
         }
     } # if aseqno
 } # while <>

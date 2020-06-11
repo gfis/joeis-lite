@@ -81,7 +81,7 @@ while (<>) {
 sub eval_where { # lists of variables and values behind ";" or ", where"
     my ($condlist) = @_;
     my $result = 0;
-    $condlist =~ s{ }{}g;
+    $condlist =~ s{ }{}g; # remove spaces
     my $ind;
     @vars   = ();
     @values = ();
@@ -105,8 +105,8 @@ sub eval_where { # lists of variables and values behind ";" or ", where"
     }
     $ind = 0;
     foreach my $var(@vars) { # insert "*" in products
-        if ($ind < scalar(@values) and ($var  =~ m{\A[a-z]\Z})) {
-            print join("\t", $aseqno, $callcode . $var, $offset, "postfix", "true", 10, $values[$ind] || 7777) . "\n";
+        if ($ind < scalar(@values) and ($var  =~ m{\A[a-z]+\Z})) {
+            print join("\t", $aseqno, $callcode . "v", $offset, "postfix", $var, 10, $values[$ind] || 7777) . "\n";
             $ind ++;
             $result ++;
         }
@@ -128,7 +128,7 @@ sub eval_expression {
     $expr =~ s{(\W)\*(\w)}{$1$2}g; # repair
     $expr =~ s{(\w)\*(\W)}{$1$2}g; # repair
     $expr =~ s{\*\Z}{}g; # repair
-    $expr =~ s{(\w)([\[\(])}{$1\*$2}g; # digit * 
+    # $expr =~ s{(\w)([\[\(])}{$1\*$2}g; # digit * 
     $expr =~ m{([a-z][a-z]+)};
     my $ok = 1; # assume all lowercased words with length >= 2 are known
     map {   my $word = $_;
@@ -144,7 +144,11 @@ sub eval_expression {
     } else {
         $expr =~ s{\[}{floor\(}g; # normalize to "floor"s
         $expr =~ s{\]}{\)}g; # normalize to "floor"s
-        print join("\t", $aseqno, $callcode . $varno, $offset, "postfix", "true", 10, $expr) . "\n";
+        $expr =~ tr{\{\}}{\(\)}; # curly to normal parentheses
+        if ($expr =~ s{\(\|}{\(abs\(}) {
+            $expr =~ s{\|\)}{\)\)};
+        }
+        print join("\t", $aseqno, $callcode . "0", $offset, "postfix", $varno, 10, $expr) . "\n";
         $result ++;
     }
     return $result;
