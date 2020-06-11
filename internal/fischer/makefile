@@ -1707,9 +1707,15 @@ flexfact:
 #-------------------
 floor0: floor1 floor2 floor3 floor4 floor5
 floor1:
-	grep -E "\[|floor" $(COMMON)/joeis_names.txt \
+	grep -E "\[|floor|ceil|round|fract" $(COMMON)/joeis_names.txt \
 	| grep "null" \
-	| grep -viE "prime|sum|binomial|triangle|base|cofr|\!|\.\.\." \
+	>        floor0.tmp
+	perl -ne 'if (s{Nearest +integer +to +}{\~\~} > 0) { s{(\d)\.(\d)}{$$1\#$$2}g; '\
+	' s{\~\~([^\.\;\:\,]+)(.*)}{round\($$1\)$$2}; s{\#}{\.}g; print; }' $(COMMON)/joeis_names.txt \
+	| grep "null" \
+	>>       floor0.tmp
+	cat      floor0.tmp \
+	| grep -viE "prime|sum|product|binomial|triangle|base|cofr|continued fraction|a?round(ed|ing|)|frac(\,|tal|tion |tions)|\!|\.\.\." \
 	>        $@.tmp
 	wc   -l  $@*.*
 floor2:
@@ -1730,7 +1736,7 @@ floor3:
 	head -n4 $@.rest
 	wc   -l  $@.rest
 floor4:
-	perl cr_infix.pl            -d $(D) floor3.tmp \
+	perl cr_infix.pl            -d    1 floor3.tmp \
 	2>&1 \
 	>        $@.tmp
 	head -n4 $@.tmp

@@ -31,19 +31,27 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 
 my $CRS = "REALS";
 my %hash = 
-    ( "arccos",     "$CRS.acos"
-    , "arcsin",     "$CRS.asin"
-    , "arctan",     "$CRS.atan"
-    , "arccot",     "$CRS.acot"
-    , "cosh",       "$CRS.cosh"
-    , "sinh",       "$CRS.sinh"
-    , "tan",        "$CRS.tan"
-    , "tanh",       "$CRS.tanh"
-    , "cot",        "$CRS.cot"
-    , "coth",       "$CRS.coth"
-    , "csc",        "$CRS.csc"
-    , "csch",       "$CRS.csch"
-    , "sech",       "$CRS.sech"
+    ( "arccos", "$CRS.acos"
+    , "arcsin", "$CRS.asin"
+    , "arctan", "$CRS.atan"
+    , "arccot", "$CRS.acot"
+    , "acos",   "$CRS.acos"
+    , "asin",   "$CRS.asin"
+    , "atan",   "$CRS.atan"
+    , "acot",   "$CRS.acot"
+    , "cosh",   "$CRS.cosh"
+    , "sinh",   "$CRS.sinh"
+    , "tan",    "$CRS.tan"
+    , "tanh",   "$CRS.tanh"
+    , "cot",    "$CRS.cot"
+    , "coth",   "$CRS.coth"
+    , "csc",    "$CRS.csc"
+    , "sec",    "$CRS.sec"
+    , "csch",   "$CRS.csch"
+
+    , "omega",  "irvine.factor.factor.Cheetah.factor(mN).omega()" 
+    , "phi",    "irvine.math.LongUtils.phi(mN)"
+    , "sigma",  "irvine.factor.factor.Cheetah.factor(mN).sigma()"
     );
 my @number_words = qw(ZERO ONE TWO THREE FOUR FIVE);  # SIX SEVEN EIGHT NINE TEN => undefined
 my $line;
@@ -83,6 +91,10 @@ while (<>) {
             } elsif ($op =~ m{\A(e|half|one_third|pi|sqrt2)\Z}i) { # named constant
                 $op = "(CR." . uc($1) . ")";
                 push(@stack, $op);
+            } elsif ($op =~ m{\A[a-z][a-z0-9]*\Z}) { # several letters variable name
+                push(@stack, $op);
+            } elsif ($op =~ m{\A[a-z]\Z}) { # single letter variable name - cf. above
+                push(@stack, $op);
             } elsif ($op eq "+") { # +
                 $op2 = pop(@stack);
                 $op1 = pop(@stack);
@@ -117,12 +129,12 @@ while (<>) {
                 }
             } elsif ($op =~ m{\(\Z}) { # start of function call
                 # ignore
-            } elsif ($op =~ m{\A(arcsin|arccos|arctan|sinh|cosh|tan|tanh|cot|coth|csc|csch|sech)\)\Z}) { # end of function call
+            } elsif ($op =~ m{\A(arcsin|arccos|arctan|sinh|cosh|tan|tanh|cot|coth|csc|sec|csch|sech)\)\Z}) { # end of function call
                 $op = $1;
                 $op1 = pop(@stack);
                 $callext = "cr";
                 push(@stack, "$hash{$op}($op1)");
-            } elsif ($op =~ m{\A(sqrt|log|exp|sin|cos|floor)\)\Z}) { # end of function call
+            } elsif ($op =~ m{\A(sqrt|log|exp|sin|cos|abs|floor)\)\Z}) { # end of function call
                 $op1 = pop(@stack);
                 $op =~ s{\)}{\(\)};
                 push(@stack, "$op1.$op");
@@ -133,24 +145,22 @@ while (<>) {
                     $callext = "cr";
                     push(@stack, "Zeta.zeta($op1)");
                 } else {
-                    $op = "?";
+                    $op = "?4?";
                     $error = 1;
                 }
             } elsif ($op =~ m{\A(gamma|eulergamma)\Z}) { # EulerGamma
                 $callext = "cr";
                 push(@stack, "(EulerGamma.SINGLETON)");
-            } elsif ($op =~ m{\A(log_(10|2))\)\Z}) { # log_10
+            } elsif ($op =~ m{\A(log_?(\d+))\)\Z}) { # log_10, log_2 ...
                 my $base = $2;
                 $op1 = pop(@stack);
                 push(@stack, "$op1.log().divide(CR.valueOf($base).log())");
-            } elsif ($op =~ m{\A[a-z]\Z}) { # single letter variable
-                push(@stack, $op);
             } else {
-                $op1 = pop(@stack);
+                $op1 = pop(@stack) || "undef";
                 if ($debug >= 1) {
-                    print "#    op1=$op1, op=$op\n";
+                    print "# $aseqno ?1? op1=\"$op1\", op=\"$op\"\n";
                 } 
-                $op = "?";
+                $op = "?1?";
                 $iop = scalar(@ops); # break loop
                 $error = 1;
             }
@@ -160,7 +170,7 @@ while (<>) {
                 
         my $result = "";
         if ($base > 36) { # jOEIS DecimalExpansion restriction
-            $result = "?";
+            $result = "?2?";
         } elsif (scalar(@stack) == 1 and $error == 0) {
             $result = pop(@stack);
         } elsif (scalar(@ops) == 1) { 
@@ -176,15 +186,15 @@ while (<>) {
         # A159811   dex 1   ;105507;65798;sqrt(;2;sqrt);*;+;223;2;^;/   (105507 + 65798*sqrt(2))/223^2
         } elsif ($postfix =~ m{\A\;(\d+L?);(\d+L?)\;sqrt\(\;(\d+L?)\;sqrt\)\;\*\;\+\;(\d+L?)\;2\;\^\;\/\Z}) {
             $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4).multiply(CR.valueOf($4)))";
+        } elsif (scalar(@stack) == 0) {
         } else {
-            $result = "?";
+            print "# $aseqno cr_infix: name=$name, ops=" . join(";", @ops) . ", stack=" . join(";", @stack) . "\n";
+            $result = "?3?";
         }
         if ($result !~ m{\?}) {
             $result =~ s{CR\.valueOf\(2\)\.sqrt\(\)}{CR\.SQRT2}g; # simplify sqrt(2)
             $result =~ s{CR\.valueOf\(([0-5])\)}{\(CR\.$number_words[$1]\)}g; # known number constants
             print join("\t", $aseqno, "$callcode$callext", $offset, $result, $keep0, $base, $name) . "\n";
-        } else {
-            print "# $aseqno assertion 3: result=$result, ops=" . join(";", @ops) . ", name=$name\n";
         }
     } # if aseqno
 } # while <>

@@ -34,10 +34,20 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 
 my @known_words = 
 my %known = ();
-map { $known{$_} = 1; $_
-    } qw(floor sqrt log exp sin cos
-    arcsin arccos arctan sinh cosh tan tanh cot coth csc csch sech 
-    e half one_third phi pi tau sqrt2 gamma eulergamma log_2 log_10 log);
+map { $known{$_} = 1; 
+      $_
+    } qw(
+    floor ceil round fract 
+    log
+    sqrt exp abs
+     sin  cos  tan  cot 
+    asin acos atan acot arcsin arccos arctan arccot 
+    sinh cosh tanh coth 
+    csc sec csch sech 
+    e half one_third pi tau sqrt2 gamma eulergamma 
+    omega phi sigma 
+    );
+   # log_2, log_3, log_4, log_5 etc. is treated especially
 my $callcode = "dex";
 my $offset = 0;
 my $formula;
@@ -52,12 +62,25 @@ while (<>) {
     $line =~ s/\s+\Z//; # chompr
     ($aseqno, $superclass, $joeis_name, @rest) = split(/\t/, $line);
     my $name = $joeis_name;
-    next if $name =~ m{\.\.| if |\[x\^\(?n|A\d{6}};
+    next if $name =~ m{\.\.\.| if |\[x\^\(?n};
     if ($ignore == 1 or $superclass eq "null") {
         $name =~ s{\Aa\(n\) *\= *}{}; # remove "a(n) = "
-        $name =~ s{floor\(}{\[}g;
-        if ($name =~ m{\A(n *[\+\-] *)?\[}) { # starts with "floor"
-            $name =~ s{\..*}{}; # remove "." and all behind
+        $name =~ s{(Nonhomogeneous |a )?Beatty +sequence *\:? *}{}i; # remove 
+        if ($aseqno eq "A083187") { # A083187 a(n) = floor(log_3/2(n+1)) - floor(log_3/2(n)).
+            $name = "floor(log(n+1)/log(3/2))-floor(log(n)/log(3/2))";
+        }
+        $name =~ s{floor\(}{\[}g;        # temporary "floor(" -> "["
+        $name =~ s{ceiling\(}{ceil\(}g;  # normalize to "ceil"
+        $name =~ s{cosec\(}{csc\(}g;     # normalize to "csc"
+        $name =~ s{ln\(}{log\(}g;        # normalize to "log" (base e)
+        $name =~ s{cotangent\(}{cot\(}g; # normalize to "cot"
+        $name =~ s{frac\(}{fract\(}g;    # normalize to "fract"
+        $name =~ s{arc(sin|cos|tan|cot)\(}{a$1\(}g; # normalize to "a(sin|cos|tan|cot)"
+        $name =~ s{\(\-(cos|cot) +n\)}{\(\-$1\(\n\)\)}; # A134903, A134909
+        $name =~ s{(\W)(log\_?\d+) +(\d+)}{$1$2\($3\)};
+     #  if ($name =~ m{\A(n *[\+\-] *)?\[}) { # starts with "floor"
+        if ($name =~ m{\[|ceil|round|fract}) {
+            $name =~ s{[\.\:].*}{}; # remove "." and all behind
             $name =~ s{\[[ \.]*\] *\=? *floor}{};
             $name =~ s{(\;| and | where )}{\,}g; # " and " -> ","
             $name =~ s{\,( *\,)+}{\,}g; # keep single comma only
@@ -118,6 +141,7 @@ sub eval_expression {
     my ($expr) = @_;
     my $result = 0;
     $expr =~ s{ }{}g;
+    $expr =~ s{[\.\;\=].*}{}g; # remove .;=<> and all behind
     my $varno = scalar(@vars);
     push(@vars, "n");
     foreach my $var(@vars) { # insert "*" in products
@@ -132,15 +156,13 @@ sub eval_expression {
     $expr =~ m{([a-z][a-z]+)};
     my $ok = 1; # assume all lowercased words with length >= 2 are known
     map {   my $word = $_;
-            if (($word =~ m{\A[A-Za-z]\w+}) and ! defined($known{lc($word)})) {
+            if (($word =~ m{\A[A-Za-z]\w+}) and ! defined($known{lc($word)}) and ($word !~ m{\Alog\_?\d+\Z})) {
                 $ok = 0;
             }
             $_
         } split(/\b/, $expr); # split on word boundaries
     if ($ok == 0) { # bad word occurred
-        if ($debug >= 1) {
-            print "#    $aseqno expr=\"$expr\"\n";
-        }
+        print STDERR "# $aseqno bad word: expr=\"$expr\"\n";
     } else {
         $expr =~ s{\[}{floor\(}g; # normalize to "floor"s
         $expr =~ s{\]}{\)}g; # normalize to "floor"s
