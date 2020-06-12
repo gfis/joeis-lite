@@ -87,7 +87,7 @@ sub evaluate {
     $name =~ s{\A(\S+)\s+(\S+)\Z}{$1\($2\)}; # e.g. "log 1/3"
     $name =~ s{\s}{}g;
     my @words = grep 
-        {! m{\A(e|pi|log|log_\d+|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan|cot|csc|sec|cosecans|secans|)h?))\Z}} 
+        {! m{\A(e|pi|log|log_\d+|exp|tau|phi|psi|ln|abs|eulergamma|gamma|zeta|sqrt|((a|arc)?(sin|cos|tan(gent)?|cot(angent)?|csc|sec|cosec(ans)?|secans|)h?))\Z}} 
         ($name =~ m{([a-z][a-z0-9\_]+)}g);
     if ($name =~ m{[Aa]\d{6}|!|\.|\=|\'}) { # no A-number, factorial, ellipsis, derivative
     } elsif (scalar(@words) == 0) {

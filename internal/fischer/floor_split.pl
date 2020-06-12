@@ -37,10 +37,10 @@ my %known = ();
 map { $known{$_} = 1; 
       $_
     } qw(
-    floor ceil round fract 
+    floor ceil round frac 
     log
-    sqrt exp abs
-     sin  cos  tan  cot 
+    sqrt exp  abs
+    sin  cos  tan  cot 
     asin acos atan acot arcsin arccos arctan arccot 
     sinh cosh tanh coth 
     csc sec csch sech 
@@ -74,7 +74,7 @@ while (<>) {
         $name =~ s{cosec\(}{csc\(}g;     # normalize to "csc"
         $name =~ s{ln\(}{log\(}g;        # normalize to "log" (base e)
         $name =~ s{cotangent\(}{cot\(}g; # normalize to "cot"
-        $name =~ s{frac\(}{fract\(}g;    # normalize to "fract"
+        $name =~ s{fract\(}{frac\(}g;    # normalize to "frac"
         $name =~ s{arc(sin|cos|tan|cot)\(}{a$1\(}g; # normalize to "a(sin|cos|tan|cot)"
         $name =~ s{\(\-(cos|cot) +n\)}{\(\-$1\(\n\)\)}; # A134903, A134909
         $name =~ s{(\W)(log\_?\d+) +(\d+)}{$1$2\($3\)};

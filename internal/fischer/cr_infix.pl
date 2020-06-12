@@ -134,7 +134,7 @@ while (<>) {
                 $op1 = pop(@stack);
                 $callext = "cr";
                 push(@stack, "$hash{$op}($op1)");
-            } elsif ($op =~ m{\A(sqrt|log|exp|sin|cos|abs|floor)\)\Z}) { # end of function call
+            } elsif ($op =~ m{\A(sqrt|log|exp|sin|cos|abs|floor|ceil|round)\)\Z}) { # end of function call
                 $op1 = pop(@stack);
                 $op =~ s{\)}{\(\)};
                 push(@stack, "$op1.$op");
@@ -168,7 +168,7 @@ while (<>) {
             $iop ++;
         } # while $iop
                 
-        my $result = "";
+        my $result = "?5?";
         if ($base > 36) { # jOEIS DecimalExpansion restriction
             $result = "?2?";
         } elsif (scalar(@stack) == 1 and $error == 0) {
@@ -186,7 +186,6 @@ while (<>) {
         # A159811   dex 1   ;105507;65798;sqrt(;2;sqrt);*;+;223;2;^;/   (105507 + 65798*sqrt(2))/223^2
         } elsif ($postfix =~ m{\A\;(\d+L?);(\d+L?)\;sqrt\(\;(\d+L?)\;sqrt\)\;\*\;\+\;(\d+L?)\;2\;\^\;\/\Z}) {
             $result = "(CR.valueOf($1).add(CR.valueOf($2).multiply(CR.valueOf($3).sqrt()))).divide(CR.valueOf($4).multiply(CR.valueOf($4)))";
-        } elsif (scalar(@stack) == 0) {
         } else {
             print "# $aseqno cr_infix: name=$name, ops=" . join(";", @ops) . ", stack=" . join(";", @stack) . "\n";
             $result = "?3?";

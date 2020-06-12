@@ -1643,33 +1643,37 @@ dex0: dex1 dex2 dex3 dex4
 dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
 	$(DBAT) "UPDATE asname SET name = 'Decimal expansion of 2*(5-3*exp(1/2))/(2*exp(1/2)-3).' WHERE aseqno = 'A108813'"
 	$(DBAT) -x "SELECT a.aseqno, 'dex', a.offset1, n.name, a.keyword \
-		FROM asinfo a, bfinfo b, asname n \
+		FROM asinfo a, bfinfo b, asname n\
 		WHERE a.aseqno = n.aseqno \
 		  AND b.aseqno = n.aseqno \
+		  AND n.aseqno NOT IN (SELECT aseqno FROM joeis) \
 		  AND a.keyword    LIKE '%cons%' \
 		  AND b.maxlen <= 2 \
 		ORDER BY 1" \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
 dex2:
 	perl extract_dex.pl dex1.tmp \
 	| sed -e "s/pi log/pi\*log/" \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
 dex3:
 	$(RAMATH).sequence.JoeisPreparer -f dex2.tmp \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
 dex4:
-	perl cr_infix.pl dex3.tmp \
+	perl cr_infix.pl -d $(D) dex3.tmp \
 	| grep -vE "^(A114054|A117853|A202955|A248622)" \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp	
-	grep -vE "^#" $@.tmp | wc -l	
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp	
+	grep "#" $@.tmp \
+	>        $@.rest || :
+	head -n4 $@.rest
+	wc   -l  $@.rest
 dex:
 	cp dex4.tmp dex.gen
 #--------
@@ -1785,6 +1789,22 @@ modpow2: # names: Annnnnn [a(n) = ](\d+)^n mod (\d+)
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
+#-------------------
+jasinski:
+	$(DBAT) "SELECT n.aseqno, b.bfimin || '..' || b.bfimax, n.name FROM asname n, asinfo i, bfinfo b \
+	  WHERE n.aseqno = i.aseqno \
+	    AND i.aseqno = b.aseqno \
+	    AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    AND i.author LIKE '%Jasinski%' \
+	    ORDER BY 1" \
+	| tee $@.tmp
+	wc -l    $@.tmp
+	# head -n4 $@.tmp
+nthprime:
+	perl $@.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------
 palb:
 	perl -ne \
