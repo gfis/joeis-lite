@@ -1801,10 +1801,23 @@ jasinski:
 	wc -l    $@.tmp
 	# head -n4 $@.tmp
 nthprime:
-	perl $@.pl \
+	# perl $@.pl 
+	perl -ne 'my @parts = split(/\t/); print if $$parts[3] ne ""; ' $@.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+nthprime2:
+	$(DBAT) -x "SELECT n.aseqno, 'nthprime', 1, '', '', '', '', n.name, a.keyword, b.tail, b.bfimax \
+	FROM  asinfo a, asname n, bfinfo b \
+	WHERE a.aseqno = n.aseqno \
+	  AND a.aseqno = b.aseqno \
+	  AND a.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  AND n.name LIKE '%-th prime%' \
+	ORDER BY 1" \
+	| perl -pe "s{\'\'}{\'}g" > $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+
 #--------------------------
 palb:
 	perl -ne \

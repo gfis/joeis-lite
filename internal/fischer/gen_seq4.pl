@@ -75,7 +75,7 @@ my $gen_count = 0;
 mkdir $targetdir;
 
 while (<>) { # read inputfile
-    s{\#.*}{}; # remove comments
+    s{\A\#.*}{}; # remove comments
     next if m{\A\s*\Z}; # skip empty lines
     my $line = $_;
     $line =~ s/\s+\Z//; # chompr
@@ -108,6 +108,9 @@ while (<>) { # read inputfile
     $copy =~ s{\$\(OFFSET\)}    {$offset}g;
     $copy =~ s{\$\(PACK\)}      {$package}g;
     my $do_generate = 1;
+    if ($debug >= 2) {
+        print "# scalar(parms)=" . scalar(@parms) . "\n";
+    }
     while ($iparm < scalar(@parms) - 1) {
         my $max_term_len = 0;
         my @terms;
@@ -120,6 +123,9 @@ while (<>) { # read inputfile
             } split(/\,\s*/, $parms[$iparm]);
         } else {
             @terms = ($parms[$iparm]);
+        }
+        if ($debug >= 2) {
+            print "# start iparm=$iparm, terms=" . join(",", @terms) . "\n";
         }
         $copy =~ m{\$\(PARM$iparm(\.\w+)?\)}i;
         my $line_len = length($PREMATCH) || 0;
@@ -141,6 +147,8 @@ while (<>) { # read inputfile
                     $separator =~ m{\A(\S*)(\s+.*)}; # separator has the form: head spaces tail
                     my $head = $1;
                     my $tail = $2;
+                    $tail = $separator; # new logic
+                    $head = "";
                     $term =~ s{\A\~\~([^\~]*)(\~\~)?}{}; # remove the separator
                     my $statements = "";
                     foreach my $part (split(/\~\~/, $term)) {
@@ -169,7 +177,11 @@ while (<>) { # read inputfile
             push(@typed_terms, $term)
         } # foreach $term
         my $parm = join(",", @typed_terms);
-        $copy =~ s{\$\(PARM$iparm(\.\w+)?\)}{$parm}g;
+        if ($parm eq "") { # remove empty line
+            $copy =~ s{\n\s*\$\(PARM$iparm(\.\w+)?\)\s*\n}{\n}g;
+        } else {
+            $copy =~ s{\$\(PARM$iparm(\.\w+)?\)}{$parm}g;
+        }
         $iparm ++;
     } # while $iparm
 

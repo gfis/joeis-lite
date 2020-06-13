@@ -29,12 +29,46 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 
+print <<'GFis';
+A032600	nthprime	1	mLuckies.next().subtract(mNP)	~~import irvine.oeis.~~Sequence;~~a000.A000959;	  final Sequence mLuckies = new A000959();		Difference between n-th lucky number and n-th prime number.	sign,	10862	10000
+A032601	nthprime	1	mLuckies.next().multiply(mNP)	~~import irvine.oeis.~~Sequence;~~a000.A000959;	  final Sequence mLuckies = new A000959();		Difference between n-th lucky number and n-th prime number.	sign,	10862	10000
+A032602	nthprime	1	mLuckies.next().add(mNP)	~~import irvine.oeis.~~Sequence;~~a000.A000959;	  final Sequence mLuckies = new A000959();		Difference between n-th lucky number and n-th prime number.	sign,	10862	10000
+A032603	nthprime	1	new Z(mNP.toString() + mLuckies.next().toString())	~~import irvine.~~math.z.ZUtils;~~oeis.Sequence;~~oeis.a000.A000959;	  final Sequence mLuckies = new A000959();			Concatenation of n-th prime number and n-th lucky number.	nonn,base,less,changed,synth	157189	37
+A032604	nthprime	1	new Z(mLuckies.next().toString() + mNP.toString())	~~import irvine.~~math.z.ZUtils;~~oeis.Sequence;~~oeis.a000.A000959;	  final Sequence mLuckies = new A000959();			Decimal concatenation of n-th lucky number and n-th prime number.	nonn,base,changed,synth	189157	37
+A033549	nthprimf	1	ZUtils.digitSum(mNP) == ZUtils.digitSum(mK)	~~import irvine.~~math.z.ZUtils;			Numbers n such that sum of digits of n-th prime equals sum of digits of n.	nonn,base,nice,	24706	1000
+# A033947	nthprime	1	ZUtils.leastPrimitiveRoot(mNP)	~~import irvine.~~math.z.ZUtils;			Smallest primitive root (in absolute value) of n-th prime.	sign,synth	-2	90
+A034785	nthprime	1	Z.TWO.pow(mNP)				a(n) = 2^(n-th prime).	easy,nonn,	68804608	200
+A035100	nthprime	1	Z.valueOf(mNP.bitLength())				Number of bits in binary expansion of n-th prime.	nonn,easy,	13	1000
+A035103	nthprime	1	Z.valueOf(mNP.bitLength() - mNP.bitCount())				Number of 0s in binary representation of n-th prime.	nonn,base,easy,	9	10000
+A038194	nthprime	1	mNP.mod(Z.NINE)				Iterated sum-of-digits of n-th prime; or digital root of n-th prime; or n-th prime modulo 9.	nonn,base,easy,	5	10000
+A038529	nthprime	1	mNP.subtract(mCompos.next())	~~import irvine.oeis.~~Sequence;~~a002.A002808;	  final Sequence mCompos = new A002808();			n-th prime - n-th composite.	sign,easy,changed,	93355	10000
+A038530	nthprime	1	new Z(mNP.toString() + mCompos.next().toString())	~~import irvine.oeis.~~Sequence;~~a002.A002808;	  final Sequence mCompos = new A002808();			Concatenate n-th prime and n-th composite.	nonn,base,synth	16756	39
+# A038833	nthprime	1	Z.THREE.pow(mNP)				3^n-th prime.	nonn,hard,	07982563	36
+A039701	nthprime	1	mNP.mod(Z.THREE)				a(n) = n-th prime modulo 3.	nonn,easy,	2	10000
+A039702	nthprime	1	mNP.mod(Z.FOUR)				a(n) = n-th prime modulo 4.	nonn,easy,	1	10000
+A039703	nthprime	1	mNP.mod(Z.FIVE)				a(n) = n-th prime modulo 5.	nonn,easy,	4	1000
+A039704	nthprime	1	mNP.mod(Z.SIX)				a(n) = n-th prime modulo 6.	nonn,easy,	5	10000
+A039705	nthprime	1	mNP.mod(Z.SEVEN)				a(n) = n-th prime modulo 7.	nonn,easy,changed,	2	1000
+A039706	nthprime	1	mNP.mod(Z.EIGHT)				a(n) = n-th prime modulo 8.	nonn,easy,changed,	1	10000
+A039709	nthprime	1	mNP.mod(Z.valueOf(11))				a(n) = n-th prime modulo 11.	nonn,easy,	10	1000
+A039710	nthprime	1	mNP.mod(Z.valueOf(12))				a(n) = n-th prime modulo 12.	nonn,easy,	5	10000
+A039711	nthprime	1	mNP.mod(Z.valueOf(13))				Primes modulo 13.	nonn,easy,	5	10000
+A039712	nthprime	1	mNP.mod(Z.valueOf(14))				a(n) = n-th prime modulo 14.	nonn,easy,	9	10000
+A039713	nthprime	1	mNP.mod(Z.valueOf(15))				a(n) = n-th prime modulo 15.	nonn,easy,	14	10000
+A039714	nthprime	1	mNP.mod(Z.valueOf(16))				a(n) = n-th prime modulo 16.	nonn,easy,	9	10000
+A039715	nthprime	1	mNP.mod(Z.valueOf(17))				Primes modulo 17.	nonn,easy,	9	10000
+A180217	nthprime	1	mNP.mod(Z.THREE).add(mNP.mod(Z.FOUR))				(n-th prime modulo 3) + (n-th prime modulo 4).
+A051156	nthprime	1	Z.TWO.pow(mNP.pow(2)).subtract(Z.ONE).divide((Z.TWO.pow(mNP).subtract(Z.ONE)))				a(n) = (2^p^2 - 1)/(2^p - 1) where p is the n-th prime.	nonn,easy,changed,synth	26218241	7
+A051157	nthprime	1	Z.TWO.pow(mNP.pow(3)).subtract(Z.ONE).divide((Z.TWO.pow(mNP.pow(Z.TWO).subtract(Z.ONE))))				a(n) = (2^p^3 - 1)/(2^p^2 - 1) where p = n-th prime.	nonn,easy,changed,synth	27220737	4
+A060019	nthprime	1	CR.TWO.multiply(CR.valueOf(mNP.subtract(Z.TWO)).sqrt().subtract(CR.TWO)).floor()	~~import irvine.~~math.cr.CR;				a(n) = floor(2*sqrt(prime(n)-2)) where prime(n) = n-th prime.	nonn,synth	35	66
+GFis
+exit();
+
 my ($aseqno, $superclass, $name, @rest);
 while (<DATA>) {
     my $line = $_;
     next if $line !~ m{\AA\d+};
     $line =~ s/\s+\Z//; # chompr
-    my $result = "";
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
     $name =~ s{\Aa\(n\) *\= *}{};
     $name =~ s{\..*}{};
