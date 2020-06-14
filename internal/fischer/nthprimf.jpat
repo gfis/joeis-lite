@@ -3,7 +3,6 @@ package irvine.oeis.$(PACK);
 // DO NOT EDIT here!
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
 $(PARM2)
 import irvine.oeis.a000.A000040;
 
@@ -17,6 +16,7 @@ public class $(ASEQNO) extends A000040 {
 $(PARM3)
 
   protected boolean isOk() {
+$(PARM4)
     return $(PARM1);
   }
   

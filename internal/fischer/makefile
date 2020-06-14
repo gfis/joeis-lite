@@ -167,6 +167,7 @@ gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 dist:
 	rm -f dist.log
 	make dist1 2>&1 | tee dist.log
+	#################################################################
 dist1:
 	cd ../.. ; ant -silent dist 2>&1
 test: # parameter: CC
@@ -1801,8 +1802,8 @@ jasinski:
 	wc -l    $@.tmp
 	# head -n4 $@.tmp
 nthprime:
-	# perl $@.pl 
-	perl -ne 'my @parts = split(/\t/); print if $$parts[3] ne ""; ' $@.man \
+	# perl -ne 'my @parts = split(/\t/); print if $$parts[3] ne ""; ' $@.man 
+	perl $@.pl \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -1817,7 +1818,6 @@ nthprime2:
 	| perl -pe "s{\'\'}{\'}g" > $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
-
 #--------------------------
 palb:
 	perl -ne \

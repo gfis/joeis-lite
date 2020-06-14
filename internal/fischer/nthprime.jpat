@@ -12,10 +12,12 @@ import irvine.oeis.a000.A000040;
  * @author $(AUTHOR)
  */
 public class $(ASEQNO) extends A000040 {
+  protected long mN = $(OFFSET) - 1;
 $(PARM3)
 
   @Override
   public Z next() {
+    ++mN;
     final Z mNP = super.next();
     $(PARM4)
     return $(PARM1);
