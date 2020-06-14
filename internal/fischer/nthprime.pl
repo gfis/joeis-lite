@@ -132,7 +132,6 @@ A091178	nthprimf	1	mNP.mod(Z.SIX).equals(Z.ONE)				Numbers n such that n-th prim
 A091931	nthprime	1	new Z(mNP.toString(2).substring(1), 2)				Change the first bit to 0 in binary notation for the n-th prime.	nonn,base,easy,	3823	1000	Change the first bit to 0 in binary notation for the n-th prime.
 A092257	nthprime	1	Z.valueOf(sum)			~~    ~~long sum = 0L; ~~String sNP = mNP.toString();~~for (int i = sNP.length() -1; i >= 0; --i) {~~  sum += sNP.charAt(i) + i;~~}	Sum_i [i*(i-th digit)] for n-th prime.	easy,nonn,base,synth	44	75	Sum_i [i*(i-th digit)] for n-th prime.
 GFis
-exit();
 
 my ($aseqno, $superclass, $name, @rest);
 while (<DATA>) {
@@ -179,7 +178,7 @@ while (<DATA>) {
     } else {
     }
     
-    print join("\t", $aseqno, "nthprime", 0, $result, $name, $rest[1]) . "\n";
+    print join("\t", $aseqno, "nthprime", 0, $result, "", "", "", $name, $rest[1]) . "\n";
 } # while 
 __DATA__
 A138401	null	a(n) = prime(n)^4 - prime(n).	nonn,easy,	1..200

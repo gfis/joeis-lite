@@ -718,6 +718,7 @@ A094998	nthprime	1					a(n) is smallest positive integer multiple of n-th prime,
 A095178	nthprime	1					Final digit of the (10^n)-th prime.	nonn,base,hard,synth	1	18
 A095242	nthprime	1					a(n) = smallest positive number such that concatenation a(1)...a(n) is divisible by n-th prime.	base,nonn,	331	499
 A095840	nthprime	1					Number of ways to write the n-th prime power as sum of two prime powers.	nonn,changed,	1	10000
+
 A095874	nthprime	1					If n = k-th prime power then k else 0.	nonn,	0	10000
 A095938	nthprime	1					a(n+1) = (a(n)-1)-th prime + 1.	nonn,changed,synth	90228042	24
 A095961	nthprime	1					If p(x) is the x-th prime, then the n-th set of 2 consecutive sexy prime pairs starts at p(a(n)).	nonn,synth	814	54
