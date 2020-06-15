@@ -7,6 +7,7 @@
 #
 GITS=../../..
 LITE=$(GITS)/joeis-lite
+HERE=$(LITE)/internal/fischer
 JOEIS=$(GITS)/joeis
 COMMON=$(GITS)/OEIS-mat/common
 CONTRIB=$(GITS)/OEIS-mat/contrib
@@ -1635,11 +1636,49 @@ gen_mmac:
 	# Caution, change .man -> .tmp next time!
 	head -n$(MANY) $(LINREC)/mmac_err02.man \
 	| perl patch_parms.pl -d $(D) \
-	>       $@.tmp
-	head -4 $@.tmp
-	wc   -l $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
 	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
-#--------------------------
+#----------------
+deriv: deriv1 deriv2 deriv3 deriv4
+deriv0:
+	$(DBAT) -x "SELECT i.aseqno, i.offset1 \
+	    FROM asinfo i INNER JOIN joeis j ON j.aseqno = i.aseqno \
+	    WHERE i.keyword NOT LIKE '%dead%' \
+	    ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv1:
+	grep -E "^%[NF]" $(COMMON)/cat25.txt \
+	| grep -vEi "sum|product|\!" \
+	| perl -ne 'my $$line = $$_; $$line =~ s{^%[NF] (A\d+) }{$$1\t}; my $$aseqno = $$1; '\
+	' if ($$line =~ m{\ta\(n\) *\=[^A]*A\d+\([^A]}) { $$line =~ s{\..*}{}; $$line =~ s{ *\- +\_[A-Z][a-z]{2}.*}{}; print $$line; }' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv2:
+	perl deriv_exist.pl deriv1.tmp \
+	| sort | uniq \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	cut -f1  $@.tmp | sort | uniq | wc -l
+deriv3:
+	cd $(COMMON) ; make seq3 LIST=../../joeis-lite/internal/fischer/deriv2.tmp
+	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.info \
+	    FROM  seq3 s, asinfo i\
+	    WHERE s.aseqno = i.aseqno \
+	      AND i.keyword NOT LIKE '%dead%' \
+	    ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv4:
+	echo nyi
+#----------------
 dex0: dex1 dex2 dex3 dex4
 dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
 	$(DBAT) "UPDATE asname SET name = 'Decimal expansion of 2*(5-3*exp(1/2))/(2*exp(1/2)-3).' WHERE aseqno = 'A108813'"
