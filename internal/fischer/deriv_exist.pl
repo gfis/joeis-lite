@@ -38,7 +38,12 @@ open (DER, "<", "deriv0.tmp") || die "cannot read deriv0.tmp\n";
 while (<DER>) {
     s{\s+\Z}{};
     ($aseqno, $offset) = split(/\t/);
-    $ders{$aseqno} = $offset;
+    if ($offset < 0) {
+        # skip 
+        # $offset = chr(ord('Z') + 1 + $offset);
+    } else {
+        $ders{$aseqno} = $offset;
+    }
 } # while <DER>
 close(DER);
 print STDERR scalar(%ders) . " jOEIS offsets read\n";
@@ -50,12 +55,12 @@ while (<>) {
     ($aseqno, $name) = split(/\t/, $line);
     my $ok = 1;
     if ($name =~ m{conjecture|empirical|apparent}i) {
-        $ok = 0;
+        $ok = -1; # not manifested
     }
     if ($name =~ s{\Aa\(n\) *== *}{}) {
-        $ok = 0;
+        $ok = -2; # a(n) modulo ...
     }
-    $name =~ s{\Aa\(n\) *= *}{}; # remove leading "a(n) = "
+    $name =~ s{(\A|\W)a\(n\) *= *}{}g; # remove leading "a(n) = "
     $name =~ s{(A\d{6})}{defined($ders{$1}) ? "$1_$ders{$1}" : ("X" . substr($1, 1))}eg; # either X012345 or A012345_offset
     my $cond = "";
     if (0) {
@@ -67,35 +72,62 @@ while (<>) {
                 $dist ++;
             }
             $cond = $dist;  
-        } else {
-            $ok = 0;
+        } else { 
+            $ok = -3; # condition not of the form "n >= d"
         }
     } elsif ($name =~ s{ *unless +n *(.*)\Z}{}){
         $cond = $1; 
         if ($cond =~ m{\= *0 *\Z}) {
             $cond = 1; # >= 1
         } else {
-            $ok = 0;
+            $ok = -4; # condition not of the form "unless n = 0"
         }
     } # with condition
-    $name =~ s{\A *\((.*)\) *\Z}{$1}; # remove outer parentheses
-    if ($name =~ s{ +mod *(\S+) *\Z}{}) {
-        $name = "mod($name,$1)";
+    # $name =~ s{\A *\((.*)\) *\Z}{$1}; # remove outer parentheses - but "(n+1) - A012345(n)"
+    $name =~ tr{\[\]\{\}}
+               {\(\)\(\)};
+    $name =~ s{ +mod(ulo)? +}{ \% }g; # " mod " -> "%"
+    $name =~ s{\(mod *([^\)]+)\)}{\% $1}g; # "(mod d)" -> "% d"
+    if ($name =~ s{\|}{abs\(}) { # |...| -> abs(...)
+        $name =~ s{\|}{\)};
     }
-    $name =~ s{\A *\((.*)\) *\Z}{$1}; # remove outer parentheses
-    if ($ok == 1 and ! defined($ders{$aseqno}) and ($name !~ m{X\d{6}}) and ($name =~ m{A\d{6}})) {
-        foreach my $index ($name =~ m{A\d{6}_\d+\(([^\)]+)\)}g) {
-            if ($index !~ m{\An([\+\-]\d+)?\Z}) {
-                $ok = 0;
+    $name =~ s{ceiling}{ceil}ig;
+    $name =~ s{(\A|\W)prime\(}		{${1}A000040_1\(}ig;
+    $name =~ s{(\A|\W)primepi\(}	{${1}A000720_1\(}ig;
+    $name =~ s{(\A|\W)sigma\(}		{${1}A000203_1\(}ig;
+    $name =~ s{(\A|\W)phi\(}		{${1}A000010_1\(}ig;
+    $name =~ s{(\A|\W)psi\(}		{${1}A001615_1\(}ig;
+    $name =~ s{(bigomega|Omega)\(}	{A001222_1\(}g;
+    $name =~ s{omega\(}				{A001221_1\(}g;
+    $name =~ s{Fibonacci\(}			{A000045_0\(}ig;
+    $name =~ s{(\A|\W)(d|tau)\(}		{${1}A000005_1\(}g;
+    foreach my $part (split(/ *\= */, $name)) {
+       if ($part =~ s{[\'\’\`\´]}{}g) {
+           $ok = -5; # apostrophe not allowed
+       }
+       if ($part =~ m{(\A|\W)(min|max)\(}) {
+           $ok = -6; # min, max forbidden
+       }
+       if ($ok >= 1 and ! defined($ders{$aseqno})) { # not in jOEIS
+            #  and ($part !~ m{X\d{6}}) and ($part =~ m{A\d{6}})) {
+            foreach my $index ($part =~ m{A\d{6}_\d+\(([^\)]+)\)}g) { 
+                if ($index !~ m{\An([\+\-]\d+)?\Z}) { 
+                    $ok = -7; # index of Annnnnn is not of the form "n+-d"
+                }
+            } # for $index
+            if ($part =~ m{\w\w +\w\w}) {
+            	$ok = -8; # words / comments
             }
-        } # for $index
-        if ($ok == 1) {
-            $name =~ s{\'}{}g;
-            my $md5 = Digest::MD5->new;
-            $md5->add($name);
-            print join("\t", $aseqno, $md5->hexdigest, "~~$name" . ($cond ne "" ? "~~$cond" : "")) . "\n"; # substr() = pattern column for seq3
-        }
-    }
+            if ($part =~ m{(\W|\A)a\(A\d}) {
+            	$ok = -9; # a(A012345...)
+            }
+            if ($ok >= 1) {
+                my $md5 = Digest::MD5->new;
+                $md5->add($part);
+                print join("\t", $aseqno, $md5->hexdigest, 0, "~~$part", $cond) . "\n"; # substr() = pattern column for seq3
+            }
+        } # if not in jOEIS
+    } # foreach $part
 } # while 
 __DATA__
 deriv0.tmp:

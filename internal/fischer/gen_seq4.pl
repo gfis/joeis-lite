@@ -2,10 +2,11 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
-# 2020-06-09: V1.8 leading "~~;  private final CR ~~parm2~~parm2~~...
-# 2020-05-19: V1.7 replace ~~ in $(PARMi) -> newline + 8 spaces
-# 2019-12-06: V1.6 no spaces in vectors
-# 2019-07-04: V1.5 -m: only those not already in $maindir
+# 2020-06-16, V2.0: hash for imports automatically compiled
+# 2020-06-09, V1.8: leading "~~;  private final CR ~~parm2~~parm2~~...
+# 2020-05-19, V1.7: replace ~~ in $(PARMi) -> newline + 8 spaces
+# 2019-12-06, V1.6: no spaces in vectors
+# 2019-07-04, V1.5: -m: only those not already in $maindir
 # 2019-06-23: up to 8 $(PARMi) in seq4
 # 2019-06-13, Georg Fischer: derived from gen_pattern.pl
 #
@@ -15,9 +16,10 @@
 #:#   -l maxlen     maximum length of a line during $(PARMi) expansion
 #:#   -nc           do not overwrite if already present in $maindir
 #:#   -p patprefix  directory prefix where to find the *.jpat pattern file(s)
+#:#
 #:#   infile lines have the format: ASEQNO CALLCODE OFFSET PARM1 PARM2 PARM3 PARM4 ... PARM8 NAME
 #:#   The pattern file(s) may contain all of these 
-#:#   and $(AUTHOR), $(DATE), $(GEN), $(PACK), $(PROG).
+#:#   and $(AUTHOR), $(DATE), $(GEN), $(IMPORT), $(PACK), $(PROG).
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -27,7 +29,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V1.8";
+my $program = "gen_seq4.pl V2.0";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -45,7 +47,7 @@ my %patterncache  = (); # empty at the beginning
 my $basedir   = "../../../OEIS-mat/common";
 my $targetdir = "../../src/irvine/oeis";
 my $maindir   = "../../../../gitups/joeis/src/irvine/oeis";
-my $clobber = 1; # overwrite even if already present in $maindir
+my $clobber   = 1; # overwrite even if already present in $maindir
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -65,6 +67,10 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
+
+my $TYPE_PERM = 1;
+my $TYPE_TEMP = 2;
+my %imports; # hash for classes to be imported; key=1 - always, key=2 - for this specific class (deleted at the end)
 my $pattern;
 my $offset = "0";
 my $aseqno;
@@ -82,6 +88,8 @@ while (<>) { # read inputfile
     if ($debug >= 1) {
         print "$line\n";
     }
+    &clean_imports();
+    &extract_imports($line, $TYPE_TEMP);
     @parms    = split(/\t/, $line); # this is a row from db table 'seq4'
     $aseqno   = shift(@parms);
     $callcode = shift(@parms);
@@ -103,6 +111,7 @@ while (<>) { # read inputfile
     $copy =~ s{\$\(CALLCODE\)}  {$callcode}g;
     $copy =~ s{\$\(DATE\)}      {$timestamp}g;
     $copy =~ s{\$\(GEN\)}       {$0}g;
+    $copy =~ s{\$\(IMPORT\)}    {&get_imports()}eg;
     $copy =~ s{\$\(PROG\)}      {$program}g;
     $copy =~ s{\$\(NAME\)}      {$name}g;
     $copy =~ s{\$\(OFFSET\)}    {$offset}g;
@@ -220,21 +229,59 @@ sub write_output {
         $gen_count ++;
     } # overwrite
 } # write_output
-#----------------------------------------
+#--------------------------------
 sub read_pattern { # read the pattern and return it
     my ($patfile) = @_;
+    %imports = (); # start with no imports
     open(PAT, "<", $patfile) or die "cannot read \"$patfile\"\n";
     my $result = "";
     while (<PAT>) {
+        my $patline = $_;
         if ($debug >= 1) {
-          print "# $_";
+          print "# $patline";
         }
-        $result .= $_;
+        if ($patline =~ m{\Aimport +([\w\.]+)\;}) {
+            my $class = $1;
+            if (scalar(%imports) == 0) {
+                $patline = "\$(IMPORT)\n";
+            }
+            $imports{$class} = 1; # permanent for this pattern
+        } # import
+        &extract_imports($patline, $TYPE_PERM);
+        $result .= $patline;
     } # while <PAT>
     close(PAT);
     return $result;
 } # read_pattern
-#---------------------------------------
+#--------------------------------
+sub clean_imports { # remove all temporary imports, keep the ones from the pattern only
+    foreach my $key (keys(%imports)) {
+        if ($imports{$key} != $TYPE_PERM) {
+            delete($imports{$key});
+        }
+    } # foreach
+} # clean_imports
+#--------------------------------
+sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
+    my ($line, $itype) = @_; # 1 = permanent for this pattern, 2 = temporary
+    my @aseqnos = ($line =~ m{(A\d{6})}g);
+    foreach my $aseqno (@aseqnos) {
+        $imports{"irvine.oeis." . lc(substr($aseqno, 0, 4)) . ".$aseqno"}               = $itype;
+    } # foreach
+    if ($line =~ m{\WZUtils\.})         { $imports{"irvine.math.z.ZUtils"}              = $itype; }
+    if ($line =~ m{\WStringUtils\.})    { $imports{"irvine.util.string.StringUtils"}    = $itype; }
+    if ($line =~ m{\WCR\.})             { $imports{"irvine.math.cr.CR"}                 = $itype; }
+    if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
+} # extract_imports
+#--------------------------------
+sub get_imports {
+    my $result = "";
+    foreach my $key (sort(keys(%imports))) {
+        $result .= "import $key;\n";
+    } # foreach
+    return $result;
+} # get_imports
+#--------------------------------
 __DATA__
 package irvine.oeis.$(PACK);
 // Generated by gen_pattern.pl - do NOT edit here!

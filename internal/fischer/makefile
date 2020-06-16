@@ -1641,7 +1641,7 @@ gen_mmac:
 	wc   -l  $@.tmp
 	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
 #----------------
-deriv: deriv1 deriv2 deriv3 deriv4
+deriv: deriv1 deriv2 deriv3 deriv4 deriv5 deriv6 deriv8
 deriv0:
 	$(DBAT) -x "SELECT i.aseqno, i.offset1 \
 	    FROM asinfo i INNER JOIN joeis j ON j.aseqno = i.aseqno \
@@ -1654,7 +1654,7 @@ deriv1:
 	grep -E "^%[NF]" $(COMMON)/cat25.txt \
 	| grep -vEi "sum|product|\!" \
 	| perl -ne 'my $$line = $$_; $$line =~ s{^%[NF] (A\d+) }{$$1\t}; my $$aseqno = $$1; '\
-	' if ($$line =~ m{\ta\(n\) *\=[^A]*A\d+\([^A]}) { $$line =~ s{\..*}{}; $$line =~ s{ *\- +\_[A-Z][a-z]{2}.*}{}; print $$line; }' \
+	' if ($$line =~ m{\ta\(n\) *\=[^A]*A\d+\([^A]}) { $$line =~ s{[\.\;].*}{}; $$line =~ s{ *\- +\_[A-Z][a-z]{2}.*}{}; print $$line; }' \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
@@ -1666,9 +1666,9 @@ deriv2:
 	wc   -l  $@.tmp
 	cut -f1  $@.tmp | sort | uniq | wc -l
 deriv3:
-	cd $(COMMON) ; make seq3 LIST=../../joeis-lite/internal/fischer/deriv2.tmp
-	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.info \
-	    FROM  seq3 s, asinfo i\
+	make seq4 LIST=deriv2.tmp
+	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.parm1, s.parm2 \
+	    FROM  seq4 s, asinfo i\
 	    WHERE s.aseqno = i.aseqno \
 	      AND i.keyword NOT LIKE '%dead%' \
 	    ORDER BY 1" \
@@ -1677,7 +1677,33 @@ deriv3:
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 deriv4:
-	echo nyi
+	perl -ne 'my $$line = $$_; if (($$line =~ m{A\d{6}_\d}) '\
+	' and ($$line !~ m{X\d{6}})) { print $$line; }' deriv3.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv5:
+	$(RAMATH).sequence.JoeisPreparer -f deriv4.tmp \
+	| perl deriv_select.pl \
+	>        $@.tmp
+	make seq4 LIST=deriv5.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, i.terms \
+	    FROM  seq4 s, asinfo i\
+	    WHERE s.aseqno = i.aseqno \
+	    ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv6:
+	perl -ne 'my @parts = split(/\t/); if (($$parts[3] =~ m{([a-z][a-z]+)}) and ($$1 ne "abs")) '\
+	' { print STDERR; } else { print; } ' deriv5.tmp \
+	>        $@.tmp \
+	2>       deriv7.tmp
+	head -n4 $@.tmp
+	wc   -l  deriv*.tmp
+deriv8:
+	# nyi deriv8
 #----------------
 dex0: dex1 dex2 dex3 dex4
 dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
