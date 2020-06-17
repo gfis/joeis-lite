@@ -30,43 +30,34 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
-
+#--------
 my ($aseqno, $callcode, $offset, $parm1, @rest);
+my $sep = "\t";
 my $oseqno = "";
-my %group = (); # maps formulae to their length
+my ($olen, $oline) = (29061947, ""); # very high
+my ($nlen, $nline);
 while (<>) {
-    my $line = $_;
-    next if $line !~ m{\AA\d+};
-    $line =~ s/\s+\Z//; # chompr
-    ($aseqno, $callcode, $offset, $parm1, @rest) = split(/\t/, $line);
-    $parm2 ||= "";
-    $parm3 ||= "";
-    $parm4 ||= "";
+    my $nline = $_;
+    next if $nline !~ m{\AA\d+};
+    $nline =~ s/\s+\Z//; # chompr
+    ($aseqno, $callcode, $offset, $parm1, @rest) = split(/\t/, $nline);
     if ($oseqno ne $aseqno) { # group change
         &output_group();
         $oseqno = $aseqno;
+        ($olen, $oline) = (29061947, ""); # very high
     } # group change
-    $group{$parm1} = length($parm1);
+    $nlen = length($parm1);
+    if ($nlen <= $olen) {
+        $olen  = $nlen;
+        $oline = $nline;
+    }
 } # while <>
 &output_group();
 #----------------
 sub output_group {
-    my $gno = scalar(%group);
-    my $form = "";
-    my $key;
-    if ($gno == 0) { # nothing to be output
-    } else { # several formulas - take the last formula of the shortest 
-        my $len = 61947; # very high
-        foreach $key (keys(%group)) {
-            my $value= $group{$key};
-            if ($value <= $len) { # the last if both length are equal
-                $len = $value;
-                $form = $key;
-            }
-        } # foreach
+    if (length($oline) > 0) {
+        print "$oline\n";
     }
-    print join("\t", $oseqno, $callcode, $offset, $form, @rest) . "\n";
-    %group = (); # clear for new group
 } # output_group
 #----------------
 __DATA__

@@ -1,0 +1,28 @@
+# Patterns for irvine.math.z.Z infix expression generation
+# 2020-06-16, Georg Fischer
+#
+0	num	0	Z.ZERO	0
+1	num	0	Z.ONE	0
+2	num	0	Z.TWO	0
+3	num	0	Z.THREE	0
+4	num	0	Z.FOUR	0
+5	num	0	Z.FIVE	0
+6	num	0	Z.SIX	0
+7	num	0	Z.SEVEN	0
+8	num	0	Z.EIGHT	0
+9	num	0	Z.NINE	0
+10	num	0	Z.TEN	0
+01234567	num	0	Z.valueOf(01234567)
+n	name	0	Z.valueOf(mN)	0
++	op	2	.add	1
+-	op	2	.subtract	1
+-.	op	1	.negate	1
+*	op	2	.multiply	1
+/	op	2	.divide	1
+%	op	2	.mod	1
+^	op	2	.pow	1
+abs)	fun	1	.abs	0
+ceil)	fun	1	.ceil	0
+floor)	fun	1	.floor	0
+round)	fun	1	.round	0
+sqrt)	fun	1	.sqrt	0

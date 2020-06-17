@@ -67,10 +67,10 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
-
+#----------------
 my $TYPE_PERM = 1;
 my $TYPE_TEMP = 2;
-my %imports; # hash for classes to be imported; key=1 - always, key=2 - for this specific class (deleted at the end)
+my %imports = (); # hash for classes to be imported; key=1 - always, key=2 - for this specific class (deleted at the end)
 my $pattern;
 my $offset = "0";
 my $aseqno;
@@ -88,15 +88,13 @@ while (<>) { # read inputfile
     if ($debug >= 1) {
         print "$line\n";
     }
-    &clean_imports();
-    &extract_imports($line, $TYPE_TEMP);
     @parms    = split(/\t/, $line); # this is a row from db table 'seq4'
     $aseqno   = shift(@parms);
     $callcode = shift(@parms);
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
-    $pattern  = $patterncache{$callcode};
     my $name  = $parms[scalar(@parms) - 1]; # last parameter
+    $pattern  = $patterncache{$callcode};
     if (! defined($pattern)) { # new pattern
         $pattern = &read_pattern("$patprefix$callcode$patext");
         $patterncache{$callcode} = $pattern;
@@ -104,6 +102,7 @@ while (<>) { # read inputfile
             print STDERR "read $patprefix$callcode$patext\n";
         }
     } # new pattern
+    &extract_imports($line, $TYPE_TEMP);
     my $package = lc(substr($aseqno, 0, 4));
     my $copy = $pattern;
     $copy =~ s{\$\(ASEQNO\)}    {$aseqno}g;
@@ -205,6 +204,7 @@ while (<>) { # read inputfile
     } else {
         print "# $aseqno has too big parameter values - skipped\n";
     }
+    &clean_imports();
 } # while <>
 print STDERR "# $gen_count sequences generated\n";
 #-----------------
@@ -234,31 +234,39 @@ sub read_pattern { # read the pattern and return it
     my ($patfile) = @_;
     %imports = (); # start with no imports
     open(PAT, "<", $patfile) or die "cannot read \"$patfile\"\n";
+    my $state = "init";
     my $result = "";
     while (<PAT>) {
-        my $patline = $_;
-        if ($debug >= 1) {
-          print "# $patline";
+        my $patline = $_; # no chompr!
+        if ($debug >= 2) {
+          print "# patline=$patline";
         }
-        if ($patline =~ m{\Aimport +([\w\.]+)\;}) {
+        if ($state eq "init" and ($patline =~ m{\A\s*\Z})) {
+            $state =  "next";
+            $result .= "\n\$(IMPORT)\n";
+            $patline = "";
+        }
+        if ($patline =~ m{\A\s*import +([\w\.]+)\;}) {
             my $class = $1;
-            if (scalar(%imports) == 0) {
-                $patline = "\$(IMPORT)\n";
-            }
             $imports{$class} = 1; # permanent for this pattern
-        } # import
-        &extract_imports($patline, $TYPE_PERM);
+            $patline = "";
+        } else {
+            &extract_imports($patline, $TYPE_PERM);
+        }
         $result .= $patline;
     } # while <PAT>
     close(PAT);
+    if ($debug >= 1) {
+        print "# pattern: \n$result";
+    }
     return $result;
 } # read_pattern
 #--------------------------------
 sub clean_imports { # remove all temporary imports, keep the ones from the pattern only
-    foreach my $key (keys(%imports)) {
-        if ($imports{$key} != $TYPE_PERM) {
-            delete($imports{$key});
-        }
+    my @permkeys = grep { $imports{$_} == $TYPE_PERM } keys(%imports);
+    %imports = ();
+    foreach my $key (@permkeys) {
+        $imports{$key} = $TYPE_PERM;
     } # foreach
 } # clean_imports
 #--------------------------------
@@ -272,6 +280,9 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WStringUtils\.})    { $imports{"irvine.util.string.StringUtils"}    = $itype; }
     if ($line =~ m{\WCR\.})             { $imports{"irvine.math.cr.CR"}                 = $itype; }
     if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
+    if ($debug >= 2) {
+        print "# imports: " . join(",", map { "$_\($imports{$_}\)" } sort(keys(%imports))) . "\n";
+    } # debug
 } # extract_imports
 #--------------------------------
 sub get_imports {

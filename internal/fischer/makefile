@@ -149,6 +149,7 @@ prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off 
 	| cut -b1-7 > prune.tmp
 	wc -l    prune.tmp
 	grep -vf prune.tmp $(CC).gen > $(CC).tmp
+	grep  -f prune.tmp $(CC).gen > $(CC).reco.tmp
 	sed -e "s/\r//" $(CC).tmp > $(CC).gen
 	wc -l $(CC).*
 dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
@@ -1641,8 +1642,10 @@ gen_mmac:
 	wc   -l  $@.tmp
 	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
 #----------------
-deriv: deriv1 deriv2 deriv3 deriv4 deriv5 deriv6 deriv8
-deriv0:
+deriv_all: deriv0 deriv1 deriv2 deriv37
+deriv37: deriv3 deriv4 deriv5 deriv6 deriv7 
+# deriv8
+deriv0: # extract the implemented jOEIS sequences
 	$(DBAT) -x "SELECT i.aseqno, i.offset1 \
 	    FROM asinfo i INNER JOIN joeis j ON j.aseqno = i.aseqno \
 	    WHERE i.keyword NOT LIKE '%dead%' \
@@ -1650,58 +1653,68 @@ deriv0:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
-deriv1:
+deriv1: # grep names and formulas with A-numbers from cat25
 	grep -E "^%[NF]" $(COMMON)/cat25.txt \
 	| grep -vEi "sum|product|\!" \
 	| perl -ne 'my $$line = $$_; $$line =~ s{^%[NF] (A\d+) }{$$1\t}; my $$aseqno = $$1; '\
-	' if ($$line =~ m{\ta\(n\) *\=[^A]*A\d+\([^A]}) { $$line =~ s{[\.\;].*}{}; $$line =~ s{ *\- +\_[A-Z][a-z]{2}.*}{}; print $$line; }' \
+	' if (($$line =~ m{\ta\(n\) *\=[^A]*A\d+\([^A]}) and ($$line !~ m{\.\.\.})) '\
+	' { $$line =~ s{[\.\;].*}{}; $$line =~ s{ *\- +\_[A-Z][a-z]{2}.*}{}; print $$line; }' \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
-deriv2:
-	perl deriv_exist.pl deriv1.tmp \
+deriv2: # convert known functions, separate conditions, split in several formulas for one sequence
+	perl deriv_exist.pl -d $(D) deriv1.tmp \
 	| sort | uniq \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 	cut -f1  $@.tmp | sort | uniq | wc -l
-deriv3:
+deriv3: # add offset1 from asinfo; aseqno, md5sum, offset, ~~form, form, cond
 	make seq4 LIST=deriv2.tmp
-	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.parm1, s.parm2 \
+	$(DBAT) -v -f deriv3.update.sql
+	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.parm1, s.parm2, s.parm3, i.terms \
 	    FROM  seq4 s, asinfo i\
 	    WHERE s.aseqno = i.aseqno \
 	      AND i.keyword NOT LIKE '%dead%' \
+	      AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
 	    ORDER BY 1" \
 	| sed -e "s/\r//" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
-deriv4:
+deriv4: # remove all with X-numbers
 	perl -ne 'my $$line = $$_; if (($$line =~ m{A\d{6}_\d}) '\
 	' and ($$line !~ m{X\d{6}})) { print $$line; }' deriv3.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
-deriv5:
+deriv5: # convert to postfix, select the last of the shortest formula
 	$(RAMATH).sequence.JoeisPreparer -f deriv4.tmp \
 	| perl deriv_select.pl \
 	>        $@.tmp
 	make seq4 LIST=deriv5.tmp
-	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, i.terms \
-	    FROM  seq4 s, asinfo i\
-	    WHERE s.aseqno = i.aseqno \
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4 \
+	    FROM  seq4 s \
 	    ORDER BY 1" \
 	| sed -e "s/\r//" \
+	| grep -vE "^(A102954|A130517)" \
 	>        $@.tmp
-	head -n4 $@.tmp
+	tail -n4 $@.tmp
 	wc   -l  $@.tmp
-deriv6:
-	perl -ne 'my @parts = split(/\t/); if (($$parts[3] =~ m{([a-z][a-z]+)}) and ($$1 ne "abs")) '\
-	' { print STDERR; } else { print; } ' deriv5.tmp \
-	>        $@.tmp \
-	2>       deriv7.tmp
+deriv6: # convert from postfix to Z-expressions
+	perl post_infix.pl -p Z.xpat deriv5.tmp \
+	2>       $@.rest \
+	>        $@.tmp 
 	head -n4 $@.tmp
-	wc   -l  deriv*.tmp
+	wc   -l  $@.*
+deriv7: # adapt the offsets and initial terms
+	perl deriv_gen.pl deriv6.tmp \
+	2>       $@.rest \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc   -l  $@.*
+deriv:
+	cp -v deriv7.tmp deriv.gen
 deriv8:
 	# nyi deriv8
 #----------------

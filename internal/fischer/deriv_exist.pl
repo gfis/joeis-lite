@@ -31,7 +31,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
-
+#--------
 my ($aseqno, $name, $offset);
 my %ders = ();
 open (DER, "<", "deriv0.tmp") || die "cannot read deriv0.tmp\n";
@@ -83,6 +83,10 @@ while (<>) {
             $ok = -4; # condition not of the form "unless n = 0"
         }
     } # with condition
+    if (length($cond) > 0) {
+        $cond = "n>=$cond";
+    }
+
     # $name =~ s{\A *\((.*)\) *\Z}{$1}; # remove outer parentheses - but "(n+1) - A012345(n)"
     $name =~ tr{\[\]\{\}}
                {\(\)\(\)};
@@ -102,7 +106,7 @@ while (<>) {
     $name =~ s{Fibonacci\(}			{A000045_0\(}ig;
     $name =~ s{(\A|\W)(d|tau)\(}		{${1}A000005_1\(}g;
     foreach my $part (split(/ *\= */, $name)) {
-       if ($part =~ s{[\'\’\`\´]}{}g) {
+       if ($part =~ s{[\'\’\xe2\`\´]}{}g) {
            $ok = -5; # apostrophe not allowed
        }
        if ($part =~ m{(\A|\W)(min|max)\(}) {
@@ -110,21 +114,39 @@ while (<>) {
        }
        if ($ok >= 1 and ! defined($ders{$aseqno})) { # not in jOEIS
             #  and ($part !~ m{X\d{6}}) and ($part =~ m{A\d{6}})) {
-            foreach my $index ($part =~ m{A\d{6}_\d+\(([^\)]+)\)}g) { 
-                if ($index !~ m{\An([\+\-]\d+)?\Z}) { 
-                    $ok = -7; # index of Annnnnn is not of the form "n+-d"
+            while ($part =~ m{(A\d{6}_\d+)\(([^\)]+)\)}) { # replace index
+                my ($aseqno_ofs, $index) = ($1, $2);
+                my ($sign, $dist);
+                if ($index =~ m{\An(([\+\-])(\d+))?\Z}) { 
+                    $sign = $2 || "";
+                    $dist = $3 || "";
+                    if ($sign ne "") {
+                        $sign =~ s{\+}{__$dist};
+                        $sign =~ s{\-}{_$dist};
+                    }
+                    $part =~ s{$aseqno_ofs\(([^\)]+)\)}{$aseqno_ofs$sign}; # may not use $index because of embedded "+"
+                } else {
+                    $ok = -7; # index of Annnnnn is not of the form "n[+-d]"
+                    $part =~ s{$aseqno_ofs\(([^\)]+)\)}{$aseqno_ofs\?};
                 }
-            } # for $index
+                if ($debug >= 1) {
+                    print "# part=\"$part\", aseqno_ofs=\"$aseqno_ofs\", index=\"$index\", sign=\"$sign\", dist=\"$dist\"\n";
+                }
+            } # while replacing indices
             if ($part =~ m{\w\w +\w\w}) {
-            	$ok = -8; # words / comments
+                $ok = -8; # words / comments
             }
             if ($part =~ m{(\W|\A)a\(A\d}) {
-            	$ok = -9; # a(A012345...)
+                $ok = -9; # a(A012345...)
             }
+            if ($part =~ m{$aseqno}) {
+                $ok = -10; # same A-number as left side
+            }
+            
             if ($ok >= 1) {
                 my $md5 = Digest::MD5->new;
                 $md5->add($part);
-                print join("\t", $aseqno, $md5->hexdigest, 0, "~~$part", $cond) . "\n"; # substr() = pattern column for seq3
+                print join("\t", $aseqno, $md5->hexdigest, 0, "~~$part", $part, $cond) . "\n"; # substr() = pattern column for seq3
             }
         } # if not in jOEIS
     } # foreach $part
