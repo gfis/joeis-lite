@@ -1,6 +1,7 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
- *  2020-01-07: instantiate seq outside
+ *  2020-06-17, V1.7: -s skipAseqno; output process id
+ *  2020-01-07, V1.6: instantiate seq outside
  *  2019-07-11: catch Throwable instead of Exception
  *  2019-06-28: -u giveUpLimit
  *  2019-06-26: print total elapsed time in ms at the end
@@ -24,6 +25,7 @@ import  java.io.BufferedReader;
 import  java.io.Closeable;
 import  java.io.FileInputStream;
 import  java.io.InputStreamReader;
+import  java.lang.management.ManagementFactory; // for pid
 import  java.nio.channels.Channels;
 import  java.nio.channels.ReadableByteChannel;
 import  java.util.ArrayList;
@@ -36,7 +38,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.5";
+  private static String VERSION = "BatchTest V1.7";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -70,6 +72,9 @@ public class BatchTest {
 
   /** How many milliseconds should a single sequence be allowed to run */
   private long    millisToRun;
+  
+  /** Process id */
+  private static  String pid;
 
   /** Indicator for b-file read error */
   private static final int READ_ERROR = -29061947; // different from any b-file index
@@ -80,6 +85,9 @@ public class BatchTest {
   /** Flag which is reset when the timer has expired */
   public boolean  sequenceMayRun;
 
+  /** Skip all records up to and including this A-number */
+  private String  skipAseqno;
+
   /** Encoding of the input file */
   private String  srcEncoding;
 
@@ -89,7 +97,7 @@ public class BatchTest {
   /** difference between current time and {@link #startTime} */
   private long    timeDiff;
 
-  /** Level of output verbosity (0-3, default 0) */
+  /** Level of output verbosity (0-3, default 1) */
   private int     verbosity;
 
   /** No-args Constructor
@@ -103,6 +111,7 @@ public class BatchTest {
     sequenceMayRun = true;
     bFileDirectory = "./bfile";
     readFromBFile  = false;
+    skipAseqno     = "A000000";
     verbosity      = 1;
     srcEncoding    = "UTF-8";
   } // no-args Constructor
@@ -139,6 +148,49 @@ public class BatchTest {
       return result;
   } // abbrev
 
+  /**
+   * Attempt to get the process id (machine dependant).
+   * Derived from https://stackoverflow.com/questions/35842/how-can-a-java-program-get-its-own-process-id
+   * @return pid as a String 
+   */
+  private static String getProcessId() {
+    final String jvmName = ManagementFactory.getRuntimeMXBean().getName();
+        // something like '<pid>@<hostname>', at least in SUN / Oracle JVMs
+    int index = jvmName.indexOf('@');
+    if (index < 0) {
+      index = 1;
+    }
+    String result = jvmName.substring(0, index);
+    try {
+      java.lang.management.RuntimeMXBean runtime = java.lang.management.ManagementFactory.getRuntimeMXBean();
+      java.lang.reflect.Field jvm = runtime.getClass().getDeclaredField("jvm");
+      jvm.setAccessible(true);
+      sun.management.VMManagement mgmt = (sun.management.VMManagement) jvm.get(runtime);
+      java.lang.reflect.Method pid_method = mgmt.getClass().getDeclaredMethod("getProcessId");
+      pid_method.setAccessible(true);
+      result = String.valueOf((Integer) pid_method.invoke(mgmt));
+    } catch (Exception exc) {
+      // ignore, take the one above
+    }
+    return result;
+  } // getProcessId
+
+  /**
+   *  Prints the messages to the log file
+   *  @param status "pass", "FAIL", "FATAL" etc.
+   *  @param expected expected term list
+   *  @param computed computed term list
+   */
+  public void printLog(String status, String expected, String computed) {
+    System.out.println(aseqno 
+        + "\t" + count
+        + "\t" + status
+        + "\t" + expected
+        + "\t" + computed
+        + "\t" + pid
+        );
+  } // printLog
+  
   /** Test the next term computed by the sequence
    *  @param  seq Sequence to be tested
    *  @param  expected expected term for a(n)
@@ -161,13 +213,11 @@ public class BatchTest {
         }
       } else if (! sequenceMayRun) {
         failure = 1; // FAIL
-        System.out.println  (aseqno + "\t" + count + "\tFATAL\t"
-            + timeDiff + " ms timeout expired");
+        printLog( "FATAL", String.valueOf(timeDiff) + " ms", "timeout expired");
       }
     } catch (Throwable exc) {
       failure = 1; // FAIL
-      System.out.println      (aseqno + "\t" + count + "\tFATAL\tException\t"
-          + exc.getMessage() + ", Stack: " + getShortTrace(exc));
+      printLog( "FATAL", "Exception" + exc.getMessage(), "Stack: " + getShortTrace(exc));
     }
     return failure;
   } // testNext
@@ -211,8 +261,7 @@ public class BatchTest {
       } // while ! eof
       lineReader.close();
     } catch (Throwable exc) {
-      System.out.println      (aseqno + "\t" + count + "\tFATAL - read b-file error: "
-          + exc.getMessage() + ", Stack: " + getShortTrace(exc));
+      printLog( "FATAL", "read b-file error: " + exc.getMessage(), "Stack: " + getShortTrace(exc));
       failure = READ_ERROR; // read failure
     } // try
     return failure;
@@ -238,7 +287,7 @@ public class BatchTest {
         termNoLimit = giveUpLimit;
       }
       if (debug >= 2) {
-        System.err.println("BatchTest starts " + aseqno + " with " + termNo + " terms");
+        System.err.println("BatchTest starts " + aseqno + " with " + termNo + " terms, pid=" + pid);
       }
       int failure = 0; // assume passed
       if (readFromBFile) { // try the b-file first
@@ -259,26 +308,20 @@ public class BatchTest {
         } // while n
       } // terms from 'stripped'
       if (! sequenceMayRun) {
-        System.out.println    (aseqno + "\t" + count + "\tFAIL - timeout "
-            + timeDiff + " > " + millisToRun + " ms");
+        printLog( "FAIL - timeout", String.valueOf(timeDiff) + " > " + String.valueOf(millisToRun), " ms");
       } else if (failCount == 0) {
         if (verbosity >= 1) {
-            System.out.println    (aseqno + "\t" + count + "\tpass" 
-            // + (count < termNo ? "=" + count : "" ) 
-            + "\t" + timeDiff + " ms");
+          printLog( "pass", String.valueOf(timeDiff), " ms");
         }
       } else if (failCount > 0) {
-            System.out.println  (aseqno + "\t" + count
-                + "\tFAIL\t"      + diffExpected
-                + "\tcomputed:\t" + diffComputed + "");
+        printLog( "FAIL", diffExpected, "computed:\t" + diffComputed);
       }
       try {
         if (seq instanceof Closeable) {
           ((Closeable) seq).close();
         }
       } catch (Throwable exc) {
-        System.out.println      (aseqno + "\t" + count + "\tFATAL - could not close sequence, "
-          + exc.getMessage() + ", Stack: " + getShortTrace(exc));
+        printLog( "FATAL - could not close sequence", exc.getMessage(), "Stack: " + getShortTrace(exc));
       }
   } // testSequence
 
@@ -308,31 +351,34 @@ public class BatchTest {
           if (line.startsWith("A")) { // valid A-number
             String[] parts = line.split("\\s\\,?");
             aseqno  = parts[0];
-            if (verbosity >= 2) {
-              System.out.println(aseqno + "\tstart");
-            }
-            Sequence seq   = null; // invoke this sequence
-            String message = "\t0\tFATAL: construction failed: ";
-            try {
-              seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4)
-                  + '.' + aseqno).getDeclaredConstructor().newInstance();
-            } catch (Throwable exc) {
-              // seq remains null for any errors
-              message += exc.getMessage() + getShortTrace(exc);
-            }
-            if (seq != null) {
-              if (readFromBFile) {
-                if (parts.length > 0) {
-                  testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,")); // for fallback
-                } else {
-                  testSequence(seq, new String[] {});
-                }
-              } else { // terms from 'stripped'
-                  testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,"));
+            if (aseqno.compareTo(skipAseqno) > 0) { // not skipped
+              if (verbosity >= 2) {
+                System.out.println("# start " + aseqno);
               }
-            } else {
-              System.out.println(aseqno + message);
-            } // seq == null
+              Sequence seq   = null; // invoke this sequence
+              String message = "construction failed: ";
+              try {
+                seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4)
+                    + '.' + aseqno).getDeclaredConstructor().newInstance();
+              } catch (Throwable exc) {
+                // seq remains null for any errors
+                message += exc.getMessage() + getShortTrace(exc);
+              }
+              if (seq != null) {
+                if (readFromBFile) {
+                  if (parts.length > 0) {
+                    testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,")); // for fallback
+                  } else {
+                    testSequence(seq, new String[] {});
+                  }
+                } else { // terms from 'stripped'
+                    testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,"));
+                }
+              } else {
+                count = 0;
+                printLog("FATAL", message, "");
+              } // seq == null
+            } // not skipped
           } else { // commented out, empty ...
             System.out.println("# ignored: " + line);
           }
@@ -340,10 +386,9 @@ public class BatchTest {
       } // while ! eof
       lineReader.close();
     } catch (Throwable exc) {
-        System.out.println      (aseqno + "\t" + count + "\tFATAL - input read error, "
-          + exc.getMessage() + ", Stack: " + getShortTrace(exc));
+       printLog( "FATAL - input read error", exc.getMessage(), "Stack: " + getShortTrace(exc));
     } // try
-    System.out.println("Total\t" + lineNo + "\tpass+f\t" 
+    System.err.println("Total\t" + lineNo + "\tpass+f\t" 
         + String.valueOf(System.currentTimeMillis() - totalTime) + " ms");
   } // processBatch
 
@@ -362,9 +407,10 @@ public class BatchTest {
     if (args.length == 0) {
       System.out.print("Usage: BatchTest [-v[v]] [-b bfile-dir] [-t timeout] {- | filename}\n"
           + "    -b directory  check against b-files in this directory (default: off)\n"
-          + "    -v, -vv, -vvv verbosity level\n"
+          + "    -s aseqno     skip all records up to and including this A-number\n"
           + "    -t seconds    interrupt a sequence after this time (default: 4 s)\n"
           + "    -u limit      give up after limit terms (default: process whole b-file)\n"
+          + "    -v, -vv, -vvv verbosity level\n"
           );
       return;
     }
@@ -372,15 +418,21 @@ public class BatchTest {
     while (iarg < args.length && args[iarg].startsWith("-")) {
       String arg = args[iarg ++];
       if (false) {
+
       } else if (arg.startsWith("-b")) {
         bFileDirectory = args[iarg ++];
         readFromBFile  = true;
+
       } else if (arg.startsWith("-d")) {
         try {
           debug = Integer.parseInt(args[iarg ++]);
         } catch (Throwable exc) {
           // silently assume default
         }
+
+      } else if (arg.startsWith("-s")) {
+        skipAseqno = args[iarg ++];
+
       } else if (arg.startsWith("-t")) {
         try {
           int tsecs = Integer.parseInt(args[iarg ++]);
@@ -392,6 +444,7 @@ public class BatchTest {
         } catch (Throwable exc) {
           // silently assume the default
         }
+
       } else if (arg.startsWith("-u")) {
         try {
           giveUpLimit = Integer.parseInt(args[iarg ++]);
@@ -403,6 +456,7 @@ public class BatchTest {
       } else {
         System.err.println("BatchTest: unknown option: " + args[iarg]);
       }
+
     } // while iarg
     if (iarg < args.length) {
       fileName = args[iarg ++];
@@ -417,7 +471,8 @@ public class BatchTest {
    *  @param args command line arguments: filename or "-"
    */
   public static void main(String[] args) {
-    System.err.println(VERSION);
+    pid = getProcessId();
+    System.err.println(VERSION + ", pid=" + pid);
     (new BatchTest()).processArguments(args);
   } // main
 

@@ -34,6 +34,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 my ($aseqno, $callcode, $offset, $parm1, $parm2, $parm3, $parm4, @rest);
 my (                             $form,  $name,  $cond,  $term8);
 my $FSEP = "~~";
+my %digits = qw(ONE 1 TWO 2 THREE 3 FOUR 4 FIVE 5 SIX 6 SEVEN 7 EIGHT 8 NINE 9 TEN 10);
 while (<>) {
     my $line = $_;
     next if $line !~ m{\AA\d+};
@@ -74,6 +75,11 @@ while (<>) {
         $clamems{$rseqno} = "final Sequence m$rseqno = new $rseqno();";
         $form =~ s{$rseqelem}{m$rseqno.next()};
     } # foreach
+    
+    if (1) { # some patches
+        $form =~ s{\.pow\(Z\.ONE\.divide\(Z\.TWO\)\)}{\.sqrt\(\)}g;
+        $form =~ s{\.pow\(Z\.ONE\.divide\(Z\.(\w+)\)\)}{\.root\($digits{$1}\)}g;
+    } # patches
     
     $callcode = "deriv";
     # deriv.jpat is filled in the following order:
