@@ -77,8 +77,11 @@ while (<>) {
     } # foreach
     
     if (1) { # some patches
-        $form =~ s{\.pow\(Z\.ONE\.divide\(Z\.TWO\)\)}{\.sqrt\(\)}g;
-        $form =~ s{\.pow\(Z\.ONE\.divide\(Z\.(\w+)\)\)}{\.root\($digits{$1}\)}g;
+        $form =~ s{\.pow\(Z\.ONE\.divide\(Z\.TWO\)\)}{\.sqrt\(\)}g; # pow(1/2) -> sqrt
+        $form =~ s{\.pow\(Z\.ONE\.divide\(Z\.(\w+)\)\)}{\.root\($digits{$1}\)}g; # pow(1/m) -> root(m)
+        $form =~ s{Z\.ZERO\.subtract\(Z\.ONE\)}{Z\.NEG_ONE}g; # 0-1 -> -1
+        $form =~ s{Z\.NEG_ONE\.pow\(Z.valueOf\(mN\)\)}{\(mN \& 1 \=\= 0 \? Z\.ONE \: Z\.NEG_ONE\)}g; # (-1)^n
+        
     } # patches
     
     $callcode = "deriv";

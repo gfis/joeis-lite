@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2020-06-19: V2.0: -s seekPosition
  *  2020-06-17, V1.7: -s skipAseqno; output process id
  *  2020-01-07, V1.6: instantiate seq outside
  *  2019-07-11: catch Throwable instead of Exception
@@ -25,8 +26,8 @@ import  java.io.BufferedReader;
 import  java.io.Closeable;
 import  java.io.FileInputStream;
 import  java.io.InputStreamReader;
-import  java.lang.management.ManagementFactory; // for pid
 import  java.nio.channels.Channels;
+import  java.nio.channels.FileChannel; // seekable
 import  java.nio.channels.ReadableByteChannel;
 import  java.util.ArrayList;
 
@@ -38,7 +39,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V1.7";
+  private static String VERSION = "BatchTest V2.0";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -73,8 +74,8 @@ public class BatchTest {
   /** How many milliseconds should a single sequence be allowed to run */
   private long    millisToRun;
   
-  /** Process id */
-  private static  String pid;
+  /** Position where to start reading, or behind the last line read */
+  private long    seekPosition;
 
   /** Indicator for b-file read error */
   private static final int READ_ERROR = -29061947; // different from any b-file index
@@ -110,6 +111,7 @@ public class BatchTest {
     millisToRun    = 4000L;
     sequenceMayRun = true;
     bFileDirectory = "./bfile";
+    seekPosition   = 0L; // start at beginning of input file
     readFromBFile  = false;
     skipAseqno     = "A000000";
     verbosity      = 1;
@@ -149,33 +151,6 @@ public class BatchTest {
   } // abbrev
 
   /**
-   * Attempt to get the process id (machine dependant).
-   * Derived from https://stackoverflow.com/questions/35842/how-can-a-java-program-get-its-own-process-id
-   * @return pid as a String 
-   */
-  private static String getProcessId() {
-    final String jvmName = ManagementFactory.getRuntimeMXBean().getName();
-        // something like '<pid>@<hostname>', at least in SUN / Oracle JVMs
-    int index = jvmName.indexOf('@');
-    if (index < 0) {
-      index = 1;
-    }
-    String result = jvmName.substring(0, index);
-    try {
-      java.lang.management.RuntimeMXBean runtime = java.lang.management.ManagementFactory.getRuntimeMXBean();
-      java.lang.reflect.Field jvm = runtime.getClass().getDeclaredField("jvm");
-      jvm.setAccessible(true);
-      sun.management.VMManagement mgmt = (sun.management.VMManagement) jvm.get(runtime);
-      java.lang.reflect.Method pid_method = mgmt.getClass().getDeclaredMethod("getProcessId");
-      pid_method.setAccessible(true);
-      result = String.valueOf((Integer) pid_method.invoke(mgmt));
-    } catch (Exception exc) {
-      // ignore, take the one above
-    }
-    return result;
-  } // getProcessId
-
-  /**
    *  Prints the messages to the log file
    *  @param status "pass", "FAIL", "FATAL" etc.
    *  @param expected expected term list
@@ -187,7 +162,6 @@ public class BatchTest {
         + "\t" + status
         + "\t" + expected
         + "\t" + computed
-        + "\t" + pid
         );
   } // printLog
   
@@ -287,7 +261,7 @@ public class BatchTest {
         termNoLimit = giveUpLimit;
       }
       if (debug >= 2) {
-        System.err.println("BatchTest starts " + aseqno + " with " + termNo + " terms, pid=" + pid);
+        System.out.println("#BT BatchTest starts " + aseqno + " with " + termNo + " terms");
       }
       int failure = 0; // assume passed
       if (readFromBFile) { // try the b-file first
@@ -325,46 +299,73 @@ public class BatchTest {
       }
   } // testSequence
 
+  /** Determine the length of the line separator: single "\n" or "\r\n"
+   *  @param charReader file reader to be examined
+   *  @return 1 (Unix, single "\n") or 2 (Windows, "\r\n")
+   */
+  public int newlineLength(BufferedReader charReader) {
+    int result = 1;
+    int limit = 512; // a rather long line
+    try {
+      charReader.mark(limit);
+      char[] buffer = new char[limit];
+      limit = charReader.read(buffer, 0, limit);
+      boolean busy = true; // as long as no "\r" or "\n" was found
+      int ichar = 0; 
+      while (busy && ichar < limit) {
+        if (buffer[ichar] == '\n') {
+          busy = false; // result = 1
+        } else if (buffer[ichar] == '\r') {
+          busy = false;
+          result = 2;
+        }
+        ichar ++;
+      } // while
+      charReader.reset();
+    } catch (Throwable exc) {
+       printLog( "FATAL - input read error", exc.getMessage(), "Stack: " + getShortTrace(exc));
+    } // try
+    return result;
+  } // newlineLength
+
   /** Processes lines of the form
    *  <pre>A040954 ,31,2,2,62,2,2,62,</pre>
    *  and evaluates the corresponding sequence with the terms.
    *  @param fileName name of input file or "-" for STDIN
    */
   public void processBatch(String fileName) {
-    BufferedReader lineReader = null;
     long totalTime = System.currentTimeMillis();
     int lineNo = 0;
     try {
-      if (fileName == null || fileName.length() <= 0 || fileName.equals("-")) {
-        lineReader = new BufferedReader(new InputStreamReader(System.in, srcEncoding));
-      } else {
-        ReadableByteChannel lineChannel = (new FileInputStream(fileName)).getChannel();
-        lineReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
-      }
+      FileChannel channel = (new FileInputStream (fileName)).getChannel();
+      channel.position(seekPosition); // from -s seek
+      BufferedReader charReader = new BufferedReader(Channels.newReader(channel, srcEncoding));
+      final int nlLen = newlineLength(charReader);
       String line = null;
-      while ((line = lineReader.readLine()) != null) { // read and process lines
+      while ((line = charReader.readLine()) != null) { // read and process lines
+        seekPosition += line.length() + nlLen;
         lineNo ++;
         if (line != null) {
           if (debug >= 2) {
-            System.err.println("BatchTest read \"" + line + "\"");
+            System.out.println("#BT BatchTest read \"" + line + "\"");
           }
           if (line.startsWith("A")) { // valid A-number
-            String[] parts = line.split("\\s\\,?");
+            String[] parts = line.split("\\s\\,?"); // 2 parts; line from strip.tmp is: aseqno space [comma term}+ 
             aseqno  = parts[0];
             if (aseqno.compareTo(skipAseqno) > 0) { // not skipped
               if (verbosity >= 2) {
-                System.out.println("# start " + aseqno);
+                System.out.println("#BT start\t" + aseqno + String.format("\t0x%x", seekPosition));
               }
               Sequence seq   = null; // invoke this sequence
-              String message = "construction failed: ";
+              String message = "construction failed";
               try {
                 seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4)
                     + '.' + aseqno).getDeclaredConstructor().newInstance();
               } catch (Throwable exc) {
                 // seq remains null for any errors
-                message += exc.getMessage() + getShortTrace(exc);
               }
-              if (seq != null) {
+              // construction failed: irvine.oeis.a332.A332993
+              if (seq != null) { // could be constructed
                 if (readFromBFile) {
                   if (parts.length > 0) {
                     testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,")); // for fallback
@@ -380,15 +381,15 @@ public class BatchTest {
               } // seq == null
             } // not skipped
           } else { // commented out, empty ...
-            System.out.println("# ignored: " + line);
+            System.out.println("#BT ignored: " + line);
           }
         } // line != null
       } // while ! eof
-      lineReader.close();
+      charReader.close();
     } catch (Throwable exc) {
-       printLog( "FATAL - input read error", exc.getMessage(), "Stack: " + getShortTrace(exc));
+       printLog( "FATAL - cannot read \"" + fileName + "\"", exc.getMessage(), "Stack: " + getShortTrace(exc));
     } // try
-    System.err.println("Total\t" + lineNo + "\tpass+f\t" 
+    System.out.println("#BT Total\t" + lineNo + "\tpass+f\t" 
         + String.valueOf(System.currentTimeMillis() - totalTime) + " ms");
   } // processBatch
 
@@ -405,9 +406,10 @@ public class BatchTest {
   public void processArguments(String[] args) {
     int iarg = 0;
     if (args.length == 0) {
-      System.out.print("Usage: BatchTest [-v[v]] [-b bfile-dir] [-t timeout] {- | filename}\n"
+      System.out.print("Usage: BatchTest [-v[v]] [-d level] [-b bfile-dir] [-t timeout] {- | filename}\n"
           + "    -b directory  check against b-files in this directory (default: off)\n"
-          + "    -s aseqno     skip all records up to and including this A-number\n"
+          + "    -d level      debugging level: 0=none, 1=some, 2=more (default: 0)\n"
+          + "    -s seekpos    seek to position (decimal or hex offset printed behind \"# start\" (default: 0x0)\n"
           + "    -t seconds    interrupt a sequence after this time (default: 4 s)\n"
           + "    -u limit      give up after limit terms (default: process whole b-file)\n"
           + "    -v, -vv, -vvv verbosity level\n"
@@ -431,7 +433,22 @@ public class BatchTest {
         }
 
       } else if (arg.startsWith("-s")) {
-        skipAseqno = args[iarg ++];
+        try {
+          seekPosition = 2906194706L;
+          String sFileName = args[iarg ++];
+          ReadableByteChannel lineChannel = (new FileInputStream(sFileName)).getChannel();
+          BufferedReader charReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
+          String line = null;
+          while ((line = charReader.readLine()) != null) { // read and process lines
+            seekPosition = Long.decode(line);
+          } // while in -s
+          if (debug >= 1) {
+            System.out.println("#BT -s seeks to " + String.format("0x%x", seekPosition));
+          }
+          charReader.close();
+        } catch (Throwable exc) {
+          System.out.println("#BT? -s read problem: " + exc.getMessage());
+        }
 
       } else if (arg.startsWith("-t")) {
         try {
@@ -454,7 +471,7 @@ public class BatchTest {
       } else if (arg.startsWith("-v")) {
         verbosity = arg.length() - 1;
       } else {
-        System.err.println("BatchTest: unknown option: " + args[iarg]);
+        System.err.println("#BT BatchTest: unknown option: " + args[iarg]);
       }
 
     } // while iarg
@@ -462,8 +479,9 @@ public class BatchTest {
       fileName = args[iarg ++];
     }
     if (debug > 0) {
-      System.err.println("BatchTest reads from \"" + fileName + "\"");
+      System.out.println("#BT BatchTest reads from \"" + fileName + "\"");
     }
+    System.out.println("# " + VERSION + " starting at " + String.format("0x%x", seekPosition) + " in " + fileName);
     processBatch(fileName);
   } // processArguments
 
@@ -471,8 +489,6 @@ public class BatchTest {
    *  @param args command line arguments: filename or "-"
    */
   public static void main(String[] args) {
-    pid = getProcessId();
-    System.err.println(VERSION + ", pid=" + pid);
     (new BatchTest()).processArguments(args);
   } // main
 

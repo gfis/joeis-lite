@@ -37,15 +37,14 @@ else
     CPS=:
 endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
-BATLIT=$(JAVA) irvine.test.BatchTest -v $(WITHB) -d $(D) -u $(GU)
+BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
 #----------------
-
 all:
 	# Possible targets:
-	grep -E "^[a-z]" makefile
+	grep -E "^[a-z]" makefile | sort
 #----------------------------------
 # Generation of groups of sequences
 #----------------------------------
@@ -176,8 +175,27 @@ test: # parameter: CC
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make stripgr LIST=ghead.tmp
-	make runbt
+	make runbt evaluate
+testloop:
+	rm -f batch.log
+	head -n$(MANY) $(CC).gen      > ghead.tmp
+	make stripgr LIST=ghead.tmp
+	echo 0x0 > seekpos.mon
+	cat seekpos.mon
+	while [ -r seekpos.mon ] ; do \
+		echo restart at `date +%H:%M:%S` @`cat seekpos.mon` in strip.tmp \
+			| tee -a batch.log ; \
+		$(BATLIT) -s seekpos.mon strip.tmp 2>&1 \
+			| $(JAVA) irvine.test.BatchMonitor -t 4 -d $(BMD) 2> seekpos.tmp \
+			| tee -a batch.log ; \
+		cat seekpos.mon \
+			| tee -a batch.log ; \
+		cp  seekpos.tmp seekpos.mon ; \
+		cat seekpos.tmp | perl -ne "if (length >= 12) { unlink "seekpos.mon"; }" ; \
+	done
 	make evaluate
+runbt: # Run BatchTest for this group
+	$(BATLIT) strip.tmp 2>&1 | tee -a batch.log
 testex: # parameter: CC; test all existing (generated) sequences
 	rm -f batch.log
 	find ../../src -iname "A??????.java" -printf "%f\n" | cut -b1-7 \
@@ -199,8 +217,6 @@ stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	grep -f    aseqnos.tmp $(COMMON)/stripped \
 	| head -n$(MANY) > strip.tmp
 	wc -l      strip.tmp
-runbt: # Run BatchTest for this group
-	$(BATLIT)  strip.tmp 2>&1 | tee -a batch.log
 evaluate:
 	uniq -w7 batch.log | grep -E "pass" >             $(CC).pass.log
 	uniq -w7 batch.log | grep -E "(FAIL|FATAL)" | tee $(CC).fail.log
@@ -1714,7 +1730,10 @@ deriv7: # adapt the offsets and initial terms
 	head -n4 $@.tmp
 	wc   -l  $@.*
 deriv:
-	cp -v deriv7.tmp deriv.gen
+	grep -vE "floor|ceil|round" deriv7.tmp \
+	>        $@.gen
+	head -n4 $@.tmp
+	wc   -l  $@.*
 deriv8:
 	# nyi deriv8
 #----------------
