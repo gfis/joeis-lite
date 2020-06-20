@@ -110,7 +110,7 @@ while (<>) { # read inputfile
     $copy =~ s{\$\(CALLCODE\)}  {$callcode}g;
     $copy =~ s{\$\(DATE\)}      {$timestamp}g;
     $copy =~ s{\$\(GEN\)}       {$0}g;
-    $copy =~ s{\$\(IMPORT\)}    {&get_imports()}eg;
+    $copy =~ s{\$\(IMPORT\)}    {&get_imports($aseqno)}eg;
     $copy =~ s{\$\(PROG\)}      {$program}g;
     $copy =~ s{\$\(NAME\)}      {$name}g;
     $copy =~ s{\$\(OFFSET\)}    {$offset}g;
@@ -286,9 +286,12 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
 } # extract_imports
 #--------------------------------
 sub get_imports {
+	my ($aseqno) = @_;
     my $result = "";
     foreach my $key (sort(keys(%imports))) {
-        $result .= "import $key;\n";
+        if ($key !~ m{\.$aseqno}) { # do not self-import the sequence to be generated
+            $result .= "import $key;\n";
+        }
     } # foreach
     return $result;
 } # get_imports

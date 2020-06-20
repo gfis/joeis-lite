@@ -24,10 +24,11 @@ import  irvine.oeis.Sequence;
 
 import  java.io.BufferedReader;
 import  java.io.Closeable;
+import  java.io.File; // delete()
 import  java.io.FileInputStream;
 import  java.io.InputStreamReader;
 import  java.nio.channels.Channels;
-import  java.nio.channels.FileChannel; // seekable
+import  java.nio.channels.FileChannel; // seekable()
 import  java.nio.channels.ReadableByteChannel;
 import  java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V2.0";
+  private static String VERSION = "BatchTest V2.1";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -73,15 +74,18 @@ public class BatchTest {
 
   /** How many milliseconds should a single sequence be allowed to run */
   private long    millisToRun;
-  
-  /** Position where to start reading, or behind the last line read */
-  private long    seekPosition;
 
   /** Indicator for b-file read error */
   private static final int READ_ERROR = -29061947; // different from any b-file index
 
   /** Whether to read terms from corresponding b-file */
   private boolean readFromBFile;
+
+  /** Position where to start reading, or behind the last line read */
+  private long    seekPosition;
+
+  /** File which contains the {@link #seekString}; will be deleted at EOF */
+  private String  seekFileName;
 
   /** Flag which is reset when the timer has expired */
   public boolean  sequenceMayRun;
@@ -386,6 +390,11 @@ public class BatchTest {
         } // line != null
       } // while ! eof
       charReader.close();
+      if ((new File(seekFileName)).delete()) {
+        System.out.println("#BT file " + seekFileName + " deleted");
+      } else {
+        System.out.println("#BT could not delete " + seekFileName);
+      }
     } catch (Throwable exc) {
        printLog( "FATAL - cannot read \"" + fileName + "\"", exc.getMessage(), "Stack: " + getShortTrace(exc));
     } // try
@@ -435,8 +444,8 @@ public class BatchTest {
       } else if (arg.startsWith("-s")) {
         try {
           seekPosition = 2906194706L;
-          String sFileName = args[iarg ++];
-          ReadableByteChannel lineChannel = (new FileInputStream(sFileName)).getChannel();
+          seekFileName = args[iarg ++];
+          ReadableByteChannel lineChannel = (new FileInputStream(seekFileName)).getChannel();
           BufferedReader charReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
           String line = null;
           while ((line = charReader.readLine()) != null) { // read and process lines

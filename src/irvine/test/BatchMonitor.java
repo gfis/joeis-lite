@@ -19,7 +19,7 @@ public class BatchMonitor {
   public final static String CVSID = "@(#) $Id: BatchMonitor.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchMonitor V1.0";
+  private static String VERSION = "BatchMonitor V1.1";
 
   /** Debugging level: 0 = none, 1 = some, 2 = more */
   private int     debug;
@@ -29,6 +29,9 @@ public class BatchMonitor {
   
   /** Position where to start reading, or behind the last line read */
   private String  seekString;
+
+  /** File which contains the {@link #seekString} */
+  private String  seekFileName;
 
   /** Encoding of the input file */
   private String  srcEncoding;
@@ -75,7 +78,6 @@ public class BatchMonitor {
         if (! blocked) { // we could read the next line within the timeout period
           if (line == null) { // normal EOF reached
             state = 1; // stop outer loop
-            seekString = "2906194706L"; // very high
           } else { // examine and process line
             lineNo ++;
             if (debug >= 1) {
@@ -168,6 +170,8 @@ public class BatchMonitor {
         } catch (Throwable exc) {
           // silently assume default
         }
+      } else if (arg.startsWith("-s")) {
+        seekFileName = args[iarg ++];
       } else if (arg.startsWith("-t")) {
         try {
           timeout = Integer.parseInt(args[iarg ++]); // in seconds

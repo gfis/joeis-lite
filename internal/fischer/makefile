@@ -181,17 +181,15 @@ testloop:
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make stripgr LIST=ghead.tmp
 	echo 0x0 > seekpos.mon
+	cp seekpos.mon seekpos.tmp
 	cat seekpos.mon
 	while [ -r seekpos.mon ] ; do \
+		cp seekpos.tmp seekpos.mon ; \
 		echo restart at `date +%H:%M:%S` @`cat seekpos.mon` in strip.tmp \
-			| tee -a batch.log ; \
+			>> batch.log ; \
 		$(BATLIT) -s seekpos.mon strip.tmp 2>&1 \
-			| $(JAVA) irvine.test.BatchMonitor -t 4 -d $(BMD) 2> seekpos.tmp \
+			| $(JAVA) irvine.test.BatchMonitor -s seekpos.mon -t 4 -d $(BMD) 2> seekpos.tmp \
 			| tee -a batch.log ; \
-		cat seekpos.mon \
-			| tee -a batch.log ; \
-		cp  seekpos.tmp seekpos.mon ; \
-		cat seekpos.tmp | perl -ne "if (length >= 12) { unlink "seekpos.mon"; }" ; \
 	done
 	make evaluate
 runbt: # Run BatchTest for this group
