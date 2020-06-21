@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2020-06-21, V2.1: imports not from comments
 # 2020-06-16, V2.0: hash for imports automatically compiled
 # 2020-06-09, V1.8: leading "~~;  private final CR ~~parm2~~parm2~~...
 # 2020-05-19, V1.7: replace ~~ in $(PARMi) -> newline + 8 spaces
@@ -18,7 +19,7 @@
 #:#   -p patprefix  directory prefix where to find the *.jpat pattern file(s)
 #:#
 #:#   infile lines have the format: ASEQNO CALLCODE OFFSET PARM1 PARM2 PARM3 PARM4 ... PARM8 NAME
-#:#   The pattern file(s) may contain all of these 
+#:#   The pattern file(s) may contain all of these
 #:#   and $(AUTHOR), $(DATE), $(GEN), $(IMPORT), $(PACK), $(PROG).
 #--------------------------------------------------------
 use strict;
@@ -74,6 +75,8 @@ my %imports = (); # hash for classes to be imported; key=1 - always, key=2 - for
 my $pattern;
 my $offset = "0";
 my $aseqno;
+my $package;
+my $name;
 my @parms;
 my $old_package = "";
 my $gen_count = 0;
@@ -93,7 +96,7 @@ while (<>) { # read inputfile
     $callcode = shift(@parms);
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
-    my $name  = $parms[scalar(@parms) - 1]; # last parameter
+    $name  = $parms[scalar(@parms) - 1]; # last parameter
     $pattern  = $patterncache{$callcode};
     if (! defined($pattern)) { # new pattern
         $pattern = &read_pattern("$patprefix$callcode$patext");
@@ -102,19 +105,8 @@ while (<>) { # read inputfile
             print STDERR "read $patprefix$callcode$patext\n";
         }
     } # new pattern
-    &extract_imports($line, $TYPE_TEMP);
-    my $package = lc(substr($aseqno, 0, 4));
+    $package = lc(substr($aseqno, 0, 4));
     my $copy = $pattern;
-    $copy =~ s{\$\(ASEQNO\)}    {$aseqno}g;
-    $copy =~ s{\$\(AUTHOR\)}    {$author}g;
-    $copy =~ s{\$\(CALLCODE\)}  {$callcode}g;
-    $copy =~ s{\$\(DATE\)}      {$timestamp}g;
-    $copy =~ s{\$\(GEN\)}       {$0}g;
-    $copy =~ s{\$\(IMPORT\)}    {&get_imports($aseqno)}eg;
-    $copy =~ s{\$\(PROG\)}      {$program}g;
-    $copy =~ s{\$\(NAME\)}      {$name}g;
-    $copy =~ s{\$\(OFFSET\)}    {$offset}g;
-    $copy =~ s{\$\(PACK\)}      {$package}g;
     my $do_generate = 1;
     if ($debug >= 2) {
         print "# scalar(parms)=" . scalar(@parms) . "\n";
@@ -210,6 +202,23 @@ print STDERR "# $gen_count sequences generated\n";
 #-----------------
 sub write_output {
     my ($copy, $aseqno) = @_; # global $old_package, $gen_count, $debug
+    map {
+        my $line = $_;
+        if ($line !~ m{\A\s*\*\s+}) {
+            &extract_imports($line, $TYPE_TEMP);
+        }
+        $line
+        } split(/\n/, $copy);
+    $copy =~ s{\$\(ASEQNO\)}    {$aseqno}g;
+    $copy =~ s{\$\(AUTHOR\)}    {$author}g;
+    $copy =~ s{\$\(CALLCODE\)}  {$callcode}g;
+    $copy =~ s{\$\(DATE\)}      {$timestamp}g;
+    $copy =~ s{\$\(GEN\)}       {$0}g;
+    $copy =~ s{\$\(IMPORT\)}    {&get_imports($aseqno)}eg;
+    $copy =~ s{\$\(PROG\)}      {$program}g;
+    $copy =~ s{\$\(NAME\)}      {$name}g;
+    $copy =~ s{\$\(OFFSET\)}    {$offset}g;
+    $copy =~ s{\$\(PACK\)}      {$package}g;
     my $package = lc(substr($aseqno, 0, 4));
     # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
     if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.java")) { # overwrite or does not yet exist
@@ -286,7 +295,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
 } # extract_imports
 #--------------------------------
 sub get_imports {
-	my ($aseqno) = @_;
+    my ($aseqno) = @_;
     my $result = "";
     foreach my $key (sort(keys(%imports))) {
         if ($key !~ m{\.$aseqno}) { # do not self-import the sequence to be generated

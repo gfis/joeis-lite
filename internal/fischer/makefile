@@ -2,6 +2,7 @@
 
 # Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing
 # @(#) $Id$
+# 2020-06-21: test with BatchMonitor
 # 2019-07-15: joeis parallel to joeis-lite
 # 2019-05-20, Georg Fischer: copied from makefile
 #
@@ -22,7 +23,8 @@ HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTe
 MANY=999999
 D=0
 TO=4
-TOM=8
+TOADD=4000
+WAITM=100
 GU=0
 N=1000
 NUM=999
@@ -135,10 +137,17 @@ select2:
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
 	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
-clean: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
+clean: purge # parameter: CC; $(CC).pass.log from previous test is grepped from $(CC).gen
 	wc -l $(CC).gen
-	cut -b1-7 $(CC).fail.log > clean.tmp
-	grep -vf clean.tmp $(CC).gen > $(CC).tmp
+	cut -b1-7 $(CC).pass.log > clean.tmp
+	grep -f clean.tmp $(CC).gen > $(CC).tmp
+	cp -v $(CC).tmp $(CC).gen
+	wc -l $(CC).gen
+dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
+	wc -l $(CC).gen
+	cp    $(CC).gen $(CC).old.tmp
+	cut -b1-7 $(CC).pass.log > dirty.tmp
+	grep -vf dirty.tmp $(CC).gen > $(CC).tmp
 	cp -v $(CC).tmp $(CC).gen
 	wc -l $(CC).gen
 #--
@@ -152,13 +161,6 @@ prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off 
 	grep  -f prune.tmp $(CC).gen > $(CC).reco.tmp
 	sed -e "s/\r//" $(CC).tmp > $(CC).gen
 	wc -l $(CC).*
-dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
-	wc -l $(CC).gen
-	cp    $(CC).gen $(CC).old.tmp
-	cut -b1-7 $(CC).pass.log > dirty.tmp
-	grep -vf dirty.tmp $(CC).gen > $(CC).tmp
-	cp -v $(CC).tmp $(CC).gen
-	wc -l $(CC).gen
 purge: # remove all oeis/annn directories
 	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
 	rm -rf                     ../../src/irvine/oeis/a???
@@ -189,7 +191,7 @@ test:
 		echo restart at `date +%H:%M:%S` @`cat seekpos.mon` in strip.tmp \
 			>> batch.log ; \
 		$(BATLIT) -s seekpos.mon strip.tmp 2>&1 \
-			| $(JAVA) irvine.test.BatchMonitor -s seekpos.mon -t $(TOM) -d $(BMD) 2> seekpos.tmp \
+			| $(JAVA) irvine.test.BatchMonitor -s seekpos.mon -t $(TO)000 -w $(WAITM) -d $(DM) 2> seekpos.tmp \
 			| tee -a batch.log ; \
 	done
 	make evaluate
@@ -218,7 +220,7 @@ stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	wc -l      strip.tmp
 evaluate:
 	uniq -w7 batch.log | grep -E "pass" >             $(CC).pass.log || :
-	uniq -w7 batch.log | grep -E "(FAIL|FATAL)" | tee $(CC).fail.log || :
+	uniq -w7 batch.log | grep -E "(FAIL|FATO)"  | tee $(CC).fail.log || :
 	wc -l $(CC).*.log
 bfile:
 	echo make bfile SEQ=123456 N=1000 OFS=1
@@ -1024,13 +1026,19 @@ homapgf:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #-------------------------------
-ASMIN=A000001
-ASMAX=A001000
+ASMIN=300
+ASMAX=400
 jall: # parms = ASMIN, ASMAX - test a block of implemented jOEIS sequences
-	$(DBAT) -x "SELECT aseqno, '$@', 0, 0 FROM joeis WHERE aseqno >= '$(ASMIN)' AND aseqno <= '$(ASMAX)' ORDER BY 1" \
+	$(DBAT) -x "SELECT aseqno, '$@', 0, 0 FROM joeis WHERE aseqno >= 'A$(ASMIN)000' AND aseqno <= 'A$(ASMAX)999' ORDER BY 1" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+jallrm:
+	make CC=jall EX=EX select ASMIN=$(ASMIN) ASMAX=$(ASMAX)
+	scp      jall.gen $(REMOTE)
+	ssh gfis@atair 'cd ~/work/gits/joeis-lite/internal/fischer ; make CC=jall purge dist test'
+	scp      $(REMOTE)/batch.log .
+	make CC=jall.a$(ASMIN)-a$(ASMAX) evaluate
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener
@@ -1307,14 +1315,37 @@ period: # PeriodicSequence
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 	# ([ \d\,]+)[\}\)\]]})'\
 #-------------------------------
-# Positions of ... in (the decimal expansion of |Annnnnn)
-posins:
-	perl posins.pl -d 0 $(COMMON)/joeis_names.txt \
+# First differences of ...
+diffseq: 
+	grep -E "[Ff]irst differences?|Differences? of " $(COMMON)/cat25.txt \
+	| cut -b4- | sed -e "s/ /\t/" \
+	| perl diffseq.pl -d 0 \
 	2>       $@.rest \
+	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.*
-	# perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+	head -n2 $@.rest
+	wc -l    $@.gen $@.rest
+	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
+#-------------------------------
+# Positions of ... in (the decimal expansion of |Annnnnn)
+posins: posins1 posins2
+posins1:
+	grep -E "Positions of " $(COMMON)/cat25.txt \
+	| grep -v "of records" \
+	| cut -b4- | sed -e "s/ /\t/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+posins2:
+	perl posins.pl -d 0 posins1.tmp \
+	2>       posins.rest \
+	| sort | uniq -w7 \
+	>        posins.gen
+	head -n4 posins.gen
+	head -n2 posins.rest
+	wc -l    posins.gen posins.rest
+	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
 #----------------
 confra2:
 	grep -E "Decimal expansion of|Continued fraction of|Numerators of|Denominators of" \

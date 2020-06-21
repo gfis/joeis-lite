@@ -2,10 +2,14 @@
 
 # Extract parameters for PositionSequence.java
 # @(#) $Id$
+# 2020-06-21: read deriv0.tmp; from cat25.txt
 # 2020-06-04, Georg Fischer
 #
 #:# Usage:
-#:#   perl pos_in_seq.pl [-d debug] $(COMMON)/joeis_names.txt > posins.gen 2> posins.rest
+#:#     grep -E "Positions of " $(COMMON)/cat25.txt \
+#:#     | cut -b4 | sed -e "s/ /\t/" \
+#:#     | perl posins.pl [-d debug] > posins.gen 2> posins.rest
+#:# Reads deriv0.txt for implemented jOEIS sequences with their offsets.
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -31,33 +35,37 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 
 my %bases = qw(binary 2 digital 2 ternary 3 duodecimal 12 hexadecimal 16 sexagesimal 60);
 my $line;
-my ($aseqno, $superclass, $offset1, $name, @rest); # records in joeis_names.txt
+my ($aseqno, $offset1, $name, @rest); # records in joeis_names.txt
 my $value;
 my $cond;
 my $callcode = "posins";
 my $offset = 1;
-my ($rseq, $rseqno);
+my $rseqno;
 my $DSEQNO = "A000000";
+#----------------
+my %ders = ();
+my $der_name = "deriv0.tmp";
+open (DER, "<", $der_name) || die "cannot read $der_name\n";
+while (<DER>) {
+    s{\s+\Z}{};
+    ($aseqno, $offset) = split(/\t/);
+    if ($offset < 0) {
+        # skip 
+        # $offset = chr(ord('Z') + 1 + $offset);
+    } else {
+        $ders{$aseqno} = $offset;
+    }
+} # while <DER>
+close(DER);
+print STDERR "# posins.pl: " . scalar(%ders) . " jOEIS offsets read from $der_name\n";
+#----------------
 
 while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
-    ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
-    if ($superclass eq "null" and ($name =~ m{Positions of })) { 
+    ($aseqno, $name, @rest) = split(/\t/, $line);
+    if (! defined($ders{$aseqno})) { 
         $rseqno = $DSEQNO;
-# A054285 null    Positions of 9's in the decimal expansion of exp(1).    nonn,base,      1..1000
-# A054286 null    Positions of 0's in the decimal expansion of the Golden Ratio (sqrt(5)+1)/2.    nonn,base,      1..1020
-# A054287 null    Positions of 1's in the decimal expansion of (1 + sqrt(5))/2.   nonn,base,changed,      1..1000
-# A059649 null    Positions of ones in A059648.   nonn,synth      1..59
-# A059653 null    Positions of ones (+1's) in A059652.    nonn,synth      1..54
-# A059655 null    Positions of minus ones (-1's) in A059652.      nonn,synth      1..57
-# A059657 null    Positions of ones (+1's) in A059651.    nonn,synth      1..47
-# A059659 null    Positions of minus ones (-1's) in A059651.      nonn,synth      1..62
-# A134251 null    Positions of 1 after decimal point in decimal expansion of 1/Pi.
-# A171952 null    Positions of 2's in A181391.    nonn,   1..835
-# A165461 null    Positions of zeros in A165460.  nonn,   0..1000
-# A190889 null    Positions of 2 in A190886.
-# A134251 null    Positions of 1 after decimal point in decimal expansion of 1/Pi.  nonn,base,changed,  1..10000
 
         if (0) {
         } elsif ($name =~ m{Positions of (the digit )?\'?(\d)\'?s?\s+(after decimal point )?in (the )?decimal expansion of ([^\.]+)\.}) {
@@ -68,7 +76,7 @@ while (<>) {
                 $rseqno = "A001113";
             } elsif ($expr =~ m{\Asqrt\(2\)}i) {
                 $rseqno = "A002193";
-            } elsif ($expr =~ m{\?\?Euler\'?s?\s+(gamma|constant)}i) { # tests take too long
+            } elsif ($expr =~ m{Euler\'?s?\s+(gamma|constant)}i) { # tests take too long
                 $rseqno = "A001620";
             } elsif ($expr =~ m{sqrt\(5\)}i) {
                 $rseqno = "A001622";
@@ -82,7 +90,7 @@ while (<>) {
             $rseqno = "A004539";
             $value = 0;
         } elsif ($name =~ m{Positions of 1 in the continued fraction expansion of Pi\.}) {
-            # A203168	null	Positions of 1 in the continued fraction expansion of Pi.	nonn,nice,changed,	1..1000
+            # A203168   null    Positions of 1 in the continued fraction expansion of Pi.   nonn,nice,changed,  1..1000
             $rseqno = "A001203";
             $value = 1;
         } elsif ($name =~ m{Positions of ([^A]+)(A\d{6})}) {
@@ -117,25 +125,36 @@ while (<>) {
         $rseqno =~ s{A287357}{A287356} if $aseqno =~ m{A2873(57|58|59)}; # typo
         $rseqno =~ s{A284932}{A284792} if $aseqno =~ m{A2849(33|34)}; # typo
         $value  = 1 if $aseqno eq "A285564";
-        if ($rseqno ne $DSEQNO) { # and $rseqno le "A030000") {
-            my $roffset = 1; # offset of $rseqno
+        if (defined($ders{$rseqno})) { 
+            my $roffset = $ders{$rseqno}; # offset of $rseqno
             if ($aseqno ge "A036974" and $aseqno le "A037008") {
                 $roffset = 0; # "3." of Pi to be ignored
             }
-            $roffset = 0 if $aseqno eq "A083866";
-            my $parm5 = "";
-            if ($aseqno eq "A037002") {
-                $parm5 = "next();";
+            if ($aseqno eq "A083866") {
+                $roffset = 0;
             }
-            $rseq = lc(substr($rseqno, 0, 4));
-            print join("\t", $aseqno, $callcode, $offset, $rseq, $rseqno, $roffset, $value, $parm5, substr($name, 0, 128)) . "\n";
+            my $parm4 = "";
+            if ($aseqno eq "A037002") {
+                $parm4 = "next();";
+            }
+            print join("\t", $aseqno, $callcode, $offset, $rseqno, $roffset, $value, $parm4, substr($name, 0, 128)) . "\n";
         } else {
-            print STDERR join("\t", $aseqno, $superclass, $name, @rest) . "\n";
+            print STDERR "$line\n";
         }
     } # Positions of
 } # while <>
-#----
-sub evaluate {
-} # evaluate
 #--------------------------------------------
 __DATA__
+A054285 Positions of 9's in the decimal expansion of exp(1).    nonn,base,      1..1000
+A054286 Positions of 0's in the decimal expansion of the Golden Ratio (sqrt(5)+1)/2.    nonn,base,      1..1020
+A054287 Positions of 1's in the decimal expansion of (1 + sqrt(5))/2.   nonn,base,changed,      1..1000
+A059649 Positions of ones in A059648.   nonn,synth      1..59
+A059653 Positions of ones (+1's) in A059652.    nonn,synth      1..54
+A059655 Positions of minus ones (-1's) in A059652.      nonn,synth      1..57
+A059657 Positions of ones (+1's) in A059651.    nonn,synth      1..47
+A059659 Positions of minus ones (-1's) in A059651.      nonn,synth      1..62
+A134251 Positions of 1 after decimal point in decimal expansion of 1/Pi.
+A171952 Positions of 2's in A181391.    nonn,   1..835
+A165461 Positions of zeros in A165460.  nonn,   0..1000
+A190889 Positions of 2 in A190886.
+A134251 Positions of 1 after decimal point in decimal expansion of 1/Pi.  nonn,base,changed,  1..10000

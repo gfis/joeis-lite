@@ -40,7 +40,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V2.1";
+  private static String VERSION = "BatchTest V2.2";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -286,7 +286,7 @@ public class BatchTest {
         } // while n
       } // terms from 'stripped'
       if (! sequenceMayRun) {
-        printLog( "FATO - timeout ", String.valueOf(timeDiff) + " > " + String.valueOf(millisToRun), " ms");
+        printLog( "FATO", "timeout", String.format("%6d ms", timeDiff));
       } else if (failCount == 0) {
         if (verbosity >= 1) {
           printLog( "pass", String.valueOf(timeDiff), " ms");

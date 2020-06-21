@@ -19,19 +19,25 @@ public class BatchMonitor {
   public final static String CVSID = "@(#) $Id: BatchMonitor.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchMonitor V1.1";
+  private static String VERSION = "BatchMonitor V1.2";
 
+  /** How many milliseconds should be added to -t value */
+  private long    addTimeout;
+  
   /** Debugging level: 0 = none, 1 = some, 2 = more */
   private int     debug;
 
-  /** How many seconds should we wait for output of BatchTest */
-  private int     timeout;
-  
   /** Position where to start reading, or behind the last line read */
   private String  seekString;
 
-  /** File which contains the {@link #seekString} */
+  /** Name of file to be deleted when BatchTest reached the end of the input file */
   private String  seekFileName;
+
+  /** How many milliseconds should we wait for output of BatchTest */
+  private long    timeout;
+  
+  /** Wait so many milliseconds when input is not ready */
+  private long    waitTime;
 
   /** Encoding of the input file */
   private String  srcEncoding;
@@ -41,9 +47,11 @@ public class BatchMonitor {
   public BatchMonitor() {
     // set default for variables and arguments
     debug       = 0;
-    timeout     = 8;
+    addTimeout  = 4000L;
     seekString  = "0x0"; // start at beginning of input file
     srcEncoding = "UTF-8";
+    timeout     = 4000L;
+    waitTime    =  100L;
   } // no-args Constructor
 
   /** Waits for lines of the form "# start aseqno |> tab seekpos", and
@@ -61,20 +69,17 @@ public class BatchMonitor {
       String line = null;
       int state = 0;
       while (state == 0) { // try to read and process lines
-        int remainingSeconds = timeout;
+        long remainingSlots = (addTimeout + timeout) / waitTime;
         boolean blocked = true; // normally reading is blocked
-        while (blocked && remainingSeconds > 0) {
+        while (blocked && remainingSlots > 0) {
           if (charReader.ready()) {
             line = charReader.readLine();
             blocked = false; // we read 1 line
           } else { 
-            -- remainingSeconds;
-            if (debug >= 3) {
-              System.out.println("#BM sleep 1 s - " + remainingSeconds + "s left");
-            }
-            Thread.sleep(1000L); // milliseconds
+            -- remainingSlots;
+            Thread.sleep(waitTime); // milliseconds
           }
-        } // while remainingSeconds
+        } // while remainingSlots
         if (! blocked) { // we could read the next line within the timeout period
           if (line == null) { // normal EOF reached
             state = 1; // stop outer loop
@@ -97,7 +102,7 @@ public class BatchMonitor {
           if (debug >= 2) {
             System.out.println("#BM still blocked, restart at " + seekString);
           }
-          System.out.println(aseqno + "\t0\tFATOK\tblocked for\t" + timeout + "000 ms");
+          System.out.println(aseqno + "\t0\tFATOK\tblocked\t" + String.format("%6d ms", timeout));
         } // to be killed and restarted
       } // while reading input
       charReader.close();
@@ -144,19 +149,23 @@ public class BatchMonitor {
   /** Processes the commandline arguments
    *  @param args commandline arguments:
    *  <ul>
-   *  <li>-b b-file-directory</li>
-   *  <li>-v, -vv, -vvv: level of verbosity</li>
-   *  <li>-t seconds    interrupt a sequence after this time (default: 4 s)</li>
-   *  <li>-u limit      give up after limit terms (default: process whole b-file)</li>
-   *  <li>input filename or "-" for STDIN</li>
+   *  <li>-a addtimeout add this to -t value (default: 4000 ms)</li>
+   *  <li>-d debug      level 0=none, 1=some, 2=more (default: 0)</li>
+   *  <li>-s seekfile   file to be deleted when BatchTest reaches EOF (default: seekpos.mon)</li>
+   *  <li>-t timeout    timeout after which the BatchTest process is killed (default: 4000 ms)</li>
+   *  <li>-w waittime   wait so many milliseconds when input is not ready (default 100 ms)</li>
+   *  <li>reads from STDIN</li>
    *  </ul>
    */
   public void processArguments(String[] args) {
     int iarg = 0;
     if (args.length == 0) {
       System.out.print("Usage: java BatchTest ... | java BatchMonitor [-d level] [-t timeout]\n"
-          + "    -d level      debugging level: 0=none, 1=some, 2=more (default: 0)\n"
-          + "    -t seconds    interrupt a sequence after this time (default: 8 s)\n"
+          + "    -a addtimeout  add this time to -t value (default: 4000 ms)\n"
+          + "    -d debug       level 0=none, 1=some, 2=more (default: 0)\n"
+          + "    -s seekpos.mon file to be deleted when BatchTest reaches EOF\n"
+          + "    -t timeout     interrupt a sequence after this time (default: 4000 ms)\n"
+          + "    -w waittime    wait so many milliseconds when input is not ready (default: 100 ms)\n"
           );
       return;
     }
@@ -164,6 +173,12 @@ public class BatchMonitor {
     while (iarg < args.length && args[iarg].startsWith("-")) {
       String arg = args[iarg ++];
       if (false) {
+      } else if (arg.startsWith("-a")) {
+        try {
+          addTimeout = Long.decode(args[iarg ++]); // in milliseconds
+        } catch (Throwable exc) {
+          // silently assume the default
+        }
       } else if (arg.startsWith("-d")) {
         try {
           debug = Integer.parseInt(args[iarg ++]);
@@ -174,7 +189,13 @@ public class BatchMonitor {
         seekFileName = args[iarg ++];
       } else if (arg.startsWith("-t")) {
         try {
-          timeout = Integer.parseInt(args[iarg ++]); // in seconds
+          timeout = Long.decode(args[iarg ++]); // in milliseconds
+        } catch (Throwable exc) {
+          // silently assume the default
+        }
+      } else if (arg.startsWith("-w")) {
+        try {
+          waitTime = Long.decode(args[iarg ++]); // in milliseconds
         } catch (Throwable exc) {
           // silently assume the default
         }
