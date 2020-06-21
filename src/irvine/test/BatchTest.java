@@ -286,7 +286,7 @@ public class BatchTest {
         } // while n
       } // terms from 'stripped'
       if (! sequenceMayRun) {
-        printLog( "FAIL - timeout", String.valueOf(timeDiff) + " > " + String.valueOf(millisToRun), " ms");
+        printLog( "FATO - timeout ", String.valueOf(timeDiff) + " > " + String.valueOf(millisToRun), " ms");
       } else if (failCount == 0) {
         if (verbosity >= 1) {
           printLog( "pass", String.valueOf(timeDiff), " ms");

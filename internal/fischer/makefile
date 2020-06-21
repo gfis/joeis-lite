@@ -22,6 +22,7 @@ HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTe
 MANY=999999
 D=0
 TO=4
+TOM=8
 GU=0
 N=1000
 NUM=999
@@ -171,12 +172,12 @@ dist:
 	#################################################################
 dist1:
 	cd ../.. ; ant -silent dist 2>&1
-test: # parameter: CC
+testout: # parameter: CC
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make stripgr LIST=ghead.tmp
 	make runbt evaluate
-testloop:
+test:
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make stripgr LIST=ghead.tmp
@@ -184,11 +185,11 @@ testloop:
 	cp seekpos.mon seekpos.tmp
 	cat seekpos.mon
 	while [ -r seekpos.mon ] ; do \
-		cp seekpos.tmp seekpos.mon ; \
+		cp seekpos.tmp seekpos.mon || : ; \
 		echo restart at `date +%H:%M:%S` @`cat seekpos.mon` in strip.tmp \
 			>> batch.log ; \
 		$(BATLIT) -s seekpos.mon strip.tmp 2>&1 \
-			| $(JAVA) irvine.test.BatchMonitor -s seekpos.mon -t 4 -d $(BMD) 2> seekpos.tmp \
+			| $(JAVA) irvine.test.BatchMonitor -s seekpos.mon -t $(TOM) -d $(BMD) 2> seekpos.tmp \
 			| tee -a batch.log ; \
 	done
 	make evaluate
@@ -216,8 +217,8 @@ stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	| head -n$(MANY) > strip.tmp
 	wc -l      strip.tmp
 evaluate:
-	uniq -w7 batch.log | grep -E "pass" >             $(CC).pass.log
-	uniq -w7 batch.log | grep -E "(FAIL|FATAL)" | tee $(CC).fail.log
+	uniq -w7 batch.log | grep -E "pass" >             $(CC).pass.log || :
+	uniq -w7 batch.log | grep -E "(FAIL|FATAL)" | tee $(CC).fail.log || :
 	wc -l $(CC).*.log
 bfile:
 	echo make bfile SEQ=123456 N=1000 OFS=1
@@ -1022,6 +1023,14 @@ homapgf:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#-------------------------------
+ASMIN=A000001
+ASMAX=A001000
+jall: # parms = ASMIN, ASMAX - test a block of implemented jOEIS sequences
+	$(DBAT) -x "SELECT aseqno, '$@', 0, 0 FROM joeis WHERE aseqno >= '$(ASMIN)' AND aseqno <= '$(ASMAX)' ORDER BY 1" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener
