@@ -1317,7 +1317,7 @@ period: # PeriodicSequence
 #-------------------------------
 # First differences of ...
 diffseq: 
-	grep -E "[Ff]irst differences?|Differences? of " $(COMMON)/cat25.txt \
+	grep -iE "differences? " $(COMMON)/cat25.txt \
 	| cut -b4- | sed -e "s/ /\t/" \
 	| perl diffseq.pl -d 0 \
 	2>       $@.rest \

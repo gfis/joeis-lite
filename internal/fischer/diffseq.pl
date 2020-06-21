@@ -67,7 +67,7 @@ while (<>) {
         $rseqno = $DSEQNO;
 
         if (0) {
-        } elsif ($name =~ m{(First|Second|Third|Fourth|Fifth|Sixth|Seventh|\d+th) differences? (of|are|give)[^A]*(A\d{6})}) {
+        } elsif ($name =~ m{(First|Second|Third|Fourth|Fifth|Sixth|Seventh|\d+th) differences? (of|give)[^A]*(A\d{6})}) {
             $level = lc($1);
             $rseqno = $3;
             if ($level =~ m{[a-z]}) {
@@ -77,6 +77,10 @@ while (<>) {
         if (defined($ders{$rseqno})) { # implemented in jOEIS
             my $roffset = $ders{$rseqno}; # offset of $rseqno
             my $parm1 = "new $rseqno()";
+            while ($level > 1) {
+            	$parm1 = "new DifferenceSequence($parm1)";
+            	$level --;
+            } # while level
             print join("\t", $aseqno, $callcode, $offset, $parm1, $roffset, $level, $parm4, substr($name, 0, 64)) . "\n";
         } else {
             print STDERR "$line\n";
