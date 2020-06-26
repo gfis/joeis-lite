@@ -81,7 +81,7 @@ pack1:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
-	; echo src/irvine/oeis/$(CLASS).java     >> pack.$(CC).lst \
+	; echo $(CLASS) | xargs -i{} echo src/irvine/oeis/{}.java  >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.gen       >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.jpat      >> pack.$(CC).lst
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
@@ -241,6 +241,8 @@ spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
+ej:
+	echo $(JAVA)
 #=========================================================
 bas:
 	make bas_all TARGET=gener
@@ -535,7 +537,7 @@ addseq:
 pfprime:
 	perl -ne \
 	's/ /\t/; '\
-	'if (m{^(A\d{6})\t(Numbers|Integers) \w such that \(?(\d+)\s*\*\s*(\d+)\^\w\s*([\+\-0-9 ]+)\)?\s*(\/\s*(\d+))? is prime\.}) {'\
+	'if (m{^(A\d{6})\t(Numbers|Integers) \w such that[^\(\d]*\(?(\d+)\s*\*\s*(\d+)\^\w\s*([\+\-0-9 ]+)\)?\s*(\/\s*(\d+))? is (a )?prime\.}) {'\
 	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$3, $$4, $$5, $$7); '\
 	' $$add =~ s{ }{}g; if (length($$div) == 0) { $$div = 0; } '\
 	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
@@ -558,11 +560,15 @@ pfprime:
 	wc -l    $@.tmp
 	sort     $@.tmp \
 	| grep -vE "A098466|A098467" \
-	> $@.gen
+	>        $@.gen
 	make seq4 LIST=$(CC).gen
-	$(DBAT) "UPDATE seq4 s SET PARM1 = (SELECT SUBSTR(data, 1, INSTR(data, ',') - 1) \
-	    FROM asdata d WHERE d.aseqno = s.aseqno)"
-	$(DBAT) -x "SELECT * FROM seq4 WHERE PARM1 < 10 AND PARM2 < 1000 ORDER BY aseqno" > $@.gen
+	$(DBAT) "UPDATE seq4 s SET PARM1 = \
+	    (SELECT SUBSTR(data, 1, INSTR(data, ',') - 1) FROM asdata d WHERE d.aseqno = s.aseqno)"
+	$(DBAT) "UPDATE seq4 s SET PARM5 = 1 WHERE PARM5 = 0"
+	$(DBAT) -x "SELECT * FROM seq4 \
+	    ORDER BY aseqno" \
+	>        $@.gen
+	# WHERE PARM1 < 10 AND PARM2 < 1000 
 pfprimex:
 	cp pfprime.gen pfprime.tmp
 	perl -pe 's{^(A032373|A050413|A050544|A050847|A050885|A056245|A056248|A056258|A059454'\
@@ -1039,6 +1045,17 @@ jallrm:
 	ssh gfis@atair 'cd ~/work/gits/joeis-lite/internal/fischer ; make CC=jall purge dist test'
 	scp      $(REMOTE)/batch.log .
 	make CC=jall.a$(ASMIN)-a$(ASMAX) evaluate
+# jall.a030-a034.fail.log:A030657 10000   FAIL    ,0      computed:       ,1
+# jall.a030-a034.fail.log:A032350 361     FAIL    ,31213,31313,31413,31513        computed:       ,31113,31213,31313,31413
+jallrest:
+	grep FAIL jall.*.log | grep -v timeout \
+	| perl -ne 'm{\:(A\d+)[^\,]+(\S*)}; print join("\t", $$1, "jallrest1", 0,0,0,$$2) . "\n";' \
+	>        jallrest1.gen
+	head -n4 jallrest1.gen
+	wc -l    jallrest1.gen
+	make  CC=jallrest1 select EX=EX TO=32 test log
+jallrest1:
+	head -n1 jallrest1.gen
 #-------------------------------
 jux:
 	make jux_nodep TARGET=gener
@@ -1315,18 +1332,94 @@ period: # PeriodicSequence
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 	# ([ \d\,]+)[\}\)\]]})'\
 #-------------------------------
-# First differences of ...
-diffseq: 
-	grep -iE "differences? " $(COMMON)/cat25.txt \
-	| cut -b4- | sed -e "s/ /\t/" \
-	| perl diffseq.pl -d 0 \
-	2>       $@.rest \
+noncomp: noncomp0 noncomp1 noncomp2 noncomp3 
+noncomp0:
+	wget https://oeis.org/wiki/The_multi-faceted_reach_of_the_OEIS?action=raw -O $@.wiki
+noncomp1:
+	perl multifacet.pl noncomp0.wiki \
+	| grep -vE "internet|mancalagames|representationtheory" \
+	| sort | uniq -w7 | sort -k4 -k1 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp	
+noncomp2:
+	make seq4 LIST=noncomp1.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, i.offset1, s.parm1, b.bfimin, b.bfimax, d.data, d.termno, '', '', '', n.name \
+	    FROM seq4 s, asname n, asdata d, asinfo i, bfinfo b \
+	    WHERE s.aseqno = n.aseqno \
+	      AND n.aseqno = d.aseqno \
+	      AND d.aseqno = i.aseqno \
+	      AND i.aseqno = b.aseqno \
+	      AND b.aseqno NOT IN (SELECT aseqno from joeis) \
+	      AND LENGTH(i.program) = 0 \
+	      AND b.bfimax -b.bfimin +1 <= 128 \
+	    ORDER BY 4, 1" \
+	>        $@.tmp
+	make seq4 LIST=$@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp	
+noncomp3:
+	#
+noncomp4:
+	grep -Ei 'Czech|Danish|Dutch|Finnish|French|Hungarian|Italian|Latin|Norwegian|Polish|Portuguese|Russian|Slovak|Spanish|Swedish|Turkish'\
+	'|chemical elem|electron|mass |periodic system|birth |death |burial |popes?' \
+	$(COMMON)/joeis_names.txt \
+	| grep "null" \
+	| grep -v "Latin squares" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, 'noncomp', i.offset1, 'additional', b.bfimin, b.bfimax, d.data, d.termno, '', '', '', n.name \
+	    FROM seq s, asname n, asdata d, asinfo i, bfinfo b \
+	    WHERE s.aseqno = n.aseqno \
+	      AND n.aseqno = d.aseqno \
+	      AND d.aseqno = i.aseqno \
+	      AND i.aseqno = b.aseqno \
+	      AND b.aseqno NOT IN (SELECT aseqno from seq4 ) \
+	      AND LENGTH(i.program) = 0 \
+	      AND b.bfimax -b.bfimin +1 <= 128 \
+	    ORDER BY 4, 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#-------------------------------
+# Record values ...
+record:
+	grep -E "^\%[CNF]" $(COMMON)/cat25.txt \
+	| grep -Ei "records? " | grep -v "James A. Record" \
+	| grep -vEI "record the" \
+	| sed -e "s/ /\t/" -e "s/ /\t/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp	
+#----
+diffseq: # (First|Second...) differences of ...
+	perl deris.pl -cc $@ record.tmp \
+	2>              $@.nyi.tmp \
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	head -n2 $@.rest
-	wc -l    $@.gen $@.rest
-	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
+	head -n4        $@.nyi.tmp
+	wc -l    $@.gen $@.nyi.tmp
+#----
+recordpos: # where records occur
+	perl deris.pl -cc $@ record.tmp \
+	2>              $@.nyi.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	head -n4        $@.nyi.tmp
+	wc -l    $@.gen $@.nyi.tmp
+#----
+recordval: # record values of ...
+	perl deris.pl -cc $@ record.tmp \
+	2>              $@.nyi.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	head -n4        $@.nyi.tmp
+	wc -l    $@.gen $@.nyi.tmp
 #-------------------------------
 # Positions of ... in (the decimal expansion of |Annnnnn)
 posins: posins1 posins2
