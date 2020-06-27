@@ -1,1 +1,89 @@
-A281063	pfprime	1	1	299	10	-17	3				Numbers k such that (299*10^k - 17)/3 is prime.
+A037177	pfprime	1	6	2047	2	+1	1				Numbers n such that 2047*2^n+1 is prime.
+A050413	pfprime	1	0	74	2	-1	1				Numbers k such that 74*2^k-1 is prime.
+A050544	pfprime	1	1	37	2	-1	1				Numbers k such that 37*2^k-1 is prime.
+A050545	pfprime	1	3	39	2	-1	1				Numbers n such that 39*2^n-1 is a prime.
+A050555	pfprime	1	12	59	2	-1	1				Numbers n such that 59*2^n-1 is prime.
+A050576	pfprime	1	10	101	2	-1	1				Numbers n such that 101*2^n-1 is prime.
+A050579	pfprime	1	10	107	2	-1	1				Numbers n such that 107*2^n-1 is prime.
+A050585	pfprime	1	12	119	2	-1	1				Numbers n such that 119*2^n-1 is prime.
+A050586	pfprime	1	1	121	2	-1	1				Numbers n such that 121*2^n-1 is a prime.
+A050589	pfprime	1	25	127	2	-1	1				Numbers n such that 127*2^n-1 is prime.
+A050833	pfprime	1	3	163	2	-1	1				Numbers k such that 163*2^k-1 is a prime.
+A050847	pfprime	1	226	191	2	-1	1				Numbers n such that 191*2^n-1 is prime.
+A050863	pfprime	1	3	223	2	-1	1				Numbers n such that 223*2^n-1 is a prime.
+A050879	pfprime	1	11	241	2	-1	1				Numbers n such that 241*2^n-1 is prime.
+A050882	pfprime	1	133	247	2	-1	1				Numbers n such that 247*2^n-1 is prime.
+A050885	pfprime	1	71	253	2	-1	1				Numbers n such that 253*2^n-1 is prime.
+A050891	pfprime	1	11	265	2	-1	1				Numbers n such that 265*2^n-1 is prime.
+A050900	pfprime	1	11	283	2	-1	1				Numbers n such that 283*2^n-1 is prime.
+A053358	pfprime	1	30	283	2	+1	1				Numbers k such that 283*2^k + 1 is prime.
+A053360	pfprime	1	3	287	2	+1	1				Numbers k such that 287*2^k + 1 is a prime.
+A053361	pfprime	1	10	289	2	+1	1				Numbers k such that 289*2^k + 1 is prime.
+A056245	pfprime	1	0	130	10	-31	9				Indices of primes in sequence defined by A(0) = 11, A(n) = 10*A(n-1) + 31 for n > 0.
+A056248	pfprime	1	0	160	10	-61	9				Indices of primes in sequence defined by A(0) = 11, A(n) = 10*A(n-1) + 61 for n > 0.
+A056258	pfprime	1	9	670	10	23	9				Indices of primes in sequence defined by A(0) = 77, A(n) = 10*A(n-1) - 23 for n > 0.
+A059454	pfprime	1	2	2	3	-7	1				Numbers k such that 2*3^k - 7 is prime.
+A062210	pfprime	1	11	14	10	-41	99				Numbers k such that the smoothly undulating palindromic number (14*10^k - 41)/99 is a prime.
+A062211	pfprime	1	3	15	10	-51	99				Numbers k such that the smoothly undulating palindromic number (15*10^k - 51)/99 is a prime.
+A062212	pfprime	1	7	16	10	-61	99				Numbers k such that the smoothly undulating palindromic number (16*10^k - 61)/99 is a prime.
+A062213	pfprime	1	31	17	10	-71	99				Numbers k such that the smoothly undulating palindromic number (17*10^k - 71)/99 is a prime.
+A062214	pfprime	1	3	18	10	-81	99				Numbers k such that the smoothly undulating palindromic number(18*10^k - 81)/99 is a prime.
+A062215	pfprime	1	3	19	10	-91	99				Numbers k such that the smoothly undulating palindromic number (19*10^k - 91)/99 is a prime.
+A062216	pfprime	1	3	31	10	-13	99				Numbers k such that the smoothly undulating palindromic number (31*10^k - 13)/99 is a prime.
+A062217	pfprime	1	5	32	10	-23	99				Numbers k such that the smoothly undulating palindromic number (32*10^k - 23)/99 is a prime.
+A062218	pfprime	1	3	35	10	-53	99				Numbers k such that the smoothly undulating palindromic number (35*10^k - 53)/99 is a prime.
+A062219	pfprime	1	3	37	10	-73	99				Numbers k such that the smoothly undulating palindromic number (37*10^k - 73)/99 is a prime.
+A062220	pfprime	1	3	38	10	-83	99				Numbers k such that the smoothly undulating palindromic number (38*10^k - 83)/99 is a prime.
+A062221	pfprime	1	3	72	10	-27	99				Numbers k such that the smoothly undulating palindromic number (72*10^k - 27)/99 is a prime.
+A062222	pfprime	1	15	73	10	-37	99				Numbers k such that the smoothly undulating palindromic number (73*10^k - 37)/99 is a prime.
+A062223	pfprime	1	5	74	10	-47	99				Numbers k such that the smoothly undulating palindromic number (74*10^k - 47)/99 is a prime.
+A062224	pfprime	1	3	75	10	-57	99				Numbers k such that the smoothly undulating palindromic number (75*10^k - 57)/99 is a prime.
+A062225	pfprime	1	3	78	10	-87	99				Numbers k such that the smoothly undulating palindromic number (78*10^k - 87)/99 is a prime.
+A062226	pfprime	1	3	79	10	-97	99				Numbers k such that the smoothly undulating palindromic number (79*10^k - 97)/99 is a prime.
+A062227	pfprime	1	3	91	10	-19	99				Numbers k such that the smoothly undulating palindromic number (91*10^k - 19)/99 is a prime.
+A062228	pfprime	1	3	92	10	-29	99				Numbers k such that the smoothly undulating palindromic number (92*10^k - 29)/99 is a prime.
+A062229	pfprime	1	5	94	10	-49	99				Numbers k such that the smoothly undulating palindromic number (94*10^k - 49)/99 is a prime.
+A062230	pfprime	1	5	95	10	-59	99				Numbers k such that the smoothly undulating palindromic number (95*10^k - 59)/99 is a prime.
+A062231	pfprime	1	9	97	10	-79	99				Numbers k such that the smoothly undulating palindromic number (97*10^k - 79)/99 is a prime.
+A062232	pfprime	1	9	98	10	-89	99				Numbers k such that the smoothly undulating palindromic number (98*10^k - 89)/99 is a prime.
+A083092	pfprime	1	1	7	5	+2	1				Numbers n such that 7*5^n + 2 is a prime.
+A101001	pfprime	1	2	830	10	-11	9				Indices of primes in sequence defined by A(0) = 91, A(n) = 10*A(n-1) + 11 for n > 0.
+A101003	pfprime	1	0	830	10	43	9				Indices of primes in sequence defined by A(0) = 97, A(n) = 10*A(n-1) - 43 for n > 0.
+A101007	pfprime	1	29	850	10	-13	9				Indices of primes in sequence defined by A(0) = 93, A(n) = 10*A(n-1) + 13 for n > 0.
+A101066	pfprime	1	25	760	10	-31	9				Indices of primes in sequence defined by A(0) = 81, A(n) = 10*A(n-1) + 31 for n > 0.
+A101070	pfprime	1	20	770	10	-41	9				Indices of primes in sequence defined by A(0) = 81, A(n) = 10*A(n-1) + 41 for n > 0.
+A101571	pfprime	1	22	460	10	53	9				Indices of primes in sequence defined by A(0) = 57, A(n) = 10*A(n-1) - 53 for n > 0.
+A101722	pfprime	1	2	380	10	61	9				Indices of primes in sequence defined by A(0) = 49, A(n) = 10*A(n-1) - 61 for n > 0.
+A101732	pfprime	1	0	430	10	-61	9				Indices of primes in sequence defined by A(0) = 41, A(n) = 10*A(n-1) + 61 for n > 0.
+A101734	pfprime	1	0	440	10	-71	9				Indices of primes in sequence defined by A(0) = 41, A(n) = 10*A(n-1) + 71 for n > 0.
+A101954	pfprime	1	35	190	10	53	9				Indices of primes in sequence defined by A(0) = 27, A(n) = 10*A(n-1) - 53 for n > 0.
+A106745	pfprime	1	5	101101	10	+1	1				Numbers n such that 101101 * 10^n + 1 is prime.
+A106808	pfprime	1	12	4440011	10	-1	1				Numbers n such that 4440011 * 10^n - 1 is prime.
+A107280	pfprime	1	11	22446688	10	+1	1				Numbers n such that 22446688 * 10^n + 1 is prime.
+A109993	pfprime	1	2	65537	2	-1	1				Numbers n such that 65537 * 2^n - 1 is prime.
+A112245	pfprime	1	287	65537	2	+1	1				Numbers k such that 65537*2^k+1 is prime.
+A129930	pfprime	1	1	1077	2	-1	1				Numbers n such that 1077*2^n - 1 is prime.
+A180924	pfprime	1	4	12321	2	+1	1				Numbers n such that 12321*2^n + 1 is prime.
+A259298	pfprime	1	0	2	2	+3	1				Numbers k such that k^2*2^k + 3 is prime.
+A276546	pfprime	1	1	151	10	-1	3				Numbers k such that (151*10^k - 1)/3 is prime.
+A281063	pfprime	1	1	299	10	-17	3				Numbers k such that (229*10^k - 17)/3 is prime.
+A281483	pfprime	1	1	32771	2	+1	1				Numbers k such that 32771*2^k + 1 is prime.
+A293592	pfprime	1	2	3	10	-59	1				Numbers k such that 3*10^k - 59 is prime.
+A295399	pfprime	1	2	8	10	-611	9				Numbers k such that (8*10^k - 611)/9 is prime.
+A309774	pfprime	1	1	5	10	+11	1				Numbers k such that 5*10^k + 11 is prime.
+A318194	pfprime	1	19	467	2	+1	1				Numbers k such that 467*2^k+1 is prime.
+A320338	pfprime	1	64	481	2	+1	1				Numbers k such that 481*2^k+1 is prime.
+A322935	pfprime	1	6393	383	2	+1	1				Numbers k such that 383*2^k+1 is prime.
+A322960	pfprime	1	19	335	2	+1	1				Numbers k such that 335*2^k+1 is prime.
+A322972	pfprime	1	10	349	2	+1	1				Numbers k such that 349*2^k+1 is prime.
+A322985	pfprime	1	1	123456789	10	+1	1				Numbers k such that 123456789*10^k+1 is prime.
+A323001	pfprime	1	21	353	2	+1	1				Numbers k such that 353*2^k+1 is prime.
+A323005	pfprime	1	28	361	2	+1	1				Numbers k such that 361*2^k+1 is prime.
+A323008	pfprime	1	12	367	2	+1	1				Numbers k such that 367*2^k+1 is prime.
+A323029	pfprime	1	11	377	2	+1	1				Numbers k such that 377*2^k+1 is prime.
+A323030	pfprime	1	14	379	2	+1	1				Numbers k such that 379*2^k+1 is prime.
+A323032	pfprime	1	12	351	2	+1	1				Numbers k such that 351*2^k+1 is prime.
+A323039	pfprime	1	11	389	2	+1	1				Numbers k such that 389*2^k+1 is prime.
+A323147	pfprime	1	23	437	2	+1	1				Numbers k such that 437*2^k+1 is prime.
+A323195	pfprime	1	12	451	2	+1	1				Numbers k such that 451*2^k+1 is prime.
+A332763	pfprime	1	0	6	17	+1	1				Numbers k such that 6*17^k + 1 is prime.

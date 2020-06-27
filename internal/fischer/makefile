@@ -81,7 +81,7 @@ pack1:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
-	; echo $(CLASS) | xargs -i{} echo src/irvine/oeis/{}.java  >> pack.$(CC).lst \
+	; echo "$(CLASS)" | xargs -d" " -i{} echo src/irvine/oeis/{}.java  >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.gen       >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.jpat      >> pack.$(CC).lst
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
@@ -219,8 +219,8 @@ stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	| head -n$(MANY) > strip.tmp
 	wc -l      strip.tmp
 evaluate:
-	uniq -w7 batch.log | grep -E "pass" >             $(CC).pass.log || :
-	uniq -w7 batch.log | grep -E "(FAIL|FATO)"  | tee $(CC).fail.log || :
+	uniq -w7 batch.log | grep -E  "pass" >     $(CC).pass.log || :
+	uniq -w7 batch.log | grep -vE "pass" | tee $(CC).fail.log || :
 	wc -l $(CC).*.log
 bfile:
 	echo make bfile SEQ=123456 N=1000 OFS=1
@@ -1331,58 +1331,86 @@ period: # PeriodicSequence
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 	# ([ \d\,]+)[\}\)\]]})'\
-#-------------------------------
-noncomp: noncomp0 noncomp1 noncomp2 noncomp3 
+#----------------
+finifull:
+	$(DBAT) "SELECT i.aseqno, '$@', i.offset1, d.data \
+		FROM asinfo i, bfinfo b, bfdata d \
+		WHERE i.aseqno = b.aseqno \
+		  AND b.aseqno = d.aseqno \
+		  AND i.keyword like '%full%' \
+		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
+		ORDER BY 1 " \
+	| perl finifull.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 noncomp0:
 	wget https://oeis.org/wiki/The_multi-faceted_reach_of_the_OEIS?action=raw -O $@.wiki
+noncomp_prep: noncomp1 noncomp2 noncomp3 noncomp4
 noncomp1:
 	perl multifacet.pl noncomp0.wiki \
-	| grep -vE "internet|mancalagames|representationtheory" \
+	| grep -vE 'A261400|A115035|A098378|A047841|anthropology|archeology|architecture|boardgames|computerengineering|dance|darts|demography|dicegames|dominoandtilegames|electricalengineering|electroweaktheory|genetics|calendar|inorganicchemistry|internet|knottheory|logic|mancalagames|othertabletopgames|phyllotaxy|populationgenetics|representationtheory|statistics|thermodynamics|typography' \
 	| sort | uniq -w7 | sort -k4 -k1 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp	
 noncomp2:
-	make seq4 LIST=noncomp1.tmp
-	$(DBAT) -x "SELECT s.aseqno, s.callcode, i.offset1, s.parm1, b.bfimin, b.bfimax, d.data, d.termno, '', '', '', n.name \
-	    FROM seq4 s, asname n, asdata d, asinfo i, bfinfo b \
+	grep -Ei 'Czech|Danish|Dutch|Finnish|French|Hungarian|Italian|Norwegian|Polish|Portuguese|Russian|Slovak|Spanish|Swedish|Turkish|atomic|chemical elem|electron|mass |nuclear|periodic (table|system)|planet|birth |death |burial |popes?|roulette|melting|boiling|noble gases' \
+	$(COMMON)/joeis_names.txt \
+	| grep -viE "A212434|(di|tri)atomic|Latin square|reverse polish|fixed polyomino|domino" \
+	| sed -e "s/\t.*/\tnoncomp\t0\tadditional/" \
+	>        $@.tmp
+	grep -Ei "A007656|A279797|A051385|A053407|A308681|A055069|A070729|A092478|A097618|indian" $(COMMON)/joeis_names.txt \
+	| sed -e "s/\t/\tnoncomp\t0\tmanual\t/" noncomp.man \
+	>>       $@.tmp
+	sed -e "s/\t/\tnoncomp\t0\tmanual\t/" noncomp.man \
+	>>       $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp	
+noncomp3:
+	cat noncomp1.tmp noncomp2.tmp | sort | uniq -w7 \
+	| grep -vE "A005646|A094871" \
+	>  $@.tmp
+	make seq4 LIST=$@.tmp
+	#                                                   PARM1   PARM2    PARM3     PARM4     PARM5     PARM6
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, i.offset1, d.data, s.parm1, b.bfimin, b.bfimax, d.termno, i.keyword, '', '', n.name \
+	    FROM seq4 s, asname n, bfdata d, asinfo i, bfinfo b \
 	    WHERE s.aseqno = n.aseqno \
 	      AND n.aseqno = d.aseqno \
 	      AND d.aseqno = i.aseqno \
 	      AND i.aseqno = b.aseqno \
+	      AND i.keyword NOT LIKE '%dead%' \
+	      AND i.keyword NOT LIKE '%word%' \
+	      AND i.keyword NOT LIKE '%frac%' \
 	      AND b.aseqno NOT IN (SELECT aseqno from joeis) \
 	      AND LENGTH(i.program) = 0 \
 	      AND b.bfimax -b.bfimin +1 <= 128 \
 	    ORDER BY 4, 1" \
-	>        $@.tmp
-	make seq4 LIST=$@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp	
-noncomp3:
-	#
-noncomp4:
-	grep -Ei 'Czech|Danish|Dutch|Finnish|French|Hungarian|Italian|Latin|Norwegian|Polish|Portuguese|Russian|Slovak|Spanish|Swedish|Turkish'\
-	'|chemical elem|electron|mass |periodic system|birth |death |burial |popes?' \
-	$(COMMON)/joeis_names.txt \
-	| grep "null" \
-	| grep -v "Latin squares" \
+	| perl finifull.pl \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-	make seq LIST=$@.tmp
-	$(DBAT) -x "SELECT s.aseqno, 'noncomp', i.offset1, 'additional', b.bfimin, b.bfimax, d.data, d.termno, '', '', '', n.name \
-	    FROM seq s, asname n, asdata d, asinfo i, bfinfo b \
+	make seq4 LIST=$@.tmp
+	cp -v $@.tmp noncomp.gen
+noncomp4: # for info only
+	$(DBAT) -x "SELECT s.aseqno, s.parm2, b.bfimin, b.bfimax, d.termno, i.keyword, n.name \
+	    FROM seq4 s, asname n, bfdata d, asinfo i, bfinfo b \
 	    WHERE s.aseqno = n.aseqno \
 	      AND n.aseqno = d.aseqno \
 	      AND d.aseqno = i.aseqno \
 	      AND i.aseqno = b.aseqno \
-	      AND b.aseqno NOT IN (SELECT aseqno from seq4 ) \
+	      AND i.keyword NOT LIKE '%dead%' \
+	      AND i.keyword NOT LIKE '%word%' \
+	      AND i.keyword NOT LIKE '%frac%' \
+	      AND b.aseqno NOT IN (SELECT aseqno from joeis) \
 	      AND LENGTH(i.program) = 0 \
 	      AND b.bfimax -b.bfimin +1 <= 128 \
-	    ORDER BY 4, 1" \
+	    ORDER BY 2, 1" \
+	| sed -e "s/\,changed//" -e "s/\,synth//" \
 	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
+noncomp:
+	# run (noncomp0 and) noncomp_prep before
 #-------------------------------
 # Record values ...
 record:
@@ -1716,34 +1744,22 @@ euleras_dep:
 		  > $(CC).gen
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
-#---------
+#----------------
 evconst:
 	perl evconst.pl \
 		  > $(CC).gen
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
-#--------------------
+#----------------
 kblocks:
 	perl kblocks.pl \
 	| tee   $(CC).gen
 	wc -l   $(CC).gen
-#---------------------------
-finifull:
-	$(DBAT) "SELECT i.aseqno, '$@', 0, d.data \
-		FROM asinfo i, bfinfo b, bfdata d \
-		WHERE i.aseqno = b.aseqno \
-		  AND b.aseqno = d.aseqno \
-		  AND i.keyword like '%full%' \
-		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
-		ORDER BY 1 " \
-	| perl finifull.pl \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
+#----------------
 logmod:
 	head -n4 $@.gen
 	wc -l    $@.gen
-#---------------------------
+#----------------
 lrixall:
 	$(DBAT) -x "SELECT DISTINCT 'A' || i.seqno \
 		FROM  lrindx i \
