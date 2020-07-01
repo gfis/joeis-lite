@@ -53,30 +53,37 @@ while (<>) {
     foreach my $rseqelem (@rseqs) {
         $rseqelem =~ m{\A(A\d+)_(\d+)((__?)(\d+))?}; 
         my ($rseqno, $rofs) = ($1, $2);
-        my $sign = $4 || "+";
+        my $sign = $4 || "_";
         my $dist = $5 || 0;
-        if ($sign eq "+") {
+        if ($sign eq "__") {
             $rofs += $dist;
         } else {
             $rofs -= $dist;
         }
-        if ($rofs != $offset) {
-            $ok = -1; # differing offsets
+        if      ($offset == $rofs) {
+            # ok
+        } elsif ($offset <  $rofs) {
+            my $ind = $offset;
+            while ($ind < $rofs) {
+                push(@constrs, "m$rseqno.next();");
+                $ind ++;
+            }
+        } elsif ($offset >  $rofs) {
         }
         if (! defined($rseqnos{$rseqno})) {
             $rseqnos{$rseqno} = $rofs;
         } else {
             $rseqnos{$rseqno} .= ",$rofs";
         }
-        if (scalar(%rseqnos) != scalar(@rseqs)) {
-            $ok = -2; # duplicate rseqnos
-        }
         $imports{$rseqno} = 1;
         $clamems{$rseqno} = "final Sequence m$rseqno = new $rseqno();";
         $form =~ s{$rseqelem}{m$rseqno.next()};
     } # foreach
+    if (scalar(%rseqnos) != scalar(@rseqs)) {
+        $ok = -2; # duplicate rseqnos
+    }
     
-    if ($form =~ m{Z\.valueOf\(mN\)} { # add the property "protected long mN;", initialize and increment it
+    if ($form =~ m{Z\.valueOf\(mN\)}) { # add the property "protected long mN;", initialize and increment it
         unshift(@constrs, "mN = " . ($offset - 1) . ";");
         unshift(@nexts,   "++mN;");
         $clamems{"A999991"} = "protected long mN;";
@@ -98,7 +105,7 @@ while (<>) {
     if ($ok >= 1) {
         print join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3, $parm4, @rest) . "\n";
     } else {
-        print STDERR "# problem$ok:" 
+        print STDERR "# problem$ok: " 
             . join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3, $parm4, @rest) . "\n";
     }
 } # while 

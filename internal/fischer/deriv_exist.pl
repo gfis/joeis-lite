@@ -22,32 +22,43 @@ if (scalar(@ARGV) < 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
+my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
+
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
+    } elsif ($opt   =~ m{f}  ) {
+        $ofter_file = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
-#--------
-my ($aseqno, $name, $offset);
-my %ders = ();
-open (DER, "<", "deriv0.tmp") || die "cannot read deriv0.tmp\n";
-while (<DER>) {
+my $line;
+my ($tletter, $aseqno, $offset, $terms, $name, @rest); # records in joeis_names.txt
+my $level;
+$offset = 1;
+my ($rseqno, $roffset);
+my $parm1  = "";
+my $parm2  = "";
+my $parm3  = "";
+my $parm4  = "";
+#----------------
+my %ofters = ();
+open (OFT, "<", $ofter_file) || die "cannot read $ofter_file\n";
+while (<OFT>) {
     s{\s+\Z}{};
-    ($aseqno, $offset) = split(/\t/);
-    if ($offset < 0) {
-        # skip 
-        # $offset = chr(ord('Z') + 1 + $offset);
+    ($aseqno, $offset, $terms) = split(/\t/);
+    $terms = $terms || "";
+    if ($offset < -1) { # offsets -2, -3: strange, skip these
     } else {
-        $ders{$aseqno} = $offset;
+        $ofters{$aseqno} = "$offset\t$terms";
     }
-} # while <DER>
-close(DER);
-print STDERR scalar(%ders) . " jOEIS offsets read\n";
-
+} # while <OFT>
+close(OFT);
+print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
+#----------------
 while (<>) {
     my $line = $_;
     next if $line !~ m{\AA\d+};
@@ -60,8 +71,18 @@ while (<>) {
     if ($name =~ s{\Aa\(n\) *== *}{}) {
         $ok = -2; # a(n) modulo ...
     }
+    $name =~ s{[\.\;].*}{}; # remove all behind "." or ";"
+    $name =~ s{\bi\.e\..*}{}; # remove all behind "i.e."
+    $name =~ s{ *\- +\_[A-Z][a-z]{2}.*}{}; # remove strange signatures
     $name =~ s{(\A|\W)a\(n\) *= *}{}g; # remove leading "a(n) = "
-    $name =~ s{(A\d{6})}{defined($ders{$1}) ? "$1_$ders{$1}" : ("X" . substr($1, 1))}eg; # either X012345 or A012345_offset
+    foreach $rseqno ($name =~ m{(A\d{6})}g) {
+        if (defined($ofters{$rseqno})) {
+            ($roffset, $terms) = split(/\t/, $ofters{$rseqno});
+            $name =~ s{$rseqno}{${rseqno}_$roffset}g; # A012345_offset
+        } else {
+            $name =~ s{$rseqno}{"X" . substr($rseqno, 1)}eg; # X012345 
+        }
+    } # foreach $rseqno
     my $cond = "";
     if (0) {
     } elsif ($name =~ s{ *(\, *|\,? *for +|\,? *with +|\,? *where +|\,? *if +) *(.*)\Z}{}) { # with condition
@@ -112,7 +133,7 @@ while (<>) {
        if ($part =~ m{(\A|\W)(min|max)\(}) {
            $ok = -6; # min, max forbidden
        }
-       if ($ok >= 1 and ! defined($ders{$aseqno})) { # not in jOEIS
+       if ($ok >= 1 and ! defined($ofters{$aseqno})) { # not in jOEIS
             #  and ($part !~ m{X\d{6}}) and ($part =~ m{A\d{6}})) {
             while ($part =~ m{(A\d{6}_\d+)\(([^\)]+)\)}) { # replace index
                 my ($aseqno_ofs, $index) = ($1, $2);

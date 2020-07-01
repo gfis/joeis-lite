@@ -14,13 +14,11 @@ public class $(ASEQNO) extends DerivedSequence {
 $(PARM4)
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    mN = $(OFFSET) - 1;
 $(PARM3)
   }
   
   @Override
   public Z next() {
-    ++mN;
 $(PARM2)
     return $(PARM1);
   }

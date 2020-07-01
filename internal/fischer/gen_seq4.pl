@@ -105,16 +105,16 @@ while (<>) { # read inputfile
             print STDERR "read $patprefix$callcode$patext\n";
         }
     } # new pattern
-    $package = lc(substr($aseqno, 0, 4));
+    $package = lc(substr($aseqno, 0, 4)); # Java package name
     my $copy = $pattern;
     my $do_generate = 1;
     if ($debug >= 2) {
         print "# scalar(parms)=" . scalar(@parms) . "\n";
     }
-    while ($iparm < scalar(@parms) - 1) {
+    while ($iparm < scalar(@parms) - 1) { # for all $(PARMi)
         my $max_term_len = 0;
         my @terms;
-        if ($parms[$iparm] !~ m{\~\~}) {
+        if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
             @terms = map {
                 if (length > $max_term_len) {
                     $max_term_len = length;
@@ -154,6 +154,7 @@ while (<>) { # read inputfile
                     foreach my $part (split(/\~\~/, $term)) {
                         $statements .= "$tail$part$head\n";
                     }
+                    $statements =~ s{\n\Z}{};
                     $term = $statements;
                 } else { # infix ~~
                     $term =~ s{\~\~}{\"\n        , \"}g; # 8 spaces and comma

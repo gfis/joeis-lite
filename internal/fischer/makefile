@@ -1411,7 +1411,99 @@ noncomp4: # for info only
 	>        $@.tmp
 noncomp:
 	# run (noncomp0 and) noncomp_prep before
-#-------------------------------
+#----------------
+eulerian:
+	grep -E "\%[CFN]" $(COMMON)/cat25.txt | grep -E "Eulerian[\[]" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#----------------
+shownin:
+	grep -E "^A" $(COMMON)/names \
+	| grep -P "^A\d{6}[^A]*A\d{6}" \
+	| perl -ne 'if (m{^(A\d{6}) (Sequence |Array |Bit\-masks of |)(A\d{6}) (shown |written |)in (quaternary|octal|binary|base \d+)}) { '\
+	' my ($$aseqno, $$rseqno, $$base) = ($$1, $$3, $$5); $$base =~ s{octal}{8}; $$base =~ s{binary}{2}; $$base =~ s{base *}{}; '\
+	' if ($$base != 10) { print join("\t", $$aseqno, "shownin", 0, $$rseqno, $$base) . "\n"; }}' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#----------------
+deriv_rest: deriv2 deriv3 deriv4 deriv5 deriv6 deriv7 
+deriv1c: # grep cat25: (a(n) = )?aseqno
+	grep -E "^\%[NF] A" $(COMMON)/cat25.txt \
+	| cut -b4- \
+	| grep -P  "^A\d{6}[^A]*A\d{6}" \
+	| sed -e "s/ /\t/" \
+	| grep -vEi "sum|product|\!|\.\.\." \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv1n: # grep names: (a(n) = )?aseqno
+	grep -E "^A" $(COMMON)/names \
+	| grep -P  "^A\d{6}[^A]*A\d{6}" \
+	| sed -e "s/ /\t/" \
+	| sed -e "s/\tTwice  *A/\t2\*A/" \
+	| grep -vEi "sum|product|\!|\.\.\." \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv2: # convert known functions, separate conditions, split in several formulas for one sequence
+	perl deriv_exist.pl -d $(D) -f $(COMMON)/joeis_ofter.txt deriv1.tmp \
+	| sort | uniq \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	cut -f1  $@.tmp | sort | uniq | wc -l
+deriv3: # add offset1 from asinfo; aseqno, md5sum, offset, ~~form, form, cond
+	make seq4 LIST=deriv2.tmp
+	$(DBAT) -v -f deriv3.update.sql
+	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.parm1, s.parm2, s.parm3, i.terms \
+	    FROM  seq4 s, asinfo i\
+	    WHERE s.aseqno = i.aseqno \
+	      AND i.keyword NOT LIKE '%dead%' \
+	      AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv4: # remove all with X-numbers
+	perl -ne 'my $$line = $$_; if (($$line =~ m{A\d{6}_\d}) '\
+	' and ($$line !~ m{X\d{6}})) { print $$line; }' deriv3.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv5: # convert to postfix, select the last of the shortest formula
+	$(RAMATH).sequence.JoeisPreparer -f deriv4.tmp \
+	| perl deriv_select.pl \
+	>        $@.tmp
+	make seq4 LIST=deriv5.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4 \
+	    FROM  seq4 s \
+	    ORDER BY 1" \
+	| sed -e "s/\r//" \
+	| grep -vE "^(A095775|A102954|A130517|A131241|A131783|A131784|A136489|A187791|A247270)" \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv6: # convert from postfix to Z-expressions
+	perl post_infix.pl -p Z.xpat deriv5.tmp \
+	2>       $@.rest \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc   -l  $@.*
+deriv7: # adapt the offsets and initial terms
+	perl deriv_gen.pl deriv6.tmp \
+	2>       $@.rest \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc   -l  $@.*
+deriv:
+	grep -vE "floor|ceil|round" deriv7.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.*
+#--------------------------------
 # Record values ...
 record:
 	grep -E "^\%[CNF]" $(COMMON)/cat25.txt \
@@ -1423,7 +1515,7 @@ record:
 	wc -l    $@.tmp	
 #----
 diffseq: # (First|Second...) differences of ...
-	perl deris.pl -cc $@ record.tmp \
+	perl deris.pl -f $(COMMON)/joeis_ofter.txt -cc $@ record.tmp \
 	2>              $@.nyi.tmp \
 	| sort | uniq -w7 \
 	>        $@.gen
@@ -1432,7 +1524,7 @@ diffseq: # (First|Second...) differences of ...
 	wc -l    $@.gen $@.nyi.tmp
 #----
 recordpos: # where records occur
-	perl deris.pl -cc $@ record.tmp \
+	perl deris.pl -f $(COMMON)/joeis_ofter.txt -cc $@ record.tmp \
 	2>              $@.nyi.tmp \
 	| sort | uniq -w7 \
 	>        $@.gen
@@ -1441,7 +1533,7 @@ recordpos: # where records occur
 	wc -l    $@.gen $@.nyi.tmp
 #----
 recordval: # record values of ...
-	perl deris.pl -cc $@ record.tmp \
+	perl deris.pl -f $(COMMON)/joeis_ofter.txt -cc $@ record.tmp \
 	2>              $@.nyi.tmp \
 	| sort | uniq -w7 \
 	>        $@.gen
@@ -1804,85 +1896,6 @@ gen_mmac:
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
-#----------------
-deriv_all: deriv0 deriv1 deriv2 deriv37
-deriv37: deriv3 deriv4 deriv5 deriv6 deriv7 
-# deriv8
-deriv0: # extract the implemented jOEIS sequences
-	$(DBAT) -x "SELECT i.aseqno, i.offset1 \
-	    FROM asinfo i INNER JOIN joeis j ON j.aseqno = i.aseqno \
-	    WHERE i.keyword NOT LIKE '%dead%' \
-	    ORDER BY 1" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv1: # grep names and formulas with A-numbers from cat25
-	grep -E "^%[NF]" $(COMMON)/cat25.txt \
-	| grep -vEi "sum|product|\!" \
-	| perl -ne 'my $$line = $$_; $$line =~ s{^%[NF] (A\d+) }{$$1\t}; my $$aseqno = $$1; '\
-	' if (($$line =~ m{\ta\(n\) *\=[^A]*A\d+\([^A]}) and ($$line !~ m{\.\.\.})) '\
-	' { $$line =~ s{[\.\;].*}{}; $$line =~ s{ *\- +\_[A-Z][a-z]{2}.*}{}; print $$line; }' \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv2: # convert known functions, separate conditions, split in several formulas for one sequence
-	perl deriv_exist.pl -d $(D) deriv1.tmp \
-	| sort | uniq \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-	cut -f1  $@.tmp | sort | uniq | wc -l
-deriv3: # add offset1 from asinfo; aseqno, md5sum, offset, ~~form, form, cond
-	make seq4 LIST=deriv2.tmp
-	$(DBAT) -v -f deriv3.update.sql
-	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.parm1, s.parm2, s.parm3, i.terms \
-	    FROM  seq4 s, asinfo i\
-	    WHERE s.aseqno = i.aseqno \
-	      AND i.keyword NOT LIKE '%dead%' \
-	      AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
-	    ORDER BY 1" \
-	| sed -e "s/\r//" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv4: # remove all with X-numbers
-	perl -ne 'my $$line = $$_; if (($$line =~ m{A\d{6}_\d}) '\
-	' and ($$line !~ m{X\d{6}})) { print $$line; }' deriv3.tmp \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv5: # convert to postfix, select the last of the shortest formula
-	$(RAMATH).sequence.JoeisPreparer -f deriv4.tmp \
-	| perl deriv_select.pl \
-	>        $@.tmp
-	make seq4 LIST=deriv5.tmp
-	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4 \
-	    FROM  seq4 s \
-	    ORDER BY 1" \
-	| sed -e "s/\r//" \
-	| grep -vE "^(A102954|A130517)" \
-	>        $@.tmp
-	tail -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv6: # convert from postfix to Z-expressions
-	perl post_infix.pl -p Z.xpat deriv5.tmp \
-	2>       $@.rest \
-	>        $@.tmp 
-	head -n4 $@.tmp
-	wc   -l  $@.*
-deriv7: # adapt the offsets and initial terms
-	perl deriv_gen.pl deriv6.tmp \
-	2>       $@.rest \
-	>        $@.tmp 
-	head -n4 $@.tmp
-	wc   -l  $@.*
-deriv:
-	grep -vE "floor|ceil|round" deriv7.tmp \
-	>        $@.gen
-	head -n4 $@.tmp
-	wc   -l  $@.*
-deriv8:
-	# nyi deriv8
 #----------------
 dex0: dex1 dex2 dex3 dex4
 dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
