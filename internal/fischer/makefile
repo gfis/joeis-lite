@@ -243,18 +243,10 @@ tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
 ej:
 	echo $(JAVA)
-#=========================================================
-bas:
-	make bas_all TARGET=gener
-	cat $@?*.gen > $@.gen
-	make dist
-	make test CC=$@
-	make pack CC=$@
-bas_sel:
+#================================================================
+bas: # only a few for basdig2
 	make bas_all TARGET=select
-	cat bas*.gen > basall.gen
-bas_gen:
-	make bas_all TARGET=gener
+	cat  bas*.gen > basall.gen
 bas_all:
 	make $(TARGET) CC=basdig1
 	make $(TARGET) CC=basdig2
@@ -300,7 +292,6 @@ basdig1:
 # A039603 Numbers n such that representation in base 12 has same nonzero number of 0's and 11's.
 # A039225 Numbers n whose base-12 representation has the same number of 1's and 7's.
 # A039473 Numbers such that representation in base 11 has the same nonzero number of 4's and 6's.	nonn,base,easy,changed,synth	1..50
-
 basdig2:
 	perl -ne \
 	'if (m{^(A\d+)\s+Numbers ([nk] such that|such that|whose) representation in base.(\d+) has (the )?same (nonzero )?number of (\d+)\Ds and (\d+)\Ds})'\
@@ -313,8 +304,9 @@ basdig2:
 	'{ print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6) . "\n" }' \
 	$(COMMON)/names \
 	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
-	>>  $@.gen
-	cat $@.gen
+	>>       $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 # A039589 Numbers n such that representation in base 6 has same number of 2's, 3's and 4's.
 basdig3:
@@ -329,8 +321,9 @@ basdig3:
 	'{ print join("\t", $$1, "$@", 0, $$2, $$4, $$5, $$6, $$7) . "\n" }' \
 	$(COMMON)/names \
 	| perl -pe "s{nonzero}{count1 \!\= 0 \&\&}" \
-	>>  $@.gen
-	cat $@.gen
+	>>       $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 # A044966 Numbers n with property that in base 3 representation the numbers of 0's and 1's are 0 and 1, respectively.	nonn,base,synth	1..43
 # A045004 In base 3 the numbers of 0's and 2's are 3 and 0, respectively.	nonn,base,synth	1..43
@@ -345,7 +338,8 @@ basdig4:
 	# A045181 Numbers whose base-5 representation contains two 0's and one 2.	nonn,base,changed,synth	1..46
 	echo "A044987	basdig4	0	3	0	1	4	2" >> $@.gen
 	echo "A045181	basdig4	0	5	0	2	2	1" >> $@.gen
-	wc -l $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #---
 # A043555 Number of runs in base-3 representation of n.	nonn,base,easy,	0..1000
 basrun:
@@ -353,8 +347,9 @@ basrun:
 	'if (m{^(A\d+)\s+Number of runs in base.(\d+) representation of [nk]})'\
 	'{ print join("\t", $$1, "$@", 0, $$2) . "\n" }' \
 	$(COMMON)/names \
-	> $@.gen
-	cat $@.gen
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 # A043569 Numbers n such that base 2 representation has exactly 2 runs.	nonn,base,	1..10000
 basruneq:
@@ -363,8 +358,9 @@ basruneq:
 	'{ print join("\t", $$1, "$@", 0, $$4, $$5) . "\n" }' \
 	$(COMMON)/names \
 	| grep -vE "A043569|A043570|A043638|A043675" \
-	> $@.gen
-	wc -l $@.gen
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 	# look for more efficient advancing:
 	# A043569 = 2 runs in base  2 up to 10000 - replace "10" by "11"?
 	# A043569 = 3 runs in base  2 up to 10000 - varying number of "0" in the middle?
@@ -378,8 +374,9 @@ basrunmod:
 	'if (m{^(A\d+)\s+(Numbers [nk] such that )?[Nn]umber of runs in (the )?base.(\d+) representation of [nk] is congruent (to )?(\d+) mod (\d+)})'\
 	'{ print join("\t", $$1, "$@", 0, $$4, $$6, $$7) . "\n" }' \
 	$(COMMON)/names \
-	> $@.gen
-	cat $@.gen
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 #A043705 Numbers n such that number of runs in the base 16 representation of n is even.	nonn,base,synth	1..60
 #A043706 Numbers n such that number of runs in the base 3 representation of n is odd.	nonn,base,synth	1..59
@@ -390,9 +387,10 @@ basrunpar:
 	'{ print join("\t", $$1, "$@", 0, $$3, $$4) . "\n" }' \
 	$(COMMON)/names \
 	| sed -e "s/even/0/" -e "s/odd/1/" \
-	> $@.gen
-	cat $@.gen
-#--------------------------
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 carule0:
 	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \
 	$(COMMON)/jnames.txt \
@@ -415,211 +413,7 @@ caruniq:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #	perl -ne 'if ((m{cellular automat}) and ( m{Rule (\d+)})) { s{\"?Rule (\d+)\"?}{Rule 17}ig; print substr($$_, 8); }' \
-#-----------
-# A030465 Numbers n such that n concatenated with n+1 is a square.
-# A030466 Squares that are concatenations of two consecutive nonzero numbers.
-# A030467 Numbers n such that n^2 is a concatenation of two successive numbers.
-# A116353	null	Numbers n such that n times n+7 gives the concatenation of two numbers m and m+9.	nonn,base,synth	1..5
-# A116354	null	n times n+8 gives the concatenation of two numbers m and m+9.	nonn,base,synth	1..23
-# A115437	null	Numbers n such that the concatenation of n with n+4 gives a square.	base,nonn,synth	1..24
-# A115438	null	Numbers n such that the square of n is the concatenation of two numbers k and k+4.	base,nonn,synth	1..25
-# A115527	null	Numbers n such that the concatenation of n with 2*n gives a square.	nonn,base,synth	1..5
-# A115528	null	Numbers n such that the square of n is the concatenation of two numbers m and 2*m.	nonn,base,synth	1..5
-# A116094 Numbers n such that n concatenated with n-9 gives the product of two numbers which differ by 1.
-
-conc0:
-	perl -ne \
-	'if (m{concaten}) { print; }' \
-	$(COMMON)/names \
-	>     $@.tmp
-	wc -l $@.tmp
-concprod:
-	perl -n concprod.pl \
-	$(COMMON)/names \
-	>     $@.gen
-	wc -l $@.gen
-concprod2:
-	perl -ne \
-	's{Numbers \w such that }{}; '\
-	'if (m{^(A\d+)\s+(the concatenation of \w with [\w\+\-\*\d]{3}|\w concatenated with [\w\+\-\*\d]{3}|the square of \w|\w times [\w\+\-\*\d]{3}) (gives|is) '\
-	'(the concatenation of two numbers \w and [\w\+\-\*\d]{3}|the product of two numbers which differ by \d+|a square)})'\
-	'{ my ($$aseqno, @both) = ($$1, $$2, $$4); '\
-	'  my ($$left, $$right) = map { s{times}{\*}; s{concatenated with}{\/\/}; '\
-	'  s{the concatenation of (\w) with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
-	'  s{(\w) concatenated with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
-	'  s{the concatenation of two numbers (\w) and ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
-	'  s{the product of two numbers which differ by (\d+)}{m \* (m\+$$1)};'\
-	'  s{the square of (\w)}{$$1 * $$1}; s{a square}{n * n};'\
-	'  $$_} @both;'\
-	'  $$left =~ s{[a-z]}{k}g; $$right =~ s{[a-z]}{m}g;'\
-	'  print join("\t", $$aseqno, "$@", 0, $$left, " ; $$right") . "\n"; }' \
-	$(COMMON)/names \
-	>     $@.gen
-	wc -l $@.gen
-#----------
-mma_uniqc:
-	cut -b1-10 $(COMMON)/cat25.txt | grep -E "^%t" | uniq -c | grep " 1 " | cut -b 12-18 \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-#	      2 %t A000001
-mma_single:
-	grep -E "^%t" $(COMMON)/cat25.txt \
-	| perl mma_single.pl \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-mma_joeis:
-	make seq2 LIST=mma_single.tmp
-	$(DBAT) "SELECT m.aseqno, SUBSTR(j.superclass, 1, 3), m.info FROM seq2 m LEFT JOIN joeis j ON m.aseqno = j.aseqno \
-		ORDER BY 3" \
-	>        $@.txt
-	head -n4 $@.txt
-	wc -l    $@.txt
-#--------
-# %F A238745 a(n) = A181819(A124859(n)).
-chain2:
-	grep -E "a\(n\) *= *A[0-9][0-9]*\(A[0-9][0-9]*\(n\)\)" $(COMMON)/cat25.txt \
-	| perl -ne 'my $$line = $$_; '\
-	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *(A\d+)\((A\d+)\(n\)\)\s*\.}) {'\
-	'print join("\t", $$1, "$@", 0, $$2, $$3) . "\n"; }'\
-	| uniq -w7 \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-	make seq4 LIST=$@.tmp
-	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, j.superclass\
-		FROM seq4 s LEFT JOIN joeis j ON s.aseqno = j.aseqno \
-		WHERE parm1 IN (SELECT aseqno FROM joeis) \
-		  AND parm2 IN (SELECT aseqno FROM joeis) \
-		ORDER BY 1"\
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-#--------
-# %F A238745 a(n) = A181819(A124859(n)).
-seqop:
-	grep -E "a\(n\) *= *A[0-9][0-9]*(\([a-z]\))? *[\+\-\*\/m]" $(COMMON)/cat25.txt \
-	| perl -ne 'my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
-	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *(A\d+)(\(\w\))?\s*([\+\-\*\/]|mod)\s*([a-z0-9])\.}) { '\
-	'my ($$aseqno, $$bseqno, $$op, $$term) = ($$1, $$2, $$4, $$5); $$term =~ s{n}{mN}; '\
-	'my %ops = ("+","add", "-", "subtract", "*", "multiply", "/", "divide", "mod", "mod(Z.valueOf"); '\
-	'my $$suffix = "$$ops{$$op}($$term)" . ($$op eq mod ? ")" : ""); '\
-	'print join("\t", $$aseqno, "$@", 0, lc(substr($$bseqno,0,4)), $$bseqno, $$suffix) . "\n"; } '\
-	| uniq -w7 \
-	>         $@.tmp
-	head -n16 $@.tmp
-	wc -l     $@.tmp
-	make seq4 LIST=$@.tmp
-	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3 \
-		, (SELECT i.offset1 FROM asinfo i WHERE s.parm2 = i.aseqno) \
-		, j.superclass\
-		FROM seq4 s LEFT JOIN joeis j ON s.aseqno = j.aseqno \
-		WHERE parm2        IN (SELECT aseqno FROM joeis) \
-		  AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
-		ORDER BY 1"\
-	>         $@.gen
-	head -n4  $@.gen
-	wc -l     $@.gen
-addseq:
-	grep -E "a\(n\) *= *([a-z]|[\+\-\* ])([a-z]|[\+\-\*])* *A[0-9][0-9]*(\([a-z]\))?" $(COMMON)/cat25.txt \
-	| perl -ne 'my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
-	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *([a-z\+\-\* ])+(A\d+)(\(\w\))?\.}) {'\
-	'print join("\t", $$1, "$@", 0, $$3, $$2, substr($$line, 3, 128)) . "\n"; }'\
-	| uniq -w7 \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-	make seq4 LIST=addseq.tmp
-#--------
-# A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
-# A272999 Numbers k such that (11*10^k + 49)/3 is prime.
-pfprime:
-	perl -ne \
-	's/ /\t/; '\
-	'if (m{^(A\d{6})\t(Numbers|Integers) \w such that[^\(\d]*\(?(\d+)\s*\*\s*(\d+)\^\w\s*([\+\-0-9 ]+)\)?\s*(\/\s*(\d+))? is (a )?prime\.}) {'\
-	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$3, $$4, $$5, $$7); '\
-	' $$add =~ s{ }{}g; if (length($$div) == 0) { $$div = 0; } '\
-	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
-	$(COMMON)/names \
-	>        $@.tmp
-	tail -n4 $@.tmp
-	wc -l    $@.tmp
-	# A101001 Indices of primes in sequence defined by A(0) = 91, A(n) = 10*A(n-1) + 11 for n > 0.
-	# => Numbers n such that (830*10^n - 11)/9 is prime
-	perl -ne \
-	's/ /\t/; '\
-	'if (m{^(A\d{6})\tIndices of primes in sequence defined by'\
-	' A\(\d\)\s*\=\s*(\d+)\,\s*A\(\w\)\s*\=\s*(\d+)\*A\(n\s*\-\s*\w\)\s*([\+\-0-9 ]+)\s*for}) {'\
-	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, 9); '\
-	' $$add =~ s{ }{}g; $$num = $$num * $$div + $$add; $$add = -$$add; '\
-	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
-	$(COMMON)/names \
-	>>       $@.tmp
-	tail -n4 $@.tmp
-	wc -l    $@.tmp
-	sort     $@.tmp \
-	| grep -vE "A098466|A098467" \
-	>        $@.gen
-	make seq4 LIST=$(CC).gen
-	$(DBAT) "UPDATE seq4 s SET PARM1 = \
-	    (SELECT SUBSTR(data, 1, INSTR(data, ',') - 1) FROM asdata d WHERE d.aseqno = s.aseqno)"
-	$(DBAT) "UPDATE seq4 s SET PARM5 = 1 WHERE PARM5 = 0"
-	$(DBAT) -x "SELECT * FROM seq4 \
-	    ORDER BY aseqno" \
-	>        $@.gen
-	# WHERE PARM1 < 10 AND PARM2 < 1000 
-pfprimex:
-	cp pfprime.gen pfprime.tmp
-	perl -pe 's{^(A032373|A050413|A050544|A050847|A050885|A056245|A056248|A056258|A059454'\
-	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
-	pfprime.tmp > pfprime.gen
-#------
-# A102709 Join[{1,3125,1075,985},LinearRecurrence[{-1,-2,-2,-2,-1,0,1,2,2,2,1,1},{580,1281,295,1305,580,925,631,1305,220,1305,655,901},45]](*_RayChandler_,Sep082015*)
-joinlr:
-	perl -ne \
-	's/ //g; '\
-	'if (m{^(A\d{6})\t\tJoin\[\{([^\}]+)\}\,LinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}}) {'\
-	' my ($$aseqno, $$joins, $$recur, $$inits) = ($$1, $$2, $$3, $$4); '\
-	' my @recur = reverse(split(/\,/, $$recur)); '\
-	' my @inits =         split(/\,/, $$inits) ; '\
-	' my @joins =         split(/\,/, $$joins) ; '\
-	' if (scalar(@inits) > scalar(@recur)) { '\
-	'   @joins = join(@joins, splice(@inits, 0, scalar(@inits) - scalar(@recur))); '\
-	' }'\
-	' $$joins = "new long[] {" . join("L,", @joins) . "L}"; '\
-	' if (scalar(@joins) == 0) { $$joins = "EMPTY"; } '\
-	' $$inits = "new long[] {" . join("L,", @inits) . "L}";'\
-	' $$recur = "new long[] {" . join("L,", @recur) . "L}";'\
-	' print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$joins) . "\n";'\
-	'}' \
-	mma_joeis.txt \
-	| grep -vE "A064584|A18718|A286069|A288917" \
-	>        $@.gen
-	wc -l    $@.gen
-	#--
-	perl -ne \
-	's/ //g; '\
-	'if (m{^(A\d{6})\t\tLinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}}) {'\
-	' my ($$aseqno, $$recur, $$inits) = ($$1, $$2, $$3); '\
-	' my @recur = reverse(split(/\,/, $$recur)); '\
-	' my @inits =         split(/\,/, $$inits) ; '\
-	' my @joins = (); '\
-	' if (scalar(@inits) > scalar(@recur)) { '\
-	'   @joins = splice(@inits, 0, scalar(@inits) - scalar(@recur)); '\
-	' }'\
-	' $$joins = "new long[] {" . join("L,", @joins) . "L}"; '\
-	' if (scalar(@joins) == 0) { $$joins = "new long[] {}"; } '\
-	' $$inits = "new long[] {" . join("L,", @inits) . "L}";'\
-	' $$recur = "new long[] {" . join("L,", @recur) . "L}";'\
-	' print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$joins) . "\n";'\
-	'}' \
-	mma_joeis.txt \
-	| grep -vE "A064584|A18718|A286069|A288917" \
-	>>       $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-#--------------------------
+#--------------------------------
 # new, using ContinuedFractionOfSqrtSequence
 cfs:
 	make cfs_all TARGET=gener
@@ -746,7 +540,67 @@ cfspercent1:
 	$(COMMON)/names \
 	> $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----
+#--------------------------------
+# %F A238745 a(n) = A181819(A124859(n)).
+chain2: # rather fruitless since not monotone or big distances in parm2
+	grep -E "a\(n\) *= *A[0-9][0-9]*\(A[0-9][0-9]*\(n\)\)" $(COMMON)/cat25.txt \
+	| perl -ne 'my $$line = $$_; '\
+	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *(A\d+)\((A\d+)\(n\)\)\s*\.}) {'\
+	'print join("\t", $$1, "$@", 0, $$2, $$3) . "\n"; }'\
+	| uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, b.bfimax - b.bfimin + 1, d.data \
+		FROM seq4 s, asdata d, bfinfo b \
+		WHERE s.aseqno = d.aseqno \
+		  AND d.aseqno = b.aseqno \
+		  AND s.parm1      IN (SELECT aseqno FROM joeis) \
+		  AND s.parm2      IN (SELECT aseqno FROM joeis) \
+		  AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+		ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+# A030465 Numbers n such that n concatenated with n+1 is a square.
+# A030466 Squares that are concatenations of two consecutive nonzero numbers.
+# A030467 Numbers n such that n^2 is a concatenation of two successive numbers.
+# A116353	null	Numbers n such that n times n+7 gives the concatenation of two numbers m and m+9.	nonn,base,synth	1..5
+# A116354	null	n times n+8 gives the concatenation of two numbers m and m+9.	nonn,base,synth	1..23
+# A115437	null	Numbers n such that the concatenation of n with n+4 gives a square.	base,nonn,synth	1..24
+# A115438	null	Numbers n such that the square of n is the concatenation of two numbers k and k+4.	base,nonn,synth	1..25
+# A115527	null	Numbers n such that the concatenation of n with 2*n gives a square.	nonn,base,synth	1..5
+# A115528	null	Numbers n such that the square of n is the concatenation of two numbers m and 2*m.	nonn,base,synth	1..5
+# A116094 Numbers n such that n concatenated with n-9 gives the product of two numbers which differ by 1.
+concprod:
+	perl -n concprod.pl \
+	$(COMMON)/names \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+concprod2:
+	perl -ne \
+	's{Numbers \w such that }{}; '\
+	'if (m{^(A\d+)\s+(the concatenation of \w with [\w\+\-\*\d]{3}|\w concatenated with [\w\+\-\*\d]{3}|the square of \w|\w times [\w\+\-\*\d]{3}) (gives|is) '\
+	'(the concatenation of two numbers \w and [\w\+\-\*\d]{3}|the product of two numbers which differ by \d+|a square)})'\
+	'{ my ($$aseqno, @both) = ($$1, $$2, $$4); '\
+	'  my ($$left, $$right) = map { s{times}{\*}; s{concatenated with}{\/\/}; '\
+	'  s{the concatenation of (\w) with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
+	'  s{(\w) concatenated with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
+	'  s{the concatenation of two numbers (\w) and ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
+	'  s{the product of two numbers which differ by (\d+)}{m \* (m\+$$1)};'\
+	'  s{the square of (\w)}{$$1 * $$1}; s{a square}{n * n};'\
+	'  $$_} @both;'\
+	'  $$left =~ s{[a-z]}{k}g; $$right =~ s{[a-z]}{m}g;'\
+	'  print join("\t", $$aseqno, "$@", 0, $$left, " ; $$right") . "\n"; }' \
+	$(COMMON)/names \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 dead:
 	$(DBAT) -x "SELECT i.aseqno, n.name, 0 \
 	    FROM asinfo i, asname n \
@@ -770,74 +624,249 @@ dead_check: # Where are dead, erroneous sequences still referenced?
 		  AND (s.parm2 =  'erro' OR s.parm2 =  'dupl') \
 		  AND b.keyword NOT LIKE '%dead%' \
 		ORDER BY 1" \
-	| tee    $@.txt
+	>        $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
-#-------------------------------
-decofr:
+#--------------------------------
+decofr: # Continued fraction of real expression
 	perl decofr.pl -i 0 $(COMMON)/joeis_names.txt \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 	# perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#-------------------------------
-dupl:
+#--------------------------------
+deriv_rest: deriv2 deriv3 deriv4 deriv5 deriv6 deriv7 
+deriv1c: # grep cat25: (a(n) = )?aseqno
+	grep -E "^\%[NF] A" $(COMMON)/cat25.txt \
+	| cut -b4- \
+	| grep -P  "^A\d{6}[^A]*A\d{6}" \
+	| sed -e "s/ /\t/" \
+	| grep -vEi "sum|product|\!|\.\.\." \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv1n: # grep names: (a(n) = )?aseqno
+	grep -E "^A" $(COMMON)/names \
+	| grep -P  "^A\d{6}[^A]*A\d{6}" \
+	| sed -e "s/ /\t/" \
+	| sed -e "s/\tTwice  *A/\t2\*A/" \
+	| grep -vEi "sum|product|\!|\.\.\." \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv2: # convert known functions, separate conditions, split in several formulas for one sequence
+	perl deriv_exist.pl -d $(D) -f $(COMMON)/joeis_ofter.txt deriv1.tmp \
+	| sort | uniq \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	cut -f1  $@.tmp | sort | uniq | wc -l
+deriv3: # add offset1 from asinfo; aseqno, md5sum, offset, ~~form, form, cond
+	make seq4 LIST=deriv2.tmp
+	$(DBAT) -v -f deriv3.update.sql
+	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.parm1, s.parm2, s.parm3, i.terms \
+	    FROM  seq4 s, asinfo i\
+	    WHERE s.aseqno = i.aseqno \
+	      AND i.keyword NOT LIKE '%dead%' \
+	      AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv4: # remove all with X-numbers
+	perl -ne 'my $$line = $$_; if (($$line =~ m{A\d{6}_\d}) '\
+	' and ($$line !~ m{X\d{6}})) { print $$line; }' deriv3.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv5: # convert to postfix, select the last of the shortest formula
+	$(RAMATH).sequence.JoeisPreparer -f deriv4.tmp \
+	| perl deriv_select.pl \
+	>        $@.tmp
+	make seq4 LIST=deriv5.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4 \
+	    FROM  seq4 s \
+	    ORDER BY 1" \
+	| sed -e "s/\r//" \
+	| grep -vE "^(A095775|A102954|A130517|A131241|A131783|A131784|A136489|A187791|A247270)" \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc   -l  $@.tmp
+deriv6: # convert from postfix to Z-expressions
+	perl post_infix.pl -p Z.xpat deriv5.tmp \
+	2>       $@.rest \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc   -l  $@.*
+deriv7: # adapt the offsets and initial terms
+	perl deriv_gen.pl deriv6.tmp \
+	2>       $@.rest \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc   -l  $@.*
+deriv:
+	grep -vE "floor|ceil|round" deriv7.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.*
+#--------------------------------
+dex0: dex1 dex2 dex3 dex4
+dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
+	$(DBAT) "UPDATE asname SET name = 'Decimal expansion of 2*(5-3*exp(1/2))/(2*exp(1/2)-3).' WHERE aseqno = 'A108813'"
+	$(DBAT) -x "SELECT a.aseqno, 'dex', a.offset1, n.name, a.keyword \
+		FROM asinfo a, bfinfo b, asname n\
+		WHERE a.aseqno = n.aseqno \
+		  AND b.aseqno = n.aseqno \
+		  AND n.aseqno NOT IN (SELECT aseqno FROM joeis) \
+		  AND a.keyword    LIKE '%cons%' \
+		  AND b.maxlen <= 2 \
+		ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+dex2:
+	perl extract_dex.pl dex1.tmp \
+	| sed -e "s/pi log/pi\*log/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+dex3:
+	$(RAMATH).sequence.JoeisPreparer -f dex2.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+dex4:
+	perl cr_infix.pl -d $(D) dex3.tmp \
+	| grep -vE "^(A114054|A117853|A202955|A248622)" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp	
+	grep "#" $@.tmp \
+	>        $@.rest || :
+	head -n4 $@.rest
+	wc   -l  $@.rest
+dex:
+	cp dex4.tmp dex.gen
+#--------------------------------
+# A163241	null	Simple self-inverse permutation: Write n in base 4, then replace each digit '2' with '3' and vice versa, then convert back to decimal.	nonn,base,easy,	0..1023
+# A171013	null	In the sequence of prime numbers, replace all digits '1' with '0' and vice versa.	nonn,base,easy,	1..1000
+# A171014	null	In the sequence of prime numbers, replace all the '2' digits with '0' and vice versa.	nonn,base,easy,	1..1000
+# A222212	null	In the number n, replace all (decimal) digits '0' with '3' and vice versa.	nonn,base,easy,	0..1000
+# A222213	null	Replace all (decimal) digits '0' with '4' and vice versa.	nonn,base,easy,	0..1000
+# A222216	null	In the number n, replace all (decimal) digits 0 with 7 and vice versa.	nonn,base,easy,	0..1000
+digexch:
+	grep -E "vice versa" $(COMMON)/names \
+	| perl -ne 'my $$base = 10; s{digits? }{}; my $$line = $$_; '\
+	' ;'\
+	' if (m{eplace\D*(\d)\D? with *\D?(\d)}) { my ($$dig1, $$dig2) = ($$1, $$2); '\
+	'   if (m{ base +(\d+)}) { $$base = $$1; }; '\
+	'   print join("\t", substr($$line, 0, 7), "digexch", 0, (($$line =~ m{prime num}) ? "a000\tA000040" : "a001\tA001477")'\
+	'     , $$base,$$dig1, $$dig2) . "\n"; '\
+	' }'\
+	>       $@.gen
+	head -4 $@.gen
+	wc   -l $@.gen	
+#--------------------------------
+dupl_prep: dupl1 dupl2 dupl3 # duplicates 
+dupl1:
 	perl -ne \
-	'if (m{^(A\d+) (Duplicate of |Essentially the same as |Same as )(A\d+)})'\
-	'{ print join("\t", $$1, "$@", 0, $$3, substr(lc($$3), 0, 4), $$2) . "\n" }' \
-	$(COMMON)/names \
+	'if (m{^\%\w (A\d+) (Duplicate of |Essentially the same as |Same as )(A\d+)})'\
+	'{ print join("\t", $$1, "dupl", 0, $$3) . "\n" }' \
+	$(COMMON)/cat25.txt \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+dupl2:
+	make seq4 LIST=dupl1.tmp
+	$(DBAT) -v "DELETE FROM seq4 \
+	  WHERE aseqno    IN (SELECT aseqno FROM joeis) \
+	     OR parm1 NOT IN (SELECT aseqno FROM joeis);"
+dupl3:
+	$(DBAT) -x "SELECT s.aseqno, callcode, offset, parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, s.name \
+	    FROM seq4 s, asinfo i \
+	    WHERE s.aseqno = i.aseqno \
+	      AND i.keyword NOT LIKE '%dead%' \
+	    ORDER BY 1" \
+	| perl -pe "s{\'\'}{\'}g" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#	| grep -vE "A082627|A174781" 
+dupl:
+	cp -v dupl3.tmp $@.gen
+#--------------------------------
+eulerian:
+	grep -E "\%[CFN]" $(COMMON)/cat25.txt | grep -E "Eulerian[\[]" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#--------------------------------
+floor0: floor1 floor2 floor3 floor4 floor5
+floor1:
+	grep -E "\[|floor|ceil|round|fract" $(COMMON)/joeis_names.txt \
+	| grep "null" \
+	>        floor0.tmp
+	perl -ne 'if (s{Nearest +integer +to +}{\~\~} > 0) { s{(\d)\.(\d)}{$$1\#$$2}g; '\
+	' s{\~\~([^\.\;\:\,]+)(.*)}{round\($$1\)$$2}; s{\#}{\.}g; print; }' $(COMMON)/joeis_names.txt \
+	| grep "null" \
+	>>       floor0.tmp
+	cat      floor0.tmp \
+	| grep -viE "prime|sum|product|binomial|triangle|base|cofr|continued fraction|a?round(ed|ing|)|frac(\,|tal|tion |tions)|\!|\.\.\." \
+	>        $@.tmp
+	wc   -l  $@*.*
+floor2:
+	perl floor_split.pl         -d $(D) floor1.tmp \
+	2>       $@.rest \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@*.*
+	head -n4 $@.rest
+	wc   -l  $@.rest
+floor3:
+	$(RAMATH).sequence.JoeisPreparer -f floor2.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	grep "#" $@.tmp \
+	>        $@.rest || :
+	head -n4 $@.rest
+	wc   -l  $@.rest
+floor4:
+	perl cr_infix.pl            -d    1 floor3.tmp \
+	2>&1 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp	
+	grep "#" $@.tmp \
+	>        $@.rest || :
+	head -n4 $@.rest
+	wc   -l  $@.rest
+floor5:
+	perl floor_combine.pl       -d $(D) floor4.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+floor: floor5
+	grep A floor5.tmp > $@.gen
+	# cp floor5.tmp $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+finifull: # finite and full
+	$(DBAT) "SELECT i.aseqno, '$@', i.offset1, d.data \
+		FROM asinfo i, bfinfo b, bfdata d \
+		WHERE i.aseqno = b.aseqno \
+		  AND b.aseqno = d.aseqno \
+		  AND i.keyword like '%full%' \
+		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
+		ORDER BY 1 " \
+	| perl finifull.pl \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-dupl_cut:
-	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
-	    FROM seq4 s \
-	    WHERE parm1 IN (SELECT aseqno FROM joeis) \
-	      AND parm3 like 'Duplicate%' \
-	    ORDER BY 1" \
-	| perl -pe "s{\'\'}{\'}g" \
-	| grep -vE "A082627|A174781" \
-	>        dupl.gen
-	head -n4 dupl.gen
-	wc -l    dupl.gen
-#-------------------------------
-# Triangles
-# A038220 Triangle whose (i,j)-th entry is binomial(i,j)*3^(i-j)*2^j.	nonn,tabl,easy,	0..8000
-# A038226 Triangle read by rows: (i,j)-th entry is binomial(i,j)*3^(i-j)*8^j.	nonn,tabl,easy,synth	0..36
-trigf:
-	perl -ne \
-	'if (m{^(A\d+) Triangle (whose |read by rows\: )\(i\,j\)\-th entry is binomial\(i\,j\)\*(\d+)\^\(i\-j\)\*(\d+)\^j})'\
-	'{ print join("\t", $$1, "$@", 0, 1, "1,-$$3,-$$4") . "\n" }' \
-	$(COMMON)/names \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-dhdop:
-	sed -e "s/dhd/trigf/" $(TRIREC)/dhd_gf.tmp \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
-rio:
-	grep -E  "fract21"  $(TRIREC)/rio3.tmp \
-	| sed -e "s/fract21/trigf/" \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
-fract21:
-	grep -E  "fract21"  $(TRIREC)/fract2.tmp \
-	| sed -e "s/fract21/trigf/" \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
-fract22:
-	grep -E  "fract22"  $(TRIREC)/fract2.tmp \
-	| sed -e "s/fract22/trigf/" \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
-#-------------------------------
+#--------------------------------
 # HolonomicSequence
 #----
 DIST=0
@@ -851,7 +880,7 @@ runholo:
 	$(HOLT) -n $(MAXT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
-#-------------------
+#----------------
 holco:
 	grep -E "CoefficientList\[Series" $(COMMON)/cat25.txt \
 	| grep -viE "Sum|Product|Bessel|Elliptic|Hyper|theta|catalan|Drop|Pochhammer|Lambert|Continued" \
@@ -861,7 +890,7 @@ holco:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-#-------------------
+#----------------
 # A054122
 # +(-8*n+4*n^2)*a(n-2) + (-4+12n-8n^2)*a(n-1) + (0-1*n+1n^2)*a(n)  = 0.
 # make runholo MATRIX="[[0],[0,-8,4],[-4,12,-8],[0,-1,1]]" INIT="[1,3]"
@@ -1006,7 +1035,7 @@ holol:
 holold:
 	sed -e "s/holog1/holos/" -e "s/  //" holol3.tmp \
 	>        $@.gen
-#------------------------------
+#----------------
 holsq2:
 	cat $(HOLREC)/holsq2.gen \
 	| sed -e "s/\tholos\t/\tholos\t/" \
@@ -1031,7 +1060,7 @@ homapgf:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-#-------------------------------
+#--------------------------------
 ASMIN=300
 ASMAX=400
 jall: # parms = ASMIN, ASMAX - test a block of implemented jOEIS sequences
@@ -1056,7 +1085,52 @@ jallrest:
 	make  CC=jallrest1 select EX=EX TO=32 test log
 jallrest1:
 	head -n1 jallrest1.gen
-#-------------------------------
+#--------------------------------
+# A102709 Join[{1,3125,1075,985},LinearRecurrence[{-1,-2,-2,-2,-1,0,1,2,2,2,1,1},{580,1281,295,1305,580,925,631,1305,220,1305,655,901},45]](*_RayChandler_,Sep082015*)
+joinlr:
+	perl -ne \
+	's/ //g; '\
+	'if (m{^(A\d{6})\t\tJoin\[\{([^\}]+)\}\,LinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}}) {'\
+	' my ($$aseqno, $$joins, $$recur, $$inits) = ($$1, $$2, $$3, $$4); '\
+	' my @recur = reverse(split(/\,/, $$recur)); '\
+	' my @inits =         split(/\,/, $$inits) ; '\
+	' my @joins =         split(/\,/, $$joins) ; '\
+	' if (scalar(@inits) > scalar(@recur)) { '\
+	'   @joins = join(@joins, splice(@inits, 0, scalar(@inits) - scalar(@recur))); '\
+	' }'\
+	' $$joins = "new long[] {" . join("L,", @joins) . "L}"; '\
+	' if (scalar(@joins) == 0) { $$joins = "EMPTY"; } '\
+	' $$inits = "new long[] {" . join("L,", @inits) . "L}";'\
+	' $$recur = "new long[] {" . join("L,", @recur) . "L}";'\
+	' print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$joins) . "\n";'\
+	'}' \
+	mma_joeis.txt \
+	| grep -vE "A064584|A18718|A286069|A288917" \
+	>        $@.gen
+	wc -l    $@.gen
+	#--
+	perl -ne \
+	's/ //g; '\
+	'if (m{^(A\d{6})\t\tLinearRecurrence\[\{([^\}]+)\}\,\{([^\}]+)\}}) {'\
+	' my ($$aseqno, $$recur, $$inits) = ($$1, $$2, $$3); '\
+	' my @recur = reverse(split(/\,/, $$recur)); '\
+	' my @inits =         split(/\,/, $$inits) ; '\
+	' my @joins = (); '\
+	' if (scalar(@inits) > scalar(@recur)) { '\
+	'   @joins = splice(@inits, 0, scalar(@inits) - scalar(@recur)); '\
+	' }'\
+	' $$joins = "new long[] {" . join("L,", @joins) . "L}"; '\
+	' if (scalar(@joins) == 0) { $$joins = "new long[] {}"; } '\
+	' $$inits = "new long[] {" . join("L,", @inits) . "L}";'\
+	' $$recur = "new long[] {" . join("L,", @recur) . "L}";'\
+	' print join("\t", $$aseqno, "$@"    , 0, 0, 0, $$recur, $$inits, $$joins) . "\n";'\
+	'}' \
+	mma_joeis.txt \
+	| grep -vE "A064584|A18718|A286069|A288917" \
+	>>       $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 jux:
 	make jux_nodep TARGET=gener
 	cat $@?*.gen > $@.gen
@@ -1223,7 +1297,7 @@ juxrun:
 	| grep -vE "A0306(12|13|14|15|16)" \
 	| tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----------------------------------------------
+#--------------------------------
 # Linear Recurrences and generating functions
 linr_count:
 	$(DBAT) "SELECT COUNT(aseqno) FROM joeis j \
@@ -1247,7 +1321,21 @@ linr1:
 	>         $@.tmp
 	head -n 4 $@.tmp
 	wc -l     $@.tmp
-#----------------------------------------------
+#--------------------------------
+mma_single: # single line MMA statement(s)
+	grep -E "^%t" $(COMMON)/cat25.txt \
+	| perl mma_single.pl \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+mma_joeis: # 
+	make seq2 LIST=mma_single.tmp
+	$(DBAT) "SELECT m.aseqno, SUBSTR(j.superclass, 1, 3), m.info FROM seq2 m LEFT JOIN joeis j ON m.aseqno = j.aseqno \
+		ORDER BY 3" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+#--------------------------------
 # A288596 Fixed point of the mapping 00->0101, 1->1000, starting with 00. nonn,easy,      1..10000
 # A104521 Fixed point of the morphism 0->{1}, 1->{1,0,1}. nonn,synth      0..104
 # A159689 Fixed point of the morphism 0 -> 0,1,0; 1 -> 1,1; starting from a(0)=0.
@@ -1304,8 +1392,112 @@ morfix_grep:
 	$(COMMON)/jnames.txt | tee x.tmp
 	wc -l x.tmp
 #
+#--------------------------------
+# A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
+# A272999 Numbers k such that (11*10^k + 49)/3 is prime.
+pfprime:
+	perl -ne \
+	's/ /\t/; '\
+	'if (m{^(A\d{6})\t(Numbers|Integers) \w such that[^\(\d]*\(?(\d+)\s*\*\s*(\d+)\^\w\s*([\+\-0-9 ]+)\)?\s*(\/\s*(\d+))? is (a )?prime\.}) {'\
+	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$3, $$4, $$5, $$7); '\
+	' $$add =~ s{ }{}g; if (length($$div) == 0) { $$div = 0; } '\
+	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
+	$(COMMON)/names \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+	# A101001 Indices of primes in sequence defined by A(0) = 91, A(n) = 10*A(n-1) + 11 for n > 0.
+	# => Numbers n such that (830*10^n - 11)/9 is prime
+	perl -ne \
+	's/ /\t/; '\
+	'if (m{^(A\d{6})\tIndices of primes in sequence defined by'\
+	' A\(\d\)\s*\=\s*(\d+)\,\s*A\(\w\)\s*\=\s*(\d+)\*A\(n\s*\-\s*\w\)\s*([\+\-0-9 ]+)\s*for}) {'\
+	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, 9); '\
+	' $$add =~ s{ }{}g; $$num = $$num * $$div + $$add; $$add = -$$add; '\
+	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
+	$(COMMON)/names \
+	>>       $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+	sort     $@.tmp \
+	| grep -vE "A098466|A098467" \
+	>        $@.gen
+	make seq4 LIST=$(CC).gen
+	$(DBAT) "UPDATE seq4 s SET PARM1 = \
+	    (SELECT SUBSTR(data, 1, INSTR(data, ',') - 1) FROM asdata d WHERE d.aseqno = s.aseqno)"
+	$(DBAT) "UPDATE seq4 s SET PARM5 = 1 WHERE PARM5 = 0"
+	$(DBAT) -x "SELECT * FROM seq4 \
+	    ORDER BY aseqno" \
+	>        $@.gen
+	# WHERE PARM1 < 10 AND PARM2 < 1000 
+pfprimex:
+	cp pfprime.gen pfprime.tmp
+	perl -pe 's{^(A032373|A050413|A050544|A050847|A050885|A056245|A056248|A056258|A059454'\
+	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
+	pfprime.tmp > pfprime.gen
+#--------------------------------
+# %F A238745 a(n) = A181819(A124859(n)).
+seqop: # ???
+	grep -E "a\(n\) *= *A[0-9][0-9]*(\([a-z]\))? *[\+\-\*\/m]" $(COMMON)/cat25.txt \
+	| perl -ne 'my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
+	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *(A\d+)(\(\w\))?\s*([\+\-\*\/]|mod)\s*([a-z0-9])\.}) { '\
+	'my ($$aseqno, $$bseqno, $$op, $$term) = ($$1, $$2, $$4, $$5); $$term =~ s{n}{mN}; '\
+	'my %ops = ("+","add", "-", "subtract", "*", "multiply", "/", "divide", "mod", "mod(Z.valueOf"); '\
+	'my $$suffix = "$$ops{$$op}($$term)" . ($$op eq mod ? ")" : ""); '\
+	'print join("\t", $$aseqno, "$@", 0, lc(substr($$bseqno,0,4)), $$bseqno, $$suffix) . "\n"; } '\
+	| uniq -w7 \
+	>         $@.tmp
+	head -n16 $@.tmp
+	wc -l     $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3 \
+		, (SELECT i.offset1 FROM asinfo i WHERE s.parm2 = i.aseqno) \
+		, j.superclass\
+		FROM seq4 s LEFT JOIN joeis j ON s.aseqno = j.aseqno \
+		WHERE parm2        IN (SELECT aseqno FROM joeis) \
+		  AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+		ORDER BY 1"\
+	>         $@.gen
+	head -n4  $@.gen
+	wc -l     $@.gen
+#-------------------------------
+# Triangles
+# A038220 Triangle whose (i,j)-th entry is binomial(i,j)*3^(i-j)*2^j.	nonn,tabl,easy,	0..8000
+# A038226 Triangle read by rows: (i,j)-th entry is binomial(i,j)*3^(i-j)*8^j.	nonn,tabl,easy,synth	0..36
+trigf:
+	perl -ne \
+	'if (m{^(A\d+) Triangle (whose |read by rows\: )\(i\,j\)\-th entry is binomial\(i\,j\)\*(\d+)\^\(i\-j\)\*(\d+)\^j})'\
+	'{ print join("\t", $$1, "$@", 0, 1, "1,-$$3,-$$4") . "\n" }' \
+	$(COMMON)/names \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+dhdop:
+	sed -e "s/dhd/trigf/" $(TRIREC)/dhd_gf.tmp \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
+rio:
+	grep -E  "fract21"  $(TRIREC)/rio3.tmp \
+	| sed -e "s/fract21/trigf/" \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
+fract21:
+	grep -E  "fract21"  $(TRIREC)/fract2.tmp \
+	| sed -e "s/fract21/trigf/" \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
+fract22:
+	grep -E  "fract22"  $(TRIREC)/fract2.tmp \
+	| sed -e "s/fract22/trigf/" \
+	>        trigf.gen
+	tail -n4 trigf.gen
+	wc -l    trigf.gen
 #------------------------------------------------------
-negpos:
+negpos: # all done
 	cat ../../../fasces/oeis/A131393/negpos.gen \
 	| grep -E "ak|dk" \
 	| sed -e "s/\t/\tnegpos\t0\t/" \
@@ -1313,39 +1505,8 @@ negpos:
 	head -n4 $@.gen
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#----------------
-# %C A070365 Period 6: repeat [1, 5, 4, 6, 2, 3].
-# %F A118822 Period 8 sequence: [2,-1,0,-1,-2,1,0,1].
-# %C A175408 Period of length 10: {7,2,6,3,5,4,4,5,3,1}.
-# %N A257931 Period length 24 sequence [0, 1, 1, 0, -2, -1, 0, 1, 0, 0, -1, -1, 0, 1, 1, 0, 0, -1, 0, 1, 2, 0, -1, -1].
-period: # PeriodicSequence
-	perl -ne \
-	'if (m{^(\%\w) (A\d+)\s+Period [^\{\(\[]*[\{\(\[]([\- \d\,]+)})'\
-	'{ my ($$aseqno, $$list) = ($$2, $$3); '\
-	'$$list =~ s{ }{}g; print join("\t", $$aseqno, "$@", 0, $$list) . "\n"; }' \
-	$(COMMON)/cat25.txt \
-	| grep -v A210188 \
-	>        $@.gen
-	head -n2 $@.gen
-	tail -n2 $@.gen
-	wc -l    $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-	# ([ \d\,]+)[\}\)\]]})'\
-#----------------
-finifull:
-	$(DBAT) "SELECT i.aseqno, '$@', i.offset1, d.data \
-		FROM asinfo i, bfinfo b, bfdata d \
-		WHERE i.aseqno = b.aseqno \
-		  AND b.aseqno = d.aseqno \
-		  AND i.keyword like '%full%' \
-		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
-		ORDER BY 1 " \
-	| perl finifull.pl \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-#----
-noncomp0:
+#--------------------------------
+noncomp0: # non-computable sequences, pseudo-finite/full
 	wget https://oeis.org/wiki/The_multi-faceted_reach_of_the_OEIS?action=raw -O $@.wiki
 noncomp_prep: noncomp1 noncomp2 noncomp3 noncomp4
 noncomp1:
@@ -1411,98 +1572,43 @@ noncomp4: # for info only
 	>        $@.tmp
 noncomp:
 	# run (noncomp0 and) noncomp_prep before
-#----------------
-eulerian:
-	grep -E "\%[CFN]" $(COMMON)/cat25.txt | grep -E "Eulerian[\[]" \
+#--------------------------------
+# %C A070365 Period 6: repeat [1, 5, 4, 6, 2, 3].
+# %F A118822 Period 8 sequence: [2,-1,0,-1,-2,1,0,1].
+# %C A175408 Period of length 10: {7,2,6,3,5,4,4,5,3,1}.
+# %N A257931 Period length 24 sequence [0, 1, 1, 0, -2, -1, 0, 1, 0, 0, -1, -1, 0, 1, 1, 0, 0, -1, 0, 1, 2, 0, -1, -1].
+period: # PeriodicSequence
+	perl -ne \
+	'if (m{^(\%\w) (A\d+)\s+Period [^\{\(\[]*[\{\(\[]([\- \d\,]+)})'\
+	'{ my ($$aseqno, $$list) = ($$2, $$3); '\
+	'$$list =~ s{ }{}g; print join("\t", $$aseqno, "$@", 0, $$list) . "\n"; }' \
+	$(COMMON)/cat25.txt \
+	| grep -v A210188 \
 	>        $@.gen
-	head -n4 $@.gen
-	wc   -l  $@.gen
-#----------------
-shownin:
-	grep -E "^A" $(COMMON)/names \
-	| grep -P "^A\d{6}[^A]*A\d{6}" \
-	| perl -ne 'if (m{^(A\d{6}) (Sequence |Array |Bit\-masks of |)(A\d{6}) (shown |written |)in (quaternary|octal|binary|base \d+)}) { '\
-	' my ($$aseqno, $$rseqno, $$base) = ($$1, $$3, $$5); $$base =~ s{octal}{8}; $$base =~ s{binary}{2}; $$base =~ s{base *}{}; '\
-	' if ($$base != 10) { print join("\t", $$aseqno, "shownin", 0, $$rseqno, $$base) . "\n"; }}' \
-	>        $@.gen
-	head -n4 $@.gen
-	wc   -l  $@.gen
-#----------------
-deriv_rest: deriv2 deriv3 deriv4 deriv5 deriv6 deriv7 
-deriv1c: # grep cat25: (a(n) = )?aseqno
-	grep -E "^\%[NF] A" $(COMMON)/cat25.txt \
-	| cut -b4- \
-	| grep -P  "^A\d{6}[^A]*A\d{6}" \
-	| sed -e "s/ /\t/" \
-	| grep -vEi "sum|product|\!|\.\.\." \
+	head -n2 $@.gen
+	tail -n2 $@.gen
+	wc -l    $@.gen
+	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+	# ([ \d\,]+)[\}\)\]]})'\
+#-------------------------------
+# Positions of ... in (the decimal expansion of |Annnnnn)
+posins: posins1 posins2
+posins1:
+	grep -E "Positions of " $(COMMON)/cat25.txt \
+	| grep -v "of records" \
+	| cut -b4- | sed -e "s/ /\t/" \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv1n: # grep names: (a(n) = )?aseqno
-	grep -E "^A" $(COMMON)/names \
-	| grep -P  "^A\d{6}[^A]*A\d{6}" \
-	| sed -e "s/ /\t/" \
-	| sed -e "s/\tTwice  *A/\t2\*A/" \
-	| grep -vEi "sum|product|\!|\.\.\." \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv2: # convert known functions, separate conditions, split in several formulas for one sequence
-	perl deriv_exist.pl -d $(D) -f $(COMMON)/joeis_ofter.txt deriv1.tmp \
-	| sort | uniq \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-	cut -f1  $@.tmp | sort | uniq | wc -l
-deriv3: # add offset1 from asinfo; aseqno, md5sum, offset, ~~form, form, cond
-	make seq4 LIST=deriv2.tmp
-	$(DBAT) -v -f deriv3.update.sql
-	$(DBAT) -x "SELECT s.aseqno, 'postder', i.offset1, s.parm1, s.parm2, s.parm3, i.terms \
-	    FROM  seq4 s, asinfo i\
-	    WHERE s.aseqno = i.aseqno \
-	      AND i.keyword NOT LIKE '%dead%' \
-	      AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
-	    ORDER BY 1" \
-	| sed -e "s/\r//" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv4: # remove all with X-numbers
-	perl -ne 'my $$line = $$_; if (($$line =~ m{A\d{6}_\d}) '\
-	' and ($$line !~ m{X\d{6}})) { print $$line; }' deriv3.tmp \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv5: # convert to postfix, select the last of the shortest formula
-	$(RAMATH).sequence.JoeisPreparer -f deriv4.tmp \
-	| perl deriv_select.pl \
-	>        $@.tmp
-	make seq4 LIST=deriv5.tmp
-	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4 \
-	    FROM  seq4 s \
-	    ORDER BY 1" \
-	| sed -e "s/\r//" \
-	| grep -vE "^(A095775|A102954|A130517|A131241|A131783|A131784|A136489|A187791|A247270)" \
-	>        $@.tmp
-	tail -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv6: # convert from postfix to Z-expressions
-	perl post_infix.pl -p Z.xpat deriv5.tmp \
-	2>       $@.rest \
-	>        $@.tmp 
-	head -n4 $@.tmp
-	wc   -l  $@.*
-deriv7: # adapt the offsets and initial terms
-	perl deriv_gen.pl deriv6.tmp \
-	2>       $@.rest \
-	>        $@.tmp 
-	head -n4 $@.tmp
-	wc   -l  $@.*
-deriv:
-	grep -vE "floor|ceil|round" deriv7.tmp \
-	>        $@.gen
-	head -n4 $@.gen
-	wc   -l  $@.*
+	wc -l    $@.tmp
+posins2:
+	perl posins.pl -d 0 posins1.tmp \
+	2>       posins.rest \
+	| sort | uniq -w7 \
+	>        posins.gen
+	head -n4 posins.gen
+	head -n2 posins.rest
+	wc -l    posins.gen posins.rest
+	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
 #--------------------------------
 # Record values ...
 record:
@@ -1540,33 +1646,17 @@ recordval: # record values of ...
 	head -n4 $@.gen
 	head -n4        $@.nyi.tmp
 	wc -l    $@.gen $@.nyi.tmp
-#-------------------------------
-# Positions of ... in (the decimal expansion of |Annnnnn)
-posins: posins1 posins2
-posins1:
-	grep -E "Positions of " $(COMMON)/cat25.txt \
-	| grep -v "of records" \
-	| cut -b4- | sed -e "s/ /\t/" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-posins2:
-	perl posins.pl -d 0 posins1.tmp \
-	2>       posins.rest \
-	| sort | uniq -w7 \
-	>        posins.gen
-	head -n4 posins.gen
-	head -n2 posins.rest
-	wc -l    posins.gen posins.rest
-	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
-#----------------
-confra2:
-	grep -E "Decimal expansion of|Continued fraction of|Numerators of|Denominators of" \
-	  $(COMMON)/joeis_names.txt \
-	| cut -b1-80 \
-	| grep -vE "^A0[0-2]" \
-	| tee    $@.tmp
-#----------------
+#--------------------------------
+shownin:
+	grep -E "^A" $(COMMON)/names \
+	| grep -P "^A\d{6}[^A]*A\d{6}" \
+	| perl -ne 'if (m{^(A\d{6}) (Sequence |Array |Bit\-masks of |)(A\d{6}) (shown |written |)in (quaternary|octal|binary|base \d+)}) { '\
+	' my ($$aseqno, $$rseqno, $$base) = ($$1, $$3, $$5); $$base =~ s{octal}{8}; $$base =~ s{binary}{2}; $$base =~ s{base *}{}; '\
+	' if ($$base != 10) { print join("\t", $$aseqno, "shownin", 0, $$rseqno, $$base) . "\n"; }}' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#--------------------------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
 	perl -ne \
@@ -1586,7 +1676,7 @@ squaredig_width:
 	WHERE b.aseqno = s.aseqno \
 	  AND s.aseqno = n.aseqno \
 	  ORDER BY 1" | tee @$.tmp
-#----------------
+#--------------------------------
 tileprep: tilepre1 tilepre2 tilepre3
 tilepre1:
 	# DO NOT select by bfimax - we need all
@@ -1664,7 +1754,7 @@ tilepack:
 	find $(COORS) -name "*.java" -printf "%P\n" \
 	| grep -vE "^(BFile|SVGFile|TilingTest|Sequence|Tiler[12]|Z)\.java" \
 	| xargs -l -i{} perl tilepack.pl -t -p org.teherba.tile $(COORS)/{} $(TARGET)/{}
-#----------------
+#--------------------------------
 # A151255 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
 #   and consisting of n steps taken from {(-1, -1), (-1, 1), (1, 0)}	nonn,walk,synth	0..34
 # A151373 Number of walks within N^2 (the first quadrant of Z^2) starting
@@ -1741,7 +1831,7 @@ tilegf:
 	uniq -w7 $(COORS)/tilegf.tmp \
 	| sed -e "s/lingfo/lingf/" \
 	> tilegf.gen
-#---------------------------
+#--------------------------------
 # A176832 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
 # a(0)=1, a(1)=5, k=1 and l=-1.
 # A176854 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
@@ -1771,7 +1861,7 @@ choulet3:
 	perl choulet.pl choulet2.tmp | tee holos.gen
 choulet_bf:
 	$(JAVA) irvine.test.SequenceTest A176604 $(N) 0
-#----
+#--------------------------------
 # %F A008544 Conjecture: a(n) + (1-3*n)*a(n-1) + a(n-2) + (7-3*n)*a(n-3) = 0. - _R. J. Mathar_, Nov 14 2011
 conjmath:
 	perl -ne \
@@ -1793,7 +1883,7 @@ conjmath2:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-#---------------------------
+#--------------------------------
 euler:
 	echo "$(PER)" | tr , '\n' | $(JAVA) irvine.oeis.EulerTransformSequence $(OFFSET) | less
 eulerper:
@@ -1836,14 +1926,14 @@ euleras_dep:
 		  > $(CC).gen
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
-#----------------
-evconst:
+#--------------------------------
+evconst: # 6 remaining
 	perl evconst.pl \
 		  > $(CC).gen
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
-#----------------
-kblocks:
+#--------------------------------
+kblocks: all done
 	perl kblocks.pl \
 	| tee   $(CC).gen
 	wc -l   $(CC).gen
@@ -1887,7 +1977,7 @@ lrjoeis_test:
 	>        group.tmp
 	wc -l    group.tmp
 	make strip
-#-------------------------
+#--------------------------------
 gen_mmac:
 	# Caution, change .man -> .tmp next time!
 	head -n$(MANY) $(LINREC)/mmac_err02.man \
@@ -1896,68 +1986,11 @@ gen_mmac:
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 	perl gen_pattern.pl -n $(COMMON)/names $@.tmp
-#----------------
-dex0: dex1 dex2 dex3 dex4
-dex1: # names: Annnnnn Decimal expansion of ... and in jOEIS
-	$(DBAT) "UPDATE asname SET name = 'Decimal expansion of 2*(5-3*exp(1/2))/(2*exp(1/2)-3).' WHERE aseqno = 'A108813'"
-	$(DBAT) -x "SELECT a.aseqno, 'dex', a.offset1, n.name, a.keyword \
-		FROM asinfo a, bfinfo b, asname n\
-		WHERE a.aseqno = n.aseqno \
-		  AND b.aseqno = n.aseqno \
-		  AND n.aseqno NOT IN (SELECT aseqno FROM joeis) \
-		  AND a.keyword    LIKE '%cons%' \
-		  AND b.maxlen <= 2 \
-		ORDER BY 1" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-dex2:
-	perl extract_dex.pl dex1.tmp \
-	| sed -e "s/pi log/pi\*log/" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-dex3:
-	$(RAMATH).sequence.JoeisPreparer -f dex2.tmp \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-dex4:
-	perl cr_infix.pl -d $(D) dex3.tmp \
-	| grep -vE "^(A114054|A117853|A202955|A248622)" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp	
-	grep "#" $@.tmp \
-	>        $@.rest || :
-	head -n4 $@.rest
-	wc   -l  $@.rest
-dex:
-	cp dex4.tmp dex.gen
-#--------
-# A163241	null	Simple self-inverse permutation: Write n in base 4, then replace each digit '2' with '3' and vice versa, then convert back to decimal.	nonn,base,easy,	0..1023
-# A171013	null	In the sequence of prime numbers, replace all digits '1' with '0' and vice versa.	nonn,base,easy,	1..1000
-# A171014	null	In the sequence of prime numbers, replace all the '2' digits with '0' and vice versa.	nonn,base,easy,	1..1000
-# A222212	null	In the number n, replace all (decimal) digits '0' with '3' and vice versa.	nonn,base,easy,	0..1000
-# A222213	null	Replace all (decimal) digits '0' with '4' and vice versa.	nonn,base,easy,	0..1000
-# A222216	null	In the number n, replace all (decimal) digits 0 with 7 and vice versa.	nonn,base,easy,	0..1000
-digexch:
-	grep -E "vice versa" $(COMMON)/names \
-	| perl -ne 'my $$base = 10; s{digits? }{}; my $$line = $$_; '\
-	' ;'\
-	' if (m{eplace\D*(\d)\D? with *\D?(\d)}) { my ($$dig1, $$dig2) = ($$1, $$2); '\
-	'   if (m{ base +(\d+)}) { $$base = $$1; }; '\
-	'   print join("\t", substr($$line, 0, 7), "digexch", 0, (($$line =~ m{prime num}) ? "a000\tA000040" : "a001\tA001477")'\
-	'     , $$base,$$dig1, $$dig2) . "\n"; '\
-	' }'\
-	>       $@.gen
-	head -4 $@.gen
-	wc   -l $@.gen	
-#--------
+#--------------------------------
 # A030801 [ exp(17/24)*n! ].
 # A030802 a(n) = floor( exp(13/24)*n! ).
 # A030810 Floor(exp(19/23) * n!).
-flexfact:
+flexfact: all done
 	perl -ne \
 	'if (m{^(A\d+)\s+\[\s*exp\((\d+)\/(\d+)\)\s*\*\s*n\s*\!\s*\]}) { print join("\t", $$1, "$@", 0, $$2, $$3) . "\n" }' \
 	$(COMMON)/names \
@@ -1965,58 +1998,9 @@ flexfact:
 	perl -ne \
 	'if (m{^(A\d+)\s+(a\(n\)\s*\=\s*)?[fF]loor\s*\(\s*exp\(\s*(\d+)\/(\d+)\)\s*\*\s*n\!\s*\)}) { print join("\t", $$1, "$@", 0, $$3, $$4) . "\n" }' \
 	$(COMMON)/names \
-	| tee -a $@.gen
-#-------------------
-floor0: floor1 floor2 floor3 floor4 floor5
-floor1:
-	grep -E "\[|floor|ceil|round|fract" $(COMMON)/joeis_names.txt \
-	| grep "null" \
-	>        floor0.tmp
-	perl -ne 'if (s{Nearest +integer +to +}{\~\~} > 0) { s{(\d)\.(\d)}{$$1\#$$2}g; '\
-	' s{\~\~([^\.\;\:\,]+)(.*)}{round\($$1\)$$2}; s{\#}{\.}g; print; }' $(COMMON)/joeis_names.txt \
-	| grep "null" \
-	>>       floor0.tmp
-	cat      floor0.tmp \
-	| grep -viE "prime|sum|product|binomial|triangle|base|cofr|continued fraction|a?round(ed|ing|)|frac(\,|tal|tion |tions)|\!|\.\.\." \
-	>        $@.tmp
-	wc   -l  $@*.*
-floor2:
-	perl floor_split.pl         -d $(D) floor1.tmp \
-	2>       $@.rest \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@*.*
-	head -n4 $@.rest
-	wc   -l  $@.rest
-floor3:
-	$(RAMATH).sequence.JoeisPreparer -f floor2.tmp \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-	grep "#" $@.tmp \
-	>        $@.rest || :
-	head -n4 $@.rest
-	wc   -l  $@.rest
-floor4:
-	perl cr_infix.pl            -d    1 floor3.tmp \
-	2>&1 \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp	
-	grep "#" $@.tmp \
-	>        $@.rest || :
-	head -n4 $@.rest
-	wc   -l  $@.rest
-floor5:
-	perl floor_combine.pl       -d $(D) floor4.tmp \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-floor: floor5
-	grep A floor5.tmp > $@.gen
-	# cp floor5.tmp $@.gen
+	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen
+	wc   -l  $@.gen
 #-------------------
 # A109718 Periodic sequence with period {0,1,0,3}, or n^3 mod 4.
 # A109720 Periodic sequence {0,1,1,1,1,1,1} or n^6 mod 7.       
@@ -2024,6 +2008,7 @@ floor: floor5
 # A159852 n^2 mod 60.                                           
 # A167129 n^7 mod 21.                                           
 # A167166 a(n) = n^7 mod 16.                                    
+# all done
 modpow: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 	cat $(COMMON)/names \
 	| perl -ne \
@@ -2031,13 +2016,14 @@ modpow: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 	'if ($$3 ne "^") { '\
 	'print join("\t", substr($$_, 0, 7), "$@", 0, $$1, $$2, $$3) . "\n"; }}' \
 	| uniq -w 7 \
-	| tee    $@.gen
+	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #-------------------
 # A036160	null	3^n mod 223.	nonn,easy,synth	1
 # A036161	null	a(n) = 2^n mod 227.	nonn,easy,changed,	1
 modpow2: # names: Annnnnn [a(n) = ](\d+)^n mod (\d+)
+	# all done
 	perl -ne \
 	' if (m{\A(A\d+)\s+(a\(n\)\s*\=\s*)?(\d+)\^n\s+mod\s+(\d+)([^\.]*)\.}) {'\
 	' my ($$aseqno, $$base, $$mod, $$rest) = ($$1, $$3, $$4, $$5); $$rest =~ s{\s}{}g;'\
@@ -2076,11 +2062,12 @@ nthprime2:
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------------------------
-palb:
+palb: # 54
 	perl -ne \
 	'if (m{^(A\d+)\s+.*palindrom(es|ic)\s+in\s+base\s+(\d+)}) { print join("\t", $$1, "$@", 1, $$3) . "\n" }' \
 	$(COMMON)/names \
 	>        $@.gen
+	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------
 polyn:
@@ -2098,13 +2085,16 @@ polyn:
 		FROM  seq2 \
 		WHERE aseqno NOT IN (SELECT aseqno FROM JOEIS) \
 		ORDER BY 1" \
-	| tee $@.txt
-	wc   -l $@.txt
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #-------------------
 power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
 	perl -ne 'print if m{\AA\d+\s+a\(n\)\s*\=\s*\d+\*?n\^\d+\s*(\-|\+)\s*\d+[\.\s]*\Z}i' \
 	$(COMMON)/names \
-	| tee   $@.gen
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 # A158627 a(n) = 484*n^2-22.
 # A158643 a(n) = 676*n^2 + 26.
 # A158644 a(n) = 52*n^2 + 1.
@@ -2208,7 +2198,6 @@ finibf_check: # Sequences with keywords "fini,full", but full terms are in b-fil
 	head -n4 $@.txt
 	wc -l    $@.txt
 #---------------------------
-#---------------------------
 cofr_joeis:
 	$(DBAT) "SELECT COUNT(aseqno) \
 	    FROM  asinfo i \
@@ -2221,37 +2210,6 @@ cofr_joeis:
 	      AND i.keyword LIKE '%cofr%' \
 	"
 #---------------------------
-cfsqrt_old: cfsqrt_prep cfsqrt_gen
-cfsqrt_prep: cfsqrt1 cfsqrt2 cfsqrt3 cfsqrt4 # Generate sequences for continued fraction of sqrt(n)
-cfsqrt1:
-	$(RAMATH).ContinuedFraction -sqrt2 1 1000 > $@.tmp
-cfsqrt2:
-	sed -e "s/1\///g" -e "s/\; /\;/" cfsqrt1.tmp \
-	| grep -e "\;" \
-	| sort -k1 | tee $@.tmp
-cfsqrt3:
-	grep -E "Continued fraction for sqrt\([0-9][0-9]*\)" $(COMMON)/names \
-	| grep -vE "sqrt\(2\)" \
-	| sed -e "s/ Continued fraction for sqrt(\([0-9][0-9]*\)).*/\t\1\t\1/" \
-	| sort -k2 | tee $@.tmp
-cfsqrt4:
-	join -1 1 -2 2 -t"	" -o 2.1,2.2,1.2 cfsqrt2.tmp cfsqrt3.tmp > $@.tmp
-	grep -vf in_joeis.tmp $@.tmp \
-	| sed -e "s/\;/\t/" \
-	| tee cfsqrt5.tmp
-	wc -l cfsqrt5.tmp
-cfsqrt_gen:
-	head -n$(MANY) cfsqrt5.tmp \
-	| perl gen_pattern.pl -n $(COMMON)/names -p cfsqrtPattern.jav \
-	| tee $@.log
-#----
-cfsall:
-	grep -i "continued" $(COMMON)/names | grep sqrt \
-	| sed -e "s/ /\t/" \
-	>     $@.tmp
-	wc -l $@.tmp
-	make  joeis2 LIST=$@.tmp
-#---------------------------
 cofr_sqrt:
 	grep -E "Continued fraction for sqrt\([0-9]" $(COMMON)/names \
 	> $@.tmp
@@ -2262,7 +2220,7 @@ cofr_sqrt:
 	" \
 	| tee $@.tmp
 	wc -l $@.tmp
-#--------------------------
+#--------------------------------
 weight_check:
 	grep "Weight distr" $(COMMON)/names \
 	| sed -e "s/ /\tweight\t0\t/" \
@@ -2288,7 +2246,19 @@ weight2:
 		ORDER BY 1" \
 	>       $@.j.txt
 	wc   -l $@.j.txt
-#----------------
+#--------------------------------
+word:
+	$(DBAT) "SELECT i.aseqno, 'word', 0, n.name, b.bfimax -b.bfimin + 1 \
+		FROM  asinfo i, asname n, bfinfo b \
+		WHERE i.aseqno = n.aseqno \
+		  AND n.aseqno = b.aseqno \
+		  AND i.keyword LIKE '%word%' \
+		  AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
+		ORDER BY 4, 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+#================================
 seq: # parameter: $(LIST)
 	$(DBAT) -f $(COMMON)/seq.create.sql
 	cut -b1-7 $(LIST) | grep -E "^A" | $(DBAT) -m csv -r seq

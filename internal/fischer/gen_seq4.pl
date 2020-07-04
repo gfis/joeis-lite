@@ -180,9 +180,8 @@ while (<>) { # read inputfile
         my $parm = join(",", @typed_terms);
         if ($parm eq "") { # remove empty line
             $copy =~ s{\n\s*\$\(PARM$iparm(\.\w+)?\)\s*\n}{\n}g;
-        } else {
-            $copy =~ s{\$\(PARM$iparm(\.\w+)?\)}{$parm}g;
         }
+        $copy =~ s{\$\(PARM$iparm(\.\w+)?\)}{$parm}g;
         $iparm ++;
     } # while $iparm
 
