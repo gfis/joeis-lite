@@ -1313,10 +1313,12 @@ linrgf:
 	wc -l     $@.tmp
 linr1:
 	$(DBAT) "SELECT 'A' || i.seqno, i.sigorder, i.signature, n.name \
-		FROM lrindx i, asname n \
+		FROM lrindx i, asname n, asinfo a \
 		WHERE 'A' || i.seqno = n.aseqno \
+		  AND 'A' || i.seqno = a.aseqno \
 		  AND 'A' || i.seqno NOT IN (SELECT aseqno FROM joeis) \
-		  AND i.compsig NOT LIKE '%888888%' \
+		  AND i.compsig <> '88888888' \
+		  AND a.keyword NOT LIKE '%dead%' \
 		ORDER BY 1" \
 	>         $@.tmp
 	head -n 4 $@.tmp
@@ -1647,6 +1649,19 @@ recordval: # record values of ...
 	head -n4        $@.nyi.tmp
 	wc -l    $@.gen $@.nyi.tmp
 #--------------------------------
+rectoproc:
+	grep -E 'rectoproc' $(COMMON)/cat25.txt \
+	| cut -b 4- | sed -e "s/ /\t/" \
+	| grep -vE "A110908" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	cd $(COMMON); make seq2 LIST=../../joeis-lite/internal/fischer/$@.tmp
+	$(DBAT) -x "SELECT * FROM seq2 WHERE aseqno NOT IN (SELECT aseqno FROM joeis) ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+#--------------------------------
 shownin:
 	grep -E "^A" $(COMMON)/names \
 	| grep -P "^A\d{6}[^A]*A\d{6}" \
@@ -1942,10 +1957,33 @@ logmod:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----------------
+linrec0: linrec1 linrec
+linrec1:
+	$(DBAT) -x "SELECT a.aseqno, 'linrec2', 0, i.signature, SUBSTR(d.data,1,256) \
+		FROM  lrindx i, asinfo a, bfdata d \
+		WHERE 'A' || i.seqno NOT IN (SELECT aseqno FROM joeis) \
+		  AND 'A' || i.seqno = a.aseqno \
+		  AND 'A' || i.seqno = d.aseqno \
+		  AND i.compsig  <> '88888888'  \
+		  AND a.keyword      NOT LIKE '%dead%' \
+		ORDER BY 1 " \
+	| grep -vE "A289265" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+linrec:
+	perl patch_parms.pl -a lrstrip -i $(INIT) linrec1.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#----
 lrixall:
 	$(DBAT) -x "SELECT DISTINCT 'A' || i.seqno \
-		FROM  lrindx i \
+		FROM  lrindx i, asinfo a \
 		WHERE 'A' || i.seqno NOT IN (SELECT aseqno FROM joeis) \
+		  AND 'A' || i.seqno = a.aseqno \
+		  AND i.compsig  <> '88888888'  \
+		  AND a.keyword      NOT LIKE '%dead%' \
 		ORDER BY 1 " \
 	>     $@.tmp
 	wc -l $@.tmp
@@ -1954,20 +1992,19 @@ lrstart:
 	make lrgroup LIST=err-04-11.log
 lrgroup: # parameter LIST, INIT
 	make seq # LIST
-	$(DBAT) -x "SELECT s.aseqno, 'LinearRecurrence2' \
-	  , i.signature, d.data \
+	$(DBAT) -x "SELECT s.aseqno, 'linrec2', 0, i.signature, d.data \
 		FROM seq s, lrindx i, bfdata d \
 		WHERE s.aseqno = 'A' || i.seqno \
 		  AND s.aseqno = d.aseqno \
 		ORDER BY 1" \
-	> 			 $@.tmp
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 	perl patch_parms.pl -a lrstrip -i $(INIT) $@.tmp \
 	>        group.tmp
 	head -n4 group.tmp
 	wc   -l  group.tmp
-	make run
+	# make run
 #--------------------------
 lrjoeis_test:
 	$(DBAT) -x "SELECT j.aseqno \
@@ -2121,6 +2158,28 @@ such_prime:
 		ORDER BY 1" \
 	>       $@.j.txt
 	wc   -l $@.j.txt
+#--------------------------
+# A117807 Start with 1015 and repeatedly reverse the digits and add 4 to get the next term.
+radd:
+	perl -ne 'if (m{\A(A\d+) Start with (\d+) and repeatedly reverse the digits and add (\d+) to get the next}) {'\
+	' print join("\t", $$1, "radd", 0, 10, $$2, $$3) . "\n"; }' $(COMMON)/names \
+	>        $@.gen
+	cat radd.man >> $@.gen # binary ...
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--
+radd0: # get the RADD sequences from the Wiki page
+	wget "https://oeis.org/wiki/Sequences_of_RADD_type?action=raw" -O $@.raw
+#   1   3   1      3   A118517
+#   1   4   1     54   A117828 See A117830, A117827 for cycle
+	make radd
+radd_wiki: # too few seqs.
+	perl -ne 'if (m{\A\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(A\d{6})}) {'\
+	' print join("\t", $$5, "radd", 0, $$1, $$2, $$3, $$4, 10) . "\n"; }' radd0.raw \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------
 mmacall:
 	make seq2 LIST=$(LINREC)/lrlink_mma2.tmp

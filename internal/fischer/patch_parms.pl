@@ -37,73 +37,73 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 
-my $aseqno;
-my $call_pattern;
 my $patch_count = 0;
+my $aseqno;
+my $callcode;
+my $offset;
 while (<>) { # read inputfile
+    s{\s+\Z}{}; # chompr
     next if m{\A\s*\#}; # skip comment lines
     next if m{\A\s*\Z}; # skip empty lines
     my $line = $_;
-    $line =~ s/\s+\Z//; # chompr
     if ($debug >= 1) {
         print "$line\n";
     }
-    my @parms        = split(/\t/, $line);
-    $aseqno       = $parms[0];
-    $call_pattern = $parms[1];
-    $call_pattern =~ m{(\d+)\Z}; # maybe patched
-    my $parm_no = $1;
+    my @parms = ("", "", "", "", ""); # offset and $(PARM1-4)
+    ($aseqno, $callcode, @parms) = split(/\t/, $line);
+    $offset     = $parms[0];  # align it with $(PARM1) ...
+    $callcode   =~ m{(\d+)\Z}; # may be patched
+    my $parm_no = $1; # 2 or 3
     my $variant = $1;
-    my @signatures = split(/\,/, $parms[2]);
-    my @initerms   = split(/\,/, $parms[3]);
+    my @signatures = split(/\,/, $parms[1]);
+    my @initerms   = split(/\,/, $parms[2]);
     if (0) {
     } elsif ($action =~ m{lrmmac}) { 
-        # aseqno LinearRecurrence(2|3) signature initerms           ->
-        # aseqno LinearRecurrence(2|3) revsignat initerms prepterms
-        my $prepno     = scalar(@initerms) - scalar(@signatures);
+        # aseqno callcode offset linrec(2|3) signature initerms           ->
+        # aseqno callcode offset linrec(2|3) revsignat initerms prepterms
+        my $prepno    = scalar(@initerms) - scalar(@signatures);
         if ($prepno > 0 and $variant == 3) {
             my @prepterms  = splice(@initerms, 0, $prepno);
-            $parms[3] = join("\,", @initerms );
-            $parms[4] = join("\,", @prepterms);
+            $parms[2] = join("\,", @initerms );
+            $parms[3] = join("\,", @prepterms);
             $patch_count ++;
         } # prepno > 0
-        $parms[2] = join("\,", reverse @signatures);
+        $parms[1] = join("\,", reverse @signatures);
      
     } elsif ($action =~ m{lrstrip}) {
-        # aseqno LinearRecurrence2 signature stripped_terms           ->
-        # aseqno LinearRecurrence(2|3) revsignat initerms # rest of stripped
-        my $sigorder   = scalar(@signatures);
-        my $termno     = scalar(@initerms);
+        # aseqno callcode offset linrec2     signature stripped_terms           ->
+        # aseqno callcode offset linrec(2|3) revsignat initerms # rest of stripped
+        my $sigorder  = scalar(@signatures);
+        my $termno    = scalar(@initerms);
         if ($iniadd + $sigorder <= $termno) {
             my @prepterms  = splice(@initerms, 0, $iniadd); # @initerms is shifted left
             my @restterms  = splice(@initerms, $sigorder, $termno - $sigorder - $iniadd);
-            $parms[3] = join("\,", @initerms );
+            $parms[2] = join("\,", @initerms );
             if ($iniadd == 0) {
-                $parms[1] = "LinearRecurrence2";
-                $parms[4] = "# " . join("\,", @restterms);
+                $callcode = "linrec2";
+                $parms[3] = "# " . join("\,", @restterms);
             } else { # $variant == 3
-                $parms[1] = "LinearRecurrence3";
-                $parms[4] =        join("\,", @prepterms);
-                $parms[5] = "# " . join("\,", @restterms); 
+                $callcode = "linrec3";
+                $parms[3] =        join("\,", @prepterms);
+                $parms[4] = "# " . join("\,", @restterms); 
             }
             $patch_count ++;
         } # prepno > 0
-        $parms[2] = join("\,", reverse @signatures);
+        $parms[1] = join("\,", reverse @signatures);
 
     } else { 
         print STDERR "invalid action \"$action\"\n";
         exit();
     }
-    $line = join("\t", @parms);
-    print "$line\n";
+    print join("\t", $aseqno, $callcode, @parms) . "\n";
 } # while <>
 print STDERR "# $patch_count lines modified\n";
 #--------------------------------------------
 __DATA__
-A068377 LinearRecurrence3 3,-3,1  1,6,20,42 4
-A075412 LinearRecurrence2 11,-10  0,3 2
-A079289 LinearRecurrence3 1,3,-2,-2 1,1,2,3,6 5
-A092136 LinearRecurrence2 7,-1  0,1 2
-A097923 LinearRecurrence3 1,0,1,-1,1,-1,0,-1,1  1,1,1,2,2,3,4,4,5,8,9,10,11,13,14,15,17,18,21 19
-A122876 LinearRecurrence3 1,-1  1,1,2 3
-A125916 LinearRecurrence3 0,0,0,0,0,0,0,0,0,1 0,1,1,0,1,1,2,2,1,2,2 11
+A068377 linrec3 0 3,-3,1  1,6,20,42 4
+A075412 linrec2 0 11,-10  0,3 2
+A079289 linrec3 0 1,3,-2,-2 1,1,2,3,6 5
+A092136 linrec2 0 7,-1  0,1 2
+A097923 linrec3 0 1,0,1,-1,1,-1,0,-1,1  1,1,1,2,2,3,4,4,5,8,9,10,11,13,14,15,17,18,21 19
+A122876 linrec3 0 1,-1  1,1,2 3
+A125916 linrec3 0 0,0,0,0,0,0,0,0,0,1 0,1,1,0,1,1,2,2,1,2,2 11
