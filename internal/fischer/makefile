@@ -61,17 +61,17 @@ joeis_pull:
 #----
 from_ramath:
 	cp -v ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
-	cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
+	# cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
 to_ramath:
 	cp -v ../../src/irvine/oeis/HolonomicRecurrence.java     ../../../ramath/src/main/java/irvine/oeis
-	cp -v ../../src/irvine/test/HolonomicRecurrenceTest.java ../../../ramath/src/main/java/irvine/test
+	# cp -v ../../src/irvine/test/HolonomicRecurrenceTest.java ../../../ramath/src/main/java/irvine/test
 diff_ramath:
-	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
-	diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
+	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis || :
+	# diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test || :
 diff_joeis:
-	diff -wC0 ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
+	diff -wC0 ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis || :
 update: purge
-	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gitups/joeis/{} {}
+	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gits/joeis/{} {}
 count:
 	find ../../src -iname "A??????.java" | wc -l
 list:
@@ -110,8 +110,7 @@ remove: # parameter: CC
 	cat remlist.tmp | xargs -l -i{} rm -vf                    ../../src/irvine/oeis/{}
 OFS=offset
 #--------
-ccall: select clean purge gener dist test pack
-# parameter: CC
+ccall: select clean purge gener dist test pack # parameter: CC
 #----
 NOT=NOT
 select: select1 select2 # parameter: CC, OFS
@@ -197,14 +196,14 @@ test:
 	make evaluate
 runbt: # Run BatchTest for this group
 	$(BATLIT) strip.tmp 2>&1 | tee -a batch.log
-testex: # parameter: CC; test all existing (generated) sequences
+testex: # parameter: CC=; test all existing (generated) sequences
 	rm -f batch.log
 	find ../../src -iname "A??????.java" -printf "%f\n" | cut -b1-7 \
 	| head -n$(MANY) > ghead.tmp
 	make stripgr  LIST=ghead.tmp
 	make runbt
 	make evaluate
-log: # generate an HTML page for the failed tests
+log: # CC=; generate an HTML page for the failed tests
 	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
 retest: # run the failed ones again (with a higher timeout)
 	cut -b1-7 $(CC).fail.log > failed.tmp
@@ -233,9 +232,7 @@ bfile:
 	>> $(CONTRIB)/b$(SEQ).txt
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
-joeins:
-	$(DBAT) -v "INSERT INTO joeis (SELECT aseqno, 'HolonomicRec', 'new' FROM seq4);"
-seqtest:
+seqtest: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET)
 	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(MAXT) $(OFFSET)
 spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
