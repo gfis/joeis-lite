@@ -984,8 +984,7 @@ holor2:
 holog_test:
 	$(HOLT) -d $(D) -n $(MAXT) -f $(LINREC)/raeval_holog.tmp
 holog0: 
-	# sed -e "s/\t/\tholog\t0\t/" -e "s/$$/\t0/" 
-	cat $(LINREC)/raeval_holog.tmp \
+	cat $(LIST) \
 	>        $@.1.tmp
 	head -n8 $@.1.tmp
 	wc -l    $@.1.tmp
@@ -993,6 +992,31 @@ holog0:
 	>        $@.2.tmp
 	head -n8 $@.2.tmp
 	wc -l    $@.2.tmp
+holog1:
+	make holog0 LIST=$(LINREC)/raeval_holog.tmp
+holog2:
+	$(DBAT) -x "SELECT a.aseqno, i.sigorder, i.signature, d.data \
+		FROM  lrindx i, asinfo a, bfdata d \
+		WHERE 'A' || i.seqno NOT IN (SELECT aseqno FROM joeis) \
+		  AND 'A' || i.seqno = a.aseqno \
+		  AND 'A' || i.seqno = d.aseqno \
+		  AND i.compsig  <> '88888888'  \
+		  AND a.keyword      NOT LIKE '%dead%' \
+		ORDER BY 1 " \
+	| grep -vE "A289265|A101312" \
+	| perl -ne 'use strict; s{\s+\Z}{}; my ($$aseqno, $$sigorder, $$signature, $$data) = split(/\t/); '\
+	' my @signatures = split(/\, */, $$signature); my @initerms = split(/\, */, $$data); pop(@initerms); '\
+	' splice(@initerms, $$sigorder + 8, scalar(@initerms)); '\
+	' if ($$sigorder + 2 > scalar(@initerms)) { '\
+	'     print "# $$aseqno - too few: sigorder=$$sigorder, initerms=" . scalar(@initerms) . "\n"; '\
+	' } else { '\
+	'     print join("\t", $$aseqno, "holog", 0, "[". join(",", reverse(@signatures)) . "]", '\
+	'           "[" . join(",", @initerms) . "]", 0, $$sigorder) ."\n"; '\
+	' }'\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	make holog0 LIST=$@.tmp
 holog:
 	sed -e "s/holog1/holos/" \
 	-e "s/  //" holog0.2.tmp \
@@ -1949,6 +1973,39 @@ kblocks: all done
 	perl kblocks.pl \
 	| tee   $(CC).gen
 	wc -l   $(CC).gen
+#----------------
+# A008378	CoordinationSequ	Coordination sequence for D_10 lattice.	nonn,easy,	0..1000
+# A008383	CoordinationSequ	Coordination sequence for A_4 lattice.	nonn,easy,	0..1000
+# A008399	CoordinationSequ	Coordination sequence for E_6 lattice.	nonn,easy,	0..1000
+# A008401	CoordinationSequ	Coordination sequence for {E_6}* lattice.	nonn,nice,	0..1000
+# A008420	CoordinationSequ	Coordination sequence for 10-dimensional cubic lattice.	nonn,easy,	0..10000
+# A008458	CoordinationSequ	Coordination sequence for hexagonal lattice.	nonn,easy,nice,changed,	0..1000
+# A019557	Sequence	Coordination sequence for G_2 lattice.	nonn,easy,changed,synth	0..59
+# A019558	Sequence	Coordination sequence for F_4 lattice.	nonn,easy,	0..10000
+# A022154	LinearRecurrence	Coordination sequence for root lattice B_12.	nonn,easy,	0..1000
+# A035471	LinearRecurrence	Coordination sequence for lattice D*_4 (with edges defined by l_1 norm = 1).	nonn,easy,changed,	0..1000
+# A035748	HolonomicRecurre	Coordination sequence for C_11 lattice.	nonn,easy,	0..10000
+# A126898	GeneratingFuncti	Coordination sequence for 8-dimensional cyclotomic lattice Z[zeta_15].	nonn,synth	0..27
+latcoors: # LatticeCoordinationSequence
+	cat $(COMMON)/joeis_names.txt \
+	| perl -ne 'use strict; s{\s+\Z}{}; my $$line = $$_; if ($$line =~ m{ lattice}) { '\
+	'if ($$line =~ m{\A(A\d+)\s+\w+\s+Coordination sequence for\s+(root )?(lattice )?(\{?([A-G]\*?_\d+)\}?|\d+\-dimensional cubic|hexagonal|\d+\-dimensional cyclotomic [^.]+)}) { '\
+	'  my ($$aseqno, $$type) = ($$1, $$4); $$type =~ s{[\{\}]}{}g; my $$order = 0; my $$zeta = 0; '\
+	'  if (0) {'\
+	'  } elsif ($$type =~ m{([A-G]\*?)_(\d+)})           { $$order = $$2; $$type = $$1; '\
+	'  } elsif ($$type =~ m{hexagonal})                  { $$order = 6;   $$type = "H"; '\
+	'  } elsif ($$type =~ m{(\d+)\-dimensional cubic.*}) { $$order = $$1; $$type = "Q"; '\
+	'  } elsif ($$type =~ m{(\d+)\-dimensional cyclotomic lattice Z\[zeta_(\d+)\]}) { $$order = $$1; $$zeta = $$2; $$type = "Z"; '\
+	'  } print join("\t", $$aseqno, "$@", 0, "$$type", $$order, $$zeta) . "\n"; '\
+	'}} '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+latcods:
+	grep -E 'D\*' latcoors.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----------------
 logmod:
 	head -n4 $@.gen

@@ -1,13 +1,14 @@
 /* Holonomic sequences where the recurrence equation for a(n)
  * has polynomials in n as coefficients.
  * @(#) $Id$
+ * 2020-07-18, Georg Fischer: public getInitTerms()
+ * 2020-04-13, Sean Irvine: jOEIS conventions
  * 2020-04-10: merge with joeis; gfType "egf"
  * 2020-01-07: preset mBuffer with ZEROes because of problems; also for single/self start
  * 2019-12-17: Constructors with prefix
  * 2019-12-08, Georg Fischer: optimize for the linear case
  * 2019-12-07, Sean Irvine: jOEIS conventions
  * 2019-12-04, Georg Fischer
- * 2020-04-13, Sean Irvine: jOEIS conventions
  */
 package irvine.oeis;
 
@@ -46,7 +47,6 @@ public class HolonomicRecurrence implements Sequence {
   protected Z[] mBuffer; // ring buffer for the elements involved in the recurrence, indexed with mN modulo mOrder
   protected int mBufSize; // size of the ring buffer
   protected int mGfType; // type of the g.f.: 0 = ordinary, 1 = exponential, 2 = dirichlet ...
-  //protected Z mFactorial; // accumulate n! here
   
   /**
    * Empty constructor.
@@ -206,7 +206,6 @@ public class HolonomicRecurrence implements Sequence {
    */
   private void initialize() {
     mGfType = 0; // normally it is an ordinary g.f.
-    //mFactorial = Z.ONE;
     mN = mOffset - 1;
     mMaxDegree = 1;
     int k = mPolyList.size() - 1;
@@ -370,7 +369,7 @@ public class HolonomicRecurrence implements Sequence {
    * Gets the vector for the initial terms.
    * @return a vector for the initial values of the sequence.
    */
-  protected Z[] getInitTerms() {
+  public Z[] getInitTerms() {
     return mInitTerms;
   }
 
@@ -381,56 +380,5 @@ public class HolonomicRecurrence implements Sequence {
   public int getDistance() {
     return mNDist;
   }
-
-//  /**
-//   * Test method
-//   * @param args command line arguments: <code>offset, matrix, initTerms, nDist</code>
-//   */
-//  public static void main(String[] args) {
-//    int maxTerms     = 16;
-//    /* A081367 E.g.f.: exp(2*x)/sqrt(1-2*x).
-//       Recurrence: a(n) = (2*n+1)*a(n-1) - 4*(n-1)*a(n-2)
-//       MMA: RecurrenceTable[{a[0]==1,a[1]==3,a[n]==(2*n+1)*a[n-1]-4*(n-1)*a[n-2]},a[n],{n,0,10}]
-//       java -cp dist/joeis-lite.jar;../joeis/build.tmp/joeis.jar irvine.oeis.HolonomicRecurrence \
-//       0 "[[0],[-4,4],[-1,-2],[1]]" "[1,3,11]" 0
-//    */
-//    int offset       = 0;
-//    String matrix    = "[[0],[-4,4],[-1,-2],[1]]";
-//    String initTerms = "[1,3,11]";
-//    int nDist        = 0;
-//    String aseqno    = "A000000";
-//    String callCode  = "holos";
-//
-//    HolonomicRecurrence holRec = null;
-//    if (args.length == 0) {
-//      holRec = new HolonomicRecurrence(offset, matrix, initTerms, nDist);
-//      System.out.println("1, 3, 11, 53, 345, 2947, 31411, 400437, 5927921, 99816515, 1882741659, 39310397557"); // A081367
-//    } else {
-//      int iarg = 0;
-//      try {
-//        if (args[iarg].equals("-d")) {
-//          iarg ++;
-//          sDebug   = Integer.parseInt(args[iarg ++]);
-//        }
-//        if (args[iarg].startsWith("A")) {
-//          aseqno  =                  args[iarg ++] ;
-//          callCode=                  args[iarg ++] ;
-//        }
-//        offset    = Integer.parseInt(args[iarg ++]);
-//        matrix    =                  args[iarg ++];
-//        initTerms =                  args[iarg ++];
-//        nDist = Integer.parseInt    (args[iarg ++]);
-//      } catch (Exception exc) {
-//      }
-//      holRec = new HolonomicRecurrence(offset, matrix, initTerms, nDist);
-//    }
-//    int n = 0;
-//    System.out.print(aseqno + "\t");
-//    while (n < maxTerms) {
-//      System.out.print(holRec.next().toString() + ",");
-//      n ++;
-//    } // while n
-//    System.out.println();
-//  } // main
 
 } // HolonomicRecurrence
