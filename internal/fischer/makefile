@@ -1990,19 +1990,29 @@ latcoors: # LatticeCoordinationSequence
 	cat $(COMMON)/joeis_names.txt \
 	| perl -ne 'use strict; s{\s+\Z}{}; my $$line = $$_; if ($$line =~ m{ lattice}) { '\
 	'if ($$line =~ m{\A(A\d+)\s+\w+\s+Coordination sequence for\s+(root )?(lattice )?(\{?([A-G]\*?_\d+)\}?|\d+\-dimensional cubic|hexagonal|\d+\-dimensional cyclotomic [^.]+)}) { '\
-	'  my ($$aseqno, $$type) = ($$1, $$4); $$type =~ s{[\{\}]}{}g; my $$order = 0; my $$zeta = 0; '\
+	'  my ($$aseqno, $$type) = ($$1, $$4); $$type =~ s{[\{\}]}{}g; my $$order = 0; my $$zeta = ""; '\
 	'  if (0) {'\
 	'  } elsif ($$type =~ m{([A-G]\*?)_(\d+)})           { $$order = $$2; $$type = $$1; '\
 	'  } elsif ($$type =~ m{hexagonal})                  { $$order = 6;   $$type = "H"; '\
 	'  } elsif ($$type =~ m{(\d+)\-dimensional cubic.*}) { $$order = $$1; $$type = "Q"; '\
-	'  } elsif ($$type =~ m{(\d+)\-dimensional cyclotomic lattice Z\[zeta_(\d+)\]}) { $$order = $$1; $$zeta = $$2; $$type = "Z"; '\
+	'  } elsif ($$type =~ m{(\d+)\-dimensional cyclotomic lattice Z\[zeta_(\d+)\]}) { $$order = $$1; $$zeta = ", $$2"; $$type = "Z"; '\
 	'  } print join("\t", $$aseqno, "$@", 0, "$$type", $$order, $$zeta) . "\n"; '\
 	'}} '\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+latcoa:
+	perl -ne 'print if m{\tA\t}'   latcoors.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 latcods:
-	grep -E 'D\*' latcoors.gen \
+	perl -ne 'print if m{\tD\*\t}' latcoors.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+latcoq:
+	perl -ne 'print if m{\tQ\t}'   latcoors.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
