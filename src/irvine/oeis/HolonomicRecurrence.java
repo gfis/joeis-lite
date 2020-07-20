@@ -1,7 +1,7 @@
 /* Holonomic sequences where the recurrence equation for a(n)
  * has polynomials in n as coefficients.
  * @(#) $Id$
- * 2020-07-18, Georg Fischer: public getInitTerms()
+ * 2020-07-20, Georg Fischer: public getInitTerms(), protected initialize()
  * 2020-04-13, Sean Irvine: jOEIS conventions
  * 2020-04-10: merge with joeis; gfType "egf"
  * 2020-01-07: preset mBuffer with ZEROes because of problems; also for single/self start
@@ -204,7 +204,7 @@ public class HolonomicRecurrence implements Sequence {
    * Initialize the sequence.
    * This code is common to all constructors.
    */
-  private void initialize() {
+  protected void initialize() {
     mGfType = 0; // normally it is an ordinary g.f.
     mN = mOffset - 1;
     mMaxDegree = 1;
@@ -380,5 +380,44 @@ public class HolonomicRecurrence implements Sequence {
   public int getDistance() {
     return mNDist;
   }
+
+  /**
+   * Gets a String representation
+   * of the coefficient polynomials.
+   * @return a list of polynomials of the form "[[0,1],[1,2],[1]]".
+   */
+  public String getPolyString() {
+    StringBuffer result = new StringBuffer(256);
+    ArrayList<Z[]> polyList = getPolyList();
+    for (int i = 0; i < polyList.size(); i ++) { // polynomials
+      Z[] poly = polyList.get(i);
+      result.append(i == 0 ? '[' : ',');
+      for (int j = 0; j < poly.length; j ++) {
+        result.append(j == 0 ? '[' : ',');
+        result.append(poly[j].toString());
+      } // for j
+      result.append(']');
+    } // for i
+    result.append(']');
+    return result.toString();
+  } // getPolyString
+
+  /**
+   * Gets a String representation
+   * of the initial terms.
+   * @return a list of terms of the form "[0,1,1,2,1]".
+   */
+  public String getInitString() {
+    StringBuffer result = new StringBuffer(256);
+    Z[] initTerms = getInitTerms();
+    int j = 0;
+    while (j < initTerms.length) {
+      result.append(j == 0 ? '[' : ',');
+      result.append(initTerms[j].toString());
+      j ++;
+    } // while j
+    result.append(']');
+    return result.toString();
+  } // getInitString()
 
 } // HolonomicRecurrence

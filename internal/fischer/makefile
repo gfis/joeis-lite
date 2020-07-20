@@ -2003,6 +2003,11 @@ latcoors: # LatticeCoordinationSequence
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+latok:
+	perl -ne 'print if m{\t(C|Ds|Q)\t}'   latcoors.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 latcoa:
 	perl -ne 'print if m{\tA\t}'   latcoors.gen \
 	>        $@.gen
@@ -2013,23 +2018,8 @@ latcob:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-latcoc:
-	perl -ne 'print if m{\tC\t}'   latcoors.gen \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
 latcod:
 	perl -ne 'print if m{\tDs?\t}'  latcoors.gen \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-latcods:
-	perl -ne 'print if m{\tDs\t}'  latcoors.gen \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-latcoq:
-	perl -ne 'print if m{\tQ\t}'   latcoors.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
