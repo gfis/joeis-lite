@@ -1989,14 +1989,16 @@ kblocks: all done
 latcoors: # LatticeCoordinationSequence
 	cat $(COMMON)/joeis_names.txt \
 	| perl -ne 'use strict; s{\s+\Z}{}; my $$line = $$_; if ($$line =~ m{ lattice}) { '\
-	'if ($$line =~ m{\A(A\d+)\s+\w+\s+Coordination sequence for\s+(root )?(lattice )?(\{?([A-G]\*?_\d+)\}?|\d+\-dimensional cubic|hexagonal|\d+\-dimensional cyclotomic [^.]+)}) { '\
-	'  my ($$aseqno, $$type) = ($$1, $$4); $$type =~ s{[\{\}]}{}g; my $$order = 0; my $$zeta = ""; '\
+	'if ($$line =~ m{\A(A\d+)\s+\w+\s+Coordination sequence for\s+(root )?(lattice )?(\{?[A-G]\*?_?\d+\}?\*?|\d+\-dimensional cubic|hexagonal|\d+\-dimensional cyclotomic [^.]+)}) { '\
+	'  my ($$aseqno, $$type) = ($$1, $$4); $$type =~ s{[\{\}]}{}g; my $$order = 0; my $$zeta = ""; my $$letter;'\
 	'  if (0) {'\
-	'  } elsif ($$type =~ m{([A-G]\*?)_(\d+)})           { $$order = $$2; $$type = $$1; '\
-	'  } elsif ($$type =~ m{hexagonal})                  { $$order = 6;   $$type = "H"; '\
-	'  } elsif ($$type =~ m{(\d+)\-dimensional cubic.*}) { $$order = $$1; $$type = "Q"; '\
-	'  } elsif ($$type =~ m{(\d+)\-dimensional cyclotomic lattice Z\[zeta_(\d+)\]}) { $$order = $$1; $$zeta = ", $$2"; $$type = "Z"; '\
-	'  } print join("\t", $$aseqno, "$@", 0, "$$type", $$order, $$zeta) . "\n"; '\
+	'  } elsif ($$type =~ m{([A-G])\*?_?(\d+)\*?})       { $$order = $$2; $$letter = $$1; '\
+	'  } elsif ($$type =~ m{hexagonal})                  { $$order = 0;   $$letter = "X"; '\
+	'  } elsif ($$type =~ m{(\d+)\-dimensional cubic.*}) { $$order = $$1; $$letter = "Q"; '\
+	'  } elsif ($$type =~ m{(\d+)\-dimensional cyclotomic lattice Z\[zeta_(\d+)\]}) { $$order = $$1; $$zeta = ", $$2"; $$letter = "Z"; '\
+	'  } '\
+	'  if ($$type =~ m{\*}) { $$letter .= "s"; } '\
+	'  print join("\t", $$aseqno, "$@", 0, "$$letter", $$order, $$zeta) . "\n" if ($$letter ne "X"); '\
 	'}} '\
 	>        $@.gen
 	head -n4 $@.gen
@@ -2006,8 +2008,23 @@ latcoa:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+latcob:
+	perl -ne 'print if m{\tB\t}'   latcoors.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+latcoc:
+	perl -ne 'print if m{\tC\t}'   latcoors.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+latcod:
+	perl -ne 'print if m{\tDs?\t}'  latcoors.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 latcods:
-	perl -ne 'print if m{\tD\*\t}' latcoors.gen \
+	perl -ne 'print if m{\tDs\t}'  latcoors.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
