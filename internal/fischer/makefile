@@ -2004,7 +2004,7 @@ latcoors: # LatticeCoordinationSequence
 	head -n4 $@.gen
 	wc -l    $@.gen
 latok:
-	perl -ne 'print if m{\t(A|C|Ds|Q)\t}'   latcoors.gen \
+	perl -ne 'print if m{\t(A|As|B|C|D|Ds|Q)\t}'   latcoors.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import irvine.math.z.Binomial;
 import irvine.math.z.Z;
-import irvine.oeis.HolonomicRecurrence;
+import irvine.oeis.GeneratingFunctionSequence;
 
 /**
  * Coordination sequence for a lattice of some type (A, B, C and so on) and order n,
@@ -13,10 +13,10 @@ import irvine.oeis.HolonomicRecurrence;
  * of expressions of binomial(n,k), depending on the type.
  * @author Georg Fischer
  */
-public class LatticeCoordinationSequence extends HolonomicRecurrence {
+public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
 
   /**
-   * Construct the sequence by reducing it to a holonomic recurrence.
+   * Construct the sequence by reducing it to a ordinary generating function.
    * The constructor computation is close to the sequence definition 
    * and not optimized for speed.
    * @param latticeType A, B, C, D* and so on.
@@ -24,111 +24,86 @@ public class LatticeCoordinationSequence extends HolonomicRecurrence {
    */
   public LatticeCoordinationSequence(final String latticeType, final int n) {
     super();
-    mOffset = 0; // for all such sequences
     configure(latticeType, n);
-    mNDist = 0;
-    super.initialize();
-    if (true) {
-      System.out.println("make runholo MATRIX=\"" + getPolyString() + "\" INIT=\"" + getInitString() + "\""); 
-    /*
-      int m = 4;
-      for (int nn = -m; nn <= m; nn ++) {
-        for (int k = -m; k <= m; k ++) {
-          System.out.print(String.format(",%3s", Binomial.binomial(nn, k).toString()));
-        } // for k
-        System.out.println();
-      } // for n
-    */
-    } 
   }
 
  /**
-   * Compute the coefficient list of polynomials in n and the initial terms
-   * for the holonomic recurrence.
+   * Compute the numerator and denominator coefficient lists.
    * @param latticeType A, B, C, Ds and so on.
    * @param n order
-   * @return the array of arrays of coefficients
    */
   protected void configure(final String latticeType, final int n) {
-    ArrayList<Z[]> polyList = new ArrayList<Z[]>(n);
-    polyList.add(new Z[] { Z.ZERO }); // no constant - all recurrences are homogenous
-    Z[] initTerms = null;
-    switch (latticeType.charAt(0)) {
-      default:
-      case 'A':
-        for (int k = 0; k <= n; ++k) {
-          Z coeff = binomial(n, k);
-          if ((k & 1) == 0) { // even
-            coeff = coeff.negate();
+    char typeCode = latticeType.charAt(0);
+    if (latticeType.length() > 1) { // Dual: "A*" or "Ds" ...
+      typeCode = Character.toLowerCase(typeCode);
+    }
+    mNum = new Z[n + 1];
+    for (int k = 0; k <= n; ++k) {
+      Z coeff = Z.ZERO;
+      switch (typeCode) {
+        default:
+        case 'A':
+          //  A, A103881
+          //  n:= 4; CoefficientList[Series[Sum[(Binomial[n,k])^2*x^k, {k, 0, n}]/(1 - x)^n, {x,0,11}],x]
+          //  {1, 20, 110, 340, 780, 1500, 2570, 4060, 6040, 8580, 11750, 15620}
+          coeff = binomial(n, k).pow(2);
+          break;
+        case 'a':
+          //  A*, A008535 (A204621 = coordinator triangle)
+          //  n:=7; CoefficientList[Series[((Sum[Sum[Binomial[n+1, j] , {j, 0, Min[k, n-k]}]*x^k, {k, 0, n}])/(1-x)^n),{x,0,10}],x]
+          //  {1, 16, 128, 688, 2746, 8752, 23536, 55568, 118498, 232976, 428752}
+          Z sumj = Z.ZERO;
+          final int mink = k < n - k ? k : n - k;
+          for (int j = 0; j <= mink; ++j) {
+            sumj = sumj.add(binomial(n + 1, j));
+          } // for j
+          coeff = sumj;
+          break;
+        case 'B':
+          //  B, A103883
+          //  n:= 4; CoefficientList[Series[(Sum[(Binomial[2n + 1, 2k] - 2*k*Binomial[n, k])*x^k, {k, 0, n}])/(1 - x)^n, {x,0,11}],x]
+          //  {1, 32, 224, 768, 1856, 3680, 6432, 10304, 15488, 22176, 30560, 40832}
+          coeff = binomial(2 * n + 1, 2 * k).subtract(Z.valueOf(2 * k).multiply(binomial(n, k)));
+          break;
+        case 'C':
+          //  C, A103884
+          //  n:= 4; CoefficientList[Series[(Sum[Binomial[2n,2k]*x^k, {k, 0, n}])/(1-x)^n, {x,0,11}],x]
+          //  {1, 32, 192, 608, 1408, 2720, 4672, 7392, 11008, 15648, 21440, 28512}
+          coeff = binomial(2 * n, 2 * k);
+          break;
+        case 'D':
+          //  D, A103903
+          //  n:= 4; CoefficientList[Series[(Sum[(Binomial[2n,2k]-2*n*Binomial[n-2,k-1])*x^k, {k, 0, n}])/(1-x)^n, {x,0,11}],x]
+          //  {1, 24, 144, 456, 1056, 2040, 3504, 5544, 8256, 11736, 16080, 21384}
+          coeff = binomial(2 * n, 2 * k).subtract(Z.valueOf(2 * n).multiply(binomial(n - 2, k - 1)));
+          break;
+        case 'd':
+          //  D*, A035706
+          //  n:= 12; CoefficientList[Series[(Sum[Binomial[n,k]*x^k, {k, 0, n}] + 2^n*x^(n/2))/(1 - x)^n, {x,0,11}],x]
+          //  {1, 24, 288, 2312, 14016, 68664, 288096, 1071912, 3600768, 11036504, 31125408, 81412680}
+          coeff = binomial(n, k);
+          if (k == n / 2) {
+            coeff = coeff.add(Z.TWO.pow(n));
           }
-          polyList.add(new Z[] { coeff });
-        }
-        initTerms = new Z[n + 2];
-        for (int m = 0; m < n + 2; m++) {
-          Z sum = Z.ZERO;
-          if (latticeType.length() == 1) { // A
-            for (int k = 0; k <= n; k++) {
-              sum = sum.add(binomial(n + 1, k).multiply(binomial(m - 1, k - 1)).multiply(binomial(n - k + m, m)));
-                  // A035842: Sum_{d=1..16} C(17, d)*C(m/2-1, d-1)*C(16-d+m/2, m/2), where norm m is always even.
-              // sum = sum.add(binomial(m, k).pow(2).multiply(binomial(n - k + m - 1, m - 1))); // does not work; Conway & Sloane (3.8)
-            } // for k
-            initTerms[m] = sum;
-          } else { // A*, dual
-            for (int k = 0; k <= n; k++) {
-              sum = sum.add(binomial(n + 1, k).multiply(binomial(m - 1, k - 1)).multiply(binomial(n - k + m, m)));
-            } // for k
-            initTerms[m] = sum;
-          }
-        } // for m
-        break;
-        
-      case 'C': // C_12 lattice, A035749 - MATRIX="[[0],[6,-7,2],[-292,8,-4],[0,-1,2]]"  
-        // C_11 A035748: cosh(22*arctanh(sqrt(x))) Robert Israel -> holonomic
-        polyList.add(new Z[] { Z.SIX, Z.SEVEN.negate(), Z.TWO });
-        polyList.add(new Z[] { Z.valueOf(- 2 * (n * n + 2)) , Z.EIGHT, Z.FOUR.negate() });
-        polyList.add(new Z[] { Z.ZERO, Z.NEG_ONE, Z.TWO });
-        initTerms = new Z[] { Z.ONE };
-        break;
-        
-      case 'D':
-        for (int k = 0; k <= n; ++k) {
-          Z coeff = binomial(n, k);
-          if ((k & 1) == 0) { // odd
-            coeff = coeff.negate();
-          }
-          polyList.add(new Z[] { coeff });
-        }
-        initTerms = new Z[n + 2];
-        for (int m = 0; m < n + 2; ++m) {
-          Z sum = Z.ZERO;
-          if (latticeType.length() == 1) { // D
-            for (int k = 0; k <= n; ++k) {
-              sum = sum.add(binomial(2 * n, 2 * k).subtract(Z.valueOf(2 * k).multiply(n - k)
-                 .multiply(binomial(n, k).divide(Z.valueOf(n - 1)))));
-            } // for k
-            initTerms[m] = sum;
-          } else { // D*, dual
-            for (int k = 0; k <= n; ++k) {
-              sum = sum.add(Z.TWO.pow(k).multiply(binomial(n, k)).multiply(binomial(m - 1, k - 1)));
-            } // for k
-            initTerms[m] = sum.add(Z.TWO.pow(n).multiply(binomial((n + 2 * m) / 2 - 1, n - 1)));
-          } // for m
-        } 
-         break;
-        
-      case 'Q': // n-dimensional cubic lattices: n*a(n) = 22*a(n-1) + (n-2)*a(n-2), a(0) = 1, a(1) = 2*n
-        polyList.add(new Z[] { Z.TWO.negate(), Z.ONE });
-        polyList.add(new Z[] { Z.valueOf(2 * n) });
-        polyList.add(new Z[] { Z.ZERO, Z.NEG_ONE });
-        initTerms = new Z[2];
-        initTerms[0] = Z.ONE;
-        initTerms[1] = Z.valueOf(2 * n);
-        break;
-        
-    } // switch
-    initTerms[0] = Z.ONE; // bad patch, A computed 3 for odd n
-    mInitTerms = initTerms;
-    mPolyList = polyList;
+          break;
+        case 'Q':
+          //  Q, A035706
+          //  n:= 11; CoefficientList[Series[Sum[Binomial[n,k]*x^k, {k, 0, n}]/(1 - x)^n, {x,0,11}],x]
+          //  {1, 22, 242, 1782, 9922, 44726, 170610, 568150, 1690370, 4573910, 11414898, 26572086}
+          coeff = binomial(n, k);
+          break;
+      } // switch typeCode
+      mNum[k] = coeff;
+    }
+    
+    mDen = new Z[n + 1];
+    for (int k = 0; k <= n; ++k) {
+      Z coeff = binomial(n, k);
+      if ((k & 1) == 1) { // odd
+        coeff = coeff.negate();
+      }
+      mDen[k] = coeff;
+    }
   }
   
   /**
