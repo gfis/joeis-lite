@@ -19,13 +19,12 @@ public class LatticeCoordinationSequence extends HolonomicRecurrence {
    * Construct the sequence by reducing it to a holonomic recurrence.
    * The constructor computation is close to the sequence definition 
    * and not optimized for speed.
-   * @param offset index of first term
    * @param latticeType A, B, C, D* and so on.
    * @param n order of the lattice
    */
-  public LatticeCoordinationSequence(final int offset, final String latticeType, final int n) {
+  public LatticeCoordinationSequence(final String latticeType, final int n) {
     super();
-    mOffset = offset;
+    mOffset = 0; // for all such sequences
     configure(latticeType, n);
     mNDist = 0;
     super.initialize();
@@ -35,7 +34,7 @@ public class LatticeCoordinationSequence extends HolonomicRecurrence {
       int m = 4;
       for (int nn = -m; nn <= m; nn ++) {
         for (int k = -m; k <= m; k ++) {
-          System.out.print(String.format(",%3s", binomial(nn, k).toString()));
+          System.out.print(String.format(",%3s", Binomial.binomial(nn, k).toString()));
         } // for k
         System.out.println();
       } // for n
@@ -46,7 +45,7 @@ public class LatticeCoordinationSequence extends HolonomicRecurrence {
  /**
    * Compute the coefficient list of polynomials in n and the initial terms
    * for the holonomic recurrence.
-   * @param latticeType A, B, C, D* and so on.
+   * @param latticeType A, B, C, Ds and so on.
    * @param n order
    * @return the array of arrays of coefficients
    */
@@ -70,14 +69,21 @@ public class LatticeCoordinationSequence extends HolonomicRecurrence {
           if (latticeType.length() == 1) { // A
             for (int k = 0; k <= n; k++) {
               sum = sum.add(binomial(n + 1, k).multiply(binomial(m - 1, k - 1)).multiply(binomial(n - k + m, m)));
+                  // A035842: Sum_{d=1..16} C(17, d)*C(m/2-1, d-1)*C(16-d+m/2, m/2), where norm m is always even.
+              // sum = sum.add(binomial(m, k).pow(2).multiply(binomial(n - k + m - 1, m - 1))); // does not work; Conway & Sloane (3.8)
             } // for k
             initTerms[m] = sum;
           } else { // A*, dual
+            for (int k = 0; k <= n; k++) {
+              sum = sum.add(binomial(n + 1, k).multiply(binomial(m - 1, k - 1)).multiply(binomial(n - k + m, m)));
+            } // for k
+            initTerms[m] = sum;
           }
         } // for m
         break;
         
-      case 'C': // C_12 lattice, A035749 - MATRIX="[[0],[6,-7,2],[-292,8,-4],[0,-1,2]]"
+      case 'C': // C_12 lattice, A035749 - MATRIX="[[0],[6,-7,2],[-292,8,-4],[0,-1,2]]"  
+        // C_11 A035748: cosh(22*arctanh(sqrt(x))) Robert Israel -> holonomic
         polyList.add(new Z[] { Z.SIX, Z.SEVEN.negate(), Z.TWO });
         polyList.add(new Z[] { Z.valueOf(- 2 * (n * n + 2)) , Z.EIGHT, Z.FOUR.negate() });
         polyList.add(new Z[] { Z.ZERO, Z.NEG_ONE, Z.TWO });

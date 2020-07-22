@@ -1993,7 +1993,7 @@ latcoors: # LatticeCoordinationSequence
 	'  my ($$aseqno, $$type) = ($$1, $$4); $$type =~ s{[\{\}]}{}g; my $$order = 0; my $$zeta = ""; my $$letter;'\
 	'  if (0) {'\
 	'  } elsif ($$type =~ m{([A-G])\*?_?(\d+)\*?})       { $$order = $$2; $$letter = $$1; '\
-	'  } elsif ($$type =~ m{hexagonal})                  { $$order = 0;   $$letter = "X"; '\
+	'  } elsif ($$type =~ m{hexagonal})                  { $$order = 2;   $$letter = "A"; '\
 	'  } elsif ($$type =~ m{(\d+)\-dimensional cubic.*}) { $$order = $$1; $$letter = "Q"; '\
 	'  } elsif ($$type =~ m{(\d+)\-dimensional cyclotomic lattice Z\[zeta_(\d+)\]}) { $$order = $$1; $$zeta = ", $$2"; $$letter = "Z"; '\
 	'  } '\
@@ -2004,7 +2004,12 @@ latcoors: # LatticeCoordinationSequence
 	head -n4 $@.gen
 	wc -l    $@.gen
 latok:
-	perl -ne 'print if m{\t(C|Ds|Q)\t}'   latcoors.gen \
+	perl -ne 'print if m{\t(A|C|Ds|Q)\t}'   latcoors.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+latcoas:
+	perl -ne 'print if m{\tAs\t}'   latcoors.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -2019,7 +2024,7 @@ latcob:
 	head -n4 $@.gen
 	wc -l    $@.gen
 latcod:
-	perl -ne 'print if m{\tDs?\t}'  latcoors.gen \
+	perl -ne 'print if m{\tD\t}'  latcoors.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
