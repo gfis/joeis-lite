@@ -1986,45 +1986,49 @@ kblocks: all done
 # A035471	LinearRecurrence	Coordination sequence for lattice D*_4 (with edges defined by l_1 norm = 1).	nonn,easy,changed,	0..1000
 # A035748	HolonomicRecurre	Coordination sequence for C_11 lattice.	nonn,easy,	0..10000
 # A126898	GeneratingFuncti	Coordination sequence for 8-dimensional cyclotomic lattice Z[zeta_15].	nonn,synth	0..27
-latcoors: # LatticeCoordinationSequence
+latcoors0: # LatticeCoordinationSequence
 	cat $(COMMON)/joeis_names.txt \
-	| perl -ne 'use strict; s{\s+\Z}{}; my $$line = $$_; if ($$line =~ m{ lattice}) { '\
-	'if ($$line =~ m{\A(A\d+)\s+\w+\s+Coordination sequence for\s+(root )?(lattice )?(\{?[A-G]\*?_?\d+\}?\*?|\d+\-dimensional cubic|hexagonal|\d+\-dimensional cyclotomic [^.]+)}) { '\
-	'  my ($$aseqno, $$type) = ($$1, $$4); $$type =~ s{[\{\}]}{}g; my $$order = 0; my $$zeta = ""; my $$letter;'\
+	| perl -ne 'use strict; s{\s+\Z}{}; my $$line = $$_; if ($$line =~ m{ lattice|diamond}) { $$line =~ s{[\{\}]}{}g; '\
+	'if ($$line =~ m{\A(A\d+)\s+\w+\s+Coordination sequence for *(root )?(lattice |diamond structure )?([A-G][\*\^\+\_\d]+|hexagonal|\d+\-dimensional (cubic|cyclotomic.*))}) { '\
+	'  my ($$aseqno, $$type) = ($$1, $$4); my $$order = 0; my $$zeta = ""; my $$code;'\
 	'  if (0) {'\
-	'  } elsif ($$type =~ m{([A-G])\*?_?(\d+)\*?})       { $$order = $$2; $$letter = $$1; '\
-	'  } elsif ($$type =~ m{hexagonal})                  { $$order = 2;   $$letter = "A"; '\
-	'  } elsif ($$type =~ m{(\d+)\-dimensional cubic.*}) { $$order = $$1; $$letter = "Q"; '\
-	'  } elsif ($$type =~ m{(\d+)\-dimensional cyclotomic lattice Z\[zeta_(\d+)\]}) { $$order = $$1; $$zeta = ", $$2"; $$letter = "Z"; '\
+	'  } elsif ($$type =~ m{hexagonal})                  { $$order = 2;   $$code = "A"; '\
+	'  } elsif ($$type =~ m{(\d+)\-dimensional cubic})   { $$order = $$1; $$code = "Q"; '\
+	'  } elsif ($$type =~ m{(\d+)\-dimensional cyclotomic\D*(\d+)}) { $$order = $$1; $$zeta = ", $$2"; $$code = "Z"; '\
+	'  } elsif ($$type =~ m{[A-G][\*\^\+\_\d]*})         { $$type =~ m{(\d+)}; $$order = $$1; $$type =~ s{[\_\d]}{}g; $$code = $$type; '\
 	'  } '\
-	'  if ($$type =~ m{\*}) { $$letter .= "s"; } '\
-	'  print join("\t", $$aseqno, "$@", 0, "$$letter", $$order, $$zeta) . "\n" if ($$letter ne "X"); '\
+	'  print join("\t", $$aseqno, "latcoors", 0, "$$code", $$order, $$zeta, $$type, $$line) . "\n" if ($$code ne "X"); '\
 	'}} '\
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-latok:
-	perl -ne 'print if m{\t(A|As|B|C|D|Ds|Q)\t}'   latcoors.gen \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+latcoors:
+	perl -ne 'print if m{\t(A|A\*|B|C|D|D\*|Q)\t}' latcoors0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 latcoas:
-	perl -ne 'print if m{\tAs\t}'   latcoors.gen \
+	perl -ne 'print if m{\tAs\t}'  latcoors0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 latcoa:
-	perl -ne 'print if m{\tA\t}'   latcoors.gen \
+	perl -ne 'print if m{\tA\t}'   latcoors0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 latcob:
-	perl -ne 'print if m{\tB\t}'   latcoors.gen \
+	perl -ne 'print if m{\tB\t}'   latcoors0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 latcod:
-	perl -ne 'print if m{\tD\t}'  latcoors.gen \
+	perl -ne 'print if m{\tD\t}'   latcoors0.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+latcoddp:
+	perl -ne 'print if m{\tD\^}'   latcoors0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
