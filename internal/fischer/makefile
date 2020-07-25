@@ -232,7 +232,9 @@ bfile:
 	>> $(CONTRIB)/b$(SEQ).txt
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
-seqtest: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET)
+seqt: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET) - print data up to 260 characters
+	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(MAXT) $(OFFSET)
+seqtest: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET) - print b-file
 	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(MAXT) $(OFFSET)
 spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
@@ -2032,6 +2034,9 @@ latcoddp:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+latriang:
+	cat $@.man | tee $@.gen
 #----------------
 logmod:
 	head -n4 $@.gen
@@ -2115,6 +2120,25 @@ flexfact: all done
 	perl -ne \
 	'if (m{^(A\d+)\s+(a\(n\)\s*\=\s*)?[fF]loor\s*\(\s*exp\(\s*(\d+)\/(\d+)\)\s*\*\s*n\!\s*\)}) { print join("\t", $$1, "$@", 0, $$3, $$4) . "\n" }' \
 	$(COMMON)/names \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#-------------------
+# A095140 null    Triangle formed by reading Pascal's triangle (A007318) mod 5.
+# A126058 null    Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 18.   nonn,more,synth 1..47
+# A126812 null    Ramanujan numbers (A000594) read mod 4. nonn,   1..65537
+moderiv: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
+	cat $(COMMON)/joeis_names.txt \
+	| grep -vE "Mersenne primes|Bell numbers" \
+	| perl -ne 'my ($$aseqno, $$dummy, $$name, @rest) = split(/\t/, $$_); '\
+	'$$name =~ s{Pascal.s triangle}{A007318}; '\
+	'$$name =~ s{(A\d{6})}{\($$1\)}g; '\
+	'if ($$name =~ m{ }) { '\
+	'if ($$name =~ m{\D mod (\d+)\.}) { my $$mod = $$1; '\
+	'if ($$name =~ m{(A\d{6})}) { my $$rseqno = $$1; '\
+	'print join("\t", $$aseqno, "$@", 0, $$rseqno, $$mod, $$name) . "\n"; '\
+	'}}}' \
+	| uniq -w 7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen

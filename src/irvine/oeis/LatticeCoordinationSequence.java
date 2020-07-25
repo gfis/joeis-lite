@@ -13,6 +13,11 @@ import irvine.math.z.Z;
  */
 public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
 
+  protected int mFactor; // normally f=1, or f=2 for D^+ diamond structures
+  protected int mRowNo; // number of current row in coordinator triangle, starting with 0
+  protected int mColNo; // number of current column in coordinator triangle 0 to f*d
+  protected Z[] mPoly; // numerator or denominator coefficients of the generating function in the current triangle row
+
   /**
    * Construct the sequence by reducing it to a ordinary generating function.
    * The constructor computation is close to the sequence definition
@@ -22,7 +27,27 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
    */
   public LatticeCoordinationSequence(final String latticeType, final int d) {
     super();
+    mFactor = 1; // default; set to 2 for D^+ in configure()
     configure(latticeType, d);
+    mRowNo = -1;
+    mColNo = mFactor * mRowNo + 1; // next call of <code>nextTriangle</code> should create and fill next row
+  }
+
+  /**
+   * Iterates through the numerator or denominator polynomials of the generating functions
+   * for some lattice type, and returns the next element of the corresponding coordinator triangle.
+   * @param latticeType "A", "D*", "D^+" and so on
+   * @param iPoly 0 for numerator, 1 for denominator
+   * @return next triangle value
+   */
+  public Z nextTriangleElement(String latticeType, int iPoly) {
+    if (mColNo > mFactor * mRowNo) {
+      mRowNo ++;
+      mColNo = 0;
+      configure(latticeType, mRowNo);
+      mPoly = iPoly == 0 ? mNum : mDen;
+    }
+    return mPoly[mColNo ++];
   }
 
   /**
@@ -33,6 +58,7 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
   protected void configure(final String latticeType, final int d) {
     char typeCode = latticeType.charAt(0);
     if (latticeType.equals("D^+")) { // special treatment for diamond structures
+      mFactor = 2;
       // This can be tested with the following Mathematica:
       // a[d_,n_]:=2^(d-1)*Binomial[(d+2*n)/2-1,d-1]+(1-Mod[n,2])*Sum[2^k*Binomial[d,k]*Binomial[n-1,k-1],{k,0,d}];
       // a[0,_]=1; Table[a[4,n],{n,0,24}];
@@ -57,7 +83,7 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
             break;
         } // switch
       } // for denominator
-      
+
       for (int n = 0; n <= 2 * d; ++n) { // initial terms
         Z coeff = Z.TWO.pow(d - 1).multiply(binomial((d + 2L * n) / 2L - 1L, d - 1L));
         if ((n & 1) == 0) { // even
@@ -68,7 +94,7 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
         initTerms[n] = coeff;
       } // for initial terms
       initTerms[0] = Z.ONE;
-      
+
       for (int k = 0; k <= 2 * d; ++k) { // numerator
         Z sum = Z.ZERO;
         for (int j = 0; j <= k; ++j) {
@@ -172,12 +198,12 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
   }
 
   /**
-   * Binomial coefficients: variant which agrees with Maple and Mathematica for k &lt;= n.
+   * Binomial coefficients: variant negative parameters which agrees with Maple and Mathematica for k &lt;= n.
    * Cf. M.J. Kronenburg: "<a href="https://arxiv.org/pdf/1105.3689.pdf">The Binomial Coefficient for Negative Arguments</a>", Mar 30 2015
    * and Wolfram, <a href="https://mathworld.wolfram.com/BinomialCoefficient.html">Binomial Coefficient</a>
    * @param n upper index
    * @param k lower index
-   * @return coefficient
+   * @return binomial coefficient
    */
   public static Z binomial(final long n, final long k) {
     Z result = Binomial.binomial(n, k);

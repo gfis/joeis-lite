@@ -66,12 +66,24 @@ public final class SequenceTest {
       final String aseqno = args[iarg ++];
       final Sequence seq = sequence(args[0]);
       Z z;
-      if (iarg == args.length) { // only 1 argument - print terms only
-        while ((z = seq.next()) != null) {
+      if (iarg == args.length) { // only 1 argument - print only one line with terms
+        int restLen = 260; // maximum length for OEIS data section
+        int busy = 2;
+        while ((z = seq.next()) != null && restLen >= 0) {
           generated = true;
-          System.out.print(z.toString() + ", ");
-          System.out.flush();
-        }
+          final String zstr = z.toString();
+          restLen -= zstr.length();
+          if (restLen >= 0) {
+            if (busy == 1) {
+              System.out.print(", ");
+            }
+            busy = 1;
+            System.out.print(zstr);
+            System.out.flush();
+          } else {
+            busy = 0;
+          }
+        } // while
       } else { // >= 2 arguments - write b-file format
         int nterms  = 32; // default
         int offset1 = 1;
@@ -94,7 +106,7 @@ public final class SequenceTest {
           iterm ++;
           System.out.flush();
         } // while iterm
-        System.out.print("\n"); // convention is: one additional newline
+        System.out.print("\n\n"); // convention is: one additional newline
         System.out.flush();
       } // >= 2 arguments
     } catch (final UnsupportedOperationException e) {
