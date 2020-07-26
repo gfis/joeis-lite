@@ -21,6 +21,7 @@ RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 MAXT=16
 HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 MANY=999999
+CLASS=dummy.java
 D=0
 TO=4
 TOADD=4000
@@ -866,6 +867,18 @@ finifull: # finite and full
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+# %C A000726 Case k=4, i=3 of Gordon Theorem.
+# %C A035937 Case k=3, i=1 of Gordon Theorem.
+gordon: # Gordon Theorem
+	cat $(COMMON)/cat25.txt \
+	| perl -ne 'use strict; my $$line = $$_; if ($$line =~ m{\A\%C (A\d+) Case\D+(\d+)\D+(\d+) of Gordon Theorem}i) { '\
+	'  my ($$aseqno, $$p1, $$p2) = ($$1, $$2, $$3); '\
+	'  print join("\t", $$aseqno, "gordon", 0, "$$p1", $$p2) . "\n"; '\
+	'} '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 # HolonomicSequence
 #----
 DIST=0
@@ -1461,6 +1474,38 @@ pfprimex:
 	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
 	pfprime.tmp > pfprime.gen
 #--------------------------------
+# A045391	null	Primes congruent to {1, 2} mod 7.	nonn,easy,changed,	1..1000
+# A045392	null	Primes congruent to 2 mod 7.	nonn,easy,changed,	1..1000
+# A129806	null	Primes congruent to +-5 mod 18.
+primod:
+	grep "Primes congruent " $(COMMON)/joeis_names.txt \
+	| perl -ne 'use strict; my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
+	'if ($$line =~ m{^(A\d+)\t\w+\tPrimes congruent[^\{\d\+\-]+(\{[^\}]+\}|\+?\-?\d+) +mod +(\d+)}) { '\
+	'  my ($$aseqno, $$list, $$mod) = ($$1, $$2, $$3); $$list =~ s{[\{\} ]}{}g; $$list =~ s{\+\-(\d+)}{"$$1\," . ($$mod-$$1)}e; '\
+	'  $$list = join(" \|\| ", map { "r == " . $$_ } split(/\,/, $$list)); '\
+	'  print join("\t", $$aseqno, "$@", 0, $$mod, $$list, substr($$line, 8)) . "\n"; '\
+	' } '\
+	| grep -vE "A057204|A271265" \
+	| uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+# A216777 null    Primes p such that x^64 = -2 has no solution mod p.     nonn,easy,      1..1000
+# A216862 null    Primes p such that x^5 = 20 has a solution mod p.       nonn,easy,      1..1000
+# A040034 (PARI): forprime(p=2, 10^3, if(#polrootsmod(x^3-2, p)==0, print1(p, ", ")))
+primsol:
+	grep "Primes p such that " $(COMMON)/joeis_names.txt | grep -E "has (a|no) solution" \
+	| perl -ne 'use strict; my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
+	'if ($$line =~ m{^(A\d+)\t\w+\tPrimes[^x]+x\^(\d+) *\= *(\-?\d+) +has +(a|no) solution}) { '\
+	'  my ($$aseqno, $$pow, $$y, $$bool) = ($$1, $$2, $$3, $$4); $$bool =~ s{a}{1}; $$bool =~ s{no}{0}; '\
+	'  print join("\t", $$aseqno, "$@", 0, $$pow, $$y, $$bool) . "\n"; '\
+	' } '\
+	| uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 # %F A238745 a(n) = A181819(A124859(n)).
 seqop: # ???
 	grep -E "a\(n\) *= *A[0-9][0-9]*(\([a-z]\))? *[\+\-\*\/m]" $(COMMON)/cat25.txt \
@@ -2005,7 +2050,7 @@ latcoors0: # LatticeCoordinationSequence
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 latcoors:
-	perl -ne 'print if m{\t(A|A\*|B|C|D|D\*|Q)\t}' latcoors0.tmp \
+	perl -ne 'print if m{\t(A|A\*|B|C|D|D\*|D\^\+|Q)\t}' latcoors0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -2136,10 +2181,18 @@ moderiv: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 	'if ($$name =~ m{ }) { '\
 	'if ($$name =~ m{\D mod (\d+)\.}) { my $$mod = $$1; '\
 	'if ($$name =~ m{(A\d{6})}) { my $$rseqno = $$1; '\
-	'print join("\t", $$aseqno, "$@", 0, $$rseqno, $$mod, $$name) . "\n"; '\
+	'  print join("\t", $$aseqno, "$@", 0, $$rseqno, $$mod, $$name) . "\n"; '\
 	'}}}' \
-	| uniq -w 7 \
-	>        $@.gen
+	>        $@.tmp
+	# 0123456789012
+	# %F A123456 a(n) =
+	grep -E "^%F" $(COMMON)/cat25.txt \
+	| perl -ne 'my $$aseqno = substr($$_, 3, 7); my $$name = substr($$_, 11); '\
+	'if ($$name =~ m{\= *(A\d{6})\(n\) +mod +(\d+)\.}) { my $$rseqno = $$1; my $$mod = $$2; '\
+	'  print join("\t", $$aseqno, "$@", 0, $$rseqno, $$mod, "\%F $$name") . "\n"; '\
+	'}' \
+	>>       $@.tmp
+	sort $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #-------------------
