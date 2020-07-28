@@ -768,6 +768,20 @@ digexch:
 	head -4 $@.gen
 	wc   -l $@.gen	
 #--------------------------------
+# A063616	A031146	Smallest k >= 0 such that 8^k has exactly n 0's in its decimal representation.	base,nonn,synth	0..50
+# A063617	null	Smallest k such that 8^k has exactly n 1's in its decimal representation.	base,nonn,synth	0..50
+digpow: # unfinished - handy/a031/A031146.java as pattern
+	grep -E "Smallest" $(COMMON)/joeis_names.txt \
+	| perl -ne 'use strict; my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
+	'if ($$line =~ m{^(A\d+)\t\w+\tSmallest k[^s]*such that (\d+)\^k\D+(\d+)}) { '\
+	'  my ($$aseqno, $$base, $$digit) = ($$1, $$2, $$3); '\
+	'  print join("\t", $$aseqno, "$@", 0, $$base, $$digit, substr($$line, 8)) . "\n"; '\
+	' } '\
+	| uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 dupl_prep: dupl1 dupl2 dupl3 # duplicates 
 dupl1:
 	perl -ne \
@@ -817,7 +831,7 @@ floor1:
 	>        $@.tmp
 	wc   -l  $@*.*
 floor2:
-	perl floor_split.pl         -d $(D) floor1.tmp \
+	perl floor_split.pl   -d $(D) floor1.tmp \
 	2>       $@.rest \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -834,8 +848,7 @@ floor3:
 	head -n4 $@.rest
 	wc   -l  $@.rest
 floor4:
-	perl cr_infix.pl            -d    1 floor3.tmp \
-	2>&1 \
+	perl cr_infix.pl      -d    1 floor3.tmp 2>&1 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp	
@@ -844,12 +857,14 @@ floor4:
 	head -n4 $@.rest
 	wc   -l  $@.rest
 floor5:
-	perl floor_combine.pl       -d $(D) floor4.tmp \
+	perl floor_combine.pl -d $(D) floor4.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 floor: floor5
-	grep A floor5.tmp > $@.gen
+	grep A floor5.tmp \
+	| grep -vE "A038126|A134903|A134909" \
+	>        $@.gen
 	# cp floor5.tmp $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -2294,6 +2309,17 @@ power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
 # A158644 a(n) = 52*n^2 + 1.
 # A158645 a(n) = 729*n^2 + 27.
 # A158646 a(n) = 54*n^2 + 1.
+#-------------------
+# Bianry quadratic forms - Wiki has 695
+qfb: qfb0
+qfb0:
+	wget https://oeis.org/wiki/Binary_Quadratic_Forms_and_OEIS?action=raw -O $@.raw.tmp
+qfb1:
+	cat qfb0.raw.tmp | perl -ne 'use strict; foreach my $$aseqno (m{(A\d{6})}g) { print "$$aseqno\n"; } '\
+	| sort | uniq \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #-------------------
 such_prime:
 	grep Numbers $(COMMON)/names | grep -E 'such *that' | grep -E 'is *prime' \

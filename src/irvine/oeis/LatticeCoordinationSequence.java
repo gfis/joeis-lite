@@ -47,7 +47,15 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
       configure(latticeType, mRowNo);
       mPoly = iPoly == 0 ? mNum : mDen;
     }
-    return mPoly[mColNo ++];
+    Z result = mPoly[mColNo];
+    // now some patches
+    if (iPoly == 1 && (mRowNo & 1) == 1) {
+        result = result.negate();
+    } else if (latticeType.equals("D")) {
+      result = result.abs();
+    }
+    mColNo ++;
+    return result;
   }
 
   /**
@@ -127,12 +135,18 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
       mDen = new Z[d + 1];
       mNum = new Z[d + 1];
       for (int k = 0; k <= d; ++k) { // denominator
-        switch (k % 2) {
-          case 0:
+        switch (((d & 1) << 1) | (k & 1)) {
+          case 0: // d even, k even
             mDen[k] = binomial(d, k);
             break;
-          case 1:
+          case 1: // d even, k odd
             mDen[k] = binomial(d, k).negate();
+            break;
+          case 2: // d odd,  k even
+            mDen[k] = binomial(d, k);
+            break;
+          case 3: // d odd,  k odd
+            mDen[k] = binomial(d, k).negate();;
             break;
         } // switch
       } // for denominator
@@ -158,7 +172,7 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
             break;
           case 'B':
             //  B, A103883
-            //  d:= 4; CoefficientList[Series[(Sum[(Binomial[2n + 1, 2k] - 2*k*Binomial[d, k])*x^k, {k, 0, d}])/(1 - x)^d, {x,0,11}],x]
+            //  d:= 4; CoefficientList[Series[(Sum[(Binomial[2d + 1, 2k] - 2*k*Binomial[d, k])*x^k, {k, 0, d}])/(1 - x)^d, {x,0,11}],x]
             //  {1, 32, 224, 768, 1856, 3680, 6432, 10304, 15488, 22176, 30560, 40832}
             coeff = binomial(2L * d + 1, 2L * k).subtract(Z.valueOf(2L * k).multiply(binomial(d, k)));
             break;
@@ -166,6 +180,7 @@ public class LatticeCoordinationSequence extends GeneratingFunctionSequence {
             //  C, A103884
             //  d:= 4; CoefficientList[Series[(Sum[Binomial[2n,2k]*x^k, {k, 0, d}])/(1-x)^d, {x,0,11}],x]
             //  {1, 32, 192, 608, 1408, 2720, 4672, 7392, 11008, 15648, 21440, 28512}
+            //  a(k)=(2*n-2*k+1)*(n-(k-1))/(k*(2*k-1))*a(k-1),a(0)=1 for numerator
             coeff = binomial(2L * d, 2L * k);
             break;
           case 'D':
