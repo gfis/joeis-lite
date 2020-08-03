@@ -817,6 +817,16 @@ eulerian:
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #--------------------------------
+# A006526 Egyptian fraction for 1/e.
+# A248319 Egyptian fraction representation of sqrt(96) (A010547) using a greedy function.	nonn,changed,synth	0..8	null
+egyptfract:
+	grep -E "Egyptian fraction" $(COMMON)/joeis_names.txt \
+	| perl -ne 'use strict; if (m{Egyptian fraction representation of sqrt\((\d+)\)}) { my $$root = $$1; my $$aseqno = substr($$_, 0, 7); '\
+	' print join("\t", $$aseqno, "$@", 0, "CR.valueOf($$root).sqrt()") . "\n"; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#--------------------------------
 floor0: floor1 floor2 floor3 floor4 floor5
 floor1:
 	grep -E "\[|floor|ceil|round|fract" $(COMMON)/joeis_names.txt \
@@ -2363,6 +2373,56 @@ radd_wiki: # too few seqs.
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------
+# A003325	Sequence	Numbers that are the sum of 2 positive cubes.	nonn,easy,nice,changed,	1..20000
+# A003327	A003338	Numbers that are the sum of 4 positive cubes in 1 or more way.	nonn,	1..1000
+# A003328	A003339	Numbers that are the sum of 5 positive cubes.	nonn,	1..1000
+sumpow0: # 
+	cat $(COMMON)/joeis_names.txt \
+	| perl -ne \
+	'm{\A(A\d+)}; my $$aseqno = $$1; if ($$aseqno ge "A003325" and $$aseqno le "A003399") { '\
+	'  print join("\t", $$aseqno, "sumpow", 0) . "\n";}' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+sumpow: 
+	# =====> don't forget copys
+	cat sumpow.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+	# | grep -vE "^A0033(36|37|38|39|40|41|42|43|44|45|46)" \
+	# | grep -E  ".A0033(36|37|38|39|40|41|42|43|44|45|46)" \
+	#
+copys:
+	cp -v A0033*.java ../../src/irvine/oeis/a003/
+patchs:
+	cat sumpow.man \
+	| grep -E  "^A0033(40|41|42|43|44|45|46)" \
+	| cut -b1-7 \
+	| xargs -l -innn make pat1 ASEQNO=nnn
+pat1:
+	perl -ne 's/\s+\Z//; my $$line = $$_; '\
+	'if ($$line =~ m{\A(\s+)for \(int k([3-9a-c]) \= 1\;}) {'\
+	'  my ($$indent, $$ind) = ($$1, $$2); $$ind =~ s{([a-c])}{"1" . (ord($$1) - ord("a"))}e; '\
+	'  my $$im1 = $$ind - 1; my $$im2 = $$im1 - 1;'\
+	'  $$line =~ s{ 1\;}{ k$$im1;};'\
+	'  print $$indent . "final Z z$$im1 = z$$im2.add(pow(k$$im1));\n";'\
+	'} '\
+	'print "$$line\n";' \
+	$(ASEQNO).java > temp/$(ASEQNO).java
+sumpow3: # 
+	perl -ne 'print if s{sumpow\t0\t3\t}{sumpow3\t0\t3\t}; ' sumpow.man \
+	| grep -vE "A003337" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+sumpow4: # 
+	perl -ne 'print if s{sumpow\t0\t4\t}{sumpow4\t0\t4\t}; ' sumpow.man \
+	| grep -vE "A003338" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
 #--------------------------
 mmacall:
 	make seq2 LIST=$(LINREC)/lrlink_mma2.tmp
