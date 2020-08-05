@@ -1,0 +1,25 @@
+=== Example wiki table===
+==== Sums of k positive m-th powers====
+<!--wisq
+  	k=2	k=3	k=4	k=5	k=6	k=7	k=8	k=9	k=10	k=11	k=12
+    <select aggregate="aseqno" with=" || ">
+        <col name="parm3">'m=' || parm3</col>
+        <col name="aseqno">aseqno</col>
+        <from>seq4</from>
+        <where>parm4 = 1
+        </where>
+        <order by="CAST(parm3 AS INT)"/>
+    </select>
+wisq-->
+==== Sums of at most k positive m-th powers====
+<!--wisq
+  	k=2	k=3	k=4	k=5	k=6	k=7	k=8	k=9	k=10	k=11	k=12
+    <select aggregate="aseqno" with=" || ">
+        <col name="parm3">'m=' || parm3</col>
+        <col name="aseqno">aseqno</col>
+        <from>seq4</from>
+        <where>parm4 = 0
+        </where>
+        <order by="CAST(parm3 AS INT)"/>
+    </select>
+wisq-->

@@ -1,0 +1,20 @@
+#! make
+
+# patches after make CC=sumpow gener
+# 2020-08-04, Georg Fischer
+
+all:
+	# cp -v A003336.*va ../../src/irvine/oeis/a003/
+	# cp -v A003337.*va ../../src/irvine/oeis/a003/
+	# cp -v A003338.*va ../../src/irvine/oeis/a003/
+	# cp -v A003339.*va ../../src/irvine/oeis/a003/
+	# cp -v A003340.*va ../../src/irvine/oeis/a003/
+	# cp -v A003341.*va ../../src/irvine/oeis/a003/
+	# cp -v A003342.*va ../../src/irvine/oeis/a003/
+	# cp -v A003343.*va ../../src/irvine/oeis/a003/
+	# cp -v A003344.*va ../../src/irvine/oeis/a003/
+	# cp -v A003345.*va ../../src/irvine/oeis/a003/
+	# cp -v A003346.*va ../../src/irvine/oeis/a003/
+	# make CC=sumpow.min0 sumpow.min0 gener
+	rm -v ../../src/irvine/oeis/a003/A00333[6-9].java
+	rm -v ../../src/irvine/oeis/a003/A00334[1-6].java

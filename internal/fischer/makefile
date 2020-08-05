@@ -168,6 +168,7 @@ purge: # remove all oeis/annn directories
 gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	perl gen_seq4.pl -d $(D) $(NC)  ghead.tmp
+	make -i $(CC).patch || :
 dist:
 	rm -f dist.log
 	make dist1 2>&1 | tee dist.log
@@ -2320,7 +2321,7 @@ power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
 # A158645 a(n) = 729*n^2 + 27.
 # A158646 a(n) = 54*n^2 + 1.
 #-------------------
-# Bianry quadratic forms - Wiki has 695
+# Binary quadratic forms - Wiki has 695
 qfb: qfb0
 qfb0:
 	wget https://oeis.org/wiki/Binary_Quadratic_Forms_and_OEIS?action=raw -O $@.raw.tmp
@@ -2374,10 +2375,24 @@ radd_wiki: # too few seqs.
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------
+sumlipo:
+	grep -E "[Ss]um " $(COMMON)/joeis_names.txt \
+	| perl sumlipo.pl \
+	| grep -vE "A000534" \
+	| grep -vE "sumlino" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+sumlipo.diff:
+	cut -b1-7 sumlipo.gen > d1.tmp
+	cut -b1-7 sumpow.gen  > d2.tmp
+	diff -wy --width=32 --suppress-common-lines d1.tmp d2.tmp
+	rm -v d1.tmp d2.tmp
+#----
 # A003325	Sequence	Numbers that are the sum of 2 positive cubes.	nonn,easy,nice,changed,	1..20000
 # A003327	A003338	Numbers that are the sum of 4 positive cubes in 1 or more way.	nonn,	1..1000
 # A003328	A003339	Numbers that are the sum of 5 positive cubes.	nonn,	1..1000
-sumpow0: # 
+sumpow0_not_used: # 
 	cat $(COMMON)/joeis_names.txt \
 	| perl -ne \
 	'm{\A(A\d+)}; my $$aseqno = $$1; if ($$aseqno ge "A003325" and $$aseqno le "A003399") { '\
@@ -2391,12 +2406,11 @@ sumpow:
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
-	# | grep -vE "^A0033(36|37|38|39|40|41|42|43|44|45|46)" \
-	# | grep -E  ".A0033(36|37|38|39|40|41|42|43|44|45|46)" \
-	#
-copys:
-	cp -v A0033*.java ../../src/irvine/oeis/a003/
-patchs:
+#	| grep -vE "^(A0004(04|08|14)|A003072|A0033|A0048[0-1][0-9]|A00482[0-3]|A047700)" \
+#
+sumpow.min0:
+	cp -v $@.man $@.gen
+old_one_time_patchs:
 	cat sumpow.man \
 	| grep -E  "^A0033(40|41|42|43|44|45|46)" \
 	| cut -b1-7 \
@@ -2411,18 +2425,40 @@ pat1:
 	'} '\
 	'print "$$line\n";' \
 	$(ASEQNO).java > temp/$(ASEQNO).java
-sumpow3: # 
-	perl -ne 'print if s{sumpow\t0\t3\t}{sumpow3\t0\t3\t}; ' sumpow.man \
-	| grep -vE "A003337" \
+#----
+sumway:
+	cat $(COMMON)/joeis_names.txt \
+	| grep -E "sum of " | grep ways | grep -v prime | grep -E "square|cube|th power" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+#----
+sumwiki0: # fetch Index Section Su from OEIS Wiki
+	wget "https://oeis.org/w/index.php?title=Index_to_OEIS:_Section_Su&section=7&action=raw" -O - >  $@.raw.tmp
+	wget "https://oeis.org/w/index.php?title=Index_to_OEIS:_Section_Su&section=8&action=raw" -O - >> $@.raw.tmp
+sumwiki: # extract all uniq A-numbers and sort them
+	cat sumwiki0.raw.tmp | perl -ne 'use strict; foreach my $$aseqno (m{(A\d{6})}g) '\
+	'{ print join("\t", $$aseqno, "$@", 0) . "\n"; } '\
+	| sort | uniq \
 	>        $@.gen
 	head -n4 $@.gen
-	wc   -l  $@.gen
-sumpow4: # 
-	perl -ne 'print if s{sumpow\t0\t4\t}{sumpow4\t0\t4\t}; ' sumpow.man \
-	| grep -vE "A003338" \
-	>        $@.gen
-	head -n4 $@.gen
-	wc   -l  $@.gen
+	wc -l    $@.gen
+sumwiki1: # attach names and load them in db-table suw4
+	make CC=sumwiki select EX=XX
+	perl -ne 's{\t\t+}{\t}; print;' sumwiki.gen > $@.tmp
+	sed -e "s/seq4/suw4/g" seq4.create.sql > suw4.create.sql
+	$(DBAT) -f suw4.create.sql
+	cat sumwiki.gen | grep -E "^A" | sort | uniq > suw4.tmp
+	$(DBAT) -m csv -r suw4 < suw4.tmp
+	$(DBAT) -4 suw4
+	$(DBAT) -n suw4
+sumwiki2: # determine which are not yet covered by sumlipo (first "make CC=sumlipo select")
+	$(DBAT) -x "SELECT w.aseqno, w.name \
+	  FROM suw4 w \
+	  WHERE w.aseqno NOT IN (SELECT aseqno FROM seq4) \
+	  ORDER BY 1" \
+	>        $@.tmp
+	wc -l    $@.tmp
 #--------------------------
 mmacall:
 	make seq2 LIST=$(LINREC)/lrlink_mma2.tmp

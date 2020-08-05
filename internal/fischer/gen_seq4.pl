@@ -82,7 +82,7 @@ my $old_package = "";
 my $gen_count = 0;
 
 mkdir $targetdir;
-
+my $old_callcode = "";
 while (<>) { # read inputfile
     s{\A\#.*}{}; # remove comments
     next if m{\A\s*\Z}; # skip empty lines
@@ -98,7 +98,8 @@ while (<>) { # read inputfile
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
     $name  = $parms[scalar(@parms) - 1]; # last parameter
     $pattern  = $patterncache{$callcode};
-    if (! defined($pattern)) { # new pattern
+    if ($old_callcode ne $callcode) { # pattern changes - read again because of imports
+        $old_callcode = $callcode;
         $pattern = &read_pattern("$patprefix$callcode$patext");
         $patterncache{$callcode} = $pattern;
         if ($debug >= 1) {
