@@ -50,17 +50,17 @@ while (<>) { # read inputfile
             print "$line\n";
         }
     } elsif ($state eq "head") { # read 1 line with tab-separated column headings, and print the table start
-        my @cols  = split(/\t/, $line);
+        my @cols  = map { s{\<}{\&lt\;}g; s{\>}{\&gt\;}g; $_ } split(/\t/, $line);
         print "{| class=\"wikitable\" style=\"text-align:left\"\n!" # header of wiki table
             . join("!!", @cols)
             . "\n|-\n";
         $state = "body";
         open(XML, ">", $xmlfile) or die "cannot write \"$xmlfile\"\n";
         print XML <<GFis;
-<dbat	xmlns   ="http://www.teherba.org/2007/dbat"
-		xmlns:ht="http://www.w3.org/1999/xhtml"
-		headers="false"
-		>
+<dbat   xmlns   ="http://www.teherba.org/2007/dbat"
+        xmlns:ht="http://www.w3.org/1999/xhtml"
+        headers="false"
+        >
 GFis
     } elsif ($state eq "body") { # read lines with SQL
         if (0) {
@@ -74,7 +74,7 @@ GFis
                 my @fields = split(/\t/, $result);
                 print "|" # one wiki table row
                     . join("||", map { m{A99\d{4}} ? "\&\#xa\;" : $_ } @fields)
-            		. "\n|-\n"; 
+                    . "\n|-\n"; 
             } # foreach result
             print "|}\n"; # end of wiki table 
             $state = "init";
@@ -96,23 +96,23 @@ __DATA__
 |}
 
 
-<dbat	xmlns   ="http://www.teherba.org/2007/dbat"
-		xmlns:ht="http://www.w3.org/1999/xhtml"
-		encoding="UTF-8"
-		lang="en" 
-		conn="worddb" 
-		headers="false"
-		title="aggr01"
-		>
-	<comment lang="en">Column Aggregation with linked values</comment>
-	<comment lang="de">Aggregierte Spalte mit Verweisen auf den Werten</comment>
+<dbat   xmlns   ="http://www.teherba.org/2007/dbat"
+        xmlns:ht="http://www.w3.org/1999/xhtml"
+        encoding="UTF-8"
+        lang="en" 
+        conn="worddb" 
+        headers="false"
+        title="aggr01"
+        >
+    <comment lang="en">Column Aggregation with linked values</comment>
+    <comment lang="de">Aggregierte Spalte mit Verweisen auf den Werten</comment>
 
     <ht:h3>Column aggregation test - with linked values</ht:h3>
     
-    <select headers="yes" aggregate="sp2" with=", ">    	
+    <select headers="yes" aggregate="sp2" with=", ">        
         <col label="Application"  name="sp1" href="servlet?spec=test/selec01&amp;name=">sp1</col>
         <col label="Aggr. Column" name="sp2" link="test/selec01&amp;alpha=&amp;beta=&amp;gamma=" width="20">
-        	concat(sp1, concat('=', concat(sp2, concat('=', sp3))))
+            concat(sp1, concat('=', concat(sp2, concat('=', sp3))))
         </col>
         <from>pivot</from>
     </select>

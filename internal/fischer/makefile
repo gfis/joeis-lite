@@ -2376,18 +2376,42 @@ radd_wiki: # too few seqs.
 	wc -l    $@.gen
 #--------------------------
 sumlipo:
-	grep -E "[Ss]um " $(COMMON)/joeis_names.txt \
+	grep -E "[Ss]ums? of " $(COMMON)/joeis_names.txt \
+	| grep -viE "A004018|arra(y|ngement)|base|composite|decimal|digit|differ|divis(ible|or)|egyptian|factor|fibon" \
+	| grep -viE "(hex|hept|pent)agonal|matri|necklace|nonsquare"\
+	| grep -viE "permut|prime|ratio|reciproc|squarefree|triangular" \
 	| perl sumlipo.pl \
+	  2>     $@.rest.tmp \
 	| grep -vE "A000534" \
-	| grep -vE "sumlino" \
 	>        $@.gen
 	head -n4 $@.gen
-	wc   -l  $@.gen
+	wc   -l  $@.*
 sumlipo.diff:
 	cut -b1-7 sumlipo.gen > d1.tmp
 	cut -b1-7 sumpow.gen  > d2.tmp
 	diff -wy --width=32 --suppress-common-lines d1.tmp d2.tmp
 	rm -v d1.tmp d2.tmp
+#----
+sumway: # Numbers that are the sum of 2 nonzero squares in exactly 1 way.
+	cat $(COMMON)/joeis_names.txt \
+	| grep -E "sum of " | grep way \
+	| perl sumlipo.pl \
+	| sort -k4n -k5n -k6n -k7n -k8 -k9n \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+sumway.dupl.check:
+	cut -f4-9 sumway.gen | sort | uniq -c \
+	| grep -vE "^  *1  *" || :
+sumwan.check:
+	cut   -b1-7 sumway.gen | sed -e "s/\r//" > $@.1.tmp 
+	grep -E "Number of ways of writing n as (the |a )sum of " $(COMMON)/names \
+	| grep -vf $@.1.tmp \
+	| cut -b1-120 \
+	| tee    $@.tmp
+sumwi:
+	$(DBAT) "\
+	| tee    $@.tmp
 #----
 # A003325	Sequence	Numbers that are the sum of 2 positive cubes.	nonn,easy,nice,changed,	1..20000
 # A003327	A003338	Numbers that are the sum of 4 positive cubes in 1 or more way.	nonn,	1..1000
@@ -2425,13 +2449,6 @@ pat1:
 	'} '\
 	'print "$$line\n";' \
 	$(ASEQNO).java > temp/$(ASEQNO).java
-#----
-sumway:
-	cat $(COMMON)/joeis_names.txt \
-	| grep -E "sum of " | grep ways | grep -v prime | grep -E "square|cube|th power" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
 #----
 sumwiki0: # fetch Index Section Su from OEIS Wiki
 	wget "https://oeis.org/w/index.php?title=Index_to_OEIS:_Section_Su&section=7&action=raw" -O - >  $@.raw.tmp
@@ -2597,6 +2614,10 @@ word:
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 #================================
+seqix:
+	$(DBAT) -f seqix.create.sql
+	seq 1 64 | $(DBAT) -r seqix
+	$(DBAT) -4 seqix
 seq: # parameter: $(LIST)
 	$(DBAT) -f $(COMMON)/seq.create.sql
 	cut -b1-7 $(LIST) | grep -E "^A" | $(DBAT) -m csv -r seq
