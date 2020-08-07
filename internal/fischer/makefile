@@ -2376,21 +2376,28 @@ radd_wiki: # too few seqs.
 	wc -l    $@.gen
 #--------------------------
 sumlipo:
-	grep -E "[Ss]ums? of " $(COMMON)/joeis_names.txt \
+	grep -E "[Ss]ums? " $(COMMON)/joeis_names.txt \
 	| grep -viE "A004018|arra(y|ngement)|base|composite|decimal|digit|differ|divis(ible|or)|egyptian|factor|fibon" \
 	| grep -viE "(hex|hept|pent)agonal|matri|necklace|nonsquare"\
-	| grep -viE "permut|prime|ratio|reciproc|squarefree|triangular" \
+	| grep -viE "permut|prime|pyramidal|ratio|reciproc|squarefree|triangular" \
 	| perl sumlipo.pl \
 	  2>     $@.rest.tmp \
 	| grep -vE "A000534" \
+	| sort -k2 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc   -l  $@.*
+	sort $@.rest.tmp > $@.rest
+	wc -l    $@.rest
+	wc   -l  $@.gen
+	cut -f2  $@.gen | sort | uniq -c
 sumlipo.diff:
 	cut -b1-7 sumlipo.gen > d1.tmp
 	cut -b1-7 sumpow.gen  > d2.tmp
 	diff -wy --width=32 --suppress-common-lines d1.tmp d2.tmp
 	rm -v d1.tmp d2.tmp
+sumlipow:
+	perl wiki_tabs.pl -e 1 sumlipo.witab \
+	| tee    sumlipo.wiki
 #----
 sumway: # Numbers that are the sum of 2 nonzero squares in exactly 1 way.
 	cat $(COMMON)/joeis_names.txt \

@@ -1,0 +1,46 @@
+=== Sums of like powers===
+==== Sums of k m-th powers====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k' || mquant || mult</col>
+        <col>'m='   || pow</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumlipo'
+          AND  least    = '&amp;gt;=0'
+          AND  dist     = 'nondist'
+        </where>
+        <order by="mquant, mult, pow"/>
+    </select>
+witab-->
+==== Sums of k positive m-th powers &gt; 0====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k' || mquant || mult</col>
+        <col>'m='   || pow</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumlipo'
+          AND  least    = '&amp;gt;=1'
+          AND  dist     = 'nondist'
+        </where>
+        <order by="mquant, mult, pow"/>
+    </select>
+witab-->
+==== Sums of k positive m-th powers &gt; 1====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k' || mquant || mult</col>
+        <col>'m='   || pow</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumlipo'
+          AND  least    = '&amp;gt;=2'
+          AND  dist     = 'nondist'
+        </where>
+        <order by="mquant, mult, pow"/>
+    </select>
+witab-->
