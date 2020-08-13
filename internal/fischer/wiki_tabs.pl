@@ -28,21 +28,22 @@ $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
 my $debug    = 0;
 my $callcode = 0;
 my $extern   = 0;
+my $file_no  = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
-    } elsif ($opt  =~ m{d}) {
-        $debug     = shift(@ARGV);
-    } elsif ($opt  =~ m{c}) {
-        $callcode  = 1;
-    } elsif ($opt  =~ m{e}) {
-        $extern    = shift(@ARGV);
+    } elsif ($opt =~ m{d}) {
+        $debug    = shift(@ARGV);
+    } elsif ($opt =~ m{c}) {
+        $callcode = 1;
+    } elsif ($opt =~ m{e}) {
+        $extern   = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
 
-my $xmlfile = "$0.tmp.xml";
+my $xmlfile;
 my $state   = "init";
 my $marker  = "witab";
 my $dbat    = "java -jar ../../../dbat/dist/dbat.jar -e UTF-8 -c worddb";
@@ -58,6 +59,8 @@ while (<>) { # read inputfile
         if (0) {
         } elsif ($line =~ m{\A\s*\<\!\-\-$marker}) {
             $state = "body";
+            $file_no ++;
+            $xmlfile = "$0.$file_no.xml";
             open(XML, ">", $xmlfile) or die "cannot write \"$xmlfile\"\n";
             print XML <<GFis;
 <dbat   xmlns   ="http://www.teherba.org/2007/dbat"
@@ -77,8 +80,7 @@ GFis
 </dbat>
 GFis
             close(XML);
-            &table_body("$dbat -x -m tsv -f $xmlfile");
-            print "|}\n"; # end of wiki table 
+            &generate_table("$dbat -x -m tsv -f $xmlfile"); # tab separated
             $state = "init";
         } else {
             print XML "$line\n";
@@ -88,7 +90,7 @@ GFis
     }
 } # while <>
 #--------
-sub table_body {
+sub generate_table {
     my ($cmd) = @_;
     my ($aseqno, $name, $rowval, $colval);
     my @matrix = ();
@@ -97,9 +99,12 @@ sub table_body {
     my ($mincoln, $maxcoln) = (2906, 0);
     my @rowvals = (); # starts usually, at [0]
     my @colvals = (); # indexed by numeric value in heading
+    my @wikicols; # starts usually, at [0]
+    
+    #---- load matrix
     $rown = 0;
     foreach my $row (split(/\r?\n/, `$cmd`)) { # store rows and determine ${min|max}{row|col}n
-        if ($row !~ m{\A\s*\Z}) { # row not empty
+        if ($row =~ m{\AA\d+}) { # row starts with A-number
             push (@matrix, $row);
             ($aseqno, $name, $rowval, $colval) = split(/\t/, $row);
             $rowvals[$rown] = $rowval; # store them all sequentially
@@ -114,49 +119,65 @@ sub table_body {
         } # row not empty
     } # foreach row 1
     push (@matrix, join("\t", "A999999", "", "}}}}", "}}}}")); # high values
-    
-    my 
-    @wikicols = (); # starts usually, at [0]
+
+    #---- print table heading
+    @wikicols = (); 
     for ($coln = $mincoln; $coln <= $maxcoln; $coln ++) {
         push (@wikicols, defined($colvals[$coln]) ? $colvals[$coln] : $nbsp);
     } # for coln
-    my $old_rowhead = $nbsp;
     if (1) {
         print "{| class=\"wikitable\" style=\"text-align:left\"\n"
-             . "! $old_rowhead !!" # header of wiki table
+             . "! $nbsp !!" # header of wiki table
              . join("!!", @wikicols) . "\n"
              . "|-\n";
     }
+    #---- print table body rows
     @wikicols = (); 
-    @colvals = ();
-    $rown = 0;
+    @colvals  = ();
+    my $old_rowval = $rowvals[0];
+    $aseqno   = ""; # to handle the initial group change
     # $rowvals[0] was set above to the rowval of the first row
     foreach my $row (@matrix) { # fetch all rows and print the wiki table rows
-        ($aseqno, $name, $rowval, $colval) = split(/\t/, $row);
+        my ($new_aseqno, $new_name, $new_rowval, $new_colval) = split(/\t/, $row);
+        if ($new_rowval ne $old_rowval) { # group change in rowval, print old row
+        	if ($debug >= 1) {
+        		print STDERR "----group change from \"$old_rowval\" to \"$new_rowval\"\n";
+        	}
+            if (length($aseqno) > 0) {
+                @wikicols = (); # prepare for next row
+                for ($coln = $mincoln; $coln <= $maxcoln; $coln ++) {
+                    push (@wikicols, defined($colvals[$coln]) ? $colvals[$coln] : $nbsp);
+                } # for coln
+                print "| $old_rowval ||" # one wiki table row
+                . join("||", @wikicols) . "\n"
+                . "|-\n";
+            }
+            $old_rowval = $new_rowval;
+            @colvals = ();
+        } # print old row
+        $aseqno = $new_aseqno;
+        $name   = $new_name;
+        $colval = $new_colval;
+        $colval =~ m{(\d+)};
+        $coln   = $1;
         if ($colval  =~ m{(\d+)}) {
-        $coln    = $1;
-            $colvals[$coln] = "<span title=\"$name\">"
-                 . ($extern == 1 
-                   ? "[$oeis$aseqno $aseqno]"
-                   : $aseqno 
-                   )
+            my $encname = $name;
+            $encname =~ s{\&}{\&amp\;}g;
+            $encname =~ s{\>}{\&gt\;}g;
+            $encname =~ s{\<}{\&lt\;}g;
+            $colvals[$coln] = "<span title=\"$encname\">"
+                 . (($extern == 1) ? "[$oeis$aseqno $aseqno]" : $aseqno)
                  . "</span>";
+            if ($debug >= 1) {
+                print STDERR "rowval=$new_rowval, colval=$colval, colvals[$coln]=\"$colvals[$coln]\"\n";
+            }
         } else {
             $colvals[$coln] = $nbsp;
         } 
-        if ($rowval ne $rowvals[0]) { # group change in rowval, print old row
-            @wikicols = (); # prepare for next row
-            for ($coln = $mincoln; $coln <= $maxcoln; $coln ++) {
-                push (@wikicols, defined($colvals[$coln]) ? $colvals[$coln] : $nbsp);
-            } # for coln
-            print "| $rowvals[0] ||" # one wiki table row
-            . join("||", @wikicols) . "\n"
-            . "|-\n"; 
-            @colvals = ();
-            $rowvals[0] = $rowval;
-        } # print old row
     } # foreach row 2
-} # table_body
+    #---- print table end
+    print "|}\n"; 
+} # generate_table
 #---------------------------------------
 __DATA__
 {| class="wikitable" style="text-align:left"

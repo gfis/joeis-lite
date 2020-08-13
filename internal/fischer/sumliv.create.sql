@@ -12,6 +12,7 @@ CREATE VIEW            sumliv AS
     , parm4              AS least
     , parm5              AS dist
     , CAST(parm6 AS INT) AS ways
+    , parm7              AS wquant
     , name
     FROM seq4;
 COMMIT;

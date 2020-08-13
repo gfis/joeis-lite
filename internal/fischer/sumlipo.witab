@@ -1,11 +1,11 @@
 === Sums of like powers===
-==== Sums of k m-th powers====
+==== Sums of k m-th powers &gt;= 0====
 <!--witab
     <select>
         <col>aseqno</col>
         <col>name</col>
-        <col>'k' || mquant || mult</col>
-        <col>'m='   || pow</col>
+        <col>'k'  || mquant || mult</col>
+        <col>'m=' || pow</col>
         <from>sumliv</from>
         <where>callcode = 'sumlipo'
           AND  least    = '&amp;gt;=0'
@@ -14,15 +14,32 @@
         <order by="mquant, mult, pow"/>
     </select>
 witab-->
-==== Sums of k positive m-th powers &gt; 0====
+==== Sums of exactly k positive m-th powers &gt; 0====
 <!--witab
     <select>
         <col>aseqno</col>
         <col>name</col>
-        <col>'k' || mquant || mult</col>
-        <col>'m='   || pow</col>
+        <col>'k'  || mquant || mult</col>
+        <col>'m=' || pow</col>
         <from>sumliv</from>
         <where>callcode = 'sumlipo'
+          AND  mquant   = '='
+          AND  least    = '&amp;gt;=1'
+          AND  dist     = 'nondist'
+        </where>
+        <order by="mquant, mult, pow"/>
+    </select>
+witab-->
+==== Sums of at most k positive m-th powers &gt; 0====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k'  || mquant || mult</col>
+        <col>'m=' || pow</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumlipo'
+          AND  mquant   = '&amp;lt;='
           AND  least    = '&amp;gt;=1'
           AND  dist     = 'nondist'
         </where>
@@ -34,13 +51,31 @@ witab-->
     <select>
         <col>aseqno</col>
         <col>name</col>
-        <col>'k' || mquant || mult</col>
-        <col>'m='   || pow</col>
+        <col>'k'  || mquant || mult</col>
+        <col>'m=' || pow</col>
         <from>sumliv</from>
         <where>callcode = 'sumlipo'
           AND  least    = '&amp;gt;=2'
           AND  dist     = 'nondist'
         </where>
         <order by="mquant, mult, pow"/>
+    </select>
+witab-->
+==== Numbers n that have exactly k representations as the sum of m squares &gt;= 0====
+<!--A295158 quant_eq ten representations as the sum of five least_0 pow_2. -->
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k'  || wquant || ways</col>
+        <col>'m=' || mult</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumway'
+          AND  wquant   = '='
+          AND  least    = '&amp;gt;=0'
+          AND  dist     = 'nondist'
+          AND  pow      = 2
+        </where>
+        <order by="wquant, ways, mult"/>
     </select>
 witab-->

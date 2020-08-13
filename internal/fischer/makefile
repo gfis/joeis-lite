@@ -150,6 +150,13 @@ dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).
 	grep -vf dirty.tmp $(CC).gen > $(CC).tmp
 	cp -v $(CC).tmp $(CC).gen
 	wc -l $(CC).gen
+logsel:# set the test results of CC= in column PARM=n
+	cut -f1,3 $(CC).fail.log $(CC).pass.log > logset.tmp
+	make seq2 LIST=logset.tmp
+	$(DBAT) "UPDATE seq4 s4 SET parm$(PARM)=COALESCE((SELECT info FROM seq2 s2 WHERE s2.aseqno = s4.aseqno), 'unknown');"
+	$(DBAT) -x -99999 seq4 > $(CC).sel
+	head -n4 $(CC).gen
+	wc -l    $(CC).gen
 #--
 # ... oeis\a062\A062724.java:23: error: no suitable method found for add(CR)
 prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
@@ -1993,13 +2000,17 @@ conjmath2:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-euler:
-	echo "$(PER)" | tr , '\n' | $(JAVA) irvine.oeis.EulerTransformSequence $(OFFSET) | less
+inveuler:
+	echo "$(PER)" | tr , '\n' | $(JAVA) irvine.oeis.InverseEulerTransformSequence $(SKIP)
+euler: # PER=1,0,1 SKIP=0
+	$(JAVA) irvine.test.EulerTransformPeriodTest -p $(PER) -s $(SKIP)
 eulerper:
 	perl eulerper.pl $(COMMON)/cat25.txt \
+	  2>     $@.rest.tmp \
 	| uniq   -w7 \
 	>        $@.gen
 	head -n4 $@.gen
+	wc -l    $@.rest*
 	wc -l    $@.gen
 euleras: # difficult initial terms
 	perl -ne \
@@ -2377,9 +2388,9 @@ radd_wiki: # too few seqs.
 #--------------------------
 sumlipo:
 	grep -E "[Ss]ums? " $(COMMON)/joeis_names.txt \
-	| grep -viE "A004018|arra(y|ngement)|base|composite|decimal|digit|differ|divis(ible|or)|egyptian|factor|fibon" \
+	| grep -viE "A004018|arra(y|ngement)|base|composite|decimal|digit|differ|divi(ding|sible|sor)|egyptian|factor|fibon" \
 	| grep -viE "(hex|hept|pent)agonal|matri|necklace|nonsquare"\
-	| grep -viE "permut|prime|pyramidal|ratio|reciproc|squarefree|triangular" \
+	| grep -viE "permut|prime|pyramidal|ratio|reciproc|squarefree|triangular|Young" \
 	| perl sumlipo.pl \
 	  2>     $@.rest.tmp \
 	| grep -vE "A000534" \
@@ -2396,8 +2407,9 @@ sumlipo.diff:
 	diff -wy --width=32 --suppress-common-lines d1.tmp d2.tmp
 	rm -v d1.tmp d2.tmp
 sumlipow:
-	perl wiki_tabs.pl -e 1 sumlipo.witab \
-	| tee    sumlipo.wiki
+	perl wiki_tabs.pl -e $(EX) -d $(D) sumlipo.witab \
+	> sumlipo.wiki
+	# | tee    sumlipo.wiki
 #----
 sumway: # Numbers that are the sum of 2 nonzero squares in exactly 1 way.
 	cat $(COMMON)/joeis_names.txt \

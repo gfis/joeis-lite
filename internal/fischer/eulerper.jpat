@@ -15,10 +15,5 @@ public class $(ASEQNO) extends EulerTransformSequence {
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super(new PeriodicSequence($(PARM2)), $(OFFSET));
-  /*
-    for (int skip = 0; skip < $(OFFSET); skip ++) {
-      next();
-    }
-  */
   }
 }

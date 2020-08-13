@@ -45,7 +45,7 @@ while (<>) { # read inputfile
     $name    =~ s{ of integers? }    { }g;
     $name    =~ s{ which }           { that }g;
     $name    =~ s{ a }               { the }g;
-    $name    =~ s{ [Ss]ums? }        { sum }g;
+    $name    =~ s{[Ss]ums? }         {sum }g;
     $name    =~ s{\A(Numbers? )([nk] )?(that are )?(that have |with |(that can be written|writeable|expressible) as |having )?(the )?}{};
     $name    =~ s{ (\w+) but no more}{ at most $1};
     $name    =~ s{ in more than (one|1)}{ at least 2};
@@ -73,13 +73,14 @@ while (<>) { # read inputfile
     =   (""     , ""   , ""     , ""       , ""      , ""    , ""   , ""      , ""     , ""  , ""   );
     if (0) {
     #----------------
+    # A025284  sum of 2 least_1 pow_2 in quant_eq 1 way.
     } elsif ($name =~ 
         #   1                 2           3               4           5          6        7    8           9                    6                                           7    8                             9
         m{\A(not the )?sum of (quant_.. )?([a-ce-z0-9]+ )?(distinct )?(least_. )?(pow_\d+)( in (quant_.. )?(\w+)? way)?} ) {
         ($arenot , $mquant         , $mult   , $distinct, $least  , $pow    , $wquant , $ways   ) = 
         ($1 || "", $2 || "quant_eq", $3 || -1, $4 || "" , $5 || "", $6 || -1, $8 || "", $9 || -1);
         &normalize();
-        if ($ways < 2) {
+        if ($ways < 1) {
             if ($arenot =~ m{not}) {
                 $callcode = "sumlino";
             }
@@ -182,8 +183,8 @@ sub output {
         if ($callcode eq "sumwab") {
             $pow = $base;
         }
-        print join("\t", $aseqno, $callcode, 0, $pow, $mult, $mquant, $least, $distinct, $ways
-                    , $name, $superclass) . "\n";
+        print join("\t", $aseqno, $callcode, 0, $pow, $mult, $mquant, $least, $distinct, $ways, $wquant
+                    , substr($name, 0, 120), $superclass) . "\n";
     }
 } # output  
 #----
