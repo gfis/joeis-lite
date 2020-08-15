@@ -2009,7 +2009,18 @@ euler: # PER=1,0,1 SKIP=0 MAXT=32
 eulerper:
 	perl eulerper.pl $(COMMON)/cat25.txt \
 	  2>     $@.rest.tmp \
+	>        $@.tmp
 	sort     $@.tmp eulerper.man \
+	| uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.rest*
+	wc -l    $@.gen
+eulerxfm:
+	perl eulerxfm.pl $(COMMON)/cat25.txt \
+	  2>     $@.rest.tmp \
+	  >      $@.tmp
+	sort     $@.tmp eulerxfm.man \
 	| uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen

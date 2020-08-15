@@ -16,16 +16,21 @@ public class EulerTransform implements Sequence {
   private final Sequence mSeq;
   private final ArrayList<Z> mAs = new ArrayList<>(); // underlaying sequence
   private final ArrayList<Z> mBs = new ArrayList<>(); // resulting sequence
-  private final ArrayList<Z> mCs = new ArrayList<>(); // auxiliary sequence
+  private final ArrayList<Z> mCs = new ArrayList<>(); // auxiliary sequence 
+  protected final Z[] mInits; // initial terms to be prepended
+  protected int mIn; // index for initial terms
   protected int mN;
 
   /**
-   * Create the Euler transform of the given sequence.
-   *
+   * Create the Euler transform of the given sequence,
+   * with additional terms prepended.
    * @param seq underlying sequence
+   * @param inits additional terms to be prepended
    */
-  public EulerTransform(final Sequence seq) {
+  public EulerTransform(final Sequence seq, final Z... inits) {
     mSeq = seq;
+    mInits = inits;
+    mIn = 0;
     mN = 0;
     mAs.add(Z.ZERO); // [0] not used
     mBs.add(Z.ZERO); // [0] is not returned
@@ -33,16 +38,37 @@ public class EulerTransform implements Sequence {
   }
 
   /**
+   * Create a new sequence with additional terms at the front.
+   * @param seq main sequence
+   */
+  public EulerTransform(final Sequence seq) {
+    this(seq, new Z[0]);
+  }
+
+  /**
+   * Create a new sequence with additional terms at the front.
+   * @param seq main sequence
+   * @param inits additional terms to be prepended
+   */
+  public EulerTransform(final Sequence seq, final long... inits) {
+    this(seq, ZUtils.toZ(inits));
+  }
+  /**
    * Return a term.
    * @return the next term of the transformed sequence.
    */
   @Override
-  public Z next() {
+  public Z next() { // during prepend phase
+    if (mIn < mInits.length) {
+      return mInits[mIn ++];
+    }
+    // normal, transformed terms
     mN ++; // starts with 1
-    mAs.add(mSeq.next()); // get next a(n)
+    Z aNext = mSeq.next();
+    mAs.add(aNext == null ? Z.ZERO : aNext); // get next a(n)
     mCs.add(Z.ZERO); // allocate c[n]
-    for (int i = 1; i <= mN; ++i) {
-      Z cSum = Z.ZERO; // start with c[n-1]
+    for (int i = mN; i <= mN; ++i) {
+      Z cSum = Z.ZERO; // start sum
       for (int d = 1; d <= i; ++d) { // compute c[n] = sum ...
         if (i % d == 0) { // "did(i,d)"
           cSum = cSum.add(Z.valueOf(d).multiply(mAs.get(d)));
