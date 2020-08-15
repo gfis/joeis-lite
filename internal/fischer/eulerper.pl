@@ -112,7 +112,7 @@ while (<>) {
         print STDERR "$line\n";
     }
 } # while <>
-
+#================================
 sub set_mask {
     my ($negate, $lcm) = @_; # negate = 0|1
     my @bits = ();
@@ -126,7 +126,7 @@ sub set_mask {
     push(@bits, $bit0);
     return (@bits);
 } # set_mask
-
+#--------
 sub output { # global $line, @periods, $reason
     $line =~ m{^\%\w (A\d+)};
     $aseqno = $1;
@@ -135,5 +135,6 @@ sub output { # global $line, @periods, $reason
         print join("\t", $aseqno, "eulerper", 0, $perlen, join(",", @periods), 0, "$reason") . "\n";
     }
 }
+#--------
 __DATA__
 

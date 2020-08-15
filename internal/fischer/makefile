@@ -2002,16 +2002,42 @@ conjmath2:
 #--------------------------------
 inveuler:
 	echo "$(PER)" | tr , '\n' | $(JAVA) irvine.oeis.InverseEulerTransformSequence $(SKIP)
-euler: # PER=1,0,1 SKIP=0
-	$(JAVA) irvine.test.EulerTransformPeriodTest -p $(PER) -s $(SKIP)
+SKIP=0
+euler: # PER=1,0,1 SKIP=0 MAXT=32
+	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -m $(MAXT)
+#	$(JAVA) irvine.test.EulerTransformPeriodTest -p $(PER) -s $(SKIP) -m $(MAXT)
 eulerper:
 	perl eulerper.pl $(COMMON)/cat25.txt \
 	  2>     $@.rest.tmp \
-	| uniq   -w7 \
+	sort     $@.tmp eulerper.man \
+	| uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.rest*
 	wc -l    $@.gen
+eumartin:
+	grep -E "listed in Table I of Martin" $(COMMON)/cat25.txt \
+	| cut -b4-10 | sort \
+	>        $@.1.tmp
+	make seq LIST=$@.1.tmp
+	$(DBAT) "SELECT s.aseqno, j.superclass, n.name FROM seq s, joeis j, asname n \
+	  WHERE s.aseqno = j.aseqno \
+	    AND j.aseqno = n.aseqno \
+	  ORDER BY 1" \
+	| tee    $@.tmp
+eulercall:
+	$(DBAT) -x "SELECT aseqno FROM joeis \
+	  WHERE superclass LIKE 'EulerTr%' \
+	  ORDER BY 1" \
+	| perl -ne 'use strict; m{\A(A\d+)}; my $$aseqno = $$1; \
+	  print "src/irvine/oeis/" . lc(substr($$aseqno, 0, 4)) . "/$$aseqno\n";' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	cat $@.tmp | xargs -l -innn grep -HE '\@author| super' $(JOEIS)/nnn.java \
+	| tee    $@.txt
+	head -n4 $@.txt
+#-----------------
 euleras: # difficult initial terms
 	perl -ne \
 	'my $$line = $$_; if (($$line =~ m{Euler transform of (A\d+)}) and ($$line !~ m{Inverse Euler})) { '\
