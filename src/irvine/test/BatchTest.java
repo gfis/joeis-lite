@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2020-08-16: V2.1: 8 terms for FAIL
  *  2020-06-19: V2.0: -s seekPosition
  *  2020-06-17, V1.7: -s skipAseqno; output process id
  *  2020-01-07, V1.6: instantiate seq outside
@@ -111,7 +112,7 @@ public class BatchTest {
     // set default for variables and arguments
     debug          = 0;
     giveUpLimit    = 0; // process all b-file terms
-    maxFailCount   = 4;
+    maxFailCount   = 8;
     millisToRun    = 4000L;
     sequenceMayRun = true;
     bFileDirectory = "./bfile";

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import irvine.math.Mobius;
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
+import irvine.oeis.FiniteSequence;
+import irvine.oeis.PeriodicSequence;
 /**
  * Apply the Euler transform to some other sequence.
  * The program follows closely the code of the OEIS implementations
@@ -13,56 +15,95 @@ import irvine.math.z.ZUtils;
  */
 public class EulerTransform implements Sequence {
 
-  private final Sequence mSeq;
+  private Sequence mSeq;
   private final ArrayList<Z> mAs = new ArrayList<>(); // underlaying sequence
   private final ArrayList<Z> mBs = new ArrayList<>(); // resulting sequence
   private final ArrayList<Z> mCs = new ArrayList<>(); // auxiliary sequence 
-  protected final Z[] mInits; // initial terms to be prepended
+  protected Z[] mPreTerms; // initial terms to be prepended
   protected int mIn; // index for initial terms
   protected int mN;
 
   /**
-   * Create the Euler transform of the given sequence,
-   * with additional terms prepended.
-   * @param seq underlying sequence
-   * @param inits additional terms to be prepended
+   * Empty constructor;
+   * initializes the internal properties
    */
-  public EulerTransform(final Sequence seq, final Z... inits) {
-    mSeq = seq;
-    mInits = inits;
+  public EulerTransform() {
     mIn = 0;
     mN = 0;
     mAs.add(Z.ZERO); // [0] not used
     mBs.add(Z.ZERO); // [0] is not returned
     mCs.add(Z.ZERO); // [0] starts the sum
+    mPreTerms = new Z[] { }; // no prefix terms
   }
 
   /**
-   * Create a new sequence with additional terms at the front.
+   * Create a new sequence with no additional terms at the front.
    * @param seq main sequence
    */
   public EulerTransform(final Sequence seq) {
-    this(seq, new Z[0]);
+    this();
+    mSeq = seq;
   }
 
   /**
-   * Create a new sequence with additional terms at the front.
-   * @param seq main sequence
-   * @param inits additional terms to be prepended
+   * Create the Euler transform of the given sequence,
+   * with additional Z terms prepended. 
+   * @param seq underlying sequence
+   * @param preTerms additional terms to be prepended;
+   * usually there is a leading one.
    */
-  public EulerTransform(final Sequence seq, final long... inits) {
-    this(seq, ZUtils.toZ(inits));
+  public EulerTransform(final Sequence seq, final Z... preTerms) {
+    this(seq);
+    mPreTerms = preTerms;
   }
+
+  /**
+   * Create a new sequence 
+   * with additional long terms prepended.
+   * @param seq main sequence
+   * @param preTerms additional terms to be prepended;
+   * usually there is a leading one.
+   */
+  public EulerTransform(final Sequence seq, final long... preTerms) {
+    this(seq);
+    mPreTerms = ZUtils.toZ(preTerms);
+  }
+  
+  /**
+   * Create a new sequence. 
+   * This constructor is used in most of the generated sequences.
+   * @param seqType: 1 = finite, 2 = periodic, 3 = linear recurrence (0 = arbitrary)
+   * @param terms finite list of terms
+   * @param preTerms additional terms to be prepended;
+   * usually there is a leading one.
+   */
+  public EulerTransform(final int seqType, final String terms, final String preTerms) {
+    this();
+    switch (seqType) {
+      default:
+      case 0:
+        mSeq = null;
+        break;  
+      case 1:
+        mSeq = new FiniteSequence(ZUtils.toZ(terms));
+        break;  
+      case 2:
+        mSeq = new PeriodicSequence(ZUtils.toZ(terms));
+        break;  
+    }
+    mPreTerms = preTerms.length() == 0 ? new Z[0] : ZUtils.toZ(preTerms);
+  }
+  
   /**
    * Return a term.
    * @return the next term of the transformed sequence.
    */
   @Override
-  public Z next() { // during prepend phase
-    if (mIn < mInits.length) {
-      return mInits[mIn ++];
+  public Z next() { 
+    if (mIn < mPreTerms.length) { // during prepend phase
+      return mPreTerms[mIn ++];
     }
-    // normal, transformed terms
+    // normal, transform terms
     mN ++; // starts with 1
     Z aNext = mSeq.next();
     mAs.add(aNext == null ? Z.ZERO : aNext); // get next a(n)
@@ -85,23 +126,5 @@ public class EulerTransform implements Sequence {
     mBs.add(bSum);
     return bSum;
   } 
-
-  /**
-   * Utility function: "did it divide?".
-   * @param m first, nonnegative operand
-   * @param n second, positive operand
-   */
-  public static int did(final int m, final int n) {
-    return m % n == 0 ? 1 : 0;
-  }
-  
-  /**
-   * Utility function : MobiousMu or 0.
-   * @param m first, nonnegative operand
-   * @param n second, positive operand
-   */
-  public static int mob(final int m, final int n) {
-    return m % n == 0 ? Mobius.mobius(m / n) : 0;
-  }
 
 }

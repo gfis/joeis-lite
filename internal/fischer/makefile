@@ -125,7 +125,7 @@ select2:
 	$(DBAT) "UPDATE seq4 s \
 		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
-	$(DBAT) -v -f $(CC).sql > $(CC).rest.tmp || :
+	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 \
 	    WHERE (aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis)) \
@@ -2016,26 +2016,36 @@ eulerper:
 	head -n4 $@.gen
 	wc -l    $@.rest*
 	wc -l    $@.gen
-eulerxfm:
+#----
+eulerx0: # grep cat25 - takes some time
 	perl eulerxfm.pl $(COMMON)/cat25.txt \
 	  2>     $@.rest.tmp \
 	  >      $@.tmp
-	sort     $@.tmp eulerxfm.man \
+eulerx1: # append manual ones and uniq
+	grep -E "^A[0-9]" eulerxfm.man > $@.tmp
+	sort     eulerx0.tmp $@.tmp \
 	| uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.rest*
+	wc -l    eulerx*.rest*
 	wc -l    $@.gen
-eumartin:
-	grep -E "listed in Table I of Martin" $(COMMON)/cat25.txt \
-	| cut -b4-10 | sort \
-	>        $@.1.tmp
-	make seq LIST=$@.1.tmp
-	$(DBAT) "SELECT s.aseqno, j.superclass, n.name FROM seq s, joeis j, asname n \
-	  WHERE s.aseqno = j.aseqno \
-	    AND j.aseqno = n.aseqno \
-	  ORDER BY 1" \
-	| tee    $@.tmp
+	make seq4 LIST=$@.gen
+	$(DBAT) "UPDATE seq4 s SET \
+	  parm2 = (SELECT SUBSTR(data, 1, 64) FROM asdata d WHERE s.aseqno = d.aseqno) \
+	, name  = (SELECT name                FROM asname n WHERE s.aseqno = n.aseqno) \
+	;"
+	$(DBAT) -4 seq4
+eulerx2:
+	$(DBAT) -x -444444 seq4 > $@.tmp
+	$(JAVA) irvine.test.EulerTransformTest -d $(D) -f $@.tmp \
+	>        $@.gen
+	grep -E "\?\?" $@.gen || :
+	head -n4 $@.gen
+	wc -l    $@.gen
+eulerxfm:
+	grep "???" eulerx2.gen 
+	grep -v "???" eulerx2.gen > $@.gen
+#----
 eulercall:
 	$(DBAT) -x "SELECT aseqno FROM joeis \
 	  WHERE superclass LIKE 'EulerTr%' \
