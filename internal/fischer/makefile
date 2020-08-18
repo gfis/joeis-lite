@@ -70,9 +70,13 @@ diff_ramath:
 	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis || :
 	# diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test || :
 diff_joeis:
-	diff -wC0 ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis || :
-update: purge
-	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gits/joeis/{} {}
+	ls -1 ../../src/irvine/oeis/*.java | xargs -l -innn \
+	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/ || :
+#	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/ || :
+#	diff -wC0 ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
+update:
+	cp -v     ../../../joeis/src/irvine/oeis/EulerTransform.java      ../../src/irvine/oeis || :
+#	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gits/joeis/{} {}
 count:
 	find ../../src -iname "A??????.java" | wc -l
 list:
@@ -2000,12 +2004,17 @@ conjmath2:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-inveuler:
+eulerixxx:
 	echo "$(PER)" | tr , '\n' | $(JAVA) irvine.oeis.InverseEulerTransformSequence $(SKIP)
+#--
+euleri: # manual EulerInvTest
+	$(JAVA) irvine.test.EulerTransformTest -v -p $(PER) -m $(MAXT)
+#----
 SKIP=0
-euler: # PER=1,0,1 SKIP=0 MAXT=32
-	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -m $(MAXT)
-#	$(JAVA) irvine.test.EulerTransformPeriodTest -p $(PER) -s $(SKIP) -m $(MAXT)
+TYPE=2
+euler: # manual EulerTest PER=1,0,1 SKIP=0 MAXT=32 TYPE=2
+	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -s $(TYPE) -m $(MAXT)
+#----
 eulerper:
 	perl eulerper.pl $(COMMON)/cat25.txt \
 	  2>     $@.rest.tmp \
@@ -2045,7 +2054,48 @@ eulerx2:
 eulerxfm:
 	grep "???" eulerx2.gen 
 	grep -v "???" eulerx2.gen > $@.gen
+#--------
+euguess0: 
+	$(DBAT) -x "SELECT i.aseqno, 'euleri', 0, i.keyword, substr(d.data, 1, 256) \
+	  FROM asinfo i, asdata d \
+	WHERE i.aseqno = d.aseqno \
+	  AND i.keyword NOT LIKE '%base%' \
+	  AND i.keyword NOT LIKE '%cons%' \
+	  AND i.keyword NOT LIKE '%word%' \
+	  AND i.keyword NOT LIKE '%dead%' \
+	  AND i.keyword NOT LIKE '%,tab%' \
+	  AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  AND LENGTH(d.data) >= 16 \
+	ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+euguess1:
+	perl euguess_polish.pl euguess0.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+euguess2:
+	$(JAVA) irvine.test.EulerTransformTest -v -m 256 -d $(D) -f euguess1.tmp \
+	| cut -f1,5 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--
+euguess3: # remove all with numbers that are too long
+	perl -ne 'print if ! m{\,\-?\d{3}};' euguess2.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #----
+eulerix3:
+	$(DBAT) -x -444444 seq4 > $@.tmp
+	$(JAVA) irvine.test.EulerTransformTest -d $(D) -f $@.tmp \
+	>        $@.gen
+	grep -E "\?\?" $@.gen || :
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 eulercall:
 	$(DBAT) -x "SELECT aseqno FROM joeis \
 	  WHERE superclass LIKE 'EulerTr%' \
@@ -2058,6 +2108,26 @@ eulercall:
 	cat $@.tmp | xargs -l -innn grep -HE '\@author| super' $(JOEIS)/nnn.java \
 	| tee    $@.txt
 	head -n4 $@.txt
+#----
+euler_old1:
+	grep "EulerTransformSequence" $(COMMON)/joeis_names.txt \
+	| sed -e "s/\r//" \
+	| tee $@.tmp
+euler_old2:
+	cut -b1-7 euler_old1.tmp \
+	| perl -ne 'print lc(substr($$_, 0, 4)) . "/" . $$_;' \
+	| xargs -l -innn grep -iHE "  super|Generated " $(JOEIS)/src/irvine/oeis/nnn.java \
+	| tee $@.tmp
+#--
+euleri_old1:
+	grep "InverseEulerTransformSequence" $(COMMON)/joeis_names.txt \
+	| sed -e "s/\r//" \
+	| tee $@.tmp
+euleri_old2:
+	cut -b1-7 euleri_old1.tmp \
+	| perl -ne 'print lc(substr($$_, 0, 4)) . "/" . $$_;' \
+	| xargs -l -innn grep -iHE "  super|Generated " $(JOEIS)/src/irvine/oeis/nnn.java \
+	| tee $@.tmp
 #-----------------
 euleras: # difficult initial terms
 	perl -ne \
@@ -2073,7 +2143,7 @@ euleras: # difficult initial terms
 	wc -l    $@.gen
 eulerasinv: # about 24, with difficult initial terms
 	perl -ne \
-	'my $$line = $$_; if (($$line =~ m{Inverse Euler transform of (A\d+)})) { '\
+	'my $$line = $$_; if (($$line =~ m{Inverse Euler transform of (A\d+)}i)) { '\
 	'my ($$adepend) = ($$1); '\
 	'if (1) {'\
 	'$$line =~ m{^\%\w (A\d+)}; my $$aseqno = $$1;'\
@@ -2083,6 +2153,21 @@ eulerasinv: # about 24, with difficult initial terms
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+eulerasi0:
+	perl -ne \
+	'my $$line = $$_; if (($$line =~ m{Inverse Euler transform of (A\d+)}i)) { '\
+	'my ($$adepend) = ($$1); '\
+	'if (1) {'\
+	'$$line =~ m{^\%\w (A\d+)}; my $$aseqno = $$1;'\
+	'print join("\t", $$aseqno, "$@", 0, lc(substr($$adepend, 0,4)), $$adepend) . "\n" }}' \
+	$(COMMON)/cat25.txt \
+	| uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+eulerasi:
+	cp -v eulerasi0.tmp eulerasi.gen
 euleras_dep:
 	$(DBAT) "DELETE FROM seq4 WHERE parm2 NOT IN (SELECT aseqno FROM joeis);"
 	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \

@@ -1,5 +1,6 @@
 /* Test class, run a EulerTransform of a Finite or PeriodicSequence
  * @(#) $Id$
+ * 2020-08-18: EulerInvTransform
  * 2020-08-17: -f, CC=eulerx
  * 2020-08-14, Georg Fischer: copied from HolonomicRecurrenceTest
  */
@@ -7,9 +8,11 @@ package irvine.test;
 
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
+import irvine.oeis.EulerInvTransform;
 import irvine.oeis.EulerTransform;
 import irvine.oeis.FiniteSequence;
 import irvine.oeis.PeriodicSequence;
+import irvine.oeis.Sequence;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -61,6 +64,31 @@ public class EulerTransformTest {
   }
 
   /**
+   * Evaluate a {@link EulerTransform} or a {@link EulerInvTransform} and get a list
+   * of the resulting data terms.
+   * @param seq sequence to be evaluated
+   * @param numTerms how many terms should be returned
+   * @return a list of terms of the form "0,1,1,2,3,5,8".
+   */
+  private static String getDataList(Sequence seq, int numTerms) {
+    StringBuffer result = new StringBuffer(256);
+    int n = 0;
+    boolean busy = true;
+    while (n < numTerms && busy) {
+      Z term = seq.next();
+      if (term != null) {
+        result.append(',');
+        result.append(term.toString());
+      } else {
+        result.append(",null");
+        busy = false; // break loop
+      }
+      n ++;
+    } // while n
+    return result.substring(1); // without leading comma
+  } // getDataList
+
+  /**
    * Compute the terms to be prefixed to the Euler transformed result sequence
    * @param expectedList term list from the OEIS, a lot longer than <code>numTerms</code>
    * @param et {@link EulerTransform} instance to be tested
@@ -109,20 +137,21 @@ public class EulerTransformTest {
   private void processRecord() {
     boolean result = false;
     // records are: aseqno callCode offset1 seqType expectedTerms periodTerms ...
-    // iparm == 3 here
     String expectedList = ""; // initial terms for a(n)
-    mSeqType = 2; // assume periodic
-    try {
-      mSeqType = Integer.parseInt(parms[iparm ++]);
-    } catch (Exception exc) {
-      if (sDebug >= 1) {
-        System.err.println("# ** aseqno=" + aseqno + ", iparm[" + iparm + "] = " + parms[iparm - 1]);
-      }
-    }
-    expectedList  = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
-    mPeriodString = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
     if (false) {
+    // iparm == 3 here
+    //----------------
     } else if (callCode.startsWith("eulerx")) { // set CC and compute prefixTerms
+      mSeqType = 2; // assume periodic
+      try {
+        mSeqType = Integer.parseInt(parms[iparm ++]);
+      } catch (Exception exc) {
+        if (sDebug >= 1) {
+          System.err.println("# ** aseqno=" + aseqno + ", iparm[" + iparm + "] = " + parms[iparm - 1]);
+        }
+      }
+      expectedList  = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
+      mPeriodString = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
       numTerms = 8;
       try {
         mET = new EulerTransform(mSeqType, "[" + mPeriodString + "]", "");
@@ -154,7 +183,35 @@ public class EulerTransformTest {
       } else {
         System.err.println("# " + aseqno + " ET construction failed, mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
       }
-
+    //----------------
+    } else if (callCode.startsWith("euleri")) { // set CC and compute prefixTerms
+      numTerms = 32;
+      String keyword = parms[iparm ++];
+      mPeriodString  = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
+      int[] terms = mPeriodString.split("\\,");
+      int termNo = terms.length;
+      EulerInvTransform eit = null;
+      try {
+         eit = new EulerInvTransform(1, "[" + mPeriodString + "]", "");
+      } catch (Exception exc) {
+        if (sDebug >= 1) {
+          System.err.println("# ** aseqno: " + aseqno + ", mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
+        }
+      }
+      if (eit != null) {
+        iparm = 1;
+        parms[iparm ++] = "eulerixf";
+        iparm ++; // skip offset
+        parms[iparm ++] = "nonn"; // overwrite keyword
+        parms[iparm ++] = getDataList(eit, termNo);
+        parms[iparm ++] = "term";
+        if (parms[iparm].length() < numTerms) { // some heuristic
+          reproduce();
+        }
+      } else {
+        System.err.println("# " + aseqno + " ET construction failed, mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
+      }
+    //----------------
     } else {
       reproduce();
       System.out.println("# " + aseqno + "\t" + "unknown callcode \"" + callCode + "\"");
@@ -233,6 +290,7 @@ public class EulerTransformTest {
   public static void main(String[] args) {
     sDebug = 0;
     int iarg = 0;
+    boolean inverse = false;
     EulerTransformTest ett = new EulerTransformTest();
     ett.mPeriodString = "1,0,1";
     ett.mPrefixString = "1";
@@ -261,6 +319,8 @@ public class EulerTransformTest {
               .replaceAll("\\s",""); // remove whitespace
         } else if (opt.equals    ("-s")     ) {
           ett.mSeqType      = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-v")     ) {
+          inverse           = true;
         } else {
           System.err.println("??? invalid option: \"" + opt + "\"");
         }
@@ -268,13 +328,18 @@ public class EulerTransformTest {
       }
     } // while args
     if (fileName == null) {
-      ett.mET = new EulerTransform(ett.mSeqType, ett.mPeriodString, ett.mPrefixString);
-      for (int iterm = 0; iterm < ett.numTerms; ++ iterm) {
-        if (iterm > 0) {
-          System.out.print(",");
-        }
-        System.out.print(ett.mET.next());
-      } // for iterm
+      if (! inverse) {
+        ett.mET = new EulerTransform(ett.mSeqType, ett.mPeriodString, ett.mPrefixString);
+        for (int iterm = 0; iterm < ett.numTerms; ++ iterm) {
+          if (iterm > 0) {
+            System.out.print(",");
+          }
+          System.out.print(ett.mET.next());
+        } // for iterm
+      } else {
+        EulerInvTransform eit = new EulerInvTransform(1, ett.mPeriodString, ett.mPrefixString);
+        System.out.println(getDataList(eit, ett.numTerms));
+      }
     } else {
       ett.processFile(fileName);
     }
