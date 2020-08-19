@@ -2065,6 +2065,7 @@ eulerxfm:
 	grep    "???" eulerx4.2.tmp || :
 	grep -v "???" eulerx4.2.tmp > $@.gen || :
 #--------
+euguess_all: euguess0 euguess1 euguess2 euguess3 euguess_check
 euguess0: 
 	$(DBAT) -x "SELECT i.aseqno, 'euleri', 0, i.keyword, substr(d.data, 1, 256) \
 	  FROM asinfo i, asdata d \
@@ -2087,7 +2088,7 @@ euguess1:
 	wc -l    $@.tmp
 euguess2:
 	$(JAVA) irvine.test.EulerTransformTest -v -m 512 -d $(D) -f euguess1.tmp \
-	| cut -f1,5 \
+	| cut -f1- \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -2098,15 +2099,21 @@ euguess3: # remove all with numbers that are too long
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 euguess_check: # determine periods
-	perl -e 'print join("\t", "aseqno", "count", "perlen", "period", "EITed sequence") . "\n";' \
+	perl -e 'print join("\t", "aseqno", "callcode", "ofs", "st", "prepend", "prefix, period", "perlen", "count", "inversed sequence") . "\n";' \
 	>        $@.txt
 	perl find_repeat.pl euguess3.tmp \
 	>>       $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
 	cp -v    $@.txt $(COMMON)
-	cd $(COMMON) ; make html_checks 
+	cd $(COMMON) ; make -f checks.make -s html_check1 FILE=$@ 
 	rm -vf $(COMMON)/$@.txt
+euguess:
+	perl eulerxfm_post.pl euguess_check.txt \
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@.*
 #----
 eulerix3:
 	$(DBAT) -x -444444 seq4 > $@.tmp

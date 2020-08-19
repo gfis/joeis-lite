@@ -45,6 +45,9 @@ public class EulerTransformTest {
   /** List of vectors for the coefficient polynomials */
   private String mPeriodString;
 
+  /** Length of the period */
+  private int mPeriodLen;
+
   /** Vectors for the initial terms */
   private String mPrefixString;
 
@@ -291,6 +294,7 @@ public class EulerTransformTest {
     boolean inverse = false;
     EulerTransformTest ett = new EulerTransformTest();
     ett.mPeriodString = "1,0,1";
+    ett.mPeriodLen = 1;
     ett.mPrefixString = "";
     ett.numTerms = 16;
     ett.mOffset1 = 0;
@@ -308,6 +312,8 @@ public class EulerTransformTest {
         } else if (opt.equals    ("-i")     ) {
           ett.mPrefixString   = args[iarg ++]
               .replaceAll("\\s",""); // remove whitespace
+        } else if (opt.equals    ("-l")     ) {
+          ett.mPeriodLen    = Integer.parseInt(args[iarg ++]);
         } else if (opt.equals    ("-m")     ) {
           ett.numTerms      = Integer.parseInt(args[iarg ++]);
         } else if (opt.equals    ("-o")     ) {
@@ -327,15 +333,15 @@ public class EulerTransformTest {
     } // while args
     if (fileName == null) {
       if (! inverse) {
-        ett.mET = new EulerTransform(ett.mSeqType, ett.mPeriodString, ett.mPrefixString);
+        EulerTransform et = new EulerTransform(ett.mSeqType, ett.mPeriodString, ett.mPrefixString, ett.mPeriodLen);
         for (int iterm = 0; iterm < ett.numTerms; ++ iterm) {
           if (iterm > 0) {
             System.out.print(",");
           }
-          System.out.print(ett.mET.next());
+          System.out.print(et.next());
         } // for iterm
       } else {
-        EulerInvTransform eit = new EulerInvTransform(1, ett.mPeriodString, ett.mPrefixString);
+        EulerInvTransform eit = new EulerInvTransform(1, ett.mPeriodString, ett.mPrefixString, ett.mPeriodLen); // 1 = Finite
         System.out.println(getDataList(eit, ett.numTerms));
       }
     } else {

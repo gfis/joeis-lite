@@ -17,7 +17,7 @@ public class EulerInvTransform implements Sequence {
   private Sequence mSeq;
   private final ArrayList<Z> mAs = new ArrayList<>(); // underlying sequence
   private final ArrayList<Z> mBs = new ArrayList<>(); // resulting sequence
-  private final ArrayList<Z> mCs = new ArrayList<>(); // auxiliary sequence 
+  private final ArrayList<Z> mCs = new ArrayList<>(); // auxiliary sequence
   protected Z[] mPreTerms; // initial terms to be prepended
   protected int mIn; // index for initial terms
   protected int mN;
@@ -46,7 +46,7 @@ public class EulerInvTransform implements Sequence {
 
   /**
    * Create the inverse Euler transform of the given sequence,
-   * with additional Z terms prepended. 
+   * with additional Z terms prepended.
    * @param seq underlying sequence
    * @param preTerms additional terms to be prepended;
    * usually there is a leading one.
@@ -57,7 +57,7 @@ public class EulerInvTransform implements Sequence {
   }
 
   /**
-   * Create a new sequence 
+   * Create a new sequence
    * with additional long terms prepended.
    * @param seq main sequence
    * @param preTerms additional terms to be prepended;
@@ -67,49 +67,55 @@ public class EulerInvTransform implements Sequence {
     this(seq);
     mPreTerms = ZUtils.toZ(preTerms);
   }
-  
+
   /**
-   * Create a new sequence. 
+   * Create a new sequence.
    * This constructor is used in most of the generated sequences.
-   * @param seqType: 0 = class name, 1 = finite, 2 = periodic, 3 = linear recurrence (0 = arbitrary)
+   * @param seqType: (0 = arbitrary), 1 = finite, 2 = periodic, 3 = eventually periodic
    * @param terms finite list of terms
    * @param preTerms additional terms to be prepended;
    * usually there is a leading one.
    */
   public EulerInvTransform(final int seqType, final String terms, final String preTerms) {
+    this(seqType, terms, preTerms, 1);
+  }
+
+  /**
+   * Create a new sequence.
+   * This constructor is used in most of the generated sequences.
+   * @param seqType: (0 = arbitrary), 1 = finite, 2 = periodic, 3 = eventually periodic
+   * @param terms finite list of terms
+   * @param preTerms additional terms to be prepended;
+   * @param periodLen length of the period
+   * usually there is a leading one.
+   */
+  public EulerInvTransform(final int seqType, final String terms, final String preTerms, final int periodLen) {
     this();
-	try {
       switch (seqType) {
-        case 0:
-          mSeq = null;
-      /*
-          final String aseqno = terms;
-          Class<?> seq = Class.forName("irvine.oeis." + aseqno.substring(0, 4).toLowerCase() + "." + aseqno);
-          Constructor<?> seqCons = seq.getConstructor(String.class);
-          mSeq = seqCons.newInstance();
-      */
-          break;  
-        case 1:
-          mSeq = new FiniteSequence(ZUtils.toZ(terms));
-          break;  
-        case 2:
-          mSeq = new PeriodicSequence(ZUtils.toZ(terms));
-          break;
-        default:
-          throw new RuntimeException("Unexpected sequence type");
+      case 0:
+        mSeq = null;
+        break;
+      case 1:
+        mSeq = new FiniteSequence(ZUtils.toZ(terms));
+        break;
+      case 2:
+        mSeq = new PeriodicSequence(ZUtils.toZ(terms));
+        break;
+      case 3:
+        mSeq = new EventuallyPeriodicSequence(periodLen, ZUtils.toZ(terms));
+        break;
+      default:
+        throw new RuntimeException("Unexpected sequence type");
       }
-    } catch (Exception exc) {
-      throw new RuntimeException("Class " + terms + " could not be instantiated");
-    }
     mPreTerms = preTerms.isEmpty() ? new Z[0] : ZUtils.toZ(preTerms);
   }
-  
+
   /**
    * Return a term.
    * @return the next term of the transformed sequence.
    */
   @Override
-  public Z next() { 
+  public Z next() {
     if (mIn < mPreTerms.length) { // during prepend phase
       return mPreTerms[mIn++];
     }
@@ -120,22 +126,22 @@ public class EulerInvTransform implements Sequence {
     mCs.add(Z.ZERO); // allocate c[n]
     final int i = mN;
 
-    Z cSum = Z.valueOf(i).multiply(mBs.get(i)); 
+    Z cSum = Z.valueOf(i).multiply(mBs.get(i));
     for (int d = 1; d < i; ++d) {
       cSum = cSum.subtract(mCs.get(d).multiply(mBs.get(i - d)));
     } // for d
     mCs.set(i, cSum);
-    
+
     Z aSum = Z.ZERO;
     for (int d = 1; d <= i; ++d) { // compute c[n] = sum ...
       final int mob = (i % d == 0) ? Mobius.mobius(i / d) : 0; // "mob(i,d)"
-      if (mob != 0) { 
+      if (mob != 0) {
         aSum = aSum.add(Z.valueOf(mob).multiply(mCs.get(d)));
       }
     } // for d
     aSum = aSum.divide(Z.valueOf(i));
     mAs.add(aSum);
     return aSum;
-  } 
+  }
 
 }
