@@ -115,8 +115,9 @@ public class EulerTransformTest {
       aseqno = "# " + aseqno; // turn it into a comment line
     }
     if (sDebug >= 1) {
-      parms[6] = expectedList.length() < 16 ? expectedList : expectedList.substring(0, 16);
-      parms[7] = computedList.length() < 16 ? computedList : computedList.substring(0, 16);
+      int limit = 32;
+      parms[6] = "expt=" + (expectedList.length() < limit ? expectedList : expectedList.substring(0, limit));
+      parms[7] = "comp=" + (computedList.length() < limit ? computedList : computedList.substring(0, limit));
       if (sDebug >= 2) {
         System.err.println("# ** aseqno: " + aseqno + ", expected=" + expectedList 
             + ", computed=" + computedList + " -> start=" + start + ", prefix=" + prefixList);
@@ -151,25 +152,20 @@ public class EulerTransformTest {
         }
       }
       expectedList  = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
+      final int lastPos = expectedList.lastIndexOf(',');
+      expectedList  = expectedList.substring(0, lastPos > 0 ? lastPos : 0);
       mPeriodString = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
-      numTerms = 8;
-      try {
-        mET = new EulerTransform(mSeqType, "[" + mPeriodString + "]", "");
-      } catch (Exception exc) {
-        if (sDebug >= 1) {
-          System.err.println("# ** aseqno: " + aseqno + ", mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
-        }
-      }
-      if (mET != null) {
+      EulerTransform et = new EulerTransform(mSeqType, "[" + mPeriodString + "]", "");
+      if (et != null) {
         iparm = 1;
         parms[iparm ++] = "eulerxfm";
         iparm ++; // skip offset
         iparm ++; // skip seqType
-        parms[iparm] = computePrefix(expectedList, mET);
-        if (parms[iparm].length() == 0) {
-            parms[iparm] = "new Z[0]";
-        }
+        parms[iparm] = computePrefix(expectedList, et);
         iparm ++;
+        
+        parms[iparm ++] = mPeriodString;
+      /*
         switch (mSeqType) {
           default:
           case 1:
@@ -179,16 +175,17 @@ public class EulerTransformTest {
             parms[iparm ++] = "new PeriodicSequence(" + mPeriodString + ")";
             break;
         } // switch mSeqType
+      */
         reproduce();
       } else {
         System.err.println("# " + aseqno + " ET construction failed, mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
       }
     //----------------
     } else if (callCode.startsWith("euleri")) { // set CC and compute prefixTerms
-      numTerms = 32;
       String keyword = parms[iparm ++];
+      String prefix  = parms[iparm ++];
       mPeriodString  = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
-      int[] terms = mPeriodString.split("\\,");
+      String[] terms = mPeriodString.split("\\,");
       int termNo = terms.length;
       EulerInvTransform eit = null;
       try {
@@ -203,8 +200,9 @@ public class EulerTransformTest {
         parms[iparm ++] = "eulerixf";
         iparm ++; // skip offset
         parms[iparm ++] = "nonn"; // overwrite keyword
-        parms[iparm ++] = getDataList(eit, termNo);
-        parms[iparm ++] = "term";
+        iparm ++; // skip prefix
+        parms[iparm   ] = getDataList(eit, termNo);
+        parms[iparm + 1] = "term";
         if (parms[iparm].length() < numTerms) { // some heuristic
           reproduce();
         }
@@ -257,7 +255,7 @@ public class EulerTransformTest {
       while ((line = lineReader.readLine()) != null) { // read and process lines
         if (! line.matches("\\s*#.*")) { // is not a comment
           parms = line.split("\\t");
-          if (sDebug >= 2) {
+          if (sDebug >= 3) {
             System.out.println(line); // repeat it unchanged
           }
           iparm = 0;
@@ -293,7 +291,7 @@ public class EulerTransformTest {
     boolean inverse = false;
     EulerTransformTest ett = new EulerTransformTest();
     ett.mPeriodString = "1,0,1";
-    ett.mPrefixString = "1";
+    ett.mPrefixString = "";
     ett.numTerms = 16;
     ett.mOffset1 = 0;
     ett.mSeqType = 2; // periodic

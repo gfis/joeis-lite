@@ -11,6 +11,7 @@ use strict;
 use integer;
 use warnings;
 
+my $callcode = "eulerxfm";
 my $perlen = 0;
 my $period = "";
 my @periods = ();
@@ -123,7 +124,7 @@ sub output { # global $line, @periods, $reason
     $aseqno = $1;
     $perlen = scalar(@periods);
     if ($perlen > 0) {
-        print join("\t", $aseqno, "eulerx", 0, $seqtype, "expectedTerms", join(",", @periods), 0, "$reason") . "\n";
+        print join("\t", $aseqno, $callcode, 0, $seqtype, "expectedTerms", join(",", @periods), 0, "$reason") . "\n";
     }
 } # output
 #--------

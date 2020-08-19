@@ -2010,10 +2010,10 @@ eulerixxx:
 euleri: # manual EulerInvTest
 	$(JAVA) irvine.test.EulerTransformTest -v -p $(PER) -m $(MAXT)
 #----
-SKIP=0
+INIT=""
 TYPE=2
-euler: # manual EulerTest PER=1,0,1 SKIP=0 MAXT=32 TYPE=2
-	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -s $(TYPE) -m $(MAXT)
+euler: # manual EulerTest PER="1,0,1" INIT=1 MAXT=32 TYPE=2
+	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -s $(TYPE) -m $(MAXT) -i $(INIT)
 #----
 eulerper:
 	perl eulerper.pl $(COMMON)/cat25.txt \
@@ -2025,35 +2025,45 @@ eulerper:
 	head -n4 $@.gen
 	wc -l    $@.rest*
 	wc -l    $@.gen
-#----
+#--------------------------------
 eulerx0: # grep cat25 - takes some time
 	perl eulerxfm.pl $(COMMON)/cat25.txt \
-	  2>     $@.rest.tmp \
-	  >      $@.tmp
+	2>       $@.rest.tmp \
+	>        $@.tmp
+eulerx: eulerx1 eulerx2 eulerx3
 eulerx1: # append manual ones and uniq
-	grep -E "^A[0-9]" eulerxfm.man > $@.tmp
-	sort     eulerx0.tmp $@.tmp \
+	# grep -E "^A[0-9]" eulerxfm.man > $@.1.tmp
+	sort     eulerx0.tmp \
 	| uniq -w7 \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    eulerx*.rest*
-	wc -l    $@.gen
-	make seq4 LIST=$@.gen
+	>        $@.2.tmp
+	head -n4 $@.2.tmp
+	wc -l    $@.2.tmp
+	make seq4 LIST=$@.2.tmp
 	$(DBAT) "UPDATE seq4 s SET \
 	  parm2 = (SELECT SUBSTR(data, 1, 64) FROM asdata d WHERE s.aseqno = d.aseqno) \
 	, name  = (SELECT name                FROM asname n WHERE s.aseqno = n.aseqno) \
 	;"
-	$(DBAT) -4 seq4
+	$(DBAT) -4 seq4 | cut -b1-80
 eulerx2:
-	$(DBAT) -x -444444 seq4 > $@.tmp
-	$(JAVA) irvine.test.EulerTransformTest -d $(D) -f $@.tmp \
-	>        $@.gen
-	grep -E "\?\?" $@.gen || :
-	head -n4 $@.gen
-	wc -l    $@.gen
+	$(DBAT) -x -99999 seq4 \
+	>        $@.1.tmp
+	$(JAVA) irvine.test.EulerTransformTest -d $(D) -m 16 -f $@.1.tmp \
+	>        $@.2.tmp \
+	2>       $@.2.rest.tmp
+eulerx3: # LIST= postprocess (seqtype, prefix, period)
+	make eulerx4 LIST="eulerx2.2.tmp eulerxfm.man"
+eulerx4:
+	perl eulerxfm_post.pl $(LIST) \
+	>        $@.1.tmp \
+	2>       $@.1.rest.tmp
+	sort     $@.1.tmp | uniq -w7 \
+	>        $@.2.tmp
+	head -n4 $@.2.tmp
+	wc -l    $@.2.tmp
+	wc -l    $@.*rest.*
 eulerxfm:
-	grep "???" eulerx2.gen 
-	grep -v "???" eulerx2.gen > $@.gen
+	grep    "???" eulerx4.2.tmp || :
+	grep -v "???" eulerx4.2.tmp > $@.gen || :
 #--------
 euguess0: 
 	$(DBAT) -x "SELECT i.aseqno, 'euleri', 0, i.keyword, substr(d.data, 1, 256) \
@@ -2076,17 +2086,27 @@ euguess1:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 euguess2:
-	$(JAVA) irvine.test.EulerTransformTest -v -m 256 -d $(D) -f euguess1.tmp \
+	$(JAVA) irvine.test.EulerTransformTest -v -m 512 -d $(D) -f euguess1.tmp \
 	| cut -f1,5 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #--
 euguess3: # remove all with numbers that are too long
-	perl -ne 'print if ! m{\,\-?\d{3}};' euguess2.tmp \
+	perl -ne 'print if ! m{\,\-?\d{4}};' euguess2.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+euguess_check: # determine periods
+	perl -e 'print join("\t", "aseqno", "count", "perlen", "period", "EITed sequence") . "\n";' \
+	>        $@.txt
+	perl find_repeat.pl euguess3.tmp \
+	>>       $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+	cp -v    $@.txt $(COMMON)
+	cd $(COMMON) ; make html_checks 
+	rm -vf $(COMMON)/$@.txt
 #----
 eulerix3:
 	$(DBAT) -x -444444 seq4 > $@.tmp
