@@ -11,8 +11,8 @@ CREATE  TABLE            seq4
     , callcode VARCHAR(32)           -- cfsnum
     , offset   VARCHAR(16)           -- offset
     , parm1    VARCHAR(4096)
-    , parm2    VARCHAR(1024)
-    , parm3    VARCHAR(256)
+    , parm2    VARCHAR(4096)
+    , parm3    VARCHAR(4096)
     , parm4    VARCHAR(4096)
     , parm5    VARCHAR(256)
     , parm6    VARCHAR(128)

@@ -2101,7 +2101,8 @@ euguess3: # remove all with numbers that are too long
 euguess_check: # determine periods
 	perl -e 'print join("\t", "aseqno", "callcode", "ofs", "st", "prepend", "prefix, period", "perlen", "count", "inversed sequence") . "\n";' \
 	>        $@.txt
-	perl find_repeat.pl euguess3.tmp \
+	sed -e "s/eulerixf/euguess/" euguess3.tmp \
+	| perl find_repeat.pl -d $(D) \
 	>>       $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
@@ -2114,7 +2115,109 @@ euguess:
 	2>       $@.rest.tmp
 	head -n4 $@.gen
 	wc -l    $@.*
+#--------
+etlin0:
+	$(DBAT) "SELECT i.aseqno, n.name \
+	  FROM asinfo i, asname n \
+	  WHERE n.name LIKE '%roduct%' \
+	    AND i.aseqno = n.aseqno \
+	    AND SUBSTR(i.author, 2, 6) = 'Vaclav' \
+	  ORDER BY 1" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+#--------
+evtlper0:
+	cat $(COMMON)/bfdata.txt \
+	| perl -ne 'use strict; s/\s+\Z//; my @fields = split(/\t/); if (scalar(@fields) >= 3) { '\
+	'   print join("\t", $$fields[0], "$@", 0, 3, $$fields[1], $$fields[2], "a", "b", "c") . "\n"; } ' \
+	| perl find_repeat.pl -d $(D) 2>&1 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+evtlper1:
+	make seq4 LIST=evtlper0.tmp
+	$(DBAT) "SELECT s.aseqno, b.bfimax - b.bfimin + 1, s.parm4, s.parm3, COALESCE(j.superclass, 'not_in_joeis'), n.name \
+	  FROM seq4 s \
+	  LEFT JOIN asname n ON s.aseqno = n.aseqno \
+	  LEFT JOIN bfinfo b on n.aseqno = b.aseqno \
+	  LEFT JOIN joeis  j on b.aseqno = j.aseqno \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+evtlper2:
+	grep "not_in_joeis" evtlper1.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+evtlper:
+#--------------------------------
+# PaddingSequence
+#--
+pad_all: pad_prep \
+	pad1for \
+	pad1sam \
+	pad1mma \
+	pad_post \
+	padding
+pad_prep:
+	rm -vf pad1*.tmp
+pad_post:
+	sort  pad1*.tmp > $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, callcode, offset, s.parm1, b.bfimax - b.bfimin + 1, d.data, n.name \
+	  FROM seq4 s \
+	  LEFT JOIN asname n ON s.aseqno = n.aseqno \
+	  LEFT JOIN asdata d ON n.aseqno = d.aseqno \
+	  LEFT JOIN bfinfo b on d.aseqno = b.aseqno \
+	  WHERE b.aseqno NOT IN (SELECT j.aseqno FROM joeis j) \
+	  ORDER BY 1,2" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	cut -b1-7 $@.tmp | sort | uniq -c | grep -v " 1 " || :
+#--
+padding:
+#	A173014	Right,{1},80,{7,0,3,4}
+	perl padding_prep.pl pad_post.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
+pad1for:
+	cat $(COMMON)/cat25.txt | grep -viE "(appears that|Conjecture)" \
+	|   perl -ne 'use strict; if (m{\A...(A\d{6}) *a\(n\) *\=* *(\-?\d+) *for *n *(\>\=? *\-?\d+) *\.}) { '\
+	' print join("\t", $$1,      "$@", 0, "=$$2 for $$3") . "\n"; } '\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
+pad1sam:
+	# a(n+5) = a(n).
+	cat $(COMMON)/cat25.txt | grep -viE "(appears that|Conjecture)" \
+	| perl -ne 'use strict; if (m{\A\%\w (A\d{6}) *a\(n *[\+\-] *(\d+)\) *\=* a\(n\) *\.}) { '\
+	' print join("\t", $$1,      "$@", 0, "n+$$2=n") . "\n"; } '\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
+pad1mma:
+	# %t A235944 PadRight[{},120,{4,1,9,7,4,4,9,4,4,7,9,1}] (* _Harvey P. Dale_, Feb 18 2018 *)
+	cat $(COMMON)/cat25.txt \
+	| perl -ne 'use strict; if (m{\A\%t (A\d+)}) { my $$aseqno = $$1; '\
+	' if (m{ Pad(Right|Left) *\[ *(\{ *[\}0-9][^\]]+)\]}) { '\
+	' my ($$dir, $$pad) = ($$1, $$2); $$pad =~ s{ }{}g; if ($$pad !~ m{[\#\@\%A-Za-z]}) { '\
+	' print join("\t", $$aseqno, "$@", 0, "$$dir,$$pad") . "\n"; }}} ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
+evtlper_post:
+	sort evtlper_*1.tmp | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------------------------------
 eulerix3:
 	$(DBAT) -x -444444 seq4 > $@.tmp
 	$(JAVA) irvine.test.EulerTransformTest -d $(D) -f $@.tmp \

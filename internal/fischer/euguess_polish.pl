@@ -19,7 +19,7 @@ while (<>) {
     ($aseqno, $callcode, $offset, $keyword, $terms) = split(/\t/, $line);
     my $keep = 1;
     $terms =~ s{\,\-?\d+\Z}{}; # remove last - maybe incomplete - term
-    $terms =~ s{\A(([0]\,)*(1\,)*)}{$1\t}; # split into prefix and part behind first 1
+    $terms =~ s{\A(([0]\,)*(1\,)?)}{$1\t}; # split into prefix and part behind first 1
     $terms =~ s{\,\t}{\t}; # remove trailing comma from prefix
     if (0) {
     } elsif (length($terms) < 32) {
