@@ -3,7 +3,11 @@ package irvine.oeis;
 import irvine.math.z.Z;
 
 /**
- * A sequence generated verbatim from a list, with the last element repeated indefinitely.
+ * A sequence generated verbatim from terms of the first (left) list, and when that is exhausted,
+ * continuing with the terms from the second (right) list. 
+ * The result can be thought as if the right list were repeated infinitely, 
+ * and the left list were superimposed.
+ * The Mathematica function <code>PadRight</code> uses the parameters in the same way.
  * See also {@link PeriodicSequence}.
  * @author Georg Fischer
  */

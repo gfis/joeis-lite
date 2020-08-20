@@ -2165,10 +2165,11 @@ pad_prep:
 pad_post:
 	sort  pad1*.tmp > $@.tmp
 	make seq4 LIST=$@.tmp
-	$(DBAT) -x "SELECT s.aseqno, callcode, offset, s.parm1, b.bfimax - b.bfimin + 1, d.data, n.name \
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, i.offset1, s.parm1, b.bfimax - b.bfimin + 1, d.data, n.name \
 	  FROM seq4 s \
-	  LEFT JOIN asname n ON s.aseqno = n.aseqno \
-	  LEFT JOIN asdata d ON n.aseqno = d.aseqno \
+	  LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
+	  LEFT JOIN asname n ON i.aseqno = n.aseqno \
+	  LEFT JOIN bfdata d ON n.aseqno = d.aseqno \
 	  LEFT JOIN bfinfo b on d.aseqno = b.aseqno \
 	  WHERE b.aseqno NOT IN (SELECT j.aseqno FROM joeis j) \
 	  ORDER BY 1,2" \
@@ -2180,9 +2181,10 @@ pad_post:
 padding:
 #	A173014	Right,{1},80,{7,0,3,4}
 	perl padding_prep.pl pad_post.tmp \
-	>        $@.gen
+	>        $@.gen \
+	2>       $@.rest.tmp
 	head -n4 $@.gen
-	wc -l    $@.gen
+	wc -l    $@.gen $@.rest.tmp
 #----
 pad1for:
 	cat $(COMMON)/cat25.txt | grep -viE "(appears that|Conjecture)" \
