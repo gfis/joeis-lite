@@ -267,13 +267,6 @@ tiletest:
 ej:
 	echo $(JAVA)
 #================================================================
-aliquot:
-	cat $(COMMON)/names \
-	| perl -ne 'if (m{\A(A\d+) Aliquot sequence starting at (\d+)}) { '\
-	' print join("\t", $$1, "aliquot", 0, $$2) . "\n"; } ' \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
 #================================
 bas: # only a few for basdig2
 	make bas_all TARGET=select
@@ -2082,7 +2075,7 @@ eulerxfm:
 	grep    "???" eulerx4.2.tmp || :
 	grep -v "???" eulerx4.2.tmp > $@.gen || :
 #--------
-euguess_all: euguess0 euguess1 euguess2 euguess3 euguess_check
+euguess_all: euguess0 euguess1 euguess2 euguess3
 euguess0: 
 	$(DBAT) -x "SELECT i.aseqno, 'euleri', 0, i.keyword, d.data \
 	  FROM asinfo i, bfdata d \
@@ -2111,7 +2104,8 @@ euguess2:
 	wc -l    $@.tmp
 #--
 euguess3: # remove all with numbers that are too long
-	perl -ne 'print if ! m{\,\-?\d{4}};' euguess2.tmp \
+	perl -ne 'print if ! m{\,\-?\d{8}};' euguess2.tmp \
+	| sed -e "s/\tnonn\t/\t3\t/" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -2119,7 +2113,7 @@ euguess_check: # determine periods
 	perl -e 'print join("\t", "aseqno", "callcode", "ofs", "st", "prepend", "prefix, period", "perlen", "count", "inversed sequence") . "\n";' \
 	>        $@.txt
 	sed -e "s/eulerixf/euguess/" euguess3.tmp \
-	| perl find_repeat.pl -d $(D) \
+	| perl find_period.pl -n 5 -d $(D) \
 	>>       $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
@@ -2132,6 +2126,40 @@ euguess:
 	2>       $@.rest.tmp
 	head -n4 $@.gen
 	wc -l    $@.*
+euguess_control:
+	cut -f1-2 euguess.pass.log \
+	>        $@.a.tmp
+	make seq2 LIST=$@.a.tmp
+	$(DBAT) "UPDATE seq4 s4 SET parm8 = 'pass', parm7 = (SELECT s2.info FROM seq2 s2 WHERE s2.aseqno = s4.aseqno);"
+	cut -f1,3 euguess.fail.log \
+	>        $@.b.tmp
+	make seq2 LIST=$@.b.tmp
+	$(DBAT) "UPDATE seq4 s4 SET parm8 = (SELECT s2.info FROM seq2 s2 WHERE s2.aseqno = s4.aseqno);"
+euguess_show:
+	$(DBAT) -x "SELECT aseqno, parm8, parm7, parm4, name FROM seq4 ORDER BY 1" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+euguess_sh2:
+	grep -vE "^#" euguess_show.man \
+	| grep -vE "FAIL" \
+	| cut -b1-7 \
+	>        $@.tmp
+	wc -l    $@.tmp
+	make seq LIST=$@.tmp
+	make CC=euguess select 
+	$(DBAT) -v "DELETE FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM seq);"
+euguman:
+	$(DBAT) -x "SELECT s.aseqno, callcode, offset, parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
+	    FROM seq4 s, asinfo i \
+	    WHERE s.aseqno = i.aseqno \
+	      AND (s.aseqno NOT IN (SELECT aseqno FROM joeis)) \
+	      AND i.keyword NOT LIKE '%dead%' \
+	    ORDER BY 1" \
+	| perl -pe "s{\'\'}{\'}g" \
+	  >      $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------
 etlin0:
 	$(DBAT) "SELECT i.aseqno, n.name \
@@ -2277,6 +2305,26 @@ pad1par:
 fptest: # test of find_period.pl
 	perl find_period.pl -d $(D) find_period.pl
 #----
+aliquot1:
+	cat $(COMMON)/names \
+	| perl -ne 'if (m{\A(A\d+) Aliquot sequence starting at (\d+)}) { '\
+	' print join("\t", $$1, "aliquot", 0, $$2) . "\n"; } ' \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+aliquot2:
+	cat $(COMMON)/names \
+	| perl -ne 'if (m{\A(A\d+) Aliquot sequence starting at (\d+)}) { '\
+	' print join("\t", $$1) . "\n"; } ' \
+	>        $@.a.tmp
+	wc -l    $@.a.tmp
+	grep -Ef $@.a.tmp $(COMMON)/bfdata.txt \
+	>        $@.tmp \
+	2>       $@.rest.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	# | perl find_period.pl -n 2 \
+	#
+#----
 period0:
 	cat $(COMMON)/bfdata.txt \
 	| perl find_period.pl -n 2 \
@@ -2307,32 +2355,6 @@ period4:
 	grep -vE "^A305493" period3.tmp \
 	>        $@.gen
 	wc -l    $@.gen
-#----
-period5:
-	grep -E "^A[0-9]" period.control.man \
-	| sed -e "s/ /\t/" \
-	>        $@.tmp
-	wc -l    $@.tmp
-	make seq2 LIST=$@.tmp
-period5.2:
-	make CC=padding select 
-period6:
-	$(DBAT) -x "SELECT * FROM seq4 s4 WHERE s4.aseqno NOT IN (SELECT aseqno FROM seq2) ORDER BY 1" \
-	#
-period7:
-	$(DBAT) -x "SELECT aseqno, callcode, parm1, parm2 FROM seq4 " \
-	>        $@.a.tmp
-	$(DBAT) -x "SELECT aseqno, info  FROM seq2 " \
-	>>       $@.a.tmp
-	sort $@.*.tmp > $@.c.tmp
-period8:
-	make period
-	make padding
-	sort period.gen padding.gen | uniq -w7 > $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-period9:
-	cp -v period8.gen $@.gen
 #--------------------------------
 eulerix3:
 	$(DBAT) -x -444444 seq4 > $@.tmp

@@ -1,6 +1,7 @@
 package irvine.oeis;
 
 import irvine.math.z.Z;
+import irvine.math.z.ZUtils;
 
 /**
  * A sequence generated verbatim from terms of the first (left) list, and when that is exhausted,
@@ -26,15 +27,9 @@ public class PaddingSequence implements Sequence {
    */
   public PaddingSequence(final long[] leftList, final long[] rightList) {
     mLLen = leftList.length;
-    mLList = new Z[leftList.length];
-    for (int k = 0; k < mLLen; ++k) {
-      mLList[k] = Z.valueOf(leftList[k]);
-    }
+    mLList = ZUtils.toZ(leftList);
     mRLen = rightList.length;
-    mRList = new Z[rightList.length];
-    for (int k = 0; k < mRLen; ++k) {
-      mRList[k] = Z.valueOf(rightList[k]);
-    }
+    mRList = ZUtils.toZ(rightList);
   }
 
   @Override
@@ -43,4 +38,3 @@ public class PaddingSequence implements Sequence {
     return mN < mLLen ? mLList[mN] : (mRLen == 1 ? mRList[0] : mRList[mN % mRLen]);
   }
 }
-

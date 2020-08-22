@@ -100,9 +100,6 @@ public class EulerTransform implements Sequence {
       case 2:
         mSeq = new PeriodicSequence(ZUtils.toZ(terms));
         break;
-      case 3:
-        mSeq = new EventuallyPeriodicSequence(periodLen, ZUtils.toZ(terms));
-        break;
       default:
         throw new RuntimeException("Unexpected sequence type");
     }
