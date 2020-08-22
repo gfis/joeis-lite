@@ -67,6 +67,17 @@ while (<>) {
             $right =~ s{[\{\}]}{}g;
         }
     #--------
+    } elsif ($callcode =~ m{pad1par}) {
+        # A001148 pad1par 0       1,3,9,7
+        if ($parm1 =~ m{\A([\d\-\,]+)}) {
+            $left  = "";
+            $right = $1;
+            $callcode = "padding";
+            @terms = split(/\,/, $right);
+            my $term1 = shift(@terms);
+            $right = join(",", @terms, $term1);
+        }
+    #--------
     } elsif ($callcode =~ m{pad1sam}) {
         # A146099   pad1sam 0   n+39=n  10001   Bell numbers (A000110) read mod 9.
         if ($parm1 =~ m{\A *n *\+ *(\d+) *\= *n *\Z}) {

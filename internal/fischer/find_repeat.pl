@@ -22,15 +22,15 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 } # while $opt
 
 my $line = "";
-my ($aseqno, $callcode, $offset, $seqtype, $prepend, $preper, $period, $perlen, $termlist, @rest); # in the record
+my ($aseqno, $callcode, $offset, $seqtype, $prepend, $initer, $period, $perlen, $termlist, @rest); # in the record
 
 while (<>) {
     s/\s+\Z//; # chompr
     $line = $_;
-    if ($debug >= 1) {
-        print "line=$line\n";
-    }
     next if $line !~ m{\AA\d{6}};
+    if ($debug >= 1) {
+        print "#--------------------------------\nline=$line\n";
+    }
     ($aseqno, $callcode, $offset, $seqtype, $prepend, $termlist, @rest) = split(/\s/, $line);
     $termlist =~ s{\s}{}g; # remove all whitespace
     $termlist = ",$termlist"; # prefix a comma
@@ -62,15 +62,15 @@ while (<>) {
     if ($busy == 0 && $count >= 3) {
         # now try to rotate the period:   hiklmnab,cdab -> hijklmn,abcd
         $busy = 1;
-        my $preper = substr($termlist, 0, $start);
+        my $initer = substr($termlist, 0, $start);
         while ($busy == 1) {
             $period =~ m{(\,\-?\d+)\Z};  # get the trailing term
             my $last = $1;
             if ($debug >= 1) {
-                print "try to rotate \"$last\", start=$start, period=$period, perlen=$perlen, prefix=$preper\n";
+                print "try to rotate \"$last\", start=$start, period=$period, perlen=$perlen, prefix=$initer\n";
             }
-            if ($preper =~ m{$last\Z}) {  # we can eat that one
-                $preper =~ s{$last\Z}{};  # remove last from prefix
+            if ($initer =~ m{$last\Z}) {  # we can eat that one
+                $initer =~ s{$last\Z}{};  # remove last from prefix
                 $period =~ s{$last\Z}{};  # remove last from period
                 $period = "$last$period"; # prepend it to the period
             } else { # last of period not found in prefix
@@ -78,12 +78,12 @@ while (<>) {
             }
         } # while
         $period =~ s{\A\,}{}; # remove leading comma
-        $preper =~ s{\A\,}{}; # remove leading comma
-        if (length($preper) > 0) {
-        	$preper .= ",";
+        $initer =~ s{\A\,}{}; # remove leading comma
+        if (length($initer) > 0) {
+        	$initer .= ",";
         }
         $perlen = scalar(split(/\,/, $period)); # was characters, now elements
-        print join("\t", $aseqno, $callcode, $offset, 3, $prepend, "$preper $period", $perlen, $count, substr($termlist, 1, 64)) . "\n";
+        print join("\t", $aseqno, $callcode, $offset, 3, $prepend, "$initer $period", $perlen, $count, substr($termlist, 1, 64)) . "\n";
     } # found a period
 } # while <>
 #================================

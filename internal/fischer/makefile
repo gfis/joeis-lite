@@ -130,16 +130,17 @@ select2:
 		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
-	$(DBAT) -x "SELECT aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
-	    FROM seq4 \
-	    WHERE (aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis)) \
-	      AND (aseqno NOT IN (SELECT aseqno FROM poeis)) \
-	      AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
+	$(DBAT) -x "SELECT s.aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
+	    FROM seq4 s, asinfo i \
+	    WHERE s.aseqno = i.aseqno \
+	      AND (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis)) \
+	      AND i.keyword NOT LIKE '%dead%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  >  $(CC).gen
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
+	#     AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
 	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 clean: purge # parameter: CC; $(CC).pass.log from previous test is grepped from $(CC).gen
 	wc -l $(CC).gen
@@ -161,7 +162,16 @@ logsel:# set the test results of CC= in column PARM=n
 	$(DBAT) -x -99999 seq4 > $(CC).sel
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
-#--
+#----
+control: # extract shorter descriptions for passed seqs.
+	cut -b1-7 $(CC).pass.log \
+	| perl -ne ' s/\s+\Z//; print "\%. $$_ \n"; ' > $@.tmp
+	grep -Ef $@.tmp $(COMMON)/cat25.txt \
+	| perl -ne ' print substr($$_, 1) if m{\A\%[NCFtSTU]}; ' \
+	| sed -e "s/^S /\#________________\nS /" \
+	>        $(CC).$@.txt
+	wc -l    $(CC).$@.txt
+#----
 # ... oeis\a062\A062724.java:23: error: no suitable method found for add(CR)
 prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
 	cat dist.log \
@@ -245,6 +255,7 @@ bfile:
 	>> $(CONTRIB)/b$(SEQ).txt
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
+#----
 seqt: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET) - print data up to 260 characters
 	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(MAXT) $(OFFSET)
 seqtest: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET) - print b-file
@@ -256,6 +267,14 @@ tiletest:
 ej:
 	echo $(JAVA)
 #================================================================
+aliquot:
+	cat $(COMMON)/names \
+	| perl -ne 'if (m{\A(A\d+) Aliquot sequence starting at (\d+)}) { '\
+	' print join("\t", $$1, "aliquot", 0, $$2) . "\n"; } ' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#================================
 bas: # only a few for basdig2
 	make bas_all TARGET=select
 	cat  bas*.gen > basall.gen
@@ -1684,19 +1703,17 @@ noncomp:
 # %F A118822 Period 8 sequence: [2,-1,0,-1,-2,1,0,1].
 # %C A175408 Period of length 10: {7,2,6,3,5,4,4,5,3,1}.
 # %N A257931 Period length 24 sequence [0, 1, 1, 0, -2, -1, 0, 1, 0, 0, -1, -1, 0, 1, 1, 0, 0, -1, 0, 1, 2, 0, -1, -1].
-period: # PeriodicSequence
+periodic: # PeriodicSequence
 	perl -ne \
-	'if (m{^(\%\w) (A\d+)\s+Period [^\{\(\[]*[\{\(\[]([\- \d\,]+)})'\
-	'{ my ($$aseqno, $$list) = ($$2, $$3); '\
-	'$$list =~ s{ }{}g; print join("\t", $$aseqno, "$@", 0, $$list) . "\n"; }' \
-	$(COMMON)/cat25.txt \
+	' if (m{^(\%\w) (A\d+)\s+Period [^\{\(\[]*[\{\(\[]([\- \d\,]+)}) {'\
+	' my ($$aseqno, $$list) = ($$2, $$3); $$list =~ s{ }{}g; '\
+	' print join("\t", $$aseqno, "period", 0, $$list) . "\n"; }' \
+	  $(COMMON)/cat25.txt \
 	| grep -v A210188 \
 	>        $@.gen
 	head -n2 $@.gen
 	tail -n2 $@.gen
 	wc -l    $@.gen
-	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-	# ([ \d\,]+)[\}\)\]]})'\
 #-------------------------------
 # Positions of ... in (the decimal expansion of |Annnnnn)
 posins: posins1 posins2
@@ -2067,8 +2084,8 @@ eulerxfm:
 #--------
 euguess_all: euguess0 euguess1 euguess2 euguess3 euguess_check
 euguess0: 
-	$(DBAT) -x "SELECT i.aseqno, 'euleri', 0, i.keyword, substr(d.data, 1, 256) \
-	  FROM asinfo i, asdata d \
+	$(DBAT) -x "SELECT i.aseqno, 'euleri', 0, i.keyword, d.data \
+	  FROM asinfo i, bfdata d \
 	WHERE i.aseqno = d.aseqno \
 	  AND i.keyword NOT LIKE '%base%' \
 	  AND i.keyword NOT LIKE '%cons%' \
@@ -2126,10 +2143,40 @@ etlin0:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------
+mckay0:
+	$(DBAT) "SELECT n.aseqno, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'not_in_joeis'), n.name \
+	  FROM asname n \
+	  LEFT JOIN bfinfo b on n.aseqno = b.aseqno \
+	  LEFT JOIN joeis  j on b.aseqno = j.aseqno \
+	  WHERE n.name LIKE '%McKay%' \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------
+symbol0:
+	cat $(COMMON)/bfdata.txt \
+	| perl -ne 'use strict; my $$line = $$_; s/\s+\Z//; my @fields = split(/\t/); '\
+	' if ($$fields[2] =~ m{\A(0|1|\-1)(\,(0|1|\-1))*\Z}) { '\
+	' print $$line; } ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq LIST=$@.tmp
+symbol1:
+	$(DBAT) -x "SELECT s.aseqno, COALESCE(j.superclass, 'not_in_joeis'), n.name \
+	  FROM seq s \
+	  LEFT JOIN asname n ON s.aseqno = n.aseqno \
+	  LEFT JOIN joeis  j ON n.aseqno = j.aseqno \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------
 evtlper0:
 	cat $(COMMON)/bfdata.txt \
 	| perl -ne 'use strict; s/\s+\Z//; my @fields = split(/\t/); if (scalar(@fields) >= 3) { '\
-	'   print join("\t", $$fields[0], "$@", 0, 3, $$fields[1], $$fields[2], "a", "b", "c") . "\n"; } ' \
+	' print join("\t", $$fields[0], "$@", 0, 3, $$fields[1], $$fields[2], "a", "b", "c") . "\n"; } ' \
 	| perl find_repeat.pl -d $(D) 2>&1 \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -2156,8 +2203,9 @@ evtlper:
 #--
 pad_all: pad_prep \
 	pad1for \
-	pad1sam \
 	pad1mma \
+	pad1par \
+	pad1sam \
 	pad_post \
 	padding
 pad_prep:
@@ -2181,8 +2229,10 @@ pad_post:
 padding:
 #	A173014	Right,{1},80,{7,0,3,4}
 	perl padding_prep.pl pad_post.tmp \
-	>        $@.gen \
+	>        $@.tmp \
 	2>       $@.rest.tmp
+	sort     $@.tmp | uniq -w7 \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
 #----
@@ -2204,7 +2254,7 @@ pad1sam:
 	wc -l    $@.tmp
 #----
 pad1mma:
-	# %t A235944 PadRight[{},120,{4,1,9,7,4,4,9,4,4,7,9,1}] (* _Harvey P. Dale_, Feb 18 2018 *)
+	# %t A235944 PadRight[{},120,{4,1,9,7,4,4,9,4,4,7,9,1}] (* _Harvey *)
 	cat $(COMMON)/cat25.txt \
 	| perl -ne 'use strict; if (m{\A\%t (A\d+)}) { my $$aseqno = $$1; '\
 	' if (m{ Pad(Right|Left) *\[ *(\{ *[\}0-9][^\]]+)\]}) { '\
@@ -2213,12 +2263,76 @@ pad1mma:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-#----
-evtlper_post:
-	sort evtlper_*1.tmp | uniq -w7 \
+pad1par:
+	# A088689 (PARI) a(n)=[0, 1, 1, 0, 2, 2][n%6+1] \\ _Charles 
+	cat $(COMMON)/cat25.txt \
+	| perl -ne 'use strict; if (m{\A\%o (A\d+)}) { my $$aseqno = $$1; '\
+	' if (m{\(PARI\) +a\(n\) *= *\[([^\]]*)\] *\[n *\% *(\d+) *\+ *1\] *[\;\\]}) { '\
+	' my ($$pad, $$len) = ($$1, $$2); $$pad =~ s{ }{}g; if ($$pad !~ m{[\#\@\%]}) { '\
+	' print join("\t", $$aseqno, "$@", 0, "$$pad") . "\n"; }}} ' \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--------
+fptest: # test of find_period.pl
+	perl find_period.pl -d $(D) find_period.pl
+#----
+period0:
+	cat $(COMMON)/bfdata.txt \
+	| perl find_period.pl -n 2 \
+	>        $@.tmp \
+	2>       $@.rest.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+period:
+	cat period0.tmp \
+	| perl -ne 'use strict; my @parms = split(/\t/); '\
+	' print join("\t", $$parms[0], "padding", 0, $$parms[2], $$parms[3]) . "\n"; ' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+period3:
+	grep -E "^A[0-9]" period.control.man \
+	| cut -b1-7 \
+	>        $@.a.tmp
+	grep -Ef $@.a.tmp period.clean.gen \
+	>        $@.b.tmp
+	make padding 
+	cat padding.gen >> $@.b.tmp
+	wc -l    $@.b.tmp
+	sort $@.b.tmp | uniq -w7 > $@.tmp
+	wc -l    $@.tmp
+period4:
+	grep -vE "^A305493" period3.tmp \
+	>        $@.gen
+	wc -l    $@.gen
+#----
+period5:
+	grep -E "^A[0-9]" period.control.man \
+	| sed -e "s/ /\t/" \
+	>        $@.tmp
+	wc -l    $@.tmp
+	make seq2 LIST=$@.tmp
+period5.2:
+	make CC=padding select 
+period6:
+	$(DBAT) -x "SELECT * FROM seq4 s4 WHERE s4.aseqno NOT IN (SELECT aseqno FROM seq2) ORDER BY 1" \
+	#
+period7:
+	$(DBAT) -x "SELECT aseqno, callcode, parm1, parm2 FROM seq4 " \
+	>        $@.a.tmp
+	$(DBAT) -x "SELECT aseqno, info  FROM seq2 " \
+	>>       $@.a.tmp
+	sort $@.*.tmp > $@.c.tmp
+period8:
+	make period
+	make padding
+	sort period.gen padding.gen | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+period9:
+	cp -v period8.gen $@.gen
 #--------------------------------
 eulerix3:
 	$(DBAT) -x -444444 seq4 > $@.tmp

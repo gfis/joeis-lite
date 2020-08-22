@@ -1,6 +1,7 @@
 #!perl
 
 # Polish sequences to be guessed by an EulerInvTransform
+# 2020-08-21: remove all zeroes and an optional leading one
 # 2020-08-18, Georg Fischer
 #
 #:# Usage:

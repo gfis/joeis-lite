@@ -11,6 +11,8 @@ import irvine.math.z.ZUtils;
 import irvine.oeis.EulerInvTransform;
 import irvine.oeis.EulerTransform;
 import irvine.oeis.FiniteSequence;
+import irvine.oeis.InverseMobiusTransformSequence;
+import irvine.oeis.MobiusTransformSequence;
 import irvine.oeis.PeriodicSequence;
 import irvine.oeis.Sequence;
 import java.io.BufferedReader;
@@ -168,17 +170,6 @@ public class EulerTransformTest {
         iparm ++;
         
         parms[iparm ++] = mPeriodString;
-      /*
-        switch (mSeqType) {
-          default:
-          case 1:
-            parms[iparm ++] = "new FiniteSequence(" + mPeriodString + ")";
-            break;
-          case 2:
-            parms[iparm ++] = "new PeriodicSequence(" + mPeriodString + ")";
-            break;
-        } // switch mSeqType
-      */
         reproduce();
       } else {
         System.err.println("# " + aseqno + " ET construction failed, mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
