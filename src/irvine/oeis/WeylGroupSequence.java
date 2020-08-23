@@ -3,7 +3,7 @@ package irvine.oeis;
 
 /**
  * Sequences with the names <code>Number of reduced words of length n in the Weyl group X_d</code>,
- * where the type X is in A, B, D, and the group order is d.
+ * where the type X is in A, B, or D, and the group order is d.
  * @author Georg Fischer
  */
 public class WeylGroupSequence extends EulerTransform {
@@ -11,7 +11,7 @@ public class WeylGroupSequence extends EulerTransform {
   /**
    * Construct the sequence by reducing it to the {@link EulerTransform} 
    * of a finite sequence padded with zeroes.
-   * @param groupType A, B, C, D and so on.
+   * @param groupType A, B, or D.
    * @param d dimension of the group
    */
   public WeylGroupSequence(final String groupType, final int d) {
@@ -19,8 +19,8 @@ public class WeylGroupSequence extends EulerTransform {
   }
 
   /**
-   * Create a initial terms suitable for the {@link EulerTransform}.
-   * @param groupType A, B, C, D* and so on.
+   * Create initial terms suitable for the {@link EulerTransform}.
+   * @param groupType A, B, or D.
    * @param d dimension of the group
    */
   private static long[] initialTerms(final String groupType, final int d) {
