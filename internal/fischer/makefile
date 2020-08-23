@@ -2160,6 +2160,8 @@ euguman:
 	  >      $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+eugpolym:
+	cp -v    $@.man $@.gen
 #--------
 etlin0:
 	$(DBAT) "SELECT i.aseqno, n.name \
@@ -2177,6 +2179,41 @@ mckay0:
 	  LEFT JOIN bfinfo b on n.aseqno = b.aseqno \
 	  LEFT JOIN joeis  j on b.aseqno = j.aseqno \
 	  WHERE n.name LIKE '%McKay%' \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------
+weylgr0:
+	cat $(COMMON)/joeis_names.txt \
+	| perl -ne 'use strict; if (m{reduced words of length n in the Weyl group ([ABD])_(\d+)}) { '\
+	' my ($$group, $$grno) = ($$1, $$2); $$_ =~ m{\A(A\d+)}; my $$aseqno = $$1; '\
+	' print join("\t", $$aseqno, "weylgr", 0, $$group, $$grno) . "\n"; } ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+weylgr:
+	cp -v weylgr0.tmp weylgr.gen
+weyljo1:
+	cut -b1-7 weylgr0.tmp \
+	| perl -ne 's/\s+\Z//; print "../../../joeis/src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java" . "\n";' \
+	| xargs -l -innn grep -iHE "super\(" nnn 2>&1 \
+	| sed -e "s/^grep: //" \
+	| cut -b37- \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+weyljo2:
+	sort weylgr0.tmp weyljo1.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+weylgr1:
+	$(DBAT) "SELECT n.aseqno, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'not_in_joeis'), n.name \
+	  FROM asname n \
+	  LEFT JOIN bfinfo b on n.aseqno = b.aseqno \
+	  LEFT JOIN joeis  j on b.aseqno = j.aseqno \
+	  WHERE n.name LIKE '%Weyl group%' \
 	  ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
