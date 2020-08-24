@@ -291,10 +291,11 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WCR\.})             { $imports{"irvine.math.cr.CR"}                 = $itype; }
     if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
-        if ($line =~ m{[^\(\w]([A-Z\.]\w+)})  { # Java classname starting with uppercase
+        if ($line =~ m{[^\(\.\w]([A-Z][\.\w\_]+)})  { # non-name followed by Java classname starting with uppercase
             my $class_name = $1;
+            # $class_name =~ s{\.\w+}{}; # remove static method or member
             if (($class_name !~ m{\AA\d+}) and ($class_name !~ m{\.})) {
-                $imports{"irvine.oeis.$1"} = $itype; 
+                $imports{"irvine.oeis.$class_name"} = $itype; 
             }
         } # Java classname
     } # no comment

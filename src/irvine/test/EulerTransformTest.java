@@ -324,7 +324,7 @@ public class EulerTransformTest {
     } // while args
     if (fileName == null) {
       if (! inverse) {
-        EulerTransform et = new EulerTransform(ett.mSeqType, ett.mPeriodString, ett.mPrefixString, ett.mPeriodLen);
+        EulerTransform et = new EulerTransform(ett.mSeqType, ett.mPeriodString, ett.mPrefixString);
         for (int iterm = 0; iterm < ett.numTerms; ++ iterm) {
           if (iterm > 0) {
             System.out.print(",");

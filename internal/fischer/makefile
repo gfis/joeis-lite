@@ -2163,6 +2163,11 @@ euguman:
 eugpolym:
 	cp -v    $@.man $@.gen
 #--------
+etgeneric:
+	grep -E "^A[0-9]" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 etlin0:
 	$(DBAT) "SELECT i.aseqno, n.name \
 	  FROM asinfo i, asname n \
