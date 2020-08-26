@@ -264,6 +264,8 @@ spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
+runjava: # CLASS= MAXT=
+	$(JAVA) $(CLASS) -n $(MAXT)
 ej:
 	echo $(JAVA)
 #================================================================
@@ -2075,8 +2077,8 @@ eulerxfm:
 	grep    "???" eulerx4.2.tmp || :
 	grep -v "???" eulerx4.2.tmp > $@.gen || :
 #--------
-euguess_all: euguess0 euguess1 euguess2 euguess3
-euguess0: 
+euguess_all: euguess0 euguess1 euguess2 euguess_check
+euguess0: # aseqno, cc, ofs, keyw, data
 	$(DBAT) -x "SELECT i.aseqno, 'euleri', 0, i.keyword, d.data \
 	  FROM asinfo i, bfdata d \
 	WHERE i.aseqno = d.aseqno \
@@ -2091,28 +2093,24 @@ euguess0:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-euguess1:
-	perl euguess_polish.pl euguess0.tmp \
+euguess1: # aseqno, "euleri", ofs, "nonn", prepend, termlist, "term"
+	perl cut_prepend.pl euguess0.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-euguess2:
+euguess2: # aseqno, "euleri"  , ofs, "nonn", prepend, termlist, "term"
+	# ->    aseqno, "eulerixf", ofs, "nonn", prepend, invlist , "term"
 	$(JAVA) irvine.test.EulerTransformTest -v -m 512 -d $(D) -f euguess1.tmp \
 	| cut -f1- \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-#--
-euguess3: # remove all with numbers that are too long
-	perl -ne 'print if ! m{\,\-?\d{8}};' euguess2.tmp \
-	| sed -e "s/\tnonn\t/\t3\t/" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-euguess_check: # determine periods
-	perl -e 'print join("\t", "aseqno", "callcode", "ofs", "st", "prepend", "prefix, period", "perlen", "count", "inversed sequence") . "\n";' \
+euguess_check: # aseqno, "euleri" , ofs, "nonn", prepend, invlist  ,            "term"
+	# ->         aseqno, "euguess", ofs, 3     , prepend, left-init, right-pad, "term" 
+	#            0       1          2    3       4        5
+	perl -e 'print join("\t", "aseqno", "callcode", "ofs", "seqtype", "prepend", "left-init", "right-pad", "original terms", "term") . "\n";' \
 	>        $@.txt
-	sed -e "s/eulerixf/euguess/" euguess3.tmp \
+	sed -e "s/eulerixf/euguess/" -e "s/\tnonn\t/\t3\t/" euguess2.tmp \
 	| perl find_period.pl -n 5 -d $(D) \
 	>>       $@.txt
 	head -n4 $@.txt
@@ -2121,6 +2119,8 @@ euguess_check: # determine periods
 	cd $(COMMON) ; make -f checks.make -s html_check1 FILE=$@ 
 	rm -vf $(COMMON)/$@.txt
 euguess:
+euguess: #       aseqno, "euguess", ofs, "nonn", prepend, left-init, right-pad, "term" 
+	# ->         aseqno, "euguess", ofs, "nonn", prepend, left-init, right-pad, "term" 
 	perl eulerxfm_post.pl euguess_check.txt \
 	>        $@.gen \
 	2>       $@.rest.tmp
@@ -2162,11 +2162,33 @@ euguman:
 	wc -l    $@.gen
 eugpolym:
 	cp -v    $@.man $@.gen
+#--
+euguess_short8: # remove all with numbers that are too big
+	perl -ne 'print if ! m{\,\-?\d{8}};' euguess2.tmp \
+	| sed -e "s/\tnonn\t/\t3\t/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------
 etgeneric:
 	grep -E "^A[0-9]" $@.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+etsmall1:
+	perl grep_small.pl -n 5 euguess2.tmp \
+	| cut -f1,6 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq2 LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.info, n.name \
+	  FROM seq2 s, asname n \
+	  WHERE s.aseqno = n.aseqno \
+	    AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------
 etlin0:
 	$(DBAT) "SELECT i.aseqno, n.name \
@@ -2742,6 +2764,23 @@ palb: # 54
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------
+partion0:
+	$(DBAT) -x "SELECT n.aseqno, '$@', 0, '', a.author, n.name, b.bfimax \
+	FROM  asinfo a, asname n, bfinfo b \
+	WHERE a.aseqno = n.aseqno \
+	  AND a.aseqno = b.aseqno \
+	  AND a.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  AND n.name LIKE 'Number of partitions %' \
+	ORDER BY 1" \
+	| perl -pe "s{\'\'}{\'}g" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+partion:
+	head -n4 $@.gen
+	wc -l    $@.gen
+
 #--------------------------
 polyn:
 	cat $(COMMON)/names \

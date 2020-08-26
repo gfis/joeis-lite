@@ -78,20 +78,28 @@ public class EulerTransform implements Sequence {
    */
   public EulerTransform(final int seqType, final String terms, final String preTerms) {
     this();
+    mPreTerms = preTerms.isEmpty() ? new Z[0] : ZUtils.toZ(preTerms);
     switch (seqType) {
-      case 0:
-        mSeq = new A001477(); // any underlying generic sequence will receive 0, 1, 2, 3, ...
+      case 0: // generic
+        final String aseqno = terms;
+      /*
+        try {
+          mSeq = (Sequence) Class.forName("irvine.oeis." 
+              + aseqno.substring(0, 4).toLowerCase() + "." + aseqno).newInstance();
+        } catch (Exception exc) {
+          throw exc;
+        }
+      */
         break;  
-      case 1:
+      case 1: // finite
         mSeq = new FiniteSequence(ZUtils.toZ(terms));
         break;  
-      case 2:
+      case 2: // periodic
         mSeq = new PeriodicSequence(ZUtils.toZ(terms));
         break;
       default:
         throw new RuntimeException("Unexpected sequence type");
     }
-    mPreTerms = preTerms.isEmpty() ? new Z[0] : ZUtils.toZ(preTerms);
   }
   
   /**
@@ -105,7 +113,7 @@ public class EulerTransform implements Sequence {
     }
     // normal, transform terms
     ++mN; // starts with 1
-    final Z aNext = advance();
+    final Z aNext = advance(); // underlying sequence will see mN = 1, 2, 3, ... 
     mAs.add(aNext == null ? Z.ZERO : aNext); // get next a(n)
     mCs.add(Z.ZERO); // allocate c[n]
     for (int i = mN; i <= mN; ++i) {
@@ -130,6 +138,7 @@ public class EulerTransform implements Sequence {
   /**
    * Wrapper around <code>mSeq.next()</code>, may be overwritten 
    * when <code>seqType == 1</code>.
+   * When this method is overwritten, super.mN runs through 1, 2, 3, and so on.
    * @return next term of the underlying sequence to be Euler transformed
    */
   protected Z advance() {
