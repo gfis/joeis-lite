@@ -5,7 +5,9 @@ import irvine.math.z.ZUtils;
 
 /**
  * This class transforms the terms of an underlying sequence <code>a(n)</code>
- * into a sequence <code>b(k)</code> of zeroes and ones (or small integers).
+ * into a sequence <code>b(k)</code> of zeroes and ones (or small integers),
+ * where usually 1 indicates that the index of this sequence is a member of the underlying sequence,
+ * and 0 that it is not a member..
  * The default implementation returns <code>b(k) = 1</code> if <code>k in a(n)</code>
  * and zero otherwise. 
  * The underlying sequence <code>a(n)</code> should be monotone, with the exception
@@ -13,11 +15,12 @@ import irvine.math.z.ZUtils;
  * Subclasses may return other small values (different from 0 and 1).
  * @author Georg Fischer
  */
-public class IndicatorSequence implements Sequence {
+public class CharacteristicFunction implements Sequence {
 
   protected final Sequence mSeq; // underlying Sequence
-  protected final int mOffset; // first index of this IndicatorSequence
+  protected final int mOffset; // first index of this CharacteristicFunction
   protected final int mCacheNo; // number of leading terms of {@link #mSeq} to be cached 
+  protected final boolean mMemberIs1; // whether (non-) membership is indicated with 1 (0).
   protected final int[] mCache; // stores the numbers for the first {@link #mCacheNo} terms of {@link #mSeq}.
   protected int mCacheMax; // == mCache.length
   protected int mIN; // index of current term in this sequence
@@ -27,15 +30,17 @@ public class IndicatorSequence implements Sequence {
   protected static int sDebug = 0; // the term before mNextTerm
 
   /**
-   * Create a new IndicatorSequence from the numbers returned by a {@link Sequence}.
-   * @param seq sequence to be transformed in an IndicatorSequence
-   * @param skip number of leading numbers not to be returned by {@link #next}
+   * Create a new CharacteristicFunction from the numbers returned by a {@link Sequence}.
+   * @param offset number of leading numbers not to be returned by {@link #next}
+   * @param seq sequence to be transformed in an CharacteristicFunction
+   * @param memberIs1 whether (non-) membership is indicated with 1 (0).
    * @param cacheNo number of leading terms of {@link #seq} to be cached 
    */
-  public IndicatorSequence(final int offset, final Sequence seq, final int cacheNo) {
+  public CharacteristicFunction(final int offset, final Sequence seq, boolean memberIs1, final int cacheNo) {
     mSeq = seq;
     mOffset = offset;
     mCacheNo = cacheNo;
+    mMemberIs1 = memberIs1;
     mIN = mOffset - 1;
     mSN = mCacheNo;
     final int[] caNums = new int[cacheNo]; // stores the leading terms
@@ -73,6 +78,33 @@ public class IndicatorSequence implements Sequence {
     }
   }
 
+  /**
+   * Create a new CharacteristicFunction from the numbers returned by a {@link Sequence}.
+   * @param offset number of leading numbers not to be returned by {@link #next}
+   * @param seq sequence to be transformed in an CharacteristicFunction
+   * @param memberIs1 whether (non-) membership is indicated with 1 (0).
+   */
+  public CharacteristicFunction(final int offset, final Sequence seq, boolean memberIs1) {
+   this(offset, seq, memberIs1, 4);
+  }
+  
+  /**
+   * Create a new CharacteristicFunction from the numbers returned by a {@link Sequence}.
+   * @param offset number of leading numbers not to be returned by {@link #next}
+   * @param seq sequence to be transformed in an CharacteristicFunction
+   */
+  public CharacteristicFunction(final int offset, final Sequence seq) {
+   this(offset, seq, true, 4);
+  }
+  
+  /**
+   * Create a new CharacteristicFunction from the numbers returned by a {@link Sequence}.
+   * @param seq sequence to be transformed in an CharacteristicFunction
+   */
+  public CharacteristicFunction(final Sequence seq) {
+   this(1, seq, true, 4);
+  }
+  
   @Override
   public Z next() {
     ++mIN;
@@ -92,17 +124,17 @@ public class IndicatorSequence implements Sequence {
 
   /**
    * Maps the state of the term if the underlying sequence
-   * to a value of this IndicatorSequence.
+   * to a value of this CharacteristicFunction.
    * This method may be overwritten. 
    * For example, a negation can be accompilished by 
    * <code>return super.indicate(num, 1 - state)</code>
    * @param num term of the underlying sequence to be indicated
    * @param state usually 1 for "is a member" and 0 for "is not a member" 
    * (of the underlying sequence).
-   * @return value for <code>this</code> IndicatorSequence, default 1
+   * @return value for <code>this</code> CharacteristicFunction, default 1
    */
   protected int indicate(final int num, final int state) {
-    return (state == 1) ? 1 : 0;
+    return ((mMemberIs1 ? state : 1 - state) == 1) ? 1 : 0;
   }
 
   /**
@@ -111,7 +143,7 @@ public class IndicatorSequence implements Sequence {
    */
   public static void main(final String[] args) {
     sDebug = 1;
-    Sequence indSeq = new IndicatorSequence(1, new irvine.oeis.a000.A000032(), 4);
+    Sequence indSeq = new CharacteristicFunction(1, new irvine.oeis.a000.A000032(), true, 4);
     int termNo = 64;
     for (int iterm = 0; iterm < termNo; ++iterm) {
       System.out.println(String.valueOf(iterm) + " " + indSeq.next().toString());

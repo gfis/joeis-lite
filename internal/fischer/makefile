@@ -1739,6 +1739,17 @@ record:
 	head -n4 $@.tmp
 	wc -l    $@.tmp	
 #----
+compseq: # Complement of rseqno.
+	grep -E "^\%[NCF] A[0-9]* *Complement of " $(COMMON)/cat25.txt \
+	| sed -e "s/ /\t/" -e "s/ /\t/" \
+	| perl deris.pl -p NCF -f $(COMMON)/joeis_ofter.txt -cc $@ \
+	2>              $@.nyi.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	head -n4        $@.nyi.tmp
+	wc -l    $@.gen $@.nyi.tmp
+#----
 diffseq: # (First|Second...) differences of ...
 	perl deris.pl -f $(COMMON)/joeis_ofter.txt -cc $@ record.tmp \
 	2>              $@.nyi.tmp \
@@ -2118,7 +2129,10 @@ euguess_check: # aseqno, "euleri" , ofs, "nonn", prepend, invlist  ,            
 	cp -v    $@.txt $(COMMON)
 	cd $(COMMON) ; make -f checks.make -s html_check1 FILE=$@ 
 	rm -vf $(COMMON)/$@.txt
-euguess:
+etpart: # manually selected "Number of partition ... " with Indicatorsequence
+	grep -E "^A" etpart.man > etpart.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 euguess: #       aseqno, "euguess", ofs, "nonn", prepend, left-init, right-pad, "term" 
 	# ->         aseqno, "euguess", ofs, "nonn", prepend, left-init, right-pad, "term" 
 	perl eulerxfm_post.pl euguess_check.txt \
@@ -2766,7 +2780,7 @@ palb: # 54
 	wc -l    $@.gen
 #--------------------------
 partion0:
-	$(DBAT) -x "SELECT n.aseqno, '$@', 0, '', a.author, n.name, b.bfimax \
+	$(DBAT) -x "SELECT n.aseqno, '$@', 0, '', SUBSTR(a.author,2,4), n.name, b.bfimax \
 	FROM  asinfo a, asname n, bfinfo b \
 	WHERE a.aseqno = n.aseqno \
 	  AND a.aseqno = b.aseqno \
@@ -2774,6 +2788,18 @@ partion0:
 	  AND n.name LIKE 'Number of partitions %' \
 	ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
+	| sed -e "s/Number of partitions //" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+partion1:
+	cut -b1-7 partion0.tmp \
+	| sed -e "s/^/\^/" \
+	>        $@.a.tmp
+	grep -Ef $@.a.tmp euguess2.tmp \
+	| sed -e "s/eulerixf/partion1/" \
+	>        $@.b.tmp
+	sort partion0.tmp partion1.b.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp

@@ -28,7 +28,7 @@ if (scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
-my $pletter = "N";
+my $pletter = "N"; # default, or "NCF"
 my $callcode = "recordval";
 my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
@@ -73,6 +73,7 @@ close(OFT);
 print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
 #----------------
 my %callcodes = qw(
+    compseq   ComplementSequence
     diffseq   DifferenceSequence
     recordpos RecordPositionSequence
     recordval RecordSequence
@@ -91,6 +92,22 @@ while (<>) {
         $parm4  = "";
         if ($line =~ m{apparent|empirical|conject}i) {
             # ignore the unproved
+        } elsif ($callcode =~ m{\Acompseq}) {
+            if (0) {
+            } elsif ($name =~ m{Complement of\s*(A\d+)\s*[\.\;\:]}) {
+                $rseqno = $1;
+            }
+            if (defined($ofters{$rseqno})) { # found and implemented in jOEIS {
+                $parm1 = "new $rseqno()";
+                ($roffset, $terms) = split(/\t/, $ofters{$rseqno});
+                if ($roffset !~ m{\A\-?\d+\Z}) {
+                    print "# $0: invalid offset \"$roffset\" for $rseqno\n";
+                }
+            } else {
+                $rseqno = $VOID;
+            }
+            # compseq
+
         } elsif ($callcode =~ m{\Adiffseq}) {
             if (0) {
             } elsif( $name =~ m{([Ff]irst|[Ss]econd|[Tt]hird|[Ff]ourth|[Ff]ifth|[Ss]ixth|[Ss]eventh|\d+th) differences? (of|give)[^A]*(A\d{6})}) {
