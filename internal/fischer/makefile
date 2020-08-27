@@ -127,7 +127,7 @@ EX=
 select2:
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s \
-		SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
+	    SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
 	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
 	$(DBAT) -x "SELECT s.aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
@@ -1728,55 +1728,51 @@ posins2:
 	head -n2 posins.rest
 	wc -l    posins.gen posins.rest
 	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
-#--------------------------------
-# Record values ...
-record:
-	grep -E "^\%[CNF]" $(COMMON)/cat25.txt \
-	| grep -Ei "records? " | grep -v "James A. Record" \
-	| grep -vEI "record the" \
+#================================
+# Derived sequences processed with deris.pl
+#
+deris0: deris1
+	rm -rf   deris2.gen
+	echo "charfun compseq diffseq partprod partsum recordpos recordval dummy" \
+	| xargs -d" " -innn make -i deris2 TARGET=nnn
+	head -n4 deris2.gen
+	wc -l    deris2.gen
+deris1: 
+	echo -n "characteristic|indicator"         > charfun.grep.tmp
+	echo -n "complement"                       > compseq.grep.tmp
+	echo -n "difference"                       > diffseq.grep.tmp
+	echo -n "partial product"                  > partprod.grep.tmp
+	echo -n "partial sum"                      > partsum.grep.tmp
+	echo -n "record"                           > recordpos.grep.tmp
+	echo -n "record"                           > recordval.grep.tmp
+# -n: no trailing newline!
+deris2:
+	#================================
+	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt \
+	| grep -iE "`cat $(TARGET).grep.tmp`" \
 	| sed -e "s/ /\t/" -e "s/ /\t/" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp	
-#----
-compseq: # Complement of rseqno.
-	grep -E "^\%[NCF] A[0-9]* *Complement of " $(COMMON)/cat25.txt \
-	| sed -e "s/ /\t/" -e "s/ /\t/" \
-	| perl deris.pl -p NCF -f $(COMMON)/joeis_ofter.txt -cc $@ \
-	2>              $@.nyi.tmp \
+	| perl deris.pl -p NCF -f $(COMMON)/joeis_ofter.txt -cc $(TARGET) \
+	2>       $(TARGET).nyi.tmp \
 	| sort | uniq -w7 \
-	>        $@.gen
+	>        $(TARGET).gen
+	head -n4 $(TARGET).gen
+	wc -l    $(TARGET).*
+	cat      $(TARGET).gen \
+	>>       $@.gen
+deris:
+	make charfun
+	sort deris2.gen charfun.gen | uniq -w7 \
+	>        deris.gen
 	head -n4 $@.gen
-	head -n4        $@.nyi.tmp
-	wc -l    $@.gen $@.nyi.tmp
+	wc -l    $@.gen
 #----
-diffseq: # (First|Second...) differences of ...
-	perl deris.pl -f $(COMMON)/joeis_ofter.txt -cc $@ record.tmp \
-	2>              $@.nyi.tmp \
-	| sort | uniq -w7 \
-	>        $@.gen
+charfun: # Characteristic function of rseqno.
+	perl charfun_index.pl -d $(D) -cc charfun \
+	>        $@.gen \
+	2>       $@.nyi.tmp
 	head -n4 $@.gen
-	head -n4        $@.nyi.tmp
-	wc -l    $@.gen $@.nyi.tmp
-#----
-recordpos: # where records occur
-	perl deris.pl -f $(COMMON)/joeis_ofter.txt -cc $@ record.tmp \
-	2>              $@.nyi.tmp \
-	| sort | uniq -w7 \
-	>        $@.gen
-	head -n4 $@.gen
-	head -n4        $@.nyi.tmp
-	wc -l    $@.gen $@.nyi.tmp
-#----
-recordval: # record values of ...
-	perl deris.pl -f $(COMMON)/joeis_ofter.txt -cc $@ record.tmp \
-	2>              $@.nyi.tmp \
-	| sort | uniq -w7 \
-	>        $@.gen
-	head -n4 $@.gen
-	head -n4        $@.nyi.tmp
-	wc -l    $@.gen $@.nyi.tmp
-#--------------------------------
+	wc -l    $@.gen
+#================================
 rectoproc:
 	grep -E 'rectoproc' $(COMMON)/cat25.txt \
 	| cut -b 4- | sed -e "s/ /\t/" \
