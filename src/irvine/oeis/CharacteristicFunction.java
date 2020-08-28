@@ -1,7 +1,6 @@
 package irvine.oeis;
 
 import irvine.math.z.Z;
-import irvine.math.z.ZUtils;
 
 /**
  * This class transforms the terms of an underlying sequence <code>a(n)</code>
@@ -30,13 +29,13 @@ public class CharacteristicFunction implements Sequence {
   protected static int sDebug = 0; // the term before mNextTerm
 
   /**
-   * Create a new CharacteristicFunction from the numbers returned by a {@link Sequence}.
+   * Create a new characteristic function from the numbers returned by a {@link Sequence}.
    * @param offset number of leading numbers not to be returned by {@link #next}
-   * @param seq sequence to be transformed in an CharacteristicFunction
+   * @param seq sequence to be transformed in a characteristic function
    * @param memberIs1 whether (non-) membership is indicated with 1 (0).
-   * @param cacheNo number of leading terms of {@link #seq} to be cached 
+   * @param cacheNo number of leading terms of <code>seq</code> to be cached
    */
-  public CharacteristicFunction(final int offset, final Sequence seq, boolean memberIs1, final int cacheNo) {
+  public CharacteristicFunction(final int offset, final Sequence seq, final boolean memberIs1, final int cacheNo) {
     mSeq = seq;
     mOffset = offset;
     mCacheNo = cacheNo;
@@ -47,7 +46,7 @@ public class CharacteristicFunction implements Sequence {
     mCacheMax = 0;
     for (int ican = 0; ican < cacheNo; ++ican) { // determine the maximum term to be cached
       mPrevTerm = mSeq.next().intValue();
-      int term = mPrevTerm; // consume cacheNo terms
+      final int term = mPrevTerm; // consume cacheNo terms
       if (term < 0) {
         throw new RuntimeException("cannot indicate negative terms");
       }
@@ -73,25 +72,25 @@ public class CharacteristicFunction implements Sequence {
       mCache[icam] = indicate(icam, 0);
     }
     for (int ican = 0; ican < cacheNo; ++ican) { // set specific terms in cache
-      int icam = caNums[ican];
+      final int icam = caNums[ican];
       mCache[icam] = indicate(icam, 1);
     }
   }
 
   /**
-   * Create a new CharacteristicFunction from the numbers returned by a {@link Sequence}.
+   * Create a new characteristic function from the numbers returned by a {@link Sequence}.
    * @param offset number of leading numbers not to be returned by {@link #next}
-   * @param seq sequence to be transformed in an CharacteristicFunction
+   * @param seq sequence to be transformed in a characteristic function
    * @param memberIs1 whether (non-) membership is indicated with 1 (0).
    */
-  public CharacteristicFunction(final int offset, final Sequence seq, boolean memberIs1) {
+  public CharacteristicFunction(final int offset, final Sequence seq, final boolean memberIs1) {
    this(offset, seq, memberIs1, 4);
   }
   
   /**
-   * Create a new CharacteristicFunction from the numbers returned by a {@link Sequence}.
+   * Create a new characteristic function from the numbers returned by a {@link Sequence}.
    * @param offset number of leading numbers not to be returned by {@link #next}
-   * @param seq sequence to be transformed in an CharacteristicFunction
+   * @param seq sequence to be transformed in a characteristic function
    */
   public CharacteristicFunction(final int offset, final Sequence seq) {
    this(offset, seq, true, 4);
@@ -99,7 +98,7 @@ public class CharacteristicFunction implements Sequence {
   
   /**
    * Create a new CharacteristicFunction from the numbers returned by a {@link Sequence}.
-   * @param seq sequence to be transformed in an CharacteristicFunction
+   * @param seq sequence to be transformed in a characteristic function
    */
   public CharacteristicFunction(final Sequence seq) {
    this(1, seq, true, 4);
@@ -124,14 +123,14 @@ public class CharacteristicFunction implements Sequence {
 
   /**
    * Maps the state of the term if the underlying sequence
-   * to a value of this CharacteristicFunction.
+   * to a value of this characteristic function.
    * This method may be overwritten. 
-   * For example, a negation can be accompilished by 
+   * For example, a negation can be accomplished by
    * <code>return super.indicate(num, 1 - state)</code>
    * @param num term of the underlying sequence to be indicated
    * @param state usually 1 for "is a member" and 0 for "is not a member" 
    * (of the underlying sequence).
-   * @return value for <code>this</code> CharacteristicFunction, default 1
+   * @return value for <code>this</code> characteristic function, default 1
    */
   protected int indicate(final int num, final int state) {
     return ((mMemberIs1 ? state : 1 - state) == 1) ? 1 : 0;
@@ -143,10 +142,10 @@ public class CharacteristicFunction implements Sequence {
    */
   public static void main(final String[] args) {
     sDebug = 1;
-    Sequence indSeq = new CharacteristicFunction(1, new irvine.oeis.a000.A000032(), true, 4);
-    int termNo = 64;
+    final Sequence indSeq = new CharacteristicFunction(1, new irvine.oeis.a000.A000032(), true, 4);
+    final int termNo = 64;
     for (int iterm = 0; iterm < termNo; ++iterm) {
-      System.out.println(String.valueOf(iterm) + " " + indSeq.next().toString());
+      System.out.println(iterm + " " + indSeq.next().toString());
     } 
   }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
-import irvine.oeis.a001.A001477; // the non-negative numbers 0,1,2,3,4, ...
+
 /**
  * Apply the Euler transform to some other sequence.
  * The program follows closely the code of the OEIS implementations
