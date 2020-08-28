@@ -5,7 +5,7 @@
 #
 #:# Usage:
 #:#   perl shuffle_head.pl input > output
-#:#     -n field number (counted from 1, default 1) 
+#:#     -n field number (counted from 1, default 4) 
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -15,7 +15,7 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1
 # $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
 
 my $debug = 0;
-my $nparm = 1; # counted from 1
+my $nparm = 4; # counted from 1
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -33,7 +33,7 @@ my $line = "";
 my  ($aseqno, $termno, $fail, $expected, $dummy, $computed);
 my $mod1; # modify before
 my $mod2; # modify after
-while (<DATA>) {
+while (<>) {
     s/\s+\Z//; # chompr
     $line = $_;
     ($aseqno, $termno, $fail, $expected, $dummy, $computed) = split(/\s+/, $line);
@@ -42,21 +42,19 @@ while (<DATA>) {
         my @comput = split(/\,/, substr($computed, 1));
         ($mod1, $mod2) = ("", "");
         if (0) {
-        } elsif (&check(1, 0) == 1) {
-            $mod1 = "new PrependSequence(";
-            $mod2 = ", "  .join(",", splice(@expect, 0, 1) . ")");
-        } elsif (&check(2, 0) == 1) {
-            $mod1 = "new PrependSequence(";
-            $mod2 = ", "  .join(",", splice(@expect, 0, 2) . ")");
+    #   } elsif (&check(1, 0) == 1) {
+    #       $mod1 = "new PrependSequence(";
+    #       $mod2 = ", "  .join(",", splice(@expect, 0, 1) . ")");
+    #   } elsif (&check(2, 0) == 1) {
+    #       $mod1 = "new PrependSequence(";
+    #       $mod2 = ", "  .join(",", splice(@expect, 0, 2) . ")");
         } elsif (&check(0, 1) == 1) {
-            $mod1 =    "new SkipSequence(";
-            $mod2 = ", 1)";
+            $mod1 =    "next();";
         } elsif (&check(0, 2) == 1) {
-            $mod1 =    "new SkipSequence(";
-            $mod2 = ", 2)";
+            $mod1 =    "next(); next();";
         }
         if (length($mod1 . $mod2) > 0) {
-            print "UPDATE seq4 SET parm$nparm=\'$mod1\'||parm$nparm||\'$mod2\' WHERE aseqno=\'$aseqno\';"
+            print "UPDATE seq4 SET parm$nparm=\'$mod1\' WHERE aseqno=\'$aseqno\';"
                 . "-- $expected $computed\n";
         }
     }

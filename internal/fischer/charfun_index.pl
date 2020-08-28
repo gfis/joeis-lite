@@ -95,7 +95,9 @@ while (<DATA>) {
         $parm2  = "";
         $parm3  = "";
         $parm4  = "";
-        $name   = $name || "";
+        if ($name eq "") {
+        	$name = "unspec";
+        }
         if (0) {
         } elsif ($rseqno =~ m{\AA\d+\Z}) {
             &defined_rseqno();

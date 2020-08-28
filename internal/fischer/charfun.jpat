@@ -12,5 +12,6 @@ public class $(ASEQNO) extends CharacteristicFunction {
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(PARM2), $(PARM1));
+    $(PARM4)
   }
 }
