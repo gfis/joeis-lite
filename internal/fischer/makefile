@@ -266,6 +266,8 @@ tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
 runjava: # CLASS= MAXT=
 	$(JAVA) $(CLASS) -n $(MAXT)
+pseudotest: # ASEQNO=
+	$(JAVA) irvine.oeis.PseudoSequence $(ASEQNO)
 ej:
 	echo $(JAVA)
 #================================================================
@@ -1772,6 +1774,26 @@ charfun: # Characteristic function of rseqno.
 	2>       $@.nyi.tmp
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+vpost: vpost1 vpost2 vpost3
+vpost1:
+	$(DBAT) -x "SELECT i.aseqno, i.offset1, d.data \
+	  FROM asinfo i, asname n, asdata d \
+	  WHERE i.aseqno = n.aseqno \
+	    AND n.aseqno = d.aseqno \
+	    AND i.author LIKE '_Jonathan Vos Post%' \
+	    AND LOWER(n.name) LIKE '%partial sums %' \
+	  ORDER BY 1" \
+	>        $@.tmp
+	wc -l    $@.tmp
+vpost2:
+	perl vpost_incr.pl vpost1.tmp \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+vpost3:
+	cp -v    vpost2.tmp  $(COMMON)/nonincr.txt
+	cd $(COMMON) ; make -f checks.make -s html_check1 FILE=nonincr
+	rm -vf $(COMMON)/nonincr.txt
 #================================
 rectoproc:
 	grep -E 'rectoproc' $(COMMON)/cat25.txt \

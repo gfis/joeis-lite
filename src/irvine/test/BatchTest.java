@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2020-08-30: V2.2: trailing "/" in b-file path is optional
  *  2020-08-16: V2.1: 8 terms for FAIL
  *  2020-06-19: V2.0: -s seekPosition
  *  2020-06-17, V1.7: -s skipAseqno; output process id
@@ -20,18 +21,18 @@
  *  2019-04-05, Georg Fischer: copied from org.teherba.ramath.util.ExpressionReader
  */
 package irvine.test;
-import  irvine.math.z.Z;
-import  irvine.oeis.Sequence;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
 
-import  java.io.BufferedReader;
-import  java.io.Closeable;
-import  java.io.File; // delete()
-import  java.io.FileInputStream;
-import  java.io.InputStreamReader;
-import  java.nio.channels.Channels;
-import  java.nio.channels.FileChannel; // seekable()
-import  java.nio.channels.ReadableByteChannel;
-import  java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.Closeable;
+import java.io.File; // delete()
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel; // seekable()
+import java.nio.channels.ReadableByteChannel;
+import java.util.ArrayList;
 
 /** Reads a subset of OEIS 'stripped', calls jOEIS sequence classes
  *  and compares the results
@@ -47,7 +48,7 @@ public class BatchTest {
   private String  aseqno;
 
   /** Directory where b-files can be found */
-  private String  bFileDirectory;
+  private String  bFilePath;
 
   /** Number of terms already computed by the sequence */
   private int     count;
@@ -115,7 +116,7 @@ public class BatchTest {
     maxFailCount   = 8;
     millisToRun    = 4000L;
     sequenceMayRun = true;
-    bFileDirectory = "./bfile";
+    bFilePath      = "../../../OEIS-mat/common/bfile/";
     seekPosition   = 0L; // start at beginning of input file
     readFromBFile  = false;
     skipAseqno     = "A000000";
@@ -208,11 +209,11 @@ public class BatchTest {
   private int testAgainstBFile(Sequence seq) {
     int failure = 0; // assume pass
     try {
-      String fileName = bFileDirectory + "/b" + aseqno.substring(1) + ".txt";
+      String fileName = bFilePath + "b" + aseqno.substring(1) + ".txt";
       ReadableByteChannel lineChannel = (new FileInputStream(fileName)).getChannel();
       BufferedReader lineReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
       String line = null;
-      int termNoLimit = 29061947; // high than any b-file index
+      int termNoLimit = 29061947; // higher than any b-file index
       if (giveUpLimit > 0) {
         termNoLimit = giveUpLimit;
       }
@@ -417,7 +418,7 @@ public class BatchTest {
     int iarg = 0;
     if (args.length == 0) {
       System.out.print("Usage: BatchTest [-v[v]] [-d level] [-b bfile-dir] [-t timeout] {- | filename}\n"
-          + "    -b directory  check against b-files in this directory (default: off)\n"
+          + "    -b path       check against b-files in this directory (default: off)\n"
           + "    -d level      debugging level: 0=none, 1=some, 2=more (default: 0)\n"
           + "    -s seekpos    seek to position (decimal or hex offset printed behind \"# start\" (default: 0x0)\n"
           + "    -t seconds    interrupt a sequence after this time (default: 4 s)\n"
@@ -432,8 +433,11 @@ public class BatchTest {
       if (false) {
 
       } else if (arg.startsWith("-b")) {
-        bFileDirectory = args[iarg ++];
-        readFromBFile  = true;
+        bFilePath = args[iarg ++];
+        if (! bFilePath.endsWith("/")) {
+          bFilePath += '/';
+        }
+        readFromBFile = true;
 
       } else if (arg.startsWith("-d")) {
         try {
