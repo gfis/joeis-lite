@@ -2,6 +2,7 @@
 
 # Extract parameters for DiffernceSequence.java, RecordSequence etc.
 # @(#) $Id$
+# 2020-08-31: take all, also nyi; option -ps
 # 2020-08-27: ComplementSequence and CharacteristicFunction
 # 2020-06-24: ofter_file
 # 2020-06-22: moved from diffseq.pl
@@ -10,11 +11,12 @@
 #:# Usage:
 #:#     grep -E "..." $(COMMON)/cat25.txt \
 #:#     | cut -b4 | sed -e "s/ /\t/" \
-#:#     | perl deris.pl [-cc callcode] [-d debug] [-f ofter_file] [-p tpattern] > diffseq.gen 2> diffseq.rest
+#:#     | perl deris.pl [-cc callcode] [-d debug] [-f ofter_file] [-pseudo] [-prepend] > diffseq.gen 2> diffseq.rest
 #:#     -d  debugging level (0=none (default), 1=some, 2=more)
 #:#     -f  file with aseqno, offset1, terms (default $(COMMON)/joeis_ofter.txt)
-#:#     -cc one of the callcodes diffseq, recordpos, recordval (default)
-#:#     -p  character set for allowed internal format record code(s): NCF (default), N, CN, CFN, FN
+#:#     -cc one of the callcodes diffseq, recordpos, recordval (default), charfun, ...
+#:#     -pseudo  whether to generate records for PseudoSequence
+#:#     -prepend whether to generate records for PrependSequence
 #:# Reads deriv0.txt for implemented jOEIS sequences with their offsets.
 #--------------------------------------------------------
 use strict;
@@ -29,37 +31,31 @@ if (scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
-my $pletter = "NCF"; # default, or "NCF"
-my $callcode = "recordval";
+my $callcode;
 my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
+my $pseudo  = 0;
+my $prepend = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
-    } elsif ($opt   =~ m{cc}i) {
+    } elsif ($opt   =~ m{\-cc}i) {
         $callcode   = shift(@ARGV);
-    } elsif ($opt   =~ m{d}  ) {
+    } elsif ($opt   =~ m{\-d}  ) {
         $debug      = shift(@ARGV);
-    } elsif ($opt   =~ m{f}  ) {
+    } elsif ($opt   =~ m{\-f}  ) {
         $ofter_file = shift(@ARGV);
-    } elsif ($opt   =~ m{p}  ) {
-        $pletter    = shift(@ARGV);
-        $pletter    = uc($pletter); # some subset of {"C", "F", "N"}
+    } elsif ($opt   =~ m{\-prep} ) {
+        $prepend    = 1;
+    } elsif ($opt   =~ m{\-pseudo} ) {
+        $pseudo     = 1;
     } else {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
-
-my $line;
-my ($tletter, $aseqno, $offset, $terms, $name, @rest); # records in joeis_names.txt
-my $level;
-$offset = 1;
-my $rseqno; # aseqno of the referenced, underlying sequence
-my $roffset; # offset for $rseqno
-my $parm1  = ""; # instance of subclass
-my $parm2  = ""; # roffset
-my $parm3  = ""; # level etc.
-my $parm4  = ""; # additional statements in constructor
 #----------------
+my $aseqno;
+my $offset = 1;
+my $terms;
 my %ofters = ();
 open (OFT, "<", $ofter_file) || die "cannot read $ofter_file\n";
 while (<OFT>) {
@@ -82,67 +78,59 @@ my %callcodes = qw(
     recordpos RecordPositionSequence
     recordval RecordSequence
     );
-my %levels = qw(first 1 second 2 third 3 ternary 3 fourth 4 4th 4 fifth 5 5th 5 sixth 6 6th 6 seventh 7 7th 7 8th 8);
+my %levels = qw(first 1 second 2 third 3 ternary 3 fourth 4 4th 4 
+                fifth 5 5th 5 sixth 6 6th 6 seventh 7 7th 7 8th 8 eighth 8 
+                9th 9 ninth 9 10th 10 tenth 10); # for diffseq
 my $VOID = "VOID";
-my $NYI  = "NYI";
+
+my $line;
+my $name;
+my @parms; # records in joeis_names.txt
+my $level; # of nesting for diffseq
+my $rseqno; # aseqno of the referenced, underlying sequence
+my $roffset; # offset for $rseqno
 
 while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
-    ($tletter, $aseqno, $name) = split(/\t/, $line);
-    if (($tletter =~ m{[$pletter]}o) and ! defined($ofters{$aseqno})) { # not yet in jOEIS
+    if ($prepend == 0) {
+        my $tletter;
+        ($tletter, $aseqno, $name) = split(/\t/, $line);
         $rseqno = $VOID; # assume suppression of the generation of this record
-        $parm1  = "";
-        $parm2  = "";
-        $parm3  = "";
-        $parm4  = "";
+        my $rimpl = 0; # assume referenced seq not yet implemented
         if ($line =~ m{apparent|empirical|conject}i) {
-            # ignore the unproved
+            # ignore the unproven
         #--------------------------------
         } elsif ($callcode =~ m{\Acharfun}) {
-            if (0) {
-            } elsif ($name =~ m{(Characteristic|Indicator) function of\s*(A\d+)\s*[\.\;\:]}i) {
+            if ($name =~ m{(Characteristic|Indicator) function of\s*(A\d+)\s*[\.\;\:]}i) {
                 $rseqno = $2;
             }
-            &defined_rseqno();
+            $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Acompseq}) {
-            if (0) {
-            } elsif ($name =~ m{Complement of\s*(A\d+)\s*[\.\;\:]}i) {
+            if ($name =~ m{Complement of\s*(A\d+)\s*[\.\;\:]}i) {
                 $rseqno = $1;
             }
-            &defined_rseqno();
+            $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Adiffseq}) {
-            if (0) {
-            } elsif( $name =~ m{([Ff]irst|[Ss]econd|[Tt]hird|[Ff]ourth|[Ff]ifth|[Ss]ixth|[Ss]eventh|\d+th) differences? (of|give)[^A]*(A\d{6})}i) {
+            if ($name =~ m{([Ff]irst|[Ss]econd|[Tt]hird|[Ff]ourth|[Ff]ifth|[Ss]ixth|[Ss]eventh|\d+th) differences? (of|give)[^A]*(A\d{6})}i) {
                 $level  = lc($1);
                 $rseqno = $3;
             }
-            if (&defined_rseqno() == 1) {
-                if ($level =~ m{[a-z]}) {
-                    $level = $levels{$level};
-                }
-                while ($level > 1) {
-                    $parm1 = "new DifferenceSequence($parm1)";
-                    $level --;
-                } # while level
-                $parm3 = $level;
-            }
+            $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Apartprod}) {
-            if (0) {
-            } elsif ($name =~ m{Partial products of \s*(A\d+)\s*[\.\;\:]}i) {
+            if ($name =~ m{Partial products of \s*(A\d+)\s*[\.\;\:]}i) {
                 $rseqno = $1;
             }
-            &defined_rseqno();
+            $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Apartsum}) {
-            if (0) {
-            } elsif ($name =~ m{Partial sums of \s*(A\d+)\s*[\.\;\:]}i) {
+            if ($name =~ m{Partial sums of \s*(A\d+)\s*[\.\;\:]}i) {
                 $rseqno = $1;
             }
-            &defined_rseqno();
+            $rimpl = &is_defined_rseqno();
          #--------------------------------
         } elsif ($callcode =~ m{\Arecordpos}) {
             if (0) {
@@ -157,43 +145,69 @@ while (<>) {
                 # %N A171867 Records in A181391 (positions).
                 $rseqno = $2;
             }
-            &defined_rseqno();
+            $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Arecordval}) {
-            if (0) {
-            } elsif ($name =~ m{Records? (high |)(values? |terms? |entries |highs |)(of|in)[^A]*(A\d{6})}) {
+            if ($name =~ m{Records? (high |)(values? |terms? |entries |highs |)(of|in)[^A]*(A\d{6})}) {
                 $rseqno = $4;
                 if ($name =~ m{(indices of record|where record|records? are|\(positions\))}i) {
                     $rseqno= $VOID; # skip these
                 }
             }
-            &defined_rseqno();
+            $rimpl = &is_defined_rseqno();
         #--------------------------------
         } # switch callcodes
-
-        if (($rseqno ne $VOID) and ($rseqno ne $NYI)) { # matched feature
-            $parm2 = $roffset; # offset of $rseqno
-            print        join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3, $parm4, "", "", "", "", $name) . "\n";
-            #                                                    rseqno  roffset level   constr
-        } elsif ($rseqno eq $NYI) {
-            print STDERR join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3, $parm4, "", "", "", "", $name) . "\n";
-        } # matched feature
+   #================
+    } else {
+        ($aseqno, $callcode, @parms) = split(/\t/, $line);
+    }
+    if (1) { # ! defined($ofters{$aseqno})) { 
     } # not in jOEIS
 } # while <>
 #----------------
-sub defined_rseqno { # try to get $roffset and $terms
-	my $result = 1; # assume success
-    if (defined($ofters{$rseqno})) { # found and implemented in jOEIS {
-        ($roffset, $terms) = split(/\t/, $ofters{$rseqno});
-        if ($roffset !~ m{\A\-?\d+\Z}) {
-            print "# $0: invalid offset \"$roffset\" for $rseqno\n";
+sub is_defined_rseqno { # try to get ($rseqno, $roffset) 
+    my $result = 1; # assume success
+    if ($rseqno ne $VOID) {
+        if (defined($ofters{$rseqno})) { # found and implemented in jOEIS {
+            ($roffset, $terms) = split(/\t/, $ofters{$rseqno});
+            if ($roffset !~ m{\A\-?\d+\Z}) {
+                print "# $0: invalid offset \"$roffset\" for $rseqno\n";
+            }
+        } else {
+           $result = 0; # failure
         }
-        $parm1 = "new $rseqno()";
-        $parm2 = $roffset;
-    } else {
-       $rseqno = $NYI;
-       $result = 0; # failure
-    }
+        for (my $pind = 0; $pind < 10; $pind ++) { # parms[0] = offset, parms[9] = name
+            $parms[$pind] = "";
+        } # for $pind
+        my ($offset, $terms);
+        if (defined($ofters{$aseqno})) {
+           ($offset, $terms) = split(/\t/, $ofters{$aseqno} || "0\t0");
+        } else {
+           $offset = 0;
+        }
+        $parms[0] = $offset;
+        $parms[1] = "new $rseqno()";
+        $parms[9] = $name;
+        $parms[2] = $roffset; # offset of $rseqno
+        if ($callcode eq "diffseq") {
+            if ($level =~ m{[a-z]}) {
+                $level = $levels{$level};
+            }
+            while ($level > 1) {
+                $parms[1] = "new DifferenceSequence($parms[1])";
+                $level --;
+            } # while level
+            $parms[3] = $level;
+        } # diffseq
+        if (0) {
+        } elsif ($pseudo != 0) { # generate all with underlying PseudoSequence
+            print join("\t", $aseqno, $callcode, @parms) .       "\n";
+            print join("\t", $rseqno, "pseudo",  $roffset, "") . "\n";
+        } elsif ($result == 1) { # rseqno implemented in jOEIS
+            print join("\t", $aseqno, $callcode, @parms)        . "\n";
+        } # conditional output
+    } # matched feature
     return $result;
-} # defined_rseqno
+} # is_defined_rseqno
+#----------------
 __DATA__

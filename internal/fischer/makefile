@@ -1733,7 +1733,8 @@ posins2:
 #================================
 # Derived sequences processed with deris.pl
 #
-deris0: deris1
+DEROPT=
+deris0: deris1 charfun2
 	rm -rf   deris2.gen
 	echo "charfun compseq diffseq partprod partsum recordpos recordval dummy" \
 	| xargs -d" " -innn make -i deris2 TARGET=nnn
@@ -1753,27 +1754,29 @@ deris2:
 	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt \
 	| grep -iE "`cat $(TARGET).grep.tmp`" \
 	| sed -e "s/ /\t/" -e "s/ /\t/" \
-	| perl deris.pl -p NCF -f $(COMMON)/joeis_ofter.txt -cc $(TARGET) \
-	2>       $(TARGET).nyi.tmp \
-	| sort | uniq -w7 \
+	| perl deris.pl $(DEROPT)  -cc $(TARGET) -f $(COMMON)/joeis_ofter.txt \
 	>        $(TARGET).gen
 	head -n4 $(TARGET).gen
-	wc -l    $(TARGET).*
+	wc -l    $(TARGET).gen
 	cat      $(TARGET).gen \
 	>>       $@.gen
 deris:
-	make charfun
-	sort deris2.gen charfun.gen | uniq -w7 \
+	sort     deris2.gen charfun2.gen | uniq -w7 \
 	>        deris.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-charfun: # Characteristic function of rseqno.
-	perl charfun_index.pl -d $(D) -cc charfun \
-	>        $@.gen \
-	2>       $@.nyi.tmp
+charfun2: # Characteristic function of rseqno
+	perl charfun_index.pl \
+	| sed -e "s/ /\t/" -e "s/ /\t/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.*
+	cat      $@.tmp \
+	| perl deris.pl $(DEROPT) -cc charfun -f $(COMMON)/joeis_ofter.txt \
+	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen
+	wc -l    $@.*
 #----
 vpost: vpost1 vpost2 vpost3
 vpost1:
@@ -2288,10 +2291,11 @@ symbol0:
 	wc -l    $@.tmp
 	make seq LIST=$@.tmp
 symbol1:
-	$(DBAT) -x "SELECT s.aseqno, COALESCE(j.superclass, 'not_in_joeis'), n.name \
-	  FROM seq s \
-	  LEFT JOIN asname n ON s.aseqno = n.aseqno \
-	  LEFT JOIN joeis  j ON n.aseqno = j.aseqno \
+	$(DBAT) -x "SELECT s.aseqno, n.name \
+	  FROM seq s, asname n \
+	  WHERE s.aseqno = n.aseqno \
+	    AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    AND n.name NOT LIKE 'allocated %' \
 	  ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp

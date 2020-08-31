@@ -22,120 +22,34 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
 
 my $debug = 0;
-if (scalar(@ARGV) == 0) {
-    print `grep -E "^#:#" $0 | cut -b3-`;
-    exit;
-}
-my $pletter = "NCF"; # default, or "NCF"
-my $callcode = "recordval";
-my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
+# if (scalar(@ARGV) == 0) {
+#     print `grep -E "^#:#" $0 | cut -b3-`;
+#     exit;
+# }
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
-    } elsif ($opt   =~ m{cc}i) {
-        $callcode   = shift(@ARGV);
     } elsif ($opt   =~ m{d}  ) {
         $debug      = shift(@ARGV);
-    } elsif ($opt   =~ m{f}  ) {
-        $ofter_file = shift(@ARGV);
-    } elsif ($opt   =~ m{p}  ) {
-        $pletter    = shift(@ARGV);
-        $pletter    = uc($pletter); # some subset of {"C", "F", "N"}
     } else {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
 
 my $line;
-my ($tletter, $aseqno, $offset, $terms, $name, @rest); # records in joeis_names.txt
+my ($aseqno, $name, @rest); # records in joeis_names.txt
 my ($char, $fun, $par, $nseqno);
-my $level;
-$offset = 1;
 my $rseqno; # aseqno of the referenced, underlying sequence
-my $roffset; # offset for $rseqno
-my $parm1; # instance of subclass
-my $parm2; # roffset
-my $parm3; # level etc.
-my $parm4; # additional statements in constructor
-#----------------
-my %ofters = ();
-open (OFT, "<", $ofter_file) || die "cannot read $ofter_file\n";
-while (<OFT>) {
-    s{\s+\Z}{};
-    ($aseqno, $offset, $terms) = split(/\t/);
-    $terms = $terms || "";
-    if ($offset < -1) { # offsets -2, -3: strange, skip these
-    } else {
-        $ofters{$aseqno} = "$offset\t$terms";
-    }
-} # while <OFT>
-close(OFT);
-print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
-#----------------
-my %callcodes = qw(
-    charfun   CharacteristicFunction
-    compseq   ComplementSequence
-    diffseq   DifferenceSequence
-    partsum   PartialSumSequence
-    recordpos RecordPositionSequence
-    recordval RecordSequence
-    );
-my %levels = qw(first 1 second 2 third 3 ternary 3 fourth 4 4th 4 fifth 5 5th 5 sixth 6 6th 6 seventh 7 7th 7 8th 8);
-my $VOID = "VOID";
-my $NYI  = "NYI";
 
 while (<DATA>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
     #characteristic functions (002): A000007 A000004 A000027 all 0
     ($char, $fun, $par, $aseqno, $rseqno, $nseqno, $name, @rest) = split(/\s+/, $line);
-    print "# line \"$aseqno\", \"$rseqno\", \"$nseqno\", \"$name\"\n"if $debug >= 1;
-    if (! defined($ofters{$aseqno})) { # not yet in jOEIS
-        $parm1  = "";
-        $parm2  = "";
-        $parm3  = "";
-        $parm4  = "";
-        if ($name eq "") {
-        	$name = "unspec";
-        }
-        if (0) {
-        } elsif ($rseqno =~ m{\AA\d+\Z}) {
-            &defined_rseqno();
-            print "# test1 \"$aseqno\", \"$rseqno\", \"$nseqno\", \"$name\"\n" if $debug >= 1; 
-        } elsif ($nseqno =~ m{\AA\d+\Z}) {
-            $rseqno = $nseqno;
-            &defined_rseqno();
-            print "# test2 \"$aseqno\", \"$rseqno\", \"$nseqno\", \"$name\"\n" if $debug >= 1; 
-            $parm1 = "new $rseqno(), false";
-        } else {
-            $rseqno = $VOID;
-        }
-
-        if (($rseqno ne $VOID) and ($rseqno ne $NYI)) { # matched feature
-            $parm2 = $roffset; # offset of $rseqno
-            print        join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3, $parm4, "", "", "", "", $name) . "\n";
-            #                                                    rseqno  roffset level   constr
-        } elsif ($rseqno eq $NYI) {
-            print STDERR join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3, $parm4, "", "", "", "", $name) . "\n";
-        } # matched feature
-    } # not in jOEIS
+    if ($rseqno =~ m{\AA\d{6}}) { # not "NA"
+        print "%N $aseqno Characteristic function of $rseqno.\n";
+    } # not NA
 } # while DATA
-#----------------
-sub defined_rseqno { # try to get $roffset and $terms
-    my $result = 1; # assume success
-    if (defined($ofters{$rseqno})) { # found and implemented in jOEIS {
-        ($roffset, $terms) = split(/\t/, $ofters{$rseqno});
-        if ($roffset !~ m{\A\-?\d+\Z}) {
-            print "# $0: invalid offset \"$roffset\" for $rseqno\n";
-        }
-        $parm1 = "new $rseqno()";
-        $parm2 = $roffset;
-    } else {
-       $rseqno = $NYI;
-       $result = 0; # failure
-    }
-    return $result;
-} # defined_rseqno
 __DATA__
 characteristic functions (002): A000007 A000004 A000027 all 0
 characteristic functions (003): A000012 A001477 [empty] natural numbers
