@@ -17,7 +17,7 @@
 #:#     -cc one of the callcodes diffseq, recordpos, recordval (default), charfun, ...
 #:#     -pseudo  whether to generate records for PseudoSequence
 #:#     -prepend whether to generate records for PrependSequence
-#:# Reads deriv0.txt for implemented jOEIS sequences with their offsets.
+#:# Reads ofter_file for implemented jOEIS sequences with their offsets and first terms
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -74,9 +74,15 @@ my %callcodes = qw(
     charfun   CharacteristicFunction
     compseq   ComplementSequence
     diffseq   DifferenceSequence
+    eulerx    EulerTransform
+    eulerix   EulerInvTransform
+    moebiusx  MobiusTransform
+    moebiusix InverseMobiusTransform
     partsum   PartialSumSequence
-    recordpos RecordPositionSequence
-    recordval RecordValue
+    primepos  PrimePositionSubsequence
+    primeval  PrimeSubsequence
+    recordpos RecordPositionSubsequence
+    recordval RecordSubsequence
     );
 my %levels = qw(first 1 second 2 third 3 ternary 3 fourth 4 4th 4 
                 fifth 5 5th 5 sixth 6 6th 6 seventh 7 7th 7 8th 8 eighth 8 
@@ -97,66 +103,140 @@ while (<>) {
         my $tletter;
         ($tletter, $aseqno, $name) = split(/\t/, $line);
         $rseqno = $VOID; # assume suppression of the generation of this record
-        my $rimpl = 0; # assume referenced seq not yet implemented
+        my $isok = 0; # assume referenced seq not yet implemented
         if ($line =~ m{apparent|empirical|conject}i) {
             # ignore the unproven
         #--------------------------------
         } elsif ($callcode =~ m{\Acharfun}) {
-            if ($name =~ m{(Characteristic|Indicator) function of\s*(A\d+)\s*[\.\;\:]}) {
+            if ($name =~ m{\A(Characteristic|Indicator) function of\s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $2;
             }
-            $rimpl = &is_defined_rseqno();
+            if ($isok = &is_defined_rseqno()) {
+            }
         #--------------------------------
         } elsif ($callcode =~ m{\Acompseq}) {
-            if ($name =~ m{Complement of\s*(A\d+)\s*[\.\;\:]}) {
+            if ($name =~ m{\AComplement of\s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $1;
             }
-            $rimpl = &is_defined_rseqno();
+            if ($isok = &is_defined_rseqno()) {
+                if ($pseudo == 1 and $aseqno lt $rseqno) { 
+                    $isok = 0; # enforce aseqno > rseqno
+                }
+            }
         #--------------------------------
         } elsif ($callcode =~ m{\Adiffseq}) {
-            if ($name =~ m{([Ff]irst|[Ss]econd|[Tt]hird|[Ff]ourth|[Ff]ifth|[Ss]ixth|[Ss]eventh|\d+th) differences? (of|give)[^A]*(A\d{6})}) {
+            if (0) {
+            } elsif ($name =~ m{\A(First|Second|Third|Fourth|Fifth|Sixth|Seventh|\d+th) differences? of\s+(A\d{6})[\.\;\:]}) {
                 $level  = lc($1);
-                $rseqno = $3;
+                $rseqno = $2;
+            } elsif ($name =~ m{\A(First|Second|Third|Fourth|Fifth|Sixth|Seventh|\d+th) differences? give\s+(A\d{6})[\.\;\:]}) {
+                $level  = lc($1);
+                $rseqno = $aseqno;
+                $aseqno = $2;
             }
-            $rimpl = &is_defined_rseqno();
+            if ($isok = &is_defined_rseqno()) {
+                if ($level =~ m{[a-z]}) {
+                    $level = $levels{$level};
+                }
+                while ($level > 1) {
+                    $parms[3] = "new DifferenceSequence($parms[3])";
+                    $level --;
+                } # while level
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Aeulerx}) {
+            if ($name =~ m{\A(Euler transform of|Inverse Euler transform is)\s*(A\d+)\s*[\.\;\:]}) {
+                $rseqno = $2;
+            }
+            if ($isok = &is_defined_rseqno()) {
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Aeulerix}) {
+            if ($name =~ m{\A(Inverse Euler transform of|Euler transform is)\s*(A\d+)\s*[\.\;\:]}) {
+                $rseqno = $2;
+            }
+            if ($isok = &is_defined_rseqno()) {
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Amoebiusx}) {
+            if ($name =~ m{\A(M[oö]e?bius transform of|Inverse M[oö]e?bius transform is)\s*(A\d+)\s*[\.\;\:]}) {
+                $rseqno = $2;
+            }
+            if ($isok = &is_defined_rseqno()) {
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Amoebiusix}) {
+            if ($name =~ m{\A(Inverse M[oö]e?bius transform of|M[oö]e?bius transform is)\s*(A\d+)\s*[\.\;\:]}) {
+                $rseqno = $2;
+            }
+            if ($isok = &is_defined_rseqno()) {
+            }
         #--------------------------------
         } elsif ($callcode =~ m{\Apartprod}) {
-            if ($name =~ m{Partial products of \s*(A\d+)\s*[\.\;\:]}) {
+            if ($name =~ m{\APartial products of \s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $1;
             }
-            $rimpl = &is_defined_rseqno();
+            if ($isok = &is_defined_rseqno()) {
+            }
         #--------------------------------
         } elsif ($callcode =~ m{\Apartsum}) {
-            if ($name =~ m{Partial sums of \s*(A\d+)\s*[\.\;\:]}) {
+            if ($name =~ m{\APartial sums of \s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $1;
             }
-            $rimpl = &is_defined_rseqno();
-         #--------------------------------
+            if ($isok = &is_defined_rseqno()) {
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Aprimepos}) {
+            if (0) {
+            } elsif ($name =~ m{\A(Positions|Locations|Indices|Indexes) of primes (of |in )(A\d{6})}) {
+                $rseqno = $3;
+            } elsif ($name =~ m{\APrime positions? (of|in) *(A\d{6})}) {
+                $rseqno = $2;
+            }
+            if ($isok = &is_defined_rseqno()) {
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Aprimeval}) {
+            if ($name =~ m{\APrimes (of|in) *(A\d{6})}) {
+                $rseqno = $2;
+            }
+            if ($isok = &is_defined_rseqno()) {
+            }
+        #--------------------------------
         } elsif ($callcode =~ m{\Arecordpos}) {
             if (0) {
-            } elsif ($name =~ m{(Positions|Locations|Indices|Indexes) of records[^A]*(A\d{6})}) {
+            } elsif ($name =~ m{\A(Positions|Locations|Indices|Indexes) of records[ a-z]+(A\d{6})}) {
                 $rseqno = $2;
-            } elsif ($name =~ m{[Ww]here records[^A]*(A\d{6})}) {
+            } elsif ($name =~ m{[Ww]here records[ a-z]+(A\d{6})}) {
                 $rseqno = $1;
-            } elsif ($name =~ m{Record positions? (of|in)[^A]*(A\d{6})}) {
+            } elsif ($name =~ m{\ARecord positions? (of|in) *(A\d{6})}) {
                 $rseqno = $2;
-            } elsif ($name =~ m{Records (of|in) (A\d{6})\s*\(positions\)}) {
+            } elsif ($name =~ m{\ARecords (of|in) (A\d{6})\s*\(positions\)}) {
                 # %C A171863 Records in A171862 (positions).
                 # %N A171867 Records in A181391 (positions).
                 $rseqno = $2;
             }
-            $rimpl = &is_defined_rseqno();
+            if ($isok = &is_defined_rseqno()) {
+            }
         #--------------------------------
         } elsif ($callcode =~ m{\Arecordval}) {
-            if ($name =~ m{Records? (high |)(values? |terms? |entries |highs |)(of|in)[^A]*(A\d{6})}) {
+            if ($name =~ m{\ARecords? (high |)(values? |terms? |entries |highs |)(of |in )(A\d{6})}) {
                 $rseqno = $4;
                 if ($name =~ m{(indices of record|where record|records? are|\(positions\))}i) {
-                    $rseqno= $VOID; # skip these
+                    $rseqno = $VOID; # skip these
                 }
             }
-            $rimpl = &is_defined_rseqno();
+            if ($isok = &is_defined_rseqno()) {
+            }
         #--------------------------------
         } # switch callcodes
+        if (0) { # no output
+        } elsif ($pseudo != 0 and $rseqno ne $VOID) { # generate all with underlying PseudoSequence
+            print join("\t", $aseqno  , $callcode, @parms       ) . "\n";
+            print join("\t", $parms[1], "pseudo",  $parms[2], "") . "\n";
+        } elsif ($isok == 1) { # rseqno implemented in jOEIS
+            print join("\t", $aseqno,   $callcode, @parms)        . "\n";
+        } # conditional output
    #================
     } else {
         ($aseqno, $callcode, @parms) = split(/\t/, $line);
@@ -167,6 +247,12 @@ while (<>) {
 #----------------
 sub is_defined_rseqno { # try to get ($rseqno, $roffset) 
     my $result = 1; # assume success
+    for (my $pind = 0; $pind < 10; $pind ++) { # parms[0] = offset, parms[9] = name
+        $parms[$pind] = "";
+    } # for $pind
+    $roffset = 0;
+    my $offset = 0;
+    my $terms  = "0";
     if ($rseqno ne $VOID) {
         if (defined($ofters{$rseqno})) { # found and implemented in jOEIS {
             ($roffset, $terms) = split(/\t/, $ofters{$rseqno});
@@ -174,39 +260,22 @@ sub is_defined_rseqno { # try to get ($rseqno, $roffset)
                 print "# $0: invalid offset \"$roffset\" for $rseqno\n";
             }
         } else {
-           $result = 0; # failure
+           $result = $pseudo; 
         }
-        for (my $pind = 0; $pind < 10; $pind ++) { # parms[0] = offset, parms[9] = name
-            $parms[$pind] = "";
-        } # for $pind
-        my ($offset, $terms);
         if (defined($ofters{$aseqno})) {
            ($offset, $terms) = split(/\t/, $ofters{$aseqno} || "0\t0");
         } else {
            $offset = 0;
         }
-        $parms[0] = $offset;
-        $parms[1] = "new $rseqno()";
-        $parms[9] = $name;
-        $parms[2] = $roffset; # offset of $rseqno
-        if ($callcode eq "diffseq") {
-            if ($level =~ m{[a-z]}) {
-                $level = $levels{$level};
-            }
-            while ($level > 1) {
-                $parms[1] = "new DifferenceSequence($parms[1])";
-                $level --;
-            } # while level
-            $parms[3] = $level;
-        } # diffseq
-        if (0) {
-        } elsif ($pseudo != 0) { # generate all with underlying PseudoSequence
-            print join("\t", $aseqno, $callcode, @parms) .       "\n";
-            print join("\t", $rseqno, "pseudo",  $roffset, "") . "\n";
-        } elsif ($result == 1) { # rseqno implemented in jOEIS
-            print join("\t", $aseqno, $callcode, @parms)        . "\n";
-        } # conditional output
-    } # matched feature
+    } else {
+        $result = 0;
+    } # no matched feature
+    $parms[0] = $offset;
+    $parms[1] = $rseqno; # underlying sequence
+    $parms[2] = $roffset; # offset of $rseqno
+    $parms[3] = "new $rseqno()"; # instance of underlying sequence
+    $parms[5] = ""; # additional constructor parameter(s)
+    $parms[9] = $name;
     return $result;
 } # is_defined_rseqno
 #----------------

@@ -133,7 +133,7 @@ select2:
 	$(DBAT) -x "SELECT s.aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 s, asinfo i \
 	    WHERE s.aseqno = i.aseqno \
-	      AND (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis)) \
+	      AND (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
 	      AND i.keyword NOT LIKE '%dead%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
@@ -203,7 +203,8 @@ testout: # parameter: CC
 	make runbt evaluate
 test:
 	rm -f batch.log
-	head -n$(MANY) $(CC).gen      > ghead.tmp
+	head -n$(MANY) $(CC).gen \
+	| perl -ne 'print if ! m{\AA\d+\tpseudo\s}; ' > ghead.tmp
 	make stripgr LIST=ghead.tmp
 	echo 0x0 > seekpos.mon
 	cp seekpos.mon seekpos.tmp
@@ -257,9 +258,9 @@ bfile:
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 #----
 seqt: # ASEQNO=$(ASEQNO) - print data up to 260 characters
-	$(JAVA) irvine.test.SequenceTest -a $(ASEQNO) 
+	$(JAVA) irvine.test.SequenceTest -a $(ASEQNO) -n $(MAXT) -o $(OFFSET)     | tee x.tmp
 seqtest: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.test.SequenceTest -a $(ASEQNO) -bf -n $(MAXT) -o $(OFFSET)
+	$(JAVA) irvine.test.SequenceTest -a $(ASEQNO) -n $(MAXT) -o $(OFFSET) -bf | tee x.tmp
 spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
 tiletest:
@@ -1736,42 +1737,59 @@ posins2:
 DEROPT=
 deris0: deris1 charfun2
 	rm -rf   deris2.gen
-	echo "charfun compseq diffseq partprod partsum recordpos recordval dummy" \
-	| xargs -d" " -innn make -i deris2 TARGET=nnn
+	ls -1 *.deris.tmp | sed -e "s/\.deris\.tmp//" \
+	| xargs -l -innn make -i deris2 TARGET=nnn
 	head -n4 deris2.gen
 	wc -l    deris2.gen
-deris1: 
-	echo -n "characteristic|indicator"         > charfun.grep.tmp
-	echo -n "complement"                       > compseq.grep.tmp
-	echo -n "difference"                       > diffseq.grep.tmp
-	echo -n "partial product"                  > partprod.grep.tmp
-	echo -n "partial sum"                      > partsum.grep.tmp
-	echo -n "record"                           > recordpos.grep.tmp
-	echo -n "record"                           > recordval.grep.tmp
+deris1:
+	rm -f *.deris.tmp 
+	# echo -n "characteristic|indicator"         > charfun.deris.tmp
+	# echo -n "complement"                       > compseq.deris.tmp
+	echo -n "difference"                       > diffseq.deris.tmp
+	# echo -n "euler"                            > eulerx.deris.tmp
+	# echo -n "euler"                            > eulerix.deris.tmp
+	# echo -n "m[oö]e?bius"                      > moebiusx.deris.tmp
+	# echo -n "m[oö]e?bius"                      > moebiusix.deris.tmp
+	# echo -n "partial product"                  > partprod.deris.tmp
+	# echo -n "partial sum"                      > partsum.deris.tmp
+	# echo -n "prime"                            > primepos.deris.tmp
+	# echo -n "prime"                            > primeval.deris.tmp
+	# echo -n "record"                           > recordpos.deris.tmp
+	# echo -n "record"                           > recordval.deris.tmp
 # -n: no trailing newline!
 deris2:
-	#================================
-	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt \
-	| grep -iE "`cat $(TARGET).grep.tmp`" \
+	#================================ $(TARGET) ====
+	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt charfun2.tmp \
+	| grep -iE "`cat $(TARGET).deris.tmp`" \
 	| sed -e "s/ /\t/" -e "s/ /\t/" \
-	| perl deris.pl $(DEROPT)  -cc $(TARGET) -f $(COMMON)/joeis_ofter.txt \
+	| perl deris.pl $(DEROPT) -cc $(TARGET) -f $(COMMON)/joeis_ofter.txt \
 	>        $(TARGET).gen
 	head -n4 $(TARGET).gen
 	wc -l    $(TARGET).gen
 	cat      $(TARGET).gen \
 	>>       $@.gen
+deris3:
+	cut -f2  deris2.gen | sort | uniq -c
+deris4:
+	grep -E "^\%[NCF] A[0-9]*" ../../../OEIS-mat/common/cat25.txt charfun2.tmp \
+	| grep -iE "`cat charfun.deris.tmp`" 
+deris5:
+	echo -n "A054521" > x.tmp
+	grep -iE "`cat x.tmp`" charfun2.tmp
+#----
 deris:
-	sort     deris2.gen charfun2.gen | uniq -w7 \
+	sort     deris2.gen | uniq -w7 \
 	>        deris.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
 charfun2: # Characteristic function of rseqno
 	perl charfun_index.pl \
-	| sed -e "s/ /\t/" -e "s/ /\t/" \
+	| grep -vE "A167393" \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc -l    $@.*
+	wc -l    $@.tmp
+charfun3_nu:
 	cat      $@.tmp \
 	| perl deris.pl $(DEROPT) -cc charfun -f $(COMMON)/joeis_ofter.txt \
 	>        $@.gen
