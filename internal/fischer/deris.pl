@@ -2,7 +2,7 @@
 
 # Extract parameters for DiffernceSequence.java, RecordSequence etc.
 # @(#) $Id$
-# 2020-08-31: take all, also nyi; option -ps
+# 2020-08-31: take all, also nyi; options -pseudo and -prep; RT=78
 # 2020-08-27: ComplementSequence and CharacteristicFunction
 # 2020-06-24: ofter_file
 # 2020-06-22: moved from diffseq.pl
@@ -76,7 +76,7 @@ my %callcodes = qw(
     diffseq   DifferenceSequence
     partsum   PartialSumSequence
     recordpos RecordPositionSequence
-    recordval RecordSequence
+    recordval RecordValue
     );
 my %levels = qw(first 1 second 2 third 3 ternary 3 fourth 4 4th 4 
                 fifth 5 5th 5 sixth 6 6th 6 seventh 7 7th 7 8th 8 eighth 8 
@@ -102,39 +102,39 @@ while (<>) {
             # ignore the unproven
         #--------------------------------
         } elsif ($callcode =~ m{\Acharfun}) {
-            if ($name =~ m{(Characteristic|Indicator) function of\s*(A\d+)\s*[\.\;\:]}i) {
+            if ($name =~ m{(Characteristic|Indicator) function of\s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $2;
             }
             $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Acompseq}) {
-            if ($name =~ m{Complement of\s*(A\d+)\s*[\.\;\:]}i) {
+            if ($name =~ m{Complement of\s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $1;
             }
             $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Adiffseq}) {
-            if ($name =~ m{([Ff]irst|[Ss]econd|[Tt]hird|[Ff]ourth|[Ff]ifth|[Ss]ixth|[Ss]eventh|\d+th) differences? (of|give)[^A]*(A\d{6})}i) {
+            if ($name =~ m{([Ff]irst|[Ss]econd|[Tt]hird|[Ff]ourth|[Ff]ifth|[Ss]ixth|[Ss]eventh|\d+th) differences? (of|give)[^A]*(A\d{6})}) {
                 $level  = lc($1);
                 $rseqno = $3;
             }
             $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Apartprod}) {
-            if ($name =~ m{Partial products of \s*(A\d+)\s*[\.\;\:]}i) {
+            if ($name =~ m{Partial products of \s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $1;
             }
             $rimpl = &is_defined_rseqno();
         #--------------------------------
         } elsif ($callcode =~ m{\Apartsum}) {
-            if ($name =~ m{Partial sums of \s*(A\d+)\s*[\.\;\:]}i) {
+            if ($name =~ m{Partial sums of \s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $1;
             }
             $rimpl = &is_defined_rseqno();
          #--------------------------------
         } elsif ($callcode =~ m{\Arecordpos}) {
             if (0) {
-            } elsif ($name =~ m{(Positions|Locations|Indices|Indexes) of records[^A]*(A\d{6})i}) {
+            } elsif ($name =~ m{(Positions|Locations|Indices|Indexes) of records[^A]*(A\d{6})}) {
                 $rseqno = $2;
             } elsif ($name =~ m{[Ww]here records[^A]*(A\d{6})}) {
                 $rseqno = $1;

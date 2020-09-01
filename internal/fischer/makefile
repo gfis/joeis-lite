@@ -257,9 +257,9 @@ bfile:
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 #----
 seqt: # ASEQNO=$(ASEQNO) - print data up to 260 characters
-	$(JAVA) irvine.test.SequenceTest $(ASEQNO)
+	$(JAVA) irvine.test.SequenceTest -a $(ASEQNO) 
 seqtest: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.test.SequenceTest $(ASEQNO) $(MAXT) $(OFFSET)
+	$(JAVA) irvine.test.SequenceTest -a $(ASEQNO) -bf -n $(MAXT) -o $(OFFSET)
 spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
 tiletest:

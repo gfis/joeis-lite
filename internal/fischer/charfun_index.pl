@@ -1,18 +1,14 @@
 #!perl
 
-# Generate lists of characteristic function sequences
+# Evaluate the wiki index and simulate %N records for characteristic function sequences
 # @(#) $Id$
 # 2020-08-27 Georg Fischer: copied from deris.pl
 # 
 # DATA from <https://oeis.org/wiki/Index_to_OEIS:_Section_Ch#char_fns>
 #
 #:# Usage:
-#:#     perl charfun_index.pl [-d debug] [-f ofter_file] > charfun.gen 2> charfun.nyi.tmp
+#:#   perl charfun_index.pl > charfun2.gen 
 #:#     -d  debugging level (0=none (default), 1=some, 2=more)
-#:#     -f  file with aseqno, offset1, terms (default $(COMMON)/joeis_ofter.txt)
-#:#     -cc one of the callcodes diffseq, recordpos, recordval (default)
-#:#     -p  character set for allowed internal format record code(s): NCF (default), N, CN, CFN, FN
-#:# Reads deriv0.txt for implemented jOEIS sequences with their offsets.
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -22,10 +18,10 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
 
 my $debug = 0;
-# if (scalar(@ARGV) == 0) {
-#     print `grep -E "^#:#" $0 | cut -b3-`;
-#     exit;
-# }
+if (0 and scalar(@ARGV) == 0) {
+    print `grep -E "^#:#" $0 | cut -b3-`;
+    exit;
+}
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -47,7 +43,7 @@ while (<DATA>) {
     #characteristic functions (002): A000007 A000004 A000027 all 0
     ($char, $fun, $par, $aseqno, $rseqno, $nseqno, $name, @rest) = split(/\s+/, $line);
     if ($rseqno =~ m{\AA\d{6}}) { # not "NA"
-        print "%N $aseqno Characteristic function of $rseqno.\n";
+        print "%N $aseqno Characteristic function of $rseqno.\n"; # simulated cat25 record
     } # not NA
 } # while DATA
 __DATA__
