@@ -2,6 +2,7 @@
 
 # Find periods in sequences
 # 2020-08-18, Georg Fischer
+# Outdated variant, cf. find_period.pl
 #
 #:# Usage:
 #:#   perl find_repeat.pl input > output

@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2020-09-02, V2.2: do not import @OVerride 
 # 2020-06-21, V2.1: imports not from comments
 # 2020-06-16, V2.0: hash for imports automatically compiled
 # 2020-06-09, V1.8: leading "~~;  private final CR ~~parm2~~parm2~~...
@@ -30,7 +31,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V2.0";
+my $program = "gen_seq4.pl V2.2";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -291,7 +292,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WCR\.})             { $imports{"irvine.math.cr.CR"}                 = $itype; }
     if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
-        while (($line =~ s{[^\(\.\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
+        while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
             my $class_name = $1;
             # $class_name =~ s{\.\w+}{}; # remove static method or member
             if (($class_name !~ m{\AA\d+}) and ($class_name !~ m{\.})) {

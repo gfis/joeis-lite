@@ -2,6 +2,7 @@
 
 #Find parameters for Mathematica PadRight[] function or Java class irvine.oeis.PaddingSequence
 # 2020-08-21, Georg Fischer: copied from find_repeat.pl
+# This is the last variant.
 #
 #:# Usage:
 #:#   perl find_period.pl [-d debug] [-n 5] input > output

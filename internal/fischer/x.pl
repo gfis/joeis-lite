@@ -1,4 +1,4 @@
-java -Doeis.big-factor-limit=1000000000 -Xmx4g -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.SequenceTest A143123
-
-
-m=22; CoefficientList[Series[(1+x*Sum[x^k/Product[1-p*x, {p,0,k}], {k,0,m}])/(1-x^2)]], {x, 0,m}],x]
+use strict; \
+	if (m{^(A\d+)\s+Coefficients in expansion of Dirichlet series Product_p}) { \
+	  my $$aseqno =$$1; m{for\s+m\s*\=\s*(\-?\d+)}; my $$m = $$1;  \
+	  print join("\t", $$aseqno, "$@", 0, $$m) . "\n"; }  \

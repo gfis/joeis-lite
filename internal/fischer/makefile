@@ -127,14 +127,13 @@ EX=
 select2:
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s \
-	    SET name    = (SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno) \
-	    ,   offset  = (SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno)"
+	    SET name    = COALESCE((SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno), 'future sequence') \
+	    ,   offset  = COALESCE((SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno), 0)"
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
-	$(DBAT) -x "SELECT s.aseqno, callcode, $(OFS), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
-	    FROM seq4 s, asinfo i \
-	    WHERE s.aseqno = i.aseqno \
+	$(DBAT) -x "SELECT s.aseqno, callcode, COALESCE($(OFS), '0'), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
+	    FROM seq4 s LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
 	      AND (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
-	      AND i.keyword NOT LIKE '%dead%' \
+	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  >  $(CC).gen
@@ -809,6 +808,23 @@ digpow: # unfinished - handy/a031/A031146.java as pattern
 	| uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+# A035170 Coefficients in expansion of Dirichlet series Product
+diriprod:
+	cat $(COMMON)/names \
+	| perl dirichlet_product.pl -d 0 \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--
+diriprod0_old:
+	cat $(COMMON)/cat25.txt \
+	grep -E "^\%[NFC]" | cut -b4- \
+	#
+diriprod_old:
+	cp -v diriprod0.tmp $@.gen
 	wc -l    $@.gen
 #--------------------------------
 dupl_prep: dupl1 dupl2 dupl3 # duplicates 
