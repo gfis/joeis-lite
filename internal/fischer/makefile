@@ -1547,6 +1547,21 @@ pfprimex:
 	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
 	pfprime.tmp > pfprime.gen
 #--------------------------------
+# A191017 null    Primes with Kronecker symbol (p|14) = 1.
+# A191020 null    Primes p with Kronecker symbol (p|2*11) = 1.
+# A191023 null    Primes p which have Kronecker symbol (p|30) = 1.
+# A191025 null    Primes p which have Kronecker symbol (p|34) = 1.
+# A191028 null    Primes p with Kronecker symbol (p|38) = 1.
+prikron:
+	grep "Primes " $(COMMON)/joeis_names.txt \
+	| perl -ne 'use strict; my $$line = $$_; '\
+	'if ($$line =~ m{^(A\d+)\t\w+\tPrimes [^K]+Kronecker symbol \(p[\|\,\/]([\d\*]+)\)\s*\=\s*(\-?\d+)}) { '\
+	'  my ($$aseqno, $$mod, $$value) = ($$1, $$2, $$3); $$mod =~ s{2\*(\d+)}{2 * $$1}e; '\
+	'  print join("\t", $$aseqno, "$@", 0, $$mod, $$value) . "\n"; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 # A045391	null	Primes congruent to {1, 2} mod 7.	nonn,easy,changed,	1..1000
 # A045392	null	Primes congruent to 2 mod 7.	nonn,easy,changed,	1..1000
 # A129806	null	Primes congruent to +-5 mod 18.
