@@ -142,17 +142,17 @@ select2:
 	#     AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
 	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 clean: purge # parameter: CC; $(CC).pass.log from previous test is grepped from $(CC).gen
-	wc -l $(CC).gen
-	cut -b1-7 $(CC).pass.log > clean.tmp
-	grep -f clean.tmp $(CC).gen > $(CC).tmp
-	cp -v $(CC).tmp $(CC).gen
-	wc -l $(CC).gen
+	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > clean.grep.tmp
+	grep -f clean.grep.tmp $(CC).gen > $(CC).clean.tmp
+	cp -v $(CC).clean.tmp  $(CC).gen
+	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp 
 dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
 	wc -l $(CC).gen
 	cp    $(CC).gen $(CC).old.tmp
 	cut -b1-7 $(CC).pass.log > dirty.tmp
-	grep -vf dirty.tmp $(CC).gen > $(CC).tmp
-	cp -v $(CC).tmp $(CC).gen
+	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > dirty.grep.tmp
+	grep -vf dirty.grep.tmp $(CC).gen > $(CC).dirty.tmp
+	cp -v $(CC).dirty.tmp $(CC).gen
 	wc -l $(CC).gen
 logsel:# set the test results of CC= in column PARM=n
 	cut -f1,3 $(CC).fail.log $(CC).pass.log > logset.tmp
@@ -811,7 +811,7 @@ digpow: # unfinished - handy/a031/A031146.java as pattern
 	wc -l    $@.gen
 #--------------------------------
 # A035170 Coefficients in expansion of Dirichlet series Product
-diriprod:
+diriprod_short:
 	cat $(COMMON)/names \
 	| perl dirichlet_product.pl -d 0 \
 	| sort | uniq -w7 \
@@ -819,11 +819,14 @@ diriprod:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--
-diriprod0_old:
+diriprod0:
 	cat $(COMMON)/cat25.txt \
-	grep -E "^\%[NFC]" | cut -b4- \
-	#
-diriprod_old:
+	grep -E "^\%[NFC]" | grep -E "Dirichlet|Kronecker" | cut -b4- \
+	| perl dirichlet_product.pl -d 0 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+diriprod:
 	cp -v diriprod0.tmp $@.gen
 	wc -l    $@.gen
 #--------------------------------

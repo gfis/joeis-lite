@@ -34,17 +34,18 @@ my ($aseqno, $m);
 while (<>) {
     my $line = $_;
     if (0) {
-    } elsif ($line =~ m{\A(A\d+)\s+Coefficients in (the )?expansion of Dirichlet series Product_p}) {
+    } elsif ($line =~ m{\A(A\d+)\s+Coefficients in (the )?expansion of Dirichlet series Product}) {
         $aseqno = $1;
         $line =~ m{for\s+m\s*\=\s*(\-?\d+)};
         $m = $1;
         &output("diriprod",  $aseqno1);
-    } elsif ($line =~ m{\A(A\d+)\s+a\(n\)\s*=\s*Sum_\{[^\}]+\}\s*[Kk]ronecker\((\-?\d+)\,\s*[a-z]\)}) {
+    } elsif ($line =~ m{\A(A\d+)\s+a\(n\)\s*\=\s*Sum_\{[^\}]+\}\s*Kronecker\((\-?\d+)[\,\|\/]\s*[a-z]\)}) {
         # a(n) = Sum_{d|n} Kronecker(-36, d)
+        # a(n) = Sum_{d|n} Kronecker(-12, d)
         $aseqno = $1;
         $m = $2;
         &output("diriprod",  $aseqno1);
-    } elsif ($line =~ m{\A(A\d+)\s+(Also, )?[iI]nd(ices |exes )of (the )?nonzero terms in (the )?expansion of Dirichlet series Product_p}) {
+    } elsif ($line =~ m{\A(A\d+)\s+(Also, )?[iI]ndices of (the )?nonzero terms in (the )?expansion of Dirichlet series Product}) {
         # Indices of the nonzero terms in expansion of Dirichlet series Product_p (1-(Kronecker(m,p)+1)*p^(-
         $aseqno = $1;
         $line =~ m{for\s+m\s*\=\s*(\-?\d+)};
