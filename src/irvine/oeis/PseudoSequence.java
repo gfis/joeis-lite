@@ -24,7 +24,7 @@ import irvine.math.z.ZUtils;
  */
 public class PseudoSequence implements Sequence {
 
-  protected BufferedReader mLineReader;
+  final protected BufferedReader mLineReader;
   protected int mIndex; // index of current term
   
   /**
@@ -32,8 +32,11 @@ public class PseudoSequence implements Sequence {
    * @param aseqno A-number of the sequence to be simulated from its b-file.
    */
   public PseudoSequence(final String aseqno) {
-    String bFilePath = "../../../OEIS-mat/common/bfile/"; 
-    // OVerwrite by environment variable BFPATH if that is set
+    final String env = System.getenv("BFPATH"); // Use environment variable BFPATH if that is set
+    String bFilePath = env != null ? env : "../../../OEIS-mat/common/bfile/"; 
+    if (! bFilePath.endsWith("/")) {
+      bFilePath += "/";
+    }
     try {
       final String fileName = bFilePath + "b" + aseqno.substring(1) + ".txt";
       final ReadableByteChannel lineChannel = (new FileInputStream(fileName)).getChannel();

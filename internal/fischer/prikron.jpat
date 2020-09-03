@@ -19,6 +19,6 @@ public class $(ASEQNO) extends Subsequence {
   
   @Override
   public boolean isOk(Z term) {
-    return LongUtils.kronecker(term.intValue(), $(PARM1)) == $(PARM2);
+    return LongUtils.kronecker(term.longValueExact(), $(PARM1)) == $(PARM2);
   }
 }

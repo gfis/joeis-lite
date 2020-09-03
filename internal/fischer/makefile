@@ -86,7 +86,8 @@ pack1:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
-	; echo "$(CLASS)" | xargs -d" " -i{} echo src/irvine/oeis/{}.java  >> pack.$(CC).lst \
+	; perl -e 'foreach my $$name (split(/\,/, "$(CLASS)")) { print "src/irvine/oeis/$$name.java\n"; }' \
+	                                         >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.gen       >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.jpat      >> pack.$(CC).lst
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
@@ -264,8 +265,8 @@ spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
-runjava: # CLASS= MAXT=
-	$(JAVA) $(CLASS) -n $(MAXT)
+runjava: # CLASS= ARGS=
+	$(JAVA) $(CLASS) $(ARGS)
 pseudotest: # ASEQNO=
 	$(JAVA) irvine.oeis.PseudoSequence $(ASEQNO)
 ej:
