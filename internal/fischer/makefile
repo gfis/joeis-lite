@@ -2893,7 +2893,16 @@ partion1:
 partion:
 	head -n4 $@.gen
 	wc -l    $@.gen
-
+#----
+# A035534 Number of partitions of n with equal number of parts congruent to each of 0 and 1 (mod 3)
+partcond:
+	grep -E "Number of partitions " $(COMMON)/joeis_names.txt \
+	| perl partcond.pl -cc partcond \
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+	cp -v A035536.java A035679.java manual
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
