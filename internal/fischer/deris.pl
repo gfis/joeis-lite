@@ -108,10 +108,14 @@ while (<>) {
             # ignore the unproven
         #--------------------------------
         } elsif ($callcode =~ m{\Acharfun}) {
-            if ($name =~ m{\A(Characteristic|Indicator) function of\s*(A\d+)\s*[\.\;\:]}) {
-                $rseqno = $2;
-            }
-            if ($isok = &is_defined_rseqno()) {
+            if ($name =~ m{\A(Characteristic|Indicator) function of}) {
+                if ($name =~ m{\A(Characteristic|Indicator) function of[^A]*(A\d+)}) {
+                    $rseqno = $2;
+                    if ($isok = &is_defined_rseqno()) {
+                    }
+                } elsif (! defined($ofters{$aseqno})) {
+                    print STDERR "$line\n";
+                }
             }
         #--------------------------------
         } elsif ($callcode =~ m{\Acompseq}) {
@@ -149,6 +153,7 @@ while (<>) {
                 $rseqno = $2;
             }
             if ($isok = &is_defined_rseqno()) {
+            	$callcode = "eulerx_11";
             }
         #--------------------------------
         } elsif ($callcode =~ m{\Aeulerix}) {

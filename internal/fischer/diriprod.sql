@@ -2,9 +2,11 @@
 -- @(#) $Id$
 -- 2020-09-02, Georg Fischer; RT=78
 
-DELETE FROM seq4 WHERE aseqno IN ('A031363');
+DELETE FROM seq4 WHERE aseqno IN ('A031363','A192006');
 UPDATE seq4 a SET a.callcode = 'diripronz' WHERE a.name LIKE 'Nonzero%'; 
 UPDATE seq4 a SET a.callcode = 'diriproin' WHERE a.name LIKE 'Indices%'; 
+
+UPDATE seq4 a SET a.callcode = 'diriproin' WHERE a.aseqno in ('A035251', 'A035248', 'A035243','A035240'); 
 
 -- determine the superclass for indices of nonzero ...
 UPDATE seq4 a SET a.parm2 = COALESCE(

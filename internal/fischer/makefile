@@ -133,7 +133,7 @@ select2:
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
 	$(DBAT) -x "SELECT s.aseqno, callcode, COALESCE($(OFS), '0'), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 s LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
-	      AND (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
+	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
 	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
@@ -190,6 +190,12 @@ gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	perl gen_seq4.pl -d $(D) $(NC)  ghead.tmp
 	make -i $(CC).patch || :
+man: # copy sources that where manually edited
+	ls -1 manual/*.java | sed -e "s/manual\///" -e "s/\.java//" -e "s/$$/\tmanual\t0/" | tee $@.gen
+	perl -ne 'use strict; my ($$aseqno, @rest) = split(/\t/); '\
+	' my $$path = "../../src/irvine/oeis/" . lc(substr($$aseqno, 0, 4)) . "/"; '\
+	' my $$ignore = `mkdir $$path`; '\
+	' print `cp -v manual/$$aseqno.java $$path`; ' $@.gen 2> x.tmp
 dist:
 	rm -f dist.log
 	make dist1 2>&1 | tee dist.log
@@ -272,6 +278,8 @@ pseudotest: # ASEQNO=
 ej:
 	echo $(JAVA)
 #================================================================
+A035536:
+	cp -v A035536.man A035536.gen
 #================================
 bas: # only a few for basdig2
 	make bas_all TARGET=select
@@ -1780,13 +1788,13 @@ deris1:
 	rm -f *.deris.tmp 
 	# echo -n "characteristic|indicator"         > charfun.deris.tmp
 	# echo -n "complement"                       > compseq.deris.tmp
-	echo -n "difference"                       > diffseq.deris.tmp
+	# echo -n "difference"                       > diffseq.deris.tmp
 	# echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
 	# echo -n "m[oö]e?bius"                      > moebiusx.deris.tmp
 	# echo -n "m[oö]e?bius"                      > moebiusix.deris.tmp
 	# echo -n "partial product"                  > partprod.deris.tmp
-	# echo -n "partial sum"                      > partsum.deris.tmp
+	echo -n "partial sum"                      > partsum.deris.tmp
 	# echo -n "prime"                            > primepos.deris.tmp
 	# echo -n "prime"                            > primeval.deris.tmp
 	# echo -n "record"                           > recordpos.deris.tmp
@@ -1796,11 +1804,14 @@ deris2:
 	#================================ $(TARGET) ====
 	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt charfun2.tmp \
 	| grep -iE "`cat $(TARGET).deris.tmp`" \
-	| sed -e "s/ /\t/" -e "s/ /\t/" \
+	| sed -e "s/ /\t/" -e "s/ /\t/" -e "s/^[^\%]*\%/\%/" \
 	| perl deris.pl $(DEROPT) -cc $(TARGET) -f $(COMMON)/joeis_ofter.txt \
+	>        $(TARGET).tmp \
+	2>       $(TARGET).rest.tmp 
+	sort     $(TARGET).tmp | uniq -w7 \
 	>        $(TARGET).gen
 	head -n4 $(TARGET).gen
-	wc -l    $(TARGET).gen
+	wc -l    $(TARGET).gen $(TARGET).rest.tmp
 	cat      $(TARGET).gen \
 	>>       $@.gen
 deris3:
@@ -1822,6 +1833,7 @@ charfun2: # Characteristic function of rseqno
 	perl charfun_index.pl \
 	| grep -vE "A167393" \
 	>        $@.tmp
+	cat charfun.rest.man >> $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 charfun3_nu:
