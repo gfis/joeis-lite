@@ -16,7 +16,6 @@ __DATA__
 */
 
 import irvine.math.z.Z;
-import irvine.math.z.ZUtils;
 import irvine.oeis.Sequence;
 import java.util.HashMap;
 
@@ -66,7 +65,7 @@ public class A035536 implements Sequence {
             if (i < 1) {
                 result = Z.ZERO;
             } else {
-                int n_i = n - i;
+                final int n_i = n - i;
                 result = partition(n, i - 1, t)
                     .add(partition(n_i, n_i < i ? n_i : i, t + mModules[(int) i % mImod]));
             }
@@ -84,32 +83,5 @@ public class A035536 implements Sequence {
   public Z next() {
     ++mN;
     return partition(mN, mN, 0);
-  }
-
-  /**
-   * Get the size of the hashmap.
-   * @return number of remembered parameter combinations of {@link #partition}.
-   */
-  public int size() {
-  	return mRemember.size();
-  }
-  
-  /**
-   * Compute a number of terms for A035536
-   * @param args number of terms
-   */
-  public static void main(final String[] args) {
-    int termNo = 64;
-    A035536 seq = new A035536();
-    if (args.length > 0) {
-      try {
-        termNo = Integer.parseInt(args[0]);
-      } catch (Exception exc) { // ignore
-      }
-    }
-    for (int index = 0; index < termNo; ++index) {
-      System.out.println(index + " " + seq.next().toString());
-    }
-    System.out.println(seq.size() + " parameter sets remembered");
   }
 }
