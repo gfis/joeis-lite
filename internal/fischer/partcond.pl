@@ -71,14 +71,18 @@ while (<>) {
                 $modules[$ind] = 0; # preset with 0
             }
             my $set = 1;
-            foreach my $k ($cond =~ m{(\d+)}g) {
+            my @mods = $cond =~ m{(\d+)}g;
+            foreach my $k (@mods) {
                 $modules[$k] = $set;
                 $set = -1;
             } # foreach
+            if (scalar(@mods > 2)) { # only 2 at the moment
+            	$callcode = $VOID;
+            }
             $iparm = 0;
             $parms[$iparm ++] = $offset;
             $parms[$iparm ++] = "A035536";
-            $parms[$iparm ++] = scalar(@modules);
+            $parms[$iparm ++] = $m;
             $parms[$iparm ++] = join(",", @modules);
 
         # A035679 Number of partitions of n into parts 8k+1 and 8k+2 with at least one part of each type

@@ -27,52 +27,53 @@ import java.util.HashMap;
 public class A035536 implements Sequence {
 
   private final HashMap<String, Z> mRemember; // simulate "option remember"
-  protected final Z[] mModules; // which combination of elements to select
-  protected final long mImod; // take i mod this number
+  protected final int[] mModules; // which combination of elements to select
+  protected final int mImod; // take i mod this number
   protected int mN; // index of next term
   
   /** Construct with default parameters. */
   public A035536() {
-    this(3, 0,1,-1);
+    this(0, 3, 0,1,-1);
   }
     
-  /** Construct the sequence. 
+  /** 
+   * Construct the sequence. 
+   * @param offset index of first term
    * @param imod take i mod this number
    * @param modules vector of valid values
    */
-  public A035536(long imod, long ... modules) {
+  public A035536(final int offset, int imod, int ... modules) {
     mImod = imod;
-    mModules = ZUtils.toZ(modules);
+    mModules = modules;
     mRemember = new HashMap<String, Z>(1000000); // termNO = 1000 consumes some 6 mio hash map entries
-    mN = -1;
+    mN = offset - 1;
   }
     
-  protected Z partition (final Z n, final Z i, final Z c) {
-    String key = n.toString() + "," + i.toString() + "," + c.toString();
+  /**
+   * Recursively evaluate all partitions and accumulate information for the condition
+   * @param n number to be partitioned
+   * @param i nesting level
+   * @param t first accumulator
+   * @return number of partitions of n with this condition 
+   */
+  protected Z partition (final int n, final int i, final int t) {
+    final String key = String.valueOf(n) + "," + String.valueOf(i) + "," + String.valueOf(t); // String.format is much slower?
     Z result = mRemember.get(key);
     if (result == null) {
-        if (n.equals(Z.ZERO)) {
-            result = c.equals(Z.ZERO) ? Z.ONE : Z.ZERO;
+        if (n == 0) {
+            result = (t == 0 ? Z.ONE : Z.ZERO);
         } else {
-            if (i.compareTo(Z.ONE) < 0) {
+            if (i < 1) {
                 result = Z.ZERO;
             } else {
-                Z n_i = n.subtract(i);
-                result = partition(n, i.subtract(Z.ONE), c)
-                    .add(partition(n_i, n_i.min(i), c.add(mModules[(int) i.mod(mImod)])));
+                int n_i = n - i;
+                result = partition(n, i - 1, t)
+                    .add(partition(n_i, n_i < i ? n_i : i, t + mModules[(int) i % mImod]));
             }
         }
         mRemember.put(key, result);
     }
     return result;
-  }
-  
-  /**
-   * Determine the specific modulus condition to be applied to the partition
-   * @return increment for the count 
-   */
-  protected Z modules(final Z i) {
-    return (new Z[] { Z.ZERO, Z.ONE, Z.NEG_ONE })[i.mod(Z.THREE).intValue()];
   }
   
   /**
@@ -82,14 +83,14 @@ public class A035536 implements Sequence {
   @Override
   public Z next() {
     ++mN;
-    return partition(Z.valueOf(mN), Z.valueOf(mN), Z.ZERO);
+    return partition(mN, mN, 0);
   }
 
   /**
    * Get the size of the hashmap.
    * @return number of remembered parameter combinations of {@link #partition}.
    */
-  public long size() {
+  public int size() {
   	return mRemember.size();
   }
   
