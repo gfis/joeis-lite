@@ -2137,10 +2137,12 @@ eulerper:
 	wc -l    $@.gen
 #--------------------------------
 eulerx0: # grep cat25 - takes some time
-	perl eulerxfm.pl $(COMMON)/cat25.txt \
+	grep -E "Euler|partitions" $(COMMON)/cat25.txt \
+	| perl eulerxfm.pl \
 	2>       $@.rest.tmp \
 	>        $@.tmp
-eulerx: eulerx1 eulerx2 eulerx3
+	wc -l    $@.tmp $@.rest.tmp
+eulerx: eulerx1 eulerx2 eulerx3 
 eulerx1: # append manual ones and uniq
 	# grep -E "^A[0-9]" eulerxfm.man > $@.1.tmp
 	sort     eulerx0.tmp \

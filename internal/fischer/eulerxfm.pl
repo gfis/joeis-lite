@@ -56,11 +56,12 @@ while (<>) {
     # A035945 1,0,1,1,1,1,1,1,0,1,0
     #   Number of partitions of n into parts not of the form 11k, 11k+2 or 11k-2.
     # A036017 EulerTra Number of partitions of n into parts not of form 4k+2, 12k, 12k+1 or 12k-1. nonn,easy,synth 1
-    } elsif ($line =~ m{Number of partitions of \w into parts (not )?(of the form |of form )?(\d+\*?[a-z][\+\-\d]*((\, | or | and )\d+\*?[a-z][\+\-\d]*)*)\.}) {
+    # A035944	null	Number of partitions in parts not of the form 11k, 11k+1 or 11k-1. Also number of partitions with no part of size 1 and differences between parts at distance 4 are greater than 1.	nonn,easy,synth	1..51
+    } elsif ($line =~ m{Number of partitions (of \w )?int?o? parts (not )?(of the form |of form )?(\d+\*?[a-z][\+\-\d]*((\,\s*| or | and )\d+\*?[a-z][\+\-\d]*)*)\.}) {
         # determine mask a,b,c,d such that it represents a modulo pattern a*(4k+1),b*(4k+2),c*(4k+3),d*(4k+4)
-        $negate = length($1 || "") > 0 ? 1 : 0;
-        my $form = $3; # rest up to dot
-        $reason = "form: " . ($1 || "") . ($2 || "") . "$form";
+        $negate = length($2 || "") > 0 ? 1 : 0;
+        my $form = $4; # rest up to dot
+        $reason = "form: " . ($2 || "") . ($3 || "") . "$form";
         $form =~ s{or|and?}{\,}g; # now list of comma separated terms
         if (($form =~ m{[a-z]}) and ($form !~ m{of}) and ($form !~ m{\/})) { # not only digits
             $form =~ s{[^0-9\,a-z\+\-\*]}{}g; # remove spaces etc.
