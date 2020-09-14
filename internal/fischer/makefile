@@ -2905,7 +2905,6 @@ partcond:
 	2>       $@.rest.tmp
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
-	cp -v A035536.java A035679.java manual
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
