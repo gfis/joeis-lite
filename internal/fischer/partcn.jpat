@@ -15,7 +15,7 @@ public class $(ASEQNO) extends $(PARM1) {
     super($(OFFSET), $(PARM2), $(PARM3));
   }
   
-  protected boolean select(final int[] c) {
+  protected boolean select(final int[] cn) {
     return $(PARM4);
   }
 }

@@ -7,35 +7,40 @@ import java.util.HashMap;
  * @author Georg Fische
  * @param <R> result type
  */
-public abstract class MemoryFunctionInt5<R> extends HashMap<String, R> {
+public abstract class MemoryFunctionIntArray<R> extends HashMap<String, R> {
 
   private final StringBuffer mKeyBuf = new StringBuffer(64);
   /**
    * Compute the function at specified parameters.
-   * @param a array of int parameters
+   * @param a first int parameter
+   * @param b second int parameter
+   * @param c array of additional int parameters
    * @return value of function
    */
-  protected abstract R compute(final int[] a);
+  protected abstract R compute(final int a, final int b, final int[] c);
 
   /**
    * Return the value of the function at specified parameters.
-   * @param a array of int parameters
+   * @param a first int parameter
+   * @param b second int parameter
+   * @param c array of additional int parameters
    * @return value of function
    */
-  public R get(final int[] a) {
+  public R get(final int a, final int b, final int[] c) {
   	mKeyBuf.setLength(0);
-  	for (int i = a.length - 1; i >= 0; --i) {
-  		mKeyBuf.append(a[i]);
-  		if (i > 0) {
-  			mKeyBuf.append(',');
-  		}
+	mKeyBuf.append(a);
+	mKeyBuf.append(',');
+	mKeyBuf.append(b);
+  	for (int i = 0; i < c.length; ++i) {
+ 	    mKeyBuf.append(',');
+  		mKeyBuf.append(c[i]);
     } 
     final String key = mKeyBuf.toString();
     final R res = get(key);
     if (res != null) {
       return res;
     }
-    final R r = compute(a);
+    final R r = compute(a, b, c);
     put(key, r);
     return r;
   }

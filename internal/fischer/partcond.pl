@@ -112,7 +112,7 @@ while (<>) {
             $cond =~ s{([^\<\>])\=([^\<\>])}{$1==$2}g; # "=" -> "=="
             $cond =~ m{cn\(\d+\,(\d+)}; # second parameter
             my $m = $1;
-            $cond =~ s{cn\((\d+)\,$m\)}{"c\[" . ($1 + 2) . "\]"}eg;
+            $cond =~ s{cn\((\d+)\,$m\)}{cn\[$1\]}g;
             $parms[$iparm ++] = $offset;
             $parms[$iparm ++] = "A036801";
             $parms[$iparm ++] = $mult;
