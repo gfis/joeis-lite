@@ -7,9 +7,19 @@ import java.util.HashMap;
  * @author Georg Fische
  * @param <R> result type
  */
-public abstract class MemoryFunctionIntArray<R> extends HashMap<String, R> {
+public abstract class MemoryFunctionInt2Array<R> extends HashMap<String, R> {
 
   private final StringBuffer mKeyBuf = new StringBuffer(64);
+
+
+  /**
+   * Empty constructor.
+   * Allocate a HashMap with rather big chunks.
+   */ 
+  public MemoryFunctionInt2Array() {
+   super(500000);
+  }
+
   /**
    * Compute the function at specified parameters.
    * @param a first int parameter
@@ -27,13 +37,13 @@ public abstract class MemoryFunctionIntArray<R> extends HashMap<String, R> {
    * @return value of function
    */
   public R get(final int a, final int b, final int[] c) {
-  	mKeyBuf.setLength(0);
-	mKeyBuf.append(a);
-	mKeyBuf.append(',');
-	mKeyBuf.append(b);
-  	for (int i = 0; i < c.length; ++i) {
- 	    mKeyBuf.append(',');
-  		mKeyBuf.append(c[i]);
+    mKeyBuf.setLength(0);
+    mKeyBuf.append(a);
+    mKeyBuf.append(',');
+    mKeyBuf.append(b);
+    for (int ic = 0; ic < c.length; ++ic) {
+        mKeyBuf.append(',');
+        mKeyBuf.append(c[ic]);
     } 
     final String key = mKeyBuf.toString();
     final R res = get(key);
