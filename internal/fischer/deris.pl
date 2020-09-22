@@ -72,13 +72,14 @@ close(OFT);
 print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
 #----------------
 my %callcodes = qw(
+    binomx    BinomialTransformSequence
     charfun   CharacteristicFunction
     compseq   ComplementSequence
     diffseq   DifferenceSequence
     eulerx    EulerTransform
     eulerix   EulerInvTransform
-    moebiusx  MobiusTransform
-    moebiusix InverseMobiusTransform
+    moebiusx  MobiusTransformSequence
+    moebiusix InverseMobiusTransformSequence
     partsum   PartialSumSequence
     primepos  PrimePositionSubsequence
     primeval  PrimeSubsequence
@@ -108,6 +109,17 @@ while (<>) {
         my $isok = 0; # assume referenced seq not yet implemented
         if ($line =~ m{apparent|empirical|conject}i) {
             # ignore the unproven
+        #--------------------------------
+        } elsif ($callcode =~ m{\Abinomx}) {
+            if ($name =~ m{(Binomial transform of|Inverse binominal transform is)[^A]*(A\d+)\s*[\.\;\:\)]}i) {
+                $rseqno = $2;
+                if ($name =~ m{inverse binomial transform of}i) {
+                    $rseqno = $VOID; # assume suppression of the generation of this record
+                }
+                if ($isok = &is_defined_rseqno()) {
+                    $callcode = "binomx";
+                }
+            }
         #--------------------------------
         } elsif ($callcode =~ m{\Acharfun}) {
             if ($name =~ m{\A(Characteristic|Indicator) function of}) {
@@ -179,14 +191,14 @@ while (<>) {
             }
         #--------------------------------
         } elsif ($callcode =~ m{\Amoebiusx}) {
-            if ($name =~ m{\A(M[oö]e?bius transform of|Inverse M[oö]e?bius transform is)\s*(A\d+)\s*[\.\;\:]}) {
+            if ($name =~ m{\A(M.e?bius transform of|Inverse M.e?bius transform is)\s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $2;
             }
             if ($isok = &is_defined_rseqno()) {
             }
         #--------------------------------
         } elsif ($callcode =~ m{\Amoebiusix}) {
-            if ($name =~ m{\A(Inverse M[oö]e?bius transform of|M[oö]e?bius transform is)\s*(A\d+)\s*[\.\;\:]}) {
+            if ($name =~ m{\A(Inverse M.e?bius transform of|M.e?bius transform is)\s*(A\d+)\s*[\.\;\:]}) {
                 $rseqno = $2;
             }
             if ($isok = &is_defined_rseqno()) {

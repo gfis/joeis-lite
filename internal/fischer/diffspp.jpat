@@ -3,14 +3,15 @@ package irvine.oeis.$(PACK);
 // DO NOT EDIT here!
 
 import irvine.oeis.DifferenceSequence;
+import irvine.oeis.PrependSequence;
 /**
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) extends DifferenceSequence {
+public class $(ASEQNO) extends PrependSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(PARM3));
+    super($(PARM2)new DifferenceSequence($(PARM3))$(PARM4));
   }
 }

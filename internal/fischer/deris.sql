@@ -14,4 +14,6 @@ UPDATE seq4 s SET parm7 = (SELECT i.terms FROM asinfo i WHERE s.aseqno = i.aseqn
                 , parm8 = (SELECT i.terms FROM asinfo i WHERE s.parm1  = i.aseqno);
 
 UPDATE seq4 SET parm2 = 0 WHERE callcode = 'stirling2';
+UPDATE seq4 SET parm2 = 0 WHERE callcode = 'binomx';
+UPDATE seq4 SET parm5 = 'next();' WHERE callcode = 'binomx' AND aseqno = 'A136281';
 COMMIT;

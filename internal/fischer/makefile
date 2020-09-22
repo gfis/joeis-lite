@@ -1797,14 +1797,15 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp 
+	# echo -n "binomial"                         > binomx.deris.tmp
 	# echo -n "characteristic|indicator"         > charfun.deris.tmp
 	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
 	# echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	echo -n "m.e?bius"                         > moebiusix.deris.tmp
 	# echo -n "partial product"                  > partprod.deris.tmp
 	# echo -n "partial sum"                      > partsum.deris.tmp
 	# echo -n "prime"                            > primepos.deris.tmp
@@ -1835,11 +1836,29 @@ deris:
 	head -n4 $@.gen
 	wc -l    $@.gen
 deris_shuffle:
-	perl -i.bak deris_shuffle.pl deris.gen
+	perl -i.bak deris_shuffle.pl -d $(D) deris.gen
 #----
-essent0:
-	cp -v deris.gen essent.tmp
+xfmpad0:
+	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt \
+	| grep -iE " transform of[\(\[\{ ]*\-?[0-9][0-9]*\," \
+	| sed -e "s/ /\t/" -e "s/ /\t/" -e "s/^[^\%]*\%/\%/" \
+	| perl xfmpad.pl \
+	2>       $@.rest.tmp \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+xfmpad:
+	cp -v xfmpad0.tmp $@.gen
+binomx:
+	cp -v $@.man $@.gen
+charfun:
+	cp -v $@.man $@.gen
+diffseq:
+	cp -v $@.man $@.gen
 essent:
+	cp -v $@.man $@.gen
+moebiusx:
 	cp -v $@.man $@.gen
 stirling2: # A052856, A052875, A069321, A140585 manually mod.
 	cp -v $@.man $@.gen
