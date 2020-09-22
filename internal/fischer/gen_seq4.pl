@@ -48,7 +48,7 @@ my $callcode  = "cfsnum";
 my %patterncache  = (); # empty at the beginning
 my $basedir   = "../../../OEIS-mat/common";
 my $targetdir = "../../src/irvine/oeis";
-my $maindir   = "../../../../gitups/joeis/src/irvine/oeis";
+my $maindir   = "../../../joeis/src/irvine/oeis";
 my $clobber   = 1; # overwrite even if already present in $maindir
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
@@ -180,6 +180,9 @@ while (<>) { # read inputfile
             push(@typed_terms, $term)
         } # foreach $term
         my $parm = join(",", @typed_terms);
+        if ($parms[$iparm] =~ m{(\, ?)\Z}) { 
+            $parm .= $1;
+        }
         if ($parm eq "") { # remove empty line
             $copy =~ s{\n\s*\$\(PARM$iparm(\.\w+)?\)\s*\n}{\n}g;
         }

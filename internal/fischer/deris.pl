@@ -2,6 +2,7 @@
 
 # Extract parameters for DiffernceSequence.java, RecordSequence etc.
 # @(#) $Id$
+# 2020-09-18: shuffle
 # 2020-08-31: take all, also nyi; options -pseudo and -prep; RT=78
 # 2020-08-27: ComplementSequence and CharacteristicFunction
 # 2020-06-24: ofter_file
@@ -83,6 +84,7 @@ my %callcodes = qw(
     primeval  PrimeSubsequence
     recordpos RecordPositionSubsequence
     recordval RecordSubsequence
+    stirling2 Stirling2TransformSequence
     );
 my %levels = qw(first 1 second 2 third 3 ternary 3 fourth 4 4th 4 
                 fifth 5 5th 5 sixth 6 6th 6 seventh 7 7th 7 8th 8 eighth 8 
@@ -148,16 +150,29 @@ while (<>) {
                 } # while level
             }
         #--------------------------------
+        } elsif ($callcode =~ m{\Aessent}) {
+            if (length($name) <= 128 
+                    and ($name =~ m{Essentially |same as |identical to|apart from |duplicate of })
+                    and ($name !~ m{(not |are )the same|(not |are )identical }i)
+                ) {
+                if ($name =~ m{(A\d{6}\d*)}) {
+                    $rseqno = $1;
+                }
+            }
+            if ($isok = &is_defined_rseqno()) {
+                $callcode = "essent";
+            }
+        #--------------------------------
         } elsif ($callcode =~ m{\Aeulerx}) {
-            if ($name =~ m{\A(Euler transform of|Inverse Euler transform is)\s*(A\d+)\s*[\.\;\:]}) {
+            if ($name =~ m{\A(Euler transform of|Inverse Euler transform is)\s*(A\d+)\s*[\.\;\:]}i) {
                 $rseqno = $2;
             }
             if ($isok = &is_defined_rseqno()) {
-            	$callcode = "eulerx_11";
+                $callcode = "eulerx";
             }
         #--------------------------------
         } elsif ($callcode =~ m{\Aeulerix}) {
-            if ($name =~ m{\A(Inverse Euler transform of|Euler transform is)\s*(A\d+)\s*[\.\;\:]}) {
+            if ($name =~ m{\A(Inverse Euler transform of|Euler transform is)\s*(A\d+)\s*[\.\;\:]}i) {
                 $rseqno = $2;
             }
             if ($isok = &is_defined_rseqno()) {
@@ -230,6 +245,13 @@ while (<>) {
                 if ($name =~ m{(indices of record|where record|records? are|\(positions\))}i) {
                     $rseqno = $VOID; # skip these
                 }
+            }
+            if ($isok = &is_defined_rseqno()) {
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Astirling2}) {
+            if ($name =~ m{\A(STIRLING|Stirling)2? transform of (A\d{6})}) {
+                $rseqno = $2;
             }
             if ($isok = &is_defined_rseqno()) {
             }

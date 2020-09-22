@@ -1604,6 +1604,16 @@ primsol:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+prod1_xk:
+	grep -iE "^\%[NFtpo]" $(COMMON)/cat25.txt \
+	| grep -iE "prod" \
+	| grep -vE "produce" \
+	| perl prod1_xk.pl \
+	>        $@.tmp \
+	2>       $@.rest.tmp
+	head -n4 $@.tmp
+	wc -l    $@.*tmp
+#--------------------------------
 # %F A238745 a(n) = A181819(A124859(n)).
 seqop: # ???
 	grep -E "a\(n\) *= *A[0-9][0-9]*(\([a-z]\))? *[\+\-\*\/m]" $(COMMON)/cat25.txt \
@@ -1779,7 +1789,7 @@ posins2:
 # Derived sequences processed with deris.pl
 #
 DEROPT=
-deris0: deris1 charfun2
+deris0: deris1 # charfun2
 	rm -rf   deris2.gen
 	ls -1 *.deris.tmp | sed -e "s/\.deris\.tmp//" \
 	| xargs -l -innn make -i deris2 TARGET=nnn
@@ -1790,21 +1800,23 @@ deris1:
 	# echo -n "characteristic|indicator"         > charfun.deris.tmp
 	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
+	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
 	# echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
-	# echo -n "m[oö]e?bius"                      > moebiusx.deris.tmp
-	# echo -n "m[oö]e?bius"                      > moebiusix.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
 	# echo -n "partial product"                  > partprod.deris.tmp
-	echo -n "partial sum"                      > partsum.deris.tmp
+	# echo -n "partial sum"                      > partsum.deris.tmp
 	# echo -n "prime"                            > primepos.deris.tmp
 	# echo -n "prime"                            > primeval.deris.tmp
 	# echo -n "record"                           > recordpos.deris.tmp
 	# echo -n "record"                           > recordval.deris.tmp
+	# echo -n "stirling"                         > stirling2.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
 	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt charfun2.tmp \
-	| grep -iE "`cat $(TARGET).deris.tmp`" \
+	| grep -iEf $(TARGET).deris.tmp \
 	| sed -e "s/ /\t/" -e "s/ /\t/" -e "s/^[^\%]*\%/\%/" \
 	| perl deris.pl $(DEROPT) -cc $(TARGET) -f $(COMMON)/joeis_ofter.txt \
 	>        $(TARGET).tmp \
@@ -1815,6 +1827,24 @@ deris2:
 	wc -l    $(TARGET).gen $(TARGET).rest.tmp
 	cat      $(TARGET).gen \
 	>>       $@.gen
+#----
+deris:
+	sort     deris2.gen | uniq -w7 \
+	| grep -vf not_same.man \
+	>        deris.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+deris_shuffle:
+	perl -i.bak deris_shuffle.pl deris.gen
+#----
+essent0:
+	cp -v deris.gen essent.tmp
+essent:
+	cp -v $@.man $@.gen
+stirling2: # A052856, A052875, A069321, A140585 manually mod.
+	cp -v $@.man $@.gen
+#----
+# unimportant:
 deris3:
 	cut -f2  deris2.gen | sort | uniq -c
 deris4:
@@ -1823,12 +1853,6 @@ deris4:
 deris5:
 	echo -n "A054521" > x.tmp
 	grep -iE "`cat x.tmp`" charfun2.tmp
-#----
-deris:
-	sort     deris2.gen | uniq -w7 \
-	>        deris.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
 #----
 charfun2: # Characteristic function of rseqno
 	perl charfun_index.pl \

@@ -9,4 +9,9 @@ DELETE FROM seq4 WHERE aseqno IN ('A046934','A053735','A167393','A078488'); -- d
 -- UPDATE seq4 SET parm1  = 'new A066674()' WHERE aseqno = 'A125879';
 UPDATE seq4 SET parm2 = (CASE WHEN parm2 = 0 THEN '' ELSE ', Z.ONE' END) WHERE callcode = 'compseq';
 UPDATE seq4 SET parm2 = ', Z.THREE' WHERE callcode = 'compseq' AND aseqno = 'A137905';
+
+UPDATE seq4 s SET parm7 = (SELECT i.terms FROM asinfo i WHERE s.aseqno = i.aseqno)
+                , parm8 = (SELECT i.terms FROM asinfo i WHERE s.parm1  = i.aseqno);
+
+UPDATE seq4 SET parm2 = 0 WHERE callcode = 'stirling2';
 COMMIT;
