@@ -604,13 +604,17 @@ chain2: # rather fruitless since not monotone or big distances in parm2
 	wc -l    $@.gen
 #--------------------------------
 compleq: # complementary equations
-	grep -iE "complementary equation" $(COMMON)/joeis_names.txt \
+	grep -iE "complementary" $(COMMON)/joeis_names.txt \
 	| grep -vE "^\%H" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+MATRIX="[[0],[1],[1],[-1]]"
+INIT="[1,2]"
 complet:
-	$(JAVA) irvine.oeis.ComplementaryEquationSequence -d 0 -m $(MATRIX) -i $(INIT)
+	$(JAVA) irvine.oeis.ComplementaryEquationSequence -d $(D) -p $(MATRIX) -i $(INIT) -m $(MAXT)
+compleq2:
+	cp -v compleq2.man compleq2.gen
 #--------------------------------
 # A030465 Numbers n such that n concatenated with n+1 is a square.
 # A030466 Squares that are concatenations of two consecutive nonzero numbers.
@@ -971,7 +975,7 @@ gordon: # Gordon Theorem
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-# HolonomicSequence
+# HolonomicRecurrence
 #----
 DIST=0
 OFFSET=0

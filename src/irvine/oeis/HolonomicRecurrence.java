@@ -234,7 +234,7 @@ public class HolonomicRecurrence implements Sequence {
    * @param n index of the term a(n) to be computed
    * @return value to be added to the constant term (default: 0).
    */
-  protected Z addFunction(int n) {
+  public Z addFunction(int n) {
     return Z.ZERO;
   }
   
@@ -285,7 +285,7 @@ public class HolonomicRecurrence implements Sequence {
       // pvals[0..mOrder] now contain the coefficients of the recurrence equation
       Z sum = pvals[0]; // k=0, the constant term (without a(k)) in the recurrence, mostly ZERO
       if (mGfType == 2) {
-        sum.add(addFunction(mN));
+        sum = sum.add(addFunction(mN));
       }
       for (k = 1; k <= mOrder; ++k) { // sum all previous elements of the recurrence
         ibuf = mN - mOrder - 1 + k; // index of previous recurrence element a[n-i]

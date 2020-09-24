@@ -54,7 +54,7 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
     super(0, matrix, initTerms[0], 0); // all sequences with offset 0
     // sets super.mOrder
     setGfType(2);
-    mSet = new TreeSet<>(); 
+    mSet = new TreeSet<Long>(); 
     mSet.add(0L); // zero is never a term
     mFree = 1; // this will be added next
     super.mN = -1; // incremented by next() to give the offset of the result of next().
@@ -91,58 +91,53 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
   }
 
   /**
-   * For <code>gftype=2</code>, add some arbitrary value to the constant term in the recurrence equation.
-   * This method is typically overwritten, for example in ComplementaryEquationSequence.
-   * @param n index of the term a(n) to be computed
-   * @return value to be added to the constant term (default: 0).
+   * Return the element of the complementary sequence b(n).
+   * @param n index of the sequence
+   * @return an element of <code>mBuffer[1]</code>
    */
-  protected Z addFunction(int n) {
-    return Z.ZERO;
+  protected long getB(final int n) {
+    return mBuffers[1][(n + mOrder) % mOrder];
+  }
+
+  /**
+   * Return the element of the complementary sequence c(n).
+   * @param n index of the sequence
+   * @return an element of <code>mBuffer[2]</code>
+   */
+  protected long getC(final int n) {
+    return mBuffers[2][(n + mOrder) % mOrder];
+  }
+
+  /**
+   * For <code>gftype=2</code>, add some arbitrary value to the constant term in the recurrence equation.
+   * @param n index of the term a(n) to be computed
+   * @return value to be added to the constant term.
+   */
+  @Override
+  public Z addFunction(final int n) {
+    mBuffers[1][n % mOrder] = mex(); // add b(n)
+    return Z.valueOf(n < mOrder ? 0L : getB(n - 2));
   }
 
   @Override
   public Z next() {
-  	return super.next();
-/*
-    if (mSet.size() < 3) {
-      if (mSet.isEmpty()) {
-        mSet.add(0L); // keep mex happy
-        mSet.add(mA0);
-        return Z.valueOf(mA0);
-      } else {
-        mSet.add(mA1);
-        mB = mex(mSet);
-        mS.add(mB);
-        return Z.valueOf(mA1);
-      }
-    }
-    final long t = mB;
-    mB = mex(mSet);
-    mSet.add(mB);
-    final long a = t + mB;
-    mSet.add(a);
-    return Z.valueOf(a);
-*/
+    Z result = super.next();
+    mSet.add(result.longValue());
+    return result;
   }
   
   /**
    * Test method
    * @param args command line arguments: 
-   * <code>[-d debug] [-i initerms] [-m matrix]</code>
+   * <code>[-d debug] [-i initerms] [-m maxterms] [-p matrix]</code>
    */
   public static void main(String[] args) {
     int maxTerms     = 16;
-    /* A081367 E.g.f.: exp(2*x)/sqrt(1-2*x).
-       Recurrence: a(n) = (2*n+1)*a(n-1) - 4*(n-1)*a(n-2)
-       MMA: RecurrenceTable[{a[0]==1,a[1]==3,a[n]==(2*n+1)*a[n-1]-4*(n-1)*a[n-2]},a[n],{n,0,10}]
-       java -cp dist/joeis-lite.jar;../joeis/build.tmp/joeis.jar irvine.oeis.HolonomicRecurrence \
-       0 "[[0],[-4,4],[-1,-2],[1]]" "[1,3,11]" 0
-    */
-    String matrix    = "[[0],[-4,4],[-1,-2],[1]]";
-    String[] initTerms = new String[] { "[1,3,11]" };
-    ComplementaryEquationSequence complEq = null;
+    String matrix = "[[0],[1],[1],[-1]]"; // Fibonacci 
+    String[] initTerms = new String[] { "[1,2]" };
+    ComplementaryEquationSequence complet = null;
     if (args.length == 0) {
-      complEq = new ComplementaryEquationSequence(matrix, initTerms);
+      complet = new ComplementaryEquationSequence(matrix, initTerms);
       System.out.println("1, 3, 11, 53, 345, 2947, 31411, 400437, 5927921, 99816515, 1882741659, 39310397557"); // A081367
     } else {
       sDebug = 0;
@@ -154,18 +149,20 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
           } else if (opt.equals("-d")) {
             sDebug  = Integer.parseInt(args[iarg++]);
           } else if (opt.equals("-i")) {
-            initTerms = new String[] { args[iarg++] };
-          } else if (opt.equals("-d")) {
+            initTerms = new String[] { args[iarg++], "" };
+          } else if (opt.equals("-m")) {
+            maxTerms  = Integer.parseInt(args[iarg++]);
+          } else if (opt.equals("-p")) {
             matrix    = args[iarg++];
           }
         } catch (Exception exc) {
         }
       } // while
-      complEq = new ComplementaryEquationSequence(matrix, initTerms);
+      complet = new ComplementaryEquationSequence(matrix, initTerms);
     }
     int n = 0;
     while (n < maxTerms) {
-      System.out.print(complEq.next().toString() + ",");
+      System.out.print(complet.next().toString() + ",");
       n ++;
     } // while n
     System.out.println();
