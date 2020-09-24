@@ -1,5 +1,6 @@
 --  Table for OEIS - working table for sequence numbers and 8 parameter fields
 --  @(#) $Id$
+--  2020-09-23: callcode was (32)
 --  2020-04-11: callcode in key
 --  2019-07-18: parm3 VARCHAR(64), was 32
 --  2019-06-23: 4 parms -> 8
@@ -8,8 +9,8 @@
 DROP    TABLE  IF EXISTS seq4;
 CREATE  TABLE            seq4
     ( aseqno   VARCHAR(10) NOT NULL  -- A322469
-    , callcode VARCHAR(32)           -- cfsnum
-    , offset   VARCHAR(16)           -- offset
+    , callcode VARCHAR(64)           -- cfsnum
+    , offset   VARCHAR(32)           -- offset
     , parm1    VARCHAR(4096)
     , parm2    VARCHAR(4096)
     , parm3    VARCHAR(4096)

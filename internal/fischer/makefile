@@ -603,6 +603,15 @@ chain2: # rather fruitless since not monotone or big distances in parm2
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+compleq: # complementary equations
+	grep -iE "complementary equation" $(COMMON)/joeis_names.txt \
+	| grep -vE "^\%H" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+complet:
+	$(JAVA) irvine.oeis.ComplementaryEquationSequence -d 0 -m $(MATRIX) -i $(INIT)
+#--------------------------------
 # A030465 Numbers n such that n concatenated with n+1 is a square.
 # A030466 Squares that are concatenations of two consecutive nonzero numbers.
 # A030467 Numbers n such that n^2 is a concatenation of two successive numbers.

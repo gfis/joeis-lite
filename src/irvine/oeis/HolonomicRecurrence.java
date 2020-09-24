@@ -1,6 +1,7 @@
 /* Holonomic sequences where the recurrence equation for a(n)
  * has polynomials in n as coefficients.
  * @(#) $Id$
+ * 2020-09-24: gftype=2, addFunction(n) to be added to the constant term
  * 2020-07-20, Georg Fischer: public getInitTerms(), protected initialize()
  * 2020-04-13, Sean Irvine: jOEIS conventions
  * 2020-04-10: merge with joeis; gfType "egf"
@@ -178,7 +179,7 @@ public class HolonomicRecurrence implements Sequence {
 
   /** 
    * Get the type of the generating function.
-   * @return code for the type: 0 = ordinary, 1 = exponential
+   * @return code for the type: 0 = ordinary, 1 = exponential, 2 = additional function
    */
   public int getGfType() {
     return mGfType;
@@ -186,7 +187,7 @@ public class HolonomicRecurrence implements Sequence {
   
   /** 
    * Set the type of the generating function.
-   * @param gfType code for the type: 0 = ordinary, 1 = exponential
+   * @param gfType code for the type: 0 = ordinary, 1 = exponential, 2 = additional function
    */
   public void setGfType(final int gfType) {
     mGfType = gfType;
@@ -227,6 +228,16 @@ public class HolonomicRecurrence implements Sequence {
     mNdPowers[0] = Z.ONE;
   } // initialize
 
+  /**
+   * For <code>gftype=2</code>, add some arbitrary value to the constant term in the recurrence equation.
+   * This method is typically overwritten, for example in ComplementaryEquationSequence.
+   * @param n index of the term a(n) to be computed
+   * @return value to be added to the constant term (default: 0).
+   */
+  protected Z addFunction(int n) {
+    return Z.ZERO;
+  }
+  
   /**
    * Gets the next term of the sequence.
    */
@@ -273,6 +284,9 @@ public class HolonomicRecurrence implements Sequence {
       } // while k - coefficients of the recurrence
       // pvals[0..mOrder] now contain the coefficients of the recurrence equation
       Z sum = pvals[0]; // k=0, the constant term (without a(k)) in the recurrence, mostly ZERO
+      if (mGfType == 2) {
+        sum.add(addFunction(mN));
+      }
       for (k = 1; k <= mOrder; ++k) { // sum all previous elements of the recurrence
         ibuf = mN - mOrder - 1 + k; // index of previous recurrence element a[n-i]
         while (ibuf < 0) {
