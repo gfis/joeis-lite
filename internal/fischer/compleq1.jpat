@@ -21,9 +21,8 @@ public class $(ASEQNO) extends ComplementaryEquationSequence {
   }
 
   @Override
-  public Z addFunction(final int n) {
-    mBuffers[1][n % mOrder] = mex(); // add b(n)
-    return Z.valueOf(n < mOrder ? 0L : $(PARM4));
+  public Z adjunct(final int n) {
+    return Z.valueOf($(PARM4));
   }
 
 }

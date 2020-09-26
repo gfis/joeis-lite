@@ -604,7 +604,8 @@ chain2: # rather fruitless since not monotone or big distances in parm2
 	wc -l    $@.gen
 #--------------------------------
 compleq: # complementary equations
-	grep -iE "complementary" $(COMMON)/joeis_names.txt \
+	grep -iE "complementary eq" $(COMMON)/joeis_names.txt \
+	| grep -vE "self\-complementary|musical|Golay" \
 	| grep -vE "^\%H" \
 	>        $@.tmp
 	head -n4 $@.tmp

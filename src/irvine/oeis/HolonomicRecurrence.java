@@ -1,7 +1,7 @@
 /* Holonomic sequences where the recurrence equation for a(n)
  * has polynomials in n as coefficients.
  * @(#) $Id$
- * 2020-09-24: gftype=2, addFunction(n) to be added to the constant term
+ * 2020-09-24: gftype=2, adjunct(n) to be added to the constant term
  * 2020-07-20, Georg Fischer: public getInitTerms(), protected initialize()
  * 2020-04-13, Sean Irvine: jOEIS conventions
  * 2020-04-10: merge with joeis; gfType "egf"
@@ -229,12 +229,13 @@ public class HolonomicRecurrence implements Sequence {
   } // initialize
 
   /**
-   * For <code>gftype=2</code>, add some arbitrary value to the constant term in the recurrence equation.
+   * For <code>gftype=2</code>, add the value of some function of the current index {@link #mN}.
+   * to the constant term in the recurrence equation.
    * This method is typically overwritten, for example in ComplementaryEquationSequence.
    * @param n index of the term a(n) to be computed
    * @return value to be added to the constant term (default: 0).
    */
-  public Z addFunction(int n) {
+  public Z adjunct(int n) {
     return Z.ZERO;
   }
   
@@ -284,8 +285,8 @@ public class HolonomicRecurrence implements Sequence {
       } // while k - coefficients of the recurrence
       // pvals[0..mOrder] now contain the coefficients of the recurrence equation
       Z sum = pvals[0]; // k=0, the constant term (without a(k)) in the recurrence, mostly ZERO
-      if (mGfType == 2) {
-        sum = sum.add(addFunction(mN));
+      if (mGfType == 2 && mN >= mOrder) {
+        sum = sum.add(adjunct(mN));
       }
       for (k = 1; k <= mOrder; ++k) { // sum all previous elements of the recurrence
         ibuf = mN - mOrder - 1 + k; // index of previous recurrence element a[n-i]
