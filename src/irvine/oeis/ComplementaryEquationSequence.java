@@ -72,7 +72,9 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
           } catch (Exception exc) {
             elem = sMex;
           }
-          mSeqs.get(i).add(elem);
+          if (i > 0 || j >= 1) { // a[j>=1] is stored in next() ; only a[0] is never computed and must be
+              mSeqs.get(i).add(elem);
+          }
         } else {
           // elem = sMex;
           // do not add it to mUnion
@@ -118,7 +120,7 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
       }
     }
     if (sDebug >= 0) {
-      System.out.println(" # getTerm " + (new char[] { 'a', 'b', 'c', 'd', 'e', 'f' })[seqNo] 
+      System.out.println(" # getTerm " + (new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' })[seqNo] 
           + "(" + index + ")=" + result + " # ");
     }
     return result;

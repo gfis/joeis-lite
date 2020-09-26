@@ -606,10 +606,11 @@ chain2: # rather fruitless since not monotone or big distances in parm2
 compleq: # complementary equations
 	grep -iE "complementary eq" $(COMMON)/joeis_names.txt \
 	| grep -vE "self\-complementary|musical|Golay" \
-	| grep -vE "^\%H" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
+	| perl compleq.pl -d $(D) \
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@.gen
 MATRIX="[[0],[1],[1],[-1]]"
 INIT="[1,2]"
 complet:
