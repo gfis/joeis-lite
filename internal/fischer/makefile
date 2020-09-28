@@ -603,14 +603,25 @@ chain2: # rather fruitless since not monotone or big distances in parm2
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-compleq: # complementary equations
+compleq0: # complementary equations
 	grep -iE "complementary eq" $(COMMON)/joeis_names.txt \
 	| grep -vE "self\-complementary|musical|Golay" \
 	| perl compleq.pl -d $(D) \
-	>        $@.gen \
+	>        $@.tmp \
 	2>       $@.rest.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--
+# compleq.man contains the manual corrections. 
+# CC=compleqa is set when $(PARM5) contains the complete body of method adjunct(n).
+compleq:
+	cut -b1-7 $@.man | grep -E "^A" > $@.grep.tmp
+	grep -vEf $@.grep.tmp compleq0.tmp > $@.tmp
+	sort $@.man $@.tmp | uniq -w7 \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
 MATRIX="[[0],[1],[1],[-1]]"
 INIT="[1,2]"
 complet:

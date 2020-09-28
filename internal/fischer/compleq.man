@@ -1,0 +1,17 @@
+A294381	compleqa	0		0	"[[0],[-1]]"	"[1,3]","[2,4]"	return aZ(n-1).multiply(Z.valueOf(b(n-2)))				Solution of the complementary equation a(n) = a(n-1)*b(n-2), where a(0) = 1, a(1) = 3, b(0) = 2, b(1) = 4.
+A294382	compleqa	0		0	"[[-1],[-1]]"	"[1,3]","[2,4]"	return aZ(n-1).multiply(Z.valueOf(b(n-2)))				Solution of the complementary equation a(n) = a(n-1)*b(n-2) - 1, where a(0) = 1, a(1) = 3, b(0) = 2, b(1) = 4.
+A294383	compleqa	0		0	"[[1],[-1]]"	"[1,3]","[2,4]"	return aZ(n-1).multiply(Z.valueOf(b(n-2)))				Solution of the complementary equation a(n) = a(n-1)*b(n-2) + 1, where a(0) = 1, a(1) = 3, b(0) = 2, b(1) = 4.
+A294384	compleqa	0		0	"[[0,-1],[-1]]"	"[1,3]","[2,4]"	return aZ(n-1).multiply(Z.valueOf(b(n-2)))				Solution of the complementary equation a(n) = a(n-1)*b(n-2) - n, where a(0) = 1, a(1) = 3, b(0) = 2, b(1) = 4.
+A294385	compleqa	0		0	"[[0,1],[-1]]"	"[1,3]","[2,4]"	return aZ(n-1).multiply(Z.valueOf(b(n-2)))				Solution of the complementary equation a(n) = a(n-1)*b(n-2) + n, where a(0) = 1, a(1) = 3, b(0) = 2, b(1) = 4.
+
+A294414	compleq	0		0	"[[0],[1],[1],[-1]]"	"[1,3]","[2,4]"	b(n-1)+b(n-2)				Solution of the complementary equation a(n) = a(n-1) + a(n-2) - b(n-1) + b(n-2), where a(0) = 1, a(1) = 3, b(0) = 2, b(1) = 4.
+
+A294554	compleq	0		0	"[[2],[1],[1],[-1]]"	"[1,2]","[3]"	b(n-1)+b(n-2)				Solution of the complementary equation a(n) = a(n-1) + a(n-2) + b(n-1) - b(n-2) + 2, where a(0) = 1, a(1) = 2, b(0) = 3, and (a(n)) and (b(n)) are increasing complementary sequences.
+A294555	compleq	0		0	"[[3],[1],[1],[-1]]"	"[1,2]","[3]"	b(n-1)+b(n-2)				Solution of the complementary equation a(n) = a(n-1) + a(n-2) + b(n-1) - b(n-2) + 3, where a(0) = 1, a(1) = 2, b(0) = 3, and (a(n)) and (b(n)) are increasing complementary sequences.
+A294556	compleq	0		0	"[[1,1],[1],[1],[-1]]"	"[1,2]","[3]"	b(n-1)+b(n-2)				Solution of the complementary equation a(n) = a(n-1) + a(n-2) + b(n-1) - b(n-2) + n + 1, where a(0) = 1, a(1) = 2, b(0) = 3, and (a(n)) and (b(n)) are increasing complementary sequences.
+A294557	compleq	0		0	"[[-1,1],[1],[1],[-1]]"	"[1,2]","[3]"	b(n-1)+b(n-2)				Solution of the complementary equation a(n) = a(n-1) + a(n-2) + b(n-1) - b(n-2) + n - 1, where a(0) = 1, a(1) = 2, b(0) = 3, and (a(n)) and (b(n)) are increasing complementary sequences.
+A294558	compleq	0		0	"[[0,2],[1],[1],[-1]]"	"[1,2]","[3]"	b(n-1)+b(n-2)				Solution of the complementary equation a(n) = a(n-1) + a(n-2) + b(n-1) - b(n-2) + 2n, where a(0) = 1, a(1) = 2, b(0) = 3, and (a(n)) and (b(n)) are increasing complementary sequences.
+
+A294866	compleq	0		0	"[[0],[-1],[2],[-1]]"	"[1,2]","[3]"	b(n-1)				Solution of the complementary equation a(n) = 2*a(n-1) - 2*b(n-2) + b(n-1), where a(0) = 1, a(1) = 2, b(0) = 3, and (a(n)) and (b(n)) are increasing complementary sequences.
+
+A295955	compleq	0		0	"[[1],[1],[1],[-1]]"	"[3,4]","[1,2,5]"	b(n)				Solution of the complementary equation a(n) = a(n-1) + a(n-2) + b(n) + 1, where a(0) = 3, a(1) = 4, b(0) = 1, b(1) = 1, b(2) = 5, and (a(n)) and (b(n)) are increasing complementary sequences.

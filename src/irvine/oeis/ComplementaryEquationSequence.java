@@ -1,6 +1,6 @@
 /* Complementary equations, similiar to holonomic recurrences
  * @(#) $Id$
- * 2020-09-24, Georg Fischer
+ * 2020-09-27, Georg Fischer
  */
 package irvine.oeis;
 
@@ -13,33 +13,37 @@ import java.util.ArrayList;
 import java.util.TreeSet;
 
 /**
- * A complementary equation system has a recurrence equation for sequence A coupled with
- * one or more sequences B, C and so on that are built with the elements <strong>not yet</strong>
+ * A complementary equation system has a recurrence equation for sequence <code>a</code> coupled with
+ * one or more sequences <code>b, c</code> and so on that are built with the elements <strong>not yet</strong>
  * existing in any one of the sequences involved.
  * A value of <code>sMex</code> indicates that the sequence element must be determined
  * by the <code>mex</code> operator.
- * <code>Long</code> values are sufficient fo rthe terms since the union of the sequences involved
+ * <code>Long</code> values are sufficient for the terms of the complementary sequences
+ * <code>b, c</code> and so on since the union of the sequences involved
  * always is the set of the positive integers.
+ * These values are assumed to be not greater than {@link #sMexLimit}. 
+ * The values of sequence <code>a</code> are unbounded, of type {@link Z}.
  * @author Georg Fischer
  */
 public class ComplementaryEquationSequence extends HolonomicRecurrence {
-  static int sDebug = 0; // 0 = no debugging, 1 = some, 2 = more
+  protected static int sDebug = 2; // 0 = no debugging, 1 = some, 2 = more
   public static final long sMex = -29061947; // some value lower than all possible sequence terms
-
+  private static final Z sMexLimit = Z.valueOf(1 << 20); // ensure <code>mex()</code> up to 16*65536 only
   protected final TreeSet<Long> mUnion;// the set of added terms
   protected long mFree; // guess for the numerically first, free (not yet added) element in mUnion
-  protected ArrayList<ArrayList<Long>> mSeqs; // arrays for the sequences a, b, c and so on.
+  protected ArrayList<ArrayList<Long>> mSeqs; // Long arrays for the sequences a, b, c and so on.
+  protected ArrayList<Z> mSeqA; // Z array for the sequence a 
+  protected int mHereSeqNo; // number of the sequence to be computed (0 = a, 1 = b and so on).
 
   /** 
-   * Empty Constructor. 
+   * Empty constructor. 
    */
   public ComplementaryEquationSequence() {
-    this("[[0],[1]]", new String[] { "[1]" });
+    this(0, "[[0],[1]]", new String[] { "[1]" });
   }
 
-  /**
-   * Construct a holonomic recurrence sequence for A from String parameters.
-   *
+  /** 
+   * Convenience constructor for sequence <code>a</code>. 
    * @param matrix polynomials as coefficients of <code>n^i, i=0..m</code>,
    *               as an array of String vectors, for example "[[0,1,2],[0],[17,0,18]]"
    *               in the holonomic case, or a simple vector "[0,1,2]" in the linear case.
@@ -48,39 +52,91 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
    * as an array of String vectors, k is the order of the recurrence, that is the number of elements
    * a[n-1], a[n-2], a[n-k] used to compute a[n]. If the arrays b, c and so on are shorter than k,
    * they are filled up with {@link #sMex}.
-   * t
-   * for example "new String[] { [0,1,2,3] }".
    */
   public ComplementaryEquationSequence(final String matrix, final String[] initTerms) {
-    super(0, matrix, initTerms[0], 0); // all sequences with offset 0
+    this(0, matrix, initTerms);
+  }
+
+  /**
+   * Construct a holonomic recurrence sequence from String parameters.
+   *
+   * @param hereSeqNo number of the sequence to be computed (0 = a, 1 = b, 2 = c and so on)
+   * @param matrix polynomials as coefficients of <code>n^i, i=0..m</code>,
+   *               as an array of String vectors, for example "[[0,1,2],[0],[17,0,18]]"
+   *               in the holonomic case, or a simple vector "[0,1,2]" in the linear case.
+   *               The brackets must be specified accordingly.
+   * @param initTerms initial values of a[0..k], b[0..k], c[0..k] and so on, 
+   * as an array of String vectors, k is the order of the recurrence, that is the number of elements
+   * a[n-1], a[n-2], a[n-k] used to compute a[n]. If the arrays b, c and so on are shorter than k,
+   * they are filled up with {@link #sMex}.
+   */
+  public ComplementaryEquationSequence(final int hereSeqNo, final String matrix, final String[] initTerms) {
+    super(0, matrix, initTerms[0], 0); // all such sequences have offset 0 and distance 0
     // sets super.mOrder
     setGfType(2);
+    mHereSeqNo = hereSeqNo;
     mUnion = new TreeSet<Long>(); 
-    mUnion.add(0L); // zero is never a term
-    mFree = 1; // this will be added next
+    mUnion.add(0L); // zero should never be returned  by mex()
+    mFree = 1; // start looking for mex() at 1
     super.mN = -1; // incremented by next() to give the offset of the result of next().
-    mSeqs = new ArrayList<ArrayList<Long>>(5); 
+    mSeqs = new ArrayList<ArrayList<Long>>(5); // usually sequences a-e 
+    mSeqA = new ArrayList<Z>(1024); // copy of mSeqs.get(0)
     long elem = 0L;
     for (int i = 0; i < initTerms.length; ++i) {
       mSeqs.add(new ArrayList<Long>(256));
-      String [] elems = initTerms[i].replaceAll("[^\\d\\-\\,]", "").split("\\,");
-      for (int j = 0; j < mOrder; ++j) {
-        if (j < elems.length) {
-          try {
-            elem = Long.parseLong(elems[j]);
-            mUnion.add(elem);
-          } catch (Exception exc) {
-            elem = sMex;
-          }
-          if (i > 0 || j >= 1) { // a[j>=1] is stored in next() ; only a[0] is never computed and must be
-              mSeqs.get(i).add(elem);
-          }
-        } else {
-          // elem = sMex;
-          // do not add it to mUnion
+      ArrayList<Long> list = mSeqs.get(i);
+      String termList = initTerms[i].replaceAll("[^\\d\\-\\,]", "");
+      String [] elems = termList.length() == 0 ? new String[0] : termList.split("\\,");
+    /*
+      if (sDebug >= 2) {
+        System.out.println(" # termList=\"" + termList + "\", elems[" + i + "] = ");
+        for (int il = 0; il < elems.length; ++il) {
+          System.out.print("\"" + elems[il] + "\" ");
         }
+      }
+    */
+      for (int j = 0; j < elems.length; ++j) {
+        try {
+          elem = 0L;
+          elem = Long.parseLong(elems[j]);
+        } catch (Exception exc) { // ignore errors
+        }
+        list.add(elem);
+        if (i == 0) {
+          mSeqA.add(Z.valueOf(elem));
+        }
+        mUnion.add(elem);
       } // for j
     } // for i
+    // next(); // skip 1st term; why ???
+  }
+
+  @Override
+  public Z next() {
+    Z result = super.next();
+    if (mN >= mSeqA.size()) {
+      mSeqA.add(result);
+    }
+    if (result.compareTo(sMexLimit) < 0) {
+      final long an = result.longValue();
+      mUnion.add(an);
+      mSeqs.get(0).add(mN, an); // sequence <code>a</code> never uses mex()
+    }
+    if (mHereSeqNo > 0) { // one of the sequences b, c, d ...
+      result = Z.valueOf(getTerm(mHereSeqNo, mN));
+    }
+    return result;
+  }
+  
+  /**
+   * Add some arbitrary value to the constant term in the recurrence equation.
+   * This method is called in {@link HolonomicRecurrence} when <code>gfType = 2</code> is set.
+   * @param n index of the term a(n) in the holonomic recurrence currently computed
+   * @return value to be added to the constant term
+   */
+  @Override
+  public Z adjunct(final int n) {
+    return Z.valueOf(b(n - 2));
   }
 
   /**
@@ -102,12 +158,21 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
    * Return a term of one of the complementary sequences.
    * If the element is not yet defined, 
    * it becomes the least element not yet contained in {@link #mUnion} (mex function).
-   * @param seqNo number of the sequence: 0 = a, 1 = b, 2 = c and so on-
+   * @param complSeqNo number of the sequence: 0 = a, 1 = b, 2 = c and so on-
    * @param index index of the term in the sequence
-   * @return <code>mSeqs.get(seqNo).get(index)</code>
+   * @return <code>mSeqs.get(complSeqNo).get(index)</code>
    */
-  protected long getTerm(final int seqNo, final int index) {
-    ArrayList<Long> list = mSeqs.get(seqNo);
+  protected long getTerm(final int complSeqNo, final int index) {
+    ArrayList<Long> list = mSeqs.get(complSeqNo);
+  /*
+    if (sDebug >= 2) {
+      System.out.print(" # list " + (new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' })[complSeqNo] 
+          + " = ");
+      for (int il = 0; il < list.size(); ++il) {
+        System.out.print(list.get(il) + " ");
+      }
+    }
+  */
     long result = 0L;
     if (index >= list.size()) {
       result = mex();
@@ -119,11 +184,20 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
         list.set(index, result);
       }
     }
-    if (sDebug >= 0) {
-      System.out.println(" # getTerm " + (new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' })[seqNo] 
+    if (sDebug >= 1) {
+      System.out.println(" # getTerm " + (new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' })[complSeqNo] 
           + "(" + index + ")=" + result + " # ");
     }
     return result;
+  }
+
+  /**
+   * Convenience access to Z values of sequence <code>a</code>
+   * @param index index of the term in the sequence
+   * @return the indexed element
+   */
+  protected Z aZ(final int index) {
+    return mSeqA.get(index);
   }
 
   /**
@@ -171,25 +245,6 @@ public class ComplementaryEquationSequence extends HolonomicRecurrence {
     return getTerm(4, index);
   }
 
-  /**
-   * For <code>gftype=2</code>, add some arbitrary value to the constant term in the recurrence equation.
-   * @param n index of the term a(n) in the holonomic recurrence currently to be computed
-   * @return value to be added to the constant term.
-   */
-  @Override
-  public Z adjunct(final int n) {
-    return Z.valueOf(b(n - 2));
-  }
-
-  @Override
-  public Z next() {
-    Z result = super.next();
-    final long an = result.longValue();
-    mUnion.add(an);
-    mSeqs.get(0).add(an); // sequence <code>a</code> never uses mex()
-    return result;
-  }
-  
   /**
    * Test method
    * @param args command line arguments: 

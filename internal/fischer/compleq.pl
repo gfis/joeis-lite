@@ -46,10 +46,11 @@ while (<>) {
         $receq = $2;
         $where = $3;
         $heres =~ s{[\(\)n]}{}g; # keep 1 letter a-h only
+        $heres = ord($heres) - ord('a');
         $where =~ s{ }{}g; # remove spaces
         $where =~ s{(\,and|\;see).*}{}; # remove further text
         %inits = ();
-        foreach my $init (split(/\,/, $where)) {
+        foreach my $init (split(/[\,\;]/, $where)) {
             my ($var, $value) = split(/\=/, $init);
             $inits{$var} = $value;
         } # foreach $init
@@ -100,21 +101,19 @@ sub output {
         print "# nix=$nix\n";
     }
     my $ix = 0;
+    my @iterms = ();
     while ($ix < $nix) { # flatten the matrix
-        if ($ix > 0) {
-            $iterms .= ",";
-        }
-        $iterms .= "\"[";
+        my $list = "\"[";
         my $iy = 0; 
         while (defined($matrix[$ix][$iy])) {
             if ($iy > 0) {
-                $iterms .= ",";
+                $list .= ",";
             }
-            $iterms .= $matrix[$ix][$iy];
+            $list .= $matrix[$ix][$iy];
             $iy ++;
         } # while $iy
-        $iterms .= "]\"";
-        $ix ++;
+        $list .= "]\"";
+        $iterms[$ix ++] = $list;
     } # while $ix
     my $adjunct = "";
     my @afactors = ();
@@ -128,7 +127,7 @@ sub output {
             print "# sumd=\"$sumd\"\n";
         }
         if (0) {
-        } elsif ($sumd =~ m{\A([\+\-])?((\d+)\*?)?a\(n\-(\d+)\)\Z}) {
+        } elsif ($sumd =~ m{\A([\+\-])?((\d+)\*?)?a\(n\-(\d+)\)\Z}) { # main sequence a
             my $sign   = $1 || "+";
             my $factor = $3 || 1;
             my $dist   = $4 || 0;
@@ -151,7 +150,15 @@ sub output {
         } elsif ($sumd =~ m{\A([\+\-])?floor(.*)}) { # constant, polynomial in n
             $adjunct  .= "$1$2";
         } else { # everything else, a,b,c ... mixed
+            if ($sumd =~ m{([\+\-])?(.+)\^2\Z}) {
+                $sumd = "$1$2\*$2";
+            }
             $adjunct .= $sumd;
+            $sumd =~ m{\A([\+\-])?((\d+)\*?)?([b-h])\((\d+\*?)?n\-(\d+)\)\Z};
+            my $compl_seqno = ord($4) - ord('a');
+            if ($compl_seqno >= scalar(@iterms)) {
+                push(@iterms, "\"[]\""); # had no initial settings
+            }
         }
     } # while $isd
     $name =~ s{Solution of the complementary equation }{};
@@ -166,10 +173,17 @@ sub output {
         $recurrence .= ",[" . ($afactors[$dist] || 0) . "]";
     }
     $recurrence .= ",[-1]]"; # for ... -a(n) == 0
-    $iterms      =~ s{([\[\,])\+}{$1}g;
+    # $iterms      =~ s{([\[\,])\+}{$1}g;
     $recurrence  =~ s{([\[\,])\+}{$1}g;
-    $adjunct     =~ s{\A\+}{};
-    print join("\t", $aseqno, $callcode, 0, $base_aseqno, $recurrence, $iterms, $adjunct, $heres, $name) . "\n";
+    $adjunct     =~ s{\A\+}{}; # remove leading +
+    $ix = 0; # sequence a
+    my $iy = 0;
+    while (defined($matrix[$ix][$iy])) {
+        $adjunct =~ s{a\($iy\)}{$matrix[$ix][$iy]}g; # replace a(0), a(1) ...
+        $iy ++;
+    } # while a($iy)
+    print join("\t", $aseqno, $callcode, 0, $base_aseqno, $heres, "\"$recurrence\"" 
+        , join(",", @iterms), $adjunct, "", "", "", $name) . "\n";
 } # 
 #================================
 __DATA__
