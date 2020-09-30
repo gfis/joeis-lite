@@ -13,16 +13,20 @@ public class $(ASEQNO) extends ComplementaryEquationSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super("$(PARM2)", new String[] { $(PARM3) });
+    super($(PARM2), $(PARM3), new String[] { $(PARM4) });
   }
 
-  public $(ASEQNO)(final String matrix, final String[] initTerms) {
-    super(matrix, initTerms);
+  public $(ASEQNO)(final int hereSeqNo, final String matrix, final String[] initTerms) {
+    super(hereSeqNo, matrix, initTerms);
   }
 
   @Override
-  public Z adjunct(final int n) {
-    return Z.valueOf($(PARM4));
+  public Z adjunct(final int n) { // sum b(0|1)...b(n-1)
+    Z sum = Z.ZERO;
+    for (int ib = $(PARM5); ib < n; ++ib) {
+      sum = sum.add(Z.valueOf(b(ib)));
+    }
+    return sum;
   }
 
 }

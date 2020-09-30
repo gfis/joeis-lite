@@ -127,7 +127,7 @@ public class HolonomicRecurrence implements Sequence {
         mPolyList.add(ZUtils.toZ(polys[k]));
       } // for k
     }
-    mInitTerms = ZUtils.toZ(initTerms);
+    mInitTerms = (initTerms.length() == 0 || initTerms.equals("[]")) ? new Z[0] : ZUtils.toZ(initTerms);
     initialize();
   } // Constructor
 

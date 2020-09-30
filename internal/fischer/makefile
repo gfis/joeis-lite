@@ -605,12 +605,16 @@ chain2: # rather fruitless since not monotone or big distances in parm2
 #--------------------------------
 compleq0: # complementary equations
 	grep -iE "complementary eq" $(COMMON)/joeis_names.txt \
-	| grep -vE "self\-complementary|musical|Golay" \
+	| grep -vE "self\-complementary|musical|Golay|Beatty|A326665" \
 	| perl compleq.pl -d $(D) \
 	>        $@.tmp \
 	2>       $@.rest.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+compleq9:
+	grep -iE "complementary eq" $(COMMON)/joeis_names.txt \
+	| grep -vE "self\-complementary|musical|Golay" \
+	| perl -ne 'print if m{of the (near\-)complementary equation};'
 #--
 # compleq.man contains the manual corrections. 
 # CC=compleqa is set when $(PARM5) contains the complete body of method adjunct(n).
@@ -626,8 +630,8 @@ MATRIX="[[0],[1],[1],[-1]]"
 INIT="[1,2]"
 complet:
 	$(JAVA) irvine.oeis.ComplementaryEquationSequence -d $(D) -p $(MATRIX) -i $(INIT) -m $(MAXT)
-compleq2:
-	cp -v compleq2.man compleq2.gen
+compleq3:
+	grep -E "^A" compleq3.man > compleq3.gen
 #--------------------------------
 # A030465 Numbers n such that n concatenated with n+1 is a square.
 # A030466 Squares that are concatenations of two consecutive nonzero numbers.

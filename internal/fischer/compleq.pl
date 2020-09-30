@@ -31,40 +31,41 @@ my $where; # raw condition
 my %inits; # for initial values
 my $letters = "abcdefgh";
 my $is_ok;
-my @summands; # in the right side of the recurrence equation 
+my @summands; # in the right side of the recurrence equation
 my $base_aseqno = "";
+my $line;
 
 while (<>) {
-    my $line = $_;
+    $line = $_;
     $is_ok = 1;
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
+    $name =~ s{\s*[\;\.]\s*see comment.*}{}i;
+    $callcode = "compleq";
     if (0) {
-    } elsif ($name =~ m{\.\.\.}) {
-        $is_ok = 0;
-    } elsif ($name =~ m{\ASolution ([abcdefgh\(\) ]*)of the complementary equation ([^\,]+)\, where ([^\.]+)}) {
-        $heres = $1 || 'a';
-        $receq = $2;
-        $where = $3;
-        $heres =~ s{[\(\)n]}{}g; # keep 1 letter a-h only
+    #                              1           2                         3                               4       5   6            7
+    } elsif ($name =~ m{\ASolution (sequence )?([abcdefghn\(\) ]*)of the (near\-)?complementary equation ([^\,]+)(\, (with|where) ([^\.]+))?}) {
+        $heres = $2 || 'a';
+        $receq = $4;
+        $where = $7 || "";
+        #--
+        $heres =~ s{[\(\)n ]}{}g; # keep 1 letter a-h only
         $heres = ord($heres) - ord('a');
         $where =~ s{ }{}g; # remove spaces
+        $where =~ s{\,\,+}{\,}g; # single comma
         $where =~ s{(\,and|\;see).*}{}; # remove further text
         %inits = ();
         foreach my $init (split(/[\,\;]/, $where)) {
             my ($var, $value) = split(/\=/, $init);
+            if (! defined($var)) {
+                print STDERR "# undefined var, init=\"$init\", line=$line";
+                $var = 'a';
+            }
             $inits{$var} = $value;
         } # foreach $init
+        #--
         $receq =~ s{ }{}g; # remove spaces
         $receq =~ s{(\d+)([a-z])}{$1\*$2}g; # insert missing "*"s
-        my ($left, $right) = split(/\=/, $receq);
-        if ($left eq "a(n)") {
-            $right =~ s{\)([\+\-])}{\);$1}g;  # )+   -> );+
-            $right =~ s{([\+\-])n}{${1}n\;}g; # +n-1 -> +n;-1
-            $right =~ s{n\;\*([abcdefgh])\(}{n\*$1\(}g; # but not for +n*b(
-            @summands = split(/\;/, $right);
-        } else {
-            $is_ok = 0;
-        }
+        $is_ok = eval_summands($receq);
     } else {
         $is_ok = 0;
     }
@@ -75,11 +76,34 @@ while (<>) {
     }
 } # while <>
 #----
+sub eval_summands {
+    my ($receq) = @_;
+    my $is_ok = 1;
+    my ($left, $right) = split(/\=/, $receq);
+    if ($left eq "a(n)") {
+        if (0) {
+        } elsif ($right =~ m{a\(0\)\*b\(n\-1\)\+a\(1\)\*b\(n\-2\)\+\.\.\.\+a\(n\-1\)\*b\(0\)}) {
+            $callcode = "compl_p"; # "product"
+            $right =~ s{\+\.\.\.}{}; # treat it in jpat or manually
+        } elsif ($right =~ m{\.\.\.}) {
+            $callcode = "compl_s"; # "sum"
+            $right =~ s{\+\.\.\.}{}; # treat it in jpat or manually
+        }
+        $right =~ s{\)([\+\-])}{\);$1}g;  # )+   -> );+
+        $right =~ s{([\+\-])n}{${1}n\;}g; # +n-1 -> +n;-1
+        $right =~ s{n\;\*([abcdefgh])\(}{n\*$1\(}g; # but not for +n*b(
+        @summands = split(/\;/, $right);
+    } else {
+        $is_ok = 0;
+    }
+    return $is_ok;
+} # eval_summands
+#----
 sub output {
     my $iterms = "";
     if ($debug >= 2) {
         print "# inits: ";
-        foreach my $key (sort(keys(%inits))) { 
+        foreach my $key (sort(keys(%inits))) {
             print "$key=$inits{$key} ";
         }
         print "\n";
@@ -89,13 +113,13 @@ sub output {
     foreach my $key (sort(keys(%inits))) { # store the initial assignments in a matrix
         if ($key !~ m{\A$max_letter}) {
             $max_letter = substr($key, 0, 1); # first letter
-        } 
+        }
         my $ix = ord($max_letter) - ord('a');
         $key =~ m{(\d+)}; # may even be 2 digits with this complicated code
         my $iy = $1;
         $matrix[$ix][$iy] = $inits{$key};
     } # foreach $key
-    
+
     my $nix = ord($max_letter) - ord('a') + 1;
     if ($debug >= 2) {
         print "# nix=$nix\n";
@@ -104,7 +128,7 @@ sub output {
     my @iterms = ();
     while ($ix < $nix) { # flatten the matrix
         my $list = "\"[";
-        my $iy = 0; 
+        my $iy = 0;
         while (defined($matrix[$ix][$iy])) {
             if ($iy > 0) {
                 $list .= ",";
@@ -115,19 +139,22 @@ sub output {
         $list .= "]\"";
         $iterms[$ix ++] = $list;
     } # while $ix
+
     my $adjunct = "";
     my @afactors = ();
     my @constant = ();
     my $isd = 0;
     my $maxdist = 0;
     my $maxexp  = 0;
+    my $with_dots = 0;
     while ($isd < scalar(@summands)) {
         my $sumd = $summands[$isd ++];
+        $sumd =~ s{\A([^\+\-])}{\+$1}; # prefix with "+" if no sign
         if ($debug >= 1) {
             print "# sumd=\"$sumd\"\n";
         }
         if (0) {
-        } elsif ($sumd =~ m{\A([\+\-])?((\d+)\*?)?a\(n\-(\d+)\)\Z}) { # main sequence a
+        } elsif ($sumd =~ m{\A([\+\-])?((\d+)\*?)?a\(n\-(\d+)\)\Z}) { # main sequence, +2*a(n-1)
             my $sign   = $1 || "+";
             my $factor = $3 || 1;
             my $dist   = $4 || 0;
@@ -135,29 +162,35 @@ sub output {
             if ($dist > $maxdist) {
                 $maxdist = $dist;
             }
-        } elsif ($sumd =~ m{\A([\+\-])?((\d+)\*?)?n(\^(\d+))?\Z}) { # constant, polynomial in n
+        } elsif ($sumd =~ m{\A([\+\-])?((\d+)\*?)?n(\^(\d+))?\Z}) { # polynomial in n, +2*n^m
             my $sign   = $1 || "+";
             my $factor = $3 || 1;
-            my $exp    = $5 || 1;
-            $constant[$exp] = "$sign$factor";
-            if ($exp  > $maxexp ) {
-                $maxexp  = $exp ;
+            my $expon  = $5 || 1;
+            $constant[$expon] = "$sign$factor";
+            if ($expon  > $maxexp ) {
+                $maxexp  = $expon ;
             }
-        } elsif ($sumd =~ m{\A([\+\-])?(\d+)\Z}) { # constant, polynomial in n
+        } elsif ($sumd =~ m{\A([\+\-])?(\d+)\Z}) { # single constant, +1
             my $sign   = $1 || "+";
             my $factor = $2 || 1;
             $constant[0] = "$sign$factor";
-        } elsif ($sumd =~ m{\A([\+\-])?floor(.*)}) { # constant, polynomial in n
+        } elsif ($sumd =~ m{\A([\+\-])?floor(.*)}) { # ignore "floor( )"
             $adjunct  .= "$1$2";
         } else { # everything else, a,b,c ... mixed
-            if ($sumd =~ m{([\+\-])?(.+)\^2\Z}) {
+            if ($sumd =~ m{([\+\-])?(.+)\^2\Z}) { # expand ^2, squared
                 $sumd = "$1$2\*$2";
             }
             $adjunct .= $sumd;
-            $sumd =~ m{\A([\+\-])?((\d+)\*?)?([b-h])\((\d+\*?)?n\-(\d+)\)\Z};
-            my $compl_seqno = ord($4) - ord('a');
-            if ($compl_seqno >= scalar(@iterms)) {
-                push(@iterms, "\"[]\""); # had no initial settings
+            #            1        23         4
+            $sumd =~ m{([b-h])};
+            my $letter = $1;
+            if (! defined($letter)) {
+                print STDERR "# undef letter, sumd=\"$sumd\", line=$line";
+            } else {
+                my $compl_seqno = ord($letter) - ord('a');
+                if ($compl_seqno >= scalar(@iterms)) {
+                    push(@iterms, "\"[]\""); # had no initial settings
+                }
             }
         }
     } # while $isd
@@ -169,22 +202,28 @@ sub output {
         $sep = ",";
     }
     $recurrence .= "]";
-    for (my $dist = $maxdist; $dist > 0; $dist --) {
+    for (my $dist = $maxdist; $dist > 0; $dist --) { # build the holonomic matrix
         $recurrence .= ",[" . ($afactors[$dist] || 0) . "]";
     }
-    $recurrence .= ",[-1]]"; # for ... -a(n) == 0
-    # $iterms      =~ s{([\[\,])\+}{$1}g;
+    $recurrence .= ",[-1]]"; # for annihilator: ... -a(n) == 0
     $recurrence  =~ s{([\[\,])\+}{$1}g;
     $adjunct     =~ s{\A\+}{}; # remove leading +
-    $ix = 0; # sequence a
-    my $iy = 0;
-    while (defined($matrix[$ix][$iy])) {
-        $adjunct =~ s{a\($iy\)}{$matrix[$ix][$iy]}g; # replace a(0), a(1) ...
-        $iy ++;
-    } # while a($iy)
-    print join("\t", $aseqno, $callcode, 0, $base_aseqno, $heres, "\"$recurrence\"" 
+    if (0) {
+    } elsif ($callcode eq "compl_p") {
+        $adjunct = "prod";
+    } elsif ($callcode eq "compleq") {
+        $ix = 0; # sequence a
+        my $iy = 0;
+        while (defined($matrix[$ix][$iy])) {
+            $adjunct =~ s{a\($iy\)}{$matrix[$ix][$iy]}g; # replace a(0), a(1) ... in $adjunct
+            $iy ++;
+        } # while a($iy)
+    } elsif ($callcode eq "compl_s") {
+        $adjunct = ($adjunct =~ m{b\(0\)}) ? 0 : 1;
+    }
+    print join("\t", $aseqno, $callcode, 0, $base_aseqno, $heres, "\"$recurrence\""
         , join(",", @iterms), $adjunct, "", "", "", $name) . "\n";
-} # 
+} #
 #================================
 __DATA__
 A022424 Sequence    Solution a( ) of the complementary equation a(n) = b(n-1) + b(n-2), where a(0) = 1, a(1) = 2; see Comments. nonn,changed,   0..10000
