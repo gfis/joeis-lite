@@ -74,6 +74,7 @@ diff_joeis:
 	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/ || :
 #	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/ || :
 #	diff -wC0 ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
+#	diff -wC0 ../../../joeis/src/irvine/oeis/CompementaryEquationSequence.java   ../../src/irvine/oeis || :
 update:
 	cp -v     ../../../joeis/src/irvine/oeis/EulerTransform.java      ../../src/irvine/oeis || :
 #	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gits/joeis/{} {}
@@ -2376,8 +2377,9 @@ etlin0:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------
-mckay0:
-	$(DBAT) "SELECT n.aseqno, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'not_in_joeis'), n.name \
+mckay0: mckay1 mckay2
+mckay1:
+	$(DBAT) -x "SELECT n.aseqno, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'nyi'), n.name \
 	  FROM asname n \
 	  LEFT JOIN bfinfo b on n.aseqno = b.aseqno \
 	  LEFT JOIN joeis  j on b.aseqno = j.aseqno \
@@ -2386,6 +2388,22 @@ mckay0:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+mckay2:
+	cat mckay1.tmp \
+	| perl -ne 'use strict; my ($$aseqno, $$bfimax, $$superclass, $$name) = split(/\t/); '\
+	' $$name =~ m{class (\d+)([a-zA-Z]+)}; my ($$class, $$letter) = ($$1, $$2); my $$with = ($$name =~ m{with a\(0\)\s*\=\s*([^\.]*)}) ? $$1 : ""; '\
+	' print join("\t", $$aseqno, "mckay", 0, "$$class$$letter", $$letter, $$with, $$superclass) . "\n"; '\
+	| sort -k4n \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	cut -f5  $@.tmp | sort | uniq -c
+mckay_java:
+	perl mckay_tables.pl > McKayThompsonTables.java
+	javac McKayThompsonTables.java
+	mv McKayThompsonTables.class irvine/oeis
+	java -cp . irvine.oeis.McKayThompsonTables
+	cp -v McKayThompsonTables.java ../../src/irvine/oeis
 #--------
 weylgr0:
 	cat $(COMMON)/joeis_names.txt \
