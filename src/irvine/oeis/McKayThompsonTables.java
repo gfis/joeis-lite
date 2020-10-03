@@ -1,5 +1,7 @@
 package irvine.oeis;
 
+import java.util.HashMap;
+
 /** 
  * Data tables for {@link McKayThompsonSequence}.
  * @author Georg Fischer
@@ -11,716 +13,600 @@ package irvine.oeis;
  */
 public class McKayThompsonTables {
 
-  /** Valid class codes */
-  private static final int[] sValidClasses = new int[] 
-    { 0x010 /*01A */
-    , 0x020 /*02A */, 0x021 /*02B */
-    , 0x030 /*03A */, 0x031 /*03B */, 0x032 /*03C */
-    , 0x040 /*04A */, 0x041 /*04B */, 0x042 /*04C */, 0x043 /*04D */
-    , 0x050 /*05A */, 0x051 /*05B */
-    , 0x060 /*06A */, 0x061 /*06B */, 0x062 /*06C */, 0x063 /*06D */, 0x064 /*06E */, 0x065 /*06F */
-    , 0x070 /*07A */, 0x071 /*07B */
-    , 0x080 /*08A */, 0x081 /*08B */, 0x082 /*08C */, 0x083 /*08D */, 0x084 /*08E */, 0x085 /*08F */
-    , 0x090 /*09A */, 0x091 /*09B */
-    , 0x100 /*10A */, 0x101 /*10B */, 0x102 /*10C */, 0x103 /*10D */, 0x104 /*10E */
-    , 0x110 /*11A */
-    , 0x120 /*12A */, 0x121 /*12B */, 0x122 /*12C */, 0x123 /*12D */, 0x124 /*12E */, 0x125 /*12F */, 0x126 /*12G */, 0x127 /*12H */, 0x128 /*12I */, 0x129 /*12J */
-    , 0x130 /*13A */, 0x131 /*13B */
-    , 0x140 /*14A */, 0x141 /*14B */, 0x142 /*14C */
-    , 0x150 /*15A */, 0x151 /*15B */, 0x152 /*15C */, 0x153 /*15D */
-    , 0x160 /*16A */, 0x161 /*16B */, 0x162 /*16C */
-    , 0x170 /*17A */
-    , 0x180 /*18A */, 0x181 /*18B */, 0x182 /*18C */, 0x183 /*18D */, 0x184 /*18E */
-    , 0x190 /*19A */
-    , 0x200 /*20A */, 0x201 /*20B */, 0x202 /*20C */, 0x203 /*20D */, 0x204 /*20E */, 0x205 /*20F */
-    , 0x210 /*21A */, 0x211 /*21B */, 0x212 /*21C */, 0x213 /*21D */
-    , 0x220 /*22A */, 0x221 /*22B */
-    , 0x230 /*23A */, 0x231 /*23B */
-    , 0x240 /*24A */, 0x241 /*24B */, 0x242 /*24C */, 0x243 /*24D */, 0x244 /*24E */, 0x245 /*24F */, 0x246 /*24G */, 0x247 /*24H */, 0x248 /*24I */, 0x249 /*24J */
-    , 0x250 /*25A */
-    , 0x260 /*26A */, 0x261 /*26B */
-    , 0x270 /*27A */, 0x271 /*27B */
-    , 0x280 /*28A */, 0x281 /*28B */, 0x282 /*28C */, 0x283 /*28D */
-    , 0x290 /*29A */
-    , 0x300 /*30A */, 0x301 /*30B */, 0x302 /*30C */, 0x303 /*30D */, 0x304 /*30E */, 0x305 /*30F */, 0x306 /*30G */
-    , 0x310 /*31A */, 0x311 /*31B */
-    , 0x320 /*32A */, 0x321 /*32B */
-    , 0x330 /*33A */, 0x331 /*33B */
-    , 0x340 /*34A */
-    , 0x350 /*35A */, 0x351 /*35B */
-    , 0x360 /*36A */, 0x361 /*36B */, 0x362 /*36C */, 0x363 /*36D */
-    , 0x380 /*38A */
-    , 0x390 /*39A */, 0x391 /*39B */, 0x392 /*39C */, 0x393 /*39D */
-    , 0x400 /*40A */, 0x401 /*40B */, 0x402 /*40C */, 0x403 /*40D */
-    , 0x410 /*41A */
-    , 0x420 /*42A */, 0x421 /*42B */, 0x422 /*42C */, 0x423 /*42D */
-    , 0x440 /*44A */, 0x441 /*44B */
-    , 0x450 /*45A */
-    , 0x460 /*46A */, 0x461 /*46B */, 0x462 /*46C */, 0x463 /*46D */
-    , 0x470 /*47A */, 0x471 /*47B */
-    , 0x480 /*48A */
-    , 0x500 /*50A */
-    , 0x510 /*51A */
-    , 0x520 /*52A */, 0x521 /*52B */
-    , 0x540 /*54A */
-    , 0x550 /*55A */
-    , 0x560 /*56A */, 0x561 /*56B */, 0x562 /*56C */
-    , 0x570 /*57A */
-    , 0x590 /*59A */, 0x591 /*59B */
-    , 0x600 /*60A */, 0x601 /*60B */, 0x602 /*60C */, 0x603 /*60D */, 0x604 /*60E */, 0x605 /*60F */
-    , 0x620 /*62A */, 0x621 /*62B */
-    , 0x660 /*66A */, 0x661 /*66B */
-    , 0x680 /*68A */
-    , 0x690 /*69A */, 0x691 /*69B */
-    , 0x700 /*70A */, 0x701 /*70B */
-    , 0x710 /*71A */, 0x711 /*71B */
-    , 0x780 /*78A */, 0x781 /*78B */, 0x782 /*78C */
-    , 0x840 /*84A */, 0x841 /*84B */, 0x842 /*84C */
-    , 0x870 /*87A */, 0x871 /*87B */
-    , 0x880 /*88A */, 0x881 /*88B */
-    , 0x920 /*92A */, 0x921 /*92B */
-    , 0x930 /*93A */, 0x931 /*93B */
-    , 0x940 /*94A */, 0x941 /*94B */
-    , 0x950 /*95A */, 0x951 /*95B */
-    , 0xa40 /*104A*/, 0xa41 /*104B*/
-    , 0xa50 /*105A*/
-    , 0xb00 /*110A*/
-    , 0xb90 /*119A*/, 0xb91 /*119B*/, 0xb92 /*119C*/
-    }; // sValidClasses
-    
-  /** Class powers */
-  private static final int[][] sClassPowers = new int[][] 
-    { null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x010 */ new int[] { 0x010, 0x010, 0x010, 0x010, 0x010, 0x010, 0x010, 0x010, 0x010, 0x010 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x020 */ new int[] { 0x010, 0x020, 0x010, 0x020, 0x010, 0x020, 0x010, 0x020, 0x010, 0x020 }
-    , /* 0x021 */ new int[] { 0x010, 0x021, 0x010, 0x021, 0x010, 0x021, 0x010, 0x021, 0x010, 0x021 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x030 */ new int[] { 0x010, 0x030, 0x030, 0x010, 0x030, 0x030, 0x010, 0x030, 0x030, 0x010 }
-    , /* 0x031 */ new int[] { 0x010, 0x031, 0x031, 0x010, 0x031, 0x031, 0x010, 0x031, 0x031, 0x010 }
-    , /* 0x032 */ new int[] { 0x010, 0x032, 0x032, 0x010, 0x032, 0x032, 0x010, 0x032, 0x032, 0x010 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x040 */ new int[] { 0x010, 0x040, 0x021, 0x040, 0x010, 0x040, 0x021, 0x040, 0x010, 0x040 }
-    , /* 0x041 */ new int[] { 0x010, 0x041, 0x020, 0x041, 0x010, 0x041, 0x020, 0x041, 0x010, 0x041 }
-    , /* 0x042 */ new int[] { 0x010, 0x042, 0x021, 0x042, 0x010, 0x042, 0x021, 0x042, 0x010, 0x042 }
-    , /* 0x043 */ new int[] { 0x010, 0x043, 0x021, 0x043, 0x010, 0x043, 0x021, 0x043, 0x010, 0x043 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x050 */ new int[] { 0x010, 0x050, 0x050, 0x050, 0x050, 0x010, 0x050, 0x050, 0x050, 0x050 }
-    , /* 0x051 */ new int[] { 0x010, 0x051, 0x051, 0x051, 0x051, 0x010, 0x051, 0x051, 0x051, 0x051 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x060 */ new int[] { 0x010, 0x060, 0x030, 0x020, 0x030, 0x060, 0x010, 0x060, 0x030, 0x020 }
-    , /* 0x061 */ new int[] { 0x010, 0x061, 0x031, 0x021, 0x031, 0x061, 0x010, 0x061, 0x031, 0x021 }
-    , /* 0x062 */ new int[] { 0x010, 0x062, 0x030, 0x021, 0x030, 0x062, 0x010, 0x062, 0x030, 0x021 }
-    , /* 0x063 */ new int[] { 0x010, 0x063, 0x031, 0x020, 0x031, 0x063, 0x010, 0x063, 0x031, 0x020 }
-    , /* 0x064 */ new int[] { 0x010, 0x064, 0x031, 0x021, 0x031, 0x064, 0x010, 0x064, 0x031, 0x021 }
-    , /* 0x065 */ new int[] { 0x010, 0x065, 0x032, 0x021, 0x032, 0x065, 0x010, 0x065, 0x032, 0x021 }, null, null, null, null, null, null, null, null, null, null
-    , /* 0x070 */ new int[] { 0x010, 0x070, 0x070, 0x070, 0x070, 0x070, 0x070, 0x010, 0x070, 0x070 }
-    , /* 0x071 */ new int[] { 0x010, 0x071, 0x071, 0x071, 0x071, 0x071, 0x071, 0x010, 0x071, 0x071 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x080 */ new int[] { 0x010, 0x080, 0x042, 0x080, 0x021, 0x080, 0x042, 0x080, 0x010, 0x080 }
-    , /* 0x081 */ new int[] { 0x010, 0x081, 0x040, 0x081, 0x021, 0x081, 0x040, 0x081, 0x010, 0x081 }
-    , /* 0x082 */ new int[] { 0x010, 0x082, 0x041, 0x082, 0x020, 0x082, 0x041, 0x082, 0x010, 0x082 }
-    , /* 0x083 */ new int[] { 0x010, 0x083, 0x042, 0x083, 0x021, 0x083, 0x042, 0x083, 0x010, 0x083 }
-    , /* 0x084 */ new int[] { 0x010, 0x084, 0x042, 0x084, 0x021, 0x084, 0x042, 0x084, 0x010, 0x084 }
-    , /* 0x085 */ new int[] { 0x010, 0x085, 0x043, 0x085, 0x021, 0x085, 0x043, 0x085, 0x010, 0x085 }, null, null, null, null, null, null, null, null, null, null
-    , /* 0x090 */ new int[] { 0x010, 0x090, 0x090, 0x031, 0x090, 0x090, 0x031, 0x090, 0x090, 0x010 }
-    , /* 0x091 */ new int[] { 0x010, 0x091, 0x091, 0x031, 0x091, 0x091, 0x031, 0x091, 0x091, 0x010 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x100 */ new int[] { 0x010, 0x100, 0x050, 0x100, 0x050, 0x020, 0x050, 0x100, 0x050, 0x100 }
-    , /* 0x101 */ new int[] { 0x010, 0x101, 0x050, 0x101, 0x050, 0x021, 0x050, 0x101, 0x050, 0x101 }
-    , /* 0x102 */ new int[] { 0x010, 0x102, 0x051, 0x102, 0x051, 0x020, 0x051, 0x102, 0x051, 0x102 }
-    , /* 0x103 */ new int[] { 0x010, 0x103, 0x051, 0x103, 0x051, 0x021, 0x051, 0x103, 0x051, 0x103 }
-    , /* 0x104 */ new int[] { 0x010, 0x104, 0x051, 0x104, 0x051, 0x021, 0x051, 0x104, 0x051, 0x104 }, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x110 */ new int[] { 0x010, 0x110, 0x110, 0x110, 0x110, 0x110, 0x110, 0x110, 0x110, 0x110 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x120 */ new int[] { 0x010, 0x120, 0x062, 0x040, 0x030, 0x120, 0x021, 0x120, 0x030, 0x040 }
-    , /* 0x121 */ new int[] { 0x010, 0x121, 0x064, 0x040, 0x031, 0x121, 0x021, 0x121, 0x031, 0x040 }
-    , /* 0x122 */ new int[] { 0x010, 0x122, 0x060, 0x041, 0x030, 0x122, 0x020, 0x122, 0x030, 0x041 }
-    , /* 0x123 */ new int[] { 0x010, 0x123, 0x065, 0x040, 0x032, 0x123, 0x021, 0x123, 0x032, 0x040 }
-    , /* 0x124 */ new int[] { 0x010, 0x124, 0x062, 0x042, 0x030, 0x124, 0x021, 0x124, 0x030, 0x042 }
-    , /* 0x125 */ new int[] { 0x010, 0x125, 0x061, 0x043, 0x031, 0x125, 0x021, 0x125, 0x031, 0x043 }
-    , /* 0x126 */ new int[] { 0x010, 0x126, 0x063, 0x041, 0x031, 0x126, 0x020, 0x126, 0x031, 0x041 }
-    , /* 0x127 */ new int[] { 0x010, 0x127, 0x064, 0x042, 0x031, 0x127, 0x021, 0x127, 0x031, 0x042 }
-    , /* 0x128 */ new int[] { 0x010, 0x128, 0x064, 0x042, 0x031, 0x128, 0x021, 0x128, 0x031, 0x042 }
-    , /* 0x129 */ new int[] { 0x010, 0x129, 0x065, 0x043, 0x032, 0x129, 0x021, 0x129, 0x032, 0x043 }, null, null, null, null, null, null
-    , /* 0x130 */ new int[] { 0x010, 0x130, 0x130, 0x130, 0x130, 0x130, 0x130, 0x130, 0x130, 0x130 }
-    , /* 0x131 */ new int[] { 0x010, 0x131, 0x131, 0x131, 0x131, 0x131, 0x131, 0x131, 0x131, 0x131 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x140 */ new int[] { 0x010, 0x140, 0x070, 0x140, 0x070, 0x140, 0x070, 0x020, 0x070, 0x140 }
-    , /* 0x141 */ new int[] { 0x010, 0x141, 0x070, 0x141, 0x070, 0x141, 0x070, 0x021, 0x070, 0x141 }
-    , /* 0x142 */ new int[] { 0x010, 0x142, 0x071, 0x142, 0x071, 0x142, 0x071, 0x021, 0x071, 0x142 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x150 */ new int[] { 0x010, 0x150, 0x150, 0x050, 0x150, 0x030, 0x050, 0x150, 0x150, 0x050 }
-    , /* 0x151 */ new int[] { 0x010, 0x151, 0x151, 0x050, 0x151, 0x031, 0x050, 0x151, 0x151, 0x050 }
-    , /* 0x152 */ new int[] { 0x010, 0x152, 0x152, 0x051, 0x152, 0x031, 0x051, 0x152, 0x152, 0x051 }
-    , /* 0x153 */ new int[] { 0x010, 0x153, 0x153, 0x051, 0x153, 0x032, 0x051, 0x153, 0x153, 0x051 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x160 */ new int[] { 0x010, 0x160, 0x080, 0x160, 0x042, 0x160, 0x080, 0x160, 0x021, 0x160 }
-    , /* 0x161 */ new int[] { 0x010, 0x161, 0x084, 0x161, 0x042, 0x161, 0x084, 0x161, 0x021, 0x161 }
-    , /* 0x162 */ new int[] { 0x010, 0x162, 0x084, 0x162, 0x042, 0x162, 0x084, 0x162, 0x021, 0x162 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x170 */ new int[] { 0x010, 0x170, 0x170, 0x170, 0x170, 0x170, 0x170, 0x170, 0x170, 0x170 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x180 */ new int[] { 0x010, 0x180, 0x091, 0x063, 0x091, 0x180, 0x031, 0x180, 0x091, 0x020 }
-    , /* 0x181 */ new int[] { 0x010, 0x181, 0x090, 0x063, 0x090, 0x181, 0x031, 0x181, 0x090, 0x020 }
-    , /* 0x182 */ new int[] { 0x010, 0x182, 0x090, 0x064, 0x090, 0x182, 0x031, 0x182, 0x090, 0x021 }
-    , /* 0x183 */ new int[] { 0x010, 0x183, 0x091, 0x064, 0x091, 0x183, 0x031, 0x183, 0x091, 0x021 }
-    , /* 0x184 */ new int[] { 0x010, 0x184, 0x091, 0x064, 0x091, 0x184, 0x031, 0x184, 0x091, 0x021 }, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x190 */ new int[] { 0x010, 0x190, 0x190, 0x190, 0x190, 0x190, 0x190, 0x190, 0x190, 0x190 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x200 */ new int[] { 0x010, 0x200, 0x101, 0x200, 0x050, 0x040, 0x101, 0x200, 0x050, 0x200 }
-    , /* 0x201 */ new int[] { 0x010, 0x201, 0x100, 0x201, 0x050, 0x041, 0x100, 0x201, 0x050, 0x201 }
-    , /* 0x202 */ new int[] { 0x010, 0x202, 0x104, 0x202, 0x051, 0x040, 0x104, 0x202, 0x051, 0x202 }
-    , /* 0x203 */ new int[] { 0x010, 0x203, 0x101, 0x203, 0x050, 0x043, 0x101, 0x203, 0x050, 0x203 }
-    , /* 0x204 */ new int[] { 0x010, 0x204, 0x103, 0x204, 0x051, 0x043, 0x103, 0x204, 0x051, 0x204 }
-    , /* 0x205 */ new int[] { 0x010, 0x205, 0x104, 0x205, 0x051, 0x042, 0x104, 0x205, 0x051, 0x205 }, null, null, null, null, null, null, null, null, null, null
-    , /* 0x210 */ new int[] { 0x010, 0x210, 0x210, 0x070, 0x210, 0x210, 0x070, 0x030, 0x210, 0x070 }
-    , /* 0x211 */ new int[] { 0x010, 0x211, 0x211, 0x071, 0x211, 0x211, 0x071, 0x030, 0x211, 0x071 }
-    , /* 0x212 */ new int[] { 0x010, 0x212, 0x212, 0x070, 0x212, 0x212, 0x070, 0x032, 0x212, 0x070 }
-    , /* 0x213 */ new int[] { 0x010, 0x213, 0x213, 0x071, 0x213, 0x213, 0x071, 0x031, 0x213, 0x071 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x220 */ new int[] { 0x010, 0x220, 0x110, 0x220, 0x110, 0x220, 0x110, 0x220, 0x110, 0x220 }
-    , /* 0x221 */ new int[] { 0x010, 0x221, 0x110, 0x221, 0x110, 0x221, 0x110, 0x221, 0x110, 0x221 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x230 */ new int[] { 0x010, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231 }
-    , /* 0x231 */ new int[] { 0x010, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231, 0x230, 0x231 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x240 */ new int[] { 0x010, 0x240, 0x120, 0x081, 0x062, 0x240, 0x040, 0x240, 0x030, 0x081 }
-    , /* 0x241 */ new int[] { 0x010, 0x241, 0x124, 0x080, 0x062, 0x241, 0x042, 0x241, 0x030, 0x080 }
-    , /* 0x242 */ new int[] { 0x010, 0x242, 0x128, 0x080, 0x064, 0x242, 0x042, 0x242, 0x031, 0x080 }
-    , /* 0x243 */ new int[] { 0x010, 0x243, 0x124, 0x083, 0x062, 0x243, 0x042, 0x243, 0x030, 0x083 }
-    , /* 0x244 */ new int[] { 0x010, 0x244, 0x123, 0x081, 0x065, 0x244, 0x040, 0x244, 0x032, 0x081 }
-    , /* 0x245 */ new int[] { 0x010, 0x245, 0x125, 0x085, 0x061, 0x245, 0x043, 0x245, 0x031, 0x085 }
-    , /* 0x246 */ new int[] { 0x010, 0x246, 0x126, 0x082, 0x063, 0x246, 0x041, 0x246, 0x031, 0x082 }
-    , /* 0x247 */ new int[] { 0x010, 0x247, 0x127, 0x083, 0x064, 0x247, 0x042, 0x247, 0x031, 0x083 }
-    , /* 0x248 */ new int[] { 0x010, 0x248, 0x128, 0x084, 0x064, 0x248, 0x042, 0x248, 0x031, 0x084 }
-    , /* 0x249 */ new int[] { 0x010, 0x249, 0x129, 0x085, 0x065, 0x249, 0x043, 0x249, 0x032, 0x085 }, null, null, null, null, null, null
-    , /* 0x250 */ new int[] { 0x010, 0x250, 0x250, 0x250, 0x250, 0x051, 0x250, 0x250, 0x250, 0x250 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x260 */ new int[] { 0x010, 0x260, 0x130, 0x260, 0x130, 0x260, 0x130, 0x260, 0x130, 0x260 }
-    , /* 0x261 */ new int[] { 0x010, 0x261, 0x131, 0x261, 0x131, 0x261, 0x131, 0x261, 0x131, 0x261 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x270 */ new int[] { 0x010, 0x270, 0x270, 0x091, 0x270, 0x270, 0x091, 0x270, 0x270, 0x031 }
-    , /* 0x271 */ new int[] { 0x010, 0x271, 0x271, 0x091, 0x271, 0x271, 0x091, 0x271, 0x271, 0x031 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x280 */ new int[] { 0x010, 0x280, 0x140, 0x280, 0x070, 0x280, 0x140, 0x041, 0x070, 0x280 }
-    , /* 0x281 */ new int[] { 0x010, 0x281, 0x141, 0x281, 0x070, 0x281, 0x141, 0x040, 0x070, 0x281 }
-    , /* 0x282 */ new int[] { 0x010, 0x282, 0x141, 0x282, 0x070, 0x282, 0x141, 0x042, 0x070, 0x282 }
-    , /* 0x283 */ new int[] { 0x010, 0x283, 0x142, 0x283, 0x071, 0x283, 0x142, 0x043, 0x071, 0x283 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x290 */ new int[] { 0x010, 0x290, 0x290, 0x290, 0x290, 0x290, 0x290, 0x290, 0x290, 0x290 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x300 */ new int[] { 0x010, 0x300, 0x152, 0x103, 0x152, 0x061, 0x051, 0x300, 0x152, 0x103 }
-    , /* 0x301 */ new int[] { 0x010, 0x301, 0x150, 0x100, 0x150, 0x060, 0x050, 0x301, 0x150, 0x100 }
-    , /* 0x302 */ new int[] { 0x010, 0x302, 0x150, 0x101, 0x150, 0x062, 0x050, 0x302, 0x150, 0x101 }
-    , /* 0x303 */ new int[] { 0x010, 0x303, 0x151, 0x101, 0x151, 0x061, 0x050, 0x303, 0x151, 0x101 }
-    , /* 0x304 */ new int[] { 0x010, 0x304, 0x153, 0x103, 0x153, 0x065, 0x051, 0x304, 0x153, 0x103 }
-    , /* 0x305 */ new int[] { 0x010, 0x305, 0x152, 0x102, 0x152, 0x063, 0x051, 0x305, 0x152, 0x102 }
-    , /* 0x306 */ new int[] { 0x010, 0x306, 0x152, 0x104, 0x152, 0x064, 0x051, 0x306, 0x152, 0x104 }, null, null, null, null, null, null, null, null, null
-    , /* 0x310 */ new int[] { 0x010, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311 }
-    , /* 0x311 */ new int[] { 0x010, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311, 0x310, 0x311 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x320 */ new int[] { 0x010, 0x320, 0x161, 0x320, 0x084, 0x320, 0x161, 0x320, 0x042, 0x320 }
-    , /* 0x321 */ new int[] { 0x010, 0x321, 0x162, 0x321, 0x084, 0x321, 0x162, 0x321, 0x042, 0x321 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x330 */ new int[] { 0x010, 0x330, 0x330, 0x110, 0x330, 0x330, 0x110, 0x330, 0x330, 0x110 }
-    , /* 0x331 */ new int[] { 0x010, 0x331, 0x331, 0x110, 0x331, 0x331, 0x110, 0x331, 0x331, 0x110 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x340 */ new int[] { 0x010, 0x340, 0x170, 0x340, 0x170, 0x340, 0x170, 0x340, 0x170, 0x340 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x350 */ new int[] { 0x010, 0x350, 0x350, 0x350, 0x350, 0x070, 0x350, 0x050, 0x350, 0x350 }
-    , /* 0x351 */ new int[] { 0x010, 0x351, 0x351, 0x351, 0x351, 0x071, 0x351, 0x051, 0x351, 0x351 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x360 */ new int[] { 0x010, 0x360, 0x182, 0x121, 0x090, 0x360, 0x064, 0x360, 0x090, 0x040 }
-    , /* 0x361 */ new int[] { 0x010, 0x361, 0x183, 0x121, 0x091, 0x361, 0x064, 0x361, 0x091, 0x040 }
-    , /* 0x362 */ new int[] { 0x010, 0x362, 0x181, 0x126, 0x090, 0x362, 0x063, 0x362, 0x090, 0x041 }
-    , /* 0x363 */ new int[] { 0x010, 0x363, 0x183, 0x128, 0x091, 0x363, 0x064, 0x363, 0x091, 0x042 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x380 */ new int[] { 0x010, 0x380, 0x190, 0x380, 0x190, 0x380, 0x190, 0x380, 0x190, 0x380 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x390 */ new int[] { 0x010, 0x390, 0x390, 0x130, 0x390, 0x390, 0x130, 0x390, 0x390, 0x130 }
-    , /* 0x391 */ new int[] { 0x010, 0x391, 0x391, 0x130, 0x391, 0x391, 0x130, 0x391, 0x391, 0x130 }
-    , /* 0x392 */ new int[] { 0x010, 0x392, 0x393, 0x392, 0x393, 0x131, 0x392, 0x393, 0x392, 0x393, 0x131, 0x392, 0x393, 0x392, 0x393, 0x131 }
-    , /* 0x393 */ new int[] { 0x010, 0x392, 0x393, 0x392, 0x393, 0x131, 0x392, 0x393, 0x392, 0x393, 0x131, 0x392, 0x393, 0x392, 0x393, 0x131 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x400 */ new int[] { 0x010, 0x400, 0x201, 0x400, 0x100, 0x082, 0x201, 0x400, 0x050, 0x400 }
-    , /* 0x401 */ new int[] { 0x010, 0x401, 0x200, 0x401, 0x101, 0x081, 0x200, 0x401, 0x050, 0x401 }
-    , /* 0x402 */ new int[] { 0x010, 0x402, 0x403, 0x205, 0x402, 0x403, 0x104, 0x083, 0x205, 0x402, 0x403, 0x051, 0x402, 0x403 }
-    , /* 0x403 */ new int[] { 0x010, 0x402, 0x403, 0x205, 0x402, 0x403, 0x104, 0x083, 0x205, 0x402, 0x403, 0x051, 0x402, 0x403 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x410 */ new int[] { 0x010, 0x410, 0x410, 0x410, 0x410, 0x410, 0x410, 0x410, 0x410, 0x410 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x420 */ new int[] { 0x010, 0x420, 0x210, 0x140, 0x210, 0x420, 0x070, 0x060, 0x210, 0x140 }
-    , /* 0x421 */ new int[] { 0x010, 0x421, 0x213, 0x142, 0x213, 0x421, 0x071, 0x061, 0x213, 0x142 }
-    , /* 0x422 */ new int[] { 0x010, 0x422, 0x212, 0x141, 0x212, 0x422, 0x070, 0x065, 0x212, 0x141 }
-    , /* 0x423 */ new int[] { 0x010, 0x423, 0x211, 0x142, 0x211, 0x423, 0x071, 0x062, 0x211, 0x142 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x440 */ new int[] { 0x010, 0x440, 0x441, 0x221, 0x440, 0x441, 0x110, 0x440, 0x441, 0x221, 0x440, 0x441, 0x110, 0x440, 0x441 }
-    , /* 0x441 */ new int[] { 0x010, 0x440, 0x441, 0x221, 0x440, 0x441, 0x110, 0x440, 0x441, 0x221, 0x440, 0x441, 0x110, 0x440, 0x441 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x450 */ new int[] { 0x010, 0x450, 0x450, 0x151, 0x450, 0x090, 0x151, 0x450, 0x450, 0x050 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x460 */ new int[] { 0x010, 0x460, 0x461, 0x230, 0x231, 0x460, 0x461, 0x230, 0x231, 0x460, 0x461, 0x230, 0x231, 0x460, 0x461, 0x230, 0x231, 0x460, 0x461 }
-    , /* 0x461 */ new int[] { 0x010, 0x460, 0x461, 0x230, 0x231, 0x460, 0x461, 0x230, 0x231, 0x460, 0x461, 0x230, 0x231, 0x460, 0x461, 0x230, 0x231, 0x460, 0x461 }
-    , /* 0x462 */ new int[] { 0x010, 0x462, 0x463, 0x230, 0x231, 0x462, 0x463, 0x230, 0x231, 0x462, 0x463, 0x230, 0x231, 0x462, 0x463, 0x230, 0x231, 0x462, 0x463 }
-    , /* 0x463 */ new int[] { 0x010, 0x462, 0x463, 0x230, 0x231, 0x462, 0x463, 0x230, 0x231, 0x462, 0x463, 0x230, 0x231, 0x462, 0x463, 0x230, 0x231, 0x462, 0x463 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x470 */ new int[] { 0x010, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471 }
-    , /* 0x471 */ new int[] { 0x010, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471, 0x470, 0x471 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x480 */ new int[] { 0x010, 0x480, 0x241, 0x160, 0x124, 0x480, 0x080, 0x480, 0x062, 0x160 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x500 */ new int[] { 0x010, 0x500, 0x250, 0x500, 0x250, 0x102, 0x250, 0x500, 0x250, 0x500 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x510 */ new int[] { 0x010, 0x510, 0x510, 0x170, 0x510, 0x510, 0x170, 0x510, 0x510, 0x170 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x520 */ new int[] { 0x010, 0x520, 0x260, 0x520, 0x130, 0x520, 0x260, 0x520, 0x130, 0x520 }
-    , /* 0x521 */ new int[] { 0x010, 0x521, 0x261, 0x521, 0x131, 0x521, 0x261, 0x521, 0x131, 0x521 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x540 */ new int[] { 0x010, 0x540, 0x270, 0x180, 0x270, 0x540, 0x091, 0x540, 0x270, 0x063 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x550 */ new int[] { 0x010, 0x550, 0x550, 0x550, 0x550, 0x110, 0x550, 0x550, 0x550, 0x550 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x560 */ new int[] { 0x010, 0x560, 0x282, 0x560, 0x141, 0x560, 0x282, 0x080, 0x070, 0x560 }
-    , /* 0x561 */ new int[] { 0x010, 0x561, 0x562, 0x283, 0x561, 0x562, 0x142, 0x561, 0x562, 0x283, 0x085, 0x071, 0x561, 0x562 }
-    , /* 0x562 */ new int[] { 0x010, 0x561, 0x562, 0x283, 0x561, 0x562, 0x142, 0x561, 0x562, 0x283, 0x085, 0x071, 0x561, 0x562 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x570 */ new int[] { 0x010, 0x570, 0x570, 0x190, 0x570, 0x570, 0x190, 0x570, 0x570, 0x190 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x590 */ new int[] { 0x010, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591 }
-    , /* 0x591 */ new int[] { 0x010, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591, 0x590, 0x591 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x600 */ new int[] { 0x010, 0x600, 0x301, 0x201, 0x150, 0x122, 0x100, 0x600, 0x150, 0x201 }
-    , /* 0x601 */ new int[] { 0x010, 0x601, 0x302, 0x200, 0x150, 0x120, 0x101, 0x601, 0x150, 0x200 }
-    , /* 0x602 */ new int[] { 0x010, 0x602, 0x306, 0x202, 0x152, 0x121, 0x104, 0x602, 0x152, 0x202 }
-    , /* 0x603 */ new int[] { 0x010, 0x603, 0x306, 0x205, 0x152, 0x127, 0x104, 0x603, 0x152, 0x205 }
-    , /* 0x604 */ new int[] { 0x010, 0x604, 0x303, 0x203, 0x151, 0x125, 0x101, 0x604, 0x151, 0x203 }
-    , /* 0x605 */ new int[] { 0x010, 0x605, 0x304, 0x204, 0x153, 0x129, 0x103, 0x605, 0x153, 0x204 }, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x620 */ new int[] { 0x010, 0x620, 0x621, 0x310, 0x311, 0x620, 0x621, 0x310, 0x311, 0x620, 0x621, 0x310, 0x311, 0x620, 0x621, 0x310, 0x311, 0x620, 0x621 }
-    , /* 0x621 */ new int[] { 0x010, 0x620, 0x621, 0x310, 0x311, 0x620, 0x621, 0x310, 0x311, 0x620, 0x621, 0x310, 0x311, 0x620, 0x621, 0x310, 0x311, 0x620, 0x621 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x660 */ new int[] { 0x010, 0x660, 0x331, 0x220, 0x331, 0x660, 0x110, 0x660, 0x331, 0x220 }
-    , /* 0x661 */ new int[] { 0x010, 0x661, 0x330, 0x221, 0x330, 0x661, 0x110, 0x661, 0x330, 0x221 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x680 */ new int[] { 0x010, 0x680, 0x340, 0x680, 0x170, 0x680, 0x340, 0x680, 0x170, 0x680 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x690 */ new int[] { 0x010, 0x690, 0x691, 0x690, 0x691, 0x230, 0x231, 0x690, 0x691, 0x690, 0x691, 0x230, 0x231, 0x690, 0x691, 0x690, 0x691, 0x230, 0x231 }
-    , /* 0x691 */ new int[] { 0x010, 0x690, 0x691, 0x690, 0x691, 0x230, 0x231, 0x690, 0x691, 0x690, 0x691, 0x230, 0x231, 0x690, 0x691, 0x690, 0x691, 0x230, 0x231 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x700 */ new int[] { 0x010, 0x700, 0x350, 0x700, 0x350, 0x140, 0x350, 0x100, 0x350, 0x700 }
-    , /* 0x701 */ new int[] { 0x010, 0x701, 0x351, 0x701, 0x351, 0x142, 0x351, 0x103, 0x351, 0x701 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x710 */ new int[] { 0x010, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711 }
-    , /* 0x711 */ new int[] { 0x010, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711, 0x710, 0x711 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x780 */ new int[] { 0x010, 0x780, 0x390, 0x260, 0x390, 0x780, 0x130, 0x780, 0x390, 0x260 }
-    , /* 0x781 */ new int[] { 0x010, 0x781, 0x782, 0x392, 0x393, 0x261, 0x392, 0x393, 0x781, 0x782, 0x131, 0x781, 0x782, 0x392, 0x393, 0x261 }
-    , /* 0x782 */ new int[] { 0x010, 0x781, 0x782, 0x392, 0x393, 0x261, 0x392, 0x393, 0x781, 0x782, 0x131, 0x781, 0x782, 0x392, 0x393, 0x261 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x840 */ new int[] { 0x010, 0x840, 0x420, 0x280, 0x210, 0x840, 0x140, 0x122, 0x210, 0x280 }
-    , /* 0x841 */ new int[] { 0x010, 0x841, 0x421, 0x283, 0x213, 0x841, 0x142, 0x125, 0x213, 0x283 }
-    , /* 0x842 */ new int[] { 0x010, 0x842, 0x422, 0x281, 0x212, 0x842, 0x141, 0x123, 0x212, 0x281 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x870 */ new int[] { 0x010, 0x870, 0x871, 0x870, 0x871, 0x290, 0x870, 0x871, 0x870, 0x871, 0x290, 0x870, 0x871, 0x870, 0x871, 0x290 }
-    , /* 0x871 */ new int[] { 0x010, 0x870, 0x871, 0x870, 0x871, 0x290, 0x870, 0x871, 0x870, 0x871, 0x290, 0x870, 0x871, 0x870, 0x871, 0x290 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x880 */ new int[] { 0x010, 0x880, 0x881, 0x440, 0x441, 0x880, 0x881, 0x221, 0x880, 0x881, 0x440, 0x441, 0x880, 0x881, 0x110, 0x880, 0x881 }
-    , /* 0x881 */ new int[] { 0x010, 0x880, 0x881, 0x440, 0x441, 0x880, 0x881, 0x221, 0x880, 0x881, 0x440, 0x441, 0x880, 0x881, 0x110, 0x880, 0x881 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x920 */ new int[] { 0x010, 0x920, 0x921, 0x460, 0x461, 0x920, 0x921, 0x230, 0x231, 0x920, 0x921, 0x460, 0x461, 0x920, 0x921, 0x230, 0x231, 0x920, 0x921 }
-    , /* 0x921 */ new int[] { 0x010, 0x920, 0x921, 0x460, 0x461, 0x920, 0x921, 0x230, 0x231, 0x920, 0x921, 0x460, 0x461, 0x920, 0x921, 0x230, 0x231, 0x920, 0x921 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x930 */ new int[] { 0x010, 0x930, 0x931, 0x930, 0x931, 0x310, 0x311, 0x930, 0x931, 0x930, 0x931, 0x310, 0x311, 0x930, 0x931, 0x930, 0x931, 0x310, 0x311 }
-    , /* 0x931 */ new int[] { 0x010, 0x930, 0x931, 0x930, 0x931, 0x310, 0x311, 0x930, 0x931, 0x930, 0x931, 0x310, 0x311, 0x930, 0x931, 0x930, 0x931, 0x310, 0x311 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x940 */ new int[] { 0x010, 0x940, 0x941, 0x470, 0x471, 0x940, 0x941, 0x470, 0x471, 0x940, 0x941, 0x470, 0x471, 0x940, 0x941, 0x470, 0x471, 0x940, 0x941 }
-    , /* 0x941 */ new int[] { 0x010, 0x940, 0x941, 0x470, 0x471, 0x940, 0x941, 0x470, 0x471, 0x940, 0x941, 0x470, 0x471, 0x940, 0x941, 0x470, 0x471, 0x940, 0x941 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x950 */ new int[] { 0x010, 0x950, 0x951, 0x950, 0x951, 0x950, 0x951, 0x950, 0x951, 0x190, 0x950, 0x951, 0x950, 0x951, 0x950, 0x951, 0x950, 0x951 }
-    , /* 0x951 */ new int[] { 0x010, 0x950, 0x951, 0x950, 0x951, 0x950, 0x951, 0x950, 0x951, 0x190, 0x950, 0x951, 0x950, 0x951, 0x950, 0x951, 0x950, 0x951 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0xa40 */ new int[] { 0x010, 0xa40, 0xa41, 0x520, 0xa40, 0xa41, 0x260, 0xa40, 0xa41, 0x520, 0xa40, 0xa41, 0x130, 0xa40, 0xa41 }
-    , /* 0xa41 */ new int[] { 0x010, 0xa40, 0xa41, 0x520, 0xa40, 0xa41, 0x260, 0xa40, 0xa41, 0x520, 0xa40, 0xa41, 0x130, 0xa40, 0xa41 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0xa50 */ new int[] { 0x010, 0xa50, 0xa50, 0x350, 0xa50, 0x210, 0x350, 0x150, 0xa50, 0x350 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0xb00 */ new int[] { 0x010, 0xb00, 0x550, 0xb00, 0x550, 0x220, 0x550, 0xb00, 0x550, 0xb00 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0xb90 */ new int[] { 0x010, 0xb90, 0xb91, 0xb90, 0xb91, 0xb90, 0xb91, 0xb90, 0xb91, 0xb90, 0xb91, 0xb90, 0xb91, 0x170, 0xb90, 0xb91, 0xb90, 0xb91 }
-    , /* 0xb91 */ new int[] { 0x010, 0xb90, 0xb91, 0xb90, 0xb91, 0xb90, 0xb91, 0xb90, 0xb91, 0xb90, 0xb91, 0xb90, 0xb91, 0x170, 0xb90, 0xb91, 0xb90, 0xb91 }
-    , /* 0xb92 */ new int[] { 0xb92 }
-    }; // sClassPowers
-    
-  /** Boot coefficients */
-  private static final long[][] sBootCoeffs = new long[][] 
-    { null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x010 */ new long[] { 0, 196884, 21493760L, 864299970L, 20245856256L, 333202640600L }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x020 */ new long[] { 0, 4372, 96256, 1240002L, 10698752L, 74428120L }
-    , /* 0x021 */ new long[] { 0, 276, -2048, 11202, -49152, 184024 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x030 */ new long[] { 0, 783, 8672, 65367, 371520, 1741655 }
-    , /* 0x031 */ new long[] { 0, 54, -76, -243, 1188, -1384 }
-    , /* 0x032 */ new long[] { 0, 0, 248, 0, 0, 4124 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x040 */ new long[] { 0, 276, 2048, 11202, 49152, 184024 }
-    , /* 0x041 */ new long[] { 0, 52, 0, 834, 0, 4760 }
-    , /* 0x042 */ new long[] { 0, 20, 0, -62, 0, 216 }
-    , /* 0x043 */ new long[] { 0, -12, 0, 66, 0, -232 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x050 */ new long[] { 0, 134, 760, 3345, 12256, 39350 }
-    , /* 0x051 */ new long[] { 0, 9, 10, -30, 6, -25 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x060 */ new long[] { 0, 79, 352, 1431, 4160, 13015 }
-    , /* 0x061 */ new long[] { 0, 78, 364, 1365, 4380, 12520 }
-    , /* 0x062 */ new long[] { 0, 15, -32, 87, -192, 343 }
-    , /* 0x063 */ new long[] { 0, -2, 28, -27, -52, 136 }
-    , /* 0x064 */ new long[] { 0, 6, 4, -3, -12, -8 }
-    , /* 0x065 */ new long[] { 0, 0, -8, 0, 0, 28 }, null, null, null, null, null, null, null, null, null, null
-    , /* 0x070 */ new long[] { 0, 51, 204, 681, 1956, 5135 }
-    , /* 0x071 */ new long[] { 0, 2, 8, -5, -4, -10 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x080 */ new long[] { 0, 36, 128, 386, 1024, 2488 }
-    , /* 0x081 */ new long[] { 0, 12, 0, 66, 0, 232 }
-    , /* 0x082 */ new long[] { 0, 0, 0, 26, 0, 0 }
-    , /* 0x083 */ new long[] { 0, -4, 0, 2, 0, 8 }
-    , /* 0x084 */ new long[] { 0, 4, 0, 2, 0, -8 }
-    , /* 0x085 */ new long[] { 0, 0, 0, -6, 0, 0 }, null, null, null, null, null, null, null, null, null, null
-    , /* 0x090 */ new long[] { 0, 27, 86, 243, 594, 1370 }
-    , /* 0x091 */ new long[] { 0, 0, 5, 0, 0, -7 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x100 */ new long[] { 0, 22, 56, 177, 352, 870 }
-    , /* 0x101 */ new long[] { 0, 6, -8, 17, -32, 54 }
-    , /* 0x102 */ new long[] { 0, -3, 6, 2, 2, -5 }
-    , /* 0x103 */ new long[] { 0, 21, 62, 162, 378, 819 }
-    , /* 0x104 */ new long[] { 0, 1, 2, 2, -2, -1 }, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x110 */ new long[] { 0, 17, 46, 116, 252, 533 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x120 */ new long[] { 0, 15, 32, 87, 192, 343 }
-    , /* 0x121 */ new long[] { 0, 6, -4, -3, 12, -8 }
-    , /* 0x122 */ new long[] { 0, 7, 0, 15, 0, 71 }
-    , /* 0x123 */ new long[] { 0, 0, 8, 0, 0, 28 }
-    , /* 0x124 */ new long[] { 0, -1, 0, 7, 0, -9 }
-    , /* 0x125 */ new long[] { 0, 6, 0, 21, 0, 56 }
-    , /* 0x126 */ new long[] { 0, -2, 0, -3, 0, 8 }
-    , /* 0x127 */ new long[] { 0, 14, 36, 85, 180, 360 }
-    , /* 0x128 */ new long[] { 0, 2, 0, 1, 0, 0 }
-    , /* 0x129 */ new long[] { 0, 0, 0, 0, 0, -4 }, null, null, null, null, null, null
-    , /* 0x130 */ new long[] { 0, 12, 28, 66, 132, 258 }
-    , /* 0x131 */ new long[] { 0, -1, 2, 1, 2, -2 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x140 */ new long[] { 0, 11, 20, 57, 92, 207 }
-    , /* 0x141 */ new long[] { 0, 3, -4, 9, -12, 15 }
-    , /* 0x142 */ new long[] { 0, 10, 24, 51, 100, 190 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x150 */ new long[] { 0, 8, 22, 42, 70, 155 }
-    , /* 0x151 */ new long[] { 0, -1, 4, -3, -2, 11 }
-    , /* 0x152 */ new long[] { 0, 9, 19, 42, 78, 146 }
-    , /* 0x153 */ new long[] { 0, 0, -2, 0, 0, -1 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x160 */ new long[] { 0, 4, 0, 10, 0, 24 }
-    , /* 0x161 */ new long[] { 0, 0, 0, 2, 0, 0 }
-    , /* 0x162 */ new long[] { 0, 8, 16, 34, 64, 112 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x170 */ new long[] { 0, 7, 14, 29, 50, 92 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x180 */ new long[] { 0, -2, 1, 0, 2, 1 }
-    , /* 0x181 */ new long[] { 0, 7, 10, 27, 38, 82 }
-    , /* 0x182 */ new long[] { 0, 3, -2, 3, -6, 10 }
-    , /* 0x183 */ new long[] { 0, 0, 1, 0, 0, 1 }
-    , /* 0x184 */ new long[] { 0, 6, 13, 24, 42, 73 }, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x190 */ new long[] { 0, 6, 10, 21, 36, 61 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x200 */ new long[] { 0, 6, 8, 17, 32, 54 }
-    , /* 0x201 */ new long[] { 0, 2, 0, 9, 0, 10 }
-    , /* 0x202 */ new long[] { 0, 1, -2, 2, 2, -1 }
-    , /* 0x203 */ new long[] { 0, -2, 0, 1, 0, -2 }
-    , /* 0x204 */ new long[] { 0, 3, 0, 6, 0, 13 }
-    , /* 0x205 */ new long[] { 0, 5, 10, 18, 30, 51 }, null, null, null, null, null, null, null, null, null, null
-    , /* 0x210 */ new long[] { 0, 6, 6, 15, 30, 41 }
-    , /* 0x211 */ new long[] { 0, -1, -1, 1, 2, -1 }
-    , /* 0x212 */ new long[] { 0, 0, 3, 0, 0, 8 }
-    , /* 0x213 */ new long[] { 0, 5, 8, 16, 26, 44 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x220 */ new long[] { 0, 5, 6, 16, 20, 41 }
-    , /* 0x221 */ new long[] { 0, 1, -2, 4, -4, 5 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x230 */ new long[] { 0, 4, 7, 13, 19, 33 }
-    , /* 0x231 */ new long[] { 0, 4, 7, 13, 19, 33 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x240 */ new long[] { 0, 3, 0, 3, 0, 7 }
-    , /* 0x241 */ new long[] { 0, 3, 8, 11, 16, 31 }
-    , /* 0x242 */ new long[] { 0, 0, 2, -1, -2, 4 }
-    , /* 0x243 */ new long[] { 0, -1, 0, -1, 0, -1 }
-    , /* 0x244 */ new long[] { 0, 0, 0, 0, 0, 4 }
-    , /* 0x245 */ new long[] { 0, 0, 0, 3, 0, 0 }
-    , /* 0x246 */ new long[] { 0, 0, 0, -1, 0, 0 }
-    , /* 0x247 */ new long[] { 0, 2, 0, 5, 0, 8 }
-    , /* 0x248 */ new long[] { 0, 4, 6, 11, 18, 28 }
-    , /* 0x249 */ new long[] { 0, 0, 0, 0, 0, 0 }, null, null, null, null, null, null
-    , /* 0x250 */ new long[] { 0, 4, 5, 10, 16, 25 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x260 */ new long[] { 0, 4, 4, 10, 12, 26 }
-    , /* 0x261 */ new long[] { 0, 3, 6, 9, 14, 22 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x270 */ new long[] { 0, 3, 5, 9, 12, 20 }
-    , /* 0x271 */ new long[] { 0, 3, 5, 9, 12, 20 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x280 */ new long[] { 0, 3, 0, 1, 0, 7 }
-    , /* 0x281 */ new long[] { 0, 3, 4, 9, 12, 15 }
-    , /* 0x282 */ new long[] { 0, -1, 0, 1, 0, -1 }
-    , /* 0x283 */ new long[] { 0, 2, 0, 3, 0, 6 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x290 */ new long[] { 0, 3, 4, 7, 10, 17 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x300 */ new long[] { 0, 3, -1, 0, 0, 0 }
-    , /* 0x301 */ new long[] { 0, 4, 2, 6, 10, 15 }
-    , /* 0x302 */ new long[] { 0, 0, -2, 2, -2, 3 }
-    , /* 0x303 */ new long[] { 0, 3, 4, 5, 10, 15 }
-    , /* 0x304 */ new long[] { 0, 0, 2, 0, 0, 3 }
-    , /* 0x305 */ new long[] { 0, 3, 3, 8, 8, 16 }
-    , /* 0x306 */ new long[] { 0, 1, -1, 2, -2, 2 }, null, null, null, null, null, null, null, null, null
-    , /* 0x310 */ new long[] { 0, 3, 3, 6, 9, 13 }
-    , /* 0x311 */ new long[] { 0, 3, 3, 6, 9, 13 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x320 */ new long[] { 0, 2, 4, 6, 8, 12 }
-    , /* 0x321 */ new long[] { 0, 2, 0, 2, 0, 4 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x330 */ new long[] { 0, -1, 1, -1, 0, 2 }
-    , /* 0x331 */ new long[] { 0, 2, 4, 5, 6, 14 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x340 */ new long[] { 0, 3, 2, 5, 6, 12 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x350 */ new long[] { 0, 1, 4, 6, 6, 10 }
-    , /* 0x351 */ new long[] { 0, 2, 3, 5, 6, 10 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x360 */ new long[] { 0, 3, 2, 3, 6, 10 }
-    , /* 0x361 */ new long[] { 0, 0, -1, 0, 0, 1 }
-    , /* 0x362 */ new long[] { 0, 1, 0, 3, 0, 2 }
-    , /* 0x363 */ new long[] { 0, 2, 3, 4, 6, 9 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x380 */ new long[] { 0, 2, 2, 5, 4, 9 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x390 */ new long[] { 0, 3, 1, 3, 6, 6 }
-    , /* 0x391 */ new long[] { 0, 0, 1, 0, 0, 3 }
-    , /* 0x392 */ new long[] { 0, 2, 2, 4, 5, 7 }
-    , /* 0x393 */ new long[] { 0, 2, 2, 4, 5, 7 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x400 */ new long[] { 0, 0, 0, 1, 0, 0 }
-    , /* 0x401 */ new long[] { 0, 2, 0, 1, 0, 2 }
-    , /* 0x402 */ new long[] { 0, 1, 0, 2, 0, 3 }
-    , /* 0x403 */ new long[] { 0, 1, 0, 2, 0, 3 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x410 */ new long[] { 0, 2, 2, 3, 4, 7 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x420 */ new long[] { 0, 2, 2, 3, 2, 9 }
-    , /* 0x421 */ new long[] { 0, 1, 0, 0, -2, 4 }
-    , /* 0x422 */ new long[] { 0, 0, -1, 0, 0, 0 }
-    , /* 0x423 */ new long[] { 0, 1, 3, 3, 4, 7 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x440 */ new long[] { 0, 1, 2, 4, 4, 5 }
-    , /* 0x441 */ new long[] { 0, 1, 2, 4, 4, 5 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x450 */ new long[] { 0, 2, 1, 3, 4, 5 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x460 */ new long[] { 0, 0, -1, 1, -1, 1 }
-    , /* 0x461 */ new long[] { 0, 0, -1, 1, -1, 1 }
-    , /* 0x462 */ new long[] { 0, 2, 1, 3, 3, 5 }
-    , /* 0x463 */ new long[] { 0, 2, 1, 3, 3, 5 }, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x470 */ new long[] { 0, 1, 2, 3, 3, 5 }
-    , /* 0x471 */ new long[] { 0, 1, 2, 3, 3, 5 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x480 */ new long[] { 0, 1, 0, 1, 0, 3 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x500 */ new long[] { 0, 2, 1, 2, 2, 5 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x510 */ new long[] { 0, 1, 2, 2, 2, 5 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x520 */ new long[] { 0, 0, 0, 2, 0, 2 }
-    , /* 0x521 */ new long[] { 0, 1, 0, 1, 0, 2 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x540 */ new long[] { 0, 1, 1, 3, 2, 4 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x550 */ new long[] { 0, 2, 1, 1, 2, 3 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x560 */ new long[] { 0, 1, 2, 1, 2, 3 }
-    , /* 0x561 */ new long[] { 0, 0, 0, 1, 0, 0 }
-    , /* 0x562 */ new long[] { 0, 0, 0, 1, 0, 0 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x570 */ new long[] { 0, 0, 1, 0, 0, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x590 */ new long[] { 0, 1, 1, 2, 2, 3 }
-    , /* 0x591 */ new long[] { 0, 1, 1, 2, 2, 3 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x600 */ new long[] { 0, 2, 0, 0, 0, 1 }
-    , /* 0x601 */ new long[] { 0, 0, 2, 2, 2, 3 }
-    , /* 0x602 */ new long[] { 0, 1, 1, 2, 2, 2 }
-    , /* 0x603 */ new long[] { 0, -1, 1, 0, 0, 0 }
-    , /* 0x604 */ new long[] { 0, 1, 0, 1, 0, 1 }
-    , /* 0x605 */ new long[] { 0, 0, 0, 0, 0, 1 }, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x620 */ new long[] { 0, 1, 1, 2, 1, 3 }
-    , /* 0x621 */ new long[] { 0, 1, 1, 2, 1, 3 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x660 */ new long[] { 0, 2, 0, 1, 2, 2 }
-    , /* 0x661 */ new long[] { 0, 1, 1, 1, 2, 2 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x680 */ new long[] { 0, 1, 0, 1, 0, 0 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x690 */ new long[] { 0, 1, 1, 1, 1, 3 }
-    , /* 0x691 */ new long[] { 0, 1, 1, 1, 1, 3 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x700 */ new long[] { 0, 1, 0, 2, 2, 2 }
-    , /* 0x701 */ new long[] { 0, 0, -1, 1, 0, 0 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x710 */ new long[] { 0, 1, 1, 1, 1, 2 }
-    , /* 0x711 */ new long[] { 0, 1, 1, 1, 1, 2 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x780 */ new long[] { 0, 1, 1, 1, 0, 2 }
-    , /* 0x781 */ new long[] { 0, 0, 0, 0, -1, 1 }
-    , /* 0x782 */ new long[] { 0, 0, 0, 0, -1, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x840 */ new long[] { 0, 0, 0, 1, 0, 1 }
-    , /* 0x841 */ new long[] { 0, -1, 0, 0, 0, 0 }
-    , /* 0x842 */ new long[] { 0, 0, 1, 0, 0, 0 }, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x870 */ new long[] { 0, 0, 1, 1, 1, 2 }
-    , /* 0x871 */ new long[] { 0, 0, 1, 1, 1, 2 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x880 */ new long[] { 0, 1, 0, 0, 0, 1 }
-    , /* 0x881 */ new long[] { 0, 1, 0, 0, 0, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x920 */ new long[] { 0, 0, 1, 1, 1, 1 }
-    , /* 0x921 */ new long[] { 0, 0, 1, 1, 1, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x930 */ new long[] { 0, 0, 0, 0, 0, 1 }
-    , /* 0x931 */ new long[] { 0, 0, 0, 0, 0, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x940 */ new long[] { 0, 1, 0, 1, 1, 1 }
-    , /* 0x941 */ new long[] { 0, 1, 0, 1, 1, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0x950 */ new long[] { 0, 1, 0, 1, 1, 1 }
-    , /* 0x951 */ new long[] { 0, 1, 0, 1, 1, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0xa40 */ new long[] { 0, 0, 0, 0, 0, 0 }
-    , /* 0xa41 */ new long[] { 0, 0, 0, 0, 0, 0 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0xa50 */ new long[] { 0, 1, 1, 0, 0, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0xb00 */ new long[] { 0, 0, 1, 1, 0, 1 }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
-    , /* 0xb90 */ new long[] { 0, 0, 0, 1, 1, 1 }
-    , /* 0xb91 */ new long[] { 0, 0, 0, 1, 1, 1 }
-    , /* 0xb92 */ new long[] { 29061947 }
-    }; // sBootCoeffs
+  /** Number of different class codes in the ATLAS */
+  public static final int MAX_CLASS = 194; 
 
+  /** Valid class codes mapped to sequential (zero-based) class index */
+  public static final HashMap<String, Integer>  sClassMap = new HashMap<String, Integer >(MAX_CLASS);
+
+  /** Class codes mapped to a list of class codes for powers */
+  public static final HashMap<String, String[]> sPowerMap = new HashMap<String, String[]>(MAX_CLASS);
+
+  /** Class codes mapped to a list of boot coefficients */
+  public static final HashMap<String, Long[]>   sBootsMap = new HashMap<String, Long[]  >(MAX_CLASS);
+
+  /**
+   * Add a mapping for a class code.
+   * @param classCode map this ATLAS code, for example "18A"
+   * @param classIndex map to this sequential, zero based number
+   */
+  private static void addClass(final String classCode, final Integer classIndex) {
+    sClassMap.put(classCode, classIndex);
+  }
+
+  /**
+   * Add a mapping for a power list.
+   * @param classCode map this ATLAS code, for example "18A"
+   * @param power a list of class codes for the powers
+   */
+  private static void addPower(final String classCode, final String[] power) {
+    sPowerMap.put(classCode, power);
+  }
+  
+  /**
+   * Add a mapping for a boot coefficient list.
+   * @param classCode map this ATLAS code, for example "18A"
+   * @param boots a list of long coefficients for bootstrapping of the powers series
+   */
+  private static void addBoots(final String classCode, final long[] boots) {
+    final Long[] bootL = new Long[boots.length];
+    for (int i = 0; i < boots.length; ++i) {
+        bootL[i] = boots[i];
+    }
+    sBootsMap.put(classCode, bootL);
+  }
+/*
+  static { // 3 examples for testing
+    addClass("1A", 0);      
+    addPower("119AB", new String[] {"1A","119AB","119AB","119AB","119AB","119AB","119AB","17A","119AB","119AB"});
+    addBoots("2A", new long[] {0, 4372, 96256, 1240002, 10698752, 74428120L});
+  } // end of static block
+*/
+  static {
+    addClass("1A", 0); // 0
+    addClass("2A", 1); // 1
+    addClass("2B", 2); // 2
+    addClass("3A", 3); // 3
+    addClass("3B", 4); // 4
+    addClass("3C", 5); // 5
+    addClass("4A", 6); // 6
+    addClass("4B", 7); // 7
+    addClass("4C", 8); // 8
+    addClass("4D", 9); // 9
+    addClass("5A", 10); // 10
+    addClass("5B", 11); // 11
+    addClass("6A", 12); // 12
+    addClass("6B", 13); // 13
+    addClass("6C", 14); // 14
+    addClass("6D", 15); // 15
+    addClass("6E", 16); // 16
+    addClass("6F", 17); // 17
+    addClass("7A", 18); // 18
+    addClass("7B", 19); // 19
+    addClass("8A", 20); // 20
+    addClass("8B", 21); // 21
+    addClass("8C", 22); // 22
+    addClass("8D", 23); // 23
+    addClass("8E", 24); // 24
+    addClass("8F", 25); // 25
+    addClass("9A", 26); // 26
+    addClass("9B", 27); // 27
+    addClass("10A", 28); // 28
+    addClass("10B", 29); // 29
+    addClass("10C", 30); // 30
+    addClass("10D", 31); // 31
+    addClass("10E", 32); // 32
+    addClass("11A", 33); // 33
+    addClass("12A", 34); // 34
+    addClass("12B", 35); // 35
+    addClass("12C", 36); // 36
+    addClass("12D", 37); // 37
+    addClass("12E", 38); // 38
+    addClass("12F", 39); // 39
+    addClass("12G", 40); // 40
+    addClass("12H", 41); // 41
+    addClass("12I", 42); // 42
+    addClass("12J", 43); // 43
+    addClass("13A", 44); // 44
+    addClass("13B", 45); // 45
+    addClass("14A", 46); // 46
+    addClass("14B", 47); // 47
+    addClass("14C", 48); // 48
+    addClass("15A", 49); // 49
+    addClass("15B", 50); // 50
+    addClass("15C", 51); // 51
+    addClass("15D", 52); // 52
+    addClass("16A", 53); // 53
+    addClass("16B", 54); // 54
+    addClass("16C", 55); // 55
+    addClass("17A", 56); // 56
+    addClass("18A", 57); // 57
+    addClass("18B", 58); // 58
+    addClass("18C", 59); // 59
+    addClass("18D", 60); // 60
+    addClass("18E", 61); // 61
+    addClass("19A", 62); // 62
+    addClass("20A", 63); // 63
+    addClass("20B", 64); // 64
+    addClass("20C", 65); // 65
+    addClass("20D", 66); // 66
+    addClass("20E", 67); // 67
+    addClass("20F", 68); // 68
+    addClass("21A", 69); // 69
+    addClass("21B", 70); // 70
+    addClass("21C", 71); // 71
+    addClass("21D", 72); // 72
+    addClass("22A", 73); // 73
+    addClass("22B", 74); // 74
+    addClass("23AB", 75); // 75
+    addClass("24A", 76); // 76
+    addClass("24B", 77); // 77
+    addClass("24C", 78); // 78
+    addClass("24D", 79); // 79
+    addClass("24E", 80); // 80
+    addClass("24F", 81); // 81
+    addClass("24G", 82); // 82
+    addClass("24H", 83); // 83
+    addClass("24I", 84); // 84
+    addClass("24J", 85); // 85
+    addClass("25A", 86); // 86
+    addClass("26A", 87); // 87
+    addClass("26B", 88); // 88
+    addClass("27A", 89); // 89
+    addClass("27B", 90); // 90
+    addClass("28A", 91); // 91
+    addClass("28B", 92); // 92
+    addClass("28C", 93); // 93
+    addClass("28D", 94); // 94
+    addClass("29A", 95); // 95
+    addClass("30A", 96); // 96
+    addClass("30B", 97); // 97
+    addClass("30C", 98); // 98
+    addClass("30D", 99); // 99
+    addClass("30E", 100); // 100
+    addClass("30F", 101); // 101
+    addClass("30G", 102); // 102
+    addClass("31AB", 103); // 103
+    addClass("32A", 104); // 104
+    addClass("32B", 105); // 105
+    addClass("33A", 106); // 106
+    addClass("33B", 107); // 107
+    addClass("34A", 108); // 108
+    addClass("35A", 109); // 109
+    addClass("35B", 110); // 110
+    addClass("36A", 111); // 111
+    addClass("36B", 112); // 112
+    addClass("36C", 113); // 113
+    addClass("36D", 114); // 114
+    addClass("38A", 115); // 115
+    addClass("39A", 116); // 116
+    addClass("39B", 117); // 117
+    addClass("39CD", 118); // 118
+    addClass("40A", 119); // 119
+    addClass("40B", 120); // 120
+    addClass("40CD", 121); // 121
+    addClass("41A", 122); // 122
+    addClass("42A", 123); // 123
+    addClass("42B", 124); // 124
+    addClass("42C", 125); // 125
+    addClass("42D", 126); // 126
+    addClass("44AB", 127); // 127
+    addClass("45A", 128); // 128
+    addClass("46AB", 129); // 129
+    addClass("46CD", 130); // 130
+    addClass("47AB", 131); // 131
+    addClass("48A", 132); // 132
+    addClass("50A", 133); // 133
+    addClass("51A", 134); // 134
+    addClass("52A", 135); // 135
+    addClass("52B", 136); // 136
+    addClass("54A", 137); // 137
+    addClass("55A", 138); // 138
+    addClass("56A", 139); // 139
+    addClass("56BC", 140); // 140
+    addClass("57A", 141); // 141
+    addClass("59AB", 142); // 142
+    addClass("60A", 143); // 143
+    addClass("60B", 144); // 144
+    addClass("60C", 145); // 145
+    addClass("60D", 146); // 146
+    addClass("60E", 147); // 147
+    addClass("60F", 148); // 148
+    addClass("62AB", 149); // 149
+    addClass("66A", 150); // 150
+    addClass("66B", 151); // 151
+    addClass("68A", 152); // 152
+    addClass("69AB", 153); // 153
+    addClass("70A", 154); // 154
+    addClass("70B", 155); // 155
+    addClass("71AB", 156); // 156
+    addClass("78A", 157); // 157
+    addClass("78BC", 158); // 158
+    addClass("84A", 159); // 159
+    addClass("84B", 160); // 160
+    addClass("84C", 161); // 161
+    addClass("87AB", 162); // 162
+    addClass("88AB", 163); // 163
+    addClass("92AB", 164); // 164
+    addClass("93AB", 165); // 165
+    addClass("94AB", 166); // 166
+    addClass("95AB", 167); // 167
+    addClass("104AB", 168); // 168
+    addClass("105A", 169); // 169
+    addClass("110A", 170); // 170
+    addClass("119AB", 171); // 171
+    addPower("1A", new String[] { "1A","1A","1A","1A","1A","1A","1A","1A","1A","1A" }); // 0
+    addPower("2A", new String[] { "1A","2A","1A","2A","1A","2A","1A","2A","1A","2A" }); // 1
+    addPower("2B", new String[] { "1A","2B","1A","2B","1A","2B","1A","2B","1A","2B" }); // 2
+    addPower("3A", new String[] { "1A","3A","3A","1A","3A","3A","1A","3A","3A","1A" }); // 3
+    addPower("3B", new String[] { "1A","3B","3B","1A","3B","3B","1A","3B","3B","1A" }); // 4
+    addPower("3C", new String[] { "1A","3C","3C","1A","3C","3C","1A","3C","3C","1A" }); // 5
+    addPower("4A", new String[] { "1A","4A","2B","4A","1A","4A","2B","4A","1A","4A" }); // 6
+    addPower("4B", new String[] { "1A","4B","2A","4B","1A","4B","2A","4B","1A","4B" }); // 7
+    addPower("4C", new String[] { "1A","4C","2B","4C","1A","4C","2B","4C","1A","4C" }); // 8
+    addPower("4D", new String[] { "1A","4D","2B","4D","1A","4D","2B","4D","1A","4D" }); // 9
+    addPower("5A", new String[] { "1A","5A","5A","5A","5A","1A","5A","5A","5A","5A" }); // 10
+    addPower("5B", new String[] { "1A","5B","5B","5B","5B","1A","5B","5B","5B","5B" }); // 11
+    addPower("6A", new String[] { "1A","6A","3A","2A","3A","6A","1A","6A","3A","2A" }); // 12
+    addPower("6B", new String[] { "1A","6B","3B","2B","3B","6B","1A","6B","3B","2B" }); // 13
+    addPower("6C", new String[] { "1A","6C","3A","2B","3A","6C","1A","6C","3A","2B" }); // 14
+    addPower("6D", new String[] { "1A","6D","3B","2A","3B","6D","1A","6D","3B","2A" }); // 15
+    addPower("6E", new String[] { "1A","6E","3B","2B","3B","6E","1A","6E","3B","2B" }); // 16
+    addPower("6F", new String[] { "1A","6F","3C","2B","3C","6F","1A","6F","3C","2B" }); // 17
+    addPower("7A", new String[] { "1A","7A","7A","7A","7A","7A","7A","1A","7A","7A" }); // 18
+    addPower("7B", new String[] { "1A","7B","7B","7B","7B","7B","7B","1A","7B","7B" }); // 19
+    addPower("8A", new String[] { "1A","8A","4C","8A","2B","8A","4C","8A","1A","8A" }); // 20
+    addPower("8B", new String[] { "1A","8B","4A","8B","2B","8B","4A","8B","1A","8B" }); // 21
+    addPower("8C", new String[] { "1A","8C","4B","8C","2A","8C","4B","8C","1A","8C" }); // 22
+    addPower("8D", new String[] { "1A","8D","4C","8D","2B","8D","4C","8D","1A","8D" }); // 23
+    addPower("8E", new String[] { "1A","8E","4C","8E","2B","8E","4C","8E","1A","8E" }); // 24
+    addPower("8F", new String[] { "1A","8F","4D","8F","2B","8F","4D","8F","1A","8F" }); // 25
+    addPower("9A", new String[] { "1A","9A","9A","3B","9A","9A","3B","9A","9A","1A" }); // 26
+    addPower("9B", new String[] { "1A","9B","9B","3B","9B","9B","3B","9B","9B","1A" }); // 27
+    addPower("10A", new String[] { "1A","10A","5A","10A","5A","2A","5A","10A","5A","10A" }); // 28
+    addPower("10B", new String[] { "1A","10B","5A","10B","5A","2B","5A","10B","5A","10B" }); // 29
+    addPower("10C", new String[] { "1A","10C","5B","10C","5B","2A","5B","10C","5B","10C" }); // 30
+    addPower("10D", new String[] { "1A","10D","5B","10D","5B","2B","5B","10D","5B","10D" }); // 31
+    addPower("10E", new String[] { "1A","10E","5B","10E","5B","2B","5B","10E","5B","10E" }); // 32
+    addPower("11A", new String[] { "1A","11A","11A","11A","11A","11A","11A","11A","11A","11A" }); // 33
+    addPower("12A", new String[] { "1A","12A","6C","4A","3A","12A","2B","12A","3A","4A" }); // 34
+    addPower("12B", new String[] { "1A","12B","6E","4A","3B","12B","2B","12B","3B","4A" }); // 35
+    addPower("12C", new String[] { "1A","12C","6A","4B","3A","12C","2A","12C","3A","4B" }); // 36
+    addPower("12D", new String[] { "1A","12D","6F","4A","3C","12D","2B","12D","3C","4A" }); // 37
+    addPower("12E", new String[] { "1A","12E","6C","4C","3A","12E","2B","12E","3A","4C" }); // 38
+    addPower("12F", new String[] { "1A","12F","6B","4D","3B","12F","2B","12F","3B","4D" }); // 39
+    addPower("12G", new String[] { "1A","12G","6D","4B","3B","12G","2A","12G","3B","4B" }); // 40
+    addPower("12H", new String[] { "1A","12H","6E","4C","3B","12H","2B","12H","3B","4C" }); // 41
+    addPower("12I", new String[] { "1A","12I","6E","4C","3B","12I","2B","12I","3B","4C" }); // 42
+    addPower("12J", new String[] { "1A","12J","6F","4D","3C","12J","2B","12J","3C","4D" }); // 43
+    addPower("13A", new String[] { "1A","13A","13A","13A","13A","13A","13A","13A","13A","13A" }); // 44
+    addPower("13B", new String[] { "1A","13B","13B","13B","13B","13B","13B","13B","13B","13B" }); // 45
+    addPower("14A", new String[] { "1A","14A","7A","14A","7A","14A","7A","2A","7A","14A" }); // 46
+    addPower("14B", new String[] { "1A","14B","7A","14B","7A","14B","7A","2B","7A","14B" }); // 47
+    addPower("14C", new String[] { "1A","14C","7B","14C","7B","14C","7B","2B","7B","14C" }); // 48
+    addPower("15A", new String[] { "1A","15A","15A","5A","15A","3A","5A","15A","15A","5A" }); // 49
+    addPower("15B", new String[] { "1A","15B","15B","5A","15B","3B","5A","15B","15B","5A" }); // 50
+    addPower("15C", new String[] { "1A","15C","15C","5B","15C","3B","5B","15C","15C","5B" }); // 51
+    addPower("15D", new String[] { "1A","15D","15D","5B","15D","3C","5B","15D","15D","5B" }); // 52
+    addPower("16A", new String[] { "1A","16A","8A","16A","4C","16A","8A","16A","2B","16A" }); // 53
+    addPower("16B", new String[] { "1A","16B","8E","16B","4C","16B","8E","16B","2B","16B" }); // 54
+    addPower("16C", new String[] { "1A","16C","8E","16C","4C","16C","8E","16C","2B","16C" }); // 55
+    addPower("17A", new String[] { "1A","17A","17A","17A","17A","17A","17A","17A","17A","17A" }); // 56
+    addPower("18A", new String[] { "1A","18A","9B","6D","9B","18A","3B","18A","9B","2A" }); // 57
+    addPower("18B", new String[] { "1A","18B","9A","6D","9A","18B","3B","18B","9A","2A" }); // 58
+    addPower("18C", new String[] { "1A","18C","9A","6E","9A","18C","3B","18C","9A","2B" }); // 59
+    addPower("18D", new String[] { "1A","18D","9B","6E","9B","18D","3B","18D","9B","2B" }); // 60
+    addPower("18E", new String[] { "1A","18E","9B","6E","9B","18E","3B","18E","9B","2B" }); // 61
+    addPower("19A", new String[] { "1A","19A","19A","19A","19A","19A","19A","19A","19A","19A" }); // 62
+    addPower("20A", new String[] { "1A","20A","10B","20A","5A","4A","10B","20A","5A","20A" }); // 63
+    addPower("20B", new String[] { "1A","20B","10A","20B","5A","4B","10A","20B","5A","20B" }); // 64
+    addPower("20C", new String[] { "1A","20C","10E","20C","5B","4A","10E","20C","5B","20C" }); // 65
+    addPower("20D", new String[] { "1A","20D","10B","20D","5A","4D","10B","20D","5A","20D" }); // 66
+    addPower("20E", new String[] { "1A","20E","10D","20E","5B","4D","10D","20E","5B","20E" }); // 67
+    addPower("20F", new String[] { "1A","20F","10E","20F","5B","4C","10E","20F","5B","20F" }); // 68
+    addPower("21A", new String[] { "1A","21A","21A","7A","21A","21A","7A","3A","21A","7A" }); // 69
+    addPower("21B", new String[] { "1A","21B","21B","7B","21B","21B","7B","3A","21B","7B" }); // 70
+    addPower("21C", new String[] { "1A","21C","21C","7A","21C","21C","7A","3C","21C","7A" }); // 71
+    addPower("21D", new String[] { "1A","21D","21D","7B","21D","21D","7B","3B","21D","7B" }); // 72
+    addPower("22A", new String[] { "1A","22A","11A","22A","11A","22A","11A","22A","11A","22A" }); // 73
+    addPower("22B", new String[] { "1A","22B","11A","22B","11A","22B","11A","22B","11A","22B" }); // 74
+    addPower("23AB", new String[] { "1A","23AB","23AB","23AB","23AB","23AB","23AB","23AB","23AB","23AB" }); // 75
+    addPower("24A", new String[] { "1A","24A","12A","8B","6C","24A","4A","24A","3A","8B" }); // 76
+    addPower("24B", new String[] { "1A","24B","12E","8A","6C","24B","4C","24B","3A","8A" }); // 77
+    addPower("24C", new String[] { "1A","24C","12I","8A","6E","24C","4C","24C","3B","8A" }); // 78
+    addPower("24D", new String[] { "1A","24D","12E","8D","6C","24D","4C","24D","3A","8D" }); // 79
+    addPower("24E", new String[] { "1A","24E","12D","8B","6F","24E","4A","24E","3C","8B" }); // 80
+    addPower("24F", new String[] { "1A","24F","12F","8F","6B","24F","4D","24F","3B","8F" }); // 81
+    addPower("24G", new String[] { "1A","24G","12G","8C","6D","24G","4B","24G","3B","8C" }); // 82
+    addPower("24H", new String[] { "1A","24H","12H","8D","6E","24H","4C","24H","3B","8D" }); // 83
+    addPower("24I", new String[] { "1A","24I","12I","8E","6E","24I","4C","24I","3B","8E" }); // 84
+    addPower("24J", new String[] { "1A","24J","12J","8F","6F","24J","4D","24J","3C","8F" }); // 85
+    addPower("25A", new String[] { "1A","25A","25A","25A","25A","5B","25A","25A","25A","25A" }); // 86
+    addPower("26A", new String[] { "1A","26A","13A","26A","13A","26A","13A","26A","13A","26A" }); // 87
+    addPower("26B", new String[] { "1A","26B","13B","26B","13B","26B","13B","26B","13B","26B" }); // 88
+    addPower("27A", new String[] { "1A","27A","27A","9B","27A","27A","9B","27A","27A","3B" }); // 89
+    addPower("27B", new String[] { "1A","27B","27B","9B","27B","27B","9B","27B","27B","3B" }); // 90
+    addPower("28A", new String[] { "1A","28A","14A","28A","7A","28A","14A","4B","7A","28A" }); // 91
+    addPower("28B", new String[] { "1A","28B","14B","28B","7A","28B","14B","4A","7A","28B" }); // 92
+    addPower("28C", new String[] { "1A","28C","14B","28C","7A","28C","14B","4C","7A","28C" }); // 93
+    addPower("28D", new String[] { "1A","28D","14C","28D","7B","28D","14C","4D","7B","28D" }); // 94
+    addPower("29A", new String[] { "1A","29A","29A","29A","29A","29A","29A","29A","29A","29A" }); // 95
+    addPower("30A", new String[] { "1A","30A","15C","10D","15C","6B","5B","30A","15C","10D" }); // 96
+    addPower("30B", new String[] { "1A","30B","15A","10A","15A","6A","5A","30B","15A","10A" }); // 97
+    addPower("30C", new String[] { "1A","30C","15A","10B","15A","6C","5A","30C","15A","10B" }); // 98
+    addPower("30D", new String[] { "1A","30D","15B","10B","15B","6B","5A","30D","15B","10B" }); // 99
+    addPower("30E", new String[] { "1A","30E","15D","10D","15D","6F","5B","30E","15D","10D" }); // 100
+    addPower("30F", new String[] { "1A","30F","15C","10C","15C","6D","5B","30F","15C","10C" }); // 101
+    addPower("30G", new String[] { "1A","30G","15C","10E","15C","6E","5B","30G","15C","10E" }); // 102
+    addPower("31AB", new String[] { "1A","31AB","31AB","31AB","31AB","31AB","31AB","31AB","31AB","31AB" }); // 103
+    addPower("32A", new String[] { "1A","32A","16B","32A","8E","32A","16B","32A","4C","32A" }); // 104
+    addPower("32B", new String[] { "1A","32B","16C","32B","8E","32B","16C","32B","4C","32B" }); // 105
+    addPower("33A", new String[] { "1A","33A","33A","11A","33A","33A","11A","33A","33A","11A" }); // 106
+    addPower("33B", new String[] { "1A","33B","33B","11A","33B","33B","11A","33B","33B","11A" }); // 107
+    addPower("34A", new String[] { "1A","34A","17A","34A","17A","34A","17A","34A","17A","34A" }); // 108
+    addPower("35A", new String[] { "1A","35A","35A","35A","35A","7A","35A","5A","35A","35A" }); // 109
+    addPower("35B", new String[] { "1A","35B","35B","35B","35B","7B","35B","5B","35B","35B" }); // 110
+    addPower("36A", new String[] { "1A","36A","18C","12B","9A","36A","6E","36A","9A","4A" }); // 111
+    addPower("36B", new String[] { "1A","36B","18D","12B","9B","36B","6E","36B","9B","4A" }); // 112
+    addPower("36C", new String[] { "1A","36C","18B","12G","9A","36C","6D","36C","9A","4B" }); // 113
+    addPower("36D", new String[] { "1A","36D","18D","12I","9B","36D","6E","36D","9B","4C" }); // 114
+    addPower("38A", new String[] { "1A","38A","19A","38A","19A","38A","19A","38A","19A","38A" }); // 115
+    addPower("39A", new String[] { "1A","39A","39A","13A","39A","39A","13A","39A","39A","13A" }); // 116
+    addPower("39B", new String[] { "1A","39B","39B","13A","39B","39B","13A","39B","39B","13A" }); // 117
+    addPower("39CD", new String[] { "1A","39CD","39CD","13B","39CD","39CD","13B","39CD","39CD","13B" }); // 118
+    addPower("40A", new String[] { "1A","40A","20B","40A","10A","8C","20B","40A","5A","40A" }); // 119
+    addPower("40B", new String[] { "1A","40B","20A","40B","10B","8B","20A","40B","5A","40B" }); // 120
+    addPower("40CD", new String[] { "1A","40CD","20F","40CD","10E","8D","20F","40CD","5B","40CD" }); // 121
+    addPower("41A", new String[] { "1A","41A","41A","41A","41A","41A","41A","41A","41A","41A" }); // 122
+    addPower("42A", new String[] { "1A","42A","21A","14A","21A","42A","7A","6A","21A","14A" }); // 123
+    addPower("42B", new String[] { "1A","42B","21D","14C","21D","42B","7B","6B","21D","14C" }); // 124
+    addPower("42C", new String[] { "1A","42C","21C","14B","21C","42C","7A","6F","21C","14B" }); // 125
+    addPower("42D", new String[] { "1A","42D","21B","14C","21B","42D","7B","6C","21B","14C" }); // 126
+    addPower("44AB", new String[] { "1A","44AB","22B","44AB","11A","44AB","22B","44AB","11A","44AB" }); // 127
+    addPower("45A", new String[] { "1A","45A","45A","15B","45A","9A","15B","45A","45A","5A" }); // 128
+    addPower("46AB", new String[] { "1A","46AB","23AB","46AB","23AB","46AB","23AB","46AB","23AB","46AB" }); // 129
+    addPower("46CD", new String[] { "1A","46CD","23AB","46CD","23AB","46CD","23AB","46CD","23AB","46CD" }); // 130
+    addPower("47AB", new String[] { "1A","47AB","47AB","47AB","47AB","47AB","47AB","47AB","47AB","47AB" }); // 131
+    addPower("48A", new String[] { "1A","48A","24B","16A","12E","48A","8A","48A","6C","16A" }); // 132
+    addPower("50A", new String[] { "1A","50A","25A","50A","25A","10C","25A","50A","25A","50A" }); // 133
+    addPower("51A", new String[] { "1A","51A","51A","17A","51A","51A","17A","51A","51A","17A" }); // 134
+    addPower("52A", new String[] { "1A","52A","26A","52A","13A","52A","26A","52A","13A","52A" }); // 135
+    addPower("52B", new String[] { "1A","52B","26B","52B","13B","52B","26B","52B","13B","52B" }); // 136
+    addPower("54A", new String[] { "1A","54A","27A","18A","27A","54A","9B","54A","27A","6D" }); // 137
+    addPower("55A", new String[] { "1A","55A","55A","55A","55A","11A","55A","55A","55A","55A" }); // 138
+    addPower("56A", new String[] { "1A","56A","28C","56A","14B","56A","28C","8A","7A","56A" }); // 139
+    addPower("56BC", new String[] { "1A","56BC","28D","56BC","14C","56BC","28D","8F","7B","56BC" }); // 140
+    addPower("57A", new String[] { "1A","57A","57A","19A","57A","57A","19A","57A","57A","19A" }); // 141
+    addPower("59AB", new String[] { "1A","59AB","59AB","59AB","59AB","59AB","59AB","59AB","59AB","59AB" }); // 142
+    addPower("60A", new String[] { "1A","60A","30B","20B","15A","12C","10A","60A","15A","20B" }); // 143
+    addPower("60B", new String[] { "1A","60B","30C","20A","15A","12A","10B","60B","15A","20A" }); // 144
+    addPower("60C", new String[] { "1A","60C","30G","20C","15C","12B","10E","60C","15C","20C" }); // 145
+    addPower("60D", new String[] { "1A","60D","30G","20F","15C","12H","10E","60D","15C","20F" }); // 146
+    addPower("60E", new String[] { "1A","60E","30D","20D","15B","12F","10B","60E","15B","20D" }); // 147
+    addPower("60F", new String[] { "1A","60F","30E","20E","15D","12J","10D","60F","15D","20E" }); // 148
+    addPower("62AB", new String[] { "1A","62AB","31AB","62AB","31AB","62AB","31AB","62AB","31AB","62AB" }); // 149
+    addPower("66A", new String[] { "1A","66A","33B","22A","33B","66A","11A","66A","33B","22A" }); // 150
+    addPower("66B", new String[] { "1A","66B","33A","22B","33A","66B","11A","66B","33A","22B" }); // 151
+    addPower("68A", new String[] { "1A","68A","34A","68A","17A","68A","34A","68A","17A","68A" }); // 152
+    addPower("69AB", new String[] { "1A","69AB","69AB","23AB","69AB","69AB","23AB","69AB","69AB","23AB" }); // 153
+    addPower("70A", new String[] { "1A","70A","35A","70A","35A","14A","35A","10A","35A","70A" }); // 154
+    addPower("70B", new String[] { "1A","70B","35B","70B","35B","14C","35B","10D","35B","70B" }); // 155
+    addPower("71AB", new String[] { "1A","71AB","71AB","71AB","71AB","71AB","71AB","71AB","71AB","71AB" }); // 156
+    addPower("78A", new String[] { "1A","78A","39A","26A","39A","78A","13A","78A","39A","26A" }); // 157
+    addPower("78BC", new String[] { "1A","78BC","39CD","26B","39CD","78BC","13B","78BC","39CD","26B" }); // 158
+    addPower("84A", new String[] { "1A","84A","42A","28A","21A","84A","14A","12C","21A","28A" }); // 159
+    addPower("84B", new String[] { "1A","84B","42B","28D","21D","84B","14C","12F","21D","28D" }); // 160
+    addPower("84C", new String[] { "1A","84C","42C","28B","21C","84C","14B","12D","21C","28B" }); // 161
+    addPower("87AB", new String[] { "1A","87AB","87AB","29A","87AB","87AB","29A","87AB","87AB","29A" }); // 162
+    addPower("88AB", new String[] { "1A","88AB","44AB","88AB","22B","88AB","44AB","88AB","11A","88AB" }); // 163
+    addPower("92AB", new String[] { "1A","92AB","46AB","92AB","23AB","92AB","46AB","92AB","23AB","92AB" }); // 164
+    addPower("93AB", new String[] { "1A","93AB","93AB","31AB","93AB","93AB","31AB","93AB","93AB","31AB" }); // 165
+    addPower("94AB", new String[] { "1A","94AB","47AB","94AB","47AB","94AB","47AB","94AB","47AB","94AB" }); // 166
+    addPower("95AB", new String[] { "1A","95AB","95AB","95AB","95AB","19A","95AB","95AB","95AB","95AB" }); // 167
+    addPower("104AB", new String[] { "1A","104AB","52A","104AB","26A","104AB","52A","104AB","13A","104AB" }); // 168
+    addPower("105A", new String[] { "1A","105A","105A","35A","105A","21A","35A","15A","105A","35A" }); // 169
+    addPower("110A", new String[] { "1A","110A","55A","110A","55A","22A","55A","110A","55A","110A" }); // 170
+    addPower("119AB", new String[] { "1A","119AB","119AB","119AB","119AB","119AB","119AB","17A","119AB","119AB" }); // 171
+    addBoots("1A", new long[] { 0,196884,21493760L,864299970L,20245856256L,333202640600L }); // 0
+    addBoots("2A", new long[] { 0,4372,96256,1240002L,10698752L,74428120L }); // 1
+    addBoots("2B", new long[] { 0,276,-2048,11202,-49152,184024 }); // 2
+    addBoots("3A", new long[] { 0,783,8672,65367,371520,1741655L }); // 3
+    addBoots("3B", new long[] { 0,54,-76,-243,1188,-1384 }); // 4
+    addBoots("3C", new long[] { 0,0,248,0,0,4124 }); // 5
+    addBoots("4A", new long[] { 0,276,2048,11202,49152,184024 }); // 6
+    addBoots("4B", new long[] { 0,52,0,834,0,4760 }); // 7
+    addBoots("4C", new long[] { 0,20,0,-62,0,216 }); // 8
+    addBoots("4D", new long[] { 0,-12,0,66,0,-232 }); // 9
+    addBoots("5A", new long[] { 0,134,760,3345,12256,39350 }); // 10
+    addBoots("5B", new long[] { 0,9,10,-30,6,-25 }); // 11
+    addBoots("6A", new long[] { 0,79,352,1431,4160,13015 }); // 12
+    addBoots("6B", new long[] { 0,78,364,1365,4380,12520 }); // 13
+    addBoots("6C", new long[] { 0,15,-32,87,-192,343 }); // 14
+    addBoots("6D", new long[] { 0,-2,28,-27,-52,136 }); // 15
+    addBoots("6E", new long[] { 0,6,4,-3,-12,-8 }); // 16
+    addBoots("6F", new long[] { 0,0,-8,0,0,28 }); // 17
+    addBoots("7A", new long[] { 0,51,204,681,1956,5135 }); // 18
+    addBoots("7B", new long[] { 0,2,8,-5,-4,-10 }); // 19
+    addBoots("8A", new long[] { 0,36,128,386,1024,2488 }); // 20
+    addBoots("8B", new long[] { 0,12,0,66,0,232 }); // 21
+    addBoots("8C", new long[] { 0,0,0,26,0,0 }); // 22
+    addBoots("8D", new long[] { 0,-4,0,2,0,8 }); // 23
+    addBoots("8E", new long[] { 0,4,0,2,0,-8 }); // 24
+    addBoots("8F", new long[] { 0,0,0,-6,0,0 }); // 25
+    addBoots("9A", new long[] { 0,27,86,243,594,1370 }); // 26
+    addBoots("9B", new long[] { 0,0,5,0,0,-7 }); // 27
+    addBoots("10A", new long[] { 0,22,56,177,352,870 }); // 28
+    addBoots("10B", new long[] { 0,6,-8,17,-32,54 }); // 29
+    addBoots("10C", new long[] { 0,-3,6,2,2,-5 }); // 30
+    addBoots("10D", new long[] { 0,21,62,162,378,819 }); // 31
+    addBoots("10E", new long[] { 0,1,2,2,-2,-1 }); // 32
+    addBoots("11A", new long[] { 0,17,46,116,252,533 }); // 33
+    addBoots("12A", new long[] { 0,15,32,87,192,343 }); // 34
+    addBoots("12B", new long[] { 0,6,-4,-3,12,-8 }); // 35
+    addBoots("12C", new long[] { 0,7,0,15,0,71 }); // 36
+    addBoots("12D", new long[] { 0,0,8,0,0,28 }); // 37
+    addBoots("12E", new long[] { 0,-1,0,7,0,-9 }); // 38
+    addBoots("12F", new long[] { 0,6,0,21,0,56 }); // 39
+    addBoots("12G", new long[] { 0,-2,0,-3,0,8 }); // 40
+    addBoots("12H", new long[] { 0,14,36,85,180,360 }); // 41
+    addBoots("12I", new long[] { 0,2,0,1,0,0 }); // 42
+    addBoots("12J", new long[] { 0,0,0,0,0,-4 }); // 43
+    addBoots("13A", new long[] { 0,12,28,66,132,258 }); // 44
+    addBoots("13B", new long[] { 0,-1,2,1,2,-2 }); // 45
+    addBoots("14A", new long[] { 0,11,20,57,92,207 }); // 46
+    addBoots("14B", new long[] { 0,3,-4,9,-12,15 }); // 47
+    addBoots("14C", new long[] { 0,10,24,51,100,190 }); // 48
+    addBoots("15A", new long[] { 0,8,22,42,70,155 }); // 49
+    addBoots("15B", new long[] { 0,-1,4,-3,-2,11 }); // 50
+    addBoots("15C", new long[] { 0,9,19,42,78,146 }); // 51
+    addBoots("15D", new long[] { 0,0,-2,0,0,-1 }); // 52
+    addBoots("16A", new long[] { 0,4,0,10,0,24 }); // 53
+    addBoots("16B", new long[] { 0,0,0,2,0,0 }); // 54
+    addBoots("16C", new long[] { 0,8,16,34,64,112 }); // 55
+    addBoots("17A", new long[] { 0,7,14,29,50,92 }); // 56
+    addBoots("18A", new long[] { 0,-2,1,0,2,1 }); // 57
+    addBoots("18B", new long[] { 0,7,10,27,38,82 }); // 58
+    addBoots("18C", new long[] { 0,3,-2,3,-6,10 }); // 59
+    addBoots("18D", new long[] { 0,0,1,0,0,1 }); // 60
+    addBoots("18E", new long[] { 0,6,13,24,42,73 }); // 61
+    addBoots("19A", new long[] { 0,6,10,21,36,61 }); // 62
+    addBoots("20A", new long[] { 0,6,8,17,32,54 }); // 63
+    addBoots("20B", new long[] { 0,2,0,9,0,10 }); // 64
+    addBoots("20C", new long[] { 0,1,-2,2,2,-1 }); // 65
+    addBoots("20D", new long[] { 0,-2,0,1,0,-2 }); // 66
+    addBoots("20E", new long[] { 0,3,0,6,0,13 }); // 67
+    addBoots("20F", new long[] { 0,5,10,18,30,51 }); // 68
+    addBoots("21A", new long[] { 0,6,6,15,30,41 }); // 69
+    addBoots("21B", new long[] { 0,-1,-1,1,2,-1 }); // 70
+    addBoots("21C", new long[] { 0,0,3,0,0,8 }); // 71
+    addBoots("21D", new long[] { 0,5,8,16,26,44 }); // 72
+    addBoots("22A", new long[] { 0,5,6,16,20,41 }); // 73
+    addBoots("22B", new long[] { 0,1,-2,4,-4,5 }); // 74
+    addBoots("23AB", new long[] { 0,4,7,13,19,33 }); // 75
+    addBoots("24A", new long[] { 0,3,0,3,0,7 }); // 76
+    addBoots("24B", new long[] { 0,3,8,11,16,31 }); // 77
+    addBoots("24C", new long[] { 0,0,2,-1,-2,4 }); // 78
+    addBoots("24D", new long[] { 0,-1,0,-1,0,-1 }); // 79
+    addBoots("24E", new long[] { 0,0,0,0,0,4 }); // 80
+    addBoots("24F", new long[] { 0,0,0,3,0,0 }); // 81
+    addBoots("24G", new long[] { 0,0,0,-1,0,0 }); // 82
+    addBoots("24H", new long[] { 0,2,0,5,0,8 }); // 83
+    addBoots("24I", new long[] { 0,4,6,11,18,28 }); // 84
+    addBoots("24J", new long[] { 0,0,0,0,0,0 }); // 85
+    addBoots("25A", new long[] { 0,4,5,10,16,25 }); // 86
+    addBoots("26A", new long[] { 0,4,4,10,12,26 }); // 87
+    addBoots("26B", new long[] { 0,3,6,9,14,22 }); // 88
+    addBoots("27A", new long[] { 0,3,5,9,12,20 }); // 89
+    addBoots("27B", new long[] { 0,3,5,9,12,20 }); // 90
+    addBoots("28A", new long[] { 0,3,0,1,0,7 }); // 91
+    addBoots("28B", new long[] { 0,3,4,9,12,15 }); // 92
+    addBoots("28C", new long[] { 0,-1,0,1,0,-1 }); // 93
+    addBoots("28D", new long[] { 0,2,0,3,0,6 }); // 94
+    addBoots("29A", new long[] { 0,3,4,7,10,17 }); // 95
+    addBoots("30A", new long[] { 0,3,-1,0,0,0 }); // 96
+    addBoots("30B", new long[] { 0,4,2,6,10,15 }); // 97
+    addBoots("30C", new long[] { 0,0,-2,2,-2,3 }); // 98
+    addBoots("30D", new long[] { 0,3,4,5,10,15 }); // 99
+    addBoots("30E", new long[] { 0,0,2,0,0,3 }); // 100
+    addBoots("30F", new long[] { 0,3,3,8,8,16 }); // 101
+    addBoots("30G", new long[] { 0,1,-1,2,-2,2 }); // 102
+    addBoots("31AB", new long[] { 0,3,3,6,9,13 }); // 103
+    addBoots("32A", new long[] { 0,2,4,6,8,12 }); // 104
+    addBoots("32B", new long[] { 0,2,0,2,0,4 }); // 105
+    addBoots("33A", new long[] { 0,-1,1,-1,0,2 }); // 106
+    addBoots("33B", new long[] { 0,2,4,5,6,14 }); // 107
+    addBoots("34A", new long[] { 0,3,2,5,6,12 }); // 108
+    addBoots("35A", new long[] { 0,1,4,6,6,10 }); // 109
+    addBoots("35B", new long[] { 0,2,3,5,6,10 }); // 110
+    addBoots("36A", new long[] { 0,3,2,3,6,10 }); // 111
+    addBoots("36B", new long[] { 0,0,-1,0,0,1 }); // 112
+    addBoots("36C", new long[] { 0,1,0,3,0,2 }); // 113
+    addBoots("36D", new long[] { 0,2,3,4,6,9 }); // 114
+    addBoots("38A", new long[] { 0,2,2,5,4,9 }); // 115
+    addBoots("39A", new long[] { 0,3,1,3,6,6 }); // 116
+    addBoots("39B", new long[] { 0,0,1,0,0,3 }); // 117
+    addBoots("39CD", new long[] { 0,2,2,4,5,7 }); // 118
+    addBoots("40A", new long[] { 0,0,0,1,0,0 }); // 119
+    addBoots("40B", new long[] { 0,2,0,1,0,2 }); // 120
+    addBoots("40CD", new long[] { 0,1,0,2,0,3 }); // 121
+    addBoots("41A", new long[] { 0,2,2,3,4,7 }); // 122
+    addBoots("42A", new long[] { 0,2,2,3,2,9 }); // 123
+    addBoots("42B", new long[] { 0,1,0,0,-2,4 }); // 124
+    addBoots("42C", new long[] { 0,0,-1,0,0,0 }); // 125
+    addBoots("42D", new long[] { 0,1,3,3,4,7 }); // 126
+    addBoots("44AB", new long[] { 0,1,2,4,4,5 }); // 127
+    addBoots("45A", new long[] { 0,2,1,3,4,5 }); // 128
+    addBoots("46AB", new long[] { 0,0,-1,1,-1,1 }); // 129
+    addBoots("46CD", new long[] { 0,2,1,3,3,5 }); // 130
+    addBoots("47AB", new long[] { 0,1,2,3,3,5 }); // 131
+    addBoots("48A", new long[] { 0,1,0,1,0,3 }); // 132
+    addBoots("50A", new long[] { 0,2,1,2,2,5 }); // 133
+    addBoots("51A", new long[] { 0,1,2,2,2,5 }); // 134
+    addBoots("52A", new long[] { 0,0,0,2,0,2 }); // 135
+    addBoots("52B", new long[] { 0,1,0,1,0,2 }); // 136
+    addBoots("54A", new long[] { 0,1,1,3,2,4 }); // 137
+    addBoots("55A", new long[] { 0,2,1,1,2,3 }); // 138
+    addBoots("56A", new long[] { 0,1,2,1,2,3 }); // 139
+    addBoots("56BC", new long[] { 0,0,0,1,0,0 }); // 140
+    addBoots("57A", new long[] { 0,0,1,0,0,1 }); // 141
+    addBoots("59AB", new long[] { 0,1,1,2,2,3 }); // 142
+    addBoots("60A", new long[] { 0,2,0,0,0,1 }); // 143
+    addBoots("60B", new long[] { 0,0,2,2,2,3 }); // 144
+    addBoots("60C", new long[] { 0,1,1,2,2,2 }); // 145
+    addBoots("60D", new long[] { 0,-1,1,0,0,0 }); // 146
+    addBoots("60E", new long[] { 0,1,0,1,0,1 }); // 147
+    addBoots("60F", new long[] { 0,0,0,0,0,1 }); // 148
+    addBoots("62AB", new long[] { 0,1,1,2,1,3 }); // 149
+    addBoots("66A", new long[] { 0,2,0,1,2,2 }); // 150
+    addBoots("66B", new long[] { 0,1,1,1,2,2 }); // 151
+    addBoots("68A", new long[] { 0,1,0,1,0,0 }); // 152
+    addBoots("69AB", new long[] { 0,1,1,1,1,3 }); // 153
+    addBoots("70A", new long[] { 0,1,0,2,2,2 }); // 154
+    addBoots("70B", new long[] { 0,0,-1,1,0,0 }); // 155
+    addBoots("71AB", new long[] { 0,1,1,1,1,2 }); // 156
+    addBoots("78A", new long[] { 0,1,1,1,0,2 }); // 157
+    addBoots("78BC", new long[] { 0,0,0,0,-1,1 }); // 158
+    addBoots("84A", new long[] { 0,0,0,1,0,1 }); // 159
+    addBoots("84B", new long[] { 0,-1,0,0,0,0 }); // 160
+    addBoots("84C", new long[] { 0,0,1,0,0,0 }); // 161
+    addBoots("87AB", new long[] { 0,0,1,1,1,2 }); // 162
+    addBoots("88AB", new long[] { 0,1,0,0,0,1 }); // 163
+    addBoots("92AB", new long[] { 0,0,1,1,1,1 }); // 164
+    addBoots("93AB", new long[] { 0,0,0,0,0,1 }); // 165
+    addBoots("94AB", new long[] { 0,1,0,1,1,1 }); // 166
+    addBoots("95AB", new long[] { 0,1,0,1,1,1 }); // 167
+    addBoots("104AB", new long[] { 0,0,0,0,0,0 }); // 168
+    addBoots("105A", new long[] { 0,1,1,0,0,1 }); // 169
+    addBoots("110A", new long[] { 0,0,1,1,0,1 }); // 170
+    addBoots("119AB", new long[] { 0,0,0,1,1,1 }); // 171
+  } // end of static block
+  
   /**
    * Test method
    */
   public static void main(String[] args) {
-    System.out.println("last valid class code: " + String.format("0x%03x", sValidClasses[sValidClasses.length - 1]));
-    final int[] lastPow = sClassPowers[sClassPowers.length - 1];
-    System.out.println("last class power:      " + String.format("%d", lastPow[0] ) + " @" + String.format("0x%x", sClassPowers.length - 1));
-    final long[] lastBoot = sBootCoeffs[sBootCoeffs.length - 1];
-    System.out.println("last boot coefficent:  " + String.format("%d", lastBoot[0]) + " @" + String.format("0x%x", sBootCoeffs .length - 1));
+    String classCode = "1A";
+    System.out.println("class code: \"" + classCode + "\" -> " + sClassMap.get(classCode));
+    
+    System.out.print("power: \"" + classCode + "\" -> " );
+    classCode = "119AB";
+    final String[] powers = sPowerMap.get(classCode);
+    String sep = "";
+    for (int i = 0; i < powers.length; ++i) {
+        System.out.print(sep + "\"" + powers[i] + "\"");
+        sep = ",";
+    }
+    System.out.println();
+    
+    System.out.print("boots: \"" + classCode + "\" -> " );
+    classCode = "2A";
+    final Long[] boots = sBootsMap.get(classCode);
+    sep = "";
+    for (int i = 0; i < boots.length; ++i) {
+        System.out.print(sep + boots[i]);
+        sep = ",";
+    }
+    System.out.println();
   } // main
   
 } // McKayThompsonTables

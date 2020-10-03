@@ -473,7 +473,7 @@ if (1) {
     $sep = "    {";
     print <<"GFis";
   /** Valid class codes */
-  private static final int[] sValidClasses = new int[] 
+  public static final int[] sValidClasses = new int[] 
 GFis
     my $old_hex = "01";
     foreach $class (@classes) {
@@ -503,7 +503,7 @@ if (1) {
     print <<"GFis";
     
   /** Class powers */
-  private static final int[][] sClassPowers = new int[][] 
+  public static final int[][] sClassPowers = new int[][] 
 GFis
     $sep = "    {";
     $nl = 0; # whether a newline was output
@@ -546,7 +546,7 @@ if (1) {
     print <<"GFis";
     
   /** Boot coefficients */
-  private static final long[][] sBootCoeffs = new long[][] 
+  public static final long[][] sBootCoeffs = new long[][] 
 GFis
     $sep = "    {";
     $nl = 0; # whether a newline was output
