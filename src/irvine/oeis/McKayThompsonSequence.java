@@ -4,10 +4,8 @@ import irvine.math.z.Z;
 import irvine.oeis.McKayThompsonTables;
 import irvine.math.PowerSeries;
 
-import java.lang.UnsupportedOperationException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * McKay-Thompson series for the monster group.
@@ -60,7 +58,8 @@ import java.util.Iterator;
  */
 public class McKayThompsonSequence implements Sequence {
 
-  public static int sDebug = 0; // debugging mode: 0 = none, 1 = some (=earlyprint), 2 = more
+  /** debugging mode: 0 = none, 1 = some (=earlyprint), 2 = more */
+  public static int sDebug = 0;
 
   /**
    * Set this to True to print coefficients as soon as they are computed,
@@ -68,10 +67,15 @@ public class McKayThompsonSequence implements Sequence {
    * all of q^2, etc.).
    */
   private boolean earlyprint;
+  
+  /**
+   * Maximum index for b-file
+   */
+  public int bfimax;
 
   /** Empty constructor */
   public McKayThompsonSequence() {
-    this("18A");
+    this(new String[] { "3A,1A" });
   }
 
   /**
@@ -79,9 +83,10 @@ public class McKayThompsonSequence implements Sequence {
    * @param classCode class code in the ATLAS,
    * for example "1A", "119B", or combined like "39CD"
    **/
-  public McKayThompsonSequence(final String classCode) {
-    final String cl = classCode; // desired class
+  public McKayThompsonSequence(final String[] selectedClasses) {
+    bfimax = 1000;
   }
+
   /** Index of the next term of the sequence to be returned by <code>next()</code> */
   protected long mN = -2;
 
@@ -92,6 +97,11 @@ public class McKayThompsonSequence implements Sequence {
 
   /** Number of different class codes in the ATLAS */
   public static final int MAX_CLASS = McKayThompsonTables.MAX_CLASS;
+
+  /** Number Faber polynomials.
+   * Must be lower than the length of the power and boot coefficient lists
+   */
+  public static final int MAX_FABER = 7;
 
   /**
    * Get a list of class codes for powers
@@ -116,8 +126,38 @@ public class McKayThompsonSequence implements Sequence {
     return bootZ;
   }
 
-  /* Main storage of coefficients */
-  private final HashMap<String, ArrayList<Z>> coefs = new HashMap<String, ArrayList<Z>>(MAX_CLASS);
+  /* Main matrix for storage of coefficients */
+  private final HashMap<String, Z> mMatrix = new HashMap<String, Z>(4096);
+
+  /**
+   * Get a matrix element
+   * @param row class code, for example "1A"
+   * @param col column index
+   * @return a coefficient
+   */
+  protected Z getElem(final String row, final int col) {
+    return mMatrix.get(row + String.valueOf(col));
+  }
+
+  /**
+   * Put a matrix element
+   * @param row class code, for example "1A"
+   * @param col column index
+   * @param coefficient to be set in the matrix
+   */
+  protected void putElem(final String row, final int col, final Z value) {
+    mMatrix.put(row + String.valueOf(col), value);
+  }
+
+  /**
+   * Determine whether the matrix contains a specific element
+   * @param row class code, for example "1A"
+   * @param col column index
+   * @return true if the matrix contains element row,col; false otherwise
+   */
+  protected boolean containsElem(final String row, final int col) {
+    return getElem(row, col) != null;
+  }
 
   /* Position of first unknown coefficient for each class */
   private final HashMap<String, Integer> mLenComp = new HashMap<String, Integer>(MAX_CLASS);// coefs is the main storage of coefficients
@@ -127,8 +167,31 @@ public class McKayThompsonSequence implements Sequence {
    * @param classCode get the position for this class
    * @return int
    */
-  private int lencomplete(String classCode) {
+  private int lencomplete(final String classCode) {
     return mLenComp.get(classCode).intValue();
+  }
+
+  /** Number of coefficients already printed */
+  private int lenprinted;
+
+  /**
+   * Initialize the data structures
+   * @param selectClasses list of class codes
+   */
+  private void initialize(final String[] selectedClasses) {
+    earlyprint = sDebug >= 1;
+    for (String cl: selectedClasses) { // #1: fill power, boots and mLenComp
+      final Z[] blist = getBoots(cl);
+      final int len = blist.length;
+      mLenComp.put(cl, new Integer(len));
+      for (int i = 0; i < len; ++i) {
+        if (earlyprint) {
+          System.out.println(String.format("# early.1 %s\t%d\t%s", cl, i, blist[i].toString()));
+        }
+        putElem(cl, i, blist[i]);
+      } // for i
+    } // for cl #1
+    lenprinted = 1;
   }
 
   /**
@@ -136,22 +199,7 @@ public class McKayThompsonSequence implements Sequence {
    * @param selectedClasses the subset of class codes
    */
   public void compute(final String[] selectedClasses) {
-    earlyprint = sDebug >= 1;
-    for (String cl: selectedClasses) { // #1: fill power, boots and mLenComp
-      final Z[] blist = getBoots(cl);
-      final int len = blist.length;
-      mLenComp.put(cl, new Integer(len));
-      final ArrayList<Z> alist = new ArrayList<Z>(len);
-      for (int i = 0; i < len; ++i) {
-        alist.add(blist[i]);
-        if (earlyprint && i > 0) {
-          System.out.println(String.format("early#1 %s\t%d\t%s", cl, i, alist.get(i).toString()));
-        }
-      } // for i
-      coefs.put(cl, alist);
-    } // for cl #1
-    int lenprinted = 1;
-    
+    initialize(selectedClasses);
     boolean running = true;
     while (running) {
       for (String cl: selectedClasses) {
@@ -161,26 +209,25 @@ public class McKayThompsonSequence implements Sequence {
         final int lenk = lencomplete(cl);
         ArrayList<Z> jcoefs = new ArrayList<Z>(lenk);
         for (int k = 0; k < lenk; ++k) {
-          jcoefs.add(coefs.get(cl).get(k));
+          jcoefs.add(getElem(cl, k));
         }
         final PowerSeries j = new PowerSeries(0, jcoefs);
         j.addMonomial(Z.ONE, -1);
         // Now compute the first Faber polynomials of j:
-        final PowerSeries[] jFaber = new PowerSeries[6];
+        final PowerSeries[] jFaber = new PowerSeries[MAX_FABER];
         int ijf = 0;
         jFaber[ijf++] = new PowerSeries();
         jFaber[ijf++] = j;
         if (sDebug >= 2) {
             System.out.println("# cl=" + cl + ", j=" + j.toString());
         }
-        final int min7 = Math.min(lencomplete(cl), 7); // jFaber.length + 1); // 7
-        for (int n = 2; n < min7; ++n) {
-          // (Here 7 is a heuristic, meaning we compute the first 6 Faber
+        final int minComplete = Math.min(lencomplete(cl), MAX_FABER); 
+        for (int n = 2; n < minComplete; ++n) {
+          // Here MAX_FABER=7 is a heuristic, meaning we compute the first 6 Faber
           // polynomials: any value at least equal to 5 should work, but
           // higher values are interesting only if you wish to earlyprint
           // high coefficients.
-          // Besides, if you make this higher than 10
-          // you need to extend the class power maps.)
+          // Besides, if you make this higher than 10 you need to extend the class power maps.
           final PowerSeries jn = jFaber[n - 1].multiply(j);
           if (sDebug >= 2) {
               System.out.println("#1 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
@@ -195,7 +242,7 @@ public class McKayThompsonSequence implements Sequence {
           jFaber[ijf++] = jn;
           // At this point, jn is the n-th Faber polynomial of j.
           for (int k = 1; k < jn.precis(); ++k) {
-            if (coefs.get(cl).size() <= k * n) {
+            if (! containsElem(cl, k * n)) {
               // Compute a coefficient from the action of the n-th
               // Hecke operator (with just n*coefs[k*n], the one we
               // will deduce, missing from the sum):
@@ -213,8 +260,8 @@ public class McKayThompsonSequence implements Sequence {
                     }
                     if ((k % a) == 0) {
                       final int kk = (k / a) * d;
-                      if (coefs.get(cla).size() > kk) {
-                        v = v.add(Z.valueOf(n / a).multiply(coefs.get(cla).get(kk)));
+                      if (containsElem(cla, kk)) {
+                        v = v.add(Z.valueOf(n / a).multiply(getElem(cla, kk)));
                       } else {
                         throw new UnsupportedOperationException("missing coefficient #1: " + String.valueOf(kk));
                       }
@@ -229,17 +276,14 @@ public class McKayThompsonSequence implements Sequence {
                   throw new IllegalArgumentException("divisibility check failed");
                 }
                 w = w.divide(Z.valueOf(n));
-                
-                if (k * n < coefs.get(cl).size()) {
-                  coefs.get(cl).set(k * n, w);
-                } else {
-                  coefs.get(cl).add(w);
-                }
+                putElem(cl, k * n, w);
                 if (sDebug >= 1) {
-                  System.out.println(String.format("early#2 %s\t%d\t%s", cl, k * n, w.toString()));
+                  System.out.println("# early.2 cl=" + cl + ", k=" + k + ", n=" + n + ", w=" + w.toString());
                 }
               } catch (UnsupportedOperationException exc) {
-                System.out.println("# rtexc1 " + exc.getMessage() + ", k=" + k + ", n=" + n);
+                if (sDebug >= 1) {
+                  System.out.println("# " + exc.getMessage() + ", k=" + k + ", n=" + n);
+                }
               }
             } // if
           } // foreach k
@@ -257,41 +301,46 @@ public class McKayThompsonSequence implements Sequence {
           boolean busy = true;
           while (busy) {
             // See if lencomplete can be increased.
-            while (coefs.get(cl).size() > lencomplete(cl)) {
+            while (containsElem(cl, lencomplete(cl))) {
               mLenComp.put(cl, new Integer(lencomplete(cl) + 1));
             }
             // Try to compute the first unknown coefficient
             // (lencomplete) by computing the previous coefficient in
             // 2 T_2(j) and equating.
             final int k = lencomplete(cl) - 1;
-            if (coefs.get(cl).size() <= k * 2 ) {
+            if (! containsElem(cl, k * 2)) {
               throw new UnsupportedOperationException("missing coefficient #2: " + String.valueOf(k * 2));
             }
-            Z v = coefs.get(cl).get(k * 2).multiply(Z.TWO);
+            Z v = getElem(cl, k * 2).multiply2();
             if ((k % 2) == 0) {
-              if (coefs.get(cl2).size() <= k / 2) {
+              if (! containsElem(cl2, k / 2)) {
                 throw new UnsupportedOperationException("missing coefficient #3: " + String.valueOf(k / 2));
               }
-              v = v.add(coefs.get(cl2).get(k / 2));
+              v = v.add(getElem(cl2, k / 2));
             }
             // At this point, v is coefficient k of j^2, computed from
             // the Hecke operators.  Now we can deduce coefficient k+1
             // of j from this:
             for (int i = 1; i < k; ++i) {
-              v = v.subtract(coefs.get(cl).get(i).multiply(coefs.get(cl).get(k - i)));
+              v = v.subtract(getElem(cl, i).multiply(getElem(cl, k - i)));
             }
             if (! v.isEven()) {
               throw new IllegalArgumentException("Evenness check failed!");
             }
             v = v.divide2();
-            coefs.get(cl).set(k + 1, v);
+            putElem(cl, k + 1, v);
+            if (sDebug >= 1) {
+                System.out.println("# early.3 cl=" + cl + ", v=" + v.toString());
+            }
           } // while busy
         } catch (UnsupportedOperationException exc) {
-            System.out.println("# rtexc2 " + exc.getMessage());
+            if (sDebug >= 1) {
+              System.out.println("# " + exc.getMessage());
+            }
             // pass
         }
       } // foreach cl #3
-      
+
       // Print what we've computed so far, in orderly fashion:
       if (! earlyprint) {
         int lastcomplete = lencomplete(selectedClasses[0]);
@@ -301,9 +350,12 @@ public class McKayThompsonSequence implements Sequence {
           }
         }
         for (int k = lenprinted; k < lastcomplete; ++k) {
-           for (String cl: selectedClasses) {
-             System.out.println(String.format("%s\t%d\t%s", cl, k, coefs.get(cl).get(k).toString()));
-           }
+          if (k > bfimax) {
+            running = false;
+          } else {
+            String cl = selectedClasses[0];
+            System.out.println(String.valueOf(k) + " " + getElem(cl, k).toString());
+          }
         }
         lenprinted = lastcomplete;
       } // ! earlyprint
@@ -314,42 +366,60 @@ public class McKayThompsonSequence implements Sequence {
    * Test method
    */
   public static void main(String[] args) {
-    String classCode = "1A";
-    McKayThompsonSequence seq = new McKayThompsonSequence(classCode);
-    seq.sDebug = 1;
-    
-    // preliminary access routine test
-    System.out.print("power: \"" + classCode + "\" -> " );
-    classCode = "119AB";
-    final String[] powers = seq.getPower(classCode);
-    String sep = "";
-    for (int i = 0; i < powers.length; ++i) {
-        System.out.print(sep + "\"" + powers[i] + "\"");
-        sep = ",";
-    }
-    System.out.println();
-
-    System.out.print("boots: \"" + classCode + "\" -> " );
-    classCode = "2A";
-    final Z[] boots = seq.getBoots(classCode);
-    sep = "";
-    for (int i = 0; i < boots.length; ++i) {
-        System.out.print(sep + boots[i].toString());
-        sep = ",";
-    }
-    System.out.println();
-    
-    // compute all
-    if (args.length > 0) { // one argument: 1A,2A
-      int iarg = 0;
-      try {
-      	seq.sDebug = Integer.parseInt(args[iarg++]);
-      } catch (Exception exc) {
+    if (args.length == 0) {
+      String classCode = "1A";
+      final McKayThompsonSequence seq = new McKayThompsonSequence(new String[] { classCode });
+      seq.sDebug = 1;
+      // preliminary access routine test
+      System.out.print("power: \"" + classCode + "\" -> " );
+      classCode = "119AB";
+      final String[] powers = seq.getPower(classCode);
+      String sep = "";
+      for (int i = 0; i < powers.length; ++i) {
+          System.out.print(sep + "\"" + powers[i] + "\"");
+          sep = ",";
       }
-      String alist = args[iarg++];
-      String[] selectedClasses = alist.split("\\,");
+      System.out.println();
+      System.out.print("boots: \"" + classCode + "\" -> " );
+      classCode = "2A";
+      final Z[] boots = seq.getBoots(classCode);
+      sep = "";
+      for (int i = 0; i < boots.length; ++i) {
+          System.out.print(sep + boots[i].toString());
+          sep = ",";
+      }
+      System.out.println();
+    } else { // some arguments: 1A,2A
+      String[] selectedClasses = new String[] {"3A", "1A" };
+      int bfimax = 1000;
+      int sDebug = 0;
+      int iarg = 0;
+      while (iarg < args.length) {
+        try {
+          switch (args[iarg++]) {
+            case "-d":
+              sDebug = Integer.parseInt(args[iarg++]);
+              break;
+            case "-c":
+              String alist = args[iarg++];
+              selectedClasses = alist.split("\\,");
+              break;
+            case "-n":
+              bfimax = Integer.parseInt(args[iarg++]);
+              break;
+            default:
+              break;
+          }
+        } catch (final RuntimeException exc) {
+          // ignored
+        }
+      } // while
+      final McKayThompsonSequence seq = new McKayThompsonSequence(selectedClasses);
+      seq.sDebug = sDebug;
+      seq.bfimax = bfimax;
+      System.out.println("# b-file generated by irvine.oeis.McKayThompsonSequence");
       seq.compute(selectedClasses);
-    }
+    } // some arguments
   } // main
 
 }
