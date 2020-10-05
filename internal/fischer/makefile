@@ -2404,6 +2404,8 @@ mckay_java:
 	mv McKayThompsonTables.class irvine/oeis
 	java -cp . irvine.oeis.McKayThompsonTables
 	cp -v McKayThompsonTables.java ../../src/irvine/oeis
+mctest:
+	$(JAVA) irvine.oeis.McKayThompsonSequence $(D) $(ARGS)
 #--------
 weylgr0:
 	cat $(COMMON)/joeis_names.txt \

@@ -35,7 +35,7 @@ public class PowerSeries extends ArrayList<Z> {
     mIndex = index;
     final int len = coeffs.size();
     for (int ic = 0; ic < len; ++ic) {
-      super.add(coeffs.get(ic));
+      add(coeffs.get(ic));
     }
   }
 
@@ -49,7 +49,7 @@ public class PowerSeries extends ArrayList<Z> {
     final String[] elems = list.replaceAll("[^\\d\\-\\,]", "").split("\\,");
     final int len = elems.length;
     for (int ic = 0; ic < len; ++ic) {
-      super.add(new Z(elems[ic]));
+      add(new Z(elems[ic]));
     } // for ic
   }
 
@@ -66,7 +66,7 @@ public class PowerSeries extends ArrayList<Z> {
    * @return precision
    */
   public int precis() {
-    return mIndex + super.size();
+    return mIndex + size();
   }
 
   /**
@@ -100,11 +100,11 @@ public class PowerSeries extends ArrayList<Z> {
     final int len = k;
     if (len < mIndex) {
       for (int ic = mIndex - len; ic > 0; --ic) {
-        super.add(0, Z.ZERO);
+        add(0, Z.ZERO);
       }
       mIndex = len;
     }
-    super.set(k - mIndex, super.get(k - mIndex).add(c));
+    set(k - mIndex, get(k - mIndex).add(c));
   } // addMonomial
 
   /**
@@ -117,19 +117,19 @@ public class PowerSeries extends ArrayList<Z> {
     if (k + f.precis() < mIndex) {
       System.err.println("defined nowhere, k=" + k);
     } else if (k + f.precis() < precis()) {
-      super.removeRange(f.precis() - mIndex, super.size());
+      removeRange(f.precis() - mIndex, size());
     }
     final int kfi = k + f.getIndex();
     if (kfi < mIndex) {
       for (int ic = mIndex - kfi; ic > 0; --ic) {
-        super.add(0, Z.ZERO);
+        add(0, Z.ZERO);
       }
       mIndex = kfi;
     }
-    final int len = super.size();
+    final int len = size();
     for (int ic = 0; ic < len; ++ic) {
       if (mIndex + ic >= kfi) {
-        super.set(ic, super.get(ic).add(c.multiply(f.get(ic + mIndex - kfi))));
+        set(ic, get(ic).add(c.multiply(f.get(ic + mIndex - kfi))));
       }
     }
   } // addMonomialTimes
@@ -144,7 +144,7 @@ public class PowerSeries extends ArrayList<Z> {
     if (k < mIndex) {
       // result = Z.ZERO;
     } else if (k < precis()) {
-      result = super.get(k - mIndex);
+      result = get(k - mIndex);
     } else {
       System.err.println("insufficient precision, k=" + k);
     }
@@ -162,7 +162,7 @@ public class PowerSeries extends ArrayList<Z> {
       if (ic > 0) {
         result.append(',');
       }
-      result.append(super.get(ic).toString());
+      result.append(get(ic).toString());
     }
     result.append("];");
     result.append(String.valueOf(mIndex));
@@ -204,10 +204,15 @@ public class PowerSeries extends ArrayList<Z> {
     System.out.println(s2);
     PowerSeries s3 = s1.multiply(s2);
     System.out.println(s3);
+
     s3.addMonomial(Z.valueOf(17),2);
     System.out.println(s3);
     s3.addMonomialTimes(Z.valueOf(17),2,s1);
     System.out.println(s3);
+
+    PowerSeries s4 = new PowerSeries(-1, "[1,0,196884,21493760,864299970,20245856256,333202640600]");
+    PowerSeries s5 = s4.multiply(s4);
+    System.out.println(s5);
   } // main
 
 }
