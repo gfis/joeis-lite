@@ -67,7 +67,7 @@ public class McKayThompsonSequence implements Sequence {
    * all of q^2, etc.).
    */
   private boolean earlyprint;
-  
+
   /**
    * Maximum index for b-file
    */
@@ -85,14 +85,8 @@ public class McKayThompsonSequence implements Sequence {
    **/
   public McKayThompsonSequence(final String[] selectedClasses) {
     bfimax = 1000;
-  }
-
-  /** Index of the next term of the sequence to be returned by <code>next()</code> */
-  protected long mN = -2;
-
-  @Override
-  public Z next() {
-    return Z.valueOf(mN);
+    mSelectedClasses = selectedClasses;
+    initialize();
   }
 
   /** Number of different class codes in the ATLAS */
@@ -127,7 +121,7 @@ public class McKayThompsonSequence implements Sequence {
   }
 
   /* Main matrix for storage of coefficients */
-  private final HashMap<String, Z> mMatrix = new HashMap<String, Z>(4096);
+  private final HashMap<String, Z> mMatrix = new HashMap<String, Z>(4096); // main storage of coefficients
 
   /**
    * Get a matrix element
@@ -160,30 +154,41 @@ public class McKayThompsonSequence implements Sequence {
   }
 
   /* Position of first unknown coefficient for each class */
-  private final HashMap<String, Integer> mLenComp = new HashMap<String, Integer>(MAX_CLASS);// coefs is the main storage of coefficients
+  private final HashMap<String, Integer> mLenComp = new HashMap<String, Integer>(MAX_CLASS);
 
   /**
    * Get the position of first unknown coefficient for a class
    * @param classCode get the position for this class
    * @return int
    */
-  private int lencomplete(final String classCode) {
+  private int getComplete(final String classCode) {
     return mLenComp.get(classCode).intValue();
   }
 
+  /**
+   * Set the position of first unknown coefficient for a class
+   * @param classCode set the position for this class
+   * @param position set this position
+   */
+  private void setComplete(final String classCode, final int position) {
+    mLenComp.put(classCode, new Integer(position));
+  }
+
+  /** List of class codes necessary for the computation of the first code in the list */
+  protected String[] mSelectedClasses;
+  
   /** Number of coefficients already printed */
   private int lenprinted;
 
   /**
    * Initialize the data structures
-   * @param selectClasses list of class codes
    */
-  private void initialize(final String[] selectedClasses) {
+  private void initialize() {
     earlyprint = sDebug >= 1;
-    for (String cl: selectedClasses) { // #1: fill power, boots and mLenComp
+    for (String cl: mSelectedClasses) { // #1: fill power, boots and mLenComp
       final Z[] blist = getBoots(cl);
       final int len = blist.length;
-      mLenComp.put(cl, new Integer(len));
+      setComplete(cl, len);
       for (int i = 0; i < len; ++i) {
         if (earlyprint) {
           System.out.println(String.format("# early.1 %s\t%d\t%s", cl, i, blist[i].toString()));
@@ -192,178 +197,209 @@ public class McKayThompsonSequence implements Sequence {
       } // for i
     } // for cl #1
     lenprinted = 1;
+    mN = -2;
+  }
+
+  /** Index of the next term of the sequence to be returned by <code>next()</code> */
+  protected int mN = -2;
+
+  /**
+   * Compute the next term of the sequence
+   * @return a(mN)
+   */
+  @Override
+  public Z next() {
+    ++mN;
+    if (mN < 1) { // take known values for a(-1) and a(0)
+      return Z.valueOf(mN);
+    } else {
+      while (getComplete(mSelectedClasses[0]) <= mN) {
+        iterate();
+      }
+      return getElem(mSelectedClasses[0], mN);
+    }
   }
 
   /**
    * Computes the sequences for a subset of class codes
-   * @param selectedClasses the subset of class codes
    */
-  public void compute(final String[] selectedClasses) {
-    initialize(selectedClasses);
+  public void compute() {
     boolean running = true;
     while (running) {
-      for (String cl: selectedClasses) {
-        // Start by forming a series with whatever contiguous
-        // coefficients we have (i.e. j is the best approximation we
-        // have so far on the Moonshine function for class cl).
-        final int lenk = lencomplete(cl);
-        ArrayList<Z> jcoefs = new ArrayList<Z>(lenk);
-        for (int k = 0; k < lenk; ++k) {
-          jcoefs.add(getElem(cl, k));
-        }
-        final PowerSeries j = new PowerSeries(0, jcoefs);
-        j.addMonomial(Z.ONE, -1);
-        // Now compute the first Faber polynomials of j:
-        final PowerSeries[] jFaber = new PowerSeries[MAX_FABER];
-        int ijf = 0;
-        jFaber[ijf++] = new PowerSeries();
-        jFaber[ijf++] = j;
-        if (sDebug >= 2) {
-            System.out.println("# cl=" + cl + ", j=" + j.toString());
-        }
-        final int minComplete = Math.min(lencomplete(cl), MAX_FABER); 
-        for (int n = 2; n < minComplete; ++n) {
-          // Here MAX_FABER=7 is a heuristic, meaning we compute the first 6 Faber
-          // polynomials: any value at least equal to 5 should work, but
-          // higher values are interesting only if you wish to earlyprint
-          // high coefficients.
-          // Besides, if you make this higher than 10 you need to extend the class power maps.
-          final PowerSeries jn = jFaber[n - 1].multiply(j);
-          if (sDebug >= 2) {
-              System.out.println("#1 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
-          }
-          for (int k = n - 2; k > 0; --k) {
-              jn.addMonomialTimes(jn.getCoeff(- k).negate(), 0 ,jFaber[k]);
-          }
-          jn.addMonomial(jn.getCoeff(0).negate(), 0);
-          if (sDebug >= 2) {
-              System.out.println("#2 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
-          }
-          jFaber[ijf++] = jn;
-          // At this point, jn is the n-th Faber polynomial of j.
-          for (int k = 1; k < jn.precis(); ++k) {
-            if (! containsElem(cl, k * n)) {
-              // Compute a coefficient from the action of the n-th
-              // Hecke operator (with just n*coefs[k*n], the one we
-              // will deduce, missing from the sum):
-              if (sDebug >= 2) {
-                 System.out.println("# n-th Hecke, n=" + n + ", k=" + k);
-              }
-              try {
-                Z v = Z.ZERO;
-                for (int d = 1; d < n; ++d) { // d = all in strictDivisors
-                  if ((n % d) == 0) { // d divides n
-                    final int a = n / d;
-                    final String cla = getPower(cl)[a];
-                    if (sDebug >= 2) {
-                      System.out.println("# d=" + d + ", k=" + k + ", n=" + n + ", a=" + a + ", cla=" + cla);
-                    }
-                    if ((k % a) == 0) {
-                      final int kk = (k / a) * d;
-                      if (containsElem(cla, kk)) {
-                        v = v.add(Z.valueOf(n / a).multiply(getElem(cla, kk)));
-                      } else {
-                        throw new UnsupportedOperationException("missing coefficient #1: " + String.valueOf(kk));
-                      }
-                    }
-                  } // if d divides n
-                } // foreach divisor
-                Z w = jn.getCoeff(k).subtract(v);
-                if (sDebug >= 2) {
-                   System.out.println("# w=" + w.toString() + ", v=" + v.toString());
-                }
-                if (! w.remainder(Z.valueOf(n)).equals(Z.ZERO)) {
-                  throw new IllegalArgumentException("divisibility check failed");
-                }
-                w = w.divide(Z.valueOf(n));
-                putElem(cl, k * n, w);
-                if (sDebug >= 1) {
-                  System.out.println("# early.2 cl=" + cl + ", k=" + k + ", n=" + n + ", w=" + w.toString());
-                }
-              } catch (UnsupportedOperationException exc) {
-                if (sDebug >= 1) {
-                  System.out.println("# " + exc.getMessage() + ", k=" + k + ", n=" + n);
-                }
-              }
-            } // if
-          } // foreach k
-        } // for n
-      } // for cl #2
-
-      // Now try the other way around: deduce some lower coefficients
-      // from the higher ones (known through the Hecke operators).  We
-      // only use T_2 here, so we only deal with F_2(j), which is
-      // essentially j^2 (up to a constant -2*c1 we don't care about
-      // since we're interested only in one, higher, coefficient).
-      for (String cl: selectedClasses) {
-        final String cl2 = getPower(cl)[2];
-        try {
-          boolean busy = true;
-          while (busy) {
-            // See if lencomplete can be increased.
-            while (containsElem(cl, lencomplete(cl))) {
-              mLenComp.put(cl, new Integer(lencomplete(cl) + 1));
-            }
-            // Try to compute the first unknown coefficient
-            // (lencomplete) by computing the previous coefficient in
-            // 2 T_2(j) and equating.
-            final int k = lencomplete(cl) - 1;
-            if (! containsElem(cl, k * 2)) {
-              throw new UnsupportedOperationException("missing coefficient #2: " + String.valueOf(k * 2));
-            }
-            Z v = getElem(cl, k * 2).multiply2();
-            if ((k % 2) == 0) {
-              if (! containsElem(cl2, k / 2)) {
-                throw new UnsupportedOperationException("missing coefficient #3: " + String.valueOf(k / 2));
-              }
-              v = v.add(getElem(cl2, k / 2));
-            }
-            // At this point, v is coefficient k of j^2, computed from
-            // the Hecke operators.  Now we can deduce coefficient k+1
-            // of j from this:
-            for (int i = 1; i < k; ++i) {
-              v = v.subtract(getElem(cl, i).multiply(getElem(cl, k - i)));
-            }
-            if (! v.isEven()) {
-              throw new IllegalArgumentException("Evenness check failed!");
-            }
-            v = v.divide2();
-            putElem(cl, k + 1, v);
-            if (sDebug >= 1) {
-                System.out.println("# early.3 cl=" + cl + ", v=" + v.toString());
-            }
-          } // while busy
-        } catch (UnsupportedOperationException exc) {
-            if (sDebug >= 1) {
-              System.out.println("# " + exc.getMessage());
-            }
-            // pass
-        }
-      } // foreach cl #3
-
-      // Print what we've computed so far, in orderly fashion:
-      if (! earlyprint) {
-        int lastcomplete = lencomplete(selectedClasses[0]);
-        for (String cl: selectedClasses) {
-          if (lastcomplete < lencomplete(cl)) {
-            lastcomplete = lencomplete(cl);
+      iterate();
+      if (! earlyprint) { // Print what we've computed so far, in orderly fashion:
+        int lastcomplete = getComplete(mSelectedClasses[0]);
+        for (String cl: mSelectedClasses) {
+          if (lastcomplete < getComplete(cl)) {
+            lastcomplete = getComplete(cl);
           }
         }
         for (int k = lenprinted; k < lastcomplete; ++k) {
           if (k > bfimax) {
             running = false;
           } else {
-            String cl = selectedClasses[0];
+            String cl = mSelectedClasses[0];
             System.out.println(String.valueOf(k) + " " + getElem(cl, k).toString());
           }
         }
         lenprinted = lastcomplete;
       } // ! earlyprint
     } // while running
-  } // compute
+  }
+
+  /**
+   * Compute one iteration for a subset of class codes
+   */
+  public void iterate() {
+    for (String cl: mSelectedClasses) {
+      // Start by forming a series with whatever contiguous
+      // coefficients we have (i.e. j is the best approximation we
+      // have so far on the Moonshine function for class cl).
+      final int lenCl = getComplete(cl);
+      ArrayList<Z> jcoefs = new ArrayList<Z>(lenCl);
+      for (int k = 0; k < lenCl; ++k) {
+        jcoefs.add(getElem(cl, k));
+      }
+      final PowerSeries j = new PowerSeries(0, jcoefs);
+      j.addMonomial(Z.ONE, -1);
+      // Now compute the first Faber polynomials of j:
+      final PowerSeries[] jFaber = new PowerSeries[MAX_FABER];
+      int ijf = 0;
+      jFaber[ijf++] = new PowerSeries();
+      jFaber[ijf++] = j;
+      if (sDebug >= 2) {
+          System.out.println("# cl=" + cl + ", j=" + j.toString());
+      }
+      final int minComplete = Math.min(getComplete(cl), MAX_FABER);
+      for (int n = 2; n < minComplete; ++n) {
+        // Here MAX_FABER=7 is a heuristic, meaning we compute the first 6 Faber
+        // polynomials: any value at least equal to 5 should work, but
+        // higher values are interesting only if you wish to earlyprint
+        // high coefficients.
+        // Besides, if you make this higher than 10 you need to extend the class power maps.
+        final PowerSeries jn = jFaber[n - 1].multiply(j);
+        if (sDebug >= 2) {
+            System.out.println("#1 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
+        }
+        for (int k = n - 2; k > 0; --k) {
+            jn.addMonomialTimes(jn.getCoeff(- k).negate(), 0 ,jFaber[k]);
+        }
+        jn.addMonomial(jn.getCoeff(0).negate(), 0);
+        if (sDebug >= 2) {
+            System.out.println("#2 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
+        }
+        jFaber[ijf++] = jn;
+        // At this point, jn is the n-th Faber polynomial of j.
+        for (int k = 1; k < jn.precis(); ++k) {
+          if (! containsElem(cl, k * n)) {
+            // Compute a coefficient from the action of the n-th
+            // Hecke operator (with just n*coefs[k*n], the one we
+            // will deduce, missing from the sum):
+            if (sDebug >= 2) {
+               System.out.println("# n-th Hecke, n=" + n + ", k=" + k);
+            }
+            try {
+              Z v = Z.ZERO;
+              for (int d = 1; d < n; ++d) { // d = all in strictDivisors
+                if ((n % d) == 0) { // d divides n
+                  final int a = n / d;
+                  final String cla = getPower(cl)[a];
+                  if (sDebug >= 2) {
+                    System.out.println("# d=" + d + ", k=" + k + ", n=" + n + ", a=" + a + ", cla=" + cla);
+                  }
+                  if ((k % a) == 0) {
+                    final int kk = (k / a) * d;
+                    if (containsElem(cla, kk)) {
+                      v = v.add(Z.valueOf(n / a).multiply(getElem(cla, kk)));
+                    } else {
+                      throw new UnsupportedOperationException("missing coefficient #1: " + String.valueOf(kk));
+                    }
+                  }
+                } // if d divides n
+              } // foreach divisor
+              Z w = jn.getCoeff(k).subtract(v);
+              if (sDebug >= 2) {
+                 System.out.println("# w=" + w.toString() + ", v=" + v.toString());
+              }
+              if (! w.remainder(Z.valueOf(n)).equals(Z.ZERO)) {
+                throw new IllegalArgumentException("divisibility check failed");
+              }
+              w = w.divide(Z.valueOf(n));
+              putElem(cl, k * n, w);
+              if (sDebug >= 1) {
+                System.out.println("# early.2 cl=" + cl + ", k=" + k + ", n=" + n + ", w=" + w.toString());
+              }
+            } catch (UnsupportedOperationException exc) {
+              if (sDebug >= 1) {
+                System.out.println("# " + exc.getMessage() + ", k=" + k + ", n=" + n);
+              }
+            }
+          } // if
+        } // foreach k
+      } // for n
+    } // for cl #2
+
+    // Now try the other way around: deduce some lower coefficients
+    // from the higher ones (known through the Hecke operators).  We
+    // only use T_2 here, so we only deal with F_2(j), which is
+    // essentially j^2 (up to a constant -2*c1 we don't care about
+    // since we're interested only in one, higher, coefficient).
+    for (String cl: mSelectedClasses) {
+      final String cl2 = getPower(cl)[2];
+      try {
+        boolean busy = true;
+        while (busy) {
+          // See if getComplete can be increased.
+          while (containsElem(cl, getComplete(cl))) {
+            setComplete(cl, getComplete(cl) + 1);
+          }
+          // Try to compute the first unknown coefficient
+          // (getComplete()) by computing the previous coefficient in
+          // 2 T_2(j) and equating.
+          final int k = getComplete(cl) - 1;
+          if (! containsElem(cl, k * 2)) {
+            throw new UnsupportedOperationException("missing coefficient #2: " + String.valueOf(k * 2));
+          }
+          Z v = getElem(cl, k * 2).multiply2();
+          if ((k % 2) == 0) {
+            if (! containsElem(cl2, k / 2)) {
+              throw new UnsupportedOperationException("missing coefficient #3: " + String.valueOf(k / 2));
+            }
+            v = v.add(getElem(cl2, k / 2));
+          }
+          // At this point, v is coefficient k of j^2, computed from
+          // the Hecke operators.  Now we can deduce coefficient k+1
+          // of j from this:
+          for (int i = 1; i < k; ++i) {
+            v = v.subtract(getElem(cl, i).multiply(getElem(cl, k - i)));
+          }
+          if (! v.isEven()) {
+            throw new IllegalArgumentException("Evenness check failed!");
+          }
+          v = v.divide2();
+          putElem(cl, k + 1, v);
+          if (sDebug >= 1) {
+              System.out.println("# early.3 cl=" + cl + ", v=" + v.toString());
+          }
+        } // while busy
+      } catch (UnsupportedOperationException exc) {
+          if (sDebug >= 1) {
+            System.out.println("# " + exc.getMessage());
+          }
+          // pass
+      }
+    } // foreach cl #3
+  } // iterate
 
   /**
    * Test method
+   * @param args commandline arguments, a list of options:
+   * <ul>
+   * <li>-d debugging mode (0 = none (default), 1 = some, 2 = more)</li>
+   * <li>-c list of class codes, with all divisors</li>
+   * <li>-n number of terms to be computed</li>
+   * <li>-n number of terms to be computed</li>
+   * </ul>
    */
   public static void main(String[] args) {
     if (args.length == 0) {
@@ -393,6 +429,7 @@ public class McKayThompsonSequence implements Sequence {
       String[] selectedClasses = new String[] {"3A", "1A" };
       int bfimax = 1000;
       int sDebug = 0;
+      boolean standAlone = false; // use next(); true => use compute()
       int iarg = 0;
       while (iarg < args.length) {
         try {
@@ -400,6 +437,8 @@ public class McKayThompsonSequence implements Sequence {
             case "-d":
               sDebug = Integer.parseInt(args[iarg++]);
               break;
+            case "-a":
+              standAlone = true;
             case "-c":
               String alist = args[iarg++];
               selectedClasses = alist.split("\\,");
@@ -418,7 +457,18 @@ public class McKayThompsonSequence implements Sequence {
       seq.sDebug = sDebug;
       seq.bfimax = bfimax;
       System.out.println("# b-file generated by irvine.oeis.McKayThompsonSequence");
-      seq.compute(selectedClasses);
+      try {
+       if (standAlone) { // -c
+          seq.compute();
+        } else { // -a
+          for (int n = -1; n <= bfimax; ++n) {
+            System.out.println(n + " " + seq.next().toString());
+          }
+        }
+      } catch (Exception exc) {
+        System.out.println(exc.getMessage());
+        exc.printStackTrace();
+      }
     } // some arguments
   } // main
 
