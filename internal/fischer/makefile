@@ -2377,11 +2377,12 @@ etlin0:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------
-mckay0: mckay1 mckay2
+mckay0: mckay1 mckay2 mckay
 mckay1:
-	$(DBAT) -x "SELECT n.aseqno, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'nyi'), n.name \
+	$(DBAT) -x "SELECT n.aseqno, 'mckay', a.offset1, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'nyi'), a.terms, n.name \
 	  FROM asname n \
-	  LEFT JOIN bfinfo b on n.aseqno = b.aseqno \
+	  LEFT JOIN asinfo a on n.aseqno = a.aseqno \
+	  LEFT JOIN bfinfo b on a.aseqno = b.aseqno \
 	  LEFT JOIN joeis  j on b.aseqno = j.aseqno \
 	  WHERE n.name LIKE '%McKay%' \
 	  ORDER BY 1" \
@@ -2389,15 +2390,21 @@ mckay1:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 mckay2:
-	cat mckay1.tmp \
-	| perl -ne 'use strict; my ($$aseqno, $$bfimax, $$superclass, $$name) = split(/\t/); '\
-	' $$name =~ m{class (\d+)([a-zA-Z]+)}; my ($$class, $$letter) = ($$1, $$2); my $$with = ($$name =~ m{with a\(0\)\s*\=\s*([^\.]*)}) ? $$1 : ""; '\
-	' print join("\t", $$aseqno, "mckay", 0, "$$class$$letter", $$letter, $$with, $$superclass) . "\n"; '\
+	perl mckay_prep.pl mckay1.tmp \
+	2>       $@.rest.tmp \
 	| sort -k4n \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	cut -f5  $@.tmp | sort | uniq -c
+mckay:
+	cat mckay2.tmp \
+	| perl -ne 'use strict; my ($$aseqno, $$callcode, @parms) = split(/\t/); '\
+	' if ($$parms[1] =~ m{[A-K]}) { print; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 mckay_java:
 	perl mckay_tables.pl > McKayThompsonTables.java
 	javac McKayThompsonTables.java

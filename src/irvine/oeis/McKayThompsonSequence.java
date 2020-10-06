@@ -6,6 +6,8 @@ import irvine.math.PowerSeries;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * McKay-Thompson series for the monster group.
@@ -61,38 +63,48 @@ public class McKayThompsonSequence implements Sequence {
   /** debugging mode: 0 = none, 1 = some (=earlyprint), 2 = more */
   public static int sDebug = 0;
 
-  /**
-   * Set this to True to print coefficients as soon as they are computed,
-   * False to print them in ordered fashion (all coefficients of q then
-   * all of q^2, etc.).
-   */
-  private boolean earlyprint;
-
-  /**
-   * Maximum index for b-file
-   */
-  public int bfimax;
+  /** List of class codes necessary for the computation of the first code in the list */
+  protected String[] mSelectedClasses;
+  
+  /** List of intial terms (a(-1) and a(0)) */
+  protected long[] mPrefix;
+  
+  /** Index of the next term of the sequence to be returned by <code>next()</code> */
+  protected int mN;
 
   /** Empty constructor */
   public McKayThompsonSequence() {
-    this(new String[] { "3A,1A" });
+    this(new String[] { "1A" }, new long[] { -1, 0 });
   }
 
   /**
-   * Constructor with class code.
-   * @param classCode class code in the ATLAS,
+   * Constructor with array of class codes.
+   * @param selectedClasses class codes from the ATLAS,
    * for example "1A", "119B", or combined like "39CD"
-   **/
-  public McKayThompsonSequence(final String[] selectedClasses) {
-    bfimax = 1000;
+   * @param prefix values for a(-1) and a(0)
+   */
+  public McKayThompsonSequence(final String[] selectedClasses, final long[] prefix) {
     mSelectedClasses = selectedClasses;
+    mPrefix = prefix;
+    mN = -2; // first term is a(-1)
     initialize();
+  }
+
+  /**
+   * Constructor with a single class code.
+   * @param classCode class code from the ATLAS,
+   * for example "1A", "119B", or combined like "39CD"
+   * @param prefix values for a(-1) and a(0)
+   */
+  public McKayThompsonSequence(final String classCode, final long[] prefix) {
+    this(transitiveClosure(classCode), prefix);
   }
 
   /** Number of different class codes in the ATLAS */
   public static final int MAX_CLASS = McKayThompsonTables.MAX_CLASS;
 
-  /** Number Faber polynomials.
+  /** 
+   * Number Faber polynomials.
    * Must be lower than the length of the power and boot coefficient lists
    */
   public static final int MAX_FABER = 7;
@@ -174,11 +186,18 @@ public class McKayThompsonSequence implements Sequence {
     mLenComp.put(classCode, new Integer(position));
   }
 
-  /** List of class codes necessary for the computation of the first code in the list */
-  protected String[] mSelectedClasses;
-  
+  /**
+   * Set this to True to print coefficients as soon as they are computed,
+   * False to print them in ordered fashion (all coefficients of q then
+   * all of q^2, etc.).
+   */
+  private boolean earlyprint;
+
   /** Number of coefficients already printed */
   private int lenprinted;
+
+  /** Maximum index for b-file output (standalone version, -c) */
+  public int mMaxTerm;
 
   /**
    * Initialize the data structures
@@ -200,9 +219,6 @@ public class McKayThompsonSequence implements Sequence {
     mN = -2;
   }
 
-  /** Index of the next term of the sequence to be returned by <code>next()</code> */
-  protected int mN = -2;
-
   /**
    * Compute the next term of the sequence
    * @return a(mN)
@@ -210,8 +226,8 @@ public class McKayThompsonSequence implements Sequence {
   @Override
   public Z next() {
     ++mN;
-    if (mN < 1) { // take known values for a(-1) and a(0)
-      return Z.valueOf(mN);
+    if (mN < mPrefix.length - 1) { // take known values for a(-1) and a(0)
+      return Z.valueOf(mPrefix[mN + 1]);
     } else {
       while (getComplete(mSelectedClasses[0]) <= mN) {
         iterate();
@@ -220,6 +236,43 @@ public class McKayThompsonSequence implements Sequence {
     }
   }
 
+  /** accumulate the transitive closure here */
+  private final static HashSet<String> sClosure = new HashSet<String>(32);
+  
+  /**
+   * Compute the transitive closure of the powers of a class code
+   * @param classCode starting element
+   * @return the set of the powers for <code>classCode</code>, their powers and so on.
+   * The first element is the input parameter.
+   */
+  public static String[] transitiveClosure(final String classCode) {
+    enclose(classCode);
+    final String[] result = new String[sClosure.size()];
+    final Iterator<String> tcIter = sClosure.iterator();
+    int ir = 0;
+    result[ir++] = classCode; // [0]
+    while (tcIter.hasNext()) {
+      final String cl = tcIter.next();
+      if (! cl.equals(classCode)) {
+        result[ir++] = cl;
+      }
+    }
+    return result;
+  } // transitiveClosure
+  
+  /**
+   * Recursively add a classCode and all of its powers to the transitive closure
+   * @param classCode starting element
+   */
+  private static void enclose(final String classCode) {
+    if (sClosure.add(classCode)) { // was not yet stored
+      for (String power: McKayThompsonTables.sPowerMap.get(classCode)) {
+        enclose(power);
+      }
+    }
+    // else already enclosed
+  } // enclose
+  
   /**
    * Computes the sequences for a subset of class codes
    */
@@ -235,7 +288,7 @@ public class McKayThompsonSequence implements Sequence {
           }
         }
         for (int k = lenprinted; k < lastcomplete; ++k) {
-          if (k > bfimax) {
+          if (k > mMaxTerm) {
             running = false;
           } else {
             String cl = mSelectedClasses[0];
@@ -395,16 +448,17 @@ public class McKayThompsonSequence implements Sequence {
    * Test method
    * @param args commandline arguments, a list of options:
    * <ul>
-   * <li>-d debugging mode (0 = none (default), 1 = some, 2 = more)</li>
-   * <li>-c list of class codes, with all divisors</li>
-   * <li>-n number of terms to be computed</li>
-   * <li>-n number of terms to be computed</li>
+   * <li>-d  debugging mode (0 = none (default), 1 = some, 2 = more)</li>
+   * <li>-c  list of class codes, with all divisors</li>
+   * <li>-n  number of terms to be computed</li>
+   * <li>-p  comma-separated list of terms to be prefixed</li>
+   * <li>-tc compute the transitive closure a single class code</li>
    * </ul>
    */
   public static void main(String[] args) {
+    String classCode = "1A";
     if (args.length == 0) {
-      String classCode = "1A";
-      final McKayThompsonSequence seq = new McKayThompsonSequence(new String[] { classCode });
+      final McKayThompsonSequence seq = new McKayThompsonSequence(new String[] { classCode }, new long[] { -1, 0 });
       seq.sDebug = 1;
       // preliminary access routine test
       System.out.print("power: \"" + classCode + "\" -> " );
@@ -427,10 +481,11 @@ public class McKayThompsonSequence implements Sequence {
       System.out.println();
     } else { // some arguments: 1A,2A
       String[] selectedClasses = new String[] {"3A", "1A" };
-      int bfimax = 1000;
+      int maxTerm = 1000;
       int sDebug = 0;
-      boolean standAlone = false; // use next(); true => use compute()
+      int action = 0; // -c
       int iarg = 0;
+      long[] tlist = new long[] { -1, 0 };
       while (iarg < args.length) {
         try {
           switch (args[iarg++]) {
@@ -438,13 +493,23 @@ public class McKayThompsonSequence implements Sequence {
               sDebug = Integer.parseInt(args[iarg++]);
               break;
             case "-a":
-              standAlone = true;
+              action = 1;
             case "-c":
-              String alist = args[iarg++];
-              selectedClasses = alist.split("\\,");
+              selectedClasses = args[iarg++].split("\\, *");
               break;
             case "-n":
-              bfimax = Integer.parseInt(args[iarg++]);
+              maxTerm = Integer.parseInt(args[iarg++]);
+              break;
+            case "-p":
+              String[] plist = args[iarg++].split("\\, *");
+              tlist = new long[plist.length];
+              for (int iterm = 0; iterm < plist.length; ++iterm) {
+                tlist[iterm] = Integer.parseInt(plist[iterm]);
+              }
+              break;
+            case "-tc":
+              action = 2;
+              classCode = args[iarg++];
               break;
             default:
               break;
@@ -453,18 +518,32 @@ public class McKayThompsonSequence implements Sequence {
           // ignored
         }
       } // while
-      final McKayThompsonSequence seq = new McKayThompsonSequence(selectedClasses);
+      final McKayThompsonSequence seq = selectedClasses.length == 1 
+          ? new McKayThompsonSequence(selectedClasses[0], tlist)
+          : new McKayThompsonSequence(selectedClasses   , tlist)
+          ;
       seq.sDebug = sDebug;
-      seq.bfimax = bfimax;
-      System.out.println("# b-file generated by irvine.oeis.McKayThompsonSequence");
+      seq.mMaxTerm = maxTerm;
       try {
-       if (standAlone) { // -c
-          seq.compute();
-        } else { // -a
-          for (int n = -1; n <= bfimax; ++n) {
-            System.out.println(n + " " + seq.next().toString());
-          }
-        }
+        switch (action) {
+          default:
+          case 0: // -c
+            System.out.println("# b-file generated by irvine.oeis.McKayThompsonSequence");
+            seq.compute();
+            break;
+          case 1: // -a
+            for (int n = -1; n <= seq.mMaxTerm; ++n) {
+              System.out.println(n + " " + seq.next().toString());
+            }
+            break;
+          case 2:
+            System.out.println("transitiveClosure(" + classCode + ") = ");
+            for (String cl: seq.transitiveClosure(classCode)) {
+              System.out.print(cl + " ");
+            }
+            System.out.println();
+            break;
+        } // switch action
       } catch (Exception exc) {
         System.out.println(exc.getMessage());
         exc.printStackTrace();
