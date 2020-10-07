@@ -613,7 +613,3 @@ sub tostr { # convert a hex constant into a class name with uppercase letter
     return hex(substr($code, 2, 1)) . substr($code, 3, 1) . chr(ord('A') + hex(substr($code, 4, 1)));
 } # tostr
 __DATA__
-
-print <<"GFis";
-
-GFis

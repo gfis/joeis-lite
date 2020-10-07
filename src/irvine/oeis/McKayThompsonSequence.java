@@ -68,36 +68,70 @@ public class McKayThompsonSequence implements Sequence {
   
   /** List of intial terms (a(-1) and a(0)) */
   protected long[] mPrefix;
+
+  /** Number of interleaved zeroes to be skipped + 1 */
+  protected int mStep0;
   
   /** Index of the next term of the sequence to be returned by <code>next()</code> */
   protected int mN;
 
   /** Empty constructor */
   public McKayThompsonSequence() {
-    this(new String[] { "1A" }, new long[] { -1, 0 });
+    this(new String[] { "1A" }, new long[] { -1, 0 }, 0);
   }
 
   /**
-   * Constructor with array of class codes.
+   * Constructor 
    * @param selectedClasses class codes from the ATLAS,
    * for example "1A", "119B", or combined like "39CD"
    * @param prefix values for a(-1) and a(0)
    */
   public McKayThompsonSequence(final String[] selectedClasses, final long[] prefix) {
+    this(selectedClasses, prefix, McKayThompsonTables.sStep0Map.get(selectedClasses[0]).intValue());
+  }
+
+  /**
+   * Complete constructor with array of class codes, prefix and number of zeroes to skip + 1. 
+   * @param selectedClasses class codes from the ATLAS,
+   * for example "1A", "119B", or combined like "39CD"
+   * @param prefix values for a(-1) and a(0)
+   * @param step0 number of interleaved zeroes to be skipped + 1
+   */
+  public McKayThompsonSequence(final String[] selectedClasses, final long[] prefix, final int step0) {
     mSelectedClasses = selectedClasses;
-    mPrefix = prefix;
+    mPrefix = new long[prefix.length];
+    for (int ip = 0; ip < prefix.length; ++ip) {
+      mPrefix[ip] = prefix[ip];
+    }
+    mStep0 = step0;
+    if (mStep0 > 1) {
+      mPrefix[1] = 0; // assume that there is always prefix[0:1]
+    }
     mN = -2; // first term is a(-1)
     initialize();
   }
 
   /**
-   * Constructor with a single class code.
+   * Constructor with a single class code and prefix,
+   * for generator callcode "mckay"
    * @param classCode class code from the ATLAS,
    * for example "1A", "119B", or combined like "39CD"
    * @param prefix values for a(-1) and a(0)
    */
   public McKayThompsonSequence(final String classCode, final long[] prefix) {
     this(transitiveClosure(classCode), prefix);
+  }
+
+  /**
+   * Constructor with a single class code and prefix,
+   * for generator callcode "mckay0".
+   * @param classCode class code from the ATLAS,
+   * for example "1A", "119B", or combined like "39CD"
+   * @param prefix values for a(-1) and a(0)
+   * @param step0 number of interleaved zeroes to be skipped + 1
+   */
+  public McKayThompsonSequence(final String classCode, final long[] prefix, final int step0) {
+    this(transitiveClosure(classCode), prefix, step0);
   }
 
   /** Number of different class codes in the ATLAS */
@@ -183,7 +217,7 @@ public class McKayThompsonSequence implements Sequence {
    * @param position set this position
    */
   private void setComplete(final String classCode, final int position) {
-    mLenComp.put(classCode, new Integer(position));
+    mLenComp.put(classCode, Integer.valueOf(position));
   }
 
   /**
@@ -220,15 +254,40 @@ public class McKayThompsonSequence implements Sequence {
   }
 
   /**
-   * Compute the next term of the sequence
-   * @return a(mN)
+   * Compute the next term of the sequence.
+   * When {@link #mStep0} is 1, all results are delivered sequentially,
+   * otherwise a(-1) is delivered and then some number of zeroes is always skipped, beginning at a(0).
+   * So only the coeffients a(mN) with <code>(mN + 1) = 0 mod mStep0</code> are delivered.
+   * For <code>mStep0 = 2</code> that are a(-1), a(1), a(3) and so on.
+   * @return OEIS a(n)
    */
   @Override
   public Z next() {
+    Z result = advance();
+    if (mStep0 == 1) {
+      // done
+    } else {
+      while ((mN + 1) % mStep0 != 0) {
+        System.out.println("# in while next: mN=" + mN + ", mStep0=" + mStep0 + ", result=" + result.toString());
+        if (! result.equals(Z.ZERO)) {
+          throw new IllegalArgumentException("attempt to skip a non-zero term at position " + String.valueOf(mN));
+        }
+        result = advance();
+      } 
+      System.out.println("# after while: mN=" + mN + ", mStep0=" + mStep0 + ", result=" + result.toString());
+    }
+    return result;
+  }
+
+  /**
+   * Compute the next coefficient for the sequence, maybe with interleaved zeroes.
+   * @return the next coefficient
+   */
+  public Z advance() {
     ++mN;
     if (mN < mPrefix.length - 1) { // take known values for a(-1) and a(0)
       return Z.valueOf(mPrefix[mN + 1]);
-    } else {
+    } else { // iterate until a new coefficient is known
       while (getComplete(mSelectedClasses[0]) <= mN) {
         iterate();
       }
@@ -320,9 +379,9 @@ public class McKayThompsonSequence implements Sequence {
       int ijf = 0;
       jFaber[ijf++] = new PowerSeries();
       jFaber[ijf++] = j;
-      if (sDebug >= 2) {
-          System.out.println("# cl=" + cl + ", j=" + j.toString());
-      }
+//**  if (sDebug >= 2) {
+//**      System.out.println("# cl=" + cl + ", j=" + j.toString());
+//**  }
       final int minComplete = Math.min(getComplete(cl), MAX_FABER);
       for (int n = 2; n < minComplete; ++n) {
         // Here MAX_FABER=7 is a heuristic, meaning we compute the first 6 Faber
@@ -331,16 +390,16 @@ public class McKayThompsonSequence implements Sequence {
         // high coefficients.
         // Besides, if you make this higher than 10 you need to extend the class power maps.
         final PowerSeries jn = jFaber[n - 1].multiply(j);
-        if (sDebug >= 2) {
-            System.out.println("#1 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
-        }
+//**    if (sDebug >= 2) {
+//**        System.out.println("#1 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
+//**    }
         for (int k = n - 2; k > 0; --k) {
             jn.addMonomialTimes(jn.getCoeff(- k).negate(), 0 ,jFaber[k]);
         }
         jn.addMonomial(jn.getCoeff(0).negate(), 0);
-        if (sDebug >= 2) {
-            System.out.println("#2 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
-        }
+//**    if (sDebug >= 2) {
+//**        System.out.println("#2 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
+//**    }
         jFaber[ijf++] = jn;
         // At this point, jn is the n-th Faber polynomial of j.
         for (int k = 1; k < jn.precis(); ++k) {
@@ -348,44 +407,50 @@ public class McKayThompsonSequence implements Sequence {
             // Compute a coefficient from the action of the n-th
             // Hecke operator (with just n*coefs[k*n], the one we
             // will deduce, missing from the sum):
-            if (sDebug >= 2) {
-               System.out.println("# n-th Hecke, n=" + n + ", k=" + k);
-            }
+//**        if (sDebug >= 2) {
+//**           System.out.println("# n-th Hecke, n=" + n + ", k=" + k);
+//**        }
             try {
+              boolean busy = true;
               Z v = Z.ZERO;
-              for (int d = 1; d < n; ++d) { // d = all in strictDivisors
+              int d = 1; 
+              while (d < n && busy) { // foreach in strictDivisors
                 if ((n % d) == 0) { // d divides n
                   final int a = n / d;
                   final String cla = getPower(cl)[a];
-                  if (sDebug >= 2) {
-                    System.out.println("# d=" + d + ", k=" + k + ", n=" + n + ", a=" + a + ", cla=" + cla);
-                  }
+//**              if (sDebug >= 2) {
+//**                System.out.println("# d=" + d + ", k=" + k + ", n=" + n + ", a=" + a + ", cla=" + cla);
+//**              }
                   if ((k % a) == 0) {
                     final int kk = (k / a) * d;
                     if (containsElem(cla, kk)) {
                       v = v.add(Z.valueOf(n / a).multiply(getElem(cla, kk)));
                     } else {
-                      throw new UnsupportedOperationException("missing coefficient #1: " + String.valueOf(kk));
+                      // throw new UnsupportedOperationException("missing coefficient #1: " + String.valueOf(kk));
+                      busy = false;
                     }
                   }
                 } // if d divides n
+                ++d;
               } // foreach divisor
-              Z w = jn.getCoeff(k).subtract(v);
-              if (sDebug >= 2) {
-                 System.out.println("# w=" + w.toString() + ", v=" + v.toString());
-              }
-              if (! w.remainder(Z.valueOf(n)).equals(Z.ZERO)) {
-                throw new IllegalArgumentException("divisibility check failed");
-              }
-              w = w.divide(Z.valueOf(n));
-              putElem(cl, k * n, w);
-              if (sDebug >= 1) {
-                System.out.println("# early.2 cl=" + cl + ", k=" + k + ", n=" + n + ", w=" + w.toString());
+              if (busy) {
+                Z w = jn.getCoeff(k).subtract(v);
+//**            if (sDebug >= 2) {
+//**               System.out.println("# w=" + w.toString() + ", v=" + v.toString());
+//**            }
+                if (! w.remainder(Z.valueOf(n)).equals(Z.ZERO)) {
+                  throw new IllegalArgumentException("divisibility check failed");
+                }
+                w = w.divide(Z.valueOf(n));
+                putElem(cl, k * n, w);
+//**            if (sDebug >= 1) {
+//**              System.out.println("# early.2 cl=" + cl + ", k=" + k + ", n=" + n + ", w=" + w.toString());
+//**            }
               }
             } catch (UnsupportedOperationException exc) {
-              if (sDebug >= 1) {
-                System.out.println("# " + exc.getMessage() + ", k=" + k + ", n=" + n);
-              }
+//**          if (sDebug >= 1) {
+//**            System.out.println("# " + exc.getMessage() + ", k=" + k + ", n=" + n);
+//**          }
             }
           } // if
         } // foreach k
@@ -411,34 +476,40 @@ public class McKayThompsonSequence implements Sequence {
           // 2 T_2(j) and equating.
           final int k = getComplete(cl) - 1;
           if (! containsElem(cl, k * 2)) {
-            throw new UnsupportedOperationException("missing coefficient #2: " + String.valueOf(k * 2));
-          }
-          Z v = getElem(cl, k * 2).multiply2();
-          if ((k % 2) == 0) {
-            if (! containsElem(cl2, k / 2)) {
-              throw new UnsupportedOperationException("missing coefficient #3: " + String.valueOf(k / 2));
+            // throw new UnsupportedOperationException("missing coefficient #2: " + String.valueOf(k * 2));
+            busy = false;
+          } else {
+            Z v = getElem(cl, k * 2).multiply2();
+            if ((k % 2) == 0) {
+              if (! containsElem(cl2, k / 2)) {
+                // throw new UnsupportedOperationException("missing coefficient #3: " + String.valueOf(k / 2));
+              	busy = false;
+              } else {
+                v = v.add(getElem(cl2, k / 2));
+              }
             }
-            v = v.add(getElem(cl2, k / 2));
-          }
-          // At this point, v is coefficient k of j^2, computed from
-          // the Hecke operators.  Now we can deduce coefficient k+1
-          // of j from this:
-          for (int i = 1; i < k; ++i) {
-            v = v.subtract(getElem(cl, i).multiply(getElem(cl, k - i)));
-          }
-          if (! v.isEven()) {
-            throw new IllegalArgumentException("Evenness check failed!");
-          }
-          v = v.divide2();
-          putElem(cl, k + 1, v);
-          if (sDebug >= 1) {
-              System.out.println("# early.3 cl=" + cl + ", v=" + v.toString());
+            if (busy) {
+              // At this point, v is coefficient k of j^2, computed from
+              // the Hecke operators.  Now we can deduce coefficient k+1
+              // of j from this:
+              for (int i = 1; i < k; ++i) {
+                v = v.subtract(getElem(cl, i).multiply(getElem(cl, k - i)));
+              }
+              if (! v.isEven()) {
+                throw new IllegalArgumentException("Evenness check failed!");
+              } 
+              v = v.divide2();
+              putElem(cl, k + 1, v);
+//**          if (sDebug >= 1) {
+//**            System.out.println("# early.3 cl=" + cl + ", v=" + v.toString());
+//**          }
+            }
           }
         } // while busy
       } catch (UnsupportedOperationException exc) {
-          if (sDebug >= 1) {
-            System.out.println("# " + exc.getMessage());
-          }
+//**      if (sDebug >= 1) {
+//**        System.out.println("# " + exc.getMessage());
+//**      }
           // pass
       }
     } // foreach cl #3
@@ -452,13 +523,15 @@ public class McKayThompsonSequence implements Sequence {
    * <li>-c  list of class codes, with all divisors</li>
    * <li>-n  number of terms to be computed</li>
    * <li>-p  comma-separated list of terms to be prefixed</li>
+   * <li>-s  number of interleaved zeroes to be skipped (default: 0)</li>
    * <li>-tc compute the transitive closure a single class code</li>
    * </ul>
    */
   public static void main(String[] args) {
     String classCode = "1A";
+    int skipZeroes = 0;
     if (args.length == 0) {
-      final McKayThompsonSequence seq = new McKayThompsonSequence(new String[] { classCode }, new long[] { -1, 0 });
+      final McKayThompsonSequence seq = new McKayThompsonSequence(new String[] { classCode }, new long[] { -1, 0 }, skipZeroes);
       seq.sDebug = 1;
       // preliminary access routine test
       System.out.print("power: \"" + classCode + "\" -> " );
@@ -507,6 +580,9 @@ public class McKayThompsonSequence implements Sequence {
                 tlist[iterm] = Integer.parseInt(plist[iterm]);
               }
               break;
+            case "-s":
+              skipZeroes = Integer.parseInt(args[iarg++]);
+              break;
             case "-tc":
               action = 2;
               classCode = args[iarg++];
@@ -519,8 +595,8 @@ public class McKayThompsonSequence implements Sequence {
         }
       } // while
       final McKayThompsonSequence seq = selectedClasses.length == 1 
-          ? new McKayThompsonSequence(selectedClasses[0], tlist)
-          : new McKayThompsonSequence(selectedClasses   , tlist)
+          ? new McKayThompsonSequence(selectedClasses[0], tlist, skipZeroes)
+          : new McKayThompsonSequence(selectedClasses   , tlist, skipZeroes)
           ;
       seq.sDebug = sDebug;
       seq.mMaxTerm = maxTerm;

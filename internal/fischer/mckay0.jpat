@@ -13,6 +13,6 @@ public class $(ASEQNO) extends McKayThompsonSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super("$(PARM1)", new long[] { $(PARM3) });
+    super("$(PARM1)", new long[] { $(PARM3) }, $(PARM4));
   }
 }
