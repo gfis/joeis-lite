@@ -1,8 +1,8 @@
 package irvine.oeis;
 
+import irvine.math.PowerSeries;
 import irvine.math.z.Z;
 import irvine.oeis.McKayThompsonTables;
-import irvine.math.PowerSeries;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -317,7 +317,7 @@ public class McKayThompsonSequence implements Sequence {
       }
     }
     return result;
-  } // transitiveClosure
+  }
   
   /**
    * Recursively add a classCode and all of its powers to the transitive closure
@@ -329,8 +329,7 @@ public class McKayThompsonSequence implements Sequence {
         enclose(power);
       }
     }
-    // else already enclosed
-  } // enclose
+  }
   
   /**
    * Computes the sequences for a subset of class codes
@@ -380,7 +379,7 @@ public class McKayThompsonSequence implements Sequence {
       jFaber[ijf++] = new PowerSeries();
       jFaber[ijf++] = j;
 //**  if (sDebug >= 2) {
-//**      System.out.println("# cl=" + cl + ", j=" + j.toString());
+//**    System.out.println("# cl=" + cl + ", j=" + j.toString());
 //**  }
       final int minComplete = Math.min(getComplete(cl), MAX_FABER);
       for (int n = 2; n < minComplete; ++n) {
@@ -391,14 +390,14 @@ public class McKayThompsonSequence implements Sequence {
         // Besides, if you make this higher than 10 you need to extend the class power maps.
         final PowerSeries jn = jFaber[n - 1].multiply(j);
 //**    if (sDebug >= 2) {
-//**        System.out.println("#1 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
+//**      System.out.println("#1 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
 //**    }
         for (int k = n - 2; k > 0; --k) {
-            jn.addMonomialTimes(jn.getCoeff(- k).negate(), 0 ,jFaber[k]);
+          jn.addMonomialTimes(jn.getCoeff(- k).negate(), 0 ,jFaber[k]);
         }
         jn.addMonomial(jn.getCoeff(0).negate(), 0);
 //**    if (sDebug >= 2) {
-//**        System.out.println("#2 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
+//**      System.out.println("#2 n=" + n + ", jn=" + jn.toString() + ", precis=" + jn.precis());
 //**    }
         jFaber[ijf++] = jn;
         // At this point, jn is the n-th Faber polynomial of j.
@@ -407,49 +406,36 @@ public class McKayThompsonSequence implements Sequence {
             // Compute a coefficient from the action of the n-th
             // Hecke operator (with just n*coefs[k*n], the one we
             // will deduce, missing from the sum):
-//**        if (sDebug >= 2) {
-//**           System.out.println("# n-th Hecke, n=" + n + ", k=" + k);
-//**        }
-            try {
-              boolean busy = true;
-              Z v = Z.ZERO;
-              int d = 1; 
-              while (d < n && busy) { // foreach in strictDivisors
-                if ((n % d) == 0) { // d divides n
-                  final int a = n / d;
-                  final String cla = getPower(cl)[a];
-//**              if (sDebug >= 2) {
-//**                System.out.println("# d=" + d + ", k=" + k + ", n=" + n + ", a=" + a + ", cla=" + cla);
-//**              }
-                  if ((k % a) == 0) {
-                    final int kk = (k / a) * d;
-                    if (containsElem(cla, kk)) {
-                      v = v.add(Z.valueOf(n / a).multiply(getElem(cla, kk)));
-                    } else {
-                      // throw new UnsupportedOperationException("missing coefficient #1: " + String.valueOf(kk));
-                      busy = false;
-                    }
-                  }
-                } // if d divides n
-                ++d;
-              } // foreach divisor
-              if (busy) {
-                Z w = jn.getCoeff(k).subtract(v);
+            boolean busy = true;
+            Z v = Z.ZERO;
+            int d = 1; 
+            while (d < n && busy) { // foreach in strictDivisors
+              if ((n % d) == 0) { // d divides n
+                final int a = n / d;
+                final String cla = getPower(cl)[a];
 //**            if (sDebug >= 2) {
-//**               System.out.println("# w=" + w.toString() + ", v=" + v.toString());
+//**              System.out.println("# d=" + d + ", k=" + k + ", n=" + n + ", a=" + a + ", cla=" + cla);
 //**            }
-                if (! w.remainder(Z.valueOf(n)).equals(Z.ZERO)) {
-                  throw new IllegalArgumentException("divisibility check failed");
+                if ((k % a) == 0) {
+                  final int kk = (k / a) * d;
+                  if (containsElem(cla, kk)) {
+                    v = v.add(Z.valueOf(n / a).multiply(getElem(cla, kk)));
+                  } else {
+                    busy = false;
+                  }
                 }
-                w = w.divide(Z.valueOf(n));
-                putElem(cl, k * n, w);
-//**            if (sDebug >= 1) {
-//**              System.out.println("# early.2 cl=" + cl + ", k=" + k + ", n=" + n + ", w=" + w.toString());
-//**            }
+              } // if d divides n
+              ++d;
+            } // foreach divisor
+            if (busy) {
+              Z w = jn.getCoeff(k).subtract(v);
+              if (! w.remainder(Z.valueOf(n)).equals(Z.ZERO)) {
+                throw new IllegalArgumentException("divisibility check failed");
               }
-            } catch (UnsupportedOperationException exc) {
+              w = w.divide(Z.valueOf(n));
+              putElem(cl, k * n, w);
 //**          if (sDebug >= 1) {
-//**            System.out.println("# " + exc.getMessage() + ", k=" + k + ", n=" + n);
+//**            System.out.println("# early.2 cl=" + cl + ", k=" + k + ", n=" + n + ", w=" + w.toString());
 //**          }
             }
           } // if
@@ -464,56 +450,47 @@ public class McKayThompsonSequence implements Sequence {
     // since we're interested only in one, higher, coefficient).
     for (String cl: mSelectedClasses) {
       final String cl2 = getPower(cl)[2];
-      try {
-        boolean busy = true;
-        while (busy) {
-          // See if getComplete can be increased.
-          while (containsElem(cl, getComplete(cl))) {
-            setComplete(cl, getComplete(cl) + 1);
-          }
-          // Try to compute the first unknown coefficient
-          // (getComplete()) by computing the previous coefficient in
-          // 2 T_2(j) and equating.
-          final int k = getComplete(cl) - 1;
-          if (! containsElem(cl, k * 2)) {
-            // throw new UnsupportedOperationException("missing coefficient #2: " + String.valueOf(k * 2));
-            busy = false;
-          } else {
-            Z v = getElem(cl, k * 2).multiply2();
-            if ((k % 2) == 0) {
-              if (! containsElem(cl2, k / 2)) {
-                // throw new UnsupportedOperationException("missing coefficient #3: " + String.valueOf(k / 2));
-              	busy = false;
-              } else {
-                v = v.add(getElem(cl2, k / 2));
-              }
-            }
-            if (busy) {
-              // At this point, v is coefficient k of j^2, computed from
-              // the Hecke operators.  Now we can deduce coefficient k+1
-              // of j from this:
-              for (int i = 1; i < k; ++i) {
-                v = v.subtract(getElem(cl, i).multiply(getElem(cl, k - i)));
-              }
-              if (! v.isEven()) {
-                throw new IllegalArgumentException("Evenness check failed!");
-              } 
-              v = v.divide2();
-              putElem(cl, k + 1, v);
-//**          if (sDebug >= 1) {
-//**            System.out.println("# early.3 cl=" + cl + ", v=" + v.toString());
-//**          }
+      boolean busy = true;
+      while (busy) {
+        // See if getComplete can be increased.
+        while (containsElem(cl, getComplete(cl))) {
+          setComplete(cl, getComplete(cl) + 1);
+        }
+        // Try to compute the first unknown coefficient
+        // (getComplete()) by computing the previous coefficient in
+        // 2 T_2(j) and equating.
+        final int k = getComplete(cl) - 1;
+        if (! containsElem(cl, k * 2)) {
+          busy = false;
+        } else {
+          Z v = getElem(cl, k * 2).multiply2();
+          if ((k % 2) == 0) {
+            if (! containsElem(cl2, k / 2)) {
+              busy = false;
+            } else {
+              v = v.add(getElem(cl2, k / 2));
             }
           }
-        } // while busy
-      } catch (UnsupportedOperationException exc) {
-//**      if (sDebug >= 1) {
-//**        System.out.println("# " + exc.getMessage());
-//**      }
-          // pass
-      }
+          if (busy) {
+            // At this point, v is coefficient k of j^2, computed from
+            // the Hecke operators.  Now we can deduce coefficient k+1
+            // of j from this:
+            for (int i = 1; i < k; ++i) {
+              v = v.subtract(getElem(cl, i).multiply(getElem(cl, k - i)));
+            }
+            if (! v.isEven()) {
+              throw new IllegalArgumentException("Evenness check failed!");
+            } 
+            v = v.divide2();
+            putElem(cl, k + 1, v);
+//**        if (sDebug >= 1) {
+//**          System.out.println("# early.3 cl=" + cl + ", v=" + v.toString());
+//**        }
+          }
+        }
+      } // while busy
     } // foreach cl #3
-  } // iterate
+  }
 
   /**
    * Test method
@@ -625,6 +602,6 @@ public class McKayThompsonSequence implements Sequence {
         exc.printStackTrace();
       }
     } // some arguments
-  } // main
+  }
 
 }
