@@ -1,5 +1,6 @@
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2020-10-10: V2.3: "Total" message
  *  2020-08-30: V2.2: trailing "/" in b-file path is optional
  *  2020-08-16: V2.1: 8 terms for FAIL
  *  2020-06-19: V2.0: -s seekPosition
@@ -42,7 +43,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V2.2";
+  private static String VERSION = "BatchTest V2.3";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -400,7 +401,7 @@ public class BatchTest {
     } catch (Throwable exc) {
        printLog( "FATAL - cannot read \"" + fileName + "\"", exc.getMessage(), "Stack: " + getShortTrace(exc));
     } // try
-    System.out.println("#BT Total\t" + lineNo + "\tpass+f\t" 
+    System.out.println("Total\t" + lineNo + "\tpass+f\t" 
         + String.valueOf(System.currentTimeMillis() - totalTime) + " ms");
   } // processBatch
 

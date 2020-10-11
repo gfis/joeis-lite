@@ -215,7 +215,7 @@ test:
 	| perl -ne 'print if ! m{\AA\d+\tpseudo\s}; ' > ghead.tmp
 	make stripgr LIST=ghead.tmp
 	echo 0x0 > seekpos.mon
-	cp seekpos.mon seekpos.tmp
+	cp  seekpos.mon seekpos.tmp
 	cat seekpos.mon
 	while [ -r seekpos.mon ] ; do \
 		cp seekpos.tmp seekpos.mon || : ; \
@@ -226,6 +226,7 @@ test:
 			| tee -a batch.log ; \
 	done
 	make evaluate
+	# end of test
 runbt: # Run BatchTest for this group
 	$(BATLIT) strip.tmp 2>&1 | tee -a batch.log
 testex: # parameter: CC=; test all existing (generated) sequences
@@ -1644,6 +1645,32 @@ prod1_xk:
 	2>       $@.rest.tmp
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
+#----
+prodet:
+	cp -v prodet.man $@.tmp
+	perl prodet.pl prod1_xk.tmp \
+	>>       $@.tmp
+	grep -E "^A" $@.tmp | sort | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	
+#----
+yves_martin: ym0 ym1
+ym0:
+	wget "http://oeis.org/A030203/a030203.txt" -O $@.tmp
+ym1:
+	cat      ym0.tmp \
+	| perl -ne 'if (m{\A\d+\,}) { s/\, /\t/; s/\, /\t/; s/\]\, /]\t/; my ($$no, $$code, $$prod, $$aseqno) = split(/\t/); '\
+	' print join("\t", $$aseqno, "ym", 0, $$no, $$code, $$prod) . "\n"; } ' \
+	>        $@.tmp
+	make seq LIST=$@.tmp
+ym2:
+	$(DBAT) -x "SELECT s.aseqno, j.superclass \
+	    FROM seq s LEFT JOIN joeis j ON s.aseqno = j.aseqno \
+	    ORDER BY 1" 
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------------------------------
 # %F A238745 a(n) = A181819(A124859(n)).
 seqop: # ???

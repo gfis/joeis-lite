@@ -1,6 +1,6 @@
 #!perl
 
-# Extract parameters for DiffernceSequence.java, RecordSequence etc.
+# Extract parameters for DifferenceSequence.java, RecordSequence etc.
 # @(#) $Id$
 # 2020-09-18: shuffle
 # 2020-08-31: take all, also nyi; options -pseudo and -prep; RT=78

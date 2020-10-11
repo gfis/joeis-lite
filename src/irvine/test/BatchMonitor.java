@@ -1,5 +1,6 @@
 /*  Reads the output of BatchTest, kills and restarts that process after a timeout
  *  @(#) $Id: BatchMonitor.java 744 2019-04-05 06:29:20Z gfis $
+ *  2020-10-10, V1.3: EOF handling
  *  2020-06-19, V1.0, Georg Fischer
  */
 package irvine.test;
@@ -19,7 +20,7 @@ public class BatchMonitor {
   public final static String CVSID = "@(#) $Id: BatchMonitor.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchMonitor V1.2";
+  private static String VERSION = "BatchMonitor V1.3";
 
   /** How many milliseconds should be added to -t value */
   private long    addTimeout;
@@ -90,9 +91,14 @@ public class BatchMonitor {
             }
             String[] parts = line.split("\\t");
             if (false) {
-            } else if (line.startsWith("A")) { // valid A-number
+            } else if (line.startsWith("A")) { // valid A-number or EOF
               System.out.println(line);
-            } else if (parts[0].startsWith("#BT start")) { // valid A-number
+            } else if (line.startsWith("Total")) { 
+              System.out.println(line);
+              remainingSlots = 0;
+              blocked = false;
+              state = 2;
+            } else if (parts[0].startsWith("#BT start")) {
               aseqno = parts[1];
               seekString = parts[2];
             }
@@ -107,7 +113,7 @@ public class BatchMonitor {
       } // while reading input
       charReader.close();
     } catch (Throwable exc) {
-       System.out.println( "#BM FATAL - input read error " + exc.getMessage());
+       System.out.println("#BM FATAL - input read error " + exc.getMessage());
     } // try
     System.err.println(seekString);
     System.err.println(seekString);
