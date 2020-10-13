@@ -13,8 +13,8 @@ public class $(ASEQNO) extends EulerTransform {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(new $(PARM1)(), $(PARM2));
-$(PARM4)
+    super($(PARM2));
+    $(PARM4)
   }
   
   @Override

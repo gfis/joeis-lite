@@ -145,7 +145,7 @@ select2:
 	#     AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
 	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 clean: purge # parameter: CC; $(CC).pass.log from previous test is grepped from $(CC).gen
-	grep -E "^A[0-9]" batch.log | grep -vE "(pass|FATO)" | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > clean.grep.tmp
+	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > clean.grep.tmp
 	grep -f clean.grep.tmp $(CC).gen > $(CC).clean.tmp
 	cp -v $(CC).clean.tmp  $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp 
@@ -1653,7 +1653,10 @@ prodet:
 	grep -E "^A" $@.tmp | sort | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-	
+prodet3:
+	cat prodet3.gen	
+prodetm:
+	grep -E "^A" prodet.man > prodetm.gen	
 #----
 yves_martin: ym0 ym1
 ym0:
@@ -1808,6 +1811,20 @@ noncomp4: # for info only
 	>        $@.tmp
 noncomp:
 	# run (noncomp0 and) noncomp_prep before
+#--------------------------------
+# Sequences with keyword "bref"
+bref:
+	$(DBAT) -x "SELECT i.aseqno, 'bref', i.offset1, d.data, d.termno \
+	FROM asinfo i, bfdata d \
+	WHERE i.aseqno = d.aseqno \
+	  AND i.keyword LIKE '%bref%' \
+	  ORDER BY 1" \
+	| perl -ne 'my @parms = split(/\t/); '\
+	' $$parms[3] = join(", ", map { "new Z(\"$$_\")" } split(/\,/, $$parms[3])); '\
+	' print join("\t", @parms); '\
+	       > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 # %C A070365 Period 6: repeat [1, 5, 4, 6, 2, 3].
 # %F A118822 Period 8 sequence: [2,-1,0,-1,-2,1,0,1].
