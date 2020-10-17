@@ -901,6 +901,61 @@ dupl3:
 dupl:
 	cp -v dupl3.tmp $@.gen
 #--------------------------------
+etlen: etlen1 etlen2
+etlen1:
+	grep -E "Euler transform of length" $(COMMON)/cat25.txt \
+	| cut -b4- \
+	       > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+etlen2:
+	cp etlen1.tmp $@.raw.tmp
+	cut -b1-7 $@.raw.tmp | grep -E "^A" | sed -e "s/^/\^\%H /" > $@.grep.tmp
+	grep -E "^%H " $(COMMON)/cat25.txt \
+	| grep -f $@.grep.tmp | grep signature \
+	| cut -b4- \
+	| sed -e "s/ [^,]*, / /" >> $@.raw.tmp
+	sort $@.raw.tmp > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
+etper: etper1 etper2
+etper1:
+	grep -E "Euler transform of period" $(COMMON)/cat25.txt \
+	| cut -b4- \
+	       > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+etper2:
+	cp etper1.tmp $@.raw.tmp
+	cut -b1-7 $@.raw.tmp | grep -E "^A" | sed -e "s/^/\^\%H /" > $@.grep.tmp
+	grep -E "^%H " $(COMMON)/cat25.txt \
+	| grep -f $@.grep.tmp | grep signature \
+	| cut -b4- \
+	| sed -e "s/ [^,]*, / /" >> $@.raw.tmp
+	sort $@.raw.tmp > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+etper3:
+	cp etper1.tmp $@.raw.tmp
+	cut -b1-7 $@.raw.tmp | grep -E "^A" | sed -e "s/^/\^/" > $@.grep.tmp
+	grep -E "^A" $(COMMON)/joeis_names.txt \
+	| grep -f $@.grep.tmp \
+	>> $@.raw.tmp
+	sort $@.raw.tmp > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+etper4:
+	cp etper1.tmp $@.raw.tmp
+	cut -b1-7 $@.raw.tmp | grep -E "^A" | sed -e "s/^/\^\%H /" > $@.grep.tmp
+	grep -E "^%H " $(COMMON)/cat25.txt \
+	| grep -f $@.grep.tmp | grep -iE "recurrence" \
+	| cut -b4- \
+	 >> $@.raw.tmp
+	sort $@.raw.tmp > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------------------------------
 eulerian:
 	grep -E "\%[CFN]" $(COMMON)/cat25.txt | grep -E "Eulerian[\[]" \
 	>        $@.gen
