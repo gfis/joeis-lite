@@ -54,20 +54,25 @@ if (0) {
     my $index = 1;
     foreach my $a (1..$maxa) {
         my $a2 = $a * $a;
-        my $clim = (($a2 + 1) * $kden - $knum * $a) 
-                 / (2 * $kden - $knum * $a);
-        foreach my $b ($a..$clim) {
+        my $limb = ($a2 + 1 - $a * $knum / $kden) / 2 + 1;
+        if ($limb < $a) {
+          $limb = $a + 128; # guessed
+        }
+        $limb = $a + 4096;
+        foreach my $b ($a..$limb) {
             my $c2pot = $a2 + $b * $b + $a * $b * $knum / $kden;
-            if (defined($roots{$c2pot})) {
+            if ($c2pot >= $a2) {
+                if (defined($roots{$c2pot})) {
                 my $c = $roots{$c2pot};
-                if ($primit == 0 || 
-                        (&gcd($a, $b) == 1 && &gcd($b, $c) == 1)) {
-                    if ($triple) {
-                        print "$index\t$a\t$b\t$c\n";
-                    } else {
-                        print "$index " . ($a, $b, $c)[$leg] . "\n";
+                    if ($primit == 0 || 
+                            (&gcd($a, $b) == 1 && &gcd($b, $c) == 1)) {
+                        if ($triple) {
+                            print "$index\t$a\t$b\t$c\n";
+                        } else {
+                            print "$index " . ($a, $b, $c)[$leg] . "\n";
+                        }
+                        $index ++;
                     }
-                    $index ++;
                 }
             }
         } # for $b

@@ -1508,6 +1508,9 @@ kpytha:
 	perl kpytha.pl > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+kpytha_list:
+	$(DBAT) -x "SELECT i.aseqno, s.parm1, s.parm2, s.parm3, s.parm4, i.terms \
+	  FROM asinfo i, seq4 s WHERE i.aseqno = s.aseqno ORDER BY 1"
 #--------------------------------
 # Linear Recurrences and generating functions
 linr_count:
