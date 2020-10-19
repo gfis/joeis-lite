@@ -1504,6 +1504,11 @@ juxrun:
 	| tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #--------------------------------
+kpytha:
+	perl kpytha.pl > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 # Linear Recurrences and generating functions
 linr_count:
 	$(DBAT) "SELECT COUNT(aseqno) FROM joeis j \
