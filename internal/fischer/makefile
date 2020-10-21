@@ -454,6 +454,14 @@ caruniq:
 	wc -l    $@.tmp
 #	perl -ne 'if ((m{cellular automat}) and ( m{Rule (\d+)})) { s{\"?Rule (\d+)\"?}{Rule 17}ig; print substr($$_, 8); }' \
 #--------------------------------
+cencube: # superclass is A005898
+	grep "entered cube" $(COMMON)/joeis_names.txt \
+	| grep -vE "A180082|A329636" \
+	| perl -ne 's{\A(A\d+) *}{}; my $$aseqno = $$1; s/\+1/\#/g; m{(\d+)}; '\
+	' my $$expon = $$1;  print join("\t", $$aseqno, "$@", 0, $$expon) . "\n";' \
+	| tee    $@.gen
+	wc -l    $@.gen
+#--------------------------------
 # new, using ContinuedFractionOfSqrtSequence
 cfs:
 	make cfs_all TARGET=gener
@@ -1505,12 +1513,38 @@ juxrun:
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #--------------------------------
 kpytha:
-	perl kpytha.pl > $@.gen
+	perl kpytha.pl -a gen > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-kpytha_list:
+#----
+kpytha_tab:
 	$(DBAT) -x "SELECT i.aseqno, s.parm1, s.parm2, s.parm3, s.parm4, i.terms \
 	  FROM asinfo i, seq4 s WHERE i.aseqno = s.aseqno ORDER BY 1"
+kpytha_grep:
+	grep -E "\-[Pp]ythagorean triple" $(COMMON)/joeis_names.txt \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	perl -ne 'print if m{\(\-3\/4\)};' $@.tmp
+#----
+kpytha_compare: kpytha_check kpytha_regen kpytha_diff kpytha_eval
+kpytha_check:
+	perl kpytha.pl -a check > $@.tmp
+kpytha_regen: kpytha_check
+	perl kpytha.pl -a regen -m 100 > $@.tmp
+kpytha_diff:
+	diff -wy --width=64 --expand-tabs kpytha_check.tmp kpytha_regen.tmp \
+	| perl -ne 'print if ! m{[\>\<]};' \
+	| tee $@.tmp \
+	| less
+	wc -l $@.tmp
+kpytha_eval:
+	perl kpytha_diff.pl kpytha_diff.tmp \
+	| tee $@.txt
+#----
+kpytha_bad:
+	perl kpytha.pl -a comp -t -b 65536 -m 100 -k 1/5 \
+	| grep -E "9   [0-9]" | tee $@.1-5.tmp
 #--------------------------------
 # Linear Recurrences and generating functions
 linr_count:

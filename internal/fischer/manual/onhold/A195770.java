@@ -73,20 +73,20 @@ public class A195770 implements Sequence {
           if (mLimB < mA) {
             mLimB = mA + 128; // ??? guessed
           } 
-          mLimB = mA + 1024; // ??? guessed
+          mLimB = mA + 8192; // ??? guessed
           mB = mA - 1;
           mState = 1;
           break;
         case 1: // increment b
           ++mB; 
           final long c2Pot = mA2 + mB * mB + (mA * mB * mNum / mDen); // potential c^2
-          if (c2Pot >= mA2) {
+          if (c2Pot > 0 && (mA * mB * mNum) % mDen == 0) {
             mC = LongUtils.sqrt(c2Pot); // maximum c such that c^2 <= a^2 + b^2 + k*a*b
             if (DEBUG >= 1) {
               System.out.println("a=" + mA + ", b=" + mB + ", c=" + mC + ", mLimB=" + mLimB + ", c2Pot=" + c2Pot);
             }
             if (mC * mC == c2Pot) { // c2Pot was a square 
-              if (! mPrimitive || (LongUtils.gcd(mC, mA) == 1 && LongUtils.gcd(mC, mB) == 1)) {
+              if (! mPrimitive || (LongUtils.gcd(mA, mB, mC) == 1)) {
                 busy = false; // solution found
                 // mState = 1; // next b
               }

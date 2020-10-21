@@ -3,38 +3,51 @@
 # 2020-10-19, Georg Fischer
 #
 #:# Usage:
-#:#   perl kpytha.pl [-k num[/den]] [-l {a|b|}] [-n 100] [-p] [-t] > output
+#:#   perl kpytha.pl [-a {gen|comp|check|regen}] [-b limit] [-d mode] [-k num[/den]] [-l {a|b|c}] [-n 100] [-p] [-t] > output
+#:#       -a action
+#:#       -b limit for b relative to a
+#:#       -d debugging mode: 0 = none, 1 = some, 2 = more
 #:#       -k factor, maybe negative, default 0
 #:#       -l leg: a (default), b or c
 #:#       -m maximum value of a (default 32)
 #:#       -p primitive solutions only
-#:#       -t print triples instead of b-file format 
+#:#       -t print triples instead of b-file format
 #----------------
 use strict;
 use integer;
 use warnings;
 
 my $action = "gen";
+my $blim   = 16384;
+my $debug  = 0;
 my $knum   = 0;
 my $kden   = 1;
 my $leg    = 0; # a
 my $maxa   = 32;
+my $bprimit = "false";
 my $primit = 0;
 my $triple = 0;
+my @parms  = ();
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
-    my $opt = shift(@ARGV);
+    my $opt =     shift(@ARGV);
     if (0) {
+    } elsif ($opt  =~ m{a}) {
+        $action = shift(@ARGV);
+    } elsif ($opt  =~ m{b}) {
+        $blim   = shift(@ARGV);
+    } elsif ($opt  =~ m{d}) {
+        $debug  = shift(@ARGV);
     } elsif ($opt  =~ m{k}) {
-        my $k = shift(@ARGV);
+        my $k =   shift(@ARGV);
         $k =~ m{(\-?\d)(\/(\d+))?};
         $knum = $1;
         $kden = $3 || 1;
         $action = "comp";
     } elsif ($opt  =~ m{l}) {
-        $leg = shift(@ARGV);
+        $leg =    shift(@ARGV);
         $leg =~ tr{abc}{012};
     } elsif ($opt  =~ m{m}) {
-        $maxa = shift(@ARGV);
+        $maxa =   shift(@ARGV);
     } elsif ($opt  =~ m{p}) {
         $primit = 1;
     } elsif ($opt  =~ m{t}) {
@@ -43,46 +56,60 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
+my %roots = ();
+foreach my $c (0..65535) {
+    $roots{$c * $c} = $c;
+}
 
 if (0) {
 #----------------
-} elsif ($action eq "comp") {
-    my %roots = ();
-    foreach my $c (0..65535) {
-        $roots{$c * $c} = $c;
-    }
-    my $index = 1;
-    foreach my $a (1..$maxa) {
-        my $a2 = $a * $a;
-        my $limb = ($a2 + 1 - $a * $knum / $kden) / 2 + 1;
-        if ($limb < $a) {
-          $limb = $a + 128; # guessed
-        }
-        $limb = $a + 4096;
-        foreach my $b ($a..$limb) {
-            my $c2pot = $a2 + $b * $b + $a * $b * $knum / $kden;
-            if ($c2pot >= $a2) {
-                if (defined($roots{$c2pot})) {
-                my $c = $roots{$c2pot};
-                    if ($primit == 0 || 
-                            (&gcd($a, $b) == 1 && &gcd($b, $c) == 1)) {
-                        if ($triple) {
-                            print "$index\t$a\t$b\t$c\n";
-                        } else {
-                            print "$index " . ($a, $b, $c)[$leg] . "\n";
-                        }
-                        $index ++;
-                    }
-                }
+} elsif ($action eq "check" ) {
+    while (<DATA>) {
+        s/\s+\Z//; # chompr
+        @parms = split(/\s+/);
+        my $iparm = 1;
+        $knum    = $parms[$iparm ++];
+        $kden    = $parms[$iparm ++];
+        $bprimit = $parms[$iparm ++];
+        $primit  = ($bprimit eq "true") ? 1 : 0;
+        my $tri1 = $parms[$iparm ++]; # 1st triple, ignored
+        my @a = &read_b_file($parms[$iparm ++]);
+        my $minlen =             scalar(@a);
+        my @b = &read_b_file($parms[$iparm ++]);
+        $minlen  = &min($minlen, scalar(@b));
+        my @c = &read_b_file($parms[$iparm ++]);
+        $minlen  = &min($minlen, scalar(@c));
+        &header("OEIS/MMA (Clark Kimberling)");
+        foreach my $ind (0..$minlen - 1) {
+            print sprintf("%4d: %7d %7d %7d", $ind + 1, $a[$ind], $b[$ind], $c[$ind]);
+            if ($a[$ind]**2 + $b[$ind]**2 + $a[$ind] * $b[$ind] * $knum / $kden != $c[$ind]**2) {
+                print " -> FAIL\n";
+            } else {
+                print "\n";
             }
-        } # for $b
-    } # for $a
+        } # foreach
+    } # while DATA
+#----------------
+} elsif ($action eq "regen") {
+    while (<DATA>) {
+        s/\s+\Z//; # chompr
+        @parms = split(/\s+/);
+        my $iparm = 1;
+        $knum    = $parms[$iparm ++];
+        $kden    = $parms[$iparm ++];
+        $bprimit = $parms[$iparm ++];
+        $primit  = ($bprimit eq "true") ? 1 : 0;
+        &header("jOEIS/Java (Georg Fischer)");
+        &compute(1);
+    } # while DATA
+#----------------
+} elsif ($action eq "comp") {
+    &compute($triple);
 #----------------
 } elsif ($action eq "gen" ) {
     while (<DATA>) {
         s/\s+\Z//; # chompr
-        my @parms = split(/\s+/);
-        # no_more: next if $parms[1] != 0; # pure Pythagorean for the beginning
+        @parms = split(/\s+/);
         foreach my $iparm (5..7) {
             #                 aseqno          callcode   ofs  leg         num        den        primit     1st triple
             print join ("\t", $parms[$iparm], $parms[0], 1,   $iparm - 5, $parms[1], $parms[2], $parms[3], $parms[4]) . "\n";
@@ -95,6 +122,73 @@ if (0) {
 } else {
     print "invalid action=\"$action\"\n";
 }
+# end of main
+#================================
+sub header {
+	my ($title) = @_;
+    print "#" . ("-" x 28) . "\n# $title"
+        . "\n# " .  ($parms[3] eq "false" ? "non-" : "") . "primitive $parms[1]" 
+        . ($parms[2] != 1 ? "/$parms[2]" : "") . "-Pythagorean" 
+        . "\n#     " . join(" ", $parms[5], $parms[6], $parms[7]) . "\n";
+} # header
+#----
+sub compute { # global: $knum, $kden, $primit, $leg, %roots, $maxa
+    my ($triple) = @_;
+    my $index = 1;
+    foreach my $a (1..$maxa) {
+        my $a2 = $a * $a;
+        my $limb = ($a2 + 1 - $a * $knum / $kden) / 2 + 1;
+        if ($limb < $a) {
+          $limb = $a + 128; # guessed
+        }
+        $limb = $a + $blim;
+        foreach my $b ($a..$limb) {
+            my $c2pot = $a2 + $b * $b + $a * $b * $knum / $kden;
+            if ($debug >= 1) {
+                print "#comp a=$a, b=$b, c2pot=$c2pot, a*b*knum=" . ($a * $b * $knum) . ", %$kden=" . (($a * $b * $knum) % $kden) ."\n";
+            } 
+            if (($a * $b * $knum) % $kden == 0) {
+                if ($c2pot > 0 && defined($roots{$c2pot})) {
+                my $c = $roots{$c2pot};
+                    if ($primit == 0 || &gcd($a, gcd($b, $c)) == 1) {
+                        if ($triple) { # same format as for "-a check"
+                            print sprintf("%4d: %7d %7d %7d\n", $index, $a, $b, $c);
+                        } else { # b-file format
+                            print "$index " . ($a, $b, $c)[$leg] . "\n"; 
+                        }
+                        $index ++;
+                    }
+                }
+            }
+        } # for $b
+    } # for $a
+} # compute
+#----------------------
+sub read_b_file { # returns @terms
+    my ($aseqno) = @_;
+    my $filename = "../../../OEIS-mat/common/bfile/b" . substr($aseqno, 1) . ".txt";
+    my $read_len = 100000000; # 100 MB
+    my $buffer;
+    open(FIL, "<", $filename) or die "cannot read $filename\n";
+    read(FIL, $buffer, $read_len); # 100 MB, should be sufficient
+    close(FIL);
+    my @terms = ();
+    foreach my $line (split(/\r?\n/, $buffer)) {
+        $line =~ s{\#.*}{};
+        $line =~ s{\A\s+}{};
+        next if length($line) == 0; # skip comments and empty lines
+        if ($debug >= 1) {
+            print "# b-file $aseqno: $line\n";
+        }
+        if ($line =~ m{\A\-?\d+\s+(\-?\d+)}) {
+            push(@terms, $1);
+        }
+    } # foreach line
+    if ($debug >= 1) {
+        print "# " . scalar(@terms) . " terms: " . join(",", @terms) . "\n";
+    }
+    return @terms;
+} # read_b_file
 #--------
 sub gcd { # from https://www.perlmonks.org/?node_id=109872
   my ($a, $b) = @_;
@@ -104,6 +198,12 @@ sub gcd { # from https://www.perlmonks.org/?node_id=109872
   }
   return $b;
 } # gcd
+#--------
+sub min { 
+  my ($a, $b) = @_;
+  return $a < $b ? $a : $b;
+} # min
+
 #------------------------------------------------
 # 0     1   2   3     4       5       6       7
 __DATA__
@@ -141,9 +241,9 @@ kpytha  -5  2   false (2,5,2) A196362 A196363 A196364
 kpytha  -1  3   false (1,3,3) A195932 A195933 A195934
 kpytha  -2  3   false (2,3,3) A195994 A195995 A195996
 kpytha  -4  3   false (3,4,3) A196033 A196034 A196035
-kpytha  -5  3   false (3,5,3) A196008 A196009 A196010
+kpytha  -5  3   false (3,5,3) A196008 A196009 A196083
 kpytha  -1  4   false (1,4,4) A196266 A196267 A196268
-kpytha  -3  4   false (3,4,4) A196245 A196246 A196247
+kpytha  -3  4   false (3,4,4) A196245 A196247 A196248
 kpytha  0   1   true  (3,4,5) A020884 A156678 A156679
 kpytha  1   1   true  (3,5,7) A195868 A195869 A195870
 kpytha  3   1   true  (3,7,11)    A196115 A196116 A196117
@@ -180,4 +280,4 @@ kpytha  -2  3   true  (2,3,3) A195997 A195998 A195999
 kpytha  -4  3   true  (3,4,3) A196036 A196037 A196038
 kpytha  -5  3   true  (3,5,3) A196084 A196085 A196086
 kpytha  -1  4   true  (1,4,4) A196269 A196270 A196271
-kpytha  -3  4   true  (3,4,4) A196248 A196249 A196250
+kpytha  -3  4   true  (3,4,4) A196249 A196250 A196246
