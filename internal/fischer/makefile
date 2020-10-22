@@ -3146,6 +3146,10 @@ partcond:
 	2>       $@.rest.tmp
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
+partcapp: partcond
+	grep partcapp partcond.gen > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------
 polyn:
 	cat $(COMMON)/names \

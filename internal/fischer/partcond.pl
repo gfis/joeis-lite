@@ -2,6 +2,7 @@
 
 # Extract parameters for partitions with conditions
 # @(#) $Id$
+# 2020-10-22: 0 < cn() ...
 # 2020-09-05, Georg Fischer: copied from deris.pl
 #
 #:# Usage:
@@ -58,6 +59,7 @@ while (<>) {
     #--------------------------------
     } elsif ($cc =~ m{\Apartcond}) {
         if (0) {
+
         # A035534   null    Number of partitions of n with equal number of parts congruent to each of 0 and 1 (mod 3).  nonn,   0..1000
         # A035537   null    Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 1 (mod 3).  nonn,synth  0..54
         # A035572   null    Number of partitions of n with equal number of parts congruent to each of 0, 1 and 2 (mod 5)    nonn,synth  0..59
@@ -77,6 +79,7 @@ while (<>) {
                 $cbuf .= "cn[$ic] == cn[" . ($ic + 1) . "] \&\& ";
             } # for $ic
             $parms[$iparm ++] = "($cbuf cn[0] >= " . ((length($nonzero) > 0) ? 1 : 0) . ") ? Z.ONE : Z.ZERO";
+            $callcode = "partcond";
 
         # A035679 Number of partitions of n into parts 8k+1 and 8k+2 with at least one part of each type
         } elsif ($name =~ m{\ANumber of partitions of n into parts ([^w]+)with at least one part of each type}) {
@@ -97,12 +100,14 @@ while (<>) {
                 $cbuf .= ".multiply(Z.valueOf(cn[$ic]))";
             } # for $ic
             $parms[$iparm ++] = $cbuf;
+            $callcode = "partcond";
 
        # A036801 Number of partitions satisfying (cn(0,5) <= cn(2,5) and cn(0,5) <= cn(3,5) and cn(0,5) <= cn(1,5) and cn(0,5) <= cn(4,5)). nonn,changed,synth  1..45
        # A036822 Number of partitions satisfying cn(1,5) = cn(4,5) = 0. nonn,changed,   1..1000
        # A036846 Number of partitions of n such that cn(0,5) = cn(2,5) <= cn(3,5) = cn(4,5) <= cn(1,5). nonn,synth  1..64
        # A036880 Number of partitions of 5n such that cn(0,5) <= cn(1,5) = cn(4,5) <= cn(2,5) = cn(3,5).    nonn,synth  1..33
-       } elsif ($name =~ m{\ANumber of partitions (of \d*n )?(satisfying |such that )\(?(cn[^\.]+)}) {
+       # A039896 Number of partitions satisfying 0 < cn(1,5) + cn(4,5) + cn(2,5) + cn(3,5).
+       } elsif ($name =~ m{\ANumber of partitions (of \d*n )?(satisfying |such that )\(?(cn[^\.]+|0 *\< *cn[^\.]+)}) {
             my $mult = $1 || "of n ";
             my $cond = $3;
             $mult =~ s{ n}{1n};
@@ -125,6 +130,27 @@ while (<>) {
             $parms[$iparm ++] = $mult;
             $parms[$iparm ++] = "";
             $parms[$iparm ++] = "($cond) ? Z.ONE : Z.ZERO";
+            $callcode = "partcond";
+
+       # A160974 Number of partitions of n where every part appears at least 4 times.
+       } elsif ($name =~ m{\ANumber of partitions (of n )?(in which no part occurs just once|where every part appears more than two times|where every part appears at least \d+ times)}) {
+            my $appears = $2;
+            my $cond = 2;
+            if (0) {
+            } elsif ($appears =~ m{just once}) {
+                $cond = 2;
+            } elsif ($appears =~ m{more than two}) {
+                $cond = 3;
+            } elsif ($appears =~ m{at least (\d+)}) {
+            	$cond = $1;
+            }
+            $parms[$iparm ++] = $offset;
+            $parms[$iparm ++] = "A160974";
+            $parms[$iparm ++] = $cond;
+            $parms[$iparm ++] = "";
+            $parms[$iparm ++] = "";
+            $parms[$iparm ++] = "";
+            $callcode = "partcapp";
 
         } else {
             print STDERR "$line\n";
