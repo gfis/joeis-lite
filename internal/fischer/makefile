@@ -1742,6 +1742,11 @@ prod1_xk:
 	2>       $@.rest.tmp
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) "DELETE FROM SEQ4 s WHERE s.aseqno IN (SELECT aseqno FROM joeis);"
+	$(DBAT) -10000 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 prodet:
 	cp -v prodet.man $@.tmp
@@ -3144,6 +3149,7 @@ partcond:
 	| perl partcond.pl -cc partcond \
 	>        $@.gen \
 	2>       $@.rest.tmp
+	perl -e 'print join("\t", "A097242", "partcapp", 0, "A161039", "2") . "\n"; ' >> $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
 partcapp: partcond

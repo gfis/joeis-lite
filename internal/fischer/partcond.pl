@@ -133,20 +133,49 @@ while (<>) {
             $callcode = "partcond";
 
        # A160974 Number of partitions of n where every part appears at least 4 times.
-       } elsif ($name =~ m{\ANumber of partitions (of n )?(in which no part occurs just once|where every part appears more than two times|where every part appears at least \d+ times)}) {
-            my $appears = $2;
-            my $cond = 2;
+       # A161026 Number of partitions of n into Fibonacci numbers where every part appears at least 2 times.    nonn,changed,   0..10000
+       # A161039 Number of partitions of n into odd numbers where every part appears at least 3 times.  nonn,   1..5000
+       # A161051 Number of partitions of 2n into powers of two where every part appears at least twice. nonn,changed,   1..1000
+       # A161064 Number of partitions of n into powers of two minus one where every part appears at least 2 times.  nonn,changed,   1..1000
+       # A161077 Number of partitions of n into primes or 1 where every part appears at least 2 times.  nonn,changed,   1..1000
+       # A161090 Number of partitions of n into squares where every part appears at least 2 times.  nonn,changed,   1..1000
+       # A161103 Number of partitions of n into nonzero triangular numbers where every part appears at least 2 times    nonn,   1..1000
+       #                                          1          2     3                                                                                                                      4 
+       } elsif ($name =~ m{\ANumber of partitions (of \d?n )?(into (Fibonacci numbers|odd numbers|powers of two minus one|powers of two|primes or 1|squares|nonzero triangular numbers|) )(in which no part occurs just once|where every part appears more than two times|where every part appears at least \d+ times|where every part appears at least twice)}) {
+            my $subseq = $3 || "";
+            my $appears = $4;
             if (0) {
             } elsif ($appears =~ m{just once}) {
-                $cond = 2;
+                $appears = 2;
             } elsif ($appears =~ m{more than two}) {
-                $cond = 3;
+                $appears = 3;
             } elsif ($appears =~ m{at least (\d+)}) {
-            	$cond = $1;
+                $appears = $1;
+            } elsif ($appears =~ m{at least twice}) {
+                $appears = 2;
             }
             $parms[$iparm ++] = $offset;
-            $parms[$iparm ++] = "A160974";
-            $parms[$iparm ++] = $cond;
+            if (0) {
+            } elsif ($subseq eq "") { # empty
+                $parms[$iparm ++] = "A160974";
+            } elsif ($subseq =~ m{Fibon}) {
+                $parms[$iparm ++] = "A161026";
+            } elsif ($subseq =~ m{odd}) {
+                $parms[$iparm ++] = "A161039";
+            } elsif ($subseq =~ m{powers of two minus}) {
+                $parms[$iparm ++] = "A161064";
+            } elsif ($subseq =~ m{powers of two}) {
+                $parms[$iparm ++] = "A161051";
+            } elsif ($subseq =~ m{primes}) {
+                $parms[$iparm ++] = "A161077";
+            } elsif ($subseq =~ m{squares}) {
+                $parms[$iparm ++] = "A161090";
+            } elsif ($subseq =~ m{triangular}) {
+                $parms[$iparm ++] = "A161103";
+            } else {
+                $parms[$iparm ++] = "A160974";
+            }
+            $parms[$iparm ++] = $appears;
             $parms[$iparm ++] = "";
             $parms[$iparm ++] = "";
             $parms[$iparm ++] = "";

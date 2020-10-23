@@ -31,7 +31,7 @@ my $aseqno1  = "A035143"; # superclass for all following
 my $aseqno;
 my $form = "";
 my $exp = "";
-my $callcode = $0;
+my $callcode = "prod1_xk";
 my $tcode;
 my $name;
 
