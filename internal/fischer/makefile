@@ -1138,7 +1138,46 @@ hrem6:
 holpatch:
 	make CC=holos NOT= select2
 	$(DBAT) "UPDATE seq4 
-#--
+#---------------------
+holfinit:
+	grep -E "[PDC]\-finite " cat25.txt \
+	| cut -b4- \
+	| grep -vEi "Conject|Empiric" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#---------------------
+# new linrecs from OEIS-mat/lrindex - run make lrlink there
+holink0: holink1 holink2 holink3 holink4
+holink1: 
+	make seq2 LIST=holink.nadd.man
+holink2:
+	$(DBAT) -x "SELECT l.aseqno, 'holos', 0, l.sigorder \
+	    , COALESCE((SELECT info FROM seq2 s WHERE l.aseqno = s.aseqno), -77) \
+	    , l.signature, substr(d.data, 1, 256) \
+	  FROM lrlink l, asdata d\
+	  WHERE l.aseqno = d.aseqno \
+	    AND l.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  ORDER BY 1" \
+	| grep -v "88888888" \
+	| sed -e "s/ //g" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+holink3:
+	sort     holink2.tmp | uniq -w7 \
+	| head -n99999 \
+	>        $@.tmp
+holink4:
+	perl holink.pl -d 1 -a 4 holink3.tmp \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+holink:
+	grep -E "^A[0-9]" holink4.tmp \
+	>        $@.gen
+#--------
 # HolonomicSequence
 holof: holof0 holof1
 holof0:
@@ -1535,12 +1574,15 @@ kpytha_regen: kpytha_check
 kpytha_diff:
 	diff -wy --width=64 --expand-tabs kpytha_check.tmp kpytha_regen.tmp \
 	| perl -ne 'print if ! m{[\>\<]};' \
-	| tee $@.tmp \
-	| less
-	wc -l $@.tmp
+	>        $@.tmp || :
+	head -n8 $@.tmp
+	wc -l    $@.tmp
+	grep -E "prim" $@.tmp | wc -l
 kpytha_eval:
 	perl kpytha_diff.pl kpytha_diff.tmp \
 	| tee $@.txt
+	grep -E "prim" $@.txt | wc -l
+	grep -E "\|"   $@.txt | wc -l
 #----
 kpytha_bad:
 	perl kpytha.pl -a comp -t -b 65536 -m 100 -k 1/5 \
@@ -1743,10 +1785,36 @@ prod1_xk:
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
 	make seq4 LIST=$@.tmp
-	$(DBAT) "DELETE FROM SEQ4 s WHERE s.aseqno IN (SELECT aseqno FROM joeis);"
-	$(DBAT) -10000 > $@.gen
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"
+	$(DBAT) -10000 seq4 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------------
+prodfin0: prodfin1 prodfin
+prodfin1:
+	grep -iE "^\%[NFtpo]" $(COMMON)/cat25.txt \
+	| grep -iE "prod" \
+	| grep -ivE "produce|dot product|Multiplicative|gamma|sum|binomial|indices|E\.g\.f\.|Conjecture" \
+	| perl -ne 'if (m{prod.*=\d+\.\.\d+\}}i) { print join("\t", substr($$_, 3, 7), "prodfin", 0, substr($$_, 11)); } ' \
+	| sort | uniq -w7 \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc -l    $@.*tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"
+	$(DBAT) -x -10000 seq4 > $@.tmp
+# A075511	prodfin	0	G.f.: 1/Product_{k=1..6} (1 - 2*k*x).									
+# A075512	prodfin	0	G.f.: 1/Product_{k=1..7} (1 - 2*k*x).									
+# A075515	prodfin	0	G.f.: 1/Product_{k=1..5} (1 - 3*k*x).									
+prodfin:
+	cat prodfin1.tmp \
+	| perl -ne 's/\s*\Z//; my ($$aseqno, $$callcode, @parms) = split(/\t/); if ($$parms[1] =~ m{_\{k\=1\.\.(\d+)\} *\(1 *\- *(\d+)\*k}) {'\
+	' $$parms[2] = $$1; $$parms[3] = $$2; '\
+	' $$parms[1] = 'A075511'; print join("\t", $$aseqno, $$callcode, splice(@parms, 0, 4)) . "\n"; }'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#---	
 #----
 prodet:
 	cp -v prodet.man $@.tmp

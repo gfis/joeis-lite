@@ -7,3 +7,5 @@
 -- DELETE FROM seq4 WHERE aseqno >= 'A035618' AND aseqno <= 'A035678'; -- keep A035679
 -- DELETE FROM seq4 WHERE aseqno >= 'A035680' AND aseqno <= 'A035699';
 -- DELETE FROM seq4 WHERE parm1  <> 'A035679';
+DELETE FROM seq4 WHERE parm1 IN ('A035536', 'A035679');
+DELETE FROM seq4 WHERE parm1 = aseqno;
