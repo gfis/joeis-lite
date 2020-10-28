@@ -1,0 +1,22 @@
+A052849	diffspp	0	A066237		new A066237()	, 0			0,2,4,12,48,240,1440,10080	1,3,7,19,67,307,1747,11827	a(0) = 0; a(n+1) = 2*n! (n >= 0).
+A062046	diffspp	1	A024701		new A024701()	, 0			0,4,6,18,12,30,18,42	2,6,12,30,42,72,90,132	Sum of even numbers between consecutive primes.
+A062854	diffspp	1	A027424		new A027424()	, 1			1,2,3,3,5,4,7,5	1,3,6,9,14,18,25,30	First differences of A027424.
+A083742	diffspp	0	A006282		new A006282()	, 0			0,1,2,2,4,3,4,3	0,1,3,5,9,12,16,19	First differences of A006282.
+A088705	diffspp	0	A000120		new A000120()	, 0			0,1,0,1,-1,1,0,1	0,1,1,2,1,2,2,3	First differences of A000120. One minus exponent of 2 in n.
+A089263	diffspp	0	A080791		new A080791()	, 0			0,0,1,-1,2,-1,0,-1	0,0,1,0,2,1,1,0	First differences of A080791.
+A125117	diffseq	0	A034887		new A034887()				0,0,0,1,0,0,1,0	1,1,1,1,2,2,2,3	First differences of A034887.
+A125122	diffspp	0	A034888	1, 	new A034888()				0,1,0,1,0,1,0,1	1,1,1,2,2,3,3,4	First differences of A034888.
+A133912	diffspp	1	A007001		new A007001()	, 1			1,1,-1,1,1,-2,1,-1	1,2,1,2,3,1,2,1	First differences of A007001.
+A145057	diffspp	1	A031443		new A031443()	, 2			2,7,1,2,23,2,1,3	2,9,10,12,35,37,38,41	First differences of A031443.
+A145058	diffseq	1	A031443		new DifferenceSequence(new A031443())				2,5,-6,1,21,-21,-1,2	2,9,10,12,35,37,38,41	Second differences of A031443.
+A164124	diffspp	1	A016041		new A016041()	, 0			0,2,2,10,14,42,34,20	3,5,7,17,31,73,107,127	First differences of A016041.
+A206917	diffspp	0	A206918		new A206918()	, 0			0,1,3,12,24,96,192,768	0,1,4,16,40,136,328,1096	Sum of binary palindromes in the half-open interval [2^(n-1), 2^n).
+A225015	diffspp	0	A024482		new A024482()	, 0,1,1			0,1,1,5,18,66,245,918	2,7,25,91,336,1254,4719,17875	Number of sawtooth patterns of length 1 in all Dyck paths of semilength n.
+A256541	diffseq	1	A166133		new A166133()				1,2,-1,5,-1,-1,-1,7	1,2,4,3,8,7,6,5	First differences of A166133.
+A303902	diffspp	0	A026007		new A026007()	, 1			1,0,1,3,3,8,12,21	1,1,2,5,8,16,28,49	Expansion of (1 - x^2)*Product_{k>=2} (1 + x^k)^k.
+A303903	diffspp	0	A000119		new A000119()	, 1			1,0,0,1,-1,1,0,-1	1,1,1,2,1,2,2,1	Expansion of (1 - x^2)*Product_{k>=3} (1 + x^Fibonacci(k)).
+A303906	diffspp	0	A007294		new A007294()	, 1			1,0,0,1,0,0,2,0	1,1,1,2,2,2,4,4	Expansion of Product_{k>=2} 1/(1 - x^(k*(k+1)/2)).
+A303909	diffspp	0	A006456		new A006456()	, 1			1,0,0,0,1,1,1,1	1,1,1,1,2,3,4,5	Expansion of 2*(1 - x)/(3 - theta_3(x)), where theta_3() is the Jacobi theta function.
+A317911	diffspp	0	A001970		new A001970()	, 1			1,0,2,3,8,13,31,53	1,1,3,6,14,27,58,111	Expansion of Product_{k>=2} 1/(1 - x^k)^p(k), where p(k) = number of partitions of k (A000041).
+A317912	diffspp	0	A006906		new A006906()	, 1			1,0,2,3,8,11,31,41	1,1,3,6,14,25,56,97	Expansion of Product_{k>=2} 1/(1 - k*x^k).
+A322700	diffspp	0	A000666		new A000666()	, 1			1,1,4,14,70,454,4552,74168	1,2,6,20,90,544,5096,79264	Number of unlabeled graphs with loops spanning n vertices.

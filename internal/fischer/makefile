@@ -198,6 +198,9 @@ man: # copy sources that where manually edited
 	' my $$path = "../../src/irvine/oeis/" . lc(substr($$aseqno, 0, 4)) . "/"; '\
 	' my $$ignore = `mkdir $$path`; '\
 	' print `cp -v manual/$$aseqno.java $$path`; ' $@.gen 2> x.tmp
+	cat $@.gen >> $(CC).gen
+	sort $(CC).gen | uniq -w7 > $@.tmp
+	mv $@.tmp $(CC).gen
 dist:
 	rm -f dist.log
 	make dist1 2>&1 | tee dist.log
@@ -278,6 +281,8 @@ runjava: # CLASS= ARGS=
 	$(JAVA) $(CLASS) $(ARGS)
 pseudotest: # ASEQNO=
 	$(JAVA) irvine.oeis.PseudoSequence $(ASEQNO)
+tritest:
+	$(JAVA) irvine.oeis.GeneratingFunctionTriangle $(MAXT) $(NUM) $(DEN)
 ej:
 	echo $(JAVA)
 #================================================================
@@ -678,6 +683,22 @@ concprod2:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------------
+corenice: core nice
+core:
+	make core1 KEYW=core
+nice:
+	make core1 KEYW=nice
+core1:
+	$(DBAT) -x "SELECT i.aseqno, i.keyword, n.name \
+	    FROM asinfo i, asname n \
+	    WHERE i.aseqno = n.aseqno \
+	      AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	      AND (i.keyword LIKE '%$(KEYW)%') \
+	      ORDER BY 1" \
+	>        $(KEYW).tmp
+	head -n4 $(KEYW).tmp
+	wc -l    $(KEYW).tmp
 #--------------------------------
 dead:
 	$(DBAT) -x "SELECT i.aseqno, n.name, 0 \
@@ -1775,6 +1796,19 @@ primsol:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+# A038873	null	Primes p such that 2 is a square mod p; or, primes congruent to {1, 2, 7} mod 8.	nonn,easy,	1..10000
+# A038874	null	Primes p such that 3 is a square mod p.	nonn,easy,	1..1000
+# A038875	PrependSequence	Primes p with legendre(3,p) = -1.	nonn,	1..1000
+# A038876	null	Primes p such that 6 is a square mod p.	nonn,	1..1000
+# A038877	null	Primes p such that 6 is not a square mod p.	nonn,easy,	1..1000
+prisquare:
+	grep -E "^A038" $(COMMON)/joeis_names.txt \
+	| perl -ne  'if (m{(\d+) is (not )?a square mod p}) { print join("\t", substr($$_, 0,7), "$@", 0, "A038873", $$1, $$2 || "true") . "\n"; } '\
+	| sed -e "s/not */false/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 prod1_xk:
 	grep -iE "^\%[NFtpo]" $(COMMON)/cat25.txt \
 	| grep -iE "prod" \
@@ -1882,6 +1916,9 @@ trigf:
 	tail -n4 trigf.gen
 	wc -l    trigf.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+trigfm:
+	cp trigfm.man trigfm.gen
+#----
 dhdop:
 	sed -e "s/dhd/trigf/" $(TRIREC)/dhd_gf.tmp \
 	>        trigf.gen

@@ -1,0 +1,752 @@
+A034952		65	63	Expansion of eta(16z)^4*eta(4z)^2.
+A034998		25	23	Expansion of Product (1+q^(2k-1))^(-8)*(1+q^(4k))^(-8), k=1..inf.
+A035118		20	18	Fourier coefficients of (normalized Delta)^3.
+A035150		997	49	Fourier coefficients of (normalized Delta)^4.
+A035190		996	45	Fourier coefficients of (normalized Delta)^5.
+A035363		2000	226	Number of partitions of n into even parts.
+# A036837		37	36	Schoenheim bound L_1(n,n-5,n-6).
+A038348		1001	152	Expansion of (1/(1-x^2))*Product_{m>=0} 1/(1-x^(2m+1)).
+# A038835		47	45	Partial sums of A008443.
+# A045822		30	28	a(n) = A045820(n)/2.
+A046895		2000	174	Sizes of successive clusters in Z^4 lattice.
+A052816		54	52	G.f.: (1+x)*Product_{m>0} (1 + x^m).
+# A054900		105	87	(n) = floor(n/16) + floor(n/256) + floor(n/4096) + floor(n/65536) + ....
+A055101		2000	165	Expansion of square of continued fraction 1/ ( 1+q/ ( 1+q^2/ ( 1+q^3/ ( 1+q^4/... )))).
+A055102		2000	146	Expansion of cube of continued fraction 1/ ( 1+q/ ( 1+q^2/ ( 1+q^3/ ( 1+q^4/... )))).
+A055103		2000	132	Expansion of 4th power of continued fraction 1/ ( 1+q/ ( 1+q^2/ ( 1+q^3/ ( 1+q^4/... )))).
+# A056822		61	56	Nearest integer to n^2/16.
+# A056864		58	53	Nearest integer to n^2/10.
+A058484		2000	97	McKay-Thompson series of class 12F for Monster.
+A058485		1001	135	McKay-Thompson series of class 12G for Monster.
+A058492		2000	120	McKay-Thompson series of class 12d for Monster.
+A058514		1002	108	McKay-Thompson series of class 16A for Monster.
+A058538		1002	113	McKay-Thompson series of class 18c for Monster.
+A058539		1001	112	McKay-Thompson series of class 18d for the Monster group.
+A058553		2000	143	McKay-Thompson series of class 20D for Monster.
+A058554		2000	117	McKay-Thompson series of class 20E for Monster.
+A058571		2000	125	McKay-Thompson series of class 24A for Monster.
+A058576		1002	125	McKay-Thompson series of class 24F for Monster.
+A058609		1002	132	McKay-Thompson series of class 28D for Monster.
+A058616		2000	135	McKay-Thompson series of class 30E for Monster.
+A058632		1002	139	McKay-Thompson series of class 32b for Monster.
+A058646		1001	145	McKay-Thompson series of class 36C for Monster.
+A058664		1002	150	McKay-Thompson series of class 40C for Monster.
+A058678		1002	153	McKay-Thompson series of class 42d for Monster.
+A058686		1002	157	McKay-Thompson series of class 45b for Monster.
+A058691		1002	161	McKay-Thompson series of class 48A for Monster.
+A058729		1001	176	McKay-Thompson series of class 60E for the Monster group.
+A058839		93	91	Expansion of (1-x^5)*Product_{r>=3} (1-x^r).
+A059160		1001	203	Number of ordered ways of writing n as a sum of 5 generalized pentagonal numbers (A001318).
+A059777		2000	151	Number of self-conjugate three-quadrant Ferrers graphs that partition n.
+A059778		93	91	Expansion of 1 / product((1+q^(2*n+3))/(1-q^(2*n+2)), n=0..inf).
+A064349		41	39	Generating function: 1/((1-x)*(1-x^2)^2*(1-x^3)^3*(1-x^4)^4).
+A067593	FAIL		168	Number of partitions of n into Lucas parts (A000032).
+A070557		45	43	Number of two-rowed partitions of length 4.
+A070558		41	39	Number of two-rowed partitions of length 5.
+A070559		40	38	Number of two-rowed partitions of length 6.
+# A078463		31	29	a(n) = A000594(n+1) - A000594(n).
+# A078488		24	23	First differences of A006665.
+A079902		39	37	G.f. = { 1+sum(4*n*q^n, n=1..infinity)} / { theta series for square lattice }.
+A082556		1001	51	G.f.: Product_{m>=1} 1/(1-x^m)^30.
+A082557		1001	50	G.f.: Product_{m>=1} 1/(1-x^m)^32.
+A082558		2000	46	Expansion of Product_{m>=1} 1/(1-x^m)^48.
+A082559		1001	43	G.f.: Product_{m>=1} 1/(1-x^m)^64.
+A084376		1001	130	G.f.: (1+x)/Product_{m>0} (1 - x^m).
+A085811		2000	143	Number of partitions of n including 3, but not 1.
+A087787		2000	136	a(n) = Sum_{k=0..n} (-1)^(n-k)*A000041(k).
+A087897		1001	183	Number of partitions of n into odd parts greater than 1.
+# A088480		69	67	Numbers n such that the lunar product of the distinct lunar prime divisors of n is >= n.
+A090108	FAIL		70	Values of n such that P[n]=n^2-79n+1601 is prime and also {P[n+1],...,P[n+9-1]} are prime numbers. Namely: a(n)= the first argument providing 9 "polynomially consecutive" primes with respect of polynomial=x^2-79x+1601 described by Escott in 1899.
+# A090223		74	70	Nonnegative integers with doubled multiples of 4.
+A092295		2000	136	Number of partitions of n with even number (or 0) 2''s.
+A092833		1000	162	Expansion of q / (chi(-q) * chi(-q^23)) in powers of q where chi() is a Ramanujan theta function.
+# A093039		16	14	Fifth in a series of similar sequences resulting from repeating Pascal sequences.
+A094428		105	103	Expansion of infinite product (q^12,q^12,q^6;q^5,q^7;q^12)_infty.
+# A095875		57	54	Number of lattice points on graph of parabola y >= x^2 with y <= n.
+A095944		2000	135	Number of subsets S of {1,2,...,n} which contain a number that is greater than the sum of the other numbers in S.
+# A096285		96	94	Denominator of the ratio of the preceding two terms.
+A096740		1001	206	Number of partitions of n into distinct parts >= 11.
+A096749		1001	172	Number of partitions of n into distinct parts, the least being 2.
+A096765		1001	168	Number of partitions of n into distinct parts, the least being 1.
+A096778		49	47	Number of partitions of n with at most two even parts.
+A096911		62	59	Number of partitions of n into distinct parts with exactly one even part.
+A096914		45	43	Number of partitions of 2*n into distinct parts with exactly two odd parts.
+A097196		1001	161	Expansion of psi(x^3)^2 / f(-x^2) in powers of x where psi(), f() are Ramanujan theta functions.
+A099383		56	54	Number of partitions of n into minimal numbers.
+A100534		30	28	Number of partitions of 2*n into parts of two kinds.
+A100684		2000	121	Number of partitions of 2n free of multiples of 8 such that 4 occurs at most once. All odd parts occur with even multiplicities. There is no restriction on the other even parts.
+A101195		1001	156	Expansion of psi(x^3) / psi(x) in powers of x where psi() is a Ramanujan theta function.
+A102346		2000	121	Number of partitions of 2n in which odd parts and multiples of 3 and 5 occur with even multiplicities. There is no restriction on the other even parts.
+A102420		103	96	Number of partitions of n into exactly k = 5 parts with each part p <= 5.
+A102422		99	97	Number of partitions of n with k <= 5 parts and each part p <= 5.
+A103257		2000	137	Number of partitions of 2n free of multiples of 5. All odd parts occur with multiplicity 2 or 4. the even parts occur at most twice.
+A103259		2000	135	Number of partitions of 2n prime to 3,5 with all odd parts occurring with even multiplicities. There is no restriction on the even parts.
+A103261		23	21	Number of partitions of 2n into parts with 10 types c^1 c^2...C^10 of each part. The even parts appear with multiplicity 1 for each type . The odd parts occur with multiplicity 2 for each part.
+A103628		1001	118	Total sum of parts of multiplicity 1 in all partitions of n.
+A103650		500	121	G.f.: x^2/((1-x^2)^2*Product_{i>0}(1-x^i)).
+A103924		1001	112	Number of partitions of n into parts but with two kinds of parts of sizes 1,2,3,4 and 5.
+A103925		2000	110	Number of partitions of n into parts but with two kinds of parts of sizes 1,2,3,4,5 and 6.
+A103926		38	36	Number of partitions of n into parts but with two kinds of parts of sizes 1 to 7.
+A103927		40	38	Number of partitions of n into parts but with two kinds of parts of sizes 1 to 8.
+A103928		38	36	Number of partitions of n into parts but with two kinds of parts of sizes 1 to 9.
+A103929		38	36	Number of partitions of n into parts but with two kinds of parts of sizes 1 to 10.
+A104467		2000	183	Coefficients of the A-Bailey Mod 9 identity.
+A104468		2000	185	Coefficients of the B-Bailey Mod 9 identity.
+A104469		2000	187	Coefficients of the C-Bailey Mod 9 identity.
+A104501		1001	135	Coefficients of the A-Dyson Mod 27 identity.
+A104503		1001	136	Coefficients of the C-Dyson Mod 27 identity.
+A104504		1001	139	Coefficients of the D-Dyson mod 27 identity.
+A105340	FAIL		62	a(n) = n*(n+1)/2 mod 2048.
+A107234		48	46	Expansion of 1 / Product_{n>=0} (1-q^(5n+1))(1-q^(5n+2))(1-q^(5n+3)).
+A107235		51	49	Expansion of 1 / Prod{n>=0} (1-q^(5n+1))(1-q^(5n+2))(1-q^(5n+4)).
+A107236		51	49	Expansion of 1 / Prod{n>=0} (1-q^(5n+1))(1-q^(5n+3))(1-q^(5n+4)).
+A107237		51	49	Expansion of 1 / Prod{n>=0} (1-q^(5n+2))(1-q^(5n+3))(1-q^(5n+4)).
+# A107454		90	88	Number of nonisomorphic generalized Petersen graphs P(n,k) with girth 5 on 2n vertices for 1<=k<=Floor[(n-1)/2].
+# A108482		75	73	Expansion of a modular function for Gamma(7).
+# A108907		79	71	Number of times a point sum n is attained in all 6^6 permutations of throwing 6 dice.
+A108962		1001	145	Number of partitions that are "3-close" to being self-conjugate.
+# A109678		42	40	Sequence and first differences include all square numbers exactly once.
+A111330		85	83	Let qf(a,q) = Product(1-a*q^j,j=0..infinity); g.f. is qf(q,q^4)/qf(q^3,q^4).
+A111375		82	80	Let qf(a,q) = Product(1-a*q^j,j=0..infinity); g.f. is qf(q,q^7)*qf(q^2,q^7)*qf(q^4,q^7)/(qf(q^3,q^7)*qf(q^5,q^7)*qf(q^6,q^7))).
+#A111651		105	103	n appears 3n times.
+A111711		2000	199	Leading column of triangle mentioned in A111710.
+A112142		1001	84	McKay-Thompson series of class 8B for the Monster group.
+A112143		2000	156	McKay-Thompson series of class 8D for the Monster group.
+A112160		1001	125	McKay-Thompson series of class 24E for the Monster group.
+A112161		1001	171	McKay-Thompson series of class 24G for the Monster group.
+A112165		1001	221	McKay-Thompson series of class 24h for the Monster group.
+A112173		1001	145	McKay-Thompson series of class 36b for the Monster group.
+A112175		1001	176	McKay-Thompson series of class 36e for the Monster group.
+A112176		1001	177	McKay-Thompson series of class 36f for the Monster group.
+A112179		1001	150	McKay-Thompson series of class 40B for the Monster group.
+A112184		1001	190	McKay-Thompson series of class 44b for the Monster group.
+A112205		1001	188	McKay-Thompson series of class 72a for the Monster group.
+A112209		1001	195	McKay-Thompson series of class 80a for the Monster group.
+A112213		1001	203	McKay-Thompson series of class 88A for the Monster group.
+# A114209		67	64	Number of permutations of [n] having exactly two fixed points and avoiding the patterns 123 and 231.
+# A115790		105	96	1 - (Floor((n+1)*Pi)-Floor(n*Pi)) mod 2.
+A116458		73	71	Number of partitions of n into parts congruent to 1, 9, or 11 (mod 14).
+A116634		1001	140	Number of partitions of n having exactly one part that is a multiple of 3.
+A116646		1001	131	Number of doubletons in all partitions of n. By a doubleton in a partition we mean an occurrence of a part exactly twice (the partition [4,(3,3),2,2,2,(1,1)] has two doubletons, shown between parentheses).
+A116665		1001	156	Total number of parts that appear exactly once in the partitions of n into odd parts.
+A116930		45	43	Sum of parts, counted without multiplicities, in all partitions of n into odd parts.
+A117275		55	53	Number of partitions of n with no even parts repeated and with no 1''s.
+A117276		45	42	Number of 1''s in all partitions of n with no even parts repeated.
+A117524		1000	134	Total number of parts of multiplicity 3 in all partitions of n.
+A117525		1001	124	Total sum of parts of multiplicity 2 in all partitions of n.
+A117930	FAIL		201	Number of partitions of 2n into factorial parts (0! not allowed, i.e., only one kind of 1 can be a part). Also number of partitions of 2n+1 into factorial parts.
+A117957		83	81	Number of partitions of n into parts larger than 1 and congruent to 1 mod 4.
+A118759	FAIL		98	A118757(A118757(n)).
+#A118760		73	70	A118758(A118758(n)).
+A119620		58	56	Number of partitions of floor(3n/2) into n parts each from {1,2,...,n}.
+A119651		250	214	Number of different values of exactly n standard American coins (pennies, nickels, dimes and quarters).
+A120452		2000	125	Number of partitions of n-1 boys and one girl with no couple.
+A120477		2000	100	Apply partial sum operator 5 times to partition numbers.
+#A120529		75	73	First differences of successive generalized meta-Fibonacci numbers A120507.
+#A122056		31	27	A Somos 9-Hone exponent type recursion: a(n) = (x^(n-1)*a(n - 1)a(n - 8) - a(n - 4)*a(n - 5))/a(n - 9).
+A123676		1002	138	McKay-Thompson series of class 18C for the Monster group with a(0) = -3.
+#A126696		80	68	Tenth-squares: floor(n/10)*ceiling(n/10).
+A127391		83	81	Series expansion of the elliptic function sqrt(k) = theta_2/theta_3 in powers of q^(1/4).
+#A128378		28	26	Partial sums of A128379.
+#A128379		28	26	A000012^23 * A000594.
+#A128380		10	8	A097806^24 * A000594.
+#A130145		25	23	Number of nonisomorphic orthogonal arrays OA(n,4,2,2)''s when n is not a multiple of 8.
+#A130543		101	95	Multiplicative persistence of n!.
+#A132086		72	70	Record values in A132085.
+A132136		2000	70	Expansion of -lambda(t + 1) in powers of the nome q = exp(Pi i t).
+#A132292		88	78	Integers repeated 8 times: a(n) = floor((n-1)/8).
+A132462		201	192	Number of partitions of n into distinct parts congruent to 0 or 2 modulo 3.
+A132463		1001	189	Number of partitions of n into distinct parts congruent to 0 or 1 modulo 3.
+#A133714		31	29	Row l=4 of array in A133713.
+#A133715		26	24	Row l=5 of array in A133713.
+#A133716		23	21	Row l=6 of array in A133713.
+#A133717		21	19	Row l=7 of array in A133713.
+A135348		40	38	Total sum of squares of number of distinct parts in all partitions of n.
+A136028		1001	172	Expansion of (phi(q) * phi(q^2))^3 in powers of q where phi() is a Ramanujan theta function.
+A136343	FAIL		187	Number of partitions of n such that each summand is greater than or equal to the sum of the next two summands.
+A139135		1001	125	Expansion of psi(-q^3) / f(q) where psi(), f() are Ramanujan theta functions.
+A139214		1000	181	Expansion of q * psi(q^2) * psi(-q^9) / (phi(-q^3) * psi(-q^3)) in powers of q where phi(), psi() are Ramanujan theta functions.
+A139631		1001	199	Expansion of chi(x^5) / chi(-x^2) in powers of x where chi() is a Ramanujan theta function.
+#A140477		18	16	Binomial(127,n).
+#A143622		86	84	a(n) = (-1)^binomial(n,8): Periodic sequence 1,1,1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,... .
+A144248		2000	98	Partial sums of A000594.
+#A144249		27	25	Apply partial sum operator twice to A000594.
+A144596		105	99	Christoffel word of slope 2/7.
+A144597		105	100	Christoffel word of slope 3/7.
+A144599		105	101	Christoffel word of slope 6/7.
+A144600		105	97	Christoffel word of slope 2/11.
+A144603		105	100	Christoffel word of slope 5/11.
+A144608		105	101	Christoffel word of slope 10/11.
+A144874		101	99	Coefficients of the series expansion of q^(-1/4) pi_q.
+#A145467		47	137	Convolution square of A003114.
+A145783		1001	195	Expansion of (chi(q) * chi(q^15)) / (chi(q^3) * chi(q^5))^2 in powers of q where chi() is a Ramanujan theta function.
+A145785		1000	195	Expansion of q * f(-q^2) * f(-q^30) / (f(q^3) * f(q^5)) in powers of q where f() is a Ramanujan theta function.
+#A147766		43	41	Successive differences of A000990.
+A147783		2000	164	Number of partitions of n into parts divisible by 2 or 5.
+A147784		2000	177	Number of partitions of n into parts divisible by 3 or 4.
+A147785		2000	182	Number of partitions of n into parts divisible by 3 or 5.
+A147786		2000	194	Number of partitions of n into parts divisible by 4 or 5.
+A147787		2000	197	Number of partitions of n into parts divisible by 4,6 or 9.
+#A154281		95	93	1,0,0,1 followed by 0,0,0...
+#A154955		105	103	a(1) = 1, a(2) = -1, followed by 0, 0, 0, ... .
+#A157928		105	101	a(n) = 0 if n < 2, = 1 otherwise.
+A159584		63	61	Coefficients in expansion of eta(2z)^3*eta(6z)^3/theta(3z).
+A160458		1001	67	Coefficients in the expansion of C^2/B^10, in Watson''s notation of page 106.
+A160460		1001	75	Coefficients in the expansion of C^6 / B^7, in Watson''s notation of page 106.
+A160461		1001	108	Coefficients in the expansion of C/B^2, in Watson''s notation of page 106.
+A160462		1001	96	Coefficients in the expansion of C^2/B^3, in Watson''s notation of page 106.
+A160463		1001	88	Coefficients in the expansion of C^3/B^4, in Watson''s notation of page 106.
+A160506		1001	82	Coefficients in the expansion of C^4/B^5, in Watson''s notation of page 106.
+A160521		1001	72	Coefficients in the expansion of C^7/B^8, in Watson''s notation of page 106.
+A160525		1001	107	Coefficients in the expansion of C/B^2, in Watson''s notation of page 118.
+A160526		1001	95	Coefficients in the expansion of C^2/B^3, in Watson''s notation of page 118.
+A160527		1001	87	Coefficients in the expansion of C^3/B^4, in Watson''s notation of page 118.
+A160528		1001	81	Coefficients in the expansion of C^4/B^5, in Watson''s notation of page 118.
+A160533		1001	77	Coefficients in the expansion of C^5/B^6, in Watson''s notation of page 118.
+A160539		1001	74	Coefficients in the expansion of C/B^7, in Watson''s notation of page 118.
+#A160544		72	70	Not divisible by 19.
+#A160647		39	37	Self-convolution of sequence A001402.
+A161435		105	103	Number of reduced words of length n in the Weyl group A_3.
+A161436		103	101	Number of reduced words of length n in the Weyl group A_4.
+A161437		98	96	Number of reduced words of length n in the Weyl group A_5.
+A161438		90	88	Number of reduced words of length n in the Weyl group A_6.
+A161439		76	74	Number of reduced words of length n in the Weyl group A_7.
+A161456		53	51	Number of reduced words of length n in the Weyl group A_8.
+A161497		154	78	Number of reduced words of length n in the Weyl group A_17.
+A161513		22	20	Number of reduced words of length n in the Weyl group A_20.
+A161518		22	20	Number of reduced words of length n in the Weyl group A_21.
+A161521		22	20	Number of reduced words of length n in the Weyl group A_22.
+A161523		22	20	Number of reduced words of length n in the Weyl group A_23.
+A161524		22	20	Number of reduced words of length n in the Weyl group A_24.
+A161525		22	20	Number of reduced words of length n in the Weyl group A_25.
+A161526		22	20	Number of reduced words of length n in the Weyl group A_26.
+A161530		22	20	Number of reduced words of length n in the Weyl group A_27.
+A161571		22	20	Number of reduced words of length n in the Weyl group A_28.
+A161572		21	19	Number of reduced words of length n in the Weyl group A_29.
+A161573		21	19	Number of reduced words of length n in the Weyl group A_30.
+A161636		21	19	Number of reduced words of length n in the Weyl group A_31.
+A161640		20	18	Number of reduced words of length n in the Weyl group A_32.
+A161646		20	18	Number of reduced words of length n in the Weyl group A_33.
+A161647		20	18	Number of reduced words of length n in the Weyl group A_34.
+A161648		19	17	Number of reduced words of length n in the Weyl group A_35.
+A161649		19	17	Number of reduced words of length n in the Weyl group A_36.
+A161650		19	17	Number of reduced words of length n in the Weyl group A_37.
+A161651		19	17	Number of reduced words of length n in the Weyl group A_38.
+A161652		19	17	Number of reduced words of length n in the Weyl group A_39.
+A161653		19	17	Number of reduced words of length n in the Weyl group A_40.
+A161662		19	17	Number of reduced words of length n in the Weyl group A_41.
+A161663		19	17	Number of reduced words of length n in the Weyl group A_42.
+A161668		19	17	Number of reduced words of length n in the Weyl group A_43.
+A161679		19	17	Number of reduced words of length n in the Weyl group A_44.
+A161690		19	17	Number of reduced words of length n in the Weyl group A_45.
+A161691		19	17	Number of reduced words of length n in the Weyl group A_46.
+A161692		18	16	Number of reduced words of length n in the Weyl group A_47.
+A161693		18	16	Number of reduced words of length n in the Weyl group A_48.
+A161694		18	16	Number of reduced words of length n in the Weyl group A_49.
+A161695		18	16	Number of reduced words of length n in the Weyl group A_50.
+A161696		105	103	Number of reduced words of length n in the Weyl group B_3.
+A161697		100	98	Number of reduced words of length n in the Weyl group B_4.
+A161776		122	108	Number of reduced words of length n in the Weyl group B_11.
+A161858		145	96	Number of reduced words of length n in the Weyl group B_12.
+A161859		28	26	Number of reduced words of length n in the Weyl group B_13.
+A161862		25	23	Number of reduced words of length n in the Weyl group B_14.
+A161877		25	23	Number of reduced words of length n in the Weyl group B_17.
+A161878		25	23	Number of reduced words of length n in the Weyl group B_18.
+A161879		23	21	Number of reduced words of length n in the Weyl group B_19.
+A161880		22	20	Number of reduced words of length n in the Weyl group B_20.
+A161899		22	20	Number of reduced words of length n in the Weyl group B_21.
+A161900		22	20	Number of reduced words of length n in the Weyl group B_22.
+A161930		22	20	Number of reduced words of length n in the Weyl group B_23.
+A161931		22	20	Number of reduced words of length n in the Weyl group B_24.
+A161932		22	20	Number of reduced words of length n in the Weyl group B_25.
+A161933		22	20	Number of reduced words of length n in the Weyl group B_26.
+A161954		22	20	Number of reduced words of length n in the Weyl group B_27.
+A161956		22	20	Number of reduced words of length n in the Weyl group B_28.
+A161972		21	19	Number of reduced words of length n in the Weyl group B_29.
+A161976		21	19	Number of reduced words of length n in the Weyl group B_30.
+A161977		21	19	Number of reduced words of length n in the Weyl group B_31.
+A161987		20	18	Number of reduced words of length n in the Weyl group B_32.
+A161988		20	18	Number of reduced words of length n in the Weyl group B_33.
+A161991		20	18	Number of reduced words of length n in the Weyl group B_34.
+A162149		19	17	Number of reduced words of length n in the Weyl group B_35.
+A162150		19	17	Number of reduced words of length n in the Weyl group B_36.
+A162165		19	17	Number of reduced words of length n in the Weyl group B_37.
+A162166		19	17	Number of reduced words of length n in the Weyl group B_38.
+A162168		19	17	Number of reduced words of length n in the Weyl group B_39.
+A162176		19	17	Number of reduced words of length n in the Weyl group B_40.
+A162178		19	17	Number of reduced words of length n in the Weyl group B_41.
+A162179		19	17	Number of reduced words of length n in the Weyl group B_42.
+A162181		19	17	Number of reduced words of length n in the Weyl group B_43.
+A162182		19	17	Number of reduced words of length n in the Weyl group B_44.
+A162183		19	17	Number of reduced words of length n in the Weyl group B_45.
+A162186		19	17	Number of reduced words of length n in the Weyl group B_46.
+A162191		18	16	Number of reduced words of length n in the Weyl group B_47.
+A162193		18	16	Number of reduced words of length n in the Weyl group B_48.
+A162204		18	16	Number of reduced words of length n in the Weyl group B_49.
+A162205		18	16	Number of reduced words of length n in the Weyl group B_50.
+A162207		102	100	Number of reduced words of length n in the Weyl group D_4.
+A162208		92	90	Number of reduced words of length n in the Weyl group D_5.
+A162209		74	72	Number of reduced words of length n in the Weyl group D_6.
+A162210		44	42	Number of reduced words of length n in the Weyl group D_7.
+A162360	FAIL		20	Number of reduced words of length n in the Weyl group D_21.
+A162364		22	20	Number of reduced words of length n in the Weyl group D_22.
+A162365		22	20	Number of reduced words of length n in the Weyl group D_23.
+A162366		22	20	Number of reduced words of length n in the Weyl group D_24.
+A162367		22	20	Number of reduced words of length n in the Weyl group D_25.
+A162368		22	20	Number of reduced words of length n in the Weyl group D_26.
+A162369		22	20	Number of reduced words of length n in the Weyl group D_27.
+A162370		22	20	Number of reduced words of length n in the Weyl group D_28.
+A162376		21	19	Number of reduced words of length n in the Weyl group D_29.
+A162377		21	19	Number of reduced words of length n in the Weyl group D_30.
+A162378		21	19	Number of reduced words of length n in the Weyl group D_31.
+A162379		20	18	Number of reduced words of length n in the Weyl group D_32.
+A162380		20	18	Number of reduced words of length n in the Weyl group D_33.
+A162381		20	18	Number of reduced words of length n in the Weyl group D_34.
+A162384		19	17	Number of reduced words of length n in the Weyl group D_35.
+A162388		19	17	Number of reduced words of length n in the Weyl group D_36.
+A162389		19	17	Number of reduced words of length n in the Weyl group D_37.
+A162392		19	17	Number of reduced words of length n in the Weyl group D_38.
+A162399		19	17	Number of reduced words of length n in the Weyl group D_39.
+A162402		19	17	Number of reduced words of length n in the Weyl group D_40.
+A162411		19	17	Number of reduced words of length n in the Weyl group D_42.
+A162412		19	17	Number of reduced words of length n in the Weyl group D_43.
+A162413		19	17	Number of reduced words of length n in the Weyl group D_44.
+A162418		19	17	Number of reduced words of length n in the Weyl group D_45.
+A162452		19	17	Number of reduced words of length n in the Weyl group D_46.
+A162456		18	16	Number of reduced words of length n in the Weyl group D_47.
+A162461		18	16	Number of reduced words of length n in the Weyl group D_48.
+A162469		18	16	Number of reduced words of length n in the Weyl group D_49.
+A162492		18	16	Number of reduced words of length n in the Weyl group D_50.
+A162539		58	56	G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) / (1-x)^6.
+A162595		78	76	G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) * (1-x^21) / (1-x)^7.
+A162596		101	99	G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) * (1-x^21) * (1-x^24) / (1-x)^8.
+A162602		127	125	G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) * (1-x^21) * (1-x^24) * (1-x^27) / (1-x)^9.
+A162617		156	104	G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) * (1-x^21) * (1-x^24) * (1-x^27) * (1-x^30) / (1-x)^10.
+A162679	FAIL		66	G.f. is the polynomial (Product_{k=1..22} (1 - x^(3*k)))/(1-x)^22.
+A162680	FAIL		65	G.f. is the polynomial (Product_{k=1..23} (1 - x^(3*k)))/(1-x)^23.
+A162686	FAIL		64	G.f. is the polynomial (Product_{k=1..24} (1 - x^(3*k)))/(1-x)^24.
+A162702	FAIL		63	G.f. is the polynomial (Product_{k=1..25} (1 - x^(3*k)))/(1-x)^25.
+A162718	FAIL		62	G.f. is the polynomial  (Product_{k=1..26} (1 - x^(3*k)))/(1-x)^26.
+A162726	FAIL		61	G.f. is the polynomial (Product_{k=1..27} (1 - x^(3*k)))/(1-x)^27.
+A162727	FAIL		60	G.f. is the polynomial (Product_{k=1..28} (1 - x^(3*k)))/(1-x)^28.
+A162732	FAIL		59	G.f. is the polynomial (Product_{k=1..29} (1 - x^(3*k)))/(1-x)^29.
+A162736	FAIL		59	G.f. is the polynomial (Product_{k=1..30} (1 - x^(3*k)))/(1-x)^30.
+A162737	FAIL		58	G.f. is the polynomial (Product_{k=1..31} (1 - x^(3*k)))/(1-x)^31.
+A162739	FAIL		57	G.f. is the polynomial (Product_{k=1..32} (1 - x^(3*k)))/(1-x)^32.
+#A163581		81	76	Number of zeros of sin(x) in integer intervals starting with (0,1).
+A165271		69	67	a(n) = p(3*n), where p(n) = number of partitions of n into parts that correspond to areas of distinct pieces of Archimedes'' ostomachion.
+A165273		54	52	Partial sums of A165271.
+#A165453		60	57	Linear interpolation of the sequence that maps an entry of A002378 to the corresponding entry of A006331.
+#A166189		32	30	Number of 3X3X3 triangular nonnegative integer arrays with all sums of an element and its neighbors <= n
+A167381		2000	223	The numbers read down the left-center column of an arrangement of the natural numbers in square blocks.
+#A167991		76	75	Blocks of size 2n, each with 2n-1 replicas of 2n followed by 2n+1; n=1, 2, 3, ...
+#A168092		47	46	a(n) = number of natural numbers m such that n - 2 <= m <= n + 2.
+A168201		105	103	Number of representations of n in the form 7*k+11*m (with nonnegative k, m).
+A169783		82	80	Number of solutions to a^2 + b^2 + 4*c^2 = n.
+A171445		26	24	Sequence whose G.f is given by f(z)=(1+z)^(24)/(1-z).
+A172033		68	66	Number of partitions of n into distinct parts that are 1 or even, i.e., into distinct terms of A004277.
+#A173246		20	18	Expansion sequence of p(x)=(x + 1)^50/Sum[x^i, {i, 0, 50}];
+A174455		1001	145	Number of partitions where the number of 1''s and 2''s are equal.
+#A175360		39	37	Partial sums of A000132.
+#A175361		36	34	Partial sums of A000141.
+A177339		2000	196	Partial sums of round(n^2/44).
+A181477		1001	89	a(n) has generating function 1/((1-x)^k*(1-x^2)^(k*(k-1)/2)) for k=5.
+A181478		1001	78	a(n) has generating function 1/((1-x)^k*(1-x^2)^(k*(k-1)/2)) for k=6.
+A181479		1001	71	a(n) has generating function 1/((1-x)^k*(1-x^2)^(k*(k-1)/2)) for k=7.
+A181480		1001	66	a(n) has generating function 1/((1-x)^k*(1-x^2)^(k*(k-1)/2)) for k=8.
+A181531		56	54	Number of partitions of n with no part equal to 1 or 3.
+A182712		1001	136	Number of 2''s in the last section of the set of partitions of n.
+A182713		1000	138	Number of 3''s in the last section of the set of partitions of n.
+A182714		1000	138	Number of 4''s in the last section of the set of partitions of n.
+A182818		2000	98	G.f.: exp( Sum_{n>=1} sigma(2n)*x^n/n ).
+A182819		1001	88	G.f.: exp( Sum_{n>=1} sigma(3n)*x^n/n ).
+A182820		1001	77	G.f.: exp( Sum_{n>=1} sigma(4n)*x^n/n ).
+A182821		1001	77	Expansion of g.f.: exp( Sum_{n>=1} sigma(5*n)*x^n/n ).
+A182844		1001	109	a(0)=0: a(n)=A002865(2*n)+A002865(2*n+1), n>=1.
+A183199		50	49	Least integer k such that Floor(k*f(n+1)>k*f(n), where f(n)=(n^2)/(1+n^2).
+A185012		86	82	Characteristic function of two.
+A185013		86	81	Characteristic function of {3}.
+A185014		86	80	Characteristic function of four.
+A185015		86	79	Characteristic function of 5.
+A185016		86	78	Characteristic function of 6.
+A185017		102	93	Characteristic function of 7.
+A185326		1000	171	Number of partitions of n into parts >= 6.
+A185327		1001	177	Number of partitions of n into parts >= 7.
+A185328		2000	182	Number of partitions of n with parts >= 8.
+A185329		1001	187	Number of partitions of n with parts >= 9.
+A185436	FAIL		17	The minimum number of colors required to color an n-bead bracelet so that each bead can be uniquely identified by its color and the color(s) of its two immediately-adjacent neighbors.
+A186417		1001	121	The number of unlabeled graphs on n nodes with degree of 1 or 2
+#A186445		51	49	The number of partitions of n in which the first part is at least four times larger than the second part.
+A192061		2000	166	Number of 12-core partitions of n.
+#A194225		74	69	[sum{(k/7) : 1<=k<=n}], where [ ]=floor, ( )=fractional part.
+#A194226		57	52	Partial sums of A194225.
+#A194273		56	53	Concentric triangular numbers (see Comments lines for definition).
+A195291	FAIL		74	Years in the Gregorian calendar which are not (proleptic) leap years.
+A195760	FAIL		119	G.f.: A(x) = exp( Sum_{n>=1} 5*5^A112765(n) * x^n/n ), where A112765 is the exponent of the highest power of 5 dividing n.
+A195761	FAIL		107	G.f.: exp( Sum_{n>=1} A055457(n) * 5^A055457(n) * x^n/n ) where 5^A055457(n) exactly divides 5*n.
+#A195849		61	59	Column 5 of array A195825. Also column 1 of triangle A195839. Also 1 together with the row sums of triangle A195839.
+#A195850		60	58	Column 6 of array A195825. Also column 1 of triangle A195840. Also 1 together with the row sums of triangle A195840.
+#A195851		61	59	Column 7 of array A195825. Also column 1 of triangle A195841. Also 1 together with the row sums of triangle A195841.
+#A195852		64	62	Column 8 of array A195825. Also column 1 of triangle A195842. Also 1 together with the row sums of triangle A195842.
+A196933		1001	209	Column 9 of array A195825. Also column 1 of triangle A195843. Also 1 together with the row sums of triangle A195843.
+A198958		1001	120	q-expansion of modular form psi_0^6/t_{3B}^2.
+#A205809		121	119	G.f.: Sum_{n=-oo..oo} q^(9n^2+4n).
+#A206545		80	78	Period length 16: repeat 1, 3, 5, 7, 9, 11, 13, 15, 15, 13, 11, 9, 7, 5, 3, 1.
+A206555		52	46	Number of 5''s in the last section of the set of partitions of n.
+A206556		54	47	Number of 6''s in the last section of the set of partitions of n.
+A206557		54	46	Number of 7''s in the last section of the set of partitions of n.
+A206558		54	45	Number of 8''s in the last section of the set of partitions of n.
+A206559		55	45	Number of 9''s in the last section of the set of partitions of n.
+A206560		55	44	Number of 10''s in the last section of the set of partitions of n.
+A207641		2000	117	G.f.: Sum_{n>=0} x^n * Product_{k=1..n} (1+x^k)/(1-x^k).
+A207944		48	46	Expansion of Product_{i>=1} (1 + x^(2*i + 1))/(1 - x^(2*i + 1)).
+# A210032		87	85	a(n)=n for n=1,2,3 and 4; a(n)=5 for n>=5.
+A210709	FAIL		28	Number of trivalent connected simple graphs with 2n nodes and girth at least 9.
+#A210843		32	30	Level of the n-th plateau of the column k of the square array A195825, when k -> infinity.
+#A211004		16	14	Number of distinct regions in the set of partitions of n.
+#A211662		86	83	Number of iterations log_3(log_3(log_3(...(n)...))) such that the result is < 2.
+#A211669		86	83	Number of iterations f(f(f(...(n)...))) such that the result is < 2, where f(x) = cube root of x.
+A211971		2000	121	Column 0 of square array A211970 (in which column 1 is A000041).
+A212253		1002	144	McKay-Thompson series of class 35B for the Monster group with a(0) = 1.
+#A215052		39	37	a(n) = (binomial(n,5) - floor(n/5)) / 5.
+A216711		2000	134	Expansion of q * (phi(q) * psi(-q))^8 in powers of q where phi(), psi() are Ramanujan theta functions.
+A217067		2000	118	Number of unlabeled graphs on n nodes whose components are cycles or complete graphs.
+A219601		2000	137	Number of partitions of n in which no parts are multiples of 6.
+A219607		1001	229	Number of partitions of n into distinct parts 5*k+2 or 5*k+3.
+A222704		997	136	Total number of parts of multiplicity 4 in all partitions of n.
+A222705		996	137	Total number of parts of multiplicity 5 in all partitions of n.
+A222706		995	138	Total number of parts of multiplicity 6 in all partitions of n.
+A222707		994	139	Total number of parts of multiplicity 7 in all partitions of n.
+A222708		993	140	Total number of parts of multiplicity 8 in all partitions of n.
+A222709		992	140	Total number of parts of multiplicity 9 in all partitions of n.
+A222710		991	141	Total number of parts of multiplicity 10 in all partitions of n.
+A222731		998	128	Total sum of parts of multiplicity 3 in all partitions of n.
+A222732		997	131	Total sum of parts of multiplicity 4 in all partitions of n.
+A222733		996	133	Total sum of parts of multiplicity 5 in all partitions of n.
+A222734		995	135	Total sum of parts of multiplicity 6 in all partitions of n.
+A222735		994	136	Total sum of parts of multiplicity 7 in all partitions of n.
+A222736		993	137	Total sum of parts of multiplicity 8 in all partitions of n.
+A222737		992	138	Total sum of parts of multiplicity 9 in all partitions of n.
+A222738		991	139	Total sum of parts of multiplicity 10 in all partitions of n.
+A225196		1001	96	Number of 6-line partitions of n (i.e., planar partitions of n with at most 6 lines).
+A225197		1001	95	Number of 7-line partitions of n (i.e., planar partitions of n with at most 7 lines).
+A225198		1001	95	Number of 8-line partitions of n (i.e., planar partitions of n with at most 8 lines).
+A225199		1001	94	Number of 9-line partitions of n (i.e., planar partitions of n with at most 9 lines).
+A226034		1001	69	Expansion of f(-x)^6 / (chi(x) * phi(-x)^6) in powers of x where phi(), chi(), f() are Ramanujan theta functions.
+#A226088		26	23	a(n) is the number of the distinct quadrilaterals in a regular n-gon, which Q3 type are excluded.
+A226252		2000	164	Number of ways of writing n as the sum of 7 triangular numbers.
+A226253		2000	137	Number of ways of writing n as the sum of 9 triangular numbers.
+A226254		2000	128	Number of ways of writing n as the sum of 10 triangular numbers from A000217.
+A226255		2000	120	Number of ways of writing n as the sum of 11 triangular numbers.
+A228447		1000	100	Expansion of q * (psi(q^3) * psi(q^6)) / (psi(q) * phi(q)) in powers of q where phi(), psi() are Ramanujan theta functions.
+A229816		1001	134	Number of partitions of n such that if the length is k then k is not a part.
+#A229838		65	64	Consider all primitive 60-degree triangles with sides A < B < C. The sequence gives the values of A.
+A233969		1001	136	Partial sums of A006950.
+#A234666		259	174	Number of combinations for the sum of 6 different numbers from 1 to 49.
+A238998	FAIL		171	Number of partitions of n that such that no part is a Fibonacci number.
+A240056		1001	135	Number of partitions of n such that m(1) > m(2), where m = multiplicity.
+A240058		52	50	Number of partitions of n such that m(1) = m(3), where m = multiplicity.
+A240059		48	45	Number of partitions of n such that m(1) > m(3), where m = multiplicity.
+A240063		51	46	Number of partitions of n such that m(2) < m(3), where m = multiplicity.
+A240064		51	49	Number of partitions of n such that m(2) = m(3), where m = multiplicity.
+A240065		49	45	Number of partitions of n such that m(2) > m(3), where m = multiplicity.
+#A244919		72	71	For odd prime p, largest k such that binomial(2p-1, p-1) is congruent to 1 modulo p^k.
+A246575		82	79	Expansion of (Product_{r>=1} (1-x^r))*x^(k^2) / Product_{i=1..k} (1-x^i)^2 with k=1.
+A246576		70	64	G.f.: (Product_{r>=1} (1 - x^r))*x^(k^2)/Product_{i=1..k} ((1 - x^i)^2) with k=2.
+A246577		65	54	G.f.: (Product_{r>=1} (1 - x^r))*x^(k^2)/Product_{i=1..k} ((1 - x^i)^2) with k=3.
+A246578		66	48	G.f.: (Product_{r>=1} (1 - x^r))*x^(k^2)/Product_{i=1..k} ((1-x^i)^2) with k=4.
+A246579		53	42	G.f.: x^(k^2)/(mul(1-x^(2*i),i=1..k)*mul(1+x^(2*r-1),r=1..oo)) with k=3.
+A246580		57	39	G.f.: x^(k^2)/(mul(1-x^(2*i),i=1..k)*mul(1+x^(2*r-1),r=1..oo)) with k=4.
+A246581		2000	181	G.f.: x^((k^2 + k)/2) / (Product_{i=1..k} (1 - x^i) * Product_{r>=1} (1 + x^r)) with k = 2.
+A246582		2000	185	G.f.: x^((k^2+k)/2)/(mul(1-x^i,i=1..k)*mul(1+x^r,r=1..oo)) with k = 3.
+A246583		2000	172	G.f.: x^((k^2+k)/2)/(mul(1-x^i,i=1..k)*mul(1+x^r,r=1..oo)) with k = 4.
+A246584		2000	102	Number of overcubic partitions of n.
+A246695		2000	162	Row sums of the triangular array A246694.
+A247641		78	75	G.f.: ((1+q)/(1-q))*q*Product_{k>=1} (1 - q^k)^2*(1 - q^(11*k))^2.
+A253136		2000	148	The number of overpartitions of n into parts congruent to 2, 4, or 5 modulo 6.
+A253144		2000	207	Number of partitions of n into distinct parts congruent to 1, 2, or 4 modulo 6.
+A260890		2000	126	The number of overpartitions of n with restricted odd differences.
+A261321		1001	136	Expansion of (phi(q) / phi(q^3))^2 in powers of q where phi() is a Ramanujan theta function.
+A261610		53	51	Expansion of Product_{k>=0} (1 + x^(3*k+1))/(1 - x^(3*k+1)).
+A261611		56	54	Expansion of Product_{k>=0} (1 + x^(4*k+1))/(1 - x^(4*k+1)).
+A261615		61	59	Expansion of Product_{k>=0} (1 + x^(3*k+1))^2.
+A261616		48	46	Expansion of Product_{k>=0} 1/(1 - x^(3*k+1))^2.
+A261629		51	49	Expansion of Product_{k>=0} 1/(1-x^(4*k+1))^2.
+A261630		65	63	Expansion of Product_{k>=0} (1+x^(4*k+1))^2.
+A261631		43	41	Expansion of Product_{k>=0} 1/(1-x^(3*k+1))^3.
+A261632		45	43	Expansion of Product_{k>=0} 1/(1-x^(4*k+1))^3.
+A261633		51	49	Expansion of Product_{k>=0} (1+x^(3*k+1))^3.
+A261634		51	49	Expansion of Product_{k>=0} (1+x^(4*k+1))^3.
+A261635		39	37	Expansion of Product_{k>=0} 1/(1-x^(3*k+1))^4.
+A261636		41	39	Expansion of Product_{k>=0} 1/(1-x^(4*k+1))^4.
+A261637		48	46	Expansion of Product_{k>=0} (1+x^(3*k+1))^4.
+A261638		51	49	Expansion of Product_{k>=0} (1+x^(4*k+1))^4.
+A261647		35	33	Expansion of Product_{k>=0} ((1+x^(2*k+1))/(1-x^(2*k+1)))^3.
+A261648		30	28	Expansion of Product_{k>=0} ((1+x^(2*k+1))/(1-x^(2*k+1)))^5.
+A261649		43	41	Expansion of Product_{k>=0} ((1+x^(3*k+1))/(1-x^(3*k+1)))^2.
+A261650		45	43	Expansion of Product_{k>=0} ((1+x^(4*k+1))/(1-x^(4*k+1)))^2.
+A261651		38	36	Expansion of Product_{k>=0} ((1+x^(3*k+1))/(1-x^(3*k+1)))^3.
+A261652		39	37	Expansion of Product_{k>=0} ((1+x^(4*k+1))/(1-x^(4*k+1)))^3.
+A261733		2000	204	Expansion of Product_{k>=1} (1 + x^(9*k))/(1 + x^k).
+A261734		2000	171	Expansion of Product_{k>=1} (1 + x^(4*k))/(1 + x^k).
+A261735		2000	184	Expansion of Product_{k>=1} (1 + x^(8*k))/(1 + x^k).
+A261736		2000	179	Expansion of Product_{k>=1} (1 + x^(6*k))/(1 + x^k).
+A261770		2000	172	Expansion of Product_{k>=1} (1 + x^k) / (1 + x^(6*k)).
+A261771		2000	169	Expansion of Product_{k>=1} (1 + x^k) / (1 + x^(8*k)).
+A261772		2000	167	Expansion of Product_{k>=1} (1 + x^k) / (1 + x^(10*k)).
+A261775		2000	136	Expansion of Product_{k>=1} (1 - x^(8*k))/(1 - x^k).
+A261776		2000	135	Expansion of Product_{k>=1} (1 - x^(10*k))/(1 - x^k).
+A261796		2000	211	Expansion of Product_{k>=1} (1+x^k)/((1+x^(3*k))*(1+x^(5*k))).
+A261797		2000	159	Expansion of Product_{k>=1} (1-x^(3*k))*(1-x^(5*k))/(1-x^k).
+A261988		1001	112	Expansion of phi(q^9) / phi(q) in powers of q where phi() is a Ramanujan theta function.
+A261992		1001	149	Expansion of psi(x) * f(-x^18)^3 / (phi(-x^3) * f(-x^3)^3) in powers of x where phi(), psi(), f() are Ramanujan theta functions.
+A261998		43	41	Expansion of Product_{k>=1} (1-x^k)*(1+x^k)^4.
+A262346		2000	167	Expansion of Product_{k>=1} (1-x^(3*k))/(1-x^(2*k)).
+A262364		2000	165	Expansion of Product_{k>=1} (1-x^(5*k))/(1-x^(2*k)).
+A262380		35	33	Expansion of Product_{k>=1} 1/((1+x^k)*(1-x^k)^4).
+A262952		1001	173	Expansion of Product_{k>=1} (1 + x^(2*k-1)) * (1 + x^(3*k-1)).
+A262953		1001	171	Expansion of Product_{k>=1} (1 + x^(2*k-1)) * (1 + x^(3*k-2)).
+A263982		14	12	Number of partitions of n with a palindromicity of 3.
+A265254		2000	143	Number of partitions of n having no even singletons.
+A265256		2000	144	Number of partitions of n having no odd singletons (n>=0).
+A265257		1001	130	Number of odd singletons in all partitions of n (n>=0).
+A266648		2000	127	Expansion of Product_{k>=1} (1 + x^(3*k)) / (1 - x^k).
+A266759		500	152	Growth series for affine Coxeter group (or affine Weyl group) D_4.
+A266760		49	47	Growth series for affine Coxeter group (or affine Weyl group) D_5.
+A266761		45	43	Growth series for affine Coxeter group (or affine Weyl group) D_6.
+A266762		42	40	Growth series for affine Coxeter group (or affine Weyl group) D_7.
+A266771		50	48	Molien series for invariants of finite Coxeter group D_8 (bisected).
+A266773		1001	143	Molien series for invariants of finite Coxeter group D_10 (bisected).
+A266775		1001	139	Molien series for invariants of finite Coxeter group D_12 (bisected).
+A266783		1001	157	The growth series for the affine Coxeter (or Weyl) group [3,3,5] (or H_4).
+A267168		50	48	Growth series for affine Coxeter group B_5.
+A267169		46	44	Growth series for affine Coxeter group B_6.
+A270143		2000	139	a(n) = Sum_{k=0..n} (-1)^(k+1) * k * A000041(n-k).
+A270144		2000	173	a(n) = Sum_{k=0..n} (-1)^(k+1) * k * A000009(n-k).
+A273226		2000	103	G.f. is the cube of the g.f. of A006950.
+A273228		1001	95	G.f. is the fourth power of the g.f. of A006950.
+A273845		2000	96	Expansion of Product_{n>=1} (1 - x^(3*n))/(1 - x^n)^3 in powers of x.
+A274327		2000	87	Expansion of Product_{n>=1} (1 - x^(4*n))/(1 - x^n)^4 in powers of x.
+A274621		1001	113	Coefficients in the expansion Product_{ n>=1 } (1-q^(2n-1))^2/(1-q^(2n))^2.
+A274719		103	101	Expansion of Product_{k >= 1} (1-q^(2*k)).
+A275642		54	52	Expansion of (1-q)^k/Product_{j=1..k} (1-q^j) for k=8.
+A275643		46	44	Expansion of (1-q)^k/Product_{j=1..k} (1-q^j) for k=12.
+A276285		2000	93	Number of ways of writing n as a sum of 13 squares.
+A276286		2000	88	Number of ways of writing n as a sum of 14 squares.
+A276287		2000	85	Number of ways of writing n as a sum of 15 squares.
+A277090		2000	247	Expansion of Product_{k>=0} 1/(1 - x^(8*k+1)).
+A277210		86	84	Expansion of Product_{k>=1} 1/(1 - x^(3*k+1)).
+A277212		2000	81	Expansion of Product_{n>=1} (1 - x^(5*n))/(1 - x^n)^5 in powers of x.
+A277264		101	99	Expansion of Product_{k>=1} 1/(1 - x^(5*k+1)).
+A277283		1001	77	Expansion of Product_{n>=1} (1 - x^(6*n))/(1 - x^n)^6 in powers of x.
+A277643		2000	109	Partial sums of number of overpartitions (A015128).
+A277958		1001	71	Expansion of Product_{n>=1} (1 - x^(7*n))^7/(1 - x^n)^8 in powers of x.
+A278555		2000	63	Expansion of Product_{n>=1} (1 - x^(5*n))^12/(1 - x^n)^13 in powers of x.
+A278556		1001	57	Expansion of Product_{n>=1} (1 - x^(5*n))^18/(1 - x^n)^19 in powers of x.
+A278557		1001	53	Expansion of Product_{n>=1} (1 - x^(5*n))^24/(1 - x^n)^25 in powers of x.
+A278558		1001	51	Expansion of Product_{n>=1} (1 - x^(5*n))^30/(1 - x^n)^31 in powers of x.
+A278668		1001	95	Expansion of Product_{n>=1} (1 - x^(5*n))/(1 - x^n)^3 in powers of x.
+A278680		1001	87	Expansion of Product_{n>=1} (1 - x^(5*n))/(1 - x^n)^4 in powers of x.
+A278690		1001	111	Expansion of Product_{n>=1} (1 - x^(3*n))/(1 - x^n)^2 in powers of x.
+A279328		1001	123	Expansion of Product_{k>=1} (1 + x^(2*k)) / (1 - x^k).
+A280874		2000	117	Expansion of Product_{k>=1} (1 - x^(6*k)) * (1 + x^k) / (1 - x^k).
+A280908		2000	123	Expansion of Product_{k>=1} ((1+x^k) / ((1-x^(2*k-1)) * (1-x^(8*k-4)))).
+A280909		2000	151	Expansion of Product_{k>=1} ((1-x^(12*k)) * (1-x^(12*k-10)) * (1-x^(12*k-9)) / (1-x^k)).
+A280937		2000	139	Expansion of Product_{k>=1} ((1 - x^(7*(2*k-1))) * (1 - x^(7*k)) / (1 - x^k)).
+A280938		2000	138	Expansion of Product_{k>=1} (1 - x^(8*(2*k-1))) * (1 - x^(8*k)) / (1 - x^k).
+A280947		2000	115	Expansion of Product_{k>=1} (1 - x^(18*k)) * (1 - x^(18*k-9)) * (1 + x^k) / (1 - x^k).
+A280948		2000	150	Expansion of Product_{k>=1} (1 - x^(6*k)) * (1 + x^(12*k-3)) * (1 + x^(12*k-9)) / ((1 - x^(4*k-2)) * (1 - x^(2*k))).
+A280949		2000	149	Expansion of Product_{k>=1} (1 - x^(12*k)) * (1 - x^(4*k-2)) / (1 - x^k).
+A282920		1001	69	Expansion of Product_{k>=1} (1 - x^(7*k))^8/(1 - x^k)^9 in powers of x.
+A282921		1001	63	Expansion of Product_{k>=1} (1 - x^(7*k))^12/(1 - x^k)^13 in powers of x.
+A282922		1001	58	Expansion of Product_{n>=1} (1 - x^(7*n))^16/(1 - x^n)^17 in powers of x.
+A282923		1001	55	Expansion of Product_{n>=1} (1 - x^(7*n))^20/(1 - x^n)^21 in powers of x.
+A282924		1001	53	Expansion of Product_{k>=1} (1 - x^(7*k))^24/(1 - x^k)^25 in powers of x.
+A282925		1001	51	Expansion of Product_{k>=1} (1 - x^(7*k))^28/(1 - x^k)^29 in powers of x.
+A282926		1001	50	Expansion of Product_{k>=1} (1 - x^(7*k))^32/(1 - x^k)^33 in powers of x.
+A282927		1001	49	Expansion of Product_{k>=1} (1 - x^(7*k))^36/(1 - x^k)^37 in powers of x.
+A282928		1001	47	Expansion of Product_{k>=1} (1 - x^(7*k))^40/(1 - x^k)^41 in powers of x.
+A282929		1001	47	Expansion of Product_{k>=1} (1 - x^(7*k))^44/(1 - x^k)^45 in powers of x.
+A282930		1001	46	Expansion of Product_{k>=1} (1 - x^(7*k))^48/(1 - x^k)^49 in powers of x.
+A282931		1001	45	Expansion of Product_{k>=1} (1 - x^(7*k))^52/(1 - x^k)^53 in powers of x.
+A282932		1001	44	Expansion of Product_{k>=1} (1 - x^(7*k))^56/(1 - x^k)^57 in powers of x.
+A283077		1001	71	Expansion of Product_{n>=1} (1 - x^(7*n))/(1 - x^n)^8 in powers of x.
+A283119		1001	66	Expansion of exp( Sum_{n>=1} sigma(6*n)*x^n/n ) in powers of x.
+A283120		1001	63	Expansion of exp( Sum_{n>=1} sigma(8*n)*x^n/n ) in powers of x.
+A283121		1001	63	Expansion of exp( Sum_{n>=1} sigma(9*n)*x^n/n ) in powers of x.
+A284286		2000	75	Expansion of eta(q^2)^4 / eta(q)^8 in powers of q.
+A284315		71	69	Expansion of Product_{k>=0} (1 - x^(3*k+2)) in powers of x.
+A284316		75	73	Expansion of Product_{k>=0} (1 - x^(4*k+3)) in powers of x.
+A284319		76	74	Expansion of Product_{k>=0} (1 - x^(5*k+2)) in powers of x.
+A284500		81	79	Expansion of Product_{k>=0} (1 - x^(7*k+2)) in powers of x.
+A284501		83	81	Expansion of Product_{k>=0} (1 - x^(7*k+3)) in powers of x.
+A284502		83	81	Expansion of Product_{k>=0} (1 - x^(7*k+4)) in powers of x.
+A284503		82	80	Expansion of Product_{k>=0} (1 - x^(7*k+5)) in powers of x.
+A284504		83	81	Expansion of Product_{k>=0} (1 - x^(7*k+6)) in powers of x.
+A284586		81	79	Expansion of Product_{k>=0} (1 - x^(6*k+5)) in powers of x.
+A284607		2000	83	Expansion of (eta(q^3)eta(q^6)/(eta(q)eta(q^2)))^4 in powers of q.
+A284629		2000	111	Expansion of (eta(q)eta(q^10)/(eta(q^2)eta(q^5)))^6 in powers of q.
+A285348		2000	152	Expansion of r(q^2) / r(q)^2 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285349		2000	155	Expansion of r(q)^2 / r(q^2) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+#A285350		42	40	Convolution square of A285349.
+#A285355		51	47	Convolution square of A112274.
+A285441		2000	176	Expansion of q^(-2/5) * r(q)^2 * (1 + r(q) * r(q^2)^2) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285442		2000	171	Expansion of Product_{k>0} ((1-x^{5k-2}) * (1-x^{5k-3})/((1-x^{5k-1}) * (1-x^{5k-4})))^2 in powers of x.
+A285443		2000	147	Expansion of Product_{k>0} ((1-x^{5k-2}) * (1-x^{5k-3})/((1-x^{5k-1}) * (1-x^{5k-4})))^3 in powers of x.
+A285444		2000	130	Expansion of Product_{k>0} ((1-x^{5k-2}) * (1-x^{5k-3})/((1-x^{5k-1}) * (1-x^{5k-4})))^4 in powers of x.
+A285445		1001	142	Expansion of Product_{k>=1} (1 + x^k) / (1 - x^(3*k)).
+A285472		46	44	Expansion of Product_{k>=1} ((1 + x^(4*k)) / (1 - x^k)).
+A285554		2000	173	Expansion of q^(-2/5) * (r(q^2) - r(q)^2) / 2 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285555		2000	170	Expansion of q^(-2/5) * (r(q^2) + r(q)^2) / 2 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285583		2000	138	Expansion of r(q^3) / r(q)^3 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285584		2000	134	Expansion of r(q^4) / r(q)^4 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285585		2000	123	Expansion of r(q^5) / r(q)^5 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285628		2000	138	Expansion of r(q)^3 / r(q^3) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285629		2000	132	Expansion of r(q)^4 / r(q^4) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285630		2000	117	Expansion of r(q)^5 / r(q^5) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285927		2000	102	Expansion of (Product_{k>0} (1 - x^(3*k)) / (1 - x^k))^3 in powers of x.
+A285928		2000	83	Expansion of (Product_{k>0} (1 - x^(5*k)) / (1 - x^k))^5 in powers of x.
+A286346		2000	94	Expansion of eta(q)^24 / eta(q^2)^12 in powers of q.
+A286399		2000	119	Expansion of eta(q^2)^12 * eta(q^4)^8 / eta(q)^8 in powers of q.
+A286952		2000	134	Expansion of Product_{j>=1} (1 - x^j)/(1 - x^(3*j))^3.
+A286953		2000	139	Expansion of Product_{j>=1} (1 - x^j)/(1 - x^(4*j))^4.
+A287990		2000	63	Expansion of Jacobi theta constant (theta_2/2)^36.
+A287991		2000	56	Expansion of Jacobi theta constant (theta_2/2)^48.
+A287998		2000	178	Expansion of 1/((1-x)(1-x^3)(1-x^5) ... (1-x^15)).
+A288000		2000	174	Expansion of 1/((1-x)(1-x^3)(1-x^5) ... (1-x^17)).
+A288001		2000	172	Expansion of 1/((1-x)(1-x^3)(1-x^5) ... (1-x^19)).
+#A288122		71	69	Number of partitions of n into prime Fibonacci numbers (A005478).
+A288341		2000	146	Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^6)).
+A288342		2000	142	Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^7)).
+A288343		2000	138	Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^8)).
+A288344		2000	135	Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^9)).
+A288345		2000	133	Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^10)).
+#A290403		21	19	Expansion of 256/(lambda(z)*(1 - lambda(z)))^2 in powers of nome q = exp(Pi*i*z) where lambda(z) is the elliptic modular function (A115977).
+A293003		2000	186	Expansion of Product_{k>=1} (1 - x^(2*k))/(1 - x^(3*k)).
+A293306		2000	141	Expansion of (eta(q)eta(q^3))/eta(q^2)^2 in powers of q.
+A293378		2000	93	Expansion of (eta(q^6)/(eta(q)eta(q^2)eta(q^3))^2 in powers of q.
+A293387		2000	147	Expansion of (eta(q^2)^2/(eta(q)eta(q^3)))^2 in powers of q.
+A293389		2000	112	Expansion of ((eta(q)eta(q^3))/eta(q^2)^2)^2 in powers of q.
+A293422		2000	129	The PDO_t(n) function (Number of tagged parts over all the partitions of n with designated summands in which all parts are odd).
+A293423		2000	106	Expansion of Product_{k>0} (1 - q^(3*k))^5/((1 - q^k)^3*(1 - q^(6*k))^2).
+A293426		2000	79	Expansion of Product_{k>0} ((1 - q^(3*k))^3*(1 - q^(6*k))^3)/((1 - q^k)^5*(1 - q^(2*k))^3).
+A293569		2000	125	Partitions with designated summands in which no parts are multiples of 3.
+A293628		2000	95	Expansion of Product_{k>0} ((1 - q^(2*k))^3*(1 - q^(6*k))*(1 - q^(12*k)))/((1 - q^k)^4*(1 - q^(4*k))).
+A293629		2000	87	Expansion of Product_{k>0} ((1 - q^(3*k))^4*(1 - q^(6*k))^2)/((1 - q^k)^4*(1 - q^(2*k))^2).
+#A295774		24	22	a(n) is the minimum size of a restricted planar additive basis for the square [0,2n]^2.
+A297054		88	86	The coefficients of the product (1-x^2)(1-x^3)(1-x^4)... / (1+x).
+A298311		41	39	Expansion of Product_{k>=1} 1/((1 - x^(2*k))*(1 - x^(2*k-1))^3).
+A298596		79	77	Expansion of Product_{k>=2} 1/(1 + x^k).
+#A300402		87	85	Smallest integer i such that TREE(i) >= n.
+#A300403		87	83	Smallest integer i such that SSCG(i) >= n.
+#A300404		87	86	Smallest integer k such that the largest term in the Goodstein sequence starting at k is > n.
+A300415		48	46	Expansion of Product_{k>=2} (1 + x^k)/(1 - x^k).
+#A300624		101	74	Figurate numbers based on the 11-dimensional regular convex polytope called the 11-dimensional cross-polytope, or 11-dimensional hyperoctahedron.
+A301504		71	69	Expansion of Product_{k>=1} (1 + x^(4*k))*(1 + x^(4*k-3)).
+A301505		71	69	Expansion of Product_{k>=1} (1 + x^(4*k))*(1 + x^(4*k-1)).
+A301507		71	69	Expansion of Product_{k>=0} (1 + x^(4*k+1))*(1 + x^(4*k+2)).
+A301508		71	69	Expansion of Product_{k>=0} (1 + x^(4*k+2))*(1 + x^(4*k+3)).
+A301562		71	69	Expansion of Product_{k>=0} (1 + x^(5*k+1))*(1 + x^(5*k+2)).
+A301563		73	71	Expansion of Product_{k>=0} (1 + x^(5*k+1))*(1 + x^(5*k+3)).
+A301564		75	73	Expansion of Product_{k>=0} (1 + x^(5*k+2))*(1 + x^(5*k+4)).
+A301565		75	73	Expansion of Product_{k>=0} (1 + x^(5*k+3))*(1 + x^(5*k+4)).
+A301567		75	73	Expansion of Product_{k>=1} (1 + x^(5*k))*(1 + x^(5*k-4)).
+A301568		75	73	Expansion of Product_{k>=1} (1 + x^(5*k))*(1 + x^(5*k-3)).
+A301569		76	74	Expansion of Product_{k>=1} (1 + x^(5*k))*(1 + x^(5*k-2)).
+A301570		77	75	Expansion of Product_{k>=1} (1 + x^(5*k))*(1 + x^(5*k-1)).
+A301588		55	53	Expansion of Product_{k>=1} (1 + x^k)^(mod(k,3)).
+A301589		46	44	Expansion of Product_{k>=1} 1/(1 - x^k)^(mod(k,3)).
+#A302347		2000	122	a(n) = Sum of (Y(2,p)^2) over the partitions p of n, Y(2,p)= number of part sizes with multiplicity 2 or greater in p
+A302856		2000	56	Number of ways of writing n as a sum of 32 squares.
+A304630		51	49	Expansion of (1/(1 - x))*Product_{k>=1} (1 - x^(3*k))/(1 - x^k).
+A304631		2000	180	Expansion of (1/(1 - x))*Product_{k>=1} (1 + x^(2*k-1)).
+A304632		2000	165	Expansion of (1/(1 - x))* Product_{k>=1} (1 + x^k)/(1 + x^(3*k)).
+#A304825		45	43	Sum of binomial(Y(2,p), 2) over the partitions p of n, where Y(2,p) is the number of part sizes with multiplicity 2 or greater in p.
+A304883		55	53	Expansion of Product_{k>=1} 1/(1-x^(3*k-1)) * Product_{k>=1} 1/(1-x^(6*k-5)).
+A304885		57	55	Expansion of Product_{k>=1} 1/(1-x^(3*k-2)) * Product_{k>=1} 1/(1-x^(6*k-1)).
+A305443		2000	153	Expansion of q * f(-q^1, -q^6)^3 /  f(-q^2, -q^5)^2 * f(-q^3, -q^4) in powers of q where f() is Ramanujan''s two-variable theta function.
+#A307686		59	55	Sum of the smallest sides of all integer-sided triangles with perimeter n.
+A307757		70	68	Expansion of Product_{k>=1} 1/(1 + x^k/(1 + x^(2*k))).
+#A308066		79	72	Number of triangles with perimeter n whose side lengths are even numbers.
+A308266		53	49	Sum of the middle parts in the partitions of n into 3 parts.
+A308733		55	49	Sum of the smallest parts of the partitions of n into 4 parts.
+A308758		53	47	Sum of the third largest parts of the partitions of n into 4 parts.
+A308823		54	47	Sum of the smallest parts of the partitions of n into 5 parts.
+A308824		52	45	Sum of the fourth largest parts in the partitions of n into 5 parts.
+A308868		53	45	Sum of the smallest parts in the partitions of n into 6 parts.
+A308869		52	44	Sum of the fifth largest parts in the partitions of n into 6 parts.
+A308927		53	44	Sum of the smallest parts in the partitions of n into 7 parts.
+A308928		52	43	Sum of the sixth largest parts in the partitions of n into 7 parts.
+A308990		53	43	Sum of the smallest parts in the partitions of n into 8 parts.
+A309240		2000	200	Expansion of 1/((1 - x)*(1 - x^2)*(1 + x^3)*(1 + x^4)*(1 - x^5)*(1 - x^6)*(1 + x^7)*(1 + x^8)*...).
+A309266		43	41	Expansion of (1 + x) * Product_{k>=1} (1 + x^k)/(1 - x^k).
+#A309678		57	55	G.f. A(x) satisfies: A(x) = A(x^4) / (1 - x)^2.
+A316718		2000	171	Expansion of Product_{k=1..6} (1+x^(2*k-1))/(1-x^(2*k)).
+A316719		2000	164	Expansion of Product_{k=1..7} (1+x^(2*k-1))/(1-x^(2*k)).
+A316720		2000	159	Expansion of Product_{k=1..8} (1+x^(2*k-1))/(1-x^(2*k)).
+A316721		2000	156	Expansion of Product_{k=1..9} (1+x^(2*k-1))/(1-x^(2*k)).
+A316722		2000	154	Expansion of Product_{k=1..10} (1+x^(2*k-1))/(1-x^(2*k)).
+A318026		49	47	Expansion of Product_{k>=1} 1/((1 - x^k)*(1 - x^(3*k))).
+A318027		49	47	Expansion of Product_{k>=1} 1/((1 - x^k)*(1 - x^(4*k))).
+A318028		49	47	Expansion of Product_{k>=1} 1/((1 - x^k)*(1 - x^(5*k))).
+A319307		2000	79	Expansion of theta_4(q)^16 in powers of q = exp(Pi i t).
+A319308		2000	70	Expansion of theta_4(q)^20 in powers of q = exp(Pi i t).
+A319309		2000	63	Expansion of theta_4(q)^24 in powers of q = exp(Pi i t).
+A319310		2000	58	Expansion of theta_4(q)^28 in powers of q = exp(Pi i t).
+A319552		2000	81	Expansion of 1/theta_4(q)^3 in powers of q = exp(Pi i t).
+A319553		2000	62	Expansion of 1/theta_4(q)^8 in powers of q = exp(Pi i t).
+A319554		2000	55	Expansion of 1/theta_4(q)^12 in powers of q = exp(Pi i t).
+A320049		2000	77	Expansion of (psi(x) / phi(x))^6 in powers of x where phi(), psi() are Ramanujan theta functions.
+A320050		2000	74	Expansion of (psi(x) / phi(x))^7 in powers of x where phi(), psi() are Ramanujan theta functions.
+A320069		2000	114	Expansion of 1/(theta_3(q) * theta_3(q^2)), where theta_3() is the Jacobi theta function.
+A320070		2000	106	Expansion of 1/(theta_3(q) * theta_3(q^2) * theta_3(q^3)), where theta_3() is the Jacobi theta function.
+A320677		2000	103	Expansion of s(q)^6 where s() is cubic AGM theta functions.
+A320689		2000	137	Number of partitions of n with up to two distinct kinds of 1.
+A320690		2000	134	Number of partitions of n with up to three distinct kinds of 1.
+A320691		2000	131	Number of partitions of n with up to four distinct kinds of 1.
+A320692		2000	128	Number of partitions of n with up to five distinct kinds of 1.
+A320693		2000	125	Number of partitions of n with up to six distinct kinds of 1.
+A320694		2000	122	Number of partitions of n with up to seven distinct kinds of 1.
+A320695		2000	119	Number of partitions of n with up to eight distinct kinds of 1.
+A320696		2000	117	Number of partitions of n with up to nine distinct kinds of 1.
+A320697		2000	114	Number of partitions of n with up to ten distinct kinds of 1.
+A320753		2000	95	Number of partitions of n with seven kinds of 1.
+A320754		2000	91	Number of partitions of n with eight kinds of 1.
+A320755		2000	88	Number of partitions of n with nine kinds of 1.
+A320756		2000	85	Number of partitions of n with ten kinds of 1.
+A321527		76	71	Expansion of x^3 * c(x^2) * c(x^4)^2 / (9 * c(x)) in powers of x where c() is a cubic AGM theta function.
+A321528		49	47	Expansion of b(x)^2 * b(x^2) / b(x^4) where b is a cubic AGM theta function.
+A322031		42	40	(Sum_{t=0..oo} ((-1)^t*(2*t+1)*q^((2*t+1)^2)))^3 * (Sum_{t=0..oo} q^((2*t+1)^2)) = Sum_{k=0..oo} a(k)*q^(8*k+4).
+A323978		145	97	Expansion of determinant of 24 X 24 matrix M_{u,v} = q^(maj(u*v^-1)) where u, v in S_4 and maj = MacMahon''s major index (cf. A008302).
+A323979		1201	59	Expansion of determinant of 120 X 120 matrix M_{u,v} = q^(maj(u*v^-1)) where u, v in S_5 and maj = MacMahon''s major index (cf. A008302).
+A323981		601	35	Expansion of determinant of 120 X 120 matrix M_{u,v} = q^(inv(u*v^-1)) where u, v in S_5 and inv is number of inversions.
+A325951		41	39	G.f.: 1/(1-x)^3 * Product_{k>=1} (1 + x^k).
+A325952		39	37	G.f.: 1/(1-x)^4 * Product_{k>=1} (1 + x^k).
+A326123		2000	190	a(n) is the sum of all divisors of the first n odd numbers.
+A326465		53	42	Sum of the smallest parts of the partitions of n into 9 parts.
+A326589		54	42	Sum of the smallest parts of the partitions of n into 10 parts.
+A327042		2000	113	Expansion of Product_{k>=1} 1/((1 - x^k) * (1 - x^(2*k)) * (1 - x^(3*k))).
+A327043		2000	110	Expansion of Product_{k>=1} 1/((1 - x^k) * (1 - x^(2*k)) * (1 - x^(3*k)) * (1 - x^(4*k))).
+A327045		2000	134	Expansion of Product_{k>=1} (1 + x^k) * (1 + x^(2*k)) * (1 + x^(3*k)).
+A327046		2000	129	Expansion of Product_{k>=1} (1 + x^k) * (1 + x^(2*k)) * (1 + x^(3*k)) * (1 + x^(4*k)).
+A327048		2000	98	Expansion of Product_{k>=1} (1 + x^k) * (1 + x^(2*k)) * (1 + x^(3*k)) / ((1 - x^k) * (1 - x^(2*k)) * (1 - x^(3*k))).
+A327049		2000	96	Expansion of Product_{k>=1} (1 + x^k) * (1 + x^(2*k)) * (1 + x^(3*k)) * (1 + x^(4*k)) / ((1 - x^k) * (1 - x^(2*k)) * (1 - x^(3*k)) * (1 - x^(4*k))).
+A327717		2000	174	Expansion of Product_{k>=1} (1 + x^k/(1 + x^(2*k))).
+A328325	FAIL		214	Expansion of Product_{k>=0} 1/(1 - x^(k^k)).
+A328539		36	34	Number of broken 1-diamond partitions of n.
+A328540		35	33	Number of broken 2-diamond partitions of n.
+A328542		33	31	Number of 4 dots bracelet partitions of n.
+A328545		2000	134	Number of 11-regular partitions of n (no part is a multiple of 11).
+A328546		2000	134	Number of 12-regular partitions of n (no part is a multiple of 12).
+A328547		41	39	Number of 3-regular bipartitions of n.
+A328548		39	37	Number of 6-regular bipartitions of n.
+A329289	FAIL		49	G.f.: (1 + x) * (1 + x^2) * Product_{k>=1} (1 + x^k).
+A329384	FAIL		49	G.f.: (1 + x) * (1 + x^2) * (1 + x^3) * Product_{k>=1} (1 + x^k).
+A329677		97	95	Number of excursions of length n with Motzkin-steps consisting only of consecutive steps UH, HD, and DH.
+A329678		97	95	Number of excursions of length n with Motzkin-steps consisting only of consecutive steps UD and DH.
+#A330002		67	65	Beatty sequence for x, where 1/x + 1/(x+1)^2 = 1.
+A335754		50	48	a(n) is the number of overpartitions of n where overlined parts are not divisible by 3 and non-overlined parts are congruent to 1 modulo 3.
+A335755		50	48	a(n) is the number of overpartitions of n where overlined parts are not divisible by 3 and non-overlined parts are congruent to 2 modulo 3.
+A335766		58	56	a(n) is the number of partitions of n into parts congruent to 1, 2, or 4 modulo 6 where only parts congruent to 1 modulo 6 may be repeated.
+A336766		72	70	The number of partitions of n into an even number of parts, each part occurring at most five times, minus the number of partitions of n into an odd number of parts, each part occurring at most five times.
+A336767		67	65	The number of partitions of n into an even number of parts, each part occurring at most seven times, minus the number of partitions of n into an odd number of parts, each part occurring at most seven times.

@@ -1,0 +1,33 @@
+A035530	binomx	0	A003603	0	new A003603()				1,2,4,9,20,44,97,212	1,1,1,2,1,3,2,1	Binomial transform of A003603.
+A054185	binomx	0	A000031	0	new A000031()				1,3,8,20,49,119,290,714	1,2,3,4,6,8,14,20	Binomial transform of A000031.
+A054190	binomx	0	A001037	0	new A001037()				1,3,6,12,26,62,158,418	1,2,1,2,3,6,9,18	Binomial transform of A001037.
+A054195	binomx	0	A001371	0	new A001371()				1,3,6,12,26,62,157,409	1,2,1,2,3,6,8,16	Binomial transform of A001371.
+A054196	binomx	0	A000013	0	new A000013()				1,2,5,12,29,70,169,410	1,1,2,2,4,4,8,10	Binomial transform of A000013.
+A054197	binomx	0	A000048	0	new A000048()				1,2,4,8,17,39,95,241	1,1,1,1,2,3,5,9	Binomial transform of A000048.
+A054198	binomx	0	A000011	0	new A000011()				1,2,5,12,29,70,169,409	1,1,2,2,4,4,8,9	Binomial transform of A000011.
+A065979	binomx	1	A002024	0	new A002024()				1,3,7,16,36,79,170,362	1,2,2,3,3,3,4,4	Binomial transform of A002024.
+A073596	binomx	0	A000254	0	new A000254()				0,1,5,23,116,669,4429,33375	0,1,3,11,50,274,1764,13068	Expansion of exp(x)*log(1-x)/(x-1).
+A075272	binomx	0	A005329	0	new A005329()				1,2,6,34,422,11586,678982,82653026	1,1,3,21,315,9765,615195,78129765	BinomialMean (BM) transform of A075271, which see for the definition of (BM).
+A081673	binomx	0	A081672	0	new A081672()				1,3,11,33,99,293,869,2579	1,2,6,8,22,32,84,128	Expansion of exp(3*x) - exp(x)*(1-BesselI_0(2*x)).
+A084153	binomx	0	A084152	0	new A084152()				0,0,1,6,33,170,861,4326	0,0,1,3,15,55,231,903	Binomial transform of a Jacobsthal convolution.
+A084625	binomx	0	A084624	0	new A084624()				1,3,8,21,55,143,366,919	1,2,3,5,8,12,16,22	Binomial transform of A084624.
+A086331	binomx	0	A000312	0	new A000312()				1,2,7,43,393,4721,69853,1225757	1,1,4,27,256,3125,46656,823543	E.g.f.: exp(x)/(1 + LambertW(-x)).
+A088129	binomx	0	A037256	0	new A037256()				0,1,4,19,104,661,4812,39607	0,1,2,10,48,296,2080,16752	Expansion of sinh(x)/(1-x)^2.
+A097332	binomx	0	A097331	0	new A097331()				1,2,3,5,9,18,39,90	1,1,0,1,0,2,0,5	Expansion of (1/(1-x))(1+2x/(1-x+sqrt(1-2x-3x^2))).
+A099063	binomx	0	A000960	0	new A000960()				1,4,14,44,126,338,870,2178	1,3,7,13,19,27,39,49	Binomial transform of A000960.
+A100442	binomx	1	A003418	0	new A003418()				1,2,5,16,53,206,757,2780	1,1,2,6,12,60,60,420	Binomial transform of A003418.
+A106397	binomx	0	A002321	0	new A002321()				1,1,0,-3,-11,-30,-72,-162	1,0,-1,-1,-2,-1,-2,-2	Binomial transform of Mertens's function sequence A002321.
+A110810	binomx	0	A000796	0	new A000796()				3,4,9,19,40,92,220,513	3,1,4,1,5,9,2,6	Binomial transform of A000796.
+A112657	binomx	0	A100098	0	new A100098()				1,2,7,23,79,272,943,3278	1,1,4,7,22,46,130,295	A Motzkin transform of Jacobsthal numbers.
+A116387	binomx	0	A116383	0	new A116383()				1,2,7,22,72,234,763,2486	1,1,4,6,19,33,93,175	Expansion of 1/(sqrt(1-2*x-3*x^2)*(2-M(x))), where M(x) is the g.f. of the Motzkin numbers A001006.
+A119968	binomx	0	A036987	0	new A036987()				1,2,3,5,9,16,27,44	1,1,0,1,0,0,0,1	Binomial transform of Fredholm-Rueppel sequence.
+A126082	binomx	0	A001113	0	new A001113()				2,9,17,34,70,145,298,605	2,7,1,8,2,8,1,8	Binomial transform of A001113.
+A136649	binomx	0	A014070	0	new A014070()				1,3,11,81,2089,211107,76211147,95054910473	1,2,6,56,1820,201376,74974368,94525795200	Binomial transform of A014070: a(n) = Sum_{k=0..n} C(n,k)*C(2^k,k).
+A153197	binomx	0	A006789	0	new A006789()				1,2,5,15,51,189,748,3128	1,1,2,5,14,43,143,509	Binomial transform of Bessel numbers A006789.
+A166078	binomx	0	A114191	0	new A114191()				1,0,2,-6,30,-150,806,-4494	1,-1,3,-13,67,-381,2307,-14589	Expansion of (3(1-x)-sqrt(1+6x-7x^2))/(2(1-x)(1-2x)).
+A172634	binomx	0	A002898	0	new A002898()				1,1,7,31,175,991,5881,35617	1,0,6,12,90,360,2040,10080	Number of n X 3 0..2 arrays with row sums 3 and column sums n.
+A227094	binomx	0	A013999	0	new A013999()				1,2,5,18,91,574,4199,34650	1,1,2,8,42,258,1824,14664	Binomial transform of A013999.
+A305923	binomx	0	A005444	0	new A005444()				1,2,6,21,105,580,4332,33173	1,1,3,8,50,214,2086,11976	Expansion of e.g.f. exp(x)/(1 - log(1 + x) - log(1 + x)^2).
+A307259	binomx	0	A022629	0	new A022629()				1,2,5,15,44,126,357,1003	1,1,2,5,7,15,25,43	Expansion of (1/(1 - x)) * Product_{k>=1} (1 + k*x^k/(1 - x)^k).
+A307264	binomx	0	A000700	0	new A000700()				1,2,3,5,10,22,49,107	1,1,0,1,1,1,1,1	Expansion of (1/(1 - x)) * Product_{k>=1} 1/(1 + (-x)^k/(1 - x)^k).
+A330046	binomx	0	A006154	0	new A006154()				1,2,5,17,77,437,2975,23627	1,1,2,7,32,181,1232,9787	Expansion of e.g.f. exp(x) / (1 - sinh(x)).

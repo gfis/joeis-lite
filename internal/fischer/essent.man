@@ -1,0 +1,113 @@
+A037470	essent	0	A020657	1, 	new A020657()	, 0			0,1,2,3,4,5,7,8	0,1,2,3,4,5,7,8	a(n)=Sum{d(i)*7^i: i=0,1,...,m}, where Sum{d(i)*6^i: i=0,1,...,m} is the base 6 representation of n.
+A038875	essent	1	A003630		new A003630()	, 2			2,5,7,17,19,29,31,41	5,7,17,19,29,31,41,43	Primes p with legendre(3,p) = -1.
+A046155	essent	0	A026819		new A026819()	, 0			0,1,1,1,2,2,2,3	1,1,1,2,2,2,3,3	k that maximizes partitions of n into exactly k parts.
+A049643	essent	0	A005728	1, 	new A005728()	, 0			0,2,3,5,7,11,13,19	1,2,3,5,7,11,13,19	Number of fractions in Farey series of order n.
+A054541	essent	1	A001223		new A001223()	, 2			2,1,2,2,4,2,4,2	1,2,2,4,2,4,2,4	Sum of first n terms equals n-th prime.
+A054634	essent	0	A031035		new A031035()	, 0			0,1,2,3,4,5,6,7	1,2,3,4,5,6,7,1	Champernowne sequence: write n in base 8 and juxtapose.
+A054635	essent	0	A003137		new A003137()	, 0			0,1,2,1,0,1,1,1	1,2,1,0,1,1,1,2	Champernowne sequence: write n in base 3 and juxtapose.
+A056955	essent	1	A003627	2, 	new A003627()	, 5,8			5,8,11,17,23,29,41,47	2,5,11,17,23,29,41,47	Euclid set of class 2 and modulus 3.
+A058320	essent	0	A014320	1, 	new A014320()				2,4,6,8,14,10,12,18	1,2,4,6,8,14,10,12	Distinct even prime-gap lengths (number of composites between primes), from 3+2, 7+4, 23+6,...
+A058703	essent	-1	A034320	2, 	new A034320()	, 1,0			1,0,1,2,2,3,4,5	1,1,1,2,2,3,4,5	McKay-Thompson series of class 50a for Monster.
+A061716	essent	1	A035100	1, 	new A035100()	, 1			1,2,3,3,4,4,5,5	2,2,3,3,4,4,5,5	Binary order of n-th prime.
+A065144	essent	1	A029948	1, 	new A029948()				11,41,19,163,251,367,149,641	101,11,41,19,163,251,367,149	Smallest prime containing the n-th square in decimal notation.
+A065310	essent	1	A054546	1, 	new A054546()				3,2,2,1,1,2,2,1	1,3,2,2,1,1,2,2	Number of occurrences of n-th prime in A065308, where A065308(j) = prime(j - pi(j)).
+A066069	essent	1	A019530	1, 	new A019530()	, 1			1,2,3,2,5,6,7,4	0,2,3,2,5,6,7,4	a(n) is the smallest positive integer m such that n divides (n + m)^m.
+A066481	essent	3	A004396	3, 	new A004396()				2,3,3,4,5,5,6,7	0,1,1,2,3,3,4,5	Largest anti-divisor of n.
+A067829	essent	1	A006512		new A006512()	, 3			3,5,7,13,19,31,43,61	5,7,13,19,31,43,61,73	Primes n such that sigma(n-2) < n.
+A071647	essent	1	A034883	1, 	new A034883()	, 1			1,1,2,2,3,2,3,4	0,1,2,2,3,2,3,4	a(n) is the maximum number of elements among the continued fractions for n/1, n/2, n/3, n/4 ...., n/n.
+A072632	essent	1	A001671	1, 	new A001671()	, 1			1,3,8,21,55,149,404,1097	1,3,8,21,55,149,404,1097	Solutions to A072631[n]=0.
+A073869	essent	0	A005206	1, 	new A005206()	, 0			0,1,1,2,3,3,4,4	0,1,1,2,3,3,4,4	a(n) = Sum_{i=0..n} A002251(i)/(n+1).
+A078881	essent	1	A006165	1, 	new A006165()				1,2,2,3,4,4,4,5	1,1,2,2,3,4,4,4	Size of the largest subset S of {1,2,3,...,n} with the property that if i and j are distinct elements of S then i XOR j is not in S, where XOR is the bitwise exclusive-OR operator.
+A082648	essent	1	A025016	1, 	new A025016()	, 3			3,1,3,0,4,9,0,2	4,1,3,0,4,9,0,2	Consider f(m) = Sum{k=1..m} k! (A007489) when m is very large; a(n) = n-th digit from end.
+A084400	essent	1	A050376		new A050376()	, 1			1,2,3,4,5,7,9,11	2,3,4,5,7,9,11,13	a(1) = 1; for n>1, a(n) = smallest number that does not divide the product of all previous terms.
+A086436	essent	1	A001222	1, 	new A001222()	, 1			1,1,1,2,1,2,1,3	0,1,1,2,1,2,1,3	Maximum number of parts possible in a factorization of n; a(1) = 1, and for n > 1, a(n) = A001222(n) = bigomega(n).
+A087679	essent	1	A029708		new A029708()	, 5			5,9,15,21,39,45,69,81	9,15,21,39,45,69,81,99	Numbers k such that both k+2 and k-2 are prime.
+A090908	essent	1	A000201	1, 	new A000201()	, 1			1,3,4,6,8,9,11,12	1,3,4,6,8,9,11,12	Terms a(k) of A073869 for which a(k)=a(k+1).
+A090909	essent	0	A001950		new A001950()	, 0			0,2,5,7,10,13,15,18	2,5,7,10,13,15,18,20	Terms a(k) of A073869 for which a(k-1), a(k) and a(k+1) are distinct.
+A091317	essent	1	A014662		new A014662()	, 2			2,3,5,11,13,17,19,29	3,5,11,13,17,19,29,37	Primes p that divide 2^n+1 for some n.
+A095687	essent	1	A020699	2, 	new A020699()	, 0			0,10,50,250,1250,6250,31250,156250	1,2,10,50,250,1250,6250,31250	Numbers n such that n-th Pisano number = 6*n.
+A096176	essent	1	A002384	1, 	new A002384()				2,3,5,6,8,12,14,15	1,2,3,5,6,8,12,14	Numbers k such that (k^3-1)/(k-1) is prime.
+A100484	essent	1	A001747	1, 	new A001747()				4,6,10,14,22,26,34,38	2,4,6,10,14,22,26,34	Even semiprimes.
+A110258	essent	1	A056982	1, 	new A056982()	, 1			1,4,64,256,16384,65536,1048576,4194304	1,4,64,256,16384,65536,1048576,4194304	Denominators in the coefficients that form the odd-indexed partial quotients of the continued fraction representation of the inverse tangent of 1/x.
+A110953	essent	1	A003683	2, 	new A003683()				2,12,40,176,672,2752,10880,43776	0,1,2,12,40,176,672,2752	Starting a priori with the fraction 1/1, the denominators of fractions built according to the rule: add top and bottom to get the new bottom, add top and 9 times the bottom to get the new top.
+A112456	essent	1	A008837	1, 	new A008837()	, 6			6,3,10,21,55,78,136,171	1,3,10,21,55,78,136,171	Least triangular number divisible by n-th prime.
+A112823	essent	2	A002374		new A002374()	, 2			2,3,3,5,5,7,5,7	3,3,5,5,7,5,7,7	Greatest p less than or equal to n with p and q both prime, p+q = 2n.
+A113874	essent	0	A007677		new A007677()	, 1,0			1,0,1,1,3,4,7,32	1,1,3,4,7,32,39,71	a(3n) = a(3n-1) + a(3n-2), a(3n+1) = 2n*a(3n) + a(3n-1), a(3n+2) = a(3n+1) + a(3n).
+A117562	essent	1	A034087		new A034087()	, 0			0,1,10,20,50,100,110,111	1,10,20,50,100,110,111,120	Numbers n such that n is a multiple of the sum of decimal digits squared of n.
+A122852	essent	0	A072374		new A072374()	, 1			1,1,2,3,6,11,24,51	1,2,3,6,11,24,51,122	Row sums of number triangle A122851.
+A123171	essent	1	A016052	1, 	new A016052()	, 123			123,6,12,15,21,24,30,33	3,6,12,15,21,24,30,33	a(1) = 123, a(n) = sum of digits of all previous terms.
+A123467	essent	1	A000081	2, 	new A000081()				1,2,4,9,20,48,115,286	0,1,1,2,4,9,20,48	Number of trivially-perfect graphs on n nodes.
+A126684	essent	1	A032937		new A032937()	, 0			0,1,2,4,5,8,10,16	1,2,4,5,8,10,16,17	Union of A000695 and 2*A000695.
+A131089	essent	1	A062011	1, 	new A062011()	, 1			1,4,4,6,4,8,4,8	2,4,4,6,4,8,4,8	a(n) = Sum_{d|n} (2 - mu(d)).
+A132084	essent	0	A006954	3, 	new A006954()	, 1,3			1,3,30,42,30,66,2730,6	1,2,6,30,42,30,66,2730	A051717(2n).
+A132736	essent	0	A052944	1, 	new A052944()	, 1			1,2,5,10,19,36,69,134	0,2,5,10,19,36,69,134	Row sums of triangle A132735.
+A133122	essent	1	A006285	1, 	new A006285()	, 1,3			1,3,127,149,251,331,337,373	1,127,149,251,331,337,373,509	Odd numbers which cannot be written as the sum of an odd prime and 2^i with i > 0.
+A133677	essent	1	A091177	1, 	new A091177()	, 1,2			1,2,3,5,7,9,10,13	1,3,5,7,9,10,13,15	Integers n such that prime(n)*(2*prime(n)-1)/3 is an integer.
+A134227	essent	1	A055999	1, 	new A055999()	, 1			1,4,9,15,22,30,39,49	0,4,9,15,22,30,39,49	Row sums of triangle A134226.
+A135731	essent	1	A008864	2, 	new A008864()	, 3			3,6,8,12,14,18,20,24	3,4,6,8,12,14,18,20	a(1) = 3; thereafter a(n+1) = a(n) + nextprime(a(n)) - prevprime(a(n)).
+A140347	essent	1	A002808	1, 	new A002808()	, 4			4,6,8,9,10,12,14,15	4,6,8,9,10,12,14,15	Composites of the form ((x+y)/3+2)/(x-y), where x=composite and y=prime.
+A141187	essent	1	A068231		new A068231()	, 3			3,11,23,47,59,71,83,107	11,23,47,59,71,83,107,131	Primes of the form -x^2+6*x*y+3*y^2 (as well as of the form 8*x^2+12*x*y+3*y^2).
+A145188	essent	1	A006266	1, 	new A006266()				14,2786,21624372014,10111847525912679844192131854786	2,14,2786,21624372014,10111847525912679844192131854786	Continued cotangent recurrence a(n+1)=a(n)^3+3*a(n) and a(1)=14
+A155038	essent	1	A057728	1, 	new A057728()				1,1,1,2,1,1,4,2	1,1,1,1,2,1,1,4	Triangle read by rows: T(n,k) is the number of compositions of n with first part k.
+A156037	essent	1	A006093	2, 	new A006093()	, 1,1			1,1,4,6,10,12,16,18	1,2,4,6,10,12,16,18	Largest nonprime < n-th prime.
+A158611	essent	1	A008578		new A008578()	, 0			0,1,2,3,5,7,11,13	1,2,3,5,7,11,13,17	0, 1 and the primes.
+A158622	essent	2	A046163	1, 	new A046163()				7,13,7,31,43,19,73,91	1,7,13,7,31,43,19,73	Numerator of the reduced fraction A158620(n)/A158621(n).
+A159482	essent	1	A020482	2, 	new A020482()	, 0,0,0			0,0,0,5,7,7,11,13	2,3,5,7,7,11,13,13	Greatest odd prime q < 2*n such that p < q and p prime and p = 2*n - q or 0 if no such prime exists.
+A162338	essent	1	A023208		new A023208()	, 2			2,3,5,7,13,17,19,23	3,5,7,13,17,19,23,29	Primes q such that q = floor(p/3) for some prime p.
+A164653	essent	1	A001043		new A001043()	, 1,3			1,3,5,8,12,18,24,30	5,8,12,18,24,30,36,42	a(1) = 1, for n>=2: a(n) = sum of two consecutive noncomposite numbers A008578.
+A165421	essent	1	A011764		new A011764()	, 1,3			1,3,3,9,81,6561,43046721,1853020188851841	3,9,81,6561,43046721,1853020188851841	a(1) = 1, a(2) = 3, a(n) = product of the previous terms for n >= 3.
+A166444	essent	0	A000079		new A000079()	, 0,1			0,1,1,2,4,8,16,32	1,2,4,8,16,32,64,128	a(0) = 0, a(1) = 1 and for n > 1, a(n) = sum of all previous terms.
+A166733	essent	1	A032664	1, 	new A032664()				3,7,9,13,27,31,37,39	1,3,7,9,13,27,31,37	Numbers n with the property that the concatenation of the trivial divisors of n (i.e., 1 and n) is a prime.
+A171820	essent	1	A091178		new A091178()	, 2			2,4,6,8,11,12,14,18	4,6,8,11,12,14,18,19	Numbers n such that the n-th prime is of the form 3k + 1/2 +- 1/2.
+A172372	essent	1	A002371	3, 	new A002371()	, 3			3,6,2,6,16,18,22,28	0,1,0,6,2,6,16,18	Least number k such that the n-th prime not dividing 10 (A004139(n)) divides the repunit (10^k-1)/9.
+A173455	essent	1	A001065	1, 	new A001065()	, 1			1,1,1,3,1,6,1,7	0,1,1,3,1,6,1,7	Row sums of triangle A027751.
+A177241	essent	0	A102376		new A102376()	, 0			0,1,4,4,16,4,16	1,4,4,16,4,16,16,64	First differences of A177240.
+A180634	essent	1	A033949		new A033949()	, 1,2			1,2,8,12,15,16,20,21	8,12,15,16,20,21,24,28	Numbers n such that the discriminant of the n-th cyclotomic polynomial is a square.
+A180986	essent	1	A014410	1, 	new A014410()	, 2			2,3,3,4,6,4,5,10	2,3,3,4,6,4,5,10	T(n,k) = number of n X k binary matrices with rows in lexicographically nondecreasing order and columns in lexicographically nonincreasing order.
+A181346	essent	0	A001223	1, 	new A001223()	, 1,2,0			1,2,0,2,2,4,2,4	1,2,2,4,2,4,2,4	Absolute difference between (sum of previous terms) and prime(n) with a(0) = 1 and a(1) = 2.
+A186355	essent	1	A089108		new A089108()	, 1			1,3,5,7,10,13,16,20	3,5,7,10,13,16,20,24	Adjusted joint rank sequence of (f(i)) and (g(j)) with f(i) before g(j) when f(i)=g(j), where f(i)=3i and g(j)=j(j+1)/2 (triangular number).  Complement of A186354.
+A187219	essent	1	A002865	2, 	new A002865()	, 1			1,1,1,2,2,4,4,7	1,0,1,1,2,2,4,4	Number of partitions of n that do not contain parts less than the smallest part of the partitions of n-1.
+A187482	essent	1	A026347	1, 	new A026347()	, 1			1,3,4,5,7,8,10,12	1,3,4,5,7,8,10,12	Rank transform of the sequence ceiling(2n/3); complement of A187483.
+A187483	essent	1	A026348	1, 	new A026348()	, 2			2,6,9,11,15,18,22,26	2,6,9,11,15,18,22,26	Complement of A187482.
+A188468	essent	1	A188016	1, 	new A188016()	, 2,4			2,4,5,7,10,12,13,15	2,5,7,10,12,13,15,18	Positions of 0 in A188467.
+A189966	essent	1	A188939	1, 	new A188939()	, 2			2,1,8,6,1,4,0,6	3,1,8,6,1,4,0,6	Decimal expansion of (3+sqrt(33))/4, which has periodic continued fractions [2,5,2,1,2,5,2,1,...] and [3/2, 1, 3/2, 1, ...].
+A195284	essent	1	A176219	1, 	new A176219()	, 2			2,1,0,8,1,8,5,1	4,1,0,8,1,8,5,1	Decimal expansion of shortest length of segment from side AB through incenter to side AC in right triangle ABC with sidelengths (a,b,c)=(3,4,5); i.e., decimal expansion of 2*sqrt(10)/3.
+A195503	essent	1	A001353	2, 	new A001353()				4,15,56,209,780,2911,10864,40545	0,1,4,15,56,209,780,2911	Numerators b(n) of Pythagorean approximations b(n)/a(n) to sqrt(3).
+A195531	essent	1	A120893	2, 	new A120893()				5,17,65,241,901,3361,12545,46817	1,1,5,17,65,241,901,3361	Hypotenuses of Pythagorean triples in A195499 and A195503.
+A203019	essent	0	A004148		new A004148()	, 0,0			0,0,1,1,1,2,4,8	1,1,1,2,4,8,17,37	Number of elevated peakless Motzkin paths.
+A204399	essent	0	A020914	1, 	new A020914()	, 0			0,2,4,5,7,8,10,12	1,2,4,5,7,8,10,12	Numbers k such that floor(2^k / 3^n) = 1.
+A209229	essent	0	A036987		new A036987()	, 0			0,1,1,0,1,0,0,0	1,1,0,1,0,0,0,1	Characteristic function of powers of 2, cf. A000079.
+A211004	essent	1	A001840	1, 	new A001840()				1,2,3,5,7,9,12,15	0,1,2,3,5,7,9,12	Number of distinct regions in the set of partitions of n.
+A217748	essent	3	A028552	1, 	new A028552()	, 1			1,4,10,18,28,40,54,70	0,4,10,18,28,40,54,70	Number of regions with infinite area in the exterior of a regular n-gon with all diagonals drawn.
+A219428	essent	1	A016035	1, 	new A016035()	, -1			-1,0,0,1,0,3,0,3	0,0,0,1,0,3,0,3	a(n) = n - 1 - phi(n).
+A219675	essent	0	A004207	1, 	new A004207()	, 0			0,1,2,4,8,16,23,28	1,1,2,4,8,16,23,28	Starting with a(0)=0, a(n) = 1 + the sum of the digital sums of a(0) through a(n-1).
+A220881	essent	4	A003444		new A003444()	, 1			1,1,4,12,43,143,504,1768	1,4,12,43,143,504,1768,6310	Number of nonequivalent dissections of an n-gon into n-3 polygons by nonintersecting diagonals up to rotation.
+A224766	essent	0	A005640	2, 	new A005640()	, 2			2,2,8,64,832,15104,352256,10037248	1,1,2,8,64,832,15104,352256	Number of non-degenerate fanout-free Boolean functions of n variables.
+A228931	essent	1	A003423	1, 	new A003423()	, 2,-6			2,-6,34,1154,1331714,1773462177794,3145168096065837266706434	6,34,1154,1331714,1773462177794,3145168096065837266706434	Optimal ascending continued fraction expansion of sqrt(2)-1.
+A239798	essent	1	A019863	1, 	new A019863()	, 1,3			1,3,0,9,0,1,6,9	8,0,9,0,1,6,9,9	Decimal expansion of the midsphere radius in a regular dodecahedron with unit edges.
+A242671	essent	0	A229780	1, 	new A229780()	, 7			7,2,3,6,0,6,7,9	5,2,3,6,0,6,7,9	Decimal expansion of k2, a Diophantine approximation constant such that the area of the "critical parallelogram" (in this case a square) is 4*k2.
+A242767	essent	2	A027833		new A027833()	, 1			1,1,2,2,3,3,4,3	1,2,2,3,3,4,3,6	Numbers of repetitions of terms in A242758.
+A245294	essent	1	A176057	1, 	new A176057()	, 1			1,0,9,5,4,4,5,1	2,0,9,5,4,4,5,1	Decimal expansion of the square root of 1.2.
+A246724	essent	0	A176053	1, 	new A176053()				1,5,4,7,0,0,5,3	2,1,5,4,7,0,0,5	Decimal expansion of r_2, the second smallest radius for which a compact packing of the plane exists, with disks of radius 1 and r_2.
+A246725	essent	0	A188934	1, 	new A188934()				2,8,0,7,7,6,4,0	1,2,8,0,7,7,6,4	Decimal expansion of r_3, the third smallest radius for which a compact packing of the plane exists, with disks of radius 1 and r_3.
+A258146	essent	0	A188340	1, 	new A188340()	, 1			1,8,1,6,9,0,1,1	6,8,1,6,9,0,1,1	Decimal expansion of (1 - 2/Pi)/2: ratio of the area of a circular segment with central angle Pi/2 and the area of the corresponding circular half-disk.
+A259830	essent	1	A196530		new A196530()	, 2			2,7,6,0,3,4,5,9	7,6,0,3,4,5,9,9	Decimal expansion of the length of the "double egg" curve (length of one egg with diameter a = 1).
+A260060	essent	0	A094501	1, 	new A094501()	, 1			1,8,7,4,3,2,19,12	15,8,7,4,3,2,19,12	Least number such that exactly n iterations of A034690 are required to reach one of the fixed points, 1 or 15.
+A261547	essent	0	A003462	1, 	new A003462()	, 1			1,1,4,13,40,121,364,1093	0,1,4,13,40,121,364,1093	The 3 X 3 X ... X 3 dots problem (3, n times): minimal number of straight lines (connected at their endpoints) required to pass through 3^n dots arranged in a 3 X 3 X ... X 3 grid.
+A265760	essent	1	A001097	2, 	new A001097()	, 2,3			2,3,7,11,13,17,19,29	3,5,7,11,13,17,19,29	Denominators of primes-only best approximates (POBAs) to 1; see Comments.
+A268085	essent	0	A145600		new A145600()	, 0			0,1,8,75,784,8820,104544,1288287	1,8,75,784,8820,104544,1288287,16359200	a(n) = Catalan(n)^2*n.
+A268335	essent	1	A002035		new A002035()	, 1			1,2,3,5,6,7,8,10	2,3,5,6,7,8,10,11	Exponentially odd numbers.
+A272651	essent	1	A103517	1, 	new A103517()	, 1			1,4,6,8,10,12,14,16	1,4,6,8,10,12,14,16	The no-3-in-line problem: maximal number of points from an n X n square grid so that no three lie on a line.
+A277338	essent	0	A006960	1, 	new A006960()	, 295			295,887,1675,7436,13783,52514,94039,187088	196,887,1675,7436,13783,52514,94039,187088	Reverse and Add! sequence starting with 295.
+A280084	essent	1	A002313	1, 	new A002313()	, 1			1,5,13,17,29,37,41,53	2,5,13,17,29,37,41,53	1 together with the Pythagorean primes.
+A282532	essent	1	A183299	1, 	new A183299()	, 1			1,2,4,5,6,7,9,10	1,2,4,5,6,7,9,10	Position where the discrete difference of the Poissonian probability distribution function with mean n takes its lowest value. In case of a tie, pick the smallest value.
+A284359	essent	0	A167991		new A167991()	, 1			1,2,3,4,4,4,5,6	2,3,4,4,4,5,6,6	Double triangle (2*n+2 terms by row). Every row is 2*n + 1 followed by 2*n + 1 times 2*n + 2.
+A286938	essent	0	A164457	3, 	new A164457()	, 2,3,5			2,3,5,8,13,21,33,52	1,2,4,8,13,21,33,52	Length of n-th iterate of the mapping 00->001, 1->10, as in A284932.
+A306811	essent	1	A201775		new A201775()	, 1			1,4,6,6,9,4,2,2	4,6,6,9,4,2,2,0	Decimal expansion of Pi/(Pi - 1) = 1 + 1/Pi + 1/Pi^2 + ... .
+A324015	essent	0	A001610	1, 	new A001610()	, 0,1			0,1,2,3,6,10,17,28	0,2,3,6,10,17,28,46	Number of nonempty subsets of {1, ..., n} containing no two cyclically successive elements.
+A324502	essent	1	A007955	1, 	new A007955()	, 1			1,2,3,8,5,36,7,64	1,2,3,8,5,36,7,64	a(n) = denominator of  Sum_{d|n} (1/pod(d)) where pod(k) = the product of the divisors of k (A007955).
+A324969	essent	1	A000045	1, 	new A000045()	, 1			1,1,1,2,3,5,8,13	0,1,1,2,3,5,8,13	Number of unlabeled rooted identity trees with n vertices whose non-leaf terminal subtrees are all different.
+A325765	essent	0	A032741	2, 	new A032741()	, 1			1,1,1,2,1,3,1,3	0,0,1,1,2,1,3,1	Number of integer partitions of n with a unique consecutive subsequence summing to every positive integer from 1 to n.
+A326339	essent	0	A003946		new A003946()	, 1,0			1,0,1,4,12,36,108,324	1,4,12,36,108,324,972,2916	Number of connected simple graphs with vertices {1..n} and no crossing or nesting edges.
+A333345	essent	2	A176522	1, 	new A176522()	, 1,0			1,0,1,0,9,7,7,2	9,1,0,9,7,7,2,2	Decimal expansion of (11 + sqrt(85))/2.
+A336109	essent	1	A188040	1, 	new A188040()	, 1,2			1,2,3,4,5,6,8,9	1,3,4,5,6,8,9,10	First column of dispersion array A120861.

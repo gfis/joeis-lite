@@ -1,0 +1,27 @@
+A051493	moebiusx	1	A005044	0	new A005044()				0,0,1,0,1,0,2,1	0,0,0,1,0,1,1,2	Triangles with perimeter n and relatively prime integer side lengths.
+A060648	moebiusix	1	A001615	1	new A001615()				1,4,5,10,7,20,9,22	1,3,4,6,6,12,8,12	Number of cyclic subgroups of the group C_n X C_n (where C_n is the cyclic group of order n).
+A068976	moebiusix	1	A008833	1	new A008833()				1,2,2,6,2,4,2,10	1,1,1,4,1,1,1,4	a(n) = Sum_{d | n} d/core(d) where core(x) is the smallest number such that x*core(x) is a square.
+A069153	moebiusix	1	A000217	0	new A000217()				0,1,3,7,10,19,21,35	0,1,3,6,10,15,21,28	Sum(d|n,d*(d-1)/2).
+A078374	moebiusx	1	A000009	0	new A000009()				1,0,1,1,2,2,4,4	1,1,1,2,2,3,4,5	Number of partitions of n into distinct and relatively prime parts.
+A078644	moebiusix	1	A068068	1	new A068068()				1,2,3,3,3,6,3,4	1,1,2,1,2,2,2,1	a(n) = tau(2*n^2)/2.
+A085410	moebiusx	1	A006128	0	new A006128()				1,2,5,9,19,27,53,74	0,1,3,6,12,20,35,54	Total number of parts in all partitions of n into relatively prime parts.
+A086971	moebiusix	1	A064911	1	new A064911()				0,0,0,1,0,1,0,1	0,0,0,1,0,1,0,0	Number of semiprime divisors of n.
+A129628	moebiusix	1	A001511	1	new A001511()				1,3,2,6,2,6,2,10	1,2,1,3,1,2,1,4	Inverse Moebius transform of A001511.
+A130054	moebiusix	1	A023900	1	new A023900()				1,0,-1,-1,-3,0,-5,-2	1,-1,-2,-1,-4,2,-6,-1	Inverse Moebius transform of A023900.
+A130711	moebiusix	1	A099036	0	new A099036()				1,2,4,8,14,32,57,123	1,1,3,6,13,27,56,115	Number of compositions of n such that the smallest part divides every part.
+A133702	moebiusix	1	A023136	1	new A023136()				1,2,4,3,4,8,4,4	1,1,3,1,3,3,3,1	A051731 * A023136.
+A140255	moebiusix	1	A014963	1	new A014963()				1,3,4,5,6,7,8,7	1,2,3,2,5,1,7,2	Inverse Mobius transform of A014963.
+A174273	moebiusix	1	A035263	1	new A035263()				1,1,2,2,2,2,2,2	1,0,1,1,1,0,1,0	Inverse Moebius transform of A035263.
+A259105	moebiusx	1	A000568	0	new A000568()				1,0,1,3,11,54,455,6876	1,1,1,2,4,12,56,456	Number of nonisomorphic tournaments on n nodes that are not multiples of a nontrivial transitive tournament.
+A300274	moebiusx	1	A015128	0	new A015128()				2,2,6,10,22,30,62,86	1,2,4,8,14,24,40,64	G.f.: 1 + Sum_{n>=1} a(n)*x^n/(1 - x^n) = Product_{n>=1} (1 + x^n)/(1 - x^n).
+A300276	moebiusx	1	A026007	0	new A026007()				1,1,4,6,15,22,48,75	1,1,2,5,8,16,28,49	G.f.: 1 + Sum_{n>=1} a(n)*x^n/(1 - x^n) = Product_{n>=1} (1 + x^n)^n.
+A300277	moebiusx	1	A006906	0	new A006906()				1,2,5,11,24,48,96,184	1,1,3,6,14,25,56,97	G.f.: 1 + Sum_{n>=1} a(n)*x^n/(1 - x^n) = Product_{n>=1} 1/(1 - n*x^n).
+A300278	moebiusx	1	A022629	0	new A022629()				1,1,4,5,14,19,42,57	1,1,2,5,7,15,25,43	G.f.: 1 + Sum_{n>=1} a(n)*x^n/(1 - x^n) = Product_{n>=1} (1 + n*x^n).
+A325596	moebiusx	1	A181983	0	new A181983()				1,-3,2,-2,4,-6,6,-4	0,1,-2,3,-4,5,-6,7	a(n) = Sum_{d|n} mu(n/d) * (-1)^(d + 1) * d.
+A326305	moebiusx	1	A026741	0	new A026741()				1,0,2,1,4,0,6,2	0,1,1,3,2,5,3,7	Dirichlet g.f.: zeta(s-1) * (1 - 2^(-s)) / zeta(s).
+A326306	moebiusix	1	A003557	1	new A003557()				1,2,2,4,2,4,2,8	1,1,1,2,1,1,1,4	Dirichlet g.f.: zeta(s) * zeta(s-1) * Product_{p prime} (1 - p^(1 - s) + p^(-s)).
+A327096	moebiusix	1	A002131	1	new A002131()				1,3,5,7,7,15,9,15	1,2,4,4,6,8,8,8	Expansion of Sum_{k>=1} sigma(k) * x^k / (1 - x^(2*k)), where sigma = A000203.
+A327242	moebiusix	1	A002129	1	new A002129()				1,0,5,-5,7,0,9,-18	1,-1,4,-5,6,-4,8,-13	Expansion of Sum_{k>=1} tau(k) * x^k / (1 + x^k)^2, where tau = A000005.
+A328372	moebiusix	1	A143259	1	new A143259()				1,0,1,1,1,0,1,0	1,-1,0,1,0,0,0,-1	Expansion of Sum_{k>=1} x^(k^2) / (1 - x^(2*k^2)).
+A328485	moebiusix	1	A034448	1	new A034448()				1,4,5,9,7,20,9,18	1,3,4,5,6,12,8,9	Dirichlet g.f.: zeta(s)^2 * zeta(s-1) / zeta(2*s-1).
+A333645	moebiusix	1	A047994	1	new A047994()				1,2,3,5,5,6,7,12	1,1,2,3,4,2,6,7	a(n) = Sum_{d|n} uphi(d).

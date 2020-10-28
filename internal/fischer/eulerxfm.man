@@ -1,0 +1,19 @@
+A035457	eulerxfm	0	2	1	0,1,0,0					Number of partitions of n into parts of the form 4*k + 2.
+A035985	eulerxfm	0	2	1	1,1,1,1,1,1,0				form: != 0 mod 7	Number of partitions of n into parts not a multiple of 7. Also number of partitions with at most
+A036026	eulerxfm	0	2	1	1,0,1,1,0,0,1,1,1,0,1,1,1,0,0,1,1,0,1,0						Number of partitions of n into parts not of forms 4*k+2, 20*k, 20*k+5 or 20*k+15.
+A064349	eulerxfm	0	1	1	1,2,3,4						
+A147783	eulerxfm	0	2	1	0,1,0,1,1,1,0,1,0,1		{2,5}|				Number of partitions of n into parts divisible by 2 or 5.
+A147784	eulerxfm	0	2	1	0,0,1,1,0,1,0,1,1,0,0,1						Number of partitions of n into parts divisible by 3 or 4.
+A147785	eulerxfm	0	2	1	0,0,1,0,1,1,0,0,1,1,0,1,0,0,1						Number of partitions of n into parts divisible by 3 or 5.
+A147786	eulerxfm	0	2	1	0,0,0,1,1,0,0,1,0,1,0,1,0,0,1,1,0,0,0,1						Number of partitions of n into parts divisible by 4 or 5.
+A147787	eulerxfm	0	2	1	0,0,0,1,0,1,0,1,1,0,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,1,1,0,1,0,1,0,0,0,1						Number of partitions of n into parts divisible by 4,6 or 9.
+A161293	eulerxfm	0	2	1	0,1,1,1,0,1,0,0,1,1,0,0,0,1,1,0,0,1,0,1,1,1,0,0						Number of partitions of n into numbers not divisible by 4 wher
+# A217569 Number of partitions of n into parts t such that t mod 55 is in 
+# {2, 3, 7, 8, 11, 12, 13, 17, 18, 22, 23, 27, 28, 32, 33, 37, 38, 42, 43, 44, 47, 48, 52, 53}.
+#                                              1                   2                   3                   4                   5         
+#								1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+A217569	eulerxfm	0	2	1	0,1,1,0,0,0,1,1,0,0,1,1,1,0,0,0,1,1,0,0,0,1,1,0,0,0,1,1,0,0,0,1,1,0,0,0,1,1,0,0,0,1,1,1,0,0,1,1,0,0,0,1,1,0,0						Number of partitions
+#----
+# rests after 2020-08-18
+A116458	eulerxfm	0	2	1	1,0,0,0,0,0,0,0,1,0,1,0,0,0					corrected
+A277090	eulerxfm	0	2	1	1,0,0,0,0,0,0,0,0					corrected

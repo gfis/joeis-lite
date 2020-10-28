@@ -1,0 +1,23 @@
+A052841	stirling2	0	A005359	0	new A005359()				1,0,2,6,38,270,2342,23646	1,0,2,0,24,0,720,0	E.g.f.: 1/(exp(x)*(2-exp(x))).
+A052856	stirling2	0	A000142	0	new A000142()				1,2,4,14,76,542,4684,47294	1,1,2,6,24,120,720,5040	E.g.f.: (1-3*exp(x)+exp(2*x))/(exp(x)-2).
+A052875	stirling2	0	A000142	0	new A000142()				0,0,2,12,74,540,4682,47292	1,1,2,6,24,120,720,5040	E.g.f.: (exp(x)-1)^2/(2-exp(x)).
+A065143	stirling2	0	A199572	0	new A199572()				1,0,4,12,44,220,1228,7196	1,0,4,0,16,0,64,0	a(n) = Sum_{k=0..n} stirling2(n,k)*(1+(-1)^k)*2^k/2.
+A066053	stirling2	0	A002457	0	new A002457()				1,6,36,236,1686,13028,108078,956348	1,6,30,140,630,2772,12012,51480	Stirling transform of A002457.
+A069321	stirling2	0	A001563	0	new A001563()				1,1,5,31,233,2071,21305,249271	0,1,4,18,96,600,4320,35280	Stirling transform of A001563: a(0) = 1 and a(n) = Sum_{k=1..n} Stirling2(n,k)*k*k! for n >= 1.
+A083355	stirling2	0	A000670	0	new A000670()				1,1,4,23,175,1662,18937,251729	1,1,3,13,75,541,4683,47293	Number of preferential arrangements for the set partitions of the n-set [1,2,3,...,n].
+A089677	stirling2	0	A005212	0	new A005212()				0,1,1,7,37,271,2341,23647	0,1,0,6,0,120,0,5040	Exponential convolution of A000670(n), with A000670(0)=0, with the sequence of all ones alternating in sign.
+A121867	stirling2	0	A056594	0	new A056594()				1,0,-1,-3,-6,-5,33,266	1,0,-1,0,1,0,-1,0	Let A(0) = 1, B(0) = 0; A(n+1) = Sum_{k=0..n} binomial(n,k)*B(k), B(n+1) = Sum_{k=0..n} -binomial(n,k)*A(k); entry gives A sequence (cf. A121868).
+A130410	stirling2	0	A000587	0	new A000587()				1,-1,-1,0,6,32,115,172	1,-1,0,1,1,-2,-9,-9	Alternating row sums of triangle A130191 (Stirling2)^2.
+A264036	stirling2	0	A077957	0	new A077957()				1,0,2,6,18,70,330,1694	1,0,2,0,4,0,8,0	Stirling transform of A077957 (aerated powers of 2).
+A282190	stirling2	0	A000312	0	new A000312()				1,1,5,40,447,6421,112726,2338799	1,1,4,27,256,3125,46656,823543	E.g.f.: 1/(1 + LambertW(1-exp(x))), where LambertW() is the Lambert W-function.
+A305404	stirling2	0	A001147	0	new A001147()				1,1,4,25,217,2416,32839,527185	1,1,3,15,105,945,10395,135135	Expansion of Sum_{k>=0} (2*k - 1)!!*x^k/Product_{j=1..k} (1 - j*x).
+A305405	stirling2	0	A006882	0	new A006882()				1,1,3,10,41,201,1126,7043	1,1,2,3,8,15,48,105	Expansion of Sum_{k>=0} k!!*x^k/Product_{j=1..k} (1 - j*x).
+A305406	stirling2	0	A000984	0	new A000984()				1,2,8,40,234,1544,11242,89016	1,2,6,20,70,252,924,3432	Expansion of Sum_{k>=0} binomial(2*k,k)*x^k/Product_{j=1..k} (1 - j*x).
+A305547	stirling2	0	A007837	0	new A007837()				1,1,2,8,37,182,1039,7149	1,1,1,4,5,16,82,169	Expansion of e.g.f. Product_{k>=1} (1 + (exp(x) - 1)^k/k!).
+A305560	stirling2	0	A001405	0	new A001405()				1,1,3,10,39,176,893,4985	1,1,2,3,6,10,20,35	Expansion of Sum_{k>=0} binomial(k,floor(k/2))*x^k/Product_{j=1..k} (1 - j*x).
+A305986	stirling2	0	A007841	0	new A007841()				1,1,4,21,144,1205,11908,135597	1,1,3,11,56,324,2324,18332	Expansion of e.g.f. Product_{k>=1} 1/(1 - (exp(x) - 1)^k/k).
+A305987	stirling2	0	A007838	0	new A007838()				1,1,2,9,52,355,2976,29897	1,1,1,5,14,74,474,3114	Expansion of e.g.f. Product_{k>=1} (1 + (exp(x) - 1)^k/k).
+A305988	stirling2	0	A007840	0	new A007840()				1,1,4,24,194,1970,24062,343294	1,1,3,14,88,694,6578,72792	Expansion of e.g.f. 1/(1 + log(2 - exp(x))).
+A317022	stirling2	0	A000111	0	new A000111()				1,1,2,6,25,132,838,6209	1,1,1,2,5,16,61,272	Expansion of e.g.f. sec(exp(x) - 1) + tan(exp(x) - 1).
+A330021	stirling2	0	A003724	0	new A003724()				1,1,2,6,25,128,754,5001	1,1,1,2,5,12,37,128	Expansion of e.g.f. exp(sinh(exp(x) - 1)).
+A335390	stirling2	0	A006125	0	new A006125()				1,1,3,15,127,1895,53071,2953575	1,1,2,8,64,1024,32768,2097152	a(n) = Sum_{k=0..n} Stirling2(n,k) * 2^binomial(k,2).
