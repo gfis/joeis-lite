@@ -91,7 +91,7 @@ pack1:
 	                                         >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.gen       >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.jpat      >> pack.$(CC).lst \
-	; cat  internal/fischer/packlist.man     >> pack.$(CC).lst
+	; grep -vE "^\#" internal/fischer/packlist.man     >> pack.$(CC).lst
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\S*}{}" | uniq -c
 pack2:
@@ -198,8 +198,7 @@ man: # copy sources that where manually edited
 	' my $$path = "../../src/irvine/oeis/" . lc(substr($$aseqno, 0, 4)) . "/"; '\
 	' my $$ignore = `mkdir $$path`; '\
 	' print `cp -v manual/$$aseqno.java $$path`; ' $@.gen 2> x.tmp
-	cat $@.gen >> $(CC).gen
-	sort $(CC).gen | uniq -w7 > $@.tmp
+	sort $@.gen $(CC).gen | uniq -w7 > $@.tmp
 	mv $@.tmp $(CC).gen
 dist:
 	rm -f dist.log
@@ -269,18 +268,18 @@ bfile:
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 #----
-seqt: # ASEQNO=$(ASEQNO) - print data up to 260 characters
-	$(JAVA) irvine.test.SequenceTest -a $(ASEQNO) -n $(MAXT) -o $(OFFSET)     | tee x.tmp
-seqtest: # ASEQNO=$(ASEQNO) MAXT=$(MAXT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.test.SequenceTest -a $(ASEQNO) -n $(MAXT) -o $(OFFSET) -bf | tee x.tmp
+seqt: # A=$(A) - print data up to 260 characters
+	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(MAXT) -o $(OFFSET)     | tee x.tmp
+seqtest: # A=$(A) MAXT=$(MAXT) OFFSET=$(OFFSET) - print b-file
+	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(MAXT) -o $(OFFSET) -bf | tee x.tmp
 spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
 runjava: # CLASS= ARGS=
 	$(JAVA) $(CLASS) $(ARGS)
-pseudotest: # ASEQNO=
-	$(JAVA) irvine.oeis.PseudoSequence $(ASEQNO)
+pseudotest: # A=
+	$(JAVA) irvine.oeis.PseudoSequence $(A)
 tritest:
 	$(JAVA) irvine.oeis.GeneratingFunctionTriangle $(MAXT) $(NUM) $(DEN)
 ej:
@@ -2212,6 +2211,25 @@ shownin:
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #--------------------------------
+# A320124 null    Number of integer solutions to a^2 + b^2 + 2*c^2 + 3*d^2 = n
+nisolut:
+	grep -E "solution|Gram matrix" $(COMMON)/cat25.txt | cut -b4- \
+	| perl nisolut.pl -d 0 \
+	2>       $@.rest.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.*
+nisolut_eval:
+	grep -E "\^2" nisolut.rest.tmp \
+	| grep -vE "\^[3-9]" \
+	| grep -E "umber of" \
+	>        $@.tmp
+	wc -l    $@.tmp
+	grep -E "Gram matrix" nisolut.rest.tmp \
+	>>       $@.tmp
+	wc -l    $@.tmp
+#--------------------------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
 	perl -ne \
@@ -3428,7 +3446,7 @@ pat1:
 	'  print $$indent . "final Z z$$im1 = z$$im2.add(pow(k$$im1));\n";'\
 	'} '\
 	'print "$$line\n";' \
-	$(ASEQNO).java > temp/$(ASEQNO).java
+	$(A).java > temp/$(A).java
 #----
 sumwiki0: # fetch Index Section Su from OEIS Wiki
 	wget "https://oeis.org/w/index.php?title=Index_to_OEIS:_Section_Su&section=7&action=raw" -O - >  $@.raw.tmp
