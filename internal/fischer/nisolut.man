@@ -1,0 +1,21 @@
+A108563	nisolut	0	{{2,0},{0,3}}	1	Number of solutions to n = 2*a^2 + 3*b^2 in integers.
+# A110399	nishalf	0	A033719	1	Cf. A033719 (number of integer solutions to x^2 + 7*y^2 = n).
+A123063	nisolut	0	{{2,1},{0,4}}	1	a(n) = number of solutions to n = 2*x^2 + x*y + 4*y^2 in integers, hence a(n) nonzero if and only if n is in A123064 and p is prime and a(p) = 2 if and only if p is in A106872. - _Michael Somos_, Jul 16 2011
+A138806	nishalf	0	{{1,1},{0,7}}	1	Half the number of integer solutions to x^2 + x*y + 7*y^2 = n. - _Jianing Song_, Nov 20 2019
+A260671	nisolut	0	{{1,0},{0,15}}	1	a(n) is the number of solutions in integers (x, y) of x^2 + 15*y^2 = n. - _Michael Somos_, Jul 17 2018
+A318982	nishalf	0	{{1,1},{0,17}}	1	Half of the number of integer solutions to x^2 + x*y + 17*y^2 = n. Also, a(n) is the number of integral elements with norm n in Q[sqrt(-67)] counted up to association.
+A318983	nishalf	0	{{1,1},{0,41}}	1	Half of the number of integer solutions to x^2 + x*y + 41*y^2 = n. Also, a(n) is the number of integral elements with norm n in Q[sqrt(-163)] counted up to association.
+A318984	nisolut	0	{{1,1},{0,17}}	1	Number of integer solutions (x, y) to x^2 + x*y + 17*y^2 = n. Also, a(n) is the number of integral elements with norm n in Q[sqrt(-67)].
+A318985	nisolut	0	{{1,1},{0,41}}	1	Number of integer solutions (x, y) to x^2 + x*y + 41*y^2 = n. Also, a(n) is the number of integral elements with norm n in Q[sqrt(-163)].
+A320231	nisolut	0	{{1,0,0,0,0},{0,2,0,0,0},{0,0,3,0,0},{0,0,0,4,0},{0,0,0,0,5}}	1	Also the number of integer solutions (a_1, a_2, ... , a_5) to the equation a_1^2 + 2*a_2^2 + ... + 5*a_5^2 = n.
+# A320232	nisolut	0	{{1,0,0,0,0,0},{0,2,0,0,0,0},{0,0,3,0,0,0},{0,0,0,4,0,0},{0,0,0,0,5,0},{0,0,0,0,0,6}}	1	Also the number of integer solutions (a_1, a_2, ... , a_6) to the equation a_1^2 + 2*a_2^2 + ... + 6*a_6^2 = n.
+# A320233	nisolut	0	{{1,0,0,0,0,0,0},{0,2,0,0,0,0,0},{0,0,3,0,0,0,0},{0,0,0,4,0,0,0},{0,0,0,0,5,0,0},{0,0,0,0,0,6,0},{0,0,0,0,0,0,7}}	1	Also the number of integer solutions (a_1, a_2, ... , a_7) to the equation a_1^2 + 2*a_2^2 + ... + 7*a_7^2 = n.
+# A320234	nisolut	0	{{1,0,0,0,0,0,0,0},{0,2,0,0,0,0,0,0},{0,0,3,0,0,0,0,0},{0,0,0,4,0,0,0,0},{0,0,0,0,5,0,0,0},{0,0,0,0,0,6,0,0},{0,0,0,0,0,0,7,0},{0,0,0,0,0,0,0,8}}	1	Also the number of integer solutions (a_1, a_2, ... , a_8) to the equation a_1^2 + 2*a_2^2 + ... + 8*a_8^2 = n.
+A320239	nisolut	0	{{1,0,0},{0,3,0},{0,0,5}}	1	Also the number of integer solutions (a_1, a_2, a_3) to the equation a_1^2 + 3*a_2^2 + 5*a_3^2 = n.
+A320240	nisolut	0	{{1,0,0,0},{0,3,0,0},{0,0,5,0},{0,0,0,7}}	1	Also the number of integer solutions (a_1, a_2, a_3, a_4) to the equation a_1^2 + 3*a_2^2 + 5*a_3^2 + 7*a_4^2 = n.
+# A320241	nisolut	0		1	Also the number of integer solutions (a_1, a_2, ... , a_9) to the equation a_1^2 + 2*a_2^2 + ... + 9*a_9^2 = n.
+# A320242	nisolut	0		1	Also the number of integer solutions (a_1, a_2, ... , a_10) to the equation a_1^2 + 2*a_2^2 + ... + 10*a_10^2 = n.
+# A320246	nisolut	0		1	Also the number of integer solutions (a_1, a_2, ... , a_12) to the equation a_1^2 + 2*a_2^2 + ... + 12*a_12^2 = n.
+# A320247	nisolut	0		1	Also the number of integer solutions (a_1, a_2, ... , a_16) to the equation a_1^2 + 2*a_2^2 + ... + 16*a_16^2 = n.
+# A320248	nisolut	0		1	Also the number of integer solutions (a_1, a_2, ... , a_24) to the equation a_1^2 + 2*a_2^2 + ... + 24*a_24^2 = n.
+A323381	nisolut	0	{{1,0,1},{0,2,0},{0,0,5}}	1	Number of solutions to n = x^2 + 2*y^2 + 5*z^2 + x*z in integers.

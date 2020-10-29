@@ -18,7 +18,7 @@ HOLREC=$(GITS)/OEIS-mat/holrec
 TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
-MAXT=16
+MAXT=64
 HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 MANY=999999
 CLASS=dummy.java
@@ -33,6 +33,7 @@ NT=32
 SC=222221210100
 NC=
 OFS=1
+BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
 JOPT=-Doeis.big-factor-limit=1000000000 -Xmx4g
 ifeq ($(OS),Windows_NT)
@@ -274,6 +275,8 @@ seqtest: # A=$(A) MAXT=$(MAXT) OFFSET=$(OFFSET) - print b-file
 	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(MAXT) -o $(OFFSET) -bf | tee x.tmp
 spectest:
 	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
+gramtest:
+	$(JAVA) irvine.test.GramMatrixTest -n $(MAXT) -m "$(MATRIX)" $(BF)
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
 runjava: # CLASS= ARGS=
@@ -682,22 +685,6 @@ concprod2:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-#--------------------------------
-corenice: core nice
-core:
-	make core1 KEYW=core
-nice:
-	make core1 KEYW=nice
-core1:
-	$(DBAT) -x "SELECT i.aseqno, i.keyword, n.name \
-	    FROM asinfo i, asname n \
-	    WHERE i.aseqno = n.aseqno \
-	      AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
-	      AND (i.keyword LIKE '%$(KEYW)%') \
-	      ORDER BY 1" \
-	>        $(KEYW).tmp
-	head -n4 $(KEYW).tmp
-	wc -l    $(KEYW).tmp
 #--------------------------------
 dead:
 	$(DBAT) -x "SELECT i.aseqno, n.name, 0 \
@@ -2229,6 +2216,8 @@ nisolut_eval:
 	grep -E "Gram matrix" nisolut.rest.tmp \
 	>>       $@.tmp
 	wc -l    $@.tmp
+nisoman:
+	cp -v nisolut.man $@.gen
 #--------------------------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
