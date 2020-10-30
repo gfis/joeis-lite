@@ -867,6 +867,12 @@ digpow: # unfinished - handy/a031/A031146.java as pattern
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+digsets:
+	perl digsets.pl -d 0 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 # A035170 Coefficients in expansion of Dirichlet series Product
 diriprod_short:
 	cat $(COMMON)/names \
@@ -3268,6 +3274,9 @@ partcapp: partcond
 	grep partcapp partcond.gen > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------
+partmod11:
+	cp -v partmod11.man partmod11.gen
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
