@@ -872,6 +872,8 @@ digsets:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+	cut -f4 digsets.gen | sed -e "s/^/\^/" | sort | uniq | tee $@.tmp
+	grep -f $@.tmp $(COMMON)/joeis_names.txt
 #--------------------------------
 # A035170 Coefficients in expansion of Dirichlet series Product
 diriprod_short:
