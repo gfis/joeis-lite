@@ -1,23 +1,49 @@
 /* Test a single sequence, and write a b-file
  * @(#) $Id$
+ * 2020-10-31: read dead.lst
  * 2019-05-11: renamed from ../oeis/SequenceFactory.java
  * 2019-05-09, Georg Fischer: joeis-lite version, writes b-file format
  * 2019-01-01: Sean Irvine, class SequenceFactory
  */
 package irvine.test;
 
+import java.io.BufferedOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.HashSet;
+import java.util.Set;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import irvine.math.z.Z;
+import irvine.oeis.DeadSequence;
 import irvine.oeis.Sequence;
+import irvine.oeis.SequenceFactory;
+import irvine.util.string.Casing;
+import irvine.util.string.StringUtils;
 
 /**
  * Print the terms of a single sequence, possibly in b-file format.
  * @author Georg Fischer
  */
 public final class SequenceTest {
+
+  private static Set<String> sDead = null;
+  private static final Sequence DEAD_SEQUENCE = new DeadSequence();
+
+  private static synchronized boolean isDead(final String aNumber) {
+    if (sDead == null) {
+      try {
+        sDead = new HashSet<>(StringUtils.suckInWords(SequenceFactory.class.getResourceAsStream("/irvine/oeis/dead.lst"), Casing.NONE));
+      } catch (final IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    return sDead.contains(aNumber);
+  }
 
   private SequenceTest() { }
 
@@ -39,12 +65,15 @@ public final class SequenceTest {
       } else {
         canonicalId = seqId;
       }
+
       try {
-        return (Sequence) Class.forName("irvine.oeis.a" + canonicalId.substring(1, 4) + '.' + canonicalId)
-            .getDeclaredConstructor().newInstance();
-      } catch (Exception exc) {
-        System.err.println(exc.getMessage());
-        exc.printStackTrace();
+        return (Sequence) Class.forName("irvine.oeis.a" + canonicalId.substring(1, 4) + '.' + canonicalId).newInstance();
+      } catch (final ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+        if (isDead(canonicalId)) {
+          return DEAD_SEQUENCE;
+        }
+        System.err.println(e.getMessage());
+        e.printStackTrace();
         throw new UnsupportedOperationException();
       }
     }

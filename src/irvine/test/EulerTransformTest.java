@@ -39,7 +39,7 @@ public class EulerTransformTest {
   private String callCode;
 
   /** Number of terms to be generated */
-  private static int numTerms;
+  private static int noTerms;
 
   /** Offset of the sequence, as String */
   private int mOffset1;
@@ -72,14 +72,14 @@ public class EulerTransformTest {
    * Evaluate a {@link EulerTransform} or a {@link EulerInvTransform} and get a list
    * of the resulting data terms.
    * @param seq sequence to be evaluated
-   * @param numTerms how many terms should be returned
+   * @param noTerms how many terms should be returned
    * @return a list of terms of the form "0,1,1,2,3,5,8".
    */
-  private static String getDataList(Sequence seq, int numTerms) {
+  private static String getDataList(Sequence seq, int noTerms) {
     StringBuffer result = new StringBuffer(256);
     int n = 0;
     boolean busy = true;
-    while (n < numTerms && busy) {
+    while (n < noTerms && busy) {
       Z term = seq.next();
       if (term != null) {
         result.append(',');
@@ -95,14 +95,14 @@ public class EulerTransformTest {
 
   /**
    * Compute the terms to be prefixed to the Euler transformed result sequence
-   * @param expectedList term list from the OEIS, a lot longer than <code>numTerms</code>
+   * @param expectedList term list from the OEIS, a lot longer than <code>noTerms</code>
    * @param et {@link EulerTransform} instance to be tested
    * @return a comma separated list of terms to be prefixed, usually "1"
    */
   public String computePrefix(String expectedList, EulerTransform et) {
     String computedList = "";
     String prefixList = "";
-    for (int iterm = 0; iterm < numTerms; ++ iterm) {
+    for (int iterm = 0; iterm < noTerms; ++ iterm) {
       if (iterm > 0) {
         computedList += ",";
       }
@@ -197,7 +197,7 @@ public class EulerTransformTest {
         iparm ++; // skip prefix
         parms[iparm   ] = getDataList(eit, termNo);
         parms[iparm + 1] = "term";
-        if (parms[iparm].length() < numTerms) { // some heuristic
+        if (parms[iparm].length() < noTerms) { // some heuristic
           reproduce();
         }
       } else {
@@ -287,7 +287,7 @@ public class EulerTransformTest {
     ett.mPeriodString = "1,0,1";
     ett.mPeriodLen = 1;
     ett.mPrefixString = "";
-    ett.numTerms = 16;
+    ett.noTerms = 16;
     ett.mOffset1 = 0;
     ett.mSeqType = 2; // periodic
     String fileName = null; // not specified
@@ -305,8 +305,8 @@ public class EulerTransformTest {
               .replaceAll("\\s",""); // remove whitespace
         } else if (opt.equals    ("-l")     ) {
           ett.mPeriodLen    = Integer.parseInt(args[iarg ++]);
-        } else if (opt.equals    ("-m")     ) {
-          ett.numTerms      = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-n")     ) {
+          ett.noTerms      = Integer.parseInt(args[iarg ++]);
         } else if (opt.equals    ("-o")     ) {
           ett.mOffset1      = Integer.parseInt(args[iarg ++]);
         } else if (opt.equals    ("-p")     ) {
@@ -325,7 +325,7 @@ public class EulerTransformTest {
     if (fileName == null) {
       if (! inverse) {
         EulerTransform et = new EulerTransform(ett.mSeqType, ett.mPeriodString, ett.mPrefixString);
-        for (int iterm = 0; iterm < ett.numTerms; ++ iterm) {
+        for (int iterm = 0; iterm < ett.noTerms; ++ iterm) {
           if (iterm > 0) {
             System.out.print(",");
           }
@@ -333,7 +333,7 @@ public class EulerTransformTest {
         } // for iterm
       } else {
         EulerInvTransform eit = new EulerInvTransform(1, ett.mPeriodString, ett.mPrefixString, ett.mPeriodLen); // 1 = Finite
-        System.out.println(getDataList(eit, ett.numTerms));
+        System.out.println(getDataList(eit, ett.noTerms));
       }
     } else {
       ett.processFile(fileName);

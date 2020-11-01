@@ -18,7 +18,7 @@ HOLREC=$(GITS)/OEIS-mat/holrec
 TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
-MAXT=64
+NT=64
 HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 MANY=999999
 CLASS=dummy.java
@@ -29,7 +29,9 @@ WAITM=100
 GU=0
 N=1000
 NUM=999
-NT=32
+NT=64
+EIT=
+MATRIX=[[1,0],[0,1]]
 SC=222221210100
 NC=
 OFS=1
@@ -50,6 +52,26 @@ REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
 all:
 	# Possible targets:
 	grep -E "^[a-z]" makefile | sort
+#----------------------------------
+# Test programs
+seqt: # A=$(A) - print data up to 260 characters
+	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET)     | tee x.tmp
+seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
+	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET) -bf | tee x.tmp
+spectest:
+	$(JAVA) irvine.test.SpecialTest       $(NT) $(OFFSET)
+gramtest:
+	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
+tiletest:
+	$(JAVA) org.teherba.tile.TilingSequence -n $(NT)
+runjava: # CLASS= ARGS=
+	$(JAVA) $(CLASS) $(ARGS)
+pseudotest: # A=
+	$(JAVA) irvine.oeis.PseudoSequence $(A)
+tritest:
+	$(JAVA) irvine.oeis.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
+ej:
+	echo $(JAVA)
 #----------------------------------
 # Generation of groups of sequences
 #----------------------------------
@@ -268,25 +290,6 @@ bfile:
 	>> $(CONTRIB)/b$(SEQ).txt
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
-#----
-seqt: # A=$(A) - print data up to 260 characters
-	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(MAXT) -o $(OFFSET)     | tee x.tmp
-seqtest: # A=$(A) MAXT=$(MAXT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(MAXT) -o $(OFFSET) -bf | tee x.tmp
-spectest:
-	$(JAVA) irvine.test.SpecialTest            $(MAXT) $(OFFSET)
-gramtest:
-	$(JAVA) irvine.test.GramMatrixTest -n $(MAXT) -m "$(MATRIX)" $(BF)
-tiletest:
-	$(JAVA) org.teherba.tile.TilingSequence -n $(MAXT)
-runjava: # CLASS= ARGS=
-	$(JAVA) $(CLASS) $(ARGS)
-pseudotest: # A=
-	$(JAVA) irvine.oeis.PseudoSequence $(A)
-tritest:
-	$(JAVA) irvine.oeis.GeneratingFunctionTriangle $(MAXT) $(NUM) $(DEN)
-ej:
-	echo $(JAVA)
 #================================================================
 A035536:
 	cp -v A035536.man A035536.gen
@@ -643,10 +646,8 @@ compleq:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-MATRIX="[[0],[1],[1],[-1]]"
-INIT="[1,2]"
 complet:
-	$(JAVA) irvine.oeis.ComplementaryEquationSequence -d $(D) -p $(MATRIX) -i $(INIT) -m $(MAXT)
+	$(JAVA) irvine.oeis.ComplementaryEquationSequence -d $(D) -p $(MATRIX) -i $(INIT) -m $(NT)
 compleq3:
 	grep -E "^A" compleq3.man > compleq3.gen
 #--------------------------------
@@ -1082,9 +1083,9 @@ fholo:
 	grep $(S) holos.gen | tee x.tmp 
 	$(HOLT) -f x.tmp
 runholo:
-	$(HOLT) -n $(MAXT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
+	$(HOLT) -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
-	$(HOLT) -d $(D) -n $(MAXT) -f $(GEN)
+	$(HOLT) -d $(D) -n $(NT) -f $(GEN)
 #----------------
 holco:
 	grep -E "CoefficientList\[Series" $(COMMON)/cat25.txt \
@@ -1154,10 +1155,20 @@ holpatch:
 	make CC=holos NOT= select2
 	$(DBAT) "UPDATE seq4 
 #---------------------
-holfinit:
-	grep -E "[PDC]\-finite " cat25.txt \
+holfinit0: holfinit1 holfinit2
+holfinit1:
+	grep -E "[PDC]\-finite " $(COMMON)/cat25.txt \
 	| cut -b4- \
 	| grep -vEi "Conject|Empiric" \
+	| grep -E "^A...... D\-finite with" \
+	| sed -e "s/ /\t/" \
+	| uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+holfinit2:
+	make seq2 LIST=holfinit1.tmp
+	$(DBAT) -x "SELECT aseqno, info FROM seq2 WHERE aseqno NOT IN (SELECT aseqno FROM joeis) ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -1229,13 +1240,13 @@ holor2:
 	grep holor1 $@.tmp | grep -v null | wc -l
 #----
 holog_test:
-	$(HOLT) -d $(D) -n $(MAXT) -f $(LINREC)/raeval_holog.tmp
+	$(HOLT) -d $(D) -n $(NT) -f $(LINREC)/raeval_holog.tmp
 holog0: 
 	cat $(LIST) \
 	>        $@.1.tmp
 	head -n8 $@.1.tmp
 	wc -l    $@.1.tmp
-	$(HOLT) -d $(D) -n $(MAXT) -f $@.1.tmp \
+	$(HOLT) -d $(D) -n $(NT) -f $@.1.tmp \
 	>        $@.2.tmp
 	head -n8 $@.2.tmp
 	wc -l    $@.2.tmp
@@ -1287,7 +1298,7 @@ holol1:
 holol2:
 	head -n$(MANY) holol1.tmp \
 	>                             $@.1.tmp
-	$(HOLT) -d $(D) -n $(MAXT) -f $@.1.tmp \
+	$(HOLT) -d $(D) -n $(NT) -f $@.1.tmp \
 	| sort | uniq -w7 \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -2458,12 +2469,12 @@ eulerixxx:
 	echo "$(PER)" | tr , '\n' | $(JAVA) irvine.oeis.InverseEulerTransformSequence $(SKIP)
 #--
 euleri: # manual EulerInvTest
-	$(JAVA) irvine.test.EulerTransformTest -v -p $(PER) -m $(MAXT)
+	$(JAVA) irvine.test.EulerTransformTest -v -p $(PER) -n $(NT)
 #----
 INIT=""
 TYPE=2
-euler: # manual EulerTest PER="1,0,1" INIT=1 MAXT=32 TYPE=2
-	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -s $(TYPE) -m $(MAXT) -i $(INIT)
+euler: # manual EulerTest PER="1,0,1" INIT=1 NT=32 TYPE=2
+	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -s $(TYPE) -n $(NT) -i $(INIT)
 #----
 eulerper:
 	perl eulerper.pl $(COMMON)/cat25.txt \
@@ -2678,7 +2689,7 @@ mckay_java:
 	java -cp . irvine.oeis.McKayThompsonTables
 	cp -v McKayThompsonTables.java ../../src/irvine/oeis
 mctest:
-	$(JAVA) irvine.oeis.McKayThompsonSequence -d $(D)  -n $(MAXT) $(ARGS)
+	$(JAVA) irvine.oeis.McKayThompsonSequence -d $(D)  -n $(NT) $(ARGS)
 #--------
 weylgr0:
 	cat $(COMMON)/joeis_names.txt \
