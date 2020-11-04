@@ -55,9 +55,9 @@ all:
 #----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
-	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET)     | tee x.tmp
+	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET)     # | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET) -bf | tee x.tmp
+	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET) -bf # | tee x.tmp
 spectest:
 	$(JAVA) irvine.test.SpecialTest       $(NT) $(OFFSET)
 gramtest:
@@ -650,6 +650,12 @@ complet:
 	$(JAVA) irvine.oeis.ComplementaryEquationSequence -d $(D) -p $(MATRIX) -i $(INIT) -m $(NT)
 compleq3:
 	grep -E "^A" compleq3.man > compleq3.gen
+#--------------------------------
+# A036507 Smallest square containing exactly n 0's.	nonn,base,changed,synth	1..16
+# A036518 Smallest triangular number containing exactly n 1's.	nonn,base,changed,synth	1..18
+# A036527 Smallest cube containing exactly n 0's.	nonn,base,changed,synth	0..21
+conexdig:
+	cp -v $@.man $@.gen
 #--------------------------------
 # A030465 Numbers n such that n concatenated with n+1 is a square.
 # A030466 Squares that are concatenations of two consecutive nonzero numbers.

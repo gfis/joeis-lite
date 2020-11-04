@@ -69,9 +69,11 @@ public final class SequenceTest {
       try {
         return (Sequence) Class.forName("irvine.oeis.a" + canonicalId.substring(1, 4) + '.' + canonicalId).newInstance();
       } catch (final ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+      /*
         if (isDead(canonicalId)) {
           return DEAD_SEQUENCE;
         }
+      */
         System.err.println(e.getMessage());
         e.printStackTrace();
         throw new UnsupportedOperationException();
