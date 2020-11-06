@@ -2660,6 +2660,15 @@ etlin0:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------
+ecalc:
+	cp -v $(COMMON)/../eta/ecalc.tmp ecalc.gen
+etpsymm:
+	grep -E "ps" $(COMMON)/../eta/ecalc.tmp \
+	| grep -vE "unknown" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 mckay0: mckay1 mckay2 mckay
 mckay1:
 	$(DBAT) -x "SELECT n.aseqno, 'mckay', a.offset1, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'nyi'), a.terms, n.name \
