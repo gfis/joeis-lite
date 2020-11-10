@@ -261,6 +261,8 @@ testex: # parameter: CC=; test all existing (generated) sequences
 	make stripgr  LIST=ghead.tmp
 	make runbt
 	make evaluate
+batch:
+	make seq3 LIST=batch.log
 log: # CC=; generate an HTML page for the failed tests
 	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
 retest: # run the failed ones again (with a higher timeout)
@@ -2668,6 +2670,13 @@ etpsymm:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+etpsymm_eval: batch
+	$(DBAT) -x "SELECT s4.aseqno, s4.callcode, s4.offset, s3.info, s4.parm4, s4.parm5 FROM seq4 s4, seq3 s3 \
+	  WHERE s3.aseqno = s4.aseqno \
+	    AND s4.callcode LIKE '%' ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------
 mckay0: mckay1 mckay2 mckay
 mckay1:
@@ -3652,6 +3661,12 @@ seq2: # parameter: $(LIST)
 	$(DBAT) -m csv -r seq2 < seq2.tmp
 	$(DBAT) -4 seq2
 	$(DBAT) -n seq2
+seq3: # parameter: $(LIST)
+	$(DBAT) -f $(COMMON)/seq3.create.sql
+	cat $(LIST) | grep -E "^A" | cut -f1-3 | sort | uniq > seq3.tmp
+	$(DBAT) -m csv -r seq3 < seq3.tmp
+	$(DBAT) -4 seq3
+	$(DBAT) -n seq3
 seq4: # parameter: $(LIST) with aseqno, offset, parm1, parm2, parm3, parm4, name
 	$(DBAT) -f seq4.create.sql
 	cat $(LIST) | grep -E "^A" | sort | uniq > seq4.tmp
