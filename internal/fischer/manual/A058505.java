@@ -16,7 +16,7 @@ import irvine.oeis.Sequence;
  */
 public class A058505 implements Sequence {
 
-  protected static final int DEBUG = 0;
+  protected static final int DEBUG = System.getenv("DEBUG").length() > 0 ? 1 : 0;
   protected EulerTransform mET1; // the first sequenc
   protected EulerTransform mET2; // the second sequence
   protected int mSpread; // number of zeroes - 1 to be removed from the resulting sequence
@@ -62,18 +62,18 @@ public class A058505 implements Sequence {
     } else {
       for (int iSpread = mSpread - 1; iSpread > 0; --iSpread) { // skip zeroes
         et1 = mET1.next();
-        if (DEBUG > 0) { System.out.println("skip et1=" + et1); }
+        if (DEBUG > 0) { System.out.println("# skip et1=" + et1); }
       } // for skip
       et1 = mET1.next();
       et2 = mET2.next();
-      if (DEBUG > 0) { System.out.println("add et1=" + et1 + " + " + mFactor + "*" + "et2=" + et2); }
       Z result = et1.add(et2.multiply(mFactor));
+      if (DEBUG > 0) { System.out.println("# add (et1=" + et1 + ") + (" + mFactor + ")*(" + "et2=" + et2 + ") -> " + result); }
       if (mN == 0) {
         result = result.add(mAdd0);
       }
       for (int iSpread = mSpread - 1; iSpread > 0; --iSpread) { // skip zeroes
         et2 = mET2.next();
-        if (DEBUG > 0) { System.out.println("skip et2=" + et2); }
+        if (DEBUG > 0) { System.out.println("# skip et2=" + et2); }
       } // for skip
       return result;
     }

@@ -2670,6 +2670,7 @@ etpsymm:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+	make seq2 LIST=etpsymm_squeeze.man
 etpsymm_eval: batch
 	$(DBAT) -x "SELECT s4.aseqno, s4.callcode, s4.offset, s3.info, s4.parm4, s4.parm5 FROM seq4 s4, seq3 s3 \
 	  WHERE s3.aseqno = s4.aseqno \
@@ -2677,6 +2678,9 @@ etpsymm_eval: batch
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+# etpsymm_squeeze:
+#	$(DBAT) -x "UPDATE seq4 s4 SET s4.parm1 = COALESCE((SELECT s2.info FROM seq2 s2 WHERE s2.aseqno = s4.aseqno), 0) \
+#	  WHERE s4.callcode = 'etpsymm' AND s4.parm1 = 0"
 #--------
 mckay0: mckay1 mckay2 mckay
 mckay1:
