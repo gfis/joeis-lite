@@ -1827,8 +1827,9 @@ prod1_xk:
 	| grep -iE "prod" \
 	| grep -vE "produce" \
 	| perl prod1_xk.pl \
-	>        $@.tmp \
-	2>       $@.rest.tmp
+	2>       $@.rest.tmp^\
+	| sort | uniq -w7 \
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
 	make seq4 LIST=$@.tmp
@@ -2665,16 +2666,18 @@ etlin0:
 ecalc:
 	cp -v $(COMMON)/../eta/ecalc.tmp ecalc.gen
 etpsymm:
-	grep -E "ps" $(COMMON)/../eta/ecalc.tmp \
+	grep -E "p" $(COMMON)/../eta/ecalc.tmp \
+	| grep -vE "^A999999" \
 	| grep -vE "unknown" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-	make seq2 LIST=etpsymm_squeeze.man
+	make seq2 LIST=$(COMMON)/../eta/ein1sk.tmp
 etpsymm_eval: batch
-	$(DBAT) -x "SELECT s4.aseqno, s4.callcode, s4.offset, s3.info, s4.parm4, s4.parm5 FROM seq4 s4, seq3 s3 \
+	$(DBAT) -x "SELECT s4.aseqno, s4.callcode, s4.offset, s4.parm1, s3.info, s4.parm4, s4.parm5, s4.parm6 FROM seq4 s4, seq3 s3 \
 	  WHERE s3.aseqno = s4.aseqno \
 	    AND s4.callcode LIKE '%' ORDER BY 1" \
+	| grep -vE "eulerps|etpadd0" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -2684,7 +2687,8 @@ etpsymm_eval: batch
 #--------
 mckay0: mckay1 mckay2 mckay
 mckay1:
-	$(DBAT) -x "SELECT n.aseqno, 'mckay', a.offset1, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'nyi'), a.terms, n.name \
+	$(DBAT) -x "SELECT n.aseqno, 'mckay', a.offset1, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'nyi') \
+	  , a.terms, SUBSTR(n.name, 32) \
 	  FROM asname n \
 	  LEFT JOIN asinfo a on n.aseqno = a.aseqno \
 	  LEFT JOIN bfinfo b on a.aseqno = b.aseqno \
@@ -3661,7 +3665,7 @@ seq: # parameter: $(LIST)
 	$(DBAT) -n seq
 seq2: # parameter: $(LIST)
 	$(DBAT) -f $(COMMON)/seq2.create.sql
-	cat $(LIST) | grep -E "^A" | sort | uniq > seq2.tmp
+	cat $(LIST) | grep -E "^[A-Za-z]" | sort | uniq > seq2.tmp
 	$(DBAT) -m csv -r seq2 < seq2.tmp
 	$(DBAT) -4 seq2
 	$(DBAT) -n seq2
