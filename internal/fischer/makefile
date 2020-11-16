@@ -8,7 +8,7 @@
 #
 GITS=../../..
 LITE=$(GITS)/joeis-lite
-HERE=$(LITE)/internal/fischer
+HERE=../../joeis-lite/internal/fischer
 JOEIS=$(GITS)/joeis
 COMMON=$(GITS)/OEIS-mat/common
 CONTRIB=$(GITS)/OEIS-mat/contrib
@@ -2663,10 +2663,10 @@ etlin0:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------
-ecalc:
-	cp -v $(COMMON)/../eta/ecalc.tmp ecalc.gen
 etpsymm:
+	cd $(COMMON)/../eta ; make ecalc
 	grep -E "p" $(COMMON)/../eta/ecalc.tmp \
+	| grep -vE "etproot" \
 	| grep -vE "^A999999" \
 	| grep -vE "unknown" \
 	>        $@.gen
@@ -2681,18 +2681,15 @@ etpsymm_eval: batch
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-# etpsymm_squeeze:
-#	$(DBAT) -x "UPDATE seq4 s4 SET s4.parm1 = COALESCE((SELECT s2.info FROM seq2 s2 WHERE s2.aseqno = s4.aseqno), 0) \
-#	  WHERE s4.callcode = 'etpsymm' AND s4.parm1 = 0"
 #--------
 mckay0: mckay1 mckay2 mckay
 mckay1:
 	$(DBAT) -x "SELECT n.aseqno, 'mckay', a.offset1, b.bfimax - b.bfimin + 1, COALESCE(j.superclass, 'nyi') \
 	  , a.terms, SUBSTR(n.name, 32) \
 	  FROM asname n \
-	  LEFT JOIN asinfo a on n.aseqno = a.aseqno \
-	  LEFT JOIN bfinfo b on a.aseqno = b.aseqno \
-	  LEFT JOIN joeis  j on b.aseqno = j.aseqno \
+	  LEFT JOIN asinfo a ON n.aseqno = a.aseqno \
+	  LEFT JOIN bfinfo b ON a.aseqno = b.aseqno \
+	  LEFT JOIN joeis  j ON b.aseqno = j.aseqno \
 	  WHERE n.name LIKE '%McKay%' \
 	  ORDER BY 1" \
 	>        $@.tmp
@@ -2713,6 +2710,39 @@ mckay:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+# A003295	mckay	-1	1002	McKayThompsonSequence	1,-5,17,46,116,252,533,1034	11A for the Monster group with a(0) = -5.
+mckay3: # merge with etpsymm
+	cut -f1,5,7 mckay1.tmp \
+	| perl -ne 'use strict; s{\s+\Z}{}; my ($$aseqno, $$superclass, $$code) = split(/\t/); '\
+	' my $$add0 = 0; if ($$code =~ m{with\s+a\(0\)\s*\=\s*(\-?\d+)}) { $$add0 = $$1; } '\
+	' $$code =~ s{\A(\w+).*}{$$1}; print join("\t", $$aseqno, $$superclass, "$$code,$$add0") . "\n";' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	cd $(COMMON) ; make seq3 LIST=$(HERE)/$@.tmp
+mckay4: # already in jOEIS + additional ones by etpsymm
+	$(DBAT) -x "SELECT t.aseqno, t.info, t.pattern, s.callcode, s.parm5, s.parm6 \
+	  FROM seq3 t \
+	  LEFT JOIN seq4 s ON s.aseqno = t.aseqno \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+mckay5: # nyi and not in etpsymm
+	grep -E "nyi" mckay4.tmp \
+	| grep -vE "eulerps|etp" \
+	| sed -e "s/\,0//" -e "s/\t/\tT/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+mckay6: # McKayThompsonSequence and not in etpsymm
+	grep -E "McKayThompsonSequence" mckay4.tmp \
+	| grep -vE "eulerps|etp" \
+	| sed -e "s/\,0//" -e "s/\t/\tT/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #----
 mckay_java:
 	perl mckay_tables.pl > McKayThompsonTables.java
