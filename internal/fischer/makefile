@@ -996,13 +996,16 @@ eulerian:
 #--------------------------------
 # A006526 Egyptian fraction for 1/e.
 # A248319 Egyptian fraction representation of sqrt(96) (A010547) using a greedy function.	nonn,changed,synth	0..8	null
-egyptfract:
-	grep -E "Egyptian fraction" $(COMMON)/joeis_names.txt \
-	| perl -ne 'use strict; if (m{Egyptian fraction representation of sqrt\((\d+)\)}) { my $$root = $$1; my $$aseqno = substr($$_, 0, 7); '\
-	' print join("\t", $$aseqno, "$@", 0, "CR.valueOf($$root).sqrt()") . "\n"; } '\
+egypfr:
+	grep -iE "Egyptian fraction" $(COMMON)/joeis_names.txt \
+	| perl egypfr.pl -d 0 \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	grep -vE "^\#" $@.man >> $@.tmp
+	sort     $@.tmp | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc   -l  $@.gen
+	wc   -l  $@.gen $@.rest.tmp
 #--------------------------------
 floor0: floor1 floor2 floor3 floor4 floor5
 floor1:

@@ -20,7 +20,10 @@ public class EulerInvTransform implements Sequence {
   private final ArrayList<Z> mCs = new ArrayList<>(); // auxiliary sequence
   protected Z[] mPreTerms; // initial terms to be prepended
   protected int mIn; // index for initial terms
-  protected int mN;
+  protected int mN; // current index >= 1, may be used in advance() of a subclass
+  protected boolean mWithExp; // whether there is an additional exponent
+  protected Z mExpNum; // numerator of additional exponent
+  protected Z mExpDen; // denominator of additional exponent
 
   /**
    * Empty constructor;
@@ -33,6 +36,7 @@ public class EulerInvTransform implements Sequence {
     mBs.add(Z.ZERO); // [0] not used
     mCs.add(Z.ZERO); // [0] starts the sum
     mPreTerms = new Z[] { }; // no prefix terms
+    mWithExp = false; // no additional exponent
   }
 
   /**
@@ -108,6 +112,17 @@ public class EulerInvTransform implements Sequence {
   }
 
   /**
+   * Sets the additional fraction as exponent (1/2 means sqrt())
+   * @param num numerator of the additional exponent
+   * @param den denominator of the additional exponent
+   */
+  public void setExponent(final long numerator, final long denominator) {
+    mWithExp = true;
+    mExpNum = Z.valueOf(numerator);
+    mExpDen = Z.valueOf(denominator);
+  }
+  
+  /**
    * Return a term.
    * @return the next term of the transformed sequence.
    */
@@ -117,7 +132,7 @@ public class EulerInvTransform implements Sequence {
       return mPreTerms[mIn++];
     }
     // normal, transform terms
-    mN++; // starts with 1
+    ++mN; // starts with 1
     final Z bNext = mSeq.next();
     mBs.add(bNext == null ? Z.ZERO : bNext); // get next b(n)
     mCs.add(Z.ZERO); // allocate c[n]
@@ -138,6 +153,9 @@ public class EulerInvTransform implements Sequence {
     } // for d
     aSum = aSum.divide(Z.valueOf(i));
     mAs.add(aSum);
+    if (mWithExp) {
+      aSum = aSum.multiply(mExpNum).divide(mExpDen);
+    }
     return aSum;
   }
 
