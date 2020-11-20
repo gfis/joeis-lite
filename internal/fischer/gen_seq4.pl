@@ -309,6 +309,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($debug >= 2) {
         print "# imports: " . join(",", map { "$_\($imports{$_}\)" } sort(keys(%imports))) . "\n";
     } # debug
+    delete($imports{"irvine.oeis.CR"});
 } # extract_imports
 #--------------------------------
 sub get_imports {
