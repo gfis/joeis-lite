@@ -296,6 +296,16 @@ bfile:
 A035536:
 	cp -v A035536.man A035536.gen
 #================================
+# A157536 Half the number of length n integer sequences with sum zero and sum of squares 32.
+a157536:
+	grep -E "Half the number of length n integer sequences with sum" $(COMMON)/joeis_names.txt \
+	| perl -ne 'if (m{sum (\w+) and sum of squares (\d+)\.}) { '\
+	' my ($$s, $$ss) = ($$1, $$2); $$s =~ s{zero}{0}; '\
+	' print join("\t", substr($$_, 0, 7), "$@", 0, $$s, $$ss) . "\n"; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#================================
 bas: # only a few for basdig2
 	make bas_all TARGET=select
 	cat  bas*.gen > basall.gen
