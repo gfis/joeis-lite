@@ -945,10 +945,10 @@ dupl:
 #--------------------------------
 engelex0:
 	grep -iE "(Engel|Pierce) expansion of" $(COMMON)/joeis_names.txt \
-	| perl -ne 'my ($$aseqno, $$superclass, $$name, $$keyword, $$range) = split(/\t/); '\
+	| perl -ne 'use strict; my ($$aseqno, $$superclass, $$name, $$keyword, $$range) = split(/\t/); '\
 	'if ($$name =~ m{\A(Engel|Pierce) expansion of (.*)}) { my ($$cc, $$expr) = ($$1, $$2); '\
 	' $$cc =~ s{Engel}{engelex}; $$cc =~ s{Pierce}{piercex}; $$range =~ s{\s}{}g; '\
-	' print join("\t", $$aseqno, $$cc, 0, "VOID", $$expr, $$range) . "\n" }' \
+	' print join("\t", $$aseqno, $$cc, 0, "VOID", "", $$superclass, $$range, $$expr) . "\n" }' \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp

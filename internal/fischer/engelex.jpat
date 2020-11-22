@@ -12,6 +12,11 @@ import irvine.oeis.EngelExpansionSequence;
  */
 public class $(ASEQNO) extends EngelExpansionSequence {
 
+  /** Construct the sequence */
+  public $(ASEQNO)() {
+    super($(PARM2));
+  }
+
   @Override
   protected CR getN() {
     return $(PARM1);

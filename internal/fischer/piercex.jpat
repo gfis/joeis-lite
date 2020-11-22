@@ -12,6 +12,11 @@ import irvine.oeis.PierceExpansionSequence;
  */
 public class $(ASEQNO) extends PierceExpansionSequence {
 
+  /** Construct the sequence */
+  public $(ASEQNO)() {
+    super($(PARM2));
+  }
+
   @Override
   protected CR getN() {
     return $(PARM1);

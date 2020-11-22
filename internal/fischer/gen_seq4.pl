@@ -292,7 +292,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     } # foreach
     if ($line =~ m{\WZUtils\.})         { $imports{"irvine.math.z.ZUtils"}              = $itype; }
     if ($line =~ m{\WStringUtils\.})    { $imports{"irvine.util.string.StringUtils"}    = $itype; }
-    if ($line =~ m{\WCR\.})             { $imports{"irvine.math.cr.CR"}                 = $itype; }
+    if ($line =~ m{\WCR})               { $imports{"irvine.math.cr.CR"}                 = $itype; }
     if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
