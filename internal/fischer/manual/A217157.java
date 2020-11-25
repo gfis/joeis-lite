@@ -83,29 +83,28 @@ public class A217157 implements Sequence {
    */
   protected int getIDigit(final int count, final String repr) {
     int result = -1;
-    // System.out.println("repr=" + repr);
     int ic = 0;
     final int limit = repr.length() - count;
     while (ic <= limit) {
-      boolean same = true; // assume success
+      boolean same = count > 0; // assume success
       int jc = ic;
-      while (same && jc < ic + mCount - 1) {
-        // System.out.print("repr(" + jc + ")=" + repr.charAt(jc) + ", repr(" + String.valueOf(jc + 1) + ")=" + repr.charAt(jc + 1));
+      while (same && jc < ic + count - 1) {
+        //== System.out.print("# repr(" + jc + ")=" + repr.charAt(jc) + ", repr(" + String.valueOf(jc + 1) + ")=" + repr.charAt(jc + 1));
         if (repr.charAt(jc) == repr.charAt(jc + 1)) {
           ++jc;
         } else {
           same = false;
         }
-        // System.out.println(" -> " + same);
+        //== System.out.println(" -> " + same);
       } // while same
       if (same) {
+        result = Character.digit(repr.charAt(ic), mNumSystem);
         ic = limit + 1; // break loop
-        result = Character.digit(repr.charAt(jc - 1), mNumSystem);
       } else {
         ++ic;
       }
     } // while ic
-    // System.out.println("  getIDigit -> " + result);
+    //== System.out.println("#  getIDigit(count=" + count + ", repr=" + repr + ") -> " + result);
     return result;
   } // getIDigit
 
@@ -123,6 +122,7 @@ public class A217157 implements Sequence {
     while (! found) { // how to prevent infinite looping ??
       ++k;
       final String repr = seq.next().toString(mNumSystem); // = b(k)
+      //== System.out.println("# k=" + k + ", repr=" + repr);
       final int idigit = getIDigit(count, repr); // the identical digit
       if (idigit != -1) {
         found = true;
@@ -137,25 +137,24 @@ public class A217157 implements Sequence {
             result = Z.valueOf(repr.length());
             break;
           default:
-            // System.out.println("** assertion 1: k=" + k + ", digit=" + digit + ", repr=" + repr);
+            //== System.out.println("#** assertion 1: k=" + k + ", idigit=" + idigit + ", repr=" + repr);
             break;
         } // switch 
       }
     } // while found
-    // System.out.println("  findLeastK -> " + result);
+    //== System.out.println("#  findLeastK(seq, count=" + count + ") -> " + result);
     return result;
   } // findLeastK
   
 
   @Override
   public Z next() {
-    // System.out.println("--------next(" + mN + ")--------");
     Z result = null;
     ++mN;
+    //== System.out.println("#--------next() = " + mN + "--------");
     switch ((mFeatures & 0xf0) >> 4) { // high nibble
       case 1: // mN^k
         result = findLeastK(new PowSeries(Z.valueOf(mN)), mCount);
-        // System.out.println("** result = " + result);
         break;
       case 2: // mBase^k
         result = findLeastK(new PowSeries(Z.valueOf(mBase)), mN);
@@ -167,9 +166,10 @@ public class A217157 implements Sequence {
         result = findLeastK(new A000032(), mN);
         break;
       default:
-        // System.out.println("** assertion 2: features=" + mFeatures);
+        //== System.out.println("#** assertion 2: features=" + mFeatures);
         break;
     } // switch mFeatures
+    //== System.out.println("# result = " + result);
     return result;
   } // next
 

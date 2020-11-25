@@ -1447,7 +1447,8 @@ joinlr:
 	wc -l    $@.gen
 #--------------------------------
 idigits:
-	perl $@.pl -d 0 \
+	sed -e "s/^xxxx *//" $@.pl \
+	| perl $@.pl -d 0 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
