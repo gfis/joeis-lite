@@ -1446,6 +1446,12 @@ joinlr:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+idigits:
+	perl $@.pl -d 0 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 jux:
 	make jux_nodep TARGET=gener
 	cat $@?*.gen > $@.gen
