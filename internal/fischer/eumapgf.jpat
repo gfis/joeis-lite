@@ -4,16 +4,16 @@ package irvine.oeis.$(PACK);
 
 import irvine.oeis.EulerTransform;
 import irvine.oeis.GeneratingFunctionSequence;
-import irvine.oeis.PrependSequence;
 
 /**
  * $(ASEQNO) $(NAME)
+ * ET(ogf=$(PARM3), order=$(PARM2))
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) extends PrependSequence {
+public class $(ASEQNO) extends EulerTransform {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(0, new EulerTransform(new GeneratingFunctionSequence($(OFFSET), $(PARM1)), $(PARM2)));
+    super(new GeneratingFunctionSequence($(OFFSET), $(PARM1)), new long[] { $(PARM4) });
   }
 }

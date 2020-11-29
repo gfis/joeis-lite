@@ -2521,7 +2521,7 @@ TYPE=2
 euler: # manual EulerTest PER="1,0,1" INIT=1 NT=32 TYPE=2
 	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -s $(TYPE) -n $(NT) -i $(INIT)
 #----
-eulerper:
+eulerper0:
 	perl eulerper.pl $(COMMON)/cat25.txt \
 	  2>     $@.rest.tmp \
 	>        $@.tmp
@@ -2531,6 +2531,8 @@ eulerper:
 	head -n4 $@.gen
 	wc -l    $@.rest*
 	wc -l    $@.gen
+eulerper:
+	cp -v eulerper.man2 eulerper.gen
 #--------------------------------
 eulerx0: # grep cat25 - takes some time
 	grep -E "Euler|partitions" $(COMMON)/cat25.txt \
@@ -2696,12 +2698,12 @@ eumapgf3:
 	wc   -l  $@.tmp
 eumapgf4:
 	$(PFRACT) -f eumapgf3.tmp \
-	| perl -ne 's{fractv}{eumapgf}; s{\t\[}{\t\"\[}; s{\]\t}{\]\"\t}; s{\]\,\[}{\]\"\, \"\[}; print;' \
+	| perl -ne 's{fractv}{eumapgf}; s{\t\[}{\t\"\[}; s{\]\t}{\]\"\t}; s{\]\,\[}{\]\"\, \"\[}; s{\r}{}g; print;' \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 eumapgf: 
-	grep -vE "A078463|A167991" eumapgf4.tmp > $@.gen
+	grep -vE "A078463|A167991|A337080|A337244" eumapgf4.tmp > $@.gen
 #--------
 etgeneric:
 	grep -E "^A[0-9]" $@.man > $@.gen
