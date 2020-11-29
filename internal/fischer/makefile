@@ -18,6 +18,7 @@ HOLREC=$(GITS)/OEIS-mat/holrec
 TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
+PFRACT=$(RAMATH).symbolic.PolyFraction
 NT=64
 HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 MANY=999999
@@ -2667,6 +2668,40 @@ euguess_short8: # remove all with numbers that are too big
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--
+eumapgf0: eumapgf1 eumapgf2
+eumapgf1:
+	make seq4 LIST=euguess2.tmp
+	$(DBAT) "DELETE FROM seq WHERE aseqno IN (SELECT aseqno FROM joeis);"
+	$(DBAT) -4 seq4
+	$(DBAT) -n seq4
+eumapgf2:
+	$(DBAT) -x "SELECT aseqno, 'fractv', 0, parm2, parm3 FROM seq4 ORDER BY 1" \
+	>        $@.1.tmp
+	head -n4 $@.1.tmp
+	wc   -l  $@.1.tmp
+	perl $(COMMON)/callmaple.pl -t 4 -n 16 -p eumapgf.mpat $@.1.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+eumapgf3:
+	cat eumapgf2.tmp \
+	| grep x | grep -E "\/" | grep -E "\, ogf" | grep -vE "hyperge|Error|\^\(" \
+	| sed -e "s/eumapgf/fractv/" \
+	| perl -ne 'use strict; s/\r?\n//; my ($$aseqno, $$callcode, $$offset, $$parm1, $$parm2) = split(/\t/); '\
+	' $$callcode =~ s/eumapgf/fractv/; $$parm2 =~ s/[\[\]]//g; $$parm2 =~ s/\, ogf//; '\
+	' print join("\t", $$aseqno, $$callcode, $$offset, $$parm2, $$parm1) . "\n";' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+eumapgf4:
+	$(PFRACT) -f eumapgf3.tmp \
+	| perl -ne 's{fractv}{eumapgf}; s{\t\[}{\t\"\[}; s{\]\t}{\]\"\t}; s{\]\,\[}{\]\"\, \"\[}; print;' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+eumapgf: 
+	grep -vE "A078463|A167991" eumapgf4.tmp > $@.gen
 #--------
 etgeneric:
 	grep -E "^A[0-9]" $@.man > $@.gen
@@ -3161,6 +3196,9 @@ latcoddp:
 #----
 latriang:
 	cat $@.man | tee $@.gen
+#----
+list1:
+	cp -v list1.man list1.gen
 #----------------
 logmod:
 	head -n4 $@.gen
