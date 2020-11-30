@@ -403,6 +403,19 @@ basdig4:
 	echo "A045181	basdig4	0	5	0	2	2	1" >> $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+# A037454 a(n) = Sum_{i=0..m} d(i)*6^i, where Sum_{i=0..m} d(i)*3^i is the base 3 representation of n.
+# %t A037314 Table[FromDigits[RealDigits[n, 3], 9], {n, 1, 100}]
+# %t A037454 t = Table[FromDigits[RealDigits[n, 3], 6], {n, 0, 100}]
+rebase:
+	cp -v ofparm3.jpat $@.jpat
+	grep -P "Table *\[ *FromDigits *\[ *RealDigits|a\(n\) *\= *fromdigits\(digits\(n\, *\d+\)\, *\d+\)" $(COMMON)/cat25.txt \
+	| cut -b4- \
+	| perl -ne 'use strict; m{\A(A\d+)\D+(\d+)\D+(\d+)}; '\
+	' print join("\t", $$1, "$@", 0, "A037454", $$2, $$3) . "\n"; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #---
 # A043555 Number of runs in base-3 representation of n.	nonn,base,easy,	0..1000
 basrun:
@@ -1863,7 +1876,7 @@ prod1_xk:
 	| grep -iE "prod" \
 	| grep -vE "produce" \
 	| perl prod1_xk.pl \
-	2>       $@.rest.tmp^\
+	2>       $@.rest.tmp \
 	| sort | uniq -w7 \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -2704,6 +2717,10 @@ eumapgf4:
 	wc -l    $@.tmp
 eumapgf: 
 	grep -vE "A078463|A167991|A337080|A337244" eumapgf4.tmp > $@.gen
+eumapgf5:
+	grep -E "FATO|pass" eumapgf.all.log \
+	>        $@.tmp
+	make seq2 LIST=$@.tmp
 #--------
 etgeneric:
 	grep -E "^A[0-9]" $@.man > $@.gen
@@ -3580,6 +3597,18 @@ sumpow:
 #
 sumpow.min0:
 	cp -v $@.man $@.gen
+#--------
+# A037121	null	Trajectory of 3 under map n -> 47n+1 if n odd, n->n/2 if n even.	nonn,synth	0..20	nyi
+# A037122	null	Trajectory of 3 under map n->49n+1 if n odd, n->n/2 if n even	nonn,synth	0..24	nyi
+trajen:
+	cp -v parm3.jpat $@.jpat
+	grep -E "Trajectory of " $(COMMON)/joeis_names.txt | grep -P " if n odd\, n *\-\> *n\/2 if n even" \
+	| perl -ne 'use strict; my @p = split(/\t/); $$p[2] =~ m{(\d+) under (the )?map \w *\-\> *(\d+)}; '\
+	' my ($$start, $$factor) = ($$1, $$3); print join("\t", $$p[0], "$@", 0, "A033962", $$start, $$factor, $$p[2]) . "\n";'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#================================
 old_one_time_patchs:
 	cat sumpow.man \
 	| grep -E  "^A0033(40|41|42|43|44|45|46)" \
