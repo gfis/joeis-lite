@@ -407,15 +407,29 @@ basdig4:
 # A037454 a(n) = Sum_{i=0..m} d(i)*6^i, where Sum_{i=0..m} d(i)*3^i is the base 3 representation of n.
 # %t A037314 Table[FromDigits[RealDigits[n, 3], 9], {n, 1, 100}]
 # %t A037454 t = Table[FromDigits[RealDigits[n, 3], 6], {n, 0, 100}]
-rebase:
-	cp -v ofparm3.jpat $@.jpat
+rebase0:
 	grep -P "Table *\[ *FromDigits *\[ *RealDigits|a\(n\) *\= *fromdigits\(digits\(n\, *\d+\)\, *\d+\)" $(COMMON)/cat25.txt \
 	| cut -b4- \
 	| perl -ne 'use strict; m{\A(A\d+)\D+(\d+)\D+(\d+)}; '\
-	' print join("\t", $$1, "$@", 0, "A037454", $$2, $$3) . "\n"; '\
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
+	' print join("\t", $$1, "$@", 0, $$2, $$3) . "\n"; '\
+	>        rebase.tmp
+	head -n4 rebase.tmp
+	wc -l    rebase.tmp
+rebase:
+	cp -v rebase.tmp rebase.gen
+find_rebase:
+	perl $@.pl -n 64 | tee $@.txt
+	grep A999 find_rebase.txt
+rebase2:
+	grep -vE "^A999" find_rebase.txt \
+	| grep -E "^A" \
+	| grep -vE "A004777|A039076|A039111|A039155|A039209|A039274|A047368|A047421|A047602|A059561" \
+	| grep -vE "A065039|A081502|A081594|A081595|A081596|A081597|A081598|A081599|A081600|A088481" \
+	| grep -vE "A111706|A145569|A156230|A171397|A187394|A228298|A244158|A247160|A245345|A248375" \
+	| grep -vE "A272574|A272576|A277050|A292638|A309083|A322001|A324161" \
+	>        rebase.tmp
+	head -n4 rebase.tmp
+	wc -l    rebase.tmp
 #---
 # A043555 Number of runs in base-3 representation of n.	nonn,base,easy,	0..1000
 basrun:

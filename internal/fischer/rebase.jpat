@@ -6,10 +6,10 @@ package irvine.oeis.$(PACK);
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) extends $(PARM1) {
+public class $(ASEQNO) extends A037454 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM2), $(PARM3));
+    super($(OFFSET), $(PARM1), $(PARM2));
   }
 }
