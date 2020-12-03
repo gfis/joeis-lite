@@ -5,9 +5,10 @@
 # 2020-08-07, Georg Fischer: copied from wiki_sql.pl
 #
 #:# Usage:
-#:#   perl wiki_tabs.pl [-d debug] [-e] callcode.witab > callcode.wiki.tmp
-#:#       -e create external links to "https://oeis.org/" for A-numbers 
-#:#          (default: automatically linked in the OEIS)
+#:#   perl wiki_tabs.pl [-d debug] [-e 0|1] [-x symbol] callcode.witab > callcode.wiki.tmp
+#:#       -e 1 create external links to "https://oeis.org/" for A-numbers 
+#:#            (default or -e 0: automatically linked in the OEIS)
+#:#       -x s mark diagonal elements with symbol
 #:#   Table seq4 must already be filled by "make CC=callcode select".
 #
 # The rows for a table are read from a view (sumliv.create.sql) with the following fields:
@@ -27,6 +28,7 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
 my $debug    = 0;
 my $callcode = 0;
+my $diagsym  = "";
 my $extern   = 0;
 my $file_no  = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
@@ -38,6 +40,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $callcode = 1;
     } elsif ($opt =~ m{e}) {
         $extern   = shift(@ARGV);
+    } elsif ($opt =~ m{x}) {
+        $diagsym  = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -140,13 +144,18 @@ sub generate_table {
     foreach my $row (@matrix) { # fetch all rows and print the wiki table rows
         my ($new_aseqno, $new_name, $new_rowval, $new_colval) = split(/\t/, $row);
         if ($new_rowval ne $old_rowval) { # group change in rowval, print old row
-        	if ($debug >= 1) {
-        		print STDERR "----group change from \"$old_rowval\" to \"$new_rowval\"\n";
-        	}
+            $old_rowval =~ m{(\d+)};
+            $rown = $1;
+            if ($debug >= 1) {
+                print STDERR "----group change from \"$old_rowval\" to \"$new_rowval\"\n";
+            }
             if (length($aseqno) > 0) {
                 @wikicols = (); # prepare for next row
                 for ($coln = $mincoln; $coln <= $maxcoln; $coln ++) {
-                    push (@wikicols, defined($colvals[$coln]) ? $colvals[$coln] : $nbsp);
+                    push (@wikicols, defined($colvals[$coln]) 
+                        ? $colvals[$coln] 
+                        : ($coln == $rown && length($diagsym) > 0 ? "<center>$diagsym</center>" : $nbsp)
+                        );
                 } # for coln
                 print "| $old_rowval ||" # one wiki table row
                 . join("||", @wikicols) . "\n"

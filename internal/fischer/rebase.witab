@@ -1,0 +1,31 @@
+=== Rebase notation <code>b[n]q</code>: rebase from base b into base q ===
+Quotation from A000695:
+<ht:blockquote>
+This may be described concisely using the "rebase" notation <code>b[n]q</code>, 
+which means "replace b with q in the expansion of n", thus "rebasing" n from base b into base q. 
+The present sequence is <code>2[n]4</code>. Many interesting operations 
+(e.g., <code>10[n](1/10)</code> = digit reverse, shifted) are nicely expressible this way. 
+Note that <code>q[n]b</code> is (roughly) inverse to <code>b[n]q</code>. 
+It's also natural to generalize the idea of "basis" so as to cover the likes of 
+<code>F[n]2</code>, the so-called "fibbinary" numbers (A003714) and provide standard 
+ready-made images of entities obeying other arithmetics, say like 
+<code>GF2[n]2</code> (e.g., primes = A014580, squares = the present sequence, etc.). - _Marc LeBrun_, Mar 24 2005
+</ht:blockquote>
+<!--witab
+    <select>
+        <col>(CASE 
+    <!--
+        WHEN aseqno = 'A000695'   THEN '<strong>' || aseqno || '</strong>'
+    -->
+        WHEN callcode = 'rebasep' THEN aseqno || '<sup>1</sup>' 
+        WHEN offset = 1           THEN aseqno || '<sup>2</sup>' 
+        ELSE                           aseqno END)</col>
+        <col>parm4</col>
+        <col>'q=' || parm2</col>
+        <col>'b=' || parm1</col>
+        <from>seq4</from>
+        <where>callcode LIKE 'rebase%'
+        </where>
+        <order by="CAST(parm2 AS INT), CAST(parm1 AS INT)"/>
+    </select>
+witab-->

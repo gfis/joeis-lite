@@ -24,6 +24,7 @@ HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTe
 MANY=999999
 CLASS=dummy.java
 D=0
+EL=0
 TO=4
 TOADD=4000
 WAITM=100
@@ -430,6 +431,9 @@ rebase2:
 	>        rebase.tmp
 	head -n4 rebase.tmp
 	wc -l    rebase.tmp
+rebasewi:
+	perl wiki_tabs.pl -e $(EL) -d $(D) -x "&mdash;" rebase.witab \
+	>        rebase.wiki
 #---
 # A043555 Number of runs in base-3 representation of n.	nonn,base,easy,	0..1000
 basrun:
@@ -2161,10 +2165,10 @@ deris1:
 	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	# echo -n "euler"                            > eulerx.deris.tmp
+	echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
-	echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
 	# echo -n "partial product"                  > partprod.deris.tmp
 	# echo -n "partial sum"                      > partsum.deris.tmp
 	# echo -n "prime"                            > primepos.deris.tmp
@@ -2172,6 +2176,7 @@ deris1:
 	# echo -n "record"                           > recordpos.deris.tmp
 	# echo -n "record"                           > recordval.deris.tmp
 	# echo -n "stirling"                         > stirling2.deris.tmp
+	# echo -n "weigh "                           > weigh.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
@@ -3109,7 +3114,7 @@ euleri_old2:
 #-----------------
 euleras: # difficult initial terms
 	perl -ne \
-	'my $$line = $$_; if (($$line =~ m{Euler transform of (A\d+)}) and ($$line !~ m{Inverse Euler})) { '\
+	'my $$line = $$_; if (($$line =~ m{Euler transform of (A\d+)}) and ($$line !~ m{Inverse Euler}i)) { '\
 	'my ($$adepend) = ($$1); '\
 	'if (1) {'\
 	'$$line =~ m{^\%\w (A\d+)}; my $$aseqno = $$1;'\
@@ -3119,6 +3124,15 @@ euleras: # difficult initial terms
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------
+eulern: # EulerTransform; difficult initial terms
+	grep -iE "Euler transform" $(COMMON)/cat25.txt | cut -b4- \
+	| uniq -w7 \
+	| perl eulern.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 eulerasinv: # about 24, with difficult initial terms
 	perl -ne \
 	'my $$line = $$_; if (($$line =~ m{Inverse Euler transform of (A\d+)}i)) { '\
@@ -3162,6 +3176,11 @@ evconst: # 6 remaining
 		  > $(CC).gen
 	head -4 $(CC).gen
 	wc -l   $(CC).gen
+#--------------------------------
+get1pseq: # Generalized Euler transform of 1/(1+x^k)^Aseqno
+	cp -v $@.man $@.gen
+	head -4 $@.gen
+	wc -l   $@.gen
 #--------------------------------
 kblocks: all done
 	perl kblocks.pl \
@@ -3565,9 +3584,9 @@ sumlipo.diff:
 	diff -wy --width=32 --suppress-common-lines d1.tmp d2.tmp
 	rm -v d1.tmp d2.tmp
 sumlipow:
-	perl wiki_tabs.pl -e $(EX) -d $(D) sumlipo.witab \
-	> sumlipo.wiki
-	# | tee    sumlipo.wiki
+	perl wiki_tabs.pl -e $(EL) -d $(D) sumlipo.witab \
+	>        sumlipo.wiki
+	# | tee  sumlipo.wiki
 #----
 sumway: # Numbers that are the sum of 2 nonzero squares in exactly 1 way.
 	cat $(COMMON)/joeis_names.txt \
