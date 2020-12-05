@@ -86,6 +86,7 @@ my %callcodes = qw(
     recordpos RecordPositionSubsequence
     recordval RecordSubsequence
     stirling2 Stirling2TransformSequence
+    weighx    WeighTransformSequence
     );
 my %levels = qw(first 1 second 2 third 3 ternary 3 fourth 4 4th 4 
                 fifth 5 5th 5 sixth 6 6th 6 seventh 7 7th 7 8th 8 eighth 8 
@@ -264,6 +265,15 @@ while (<>) {
         } elsif ($callcode =~ m{\Astirling2}) {
             if ($name =~ m{\A(STIRLING|Stirling)2? transform of (A\d{6})}) {
                 $rseqno = $2;
+            }
+            if ($isok = &is_defined_rseqno()) {
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Aweigh}) {
+            if ($name =~ m{\A(Weigh|weighout) transform of (A\d{6})}i) {
+            if ($name !~ m{inverse we}i) {
+                $rseqno = $2;
+            }
             }
             if ($isok = &is_defined_rseqno()) {
             }

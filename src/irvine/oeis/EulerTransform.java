@@ -123,8 +123,7 @@ public class EulerTransform implements Sequence {
     for (int d = 1; d <= i; ++d) { // compute c[n] = sum ...
       if (i % d == 0) { // "did(i,d)"
         final Z fTerm = mFs.get(d);
-        if (! fTerm.equals(Z.ZERO)) 
-        { // ends in zero for all finite f(n)
+        if (! fTerm.isZero()) { // ends in zero for all finite f(n)
           cSum = cSum.add(fTerm.multiply(d));
         } // else f(n) = 0: ignore
       } // else not "did(i,d)"
@@ -134,7 +133,7 @@ public class EulerTransform implements Sequence {
     for (int d = 1; d < i; ++d) {
       bSum = bSum.add(mCs.get(d).multiply(mBs.get(i - d)));
     } // for d
-    bSum = bSum.divide(Z.valueOf(i));
+    bSum = bSum.divide(i);
     mBs.add(bSum);
     return bSum;
   } 

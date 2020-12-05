@@ -80,7 +80,7 @@ public class GeneralizedEulerTransform implements Sequence {
   }
 
   /**
-   * Create a new sequence 
+   * Create a new sequence
    * with additional long terms prepended.
    * @param seqF first underlying sequence
    * @param seqG second underlying sequence
@@ -91,21 +91,21 @@ public class GeneralizedEulerTransform implements Sequence {
     this(seqF, seqG);
     mPreTerms = ZUtils.toZ(preTerms);
   }
-  
+
   /**
    * Return a term.
    * @return the next term of the transformed sequence.
    */
   @Override
-  public Z next() { 
+  public Z next() {
     if (mIn < mPreTerms.length) { // during prepend phase
       return mPreTerms[mIn++];
     }
     // normal, transform terms
     ++mN; // starts with 1
-    final Z fNext = advanceF(); // underlying sequence will see mN = 1, 2, 3, ... 
+    final Z fNext = advanceF(mN);
     mFs.add(fNext == null ? Z.ZERO : fNext); // get next f(n), care for finite f returning null
-    final Z gNext = advanceG(); // underlying sequence will see mN = 1, 2, 3, ... 
+    final Z gNext = advanceG(mN);
     mGs.add(gNext == null ? Z.ZERO : gNext); // get next g(n), care for finite g returning null
     mCs.add(Z.ZERO); // allocate c[n]
     final int i = mN;
@@ -114,12 +114,12 @@ public class GeneralizedEulerTransform implements Sequence {
       if (i % d == 0) { // "did(i,d)"
         final int idd = i / d;
         final Z fTerm = mFs.get(d);
-        if (! fTerm.equals(Z.ZERO)) { // ends in zero for all finite f(n)
+        if (! fTerm.isZero()) { // ends in zero for all finite f(n)
           Z cTerm = fTerm.multiply(d);
           final Z gTerm = mGs.get(d);
-          if (! gTerm.equals(Z.ZERO)) {
+          if (! gTerm.isZero()) {
             //---- start of the generalization
-            if (! gTerm.equals(Z.ONE)) { // != 1 
+            if (! gTerm.equals(Z.ONE)) { // != 1
               if (gTerm.equals(Z.NEG_ONE)) {
                 if ((idd & 1) != 0) { // (-1)^odd
                   cTerm = cTerm.negate();
@@ -135,31 +135,33 @@ public class GeneralizedEulerTransform implements Sequence {
       } // else not "did(i,d)"
     } // for d
     mCs.set(i, cSum); // = c[n]
-    Z bSum = mCs.get(i); 
+    Z bSum = mCs.get(i);
     for (int d = 1; d < i; ++d) {
       bSum = bSum.add(mCs.get(d).multiply(mBs.get(i - d)));
     } // for d
-    bSum = bSum.divide(Z.valueOf(i));
+    bSum = bSum.divide(i);
     mBs.add(bSum);
     return bSum;
-  } 
+  }
 
   /**
    * Wrapper around <code>mSeqF.next()</code>.
    * When this method is overwritten, super.mN runs through 1, 2, 3, and so on.
+   * @param n current index, exponent of x
    * @return next term of the underlying sequence f to be Euler transformed
    */
-  protected Z advanceF() {
+  protected Z advanceF(final long n) {
     return mSeqF.next();
   }
-  
+
   /**
    * Wrapper around <code>mSeqG.next()</code>.
    * When this method is overwritten, super.mN runs through 1, 2, 3, and so on.
+   * @param n current index, exponent of x
    * @return next term of the underlying sequence g to be Euler transformed
    */
-  protected Z advanceG() {
+  protected Z advanceG(final long n) {
     return mSeqG.next();
   }
-  
+
 }

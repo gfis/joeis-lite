@@ -1895,15 +1895,42 @@ prod1_xk:
 	| grep -vE "produce" \
 	| perl prod1_xk.pl \
 	2>       $@.rest.tmp \
-	| sort | uniq -w7 \
+	| sort -k2 -k5 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
+prod1_xk_db_old:
 	make seq4 LIST=$@.tmp
 	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"
 	$(DBAT) -10000 seq4 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+prodet:
+	cp -v prodet.man $@.tmp
+	perl prodet.pl prod1_xk.tmp \
+	>>       $@.tmp
+	grep -E "^A" $@.tmp | sort | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+prodet3:
+	cat prodet3.gen	
+prodetm:
+	grep -E "^A" prodet.man > prodetm.gen	
+#----
+genet_jp:
+	perl genet.pl -cc genet | tee genet.jpat
+genet: # parameters for GeneralizedEulerTransform
+	grep -v y prod1_xk.tmp \
+	perl genet.pl \
+	>        $@.tmp \
+	2>       $@.rest.tmp
+	grep -E "^A" $@.tmp | sort | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+# Generalized ET
+a151668:
+	cp -v $@.man $@.gen
 #--------------------------------
 prodfin0: prodfin1 prodfin
 prodfin1:
@@ -1929,19 +1956,7 @@ prodfin:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-#---	
-#----
-prodet:
-	cp -v prodet.man $@.tmp
-	perl prodet.pl prod1_xk.tmp \
-	>>       $@.tmp
-	grep -E "^A" $@.tmp | sort | uniq -w7 > $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-prodet3:
-	cat prodet3.gen	
-prodetm:
-	grep -E "^A" prodet.man > prodetm.gen	
+#--------
 #----
 yves_martin: ym0 ym1
 ym0:
@@ -2165,7 +2180,7 @@ deris1:
 	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	echo -n "euler"                            > eulerx.deris.tmp
+	# echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
 	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
 	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
@@ -2176,7 +2191,7 @@ deris1:
 	# echo -n "record"                           > recordpos.deris.tmp
 	# echo -n "record"                           > recordval.deris.tmp
 	# echo -n "stirling"                         > stirling2.deris.tmp
-	# echo -n "weigh "                           > weigh.deris.tmp
+	echo -n "weigh"                           > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====

@@ -1,10 +1,14 @@
 #!perl
 
-# Extract parameters for product formulas 1/(1 - x^k)^(abc)
+# Extract parameters for product formulas 1/(1 - x^k)^(abc) and similiar
+# 2020-12-04: (1 +- ax^k)^(b*k) etc.
 # 2020-10-10, Georg Fischer
 #
 #:# Usage:
-#:#   perl prodeti.pl prod1_xk.tmp > prodet.gen
+#:#   perl prodet.pl [-d debug] [-f ofter_file] prod1_xk.gen > prodet.gen
+#:#     -d  debugging level (0=none (default), 1=some, 2=more)
+#:#     -f  file with aseqno, offset1, terms (default $(COMMON)/joeis_ofter.txt)
+#:# Reads ofter_file for implemented jOEIS sequences with their offsets and first terms
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -15,7 +19,43 @@ my $negate = 0; # whether "not modulo ..."
 my $VOID = "A000000";
 my ($aseqno, $callcode, $offset, $var, $name, @rest);
 my $rseqno;
-
+my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
+my $debug   = 0;
+my $pseudo  = 0;
+my $prepend = 0;
+while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
+    my $opt = shift(@ARGV);
+    if (0) {
+    } elsif ($opt   =~ m{\-cc}i) {
+        $callcode   = shift(@ARGV);
+    } elsif ($opt   =~ m{\-d}  ) {
+        $debug      = shift(@ARGV);
+    } elsif ($opt   =~ m{\-f}  ) {
+        $ofter_file = shift(@ARGV);
+    } elsif ($opt   =~ m{\-prep} ) {
+        $prepend    = 1;
+    } elsif ($opt   =~ m{\-pseudo} ) {
+        $pseudo     = 1;
+    } else {
+        die "invalid option \"$opt\"\n";
+    }
+} # while $opt
+#----------------
+my $terms;
+my %ofters = ();
+open (OFT, "<", $ofter_file) || die "cannot read $ofter_file\n";
+while (<OFT>) {
+    s{\s+\Z}{};
+    ($aseqno, $offset, $terms) = split(/\t/);
+    $terms = $terms || "";
+    if ($offset < -1) { # offsets -2, -3: strange, skip these
+    } else {
+        $ofters{$aseqno} = "$offset\t$terms";
+    }
+} # while <OFT>
+close(OFT);
+print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
+#----------------
 while (<>) {
     s/\s+\Z//; # chompr
     $line = $_;
@@ -31,10 +71,22 @@ while (<>) {
         $callcode = "prodet";
         &output();
 
-    } elsif ($name =~ m{Prod(uct)?_\{([i-n])>0\}\s*\(1\s*\-\s*][xq]\^\2\)\^(A\d+)\(\2\)}) {
-		# Product_{k>0} (1 - x^k)^A038548(k)
+    } elsif ($name =~ m{Prod(uct)?_\{([i-n])\>0\}\s*\(1\s*\-\s*][xq]\^\2\)\^(A\d+)\(\2\)}) {
+        # Product_{k>0} (1 - x^k)^A038548(k)
         $rseqno = $3;
         $callcode = "prodetn";
+        &output();
+
+    } elsif ($name =~ m{Prod(uct)?_\{([i-n])\>0\}\s*1\/\(1\s*\+\s*[xq]\^\2\)\^(A\d+)\(\2\)}) {
+        # Product_{k>0} 1/(1 + x^k)^A056924(k)
+        $rseqno = $3;
+        $callcode = "prodetq";
+        &output();
+
+    } elsif ($name =~ m{Prod(uct)?_\{([i-n])\>0\}\s*\(1\s*\+\s*][xq]\^\2\)\^(A\d+)\(\2\)}) {
+        # Product_{k>0} (1 + x^k)^A038548(k)
+        $rseqno = $3;
+        $callcode = "prodetp";
         &output();
 
     #--------
@@ -47,7 +99,9 @@ while (<>) {
 } # while <>
 #================================
 sub output { # global $line, @periods, $reason
-    print join("\t", $aseqno, $callcode, $offset, $rseqno, 1, '', '', $name) . "\n";
+    if (defined($ofters{$rseqno})) { # found and implemented in jOEIS {
+        print join("\t", $aseqno, $callcode, $offset, $rseqno, 1, '', '', $name) . "\n";
+    }
 } # output
 #--------
 __DATA__
