@@ -11,9 +11,8 @@ import irvine.oeis.GeneralizedEulerTransform;
  */
 public class A151668 extends GeneralizedEulerTransform {
 
-  protected long mA;
-  protected long mB;
-  protected Z mStone; // next milestone with a non-zero x^n
+  protected int mA;
+  protected int mB;
   
   /** Construct the sequence. */
   public A151668() {
@@ -29,23 +28,24 @@ public class A151668 extends GeneralizedEulerTransform {
     super(1);
     mA = a;
     mB = b;
-    mStone = Z.ONE;
+    mHp1 = 1;
   }
 
   @Override
-  protected Z advanceF(final long n) {
+  protected Z advanceF(final int k) {
     return Z.NEG_ONE;
   }
-  
+
   @Override
-  protected Z advanceG(final long n) {
-    Z result = Z.ZERO;
-    if (mStone.equals(Z.valueOf(n))) {
-      result = Z.valueOf(- mA);
-      mStone = mStone.multiply(mB);
-    } // else 0
-    return result;
+  protected Z advanceG(final int k) {
+    return Z.valueOf(- mA);
   }
-  
+
+
+  @Override
+  protected int advanceH(final int k) {
+    mHp1 *= mB;
+    return mHp1;
+  }
 
 }
