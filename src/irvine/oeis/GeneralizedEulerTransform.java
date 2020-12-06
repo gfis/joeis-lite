@@ -26,9 +26,6 @@ import irvine.oeis.a000.A000012; // all 1's
  */
 public class GeneralizedEulerTransform implements Sequence {
 
-  protected Sequence mSeqF; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
-  protected Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
-  protected Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
   private static final int ESTLEN = 16384; // estimated length of arrays
   private final ArrayList<Z> mFs = new ArrayList<>(ESTLEN); // first underlying sequence (Manyama's f(k))
   private final ArrayList<Z> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
@@ -39,6 +36,10 @@ public class GeneralizedEulerTransform implements Sequence {
   protected int mIn; // index for initial terms
   protected int mK; // current index k >= 1
 
+  protected Sequence mSeqF; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
+  protected Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
+  protected Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
+  protected int[] mParms; // additional parameters
   /**
    * Empty constructor;
    * initializes the internal properties
@@ -75,7 +76,7 @@ public class GeneralizedEulerTransform implements Sequence {
   public GeneralizedEulerTransform(final Sequence seqF, final Sequence seqG, final Z... preTerms) {
     mIn = 0; // for prepending
     mK = 0;
-    mHp1 = advanceH(mK + 1); // always
+    mHp1 = 1;
     mFs.add(Z.ZERO); // [0] not used
     mGs.add(Z.ZERO); // [0] not used
     mBs.add(Z.ZERO); // [0] is not returned
@@ -150,7 +151,9 @@ public class GeneralizedEulerTransform implements Sequence {
     for (int d = 1; d < i; ++d) {
       bSum = bSum.add(mCs.get(d).multiply(mBs.get(i - d)));
     } // for d
-    bSum = bSum.divide(i);
+    if (i > 0) {
+      bSum = bSum.divide(i);
+    }
     mBs.add(bSum);
     return bSum;
   }

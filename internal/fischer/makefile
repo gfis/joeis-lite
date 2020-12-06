@@ -1921,11 +1921,12 @@ prodetm:
 genet_jp:
 	perl genet.pl -cc genet | tee genet.jpat
 genet: # parameters for GeneralizedEulerTransform
-	grep -v y prod1_xk.tmp \
-	perl genet.pl \
+	grep -vEi "y" prod1_xk.tmp \
+	| perl genet.pl \
 	>        $@.tmp \
 	2>       $@.rest.tmp
-	grep -E "^A" $@.tmp | sort | uniq -w7 > $@.gen
+	grep -E "^A" $@.tmp | sort | uniq -w7 \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
 # Generalized ET

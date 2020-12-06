@@ -41,11 +41,9 @@ public class A151668 extends GeneralizedEulerTransform {
     return Z.valueOf(- mA);
   }
 
-
   @Override
   protected int advanceH(final int k) {
-    mHp1 *= mB;
-    return mHp1;
+    return mHp1 * mB;
   }
 
 }
