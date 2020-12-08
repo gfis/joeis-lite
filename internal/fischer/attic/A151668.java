@@ -25,7 +25,7 @@ public class A151668 extends GeneralizedEulerTransform {
    * @param b base of n-th power 
    */
   public A151668(final int a, final int b) {
-    super(1);
+    super(new long[] { 1L });
     mA = a;
     mB = b;
     mHp1 = 1;

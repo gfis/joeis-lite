@@ -1893,7 +1893,8 @@ prod1_xk:
 	grep -iE "^\%[NFtpo]" $(COMMON)/cat25.txt \
 	| grep -iE "prod" \
 	| grep -vE "produce" \
-	| perl prod1_xk.pl \
+	| perl prod_polish.pl \
+	| perl prod1_xk.pl -a \
 	2>       $@.rest.tmp \
 	| sort -k2 -k5 \
 	>        $@.tmp
@@ -1922,6 +1923,7 @@ genet_jp:
 	perl genet.pl -cc genet | tee genet.jpat
 genet: # parameters for GeneralizedEulerTransform
 	grep -vEi "y" prod1_xk.tmp \
+	| sed -f $@.sed \
 	| perl genet.pl \
 	>        $@.tmp \
 	2>       $@.rest.tmp
@@ -1929,6 +1931,9 @@ genet: # parameters for GeneralizedEulerTransform
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
+	cut -f2  $@.rest.tmp | sort | uniq -c
+genet_plerr:
+	perl -ne 'if (m{(\?\d\w+)}) { print "$$1\n";}' genet.pl | sort | uniq -c
 # Generalized ET
 a151668:
 	cp -v $@.man $@.gen

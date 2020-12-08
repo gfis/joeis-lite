@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
-import irvine.oeis.a000.A000012; // all 1's
 
 /**
  * Apply the generalized Euler transform to two other sequences f and g, as defined in OEIS A266964:
@@ -45,7 +44,25 @@ public class GeneralizedEulerTransform implements Sequence {
    * initializes the internal properties
    */
   public GeneralizedEulerTransform() {
-  	this(new A000012(), new A000012(), new Z[] { });
+  	this(new long[] { 1L });
+  }
+
+  /**
+   * Create a new sequence with additional terms at the front.
+   * @param preTerms additional terms to be prepended;
+   */
+  public GeneralizedEulerTransform(final long[] preTerms) {
+    mSeqF = null;
+    mSeqG = null;
+    mPreTerms = ZUtils.toZ(preTerms);
+
+    mIn = 0; // for prepending
+    mK = 0;
+    mHp1 = 1;
+    mFs.add(Z.ZERO); // [0] not used
+    mGs.add(Z.ZERO); // [0] not used
+    mBs.add(Z.ZERO); // [0] is not returned
+    mCs.add(Z.ZERO); // [0] starts the sum
   }
 
   /**
@@ -54,36 +71,9 @@ public class GeneralizedEulerTransform implements Sequence {
    * @param seqG second underlying sequence
    */
   public GeneralizedEulerTransform(final Sequence seqF, final Sequence seqG) {
-    this(seqF, seqG, new Z[] { });
-  }
-
-  /**
-   * Create a new sequence with additional terms at the front.
-   * @param preTerms additional terms to be prepended;
-   */
-  public GeneralizedEulerTransform(final long... preTerms) {
-    this(new A000012(), new A000012(), preTerms);
-  }
-
-  /**
-   * Create the Euler transform of the given sequence,
-   * with additional Z terms prepended.
-   * @param seqF first underlying sequence
-   * @param seqG second underlying sequence
-   * @param preTerms additional terms to be prepended;
-   * usually there is a leading one.
-   */
-  public GeneralizedEulerTransform(final Sequence seqF, final Sequence seqG, final Z... preTerms) {
-    mIn = 0; // for prepending
-    mK = 0;
-    mHp1 = 1;
-    mFs.add(Z.ZERO); // [0] not used
-    mGs.add(Z.ZERO); // [0] not used
-    mBs.add(Z.ZERO); // [0] is not returned
-    mCs.add(Z.ZERO); // [0] starts the sum
+    this(new long[] { 1L });
     mSeqF = seqF;
     mSeqG = seqG;
-    mPreTerms = preTerms;
   }
 
   /**
@@ -94,7 +84,7 @@ public class GeneralizedEulerTransform implements Sequence {
    * @param preTerms additional terms to be prepended;
    * usually there is a leading one.
    */
-  public GeneralizedEulerTransform(final Sequence seqF, final Sequence seqG, final long... preTerms) {
+  public GeneralizedEulerTransform(final Sequence seqF, final Sequence seqG, final long[] preTerms) {
     this(seqF, seqG);
     mPreTerms = ZUtils.toZ(preTerms);
   }

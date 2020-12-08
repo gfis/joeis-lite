@@ -5,7 +5,9 @@
 #
 #:# Usage:
 #:#   grep -iE "prod" $(COMMON)/cat25.txt \
-#:#   | perl prod1_xk.pl [-d debug]  [-f ofter_file] > $@.tmp
+#:#   | perl prod1_xk.pl [-a] [-d debug]  [-f ofter_file] > $@.tmp
+#:#     -a  take all (default: only those nyi in jOEIS)
+#:#     -d  debugging level (0=none (default), 1=some, 2=more)
 #:#     -f  file with aseqno, offset1, terms (default $(COMMON)/joeis_ofter.txt)
 # Generates the following callcodes:
 #   prod1_xk
@@ -16,12 +18,15 @@ use warnings;
 
 my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
 my $debug   = 0;
+my $take_all = 0;
 my $VOID = "A000000";
 my ($aseqno, $callcode, $offset, $var, $name, @rest);
 my $rseqno;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
+    } elsif ($opt  =~ m{a}) {
+        $take_all  = 1;
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
     } elsif ($opt   =~ m{\-f}  ) {
@@ -70,7 +75,7 @@ while (<>) {
             $rest = "";
             $form =~ s{ *in powers of \w.*}{};
             if ($form =~ s{(\,? *where .*)}{}) {
-            	$rest = $1;
+                $rest = $1;
             }
             $form =~ s{ }{}g;
             $exp = "k";
@@ -86,6 +91,30 @@ while (<>) {
             $start =~ s{\A\>0\Z}{\>=1};
             $start =~ s{\A\>1\Z}{\>=2};
             &output();
+        } elsif ($name =~ m{CoefficientList *\[ *Series *\[ *Product *\[ *([^\,]+)\, *\{ *([a-z]) *\, *(\w+)}) {
+            #                                                             1               2            3
+            $exp = $2;
+            $form = $1;
+            $start = ">=$3";
+            if ($start =~ m{[a-z]}) {
+                $start = ">=1";
+            }
+            $rest = "";
+            $form =~ s{\s}{}g;
+            $form =~ s{$exp}{k};
+            &output();
+        } elsif ($name =~ m{SeriesCoefficient *\[ *Product *\[ *([^\,]+)\, *\{ *([a-z]) *\, *(\w+)}) {
+            #                                                   1               2            3
+            $exp = $2;
+            $form = $1;
+            $start = ">=$3";
+            if ($start =~ m{[a-z]}) {
+                $start = ">=1";
+            }
+            $rest = "";
+            $form =~ s{\s}{}g;
+            $form =~ s{$exp}{k};
+            &output();
         } else {
             print STDERR "$line";
         }
@@ -93,7 +122,7 @@ while (<>) {
 } # while <>
 #----
 sub output {
-    if (defined($ofters{$rseqno}) and ! defined($ofters{$aseqno})) {
+    if (defined($ofters{$rseqno}) && ($take_all || ! defined($ofters{$aseqno}))) {
         print join("\t", $aseqno, $callcode, 0, "k", $form, $start, $rest). "\n";
     }
 } # output

@@ -77,30 +77,40 @@ while (<>) {
     $form =~ s{[qz]}{x}g; # normalize q,z -> x
     $form =~ s{([\d\)])x}{$1\*x}g; # insert "*" between ")x" or "3x"
     $form =~ s{\,k\=1\Z}{}; # A052827
+    $form =~ s{\)\=}{\)};
     $callcode = "?1init";
     @parms    = ();
-    if ($form =~ m{(y|sum|prod|exp)}i) {
-        # ignore
+    if ($form =~ m{(y|sum|prod|exp|sqrt|floor|ceil)}i) {
+        $callcode = "?7yfunc";
+    } elsif ($form =~ m{eta\(}) {
+        $callcode = "?9etaf"; 
+    } elsif ($form =~ m{theta}) {
+        $callcode = "?Atheta"; 
+    } elsif ($form =~ m{a\(}) {
+        $callcode = "?Baeti"; 
+    } elsif ($form =~ m{\)\/\(}) {
+        $callcode = "?Cfract"; 
     } elsif ($form =~ m{x[^x]*x}) {
-        $callcode = "?6dupx";
-    } elsif ($form =~ m{\A\(1([\+\-])(\d+\*|A\d+\([i-n]\)\*|\([^\)]+\)\*|)x\^(\w|\([^\)]+\))\)(\^(.*))?\Z}) {
-        #                    1(gsig)12(  gfactor                        )2x^ 3(      hexp )3  4( 5  )4
-        # A151668   prod1_xk    0   k   (1+2*x^(3^k))   >=0 
-        ($gsig, $gfactor, $hexp, $fexp) = ($1, $2, $3, $5 || 1);
-        $fsig = "+"; # f must be negated
-        &translate($gsig, $gfactor, $hexp, $fexp);
+        $callcode = "?6dupx"; 
 
+    # A151668   prod1_xk    0   k   (1+2*x^(3^k))   >=0 
+    # A317913   prod1_xk    0   k   (1+k*x^k)   >=2
+    } elsif ($form =~ m{\A(1\/)?\(1([\+\-])(\w+\*|\w\*\w|A\d+\([i-n]\)\*|\([^\)]+\)\*|)x\^(\w|\([^\)]+\))\)(\^.*)?\Z}) {
+        #                 (1s1)    (2gsig2)(3  gfactor                               3)x^ (4 hexp      4)  (5f 5)
+        #                        (a 1 +-       g                                    *  x ^ h             a)  ^(-f)
+        ($fsig, $gsig, $gfactor, $hexp, $fexp) = ($1 || "", $2, $3, $4, $5 || 1);
+        $fsig = ($fsig eq "") ? "+" : "-";
+        $gfactor =~ s{\*\Z}{}; # remove *
+        &translate($fsig, $gsig, $gfactor, $hexp, $fexp);
+
+    # A151668   prod1_xk    0   k   (1+2*x^(3^k))   >=0 
     } elsif ($form =~ m{\A\(1([\+\-])(\d+)\*[xq]\^\((\d+)\^\w\)\)(\^(\d+))?\Z}) {
-        # A151668   prod1_xk    0   k   (1+2*x^(3^k))   >=0 
+
     }
-    #--------
-    # %N A116377 Number of partitions of n into parts with digital root = 7.
-    # %N A147787 Number of partitions of n into parts divisible by 4,6 or 9.
-    # etc.
 
     if ($callcode =~ m{\A\?}) { # write it into $@.rest.tmp
         $line =~ s{\t\w+\t}{\t$callcode\t};
-        print STDERR "$line\n"; 
+        print STDERR "$line " . join("\t", @parms) . "\n"; 
     } else {
         $used_ccs{$callcode} = 1; # this is referenced
         &output();
@@ -115,16 +125,48 @@ foreach $callcode (keys(%used_ccs)) {
 } # foreach
 #================================
 sub translate {
-        my ($gsig, $gfactor, $hexp, $fexp) = @_;
+        my ($fsig, $gsig, $gfactor, $hexp, $fexp) = @_;
         $callcode = "genet";
         my ($constr, $f, $g, $h);
         $start =~ m{(\d+)};
         $start = $1;
-        $constr = "~~super(1);~~mK = 0;"; # . (($start >= 1) ? ($start - 1) : 0) . ";";
+        $constr = "~~super();~~mK = 0;"; # . (($start >= 1) ? ($start - 1) : 0) . ";";
+        #-- fexp = 1 | 2 | A-number(k)
+        $fexp =~ s{\A\^?}{}; # remove ^
+        $fexp =~ s{\A\((.*)\)\Z}{$1}; # remove surrounding ()
+        $f = $fexp;
+        if ($fexp eq "1") { # 1
+            $f = ($fsig eq "-") ? "Z.ONE" : "Z.NEG_ONE";
+        } elsif ($fexp =~ m{\A[k\d\+\*\-\()]+\Z}) { # expression in k, without ^
+            $f = "Z.valueOf(" . (($fsig eq "-") ? "$fexp)" : "-($fexp))");
+        } elsif ($fexp =~ m{\A\((\w+)\^(\w+)\)\Z}) { # (2^k) or (k^3) or (k^k)
+            $fexp = &power_k($1, $2);
+            $f = $fexp          . (($fsig eq "-") ? "" : ".negate()");
+        } elsif ($fexp =~ m{\A(A\d+)\(\w\)([\+\-\*]\w)?\Z}) { # A123456(k)-1
+            $rseqno = $1;
+            my $appendix = $2 || "";
+            my $ofter = $ofters{$rseqno};
+            if (defined($ofter)) {
+                my ($roffset, $rterms) = split(/\t/, $ofter);
+                $constr .= "~~mSeqF = new $rseqno();" . (($roffset == 0) ? "~~mSeqF.next();" : "");
+            } else {
+                $callcode = "?3rnunF"; # do not output
+            }
+            $f = "mSeqF.next()";
+            if ($appendix ne "") {
+            	$appendix =~ s{\A\-}{.subtract\(};
+            	$appendix =~ s{\A\+}{.add\(};
+            	$appendix =~ s{\A\*}{.multiply\(};
+            	$f .= "$appendix)";
+            } 
+            $f .= (($fsig eq "-") ? "" : ".negate()");
+        } else {
+            $callcode = "?4serrF"; # no output
+        }
         #-- gsig = + | -
         # $gsig = ($gsig eq "+") ? "-" : "";
-        #-- gfactor = | A123456(k)* | 3* | (expr)* |
-        $gfactor =~ s{\*\Z}{};
+        #-- gfactor = | A123456(k) | 3 | k | (expr)* 
+        $g = "$gsig$gfactor";
         if ($gfactor eq "") {
             $g = ($gsig eq "-") ? "Z.ONE" : "Z.NEG_ONE";
         } elsif ($gfactor =~ m{\A(A\d+)\(}) { # A-number
@@ -134,47 +176,58 @@ sub translate {
                 my ($roffset, $rterms) = split(/\t/, $ofter);
                 $constr .= "~~mSeqG = new $rseqno();" . (($roffset == 0) ? "~~mSeqG.next();" : "");
             } else {
-                $callcode = "?2rndefG"; # do not output
+                $callcode = "?2rnunG"; # do not output
             }
             $g = "mSeqG.next()" . (($gsig eq "-") ? "" : ".negate()");
-        } elsif ($gfactor =~ m{\A(\d+)\Z}) { # 3
-            $g = "Z.valueOf("   . (($gsig eq "-") ? "" : "-") . "$gfactor)";
-        } else {
-            $g = "Z.valueOf("   . (($gsig eq "-") ? "" : "-") . "$gfactor)";
+        } else { # 3 | k | (expr)* 
+            if (0) {
+            } elsif ($gfactor =~ m{\A(\d+)\Z}) { # 3 
+                $g = $znames[$gfactor] || "Z.valueOf($gfactor)";
+            } elsif ($gfactor =~ m{\A(k)\Z}) { # k
+                $g = "Z.valueOf($gfactor)";
+            } elsif ($gfactor =~ m{\A(\w+)\^(\w+)\Z}) { # k^2 or 2^k
+                $g = &power_k($1, $2);
+            } elsif ($gfactor =~ m{\A\(([k\d\+\-\*]+)\)\Z}) { # (2*k+1), but no "^"
+                $g = "Z.valueOf($gfactor)";
+            } else {
+                $callcode = "?8serrG";
+            }
+            $g .= (($gsig eq "-") ? "" : ".negate()");
         }
         if ($start >= 2) {
-        	$g = "(mK < $start) ? Z.ZERO : $g";
+            $g = "(mK < $start) ? Z.ZERO : $g";
         }
-        # fexp = 1 | 2 | A-number(k)
-        if ($fexp eq "1") {
-            $f = ($fsig eq "+") ? "Z.NEG_ONE" : "Z.ONE";
-        } elsif ($fexp =~ m{\A[k\d\+\*\-\()]+\Z}) { # expression in k, without ^
-            $f = "Z.valueOf("   . (($fsig eq "-") ? "$fexp" : "-($fexp))");
-        } elsif ($fexp =~ m{\A(A\d+\(\w\))\Z}) { # A123456(k)
-            $rseqno = $1;
-            if (defined($ofters{$rseqno})) {
-                $constr .= "~~mSeqF = new $rseqno();";
-            } else {
-                $callcode = "?3rndefF"; # do not output
-            }
-            $f = "mSeqF.next()" . (($fsig eq "-") ? "" : ".negate()");
-        } else {
-            $callcode = "?4syntF"; # no output
-        }
-        # hexp = k | (3^k)
+        #-- hexp = k | (3^k)
+        $h = $hexp;
         if ($hexp eq "k") {
             $h = "k";
         } elsif ($hexp =~ m{\A\((\d+)\^k\)\Z}) { # (3^k)
             my $b = $1;
             $h = "mHp1 * $b";
         } else {
-            $callcode = "?5syntH";
+            $callcode = "?5serrH";
         }
         if (length($constr) > 0) {
             $constr = "~~    $constr";
         }
         @parms = ($constr, $f, $g, $h);
 } # translate
+#----
+sub power_k {
+    my ($base, $exp) = @_;
+    my $result;
+    if ($base eq "k") {
+        $result = "Z.valueOf(k).pow($exp)";
+    } elsif ($base =~ m{\A\d+\Z}) {
+        if ($base <= 10) {
+            $base = $znames[$base];
+        } else {
+            $base = "Z.valueOf($base)";
+        }
+        $result = "$base.pow($exp)";
+    }
+    return $result;
+} # power_k
 #----
 sub output { # global $line, @periods, $reason
     print join("\t", $aseqno, $callcode, $offset, @parms, '', '', $form) . "\n";
