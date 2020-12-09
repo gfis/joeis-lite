@@ -75,7 +75,7 @@ while (<>) {
     ($aseqno, $callcode, $offset, $k, $form, $start, @rest) = split(/\t/, $line);
     $form =~ s{\^\((A\d+\([i-n]\))\)}{\^$1}g; # remove () around ^(A-number(k))
     $form =~ s{[qz]}{x}g; # normalize q,z -> x
-    $form =~ s{([\d\)])x}{$1\*x}g; # insert "*" between ")x" or "3x"
+    $form =~ s{([\d\)])([xk])}{$1\*$2}g; # insert "*" between ")x" or "3k"
     $form =~ s{\,k\=1\Z}{}; # A052827
     $form =~ s{\)\=}{\)};
     $callcode = "?1init";
@@ -130,7 +130,7 @@ sub translate {
         my ($constr, $f, $g, $h);
         $start =~ m{(\d+)};
         $start = $1;
-        $constr = "~~super();~~mK = 0;"; # . (($start >= 1) ? ($start - 1) : 0) . ";";
+        $constr = "~~super();"; # . (($start >= 1) ? ($start - 1) : 0) . ";";
         #-- fexp = 1 | 2 | A-number(k)
         $fexp =~ s{\A\^?}{}; # remove ^
         $fexp =~ s{\A\((.*)\)\Z}{$1}; # remove surrounding ()
@@ -154,10 +154,10 @@ sub translate {
             }
             $f = "mSeqF.next()";
             if ($appendix ne "") {
-            	$appendix =~ s{\A\-}{.subtract\(};
-            	$appendix =~ s{\A\+}{.add\(};
-            	$appendix =~ s{\A\*}{.multiply\(};
-            	$f .= "$appendix)";
+                $appendix =~ s{\A\-}{.subtract\(};
+                $appendix =~ s{\A\+}{.add\(};
+                $appendix =~ s{\A\*}{.multiply\(};
+                $f .= "$appendix)";
             } 
             $f .= (($fsig eq "-") ? "" : ".negate()");
         } else {
@@ -197,16 +197,29 @@ sub translate {
         if ($start >= 2) {
             $g = "(mK < $start) ? Z.ZERO : $g";
         }
-        #-- hexp = k | (3^k)
+        #-- hexp = k | (...)
         $h = $hexp;
-        if ($hexp eq "k") {
+        if ($hexp eq "k") { # k
             $h = "k";
         } elsif ($hexp =~ m{\A\((\d+)\^k\)\Z}) { # (3^k)
             my $b = $1;
             $h = "mHp1 * $b";
+            $constr .= "~~mHp1 = 1;"
+        } elsif ($hexp =~ m{\A\(k^2\)\Z}) { # (k^2)
+            $h = "k * k";
+        } elsif ($hexp =~ m{\A\(k^(\d+)\)\Z}) { # (k^2)
+            my $exp = $1;
+            $h = "k";
+            while ($exp > 1) {
+                $h .= " * k";
+                $exp --;
+            }
+        } elsif ($hexp =~ m{\A\(([k\d\*\+\-\(\)]+)\)\Z}) { # (3*k+1)
+            $h = $1;
         } else {
             $callcode = "?5serrH";
         }
+        #-- constr
         if (length($constr) > 0) {
             $constr = "~~    $constr";
         }
@@ -256,17 +269,17 @@ $(PARM1)
   }
 
   @Override
-  protected Z advanceF(final int k) {
+  protected Z advanceF(final long k) {
     return $(PARM2);
   }
 
   @Override
-  protected Z advanceG(final int k) {
+  protected Z advanceG(final long k) {
     return $(PARM3);
   }
 
   @Override
-  protected int advanceH(final int k) {
+  protected long advanceH(final long k) {
     return $(PARM4);
   }
 

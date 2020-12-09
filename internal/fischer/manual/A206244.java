@@ -20,8 +20,8 @@ public class A206244 extends GeneralizedEulerTransform {
   }
 
   @Override
-  protected int advanceH(final int k) {
-    return mSeqH.next().intValue();
+  protected long advanceH(final long k) {
+    return mSeqH.next().longValue();
   }
 
 }
