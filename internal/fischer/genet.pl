@@ -67,12 +67,12 @@ print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read fr
 my @znames = ( "Z.ZERO", "Z.ONE", "Z.TWO", "Z.THREE", "Z.FOUR"
              , "Z.FIVE", "Z.SIX", "Z.SEVEN", "Z.EIGHT", "Z.NINE", "Z.TEN");
 my @parms;
-my ($gsig, $hexp, $fexp, $fsig, $gfactor, $k, $form, $start, $constr, @rest);
+my ($gsig, $hexp, $fexp, $fsig, $gfactor, $k, $form, $kstart, $constr, @rest);
 
 while (<>) {
     s/\s+\Z//; # chompr
     $line = $_;
-    ($aseqno, $callcode, $offset, $k, $form, $start, @rest) = split(/\t/, $line);
+    ($aseqno, $callcode, $offset, $k, $form, $kstart, @rest) = split(/\t/, $line);
     $form =~ s{\^\((A\d+\([i-n]\))\)}{\^$1}g; # remove () around ^(A-number(k))
     $form =~ s{[qz]}{x}g; # normalize q,z -> x
     $form =~ s{([\d\)])([xk])}{$1\*$2}g; # insert "*" between ")x" or "3k"
@@ -128,9 +128,9 @@ sub translate {
         my ($fsig, $gsig, $gfactor, $hexp, $fexp) = @_;
         $callcode = "genet";
         my ($constr, $f, $g, $h);
-        $start =~ m{(\d+)};
-        $start = $1;
-        $constr = "~~super();"; # . (($start >= 1) ? ($start - 1) : 0) . ";";
+        $kstart =~ m{(\d+)};
+        $kstart = $1;
+        $constr = "~~super(\$(OFFSET), $kstart);"; # . (($kstart >= 1) ? ($kstart - 1) : 0) . ";";
         #-- fexp = 1 | 2 | A-number(k)
         $fexp =~ s{\A\^?}{}; # remove ^
         $fexp =~ s{\A\((.*)\)\Z}{$1}; # remove surrounding ()
@@ -194,28 +194,22 @@ sub translate {
             }
             $g .= (($gsig eq "-") ? "" : ".negate()");
         }
-        if ($start >= 2) {
-            $g = "(mK < $start) ? Z.ZERO : $g";
+        if ($kstart >= 2) {
+            $g = "(mK < $kstart) ? Z.ZERO : $g";
         }
         #-- hexp = k | (...)
         $h = $hexp;
-        if ($hexp eq "k") { # k
-            $h = "k";
+        if (0) {
+        } elsif ($hexp eq "k") { # k
+            $h = "Z.valueOf(k)";
         } elsif ($hexp =~ m{\A\((\d+)\^k\)\Z}) { # (3^k)
-            my $b = $1;
-            $h = "mHp1 * $b";
-            $constr .= "~~mHp1 = 1;"
+            $h = &power_k($1, "k");
         } elsif ($hexp =~ m{\A\(k^2\)\Z}) { # (k^2)
-            $h = "k * k";
-        } elsif ($hexp =~ m{\A\(k^(\d+)\)\Z}) { # (k^2)
-            my $exp = $1;
-            $h = "k";
-            while ($exp > 1) {
-                $h .= " * k";
-                $exp --;
-            }
+            $h = "Z.valueOf(k * k)";
+        } elsif ($hexp =~ m{\A\(k^(\d+)\)\Z}) { # (k^5)
+            $h = &power_k("k", $1);
         } elsif ($hexp =~ m{\A\(([k\d\*\+\-\(\)]+)\)\Z}) { # (3*k+1)
-            $h = $1;
+            $h = "Z.valueOf($1)";
         } else {
             $callcode = "?5serrH";
         }
@@ -243,7 +237,7 @@ sub power_k {
 } # power_k
 #----
 sub output { # global $line, @periods, $reason
-    print join("\t", $aseqno, $callcode, $offset, @parms, '', '', $form) . "\n";
+    print join("\t", $aseqno, $callcode, $offset, @parms, $kstart, $form) . "\n";
 } # output
 #--------
 sub write_jpat {
@@ -269,17 +263,17 @@ $(PARM1)
   }
 
   @Override
-  protected Z advanceF(final long k) {
+  protected Z advanceF(final int k) {
     return $(PARM2);
   }
 
   @Override
-  protected Z advanceG(final long k) {
+  protected Z advanceG(final int k) {
     return $(PARM3);
   }
 
   @Override
-  protected long advanceH(final long k) {
+  protected Z advanceH(final int k) {
     return $(PARM4);
   }
 

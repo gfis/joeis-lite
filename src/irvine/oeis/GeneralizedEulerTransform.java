@@ -30,7 +30,7 @@ public class GeneralizedEulerTransform implements Sequence {
   private final ArrayList<Z> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
   private final ArrayList<Z> mBs = new ArrayList<>(ESTLEN); // resulting sequence (Manyama's a(n))
   private final ArrayList<Z> mCs = new ArrayList<>(ESTLEN); // auxiliary sequence (Manyama's b(n))
-  protected long mHp1; // next term of the sequence h(k)
+  protected Z mNextH; // next term of the sequence h(k)
   protected Z[] mPreTerms; // initial terms to be prepended
   protected int mIn; // index for initial terms
   protected int mK; // current index k >= 1 for f() and g()
@@ -40,55 +40,45 @@ public class GeneralizedEulerTransform implements Sequence {
   protected Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
   protected Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
   protected int[] mParms; // additional parameters
+
   /**
    * Empty constructor;
    * initializes the internal properties
    */
   public GeneralizedEulerTransform() {
-  	this(new long[] { 1L });
+    this(0, 1, new long[] { 1L });
   }
 
   /**
    * Create a new sequence with additional terms at the front.
+   * @param offset index of first term
+   * @param kStart start value for k
    * @param preTerms additional terms to be prepended;
    */
-  public GeneralizedEulerTransform(final long[] preTerms) {
+  public GeneralizedEulerTransform(final int offset, final int kStart) {
+    this(offset, kStart, new long[] { 1L });
+  }
+
+  /**
+   * Create a new sequence with additional terms at the front.
+   * @param offset index of first term
+   * @param kStart start value for k
+   * @param preTerms additional terms to be prepended;
+   */
+  public GeneralizedEulerTransform(final int offset, final int kStart, final long[] preTerms) {
     mSeqF = null;
     mSeqG = null;
     mPreTerms = ZUtils.toZ(preTerms);
     mIn = 0; // for prepending
     mK = 0;
-    mKh = 1;
-    mHp1 = 1; // for a^k in advanceH(mKh)
-    mHp1 = advanceH(mKh);
-    mFs.add(Z.ZERO); // [0] not used
-    mGs.add(Z.ZERO); // [0] not used
-    mBs.add(Z.ZERO); // [0] is not returned
-    mCs.add(Z.ZERO); // [0] starts the sum
-  }
-
-  /**
-   * Create a new sequence with no additional terms at the front.
-   * @param seqF first underlying sequence
-   * @param seqG second underlying sequence
-   */
-  public GeneralizedEulerTransform(final Sequence seqF, final Sequence seqG) {
-    this(new long[] { 1L });
-    mSeqF = seqF;
-    mSeqG = seqG;
-  }
-
-  /**
-   * Create a new sequence
-   * with additional long terms prepended.
-   * @param seqF first underlying sequence
-   * @param seqG second underlying sequence
-   * @param preTerms additional terms to be prepended;
-   * usually there is a leading one.
-   */
-  public GeneralizedEulerTransform(final Sequence seqF, final Sequence seqG, final long[] preTerms) {
-    this(seqF, seqG);
-    mPreTerms = ZUtils.toZ(preTerms);
+    for (int k = 0; k < 1; ++k) { // kStart; ++k) {
+      mFs.add(Z.ZERO); // [0] not used
+      mGs.add(Z.ZERO); // [0] not used
+      mBs.add(Z.ZERO); // [0] is not returned
+      mCs.add(Z.ZERO); // [0] starts the sum
+    } // while < kStart
+    mKh = (kStart <= 1) ? kStart : 1;
+    mNextH = Z.valueOf(mKh); // Z.ONE; // for a^k in advanceH(mKh)
   }
 
   /**
@@ -102,15 +92,15 @@ public class GeneralizedEulerTransform implements Sequence {
     }
     // normal, transform terms
     ++mK; // starts with 1
-    final Z fNext = advanceF(mK);
-    mFs.add(fNext == null ? Z.ZERO : fNext); // get next f(k), care for finite f returning null
-    final Z gNext = advanceG(mKh); // get next g(k), 
-    if (mK < mHp1) { // invalidate this g(k)
-      mGs.add(Z.ZERO);
-    } else { // mK = mHp1 : this g(k) is valid
-      mGs.add(gNext == null ? Z.ZERO : gNext); // care for finite g returning null
+    final Z nextF = advanceF(mKh); // or advanceF(mK) ??? why?
+    mFs.add(nextF == null ? Z.ZERO : nextF); // get next f(k), care for finite f returning null
+    final Z nextG = advanceG(mKh); // get next g(k), 
+    if (Z.valueOf(mK).compareTo(mNextH) < 0) { 
+      mGs.add(Z.ZERO); // invalidate this g(k)
+    } else { // mK = mNextH : this g(k) is valid
+      mGs.add(nextG == null ? Z.ZERO : nextG); // care for finite g returning null
       ++mKh;
-      mHp1 = advanceH(mKh); // next stop value
+      mNextH = advanceH(mKh); // next stop value
     }
     mCs.add(Z.ZERO); // allocate c[n]
     final int i = mK;
@@ -158,7 +148,7 @@ public class GeneralizedEulerTransform implements Sequence {
    * @param k current index, exponent of x
    * @return next term of the underlying sequence f in the definition of the transform
    */
-  protected Z advanceF(final long k) {
+  protected Z advanceF(final int k) {
     return Z.ONE;
   }
 
@@ -167,7 +157,7 @@ public class GeneralizedEulerTransform implements Sequence {
    * @param k current index, exponent of x
    * @return next term of the underlying sequence g in the definition of the transform
    */
-  protected Z advanceG(final long k) {
+  protected Z advanceG(final int k) {
     return Z.ONE;
   }
 
@@ -178,8 +168,8 @@ public class GeneralizedEulerTransform implements Sequence {
    * int is sufficient here since in the OEIS we assume that indexes (exponents of x) remain &lt; 10^6.
    * @return next term of the underlying sequence h in the definition of the transform
    */
-  protected long advanceH(final long k) {
-    return k;
+  protected Z advanceH(final int k) {
+    return Z.valueOf(k);
   }
 
 }
