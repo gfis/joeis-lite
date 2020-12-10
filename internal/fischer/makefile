@@ -1919,10 +1919,9 @@ prodet3:
 prodetm:
 	grep -E "^A" prodet.man > prodetm.gen	
 #----
-genet_jp:
-	perl genet.pl -cc genet | tee genet.jpat
 genet: # parameters for GeneralizedEulerTransform
-	grep -vEi "y" prod1_xk.tmp \
+	cat prod1_xk.tmp prod1_xk.man \
+	| grep -vEi "y" \
 	| sed -f $@.sed \
 	| perl genet.pl \
 	>        $@.tmp \
@@ -1934,6 +1933,11 @@ genet: # parameters for GeneralizedEulerTransform
 	cut -f2  $@.rest.tmp | sort | uniq -c
 genet_plerr:
 	perl -ne 'if (m{(\?\d\w+)}) { print "$$1\n";}' genet.pl | sort | uniq -c
+genet_update:
+	make seq LIST=genet.pass.log
+	$(DBAT) "UPDATE joeis j SET superclass = 'GeneralizedEulerTransform' WHERE j.aseqno IN (SELECT aseqno FROM seq);"
+	cd $(COMMON); make joeis_names
+#----
 # Generalized ET
 a151668:
 	cp -v $@.man $@.gen

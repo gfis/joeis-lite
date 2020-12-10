@@ -78,6 +78,7 @@ while (<>) {
     $form =~ s{([\d\)])([xk])}{$1\*$2}g; # insert "*" between ")x" or "3k"
     $form =~ s{\,k\=1\Z}{}; # A052827
     $form =~ s{\)\=}{\)};
+    $form =~ s{k\^2\b}{k\*k}g;
     $callcode = "?1init";
     @parms    = ();
     if ($form =~ m{(y|sum|prod|exp|sqrt|floor|ceil)}i) {
@@ -95,16 +96,21 @@ while (<>) {
 
     # A151668   prod1_xk    0   k   (1+2*x^(3^k))   >=0 
     # A317913   prod1_xk    0   k   (1+k*x^k)   >=2
-    } elsif ($form =~ m{\A(1\/)?\(1([\+\-])(\w+\*|\w\*\w|A\d+\([i-n]\)\*|\([^\)]+\)\*|)x\^(\w|\([^\)]+\))\)(\^.*)?\Z}) {
-        #                 (1s1)    (2gsig2)(3  gfactor                               3)x^ (4 hexp      4)  (5f 5)
-        #                        (a 1 +-       g                                    *  x ^ h             a)  ^(-f)
+    } elsif ($form =~ m{\A(1\/)?\(1([\+\-])(\w+\*|\w\*\w|A\d+\([i-n]\)\*|\([^\)]+\)\*|)x\^(\w|\([^\)]+\)|A\d+\(k\))\)(\^.*)?\Z}) {
+        #                 (1s1)    (2gsig2)(3  gfactor                               3)x^ (4 hexp                4)  (5f 5)
+        #                        (a 1 +-       g                                    *  x ^ h                       a)  ^(-f)
         ($fsig, $gsig, $gfactor, $hexp, $fexp) = ($1 || "", $2, $3, $4, $5 || 1);
         $fsig = ($fsig eq "") ? "+" : "-";
         $gfactor =~ s{\*\Z}{}; # remove *
         &translate($fsig, $gsig, $gfactor, $hexp, $fexp);
 
-    # A151668   prod1_xk    0   k   (1+2*x^(3^k))   >=0 
-    } elsif ($form =~ m{\A\(1([\+\-])(\d+)\*[xq]\^\((\d+)\^\w\)\)(\^(\d+))?\Z}) {
+    } elsif ($form =~ m{\A(1\/)?\(1([\+\-])([^x]+)x\^(\w|\([^\)]+\)|A\d+\(k\))\)(\^.*)?\Z}) {
+        #                 (1s1)    (2gsig2)(3gf 3)x ^(4 hexp                4)  (5f 5)
+        #                        (a 1 +-       g                                    *  x ^ h                       a)  ^(-f)
+        ($fsig, $gsig, $gfactor, $hexp, $fexp) = ($1 || "", $2, $3, $4, $5 || 1);
+        $fsig = ($fsig eq "") ? "+" : "-";
+        $gfactor =~ s{\*\Z}{}; # remove *
+        &translate($fsig, $gsig, $gfactor, $hexp, $fexp);
 
     }
 
@@ -139,12 +145,23 @@ sub translate {
             $f = ($fsig eq "-") ? "Z.ONE" : "Z.NEG_ONE";
         } elsif ($fexp =~ m{\A[k\d\+\*\-\()]+\Z}) { # expression in k, without ^
             $f = "Z.valueOf(" . (($fsig eq "-") ? "$fexp)" : "-($fexp))");
+        } elsif ($fexp =~ m{\A(\w+)\^(\w+)\Z}) { # 2^k or k^3 or k^k
+            $fexp = &power_k($1, $2);
+            $f = $fexp          . (($fsig eq "-") ? "" : ".negate()");
+        } elsif ($fexp =~ m{\A\-(\w+)\^(\w+)\Z}) { # -2^k or -k^3 or -k^k
+            $fexp = &power_k($1, $2);
+            $fsig = ($fsig eq "-") ? "+" : "-"; # negate
+            $f = $fexp          . (($fsig eq "-") ? "" : ".negate()");
         } elsif ($fexp =~ m{\A\((\w+)\^(\w+)\)\Z}) { # (2^k) or (k^3) or (k^k)
             $fexp = &power_k($1, $2);
             $f = $fexp          . (($fsig eq "-") ? "" : ".negate()");
-        } elsif ($fexp =~ m{\A(A\d+)\(\w\)([\+\-\*]\w)?\Z}) { # A123456(k)-1
-            $rseqno = $1;
-            my $appendix = $2 || "";
+        } elsif ($fexp =~ m{\A(\-)?(A\d+)\(\w\)([\+\-\*]\w)?\Z}) { # A123456(k)-1
+            my $sign = $1 || "+";
+            if ($sign eq "-") {
+                $fsig = ($fsig eq "-") ? "+" : "-"; # negate
+            }
+            $rseqno = $2;
+            my $appendix = $3 || "";
             my $ofter = $ofters{$rseqno};
             if (defined($ofter)) {
                 my ($roffset, $rterms) = split(/\t/, $ofter);
@@ -160,6 +177,9 @@ sub translate {
                 $f .= "$appendix)";
             } 
             $f .= (($fsig eq "-") ? "" : ".negate()");
+            $f =~ s{valueOf\(\-\(\-(\d+)\)\)}{valueOf\($1\)}g;
+        } elsif ($fexp =~ m{\Abinomial\(}) { # binomial(m,n)
+        	$f = "irvine.math.z.Binomial.$fexp";
         } else {
             $callcode = "?4serrF"; # no output
         }
@@ -193,6 +213,7 @@ sub translate {
                 $callcode = "?8serrG";
             }
             $g .= (($gsig eq "-") ? "" : ".negate()");
+            $g =~ s{valueOf\(\-\(\-(\d+)\)\)}{valueOf\($1\)}g;
         }
         if ($kstart >= 2) {
             $g = "(mK < $kstart) ? Z.ZERO : $g";
@@ -202,14 +223,24 @@ sub translate {
         if (0) {
         } elsif ($hexp eq "k") { # k
             $h = "Z.valueOf(k)";
-        } elsif ($hexp =~ m{\A\((\d+)\^k\)\Z}) { # (3^k)
+        } elsif ($hexp =~ m{\A\((\d+)\^k\)\Z}          ) { # (3^k)
             $h = &power_k($1, "k");
-        } elsif ($hexp =~ m{\A\(k^2\)\Z}) { # (k^2)
+        } elsif ($hexp =~ m{\A\(k\^2\)\Z}              ) { # (k^2)
             $h = "Z.valueOf(k * k)";
-        } elsif ($hexp =~ m{\A\(k^(\d+)\)\Z}) { # (k^5)
+        } elsif ($hexp =~ m{\A\(k\^([k\d+])\)\Z}       ) { # (k^5) or (k^k)
             $h = &power_k("k", $1);
         } elsif ($hexp =~ m{\A\(([k\d\*\+\-\(\)]+)\)\Z}) { # (3*k+1)
             $h = "Z.valueOf($1)";
+        } elsif ($hexp =~ m{\A(A\d+)\(k\)\Z}           ) { # A123456(k)
+            $rseqno = $1;
+            my $ofter = $ofters{$rseqno};
+            if (defined($ofter)) {
+                my ($roffset, $rterms) = split(/\t/, $ofter);
+                $constr .= "~~mSeqH = new $rseqno();" . (($roffset == 0) ? "~~mSeqH.next();" : "");
+            } else {
+                $callcode = "?2rnunH"; # do not output
+            }
+            $h = "mSeqH.next()"; # . (($hsig eq "-") ? "" : ".negate()");
         } else {
             $callcode = "?5serrH";
         }

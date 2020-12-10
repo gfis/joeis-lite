@@ -17,8 +17,8 @@ while (<>) {
     	my ($tcode, $aseqno, $form) = ($1, $2, $3);
     	$form =~ s{ in powers of x|[\;\,] [mk]\=1\.\.inf}{};
     	$form =~ s{\s}{}g;
-    	$form =~ tr{mq}{kx};
-    	$form =~ s{\^\-(\d+)}{\(\-$1\)};
+    	$form =~ tr{jmqtz}{kkxxx};
+    	$form =~ s{\^\-(\d+)}{\^\(\-$1\)};
     	$form = "\{k>=1\}$form";
     	print join(" ", $tcode, $aseqno, "Expansion of Product_$form") . "\n";
     } else {
