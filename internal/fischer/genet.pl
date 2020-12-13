@@ -64,8 +64,8 @@ while (<OFT>) {
 close(OFT);
 print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
 #----------------
-my @znames = ( "Z.ZERO", "Z.ONE", "Z.TWO", "Z.THREE", "Z.FOUR"
-             , "Z.FIVE", "Z.SIX", "Z.SEVEN", "Z.EIGHT", "Z.NINE", "Z.TEN");
+my %znames = (0, "Z.ZERO", 1, "Z.ONE", 2, "Z.TWO"  , 3, "Z.THREE", 4, "Z.FOUR"
+             ,5, "Z.FIVE", 6, "Z.SIX", 7, "Z.SEVEN", 8, "Z.EIGHT", 9, "Z.NINE", 10, "Z.TEN");
 my @parms;
 my ($gsig, $hexp, $fexp, $fsig, $gfactor, $k, $form, $kstart, $constr, @rest);
 
@@ -146,16 +146,25 @@ sub translate {
         $kstart =~ m{(\d+)};
         $kstart = $1;
         $constr = "~~super(\$(OFFSET), $kstart);"; # . (($kstart >= 1) ? ($kstart - 1) : 0) . ";";
+        
         #-- fexp = 1 | 2 | A-number(k)
         $fexp =~ s{\A\^?}{}; # remove ^
         $fexp =~ s{\A\((.*)\)\Z}{$1}; # remove surrounding ()
+        my $froot = "";
         $f = $fexp;
-        if ($fexp eq "1") { # 1
+        if (0) {
+        } elsif ($fexp eq "1")                       { # 1
             $f = ($fsig eq "-") ? "Z.ONE" : "Z.NEG_ONE";
-        } elsif ($fexp =~ m{\A[k\d\+\-\*(\)]+(\/\d)?\Z}) { # expression in k, without ^, optional trailing "/6"
+        } elsif ($fexp =~ m{\A([k\d\+\-\*(\)]+)(\/\d)?\Z}) { # expression in k, without ^, optional trailing "/6"
             $fexp = (($fsig eq "-") ? "$fexp" : "-($fexp)");
             $fexp =~ s{\A\-\(\-([k\d\/\*]+)\)\Z}{$1}; # -(-(1/2)) -> 1/2
-            $f = "Z.valueOf($fexp)";
+            $fexp =~ s{\A\-\(([k\d\/\*]+)\)\Z}{\-$1}; # -(1/2) -> -1/2
+            if ($fexp =~ m{\A([k\d\+\-\*(\)]+)\/(\d)\Z}) { # with trailing "/6"
+                ($fexp, $froot) = ($1, $2);
+            $f = "Z.valueOf($fexp), " . ($znames{$froot} || "Z.valueOf($froot)");
+            } else {
+                $f = "Z.valueOf($fexp)";
+            }
         } elsif ($fexp =~ m{\A(\w+)\^(\w+)\Z})       { # 2^k or k^3 or k^k
             $fexp = &power_k($1, $2);
             $f = $fexp          . (($fsig eq "-") ? "" : ".negate()");
@@ -194,18 +203,23 @@ sub translate {
             }
             $f .= (($fsig eq "-") ? "" : ".negate()");
             $f =~ s{valueOf\(\-\(\-(\d+)\)\)}{valueOf\($1\)}g;
-        } elsif ($fexp =~ m{\Abinomial\(}) { # binomial(m,n)
+        } elsif ($fexp =~ m{\Abinomial\(})           { # binomial(m,n)
             $f = "irvine.math.z.Binomial.$fexp";
+            $f .= (($fsig eq "-") ? "" : ".negate()");
         } else {
             $callcode = "?4serrF"; # no output
         }
+        $f = "new Z[] { $f }";
+        
         #-- gsig = + | -
         # $gsig = ($gsig eq "+") ? "-" : "";
         #-- gfactor = | A123456(k) | 3 | k | (expr)*
         $g = "$gsig$gfactor";
-        if ($gfactor eq "") {
+        $rseqno = "";
+        if (0) {
+        } elsif ($gfactor eq "")                              { # no g()
             $g = ($gsig eq "-") ? "Z.ONE" : "Z.NEG_ONE";
-        } elsif ($gfactor =~ m{\A(A\d+)\(}) { # A-number
+        } elsif ($gfactor =~ m{\A(A\d+)\(})                   { # g(k) = A123456(k)
             $rseqno = $1;
             my $ofter = $ofters{$rseqno};
             if (defined($ofter)) {
@@ -215,13 +229,16 @@ sub translate {
                 $callcode = "?2rnunG"; # do not output
             }
             $g = "mSeqG.next()" . (($gsig eq "-") ? "" : ".negate()");
+            if ($kstart >= 2) {
+                $g = "$g.multiply((mKfg < $kstart) ? Z.ZERO : Z.ONE)";
+            }
         } else { # 3 | k | (expr)*
             if (0) {
-            } elsif ($gfactor =~ m{\A(\d+)\Z}) { # 3
-                $g = $znames[$gfactor] || "Z.valueOf($gfactor)";
-            } elsif ($gfactor =~ m{\A(k)\Z}) { # k
+            } elsif ($gfactor =~ m{\A(\d+)\Z})                { # 3
+                $g = $znames{$gfactor} || "Z.valueOf($gfactor)";
+            } elsif ($gfactor =~ m{\A(k)\Z})                  { # k
                 $g = "Z.valueOf($gfactor)";
-            } elsif ($gfactor =~ m{\A(\w+)\^(\w+)\Z}) { # k^2 or 2^k
+            } elsif ($gfactor =~ m{\A(\w+)\^(\w+)\Z})         { # k^2 or 2^k
                 $g = &power_k($1, $2);
             } elsif ($gfactor =~ m{\A\(([k\d\+\-\*\/]+)\)\Z}) { # expr in k, but no "^"
                 $g = "Z.valueOf($gfactor)";
@@ -231,9 +248,10 @@ sub translate {
             $g .= (($gsig eq "-") ? "" : ".negate()");
             $g =~ s{valueOf\(\-\(\-(\d+)\)\)}{valueOf\($1\)}g;
         }
-        if ($kstart >= 2) {
+        if ($kstart >= 2 && $rseqno eq "") {
             $g = "(mKfg < $kstart) ? Z.ZERO : $g";
         }
+        
         #-- hexp = k | (...)
         $h = $hexp;
         # $callcode = "geneth"; # use a different if h(k) != k
@@ -280,11 +298,7 @@ sub power_k {
     if ($base eq "k") {
         $result = "Z.valueOf(k).pow($exp)";
     } elsif ($base =~ m{\A\d+\Z}) {
-        if ($base <= 10) {
-            $base = $znames[$base];
-        } else {
-            $base = "Z.valueOf($base)";
-        }
+        $base = $znames{$base} || "Z.valueOf($base)";
         $result = "$base.pow($exp)";
     }
     return $result;
@@ -317,7 +331,7 @@ $(PARM1)
   }
 
   @Override
-  protected Z advanceF(final int k) {
+  protected Z[] advanceF(final int k) {
     return $(PARM2);
   }
 

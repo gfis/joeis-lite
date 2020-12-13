@@ -27,7 +27,7 @@ public class GeneralizedEulerTransform implements Sequence {
 
   // protected static String mDebug = System.getProperty("debug", "0");
   private static final int ESTLEN = 16384; // estimated length of arrays
-  private final ArrayList<Z> mFs = new ArrayList<>(ESTLEN); // first underlying sequence (Manyama's f(k))
+  private final ArrayList<Z[]> mFs = new ArrayList<>(ESTLEN); // first underlying sequence (Manyama's f(k))
   private final ArrayList<Z> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
   private final ArrayList<Z> mBs = new ArrayList<>(ESTLEN); // resulting sequence (Manyama's a(n))
   private final ArrayList<Z> mCs = new ArrayList<>(ESTLEN); // auxiliary sequence (Manyama's b(n))
@@ -75,7 +75,7 @@ public class GeneralizedEulerTransform implements Sequence {
     mIn = 0; // for prepending
     mKfg = 0;
     for (int k = 0; k < 1; ++k) { // kStart; ++k) {
-      mFs.add(Z.ZERO); // [0] not used
+      mFs.add(new Z[] { Z.ZERO }); // [0] not used
       mGs.add(Z.ZERO); // [0] not used
       mBs.add(Z.ZERO); // [0] is not returned
       mCs.add(Z.ZERO); // [0] starts the sum
@@ -95,8 +95,15 @@ public class GeneralizedEulerTransform implements Sequence {
     }
     // normal, transform terms
     ++mKfg; // starts with 1
-    final Z nextF = advanceF(mKfg); // or advanceF(mK) ??? why?
-    mFs.add(nextF == null ? Z.ZERO : nextF); // get next f(k), care for finite f returning null
+    final Z[] nextF = advanceF(mKfg); // or advanceF(mK) ??? why?
+    if (nextF[0] == null) {
+      nextF[0] = Z.ZERO; // care for finite f returning null
+    } 
+    if (nextF.length > 1) {
+      mFRoot = nextF[1];
+    }
+    mFs.add(nextF);
+    
     Z nextG = advanceG(mKfg); // get next g(k)
     if (Z.valueOf(mKfg).compareTo(mNextH) < 0) { 
       nextG = Z.ZERO; // invalidate this g(k)
@@ -108,7 +115,7 @@ public class GeneralizedEulerTransform implements Sequence {
       nextG = Z.ZERO; // care for finite g returning null
     }
     mGs.add(nextG);
-    // mCs.add(Z.ZERO); // allocate c[k]
+    
     final int i = mKfg;
     Z cSum = Z.ZERO; // start sum
     final int idiv2 = i >> 1;
@@ -116,9 +123,9 @@ public class GeneralizedEulerTransform implements Sequence {
         if (d == 1 || d == i || (d <= idiv2 && (i % d == 0))) { // "did(i,d)", "does it divide"
         // if (i % d == 0) { // "did(i,d)"
         final int idivd = i / d;
-        final Z fTerm = mFs.get(d);
-        if (! fTerm.isZero()) { // ends in zero for all finite f(k)
-          Z cTerm = fTerm.multiply(d);
+        final Z[] fTerm = mFs.get(d);
+        if (! fTerm[0].isZero()) { // ends in zero for all finite f(k)
+          Z cTerm = fTerm[0].multiply(d);
           final Z gTerm = mGs.get(d);
           if (! gTerm.isZero()) {
             //---- start of the generalization
@@ -167,21 +174,12 @@ public class GeneralizedEulerTransform implements Sequence {
   }
 
   /**
-   * Set a constant denominator of f(k).
-   * The result is some root of the function.
-   * @param den constant denominator; f(k) = (...)/den
-   */
-  protected void setFRoot(final int den) {
-    mFRoot = z.valueOf(den);
-  }
-
-  /**
    * Wrapper around <code>mSeqF.next()</code>, typically overwritten by a subclass.
    * @param k current index, exponent of x
    * @return next term of the underlying sequence f in the definition of the transform
    */
-  protected Z advanceF(final int k) {
-    return Z.ONE;
+  protected Z[] advanceF(final int k) {
+    return new Z[] { Z.ONE };
   }
 
   /**

@@ -2,12 +2,13 @@ s/Bell(/A000110(/i
 s/C(k)/A000108(k)/
 s/C(/binomial(/ig
 s/Catalan(k)/A000108(k)/
-s/mod(k,3)/A010872(k\+1)/g
+s/mod(k,3)/A010872(k)/g
 s/d(/A000005(/
 s/Fibonacci/A000045/i
 s/{F_k}/A000045(k)/
 s/Lucas/A000204/i
 s/lambda(/A008836(/i
+s/mu(k)\^2/A008966(k)/gi
 s/mu(/A008683(/gi
 s/numbpart/A000041/i
 s/omega/A001221/
