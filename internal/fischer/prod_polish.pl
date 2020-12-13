@@ -12,17 +12,17 @@ use warnings;
 
 my $line = "";
 while (<>) {
-	s/\s+\Z//;  #chompr
+    s/\s+\Z//;  #chompr
     if (m{\A(\%\N) (A\d+) Expansion of Product (\(.*)}) {
-    	my ($tcode, $aseqno, $form) = ($1, $2, $3);
-    	$form =~ s{ in powers of x|[\;\,] [mk]\=1\.\.inf}{};
-    	$form =~ s{\s}{}g;
-    	$form =~ tr{jmqtz}{kkxxx};
-    	$form =~ s{\^\-(\d+)}{\^\(\-$1\)};
-    	$form = "\{k>=1\}$form";
-    	print join(" ", $tcode, $aseqno, "Expansion of Product_$form") . "\n";
+        my ($tcode, $aseqno, $form) = ($1, $2, $3);
+        $form =~ s{ in powers of x|[\;\,] [mk]\=1\.\.inf}{};
+        $form =~ s{\s}{}g;
+        $form =~ tr{jmqtz}{kkxxx};
+        $form =~ s{\^\-(\d+)}{\^\(\-$1\)};
+        $form = "\{k>=1\}$form";
+        print join(" ", $tcode, $aseqno, "Expansion of Product_$form") . "\n";
     } else {
-    	print "$_\n";
+        print "$_\n";
     }
 } # while <>
 #--------

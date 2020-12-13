@@ -20,7 +20,7 @@ DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 PFRACT=$(RAMATH).symbolic.PolyFraction
 NT=64
-HOLT=java   -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
+HOLT=java -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 MANY=999999
 CLASS=dummy.java
 D=0
@@ -39,7 +39,7 @@ NC=
 OFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
-JOPT=-Doeis.big-factor-limit=1000000000 -Xmx4g
+JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx4g
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
@@ -1921,22 +1921,32 @@ prodetm:
 #----
 genet: # parameters for GeneralizedEulerTransform
 	cat prod1_xk.tmp prod1_xk.man \
+	| grep -E "^A[0-9]" \
 	| grep -vEi "y" \
 	| sed -f $@.sed \
 	| perl genet.pl \
 	>        $@.tmp \
 	2>       $@.rest.tmp
 	grep -E "^A" $@.tmp | sort | uniq -w7 \
+	| grep -v "geneth" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
 	cut -f2  $@.rest.tmp | sort | uniq -c
+	cp -v    genet.jpat geneth.jpat
 genet_plerr:
 	perl -ne 'if (m{(\?\d\w+)}) { print "$$1\n";}' genet.pl | sort | uniq -c
-genet_update:
+genet_joeis_names:
 	make seq LIST=genet.pass.log
 	$(DBAT) "UPDATE joeis j SET superclass = 'GeneralizedEulerTransform' WHERE j.aseqno IN (SELECT aseqno FROM seq);"
 	cd $(COMMON); make joeis_names
+genet_status:
+	cut -f1,3 genet.fail.log | grep -E "^A" > $@.tmp
+	make seq2 LIST=$@.tmp
+	$(DBAT) "UPDATE seq4 s4 SET s4.parm7 = COALESCE((SELECT s2.info FROM seq2 s2 WHERE s4.aseqno = s2.aseqno), 'v');"
+	$(DBAT) -x -44444 seq4 > genet.gen
+genet_check:	
+	cut -f1,10,8-9 genet.gen
 #----
 # Generalized ET
 a151668:
