@@ -37,7 +37,6 @@ public class GeneralizedEulerTransform implements Sequence {
   protected int mIn; // index for initial terms
   protected int mKfg; // current index k >= 1 for f() and g()
   protected int mKh; // current index for h()
-
   protected Sequence mSeqF; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
   protected Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
   protected Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)

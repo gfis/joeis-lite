@@ -1927,8 +1927,10 @@ genet: # parameters for GeneralizedEulerTransform
 	| perl genet.pl \
 	>        $@.tmp \
 	2>       $@.rest.tmp
-	grep -E "^A" $@.tmp | sort | uniq -w7 \
-	| grep -v "geneth" \
+	grep -E "^A" $@.tmp \
+	| grep -v "A27921"  \
+	| sort | uniq -w7   \
+	| grep -v "geneth"  \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp

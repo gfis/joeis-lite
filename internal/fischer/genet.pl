@@ -159,11 +159,11 @@ sub translate {
             $fexp = (($fsig eq "-") ? "$fexp" : "-($fexp)");
             $fexp =~ s{\A\-\(\-([k\d\/\*]+)\)\Z}{$1}; # -(-(1/2)) -> 1/2
             $fexp =~ s{\A\-\(([k\d\/\*]+)\)\Z}{\-$1}; # -(1/2) -> -1/2
-            if ($fexp =~ m{\A([k\d\+\-\*(\)]+)\/(\d)\Z}) { # with trailing "/6"
+            if ($fexp =~ m{\A([k\d\+\-\*(\)]+)\/(\d)\Z}) { # with trailing "/2"
                 ($fexp, $froot) = ($1, $2);
-            $f = "Z.valueOf($fexp), " . ($znames{$froot} || "Z.valueOf($froot)");
+                $f = &expr_k($fexp) . ", " . ($znames{$froot} || "Z.valueOf($froot)");
             } else {
-                $f = "Z.valueOf($fexp)";
+                $f = &expr_k($fexp);
             }
         } elsif ($fexp =~ m{\A(\w+)\^(\w+)\Z})       { # 2^k or k^3 or k^k
             $fexp = &power_k($1, $2);
@@ -241,7 +241,7 @@ sub translate {
             } elsif ($gfactor =~ m{\A(\w+)\^(\w+)\Z})         { # k^2 or 2^k
                 $g = &power_k($1, $2);
             } elsif ($gfactor =~ m{\A\(([k\d\+\-\*\/]+)\)\Z}) { # expr in k, but no "^"
-                $g = "Z.valueOf($gfactor)";
+                $g = &expr_k($gfactor);
             } else {
                 $callcode = "?8serrG";
             }
@@ -303,6 +303,19 @@ sub power_k {
     }
     return $result;
 } # power_k
+#----
+sub expr_k {
+    my ($expr) = @_;
+    my @terms = split(/\*/, $expr);
+    $expr =~ s{(\d)(\D)}{$1L$2}g;
+    # $expr = "0L" . (($expr =~ m{\A\-}) ? "" : "+") . $expr;
+    return "Z.valueOf($expr)"; # shift(@terms);
+#     if (scalar(@terms) > 0) {
+#         $result .= join(").multiply(", @terms);
+#     }
+#     $result .= ")";
+#     return $result;
+} # expr_k
 #----
 sub output { # global $line, @periods, $reason
     print join("\t", $aseqno, $callcode, $offset, @parms, $kstart, $form) . "\n";
