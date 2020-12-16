@@ -177,7 +177,7 @@ public class GeneralizedEulerTransform implements Sequence {
    * @param k current index, exponent of x
    * @return next term of the underlying sequence f in the definition of the transform
    */
-  protected Z[] advanceF(final int k) {
+  protected Z[] advanceF(final long k) {
     return new Z[] { Z.ONE };
   }
 
@@ -186,7 +186,7 @@ public class GeneralizedEulerTransform implements Sequence {
    * @param k current index, exponent of x
    * @return next term of the underlying sequence g in the definition of the transform
    */
-  protected Z advanceG(final int k) {
+  protected Z advanceG(final long k) {
     return Z.ONE;
   }
 
@@ -197,7 +197,7 @@ public class GeneralizedEulerTransform implements Sequence {
    * int is sufficient here since in the OEIS we assume that indexes (exponents of x) remain &lt; 10^6.
    * @return next term of the underlying sequence h in the definition of the transform
    */
-  protected Z advanceH(final int k) {
+  protected Z advanceH(final long k) {
     return Z.valueOf(k);
   }
 

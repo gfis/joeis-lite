@@ -1928,16 +1928,14 @@ genet: # parameters for GeneralizedEulerTransform
 	>        $@.tmp \
 	2>       $@.rest.tmp
 	grep -E "^A" $@.tmp \
-	| grep -v "A27921"  \
+	| grep -vE "genetxxxh"  \
 	| sort | uniq -w7   \
-	| grep -v "geneth"  \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
 	cut -f2  $@.rest.tmp | sort | uniq -c
-	cp -v    genet.jpat geneth.jpat
 genet_plerr:
-	perl -ne 'if (m{(\?\d\w+)}) { print "$$1\n";}' genet.pl | sort | uniq -c
+	perl -ne 'if (m{(\?[0-9A-Z]\w+)}) { print "$$1\n";}' genet.pl | sort | uniq -c
 genet_joeis_names:
 	make seq LIST=genet.pass.log
 	$(DBAT) "UPDATE joeis j SET superclass = 'GeneralizedEulerTransform' WHERE j.aseqno IN (SELECT aseqno FROM seq);"
@@ -2897,6 +2895,13 @@ mckay_java:
 	cp -v McKayThompsonTables.java ../../src/irvine/oeis
 mctest:
 	$(JAVA) irvine.oeis.McKayThompsonSequence -d $(D)  -n $(NT) $(ARGS)
+#--------
+nest:
+	grep -E "a\(n\) *\= *A[0-9][0-9]*\(A[0-9]" $(COMMON)/cat25.txt \
+	| cut -b4- | sed -e "s/ /\t/" -e "s/\. - _.*/\./" | sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------
 weylgr0:
 	cat $(COMMON)/joeis_names.txt \
