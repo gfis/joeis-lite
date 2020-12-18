@@ -1939,7 +1939,11 @@ genet_plerr:
 genet_joeis_names:
 	make seq LIST=genet.pass.log
 	$(DBAT) "UPDATE joeis j SET superclass = 'GeneralizedEulerTransform' WHERE j.aseqno IN (SELECT aseqno FROM seq);"
+	$(DBAT) "INSERT INTO joeis (SELECT s.aseqno, 'GeneralizedEulerTransform', 1, 'genet', 'Georg' FROM seq s WHERE s.aseqno NOT IN (SELECT aseqno FROM joeis));"
 	cd $(COMMON); make joeis_names
+genet_follow:
+	grep -A8 GeneralizedEulerTransform $(COMMON)/joeis_names.txt \
+	>        $@.tmp
 genet_status:
 	cut -f1,3 genet.fail.log | grep -E "^A" > $@.tmp
 	make seq2 LIST=$@.tmp
@@ -1951,6 +1955,12 @@ genet_check:
 # Generalized ET
 a151668:
 	cp -v $@.man $@.gen
+#--------------------------------
+peravoid:
+	grep -iP "permutations of \[?n\]? avoiding " $(COMMON)/joeis_names.txt | grep null \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.*tmp
 #--------------------------------
 prodfin0: prodfin1 prodfin
 prodfin1:
@@ -2896,12 +2906,16 @@ mckay_java:
 mctest:
 	$(JAVA) irvine.oeis.McKayThompsonSequence -d $(D)  -n $(NT) $(ARGS)
 #--------
-nest:
+nest0:
 	grep -E "a\(n\) *\= *A[0-9][0-9]*\(A[0-9]" $(COMMON)/cat25.txt \
-	| cut -b4- | sed -e "s/ /\t/" -e "s/\. - _.*/\./" | sort | uniq -w7 \
+	| cut -b4- | sed -e "s/ /\t/" -e "s/\. - _.*/\./" \
+	| perl nest.pl \
+	| sort | uniq -w7 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+nest:
+	cp -v nest0.tmp nest.gen
 #--------
 weylgr0:
 	cat $(COMMON)/joeis_names.txt \
@@ -3853,13 +3867,13 @@ weight2:
 	wc   -l $@.j.txt
 #--------------------------------
 word:
-	$(DBAT) "SELECT i.aseqno, 'word', 0, n.name, b.bfimax -b.bfimin + 1 \
-		FROM  asinfo i, asname n, bfinfo b \
+	$(DBAT) "SELECT i.aseqno, 'word', 0, COALESCE(j.superclass, '********'), n.name, b.bfimax-b.bfimin + 1 \
+		FROM  asinfo i, asname n, bfinfo b LEFT JOIN joeis j ON b.aseqno = j.aseqno \
 		WHERE i.aseqno = n.aseqno \
 		  AND n.aseqno = b.aseqno \
-		  AND i.keyword LIKE '%word%' \
-		  AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
-		ORDER BY 4, 1" \
+		  AND i.keyword     LIKE '%word%' \
+		  AND i.keyword NOT LIKE '%dead%' \
+		ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp

@@ -6,10 +6,10 @@
 #
 #:# Usage:
 #:#   perl genet.pl [-cc patternname] [-d debug] [-f ofter_file] prod1_xk.gen > genet.gen 2> genet.rest.tmp
-#:#     -cc write a file patternname.jpat and ignore all other arguments
 #:#     -d  debugging level (0=none (default), 1=some, 2=more)
 #:#     -f  file with aseqno, offset1, terms (default $(COMMON)/joeis_ofter.txt)
 #:# Reads ofter_file for implemented jOEIS sequences with their offsets and first terms
+#:# Writes files genet{f|g|h|fg|fh|gh|}.jpat automatically.
 #
 # The pattern files genet*.jpat have the parameters filled from the bottom to the top:
 #   $(PARM1)  statements for the constructor
@@ -26,14 +26,10 @@ use integer;
 use warnings;
 
 my $line = "";
-my $negate = 0; # whether "not modulo ..."
-my $VOID = "A000000";
 my ($aseqno, $callcode, $offset);
 my $rseqno;
 my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
 my $debug   = 0;
-my $pseudo  = 0;
-my $prepend = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -41,10 +37,6 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $debug      = shift(@ARGV);
     } elsif ($opt   =~ m{\-f}  ) {
         $ofter_file = shift(@ARGV);
-    } elsif ($opt   =~ m{\-prep} ) {
-        $prepend    = 1;
-    } elsif ($opt   =~ m{\-pseudo} ) {
-        $pseudo     = 1;
     } else {
         die "invalid option \"$opt\"\n";
     }
