@@ -57,9 +57,9 @@ all:
 #----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
-	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET)     # | tee x.tmp
+	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET)     | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET) -bf # | tee x.tmp
+	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET) -bf | tee x.tmp
 spectest:
 	$(JAVA) irvine.test.SpecialTest       $(NT) $(OFFSET)
 gramtest:
