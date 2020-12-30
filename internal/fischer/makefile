@@ -141,6 +141,12 @@ remove: # parameter: CC
 	perl -ne 'm{^A(\d\d\d)(\d+)}; print "a$$1/A$$1$$2.java\n";' $(CC).gen > remlist.tmp
 	cat remlist.tmp | xargs -l -i{} rm  -f ../../target/WEB-INF/classes/irvine/oeis/{}
 	cat remlist.tmp | xargs -l -i{} rm -vf                    ../../src/irvine/oeis/{}
+mangen: # parameter: CC; copy all in CC.gen to fischer/manual
+	rm -f coplist.tmp
+	perl -ne 'm{^A(\d\d\d)(\d+)}; print "a$$1/A$$1$$2.java\n";' $(CC).gen > coplist.tmp
+	cat coplist.tmp | xargs -l -i{} cp -v ../../../joeis/src/irvine/oeis/{} manual
+	ls -al manual
+#-----
 OFS=offset
 #--------
 ccall: select clean purge gener dist test pack # parameter: CC
@@ -2592,6 +2598,11 @@ eulerixxx:
 #--
 euleri: # manual EulerInvTest
 	$(JAVA) irvine.test.EulerTransformTest -v -p $(PER) -n $(NT)
+#----
+ieuler:
+	# cp ieuler.man ieuler.gen
+	find manual -iname "*.java" | xargs -l -innn \
+	perl -i*.bak -e 'while (<>) { s{EulerTransformSequence}{EulerTransform}g; print; }' nnn 
 #----
 INIT=""
 TYPE=2
