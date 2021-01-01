@@ -2599,6 +2599,11 @@ eulerixxx:
 euleri: # manual EulerInvTest
 	$(JAVA) irvine.test.EulerTransformTest -v -p $(PER) -n $(NT)
 #----
+weighi:
+	grep -E "^A" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 ieuler:
 	# cp ieuler.man ieuler.gen
 	find manual -iname "*.java" | xargs -l -innn \
