@@ -46,6 +46,34 @@ public class EulerTransform implements Sequence {
   }
 
   /**
+   * Creates a new Euler transform sequence of the given sequence, skipping
+   * the specified number of terms in advance.
+   *
+   * @param seq underlying sequence
+   * @param skip number of terms to skip
+   * @param initial an initial term
+   */
+  public EulerTransform(final Sequence seq, final int skip, final Z... preTerms) {
+    mSeq = seq;
+    mPreTerms = preTerms;
+    for (int k = 0; k < skip; ++k) {
+      seq.next();
+    }
+  }
+
+  /**
+   * Creates a new Euler transform sequence of the given sequence, skipping
+   * the specified number of terms in advance.
+   *
+   * @param seq underlying sequence
+   * @param skip number of terms to skip
+   */
+/*
+  public EulerTransform(final Sequence seq, final int skip) {
+    this(seq, skip, null);
+  }
+*/
+  /**
    * Create a new sequence with additional terms at the front.
    * @param preTerms additional terms to be prepended;
    */

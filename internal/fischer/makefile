@@ -3587,13 +3587,22 @@ qfb1:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #-------------------
-such_prime:
-	grep Numbers $(COMMON)/names | grep -E 'such *that' | grep -E 'is *prime' \
-	| grep -v '[BRZFGPofgd]' \
-	| sed -e "s/ /\t/" \
+suchprim:
+	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'such *that' | grep -E 'is *prime' \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
+suchrep:
+	grep -E "[Rr]epunit|R_n|R_k" suchprim.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+suckrep:
+	perl -ne 'print if m{such that [kn]\d+ is prime};' suchprim.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+dummy36:
 	make seq2 LIST=$@.tmp
 	$(DBAT) "SELECT aseqno, info \
 		FROM  seq2 \
