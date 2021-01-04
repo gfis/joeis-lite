@@ -1414,6 +1414,12 @@ homapgf:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #--------------------------------
+revert:
+	grep -iE "series reversion|series inversion|inverse series|revert transform" joeis_names.txt \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------------------------------
 ASMIN=300
 ASMAX=400
 jall: # parms = ASMIN, ASMAX - test a block of implemented jOEIS sequences
@@ -1821,6 +1827,8 @@ pfprime:
 	sort     $@.tmp \
 	| grep -vE "A098466|A098467" \
 	>        $@.gen
+#--
+pfprime99:
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s SET PARM1 = \
 	    (SELECT SUBSTR(data, 1, INSTR(data, ',') - 1) FROM asdata d WHERE d.aseqno = s.aseqno)"
@@ -3594,16 +3602,24 @@ qfb1:
 #-------------------
 suchprim:
 	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'such *that' | grep -E 'is *prime' \
+	| grep -v "PowerFactorPrimeSequence" \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc   -l  $@.tmp
-suchrep:
+	wc -l    $@.tmp
+	perl suchprim.pl $@.tmp \
+	2>       $@.rest.tmp \
+	| grep -E "suchprk|suchprik" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  suchp*.*
+	cut -f2  $@.gen | sort | uniq -c
+suchrep99:
 	grep -E "[Rr]epunit|R_n|R_k" suchprim.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
-suckrep:
-	perl -ne 'print if m{such that [kn]\d+ is prime};' suchprim.tmp \
+suckrep99:
+	perl -ne 'print if m{such that (the string )?[kn]\d+ is prime};' suchprim.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
