@@ -1,0 +1,9 @@
+# all wrong, most be EulerInv
+A038063	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.TWO	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(-k^8)	1	1/(1 - x^k)^a(k) = 1 + 2x	Product_{k>=1}1/(1 - x^k)^a(k) = 1 + 2x
+A038064	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.THREE	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(-k^9)	1	(1-x^k)^(-k^9)	Expansion of Product_{k>=1} (1 - x^k)^(-k^9).
+A038065	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FOUR	Z.ONE	Z.valueOf(k)	1	(1+x^k)	10	(1+x^k)	Number of partitions of n into distinct parts >= 10.
+A038066	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FIVE	Z.ONE	Z.valueOf(k)	1	(1+x^k)^48	1	(1+x^k)^48	Expansion of Product_{m>=1} (1 + q^m)^48.
+A038067	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.TWO	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^k	1	(1+x^k)^k	Expansion of Product_{m>=1} (1 + q^m)^m; number of partitions of n into distinct parts, where n different parts of size n are available.
+A038068	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.THREE	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(2*k)	1	(1+x^k)^(2*k)	Expansion of Product_{m>=1} (1 + q^m)^(2*m).
+A038069	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FOUR	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(3*k)	1	(1+x^k)^(3*k)	Expansion of Product_{m>=1} (1 + q^m)^(3*m).
+A038070	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FIVE	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(3*k)	1	(1+x^k)^(3*k)	Expansion of Product_{m>=1} (1 + q^m)^(3*m).

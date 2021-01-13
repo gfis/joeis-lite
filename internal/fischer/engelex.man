@@ -1,0 +1,121 @@
+A006275	piercex	0	CR.TWO.sqrt().subtract(CR.ONE)	sqrt(2) - 1.
+A006276	piercex	0	CR.THREE.subtract(CR.FIVE.sqrt()).divide(CR.TWO)	(3 - sqrt(5))/2.
+A006283	piercex	0	CR.PI.inverse()	1/Pi
+A006284	piercex	0	CR.GAMMA	Euler's gamma
+A006784	engelex	0	CR.PI	Pi.
+A014012	engelex	0	CR.PI.inverse()	1/Pi.
+A028254	engelex	0	CR.TWO.sqrt()	sqrt(2).
+A028257	engelex	0	CR.THREE.sqrt()	sqrt(3).
+A028259	engelex	0	CR.PHI	the golden ratio, (1 + sqrt(5))/2 = 1.61803... .
+A053977	engelex	0	CR.GAMMA	the Euler-Mascheroni constant gamma A001620 = 0.57721566... .
+A053980	engelex	0	irvine.math.cr.Zeta.zeta(3)	zeta(3) = 1.20206... .
+A059176	engelex	0	CR.FIVE.sqrt()	sqrt(5) = 2.23606...
+A059177	engelex	0	CR.TEN.sqrt()	sqrt(10) = 3.16227...
+A059178	engelex	0	CR.ONE_THIRD.multiply(CR.TWO.log()).exp()	2^(1/3) = 1.25992.
+A059179	engelex	0	CR.ONE_THIRD.multiply(CR.THREE.log()).exp()	3^(1/3) = 1.44225.
+A059180	engelex	0	CR.TWO.log()	log(2).
+A059181	engelex	0	CR.THREE.log()	log(3) = 1.09861... .
+A059182	engelex	0	CR.TEN.log()	log(10) = 2.30259...
+A059183	engelex	0	CR.TWO.log().inverse()	1/log(2) = 1.4427...
+A059184	engelex	0	CR.TEN.log().inverse()	1/log(10) = 0.434294....
+A059185	engelex	0	CR.PI.multiply(CR.PI)	Pi^2 = 9.8696...
+A059186	engelex	0	CR.PI.multiply(CR.PI).divide(CR.SIX)	Pi^2/6, or zeta(2) = 1.64493.
+A059187	engelex	0	CR.PI.sqrt()	sqrt(Pi) = 1.77245... .
+A059188	engelex	0	irvine.oeis.a073.A073005.GAMMA_THIRD	Gamma(1/3) = 2.67894.
+A059189	engelex	0	irvine.oeis.a073.A073006.GAMMA_TWO_THIRDS	Gamma(2/3) = 1.35412.
+A059190	engelex	0	CR.GAMMA.multiply(CR.GAMMA)	gamma^2, (gamma is the Euler-Mascheroni constant A001620) = 0.333178.
+A059191	engelex	0	CR.GAMMA.inverse()	1/gamma, (gamma is the Euler-Mascheroni constant A001620) = 1.73245.
+A059192	engelex	0	CR.GAMMA.inverse().log()	log(1/gamma) (where gamma is the Euler-Mascheroni constant A001620) = 0.549539...
+A059193	engelex	0	CR.E.inverse()	1/e = 0.367879... .
+A059194	engelex	0	CR.E.multiply(CR.E).inverse()	1/e^2 = 0.135335... .
+A059195	engelex	0	CR.PI.log()	log(Pi) = 1.14473... .
+A059196	engelex	0	CR.PI.multiply(CR.E.log()).exp()	e^Pi = 23.14069... .
+A059197	engelex	0	CR.E.multiply(CR.PI.log()).exp()	Pi^e = 22.4592.
+A059199	engelex	0	CR.GAMMA.exp()	e^gamma (gamma is the Euler-Mascheroni constant A001620) = 1.78107.
+A059200	engelex	0	CR.TWO.log().log().negate()	-log(log(2)) = 0.36651292... .
+A063184	engelex	0	VOID	sum( 1/(1+k)^k, {k,0,Infinity}).
+A063185	engelex	0	VOID	sum( 1/(2+k)^k, {k,0,Infinity}).
+A063186	engelex	0	VOID	sum( 1/(3+k)^k, {k,0,Infinity}).
+A063187	engelex	0	VOID	sum( 1/(4+k)^k, {k,0,Infinity}).
+A063188	engelex	0	VOID	sum( 1/(5+k)^k, {k,0,Infinity}).
+A063189	engelex	0	VOID	sum( 1/(6+k)^k, {k,0,Infinity}).
+A063190	engelex	0	VOID	sum( 1/(7+k)^k, {k,0,Infinity}).
+A063191	engelex	0	VOID	sum( 1/(8+k)^k, {k,0,Infinity}).
+A063192	engelex	0	VOID	sum( 1/(9+k)^k, {k,0,Infinity}).
+A063193	engelex	0	VOID	sum( 1/(10+k)^k, {k,0,Infinity}).
+A063194	engelex	0	VOID	1 + sum( 1/k^k, {k,1,Infinity}).
+A067912	engelex	0	CR.FOUR.multiply(CR.PI.log()).exp().divide(CR.valueOf(90))	zeta(4) = Pi^4/90 = Sum_{i>0} 1/i^4.
+A067913	engelex	0	irvine.math.cr.Zeta.zeta(5)	Riemann zeta(5)=sum(i>0,1/i^5).
+A067914	engelex	0	CR.SIX.multiply(CR.PI.log()).exp().divide(CR.valueOf(945))	zeta(6)=sum(i>0,1/i^6).
+A067915	engelex	0	irvine.math.cr.Zeta.zeta(7)	zeta(7)=sum(i>0,1/i^7).
+A067916	engelex	0	CR.EIGHT.multiply(CR.PI.log()).exp().divide(CR.valueOf(9450))	zeta(8)=sum(i>0,1/i^8).
+A067917	engelex	0	irvine.math.cr.Zeta.zeta(9)	zeta(9)=sum(i>0,1/i^9).
+A067918	engelex	0	CR.TEN.multiply(CR.PI.log()).exp().divide(CR.valueOf(93555))	zeta(10)=sum(i>0,1/i^10).
+A067919	engelex	0	CR.ONE.sin()	sin(1).
+A067920	engelex	0	CR.TWO.sin()	sin(2).
+A067921	engelex	0	CR.HALF_PI.sqrt()	sqrt(Pi/2).
+A067922	engelex	0	CR.FIVE.log()	Log(5).
+A067923	engelex	0	CR.valueOf(23).log()	Log(23).
+A068375	engelex	0	CR.TWO.exp()	exp(2).
+A068376	engelex	0	CR.ONE.add(CR.E).log()	Log(1+e).
+A068377	engelex	0	ComputableReals.SINGLETON.sinh(CR.ONE)	sinh(1).
+A068379	engelex	0	ComputableReals.SINGLETON.sinh(CR.HALF)	sinh(1/2).
+A068380	engelex	0	ComputableReals.SINGLETON.sinh(CR.THREE.inverse())	sinh(1/3).
+A068388	engelex	0	CR.THREE.divide(CR.TWO).sqrt()	sqrt(3/2).
+A068415	engelex	0	CR.PI.log().subtract(CR.TWO.log())	log(Pi)-log(2).
+A068478	engelex	0	irvine.oeis.a068.A068465.GAMMA_THREE_QUARTERS	Gamma(3/4)=sum(i>0,1/prod(n=1,i,1/a(n))).
+A068479	engelex	0	irvine.oeis.a068.A068466.GAMMA_QUARTER	Gamma(1/4)=3.62560990822190831193...
+A071857	engelex	0	CR.TWO.multiply(CR.TWO.log()).sqrt()	sqrt(2ln(2)).
+A076303	engelex	0	CR.valueOf(163).sqrt().multiply(CR.PI).subtract(CR.valueOf(new Z("262537412640768743"))).exp()	exp(Pi*Sqrt(163) - 262537412640768743.
+A091831	piercex	0	CR.TWO.sqrt().inverse()	1/sqrt(2).
+A091832	piercex	0	CR.E.multiply(CR.E).inverse()	1/e^2.
+A091833	piercex	0	CR.PI.multiply(CR.PI).divide(CR.SIX).inverse()	1/zeta(2).
+A091846	piercex	0	CR.TWO.log()	log(2).
+A096166	engelex	0	VOID	the Champernowne number .1234567891011121314151617181920212223... (see A033307).
+A096167	engelex	0	VOID	Merten's constant (A077761).
+A096187	engelex	0	VOID	Artin's constant .3739558136192022880547280543464164151116292486061500420947428...
+A096188	engelex	0	VOID	real number x such that y = Gamma(x) is a minimum.
+A096189	engelex	0	VOID	the twin primes constant ~ .660161815846869573927812110014555778432623360284733413319448.
+A096190	engelex	0	VOID	the Landau-Ramanujan constant K ~ .76422365358922066299069873125009232811679054139340.
+A096193	engelex	0	VOID	the Madelung constant A085469.
+A096194	engelex	0	CR.E.exp()	exp(e).
+A096394	engelex	0	VOID	Thue-Morse constant.
+A096395	engelex	0	VOID	Frederick Magata's constant.
+A096420	engelex	0	VOID	Renyi's Parking constant.
+A118239	engelex	0	ComputableReals.SINGLETON.cosh(CR.ONE)	cosh(1).
+A118242	piercex	0	CR.PHI.inverse()	1/phi.
+A118326	engelex	0	ComputableReals.SINGLETON.tanh(CR.ONE)	tanh(1).
+A129409	engelex	0	VOID	L(3, chi3), where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.
+A129410	piercex	0	VOID	L(3, chi3), where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.
+A132201	piercex	0	VOID	Catalan's Constant A006752.
+A140076	piercex	0	CR.THREE.inverse().multiply(CR.HALF.log()).exp()	the cube root of 1/2.
+A154956	piercex	0	CR.TWO.divide(CR.PI)	2/Pi.
+A159835	engelex	0	VOID	hz = limit_{k -> infinity} 1 + k - Sum_{j = -k..k} exp(-2^j).
+A161368	engelex	0	CR.SEVEN.sqrt()	sqrt(7).
+A161559	engelex	0	ComputableReals.SINGLETON.tan(CR.HALF)	tan(1/2).
+A161618	engelex	0	CR.PI.multiply(CR.PI.log()).exp()	Pi^Pi.
+A163168	piercex	0	CR.ONE.sech()	sech(1).
+A182503	engelex	0	VOID	the Dottie number, A003957.
+A185443	engelex	0	VOID	A060997 = 1.433127...
+A195598	engelex	0	VOID	alpha, the unique solution on [2,oo) of the equation alpha*log((2*e)/alpha)=1.
+A195601	engelex	0	VOID	beta = 3/(2*log(alpha/2)); alpha = A195596.
+A199880	engelex	0	VOID	x value of the unique pairwise intersection on (0,1) of distinct order 5 power tower functions with parentheses inserted.
+A219506	piercex	0	CR.TWO.subtract(CR.THREE.sqrt())	2 - sqrt(3).
+A219507	piercex	0	CR.FIVE.subtract(CR.valueOf(21).sqrt()).divide(CR.TWO)	(5 - sqrt(21))/2.
+A219508	piercex	0	CR.THREE.subtract(CR.TWO.multiply(CR.TWO.sqrt())).multiply(CR.FOUR)	4*(3 - 2*sqrt(2)).
+A219509	piercex	0	CR.valueOf(40).subtract(CR.valueOf(16).multiply(CR.SIX.sqrt()))	40 - 16*sqrt(6).
+A219510	piercex	0	CR.valueOf(84).subtract(CR.valueOf(48).multiply(CR.THREE.sqrt()))	84 - 48*sqrt(3).
+A219511	piercex	0	CR.valueOf(144).subtract(CR.valueOf(64).multiply(CR.FIVE.sqrt()))	144 - 64*sqrt(5).
+A222482	engelex	0	CR.ONE.cos().divide(CR.ONE.add(CR.ONE.cos()))	cos(1)/(1+cos(1)).
+A225208	engelex	0	VOID	the positive root of x^x^x^x = 2.
+A232325	engelex	0	VOID	1 to the base Pi.
+A232326	piercex	0	VOID	1 to the base Pi.
+A278765	engelex	0	CR.PHI.log()	natural logarithm of golden ratio.
+A278766	engelex	0	VOID	plastic constant (real root of x^3 - x - 1).
+A279627	engelex	0	VOID	the Glaisher-Kinkelin constant A074962.
+A280095	engelex	0	VOID	phi to the base Pi.
+A280096	engelex	0	VOID	1/phi to the base Pi
+A280102	engelex	0	VOID	e to the base Pi.
+A280103	engelex	0	VOID	1/e in the base Pi.
+A283526	piercex	0	VOID	the number Sum_{k >= 1} 1/(2^(2^k - 1)).
+A329912	engelex	0	CR.PI.divide(CR.FOUR).exp()	exp(Pi/4).

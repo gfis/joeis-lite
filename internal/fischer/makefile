@@ -3601,7 +3601,7 @@ pfprimex:
 	pfprime.tmp > pfprime.gen
 #-------------------
 prisub:
-	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'Numbers [a-z] such *that' | grep -E 'is (a )?prime' \
+	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'ers [a-z] such *that' | grep -E 'is (a )?prime' \
 	| grep -v PowerFactorPrime \
 	>        $@.tmp
 	perl prisub.pl $@.tmp \
@@ -3609,13 +3609,14 @@ prisub:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.*
+	grep "prisubp" $@.gen | wc -l
 proprep:
 	cut -f4-5  $@.gen | sort | uniq -c | sort -r > $@.sort.tmp
 	head -n4   $@.sort.tmp
 	cut -f5    $@.gen | sort | uniq -c | sort -r | grep -v " 1 " | tee $@.code.tmp
 #----
 suchprim:
-	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'such *that' | grep -E 'is *prime' \
+	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'ers [a-z] such *that' | grep -E 'is (a )?prime' \
 	| grep -v "PowerFactorPrimeSequence" \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -3652,6 +3653,9 @@ dummy36:
 		ORDER BY 1" \
 	>       $@.j.txt
 	wc   -l $@.j.txt
+#--------
+tupfact:
+	cp -v tupfact.man tupfact.gen
 #--------------------------
 # A117807 Start with 1015 and repeatedly reverse the digits and add 4 to get the next term.
 radd:

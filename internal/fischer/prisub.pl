@@ -49,24 +49,28 @@ my @parms;
 while (<>) { # from joeis_names.txt
     s/\s+\Z//; # chompr
     $line = $_;
-    $line =~ s{\, where R_.*}{};
+    $line =~ s{\, where .*}{};
     $line =~ s{ is (a )?prime}{\; is prime};
+    $callcode = "prisub";
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
     if (defined($ofters{$aseqno})) {
         print STDERR "# $aseqno $superclass - ignore since already implemented\n";
-    } elsif ($name =~ m{\.\.\.}) {
+    } elsif ($name =~ m{\.\#\.\.}) { # never
         print STDERR "$line\n";
-    } elsif ($name =~ m{Numbers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is prime(\Z|\.)}) {
+    } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is prime(\Z|\.)}) {
         my $letter = $1;
         my $expr   = $3;
         $expr =~ s{ }{}g;
         $expr =~ s{$letter}{k}g;
-        $expr =~ s{R_k}{\(10^k\-1\)\/9}g;
-        $expr =~ s{(\A|[\+\-])k}{${1}1\*k}g;
-        $expr =~ s{(\d)k}{${1}\*k}g;
+        $expr =~ s{R_k}{\(10^k\-1\)\/9}g;         # R_k   -> (10^k-1)/9
+        $expr =~ s{(\A|[\+\-])k}{${1}1\*k}g;      # +k    -> +1*k
+        $expr =~ s{(\d)k}{${1}\*k}g;              # 1234k -> 1234*k
+        $expr =~ s{(\d+)\^(\d+)}{$1**$2}eg;       # 2^10  -> 1024
+        $expr =~ s{k(\!+)(\D)}{"k\!" . length($1) . $2}eg; # k!!!  -> k!3
+        $expr =~ s{k!\[(\d+)\]}{k\!$1}g;          # k![3] -> k!3
         my $parms = &parse($expr);
         if (length($parms) > 0) {
-            print join("\t", $aseqno, "prisub", $parms) . "\n";
+            print join("\t", $aseqno, $callcode, $parms) . "\n";
         } else {
             print STDERR join("\t", $aseqno, $expr, $name) . "\n";
         }
@@ -79,41 +83,71 @@ sub parse {
     my ($expr) = @_;
     my $result = "";
     my ($p1, $p2, $p3, $p4, $p5);
-    my $ex = "xx";
+    my $ex = "";
     if ($expr =~ m{[a-z][a-z]}) { 
         # ignore if there is a word
     } elsif ($expr =~ m{\A$ex(\d+)\*k([\+\-])(\d+)\Z}) { # 7*k~7
         (                    $p1,    $p2,    $p3     ) = ($1, $2, $3);
-        $result  = join("\t", 1, "[[$p1],[1],[-1]]"                                , "[$p2$p3]",                  0, "", $expr);
+        $result  = join("\t", 1, "[[$p1],[1],[-1]]"                                , "[$p2$p3]",                  0, "", "", $expr);
     } elsif ($expr =~ m{\A$ex(\d+)\^k([\+\-])(\d+)\Z}) { # 7^k~7
         (                    $p1,    $p2,    $p3) = ($1, $2, $3);
-        $result  = join("\t", 1, "[[" . eval("-($p2$p3)*($p1-1)") . "],[$p1],[-1]]", "[" . eval("1$p2$p3") . "]", 0, "", $expr);
+        $result  = join("\t", 1, "[[" . eval("-($p2$p3)*($p1-1)") . "],[$p1],[-1]]", "[" . eval("1$p2$p3") . "]", 0, "", "", $expr);
     } elsif ($expr =~ m{\A$ex(\d+)\*k\^(\d+)([\+\-])(\d+)\Z}) { # 7*k^7~7; a(n) = 23*k^2 + 5 -> "[[5,0,23],[-1]]","[23+5]"
         (                    $p1,      $p2, $p3,    $p4) = ($1, $2, $3, $4);
-        if ($p2 <= 6) {
-        $result  = join("\t", 1, "[[$p3$p4" . (",0" x ($p2 - 1)) . ",$p1],[-1]]",    "[" . eval("$p3$p4") . "]",  0, "", $expr);
-        } else {
+      if ($p2 <= 6) {
+        $result  = join("\t", 1, "[[$p3$p4" . (",0" x ($p2 - 1)) . ",$p1],[-1]]",    "[" . eval("$p3$p4") . "]",  0, "", "", $expr);
+      } else {
         $result = "";
-        }
-    } elsif ($expr =~ m{\A(\d+)([\+\-]\d+)\*k(([\+\-]\d+\*k\^\d+)+)\Z}) { # 7~7*k~7*k^7~7*k^7
-        (                    $p1, $p2,          $p3           ) = ($1, $2, $3, $4);
+      }
+    } elsif ($expr =~ m{\A$ex(\d+)([\+\-]\d+)\*k(([\+\-](\.\.\.[\+\-])?\d+\*k\^\d+)+)\Z}) { # 7~7*k~7*k^7~7*k^7
+        (                    $p1, $p2,          $p3                                 ) = ($1, $2, $3, $4);
+        # 32 pass, very good
         $result  = join("\t", 1, "[[$p1,$p2");
         my $iexp = 1;
-        my @pairs = ($p3 =~ m{([\+\-]\d+\*k\^\d+)}g);
+        my @pairs = ($p3 =~ m{([\+\-](\.\.\.[\+\-])?\d+\*k\^\d+)}g);
+        my ($oldfactor, $oldexp) = (1,1);
         foreach my $pair (@pairs) {
-            $pair =~ m{([\+\-]\d+)\*k\^(\d+)};
-            my ($factor, $exp) = ($1, $2);
-            # print "# pair=$pair, factor=$factor, exp=$exp\n";
-            while ($iexp + 1 < $exp) {
-                $result .= ",0";
+            if ($pair =~ m{([\+\-]\d+)\*k\^(\d+)}) {
+                my ($factor, $exp) = ($1, $2);
+                if ($pair =~ m{\.\.\.}) { # with ellipsis
+                    while ($iexp + 1 < $exp) {
+                        $result .= "," . (($iexp + 1) & 1);
+                        $iexp ++;
+                    } # while $iexp
+                    $result .= ",1";
+                    # with ellipsis
+                } else {
+                    while ($iexp + 1 < $exp) {
+                        $result .= ",0";
+                        $iexp ++;
+                    } # while $iexp
+                    $result .= ",$factor";
+                }
+                # print "# pair=$pair, factor=$factor, exp=$exp\n";
                 $iexp ++;
-            } # while $iexp
-            $result .= ",$factor";
-            $iexp ++;
+                ($oldfactor, $oldexp) = ($factor, $exp);
+            }
         } # foreach
-        $result .=  join("\t", "],[-1]]", "[$p1]",  0, "", $expr);
+        $result .=  join("\t", "],[-1]]", "[$p1]",  0, "", "", $expr);
+    } elsif ($expr =~ m{\A1$ex\*k\!(\d+)([\+\-]\d+)\Z}) { # k!7~7;
+        (                    $p1, $p2) = ($1, $2);
+        # k!6-1 -> "[[-1],[0,1],[0],[0],[0],[0],[0],[-1]]", [1,1,2,3,4,5]-1 ; GU=8, very good
+        $p2 =~ s{\+}{};
+        # print "# p1=$p1, p2=$p2, expr=$expr, name=$name\n";
+        my @inits = (1);
+        for (my $ind = 1; $ind < $p1; $ind ++) {
+            push(@inits, $ind);
+        } # for
+        $callcode = "prisubf";
+        $result  = join("\t", 1, "[[0],[0,1]" . (",[0]" x ($p1 - 1)) . ",[-1]]", join(",", @inits), 0, $p2, "", $expr);
+    } elsif ($expr =~ m{\A(\d+(\*k(\^\d+)?)?)([\+\-](\d+(\*k(\^\d+)?)?))+\Z}) { 
+        my @pairs = split(/([\+\-])/, $expr);
+        foreach my $pair (@pairs) {
+        } # foreach
+        $callcode = "prisubp";
+        $result .= join("\t", "],[-1]]", "[1]",  0, "", "", $expr);
     }
-    $result =~ s{([\[\,])\+}{$1}g;
+    $result =~ s{([\[\,])\+}{$1}g; # [+7 -> [7
     return $result;
 } # parse
 #================

@@ -1,0 +1,209 @@
+A001466	egypfr	0	CR.PI.subtract(CR.THREE)	,1			Denominators of greedy Egyptian fraction expansion of Pi - 3.
+# A002966	egypfr	0					Egyptian fractions: number of solutions of 1 = 1/x_1 + ... + 1/x_n where 0 < x_1 <= ... <= x_n.
+# A002967	egypfr	0					Egyptian fractions: number of solutions of 1 = 1/x_1 + ... + 1/x_n in positive integers.
+A006524	egypfr	0	CR.PI.inverse()				Egyptian fraction for 1/ Pi.
+A006525	egypfr	0	CR.E.subtract(CR.TWO)					Denominators of greedy Egyptian fraction for e - 2.
+A006526	egypfr	0	CR.E.inverse()					Egyptian fraction for 1/e.
+# A006585	egypfr	0					Egyptian fractions: number of solutions to 1 = 1/x_1 + ... + 1/x_n in positive integers x_1 < ... < x_n.
+# A014013	egypfr	0					Alternating Egyptian fraction expansion of Pi-3.
+# A014015	egypfr	0					Denominators of sign-alternating Egyptian fraction expansion of e-2.
+# A020473	egypfr	0					Egyptian fractions: number of partitions of 1 into reciprocals of positive integers <= n.
+# A030541	egypfr	0					Remainder-numerators from Egyptian fraction expansion of 2/588391 using odd greedy algorithm.
+# A030542	egypfr	0					Remainder-numerators from Egyptian fraction expansion of 4/538199 using odd greedy algorithm.
+# A030543	egypfr	0					Remainder-numerators from Egyptian fraction expansion of 3/46547 using odd greedy algorithm.
+# A030544	egypfr	0					Remainder-numerators from Egyptian fraction expansion of 2/24631 using odd greedy algorithm.
+# A030545	egypfr	0					Remainder-numerators from Egyptian fraction expansion of 6/104651 using odd greedy algorithm.
+# A030546	egypfr	0					Remainder-numerators from Egyptian fraction expansion of 5/5809 using odd greedy algorithm.
+# A036680	egypfr	0					Expansion of C in Egyptian fractions, where C contains the primes in binary.
+# A043548	egypfr	0					Least separator of first n Egyptian fractions; i.e., least k for which the integers floor(k/m) for m=1,2,...,n are distinct.
+# A052385	egypfr	0					a(n)*10^n are the denominators of the greedy alternating Egyptian fraction expansion of Pi - 3 of the form Sum_{n>=0} ((-1)^n / (a(n)*10^n).
+# A069257	egypfr	0					Denominator of the last term of the Egyptian fraction sum (using the greedy algorithm) which satisfies 1 = 1/n + 1/(n+1) + 1/(n+2) ... 1/a(n).
+# A069261	egypfr	0					Denominators of the Egyptian fraction for the fractional part of Feigenbaum's constant, 4.6692...
+# A073546	egypfr	0					Triangle read by rows: row n gives denominators of n distinct unit fractions (or Egyptian fractions) summing to 1, where denominators are listed in increasing order and the largest denominator is smallest possible.
+# A075785	egypfr	0					Number of ways to express 3/n as Egyptian fractions in just three terms.
+# A091834	egypfr	0					Triangle read by rows: T(n,k) = maximum denominator in the Egyptian fraction representation that minimizes the maximum denominator of the k-th entry of row n of the triangle of numbers 1/2; 1/3, 2/3; 1/4, 2/4, 3/4; ...
+# A092666	egypfr	0					a(n) = number of Egyptian fractions 1 = 1/x_1 + ... + 1/x_k (for any k), with 0 < x_1 <= ... <= x_k = n.
+# A092667	egypfr	0					a(n) = number of Egyptian fractions 1 = 1/x_1 + ... + 1/x_k (for any k), with max{x_i}=n.
+# A092669	egypfr	0					a(n) = number of Egyptian fractions 1 = 1/x_1 + ... + 1/x_k (for any k), 0<x_1<...<x_k=n.
+# A092670	egypfr	0					a(n) = number of Egyptian fractions 1 = 1/x_1 + ... + 1/x_k (for any k), 0<x_1<...<x_k<=n.
+# A097048	egypfr	0					a(n) = least denominator Y of the proper fractions X/Y which need n or more terms as an Egyptian fraction.
+# A097049	egypfr	0					a(n) = least numerator X of the proper fractions X/A097048(n) which need n or more terms as an Egyptian fraction.
+# A100140	egypfr	0					Largest denominator of greedy Egyptian fraction sum for M/N.
+# A100678	egypfr	0					Number of Egyptian fractions in the representation of n/(n+1) via the greedy algorithm.
+# A100695	egypfr	0					Largest denominator used in the Egyptian fraction representation of n/(n + 1) by the greedy algorithm.
+# A106394	egypfr	0					Table read by rows, where n-th row is denominators of Egyptian fraction, derived using the greedy algorithm, of the n-th harmonic number (sum{k=1 to n}1/k).
+# A110820	egypfr	0	EulerGamma.SINGLETON.gamma()				Denominator of Egyptian fraction for Euler's constant (or Euler-Mascheroni constant) gamma.
+# A111804	egypfr	0					Triangle read by rows: for T(n,k), 1<=k<=n, gcd(k,n)=1, consider all representations of k/n as an Egyptian fraction; T(n,k) = minimal value of maximal denominator.
+# A111809	egypfr	0					Triangle read by rows: for T(n,k), 1<=k<=n, gcd(k,n)=1, consider all representations of k/n as an Egyptian fraction; T(n,k) = minimal value of sum of denominators.
+# A118017	egypfr	0					Largest denominators in even Egyptian fraction representation of 1.
+# A118323	egypfr	0					(Greedy) Egyptian fraction expansion of Catalan constant.
+A118324	egypfr	0	CR.TWO.log()				(Greedy) Egyptian fraction expansion of log 2.
+# A123180	egypfr	0					Even positions of Sylvester's sequence A000058; the denominators of the (greedy) Egyptian fraction expansion of Cahen's constant.
+# A128253	egypfr	0					Primitive elements of A092671: numbers that may be the largest denominator in an Egyptian fraction for 1.
+# A130738	egypfr	0					Greedy odd Egyptian fraction representation of 1 (without repeats).
+# A136375	egypfr	0					Irregular array read by rows, where n-th row gives denominators of the Egyptian fraction expansion, derived using the greedy algorithm, for the absolute value of the fractional part of the (2n)th Bernoulli number.
+# A139514	egypfr	0					Denominators of an Egyptian fraction for Pi, using only prime numbers and allowing repetitions.
+# A139515	egypfr	0					Denominators of an Egyptian fraction for Pi^(-1), using only prime numbers.
+# A139516	egypfr	0					Denominators of an Egyptian fraction for "e", using only prime numbers and allowing repetitions.
+# A139517	egypfr	0					Denominators of an Egyptian fraction for e^(-1), using only prime numbers.
+# A139519	egypfr	0					Denominators of an Egyptian fraction for Euler-Mascheroni constant, using only prime numbers and allowing repetitions.
+# A139520	egypfr	0					Denominators of an Egyptian fraction for Catalan constant, using only prime numbers and allowing repetitions.
+# A139522	egypfr	0					Denominators of an Egyptian fraction for log(2), using only prime numbers and allowing repetitions.
+# A139523	egypfr	0					Denominators of an Egyptian fraction for log(Pi), using only prime numbers and allowing repetitions.
+# A143232	egypfr	0					Sum of denominators of Egyptian fraction expansion of A004001(n) - n/2.
+# A144063	egypfr	0					Counting number of Egyptian fraction for 1 when the number of terms is given and the largest denominator is no more than 256.
+A144835	egypfr	0	CR.SIX.divide(CR.PI.multiply(CR.PI))				Denominators of an Egyptian fraction for 1/zeta(2) = 0.607927101854... (A059956).
+# A154429	egypfr	0					a(n) is the least k such that the greedy algorithm (for Egyptian fractions) on 4k/(24n+1) terminates in at most three steps.
+# A156618	egypfr	0					Denominators of Egyptian fraction for Pi-3 whose partial sums are the convergents
+# A156736	egypfr	0					Signed greedy Egyptian fraction for Pi/2
+A156750	egypfr	0	CR.HALF_PI				Greedy Egyptian fraction for Pi/2
+A157193	egypfr	0	CR.FOUR.divide(CR.PI)				Greedy Egyptian fraction expansion for 4/Pi
+A157327	egypfr	0	CR.PI.divide(CR.FOUR)	,2			Egyptian fraction expansion for Pi/4 = arctan(1/2) + arctan(1/3) (Hutton 1776).
+A157332	egypfr	0	CR.PI.divide(CR.valueOf(16))				Denominators of Egyptian fraction for Pi/16 based on Machin's formula
+A157718	egypfr	0	CR.THREE.log()				Greedy Egyptian fraction expansion of log(3).
+# A164924	egypfr	0					Denominators of Egyptian fraction for Pi/4 whose partial sums are the convergents
+A182257	egypfr	0	CR.PI	,1				Denominators of Egyptian fraction expansion of Pi.
+# A192881	egypfr	0					Number of terms for the shortest Egyptian fraction representation of 1 starting with 1/n.
+# A216975	egypfr	0					Triangle read by rows in which row n gives the lexicographically earliest minimal sum denominators among all possible n-term Egyptian fractions with unit sum.
+# A216993	egypfr	0					Triangle read by rows in which row n gives the lexicographically earliest denominators with the least possible maximum value among all n-term Egyptian fractions with unit sum.
+A224230	egypfr	0	CR.PI				Egyptian fraction expansion of Pi.
+# A226049	egypfr	0					Denominators of signed Egyptian fractions with sums converging to the golden ratio.
+# A226050	egypfr	0					Denominators of signed Egyptian fractions with sums converging to e.
+# A226051	egypfr	0					Denominators of signed Egyptian fractions with sums converging to pi.
+# A226052	egypfr	0					Denominators of signed Egyptian fractions with sums converging to sqrt(2).
+# A226053	egypfr	0					Denominators of signed Egyptian fractions with sums converging to sqrt(1/2).
+# A226058	egypfr	0					Denominators of signed Egyptian fractions with sums converging to the Euler-Mascheroni constant.
+# A226125	egypfr	0					Denominators of signed Egyptian fractions 1/(1+a(n)) with sums converging to sqrt(2).
+# A226126	egypfr	0					Denominators of signed Egyptian fractions 1/(2+a(n)) with sums converging to sqrt(2).
+# A226127	egypfr	0					Denominators of signed Egyptian fractions 1/(1+2*a(n)) with sums converging to sqrt(2).
+# A226128	egypfr	0					Denominators of signed Egyptian fractions 1/(1+2*a(n)) with sums converging to 2.
+# A226129	egypfr	0					Denominators of signed Egyptian fractions 1/sqrt(n) with sums converging to 2.
+# A226641	egypfr	0					Number of ways to express 2/n as Egyptian fractions in just three terms; i.e., 2/n = 1/x + 1/y + 1/z satisfying 1<=x<=y<=z.
+# A226642	egypfr	0					Number of ways to express 3/n as Egyptian fractions in just three terms; i.e., 3/n = 1/x + 1/y + 1/z satisfying 1<=x<=y<=z.
+# A226644	egypfr	0					Number of ways to express 5/n as Egyptian fractions in just three terms; i.e., 5/n = 1/x + 1/y + 1/z satisfying 1<=x<=y<=z.
+# A226645	egypfr	0					Number of ways to express 6/n as Egyptian fractions in just three terms; i.e., 6/n = 1/x + 1/y + 1/z satisfying 1<=x<=y<=z.
+# A226646	egypfr	0					Number of ways to express m/n as Egyptian fractions in just three terms, that is, m/n = 1/x + 1/y + 1/z satisfying 1 <= x <= y <= z and read by antidiagonals.
+# A227610	egypfr	0					Number of ways to express 1/n as Egyptian fractions in just three terms: 1/n = 1/x + 1/y + 1/z satisfying 0 < x < y < z.
+# A227611	egypfr	0					Number of ways to express 2/n as Egyptian fractions in just three terms: 2/n = 1/x + 1/y + 1/z with 0 < x < y < z.
+# A227612	egypfr	0					Number of ways to express m/n as Egyptian fractions in just three terms; i.e., m/n = 1/x + 1/y + 1/z satisfying 0 < x < y < z and read by antidiagonals.
+# A241883	egypfr	0					Number of ways to express 1/n as Egyptian fractions in just four terms: 1/n = 1/w + 1/x + 1/y + 1/z satisfying 0 < w < x < y < z.
+# A243020	egypfr	0					Denominators of Egyptian fraction expansion of Pi, without repetition.
+# A243369	egypfr	0					Denominators of Egyptian fraction expansion of e, without repetition.
+# A247765	egypfr	0					Table of denominators in the Egyptian fraction representation of n/(n+1) by the greedy algorithm.
+# A260402	egypfr	0					Numbers which cannot be the largest denominator of an Egyptian fraction for 1.
+A269573	egypfr	0	CR.THREE.inverse().multiply(CR.TWO.inverse().log()).exp()				Denominators of r-Egyptian fraction expansion for (1/2)^(1/3), where r = (1,1,1,1,1,...)
+# A269993	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/2), where r = (1,1/2,1/3,1/4,...)
+# A269994	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/3), where r = (1,1/2,1/3,1/4,...)
+# A269995	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(2) - 1, where r = (1,1/2,1/3,1/4,...)
+# A269996	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(3) - 1, where r = (1,1/2,1/3,1/4,...)
+# A269997	egypfr	0					Denominators of r-Egyptian fraction expansion for -1 + golden ratio, where r = (1,1/2,1/3,1/4,...)
+# A269998	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/Pi, where r = (1,1/2,1/3,1/4,...)
+# A269999	egypfr	0					Denominators of r-Egyptian fraction expansion for Pi - 3, where r = (1,1/2,1/3,1/4,...)
+# A270001	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/e, where r = (1,1/2,1/3,1/4,...)
+# A270002	egypfr	0					Denominators of r-Egyptian fraction expansion for e - 2, where r = (1,1/2,1/3,1/4,...)
+# A270314	egypfr	0					Denominators of r-Egyptian fraction expansion for log(2), where r = (1,1/2,1/3,1/4,...)
+# A270315	egypfr	0					Denominators of r-Egyptian fraction expansion for the Euler-Mascheroni constant (Gamma-Euler constant), where r = (1,1/2,1/3,1/4,...)
+# A270316	egypfr	0					Denominators of r-Egyptian fraction expansion for (1/2)^(1/3), where r = (1,1/2,1/3,1/4,...)
+# A270347	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/2), where r = (1,1/2,1/4,1/8,...)
+# A270348	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/3), where r = (1,1/2,1/4,1/8,...)
+# A270349	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(2) - 1, where r = (1,1/2,1/4,1/8,...)
+# A270350	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(3) - 1, where r = (1, 1/2, 1/4, 1/8, ...)
+# A270351	egypfr	0					Denominators of r-Egyptian fraction expansion for golden ratio - 1, where r = (1, 1/2, 1/4, 1/8, ...)
+# A270352	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/Pi, where r = (1, 1/2, 1/4, 1/8, ...)
+# A270353	egypfr	0					Denominators of r-Egyptian fraction expansion for Pi - 3, where r = (1, 1/2, 1/4, 1/8, ...)
+# A270354	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/e, where r = (1, 1/2, 1/4, 1/8, ...)
+# A270355	egypfr	0					Denominators of r-Egyptian fraction expansion for e - 2, where r = (1, 1/2, 1/4, 1/8, ...)
+# A270356	egypfr	0					Denominators of r-Egyptian fraction expansion for log(2), where r = (1, 1/2, 1/4, 1/8, ...)
+# A270357	egypfr	0					Denominators of r-Egyptian fraction expansion for the Euler-Mascheroni constant, where r = (1, 1/2, 1/4, 1/8, ...)
+# A270358	egypfr	0					Denominators of r-Egyptian fraction expansion for (1/2)^(1/3), where r = (1, 1/2, 1/4, 1/8, ...).
+# A270371	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/2), where r = (1,1/4,1/9,1/16,...).
+# A270372	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/3), where r = (1, 1/4, 1/9, 1/16, ...).
+# A270373	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(2) - 1, where r = (1, 1/4, 1/9, 1/16, ...).
+# A270374	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(3) - 1, where r = (1,1/4,1/9,1/16,...).
+# A270375	egypfr	0					Denominators of r-Egyptian fraction expansion for golden ratio - 1, where r = (1,1/4,1/9,1/16,...).
+# A270376	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/Pi, where r = (1, 1/4, 1/9, 1/16, ...).
+# A270377	egypfr	0					Denominators of r-Egyptian fraction expansion for Pi - 3, where r = (1,1/4,1/9,1/16,...).
+# A270378	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/e, where r = (1, 1/4, 1/9, 1/16, ...).
+# A270379	egypfr	0					Denominators of r-Egyptian fraction expansion for e - 2, where r = (1,1/4,1/9,1/16,...).
+# A270380	egypfr	0					Denominators of r-Egyptian fraction expansion for log(2), where r = (1,1/4,1/9,1/16,...).
+# A270381	egypfr	0					Denominators of r-Egyptian fraction expansion for the Euler-Mascheroni constant (EulerGamma), where r = (1, 1/4, 1/9, 1/16, ...).
+# A270382	egypfr	0					Denominators of r-Egyptian fraction expansion for (1/2)^(1/3), where r = (1,1/4,1/9,1/16,...).
+# A270394	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/2), where r(k) = 1/Fibonacci(k+1).
+# A270395	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/3), where r(k) = 1/Fibonacci(k+1).
+# A270396	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(2) - 1, where r(k) = 1/Fibonacci(k+1).
+# A270397	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(3) - 1, where r(k) = 1/Fibonacci(k+1).
+# A270398	egypfr	0					Denominators of r-Egyptian fraction expansion for golden ratio - 1, where r(k) = 1/Fibonacci(k+1).
+# A270399	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/Pi, where r(k) = 1/Fibonacci(k+1).
+# A270400	egypfr	0					Denominators of r-Egyptian fraction expansion for Pi - 3, where r(k) = 1/Fibonacci(k+1).
+# A270401	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/e, where r(k) = 1/Fibonacci(k+1).
+# A270402	egypfr	0					Denominators of r-Egyptian fraction expansion for e - 2, where r(k) = 1/Fibonacci(k+1).
+# A270403	egypfr	0					Denominators of r-Egyptian fraction expansion for log(2), where r(k) = 1/Fibonacci(k+1).
+# A270404	egypfr	0					Denominators of r-Egyptian fraction expansion for the Euler-Mascheroni constant (EulerGamma), where r(k) = 1/Fibonacci(k+1).
+# A270405	egypfr	0					Denominators of r-Egyptian fraction expansion for (1/2)^(1/3), where r(k) = 1/Fibonacci(k+1).
+# A270476	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/2), where r(k) = 1/Prime(k).
+# A270477	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/3), where r(k) = 1/Prime(k).
+# A270478	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(2) - 1, where r(k) = 1/Prime(k).
+# A270479	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(3) - 1, where r(k) = 1/Prime(k).
+# A270480	egypfr	0					Denominators of r-Egyptian fraction expansion for (golden ratio - 1), where r(k) = 1/Prime(k).
+# A270481	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/Pi, where r(k) = 1/Prime(k).
+# A270482	egypfr	0					Denominators of r-Egyptian fraction expansion for Pi - 3, where r(k) = 1/Prime(k).
+# A270483	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/E, where r(k) = 1/Prime(k).
+# A270484	egypfr	0					Denominators of r-Egyptian fraction expansion for E - 2, where r(k) = 1/Prime(k).
+# A270485	egypfr	0					Denominators of r-Egyptian fraction expansion for log(2), where r(k) = 1/Prime(k).
+# A270486	egypfr	0					Denominators of r-Egyptian fraction expansion for the Euler-Mascheroni constant (EulerGamma), where r(k) = 1/Prime(k).
+# A270487	egypfr	0					Denominators of r-Egyptian fraction expansion for (1/2)^(1/3), where r(k) = 1/Prime(k).
+# A270517	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/2), where r(k) = 1/k!.
+# A270518	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/3), where r(k) = 1/k!.
+# A270519	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(2) - 1, where r(k) = 1/k!.
+# A270520	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(3) - 1, where r(k) = 1/k!.
+# A270521	egypfr	0					Denominators of r-Egyptian fraction expansion for -1 + golden ratio, where r(k) = 1/k!.
+# A270522	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/Pi, where r(k) = 1/k!.
+# A270523	egypfr	0					Denominators of r-Egyptian fraction expansion for Pi - 3, where r(k) = 1/k!.
+# A270524	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/e, where r(k) = 1/k!.
+# A270525	egypfr	0					Denominators of r-Egyptian fraction expansion for log(2), where r(k) = 1/k!.
+# A270526	egypfr	0					Denominators of r-Egyptian fraction expansion for the Euler-Mascheroni constant (EulerGamma), where r(k) = 1/k!.
+# A270527	egypfr	0					Denominators of r-Egyptian fraction expansion for (1/2)^(1/3), where r(k) = 1/k!.
+# A270546	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/2), where r(k) = 1/(2k-1).
+# A270547	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/3), where r(k) = 1/(2k-1).
+# A270548	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(2) - 1, where r(k) = 1/(2k-1).
+# A270549	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(3) - 1, where r(k) = 1/(2k-1).
+# A270550	egypfr	0					Denominators of r-Egyptian fraction expansion for -1 + golden ratio, where r(k) = 1/(2k-1).
+# A270551	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/Pi, where r(k) = 1/(2k-1).
+# A270552	egypfr	0					Denominators of r-Egyptian fraction expansion for Pi - 3, where r(k) = 1/(2k-1).
+# A270553	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/e, where r(k) = 1/(2k-1).
+# A270554	egypfr	0					Denominators of r-Egyptian fraction expansion for e - 2, where r(k) = 1/(2k-1).
+# A270555	egypfr	0					Denominators of r-Egyptian fraction expansion for log(2), where r(k) = 1/(2k-1).
+# A270556	egypfr	0					Denominators of r-Egyptian fraction expansion for the Euler-Mascheroni constant (EulerGamma), where r(k) = 1/(2k-1).
+# A270557	egypfr	0					Denominators of r-Egyptian fraction expansion for (1/2)^(1/3), where r(k) = 1/(2k-1).
+# A270580	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/2), where r(k) = 1/(k+1).
+# A270581	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(1/3), where r(k) = 1/(k+1).
+# A270582	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(2) - 1, where r(k) = 1/(k+1).
+# A270583	egypfr	0					Denominators of r-Egyptian fraction expansion for sqrt(3) - 1, where r(k) = 1/(k+1).
+# A270584	egypfr	0					Denominators of r-Egyptian fraction expansion for golden ratio - 1, where r(k) = 1/(k+1).
+# A270585	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/Pi, where r(k) = 1/(k+1).
+# A270586	egypfr	0					Denominators of r-Egyptian fraction expansion for Pi - 3, where r(k) = 1/(k+1).
+# A270587	egypfr	0					Denominators of r-Egyptian fraction expansion for 1/e, where r(k) = 1/(k+1).
+# A270588	egypfr	0					Denominators of r-Egyptian fraction expansion for e - 2, where r(k) = 1/(k+1).
+# A270589	egypfr	0					Denominators of r-Egyptian fraction expansion for log(2), where r(k) = 1/(k+1).
+# A270590	egypfr	0					Denominators of r-Egyptian fraction expansion for the Euler-Mascheroni constant (EulerGamma), where r(k) = 1/(k+1).
+# A270591	egypfr	0					Denominators of r-Egyptian fraction expansion for (1/2)^(1/3)), where r(k) = 1/(k+1).
+# A278638	egypfr	0					Numbers n such that 1/n is a difference of Egyptian fractions with all denominators < n.
+# A281530	egypfr	0					Triangle read by rows: T(n,k) = number of terms for the shortest Egyptian fraction representation of k/n, 1 <= k < n.
+# A281531	egypfr	0					a(n) is the least numerator k such that the proper fraction k/n needs three or more terms as an Egyptian fraction, or 0 if no such numerator exists.
+# A286720	egypfr	0					Number of Egyptian fractions in the representation of 1-1/(2n+1) by the odd greedy expansion algorithm, without repeats.
+# A287434	egypfr	0					Largest denominator used in the Egyptian fraction representation of 1-1/(2n+1) by the odd greedy expansion algorithm, without repeats.
+# A303388	egypfr	0					Sequence gives the denominators, in increasing values, of Egyptian fractions such that their alternating sum has the concatenation of these denominators as decimal part. a(1) = 3.
+# A304285	egypfr	0					Sequence gives the odd denominators, in increasing values, of Egyptian fractions whose sum has the concatenation of these denominators as decimal part. Case a(1) = 3.
+# A304286	egypfr	0					Sequence gives the denominators, in increasing values, of Egyptian fractions whose sum has the concatenation of these denominators as decimal part. Case a(1) = 4.
+# A304287	egypfr	0					Sequence gives the denominators, in increasing values from the second term on, of Egyptian fractions whose sum has the concatenation of these denominators as decimal part. Case a(1) = 5.
+# A304722	egypfr	0					Denominators of sign-alternating Egyptian fraction expansion for 1/e.
+# A306349	egypfr	0					Number of terms in the greedy Egyptian fraction representation of n.
+# A308219	egypfr	0					Number of Egyptian fractions of denominator n which are the sum of 2 unit fractions.
+# A308220	egypfr	0					Number of irreducible Egyptian fractions of denominator n which are the sum of 2 unit fractions.
+# A308221	egypfr	0					Number of Egyptian fractions of denominator n which are sum of 3 unit fractions.
+# A308415	egypfr	0					Number of irreducible Egyptian fractions of denominator n which are the sum of 3 unit fractions.
+# A316291	egypfr	0					Common denominators of all Egyptian fraction representations of unity (EFROUs) such that replacing two terms with their sum never results in another EFROU.
+# A323725	egypfr	0					a(n) is the last (and thus largest) denominator of an Egyptian fraction representing n, where each consecutive denominator is as small as possible.
+# A326711	egypfr	0					The number of terms in the greedy Egyptian fraction expansion of 1 = 1/n + 1/(n+1) + 1/(n+2) + ... + 1/A069257(n).
+# A333437	egypfr	0					Triangle read by rows: T(n,k) is the number of Egyptian fractions 1 = 1/x_1 + ... + 1/x_k , with 0 < x_1 <= ... <= x_k = n.
+# A333496	egypfr	0					Least k of Egyptian fractions 1 = 1/x_1 + ... + 1/x_k , with 0 < x_1 <= ... <= x_k = n.
