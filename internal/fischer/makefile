@@ -1798,51 +1798,6 @@ morfix_grep:
 	wc -l x.tmp
 #
 #--------------------------------
-# A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
-# A272999 Numbers k such that (11*10^k + 49)/3 is prime.
-pfprime:
-	perl -ne \
-	's/ /\t/; '\
-	'if (m{^(A\d{6})\t(Numbers|Integers) \w such that[^\(\d]*\(?(\d+)\s*\*\s*(\d+)\^\w\s*([\+\-0-9 ]+)\)?\s*(\/\s*(\d+))? is (a )?prime\.}) {'\
-	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$3, $$4, $$5, $$7); '\
-	' $$add =~ s{ }{}g; if (length($$div) == 0) { $$div = 0; } '\
-	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
-	$(COMMON)/names \
-	>        $@.tmp
-	tail -n4 $@.tmp
-	wc -l    $@.tmp
-	# A101001 Indices of primes in sequence defined by A(0) = 91, A(n) = 10*A(n-1) + 11 for n > 0.
-	# => Numbers n such that (830*10^n - 11)/9 is prime
-	perl -ne \
-	's/ /\t/; '\
-	'if (m{^(A\d{6})\tIndices of primes in sequence defined by'\
-	' A\(\d\)\s*\=\s*(\d+)\,\s*A\(\w\)\s*\=\s*(\d+)\*A\(n\s*\-\s*\w\)\s*([\+\-0-9 ]+)\s*for}) {'\
-	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, 9); '\
-	' $$add =~ s{ }{}g; $$num = $$num * $$div + $$add; $$add = -$$add; '\
-	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
-	$(COMMON)/names \
-	>>       $@.tmp
-	tail -n4 $@.tmp
-	wc -l    $@.tmp
-	sort     $@.tmp \
-	| grep -vE "A098466|A098467" \
-	>        $@.gen
-#--
-pfprime99:
-	make seq4 LIST=$(CC).gen
-	$(DBAT) "UPDATE seq4 s SET PARM1 = \
-	    (SELECT SUBSTR(data, 1, INSTR(data, ',') - 1) FROM asdata d WHERE d.aseqno = s.aseqno)"
-	$(DBAT) "UPDATE seq4 s SET PARM5 = 1 WHERE PARM5 = 0"
-	$(DBAT) -x "SELECT * FROM seq4 \
-	    ORDER BY aseqno" \
-	>        $@.gen
-	# WHERE PARM1 < 10 AND PARM2 < 1000 
-pfprimex:
-	cp pfprime.gen pfprime.tmp
-	perl -pe 's{^(A032373|A050413|A050544|A050847|A050885|A056245|A056248|A056258|A059454'\
-	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
-	pfprime.tmp > pfprime.gen
-#--------------------------------
 # A191017 null    Primes with Kronecker symbol (p|14) = 1.
 # A191020 null    Primes p with Kronecker symbol (p|2*11) = 1.
 # A191023 null    Primes p which have Kronecker symbol (p|30) = 1.
@@ -3599,7 +3554,66 @@ qfb1:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--------------------------------
+# A272999 %t Select[Range[0, 100000], PrimeQ[ (85*10^# + 473)/9 ] &]
+# A272999 Numbers k such that (11*10^k + 49)/3 is prime.
+pfprime:
+	perl -ne \
+	's/ /\t/; '\
+	'if (m{^(A\d{6})\t(Numbers|Integers) \w such that[^\(\d]*\(?(\d+)\s*\*\s*(\d+)\^\w\s*([\+\-0-9 ]+)\)?\s*(\/\s*(\d+))? is (a )?prime\.}) {'\
+	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$3, $$4, $$5, $$7); '\
+	' $$add =~ s{ }{}g; if (length($$div) == 0) { $$div = 1; } '\
+	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
+	$(COMMON)/names \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+	# A101001 Indices of primes in sequence defined by A(0) = 91, A(n) = 10*A(n-1) + 11 for n > 0.
+	# => Numbers n such that (830*10^n - 11)/9 is prime
+	perl -ne \
+	's/ /\t/; '\
+	'if (m{^(A\d{6})\tIndices of primes in sequence defined by'\
+	' A\(\d\)\s*\=\s*(\d+)\,\s*A\(\w\)\s*\=\s*(\d+)\*A\(n\s*\-\s*\w\)\s*([\+\-0-9 ]+)\s*for}) {'\
+	' my ($$aseqno, $$num, $$base, $$add, $$div) = ($$1, $$2, $$3, $$4, 9); '\
+	' $$add =~ s{ }{}g; $$num = $$num * $$div + $$add; $$add = -$$add; '\
+	' print join("\t", $$aseqno, "$@", 0, 0, $$num, $$base, $$add, $$div) . "\n" }' \
+	$(COMMON)/names \
+	>>       $@.tmp
+	tail -n4 $@.tmp
+	wc -l    $@.tmp
+	sort     $@.tmp \
+	| grep -vE "A098466|A098467" \
+	>        $@.gen
+#--
+pfprime99:
+	make seq4 LIST=$(CC).gen
+	$(DBAT) "UPDATE seq4 s SET PARM1 = \
+	    (SELECT SUBSTR(data, 1, INSTR(data, ',') - 1) FROM asdata d WHERE d.aseqno = s.aseqno)"
+	$(DBAT) "UPDATE seq4 s SET PARM5 = 1 WHERE PARM5 = 0"
+	$(DBAT) -x "SELECT * FROM seq4 \
+	    ORDER BY aseqno" \
+	>        $@.gen
+	# WHERE PARM1 < 10 AND PARM2 < 1000 
+pfprimex:
+	cp pfprime.gen pfprime.tmp
+	perl -pe 's{^(A032373|A050413|A050544|A050847|A050885|A056245|A056248|A056258|A059454'\
+	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
+	pfprime.tmp > pfprime.gen
 #-------------------
+prisub:
+	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'Numbers [a-z] such *that' | grep -E 'is (a )?prime' \
+	| grep -v PowerFactorPrime \
+	>        $@.tmp
+	perl prisub.pl $@.tmp \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.*
+proprep:
+	cut -f4-5  $@.gen | sort | uniq -c | sort -r > $@.sort.tmp
+	head -n4   $@.sort.tmp
+	cut -f5    $@.gen | sort | uniq -c | sort -r | grep -v " 1 " | tee $@.code.tmp
+#----
 suchprim:
 	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'such *that' | grep -E 'is *prime' \
 	| grep -v "PowerFactorPrimeSequence" \
@@ -3608,7 +3622,8 @@ suchprim:
 	wc -l    $@.tmp
 	perl suchprim.pl $@.tmp \
 	2>       $@.rest.tmp \
-	| grep -E "suchprk|suchprik" \
+	| grep -E  "suchpr" \
+	| grep -vE "suchprk|suchprik" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  suchp*.*

@@ -39,19 +39,19 @@ while (<>) { # from joeis_names.txt
                                            # parms[0]      [1]     [2]      [3]   [4]
     if (0) {
     
-    } elsif ($name =~ m{Numbers [kn] such that (the string )?(\d+[kn]) is prime}) {
+    } elsif ($name =~ m{Numbers [k-n] such that (the string |the concatenation )?(\d+[k-n]) is (a )?prime}) {
         # A104912   null    Numbers k such that the string 9876543210k is prime.    nonn,base,synth 1..49   nyi
         # A104914   null    Numbers n such that the string 987654321k is prime. nonn,base,  1..10000    nyi
         $cond = $2;
         $callcode = "parm2";
         $cond =~ s{ }{}g; # remove spaces
-        $cond =~ s{[kn]}{}; # remove k or n
+        $cond =~ s{[k-n]}{}; # remove k or n
         $parms[1] = "A103603";
         $parms[2] = "\"$cond\"";
         $parms[4] = "suchprik";
         $parms[5] = $name;
     
-    } elsif ($name =~ m{Numbers [kn] such that (the string )?([kn]\d+) is prime}) {
+    } elsif ($name =~ m{Numbers [k-n] such that (the string |the concatenation )?([k-n]\d+) is (a )?prime}) {
         # A103540   null    Numbers k such that the string k2357111317 is prime.    base,nonn,  1..1000 nyi
         # A103541   null    Numbers n such that n23571113171923 is prime.   base,nonn,  1..10000    nyi
         # A104044   null    Numbers n such that n7 is prime and n is a multiple of ten. base,nonn,synth 1..44   nyi
@@ -59,8 +59,8 @@ while (<>) { # from joeis_names.txt
         $callcode = "suchprki";
         $parms[1] = "A099192";
         $cond =~ s{ }{}g; # remove spaces
-        $cond =~ s{[kn]}{}; # remove k or n
-        if ($name =~ m{is prime and [kn] is a multiple of (ten|10)}) {
+        $cond =~ s{[k-n]}{}; # remove k or n
+        if ($name =~ m{is prime and [k-n] is a multiple of (ten|10)}) {
             $cond = "0$cond"; # insert a zero
             $callcode = "suchprk0";
             $parms[1] = "A102915";
@@ -71,7 +71,7 @@ while (<>) { # from joeis_names.txt
         $parms[5] = $name;
         $callcode = "parm3";
     
-    } elsif ($name =~ m{Numbers [kn] such that ([^i]+)is prime}) {
+    } elsif ($name =~ m{Numbers [k-n] such that ([^i]+)is (a )?prime}) {
         # A102990   null    Numbers n such that 4*10^n + 3*R_n + 6 is prime, where R_n = 11...1 is the repunit (A002275) of length n.
         # A103100   null    Numbers n such that 9*10^n + 5*R_n - 4 is prime, where R_n = 11...1 is the repunit (A002275) of length n.   more,nonn,changed,synth 1..24   nyi
         # A259128   null    Numbers k such that R_k + 3*10^k + 2 is prime, where R_k = 11...11 is the repunit (A002
@@ -121,7 +121,7 @@ while (<>) { # from joeis_names.txt
         }
         $parms[5] = $name;
     
-    } elsif ($name =~ m{Numbers [kn] such that ([^i]+)is prime}) {
+    } elsif ($name =~ m{Numbers [k-n] such that ([^i]+)is prime}) {
         # A105583   null    Numbers k such that 101*k + 997 is prime.   nonn,easy,changed,  1..10000    nyi
         # A107123   null    Numbers n such that (10^(2n+1)+18*10^n-1)/9 is prime.   nonn,base,more,changed,synth    1..6    nyi
         $cond = $1;
