@@ -3600,11 +3600,12 @@ pfprimex:
 	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
 	pfprime.tmp > pfprime.gen
 #-------------------
+EE=-e
 prisub:
-	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'ers [a-z] such *that' | grep -E 'is (a )?prime' \
+	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'ers [a-z] (such that|for which) ' | grep -E 'is (a )?prime' \
 	| grep -v PowerFactorPrime \
 	>        $@.tmp
-	perl prisub.pl $@.tmp \
+	perl prisub.pl $(EE) $@.tmp \
 	2>       $@.rest.tmp \
 	>        $@.gen
 	head -n4 $@.gen

@@ -33,6 +33,6 @@ public class PrimePositionSubsequence extends PositionSubsequence {
 
   @Override
   public boolean isOk(Z term) {
-  	return term.isProbablePrime();
+    return term.isProbablePrime();
   }
 }

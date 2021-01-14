@@ -5,8 +5,9 @@
 #
 #:# Usage:
 #:#   grep ... $(COMMON)/joeis_names.txt \
-#:#   | perl prisub.pl [-d debug] [-f ofter_file] > output
+#:#   | perl prisub.pl [-d debug] [-e] [-f ofter_file] > output
 #:#     -d  debugging level (0=none (default), 1=some, 2=more)
+#:#     -e  exclude most patterns
 #:#     -f  file with aseqno, offset1, terms (default $(COMMON)/joeis_ofter.txt)
 #--------------------------------------------------------
 use strict;
@@ -19,11 +20,14 @@ my $debug   = 0;
 my $offset = 0;
 my $rseqno = "";
 my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
+my $ex = "";
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt   =~ m{\-d}  ) {
         $debug      = shift(@ARGV);
+    } elsif ($opt   =~ m{\-e}  ) {
+        $ex         = "xx";
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -51,6 +55,7 @@ while (<>) { # from joeis_names.txt
     $line = $_;
     $line =~ s{\, where .*}{};
     $line =~ s{ is (a )?prime}{\; is prime};
+    $line =~ s{ for which }{ such that };
     $callcode = "prisub";
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
     if (defined($ofters{$aseqno})) {
@@ -62,7 +67,7 @@ while (<>) { # from joeis_names.txt
         my $expr   = $3;
         $expr =~ s{ }{}g;
         $expr =~ s{$letter}{k}g;
-        $expr =~ s{R_k}{\(10^k\-1\)\/9}g;         # R_k   -> (10^k-1)/9
+        # $expr =~ s{R_k}{\(10^k\-1\)\/9}g;         # R_k   -> (10^k-1)/9
         $expr =~ s{(\A|[\+\-])k}{${1}1\*k}g;      # +k    -> +1*k
         $expr =~ s{(\d)k}{${1}\*k}g;              # 1234k -> 1234*k
         $expr =~ s{(\d+)\^(\d+)}{$1**$2}eg;       # 2^10  -> 1024
@@ -82,16 +87,19 @@ while (<>) { # from joeis_names.txt
 sub parse {
     my ($expr) = @_;
     my $result = "";
-    my ($p1, $p2, $p3, $p4, $p5);
+    my ($p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9);
     my $ex = "";
-    if ($expr =~ m{[a-z][a-z]}) { 
+    if ($expr =~ m{[a-z][a-z]}) {
         # ignore if there is a word
+
     } elsif ($expr =~ m{\A$ex(\d+)\*k([\+\-])(\d+)\Z}) { # 7*k~7
         (                    $p1,    $p2,    $p3     ) = ($1, $2, $3);
         $result  = join("\t", 1, "[[$p1],[1],[-1]]"                                , "[$p2$p3]",                  0, "", "", $expr);
+
     } elsif ($expr =~ m{\A$ex(\d+)\^k([\+\-])(\d+)\Z}) { # 7^k~7
         (                    $p1,    $p2,    $p3) = ($1, $2, $3);
         $result  = join("\t", 1, "[[" . eval("-($p2$p3)*($p1-1)") . "],[$p1],[-1]]", "[" . eval("1$p2$p3") . "]", 0, "", "", $expr);
+
     } elsif ($expr =~ m{\A$ex(\d+)\*k\^(\d+)([\+\-])(\d+)\Z}) { # 7*k^7~7; a(n) = 23*k^2 + 5 -> "[[5,0,23],[-1]]","[23+5]"
         (                    $p1,      $p2, $p3,    $p4) = ($1, $2, $3, $4);
       if ($p2 <= 6) {
@@ -99,6 +107,7 @@ sub parse {
       } else {
         $result = "";
       }
+
     } elsif ($expr =~ m{\A$ex(\d+)([\+\-]\d+)\*k(([\+\-](\.\.\.[\+\-])?\d+\*k\^\d+)+)\Z}) { # 7~7*k~7*k^7~7*k^7
         (                    $p1, $p2,          $p3                                 ) = ($1, $2, $3, $4);
         # 32 pass, very good
@@ -129,6 +138,7 @@ sub parse {
             }
         } # foreach
         $result .=  join("\t", "],[-1]]", "[$p1]",  0, "", "", $expr);
+
     } elsif ($expr =~ m{\A1$ex\*k\!(\d+)([\+\-]\d+)\Z}) { # k!7~7;
         (                    $p1, $p2) = ($1, $2);
         # k!6-1 -> "[[-1],[0,1],[0],[0],[0],[0],[0],[-1]]", [1,1,2,3,4,5]-1 ; GU=8, very good
@@ -138,17 +148,102 @@ sub parse {
         for (my $ind = 1; $ind < $p1; $ind ++) {
             push(@inits, $ind);
         } # for
-        $callcode = "prisubf";
+        $callcode .= "f";
         $result  = join("\t", 1, "[[0],[0,1]" . (",[0]" x ($p1 - 1)) . ",[-1]]", join(",", @inits), 0, $p2, "", $expr);
-    } elsif ($expr =~ m{\A(\d+(\*k(\^\d+)?)?)([\+\-](\d+(\*k(\^\d+)?)?))+\Z}) { 
-        my @pairs = split(/([\+\-])/, $expr);
-        foreach my $pair (@pairs) {
+
+    } elsif ($expr =~ m{\A$ex([\+\-]?\d+(\*k(\^\d+)?)?)([\+\-](\d+(\*k(\^\d+)?)?))*\Z}) {
+        my %hash = ();
+        my $maxexp = 0;
+        my $sign = "+";
+        foreach my $part (split(/([\+\-])/, $expr)) {
+            # print "# parse: part=$part, expr=$expr\n";
+            if ($part =~m {\A[\+\-]\Z}) {
+                $sign = $part;
+            } else {
+                if ($part !~ m{k}) {
+                    $part .= "*k^0";
+                }
+                if ($part =~ m{k\Z}) {
+                    $part .= "^1";
+                }
+                $part =~ m{(\d+)\*k\^(\d+)};
+                my ($factor, $exp) = ($1, $2);
+                if (! defined($factor) or ! defined($factor) or ! defined($factor)) {
+                    print "# undefined? factor=$factor, exp=$exp, part=$part, expr=$expr\n";
+                    $factor = 1;
+                    $exp    = 0;
+                }
+                $factor = "$sign$factor";
+                $hash{$exp} = $factor; # exponent mapped to factor
+                if ($exp > $maxexp) {
+                    $maxexp = $exp;
+                }
+            }
         } # foreach
-        $callcode = "prisubp";
-        $result .= join("\t", "],[-1]]", "[1]",  0, "", "", $expr);
+        if ($maxexp <= 128) {
+            my @list = ();
+            for (my $iexp = 0; $iexp <= $maxexp; $iexp ++) {
+                push(@list, 0);
+            }
+            foreach my $key (keys(%hash)) {
+                $list[$key] = $hash{$key};
+            }
+            $result  = join("\t", 1, "[[" . join(",", @list) . "],[-1]]", "[$list[0]]", 0, "", "", $expr);
+        } else {
+            $result = "";
+        }
+
+    #     82 (7^k~7)/7
+    } elsif ($expr =~ m{\A$ex\((\d+)\^k([\+\-]\d+)\)\/(\d+)\Z}) {
+        my (                   $b,     $c,            $d) = ($1, $2, $3);
+        # a(n) = (b^n+c)
+        # c-b*c + b*a(n-1) - a(n)=0
+        # MATRIX="[[c-b*c],[b],[-1]]" INIT="[1+c,b+c]"
+        # The divisor $d is evaluated in prisub.jpat.
+        
+        $callcode .= "d";
+        $result  = join("\t", 1, "[[".($c-$b*$c)."],[".($b)."],[-1]]"
+            , "[".(1+$c).",".($b+$c)."]", 0, "$d", "", $expr);
+
+    #    100 (7^k~7^k)/7; A228076 (19^k-4^k)/15 -> MATRIX="[[0],[-76]=-|-4|*|19|,[23=|-4|*|19|],[-1]" INIT="[0,19-4]"
+    } elsif ($expr =~ m{\A$ex\((\d+)\^k([\+\-])(\d+)\^k\)\/(\d+)\Z}) {
+        (                   $p1,    $p2    ,$p3         ,$p4) = ($1, $2, $3, $4);
+        $callcode .= "d";
+        $result  = join("\t", 1, "[[0],[".(-$p1*$p3)."],[".($p1+$p3)."],[-1]]"
+            , "[".eval("1${p2}1").",".eval("$p1$p2$p3")."]", 0, "$p4", "", $expr);
+
+    #    135 7*7^k~7*(7^k~7)/7~7
+    #     58 7*(7^k~7)/7~7
+    
+    } elsif ($expr =~ m{\A$ex(A\d+)[\(\[]k[\)\]]\Z}) { # A123456(k) -> see prisub.sql
+        my $rseqno = $1;
+        if (defined($ofters{$rseqno})) {
+            $callcode .= "a";
+            $result= join("\t", 1, $rseqno, "", 0, "", "", $expr);
+        }
+
+    } elsif (0) {
+
     }
     $result =~ s{([\[\,])\+}{$1}g; # [+7 -> [7
     return $result;
 } # parse
 #================
 __DATA__
+        # a(n) = (4^n+11)/3
+        # a(n-1) = (4^(n-1)+11)/3
+        # 3*a(n) = 4^n+11 = 4*4^(n-1)+11
+        # 3*a(n-1)-11 = 4^(n-1)
+        # -3*a(n)+4*(3*a(n-1)-11)+11=0
+        # 11+12*a(n-1)-44-3*a(n)=0
+        # -33+12*a(n-1)-3*a(n)=0
+        #
+        # a(n) = (b^n+c)/d
+        # a(n-1) = (b^(n-1)+c)/d
+        # d*a(n) = b^n+c = b*b^(n-1)+c
+        # d*a(n-1)-c = b^(n-1)
+        # -d*a(n)+b*(d*a(n-1)-c)+c=0
+        # c-b*c + b*d*a(n-1) - d*a(n)=0
+        # MATRIX="[[c-b*c],[b*d],[-d]]" INIT="[(c+1)/d]"
+        # But many of these sequences have potential terms that are fractions. 
+        # Only odd indices yield primes in these cases.
