@@ -49,46 +49,62 @@ close(OFT);
 print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
 #----------------
 
-my @parms;
+my $parms;
 while (<>) { # from joeis_names.txt
     s/\s+\Z//; # chompr
     $line = $_;
     $line =~ s{\, where .*}{};
     $line =~ s{ is (a )?prime}{\; is prime};
     $line =~ s{ for which }{ such that };
-    $callcode = "prisub";
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
     if (defined($ofters{$aseqno})) {
         print STDERR "# $aseqno $superclass - ignore since already implemented\n";
-    } elsif ($name =~ m{\.\#\.\.}) { # never
-        print STDERR "$line\n";
     } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is prime(\Z|\.)}) {
         my $letter = $1;
         my $expr   = $3;
+        $callcode = "prisub";
         $expr =~ s{ }{}g;
         $expr =~ s{$letter}{k}g;
-        # $expr =~ s{R_k}{\(10^k\-1\)\/9}g;         # R_k   -> (10^k-1)/9
-        $expr =~ s{(\A|[\+\-])k}{${1}1\*k}g;      # +k    -> +1*k
-        $expr =~ s{(\d)k}{${1}\*k}g;              # 1234k -> 1234*k
-        $expr =~ s{(\d+)\^(\d+)}{$1**$2}eg;       # 2^10  -> 1024
-        $expr =~ s{k(\!+)(\D)}{"k\!" . length($1) . $2}eg; # k!!!  -> k!3
-        $expr =~ s{k!\[(\d+)\]}{k\!$1}g;          # k![3] -> k!3
-        my $parms = &parse($expr);
-        if (length($parms) > 0) {
-            print join("\t", $aseqno, $callcode, $parms) . "\n";
-        } else {
-            print STDERR join("\t", $aseqno, $expr, $name) . "\n";
+        $parms = &parse($expr);
+    } elsif ($name =~ m{Primes of (the )form (.*)}) {
+        my $expr   = $1;
+        $callcode = "primof";
+        $expr =~ s{[\.\,\{\(\;\:}.*}{};
+        $expr =~ s{ }{}g;
+        my %hash = ();
+        my $letter;
+        foreach $letter ($expr =~ m{([a-z])}) {
+            if ($letter !~ m{[ijklmn]}) {
+                $hash{"0"} = 1; # ensures that there will be >=2 hash members
+            }
+            $hash{$letter} = 1;
+        } # foreach $letter
+        if (scalar(%hash) <= 1) {
+            foreach $letter (keys(%hash)) { # there is only one
+                $expr =~ s{$letter}{$k};
+            }
+            $parms = &parse($expr);
         }
     } else {
         print STDERR "$line\n";
     } # if proper name
+    if (length($parms) > 0) {
+        print join("\t", $aseqno, $callcode, $parms) . "\n";
+    } else {
+        print STDERR join("\t", $aseqno, $expr, $name) . "\n";
+    }
 } # while <>
 #----
 sub parse {
     my ($expr) = @_;
+    $expr =~ s{(\A|[\+\-])k}{${1}1\*k}g;      # +k    -> +1*k
+    $expr =~ s{(\d)k}{${1}\*k}g;              # 1234k -> 1234*k
+    $expr =~ s{(\d+)\^(\d+)}{$1**$2}eg;       # 2^10  -> 1024
+    $expr =~ s{k(\!+)(\D)}{"k\!" . length($1) . $2}eg; # k!!!  -> k!3
+    $expr =~ s{\AR_k}{1*R_k};                 # R_k -> 1*R_k
+    $expr =~ s{k!\[(\d+)\]}{k\!$1}g;          # k![3] -> k!3
     my $result = "";
     my ($p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9);
-    my $ex = "";
     if ($expr =~ m{[a-z][a-z]}) {
         # ignore if there is a word
 
@@ -207,7 +223,7 @@ sub parse {
 
     #    100 (7^k~7^k)/7; A228076 (19^k-4^k)/15 -> MATRIX="[[0],[-76]=-|-4|*|19|,[23=|-4|*|19|],[-1]" INIT="[0,19-4]"
     } elsif ($expr =~ m{\A$ex\((\d+)\^k([\+\-])(\d+)\^k\)\/(\d+)\Z}) {
-        (                   $p1,    $p2    ,$p3         ,$p4) = ($1, $2, $3, $4);
+        (                      $p1,    $p2    ,$p3         ,$p4) = ($1, $2, $3, $4);
         $callcode .= "d";
         $result  = join("\t", 1, "[[0],[".(-$p1*$p3)."],[".($p1+$p3)."],[-1]]"
             , "[".eval("1${p2}1").",".eval("$p1$p2$p3")."]", 0, "$p4", "", $expr);
@@ -221,6 +237,44 @@ sub parse {
             $callcode .= "a";
             $result= join("\t", 1, $rseqno, "", 0, "", "", $expr);
         }
+
+    # A056657 60*R_k+7
+    } elsif ($expr =~ m{\A$ex(\d)0\*R_k\+(\d+)\Z}) {
+        (                    $p1,      $p2       ) = ($1, $2);
+        $result  = join("\t", 1, "[[".eval("-10*$p2+10*$p1+$p2")."],[10],[-1]]", "[$p2,".eval("10*$p1+$p2")."]", 0, "", "", $expr);
+
+    # A099409 2*R_k+5 Numbers n such that 2*R_n + 5; is prime
+    } elsif ($expr =~ m{\A$ex(\d)\*R_k([\+\-]\d+)\Z}) { # 46 pass GU=4
+        (                 $p1,     $p2       ) = ($1, $2); # parentheses around $p2 since sign is included!
+        $result  = join("\t", 1, "[[".eval("-10*($p2)+$p1+($p2)"   )."],[10],[-1]]", "[$p2,".eval("$p1$p2")    ."]", 0, "", "", $expr);
+
+    # A103109 9*10^k+8*R_k-1  Numbers n such that 9*10^n + 8*R_n - 1; is prime
+    # A259050 3*R_k+10^k-2    Numbers k such that 3*R_k + 10^k - 2; is prime
+    # A056698 10^k+3*R_k
+    } elsif (($expr =~ m{R_k$ex}) and ($expr =~ m{10\^k})) {
+        my $aconst = "+0";
+        my $factRk = "+1";
+        my $fact10 = "+1";
+        my $sign  = "+";
+        foreach my $part (split(/([\+\-])/, $expr)) {
+            # print "# parse: part=$part, expr=$expr\n";
+            if ($part =~m {\A[\+\-]\Z}) {
+                $sign = $part;
+            } elsif ($part =~ m{\A(\d+\*)?R_k\Z}) {
+                $factRk = "$sign" . ($1 || "1");
+                $factRk =~ s{\*\Z}{};
+            } elsif ($part =~ m{\A(\d+\*)?10\^k\Z}) {
+                $fact10 = "$sign" . ($1 || "1");
+                $fact10 =~ s{\*\Z}{};
+            } elsif ($part =~ m{\A(\d+)\Z}) {
+                $aconst = "$sign$1";
+            } else {
+                print "# unknown part=$part, aseqno=$aseqno, expr=$expr\n";
+            }
+        } # foreach
+        print "# aseqno=$aseqno, expr=$expr, fact10=$fact10, factRk=$factRk, aconst=$aconst\n";
+        $result  = join("\t", 1, "[[".eval("-10*($aconst)$factRk+($aconst)")."],[10],[-1]]"
+            , "[".eval("$fact10$aconst").",".eval("$fact10*10$factRk$aconst")."]", 0, "", "", $expr);
 
     } elsif (0) {
 
@@ -247,3 +301,10 @@ __DATA__
         # MATRIX="[[c-b*c],[b*d],[-d]]" INIT="[(c+1)/d]"
         # But many of these sequences have potential terms that are fractions. 
         # Only odd indices yield primes in these cases.
+
+    # A103109 9*10^k+8*R_k-1  Numbers n such that 9*10^n + 8*R_n - 1; is prime
+a(k)=t*10^k+r*R_k+c
+0=t*10^k+r*R_k+c-a(k)
+
+"0 = t*10^(k-1) + r*R_(k-1) + c - a(k-1)
+"
