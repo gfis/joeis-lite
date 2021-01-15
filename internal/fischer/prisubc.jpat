@@ -4,7 +4,6 @@ package irvine.oeis.$(PACK);
 
 import irvine.math.z.Z;
 import irvine.oeis.AddConstantSequence;
-import irvine.oeis.HolonomicRecurrence;
 import irvine.oeis.PrimePositionSubsequence;
 
 /**
@@ -15,7 +14,8 @@ public class $(ASEQNO) extends PrimePositionSubsequence {
 
   /** Construct the sequence */
   public $(ASEQNO)() {
-    super(new AddConstantSequence($(PARM4), new HolonomicRecurrence(0, "$(PARM1)", "$(PARM2)", 0)), $(PARM3));
+    super(new AddConstantSequence($(PARM2), new $(PARM1)()), $(PARM3));
 $(PARM5)
   }
+
 }

@@ -49,60 +49,74 @@ close(OFT);
 print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
 #----------------
 
-my $parms;
+my ($parms, $letter, $expr);
 while (<>) { # from joeis_names.txt
     s/\s+\Z//; # chompr
     $line = $_;
-    $line =~ s{\, where .*}{};
-    $line =~ s{ is (a )?prime}{\; is prime};
+    $line =~ s{\, where .*|\(where .*}{};
+    $line =~ s{ is (a )?prime( number)?}{\; is prime};
     $line =~ s{ for which }{ such that };
+    $parms = "";
+    $expr  = ""; 
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
-    if (defined($ofters{$aseqno})) {
+#   if (defined($ofters{$aseqno}) and ($superclass !~ m{A099192|A102915|A103603|BriefSequence|FiniteSequence|PowerFactorPrimeSequence})) {
+    if (defined($ofters{$aseqno}) and ($superclass !~ m{BriefSequence|ComplementSequence|FiniteSequence|PowerFactorPrimeSequence})) {
         print STDERR "# $aseqno $superclass - ignore since already implemented\n";
-    } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is prime(\Z|\.)}) {
-        my $letter = $1;
-        my $expr   = $3;
+        $expr = "";
+    } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is prime *(\Z|\.)}) {
+        $letter = $1;
+        $expr   = $3;
+        $expr   =~ s{$letter}{k}g;
         $callcode = "prisub";
-        $expr =~ s{ }{}g;
-        $expr =~ s{$letter}{k}g;
-        $parms = &parse($expr);
-    } elsif ($name =~ m{Primes of (the )form (.*)}) {
-        my $expr   = $1;
+        &varcount();
+    } elsif ($name =~ m{Primes of (the )?form (.*)}) {
+        $expr   = $2;
         $callcode = "primof";
-        $expr =~ s{[\.\,\{\(\;\:}.*}{};
-        $expr =~ s{ }{}g;
-        my %hash = ();
-        my $letter;
-        foreach $letter ($expr =~ m{([a-z])}) {
-            if ($letter !~ m{[ijklmn]}) {
-                $hash{"0"} = 1; # ensures that there will be >=2 hash members
-            }
-            $hash{$letter} = 1;
-        } # foreach $letter
-        if (scalar(%hash) <= 1) {
-            foreach $letter (keys(%hash)) { # there is only one
-                $expr =~ s{$letter}{$k};
-            }
-            $parms = &parse($expr);
-        }
+        $expr =~ s{[\.\,\{\(\;\:].*}{};
+        &varcount();
+    } elsif ($name =~ m{\Aa\([i-n]\) *\= *(.*)}) {
+        $expr   = $1;
+        $callcode = "anumof";
+        $expr =~ s{[\.\,\{\(\;\:].*}{};
+        &varcount();
     } else {
         print STDERR "$line\n";
     } # if proper name
     if (length($parms) > 0) {
-        print join("\t", $aseqno, $callcode, $parms) . "\n";
+        print join("\t", $aseqno, $callcode, $parms, $superclass) . "\n";
     } else {
         print STDERR join("\t", $aseqno, $expr, $name) . "\n";
     }
 } # while <>
 #----
-sub parse {
-    my ($expr) = @_;
+sub varcount { # count the number of single letters in the formula
+    $expr =~ s{ }{}g;
+    my %hash = ();
+    foreach my $letter ($expr =~ m{([a-z])}g) {
+        if ($letter !~ m{[ijklmn]}) {
+            $hash{"0"} = 1; # ensures that there will be >=2 hash members
+        }
+        $hash{$letter} = 1;
+    } # foreach $letter
+    my $result = scalar(%hash);
+    if ($result <= 1) {
+        foreach $letter (keys(%hash)) { # there is only one
+            $expr =~ s{$letter}{k}g;
+        }
+        $parms = &parse();
+    } else {
+        print STDERR "# $aseqno scalar(hash) >= 2: \"" . join(",", keys(%hash)) . "\", expr=$expr\n";
+    } 
+    return $result;
+} # varcount
+#----
+sub parse { # parse the formula, and generate a holonomic recurrence if possible
     $expr =~ s{(\A|[\+\-])k}{${1}1\*k}g;      # +k    -> +1*k
     $expr =~ s{(\d)k}{${1}\*k}g;              # 1234k -> 1234*k
     $expr =~ s{(\d+)\^(\d+)}{$1**$2}eg;       # 2^10  -> 1024
+    $expr =~ s{k\!\[(\d+)\]}{k\!$1}g;         # k![3] -> k!3
     $expr =~ s{k(\!+)(\D)}{"k\!" . length($1) . $2}eg; # k!!!  -> k!3
     $expr =~ s{\AR_k}{1*R_k};                 # R_k -> 1*R_k
-    $expr =~ s{k!\[(\d+)\]}{k\!$1}g;          # k![3] -> k!3
     my $result = "";
     my ($p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9);
     if ($expr =~ m{[a-z][a-z]}) {
@@ -155,25 +169,26 @@ sub parse {
         } # foreach
         $result .=  join("\t", "],[-1]]", "[$p1]",  0, "", "", $expr);
 
-    } elsif ($expr =~ m{\A1$ex\*k\!(\d+)([\+\-]\d+)\Z}) { # k!7~7;
-        (                    $p1, $p2) = ($1, $2);
+    } elsif ($expr =~ m{\A(\d+)\*k\!(\d+)?([\+\-]\d+)\Z}) { # 7*k!7~7;
+        (                 $p1,      $p2,  $p3) = ($1, $2 || 1, $3);
         # k!6-1 -> "[[-1],[0,1],[0],[0],[0],[0],[0],[-1]]", [1,1,2,3,4,5]-1 ; GU=8, very good
-        $p2 =~ s{\+}{};
-        # print "# p1=$p1, p2=$p2, expr=$expr, name=$name\n";
-        my @inits = (1);
-        for (my $ind = 1; $ind < $p1; $ind ++) {
-            push(@inits, $ind);
+        $p3 =~ s{\+}{};
+        print "# p1=$p1, p2=$p2, p3=$p3, expr=$expr, name=$name\n";
+        my @inits = ($p1);
+        for (my $ind = 1; $ind < $p2; $ind ++) {
+            push(@inits, $p1*$ind);
         } # for
         $callcode .= "f";
-        $result  = join("\t", 1, "[[0],[0,1]" . (",[0]" x ($p1 - 1)) . ",[-1]]", join(",", @inits), 0, $p2, "", $expr);
+        $result  = join("\t", 1, "[[0],[0,1]" . (",[0]" x ($p2 - 1)) . ",[-1]]", join(",", @inits), 0, $p3, "", $expr);
 
-    } elsif ($expr =~ m{\A$ex([\+\-]?\d+(\*k(\^\d+)?)?)([\+\-](\d+(\*k(\^\d+)?)?))*\Z}) {
+    } elsif ($expr =~ m{\A$ex([\+\-]?\d+(\*k(\^\d+)?)?)([\+\-](\d+(\*k(\^\d+)?)?))*\Z}) { # sum_{i} +-k^i
         my %hash = ();
         my $maxexp = 0;
         my $sign = "+";
+        my ($factor, $exp);
         foreach my $part (split(/([\+\-])/, $expr)) {
-            # print "# parse: part=$part, expr=$expr\n";
-            if ($part =~m {\A[\+\-]\Z}) {
+            if ($part eq "") { # at the beginning - ignore
+            } elsif ($part =~m{\A[\+\-]\Z}) {
                 $sign = $part;
             } else {
                 if ($part !~ m{k}) {
@@ -183,7 +198,7 @@ sub parse {
                     $part .= "^1";
                 }
                 $part =~ m{(\d+)\*k\^(\d+)};
-                my ($factor, $exp) = ($1, $2);
+                ($factor, $exp) = ($1, $2);
                 if (! defined($factor) or ! defined($factor) or ! defined($factor)) {
                     print "# undefined? factor=$factor, exp=$exp, part=$part, expr=$expr\n";
                     $factor = 1;
@@ -195,6 +210,7 @@ sub parse {
                     $maxexp = $exp;
                 }
             }
+            # print "# parse: part=$part, expr=$expr, sign=$sign, factor=$factor, exp=$exp\n";
         } # foreach
         if ($maxexp <= 128) {
             my @list = ();
@@ -228,6 +244,12 @@ sub parse {
         $result  = join("\t", 1, "[[0],[".(-$p1*$p3)."],[".($p1+$p3)."],[-1]]"
             , "[".eval("1${p2}1").",".eval("$p1$p2$p3")."]", 0, "$p4", "", $expr);
 
+    #    A062600 Numbers n such that 34^n - 33^n is prime. -> lin.rec. {34+33, -34*33}
+    } elsif ($expr =~ m{\A$ex(\d+)\^k([\+\-])(\d+)\^k\Z}) {
+        (                      $p1,    $p2    ,$p3      ) = ($1, $2, $3);
+        $result  = join("\t", 1, "[[0],[".(-$p1*$p3)."],[".($p1+$p3)."],[-1]]"
+            , "[".eval("1${p2}1").",".eval("$p1$p2$p3")."]", 0, "", "", $expr);
+
     #    135 7*7^k~7*(7^k~7)/7~7
     #     58 7*(7^k~7)/7~7
     
@@ -236,6 +258,14 @@ sub parse {
         if (defined($ofters{$rseqno})) {
             $callcode .= "a";
             $result= join("\t", 1, $rseqno, "", 0, "", "", $expr);
+        }
+
+    } elsif ($expr =~ m{\A$ex(A\d+)[\(\[]k[\)\]]([\+\-]\d+)\Z}) { # A123456(k) + 17
+        my $rseqno = $1;
+        my $const  = $2;
+        if (defined($ofters{$rseqno})) {
+            $callcode .= "c";
+            $result= join("\t", 1, $rseqno, $const, 0, "", "", $expr);
         }
 
     # A056657 60*R_k+7

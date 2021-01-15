@@ -188,6 +188,10 @@ dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).
 	grep -vf dirty.grep.tmp $(CC).gen > $(CC).dirty.tmp
 	cp -v $(CC).dirty.tmp $(CC).gen
 	wc -l $(CC).gen
+removelist:
+	find ../../src/irvine/oeis -iname "*.java" \
+	| grep -f removelist.man \
+	| xargs -l rm -v
 logsel:# set the test results of CC= in column PARM=n
 	cut -f1,3 $(CC).fail.log $(CC).pass.log > logset.tmp
 	make seq2 LIST=logset.tmp
@@ -3612,11 +3616,31 @@ prisub:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.*
+#--
 primof:
 	grep -E "Primes of (the )?form " $(COMMON)/joeis_names.txt \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc -l    $@.*
+	wc -l    $@.tmp
+	perl prisub.pl $(EE) $@.tmp \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--
+anumof: anumof1 anumof2
+anumof1:
+	make cat_names GREP="[0-9][0-9] a\([i-n]\) *\= *" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+anumof2:
+	perl prisub.pl $(EE) anumof1.tmp \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--
 proprep:
 	cut -f4-5  $@.gen | sort | uniq -c | sort -r > $@.sort.tmp
 	head -n4   $@.sort.tmp
@@ -3973,6 +3997,10 @@ seq4: # parameter: $(LIST) with aseqno, offset, parm1, parm2, parm3, parm4, name
 	$(DBAT) -n seq4
 delseq: seq # parameters: $(TAB) $(LIST)
 	$(DBAT) -v "DELETE FROM $(TAB) WHERE aseqno IN (SELECT aseqno FROM seq)"
+#----
+cat_names: # GREP=
+	grep -P "$(GREP)" $(COMMON)/cat25.txt \
+	| perl -ne 'if (m{\A\%(\w) (\w+) (.*)}) { print join("\t", $$2, $$1, $$3) . "\n"; }'
 #--------
 njoeis: # LIST
 	make seq
