@@ -33,7 +33,7 @@ my ($aseqno, $callcode, $offset, $sigorder, $nadd, $signature);
 my $rest; # behind initterms
 my @terms; # initterms as array
 my $oldlist;
-my $newlist;
+my $newlist; # for INIT=
 my $matrix;
 
 while (<>) {
@@ -61,7 +61,7 @@ while (<>) {
                 print    join("\t", $aseqno, $callcode, $offset, $matrix, $newlist, 0, $sigorder, $sigorder + $iadd) . "\n";
             } else {
                 @terms  = split(/\,/, $oldlist);
-                $newlist  = "[" . join(",", splice(@terms, 0, $nadd)) . "]";
+                $newlist  = join(",", splice(@terms, 0, $nadd));
                 print    join("\t", $aseqno, $callcode, $offset, $matrix, $newlist, 0, $sigorder, $nadd            ) . "\n";
             }
         }
@@ -80,10 +80,10 @@ sub runholo {
         print "#----------------\n";
     }
     while ($busy && $iadd < $maxadd) {
-        @terms  = split(/\,/, $oldlist);
-        $newlist  = "[" . join(",", splice(@terms, 0, $sigorder + $iadd)) . "]";
-        @terms  = split(/\,/, $oldlist);
-        my $cmd = "" # "cd ../../joeis-lite/internal/fischer; "
+        @terms   = split(/\,/, $oldlist);
+        $newlist = join(",", splice(@terms, 0, $sigorder + $iadd));
+        @terms   = split(/\,/, $oldlist);
+        my $cmd  = "" # "cd ../../joeis-lite/internal/fischer; "
                 . "make runholo MATRIX=\"$matrix\" INIT=\"$newlist\" MAXT=" . ($sigorder + $iadd + 4);
         my @results = split(/\r?\n/, `$cmd`);
         my $result = $results[2];
@@ -105,9 +105,6 @@ sub runholo {
     } # while busy
     return $iadd < $maxadd ? $iadd : "failed";
 } # runholo
-#----
-sub sploce {
-}
 #----
 sub read_b_file { # returns @terms
     my ($aseqno) = @_;
