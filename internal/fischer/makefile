@@ -1433,8 +1433,8 @@ homapgf:
 	wc -l    $@.tmp
 #--------
 # Holonomic reflection
-holreflect:
-holrefl1:
+holreflect: holrefl1
+holrefl0:
 	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass LIKE 'Holonomic%'" \
 	| perl -ne 's/\s+\Z//; print "../../../joeis/src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";' \
 	| xargs -l -innn grep -EH "super\(" nnn \
@@ -1444,6 +1444,12 @@ holrefl1:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	# sed -e "s/\t/\tholos\t/" holrefl1.tmp > $@.tmp
+holrefl1:
+	$(DBAT) -x "SELECT aseqno, 'holop', 'ofs', 'matrix', 'init', 'dist', 'gftype', 'reserve' FROM joeis WHERE superclass LIKE 'Holonomic%'" \
+	>        x.tmp
+	$(JAVA) irvine.test.RecurrenceReflector x.tmp > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--
 holrefl2:
 	perl hypergeom_eval.pl holrefl1.tmp \
