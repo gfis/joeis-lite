@@ -19,8 +19,9 @@ TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 PFRACT=$(RAMATH).symbolic.PolyFraction
-NT=64
+NT=32
 HOLT=java -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
+BVA=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath.linear.BigVectorArray
 MANY=999999
 CLASS=dummy.java
 D=0
@@ -1172,6 +1173,9 @@ runholo:
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(NT) -f $(GEN)
 #----------------
+runbva:
+	$(BVA) -recur "$(EXPR)"
+#----------------
 holco:
 	grep -E "CoefficientList\[Series" $(COMMON)/cat25.txt \
 	| grep -viE "Sum|Product|Bessel|Elliptic|Hyper|theta|catalan|Drop|Pochhammer|Lambert|Continued" \
@@ -1213,6 +1217,7 @@ homgf:
 	wc -l    $(HOLREC)/rectab4.tmp
 	# | perl -ne 'print if ! m{\te(gf)?\t};' 
 holos:
+	# sed -e "s/\tholo[^\t]*\t/\tholos\t/" $(HOLREC)/recuf7.tmp \
 	grep -E "holos" $(HOLREC)/rectab4.tmp \
 	| sort | uniq -w 7 \
 	>        $@.gen
@@ -1423,6 +1428,26 @@ homapgf:
 	make seq2 LIST=x.tmp
 	$(DBAT) "SELECT * FROM seq2 WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
 	  ORDER BY aseqno " \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------
+# Holonomic reflection
+holreflect:
+holrefl1:
+	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass LIKE 'Holonomic%'" \
+	| perl -ne 's/\s+\Z//; print "../../../joeis/src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";' \
+	| xargs -l -innn grep -EH "super\(" nnn \
+	| sed -e 's/^.*A/A/'  -e 's/\.java:[ \t]*super./\tholos\t/' \
+	      -e 's/, \"/\t/' -e 's/\", \"/\t/' -e 's/\", /\t/' -e 's/.\;//' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	# sed -e "s/\t/\tholos\t/" holrefl1.tmp > $@.tmp
+#--
+holrefl2:
+	perl hypergeom_eval.pl holrefl1.tmp \
+	| sort -k2n -k3n \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -2484,6 +2509,18 @@ FiniteSequence:
 	cat finifu_check.txt > group.tmp
 	make run PATTERN=$@
 #-----------------------------
+egf: egf1 egf2
+egf1:
+	grep -E "^\%[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
+	| cut -b4- \
+	| perl -ne 's{ (Expansion of e|E)\.g\.f\.\:? *}{\tegf\t0\t}; s{(\. .*|\.\Z| \- _.*)}{}; s{ }{}g; '\
+	' if (! m{for|of|satis|where|column|Lambert|Root|Sum|Prod|[EPRIjklmy\!\;\:]|A\(|\^\^|e\^|\.\.\.|\)\=}) {'\
+	' s{z}{x}g; s{[\.\=]}{}g; print if m{x}; }' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+egf2:
+#----
 genf1:
 	cp  $(LINREC)/catgf2.txt catgf2.txt
 	make notin_joeis LIST=catgf2.txt
@@ -3637,15 +3674,15 @@ primof:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--
-anumof: anumof1 anumof2
-anumof1:
+anumof: 
 	make cat_names GREP="[0-9][0-9] a\([i-n]\) *\= *" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-anumof2:
-	perl prisub.pl $(EE) anumof1.tmp \
+	perl prisub.pl $(EE) anumof.tmp \
 	2>       $@.rest.tmp \
+	| grep -v anumofa \
+	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

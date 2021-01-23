@@ -1,0 +1,73 @@
+# A014052	parm2	0	A197322	1	floor((1*n+1/n)^n).
+A197322	parm2	0	A197322	2	Floor((2*n+1/n)^n)	nonn,	1..300	nyi
+A197323	parm2	0	A197322	3	Floor((3*n+1/n)^n)	nonn,	1..300	nyi
+A197324	parm2	0	A197322	4	Floor((4*n+1/n)^n)	nonn,less,	1..300	nyi
+A197325	parm2	0	A197322	5	Floor((5*n+1/n)^n)	nonn,less,	1..300	nyi
+A197595	parm2	0	A197322	6	Floor((6*n+1/n)^n)	nonn,less,	1..300	nyi
+A197596	parm2	0	A197322	7	Floor((7*n+1/n)^n)	nonn,less,	1..300	nyi
+A197597	parm2	0	A197322	8	Floor((8*n+1/n)^n)	nonn,less,	1..250	nyi
+A197598	parm2	0	A197322	9	Floor((9*n+1/n)^n)	nonn,less,changed,	1..250	nyi
+A197599	parm2	0	A197322	10	Floor((10*n+1/n)^n)	nonn,less,	1..250	nyi
+A197600	parm2	0	A197322	11	Floor((11*n+1/n)^n)	nonn,less,	1..250	nyi
+
+A197602	parm2	0	A197602	3	Floor((n+1/n)^3).	nonn,easy,	1..10000	pattern
+A197603	parm2	0	A197602	4	Floor((n+1/n)^4).	nonn,easy,	1..10000	pattern
+A197604	parm2	0	A197602	5	Floor((n+1/n)^5).	nonn,easy,	1..10000	pattern
+A197708	parm2	0	A197602	7	Floor((n+1/n)^7)	nonn,easy,	1..10000	nyi
+A197709	parm2	0	A197602	8	Floor((n+1/n)^8)	nonn,	1..10000	nyi
+A197710	parm2	0	A197602	9	Floor((n+1/n)^9)	nonn,	1..10000	nyi
+A197711	parm2	0	A197602	10	Floor((n+1/n)^10)	nonn,	1..10000	nyi
+#=A197985		Round((n+1/n)^2)	parm2	0	A197602	2	Floor((n+1/n)^2).	nonn,easy,	1..10000	pattern
+
+A197712	parm2	0	A197712	2	floor((n+1/2)^n)
+A197713	parm2	0	A197712	3	Floor((n+1/3)^n)	nonn,	1..300	nyi
+A197714	parm2	0	A197712	4	Floor((n+1/4)^n).	nonn,less,	1..300	nyi
+A197715	parm2	0	A197712	5	Floor((n+1/5)^n)	nonn,	1..300	nyi
+# nOEIS	parm2	0	A197712	6	Floor((n+1/6)^n)	nonn,	1..300	nyi
+
+# A002378 ...^2
+A219085	parm2	0	A219085	3	Floor((n+1/2)^3).	nonn,easy,	0..10000	unkn
+A219086	parm2	0	A219085	4	Floor((n+1/2)^4).	nonn,easy,	0..10000	unkn
+A219088	parm2	0	A219085	5	Floor((n+1/2)^5).	nonn,easy,	0..10000	unkn
+A219089	parm2	0	A219085	6	Floor((n+1/2)^6).	nonn,easy,	0..10000	unkn
+A219090	parm2	0	A219085	7	Floor((n+1/2)^7).	nonn,easy,	0..10000	holos
+A219091	parm2	0	A219085	8	Floor((n+1/2)^8).	nonn,easy,	0..10000	holos
+
+# A225585	parm2	0	A197773	1	Floor((3^n-1)/n).	nonn,easy,	1..300	nyi
+# A225586	parm2	0	A197773	1	Floor((5^n-1)/n).	nonn,easy,	1..300	nyi
+
+A197716	parm2	0	A197716	2	Ceiling((2*n+1/n)^n).	nonn,less,	1..300	nyi
+A197717	parm2	0	A197716	3	Ceiling((3*n+1/n)^n).	nonn,less,	1..300	nyi
+A197764	parm2	0	A197716	4	Ceiling((4*n+1/n)^n).	nonn,less,	1..300	nyi
+A197765	parm2	0	A197716	5	Ceiling((5*n+1/n)^n).	nonn,less,	1..300	nyi
+A197766	parm2	0	A197716	6	Ceiling((6*n+1/n)^n).	nonn,less,	1..300	nyi
+A197767	parm2	0	A197716	7	Ceiling((7*n+1/n)^n)	nonn,	1..300	nyi
+A197768	parm2	0	A197716	8	Ceiling((8*n+1/n)^n)	nonn,	1..250	nyi
+A197769	parm2	0	A197716	9	Ceiling((9*n+1/n)^n)	nonn,	1..250	nyi
+A197770	parm2	0	A197716	10	Ceiling((10*n+1/n)^n).	nonn,easy,	1..250	nyi
+A197771	parm2	0	A197716	11	Ceiling((11*n+1/n)^n)	nonn,	1..250	nyi
+
+A197773	parm2	0	A197773	3	Ceiling((n+1/n)^3)	nonn,	1..10000	nyi
+A197903	parm2	0	A197773	4	Ceiling((n+1/n)^4).	nonn,	1..10000	lingf
+A197904	parm2	0	A197773	5	Ceiling((n+1/n)^5).	nonn,	1..10000	nyi
+A197905	parm2	0	A197773	6	Ceiling((n+1/n)^6).	nonn,	1..10000	nyi
+A197906	parm2	0	A197773	7	Ceiling((n+1/n)^7).	nonn,	1..10000	nyi
+A197907	parm2	0	A197773	8	Ceiling((n+1/n)^8).	nonn,easy,	1..10000	holos
+A197908	parm2	0	A197773	9	Ceiling((n+1/n)^9).	nonn,easy,	1..10000	nyi
+A197909	parm2	0	A197773	10	Ceiling((n+1/n)^10).	nonn,easy,	1..10000	nyi
+
+A197910	parm2	0	A197910	2	Ceiling((n+1/2)^n).	nonn,less,	1..300	nyi
+A197972	parm2	0	A197910	3	Ceiling((n+1/3)^n)	nonn,	1..300	nyi
+A197973	parm2	0	A197910	4	Ceiling((n+1/4)^n)	nonn,	1..300	nyi
+A197974	parm2	0	A197910	5	Ceiling((n+1/5)^n)	nonn,	1..300	nyi
+
+A197975	parm2	0	A197975	2	Round((2*n+1/n)^n)	nonn,	1..300	nyi
+A197976	parm2	0	A197975	3	Round((3*n+1/n)^n)	nonn,	1..300	nyi
+A197977	parm2	0	A197975	4	Round((4*n+1/n)^n)	nonn,	1..300	nyi
+A197978	parm2	0	A197975	5	Round((5*n+1/n)^n)	nonn,	1..300	nyi
+A197979	parm2	0	A197975	6	Round((6*n+1/n)^n)	nonn,	1..300	nyi
+A197980	parm2	0	A197975	7	Round((7*n+1/n)^n)	nonn,	1..300	nyi
+A197981	parm2	0	A197975	8	Round((8*n+1/n)^n)	nonn,	1..250	nyi
+A197982	parm2	0	A197975	9	Round((9*n+1/n)^n)	nonn,	1..250	nyi
+A197983	parm2	0	A197975	10	Round((10*n+1/n)^n)	nonn,	1..250	nyi
+A197984	parm2	0	A197975	11	Round((11*n+1/n)^n)	nonn,	1..250	nyi

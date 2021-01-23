@@ -61,7 +61,7 @@ while (<>) { # from joeis_names.txt
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
 #   if (defined($ofters{$aseqno}) and ($superclass !~ m{A099192|A102915|A103603|BriefSequence|FiniteSequence|PowerFactorPrimeSequence})) {
     if (defined($ofters{$aseqno}) and ($superclass !~ m{BriefSequence|ComplementSequence|FiniteSequence|PowerFactorPrimeSequence})) {
-        print STDERR "# $aseqno $superclass - ignore since already implemented\n";
+        # print STDERR "# $aseqno $superclass - ignore since already implemented\n";
         $expr = "";
     } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is prime *(\Z|\.)}) {
         $letter = $1;
@@ -82,9 +82,10 @@ while (<>) { # from joeis_names.txt
     } else {
         print STDERR "$line\n";
     } # if proper name
-    if (length($parms) > 0) {
+    if (0) {
+    } elsif (length($parms) > 0) {
         print join("\t", $aseqno, $callcode, $parms, $superclass) . "\n";
-    } else {
+    } elsif (length($expr)  > 0) {
         print STDERR join("\t", $aseqno, $expr, $name) . "\n";
     }
 } # while <>
@@ -169,8 +170,8 @@ sub parse { # parse the formula, and generate a holonomic recurrence if possible
         } # foreach
         $result .=  join("\t", "],[-1]]", "[$p1]",  0, "", "", $expr);
 
-    } elsif ($expr =~ m{\A(\d+)\*k\!(\d+)?([\+\-]\d+)\Z}) { # 7*k!7~7;
-        (                 $p1,      $p2,  $p3) = ($1, $2 || 1, $3);
+    } elsif ($expr =~ m{\A$ex(\d+)\*k\!(\d+)?([\+\-]\d+)\Z}) { # 7*k!7~7;
+        (                    $p1,      $p2,  $p3) = ($1, $2 || 1, $3);
         # k!6-1 -> "[[-1],[0,1],[0],[0],[0],[0],[0],[-1]]", [1,1,2,3,4,5]-1 ; GU=8, very good
         $p3 =~ s{\+}{};
         print "# p1=$p1, p2=$p2, p3=$p3, expr=$expr, name=$name\n";
