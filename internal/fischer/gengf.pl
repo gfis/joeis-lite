@@ -40,11 +40,12 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 #----------------
 my $buffer = "";
 while(<>) { # assemble the PolyFraction string
-    s{[ \;]}{}g; # remove space and ";"
+    s{[ \;\.\=]}{}g; # remove space and other punctuation
     my $line = $_;
     if ($line =~ m{\A\s*(\#|\(\*)}) { # comment line
-        $line =~ m{(A\d\d\d\d\d\d+)}; # grep the A-number
-        $aseqno = $1;
+        if ($line =~ m{(A\d\d\d\d\d\d+)}) { # grep the A-number
+            $aseqno = $1;
+        }
     } else {
         $buffer .= $line;
     }

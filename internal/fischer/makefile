@@ -2838,18 +2838,47 @@ eumapgf5:
 	make seq2 LIST=$@.tmp
 #--------
 moliena:
+	# cp -v molien.man molien.save.man
 	rm -f            molien.man
 	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A027672.gf
 	perl gengf.pl -f molien.man -d 1 -r 3 $(CONTRIB)/A083024.gf
 	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A092069.gf
 	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092070.gf
 	perl gengf.pl -f molien.man -d 1 -r 2 $(CONTRIB)/A092071.gf
+	perl gengf.pl -f molien.man -d 1 -r 6 $(CONTRIB)/A092072.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092201.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092203.gf
+	perl gengf.pl -f molien.man -d 1 -r 2 $(CONTRIB)/A092354.gf
+	perl gengf.pl -f molien.man -d 1 -r 6 $(CONTRIB)/A092355.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092496.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092497.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092544.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092545.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092546.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092547.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092548.gf
+	perl gengf.pl -f molien.man -d 1 -r 8 $(CONTRIB)/A099595.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A099720.gf
+	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A099748.gf
+	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A099750.gf
+	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A099752.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A099757.gf
+	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A100023.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A100024.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A100025.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A105319.gf
+	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A144060.gf
 mol1:
-	perl gengf.pl -f molien.man -d 1 -r 2 $(CONTRIB)/A092072.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092201.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092203.gf
 molien:
-	perl keeplast.pl $@.man > $@.gen
+	perl keeplast.pl $@.man \
+	| grep -vE "A092203|A144060" \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+moldiff:
+	diff 
 #--------
 etgeneric:
 	grep -E "^A[0-9]" $@.man > $@.gen
