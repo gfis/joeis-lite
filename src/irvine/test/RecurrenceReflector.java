@@ -4,7 +4,9 @@
  */
 package irvine.test;
 import irvine.math.z.Z;
+import irvine.oeis.GeneratingFunctionSequence;
 import irvine.oeis.HolonomicRecurrence;
+import irvine.oeis.LinearRecurrence;
 import irvine.oeis.Sequence;
 
 import java.io.BufferedReader;
@@ -44,6 +46,20 @@ public class RecurrenceReflector {
     srcEncoding    = "UTF-8";
   } // no-args Constructor
 
+  /**
+   * Gets a String representation of a Z array.
+   * @return a list of terms of the form "[0,1,1,2,1]".
+   */
+  public static String getVectorString(final Z[] vector) {
+    final StringBuilder result = new StringBuilder(256);
+    for (int j = 0; j < vector.length; ++j) {
+      result.append(j == 0 ? '[' : ',');
+      result.append(vector[j]);
+    } // for j
+    result.append(']');
+    return result.toString();
+  } // getVectorString()
+
   /** Processes lines of the form
    *  <pre>A040954\tcallcode\t...</pre>
    *  and reflect the corresponding sequence
@@ -59,25 +75,47 @@ public class RecurrenceReflector {
         lineNo ++;
         if (line != null) {
           if (line.startsWith("A")) { // valid A-number
-            String[] parts = line.split("\\t"); 
-            aseqno  = parts[0];
+            String[] parts = new String[8];
+            String[] elems = line.split("\\t");
+            int ipart = 0;
+            if (elems.length >= parts.length) {
+              System.arraycopy(elems, 0, parts, 0, parts.length);
+            } else { // elems has fewer
+              System.arraycopy(elems, 0, parts, 0, elems.length);
+              for (ipart = elems.length + 1; ipart < parts.length; ++ipart) {
+                parts[ipart] = "";
+              }
+            }
+            ipart = 0; // leave aseqno and callCode
+            aseqno  = parts[ipart++];;
+            String callCode = parts[ipart++];
             final String className = "irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno;
-            String callCode = parts[1];
             try {
-              int ipart = 2; // leave aseqno and callCode
               if (false) { // switch for callCodes
-              } else if (callCode.startsWith("holo")) {
-                // HolonomicRecurrence seq = (HolonomicRecurrence) Class.forName(className).newInstance();
+              } else if (callCode.startsWith("gener") 
+                  ||     callCode.startsWith("coord")
+                  ||     callCode.startsWith("coxet")
+                  ) {
+                GeneratingFunctionSequence seq = (GeneratingFunctionSequence) Class.forName(className).getDeclaredConstructor().newInstance();
+                ipart++; // skip offset
+                parts[ipart++] = getVectorString(seq.getDen());
+                parts[ipart++] = getVectorString(seq.getNum());
+                parts[ipart++] = "";
+                parts[ipart++] = String.valueOf(seq.getGfType());
+              } else if (callCode.startsWith("holon")) {
                 HolonomicRecurrence seq = (HolonomicRecurrence) Class.forName(className).getDeclaredConstructor().newInstance();
-                /*
-                parts[ipart++] = "was";
-                parts[ipart++] = "here";
-                */
                 parts[ipart++] = String.valueOf(seq.getOffset());
                 parts[ipart++] = seq.getPolyString();
                 parts[ipart++] = seq.getInitString();
                 parts[ipart++] = String.valueOf(seq.getDistance());
                 parts[ipart++] = String.valueOf(seq.getGfType());
+              } else if (callCode.startsWith("linea")) {
+                LinearRecurrence seq = (LinearRecurrence) Class.forName(className).getDeclaredConstructor().newInstance();
+                ipart++; // skip offset
+                parts[ipart++] = getVectorString(seq.getRecurrence()).replaceAll("\\[","[0,"); // constant, align to Holon.Rec.
+                parts[ipart++] = getVectorString(seq.getInitTerms());
+                parts[ipart++] = "";
+                parts[ipart++] = "0"; // gfType = ordinary
               } // end of switch for callCodes
               
               for (ipart = 0; ipart < parts.length; ++ipart) { // print a tab-separated record

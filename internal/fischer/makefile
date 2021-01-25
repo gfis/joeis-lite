@@ -1176,6 +1176,10 @@ holt: # parameter GEN=
 runbva:
 	$(BVA) -recur "$(EXPR)"
 #----------------
+DISEMPOW=1
+runpf:
+	$(RAMATH).symbolic.PolyFraction -n $(NT) -r $(DISEMPOW) -parse "$(GF)"
+#----------------
 holco:
 	grep -E "CoefficientList\[Series" $(COMMON)/cat25.txt \
 	| grep -viE "Sum|Product|Bessel|Elliptic|Hyper|theta|catalan|Drop|Pochhammer|Lambert|Continued" \
@@ -1413,7 +1417,7 @@ holsq2:
 	| tee    holos.gen
 	wc -l    holos.gen
 holsq3:
-    #               1        2                 34                      5                            6                          7
+	#               1        2                 34                      5                            6                          7
 	perl -ne \
 	'if (m{\A\%\w\s+(A\d+)\s+(Expansion of\s*)?(([EO]\.)?G\.f\.\:?\s*)?(\d+)\/\s*sqrt\(1\s*[\+\-]\s*(\d*)\s*\*?\s*x\s*[\+\-]\s*(\d*)\s*\*?\s*x\^2\)\s*\.}i) { \
 	my $$b = $$6 / 2; my $$d = $$7; my $$bm2 = - $$b*$$b; my $$dm = - $$d; \
@@ -1433,8 +1437,8 @@ homapgf:
 	wc -l    $@.tmp
 #--------
 # Holonomic reflection
-holreflect: holrefl1
-holrefl0:
+holref: holref1 holref2
+holref0:
 	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass LIKE 'Holonomic%'" \
 	| perl -ne 's/\s+\Z//; print "../../../joeis/src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";' \
 	| xargs -l -innn grep -EH "super\(" nnn \
@@ -1444,14 +1448,26 @@ holrefl0:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	# sed -e "s/\t/\tholos\t/" holrefl1.tmp > $@.tmp
-holrefl1:
-	$(DBAT) -x "SELECT aseqno, 'holop', 'ofs', 'matrix', 'init', 'dist', 'gftype', 'reserve' FROM joeis WHERE superclass LIKE 'Holonomic%'" \
-	>        x.tmp
-	$(JAVA) irvine.test.RecurrenceReflector x.tmp > $@.tmp
+holref1:
+	$(DBAT) -x "SELECT j.aseqno, LOWER(SUBSTR(j.superclass, 1, 5)), i.offset1 \
+	  FROM joeis j, asinfo i \
+	  WHERE j.aseqno = i.aseqno \
+	    AND superclass IN ('UndefinedClass' \
+	      , 'CoordinationSequence' \
+	      , 'CoxeterSequence'\
+	      , 'GeneratingFunctionSequence' \
+	      , 'HolonomicRecurrence' \
+	      , 'LinearRecurrence' \
+	      )" \
+	>        tmp.tmp
+	$(JAVA) irvine.test.RecurrenceReflector tmp.tmp > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+holref2:
+	cp -v holref1.tmp holref.gen
 #--
-holrefl2:
+
+holrefl3:
 	perl hypergeom_eval.pl holrefl1.tmp \
 	| sort -k2n -k3n \
 	>        $@.tmp
@@ -2820,6 +2836,20 @@ eumapgf5:
 	grep -E "FATO|pass" eumapgf.all.log \
 	>        $@.tmp
 	make seq2 LIST=$@.tmp
+#--------
+moliena:
+	rm -f            molien.man
+	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A027672.gf
+	perl gengf.pl -f molien.man -d 1 -r 3 $(CONTRIB)/A083024.gf
+	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A092069.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092070.gf
+	perl gengf.pl -f molien.man -d 1 -r 2 $(CONTRIB)/A092071.gf
+mol1:
+	perl gengf.pl -f molien.man -d 1 -r 2 $(CONTRIB)/A092072.gf
+molien:
+	perl keeplast.pl $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------
 etgeneric:
 	grep -E "^A[0-9]" $@.man > $@.gen
