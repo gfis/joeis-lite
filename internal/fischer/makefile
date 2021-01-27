@@ -537,6 +537,9 @@ cfs:
 cfs_sel:
 	make cfs_all TARGET=select
 	cat cfs*.gen > cfsall.gen
+cfsall:
+	rm -f cfsall.gen
+	cat cfs*.gen > cfsall.gen
 cfs_gen:
 	make cfs_all TARGET=gener
 cfs_all: # parameter: TARGET
@@ -1468,7 +1471,8 @@ holref1: # select sequences which are holonomic
 	cut -f2  $@.tmp | sort | uniq -c
 	wc -l    $@.tmp
 holref2: # extract parameters by reflection
-	perl keep_first.pl -n 32 holref1.tmp \
+	# perl keep_first.pl -n 4444444 holref1.tmp 
+	cat holref1.tmp \
 	| $(JAVA) irvine.test.RecurrenceReflector - \
 	2>       $@.rest.tmp \
 	>        $@.tmp 
@@ -1479,13 +1483,13 @@ holref3: # generate a *.gen file
 	perl keep_first.pl -n 4444444 holref2.tmp \
 	| perl -ne 'use strict; s/\s+\Z//; my ($$aseqno, $$callcode, @parms) = split(/\t/); $$parms[5] = $$callcode; '\
 	' $$callcode = "holos" . ($$parms[4] == 1 ? "e" : ""); '\
-	' print join("\t", $$aseqno, $$callcode, @parms) . "\n"; '\
+	' print join("\t", $$aseqno, $$callcode, @parms, "x", "y") . "\n"; '\
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 holref:
 	cat holref3.tmp \
-	| grep -E "gener" \
+	| grep -vE "xxxgener" \
 	>        $@.gen
 	wc -l    $@.gen
 #--
