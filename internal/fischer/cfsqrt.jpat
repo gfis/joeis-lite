@@ -4,7 +4,6 @@ package irvine.oeis.$(PACK);
 
 import irvine.math.z.Z;
 import irvine.oeis.ContinuedFractionOfSqrtSequence;
-
 /**
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
@@ -14,12 +13,5 @@ public class $(ASEQNO) extends ContinuedFractionOfSqrtSequence {
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET), $(PARM1.L));
-  }
-
-  @Override
-  public Z next() {
-    final Z result = Z.valueOf(mB0);
-    iterate();
-    return result;
   }
 }

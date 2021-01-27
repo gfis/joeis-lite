@@ -1437,8 +1437,8 @@ homapgf:
 	wc -l    $@.tmp
 #--------
 # Holonomic reflection
-holref: holref1 holref2
-holref0:
+holrefa: holref1 holref2 holref3
+holref0: # grep the parameters of HolonomicRecurrence from jOEIS sources
 	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass LIKE 'Holonomic%'" \
 	| perl -ne 's/\s+\Z//; print "../../../joeis/src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";' \
 	| xargs -l -innn grep -EH "super\(" nnn \
@@ -1448,31 +1448,60 @@ holref0:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	# sed -e "s/\t/\tholos\t/" holrefl1.tmp > $@.tmp
-holref1:
+holref1: # select sequences which are holonomic
 	$(DBAT) -x "SELECT j.aseqno, LOWER(SUBSTR(j.superclass, 1, 5)), i.offset1 \
 	  FROM joeis j, asinfo i \
 	  WHERE j.aseqno = i.aseqno \
 	    AND superclass IN ('UndefinedClass' \
+	      , 'ContinuedFractionOfSqrtSequence' \
 	      , 'CoordinationSequence' \
 	      , 'CoxeterSequence'\
+	      , 'FiniteSequence'\
 	      , 'GeneratingFunctionSequence' \
 	      , 'HolonomicRecurrence' \
 	      , 'LinearRecurrence' \
+	      , 'PaddingSequence' \
+	      , 'PeriodicSequence' \
 	      )" \
-	>        tmp.tmp
-	$(JAVA) irvine.test.RecurrenceReflector tmp.tmp > $@.tmp
+	>        $@.tmp
+	# head -n4 $@.tmp
+	cut -f2  $@.tmp | sort | uniq -c
+	wc -l    $@.tmp
+holref2: # extract parameters by reflection
+	perl keep_first.pl -n 32 holref1.tmp \
+	| $(JAVA) irvine.test.RecurrenceReflector - \
+	2>       $@.rest.tmp \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc -l    $@.tmp $@.rest.tmp
+holref3: # generate a *.gen file
+	# unify the callcode
+	perl keep_first.pl -n 4444444 holref2.tmp \
+	| perl -ne 'use strict; s/\s+\Z//; my ($$aseqno, $$callcode, @parms) = split(/\t/); $$parms[5] = $$callcode; '\
+	' $$callcode = "holos" . ($$parms[4] == 1 ? "e" : ""); '\
+	' print join("\t", $$aseqno, $$callcode, @parms) . "\n"; '\
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-holref2:
-	cp -v holref1.tmp holref.gen
+holref:
+	cat holref3.tmp \
+	| grep -E "gener" \
+	>        $@.gen
+	wc -l    $@.gen
 #--
-
-holrefl3:
+holrefhy: # sort hypergeom paramters
 	perl hypergeom_eval.pl holrefl1.tmp \
 	| sort -k2n -k3n \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--
+holrefc: # which sequences are constant and in jOEIS not by recurrence
+	$(DBAT) -x "SELECT 'A' || l.seqno, COALESCE(j.superclass, 'null'), n.name \
+	    FROM asname n, lrindx l LEFT JOIN joeis j ON 'A' || l.seqno = j.aseqno \
+	    WHERE l.signature = '1' \
+	      AND 'A' || l.seqno = n.aseqno \
+	    ORDER BY 1"
 #--------------------------------
 revert:
 	grep -iE "series reversion|series inversion|inverse series|revert transform" joeis_names.txt \
@@ -2868,12 +2897,13 @@ moliena:
 	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A100025.gf
 	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A105319.gf
 	perl gengf.pl -f molien.man -d 1 -r 4 $(CONTRIB)/A144060.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A246983.gf
+	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A246984.gf
 mol1:
-	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092201.gf
 	perl gengf.pl -f molien.man -d 1 -r 1 $(CONTRIB)/A092203.gf
 molien:
-	perl keeplast.pl $@.man \
-	| grep -vE "A092203|A144060" \
+	perl keep_last.pl $@.man \
+	| grep -vE "x092203|A144060" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
