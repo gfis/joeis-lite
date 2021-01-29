@@ -1223,6 +1223,38 @@ homgf:
 	head -n4 $(HOLREC)/rectab4.tmp
 	wc -l    $(HOLREC)/rectab4.tmp
 	# | perl -ne 'print if ! m{\te(gf)?\t};' 
+#----
+homegf3:
+	cat $(HOLREC)/homegf2.tmp \
+	| perl -ne 'use strict; my $$line = $$_; my @parms = split(/\t/, $$line); '\
+	' if ($$parms[3] !~ m{[^ak0-9\(\)\+\-\*]}) { print $$line; } ' \
+	>        $@.1.tmp
+	head -n4 $@.1.tmp
+	wc   -l  $@.1.tmp
+	make seq4 LIST=$@.1.tmp
+	# parm1=6*a(k)-a(k+1)   parm2=e       parm3=1/(1-6*x)
+	# parm1=6*a(k)-a(k+1)   parm2=init    parm3=0   parm4=egf  parm5=1/(1-6*x)
+	$(DBAT) "UPDATE seq4 s SET callcode='bva', parm5=parm3, parm3=0, parm4='egf'\
+	, parm2=(SELECT SUBSTR(data,1,64) FROM asdata d WHERE s.aseqno = d.aseqno); "
+	$(DBAT) -444444 seq4 \
+	| perl -ne 'use strict; my $$line = $$_; my @parms = split(/\t/, $$line); '\
+	' $$parms[4] =~ s{\A(\-?\d+\,\-?\d+\,\-?\d+).*}{$$1}; print join("\t", @parms); ' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+homegf4:
+	cat homegf3.tmp \
+	| $(RAMATH).sequence.JoeisPreparer -f - \
+	| perl -ne 'use strict; my @parms = split(/\t/); '\
+	' $$parms[1] = "holos" . substr($$parms[6], 0, 1); print join("\t", @parms);' \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+homegf:
+	cp -v homegf4.tmp $@.gen
+	wc -l    $@.gen
+
+#----
 holos:
 	# sed -e "s/\tholo[^\t]*\t/\tholos\t/" $(HOLREC)/recuf7.tmp \
 	grep -E "holos" $(HOLREC)/rectab4.tmp \
@@ -1462,18 +1494,20 @@ holref1: # select sequences which are holonomic
 	      , 'FiniteSequence'\
 	      , 'GeneratingFunctionSequence' \
 	      , 'HolonomicRecurrence' \
+	      , 'LatticeCoordinationSequence' \
 	      , 'LinearRecurrence' \
 	      , 'PaddingSequence' \
 	      , 'PeriodicSequence' \
 	      )" \
 	>        $@.tmp
-	# head -n4 $@.tmp
+	head -n4 $@.tmp
 	cut -f2  $@.tmp | sort | uniq -c
 	wc -l    $@.tmp
 holref2: # extract parameters by reflection
 	# perl keep_first.pl -n 4444444 holref1.tmp 
 	cat holref1.tmp \
-	| $(JAVA) irvine.test.RecurrenceReflector - \
+	| grep -E "latti" \
+	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
 	>        $@.tmp 
 	head -n4 $@.tmp
@@ -1506,6 +1540,27 @@ holrefc: # which sequences are constant and in jOEIS not by recurrence
 	    WHERE l.signature = '1' \
 	      AND 'A' || l.seqno = n.aseqno \
 	    ORDER BY 1"
+holrefix:
+	$(DBAT) -x "SELECT j.aseqno, j.superclass, i.offset1, l.signature, n.name \
+	  FROM joeis j, asinfo i, lrindx l, asname n \
+	  WHERE j.aseqno = i.aseqno \
+	    AND j.aseqno = n.aseqno \
+	    AND i.aseqno = 'A' || l.seqno \
+	    AND superclass NOT IN ('UndefinedClass' \
+	      , 'ContinuedFractionOfSqrtSequence' \
+	      , 'CoordinationSequence' \
+	      , 'CoxeterSequence'\
+	      , 'FiniteSequence'\
+	      , 'GeneratingFunctionSequence' \
+	      , 'HolonomicRecurrence' \
+	      , 'LatticeCoordinationSequence' \
+	      , 'LinearRecurrence' \
+	      , 'PaddingSequence' \
+	      , 'PeriodicSequence' \
+	      ) ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------------------------------
 revert:
 	grep -iE "series reversion|series inversion|inverse series|revert transform" joeis_names.txt \
