@@ -19,7 +19,7 @@ TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 PFRACT=$(RAMATH).symbolic.PolyFraction
-NT=32
+NT=24
 HOLT=java -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 BVA=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath.linear.BigVectorArray
 MANY=999999
@@ -1227,7 +1227,8 @@ homgf:
 homegf3:
 	cat $(HOLREC)/homegf2.tmp \
 	| perl -ne 'use strict; my $$line = $$_; my @parms = split(/\t/, $$line); '\
-	' if ($$parms[3] !~ m{[^ak0-9\(\)\+\-\*]}) { print $$line; } ' \
+	' if (length($$parms[3]) > 6 && length($$parms[3]) < 4000 && ($$parms[3] !~ m{[\{\=_b-jl-z]})) { print $$line; } ' \
+	| sort | uniq -w7 \
 	>        $@.1.tmp
 	head -n4 $@.1.tmp
 	wc   -l  $@.1.tmp
@@ -1236,9 +1237,9 @@ homegf3:
 	# parm1=6*a(k)-a(k+1)   parm2=init    parm3=0   parm4=egf  parm5=1/(1-6*x)
 	$(DBAT) "UPDATE seq4 s SET callcode='bva', parm5=parm3, parm3=0, parm4='egf'\
 	, parm2=(SELECT SUBSTR(data,1,64) FROM asdata d WHERE s.aseqno = d.aseqno); "
-	$(DBAT) -444444 seq4 \
+	$(DBAT) -x -444444 seq4 \
 	| perl -ne 'use strict; my $$line = $$_; my @parms = split(/\t/, $$line); '\
-	' $$parms[4] =~ s{\A(\-?\d+\,\-?\d+\,\-?\d+).*}{$$1}; print join("\t", @parms); ' \
+	' $$parms[4] =~ s{\,\-?\d*\Z}{}; print join("\t", @parms); ' \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
@@ -1253,7 +1254,14 @@ homegf4:
 homegf:
 	cp -v homegf4.tmp $@.gen
 	wc -l    $@.gen
-
+#----
+holman1:
+	perl $(HOLREC)/gen_mul_fact.pl | tee $@.tmp
+holman2:
+	perl $(HOLREC)/gen_71951.pl    | tee $@.tmp
+holman: holman1 
+	cat "holman*.tmp" \
+	>        $@.gen
 #----
 holos:
 	# sed -e "s/\tholo[^\t]*\t/\tholos\t/" $(HOLREC)/recuf7.tmp \
@@ -1488,6 +1496,7 @@ holref1: # select sequences which are holonomic
 	  FROM joeis j, asinfo i \
 	  WHERE j.aseqno = i.aseqno \
 	    AND superclass IN ('UndefinedClass' \
+	      , 'BlockMultAddSequence' \
 	      , 'ContinuedFractionOfSqrtSequence' \
 	      , 'CoordinationSequence' \
 	      , 'CoxeterSequence'\
@@ -1506,7 +1515,7 @@ holref1: # select sequences which are holonomic
 holref2: # extract parameters by reflection
 	# perl keep_first.pl -n 4444444 holref1.tmp 
 	cat holref1.tmp \
-	| grep -E "latti" \
+	| grep -E "block" \
 	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
 	>        $@.tmp 
@@ -1558,6 +1567,23 @@ holrefix:
 	      , 'PaddingSequence' \
 	      , 'PeriodicSequence' \
 	      ) ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+holrefsup: holrefsu1 holrefsu2
+holrefsu1:
+	$(DBAT) -x "SELECT LOWER(SUBSTR(j.aseqno, 1, 4)) || '/' || j.aseqno || '.java' \
+	  FROM joeis j\
+	  WHERE superclass IN ('UndefinedClass' \
+	      , 'PrependSequence' \
+	      )" \
+	| sed -e "s/\r//g" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+holrefsu2:
+	cat      holrefsu1.tmp \
+	| xargs -l -innn grep -EH "super" $(JOEIS)/src/irvine/oeis/nnn \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -3421,7 +3447,7 @@ get1pseq: # Generalized Euler transform of 1/(1+x^k)^Aseqno
 	head -4 $@.gen
 	wc -l   $@.gen
 #--------------------------------
-kblocks: all done
+kblocks: # all done
 	perl kblocks.pl \
 	| tee   $(CC).gen
 	wc -l   $(CC).gen
