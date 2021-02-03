@@ -85,34 +85,44 @@ public class RecurrenceReflector {
    * @param sign2 dito
    * @return a vector for the recurrence, for example
    * <pre>
-   * 1,0,4,-4,0,-6,6,0,4,-4,0,-1,1  a(n) = 1*2*3 + 4*5*6
-   * 1,0,0,5,-5,0,0,-10,10,0,0,10,-10,0,0,-5,5,0,0,1,-1 
+   * signature (1,3,-3,-3,3,1,-1) for A228958(n) = 1*2 + 3*4 + 5*6 + 7*8 
+   * signature (1,-3,3,-3,3,-1,1) for A319885(n) = 2*1 - 4*3 + 6*5 - 8*7 + 10*9
+   * signature (1,0,4,-4,0,-6,6,0,4,-4,0,-1,1) for a(n) = 1*2*3 + 4*5*6
+   * signature (1,0,-4,4,0,-6,6,0,-4,4,0,-1,1) for a(n) = 3*2*1 - 6*5*4 + 9*8*7 - 
+   * signature (1,0,0,5,-5,0,0,-10,10,0,0,10,-10,0,0,-5,5,0,0,1,-1) 
    * </pre>
    */
   public static String getBlockRecurrence(final int nrow, final int sign1, final int sign2) {
     final int[] binom = new int[nrow + 1];
     binom[0] = 1;
-    for (int i = 1; i <= nrow; ++i) {
+    for (int i = 1; i <= nrow; ++i) { // build Pascal's triangle
       int temp = 0;
       for (int j = i; j > 0; --j) {
         binom[j] = temp + binom[j - 1];
         temp = binom[j - 1];
       } // for j
     } // for i
-    final StringBuilder result = new StringBuilder(256);
+    final int sigLen = nrow * (nrow - 1) + 1;
+    final int[] signature = new int[sigLen];
+    int isig = 0;
+    signature[isig++] = 1;
     int sign = sign1;
-    result.append("[1");
-    for (int i = 1; i <= nrow; ++i) { 
+    for (int i = 1; i <= nrow; ++i) { // build the conventional signature
       for (int j = 1; j <= nrow - 3; ++j) { // (n 4) has one ",0"
-        result.append(",0");
+        signature[isig++] = 0;
       } // for j
-      result.append(',');
-      result.append(sign * binom[i]);
+      signature[isig++] = sign * binom[i] * ((i & 1) == 0 ? sign1 : 1);
       sign = - sign;
-      result.append(',');
-      result.append(sign * binom[i]);
+      signature[isig++] = - signature[isig - 1];
     } // for i
-    result.append("]");
+    final StringBuilder result = new StringBuilder(256);
+    result.append("[0");
+    for (isig = signature.length - 1; isig >= 0; --isig) { // reverse order
+      result.append(',');
+      // [0    ,1,-1,-3,3,3,-3,1    ,-1] -> {1, -1, 3, -3, 3, -3, 1, -1}
+      result.append(signature[isig] * ((sign1 < 0 && ((isig >> 1) & 1) == 1) ? -1 : 1));
+    } // for isig
+    result.append(",-1]");
     return result.toString();
   } // getBlockRecurrence()
 
