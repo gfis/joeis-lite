@@ -143,6 +143,7 @@ public class RecurrenceReflector {
       final Method lineaNextMethod = LinearRecurrence.class.getMethod("next");
       final Method paddiNextMethod = PaddingSequence.class.getMethod("next");
       final Method perioNextMethod = PeriodicSequence.class.getMethod("next");
+      final Method prepeNextMethod = PrependSequence.class.getMethod("next");
       Method superNextMethod = null; // one of the above
 
       final String srcEncoding = "UTF-8"; // Encoding of the input file
@@ -155,7 +156,7 @@ public class RecurrenceReflector {
         while ((line = lineReader.readLine()) != null) { // read and process lines
           if (line.startsWith("A")) { // valid A-number
             final String[] parts = new String[8];
-            final String[] elems = line.split("\\t");
+            final String[] elems = line.split("\\t", -1); // include trailing empty strings
             int ipart = 0;
             if (elems.length >= parts.length) {
               System.arraycopy(elems, 0, parts, 0, parts.length);
@@ -168,6 +169,7 @@ public class RecurrenceReflector {
             ipart = 0; // leave aseqno and callCode
             mAseqno = parts[ipart++];
             final String callCode = parts[ipart++];
+            String termList = parts[ipart + 1]; // behind offset
             final String className = "irvine.oeis.a" + mAseqno.substring(1, 4) + '.' + mAseqno;
             try {
               if (callCode.startsWith("block")) { // operation code, e.g. A319885 kblocks 1       2       >>->>+  0
@@ -313,11 +315,28 @@ public class RecurrenceReflector {
                 parts[ipart++] = getVectorString(terms); // INIT
                 parts[ipart++] = "0";
                 parts[ipart++] = "0";
+              } else if (callCode.startsWith("prepe")) { // PrependSequence
+                superNextMethod = prepeNextMethod;
+                final PrependSequence hseq = (PrependSequence) Class.forName(className).getDeclaredConstructor().newInstance();
+                seq = hseq;
+                ipart++; // skip offset
+                final Sequence aseq = hseq.getSequence();
+                if (aseq instanceof PeriodicSequence) {
+                  PeriodicSequence pseq = (PeriodicSequence) aseq;
+                  final Z[] period = pseq.getInitTerms();
+                  parts[ipart++] = getPeriodicRecurrence(period.length);
+                  parts[ipart++] = (getVectorString(hseq.getTerms()) + getVectorString(period)).replaceAll("\\]\\[", "\\,"); // INIT
+                  parts[ipart++] = "0";
+                  parts[ipart++] = "0";
+                } else {
+                  seq = null; // ignore it below
+                }
               } else { // ignore
               } // end of switch for callCodes
               if (seq == null) {
                 // ignore
               } else if (parts[3].length() < 8192 && parts[4].length() < 4096) {
+                parts[ipart++] = termList.replaceAll("\\,\\-?\\d*\\Z",""); // last may be incomplete, remove it
                 final Method thisNextMethod = seq.getClass().getMethod("next");
                 if (thisNextMethod.equals(superNextMethod)) {
                   for (ipart = 0; ipart < parts.length; ++ipart) { // print a tab-separated record
