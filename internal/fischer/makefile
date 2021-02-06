@@ -1173,6 +1173,8 @@ fholo:
 	$(HOLT) -n $(NT) -f x.tmp
 runholo:
 	$(HOLT) -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
+runce:
+	$(JAVA) irvine.oeis.ComplementaryEquationSequence -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(NT) -f $(GEN)
 #----------------
@@ -1483,6 +1485,39 @@ hermite:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+hermite_conj:
+	cut -b1-7 hermite.gen \
+	| xargs -l -innn grep -EiH "Conject" $(COMMON)/ajson/nnn.json \
+	| perl -ne 's{^[^A]+(A\d+)\.json\:\s*}{$$1 }; print; ' \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+#--------
+# A157799 null    Numerator of Bernoulli(n, 1/3). 
+# A157800 null    Denominator of Bernoulli(n, 1/3).
+bernoulli: 
+	grep -E "(Numer|Denomin)ator of Bernoulli\(" $(COMMON)/joeis_names.txt \
+	| perl -ne 'if (m{\A(A\d+)\s+\w+\s+((Numer|Denomin)ator of [Bb]ernoulli\(n\,\s*(\-?\d+)\s*(\/\s*(\d+)\))?)}) { '\
+	' my @parms = ($$1, "bernoulli", 0, lc(substr($$2, 0, 3)), $$4, $$6 || 1, $$2, "dummy"); '\
+	' print join("\t", @parms) . "\n"; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+eulerp: 
+	grep -E "(Numer|Denomin)ator of Euler\(" $(COMMON)/joeis_names.txt \
+	| perl -ne 'if (m{\A(A\d+)\s+\w+\s+((Numer|Denomin)ator of [Ee]uler\(n\,\s*(\-?\d+)\s*(\/\s*(\d+)\))?)}) { '\
+	' my @parms = ($$1, "eulerp", 0, lc(substr($$2, 0, 3)), $$4, $$6 || 1, $$2, "dummy"); '\
+	' print join("\t", @parms) . "\n"; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+laguerre: 
+	grep -E "(Numer|Denomin)ator of Laguerre\(" $(COMMON)/joeis_names.txt \
+	| perl -ne 'if (m{\A(A\d+)\s+\w+\s+((Numer|Denomin)ator of [Ll]aguerre\(n\,\s*(\-?\d+))}) { '\
+	' my @parms = ($$1, "parm3", 0, "A160621", (substr($$2, 0, 3) eq "Num") ? "true" : "false", $$4, $$2, "dummy"); '\
+	' print join("\t", @parms) . "\n"; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------
 # Holonomic reflection
 holrefa: holref1 holref2 holref3 holref4
@@ -1543,7 +1578,7 @@ holref4: # generate a *.gen file
 	wc -l    $@.tmp
 holref:
 	cat holref4.tmp \
-	| grep -vE "xxxgener" \
+	| grep -E "prepe" \
 	>        $@.gen
 	wc -l    $@.gen
 #--
