@@ -116,8 +116,8 @@ pack1:
 	; perl -e 'foreach my $$name (split(/\,/, "$(CLASS)")) { print "src/irvine/oeis/$$name.java\n"; }' \
 	                                         >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC)*.gen       >> pack.$(CC).lst \
-	; echo internal/fischer/$(CC)*.jpat      >> pack.$(CC).lst \
-	; grep -vE "^\#" internal/fischer/packlist.man     >> pack.$(CC).lst
+	; echo internal/fischer/$(CC)*.jpat      >> pack.$(CC).lst || : \
+	; grep -vE "^\#" internal/fischer/packlist.man     >> pack.$(CC).lst || :
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\S*}{}" | uniq -c
 pack2:
@@ -305,6 +305,8 @@ bfile:
 	>> $(CONTRIB)/b$(SEQ).txt
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
+reverse:
+	perl -e 'print "\n\"[" . join(",",0,reverse($(SIG)),-1) . "]\"\n";'
 #================================================================
 A035536:
 	cp -v A035536.man A035536.gen
@@ -1602,6 +1604,7 @@ holrefix:
 	    AND j.aseqno = n.aseqno \
 	    AND i.aseqno = 'A' || l.seqno \
 	    AND superclass NOT IN ('UndefinedClass' \
+	      , 'BlockMultAddSequence' \
 	      , 'ContinuedFractionOfSqrtSequence' \
 	      , 'CoordinationSequence' \
 	      , 'CoxeterSequence'\
@@ -1612,6 +1615,7 @@ holrefix:
 	      , 'LinearRecurrence' \
 	      , 'PaddingSequence' \
 	      , 'PeriodicSequence' \
+	      , 'PrependSequence' \
 	      ) ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
