@@ -19,7 +19,7 @@ TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
 PFRACT=$(RAMATH).symbolic.PolyFraction
-NT=24
+NT=16
 HOLT=java -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
 BVA=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath.linear.BigVectorArray
 MANY=999999
@@ -32,7 +32,6 @@ WAITM=100
 GU=0
 N=1000
 NUM=999
-NT=64
 EIT=
 MATRIX=[[1,0],[0,1]]
 SC=222221210100
@@ -1649,6 +1648,13 @@ iaronson:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+runia: 
+	$(JAVA) irvine.oeis.InverseAronsonTransform -d $(D) $(BF) -n $(NT) -s $(A) -o $(OFFSET)
+testia: # A= B=
+	$(DBAT) -x "(SELECT b.aseqno, i.offset1, b.data FROM bfdata b, asinfo i WHERE b.aseqno = '$(A)' AND b.aseqno = i.aseqno) UNION \
+	            (SELECT b.aseqno, i.offset1, b.data FROM bfdata b, asinfo i WHERE b.aseqno = '$(B)' AND b.aseqno = i.aseqno)" \
+	| tee    $@.tmp
+	perl test_aan.pl $@.tmp
 #--------------------------------
 ASMIN=300
 ASMAX=400

@@ -1,33 +1,35 @@
-A002516	iaronson	0	A005843	EARLY	0	2*n
-A002517	iaronson	0	A008585	EARLY	0	3*n	
-A002518	iaronson	0	A008587	EARLY	0	5*n
-A003605	iaronson	0	A008585	EARLY	0	3*n	
-A007378	iaronson	1	A005843	EARLY	0	2*n
-A007379	iaronson	0	A008586	EARLY	0	4*n
-A038752	iaronson	0	A000041	EARLY	0	partitions(n)
-A038755	iaronson	1	A000079	EARLY	0	a(a(n))=2^n.
-A038756	iaronson	0	A000244	EARLY	0	a(a(n))=3^n.
-A038757	iaronson	0	A000302	EARLY	0	a(a(n))=4^n.
-A054048	iaronson	0	A000217	EARLY	0	a(a(n))=n*(n+1)/2
-A054049	iaronson	0	A000045	EARLY	0	a(a(n))=Fibonacci(n)
-A054786	iaronson	0	A008588	EARLY	0	a(a(n))=6n.
-A054787	iaronson	0	A008589	EARLY	0	a(a(n))=7n.
-A054788	iaronson	0	A008590	EARLY	0	a(a(n))=8n.
-A054789	iaronson	0	A008591	EARLY	0	a(a(n))=9n.
-A054790	iaronson	0	A008592	EARLY	0	a(a(n))=10n.
-A054791	iaronson	0	A000290	EARLY	0	a(a(n))=n^2.
-A054792	iaronson	0	A000578	EARLY	0	a(a(n))=n^3.
-A054793	iaronson	0	A000583	EARLY	0	a(a(n))=n^4.
-A065804	iaronson	0	A000142	EARLY	0	n!
-A073074	iaronson	1	A000069	EARLY	0	odious numbers
-A080745	iaronson	0	A000045	EARLY	0	Fibonacci numbers 1,2,3,5,8,13,... nonn,easy,synth 1..71   nyi
-A080746	iaronson	0	A000201	EARLY	0	lower Wythoff sequence A000201.    nonn,synth      1..61   nyi
-A080759	iaronson	0	A000040	EARLY	0	primes.    nonn,easy,synth 1..67   nyi
-A079905	iaronson	1	A005408	INCR	1	2*n+1
-A080588	iaronson	0	A008586	INCR	0	a(n) is smallest nonnegative integer which is consistent with sequence being monotonically increasing and satisfying a(a(n)) = 4n.
-A080589	iaronson	0	A008587	INCR	0	a(n) is smallest nonnegative integer which is consistent with sequence being monotonically increasing and satisfying a(a(n)) = 5n.
-A080596	iaronson	1	A144396	INCR	1	a(1)=1; for n >= 2, a(n) is smallest positive integer which is consistent with sequence being monotonically increasing and satisfying a(a(n)) = 2n+3.
-A080637	iaronson	1	A005408	INCR	0	a(n) is smallest positive integer which is consistent with sequence being monotonically increasing and satisfying a(1)=2, a(a(n)) = 2n+1 for n>1.
-# A092569	iaronson	0	A0000	INCR	0	Permutation of integers a(a(n)) = n. In binary representation of n, transformation of inner bits, 1 <-> 0, gives binary representation of a(n).
-# A105753	iaronson	0	A0000	INCR	0	Lexicographically earliest sequence of positive integers with the property that a(a(n)) = a(1)+a(2)+...+a(n).
-A169957	iaronson	1	A005408	INCR	1	a(1) = 1, then a(n) is the smallest number such that a(a(n)) = 2n+1.
+A002516	iaronson	0	A005843	EARLY	0	f	2*n
+A002517	iaronson	0	A008585	EARLY	0	ok	3*n
+A002518	iaronson	0	A008587	EARLY	0	ok	5*n
+A003605	iaronson	0	A008585	EARLY	0	f	3*n
+A007378	iaronson	2	A005843	INCR	2	f	2*n
+A007379	iaronson	0	A008586	INCR	3	ok	4*n
+A038752	iaronson	0	A000041	EARLY	1	f	partitions(n)
+A038755	iaronson	1	A000079	EARLY	3	f	a(a(n))=2^n.
+A038756	iaronson	1	A000244	EARLY	2	ok	a(a(n))=3^n.
+A038757	iaronson	1	A000302	EARLY	2	ok	a(a(n))=4^n.
+A054048	iaronson	0	A000217	EARLY	2	f	a(a(n))=n*(n+1)/2
+A054049	iaronson	0	A000045	EARLY	4	f	a(a(n))=Fibonacci(n)
+A054786	iaronson	0	A008588	EARLY	1	f	a(a(n))=6n.
+A054787	iaronson	0	A008589	EARLY	0	ok	a(a(n))=7n.
+A054788	iaronson	0	A008590	EARLY	0	ok	a(a(n))=8n.
+A054789	iaronson	0	A008591	EARLY	0	ok	a(a(n))=9n.
+A054790	iaronson	0	A008592	EARLY	0	ok	a(a(n))=10n.
+A054791	iaronson	0	A000290	EARLY	0	ok	a(a(n))=n^2.
+A054792	iaronson	0	A000578	EARLY	0	ok	a(a(n))=n^3.
+A054793	iaronson	0	A000583	EARLY	0	ok	a(a(n))=n^4.
+A065804	iaronson	0	A000142	EARLY	1	ok	n!
+A073074	iaronson	1	A000069	EARLY	2	f	odious numbers
+A079000	iaronson	1	A005408	INCR	4	f	odd
+A079253	iaronson	0	A005843	INCR	3	f	even
+A079905	iaronson	1	A005408	INCR	1	ok	2*n+1
+A080588	iaronson	0	A008586	INCR	0	ok	a(a(n)) = 4n.
+A080589	iaronson	0	A008587	INCR	0	ok	a(a(n)) = 5n.
+A080591	iaronson	0	A004767	INCR	1	ok	a(a(n)) = 4n+3
+A080596	iaronson	1	A144396	INCR	4	f	a(1)=1; a(a(n)) = 2n+3.
+A080637	iaronson	1	A005408	INCR	2	ok	a(1)=2, a(a(n)) = 2n+1 for n>1.
+A080653	iaronson	1	A005843	INCR	2	f	a(1)=2, a(a(n)) = 2n for n>1.
+A080745	iaronson	1	A000045	EARLY	1	f	Fibonacci numbers 1,2,3,5,8,13,.
+A080746	iaronson	1	A000201	EARLY	4	f	lower Wythoff sequence A000201.
+A080759	iaronson	1	A000040	EARLY	3	f	primes.    nonn,easy,synth 1..67
+A169957	iaronson	1	A005408	EARLY	1	ok	a(1) = 1, a(a(n)) = 2n+1.
