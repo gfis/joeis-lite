@@ -298,9 +298,10 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
             my $class_name = $1;
             # $class_name =~ s{\.\w+}{}; # remove static method or member
-            if (    ($class_name !~ m{\AA\d+}) 
-                and ($class_name !~ m{\.})
-                and ($class_name !~ m{\AString\Z})
+            if (    ($class_name !~ m{\AA\d+})     # A-number
+                and ($class_name !~ m{\.})         # contains dot
+                and ($class_name !~ m{\A[A-Z]+\Z}) # only uppercase = constant
+                and ($class_name !~ m{\AString\Z}) # "String"
                ) {
                 $imports{"irvine.oeis.$class_name"} = $itype; 
             }

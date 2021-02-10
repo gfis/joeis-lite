@@ -1644,6 +1644,12 @@ revert:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #--------------------------------
+iaronson:
+	grep -E "^A" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 ASMIN=300
 ASMAX=400
 jall: # parms = ASMIN, ASMAX - test a block of implemented jOEIS sequences
