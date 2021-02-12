@@ -1656,15 +1656,15 @@ iaronson:
 	head -n4 $@.gen
 	wc -l    $@.gen
 naronson:
-	grep -E "^A" iaronson.man \
+	grep -E "^A" $@.man \
 	| grep naronson \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--
-runia: 
-	$(JAVA) irvine.oeis.InverseAronsonTransform -d $(D) $(BF) -n $(NT) -s $(A) -o $(OFFSET)
-testia: # A= B=
+runaron: 
+	$(JAVA) irvine.oeis.NumericalAronsonSequence -d $(D) $(BF) -n $(NT) -s $(A) -o $(OFFSET)
+testaron: # A= B=
 	$(DBAT) -x "(SELECT b.aseqno, i.offset1, b.data FROM bfdata b, asinfo i WHERE b.aseqno = '$(A)' AND b.aseqno = i.aseqno) UNION \
 	            (SELECT b.aseqno, i.offset1, b.data FROM bfdata b, asinfo i WHERE b.aseqno = '$(B)' AND b.aseqno = i.aseqno)" \
 	| tee    $@.tmp

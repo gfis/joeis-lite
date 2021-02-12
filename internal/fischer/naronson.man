@@ -1,0 +1,35 @@
+A002516	naronson	0	A005843	0		0	p	2*n
+A002517	naronson	0	A008585	0		0	p	3*n
+A002518	naronson	0	A008587	0		0	p	5*n
+# A003605	naronson	0	A008585	INCR		0	f	3*n
+# A007378	naronson	2	A005843	INCR		2	f	2*n
+# A007379	naronson	0	A008586	INCR		3	f	4*n
+A038752	naronson	0	A000041	0		1	p	partitions(n)
+A038755	naronson	1	A000079	0		3	p	a(a(n))=2^n.
+A038756	naronson	1	A000244	0		2	p	a(a(n))=3^n.
+A038757	naronson	1	A000302	0		2	p	a(a(n))=4^n.
+A054048	naronson	0	A000217	0		2	p	a(a(n))=n*(n+1)/2
+A054049	naronson	0	A000045	0	~~    ~~mSeq.next();~~mSeq.remove(0);	4	f	a(a(n))=Fibonacci(n+1)
+A054786	naronson	0	A008588	0		1	p	a(a(n))=6n.
+A054787	naronson	0	A008589	0		0	p	a(a(n))=7n.
+A054788	naronson	0	A008590	0		0	p	a(a(n))=8n.
+A054789	naronson	0	A008591	0		0	p	a(a(n))=9n.
+A054790	naronson	0	A008592	0		0	p	a(a(n))=10n.
+A054791	naronson	0	A000290	0		0	p	a(a(n))=n^2.
+A054792	naronson	0	A000578	0		0	p	a(a(n))=n^3.
+A054793	naronson	0	A000583	0		0	p	a(a(n))=n^4.
+A065804	naronson	0	A000142	0		1	p	n!
+# A073074	naronson	1	A000069	0		2	f	odious numbers
+# A079000	naronson	1	A005408	INCR		4	f	odd
+# A079253	naronson	0	A005843	INCR		3	f	even
+# A079905	naronson	1	A005408	INCR		1	f	2*n+1
+# A080588	naronson	0	A008586	INCR		0	f	a(a(n)) = 4n.
+# A080589	naronson	0	A008587	INCR		0	f	a(a(n)) = 5n.
+# A080591	naronson	0	A004767	INCR		1	f	a(a(n)) = 4n+3
+# A080596	naronson	1	A144396	INCR+START+1		4	f	a(1)=1; a(a(n)) = 2n+3.
+# A080637	naronson	1	A005408	INCR+START+2		2	f	a(1)=2, a(a(n)) = 2n+1 for n>1.
+# A080653	naronson	1	A005843	INCR+START+2		2	f	a(1)=2, a(a(n)) = 2n for n>1.
+# A080745	naronson	1	A000045	0	~~    ~~mSeq.next();~~mSeq.next();~~mSeq.remove(0);~~mSeq.remove(0);	1	f	Fibonacci numbers 1,2,3,5,8,13,.
+# A080746	naronson	1	A000201	0		4	f	lower Wythoff sequence A000201.
+# A080759	naronson	1	A000040	0		3	f	primes.    nonn,easy,synth 1..67
+# A169957	naronson	1	A005408	START+1		1	f	a(1) = 1, a(a(n)) = 2n+1.
