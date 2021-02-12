@@ -22,6 +22,7 @@ public class NumericalAronsonSequence implements Sequence {
   protected static final int INCR = 0x20; // "...  being monotonically increasing"
   protected static final int START = 0x30; // low nibble contains start value
   protected HashMap<Integer, Z> mHmap; // n -> a(n)
+  protected HashMap<Z, Integer> mImap; // a(n) -> n
   private static final int MAX_BITS = 12;
   /**
    * Constructor with parameters.
@@ -32,14 +33,25 @@ public class NumericalAronsonSequence implements Sequence {
   public NumericalAronsonSequence(final int offset, final Sequence seq, final int attribs) {
     mSeq = MemorySequence.cachedSequence(seq);
     mHmap = new HashMap<Integer, Z>(1024);
+    mImap = new HashMap<Z, Integer>(1024);
     mOffset = offset;
     mAttribs = attribs;
     mN = -1;
     while (mN < mOffset - 1) {
-      mHmap.put(mN++, Z.ZERO);
+      store(mN++, Z.ZERO);
     }
   }
 
+  /**
+   * Stores a new term a(n) in both HashMaps.
+   * @param n index
+   * @param an term
+   */
+  private void store(final int n, final Z an) {
+    mHmap.put(n, an);
+    mImap.put(an, n);
+  }
+  
   /**
    * Compute the next term in a chain.
    * @param n index
@@ -47,32 +59,29 @@ public class NumericalAronsonSequence implements Sequence {
    * @return b(n) <= 4096, or -1 if b(n) is bigger
    * For example <code>chain(4, 6): a(4):=6; a(6)=a(a(4))=b(4)=5 -&gt; chain(5, 6)</code>
    */
-  private void chain(final int n, final int an) {
-    if (sDebug >= 1) { System.out.println("  start chain(" + n + "," + an + ")"); }
-    if (mHmap.get(n) == null) {
-      if (sDebug >= 1) { System.out.println("    a(" + n + ") := " + an); }
-      mHmap.put(n, Z.valueOf(an));
-      Z result = mSeq.a(n); // b(n)
-      // mHmap.put(an, result);
-      if (result.bitLength() <= MAX_BITS) { // continue the chain
-        int bn = result.intValue();
-        chain(an, bn);
+  private boolean chain(final int n, final int an) {
+    boolean result = true;
+    /**/ if (sDebug >= 1) { System.out.println("    start chain(" + n + "," + an + ")"); }
+    if (mHmap.get(n) == null) { /**/ if (sDebug >= 1) { System.out.println("      a(" + n + ") := " + an); }
+      store(n, Z.valueOf(an));
+      Z bn = mSeq.a(n); // b(n)
+      if (n != an && bn.bitLength() <= MAX_BITS) { // continue the chain
+        chain(an, bn.intValue());
       } else {
-        result = Z.NEG_ONE; // end of  chain
+        mHmap.put(an, bn);
+        bn = Z.NEG_ONE; // end of  chain
       }
-    } else {
-      if (sDebug >= 1) { System.out.println("    a(" + n + ") already computed"); }
+    } else { /**/ if (sDebug >= 1) { System.out.println("      a(" + n + ") already computed"); }
     }
-    if (sDebug >= 1) { System.out.println("  end   chain(" + n + "," + an + ")"); }
-    // return result;
+    /**/ if (sDebug >= 1) { System.out.println("    end   chain(" + n + "," + an + ")"); }
+    return result;
   } 
 
   @Override
   public Z next() {
     ++mN;
     final int n = mN;
-    Z result = mHmap.get(n);
-    if (sDebug >= 1) { System.out.println("determine a(" + n + "): " + (result == null ? "null" : result.toString())); }
+    Z result = mHmap.get(n); /**/ if (sDebug >= 1) { System.out.println("\n--determine a(" + n + "): " + (result == null ? "null" : result.toString())); }
     if (result == null) { // a(n) does not yet exist
       // now determine the earliest candidate
       boolean busy = true;
@@ -83,51 +92,49 @@ public class NumericalAronsonSequence implements Sequence {
       }
 */
       while (busy && cand < n) {
-        final Z term = mHmap.get(cand);
-        if (term != null) {
-          if (sDebug >= 1) { System.out.println("  try cand:" + cand + " -> a(cand):" + term); }
-          if (term.equals(mSeq.a(n))) {
-            if (sDebug >= 1) { System.out.println("    = b(n), accept " + term); }
-            result = term;
+        final Z acand = mHmap.get(cand);
+        if (acand != null) { /**/ if (sDebug >= 1) { System.out.println("    try cand < n:" + cand + " -> a(cand):" + acand); }
+          if (acand.equals(mSeq.a(n))) {
+            result = acand; /**/ if (sDebug >= 1) { System.out.println("      = b(n), accept " + result); }
             busy = false;
-          } else {
-            if (sDebug >= 1) { System.out.println("    != b(n)"); }
+          } else { /**/ if (sDebug >= 1) { System.out.println("      != b(n)"); }
           }
-        } else {
-          if (sDebug >= 1) { System.out.println("  try cand:" + cand + " -> a(cand) = null"); }
+        } else { /**/ if (sDebug >= 1) { System.out.println("    try cand:" + cand + " -> a(cand) = null"); }
         } 
         ++cand;
       } // while < n
       
       if (busy) { // cand == n here
-        final Z term = mSeq.a(cand); // b(cand)
-        if (Z.valueOf(cand).equals(term)) {
-          if (sDebug >= 1) { System.out.println("  cand = n, accept b(n):" + term); }
-          result = term;
+        final Z bcand = mSeq.a(cand); /**/ if (sDebug >= 1) { System.out.println("    try cand = n:" + cand + " -> b(cand):" + bcand); }
+        if (Z.valueOf(cand).equals(bcand)) {
+          result = bcand; /**/ if (sDebug >= 1) { System.out.println("      = b(n), accept " + result); }
           busy = false;
-        } else {
+        } else { /**/ if (sDebug >= 1) { System.out.println("      != b(n)"); }
           ++cand;
         }
       }
       
-      if (busy) { // cand == n + 1 here : must accept it
-        result = Z.valueOf(cand);
-        final Z term = mSeq.a(cand); // b(cand)
-        if (Z.valueOf(cand).equals(term)) {
-          result = term;
-          if (sDebug >= 1) { System.out.println("  cand = n+1, accept b(n):" + result); }
-        } else {
-          result = Z.valueOf(++cand);
-          if (sDebug >= 1) { System.out.println("  cand = n+2, accept cand:" + result); }
+      if (busy) { // cand == n + 1 here
+        final Z bn = mSeq.a(n); /**/ if (sDebug >= 1) { System.out.println("    try cand = n+1:" + cand + " -> b(n):" + bn); }
+        result = Z.valueOf(cand); /**/ if (sDebug >= 1) { System.out.println("    try cand > n:" + cand + ", result:" + result); }
+        if (n > 0) {
+          if (result.equals(bn)) {
+            ++cand;
+            result = Z.valueOf(cand); /**/ if (sDebug >= 1) { System.out.println("    increase because a(cand)=p(cand): " + cand); }
+          }
+          while (mImap.get(result) != null) {
+            ++cand;
+            result = Z.valueOf(cand); /**/ if (sDebug >= 1) { System.out.println("    increase because a(cand) exists: " + cand); }
+          } // while
+          /**/ if (sDebug >= 1) { System.out.println("    accept cand > n:" + result); }
         }
         busy = false;
       }
+      if (result.bitLength() <= MAX_BITS) { // start a chain
+        chain(n, result.intValue());
+      } 
     } // a(n) did not yet exist
-
-    if (result.bitLength() <= MAX_BITS) { // start a chain
-      chain(n, result.intValue());
-    } 
-    if (sDebug >= 1) { System.out.println("result=" + result); }
+    /**/ if (sDebug >= 1) { System.out.println("  result:" + result); }
     return result;
   }
 
