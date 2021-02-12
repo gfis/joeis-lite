@@ -1596,12 +1596,15 @@ holrefc: # which sequences are constant and in jOEIS not by recurrence
 	    WHERE l.signature = '1' \
 	      AND 'A' || l.seqno = n.aseqno \
 	    ORDER BY 1"
-holrefix:
-	$(DBAT) -x "SELECT j.aseqno, j.superclass, i.offset1, l.signature, n.name \
-	  FROM joeis j, asinfo i, lrindx l, asname n \
+holrefix: holrefix1 holrefix2
+holrefix1:
+	$(DBAT) -x "SELECT j.aseqno, j.superclass, i.offset1, l.signature, d.data, n.name \
+	  FROM joeis j, asinfo i, lrindx l, asname n, asdata d \
 	  WHERE j.aseqno = i.aseqno \
 	    AND j.aseqno = n.aseqno \
+	    AND j.aseqno = d.aseqno \
 	    AND i.aseqno = 'A' || l.seqno \
+	    AND LENGTH(l.signature) > 0 \
 	    AND superclass NOT IN ('UndefinedClass' \
 	      , 'BlockMultAddSequence' \
 	      , 'ContinuedFractionOfSqrtSequence' \
@@ -1619,6 +1622,10 @@ holrefix:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+holrefix2:
+	perl -ne 's{\t(\w+)\t}{\tholos\t}; print; ' holrefix1.tmp \
+	>        $@.tmp
+#----
 holrefsup: holrefsu1 holrefsu2
 holrefsu1:
 	$(DBAT) -x "SELECT LOWER(SUBSTR(j.aseqno, 1, 4)) || '/' || j.aseqno || '.java' \
@@ -1648,6 +1655,13 @@ iaronson:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+naronson:
+	grep -E "^A" iaronson.man \
+	| grep naronson \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--
 runia: 
 	$(JAVA) irvine.oeis.InverseAronsonTransform -d $(D) $(BF) -n $(NT) -s $(A) -o $(OFFSET)
 testia: # A= B=
