@@ -453,17 +453,18 @@ public class HolonomicRecurrence implements Sequence {
   
   /**
    * Modifies the recurrence such that the last element 
-   * (the coefficient of the highest power of n in the polynomial for a(n)) is negative.
+   * (the coefficient of the highest power of n in the polynomial for a(n)) has a defined sign.
+   * @param sign +1 or -1, the desired sign
    */
-  public void normalizeSign() {
+  public void normalizeSign(int sign) {
     Z[] row = mPolyList.get(mPolyList.size() - 1);
-    if (row[row.length - 1].compareTo(Z.ZERO) > 0) {
+    if (row[row.length - 1].signum() != sign) {
       for (int irow = mPolyList.size() - 1; irow >= 0; --irow) {
         row = mPolyList.get(irow);
         for (int icol = row.length - 1; icol >= 0; --icol) {
           row[icol] = row[icol].negate();
         }
-        // no set because row is a pointer
+        // no 'set(irow)' because 'row' is a pointer
       }
     }
   } // normalizeSign
@@ -473,7 +474,7 @@ public class HolonomicRecurrence implements Sequence {
    */
   public void normalize() {
     unshift();
-    normalizeSign();
+    normalizeSign(1);
   } // normalize
   
   /**

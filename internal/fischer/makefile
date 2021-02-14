@@ -1557,7 +1557,7 @@ holref1: # select sequences which are holonomic
 holref2: # extract parameters by reflection
 	# perl keep_first.pl -n 4444444 holref1.tmp 
 	cat holref1.tmp \
-	| grep -vE "vprepe" \
+	| grep -vE "xholon" \
 	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
 	>        $@.tmp 
@@ -1585,20 +1585,24 @@ holref4: # generate a *.gen file
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+holshift:
+	cut -f6  holref4.tmp | sort | uniq -c
 holref:
 	cat holref4.tmp \
 	| grep -vE "xprepe" \
 	>        $@.gen
 	wc -l    $@.gen
-holrefscp:
-	make CC=holref select EX=xx
-	perl -ne 'my @parms = split(/\t/); print join("\t", $$parms[0], $$parms[7], $$parms[2], $$parms[3], $$parms[4], $$parms[5], "") . "\n"; '\
-	  holref.gen \
+	cut -f1-8 holref4.tmp \
 	>        holref.txt
 	head -n4 holref.txt
 	wc -l    holref.txt
-	scp holref4.txt gfis@teherba.org:/var/www/html/teherba.org/OEIS/
-#--
+holrefscp:
+	scp holref.txt gfis@teherba.org:/var/www/html/teherba.org/OEIS-mat
+holref_populate:
+	$(DBAT) -f holref.create.sql
+	$(DBAT) -r holref < holref.txt
+	$(DBAT) -n holref
+	$(DBAT) -4 holref
 holrefhy: # sort hypergeom paramters
 	perl hypergeom_eval.pl holrefl1.tmp \
 	| sort -k2n -k3n \
