@@ -1,5 +1,6 @@
 /* Test class, run a EulerTransform of a Finite or PeriodicSequence
  * @(#) $Id$
+ * 2021-02-13: new name InverseEulerTransform
  * 2020-08-18: EulerInvTransform
  * 2020-08-17: -f, CC=eulerx
  * 2020-08-14, Georg Fischer: copied from HolonomicRecurrenceTest
@@ -8,9 +9,9 @@ package irvine.test;
 
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
-import irvine.oeis.EulerInvTransform;
 import irvine.oeis.EulerTransform;
 import irvine.oeis.FiniteSequence;
+import irvine.oeis.InverseEulerTransform;
 import irvine.oeis.InverseMobiusTransformSequence;
 import irvine.oeis.MobiusTransformSequence;
 import irvine.oeis.PeriodicSequence;
@@ -69,7 +70,7 @@ public class EulerTransformTest {
   }
 
   /**
-   * Evaluate a {@link EulerTransform} or a {@link EulerInvTransform} and get a list
+   * Evaluate a {@link EulerTransform} or a {@link InverseEulerTransform} and get a list
    * of the resulting data terms.
    * @param seq sequence to be evaluated
    * @param noTerms how many terms should be returned
@@ -175,15 +176,17 @@ public class EulerTransformTest {
         System.err.println("# " + aseqno + " ET construction failed, mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
       }
     //----------------
+/*
+  InverseEulerTransform was EulerInvTransform - call now broken
     } else if (callCode.startsWith("euleri")) { // set CC and compute prefixTerms
       String keyword = parms[iparm ++];
       String prefix  = parms[iparm ++];
       mPeriodString  = parms[iparm ++].replaceAll("[\\{\\(]", "[").replaceAll("[\\}\\)]", "]");
       String[] terms = mPeriodString.split("\\,");
       int termNo = terms.length;
-      EulerInvTransform eit = null;
+      InverseEulerTransform eit = null;
       try {
-         eit = new EulerInvTransform(1, "[" + mPeriodString + "]", "");
+         eit = new InverseEulerTransform(1, "[" + mPeriodString + "]", "");
       } catch (Exception exc) {
         if (sDebug >= 1) {
           System.err.println("# ** aseqno: " + aseqno + ", mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
@@ -203,6 +206,7 @@ public class EulerTransformTest {
       } else {
         System.err.println("# " + aseqno + " ET construction failed, mSeqType=" + mSeqType+ ", mPeriodString=" + mPeriodString);
       }
+*/
     //----------------
     } else {
       reproduce();
@@ -332,8 +336,10 @@ public class EulerTransformTest {
           System.out.print(et.next());
         } // for iterm
       } else {
-        EulerInvTransform eit = new EulerInvTransform(1, ett.mPeriodString, ett.mPrefixString, ett.mPeriodLen); // 1 = Finite
+/* now broken
+        InverseEulerTransform eit = new InverseEulerTransform(1, ett.mPeriodString, ett.mPrefixString, ett.mPeriodLen); // 1 = Finite
         System.out.println(getDataList(eit, ett.noTerms));
+*/
       }
     } else {
       ett.processFile(fileName);

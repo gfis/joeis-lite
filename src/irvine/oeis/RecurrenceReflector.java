@@ -269,6 +269,7 @@ public class RecurrenceReflector {
                 superNextMethod = holonNextMethod;
                 final HolonomicRecurrence hseq = (HolonomicRecurrence) Class.forName(className).getDeclaredConstructor().newInstance();
                 seq = hseq;
+                hseq.normalize();
                 parts[ipart++] = String.valueOf(hseq.getOffset());
                 parts[ipart++] = hseq.getPolyString();
                 parts[ipart++] = hseq.getInitString();

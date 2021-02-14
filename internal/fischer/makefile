@@ -1563,6 +1563,14 @@ holref2: # extract parameters by reflection
 	>        $@.tmp 
 	head -n4 $@.tmp
 	wc -l    $@.tmp $@.rest.tmp
+holref2a: # extract parameters by reflection
+	cat holref1.tmp \
+	| grep -E "A32435" \
+	| $(JAVA) irvine.oeis.RecurrenceReflector - \
+	2>       $@.rest.tmp \
+	>        $@.tmp 
+	head -n4 $@.tmp
+	wc -l    $@.tmp $@.rest.tmp
 holref3: # postprocess the rest
 	grep -vE "conti|record length" holref2.rest.tmp \
 	>        $@.tmp || :
@@ -1579,9 +1587,17 @@ holref4: # generate a *.gen file
 	wc -l    $@.tmp
 holref:
 	cat holref4.tmp \
-	| grep -E "prepe" \
+	| grep -vE "xprepe" \
 	>        $@.gen
 	wc -l    $@.gen
+holrefscp:
+	make CC=holref select EX=xx
+	perl -ne 'my @parms = split(/\t/); print join("\t", $$parms[0], $$parms[7], $$parms[2], $$parms[3], $$parms[4], $$parms[5], "") . "\n"; '\
+	  holref.gen \
+	>        holref.txt
+	head -n4 holref.txt
+	wc -l    holref.txt
+	scp holref4.txt gfis@teherba.org:/var/www/html/teherba.org/OEIS/
 #--
 holrefhy: # sort hypergeom paramters
 	perl hypergeom_eval.pl holrefl1.tmp \
@@ -2119,6 +2135,8 @@ prod1_xk:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
+	sort     $@.tmp | uniq -w7 \
+	>        $@.gen
 prod1_xk_db_old:
 	make seq4 LIST=$@.tmp
 	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"

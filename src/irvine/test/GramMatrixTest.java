@@ -2,8 +2,8 @@ package irvine.test;
 
 import irvine.math.IntegerUtils;
 import irvine.math.z.Z;
-import irvine.oeis.EulerInvTransform;
 import irvine.oeis.GramMatrixThetaSeries;
+import irvine.oeis.InverseEulerTransform;
 import irvine.oeis.Sequence;
 
 /**
@@ -24,7 +24,7 @@ public class GramMatrixTest extends GramMatrixThetaSeries {
    * <ul>
    * <li>-b   output is b-file format (default: comma separated data line)</li>
    * <li>-d   debugging level (default 0=none; 1=some, 2=more)</li>
-   * <li>-eit skip 1 in result and apply an EulerInvTransform (default false)</li>
+   * <li>-eit skip 1 in result and apply an InverseEulerTransform (default false)</li>
    * <li>-gm  Gram matrix (default "[[1,0],[0,1]]")</li>
    * <li>-gmd Gram matrix, but diagonal only</li>
    * <li>-n   number of terms to be computed (default 64)</li>
@@ -85,7 +85,7 @@ public class GramMatrixTest extends GramMatrixThetaSeries {
       }
     }
     final Sequence seq = ! eit ? new GramMatrixTest(gMatrix)
-        : new  EulerInvTransform(new GramMatrixTest(gMatrix));
+        : new  InverseEulerTransform(new GramMatrixTest(gMatrix));
     int n = offset;
     for (int iTerm = 0; iTerm < noTerms; ++iTerm) {
       if (! bFile) {
