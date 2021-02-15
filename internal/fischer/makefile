@@ -85,12 +85,14 @@ joeis_push:
 joeis_pull:
 	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
 #----
+from_joeis:
+	cp -v ../../../joeis/src/main/java/irvine/oeis/HolonomicRecurrence.java     .. /../src/irvine/oeis
 from_ramath:
 	cp -v ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
-	# cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
+	cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
 to_ramath:
 	cp -v ../../src/irvine/oeis/HolonomicRecurrence.java     ../../../ramath/src/main/java/irvine/oeis
-	# cp -v ../../src/irvine/test/HolonomicRecurrenceTest.java ../../../ramath/src/main/java/irvine/test
+	cp -v ../../src/irvine/test/HolonomicRecurrenceTest.java ../../../ramath/src/main/java/irvine/test
 diff_ramath:
 	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis || :
 	# diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test || :
@@ -98,7 +100,8 @@ diff_joeis:
 	ls -1 ../../src/irvine/oeis/*.java | xargs -l -innn \
 	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/ || :
 #	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/ || :
-#	diff -wC0 ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
+diffhr:
+	diff -wy  ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
 #	diff -wC0 ../../../joeis/src/irvine/oeis/CompementaryEquationSequence.java   ../../src/irvine/oeis || :
 update:
 	cp -v     ../../../joeis/src/irvine/oeis/EulerTransform.java      ../../src/irvine/oeis || :
@@ -1173,7 +1176,8 @@ fholo:
 	grep $(A) holink.gen | tee x.tmp 
 	$(HOLT) -n $(NT) -f x.tmp
 runholo:
-	$(HOLT) -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
+	# $(HOLT) -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
+	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
 runce:
 	$(JAVA) irvine.oeis.ComplementaryEquationSequence -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
@@ -1557,7 +1561,7 @@ holref1: # select sequences which are holonomic
 holref2: # extract parameters by reflection
 	# perl keep_first.pl -n 4444444 holref1.tmp 
 	cat holref1.tmp \
-	| grep -vE "xholon" \
+	| grep -E "holo" \
 	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
 	>        $@.tmp 

@@ -1,6 +1,6 @@
-/* Holonomic sequences where the recurrence equation for a(n)
- * has polynomials in n as coefficients.
+/* Holonomic sequences where the recurrence equation for a(n) has polynomials in n as coefficients.
  * @(#) $Id$
+ * 2021-02-15: complete rewrite b.o. REVERSE 
  * 2021-02-03: imply "[1]" for empty initTerms
  * 2020-09-24: gftype=2, adjunct(n) to be added to the constant term
  * 2020-07-20, Georg Fischer: public getInitTerms(), protected initialize()
@@ -40,16 +40,15 @@ public class HolonomicRecurrence implements Sequence {
 
   protected Z[] mInitTerms; // initial terms for a(n)
   protected int mShift; // d >= 0 such that a(n+d) is the highest and next element to be computed (0 <= d <= k).
-  protected int mMaxDegree; // maximum degree of polynomials in n; = 0 for linear recurrences
   protected int mN; // index of the next sequence element to be computed
-  protected Z[] mNdPowers; // powers of mShift for exponents 0..mMaxDegree
+  protected int mNPlen; // maximum degree + 1 of polynomials in n; = 1 for linear recurrences
+  protected Z[] mNPowers; // powers of n for exponents 0..mNPlen-1; [0] = n^0 = 1
   protected int mOffset; // index of the first sequence element
   protected int mOrder; // order k-1 of the recurrence, number of previous sequence elements used to compute a(n)
   protected ArrayList<Z[]> mPolyList; // polynomials as coefficients of <code>n^i, i=0..m</code>
-  protected Z[] mBuffer; // ring buffer for the elements involved in the recurrence, indexed with mN modulo mOrder
-  protected int mBufSize; // size of the ring buffer
-  protected int mGfType; // type of the g.f.: 0 = ordinary, 1 = exponential, 2 = dirichlet ...
-  
+  protected int mLinit; // limit for processing of initial terms
+  protected int mGfType; // bit mask for type(s) of the g.f.: 0 = ordinary, 1 = exponential, 2 = adjunct, 4 = reverse ...
+
   /**
    * Empty constructor.
    */
@@ -114,17 +113,13 @@ public class HolonomicRecurrence implements Sequence {
     if (start <= 1) { // linear case, simple vector of the form "[0,1,2,...]"
       final String[] polys = matrix.substring(start, behind).split("\\s*,\\s*");
       for (int k = 0; k < polys.length; ++k) {
-        if (sDebug >= 1) {
-          System.out.println("polys[" + k + "]=" + polys[k]);
-        }
+        /**/ if (sDebug >= 1) { System.out.println("polys[" + k + "]=" + polys[k]); }
         mPolyList.add(new Z[] {new Z(polys[k])});
       } // for k
     } else { // holonomic case, vector list "[[0,1,2],[0],[17,0,18]]"
       final String[] polys = matrix.substring(start, behind).split("]\\s*,\\s*\\[");
       for (int k = 0; k < polys.length; ++k) {
-        if (sDebug >= 1) {
-          System.out.println("polys[" + k + "]=" + polys[k]);
-        }
+        /**/ if (sDebug >= 1) { System.out.println("polys[" + k + "]=" + polys[k]); }
         mPolyList.add(ZUtils.toZ(polys[k]));
       } // for k
     }
@@ -178,64 +173,309 @@ public class HolonomicRecurrence implements Sequence {
     this(offset, matrix, initTerms, 0);
   } // Constructor
 
-  /** 
-   * Get the type of the generating function.
-   * @return code (bit mask) for the type:
+  /**
+   * Initialize the sequence.
+   * This code is common to all constructors.
+   */
+  protected void initialize() {
+    mGfType = ORDINARY; // normally it is an o.g.f.
+    mExponentialType = false;
+    mAdjunctType = false;
+    mReverseType = false;
+    mN = mOffset - 1; // one before first initial term
+    mNPlen = 1;
+    mRElen = mPolyList.size() - 1;
+    mRElems = new Z[mRElen + (mRElen == 0 ? 1 : 0)]; // ensure that there is at least mRElems[0]; may not use mRElems.length anymore
+    Arrays.fill(mRElems, Z.ZERO);
+    mOrder = mRElen - 1; /**/ if (sDebug >= 1) { System.out.println("order=" + mOrder); }
+    for (int k = mRElen - 1; k >= 0; --k) { // determine mNPlen
+      final int rowLen = mPolyList.get(k).length;
+      if (rowLen > mNPlen) {
+        mNPlen = rowLen;
+      }
+    } // while k
+    mNPowers = new Z[mNPlen + 1]; // ensure that [0], [1] always exist
+    mNPowers[0] = Z.ONE; // n^0 == 1
+    initRE(mN);
+    mLinit = mInitTerms.length;
+    /**/ if (sDebug >= 1) { System.out.println("initialize: mN=" + mN + ", mRElen=" + mRElen + ", mNPlen=" + mNPlen + ", mOrder=" + mOrder + ", mLinit=" + mLinit); }
+  } // initialize
+
+  protected static final int ORDINARY = 0;
+  protected static final int EXPONENTIAL = 1;
+  protected static final int ADJUNCT = 2;
+  protected static final int REVERSE = 4;
+  protected boolean mExponentialType;
+  protected boolean mAdjunctType;
+  protected boolean mReverseType;
+
+  /**
+   * Get the type(s) of the generating function.
+   * @return code (bit mask) for the types:
    * <ul>
    * <li>0 = ordinary</li>
    * <li>1 = exponential</li>
-   * <li>>2 = use <code>adjunct</code> for an additional function</li>
+   * <li>2 = use <code>adjunct(n)</code> for some additional function</li>
+   * <li>4 = reverse recurrence, start with last initial term and decrease index <code>n</code></li>
    * </ul>
    */
   public int getGfType() {
     return mGfType;
   }
-  
-  /** 
+
+  /**
    * Set the type of the generating function.
    * @param gfType code (bit mask) for the type
    */
   public void setGfType(final int gfType) {
     mGfType = gfType;
+    mExponentialType = (mGfType & EXPONENTIAL) == EXPONENTIAL;
+    mAdjunctType = (mGfType & ADJUNCT) == ADJUNCT;
+    mReverseType = (mGfType & REVERSE) == REVERSE;
+    if (mReverseType) {
+      mN = mOffset + mInitTerms.length; // one behind last initial term
+      initRE(mN);
+      mLinit = mInitTerms.length - mRElen;
+      /**/ if (sDebug >= 1) { System.out.println("setGfType: mN=" + mN + ", mRElen=" + mRElen + ", mNPlen=" + mNPlen + ", mOrder=" + mOrder + ", mLinit=" + mLinit); }
+    }
   }
-  
-  /** 
+
+  /**
    * Set the debugging level.
    * @param level code for the debugging level: 0 = none, 1 = some, 2 = more.
    */
   public static void setDebug(final int level) {
     sDebug = level;
   }
-  
-  /**
-   * Initialize the sequence.
-   * This code is common to all constructors.
-   */
-  protected void initialize() {
-    mGfType = 0; // normally it is an ordinary g.f.
-    mN = mOffset - 1;
-    mMaxDegree = 1;
-    int k = mPolyList.size() - 1;
-    mBufSize = k + 2; // at least 1
-    mBuffer = new Z[mBufSize];
-    Arrays.fill(mBuffer, Z.ZERO);
-    mOrder = k - 1;
-    if (sDebug >= 1) {
-      System.out.println("order=" + mOrder);
-    }
-    while (k >= 0) { // determine mMaxDegree
-      final int klen = mPolyList.get(k).length;
-      if (klen > mMaxDegree) {
-        mMaxDegree = klen;
-      }
-      --k;
-    } // while k
-    mNdPowers = new Z[mMaxDegree + 2]; // ensure that [0], [1] always exist
-    mNdPowers[0] = Z.ONE;
-  } // initialize
+
+  protected Z[] mRElems; // ring buffer for the elements involved in the recurrence, indexed with mN modulo mRElen
+  protected int mRElen; // size of the ring buffer
+  protected int mREpos; // current position (index) in the ring buffer
 
   /**
-   * For <code>gftype=2</code>, add the value of some function of the current index {@link #mN}.
+   * Initializes the position in the ring buffer
+   * @param starting position, will be increased/decreased at the beginning of next call of getRE/setRE.
+   * This method is called with mN = offset - 1 for normal (increasing),
+   * and offset + length(initTerms) for reversed (decreasing) recurrences.
+   */
+  private void initRE(final int pos) {
+    if (mRElen > 0) {
+      mREpos = pos;
+      while (mREpos < 0) {
+        mREpos += mRElen;
+      }
+      while (mREpos >= mRElen) {
+        mREpos -= mRElen;
+      }
+      // now mREpos inside defined ring buffer range
+    }
+  } // initRE
+
+  /**
+   * Gets the next element from the ring buffer
+   * @return the value of a recurrence element a(n-k)
+   */
+  private Z getRE() {
+    if (mReverseType) {
+      --mREpos;
+      if (mREpos < 0) {
+        mREpos = mRElen - 1;
+      }
+    } else {
+      ++mREpos;
+      if (mREpos >= mRElen) {
+        mREpos = 0;
+      }
+    }
+    return mRElems[mREpos];
+  } // getRE
+
+  /**
+   * Sets the next element in the ring buffer
+   * @param the value of a recurrence element a(n-k)
+   */
+  private void setRE(final Z an_k) {
+    if (mReverseType) {
+      --mREpos;
+      if (mREpos < 0) {
+        mREpos = mRElen - 1;
+      }
+    } else {
+      ++mREpos;
+      if (mREpos >= mRElen) {
+        mREpos = 0;
+      }
+    }
+    /**/ if (sDebug >= 2 && an_k != null) { System.out.print  ("    setRE(" + mREpos + "," + an_k.toString() + "): " + showRE()); }
+    mRElems[mREpos] = an_k;
+    /**/ if (sDebug >= 2 && an_k != null) { System.out.println(" -> " + showRE()); }
+  } // setRE
+
+  /**
+   * Advances the position in the ring buffer without modifying any element
+   */
+  private void stepRE() {
+    if (mReverseType) {
+      --mREpos;
+      if (mREpos < 0) {
+        mREpos = mRElen - 1;
+      }
+    } else {
+      ++mREpos;
+      if (mREpos >= mRElen) {
+        mREpos = 0;
+      }
+    }
+  } // stepRE
+
+  /**
+   * Returns a representation of the ring buffer for debugging purposes
+   * @return a String of the form "[a1,*a2,...]"
+   */
+  private String showRE() {
+    final StringBuilder result = new StringBuilder(256);
+    result.append('[');
+    for (int i = 0; i < mRElen; ++i) { // polynomials
+      if (i > 0) {
+        result.append(',');
+      }
+      if (i == mREpos) {
+        result.append('*');
+      }
+      result.append(mRElems[i]);
+    } // for i
+    result.append(']');
+    return result.toString();
+  } // showRE
+
+  /**
+   * Evaluates the polynomials in n.
+   * @param n current index; the n in the polynomials of the recurrence equation
+   * @return array of coefficients for the constant and the recurrence elements
+   */
+  private Z[] evaluatePolynomials(final int n) {
+    mNPowers[1] = Z.valueOf(n); // [0] == 1
+    for (int m = 2; m <= mNPlen; ++m) { // fill with powers of nd
+      mNPowers[m] = mNPowers[m - 1].multiply(n);
+    } // fill with n^m
+
+    final Z[] pvals = new Z[mRElen + 1];
+    for (int irow = mRElen; irow >= 0; --irow) { // evaluate all polynomials
+      final Z[] row = mPolyList.get(irow);
+      Z sum = row[0];
+      for (int icol = 1; icol < row.length; ++icol) { // possibly holonomic: evaluate polynomial in n
+        final Z coeffi = row[icol];
+        if (coeffi.isZero()) {
+          // ignore
+        } else if (coeffi.equals(Z.ONE)) {
+          sum = sum.add(mNPowers[icol]);
+        } else if (coeffi.equals(Z.NEG_ONE)) {
+          sum = sum.subtract(mNPowers[icol]);
+        } else { // abs(coeffi) > 1
+          sum = sum.add(mNPowers[icol].multiply(coeffi));
+        }
+      } // for icol - terms of one polynomial in n
+      pvals[irow] = sum; /**/ if (sDebug >= 2) { System.out.println("    pvals[" + irow + "]=" + pvals[irow]); }
+    } // for irow
+    // pvals[0..mRElen] now contain the coefficients of the recurrence equation
+    return pvals;
+  } // evaluatePolynomials
+
+  /**
+   * Gets the next term of the sequence.
+   * @return an initial term or the next element computed by the recurrence
+   */
+  @Override
+  public Z next() {
+    Z result = null;
+    if (mReverseType) { // decreasing
+      --mN;
+      if (mN - mOffset > mLinit) { // in range
+        result = mInitTerms[mN - mOffset];
+      } else {
+        stepRE(); // -  cf. sum loop below
+      }
+    } else { // increasing
+      ++mN;
+      if (mN - mOffset < mLinit) { // in range
+        result = mInitTerms[mN - mOffset];
+      } else {
+        stepRE();
+      }
+    }
+    if (result != null) { // taken from initial terms
+    } else { // result == null, not in range of initTerms, must be computed
+      final Z[] pvals = evaluatePolynomials(mN - mShift); // coefficients of the recurrence equation
+
+      Z sum = pvals[0]; // the constant term, mostly ZERO
+      if (mAdjunctType && mN >= mOrder) {
+        sum = sum.add(adjunct(mN));
+      }
+
+      int ipvaln = 0; // index of polynomial for new recurrence element
+      if (mReverseType) { // decreasing
+        ipvaln = 1;
+        for (int k = mOrder + 1; k >= 2; --k) { // sum all previous elements of the recurrence
+          /**/ if (sDebug >= 1) { System.out.print  ("  sum: " + sum + " (pvals[" + k + "]=" + pvals[k] + ", RE=" + showRE()); }
+          sum = sum.add(pvals[k].multiply(getRE()));
+          /**/ if (sDebug >= 1) { System.out.println(") -> " + sum + " (pvals[" + k + "]=" + pvals[k] + ", RE=" + showRE()+ ")"); }
+        } // for k - summing
+        if (!pvals[ipvaln].isZero()) {
+          if (mExponentialType && mN >= 2) { // exponential: multiply by mN
+            sum = sum.multiply(Z.valueOf(mN));
+          }
+          final Z[] quotRemd = sum.negate().divideAndRemainder(pvals[ipvaln]);
+          if (!quotRemd[1].isZero()) {
+            /**/ if (sDebug >= 1) { System.out.println("assertion: division with rest " + quotRemd[1] + " for " + sum.negate() + " / " + pvals[mOrder + 1]); }
+            result = null; // end of sequence
+          } else {
+            result = quotRemd[0];
+          }
+        } else {
+          /**/ if (sDebug >= 1) { System.out.println("assertion: division by zero "); }
+          result = null; // end of sequence
+        }
+
+      } else { // normal - increasing
+        ipvaln = mOrder + 1;
+        for (int k = 1; k <= mOrder; ++k) { // sum all previous elements of the recurrence
+          /**/ if (sDebug >= 1) { System.out.print  ("  sum: " + sum + " (pvals[" + k + "]=" + pvals[k] + ", RE=" + showRE()); }
+          sum = sum.add(pvals[k].multiply(getRE()));
+          /**/ if (sDebug >= 1) { System.out.println(") -> " + sum + " (pvals[" + k + "]=" + pvals[k] + ", RE=" + showRE()+ ")"); }
+        } // for k - summing
+        if (!pvals[ipvaln].isZero()) {
+          if (mExponentialType && mN >= 2) { // exponential: multiply by mN
+            sum = sum.multiply(Z.valueOf(mN));
+          }
+          final Z[] quotRemd = sum.negate().divideAndRemainder(pvals[ipvaln]);
+          if (!quotRemd[1].isZero()) {
+            /**/ if (sDebug >= 1) { System.out.println("assertion: division with rest " + quotRemd[1] + " for " + sum.negate() + " / " + pvals[mOrder + 1]); }
+            result = null; // end of sequence
+          } else {
+            result = quotRemd[0];
+          }
+        } else {
+          /**/ if (sDebug >= 1) { System.out.println("assertion: division by zero "); }
+          result = null; // end of sequence
+        }
+      }
+    }
+
+    if (mExponentialType) { // exponential: multiply buffer by mN
+      final Z zn = Z.valueOf(mN);
+      for (int ire = 0; ire < mRElen; ++ire) {
+        /**/ if (sDebug >= 1) { System.out.println("  exp: multiply ring=" + showRE() + " by mN=" + mN); }
+        mRElems[ire] = mRElems[ire].multiply(zn);
+      }
+    }
+    setRE(result);
+
+    /**/ if (sDebug >= 1) { System.out.println("result=" + result + ", RE=" + showRE()); }
+    return result;
+  } // next
+
+  /**
+   * For <code>gftype=ADJUNCT</code>, add the value of some function of the current index {@link #mN}.
    * to the constant term in the recurrence equation.
    * This method is typically overwritten, for example in {@link ComplementaryEquationSequence}.
    * @param n index of the term a(n) to be computed
@@ -244,121 +484,6 @@ public class HolonomicRecurrence implements Sequence {
   public Z adjunct(final int n) {
     return Z.ZERO;
   }
-  
-  /**
-   * Gets the next term of the sequence.
-   */
-  @Override
-  public Z next() {
-    int ibuf; // index in mBuffer
-    final Z result;
-    ++mN;
-    if (mN - mOffset < mInitTerms.length) {
-      result = mInitTerms[mN - mOffset];
-    } else {
-      final int nd = mN - mShift;
-      mNdPowers[1] = Z.valueOf(nd);
-      for (int m = 2; m < mMaxDegree; ++m) { // fill powers of mN
-        mNdPowers[m] = mNdPowers[m - 1].multiply(nd);
-      } // for powers of mN
-      int k = mPolyList.size() - 1;
-      final Z[] pvals = new Z[k + 1];
-      while (k >= 0) { // evaluate all polynomials
-        Z pvalk = Z.ZERO; // one coefficient = value of a polynomial in n
-        final Z[] poly = mPolyList.get(k);
-        // handle the linear case separately
-        Z coeffi = poly[0];
-        if (!coeffi.isZero()) {
-          pvalk = pvalk.add(coeffi);
-        }
-        for (int i = 1; i < poly.length; i++) { // possibly holonomic: evaluate polynomial in nd
-          coeffi = poly[i];
-          if (coeffi.isZero()) {
-            // ignore
-          } else if (coeffi.equals(Z.ONE)) {
-            pvalk = pvalk.add(mNdPowers[i]);
-          } else if (coeffi.equals(Z.NEG_ONE)) {
-            pvalk = pvalk.subtract(mNdPowers[i]);
-          } else { // abs(coeffi) > 1
-            pvalk = pvalk.add(mNdPowers[i].multiply(coeffi));
-          }
-        } // for i - terms of one polynomial in nd
-        pvals[k] = pvalk;
-        if (sDebug >= 1) {
-          System.out.println("pvals[" + k + "]=" + pvals[k]);
-        }
-        --k;
-      } // while k - coefficients of the recurrence
-      // pvals[0..mOrder] now contain the coefficients of the recurrence equation
-      Z sum = pvals[0]; // k=0, the constant term (without a(k)) in the recurrence, mostly ZERO
-      if (mGfType == 2 && mN >= mOrder) {
-        sum = sum.add(adjunct(mN));
-      }
-      for (k = 1; k <= mOrder; ++k) { // sum all previous elements of the recurrence
-        ibuf = mN - mOrder - 1 + k; // index of previous recurrence element a[n-i]
-        while (ibuf < 0) {
-          ibuf += mBufSize;
-        }
-        ibuf %= mBufSize;
-        if (sDebug >= 1) {
-          System.out.println("mN=" + mN + ", nd=" + nd + ", k=" + k 
-              + ", mBufSize=" + mBufSize + ", mOrder=" + mOrder);
-          System.out.println("    mBuffer[" +  ibuf + "]=" + mBuffer[ibuf] + ", old_sum=" + sum);
-        }
-        sum = sum.add(pvals[k].multiply(mBuffer[ibuf]));
-        if (sDebug >= 1) {
-          System.out.println("    new_sum=" + sum);
-        }
-      } // for k - summing
-      if (!pvals[mOrder + 1].isZero()) {
-        if (mGfType == 1 && mN >= 2) { // exponential: multiply by mN 
-          sum = sum.multiply(Z.valueOf(mN));
-        }
-        final Z[] quotRemd = sum.negate().divideAndRemainder(pvals[mOrder + 1]);
-        if (!quotRemd[1].isZero()) {
-          if (sDebug >= 1) {
-            System.out.println("assertion: division with rest " + quotRemd[1]
-                + " for " + sum.negate() + " / " + pvals[mOrder + 1]);
-          }
-          result = null;
-        } else {
-          result = quotRemd[0];
-        }
-      } else {
-        if (sDebug >= 1) {
-          System.out.println("assertion: division by zero ");
-        }
-        result = null;
-      }
-    }
-    if (mGfType == 1 && result != null) { // exponential: multiply buffer by mN 
-      final Z zn = Z.valueOf(mN);
-      for (ibuf = 0; ibuf < mBufSize; ++ibuf) {
-        if (mBuffer[ibuf] != null) {
-          mBuffer[ibuf] = mBuffer[ibuf].multiply(zn);
-        }
-      }
-    }
-    ibuf = mN;
-    while (ibuf < 0) {
-       ibuf += mBufSize;
-    }
-    ibuf %= mBufSize;
-    mBuffer[ibuf] = result;
-    if (sDebug >= 1) {
-      String sep = "[";
-      System.out.print("next.mBuffer = ");
-      for (int jbuf = 0; jbuf < mBufSize; ++jbuf) {
-        System.out.print(sep + mBuffer[jbuf]);
-        if (ibuf == jbuf) {
-          System.out.print('*');
-        }
-        sep = ",";
-      } // for
-      System.out.println(']');
-    }
-     return result;
-  } // next
 
   /**
    * Gets the offset
@@ -390,7 +515,7 @@ public class HolonomicRecurrence implements Sequence {
    * Gets the vector for the initial terms.
    * @return a vector for the initial values of the sequence.
    */
-  protected Z[] getInitTerms() {
+  public Z[] getInitTerms() {
     return mInitTerms;
   }
 
@@ -402,9 +527,9 @@ public class HolonomicRecurrence implements Sequence {
     return mShift;
   }
 
-  /** 
+  /**
    * When the elements are interpreted as coefficients of a Polynomial in <code>n</code>
-   * (where the vector indices <code>k = 0, 1, 2</code> and so on are the exponents of <code>n</code>), 
+   * (where the vector indices <code>k = 0, 1, 2</code> and so on are the exponents of <code>n</code>),
    * then the result has the coeffients after the mapping <code>x</code> to <code>n + dist</code>.
    * @param vector the Z array to be shifted
    * @param shift map n -&gt; n + shift (may be negative)
@@ -450,9 +575,9 @@ public class HolonomicRecurrence implements Sequence {
       mShift = 0;
     }
   } // unshift
-  
+
   /**
-   * Modifies the recurrence such that the last element 
+   * Modifies the recurrence such that the last element
    * (the coefficient of the highest power of n in the polynomial for a(n)) has a defined sign.
    * @param sign +1 or -1, the desired sign
    */
@@ -468,7 +593,7 @@ public class HolonomicRecurrence implements Sequence {
       }
     }
   } // normalizeSign
-  
+
   /**
    * Removes the shift and normalizes the sign.
    */
@@ -476,7 +601,7 @@ public class HolonomicRecurrence implements Sequence {
     unshift();
     normalizeSign(1);
   } // normalize
-  
+
   /**
    * Gets a String representation
    * of the coefficient polynomials.
