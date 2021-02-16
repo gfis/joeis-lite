@@ -46,6 +46,7 @@ else
     CPS=:
 endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
+JJAVA=java $(JOPT) -cp "$(JOEIS)/build.tmp/joeis.jar"
 BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
@@ -60,6 +61,8 @@ seqt: # A=$(A) - print data up to 260 characters
 	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET)     | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
 	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET) -bf | tee x.tmp
+jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
+	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
 spectest:
 	$(JAVA) irvine.test.SpecialTest       $(NT) $(OFFSET)
 gramtest:
@@ -1591,6 +1594,22 @@ holref4: # generate a *.gen file
 	wc -l    $@.tmp
 holshift:
 	cut -f6  holref4.tmp | sort | uniq -c
+#----
+holshorten:
+	grep -P "\tholos\t" holref.txt \
+	| sed -e "s/\tholos\t/\tholog\t/" \
+	| $(HOLT) -d $(D) -f - 2>&1 \
+	| sed -e "s/\tholog\t/\tholos\t/" \
+	>        $@.tmp
+	grep " shortened by " $@.tmp | tee $@.1.tmp
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+holshort:
+	grep -vE " shortened by " holshorten.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 holref:
 	cat holref4.tmp \
 	| grep -vE "xprepe" \
@@ -1607,6 +1626,7 @@ holref_populate:
 	$(DBAT) -r holref < holref.txt
 	$(DBAT) -n holref
 	$(DBAT) -4 holref
+#----
 holrefhy: # sort hypergeom paramters
 	perl hypergeom_eval.pl holrefl1.tmp \
 	| sort -k2n -k3n \
@@ -4132,6 +4152,11 @@ pat1:
 	'} '\
 	'print "$$line\n";' \
 	$(A).java > temp/$(A).java
+#----
+sublatin:
+	cp -v sublatin.man sublatin.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 sumwiki0: # fetch Index Section Su from OEIS Wiki
 	wget "https://oeis.org/w/index.php?title=Index_to_OEIS:_Section_Su&section=7&action=raw" -O - >  $@.raw.tmp

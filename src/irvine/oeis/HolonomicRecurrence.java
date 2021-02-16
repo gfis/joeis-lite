@@ -565,6 +565,62 @@ public class HolonomicRecurrence implements Sequence {
   } // shiftRow
 
   /**
+   * Try to reduce the number of initial terms by running the recurrence backwards.
+   * At the moment this is possible only if gfType = 0.
+   * @return number of initial terms which were removed, or -1 if the recurrence is broken.
+   */
+  public int shorten() {
+    int result = 0;
+    final int saveGfType = getGfType();
+    if (saveGfType == 0) {
+      setGfType(REVERSE);
+      int initLen = mInitTerms.length;
+      int n = initLen - 1;
+      boolean busy = true;
+      while (busy && n >= mOffset && n >= 0) {
+        final Z term = next(); // starts with last of mInitTerms
+        if (term == null) { // end of reversed sequence
+          busy = false;
+        } else if (term.equals(mInitTerms[n])) {
+          if (n < initLen - mOrder) {
+            result ++;
+          }
+          --n;
+        } else { // !=
+          if (n < initLen - mOrder) {
+            // this is a term prepended to the recurrence 
+          } else { // should not happen
+            result = -1; // broken
+          }
+          busy = false; // break loop
+        } // !=
+      } // while busy
+      setGfType(saveGfType);
+      if (result >= 1) {
+        final int newLen = initLen - result;
+        // we must check whether there is any non-zero initial term remaining
+        boolean onlyZeroes = true;
+        int i = 0;
+        while (onlyZeroes && i < newLen) {
+          if (! mInitTerms[i].isZero()) {
+            onlyZeroes = false;
+          }
+          ++i;
+        } // while onlyZeroes
+        // also check whether there is a non-zero in p[0] of the recurrence
+        final Z[] row0 = mPolyList.get(0);
+        if (!onlyZeroes || row0.length > 1 || !row0[0].isZero()) {
+          final Z[] saveTerms = mInitTerms;
+          mInitTerms = Arrays.copyOf(saveTerms, initLen - result);
+        } else {
+          result = 0;
+        }
+      }
+    } // gfType was 0
+    return result;
+  } // shorten
+
+  /**
    * Modifies the recurrence such that the shift (distance) becomes zero.
    */
   public void unshift() {
@@ -610,11 +666,17 @@ public class HolonomicRecurrence implements Sequence {
   public String getPolyString() {
     final StringBuilder result = new StringBuilder(256);
     final ArrayList<Z[]> polyList = getPolyList();
+    result.append('[');
     for (int i = 0; i < polyList.size(); ++i) { // polynomials
       final Z[] poly = polyList.get(i);
-      result.append(i == 0 ? '[' : ',');
+      if (i > 0) {
+        result.append(',');
+      }
+      result.append('[');
       for (int j = 0; j < poly.length; ++j) {
-        result.append(j == 0 ? '[' : ',');
+        if (j > 0) {
+          result.append(',');
+        }
         result.append(poly[j]);
       } // for j
       result.append(']');
@@ -631,13 +693,18 @@ public class HolonomicRecurrence implements Sequence {
   public String getInitString() {
     final StringBuilder result = new StringBuilder(256);
     final Z[] initTerms = getInitTerms();
-    int j = 0;
-    while (j < initTerms.length) {
-      result.append(j == 0 ? '[' : ',');
+    result.append('[');
+    for (int j = 0; j < initTerms.length; ++j) {
+      if (j > 0) {
+        result.append(',');
+      }
       result.append(initTerms[j]);
       ++j;
     } // while j
     result.append(']');
+    if (result.equals("[]")) {
+      result.setLength(0);
+    }
     return result.toString();
   } // getInitString()
 
