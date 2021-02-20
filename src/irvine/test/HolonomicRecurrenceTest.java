@@ -430,47 +430,12 @@ public class HolonomicRecurrenceTest {
       mHolRec.setGfType(mGfType);
       final int shortened = mHolRec.shorten();
       if (shortened > 0) {
-        System.out.println("# " + aseqno + " shortened by " + shortened);
         parms[4] = mHolRec.getInitString();
+        System.out.println("# " + aseqno + " " + mPolyString + " " + mInitString 
+            + " shortened by " + shortened +  " to " + parms[4]);
       }
       reproduce();
-/*
-    } else if (callCode.startsWith("holoh")) { // determine the prefixed initial terms (old version)
-      mHolRec = new HolonomicRecurrence(mOffset, mPolyString, mInitString, mNDist); // instance to be tested
-      mHolRec.setGfType(mGfType);
-      Z[] sInits = mHolRec.getInitTerms(); // initial terms from 'stripped'
-      int termNo = sInits.length;
-      Z[] nInits = new Z[termNo];
-      HolonomicRecurrence rHolRec = reverse(mHolRec, mHolRec.getPolyList().size());
-      int iterm = termNo - 1; // start at the end
-      Z rTerm = rHolRec.next();
-      if (sDebug >= 1) {
-        System.out.println(aseqno + "\t" + getPolyString(rHolRec) + "\t" + rHolRec.getInitString());
-        System.out.println("sInits[" + iterm + "]=" + sInits[iterm].toString()
-            + ", rTerm=" + (rTerm == null ? "null" : rTerm.toString()));
-      }
-      while (iterm >= 0 && rTerm != null && rTerm.equals(sInits[iterm])) {
-        if (sDebug >= 1) {
-          System.out.println("sInits[" + iterm + "]=" + sInits[iterm].toString()
-              + ", rTerm=" + (rTerm == null ? "null" : rTerm.toString()));
-        }
-        rTerm = rHolRec.next();
-        iterm --;
-      } // while iterm
-      if (sDebug >= 1) {
-        System.out.println("stopping rTerm= " + (rTerm == null ? "null" : rTerm.toString()));
-      }
-      int offset1 = iterm + 1;
-      int len    = mHolRec.getOrder();
-      parms[1] = callCode + "1";
-      if (offset1 == 0) {
-        parms[4] =  xx_getInitString(mHolRec, 0, len)      .replaceAll("\\[", "[  ");
-      } else {
-        parms[4] = (xx_getInitString(mHolRec, 0, offset1)
-                  + xx_getInitString(mHolRec, offset1, len)).replaceAll("\\]\\[", ",  ");
-      }
-      reproduce();
-*/
+
     } else if (callCode.startsWith("holor")) { // getTermList(reverse)
       mHolRec = new HolonomicRecurrence(mOffset, mPolyString, mInitString, mNDist); // instance to be tested
       mHolRec.setGfType(mGfType);

@@ -656,6 +656,7 @@ public class HolonomicRecurrence implements Sequence {
   public void normalize() {
     unshift();
     normalizeSign(1);
+    shorten();
   } // normalize
 
   /**
@@ -699,7 +700,6 @@ public class HolonomicRecurrence implements Sequence {
         result.append(',');
       }
       result.append(initTerms[j]);
-      ++j;
     } // while j
     result.append(']');
     if (result.equals("[]")) {

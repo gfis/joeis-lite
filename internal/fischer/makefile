@@ -1564,7 +1564,7 @@ holref1: # select sequences which are holonomic
 holref2: # extract parameters by reflection
 	# perl keep_first.pl -n 4444444 holref1.tmp 
 	cat holref1.tmp \
-	| grep -E "holo" \
+	| grep -vE "xholo" \
 	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
 	>        $@.tmp 
@@ -2318,9 +2318,9 @@ dhdop:
 rio:
 	grep -E  "fract21"  $(TRIREC)/rio3.tmp \
 	| sed -e "s/fract21/trigf/" \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
+	>        $@.gen
+	tail -n4 $@.gen
+	wc -l    $@.gen
 fract21:
 	grep -E  "fract21"  $(TRIREC)/fract2.tmp \
 	| sed -e "s/fract21/trigf/" \

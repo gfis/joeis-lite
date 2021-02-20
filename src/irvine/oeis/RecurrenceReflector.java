@@ -332,6 +332,7 @@ public class RecurrenceReflector {
                 } else {
                   seq = null; // ignore it below
                 }
+                
               } else { // ignore
               } // end of switch for callCodes
               if (seq == null) {
