@@ -1564,7 +1564,7 @@ holref1: # select sequences which are holonomic
 holref2: # extract parameters by reflection
 	# perl keep_first.pl -n 4444444 holref1.tmp 
 	cat holref1.tmp \
-	| grep -vE "xholo" \
+	| grep -E "conti" \
 	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
 	>        $@.tmp 
@@ -1640,16 +1640,17 @@ holrefc: # which sequences are constant and in jOEIS not by recurrence
 	    WHERE l.signature = '1' \
 	      AND 'A' || l.seqno = n.aseqno \
 	    ORDER BY 1"
-holrefix: holrefix1 holrefix2
+#----
+holrefix: holrefix1 holrefix2 # which are in lrindx joined with their implementation in joeis
 holrefix1:
-	$(DBAT) -x "SELECT j.aseqno, j.superclass, i.offset1, l.signature, d.data, n.name \
-	  FROM joeis j, asinfo i, lrindx l, asname n, asdata d \
-	  WHERE j.aseqno = i.aseqno \
-	    AND j.aseqno = n.aseqno \
-	    AND j.aseqno = d.aseqno \
+	$(DBAT) -x "SELECT i.aseqno, COALESCE(j.superclass, 'nyi'), i.offset1, l.signature, n.name, d.data \
+	  FROM asinfo i, lrindx l, asname n, asdata d LEFT JOIN joeis j ON j.aseqno = d.aseqno \
+	  WHERE i.aseqno = n.aseqno \
+	    AND n.aseqno = d.aseqno \
 	    AND i.aseqno = 'A' || l.seqno \
+	    AND i.keyword NOT LIKE '%dead%' \
 	    AND LENGTH(l.signature) > 0 \
-	    AND superclass NOT IN ('UndefinedClass' \
+	    AND COALESCE(j.superclass, 'undef') NOT IN ('UndefinedClass' \
 	      , 'BlockMultAddSequence' \
 	      , 'ContinuedFractionOfSqrtSequence' \
 	      , 'CoordinationSequence' \
@@ -1667,8 +1668,11 @@ holrefix1:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 holrefix2:
-	perl -ne 's{\t(\w+)\t}{\tholos\t}; print; ' holrefix1.tmp \
+	grep -P "\tnyi\t"  holrefix1.tmp \
+	|perl -ne 's{\t(\w+)\t}{\tholos\t}; print; ' \
 	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #----
 holrefsup: holrefsu1 holrefsu2
 holrefsu1:
@@ -4032,6 +4036,12 @@ dummy36:
 		ORDER BY 1" \
 	>       $@.j.txt
 	wc   -l $@.j.txt
+#----
+primodsol:
+	grep -P "Primes p such that x\^\d *= *\d has (a|no) solution mod p" $(COMMON)/joeis_names.txt \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------
 tupfact:
 	cp -v tupfact.man tupfact.gen

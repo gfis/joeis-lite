@@ -48,7 +48,17 @@ public class RecurrenceReflector {
     mDebug = 0;
     mSrcEncoding = "UTF-8";
   } // no-args Constructor
-
+/*  
+  public class WrapCFSequence extends ContinuedFractionOfSqrtSequence {
+    
+    protected WrapCFSequence(final int offset) {
+      super(offset);
+    }
+    protected WrapCFSequence(final int offset, final int k) {
+      super(offset, k);
+    }
+  } // class WrapCFSequence
+*/
   /**
    * Gets a String representation of a Z array.
    * @return a list of terms of the form "[0,1,1,2,1]".
@@ -126,6 +136,69 @@ public class RecurrenceReflector {
     return result.toString();
   } // getBlockRecurrence()
 
+  public String[] getContinuedFractionRecurrence(final ContinuedFractionOfSqrtSequence hseq) {
+    String[] result = new String[] { "conti", "", "" }; // default if reflection fails
+    final StringBuilder buffer = new StringBuilder(1024);
+    hseq.fillPeriod();
+    final int plen = hseq.getPeriodLength();
+    try {
+      final Method thisNextMethod = hseq.getClass().getMethod("next");
+      final Method contiNextMethod = ContinuedFractionOfSqrtSequence.class.getMethod("next");
+      if (thisNextMethod.equals(contiNextMethod)) { // get the CF itself: repetition of periodic part
+        result[0] = "contip";
+        result[1] = getPeriodicRecurrence(plen); // MATRIX
+        buffer.setLength(0);
+        buffer.append('[');
+        buffer.append(hseq.next().divide2().toString()); // root
+        for (int iterm = 0; iterm < plen; ++iterm) {
+          buffer.append(',');
+          buffer.append(hseq.next().toString());
+        }
+        buffer.append(']');
+        result[2] = buffer.toString(); // INIT
+      } else { // test whether it's the numerator or denominator convergents sequence
+        final int plen2 = plen << 1;
+        final Z[] nums = new Z[plen2];
+        final Z[] dens = new Z[plen2];
+        final Z[] terms = new Z[plen2];
+        int iterm = 0;
+        while (iterm < plen) {
+          nums[iterm] = hseq.getNumerator();
+          dens[iterm] = hseq.getDenominator();
+          terms[iterm] = hseq.next(); // does iterate(), iterateConvergent()
+          ++iterm; 
+        }
+        final int last = iterm - 1;
+        if (terms[last].equals(nums[last]) || terms[last].equals(dens[last])) { // it was the numerator or denominator
+          result[0] = "conti" + (terms[last].equals(nums[last]) ? "n" : "d");
+          buffer.setLength(0);
+          buffer.append("[0,");
+          if ((plen & 1) == 0) { // even
+            buffer.append('-');
+          }
+          buffer.append('1');
+          for (int iz = 0; iz < plen - 1; ++iz) {
+            buffer.append(",0");
+          }
+          buffer.append(',');
+          buffer.append(nums[last].multiply2().toString());
+          for (int iz = 0; iz < plen - 1; ++iz) {
+            buffer.append(",0");
+          }
+          buffer.append(",-1]");
+          result[1] = buffer.toString();
+          while (iterm < plen2) { // fill so many terms as the order of the recurrence
+            terms[iterm++] = hseq.next();
+          }
+          result[2] = getVectorString(terms);
+        } else { // it was some different call - return empty Strings
+        }
+      }    
+    } catch (Exception exc) { // could not reflect next() method
+    }
+    return result;
+  } 
+
   /**
    * Processes lines of the form
    * <pre>A040954\tcallcode\t...</pre>
@@ -155,6 +228,7 @@ public class RecurrenceReflector {
         Sequence seq = null;
         while ((line = lineReader.readLine()) != null) { // read and process lines
           if (line.startsWith("A")) { // valid A-number
+            boolean cfOk = false; // assume that ContinuedFractionOfSqrtSequence could not be reflected
             final String[] parts = new String[8];
             final String[] elems = line.split("\\t", -1); // include trailing empty strings
             int ipart = 0;
@@ -172,6 +246,7 @@ public class RecurrenceReflector {
             String termList = parts[ipart + 1]; // behind offset
             final String className = "irvine.oeis.a" + mAseqno.substring(1, 4) + '.' + mAseqno;
             try {
+
               if (callCode.startsWith("block")) { // operation code, e.g. A319885 kblocks 1       2       >>->>+  0
                 superNextMethod = blockNextMethod;
                 final BlockMultAddSequence hseq = (BlockMultAddSequence) Class.forName(className).getDeclaredConstructor().newInstance();
@@ -191,7 +266,6 @@ public class RecurrenceReflector {
                     sign2 = - sign1;
                 }
                 parts[ipart++] = getBlockRecurrence(blockLen + 1, sign1, sign2); // MATRIX
-
                 buffer.setLength(0);
                 for (int iterm = blockLen * (blockLen + 1) + 1; iterm >= 1; --iterm) {
                   buffer.append(',');
@@ -207,23 +281,15 @@ public class RecurrenceReflector {
                 final ContinuedFractionOfSqrtSequence hseq = (ContinuedFractionOfSqrtSequence) Class.forName(className).getDeclaredConstructor().newInstance();
                 seq = hseq;
                 ipart++; // skip offset
-                hseq.fillPeriod();
-                final int plen = hseq.getPeriodLength();
-                parts[ipart++] = getPeriodicRecurrence(plen); // MATRIX
-
-                buffer.setLength(0);
-                buffer.append('[');
-                buffer.append(hseq.next().divide2().toString()); // root
-                for (int iterm = 0; iterm < plen; ++iterm) {
-                  buffer.append(',');
-                  buffer.append(hseq.next().toString());
-                }
-                buffer.append(']');
-                parts[ipart++] = buffer.toString(); // INIT
+                final String[] cfrec = getContinuedFractionRecurrence(hseq);
+                cfOk = cfrec[1].length() > 0;
+                parts[1]       = cfrec[0]; // modified callCode
+                parts[ipart++] = cfrec[1];
+                parts[ipart++] = cfrec[2];
                 parts[ipart++] = "0";
                 parts[ipart++] = "0";
 
-              } else if (callCode.startsWith("finit")) { // finite list followed null (later: by zeroes)
+              } else if (callCode.startsWith("finit")) { // finite list followed by null (later: by zeroes)
                 superNextMethod = finitNextMethod;
                 final FiniteSequence hseq = (FiniteSequence) Class.forName(className).getDeclaredConstructor().newInstance();
                 seq = hseq;
@@ -254,7 +320,6 @@ public class RecurrenceReflector {
                 buffer.append(',');
                 buffer.append(den[0].toString());
                 parts[ipart++] = "[0" + buffer.toString() + "]"; // MATRIX
-
                 buffer.setLength(0);
                 for (int iterm = Math.max(dlen, mlen); iterm >= 1; --iterm) {
                   buffer.append(',');
@@ -316,6 +381,7 @@ public class RecurrenceReflector {
                 parts[ipart++] = getVectorString(terms); // INIT
                 parts[ipart++] = "0";
                 parts[ipart++] = "0";
+
               } else if (callCode.startsWith("prepe")) { // PrependSequence
                 superNextMethod = prepeNextMethod;
                 final PrependSequence hseq = (PrependSequence) Class.forName(className).getDeclaredConstructor().newInstance();
@@ -335,12 +401,13 @@ public class RecurrenceReflector {
                 
               } else { // ignore
               } // end of switch for callCodes
+              
               if (seq == null) {
                 // ignore
               } else if (parts[3].length() < 8192 && parts[4].length() < 4096) {
                 parts[ipart++] = termList.replaceAll("\\,\\-?\\d*\\Z",""); // last may be incomplete, remove it
                 final Method thisNextMethod = seq.getClass().getMethod("next");
-                if (thisNextMethod.equals(superNextMethod)) {
+                if (cfOk || thisNextMethod.equals(superNextMethod)) {
                   for (ipart = 0; ipart < parts.length; ++ipart) { // print a tab-separated record
                     if (ipart > 0) {
                       System.out.print("\t");
