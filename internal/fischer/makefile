@@ -2113,6 +2113,28 @@ morfix_grep:
 	wc -l x.tmp
 #
 #--------------------------------
+# A043001	null	n-th base 3 palindrome that starts with 1.	nonn,base,synth	1..46	nyi
+# A043002	null	n-th base 3 palindrome that starts with 2.	nonn,base,synth	1..44	nyi
+# A043004	null	Base-4 palindromes that start with 2.	nonn,base,synth	1..43	nyi
+# A043045	null	a(n)=(s(n)+2)/3, where s(n)=n-th base 3 palindrome that starts with 1.	nonn,base,synth	1..51	nyi
+palin:
+	grep palindrome $(COMMON)/joeis_names.txt \
+	| perl -ne 'my ($$aseqno, $$superclass, $$name, @rest) = split(/\t/); my ($$base, $$start) = (0,0);'\
+	' if    ($$name =~ m{\An\-th base\D+(\d+) palindrome (that|which) starts with (\d)\.} ) { ($$base, $$start) = ($$1,$$3); } '\
+	' elsif ($$name =~ m{\ABase\D+(\d+) palindromes? (that|which) start with (\d)\.}    ) { ($$base, $$start) = ($$1,$$3); } '\
+	' if ($$base != 0) { print join("\t", $$aseqno, "palin", 1, "A043001", $$base, $$start, $$name) . "\n"; } '\
+	  >      $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	grep palindrome $(COMMON)/joeis_names.txt \
+	| perl -ne 'my ($$aseqno, $$superclass, $$name, @rest) = split(/\t/); '\
+	' if ($$name =~ m{\A(a\(\w\) *\= *)?\(s\(\w\) *([\+\- ]+\d+)\) *\/ *(\d+)\, where s\(\w\) *\= *n\-th base\D+(\d+) palindrome (that|which) starts with (\d)\.} ) { '\
+	' my ($$add, $$div, $$base, $$start) = ($$2, $$3, $$4, $$6); '\
+	' print join("\t", $$aseqno, "palins", 1, "A043045", $$add, $$div, $$base, $$start) . "\n"; } '\
+	  >>     $@.gen
+	tail -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 # A191017 null    Primes with Kronecker symbol (p|14) = 1.
 # A191020 null    Primes p with Kronecker symbol (p|2*11) = 1.
 # A191023 null    Primes p which have Kronecker symbol (p|30) = 1.
