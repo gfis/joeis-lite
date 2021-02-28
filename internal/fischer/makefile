@@ -312,6 +312,14 @@ bfile:
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 reverse:
 	perl -e 'print "\n\"[" . join(",",0,reverse($(SIG)),-1) . "]\"\n";'
+#----
+joeis_class:
+	$(DBAT) -x "SELECT s.aseqno, COALESCE(j.superclass, 'nyi'), s.offset, s.parm1, s.parm2, s.parm3, s.parm4, s.parm5 \
+	  FROM seq4 s LEFT JOIN joeis j ON j.aseqno = s.aseqno \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #================================================================
 A035536:
 	cp -v A035536.man A035536.gen
@@ -1617,7 +1625,7 @@ holref:
 	wc -l    $@.gen
 	cut -f1-8 holref4.tmp \
 	>        holref.txt
-	head -n4 holref.txt
+	head -n4 holref.tx(t
 	wc -l    holref.txt
 holrefscp:
 	scp holref.txt gfis@teherba.org:/var/www/html/teherba.org/OEIS-mat
@@ -1640,7 +1648,16 @@ holrefc: # which sequences are constant and in jOEIS not by recurrence
 	    WHERE l.signature = '1' \
 	      AND 'A' || l.seqno = n.aseqno \
 	    ORDER BY 1"
-#----
+holref_check:
+	cat holref.gen \
+	| perl -ne 'm{(conti\w+)}; my $$contin = $$1; m{sqrt\((\d+)\)}; $$n = $$1; m{\A(\w+)}; my $$aseqno = $$1;'\
+	' print join("\t", $$n) . "\n"; '\
+	| sort -n -k1 | uniq -c \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	grep -v " 3 " $@.tmp 
+#---- $@.tmp
 holrefix: holrefix1 holrefix2 # which are in lrindx joined with their implementation in joeis
 holrefix1:
 	$(DBAT) -x "SELECT i.aseqno, COALESCE(j.superclass, 'nyi'), i.offset1, l.signature, n.name, d.data \
@@ -2132,11 +2149,11 @@ primod:
 # A216862 null    Primes p such that x^5 = 20 has a solution mod p.       nonn,easy,      1..1000
 # A040034 (PARI): forprime(p=2, 10^3, if(#polrootsmod(x^3-2, p)==0, print1(p, ", ")))
 primsol:
-	grep "Primes p such that " $(COMMON)/joeis_names.txt | grep -E "has (a|no) solution" \
+	grep "Primes p such that " $(COMMON)/joeis_names.txt | grep -E "has (a|no|) solution" \
 	| perl -ne 'use strict; my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
-	'if ($$line =~ m{^(A\d+)\t\w+\tPrimes[^x]+x\^(\d+) *\= *(\-?\d+) +has +(a|no) solution}) { '\
-	'  my ($$aseqno, $$pow, $$y, $$bool) = ($$1, $$2, $$3, $$4); $$bool =~ s{a}{1}; $$bool =~ s{no}{0}; '\
-	'  print join("\t", $$aseqno, "$@", 0, $$pow, $$y, $$bool) . "\n"; '\
+	'if ($$line =~ m{^(A\d+)\t\w+\t(Primes[^x]+x\^(\d+) *\= *(\-?\d+) +has +(a|no|) solution mod p)\.}) { '\
+	'  my ($$aseqno, $$name, $$pow, $$y, $$bool) = ($$1, $$2, $$3, $$4, $$5 || "a"); $$bool =~ s{a}{true}; $$bool =~ s{no}{false}; '\
+	'  print join("\t", $$aseqno, "$@", 1, "A040028", $$pow, $$y, $$bool, $$name) . "\n"; '\
 	' } '\
 	| uniq -w7 \
 	>        $@.gen
