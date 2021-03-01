@@ -2134,6 +2134,11 @@ palin:
 	  >>     $@.gen
 	tail -n4 $@.gen
 	wc -l    $@.gen
+#----
+palidsum:
+	cp -v $@.man $@.gen
+fact1dig:
+	cp -v $@.man $@.gen
 #--------------------------------
 # A191017 null    Primes with Kronecker symbol (p|14) = 1.
 # A191020 null    Primes p with Kronecker symbol (p|2*11) = 1.
