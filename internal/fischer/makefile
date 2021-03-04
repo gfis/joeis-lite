@@ -321,6 +321,9 @@ joeis_class:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #================================================================
+a0330:
+	cp -v $@.man $@.gen
+#----
 A035536:
 	cp -v A035536.man A035536.gen
 #================================
@@ -753,7 +756,7 @@ concprod2:
 	'(the concatenation of two numbers \w and [\w\+\-\*\d]{3}|the product of two numbers which differ by \d+|a square)})'\
 	'{ my ($$aseqno, @both) = ($$1, $$2, $$4); '\
 	'  my ($$left, $$right) = map { s{times}{\*}; s{concatenated with}{\/\/}; '\
-	'  s{the concatenation of (\w) with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
+	'  s{the concatenation of (\w) with ([\w\+\-\*\d\.]{3})}{$$1 \/\/ ($$2)};'\
 	'  s{(\w) concatenated with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
 	'  s{the concatenation of two numbers (\w) and ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
 	'  s{the product of two numbers which differ by (\d+)}{m \* (m\+$$1)};'\
@@ -765,6 +768,17 @@ concprod2:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------------
+crystalb:
+	grep -iE "Crystal ball|Coordination sequence" $(COMMON)/joeis_names.txt | grep -i lattice \
+	| perl -ne 'my ($$aseqno, $$superclass, $$name, @rest) = split(/\t/); '\
+	' my $$cb = ($$name =~ m{rystal}) ? "crybs" : "coors"; '\
+	' $$name =~ m{ sequence (for|of) (the )?([^\.\(\:\;]+)}; my $$latt = $$3 || "L?"; '\
+	' print join("\t", $$aseqno, substr($$superclass, 0, 8), 0, $$latt, $$cb, $$name) . "\n"; '\
+	| sort -k4 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------------------------------
 dead:
 	$(DBAT) -x "SELECT i.aseqno, n.name, 0 \
