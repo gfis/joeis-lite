@@ -699,6 +699,33 @@ chain2: # rather fruitless since not monotone or big distances in parm2
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+# A124697		Number of base 4 circular n-digit numbers with adjacent digits differing by 1 or less.
+# k:=4; Table[Sum[(1+2*Cos[j*Pi/(k+1)])^n,{j,1,k}],{n,0,10}]
+circdiff0: circdiff1 circdiff2
+circdiff1:
+	$(DBAT) -f seq4.create.sql
+	cat $(COMMON)/joeis_names.txt \
+	| perl -ne 'if (m{\A(A\d+)\t\w+\tNumber of base (\d+) circular n\-digit numbers with adjacent digits differing by (\d+) or less}) { '\
+	' my ($$aseqno, $$base, $$diff) = ($$1, $$2, $$3); print join("\t", $$aseqno, "circdiff", 1, $$base, $$diff) . "\n"; } '\
+	| $(DBAT) -r seq4
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, i.offset1, s.parm1, s.parm2, d.data \
+		FROM seq4 s, bfdata d, asinfo i \
+		WHERE s.aseqno = d.aseqno \
+		  AND d.aseqno = i.aseqno \
+		ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+circdiff2:
+	$(RAMATH).sequence.JoeisPreparer -f circdiff1.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+circdiff:
+	grep -E "\[" circdiff2.tmp \
+	| sed -e "s/\tcircdiff/\tholos/" > circdiff.gen
+#--------------------------------
 compleq0: # complementary equations
 	grep -iE "complementary eq" $(COMMON)/joeis_names.txt \
 	| grep -vE "self\-complementary|musical|Golay|Beatty|A326665" \
@@ -1826,6 +1853,14 @@ idigits:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+# A059376 null    Jordan function J_3(n). nonn,mult,easy,changed, 1..1000 nyi
+jordan:
+	grep -E "Jordan " $(COMMON)/joeis_names.txt \
+	| perl -ne 'if (m{null\tJordan function J_(\d+)}) { my $$num = $$1; s/\tnull\t.*/\tparm2\t1\tA059376\t$$num/; print; } '\
+	>        $@.gen
+	head -n44 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 jux:
 	make jux_nodep TARGET=gener
 	cat $@?*.gen > $@.gen
@@ -1992,6 +2027,15 @@ juxrun:
 	| grep -vE "A0306(12|13|14|15|16)" \
 	| tee $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#--------------------------------
+# A056643 null    Numbers n such that n | 4^n + 3^n + 2^n + 1^n.  nonn,synth      1..43   nyi
+kdivpsum:
+	grep -E "Numbers [nk] such that [nk] \| " $(COMMON)/joeis_names.txt \
+	| perl $@.pl -a A015889 \
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 kpytha:
 	perl kpytha.pl -a gen > $@.gen
