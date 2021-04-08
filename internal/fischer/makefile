@@ -722,9 +722,19 @@ circdiff2:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
-circdiff:
+circdiff_old:
 	grep -E "\[" circdiff2.tmp \
 	| sed -e "s/\tcircdiff/\tholos/" > circdiff.gen
+circdiff:
+	cp -v $(COMMON)/../contrib/hardin/circdiff.gen .
+circdiff4:
+	$(DBAT) -x "SELECT s.aseqno, d.data FROM seq4 s, bfdata d \
+	  WHERE s.aseqno = d.aseqno \
+	  ORDER BY 1" \
+	| perl circdiff4.pl \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
 #--------------------------------
 compleq0: # complementary equations
 	grep -iE "complementary eq" $(COMMON)/joeis_names.txt \
