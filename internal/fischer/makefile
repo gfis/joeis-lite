@@ -1144,6 +1144,19 @@ egypfr:
 	head -n4 $@.gen
 	wc   -l  $@.gen $@.rest.tmp
 #--------------------------------
+finifull: # finite and full
+	$(DBAT) "SELECT i.aseqno, '$@', i.offset1, d.data \
+		FROM asinfo i, bfinfo b, bfdata d \
+		WHERE i.aseqno = b.aseqno \
+		  AND b.aseqno = d.aseqno \
+		  AND i.keyword like '%full%' \
+		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
+		ORDER BY 1 " \
+	| perl finifull.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 floor0: floor1 floor2 floor3 floor4 floor5
 floor1:
 	grep -E "\[|floor|ceil|round|fract" $(COMMON)/joeis_names.txt \
@@ -1202,16 +1215,12 @@ floceil:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-#--------------------------------
-finifull: # finite and full
-	$(DBAT) "SELECT i.aseqno, '$@', i.offset1, d.data \
-		FROM asinfo i, bfinfo b, bfdata d \
-		WHERE i.aseqno = b.aseqno \
-		  AND b.aseqno = d.aseqno \
-		  AND i.keyword like '%full%' \
-		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
-		ORDER BY 1 " \
-	| perl finifull.pl \
+#----
+flosqrt:
+	cat $(COMMON)/joeis_names.txt \
+	| perl -ne 'if (m{\A(A\d+)\t\w+\tFloor\-Sqrt transform [^A]*(A\d{6})}) { '\
+	' print join("\t", $$1, "flosqrt", 0, $$2, "") ."\n"; } '\
+	| grep -v "A192662" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
