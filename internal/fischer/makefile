@@ -705,7 +705,7 @@ circdiff0: circdiff1 circdiff2
 circdiff1:
 	$(DBAT) -f seq4.create.sql
 	cat $(COMMON)/joeis_names.txt \
-	| perl -ne 'if (m{\A(A\d+)\t\w+\tNumber of base (\d+) circular n\-digit numbers with adjacent digits differing by (\d+) or less}) { '\
+	| perl -ne 'if (m{\A(A\d+)\t\w+\tNumber of base.(\d+) circular n\-digit numbers with adjacent digits differing by (\d+) or less}) { '\
 	' my ($$aseqno, $$base, $$diff) = ($$1, $$2, $$3); print join("\t", $$aseqno, "circdiff", 1, $$base, $$diff) . "\n"; } '\
 	| $(DBAT) -r seq4
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, i.offset1, s.parm1, s.parm2, d.data \
@@ -735,6 +735,10 @@ circdiff4:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
+circdiffwi:
+#---
+	perl wiki_tabs.pl -e $(EL) -d $(D) -x "&mdash;" circdiff.witab \
+	>        circdiff.wiki
 #--------------------------------
 compleq0: # complementary equations
 	grep -iE "complementary eq" $(COMMON)/joeis_names.txt \
