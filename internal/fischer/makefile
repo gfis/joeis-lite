@@ -4193,7 +4193,24 @@ radd_wiki: # too few seqs.
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------
-sumlipo:
+sumdiv0:
+	grep -E "^\%o" $(COMMON)/cat25.txt | grep -E "[ns]umdiv\(" | grep -E "\(PARI\)" | grep -E "_" | cut -b4- \
+	| sed -e "s/ (PARI) /\tsumdiv\t0\t/" -e "s/\/\*.*//" -e "s/\\\\.*//" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+sumdiv:
+	uniq -w7 sumdiv0.tmp > sumdiv.gen
+numdiv:
+	perl numdiv.pl $(COMMON)/joeis_names.txt \
+	| sort -n -k4 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+numdiv_test:
+	$(JAVA) irvine.oeis.a030.A030515 $(K)
+#--------------------------
+sumlipo: # Sums of like powers
 	grep -E "[Ss]ums? " $(COMMON)/joeis_names.txt \
 	| grep -viE "A004018|arra(y|ngement)|base|composite|decimal|digit|differ|divi(ding|sible|sor)|egyptian|factor|fibon" \
 	| grep -viE "(hex|hept|pent)agonal|matri|necklace|nonsquare"\
