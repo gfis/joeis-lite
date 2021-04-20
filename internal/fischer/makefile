@@ -2603,6 +2603,7 @@ deris1:
 	# echo -n "characteristic|indicator"         > charfun.deris.tmp
 	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
+	echo -n "dirichlet"                        > dirichinv.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
 	# echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
@@ -2615,7 +2616,7 @@ deris1:
 	# echo -n "record"                           > recordpos.deris.tmp
 	# echo -n "record"                           > recordval.deris.tmp
 	# echo -n "stirling"                         > stirling2.deris.tmp
-	echo -n "weigh"                           > weighx.deris.tmp
+	# echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====

@@ -2,6 +2,7 @@
 
 # Extract parameters for DifferenceSequence.java, RecordSequence etc.
 # @(#) $Id$
+# 2021-04-20: DirichletInverseSequence
 # 2020-09-18: shuffle
 # 2020-08-31: take all, also nyi; options -pseudo and -prep; RT=78
 # 2020-08-27: ComplementSequence and CharacteristicFunction
@@ -76,6 +77,7 @@ my %callcodes = qw(
     charfun   CharacteristicFunction
     compseq   ComplementSequence
     diffseq   DifferenceSequence
+    dirichinv DirichletInverseSequence
     eulerx    EulerTransform
     eulerix   EulerInvTransform
     moebiusx  MobiusTransformSequence
@@ -161,6 +163,15 @@ while (<>) {
                     $parms[3] = "new DifferenceSequence($parms[3])";
                     $level --;
                 } # while level
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Adirichinv}) {
+            if (0) {
+            } elsif ($name =~ m{\ADirichlet inverse of [^A]*(A\d{6})}) {
+                $rseqno = $1;
+            }
+            if ($isok = &is_defined_rseqno()) {
+                $callcode = "dirichinv";
             }
         #--------------------------------
         } elsif ($callcode =~ m{\Aessent}) {
