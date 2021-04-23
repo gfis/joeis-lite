@@ -1,0 +1,18 @@
+A050999	dirichcon2	0	new A001157()	1	new PaddingSequence(new long[] {1, -4}, new long[] { 0 })	1	0			a(n) = Sum_{d|n} phi(d)*k^(n/d).
+A054610	dirichcop2	0	new A000010()	1	new A000244()	0	0				a(n) = Sum_{d|n} phi(d)*k^(n/d).
+A054611	dirichcop2	0	new A000010()	1	new A000302()	0	0				a(n) = Sum_{d|n} phi(d)*k^(n/d).
+A054612	dirichcop2	0	new A000010()	1	new A000351()	0	0				a(n) = Sum_{d|n} phi(d)*k^(n/d).
+A054613	dirichcop2	0	new A000010()	1	new A000400()	0	0				a(n) = Sum_{d|n} phi(d)*k^(n/d).
+A054614	dirichcop2	0	new A000010()	1	new A000420()	0	0				a(n) = Sum_{d|n} phi(d)*k^(n/d).
+A054615	dirichcop2	0	new A000010()	1	new A001018()	0	0				a(n) = Sum_{d|n} phi(d)*k^(n/d).
+A054616	dirichcop2	0	new A000010()	1	new A001019()	0	0				a(n) = Sum_{d|n} phi(d)*k^(n/d).
+A066769	dirichcon	1	new A000027()	1	new A000045()	0					a(n) = Sum_{d|n} d*Fibonacci(n/d).
+A078429	dirichcon2	1	new A000010()	1	new A010057()	0					Number of integers k among 1..n for which gcd(k,n) is a cube.
+A145444	dirichcon2	0	new PaddingSequence(new long[] {1, 0, 0, 3, 0, 0, 0, 2}, new long[] { 0 })	1	new A007425()	1					a(n) = 
+A145501	dirichcon2	0	new PaddingSequence(new long[] {1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4}, new long[] { 0 })	1	new A007425()	1					a(n) = 
+A145511	dirichcon2	0	new PaddingSequence(new long[] {1,-2,0,7}, new long[] { 0 })	1	new A007425()	1			a(n) = 
+A191750	dirichcon2	1	new A000012()	0	new A007947()	1					Dirichlet convolution of A000012 with A007947.
+A251662	dirichcon2	1	new A008683()	1	new A001764()	0					Dirichlet convolution of Moebius function mu(n) (A008683) with Ternary numbers A001764.
+A307425	dirichcon	0	new A212793()	1	new A271102()	1					Dirichlet convolution of A212793 and A271102.
+A307445	dirichcon	0	new A008683()	1	new A271102()	1					Dirichlet convolution of A008683 and A271102.
+A322577	dirichcon	0	new A038040()	1	new A271102()	1					Dirichlet convolution of A038040 with A271102.

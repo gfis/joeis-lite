@@ -1,0 +1,65 @@
+# https://oeis.org/wiki/Index_to_OEIS:_Section_J#nome
+# Jordan function J_k: A000010, A007434, A059376, A059377, A059378, A069091, A069092, A069093, A069094, A069095
+# Jordan function ratios J_k/J_1: A001615, A160889, A160891, A160893, A160897, A160908, A160953, A160957, A160960, A160972, A161010, A161025, A161139, A161167, A161213
+A001615	jk_j1	1	3
+A160889	jk_j1	1	4
+A160891	jk_j1	1	5
+A160893	jk_j1	1	6
+A160895	jk_j1	1	7
+A160897	jk_j1	1	8
+A160908	jk_j1	1	9
+A160953	jk_j1	1	10
+A160957	jk_j1	1	11
+A160960	jk_j1	1	12
+A160972	jk_j1	1	13
+A161010	jk_j1	1	14
+A161025	jk_j1	1	15
+A161139	jk_j1	1	16
+A161167	jk_j1	1	17
+A161213	jk_j1	1	18
+
+# A160889	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 4.	nonn,mult,changed,	1..5000	nyi
+# A160890	null	a(n) = ((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 3.	nonn,	1..16384	nyi
+# A160891	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 5.	nonn,mult,changed,	1..5000	nyi
+# A160892	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 4.	nonn,synth	1..38	nyi
+# A160894	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 5.	nonn,synth	1..32	nyi
+# A160895	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 7.	nonn,mult,	1..5000	nyi
+# A160896	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 6.	nonn,synth	1..26	nyi
+# A160897	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 8.	nonn,mult,	1..10000	nyi
+# A160898	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 7.	nonn,synth	1..23	nyi
+# A160908	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 9.	nonn,mult,	1..5000	nyi
+# A160913	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 8.	nonn,synth	1..21	nyi
+# A160953	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 10.	nonn,mult,	1..5000	nyi
+# A160956	null	a(n) = ((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 9.	nonn,	1..5000	nyi
+# A160957	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 11.	nonn,mult,	1..10000	nyi
+# A160959	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 10.	nonn,synth	1..17	nyi
+# A160960	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 12.	nonn,mult,	1..10000	nyi
+# A160964	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 11.	nonn,synth	1..16	nyi
+# A160972	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 13.	nonn,mult,	1..10000	nyi
+# A161004	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 12.	nonn,synth	1..14	nyi
+# A161010	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 14.	nonn,mult,	1..10000	nyi
+# A161024	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 13.	nonn,synth	1..14	nyi
+# A161025	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 15.	nonn,mult,	1..5000	nyi
+# A161117	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 14.	nonn,synth	1..13	nyi
+# A161139	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 16.	nonn,mult,	1..5000	nyi
+# A161157	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 15.	nonn,synth	1..12	nyi
+# A161167	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 17.	nonn,mult,	1..5000	nyi
+# A161195	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 16.	nonn,synth	1..11	nyi
+# A161213	null	a(n) = Sum_{d|n} Moebius(n/d)*d^(b-1)/phi(n) for b = 18.	nonn,mult,	1..5000	nyi
+# A161215	null	((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 17.	nonn,synth	1..11	nyi
+
+A160890	jk_j1m	1	3			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 3.	nonn,	1..16384	nyi
+A160892	jk_j1m	1	4			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 4.	nonn,synth	1..38	nyi
+A160894	jk_j1m	1	5			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 5.	nonn,synth	1..32	nyi
+A160896	jk_j1m	1	6			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 6.	nonn,synth	1..26	nyi
+A160898	jk_j1m	1	7			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 7.	nonn,synth	1..23	nyi
+A160913	jk_j1m	1	8			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 8.	nonn,synth	1..21	nyi
+A160956	jk_j1m	1	9			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 9.	nonn,	1..5000	nyi
+A160959	jk_j1m	1	10			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 10.	nonn,synth	1..17	nyi
+A160964	jk_j1m	1	11			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 11.	nonn,synth	1..16	nyi
+A161004	jk_j1m	1	12			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 12.	nonn,synth	1..14	nyi
+A161024	jk_j1m	1	13			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 13.	nonn,synth	1..14	nyi
+A161117	jk_j1m	1	14			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 14.	nonn,synth	1..13	nyi
+A161157	jk_j1m	1	15			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 15.	nonn,synth	1..12	nyi
+A161195	jk_j1m	1	16			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 16.	nonn,synth	1..11	nyi
+A161215	jk_j1m	1	17			((2^b-1)/phi(n))*Sum_{d|n} Moebius(n/d)*d^(b-1) for b = 17.	nonn,synth	1..11	nyi

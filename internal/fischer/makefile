@@ -228,6 +228,8 @@ prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off 
 purge: # remove all oeis/annn directories
 	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
 	rm -rf                     ../../src/irvine/oeis/a???
+	mkdir  $(LITE)/src/irvine/oeis/a000
+	cp -v $(JOEIS)/src/irvine/oeis/a000/A000001.java $(LITE)/src/irvine/oeis/a000/A000001.java
 	rm -vf *.bak
 gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	head -n$(MANY) $(CC).gen      > ghead.tmp
@@ -1877,11 +1879,16 @@ idigits:
 	wc -l    $@.gen
 #--------------------------------
 # A059376 null    Jordan function J_3(n). nonn,mult,easy,changed, 1..1000 nyi
-jordan:
+jordan: # J_k(n)
 	grep -E "Jordan " $(COMMON)/joeis_names.txt \
 	| perl -ne 'if (m{null\tJordan function J_(\d+)}) { my $$num = $$1; s/\tnull\t.*/\tparm2\t1\tA059376\t$$num/; print; } '\
 	>        $@.gen
 	head -n44 $@.gen
+	wc -l    $@.gen
+#----
+jk_j1: # J_k(n)/J_1(n) for k=3..17
+	grep -vE "^#" $@.man > $@.gen
+	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
 jux:
@@ -2603,7 +2610,8 @@ deris1:
 	# echo -n "characteristic|indicator"         > charfun.deris.tmp
 	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
-	echo -n "dirichlet"                        > dirichinv.deris.tmp
+	# echo -n "dirichlet"                        > dirichinv.deris.tmp
+	echo -n "dirichlet"                        > dirichcon.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
 	# echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
@@ -2660,6 +2668,12 @@ charfun:
 	cp -v $@.man $@.gen
 diffseq:
 	cp -v $@.man $@.gen
+dirichcon:
+	cut -f1 $@.man | sed -e "s/\r//" -e "s/^/\^/" > $@.grep.tmp
+	cp -v   $@.man $@.gen
+	grep -vEf $@.grep.tmp deris2.gen >> $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 essent:
 	cp -v $@.man $@.gen
 moebiusx:

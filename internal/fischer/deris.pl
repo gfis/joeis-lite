@@ -2,7 +2,7 @@
 
 # Extract parameters for DifferenceSequence.java, RecordSequence etc.
 # @(#) $Id$
-# 2021-04-20: DirichletInverseSequence
+# 2021-04-20: DirichletInverseSequence, DirichletConvolutionSequence
 # 2020-09-18: shuffle
 # 2020-08-31: take all, also nyi; options -pseudo and -prep; RT=78
 # 2020-08-27: ComplementSequence and CharacteristicFunction
@@ -77,6 +77,7 @@ my %callcodes = qw(
     charfun   CharacteristicFunction
     compseq   ComplementSequence
     diffseq   DifferenceSequence
+    dirichcon DirichletConvolutionSequence
     dirichinv DirichletInverseSequence
     eulerx    EulerTransform
     eulerix   EulerInvTransform
@@ -163,6 +164,35 @@ while (<>) {
                     $parms[3] = "new DifferenceSequence($parms[3])";
                     $level --;
                 } # while level
+            }
+        #--------------------------------
+        } elsif ($callcode =~ m{\Adirichcon}) {
+            my $sseqno = "";
+            if (0) {
+            } elsif ($name =~ m{\ADirichlet convolution of [^A]*(A\d{6})(.*)}) {
+                $rseqno = $1;
+                $sseqno = $2;
+            }
+            if ($isok = &is_defined_rseqno()) {
+                $parms[1] = "new $rseqno()";
+                if ($sseqno =~ m{(A\d+)}) {
+                    $sseqno = $1;
+                    if (defined($ofters{$sseqno})) { # found and implemented in jOEIS {
+                        my ($soffset, $terms) = split(/\t/, $ofters{$sseqno});
+                        $parms[3] = "new $sseqno()";
+                        $parms[4] = $soffset;
+                        $callcode = "dirichcon2";
+                    } else { 
+                        $parms[3] = "";
+                        $parms[4] = "";
+                        $callcode = "dirichcon";
+                    	$rseqno = $VOID;
+                    }
+                } else {
+                    $parms[3] = "";
+                    $parms[4] = "";
+                    $callcode = "dirichcon";
+                }
             }
         #--------------------------------
         } elsif ($callcode =~ m{\Adirichinv}) {
