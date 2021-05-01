@@ -13,6 +13,8 @@ A145501	dirichcon2	0	new PaddingSequence(new long[] {1, 0, 0, 1, 0, 0, 0, 0, 0, 
 A145511	dirichcon2	0	new PaddingSequence(new long[] {1,-2,0,7}, new long[] { 0 })	1	new A007425()	1			a(n) = 
 A191750	dirichcon2	1	new A000012()	0	new A007947()	1					Dirichlet convolution of A000012 with A007947.
 A251662	dirichcon2	1	new A008683()	1	new A001764()	0					Dirichlet convolution of Moebius function mu(n) (A008683) with Ternary numbers A001764.
+A335032	dirichcon2	1	new A000203()	1	new AbsoluteSequence(new A097945())	1					Dirichlet g.f.: zeta(s) * zeta(s-1) * Product_{p prime} (1 + p^(1 - s) - p^(-s)).
 A307425	dirichcon	0	new A212793()	1	new A271102()	1					Dirichlet convolution of A212793 and A271102.
-A307445	dirichcon	0	new A008683()	1	new A271102()	1					Dirichlet convolution of A008683 and A271102.
-A322577	dirichcon	0	new A038040()	1	new A271102()	1					Dirichlet convolution of A038040 with A271102.
+A307445	dirichcon	0	new A008966()	1	new A007427()	1					Dirichlet convolution of A008966 and A007427
+A317842	dirichcon	1	new A284013()	0							Dirichlet convolution of A284013 (= n - A002487(n)) with itself, where A002487 is Stern's Diatomic sequence.
+A322577	dirichcon2	1	new A001615()	1	new A000010()	1					Dirichlet convolution of A038040 with A271102.

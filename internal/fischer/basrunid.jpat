@@ -10,7 +10,6 @@ public class $(ASEQNO) extends $(PARM1) {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), new $(PARM2)(), $(PARM3));
+    super($(OFFSET), $(PARM2));
   }
-  
 }

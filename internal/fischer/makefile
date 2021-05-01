@@ -120,8 +120,8 @@ pack1:
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
 	; perl -e 'foreach my $$name (split(/\,/, "$(CLASS)")) { print "src/irvine/oeis/$$name.java\n"; }' \
 	                                         >> pack.$(CC).lst \
-	; echo internal/fischer/$(CC)*.gen       >> pack.$(CC).lst \
-	; echo internal/fischer/$(CC)*.jpat      >> pack.$(CC).lst || : \
+	; echo internal/fischer/$(CC).gen        >> pack.$(CC).lst \
+	; echo internal/fischer/$(CC).jpat       >> pack.$(CC).lst || : \
 	; grep -vE "^\#" internal/fischer/packlist.man     >> pack.$(CC).lst || :
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\S*}{}" | uniq -c
@@ -229,7 +229,7 @@ purge: # remove all oeis/annn directories
 	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
 	rm -rf                     ../../src/irvine/oeis/a???
 	mkdir  $(LITE)/src/irvine/oeis/a000
-	cp -v $(JOEIS)/src/irvine/oeis/a000/A000001.java $(LITE)/src/irvine/oeis/a000/A000001.java
+	# cp -v $(JOEIS)/src/irvine/oeis/a000/A000001.java $(LITE)/src/irvine/oeis/a000/A000001.java
 	rm -vf *.bak
 gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	head -n$(MANY) $(CC).gen      > ghead.tmp
@@ -516,6 +516,12 @@ basrunpar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+basrunid: # Numbers whose base-3 expansions, read from left to right, have run lengths that strictly increase.
+	grep -E "^A" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 carule0:
 	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \
 	$(COMMON)/jnames.txt \
@@ -774,7 +780,10 @@ compleq3:
 # A036518 Smallest triangular number containing exactly n 1's.	nonn,base,changed,synth	1..18
 # A036527 Smallest cube containing exactly n 0's.	nonn,base,changed,synth	0..21
 conexdig:
-	cp -v $@.man $@.gen
+	grep -vE "^(A036507|A048345)" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 # A030465 Numbers n such that n concatenated with n+1 is a square.
 # A030466 Squares that are concatenations of two consecutive nonzero numbers.
@@ -822,6 +831,17 @@ crystalb:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--------------------------------
+dance:
+	grep -vE "^#" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+dancetest:
+	$(JAVA) irvine.oeis.a079.A079922 $(G) $(H) | tee dance.$(G).$(H).txt
+dance_hol:
+	perl $(CONTRIB)/dance/a079908.pl > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 dead:
 	$(DBAT) -x "SELECT i.aseqno, n.name, 0 \
@@ -1004,7 +1024,7 @@ digpow: # unfinished - handy/a031/A031146.java as pattern
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-digsets:
+digsets: # A037303	null	(sum of base 2 digits of n)=(sum of base 5 digits of n).	nonn,base,changed,	1..1000
 	perl digsets.pl -d 0 \
 	>        $@.gen
 	head -n4 $@.gen
@@ -1932,6 +1952,12 @@ jux2n_1:
 	cat $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----
+juxconv:
+	grep -E "^A" $@.man \
+	>       $@.gen
+	head -4 $@.gen
+	wc -l   $@.gen
+#----
 # A030413 Write (n+1)st Fibonacci number in base 4 and juxtapose. nonn,synth
 # A030604 Write the Fibonacci numbers in base 6 and juxtapose.    nonn,easy,base,synth
 # A031027 Write the (n+1)st Fibonacci number in base 7 and juxtapose.     nonn,base,synth#
@@ -2114,9 +2140,9 @@ linrgf:
 		WHERE superclass LIKE 'LinearRecurrence%' \
 		   OR superclass LIKE 'GeneratingFunction%' \
 		ORDER BY 1" \
-	>         $@.tmp
-	head -n 4 $@.tmp
-	wc -l     $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 linr1:
 	$(DBAT) "SELECT 'A' || i.seqno, i.sigorder, i.signature, n.name \
 		FROM lrindx i, asname n, asinfo a \
@@ -2126,9 +2152,23 @@ linr1:
 		  AND i.compsig <> '88888888' \
 		  AND a.keyword NOT LIKE '%dead%' \
 		ORDER BY 1" \
-	>         $@.tmp
-	head -n 4 $@.tmp
-	wc -l     $@.tmp
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------------------------------
+mixed:
+	cat \
+	juxconv.man \
+	pisot.gen \
+	subsele.gen \
+	| grep -E "^A" \
+	| grep -v "^A036507" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+	# conexdig.man \
+	# basrunid.man \
+	#
 #--------------------------------
 mma_single: # single line MMA statement(s)
 	grep -E "^%t" $(COMMON)/cat25.txt \
@@ -2199,7 +2239,15 @@ morfix_grep:
 	'if ((m{\-\>}) and (m{^(A\d+)\D+(\d[ 0-9\-\>\,\;\{\}\(\)\[\]]{9,})})) { print; }' \
 	$(COMMON)/jnames.txt | tee x.tmp
 	wc -l x.tmp
-#
+#--------------------------------
+num1dig: # A126207 null    Number of 5's in decimal expansion of 5^n.
+	# grep -P "Number of (\d+\'s|zeroe?s|ones) " $(COMMON)/joeis_names.txt > $@.tmp
+	# grep -vE "^#" $@.man > $@.gen
+	perl $@.pl \
+	| grep -v A160380 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 # A043001	null	n-th base 3 palindrome that starts with 1.	nonn,base,synth	1..46	nyi
 # A043002	null	n-th base 3 palindrome that starts with 2.	nonn,base,synth	1..44	nyi
@@ -2228,6 +2276,15 @@ palidsum:
 fact1dig:
 	cp -v $@.man $@.gen
 #--------------------------------
+pisot:
+	grep -P "null\s+Pisot sequence" $(COMMON)/joeis_names.txt \
+	| perl -ne 'm{\A(A\d+)\tnull\tPisot sequence (\w)\((\d+)\, *(\d+)}; my ($$aseqno, $$p1, $$p2, $$p3) = ($$1, $$2, $$3, $$4); '\
+	' my $$callcode = "pisot" . (($$p1 eq "L") ? "l" : ""); '\
+	' print join("\t", $$aseqno, $$callcode, 0, $$p2, $$p3) . "\n"; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+##--------------------------------
 # A191017 null    Primes with Kronecker symbol (p|14) = 1.
 # A191020 null    Primes p with Kronecker symbol (p|2*11) = 1.
 # A191023 null    Primes p which have Kronecker symbol (p|30) = 1.
@@ -2388,6 +2445,14 @@ prodfin:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
+recip:
+	grep -i "Sign diagram" $(COMMON)/cat25.txt \
+	| perl recip.pl \
+	| grep -E "^A0491[567]" | grep -vE "^A04917[1-9]" \
+	>        $@.gen
+	grep -E "^A" recip.man >> $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 yves_martin: ym0 ym1
 ym0:
@@ -4208,14 +4273,32 @@ radd_wiki: # too few seqs.
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------
+subsele: # A047161 null Number of nonempty subsets of {1,2,...,n} in which exactly 1/3 of the elements are <= n/2.	nonn,changed,	1..1000	nyi
+	grep -E "in which exactly [0-9][0-9]*\/" $(COMMON)/joeis_names.txt \
+	>        $@.tmp
+	perl subsele.pl $@.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------
+sumdig: # sum of digits in various bases
+	grep -vE "^#" sumdig.man > sumdig.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------
 sumdiv0:
-	grep -E "^\%o" $(COMMON)/cat25.txt | grep -E "[ns]umdiv\(" | grep -E "\(PARI\)" | grep -E "_" | cut -b4- \
-	| sed -e "s/ (PARI) /\tsumdiv\t0\t/" -e "s/\/\*.*//" -e "s/\\\\.*//" \
+	grep -E "^\%o" $(COMMON)/jcat25.txt | grep -E "[ns]umdiv\(" | grep -E "\(PARI\)" | grep -E "_" | cut -b4- \
+	| sed -e "s/ (PARI) /\tsumdiv\t0\t/" -e "s/\/\*.*//" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+	#-e "s/\\\\.*//" \
+	#
 sumdiv:
-	uniq -w7 sumdiv0.tmp > sumdiv.gen
+	perl $@.pl sumdiv0.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 numdiv:
 	perl numdiv.pl $(COMMON)/joeis_names.txt \
 	| sort -n -k4 \
@@ -4351,6 +4434,9 @@ sumwiki2: # determine which are not yet covered by sumlipo (first "make CC=sumli
 	  ORDER BY 1" \
 	>        $@.tmp
 	wc -l    $@.tmp
+#--------------------------
+traits:
+	ls -al traits.*
 #--------------------------
 mmacall:
 	make seq2 LIST=$(LINREC)/lrlink_mma2.tmp
