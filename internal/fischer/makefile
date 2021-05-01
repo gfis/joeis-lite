@@ -1711,7 +1711,7 @@ holref:
 	wc -l    $@.gen
 	cut -f1-8 holref4.tmp \
 	>        holref.txt
-	head -n4 holref.tx(t
+	head -n4 holref.txt
 	wc -l    holref.txt
 holrefscp:
 	scp holref.txt gfis@teherba.org:/var/www/html/teherba.org/OEIS-mat
