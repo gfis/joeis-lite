@@ -47,7 +47,6 @@ A049187	parm3	0	A049150	new long[] { +1,-1,+1,-1,-1,-1,+1,+1,-1,+1 }	new long[] 
 A049188	parm3	0	A049150	new long[] { +1,-1,-1,+1,+1,-1,+1,+1,-1,+1 }	new long[] { -1,+1 }
 A049189	parm3	0	A049150	new long[] { +1,-1,-1,-1,+1,-1,+1,+1,-1,+1 }	new long[] { -1,+1 }
 
-
 # A049122 (+1+2x)/(+1+3x+1x^2)                      
 # A049123 (+1-3x+1x^2)/(+1-2x-1x^2)                  
 # A049124 (-1+1x+1x^2)/((x-1)*(x+1))               
@@ -75,3 +74,165 @@ A049189	parm3	0	A049150	new long[] { +1,-1,-1,-1,+1,-1,+1,+1,-1,+1 }	new long[] 
 # A049146 (+1+3x-1x^3)/(+1+4x+4x^2+2x^3)            
 # A049147 (+1-1x-4x^2+1x^3)/(+1-6x^2)                
 # A049148 (-1-1x+2*x^2+1x^3)/(-1-2*x+2*x^2+2*x^3)  
+
+# grep -i "reversion " joeis_names.txt > x.tmp
+# 2021-05-02
+
+# A006147	Sequence	Reversion of Ramanujan numbers.	nonn,synth	1..16	unkn
+# A006195	RevertTransformSequence	Reversion of Jacobi theta_3.	sign,synth	0..21	unkn
+# A007296	A000040	Reversion of (1 + g.f. for primes).	sign,easy,changed,synth	1..25	unkn
+# A007311	A000110	Reversion of o.g.f. for Bell numbers (A000110) omitting a(0)=1.	sign,changed,synth	1..26	unkn
+# A007312	A000041	Reversion of g.f. (with constant term omitted) for partition numbers.	sign,easy,changed,	1..1000	unkn
+# A007313	A000364	Reversion of g.f. for Euler (secant) numbers A000364.	sign,synth	1..14	unkn
+# A007314	A000182	Reversion of o.g.f. for tangent numbers.	sign,synth	1..15	unkn
+# A007315	A000055	Reversion of g.f. (beginning with constant term) for number of trees with n nodes.	sign,easy,synth	1..32	unkn
+# A007316	A000111	Reversion of g.f. for Euler numbers A000111(n-1).	sign,synth	1..24	unkn
+# A007440	Sequence	Reversion of g.f. for Fibonacci numbers 1,1,2,3,5,...	sign,changed,	1..300	unkn
+# A033454	A000290	Reversion of e.g.f. for squares A000290.	sign,synth	0..15	unkn
+# A037247	A000055	Reversion of g.f. (beginning with x term) for number of trees with n nodes.	sign,synth	0..27	unkn
+A050385	serrevas	0	A008683		null	Reversion of Moebius function A008683.	nonn,nice,changed,	1..1000	nyi
+# A050386		null	Exponential reversion of Moebius function A008693.	nonn,changed,synth	1..18	nyi
+A050387	serrevas	0	A008836		null	Reversion of Liouville's lambda function A008836.	nonn,	1..1000	nyi
+# A050388		null	Exponential reversion of Liouville's lambda function A008836.	nonn,	1..390	nyi
+A050389	serrevas	0	A000005		null	Reversion of divisor function A000005.	sign,changed,synth	1..21	nyi
+# A050390		null	Exponential reversion of divisor function A000005.	sign,changed,synth	1..17	nyi
+A050391	serrevas	0	A000010		null	Reversion of Euler totient function A000010.	sign,changed,synth	1..27	nyi
+# A050392		null	Exponential reversion of Euler totient function A000010.	sign,changed,synth	1..19	nyi
+A050393	serrevas	0	A000009	mSeq.next();	null	Reversion of partitions into distinct parts A000009.	sign,changed,	1..200	nyi
+# A050394		null	Exponential reversion of partitions into distinct parts A000009.	sign,synth	1..19	nyi
+A050395	serrevas	0	A000081	mSeq.next();	null	Reversion of rooted trees A000081.	sign,	1..100	nyi
+# A050396		null	Exponential reversion of rooted trees A000081.	sign,	1..100	nyi
+A050397	serrevas	0	A000085	mSeq.next();	null	Reversion of sequence of involutions (A000085).	sign,synth	1..23	nyi
+# A050398		null	Exponential reversion of sequence of involutions (A000085).	sign,changed,synth	1..18	nyi
+# A052819		null	E.g.f. equals the series reversion of x + x*log(1-x).	easy,nonn,synth	0..17	nyi
+# A052842		null	E.g.f. A(x) = series reversion of (1-x)*(1-exp(-x)).	easy,nonn,changed,synth	0..16	nyi
+# A052888		null	E.g.f. is series reversion of log(1+x)*exp(-x).	easy,nonn,changed,	0..368	nyi
+# A052892		null	E.g.f. is series reversion of log(1+x)*(1-x).	easy,nonn,synth	0..18	nyi
+# A053550		null	Reversion of [1,2,12,152,3640,...] (A053549).	sign,synth	1..15	nyi
+# A053552		null	E.g.f. is obtained by reversion of e.g.f. for A053549.	sign,synth	1..15	nyi
+A063018	serrevp0	0	1,-1,-1,-1	0	Reversion of x - x^2 - x^3 - x^4.	nonn,easy,changed,	0..105	nyi
+# A063019	HolonomicRecurrence	Reversion of y - y^2 + y^3 - y^4.	nonn,easy,changed,	0..104	holos
+# A063020	HolonomicRecurrence	Reversion of y - y^2 - y^3 + y^4.	nonn,easy,changed,	0..200	holos
+A063021	serrevp0	0	1,-1,+0,+0,-1	0		null	Reversion of y - y^2 - y^5.	nonn,easy,synth	0..25	nyi
+A063022	serrevp0	0	1,-1,-1,+0,-1	0		null	Reversion of y - y^2 - y^3 - y^5.	nonn,easy,changed,	0..1355	nyi
+A063023	serrevp0	0	1,-1,+0,-1,-1	0		null	Reversion of y - y^2 - y^4 - y^5.	nonn,easy,changed,	0..1471	nyi
+A063024	serrevp0	0	1,-1,-1,-1,-1	0		null	Reversion of y - y^2 - y^3 - y^4 - y^5.	nonn,easy,changed,synth	0..23	nyi
+A063025	serrevp0	0	1,-1,+1,-1,-1	0		null	Reversion of y - y^2 + y^3 - y^4 - y^5.	nonn,easy,synth	0..28	nyi
+A063026	serrevp0	0	1,-1,+0,+1,-1	0		null	Reversion of y - y^2 + y^4 - y^5.	nonn,easy,synth	0..28	nyi
+A063027	serrevp0	0	1,-1,-1,+1,-1	0		null	Reversion of y - y^2 - y^3 + y^4 - y^5.	nonn,easy,changed,synth	0..27	nyi
+A063028	serrevp0	0	1,-1,+0,+0,+1	0		null	Reversion of x - x^2 + x^5.	sign,easy,changed,	0..125	nyi
+A063029	serrevp0	0	1,-1,-1,+0,+1	0		null	Reversion of y - y^2 - y^3 + y^5.	nonn,easy,synth	0..23	nyi
+A063030	serrevp0	0	1,-1,+0,-1,+1	0		null	Reversion of y - y^2 - y^4 + y^5.	nonn,easy,	0..105	nyi
+A063031	serrevp0	0	1,-1,-1,-1,+1	0		null	Reversion of y - y^2 - y^3 - y^4 + y^5.	nonn,easy,synth	0..23	nyi
+A063032	serrevp0	0	1,-1,-1,+1,+1	0		null	Reversion of y - y^2 - y^3 + y^4 + y^5.	nonn,easy,synth	0..24	nyi
+A063033	serrevp0	0	1,-1,+0,+1	0		null	Reversion of y - y^2 + y^4.	sign,easy,changed,	0..800	nyi
+A063034	serrevp0	0	1,-1,+0,+1,+1	0		null	Reversion of y - y^2 + y^4 + y^5.	sign,easy,synth	0..27	nyi
+A066396	serrevas	0	A000521		null	Reversion of j-function (see A000521).	sign,	-1..100	nyi
+# A066397	serrevas	0	A000108		null	Reversion of (1 - sqrt(1 - 4*x)) / (2*x) (the o.g.f. for the Catalan numbers A000108) as if it were an e.g.f.	sign,synth	0..20	nyi
+# A066398		null	Reversion of g.f. (with constant term included) for partition numbers.	sign,synth	0..35	nyi
+# A066399		null	From reversion of e.g.f. for squares.	sign,changed,	0..300	nyi
+# A079489	HolonomicRecurrence	Series reversion of x(1-x^2)/(1+x^2)^2 expanded in odd powers of x.	nonn,easy,changed,	0..830	holos
+# A085143		null	Triangle table from number wall of reversion of Fibonacci numbers.	sign,tabl,synth	1..59	nyi
+# A087962		null	Satisfies Sum_{n>=0} a(n)*x^n/n! = log(f(x)) = series reversion of x*f(x), where f(x*f(x)) = exp(x) and f(x) = Sum_{n>=0} A087961(n)*x^n/n!.	sign,changed,	0..282	nyi
+# A089796		null	Series reversion of g.f. A(x) is -A(-x).	nonn,	1..550	nyi
+# A091406		null	Reversion of series for j-function.	nonn,easy,changed,	1..300	nyi
+# A091593	HolonomicRecurrence	Reversion of Jacobsthal numbers A001045.	easy,sign,changed,	0..1000	holos
+# A104565	HolonomicRecurrence	Reversion of Pell numbers A000129(n+1).	easy,sign,	0..1000	holos
+# A107841	HolonomicRecurrence	Series reversion of x(1-3x)/(1-x).	easy,nonn,changed,	0..1000	holos
+# A109081	HolonomicRecurrence	Reversion of x*(1-x)*(1-x^2)*(1-x^3)/(1-x^6).	nonn,changed,	1..1400	holos
+# A127846	HolonomicRecurrence	Series reversion of x/(1+5x+4x^2).	easy,nonn,	0..200	holos
+# A127848	HolonomicRecurrence	Series reversion of x/(1+6x+5x^2).	easy,nonn,	0..200	holos
+# A127897	HolonomicRecurrence	Series reversion of x/(1 + 2*x + 3*x^2 + x^3).	easy,nonn,changed,	0..100	holos
+# A127902	HolonomicRecurrence	Series reversion of x/(1 + x + x^4).	easy,nonn,changed,	1..200	holos
+A131763	serrevgf	0	1,-4	1,-1		null	Series reversion of x(1-4x)/(1-x).	nonn,changed,synth	0..20	nyi
+# A131765	HolonomicRecurrence	Series reversion of x*(1-5x)/(1-x) .	nonn,changed,	0..200	holos
+# A131846	HolonomicRecurrence	Expansion of series reversion of x*(1-6*x)/(1-x).	nonn,	1..745	holos
+# A131869	HolonomicRecurrence	Expansion of series reversion of x*(1-8*x)/(1-x).	nonn,	1..675	holos
+# A131926	HolonomicRecurrence	Expansion of series reversion of x(1-7x)/(1-x).	nonn,	1..700	holos
+# A131927	HolonomicRecurrence	Expansion of series reversion of x * (1 - 9*x) / (1 - x).	nonn,	0..650	holos
+A134565	serrevgf	0	1,-2	1,-3,3,-1		null	Expansion of reversion of (x - 2 * x^2) / (1 - x)^3.	sign,synth	1..32	nyi
+# A136576	HolonomicRecurrence	Series reversion of x*c(x)/(1-2x), c(x) the g.f. of A000108.	easy,sign,	0..1000	holos
+# A140983		null	Egf is reversion of (2(1+x)log(1+x)+x^2+2x)/( (2+x)^2(1+x) ).	easy,nonn,	1..100	nyi
+# A143749	HolonomicRecurrence	Series reversion of x * (1 - x) / (1 + 9*x).	easy,nonn,	0..200	holos
+# A154825	HolonomicRecurrence	Reversion of x(1-2x)/(1-3x).	sign,easy,changed,	0..200	holos
+# A159605		null	E.g.f: Sum_{n>=1} a(n)*x^(2n-1)/(2n-1)! = Series_Reversion of e.g.f. S(x) of A159601.	nonn,synth	1..14	nyi
+# A171805		null	G.f.: Series reversion of x/P(x)^3 where P(x) is the g.f. for Partition numbers (A000041).	nonn,synth	1..22	nyi
+# A176025		null	Series reversion of eta(-x) - 1.	nonn,	0..500	nyi
+# A178451		null	Coefficients in series expansion of 1/j_inv, where j_inv (A091406) is the reversion of the j-function.	sign,easy,	-1..300	nyi
+# A179848	HolonomicRecurrence	Expansion of series reversion of generating function for triangular numbers.	sign,	0..375	holos
+A185966	serrevas	0	A028310		null	Series reversion of A028310.	sign,easy,	0..1000	nyi
+# A190590	HolonomicRecurrence	Expansion of series reversion of x/(1 + x + 2*x^4).	nonn,	1..1000	holos
+A191241	serrevpa	0	1,-1,+0,+0,-2	0		null	Reversion of x - x^2 - 2*x^5.	nonn,changed,synth	1..30	nyi
+A191242	serrevpa	0	1,-1,-1,-2	0		null	Reversion of x-x^2-x^3-2*x^4	nonn,	1..200	nyi
+A191243	serrevpa	0	1,-1,-1,-1,-1,-1	0		null	Reversion of x-x^2-x^3-x^4-x^5-x^6.	nonn,	1..125	nyi
+# A194956		null	G.f.: A(x) = INV(x - x*INV(x - x^2*INV(x - x^3*INV(x - x^4*INV(x - ...))))), where INV(F(x)) = series reversion of F(x).	nonn,	1..500	nyi
+# A195194		null	G.f.: A(x) = INV(x - x*INV(x - 2*x*INV(x - 3*x*INV(x - 4*x*INV(x - ...))))), where INV(F(x)) = series reversion of F(x).	nonn,	1..100	nyi
+# A195196		null	G.f.: A(x) = INV(x - x*INV(x - 3*x*INV(x - 3^2*x*INV(x - 3^3*x*INV(x - 3^4*x*INV(x - ...)))))), where INV(F(x)) = series reversion of F(x).	nonn,synth	1..15	nyi
+# A196659		null	G.f.: A(x) = INV(x - x*INV(x - 3*x*INV(x - 5*x*INV(x - 7*x*INV(x - ...))))), where INV(F(x)) = series reversion of F(x).	nonn,synth	1..18	nyi
+# A196708		null	G.f.: A(x) = INV(x*(1-x) - x^2*INV(x*(1-x)^2 - x^2*INV(x*(1-x)^3 - x^2*INV(x*(1-x)^4 - x^2*INV(x*(1-x)^5 - ...))))), where INV(F(x)) = series reversion of F(x).	nonn,synth	1..23	nyi
+# A196709		null	G.f.: A(x) = INV(x - x*INV(x - 2*x^2*INV(x - 3*x^3*INV(x - 4*x^4*INV(x - ...))))), where INV(F(x)) = series reversion of F(x).	nonn,synth	1..26	nyi
+# A196710		null	G.f.: A(x) = INV(x-x^2 - x^2*INV(x-2*x^2 - x^2*INV(x-3*x^2 - x^2*INV(x-4*x^2 - x^2*INV(x-5*x^2 - ...))))), where INV(F(x)) = series reversion of F(x).	nonn,synth	1..23	nyi
+# A196711		null	G.f.: A(x) = INV(x-x^2 - x^2*INV(x-2*x^2 - x^2*INV(x-4*x^2 - x^2*INV(x-8*x^2 - x^2*INV(x-16*x^2 - ...))))), where INV(F(x)) = series reversion of F(x).	nonn,synth	1..22	nyi
+# A198204		null	Series reversion of (1 - t*x)*log(1 + x) with respect to x.	nonn,easy,tabl,synth	1..45	nyi
+# A206304		null	E.g.f. is series reversion of x-log(1+x)^2	sign,synth	1..20	nyi
+# A206397		null	E.g.f. A(x) = series reversion of log(1+x)-x^3/3.	nonn,synth	1..18	nyi
+# A207493		null	E.g.f. A(x) is the series reversion of 2*x-1/2*x^2-exp(x)+1.	nonn,synth	1..18	nyi
+# A214670		null	Triangle, read by rows of n*(n+1)/2 terms, where row n equals the coefficients in the series reversion of the function G(x,n)-1 such that: x = Sum_{m>=1} 1/G(x,n)^(n*m) * Product_{k=1..m} (1 - 1/G(x,n)^k), for n>=1.	sign,tabf,	1..364	nyi
+# A214688		null	E.g.f. equals the series reversion of x - x^2*exp(2*x).	nonn,	1..200	nyi
+# A214690		null	Triangle, read by rows of n^2 terms, where row n equals the coefficients in the series reversion of the function G(y,n)-1 such that: y = Sum_{m>=1} 1/G(y,n)^(2*n*m) * Product_{k=1..m} (1 - 1/G(y,n)^(2*k-1)).	sign,tabf,	1..651	nyi
+# A215342		null	Expansion of series reversion of x*(1-x^3*sum(k>=1, x^k)).	nonn,	1..250	nyi
+# A217066		null	E.g.f. is series reversion of x*(sec(x)+tan(x)).	sign,synth	1..19	nyi
+A217358	serrevpa	0	1,+0,-1,-1	0		null	Series reversion of x-x^3-x^4.	nonn,	1..1000	nyi
+A217359	serrevpa	0	1,+0,+1,+1	0		null	Series reversion of x+x^3+x^4.	sign,	1..104	nyi
+A217361	serrevpa	0	1,+1,+2	0		null	Series reversion of x+x^2+2*x^3.	sign,changed,	1..103	nyi
+A217362	serrevpa	0	1,+2,+0,+1	0		null	Series reversion of x + 2*x^2 + x^4.	sign,changed,	1..1000	nyi
+# A217363	HolonomicRecurrence	Series reversion of x - 3*x^3.	nonn,easy,changed,	1..769	holos
+# A217365	HolonomicRecurrence	Series reversion of x + x^2 + x^3 + x^4 + x^5.	sign,	1..2066	holos
+# A224079		null	E.g.f. is series reversion of log(1+x)/cosh(x).	nonn,synth	1..20	nyi
+# A224080		null	E.g.f. is series reversion of log(1+x)*sqrt(1-x^2).	nonn,	1..200	nyi
+# A227457		null	E.g.f. equals the series reversion of x - x*log(1+x).	nonn,synth	1..20	nyi
+# A227458		null	E.g.f. equals the series reversion of x - x*arcsin(x).	nonn,synth	1..19	nyi
+# A227459		null	E.g.f. equals the series reversion of x - x*arcsinh(x).	nonn,synth	1..19	nyi
+# A227460		null	E.g.f. equals the series reversion of x - x*arctan(x).	nonn,synth	1..19	nyi
+# A227461		null	E.g.f. equals the series reversion of x - x*arctanh(x).	nonn,synth	1..19	nyi
+# A227462		null	E.g.f. equals the series reversion of x - x^2*exp(x^2).	nonn,synth	1..19	nyi
+# A227463		null	E.g.f. equals the series reversion of arcsinh(x) / exp(x).	nonn,synth	1..19	nyi
+# A227464		null	E.g.f. equals the series reversion of sin(x) / exp(x).	nonn,synth	1..19	nyi
+# A227465		null	E.g.f. equals the series reversion of arctan(x) / exp(x).	nonn,synth	1..19	nyi
+# A227466		null	E.g.f. equals the series reversion of tanh(x) / exp(x).	nonn,synth	1..19	nyi
+# A228863	serrevas	0	A228862		null	Series reversion of the g.f. of A228862.	sign,	1..300	nyi
+# A229042		null	Series reversion of (sqrt(1+4*x) - 1)/2 - x^2.	nonn,	1..1000	nyi
+# A229043		null	Series reversion of (sqrt(1+4*x) - 1)/2 - x^3.	nonn,changed,	1..1647	nyi
+# A235347	serrevgf	0	+1,+0,-3	1,+0,-1		null	Series reversion of x*(1-3*x^2)/(1-x^2) in odd-order powers.	nonn,	0..1000	nyi
+A235348	serrevgf	0	+1,-2,-5	1,+0,-1		null	Series reversion of x*(1-2*x-5*x^2)/(1-x^2).	nonn,easy,	1..1000	nyi
+A235349	serrevp0	0	+1,+0	-2		null	Series reversion of x*(1-x-2*x^2)/(1-x).	nonn,easy,	0..1000	nyi
+A235350	serrevgf	0	+1,-2,-1	1,+0,-1		null	Series reversion of x*(1-2*x-x^2)/(1-x^2).	nonn,easy,	1..1000	nyi
+A235351	serrevgf	0	+1,-3,-2	1,-1		null	Series reversion of x*(1-3*x-2*x^2)/(1-x).	nonn,easy,	0..1000	nyi
+# A235352	serrevgf	0	+1,+3	1,+2,1		null	Series reversion of x*(1+3*x^2)/(1+x^2) in odd-power terms.	sign,easy,	0..1000	nyi
+# A239605		null	First column of A316273. Recurrence similar to series reversion giving Catalan numbers.	nonn,changed,synth	1..26	nyi
+A243157	serrevgf	0	+1,-1	1,-1,+0,-1		null	Series reversion of x*(1 - x)/(1 - x - x^3).	sign,	1..300	nyi
+# A245240		null	Coefficients of the series reversion of the series Sum(x^k for k in A008578).	sign,easy,synth	0..29	nyi
+# A258943		null	Exponential reversion of Fibonacci numbers A000045.	sign,changed,synth	1..22	nyi
+# A259938		null	Expansion of the series reversion of Sum_{n>=1} x^(n^2).	easy,sign,synth	0..38	nyi
+A263843	serreva0	0	A162395		null	Reversion of g.f. for A162395 (squares with signs).	nonn,easy,changed,synth	0..23	nyi
+A276989	serrevpa	0	1,-1,0,0,0,-1	0		null	Reversion of x - x^2 - x^6.	nonn,synth	1..28	nyi
+# A277168		null	Coefficients in the series reversion of x*exp(-x^2).	nonn,changed,	1..195	nyi
+A278077	serrevp0	0	1,1,0,0,-1,-1,-1	0		null	Series reversion of x + x^2 - x^5 - x^6 - x^7.	sign,changed,	0..1593	nyi
+# A278428		null	Series reversion of g.f. (1/2)*x*(-1; -x)_inf, where (a; q)_inf is the q-Pochhammer symbol.	nonn,	1..1000	nyi
+# A288607		null	Exponential reversion of A288606.	sign,synth	0..20	nyi
+# A291376		null	Expansion of the series reversion of x/(1 - 2*x/(1 - 3*x/(1 - 4*x/(1 - 5*x/(1 - ...))))), a continued fraction.	sign,synth	1..20	nyi
+# A291377		null	Expansion of the series reversion of x/(1 + x^2/(1 + x^3/(1 + x^4/(1 + x^5/(1 + ...))))), a continued fraction.	sign,synth	1..36	nyi
+# A291378		null	Expansion of the series reversion of -1 + 1/(1 - x/(1 - x/(1 - x^2/(1 - x^2/(1 - x^3/(1 - x^3/(1 - ...))))))), a continued fraction.	sign,synth	1..28	nyi
+# A291418		null	Expansion of the series reversion of Sum_{k>=1} x^(k*(k+1)/2).	sign,synth	1..35	nyi
+# A291488		null	Expansion of the series reversion of -1 + Product_{k>=1} 1/(1 - x^k)^k.	sign,synth	1..24	nyi
+# A291489		null	Expansion of the series reversion of -1 + Product_{k>=1} (1 + x^k)^k.	sign,synth	1..27	nyi
+A291533	serrevas	0	A018252		null	Expansion of the series reversion of g.f. for the nonprime numbers (A018252).	sign,synth	1..21	nyi
+# A291534	HolonomicRecurrence	Expansion of the series reversion of x/((1 + x)*(1 - x^2)).	sign,changed,synth	1..33	holos
+A291535	serrevgf	0	+1,+2	1,-1,-1		null	Expansion of the series reversion of x*(1 + 2*x)/(1 - x - x^2).	sign,	1..500	nyi
+A291536	serrevgf	0	+1,+4,+1	1,-4,+6,-4,+1		null	Expansion of the series reversion of x*(1 + 4*x + x^2)/(1 - x)^4.	sign,synth	1..19	nyi
+# A291645		null	Expansion of the series reversion of -1 + Product_{k>=1} (1 + x^(k^2)).	sign,synth	1..36	nyi
+# A291646		null	Expansion of the series reversion of -1 + Product_{k>=1} (1 + x^(2*k-1)).	sign,synth	1..35	nyi
+# A291695		null	Expansion of the series reversion of Sum_{i>=1} x^i/(1 - x^i) / Product_{j>=1} (1 - x^j).	sign,changed,synth	1..24	nyi
+# A292363		null	Expansion of the series reversion of x*Product_{k>=0} (1 + x^(2^k) + x^(2^(k + 1))).	sign,synth	1..31	nyi
+# A292875		null	Expansion of the series reversion of Sum_{k>=1} x^k*k*Product_{p|k, p prime} (1 + 1/p).	sign,synth	1..22	nyi
+# A293719		null	Expansion of the series reversion of x/(1 - x^2/(1 - x^3/(1 - x^4/(1 - x^5/(1 - ...))))), a continued fraction.	sign,synth	1..38	nyi

@@ -1,5 +1,6 @@
 /*  Reads a list of A-numbers and appends the parameters of the sequences 
- *  @(#) $Id: RecurrenceReflector.java 744 2019-04-05 06:29:20Z gfis $
+ *  @(#) $Id: RecurrenceReflector.java $
+ *  2021-05-01: revitalized
  *  2021-01-29: LatticeCoordinationSequence / latti -> gener 
  *  2021-01-23, Georg Fischer: copied from BatchTest
  */
@@ -208,15 +209,15 @@ public class RecurrenceReflector {
   public void processBatch(final String fileName) {
     final StringBuilder buffer = new StringBuilder(1024);
     try {
-      final Method blockNextMethod = BlockMultAddSequence.class.getMethod("next");
+      final Method blockNextMethod = BlockMultAddSequence           .class.getMethod("next");
       final Method contiNextMethod = ContinuedFractionOfSqrtSequence.class.getMethod("next");
-      final Method finitNextMethod = FiniteSequence.class.getMethod("next");
-      final Method generNextMethod = GeneratingFunctionSequence.class.getMethod("next");
-      final Method holonNextMethod = HolonomicRecurrence.class.getMethod("next");
-      final Method lineaNextMethod = LinearRecurrence.class.getMethod("next");
-      final Method paddiNextMethod = PaddingSequence.class.getMethod("next");
-      final Method perioNextMethod = PeriodicSequence.class.getMethod("next");
-      final Method prepeNextMethod = PrependSequence.class.getMethod("next");
+      final Method finitNextMethod = FiniteSequence                 .class.getMethod("next");
+      final Method generNextMethod = GeneratingFunctionSequence     .class.getMethod("next");
+      final Method holonNextMethod = HolonomicRecurrence            .class.getMethod("next");
+      final Method lineaNextMethod = LinearRecurrence               .class.getMethod("next");
+      final Method paddiNextMethod = PaddingSequence                .class.getMethod("next");
+      final Method perioNextMethod = PeriodicSequence               .class.getMethod("next");
+      final Method prepeNextMethod = PrependSequence                .class.getMethod("next");
       Method superNextMethod = null; // one of the above
 
       final String srcEncoding = "UTF-8"; // Encoding of the input file
@@ -300,10 +301,10 @@ public class RecurrenceReflector {
                 parts[ipart++] = "0";
 
               } else if (callCode.startsWith("gener")
-                || callCode.startsWith("coord")
-                || callCode.startsWith("coxet")
-                || callCode.startsWith("latti")
-              ) { // fraction of two polynomials
+                    ||   callCode.startsWith("coord")
+                    ||   callCode.startsWith("coxet")
+                    ||   callCode.startsWith("latti")
+                    ) { // fraction of two polynomials
                 superNextMethod = generNextMethod;
                 final GeneratingFunctionSequence hseq = (GeneratingFunctionSequence) Class.forName(className).getDeclaredConstructor().newInstance();
                 seq = hseq;
