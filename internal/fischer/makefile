@@ -329,12 +329,35 @@ a0330:
 A035536:
 	cp -v A035536.man A035536.gen
 #================================
+# A126043	null	Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 3.	nonn,synth	1..47	nyi
+a126043:
+	cat $@.man \
+	| perl -ne 'm{\A(A\d+)}; my $$aseqno = $$1; m{mod *(\d+)}; my $$mod = $$1;'\
+	' print join("\t", $$aseqno, "parm2", 1, "A126043", $$mod) . "\n"; ' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+# A139149	null	A139149 a(n) = (n!+2)/2.
+a139149:
+	cat $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 # A157536 Half the number of length n integer sequences with sum zero and sum of squares 32.
 a157536:
 	grep -E "Half the number of length n integer sequences with sum" $(COMMON)/joeis_names.txt \
 	| perl -ne 'if (m{sum (\w+) and sum of squares (\d+)\.}) { '\
 	' my ($$s, $$ss) = ($$1, $$2); $$s =~ s{zero}{0}; '\
 	' print join("\t", substr($$_, 0, 7), "$@", 0, $$s, $$ss) . "\n"; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+# A165824	null	Totally multiplicative sequence with a(p) = 3.	nonn,mult,changed,	1..10000	nyi
+a165824:
+	cat      $@.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -521,6 +544,44 @@ basrunid: # Numbers whose base-3 expansions, read from left to right, have run l
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------------
+bellmod:
+	grep -P "\Bell numbers " $(COMMON)/joeis_names.txt | grep -E "(read )?mod [0-9]" \
+	| perl -ne 'm{\A(A\d+)}; my $$aseqno = $$1; m{mod (\d+)}; my $$mod = $$1; '\
+	' print join("\t", $$aseqno, "parm2", 0, "A146093", $$mod) . "\n"; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+binomin0: binomin1 binomin2 binomin3
+binomin1: # extract all single formulas containing binomial functions and/or factorials
+	grep -E "^\%[NptoF]" $(COMMON)/jcat25.txt \
+	| grep -viE "[mk]\)|satisf|reap|flatten|nest|accum|while|fibon|sum|prod|add|sqrt|exp|coeff|abs|floor|ceil|transform|gcd|lcm|for\(|mod|prime|euler|phi|sigma|div" \
+	| perl binomin.pl \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+binomin2: # convert the formula into hypergeometric parameters for HolonomicRecurrence
+	perl $(COMMON)/callmaple.pl -t 4 -n 8 -p binomin.mpat binomin1.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+binomin3: # patch the initial terms - there may be no zero
+	make seq4 LIST=binomin2.tmp
+	$(DBAT)  "UPDATE seq4 s \
+	    SET s.parm4  = (SELECT SUBSTR(d.data, 1, 128) FROM asdata d WHERE d.aseqno = s.aseqno) \
+	    ,   s.offset = (SELECT i.offset1              FROM asinfo i WHERE i.aseqno = s.aseqno);"
+	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
+	| perl binomin_patch.pl \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+binomin:
+	grep -P "^A[0-9]" binomin3.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 #--------------------------------
 carule0:
 	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \

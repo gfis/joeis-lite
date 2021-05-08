@@ -1,0 +1,20 @@
+A038507	parm3	0	A139149	0	2		a(n) = n! + 1.
+A139149	parm3	2	A139149	2	2		a(n) = (n!+2)/2.	nonn,easy,synth	2..20	nyi
+A139150	parm3	3	A139149	3	3		Natural numbers of the form (n!+3)/3.	nonn,synth	3..20	nyi
+A139151	parm3	4	A139149	4	7		(n!+4)/4.	nonn,easy,synth	4..21	nyi
+A139152	parm3	5	A139149	5	25		Natural numbers of the form (n!+5)/5.	nonn,synth	5..21	nyi
+A139153	parm3	3	A139149	3	2		Natural numbers of the form (n!+6)/6.	nonn,synth	3..21	nyi
+A139154	parm3	7	A139149	7	721		Natural numbers of the form (n!+7)/7.	nonn,synth	7..21	nyi
+A139155	parm3	4	A139149	4	4		Natural numbers of the form (n!+8)/8.	nonn,synth	4..21	nyi
+A139156	parm3	6	A139149	6	81		Natural numbers of the form (n!+9)/9.	nonn,synth	6..21	nyi
+A139157	parm3	5	A139149	5	13		Natural numbers of the form (n!+10)/10.	nonn,synth	5..21	nyi
+A033312	parm3	0	A139172	0	0		a(n) = n! - 1.
+A139172	parm3	2	A139172	2	0		Natural numbers of the form (n!-2)/2.	nonn,easy,	2..300	nyi
+A139173	parm3	3	A139172	3	1		a(n) = n!/3 - 1.	nonn,	3..300	holose
+A139174	parm3	4	A139172	4	5		a(n) = (n!-4)/4.	nonn,easy,changed,	4..400	nyi
+A139175	parm3	5	A139172	5	23		a(n) = (n! - 5)/5.	nonn,	5..300	nyi
+A139176	parm3	3	A139172	3	0		a(n) = (n! - 6)/6.	nonn,	3..300	nyi
+A139177	parm3	7	A139172	7	719		a(n) = (n! - 7)/7.	nonn,easy,	7..300	nyi
+A139183	parm3	4	A139172	4	2		a(n) = (n! - 8)/8.	nonn,	4..300	nyi
+A139184	parm3	6	A139172	6	79		a(n) = (n! - 9)/9.	nonn,easy,	6..300	nyi
+A139185	parm3	5	A139172	5	11		a(n) = (n! - 10)/10.	nonn,easy,	5..300	nyi

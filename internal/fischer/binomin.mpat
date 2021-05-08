@@ -1,0 +1,12 @@
+interface(prettyprint=0):
+with(StringTools):
+holo := proc(as,f); local b, num, den, fd, str, filename;
+b := simplify(simplify(-f(n)/f(n-1), GAMMA));
+printf("***** b = %a\n", b);
+num := seq(coeff(numer(b),n,j),j=0..degree(numer(b)));
+den := seq(coeff(denom(b),n,j),j=0..degree(denom(b)));
+str := cat("[[0],", DeleteSpace(convert([num],string)), ",", DeleteSpace(convert([den],string)), "]");
+printf("%a\tholos\t0\t\%s\t[%a]\t0\t\n", as, str, f(0));
+end;
+
+holo($(PARM0),proc(n) $(PARM3) end proc);
