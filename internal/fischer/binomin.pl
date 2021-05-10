@@ -4,13 +4,15 @@
 # 2021-05-07, Georg Fischer: copied from sumdiv.pl
 #
 #:# Usage:
-#:#   perl binomin.pl [-d debug] $(COMMON)/jcat25.txt > binomin.gen 
-#:#     -d  debugging level (0=none (default), 1=some, 2=more)
+#:#   perl binomin.pl [-d debug] [-s sel] $(COMMON)/jcat25.txt > binomin.gen 
+#:#     -d debugging level (0=none (default), 1=some, 2=more)
+#:#     -s selection: 0 = all, 1 = some, 2 = specific ... 
 #--------------------------------------------------------
 use strict;
 use integer;
 use warnings;
 
+my $sel = 0;
 my $line = "";
 my ($tlet, $aseqno, $callcode, $name, $form);
 my $debug   = 0;
@@ -19,60 +21,164 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     if (0) {
     } elsif ($opt   =~ m{\-d}  ) {
         $debug      = shift(@ARGV);
+    } elsif ($opt   =~ m{\-s}  ) {
+        $sel        = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
 
 my $offset = 0;
+my $oseqno = "A000000"; # old aseqno
+my $count  = 0;
+
 while (<>) { # from $(COMMON)/jcat25.txt
     s/\s+\Z//; # chompr
     $line = $_;
     ($tlet, $aseqno, $name) = (substr($line, 1, 1), substr($line, 3, 7), substr($line, 11));
+    $name =~ s{Binomial}{nnnn}ig; # shield only this function
+    if ($aseqno ne $oseqno) {
+        $oseqno = $aseqno;
+        $count = 1;
+    } else {
+        $count ++;
+    }
+    $callcode = "binom";
     $form = "";
-    if (substr($name, 0, 1) eq " ") {
+    $offset = 0;
+    split_offset($name);
+    if (substr($name, 0, 1) eq " " || ($name =~ m{\.\.})) {
         # ignore if indented
     } elsif ($name =~ m{\A\w\_?\[}) {
         # ignore
-    } elsif ($tlet eq "N") {
+    } elsif ($sel >= 2 and $tlet eq "N") { # NAME
         if ($name =~ m{\A(a\(n\)\s*\=\s*)?([^\.]+)}) {
             $form = &eval_form($2);
         }
-    } elsif ($tlet eq "F") {
+    } elsif ($sel >= 2 and $tlet eq "F") { # FORMULA
         if ($name =~ m{\Aa\(n\)\s*\=\s*([^\.]+)\.}) {
-        	$form = $1;
+            $form = $1;
             $form = &eval_form($form);
         }
-  # } elsif ($tlet eq "xxxp") {
-  #     if ($name =~ m{\Aseq\(.*), *n\=\d\.\.\d+\)n\)\s*\=\s*([^\:\;]+)}) {
-  #     	$form =
-  #         $form = &eval_form($1);
-  #     }
+    } elsif ($sel >= 0 and $tlet eq "t") { # Mathematica
+        $name =~ s{ *\(\*.*}{}; # remove trailing comment
+        $name =~ s{\AJoin\[ *\{\d+(\, *\d+)*\}\, *(.*)\]\Z}{$2}; # remove Join[{1,2},...] (initial terms)
+        $name =~ s{Range\[[^\]]+\]}{n}g; # replace Range[...] by n
+        if ($name =~ m{\ATable\[(.*)\]\Z}) {
+            $form = lc($1);
+            if ($form !~ m{\}\, *\{}) {
+                $form =~ s{\, *\{n\, *\d+\, *\w+\}}{};
+                $form = &eval_form($form);
+            } else {
+                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form) . "\n"; 
+                $form = "";
+            }
+        }
+    } elsif ($sel >= 2 and $tlet eq "p") {
+        $name =~ s{\#.*}{};     # remove trailing comment
+        $name =~ s{ *\; *\Z}{}; # remove semicolon
+        if ($name =~ m{\Aseq\((.*)\)\Z}) {
+            $form = $1;
+            if ($form !~ m{\, *n\=\d+\.\.\w+\)\,}) {
+                $form =~ s{\, *n\=\d+\.\.\w+}{};
+                $form = &eval_form($form);
+            } else {
+                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form) . "\n"; 
+                $form = "";
+            }
+        }
+    } elsif ($sel >= 2 and $tlet eq "o" and ($name =~ s{\(PARI\) *}{})) {
+        $name =~ s{\\\\.*}{};   # remove trailing comment
+        $name =~ s{ *\; *\Z}{}; # remove semicolon
+        $name =~ s{\{(.*)\}\Z}{$1}; # remove outer { }
+        if ($name =~ m{\Aa\(n\)\s*\=\s*([^\.]+)}) {
+            $form = $1;
+            $form =~ s{[\{\}]}{}g; # remove { } 
+            if ($form !~ m{[\%\\\=\<\>\~\[\]\|]}) {
+                $form = &eval_form($form);
+            } else {
+                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form) . "\n"; 
+                $form = "";
+            }
+        }
     }
+    $form =~ s{\A[ \.\,\:\;]+}{};
+    $form =~ s{[ \.\,\:\;]+\Z}{};
     if ($form ne "") {
-        $callcode = "binom";
-        print join("\t", $aseqno, $callcode, $offset, $form) . "\n"; 
+        print join("\t", $aseqno, "$callcode$count", $offset, $form) . "\n"; 
+    } else {
     }
 } # while <>
 #--------
-sub eval_form {
-    my ($parm) = @_;
-    my $result = "";
-    my $busy = 1;
-    foreach my $word ($parm =~ m{([A-Za-z][A-Za-z]+)}g) {
-        if ($word !~ m{\A[Bb]inom(ial)?\Z}) {
-            $busy = 0;
+sub split_offset { # modifies $offset, $name
+    $offset = 0;
+    if ($name =~ s{(for|if|when|with|\,) *n *(\>\=?) *(\d+)}{}) {
+        my ($cond, $lim) = ($2, $3);
+        if ($cond !~ m{\=}) {
+            $lim ++;
         }
-    } # foreach
-    if ($busy == 1 && ($parm !~ m{A\d\d\d+})) {
-        $result = lc($parm);
-        $result =~  s{\s}{}g; # remove whitespace
-        $result =~ tr{\{\[\]\}}
-                     {\(\(\)\)};
-        $result =~  s{(\d+)n}{$1*n}g;
+        $offset = ($offset < $lim) ? $lim : $offset;
+    }
+    while ($name =~ s{a\((\d+)\) *\= *\d+ *[\,\;\.]}{}) {
+        my $lim = $1 + 1; # not member of the recurrence
+        $offset = ($offset < $lim) ? $lim : $offset;
+    } # while
+    $name =~ s{\A[ \.\,\:\;]+}{};
+    $name =~ s{[ \.\,\:\;]+\Z}{};
+} # split_offset
+#--------
+sub eval_form {
+    my ($result) = @_;
+    $result =~  s{\s}{}g; # remove whitespace
+    if (&is_balanced($result) && ($result =~ m{\A[n0-9\+\-\(\)\*\/\!\^\,]+\Z})) { # is an expression in n with + - * / ^ ! ( ) digits and nnnn( , )
+        # now repair lazy bracketing
+        $result =~  s{(\d+)n}{$1*n}g; # 2n -> 2*n
+        $result =~  s{\^(\w)\^(.*)}{\^\($1\^$2\)}; # ...^2^... -> ...^(2^...)
+        $result =~  s{nnnn}{binomial}g;  # unshield
+        $result =~  s{\)(\w)}{\)\*$1}g;  # )n -> )*n
+        $result =~  s{\!(\w)}{\!\*$1}g;  # !n -> !*n
+        $result =~  s{\!\(}{\!\*\(}g;    # !( -> !*(
+        $result =~  s{nn}{n\*n}g;        # nn -> n*n
+        $result =~  s{n(\d+)}{n\*$1}g;   # n3 -> n*3
+        $result =~  s{(\d+)n}{$1\*n}g;   # 3n -> 3*n
+        $result =~  s{(\d+)\(}{$1\*\(}g; # 3( -> 3*(
+        $result =~  s{\)\(}{\)\*\(}g;    # )( -> )*(
+        $result =~  s{binomial\*}{binomial}g;
+        if ( ($result =~ m{\A\!}) 
+          or ($result =~ m{\!\!|\*\!|\!\*|\w\^\w\^})
+          ) {
+            $result = "";
+        }
+    } else {
+        $result = "";
     }
     return $result;
 } # eval_form
+#--------
+# from https://www.perlmonks.org/?node_id=885625
+
+sub is_balanced {
+    my( $str )= @_;
+    my $d= 0;
+    while(  $str =~ m(([(])|([)]))g  ) {
+        if(  $1  ) {
+            $d++;
+        } elsif(  --$d < 0  ) {
+            return 0;
+        }
+    }
+    return 0 == $d;
+}
+#--
+sub is_balanced3 { eval "qw($_[0])" }
+#--
+sub is_balanced2 {
+   my $string = shift;
+   eval("qw($string)");
+   return 0 if $@;
+   return 1;
+}
+
 __DATA__
 012345678901
 %p A061164         binomial(20*n,10*n)*binomial(10*n,3*n)/binomial(4*n,n) ;
@@ -80,7 +186,7 @@ __DATA__
 %F A061206 a(n) = n!*binomial(-n,4). - _Peter Luschny_, Apr 29 2016
 %p A061206 a := n -> n!*binomial(-n,4): seq(a(n),n=1..20); # _Peter Luschny_, Apr 29 2016
 %t A061206 Array[# (# + 3)!/24 &, 20] (* or *) Array[#!*Binomial[-#, 4] &, 20] (* _Michael De Vlieger_, Sep 30 2017 *)
-%o A061206 (Sage) [binomial(n,4)*factorial (n-3) for n in range(4, 21)] # _Zerinvary Lajos_, Jul 07 2009
+%o A061206 (Sage) [binomial(n,4)*factorial (n-3) fo r n in range(4, 21)] # _Zerinvary Lajos_, Jul 07 2009
 %o A061312 (MAGMA) [[(&+[(-1)^j*Binomial(k+1,j)*Factorial(n-j+1): j in [0..k+1]]): k in [0..n]]: n in [0..20]]; // _G. C. Greubel_, Aug 13 2018
 %F A061548 a(n) = numerator(binomial(2*n-1/2, -1/2)).
 %p A061548 seq(numer(binomial(2*n-1/2, -1/2)), n=0..20);

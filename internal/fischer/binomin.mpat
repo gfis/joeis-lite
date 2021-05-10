@@ -1,12 +1,14 @@
 interface(prettyprint=0):
 with(StringTools):
-holo := proc(as,f); local b, num, den, fd, str, filename;
-b := simplify(simplify(-f(n)/f(n-1), GAMMA));
-printf("***** b = %a\n", b);
-num := seq(coeff(numer(b),n,j),j=0..degree(numer(b)));
-den := seq(coeff(denom(b),n,j),j=0..degree(denom(b)));
-str := cat("[[0],", DeleteSpace(convert([num],string)), ",", DeleteSpace(convert([den],string)), "]");
-printf("%a\tholos\t0\t\%s\t[%a]\t0\t\n", as, str, f(0));
+holmap  := proc(aseqno, offset, a); local fract, num, den, str, j;
+  fract := simplify(simplify(-a(n)/a(n-1), GAMMA));
+  printf("# %a\tholof\t%a\t\%a\t[%a]\t0\t%a\n", aseqno, offset, fract, 1, a);
+  num   := seq(coeff(numer(fract),n,j),j=0..degree(numer(fract)));
+  den   := seq(coeff(denom(fract),n,j),j=0..degree(denom(fract)));
+  str   := cat("[[0],", DeleteSpace(convert([num],string)), ","
+                      , DeleteSpace(convert([den],string)), "]");
+  printf("%a\tholos\t%a\t\%s\t[%a]\t0\t%a\n", aseqno, offset, str, 1, a);
+  printf("make runholo A=%a MATRIX=\"%s\" OFFSET=%a INIT=\"[1]\"\n", aseqno, str, offset);
 end;
 
-holo($(PARM0),proc(n) $(PARM3) end proc);
+holmap($(PARM0), $(PARM2), proc(n) $(PARM3) end);

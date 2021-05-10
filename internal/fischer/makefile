@@ -553,22 +553,36 @@ bellmod:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-binomin0: binomin1 binomin2 binomin3
+binomin0: binomin1 binomin2 binomin3 binomin4
 binomin1: # extract all single formulas containing binomial functions and/or factorials
 	grep -E "^\%[NptoF]" $(COMMON)/jcat25.txt \
 	| grep -viE "[mk]\)|satisf|reap|flatten|nest|accum|while|fibon|sum|prod|add|sqrt|exp|coeff|abs|floor|ceil|transform|gcd|lcm|for\(|mod|prime|euler|phi|sigma|div" \
-	| perl binomin.pl \
-	| sort | uniq -w7 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-binomin2: # convert the formula into hypergeometric parameters for HolonomicRecurrence
-	perl $(COMMON)/callmaple.pl -t 4 -n 8 -p binomin.mpat binomin1.tmp \
+binomin234: binomin2 binomin3 binomin4
+binomin2:
+	perl binomin.pl -s 2 binomin1.tmp \
+	2>       $@.rest.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-binomin3: # patch the initial terms - there may be no zero
 	make seq4 LIST=binomin2.tmp
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN ('A051154','A051155','A078186','A103562','A116213','A127670' \
+	  ,'A128406','A128889','A128889','A133460','A237419','A276100','A338965');"
+	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+binomin3: # convert the formula into hypergeometric parameters for HolonomicRecurrence
+	perl $(COMMON)/callmaple.pl -t 4 -n 64 -p binomin.mpat binomin2.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+binomin4: # patch the initial terms - there may be no zero
+	sort binomin3.tmp | uniq -w7 > $@.tmp
+	make seq4 LIST=$@.tmp
 	$(DBAT)  "UPDATE seq4 s \
 	    SET s.parm4  = (SELECT SUBSTR(d.data, 1, 128) FROM asdata d WHERE d.aseqno = s.aseqno) \
 	    ,   s.offset = (SELECT i.offset1              FROM asinfo i WHERE i.aseqno = s.aseqno);"
@@ -577,8 +591,9 @@ binomin3: # patch the initial terms - there may be no zero
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+	grep -A2 -B1 syntax binomin3.tmp || :
 binomin:
-	grep -P "^A[0-9]" binomin3.tmp \
+	grep -P "^A[0-9]" binomin4.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen	
