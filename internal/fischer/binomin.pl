@@ -16,7 +16,7 @@ my $sel = 0;
 my $line = "";
 my ($tlet, $aseqno, $callcode, $name, $form);
 my $debug   = 0;
-while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
+while (scalar(@ARGV) > 0 && ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt   =~ m{\-d}  ) {
@@ -28,15 +28,24 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 
-my $offset = 0;
-my $oseqno = "A000000"; # old aseqno
-my $count  = 0;
+my $offset  = 0;
+my $oseqno  = "A000000"; # old aseqno
+my $count   = 0;
+my %shields = qw(
+   binomial        nnnn1
+   doublefactorial nnnn2
+   factorial       nnnn3
+   GAMMA           nnnn4
+   pochhammer      nnnn5
+   );
 
 while (<>) { # from $(COMMON)/jcat25.txt
     s/\s+\Z//; # chompr
     $line = $_;
     ($tlet, $aseqno, $name) = (substr($line, 1, 1), substr($line, 3, 7), substr($line, 11));
-    $name =~ s{Binomial}{nnnn}ig; # shield only this function
+    foreach my $key (sort(keys(%shields))) {
+    	$name =~ s{$key}{$shields{$key}}ig; # shield only these functions
+    } # foreach $key
     if ($aseqno ne $oseqno) {
         $oseqno = $aseqno;
         $count = 1;
@@ -46,48 +55,59 @@ while (<>) { # from $(COMMON)/jcat25.txt
     $callcode = "binom";
     $form = "";
     $offset = 0;
+    # print "p0: $sel $tlet [$name]\n";
     split_offset($name);
-    if (substr($name, 0, 1) eq " " || ($name =~ m{\.\.})) {
+    # print "p1: $sel $tlet [$name]\n";
+    if (substr($name, 0, 1) eq " ") {
         # ignore if indented
-    } elsif ($name =~ m{\A\w\_?\[}) {
-        # ignore
-    } elsif ($sel >= 2 and $tlet eq "N") { # NAME
+        # print "pi: $sel $tlet [$name] ignored\n";
+    } elsif ($sel >= 2 && $tlet eq "N" && ($name !~ m{\.\.})) { # NAME
         if ($name =~ m{\A(a\(n\)\s*\=\s*)?([^\.]+)}) {
             $form = &eval_form($2);
         }
-    } elsif ($sel >= 2 and $tlet eq "F") { # FORMULA
+    } elsif ($sel >= 2 && $tlet eq "F" && ($name !~ m{\.\.})) { # FORMULA
         if ($name =~ m{\Aa\(n\)\s*\=\s*([^\.]+)\.}) {
             $form = $1;
             $form = &eval_form($form);
         }
-    } elsif ($sel >= 0 and $tlet eq "t") { # Mathematica
-        $name =~ s{ *\(\*.*}{}; # remove trailing comment
-        $name =~ s{\AJoin\[ *\{\d+(\, *\d+)*\}\, *(.*)\]\Z}{$2}; # remove Join[{1,2},...] (initial terms)
-        $name =~ s{Range\[[^\]]+\]}{n}g; # replace Range[...] by n
-        if ($name =~ m{\ATable\[(.*)\]\Z}) {
-            $form = lc($1);
-            if ($form !~ m{\}\, *\{}) {
-                $form =~ s{\, *\{n\, *\d+\, *\w+\}}{};
-                $form = &eval_form($form);
-            } else {
-                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form) . "\n"; 
-                $form = "";
-            }
-        }
-    } elsif ($sel >= 2 and $tlet eq "p") {
+    } elsif ($sel >= 0 && $tlet eq "p") {
+        # print "p2: $sel $tlet [$name]\n";
         $name =~ s{\#.*}{};     # remove trailing comment
+        # $name =~ s{\A(\d+\, *)+seq\(}{seq\(}; # 1,2,seq( -> seq(
         $name =~ s{ *\; *\Z}{}; # remove semicolon
-        if ($name =~ m{\Aseq\((.*)\)\Z}) {
+        if ($name =~ m{\Aseq\((.*)\Z}) {
             $form = $1;
+            $form =~ s{\)\Z}{};
             if ($form !~ m{\, *n\=\d+\.\.\w+\)\,}) {
                 $form =~ s{\, *n\=\d+\.\.\w+}{};
                 $form = &eval_form($form);
             } else {
-                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form) . "\n"; 
+                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form, $tlet) . "\n"; 
                 $form = "";
             }
+        } else {
+            #   print "#%p name? " . join("\t", $aseqno, "$callcode$count", $offset, $form, $name) . "\n"; 
         }
-    } elsif ($sel >= 2 and $tlet eq "o" and ($name =~ s{\(PARI\) *}{})) {
+    } elsif ($sel >= 2 && $tlet eq "t") { # Mathematica
+        $name =~ s{ *\(\*.*}{}; # remove trailing comment
+        $name =~ s{\AJoin\[ *\{\d+(\, *\d+)*\}\, *(.*)\]\Z}{$2}; # remove Join[{1,2},...] (initial terms)
+        $name =~ s{Range\[[^\]]+\]}{n}g; # replace Range[...] by n
+        # print "t2: $sel $tlet [$name]\n";
+        if ($name =~ m{\ATable\[(.*)\]\Z}) {
+            # print "t3: $sel $tlet [$name]\n";
+            $form = lc($1);
+            if ($form !~ m{\}\, *\{}) {
+                $form =~ s{\, *\{n\, *\d+\, *\w+\}}{};
+                # print "t4: $sel $tlet \"$form\"\n";
+                $form = &eval_form($form);
+                # print "t5: $sel $tlet \"$form\"\n";
+            } else {
+                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form, $tlet) . "\n"; 
+                $form = "";
+            }
+        } else {
+        }
+    } elsif ($sel >= 2 && $tlet eq "o" && ($name =~ s{\(PARI\) *}{})) {
         $name =~ s{\\\\.*}{};   # remove trailing comment
         $name =~ s{ *\; *\Z}{}; # remove semicolon
         $name =~ s{\{(.*)\}\Z}{$1}; # remove outer { }
@@ -97,7 +117,7 @@ while (<>) { # from $(COMMON)/jcat25.txt
             if ($form !~ m{[\%\\\=\<\>\~\[\]\|]}) {
                 $form = &eval_form($form);
             } else {
-                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form) . "\n"; 
+                print STDERR join("\t", $aseqno, "$callcode$count", $offset, $form, $tlet) . "\n"; 
                 $form = "";
             }
         }
@@ -105,7 +125,7 @@ while (<>) { # from $(COMMON)/jcat25.txt
     $form =~ s{\A[ \.\,\:\;]+}{};
     $form =~ s{[ \.\,\:\;]+\Z}{};
     if ($form ne "") {
-        print join("\t", $aseqno, "$callcode$count", $offset, $form) . "\n"; 
+        print join("\t", $aseqno, "$callcode$count", $offset, $form, $tlet) . "\n"; 
     } else {
     }
 } # while <>
@@ -130,11 +150,14 @@ sub split_offset { # modifies $offset, $name
 sub eval_form {
     my ($result) = @_;
     $result =~  s{\s}{}g; # remove whitespace
-    if (&is_balanced($result) && ($result =~ m{\A[n0-9\+\-\(\)\*\/\!\^\,]+\Z})) { # is an expression in n with + - * / ^ ! ( ) digits and nnnn( , )
+    if (&is_balanced($result) && ($result =~ m{\A[n0-9\+\-\(\)\*\/\!\^\,]+\Z})) { # is an expression in n with + - * / ^ ! ( ) digits && nnnn( , )
+        # print "t6: $sel $tlet \"$result\"\n";
         # now repair lazy bracketing
         $result =~  s{(\d+)n}{$1*n}g; # 2n -> 2*n
         $result =~  s{\^(\w)\^(.*)}{\^\($1\^$2\)}; # ...^2^... -> ...^(2^...)
-        $result =~  s{nnnn}{binomial}g;  # unshield
+        foreach my $key (sort(keys(%shields))) {
+            $result =~ s{$shields{$key}}{$key}ig; # shield only these functions
+        } # foreach $key
         $result =~  s{\)(\w)}{\)\*$1}g;  # )n -> )*n
         $result =~  s{\!(\w)}{\!\*$1}g;  # !n -> !*n
         $result =~  s{\!\(}{\!\*\(}g;    # !( -> !*(
@@ -145,8 +168,9 @@ sub eval_form {
         $result =~  s{\)\(}{\)\*\(}g;    # )( -> )*(
         $result =~  s{binomial\*}{binomial}g;
         if ( ($result =~ m{\A\!}) 
-          or ($result =~ m{\!\!|\*\!|\!\*|\w\^\w\^})
+          or ($result =~ m{\!\!|\*\!|\w\^\w\^})
           ) {
+            # print "t7: $sel $tlet \"$result\"\n";
             $result = "";
         }
     } else {

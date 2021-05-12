@@ -328,6 +328,12 @@ a0330:
 #----
 A035536:
 	cp -v A035536.man A035536.gen
+#----
+A060722:
+	grep -E "^A" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #================================
 # A126043	null	Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 3.	nonn,synth	1..47	nyi
 a126043:
@@ -555,7 +561,7 @@ bellmod:
 #--------------------------------
 binomin0: binomin1 binomin2 binomin3 binomin4
 binomin1: # extract all single formulas containing binomial functions and/or factorials
-	grep -E "^\%[NptoF]" $(COMMON)/jcat25.txt \
+	grep -E "^\%[NFpto]" $(COMMON)/jcat25.txt \
 	| grep -viE "[mk]\)|satisf|reap|flatten|nest|accum|while|fibon|sum|prod|add|sqrt|exp|coeff|abs|floor|ceil|transform|gcd|lcm|for\(|mod|prime|euler|phi|sigma|div" \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -576,7 +582,7 @@ binomin2:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 binomin3: # convert the formula into hypergeometric parameters for HolonomicRecurrence
-	perl $(COMMON)/callmaple.pl -t 4 -n 64 -p binomin.mpat binomin2.tmp \
+	perl $(COMMON)/callmaple.pl -t 2 -n 64 -p binomin.mpat binomin2.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -592,8 +598,32 @@ binomin4: # patch the initial terms - there may be no zero
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	grep -A2 -B1 syntax binomin3.tmp || :
+binomin5: # select the ones that failed 
+	grep -P "^\# +A\d+\s+holof\s+" binomin3.tmp | sed -e "s/^# *//" \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN ('A051154','A051155','A078186','A103562','A116213','A127670' \
+	  ,'A128406','A128889','A128889','A133460','A237419','A276100','A338965');"
+	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+binomin6: # convert by Maple
+	perl $(COMMON)/callmaple.pl -t 2 -n 64 -p binomin.mpat binomin5.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+binomin7:
+	grep -E "^A" binomin6.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 binomin:
-	grep -P "^A[0-9]" binomin4.tmp \
+	cat binomin4.tmp binomin.man | grep -P "^A[0-9]" | sort | uniq -w7\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen	

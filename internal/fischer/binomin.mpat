@@ -11,4 +11,4 @@ holmap  := proc(aseqno, offset, a); local fract, num, den, str, j;
   printf("make runholo A=%a MATRIX=\"%s\" OFFSET=%a INIT=\"[1]\"\n", aseqno, str, offset);
 end;
 
-holmap($(PARM0), $(PARM2), proc(n) $(PARM3) end);
+timelimit($(TIMEOUT), holmap($(PARM0), $(PARM2), proc(n) $(PARM3) end));
