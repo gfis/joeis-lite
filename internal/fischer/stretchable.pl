@@ -2,6 +2,7 @@
 
 # Get blocks of implemented and unimplemented sequences
 # @(#) $Id$
+# 2021-05-13: with numbers
 # 2019-08-29, Georg Fischer: copied from get_stretchables.pl
 #
 #:# Usage:
@@ -27,9 +28,10 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 
-my ($old_aseqno, $old_code, $old_name) = ("", "", "");
-my ($new_aseqno, $new_code, $new_name) = ("", "", "");
+my ($old_aseqno, $old_code, $old_name, $old_num) = ("", "", "", "");
+my ($new_aseqno, $new_code, $new_name, $new_num) = ("", "", "", "");
 my $block  = "";
+my $blk_aseqno = ""; # first aseqno in block
 my $jcount = 0;
 my $ocount = 0;
 my $jsum   = 0;
@@ -39,27 +41,29 @@ while (<>) { # read inputfile
     next if m{\A\s*\Z}; # skip empty lines
     s{\s+\Z}{}; # chompr
     my $line = $_;
-    ($new_aseqno, $new_code, $new_name) = split(/\t/, $line);
+    ($new_aseqno, $new_code, $new_name, $new_num) = split(/\t/, $line);
     $new_name = "" if ! defined($new_name);
+    $new_num  = "" if ! defined($new_num );
     if ($old_name ne $new_name) {
+        $blk_aseqno = $new_aseqno;
         &output_block();
     }
-    $block .= "$line\n";
+    $block .= join("\t", ($blk_aseqno, $new_aseqno, $new_code, $new_num, $new_name)) . "\n";
     if ($new_code =~ m{\AZZ}) { # not in joeis
         $ocount ++;
     } else { # in joeis
         $jcount ++;
     } # 
-    ($old_aseqno, $old_code, $old_name) = 
-    ($new_aseqno, $new_code, $new_name);
+    ($old_aseqno, $old_code, $old_name, $old_num) = 
+    ($new_aseqno, $new_code, $new_name, $new_num);
 } # while <>
 &output_block();
-print "jsum:	$jsum	osum:	$osum\n";
+print "jsum:    $jsum   osum:   $osum\n";
 #---------------
 sub output_block {
     if ($jcount > 0 and $ocount >= $min_stretch) {
-        print "---- joeis:  $jcount nyi:    $ocount\n";
-        print $block;
+        print "#---- joeis:  $jcount nyi:    $ocount\n"; # does not work because of cellular automaton splitting?
+        print "$block";
         $jsum += $jcount;
         $osum += $ocount;
     }

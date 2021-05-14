@@ -323,15 +323,49 @@ joeis_class:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #================================================================
+similar:
+	grep -E "^A" $(A).man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+A001482:
+	grep -E "^A" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 a0330:
 	cp -v $@.man $@.gen
 #----
+A007348:
+	perl $@.pl > $@.gen
+A018857:
+	perl $@.pl > $@.gen
+A033235:
+	perl $@.pl > $@.gen
+A033633:
+	perl $@.pl > $@.gen
 A035536:
 	cp -v A035536.man A035536.gen
 #----
 A060722:
 	grep -E "^A" $@.man \
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+A095425:
+	grep -E "^A094324" anastret.txt \
+	| perl -ne 's/\s+\Z//; my ($$d1, $$aseqno, $$d2, @parms) = split(/\t/); '\
+	' print join("\t", $$aseqno, "parm2", 0, $@, $$parms[0], $$parms[1]) . "\n"; '\
+	>        $@.gen
+	# A095426	parm2	1	A095425	11	a(n)= (\d+) written in base n						a(n) = 11 written in base n.
+	grep A095426 $@.gen | sed -e "s/A095426/A035613/" -e "s/\t11\t/\t7\t/" \
+	>>       $@.gen
+	grep -E "written in base " $(COMMON)/joeis_names.txt \
+	| perl -ne 'my $$aseqno = substr($$_, 0, 7); if (m{a\(n\) *\= *(\d+) written in base[\- ]*(\d+) *\- *n\.}) {'\
+	' my ($$parm1, $$parm2) = ($$1, $$2); '\
+	' print join("\t", $$aseqno, "parm3", 0, "A095437", $$parm1, $$parm2) . "\n"; } '\
+	>>       $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================
@@ -630,7 +664,7 @@ binomin:
 #--------------------------------
 carule0:
 	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \
-	$(COMMON)/jnames.txt \
+	$(COMMON)/joeis_names.txt \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -2311,7 +2345,7 @@ morfix:
 	'{ my ($$aseqno, $$map) = ($$1, $$7); $$map =~ s{\s}{}g; $$map =~ tr{\[\]\(\)}{\{\}\{\}};'\
 	'  $$map =~ s{\}\,}{\}\;}g; $$map =~ s{[\,\;]\Z}{}; if ($$map =~ m{[\}\;]}) { $$map =~ s{[\{\}\,]}{}g; };'\
 	'  $$map =~ s{\;}{\,}g; $$map =~ m{\A(\d+)}; my $$start = ""; '\
-	'if ($$line =~ m{(start |starting |apply |applied )(with |from |to )([a-z]\(\d\)\D*)?(\d+)}i) { $$start = $$4; }'\
+	'if ($$line =~ m{(start |starting |apply |applied )(with |from |to |at )([a-z]\(\d\)\D*)?(\d+)}i) { $$start = $$4; }'\
 	'if ($$line =~ m{\-\>}) { print join("\t", $$aseqno, "$@", 0, $$start, "", $$map) . "\n"; }}' \
 	$(COMMON)/names \
 	| grep -vE "A106437|A119647|A176416|A30549[56]|A317198|A32092[67]" \
@@ -2343,7 +2377,7 @@ morfix_test:
 morfix_grep:
 	perl -ne \
 	'if ((m{\-\>}) and (m{^(A\d+)\D+(\d[ 0-9\-\>\,\;\{\}\(\)\[\]]{9,})})) { print; }' \
-	$(COMMON)/jnames.txt | tee x.tmp
+	$(COMMON)/joeis_names.txt | tee x.tmp
 	wc -l x.tmp
 #--------------------------------
 num1dig: # A126207 null    Number of 5's in decimal expansion of 5^n.
@@ -4738,19 +4772,26 @@ joeis2: # LIST
 #--------------------------
 analog: analog1 anasort anastret
 analog1:
-	perl normalize_name.pl $(COMMON)/jnames.txt \
+	perl normalize_name.pl $(COMMON)/joeis_names.txt \
 	>        $@.tmp
 	wc -l    $@.tmp
 anasort: 
-	sort -k3 -k2 -k1 -t "	" analog1.tmp \
+	sed -e "s/\t/\#/g" analog1.tmp \
+	| sort --field-separator="#" -k3,3 -k2,2 -k1,1 -k4,4n \
+	| sed -e "s/\#/\t/g" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 anastret:
 	perl stretchable.pl anasort.tmp \
+	>        $@.tmp
+	grep -v "cellular automaton" $@.tmp \
 	>        $@.txt
 	head -n4 $@.txt
 	wc   -l  $@.txt
+	grep    "cellular automaton" $@.tmp \
+	>        $@.ca.txt
+	wc   -l  $@.ca.txt
 #--
 analog4:
 	make seq4 LIST=analog1.tmp

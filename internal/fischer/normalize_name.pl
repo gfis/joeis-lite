@@ -2,6 +2,7 @@
 
 # Convert names to regular expressions
 # @(#) $Id$
+# 2021-05-13: with numbers
 # 2019-08-29: read jnames.txt
 # 2019-04-06, Georg Fischer
 #
@@ -73,7 +74,10 @@ while (<>) { # read inputfile
         $name =~ s{ eleven(s|th|) } { 11$1 }g;
         $name =~ s{ twelve?(s|th|) } { 12$1 }g;
     } # number words 0-12
-    $name =~ s{(\d+)}{\(\\d+\)}g; # generalize numbers
+    my (@numbers) = ();
+    while ($name =~ s{(\d+)}{\(\\d+\)}) { # generalize numbers
+        push(@numbers, $1);
+    }
     $name =~ s{([^a-zA-Z])\s+([^a-zA-Z])}{$1$2}g;  # remove space around operators
     $name =~ s{(\W)k(\W)}  {$1n$2}g; # single k -> n
     # $name =~ s{A\(\\d\+\)}{Annnnnn}g;
@@ -93,7 +97,7 @@ while (<>) { # read inputfile
                 ) . "\n";
         } else {
             print join("\t", $aseqno, substr($superclass, 0, 8) # cc        }
-                , substr($name, 0, 512) # name
+                , substr($name, 0, 512), join(",", @numbers) # name
                 ) . "\n";
         }
     }
