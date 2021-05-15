@@ -336,15 +336,16 @@ A001482:
 a0330:
 	cp -v $@.man $@.gen
 #----
-A007348:
+A007348: # < 2021-05-15
 	perl $@.pl > $@.gen
-A018857:
+A018857: # < 2021-05-15
 	perl $@.pl > $@.gen
-A033235:
+	# cat      $@.gen
+A033235: # 52, < 2021-05-15
 	perl $@.pl > $@.gen
-A033633:
+A033633: # 14, < 2021-05-15
 	perl $@.pl > $@.gen
-A035536:
+A035536: # < 2021-05-15
 	cp -v A035536.man A035536.gen
 #----
 A060722:
@@ -401,6 +402,9 @@ a165824:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------
+a266759:
+	grep -P "\-1\,2\,\-2\,1\,"  $(COMMON)/asdata.txt | grep -P "\,1\,0\,0\,\-1\," || :
 #================================
 bas: # only a few for basdig2
 	make bas_all TARGET=select
@@ -1603,6 +1607,9 @@ holof1:
 	make GEN=holof.tmp holt > $@.tmp
 	head -n8 $@.tmp
 	wc -l    $@.tmp
+#----
+holom:
+	grep -E "^A[0-9]" holos.man > holom.gen
 #----
 holor: holor1 holor2
 holor1:
@@ -3374,6 +3381,8 @@ euguman:
 	  >      $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+euguman2:
+	cp -v    $@.man $@.gen
 eugpolym:
 	cp -v    $@.man $@.gen
 #--
@@ -4770,19 +4779,20 @@ joeis2: # LIST
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #--------------------------
-analog: analog1 anasort anastret
+analog: analog1 anasort anaprep anaload anastret
 analog1:
 	perl normalize_name.pl $(COMMON)/joeis_names.txt \
 	>        $@.tmp
+	head -n4 $@.tmp
 	wc -l    $@.tmp
 anasort: 
 	sed -e "s/\t/\#/g" analog1.tmp \
-	| sort --field-separator="#" -k3,3 -k2,2 -k1,1 -k4,4n \
+	| sort --field-separator="#" -k4,4 -k3,3 -k1,1 -k5,5 \
 	| sed -e "s/\#/\t/g" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-anastret:
+anaprep:
 	perl stretchable.pl anasort.tmp \
 	>        $@.tmp
 	grep -v "cellular automaton" $@.tmp \
@@ -4792,6 +4802,17 @@ anastret:
 	grep    "cellular automaton" $@.tmp \
 	>        $@.ca.txt
 	wc   -l  $@.ca.txt
+anaload:
+	make seq4 LIST=anastret.txt
+	$(DBAT) "UPDATE seq4 s \
+	  SET s.parm4 = SUBSTR(COALESCE((SELECT h.matrix FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 2048) \
+	  ,   s.parm5 = SUBSTR(COALESCE((SELECT h.init   FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 1024) \
+	;"
+anastret:
+	$(DBAT) -x "SELECT * FROM seq4 ORDER BY 6,4,5" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc   -l  $@.txt
 #--
 analog4:
 	make seq4 LIST=analog1.tmp

@@ -31,13 +31,13 @@ while (<>) { # read inputfile
     next if m{\A\s*\Z}; # skip empty lines
     s/\s+\Z//; # chompr
     my ($aseqno, $superclass, $name, $keyword, $range) = split(/\t/);
-    # $superclass =~ s{\Anull\Z}{\{\}      };
-    $superclass =~ s{\Anull\Z}{ZZ      };
-    $superclass .= "    "; # for class A123456 
+    $superclass =~ s{\Anull\Z}{zzzz};
+    $superclass = substr($superclass . "                ", 0, 12);
     $name =~ s/\s*\Z//; # remove trailing spaces
-    $name =~ s/\.\Z//;  # remove trailing dot
-    $name =~ s/\s*\Z//; # remove trailing spaces
-    # $name =~ s{\s+([\-\+\=\*\/\^])\s+}{$1}g; # remove space around operators
+    $name =~ s/\s*\.\s*\Z//;  # remove trailing dot
+    # $name =~ s{ the | of | a | to | with | its | is |\, | where | such that | defined by }{ }g;
+    $name =~ s{[Bb]ase\-(\d)}{base $1}g;
+    $name =~ s{[\'\"]}{}g;
     if ($name =~ m{zero|one|two|three|four|fiv|six|seven|eight|nin|ten|eleven|twelv|first|second|third}i) { 
         # number words 0-12
         $name =~ s{Zeroe?(s|th|) }  {0$1 };
@@ -80,8 +80,9 @@ while (<>) { # read inputfile
     }
     $name =~ s{([^a-zA-Z])\s+([^a-zA-Z])}{$1$2}g;  # remove space around operators
     $name =~ s{(\W)k(\W)}  {$1n$2}g; # single k -> n
-    # $name =~ s{A\(\\d\+\)}{Annnnnn}g;
-    if ($name !~ m{A\(\\d\+\)}) {
+    $name =~ s{A\(\\d\+\)}{Annnnnn}g;
+    # if ($name !~ m{A\(\\d\+\)}) 
+    {
         if (0) {
             print join("\t", $aseqno, substr($superclass, 0, 8) # cc
                 , 'X'       # offset
@@ -96,7 +97,7 @@ while (<>) { # read inputfile
                 , substr($name, 0, 512) # name
                 ) . "\n";
         } else {
-            print join("\t", $aseqno, substr($superclass, 0, 8) # cc        }
+            print join("\t", $aseqno, -2, $superclass # cc        }
                 , substr($name, 0, 512), join(",", @numbers) # name
                 ) . "\n";
         }

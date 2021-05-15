@@ -1,0 +1,637 @@
+A034952	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,-2,-2,-6 })	63					Expansion of eta(16z)^4*eta(4z)^2.
+A034998	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -8,8 })	23					Expansion of Product (1+q^(2k-1))^(-8)*(1+q^(4k))^(-8), k=1..inf.
+A035118	eulerxfm	3	3	1	new PaddingSequence(new long[] {  }, new long[] { -72 })	18					Fourier coefficients of (normalized Delta)^3.
+A035150	eulerxfm	4	3	1	new PaddingSequence(new long[] {  }, new long[] { -96 })	49					Fourier coefficients of (normalized Delta)^4.
+A035190	eulerxfm	5	3	1	new PaddingSequence(new long[] {  }, new long[] { -120 })	45					Fourier coefficients of (normalized Delta)^5.
+A035363	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1 })	226					Number of partitions of n into even parts.
+A038348	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,1 }, new long[] { 1,0 })	152					Expansion of (1/(1-x^2))*Product_{m>=0} 1/(1-x^(2m+1)).
+A046895	eulerxfm	0	3	1	new PaddingSequence(new long[] { 9 }, new long[] { 8,-12,8,-4 })	174					Sizes of successive clusters in Z^4 lattice.
+A052816	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,-1 }, new long[] { 1,0 })	52					G.f.: (1+x)*Product_{m>0} (1 + x^m).
+A055101	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,2,2,-2,0 })	165					Expansion of square of continued fraction 1/ ( 1+q/ ( 1+q^2/ ( 1+q^3/ ( 1+q^4/... )))).
+A055102	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -3,3,3,-3,0 })	146					Expansion of cube of continued fraction 1/ ( 1+q/ ( 1+q^2/ ( 1+q^3/ ( 1+q^4/... )))).
+A055103	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -4,4,4,-4,0 })	132					Expansion of 4th power of continued fraction 1/ ( 1+q/ ( 1+q^2/ ( 1+q^3/ ( 1+q^4/... )))).
+A058484	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,0,0,0,6,0 })	97					McKay-Thompson series of class 12F for Monster.
+A058485	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,-4,0,-4,-2,0 })	135					McKay-Thompson series of class 12G for Monster.
+A058492	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -3,0,-6,0,-3,0 })	120					McKay-Thompson series of class 12d for Monster.
+A058514	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,0,4,-4,4,0,4,0 })	108					McKay-Thompson series of class 16A for Monster.
+A058538	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,3,-3,3,3,-3,3,3,0 })	113					McKay-Thompson series of class 18c for Monster.
+A058539	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,0,0,0,4,0 })	112					McKay-Thompson series of class 18d for the Monster group.
+A058553	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,0,-2,0,-4,0,-2,0,-2,0 })	143					McKay-Thompson series of class 20D for Monster.
+A058554	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,0,3,0,0,0,3,0,3,0 })	117					McKay-Thompson series of class 20E for Monster.
+A058571	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,-3,6,0,3,-6,3,0,6,-3,3,0 })	125					McKay-Thompson series of class 24A for Monster.
+A058576	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,0,0,0,3,0 })	125					McKay-Thompson series of class 24F for Monster.
+A058609	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,0,2,0,2,0,0,0,2,0,2,0,2,0 })	132					McKay-Thompson series of class 28D for Monster.
+A058616	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,0,2,0,0,0,2,0,2,0 })	135					McKay-Thompson series of class 30E for Monster.
+A058632	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,0,2,-2,2,0,2,0 })	139					McKay-Thompson series of class 32b for Monster.
+A058646	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,2,-1,2,1,-2,1,2,0,2,1,-2,1,2,-1,2,1,0 })	145					McKay-Thompson series of class 36C for Monster.
+A058664	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,0,0,1,1,0,1,0,1,0,1,1,0,0,1,1,1,0 })	150					McKay-Thompson series of class 40C for Monster.
+A058678	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,1,1,0,0,1,0,1,1,0,1,0,0,1,1,0,1,1,0 })	153					McKay-Thompson series of class 42d for Monster.
+A058686	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,1,0,0,1,1,0,0,1,0,1,1,0 })	157					McKay-Thompson series of class 45b for Monster.
+A058691	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,2,-1,1,0,1,0,2,0,1,-2,1,0,2,0,1,0,1,-1,2,0,1,0 })	161					McKay-Thompson series of class 48A for Monster.
+A058729	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,0,2,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,2,0,0,0,1,0 })	176					McKay-Thompson series of class 60E for the Monster group.
+A058839	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0,-1,-1,-2 }, new long[] { -1 })	91					Expansion of (1-x^5)*Product_{r>=3} (1-x^r).
+A059160	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 5,0,-5,0,5,-5 })	203					Number of ordered ways of writing n as a sum of 5 generalized pentagonal numbers (A001318).
+A059777	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,1 }, new long[] { 1,0,1,1 })	151					Number of self-conjugate three-quadrant Ferrers graphs that partition n.
+A059778	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,-1 }, new long[] { -1,0,-1,-1 })	91					Expansion of 1 / product((1+q^(2*n+3))/(1-q^(2*n+2)), n=0..inf).
+A064349	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2,3,4 }, new long[] { 0 })	39					Generating function: 1/((1-x)*(1-x^2)^2*(1-x^3)^3*(1-x^4)^4).
+A070557	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2,2,2,1 }, new long[] { 0 })	43					Number of two-rowed partitions of length 4.
+A070558	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2,2,2,2,1 }, new long[] { 0 })	39					Number of two-rowed partitions of length 5.
+A070559	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2,2,2,2,2,1 }, new long[] { 0 })	38					Number of two-rowed partitions of length 6.
+A079902	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,4 }, new long[] { -4,6,-4,2 })	37					G.f. = { 1+sum(4*n*q^n, n=1..infinity)} / { theta series for square lattice }.
+A082556	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 30 })	51					G.f.: Product_{m>=1} 1/(1-x^m)^30.
+A082557	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 32 })	50					G.f.: Product_{m>=1} 1/(1-x^m)^32.
+A082558	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 48 })	46					Expansion of Product_{m>=1} 1/(1-x^m)^48.
+A082559	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 64 })	43					G.f.: Product_{m>=1} 1/(1-x^m)^64.
+A084376	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,0 }, new long[] { 1 })	130					G.f.: (1+x)/Product_{m>0} (1 - x^m).
+A085811	eulerxfm	1	3	0,0,1	new PaddingSequence(new long[] { 0 }, new long[] { 1 })	143					Number of partitions of n including 3, but not 1.
+A087787	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,2 }, new long[] { 1 })	136					a(n) = Sum_{k=0..n} (-1)^(n-k)*A000041(k).
+A087897	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0 }, new long[] { 1,0 })	183					Number of partitions of n into odd parts greater than 1.
+A092295	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,2 }, new long[] { 1 })	136					Number of partitions of n with even number (or 0) 2's.
+A092833	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0 })	162					Expansion of q / (chi(-q) * chi(-q^23)) in powers of q where chi() is a Ramanujan theta function.
+A094428	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,0,0,1,-1,1,0,0,0,0,-2 })	103					Expansion of infinite product (q^12,q^12,q^6;q^5,q^7;q^12)_infty.
+A095944	eulerxfm	1	3	1	new PaddingSequence(new long[] { 3 }, new long[] { 1,0 })	135					Number of subsets S of {1,2,...,n} which contain a number that is greater than the sum of the other numbers in S.
+A096740	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1 }, new long[] { 1,0 })	206					Number of partitions of n into distinct parts >= 11.
+A096749	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] { 0,0,1,1 }, new long[] { 1,0 })	172					Number of partitions of n into distinct parts, the least being 2.
+A096765	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 0,1 }, new long[] { 1,0 })	168					Number of partitions of n into distinct parts, the least being 1.
+A096778	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,1,1,1 }, new long[] { 1,0 })	47					Number of partitions of n with at most two even parts.
+A096911	eulerxfm	1	3	0,1	new PaddingSequence(new long[] { 1,0 }, new long[] { 1,-1,1,0 })	59					Number of partitions of n into distinct parts with exactly one even part.
+A096914	eulerxfm	2	3	1	new PaddingSequence(new long[] { 2,1 }, new long[] { 1,0 })	43					Number of partitions of 2*n into distinct parts with exactly two odd parts.
+A097196	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,2,1,0,-1 })	161					Expansion of psi(x^3)^2 / f(-x^2) in powers of x where psi(), f() are Ramanujan theta functions.
+A099383	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1 }, new long[] { 0,0,0,0,0,0,0,0,0,0,0,1 })	54					Number of partitions of n into minimal numbers.
+A100534	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 5,5,5,0,5,5,5,2 })	28					Number of partitions of 2*n into parts of two kinds.
+A100684	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,1,2,-1 }, new long[] { 2,1,2,0 })	121					Number of partitions of 2n free of multiples of 8 such that 4 occurs at most once. All odd parts occur with even multiplicities. There is no restriction on the other even parts.
+A101195	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,1,0,1,-1,0 })	156					Expansion of psi(x^3) / psi(x) in powers of x where psi() is a Ramanujan theta function.
+A102346	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,1,1,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,1,1,2,1 })	121					Number of partitions of 2n in which odd parts and multiples of 3 and 5 occur with even multiplicities. There is no restriction on the other even parts.
+A102420	eulerxfm	0	3	0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,0,-1,-1,-1,-1 }, new long[] { 0 })	96					Number of partitions of n into exactly k = 5 parts with each part p <= 5.
+A102422	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,1,1,1,1,-1,-1,-1,-1,-1 }, new long[] { 0 })	97					Number of partitions of n with k <= 5 parts and each part p <= 5.
+A103257	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,1,0,1,0,0,2,1,0,0,2,0,2,1,-2,1,2,0,2,0,0,1,2,0,0,1,0,1,2,-1 })	137					Number of partitions of 2n free of multiples of 5. All odd parts occur with multiplicity 2 or 4. the even parts occur at most twice.
+A103259	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,1,0,1,0,0,2,1,0,0,2,0,2,1,0,1,2,0,2,0,0,1,2,0,0,1,0,1,2,0 })	135					Number of partitions of 2n prime to 3,5 with all odd parts occurring with even multiplicities. There is no restriction on the even parts.
+A103261	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 20,-10,20,0 })	21					Number of partitions of 2n into parts with 10 types c^1 c^2...C^10 of each part. The even parts appear with multiplicity 1 for each type . The odd parts occur with multiplicity 2 for each part.
+A103628	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 2,3,0 }, new long[] { 1 })	118					Total sum of parts of multiplicity 1 in all partitions of n.
+A103650	eulerxfm	1	3	0,1	new PaddingSequence(new long[] { 1,3 }, new long[] { 1 })	121					G.f.: x^2/((1-x^2)^2*Product_{i>0}(1-x^i)).
+A103924	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,2,2,2,2 }, new long[] { 1 })	112					Number of partitions of n into parts but with two kinds of parts of sizes 1,2,3,4 and 5.
+A103925	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,2,2,2,2,2 }, new long[] { 1 })	110					Number of partitions of n into parts but with two kinds of parts of sizes 1,2,3,4,5 and 6.
+A103926	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,2,2,2,2,2,2 }, new long[] { 1 })	36					Number of partitions of n into parts but with two kinds of parts of sizes 1 to 7.
+A103927	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,2,2,2,2,2,2,2 }, new long[] { 1 })	38					Number of partitions of n into parts but with two kinds of parts of sizes 1 to 8.
+A103928	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,2,2,2,2,2,2,2,2 }, new long[] { 1 })	36					Number of partitions of n into parts but with two kinds of parts of sizes 1 to 9.
+A103929	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,2,2,2,2,2,2,2,2,2 }, new long[] { 1 })	36					Number of partitions of n into parts but with two kinds of parts of sizes 1 to 10.
+A104467	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,1,-1,-1,1,0,0,0 })	183					Coefficients of the A-Bailey Mod 9 identity.
+A104468	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,-1,1,0,0,1,-1,0,0 })	185					Coefficients of the B-Bailey Mod 9 identity.
+A104469	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,1,0,0,1,0,-1,0 })	187					Coefficients of the C-Bailey Mod 9 identity.
+A104501	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0 })	135					Coefficients of the A-Dyson Mod 27 identity.
+A104503	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,0 })	136					Coefficients of the C-Dyson Mod 27 identity.
+A104504	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,0 })	139					Coefficients of the D-Dyson mod 27 identity.
+A107234	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,0,0 })	46					Expansion of 1 / Product_{n>=0} (1-q^(5n+1))(1-q^(5n+2))(1-q^(5n+3)).
+A107235	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,1,0 })	49					Expansion of 1 / Prod{n>=0} (1-q^(5n+1))(1-q^(5n+2))(1-q^(5n+4)).
+A107236	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,1,1,0 })	49					Expansion of 1 / Prod{n>=0} (1-q^(5n+1))(1-q^(5n+3))(1-q^(5n+4)).
+A107237	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,1,1,0 })	49					Expansion of 1 / Prod{n>=0} (1-q^(5n+2))(1-q^(5n+3))(1-q^(5n+4)).
+A108962	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,-1,1,1,1,1,0 })	145					Number of partitions that are "3-close" to being self-conjugate.
+A111330	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,1,0 })	83					Let qf(a,q) = Product(1-a*q^j,j=0..infinity); g.f. is qf(q,q^4)/qf(q^3,q^4).
+A111375	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,-1,1,-1,1,1,0 })	80					Let qf(a,q) = Product(1-a*q^j,j=0..infinity); g.f. is qf(q,q^7)*qf(q^2,q^7)*qf(q^4,q^7)/(qf(q^3,q^7)*qf(q^5,q^7)*qf(q^6,q^7))).
+A111711	eulerxfm	1	3	1	new PaddingSequence(new long[] { 2,2,0,0,-1 }, new long[] { 0 })	199					Leading column of triangle mentioned in A111710.
+A112142	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 12,-12,12,0 })	84					McKay-Thompson series of class 8B for the Monster group.
+A112143	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -4,-4,-4,0 })	156					McKay-Thompson series of class 8D for the Monster group.
+A112160	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-4,4,0 })	125					McKay-Thompson series of class 24E for the Monster group.
+A112161	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,-2,0,-2,-1,0 })	171					McKay-Thompson series of class 24G for the Monster group.
+A112165	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-2,2,0,1,-4,1,0,2,-2,1,0 })	221					McKay-Thompson series of class 24h for the Monster group.
+A112173	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-2,4,0,2,-4,2,0,4,-2,2,0 })	145					McKay-Thompson series of class 36b for the Monster group.
+A112175	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,-2,0,-1,0 })	176					McKay-Thompson series of class 36e for the Monster group.
+A112176	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,1,1,1,-1,-1,-1,1,0,1,-1,-1,-1,1,1,1,-1,0 })	177					McKay-Thompson series of class 36f for the Monster group.
+A112179	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-2,2,0,4,-2,2,0,2,-4,2,0,2,-2,4,0,2,-2,2,0 })	150					McKay-Thompson series of class 40B for the Monster group.
+A112184	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,-1,0,-1,0,-1,0,-1,0,-2,0,-1,0,-1,0,-1,0,-1,0,-1,0 })	190					McKay-Thompson series of class 44b for the Monster group.
+A112205	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,-1,1,1,0,1,1,0,0,1,-1,1,0,-1,1,1,0,1,1,-1,0,1,-1,1,0,0,1,1,0,1,1,-1,0,1,0 })	188					McKay-Thompson series of class 72a for the Monster group.
+A112209	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-1,1,0,2,-1,1,0,1,-2,1,0,1,-1,2,0,1,-1,1,0 })	195					McKay-Thompson series of class 80a for the Monster group.
+A112213	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-1,1,0,1,-1,1,0,1,-1,2,0,1,-1,1,0,1,-1,1,0,1,-2,1,0,1,-1,1,0,1,-1,1,0,2,-1,1,0,1,-1,1,0,1,-1,1,0 })	203					McKay-Thompson series of class 88A for the Monster group.
+A116458	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,0,0,0,0,0,1,0,1,0,0,0 })	71					Number of partitions of n into parts congruent to 1, 9, or 11 (mod 14).
+A116634	eulerxfm	0	3	0,0,0,1	new PaddingSequence(new long[] { 1,1,1 }, new long[] { 1,1,0 })	140					Number of partitions of n having exactly one part that is a multiple of 3.
+A116646	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] { 0,2,2 }, new long[] { 1 })	131					Number of doubletons in all partitions of n. By a doubleton in a partition we mean an occurrence of a part exactly twice (the partition [4,(3,3),2,2,2,(1,1)] has two doubletons, shown between parentheses).
+A116665	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 0,1,2,1,1,-1 }, new long[] { 1,0 })	156					Total number of parts that appear exactly once in the partitions of n into odd parts.
+A116930	eulerxfm	1	3	1	new PaddingSequence(new long[] { 1,3,1,-1 }, new long[] { 1,0 })	43					Sum of parts, counted without multiplicities, in all partitions of n into odd parts.
+A117275	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0 }, new long[] { 1,1,1,0 })	53					Number of partitions of n with no even parts repeated and with no 1's.
+A117276	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 2 }, new long[] { 1,1,1,0 })	42					Number of 1's in all partitions of n with no even parts repeated.
+A117524	eulerxfm	1	3	0,0,1	new PaddingSequence(new long[] { 0,1,2,2 }, new long[] { 1 })	134					Total number of parts of multiplicity 3 in all partitions of n.
+A117525	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] { 0,3,3,1,0 }, new long[] { 1 })	124					Total sum of parts of multiplicity 2 in all partitions of n.
+A117957	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0 }, new long[] { 1,0,0,0 })	81					Number of partitions of n into parts larger than 1 and congruent to 1 mod 4.
+A119620	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0 }, new long[] { 0,1 })	56					Number of partitions of floor(3n/2) into n parts each from {1,2,...,n}.
+A119651	eulerxfm	1	3	new Z[0]	new PaddingSequence(new long[] { 4,0,0,-1,0,-1 }, new long[] { 0 })	214					Number of different values of exactly n standard American coins (pennies, nickels, dimes and quarters).
+A120452	eulerxfm	1	3	1	new PaddingSequence(new long[] { 1,2,2,1,1,0 }, new long[] { 1 })	125					Number of partitions of n-1 boys and one girl with no couple.
+A120477	eulerxfm	0	3	1	new PaddingSequence(new long[] { 6 }, new long[] { 1 })	100					Apply partial sum operator 5 times to partition numbers.
+A123676	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { -3,0,-1,0,-3,0,-3,0,-4,0,-3,0,-3,0,-1,0,-3,0 })	138					McKay-Thompson series of class 18C for the Monster group with a(0) = -3.
+A127391	eulerxfm	0	3	0	new PaddingSequence(new long[] {  }, new long[] { 2,-3,2,-3,2,-3,2,2,2,-3,2,-3,2,-3,2,0 })	81					Series expansion of the elliptic function sqrt(k) = theta_2/theta_3 in powers of q^(1/4).
+A132136	eulerxfm	1	3	new Z[0]	new PaddingSequence(new long[] {  }, new long[] { 16,-8,16,0 })	70					Expansion of -lambda(t + 1) in powers of the nome q = exp(Pi i t).
+A132462	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,1,-1,1,0 })	192					Number of partitions of n into distinct parts congruent to 0 or 2 modulo 3.
+A132463	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-1,1,1,0,0 })	189					Number of partitions of n into distinct parts congruent to 0 or 1 modulo 3.
+A135348	eulerxfm	1	3	1	new PaddingSequence(new long[] { 2,3,1,0 }, new long[] { 1 })	38					Total sum of squares of number of distinct parts in all partitions of n.
+A136028	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,-3,6,-12,6,-3,6,-6 })	172					Expansion of (phi(q) * phi(q^2))^3 in powers of q where phi() is a Ramanujan theta function.
+A139135	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,2,-2,1,-1,2,-1,1,-2,2,-1,0 })	125					Expansion of psi(-q^3) / f(q) where psi(), f() are Ramanujan theta functions.
+A139214	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,3,-1,0,2,0,-1,2,1,0,1,0,1,3,-1,0,2,0,-1,3,1,0,1,0,1,2,-1,0,2,0,-1,3,1,0,0 })	181					Expansion of q * psi(q^2) * psi(-q^9) / (phi(-q^3) * psi(-q^3)) in powers of q where phi(), psi() are Ramanujan theta functions.
+A139631	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,1,0,0 })	199					Expansion of chi(x^5) / chi(-x^2) in powers of x where chi() is a Ramanujan theta function.
+A144248	eulerxfm	1	3	1	new PaddingSequence(new long[] { -23 }, new long[] { -24 })	98					Partial sums of A000594.
+A144596	eulerxfm	0	3	0,0,0,0,1	new PaddingSequence(new long[] { 0,0,0,1,0,0,0,-1,1 }, new long[] { 0 })	99					Christoffel word of slope 2/7.
+A144597	eulerxfm	0	3	0,0,0,1	new PaddingSequence(new long[] { 0,0,1,0,0,0,0,0,-1,1 }, new long[] { 0 })	100					Christoffel word of slope 3/7.
+A144599	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] { 0,1,0,0,0,0,0,0,0,0,0,-1,1 }, new long[] { 0 })	101					Christoffel word of slope 6/7.
+A144600	eulerxfm	0	3	0,0,0,0,0,0,1	new PaddingSequence(new long[] { 0,0,0,0,0,1,0,0,0,0,0,-1,1 }, new long[] { 0 })	97					Christoffel word of slope 2/11.
+A144603	eulerxfm	0	3	0,0,0,1	new PaddingSequence(new long[] { 0,0,1,0,0,0,0,0,0,0,0,0,0,0,-1,1 }, new long[] { 0 })	100					Christoffel word of slope 5/11.
+A144608	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] { 0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,1 }, new long[] { 0 })	101					Christoffel word of slope 10/11.
+A144874	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,-3 }, new long[] { 2,-2 })	99					Coefficients of the series expansion of q^(-1/4) pi_q.
+A145783	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-1,-1,0,-1,1,1,0,-1,1,1,0,1,-1,-2,0,1,1,1,0,-1,-1,1,0,-1,-1,-1,0,1,2,1,0,-1,-1,-1,0,1,-1,-1,0,1,1,1,0,-2,-1,1,0,1,1,-1,0,1,1,-1,0,-1,-1,1,0 })	195					Expansion of (chi(q) * chi(q^15)) / (chi(q^3) * chi(q^5))^2 in powers of q where chi() is a Ramanujan theta function.
+A145785	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,-1,-1,-1,-1,1,0,-1,-1,1,0,0,0,-1,-2,-1,0,1,0,0,-1,-1,0,0,-1,-1,-1,-1,0,2,0,-1,-1,-1,-1,0,0,-1,-1,0,0,1,0,-1,-2,-1,0,0,0,1,-1,-1,0,1,-1,-1,-1,-1,0,0 })	195					Expansion of q * f(-q^2) * f(-q^30) / (f(q^3) * f(q^5)) in powers of q where f() is a Ramanujan theta function.
+A147783	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,0,1,1,1,0,1,0,1 })	164					Number of partitions of n into parts divisible by 2 or 5.
+A147784	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,1,1,0,1,0,1,1,0,0,1 })	177					Number of partitions of n into parts divisible by 3 or 4.
+A147785	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,1,0,1,1,0,0,1,1,0,1,0,0,1 })	182					Number of partitions of n into parts divisible by 3 or 5.
+A147786	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,0,1,1,0,0,1,0,1,0,1,0,0,1,1,0,0,0,1 })	194					Number of partitions of n into parts divisible by 4 or 5.
+A147787	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,0,1,0,1,0,1,1,0,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,1,1,0,1,0,1,0,0,0,1 })	197					Number of partitions of n into parts divisible by 4,6 or 9.
+A159584	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,-3,-2,-3,0,-3,0,-3,-2,-3,0,-5 })	61					Coefficients in expansion of eta(2z)^3*eta(6z)^3/theta(3z).
+A160458	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 10,10,10,10,8 })	67					Coefficients in the expansion of C^2/B^10, in Watson's notation of page 106.
+A160460	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 7,7,7,7,1 })	75					Coefficients in the expansion of C^6 / B^7, in Watson's notation of page 106.
+A160461	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,2,2,2,1 })	108					Coefficients in the expansion of C/B^2, in Watson's notation of page 106.
+A160462	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,3,3,3,1 })	96					Coefficients in the expansion of C^2/B^3, in Watson's notation of page 106.
+A160463	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,4,4,4,1 })	88					Coefficients in the expansion of C^3/B^4, in Watson's notation of page 106.
+A160506	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 5,5,5,5,1 })	82					Coefficients in the expansion of C^4/B^5, in Watson's notation of page 106.
+A160521	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 8,8,8,8,1 })	72					Coefficients in the expansion of C^7/B^8, in Watson's notation of page 106.
+A160525	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,2,2,2,2,2,1 })	107					Coefficients in the expansion of C/B^2, in Watson's notation of page 118.
+A160526	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,3,3,3,3,3,1 })	95					Coefficients in the expansion of C^2/B^3, in Watson's notation of page 118.
+A160527	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,4,4,4,4,4,1 })	87					Coefficients in the expansion of C^3/B^4, in Watson's notation of page 118.
+A160528	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 5,5,5,5,5,5,1 })	81					Coefficients in the expansion of C^4/B^5, in Watson's notation of page 118.
+A160533	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,6,6,6,6,6,1 })	77					Coefficients in the expansion of C^5/B^6, in Watson's notation of page 118.
+A160539	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 7,7,7,7,7,7,6 })	74					Coefficients in the expansion of C/B^7, in Watson's notation of page 118.
+A161435	eulerxfm	0	3	1	new PaddingSequence(new long[] { 3,-1,-1,-1 }, new long[] { 0 })	103					Number of reduced words of length n in the Weyl group A_3.
+A161436	eulerxfm	0	3	1	new PaddingSequence(new long[] { 4,-1,-1,-1,-1 }, new long[] { 0 })	101					Number of reduced words of length n in the Weyl group A_4.
+A161437	eulerxfm	0	3	1	new PaddingSequence(new long[] { 5,-1,-1,-1,-1,-1 }, new long[] { 0 })	96					Number of reduced words of length n in the Weyl group A_5.
+A161438	eulerxfm	0	3	1	new PaddingSequence(new long[] { 6,-1,-1,-1,-1,-1,-1 }, new long[] { 0 })	88					Number of reduced words of length n in the Weyl group A_6.
+A161439	eulerxfm	0	3	1	new PaddingSequence(new long[] { 7,-1,-1,-1,-1,-1,-1,-1 }, new long[] { 0 })	74					Number of reduced words of length n in the Weyl group A_7.
+A161456	eulerxfm	0	3	1	new PaddingSequence(new long[] { 8,-1,-1,-1,-1,-1,-1,-1,-1 }, new long[] { 0 })	51					Number of reduced words of length n in the Weyl group A_8.
+A161497	eulerxfm	0	3	1	new PaddingSequence(new long[] { 17,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 }, new long[] { 0 })	78					Number of reduced words of length n in the Weyl group A_17.
+A161513	eulerxfm	0	3	1	new PaddingSequence(new long[] { 20 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_20.
+A161518	eulerxfm	0	3	1	new PaddingSequence(new long[] { 21 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_21.
+A161521	eulerxfm	0	3	1	new PaddingSequence(new long[] { 22 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_22.
+A161523	eulerxfm	0	3	1	new PaddingSequence(new long[] { 23 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_23.
+A161524	eulerxfm	0	3	1	new PaddingSequence(new long[] { 24 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_24.
+A161525	eulerxfm	0	3	1	new PaddingSequence(new long[] { 25 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_25.
+A161526	eulerxfm	0	3	1	new PaddingSequence(new long[] { 26 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_26.
+A161530	eulerxfm	0	3	1	new PaddingSequence(new long[] { 27 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_27.
+A161571	eulerxfm	0	3	1	new PaddingSequence(new long[] { 28 }, new long[] { -1 })	20					Number of reduced words of length n in the Weyl group A_28.
+A161572	eulerxfm	0	3	1	new PaddingSequence(new long[] { 29 }, new long[] { -1 })	19					Number of reduced words of length n in the Weyl group A_29.
+A161573	eulerxfm	0	3	1	new PaddingSequence(new long[] { 30 }, new long[] { -1 })	19					Number of reduced words of length n in the Weyl group A_30.
+A161636	eulerxfm	0	3	1	new PaddingSequence(new long[] { 31 }, new long[] { -1 })	19					Number of reduced words of length n in the Weyl group A_31.
+A161640	eulerxfm	0	3	1	new PaddingSequence(new long[] { 32 }, new long[] { -1 })	18					Number of reduced words of length n in the Weyl group A_32.
+A161646	eulerxfm	0	3	1	new PaddingSequence(new long[] { 33 }, new long[] { -1 })	18					Number of reduced words of length n in the Weyl group A_33.
+A161647	eulerxfm	0	3	1	new PaddingSequence(new long[] { 34 }, new long[] { -1 })	18					Number of reduced words of length n in the Weyl group A_34.
+A161648	eulerxfm	0	3	1	new PaddingSequence(new long[] { 35 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_35.
+A161649	eulerxfm	0	3	1	new PaddingSequence(new long[] { 36 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_36.
+A161650	eulerxfm	0	3	1	new PaddingSequence(new long[] { 37 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_37.
+A161651	eulerxfm	0	3	1	new PaddingSequence(new long[] { 38 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_38.
+A161652	eulerxfm	0	3	1	new PaddingSequence(new long[] { 39 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_39.
+A161653	eulerxfm	0	3	1	new PaddingSequence(new long[] { 40 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_40.
+A161662	eulerxfm	0	3	1	new PaddingSequence(new long[] { 41 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_41.
+A161663	eulerxfm	0	3	1	new PaddingSequence(new long[] { 42 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_42.
+A161668	eulerxfm	0	3	1	new PaddingSequence(new long[] { 43 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_43.
+A161679	eulerxfm	0	3	1	new PaddingSequence(new long[] { 44 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_44.
+A161690	eulerxfm	0	3	1	new PaddingSequence(new long[] { 45 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_45.
+A161691	eulerxfm	0	3	1	new PaddingSequence(new long[] { 46 }, new long[] { -1 })	17					Number of reduced words of length n in the Weyl group A_46.
+A161692	eulerxfm	0	3	1	new PaddingSequence(new long[] { 47 }, new long[] { -1 })	16					Number of reduced words of length n in the Weyl group A_47.
+A161693	eulerxfm	0	3	1	new PaddingSequence(new long[] { 48 }, new long[] { -1 })	16					Number of reduced words of length n in the Weyl group A_48.
+A161694	eulerxfm	0	3	1	new PaddingSequence(new long[] { 49 }, new long[] { -1 })	16					Number of reduced words of length n in the Weyl group A_49.
+A161695	eulerxfm	0	3	1	new PaddingSequence(new long[] { 50 }, new long[] { -1 })	16					Number of reduced words of length n in the Weyl group A_50.
+A161696	eulerxfm	0	3	1	new PaddingSequence(new long[] { 3,-1,0,-1,0,-1 }, new long[] { 0 })	103					Number of reduced words of length n in the Weyl group B_3.
+A161697	eulerxfm	0	3	1	new PaddingSequence(new long[] { 4,-1,0,-1,0,-1,0,-1 }, new long[] { 0 })	98					Number of reduced words of length n in the Weyl group B_4.
+A161776	eulerxfm	0	3	1	new PaddingSequence(new long[] { 11,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1 }, new long[] { 0 })	108					Number of reduced words of length n in the Weyl group B_11.
+A161858	eulerxfm	0	3	1	new PaddingSequence(new long[] { 12,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1 }, new long[] { 0 })	96					Number of reduced words of length n in the Weyl group B_12.
+A161859	eulerxfm	0	3	1	new PaddingSequence(new long[] { 13 }, new long[] { 0,-1 })	26					Number of reduced words of length n in the Weyl group B_13.
+A161862	eulerxfm	0	3	1	new PaddingSequence(new long[] { 14 }, new long[] { 0,-1 })	23					Number of reduced words of length n in the Weyl group B_14.
+A161877	eulerxfm	0	3	1	new PaddingSequence(new long[] { 17 }, new long[] { 0,-1 })	23					Number of reduced words of length n in the Weyl group B_17.
+A161878	eulerxfm	0	3	1	new PaddingSequence(new long[] { 18 }, new long[] { 0,-1 })	23					Number of reduced words of length n in the Weyl group B_18.
+A161879	eulerxfm	0	3	1	new PaddingSequence(new long[] { 19 }, new long[] { 0,-1 })	21					Number of reduced words of length n in the Weyl group B_19.
+A161880	eulerxfm	0	3	1	new PaddingSequence(new long[] { 20 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_20.
+A161899	eulerxfm	0	3	1	new PaddingSequence(new long[] { 21 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_21.
+A161900	eulerxfm	0	3	1	new PaddingSequence(new long[] { 22 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_22.
+A161930	eulerxfm	0	3	1	new PaddingSequence(new long[] { 23 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_23.
+A161931	eulerxfm	0	3	1	new PaddingSequence(new long[] { 24 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_24.
+A161932	eulerxfm	0	3	1	new PaddingSequence(new long[] { 25 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_25.
+A161933	eulerxfm	0	3	1	new PaddingSequence(new long[] { 26 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_26.
+A161954	eulerxfm	0	3	1	new PaddingSequence(new long[] { 27 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_27.
+A161956	eulerxfm	0	3	1	new PaddingSequence(new long[] { 28 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group B_28.
+A161972	eulerxfm	0	3	1	new PaddingSequence(new long[] { 29 }, new long[] { 0,-1 })	19					Number of reduced words of length n in the Weyl group B_29.
+A161976	eulerxfm	0	3	1	new PaddingSequence(new long[] { 30 }, new long[] { 0,-1 })	19					Number of reduced words of length n in the Weyl group B_30.
+A161977	eulerxfm	0	3	1	new PaddingSequence(new long[] { 31 }, new long[] { 0,-1 })	19					Number of reduced words of length n in the Weyl group B_31.
+A161987	eulerxfm	0	3	1	new PaddingSequence(new long[] { 32 }, new long[] { 0,-1 })	18					Number of reduced words of length n in the Weyl group B_32.
+A161988	eulerxfm	0	3	1	new PaddingSequence(new long[] { 33 }, new long[] { 0,-1 })	18					Number of reduced words of length n in the Weyl group B_33.
+A161991	eulerxfm	0	3	1	new PaddingSequence(new long[] { 34 }, new long[] { 0,-1 })	18					Number of reduced words of length n in the Weyl group B_34.
+A162149	eulerxfm	0	3	1	new PaddingSequence(new long[] { 35 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_35.
+A162150	eulerxfm	0	3	1	new PaddingSequence(new long[] { 36 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_36.
+A162165	eulerxfm	0	3	1	new PaddingSequence(new long[] { 37 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_37.
+A162166	eulerxfm	0	3	1	new PaddingSequence(new long[] { 38 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_38.
+A162168	eulerxfm	0	3	1	new PaddingSequence(new long[] { 39 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_39.
+A162176	eulerxfm	0	3	1	new PaddingSequence(new long[] { 40 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_40.
+A162178	eulerxfm	0	3	1	new PaddingSequence(new long[] { 41 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_41.
+A162179	eulerxfm	0	3	1	new PaddingSequence(new long[] { 42 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_42.
+A162181	eulerxfm	0	3	1	new PaddingSequence(new long[] { 43 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_43.
+A162182	eulerxfm	0	3	1	new PaddingSequence(new long[] { 44 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_44.
+A162183	eulerxfm	0	3	1	new PaddingSequence(new long[] { 45 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_45.
+A162186	eulerxfm	0	3	1	new PaddingSequence(new long[] { 46 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group B_46.
+A162191	eulerxfm	0	3	1	new PaddingSequence(new long[] { 47 }, new long[] { 0,-1 })	16					Number of reduced words of length n in the Weyl group B_47.
+A162193	eulerxfm	0	3	1	new PaddingSequence(new long[] { 48 }, new long[] { 0,-1 })	16					Number of reduced words of length n in the Weyl group B_48.
+A162204	eulerxfm	0	3	1	new PaddingSequence(new long[] { 49 }, new long[] { 0,-1 })	16					Number of reduced words of length n in the Weyl group B_49.
+A162205	eulerxfm	0	3	1	new PaddingSequence(new long[] { 50 }, new long[] { 0,-1 })	16					Number of reduced words of length n in the Weyl group B_50.
+A162207	eulerxfm	0	3	1	new PaddingSequence(new long[] { 4,-1,0,-2,0,-1 }, new long[] { 0 })	100					Number of reduced words of length n in the Weyl group D_4.
+A162208	eulerxfm	0	3	1	new PaddingSequence(new long[] { 5,-1,0,-1,-1,-1,0,-1 }, new long[] { 0 })	90					Number of reduced words of length n in the Weyl group D_5.
+A162209	eulerxfm	0	3	1	new PaddingSequence(new long[] { 6,-1,0,-1,0,-2,0,-1,0,-1 }, new long[] { 0 })	72					Number of reduced words of length n in the Weyl group D_6.
+A162210	eulerxfm	0	3	1	new PaddingSequence(new long[] { 7,-1,0,-1,0,-1,-1,-1,0,-1,0,-1 }, new long[] { 0 })	42					Number of reduced words of length n in the Weyl group D_7.
+A162364	eulerxfm	0	3	1	new PaddingSequence(new long[] { 22 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group D_22.
+A162365	eulerxfm	0	3	1	new PaddingSequence(new long[] { 23 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group D_23.
+A162366	eulerxfm	0	3	1	new PaddingSequence(new long[] { 24 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group D_24.
+A162367	eulerxfm	0	3	1	new PaddingSequence(new long[] { 25 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group D_25.
+A162368	eulerxfm	0	3	1	new PaddingSequence(new long[] { 26 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group D_26.
+A162369	eulerxfm	0	3	1	new PaddingSequence(new long[] { 27 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group D_27.
+A162370	eulerxfm	0	3	1	new PaddingSequence(new long[] { 28 }, new long[] { 0,-1 })	20					Number of reduced words of length n in the Weyl group D_28.
+A162376	eulerxfm	0	3	1	new PaddingSequence(new long[] { 29 }, new long[] { 0,-1 })	19					Number of reduced words of length n in the Weyl group D_29.
+A162377	eulerxfm	0	3	1	new PaddingSequence(new long[] { 30 }, new long[] { 0,-1 })	19					Number of reduced words of length n in the Weyl group D_30.
+A162378	eulerxfm	0	3	1	new PaddingSequence(new long[] { 31 }, new long[] { 0,-1 })	19					Number of reduced words of length n in the Weyl group D_31.
+A162379	eulerxfm	0	3	1	new PaddingSequence(new long[] { 32 }, new long[] { 0,-1 })	18					Number of reduced words of length n in the Weyl group D_32.
+A162380	eulerxfm	0	3	1	new PaddingSequence(new long[] { 33 }, new long[] { 0,-1 })	18					Number of reduced words of length n in the Weyl group D_33.
+A162381	eulerxfm	0	3	1	new PaddingSequence(new long[] { 34 }, new long[] { 0,-1 })	18					Number of reduced words of length n in the Weyl group D_34.
+A162384	eulerxfm	0	3	1	new PaddingSequence(new long[] { 35 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_35.
+A162388	eulerxfm	0	3	1	new PaddingSequence(new long[] { 36 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_36.
+A162389	eulerxfm	0	3	1	new PaddingSequence(new long[] { 37 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_37.
+A162392	eulerxfm	0	3	1	new PaddingSequence(new long[] { 38 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_38.
+A162399	eulerxfm	0	3	1	new PaddingSequence(new long[] { 39 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_39.
+A162402	eulerxfm	0	3	1	new PaddingSequence(new long[] { 40 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_40.
+A162411	eulerxfm	0	3	1	new PaddingSequence(new long[] { 42 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_42.
+A162412	eulerxfm	0	3	1	new PaddingSequence(new long[] { 43 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_43.
+A162413	eulerxfm	0	3	1	new PaddingSequence(new long[] { 44 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_44.
+A162418	eulerxfm	0	3	1	new PaddingSequence(new long[] { 45 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_45.
+A162452	eulerxfm	0	3	1	new PaddingSequence(new long[] { 46 }, new long[] { 0,-1 })	17					Number of reduced words of length n in the Weyl group D_46.
+A162456	eulerxfm	0	3	1	new PaddingSequence(new long[] { 47 }, new long[] { 0,-1 })	16					Number of reduced words of length n in the Weyl group D_47.
+A162461	eulerxfm	0	3	1	new PaddingSequence(new long[] { 48 }, new long[] { 0,-1 })	16					Number of reduced words of length n in the Weyl group D_48.
+A162469	eulerxfm	0	3	1	new PaddingSequence(new long[] { 49 }, new long[] { 0,-1 })	16					Number of reduced words of length n in the Weyl group D_49.
+A162492	eulerxfm	0	3	1	new PaddingSequence(new long[] { 50 }, new long[] { 0,-1 })	16					Number of reduced words of length n in the Weyl group D_50.
+A162539	eulerxfm	0	3	1	new PaddingSequence(new long[] { 6,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1 }, new long[] { 0 })	56					G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) / (1-x)^6.
+A162595	eulerxfm	0	3	1	new PaddingSequence(new long[] { 7,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1 }, new long[] { 0 })	76					G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) * (1-x^21) / (1-x)^7.
+A162596	eulerxfm	0	3	1	new PaddingSequence(new long[] { 8,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1 }, new long[] { 0 })	99					G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) * (1-x^21) * (1-x^24) / (1-x)^8.
+A162602	eulerxfm	0	3	1	new PaddingSequence(new long[] { 9,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1 }, new long[] { 0 })	125					G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) * (1-x^21) * (1-x^24) * (1-x^27) / (1-x)^9.
+A162617	eulerxfm	0	3	1	new PaddingSequence(new long[] { 10,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1 }, new long[] { 0 })	104					G.f. is the polynomial (1-x^3) * (1-x^6) * (1-x^9) * (1-x^12) * (1-x^15) * (1-x^18) * (1-x^21) * (1-x^24) * (1-x^27) * (1-x^30) / (1-x)^10.
+A165271	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,2,1,1,0,-1,1,-4,0,0,0,0,0,-1,0,-1 }, new long[] { 0 })	67					a(n) = p(3*n), where p(n) = number of partitions of n into parts that correspond to areas of distinct pieces of Archimedes' ostomachion.
+A165273	eulerxfm	0	3	1	new PaddingSequence(new long[] { 3,2,1,1,0,-1,1,-4,0,0,0,0,0,-1,0,-1 }, new long[] { 0 })	52					Partial sums of A165271.
+A167381	eulerxfm	1	3	1	new PaddingSequence(new long[] { 3,0 }, new long[] { 0,1,0,-1 })	223					The numbers read down the left-center column of an arrangement of the natural numbers in square blocks.
+A168201	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0,0,0,0,0,1,0,0,0,1 }, new long[] { 0 })	103					Number of representations of n in the form 7*k+11*m (with nonnegative k, m).
+A169783	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-6,4,0,4,-6,4,-5,4,-6,4,0,4,-6,4,-3 })	80					Number of solutions to a^2 + b^2 + 4*c^2 = n.
+A171445	eulerxfm	0	3	1	new PaddingSequence(new long[] { 25,-24 }, new long[] { 0 })	24					Sequence whose G.f is given by f(z)=(1+z)^(24)/(1-z).
+A172033	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0 }, new long[] { 0,1,0,0 })	66					Number of partitions of n into distinct parts that are 1 or even, i.e., into distinct terms of A004277.
+A174455	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0,2 }, new long[] { 1 })	145					Number of partitions where the number of 1's and 2's are equal.
+A177339	eulerxfm	0	3	0,0,0,0,0,1	new PaddingSequence(new long[] { 2,0,0,1,0,1,0,0,0,0,1,-1 }, new long[] { 0 })	196					Partial sums of round(n^2/44).
+A181477	eulerxfm	0	3	1	new PaddingSequence(new long[] { 5,10 }, new long[] { 0 })	89					a(n) has generating function 1/((1-x)^k*(1-x^2)^(k*(k-1)/2)) for k=5.
+A181478	eulerxfm	0	3	1	new PaddingSequence(new long[] { 6,15 }, new long[] { 0 })	78					a(n) has generating function 1/((1-x)^k*(1-x^2)^(k*(k-1)/2)) for k=6.
+A181479	eulerxfm	0	3	1	new PaddingSequence(new long[] { 7,21 }, new long[] { 0 })	71					a(n) has generating function 1/((1-x)^k*(1-x^2)^(k*(k-1)/2)) for k=7.
+A181480	eulerxfm	0	3	1	new PaddingSequence(new long[] { 8,28 }, new long[] { 0 })	66					a(n) has generating function 1/((1-x)^k*(1-x^2)^(k*(k-1)/2)) for k=8.
+A181531	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,1,0 }, new long[] { 1 })	54					Number of partitions of n with no part equal to 1 or 3.
+A182712	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] { 0,2 }, new long[] { 1 })	136					Number of 2's in the last section of the set of partitions of n.
+A182713	eulerxfm	1	3	0,0,1	new PaddingSequence(new long[] { 0,1,2 }, new long[] { 1 })	138					Number of 3's in the last section of the set of partitions of n.
+A182714	eulerxfm	1	3	0,0,0,1	new PaddingSequence(new long[] { 0,1,1,2 }, new long[] { 1 })	138					Number of 4's in the last section of the set of partitions of n.
+A182818	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,2 })	98					G.f.: exp( Sum_{n>=1} sigma(2n)*x^n/n ).
+A182819	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,4,3 })	88					G.f.: exp( Sum_{n>=1} sigma(3n)*x^n/n ).
+A182820	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 7,4 })	77					G.f.: exp( Sum_{n>=1} sigma(4n)*x^n/n ).
+A182821	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,6,6,6,5 })	77					Expansion of g.f.: exp( Sum_{n>=1} sigma(5*n)*x^n/n ).
+A182844	eulerxfm	0	3	0	new PaddingSequence(new long[] { 2 }, new long[] { 3,1,2,2,2,2,3,1,3,2,2,2,2,1,3,1 })	109					a(0)=0: a(n)=A002865(2*n)+A002865(2*n+1), n>=1.
+A183199	eulerxfm	1	3	new Z[0]	new PaddingSequence(new long[] { 3,0,1,0,0,-1 }, new long[] { 0 })	49					Least integer k such that Floor(k*f(n+1)>k*f(n), where f(n)=(n^2)/(1+n^2).
+A185012	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] {  }, new long[] { 0 })	82					Characteristic function of two.
+A185013	eulerxfm	0	3	0,0,0,1	new PaddingSequence(new long[] {  }, new long[] { 0 })	81					Characteristic function of {3}.
+A185014	eulerxfm	0	3	0,0,0,0,1	new PaddingSequence(new long[] {  }, new long[] { 0 })	80					Characteristic function of four.
+A185015	eulerxfm	0	3	0,0,0,0,0,1	new PaddingSequence(new long[] {  }, new long[] { 0 })	79					Characteristic function of 5.
+A185016	eulerxfm	0	3	0,0,0,0,0,0,1	new PaddingSequence(new long[] {  }, new long[] { 0 })	78					Characteristic function of 6.
+A185017	eulerxfm	0	3	0,0,0,0,0,0,0,1	new PaddingSequence(new long[] {  }, new long[] { 0 })	93					Characteristic function of 7.
+A185326	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0,0,0,0 }, new long[] { 1 })	171					Number of partitions of n into parts >= 6.
+A185327	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0,0,0,0,0 }, new long[] { 1 })	177					Number of partitions of n into parts >= 7.
+A185328	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0,0,0,0,0,0 }, new long[] { 1 })	182					Number of partitions of n with parts >= 8.
+A185329	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0,0,0,0,0,0,0 }, new long[] { 1 })	187					Number of partitions of n with parts >= 9.
+A186417	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,1 }, new long[] { 2 })	121					The number of unlabeled graphs on n nodes with degree of 1 or 2
+A192061	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,1,1,1,1,1,1,-11 })	166					Number of 12-core partitions of n.
+A196933	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,0,0,0,0,0,0,1,1 })	209					Column 9 of array A195825. Also column 1 of triangle A195843. Also 1 together with the row sums of triangle A195843.
+A198958	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] {  }, new long[] { 6,6,-12 })	120					q-expansion of modular form psi_0^6/t_{3B}^2.
+A206555	eulerxfm	1	3	0,0,0,0,1	new PaddingSequence(new long[] { 0,1,1,1,2 }, new long[] { 1 })	46					Number of 5's in the last section of the set of partitions of n.
+A206556	eulerxfm	1	3	0,0,0,0,0,1	new PaddingSequence(new long[] { 0,1,1,1,1,2 }, new long[] { 1 })	47					Number of 6's in the last section of the set of partitions of n.
+A206557	eulerxfm	1	3	0,0,0,0,0,0,1	new PaddingSequence(new long[] { 0,1,1,1,1,1,2 }, new long[] { 1 })	46					Number of 7's in the last section of the set of partitions of n.
+A206558	eulerxfm	1	3	0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,2 }, new long[] { 1 })	45					Number of 8's in the last section of the set of partitions of n.
+A206559	eulerxfm	1	3	0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,1,2 }, new long[] { 1 })	45					Number of 9's in the last section of the set of partitions of n.
+A206560	eulerxfm	1	3	0,0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,1,1,2 }, new long[] { 1 })	44					Number of 10's in the last section of the set of partitions of n.
+A207641	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2 }, new long[] { 2,1 })	117					G.f.: Sum_{n>=0} x^n * Product_{k=1..n} (1+x^k)/(1-x^k).
+A207944	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,0 }, new long[] { 2,-1,2,0 })	46					Expansion of Product_{i>=1} (1 + x^(2*i + 1))/(1 - x^(2*i + 1)).
+A211971	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1 }, new long[] { 2,1 })	121					Column 0 of square array A211970 (in which column 1 is A000041).
+A212253	eulerxfm	-1	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,0,1,0,1,1,0,1,1,1,0,0,1,1,1,1,0,0,1,1,1,0,1,1,0,1,0,1,1,1,1,0 })	144					McKay-Thompson series of class 35B for the Monster group with a(0) = 1.
+A216711	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { 8,-24,8,-16 })	134					Expansion of q * (phi(q) * psi(-q))^8 in powers of q where phi(), psi() are Ramanujan theta functions.
+A217067	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,1,1 }, new long[] { 2 })	118					Number of unlabeled graphs on n nodes whose components are cycles or complete graphs.
+A219601	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,0 })	137					Number of partitions of n in which no parts are multiples of 6.
+A219607	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,1,-1,0,-1,1,1,0,0 })	229					Number of partitions of n into distinct parts 5*k+2 or 5*k+3.
+A222704	eulerxfm	4	3	1	new PaddingSequence(new long[] { 0,1,1,2,2 }, new long[] { 1 })	136					Total number of parts of multiplicity 4 in all partitions of n.
+A222705	eulerxfm	5	3	1	new PaddingSequence(new long[] { 0,1,1,1,2,2 }, new long[] { 1 })	137					Total number of parts of multiplicity 5 in all partitions of n.
+A222706	eulerxfm	6	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,2,2 }, new long[] { 1 })	138					Total number of parts of multiplicity 6 in all partitions of n.
+A222707	eulerxfm	7	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,1,2,2 }, new long[] { 1 })	139					Total number of parts of multiplicity 7 in all partitions of n.
+A222708	eulerxfm	8	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,2,2 }, new long[] { 1 })	140					Total number of parts of multiplicity 8 in all partitions of n.
+A222709	eulerxfm	9	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,1,2,2 }, new long[] { 1 })	140					Total number of parts of multiplicity 9 in all partitions of n.
+A222710	eulerxfm	10	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,1,1,2,2 }, new long[] { 1 })	141					Total number of parts of multiplicity 10 in all partitions of n.
+A222731	eulerxfm	3	3	1	new PaddingSequence(new long[] { 0,1,3,3,1,1,0 }, new long[] { 1 })	128					Total sum of parts of multiplicity 3 in all partitions of n.
+A222732	eulerxfm	4	3	1	new PaddingSequence(new long[] { 0,1,1,3,3,1,1,1,0 }, new long[] { 1 })	131					Total sum of parts of multiplicity 4 in all partitions of n.
+A222733	eulerxfm	5	3	1	new PaddingSequence(new long[] { 0,1,1,1,3,3,1,1,1,1,0 }, new long[] { 1 })	133					Total sum of parts of multiplicity 5 in all partitions of n.
+A222734	eulerxfm	6	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,3,3,1,1,1,1,1,0 }, new long[] { 1 })	135					Total sum of parts of multiplicity 6 in all partitions of n.
+A222735	eulerxfm	7	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,1,3,3,1,1,1,1,1,1,0 }, new long[] { 1 })	136					Total sum of parts of multiplicity 7 in all partitions of n.
+A222736	eulerxfm	8	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,0 }, new long[] { 1 })	137					Total sum of parts of multiplicity 8 in all partitions of n.
+A222737	eulerxfm	9	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1,0 }, new long[] { 1 })	138					Total sum of parts of multiplicity 9 in all partitions of n.
+A222738	eulerxfm	10	3	1	new PaddingSequence(new long[] { 0,1,1,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1,1,0 }, new long[] { 1 })	139					Total sum of parts of multiplicity 10 in all partitions of n.
+A225196	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2,3,4,5 }, new long[] { 6 })	96					Number of 6-line partitions of n (i.e., planar partitions of n with at most 6 lines).
+A225197	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2,3,4,5,6 }, new long[] { 7 })	95					Number of 7-line partitions of n (i.e., planar partitions of n with at most 7 lines).
+A225198	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2,3,4,5,6,7 }, new long[] { 8 })	95					Number of 8-line partitions of n (i.e., planar partitions of n with at most 8 lines).
+A225199	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,2,3,4,5,6,7,8 }, new long[] { 9 })	94					Number of 9-line partitions of n (i.e., planar partitions of n with at most 9 lines).
+A226034	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 11,7,5,6,11,1,11,6,5,7,11,0 })	69					Expansion of f(-x)^6 / (chi(x) * phi(-x)^6) in powers of x where phi(), chi(), f() are Ramanujan theta functions.
+A226252	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 7,-7 })	164					Number of ways of writing n as the sum of 7 triangular numbers.
+A226253	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 9,-9 })	137					Number of ways of writing n as the sum of 9 triangular numbers.
+A226254	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 10,-10 })	128					Number of ways of writing n as the sum of 10 triangular numbers from A000217.
+A226255	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 11,-11 })	120					Number of ways of writing n as the sum of 11 triangular numbers.
+A228447	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { -3,4,-2,2,-3,4,-3,2,-2,4,-3,0 })	100					Expansion of q * (psi(q^3) * psi(q^6)) / (psi(q) * phi(q)) in powers of q where phi(), psi() are Ramanujan theta functions.
+A229816	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,2,2,1,1,0 }, new long[] { 1 })	134					Number of partitions of n such that if the length is k then k is not a part.
+A233969	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2 }, new long[] { 1,0,1,1 })	136					Partial sums of A006950.
+A240056	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 1,0,2 }, new long[] { 1 })	135					Number of partitions of n such that m(1) > m(2), where m = multiplicity.
+A240058	eulerxfm	1	3	1	new PaddingSequence(new long[] { 0,1,0,2 }, new long[] { 1 })	50					Number of partitions of n such that m(1) = m(3), where m = multiplicity.
+A240059	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 1,1,0,2 }, new long[] { 1 })	45					Number of partitions of n such that m(1) > m(3), where m = multiplicity.
+A240063	eulerxfm	0	3	0,0,0,1	new PaddingSequence(new long[] { 1,0,1,1,2 }, new long[] { 1 })	46					Number of partitions of n such that m(2) < m(3), where m = multiplicity.
+A240064	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,0,1,2 }, new long[] { 1 })	49					Number of partitions of n such that m(2) = m(3), where m = multiplicity.
+A240065	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] { 1,1,0,1,2 }, new long[] { 1 })	45					Number of partitions of n such that m(2) > m(3), where m = multiplicity.
+A246575	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 1 }, new long[] { -1 })	79					Expansion of (Product_{r>=1} (1-x^r))*x^(k^2) / Product_{i=1..k} (1-x^i)^2 with k=1.
+A246576	eulerxfm	0	3	0,0,0,0,1	new PaddingSequence(new long[] { 1,1 }, new long[] { -1 })	64					G.f.: (Product_{r>=1} (1 - x^r))*x^(k^2)/Product_{i=1..k} ((1 - x^i)^2) with k=2.
+A246577	eulerxfm	0	3	0,0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1 }, new long[] { -1 })	54					G.f.: (Product_{r>=1} (1 - x^r))*x^(k^2)/Product_{i=1..k} ((1 - x^i)^2) with k=3.
+A246578	eulerxfm	0	3	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1 }, new long[] { -1 })	48					G.f.: (Product_{r>=1} (1 - x^r))*x^(k^2)/Product_{i=1..k} ((1-x^i)^2) with k=4.
+A246579	eulerxfm	0	3	0,0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { -1,2,-1,1,-1,2 }, new long[] { -1,1,-1,0 })	42					G.f.: x^(k^2)/(mul(1-x^(2*i),i=1..k)*mul(1+x^(2*r-1),r=1..oo)) with k=3.
+A246580	eulerxfm	0	3	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { -1,2,-1,1,-1,2,-1,1 }, new long[] { -1,1,-1,0 })	39					G.f.: x^(k^2)/(mul(1-x^(2*i),i=1..k)*mul(1+x^(2*r-1),r=1..oo)) with k=4.
+A246581	eulerxfm	0	3	0,0,0,1	new PaddingSequence(new long[] { 0,1 }, new long[] { -1,0 })	181					G.f.: x^((k^2 + k)/2) / (Product_{i=1..k} (1 - x^i) * Product_{r>=1} (1 + x^r)) with k = 2.
+A246582	eulerxfm	0	3	0,0,0,0,0,0,1	new PaddingSequence(new long[] { 0,1,0 }, new long[] { -1,0 })	185					G.f.: x^((k^2+k)/2)/(mul(1-x^i,i=1..k)*mul(1+x^r,r=1..oo)) with k = 3.
+A246583	eulerxfm	0	3	0,0,0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 0,1,0,1 }, new long[] { -1,0 })	172					G.f.: x^((k^2+k)/2)/(mul(1-x^i,i=1..k)*mul(1+x^r,r=1..oo)) with k = 4.
+A246584	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,3,2,2 })	102					Number of overcubic partitions of n.
+A246695	eulerxfm	0	3	1	new PaddingSequence(new long[] { 3,3,-1,-1 }, new long[] { 0 })	162					Row sums of the triangular array A246694.
+A247641	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 0,-3 }, new long[] { -2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-4 })	75					G.f.: ((1+q)/(1-q))*q*Product_{k>=1} (1 - q^k)^2*(1 - q^(11*k))^2.
+A253136	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,2,0,1,2,0,0,1,0,1,2,0 })	148					The number of overpartitions of n into parts congruent to 2, 4, or 5 modulo 6.
+A253144	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,0,0,0,1,0,0,1,0,0 })	207					Number of partitions of n into distinct parts congruent to 1, 2, or 4 modulo 6.
+A260890	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,2,0,2,1,1 })	126					The number of overpartitions of n with restricted odd differences.
+A261321	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-6,0,-2,4,0,4,-2,0,-6,4,0 })	136					Expansion of (phi(q) / phi(q^3))^2 in powers of q where phi() is a Ramanujan theta function.
+A261610	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-1,0,2,0,0 })	51					Expansion of Product_{k>=0} (1 + x^(3*k+1))/(1 - x^(3*k+1)).
+A261611	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-1,0,0,2,0,0,0 })	54					Expansion of Product_{k>=0} (1 + x^(4*k+1))/(1 - x^(4*k+1)).
+A261615	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-2,0,2,0,0 })	59					Expansion of Product_{k>=0} (1 + x^(3*k+1))^2.
+A261616	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,0,0 })	46					Expansion of Product_{k>=0} 1/(1 - x^(3*k+1))^2.
+A261629	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,0,0,0 })	49					Expansion of Product_{k>=0} 1/(1-x^(4*k+1))^2.
+A261630	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-2,0,0,2,0,0,0 })	63					Expansion of Product_{k>=0} (1+x^(4*k+1))^2.
+A261631	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,0,0 })	41					Expansion of Product_{k>=0} 1/(1-x^(3*k+1))^3.
+A261632	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,0,0,0 })	43					Expansion of Product_{k>=0} 1/(1-x^(4*k+1))^3.
+A261633	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,-3,0,3,0,0 })	49					Expansion of Product_{k>=0} (1+x^(3*k+1))^3.
+A261634	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,-3,0,0,3,0,0,0 })	49					Expansion of Product_{k>=0} (1+x^(4*k+1))^3.
+A261635	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,0,0 })	37					Expansion of Product_{k>=0} 1/(1-x^(3*k+1))^4.
+A261636	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,0,0,0 })	39					Expansion of Product_{k>=0} 1/(1-x^(4*k+1))^4.
+A261637	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-4,0,4,0,0 })	46					Expansion of Product_{k>=0} (1+x^(3*k+1))^4.
+A261638	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-4,0,0,4,0,0,0 })	49					Expansion of Product_{k>=0} (1+x^(4*k+1))^4.
+A261647	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,-3,6,0 })	33					Expansion of Product_{k>=0} ((1+x^(2*k+1))/(1-x^(2*k+1)))^3.
+A261648	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 10,-5,10,0 })	28					Expansion of Product_{k>=0} ((1+x^(2*k+1))/(1-x^(2*k+1)))^5.
+A261649	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-2,0,4,0,0 })	41					Expansion of Product_{k>=0} ((1+x^(3*k+1))/(1-x^(3*k+1)))^2.
+A261650	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-2,0,0,4,0,0,0 })	43					Expansion of Product_{k>=0} ((1+x^(4*k+1))/(1-x^(4*k+1)))^2.
+A261651	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,-3,0,6,0,0 })	36					Expansion of Product_{k>=0} ((1+x^(3*k+1))/(1-x^(3*k+1)))^3.
+A261652	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,-3,0,0,6,0,0,0 })	37					Expansion of Product_{k>=0} ((1+x^(4*k+1))/(1-x^(4*k+1)))^3.
+A261733	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,-1,0,-1,0,-1,0,0,0,-1,0,-1,0,-1,0,-1,0 })	204					Expansion of Product_{k>=1} (1 + x^(9*k))/(1 + x^k).
+A261734	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,-1,1,-1,0,-1,0 })	171					Expansion of Product_{k>=1} (1 + x^(4*k))/(1 + x^k).
+A261735	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,-1,0,-1,0,-1,1,-1,0,-1,0,-1,0,-1,0 })	184					Expansion of Product_{k>=1} (1 + x^(8*k))/(1 + x^k).
+A261736	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,-1,0,-1,1,-1,0,-1,0,-1,0 })	179					Expansion of Product_{k>=1} (1 + x^(6*k))/(1 + x^k).
+A261770	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,1,0,1,-1,1,0,1,0,1,0 })	172					Expansion of Product_{k>=1} (1 + x^k) / (1 + x^(6*k)).
+A261771	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,1,0,1,0,1,-1,1,0,1,0,1,0,1,0 })	169					Expansion of Product_{k>=1} (1 + x^k) / (1 + x^(8*k)).
+A261772	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,1,0,1,0,1,0,1,-1,1,0,1,0,1,0,1,0,1,0 })	167					Expansion of Product_{k>=1} (1 + x^k) / (1 + x^(10*k)).
+A261775	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,1,1,0 })	136					Expansion of Product_{k>=1} (1 - x^(8*k))/(1 - x^k).
+A261776	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,1,1,1,1,0 })	135					Expansion of Product_{k>=1} (1 - x^(10*k))/(1 - x^k).
+A261796	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,0,0,0,1,0,0,0,1,0,1,0,-1,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0 })	211					Expansion of Product_{k>=1} (1+x^k)/((1+x^(3*k))*(1+x^(5*k))).
+A261797	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,1,0,0,1,1,0,0,1,0,1,1,-1 })	159					Expansion of Product_{k>=1} (1-x^(3*k))*(1-x^(5*k))/(1-x^k).
+A261988	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,3,-2,1,-2,3,-2,1,0,3,-2,1,-2,3,-2,1,-2,0,-2,1,-2,3,-2,1,-2,3,0,1,-2,3,-2,1,-2,3,-2,0 })	112					Expansion of phi(q^9) / phi(q) in powers of q where phi() is a Ramanujan theta function.
+A261992	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-1,6,-1,1,3,1,-1,6,-1,1,3,1,-1,6,-1,1,0 })	149					Expansion of psi(x) * f(-x^18)^3 / (phi(-x^3) * f(-x^3)^3) in powers of x where phi(), psi(), f() are Ramanujan theta functions.
+A261998	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,-1 })	41					Expansion of Product_{k>=1} (1-x^k)*(1+x^k)^4.
+A262346	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,-1,1,0,0 })	167					Expansion of Product_{k>=1} (1-x^(3*k))/(1-x^(2*k)).
+A262364	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,0,1,-1,1,0,1,0,0 })	165					Expansion of Product_{k>=1} (1-x^(5*k))/(1-x^(2*k)).
+A262380	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,4 })	33					Expansion of Product_{k>=1} 1/((1+x^k)*(1-x^k)^4).
+A262952	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,1,-1,2,-1,1,1,1,-2,2,0 })	173					Expansion of Product_{k>=1} (1 + x^(2*k-1)) * (1 + x^(3*k-1)).
+A262953	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-2,1,1,1,-1,2,-1,1,0,1,0 })	171					Expansion of Product_{k>=1} (1 + x^(2*k-1)) * (1 + x^(3*k-2)).
+A263982	eulerxfm	6	3	1	new PaddingSequence(new long[] { 1,2,1 }, new long[] { 0,1 })	12					Number of partitions of n with a palindromicity of 3.
+A265254	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,1,1,1,1,1,1,1,0,1,1 })	143					Number of partitions of n having no even singletons.
+A265256	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,2,1,1,0,1,0,1,1,2,0,1 })	144					Number of partitions of n having no odd singletons (n>=0).
+A265257	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { 0,2,2,2,1,0 }, new long[] { 1 })	130					Number of odd singletons in all partitions of n (n>=0).
+A266648	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,2,1,1,1 })	127					Expansion of Product_{k>=1} (1 + x^(3*k)) / (1 - x^k).
+A266759	eulerxfm	0	3	1	new PaddingSequence(new long[] { 5,-1,2,-2,1,-1 }, new long[] { 0 })	152					Growth series for affine Coxeter group (or affine Weyl group) D_4.
+A266760	eulerxfm	0	3	1	new PaddingSequence(new long[] { 6,-1,1,0,0,-1,1,-1 }, new long[] { 0 })	47					Growth series for affine Coxeter group (or affine Weyl group) D_5.
+A266761	eulerxfm	0	3	1	new PaddingSequence(new long[] { 7,-1,1,-1,2,-2,1,-1,1,-1 }, new long[] { 0 })	43					Growth series for affine Coxeter group (or affine Weyl group) D_6.
+A266762	eulerxfm	0	3	1	new PaddingSequence(new long[] { 8,-1,1,-1,1,0,0,-1,1,-1,1,-1 }, new long[] { 0 })	40					Growth series for affine Coxeter group (or affine Weyl group) D_7.
+A266771	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,1,1,2,1,1,1 }, new long[] { 0 })	48					Molien series for invariants of finite Coxeter group D_8 (bisected).
+A266773	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,1,1,1,2,1,1,1,1 }, new long[] { 0 })	143					Molien series for invariants of finite Coxeter group D_10 (bisected).
+A266775	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,1,1,1,1,2,1,1,1,1,1 }, new long[] { 0 })	139					Molien series for invariants of finite Coxeter group D_12 (bisected).
+A266783	eulerxfm	0	3	1	new PaddingSequence(new long[] { 5,-1,0,0,0,0,0,0,0,0,1,-1,0,0,0,0,0,0,1,-1,0,0,0,0,0,0,0,0,1,-1 }, new long[] { 0 })	157					The growth series for the affine Coxeter (or Weyl) group [3,3,5] (or H_4).
+A267168	eulerxfm	0	3	1	new PaddingSequence(new long[] { 6,-1,1,-1,1,-1,1,-1,1,-1 }, new long[] { 0 })	48					Growth series for affine Coxeter group B_5.
+A267169	eulerxfm	0	3	1	new PaddingSequence(new long[] { 7,-1,1,-1,1,-1,1,-1,1,-1,1,-1 }, new long[] { 0 })	44					Growth series for affine Coxeter group B_6.
+A270143	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { -1,3 }, new long[] { 1 })	139					a(n) = Sum_{k=0..n} (-1)^(k+1) * k * A000041(n-k).
+A270144	eulerxfm	0	3	0,1	new PaddingSequence(new long[] { -1,2 }, new long[] { 1,0 })	173					a(n) = Sum_{k=0..n} (-1)^(k+1) * k * A000009(n-k).
+A273226	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,0,3,3 })	103					G.f. is the cube of the g.f. of A006950.
+A273228	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,0,4,4 })	95					G.f. is the fourth power of the g.f. of A006950.
+A273845	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,3,2 })	96					Expansion of Product_{n>=1} (1 - x^(3*n))/(1 - x^n)^3 in powers of x.
+A274327	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,4,4,3 })	87					Expansion of Product_{n>=1} (1 - x^(4*n))/(1 - x^n)^4 in powers of x.
+A274621	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,2 })	113					Coefficients in the expansion Product_{ n>=1 } (1-q^(2n-1))^2/(1-q^(2n))^2.
+A274719	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,-1 })	101					Expansion of Product_{k >= 1} (1-q^(2*k)).
+A275642	eulerxfm	0	3	1	new PaddingSequence(new long[] { -7,1,1,1,1,1,1,1 }, new long[] { 0 })	52					Expansion of (1-q)^k/Product_{j=1..k} (1-q^j) for k=8.
+A275643	eulerxfm	0	3	1	new PaddingSequence(new long[] { -11,1,1,1,1,1,1,1,1,1,1,1 }, new long[] { 0 })	44					Expansion of (1-q)^k/Product_{j=1..k} (1-q^j) for k=12.
+A276285	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 26,-39,26,-13 })	93					Number of ways of writing n as a sum of 13 squares.
+A276286	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 28,-42,28,-14 })	88					Number of ways of writing n as a sum of 14 squares.
+A276287	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 30,-45,30,-15 })	85					Number of ways of writing n as a sum of 15 squares.
+A277090	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,0,0,0,0,0 })	247					Expansion of Product_{k>=0} 1/(1 - x^(8*k+1)).
+A277210	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0 }, new long[] { 1,0,0 })	84					Expansion of Product_{k>=1} 1/(1 - x^(3*k+1)).
+A277212	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 5,5,5,5,4 })	81					Expansion of Product_{n>=1} (1 - x^(5*n))/(1 - x^n)^5 in powers of x.
+A277264	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0 }, new long[] { 1,0,0,0,0 })	99					Expansion of Product_{k>=1} 1/(1 - x^(5*k+1)).
+A277283	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,6,6,6,6,5 })	77					Expansion of Product_{n>=1} (1 - x^(6*n))/(1 - x^n)^6 in powers of x.
+A277643	eulerxfm	0	3	1	new PaddingSequence(new long[] { 3 }, new long[] { 2,1 })	109					Partial sums of number of overpartitions (A015128).
+A277958	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 8,8,8,8,8,8,1 })	71					Expansion of Product_{n>=1} (1 - x^(7*n))^7/(1 - x^n)^8 in powers of x.
+A278555	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 13,13,13,13,1 })	63					Expansion of Product_{n>=1} (1 - x^(5*n))^12/(1 - x^n)^13 in powers of x.
+A278556	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 19,19,19,19,1 })	57					Expansion of Product_{n>=1} (1 - x^(5*n))^18/(1 - x^n)^19 in powers of x.
+A278557	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 25,25,25,25,1 })	53					Expansion of Product_{n>=1} (1 - x^(5*n))^24/(1 - x^n)^25 in powers of x.
+A278558	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 31,31,31,31,1 })	51					Expansion of Product_{n>=1} (1 - x^(5*n))^30/(1 - x^n)^31 in powers of x.
+A278668	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,3,3,3,2 })	95					Expansion of Product_{n>=1} (1 - x^(5*n))/(1 - x^n)^3 in powers of x.
+A278680	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,4,4,4,3 })	87					Expansion of Product_{n>=1} (1 - x^(5*n))/(1 - x^n)^4 in powers of x.
+A278690	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,2,1 })	111					Expansion of Product_{n>=1} (1 - x^(3*n))/(1 - x^n)^2 in powers of x.
+A279328	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,2,1,1 })	123					Expansion of Product_{k>=1} (1 + x^(2*k)) / (1 - x^k).
+A280874	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,1,2,1,2,0 })	117					Expansion of Product_{k>=1} (1 - x^(6*k)) * (1 + x^k) / (1 - x^k).
+A280908	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,0,2,1,2,0,2,0 })	123					Expansion of Product_{k>=1} ((1+x^k) / ((1-x^(2*k-1)) * (1-x^(8*k-4)))).
+A280909	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,1,1,1,1,1,1,1,1,0 })	151					Expansion of Product_{k>=1} ((1-x^(12*k)) * (1-x^(12*k-10)) * (1-x^(12*k-9)) / (1-x^k)).
+A280937	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,1,-1,1,1,1,1,1,1,0 })	139					Expansion of Product_{k>=1} ((1 - x^(7*(2*k-1))) * (1 - x^(7*k)) / (1 - x^k)).
+A280938	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,1,1,-1,1,1,1,1,1,1,1,0 })	138					Expansion of Product_{k>=1} (1 - x^(8*(2*k-1))) * (1 - x^(8*k)) / (1 - x^k).
+A280947	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,1,2,1,2,1,2,1,1,1,2,1,2,1,2,1,2,0 })	115					Expansion of Product_{k>=1} (1 - x^(18*k)) * (1 - x^(18*k-9)) * (1 + x^k) / (1 - x^k).
+A280948	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,2,1,1,0,0,0,1,1,2,0,0 })	150					Expansion of Product_{k>=1} (1 - x^(6*k)) * (1 + x^(12*k-3)) * (1 + x^(12*k-9)) / ((1 - x^(4*k-2)) * (1 - x^(2*k))).
+A280949	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,1,1,1,0,1,1,1,0,1,0 })	149					Expansion of Product_{k>=1} (1 - x^(12*k)) * (1 - x^(4*k-2)) / (1 - x^k).
+A282920	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 9,9,9,9,9,9,1 })	69					Expansion of Product_{k>=1} (1 - x^(7*k))^8/(1 - x^k)^9 in powers of x.
+A282921	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 13,13,13,13,13,13,1 })	63					Expansion of Product_{k>=1} (1 - x^(7*k))^12/(1 - x^k)^13 in powers of x.
+A282922	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 17,17,17,17,17,17,1 })	58					Expansion of Product_{n>=1} (1 - x^(7*n))^16/(1 - x^n)^17 in powers of x.
+A282923	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 21,21,21,21,21,21,1 })	55					Expansion of Product_{n>=1} (1 - x^(7*n))^20/(1 - x^n)^21 in powers of x.
+A282924	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 25,25,25,25,25,25,1 })	53					Expansion of Product_{k>=1} (1 - x^(7*k))^24/(1 - x^k)^25 in powers of x.
+A282925	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 29,29,29,29,29,29,1 })	51					Expansion of Product_{k>=1} (1 - x^(7*k))^28/(1 - x^k)^29 in powers of x.
+A282926	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 33,33,33,33,33,33,1 })	50					Expansion of Product_{k>=1} (1 - x^(7*k))^32/(1 - x^k)^33 in powers of x.
+A282927	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 37,37,37,37,37,37,1 })	49					Expansion of Product_{k>=1} (1 - x^(7*k))^36/(1 - x^k)^37 in powers of x.
+A282928	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 41,41,41,41,41,41,1 })	47					Expansion of Product_{k>=1} (1 - x^(7*k))^40/(1 - x^k)^41 in powers of x.
+A282929	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 45,45,45,45,45,45,1 })	47					Expansion of Product_{k>=1} (1 - x^(7*k))^44/(1 - x^k)^45 in powers of x.
+A282930	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 49,49,49,49,49,49,1 })	46					Expansion of Product_{k>=1} (1 - x^(7*k))^48/(1 - x^k)^49 in powers of x.
+A282931	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 53,53,53,53,53,53,1 })	45					Expansion of Product_{k>=1} (1 - x^(7*k))^52/(1 - x^k)^53 in powers of x.
+A282932	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 57,57,57,57,57,57,1 })	44					Expansion of Product_{k>=1} (1 - x^(7*k))^56/(1 - x^k)^57 in powers of x.
+A283077	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 8,8,8,8,8,8,7 })	71					Expansion of Product_{n>=1} (1 - x^(7*n))/(1 - x^n)^8 in powers of x.
+A283119	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 12,8,9,8,12,6 })	66					Expansion of exp( Sum_{n>=1} sigma(6*n)*x^n/n ) in powers of x.
+A283120	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 15,8 })	63					Expansion of exp( Sum_{n>=1} sigma(8*n)*x^n/n ) in powers of x.
+A283121	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 13,13,9 })	63					Expansion of exp( Sum_{n>=1} sigma(9*n)*x^n/n ) in powers of x.
+A284286	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 8,4 })	75					Expansion of eta(q^2)^4 / eta(q)^8 in powers of q.
+A284315	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,-1,0 })	69					Expansion of Product_{k>=0} (1 - x^(3*k+2)) in powers of x.
+A284316	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,-1,0 })	73					Expansion of Product_{k>=0} (1 - x^(4*k+3)) in powers of x.
+A284319	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,-1,0,0,0 })	74					Expansion of Product_{k>=0} (1 - x^(5*k+2)) in powers of x.
+A284500	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,-1,0,0,0,0,0 })	79					Expansion of Product_{k>=0} (1 - x^(7*k+2)) in powers of x.
+A284501	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,-1,0,0,0,0 })	81					Expansion of Product_{k>=0} (1 - x^(7*k+3)) in powers of x.
+A284502	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,0,-1,0,0,0 })	81					Expansion of Product_{k>=0} (1 - x^(7*k+4)) in powers of x.
+A284503	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,0,0,-1,0,0 })	80					Expansion of Product_{k>=0} (1 - x^(7*k+5)) in powers of x.
+A284504	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,0,0,0,-1,0 })	81					Expansion of Product_{k>=0} (1 - x^(7*k+6)) in powers of x.
+A284586	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,0,0,-1,0 })	79					Expansion of Product_{k>=0} (1 - x^(6*k+5)) in powers of x.
+A284607	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,8,0,8,4,0 })	83					Expansion of (eta(q^3)eta(q^6)/(eta(q)eta(q^2)))^4 in powers of q.
+A284629	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { -6,0,-6,0,0,0,-6,0,-6,0 })	111					Expansion of (eta(q)eta(q^10)/(eta(q^2)eta(q^5)))^6 in powers of q.
+A285348	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-3,-2,3,0,3,-2,-3,2,0 })	152					Expansion of r(q^2) / r(q)^2 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285349	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,3,2,-3,0,-3,2,3,-2,0 })	155					Expansion of r(q)^2 / r(q^2) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285441	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,2,0,-2,0,2,0,-1,0 })	176					Expansion of q^(-2/5) * r(q)^2 * (1 + r(q) * r(q^2)^2) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285442	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-2,-2,2,0 })	171					Expansion of Product_{k>0} ((1-x^{5k-2}) * (1-x^{5k-3})/((1-x^{5k-1}) * (1-x^{5k-4})))^2 in powers of x.
+A285443	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,-3,-3,3,0 })	147					Expansion of Product_{k>0} ((1-x^{5k-2}) * (1-x^{5k-3})/((1-x^{5k-1}) * (1-x^{5k-4})))^3 in powers of x.
+A285444	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-4,-4,4,0 })	130					Expansion of Product_{k>0} ((1-x^{5k-2}) * (1-x^{5k-3})/((1-x^{5k-1}) * (1-x^{5k-4})))^4 in powers of x.
+A285445	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,2,0,1,1 })	142					Expansion of Product_{k>=1} (1 + x^k) / (1 - x^(3*k)).
+A285472	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,2,1,1,1,1 })	44					Expansion of Product_{k>=1} ((1 + x^(4*k)) / (1 - x^k)).
+A285554	eulerxfm	0	3	0,1	new PaddingSequence(new long[] {  }, new long[] { -2,0,1,0,2,0,1,0,-2,0 })	173					Expansion of q^(-2/5) * (r(q^2) - r(q)^2) / 2 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285555	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,1,0,-1,2,-1,0,1,-1,0 })	170					Expansion of q^(-2/5) * (r(q^2) + r(q)^2) / 2 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285583	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,-3,-4,3,0,4,-3,-3,4,0,3,-4,-3,3,0 })	138					Expansion of r(q^3) / r(q)^3 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285584	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,-4,-4,3,0,4,-4,-3,4,0,4,-3,-4,4,0,3,-4,-4,4,0 })	134					Expansion of r(q^4) / r(q)^4 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285585	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 5,-5,-5,5,-1,5,-5,-5,5,1,5,-5,-5,5,1,5,-5,-5,5,-1,5,-5,-5,5,0 })	123					Expansion of r(q^5) / r(q)^5 in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285628	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -3,3,4,-3,0,-4,3,3,-4,0,-3,4,3,-3,0 })	138					Expansion of r(q)^3 / r(q^3) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285629	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -4,4,4,-3,0,-4,4,3,-4,0,-4,3,4,-4,0,-3,4,4,-4,0 })	132					Expansion of r(q)^4 / r(q^4) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285630	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -5,5,5,-5,1,-5,5,5,-5,-1,-5,5,5,-5,-1,-5,5,5,-5,1,-5,5,5,-5,0 })	117					Expansion of r(q)^5 / r(q^5) in powers of q where r() is the Rogers-Ramanujan continued fraction.
+A285927	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,3,0 })	102					Expansion of (Product_{k>0} (1 - x^(3*k)) / (1 - x^k))^3 in powers of x.
+A285928	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 5,5,5,5,0 })	83					Expansion of (Product_{k>0} (1 - x^(5*k)) / (1 - x^k))^5 in powers of x.
+A286346	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -24,-12 })	94					Expansion of eta(q)^24 / eta(q^2)^12 in powers of q.
+A286399	eulerxfm	0	3	0,0,1	new PaddingSequence(new long[] {  }, new long[] { 8,-4,8,-12 })	119					Expansion of eta(q^2)^12 * eta(q^4)^8 / eta(q)^8 in powers of q.
+A286952	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,-1,2 })	134					Expansion of Product_{j>=1} (1 - x^j)/(1 - x^(3*j))^3.
+A286953	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,-1,-1,3 })	139					Expansion of Product_{j>=1} (1 - x^j)/(1 - x^(4*j))^4.
+A287990	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 36,-36 })	63					Expansion of Jacobi theta constant (theta_2/2)^36.
+A287991	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 48,-48 })	56					Expansion of Jacobi theta constant (theta_2/2)^48.
+A287998	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 }, new long[] { 0 })	178					Expansion of 1/((1-x)(1-x^3)(1-x^5) ... (1-x^15)).
+A288000	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 }, new long[] { 0 })	174					Expansion of 1/((1-x)(1-x^3)(1-x^5) ... (1-x^17)).
+A288001	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 }, new long[] { 0 })	172					Expansion of 1/((1-x)(1-x^3)(1-x^5) ... (1-x^19)).
+A288341	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,1,1,1,1,1 }, new long[] { 0 })	146					Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^6)).
+A288342	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,1,1,1,1,1,1 }, new long[] { 0 })	142					Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^7)).
+A288343	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,1,1,1,1,1,1,1 }, new long[] { 0 })	138					Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^8)).
+A288344	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,1,1,1,1,1,1,1,1 }, new long[] { 0 })	135					Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^9)).
+A288345	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,1,1,1,1,1,1,1,1,1 }, new long[] { 0 })	133					Expansion of 1 / ((1-x)^2*(1-x^2)*(1-x^3)*...*(1-x^10)).
+A293003	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,-1,1,-1,0,0 })	186					Expansion of Product_{k>=1} (1 - x^(2*k))/(1 - x^(3*k)).
+A293306	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,1,-2,1,-1,0 })	141					Expansion of (eta(q)eta(q^3))/eta(q^2)^2 in powers of q.
+A293378	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,4,4,4,2,4 })	93					Expansion of (eta(q^6)/(eta(q)eta(q^2)eta(q^3))^2 in powers of q.
+A293387	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,-2,4,-2,2,0 })	147					Expansion of (eta(q^2)^2/(eta(q)eta(q^3)))^2 in powers of q.
+A293389	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,2,-4,2,-2,0 })	112					Expansion of ((eta(q)eta(q^3))/eta(q^2)^2)^2 in powers of q.
+A293422	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,1,0,1,2,0,2,1,0,1,2,-2 })	129					The PDO_t(n) function (Number of tagged parts over all the partitions of n with designated summands in which all parts are odd).
+A293423	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,3,-2,3,3,0 })	106					Expansion of Product_{k>0} (1 - q^(3*k))^5/((1 - q^k)^3*(1 - q^(6*k))^2).
+A293426	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 5,8,2,8,5,2 })	79					Expansion of Product_{k>0} ((1 - q^(3*k))^3*(1 - q^(6*k))^3)/((1 - q^k)^5*(1 - q^(2*k))^3).
+A293569	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,2,1,2,1,0,1,2,0,2,1,0,1,2,1,2,1,0 })	125					Partitions with designated summands in which no parts are multiples of 3.
+A293628	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,1,4,2,4,0,4,2,4,1,4,0 })	95					Expansion of Product_{k>0} ((1 - q^(2*k))^3*(1 - q^(6*k))*(1 - q^(12*k)))/((1 - q^k)^4*(1 - q^(4*k))).
+A293629	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,6,0,6,4,0 })	87					Expansion of Product_{k>0} ((1 - q^(3*k))^4*(1 - q^(6*k))^2)/((1 - q^k)^4*(1 - q^(2*k))^2).
+A297054	eulerxfm	1	3	1	new PaddingSequence(new long[] { -1,0 }, new long[] { -1 })	86					The coefficients of the product (1-x^2)(1-x^3)(1-x^4)... / (1+x).
+A298311	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,1 })	39					Expansion of Product_{k>=1} 1/((1 - x^(2*k))*(1 - x^(2*k-1))^3).
+A298596	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,-1 }, new long[] { -1,0 })	77					Expansion of Product_{k>=2} 1/(1 + x^k).
+A300415	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,2 }, new long[] { 2,1 })	46					Expansion of Product_{k>=2} (1 + x^k)/(1 - x^k).
+A301504	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-1,0,1,1,0,0,0 })	69					Expansion of Product_{k>=1} (1 + x^(4*k))*(1 + x^(4*k-3)).
+A301505	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,1,1,0,-1,1,0 })	69					Expansion of Product_{k>=1} (1 + x^(4*k))*(1 + x^(4*k-1)).
+A301507	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,-1,1,1,0,0 })	69					Expansion of Product_{k>=0} (1 + x^(4*k+1))*(1 + x^(4*k+2)).
+A301508	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,1,-1,0,0,1,0 })	69					Expansion of Product_{k>=0} (1 + x^(4*k+2))*(1 + x^(4*k+3)).
+A301562	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,-1,0,1,1,0,0,0 })	69					Expansion of Product_{k>=0} (1 + x^(5*k+1))*(1 + x^(5*k+2)).
+A301563	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-1,1,0,0,0,0,1,0,0 })	71					Expansion of Product_{k>=0} (1 + x^(5*k+1))*(1 + x^(5*k+3)).
+A301564	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,0,0,0,0,1,-1,1,0 })	73					Expansion of Product_{k>=0} (1 + x^(5*k+2))*(1 + x^(5*k+4)).
+A301565	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,1,1,0,-1,0,0,1,0 })	73					Expansion of Product_{k>=0} (1 + x^(5*k+3))*(1 + x^(5*k+4)).
+A301567	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,-1,0,0,1,1,0,0,0,0 })	73					Expansion of Product_{k>=1} (1 + x^(5*k))*(1 + x^(5*k-4)).
+A301568	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,1,0,-1,1,0,1,0,0,0 })	73					Expansion of Product_{k>=1} (1 + x^(5*k))*(1 + x^(5*k-3)).
+A301569	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,1,0,1,-1,0,1,0,0 })	74					Expansion of Product_{k>=1} (1 + x^(5*k))*(1 + x^(5*k-2)).
+A301570	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 0,0,0,1,1,0,0,-1,1,0 })	75					Expansion of Product_{k>=1} (1 + x^(5*k))*(1 + x^(5*k-1)).
+A301588	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,-1,2,0 })	53					Expansion of Product_{k>=1} (1 + x^k)^(mod(k,3)).
+A301589	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,2,0 })	44					Expansion of Product_{k>=1} 1/(1 - x^k)^(mod(k,3)).
+A302856	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 64,-96,64,-32 })	56					Number of ways of writing n as a sum of 32 squares.
+A304630	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2 }, new long[] { 1,1,0 })	49					Expansion of (1/(1 - x))*Product_{k>=1} (1 - x^(3*k))/(1 - x^k).
+A304631	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2 }, new long[] { 1,-1,1,0 })	180					Expansion of (1/(1 - x))*Product_{k>=1} (1 + x^(2*k-1)).
+A304632	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2 }, new long[] { 1,0,0,0,1,0 })	165					Expansion of (1/(1 - x))* Product_{k>=1} (1 + x^k)/(1 + x^(3*k)).
+A304883	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,0,1,0 })	53					Expansion of Product_{k>=1} 1/(1-x^(3*k-1)) * Product_{k>=1} 1/(1-x^(6*k-5)).
+A304885	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,1,1,0 })	55					Expansion of Product_{k>=1} 1/(1-x^(3*k-2)) * Product_{k>=1} 1/(1-x^(6*k-1)).
+A305443	eulerxfm	1	3	1	new PaddingSequence(new long[] {  }, new long[] { -3,2,1,1,2,-3,0 })	153					Expansion of q * f(-q^1, -q^6)^3 /  f(-q^2, -q^5)^2 * f(-q^3, -q^4) in powers of q where f() is Ramanujan's two-variable theta function.
+A307757	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,0,-1,-1,1,-1,-1,0,0,-1,0 })	68					Expansion of Product_{k>=1} 1/(1 + x^k/(1 + x^(2*k))).
+A308266	eulerxfm	1	3	0,0,1	new PaddingSequence(new long[] { 1,2,2,0,-1 }, new long[] { 0 })	49					Sum of the middle parts in the partitions of n into 3 parts.
+A308733	eulerxfm	0	3	0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,2 }, new long[] { 0 })	49					Sum of the smallest parts of the partitions of n into 4 parts.
+A308758	eulerxfm	0	3	0,0,0,0,1	new PaddingSequence(new long[] { 1,1,2,2,0,0,-1 }, new long[] { 0 })	47					Sum of the third largest parts of the partitions of n into 4 parts.
+A308823	eulerxfm	0	3	0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,2 }, new long[] { 0 })	47					Sum of the smallest parts of the partitions of n into 5 parts.
+A308824	eulerxfm	0	3	0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,2,2,0,0,0,-1 }, new long[] { 0 })	45					Sum of the fourth largest parts in the partitions of n into 5 parts.
+A308868	eulerxfm	0	3	0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,1,2 }, new long[] { 0 })	45					Sum of the smallest parts in the partitions of n into 6 parts.
+A308869	eulerxfm	0	3	0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,2,2,0,0,0,0,-1 }, new long[] { 0 })	44					Sum of the fifth largest parts in the partitions of n into 6 parts.
+A308927	eulerxfm	0	3	0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,1,1,2 }, new long[] { 0 })	44					Sum of the smallest parts in the partitions of n into 7 parts.
+A308928	eulerxfm	0	3	0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,1,2,2,0,0,0,0,0,-1 }, new long[] { 0 })	43					Sum of the sixth largest parts in the partitions of n into 7 parts.
+A308990	eulerxfm	0	3	0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,1,1,1,2 }, new long[] { 0 })	43					Sum of the smallest parts in the partitions of n into 8 parts.
+A309240	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,-1,-1,1,2,-1,0 })	200					Expansion of 1/((1 - x)*(1 - x^2)*(1 + x^3)*(1 + x^4)*(1 - x^5)*(1 - x^6)*(1 + x^7)*(1 + x^8)*...).
+A309266	eulerxfm	0	3	1	new PaddingSequence(new long[] { 3,0 }, new long[] { 2,1 })	41					Expansion of (1 + x) * Product_{k>=1} (1 + x^k)/(1 - x^k).
+A316718	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,1,1,0,1,1,1,0,1,1,0,-1,0,0,0,-1,0,0,0,-1 }, new long[] { 0 })	171					Expansion of Product_{k=1..6} (1+x^(2*k-1))/(1-x^(2*k)).
+A316719	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,1,1,0,1,1,1,0,1,1,1,0,0,0,0,-1,0,0,0,-1,0,0,0,-1 }, new long[] { 0 })	164					Expansion of Product_{k=1..7} (1+x^(2*k-1))/(1-x^(2*k)).
+A316720	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,0,-1,0,0,0,-1,0,0,0,-1,0,0,0,-1 }, new long[] { 0 })	159					Expansion of Product_{k=1..8} (1+x^(2*k-1))/(1-x^(2*k)).
+A316721	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,0,0,0,-1,0,0,0,-1,0,0,0,-1,0,0,0,-1 }, new long[] { 0 })	156					Expansion of Product_{k=1..9} (1+x^(2*k-1))/(1-x^(2*k)).
+A316722	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,0,-1,0,0,0,-1,0,0,0,-1,0,0,0,-1,0,0,0,-1 }, new long[] { 0 })	154					Expansion of Product_{k=1..10} (1+x^(2*k-1))/(1-x^(2*k)).
+A318026	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,2 })	47					Expansion of Product_{k>=1} 1/((1 - x^k)*(1 - x^(3*k))).
+A318027	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,2 })	47					Expansion of Product_{k>=1} 1/((1 - x^k)*(1 - x^(4*k))).
+A318028	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,2 })	47					Expansion of Product_{k>=1} 1/((1 - x^k)*(1 - x^(5*k))).
+A319307	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -32,-16 })	79					Expansion of theta_4(q)^16 in powers of q = exp(Pi i t).
+A319308	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -40,-20 })	70					Expansion of theta_4(q)^20 in powers of q = exp(Pi i t).
+A319309	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -48,-24 })	63					Expansion of theta_4(q)^24 in powers of q = exp(Pi i t).
+A319310	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -56,-28 })	58					Expansion of theta_4(q)^28 in powers of q = exp(Pi i t).
+A319552	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 6,3 })	81					Expansion of 1/theta_4(q)^3 in powers of q = exp(Pi i t).
+A319553	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 16,8 })	62					Expansion of 1/theta_4(q)^8 in powers of q = exp(Pi i t).
+A319554	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 24,12 })	55					Expansion of 1/theta_4(q)^12 in powers of q = exp(Pi i t).
+A320049	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -6,12,-6,0 })	77					Expansion of (psi(x) / phi(x))^6 in powers of x where phi(), psi() are Ramanujan theta functions.
+A320050	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -7,14,-7,0 })	74					Expansion of (psi(x) / phi(x))^7 in powers of x where phi(), psi() are Ramanujan theta functions.
+A320069	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,1,-2,4,-2,1,-2,2 })	114					Expansion of 1/(theta_3(q) * theta_3(q^2)), where theta_3() is the Jacobi theta function.
+A320070	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -2,1,-4,4,-2,4,-2,2,-4,1,-2,5,-2,1,-4,2,-2,4,-2,4,-4,1,-2,3 })	106					Expansion of 1/(theta_3(q) * theta_3(q^2) * theta_3(q^3)), where theta_3() is the Jacobi theta function.
+A320677	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -18,-18,-12 })	103					Expansion of s(q)^6 where s() is cubic AGM theta functions.
+A320689	eulerxfm	0	3	1	new PaddingSequence(new long[] { 2,-1 }, new long[] { 1 })	137					Number of partitions of n with up to two distinct kinds of 1.
+A320690	eulerxfm	0	3	1	new PaddingSequence(new long[] { 3,-2 }, new long[] { 1 })	134					Number of partitions of n with up to three distinct kinds of 1.
+A320691	eulerxfm	0	3	1	new PaddingSequence(new long[] { 4,-3 }, new long[] { 1 })	131					Number of partitions of n with up to four distinct kinds of 1.
+A320692	eulerxfm	0	3	1	new PaddingSequence(new long[] { 5,-4 }, new long[] { 1 })	128					Number of partitions of n with up to five distinct kinds of 1.
+A320693	eulerxfm	0	3	1	new PaddingSequence(new long[] { 6,-5 }, new long[] { 1 })	125					Number of partitions of n with up to six distinct kinds of 1.
+A320694	eulerxfm	0	3	1	new PaddingSequence(new long[] { 7,-6 }, new long[] { 1 })	122					Number of partitions of n with up to seven distinct kinds of 1.
+A320695	eulerxfm	0	3	1	new PaddingSequence(new long[] { 8,-7 }, new long[] { 1 })	119					Number of partitions of n with up to eight distinct kinds of 1.
+A320696	eulerxfm	0	3	1	new PaddingSequence(new long[] { 9,-8 }, new long[] { 1 })	117					Number of partitions of n with up to nine distinct kinds of 1.
+A320697	eulerxfm	0	3	1	new PaddingSequence(new long[] { 10,-9 }, new long[] { 1 })	114					Number of partitions of n with up to ten distinct kinds of 1.
+A320753	eulerxfm	0	3	1	new PaddingSequence(new long[] { 7 }, new long[] { 1 })	95					Number of partitions of n with seven kinds of 1.
+A320754	eulerxfm	0	3	1	new PaddingSequence(new long[] { 8 }, new long[] { 1 })	91					Number of partitions of n with eight kinds of 1.
+A320755	eulerxfm	0	3	1	new PaddingSequence(new long[] { 9 }, new long[] { 1 })	88					Number of partitions of n with nine kinds of 1.
+A320756	eulerxfm	0	3	1	new PaddingSequence(new long[] { 10 }, new long[] { 1 })	85					Number of partitions of n with ten kinds of 1.
+A321527	eulerxfm	0	3	0,0,0,1	new PaddingSequence(new long[] {  }, new long[] { -1,0,2,2,-1,0,-1,2,2,0,-1,-4 })	71					Expansion of x^3 * c(x^2) * c(x^4)^2 / (9 * c(x)) in powers of x where c() is a cubic AGM theta function.
+A321528	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -6,-9,-4,-6,-6,-6,-6,-6,-4,-9,-6,-4 })	47					Expansion of b(x)^2 * b(x^2) / b(x^4) where b is a cubic AGM theta function.
+A322031	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -8,-10 })	40					(Sum_{t=0..oo} ((-1)^t*(2*t+1)*q^((2*t+1)^2)))^3 * (Sum_{t=0..oo} q^((2*t+1)^2)) = Sum_{k=0..oo} a(k)*q^(8*k+4).
+A323978	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,-12,-16,-18 }, new long[] { 0 })	97					Expansion of determinant of 24 X 24 matrix M_{u,v} = q^(maj(u*v^-1)) where u, v in S_4 and maj = MacMahon's major index (cf. A008302).
+A323979	eulerxfm	0	3	1	new PaddingSequence(new long[] { 0,-60,-80,-90,-96 }, new long[] { 0 })	59					Expansion of determinant of 120 X 120 matrix M_{u,v} = q^(maj(u*v^-1)) where u, v in S_5 and maj = MacMahon's major index (cf. A008302).
+A323981	eulerxfm	0	3	1	new PaddingSequence(new long[] { -240,0,-60,0,0,-20,0,0,0,-6 }, new long[] { 0 })	35					Expansion of determinant of 120 X 120 matrix M_{u,v} = q^(inv(u*v^-1)) where u, v in S_5 and inv is number of inversions.
+A325951	eulerxfm	0	3	1	new PaddingSequence(new long[] { 4 }, new long[] { 1,0 })	39					G.f.: 1/(1-x)^3 * Product_{k>=1} (1 + x^k).
+A325952	eulerxfm	0	3	1	new PaddingSequence(new long[] { 5 }, new long[] { 1,0 })	37					G.f.: 1/(1-x)^4 * Product_{k>=1} (1 + x^k).
+A326123	eulerxfm	1	3	1	new PaddingSequence(new long[] { 5 }, new long[] { 4,-4 })	190					a(n) is the sum of all divisors of the first n odd numbers.
+A326465	eulerxfm	0	3	0,0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,1,1,1,1,2 }, new long[] { 0 })	42					Sum of the smallest parts of the partitions of n into 9 parts.
+A326589	eulerxfm	0	3	0,0,0,0,0,0,0,0,0,0,1	new PaddingSequence(new long[] { 1,1,1,1,1,1,1,1,1,2 }, new long[] { 0 })	42					Sum of the smallest parts of the partitions of n into 10 parts.
+A327042	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,2,2,2,1,3 })	113					Expansion of Product_{k>=1} 1/((1 - x^k) * (1 - x^(2*k)) * (1 - x^(3*k))).
+A327043	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,2,2,3,1,3,1,3,2,2,1,4 })	110					Expansion of Product_{k>=1} 1/((1 - x^k) * (1 - x^(2*k)) * (1 - x^(3*k)) * (1 - x^(4*k))).
+A327045	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,2,0,1,1,1,0,2,1,1,0 })	134					Expansion of Product_{k>=1} (1 + x^k) * (1 + x^(2*k)) * (1 + x^(3*k)).
+A327046	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,2,1,1,1,1,0,2,1,1,1,1,1,2,0,1,1,1,1,2,1,1,0 })	129					Expansion of Product_{k>=1} (1 + x^k) * (1 + x^(2*k)) * (1 + x^(3*k)) * (1 + x^(4*k)).
+A327048	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,3,4,2,2,4,2,2,4,3,2,3 })	98					Expansion of Product_{k>=1} (1 + x^k) * (1 + x^(2*k)) * (1 + x^(3*k)) / ((1 - x^k) * (1 - x^(2*k)) * (1 - x^(3*k))).
+A327049	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,3,4,4,2,4,2,3,4,3,2,5,2,3,4,3,2,4,2,4,4,3,2,4 })	96					Expansion of Product_{k>=1} (1 + x^k) * (1 + x^(2*k)) * (1 + x^(3*k)) * (1 + x^(4*k)) / ((1 - x^k) * (1 - x^(2*k)) * (1 - x^(3*k)) * (1 - x^(4*k))).
+A327717	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,0,0,1,1,-1,1,1,0,0,1,0 })	174					Expansion of Product_{k>=1} (1 + x^k/(1 + x^(2*k))).
+A328539	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,2,2,2,3,2 })	34					Number of broken 1-diamond partitions of n.
+A328540	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 3,2,3,2,2,2,3,2,3,2 })	33					Number of broken 2-diamond partitions of n.
+A328542	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 4,3,4,2,4,3,4,3 })	31					Number of 4 dots bracelet partitions of n.
+A328545	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,1,1,1,1,1,0 })	134					Number of 11-regular partitions of n (no part is a multiple of 11).
+A328546	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,1,1,1,1,1,1,1,1,1,0 })	134					Number of 12-regular partitions of n (no part is a multiple of 12).
+A328547	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,2,0 })	39					Number of 3-regular bipartitions of n.
+A328548	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,2,2,2,2,0 })	37					Number of 6-regular bipartitions of n.
+A329677	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,-1,1,0,0,-1 }, new long[] { 0 })	95					Number of excursions of length n with Motzkin-steps consisting only of consecutive steps UH, HD, and DH.
+A329678	eulerxfm	0	3	1	new PaddingSequence(new long[] { 1,0,0,-1 }, new long[] { 0 })	95					Number of excursions of length n with Motzkin-steps consisting only of consecutive steps UD and DH.
+A335754	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 2,0,0,1,1,0 })	48					a(n) is the number of overpartitions of n where overlined parts are not divisible by 3 and non-overlined parts are congruent to 1 modulo 3.
+A335755	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,0,2,0 })	48					a(n) is the number of overpartitions of n where overlined parts are not divisible by 3 and non-overlined parts are congruent to 2 modulo 3.
+A335766	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { 1,1,0,0,0,0,1,0,0,1,0,0 })	56					a(n) is the number of partitions of n into parts congruent to 1, 2, or 4 modulo 6 where only parts congruent to 1 modulo 6 may be repeated.
+A336766	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,-1,0,-1,-1 })	70					The number of partitions of n into an even number of parts, each part occurring at most five times, minus the number of partitions of n into an odd number of parts, each part occurring at most five times.
+A336767	eulerxfm	0	3	1	new PaddingSequence(new long[] {  }, new long[] { -1,0,-1,0,-1,0,-1,-1 })	65					The number of partitions of n into an even number of parts, each part occurring at most seven times, minus the number of partitions of n into an odd number of parts, each part occurring at most seven times.

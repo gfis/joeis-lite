@@ -31,25 +31,26 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 my ($old_aseqno, $old_code, $old_name, $old_num) = ("", "", "", "");
 my ($new_aseqno, $new_code, $new_name, $new_num) = ("", "", "", "");
 my $block  = "";
-my $blk_aseqno = ""; # first aseqno in block
+my $blk_aseqno = "A000000"; # first aseqno in block
 my $jcount = 0;
 my $ocount = 0;
 my $jsum   = 0;
 my $osum   = 0;
+my $offset = "-2";
 while (<>) { # read inputfile
     next if m{\A\s*\#}; # skip comment lines
     next if m{\A\s*\Z}; # skip empty lines
     s{\s+\Z}{}; # chompr
     my $line = $_;
-    ($new_aseqno, $new_code, $new_name, $new_num) = split(/\t/, $line);
+    ($new_aseqno, $offset, $new_code, $new_name, $new_num) = split(/\t/, $line);
     $new_name = "" if ! defined($new_name);
     $new_num  = "" if ! defined($new_num );
     if ($old_name ne $new_name) {
         $blk_aseqno = $new_aseqno;
         &output_block();
     }
-    $block .= join("\t", ($blk_aseqno, $new_aseqno, $new_code, $new_num, $new_name)) . "\n";
-    if ($new_code =~ m{\AZZ}) { # not in joeis
+    $block .= join("\t", ($blk_aseqno, $new_aseqno, $offset, $new_code, $new_num, $new_name, "m", "i")) . "\n";
+    if ($new_code =~ m{\Azzzz}) { # not in joeis
         $ocount ++;
     } else { # in joeis
         $jcount ++;
@@ -73,16 +74,24 @@ sub output_block {
 } # output_block
 #---------------------------------------
 __DATA__
-A063833 +j+ !n-(\d+) is prime
-A063833 -o- !n-(\d+) is prime
-A092860 -o- "(\d+) times the prime sequence"
-A158302 -o- "(\d+)" followed by repeats of (\d+)^k deleting all (\d+)^k, k>(\d+)
-A121205 -o- "(\d+)" in bases (\d+) and higher rewritten in base (\d+)
-A060858 +j+ "(\d+)", a popular song by Rafaela Carra
-A060858 -o- "(\d+)", a popular song by Rafaela Carra
-A064373 +j+ "(\d+)-(\d+)-(\d+)", a popular song by the B(\d+)'s
-A064373 -o- "(\d+)-(\d+)-(\d+)", a popular song by the B(\d+)'s
-A277402 -o- "(\d+)-Portolan numbers": number of regions formed by n-secting the angles of an equilateral triangle
-A089604 -o- "(\d+)-lazy binary" representation of n: to increment, add one to the last digit, then "carry" the rightmost (\d+) (replace (\d+)->(\d+), (\d+)->(\d+), or (\d+)->(\d+))
-A208362 -o- "(\d+)-ply" palindromic primes
-A208363 -o- "(\d+)-ply" palindromic primes
+A093560	-2	GeneratingFu	((\d+),(\d+)) Pascal triangle	3,1
+A093644	-2	GeneratingFu	((\d+),(\d+)) Pascal triangle	9,1
+A172185	-2	GeneratingFu	((\d+),(\d+)) Pascal triangle	9,11
+A093561	-2	zzzz        	((\d+),(\d+)) Pascal triangle	4,1
+A093562	-2	zzzz        	((\d+),(\d+)) Pascal triangle	5,1
+A093564	-2	zzzz        	((\d+),(\d+)) Pascal triangle	7,1
+A093565	-2	zzzz        	((\d+),(\d+)) Pascal triangle	8,1
+A093645	-2	zzzz        	((\d+),(\d+)) Pascal triangle	10,1
+A048951	-2	zzzz        	((\d+),(\d+)) Ulam sequence	2,4
+A090592	-2	HolonomicRec	((\d+),(\d+)) entry of powers of the orthogonal design shown below	1,1
+A087621	-2	LinearRecurr	((\d+),(\d+)) entry of powers of the orthogonal design shown below	1,1
+A090590	-2	LinearRecurr	((\d+),(\d+)) entry of powers of the orthogonal design shown below	1,1
+A089181	-2	LinearRecurr	((\d+),(\d+)) entry of powers of the orthogonal design shown in Annnnnn	1,3,090592
+A241979	-2	LinearRecurr	((\d+),(\d+)) sequence such that lengths of (\d+) consecutive runs are always distinct	0,1,3
+A127254	-2	zzzz        	((\d+),(\d+)) sequence whose (\d+) positions are indexed by twice the odious numbers given by Annnnnn	0,1,0,091855
+A093563	-2	zzzz        	((\d+),(\d+))-Pascal triangle	6,1
+A343159	-2	zzzz        	((\d+),(\d+))-array describing two-dimensional paper-folding construction of Annnnnn, read by upward antidiagonals	0,1,342759
+A122788	-2	LinearRecurr	((\d+),(\d+))-entry of the (\d+) X (\d+) matrix M^n, where M ={{(\d+),-(\d+),(\d+)},{(\d+),(\d+),(\d+)},{(\d+),(\d+),(\d+)}}	1,3,3,3,0,1,1,1,1,0,0,1,1
+A005273	-2	zzzz        	((\d+),(\d+))-graphs	5,4
+A005274	-2	zzzz        	((\d+),(\d+))-graphs	6,5
+A005275	-2	zzzz        	((\d+),(\d+))-graphs	7,6
