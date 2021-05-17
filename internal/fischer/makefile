@@ -2981,6 +2981,30 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 #--------------------------------
+# A163493 Number of binary strings of length n which have the same number of 00 and 01 substrings.
+# cf. Zeilberger: https://arxiv.org/pdf/1112.6207.pdf
+#
+rpseqhol0: rpseqhol1 rpseqhol2 
+rpseqhol1: # extract all word pairs
+	grep -E "Number of binary strings of length n "  $(COMMON)/joeis_names.txt \
+	| perl rpseqhol.pl \
+	2>       $@.rest.tmp \
+	| head -n88888 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp $@.rest.tmp
+rpseqhol2: # convert the word pairs into P-finite recurrences
+	perl $(COMMON)/callmaple.pl -t 4 -n 64 -p rpseqhol.mpat rpseqhol1.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+rpseqhol:
+	cat rpseqhol2.tmp | grep -P "^A[0-9]" | sort | uniq -w7\
+	| perl -ne 's/\[\]/\[0\]/g; print; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
+#--------------------------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
 	perl -ne \

@@ -1,0 +1,56 @@
+interface(prettyprint=0,errorbreak=0):
+with(StringTools):
+read "C://Users/User/work/gits/OEIS-mat/software/RPS_gfis.txt"; 
+# from http://www.math.rutgers.edu/~zeilberg/tokhniot/RPS without the header text; 
+# cf. Zeilberger: https://arxiv.org/pdf/1112.6207.pdf
+Yafe:=proc(ope,N) local i,ope1,coe1,L: 
+  if ope=0 then
+    RETURN(1,0):
+  fi:
+  ope1:=expand(ope):
+  L:=degree(ope1,N):
+  coe1:=coeff(ope1,N,L):
+  ope1:=normal(ope1):
+  ope1:= convert([seq(factor(coeff(ope1,N,i))*N^i,i=ldegree(ope1,N)..degree(ope1,N))],`+`):
+  factor(coe1),ope1:
+end:
+recgf:=proc(w1,w2) local n,N,f,re; # for testing with Maple recurrence expression
+  re:=RECaz(2,w1,w2,n,N,10);
+  f:= gfun:-rectoproc(re, a(n), remember): 
+  [map(f, [$0..16]), re];
+end:
+shift:=proc(expr, dist) local f:
+  f:=proc(n): expr end:
+  f(n - dist)
+end:
+REChol:=proc(m,w1,w2,n,N) local ope,z,Dz,ORDER,lu,i1: # was RECaz
+  option remember:
+  ope:=DOaz(m,w1,w2,z,Dz):
+  ope:=DiffToRec1(ope,z,Dz,n,N):
+  ORDER:=degree(ope,N):
+  ope:=add(coeff(ope,N,i1)*N^i1,i1=0..ORDER):
+  ope:=eval(ope, n=n-ORDER): # shift to make DIST=0
+  lu:=RSseq(m,w1,w2,ORDER):
+  ([ [0], seq([seq(coeff(coeff(ope,N,i1),n,k),k=0..degree(coeff(ope,N,i1)))],i1=0..ORDER) ] # matrix
+  , [1, seq(lu[j], j=1..nops(lu)) ] # initTerms
+  , 0 # ORDER, dist
+  , ope
+  )
+end:
+rpseqhol:=proc(aseqno,w1,w2) local n,N,f,re, offset,matrix,init,dist,name;
+  re:=REChol(2,w1,w2,n,N,10);
+  offset:= 0;
+  matrix:= tostring(re[1]);
+  init:= tostring(re[2]);
+  dist:= re[3];
+  name:= re[4];
+  # re
+  printf("%a\tholos\t%a\t\%s\t%s\t%a\t%a\n", aseqno, offset, matrix, init, dist); # , name);
+  printf("# make runholo A=%a OFFSET=%a MATRIX=\"%s\" INIT=\"%s\" DIST=%a\n", aseqno, offset, matrix, init, dist);
+end:
+tostring:=proc(list) local k:
+  DeleteSpace(convert(list,string))
+end:
+# rpseqhol(A163493,[1,1],[1,2]);
+
+timelimit($(TIMEOUT), rpseqhol($(PARM0), [$(PARM3)], [$(PARM4)]));
