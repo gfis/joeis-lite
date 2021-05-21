@@ -3004,6 +3004,30 @@ rpseqhol:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen	
+#----------------
+# A118351 Central terms of pendular triangle A118350
+# G.f. A=A(x) satisfies: A = 1 - 3*x*A + 3*x*A^2 + x*A^3.
+#
+satishol0: satishol1 satishol2 
+satishol1: # merge with initial terms
+	make seq4 LIST=$(HOLREC)/satis.gen
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, d.data \
+	  FROM  seq4 s, bfdata d \
+	  WHERE s.aseqno = d.aseqno ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+satishol2: # convert algebraic equation into P-finite recurrences
+	perl $(COMMON)/callmaple.pl -t 6 -n 16 -p satishol.mpat satishol1.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+satishol:
+	cat satishol2.tmp | grep -P "^A\d+\t" | grep -v FAIL | sort | uniq -w7\
+	| perl -ne 's/\[\]/\[0\]/g; print; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 #--------------------------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
@@ -3024,6 +3048,12 @@ squaredig_width:
 	WHERE b.aseqno = s.aseqno \
 	  AND s.aseqno = n.aseqno \
 	  ORDER BY 1" | tee @$.tmp
+#--------------------------------
+subsetmod:
+	grep -P "^A\d+" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 tileprep: tilepre1 tilepre2 tilepre3
 tilepre1:

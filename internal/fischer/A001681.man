@@ -1,0 +1,54 @@
+# The partition function G(n,(\d+))
+
+A000007	holose	0	[[0],[0,-1]]	[1]	0
+A000012	holose	0	[[0],[1],[0,-1]]	[1]	0
+A000085	holose	0	[[0],[1],[1],[0,-1]]	[1]	0
+A001680	holose	0	[[0],[1],[2],[2],[0,-2]]	[1]	0
+A001681	holose	0	[[0],[1],[3],[6],[6],[0,-6]]	[1]	0
+A110038	holose	0	[[0],[1],[4],[12],[24],[24],[0,-24]]	[1]	0
+A148092	holose	0	[[0],[1],[5],[20],[60],[120],[120],[0,-120]]	[1]	0
+A229224	holose	0	[[0],[1],[6],[30],[120],[360],[720],[720],[0,-720]]	[1]	0
+A229225	holose	0	[[0],[1],[7],[42],[210],[840],[2520],[5040],[5040],[0,-5040]]	[1]	0
+A229226	holose	0	[[0],[1],[8],[56],[336],[1680],[6720],[20160],[40320],[40320],[0,-40320]]	[1]	0
+A229227	holose	0	[[0],[1],[9],[72],[504],[3024],[15120],[60480],[181440],[362880],[362880],[0,-362880]]	[1]	0
+
+# A000007 1001    pass    91       ms
+# A000012 10001   pass    401      ms
+# A000085 801     pass    327      ms
+# A001680 654     pass    223      ms
+# A001681 610     pass    156      ms
+# A110038 592     pass    168      ms
+# A148092 501     pass    130      ms
+# A229224 501     pass    135      ms
+# A229225 501     pass    71       ms
+# A229226 501     pass    103      ms
+# A229227 501     pass    120      ms
+# Total   12      pass+f  2080 ms
+
+
+A001681, Peter Luschny:
+rec := {(-n^3-6*n^2-11*n-6)*f(n) + (-3*n^2-15*n-18)*f(n+1) + (-6*n-18)*f(n+2) - 6*f(n+3) + 6*f(n+4)=0, f(0)=1, f(1)=1, f(2)=2, f(3)=5}:
+aList := gfun:-rectoproc(rec, f(n), list): 
+aList(24);
+
+
+rec := {(-n^3-6*n^2-11*n-6)*f(n) + (-3*n^2-15*n-18)*f(n+1) + (-6*n-18)*f(n+2) - 6*f(n+3) + 6*f(n+4)=0, f(0)=1, f(1)=1, f(2)=2, f(3)=5}:
+aList := gfun:-rectoproc(rec, f(n), list): aList(24);
+
+A001680:
+2*a(n) -2*a(n-1) +2*(-n+1)*a(n-2) -(n-1)*(n-2)*a(n-3)=0 Mathar
+
+rec := {(n-1)*(n-2)*a(n-3) +2*(n-1)*a(n-2) + 2*a(n-1) - 2*a(n) =0,a(0)=1, a(1)=1, a(2)=2};
+
+rec := {(n-1)*(n-2)*1*a(n-3) + 2*(n-1)*a(n-2) + 2*a(n-1) - 2*a(n) = 0, a(0)=1, a(1)=1, a(2)=2};
+f:= gfun:-rectoproc(rec, a(n), remember): map(f, [$0..16]);
+
+A229223
+init := proc (n) local j, k; seq(a(j) = add(combinat:-stirling2(j,k), k = 0 .. n),j = 0 .. n) end proc:
+g := proc(k) local j; { add(k!/((k-j)!)*a(n-k+j-1),j=0..k)-k!*n*a(n), init(k)}; end proc:
+
+
+init := proc (n) local j, k; seq(a(j) = add(combinat:-stirling2(j,k), k = 0 .. n),j = 0 .. n) end proc:
+recg := proc(k) local j,m; m:=k-1; { add( mul(n-i, i=0..m-j)*m!/((m-j)!)*a(n-m+j-1), j=0..m ) - m!*n*a(n), init(m)}; end proc:
+column := proc(k,len) local f; f:= gfun:-rectoproc(recg(k), a(n), remember): map(f, [$0..len]) end:
+seq(column(k,10), k=1..6);

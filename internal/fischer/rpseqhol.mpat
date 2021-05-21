@@ -16,8 +16,7 @@ Yafe:=proc(ope,N) local i,ope1,coe1,L:
 end:
 recgf:=proc(w1,w2) local n,N,f,re; # for testing with Maple recurrence expression
   re:=RECaz(2,w1,w2,n,N,10);
-  f:= gfun:-rectoproc(re, a(n), remember): 
-  [map(f, [$0..16]), re];
+  f:= gfun:-rectoproc(re, a(n), remember): [map(f, [$0..16]), re];
 end:
 shift:=proc(expr, dist) local f:
   f:=proc(n): expr end:
