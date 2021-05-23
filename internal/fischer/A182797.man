@@ -1,0 +1,42 @@
+A007531	none	2	a(n) = n*(n-1)*(n-2) (or n!/(n-3)!).                    	[1,4,-6,4,-1]	[0, 0, 0, 6, 24, 60, 120, 210, 336]
+A182797	----	0	Square array A(n,k), n>=1, k>=1, read by antidiagonals: A(n,k) is the number of n-colorings of the Triangle Graph of order k.
+A182788	Line	3	Number of n-colorings of the Triangle Graph of order (\d+)	[0,1,-7,21,-35,35,-21,7,-1]	[0,0,0,6,192,1620,7680]					
+A182789	Line	4	Number of n-colorings of the Triangle Graph of order (\d+)	[0,1,-11,55,-165,330,-462,462,-330,165,-55,11,-1]	[0,0,0,6,2112,98820,1574400,13676250,80631936,363204072,1342218240]					
+A182790	zzzz	5	Number of n-colorings of the Triangle Graph of order (\d+)	[]	[0,0,0,6,32640,13638780,1034019840,29699591250,460772395776]
+A182791	zzzz	6	Number of n-colorings of the Triangle Graph of order (\d+)							
+A182792	zzzz	7	Number of n-colorings of the Triangle Graph of order (\d+)							
+A182793	Holo	8	Number of n-colorings of the Triangle Graph of order (\d+)							
+A182794	zzzz	9	Number of n-colorings of the Triangle Graph of order (\d+)							
+A182795	zzzz	10	Number of n-colorings of the Triangle Graph of order (\d+)							
+A182796	zzzz	11	Number of n-colorings of the Triangle Graph of order (\d+)							
+
+
+A182798		Number of 4-colorings of the Triangle Graph of order n.		4, 24, 192, 2112, 32640, 718080, 22665216, 1031276544    
+A153467		1/4 of the number of 4-colorings of a planar n X n X n triangular grid.		1, 6, 48, 528, 8160, 179520, 5666304, 257819136, 16962407424, 1617060046848 
+A153467	null	1/4 of the number of 4-colorings of a planar n X n X n triangular grid.	nonn,changed,synth	1..15	nyi
+A153468	null	1/5 of the number of 5-colorings of a planar n X n X n triangular grid.	nonn,changed,synth	1..13	nyi
+A153469	null	1/6 of the number of 6-colorings of a planar n X n X n triangular grid.	nonn,changed,synth	1..11	nyi
+A153470	null	1/7 of the number of 7-colorings of a planar n X n X n triangular grid.	nonn,changed,synth	1..11	nyi
+A153471	null	1/8 of the number of 8-colorings of a planar n X n X n triangular grid.	nonn,changed,synth	1..10	nyi
+A153472	null	1/9 of the number of 9-colorings of a planar n X n X n triangular grid.	nonn,changed,synth	1..10	nyi
+A153473	null	1/10 of the number of 10-colorings of a planar n X n X n triangular grid.	nonn,changed,synth	1..10	nyi
+
+
+A193283		Triangle T(n,k), n>=1, 0<=k<=n*(n+1)/2, read by rows: row n gives the coefficients of the chromatic polynomial of the Triangle Graph of order n, highest powers first.
+1,   0;
+1,  -3,   2,      0;
+1,  -9,  32,    -56,     48,     -16,       0;
+1, -18, 144,   -672,   2016,   -4031,    5368, ...
+1, -30, 419,  -3612,  21477,  -93207,  304555, ...
+1, -45, 965, -13115, 126720, -925528, 5303300, ...
+
+
+simplify(x^3-3*x^2+2*x);
+x^3-3*x^2+2*x
+
+simplify(1*x^6-9*x^5+32*x^4-56*x^3+ 48*x^2-16*x);
+x*(x-1)*(x-2)^4
+
+
+simplify(1*x^10-18*x^9+144*x^8-672*x^7+2016*x^6-4031*x^5+5368*x^4-4584*x^3+2272*x^2-496*x^1);
+x*(x-1)*(x^4-9*x^3+31*x^2-49*x+31)*(x-2)^4

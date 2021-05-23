@@ -347,6 +347,8 @@ A033633: # 14, < 2021-05-15
 	perl $@.pl > $@.gen
 A035536: # < 2021-05-15
 	cp -v A035536.man A035536.gen
+A039832: # 2021-05-21
+	grep -P "^A\d+" $@.man > $@.gen
 #----
 A060722:
 	grep -E "^A" $@.man \
@@ -1430,6 +1432,21 @@ runbva:
 DISEMPOW=1
 runpf:
 	$(RAMATH).symbolic.PolyFraction -n $(NT) -r $(DISEMPOW) -parse "$(GF)"
+#----------------
+holminit: # LIST=... ; replace initial terms for a holonomic matrix; MATRIX=parm1, INIT=parm2, DIST=parm3, GFTYPE=parm4, rest ... unchanged
+	make seq4 # LIST=
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, d.data, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.parm8, s.name \
+	  FROM seq4 s, bfdata d \
+	  WHERE s.aseqno = d.aseqno \
+	  ORDER BY 1" \
+	| perl holminit.pl \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp	
+#----------------
+hiteval:
+	make holminit LIST=$(HOLREC)/hiteval.uniqw.tmp
+	cp -v holminit.tmp $@.gen
 #----------------
 holco:
 	grep -E "CoefficientList\[Series" $(COMMON)/cat25.txt \

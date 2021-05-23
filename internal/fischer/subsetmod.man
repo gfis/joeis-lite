@@ -22,6 +22,9 @@
 tostring:=proc(list):
   StringTools[DeleteSpace](convert(list,string))
 end:
+holm:= proc(poly):
+  StringTools[DeleteSpace](convert([0, seq(-coeff(poly,x,degree(poly,x) - j),j=0..degree(poly,x))], string))
+end: 
 odddiv:= proc(n) local poly, d, k, j, x;
   poly:= mul((2*x^k-1),k=select(d->d mod 2 = 1,numtheory[divisors](n))):
   StringTools[DeleteSpace](convert([0, seq(-coeff(poly,x,degree(poly,x) - j),j=0..degree(poly,x))], string))
