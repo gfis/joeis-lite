@@ -2348,18 +2348,6 @@ mma_joeis: #
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------------------------------
-# A288596 Fixed point of the mapping 00->0101, 1->1000, starting with 00. nonn,easy,      1..10000
-# A104521 Fixed point of the morphism 0->{1}, 1->{1,0,1}. nonn,synth      0..104
-# A159689 Fixed point of the morphism 0 -> 0,1,0; 1 -> 1,1; starting from a(0)=0.
-# A286937 {111->null}-transform of the Sturmian word A080764.     nonn,easy,      1..10000
-# A286987 {111->1}-transform of the Sturmian word A080764.        nonn,easy,      1..10000morfix:
-# A286804 {000->null}-transform of the Pell word, A171588.        nonn,easy,      1..10000
-# A285952 {0->1, 1->10}-transform of the Thue-Morse word A010060. nonn,easy,synth 1..86	perl -ne \
-# A285589 {00->0, 11->1}-transform of A285565.    nonn,easy,      1..10000
-# A284387 {010->2}-transform of the infinite Fibonacci word A003849.      nonn,easy,changed,      1..10000
-# A105203 Trajectory of 1 under the morphism f: 1->{1,2,1}, 2->{2,3,2}, 3->{3,1,3}.
-# A212810 Iterate the morphism 1->122, 2->1112 starting with 1.
-# A284388 0-limiting word of the morphism 0 -> 1, 1 -> 001.
 morfix:
 	CLASS=MorphismSequence
 	perl -ne \
@@ -2373,7 +2361,7 @@ morfix:
 	'if ($$line =~ m{\-\>}) { print join("\t", $$aseqno, "$@", 0, $$start, "", $$map) . "\n"; }}' \
 	$(COMMON)/names \
 	| grep -vE "A106437|A119647|A176416|A30549[56]|A317198|A32092[67]" \
-	| tee $@.gen
+	>         $@.gen
 	# mortix:
 	perl -ne \
 	'my $$line = $$_;'\
@@ -2388,9 +2376,10 @@ morfix:
 	| grep -vE "A007001|A119647|A176416|A229830" \
 	| perl -pe 'while (m{\-\>((\d\,){2,})(\d+)\-\>}) { my ($$p1, $$p2, $$p3) = ($$1, $$2, $$3); $$o1 = $$p1;'\
 	'   $$p1 =~ s{\,}{}g; s{\-\>$$o1$$p3\-\>}{\-\>$$p1,$$p3\-\>}; }'\
-	| tee -a $@.gen
-	# mor*
-	wc -l $@.gen
+	>>       $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+morrest:
 	echo xx \
 	| perl  -pe "s/morfix	\d	0	0	0\-\>1(\d*)\,1/morfix	1	1	1	0->1\1,1/;" \
 	| grep -vE "A106437|A119647|A176416|A30549[56]|A317198" \
@@ -2403,6 +2392,36 @@ morfix_grep:
 	'if ((m{\-\>}) and (m{^(A\d+)\D+(\d[ 0-9\-\>\,\;\{\}\(\)\[\]]{9,})})) { print; }' \
 	$(COMMON)/joeis_names.txt | tee x.tmp
 	wc -l x.tmp
+#--------
+morfps0: morfps1 morfps2
+morfps1:
+	perl morfps.pl $(COMMON)/names \
+	>        $@.tmp
+	wc -l    $@.tmp
+	make seq4 LIST=$@.tmp
+morfps2:
+	$(DBAT) "UPDATE seq4 s SET s.parm2 = (SELECT REPLACE(SUBSTR(i.terms, 1, 8), ',', '') \
+	  FROM asinfo i WHERE s.aseqno = i.aseqno);"
+	$(DBAT) "UPDATE seq4 s SET s.parm1 = '0' WHERE LENGTH(parm1) = 0;"
+	$(DBAT) -x 44444 seq4 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+morfps:
+	CLASS=MorphismFixedPointSequence
+	grep -P "\d\-\>\d" morfps2.tmp > morfps.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+morferr:
+	grep "MorphismSeq" $(COMMON)/joeis_names.txt \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+mordiff:
+	cut -b1-7 morferr.gen > morfe.tmp
+	cut -b1-7 morfps.gen  > morfp.tmp
+	diff -y --width=30 --suppress-common-lines morfe.tmp morfp.tmp
 #--------------------------------
 num1dig: # A126207 null    Number of 5's in decimal expansion of 5^n.
 	# grep -P "Number of (\d+\'s|zeroe?s|ones) " $(COMMON)/joeis_names.txt > $@.tmp

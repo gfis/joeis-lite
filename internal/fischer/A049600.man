@@ -1,0 +1,9 @@
+# A49600
+FORMULA	
+T(n,k) = Sum_{j=0..n-1} C(k+j,j)*C(n-1,j). - Paul D. Hanna, Oct 06 2006
+T(i,j) = T(i-1,j)+2T(i,j-1)-T(i-1,j-1) with T(0,0)=1 and T(i,j)=0 if one of i,j<0.
+
+T:= proc(n, k) local j:
+    add(binomial(k+j, j)*binomial(n-1, j), j=0..n-1):
+end:
+simplify(T(n,n+2)-T(n-1,n+1),GAMMA);

@@ -1,0 +1,4 @@
+interface(prettyprint=0):
+with(gfun):
+
+printf("%s\t%s\t%s\t%s\t%a\n", "$(PARM0)", "$(PARM1)", "$(PARM2)", "$(PARM3)", timelimit($(TIMEOUT), guessgf([$(PARM4)],x)));
