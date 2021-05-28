@@ -11,7 +11,7 @@ public class $(ASEQNO) extends RecordPositionSubsequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(PARM1), $(PARM2));
+    super(new $(PARM1)(), $(PARM2));
 $(PARM4)
   }
 }

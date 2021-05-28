@@ -12,6 +12,6 @@ public class $(ASEQNO) extends PrependSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(PARM2)$(PARM3)$(PARM4));
+    super($(PARM2), $(PARM3)$(PARM4));
   }
 }

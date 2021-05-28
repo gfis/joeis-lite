@@ -668,6 +668,30 @@ binomin:
 	head -n4 $@.gen
 	wc -l    $@.gen	
 #--------------------------------
+bisect0: # either take the 1st or the 2nd term from pairs of terms in the base sequence
+	grep -Ei "bisection of A[0-9]+\." $(COMMON)/joeis_names.txt \
+	| perl -ne 'use strict; s/\s+\Z//; my $$line = $$_; $$line =~ m{ of (A\d+)\.}; my $$rseqno = $$1; '\
+	' my $$polar = -2; if ($$line =~ m{(even|odd|first|second) bisection}i) { $$polar = substr(lc($$1), 0, 1); $$polar =~ tr{eofs}{0110}; } '\
+	' print join("\t", substr($$line, 0, 7), "bisect", -2, $$rseqno, $$polar, "", "", substr($$line, 8)) . "\n"; '\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT)  "DELETE FROM seq4 WHERE parm1 NOT IN (SELECT aseqno FROM joeis);"
+	$(DBAT)  "DELETE FROM seq4 WHERE aseqno    IN (SELECT aseqno FROM joeis);"
+	$(DBAT)  "UPDATE seq4 s SET s.parm3 = (SELECT SUBSTR(d.data, 1,  64) FROM asdata d WHERE d.aseqno = s.aseqno) \
+	                          , s.parm4 = (SELECT SUBSTR(d.data, 1, 128) FROM asdata d WHERE d.aseqno = s.parm1 );"
+	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+bisect:
+	perl bisect.pl bisect0.tmp \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
+#--------------------------------
 carule0:
 	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \
 	$(COMMON)/joeis_names.txt \
@@ -1421,6 +1445,8 @@ fholo:
 runholo:
 	# $(HOLT) -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
 	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
+runmorf:
+	$(JAVA) irvine.oeis.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D) 
 runce:
 	$(JAVA) irvine.oeis.ComplementaryEquationSequence -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
@@ -2409,7 +2435,8 @@ morfps2:
 	wc -l    $@.tmp
 morfps:
 	CLASS=MorphismFixedPointSequence
-	grep -P "\d\-\>\d" morfps2.tmp > morfps.gen
+	grep -P "\d\-\>\d" morfps2.tmp > $@.gen
+	cat morfps.man >> $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
@@ -2854,25 +2881,25 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp 
-	# echo -n "binomial"                         > binomx.deris.tmp
-	# echo -n "characteristic|indicator"         > charfun.deris.tmp
-	# echo -n "complement"                       > compseq.deris.tmp
-	# echo -n "difference"                       > diffseq.deris.tmp
-	# echo -n "dirichlet"                        > dirichinv.deris.tmp
+	echo -n "binomial"                         > binomx.deris.tmp
+	echo -n "characteristic|indicator"         > charfun.deris.tmp
+	echo -n "complement"                       > compseq.deris.tmp
+	echo -n "difference"                       > diffseq.deris.tmp
+	echo -n "dirichlet"                        > dirichinv.deris.tmp
 	echo -n "dirichlet"                        > dirichcon.deris.tmp
-	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	# echo -n "euler"                            > eulerx.deris.tmp
+	echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	# echo -n "partial product"                  > partprod.deris.tmp
-	# echo -n "partial sum"                      > partsum.deris.tmp
-	# echo -n "prime"                            > primepos.deris.tmp
-	# echo -n "prime"                            > primeval.deris.tmp
-	# echo -n "record"                           > recordpos.deris.tmp
-	# echo -n "record"                           > recordval.deris.tmp
-	# echo -n "stirling"                         > stirling2.deris.tmp
-	# echo -n "weigh"                            > weighx.deris.tmp
+	echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	echo -n "partial product"                  > partprod.deris.tmp
+	echo -n "partial sum"                      > partsum.deris.tmp
+	echo -n "prime"                            > primepos.deris.tmp
+	echo -n "prime"                            > primeval.deris.tmp
+	echo -n "record"                           > recordpos.deris.tmp
+	echo -n "record"                           > recordval.deris.tmp
+	echo -n "stirling"                         > stirling2.deris.tmp
+	echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
@@ -2892,6 +2919,7 @@ deris2:
 deris:
 	sort     deris2.gen | uniq -w7 \
 	| grep -vf not_same.man \
+	| cut -b1-512 \
 	>        deris.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
