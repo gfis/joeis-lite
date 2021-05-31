@@ -333,6 +333,11 @@ A001482:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+A004050:
+	grep -E "^A" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 a0330:
 	cp -v $@.man $@.gen
 #----
@@ -345,16 +350,21 @@ A033235: # 52, < 2021-05-15
 	perl $@.pl > $@.gen
 A033633: # 14, < 2021-05-15
 	perl $@.pl > $@.gen
+A032834: # 2021-05-29
+	cp -v $@.man $@.gen
 A035536: # < 2021-05-15
-	cp -v A035536.man A035536.gen
+	cp -v $@.man $@.gen
 A039832: # 2021-05-21
 	grep -P "^A\d+" $@.man > $@.gen
-#----
-A060722:
-	grep -E "^A" $@.man \
-	>        $@.gen
+A050201:
+	perl anagen.pl -bs A118078 -rs A050201 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+A060722:
+	grep -E "^A" $@.man > $@.gen
+	wc -l    $@.gen
+A063555: # 2021-05-29
+	grep -E "^A[0-9]" $@.man > $@.gen
 #----
 A095425:
 	grep -E "^A094324" anastret.txt \
@@ -1436,15 +1446,14 @@ gordon: # Gordon Theorem
 # HolonomicRecurrence
 #----
 DIST=0
-OFFSET=0
+OFF=0
 GFTYPE=0
 fholo:
 	grep -E "^$(A)" $(COMMON)/asdata.txt
 	grep $(A) holink.gen | tee x.tmp 
 	$(HOLT) -n $(NT) -f x.tmp
 runholo:
-	# $(HOLT) -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
-	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
+	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFF) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
 runmorf:
 	$(JAVA) irvine.oeis.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D) 
 runce:
@@ -3066,6 +3075,12 @@ rpseqhol:
 	cat rpseqhol2.tmp | grep -P "^A[0-9]" | sort | uniq -w7\
 	| perl -ne 's/\[\]/\[0\]/g; print; '\
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
+#----------------
+greprec3:
+	make holminit LIST=$(HOLREC)/$@.gen
+	grep -vE "^A176186" holminit.tmp > $@.gen 
 	head -n4 $@.gen
 	wc -l    $@.gen	
 #----------------
