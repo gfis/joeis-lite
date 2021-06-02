@@ -4,37 +4,37 @@ tostring:=proc(list) local k:
   StringTools[DeleteSpace](convert(list,string))
 end:
 # from http://sites.math.rutgers.edu/~zeilberg/tokhniot/SCHUTZENBERGER.txt without the header text; 
-Yafe:=proc(ope,N) local i,ope1,coe1,L: 
+Yafe:=proc(ope,A) local i,ope1,coe1,L: 
   if ope=0 then
     RETURN(1,0):
   fi:
   ope1:=expand(ope):
-  L:=degree(ope1,N):
-  coe1:=coeff(ope1,N,L):
+  L:=degree(ope1,A):
+  coe1:=coeff(ope1,A,L):
   ope1:=normal(ope1):
-  ope1:= convert([seq(factor(coeff(ope1,N,i))*N^i,i=ldegree(ope1,N)..degree(ope1,N))],`+`):
+  ope1:= convert([seq(factor(coeff(ope1,A,i))*A^i,i=ldegree(ope1,A)..degree(ope1,A))],`+`):
   factor(coe1),ope1:
 end:
-receval:=proc(rec) local n,N,f,re; # for testing with Maple recurrence expression
+receval:=proc(rec) local n,A,f,re; # for testing with Maple recurrence expression
   f:= gfun:-rectoproc(rec, a(n), remember): [map(f, [$0..16]), rec];
 end:
-genhol:=proc(alg,n,N) local ope,a,ORDER,j:
+genhol:=proc(alg,n,N) local ope,a,rord,j:
   option remember:
-  ope:=algtorec(alg,A,x,n,N,a):
-  ORDER:=degree(ope,N):
-  ope:=add(coeff(ope,N,j)*N^j,j=0..ORDER):
-  ope:=eval(ope, n=n-ORDER): # shift to make DIST=0
-  ([ [0], seq([seq(coeff(coeff(ope,N,j),n,k),k=0..degree(coeff(ope,N,j)))],j=0..ORDER) ] # matrix
-  , ORDER, alg, ope
+  ope:= algtorec(alg,A,x,n,N,a):
+  rord:= degree(ope,N):
+  ope:= add(coeff(ope,N,j)*N^j,j=0..rord):
+  ope:= eval(ope, n=n-rord): # shift to make DIST=0
+  ([ [0], seq([seq(coeff(coeff(ope,N,j),n,k),k=0..degree(coeff(ope,N,j)))],j=0..rord) ] # matrix
+  , rord, alg, ope
   )
 end:
-satishol:=proc(aseqno,alg, init) local j,n,N,f,rec, matrix,order, sinit;
-  rec:=genhol(alg,n,N);
-  order := rec[2]:
+satishol:=proc(aseqno,alg, init) local j,n,A,f,rec, matrix,rord, sinit;
+  rec:= genhol(alg,n,A);
+  rord:= rec[2]:
   matrix:= tostring(rec[1]);
-  sinit := tostring([ seq(init[j], j=1..order) ]);
-  printf("%a\tholos\t0\t\%s\t%s\t0\t0\t%a\t%a\n", aseqno, matrix, sinit, order, rec[3], rec[4]);
-  printf("# make runholo A=%a OFFSET=0 MATRIX=\"%s\" INIT=\"%s\"\n", aseqno, matrix, sinit);
+  sinit := tostring([ seq(init[j], j=1..rord) ]);
+  printf("%a\tholos\t0\t\%s\t%s\t0\t0\t%a\t%a\n", aseqno, matrix, sinit, rord, rec[3], rec[4]);
+  printf("# make runholo A=%a OFF=0 MATRIX=\"%s\" INIT=\"%s\"\n", aseqno, matrix, sinit);
 end:
 # satishol(A118351,-A+1-3*x*A+3*x*A^2+x*A^3, [1,1,6,42,325]);
 

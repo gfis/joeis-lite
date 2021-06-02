@@ -206,7 +206,7 @@ while (<>) {
         #--------------------------------
         } elsif ($callcode =~ m{\Aessent}) {
             if (length($name) <= 128 
-                    and ($name =~ m{Essentially |same as |identical to|apart from |duplicate of })
+                    and ($name =~ m{Essentially |same as |identical to|apart from |duplicate of }i)
                     and ($name !~ m{(not |are )the same|(not |are )identical }i)
                 ) {
                 if ($name =~ m{(A\d{6}\d*)}) {

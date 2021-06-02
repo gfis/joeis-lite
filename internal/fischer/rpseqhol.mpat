@@ -45,7 +45,7 @@ rpseqhol:=proc(aseqno,w1,w2) local n,N,f,re, offset,matrix,init,dist,name;
   name:= re[4];
   # re
   printf("%a\tholos\t%a\t\%s\t%s\t%a\t%a\n", aseqno, offset, matrix, init, dist); # , name);
-  printf("# make runholo A=%a OFFSET=%a MATRIX=\"%s\" INIT=\"%s\" DIST=%a\n", aseqno, offset, matrix, init, dist);
+  printf("# make runholo A=%a OFF=%a MATRIX=\"%s\" INIT=\"%s\" DIST=%a\n", aseqno, offset, matrix, init, dist);
 end:
 tostring:=proc(list) local k:
   DeleteSpace(convert(list,string))
