@@ -51,6 +51,7 @@ BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
+OFFSET=0
 #----------------
 all:
 	# Possible targets:
@@ -609,6 +610,9 @@ bellmod:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+bincoef: # Binominal coeffients C(n,k)
+	cp -v $(HOLREC)/$@.gen $@.gen
+#--------------------------------
 binomin0: binomin1 binomin2 binomin3 binomin4
 binomin1: # extract all single formulas containing binomial functions and/or factorials
 	grep -E "^\%[NFpto]" $(COMMON)/jcat25.txt \
@@ -676,7 +680,15 @@ binomin:
 	cat binomin4.tmp binomin.man | grep -P "^A[0-9]" | sort | uniq -w7\
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
+#--------
+qpoch0:
+	grep -E "^\%p" $(COMMON)/jcat25.txt \
+	| grep -Ei " pochhammer|gamma|factorial" | cut -b 4- | sed -e "s/ /\t/" > $@.tmp
+qpoch:
+	cp -v $@.man $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 bisect0: # either take the 1st or the 2nd term from pairs of terms in the base sequence
 	grep -Ei "bisection of A[0-9]+\." $(COMMON)/joeis_names.txt \
@@ -1547,6 +1559,8 @@ holfsig:
 	cp -v $(HOLREC)/$@.gen $@.gen
 holdfin:
 	cp -v $(HOLREC)/$@.gen $@.gen
+holgrep:
+	cp -v $(HOLREC)/$@.gen $@.gen
 holcomb: # combination of several holrec targets
 	cat \
 	$(HOLREC)/holfsig.gen \
@@ -1850,6 +1864,7 @@ holref1: # select sequences which are holonomic
 	      , 'PaddingSequence' \
 	      , 'PeriodicSequence' \
 	      , 'PrependSequence' \
+	      , 'WeylGroupSequence' \
 	      )" \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -1858,7 +1873,6 @@ holref1: # select sequences which are holonomic
 holref2: # extract parameters by reflection
 	# perl keep_first.pl -n 4444444 holref1.tmp 
 	cat holref1.tmp \
-	| grep -E "conti" \
 	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
 	>        $@.tmp 
@@ -1921,7 +1935,7 @@ holref_populate:
 	$(DBAT) -n holref
 	$(DBAT) -4 holref
 #----
-holrefhy: # sort hypergeom paramters
+holrefhy: # sort hypergeom parameters
 	perl hypergeom_eval.pl holrefl1.tmp \
 	| sort -k2n -k3n \
 	>        $@.tmp
@@ -1943,6 +1957,17 @@ holref_check:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	grep -v " 3 " $@.tmp 
+#----
+holref_deris:
+	$(DBAT) -x "SELECT j.aseqno, h.aseqno, h.keyword, n.name \
+	  FROM joeis j, holref h, asname n \
+	  WHERE j.aseqno     = n.aseqno \
+	    AND j.superclass = h.aseqno \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	
 #---- $@.tmp
 holrefix: holrefix1 holrefix2 # which are in lrindx joined with their implementation in joeis
 holrefix1:
@@ -3080,8 +3105,15 @@ rpseqhol:
 	wc -l    $@.gen	
 #----------------
 greprec3:
-	make holminit LIST=$(HOLREC)/$@.gen
+	make holminit -f $(HOLREF)/makefile LIST=$(HOLREC)/$@.gen
 	grep -vE "^A176186" holminit.tmp > $@.gen 
+	head -n4 $@.gen
+	wc -l    $@.gen	
+#----------------
+maplass:
+	grep -E "^A" $(HOLREC)/maplass4.tmp \
+	| grep -v "/" \
+	>        $@.gen 
 	head -n4 $@.gen
 	wc -l    $@.gen	
 #----------------
@@ -4937,7 +4969,7 @@ anaprep:
 	>        $@.ca.txt
 	wc   -l  $@.ca.txt
 anaload:
-	make seq4 LIST=anastret.txt
+	make seq4 LIST=anaprep.txt
 	$(DBAT) "UPDATE seq4 s \
 	  SET s.parm4 = SUBSTR(COALESCE((SELECT h.matrix FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 2048) \
 	  ,   s.parm5 = SUBSTR(COALESCE((SELECT h.init   FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 1024) \

@@ -353,7 +353,8 @@ public class RecurrenceReflector {
                 parts[ipart++] = "0";
                 parts[ipart++] = "0"; // gfType = ordinary
 
-              } else if (callCode.startsWith("paddi")) { // padding: padding terms repeated, overlaid by init terms
+              } else if (callCode.startsWith("paddi")
+                      || callCode.startsWith("weylg")) { // padding: padding terms repeated, overlaid by init terms
                 superNextMethod = paddiNextMethod;
                 final PaddingSequence hseq = (PaddingSequence) Class.forName(className).getDeclaredConstructor().newInstance();
                 seq = hseq;
