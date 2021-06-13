@@ -292,7 +292,7 @@ retest: # run the failed ones again (with a higher timeout)
 	make stripgr LIST=$(CC).gen.fail.tmp
 	$(BATLIT)  strip.tmp 2>&1 | tee batch.log
 	grep  pass batch.log >>    $(CC).pass.log
-	grep  FA   batch.log | tee $(CC).fail.log
+	grep  FA   batch.log | grep -v "Exceptionnull" | tee $(CC).fail.log
 stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	cut -b1-7  $(LIST) > aseqnos.tmp
 	grep -f    aseqnos.tmp $(COMMON)/stripped \
@@ -300,7 +300,7 @@ stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	wc -l      strip.tmp
 evaluate:
 	uniq -w7 batch.log | grep -E  "pass" >     $(CC).pass.log || :
-	uniq -w7 batch.log | grep -vE "pass" | tee $(CC).fail.log || :
+	cat      batch.log | grep -vE "pass" | grep -v "Exceptionnull" | tee $(CC).fail.log || :
 	wc -l $(CC).*.log
 bfile:
 	echo make bfile SEQ=123456 N=1000 OFS=1
@@ -1677,6 +1677,13 @@ holof1:
 #----
 holom:
 	grep -E "^A[0-9]" holos.man > holom.gen
+holoman:
+	cp -v $(HOLREC)/holom.gen $@.gen
+	wc -l $@.gen
+aphrec: # Recurrences from Maple programs of A.P.H.
+	grep -E "^A" $(HOLREC)/aphrec3.tmp > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 holor: holor1 holor2
 holor1:
@@ -1769,6 +1776,12 @@ holol:
 holold:
 	sed -e "s/holog1/holos/" -e "s/  //" holol3.tmp \
 	>        $@.gen
+#----------------
+sqrtext:
+	grep -E "^A[0-9]" $(HOLREC)/$@.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----------------
 holsq2:
 	cat $(HOLREC)/holsq2.gen \
@@ -3105,8 +3118,8 @@ rpseqhol:
 	wc -l    $@.gen	
 #----------------
 greprec3:
-	make holminit -f $(HOLREF)/makefile LIST=$(HOLREC)/$@.gen
-	grep -vE "^A176186" holminit.tmp > $@.gen 
+	cd $(HOLREC) ; make holminit LIST=$@.gen
+	grep -vE "^A176186" $(HOLREC)/holminit.tmp > $@.gen 
 	head -n4 $@.gen
 	wc -l    $@.gen	
 #----------------
