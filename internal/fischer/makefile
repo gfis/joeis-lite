@@ -1684,6 +1684,10 @@ aphrec: # Recurrences from Maple programs of A.P.H.
 	grep -E "^A" $(HOLREC)/aphrec3.tmp > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+recman: # Recurrences from Mathematica RecurrenceTable
+	grep -E "^A" $(HOLREC)/recman3.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 holor: holor1 holor2
 holor1:
