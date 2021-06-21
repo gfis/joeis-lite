@@ -357,6 +357,9 @@ A035536: # < 2021-05-15
 	cp -v $@.man $@.gen
 A039832: # 2021-05-21
 	grep -P "^A\d+" $@.man > $@.gen
+A046966:
+	grep -E "^A" $@.man > $@.gen
+	wc -l    $@.gen
 A050201:
 	perl anagen.pl -bs A118078 -rs A050201 > $@.gen
 	head -n4 $@.gen
@@ -1479,6 +1482,12 @@ runbva:
 DISEMPOW=1
 runpf:
 	$(RAMATH).symbolic.PolyFraction -n $(NT) -r $(DISEMPOW) -parse "$(GF)"
+#----------------
+hamming:
+	grep -E "^A[09]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----------------
 hiteval:
 	cp -v $(HOLREC)/hiteval.gen $@.gen
