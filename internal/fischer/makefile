@@ -419,6 +419,12 @@ a165824:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
+A183194: # Final prime of first member of A019518 that is divisible by 3^n.
+	grep -E "^A" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 a266759:
 	grep -P "\-1\,2\,\-2\,1\,"  $(COMMON)/asdata.txt | grep -P "\,1\,0\,0\,\-1\," || :
 #================================
@@ -2943,12 +2949,12 @@ deris0: deris1 # charfun2
 deris1:
 	rm -f *.deris.tmp 
 	# echo -n "binomial"                         > binomx.deris.tmp
-	# echo -n "characteristic|indicator"         > charfun.deris.tmp
+	echo -n "characteristic|indicator"         > charfun.deris.tmp
 	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
 	# echo -n "dirichlet"                        > dirichinv.deris.tmp
 	# echo -n "dirichlet"                        > dirichcon.deris.tmp
-	echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
 	# echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
 	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
@@ -2978,7 +2984,7 @@ deris2:
 	>>       $@.gen
 #----
 deris:
-	sort     deris2.gen | uniq -w7 \
+	sort     deris2.gen charfuman.tmp | uniq -w7 \
 	| grep -vf not_same.man \
 	| cut -b1-512 \
 	>        deris.gen
@@ -3001,8 +3007,19 @@ xfmpad:
 	cp -v xfmpad0.tmp $@.gen
 binomx:
 	cp -v $@.man $@.gen
-charfun:
-	cp -v $@.man $@.gen
+charfuman:
+	grep -E "^A" $@.man \
+	| grep -v A294905 \
+	>>       $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+charfun3:
+	grep -E "Characteristic function " $(COMMON)/joeis_names.txt \
+	| grep -E "null" \
+	| perl -ne 's{\tnull\tCharacteristic function (of|for) }{\tcharfun\t0\t};'\
+	' s{(.)(A\d{6})}{$$1$$2\t\t}; print; '\
+	>        $@.tmp
+	wc -l    $@.tmp
 diffseq:
 	cp -v $@.man $@.gen
 dirichcon:

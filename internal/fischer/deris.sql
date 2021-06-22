@@ -22,4 +22,7 @@ UPDATE seq4 SET parm3 = 'new SkipSequence(' || parm3 || ',1)' WHERE callcode = '
 UPDATE seq4 SET parm3 = 'new SkipSequence(' || parm3 || ',2)' WHERE callcode = 'eulerx' AND aseqno IN ('A071019');
 DELETE FROM seq4 WHERE callcode = 'eulerx' AND aseqno IN ('A055192','A137917');
 UPDATE seq4 SET parm4 = 'next();' WHERE callcode = 'eulerx' AND aseqno IN ('A053483','A071019','A099065','A132220','A226313','A263914','A299023','A299026');
+
+DELETE FROM seq4 WHERE parm1 NOT IN (SELECT aseqno FROM joeis);
+DELETE FROM seq4 WHERE aseqno IN ('A294905');
 COMMIT;
