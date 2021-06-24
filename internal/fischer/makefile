@@ -324,6 +324,8 @@ joeis_class:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #================================================================
+seqlist:
+	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
 similar:
 	grep -E "^A" $(A).man \
 	>        $@.gen
@@ -385,6 +387,12 @@ A095425:
 	>>       $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#================
+# *.pa2
+
+A169964: # A169964 Numbers whose decimal expansion contains only 0's and 5's.
+	grep -E "^A" $@.pa2 > $@.gen
+	wc -l    $@.gen
 #================================
 # A126043	null	Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 3.	nonn,synth	1..47	nyi
 a126043:
@@ -408,6 +416,13 @@ a157536:
 	| perl -ne 'if (m{sum (\w+) and sum of squares (\d+)\.}) { '\
 	' my ($$s, $$ss) = ($$1, $$2); $$s =~ s{zero}{0}; '\
 	' print join("\t", substr($$_, 0, 7), "$@", 0, $$s, $$ss) . "\n"; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+# A161440 Numbers m such that A160700(m) = 0.	nonn,easy,	1..10000	nyi
+A161440:
+	grep -E "^A" $@.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
