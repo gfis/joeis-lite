@@ -64,9 +64,13 @@ while (<>) {
             # ok
         } elsif ($offset <  $rofs) {
             my $ind = $offset;
-            while ($ind < $rofs) {
-                push(@constrs, "m$rseqno.next();");
-                $ind ++;
+            if ($rofs > 4) {
+                $ok = -3; # index distance to big
+            } else {
+                while ($ind < $rofs) { # shift so many
+                    push(@constrs, "m$rseqno.next();");
+                    $ind ++;
+                }
             }
         } elsif ($offset >  $rofs) {
         }

@@ -15,6 +15,8 @@ CONTRIB=$(GITS)/OEIS-mat/contrib
 COORS=$(GITS)/OEIS-mat/coors
 LINREC=$(GITS)/OEIS-mat/linrec
 HOLREC=$(GITS)/OEIS-mat/holrec
+WEIDIS=$(GITS)/OEIS-mat/weidis
+SDB=$(GITS)/OEIS-mat/sequencedb
 TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
@@ -182,11 +184,17 @@ select2:
 	wc -l    $(CC).gen
 	#     AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
 	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
-clean: purge # parameter: CC; $(CC).pass.log from previous test is grepped from $(CC).gen
+clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep from $(CC).gen
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > clean.grep.tmp
 	grep -f clean.grep.tmp $(CC).gen > $(CC).clean.tmp
 	cp -v $(CC).clean.tmp  $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp 
+cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 20 from previous test used to from $(CC).gen
+	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp
+	grep -P "^A\d+\t([2-9]\d+|\d\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
+	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
+	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
+	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp 
 dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
 	wc -l $(CC).gen
 	cp    $(CC).gen $(CC).old.tmp
@@ -389,10 +397,17 @@ A095425:
 	wc -l    $@.gen
 #================
 # *.pa2
-
-A169964: # A169964 Numbers whose decimal expansion contains only 0's and 5's.
+#
+A098941: # Numbers where 2 is the only even decimal digit. 
 	grep -E "^A" $@.pa2 > $@.gen
 	wc -l    $@.gen
+A169964: # Numbers whose decimal expansion contains only 0's and 5's.
+	grep -E "^A" $@.pa2 > $@.gen
+	wc -l    $@.gen
+sigma0:
+	grep -E "^A" $@.pa2 > $@.gen
+	wc -l    $@.gen
+
 #================================
 # A126043	null	Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 3.	nonn,synth	1..47	nyi
 a126043:
@@ -1093,22 +1108,15 @@ decofr: # Continued fraction of real expression
 	wc -l    $@.gen
 	# perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #--------------------------------
-deriv_rest: deriv2 deriv3 deriv4 deriv5 deriv6 deriv7 
-deriv1c: # grep cat25: (a(n) = )?aseqno
-	grep -E "^\%[NF] A" $(COMMON)/cat25.txt \
+deriv0: deriv1 deriv_rest # prepare derived sequences
+deriv_rest: deriv2 deriv3 deriv4 deriv5 deriv6 deriv7
+deriv1: # grep jcat25: (a(n) = )?aseqno
+	grep -E "^\%[NF] A" $(COMMON)/jcat25.txt \
 	| cut -b4- \
 	| grep -P  "^A\d{6}[^A]*A\d{6}" \
 	| sed -e "s/ /\t/" \
-	| grep -vEi "sum|product|\!|\.\.\." \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-deriv1n: # grep names: (a(n) = )?aseqno
-	grep -E "^A" $(COMMON)/names \
-	| grep -P  "^A\d{6}[^A]*A\d{6}" \
-	| sed -e "s/ /\t/" \
 	| sed -e "s/\tTwice  *A/\t2\*A/" \
-	| grep -vEi "sum|product|\!|\.\.\." \
+	| grep -vEi "sum|product|\!|\.\.\.|a\(n\) *[\<\>]" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
@@ -1160,11 +1168,15 @@ deriv6: # convert from postfix to Z-expressions
 deriv7: # adapt the offsets and initial terms
 	perl deriv_gen.pl deriv6.tmp \
 	2>       $@.rest \
+	| grep -vE "A065446|A070011|A145920|A178476|A277535|A185227|A185228|A185229|A255541|A282844" \
 	>        $@.tmp 
+	grep -E "Beatty" $@.tmp \
+	>        $@_beatty.tmp || :
 	head -n4 $@.tmp
-	wc   -l  $@.*
+	wc   -l  $@*.*
 deriv:
 	grep -vE "floor|ceil|round" deriv7.tmp \
+	| grep -vE "Beatty" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.*
@@ -1396,6 +1408,10 @@ finifull: # finite and full
 		ORDER BY 1 " \
 	| perl finifull.pl \
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+finifuma: # finite and full - manual
+	grep -E "^A[0-9]" finifull.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
@@ -1812,7 +1828,7 @@ holold:
 	>        $@.gen
 #----------------
 sqrtext:
-	grep -E "^A[0-9]" $(HOLREC)/$@.gen \
+	grep -E "^A[0-9]" $(HOLREC)/$@2.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -2963,25 +2979,25 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp 
-	# echo -n "binomial"                         > binomx.deris.tmp
+	echo -n "binomial"                         > binomx.deris.tmp
 	echo -n "characteristic|indicator"         > charfun.deris.tmp
-	# echo -n "complement"                       > compseq.deris.tmp
-	# echo -n "difference"                       > diffseq.deris.tmp
-	# echo -n "dirichlet"                        > dirichinv.deris.tmp
-	# echo -n "dirichlet"                        > dirichcon.deris.tmp
+	echo -n "complement"                       > compseq.deris.tmp
+	echo -n "difference"                       > diffseq.deris.tmp
+	echo -n "dirichlet"                        > dirichinv.deris.tmp
+	echo -n "dirichlet"                        > dirichcon.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	# echo -n "euler"                            > eulerx.deris.tmp
-	# echo -n "euler"                            > eulerix.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	# echo -n "partial product"                  > partprod.deris.tmp
-	# echo -n "partial sum"                      > partsum.deris.tmp
-	# echo -n "prime"                            > primepos.deris.tmp
-	# echo -n "prime"                            > primeval.deris.tmp
-	# echo -n "record"                           > recordpos.deris.tmp
-	# echo -n "record"                           > recordval.deris.tmp
-	# echo -n "stirling"                         > stirling2.deris.tmp
-	# echo -n "weigh"                            > weighx.deris.tmp
+	echo -n "euler"                            > eulerx.deris.tmp
+	echo -n "euler"                            > eulerix.deris.tmp
+	echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	echo -n "partial product"                  > partprod.deris.tmp
+	echo -n "partial sum"                      > partsum.deris.tmp
+	echo -n "prime"                            > primepos.deris.tmp
+	echo -n "prime"                            > primeval.deris.tmp
+	echo -n "record"                           > recordpos.deris.tmp
+	echo -n "record"                           > recordval.deris.tmp
+	echo -n "stirling"                         > stirling2.deris.tmp
+	echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
@@ -3007,6 +3023,10 @@ deris:
 	wc -l    $@.gen
 deris_shuffle:
 	perl -i.bak deris_shuffle.pl -d $(D) deris.gen
+deris_ok:
+	grep -P "^A\d+" deris.ok | cut -b1-7 | sed -e "s/^/\^/" > $@.tmp
+	grep -Ef $@.tmp deris.gen > $@.gen
+	wc -l    $@.gen
 #----
 xfmpad0:
 	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt \
@@ -3198,6 +3218,19 @@ satishol:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen	
+#--------------------------------
+# target for sequencedb
+SDBaffine:
+	grep -E "^A" $(SDB)/affine3.tmp \
+	| sort | uniq -w7 \
+	| sed -e "s/\t[0-9]*\t/\tpanext\t/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
+#----
+SDBdiff1: # A056526 03      9999    Δ[A000960(n)]
+	grep -P "\tΔ\[A\d+\(n\)\]\t" $(SDB)/seqdb4.tmp \
+	| tee $@.tmp
 #--------------------------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
@@ -4935,6 +4968,15 @@ weight2:
 		ORDER BY 1" \
 	>       $@.j.txt
 	wc   -l $@.j.txt
+#--------------------------------
+wroot:
+	grep -E "^A[0-9]" $(WEIDIS)/wroot.tmp \
+	| grep -vE "A109160" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen	
+	# | grep -vE "A109479|A109481|A109483" \
+	#
 #--------------------------------
 word:
 	$(DBAT) "SELECT i.aseqno, 'word', 0, COALESCE(j.superclass, '********'), n.name, b.bfimax-b.bfimin + 1 \
