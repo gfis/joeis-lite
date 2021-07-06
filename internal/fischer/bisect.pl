@@ -29,11 +29,11 @@ while(<>) {
     } elsif ($termas[0] eq $termrs[1] && $termas[1] eq $termrs[3]) {
         $polar = 1;
     } else {
-        $polar = -2;
+        $polar = 0; # did not find it, but assume first
     }
     if ($polar >= 0) {
         print join("\t", $aseqno, $cc, -2, $rseqno, $polar, $lista, $listr, $name) . "\n";
-    } else {
+    } else { # no more:
         print STDERR "# " . join("\t", $aseqno, $cc, $polar, $rseqno, $polar, $lista, $listr, $name) . "\n";
     }
 } # while <>

@@ -1,5 +1,6 @@
 /*  Reads a list of A-numbers and appends the parameters of the sequences 
  *  @(#) $Id: RecurrenceReflector.java $
+ *  2021-07-03: PolynomialRootSequence
  *  2021-05-01: revitalized
  *  2021-01-29: LatticeCoordinationSequence / latti -> gener 
  *  2021-01-23, Georg Fischer: copied from BatchTest
@@ -331,7 +332,8 @@ public class RecurrenceReflector {
                 parts[ipart++] = "0";
                 parts[ipart++] = String.valueOf(hseq.getGfType());
 
-              } else if (callCode.startsWith("holon")) { // holonomic recurrence
+              } else if (callCode.startsWith("holon")    // holonomic recurrence
+                      || callCode.startsWith("polyn")) { // polynomial root
                 superNextMethod = holonNextMethod;
                 final HolonomicRecurrence hseq = (HolonomicRecurrence) Class.forName(className).getDeclaredConstructor().newInstance();
                 seq = hseq;

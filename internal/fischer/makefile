@@ -134,8 +134,14 @@ pack2:
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
+poeis: pocre podir # create a list of freshly implmented classes
 pocre:
 	$(DBAT) -f $(COMMON)/poeis.create.sql
+podir:
+	find ../../src/irvine/oeis/a* -iname "A*.java" | perl -ne 'm{\/(A\d+)}; print "$$1\n";' \
+	| $(DBAT) -r poeis
+	$(DBAT) -4   poeis
+	$(DBAT) -n   poeis
 poins:
 	cut -b1-7 $(CC).gen \
 	| sed -e "s/$$/\t$(CLASS)\t/" \
@@ -203,10 +209,15 @@ dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).
 	grep -vf dirty.grep.tmp $(CC).gen > $(CC).dirty.tmp
 	cp -v $(CC).dirty.tmp $(CC).gen
 	wc -l $(CC).gen
-removelist:
+removelist: # remove all in removelist.man
 	find ../../src/irvine/oeis -iname "*.java" \
 	| grep -f removelist.man \
 	| xargs -l rm -v
+copytemp: # parameter CC; copy FAILed ones to fischer/temp
+	cut -b1-7 $(CC).fail.log > dirty.tmp
+	find ../../src/irvine/oeis -iname "*.java" \
+	| grep -f dirty.tmp \
+	| xargs -l -innn cp -v nnn temp/
 logsel:# set the test results of CC= in column PARM=n
 	cut -f1,3 $(CC).fail.log $(CC).pass.log > logset.tmp
 	make seq2 LIST=logset.tmp
@@ -398,6 +409,9 @@ A095425:
 #================
 # *.pa2
 #
+A061037: # Numerator of 1/4 - 1/n^2.
+	grep -E "^A" $@.pa2 > $@.gen
+	wc -l    $@.gen
 A098941: # Numbers where 2 is the only even decimal digit. 
 	grep -E "^A" $@.pa2 > $@.gen
 	wc -l    $@.gen
@@ -730,16 +744,14 @@ qpoch:
 	wc -l    $@.gen
 #--------------------------------
 bisect0: # either take the 1st or the 2nd term from pairs of terms in the base sequence
-	grep -Ei "bisection of A[0-9]+\." $(COMMON)/joeis_names.txt \
-	| perl -ne 'use strict; s/\s+\Z//; my $$line = $$_; $$line =~ m{ of (A\d+)\.}; my $$rseqno = $$1; '\
-	' my $$polar = -2; if ($$line =~ m{(even|odd|first|second) bisection}i) { $$polar = substr(lc($$1), 0, 1); $$polar =~ tr{eofs}{0110}; } '\
-	' print join("\t", substr($$line, 0, 7), "bisect", -2, $$rseqno, $$polar, "", "", substr($$line, 8)) . "\n"; '\
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-	make seq4 LIST=$@.tmp
-	$(DBAT)  "DELETE FROM seq4 WHERE parm1 NOT IN (SELECT aseqno FROM joeis);"
-	$(DBAT)  "DELETE FROM seq4 WHERE aseqno    IN (SELECT aseqno FROM joeis);"
+	grep -Ei "section of A[0-9]+" $(COMMON)/joeis_names.txt \
+	| grep -vi intersection \
+	| perl bisect0.pl \
+	>        $@.1.tmp
+	head -n4 $@.1.tmp
+	wc -l    $@.1.tmp
+	make seq4 LIST=$@.1.tmp
+	$(DBAT)  "DELETE FROM seq4 WHERE parm1 NOT IN ((SELECT aseqno FROM joeis) UNION (SELECT aseqno FROM poeis));"
 	$(DBAT)  "UPDATE seq4 s SET s.parm3 = (SELECT SUBSTR(d.data, 1,  64) FROM asdata d WHERE d.aseqno = s.aseqno) \
 	                          , s.parm4 = (SELECT SUBSTR(d.data, 1, 128) FROM asdata d WHERE d.aseqno = s.parm1 );"
 	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
@@ -749,6 +761,11 @@ bisect0: # either take the 1st or the 2nd term from pairs of terms in the base s
 bisect:
 	perl bisect.pl bisect0.tmp \
 	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
+bisect_9:
+	cat bisect0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen	
@@ -1926,6 +1943,7 @@ holref1: # select sequences which are holonomic
 	      , 'LinearRecurrence' \
 	      , 'PaddingSequence' \
 	      , 'PeriodicSequence' \
+	      , 'PolynomialRootSequence' \
 	      , 'PrependSequence' \
 	      , 'WeylGroupSequence' \
 	      )" \
