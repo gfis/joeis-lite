@@ -302,6 +302,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
                 and ($class_name !~ m{\.})         # contains dot
                 and ($class_name !~ m{\A[A-Z]+\Z}) # only uppercase = constant
                 and ($class_name !~ m{\AString\Z}) # "String"
+                and ($class_name !~ m{\AComputableReals\Z}) # "String"
                ) {
                 $imports{"irvine.oeis.$class_name"} = $itype; 
             }

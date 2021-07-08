@@ -19,11 +19,12 @@ WEIDIS=$(GITS)/OEIS-mat/weidis
 SDB=$(GITS)/OEIS-mat/sequencedb
 TRIREC=$(GITS)/OEIS-mat/trirec
 DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
-RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath
-PFRACT=$(RAMATH).symbolic.PolyFraction
+RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar
+JPREP=$(RAMATH)  org.teherba.ramath.sequence.JoeisPreparer
+HOLT=$(RAMATH)   irvine.test.HolonomicRecurrenceTest
+PFRACT=$(RAMATH) org.teherba.ramath.symbolic.PolyFraction
+BVA=$(RAMATH)    org.teherba.ramath.linear.BigVectorArray
 NT=16
-HOLT=java -cp $(GITS)/ramath/dist/ramath.jar irvine.test.HolonomicRecurrenceTest
-BVA=java -cp $(GITS)/ramath/dist/ramath.jar org.teherba.ramath.linear.BigVectorArray
 MANY=999999
 CLASS=dummy.java
 D=0
@@ -655,6 +656,42 @@ basrunid: # Numbers whose base-3 expansions, read from left to right, have run l
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+beatty0: beatty1 beatty2 # Beatty sequence of expr.
+beatty1:
+	grep -E "^\%[N] A[0-9][0-9]* Beatty sequence" $(COMMON)/jcat25.txt \
+	| cut -b4- | grep -vP '\, *where' \
+	| perl -ne 's/ Beatty sequence (for|of) /\tpost\t0\t~~/; '\
+	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
+	' if (! m{the|constant|cuberoot}) { print; }'\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+beatty2:
+	$(JPREP) -f beatty1.tmp | sed -e "s/\r//" \
+	| tee $@.1.tmp \
+	| perl -ne 's{\tpost\t(.*)\Z}{\tinfix\t$$1\t$$1}; s{\~\~\;?}{}g; print;'\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+beatty3:
+	$(JPREP) -p CR.xpat -f beatty2.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+beatty:
+	rm -f $@.rest.tmp
+	touch $@.rest.tmp
+	grep -P  '\<\?' beatty3.tmp \
+	>>       $@.rest.tmp || :
+	grep -vP '\<\?' beatty3.tmp \
+	| grep -vi zeta \
+	| grep -vE "A094041|A094042|A132222|A115181" \
+	| perl -ne 's{\tinfix\t}{\tbeatty\t}; print;'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+#--------------------------------
+#--------------------------------
 bellmod:
 	grep -P "\Bell numbers " $(COMMON)/joeis_names.txt | grep -E "(read )?mod [0-9]" \
 	| perl -ne 'm{\A(A\d+)}; my $$aseqno = $$1; m{mod (\d+)}; my $$mod = $$1; '\
@@ -974,7 +1011,7 @@ circdiff1:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 circdiff2:
-	$(RAMATH).sequence.JoeisPreparer -f circdiff1.tmp \
+	$(JPREP) -f circdiff1.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
@@ -1164,7 +1201,7 @@ deriv4: # remove all with X-numbers
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 deriv5: # convert to postfix, select the last of the shortest formula
-	$(RAMATH).sequence.JoeisPreparer -f deriv4.tmp \
+	$(JPREP) -f deriv4.tmp \
 	| perl deriv_select.pl \
 	>        $@.tmp
 	make seq4 LIST=deriv5.tmp
@@ -1219,7 +1256,7 @@ dex2:
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
 dex3:
-	$(RAMATH).sequence.JoeisPreparer -f dex2.tmp \
+	$(JPREP) -f dex2.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
@@ -1454,7 +1491,7 @@ floor2:
 	head -n4 $@.rest
 	wc   -l  $@.rest
 floor3:
-	$(RAMATH).sequence.JoeisPreparer -f floor2.tmp \
+	$(JPREP) -f floor2.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
@@ -1608,7 +1645,7 @@ homegf3:
 	wc   -l  $@.tmp
 homegf4:
 	cat homegf3.tmp \
-	| $(RAMATH).sequence.JoeisPreparer -f - \
+	| $(JPREP) -f - \
 	| perl -ne 'use strict; my @parms = split(/\t/); '\
 	' $$parms[1] = "holos" . substr($$parms[6], 0, 1); print join("\t", @parms);' \
 	>        $@.tmp
@@ -1744,7 +1781,7 @@ holoman:
 	cp -v $(HOLREC)/holom.gen $@.gen
 	wc -l $@.gen
 aphrec: # Recurrences from Maple programs of A.P.H.
-	grep -E "^A" $(HOLREC)/aphrec3.tmp > $@.gen
+	grep -E "^A" $(HOLREC)/aphrec5.tmp > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 recman: # Recurrences from Mathematica RecurrenceTable
@@ -3237,7 +3274,8 @@ satishol:
 	head -n4 $@.gen
 	wc -l    $@.gen	
 #--------------------------------
-# target for sequencedb
+# targets for sequencedb
+#
 SDBaffine:
 	grep -E "^A" $(SDB)/affine3.tmp \
 	| sort | uniq -w7 \
@@ -3249,6 +3287,14 @@ SDBaffine:
 SDBdiff1: # A056526 03      9999    Δ[A000960(n)]
 	grep -P "\tΔ\[A\d+\(n\)\]\t" $(SDB)/seqdb4.tmp \
 	| tee $@.tmp
+#--------
+sdb_simple:
+	cat $(SDB)/simple2.tmp \
+	| grep -vE "A174841|A340519" \
+	| perl -ne 's{\tinfix\t}{\t$@\t}; print;' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 #--------------------------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn

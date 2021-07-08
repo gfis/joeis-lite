@@ -2,10 +2,10 @@
 
 # Prepare formulas for decimal expansion using CR functions
 # @(#) $Id$
-# 2020-04-03, Georg Fischer: copied from prep_dex.pl
+# 2020-04-03, Georg Fischer: copied from infix_dex.pl
 #
 #:# Usage:
-#:#   perl infix_dex.pl [-d debug] dex3.tmp > outfile
+#:#   perl cr_infix.pl [-d debug] dex3.tmp > outfile
 #--------------------------------------------------------
 use strict;
 use integer;
