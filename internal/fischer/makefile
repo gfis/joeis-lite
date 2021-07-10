@@ -656,27 +656,47 @@ basrunid: # Numbers whose base-3 expansions, read from left to right, have run l
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-beatty0: beatty1 beatty2 beatty3 # Beatty sequence of expr.
-beatty1:
-	grep -E "^\%[N] A[0-9][0-9]* Beatty sequence" $(COMMON)/jcat25.txt \
-	| cut -b4- | grep -vP '\, *where' \
-	| perl -ne 's/ Beatty sequence (for|of) /\tpost\t0\t~~/; '\
-	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
-	' if (! m{the|constant|cuberoot}) { print; }'\
-	| cat - beatty.man \
-	| gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' \
+beatty_old:
+	make seq LIST=$@.lst
+	$(DBAT) -x "SELECT l.aseqno, 'post', 0, n.name FROM seq l, asname n \
+	    WHERE l.aseqno = n.aseqno ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+beatty0: beatty1 beatty2 beatty3 # Beatty sequence of expr.
+beatty1:
+	grep -E "^[\%\#][N] A[0-9][0-9]* Beatty sequence" $(COMMON)/jcat25.txt \
+	| cut -b4- | grep -vP '\, *where' \
+	| perl -ne 's/ Beatty sequence (for|of) /\tpost\t0\t~~/; '\
+	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
+	' s{zeta\((\d+)\)}{zeta__$$1}g; '\
+	' if (! m{the|constant|cuberoot}) { print; } '\
+	| cat - beatty.man \
+	| gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+beatty_diff:
+	cut -b1-7 beatty1.tmp | sort > b1.tmp
+	cut -b1-7 beatty.man  | sort > b2.tmp
+	diff -y --width=32 b1.tmp b2.tmp
+beatty_check:
+	$(DBAT) -x "SELECT * FROM joeis j \
+	  WHERE j.aseqno NOT in (SELECT aseqno FROM seq4) \
+	    AND j.superclass LIKE 'Beatty%' \
+	  ORDER BY 1;"
 beatty2:
 	$(JPREP) -f beatty1.tmp | sed -e "s/\r//" \
 	| tee $@.1.tmp \
-	| perl -ne 's{\tpost\t}{\tinfix\t}; s{\~\~\;?}{}g; print;'\
+	| perl -ne 's{\tpost\t}{\tinfix\t}; s{\~\~\;?}{}g; print; '\
+	| perl -ne 's{zeta\(\;(\d+)\;zeta\)}{zeta__$$1}g; print; # shield zeta '\
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 beatty3:
 	$(JPREP) -p CR.xpat -f beatty2.tmp \
+	| perl -ne 's{zeta\(}{Zeta.zeta\(}g; print; # expand zeta '\
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -688,8 +708,9 @@ beatty:
 	grep -P  '\<\?' beatty3.tmp \
 	>>       $@.rest.tmp || :
 	grep -vP '\<\?' beatty3.tmp \
-	| grep -vE "A094041|A094042|A132222|A115181" \
-	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tbeatty$$r\t}; print;'\
+	| grep -vE "A132222|A115181" \
+	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tbeatty2$$r\t}; print; '\
+	| perl -ne 'if (m{^A329926}) { s{CR\.EIGHT}{CR\.NINE}; s{8\+sqrt}{9\+sqrt}; } print; '\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp

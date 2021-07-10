@@ -30,7 +30,13 @@ gamma	name	0	CR.GAMMA	0
 ^	func	2	REALS.pow(	2
 
 abs)	meth	1	.abs(	0
+agm)	meth	2	.agm(	0
 ceil)	meth	1	.ceil(	0
+ei)	meth	1	.ei(	0
+li)	meth	1	.li(	0
+si)	meth	1	.si(	0
+erf)	meth	1	.erf(	0
+erfc)	meth	1	.erfc(	0
 exp)	meth	1	.exp(	0
 floor)	meth	1	.floor(	0
 log)	meth	1	.log(	0
@@ -44,7 +50,7 @@ sqrt)	meth	1	.sqrt(	0
 cos)	meth	1	.cos(	0
 sin)	meth	1	.sin(	0
 
-zeta)	func	1	Zeta.zeta(	1
+# zeta)	func	1	Zeta.zeta(	1
 arccos)	func	1	REALS.acos(	1
 arcsin)	func	1	REALS.asin(	1
 arctan)	func	1	REALS.atan(	1

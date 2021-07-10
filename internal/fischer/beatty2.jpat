@@ -8,15 +8,8 @@ import irvine.oeis.BeattySequence;
  */
 public class $(ASEQNO) extends BeattySequence {
 
-  private static final CR N = $(PARM1);
-
   /** Construct the sequence */
   public $(ASEQNO)() {
-    super($(OFFSET));
-  }
- 
-  @Override
-  protected CR getCR() {
-    return N;
+    super($(OFFSET), $(PARM1));
   }
 }
