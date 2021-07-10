@@ -2,18 +2,18 @@
 # @(#) $Id$
 # 2021-07-08, Georg Fischer
 #
-0	num	0	CR.ZERO	0
-1	num	0	CR.ONE	0
-2	num	0	CR.TWO	0
-3	num	0	CR.THREE	0
-4	num	0	CR.FOUR	0
-5	num	0	CR.FIVE	0
-6	num	0	CR.SIX	0
-7	num	0	CR.SEVEN	0
-8	num	0	CR.EIGHT	0
-9	num	0	CR.NINE	0
-10	num	0	CR.TEN	0
-01234567	num	0	CR.valueOf(01234567)
+0	numb	0	CR.ZERO	0
+1	numb	0	CR.ONE	0
+2	numb	0	CR.TWO	0
+3	numb	0	CR.THREE	0
+4	numb	0	CR.FOUR	0
+5	numb	0	CR.FIVE	0
+6	numb	0	CR.SIX	0
+7	numb	0	CR.SEVEN	0
+8	numb	0	CR.EIGHT	0
+9	numb	0	CR.NINE	0
+10	numb	0	CR.TEN	0
+01234567	numb	0	CR.valueOf(01234567)	0
 
 n	name	0	CR.valueOf(mN)	0
 Pi	name	0	CR.PI	0
@@ -21,44 +21,47 @@ e	name	0	CR.E	0
 phi	name	0	CR.PHI	0
 gamma	name	0	CR.GAMMA	0
 
-+	op	2	.add	1
--	op	2	.subtract	1
--.	fun	1	.negate	0
-*	op	2	.multiply	1
-/	op	2	.divide	1
-%	op	2	.mod	1
-^	op	2	REALS.pow	2
++	meth	2	.add(	0
+-	meth	2	.subtract(	0
+-.	meth	1	.negate(	0
+*	meth	2	.multiply(	0
+/	meth	2	.divide(	0
+%	meth	2	.mod(	0
+^	func	2	REALS.pow(	2
 
-abs)	fun	1	.abs	0
-ceil)	fun	1	.ceil	0
-exp)	fun	1	.exp	0
-floor)	fun	1	.floor	0
-log)	fun	1	.log	0
-log_2)	fun	1	.log().divide(CR.TWO.log())	0
-log_3)	fun	1	.log().divide(CR.THREE.log())	0
-log_5)	fun	1	.log().divide(CR.FIVE.log())	0
-log_10)	fun	1	.log().divide(CR.TEN.log())	0
-round)	fun	1	.round	0
-sqrt)	fun	1	.sqrt	0
-# zeta)	fun	1	Zeta.zeta	1
-#----
-arccos)	fun	1	REALS.acos	1
-arcsin)	fun	1	REALS.asin	1
-arctan)	fun	1	REALS.atan	1
-arccot)	fun	1	REALS.acot	1
-acos)	fun	1	REALS.acos	1
-asin)	fun	1	REALS.asin	1
-atan)	fun	1	REALS.atan	1
-acot)	fun	1	REALS.acot	1
-cosh)	fun	1	REALS.cosh	1
-sinh)	fun	1	REALS.sinh	1
-tan)	fun	1	REALS.tan	1
-tanh)	fun	1	REALS.tanh	1
-cot)	fun	1	REALS.cot	1
-coth)	fun	1	REALS.coth	1
-csc)	fun	1	REALS.csc	1
-sec)	fun	1	REALS.sec	1
-csch	fun	1	REALS.csch	1
+abs)	meth	1	.abs(	0
+ceil)	meth	1	.ceil(	0
+exp)	meth	1	.exp(	0
+floor)	meth	1	.floor(	0
+log)	meth	1	.log(	0
+log_2)	meth	1	.log().divide(CR.TWO.log()	0
+log_3)	meth	1	.log().divide(CR.THREE.log()	0
+log_5)	meth	1	.log().divide(CR.FIVE.log()	0
+log_10)	meth	1	.log().divide(CR.TEN.log()	0
+round)	meth	1	.round(	0
+sqrt)	meth	1	.sqrt(	0
+
+cos)	meth	1	.cos(	0
+sin)	meth	1	.sin(	0
+
+zeta)	func	1	Zeta.zeta(	1
+arccos)	func	1	REALS.acos(	1
+arcsin)	func	1	REALS.asin(	1
+arctan)	func	1	REALS.atan(	1
+arccot)	func	1	REALS.acot(	1
+acos)	func	1	REALS.acos(	1
+asin)	func	1	REALS.asin(	1
+atan)	func	1	REALS.atan(	1
+acot)	func	1	REALS.acot(	1
+cosh)	func	1	REALS.cosh(	1
+sinh)	func	1	REALS.sinh(	1
+tan)	func	1	REALS.tan(	1
+tanh)	func	1	REALS.tanh(	1
+cot)	func	1	REALS.cot(	1
+coth)	func	1	REALS.coth(	1
+csc)	func	1	REALS.csc(	1
+sec)	func	1	REALS.sec(	1
+csch	func	1	REALS.csch(	1
 
 # omega	irvine.factor.factor.Cheetah.factor(mN).omega()
 # phi	irvine.math.LongUtils.phi(mN)

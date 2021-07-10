@@ -291,6 +291,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
         $imports{"irvine.oeis." . lc(substr($aseqno, 0, 4)) . ".$aseqno"}               = $itype;
     } # foreach
     if ($line =~ m{\WZUtils\.})         { $imports{"irvine.math.z.ZUtils"}              = $itype; }
+    if ($line =~ m{\WZeta\.})           { $imports{"irvine.math.cr.Zeta"}               = $itype; }
     if ($line =~ m{\WStringUtils\.})    { $imports{"irvine.util.string.StringUtils"}    = $itype; }
     if ($line =~ m{\WCR})               { $imports{"irvine.math.cr.CR"}                 = $itype; }
     if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }

@@ -656,20 +656,22 @@ basrunid: # Numbers whose base-3 expansions, read from left to right, have run l
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-beatty0: beatty1 beatty2 # Beatty sequence of expr.
+beatty0: beatty1 beatty2 beatty3 # Beatty sequence of expr.
 beatty1:
 	grep -E "^\%[N] A[0-9][0-9]* Beatty sequence" $(COMMON)/jcat25.txt \
 	| cut -b4- | grep -vP '\, *where' \
 	| perl -ne 's/ Beatty sequence (for|of) /\tpost\t0\t~~/; '\
 	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
 	' if (! m{the|constant|cuberoot}) { print; }'\
+	| cat - beatty.man \
+	| gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 beatty2:
 	$(JPREP) -f beatty1.tmp | sed -e "s/\r//" \
 	| tee $@.1.tmp \
-	| perl -ne 's{\tpost\t(.*)\Z}{\tinfix\t$$1\t$$1}; s{\~\~\;?}{}g; print;'\
+	| perl -ne 's{\tpost\t}{\tinfix\t}; s{\~\~\;?}{}g; print;'\
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -678,19 +680,58 @@ beatty3:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+	grep -i  zeta $@.tmp || :
+	grep     '<?' $@.tmp || :
 beatty:
 	rm -f $@.rest.tmp
 	touch $@.rest.tmp
 	grep -P  '\<\?' beatty3.tmp \
 	>>       $@.rest.tmp || :
 	grep -vP '\<\?' beatty3.tmp \
-	| grep -vi zeta \
 	| grep -vE "A094041|A094042|A132222|A115181" \
-	| perl -ne 's{\tinfix\t}{\tbeatty\t}; print;'\
+	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tbeatty$$r\t}; print;'\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
+	# | grep -vi zeta \
+	#
 #--------------------------------
+decexp0: decexp1 decexp2 decexp3 # Decimal expansion of expr.
+decexp1:
+	grep -E "^\%[N] A[0-9][0-9]* Decimal expansion" $(COMMON)/jcat25.txt \
+	| cut -b4- | grep -vP '\, *where' \
+	| perl -ne 's/ Decimal expansion (for|of) /\tpost\t0\t~~/; '\
+	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
+	' if (! m{sum|prod|_|.A|\!|.\w{8}}) { print; }'\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+decexp2:
+	$(JPREP) -f decexp1.tmp | sed -e "s/\r//" \
+	| tee $@.1.tmp \
+	| perl -ne 's{\tpost\t(.*)\Z}{\tinfix\t$$1\t$$1}; s{\~\~\;?}{}g; print;'\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+decexp3:
+	$(JPREP) -p CR.xpat -f decexp2.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+decexp:
+	rm -f $@.rest.tmp
+	touch $@.rest.tmp
+	grep -P  '\<\?' decexp3.tmp \
+	>>       $@.rest.tmp || :
+	grep -vP '\<\?' decexp3.tmp \
+	| grep -vi zeta \
+	| grep -vE "A060196|A277535" \
+	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tdecexp$$r\t}; '\
+	' my ($$aseqno, $$callcode, $$offset, $$parm1, @rest) = split(/\t/); '\
+	' if ($$offset >= 0 && $$offset <= 10 && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
 #--------------------------------
 bellmod:
 	grep -P "\Bell numbers " $(COMMON)/joeis_names.txt | grep -E "(read )?mod [0-9]" \
@@ -1224,8 +1265,6 @@ deriv7: # adapt the offsets and initial terms
 	2>       $@.rest \
 	| grep -vE "A065446|A070011|A145920|A178476|A277535|A185227|A185228|A185229|A255541|A282844" \
 	>        $@.tmp 
-	grep -E "Beatty" $@.tmp \
-	>        $@_beatty.tmp || :
 	head -n4 $@.tmp
 	wc   -l  $@*.*
 deriv:
