@@ -8,15 +8,8 @@ import irvine.oeis.DecimalExpansionSequence;
  */
 public class $(ASEQNO) extends DecimalExpansionSequence {
 
-  private static final CR N = $(PARM1);
-
   /** Construct the sequence */
   public $(ASEQNO)() {
-    super();
-  }
- 
-  @Override
-  protected CR getCR() {
-    return N;
+    super($(OFFSET), $(PARM1));
   }
 }

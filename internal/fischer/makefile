@@ -656,13 +656,6 @@ basrunid: # Numbers whose base-3 expansions, read from left to right, have run l
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-beatty_old:
-	make seq LIST=$@.lst
-	$(DBAT) -x "SELECT l.aseqno, 'post', 0, n.name FROM seq l, asname n \
-	    WHERE l.aseqno = n.aseqno ORDER BY 1" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
 beatty0: beatty1 beatty2 beatty3 # Beatty sequence of expr.
 beatty1:
 	grep -E "^[\%\#][N] A[0-9][0-9]* Beatty sequence" $(COMMON)/jcat25.txt \
@@ -677,18 +670,8 @@ beatty1:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-beatty_diff:
-	cut -b1-7 beatty1.tmp | sort > b1.tmp
-	cut -b1-7 beatty.man  | sort > b2.tmp
-	diff -y --width=32 b1.tmp b2.tmp
-beatty_check:
-	$(DBAT) -x "SELECT * FROM joeis j \
-	  WHERE j.aseqno NOT in (SELECT aseqno FROM seq4) \
-	    AND j.superclass LIKE 'Beatty%' \
-	  ORDER BY 1;"
 beatty2:
 	$(JPREP) -f beatty1.tmp | sed -e "s/\r//" \
-	| tee $@.1.tmp \
 	| perl -ne 's{\tpost\t}{\tinfix\t}; s{\~\~\;?}{}g; print; '\
 	| perl -ne 's{zeta\(\;(\d+)\;zeta\)}{zeta__$$1}g; print; # shield zeta '\
 	>        $@.tmp
@@ -716,29 +699,55 @@ beatty:
 	wc -l    $@.gen $@.rest.tmp
 	# | grep -vi zeta \
 	#
+beatty_old:
+	make seq LIST=$@.lst
+	$(DBAT) -x "SELECT l.aseqno, 'post', 0, n.name FROM seq l, asname n \
+	    WHERE l.aseqno = n.aseqno ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+beatty_diff:
+	cut -b1-7 beatty1.tmp | sort > b1.tmp
+	cut -b1-7 beatty.man  | sort > b2.tmp
+	diff -y --width=32 b1.tmp b2.tmp
+beatty_check:
+	$(DBAT) -x "SELECT * FROM joeis j \
+	  WHERE j.aseqno NOT in (SELECT aseqno FROM seq4) \
+	    AND j.superclass LIKE 'Beatty%' \
+	  ORDER BY 1;"
 #--------------------------------
 decexp0: decexp1 decexp2 decexp3 # Decimal expansion of expr.
 decexp1:
-	grep -E "^\%[N] A[0-9][0-9]* Decimal expansion" $(COMMON)/jcat25.txt \
+	grep -E "^A[0-9]" decexp1.man \
+	| sed -e "s/ //g" \
+	>        decexp.man
+	grep -E "^[\%\#\?][N] A[0-9][0-9]* Decimal expansion" $(COMMON)/jcat25.txt \
 	| cut -b4- | grep -vP '\, *where' \
 	| perl -ne 's/ Decimal expansion (for|of) /\tpost\t0\t~~/; '\
 	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
+	' s{zeta\((\d+)\)}{zeta__$$1}g; '\
 	' if (! m{sum|prod|_|.A|\!|.\w{8}}) { print; }'\
+	| cat - decexp.man \
+	| grep -E "^A[0-9]" \
+	| gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' \
+	| sort | uniq -w7 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 decexp2:
 	$(JPREP) -f decexp1.tmp | sed -e "s/\r//" \
-	| tee $@.1.tmp \
 	| perl -ne 's{\tpost\t(.*)\Z}{\tinfix\t$$1\t$$1}; s{\~\~\;?}{}g; print;'\
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 decexp3:
 	$(JPREP) -p CR.xpat -f decexp2.tmp \
+	| perl -ne 's{zeta\(}{Zeta.zeta\(}g; print; # expand zeta '\
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+	# grep -i  zeta $@.tmp || :
+	grep     '<?' $@.tmp || :
 decexp:
 	rm -f $@.rest.tmp
 	touch $@.rest.tmp
@@ -746,10 +755,10 @@ decexp:
 	>>       $@.rest.tmp || :
 	grep -vP '\<\?' decexp3.tmp \
 	| grep -vi zeta \
-	| grep -vE "A060196|A277535" \
+	| grep -vE "A060196|A202955|A241292|A277535|A296547|A094689|A123852|A221208" \
 	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tdecexp$$r\t}; '\
 	' my ($$aseqno, $$callcode, $$offset, $$parm1, @rest) = split(/\t/); '\
-	' if ($$offset >= 0 && $$offset <= 10 && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
+	' if ((length($$offset) <= 4) && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp

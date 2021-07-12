@@ -1,2 +1,625 @@
 A231981	post	0	~~(180/Pi)^2
 A231982	post	0	~~(Pi/180)^2
+A092526	post	0	~~(1/6)*(116+12*sqrt(93))^(1/3)+2/(3*(116+12*sqrt(93))^(1/3))+1/3
+A140248	post	0	~~sqrt(15)*3/10
+
+# tan(Pi/m): 
+A002194	post	0	~~tan(Pi/3)
+A019934	post	0	~~tan(Pi/5)
+A020760	post	0	~~tan(Pi/6)
+A343058	post	0	~~tan(Pi/7)
+A188582	post	0	~~tan(Pi/8)
+A019918	post	0	~~tan(Pi/9)
+A019916	post	0	~~tan(Pi/10)
+A019913	post	0	~~tan(Pi/12)
+A343059	post	0	~~tan(Pi/14)
+A019910	post	0	~~tan(Pi/15)
+A343060	post	0	~~tan(Pi/16)
+A343061	post	0	~~tan(Pi/17)
+A019908	post	0	~~tan(Pi/18)
+A019907	post	0	~~tan(Pi/20)
+A343062	post	0	~~tan(Pi/24)
+A019904	post	0	~~tan(Pi/30)
+A343057	post	0	~~tan(Pi/32)
+A019903	post	0	~~tan(Pi/36)
+# sin(Pi/m): 
+A010527	post	0	~~sin(Pi/3)
+A010503	post	0	~~sin(Pi/4)
+A019845	post	0	~~sin(Pi/5)
+A323601	post	0	~~sin(Pi/7)
+A182168	post	0	~~sin(Pi/8)
+A019829	post	0	~~sin(Pi/9)
+A019827	post	0	~~sin(Pi/10)
+A019824	post	0	~~sin(Pi/12)
+A232736	post	0	~~sin(Pi/14)
+A019821	post	0	~~sin(Pi/15)
+A232738	post	0	~~sin(Pi/16)
+A241243	post	0	~~sin(Pi/17)
+A019819	post	0	~~sin(Pi/18)
+A019818	post	0	~~sin(Pi/20)
+A343054	post	0	~~sin(Pi/24)
+A019815	post	0	~~sin(Pi/30)
+A343055	post	0	~~sin(Pi/32)
+A019814	post	0	~~sin(Pi/36)
+# cos(Pi/m): 
+A010503	post	0	~~cos(Pi/4)
+A019863	post	0	~~cos(Pi/5)
+A010527	post	0	~~cos(Pi/6)
+A073052	post	0	~~cos(Pi/7)
+A144981	post	0	~~cos(Pi/8)
+A019879	post	0	~~cos(Pi/9)
+A019881	post	0	~~cos(Pi/10)
+A019884	post	0	~~cos(Pi/12)
+A232735	post	0	~~cos(Pi/14)
+A019887	post	0	~~cos(Pi/15)
+A232737	post	0	~~cos(Pi/16)
+A210649	post	0	~~cos(Pi/17)
+A019889	post	0	~~cos(Pi/18)
+A019890	post	0	~~cos(Pi/20)
+A144982	post	0	~~cos(Pi/24)
+A019893	post	0	~~cos(Pi/30)
+A343056	post	0	~~cos(Pi/32)
+A019894	post	0	~~cos(Pi/36)
+# A081819	post	0	~~"Updated to the exact value according to the 2019 SI redefinition by _Andrey Zabolotskiy_, Aug 25 2020"
+# A088367	post	0	~~"Krivine (1977) proved that Grothendieck's constant \u003c= Pi/(2*log(1+sqrt(2))
+and conjectured that this bound is the exact value of the constant. His conjecture was refuted by Braverman et al. (2013). - _Amiram Eldar_, Jun 24 2021"
+# A129105	post	0	~~"R. F. Fox and T. P. Hill, An exact value for Avogadro's number, American Scientist, 95 (No. 2, 2007), 104-107."
+# A129107	post	0	~~"R. F. Fox and T. P. Hill, An exact value for Avogadro's number, American Scientist, 95 (No. 2, 2007), 104-107."
+A156546	post	0	~~Pi-arccos(1/3)
+A156547	post	0	~~arcsin(2/3)
+# A173685	post	0	~~-(1 + f^(1/3)/2^(2/3) + 131/(2*f)^(1/3))/3, where f=3307-387*sqrt(43)
+# A228163	post	0	~~"Equals (p_0)/(k*T_0), where p_0 = A213611 = 101325 Pa is the standard pressure, k = A070063 = 1.380649*10^(-23) J/K is the Boltzmann constant and T_0 = 273.15 K is the standard temperature. In the May 20 2019 redefinition of the SI base units k is fixed to an exact value, so n_0 is also fixed to an exact value.",
+A244593	post	0	~~((1+sqrt(5))/2)^5
+A249189	post	0	~~(1/(4*Pi^2))*Gamma(1/4)^4
+# A299695	post	0	~~"Jeremy Tan, \u003ca href=\"https://math.stackexchange.com/questions/2651575/what-is-the-exact-value-of-the-radius-in-the-six-disks-problem/2652796#2652796\"\u003eWhat is the exact value of the radius in the Six Disks Problem?\u003c/a\u003e, Mathematics Stack Exchange, Feb 15 2018",
+# A302258	post	0	~~272115870842319L/18913000000000000L
+# A322632	post	0	~~"In his 2014 lecture in Paris \"Problems That Philippe (Flajolet) Would Have Loved\" D. Knuth discussed as Problem 4 \"Lattice Paths of Slope 2/5\" and reported as an empirical observation that A[5*t-1,2*t-1]/B[5*t-1,2*t-1] = a - b/t + O(t^-2), with constants a~=1.63026 and b~=0.159. For the meaning of A and B see A322631. The exact values of a (this sequence) and b (A322633) were found in 2016 by Banderier and Wallner."
+# A322633	post	0	~~"In his 2014 lecture in Paris \"Problems That Philippe (Flajolet) Would Have Loved\" D. Knuth discussed as Problem 4 \"Lattice Paths of Slope 2/5\" and reported as an empirical observation that A[5*t-1,2*t-1]/B[5*t-1,2*t-1] = a - b/t + O(t^-2), with constants a~=1.63026 and b~=0.159. For the meaning of A and B see A322631. The exact values of a (A322632) and b (this sequence) were found in 2016 by Banderier and Wallner."
+A329932	post	0	~~arcsec(1/2(1-sqrt(-1+2sqrt(2)))-sqrt(2(-1+2sqrt(2)))))
+A329933	post	0	~~-arcsec(1/2(1+sqrt(-1+2sqrt(2)))+sqrt(2(-1+2sqrt(2)))))
+A329937	post	0	~~arcsech[1/8(4-4sqrt(2)-9sqrt(5+4sqrt(2))+(5+4sqrt(2))^(3/2)))
+A329960	post	0	~~arccos(-(1/2)+1/sqrt(2)-1/2sqrt(-1+2sqrt(2)))
+A340918	post	0	~~atan(sqrt((4/sqrt(3))*cos((1/3)*atan(sqrt(3*229)/9))+3))
+
+# 2021-07-12: corrections 
+A273635	post	0	~~(Pi/(3*sqrt(3)))^(1/3)
+A320029	post	0	~~(sqrt(37)+1)/2
+A271529	post	0	~~sqrt(e)*(sqrt(e)+sqrt(e+4))/2
+A268580	post	0	~~(Pi+sqrt(Pi^2+4*Pi))/2
+A258148	post	0	~~1/3-sqrt(3)/(2*Pi)
+A256460	post	0	~~100/27316
+A256367	post	0	~~1/sqrt(1-(1/6+(4/3)*sin((1/3)*arcsin(17/64)))^2)
+A234930	post	0	~~sqrt(987654321/100000000)
+A222135	post	0	~~(sqrt(21)-1)/2
+A222134	post	0	~~(sqrt(21)+1)/2
+A222133	post	0	~~(sqrt(17)-1)/2
+A222132	post	0	~~(sqrt(17)+1)/2
+A222131	post	0	~~sin(log(Pi))
+A339264	post	0	~~(63/25)*(17+15*sqrt(5))/(7+15*sqrt(5))
+A144749	post	0	~~((sqrt(5)+1)/2)^((sqrt(5)+1)/2)
+A209927	post	0	~~(sqrt(13)+1)/2
+A136319	post	0	~~(phi+sqrt(phi^2+4))/2
+A108088	post	0	~~sqrt(Pi*e/2)*erfc(1/sqrt(2))
+A098318	post	0	~~(5+sqrt(29))/2
+
+# from OEIS-mat/real/exact3.tmp
+A091506	post	0	~~(2 + sqrt(2) + 5*log(1 + sqrt(2)))/9
+A096427	post	0	~~agm(1,1/sqrt(2))
+A188615	post	0	~~arcsin(1/3)
+A244921	post	0	~~(sqrt(2) + arcsinh(1))/3
+A244922	post	0	~~ (7*sqrt(2) + 3*arcsinh(1))/20
+A245058	post	0	~~-Pi^2/48
+A254968	post	0	~~log(7 + 4*sqrt(3)) - Pi/4 - arcsinh(1/sqrt(2))
+A272534	post	0	~~(sqrt(3) - sqrt(15) + sqrt(10 + 2*sqrt(5)))/4
+A272534	post	0	~~(sqrt(7 - sqrt(5) - sqrt(30 - 6*sqrt(5)))/2
+A344075	post	0	~~arccos(-sqrt((5+2*sqrt(5))/15))
+A329932	post	0	~~arcsec(1/2 (1 - sqrt(-1 + 2 sqrt(2))) - sqrt(2 (-1 + 2 sqrt(2)))))"
+A329933	post	0	~~- arcsec(1/2 (1 + sqrt(-1 + 2 sqrt(2))) + sqrt(2 (-1 + 2 sqrt(2)))))"
+A329937	post	0	~~arcsech[1/8 (4 - 4 sqrt(2) - 9 sqrt(5 + 4 sqrt(2)) + (5 + 4 sqrt(2))^(3/2)))"
+A329960	post	0	~~arccos(-(1/2) + 1/sqrt(2) - 1/2 sqrt(-1 + 2 sqrt(2)))"
+A156546	post	0	~~Pi - arccos(1/3)
+A156547	post	0	~~arcsin(2/3)
+A231986	post	0	~~4*arcsin(sin(1/2)*sin(1/2))
+A226985	post	0	~~2*Pi*tanh(sqrt(7)*Pi/2)/sqrt(7)
+A302258	post	0	~~272115870842319/18913000000000000
+A178816	post	0	~~sqrt(3 + 4*phi)/4
+A239362	post	0	~~( Pi*sqrt(3)/3 - log(3) )/4
+A295188	post	0	~~((1+sqrt(5))/2)^3 * exp(1 - 2/(1+sqrt(5)))
+A084248	post	0	~~((1/2)/Pi)*cosh(Pi/2*sqrt(7))
+A300284	post	0	~~((4*sqrt(2)*arctan(1/sqrt(2)) + log(4/3) - Pi)/Pi
+A273086	post	0	~~((6 + sqrt(6*(3 + 2*sqrt(2)))) * Gamma(1/24) * Gamma(5/24) * Gamma(7/24) * Gamma(11/24))^(1/4) / (2*6^(3/8)*Pi^(3/4))
+A114940	post	0	~~e^cos(1) * sin(sin(1))
+# A249542	post	0	~~(-sqrt(3)*log(3) + Pi^2 - 8*Li_2(2-sqrt(3)) + 2*Li_2(7-4*sqrt(3)))/(2*sqrt(Pi)), where Li_2 is the dilogarithm function
+# A092526	post	0	~~(1 + 1/r + r)/3 where r = ((29 + sqrt(837))/2)^(1/3)
+A127198	post	0	~~(1 - log(2) + Pi*sech((sqrt(3)*Pi)/2))/3
+A174849	post	0	~~(1 - 2*sin*(Pi/18))^(1/2)
+A273081	post	0	~~(1 + 2/sqrt(3))^(1/4) * Pi^(1/4) / (3^(1/4) * Gamma(3/4))
+A273082	post	0	~~(1 + 2^(1/4)) * Gamma(1/4) / (2^(7/4)*Pi^(3/4))
+A336274	post	0	~~(1 + sqrt(2) - 2*sqrt(3))/5 - Pi/3 + log((1 + sqrt(2)) * (2 + sqrt(3)))
+A344476	post	0	~~(1 + 2*log(phi) + log(phi)^2 - Pi^2/60)/(phi+2)
+A248749	post	0	~~(1+sqrt(2+sqrt(5)))/2
+A248750	post	0	~~(1+sqrt(sqrt(5)-2))/2
+A248752	post	0	~~(1-sqrt(sqrt(5)-2))/2
+A060006	post	0	~~(1/2 +sqrt(23/3)/6)^(1/3) + (1/2-sqrt(23/3)/6)^(1/3)
+A232737	post	0	~~(1/2) * sqrt(2+sqrt(2+sqrt(2)))
+A232738	post	0	~~(1/2) * sqrt(2-sqrt(2+sqrt(2)))
+A332890	post	0	~~(1/2) * (cos(1) + cosh(1))
+A343054	post	0	~~(1/2) * sqrt(2-sqrt(2+sqrt(3)))
+A343055	post	0	~~(1/2) * sqrt(2-sqrt(2+sqrt(2+sqrt(2))))
+A343056	post	0	~~(1/2) * sqrt(2+sqrt(2+sqrt(2+sqrt(2))))
+A275828	post	0	~~(1/2)*(1+sqrt(3+2*sqrt(5)))
+A202541	post	0	~~(1/2)*arcsinh(1/2)
+A255888	post	0	~~(1/2)*log(3) - (1/3)*log(2) - (1/2)*log(Pi) + 2*log(Gamma(1/3))
+A091648	post	0	~~(1/2)*log(3+2*sqrt(2))
+A256921	post	0	~~(1/2)*log(Pi) - EulerGamma/2
+A062539	post	0	~~(1/2)*sqrt(2*Pi^3)/Gamma(3/4)^2
+A060006	post	0	~~(1/2+sqrt(23/108))^(1/3) + (1/2-sqrt(23/108))^(1/3)
+A332892	post	0	~~(1/3) * (cosh(1) + 2*cosh(1/2)*cos((sqrt(3))/2))
+A262674	post	0	~~(1/3)*(6 + (135 - 3*sqrt(489))^(1/3) + (3*(45 + sqrt(489)))^(1/3))
+A290570	post	0	~~(1/3)*Gamma(1/3)^2/Gamma(2/3)
+A085565	post	0	~~(1/4)*(2*Pi)^(-1/2)*Gamma(1/4)^2
+A256670	post	0	~~(1/6)*(1 + i*sqrt(3))*(Gamma(2/3, -1) - Gamma(2/3))
+A273240	post	0	~~(1/6)*(1-EulerGamma)*Pi^2+zeta'(2)
+A088559	post	0	~~(1/6)*(116+12*sqrt(93))^(1/3) + 2/(3*(116+12*sqrt(93))^(1/3)) - 2/3
+A092526	post	0	~~(1/6)*(116+12*sqrt(93))^(1/3) + 2/(3*(116+12*sqrt(93))^(1/3)) + 1/3
+A109134	post	0	~~(1/6*(108+12*sqrt(69))^(1/3) + 2/(108+12*sqrt(69))^(1/3))^2
+A340127	post	0	~~(1/C(5,4))*Pi*sqrt(3*C(5,1)*C(5,2)*C(5,3)/(5*C(5,4)*log(2+sqrt(5))))
+A256667	post	0	~~(1/sqrt(2*Pi))*(Gamma(3/4)^2 + 4*Gamma(5/4)^2)
+A226735	post	0	~~(10*Sqrt(3)*Pi^3 + 351*zeta(3))/972
+A334388	post	0	~~(10/9) * log(10)
+A171423	post	0	~~(11+(61^(1/2)))/12
+A343487	post	0	~~(13 + 5*sqrt(3) + 2*sqrt(37)) / 12
+A343487	post	0	~~(13 + sqrt(223 + 20*sqrt(3*37))) / 12
+A277754	post	0	~~(14/37)*(6 + sqrt(3))
+A102769	post	0	~~(15 + 7 sqrt(5)) / 4
+A232817	post	0	~~(16*Pi)^(1/3)
+A242761	post	0	~~(16*sqrt(2/3)*Pi^3)/(Gamma(1/24)*Gamma(5/24)*Gamma(7/24)*Gamma(11/24))
+A143148	post	0	~~(16/25)*(2/Pi)^(1/2)
+A196361	post	0	~~(17+7*sqrt(7))/27
+A266275	post	0	~~(174611/1320)*(zeta(21)/zeta(20))
+A273082	post	0	~~(2 + 2^(3/4))/4 * Pi^(1/4) / Gamma(3/4)
+A330924	post	0	~~(2 - 2 * sqrt(2)) / (3 * Pi) + (2 / Pi) * 1/csch(1)
+A256778	post	0	~~(2*EulerGamma + Pi + 2*log(2))/8
+A076390	post	0	~~(2*Pi)^(-1/2)*GAMMA(3/4)^2
+A122143	post	0	~~(2*Pi*(Pi-3)+3)/12
+A334472	post	0	~~(2*gamma + log(8))/Pi
+A244646	post	0	~~(2*log(14) + 4*(cos(Pi/7)*log(cos(3*Pi/14)) + log(sin(Pi/7))*sin(Pi/14) - log(cos(Pi/14)) * sin(3*Pi/14)) + Pi*tan(3*Pi/14))/5
+A098689	post	0	~~(2/sqrt(5))*exp(1/2)*sinh(sqrt(5)/2)
+A180307	post	0	~~(20460 + 9728*log(2) + 5103*log(3))/22500
+A086254	post	0	~~(22 + (847 - 33*sqrt(33))^(1/3) + (11*(77 + 3*sqrt(33)))^(1/3))/33
+A238169	post	0	~~(231/16)*zeta(7) - (51/4)*zeta(3)*zeta(4) + 2*zeta(2)*zeta(5)
+A258104	post	0	~~(2^(1/3))/(4*Pi^2)*Beta(1/3, 1/3)^2
+A196535	post	0	~~(2^(1/4)-1) * Gamma(1/4) / ( 2^(11/4) * Pi^(3/4) )
+A156309	post	0	~~(3 - sqrt(3))/6
+A248789	post	0	~~(3 - e)*(2 - sqrt(e))^2
+A282821	post	0	~~(3 - sqrt(3))*Pi/6 + log(32) - log(27)/2
+A330934	post	0	~~(3 + 2sqrt(2))^(1/3) + (3 - 2*sqrt(2))^(1/3) - 1 + atan(((sqrt(2) + 1)^(1/3) - (sqrt(2) - 1)^(1/3))/2)
+A258104	post	0	~~(3*2^(1/3))/(16*Pi^4)*Gamma(1/3)^6
+A180872	post	0	~~(3*3^(3/4))/(16*2^(3/4)*5^(1/4)*Pi^(11/4))
+A226656	post	0	~~(3*Pi-14*cos(Pi/14)+70*cos(3*Pi/14)+154*sin(Pi/7))/(21*Pi)
+A102771	post	0	~~sqrt(25+10*sqrt(5))/4
+A195303	post	0	~~(3*sqrt(2)-4)*(1+2*sqrt(2-sqrt(2)))
+A292864	post	0	~~(3*sqrt(22*sqrt(2) - 24) - 8)^(1/8) * exp(2*Pi/3) * Gamma(1/4) / (2^(19/8) * Pi^(3/4))
+A294644	post	0	~~(3/2 + sqrt(239/108))^(1/3) + (3/2 - sqrt(239/108))^(1/3)
+A337569	post	0	~~(3/2 + sqrt(741/324))^(1/3) - (-3/2 + sqrt(741/324))^(1/3)
+A090655	post	0	~~(3/2)*(3 + sqrt(13))
+A319034	post	0	~~(3/2)^(1/3)
+A130204	post	0	~~(32*(3 - 94*sqrt(2) + 48*Pi + 6*log(-2 + 2*sqrt(2))))/(135*Pi^2)
+A266271	post	0	~~(3617/2040)*(zeta(17)/zeta(16))
+A273086	post	0	~~(4 - sqrt(2) + sqrt(6))^(1/4) * sqrt(Gamma(1/24)*Gamma(11/24)) / (2^(3/2)*3^(3/8)*Pi^(3/4))
+A247217	post	0	~~(4*Pi*sqrt(2) + 6*Pi)^(1/4)/(2*Gamma(3/4))
+A293238	post	0	~~(4*Pi^3)/Gamma(1/4)^4
+A115456	post	0	~~4/3*(sqrt(2)+arcsinh(1))
+A090550	post	0	~~1 + 3*phi
+A292888	post	0	~~(5 - sqrt(3) + sqrt(2)*3^(3/4))^(1/6) * exp(Pi/8) * Gamma(1/4) / (2^(25/24) * 3^(3/8) * Pi^(3/4))
+A244648	post	0	~~(5*log(3) + Pi*cot(2*Pi/9) - 4*cos(2*Pi/9)*log(cos(Pi/18)) + 4*cos(Pi/9)*log(sin(2*Pi/9)) - 4*log(sin(Pi/9))*sin(Pi/18))/7
+A258403	post	0	~~(5/2)*sqrt((5-sqrt(5))/2)
+A143149	post	0	~~(5/4)*(2*Pi)^(1/2)
+A102771	post	0	~~(5/4)*sqrt(phi^3/sqrt(5))
+A131917	post	0	~~1 / (1 - gamma - log(3/2)) - 54
+A292863	post	0	~~(6*sqrt(22*sqrt(2)-24) - 16)^(1/8) * exp(Pi/96)* Gamma(1/4) / (2*Pi^(3/4))
+A339264	post	0	~~(63/13450) * (503+75*sqrt(5))
+A266263	post	0	~~(691/10920)*(zeta(13)/zeta(12))
+A232815	post	0	~~(72*Pi)^(1/3)
+A073016	post	0	~~(9 + 2*sqrt(3)*Pi)/27
+A341906	post	0	~~(95 + 39*sqrt(5))/300
+A292862	post	0	~~(96*sqrt(2) - 136 + 3*sqrt(2792 - 1984*sqrt(2) + sqrt(849766*sqrt(2) - 1201560)))^(1/8) * (1 + sqrt(2))^(1/4) * exp(Pi/192) * Gamma(1/4) / (2^(13/16) * Pi^(3/4))
+A256847	post	0	~~(EulerGamma - log(4))/4
+A256850	post	0	~~(EulerGamma - log(5))/5
+A256667	post	0	~~(1/sqrt(2*Pi))*(Gamma(3/4)^2 + 4*Gamma(5/4)^2)
+A060708	post	0	~~(Pi - sqrt(3))/2
+A113554	post	0	~~(Pi + e^(1/e))/2
+A247686	post	0	~~(Pi - 2 + log(4))/12
+A268580	post	0	~~(Pi + sqrt(Pi^2 + 4*Pi))/2
+A271563	post	0	~~(Pi - 2*sqrt(1+sqrt(2)) * arctan(2*sqrt(2+10*sqrt(2))/7)) / sqrt(2)
+A259171	post	0	~~(Pi*coth(Pi)-1)/2
+A195790	post	0	~~(Pi+4*arctan( 1758719 / 147153121 ))/32
+A342209	post	0	~~(Pi-e)/(log(Pi)-1)
+A339802	post	0	~~(Pi/2)*tanh(Pi*sqrt(3)/2) - sqrt(3)/2
+# A091648	post	0	~~(Pi/4) * 3F2(1/4, 1/2, 3/4; 1, 3/2; 1)
+A279037	post	0	~~(Pi/4) * zeta(3)/zeta(4)
+A210975	post	0	~~(Pi/6)^(1/2)
+A196548	post	0	~~(Pi/sqrt(3)-log(2))/9
+A248896	post	0	~~(Pi^4 + 30*Pi^2 - 384)/768
+A334411	post	0	~~(cos(sqrt(4 - 2*sqrt(2))*Pi) + cos(sqrt(4 + 2*sqrt(2))*Pi) + cosh(sqrt(4 - 2*sqrt(2))*Pi) + cosh(sqrt(4 + 2*sqrt(2))*Pi) - 2*cos(sqrt(2 - sqrt(2))*Pi) * cosh(sqrt(2 - sqrt(2))*Pi) - 2*cos(sqrt(2 + sqrt(2))*Pi) * cosh(sqrt(2 + sqrt(2))*Pi)) / (8*Pi^4)
+A334364	post	0	~~(cosh(1) - cos(1))/2
+A084243	post	0	~~(cosh(2*Pi)-1)/(2*Pi^2)
+A258871	post	0	~~(cosh(Pi)-cos(sqrt(3)*Pi))*sinh(Pi)/(2*Pi^3)
+A339745	post	0	~~(cosh(sqrt((5 - sqrt(5))/2)*Pi) + sin(sqrt(5)*Pi/2)) * (cosh(sqrt((5 + sqrt(5))/2)*Pi) - sin(sqrt(5)*Pi/2)) / (40*Pi^4)
+A175619	post	0	~~(cosh(sqrt(2)*Pi) - cos(sqrt(2)*Pi)) * sinh(Pi) / (16*Pi^3)
+A258870	post	0	~~(cosh(sqrt(2)*Pi)-cos(sqrt(2)*Pi))/(2*Pi^2)
+A114941	post	0	~~e^cos(1) * cos(sin(1)) - 1
+A143819	post	0	~~1/3 * (e + 2 * cos(sqrt(3)/2) / sqrt(e))
+A269296	post	0	~~(exp(1) + 2*exp(-(sqrt(5) + 1)/4) * cos(sqrt((5 - sqrt(5))/2)/2) + 2*exp((sqrt(5) - 1)/4) * cos(sqrt((5 + sqrt(5))/2)/2))/5
+A269296	post	0	~~(exp(1) + exp(-(-1)^(1/5)) + exp((-1)^(2/5)) + exp(-(-1)^(3/5)) + exp((-1)^(4/5)))/5
+A330864	post	0	~~sinh(Pi/2)/2
+A330865	post	0	~~cosh(Pi/2)/Pi
+A256129	post	0	~~(log(Pi) - log(2) - gamma)/2
+A256853	post	0	~~(9/4)*cot(Pi/9)
+A256854	post	0	~~(11/4)*cot(Pi/11)
+A335020	post	0	~~(phi-1)^(phi-1)
+A326919	post	0	~~Pi/sqrt(7)
+A328717	post	0	~~4*Pi^2/(25*sqrt(5))
+A328895	post	0	~~Pi^2/(8*sqrt(2))
+A327135	post	0	~~32*Pi^3/(343*sqrt(7))
+A245279	post	0	~~((27*sqrt(17)-109)^(1/3) - 8/((27*sqrt(17)-109)^(1/3)) + 8)/18
+A245280	post	0	~~((27*sqrt(17)+109)^(1/3) - 8/((27*sqrt(17)+109)^(1/3)) + 10)/18
+A334363	post	0	~~(sin(1) + sinh(1))/2
+A334365	post	0	~~(sinh(1) - sin(1))/2
+A084243	post	0	~~(sinh(Pi)/Pi)^2
+A343062	post	0	~~(sqrt(2)-1)*(sqrt(3)-sqrt(2)) = sqrt(2)-sqrt(3)+sqrt(6)-2
+A292822	post	0	~~(sqrt(2)-1)^(1/4) * exp(Pi/6) / 2^(7/16)
+A248751	post	0	~~(sqrt(2+sqrt(5))-1)/2
+A094962	post	0	~~(sqrt(3)*gamma(1/3)^3)/(8*Pi)
+A179296	post	0	~~(sqrt(3)+sqrt(15))/4 = sqrt((9+3*sqrt(5))/8)
+A086231	post	0	~~(sqrt(3)-1)*(gamma(1/24)*gamma(11/24))^2/(32*Pi^3)
+A102769	post	0	~~(sqrt(5)/2)*(phi)^4
+A088375	post	0	~~(sqrt(8*Pi)*Gamma(3/4)^2)/(Pi^2 - 2*Gamma(3/4)^4)
+A292887	post	0	~~(sqrt(9 + 6*sqrt(3)) - 2 - sqrt(3))^(1/3) * exp(Pi/8) / 2^(3/8)
+A260799	post	0	~~(sqrt(Pi*Pi+4*e)-Pi)/2
+# A192930	post	0	~~(z + 1/z - 1)*Pi/2 where x = 6/Pi^2 - 1 and z = (x - sqrt(x^2 - 1))^(1/3)
+# A195103	post	0	~~(zeta(1/2,1/4) - zeta(1/2,3/4))/2 where zeta(.,.) is the Hurwitz zeta-function
+# A262178	post	0	~~(zeta(2, 1/6) - zeta(2, 2/3))/36, where zeta(s,a) is the Hurwitz zeta function
+# A328717	post	0	~~(zeta(2,1/5) - zeta(2,2/5) - zeta(2,3/5) + zeta(2,4/5))/25, where zeta(s,a) is the Hurwitz zeta function
+# A309710	post	0	~~(zeta(2,1/8) + zeta(2,3/8) - zeta(2,5/8) - zeta(2,7/8))/64, where zeta(s,a) is the Hurwitz zeta function
+# A328895	post	0	~~(zeta(2,1/8) - zeta(2,3/8) - zeta(2,5/8) + zeta(2,7/8))/64, where zeta(s,a) is the Hurwitz zeta function
+# A329716	post	0	~~(zeta(3,1/12) - zeta(3,5/12) - zeta(3,7/12) + zeta(3,11/12))/1728, where zeta(s,a) is the Hurwitz zeta function
+# A328723	post	0	~~(zeta(3,1/5) - zeta(3,2/5) - zeta(3,3/5) + zeta(3,4/5))/25, where zeta(s,a) is the Hurwitz zeta function
+# A327135	post	0	~~(zeta(3,1/7) + zeta(3,2/7) - zeta(3,3/7) + zeta(3,4/7) - zeta(3,5/7) - zeta(3,6/7))/343
+# A329715	post	0	~~(zeta(3,1/8) - zeta(3,3/8) - zeta(3,5/8) + zeta(3,7/8))/512, where zeta(s,a) is the Hurwitz zeta function
+A114720	post	0	~~-(1/4)!*zeta(1/2)/(2*Pi^(1/4))
+A256066	post	0	~~-(1/4)*log(2) + (3/8)*log(3) + (1/2)*log(1+sqrt(3)) - (1/2)*log(Pi) + log(Gamma(1/4)) + log(Gamma(1/3))
+A247017	post	0	~~-(1/4)*sqrt(Pi)*(EulerGamma + 2*log(2))
+A266273	post	0	~~-(43867/3192)*(zeta(19)/zeta(18))
+A266261	post	0	~~-(5/264)*(zeta(11)/zeta(10))
+A306016	post	0	~~-(6/Pi^2)*zeta(1, 2)
+A266264	post	0	~~-(7/24)*(zeta(15)/zeta(14))
+A244675	post	0	~~-11/120*Pi^4*zeta(3) + 1/3*Pi^2*zeta(5) + 119/16*zeta(7)
+A086253	post	0	~~-2/3 - 4/(3*(17 + 3*sqrt(33))^(1/3)) +  2*(17 + 3*sqrt(33))^(1/3)/3
+A244676	post	0	~~-37/7560*Pi^6*zeta(3) + zeta(3)^3 - 11/120*Pi^4*zeta(5) + 1/2*Pi^2*zeta(7) + 197/24*zeta(9)
+A274031	post	0	~~-4 zeta(2) - 2 zeta(3) + 4 zeta(2) zeta(3) + 2 zeta(5)
+A262605	post	0	~~-6 + Pi^2/3 + 2 zeta(3)
+A062089	post	0	~~-Pi*log(Pi)+2*Pi*gamma+4*Pi*log(Gamma(3/4))
+A122914	post	0	~~-Zeta(0) - Zeta'(0)
+A222129	post	0	~~-sin(Pi^2/2)
+A337570	post	0	~~-sqrt((27/2 + sqrt(443097/4))^(1/3) / 12 - 4 / (27/2 + sqrt(443097/4))^(1/3)) + sqrt(4 / (27/2 + sqrt(443097/4))^(1/3) - (27/2 + sqrt(443097/4))^(1/3) / 12 + 1 / sqrt(4*(27/2 + sqrt(443097/4))^(1/3) / 3 - 64 / (27/2 + sqrt(443097/4))^(1/3)))
+A339802	post	0	~~-sqrt(3)/2 + Im(Psi(1/2 + i*sqrt(3)/2)
+A113024	post	0	~~-zeta(1/2, 1/2)
+A086230	post	0	~~1 - (16*Sqrt(2/3)*Pi^3)/(Gamma(1/24)* Gamma(5/24)*Gamma(7/24)* Gamma(11/24))
+A121839	post	0	~~1 + Gamma(4/3)*Gamma(5/3)
+A185280	post	0	~~1 + (4*log(2) - Pi)/Pi
+A247684	post	0	~~1 + (3/4)*log(3)
+A306016	post	0	~~1 - 12*Zeta'(-1) - gamma - log(2*Pi)
+A339135	post	0	~~1 + 2*log(2)/3 - Psi(0, 5/2 - i*sqrt(3)/2)/2 - Psi(0, 5/2 + i*sqrt(3)/2)/2
+A343015	post	0	~~1 - (365!/((365 - 23)! * 365^23)) * (146000/146097)^23 * (1 + 97 * 365 * 23/146000/(366 - 23))
+A344475	post	0	~~1 - 2*log(phi) + log(phi)^2 - Pi^2/60
+A109219	post	0	~~cosh((sqrt(3)*Pi)/2)/(3*Pi)
+A073333	post	0	~~1/(exp(1)-1)
+A113319	post	0	~~1/2 + Pi / tanh(Pi) / 2
+A232883	post	0	~~1/2 + ( Pi/sqrt(2) ) /tanh( Pi/sqrt(2) ) /2
+A248895	post	0	~~1/2 - 3*(Pi/8)^2
+A335415	post	0	~~1/2 + Gamma(1/4)^2 / (4*Pi^(3/2))
+A335415	post	0	~~1/2 + sqrt(Pi) / (2*Gamma(3/4)^2)
+A143819	post	0	~~1/3 * (e + 2 * cos(sqrt(3)/2) / sqrt(e))
+A226654	post	0	~~1/3 + 2*sqrt(3)/Pi
+A301862	post	0	~~1/3 + 5/(2*Pi^2)
+A324558	post	0	~~1/3 - 7*sqrt(3)/(12*Pi)
+A227717	post	0	~~1/3*sqrt(2/Pi)*Gamma(1/4)^2
+A226655	post	0	~~1/5 + sqrt(25 - 2*sqrt(5))/Pi
+A272874	post	0	~~1/6*(108+12*sqrt(177))^(1/3)-4/(108+12*sqrt(177))^(1/3)
+A225113	post	0	~~1/8*(Pi^2*log(4) - 7*zeta(3))
+A091670	post	0	~~1/agm(1,sqrt(1/2))^2
+A330156	post	0	~~1/arctan(cot(1))
+A182064	post	0	~~1/e^((1+8^(1/(e-1)))^(1/Pi))
+A256988	post	0	~~10*zeta(5) + zeta(2)*zeta(3) or, 10*zeta(5) + (Pi^2/6)*zeta(3)
+# A228163	post	0	~~101325/((1.380649*10^(-23))*273.15)
+A233033	post	0	~~11*Pi^4/360 +1/12*Pi^2*log(2)^2 -log(2)^4/12 -2*Li4(1/2) -7/4*log(2)*zeta(3)
+A339529	post	0	~~11/12 - Pi*tanh(sqrt(3)*Pi/2)/(2*sqrt(3))
+A242024	post	0	~~12*log(2) - 15/2
+A324559	post	0	~~13/144 - 13*sqrt(3)/(48*Pi) + 3*(3 + log(4/3))/(16*Pi^2)
+A339530	post	0	~~15/16 - Pi*coth(Pi)/8 + Pi * (sin(sqrt(2)*Pi) + sinh(sqrt(2)*Pi)) / (4*sqrt(2) * (cos(sqrt(2)*Pi) - cosh(sqrt(2)*Pi)))
+A131595	post	0	~~15/tan(Pi/5)
+A239022	post	0	~~16*sqrt(3)/9
+A342355	post	0	~~163/log(163)
+A327620	post	0	~~2 * log_2((1+sqrt(78)/9)^(1/3) + (1-sqrt(78)/9)^(1/3))
+A330156	post	0	~~2 / (Pi - 2)
+A332438	post	0	~~2 + i^(4/9) - i^(14/9)
+A336275	post	0	~~2*(1 - sqrt(2))/3 + 2 * log(1 + sqrt(2))
+A276627	post	0	~~2*(2+sqrt(2))*Pi^(3/2)/Gamma(-1/4)^2
+A214726	post	0	~~2*(sqrt(2+sqrt(3)))
+A342571	post	0	~~2*Pi*(1 + sqrt(2+sqrt(5))*arcsec(phi))
+A224273	post	0	~~2*Pi/(sqrt(3)*Gamma(2/3)^3)
+A258407	post	0	~~2*Pi/cosh(sqrt(7)*Pi/2)
+A202543	post	0	~~log((3+sqrt(5))/2)
+A244920	post	0	~~2*arcsinh(1)
+A088559	post	0	~~2*cos(arccos(29/2)/3)/3 - 2/3
+A237192	post	0	~~2*cos(log(2))
+A237193	post	0	~~2*cos(log(3))
+A145961	post	0	~~2*log(3) - 4*arccot(2)
+A335089	post	0	~~2*log(Pi) - log(6)
+A090550	post	0	~~2*phi^3 - phi^2
+A272489	post	0	~~2*sin(Pi/11)
+A272490	post	0	~~2*sin(Pi/13)
+A272491	post	0	~~2*sin(Pi/19)
+A272487	post	0	~~2*sin(Pi/7) 
+A272488	post	0	~~2*sin(Pi/9) 
+A272534	post	0	~~2*sin(Pi/15)
+A272535	post	0	~~2*sin(Pi/16)
+A228402	post	0	~~2*sqrt((Pi-3)*(Pi+3))/Pi
+A121601	post	0	~~2*sqrt(2)*cos(Pi/8)
+A248897	post	0	~~2*sqrt(3)*Pi/9
+A257871	post	0	~~2*sqrt(Pi)*zeta(1/2)*(zeta(1/2, 1/4) - zeta(1/2, 3/4))
+A244674	post	0	~~2*zeta(3)^2 - 11/5040*Pi^6
+A074950	post	0	~~2/(1/Pi + 1/e)
+A225146	post	0	~~2/(e-1)^2 - 2/3
+A247674	post	0	~~2/3 - sqrt(2)/3 + arcsinh(1)
+A341030	post	0	~~2/3 + (1 + sqrt(2))*(5 + sqrt(13))/6
+A338856	post	0	~~2/Pi + sqrt(Pi/2) / Gamma(3/4)^2 - sqrt(2) * Gamma(3/4)^2 / Pi^(3/2)
+A243258	post	0	~~2/Pi*(2*log(2) - log(Pi) + gamma)
+A243257	post	0	~~2/Pi*(3*log(2) - log(Pi) + gamma)
+A329207	post	0	~~220 * 2^(1/4)
+A329208	post	0	~~220 * 2^(1/3)
+A329209	post	0	~~220 * 2^(5/12)
+A329210	post	0	~~220 * sqrt(2)
+A329211	post	0	~~220 * 2^(7/12)
+A329212	post	0	~~220 * 2^(2/3)
+A329213	post	0	~~220 * 2^(3/4)
+A329214	post	0	~~220 * 2^(5/6)
+A329215	post	0	~~220 * 2^(11/12)
+A262606	post	0	~~24 - 4 Pi^2/3 - Pi^4/90 - 8 zeta(3)
+A336802	post	0	~~25*sqrt(5)/(4*Pi^2*log((1+sqrt(5))/2))
+A144981	post	0	~~2F1(11/16,5/16;1/2;3/4) / 2
+A144982	post	0	~~2F1(9/16,7/16;1/2;3/4) / 2 
+A175574	post	0	~~1/agm(1, sqrt(1/2))
+A292823	post	0	~~2^(1/16) * (sqrt(2)-1)^(1/4) * exp(-Pi/48)
+A292827	post	0	~~2^(1/16) / (exp(Pi/48) * (sqrt(2)-1)^(1/4))
+A292829	post	0	~~2^(1/16) / (exp(Pi/12) * (sqrt(2)-1)^(1/4))
+A292828	post	0	~~2^(1/4) * exp(-Pi/24)
+A292824	post	0	~~2^(1/8) * exp(-Pi/24)
+A293237	post	0	~~2^(14/3)*Pi^4/(9*Gamma(1/3)^6)
+A258895	post	0	~~2^(17/3) * Pi^2 / (3 * Gamma(1/3)^6)
+A277559	post	0	~~2^(3/2)/(1-log(2))
+A292825	post	0	~~2^(3/8) * exp(-Pi/12)
+A292826	post	0	~~2^(7/16) / (exp(Pi/6) * (sqrt(2)-1)^(1/4))
+A345929	post	0	~~3*sqrt(2)*cosh(Pi*sqrt(3)/2)^2/(Pi*sinh(Pi*sqrt(2)))
+A339261	post	0	~~3*sqrt(2*sqrt(3) - 3)
+A341030	post	0	~~3/2 + (5/6)*sqrt(2) + (1/6)*sqrt(13) + (1/6)*sqrt(26)
+A140571	post	0	~~30*sqrt(log(1564)/1564)
+A258895	post	0	~~32*Pi / (Gamma(1/6) * Gamma(1/3))^2
+A327135	post	0	~~32*Pi^3/(343*sqrt(7))
+A242023	post	0	~~32*log(2) - 64/3
+A340066	post	0	~~3465/2764
+A263490	post	0	~~3^(1/2) * Gamma(1/3)^6 / (2^(8/3) * Pi^4)
+A336199	post	0	~~4 * sin(arccos(-1/3)/3 - Pi/6)
+A258408	post	0	~~4*Pi*sqrt(3/11) * sinh(sqrt(11)*Pi/6) / (2*cosh(sqrt(11)*Pi/3) - 1)
+A263498	post	0	~~4*Pi/3^(3/2) - 1
+A328717	post	0	~~4*Pi^2/(25*sqrt(5))
+A247675	post	0	~~4*log(2 + sqrt(3)) - 2*Pi/3
+A185280	post	0	~~4*log(2)/Pi
+A242168	post	0	~~4*sqrt(3/23)*Pi * (2*sinh(sqrt(23)*Pi/6) + sqrt(2)*sinh(sqrt(23)*Pi/4)) / (2*cosh(sqrt(23)*Pi/3)-1)
+A255902	post	0	~~4/(2^(2/3)*gamma(2/3)/(gamma(1/3)*gamma(4/3))
+A134974	post	0	~~4/phi
+A329217	post	0	~~440 * 2^(1/12)
+A329218	post	0	~~440 * 2^(1/6)
+A279037	post	0	~~45*zeta(3) / (2*Pi^3)
+A221208	post	0	~~467807924713440738696537864469/935615849440640907310521750000*Pi
+A238167	post	0	~~5*zeta(2)*zeta(5) + 2*zeta(3)*zeta(4) - 10*zeta(7)
+A233090	post	0	~~5*zeta(3)/8
+A102771	post	0	~~5/(4*tan(Pi/5))
+A340065	post	0	~~5005/2764
+A209244	post	0	~~54084649^9 / (181440 * 3234846615^8)
+A086237	post	0	~~6*(log(2)/Pi^2)*(3*log(2) + 4*Gamma -(24/Pi^2)*Zeta'(2) - 2) - 1/2
+A086819	post	0	~~6*log(2)*log(10)/Pi^2
+A238168	post	0	~~6*zeta(7) - zeta(2)*zeta(5) - 5/2*zeta(3)*zeta(4)
+A178809	post	0	~~6+3*sqrt(3)
+A269404	post	0	~~675675/(691*Pi^6)
+A084258	post	0	~~7*Pi^3/180
+A233091	post	0	~~7*zeta(3)/8
+A340065	post	0	~~7*zeta(6)^2 / (4*zeta(12))
+A256919	post	0	~~7/8 - (Pi/4)*coth(Pi)
+A258232	post	0	~~8*Pi*sqrt(3/23) * sinh(sqrt(23)*Pi/6) / (2*cosh(sqrt(23)*Pi/3) - 1)
+A275322	post	0	~~8*Pi^2/Gamma(1/4)^4
+A258942	post	0	~~8*exp(Pi/(6*sqrt(3))) * Pi^(5/2) / Gamma(1/6)^3
+A261813	post	0	~~81*Pi^3/256
+A307029	post	0	~~8192/(1575*Pi^2)
+A343393	post	0	~~99^2/1103
+A245645	post	0	~~sqrt(5) + sqrt(22 + 2*sqrt(5))
+A343235	post	0	~~sqrt(3)/Pi - 1/2
+A343236	post	0	~~(sqrt(5)/Pi - 3*arctan(sqrt(5)/2)/(2*Pi) - 1/4)/2
+A310000	post	0	~~agm(1, cos(Pi/5))
+A245645	post	0	~~sqrt(11 + 2*sqrt(29)) + sqrt(16 - 2*sqrt(29) + 2*sqrt(55 - 10*sqrt(29)))
+A269330	post	0	~~Ei(log(2)) - gamma
+A301813	post	0	~~EulerGamma / Pi
+A256783	post	0	~~EulerGamma/12 + 1/24*(Pi*(2+sqrt(3)) - 2*(sqrt(3)-1)*log(2) + log(3) + 4*sqrt(3) * log(sqrt(3)+1))
+A256784	post	0	~~EulerGamma/12 + 1/24*(Pi*(2-sqrt(3)) + 2*(sqrt(3)+1)*log(2) + log(3) - 4*sqrt(3) * log(sqrt(3)+1))
+A256844	post	0	~~EulerGamma/3 - log(3)/3
+A256779	post	0	~~EulerGamma/5 + Pi/10*sqrt(1 + 2/sqrt(5)) + log(5)/20 + sqrt(5)/10*log((1 + sqrt(5))/2)
+A256780	post	0	~~EulerGamma/5 + Pi/10*sqrt(1 - 2/sqrt(5)) + log(5)/20 - sqrt(5)/10*log((1 + sqrt(5))/2)
+A256848	post	0	~~EulerGamma/5 + Pi/(10*sqrt(2*(5+sqrt(5)))) - Pi/(2*sqrt(10*(5+sqrt(5)))) + log(5)/20 + log((5-sqrt(5))/(5+sqrt(5)))/(4*sqrt(5))
+A256849	post	0	~~EulerGamma/5 - Pi/(10*sqrt(2*(5-sqrt(5)))) - Pi/(2*sqrt(10*(5-sqrt(5)))) + log(5)/20 - log(5-sqrt(5))/(4*sqrt(5)) + log(5+sqrt(5))/( 4*sqrt(5))
+A256781	post	0	~~EulerGamma/8 + 1/8*(Pi/2*(sqrt(2)+1) + log(2) + sqrt(2)*log(sqrt(2) + 1))
+A256782	post	0	~~EulerGamma/8 + 1/8*(Pi/2*(sqrt(2)-1) + log(2) - sqrt(2)*log(sqrt(2)+1))
+A291486	post	0	~~EulerGamma^4 +EulerGamma^2*Pi^2 +8*EulerGamma*Zeta(3) +3*Pi^4/20
+A178840	post	0	~~Gamma((sqrt(5) - 1)/2)
+A244995	post	0	~~Gamma(1/15) * Gamma(2/15) * Gamma(4/15) * Gamma(8/15) / (8*sqrt(5)*Pi^4)
+A064582	post	0	~~Gamma(1/3)^3/(4*Pi)
+A064853	post	0	~~Gamma(1/4)^2/sqrt(2*Pi)
+A263490	post	0	~~Gamma(1/6)^3 / (3 * 2^(5/3) * Pi^(5/2))
+A273087	post	0	~~Gamma(1/8)/(2^(9/8)*sqrt(Pi*Gamma(1/4)))
+A309948	post	0	~~sqrt(1/2 + 1/sqrt(2))
+A339802	post	0	~~(Pi/2)*tanh(Pi*sqrt(3)/2) - sqrt(3)/2
+A334624	post	0	~~Pi + e + (sqrt(5)+1)/2 + sqrt(2) + e^(-Pi/2) - 1/10
+A256128	post	0	~~Pi*(7*log(2) + 8*log(Pi) - 3*log(3) - 12*log(Gamma(1/3)))/(3*sqrt(3))
+A256127	post	0	~~Pi*(8*log(2*Pi) - 3*log(3) - 12*log(Gamma(1/3)))/(6*sqrt(3))
+A144663	post	0	~~Pi*sinh(Pi) / (cosh(sqrt(2)*Pi) - cos(sqrt(2)*Pi))
+A244645	post	0	~~Pi/(4*sqrt(3)) + 3*log(3)/4
+A335414	post	0	~~Pi/12 - log(2)/4
+A102521	post	0	~~Pi/4 - Pi/sqrt(2) + (3*arctan(sqrt(2)))/sqrt(2)
+A260230	post	0	~~Pi/6 + (1/4)*log(2)
+A244649	post	0	~~Pi/8*sqrt(1+2/sqrt(5)) + (5*log(5) + sqrt(5)*log((3+sqrt(5))/2))/16
+A062539	post	0	~~Pi/AGM(1, sqrt(2))
+A247719	post	0	~~Pi/sqrt(2)
+A085565	post	0	~~Pi/sqrt(8)/agm(1,sqrt(1/2))
+A319332	post	0	~~Pi^(1/4)/(2*Gamma(3/4))
+A262427	post	0	~~Pi^(3/2)*sqrt(4 + 2*sqrt(2))/(4*Gamma(5/8)*Gamma(7/8))
+A257407	post	0	~~Pi^(3/2)/Gamma(1/4)^2 + Gamma(1/4)^2/(8*Pi^(1/2))
+A327996	post	0	~~Pi^(3/4)/(2*(-1/4)!)
+A246499	post	0	~~Pi^2/(6*exp(gamma))
+A258414	post	0	~~Pi^2/(6*sqrt(3))
+A328895	post	0	~~Pi^2/(8*sqrt(2))
+A076788	post	0	~~Pi^2/12 - 1/2*(log(2))^2 
+A274181	post	0	~~Pi^2/3 - 2*log(2)^2 - 2
+A266576	post	0	~~Pi^2/6 + log(2)^2/2 + polylog(2, -1/2)
+A244667	post	0	~~Pi^2/6*zeta(3) + 15/2*zeta(5)
+A327773	post	0	~~Pi^4/45 + 10*Pi^2/3 - 35
+A309949	post	0	~~sqrt(1/sqrt(2) - 1/2)
+A269404	post	0	~~Zeta(6)/Zeta(12)
+A179260	post	0	~~2*sin(3*Pi/8)
+A272536	post	0	~~(sqrt(2)+sqrt(10)-2*sqrt(5-sqrt(5)))/4
+A195723	post	0	~~arccos(sqrt((5-sqrt(5))/10))
+A244920	post	0	~~arccosh(3)
+A248618	post	0	~~arcsin((exp(2)-1)/(exp(2)+1))
+A195784	post	0	~~arcsin(1/8)
+A195774	post	0	~~arcsin(1/sqrt(37))
+A195771	post	0	~~arcsin(2*sqrt(6)/5)
+A195783	post	0	~~arcsin(3*sqrt(7)/8)
+A195731	post	0	~~arcsin(sqrt(15)/4) 
+A195775	post	0	~~arcsin(sqrt(35)/6) 
+A091648	post	0	~~arcsinh(1)
+A245592	post	0	~~arcsinh(1)/2
+A195782	post	0	~~arctan(1/8)
+A289505	post	0	~~arctan(2*sqrt(2))/(2*Pi)
+A091648	post	0	~~asin(i)/i
+A133748	post	0	~~Gamma(1/4)^4/(8*Pi)
+A222128	post	0	~~cos(Pi^2/2)
+A222130	post	0	~~cos(log(Pi))
+A114941	post	0	~~cos(sin(1)) * (cosh(cos(1)) + sinh(cos(1))) - 1
+A109219	post	0	~~cosh((sqrt(3)*Pi)/2)/(3*Pi)
+A073017	post	0	~~cosh(1/2 * sqrt(3) * Pi)/Pi
+A334366	post	0	~~cosh(1/2)
+A344362	post	0	~~cosh(log(5)/4)
+A214726	post	0	~~csc(Pi/12)
+A114940	post	0	~~e^cos(1) * sin(sin(1))
+A114941	post	0	~~e^cos(1) * cos(sin(1)) - 1
+A110894	post	0	~~erf(sqrt(2))
+A098875	post	0	~~exp(1)/(exp(1)-1)^2
+A229495	post	0	~~exp(1)/sqrt(2*Pi)
+A181045	post	0	~~exp(Pi * sqrt(163))/24
+A181165	post	0	~~exp(Pi*sqrt(43))/24
+A181163	post	0	~~exp(Pi*sqrt(58))/8
+A292821	post	0	~~exp(Pi/12) / 2^(3/8)
+A292820	post	0	~~exp(Pi/24) / 2^(1/8)
+A292819	post	0	~~exp(Pi/48) / (2^(1/16) * (sqrt(2)-1)^(1/4))
+A094961	post	0	~~Gamma(1/3)^3/(8*Pi)
+A225119	post	0	~~Gamma(1/4)^2/(6*sqrt(2*Pi))
+A261509	post	0	~~gamma^3 + gamma*Pi^2/2 + 2*zeta(3)
+A269330	post	0	~~li(2) - gamma
+A129187	post	0	~~log((1 + sqrt(10))/3)
+A129200	post	0	~~log((1 + sqrt(17))/4)
+A212880	post	0	~~log((Gamma(1-i)/Gamma(1+i))^(-i/2))
+A091648	post	0	~~log(1 + sqrt(2))
+A329246	post	0	~~log(1 + sqrt(2)/2)/2
+A303658	post	0	~~log(16) - 2
+A329247	post	0	~~log(2 + sqrt(3))/2
+A341577	post	0	~~log(2 * 7 * 47) * log(2 * 3 * 233)
+A104287	post	0	~~log(2) / log((sqrt(5)+1)/2)
+A255681	post	0	~~log(2) - EulerGamma
+A256924	post	0	~~log(2*Pi/(2*sqrt(2)))
+A256923	post	0	~~log(2*Pi/(3*sqrt(3)))
+A173158	post	0	~~log(3)/W(log(3))
+A256930	post	0	~~log(3*Pi/(2*sqrt(2)))
+A341577	post	0	~~log(658) * log(1398)
+A074758	post	0	~~log(8*Pi)/2 + EulerGamma/2 + Pi/4
+A256923	post	0	~~log(Gamma(2/3)*Gamma(4/3))
+A256929	post	0	~~log(Gamma(3/4)*Gamma(5/4))
+A256929	post	0	~~log(Pi/(2*sqrt(2)))
+A210965	post	0	~~log(round(e^(Pi*sqrt(163))))/Pi
+A248617	post	0	~~log(tan((2+Pi)/4))
+A272031	post	0	~~log_2((1+(73+6*sqrt(87))^(1/3)+(73-6*sqrt(87))^(1/3))/3)
+A143624	post	0	~~sin(1-Pi/4)*sqrt(2)
+A231186	post	0	~~sin(5*Pi/11)/sin(Pi/11)
+A337402	post	0	~~sin(Pi/3)/sin(Pi/12)
+A222131	post	0	~~sin(log(Pi))
+A114940	post	0	~~sin(sin(1)) * (cosh(cos(1)) + sinh(cos(1)))
+A334367	post	0	~~sinh(1/2)
+A156648	post	0	~~sinh(Pi)/Pi
+A343057	post	0	~~sqrt( (2-sqrt(2+sqrt(2+sqrt(2))))/(2+sqrt(2+sqrt(2+sqrt(2)))) )
+A343060	post	0	~~sqrt( (2-sqrt(2+sqrt(2)))/(2+sqrt(2+sqrt(2))) )
+A343062	post	0	~~sqrt( (2-sqrt(2+sqrt(3)))/(2+sqrt(2+sqrt(3))) )
+A343061	post	0	~~sqrt((-2*(-8 + sqrt(2*(15 + sqrt(17) - sqrt(34 - 2*sqrt(17)) + sqrt(2*(34 + 6*sqrt(17) - sqrt(578 - 34*sqrt(17)) + sqrt(34 - 2*sqrt(17)) + 8*sqrt(2*(17 + sqrt(17)))))))))/(15 + sqrt(17) + sqrt(34 - 2*sqrt(17)) + sqrt(2*(34 + 6*sqrt(17) + sqrt(578 - 34*sqrt(17)) - sqrt(34 - 2*sqrt(17)) - 8*sqrt(2*(17 + sqrt(17)))))))
+A272873	post	0	~~sqrt((1+Pi^2)/2)
+A293409	post	0	~~sqrt((3+sqrt(5))/(50*sqrt(5)))
+A134943	post	0	~~sqrt((3+sqrt(5))/18) or sqrt(6+2*sqrt(5))/6. See Wassell and Benito
+A339260	post	0	~~sqrt((475 + 29*sqrt(145))/250)
+A182007	post	0	~~sqrt((5-sqrt(5))/2)
+A134944	post	0	~~sqrt((sqrt(5)+3)/4*((sqrt(5)+3)/4-(sqrt(5)+1)/4)*((sqrt(5)+3)/4-(sqrt(5)-1)/4)*((sqrt(5)+3)/4-1/2)*((sqrt(5)+3)/4-1))
+A257945	post	0	~~sqrt(1 + sqrt(17) - sqrt(2*(1 + sqrt(17))))/2
+A309949	post	0	~~sqrt(1/sqrt(2) - 1/2)
+A076390	post	0	~~sqrt(2) * Pi^(3/2) / Gamma(1/4)^2
+A214726	post	0	~~sqrt(2) + sqrt(6)
+A278386	post	0	~~sqrt(2) - 1 + log(2) - log(1 + sqrt(2))
+A278386	post	0	~~sqrt(2) - 1 - arcsinh((5 - 3*sqrt(2))/4)
+A278386	post	0	~~sqrt(2) - 1 - arcsinh(7/(4*(5 + 3*sqrt(2))))
+A196554	post	0	~~sqrt(2)*(Pi + log(3 + 2^(3/2)))/32
+A186631	post	0	~~sqrt(2)*Gamma(sqrt(2))
+A273084	post	0	~~sqrt(2+sqrt(8+6*sqrt(3)+4*sqrt(6+4*sqrt(3)))) * Pi^(1/4) / (2*3^(3/8)*Gamma(3/4))
+A273083	post	0	~~sqrt(2/5 + 1/sqrt(5)) * Pi^(1/4)/Gamma(3/4)
+A103647	post	0	~~sqrt(2/Pi)*e^(-1/2)
+A102771	post	0	~~sqrt(25 + 10*sqrt(5)) / 4
+A330646	post	0	~~sqrt(3) * log(3) / (2 * Pi)
+A105727	post	0	~~sqrt(3)*Pi^2/4
+A180317	post	0	~~sqrt(3)/80
+A228787	post	0	~~sqrt(34-2*sqrt(17)-2*sqrt(34-2*sqrt(17))-4*sqrt(17+3*sqrt(17)-sqrt(34-2*sqrt(17))-2*sqrt(34+2*sqrt(17))))/4
+A228402	post	0	~~sqrt(4*Pi^2 - 36)/Pi
+A343060	post	0	~~sqrt(4+2*sqrt(2))-sqrt(2)-1
+A337402	post	0	~~sqrt(6 + 3*sqrt(3))
+A323755	post	0	~~sqrt(Gamma(1/4)) * exp(Pi/24) / (2*Pi)^(9/8)
+A227717	post	0	~~sqrt(Pi)*Gamma(1/4)/(2*Gamma(7/4))
+A225119	post	0	~~sqrt(Pi)*gamma(1/4)/(6*gamma(3/4))
+A193719	post	0	~~sqrt(Pi)*gamma(3/8)/(4*gamma(15/8))
+A300727	post	0	~~sqrt(Pi*(cot(Pi/sqrt(2))*coth(Pi/sqrt(2))^2-cot(Pi/sqrt(2))^2*coth(Pi/sqrt(2))-cot(Pi/sqrt(2))-coth(Pi/sqrt(2)))/((cot(Pi/sqrt(2))^2+coth(Pi/sqrt(2))^2)*sqrt(2))+(1/3)*Pi^2-1)
+A108088	post	0	~~sqrt(Pi*e/2)*erfc(1/sqrt(2))
+A211268	post	0	~~sqrt(Pi/(4*log(2)))
+A212879	post	0	~~sqrt(Pi/sinh(Pi))
+A274014	post	0	~~sqrt(Pi/sqrt(3))*(((1 + 1/sqrt(3))*Gamma(1/3))/Gamma(5/6) + (2*Gamma(5/6))/Gamma(1/3))
+A300714	post	0	~~sqrt(Pi^2/3 - Pi*coth(Pi))
+# A337571	post	0	~~sqrt(W / 12 - 4 / W) + sqrt(4 / W - W / 12 + 1 / sqrt(4 * W / 3 - 64 / W)) where W = (27/2 + sqrt(443097/4))^(1/3)
+A143280	post	0	~~sqrt(e) + sqrt((e*Pi)/2)*erf(1/sqrt(2))
+A202688	post	0	~~sqrt(e) - sqrt(e*Pi/2)*erf(1/sqrt(2))
+A271529	post	0	~~sqrt(e)*(sqrt(e) + sqrt(e + 4))/2
+A293415	post	0	~~sqrt(exp(4*arctanh(exp(-2*7*arcsinh(sqrt(1/2*sin(Pi/7)tan(Pi/7))))))-1)
+A293416	post	0	~~sqrt(exp(4*arctanh(exp(-2*9*arcsinh(sqrt(1/2*sin(Pi/9)tan(Pi/9))))))-1)
+A293417	post	0	~~sqrt(exp(4*arctanh(exp(-Pi*sqrt(2))))-1)
+A344505	post	0	~~tanh(Pi)
+A111129	post	0	~~1/(sqrt(pi*e/2)*erfc(1/sqrt(2)))
+A134972	post	0	~~2*phi/(1+phi)
+A263208	post	0	~~(16 + exp(4))^(1/4) * cos(arctan(4*exp(-2))/2) / 2 - exp(1)/2
+A263209	post	0	~~(16 + exp(4))^(1/4) * sin(arctan(4/exp(2))/2) / 2
+A263210	post	0	~~(16 + Pi^4)^(1/4) * cos(arcran(4/Pi^2)/2)/2 - Pi/2
+# A263211	post	0	~~the imaginary part of (sqrt(Pi^2+4*i)-Pi)/2
+A339264	post	0	~~(63/25) * (17+15*sqrt(5)) / (7+15*sqrt(5))
+A240264	post	0	~~zeta(3) - Pi^2/12*log(2)
+A278419	post	0	~~zeta(3) - primezetaP(3)
+A238166	post	0	~~zeta(3)^2 - zeta(6)/3
+A259927	post	0	~~zeta(6) - zeta(3)^2
+A244593	post	0	~~phi^5
