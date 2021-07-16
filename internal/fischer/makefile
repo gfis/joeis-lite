@@ -69,6 +69,8 @@ jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
 	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
 spectest:
 	$(JAVA) irvine.test.SpecialTest       $(NT) $(OFFSET)
+ebtest:
+	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
 gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
 tiletest:
@@ -335,7 +337,13 @@ bfile:
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 reverse:
 	perl -e 'print "\n\"[" . join(",",0,reverse($(SIG)),-1) . "]\"\n";'
-#----
+#-------
+overwrite: # SRC= TAR= inserts or replaces all records in TAR by the ones in SRC, key is aseqno
+	grep -E "^A[0-9]" $(SRC) | cut -b1-7 > $@.sa.tmp
+	grep -vf $@.sa.tmp $(TAR) > $@.tn.tmp || :
+	sort $@.tn.tmp $(SRC) > $(TAR)
+	wc -l $(TAR)
+#--------
 joeis_class:
 	$(DBAT) -x "SELECT s.aseqno, COALESCE(j.superclass, 'nyi'), s.offset, s.parm1, s.parm2, s.parm3, s.parm4, s.parm5 \
 	  FROM seq4 s LEFT JOIN joeis j ON j.aseqno = s.aseqno \
@@ -718,47 +726,49 @@ beatty_check:
 #--------------------------------
 decexp0: decexp1 decexp2 decexp3 # Decimal expansion of expr.
 decexp1:
-	grep -E "^A[0-9]" decexp1.man \
-	| sed -e "s/ //g" \
-	>        decexp.man
-	grep -E "^[\%\#\?][N] A[0-9][0-9]* Decimal expansion" $(COMMON)/jcat25.txt \
+	grep -E "^[\%][N] A[0-9][0-9]* Decimal expansion" $(COMMON)/jcat25.txt \
 	| cut -b4- | grep -vP '\, *where' \
 	| perl -ne 's/ Decimal expansion (for|of) /\tpost\t0\t~~/; '\
 	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
-	' s{zeta\((\d+)\)}{zeta__$$1}g; '\
 	' if (! m{sum|prod|_|.A|\!|.\w{8}}) { print; }'\
-	| cat - decexp.man \
 	| grep -E "^A[0-9]" \
-	| gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' \
+	>        $@.1.tmp
+	wc -l    $@.1.tmp
+	grep -E "^A[0-9]" decexp1.man \
+	| sed -e "s/ //g" \
 	| sort | uniq -w7 \
+	>        $@.2.tmp
+	wc -l    $@.2.tmp
+	# cut -b1-7 decexp1.man | sort | uniq -c | grep -v " 1 "
+	make overwrite SRC=$@.2.tmp TAR=$@.1.tmp
+	gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' $@.1.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 decexp2:
+	# cp -v $(COMMON)/../constant/zetaddx.man decexp1.tmp
 	$(JPREP) -f decexp1.tmp | sed -e "s/\r//" \
 	| perl -ne 's{\tpost\t(.*)\Z}{\tinfix\t$$1\t$$1}; s{\~\~\;?}{}g; print;'\
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc -l    $@.tmp
+	wc -l    $@*.tmp
 decexp3:
 	$(JPREP) -p CR.xpat -f decexp2.tmp \
-	| perl -ne 's{zeta\(}{Zeta.zeta\(}g; print; # expand zeta '\
-	>        $@.tmp
+	| perl de_zeta.pl \
+	>        $@.tmp \
+	2>       $@.rest.tmp
 	head -n4 $@.tmp
-	wc -l    $@.tmp
-	# grep -i  zeta $@.tmp || :
-	grep     '<?' $@.tmp || :
+	wc -l    $@*.tmp 
 decexp:
 	rm -f $@.rest.tmp
 	touch $@.rest.tmp
 	grep -P  '\<\?' decexp3.tmp \
 	>>       $@.rest.tmp || :
 	grep -vP '\<\?' decexp3.tmp \
-	| grep -vi zeta \
-	| grep -vE "A060196|A202955|A241292|A277535|A296547|A094689|A123852|A221208" \
 	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tdecexp$$r\t}; '\
 	' my ($$aseqno, $$callcode, $$offset, $$parm1, @rest) = split(/\t/); '\
 	' if ((length($$offset) <= 4) && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
+	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp

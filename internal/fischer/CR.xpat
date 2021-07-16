@@ -17,6 +17,7 @@
 
 n	name	0	CR.valueOf(mN)	0
 Pi	name	0	CR.PI	0
+pi	name	0	CR.PI	0
 e	name	0	CR.E	0
 phi	name	0	CR.PHI	0
 gamma	name	0	CR.GAMMA	0
@@ -28,7 +29,7 @@ eulergamma	name	0	CR.GAMMA
 *	meth	2	.multiply(	0
 /	meth	2	.divide(	0
 %	meth	2	.mod(	0
-^	func	1	.pow(	1
+^	meth	2	.pow(	1
 
 abs)	meth	1	.abs(	0
 agm)	meth	2	.agm(	0
@@ -37,6 +38,9 @@ ceil)	meth	1	.ceil(	0
 ei)	meth	1	.ei(	0
 li)	meth	1	.li(	0
 si)	meth	1	.si(	0
+Ei)	meth	1	.ei(	0
+Li)	meth	1	.li(	0
+Si)	meth	1	.si(	0
 erf)	meth	1	.erf(	0
 erfc)	meth	1	.erfc(	0
 exp)	meth	1	.exp(	0
@@ -48,31 +52,48 @@ log_5)	meth	1	.log().divide(CR.FIVE.log()	0
 log_10)	meth	1	.log().divide(CR.TEN.log()	0
 round)	meth	1	.round(	0
 sqrt)	meth	1	.sqrt(	0
+Sqrt)	meth	1	.sqrt(	0
 
-cos)	meth	1	.cos(	0
 sin)	meth	1	.sin(	0
-
-# zeta)	func	1	Zeta.zeta(	1
-arccos)	func	1	REALS.acos(	1
+cos)	meth	1	.cos(	0
+tan)	func	1	REALS.tan(	1
+cot)	func	1	REALS.cot(	1
+sec)	func	1	REALS.sec(	1
+csc)	func	1	REALS.csc(	1
 arcsin)	func	1	REALS.asin(	1
+arccos)	func	1	REALS.acos(	1
 arctan)	func	1	REALS.atan(	1
 arccot)	func	1	REALS.acot(	1
-acos)	func	1	REALS.acos(	1
+arcsec)	func	1	REALS.asec(	1
+arccsc)	func	1	REALS.acsc(	1
 asin)	func	1	REALS.asin(	1
+acos)	func	1	REALS.acos(	1
 atan)	func	1	REALS.atan(	1
 acot)	func	1	REALS.acot(	1
-cosh)	func	1	REALS.cosh(	1
-sinh)	func	1	REALS.sinh(	1
-tan)	func	1	REALS.tan(	1
-tanh)	func	1	REALS.tanh(	1
-cot)	func	1	REALS.cot(	1
-coth)	func	1	REALS.coth(	1
-csc)	func	1	REALS.csc(	1
-sec)	func	1	REALS.sec(	1
-sech)	func	1	REALS.sech(	1
-csch)	func	1	REALS.csch(	1
-cosech)	func	1	REALS.csch(	1
+asec)	func	1	REALS.asec(	1
+acsc)	func	1	REALS.acsc(	1
+sinh)	meth	1	.sinh(	1
+cosh)	meth	1	.cosh(	1
+tanh)	meth	1	.tanh(	1
+coth)	meth	1	.coth(	1
+sech)	meth	1	.sech(	1
+csch)	meth	1	.csch(	1
+cosech)	meth	1	.csch(	1
+arcsinh)	func	1	REALS.asinh(
+arccosh)	func	1	REALS.acosh(
+arctanh)	func	1	REALS.atanh(
+arccoth)	func	1	REALS.acoth(
+arcsech)	func	1	REALS.asech(
+arccsch)	func	1	REALS.acsch(
+arsinh)	func	1	REALS.asinh(
+arcosh)	func	1	REALS.acosh(
+artanh)	func	1	REALS.atanh(
+arcoth)	func	1	REALS.acoth(
+arsech)	func	1	REALS.asech(
+arcsch)	func	1	REALS.acsch(
+
+zeta)	func	1	Zeta.zeta(	1
+BesselJ)	func	1	besselJ0(	1
 
 # omega	irvine.factor.factor.Cheetah.factor(mN).omega()
-# phi	irvine.math.LongUtils.phi(mN)
 # sigma	irvine.factor.factor.Cheetah.factor(mN).sigma()
