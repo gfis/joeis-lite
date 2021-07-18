@@ -2,6 +2,12 @@
 --  @(#) $Id$
 --  2021-07-10: Georg Fischer
 --
+UPDATE seq4 SET callcode='decexprb', parm3 =  2 WHERE aseqno IN ('A071004','A073070','A180433');
+UPDATE seq4 SET callcode='decexprb', parm3 =  3 WHERE aseqno IN ('A333451');
+UPDATE seq4 SET callcode='decexprb', parm3 =  4 WHERE aseqno IN ('A333452');
+UPDATE seq4 SET callcode='decexprb', parm3 =  6 WHERE aseqno IN ('A333454');
+UPDATE seq4 SET callcode='decexprb', parm3 = 16 WHERE aseqno IN ('A170874');
+UPDATE seq4 SET callcode='decexprb', parm3 =  2 WHERE aseqno IN ('A180433');
 DELETE FROM seq4 WHERE aseqno IN
    ( 'A060196' -- 
    , 'A085667' -- take too long
@@ -44,4 +50,5 @@ DELETE FROM seq4 WHERE aseqno IN
    );
 SELECT *  FROM seq4 WHERE offset < -64 OR offset > 64;
 DELETE    FROM seq4 WHERE offset < -64 OR offset > 64;
+
 COMMIT;

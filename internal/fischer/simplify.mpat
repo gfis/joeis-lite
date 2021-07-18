@@ -1,0 +1,5 @@
+# @(#) $Id$
+# 2021-07-18, Georg Fischer
+interface(prettyprint=0):
+
+printf("%a\t%a\t%a\t%a\n", $(PARM0), $(PARM1), $(PARM2), timelimit($(TIMEOUT), simplify($(PARM3))));

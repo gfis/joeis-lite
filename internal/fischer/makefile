@@ -772,6 +772,19 @@ decexp:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
+philo_tab:
+	grep -E "^A[0-9]" $(COMMON)/../constant/philo_tab4.tmp \
+	| sort | uniq -w7 \
+	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\tdecexp\t}; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+decexro:
+	grep -E "^A[0-9]" $(COMMON)/../constant/decexro2.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 bellmod:
 	grep -P "\Bell numbers " $(COMMON)/joeis_names.txt | grep -E "(read )?mod [0-9]" \
