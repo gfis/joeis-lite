@@ -14,6 +14,7 @@ DELETE FROM seq4 WHERE aseqno IN
    , 'A094689' -- 
    , 'A102575' -- Decimal expansion of 2^(3/2)^(4/3)^(5/4)^(6/5)^(7/6)^(8/7)^(9/8)^(10/9)^(11/10)....
    , 'A123852' -- 
+   , 'A181693' -- Decimal expansion of AGM(1-x,1+x), where x=1/(10^27+1).
    , 'A202955' -- 
    , 'A221208' -- 
    , 'A229020' -- 
@@ -27,7 +28,9 @@ DELETE FROM seq4 WHERE aseqno IN
    , 'A241297' -- 
    , 'A243913' -- 
    , 'A254689' -- 
+   , 'A257407' -- Decimal expansion of E(1/sqrt(2)) = 1.35064..., where E is the complete elliptic integral.
    , 'A259235' -- 
+   , 'A276627' -- Decimal expansion of K(3-2*sqrt(2)), where K is the complete elliptic integral of the first kind.
    , 'A277535' -- 
    , 'A296040' -- Decimal expansion of sqrt(1^1 + sqrt(2^2 + sqrt(3^3 + sqrt(4^4 + sqrt(5^5 + ...))))).
    , 'A296041' -- 
