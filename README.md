@@ -10,3 +10,5 @@ joeis-lite/internal/fischer contains scripts for the generation of groups of seq
 * Finite/full sequences
 * Continuous fraction expansions for square roots
 * Sequences related to bases which are represented by two decimal digits
+
+There is a Wiki with further details.
