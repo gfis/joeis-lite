@@ -269,6 +269,7 @@ man: # copy sources that where manually edited
 dist:
 	rm -f dist.log
 	make dist1 2>&1 | tee dist.log
+	wc -l dist.log | perl -ne 'm{(\d+)}; exit(1) if $$1 > 8;'
 	#################################################################
 dist1:
 	cd ../.. ; ant -silent dist 2>&1
@@ -745,6 +746,8 @@ decexp1:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+decexp_check: # on duplicates in .man
+	grep -E "^A[0-9]" decexp1.man | cut -b1-7 | sort | uniq -c | grep -v " 1 "
 decexp2:
 	# cp -v $(COMMON)/../constant/zetaddx.man decexp1.tmp
 	$(JPREP) -f decexp1.tmp | sed -e "s/\r//" \
@@ -772,10 +775,44 @@ decexp:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
-philo_tab:
+deseq:
+	grep -P  '\<\?' $(COMMON)/../constant/deseq4.tmp \
+	>        $@.rest.tmp || :
+	grep -vP '\<\?' $(COMMON)/../constant/deseq4.tmp \
+	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tdecexp$$r\t}; '\
+	' my ($$aseqno, $$callcode, $$offset, $$parm1, @rest) = split(/\t/); '\
+	' if ((length($$offset) <= 4) && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+philo_tab: 
 	grep -E "^A[0-9]" $(COMMON)/../constant/philo_tab4.tmp \
 	| sort | uniq -w7 \
 	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\tdecexp\t}; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+mersenne_tab: # expansion of Mersenne primes
+	grep -E "^A[0-9]" $(COMMON)/../constant/mersenne_tab1.tmp \
+	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\tzbasex\t}; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+zbasex: # base expansion of a Z expression
+	grep -E "^A[0-9]" $(COMMON)/../constant/zbasex.man \
+	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\t$@\t}; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+powtower: # power tower - huge integers
+	grep -E "^A[0-9]" $(COMMON)/../constant/powtower.man \
+	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\t$@\t}; '\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+dechamp: # constant formed by the concatenation of the terms of a sequence
+	grep -E "^A[0-9]" $(COMMON)/../constant/dechamp.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -1249,6 +1286,14 @@ dead_check: # Where are dead, erroneous sequences still referenced?
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------------------------------
+cofr:
+	grep -E "^A[0-9]" $(COMMON)/../sequencedb/contfrac_de.tmp \
+	| perl -pe 's{\t\w+\t}{\t$@\t}; '\
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 decofr: # Continued fraction of real expression
 	perl decofr.pl -i 0 $(COMMON)/joeis_names.txt \
 	>        $@.gen

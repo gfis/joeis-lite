@@ -1,5 +1,6 @@
 # CR.xpat - Mapping table seqdb -> irvine.math.cr.CR infix expression generation
 # @(#) $Id$
+# 2021-07-19: root
 # 2021-07-08, Georg Fischer
 #
 0	numb	0	CR.ZERO	0
@@ -34,6 +35,9 @@ eulergamma	name	0	CR.GAMMA
 abs)	meth	1	.abs(	0
 agm)	meth	2	.agm(	0
 AGM)	meth	2	.agm(	0
+besselI0)	meth	1	.besselI0(	0
+besselJ0)	meth	1	.besselJ0(	0
+besselY0)	meth	1	.besselY0(	0
 ceil)	meth	1	.ceil(	0
 ei)	meth	1	.ei(	0
 li)	meth	1	.li(	0
@@ -46,10 +50,12 @@ erfc)	meth	1	.erfc(	0
 exp)	meth	1	.exp(	0
 floor)	meth	1	.floor(	0
 log)	meth	1	.log(	0
+log2)	meth	1	.log().divide(CR.TWO.log()	0
 log_2)	meth	1	.log().divide(CR.TWO.log()	0
 log_3)	meth	1	.log().divide(CR.THREE.log()	0
 log_5)	meth	1	.log().divide(CR.FIVE.log()	0
 log_10)	meth	1	.log().divide(CR.TEN.log()	0
+root)	meth	2	.root(	0
 round)	meth	1	.round(	0
 sqrt)	meth	1	.sqrt(	0
 Sqrt)	meth	1	.sqrt(	0
@@ -93,7 +99,6 @@ arsech)	func	1	REALS.asech(
 arcsch)	func	1	REALS.acsch(
 
 zeta)	func	1	Zeta.zeta(	1
-BesselJ)	func	1	besselJ0(	1
 
 # omega	irvine.factor.factor.Cheetah.factor(mN).omega()
 # sigma	irvine.factor.factor.Cheetah.factor(mN).sigma()
