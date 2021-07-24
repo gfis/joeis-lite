@@ -3110,6 +3110,13 @@ noncomp4: # for info only
 	>        $@.tmp
 noncomp:
 	# run (noncomp0 and) noncomp_prep before
+#----
+sciconst:
+	grep -E "^A[0-9]" $(COMMON)/../constant/$@.man \
+	| perl -pe 's{\A(A\d+)}{$$1\tnoncomp\t0};' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 # Sequences with keyword "bref"
 bref:

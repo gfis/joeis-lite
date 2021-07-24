@@ -8,7 +8,7 @@
 #:#   perl genman.pl [-d debug] [-n with] [-s subseq] seqno
 #:#   -n generate ++mN
 #:#   -s generate a subsequence of the integers
-#:#   Writes fischer/manual/aseqno.javaoutfile and starts uedit64 with it.
+#:#   Writes ./manual/aseqno.java and starts uedit64 with it.
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -67,7 +67,7 @@ sub output {
 
     print OUT <<"GFis";
 package irvine.oeis.$package;
-// manually $timestamp!
+// manually $timestamp
 
 import irvine.math.z.Z;
 import irvine.oeis.Sequence;

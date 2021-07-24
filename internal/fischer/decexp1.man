@@ -843,7 +843,6 @@
 #*# A179641	post	0	~~(5+sqrt(5))/12
 #*# A181110	post	0	~~1/zeta(2)-1/e^gamma
 #*# A181165	post	8	~~exp(Pi*sqrt(43))/24
-#*# A181693	post	0	~~agm(1-1/(10^27+1),1+1/(10^27+1))
 #*# A182470	post	0	~~gamma^Pi
 #*# A182496	post	1	~~1/(gamma^Pi)
 #*# A182497	post	0	~~gamma^3
@@ -1197,3 +1196,178 @@ A182546	post	1	~~acos(0)/log(ϕ)		Decimal expansion of | log_phi(i) |, where phi
 A242208	post	0	~~log(phi)/log(2)		Decimal expansion of log_2(phi), the logarithm to base 2 of phi, the "golden ratio" (1+sqrt(5))/2.
 A244272	post	1	~~exp(gamma)/log(2)		Decimal expansion of exp(gamma)/log(2), a conjectural constant related to the asymptotic counting of Mersenne primes, where gamma is Euler''s constant.
 A334843	post	0	~~15-sqrt(75)		Decimal expansion of arclength between (0,0) and (Pi/6,1/2) on y = sin x.
+A145426	post	0	~~3-Pi^2/3		Decimal expansion of Sum_{n>=0} (n!/(n+2)!)^2.
+
+
+# 2021-07-24
+A181693	post	0	~~agm(11/(10^27+1),1+1/(10^27+1))
+A053004	post	1	~~agm(1,sqrt(2))		
+A051553	post	0	~~sin(Pi^2/180)		
+A051554	post	0	~~cos(Pi^2/180)		
+A051555	post	0	~~tan(Pi^2/180)		
+A051557	post	0	~~sin(Pi^2/360)		
+A051558	post	0	~~cos(Pi^2/360)		
+A051559	post	0	~~tan(Pi^2/360)		
+A068432	post	1	~~(1+sqrt(5))/2	2
+A088367	post	1	~~Pi/(2*log(1+sqrt(2)))
+A096428	post	1	~~(4*sqrt(2)*Pi^2)/gamma(1/4)^2
+A099281	post	0	~~si(1)
+A099287	post	0	~~erfc(1)
+A101512	post	1	~~si(2*Pi)
+A103710	post	1	~~sqrt(2)+log(1+sqrt(2))
+A103711	post	1	~~(sqrt(2)+log(1+sqrt(2)))/2
+A103712	post	0	~~(sqrt(2)+log(1+sqrt(2)))/6
+A104015	post	0	~~gamma
+A152115	post	0	~~Li_2(phi1)
+A163973	post	1	~~Pi/log(2)
+A060295	post	0	~~exp(Pi*sqrt(163))
+A166528	post	35	~~exp(2*Pi*sqrt(163))
+A166529	post	53	~~exp(3*Pi*sqrt(163))
+A166530	post	70	~~exp(4*Pi*sqrt(163))
+A166531	post	88	~~exp(5*Pi*sqrt(163))
+A166532	post	105	~~exp(6*Pi*sqrt(163))
+A178817	post	1	~~(7/4)*cot(Pi/7)
+A178988	post	2	~~sqrt(275465/96+(369575*sqrt(5))/288)
+A200439	post	1	~~1352/495
+A200728	post	1	~~sqrt(385/96)
+A200141	post	0	~~243/205
+A202473	post	0	~~8*Pi18*arccos(1/3)
+A205769	post	0	~~phi^2/(1+1/phi^21/phi)
+A207528	post	0	~~(e^44e^225)/8
+A208745	post	0	~~2*sqrt(2/(3*sqrt(3)))
+A212708	post	0	~~128*sqrt(e*980)
+A230979	post	0	~~149597870700/299792458
+A222362	post	0	~~sqrt(2)arcsinh(1)
+A230582	post	0	~~(6136891429688306253616715*sqrt(2)*(934861968+20332617192*sqrt(2))*sqrt(11848*sqrt(2)))/4506606337686
+A233699	post	0	~~(Pi^26)/5
+A238239	post	0	~~acos(4/(1+sqrt(5))1)*180/Pi
+A242588	post	0	~~2*(1/5*(sqrt(2)+12*sqrt(3))log((sqrt(2)1)*(2sqrt(3)))Pi/3)
+A244272	post	0	~~exp(gamma)/log(2)
+A245494	post	0	~~41/(10*Pi)
+A245638	post	0	~~(3+sqrt(10))/(6*sqrt(2*Pi))
+A245698	post	0	~~(2*sqrt(3)+log(2+sqrt(3)))/18
+A245699	post	0	~~(4+sqrt(2)*log(3+2*sqrt(2)))/12
+A245700	post	0	~~(4+log(27))/12
+A245724	post	0	~~1+Pi/4+log((sqrt(2)/4)*log(1+sqrt(2)))
+A249186	post	0	~~exp(-Pi^2/log(3+2*sqrt(2)))
+A249187	post	0	~~exp(-Pi^2/log(5+2*sqrt(6)))
+A249188	post	0	~~exp(-Pi^2/log(7+4*sqrt(3)))
+A258749	post	0	~~Pi^3/12
+A258751	post	0	~~19*Pi^5/240
+A258759	post	0	~~-7*Pi^3/108
+A258814	post	0	~~61*Pi^7/184320
+A258816	post	0	~~277*Pi^9/8257536
+A260646	post	0	~~Pi^12/479001600
+A267315	post	0	~~(7*Pi^4)/720
+A269300	post	0	~~2*exp(li(2)-gamma-1)/log(2)^2
+A270712	post	0	~~1-erfc(3/sqrt(2))
+A267315	post	0	~~7*Pi^4/720
+A275703	post	0	~~31*(Pi^6)/30240
+A275967	post	0	~~1-(sqrt(5)-2)*Pi/10
+A276800	post	0	~~((1/3)*(1+(19+3*sqrt(33))^(1/3)+(19-3*sqrt(33))^(1/3)))^2
+A276801	post	0	~~((1/3)*(1+(19+3*sqrt(33))^(1/3)+(19-3*sqrt(33))^(1/3)))^3
+A280235	post	0	~~2*log(48)*log(log(6983776800))/log(6983776800)/log(2)
+A307983	post	0	~~1/2+5*sqrt(2)*(1+sqrt(1/2+1/sqrt(5)))
+A321943	post	0	~~(1/2)*(gamma-log(2*Pi))+1
+A273621	post	0	~~2*Pi*(1-sqrt(1/3))
+A335263	post	0	~~-(Pi/8+EulerGamma/4+log(8*Pi)/4-2)
+A337981	post	0	~~Pi*besselY(2)/(2*besselJ(2))-gamma
+A345202	post	0	~~gamma+Pi^2/6
+A230582 post	0	~~(6136891429688-306253616715*sqrt(2)-(934861968+20332617192*sqrt(2)) * sqrt(118-48*sqrt(2)))/4506606337686
+
+# A342484	0	0.45359237 * 9.80665000
+# A076390	0	lemniscate constant B.
+# A092874	0	the "binary" Liouville number.
+# A096427	0	1/(sqrt(2)*G), where G is Gauss''s constant A014549.
+# A099282	0	the cosine integral at 1.
+# A099283	1	the hyperbolic sine integral at 1.
+# A099284	0	the hyperbolic cosine integral at 1.
+# A273512	1010011111001111	Expansion of Lemniscate constant or Gauss''s constant in base 2.
+# A333507		Decimal expansion of 1 - ((365!) / ((365 - 23)! * 365^23)).
+
+#g A068467	post	0	~~Gamma(5/4)
+#g A071001	post	1	~~Gamma(3/4)
+#g A071002	post	2	~~Gamma(1/4)
+#g A071003	post	0	~~Gamma(5/4)
+#g A088375	post	1	~~(sqrt(8*Pi)*Gamma(3/4)^2)/(Pi^2 - 2*Gamma(3/4)^4)
+#g A091343	post	0	~~Gamma(1/4)/(2*Pi^(3/4))
+#g A175379	post	1	~~Gamma(1/6)
+#g A175380	post	1	~~Gamma(1/5)
+#g A175573	post	1	~~Pi^(1/4)/Gamma(3/4)
+#g A175575	post	0	~~(Gamma(3/4))^2 / Pi^(3/2) 
+#g A175576	post	1	~~Pi^(3/2)/ (Gamma(3/4))^2
+#g A224273	post	0	~~3*Gamma(1/3)^3/(4*Pi^2)
+#g A113272	post	0	~~Gamma(1/4)^4/Pi^3
+#g A113273	post	0	~~Gamma(1/3)^3/Pi^2
+#g A114720	post	0	~~-(Gamma(1/4)*zeta(1/2))/(8*Pi^(1/4))
+#g A115252	post	0	~~-(Pi*log((sqrt(2*Pi)*Gamma(3/4))/Gamma(1/4)))/2
+#g A203078	post	0	~~Gamma(49/48)
+#g A203079	post	0	~~Gamma(25/24)
+#g A203080	post	0	~~Gamma(17/16)
+#g A203081	post	0	~~Gamma(13/12)
+#g A203082	post	0	~~Gamma(53/48)
+#g A203125	post	0	~~Gamma(9/8)
+#g A203126	post	0	~~Gamma(7/6)
+#g A203127	post	0	~~Gamma(11/8)
+#g A203128	post	0	~~Gamma(13/8)
+#g A203129	post	0	~~Gamma(5/3)
+#g A203130	post	0	~~Gamma(7/4)
+#g A203131	post	0	~~Gamma(11/6)
+#g A203132	post	0	~~Gamma(15/8)
+#g A203137	post	0	~~Gamma(1/48)
+#g A203138	post	0	~~Gamma(1/24)
+#g A203139	post	0	~~Gamma(1/16)
+#g A203140	post	0	~~Gamma(1/12)
+#g A203141	post	0	~~Gamma(5/48)
+#g A203142	post	0	~~Gamma(1/8)
+#g A203143	post	0	~~Gamma(3/8)
+#g A203144	post	0	~~Gamma(5/8)
+#g A203145	post	0	~~Gamma(5/6)
+#g A203146	post	0	~~Gamma(7/8)
+#g A220086	post	0	~~Gamma(1/7)
+#g A220605	post	0	~~Gamma(2/7)
+#g A220606	post	0	~~Gamma(5/7)
+#g A220607	post	0	~~Gamma(6/7)
+#g A220608	post	0	~~Gamma(3/7)
+#g A220609	post	0	~~Gamma(4/7)
+#g A240946	post	0	~~(3*2^(1/3))/(16*Pi^4)*Gamma(1/3)^6 + (27*2^(2/3))/(4*Pi^4)*Gamma(2/3)^6
+#g A246745	Gamma(2/5)
+#g A249189	(1/(4*Pi^2))*Gamma(1/4)^4
+#g A255888	log(Gamma(1/6)).
+#g A256165	log(Gamma(1/3)).
+#g A256166	log(Gamma(1/4)).
+#g A256167	log(Gamma(1/5)).
+#g A256190	Gamma(1/9).
+#g A256191	Gamma(1/10).
+#g A256192	Gamma(1/11).
+#g A256609	log(Gamma(1/7)).
+#g A256610	log(Gamma(1/9)).
+#g A256611	log(Gamma(1/11)).
+#g A256612	log(Gamma(1/10)).
+#g A256614	log(Gamma(1/16)).
+#g A256615	log(Gamma(1/24)).
+#g A256616	log(Gamma(1/48)).
+#g A257094	Gamma(9/4).
+#g A257095	Gamma(11/4)
+#g A258895	2^(17/3) * Pi^2 / (3 * Gamma(1/3)^6)
+#g A258942	8*exp(Pi/(6*sqrt(3))) * Pi^(5/2) / Gamma(1/6)^3
+#g A273081	(1 + 2/sqrt(3))^(1/4) * Pi^(1/4) / (3^(1/4) * Gamma(3/4))
+#g A273082	(2 + 2^(3/4))/4 * Pi^(1/4) / Gamma(3/4)
+#g A273083	sqrt(2/5 + 1/sqrt(5)) * Pi^(1/4)/Gamma(3/4)
+#g A273084	sqrt(2+sqrt(8+6*sqrt(3)+4*sqrt(6+4*sqrt(3)))) * Pi^(1/4) / (2*3^(3/8)*Gamma(3/4))
+#g A273086	(4 - sqrt(2) + sqrt(6))^(1/4) * sqrt(Gamma(1/24)*Gamma(11/24)) / (2^(3/2)*3^(3/8)*Pi^(3/4))
+#g A273087	Gamma(1/8)/(2^(9/8)*sqrt(Pi*Gamma(1/4)))
+#g A273816	3*Gamma(1/3)^6/(32*Pi*2^(2/3)).
+#g A273818	Gamma(1/3)^6/(96*Pi*2^(2/3)) - 4*Pi^5*2^(2/3)/(9*Gamma(1/3)^6) 
+#g A274014	sqrt(Pi/sqrt(3))*(((1 + 1/sqrt(3))*Gamma(1/3))/Gamma(5/6) + (2*Gamma(5/6))/Gamma(1/3))
+#g A277235	2/(Gamma(3/4))^4
+#g A278144	9091727945469297	Decimal expansion of (sqrt(Pi)/(2^(1/4)*Gamma(5/8)*Gamma(7/8)))^2.
+#g A278146	1062679899916843	Decimal expansion of 2^(3/2) / (sqrt(Pi)*Gamma(3/4)^2).
+#g A327995	9204417878355909	Decimal expansion of Gamma(3/4)/Pi^(1/4).
+#g A327996	9628277824464175	Decimal expansion of (1/2)*Pi^(3/4)/Gamma(3/4).
+#g A340721	1489192248812817	Decimal expansion of Gamma(3/5).
+#g A340722	1164229713725303	Decimal expansion of Gamma(4/5).
+#g A340723	2991568987687590	Decimal expansion of Gamma(3/10).
+#g A340724	1298055332647557	Decimal expansion of Gamma(7/10).
+#g A340725	1068628702119319	Decimal expansion of Gamma(9/10).
+
