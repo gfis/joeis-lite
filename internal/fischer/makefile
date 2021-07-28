@@ -11,6 +11,7 @@ LITE=$(GITS)/joeis-lite
 HERE=../../joeis-lite/internal/fischer
 JOEIS=$(GITS)/joeis
 COMMON=$(GITS)/OEIS-mat/common
+CONSTANT=$(GITS)/OEIS-mat/constant
 CONTRIB=$(GITS)/OEIS-mat/contrib
 COORS=$(GITS)/OEIS-mat/coors
 LINREC=$(GITS)/OEIS-mat/linrec
@@ -69,6 +70,8 @@ jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
 	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
 spectest:
 	$(JAVA) irvine.test.SpecialTest       $(NT) $(OFFSET)
+crtest:
+	$(JAVA) irvine.math.cr.CR $(NUM)
 ebtest:
 	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
 gramtest:
@@ -228,6 +231,13 @@ logsel:# set the test results of CC= in column PARM=n
 	$(DBAT) -x -99999 seq4 > $(CC).sel
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
+info: # compare CC= with joeis_names.txt
+	cut -f1 $(CC).gen > info.tmp
+	make seq LIST=info.tmp
+	$(DBAT) "SELECT s.aseqno, j.superclass FROM seq s LEFT JOIN joeis j ON s.aseqno = j.aseqno;" \
+	>        $(CC).inf
+	head -n4 $(CC).inf
+	wc -l    $(CC).inf
 #----
 control: # extract shorter descriptions for passed seqs.
 	cut -b1-7 $(CC).pass.log \
@@ -725,60 +735,78 @@ beatty_check:
 	    AND j.superclass LIKE 'Beatty%' \
 	  ORDER BY 1;"
 #--------------------------------
-decexp0: decexp1 decexp2 decexp3 # Decimal expansion of expr.
-decexp1:
-	grep -E "^[\%][N] A[0-9][0-9]* Decimal expansion" $(COMMON)/jcat25.txt \
-	| cut -b4- | grep -vP '\, *where' \
-	| perl -ne 's/ Decimal expansion (for|of) /\tpost\t0\t~~/; '\
-	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
-	' if (! m{sum|prod|_|.A|\!|.\w{8}}) { print; }'\
-	| grep -E "^A[0-9]" \
-	>        $@.1.tmp
-	wc -l    $@.1.tmp
-	grep -E "^A[0-9]" decexp1.man \
-	| sed -e "s/ //g" \
-	| sort | uniq -w7 \
-	>        $@.2.tmp
-	wc -l    $@.2.tmp
-	# cut -b1-7 decexp1.man | sort | uniq -c | grep -v " 1 "
-	make overwrite SRC=$@.2.tmp TAR=$@.1.tmp
-	gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' $@.1.tmp \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-decexp_check: # on duplicates in .man
-	grep -E "^A[0-9]" decexp1.man | cut -b1-7 | sort | uniq -c | grep -v " 1 "
-decexp2:
-	# cp -v $(COMMON)/../constant/zetaddx.man decexp1.tmp
-	$(JPREP) -f decexp1.tmp | sed -e "s/\r//" \
-	| perl -ne 's{\tpost\t(.*)\Z}{\tinfix\t$$1\t$$1}; s{\~\~\;?}{}g; print;'\
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@*.tmp
-decexp3:
-	$(JPREP) -p CR.xpat -f decexp2.tmp \
-	| perl de_zeta.pl \
-	>        $@.tmp \
-	2>       $@.rest.tmp
-	head -n4 $@.tmp
-	wc -l    $@*.tmp 
-decexp:
-	rm -f $@.rest.tmp
-	touch $@.rest.tmp
-	grep -P  '\<\?' decexp3.tmp \
-	>>       $@.rest.tmp || :
-	grep -vP '\<\?' decexp3.tmp \
-	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tdecexp$$r\t}; '\
-	' my ($$aseqno, $$callcode, $$offset, $$parm1, @rest) = split(/\t/); '\
-	' if ((length($$offset) <= 4) && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
-	| sort | uniq -w7 \
+##decexp0: decexp1 decexp2 decexp3 # Decimal expansion of expr.
+##decexp1:
+##	grep -E "^[\%][N] A[0-9][0-9]* Decimal expansion" $(COMMON)/jcat25.txt \
+##	| cut -b4- | grep -vP '\, *where' \
+##	| perl -ne 's/ Decimal expansion (for|of) /\tpost\t0\t~~/; '\
+##	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
+##	' if (! m{sum|prod|_|.A|\!|.\w{8}}) { print; }'\
+##	| grep -E "^A[0-9]" \
+##	>        $@.1.tmp
+##	wc -l    $@.1.tmp
+##	grep -E "^A[0-9]" decexp1.man \
+##	| sed -e "s/ //g" \
+##	| sort | uniq -w7 \
+##	>        $@.2.tmp
+##	wc -l    $@.2.tmp
+##	# cut -b1-7 decexp1.man | sort | uniq -c | grep -v " 1 "
+##	make overwrite SRC=$@.2.tmp TAR=$@.1.tmp
+##	gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' $@.1.tmp \
+##	>        $@.tmp
+##	head -n4 $@.tmp
+##	wc -l    $@.tmp
+##decexp_check: # on duplicates in .man
+##	grep -E "^A[0-9]" decexp1.man | cut -b1-7 | sort | uniq -c | grep -v " 1 "
+##decexp2:
+##	# cp -v $(CONSTANT)/zetaddx.man decexp1.tmp
+##	$(JPREP) -f decexp1.tmp | sed -e "s/\r//" \
+##	| perl -ne 's{\tpost\t(.*)\Z}{\tinfix\t$$1\t$$1}; s{\~\~\;?}{}g; print;'\
+##	>        $@.tmp
+##	head -n4 $@.tmp
+##	wc -l    $@*.tmp
+##decexp3:
+##	$(JPREP) -p CR.xpat -f decexp2.tmp \
+##	| perl de_zeta.pl \
+##	>        $@.tmp \
+##	2>       $@.rest.tmp
+##	head -n4 $@.tmp
+##	wc -l    $@*.tmp 
+##decexp:
+##	rm -f $@.rest.tmp
+##	touch $@.rest.tmp
+##	grep -P  '\<\?' decexp3.tmp \
+##	>>       $@.rest.tmp || :
+##	grep -vP '\<\?' decexp3.tmp \
+##	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tdecexp$$r\t}; '\
+##	' my ($$aseqno, $$callcode, $$offset, $$parm1, @rest) = split(/\t/); '\
+##	' if ((length($$offset) <= 4) && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
+##	| sort | uniq -w7 \
+##	>        $@.gen
+##	head -n4 $@.gen
+##	wc -l    $@.gen $@.rest.tmp
+
+decexp: # decimal expansion of expression
+	grep -E "^A[0-9]" $(CONSTANT)/decexp4.tmp \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen $@.rest.tmp
+	wc -l    $@.gen
+#--------
+decsolv:
+	cp -v $@.man $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+solv_tabs:
+	perl -pe 's{\t\w+\t}{\t\decsolv\t};' $(CONSTANT)/$@.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 deseq:
-	grep -P  '\<\?' $(COMMON)/../constant/deseq4.tmp \
+	grep -P  '\<\?' $(CONSTANT)/deseq4.tmp \
 	>        $@.rest.tmp || :
-	grep -vP '\<\?' $(COMMON)/../constant/deseq4.tmp \
+	grep -vP '\<\?' $(CONSTANT)/deseq4.tmp \
 	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tdecexp$$r\t}; '\
 	' my ($$aseqno, $$callcode, $$offset, $$parm1, @rest) = split(/\t/); '\
 	' if ((length($$offset) <= 4) && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
@@ -787,38 +815,39 @@ deseq:
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
 philo_tab: 
-	grep -E "^A[0-9]" $(COMMON)/../constant/philo_tab4.tmp \
+	grep -E "^A[0-9]" $(CONSTANT)/philo_tab4.tmp \
 	| sort | uniq -w7 \
 	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\tdecexp\t}; '\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 mersenne_tab: # expansion of Mersenne primes
-	grep -E "^A[0-9]" $(COMMON)/../constant/mersenne_tab1.tmp \
+	grep -E "^A[0-9]" $(CONSTANT)/mersenne_tab1.tmp \
 	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\tzbasex\t}; '\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 zbasex: # base expansion of a Z expression
-	grep -E "^A[0-9]" $(COMMON)/../constant/zbasex.man \
+	grep -E "^A[0-9]" $(CONSTANT)/zbasex.man \
 	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\t$@\t}; '\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 powtower: # power tower - huge integers
-	grep -E "^A[0-9]" $(COMMON)/../constant/powtower.man \
+	grep -E "^A[0-9]" $(CONSTANT)/powtower.man \
 	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\t$@\t}; '\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 dechamp: # constant formed by the concatenation of the terms of a sequence
-	grep -E "^A[0-9]" $(COMMON)/../constant/dechamp.man \
+	grep -E "^A[0-9]" $(CONSTANT)/dechamp.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
 decexro:
-	grep -E "^A[0-9]" $(COMMON)/../constant/decexro2.tmp \
+	grep -E "^A[0-9]" $(CONSTANT)/decexro2.tmp \
+	| grep -vE "A102912|A306966|A317202" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -3112,7 +3141,7 @@ noncomp:
 	# run (noncomp0 and) noncomp_prep before
 #----
 sciconst:
-	grep -E "^A[0-9]" $(COMMON)/../constant/$@.man \
+	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
 	| perl -pe 's{\A(A\d+)}{$$1\tnoncomp\t0};' \
 	>        $@.gen
 	head -n4 $@.gen

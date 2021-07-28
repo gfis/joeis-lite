@@ -14,7 +14,7 @@ DELETE FROM seq4 WHERE aseqno IN
    , 'A094689' -- 
    , 'A102575' -- Decimal expansion of 2^(3/2)^(4/3)^(5/4)^(6/5)^(7/6)^(8/7)^(9/8)^(10/9)^(11/10)....
    , 'A123852' -- 
-   , 'A181693' -- Decimal expansion of AGM(1-x,1+x), where x=1/(10^27+1).
+-- , 'A181693' -- Decimal expansion of AGM(1-x,1+x), where x=1/(10^27+1).
    , 'A202955' -- 
    , 'A221208' -- 
    , 'A229020' -- 

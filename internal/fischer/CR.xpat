@@ -1,5 +1,6 @@
 # CR.xpat - Mapping table seqdb -> irvine.math.cr.CR infix expression generation
 # @(#) $Id$
+# 2021-07-27: Gamma, lnGamma
 # 2021-07-19: root
 # 2021-07-08, Georg Fischer
 #
@@ -23,6 +24,7 @@ e	name	0	CR.E	0
 phi	name	0	CR.PHI	0
 gamma	name	0	CR.GAMMA	0
 eulergamma	name	0	CR.GAMMA
+x	name	0	x	0
 
 +	meth	2	.add(	0
 -	meth	2	.subtract(	0
@@ -40,6 +42,8 @@ besselJ0)	meth	1	.besselJ0(	0
 besselY0)	meth	1	.besselY0(	0
 ceil)	meth	1	.ceil(	0
 ei)	meth	1	.ei(	0
+Gamma)	meth	1	.gamma(	1
+lnGamma)	meth	1	.lnGamma(	1
 li)	meth	1	.li(	0
 si)	meth	1	.si(	0
 Ei)	meth	1	.ei(	0

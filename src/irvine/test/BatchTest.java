@@ -198,7 +198,12 @@ public class BatchTest {
       }
     } catch (Throwable exc) {
       failure = 1; // FAIL
-      printLog( "FATAL", "Exception" + exc.getMessage(), "Stack: " + getShortTrace(exc));
+      // failCount ++;
+      String trace = getShortTrace(exc).substring(2);
+      if (trace.length() > 64) {
+          trace = trace.substring(0,64);
+      }
+      printLog("FATAL", "Exception " + exc.getMessage(), trace);
     }
     return failure;
   } // testNext
