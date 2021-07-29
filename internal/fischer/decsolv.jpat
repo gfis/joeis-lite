@@ -14,7 +14,7 @@ public class $(ASEQNO) extends DecimalExpansionSequence {
 
   /** Construct the sequence */
   public $(ASEQNO)() {
-    super($(OFFSET), new UnaryCRFunction () { 
+    super($(OFFSET), new UnaryCRFunction() { 
       @Override 
       public CR execute(final CR x) {
         return $(PARM1);
