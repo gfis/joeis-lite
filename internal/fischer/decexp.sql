@@ -11,6 +11,8 @@ UPDATE seq4 SET callcode='decexprb', parm3 =  2 WHERE aseqno IN ('A180433');
 DELETE FROM seq4 WHERE aseqno IN
    ( 'A060196' -- 
    , 'A085667' -- take too long
+   , 'A088751' -- Sum prime
+   , 'A089260' -- Fibonacci
    , 'A094689' -- 
    , 'A102575' -- Decimal expansion of 2^(3/2)^(4/3)^(5/4)^(6/5)^(7/6)^(8/7)^(9/8)^(10/9)^(11/10)....
    , 'A123852' -- 

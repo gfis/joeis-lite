@@ -1,1 +1,15 @@
-A075778	decsolv	0	x.pow(3).add(x.pow(2)).subtract(CR.ONE)	~~        ~~fx=fx;	0.3	1.0	x^3 + x^2 - 1
+A075778	decsolv	0	x.pow(3).add(x.pow(2).subtract(CR.ONE)	~~        ~~fx=fx;	0.3	1.0	x^3 + x^2 - 1
+A230152	decsolv	0	x.pow(5).add(x.pow(4).subtract(CR.ONE)				x^(k+1)+x^k-1=0. Case k=4.
+A230153	decsolv	0	x.pow(6).add(x.pow(5).subtract(CR.ONE)				x^(k+1)+x^k-1=0. Case k=5.
+A230154	decsolv	0	x.pow(7).add(x.pow(6).subtract(CR.ONE)				x^(k+1)+x^k-1=0. Case k=6.
+A230155	decsolv	0	x.pow(8).add(x.pow(7).subtract(CR.ONE)				x^(k+1)+x^k-1=0. Case k=7.
+A230156	decsolv	0	x.pow(9).add(x.pow(8).subtract(CR.ONE)				x^(k+1)+x^k-1=0. Case k=8.
+A230157	decsolv	0	x.pow(10).add(x.pow(9).subtract(CR.ONE)				x^(k+1)+x^k-1=0. Case k=9.
+A230158	decsolv	0	x.pow(11).add(x.pow(10).subtract(CR.ONE)				x^(k+1)+x^k-1=0. Case k=10.
+
+A230159	decsolv	0	x.pow(6).subtract(x).subtract(CR.ONE)				x^k-x-1=0. Case k=6.
+A230160	decsolv	0	x.pow(7).subtract(x).subtract(CR.ONE)				x^k-x-1=0. Case k=7.
+A230161	decsolv	0	x.pow(8).subtract(x).subtract(CR.ONE)				x^k-x-1=0. Case k=8.
+A230162	decsolv	0	x.pow(9).subtract(x).subtract(CR.ONE)				x^k-x-1=0. Case k=9.
+A230163	decsolv	0	x.pow(10).subtract(x).subtract(CR.ONE)				x^k-x-1=0. Case k=10.
+

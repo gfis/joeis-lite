@@ -19,6 +19,6 @@ public class $(ASEQNO) extends DecimalExpansionSequence {
       public CR execute(final CR x) {
         return $(PARM1);
       }
-    }.inverseMonotone(CR.valueOf($(PARM3)), CR.valueOf($(PARM4))).execute(CR.ZERO)$(PARM2));
+    }.inverseMonotone(CR.valueOf($(PARM3)), CR.valueOf($(PARM4))).execute(CR.ZERO).negate()$(PARM2));
   }
 }

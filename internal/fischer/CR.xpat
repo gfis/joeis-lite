@@ -4,17 +4,17 @@
 # 2021-07-19: root
 # 2021-07-08, Georg Fischer
 #
-0	numb	0	CR.ZERO	0
-1	numb	0	CR.ONE	0
-2	numb	0	CR.TWO	0
-3	numb	0	CR.THREE	0
-4	numb	0	CR.FOUR	0
-5	numb	0	CR.FIVE	0
-6	numb	0	CR.SIX	0
-7	numb	0	CR.SEVEN	0
-8	numb	0	CR.EIGHT	0
-9	numb	0	CR.NINE	0
-10	numb	0	CR.TEN	0
+# 0	numb	0	CR.ZERO	0
+# 1	numb	0	CR.ONE	0
+# 2	numb	0	CR.TWO	0
+# 3	numb	0	CR.THREE	0
+# 4	numb	0	CR.FOUR	0
+# 5	numb	0	CR.FIVE	0
+# 6	numb	0	CR.SIX	0
+# 7	numb	0	CR.SEVEN	0
+# 8	numb	0	CR.EIGHT	0
+# 9	numb	0	CR.NINE	0
+# 10	numb	0	CR.TEN	0
 01234567	numb	0	CR.valueOf(01234567)	0
 
 n	name	0	CR.valueOf(mN)	0
@@ -68,8 +68,8 @@ sin)	meth	1	.sin(	0
 cos)	meth	1	.cos(	0
 tan)	func	1	REALS.tan(	1
 cot)	func	1	REALS.cot(	1
-sec)	func	1	REALS.sec(	1
-csc)	func	1	REALS.csc(	1
+sec)	meth	1	.cos().inverse(	0
+csc)	meth	1	.sin().inverse(	0
 arcsin)	func	1	REALS.asin(	1
 arccos)	func	1	REALS.acos(	1
 arctan)	func	1	REALS.atan(	1

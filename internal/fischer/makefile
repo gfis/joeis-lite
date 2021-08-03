@@ -269,7 +269,7 @@ gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	perl gen_seq4.pl -d $(D) $(NC)  ghead.tmp
 	make -i $(CC).patch || :
 man: # copy sources that where manually edited
-	ls -1 manual/*.java | sed -e "s/manual\///" -e "s/\.java//" -e "s/$$/\tmanual\t0/" | tee $@.gen
+	ls -1 manual/A??????.java | sed -e "s/manual\///" -e "s/\.java//" -e "s/$$/\tmanual\t0/" | tee $@.gen
 	perl -ne 'use strict; my ($$aseqno, @rest) = split(/\t/); '\
 	' my $$path = "../../src/irvine/oeis/" . lc(substr($$aseqno, 0, 4)) . "/"; '\
 	' my $$ignore = `mkdir $$path`; '\
@@ -793,12 +793,17 @@ decexp: # decimal expansion of expression
 	wc -l    $@.gen
 #--------
 decsolv:
-	cp -v $@.man $@.gen
+	# cd $(CONSTANT) ; make $@
+	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \
+	| grep -vE "A092290" \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#
 #--------
-solv_tabs:
-	perl -pe 's{\t\w+\t}{\t\decsolv\t};' $(CONSTANT)/$@.gen \
+solvetab:
+	# cd $(CONSTANT) ; make $@
+	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
