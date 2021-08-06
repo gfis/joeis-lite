@@ -402,6 +402,12 @@ A046966:
 	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen
 #----
+A049884: # 2021-08-06
+	grep -E "^A049[89]" $(COMMON)/joeis_names.txt | grep "a(n) = a(1)" \
+	| perl $@.pl \
+	| tee    $@.gen
+	wc -l    $@.gen
+#----
 A050000: # 2021-08-06
 	cp -v $@.man $@.gen
 	# StepUp or StepDown positions for A050000 et al.
