@@ -401,6 +401,23 @@ A039832: # 2021-05-21
 A046966:
 	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen
+#----
+A050000: # 2021-08-06
+	cp -v $@.man $@.gen
+	# StepUp or StepDown positions for A050000 et al.
+	cat $(COMMON)/joeis_names.txt \
+	| perl -ne 'my $$line = $$_; if ($$line =~ m{that (A\d+)\([kn]\) *([\<\>]) *A\d+\([nk](\+1)\)\.}) {'\
+	' print join("\t", substr($$line, 0, 7), "parm2", 0, ($$2 eq "<" ? "A050002" : "A050003"), "new $$1()") . "\n"; }'\
+	>>       $@.gen
+	# Positions of n
+	cat $(COMMON)/joeis_names.txt \
+	| grep -E "^A050" \
+	| perl -ne 'my $$line = $$_; if ($$line =~ m{\A(A\d+)\s+\S*\s+a\(n\) *\= *position of n in (A\d+)}) {'\
+	' print join("\t", $$1, "posofnin", 0, $$2) . "\n"; }'\
+	>>       $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 A050201:
 	perl anagen.pl -bs A118078 -rs A050201 > $@.gen
 	head -n4 $@.gen
@@ -734,6 +751,17 @@ beatty_check:
 	  WHERE j.aseqno NOT in (SELECT aseqno FROM seq4) \
 	    AND j.superclass LIKE 'Beatty%' \
 	  ORDER BY 1;"
+#--------------------------------
+bindec:	# binary constants (characteristic functions) -> decimal
+	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+smoothn:	# smooth <= n
+	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 ##decexp0: decexp1 decexp2 decexp3 # Decimal expansion of expr.
 ##decexp1:

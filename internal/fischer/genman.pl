@@ -5,9 +5,9 @@
 # 2021-06-26, Georg Fischer: copied from gen_linrec.pl
 #
 #:# Usage:
-#:#   perl genman.pl [-d debug] [-n with] [-s subseq] seqno
+#:#   perl genman.pl [-d debug] [-n] [-s] seqno
 #:#   -n generate ++mN
-#:#   -s generate a subsequence of the integers
+#:#   -s generate while loop for a subsequence
 #:#   Writes ./manual/aseqno.java and starts uedit64 with it.
 #--------------------------------------------------------
 use strict;
