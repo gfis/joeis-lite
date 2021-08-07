@@ -98,6 +98,11 @@ while (<>) { # read inputfile
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
     $name  = $parms[scalar(@parms) - 1]; # last parameter
+    $name =~ s{\&}{\&amp\;}g;
+    $name =~ s{\'}{\&apos\;}g;
+    $name =~ s{\"}{\&quot\;}g;
+    $name =~ s{\<}{\&lt\;}g;
+    $name =~ s{\>}{\&gt\;}g;
     $pattern  = $patterncache{$callcode};
     if ($old_callcode ne $callcode) { # pattern changes - read again because of imports
         $old_callcode = $callcode;

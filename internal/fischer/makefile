@@ -403,10 +403,14 @@ A046966:
 	wc -l    $@.gen
 #----
 A049884: # 2021-08-06
-	grep -E "^A049[89]" $(COMMON)/joeis_names.txt | grep "a(n) = a(1)" \
+	grep -E "^A049[89]|A0500" $(COMMON)/joeis_names.txt | grep -P "a\(n\) *\= *\|?a\((n\-)?1\)" \
 	| perl $@.pl \
-	| tee    $@.gen
-	wc -l    $@.gen
+	2>       $@.rest.tmp \
+	>        $@.gen
+	tail -n6 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+a49:
+	grep -P "2\^p *\< *n *\- *1 *\<\= *2\^\(p\+1\)" $(COMMON)/joeis_names.txt
 #----
 A050000: # 2021-08-06
 	cp -v $@.man $@.gen
@@ -419,6 +423,8 @@ A050000: # 2021-08-06
 	cat $(COMMON)/joeis_names.txt \
 	| grep -E "^A050" \
 	| perl -ne 'my $$line = $$_; if ($$line =~ m{\A(A\d+)\s+\S*\s+a\(n\) *\= *position of n in (A\d+)}) {'\
+	' print join("\t", $$1, "posofnin", 0, $$2) . "\n"; }'\
+	| perl -ne 'my $$line = $$_; if ($$line =~ m{\A(A\d+)\s+\S*\s+a\(n\) *\= *least k satisfying [^A]*(A\d+)}) {'\
 	' print join("\t", $$1, "posofnin", 0, $$2) . "\n"; }'\
 	>>       $@.gen
 	head -n4 $@.gen
