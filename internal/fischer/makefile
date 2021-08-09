@@ -24,6 +24,7 @@ RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar
 JPREP=$(RAMATH)  org.teherba.ramath.sequence.JoeisPreparer
 HOLT=$(RAMATH)   irvine.test.HolonomicRecurrenceTest
 PFRACT=$(RAMATH) org.teherba.ramath.symbolic.PolyFraction
+WORD=$(GITS)/OEIS-mat/word
 BVA=$(RAMATH)    org.teherba.ramath.linear.BigVectorArray
 NT=16
 MANY=999999
@@ -288,10 +289,15 @@ testout: # parameter: CC
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make stripgr LIST=ghead.tmp
 	make runbt evaluate
-test:
+runbt: # Run BatchTest for this group
+	$(BATLIT) strip.tmp 2>&1 | tee -a batch.log
+#========
+test: test1 test2
+test1:
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen \
 	| perl -ne 'print if ! m{\AA\d+\tpseudo\s}; ' > ghead.tmp
+test2:
 	make stripgr LIST=ghead.tmp
 	echo 0x0 > seekpos.mon
 	cp  seekpos.mon seekpos.tmp
@@ -306,15 +312,12 @@ test:
 	done
 	make evaluate
 	# end of test
-runbt: # Run BatchTest for this group
-	$(BATLIT) strip.tmp 2>&1 | tee -a batch.log
-testex: # parameter: CC=; test all existing (generated) sequences
+testex: summon test2 # test all existing (generated) sequences in the subdirectories
+summon:
 	rm -f batch.log
-	find ../../src -iname "A??????.java" -printf "%f\n" | cut -b1-7 \
+	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 \
 	| head -n$(MANY) > ghead.tmp
-	make stripgr  LIST=ghead.tmp
-	make runbt
-	make evaluate
+#========
 batch:
 	make seq3 LIST=batch.log
 log: # CC=; generate an HTML page for the failed tests
@@ -424,6 +427,9 @@ A050000: # 2021-08-06
 	| grep -E "^A050" \
 	| perl -ne 'my $$line = $$_; if ($$line =~ m{\A(A\d+)\s+\S*\s+a\(n\) *\= *position of n in (A\d+)}) {'\
 	' print join("\t", $$1, "posofnin", 0, $$2) . "\n"; }'\
+	>>       $@.gen
+	cat $(COMMON)/joeis_names.txt \
+	| grep -E "^A050" \
 	| perl -ne 'my $$line = $$_; if ($$line =~ m{\A(A\d+)\s+\S*\s+a\(n\) *\= *least k satisfying [^A]*(A\d+)}) {'\
 	' print join("\t", $$1, "posofnin", 0, $$2) . "\n"; }'\
 	>>       $@.gen
@@ -514,6 +520,12 @@ a165824:
 #--------
 A183194: # Final prime of first member of A019518 that is divisible by 3^n.
 	grep -E "^A" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+A247750: # Numbers in decimal representation, such that in Czech their digits are in alphabetic order. 
+	grep -E "^A[0-9]" $(WORD)/$@.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
