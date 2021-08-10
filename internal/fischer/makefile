@@ -155,9 +155,11 @@ poins:
 	| $(DBAT) -m csv -r poeis
 	$(DBAT) -4 poeis
 	$(DBAT) -n poeis
-podel:
+podel: # CC= delete and export again
+	# ---- podel
 	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM poeis)";
-	$(DBAT) -n seq4
+	$(DBAT) -n         seq4
+	$(DBAT) -x -444444 seq4 > $(CC).gen
 bfresh: # CC=
 	cd $(COMMON) ; make bfresh 
 #==========================
