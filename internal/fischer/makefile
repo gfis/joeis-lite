@@ -155,6 +155,9 @@ poins:
 	| $(DBAT) -m csv -r poeis
 	$(DBAT) -4 poeis
 	$(DBAT) -n poeis
+podel:
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM poeis)";
+	$(DBAT) -n seq4
 bfresh: # CC=
 	cd $(COMMON) ; make bfresh 
 #==========================
@@ -312,7 +315,7 @@ test2:
 	done
 	make evaluate
 	# end of test
-testex: summon test2 # test all existing (generated) sequences in the subdirectories
+testall: summon test2 # test all existing (generated) sequences in the subdirectories
 summon:
 	rm -f batch.log
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 \
@@ -851,7 +854,12 @@ decsolv:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-#
+#--
+getcr:
+	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------
 solvetab:
 	# cd $(CONSTANT) ; make $@
@@ -5338,6 +5346,20 @@ joeis2: # LIST
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--------------------------
+mangf_check:
+	find mangf -iname "A??????.java" -printf "%f\t%T+\n" | perl -pe 's{\.java}{}; s{\+.*}{}; '\
+	>        $@.tmp
+	head -n4 $@.tmp
+	make seq2 LIST=$@.tmp
+	$(DBAT) "SELECT s.aseqno, s.info, COALESCE(j.superclass, 'nyi') AS nyi, n.name \
+	  FROM seq2 s, asname n LEFT JOIN joeis j ON n.aseqno = j.aseqno \
+	  WHERE s.aseqno = n.aseqno \
+	  ORDER BY 2" \
+	| grep -P "\tnyi\t" || : \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
 #--------------------------
 analog: analog1 anasort anaprep anaload anastret
 analog1:
