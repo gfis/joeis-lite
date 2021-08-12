@@ -143,20 +143,23 @@ rename:
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
 poeis: pocre podir # create a list of freshly implmented classes
 pocre:
+	# ---- $@ CC=$(CC)
 	$(DBAT) -f $(COMMON)/poeis.create.sql
 podir:
+	# ---- $@ CC=$(CC)
 	find ../../src/irvine/oeis/a* -iname "A*.java" | perl -ne 'm{\/(A\d+)}; print "$$1\n";' \
 	| $(DBAT) -r poeis
 	$(DBAT) -4   poeis
 	$(DBAT) -n   poeis
 poins:
+	# ---- $@ CC=$(CC)
 	cut -b1-7 $(CC).gen \
 	| sed -e "s/$$/\t$(CLASS)\t/" \
 	| $(DBAT) -m csv -r poeis
 	$(DBAT) -4 poeis
 	$(DBAT) -n poeis
 podel: # CC= delete and export again
-	# ---- podel
+	# ---- $@ CC=$(CC)
 	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM poeis)";
 	$(DBAT) -n         seq4
 	$(DBAT) -x -444444 seq4 > $(CC).gen
@@ -181,11 +184,13 @@ ccall: select clean purge gener dist test pack # parameter: CC
 NOT=NOT
 select: select1 select2 # parameter: CC, OFS
 select1:
+	# ---- $@ CC=$(CC)
 	make $(CC)
 	head -n4 $(CC).gen
 	wc   -l  $(CC).gen
 EX=
 select2:
+	# ---- $@ CC=$(CC)
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s \
 	    SET name    = COALESCE((SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno), 'future sequence') \
@@ -203,17 +208,20 @@ select2:
 	#     AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
 	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep from $(CC).gen
+	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > clean.grep.tmp
 	grep -f clean.grep.tmp $(CC).gen > $(CC).clean.tmp
 	cp -v $(CC).clean.tmp  $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp 
 cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 20 from previous test used to from $(CC).gen
+	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp
 	grep -P "^A\d+\t([2-9]\d+|\d\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
 	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
 	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp 
 dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
+	# ---- $@ CC=$(CC)
 	wc -l $(CC).gen
 	cp    $(CC).gen $(CC).old.tmp
 	cut -b1-7 $(CC).pass.log > dirty.tmp
@@ -222,15 +230,18 @@ dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).
 	cp -v $(CC).dirty.tmp $(CC).gen
 	wc -l $(CC).gen
 removelist: # remove all in removelist.man
+	# ---- $@ CC=$(CC)
 	find ../../src/irvine/oeis -iname "*.java" \
 	| grep -f removelist.man \
 	| xargs -l rm -v
 copytemp: # parameter CC; copy FAILed ones to fischer/temp
+	# ---- $@ CC=$(CC)
 	cut -b1-7 $(CC).fail.log > dirty.tmp
 	find ../../src/irvine/oeis -iname "*.java" \
 	| grep -f dirty.tmp \
 	| xargs -l -innn cp -v nnn temp/
 logsel:# set the test results of CC= in column PARM=n
+	# ---- $@ CC=$(CC)
 	cut -f1,3 $(CC).fail.log $(CC).pass.log > logset.tmp
 	make seq2 LIST=logset.tmp
 	$(DBAT) "UPDATE seq4 s4 SET parm$(PARM)=COALESCE((SELECT info FROM seq2 s2 WHERE s2.aseqno = s4.aseqno), 'unknown');"
@@ -238,6 +249,7 @@ logsel:# set the test results of CC= in column PARM=n
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
 info: # compare CC= with joeis_names.txt
+	# ---- $@ CC=$(CC)
 	cut -f1 $(CC).gen > info.tmp
 	make seq LIST=info.tmp
 	$(DBAT) "SELECT s.aseqno, j.superclass FROM seq s LEFT JOIN joeis j ON s.aseqno = j.aseqno;" \
@@ -246,6 +258,7 @@ info: # compare CC= with joeis_names.txt
 	wc -l    $(CC).inf
 #----
 control: # extract shorter descriptions for passed seqs.
+	# ---- $@ CC=$(CC)
 	cut -b1-7 $(CC).pass.log \
 	| perl -ne ' s/\s+\Z//; print "\%. $$_ \n"; ' > $@.tmp
 	grep -Ef $@.tmp $(COMMON)/cat25.txt \
@@ -256,6 +269,7 @@ control: # extract shorter descriptions for passed seqs.
 #----
 # ... oeis\a062\A062724.java:23: error: no suitable method found for add(CR)
 prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
+	# ---- $@ CC=$(CC)
 	cat dist.log \
 	| perl -ne 'if (m{(A\d+)\.java\:\d*\:\s*error\:}) { print "$$1\n"; } '\
 	| cut -b1-7 > prune.tmp
@@ -265,16 +279,19 @@ prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off 
 	sed -e "s/\r//" $(CC).tmp > $(CC).gen
 	wc -l $(CC).*
 purge: # remove all oeis/annn directories
+	# ---- $@ CC=$(CC)
 	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
 	rm -rf                     ../../src/irvine/oeis/a???
 	mkdir  $(LITE)/src/irvine/oeis/a000
 	# cp -v $(JOEIS)/src/irvine/oeis/a000/A000001.java $(LITE)/src/irvine/oeis/a000/A000001.java
 	rm -vf *.bak
 gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
+	# ---- $@ CC=$(CC)
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	perl gen_seq4.pl -d $(D) $(NC)  ghead.tmp
 	make -i $(CC).patch || :
 man: # copy sources that where manually edited
+	# ---- $@ CC=$(CC)
 	ls -1 manual/A??????.java | sed -e "s/manual\///" -e "s/\.java//" -e "s/$$/\tmanual\t0/" | tee $@.gen
 	perl -ne 'use strict; my ($$aseqno, @rest) = split(/\t/); '\
 	' my $$path = "../../src/irvine/oeis/" . lc(substr($$aseqno, 0, 4)) . "/"; '\
@@ -283,6 +300,7 @@ man: # copy sources that where manually edited
 	sort $@.gen $(CC).gen | uniq -w7 > $@.tmp
 	mv $@.tmp $(CC).gen
 dist:
+	# ---- $@ CC=$(CC)
 	rm -f dist.log
 	make dist1 2>&1 | tee dist.log
 	wc -l dist.log | perl -ne 'm{(\d+)}; exit(1) if $$1 > 8;'
@@ -290,19 +308,23 @@ dist:
 dist1:
 	cd ../.. ; ant -silent dist 2>&1
 testout: # parameter: CC
+	# ---- $@ CC=$(CC)
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	make stripgr LIST=ghead.tmp
 	make runbt evaluate
 runbt: # Run BatchTest for this group
+	# ---- $@ CC=$(CC)
 	$(BATLIT) strip.tmp 2>&1 | tee -a batch.log
 #========
 test: test1 test2
 test1:
+	# ---- $@ CC=$(CC)
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen \
 	| perl -ne 'print if ! m{\AA\d+\tpseudo\s}; ' > ghead.tmp
 test2:
+	# ---- $@ TO=$(TO)
 	make stripgr LIST=ghead.tmp
 	echo 0x0 > seekpos.mon
 	cp  seekpos.mon seekpos.tmp
@@ -319,15 +341,19 @@ test2:
 	# end of test
 testall: summon test2 # test all existing (generated) sequences in the subdirectories
 summon:
+	# ---- $@ MANY=$(MANY)
 	rm -f batch.log
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 \
 	| head -n$(MANY) > ghead.tmp
 #========
 batch:
+	# ---- $@ 
 	make seq3 LIST=batch.log
 log: # CC=; generate an HTML page for the failed tests
+	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
 retest: # run the failed ones again (with a higher timeout)
+	# ---- $@ CC=$(CC)
 	cut -b1-7 $(CC).fail.log > failed.tmp
 	grep -f failed.tmp $(CC).gen > $(CC).gen.fail.tmp
 	make stripgr LIST=$(CC).gen.fail.tmp
@@ -335,15 +361,18 @@ retest: # run the failed ones again (with a higher timeout)
 	grep  pass batch.log >>    $(CC).pass.log
 	grep  FA   batch.log | grep -v "Exceptionnull" | tee $(CC).fail.log
 stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
+	# ---- $@ LIST=$(LIST) MANY=$(MANY)
 	cut -b1-7  $(LIST) > aseqnos.tmp
 	grep -f    aseqnos.tmp $(COMMON)/stripped \
 	| head -n$(MANY) > strip.tmp
 	wc -l      strip.tmp
 evaluate:
+	# ---- $@ CC=$(CC)
 	uniq -w7 batch.log | grep -E  "pass" >     $(CC).pass.log || :
 	cat      batch.log | grep -vE "pass" | grep -v "Exceptionnull" | tee $(CC).fail.log || :
 	wc -l $(CC).*.log
 bfile:
+	# ---- $@ SEQ=$(SEQ)
 	echo make bfile SEQ=123456 N=1000 OFS=1
 	grep -E "^A$(SEQ)" $(COMMON)/names \
 	| sed -e "s/A$(SEQ)/\#/" \
@@ -355,9 +384,11 @@ bfile:
 	head -n 8 $(CONTRIB)/b$(SEQ).txt
 	tail -n 4 $(CONTRIB)/b$(SEQ).txt
 reverse:
+	# ---- $@ CC=$(CC)
 	perl -e 'print "\n\"[" . join(",",0,reverse($(SIG)),-1) . "]\"\n";'
 #-------
 overwrite: # SRC= TAR= inserts or replaces all records in TAR by the ones in SRC, key is aseqno
+	# ---- $@ SRC="(SRC) TAR=$(TAR)
 	grep -E "^A[0-9]" $(SRC) | cut -b1-7 > $@.sa.tmp
 	grep -vf $@.sa.tmp $(TAR) > $@.tn.tmp || :
 	sort $@.tn.tmp $(SRC) > $(TAR)
@@ -845,6 +876,7 @@ smoothn:	# smooth <= n
 
 decexp: # decimal expansion of expression
 	grep -E "^A[0-9]" $(CONSTANT)/decexp4.tmp \
+	| grep -vEE "A084257|A114041" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -1686,21 +1718,163 @@ egypfr:
 	wc   -l  $@.gen $@.rest.tmp
 #--------------------------------
 finifull: # finite and full
-	$(DBAT) "SELECT i.aseqno, '$@', i.offset1, d.data \
+	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.data \
 		FROM asinfo i, bfinfo b, bfdata d \
 		WHERE i.aseqno = b.aseqno \
 		  AND b.aseqno = d.aseqno \
-		  AND i.keyword like '%full%' \
 		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
+		  AND i.keyword like '%full%' \
 		ORDER BY 1 " \
-	| perl finifull.pl \
+	>        $@.tmp
+	wc -l    $@.tmp
+	make finalize
+#--
+finifuma: # finite and full - manual
+	grep -E "^A[0-9]" finifull.man > $@.gen
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make finalize
+#----
+noncomp: # similar to finifull and bref
+	cat $(CONSTANT)/noncomp.man \
+	| perl -ne 'if (m{\A(A\d+)}) { print join("\t", $$1, "noncomp". 0) . "\n"; } '\
+	| sort | uniq -w7 \
+	>        $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) "SELECT i.aseqno, '$@', i.offset1, d.data \
+		FROM seq4 s, asinfo i, bfinfo b, bfdata d \
+		WHERE s.aseqno = i.aseqno \
+		  AND i.aseqno = b.aseqno \
+		  AND b.aseqno = d.aseqno \
+		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
+		  AND i.keyword like '%full%' \
+		ORDER BY 1 " \
+	>        $@.tmp
+	wc -l    $@.tmp
+	make finalize
+noncomp_long:
+	$(DBAT) "SELECT i.aseqno, '$@', i.offset1, SUBSTR(d.data, 1,64) || ' ...' \
+		FROM asinfo i, bfinfo b, bfdata d \
+		WHERE i.aseqno = b.aseqno \
+		  AND b.aseqno = d.aseqno \
+		  AND b.bfimax - b.bfimin  + 1 > d.termno \
+		  AND i.keyword like '%full%' \
+		  AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
+		ORDER BY 1;"
+#----
+# Sequences with keyword "bref", similar to finifull
+bref:
+	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.data \
+		FROM asinfo i, bfinfo b, bfdata d \
+		WHERE i.aseqno = b.aseqno \
+		  AND b.aseqno = d.aseqno \
+		  AND b.bfimax - b.bfimin  + 1 <= d.termno \
+		  AND i.keyword like '%bref%' \
+		ORDER BY 1 " \
+	>        $@.tmp
+	wc -l    $@.tmp
+	make finalize
+#----
+finalize: # CC= ; insert "L" and "new Z(...)" if necessary
+	#---- finalize CC=$(CC)
+	perl finifull.pl $(CC).tmp \
+	>        $(CC).gen
+	head -n4 $(CC).gen
+	wc -l    $(CC).gen
+#----
+fini_update: # select all (Brief|Finite|Noncomputable)Sequence for a retest
+	$(DBAT) -x "SELECT aseqno, CASE \
+	        WHEN superclass = 'BriefSequence'         THEN 'bref' \
+	        WHEN superclass = 'FiniteSequence'        THEN 'finifull' \
+	        WHEN superclass = 'NoncomputableSequence' THEN 'noncomp' \
+	        ELSE 'nyi' END, 0 \
+	    FROM joeis \
+	    WHERE superclass IN ('BriefSequence','FiniteSequence','NoncomputableSequence') \
+	    ORDER BY 1 " \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen 
+#----
+sciconst:
+	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
+	| perl -pe 's{\A(A\d+)}{$$1\tnoncomp\t0};' \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-finifuma: # finite and full - manual
-	grep -E "^A[0-9]" finifull.man > $@.gen
+#--------------------------------
+# old targets
+noncomp0: # non-computable sequences, pseudo-finite/full
+	wget https://oeis.org/wiki/The_multi-faceted_reach_of_the_OEIS?action=raw -O $@.wiki
+noncomp_prep: noncomp1 noncomp2 noncomp3 noncomp4
+noncomp1:
+	perl multifacet.pl noncomp0.wiki \
+	| grep -vE 'A261400|A115035|A098378|A047841|anthropology|archeology|architecture|boardgames|computerengineering|dance|darts|demography|dicegames|dominoandtilegames|electricalengineering|electroweaktheory|genetics|calendar|inorganicchemistry|internet|knottheory|logic|mancalagames|othertabletopgames|phyllotaxy|populationgenetics|representationtheory|statistics|thermodynamics|typography' \
+	| sort | uniq -w7 | sort -k4 -k1 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp	
+noncomp2:
+	grep -Ei 'Czech|Danish|Dutch|Finnish|French|Hungarian|Italian|Norwegian|Polish|Portuguese|Russian|Slovak|Spanish|Swedish|Turkish|atomic|chemical elem|electron|mass |nuclear|periodic (table|system)|planet|birth |death |burial |popes?|roulette|melting|boiling|noble gases' \
+	$(COMMON)/joeis_names.txt \
+	| grep -viE "A212434|(di|tri)atomic|Latin square|reverse polish|fixed polyomino|domino" \
+	| sed -e "s/\t.*/\tnoncomp\t0\tadditional/" \
+	>        $@.tmp
+	grep -Ei "A007656|A279797|A051385|A053407|A308681|A055069|A070729|A092478|A097618|indian" $(COMMON)/joeis_names.txt \
+	| sed -e "s/\t/\tnoncomp\t0\tmanual\t/" noncomp.man \
+	>>       $@.tmp
+	sed -e "s/\t/\tnoncomp\t0\tmanual\t/" noncomp.man \
+	>>       $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp	
+noncomp3:
+	# cat noncomp1.tmp noncomp2.tmp | sort | uniq -w7 
+	grep -E "^A[0-9]" $(CONSTANT)/noncomp.man \
+	| grep -vE "A005646|A094871" \
+	| cut -b1-7 | sed -e "s/$$/\tnoncomp\t0\t1/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) -n seq4
+	#                                                   PARM1   PARM2    PARM3     PARM4     PARM5     PARM6
+	$(DBAT) -x "SELECT s.aseqno, 'noncomp', i.offset1, d.data, s.parm1, b.bfimin, b.bfimax, d.termno, i.keyword, '', '', n.name \
+	    FROM seq4 s, asname n, bfdata d, asinfo i, bfinfo b \
+	    WHERE s.aseqno = n.aseqno \
+	      AND n.aseqno = d.aseqno \
+	      AND d.aseqno = i.aseqno \
+	      AND i.aseqno = b.aseqno \
+	      AND i.keyword NOT LIKE '%dead%' \
+	      AND i.keyword NOT LIKE '%word%' \
+	      AND i.keyword NOT LIKE '%frac%' \
+	      AND b.aseqno NOT IN (SELECT aseqno from joeis) \
+	      AND b.bfimax - b.bfimin + 1 <= 512 \
+	    ORDER BY 4, 1" \
+	>        $@.tmp
+	wc -l    $@.tmp
+	perl finifull.pl $@.tmp \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+	# make seq4 LIST=$@.gen
+#--
+noncomp4: # for info only
+	$(DBAT) -x "SELECT s.aseqno, s.parm2, b.bfimin, b.bfimax, d.termno, i.keyword, n.name \
+	    FROM seq4 s, asname n, bfdata d, asinfo i, bfinfo b \
+	    WHERE s.aseqno = n.aseqno \
+	      AND n.aseqno = d.aseqno \
+	      AND d.aseqno = i.aseqno \
+	      AND i.aseqno = b.aseqno \
+	      AND i.keyword NOT LIKE '%dead%' \
+	      AND i.keyword NOT LIKE '%word%' \
+	      AND i.keyword NOT LIKE '%frac%' \
+	      AND b.aseqno NOT IN (SELECT aseqno from joeis) \
+	      AND LENGTH(i.program) = 0 \
+	      AND b.bfimax -b.bfimin +1 <= 128 \
+	    ORDER BY 2, 1" \
+	| sed -e "s/\,changed//" -e "s/\,synth//" \
+	>        $@.tmp
+noncomp_old:
+	# run (noncomp0 and) noncomp_prep before
 #--------------------------------
 floor0: floor1 floor2 floor3 floor4 floor5
 floor1:
@@ -3139,95 +3313,6 @@ negpos: # all done
 	head -n4 $@.gen
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-#--------------------------------
-noncomp0: # non-computable sequences, pseudo-finite/full
-	wget https://oeis.org/wiki/The_multi-faceted_reach_of_the_OEIS?action=raw -O $@.wiki
-noncomp_prep: noncomp1 noncomp2 noncomp3 noncomp4
-noncomp1:
-	perl multifacet.pl noncomp0.wiki \
-	| grep -vE 'A261400|A115035|A098378|A047841|anthropology|archeology|architecture|boardgames|computerengineering|dance|darts|demography|dicegames|dominoandtilegames|electricalengineering|electroweaktheory|genetics|calendar|inorganicchemistry|internet|knottheory|logic|mancalagames|othertabletopgames|phyllotaxy|populationgenetics|representationtheory|statistics|thermodynamics|typography' \
-	| sort | uniq -w7 | sort -k4 -k1 \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp	
-noncomp2:
-	grep -Ei 'Czech|Danish|Dutch|Finnish|French|Hungarian|Italian|Norwegian|Polish|Portuguese|Russian|Slovak|Spanish|Swedish|Turkish|atomic|chemical elem|electron|mass |nuclear|periodic (table|system)|planet|birth |death |burial |popes?|roulette|melting|boiling|noble gases' \
-	$(COMMON)/joeis_names.txt \
-	| grep -viE "A212434|(di|tri)atomic|Latin square|reverse polish|fixed polyomino|domino" \
-	| sed -e "s/\t.*/\tnoncomp\t0\tadditional/" \
-	>        $@.tmp
-	grep -Ei "A007656|A279797|A051385|A053407|A308681|A055069|A070729|A092478|A097618|indian" $(COMMON)/joeis_names.txt \
-	| sed -e "s/\t/\tnoncomp\t0\tmanual\t/" noncomp.man \
-	>>       $@.tmp
-	sed -e "s/\t/\tnoncomp\t0\tmanual\t/" noncomp.man \
-	>>       $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp	
-noncomp3:
-	cat noncomp1.tmp noncomp2.tmp | sort | uniq -w7 \
-	| grep -vE "A005646|A094871" \
-	>  $@.tmp
-	make seq4 LIST=$@.tmp
-	#                                                   PARM1   PARM2    PARM3     PARM4     PARM5     PARM6
-	$(DBAT) -x "SELECT s.aseqno, s.callcode, i.offset1, d.data, s.parm1, b.bfimin, b.bfimax, d.termno, i.keyword, '', '', n.name \
-	    FROM seq4 s, asname n, bfdata d, asinfo i, bfinfo b \
-	    WHERE s.aseqno = n.aseqno \
-	      AND n.aseqno = d.aseqno \
-	      AND d.aseqno = i.aseqno \
-	      AND i.aseqno = b.aseqno \
-	      AND i.keyword NOT LIKE '%dead%' \
-	      AND i.keyword NOT LIKE '%word%' \
-	      AND i.keyword NOT LIKE '%frac%' \
-	      AND b.aseqno NOT IN (SELECT aseqno from joeis) \
-	      AND LENGTH(i.program) = 0 \
-	      AND b.bfimax -b.bfimin +1 <= 128 \
-	    ORDER BY 4, 1" \
-	| perl finifull.pl \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-	make seq4 LIST=$@.tmp
-	cp -v $@.tmp noncomp.gen
-noncomp4: # for info only
-	$(DBAT) -x "SELECT s.aseqno, s.parm2, b.bfimin, b.bfimax, d.termno, i.keyword, n.name \
-	    FROM seq4 s, asname n, bfdata d, asinfo i, bfinfo b \
-	    WHERE s.aseqno = n.aseqno \
-	      AND n.aseqno = d.aseqno \
-	      AND d.aseqno = i.aseqno \
-	      AND i.aseqno = b.aseqno \
-	      AND i.keyword NOT LIKE '%dead%' \
-	      AND i.keyword NOT LIKE '%word%' \
-	      AND i.keyword NOT LIKE '%frac%' \
-	      AND b.aseqno NOT IN (SELECT aseqno from joeis) \
-	      AND LENGTH(i.program) = 0 \
-	      AND b.bfimax -b.bfimin +1 <= 128 \
-	    ORDER BY 2, 1" \
-	| sed -e "s/\,changed//" -e "s/\,synth//" \
-	>        $@.tmp
-noncomp:
-	# run (noncomp0 and) noncomp_prep before
-#----
-sciconst:
-	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
-	| perl -pe 's{\A(A\d+)}{$$1\tnoncomp\t0};' \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-#--------------------------------
-# Sequences with keyword "bref"
-bref:
-	$(DBAT) -x "SELECT i.aseqno, 'bref', i.offset1, d.data, d.termno \
-	FROM asinfo i, bfdata d \
-	WHERE i.aseqno = d.aseqno \
-	  AND i.keyword LIKE '%bref%' \
-	  ORDER BY 1" \
-	| perl -ne 'my @parms = split(/\t/); '\
-	' $$parms[3] = join(", ", map { "new Z(\"$$_\")" } split(/\,/, $$parms[3])); '\
-	' print join("\t", @parms); '\
-	       > $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-#--------------------------------
 # %C A070365 Period 6: repeat [1, 5, 4, 6, 2, 3].
 # %F A118822 Period 8 sequence: [2,-1,0,-1,-2,1,0,1].
 # %C A175408 Period of length 10: {7,2,6,3,5,4,4,5,3,1}.
@@ -5173,8 +5258,7 @@ indx_nojoeis:
 	"
 #----------------
 finifu_check: # Sequences with keywords "fini,full"
-	$(DBAT) -x "SELECT a.aseqno, 'not-in-joeis', d.data \
-			, '# ' || a.termno || ' ' || n.name \
+	$(DBAT) -x "SELECT a.aseqno, 'not-in-joeis', d.data, '# ' || a.termno || ' ' || n.name \
 	    FROM  asinfo a, asdata d, asname n \
 	    WHERE a.aseqno = d.aseqno \
 	      AND a.aseqno = n.aseqno \
