@@ -497,6 +497,8 @@ A095425:
 	>>       $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+A105471: # 2021-08-15
+	grep -E "^A[0-9]" $@.man > $@.gen
 #================
 # *.pa2
 #
@@ -961,6 +963,9 @@ bellmod:
 #--------------------------------
 bincoef: # Binominal coeffients C(n,k)
 	cp -v $(HOLREC)/$@.gen $@.gen
+#--------------------------------
+binom:
+	grep -E "^A[0-9]" $@.man > $@.gen
 #--------------------------------
 binomin0: binomin1 binomin2 binomin3 binomin4
 binomin1: # extract all single formulas containing binomial functions and/or factorials
