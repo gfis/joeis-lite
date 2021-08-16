@@ -4671,6 +4671,13 @@ linrec:
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
+linman: # g.f.s in $(LINREC)/linrec.man -> holos
+	grep -E "^A[0-9]" $(LINREC)/linman.gen \
+	| perl -ne 'if (length($$_) <= 1024) { print $$_; } else { print STDERR $$_; }'\
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc   -l  $@.gen
 #----
 lrixall:
 	$(DBAT) -x "SELECT DISTINCT 'A' || i.seqno \
