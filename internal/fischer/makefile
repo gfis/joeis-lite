@@ -4671,13 +4671,26 @@ linrec:
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
-linman: # g.f.s in $(LINREC)/linrec.man -> holos
+#----
+linmangf: # g.f.s in $(LINREC)/linrec.man -> lingf
 	grep -E "^A[0-9]" $(LINREC)/linman.gen \
 	| perl -ne 'if (length($$_) <= 1024) { print $$_; } else { print STDERR $$_; }'\
 	>        $@.gen \
 	2>       $@.rest.tmp
 	head -n4 $@.gen
 	wc   -l  $@.gen
+linman_old: # g.f.s in $(LINREC)/linrec.man -> holos
+	grep -E "^A[0-9]" $(LINREC)/linman.gen \
+	| perl -ne 'if (length($$_) <= 1024) { print $$_; } else { print STDERR $$_; }'\
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc   -l  $@.gen
+linall:
+	make purge 
+	make CC=linman select gener
+	make CC=holom  select gener
+	make CC=man man dist testall log
 #----
 lrixall:
 	$(DBAT) -x "SELECT DISTINCT 'A' || i.seqno \
