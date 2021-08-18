@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dbat   xmlns   ="http://www.teherba.org/2007/dbat"
+        xmlns:ht="http://www.w3.org/1999/xhtml"
+        conn="worddb" 
+        headers="false"
+        >
+    <select aggregate="aseqno" with=" || ">
+        <col name="parm2">'k=' || parm2</col>
+        <col name="aseqno">aseqno</col>
+        <from>seq4</from>
+        <where>parm4 = 1
+        </where>
+        <order by="CAST(parm2 AS INT)"/>
+    </select>
+</dbat>
