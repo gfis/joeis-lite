@@ -17,3 +17,10 @@
 -- ???   WHERE s1.callcode = 'sumlino';
 -- ??? UPDATE seq4 SET parm2 = 'Z.ZERO' WHERE aseqno = 'A000534'; -- if it is ever generated (too slow)
 -- ??? COMMIT;
+
+-- 2021-08-18, for witab:
+UPDATE seq4 s SET s.name = (SELECT n.name FROM asname n WHERE s.aseqno = n.aseqno);
+COMMIT;
+DELETE FROM seq4 WHERE aseqno IN ('A018820');
+COMMIT;
+

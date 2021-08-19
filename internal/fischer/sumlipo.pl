@@ -59,6 +59,12 @@ while (<>) { # read inputfile
     $name    =~ s{ third powers?}    { pow_3}g;
     $name    =~ s{ fourth powers?}   { pow_4}g;
     $name    =~ s{ fifth powers?}    { pow_5}g;
+    $name    =~ s{ sixth powers?}    { pow_6}g;
+    $name    =~ s{ seventh powers?}  { pow_7}g;
+    $name    =~ s{ eigth powers?}    { pow_8}g;
+    $name    =~ s{ nineth powers?}   { pow_9}g;
+    $name    =~ s{ tenth powers?}    { pow_10}g;
+    $name    =~ s{ eleventh powers?} { pow_11}g;
     $name    =~ s{ (\d+)th powers?}  { pow_$1}g;
     $name    =~ s{ \(pow_\d+ 0 allowed\)}{ };
     $name    =~ s{exactly }          {quant_eq }g;
@@ -208,23 +214,23 @@ sub output {
 #----
 sub normalize { # bring all attributes into a normalized form suitable for column headers; digitize number words
     #   ($arenot, $base, $mquant, $distinct, $xquant , $least, $mult, $ordered, $wquant, $pow, $ways)
-    $arenot   = length($arenot  ) > 0 ? "not"  : "are";
-    $base     = &norm_number($base  );
-    $mquant   = &norm_quant($mquant);
-    $wquant   = &norm_quant($wquant);
-    $xquant   = &norm_quant($xquant);
-    $yquant   = &norm_quant($yquant);
-    $distinct = length($distinct) > 0 ? "dist" : "nondist";
-    if (        length($least) > 0) {
+    $arenot   =  length($arenot  ) > 0 ? "not"  : "are";
+    $base     =  &norm_number($base  );
+    $mquant   =  &norm_quant($mquant);
+    $wquant   =  &norm_quant($wquant);
+    $xquant   =  &norm_quant($xquant);
+    $yquant   =  &norm_quant($yquant);
+    $distinct =  length($distinct) > 0 ? "dist" : "nondist";
+    if (length($least) > 0) {
         $least  =~ s{\Aleast_(\w).*}{\&gt;\=$1};
     } else {
         $least  = "&gt;=0";
     }
-    $mult     = &norm_number($mult);
-    $ordered  = length($ordered ) > 0 ? "ord"  : "unord";
+    $mult     =  &norm_number($mult);
+    $ordered  =  length($ordered ) > 0 ? "ord"  : "unord";
     $pow      =~ s{pow_(\d+)}{$1};
-    $pow      = ($pow =~ m{\A\d+\Z}) ? $pow : -1; # escape value
-    $ways     = &norm_number($ways);
+    $pow      =  ($pow =~ m{\A\d+\Z}) ? $pow : -1; # escape value
+    $ways     =  &norm_number($ways);
 } # normalize
 #----
 sub norm_number { # convert number words to integers, or -1 if unknown

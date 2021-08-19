@@ -7,9 +7,11 @@
 use strict;
 use integer;
 
+my $lino = 0;
 while(<>) {
+    $lino ++;
     foreach my $aseqno ($_ =~ m{A\d{6}}g) {
-        print "$aseqno\n";
+        print join("\t", $aseqno, $lino) . "\n";
     }
 } # while
 __DATA__

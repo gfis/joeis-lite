@@ -5128,7 +5128,9 @@ numdiv:
 numdiv_test:
 	$(JAVA) irvine.oeis.a030.A030515 $(K)
 #--------------------------
-sumlipo: # Sums of like powers
+# Sums of like powers
+sumlipo: sumlipo_extract sumlipo_load sumlipo_unload sumlipo_wiki
+sumlipo_extract:
 	grep -E "[Ss]ums? " $(COMMON)/joeis_names.txt \
 	| grep -viE "A004018|arra(y|ngement)|base|composite|decimal|digit|differ|divi(ding|sible|sor)|egyptian|factor|fibon" \
 	| grep -viE "(hex|hept|pent)agonal|matri|necklace|nonsquare"\
@@ -5137,17 +5139,21 @@ sumlipo: # Sums of like powers
 	2>       $@.rest.tmp \
 	| grep -vE "A000534" \
 	| sort -k2 \
-	>        $@.gen
-	head -n4 $@.gen
+	>        $@.tmp
+	head -n4 $@.tmp
 	sort $@.rest.tmp > $@.rest
 	wc -l    $@.rest
-	wc   -l  $@.gen
-	cut -f2  $@.gen | sort | uniq -c
+	wc   -l  $@.tmp
+	cut -f2  $@.tmp | sort | uniq -c
 sumlipo_load: # load extracted parameters into seq4
-	grep -hE "^A[0-9]" sumlipo.gen sumlipo.man | sort  | uniq > $@.tmp
-	make seq4 LIST=$@.tmp
-	$(DBAT) "UPDATE seq4 s SET s.name = (SELECT n.name FROM asname n WHERE s.aseqno = n.aseqno);"
+	grep -hE "^A[0-9]" sumlipo_extract.tmp sumlipo.man | sort  | uniq > $@.1.tmp
+	make seq4 LIST=$@.1.tmp
+	$(DBAT) -f sumlipo.sql
 	$(DBAT) -f sumliv.create.sql
+sumlipo_unload:
+	$(DBAT) -44444 sumliv \
+	>        sumlipo.gen
+	wc -l    sumlipo.gen
 #--
 sumlipo.diff:
 	cut -b1-7 sumlipo.gen > d1.tmp
@@ -5181,6 +5187,9 @@ sumwi:
 #-----
 alter1: # load A-numbers from Sean's spreadsheet
 	perl extract_aseqnos.pl alter1.tsv \
+	| sort > $@.1.tmp
+	wc -l    $@.1.tmp
+	cut -f1  $@.1.tmp \
 	| sort | uniq \
 	>        $@.tmp
 	make seq LIST=$@.tmp
@@ -5189,6 +5198,35 @@ alter1_check: # compare against seq4
 	  WHERE s.aseqno = n.aseqno \
 	    AND s.aseqno NOT IN (SELECT aseqno FROM seq4) \
 	  ORDER BY 1;"
+alter2_check: # joeis against seq4
+	$(DBAT) "SELECT j.aseqno, n.name FROM joeis j, asname n \
+	  WHERE j.aseqno = n.aseqno \
+	    AND j.superclass IN ('LimitedSumOfLikePowersSequence','SumOfLikePowersSequence') \
+	    AND j.aseqno NOT IN (SELECT aseqno FROM seq4) \
+	  ORDER BY 1;"
+wiki_check: # load A-numbers from generated sumlipo.wiki -> seq2
+	perl extract_aseqnos.pl sumlipo.wiki \
+	| sort > $@.1.tmp
+	wc -l    $@.1.tmp
+	uniq -c  $@.1.tmp | grep -v " 1 " || :
+	cut -f1  $@.1.tmp \
+	| sort | uniq \
+	>        $@.tmp
+	make seq2 LIST=$@.tmp
+wiki_rest:
+	$(DBAT) "SELECT s.aseqno, s.callcode \
+	    , s.pow || ' ' || s.mult || ' ' || s.mquant || ' ' || s.least || ' ' || s.dist || ' ' || s.ways || ' ' || s.wquant \
+	    , s4.parm8, n.name FROM sumliv s, seq4 s4, asname n \
+	  WHERE s.aseqno = n.aseqno \
+	    AND s.aseqno = s4.aseqno \
+	    AND s.aseqno NOT IN (SELECT aseqno FROM seq2) \
+	  ORDER BY 1;" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+wiki_stat:
+	$(DBAT) -x "SELECT 'total extracted: ', COUNT(*) FROM sumliv s                                                "
+	$(DBAT) -x "SELECT 'present in Wiki: ', COUNT(*) FROM sumliv s WHERE s.aseqno     IN (SELECT aseqno FROM seq2)"
+	$(DBAT) -x "SELECT 'missing in Wiki: ', COUNT(*) FROM sumliv s WHERE s.aseqno NOT IN (SELECT aseqno FROM seq2)"
 #----
 # A003325	Sequence	Numbers that are the sum of 2 positive cubes.	nonn,easy,nice,changed,	1..20000
 # A003327	A003338	Numbers that are the sum of 4 positive cubes in 1 or more way.	nonn,	1..1000
