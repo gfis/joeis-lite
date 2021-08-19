@@ -1,4 +1,4 @@
---  View for sumlipo (FROM seq4)
+--  View for sumlipo (FROM seq4), for sumlipo.witab -> Wiki tables
 --  @(#) $Id$
 --  2020-08-07: Georg Fischer
 --

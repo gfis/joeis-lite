@@ -5,7 +5,7 @@
 |-
 | k&gt;=2 ||<span title="Sums of at least 2 squares s'', for s &gt;= 4.">A176209</span>||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;
 |-
-| k=-1 ||<span title="Sum of square displacements over all self-avoiding n-step walks on 4-d cubic lattice with first step specified, A242355(n)/8.">A323856</span>||<span title="Sum of the cubes of the parts in the partitions of n into two distinct parts.">A294287</span>||<span title="Sum of the 4th powers of the degrees of irreducible representations of S_n, the symmetric group on n letters.">A129627</span>||<span title="Sum of 5th powers: 0^5 + 1^5 + 2^5 + ... + n^5.">A000539</span>||<span title="Sum of 6th powers: 0^6 + 1^6 + 2^6 + ... + n^6.">A000540</span>||<span title="Sum of 7th powers: 1^7 + 2^7 + ... + n^7.">A000541</span>||<span title="Numbers that are sums of 8th powers of 2 distinct positive integers.">A155468</span>||<span title="Sum of 9th powers.">A007487</span>||<span title="Sum of 10th powers.">A023002</span>||&#xa0;||&#xa0;||<span title="Sum of 13th powers: 0^13+1^13+2^13+...+n^13.">A181134</span>
+| k=-1 ||<span title="Sum of square displacements over all n-step self-avoiding walks on a 2D square lattice.">A336448</span>||<span title="Sum of the cubes of the parts in the partitions of n into two distinct parts.">A294287</span>||<span title="Sum of the fourth powers of the parts in the partitions of n into two distinct parts.">A294288</span>||<span title="Sum of the fifth powers of the parts in the partitions of n into two distinct parts.">A294300</span>||<span title="Sum of 6th powers: 0^6 + 1^6 + 2^6 + ... + n^6.">A000540</span>||<span title="Sum of 7th powers: 1^7 + 2^7 + ... + n^7.">A000541</span>||<span title="Numbers that are sums of 8th powers of 2 distinct positive integers.">A155468</span>||<span title="Sum of 9th powers.">A007487</span>||<span title="Sum of 10th powers.">A023002</span>||&#xa0;||&#xa0;||<span title="Sum of 13th powers: 0^13+1^13+2^13+...+n^13.">A181134</span>
 |-
 | k=2 ||<span title="Sum of two squares of Lucas numbers (A000032).">A140328</span>||<span title="Sums of two nonnegative cubes.">A004999</span>||<span title="Numbers that are the sum of two 4th powers in more than one way.">A018786</span>||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;
 |-
@@ -17,6 +17,8 @@
 ==== Sums of exactly k positive m-th powers &gt; 0====
 {| class="wikitable" style="text-align:left"
 ! &#xa0; !!m=2!!m=3!!m=4!!m=5!!m=6!!m=7!!m=8!!m=9!!m=10!!m=11
+|-
+| k=-1 ||<span title="Numbers k that are the sum of m nonzero squares for all 1 &lt;= m &lt;= k - 14.">A018820</span>||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;
 |-
 | k=2 ||<span title="Numbers that are the sum of 2 nonzero squares, including repetitions.">A024509</span>||<span title="Numbers that are the sum of 2 positive cubes.">A003325</span>||<span title="Numbers that are the sum of 2 positive 4th powers.">A003336</span>||<span title="Numbers that are the sum of 2 positive 5th powers.">A003347</span>||<span title="Numbers that are the sum of 2 nonzero 6th powers.">A003358</span>||<span title="Numbers that are the sum of 2 positive 7th powers.">A003369</span>||<span title="Numbers that are the sum of 2 nonzero 8th powers.">A003380</span>||<span title="Numbers that are the sum of 2 positive 9th powers.">A003391</span>||<span title="Numbers that are the sum of 2 nonzero 10th powers.">A004802</span>||<span title="Numbers that are the sum of 2 positive 11th powers.">A004813</span>
 |-
@@ -40,9 +42,9 @@
 |-
 | k=12 ||&#xa0;||<span title="Numbers that are the sum of 12 positive cubes.">A003335</span>||<span title="Numbers that are the sum of 12 positive 4th powers.">A003346</span>||<span title="Numbers that are the sum of 12 positive 5th powers.">A003357</span>||<span title="Numbers that are the sum of 12 positive 6th powers.">A003368</span>||<span title="Numbers that are the sum of 12 positive 7th powers.">A003379</span>||<span title="Sum of 12 nonzero 8th powers.">A003390</span>||<span title="Sum of 12 positive 9th powers.">A004801</span>||<span title="Numbers that are the sum of 12 positive 10th powers.">A004812</span>||<span title="Numbers that are the sum of 12 positive 11th powers.">A004823</span>
 |-
-| k=13 ||&#xa0;||&#xa0;||&#xa0;||<span title="Sum of 13 positive 5th powers.">A123294</span>||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;
+| k=13 ||&#xa0;||&#xa0;||<span title="Sum of 13 nonzero fourth powers.">A047724</span>||<span title="Sum of 13 positive 5th powers.">A123294</span>||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;
 |-
-| k=14 ||&#xa0;||&#xa0;||&#xa0;||<span title="Sum of 14 positive 5th powers.">A123295</span>||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;
+| k=14 ||&#xa0;||&#xa0;||<span title="Sum of 14 nonzero fourth powers.">A047725</span>||<span title="Sum of 14 positive 5th powers.">A123295</span>||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;||&#xa0;
 |-
 |}
 ==== Sums of at most k positive m-th powers &gt; 0====
@@ -83,7 +85,7 @@
 | k=3 ||<span title="Numbers that are the sum of 3 squares &gt; 1.">A302359</span>||<span title="Numbers that are the sum of 3 cubes &gt; 1.">A302360</span>
 |-
 |}
-==== Numbers n that have exactly k representations as the sum of m squares &gt;= 0====
+==== Numbers that have exactly k representations as the sum of m squares &gt;= 0====
 <!--A295158 quant_eq ten representations as the sum of five least_0 pow_2. -->
 {| class="wikitable" style="text-align:left"
 ! &#xa0; !!m=2!!&#xa0;!!&#xa0;!!m=5!!m=6!!m=7

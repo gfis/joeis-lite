@@ -34,8 +34,9 @@ my %integers = qw(zero 0 one 1 two 2 three 3 four 4 five 5 six 6 seven 7 eight 8
     
 my ($line, $aseqno, $superclass, $callcode, $name, $keyword, $range);
 my   
-        ($arenot, $base, $mquant, $distinct, $xquant , $least, $mult, $ordered, $wquant, $pow, $ways)
+        ($arenot, $base, $mquant, $distinct, $xquant , $least, $mult, $ordered, $wquant, $pow, $ways, $yquant)
     ;
+# while (<DATA>) { # read inputfile
 while (<>) { # read inputfile
     s/\s+\Z//; # chompr
     $line = $_;
@@ -54,10 +55,15 @@ while (<>) { # read inputfile
     $name    =~ s{ squares?}         { pow_2}g;
     $name    =~ s{ cubes?}           { pow_3}g;
     $name    =~ s{ biquadrates?}     { pow_4}g;
+    $name    =~ s{ second powers?}   { pow_2}g;
+    $name    =~ s{ third powers?}    { pow_3}g;
+    $name    =~ s{ fourth powers?}   { pow_4}g;
+    $name    =~ s{ fifth powers?}    { pow_5}g;
     $name    =~ s{ (\d+)th powers?}  { pow_$1}g;
     $name    =~ s{ \(pow_\d+ 0 allowed\)}{ };
     $name    =~ s{exactly }          {quant_eq }g;
     $name    =~ s{at least }         {quant_ge }g;
+    $name    =~ s{or more }          {quant_ge }g;
     $name    =~ s{at most }          {quant_le }g;
     $name    =~ s{positive }         {least_1 }g;
     $name    =~ s{non\-?vanishing}   {least_1 }g;
@@ -69,16 +75,19 @@ while (<>) { # read inputfile
     $keyword =~ s{\,changed}{};
     # $keyword =~ s{\Anonn}{};
 
-        ($arenot, $base, $mquant, $distinct, $xquant , $least, $mult, $ordered, $wquant, $pow, $ways)
-    =   (""     , ""   , ""     , ""       , ""      , ""    , ""   , ""      , ""     , ""  , ""   );
+        ($arenot, $base, $mquant, $distinct, $xquant , $least, $mult, $ordered, $wquant, $pow, $ways, $yquant)
+    =   (""     , ""   , ""     , ""       , ""      , ""    , ""   , ""      , ""     , ""  , ""   , "");
+    # print "$name\n";
     if (0) {
     #----------------
     # A025284  sum of 2 least_1 pow_2 in quant_eq 1 way.
+    # A346326	LimitedSumOfLikePowersSequence	Numbers that are the sum of eight fifth powers in exactly one way.	nonn,changed,	1..10000	unkn
     } elsif ($name =~ 
-        #   1                 2           3               4           5          6        7    8           9                    6                                           7    8                             9
-        m{\A(not the )?sum of (quant_.. )?([a-ce-z0-9]+ )?(distinct )?(least_. )?(pow_\d+)( in (quant_.. )?(\w+)? way)?} ) {
-        ($arenot , $mquant         , $mult   , $distinct, $least  , $pow    , $wquant , $ways   ) = 
-        ($1 || "", $2 || "quant_eq", $3 || -1, $4 || "" , $5 || "", $6 || -1, $8 || "", $9 || -1);
+        #   1                 2           3               4           5          6        7    8           9      10
+        m{\A(not the )?sum of (quant_.. )?([a-ce-z0-9]+ )?(distinct )?(least_. )?(pow_\d+)( in (quant_.. )?(\w+)? (quant_.. )?ways?)?} ) {
+#       m{\A(not the )?sum of (quant_.. )?([a-ce-z0-9]+ )?} ) {
+        ($arenot , $mquant         , $mult   , $distinct, $least  , $pow    , $wquant , $ways   , $yquant) = 
+        ($1 || "", $2 || "quant_eq", $3 || -1, $4 || "" , $5 || "", $6 || -1, $8 || "", $9 || -1, $10 || "");
         &normalize();
         if ($ways < 1) {
             if ($arenot =~ m{not}) {
@@ -93,6 +102,12 @@ while (<>) { # read inputfile
             }
         } else { # with ways
             $callcode = "sumway";
+            if (0) {
+            } elsif ($yquant ne "") {
+                $wquant = $yquant;
+          # } elsif ($wquant ne "") {
+          #     $wquant = $wquant;
+            }
         } # with ways
         &output();
     #----------------
@@ -173,12 +188,15 @@ while (<>) { # read inputfile
         print STDERR "$name <- $line\n";
     #----------------
     } else { # ignore
+        # print "? $line\n";
     }
 } # while <>
 #----
 sub output {
     if ($name =~ m{ and |arithmetic| but |consecutive|primitive|progression}) {
         print STDERR "$name <- $line\n";
+    } elsif ($callcode !~ m{\Asum}) {
+        print STDERR "$callcode? $name <- $line\n";
     } else {
         if ($callcode eq "sumwab") {
             $pow = $base;
@@ -195,6 +213,7 @@ sub normalize { # bring all attributes into a normalized form suitable for colum
     $mquant   = &norm_quant($mquant);
     $wquant   = &norm_quant($wquant);
     $xquant   = &norm_quant($xquant);
+    $yquant   = &norm_quant($yquant);
     $distinct = length($distinct) > 0 ? "dist" : "nondist";
     if (        length($least) > 0) {
         $least  =~ s{\Aleast_(\w).*}{\&gt;\=$1};
@@ -231,8 +250,7 @@ sub norm_quant { # normalize a quantifier
     $quant =~ s{quant_le}{\&lt\;\=};
     return $quant;
 } # norm_quant
-#----------------
-__DATA__
+my $dummy = <<"GFis";
 A003332 sumpow  1   A003343 9   3   1                   Numbers that are the sum of 9 positive cubes.
 A003333 sumpow  1   A003344 10  3   1                   Sum of 10 positive cubes.
 A003337 sumpow  1   A003337 3   4   1                   Numbers n which are the sum of 3 nonzero 4th powers.
@@ -278,3 +296,7 @@ A117535 Number of ways of writing n as a sum of powers of 3, each power being us
 
 A008451 Number of ways of writing n as a sum of 7 squares.
 A051343 Number of ways of writing n as a sum of 3 nonnegative cubes (counted naively).
+GFis
+#----------------
+__DATA__
+A346326	LimitedSumOfLikePowersSequence	Numbers that are the sum of eight fifth powers in exactly one way.	nonn,changed,	1..10000	unkn

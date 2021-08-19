@@ -138,7 +138,7 @@ sub generate_table {
     #---- print table body rows
     @wikicols = (); 
     @colvals  = ();
-    my $old_rowval = $rowvals[0];
+    my $old_rowval = $rowvals[0] || $nbsp;
     $aseqno   = ""; # to handle the initial group change
     # $rowvals[0] was set above to the rowval of the first row
     foreach my $row (@matrix) { # fetch all rows and print the wiki table rows
@@ -166,10 +166,10 @@ sub generate_table {
         } # print old row
         $aseqno = $new_aseqno;
         $name   = $new_name;
-        $colval = $new_colval;
+        $colval = $new_colval || "";
         $colval =~ m{(\d+)};
-        $coln   = $1;
         if ($colval  =~ m{(\d+)}) {
+            $coln   = $1;
             my $encname = $name;
             $encname =~ s{\&}{\&amp\;}g;
             $encname =~ s{\>}{\&gt\;}g;
@@ -181,7 +181,8 @@ sub generate_table {
                 print STDERR "rowval=$new_rowval, colval=$colval, colvals[$coln]=\"$colvals[$coln]\"\n";
             }
         } else {
-            $colvals[$coln] = $nbsp;
+            # $coln   = $1;
+            # $colvals[$coln] = $nbsp;
         } 
     } # foreach row 2
     #---- print table end

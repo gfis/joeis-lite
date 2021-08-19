@@ -5134,7 +5134,7 @@ sumlipo: # Sums of like powers
 	| grep -viE "(hex|hept|pent)agonal|matri|necklace|nonsquare"\
 	| grep -viE "permut|prime|pyramidal|ratio|reciproc|squarefree|triangular|Young" \
 	| perl sumlipo.pl \
-	  2>     $@.rest.tmp \
+	2>       $@.rest.tmp \
 	| grep -vE "A000534" \
 	| sort -k2 \
 	>        $@.gen
@@ -5143,15 +5143,20 @@ sumlipo: # Sums of like powers
 	wc -l    $@.rest
 	wc   -l  $@.gen
 	cut -f2  $@.gen | sort | uniq -c
+sumlipo_load: # load extracted parameters into seq4
+	grep -hE "^A[0-9]" sumlipo.gen sumlipo.man | sort  | uniq > $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) "UPDATE seq4 s SET s.name = (SELECT n.name FROM asname n WHERE s.aseqno = n.aseqno);"
+	$(DBAT) -f sumliv.create.sql
+#--
 sumlipo.diff:
 	cut -b1-7 sumlipo.gen > d1.tmp
 	cut -b1-7 sumpow.gen  > d2.tmp
 	diff -wy --width=32 --suppress-common-lines d1.tmp d2.tmp
 	rm -v d1.tmp d2.tmp
-sumlipow:
+sumlipo_wiki:
 	perl wiki_tabs.pl -e $(EL) -d $(D) sumlipo.witab \
 	>        sumlipo.wiki
-	# | tee  sumlipo.wiki
 #----
 sumway: # Numbers that are the sum of 2 nonzero squares in exactly 1 way.
 	cat $(COMMON)/joeis_names.txt \
@@ -5173,6 +5178,17 @@ sumwan.check:
 sumwi:
 	$(DBAT) "\
 	| tee    $@.tmp
+#-----
+alter1: # load A-numbers from Sean's spreadsheet
+	perl extract_aseqnos.pl alter1.tsv \
+	| sort | uniq \
+	>        $@.tmp
+	make seq LIST=$@.tmp
+alter1_check: # compare against seq4
+	$(DBAT) "SELECT s.aseqno, n.name FROM seq s, asname n \
+	  WHERE s.aseqno = n.aseqno \
+	    AND s.aseqno NOT IN (SELECT aseqno FROM seq4) \
+	  ORDER BY 1;"
 #----
 # A003325	Sequence	Numbers that are the sum of 2 positive cubes.	nonn,easy,nice,changed,	1..20000
 # A003327	A003338	Numbers that are the sum of 4 positive cubes in 1 or more way.	nonn,	1..1000
