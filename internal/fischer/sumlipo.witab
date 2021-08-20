@@ -1,5 +1,5 @@
 === Sums of like powers===
-==== Sums of k m-th powers &gt;= 0 (List A)====
+==== Sums of k m-th powers &gt;= 0 (Table A)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -14,7 +14,7 @@
         <order by="mquant, mult, pow"/>
     </select>
 witab-->
-==== Sums of exactly k positive m-th powers &gt; 0 (List B)====
+==== Sums of exactly k positive m-th powers &gt; 0 (Table B)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -30,7 +30,7 @@ witab-->
         <order by="mquant, mult, pow"/>
     </select>
 witab-->
-==== Sums of at most k positive m-th powers &gt; 0 (List C)====
+==== Sums of at most k positive m-th powers &gt; 0 (Table C)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -46,7 +46,7 @@ witab-->
         <order by="mquant, mult, pow"/>
     </select>
 witab-->
-==== Sums of k positive m-th powers &gt; 1 (List D)====
+==== Sums of k positive m-th powers &gt; 1 (Table D)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -61,7 +61,7 @@ witab-->
         <order by="mquant, mult, pow"/>
     </select>
 witab-->
-==== Numbers that have exactly k representations as the sum of m squares &gt;= 0 (List E)====
+==== Numbers that have exactly k representations as the sum of m squares &gt;= 0 (Table E)====
 <!--A295158 quant_eq ten representations as the sum of five least_0 pow_2. -->
 <!--witab
     <select>
@@ -79,8 +79,9 @@ witab-->
         <order by="wquant, ways, mult"/>
     </select>
 witab-->
-===New Lists===
-==== Numbers that can be expressed as the sum of k squares in m or more ways (List R2)====
+==New Lists==
+===Squares===
+==== Numbers that can be expressed as the sum of k distinct squares in m or more ways (Table R2d)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -90,27 +91,13 @@ witab-->
         <from>sumliv</from>
         <where>callcode = 'sumway'
           AND  wquant   = '&amp;gt;='
+          AND  dist     = 'dist'
           AND  pow      = 2
         </where>
         <order by="mult, wquant, ways"/>
     </select>
 witab-->
-==== Numbers that can be expressed as the sum of k squares in exactly m ways (List S2)====
-<!--witab
-    <select>
-        <col>aseqno</col>
-        <col>name</col>
-        <col>'k=' || mult</col>
-        <col>'m'  || wquant || ways</col>
-        <from>sumliv</from>
-        <where>callcode = 'sumway'
-          AND  wquant   = '='
-          AND  pow      = 2
-        </where>
-        <order by="mult, wquant, ways"/>
-    </select>
-witab-->
-==== Numbers that can be expressed as the sum of k cubes in m or more ways (List R3)====
+==== Numbers that can be expressed as the sum of k possibly equal squares in m or more ways (Table R2e)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -120,12 +107,13 @@ witab-->
         <from>sumliv</from>
         <where>callcode = 'sumway'
           AND  wquant   = '&amp;gt;='
-          AND  pow      = 3
+          AND  dist     = 'nondist'
+          AND  pow      = 2
         </where>
         <order by="mult, wquant, ways"/>
     </select>
 witab-->
-==== Numbers that can be expressed as the sum of k cubes in exactly m ways (List S3)====
+==== Numbers that can be expressed as the sum of k distinct squares in exactly m ways (Table S2d)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -135,12 +123,98 @@ witab-->
         <from>sumliv</from>
         <where>callcode = 'sumway'
           AND  wquant   = '='
+          AND  dist     = 'dist'
+          AND  pow      = 2
+        </where>
+        <order by="mult, wquant, ways"/>
+    </select>
+witab-->
+==== Numbers that can be expressed as the sum of k possibly equal squares in exactly m ways (Table S2e)====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k=' || mult</col>
+        <col>'m'  || wquant || ways</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumway'
+          AND  wquant   = '='
+          AND  dist     = 'nondist'
+          AND  pow      = 2
+        </where>
+        <order by="mult, wquant, ways"/>
+    </select>
+witab-->
+
+=== Cubes ===
+==== Numbers that can be expressed as the sum of k distinct cubes in m or more ways (Table R3d)====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k=' || mult</col>
+        <col>'m'  || wquant || ways</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumway'
+          AND  wquant   = '&amp;gt;='
+          AND  dist     = 'dist'
           AND  pow      = 3
         </where>
         <order by="mult, wquant, ways"/>
     </select>
 witab-->
-==== Numbers that can be expressed as the sum of k fourth powers in m or more ways (List R4)====
+==== Numbers that can be expressed as the sum of k possibly equal cubes in m or more ways (Table R3e)====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k=' || mult</col>
+        <col>'m'  || wquant || ways</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumway'
+          AND  wquant   = '&amp;gt;='
+          AND  dist     = 'nondist'
+          AND  pow      = 3
+        </where>
+        <order by="mult, wquant, ways"/>
+    </select>
+witab-->
+
+==== Numbers that can be expressed as the sum of k distinct cubes in exactly m ways (Table S3d)====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k=' || mult</col>
+        <col>'m'  || wquant || ways</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumway'
+          AND  wquant   = '='
+          AND  dist     = 'dist'
+          AND  pow      = 3
+        </where>
+        <order by="mult, wquant, ways"/>
+    </select>
+witab-->
+==== Numbers that can be expressed as the sum of k possibly equal cubes in exactly m ways (Table S3e)====
+<!--witab
+    <select>
+        <col>aseqno</col>
+        <col>name</col>
+        <col>'k=' || mult</col>
+        <col>'m'  || wquant || ways</col>
+        <from>sumliv</from>
+        <where>callcode = 'sumway'
+          AND  wquant   = '='
+          AND  dist     = 'nondist'
+          AND  pow      = 3
+        </where>
+        <order by="mult, wquant, ways"/>
+    </select>
+witab-->
+
+=== 4th powers ===
+==== Numbers that can be expressed as the sum of k fourth powers in m or more ways (Table R4)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -155,7 +229,7 @@ witab-->
         <order by="mult, wquant, ways"/>
     </select>
 witab-->
-==== Numbers that can be expressed as the sum of k fourth powers in exactly m ways (List S4)====
+==== Numbers that can be expressed as the sum of k fourth powers in exactly m ways (Table S4)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -170,7 +244,9 @@ witab-->
         <order by="mult, wquant, ways"/>
     </select>
 witab-->
-==== Numbers that can be expressed as the sum of k fifth powers in m or more ways (List R5)====
+
+=== 5th powers ===
+==== Numbers that can be expressed as the sum of k fifth powers in m or more ways (Table R5)====
 <!--witab
     <select>
         <col>aseqno</col>
@@ -185,7 +261,7 @@ witab-->
         <order by="mult, wquant, ways"/>
     </select>
 witab-->
-==== Numbers that can be expressed as the sum of k fifth powers in exactly m ways (List S5)====
+==== Numbers that can be expressed as the sum of k fifth powers in exactly m ways (Table S5)====
 <!--witab
     <select>
         <col>aseqno</col>
