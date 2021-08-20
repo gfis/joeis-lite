@@ -1419,6 +1419,25 @@ dead_check: # Where are dead, erroneous sequences still referenced?
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------------------------------
+divmul:
+	cat $(COMMON)/joeis_names.txt \
+	| grep -vE "\.\.\." \
+	| perl -ne 'if (m{\t(a\(n\) *\= *)?(A\d+)(\(n\))? *([\*\/\+\-\^]) *(\d+)\.}) {'\
+	' my ($$rseqno, $$op, $$num) = ($$2, $$4, $$5); '\
+	' $$op =~ s{\+}     {\.add\($$num\)}; '\
+	' $$op =~ s{\-}{\.subtract\($$num\)}; '\
+	' $$op =~ s{\*}{\.multiply\($$num\)}; '\
+	' $$op =~ s{\/}  {\.divide\($$num\)}; '\
+	' $$op =~ s{\^}     {\.pow\($$num\)}; '\
+	' print join("\t", substr($$_, 0, 7), 'divmul', 0, $$rseqno, $$op) . "\n"; }'\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.tmp
+	grep -E "^A[0-9]" $@.man >> $@.tmp
+	sort $@.tmp > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 cofr:
 	grep -E "^A[0-9]" $(COMMON)/../sequencedb/contfrac_de.tmp \
 	| perl -pe 's{\t\w+\t}{\t$@\t}; '\
