@@ -1419,24 +1419,18 @@ dead_check: # Where are dead, erroneous sequences still referenced?
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------------------------------
-divmul:
-	cat $(COMMON)/joeis_names.txt \
+dersimple:
+	grep -E "\%[NF]" $(COMMON)/jcat25.txt \
 	| grep -vE "\.\.\." \
-	| perl -ne 'if (m{\t(a\(n\) *\= *)?(A\d+)(\(n\))? *([\*\/\+\-\^]) *(\d+)\.}) {'\
-	' my ($$rseqno, $$op, $$num) = ($$2, $$4, $$5); '\
-	' $$op =~ s{\+}     {\.add\($$num\)}; '\
-	' $$op =~ s{\-}{\.subtract\($$num\)}; '\
-	' $$op =~ s{\*}{\.multiply\($$num\)}; '\
-	' $$op =~ s{\/}  {\.divide\($$num\)}; '\
-	' $$op =~ s{\^}     {\.pow\($$num\)}; '\
-	' print join("\t", substr($$_, 0, 7), 'divmul', 0, $$rseqno, $$op) . "\n"; }'\
+	| cut -b4- | grep -Ei "^....... a" | sed -e "s/ /\t/" | sort | uniq -w7 \
+	| perl dersimple.pl -d $(D) \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc   -l  $@.tmp
-	grep -E "^A[0-9]" $@.man >> $@.tmp
-	sort $@.tmp > $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
+	wc -l    $@.tmp
+	cp -v $@.tmp $@.gen
+deradapt:
+	cp -v dersimple.gen $@.tmp
+	perl deradapt.pl $@.tmp > dersimple.gen
 #--------------------------------
 cofr:
 	grep -E "^A[0-9]" $(COMMON)/../sequencedb/contfrac_de.tmp \
