@@ -768,6 +768,10 @@ beatty1:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+beatty1t:
+	perl $(CONSTANT)/solvetab.pl -a t \
+	>        beatty1.tmp \
+	2>       x.tmp
 beatty2:
 	$(JPREP) -f beatty1.tmp | sed -e "s/\r//" \
 	| perl -ne 's{\tpost\t}{\tinfix\t}; s{\~\~\;?}{}g; print; '\
@@ -1894,29 +1898,35 @@ noncomp4: # for info only
 noncomp_old:
 	# run (noncomp0 and) noncomp_prep before
 #--------------------------------
-floor0: floor1 floor2 floor3 floor4 floor5
-floor1:
+floor:
+	grep -E "^A[0-9]" $(CONSTANT)/floor2.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+floold0: floold1 floold2 floold3 floold4 floold5
+floold1:
 	grep -E "\[|floor|ceil|round|fract" $(COMMON)/joeis_names.txt \
 	| grep "null" \
-	>        floor0.tmp
+	>        floold0.tmp
 	perl -ne 'if (s{Nearest +integer +to +}{\~\~} > 0) { s{(\d)\.(\d)}{$$1\#$$2}g; '\
 	' s{\~\~([^\.\;\:\,]+)(.*)}{round\($$1\)$$2}; s{\#}{\.}g; print; }' $(COMMON)/joeis_names.txt \
 	| grep "null" \
-	>>       floor0.tmp
-	cat      floor0.tmp \
+	>>       floold0.tmp
+	cat      floold0.tmp \
 	| grep -viE "prime|sum|product|binomial|triangle|base|cofr|continued fraction|a?round(ed|ing|)|frac(\,|tal|tion |tions)|\!|\.\.\." \
 	>        $@.tmp
 	wc   -l  $@*.*
-floor2:
-	perl floor_split.pl   -d $(D) floor1.tmp \
+floold2:
+	perl floor_split.pl   -d $(D) floold1.tmp \
 	2>       $@.rest \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@*.*
 	head -n4 $@.rest
 	wc   -l  $@.rest
-floor3:
-	$(JPREP) -f floor2.tmp \
+floold3:
+	$(JPREP) -f floold2.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
@@ -1924,8 +1934,8 @@ floor3:
 	>        $@.rest || :
 	head -n4 $@.rest
 	wc   -l  $@.rest
-floor4:
-	perl cr_infix.pl      -d    1 floor3.tmp 2>&1 \
+floold4:
+	perl cr_infix.pl      -d    1 floold3.tmp 2>&1 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp	
@@ -1933,16 +1943,16 @@ floor4:
 	>        $@.rest || :
 	head -n4 $@.rest
 	wc   -l  $@.rest
-floor5:
-	perl floor_combine.pl -d $(D) floor4.tmp \
+floold5:
+	perl floor_combine.pl -d $(D) floold4.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.tmp
-floor: floor5
-	grep A floor5.tmp \
+floold: floold5
+	grep A floold5.tmp \
 	| grep -vE "A038126|A134903|A134909" \
 	>        $@.gen
-	# cp floor5.tmp $@.gen
+	# cp floold5.tmp $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----

@@ -91,6 +91,7 @@ sub polish {
         $parm1 =~ s{CR\.ONE\.divide\(CR\.TWO\)}{CR\.HALF}g;
         $parm1 =~ s{\.pow\(CR\.HALF\)}{\.sqrt\(\)}g;
         $parm1 =~ s{CR\.TWO\.sqrt\(\)}{CR\.SQRT2}g;
+        $parm1 =~ s{CR\.HALF\.multiply\(CR\.FIVE\.sqrt\(\)\.add\(CR\.ONE\)\)}{CR\.PHI}g;
         return $parm1;
 } # polish
 __DATA__
