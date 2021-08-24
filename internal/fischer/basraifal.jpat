@@ -12,12 +12,16 @@ public class $(ASEQNO) extends RunsBaseSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), -1);
+    super($(OFFSET));
+  }
+
+  @Override
+  protected boolean isOk() {
+    return signumRaisesFalls(mK, $(PARM1)) == $(PARM2);
   }
 
   @Override
   public Z next() {
-    mK = mK.add(Z.ONE);
-    return Z.valueOf(getRunCount(mK, $(PARM1)));
+    return getNextWithProperty();
   }
 }

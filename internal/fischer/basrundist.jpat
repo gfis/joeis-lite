@@ -12,12 +12,12 @@ public class $(ASEQNO) extends RunsBaseSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), -1);
+    super($(OFFSET));
   }
 
   @Override
   public Z next() {
     mK = mK.add(Z.ONE);
-    return Z.valueOf(getRunCount(mK, $(PARM1)));
+    return Z.valueOf(getDistinctRunLengths(mK, $(PARM1)));
   }
 }

@@ -747,9 +747,29 @@ basrunpar:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-#--------------------------------
+#----
 basrunid: # Numbers whose base-3 expansions, read from left to right, have run lengths that strictly increase.
 	grep -E "^A" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----------------
+# ck_guides
+
+basraifal:
+	perl ck/ck_guides.pl -a F \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+baspitpeak:
+	perl ck/ck_guides.pl -a G \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+basrundist:
+	perl ck/ck_guides.pl -a J \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -1898,11 +1918,33 @@ noncomp4: # for info only
 noncomp_old:
 	# run (noncomp0 and) noncomp_prep before
 #--------------------------------
+flotest:
+	grep -E "^A[0-9]" $@.man > $@.gen
+#--	
 floor:
-	grep -E "^A[0-9]" $(CONSTANT)/floor2.tmp \
+	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--	
+floorD:
+	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+cklist:
+	$(DBAT) "SELECT i.aseqno, COALESCE(j.superclass, 'null'), n.name, i.keyword, b.bfimax - b.bfimin + 1 \
+	  FROM asinfo i, asname n, bfinfo b LEFT JOIN joeis j ON j.aseqno = b.aseqno \
+	  WHERE i.aseqno = n.aseqno \
+	    AND n.aseqno = b.aseqno \
+	    AND i.author LIKE '%Kimberling%' \
+	    AND i.aseqno NOT IN (SELECT aseqno FROM poeis) \
+	  ORDER BY 1;" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
 #--------
 floold0: floold1 floold2 floold3 floold4 floold5
 floold1:
