@@ -1945,6 +1945,12 @@ floorD:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+floorK:
+	perl ck/ck_guides.pl -a K \
+	| tee    $@.gen
+	# head -n4 $@.gen
+	wc -l    $@.gen
 #--------
 cklist:
 	$(DBAT) "SELECT i.aseqno, COALESCE(j.superclass, 'null'), n.name, i.keyword, b.bfimax - b.bfimin + 1 \
@@ -1954,9 +1960,9 @@ cklist:
 	    AND i.author LIKE '%Kimberling%' \
 	    AND i.aseqno NOT IN (SELECT aseqno FROM poeis) \
 	  ORDER BY 1;" \
-	>        $@.txt
-	head -n4 $@.txt
-	wc -l    $@.txt
+	>        ck/$@.txt
+	head -n4 ck/$@.txt
+	wc -l    ck/$@.txt
 #--------
 floold0: floold1 floold2 floold3 floold4 floold5
 floold1:
