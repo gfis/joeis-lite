@@ -246,6 +246,75 @@ public abstract class RunsBaseSequence implements Sequence {
   }
   
   /**
+   * Get the number of pieces from a number represented in some base.
+   * A piece is a flat (0), ascent (1) or descent (-1), see A297030.
+   * A single digit is no piece.
+   * @param number get the run count from this number
+   * @param base represent in this base
+   * @return number of subsequences with identical digits
+   */
+  protected int getPieceCount(final Z number, final int base) {
+    final String digits = expand(number, base);
+    final int dlen = base <= 10 ? 1 : 2;
+    int count = 0;
+    int idig = 0; 
+    String oldDig = digits.substring(idig, idig + dlen); // 1st digit
+    idig += dlen;
+    if (idig <= digits.length() - dlen) { // for 2nd digit
+      String newDig = digits.substring(idig, idig + dlen);
+      idig += dlen;
+      int oldState = newDig.compareTo(oldDig); // 0 = flat, 1 = ascent, -1 = descent
+      oldState = oldState == 0 ? oldState : (oldState < 0 ? -1 : 1);
+      ++count; // 1st piece
+      while (idig <= digits.length() - dlen) { // for 3rd and following 
+        oldDig = newDig;
+        newDig = digits.substring(idig, idig + dlen);
+        idig += dlen;
+        int newState = newDig.compareTo(oldDig);
+        newState = newState == 0 ? newState : (newState < 0 ? -1 : 1);
+        if (newState != oldState) {
+          ++count;
+          oldState = newState;
+        }
+      } // while
+      // >= 2 digits
+    } // else only 1 digit - none
+    return count;
+  }
+
+  /**
+   * Determines whether the digits of the number follow a 
+   * zig-zag-up (1), zig-zag-down (-1) or no zig-zag (0) pattern (see A297146).
+   * @param number get the property from this number
+   * @param base represent in this base
+   * @return 1, -1 or 0
+   */
+  protected int signumZigZag(final Z number, final int base) {
+    final String digits = expand(number, base);
+    final int dlen = base <= 10 ? 1 : 2;
+    int result = 0; // assume none
+    int idig = 0; 
+    String oldDig = digits.substring(idig, idig + dlen);
+    idig += dlen;
+    if (idig <= digits.length() - dlen) { // >= 2 digits
+      String newDig = digits.substring(idig, idig + dlen);
+      idig += dlen;
+      final int oldState = newDig.compareTo(oldDig); // 0 = flat, 1 = ascent, -1 = descent
+      result = oldState == 0 ? oldState : (oldState < 0 ? -1 : 1); // 1st pair -> up / down
+      while (result != 0 && idig <= digits.length() - dlen) { // check that no following is flat
+        oldDig = newDig;
+        newDig = digits.substring(idig, idig + dlen);
+        idig += dlen;
+        if (newDig.compareTo(oldDig) == 0) {
+          result = 0;
+        }
+      } // while
+      // >= 2 digits
+    } // else only 1 digit - none
+    return result;
+  }
+  
+  /**
    * Determine whether an array contains increasing lengths only
    * @param number get the run lengths from this number
    * @param base represent in this base

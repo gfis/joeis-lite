@@ -768,6 +768,18 @@ baspitpeak:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+baspiece:
+	perl ck/ck_guides.pl -a H \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+baszigzag:
+	perl ck/ck_guides.pl -a I \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 basrundist:
 	perl ck/ck_guides.pl -a J \
 	>        $@.gen

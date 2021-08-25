@@ -56,6 +56,16 @@ while (<DATA>) {
             &outstd($ans[0], $base, 0);
             &outstd($ans[1], $base, 1);
             &outstd($ans[2], $base,-1);
+        } elsif ($opt eq "H") { # pieces
+            ($opt, $base, @ans) = split(/\s+/, $line);
+            $callcode = "baspiece";
+            &outstd($ans[0], $base);
+        } elsif ($opt eq "I") { # zigzag up, down or none
+            ($opt, $base, @ans) = split(/\s+/, $line);
+            $callcode = "baszigzag";
+            &outstd($ans[0], $base, 1);
+            &outstd($ans[1], $base,-1);
+            &outstd($ans[2], $base, 0);
         }
     } # line with =opt=
 } # while <DATA>
@@ -118,9 +128,6 @@ Base   #(rises) = #(falls)   #(rises) > #(falls)   #(rises) < #(falls)
 #--------------------------------
 A297030		Number of pieces in the list d(m),d(m-1),...,d(0) of base-2 digits of n; see Comments		17
 0, 1, 1, 2, 2, 2, 1, 2, 3, 3, 3, 3, 3, 2, 1, 2, 3, 4, 4, 4, 4, 4, 3, 3, 4, 4, 4, 3, 3, 2, 1, 2, 3, 4, 4, 5, 5, 5, 4, 4, 5, 5, 5, 5, 5, 4, 3, 3, 4, 5, 5, 5, 5, 5, 4, 3, 4, 4, 4, 3, 3, 2, 1, 2, 3, 4, 4, 5, 5, 5, 4, 5, 6, 6, 6, 6, 6, 5, 4, 4, 5, 6, 6, 6, 6, 6 (list; graph; refs; listen; history; edit; text; internal format)
-OFFSET	
-1,4
-COMMENTS	
 The definition of "piece" starts with the base-b digits d(m), d(m-1), ..., d(0) of n. 
 First, an *ascent* is a list (d(i),d(i-1),...,d(i-h)) such that d(i)<d(i-1)<...<d(i-h), where d(i+1)>=d(i) if i<m, and d(i-h-1)>=d(i-h) if i>h.  
 A *descent* is a list (d(i),d(i-1),...,d(i-h)) such that d(i)>d(i-1)>...>d(i-h), where d(i+1)<=d(i) if i<m, and d(i-h-1)<=d(i-h) if i>h.  
@@ -159,7 +166,7 @@ whereas 4,2,5,3,0,1,4,2 has a down-first pattern.
 The sequences A297146-A297148 partition the natural numbers. 
 In the following guide, column four, "complement" means the sequence of natural numbers not in the corresponding sequences in columns 2 and 3.
 ***A297146
-Base      up-first    down-first  complement
+Base          up-first    down-first  complement
 =I=	2           (none)     A000975     A107907
 =I=	3          A297124     A297125     A297126
 =I=	4          A297128     A297129     A297130
