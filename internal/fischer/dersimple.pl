@@ -38,7 +38,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     } else {
         die "invalid option \"$opt\"\n";
     }
-} # while $opt
+} # while options
 #----------------
 my $aseqno;
 my $offset = 1;

@@ -2,13 +2,14 @@
 
 # Extract parameters for PositionSequence.java
 # @(#) $Id$
+# 2021-08-26: read ofter
 # 2020-06-21: read deriv0.tmp; from cat25.txt
 # 2020-06-04, Georg Fischer
 #
 #:# Usage:
 #:#     grep -E "Positions of " $(COMMON)/cat25.txt \
 #:#     | cut -b4 | sed -e "s/ /\t/" \
-#:#     | perl posins.pl [-d debug] > posins.gen 2> posins.rest
+#:#     | perl posins.pl [-d debug] [-f ofter-file] > posins.gen 2> posins.rest
 #:# Reads deriv0.txt for implemented jOEIS sequences with their offsets.
 #--------------------------------------------------------
 use strict;
@@ -23,48 +24,52 @@ if (scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
-while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
-    my $opt = shift(@ARGV);
-    if (0) {
-    } elsif ($opt  =~ m{d}) {
-        $debug     = shift(@ARGV);
-    } else {
-        die "invalid option \"$opt\"\n";
-    }
-} # while $opt
 
 my %bases = qw(binary 2 digital 2 ternary 3 duodecimal 12 hexadecimal 16 sexagesimal 60);
 my $line;
-my ($aseqno, $offset1, $name, @rest); # records in joeis_names.txt
+my ($aseqno, $offset1, $name, $terms, @rest); # records in joeis_names.txt
 my $value;
 my $cond;
 my $callcode = "posins";
 my $offset = 1;
 my $rseqno;
 my $DSEQNO = "A000000";
-#----------------
-my %ders = ();
-my $der_name = "deriv0.tmp";
-open (DER, "<", $der_name) || die "cannot read $der_name\n";
-while (<DER>) {
-    s{\s+\Z}{};
-    ($aseqno, $offset) = split(/\t/);
-    if ($offset < 0) {
-        # skip 
-        # $offset = chr(ord('Z') + 1 + $offset);
+my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
+
+while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
+    my $opt = shift(@ARGV);
+    if (0) {
+    } elsif ($opt   =~ m{\-cc}i) {
+        $callcode   = shift(@ARGV);
+    } elsif ($opt   =~ m{\-d}  ) {
+        $debug      = shift(@ARGV);
+    } elsif ($opt   =~ m{\-f}  ) {
+        $ofter_file = shift(@ARGV);
     } else {
-        $ders{$aseqno} = $offset;
+        die "invalid option \"$opt\"\n";
     }
-} # while <DER>
-close(DER);
-print STDERR "# posins.pl: " . scalar(%ders) . " jOEIS offsets read from $der_name\n";
+} # while options
+#----------------
+my %ofters = ();
+open (OFT, "<", $ofter_file) || die "cannot read $ofter_file\n";
+while (<OFT>) {
+    s{\s+\Z}{};
+    ($aseqno, $offset, $terms) = split(/\t/);
+    $terms = $terms || "";
+    if ($offset < -1) { # offsets -2, -3: strange, skip these
+    } else {
+        $ofters{$aseqno} = $offset; # "$offset\t$terms";
+    }
+} # while <OFT>
+close(OFT);
+print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
 #----------------
 
 while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
     ($aseqno, $name, @rest) = split(/\t/, $line);
-    if (! defined($ders{$aseqno})) { 
+    if (! defined($ofters{$aseqno})) { 
         $rseqno = $DSEQNO;
 
         if (0) {
@@ -125,8 +130,8 @@ while (<>) {
         $rseqno =~ s{A287357}{A287356} if $aseqno =~ m{A2873(57|58|59)}; # typo
         $rseqno =~ s{A284932}{A284792} if $aseqno =~ m{A2849(33|34)}; # typo
         $value  = 1 if $aseqno eq "A285564";
-        if (defined($ders{$rseqno})) { 
-            my $roffset = $ders{$rseqno}; # offset of $rseqno
+        if (defined($ofters{$rseqno})) { 
+            my $roffset = $ofters{$rseqno}; # offset of $rseqno
             if ($aseqno ge "A036974" and $aseqno le "A037008") {
                 $roffset = 0; # "3." of Pi to be ignored
             }

@@ -88,16 +88,16 @@ while (<DATA>) {
             my $parm1 = "mR.multiply(mB.multiply(mN).add(mC)).floor().subtract(mR.multiply(mN).floor().multiply(mB)).subtract(mR.multiply(mC).floor())";
             $expr =~ m{([^\,]+)\,([^\,]+)\,([^\,]+)};
             my @list = ($1, $2, $3);
-            print "#1 " . join("|", @list) . "\n";
+            # print "#1 " . join("|", @list) . "\n";
             my $parm2 = "~~  ";
             for (my $ipart = 0; $ipart < 3; $ipart ++) {
                 my $part = $list[$ipart];
                 $part =~ s{phi}{PHI}g;
                 $part =~ s{1\/2}{HALF}g;
-                print "#2 $part\n";
+                # print "#2 $part\n";
                 $part =~ s{(\d)}{"$anum[$1]"}eg;
                 $part =~ s{sqrt\(([^\)]+)\)}{$1\.sqrt\(\)}g;
-                print "#3 $part\n";
+                # print "#3 $part\n";
                 if ($ipart == 0) {
                     $parm2 .= "~~final CR $vars[$ipart] = CR.$part;"
                 } else {

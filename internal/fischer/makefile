@@ -3420,7 +3420,8 @@ periodic: # PeriodicSequence
 # Positions of ... in (the decimal expansion of |Annnnnn)
 posins: posins1 posins2
 posins1:
-	grep -E "Positions of " $(COMMON)/cat25.txt \
+	grep -E "Positions of " $(COMMON)/jcat25.txt \
+	| grep -E "^\%[NCF]" \
 	| grep -v "of records" \
 	| cut -b4- | sed -e "s/ /\t/" \
 	>        $@.tmp
@@ -3447,25 +3448,25 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp 
-	echo -n "binomial"                         > binomx.deris.tmp
-	echo -n "characteristic|indicator"         > charfun.deris.tmp
+	# echo -n "binomial"                         > binomx.deris.tmp
+	# echo -n "characteristic|indicator"         > charfun.deris.tmp
 	echo -n "complement"                       > compseq.deris.tmp
-	echo -n "difference"                       > diffseq.deris.tmp
-	echo -n "dirichlet"                        > dirichinv.deris.tmp
-	echo -n "dirichlet"                        > dirichcon.deris.tmp
+	# echo -n "difference"                       > diffseq.deris.tmp
+	# echo -n "dirichlet"                        > dirichinv.deris.tmp
+	# echo -n "dirichlet"                        > dirichcon.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	echo -n "euler"                            > eulerx.deris.tmp
-	echo -n "euler"                            > eulerix.deris.tmp
-	echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	echo -n "partial product"                  > partprod.deris.tmp
-	echo -n "partial sum"                      > partsum.deris.tmp
-	echo -n "prime"                            > primepos.deris.tmp
-	echo -n "prime"                            > primeval.deris.tmp
-	echo -n "record"                           > recordpos.deris.tmp
-	echo -n "record"                           > recordval.deris.tmp
-	echo -n "stirling"                         > stirling2.deris.tmp
-	echo -n "weigh"                            > weighx.deris.tmp
+	# echo -n "euler"                            > eulerx.deris.tmp
+	# echo -n "euler"                            > eulerix.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	# echo -n "partial product"                  > partprod.deris.tmp
+	# echo -n "partial sum"                      > partsum.deris.tmp
+	# echo -n "prime"                            > primepos.deris.tmp
+	# echo -n "prime"                            > primeval.deris.tmp
+	# echo -n "record"                           > recordpos.deris.tmp
+	# echo -n "record"                           > recordval.deris.tmp
+	# echo -n "stirling"                         > stirling2.deris.tmp
+	# echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
@@ -3483,7 +3484,8 @@ deris2:
 	>>       $@.gen
 #----
 deris:
-	sort     deris2.gen charfuman.tmp | uniq -w7 \
+	# sort     deris2.gen charfuman.tmp | uniq -w7 
+	sort     deris2.gen compseq.man | uniq -w7 \
 	| grep -vf not_same.man \
 	| cut -b1-512 \
 	>        deris.gen

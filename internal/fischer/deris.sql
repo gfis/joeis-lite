@@ -26,3 +26,7 @@ UPDATE seq4 SET parm4 = 'next();' WHERE callcode = 'eulerx' AND aseqno IN ('A053
 DELETE FROM seq4 WHERE parm1 NOT IN (SELECT aseqno FROM joeis);
 DELETE FROM seq4 WHERE aseqno IN ('A294905');
 COMMIT;
+-- 2021-08-26, for compseq:
+UPDATE seq4 SET callcode = 'compseq0' WHERE aseqno IN ('A153282','A165991','A219636','A228373','A257772','A325424');
+DELETE FROM seq4 WHERE aseqno IN ('A214837', 'A226913','A274504'); -- primes; not sorted
+COMMIT;
