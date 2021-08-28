@@ -1476,6 +1476,15 @@ cofr:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+decofr0:
+	grep -B1 -E "Continued fraction" $(COMMON)/joeis_names.txt \
+	| grep -B1 -P "\tnull\t" | cut -b1-128 \
+	| tee    $@.tmp
+cofrman:
+	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 decofr: # Continued fraction of real expression
 	perl decofr.pl -i 0 $(COMMON)/joeis_names.txt \
 	>        $@.gen
@@ -3485,6 +3494,7 @@ deris2:
 #----
 deris:
 	# sort     deris2.gen charfuman.tmp | uniq -w7 
+	# sort     deris2.gen compseq.man | uniq -w7
 	sort     deris2.gen compseq.man | uniq -w7 \
 	| grep -vf not_same.man \
 	| cut -b1-512 \
