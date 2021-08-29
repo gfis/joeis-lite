@@ -271,3 +271,21 @@ Base b      # runs    # distinct runs
 =K=	A190770	[(bn+c)r]-b[nr]-[cr]	sqrt(1/2),3,1
 =K=	A190775	[(bn+c)r]-b[nr]-[cr]	sqrt(1/2),3,2
 #--------------------------------
+Let s(n)=F(n+1), where F=A000045 (Fibonacci numbers), so that s=(1,2,3,5,8,13,21,...).  
+If c is a positive integer, there are infinitely many pairs (k,j) such that c divides s(k)-s(j).  
+The set of differences s(k)-s(j) is ordered as a sequence at A204922.  Guide to related sequences:
+=L=	c	k......	j.....s(k)-s(j).[s(k)-s(j)]/c
+=L=	2	A205837	A205838	A205839	A205840
+=L=	3	A205842	A205843	A205844	A205845
+=L=	4	A205847	A205848	A205849	A205850
+=L=	5	A205852	A205853	A205854	A205855
+=L=	6	A205857	A205858	A205859	A205860
+=L=	7	A205862	A205863	A205864	A205865
+=L=	8	A205867	A205868	A205869	A205870
+=L=	9	A205872	A205873	A205874	A205875
+=L=	10	A205877	A205878	A205879	A205880
+#--------------------------------
+#--------------------------------
+#--------------------------------
+#--------------------------------
+#--------------------------------

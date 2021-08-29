@@ -268,7 +268,8 @@ control: # extract shorter descriptions for passed seqs.
 	wc -l    $(CC).$@.txt
 #----
 # ... oeis\a062\A062724.java:23: error: no suitable method found for add(CR)
-prune: purge # parameter: CC; $(CC).fail.log from previous test is stripped off $(CC).gen
+#
+prune: purge # parameter: CC; dist.log from previous dist is stripped off $(CC).gen
 	# ---- $@ CC=$(CC)
 	cat dist.log \
 	| perl -ne 'if (m{(A\d+)\.java\:\d*\:\s*error\:}) { print "$$1\n"; } '\
