@@ -21,6 +21,9 @@ n	name	0	CR.valueOf(mN)	0
 b	name	0	mB	0
 c	name	0	mC	0
 d	name	0	mD	0
+f	name	0	mF	0
+h	name	0	mH	0
+k	name	0	mK	0
 r	name	0	mR	0
 s	name	0	mS	0
 t	name	0	mT	0
@@ -54,6 +57,7 @@ besselY0)	meth	1	.besselY0(	0
 ceil)	meth	1	.ceil(	0
 ei)	meth	1	.ei(	0
 Gamma)	meth	1	.gamma(	1
+GAMMA)	meth	1	.gamma(	0
 lnGamma)	meth	1	.lnGamma(	1
 li)	meth	1	.li(	0
 si)	meth	1	.si(	0
@@ -64,6 +68,7 @@ erf)	meth	1	.erf(	0
 erfc)	meth	1	.erfc(	0
 exp)	meth	1	.exp(	0
 floor)	meth	1	.floor(	0
+frac)	meth	1	.frac(	0
 ln)	meth	1	.log(	0
 log)	meth	1	.log(	0
 log2)	meth	1	.log().divide(CR.TWO.log()	0
@@ -114,7 +119,8 @@ arcoth)	func	1	REALS.acoth(
 arsech)	func	1	REALS.asech(
 arcsch)	func	1	REALS.acsch(
 
-zeta)	func	1	Zeta.zeta(	1
+# zeta)	func	1	Zeta.zeta(	1
+# Zeta)	func	1	Zeta.zeta(	1
 
 # omega	irvine.factor.factor.Cheetah.factor(mN).omega()
 # sigma	irvine.factor.factor.Cheetah.factor(mN).sigma()

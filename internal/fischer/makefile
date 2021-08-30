@@ -483,6 +483,16 @@ A060722:
 A063555: # 2021-05-29
 	grep -E "^A[0-9]" $@.man > $@.gen
 #----
+A094969:
+	cat $(COMMON)/joeis_names.txt \
+	| perl -ne 'my $$aseqno = substr($$_, 0, 7); if (m{[Ff]loor\((\d+)\^n\/(\d+)\^n\)\.}) {'\
+	' my ($$parm1, $$parm2) = ($$1, $$2); '\
+	' print join("\t", $$aseqno, "parmof3", 0, "$@", $$parm1, $$parm2) . "\n"; } '\
+	| grep -vE "A153725" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 A095425:
 	grep -E "^A094324" anastret.txt \
 	| perl -ne 's/\s+\Z//; my ($$d1, $$aseqno, $$d2, @parms) = split(/\t/); '\
@@ -1948,6 +1958,16 @@ floor:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--	
+floorn:
+	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+floorn_poeis:
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM poeis);"
+	$(DBAT) -x -444444 seq4 > floorn.gen
 #--	
 floorD:
 	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \

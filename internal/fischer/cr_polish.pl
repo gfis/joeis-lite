@@ -86,14 +86,20 @@ sub polish {
         $parm1 =~ s{zzzz\(}{zeta\(}g; # unshield
         # ---- general polishing ----
         $parm1 =~ s{\.gamma\(\)\.log\(\)}{\.lnGamma\(\)}g;
-        $parm1 =~ s{\.pow\(CR\.valueOf\((\-?\d+)\)\)}{\.pow\($1\)}; # pow(int)
+        $parm1 =~ s{\.pow\(CR\.valueOf\((\-?\d+|mN)\)\)}{\.pow\($1\)}g; # pow(int)
         $parm1 =~ s{CR\.valueOf\((\d|10)\)}{CR\.$anum[$1]}g;
         $parm1 =~ s{CR\.ONE\.divide\(CR\.TWO\)}{CR\.HALF}g;
         $parm1 =~ s{null\.}{CR\.ZERO\.}g; # unary "-" has problems
         $parm1 =~ s{\.pow\(CR\.HALF\)}{\.sqrt\(\)}g;
         $parm1 =~ s{CR\.TWO\.sqrt\(\)}{CR\.SQRT2}g;
         $parm1 =~ s{CR\.HALF\.multiply\(CR\.FIVE\.sqrt\(\)\.add\(CR\.ONE\)\)}{CR\.PHI}g;
-        $parm1 =~ s{(\.floor\(\)\.)(add|subtract)\(CR\.(\w+)\)\t}{$1$2\(Z\.$3\)\t}; # trailing "-1" 
+        #           1  2                        3
+        $parm1 =~ s{(\.(floor|ceil|round)\(\)\.)(add|subtract|multiply)\(CR\.}{$1$3\(Z\.}g; # trailing "-1"
+        if ($parm1 =~ m{(floor|ceil|round)\(\)\)}) { # floor)) at the end
+            # A184809	floor	0	CR.valueOf(mN).add(CR.THREE.divide(CR.TWO).sqrt().multiply(CR.valueOf(mN)).floor())	~~  
+            #               1-------------------------1  2---2
+            $parm1 =~ s{\ACR(\.[A-Z]+|\.valueOf\(\w+\))\.(\w+)}{Z$1\.$2};
+        }
         return $parm1;
 } # polish
 __DATA__
