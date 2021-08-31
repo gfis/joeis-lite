@@ -273,11 +273,11 @@ prune: purge # parameter: CC; dist.log from previous dist is stripped off $(CC).
 	# ---- $@ CC=$(CC)
 	cat dist.log \
 	| perl -ne 'if (m{(A\d+)\.java\:\d*\:\s*error\:}) { print "$$1\n"; } '\
-	| cut -b1-7 > prune.tmp
-	wc -l    prune.tmp
-	grep -vf prune.tmp $(CC).gen > $(CC).tmp
-	grep  -f prune.tmp $(CC).gen > $(CC).reco.tmp
-	sed -e "s/\r//" $(CC).tmp > $(CC).gen
+	| sed -e "s/\r//" > prune.grep.tmp
+	wc -l    prune.grep.tmp
+	grep -vf prune.grep.tmp $(CC).gen > $(CC).prune.tmp || :
+	grep  -f prune.grep.tmp $(CC).gen > $(CC).javer.tmp || :
+	sed -e "s/\r//" $(CC).prune.tmp > $(CC).gen
 	wc -l $(CC).*
 purge: # remove all oeis/annn directories
 	# ---- $@ CC=$(CC)

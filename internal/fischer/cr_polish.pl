@@ -74,9 +74,6 @@ sub polish {
         while ($parm1 =~ m{zeta\(CR\.valueOf\((\d|10)\)}) {
             $parm1    =~ s{zeta\(CR\.valueOf\((\d|10)\)}{zzzz\($1\)};
         }
-    #   while ($parm1 =~ m{zeta\(CR\.valueOf\((\d+)\)\)}) {
-    #       $parm1    =~ s{zeta\(CR\.valueOf\((\d+)\)\)}{zzzz\($1\)};
-    #   }
         if ($parm1    =~ m{zeta\(}) {
             $nok = 1; # zeta with fraction, expression
         }
@@ -89,6 +86,7 @@ sub polish {
         $parm1 =~ s{\.pow\(CR\.valueOf\((\-?\d+|mN)\)\)}{\.pow\($1\)}g; # pow(int)
         $parm1 =~ s{CR\.valueOf\((\d|10)\)}{CR\.$anum[$1]}g;
         $parm1 =~ s{CR\.ONE\.divide\(CR\.TWO\)}{CR\.HALF}g;
+        $parm1 =~ s{CR\.ONE\.divide\(CR\.THREE\)}{CR\.ONE_THIRD}g;
         $parm1 =~ s{null\.}{CR\.ZERO\.}g; # unary "-" has problems
         $parm1 =~ s{\.pow\(CR\.HALF\)}{\.sqrt\(\)}g;
         $parm1 =~ s{CR\.TWO\.sqrt\(\)}{CR\.SQRT2}g;
@@ -97,8 +95,9 @@ sub polish {
         $parm1 =~ s{(\.(floor|ceil|round)\(\)\.)(add|subtract|multiply)\(CR\.}{$1$3\(Z\.}g; # trailing "-1"
         if ($parm1 =~ m{(floor|ceil|round)\(\)\)}) { # floor)) at the end
             # A184809	floor	0	CR.valueOf(mN).add(CR.THREE.divide(CR.TWO).sqrt().multiply(CR.valueOf(mN)).floor())	~~  
+            # A195125	floor	0	CR.TWO.multiply(CR.valueOf(mN)).subtract(mR.multiply(CR.valueOf(mN)).floor())	~~  ~~private final CR mR = CR.PI.subtract(CR.THREE);							a(n) = 2*n - floor(n*r), where r=Pi-3.
             #               1-------------------------1  2---2
-            $parm1 =~ s{\ACR(\.[A-Z]+|\.valueOf\(\w+\))\.(\w+)}{Z$1\.$2};
+            $parm1 =~ s{\ACR(\.[A-Z]+|\.valueOf\(\w+\))\.(\w+)\(CR\.}{Z$1\.$2\(Z\.};
         }
         return $parm1;
 } # polish
