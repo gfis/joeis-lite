@@ -1982,18 +1982,6 @@ floorK:
 	# head -n4 $@.gen
 	wc -l    $@.gen
 #--------
-cklist:
-	$(DBAT) "SELECT i.aseqno, COALESCE(j.superclass, 'null'), n.name, i.keyword, b.bfimax - b.bfimin + 1 \
-	  FROM asinfo i, asname n, bfinfo b LEFT JOIN joeis j ON j.aseqno = b.aseqno \
-	  WHERE i.aseqno = n.aseqno \
-	    AND n.aseqno = b.aseqno \
-	    AND i.author LIKE '%Kimberling%' \
-	    AND i.aseqno NOT IN (SELECT aseqno FROM poeis) \
-	  ORDER BY 1;" \
-	>        ck/$@.txt
-	head -n4 ck/$@.txt
-	wc -l    ck/$@.txt
-#--------
 floold0: floold1 floold2 floold3 floold4 floold5
 floold1:
 	grep -E "\[|floor|ceil|round|fract" $(COMMON)/joeis_names.txt \
@@ -5712,4 +5700,10 @@ analog5:
 	>        $@.txt
 	head -n4 $@.txt
 	wc   -l  $@.txt
-#--------
+#================
+# Clark Kimberling's sequences
+cklist:
+	cd ck; make $@
+intin:
+	cd ck; make $@
+#================

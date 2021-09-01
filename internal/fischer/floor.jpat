@@ -18,6 +18,7 @@ $(PARM2)
     super($(OFFSET));
   }
 
+  @Override
   public Z evalCR(final long mN) {
     return $(PARM1);
   }
