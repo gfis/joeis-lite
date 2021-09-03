@@ -5525,6 +5525,12 @@ uvpoly: # in ./ck, A208510 ff.
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen	
+uvpolx: # in ./ck, A208510 ff.
+	sort ck/$@.tmp | uniq -w7 \
+	| grep -v mRow \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen	
 #--------------------------------
 weight_check:
 	grep "Weight distr" $(COMMON)/names \

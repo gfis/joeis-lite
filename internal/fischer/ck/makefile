@@ -106,5 +106,9 @@ uvpoly2: # join the 4 lines cack into .gen format
 	head -n4 uvpoly.tmp
 	wc -l    uvpoly.tmp
 #----
-
-
+uvpolx: # extract polynomials and convert them to vectors
+	perl ck_guides.pl -a N \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#--------
