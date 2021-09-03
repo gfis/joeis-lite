@@ -24,7 +24,7 @@ while (<>) {
     my $line = $_;
     if ($line =~ m{\A(A\d+)}) { # starts with 
         my $aseqno = $1;
-        if ($line =~ m{in a then ([\dx\+\-\[\]\*\/\^flor\(\)]+) and ([\dx\+\-\[\]\*\/\^flor\(\)]+) are in a}) { # extract parameters
+        if ($line =~ m{in +\w +then +([\dx\+\-\[\]\*\/\^flor\(\)]+) +and +([\dx\+\-\[\]\*\/\^flor\(\)]+) +are +in +\w}) { # extract parameters
             my ($expr1, $expr2) = ($1, $2);
             my ($oxpr1, $oxpr2) = ($1, $2);
             ($expr1, $expr2) = map {

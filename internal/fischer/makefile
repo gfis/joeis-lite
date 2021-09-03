@@ -1705,6 +1705,9 @@ dupl3:
 dupl:
 	cp -v dupl3.tmp $@.gen
 #--------------------------------
+emullin:
+	cp -v emullin.man emullin.gen
+#--------------------------------
 engelex0:
 	grep -iE "(Engel|Pierce) expansion of" $(COMMON)/joeis_names.txt \
 	| perl -ne 'use strict; my ($$aseqno, $$superclass, $$name, $$keyword, $$range) = split(/\t/); '\
@@ -5516,6 +5519,12 @@ cofr_sqrt:
 	" \
 	| tee $@.tmp
 	wc -l $@.tmp
+#--------------------------------
+uvpoly: # in ./ck, A208510 ff.
+	sort ck/$@.tmp | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen	
 #--------------------------------
 weight_check:
 	grep "Weight distr" $(COMMON)/names \
