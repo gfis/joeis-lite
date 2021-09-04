@@ -5527,7 +5527,6 @@ uvpoly: # in ./ck, A208510 ff.
 	wc   -l  $@.gen	
 uvpolx: # in ./ck, A208510 ff.
 	sort ck/$@.tmp | uniq -w7 \
-	| grep -v mRow \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen	

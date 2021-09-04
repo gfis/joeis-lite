@@ -111,4 +111,9 @@ uvpolx: # extract polynomials and convert them to vectors
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+uvpolx_check:
+	cut -f1,4,7 uvpolx.tmp \
+	| sort \
+	>        $@.tmp
+	uedit64  $@.tmp
 #--------

@@ -11,7 +11,7 @@ public class $(ASEQNO) extends A208508 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(Polynomial.create($(PARM1)), Polynomial.create($(PARM2)), Polynomial.create($(PARM3))
-        , Polynomial.create($(PARM4)), Polynomial.create($(PARM5)), Polynomial.create($(PARM6)));
+    super(Polynomial.create($(PARM1)), Polynomial.create($(PARM2)), Polynomial.create($(PARM3)),
+        Polynomial.create($(PARM4)), Polynomial.create($(PARM5)), Polynomial.create($(PARM6)));
   }
 }
