@@ -1,5 +1,5 @@
 package irvine.oeis.a208;
-// manually 2021-09-03
+// manually 2021-09-04
 
 import irvine.math.group.IntegerField;
 import irvine.math.group.PolynomialRingField;
@@ -14,6 +14,7 @@ import irvine.oeis.Sequence;
 public class A208508 implements Sequence {
 
   private static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
+  protected int mVariant; // 1 = normal, 2 = add mRow to mD
   protected Polynomial<Z> mA; // factor of u(n-1)
   protected Polynomial<Z> mB; // factor of v(n-1)
   protected Polynomial<Z> mC; // constant of u(n)
@@ -32,12 +33,13 @@ public class A208508 implements Sequence {
   public A208508() { // for V
     // A208508  uvpolu   1   0,1   0   1   1   1    1,x,0,1,1,1
     // A208509  uvpolv   1   0,1   0   1   1   1    1,x,0,1,1,1
-    this(Polynomial.create(1), Polynomial.create(0,1), Polynomial.create(0)
-        , Polynomial.create(1), Polynomial.create(1), Polynomial.create(1));
+    this(1, Polynomial.create(1), Polynomial.create(0,1), Polynomial.create(0),
+        Polynomial.create(1), Polynomial.create(1), Polynomial.create(1));
   }
 
   /**
    * Generic constructor with parameters
+   * @param variant: 1 = normal, 2 = add nRow to parameter d
    * @param a factor of u(n-1)
    * @param b factor of v(n-1)
    * @param c constant of u(n)
@@ -45,8 +47,8 @@ public class A208508 implements Sequence {
    * @param e factor of v(n-1)
    * @param f constant of v(n)
    */
-  public A208508(final Polynomial<Z> a, final Polynomial<Z> b, final Polynomial<Z> c
-      , final Polynomial<Z> d, final Polynomial<Z> e, final Polynomial<Z> f) {
+  public A208508(int variant, final Polynomial<Z> a, final Polynomial<Z> b, final Polynomial<Z> c, final Polynomial<Z> d, final Polynomial<Z> e, final Polynomial<Z> f) {
+  	mVariant = variant;
     mA = a;
     mB = b;
     mC = c;
@@ -69,7 +71,7 @@ public class A208508 implements Sequence {
       // u(n,x)=a(n,x)*u(n-1,x)+b(n,x)*v(n-1,x)+c(n,x)
       // v(n,x)=d(n,x)*u(n-1,x)+e(n,x)*v(n-1,x)+f(n,x).
       mU = RING.add(RING.multiply(mA, mU_1), RING.add(RING.multiply(mB, mV_1), mC));
-      mV = RING.add(RING.multiply(mD, mU_1), RING.add(RING.multiply(mE, mV_1), mF));
+      mV = RING.add(RING.multiply((mVariant == 2) ? RING.add(Polynomial.create(mRow), mD) : mD, mU_1), RING.add(RING.multiply(mE, mV_1), mF));
     }
   }
 
