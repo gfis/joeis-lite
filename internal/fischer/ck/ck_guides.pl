@@ -30,7 +30,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 my $offset = 0;
-my ($opt, $base, @ans, $callcode, $expr);
+my ($opt, $base, @ans, $callcode, $expr, $aseqno, $rseqno, $var);
 my @anum = qw (
   ZERO
   ONE
@@ -108,27 +108,16 @@ while (<DATA>) {
         } elsif ($opt eq "L") {
             # nyi
         } elsif ($opt eq "M") { # superclass A194285
-            my ($r, $s, $aseqno, @rest);
-            my $rseqno= "A194285";
+            my ($r, @rest);
+            $rseqno   = "A194285";
             $callcode = "parm3";
-            ($opt, $r, $s, $aseqno, @rest) = split(/[\s\.]+/, $line);
-            $r =~ s{\(\-1\+sqrt\(3\)\/2}{\(CR\.THREE\.sqrt\(\)\.subtract\(CR\.ONE\)\.divide\(CR.TWO\)}g;
-            $r =~ s{tau}{phi}g;
-            $r =~ s{phi}{CR\.PHI}g;
-            $r =~ s{pi}{CR\.PI}g;
-            $r =~ s{e}{CR\.E}g;
-            $r =~ s{1\/2}{CR\.HALF}g;
-            $r =~ s{\(\-1}{\(CR\.ONE\.negate\(\)}g;
-            $r =~ s{(\d)}{CR\.$anum[$1]}g;
-            $r =~ s{sqrt\(([^\)]+)\)}{$1\.sqrt\(\)}g;
-            $r =~ s{\/(.*)}{\.divide\($1\)}g;
-            $r =~ s{\-(.+)}{\.subtract\($1\)};
-            $r =~ s{\+(.+)}{\.add\($1\)};
-            $s =~ s{\An\Z}{1};
-            $s =~ s{\A2\*?n\Z}{2};
-            $s =~ s{\An\^2\Z}{3};
-            $s =~ s{\A2\^n\Z}{4};
-           &outstd($aseqno, $rseqno, $s, $r);
+            ($opt, $r, $var, $aseqno, @rest) = split(/[\s\.]+/, $line);
+            $r = &crify($r);
+            $var =~ s{\An\Z}{1};
+            $var =~ s{\A2\*?n\Z}{2};
+            $var =~ s{\An\^2\Z}{3};
+            $var =~ s{\A2\^n\Z}{4};
+            &outstd($aseqno, $rseqno, $var, $r);
         } elsif ($opt eq "N") { # superclass A208509
             # u(1,x)=1 and u(2,x)=a+b+c: u(n,x) = (a+e)u(n-1,x) + (bd-ae)u(n-2,x) + bf-ce+c.
             # v(1,x)=1 and v(2,x)=d+e+f: v(n,x) = (a+e)v(n-1,x) + (bd-ae)v(n-2,x) + cd-af+f.
@@ -136,15 +125,15 @@ while (<DATA>) {
             # =N=   A034839 u   1       1       0       1       x       0           CCOT
             my ($oa, $ob, $oc, $od, $oe, $of);
             my ($a, $b, $c, $d, $e, $f);
-            my ($aseqno, $uv, $variant, @rest);
-            $variant = 1;
+            my ($uv, @rest);
+            $var = 1;
             ($opt, $aseqno, $uv, $oa, $ob, $oc, $od, $oe, $of, @rest) = split(/[\s\.]+/, $line);
             ($opt, $aseqno, $uv, $a , $b , $c , $d , $e , $f , @rest) = map {
                 if (0) { #   1---1  2---------2
                 } elsif (s{\A(\d+)?x([\+\-]\d+)?\Z}   {($2 || "0") . ", " . ($1 || "1")}e  ) {
                 #            1---1     2---------2
                 } elsif (s{\A(\d+)?x\+n([\+\-]\d+)?\Z}{($2 || "0") . ", " . ($1 || "1")}e  ) {
-                    $variant = 2;
+                    $var = 2;
                 } elsif (s{\Ax\Z}{0,1}                                                     ) {
                 } elsif (s{\A\-x\Z}{0,-1}                                                  ) {
                 } else { # leave single [\+\-]\d+
@@ -157,12 +146,42 @@ while (<DATA>) {
                 $hash{$aseqno} = 1;
                 $callcode = "uvpolx";
                 my $rseqno = ($uv eq "u") ? "A208508" : "A208509";
-                &outstd($aseqno, $rseqno, $variant
+                &outstd($aseqno, $rseqno, $var
                     , join(", ", map { "Polynomial.create($_)" } ($a, $b, $c, $d, $e, $f))
                     , "$oa,$ob,$oc,$od,$oe,$of");
             } else {
                 print STDERR "# duplicate $line\n;"
             }
+        } elsif ($opt eq "O") { # superclass A194368 etc.
+            #     r..........p/q....s(m)<0....s(m)=0....[[m/q]]...s(m)>0
+            #=O=  sqrt(2)....1/2....(empty)...A194368...A194369...A194370
+            my ($r, $c);
+            ($opt, $r, $c, @ans) = split(/[\s\.]+/, $line);
+            @ans = map { (m{\AA\d+\Z}) ? $_ : "nnnn" } @ans;
+            $r = &crify($r);
+            $c = &crify($c);
+            #=O=    tau.....   <tau>/2...A194461...(none)....(none)....A194462
+            #=O=    tau.....   c...      A194463...(none)....(none)....A194464
+            #=O=    sqrt(2)....1/r....   A194465...(none)....(none)....A194466
+            #=O=    sqrt(3)....1/r....   A194467...(none)....(none)....A194468
+            for (my $ians = 0; $ians < scalar(@ans); $ians ++) {
+                $aseqno = $ans[$ians];
+                if ($aseqno ne "nnnn") {
+                    if (0) {
+                    } elsif ($ians == 2) {
+                        $rseqno   = $ans[$ians - 1];
+                        $callcode = "dersimple";
+                        outstd($aseqno, $rseqno
+                            , ($c =~ m{HALF}) ? ".divide2()" : ".divide\(Z\.THREE\)"
+                            );
+                    } else {
+                        $rseqno   = "A194368";
+                        $callcode = "parm4";
+                        outstd($ans[$ians], $rseqno, $ians + 1, $r, $c);
+                    }
+                } # if valid
+            } # for $ians
+        } else { # unknown -a
         }
     } # line with =opt=
 } # while <DATA>
@@ -171,6 +190,27 @@ sub outstd {
     my ($aseqno, @parms) = @_;
     print join("\t", $aseqno, $callcode, $offset, @parms) . "\n";
 } # outstd
+#----
+sub crify {
+    my ($r) = @_;
+    $r =~ s{pi}{CR\.PI}ig;
+    $r =~ s{e}{CR\.E}g;
+    $r =~ s{\(\-1\+sqrt\(3\)\/2}{\(CR\.THREE\.sqrt\(\)\.subtract\(CR\.ONE\)\.divide\(CR.TWO\)}g;
+    $r =~ s{\<tau\>\/2}{CR\.PHI\.frac\(\)\.divide\(CR\.TWO\)}g;
+    $r =~ s{\<tau\/2\>}{CR\.PHI\.divide\(CR\.TWO\)\.frac\(\)}g;
+    $r =~ s{tau}{phi}g;
+    $r =~ s{phi}{CR\.PHI}g;
+    $r =~ s{1\/2}{CR\.HALF}g;
+    $r =~ s{1\/3}{CR\.ONE_THIRD}g;
+    $r =~ s{1\/r}{mR\.inverse\(\)}g;
+    $r =~ s{\(\-1}{\(CR\.ONE\.negate\(\)}g;
+    $r =~ s{sqrt\(([^\)]+)\)}{$1\.sqrt\(\)}g;
+    $r =~ s{(\d+)}{($1 > 10) ? "CR\.valueOf\($1\)" : "CR\.$anum[$1]"}eg;
+    $r =~ s{\/(.*)}{\.divide\($1\)}g;
+    $r =~ s{\-(.+)}{\.subtract\($1\)};
+    return $r;
+} # cify
+#--------
 __DATA__
 #--------------------------------
 A296712		Numbers n whose base-10 digits d(m), d(m-1), ..., d(0) have #(rises) = #(falls); see Comments.		116
@@ -896,9 +936,9 @@ In each case, (n-th row sum)=s(n).  Examples:
 =O=	sqrt(3)....1/3....A194415...A194416...A194417...A194418
 =O=	sqrt(5)....1/3....A194419...A194420...(none)....A194421
 =O=	sqrt(2)....2/3....A194422...A194423...A194424...A194425
-=O=	tau.....<tau>/2...A194461...(none)....(none)....A194462
-=O=	tau.....<tau/2>...A194463...(none)....(none)....A194464
-=O=	sqrt(2)....1/r....A194465...(none)....(none)....A194466
-=O=	sqrt(3)....1/r....A194467...(none)....(none)....A194468
+=O=	tau.....   <tau>/2...   A194461...(none)....(none)....A194462
+=O=	tau.....   <tau/2>...   A194463...(none)....(none)....A194464
+=O=	sqrt(2)....1/sqrt(2)....A194465...(none)....(none)....A194466
+=O=	sqrt(3)....1/sqrt(3)....A194467...(none)....(none)....A194468
 #--------------------------------
 #--------------------------------

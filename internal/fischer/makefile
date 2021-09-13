@@ -582,6 +582,12 @@ A194285: # Triangular array:  g(n,k)=number of fractional parts (i*sqrt(2)) in i
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+A194368: # Numbers m such that Sum_{k=1..m} (<1/2 + k*r> - <k*r>) = 0, where r=sqrt(2) and < > denotes fractional part.
+	cd ck; perl ck_guides.pl -a O \
+	>        ../$@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 A247750: # Numbers in decimal representation, such that in Czech their digits are in alphabetic order. 
 	grep -E "^A[0-9]" $(WORD)/$@.gen \
 	>        $@.gen
