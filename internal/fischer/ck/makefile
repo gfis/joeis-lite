@@ -85,6 +85,7 @@ A189011:
 	perl zero_one.pl -j > ../$@.jpat
 	grep -P "Zero\-one +sequence +based +on +" $(COMMON)/joeis_names.txt \
 	| perl zero_one.pl -d 0 \
+	| grep -Ev "^(A189141|A189301)" \
 	>        ../$@.gen
 	head -n4 ../$@.gen
 	wc -l    ../$@.gen
