@@ -50,7 +50,7 @@ public class A189011 extends ArrayList<Z> implements Sequence {
     while (mV <= 0) { 
       mV = mSeqV.next().intValue();
     }
-    mKu = 1;
+    mKu = 1; // CK assumes this
     mKv = 1;
     add(null); // a(0) is not used
     mLen = inits.length;
@@ -68,13 +68,11 @@ public class A189011 extends ArrayList<Z> implements Sequence {
 
   @Override
   public Z next() {
-    String test = "none";
     ++mN;
     Z result = Z.NEG_ONE;
-    System.out.println("****" + ", mN=" + mN + ", mKu=" + mKu + ", mU=" + mU + ", mKv=" + mKv  + ", mV=" + mV + ", size=" + size() + ", a(" + (mN - 1) + ")=" + get(mN - 1));
+    // System.out.println("****" + ", mN=" + mN + ", mKu=" + mKu + ", mU=" + mU + ", mKv=" + mKv  + ", mV=" + mV + ", size=" + size() + ", a(" + (mN - 1) + ")=" + get(mN - 1));
     if (mN <= mLen) {
       result = get(mN);
-      test = "init";
     } else {
       while (mU < mN) {
         ++mKu;
@@ -84,25 +82,21 @@ public class A189011 extends ArrayList<Z> implements Sequence {
         result = get(mKu);
         ++mKu;
         mU = mSeqU.next().intValue();
-        test = "u(k)";
       } else { 
         while (mV < mN) {
           ++mKv;
           mV = mSeqV.next().intValue();
         }
         if (mN == mV) {
-          System.out.println("n=mV" + ", mN=" + mN + ", mKu=" + mKu + ", mU=" + mU + ", mKv=" + mKv  + ", mV=" + mV + ", size=" + size() + ", a(" + (mN - 1) + ")=" + get(mN - 1));
           result = Z.ONE.subtract(get(mKv));
           ++mKv;
           mV = mSeqV.next().intValue();
-          test = "v(k)";
-        } else {
-          System.err.println("assert: " + ", mN=" + mN + ", mKu=" + mKu + ", mU=" + mU + ", mKv=" + mKv  + ", mV=" + mV + ", result=" + result + ", a(" + (mN - 1) + ")=" + get(mN - 1));
+          // } else {
+          //   System.err.println("assert: " + ", mN=" + mN + ", mKu=" + mKu + ", mU=" + mU + ", mKv=" + mKv  + ", mV=" + mV + ", result=" + result + ", a(" + (mN - 1) + ")=" + get(mN - 1));
         }
       }
       add(result);
     }
-    System.out.println(test + ", mN=" + mN + ", mKu=" + mKu + ", mU=" + mU + ", mKv=" + mKv  + ", mV=" + mV + ", result=" + result + ", a(" + (mN - 1) + ")=" + get(mN - 1));
     return result;
   }
 }

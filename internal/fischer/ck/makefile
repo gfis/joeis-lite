@@ -81,7 +81,7 @@ intin:
 	wc -l    ../$@.gen
 #----
 # A189011 Zero-one sequence based on triangular numbers: a(A000217(k))=a(k); a(A014132(k))=1-a(k); a(1)=0.
-A189011:
+A189011: # -a O
 	perl zero_one.pl -j > ../$@.jpat
 	grep -P "Zero\-one +sequence +based +on +" $(COMMON)/joeis_names.txt \
 	| perl zero_one.pl -d 0 \
@@ -100,8 +100,15 @@ A190803:
 #================
 # ck_guides
 #----
+morfck: # -a PQ
+	perl ck_guides.pl -a PQ \
+	| sort | uniq -w7 \
+	>        ../$@.gen
+	head -n4 ../$@.gen
+	wc -l    ../$@.gen
+#----
 # Guide in A208510 
-uvpoly: uvpoly1 uvpoly2
+uvpoly: uvpoly1 uvpoly2 # -a M
 uvpoly1: # extract polynomials and convert them to vectors, split into 4 lines (alphabetical order)
 	perl ck_guides.pl -a M \
 	| $(JPREP) -cc vect  -f - | sed -e "s/\r//" \
@@ -110,13 +117,13 @@ uvpoly1: # extract polynomials and convert them to vectors, split into 4 lines (
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #----
-uvpoly2: # join the 4 lines cack into .gen format
+uvpoly2: # join the 4 lines back into .gen format
 	perl uvpoly_join.pl uvpoly1.tmp \
 	>        uvpoly.tmp
 	head -n4 uvpoly.tmp
 	wc -l    uvpoly.tmp
 #----
-uvpolx: # extract polynomials and convert them to vectors
+uvpolx: # -a N : extract polynomials and convert them to vectors
 	perl ck_guides.pl -a N \
 	>        $@.tmp
 	head -n4 $@.tmp

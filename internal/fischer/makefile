@@ -3143,6 +3143,24 @@ mordiff:
 	cut -b1-7 morferr.gen > morfe.tmp
 	cut -b1-7 morfps.gen  > morfp.tmp
 	diff -y --width=30 --suppress-common-lines morfe.tmp morfp.tmp
+#----
+# 2021-09-20
+morfck:
+	cd ck ; make $@
+	cat morwiki.gen >> $@.gen
+#----
+morwiki:
+	perl $@.pl \
+	| sort | uniq -w7 > $@.tmp
+	make seq2 LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.info FROm seq2 s \
+	  WHERE s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	    AND s.aseqno NOT IN (SELECT aseqno FROM seq4 ) \
+	    ORDER BY 1;" \
+	| sed -e "s/ /\t/g" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 num1dig: # A126207 null    Number of 5's in decimal expansion of 5^n.
 	# grep -P "Number of (\d+\'s|zeroe?s|ones) " $(COMMON)/joeis_names.txt > $@.tmp

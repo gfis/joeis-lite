@@ -181,10 +181,27 @@ while (<DATA>) {
                     }
                 } # if valid
             } # for $ians
+        } elsif ($opt =~ m{[PQ]}) { # morphisms
+            my ($morph);
+            ($opt, $morph, @ans) = split(/\t/, $line);
+            &out($ans[0], "morfps", "0", "anchor", $morph);
+            &out($ans[1], "posins", $ans[0], 1, "0");
+            &out($ans[2], "posins", $ans[0], 1, "1");
+            if (0) {
+            } elsif ($opt eq "P") {
+                &out($ans[3], "posins", $ans[0], 1, "2");
+            } elsif ($opt eq "P") {
+                &out($ans[3], "partsum", "parm1", "parm2", "new $ans[0]()");
+            }
         } else { # unknown -a
         }
     } # line with =opt=
 } # while <DATA>
+#----
+sub out {
+    my ($aseqno, $callcode, $parm1, $parm2, $parm3) = @_;
+    print join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3) . "\n";
+} # out
 #----
 sub outstd {
     my ($aseqno, @parms) = @_;
@@ -940,5 +957,71 @@ In each case, (n-th row sum)=s(n).  Examples:
 =O=	tau.....   <tau/2>...   A194463...(none)....(none)....A194464
 =O=	sqrt(2)....1/sqrt(2)....A194465...(none)....(none)....A194466
 =O=	sqrt(3)....1/sqrt(3)....A194467...(none)....(none)....A194468
+#--------------------------------
+                            Morphism   Position sequences
+=P=	0->012, 1->210, 2->021	A287385	A287386	A287387	A287388
+=P=	0->012, 1->210, 2->102	A287397	A287398	A287399	A287400
+=P=	0->012, 1->210, 2->120	A287401	A189728	A287403	A287404
+=P=	0->012, 1->210, 2->201	A287407	A287408	A287409	A287410
+=P=	0->012, 1->120, 2->021	A287411	A287412	A287413	A287414
+=P=	0->012, 1->120, 2->102	A287418	A287419	A287420	A287421
+=P=	0->012, 1->120, 2->201	A053838	A287435	A287436	A287437
+=P=	0->012, 1->120, 2->210	A287438	A189728	A189670	A287441
+=P=	0->012, 1->201, 2->021	A287443	A287444	A287445	A287446
+=P=	0->012, 1->201, 2->102	A287447	A189724	A287449	A287450
+=P=	0->012, 1->201, 2->120	A287451	A287452	A287453	A287454
+=P=	0->012, 1->201, 2->210	A287455	A287456	A189666	A287458
+=P=	0->012, 1->102, 2->021	A287516	A287517	A287518	A189630
+=P=	0->012, 1->102, 2->120	A287520	A287521	A287522	A189630
+=P=	0->012, 1->102, 2->201	A287524	A189724	A287526	A287527
+=P=	0->012, 1->102, 2->210	A287528	A287529	A189670	A189634
+#--------------------------------
+A189576 is one of many 01-sequences fixed by morphisms.  It is helpful to classify a few such sequences:
+Type 2,2:  morphism: 0->01, 1->10, A010060 (Thue-Morse)
+..
+Type 2,3:  Each row shows a morphism, followed by four sequences:
+  (1) the fixed sequence a [starting from a(0)=0],
+  (2) positions of 0 in a,
+  (3) positions of 1 in a,
+  (4) partial sums of a.
+Some lower-numbered entries are conjectural.
+=Q=	0->01, 1->001	A189572	A189573	A080652	A088462
+=Q=	0->01, 1->010	A159684	A003152	A003151	A097508
+=Q=	0->01, 1->011	A096270	A026352	A004956	A005206
+=Q=	0->01, 1->100	A189476	A189477	A189478	A189575
+=Q=	0->01, 1->101	A189479	A007066	A099267	A189480
+=Q=	0->01, 1->110	A189576	A189577	A189578	A189579
+=Q=	0->001, 1->01	A188432	A026351	A026352	A060144
+=Q=	0->001, 1->10	A189624	A189625	A189626	A189627
+=Q=	0->010, 1->01	A003849	A000201	A001950	A060144
+=Q=	0->010, 1->10	A189661	A189662	A026356	A189663
+=Q=	0->011, 1->01	A189687	A086377	A081477	A189688
+=Q=	0->011, 1->10	A189702	A189703	A189704	A189705
+#----
+A189628 is one of many 01-sequences fixed by morphisms.  An extension of the list begun at A189576 is continued here with sequences of type 3,3.
+Each row shows a morphism, followed by four sequences:
+  (1) the fixed sequence a [starting from a(0)=0],
+  (2) positions of 0 in a,
+  (3) positions of 1 in a,
+  (4) partial sums of a.
+  Some lower-numbered entries are conjectural.
+=Q=	0->001, 1->010	A189628	A189629	A189630	A189631
+=Q=	0->001, 1->011	A116178	A189636	A189637	A189638
+=Q=	0->001, 1->100	A189632	A189633	A189634	A189635
+=Q=	0->001, 1->101	A189640	A026138	A026323	A189641
+=Q=	0->001, 1->110	A064990	A189658	A189659	A189660
+=Q=	0->010, 1->001	A189664	A189665	A189666	A189667
+=Q=	0->010, 1->011	A080846	A026225	A026179	A189672
+=Q=	0->010, 1->100	A189668	A189669	A189670	A189671
+=Q=	0->010, 1->101	A000035	A005408	A005843	A004526
+=Q=	0->010, 1->110	A189673	A026227	A026138	A189674
+=Q=	0->011, 1->001	A189706	A189707	A189708	A189709
+=Q=	0->011, 1->010	A156595	A189715	A189716	A189717
+=Q=	0->011, 1->100	A189718	A189719	A189720	A189721
+=Q=	0->011, 1->101	A189723	A189724	A189725	A189726
+=Q=	0->011, 1->110	A189727	A189728	A189729	A189730
+#--------------------------------
+#--------------------------------
+#--------------------------------
 #--------------------------------
 #--------------------------------

@@ -1,4 +1,5 @@
 -- morfps.sql
+-- @(#) $Id$
 -- 2021-05-27, Georg Fischer
 
 DELETE FROM seq4 WHERE aseqno IN
