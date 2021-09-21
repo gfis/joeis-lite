@@ -1833,9 +1833,18 @@ finifull: # finite and full
 #--
 finifuma: # finite and full - manual
 	grep -E "^A[0-9]" finifull.man > $@.gen
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-	make finalize
+	head -n4 $@.gen
+	wc -l    $@.gen
+	# make finalize
+finifubf: # create b-files for all in finifull.man
+	grep -E "^A[0-9]" finifull.man \
+	| cut -b2-7 \
+	| xargs -l -innn make finifubf1 S=nnn
+	wc -l bftmp/b05199*.txt
+finifubf1:
+	make seqtest A=A$(S) NT=1000 OFFSET=1 | grep -P "^\d+ \-?\d+\Z" \
+	>                          bftmp/b$(S).txt
+	perl -e 'print "\n\n";' >> bftmp/b$(S).txt
 #----
 noncomp: # similar to finifull and bref
 	cat $(CONSTANT)/noncomp.man \
