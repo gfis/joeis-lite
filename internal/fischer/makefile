@@ -3156,7 +3156,13 @@ mordiff:
 # 2021-09-20
 morfck:
 	cd ck ; make $@
-	cat morwiki.gen >> $@.gen
+	mv $@.gen                       $@.tmp
+	cat morwiki.gen              >> $@.tmp
+	grep -E "^A[0-9]" morfps.man >> $@.tmp
+	sort $@.tmp | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 morwiki:
 	perl $@.pl \
