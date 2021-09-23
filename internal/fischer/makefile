@@ -3154,12 +3154,21 @@ mordiff:
 	diff -y --width=30 --suppress-common-lines morfe.tmp morfp.tmp
 #----
 # 2021-09-20
-morfck:
+morfck: # morphisms from CK guides
 	cd ck ; make $@
 	mv $@.gen                       $@.tmp
 	cat morwiki.gen              >> $@.tmp
 	grep -E "^A[0-9]" morfps.man >> $@.tmp
 	sort $@.tmp | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+# 2021-09-23
+mortra: # MorphismTransform
+	grep -P "\d\-\>" $(COMMON)/names \
+	| perl morfps.pl \
+	| grep mortra \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
