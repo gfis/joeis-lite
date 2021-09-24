@@ -602,6 +602,11 @@ A247750: # Numbers in decimal representation, such that in Czech their digits ar
 a266759:
 	grep -P "\-1\,2\,\-2\,1\,"  $(COMMON)/asdata.txt | grep -P "\,1\,0\,0\,\-1\," || :
 #================================
+ajrank: # adjusted joint rank sequences (CK)
+	cd ck ; make $@
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----------------
 bas: # only a few for basdig2
 	make bas_all TARGET=select
 	cat  bas*.gen > basall.gen

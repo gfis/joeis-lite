@@ -97,6 +97,14 @@ A190803:
 	>        ../$@.gen
 	head -n4 ../$@.gen
 	wc -l    ../$@.gen
+#----
+ajrank: # adjusted joint rank sequences
+	perl ajrank.pl cklist.txt \
+	>        ../$@.gen
+	echo "#----"   >> ../$@.gen
+	cat ajrank.man >> ../$@.gen
+	head -n4 ../$@.gen
+	wc -l    ../$@.gen
 #================
 # ck_guides
 #----
