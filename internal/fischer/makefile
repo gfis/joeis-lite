@@ -810,6 +810,11 @@ baspiece:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+basvar: # down/up/total variation
+	cd ck ; make $@
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 baszigzag:
 	perl ck/ck_guides.pl -a I \
 	>        $@.gen

@@ -142,3 +142,9 @@ uvpolx_check:
 	>        $@.tmp
 	uedit64  $@.tmp
 #--------
+basvar:
+	perl ck_guides.pl -a RS \
+	>        ../$@.gen
+	head -n4 ../$@.gen
+	wc -l    ../$@.gen
+#--------

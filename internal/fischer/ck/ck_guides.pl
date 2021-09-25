@@ -193,6 +193,18 @@ while (<DATA>) {
             } elsif ($opt eq "P") {
                 &out($ans[3], "partsum", "parm1", "parm2", "new $ans[0]()");
             }
+        } elsif ($opt =~ m{R}) { # A297330 - down/up/total variation
+            ($opt, $base, @ans) = split(/[\s\.]+/, $line);
+            @ans = map { ($_ =~ m{\AA\d+\Z}) ? $_ : "nnnn" } @ans;
+            &out($ans[0], "basvardut", $base, "getDownVariation" , "");
+            &out($ans[1], "basvardut", $base, "getUpVariation"   , "");
+            &out($ans[2], "basvardut", $base, "getTotalVariation", "");
+        } elsif ($opt =~ m{S}) { # A297330 - compare down/up/total variations
+            ($opt, $base, @ans) = split(/[\s\.]+/, $line);
+            @ans = map { (m{\AA\d+\Z}) ? $_ : "nnnn" } @ans;
+            &out($ans[0], "basvarsig", $base, -1     , "");
+            &out($ans[1], "basvarsig", $base,  0     , "");
+            &out($ans[2], "basvarsig", $base, +1     , "");
         } else { # unknown -a
         }
     } # line with =opt=
@@ -200,7 +212,9 @@ while (<DATA>) {
 #----
 sub out {
     my ($aseqno, $callcode, $parm1, $parm2, $parm3) = @_;
-    print join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3) . "\n";
+    if ($aseqno ne "nnnn") {
+        print join("\t", $aseqno, $callcode, $offset, $parm1, $parm2, $parm3) . "\n";
+    }
 } # out
 #----
 sub outstd {
@@ -1021,6 +1035,44 @@ Each row shows a morphism, followed by four sequences:
 =Q=	0->011, 1->101	A189723	A189724	A189725	A189726
 =Q=	0->011, 1->110	A189727	A189728	A189729	A189730
 #--------------------------------
+    Base b     {DV(n,b)}   {UV(n,b)}    {TV(n,b)}
+=R=	2           A033264     A037800      A037834
+=R=	3           A037853     A037844      A037835
+=R=	4           A037854     A037845      A037836
+=R=	5           A037855     A037846      A037837
+=R=	6           A037856     A037847      A037838
+=R=	7           A037857     A037848      A037839
+=R=	8           A037858     A037849      A037840
+=R=	9           A037859     A037850      A037841
+=R=	10          A037860     A037851      A297330
+=R=	11          A297231     A297232      A297233
+=R=	12          A297234     A297235      A297236
+=R=	13          A297237     A297238      A297239
+=R=	14          A297240     A297241      A297242
+=R=	15          A297243     A297244      A297245
+=R=	16          A297246     A297247      A297248
+For each b, let 
+u = {n : UV(n,b) < DV(n,b)}, 
+e = {n : UV(n,b) = DV(n,b)}, and 
+d = {n : UV(n,b) > DV(n,b)}. 
+The sets u,e,d partition the natural numbers.  A guide to the matching sequences for u, e, d follows:
+***
+Base b        Sequence u   Sequence e   Sequence d
+=S=	2           A005843      A005408      (none)
+=S=	3           A297249      A297250      A297251
+=S=	4           A297252      A297253      A297254
+=S=	5           A297255      A297256      A297257
+=S=	6           A297258      A297259      A297260
+=S=	7           A297261      A297262      A297263
+=S=	8           A297264      A297265      A297266
+=S=	9           A297267      A297268      A297269
+=S=	10          A297270      A297271      A297272
+=S=	11          A297273      A297274      A297275
+=S=	12          A297276      A297277      A297278
+=S=	13          A297279      A297280      A297281
+=S=	14          A297282      A297283      A297284
+=S=	15          A297285      A297286      A297287
+=S=	16          A297288      A297289      A297290
 #--------------------------------
 #--------------------------------
 #--------------------------------

@@ -347,17 +347,13 @@ public abstract class RunsBaseSequence implements Sequence {
     int result = 0; // assume none
     int idig = 0;
     int oldDig = digits[idig++];
-    if (idig < digits.length) { // >= 2 digits
-      int newDig = digits[idig++];
-      while (idig <= digits.length) {
-        if (oldDig > newDig) {
-          result += oldDig - newDig;
-        }
-        oldDig = newDig;
-        newDig = digits[idig++];
-      } // while
-      // >= 2 digits
-    } // else only 1 digit - none
+    while (idig < digits.length) {
+      final int newDig = digits[idig++];
+      if (oldDig < newDig) {
+        result += newDig - oldDig;
+      }
+      oldDig = newDig;
+    } // while
     return result;
   }
 
@@ -372,18 +368,14 @@ public abstract class RunsBaseSequence implements Sequence {
     int result = 0; // assume none
     int idig = 0;
     int oldDig = digits[idig++];
-    if (idig < digits.length) { // >= 2 digits
-      int newDig = digits[idig++];
-      while (idig <= digits.length) {
-        if (oldDig < newDig) {
-          result += newDig - oldDig;
-        }
-        oldDig = newDig;
-        newDig = digits[idig++];
-      } // while
-      // >= 2 digits
-    } // else only 1 digit - none
-    return result;
+    while (idig < digits.length) {
+      final int newDig = digits[idig++];
+      if (oldDig > newDig) {
+        result += oldDig - newDig;
+      }
+      oldDig = newDig;
+    } // while
+   return result;
   }
 
   /**
@@ -400,17 +392,17 @@ public abstract class RunsBaseSequence implements Sequence {
    * Compare the variations
    * @param number get the property from this number
    * @param base represent in this base
-   * @return -1 if DV &lt; UV, 0 if DV == UV, 1 if DV &gt; UV
+   * @return 1 if DV &lt; UV, 0 if DV == UV, -1 if DV &gt; UV
    */
   protected int signumVariation(final Z number, final int base) {
     final int dv = getDownVariation(number, base);
     final int uv = getUpVariation(number, base);
     if (dv < uv) {
-      return -1;
+      return 1;
     } else if (dv == uv) {
       return 0;
     } else {
-      return 1;
+      return -1;
     }
   }
 
