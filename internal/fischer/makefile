@@ -525,7 +525,6 @@ A169964: # Numbers whose decimal expansion contains only 0's and 5's.
 sigma0:
 	grep -E "^A" $@.pa2 > $@.gen
 	wc -l    $@.gen
-
 #================================
 # A126043	null	Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 3.	nonn,synth	1..47	nyi
 a126043:
@@ -542,6 +541,9 @@ a139149:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------
+A157052:
+	cp -v    $@.man $@.gen
 #--------
 # A157536 Half the number of length n integer sequences with sum zero and sum of squares 32.
 a157536:
