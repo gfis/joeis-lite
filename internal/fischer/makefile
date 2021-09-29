@@ -62,6 +62,16 @@ all:
 	# Possible targets:
 	grep -E "^[a-z]" makefile | sort
 #----------------------------------
+runall: # current set of packages
+	make purge
+	# make CC=A051803 select gener 
+	make CC=A034939 select gener 
+	make CC=A015910 select gener 
+	make CC=A000301 select gener 
+	make CC=A128367 select gener 
+	make CC=A051803 select gener 
+	make CC=man man dist testall
+#----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
 	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET)     | tee x.tmp
@@ -293,7 +303,7 @@ gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	make -i $(CC).patch || :
 man: # copy sources that where manually edited
 	# ---- $@ CC=$(CC)
-	perl copyman.pl
+	perl copyman.pl > $@.gen
 	sort $@.gen $(CC).gen | uniq -w7 > $@.tmp
 	mv $@.tmp $(CC).gen
 dist:
@@ -419,17 +429,28 @@ A004050:
 a0330:
 	cp -v $@.man $@.gen
 #----
+A000301: # 2021-09-29
+	cp -v $@.man $@.gen
+#----
 A007348: # < 2021-05-15
 	perl $@.pl > $@.gen
+#----
+A015910: # 2021-09-29
+	cp -v $@.man $@.gen
 A018857: # < 2021-05-15
 	perl $@.pl > $@.gen
 	# cat      $@.gen
+A032834: # 2021-05-29
+	cp -v $@.man $@.gen
 A033235: # 52, < 2021-05-15
 	perl $@.pl > $@.gen
 A033633: # 14, < 2021-05-15
 	perl $@.pl > $@.gen
-A032834: # 2021-05-29
+#----
+A034939: # 2021-09-29
 	cp -v $@.man $@.gen
+	wc -l    $@.gen
+#----
 A035536: # < 2021-05-15
 	cp -v $@.man $@.gen
 A039832: # 2021-05-21
@@ -473,6 +494,9 @@ A050201:
 	perl anagen.pl -bs A118078 -rs A050201 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+A051803: # nonzero multiplicative products
+	grep -E "^A" $@.man > $@.gen
+	wc -l    $@.gen
 A060722:
 	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen
@@ -506,6 +530,13 @@ A095425:
 	wc -l    $@.gen
 A105471: # 2021-08-15
 	grep -E "^A[0-9]" $@.man > $@.gen
+#----
+A127757:
+	cp -v $@.man $@.gen
+#----
+A128367: # 2021-09-29
+	cp -v $@.man $@.gen
+#----
 #================
 # *.pa2
 #
@@ -1705,6 +1736,12 @@ diriprod0:
 diriprod:
 	cp -v diriprod0.tmp $@.gen
 	wc -l    $@.gen
+#--------------------------------
+divpow:
+	perl divpow.pl -d 0 $(COMMON)/joeis_names.txt \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 #--------------------------------
 dupl_prep: dupl1 dupl2 dupl3 # duplicates 
 dupl1:

@@ -25,7 +25,8 @@ foreach my $name(glob("manual/*.java")) {
     open(TAR, ">", "$tarpath/$aseqno.java") || die "cannot write $tarpath/$aseqno.java\n";
     print TAR $buffer;
     close(TAR);
-    print "copied manual/$aseqno.java -> $tarpath/$aseqno.java\n";
+    print "$aseqno\n";
+    print STDERR "copied manual/$aseqno.java -> $tarpath/$aseqno.java\n";
 }
 __DATA__
 foreach my $name(glob("manual/*.java")) {

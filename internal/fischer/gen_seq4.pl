@@ -330,7 +330,7 @@ sub get_imports {
             $result .= "\nimport $key;";
         }
     } # foreach
-    return substr($result, 1); # ignore leading "\n"
+    return length($result) > 0 ? substr($result, 1) : $result; # ignore leading "\n"
 } # get_imports
 #--------------------------------
 __DATA__
