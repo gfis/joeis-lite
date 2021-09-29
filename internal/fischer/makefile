@@ -293,11 +293,7 @@ gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	make -i $(CC).patch || :
 man: # copy sources that where manually edited
 	# ---- $@ CC=$(CC)
-	ls -1 manual/A??????.java | sed -e "s/manual\///" -e "s/\.java//" -e "s/$$/\tmanual\t0/" | tee $@.gen
-	perl -ne 'use strict; my ($$aseqno, @rest) = split(/\t/); '\
-	' my $$path = "../../src/irvine/oeis/" . lc(substr($$aseqno, 0, 4)) . "/"; '\
-	' my $$ignore = `mkdir $$path`; '\
-	' print `cp -v manual/$$aseqno.java $$path`; ' $@.gen 2> x.tmp
+	perl copyman.pl
 	sort $@.gen $(CC).gen | uniq -w7 > $@.tmp
 	mv $@.tmp $(CC).gen
 dist:
@@ -3551,7 +3547,7 @@ deris1:
 	# echo -n "binomial"                         > binomx.deris.tmp
 	# echo -n "characteristic|indicator"         > charfun.deris.tmp
 	echo -n "complement"                       > compseq.deris.tmp
-	# echo -n "difference"                       > diffseq.deris.tmp
+	echo -n "difference"                       > diffseq.deris.tmp
 	# echo -n "dirichlet"                        > dirichinv.deris.tmp
 	# echo -n "dirichlet"                        > dirichcon.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
