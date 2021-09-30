@@ -3762,6 +3762,9 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 #--------------------------------
+pastri: # GeneralizedPascalTriangle
+	cp -v $@.man $@.gen
+#--------------------------------
 # A163493 Number of binary strings of length n which have the same number of 00 and 01 substrings.
 # cf. Zeilberger: https://arxiv.org/pdf/1112.6207.pdf
 #
