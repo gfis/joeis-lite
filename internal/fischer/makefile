@@ -3763,7 +3763,7 @@ nisoman:
 	cp -v nisolut.man $@.gen
 #--------------------------------
 pastri: # GeneralizedPascalTriangle
-	grep -P "\tA000004" $(TRIREC)/pascal.tmp \
+	grep -E "^A[0-9]" $(TRIREC)/pascal.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen

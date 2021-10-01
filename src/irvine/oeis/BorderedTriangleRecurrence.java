@@ -52,6 +52,7 @@ public class BorderedTriangleRecurrence implements Sequence {
     mNewRow = new Z[0];
     mN = -1;
     mK = -1; // start with first element T(0,0)
+    mAdd = Z.ZERO;  // for safety
   }
 
   /**
@@ -80,6 +81,14 @@ public class BorderedTriangleRecurrence implements Sequence {
   }
   
   /**
+   * Gets the additive term from mSeqA for the current row
+   * @return mAdd
+   */
+  protected Z getA() {
+    return mAdd;
+  }
+  
+  /**
    * Advances the sequence for the leftmost column.
    * @param skip number of elements to skip
    */
@@ -102,6 +111,17 @@ public class BorderedTriangleRecurrence implements Sequence {
   }
   
   /**
+   * Advances the sequence for the additive term.
+   * @param skip number of elements to skip
+   */
+  protected void skipAdd(int skip) {
+    while (skip > 0) {
+      mSeqA.next();
+      --skip;
+    }
+  }
+  
+  /**
    * Return next term, reading the triangle row by row from left to right, starting with T(0,0).
    * @return the next term of the sequence.
    */
@@ -113,7 +133,7 @@ public class BorderedTriangleRecurrence implements Sequence {
       mK = 0;
       mOldRow = mNewRow;
       mNewRow = new Z[mN + 1];
-      if (mSeqA != null) {
+      if (mSeqA != null && mN >= 2) {
         mAdd = mSeqA.next();
       }
     }
