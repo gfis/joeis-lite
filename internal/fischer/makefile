@@ -636,6 +636,11 @@ ajrank: # adjusted joint rank sequences (CK)
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----------------
+aritfun: # The arithmetic function ...
+	grep -E "^A[0-9]" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----------------
 bas: # only a few for basdig2
 	make bas_all TARGET=select
 	cat  bas*.gen > basall.gen
@@ -3764,6 +3769,16 @@ nisoman:
 #--------------------------------
 pastri: # GeneralizedPascalTriangle
 	grep -E "^A[0-9]" $(TRIREC)/pascal.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+A256890:
+	perl $(TRIREC)/tri_guides.pl -a A \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+tricons:
+	grep -E "^A[0-9]" $(TRIREC)/const.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen

@@ -1,4 +1,5 @@
 #!perl
+
 # Extract parameters from Clark Kimberling's guides (overview tables)
 # @(#) $Id$
 # 2021-08-24, Georg Fischer: copied from solvetab.pl

@@ -16,8 +16,8 @@ public class BorderedTriangleRecurrence implements Sequence {
   private Sequence mSeqL; // sequence for the left border T(n,0)
   private Sequence mSeqR; // sequence for the right border T(n,n); this overwrites T(0,0)
   private Sequence mSeqA; // a(n) of this optional sequence may be used to compute T(n,k) for 0 &lt; k &lt; n.
-  private Z[] mOldRow; // previous row T(n-1,k)
-  private Z[] mNewRow; // current row T(n,k)
+  protected Z[] mOldRow; // previous row T(n-1,k)
+  protected Z[] mNewRow; // current row T(n,k)
   private int mN; // current row index n
   private int mK; // current column index k
   protected Z mAdd; // term of mSeqA, additive constant per row

@@ -16,6 +16,9 @@ UPDATE seq4 SET parm2 = 'A001519' WHERE parm2 = 'A011783';
 
 UPDATE seq4 SET parm1 = 'A033484' WHERE parm1 = 'A099018';
 UPDATE seq4 SET parm2 = 'A033484' WHERE parm2 = 'A099018';
+
+UPDATE seq4 SET parm1 = 'A004277' WHERE parm1 = 'A076032';
+UPDATE seq4 SET parm2 = 'A004277' WHERE parm2 = 'A076032';
 COMMIT;
 
 -- show the dependant ones not yet implemented in jOEIS

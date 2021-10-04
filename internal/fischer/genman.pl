@@ -5,8 +5,9 @@
 # 2021-06-26, Georg Fischer: copied from gen_linrec.pl
 #
 #:# Usage:
-#:#   perl genman.pl [-d debug] [-n] [-s] seqno
+#:#   perl genman.pl [-d debug] [-n] [-p v1,v2...] [-s] seqno
 #:#   -n generate ++mN
+#:#   -p v1,v2... names of parameters
 #:#   -s generate while loop for a subsequence
 #:#   Writes ./manual/aseqno.java and starts uedit64 with it.
 #--------------------------------------------------------
@@ -25,6 +26,7 @@ if (scalar(@ARGV) == 0) {
 }
 my $basedir   = "../../../OEIS-mat/common";
 my $namesfile = "$basedir/names";
+my @pnames    = ("parm1", "parm2");
 my $withn     = 0; # whether to generate ++mN
 my $subseq    = 0; # whether to generate a loop for a subsequence of the natural numbers
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
@@ -36,6 +38,9 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         if ($opt  =~ m{n}) {
           $withn   = 1;
         } 
+        if ($opt  =~ m{p}) {
+            @pnames = split(/\W+/, shift(@ARGV));
+        }
         if ($opt  =~ m{s}) {
           $subseq  = 1;
         }
@@ -53,6 +58,7 @@ $aseqno = sprintf("A%06d", $aseqno);
 #--------------------------------------------
 sub output {
     my ($aseqno) = @_;
+    my ($pname, $sep);
     my $package = lc(substr($aseqno, 0, 4));
     my $filename = "manual/$aseqno.java";
     open(OUT, ">", $filename) || die "cannot write \"$filename\"\n";
@@ -79,21 +85,37 @@ import irvine.oeis.Sequence;
 public class $aseqno implements Sequence {
 
 GFis
-    print OUT "  protected int mN;\n" if $withn;
+    foreach $pname (@pnames) {
+        print OUT "  protected long m" . ucfirst($pname) . ";\n";
+    }
     print OUT <<"GFis";
-  protected int mParm;
 
   /** Construct the sequence. */
   public $aseqno() {
-    this(0);
-  }
+GFis
+    print OUT "    this";
+    $sep = "(";
+    foreach $pname (@pnames) {
+        print OUT "${sep}0";
+        $sep = ", ";
+    }
+    print OUT ");\n";
+    print OUT <<"GFis";
 
   /**
-   * Generic constructor with parameter
-   * \@param parm parameter
-   */
-  public $aseqno(final int parm) {
+   * Generic constructor with parameters
 GFis
+    foreach $pname (@pnames) {
+        print OUT "   * \@param $pname \n";
+    }
+    print OUT "   */\n";
+    print OUT "  public $aseqno";
+    $sep = "(";
+    foreach $pname (@pnames) {
+        print OUT "${sep}final long $pname";
+        $sep = ", ";
+    }
+    print OUT ") {\n";
     if ($withn) {
         my $offset = 0;
         my $info = `grep -E \"\^$aseqno\" $basedir/asinfo.txt`;
@@ -103,8 +125,10 @@ GFis
         $offset--;
         print OUT "    mN = $offset;\n";
     }
+    foreach $pname (@pnames) {
+        print OUT "    m" . ucfirst($pname) . " = $pname;\n";
+    }
     print OUT <<"GFis";
-    mParm = parm;
   }
 
   \@Override
@@ -121,8 +145,8 @@ GFis
 GFis
     } else {
         print OUT "    ++mN;\n" if $withn;
+        print "return m" . ucfirst(@pnames[0]) . ";";
         print OUT <<"GFis";
-    return mParm;
 GFis
     }
     print OUT <<"GFis";
