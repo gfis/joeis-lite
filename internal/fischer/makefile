@@ -10,6 +10,7 @@ GITS=../../..
 LITE=$(GITS)/joeis-lite
 HERE=../../joeis-lite/internal/fischer
 JOEIS=$(GITS)/joeis
+COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
 COMMON=$(GITS)/OEIS-mat/common
 CONSTANT=$(GITS)/OEIS-mat/constant
 CONTRIB=$(GITS)/OEIS-mat/contrib
@@ -631,6 +632,12 @@ A247750: # Numbers in decimal representation, such that in Czech their digits ar
 a266759:
 	grep -P "\-1\,2\,\-2\,1\,"  $(COMMON)/asdata.txt | grep -P "\,1\,0\,0\,\-1\," || :
 #================================
+# A126358 Number of base 4 n-digit numbers with adjacent digits differing by one or less
+adjacent:
+	cp -v $(COMBSTRUCT)/adjacent2.tmp $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 ajrank: # adjusted joint rank sequences (CK)
 	cd ck ; make $@
 	head -n4 $@.gen
