@@ -145,7 +145,7 @@ GFis
 GFis
     } else {
         print OUT "    ++mN;\n" if $withn;
-        print "return m" . ucfirst(@pnames[0]) . ";";
+        print "return m" . ucfirst($pnames[0]) . ";";
         print OUT <<"GFis";
 GFis
     }
