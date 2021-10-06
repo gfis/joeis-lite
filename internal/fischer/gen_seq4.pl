@@ -301,6 +301,9 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WCR})               { $imports{"irvine.math.cr.CR"}                 = $itype; }
     if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
     if ($line =~ m{\WUnaryCRFunction})  { $imports{"irvine.math.cr.UnaryCRFunction"}    = $itype; }
+    if ($line =~ m{\WLinearRecurrence}) { $imports{"irvine.oeis.LinearRecurrence"  }    = $itype; }
+    if ($line =~ m{\WPaddingSequence})  { $imports{"irvine.oeis.PaddingSequence"   }    = $itype; }
+    if ($line =~ m{\WPeriodicSequence}) { $imports{"irvine.oeis.PeriodicSequence"  }    = $itype; }
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
             my $class_name = $1;
@@ -308,7 +311,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
             if (    ($class_name !~ m{\AA\d+})     # A-number
                 and ($class_name !~ m{\.})         # contains dot
                 and ($class_name !~ m{\A[A-Z]+\Z}) # only uppercase = constant
-                and ($class_name !~ m{\AString\Z}) # "String"
+                and ($class_name !~ m{\A(String|Integer)\Z}) # common Java types
                 and ($class_name !~ m{\AComputableReals\Z})
                 and ($class_name !~ m{\AUnaryCRFunction\Z})
                ) {

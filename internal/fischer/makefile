@@ -45,7 +45,7 @@ NC=
 OFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
-JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx4g
+JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx3g -Xss2g
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
@@ -267,6 +267,12 @@ info: # compare CC= with joeis_names.txt
 	>        $(CC).inf
 	head -n4 $(CC).inf
 	wc -l    $(CC).inf
+#----
+DATA=0
+annotate: # add comments with names of the dependant sequences, and optionally with their data 
+	# ---- $@ CC=$(CC)
+	perl annotate.pl -data $(DATA) $(CC).gen > $(CC).ann.tmp
+	uedit64 $(CC).ann.tmp
 #----
 control: # extract shorter descriptions for passed seqs.
 	# ---- $@ CC=$(CC)
@@ -3774,7 +3780,12 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 #--------------------------------
-pastri: # GeneralizedPascalTriangle
+wraptr: # WrappedTriangleRecuirrence
+	cd $(TRIREC); make wraptr
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#----
+pastri_deprecated: # GeneralizedPascalTriangle
 	grep -E "^A[0-9]" $(TRIREC)/pascal.tmp \
 	>        $@.gen
 	head -n4 $@.gen

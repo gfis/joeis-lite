@@ -54,7 +54,7 @@ public class BorderedTriangleRecurrence extends MemoryFunction2<Integer, Z> impl
   }
 
   /**
-   * Computes an inner element.
+   * Computes a triangle element that does not yet exist element.
    * This method is typically overwritten.
    * The default implementation here is Pascal's rule.
    * @param n row number
@@ -72,11 +72,25 @@ public class BorderedTriangleRecurrence extends MemoryFunction2<Integer, Z> impl
     }
     if (k == n) { // right border (has priority)
       result = mSeqR.next();
-    } else if (k > 0) {
-      result = get(n - 1, k - 1).add(get(n - 1, k));
-      if (mSeqA != null) {
-        result = result.add(getA());
-      }
+    } else if (k > 0) { // inner element
+      result = getElement(n, k);
+    }
+    return result;
+  }
+
+  /**
+   * Computes an inner triangle element.
+   * This method is typically overwritten.
+   * The default implementation here is Pascal's rule.
+   * @param n row number
+   * @param k column number
+   * @return T(n,k)
+   */
+  protected Z getElement(final Integer n, final Integer k) {
+    Z result = getElement(n, k);
+    result = get(n - 1, k - 1).add(get(n - 1, k));
+    if (mSeqA != null) {
+      result = result.add(getA());
     }
     return result;
   }
@@ -102,15 +116,6 @@ public class BorderedTriangleRecurrence extends MemoryFunction2<Integer, Z> impl
    */
   protected Z getA() {
     return mAdd;
-  }
-
-  /**
-   * Method for compatibility with first version.
-   * @param k column index
-   * @return T(n-1, k)
-   */
-  protected Z getM1(final int k) {
-    return get(mN - 1, k);
   }
 
   /**
