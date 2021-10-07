@@ -1,47 +1,55 @@
 package irvine.oeis;
 
 import irvine.math.z.Z;
-import irvine.math.MemoryFunction2;
+import irvine.math.z.ZUtils;
 
 /**
  * Generate the rows of a triangle T(n,k) depending on
  * the left and right border (column), and the terms in the previous rows.
  * This generalizes the rules for Pascal's triangle (A007318):
  * T(n,0) = T(n,n) = 1 and T(n,k) = T(n-1,k-1) + T(n-1,k) for 0 &lt; k &lt; n.
- * n and k always start with 0.
  * @author Georg Fischer
  */
-public class WrappedTriangleRecurrence extends MemoryFunction2<Integer, Z> implements Sequence {
+public class WrappedTriangleRecurrence extends TriangleRecurrence {
 
   private final Sequence mSeqLeft; // sequence for the left border T(n,0)
   private final Sequence mSeqRight; // sequence for the right border T(n,n); this overwrites T(0,0)
   private Sequence mSeqPlus; // a(n) of this optional sequence may be used to compute T(n,k) for 0 &lt; k &lt; n.
   private Z mPlus; // term of mSeqPlus, additive constant per row
-  private int mN; // current row index n
-  private int mK; // current column index k
 
-  protected class ConstantSequence implements Sequence {
-    
-    private Z mValue = Z.ZERO;
-    /** Construct the sequence */
-    
-    protected ConstantSequence(final long value) {
-      mValue = Z.valueOf(value);
+  /**
+   * A simple version of <code>PaddingSequence</code>:
+   * Return a few terms and repeat the last one forever.
+   */
+  protected class BorderSequence implements Sequence {
+
+    private Z[] mTerms;
+    private int mN;
+    private int mLen;
+
+    /** Construct the sequence. */
+    protected BorderSequence(final String terms) {
+      mTerms = ZUtils.toZ(terms);
+      mLen = mTerms.length - 1;
+      mN = -1;
     }
-    
+
     @Override
     public Z next() {
-      return mValue;
+      if (mN < mLen) {
+        ++mN;
+      }
+      return mTerms[mN];
     }
   }
-    
+
   /**
    * Empty constructor.
    * Generates an ordinary Pascal triangle.
    */
   public WrappedTriangleRecurrence() {
-    mSeqLeft = new ConstantSequence(1);
-    mSeqRight = new ConstantSequence(1);
+    mSeqLeft = new BorderSequence("1");
+    mSeqRight = new BorderSequence("1");
     initialize();
   }
 
@@ -61,9 +69,9 @@ public class WrappedTriangleRecurrence extends MemoryFunction2<Integer, Z> imple
    * @param seqLeft sequence for the left border T(n,0)
    * @param valRight constant right border T(n,n); this overwrites T(0,0)
    */
-  public WrappedTriangleRecurrence(final Sequence seqLeft, final long valRight) {
+  public WrappedTriangleRecurrence(final Sequence seqLeft, final String valRight) {
     mSeqLeft = seqLeft;
-    mSeqRight = new ConstantSequence(valRight);
+    mSeqRight = new BorderSequence(valRight);
     initialize();
   }
 
@@ -72,8 +80,8 @@ public class WrappedTriangleRecurrence extends MemoryFunction2<Integer, Z> imple
    * @param valLeft constant left border T(n,0)
    * @param seqRight sequence for the right border T(n,n); this overwrites T(0,0)
    */
-  public WrappedTriangleRecurrence(final long valLeft, final Sequence seqRight) {
-    mSeqLeft = new ConstantSequence(valLeft);
+  public WrappedTriangleRecurrence(final String valLeft, final Sequence seqRight) {
+    mSeqLeft = new BorderSequence(valLeft);
     mSeqRight = seqRight;
     initialize();
   }
@@ -83,94 +91,28 @@ public class WrappedTriangleRecurrence extends MemoryFunction2<Integer, Z> imple
    * @param valLeft constant left border T(n,0)
    * @param valRight constant right border T(n,n); this overwrites T(0,0)
    */
-  public WrappedTriangleRecurrence(final long valLeft, final long valRight) {
-    mSeqLeft = new ConstantSequence(valLeft);
-    mSeqRight = new ConstantSequence(valRight);
+  public WrappedTriangleRecurrence(final String valLeft, final String valRight) {
+    mSeqLeft = new BorderSequence(valLeft);
+    mSeqRight = new BorderSequence(valRight);
     initialize();
   }
 
   /**
    * Initializes the data structure.
    * Collects the code that is common to all constructors.
+   * Assumes that there is no additional term.
    */
-  protected void initialize() {
+  private void initialize() {
     mSeqPlus = null;
     mPlus = Z.ZERO;  // for safety
-    mN = -1;
-    mK = 0; // start with first element T(0,0)
-  }
-  
-  /**
-   * Computes a triangle element that does not yet exist element.
-   * This method is typically overwritten.
-   * The default implementation here is Pascal's rule.
-   * @param n row number
-   * @param k column number
-   * @return T(n,k)
-   */
-  @Override
-  protected Z compute(final Integer n, final Integer k) {
-    Z result = null;
-    if (k < 0 || k > n || n < 0) {
-      result = Z.ZERO;
-    }
-    if (k == 0) { // left border
-      result = mSeqLeft.next();
-    }
-    if (k == n) { // right border (has priority)
-      result = mSeqRight.next();
-    } else if (k > 0) { // inner element
-      result = getElement(n, k);
-    }
-    return result;
-  }
-
-  /**
-   * Computes an inner triangle element.
-   * This method is typically overwritten.
-   * The default implementation here is Pascal's rule.
-   * @param n row number
-   * @param k column number
-   * @return T(n,k)
-   */
-  protected Z getElement(final Integer n, final Integer k) {
-    Z result = get(n - 1, k - 1).add(get(n - 1, k));
-    if (mSeqPlus != null) {
-      result = result.add(getPlus());
-    }
-    return result;
-  }
-
-  /**
-   * Return next term, reading the triangle row by row from left to right, starting with T(0,0).
-   * @return the next term of the sequence.
-   */
-  @Override
-  public Z next() {
-    if (++mK > mN) {
-      ++mN;
-      mK = 0;
-      if (mSeqPlus != null && mN >= 2) {
-        mPlus = mSeqPlus.next();
-      }
-    }
-    return get(mN, mK);
-  }
-  
-  /**
-   * Gets the additive term from mSeqPlus for the current row
-   * @return mPlus
-   */
-  protected Z getPlus() {
-    return mPlus;
   }
 
   /**
    * Sets the sequence for the additive term
-   * @param value the constant value to be added to each element.
+   * @param terms the constant value to be added to each element.
    */
-  protected void setPlus(final long value) {
-    mSeqPlus = new ConstantSequence(value);
+  protected void setPlus(final String terms) {
+    mSeqPlus = new BorderSequence(terms);
   }
 
   /**
@@ -179,6 +121,14 @@ public class WrappedTriangleRecurrence extends MemoryFunction2<Integer, Z> imple
    */
   protected void setPlus(final Sequence seqPlus) {
     mSeqPlus = seqPlus;;
+  }
+
+  /**
+   * Gets the additive term from mSeqPlus for the current row
+   * @return mPlus
+   */
+  protected Z getPlus() {
+    return mPlus;
   }
 
   /**
@@ -211,6 +161,111 @@ public class WrappedTriangleRecurrence extends MemoryFunction2<Integer, Z> imple
     while (skip > 0) {
       mSeqPlus.next();
       --skip;
+    }
+  }
+
+  /**
+   * Increases the row index, adds a new, empty row and resets the column index.
+   */
+  protected void addRow() {
+    super.addRow();
+    set(0, mSeqLeft.next());
+    set(mN, mSeqRight.next());
+    if (mSeqPlus != null) {
+      mPlus = mSeqPlus.next();
+    }
+  }
+
+  /**
+   * Computes an element of the triangle.
+   * The default implementation here is Pascal's rule.
+   * @param n row number
+   * @param k column number
+   * @return T(n,k)
+   */
+  protected Z compute(final Integer n, final Integer k) {
+    Z result = null;
+    if (k < 0 || k > n) { // outside, for safety only
+      result = Z.ZERO;
+    } else if (k == 0 || k == n) { 
+      result = get(n, k); // borders were already set in addRow
+    } else {
+      result = get(n - 1, k - 1).add(get(n - 1, k)); // Pascal's rule
+      if (mSeqPlus != null) {
+        result = result.add(mPlus);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Main method: debugging output of a triangle.
+   * @param args command line arguments:
+   * <ul>
+   * <li>left constant or sequence</li>
+   * <li>right constant or sequence</li>
+   * <li>additional constant or sequence (optional)</li>
+   * <li>number of rows to be printed (optional)</li>
+   * </ul>
+   */
+  public static void main(String[] args) {
+    Sequence seqLeft = null;
+    Sequence seqRight = null;
+    Sequence seqPlus = null;
+    String valLeft = "1";
+    String valRight = "1";
+    String valPlus = null;
+    int noRows = 8;
+    for (int iarg = 0; iarg < args.length; ++iarg) {
+      switch (iarg) {
+        default:
+        case 0:
+          valLeft = args[iarg];
+          break;
+        case 1:
+          valRight = args[iarg];
+          break;
+        case 2:
+          valPlus = args[iarg];
+          break;
+        case 3:
+          try {
+            noRows = Integer.parseInt(args[iarg]);
+          } catch (Exception exc) { // take default
+          }
+          break;
+      }
+    }
+    WrappedTriangleRecurrence wtr = null;
+    if (valLeft.startsWith("A")) {
+      seqLeft = irvine.test.SequenceTest.sequence(valLeft);
+      if (valRight.startsWith("A")) {
+        seqRight = irvine.test.SequenceTest.sequence(valRight);
+        wtr = new WrappedTriangleRecurrence(seqLeft, seqRight);
+      } else {
+        wtr = new WrappedTriangleRecurrence(seqLeft, valRight);
+      }
+    } else {
+      if (valRight.startsWith("A")) {
+        seqRight = irvine.test.SequenceTest.sequence(valRight);
+        wtr = new WrappedTriangleRecurrence(valLeft, seqRight);
+      } else {
+        wtr = new WrappedTriangleRecurrence(valLeft, valRight);
+      }
+    }
+    if (valPlus != null) {
+      if (valPlus.startsWith("A")) {
+        seqPlus = irvine.test.SequenceTest.sequence(valLeft);
+        wtr.setPlus(seqPlus);
+      } else {
+        wtr.setPlus(valPlus);
+      }
+    }
+    for (int n = 0; n < noRows; ++n) {
+      for (int k = 0; k <= n; ++k) {
+        final Z term = wtr.next();
+      }
+      wtr.printRow(n);
     }
   }
 }
