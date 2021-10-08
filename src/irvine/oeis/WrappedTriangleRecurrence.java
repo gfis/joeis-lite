@@ -170,8 +170,8 @@ public class WrappedTriangleRecurrence extends TriangleRecurrence {
   protected void addRow() {
     super.addRow();
     set(0, mSeqLeft.next());
-    set(mN, mSeqRight.next());
-    if (mSeqPlus != null) {
+    set(mRow, mSeqRight.next());
+    if (mSeqPlus != null && mRow >= 2) {
       mPlus = mSeqPlus.next();
     }
   }
@@ -183,7 +183,8 @@ public class WrappedTriangleRecurrence extends TriangleRecurrence {
    * @param k column number
    * @return T(n,k)
    */
-  protected Z compute(final Integer n, final Integer k) {
+  @Override
+  protected Z compute(final int n, final int k) {
     Z result = null;
     if (k < 0 || k > n) { // outside, for safety only
       result = Z.ZERO;

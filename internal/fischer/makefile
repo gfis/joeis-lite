@@ -509,6 +509,24 @@ A060722:
 	wc -l    $@.gen
 A063555: # 2021-05-29
 	grep -E "^A[0-9]" $@.man > $@.gen
+A071919: # 2021-10-08
+	grep -E "^A[0-9]" $(TRIREC)/modpas2.tmp \
+	| perl -ne 's/modpas\t(\d+)\t/parm2\t$1\tA071919\t/; print;'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+wraptr2:
+	make seq  LIST=A071919.gen
+	make seq4 LIST=wraptr.gen
+	$(DBAT) -x "SELECT s.aseqno, callcode, offset, parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
+	    FROM seq4 s \
+	    WHERE s.aseqno NOT IN (SELECT aseqno FROM seq) \
+	    ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+wraptr3:
+	cp -v wraptr2.tmp wraptr3.gen
 #----
 A094969:
 	cat $(COMMON)/joeis_names.txt \

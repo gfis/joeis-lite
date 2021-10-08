@@ -14,8 +14,8 @@ import irvine.math.z.Z;
  */
 public class TriangleRecurrence implements Sequence {
 
-  protected int mN; // current row index n
-  protected int mK; // current column index k
+  protected int mRow; // current row index n
+  protected int mCol; // current column index k
   protected Z[][] mRows; // a circular buffer for the rows
   private int mMask; // limits the first dimension of mRows: mod 2^m - 1
 
@@ -32,8 +32,8 @@ public class TriangleRecurrence implements Sequence {
    * Collects the code that is common to all constructors.
    */
   private void initialize() {
-    mN = -1;
-    mK = 0; // start with first element T(0,0)
+    mRow = -1;
+    mCol = 0; // start with first element T(0,0)
     setDepth(4); // allow for recurrences involving T(n-3,k)
   }
   
@@ -55,18 +55,17 @@ public class TriangleRecurrence implements Sequence {
    * @param k column number
    * @param value T(n,k)
    */
-  protected void set(final Integer k, final Z value) {
-    mRows[mN & mMask][k] = value;
+  protected void set(final int k, final Z value) {
+    mRows[mRow & mMask][k] = value;
   }
 
   /**
    * Gets an element of the triangle.
-   * The default implementation here is Pascal's rule.
    * @param n row number
    * @param k column number
-   * @return T(n,k)
+   * @return T(n,k), or 0 for k &lt; 0 or k &gt; n.
    */
-  protected Z get(final Integer n, final Integer k) {
+  protected Z get(final int n, final int k) {
     return (k < 0 || k > n) ? Z.ZERO : mRows[n & mMask][k];
   }
 
@@ -74,9 +73,9 @@ public class TriangleRecurrence implements Sequence {
    * Increases the row index, adds a new, empty row and resets the column index.
    */
   protected void addRow() {
-    ++mN;
-    mRows[mN & mMask] = new Z[mN + 1];
-    mK = 0;
+    ++mRow;
+    mRows[mRow & mMask] = new Z[mRow + 1];
+    mCol = 0;
   }
 
   /**
@@ -86,12 +85,12 @@ public class TriangleRecurrence implements Sequence {
    * @param k column number
    * @return T(n,k)
    */
-  protected Z compute(final Integer n, final Integer k) {
+  protected Z compute(final int n, final int k) {
     Z result = null;
-    if (k < 0 || k > n) { // outside, for safety only
+    if (k < 0 || k > n) {
       result = Z.ZERO;
-    } else if (k == 0 || k == n) { 
-      result = Z.ONE; // borders = 1
+    } else if (n == 0) { 
+      result = Z.ONE; // start with 1
     } else {
       result = get(n - 1, k - 1).add(get(n - 1, k)); // Pascal's rule
     }
@@ -104,11 +103,11 @@ public class TriangleRecurrence implements Sequence {
    */
   @Override
   public Z next() {
-    if (++mK > mN) {
+    if (++mCol > mRow) {
       addRow();
     }
-    final Z result = compute(mN, mK);
-    set(mK, result);
+    final Z result = compute(mRow, mCol);
+    set(mCol, result);
     return result;
   }
 
@@ -117,11 +116,13 @@ public class TriangleRecurrence implements Sequence {
    * @param n row number
    */
   public void printRow(final int n) {
-    System.out.print(String.format("%4d: ", n));
-    for (int k = 0; k <= n; ++k) {
-      final Z term = get(n, k);
-      System.out.print(String.format("%5s", term == null ? "null" : term.toString()));
+    if (n >= 0) {
+      System.out.print(String.format("%4d: ", n));
+      for (int k = 0; k <= n; ++k) {
+        final Z term = get(n, k);
+        System.out.print(String.format("%5s", term == null ? "null" : term.toString()));
+      }
+      System.out.println();
     }
-    System.out.println();
   }
 }
