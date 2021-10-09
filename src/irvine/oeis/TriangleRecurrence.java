@@ -1,6 +1,7 @@
 package irvine.oeis;
 
 import irvine.math.z.Z;
+import irvine.math.z.ZUtils;
 
 /**
  * Generate the rows of a triangle T(n,k).
@@ -18,22 +19,37 @@ public class TriangleRecurrence implements Sequence {
   protected int mCol; // current column index k
   protected Z[][] mRows; // a circular buffer for the rows
   private int mMask; // limits the first dimension of mRows: mod 2^m - 1
+  protected Z[] mInits;
+  protected int mLen; // mInits.size()
+  protected int mN; // linear index
 
   /**
    * Empty constructor.
    * Generates an ordinary Pascal triangle (A007318).
    */
   public TriangleRecurrence() {
-    initialize();
+    initialize("1");
+  }
+
+  /**
+   * Constructor with initial terms.
+   * @param inits array of initial terms
+   * Generates an ordinary Pascal triangle (A007318).
+   */
+  public TriangleRecurrence(final String inits) {
+    initialize(inits);
   }
 
   /**
    * Initializes the data structure.
    * Collects the code that is common to all constructors.
    */
-  private void initialize() {
-    mRow = -1;
-    mCol = 0; // start with first element T(0,0)
+  private void initialize(final String inits) {
+  	mInits = ZUtils.toZ(inits);
+  	mLen = mInits.length;
+  	mN = -1; // index in mInits, starting with 0
+    mRow = -1; // 
+    mCol = -1; // start with first element T(0,0)
     setDepth(4); // allow for recurrences involving T(n-3,k)
   }
   
@@ -87,10 +103,11 @@ public class TriangleRecurrence implements Sequence {
    */
   protected Z compute(final int n, final int k) {
     Z result = null;
+    ++mN;
     if (k < 0 || k > n) {
       result = Z.ZERO;
-    } else if (n == 0) { 
-      result = Z.ONE; // start with 1
+    } else if (mN < mLen) { 
+      result = mInits[mN]; // start with 1
     } else {
       result = get(n - 1, k - 1).add(get(n - 1, k)); // Pascal's rule
     }

@@ -509,12 +509,6 @@ A060722:
 	wc -l    $@.gen
 A063555: # 2021-05-29
 	grep -E "^A[0-9]" $@.man > $@.gen
-A071919: # 2021-10-08
-	grep -E "^A[0-9]" $(TRIREC)/modpas2.tmp \
-	| perl -ne 's/modpas\t(\d+)\t/parm2\t$1\tA071919\t/; print;'\
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
 wraptr2:
 	make seq  LIST=A071919.gen
 	make seq4 LIST=wraptr.gen
@@ -3818,6 +3812,11 @@ tricons:
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
+modpas: # 2021-10-08; formerly A071919
+	grep -E "^A[0-9]" $(TRIREC)/modpas2.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 # A163493 Number of binary strings of length n which have the same number of 00 and 01 substrings.
 # cf. Zeilberger: https://arxiv.org/pdf/1112.6207.pdf
