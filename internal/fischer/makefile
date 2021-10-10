@@ -3555,6 +3555,9 @@ fract22:
 	>        trigf.gen
 	tail -n4 trigf.gen
 	wc -l    trigf.gen
+#----
+triprod:
+	cp -v $(TRIREC)/triprod2.tmp $@.gen
 #------------------------------------------------------
 negpos: # all done
 	cat ../../../fasces/oeis/A131393/negpos.gen \

@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2021-10-10, V2.3: for subpackages irvine.oeis.cons|triangle
 # 2020-09-02, V2.2: do not import @OVerride 
 # 2020-06-21, V2.1: imports not from comments
 # 2020-06-16, V2.0: hash for imports automatically compiled
@@ -31,7 +32,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V2.2";
+my $program = "gen_seq4.pl V2.3";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -54,24 +55,24 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt  =~ m{a}) {
-        $author    = shift(@ARGV);
+        $author    =  shift(@ARGV);
     } elsif ($opt  =~ m{d}) {
-        $debug     = shift(@ARGV);
+        $debug     =  shift(@ARGV);
     } elsif ($opt  =~ m{l}) {
         $max_line_len = shift(@ARGV);
     } elsif ($opt  =~ m{nc}) {
         $clobber   = 0;
     } elsif ($opt  =~ m{p}) {
-        $patprefix = shift(@ARGV);
+        $patprefix =  shift(@ARGV);
     } elsif ($opt  =~ m{t}) {
-        $targetdir = shift(@ARGV);
+        $targetdir =  shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
 #----------------
-my $TYPE_PERM = 1;
-my $TYPE_TEMP = 2;
+my $TYPE_PERM = 1; # import is permanent (from the pattern)
+my $TYPE_TEMP = 2; # import is temporary (from the parameters)
 my %imports = (); # hash for classes to be imported; key=1 - always, key=2 - for this specific class (deleted at the end)
 my $pattern;
 my $offset = "0";
@@ -267,7 +268,7 @@ sub read_pattern { # read the pattern and return it
         }
         if ($patline =~ m{\A\s*import +([\w\.]+)\;}) {
             my $class = $1;
-            $imports{$class} = 1; # permanent for this pattern
+            $imports{$class} = $TYPE_PERM; # permanent for this pattern
             $patline = "";
         } else {
             &extract_imports($patline, $TYPE_PERM);
@@ -302,18 +303,30 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
     if ($line =~ m{\WUnaryCRFunction})  { $imports{"irvine.math.cr.UnaryCRFunction"}    = $itype; }
     if ($line =~ m{\WLinearRecurrence}) { $imports{"irvine.oeis.LinearRecurrence"  }    = $itype; }
-    if ($line =~ m{\WPaddingSequence})  { $imports{"irvine.oeis.PaddingSequence"   }    = $itype; }
+    if ($line =~ m{\WPaddingSequence} ) { $imports{"irvine.oeis.PaddingSequence"   }    = $itype; }
     if ($line =~ m{\WPeriodicSequence}) { $imports{"irvine.oeis.PeriodicSequence"  }    = $itype; }
+    if ($line =~ m{\WPrependSequence} ) { $imports{"irvine.oeis.PrependSequence"   }    = $itype; }
+    if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }    = $itype; }
+    
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
-            my $class_name = $1;
-            # $class_name =~ s{\.\w+}{}; # remove static method or member
-            if (    ($class_name !~ m{\AA\d+})     # A-number
-                and ($class_name !~ m{\.})         # contains dot
-                and ($class_name !~ m{\A[A-Z]+\Z}) # only uppercase = constant
-                and ($class_name !~ m{\A(String|Integer)\Z}) # common Java types
-                and ($class_name !~ m{\AComputableReals\Z})
-                and ($class_name !~ m{\AUnaryCRFunction\Z})
+            my $class_name = $1; 
+            # look it up in the imports accumulated so far
+            $class_name =~ m{\.(\w+)\Z};
+            my $last_name = $1;
+            my $found = 0;
+            foreach my $key (keys(%imports)) {
+                if ($key =~ m{\.$last_name\Z}) {
+                    $found = 1;
+                }
+            } # foreach $key
+            if ($found) { # already there - do nothing
+            } elsif (($class_name !~ m{\AA\d+})               # A-number
+                and  ($class_name !~ m{\.})                   # contains dot
+                and  ($class_name !~ m{\A[A-Z]+\Z})           # only uppercase = constant
+                and  ($class_name !~ m{\A(String|Integer)\Z}) # common Java types
+                and  ($class_name !~ m{\AComputableReals\Z})
+                and  ($class_name !~ m{\AUnaryCRFunction\Z})
                ) {
                 $imports{"irvine.oeis.$class_name"} = $itype; 
             }
