@@ -49,7 +49,7 @@ public class Triangle implements Sequence {
   	mInits = ZUtils.toZ(inits);
   	mLen = mInits.length;
   	mN = -1; // index in mInits, starting with 0
-    mRow = -1; // 
+    mRow = -1;
     mCol = -1; // start with first element T(0,0)
     setDepth(4); // allow for recurrences involving T(n-3,k)
   }

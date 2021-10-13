@@ -5,25 +5,22 @@ import irvine.oeis.MemorySequence;
 import irvine.oeis.Sequence;
 
 /**
- * Multiply two triangles: T = S1 * S2.
+ * Compute the inverse of a triangle: S * Inverse(S) = Identity.
  * The target elements are generated row by row, 
- * where T(n,k) = InnerProduct(row(S1,n), column(S2,k)).
+ * where T(n,k) = InnerInverse(row(S1,n), column(S2,k)).
  * Here, the columns are always not longer than the rows.
  * @author Georg Fischer
  */
-public class Product extends Triangle {
+public class Inverse extends Triangle {
 
-  protected MemorySequence mS1; // left multiplicant
-  protected MemorySequence mS2; // right multiplicant
+  protected MemorySequence mS1; // source triangle
 
   /**
-   * Constructor with two triangles.
-   * @param s1 sequence for left triangle
-   * @param s2 sequence for right triangle
+   * Constructor with one triangle.
+   * @param s1 sequence for source triangle
    */
-  public Product(final Sequence s1, final Sequence s2) {
+  public Inverse(final Sequence s1) {
     mS1 = MemorySequence.cachedSequence(s1);
-    mS2 = MemorySequence.cachedSequence(s2);
   }
   
   /**
@@ -46,6 +43,7 @@ public class Product extends Triangle {
   @Override
   protected Z compute(final int n, final int k) {
     Z result = Z.ZERO;
+    ++mN;
     if (k < 0 || k > n) {
       // already = 0
     } else {
