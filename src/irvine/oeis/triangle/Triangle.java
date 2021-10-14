@@ -24,7 +24,7 @@ public class Triangle extends ArrayList<Z[]> implements Sequence {
   protected Z[] mLastRow; // = get(mRow)
   protected Z[] mInits; // buffer for the initial terms
   protected int mLinit; // = mInits.size()
-  protected int mN; // linear index, starting at 0; mN + 1 is the number of computed/stored elements
+  protected int mIn; // index for initial terms
 
   /**
    * Empty constructor.
@@ -50,28 +50,13 @@ public class Triangle extends ArrayList<Z[]> implements Sequence {
   private void initialize(final String inits) {
     mLinit = inits.length();
     mInits = mLinit == 0 ? new Z[] { Z.ONE } : ZUtils.toZ(inits);
-    mN = -1; // index in mInits, starting with 0
+    mIn = -1; // index in mInits, starting with 0
     mRow = -1;
     mCol = -1; // start with first element T(0,0)
   }
 
   /**
-   * Sets the depth of the ring buffer for rows.
-   * @param depth a small integer, truncated to a power of 2: 2, 4, 8.
-   */
-
-/*  protected void setDepth(final int depth) {
-    int m = 1;
-    while (m * 2 < depth) {
-      m *= 2;
-    }
-    mMask = m - 1; // bit mask for the access to the ring buffer
-    mRows = new Z[m][0];
-  }
-*/
-
-  /**
-   * Sets a the value of a column in the current row.
+   * Sets a the value of a column in the last row.
    * @param k column number
    * @param value T(n,k)
    */
@@ -94,7 +79,7 @@ public class Triangle extends ArrayList<Z[]> implements Sequence {
     } else if (n < mRow) {
       return get(n)[k];
     } else {
-      System.err.println("assertion failed in Triangle.get(" + n + ", " + k + "), mN=" + mN);
+      // System.err.println("assertion failed in Triangle.get(" + n + ", " + k + "), mIn=" + mIn);
       return Z.ZERO;
     }
   }
@@ -105,7 +90,7 @@ public class Triangle extends ArrayList<Z[]> implements Sequence {
   protected void addRow() {
     ++mRow;
     add(new Z[mRow + 1]);
-    mLastRow = this.get(mRow);
+    mLastRow = get(mRow);
     mCol = 0;
   }
 
@@ -118,10 +103,10 @@ public class Triangle extends ArrayList<Z[]> implements Sequence {
    * @return T(n,k)
    */
   protected Z compute(final int n, final int k) {
-    ++mN;
+    ++mIn;
     Z result = null;
-    if (mN < mLinit) {
-      result = mInits[mN]; // start with 1
+    if (mIn < mLinit) {
+      result = mInits[mIn]; // start with 1
     } else {
       result = get(n - 1, k - 1).add(get(n - 1, k)); // Pascal's rule
     }
@@ -148,18 +133,9 @@ public class Triangle extends ArrayList<Z[]> implements Sequence {
    */
   public static Triangle asTriangle(final Sequence seq) {
     return seq instanceof Triangle ? (Triangle) seq : new Triangle() {
-      private int mNt = -1; // index in local Triangle
 
       protected Z compute(final int n, final int k) {
-        final int nn12k = n * (n + 1) / 2 + k;
-        while (mNt <= nn12k) {
-          ++mNt;
-          if (++mCol > mRow) {
-            addRow();
-          }
-          set(mCol, seq.next());
-        }
-        return get(n, k);
+        return seq.next();
       }
     };
   }

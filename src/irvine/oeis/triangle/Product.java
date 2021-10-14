@@ -4,10 +4,9 @@ import irvine.math.z.Z;
 import irvine.oeis.Sequence;
 
 /**
- * Multiply two triangles: T = S1 * S2.
+ * Multiply two triangles: <code>T = S1 * S2</code>.
  * The target elements are generated row by row,
- * where T(n,k) = InnerProduct(row(S1,n), column(S2,k)).
- * Here, the columns are always not longer than the rows.
+ * where <code>T(n,k) = row(S1,n) * column(S2,k)</code>.
  * @author Georg Fischer
  */
 public class Product extends Triangle {
@@ -23,6 +22,24 @@ public class Product extends Triangle {
   public Product(final Triangle s1, final Triangle s2) {
     mS1 = s1;
     mS2 = s2;
+  }
+
+  /**
+   * Constructor with two Sequences.
+   * @param s1 sequence for left triangle
+   * @param s2 sequence for right triangle
+   */
+  public Product(final Triangle s1, final Sequence s2) {
+    this(s1, Triangle.asTriangle(s2));
+  }
+
+  /**
+   * Constructor with two Sequences.
+   * @param s1 sequence for left triangle
+   * @param s2 sequence for right triangle
+   */
+  public Product(final Sequence s1, final Triangle s2) {
+    this(Triangle.asTriangle(s1), s2);
   }
 
   /**
@@ -55,18 +72,9 @@ public class Product extends Triangle {
    */
   @Override
   protected Z compute(final int n, final int k) {
-    ++mN;
     Z result = Z.ZERO;
     for (int j = 0; j <= n; ++j) {
-      final Z s1nj = mS1.get(n, j);
-      if (s1nj == null) {
-        System.err.println("assertion failed: s1nj=null in Product.compute(" + n + ", " + j + ")");
-      }
-      final Z s2jk = mS2.get(j, k);
-      if (s2jk == null) {
-        System.err.println("assertion failed: s2jk=null in Product.compute(" + j + ", " + k + ")");
-      }
-      result = result.add(s1nj.multiply(s2jk));
+      result = result.add(mS1.get(n, j).multiply(mS2.get(j, k)));
     }
     return result;
   }
