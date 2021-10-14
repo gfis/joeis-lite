@@ -101,6 +101,7 @@ GFis
     }
     print OUT ");\n";
     print OUT <<"GFis";
+  }
 
   /**
    * Generic constructor with parameters

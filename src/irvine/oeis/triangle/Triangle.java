@@ -1,35 +1,37 @@
 package irvine.oeis.triangle;
 
+import java.util.ArrayList;
+
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
+import irvine.oeis.MemorySequence;
 import irvine.oeis.Sequence;
 
 /**
  * Generate the rows of a triangle T(n,k).
  * The sequence runs through T(n,k) for k = 0 to n and n &gt;= 0.
  * The internal calling sequence is <code>++n, addRow(n), set(n,k=0..n)</code>.
- * The class maintains a ring buffer of rows with a certain depth <code>m</code>,
- * and the contract is that all calls <code>set(n, k)</code> can access the elements
+ * The class maintains an array of all rows,
+ * and the contract is that all calls <code>get(n, k)</code> can access the elements
  * in previous rows with <code>get(n - i, k)</code> for <code>i=1..m-1</code>,
- * and in the current row with <code>get(n, k - j)</code> for <code>j=1..k</code>.
+ * and in the last row with <code>mLastRow[k - j]</code> for <code>j=1..k</code>.
  * @author Georg Fischer
  */
-public class Triangle implements Sequence {
+public class Triangle extends ArrayList<Z[]> implements Sequence {
 
   protected int mRow; // current row index n
   protected int mCol; // current column index k
-  protected Z[][] mRows; // a circular buffer for the rows
-  private int mMask; // limits the first dimension of mRows: mod 2^m - 1
-  protected Z[] mInits;
-  protected int mLen; // mInits.size()
-  protected int mN; // linear index
+  protected Z[] mLastRow; // = get(mRow)
+  protected Z[] mInits; // buffer for the initial terms
+  protected int mLinit; // = mInits.size()
+  protected int mN; // linear index, starting at 0; mN + 1 is the number of computed/stored elements
 
   /**
    * Empty constructor.
    * Generates an ordinary Pascal triangle (A007318).
    */
   public Triangle() {
-    initialize("1");
+    initialize("");
   }
 
   /**
@@ -46,19 +48,19 @@ public class Triangle implements Sequence {
    * Collects the code that is common to all constructors.
    */
   private void initialize(final String inits) {
-  	mInits = ZUtils.toZ(inits);
-  	mLen = mInits.length;
-  	mN = -1; // index in mInits, starting with 0
+    mLinit = inits.length();
+    mInits = mLinit == 0 ? new Z[] { Z.ONE } : ZUtils.toZ(inits);
+    mN = -1; // index in mInits, starting with 0
     mRow = -1;
     mCol = -1; // start with first element T(0,0)
-    setDepth(4); // allow for recurrences involving T(n-3,k)
   }
-  
+
   /**
    * Sets the depth of the ring buffer for rows.
    * @param depth a small integer, truncated to a power of 2: 2, 4, 8.
    */
-  protected void setDepth(final int depth) {
+
+/*  protected void setDepth(final int depth) {
     int m = 1;
     while (m * 2 < depth) {
       m *= 2;
@@ -66,24 +68,35 @@ public class Triangle implements Sequence {
     mMask = m - 1; // bit mask for the access to the ring buffer
     mRows = new Z[m][0];
   }
-  
+*/
+
   /**
    * Sets a the value of a column in the current row.
    * @param k column number
    * @param value T(n,k)
    */
   protected void set(final int k, final Z value) {
-    mRows[mRow & mMask][k] = value;
+    mLastRow[k] = value;
   }
 
   /**
    * Gets an element of the triangle.
+   * The requirement is that all elements <code>T(0..n-1,m), T(n,0..k)</code>were already computed.
    * @param n row number
    * @param k column number
    * @return T(n,k), or 0 for k &lt; 0 or k &gt; n.
    */
   protected Z get(final int n, final int k) {
-    return (k < 0 || k > n) ? Z.ZERO : mRows[n & mMask][k];
+    if (k > n || k < 0 || n < 0) {
+      return Z.ZERO;
+    } else if (n == mRow && k <= mCol) {
+      return mLastRow[k];
+    } else if (n < mRow) {
+      return get(n)[k];
+    } else {
+      System.err.println("assertion failed in Triangle.get(" + n + ", " + k + "), mN=" + mN);
+      return Z.ZERO;
+    }
   }
 
   /**
@@ -91,23 +104,23 @@ public class Triangle implements Sequence {
    */
   protected void addRow() {
     ++mRow;
-    mRows[mRow & mMask] = new Z[mRow + 1];
+    add(new Z[mRow + 1]);
+    mLastRow = this.get(mRow);
     mCol = 0;
   }
 
   /**
    * Computes an element of the triangle.
+   * The requirement is that all previous elements <code>T(0..n-1,k), T(n,0..k-1)</code>were already computed.
    * The default implementation here is Pascal's rule.
    * @param n row number
    * @param k column number
    * @return T(n,k)
    */
   protected Z compute(final int n, final int k) {
-    Z result = null;
     ++mN;
-    if (k < 0 || k > n) {
-      result = Z.ZERO;
-    } else if (mN < mLen) { 
+    Z result = null;
+    if (mN < mLinit) {
       result = mInits[mN]; // start with 1
     } else {
       result = get(n - 1, k - 1).add(get(n - 1, k)); // Pascal's rule
@@ -127,6 +140,37 @@ public class Triangle implements Sequence {
     final Z result = compute(mRow, mCol);
     set(mCol, result);
     return result;
+  }
+
+  /**
+   * Convert an arbitrary sequence into a Triangle.
+   * @param seq Sequence to be converted
+   */
+  public static Triangle asTriangle(final Sequence seq) {
+    return seq instanceof Triangle ? (Triangle) seq : new Triangle() {
+      private int mNt = -1; // index in local Triangle
+
+      protected Z compute(final int n, final int k) {
+        final int nn12k = n * (n + 1) / 2 + k;
+        while (mNt <= nn12k) {
+          ++mNt;
+          if (++mCol > mRow) {
+            addRow();
+          }
+          set(mCol, seq.next());
+        }
+        return get(n, k);
+      }
+    };
+  }
+
+  /**
+   * Multiply this Triangle with a second
+   * @param s2 second Triangle
+   * @return the product
+   */
+  public Triangle multiply(final Triangle s2) {
+    return new Product(this, s2);
   }
 
   /**
