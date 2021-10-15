@@ -25,7 +25,7 @@ public class Product extends Triangle {
   }
 
   /**
-   * Constructor with two Sequences.
+   * Constructor with a Triangle and a Sequence.
    * @param s1 sequence for left triangle
    * @param s2 sequence for right triangle
    */
@@ -34,7 +34,7 @@ public class Product extends Triangle {
   }
 
   /**
-   * Constructor with two Sequences.
+   * Constructor with a Sequence and a Triangle.
    * @param s1 sequence for left triangle
    * @param s2 sequence for right triangle
    */
@@ -57,7 +57,7 @@ public class Product extends Triangle {
    */
   protected void addRow() {
     super.addRow();
-    for (int i = 0; i <= mRow; ++i) {
+    for (int k = 0; k <= mRow; ++k) {
       mS1.next();
       mS2.next();
     }

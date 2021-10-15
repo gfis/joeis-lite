@@ -3556,6 +3556,15 @@ fract22:
 	tail -n4 trigf.gen
 	wc -l    trigf.gen
 #----
+binomialx:
+	cp -v $(TRIREC)/$@.gen $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+invbinom:
+	cp -v $(TRIREC)/binomialx.man $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 triprod:
 	cp -v $(TRIREC)/triprod2.tmp $@.gen
 #------------------------------------------------------

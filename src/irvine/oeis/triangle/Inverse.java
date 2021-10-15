@@ -34,7 +34,7 @@ public class Inverse extends Triangle {
    */
   protected void addRow() {
     super.addRow();
-    for (int i = 0; i <= mRow; ++i) {
+    for (int k = 0; k <= mRow; ++k) {
       mS.next();
     }
   }
@@ -51,7 +51,7 @@ public class Inverse extends Triangle {
   protected Z compute(final int n, final int k) {
     Z result = Z.ZERO;
     for (int j = 0; j < n; ++j) {
-      result = result.add(mS.get(n, j).multiply(this.get(j, k)));
+      result = result.add(mS.get(n, j).multiply(get(j, k)));
     }
   /*
     System.out.println("---- S ----");
