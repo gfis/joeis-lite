@@ -3565,6 +3565,9 @@ invbinom:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+trideleh:
+	cp -v $(TRIREC)/$@.man $@.gen
+#----
 triprod:
 	cp -v $(TRIREC)/triprod2.tmp $@.gen
 #------------------------------------------------------
@@ -3804,8 +3807,13 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 #--------------------------------
-wraptr: # WrappedTriangleRecuirrence
+wraptr: # WrappedRecurrence
 	cd $(TRIREC); make wraptr
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#--
+triconst: # WrappedConstantTriangle
+	cd $(TRIREC); make triconst
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #----

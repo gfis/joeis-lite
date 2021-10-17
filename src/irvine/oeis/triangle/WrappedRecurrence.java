@@ -5,18 +5,18 @@ import irvine.math.z.ZUtils;
 import irvine.oeis.Sequence;
 
 /**
- * Generate the rows of a triangle T(n,k) depending on
- * the left and right border (column), and the terms in the previous rows.
+ * Generate the rows of a triangle <code>T(n,k)</code> depending on
+ * the left and right border, and the terms in the previous rows.
  * This generalizes the rules for Pascal's triangle (A007318):
- * T(n,0) = T(n,n) = 1 and T(n,k) = T(n-1,k-1) + T(n-1,k) for 0 &lt; k &lt; n.
+ * <code>T(n,0)</code> = <code>T(n,n)</code> = 1 and <code>T(n,k) = T(n-1,k-1) + T(n-1,k)</code> for <code>0 &lt; k &lt; n</code>.
  * @author Georg Fischer
  */
 public class WrappedRecurrence extends Triangle {
 
-  private final Sequence mSeqLeft; // sequence for the left border T(n,0)
-  private final Sequence mSeqRight; // sequence for the right border T(n,n); this overwrites T(0,0)
-  private Sequence mSeqPlus; // a(n) of this optional sequence may be used to compute T(n,k) for 0 &lt; k &lt; n.
-  private Z mPlus; // term of mSeqPlus, additive constant per row
+  protected Sequence mSeqLeft; // sequence for the left border <code>T(n,0)</code>
+  protected Sequence mSeqRight; // sequence for the right border <code>T(n,n)</code>; this overwrites <code>T(0,0)</code>; <code>null</code> if the right border is the same as the left border
+  protected Sequence mSeqPlus; // a(n) of this optional sequence may be used to compute T(n,k) for 0 &lt; k &lt; n.
+  protected Z mPlus; // term of mSeqPlus, additive constant per row
 
   /**
    * A simple version of <code>PaddingSequence</code>:
@@ -46,18 +46,38 @@ public class WrappedRecurrence extends Triangle {
 
   /**
    * Empty constructor.
-   * Generates an ordinary Pascal triangle.
+   * Generates an ordinary Pascal triangle with borders 1.
    */
   public WrappedRecurrence() {
     mSeqLeft = new BorderSequence("1");
-    mSeqRight = new BorderSequence("1");
+    mSeqRight = null;
+    initialize();
+  }
+
+  /**
+   * Triangle with the same sequence for both borders.
+   * @param seqLeft sequence for both borders <code>T(n,0)</code>
+   */
+  public WrappedRecurrence(final Sequence seqLeft) {
+    mSeqLeft = seqLeft;
+    mSeqRight = null;
+    initialize();
+  }
+
+  /**
+   * Triangle with a value for both borders.
+   * @param constLeft constant for both borders <code>T(n,0)</code> and <code>T(n,n)</code>
+   */
+  public WrappedRecurrence(final String constLeft) {
+    mSeqLeft = new BorderSequence(constLeft);
+    mSeqRight = null;
     initialize();
   }
 
   /**
    * Triangle with two sequences for the borders.
-   * @param seqLeft sequence for the left border T(n,0)
-   * @param seqRight sequence for the right border T(n,n); this overwrites T(0,0)
+   * @param seqLeft sequence for the left border <code>T(n,0)</code>
+   * @param seqRight sequence for the right border <code>T(n,n)</code>; this overwrites <code>T(0,0)</code>
    */
   public WrappedRecurrence(final Sequence seqLeft, final Sequence seqRight) {
     mSeqLeft = seqLeft;
@@ -67,34 +87,34 @@ public class WrappedRecurrence extends Triangle {
 
   /**
    * Triangle with a sequence and a value for the borders.
-   * @param seqLeft sequence for the left border T(n,0)
-   * @param valRight constant right border T(n,n); this overwrites T(0,0)
+   * @param seqLeft sequence for the left border <code>T(n,0)</code>
+   * @param constRight constant right border <code>T(n,n)</code>; this overwrites <code>T(0,0)</code>;
    */
-  public WrappedRecurrence(final Sequence seqLeft, final String valRight) {
+  public WrappedRecurrence(final Sequence seqLeft, final String constRight) {
     mSeqLeft = seqLeft;
-    mSeqRight = new BorderSequence(valRight);
+    mSeqRight = new BorderSequence(constRight);
     initialize();
   }
 
   /**
    * Triangle with a value and a sequence for the borders.
-   * @param valLeft constant left border T(n,0)
-   * @param seqRight sequence for the right border T(n,n); this overwrites T(0,0)
+   * @param constLeft constant left border <code>T(n,0)</code>
+   * @param seqRight sequence for the right border <code>T(n,n)</code>; this overwrites <code>T(0,0)</code>
    */
-  public WrappedRecurrence(final String valLeft, final Sequence seqRight) {
-    mSeqLeft = new BorderSequence(valLeft);
+  public WrappedRecurrence(final String constLeft, final Sequence seqRight) {
+    mSeqLeft = new BorderSequence(constLeft);
     mSeqRight = seqRight;
     initialize();
   }
 
   /**
    * Triangle with two values for the borders.
-   * @param valLeft constant left border T(n,0)
-   * @param valRight constant right border T(n,n); this overwrites T(0,0)
+   * @param constLeft constant left border <code>T(n,0)</code>
+   * @param constRight constant right border <code>T(n,n)</code>; this overwrites <code>T(0,0)</code>
    */
-  public WrappedRecurrence(final String valLeft, final String valRight) {
-    mSeqLeft = new BorderSequence(valLeft);
-    mSeqRight = new BorderSequence(valRight);
+  public WrappedRecurrence(final String constLeft, final String constRight) {
+    mSeqLeft = new BorderSequence(constLeft);
+    mSeqRight = new BorderSequence(constRight);
     initialize();
   }
 
@@ -103,7 +123,7 @@ public class WrappedRecurrence extends Triangle {
    * Collects the code that is common to all constructors.
    * Assumes that there is no additional term.
    */
-  private void initialize() {
+  protected void initialize() {
     mSeqPlus = null;
     mPlus = Z.ZERO;  // for safety
   }
@@ -148,9 +168,11 @@ public class WrappedRecurrence extends Triangle {
    * @param skip number of elements to skip
    */
   protected void skipRight(int skip) {
-    while (skip > 0) {
-      mSeqRight.next();
-      --skip;
+    if (mSeqRight != null) {
+      while (skip > 0) {
+        mSeqRight.next();
+        --skip;
+      }
     }
   }
 
@@ -170,8 +192,9 @@ public class WrappedRecurrence extends Triangle {
    */
   protected void addRow() {
     super.addRow();
-    set(0, mSeqLeft.next());
-    set(mRow, mSeqRight.next());
+    final Z leftTerm = mSeqLeft.next();
+    set(0, leftTerm);
+    set(mRow, mSeqRight == null ? leftTerm : mSeqRight.next());
     if (mSeqPlus != null && mRow >= 2) {
       mPlus = mSeqPlus.next();
     }
@@ -182,7 +205,7 @@ public class WrappedRecurrence extends Triangle {
    * The default implementation here is Pascal's rule.
    * @param n row number
    * @param k column number
-   * @return T(n,k)
+   * @return <code>T(n,k)</code>
    */
   @Override
   protected Z compute(final int n, final int k) {
@@ -200,7 +223,7 @@ public class WrappedRecurrence extends Triangle {
     return result;
   }
 
-  /**
+  /*
    * Main method: debugging output of a triangle.
    * @param args command line arguments:
    * <ul>
@@ -210,22 +233,23 @@ public class WrappedRecurrence extends Triangle {
    * <li>number of rows to be printed (optional)</li>
    * </ul>
    */
+/*
   public static void main(String[] args) {
     Sequence seqLeft = null;
     Sequence seqRight = null;
     Sequence seqPlus = null;
-    String valLeft = "1";
-    String valRight = "1";
+    String constLeft = "1";
+    String constRight = "1";
     String valPlus = null;
     int noRows = 8;
     for (int iarg = 0; iarg < args.length; ++iarg) {
       switch (iarg) {
         default:
         case 0:
-          valLeft = args[iarg];
+          constLeft = args[iarg];
           break;
         case 1:
-          valRight = args[iarg];
+          constRight = args[iarg];
           break;
         case 2:
           valPlus = args[iarg];
@@ -239,25 +263,25 @@ public class WrappedRecurrence extends Triangle {
       }
     }
     WrappedRecurrence wtr = null;
-    if (valLeft.startsWith("A")) {
-      seqLeft = irvine.test.SequenceTest.sequence(valLeft);
-      if (valRight.startsWith("A")) {
-        seqRight = irvine.test.SequenceTest.sequence(valRight);
+    if (constLeft.startsWith("A")) {
+      seqLeft = irvine.test.SequenceTest.sequence(constLeft);
+      if (constRight.startsWith("A")) {
+        seqRight = irvine.test.SequenceTest.sequence(constRight);
         wtr = new WrappedRecurrence(seqLeft, seqRight);
       } else {
-        wtr = new WrappedRecurrence(seqLeft, valRight);
+        wtr = new WrappedRecurrence(seqLeft, constRight);
       }
     } else {
-      if (valRight.startsWith("A")) {
-        seqRight = irvine.test.SequenceTest.sequence(valRight);
-        wtr = new WrappedRecurrence(valLeft, seqRight);
+      if (constRight.startsWith("A")) {
+        seqRight = irvine.test.SequenceTest.sequence(constRight);
+        wtr = new WrappedRecurrence(constLeft, seqRight);
       } else {
-        wtr = new WrappedRecurrence(valLeft, valRight);
+        wtr = new WrappedRecurrence(constLeft, constRight);
       }
     }
     if (valPlus != null) {
       if (valPlus.startsWith("A")) {
-        seqPlus = irvine.test.SequenceTest.sequence(valLeft);
+        seqPlus = irvine.test.SequenceTest.sequence(constLeft);
         wtr.setPlus(seqPlus);
       } else {
         wtr.setPlus(valPlus);
@@ -270,4 +294,5 @@ public class WrappedRecurrence extends Triangle {
       wtr.printRow(n);
     }
   }
+*/
 }
