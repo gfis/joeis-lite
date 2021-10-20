@@ -124,6 +124,10 @@ diff_joeis:
 	ls -1 ../../src/irvine/oeis/*.java | xargs -l -innn \
 	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/ || :
 #	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/ || :
+diff_triangle:
+	ls -1 ../../src/irvine/oeis/triangle/*.java | xargs -l -innn \
+	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/triangle || :
+#	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/triangle || :
 diffhr:
 	diff -wy  ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
 #	diff -wC0 ../../../joeis/src/irvine/oeis/CompementaryEquationSequence.java   ../../src/irvine/oeis || :
@@ -638,6 +642,12 @@ A194285: # Triangular array:  g(n,k)=number of fractional parts (i*sqrt(2)) in i
 A194368: # Numbers m such that Sum_{k=1..m} (<1/2 + k*r> - <k*r>) = 0, where r=sqrt(2) and < > denotes fractional part.
 	cd ck; perl ck_guides.pl -a O \
 	>        ../$@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+A202692: # The first of three triangles counting 3-colored alternating permutations by their last value.	nonn,tabl,more,changed,synth	1..16	nyi
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
@@ -3816,6 +3826,15 @@ triconst: # WrappedConstantTriangle
 	cd $(TRIREC); make triconst
 	head -n4 $@.gen
 	wc   -l  $@.gen
+#--
+sumpown: # Sums of two powers of m
+	cd $(TRIREC); make sumpown
+	cp -v $(TRIREC)/$@.tmp $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+sumpown_check:
+	$(DBAT) "SELECT s.aseqno, 'bfimin=', b.bfimin FROM seq4 s, bfinfo b WHERE s.aseqno = b.aseqno;"
+	$(DBAT) "SELECT s.aseqno, 'offset=', s.offset FROM seq4 s;"
 #----
 pastri_deprecated: # GeneralizedPascalTriangle
 	grep -E "^A[0-9]" $(TRIREC)/pascal.tmp \
