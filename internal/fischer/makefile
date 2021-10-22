@@ -526,6 +526,9 @@ wraptr2:
 wraptr3:
 	cp -v wraptr2.tmp wraptr3.gen
 #----
+A072921:
+	grep -E "^A" $@.man > $@.gen
+	wc -l    $@.gen
 A094969:
 	cat $(COMMON)/joeis_names.txt \
 	| perl -ne 'my $$aseqno = substr($$_, 0, 7); if (m{[Ff]loor\((\d+)\^n\/(\d+)\^n\)\.}) {'\
@@ -3853,6 +3856,12 @@ tricons:
 	wc   -l  $@.gen
 modpas: # 2021-10-08; formerly A071919
 	grep -E "^A[0-9]" $(TRIREC)/modpas2.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+triuple: # 2021-10-22
+	grep -E "^A[0-9]" $(TRIREC)/triuple.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

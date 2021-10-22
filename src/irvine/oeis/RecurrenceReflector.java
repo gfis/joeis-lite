@@ -6,13 +6,15 @@
  *  2021-01-23, Georg Fischer: copied from BatchTest
  */
 package irvine.oeis;
+
+import irvine.math.z.Z;
+import irvine.oeis.cons.ContinuedFractionOfSqrtSequence;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.nio.channels.Channels;
-
-import irvine.math.z.Z;
 
 /** Reads a list of A-numbers and appends the parameters of the sequences.
  *  The output file is tab-separated: aseqno, callcode, offset, matrix, init, dist, gftype
