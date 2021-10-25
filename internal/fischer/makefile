@@ -3860,8 +3860,16 @@ modpas: # 2021-10-08; formerly A071919
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-triuple: # 2021-10-22
-	grep -E "^A[0-9]" $(TRIREC)/triuple.man \
+triuple: # 2021-10-25
+	# cd $(TRIREC); make triuple
+	grep -E "^A(0[4-9]|[1-9])[0-9]+" $(TRIREC)/triuple.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+triupcp: # 2021-10-25
+	cd  $(TRIREC); make triupcp
+	cat $(TRIREC)/triupcp.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
