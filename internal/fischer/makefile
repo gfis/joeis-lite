@@ -508,6 +508,12 @@ A050201:
 A051803: # nonzero multiplicative products
 	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen
+#----
+A052179: # Triangle recurrence with x,y
+	grep -E "^A[0-9]" $(TRIREC)/$@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 A060722:
 	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen
@@ -645,6 +651,16 @@ A194285: # Triangular array:  g(n,k)=number of fractional parts (i*sqrt(2)) in i
 A194368: # Numbers m such that Sum_{k=1..m} (<1/2 + k*r> - <k*r>) = 0, where r=sqrt(2) and < > denotes fractional part.
 	cd ck; perl ck_guides.pl -a O \
 	>        ../$@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+A202670: # self-fusion matrices = correlation triangles
+	cd $(TRIREC); make trigB
+	grep trig_b1 $(TRIREC)/trigB.tmp \
+	| sed -e "s/\ttrig_b1\t/\tparm3\t/" -e "s/\trseqno\t/\tA202670\t/" \
+	| sort | uniq -w7 \
+	| grep -vE "^A0" \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
@@ -3867,7 +3883,16 @@ triuple: # 2021-10-25
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-triupcp: # 2021-10-25
+triupcp: # 2021-10-26
+	cd  $(TRIREC); make trigB
+	grep -E "trig_b2" $(TRIREC)/trigB.tmp \
+	| grep -vE "^A00|A999999|A087062" \
+	| perl -pe 's{\ttrig_b2\t}{\tparmof2\t}; s{\trseqno\t(A\d+)}{\tA203991\tnew $$1\(\)}; '\
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+triupcp_old: # 2021-10-25
 	cd  $(TRIREC); make triupcp
 	cat $(TRIREC)/triupcp.tmp \
 	>        $@.gen
