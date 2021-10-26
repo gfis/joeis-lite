@@ -3886,7 +3886,7 @@ triuple: # 2021-10-25
 triupcp: # 2021-10-26
 	cd  $(TRIREC); make trigB
 	grep -E "trig_b2" $(TRIREC)/trigB.tmp \
-	| grep -vE "^A00|A999999|A087062" \
+	| grep -vE "^A00|A99999|A087062" \
 	| perl -pe 's{\ttrig_b2\t}{\tparmof2\t}; s{\trseqno\t(A\d+)}{\tA203991\tnew $$1\(\)}; '\
 	| sort | uniq -w7 \
 	>        $@.gen
