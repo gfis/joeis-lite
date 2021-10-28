@@ -310,7 +310,7 @@ purge: # remove all oeis/annn directories
 gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	# ---- $@ CC=$(CC)
 	head -n$(MANY) $(CC).gen      > ghead.tmp
-	perl gen_seq4.pl -d $(D) $(NC)  ghead.tmp
+	perl gen_seq4.pl -d $(D) -cc $(CC) $(NC) ghead.tmp
 	make -i $(CC).patch || :
 man: # copy sources that where manually edited
 	# ---- $@ CC=$(CC)
@@ -544,6 +544,12 @@ A094969:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+A090171: # T(n, k) = T(n-1, k) + T(n-1, k-1) + T(n-2, k) + T(n-2, k-1) + T(n-2, k-2) for n >= 2, a(0..2) = (0,1,0). Christian G. Bower
+	grep -E "^A[0-9]" $(TRIREC)/$@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 #----
 A095425:
 	grep -E "^A094324" anastret.txt \
@@ -3563,9 +3569,10 @@ trigfm:
 #----
 dhdop:
 	sed -e "s/dhd/trigf/" $(TRIREC)/dhd_gf.tmp \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
+	>        $@.gen
+	tail -n4 $@.gen
+	wc -l    $@.gen
+#----
 rio:
 	grep -E  "fract21"  $(TRIREC)/rio3.tmp \
 	| sed -e "s/fract21/trigf/" \
@@ -3575,15 +3582,15 @@ rio:
 fract21:
 	grep -E  "fract21"  $(TRIREC)/fract2.tmp \
 	| sed -e "s/fract21/trigf/" \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
+	>        $@.gen
+	tail -n4 $@.gen
+	wc -l    $@.gen
 fract22:
 	grep -E  "fract22"  $(TRIREC)/fract2.tmp \
 	| sed -e "s/fract22/trigf/" \
-	>        trigf.gen
-	tail -n4 trigf.gen
-	wc -l    trigf.gen
+	>        $@.gen
+	tail -n4 $@.gen
+	wc -l    $@.gen
 #----
 binomialx:
 	cp -v $(TRIREC)/$@.gen $@.gen
@@ -3655,25 +3662,25 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp 
-	# echo -n "binomial"                         > binomx.deris.tmp
-	# echo -n "characteristic|indicator"         > charfun.deris.tmp
+	echo -n "binomial"                         > binomx.deris.tmp
+	echo -n "characteristic|indicator"         > charfun.deris.tmp
 	echo -n "complement"                       > compseq.deris.tmp
 	echo -n "difference"                       > diffseq.deris.tmp
-	# echo -n "dirichlet"                        > dirichinv.deris.tmp
-	# echo -n "dirichlet"                        > dirichcon.deris.tmp
-	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	# echo -n "euler"                            > eulerx.deris.tmp
-	# echo -n "euler"                            > eulerix.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	# echo -n "partial product"                  > partprod.deris.tmp
+	echo -n "dirichlet"                        > dirichinv.deris.tmp
+	echo -n "dirichlet"                        > dirichcon.deris.tmp
+	echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	echo -n "euler"                            > eulerx.deris.tmp
+	echo -n "euler"                            > eulerix.deris.tmp
+	echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	echo -n "partial product"                  > partprod.deris.tmp
 	echo -n "partial sum"                      > partsum.deris.tmp
-	# echo -n "prime"                            > primepos.deris.tmp
-	# echo -n "prime"                            > primeval.deris.tmp
-	# echo -n "record"                           > recordpos.deris.tmp
-	# echo -n "record"                           > recordval.deris.tmp
-	# echo -n "stirling"                         > stirling2.deris.tmp
-	# echo -n "weigh"                            > weighx.deris.tmp
+	echo -n "prime"                            > primepos.deris.tmp
+	echo -n "prime"                            > primeval.deris.tmp
+	echo -n "record"                           > recordpos.deris.tmp
+	echo -n "record"                           > recordval.deris.tmp
+	echo -n "stirling"                         > stirling2.deris.tmp
+	echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====

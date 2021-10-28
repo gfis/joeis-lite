@@ -5,14 +5,14 @@ import irvine.math.z.Z;
 import irvine.oeis.MemorySequence;
 import irvine.oeis.Sequence;
 import irvine.oeis.a000.A000290;
-import irvine.oeis.triangle.Triangle;
+import irvine.oeis.triangle.UpperLeftTriangle;
 
 /**
  * A202670 Symmetric matrix based on A000290 (the squares), by antidiagonals.
  * This is the prototype for an array called "self-fusion matrix" by Kimberling.
  * @author Georg Fischer
  */
-public class A202670 extends Triangle {
+public class A202670 extends UpperLeftTriangle {
 
   protected final MemorySequence mSeq;
   protected final int mSkip;
@@ -29,7 +29,7 @@ public class A202670 extends Triangle {
    * 
    */
   public A202670(final Sequence seq, int skip) {
-    super();
+    super(1, 1, -1);
     mSeq = MemorySequence.cachedSequence(seq);
     mSkip = skip;
   }
@@ -48,26 +48,35 @@ public class A202670 extends Triangle {
   @Override
   /**
    * Computes a triangle element.
-   * @param n row number, 0-based
-   * @param k column number, 0-based
-   * The elements are inner product sums of terms in the underlying sequence 1,4,9,16 as follows:
+   * @param i row number, 1-based
+   * @param j column number, 1-based
+   * @return UpperLeftTriangle element <code>T(i, j)</code>
+   * The elements are inner product sums of terms in the underlying sequence 1,4,9,16.
    * <pre>
+   * Triangle order:
    * n/k  0         1         2         3
    *  0   1.1       
    *  1   14.01     01.14  
    *  2   149.001   014.014   001.149
    *  3   149G.0001 0149.0014 0014.0149 0001.149G
    * </pre>
-   * @return Triangle element <code>T(n, k)</code>
+   * <pre>
+   * UpperLeftTriangle order:
+   * n/k  0         1         2         3
+   *  0   1.1       01.14     001.149   0001.149G
+   *  1   14.01     014.014   0014.0149
+   *  2   149.001   0149.0014   
+   *  3   149G.0001   
+   * </pre>
    */
-  public Z compute(final int n, final int k) {
-    if (n == 0) {
-      return a(0);
-    }
+  public Z matrixElement(final int i, final int j) {
+    final int n = i - mRow0;
+    final int k = j - mCol0;
+    final int lenp = n + k; // sum over lenp + 1 products
     Z sum = Z.ZERO;
-    for (int m = 0; m <= n; ++m) { // sum over as many products as the row number
-      final int il = - k + m;
-      final int ir = + k - n + m;
+    for (int m = 0; m <= lenp; ++m) {
+      final int il = m - n; // left index
+      final int ir = m - k; // right index
       if (il >= 0 && ir >= 0) {
         sum = sum.add(a(il).multiply(a(ir)));
       }

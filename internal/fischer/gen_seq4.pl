@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2021-10-28, V2.4: -cc overwrites callcodes in infile
 # 2021-10-10, V2.3: for subpackages irvine.oeis.cons|triangle
 # 2020-09-02, V2.2: do not import @OVerride 
 # 2020-06-21, V2.1: imports not from comments
@@ -14,11 +15,13 @@
 # 2019-06-13, Georg Fischer: derived from gen_pattern.pl
 #
 #:# Usage:
-#:#   perl gen_seq4.pl [-d debug] [-a author] [-l maxlen]
+#:#   perl gen_seq4.pl [-d debug] [-a author] [-cc callcode] [-l maxlen]
 #:#          [-p patprefix] [-t targetdir] [-nc] infile > logfile
-#:#   -l maxlen     maximum length of a line during $(PARMi) expansion
+#:#   -a  author     Sean or Georg
+#:#   -cc callcode   overwrites the callcode in the infile
+#:#   -l  maxlen     maximum length of a line during $(PARMi) expansion
 #:#   -nc           do not overwrite if already present in $maindir
-#:#   -p patprefix  directory prefix where to find the *.jpat pattern file(s)
+#:#   -p  patprefix  directory prefix where to find the *.jpat pattern file(s)
 #:#
 #:#   infile lines have the format: ASEQNO CALLCODE OFFSET PARM1 PARM2 PARM3 PARM4 ... PARM8 NAME
 #:#   The pattern file(s) may contain all of these
@@ -32,7 +35,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V2.3";
+my $program = "gen_seq4.pl V2.4";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -45,6 +48,7 @@ if (scalar(@ARGV) == 0) {
 my $author    = "Georg Fischer";
 my $patprefix = "./";
 my $patext    = ".jpat";
+my $cc        = "";
 my $callcode  = "cfsnum";
 my %patterncache  = (); # empty at the beginning
 my $basedir   = "../../../OEIS-mat/common";
@@ -56,6 +60,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     if (0) {
     } elsif ($opt  =~ m{a}) {
         $author    =  shift(@ARGV);
+    } elsif ($opt  =~ m{cc}) {
+        $cc        =  shift(@ARGV);
     } elsif ($opt  =~ m{d}) {
         $debug     =  shift(@ARGV);
     } elsif ($opt  =~ m{l}) {
@@ -213,6 +219,7 @@ print STDERR "# $gen_count sequences generated\n";
 #-----------------
 sub write_output {
     my ($copy, $aseqno) = @_; # global $old_package, $gen_count, $debug
+    my $call1 = length($cc) > 0 ? $cc : $callcode; 
     map {
         my $line = $_;
         if ($line !~ m{\A\s*\*\s+}) {
@@ -222,7 +229,7 @@ sub write_output {
         } split(/\n/, $copy);
     $copy =~ s{\$\(ASEQNO\)}    {$aseqno}g;
     $copy =~ s{\$\(AUTHOR\)}    {$author}g;
-    $copy =~ s{\$\(CALLCODE\)}  {$callcode}g;
+    $copy =~ s{\$\(CALLCODE\)}  {$call1}g;
     $copy =~ s{\$\(DATE\)}      {$timestamp}g;
     $copy =~ s{\$\(GEN\)}       {$0}g;
     $copy =~ s{\$\(IMPORT\)}    {&get_imports($aseqno)}eg;
