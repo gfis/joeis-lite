@@ -2,6 +2,7 @@
 
 # Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing
 # @(#) $Id$
+# 2021-10-29: distel
 # 2020-06-21: test with BatchMonitor
 # 2019-07-15: joeis parallel to joeis-lite
 # 2019-05-20, Georg Fischer: copied from makefile
@@ -325,6 +326,9 @@ dist:
 	#################################################################
 dist1:
 	cd ../.. ; ant -silent dist 2>&1
+#--
+distel: dist test log
+#--
 testout: # parameter: CC
 	# ---- $@ CC=$(CC)
 	rm -f batch.log
@@ -996,57 +1000,6 @@ smoothn:	# smooth <= n
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-##decexp0: decexp1 decexp2 decexp3 # Decimal expansion of expr.
-##decexp1:
-##	grep -E "^[\%][N] A[0-9][0-9]* Decimal expansion" $(COMMON)/jcat25.txt \
-##	| cut -b4- | grep -vP '\, *where' \
-##	| perl -ne 's/ Decimal expansion (for|of) /\tpost\t0\t~~/; '\
-##	' s{([\.\;\,\:\=]|\(gamma is|where ).*}{}; s{ }{}g; s{(.)A001620}{$$1}g; s{goldenratio}{phi}; '\
-##	' if (! m{sum|prod|_|.A|\!|.\w{8}}) { print; }'\
-##	| grep -E "^A[0-9]" \
-##	>        $@.1.tmp
-##	wc -l    $@.1.tmp
-##	grep -E "^A[0-9]" decexp1.man \
-##	| sed -e "s/ //g" \
-##	| sort | uniq -w7 \
-##	>        $@.2.tmp
-##	wc -l    $@.2.tmp
-##	# cut -b1-7 decexp1.man | sort | uniq -c | grep -v " 1 "
-##	make overwrite SRC=$@.2.tmp TAR=$@.1.tmp
-##	gawk -e '{print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t" $$4 }' $@.1.tmp \
-##	>        $@.tmp
-##	head -n4 $@.tmp
-##	wc -l    $@.tmp
-##decexp_check: # on duplicates in .man
-##	grep -E "^A[0-9]" decexp1.man | cut -b1-7 | sort | uniq -c | grep -v " 1 "
-##decexp2:
-##	# cp -v $(CONSTANT)/zetaddx.man decexp1.tmp
-##	$(JPREP) -f decexp1.tmp | sed -e "s/\r//" \
-##	| perl -ne 's{\tpost\t(.*)\Z}{\tinfix\t$$1\t$$1}; s{\~\~\;?}{}g; print;'\
-##	>        $@.tmp
-##	head -n4 $@.tmp
-##	wc -l    $@*.tmp
-##decexp3:
-##	$(JPREP) -p CR.xpat -f decexp2.tmp \
-##	| perl de_zeta.pl \
-##	>        $@.tmp \
-##	2>       $@.rest.tmp
-##	head -n4 $@.tmp
-##	wc -l    $@*.tmp 
-##decexp:
-##	rm -f $@.rest.tmp
-##	touch $@.rest.tmp
-##	grep -P  '\<\?' decexp3.tmp \
-##	>>       $@.rest.tmp || :
-##	grep -vP '\<\?' decexp3.tmp \
-##	| perl -ne 'my $$r = ($$_ =~ m{REALS}) ? "r" : ""; $$_ =~ s{\tinfix\t}{\tdecexp$$r\t}; '\
-##	' my ($$aseqno, $$callcode, $$offset, $$parm1, @rest) = split(/\t/); '\
-##	' if ((length($$offset) <= 4) && ($$parm1 =~ m{\A[A-Z]})) { print; } '\
-##	| sort | uniq -w7 \
-##	>        $@.gen
-##	head -n4 $@.gen
-##	wc -l    $@.gen $@.rest.tmp
-
 decexp: # decimal expansion of expression
 	grep -E "^A[0-9]" $(CONSTANT)/decexp4.tmp \
 	| grep -vEE "A084257|A114041" \
@@ -3902,6 +3855,18 @@ triupcp: # 2021-10-26
 triupcp_old: # 2021-10-25
 	cd  $(TRIREC); make triupcp
 	cat $(TRIREC)/triupcp.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+rowsums:
+	sort $(TRIREC)/$@.tmp | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+tricolk:
+	sort $(TRIREC)/$@.tmp | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

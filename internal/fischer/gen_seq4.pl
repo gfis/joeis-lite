@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2021-10-29, V2.5: -cc concatenated with callcode in infile
 # 2021-10-28, V2.4: -cc overwrites callcodes in infile
 # 2021-10-10, V2.3: for subpackages irvine.oeis.cons|triangle
 # 2020-09-02, V2.2: do not import @OVerride 
@@ -35,7 +36,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V2.4";
+my $program = "gen_seq4.pl V2.5";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -219,7 +220,7 @@ print STDERR "# $gen_count sequences generated\n";
 #-----------------
 sub write_output {
     my ($copy, $aseqno) = @_; # global $old_package, $gen_count, $debug
-    my $call1 = length($cc) > 0 ? $cc : $callcode; 
+    my $call1 = ($cc eq $callcode) ? $cc : "$cc/$callcode"; 
     map {
         my $line = $_;
         if ($line !~ m{\A\s*\*\s+}) {
