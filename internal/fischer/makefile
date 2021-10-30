@@ -611,6 +611,13 @@ a139149:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
+A144562:
+	cd $(TRIREC) ; make $@
+	grep -vE "^A1150(09|10)" $(TRIREC)/$@.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 A157052:
 	cp -v    $@.man $@.gen
 #--------
@@ -635,6 +642,11 @@ A161440:
 a165824:
 	cat      $@.man \
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+A176627:
+	cp -v $(TRIREC)/$@.man $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
