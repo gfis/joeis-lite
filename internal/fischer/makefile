@@ -327,7 +327,8 @@ dist:
 dist1:
 	cd ../.. ; ant -silent dist 2>&1
 #--
-distel: dist test log
+distel:  dist test    log
+disteal: dist testall log
 #--
 testout: # parameter: CC
 	# ---- $@ CC=$(CC)
@@ -423,7 +424,23 @@ joeis_class:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-#================================================================
+#--------
+potential: # rerun all targets that have accelaration potential
+	rm -f    $@.tmp
+	#---- start of list of all candidates
+	echo trimirror     > $@.tmp
+	#---- end of   list of all candidates
+	cat $@.tmp | xargs -l -innn make $@1 TARGET=nnn
+	cat $@.tmp | xargs -l -innn make $@2 TARGET=nnn
+	make man
+	find ../../src/irvine/oeis/a* -iname "*.java" | wc -l
+	make dist testall
+potential1:
+	make CC=$(TARGET) select gener man dist test
+	make CC=$(TARGET) clean
+potential2:
+	make CC=$(TARGET) gener
+#--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
 similar:
@@ -431,6 +448,7 @@ similar:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#================================================================
 A001482:
 	grep -E "^A" $@.man \
 	>        $@.gen
@@ -3880,6 +3898,16 @@ rowsums:
 tricolk:
 	sort $(TRIREC)/$@.tmp | uniq -w7 \
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+triman:
+	grep -E "^A[0-9]" $(TRIREC)/triman.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+trimirror:
+	cd $(TRIREC) ; make $@
+	cp -v $(TRIREC)/$@.tmp $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------

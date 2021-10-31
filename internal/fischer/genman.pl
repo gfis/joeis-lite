@@ -80,8 +80,8 @@ sub output {
     open(OUT, ">", $filename) || die "cannot write \"$filename\"\n";
     # get the name
     my $name = `grep -E \"^$aseqno\" $namesfile`;
-    $name =~ s{\s+\Z}{}; # chompr
     $name =~ s{\s+}{ }g; # replace (multiple) whitespace by 1 space
+    $name =~ s{\s+\Z}{}; # chompr
     $name =~ s{\&}{\&amp;}g; # HTML encoding
     $name =~ s{\<}{\&lt;}g;
     $name =~ s{\>}{\&gt;}g;
