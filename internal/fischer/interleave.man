@@ -1,0 +1,41 @@
+A147657	interleave	A000001	A000001		(1, -2, 3,...) interleaved with (1, 2, -2, 2, -2,...).	sign,more,changed,synth	1..42	nyi
+A147658	interleave	A000001	A000001		(1, 2, -4, 6, -8,...) interleaved with (3, -3, 3, -3, 3,...).	sign,synth	1..39	nyi
+A245092	interleave	The even numbers (A005843) and the values of sigma function (A000203) interleaved.	nonn,changed,	0..20000	nyi
+A262610	interleave	The values of sigma function (A000203) and the positive integers A000027 interleaved.	nonn,easy,changed,synth	1..84	nyi
+# A163237	interleave	a(i,j) = bits of binary expansion of A003188(i) interleaved with that of A003188(j), then converted with A163241.	nonn,tabl,	0..2079	nyi
+A061727	interleave	A000217 interleaved with A061726.	nonn,dumb,easy,	1..2000	nyi
+A127480	interleave	A131702 and A014320 interleaved.	nonn,less,synth	1..60	nyi
+A230850	interleave	A054541 and A000012 interleaved.	nonn,	1..10000	nyi
+A230849	interleave	A075526 and A000012 interleaved.	nonn,	1..20000	nyi
+# A256252	interleave	Number of successive odd noncomposite numbers A006005 and number of successive odd composite numbers A071904, interleaved.	nonn,synth	1..104	nyi
+# A256253	interleave	Number of successive odd nonprimes A014076 and number of successive odd primes A065091, interleaved.	nonn,synth	1..105	nyi
+# A256262	interleave	Number of successive odd numbers that are not twin primes and number of successive twin primes, interleaved.	nonn,changed,	1..30998	nyi
+A262615	interleave	amicable digital pairs: A262091 and A262092 interleaved.	nonn,base,synth	1..30	nyi
+A237056	interleave	A003309(n); a(2*n) = A192607(n); Ludic and non-ludic numbers interleaved.	nonn,	1..10000	nyi
+# A184989	interleave	Digits of n and of n-1 interleaved in decimal representation.	nonn,base,look,	1..9999	nyi
+A219606	interleave	Prime gaps A001223 and primes A000040 interleaved.	nonn,	1..10000	nyi
+A067747	interleave	Primes A000040 interleaved between composite numbers A002808: n-th prime followed by the n-th composite number.	easy,nonn,changed,	1..1000	nyi
+A143579	interleave	Permutation of the natural numbers (0,1,2,3,...): Odious numbers (A000069) interleaved with Evil numbers (A001969).	nonn,synth	0..72	nyi
+A133730	interleave	alternating sign sequence interleaved with A033999 Jacobsthal sequence A001045.	sign,synth	0..29	nyi
+# A181363	interleave	1 followed by the primes, interleaved recursively.	nonn,	1..8191	nyi
+A164020	interleave	Denominators of Bernoulli A002445 numbers interleaved with even numbers A005843.	nonn,	0..1000	nyi
+A220517	interleave	First differences of X225600. Also A141285 and A194446 interleaved.	nonn,tabf,synth	1..84	nyi
+A228371	interleave	First differences of X228370. Also A001511 and A006519 interleaved.	nonn,tabf,synth	1..128	nyi
+# A114007	interleave	Distinct primes in increasing order interleaved with primes of the form concatenation two or more previous terms say all a(i), a(j) i<j, then all a(i), a(j), a(k) i < j < k etc. Once all the concatenations have exhausted then the least prime that has not occurred earlier.	base,more,nonn,synth	0..10	nyi
+A194451	interleave	Partition numbers of positive integers A000041 and positive integers A000027 interleaved.	nonn,synth	1..60	nyi
+
+# A163235	interleave	Two-dimensional Binary Reflected Gray Code, transposed version: a(i,j) = bits of binary expansion of A003188(j) interleaved with that of A003188(i).	nonn,tabl,changed,	0..2079	nyi
+# A163233	interleave	Two-dimensional Binary Reflected Gray Code: a(i,j) = bits of binary expansion of A003188(i) interleaved with that of A003188(j).	nonn,tabl,look,changed,	0..2079	nyi
+# A201651	interleave	Bit-interleaved number addition table (cf. A054240) as triangle read by rows: T(n,k) = n and k added in binary representation, where carries shift 2 instead of 1, 0 <= k <= n.	nonn,tabl,	0..8000	nyi
+
+
+# A330956	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the greatest possible value of min(x, y).	nonn,base,new,synth	0..86	nyi
+# A330955	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the greatest possible value of x AND y (where AND denotes the bitwise AND operator).	nonn,base,new,synth	0..86	nyi
+# A330925	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the greatest possible value of x*y.	nonn,base,new,	0..8192	nyi
+# A330961	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of abs(x - y).	nonn,base,new,synth	0..86	nyi
+# A330963	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of abs(x^2 - y^2).	nonn,base,new,synth	0..82	nyi
+# A330957	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of max(x, y).	nonn,base,new,synth	0..86	nyi
+# A330960	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of x + y.	nonn,base,new,synth	0..83	nyi
+# A330958	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of x OR y (where OR denotes the bitwise OR operator).	nonn,base,new,synth	0..86	nyi
+# A330959	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of x XOR y (where XOR denotes the bitwise XOR operator).	nonn,base,new,synth	0..86	nyi
+# A330962	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of x^2 + y^2.	nonn,base,new,synth	0..71	nyi

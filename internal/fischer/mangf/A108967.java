@@ -1,5 +1,5 @@
-package irvine.oeis.a166;
-// manually 2021-08-08
+package irvine.oeis.a108;
+// manually 2021-11-01
 
 import irvine.oeis.NoncomputableSequence;
 

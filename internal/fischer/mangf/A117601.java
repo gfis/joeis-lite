@@ -10,9 +10,23 @@ import irvine.oeis.a000.A000931;
  * @author Georg Fischer
  */
 public class A117601 extends A000931 {
+    
+  protected int mN;
+  
+  /* Construct the sequence. */
+  public A117601() {
+    mN = 0;
+    for (int n = 0; n <= 12; ++n) { // skip leading terms with duplicates
+      super.next();
+    }
+  }
 
   @Override
   public Z next() {
+    ++mN;
+    if (mN <= 5) {
+      return Z.valueOf(mN); // fixed terms
+    }
     Z result = super.next();
     while (! result.remainder(Z.valueOf(ZUtils.digitSum(result))).equals(Z.ZERO)) {
       result = super.next();

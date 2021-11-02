@@ -2807,6 +2807,14 @@ testaron: # A= B=
 	| tee    $@.tmp
 	perl test_aan.pl $@.tmp
 #--------------------------------
+interleave:
+	grep -E "^A[0-9]" $@.man \
+	| perl -ne 'use strict; my @asns = m{(A\d\d+)}g; if (scalar(@asns) >= 3) { print join("\t", $$asns[0], "$@", 0, $$asns[1], $$asns[2], "". "") . "\n"; } '\
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
+#--------------------------------
 ASMIN=300
 ASMAX=400
 jall: # parms = ASMIN, ASMAX - test a block of implemented jOEIS sequences
@@ -3831,8 +3839,19 @@ wraptr: # WrappedRecurrence
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #--
+tricodiff: # ConstantDifferenceTriangle
+	cd $(TRIREC); make tricodiff
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#--
 triconst: # WrappedConstantTriangle
 	cd $(TRIREC); make triconst
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#--
+trimultab: # Multiplication tables
+	grep -E "^A[0-9]" $(TRIREC)/$@.man \
+	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #--
@@ -5778,6 +5797,41 @@ cofr_sqrt:
 	| tee $@.tmp
 	wc -l $@.tmp
 #--------------------------------
+unsigned: unsigned1 unsigned2
+	sort unsigned2.tmp | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen	
+unsigned1:
+	grep -E "^.[NCFY]" $(COMMON)/jcat25.txt | grep -Ei "unsigned" \
+	| perl unsigned.pl \
+	2>       $@.rest.tmp \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc   -l  $@.*tmp
+unsigned2:
+	make seq4 LIST=unsigned1.tmp
+	$(DBAT) -x "SELECT s.aseqno, 'unsigned', 0, s.parm1 \
+	    , CASE WHEN i.keyword LIKE 'sign' THEN 'sign' ELSE 'nonn' END \
+	    , s.parm2 \
+	    FROM seq4 s, asinfo i \
+	    WHERE s.aseqno = i.aseqno \
+	      AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	      AND s.parm1      IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1" \
+	>        $@.tmp
+	# the other way around
+	$(DBAT) -x "SELECT s.parm1, 'unsigned', 0, s.aseqno \
+	    , CASE WHEN i.keyword LIKE 'sign' THEN 'sign' ELSE 'nonn' END \
+	    , s.parm2 \
+	    FROM seq4 s, asinfo i \
+	    WHERE s.parm1 = i.aseqno \
+	      AND s.parm1  NOT IN (SELECT aseqno FROM joeis) \
+	      AND s.aseqno     IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1" \
+	>>       $@.tmp
+#--------------------------------
 uvpoly: # in ./ck, A208510 ff.
 	sort ck/$@.tmp | uniq -w7 \
 	>        $@.gen
@@ -5900,10 +5954,14 @@ mangf_check:
 	  FROM seq2 s, asname n LEFT JOIN joeis j ON n.aseqno = j.aseqno \
 	  WHERE s.aseqno = n.aseqno \
 	  ORDER BY 2" \
-	| grep -P "\tnyi\t" || : \
+	| grep -P "\tnyi\t" | sort \
 	>        $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
+mangf_retest:
+	cut -f1 mangf_check.txt | grep -E "^A[0-9][0-9]" \
+	| xargs -l -innn cp -v mangf/nnn.java manual
+	make CC=man purge man distel
 #--------------------------
 analog: analog1 anasort anaprep anaload anastret
 analog1:

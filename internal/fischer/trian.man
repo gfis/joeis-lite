@@ -1,0 +1,29 @@
+# A162620	trian1	0		lists n consecutive natural numbers A000027, start A000040(n)-n+1.	_Omar E. Pol_, Jul 10 2009	easy,nonn,tabl,synth	1..74
+# A162618	trian1	0		lists n consecutive natural numbers A000027, start A008578(n-1) - n + 1.	_Omar E. Pol_, Jul 10 2009	easy,nonn,tabl,synth	1..77
+# A162619	trian1	0		lists n consecutive natural numbers A000027, start A014689(n) = A000040(n)-n.	_Omar E. Pol_, Jul 10 2009	easy,nonn,tabl,synth	1..75
+# A162621	trian1	0		lists n consecutive natural numbers A000027, start A014689(n+1) = A000040(n+1)-n-1.	_Omar E. Pol_, Jul 10 2009	easy,nonn,tabl,synth	1..74
+A159798	trian1	0	k == 1 ? Z.ONE : get(n, k - 1).add(n - 3)	lists n terms, start 1, diff  is equal to n-3.	_Omar E. Pol_, Jul 09 2009	easy,nonn,tabl,	1..5050
+A162609	trian1	0	k == 1 ? Z.ONE : get(n, k - 1).add(n - 2)	lists n terms, start 1, with gaps = n-2 .	_Omar E. Pol_, Jul 09 2009	easy,nonn,tabl,changed,synth	1..75
+A162610	trian1	0	k == 1 ? Z.valueOf(2*n - 1) : get(n, k - 1).add(n - 1)	lists n terms, start 2n-1, with gaps = n-1 .	_Omar E. Pol_, Jul 09 2009	easy,tabl,nonn,changed,	1..10000
+A162615	trian1	0	k == 1 ? Z.valueOf(n) : get(n, k - 1).add(Z.valueOf(n).pow(3)).subtract(1)	lists n terms, start n, diff  is equal to n^3 - 1 = A068601(n).	_Omar E. Pol_, Jul 12 2009	easy,nonn,tabl,changed,	1..10000
+A162623	trian1	0	k == 1 ? Z.valueOf(n) : get(n, k - 1).add(Z.valueOf(n).pow(4)).subtract(1)	lists n terms, start n, diff  is equal to n^4 - 1 = A123865(n).	_Omar E. Pol_, Jul 12 2009	easy,nonn,tabl,changed,synth	1..46
+A162613	trian1	0	k == 1 ? Z.valueOf(n) : get(n, k - 1).add(n*n - 1)	lists n terms, start n, with gaps = n^2-1 .	_Omar E. Pol_, Jul 09 2009	easy,nonn,tabl,changed,	1..1000
+A162612	trian1	0	k == 1 ? Z.valueOf(n).pow(2).add(n - 1) : get(n, k - 1).add(Z.valueOf(n).pow(2)).subtract(1)	lists n terms, start n^2+n-1, with gaps = n^2-1 .	_Omar E. Pol_, Jul 09 2009	easy,nonn,tabl,synth	1..57
+A162616	trian1	0	k == 1 ? Z.valueOf(n).pow(3).add(n - 1) : get(n, k - 1).add(Z.valueOf(n).pow(3)).subtract(1)	lists n terms, start n^3 + n - 1, diff  is equal to n^3 - 1 = A068601(n).	_Omar E. Pol_, Jul 12 2009	easy,nonn,tabl,changed,synth	1..47
+A162624	trian1	0	k == 1 ? Z.valueOf(n).pow(4).add(n - 1) : get(n, k - 1).add(Z.valueOf(n).pow(4)).subtract(1)	lists n terms, start n^4 + n - 1, diff  is equal to n^4 - 1 = A123865(n).	_Omar E. Pol_, Jul 12 2009	easy,nonn,tabl,changed,	1..10000
+A162608	trian	0	k == 0 ? Z.valueOf(n) : get(n, k - 1).add(n)	lists n+1 terms, start n!, diff  is also equal to n!.	_Omar E. Pol_, Jul 22 2009	easy,nonn,tabl,changed,	0..11475
+A159797	trian	0	k == 0 ? Z.valueOf(n) : get(n, k - 1).add(n - 1)	lists n+1 terms, start n, diff  is equal to n-1.	_Omar E. Pol_, Jul 09 2009	easy,nonn,tabl,changed,	0..1000
+A162611	trian	0	k == 0 ? Z.valueOf(n) : get(n, k - 1).add(Z.valueOf(n).pow(2)).subtract(1)	lists n+1 terms, start n, diff  is equal to n^2 - 1.	_Omar E. Pol_, Jul 09 2009	easy,nonn,tabl,synth	0..61
+A162614	trian	0	k == 0 ? Z.valueOf(n) : get(n, k - 1).add(Z.valueOf(n).pow(3)).subtract(1)	lists n+1 terms, start n, diff  is equal to n^3 - 1.	_Omar E. Pol_, Jul 15 2009	easy,nonn,tabl,changed,synth	0..53
+A162622	trian	0	k == 0 ? Z.valueOf(n) : get(n, k - 1).add(Z.valueOf(n).pow(4)).subtract(1)	lists n+1 terms, start n, diff  is equal to n^4 - 1.	_Omar E. Pol_, Jul 15 2009	nonn,easy,tabl,changed,	0..1000
+A163282	trian	0	k == 0 ? Z.valueOf(n).pow(2) : get(n, k - 1).add(Z.valueOf(n).multiply(n - 1))	lists n+1 terms, start n^2 and end n^3, such that difference  is equal to n^2 - n.	_Omar E. Pol_, Jul 24 2009	nonn,tabl,easy,changed,	0..1274
+A163283	trian	0	k == 0 ? Z.valueOf(n).pow(3) : get(n, k - 1).add(Z.valueOf(n).pow(2).multiply(n - 1))	lists n+1 terms, start n^3 and end n^4, diff  is equal to n^3 - n^2.	_Omar E. Pol_, Jul 24 2009	easy,nonn,tabl,	0..1274
+A163284	trian	0	k == 0 ? Z.valueOf(n).pow(4) : get(n, k - 1).add(Z.valueOf(n).pow(3).multiply(n - 1))	lists n+1 terms, start n^4 and end n^5, diff  is equal to n^4 - n^3.	_Omar E. Pol_, Jul 24 2009	easy,nonn,tabl,	0..1274
+A163285	trian	0	k == 0 ? Z.valueOf(n).pow(5) : get(n, k - 1).add(Z.valueOf(n).pow(4).multiply(n - 1))	lists n+1 terms, start n^5 and end n^6, diff  is equal to n^5 - n^4.	_Omar E. Pol_, Jul 24 2009	easy,nonn,tabl,	0..1274
+# A337301	trian	0		lists the closest integers to diagonal lengths of regular n-gon with unit edge length, n >= 4.	_Mohammed Yaseen_, Aug 22 2020	easy,nonn,tabl,new,synth	4..94
+A237587	trian1	0	Z.valueOf(2 * (n - k + 1) - 1).square()	lists the first n odd squares in decreasing order.	_Omar E. Pol_, Feb 16 2014	nonn,tabl,synth	1..66
+# A245093	trian	0		lists the first n terms of A000203.	_Omar E. Pol_, Jul 15 2014	nonn,tabl,look,	1..7875
+# A275078	trian	0		lists the lexicographic composition of the elements of symmetric group S_n.	_David Nickerson_, Jul 15 2016	nonn,tabl,synth	1..78
+# A162630	trian	0		lists the number of states of the subshells of the n-th shell of the nuclear shell model ordered by energy level in increasing order.	_Omar E. Pol_, Jul 10 2009	nonn,tabl,synth	1..73
+# A154792	trian	0		lists the pair of noncomposite numbers that are equidistant from and nearest to n, with 0''s inserted, as shown below in the example.	_Omar E. Pol_, Jan 25 2009	more,nonn,tabl,synth	1..55
+# A092080	trian	0		lists the partition numbers of the first n positive integers.	_Wolfdieter Lang_, Mar 19 2004	nonn,tabl,easy,synth	1..88
