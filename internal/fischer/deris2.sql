@@ -6,6 +6,7 @@ DELETE FROM seq4 WHERE aseqno = 'A056837'; -- replaced by A001971, set elsewhere
 DELETE FROM seq4 WHERE aseqno IN ('A122255','A122895','A167393','A323512','A327866'); -- charfun(2)
 DELETE FROM seq4 WHERE aseqno IN ('A256863','A258833','A258834'); -- comseq
 DELETE FROM seq4 WHERE aseqno IN ('A046934','A053735','A167393','A078488'); -- diffseq
+DELETE FROM seq4 WHERE aseqno IN ('A214305','A338356','A338360'); -- not the same
 -- UPDATE seq4 SET aseqno = 'A066674'       WHERE aseqno = 'A125878';
 -- UPDATE seq4 SET parm1  = 'new A066674()' WHERE aseqno = 'A125879';
 UPDATE seq4 SET parm2 = (CASE WHEN parm2 = 0 THEN '' ELSE ', Z.ONE' END) WHERE callcode = 'compseq';

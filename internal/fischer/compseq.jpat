@@ -11,7 +11,7 @@ public class $(ASEQNO) extends ComplementSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(PARM3)$(PARM2));
+    super($(PARM3), $(PARM2));
     $(PARM4)
   }
 }
