@@ -3597,6 +3597,8 @@ trideleh:
 #----
 triprod:
 	cp -v $(TRIREC)/triprod2.tmp $@.gen
+trisimple:
+	cp -v $(TRIREC)/$@.java $@.gen
 #------------------------------------------------------
 negpos: # all done
 	cat ../../../fasces/oeis/A131393/negpos.gen \

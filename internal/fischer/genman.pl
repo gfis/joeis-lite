@@ -32,6 +32,7 @@ my $basedir   = "../../../OEIS-mat/common";
 my $namesfile = "$basedir/names";
 my @pnames    = ();
 my $extends   = 0; # whether to generate "extends ..."
+my $holonomic = 0; # whether to generate "extends HolonomicRecurrence;"
 my $withn     = 0; # whether to generate ++mN
 my $subseq    = 0; # whether to generate a loop for a subsequence of the natural numbers
 my $triangle  = 0; # whether to generate a subclass of Triangle
@@ -44,7 +45,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     } else {
         if ($opt   =~ m{n}) {
           $withn    = 1;
-        } 
+        }
         if ($opt   =~ m{p}) {
             @pnames = split(/\W+/, shift(@ARGV));
         }
@@ -54,6 +55,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         if (0) {
         } elsif ($opt   =~ m{e}) {
           $extends   = 1;
+        } elsif ($opt   =~ m{h}) {
+          $holonomic = 1;
         } elsif ($opt   =~ m{t}) {
           $triangle  = 1;
         } elsif ($opt   =~ m{u}) {
@@ -97,11 +100,13 @@ import irvine.math.z.Z;
 GFis
     print OUT "import irvine.oeis.";
     if (0) { # switch for superclass import
-    } elsif ($extends == 1) {
+    } elsif ($extends   == 1) {
         print OUT lc(substr($rseqno, 0, 4)) . ".$rseqno";
-    } elsif ($triangle == 1) {
+    } elsif ($holonomic == 1) {
+        print OUT "HolonomicRecurrence";
+    } elsif ($triangle  == 1) {
         print OUT "triangle.Triangle";
-    } elsif ($upperleft== 1) {
+    } elsif ($upperleft == 1) {
         print OUT "triangle.UpperLeftTriangle";
     } else {
         print OUT "Sequence";
@@ -117,16 +122,21 @@ GFis
 GFis
     print OUT "public class $aseqno ";
     if (0) {
-    } elsif ($extends   == 1) {
+    } elsif ($extends    == 1) {
         print OUT "extends $rseqno";
-    } elsif ($triangle  == 1) {
+    } elsif ($holonomic  == 1) {
+        print OUT "extends HolonomicRecurrence";
+    } elsif ($triangle   == 1) {
         print OUT "extends Triangle";
-    } elsif ($upperleft == 1) {
+    } elsif ($upperleft  == 1) {
         print OUT "extends UpperLeftTriangle";
     } else {
         print OUT "implements Sequence";
-    } 
+    }
     print OUT " {\n";
+    if ($withn) {
+        print OUT "\n  protected long m" . ucfirst($pname) . ";\n";
+    }
     foreach $pname (@pnames) { # member properties
         print OUT "  protected long m" . ucfirst($pname) . ";\n";
     } # foreach member property
@@ -136,7 +146,10 @@ GFis
   /** Construct the sequence. */
   public $aseqno() {
 GFis
-    if ($upperleft) {
+    if (0) {
+    } elsif ($holonomic) {
+        print OUT "    super(0, \"[[0],[1],[1],[-1]\", \"0,1\", 0);\n"; # Fibonacci
+    } elsif ($upperleft) {
         print OUT "    super(1, 1, -1);\n";
     } elsif (scalar(@pnames) > 0) { # with generic constructor
         print OUT "    this";
@@ -192,7 +205,7 @@ GFis
 GFis
     #----
     } elsif ($upperleft) {
-        print OUT <<"GFis"; 
+        print OUT <<"GFis";
   \@Override
   public Z matrixElement(final int n, final int k) {
     return Z.valueOf(n == 1 ? k : n + k);
@@ -213,7 +226,7 @@ GFis
       }
     }
 GFis
-        } else { 
+        } else {
             print OUT "    ++mN;\n" if $withn;
             print OUT "    return super.next().mod(Z.TWO);\n" if $extends;
         }
