@@ -215,6 +215,7 @@ select2:
 	$(DBAT) -x "SELECT s.aseqno, callcode, COALESCE($(OFS), '0'), parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
 	    FROM seq4 s LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
 	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
+	      AND (s.aseqno NOT IN (SELECT aseqno                  FROM poeis)) \
 	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \

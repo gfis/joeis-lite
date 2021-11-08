@@ -12,11 +12,11 @@ public class $(ASEQNO) extends Triangle {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(1);
+    super($(PARM1));
   }
   
   @Override
   public Z compute(final int n, final int k) {
-    return $(PARM1);
+    return $(PARM2);
   }
 }

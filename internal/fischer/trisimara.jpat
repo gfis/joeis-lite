@@ -12,11 +12,11 @@ public class $(ASEQNO) extends UpperLeftTriangle {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), $(OFFSET), 1);
+    super($(PARM1), $(PARM1), 1);
   }
   
   @Override
   public Z matrixElement(final int n, final int k) {
-    return $(PARM1);
+    return $(PARM2);
   }
 }
