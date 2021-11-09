@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2021-11-09: V2.6: Transpose, AbsoluteSequence
 # 2021-10-29, V2.5: -cc concatenated with callcode in infile
 # 2021-10-28, V2.4: -cc overwrites callcodes in infile
 # 2021-10-10, V2.3: for subpackages irvine.oeis.cons|triangle
@@ -36,7 +37,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V2.5";
+my $program = "gen_seq4.pl V2.6";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -102,6 +103,7 @@ while (<>) { # read inputfile
     }
     @parms    = split(/\t/, $line); # this is a row from db table 'seq4'
     $aseqno   = shift(@parms);
+    next if scalar(@parms) == 0; # only aseqno => came from CC=man
     $callcode = shift(@parms);
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
@@ -310,11 +312,13 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WCR})               { $imports{"irvine.math.cr.CR"}                 = $itype; }
     if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
     if ($line =~ m{\WUnaryCRFunction})  { $imports{"irvine.math.cr.UnaryCRFunction"}    = $itype; }
+    if ($line =~ m{\WAbsoluteSequence}) { $imports{"irvine.oeis.AbsoluteSequence"  }    = $itype; }
     if ($line =~ m{\WLinearRecurrence}) { $imports{"irvine.oeis.LinearRecurrence"  }    = $itype; }
     if ($line =~ m{\WPaddingSequence} ) { $imports{"irvine.oeis.PaddingSequence"   }    = $itype; }
     if ($line =~ m{\WPeriodicSequence}) { $imports{"irvine.oeis.PeriodicSequence"  }    = $itype; }
     if ($line =~ m{\WPrependSequence} ) { $imports{"irvine.oeis.PrependSequence"   }    = $itype; }
     if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }    = $itype; }
+    if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}    = $itype; }
     
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase

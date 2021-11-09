@@ -3916,6 +3916,11 @@ rowsums:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+A054445: # partial row sums
+	grep -E "^A[0-9]" $(TRIREC)/$@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 tricolk:
 	sort $(TRIREC)/$@.tmp | uniq -w7 \
