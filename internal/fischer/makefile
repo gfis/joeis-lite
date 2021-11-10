@@ -3937,6 +3937,18 @@ trimirror:
 	cp -v $(TRIREC)/$@.tmp $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+transpose:
+	make seq4 LIST=$(TRIREC)/$@.tmp
+	$(DBAT) -x "DELETE FROM seq4 \
+	  WHERE aseqno    IN (SELECT aseqno FROM joeis) \
+	     OR parm1 NOT IN (SELECT aseqno FROM joeis)"
+	$(DBAT) -x -44444 seq4 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+transpose_check:
+	$(DBAT) -x "SELECT aseqno, callcode, offset, parm1, parm2, parm3 \
+	  FROM seq4 WHERE parm2 <> parm3 ORDER BY 1"
 #--------------------------------
 # A163493 Number of binary strings of length n which have the same number of 00 and 01 substrings.
 # cf. Zeilberger: https://arxiv.org/pdf/1112.6207.pdf
