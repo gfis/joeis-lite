@@ -717,6 +717,12 @@ A247750: # Numbers in decimal representation, such that in Czech their digits ar
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
+A257606:
+	grep -E "^A[0-9]" $(TRIREC)/$@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 a266759:
 	grep -P "\-1\,2\,\-2\,1\,"  $(COMMON)/asdata.txt | grep -P "\,1\,0\,0\,\-1\," || :
 #================================

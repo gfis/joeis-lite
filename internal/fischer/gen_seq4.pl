@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2021-11-11: V2.7: no import for "Function"
 # 2021-11-09: V2.6: Transpose, AbsoluteSequence
 # 2021-10-29, V2.5: -cc concatenated with callcode in infile
 # 2021-10-28, V2.4: -cc overwrites callcodes in infile
@@ -37,7 +38,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V2.6";
+my $program = "gen_seq4.pl V2.7";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -339,6 +340,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
                 and  ($class_name !~ m{\A(String|Integer)\Z}) # common Java types
                 and  ($class_name !~ m{\AComputableReals\Z})
                 and  ($class_name !~ m{\AUnaryCRFunction\Z})
+                and  ($class_name !~ m{\AFunction\Z})
                ) {
                 $imports{"irvine.oeis.$class_name"} = $itype; 
             }
