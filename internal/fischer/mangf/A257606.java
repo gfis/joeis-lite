@@ -9,30 +9,18 @@ import irvine.oeis.triangle.Triangle;
  */
 public class A257606 extends Triangle {
 
-  protected Function mFunction;
-
-  protected static class Function {
-    protected long value(final long x) {
-      return x + 4;
-    }
-  }
-
-  /** Construct the sequence. */
-  public A257606() {
-    this(new Function());
-  }
-
   /**
-   * Generic constructor with parameters
-   * @param function
+   * Function for the multiplicands of the two previous triangle elements.
+   * Usually overwritten by sublcasses.
+   * @param x function parameter: <code>n-k</code> or <code>k</code>
    */
-  public A257606(final Function fun) {
-    mFunction = fun;
+  protected long function(final long x) {
+    return x + 4;
   }
 
   @Override
   public Z compute(final int n, final int k) {
-    return n == 0 ? Z.ONE : get(n - 1, k - 1).multiply(mFunction.value(n - k))
-        .add(get(n - 1, k).multiply(mFunction.value(k)));
+    return n == 0 ? Z.ONE : get(n - 1, k - 1).multiply(function(n - k))
+        .add(get(n - 1, k).multiply(function(k)));
   }
 }

@@ -3893,6 +3893,12 @@ modpas: # 2021-10-08; formerly A071919
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--
+modpas2: # 2021-11-12
+	grep -E "^A[0-9]" $(TRIREC)/modpas2.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 triuple: # 2021-10-25
 	# cd $(TRIREC); make triuple
