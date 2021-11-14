@@ -5977,6 +5977,18 @@ joeis2: # LIST
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #--------------------------
+manual_check:
+	find manual -iname "A??????.java" -printf "%f\t%T+\n" | perl -pe 's{\.java}{}; s{\+.*}{}; '\
+	>        $@.tmp
+	head -n4 $@.tmp
+	make seq2 LIST=$@.tmp
+	$(DBAT) "SELECT s.aseqno, s.info, COALESCE(j.superclass, 'nyi') AS superclass, n.name \
+	  FROM seq2 s, asname n LEFT JOIN joeis j ON n.aseqno = j.aseqno \
+	  WHERE s.aseqno = n.aseqno \
+	  ORDER BY 2" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+#----
 mangf_check:
 	find mangf -iname "A??????.java" -printf "%f\t%T+\n" | perl -pe 's{\.java}{}; s{\+.*}{}; '\
 	>        $@.tmp
