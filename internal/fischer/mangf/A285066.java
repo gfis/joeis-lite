@@ -1,7 +1,6 @@
 package irvine.oeis.a285;
 
 import irvine.math.z.Z;
-import irvine.math.factorial.MemoryFactorial;
 import irvine.oeis.a285.A285061;
 
 /**
@@ -10,10 +9,20 @@ import irvine.oeis.a285.A285061;
  */
 public class A285066 extends A285061 {
 
-  private static final MemoryFactorial FACTORIAL = new MemoryFactorial();
+  protected Z mFact = Z.ONE;
+  
+  @Override
+  public void addRow() {
+    super.addRow();
+    mFact = Z.ONE;
+  }
 
   @Override
   public Z next() {
-    return super.next().multiply(FACTORIAL.factorial(mCol));
+    Z result = super.next();
+    if (mCol > 0) {
+      mFact = mFact.multiply(mCol);
+    }
+    return result.multiply(mFact);
   }
 }
