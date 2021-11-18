@@ -135,7 +135,7 @@ GFis
     }
     print OUT " {\n";
     if ($withn) {
-        print OUT "\n  protected long m" . ucfirst($pname) . ";\n";
+        print OUT "\n  protected int mN;\n";
     }
     foreach $pname (@pnames) { # member properties
         print OUT "  protected long m" . ucfirst($pname) . ";\n";

@@ -1,0 +1,87 @@
+A057863	prodsif	0	FACTORIAL.factorial(2 * k - 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (2k-1)!!.
+A058807	prodsi	1	s(mN,k), where s(mN,k) is unsigned Stirling number of the first kind. (s(mN,k) = number of permutations of mN elements which contain exactly k cycles.)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} s(n,k), where s(n,k) is unsigned Stirling number of the first kind. (s(n,k) = number of permutations of n elements which contain exactly k cycles.)
+A059384	prodsi	1	J_5(i)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} J_5(i).
+A059861	prodsi	1	(prime(i) - 2)	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} (prime(i) - 2).
+A059862	prodsi	1	(prime(i) - 3)	for (int i = 3; i <= mN; ++i) {		a(n) = Product_{i=3..n} (prime(i) - 3).
+A059863	prodsi	1	(prime(i)-4)	for (int i = 3; i <= mN; ++i) {		a(n) = Product_{i=3..n} (prime(i)-4).
+A059864	prodsi	1	(prime(i)-5), where prime(i) is i-th prime	for (int i = 4; i <= mN; ++i) {		a(n) = Product_{i=4..n} (prime(i)-5), where prime(i) is i-th prime.
+A066780	prodsi	1	sigma(k); sigma(k) is the sum of the positive divisors of mN	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} sigma(k); sigma(k) is the sum of the positive divisors of n.
+A066843	prodsi	1	d(k); d(k) is the number of positive divisors of k	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} d(k); d(k) is the number of positive divisors of k.
+A066987	prodsi	2	sigma(i)/bigomega(i)	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} sigma(i)/bigomega(i).
+A066988	prodsi	2	phi(i)/bigomega(i)	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} phi(i)/bigomega(i).
+A067577	prodsi	1	sigma(i) * Sum_{i=1..mN} 1/sigma(i)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} sigma(i) * Sum_{i=1..n} 1/sigma(i).
+A067578	prodsi	1	phi(i) * Sum_{i=1..mN} 1/phi(i) where phi is the Euler totient function A000010(mN)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} phi(i) * Sum_{i=1..n} 1/phi(i) where phi is the Euler totient function A000010(n).
+A067580	prodsi	2	A001222(i) * Sum_{i=2..mN} 1/A001222(i)	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} A001222(i) * Sum_{i=2..n} 1/A001222(i).
+A068326	prodsi	0	A031974(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} A031974(k).
+# A076000	prodsi	1	k/floor(mN/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} k/floor(n/k).
+A076265	prodsi	1	prime(i).pow(prime(i)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} prime(i)^prime(i).
+A076954	prodsi	0	prime(i).pow(i	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} prime(i)^i.
+A082480	prodsi	0	(F(k)+1) where F(k) denotes the k-th Fibonacci number	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (F(k)+1) where F(k) denotes the k-th Fibonacci number.
+A086803	prodsi	1	(prime(mN+1)-prime(i))	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} (prime(n+1)-prime(i)).
+A087315	prodsi	0	prime(k).pow(prime(mN-k+1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k)^prime(n-k+1).
+A090114	prodsi	1	(prime(mN)-j)	for (int j = 1; j <= mN; ++j) {		a(n) = Product_{j=1..n} (prime(n)-j).
+A092287	prodsi	0	Product_{k=1..mN} gcd(j,k)	for (int j = 1; j <= mN; ++j) {		a(n) = Product_{j=1..n} Product_{k=1..n} gcd(j,k).
+A093570	prodsi	1	(k + prime(k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n}(k + prime(k)).
+A099788	prodsi	0	prime(i)	for (int i = 1; i <= 2 * mN; ++i) {		a(n) = Product_{i=1..2n} prime(i).
+A107712	prodsi	0	prime(k+mN)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k+n).
+A109361	prodsi	1	sigma(k)/d(k), where sigma(k) = Sum_{j|k} j and d(k) = Sum_{j|k} 1. Set a(mN) = 0 if the corresponding product is not an integer (e.g., for mN=2 and mN=10)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} sigma(k)/d(k), where sigma(k) = Sum_{j|k} j and d(k) = Sum_{j|k} 1. Set a(n) = 0 if the corresponding product is not an integer (e.g., for n=2 and n=10).
+A111392	prodsi	1	(Product_{k=1..i} p_k + Product_{k=i+1..mN} p_k)	for (int i = 1; i <= mN - 1; ++i) {		a(n) = Product_{i=1..n-1} (Product_{k=1..i} p_k + Product_{k=i+1..n} p_k).
+A118455	prodsi	1	P(k), where P(k) is the largest prime <= k	for (int k = 2; k <= mN; ++k) {		a(1)=1, a(n) = Product_{k=2..n} P(k), where P(k) is the largest prime <= k.
+A118456	prodsi	1	P(k), where P(k) is the smallest prime >= k	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} P(k), where P(k) is the smallest prime >= k.
+A121826	prodsi	1	D(k), where D() are the doublets, A020338	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} D(k), where D() are the doublets, A020338.
+A125760	prodsi	0	A002109(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} A002109(k).
+# A129785	prodsib	0	(1 + Binomial.binomial(mN,k)*a(k)), with a(0) = 1	for (int k = 0; k <= mN - 1; ++k) {		a(n) = Product_{k=0..n-1} (1 + binomial(n,k)*a(k)), with a(0) = 1.
+A129364	prodsi	1	A066841(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k = 1..n} A066841(k).
+A175490	prodsi	1	b(k,mN), where b(k,mN) is the largest positive integer that, when written in binary, occurs as a substring in both binary k and binary mN	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} b(k,n), where b(k,n) is the largest positive integer that, when written in binary, occurs as a substring in both binary k and binary n.
+A175836	prodsi	1	psi(i) where psi is the Dedekind psi function (A001615)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} psi(i) where psi is the Dedekind psi function (A001615).
+A181574	prodsi	1	(tau(i)+1)/(tau(i)-1), where tau(.)=A000005(.)	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} (tau(i)+1)/(tau(i)-1), where tau(.)=A000005(.).
+A182484	prodsi	1	k.pow((2 * k-p-1), where p = prime(mN)	for (int k = 1; k <= p - 1; ++k) {		a(n) = Product_{k=1..p-1} k^(2k-p-1), where p = prime(n).
+A191554	prodsi	1	prime(k).pow((2.pow((k-1))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k)^(2^(k-1)).
+A191555	prodsi	0	prime(k).pow((2.pow((mN-k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k)^(2^(n-k)).
+# A216703	prodsi	0	(49 - 7/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (49 - 7/k).
+# A216704	prodsi	0	(64 - 8/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (64 - 8/k).
+# A216705	prodsi	0	(81 - 9/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (81 - 9/k).
+# A216706	prodsi	0	(100 - 10/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (100 - 10/k).
+# A216786	prodsi	0	(121 - 11/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (121 - 11/k).
+# A216787	prodsi	0	(144 - 12/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (144 - 12/k).
+# A216788	prodsi	0	(169 - 13/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (169 - 13/k).
+-> A224479	prodsi	0	Product_{i=1..k-1} gcd(k,i)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} Product_{i=1..k-1} gcd(k,i).
+A224986	prodsif	1	FACTORIAL.factorial(mN-k-2)	for (int k = 1; k <= mN - 4; ++k) {		a(n) = Product_{k=1..n-4} (n-k-2)!^(k*k!).
+A231715	prodsi	1	(gcd(d_i,i+1) mod i+1), where u is given by A084558(mN)	for (int i = 1; i <= u; ++i) {		For n with a unique factorial base representation n = du*u! + ... + d2*2! + d1*1! (each di in range 0..i, cf. A007623), a(n) = Product_{i=1..u} (gcd(d_i,i+1) mod i+1), where u is given by A084558(n).
+A247951	prodsi	1	sigma_2(i)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} sigma_2(i).
+A255484	prodsib	0	(prime(k+1)*(Binomial.binomial(mN,k) mod 2)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (prime(k+1)*(binomial(n,k) mod 2).
+A258325	prodsi	0	(1 + p(k)), where p(k) is the partition function A000041	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (1 + p(k)), where p(k) is the partition function A000041.
+A259373	prodsi	0	p(k).pow(k, where p(k) is the partition function A000041	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} p(k)^k, where p(k) is the partition function A000041.
+A265097	prodsi	0	q(k).pow(k, where q(k) = partition numbers into distinct parts (A000009)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} q(k)^k, where q(k) = partition numbers into distinct parts (A000009).
+A266091	prodsif	0	FACTORIAL.factorial(3*k)!/(mN+k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (3*k)!/(n+k)!.
+A267096	prodsib	0	prime(i+2).pow(Binomial.binomial(mN,i)	for (int i = 0; i <= mN; ++i) {		a(n) = Product_{i=0..n} prime(i+2)^binomial(n,i).
+A268444	prodsi	0	(n_i+1) where mN = Sum_{i=0..k}n_i*4.pow(i is the base-4 representation of mN	for (int i = 0; i <= k; ++i) {		a(n) = Product_{i=0..k}(n_i+1) where n = Sum_{i=0..k}n_i*4^i is the base-4 representation of n.
+A276092	prodsi	0	prime(i).pow((prime(i)-1), a(0)=1	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} prime(i)^(prime(i)-1), a(0)=1.
+A277174	prodsi	0	i*rad(i) where rad(mN) = A007947(mN)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} i*rad(i) where rad(n) = A007947(n).
+# A294038	prodsi	0	mN/gcd(mN, A056040(k))	for (int k = 0; k <= mN - 1; ++k) {		a(n) = Product_{k=0..n-1} n/gcd(n, A056040(k)).
+# A297707	prodsi	1	mN!k, where mN!k is k-tuple factorial of mN	for (int k = 1; k <= mN - 1; ++k) {		a(n) = Product_{k=1..n-1} n!k, where n!k is k-tuple factorial of n.
+
+A301393	prodsi	0	hypergeom([-mN, -mN], [1], k) with L = 4	for (int k = 1; k <= L; ++k) {		a(n) = Product_{k=1..L} hypergeom([-n, -n], [1], k) with L = 4.
+A302999	prodsi	0	(Fibonacci(k+2) - 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (Fibonacci(k+2) - 1).
+A306635	prodsi	1	BarnesG(2*k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} BarnesG(2*k).
+A306651	prodsi	1	BarnesG(3*k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} BarnesG(3*k).
+A308652	prodsi	0	sigma(mN,k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} sigma(n,k).
+A308941	prodsi	0	|Stirling1(mN,k)| * k!	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} |Stirling1(n,k)| * k!.
+A308942	prodsi	0	Stirling2(mN,k) * k!	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} Stirling2(n,k) * k!.
+A318956	prodsi	1	p_k .pow( x_k (where p_1 < p_2 < ... < p_w and x_k > 0 for k=1..w), let (o_1, ..., o_w) be the ordinal transform of (x_1, ..., x_w); a(mN) = Product_{k=1..w} p_k .pow( o_k	for (int k = 1; k <= w; ++k) {		For any number n > 0 with prime factorization Product_{k=1..w} p_k ^ x_k (where p_1 < p_2 < ... < p_w and x_k > 0 for k=1..w), let (o_1, ..., o_w) be the ordinal transform of (x_1, ..., x_w); a(n) = Product_{k=1..w} p_k ^ o_k.
+A319761	prodsi	0	i.pow(s(mN,i), where s is an unsigned Stirling number of the 1st kind	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} i^s(n,i), where s is an unsigned Stirling number of the 1st kind.
+A320603	prodsi	0	a(i); if mN is even, a(mN) = Sum_{i=0..mN-1} a(i)	for (int i = 0; i <= mN - 1; ++i) {		a(0) = 1; if n is odd, a(n) = Product_{i=0..n-1} a(i); if n is even, a(n) = Sum_{i=0..n-1} a(i).
+A321613	prodsi	1	uphi(k)	for (int k = 1; k <= mN; ++k) {		Partial products of the unitary totient function (A047994): a(n) = Product_{k=1..n} uphi(k).
+# A324427	prodsi	1	(Product_{j=1..k} (Product_{i=1..j} (i+j+k)))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (Product_{j=1..k} (Product_{i=1..j} (i+j+k))).
+A327790	prodsi	1	phi(k_i), phi = A000010	for (int i = 1; i <= r; ++i) {		Decompose the multiplicative group of integers modulo n as a product of cyclic groups C_{k_1} X C_{k_2} X ... X C_{k_r}, where k_i > 1, k_i divides k_j for i < j; then a(n) = Product_{i=1..r} phi(k_i), phi = A000010.
+A334764	prodsi	1	d(2*k - 1), where d() is the number of divisors function A000005	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} d(2*k - 1), where d() is the number of divisors function A000005.
+A334767	prodsi	1	d(2*k), where d() is the number of divisors function A000005	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} d(2*k), where d() is the number of divisors function A000005.
+A334990	prodsi	1	prime(k).pow(e_k (where prime(k) denotes the k-th prime number and e_m > 0), a(mN) = Product_{k = 1..m-1} prime(k).pow((e_k XOR e_{k+1}) (where XOR denotes the bitwise XOR operator)	for (int k = 1; k <= m; ++k) {		a(1) = 1 and for any n > 1 with prime factorization Product_{k = 1..m} prime(k)^e_k (where prime(k) denotes the k-th prime number and e_m > 0), a(n) = Product_{k = 1..m-1} prime(k)^(e_k XOR e_{k+1}) (where XOR denotes the bitwise XOR operator).
+A338364	prodsi	0	phi(prime(k)-1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} phi(prime(k)-1).
+A340505	prodsi	0	A082993(mN+1)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} A082993(n+1).
+A340516	prodsi	1	p_i.pow((2*e_i-1)	for (int i = 1; i <= m; ++i) {		Lat p_i (i=1..m) denote the primes <= n, and let e_i be the maximum number such that p_i^e_i <= n; then a(n) = Product_{i=1..m} p_i^(2*e_i-1).
+A344530	prodsi	0	prime(1+e_k).pow(k (where prime(k) denotes the k-th prime number)	for (int k = 1; k <= m; ++k) {		For any number n with binary expansion Sum_{k = 1..m} 2^e_k (where 0 <= e_1 < ... < e_m), a(n) = Product_{k = 1..m} prime(1+e_k)^k (where prime(k) denotes the k-th prime number).
+A344534	prodsi	0	prime(1+A002262(e_k)).pow(2.pow(A025581(e_k) (where prime(k) denotes the k-th prime number)	for (int k = 1; k <= m; ++k) {		For any number n with binary expansion Sum_{k = 1..m} 2^e_k (where 0 <= e_1 < ... < e_m), a(n) = Product_{k = 1..m} prime(1+A002262(e_k))^2^A025581(e_k) (where prime(k) denotes the k-th prime number).
+A344535	prodsi	0	prime(1+A025581(e_k)).pow(2.pow(A002262(e_k) (where prime(k) denotes the k-th prime number)	for (int k = 1; k <= m; ++k) {		For any number n with binary expansion Sum_{k = 1..m} 2^e_k (where 0 <= e_1 < ... < e_m), a(n) = Product_{k = 1..m} prime(1+A025581(e_k))^2^A002262(e_k) (where prime(k) denotes the k-th prime number).
+A345466	prodsib	0	Binomial.binomial(mN, floor(mN/k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} binomial(n, floor(n/k)).
+A348420	prodsi	0	(p_k - 1)/2 where p_1, p_2, ..., p_n are the first mN primes congruent to 3 modulo 4	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (p_k - 1)/2 where p_1, p_2, ..., p_n are the first n primes congruent to 3 modulo 4.

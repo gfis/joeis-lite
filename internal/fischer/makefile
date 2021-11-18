@@ -392,8 +392,8 @@ stripgr: # attach terms from 'stripped' to A-numbers for BatchTest
 	wc -l      strip.tmp
 evaluate:
 	# ---- $@ CC=$(CC)
-	uniq -w7 batch.log | grep -E  "pass" >     $(CC).pass.log || :
-	cat      batch.log | grep -vE "pass" | grep -v "Exceptionnull" | tee $(CC).fail.log || :
+	uniq -w7 batch.log | grep -P  "\tpass\t" >     $(CC).pass.log || :
+	cat      batch.log | grep -v "Exceptionnull" | grep -E "fail|FA" | tee $(CC).fail.log || :
 	wc -l $(CC).*.log
 bfile:
 	# ---- $@ SEQ=$(SEQ)
@@ -664,7 +664,7 @@ A161440:
 	wc -l    $@.gen
 #--------
 # A165824	null	Totally multiplicative sequence with a(p) = 3.	nonn,mult,changed,	1..10000	nyi
-a165824:
+A165824:
 	cat      $@.man \
 	>        $@.gen
 	head -n4 $@.gen
@@ -720,6 +720,12 @@ A202692: # The first of three triangles counting 3-colored alternating permutati
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+A216703: # 2021-11-17 EFF+2
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 A247750: # Numbers in decimal representation, such that in Czech their digits are in alphabetic order. 
 	grep -E "^A[0-9]" $(WORD)/$@.gen \
 	>        $@.gen
@@ -748,6 +754,12 @@ ajrank: # adjusted joint rank sequences (CK)
 #----------------
 aritfun: # The arithmetic function ...
 	grep -E "^A[0-9]" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----------------
+arsimple: # $(CONTRIB)/ar/recur.man 
+	grep -P "\tprev|\tsimple" $(CONTRIB)/ar/recur.man \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----------------
@@ -3490,6 +3502,21 @@ genet_check:
 # Generalized ET
 a151668:
 	cp -v $@.man $@.gen
+#--------
+prodsi: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
+	grep -Pi "a\(n\) *\= *Prod(uct)?_\{" $(COMMON)/joeis_names.txt \
+	| perl prodsi.pl \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.*tmp
+#	| sort -k5,5 --field-separator="	" \
+#
+prodsim:
+	grep -E "^A[0-9]" prodsi.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 peravoid:
 	grep -iP "permutations of \[?n\]? avoiding " $(COMMON)/joeis_names.txt | grep null \

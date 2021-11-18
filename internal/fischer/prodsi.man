@@ -1,0 +1,111 @@
+A055612	prodsib	0	Binomial.binomial(mN, m).add(1)	for (int m = 1; m <= mN; ++m) {		a(n) = Product_{m=1..n} (binomial(n,m)+1).
+A064320	prodsib	1	Z.valueOf(j).pow(Binomial.binomial(mN - 1, j - 1))	for (int j = 1; j <= mN; ++j) {		a(n) = Product_{j=1..n} j^C(n-1,j-1).
+A071248	prodsi	1	Z.valueOf(mN).lcm(Z.valueOf(k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} lcm(n,k).
+A085521	prodsi	0	Z.ONE.shiftLeft(2 * k + 1).add(1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (2^(2k+1)+1).
+A097476	prodsif	1	FACTORIAL.factorial(2 * i).square()	for (int i = 0; i <= mN - 1; ++i) {		a(n) = Product_{i=0..n-1} ((2i)!)^2.
+A098694	prodsif	0	FACTORIAL.factorial(2 * k)	for (int k = 1; k <= mN; ++k) {		Double-superfactorials: a(n) = Product_{k=1..n} (2k)!.
+A103639	prodsi	0	Z.valueOf(2 * i + 1)	for (int i = 1; i <= 2 * mN; ++i) {		a(n) = Product_{i=1..2n} 2*i+1.
+A107252	prodsif	0	FACTORIAL.factorial(mN + k).divide(FACTORIAL.factorial(k + 1))	for (int k = 0; k <= mN - 1; ++k) {		a(n) = Product_{k=0..n-1} (n+k)!/(k+1)!.
+A119619	prodsi	1	Z.valueOf(i).divide(Z.valueOf(i).gcd(Z.valueOf(mN)))	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} i / gcd(i,n).
+A127553	prodsi	1	Z.valueOf(k).lcm(Z.valueOf(mN)).divide(Z.valueOf(k).gcd(Z.valueOf(mN)))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} lcm(k,n)/gcd(k,n).
+
+A129824	prodsib	0	Binomial.binomial(mN, k).add(1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (1 + binomial(n,k)).
+A134356	prodsif	1	FACTORIAL.factorial(3 * k + 1).divide(FACTORIAL.factorial(mN + k))	for (int k = 1; k <= mN - 1; ++k) {		a(n) = Product_{k=1..n-1} (3k+1)!/(n+k)!.
+A136411	prodsi	1	Z.valueOf(2 * k - 1).pow(2 * mN - 2 * k + 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (2*k-1)^(2*n-2*k+1).
+A139486	prodsi	0	Z.ONE.shiftLeft(j).add(2)	for (int j = 0; j <= mN - 1; ++j) {		a(n) = Product_{j=0..n-1} (2^j + 2).
+A145119	prodsi	1	new Q(mN,k).ceiling().subtract(new Q(mN, k).ceiling().mod(Z.TWO))	for (int k = 1; k <= mN - 1; ++k) {		a(n) = Product_{k=1..n-1} (ceiling(n/k) - ceiling(n/k) mod 2).
+A147630	prodsi	1	Z.valueOf(9 * k - 3)	for (int k = 1; k <= mN - 1; ++k) {		a(1) = 1; for n>1, a(n) = Product_{k = 1..n-1} (9k - 3).
+A168467	prodsi	0	Z.valueOf(2 * k + 2).multiply(2 * k + 3).pow(mN - k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} ((2k+2)(2k+3))^(n-k).
+A207647	prodsi	0	Z.valueOf(2 * mN + 1).divide(k).subtract(1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} floor((2*n+1)/k - 1).
+A224986	prodsif	1	FACTORIAL.factorial(mN - k - 2).pow(Z.valueOf(k).multiply(FACTORIAL.factorial(k)))	for (int k = 1; k <= mN - 4; ++k) {		a(n) = Product_{k=1..n-4} (n-k-2)!^(k*k!).
+A255269	prodsif	1	FACTORIAL.factorial(k).pow(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} k!^k.
+A255322	prodsif	0	FACTORIAL.factorial(k*k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^2)!.
+A260231	prodsi	1	Z.valueOf(k).pow(k).add(1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (1 + k^k).
+A262261	prodsib	0	Binomial.binomial(4*k, k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} binomial(4*k,k).
+A263394	prodsi	1	Z.THREE.pow(i).subtract(Z.ONE.shiftLeft(i))	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} (3^i - 2^i).
+A263416	prodsi	0	Z.valueOf(3*k + 1).pow(mN - k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (3*k+1)^(n-k).
+A263417	prodsi	0	Z.valueOf(3*k + 2).pow(mN - k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (3*k+2)^(n-k).
+A263430	prodsi	0	Z.valueOf(4*k + 1).pow(mN - k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (4*k+1)^(n-k).
+A266091	prodsif	0	FACTORIAL.factorial(3*k).divide(mN + k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (3*k)!/(n+k)!.
+A267968	prodsi	0	Z.valueOf(k).pow(k + 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k = 1..n} k^(k + 1).
+A268196	prodsib	0	Binomial.binomial(3*k, k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} binomial(3*k,k).
+
+A269576	prodsi	1	Z.FOUR.pow(i).subtract(Z.THREE.pow(i))	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} (4^i - 3^i).
+A269661	prodsi	1	Z.FIVE.pow(i).subtract(Z.FOUR.pow(i))	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} (5^i - 4^i).
+A271266	prodsi	0	Z.valueOf(k*k + 21)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (k^2 + 21).
+A271947	prodsif	0	FACTORIAL.factorial(7*k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (7*k)!.
+A272093	prodsib	0	Binomial.binomial(k*mN, k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} binomial(k*n,k).
+A272094	prodsib	0	Binomial.binomial(k*k, k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} binomial(k^2,k).
+A272095	prodsib	0	Binomial.binomial(mN*mN, k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} binomial(n^2,k).
+A272096	prodsif	0	FACTORIAL.factorial(k*mN)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k*n)!.
+A272163	prodsi	1	Z.valueOf(mN*mN - k).pow(k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^2-k)^k.
+A272164	prodsif	0	FACTORIAL.factorial(mN*mN - k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^2-k)!.
+A272165	prodsi	1	Z.valueOf(k*mN - k).pow(k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k*n-k)^k.
+A272166	prodsif	0	FACTORIAL.factorial(k*mN - k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k*n-k)!.
+A272167	prodsi	1	Z.valueOf(k*k - k).pow(k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^2-k)^k.
+A272168	prodsif	0	FACTORIAL.factorial(k*k - k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^2-k)!.
+A272179	prodsi	0	Z.valueOf(mN*mN - k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^2 - k).
+A272180	prodsi	0	Z.valueOf(mN*mN + k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^2 + k).
+A272237	prodsi	1	Z.valueOf(mN*mN + k).pow(k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^2+k)^k.
+A272238	prodsif	0	FACTORIAL.factorial(mN*mN + k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^2+k)!.
+A272241	prodsif	0	FACTORIAL.factorial(mN*mN + k).divide(FACTORIAL.factorial(mN*mN - k))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} ((n^2 + k)! / (n^2 - k)!).
+A272244	prodsi	0	Z.valueOf(mN*mN + k*k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^2 + k^2).
+A272246	prodsi	0	Z.valueOf(mN).pow(3).add(Z.valueOf(k).pow(3))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^3 + k^3).
+A272247	prodsi	0	Z.valueOf(mN).pow(4).add(Z.valueOf(k).pow(4))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^4 + k^4).
+A272248	prodsi	0	Z.valueOf(mN).pow(5).add(Z.valueOf(k).pow(5))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n^5 + k^5).
+A274626	prodsi	0	Z.ONE.pow((mN + i)/3).subtract(1)	for (int i = 0; i <= 2; ++i) {		a(n) = Product_{i=0..2} (2^floor((n+i)/3)-1).
+
+A277347	prodsi	1	Z.valueOf(2*k*(k - 1) + 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (2*k*(k-1)+1).
+A277355	prodsi	0	Z.ONE.shiftLeft(k).add(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (2^k + k).
+A290000	prodsi	0	Z.THREE.pow(k).add(1)	for (int k = 1; k <= mN - 1; ++k) {		a(n) = Product_{k=1..n-1} (3^k + 1).
+A292687	prodsi	0	Z.FOUR.pow(Z.THREE.pow(k)).add(1)	for (int k = 0; k <= mN - 1; ++k) {		a(n) = Product_{k=0..n-1} (4^(3^k) + 1)
+A294318	prodsif	0	FACTORIAL.factorial(3*k + 1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (3*k + 1)!.
+A294319	prodsif	0	FACTORIAL.factorial(3*k + 2)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (3*k + 2)!.
+A294320	prodsif	0	FACTORIAL.factorial(4*k + 1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (4*k + 1)!.
+A294321	prodsif	0	FACTORIAL.factorial(4*k + 2)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (4*k + 2)!.
+A294322	prodsif	0	FACTORIAL.factorial(4*k + 3)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (4*k + 3)!.
+A294323	prodsif	0	FACTORIAL.factorial(5*k + 1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (5*k + 1)!.
+A294324	prodsif	0	FACTORIAL.factorial(5*k + 2)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (5*k + 2)!.
+A294325	prodsif	0	FACTORIAL.factorial(5*k + 3)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (5*k + 3)!.
+A294326	prodsif	0	FACTORIAL.factorial(5*k + 4)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (5*k + 4)!.
+A296589	prodsib	0	Binomial.binomial(2*mN, k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} binomial(2*n, k).
+A296590	prodsib	0	Binomial.binomial(2*mN - k, k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} binomial(2*n - k, k).
+A296591	prodsif	0	FACTORIAL.factorial(mN + k)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n + k)!.
+
+A301616	prodsi	0	Z.valueOf(k*k).add(Z.valueOf(mN-k+1).square())	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (k^2+(n-k+1)^2).
+A306193	prodsif	0	FACTORIAL.factorial(mN).divide(FACTORIAL.factorial(k)).add(1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (1 + n!/k!).
+A306789	prodsib	0	Binomial.binomial(mN + k, mN)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} binomial(n + k, n).
+A308820	prodsif	1	FACTORIAL.factorial(mN/k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} ceiling(n/k)!.
+A308944	prodsi	1	Z.valueOf(mN).lcm(Z.valueOf(k)).divide(Z.valueOf(mN).gcd(Z.valueOf(k)).multiply(k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} lcm(n,k) / (k * gcd(n,k)).
+A309327	prodsi	0	Z.FOUR.pow(k).add(1)	for (int k = 1; k <= mN - 1; ++k) {		a(n) = Product_{k=1..n-1} (4^k + 1).
+
+A320345	prodsi	0	Z.valueOf(k).pow(9).add(Z.valueOf(mN-k).pow(9))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^9 + (n-k)^9).
+A323496	prodsib	0	Binomial.binomial(k - 1, 3).add(Binomial.binomial(mN - k, 3))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (binomial(k-1,3) + binomial(n-k,3)).
+A323497	prodsib	0	Binomial.binomial(k - 1, 4).add(Binomial.binomial(mN - k, 4))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (binomial(k-1,4) + binomial(n-k,4)).
+A323533	prodsib	0	Binomial.binomial(k - 1, 5).add(Binomial.binomial(mN - k, 5))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (binomial(k-1,5) + binomial(n-k,5)).
+A323534	prodsib	0	Binomial.binomial(k - 1, 6).add(Binomial.binomial(mN - k, 6))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (binomial(k-1,6) + binomial(n-k,6)).
+A323535	prodsib	0	Binomial.binomial(k - 1, 7).add(Binomial.binomial(mN - k, 7))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (binomial(k-1,7) + binomial(n-k,7)).
+A323538	prodsib	0	Binomial.binomial(k - 1, 8).add(Binomial.binomial(mN - k, 8))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (binomial(k-1,8) + binomial(n-k,8)).
+A323540	prodsi	0	Z.valueOf(k*k).add(Z.valueOf(mN-k).pow(2))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^2 + (n-k)^2).
+A323541	prodsi	0	Z.valueOf(k).pow(3).add(Z.valueOf(mN-k).pow(3))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^3 + (n-k)^3).
+A323542	prodsi	0	Z.valueOf(k).pow(4).add(Z.valueOf(mN-k).pow(4))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^4 + (n-k)^4).
+A323543	prodsi	0	Z.valueOf(k).pow(5).add(Z.valueOf(mN-k).pow(5))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^5 + (n-k)^5).
+A323544	prodsi	0	Z.valueOf(k).pow(6).add(Z.valueOf(mN-k).pow(6))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^6 + (n-k)^6).
+A323545	prodsi	0	Z.valueOf(k).pow(7).add(Z.valueOf(mN-k).pow(7))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^7 + (n-k)^7).
+A323546	prodsi	0	Z.valueOf(k).pow(8).add(Z.valueOf(mN-k).pow(8))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^8 + (n-k)^8).
+A323575	prodsi	0	Z.valueOf(k).pow(k).add(Z.valueOf(mN-k).pow(k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (k^k + (n-k)^k).
+A323588	prodsi	0	Z.valueOf(k).pow(mN).add(Z.valueOf(mN-k).pow(mN))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (k^n + (n-k)^n).
+A323589	prodsi	0	Z.valueOf(k).pow(k).add(Z.valueOf(mN-k).pow(mN-k))	for (int k = 1; k <= mN - 1; ++k) {		a(n) = Product_{k=1..n-1} (k^k + (n-k)^(n-k)).
+A323659	prodsi	0	Z.valueOf(k).pow(10).add(Z.valueOf(mN-k).pow(10))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^10 + (n-k)^10).
+A323660	prodsi	0	Z.valueOf(k).pow(11).add(Z.valueOf(mN-k).pow(11))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^11 + (n-k)^11).
+A323661	prodsi	0	Z.valueOf(k).pow(12).add(Z.valueOf(mN-k).pow(12))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^12 + (n-k)^12).
+A323662	prodsi	0	Z.valueOf(k).pow(13).add(Z.valueOf(mN-k).pow(13))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^13 + (n-k)^13).
+A323702	prodsif	0	FACTORIAL.factorial(k).add(FACTORIAL.factorial(mN-k))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k! + (n-k)!).
+A323715	prodsi	0	Z.ONE.shiftLeft(k).add(Z.THREE.pow(k))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (2^k + 3^k).
+A323716	prodsi	0	Z.THREE.pow(k).add(1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (3^k + 1).
+A323717	prodsif	0	FACTORIAL.factorial(mN).add(FACTORIAL.factorial(k))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (n! + k!).
+A323751	prodsi	0	Z.valueOf(k).pow(mN).add(Z.valueOf(mN-k).pow(mN))	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k^n + (n-k)^n).
+
+A325050	prodsif	0	FACTORIAL.factorial(k).square().add(1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k!^2 + 1).
+A335010	prodsi	1	Z.ONE.shiftLeft(k).subtract(1).pow(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (2^k - 1)^k.
+A345726	prodsi	1	Z.valueOf(k).pow((mN/k) * (mN/k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} k^(floor(n/k)^2).
