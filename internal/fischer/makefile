@@ -726,6 +726,12 @@ A216703: # 2021-11-17 EFF+2
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+A231503: # 2021-11-19
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 A247750: # Numbers in decimal representation, such that in Czech their digits are in alphabetic order. 
 	grep -E "^A[0-9]" $(WORD)/$@.gen \
 	>        $@.gen
@@ -3517,6 +3523,21 @@ prodsim:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+sumsi: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
+	grep -Pi "a\(n\) *\= *Sum_\{" $(COMMON)/joeis_names.txt \
+	| perl prodsi.pl \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.*tmp
+#	| sort -k5,5 --field-separator="	" \
+#
+sumsim:
+	grep -E "^A[0-9]" sumsi.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 peravoid:
 	grep -iP "permutations of \[?n\]? avoiding " $(COMMON)/joeis_names.txt | grep null \
@@ -3712,25 +3733,25 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp 
-	echo -n "binomial"                         > binomx.deris.tmp
-	echo -n "characteristic|indicator"         > charfun.deris.tmp
-	echo -n "complement"                       > compseq.deris.tmp
-	echo -n "difference"                       > diffseq.deris.tmp
-	echo -n "dirichlet"                        > dirichinv.deris.tmp
-	echo -n "dirichlet"                        > dirichcon.deris.tmp
-	echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	echo -n "euler"                            > eulerx.deris.tmp
-	echo -n "euler"                            > eulerix.deris.tmp
-	echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	echo -n "partial product"                  > partprod.deris.tmp
+	# echo -n "binomial"                         > binomx.deris.tmp
+	# echo -n "characteristic|indicator"         > charfun.deris.tmp
+	# echo -n "complement"                       > compseq.deris.tmp
+	# echo -n "difference"                       > diffseq.deris.tmp
+	# echo -n "dirichlet"                        > dirichinv.deris.tmp
+	# echo -n "dirichlet"                        > dirichcon.deris.tmp
+	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	# echo -n "euler"                            > eulerx.deris.tmp
+	# echo -n "euler"                            > eulerix.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	# echo -n "partial product"                  > partprod.deris.tmp
 	echo -n "partial sum"                      > partsum.deris.tmp
-	echo -n "prime"                            > primepos.deris.tmp
-	echo -n "prime"                            > primeval.deris.tmp
-	echo -n "record"                           > recordpos.deris.tmp
-	echo -n "record"                           > recordval.deris.tmp
-	echo -n "stirling"                         > stirling2.deris.tmp
-	echo -n "weigh"                            > weighx.deris.tmp
+	# echo -n "prime"                            > primepos.deris.tmp
+	# echo -n "prime"                            > primeval.deris.tmp
+	# echo -n "record"                           > recordpos.deris.tmp
+	# echo -n "record"                           > recordval.deris.tmp
+	# echo -n "stirling"                         > stirling2.deris.tmp
+	# echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====

@@ -231,16 +231,17 @@ sub write_output {
         }
         $line
         } split(/\n/, $copy);
-    $copy =~ s{\$\(ASEQNO\)}    {$aseqno}g;
-    $copy =~ s{\$\(AUTHOR\)}    {$author}g;
-    $copy =~ s{\$\(CALLCODE\)}  {$call1}g;
-    $copy =~ s{\$\(DATE\)}      {$timestamp}g;
-    $copy =~ s{\$\(GEN\)}       {$0}g;
-    $copy =~ s{\$\(IMPORT\)}    {&get_imports($aseqno)}eg;
-    $copy =~ s{\$\(PROG\)}      {$program}g;
-    $copy =~ s{\$\(NAME\)}      {$name}g;
-    $copy =~ s{\$\(OFFSET\)}    {$offset}g;
-    $copy =~ s{\$\(PACK\)}      {$package}g;
+    $copy =~ s{\$\(ASEQNO\)}         {$aseqno}g;
+    $copy =~ s{\$\(AUTHOR\)}         {$author}g;
+    $copy =~ s{\$\(CALLCODE\)}       {$call1}g;
+    $copy =~ s{\$\(DATE\)}           {$timestamp}g;
+    $copy =~ s{\$\(GEN\)}            {$0}g;
+    $copy =~ s{\$\(IMPORT\)}         {&get_imports($aseqno)}eg;
+    $copy =~ s{\$\(PROG\)}           {$program}g;
+    $copy =~ s{\$\(NAME\)}           {$name}g;
+    $copy =~ s{\$\(OFFSET\) *\- *1}  {$offset - 1}eg;
+    $copy =~ s{\$\(OFFSET\)}         {$offset}g;
+    $copy =~ s{\$\(PACK\)}           {$package}g;
     my $package = lc(substr($aseqno, 0, 4));
     # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
     if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.java")) { # overwrite or does not yet exist

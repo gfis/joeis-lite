@@ -109,3 +109,33 @@ A323751	prodsi	0	Z.valueOf(k).pow(mN).add(Z.valueOf(mN-k).pow(mN))	for (int k = 
 A325050	prodsif	0	FACTORIAL.factorial(k).square().add(1)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0..n} (k!^2 + 1).
 A335010	prodsi	1	Z.ONE.shiftLeft(k).subtract(1).pow(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (2^k - 1)^k.
 A345726	prodsi	1	Z.valueOf(k).pow((mN/k) * (mN/k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} k^(floor(n/k)^2).
+
+A057863	prodsif	0	FACTORIAL.doubleFactorial(2 * k-1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (2k-1)!!.
+A059384	prev1m	1	A059378	Z.ONE	mAn_1.multiply(mSeq.next())	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} J_5(i).
+A066780	prev1m	1	A000203	Z.ONE	mAn_1.multiply(mSeq.next())	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} sigma(k); sigma(k) is the sum of the positive divisors of n.
+A066843	prev1m	1	A000005	Z.ONE	mAn_1.multiply(mSeq.next())	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} d(k); d(k) is the number of positive divisors of k.
+A068326	prev1m	0	A031974	Z.ONE	mAn_1.multiply(mSeq.next())	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} A031974(k).
+
+A076265	prodsim	1	A000040	mSeq.a(i - 1).pow(mSeq.a(i - 1))	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} prime(i)^prime(i).
+A076954	prodsim	0	A000040	mSeq.a(i - 1).pow(i)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} prime(i)^i.
+A082480	prodsim	0	A000045	mSeq.a(k).add(1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} (F(k)+1) where F(k) denotes the k-th Fibonacci number.
+A086803	prodsim	1	A000040	mSeq.a(mN).subtract(mSeq.a(i - 1))	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=2..n} (prime(n+1)-prime(i)).
+A087315	prodsim	0	A000040	mSeq.a(k - 1).pow(mSeq.a(mN - k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k)^prime(n-k+1).
+A090114	prodsim	1	A000040	mSeq.a(mN - 1).subtract(j)	for (int j = 1; j <= mN; ++j) {		a(n) = Product_{j=1..n} (prime(n)-j).
+A345466	prodsib	0	Binomial.binomial(mN, mN / k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} binomial(n, floor(n/k)).
+
+A093570	prodsim	1	A000040	mSeq.a(k - 1).add(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n}(k + prime(k)).
+A099788	prodsim	0	A000040	mSeq.a(i - 1)	for (int i = 1; i <= 2 * mN; ++i) {		a(n) = Product_{i=1..2n} prime(i).
+A107712	prodsim	0	A000040	mSeq.a(k + mN - 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k+n).
+
+# A118455	prodsim	1	A007917	mSeq.a(k - 2)	for (int k = 2; k <= mN; ++k) {		a(1)=1, a(n) = Product_{k=2..n} P(k), where P(k) is the largest prime <= k.
+# A118456	prodsim	1	A007918	mSeq.a(k - 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} P(k), where P(k) is the smallest prime >= k.
+A121826	prodsim	1	A020338	mSeq.a(k - 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} D(k), where D() are the doublets, A020338.
+A125760	prodsim	0	A002109	mSeq.a(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} A002109(k).
+# nyi A129364	prodsim	1	A066841	mSeq.a(k - 1)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k = 1..n} A066841(k).
+
+A175836	prodsim	1	A001615	mSeq.a(i - 1)	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} psi(i) where psi is the Dedekind psi function (A001615).
+A181574	prodsim	1	A000005	mSeq.a(i).add(1).divide(mSeq.a(i).subtract(1))	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} (tau(i)+1)/(tau(i)-1), where tau(.)=A000005(.).
+A182484	prodsim	1	A000040	Z.valueOf(k).pow(Z.valueOf(2 * k).subtract(mSeq.a(mN - 1)).subtract(1))	for (int k = 1; k <= mSeq.a(mN - 1).intValue() - 1; ++k) {		a(n) = Product_{k=1..p-1} k^(2k-p-1), where p = prime(n).
+A191554	prodsim	1	A000040	mSeq.a(k - 1).pow(Z.ONE.shiftLeft(k - 1))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k)^(2^(k-1)).
+A191555	prodsim	0	A000040	mSeq.a(k - 1).pow(Z.ONE.shiftLeft(mN - k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k)^(2^(n-k)).

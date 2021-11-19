@@ -42,6 +42,7 @@ while (<>) {
             $ok = 1;
             # Product_{i=0..
         } else {
+            ($var1, $start1, $end1, $form) = ("k", 1, "mN", "??");
         }
         if ($ok) {
             print        join("\t", $aseqno, $cc, $offset, $form, "for (int $var1 = $start1; $var1 <= $end1; ++$var1) {", "", $name) . "\n";
