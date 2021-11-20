@@ -3518,13 +3518,18 @@ prodsi: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 	wc -l    $@.*tmp
 #	| sort -k5,5 --field-separator="	" \
 #
+prodsi2: 
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 prodsim:
 	grep -E "^A[0-9]" prodsi.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-sumsi: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
+sumsi2: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 	grep -Pi "a\(n\) *\= *Sum_\{" $(COMMON)/joeis_names.txt \
 	| perl prodsi.pl \
 	2>       $@.rest.tmp \
@@ -3533,6 +3538,11 @@ sumsi: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 	wc -l    $@.*tmp
 #	| sort -k5,5 --field-separator="	" \
 #
+sumsi:
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 sumsim:
 	grep -E "^A[0-9]" sumsi.man \
 	>        $@.gen

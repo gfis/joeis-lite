@@ -1,0 +1,93 @@
+# tau(n) -> irvine.factor.factor.Cheetah.factor(n).sigma0()
+# mu(n)  -> irvine.math.Mobius.mobius(n)
+# phi(n) -> irvine.math.LongUtils.phi(n)
+
+A053818	sumgcd1	0	Z.valueOf(k).pow(2)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n, gcd(n,k) = 1} k^2
+A053819	sumgcd1	0	Z.valueOf(k).pow(3)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n, gcd(n,k) = 1} k^3
+A053820	sumgcd1	0	Z.valueOf(k).pow(4)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n, gcd(n,k) = 1} k^4
+A054432	sumgcd1	0	Z.ONE.shiftLeft(k - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{1<=k<=n, gcd(k,n)=1} 2^(k-1)
+A057660	sumgcd	0	Z.valueOf(mN / gd)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} n/gcd(n,k)
+
+A342370	sumgcd	0	Z.valueOf(gd).pow(k - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^(k-1)
+A342389	sumgcd	0	Z.valueOf(k).pow(gd)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} k^gcd(k,n)
+A342394	sumgcd	0	Z.valueOf(k).pow(gd - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} k^(gcd(k,n) - 1)
+A342395	sumgcd	0	Z.valueOf(k).pow(mN / gd)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} k^(n/gcd(k,n))
+A342396	sumgcd	0	Z.valueOf(k).pow(mN / gd - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} k^(n/gcd(k,n) - 1)
+A342411	sumgcd	0	Z.valueOf(mN / gd).pow(mN / gd - 2)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (n/gcd(k,n))^(n/gcd(k,n) - 2)
+A342412	sumgcd	0	Z.valueOf(mN / gd).pow(mN - 2)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (n/gcd(k,n))^(n-2)
+A342420	sumgcd	0	Z.valueOf(mN / gd).pow(mN / gd)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (n/gcd(k,n))^(n/gcd(k,n))
+A342421	sumgcd	0	Z.valueOf(mN / gd).pow(gd - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (n/gcd(k,n))^(gcd(k,n) - 1)
+A342422	sumgcd	0	Z.valueOf(mN / gd).pow(gd)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (n/gcd(k,n))^gcd(k,n)
+A342423	sumgcd	0	Z.valueOf(gd).pow(gd)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^gcd(k,n)
+A342424	sumgcd	0	Z.valueOf(gd).pow(mN / gd)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^(n/gcd(k,n))
+A342432	sumgcd	0	Z.valueOf(gd).pow(mN - 2)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^(n-2)
+A342433	sumgcd	0	Z.valueOf(gd).pow(mN - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^(n-1)
+A342435	sumgcd	0	Z.valueOf(gd).pow(gd - 2)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^(gcd(k,n) - 2)
+A342436	sumgcd	0	Z.valueOf(gd).pow(gd - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^(gcd(k,n) - 1)
+A342437	sumgcd	0	Z.valueOf(gd).pow(mN / gd - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^(n/gcd(k,n) - 1)
+A342449	sumgcd	0	Z.valueOf(gd).pow(k)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^k
+A343490	sumgcd	0	Z.FOUR.pow(gd - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} 4^(gcd(k, n) - 1)
+A343492	sumgcd	0	Z.FIVE.pow(gd - 1)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} 5^(gcd(k, n) - 1)
+A343497	sumgcd	0	Z.valueOf(gd).pow(3)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k, n)^3
+A343498	sumgcd	0	Z.valueOf(gd).pow(4)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k, n)^4
+A343499	sumgcd	0	Z.valueOf(gd).pow(5)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k, n)^5
+A343508	sumgcd	0	Z.valueOf(gd).pow(6)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k, n)^6
+A343509	sumgcd	0	Z.valueOf(gd).pow(7)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k, n)^7
+A343513	sumgcd	0	Z.valueOf(k / gd).pow(3)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (k/gcd(n, k))^3
+A343514	sumgcd	0	Z.valueOf(k / gd).pow(4)	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (k/gcd(n, k))^4
+
+# A344373	sumgcd	0	(-1)^k gcd(k,n)                     	for (int k = 1; k <  mN; ++k) {	a(n) = Sum_{k=1..n-1} (-1)^k gcd(k, n)
+# A344372	sumgcd	0	(-1)^k gcd(k,n)                     	for (int k = 2*mN; k >= 1; --k) {	gcd(k,2n!!) a(n) = Sum_{k=1..2n} (-1)^k gcd(k,2n)
+# A345090	sumgcd	0	k^floor(1/gcd(k,2*n-k))              	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} k^floor(1/gcd(k,2*n-k))
+# A345091	sumgcd	0	k^floor(1/gcd(n,k))                  	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} k^floor(1/gcd(n,k))
+# A348060	sumgcd1	0	(k-1) / gcd(mN,k-1)                  	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n, gcd(n,k) = 1} (k-1) / gcd(n,k-1)
+# A348061	sumgcd1	0	n / gcd(n,k-1)                      	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n, gcd(n,k) = 1} n / gcd(n,k-1)
+
+A057789	sumgcd1	0	Z.valueOf(k * (mN - k))                             	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n, gcd(k,n)=1} k*(n-k)
+A078439	sumgcd	0	Z.valueOf(gd).multiply(Z.valueOf(irvine.math.Mobius.mobius(gd)).square())              	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)*mu(gcd(k,n))^2
+A110376	sumgcd1	0	Z.valueOf(n!/k)                                 	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{r<n, gcd(r,n)=1} n!/r
+A110377	sumgcd1	0	Z.valueOf(n!/k!)                                	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{r<n, gcd(r,n)=1} n!/r!
+A199084	sumgcd	0	Z.valueOf((((k & 1) == 0) ? -1 : 1) * gd)                	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (-1)^(k+1) gcd(k,n)
+A112399	sumgcd1	0	irvine.math.Mobius.mobius(k)                                	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{1<=k<=n, gcd(k,n)=1} mu(k)
+A116477	sumgcd1	0	Z.valueOf(mN / k)                           	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{1<=k<=n, gcd(k,n)=1} floor(n/k)
+A124440	sumgcd1	0	Z.valueOf(k)                                    	for (int k = (((mN & 1) == 0) ? mN / 2 : (mN + 2) / 2); k <= mN; ++k) {	a(n) = Sum_{n/2<=k<=n, gcd(k,n)=1} k
+A159068	sumgcd	0	Binomial.binomial(mN, k).multiply(gd)             	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} binomial(n,k) * gcd(k,n)
+A159553	sumgcd	0	(k == 0 ? Z.valueOf(mN) : Binomial.binomial(mN, k)).multiply(gd)             	for (int k = 0; k <= mN; ++k) {	a(n) = Sum_{k=0..n} binomial(n,k) * gcd(n,k)
+A295574	sumgcd1	0	Z.valueOf(k).pow(2)                                  	for (int k = 1; k <= mN / 2; ++k) {	a(n) = Sum_{1<= j <= n/2, gcd(j,n)=1} j^2
+A295575	sumgcd1	0	Z.valueOf(k).pow(3)                                  	for (int k = 1; k <= mN / 2; ++k) {	a(n) = Sum_{1<= j <= n/2, gcd(j,n)=1} j^3
+A295576	sumgcd1	0	Z.valueOf(k).pow(4)                                  	for (int k = 1; k <= mN / 2; ++k) {	a(n) = Sum_{1<= j <= n/2, gcd(j,n)=1} j^4
+A308474	sumgcd1	0	Z.valueOf(k)                                    	for (int k = mN * mN; k >= 1; --k) {	a(n) = Sum_{k=1..n^2, gcd(n,k) = 1} k
+A331388	sumgcd	0	Z.valueOf(irvine.math.Mobius.mobius(gd)).multiply(k / gd)        	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} mu(gcd(n, k)) * k / gcd(n, k)
+A332517	sumgcd	0	Z.valueOf(gd).pow(mN)                           	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(n,k)^n
+A332658	sumgcd	0	Z.valueOf(irvine.math.Mobius.mobius(gd)).multiply(LongUtils.lcm(mN, k) / gd)  	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} mu(gcd(n, k)) * lcm(n, k) / gcd(n, k)
+A332683	sumgcd1	0	new Q(mN, k).ceiling()                        	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n, gcd(n, k) = 1} ceiling(n/k)
+A332684	sumgcd	0	Z.valueOf(irvine.math.Mobius.mobius(gd)).multiply(mN / k)           	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} mu(gcd(n, k)) * floor(n/k)
+A332685	sumgcd	0	Z.valueOf(irvine.math.Mobius.mobius(k / gd))                      	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} mu(k/gcd(n, k))
+A333291	sumgcd1	0	Z.valueOf(k * LongUtils.phi(k))                            	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{i=1..n, gcd(i,n)=1} i*phi(i)
+A332620	sumgcd	0	Z.valueOf(mN).pow(mN / gd)                      	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} n^(n/gcd(n, k))
+A332652	sumgcd	0	Z.valueOf(mN).pow(k / gd)                      	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} n^(k/gcd(n, k))
+A332654	sumgcd	0	Z.valueOf(k / gd).square()                      	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (k/gcd(n, k))^2
+A332655	sumgcd	0	Z.valueOf(k / gd).pow(mN)                      	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (k/gcd(n, k))^n
+A333463	sumgcd	0	Z.valueOf(mN / k).multiply(gd)                	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} floor(n/k) * gcd(n,k)
+A333465	sumgcd	0	new Q(mN, k).ceiling().multiply(gd)              	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} ceiling(n/k) * gcd(n,k)
+A337003	sumgcd1	0	Binomial.binomial(mN, k).square()                     	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n, gcd(n,k) = 1} binomial(n,k)^2
+A341036	sumgcd	0	Z.valueOf(gd).pow(k - 2)                       	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} gcd(k,n)^(k-2)
+A342534	sumgcd	0	Z.valueOf(LongUtils.phi(gd)).pow(2)                     	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} phi(gcd(k, n))^2
+A342535	sumgcd	0	Z.valueOf(LongUtils.phi(gd)).pow(3)                     	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} phi(gcd(k, n))^3
+A342539	sumgcd	0	Z.valueOf(LongUtils.phi(gd)).pow(mN)                     	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} phi(gcd(k, n))^n
+A342540	sumgcd	0	Z.valueOf(LongUtils.phi(gd)).pow(mN - 1)                 	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} phi(gcd(k, n))^(n-1)
+A342541	sumgcd	0	Z.valueOf(LongUtils.phi(gd)).pow(mN / gd)          	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} phi(gcd(k, n))^(n/gcd(k, n))
+A342542	sumgcd	0	Z.valueOf(LongUtils.phi(gd)).pow(mN / gd - 1)      	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} phi(gcd(k, n))^(n/gcd(k, n) - 1)
+A342543	sumgcd	0	Z.valueOf(LongUtils.phi(gd)).pow(gd)              	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} phi(gcd(k, n))^gcd(k, n)
+A342544	sumgcd	0	Z.valueOf(LongUtils.phi(gd)).pow(gd - 1)        	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} phi(gcd(k, n))^(gcd(k, n) - 1)
+A333493	sumgcd	0	Z.valueOf((((k & 1) == 0) ? -1 : 1) * LongUtils.lcm(mN, k) / gd)     	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (-1)^(k+1) * lcm(n,k) / gcd(n,k)
+A344371	sumgcd	0	Z.valueOf(((((mN - k) & 1) == 0) ? 1 : -1) * gd)               	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} (-1)^(n-k) gcd(k,n)
+A211932	sumgcd	0	irvine.factor.factor.Cheetah.factor(k).sigma0()                               	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{m=1..n, gcd(n,k) > 1} tau(k)
+A344194	sumgcd	0	irvine.factor.factor.Cheetah.factor(gd).sigma0().pow(gd)               	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} tau(gcd(k,n))^gcd(k,n)
+A344195	sumgcd	0	irvine.factor.factor.Cheetah.factor(gd).sigma0().pow(mN /gd)           	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} tau(gcd(k,n))^(n/gcd(k,n))
+A344221	sumgcd	0	irvine.factor.factor.Cheetah.factor(Z.valueOf(gd).pow(3)).sigma0()                       	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} tau(gcd(k,n)^3)
+A344222	sumgcd	0	irvine.factor.factor.Cheetah.factor(Z.valueOf(gd).pow(4)).sigma0()                       	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} tau(gcd(k,n)^4)
+A344223	sumgcd	0	irvine.factor.factor.Cheetah.factor(Z.valueOf(gd).pow(mN)).sigma0()                       	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} tau(gcd(k,n)^n)
+A344224	sumgcd	0	irvine.factor.factor.Cheetah.factor(Z.valueOf(gd).pow(gd)).sigma0()                	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} tau(gcd(k,n)^gcd(k,n))
+A344225	sumgcd	0	irvine.factor.factor.Cheetah.factor(Z.valueOf(gd).pow(mN / gd)).sigma0()            	for (int k = 1; k <= mN; ++k) {	a(n) = Sum_{k=1..n} tau(gcd(k,n)^(n/gcd(k,n)))
+

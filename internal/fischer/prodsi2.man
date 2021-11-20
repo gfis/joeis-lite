@@ -1,0 +1,40 @@
+A203470	prodsi2	1	Z.valueOf(i + j)        	for (int j = 3; j <= mN + 1; ++j) {	for (int i = 2; i <= j - 1; ++i) {		a(n) = Product_{2 <= i < j <= mN+1} 
+A203472	prodsi2	1	Z.valueOf(i + j)        	for (int j = 4; j <= mN + 2; ++j) {	for (int i = 3; i <= j - 1; ++i) {		a(n) = Product_{3 <= i < j <= mN+2} 
+A203475	prodsi2	1	Z.valueOf(i*i + j*j)    	for (int j = 2; j <= mN; ++j) {	for (int i = 1; i <= j - 1; ++i) {		a(n) = Product_{1 <= i < j <= mN  } 
+A203477	prodsi2	1	Z.ONE.shiftLeft(i).add(Z.ONE.shiftLeft(j))    	for (int j = 1; j <= mN - 1; ++j) {	for (int i = 0; i <= j - 1; ++i) {		a(n) = Product_{0 <= i < j <= mN-1} 
+A203479	prodsi2	1	Z.ONE.shiftLeft(i).add(Z.ONE.shiftLeft(j)).subtract(2)	for (int j = 2; j <= mN; ++j) {	for (int i = 1; i <= j - 1; ++i) {		a(n) = Product_{1 <= i < j <= mN  } 
+A203482	prodsi2f	1	FACTORIAL.factorial(i).add(FACTORIAL.factorial(j))      	for (int j = 2; j <= mN; ++j) {	for (int i = 1; i <= j - 1; ++i) {		a(n) = Product_{1 <= i < j <= mN  } 
+A203516	prodsi2	1	Z.valueOf(2*(i + j - 1))	for (int j = 2; j <= mN; ++j) {	for (int i = 1; i <= j - 1; ++i) {		a(n) = Product_{1 <= i < j <= mN  } 
+# 
+A307210	prodsi2	1	Z.valueOf(i).pow(3).add(Z.valueOf(j).pow(3)).add(1) 	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i^3 + j^3 + 1)
+A306728	prodsi2	0	Z.valueOf(i*(i + 1) + j*(j + 1))               	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i*(i+1) + j*(j+1))
+A306729	prodsi2f	0	FACTORIAL.factorial(i).add(FACTORIAL.factorial(j))                             	for (int i = 0; i <= mN; ++i) {	for (int j = 0; j <= mN; ++j) {			a(n) = Product_{i=0n, j=0n} (i! + j!)
+A306760	prodsi2	1	Z.valueOf(i*j + 1)                             	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i*j + 1)
+A324402	prodsi2	1	Z.valueOf(2*i + j)                             	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (2*i + j)
+A324403	prodsi2	1	Z.valueOf(i*i + j*j)                           	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i^2 + j^2)
+A324426	prodsi2	1	Z.valueOf(i).pow(3).add(Z.valueOf(j).pow(3))   	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i^3 + j^3)
+A324437	prodsi2	1	Z.valueOf(i).pow(4).add(Z.valueOf(j).pow(4))   	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i^4 + j^4)
+A324438	prodsi2	1	Z.valueOf(i).pow(5).add(Z.valueOf(j).pow(5))   	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i^5 + j^5)
+A324439	prodsi2	1	Z.valueOf(i).pow(6).add(Z.valueOf(j).pow(6))   	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i^6 + j^6)
+A324440	prodsi2	1	Z.valueOf(i).pow(7).add(Z.valueOf(j).pow(7))   	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i^7 + j^7)
+A324442	prodsi2	1	Z.valueOf(i*i + j)                             	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (i^2 + j)
+A324443	prodsi2	1	Z.valueOf(1 + i*i + j*j)                       	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (1 + i^2 + j^2)
+A324444	prodsi2	1	Z.valueOf(1 + i + j)                           	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (1 + i + j)
+A324566	prodsi2b	0	Binomial.binomial(2*i, i).add(Binomial.binomial(2*j, j)) 	for (int i = 0; i <= mN; ++i) {	for (int j = 0; j <= mN; ++j) {			a(n) = Product_{i=0n, j=0n} (binomial(2*i, i) + binomial(2*j, j))
+A324567	prodsi2b	0	Binomial.binomial(2*i, j).add(Binomial.binomial(2*j, i)) 	for (int i = 0; i <= mN; ++i) {	for (int j = 0; j <= mN; ++j) {			a(n) = Product_{i=0n, j=0n} (binomial(2*i, j) + binomial(2*j, i))
+A324589	prodsi2	1	Z.valueOf(i*j).square().add(1)                 	for (int i = 1; i <= mN; ++i) {	for (int j = 1; j <= mN; ++j) {			a(n) = Product_{i=1n, j=1n} (1 + (i*j)^2)
+A325048	prodsi2f	0	FACTORIAL.factorial(i).square().add(FACTORIAL.factorial(j).square()) 	for (int i = 0; i <= mN; ++i) {	for (int j = 0; j <= mN; ++j) {			a(n) = Product_{i=0n, j=0n} (i!^2 + j!^2)
+A325049	prodsi2f	0	FACTORIAL.factorial(i).multiply(FACTORIAL.factorial(j)).add(1)       	for (int i = 0; i <= mN; ++i) {	for (int j = 0; j <= mN; ++j) {			a(n) = Product_{i=0n, j=0n} (i!*j! + 1)
+A325053	prodsi2f	0	FACTORIAL.factorial(i).add(FACTORIAL.factorial(j)).add(1)            	for (int i = 0; i <= mN; ++i) {	for (int j = 0; j <= mN; ++j) {			a(n) = Product_{i=0n, j=0n} (i! + j! + 1)
+
+A216206	prodsi	0	Z.valueOf(-2).pow(k).subtract(1)	for (int k = 1; k <= mN; ++k) {		a(n) = product_{i=1n} ((-2)^i-1)
+
+# A306907	prodsi	0	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{i=0n, j=0n, k=0n} (i*j*k + 1)
+A073306	prodsib	0	Binomial.binomial(2*mN - 2*i - 1, 2*i)	for (int i = 1; i <= (mN - 1) / 2; ++i) {		a(n) = Product_{2i<n} binomial(2*n-2*i-1, 2*i)
+# A124441	prodsi1	1	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{1<=k<=n/2, gcd(k,n)=1} k
+# A124442	prodsi	1	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{ceiling(n/2) <= k <= n, gcd(k,n)=1} k
+# A131553	prodsi1	1	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1n, gcd(k,n)=1} (1+k)
+# A249056	prodsi	0	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{i=1floor(n/2)} (2n-i)*(2n+i)
+# A254865	prodsi	1	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k = 1+n-floor(n/3)  n} k
+# A271385	prodsi	0	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=0floor((n - 1)/2)} (n - 2*k)^(n - 2*k)
+
