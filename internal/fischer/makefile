@@ -6096,6 +6096,18 @@ mangf_retest:
 	cut -f1 mangf_check.txt | grep -E "^A[0-9][0-9]" \
 	| xargs -l -innn cp -v mangf/nnn.java manual
 	make CC=man purge man distel
+#----
+packlist_check:
+	rm -f $@.tmp
+	ls -tcl ../../pack.*.lst | cut -b45- \
+	| xargs -l -innn make -s packlist_check1 FILE=nnn\
+	| tee -a $@.tmp
+packlist_check1:
+	cat $(FILE) | perl -ne 'm{\/(A\d+)}; print "$$1\n"; ' | sort | uniq > $@.tmp
+	make seq LIST=$@.tmp
+	echo ====$(FILE)====
+	ls -al $(FILE)
+	$(DBAT) -x "SELECT aseqno FROM seq WHERE aseqno NOT IN (SELECT aseqno FROM joeis) ORDER BY 1;" 
 #--------------------------
 analog: analog1 anasort anaprep anaload anastret
 analog1:

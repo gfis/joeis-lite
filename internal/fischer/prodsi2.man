@@ -38,3 +38,9 @@ A073306	prodsib	0	Binomial.binomial(2*mN - 2*i - 1, 2*i)	for (int i = 1; i <= (m
 # A254865	prodsi	1	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k = 1+n-floor(n/3)  n} k
 # A271385	prodsi	0	??	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=0floor((n - 1)/2)} (n - 2*k)^(n - 2*k)
 
+A202768	prodsi2	1	Z.valueOf(k*k).subtract(Z.valueOf(j*j))	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {		Vandermonde determinant of the first n squares.
+A203303	prodsi2	1	Z.ONE.shiftLeft(k - 1).subtract(Z.ONE.shiftLeft(j - 1))	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {		Vandermonde determinant of the first n terms of (1,3,7,15,31,...).	nonn,changed,synth	9
+A203305	prodsi2	1	Z.ONE.shiftLeft(k).subtract(Z.ONE.shiftLeft(j))	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {		Vandermonde determinant of the first n terms of (1,3,7,15,31,...).	nonn,changed,synth	9
+A203309	prodsi2	1	Z.valueOf(k*(k + 1) / 2).subtract(Z.valueOf(j*(j + 1) / 2))	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {		Vandermonde determinant of the first n triangular numbers.	nonn,changed,synth	10
+A203430	prodsi2	1	Z.valueOf(k + k / 2).subtract(Z.valueOf(j + j / 2))	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {		Vandermonde determinant of the first n numbers (1,3,4,6,7,9,10,...)=(j+floor(j/2)).	nonn,synth	12
+A203433	prodsi2	1	Z.valueOf(k + (k + 1) / 2).subtract(Z.valueOf(j + (j + 1) / 2))	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {		Vandermonde determinant of the first n terms of (2,3,5,6,8,9,...)=(j+floor((j+1)/2)).	nonn,synth	12
