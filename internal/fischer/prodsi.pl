@@ -1,6 +1,6 @@
 #!perl
 
-# prodsi.pl
+# prodsi.pl - a(n) = Product_{k=0..n} (3*k + 1)!.
 # 2021-11-18, Georg Fischer
 # E.g. A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 #

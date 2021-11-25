@@ -2,6 +2,7 @@
 
 # Extract parameters from Clark Kimberling's guides (overview tables)
 # @(#) $Id$
+# 2021-11-25: Vandermode sequences
 # 2021-08-24, Georg Fischer: copied from solvetab.pl
 #
 #:# Usage:
@@ -206,10 +207,73 @@ while (<DATA>) {
             &out($ans[0], "basvarsig", $base, -1     , "");
             &out($ans[1], "basvarsig", $base,  0     , "");
             &out($ans[2], "basvarsig", $base, +1     , "");
+        } elsif ($opt =~ m{T}) { # A093883 - Vandermonde products
+            ($opt, $expr, @ans) = split(/\t/, $line);
+            @ans = map { (m{\AA\d+\Z}) ? $_ : "nnnn" } @ans;
+            my $ok = 0;
+            $expr =~ s{\s+\Z}{};
+            my @fa = (0,1,2,3, "", ""); 
+            $callcode = "prodskj";
+            if (0) {
+            } elsif ($expr =~ m{n\!}) {
+                $fa[1] = "FACTORIAL.factorial(k)";
+                $fa[2] = "FACTORIAL.factorial(k).multiply(FACTORIAL.factorial(j))";
+                $fa[3] = "FACTORIAL.factorial(j)";
+                $callcode .= "m";
+                $fa[4] = "irvine.math.factorial.MemoryFactorial";
+                $fa[5] = "MemoryFactorial FACTORIAL = new MemoryFactorial()";
+                $ok = 2;
+            } elsif ($expr =~ m{Fibo}) {
+                my $plus = ($expr =~ m{\+\s*1\)}) ? " + 1" : "";
+                $fa[1] = "mA000045.a(k$plus)";
+                $fa[2] = "mA000045.a(k$plus).multiply(mA000045.a(j$plus))";
+                $fa[3] = "mA000045.a(j$plus)";
+                $callcode .= "m";
+                $fa[4] = "irvine.oeis.MemorySequence";
+                $fa[5] = "MemorySequence mA000045 = MemorySequence.cachedSequence(new A000045())";
+                $ok = 2;
+            } elsif ($expr =~ m{prime}) {
+                $fa[1] = "mA000040.a(k - 1)";
+                $fa[2] = "mA000040.a(k - 1).multiply(mA000040.a(j - 1))";
+                $fa[3] = "mA000040.a(j - 1)";
+                $callcode .= "m";
+                $fa[4] = "irvine.oeis.MemorySequence";
+                $fa[5] = "MemorySequence mA000040 = MemorySequence.cachedSequence(new A000040())";
+                $ok = 2;
+            } elsif ($expr eq "n^2") {
+                $fa[1] = "Z.valueOf(k*k)";
+                $fa[2] = "Z.valueOf(k*k).multiply(j*j)";
+                $fa[3] = "Z.valueOf(j*j)";
+                $ok = 2;
+            } elsif ($expr eq "2^(n - 1)") {
+                $fa[1] = "Z.ONE.shiftLeft(k - 1)";
+                $fa[2] = "Z.ONE.shiftLeft(k - 1).multiply(Z.ONE.shiftLeft(j - 1))";
+                $fa[3] = "Z.ONE.shiftLeft(j - 1)";
+                $ok = 2;
+            } else {
+                $ok = 1;
+            } 
+            if (0) {
+            } elsif ($ok == 1) {
+                &out($ans[1], $callcode, &f("k") . "*" . &f("k") . " + " . &f("k") . "*" . &f("j") . " + " . &f("j") . "*" . &f("j"), "$expr", "");
+                &out($ans[2], $callcode, &f("k") . "*" . &f("k") . " - " . &f("k") . "*" . &f("j") . " + " . &f("j") . "*" . &f("j"), "$expr", "");
+                &out($ans[3], $callcode, &f("k") . "*" . &f("k")                                   . " + " . &f("j") . "*" . &f("j"), "$expr", "");
+            } elsif ($ok == 2) {
+                &out($ans[1], $callcode, "$fa[1].square()"            . ".add(" . $fa[2]                . ").add($fa[3].square())"  , "$fa[4]", "$fa[5]", "$expr", "");
+                &out($ans[2], $callcode, "$fa[1].square()"       . ".subtract(" . $fa[2]                . ").add($fa[3].square())"  , "$fa[4]", "$fa[5]", "$expr", "");
+                &out($ans[3], $callcode, "$fa[1].square()"                                               . ".add($fa[3].square())"  , "$fa[4]", "$fa[5]", "$expr", "");
+            }
         } else { # unknown -a
         }
     } # line with =opt=
 } # while <DATA>
+#----
+sub f {
+    my ($var)= @_;
+    my $result = $expr;
+    $result =~ s{n}{$var}g;
+    return length($expr) == 1 ? $result : "($result)";
+}
 #----
 sub out {
     my ($aseqno, $callcode, $parm1, $parm2, $parm3) = @_;
@@ -1075,6 +1139,20 @@ Base b        Sequence u   Sequence e   Sequence d
 =S=	15          A297285      A297286      A297287
 =S=	16          A297288      A297289      A297290
 #--------------------------------
+from A093883:
+s(n)                 	f(k)+f(j)  x^2+x*y+y^2   x^2-x*y+y^2   x^2+y^2
+=T=	n                	A093883	A203012	A203312	A203514
+=T=	n + 1            	nnnn   	A203581	A203583	A203585
+=T=	2*n - 1          	A203516	A203514	A203587	A203589
+=T=	n^2              	A203475	A203673	A203675	A203677
+=T=	2^(n - 1)        	A203477	A203679	A203681	A203683
+=T=	n!               	A203482	A203685	A203687	A203689
+=T=	n*(n + 1)/2      	A203511	A203691	A203693	A203695
+=T=	Fibonacci(n)     	A203518	A203742	A203744	A203746
+=T=	Fibonacci(n+1)   	A203518	A203697	A203699	A203701
+=T=	prime(n)         	A203521	A203703	A203705	A203707
+=T=	n/2              	nnnn   	A203748	A203752	A203773
+=T=	(n + 1)/2        	nnnn   	A203759	A203763	A203766
 #--------------------------------
 #--------------------------------
 #--------------------------------

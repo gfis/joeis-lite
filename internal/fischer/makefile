@@ -3528,6 +3528,18 @@ prodsim:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+prodskj:
+	perl ck/ck_guides.pl -a T \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+quots:
+	perl quotient.pl $(COMMON)/joeis_names.txt \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 sumsi2: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 	grep -Pi "a\(n\) *\= *Sum_\{" $(COMMON)/joeis_names.txt \
