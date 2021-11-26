@@ -3537,6 +3537,7 @@ prodskj:
 #----
 quots:
 	perl quotient.pl $(COMMON)/joeis_names.txt \
+	| grep -P "\tquot" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

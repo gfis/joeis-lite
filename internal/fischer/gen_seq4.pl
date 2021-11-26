@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2021-11-26: V2.8: import Binomial
 # 2021-11-11: V2.7: no import for "Function"
 # 2021-11-09: V2.6: Transpose, AbsoluteSequence
 # 2021-10-29, V2.5: -cc concatenated with callcode in infile
@@ -38,7 +39,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V2.7";
+my $program = "gen_seq4.pl V2.8";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -306,23 +307,24 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     my ($line, $itype) = @_; # 1 = permanent for this pattern, 2 = temporary
     my @aseqnos = ($line =~ m{(A\d{6})}g);
     foreach my $aseqno (@aseqnos) {
-        $imports{"irvine.oeis." . lc(substr($aseqno, 0, 4)) . ".$aseqno"}               = $itype;
+        $imports{"irvine.oeis." . lc(substr($aseqno, 0, 4)) . ".$aseqno"}                   = $itype;
     } # foreach
-    if ($line =~ m{\WZUtils\.})         { $imports{"irvine.math.z.ZUtils"}              = $itype; }
-    if ($line =~ m{\WZeta\.})           { $imports{"irvine.math.cr.Zeta"}               = $itype; }
-    if ($line =~ m{\WStringUtils\.})    { $imports{"irvine.util.string.StringUtils"}    = $itype; }
-    if ($line =~ m{\WMemoryFactorial})  { $imports{"irvine.math.factorial.MemoryFactorial"}                 = $itype; }
-    if ($line =~ m{\WQ})                { $imports{"irvine.math.q.Q"}                 = $itype; }
-    if ($line =~ m{\WCR})               { $imports{"irvine.math.cr.CR"}                 = $itype; }
-    if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}    = $itype; }
-    if ($line =~ m{\WUnaryCRFunction})  { $imports{"irvine.math.cr.UnaryCRFunction"}    = $itype; }
-    if ($line =~ m{\WAbsoluteSequence}) { $imports{"irvine.oeis.AbsoluteSequence"  }    = $itype; }
-    if ($line =~ m{\WLinearRecurrence}) { $imports{"irvine.oeis.LinearRecurrence"  }    = $itype; }
-    if ($line =~ m{\WPaddingSequence} ) { $imports{"irvine.oeis.PaddingSequence"   }    = $itype; }
-    if ($line =~ m{\WPeriodicSequence}) { $imports{"irvine.oeis.PeriodicSequence"  }    = $itype; }
-    if ($line =~ m{\WPrependSequence} ) { $imports{"irvine.oeis.PrependSequence"   }    = $itype; }
-    if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }    = $itype; }
-    if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}    = $itype; }
+    if ($line =~ m{\WZUtils\.})         { $imports{"irvine.math.z.ZUtils"}                  = $itype; }
+    if ($line =~ m{\WZeta\.})           { $imports{"irvine.math.cr.Zeta"}                   = $itype; }
+    if ($line =~ m{\WBinomial})         { $imports{"irvine.math.z.Binomial"}                = $itype; }
+    if ($line =~ m{\WStringUtils\.})    { $imports{"irvine.util.string.StringUtils"}        = $itype; }
+    if ($line =~ m{\WMemoryFactorial})  { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
+    if ($line =~ m{\WQ\W})              { $imports{"irvine.math.q.Q"}                       = $itype; }
+    if ($line =~ m{\WCR\W})             { $imports{"irvine.math.cr.CR"}                     = $itype; }
+    if ($line =~ m{\WComputableReals})  { $imports{"irvine.math.cr.ComputableReals"}        = $itype; }
+    if ($line =~ m{\WUnaryCRFunction})  { $imports{"irvine.math.cr.UnaryCRFunction"}        = $itype; }
+    if ($line =~ m{\WAbsoluteSequence}) { $imports{"irvine.oeis.AbsoluteSequence"  }        = $itype; }
+    if ($line =~ m{\WLinearRecurrence}) { $imports{"irvine.oeis.LinearRecurrence"  }        = $itype; }
+    if ($line =~ m{\WPaddingSequence} ) { $imports{"irvine.oeis.PaddingSequence"   }        = $itype; }
+    if ($line =~ m{\WPeriodicSequence}) { $imports{"irvine.oeis.PeriodicSequence"  }        = $itype; }
+    if ($line =~ m{\WPrependSequence} ) { $imports{"irvine.oeis.PrependSequence"   }        = $itype; }
+    if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }        = $itype; }
+    if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}        = $itype; }
     
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
