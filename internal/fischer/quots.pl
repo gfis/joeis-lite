@@ -33,6 +33,8 @@ my ($line, $aseqno, $superclass, $callcode, $name, $keyword, $range);
 my $nseqno; # for numerator
 my $dseqno; # for denominator
 my $dmult;  # factor for denominator
+
+# while (<DATA>) { # read inputfile
 while (<>) { # read inputfile
     s/\s+\Z//; # chompr
     $line = $_;
@@ -41,11 +43,19 @@ while (<>) { # read inputfile
     $nseqno = "";
     $dseqno = "";
     $dmult = "1";
-    # print "$name\n";
     if (0) {
     #----------------
+    # A203313	null	a(n) = v(n)/A000178(n) where v=A203311 and A000178=(superfactorials).	nonn,changed,synth	1..12	nyi
+    # A203520	null	v(n)/A000178(n); v=A203518 and A000178=(superfactorials).	nonn,synth	11
+    } elsif ($name =~
+        #   1------------1 2------2           3----3          4----4
+        m{\A(a\(n\) *\= *)?([au-z])\(n\) *\/ *(A\d+)\(n\)[^A]*(A\d+)}) {
+        $nseqno = $4;
+        $dseqno = $3;
+        &output();
+    #----------------
     # A203708	null	v(n+1)/v(n), where v=A203707.	nonn,synth	11
-    } elsif ($name =~ 
+    } elsif ($name =~
         #   1------------1 2------2                                            3----3
         m{\A(a\(n\) *\= *)?([au-z])\(n *\+ *1\) *\/ *\2\(n\)\, *where *\2 *\= *(A\d+)} ) {
         $nseqno = $3;
@@ -53,7 +63,7 @@ while (<>) { # read inputfile
         &output();
     #----------------
     # A203481	null	v(n+1)/(4*v(n)), where v=A203479.	nonn,synth	11
-    } elsif ($name =~ 
+    } elsif ($name =~
         #   1------------1 2------2                   3----3                    4----4
         m{\A(a\(n\) *\= *)?([au-z])\(n *\+ *1\) *\/ *\((\d+) *\* *\2\(n\)\)[^A]*(A\d+)} ) {
         $nseqno = $4;
@@ -62,7 +72,7 @@ while (<>) { # read inputfile
         &output();
     #----------------
     # A203513	null	a(n) = A203312(n+1)/A203312(n).	nonn,changed,synth	12
-    } elsif ($name =~ 
+    } elsif ($name =~
         #   1------------1 2----2
         m{\A(a\(n\) *\= *)?(A\d+)\(n *\+ *1\) *\/ *\2\(n\)}) {
         $nseqno = $2;
@@ -70,7 +80,7 @@ while (<>) { # read inputfile
         &output();
     #----------------
     # ??                a(n) = A203312(n+1)/(4*A203312(n))
-    } elsif ($name =~ 
+    } elsif ($name =~
         #   1------------1 2----2                   3----3
         m{\A(a\(n\) *\= *)?(A\d+)\(n *\+ *1\) *\/ *\((\d+) *\* *\2\(n\)\)}) {
         $nseqno = $2;
@@ -79,15 +89,15 @@ while (<>) { # read inputfile
         &output();
     #----------------
     # A331311	null	a(n) = A331287(n) / A331310(n).
-    } elsif ($name =~ 
+    } elsif ($name =~
         #   1------------1 2----2           3----3
-        m{\A(a\(n\) *\= *)?(A\d+)\(n\) *\/ *(A\d+)\(n\) *([\.\,\;]|with)}) {
+        m{\A(a\(n\) *\= *)?(A\d+)\(n\) *\/ *(A\d+)\(n\) *([\.\,\;]|with|where)}) {
         $nseqno = $2;
         $dseqno = $3;
         &output();
     #----------------
     # A331311	null	a(n) = A331287(n) / (4*A331310(n)).
-    } elsif ($name =~ 
+    } elsif ($name =~
         #   1------------1 2----2             3---3      4----4
         m{\A(a\(n\) *\= *)?(A\d+)\(n\) *\/ *\((\d+) *\* *(A\d+)\(n\)\) *([\.\,\;]|with)}) {
         $nseqno = $2;
@@ -95,20 +105,16 @@ while (<>) { # read inputfile
         $dseqno = $4;
         &output();
     #----------------
-    # A203520	null	v(n)/A000178(n); v=A203518 and A000178=(superfactorials).	nonn,synth	11
-    } elsif ($name =~ 
-        #   1------------1 2------2           3----3            4----4
-        m{\A(a\(n\) *\= *)?([au-z])\(n\) *\/ *(A\d+)\(n\)\)[^A]*(A\d+)}) {
-        $nseqno = $4;
-        $dseqno = $3;
-        &output();
-    #----------------
-    } else { # ignore
-        # print "? $line\n";
+    } elsif (($superclass eq "null") && ($name =~ m{\/ *A\d+}) && ($name !~ m{\/ *\d})) {
+        print STDERR join("\t", $aseqno, "??", 0, $name) . "\n";
     }
 } # while <>
 #----
 sub output {
-    print join("\t", $aseqno, $callcode, 0, $nseqno, $dmult, $dseqno, $name) . "\n";
-} # output  
+    if ($superclass eq "null") {
+        print join("\t", $aseqno, $callcode, 0, $nseqno, $dmult, $dseqno, $name) . "\n";
+    }
+} # output
 __DATA__
+A203313	null	a(n) = v(n)/A000178(n) where v=A203311 and A000178=(superfactorials).	nonn,changed,synth	1..12	nyi
+A203314	null	a(n) = A080358(n)/A000178(n) where A000178 are superfactorials.	nonn,changed,synth	1..12	nyi

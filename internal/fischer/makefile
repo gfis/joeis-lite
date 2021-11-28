@@ -3537,10 +3537,15 @@ prodskj:
 #----
 quots:
 	perl quots.pl $(COMMON)/joeis_names.txt \
-	| grep -P "\tquot" \
+	2>       $@.rest.tmp \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen
+	wc -l    $@.*
+quotm:
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.*
 #----
 sumsi2: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 	grep -Pi "a\(n\) *\= *Sum_\{" $(COMMON)/joeis_names.txt \

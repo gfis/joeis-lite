@@ -1,0 +1,30 @@
+A117563	quot0	0	A118534	Z.ZERO	A117078	a(n) = A118534(n)/A117078(n) unless A117078(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A179621	quot0	0	A179620	Z.ZERO	A130882	a(n) = A179620(n)/A130882(n) unless A130882(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A184219	quot0	0	A184218	Z.ZERO	A130703	a(n) = A184218(n)/A130703(n) unless A130703(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A184221	quot0	0	A184220	Z.ZERO	A133150	a(n) = A184220(n)/A133150(n) unless A133150(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A184729	quot0	0	A184728	Z.ZERO	A130533	a(n) = A184728(n)/A130533(n) unless A130533(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A184751	quot0	0	A184750	Z.ZERO	A133151	a(n) = A184750(n)/A133151(n) unless A133151(n) = 0 in which case a(n) = 0.      nonn,   1..1000 nyi
+A184753	quot0	0	A184752	Z.ZERO	A130650	a(n) = A184752(n)/A130650(n) unless A130650(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A184828	quot0	0	A184827	Z.ZERO	A130889	a(n) = A184827(n)/A130889(n) unless A130889(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A184831	quot0	0	A184830	Z.ZERO	A184829	a(n) = A184830(n)/A184829(n) unless A184829(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A184834	quot0	0	A184833	Z.ZERO	A184832	a(n) = A184833(n)/A184832(n) unless A184832(n) = 0 in which case a(n) = 0.      nonn,   1..10000        nyi
+A079803	quots	0	A079802	1		
+A095355	quot	0	A095106	1	A095093	Ratio A095106(n)/A095093(n) rounded down.
+A095357	quot	0	A095107	1	A095008	Ratio A095107(n)/A095008(n) rounded down.
+A095359	quot	0	A095109	1	A095091	Ratio A095109(n)/A095091(n) rounded down.
+# A152902	quot0	0	A000027	Z.ZERO	A008683	Convolution sequence, A000027 / A008683
+# A154107	quot0	0	A000110	Z.ZERO	A014182	A000110 / A014182: (A154107 convolved with A014182 = Bell numbers).
+A191651	quots	0	A191650	1		Ratio A191650(n+1)/A191650(n).
+A203474	quot	0	A203472	1	A000178	a(n) = A203472(n) / A000178(n-1), where A000178 are the superfactorials.
+A213633	quot	0	A000027	1	A007978	[A000027/A007978], where [ ] = floor.
+A232788	quot	0	A232773	1	A006882	A232773(n) / A006882(n): Permanent of the n X n matrix with elements [1,2,...,n^2], divided by n!!.
+# A265917	quot0	0	A070939	Z.ZERO	A000120	a(n) = floor(A070939(n)/A000120(n)) where A070939(n) is the binary length of n and A000120(n) is the binary weight of n.
+A280443	quot	0	A280442	1	A223067	a(n) = A280442(n)/A223067(n) = A067624(n)*A046161(n)/A223068(n)
+# A280703	??	0	a(n) = A003961(n) / A280702(n) = A003961(n) / gcd(A003961(n),A250469(n)).
+# A280704	??	0	a(n) = A250469(n) / A280702(n) = A250469(n) / gcd(A003961(n),A250469(n)).
+# A295312	??	0	a(n) = A062401(n) / A295310(n) = phi(sigma(n)) / gcd(n, phi(sigma(n))).
+# A295655	??	0	a(n) = A000203(n) / A294896(n) = A000203(n) / gcd(A000203(n), A005187(n)).
+# A295656	??	0	a(n) = A005187(n) / A294896(n) = A005187(n) / gcd(A000203(n), A005187(n)).
+# A342002	??	0	a(n) = A327860(n) / A328572(n) = A003415(A276086(n)) / A003557(A276086(n)).
+# A344972	??	0	a(n) = floor(A344875(n) / A011772(n)).
+# A346481	??	0	a(n) = A346467(n) / A346466(n) = lcm S / lcm {d in S, d+1 | n}, with S = {d | n-1, d+1 is prime}.
