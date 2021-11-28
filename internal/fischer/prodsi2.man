@@ -57,3 +57,4 @@ A203516	prodsi2	1	Z.valueOf(2*k - 1).add(Z.valueOf(2*j - 1))	for (int k = 2; k <
 # 
 A203755	prodsi2	1	Z.valueOf(k / 2).pow(4).add(Z.valueOf(j / 2).pow(4))	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {	Vandermonde sequence using x^4 + y^4 applied to (0,1,1,2,2,...,floor(n/2)).	nonn,synth	9
 A203770	prodsi2	1	Z.valueOf((k + 1)/2).pow(4).add(Z.valueOf((j + 1)/2).pow(4))	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {	Vandermonde sequence using x^4 + y^4 applied to (0,1,1,2,2,...,floor(n/2)).	nonn,synth	9
+#----

@@ -139,3 +139,67 @@ A181574	prodsim	1	A000005	mSeq.a(i).add(1).divide(mSeq.a(i).subtract(1))	for (in
 A182484	prodsim	1	A000040	Z.valueOf(k).pow(Z.valueOf(2 * k).subtract(mSeq.a(mN - 1)).subtract(1))	for (int k = 1; k <= mSeq.a(mN - 1).intValue() - 1; ++k) {		a(n) = Product_{k=1..p-1} k^(2k-p-1), where p = prime(n).
 A191554	prodsim	1	A000040	mSeq.a(k - 1).pow(Z.ONE.shiftLeft(k - 1))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k)^(2^(k-1)).
 A191555	prodsim	0	A000040	mSeq.a(k - 1).pow(Z.ONE.shiftLeft(mN - k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} prime(k)^(2^(n-k)).
+#----
+# 2021-11-28
+A061719	prodsif	0	FACTORIAL.factorial(k).pow(3)	for (int k = 0; k <= mN; ++k) {		a(n) = Product_{k=0...n} (k!^3).
+A061778	prodsib	1	Binomial.binomial(mN, j)	for (int j = 0; j <= mN / 2; ++j) {		a(n) = Product_{j=0..floor(n/2)} C(n,j).
+A249056	prodsi	0	Z.valueOf((2*mN - i) * (2*mN + i))	for (int i = 1; i <= mN / 2; ++i) {		a(n) = Product_{i=1..floor(n/2)} (2n-i)*(2n+i).
+A254865	prodsi	1	Z.valueOf(k)	for (int k = 1 + mN - mN / 3; k <= mN; ++k) {		a(n) = Product_{k = 1+n-floor(n/3) .. n} k.
+A271385	prodsi	0	Z.valueOf(mN - 2*k).pow(mN - 2*k)	for (int k = 0; k <= (mN - 1)/2; ++k) {		a(n) = Product_{k=0..floor((n - 1)/2)} (n - 2*k)^(n - 2*k).
+A283361	prodsi	0	Z.valueOf((k*k) % (2*mN - 1))	for (int k = 2; k <= (mN + mN)/3; ++k) {		a(n) = Product_{k=2..floor(2*n/3} (k^2 (mod 2n-1)).
+A318909	prodsi	1	Z.valueOf(k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{1<=x<=n, n|(x^2-1)} x.
+
+A293290	prodsi2	0	Z.valueOf(k*k + j*j)	for (int k = 1; k <= mN; ++k) {	for (int j = 1; j <= k; ++j) {		a(n) = Product_{1 <= j <= k <= n} (k^2 + j^2).
+A306907	prodsi2	0	Z.valueOf(j*k + 1)	for (int k = 0; k <= mN; ++k) {	for (int j = 0; j <= mN; ++j) {		a(n) = Product_{i=0..n, j=0..n, k=0..n} (i*j*k + 1).
+A203511	prodsi2	0	Z.valueOf((k*(k + 1) + j*(j + 1))/2)	for (int k = 2; k <= mN; ++k) {	for (int j = 1; j <= k - 1; ++j) {		a(n) = Product_{1 <= i < j <= n} (t(i) + t(j)); t = A000217 = triangular numbers.
+A140210	prodsid	1	Z.valueOf(d)	for (final Z dd : Cheetah.factor(mN).divisors()) { 	a(n) = Product_{h == 1 (mod 4) and h|n} h.
+A140211	prodsid	1	Z.valueOf(d)	for (final Z dd : Cheetah.factor(mN).divisors()) { 	a(n) = Product_{d == 3 (mod 4) and d|n} d.
+A140214	prodsid	1	Z.valueOf(d)	for (final Z dd : Cheetah.factor(mN).divisors()) { 	a(n) = Product_{h == 5 (mod 6) and h|n} h.
+
+A058807	prodsi	1	irvine.math.z.Stirling.firstKind(mN, k).abs()	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} s(n,k), where s(n,k) is unsigned Stirling number of the first kind. (s(n,k) = number of permutations of n elements which contain exactly k cycles.)
+A056819	prodsid	1	Z.valueOf(mN + 1 - d)	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{k|n} (n+1-k).
+A061778	prodsi	1	Binomial.binomial(mN, j)	for (int j = 1; j <= mN / 2; ++j) {		a(n) = Product_{j=0..floor(n/2)} C(n,j).
+A066842	prodsid	1	Z.valueOf(d).pow(d)	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{k|n} k^k; product is over the positive divisors, k, of n.
+A066987	prodsi	2	irvine.factor.factor.Cheetah.factor(i).sigma().divide(irvine.factor.factor.Cheetah.factor(i).bigOmega())	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} sigma(i)/bigomega(i).
+A066988	prodsi	2	irvine.factor.factor.Cheetah.factor(i).phi().divide(irvine.factor.factor.Cheetah.factor(i).bigOmega())	for (int i = 2; i <= mN; ++i) {		a(n) = Product_{i=2..n} phi(i)/bigomega(i).
+A092287	prodsi2	0	Z.valueOf(j).gcd(Z.valueOf(k))	for (int j = 1; j <= mN; ++j) {	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{j=1..n} Product_{k=1..n} gcd(j,k).
+A224479	prodsi2	0	Z.valueOf(i).gcd(Z.valueOf(k))	for (int k = 1; k <= mN; ++k) {	for (int i = 1; i < k; ++i) {		a(n) = Product_{k=1..n} Product_{i=1..k-1} gcd(k,i).
+
+A098710	prodsid	1	FACTORIAL.factorial(d)	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{k|n} k!.
+A124441	prodgcd1	1	Z.valueOf(k)	for (int k = 1; k <= mN / 2; ++k) {		a(n) = Product_{1<=k<=n/2, gcd(k,n)=1} k.
+A124442	prodgcd1	1	Z.valueOf(k)	for (int k = (mN + 1)/2; k <= mN; ++k) {		a(n) = Product_{ceiling(n/2) <= k <= n, gcd(k,n)=1} k.
+A131553	prodgcd1	1	Z.valueOf(1 + k)	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n, gcd(k,n)=1} (1+k).
+A135396	prodsid	1	FACTORIAL.factorial(mN - d)	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d divides n} (n-d)!.
+# tau(k) = irvine.factor.factor.Cheetah.factor(k).sigma0() 
+# sigma(k) = irvine.factor.factor.Cheetah.factor(k).sigma() 
+# pod(k) = irvine.factor.factor.Cheetah.factor(k).pod() 
+A206032	prodsid	1	Cheetah.factor(dd).sigma()	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d|n} sigma(d) where sigma = A000203.
+A211776	prodsid	1	Cheetah.factor(dd).sigma0()	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d | n} tau(d).
+A247951	prodsi	1	irvine.factor.factor.Cheetah.factor(i).sigma2()	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} sigma_2(i).
+A253901	prodsid	1	FACTORIAL.factorial(d - 1).pow(Mobius.mobius(mN / d))	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d divides n} ((d-1)!)^moebius(n/d).
+A250269	prodsid	1	FACTORIAL.factorial(d).pow(Mobius.mobius(mN / d))	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d divides n} ((d-1)!)^moebius(n/d).
+A275786	prodsid	1	dd.add(1).multiply(dd).divide2()	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d|n} T(d) where T(x) = x*(x+1)/2 = A000217(x) = x-th triangular number.
+A283616	prodsi	1	Z.valueOf(2*mN - 1).mod(Z.valueOf(2*k - 1))	for (int k = irvine.math.IntegerUtils.sqrt(2*mN-1)/2 + 1; k >= 2; --k) {		a(n) = Product_{k=2..floor(sqrt(2n-1)/2)+1} (2n-1) mod (2k-1).
+A308941	prodsi	0	irvine.math.z.Stirling.firstKind(mN, k).abs().multiply(FACTORIAL.factorial(k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} |Stirling1(n,k)| * k!.
+A308942	prodsi	0	irvine.math.z.Stirling.secondKind(mN, k).multiply(FACTORIAL.factorial(k))	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} Stirling2(n,k) * k!.
+A308943	prodsid	1	Binomial.binomial(mN, d)	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d|n} binomial(n,d).
+A309169	prodsid	1	irvine.math.z.Stirling.firstKind(mN, d).abs()	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d|n} |Stirling1(n,d)|.
+A309171	prodsid	1	irvine.math.z.Stirling.secondKind(mN, d)	for (final Z dd : Cheetah.factor(mN).divisors()) {		a(n) = Product_{d|n} Stirling2(n,d).
+A319761	prodsi	0	Z.valueOf(i).pow(irvine.math.z.Stirling.firstKind(mN, i).abs())	for (int i = 1; i <= mN; ++i) {		a(n) = Product_{i=1..n} i^s(n,i), where s is an unsigned Stirling number of the 1st kind.
+A322672	prodsid	1	Cheetah.factor(dd).pod().divide(d)	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} (pod(d)/d) where pod(k) is the product of the divisors of k (A007955).
+A324980	prodsid	1	Cheetah.factor(dd).sigma().multiply(d)	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} (d*sigma(d)) where sigma(k) = the sum of the divisors of k (A000203).
+A324981	prodsid	1	Cheetah.factor(dd).pod().multiply(d)	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} (d*pod(d)) where pod(k) = the product of the divisors of k (A007955).
+A324987	prodsid	1	Cheetah.factor(dd).sigma0().multiply(Cheetah.factor(dd).sigma())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} (tau(d)*sigma(d)) where tau(k) = the number of divisors of k (A000005) and sigma(k) = the sum of the divisors of k (A000203).
+A325030	prodsid	1	Cheetah.factor(dd).sigma().multiply(Cheetah.factor(dd).pod())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} (sigma(d)*pod(d)) where sigma(k) = the sum of the divisors of k (A000203) and pod(k) = the product of the divisors of k (A007955).
+A334491	prodsid	1	Cheetah.factor(dd).sigma().gcd(dd)	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} gcd(d, sigma(d)).
+A334664	prodsid	1	Cheetah.factor(dd).sigma0().gcd(dd)	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} gcd(d, tau(d)).
+A334729	prodsid	1	Cheetah.factor(dd).sigma0().gcd(Cheetah.factor(dd).sigma())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} gcd(tau(d), sigma(d)).
+A334730	prodsid	1	Cheetah.factor(dd).sigma0().gcd(Cheetah.factor(dd).pod())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} gcd(tau(d), pod(d)) where tau(k) is the number of divisors of k (A000005) and pod(k) is the product of divisors of k (A007955).
+A334731	prodsid	1	Cheetah.factor(dd).sigma().gcd(Cheetah.factor(dd).pod())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} gcd(sigma(d), pod(d)) where sigma(k) is the sum of divisors of k (A000203) and pod(k) is the product of divisors of k (A007955).
+A334764	prodsi	1	irvine.factor.factor.Cheetah.factor(2*k - 1).sigma0()	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} d(2*k - 1), where d() is the number of divisors function A000005.
+A334767	prodsi	1	irvine.factor.factor.Cheetah.factor(2*k).sigma0()	for (int k = 1; k <= mN; ++k) {		a(n) = Product_{k=1..n} d(2*k), where d() is the number of divisors function A000005.
+A334795	prodsid	1	Cheetah.factor(dd).sigma0().lcm(dd)	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} lcm(d, tau(d)) where tau(k) is the number of divisors of k (A000005).
+A334805	prodsid	1	Cheetah.factor(dd).sigma().lcm(dd)	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} lcm(d, sigma(d)) where sigma(k) is the sum of divisors of k (A000203).
+A334806	prodsid	1	Cheetah.factor(dd).sigma0().lcm(Cheetah.factor(dd).sigma())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} lcm(tau(d), sigma(d)) where tau(k) is the number of divisors of k (A000005) and sigma(k) is the sum of divisors of k (A000203).
+A334807	prodsid	1	Cheetah.factor(dd).sigma0().lcm(Cheetah.factor(dd).pod())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} lcm(tau(d), pod(d)) where tau(k) is the number of divisors of k (A000005) and pod(k) is the product of divisors of k (A007955).
+A334809	prodsid	1	Cheetah.factor(dd).sigma().lcm(Cheetah.factor(dd).pod())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} lcm(sigma(d), pod(d)) where sigma(k) is the sum of divisors of k (A000203) and pod(k) is the product of divisors of k (A007955).

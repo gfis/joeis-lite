@@ -5,7 +5,7 @@
 # 2021-11-25, Georg Fischer
 #
 #:# Usage:
-#:#   perl quotient.pl [-d debug] joeis_names.txt > quotient.gen
+#:#   perl quots.pl [-d debug] joeis_names.txt > quotient.gen
 #-------------------------------------------------
 use strict;
 use integer;
