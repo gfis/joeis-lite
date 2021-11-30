@@ -1,0 +1,57 @@
+# RING.ttab - JoeisExpressionBuilder: Mapping table for PolynomialRing target expressions
+# @(#) $Id$
+# 2021-11-30, Georg Fischer: copied from CR.xpat
+
+0	numb	0	RING.zero()	0
+1	numb	0	RING.one()	0
+01234567	numb	0	RING.monomial(new Q(op1), 0)	0
+
+x	name	0	RING.x()	0
+
++	meth	2	RING.add(op1, op2)	0
+-	meth	2	RING.subtract(op1, op2)	0
+-.	meth	1	RING.negate(op1)	0
+*	meth	2	RING.multiply(op1, op2, mN)	0
+/	meth	2	RING.series(op1, op2, mN)	0
+^	meth	2	RING.exp(RING.multiply(RING.log(op1, mN), op2, mN), mN)	0
+
+exp)	func	1	RING.exp(op1, mN)	0
+log)	func	1	RING.log(op1, mN)	0
+sqrt)	func	1	RING.sqrt(op1, mN)	0
+sin)	func	1	RING.sin(op1, mN)	0
+cos)	func	1	RING.cos(op1, mN)	0
+tan)	func	1	RING.tan(op1, mN)	1
+cot)	func	1	RING.cot(op1, mN)	1
+sec)	func	1	RING.sec(op1, mN)	0
+csc)	func	1	RING.csc(op1, mN)	0
+arcsin)	func	1	RING.asin(op1, mN)	1
+arccos)	func	1	RING.acos(op1, mN)	1
+arctan)	func	1	RING.atan(op1, mN)	1
+arccot)	func	1	RING.acot(op1, mN)	1
+arcsec)	func	1	RING.asec(op1, mN)	1
+arccsc)	func	1	RING.acsc(op1, mN)	1
+asin)	func	1	RING.asin(op1, mN)	1
+acos)	func	1	RING.acos(op1, mN)	1
+atan)	func	1	RING.atan(op1, mN)	1
+acot)	func	1	RING.acot(op1, mN)	1
+asec)	func	1	RING.asec(op1, mN)	1
+acsc)	func	1	RING.acsc(op1, mN)	1
+sinh)	func	1	RING.sinh(op1, mN)	1
+cosh)	func	1	RING.cosh(op1, mN)	1
+tanh)	func	1	RING.tanh(op1, mN)	1
+coth)	func	1	RING.coth(op1, mN)	1
+sech)	func	1	RING.sech(op1, mN)	1
+csch)	func	1	RING.csch(op1, mN)	1
+cosech)	func	1	RING.csch(op1, mN)	1
+arcsinh)	func	1	RING.asinh(op1, mN)
+arccosh)	func	1	RING.acosh(op1, mN)
+arctanh)	func	1	RING.atanh(op1, mN)
+arccoth)	func	1	RING.acoth(op1, mN)
+arcsech)	func	1	RING.asech(op1, mN)
+arccsch)	func	1	RING.acsch(op1, mN)
+arsinh)	func	1	RING.asinh(op1, mN)
+arcosh)	func	1	RING.acosh(op1, mN)
+artanh)	func	1	RING.atanh(op1, mN)
+arcoth)	func	1	RING.acoth(op1, mN)
+arsech)	func	1	RING.asech(op1, mN)
+arcsch)	func	1	RING.acsch(op1, mN)

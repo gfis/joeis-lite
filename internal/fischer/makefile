@@ -4302,6 +4302,12 @@ FiniteSequence:
 	make run PATTERN=$@
 #-----------------------------
 egf: egf1 egf2
+egf0:
+	grep -E "^\#[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
+	| cut -b4- \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 egf1:
 	grep -E "^\%[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
 	| cut -b4- \
@@ -4311,8 +4317,35 @@ egf1:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-egf2:
 #----
+egfsi0: egfsi1 egfsi2
+egfsi1:
+	grep -E "^\%[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
+	| cut -b4- \
+	| perl egfsi.pl \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+egfsi2:
+	$(JPREP) -p RING.ttab -f egfsi1.tmp -cc trans \
+	>        $@.tmp
+	grep -E  "\?" $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+egfsi:
+	grep -Ev "\?" egfsi2.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+egfsim: # simple e.g.f.s, manually, *.pl because of bracketing
+	grep -E "^A[0-9]" $@.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 genf1:
 	cp  $(LINREC)/catgf2.txt catgf2.txt
 	make notin_joeis LIST=catgf2.txt
