@@ -7,6 +7,9 @@
 01234567	numb	0	RING.monomial(new Q(op1), 0)	0
 
 x	name	0	RING.x()	0
+half	name	0	Q.HALF	0
+third	name	0	Q.ONE_THIRD	0
+quarter	name	0	Q.ONE_QUARTER	0
 
 +	meth	2	RING.add(op1, op2)	0
 -	meth	2	RING.subtract(op1, op2)	0
@@ -14,6 +17,7 @@ x	name	0	RING.x()	0
 *	meth	2	RING.multiply(op1, op2, mN)	0
 /	meth	2	RING.series(op1, op2, mN)	0
 ^	meth	2	RING.exp(RING.multiply(RING.log(op1, mN), op2, mN), mN)	0
+^n	meth	2	RING.pow(op1, op2, mN)	0
 
 exp)	func	1	RING.exp(op1, mN)	0
 log)	func	1	RING.log(op1, mN)	0
@@ -21,9 +25,9 @@ sqrt)	func	1	RING.sqrt(op1, mN)	0
 sin)	func	1	RING.sin(op1, mN)	0
 cos)	func	1	RING.cos(op1, mN)	0
 tan)	func	1	RING.tan(op1, mN)	1
-cot)	func	1	RING.cot(op1, mN)	1
+cot)	func	1	RING.series(RING.one(), RING.tan(op1, mN), mN)	1
 sec)	func	1	RING.sec(op1, mN)	0
-csc)	func	1	RING.csc(op1, mN)	0
+csc)	func	1	RING.series(RING.one(), RING.sin(op1, mN), mN)	0
 arcsin)	func	1	RING.asin(op1, mN)	1
 arccos)	func	1	RING.acos(op1, mN)	1
 arctan)	func	1	RING.atan(op1, mN)	1
@@ -39,10 +43,10 @@ acsc)	func	1	RING.acsc(op1, mN)	1
 sinh)	func	1	RING.sinh(op1, mN)	1
 cosh)	func	1	RING.cosh(op1, mN)	1
 tanh)	func	1	RING.tanh(op1, mN)	1
-coth)	func	1	RING.coth(op1, mN)	1
+coth)	func	1	RING.series(RING.one(), RING.tanh(op1, mN), mN)	1
 sech)	func	1	RING.sech(op1, mN)	1
-csch)	func	1	RING.csch(op1, mN)	1
-cosech)	func	1	RING.csch(op1, mN)	1
+csch)	func	1	RING.series(RING.one(), RING.sinh(op1, mN), mN)	0
+cosech)	func	1	RING.series(RING.one(), RING.sinh(op1, mN), mN)	0
 arcsinh)	func	1	RING.asinh(op1, mN)
 arccosh)	func	1	RING.acosh(op1, mN)
 arctanh)	func	1	RING.atanh(op1, mN)

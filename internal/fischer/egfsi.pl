@@ -10,25 +10,41 @@
 use strict;
 use integer;
 
-my ($aseqno, $cc, $name);
-my ($ok, $offset);
+my ($aseqno, $cc, $name, $nok, $offset);
 
 while (<>) {
-    s{ (Expansion of e|E)\.g\.f\.\:? *}{\tegfsi\t0\t};
-    ($aseqno, $cc, $offset, $name) = split(/\t/);
-    next if ($name =~ m{for|of|satis|where|column|Lambert|Root|Sum|Prod|[EPRIjklmy\!\;\:]|A\(|\^\^|e\^|\.\.\.|\)\=});
-    $name =~ s{\..*}{}; # remove all after a dot
-    $name =~ s{\s+\Z}{}; # chompr
-    $ok = 0;
-    if (1) {
-        $name =~ s{(\d+)([t-z])}{$1\*$2}g;
-        $ok = 1;
-        if ($ok) {
-            print        join("\t", $aseqno, $cc, $offset, $name, $name) . "\n";
+    if (s{\A(A\d+) +(Expansion of e|E|e)\.g\.f\.\:? *(\w\(\w\)\=|\=)? *}{$1\tegfsi\t0\t}) {
+        s/\s+\Z//; # chompr
+        ($aseqno, $cc, $offset, $name) = split(/\t/);
+        $name = " $name "; # shield for (\W)
+        next if ($name =~ m{\!|for|of|satis|where|column|hypergeo|\dF\d|Lambert|Root|Sum|Prod|reversion|series|A\(|\^\^|\.\.\.|\)\=}i);
+        $name =~ s{[\.\;\:\_].*}{}; # remove all after a [.;:_]
+        $name =~ s{\s+\Z}{}; # chompr
+        $nok = 0;
+        $name =~ s{([^A-Za-z])e([^A-Za-z])}  {${1}exp(1)$2}g;   # e -> exp(1)
+        $name =~ s{(\d+)([a-z])}             {$1\*$2}g;         # 2x -> 2*x
+        $name =~ s{(\d+)\(}                  {$1\*\(}g;         # 2( -> 2*(
+        $name =~ s{\)\(}                     {\)\*\(}g;         # )( -> )*(
+        $name =~ tr{\{\[\]\}}                {\(\(\)\)};        # [] {} -> ()
+        my %hash = (); # for count of single letter variables
+        my $last_var = "x";
+        map { 
+            $last_var = $_;
+            $hash{$last_var} = 1;
+            } "/$name/" =~ m{\W([a-z])\W}g; 
+        if (scalar(%hash) > 1) { # count > 1
+            $nok = join(",", sort(keys(%hash)));
         } else {
-            print STDERR join("\t", $aseqno, $cc, $offset, $name) . "\n";
+            $name =~ s{([^A-Za-z])$last_var([^A-Za-z])}{${1}x$2}g;  
         }
-    } # null
+        $name =~ s{\A\s+}{}; # unshield
+        $name =~ s{\s+\Z}{};
+        if ($nok eq 0) {
+            print        join("\t", $aseqno, $cc       , $offset, $name, $name) . "\n";
+        } else {
+            print STDERR join("\t", $aseqno, "$cc=$nok", $offset, $name) . "\n";
+        }
+    } # if e.g.f.
 } # while <>
 __DATA__
 A052296 E.g.f.: Sum(exp(y*((1+x)^n-1))*y^n/n!, n = 0 .. infinity). - _Vladeta Jovovic_, May 28 2004

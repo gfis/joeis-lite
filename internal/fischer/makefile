@@ -4318,7 +4318,7 @@ egf1:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #----
-egfsi0: egfsi1 egfsi2
+egfsi0: egfsi1 egfsi2 egfsi3 egfsi4
 egfsi1:
 	grep -E "^\%[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
 	| cut -b4- \
@@ -4328,13 +4328,31 @@ egfsi1:
 	head -n4 $@.tmp
 	wc -l    $@*.tmp
 egfsi2:
-	$(JPREP) -p RING.ttab -f egfsi1.tmp -cc trans \
+	$(JPREP) -p RING.ttab -f egfsi1.tmp -cc post1 \
+	>        $@.1.tmp
+	grep -E  "\?" $@.1.tmp > $@.rest.tmp || :
+	grep -vE "\?" $@.1.tmp > $@.tmp || :
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+egfsi3:
+	perl ring_improve.pl egfsi2.tmp \
 	>        $@.tmp
-	grep -E  "\?" $@.tmp
+	grep -E  "\?" $@.tmp || :
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+ring_improve_test:
+	grep -E "^A[0-9]" ring_improve.pl
+	perl ring_improve.pl ring_improve.pl        | tee $@.1.tmp
+	$(JPREP) -p RING.ttab -f $@.1.tmp -cc trans | tee $@.2.tmp
+egfsi4:
+	$(JPREP) -p RING.ttab -f egfsi3.tmp -cc trans \
+	>        $@.1.tmp
+	grep -E  "\?" $@.1.tmp > $@.rest.tmp || :
+	grep -vE "\?" $@.1.tmp > $@.tmp || :
 	head -n4 $@.tmp
 	wc -l    $@*.tmp
 egfsi:
-	grep -Ev "\?" egfsi2.tmp \
+	grep -Ev "\?" egfsi4.tmp \
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
