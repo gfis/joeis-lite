@@ -21,7 +21,9 @@ quarter	name	0	Q.ONE_QUARTER	0
 
 exp)	func	1	RING.exp(op1, mN)	0
 log)	func	1	RING.log(op1, mN)	0
-sqrt)	func	1	RING.sqrt(op1, mN)	0
+# sqrt)	func	1	RING.sqrt(op1, mN)	0
+# sqrt)	func	1	RING.pow(op1, Q.HALF, mN)	0
+sqrt)	func	1	RING.exp(RING.multiply(RING.log(op1, mN), RING.monomial(Q.HALF, 0), mN), mN)	0
 sin)	func	1	RING.sin(op1, mN)	0
 cos)	func	1	RING.cos(op1, mN)	0
 tan)	func	1	RING.tan(op1, mN)	1

@@ -10,17 +10,21 @@
 use strict;
 use integer;
 
-my ($aseqno, $cc, $name, $nok, $offset);
+my ($aseqno, $callcode, $name, $nok, $offset, $abs);
 
 while (<>) {
     if (s{\A(A\d+) +(Expansion of e|E|e)\.g\.f\.\:? *(\w\(\w\)\=|\=)? *}{$1\tegfsi\t0\t}) {
         s/\s+\Z//; # chompr
-        ($aseqno, $cc, $offset, $name) = split(/\t/);
+        ($aseqno, $callcode, $offset, $name) = split(/\t/);
         $name = " $name "; # shield for (\W)
-        next if ($name =~ m{\!|for|of|satis|where|column|hypergeo|\dF\d|Lambert|Root|Sum|Prod|reversion|series|A\(|\^\^|\.\.\.|\)\=}i);
+        $abs  =  ($name =~ s{\,? *absolute( values)?}{}) ? ".abs()" : "";
+        if ($name =~ s{(\(|\, )?(even|odd) (powers|indexed terms|terms) only\)?}{}) {
+            $callcode .= substr($2, 0, 1); # "e" or "o"
+        }
+        next if ($name =~ m{\!|for|of|satis|where|column|hypergeo|\dF\d|Lambert|Root|Sum|Prod|reversion|series|\^\^|\.\.\.}i);
+        $nok  =  0;
         $name =~ s{[\.\;\:\_].*}{}; # remove all after a [.;:_]
         $name =~ s{\s+\Z}{}; # chompr
-        $nok = 0;
         $name =~ s{([^A-Za-z])e([^A-Za-z])}  {${1}exp(1)$2}g;   # e -> exp(1)
         $name =~ s{(\d+)([a-z])}             {$1\*$2}g;         # 2x -> 2*x
         $name =~ s{(\d+)\(}                  {$1\*\(}g;         # 2( -> 2*(
@@ -40,9 +44,9 @@ while (<>) {
         $name =~ s{\A\s+}{}; # unshield
         $name =~ s{\s+\Z}{};
         if ($nok eq 0) {
-            print        join("\t", $aseqno, $cc       , $offset, $name, $name) . "\n";
+            print        join("\t", $aseqno, $callcode       , $offset, $name, $abs, $name) . "\n";
         } else {
-            print STDERR join("\t", $aseqno, "$cc=$nok", $offset, $name) . "\n";
+            print STDERR join("\t", $aseqno, "$callcode=$nok", $offset, $name) . "\n";
         }
     } # if e.g.f.
 } # while <>
