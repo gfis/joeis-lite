@@ -1,5 +1,6 @@
 # RING.ttab - JoeisExpressionBuilder: Mapping table for PolynomialRing target expressions
 # @(#) $Id$
+# 2021-12-02: reverse(op1)
 # 2021-11-30, Georg Fischer: copied from CR.xpat
 
 0	numb	0	RING.zero()	0
@@ -19,11 +20,13 @@ quarter	name	0	Q.ONE_QUARTER	0
 ^	meth	2	RING.exp(RING.multiply(RING.log(op1, mN), op2, mN), mN)	0
 ^n	meth	2	RING.pow(op1, op2, mN)	0
 
+reverse)	func	1	RING.reverse(op1, mN)	0
 exp)	func	1	RING.exp(op1, mN)	0
 log)	func	1	RING.log(op1, mN)	0
 # sqrt)	func	1	RING.sqrt(op1, mN)	0
 # sqrt)	func	1	RING.pow(op1, Q.HALF, mN)	0
-sqrt)	func	1	RING.exp(RING.multiply(RING.log(op1, mN), RING.monomial(Q.HALF, 0), mN), mN)	0
+# sqrt)	func	1	RING.exp(RING.multiply(RING.log(op1, mN), RING.monomial(Q.HALF, 0), mN), mN)	0
+sqrt)	func	1	RING.sqrt1p(RING.subtract(op1, RING.one()), mN)	0
 sin)	func	1	RING.sin(op1, mN)	0
 cos)	func	1	RING.cos(op1, mN)	0
 tan)	func	1	RING.tan(op1, mN)	1

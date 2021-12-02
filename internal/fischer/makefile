@@ -180,7 +180,12 @@ podel: # CC= delete and export again
 	$(DBAT) -n         seq4
 	$(DBAT) -x -444444 seq4 > $(CC).gen
 bfresh: # CC=
-	cd $(COMMON) ; make bfresh 
+	cd $(COMMON) ; make bfresh
+#--
+poeis_check:
+	$(DBAT) -x "SELECT LOWER(SUBSTR(aseqno, 1, 4)) || '/' || aseqno || '.java' FROM poeis ORDER BY 1" \
+	| sed -e "s/\r//" > x.tmp
+	cat x.tmp | xargs -l -innn diff -w -y --suppress-common-lines ../../../joeis/src/irvine/oeis/nnn ../../src/irvine/oeis/nnn
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
@@ -469,6 +474,9 @@ a0330:
 #----
 A000301: # 2021-09-29
 	cp -v $@.man $@.gen
+#----
+A005754: # 2021-12-02  
+	grep -E "^A[0-9]" $@.man > $@.gen
 #----
 A007348: # < 2021-05-15
 	perl $@.pl > $@.gen

@@ -62,3 +62,4 @@ A109570	egfsi	0	RING.series(RING.x(), RING.subtract(RING.one(), RING.sinh(RING.x
 A109572	egfsi	0	RING.series(RING.x(), RING.subtract(RING.one(), RING.tan(RING.x(), mN)), mN)	x/[1-tan(x)] 
 
 A052882	egfsi	0	RING.series(RING.x(), RING.subtract(RING.monomial(new Q(2), 0), RING.exp(RING.x(), mN)), mN)	x/(2-exp(x))
+A052892	egfsi	0	RING.reversion(RING.multiply(RING.log1p(RING.x(), mN), RING.oneMinusXToTheN(1), mN), mN)		reversion of log(1+x)*(1-x).
