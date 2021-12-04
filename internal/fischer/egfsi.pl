@@ -13,7 +13,7 @@ use integer;
 my ($aseqno, $callcode, $name, $nok, $offset, $abs);
 
 while (<>) {
-    if (s{\A(A\d+) +(Expansion of e|E|e)\.g\.f\.\:? *(\w\(\w\)\=|\=)? *}{$1\tegfsi\t0\t}) {
+    if (s{\A(A\d+) +(Expansion of e|E|e)\.g\.f\.( ?\([^\)]+\) ?)?\:? *(\w\(\w\)\=|\=)? *}{$1\tegfsi\t0\t}) {
         s/\s+\Z//; # chompr
         ($aseqno, $callcode, $offset, $name) = split(/\t/);
         $name = " $name "; # shield for (\W)
@@ -21,28 +21,32 @@ while (<>) {
         if ($name =~ s{(\(|\, )?(even|odd) (powers|indexed terms|terms) only\)?}{}) {
             $callcode .= substr($2, 0, 1); # "e" or "o"
         }
-        next if ($name =~ m{\!|for|of|satis|where|column|hypergeo|\dF\d|Lambert|Root|Sum|Prod|reversion|series|\^\^|\.\.\.}i);
         $nok  =  0;
-        $name =~ s{[\.\;\:\_].*}{}; # remove all after a [.;:_]
-        $name =~ s{\s+\Z}{}; # chompr
-        $name =~ s{([^A-Za-z])e([^A-Za-z])}  {${1}exp(1)$2}g;   # e -> exp(1)
-        $name =~ s{(\d+)([a-z])}             {$1\*$2}g;         # 2x -> 2*x
-        $name =~ s{(\d+)\(}                  {$1\*\(}g;         # 2( -> 2*(
-        $name =~ s{\)\(}                     {\)\*\(}g;         # )( -> )*(
-        $name =~ tr{\{\[\]\}}                {\(\(\)\)};        # [] {} -> ()
-        my %hash = (); # for count of single letter variables
-        my $last_var = "x";
-        map { 
-            $last_var = $_;
-            $hash{$last_var} = 1;
-            } "/$name/" =~ m{\W([a-z])\W}g; 
-        if (scalar(%hash) > 1) { # count > 1
-            $nok = join(",", sort(keys(%hash)));
+        if ($name =~ m{(\!|for|of|satis|where|column|hypergeo|\dF\d|Lambert|Root|Sum|Prod|reversion|series|\^\^|\.\.\.)}i) {
+            $nok = $1;
         } else {
-            $name =~ s{([^A-Za-z])$last_var([^A-Za-z])}{${1}x$2}g;  
+            $name =~ s{[\.\;\:\_].*}{}; # remove all after a [.;:_]
+            $name =~ s{\s+\Z}{}; # chompr
+            $name =~ s{([^A-Za-z])e\^x([^A-Za-z])}{${1}exp(x)$2}g;   # e^x -> exp(x)
+            $name =~ s{([^A-Za-z])e([^A-Za-z])}   {${1}exp(1)$2}g;   # e -> exp(1)
+            $name =~ s{(\d+)([a-z])}              {$1\*$2}g;         # 2x -> 2*x
+            $name =~ s{(\d+)\(}                   {$1\*\(}g;         # 2( -> 2*(
+            $name =~ s{\)\(}                      {\)\*\(}g;         # )( -> )*(
+            $name =~ tr{\{\[\]\}}                 {\(\(\)\)};        # [] {} -> ()
+            my %hash = (); # for count of single letter variables
+            my $last_var = "x";
+            map { 
+                $last_var = $_;
+                $hash{$last_var} = 1;
+                } "/$name/" =~ m{\W([a-z])\W}g; 
+            if (scalar(%hash) > 1) { # count > 1
+                $nok = join(",", sort(keys(%hash)));
+            } else {
+                $name =~ s{([^A-Za-z])$last_var([^A-Za-z])}{${1}x$2}g;  
+            }
+            $name =~ s{\A\s+}{}; # unshield
+            $name =~ s{\s+\Z}{};
         }
-        $name =~ s{\A\s+}{}; # unshield
-        $name =~ s{\s+\Z}{};
         if ($nok eq 0) {
             print        join("\t", $aseqno, $callcode       , $offset, $name, $abs, $name) . "\n";
         } else {

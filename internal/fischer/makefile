@@ -605,6 +605,9 @@ A095425:
 A105471: # 2021-08-15
 	grep -E "^A[0-9]" $@.man > $@.gen
 #----
+A105479: # 2021-12-04
+	grep -E "^A[0-9]" $@.man > $@.gen
+#----
 A115422: # 2021-11-15
 	grep -E "^A[0-9]" $@.man > $@.gen
 #----
@@ -4363,6 +4366,43 @@ egfsi4:
 	wc -l    $@*.tmp
 egfsi:
 	grep -Ev "\?" egfsi4.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+egfu0: egfu1 egfu2 egfu3 egfu4
+egfu1:
+	grep -E "^\%[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
+	| cut -b4- \
+	| perl egfsi.pl \
+	2>       $@.rest.tmp \
+	| sed -e "s/\tegfsi/\tegfu/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+egfu2:
+	$(JPREP) -p RING.ttab -f egfu1.tmp -cc post1 \
+	>        $@.1.tmp
+	grep -E  "\?" $@.1.tmp > $@.rest.tmp || :
+	grep -vE "\?" $@.1.tmp > $@.tmp || :
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+egfu3:
+	perl ring_improve.pl egfu2.tmp \
+	>        $@.tmp
+	grep -E  "\?" $@.tmp || :
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+egfu4:
+	$(JPREP) -p RING.ttab -f egfu3.tmp -cc trans \
+	>        $@.1.tmp
+	grep -E  "\?" $@.1.tmp > $@.rest.tmp || :
+	grep -vE "\?" $@.1.tmp > $@.tmp || :
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+egfu:
+	grep -Ev "\?" egfu4.tmp \
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen

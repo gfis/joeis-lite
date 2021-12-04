@@ -1,0 +1,14 @@
+# mLeaves:=6;
+# b:= proc(n, i) option remember; `if`(n=0, 1, `if`(i<1, 0,
+#       add(binomial(mLeaves*b((i-1)$2), j)*b(n-i*j, i-1), j=0..n/i)))
+#     end:
+# g:= proc(n, i) option remember; `if`(n=0, 1, `if`(i<1, 0,
+#       add(binomial(b((i-1)$2), j)*g(n-i*j, i-1), j=0..n/i)))
+#     end:
+# a:= n-> g((n-1)$2):
+# seq(a(n), n=1..30);
+# 
+A005754	parm2	0	A005754	2
+A052755	parm2	0	A005754	3
+A052775	parm2	0	A005754	4
+A052798	parm2	0	A005754	5
