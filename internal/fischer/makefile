@@ -759,6 +759,12 @@ A257606:
 #--------
 a266759:
 	grep -P "\-1\,2\,\-2\,1\,"  $(COMMON)/asdata.txt | grep -P "\,1\,0\,0\,\-1\," || :
+#----
+A289064: # 2021-12-05
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #================================
 # A126358 Number of base 4 n-digit numbers with adjacent digits differing by one or less
 adjacent:
@@ -4382,6 +4388,7 @@ egfu1:
 	head -n4 $@.tmp
 	wc -l    $@*.tmp
 egfu2:
+	cat egfum.man >> egfu1.tmp
 	$(JPREP) -p RING.ttab -f egfu1.tmp -cc post1 \
 	>        $@.1.tmp
 	grep -E  "\?" $@.1.tmp > $@.rest.tmp || :

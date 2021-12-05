@@ -1,0 +1,16 @@
+A289064	parm5	0	A289064	1	-1	0	0	Recurrence a(n+2) = Sum_{k=0..n} binomial(n,k)*a(k)*a(n+1-k) with a(0)=1, a(1)=-1.	sign,	0..200	nyi
+A289065	parm5	0	A289064	2	-1	0	0	Recurrence a(n+2) = Sum_{k=0..n} binomial(n,k)*a(k)*a(n+1-k) with a(0)=2, a(1)=-1.	sign,	0..200	nyi
+A289066	parm5	0	A289064	3	1	0	0	Recurrence a(n+2) = Sum_{k=0..n} binomial(n,k)*a(k)*a(n+1-k) with a(0)=3, a(1)=1.	nonn,	0..200	nyi
+A289067	parm5	0	A289064	3	-1	0	0	Recurrence a(n+2) = Sum_{k=0..n} binomial(n,k)*a(k)*a(n+1-k) with a(0)=3, a(1)=-1.	sign,	0..200	nyi
+A289068	parm5	0	A289064	1	-2	0	0	Recurrence a(n+2) = Sum_{k=0..n} binomial(n,k)*a(k)*a(n+1-k) with a(0)=1, a(1)=-2.	sign,changed,	0..200	nyi
+A289069	parm5	0	A289064	3	-2	0	0	Recurrence a(n+2) = Sum_{k=0..n} binomial(n,k)*a(k)*a(n+1-k) with a(0)=3, a(1)=-2.	sign,changed,	0..200	nyi
+A289070	parm5	0	A289064	0	3	0	0	a(n) = c(2n-1), where c(n+2) = Sum_{k=0..n} binomial(n,k)c(k)c(n+1-k) with c(0)=0, c(1)=3.	nonn,	1..100	nyi
+A289082	parm5	0	A289064	1	0	1	0	Real parts of the recursive sequence a(n+2) = Sum_{k=0..n} binomial(n,k)*a(k)*a(n+1-k), with a(0)=1, a(1)=i.	sign,changed,	0..200	nyi
+A289083	parm5	0	A289064	1	0	1	1	Imaginary parts of the recursive sequence a(n+2) = Sum_{k=0..n} binomial(n,k)*a(k)*a(n+1-k), with a(0)=1, a(1)=i.	sign,changed,	0..200	nyi
+A289084	parm5	0	A289064	2	0	1	0	Real parts of the recursive sequence a(n+2) = Sum_{k=0..n} binomial(n,k)a(k)a(n+1-k), with a(0)=2, a(1)=i.	sign,	0..200	nyi
+A289085	parm5	0	A289064	2	0	1	1	Imaginary parts of the recursive sequence a(n+2) = Sum_{k=0..n} binomial(n,k)a(k)a(n+1-k), with a(0)=2, a(1)=i.	sign,	0..200	nyi
+A289086	parm5	0	A289064	1	0	2	0	Real parts of the recursive sequence a(n+2) = Sum_{k=0..n} binomial(n,k)a(k)a(n+1-k), with a(0)=1, a(1)=2i.	sign,	0..200	nyi
+A289087	parm5	0	A289064	1	0	2	1	Imaginary parts of the recursive sequence a(n+2) = Sum_{k=0..n} binomial(n,k)a(k)a(n+1-k), with a(0)=1, a(1)=2i.	sign,	0..200	nyi
+A289088	parm5	0	A289064	2	0	2	0	Real parts of the recursive sequence a(n+2) = Sum_{k=0..n} binomial(n,k)a(k)a(n+1-k), with a(0)=2, a(1)=2i.	sign,	0..200	nyi
+A289089	parm5	0	A289064	2	0	2	1	Imaginary parts of the recursive sequence a(n+2) = Sum_{k=0..n} binomial(n,k)a(k)a(n+1-k), with a(0)=2, a(1)=2i.	sign,	0..200	nyi
+
