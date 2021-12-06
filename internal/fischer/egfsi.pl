@@ -11,9 +11,11 @@ use strict;
 use integer;
 
 my ($aseqno, $callcode, $name, $nok, $offset, $abs);
+my @fact = (1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880); # 0! .. 9!
 
 while (<>) {
-    if (s{\A(A\d+) +(Expansion of e|E|e)\.g\.f\.( ?\([^\)]+\) ?)?\:? *(\w\(\w\)\=|\=)? *}{$1\tegfsi\t0\t}) {
+    if (0) {
+    } elsif (s{\A(A\d+) +(Expansion of e|E|e)\.g\.f\.( ?\([^\)]+\) ?)?\:? *(\w\(\w\)\=|\=)? *}{$1\tegfsi\t0\t}) {
         s/\s+\Z//; # chompr
         ($aseqno, $callcode, $offset, $name) = split(/\t/);
         $name = " $name "; # shield for (\W)
@@ -21,6 +23,8 @@ while (<>) {
         if ($name =~ s{(\(|\, )?(even|odd) (powers|indexed terms|terms) only\)?}{}) {
             $callcode .= substr($2, 0, 1); # "e" or "o"
         }
+        $name     =~ s{(\D)(\d)\!}                {"$1" . $fact[$2]}eg; # replace small factorials
+        $name     =~ s{Series_Reversion|Revert}   {reverse}ig;
         $nok  =  0;
         if ($name =~ m{(\!|for|of|satis|where|column|hypergeo|\dF\d|Lambert|Root|Sum|Prod|reversion|series|\^\^|\.\.\.)}i) {
             $nok = $1;
@@ -47,12 +51,16 @@ while (<>) {
             $name =~ s{\A\s+}{}; # unshield
             $name =~ s{\s+\Z}{};
         }
-        if ($nok eq 0) {
-            print        join("\t", $aseqno, $callcode       , $offset, $name, $abs, $name) . "\n";
-        } else {
-            print STDERR join("\t", $aseqno, "$callcode=$nok", $offset, $name) . "\n";
-        }
-    } # if e.g.f.
+        # if e.g.f.
+    } elsif (0) {
+    } else {
+      $nok = -1; # irrelevant
+    }
+    if ($nok eq 0) {
+        print        join("\t", $aseqno, $callcode       , $offset, $name, $abs, $name) . "\n";
+    } elsif ($nok ne "-1") {
+        print STDERR join("\t", $aseqno, "$callcode=$nok", $offset, $name) . "\n";
+    }
 } # while <>
 __DATA__
 A052296 E.g.f.: Sum(exp(y*((1+x)^n-1))*y^n/n!, n = 0 .. infinity). - _Vladeta Jovovic_, May 28 2004

@@ -570,6 +570,9 @@ wraptr3:
 A072921:
 	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen
+A075497:
+	grep -E "^A" $@.man > $@.gen
+	wc -l    $@.gen
 A094969:
 	cat $(COMMON)/joeis_names.txt \
 	| perl -ne 'my $$aseqno = substr($$_, 0, 7); if (m{[Ff]loor\((\d+)\^n\/(\d+)\^n\)\.}) {'\
@@ -717,6 +720,10 @@ A194368: # Numbers m such that Sum_{k=1..m} (<1/2 + k*r> - <k*r>) = 0, where r=s
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+A200313: # 2021-12-06
+	grep -E "^A[0-9]" $@.man > $@.gen
+	wc -l    $@.gen
+#----
 A202670: # self-fusion matrices = correlation triangles
 	cd $(TRIREC); make trigB
 	grep trig_b1 $(TRIREC)/trigB.tmp \
@@ -740,15 +747,17 @@ A216703: # 2021-11-17 EFF+2
 	wc -l    $@.gen
 #----
 A231503: # 2021-11-19
-	grep -E "^A[0-9]" $@.man \
-	>        $@.gen
-	head -n4 $@.gen
+	grep -E "^A[0-9]" $@.man > $@.gen
 	wc -l    $@.gen
 #----
 A247750: # Numbers in decimal representation, such that in Czech their digits are in alphabetic order. 
 	grep -E "^A[0-9]" $(WORD)/$@.gen \
 	>        $@.gen
 	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+A251693: # 2021-12-06
+	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen
 #--------
 A257606:

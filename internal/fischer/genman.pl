@@ -138,7 +138,7 @@ GFis
         print OUT "\n  protected int mN;\n";
     }
     foreach $pname (@pnames) { # member properties
-        print OUT "  protected long m" . ucfirst($pname) . ";\n";
+        print OUT "  protected int m" . ucfirst($pname) . ";\n";
     } # foreach member property
     #--------
     print OUT <<"GFis"; # start of empty constructor
@@ -172,7 +172,7 @@ GFis
         print OUT "  public $aseqno";
         $sep = "(";
         foreach $pname (@pnames) {
-            print OUT "${sep}final long $pname";
+            print OUT "${sep}final int $pname";
             $sep = ", ";
         }
         print OUT ") {\n";
