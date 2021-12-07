@@ -353,6 +353,7 @@ test1:
 	# ---- $@ CC=$(CC)
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen \
+	| grep -E "^A" \
 	| perl -ne 'print if ! m{\AA\d+\tpseudo\s}; ' > ghead.tmp
 test2:
 	# ---- $@ TO=$(TO)
@@ -4388,7 +4389,7 @@ egfsi:
 #----
 egfu0: egfu1 egfu2 egfu3 egfu4
 egfu1:
-	grep -E "^\%[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
+	grep -E "^\%[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\.|InverseSeries|serreverse" $(COMMON)/jcat25.txt \
 	| cut -b4- \
 	| perl egfsi.pl \
 	2>       $@.rest.tmp \
@@ -4397,7 +4398,7 @@ egfu1:
 	head -n4 $@.tmp
 	wc -l    $@*.tmp
 egfu2:
-	cat egfum.man >> egfu1.tmp
+	grep -E "^A" egfum.man >> egfu1.tmp
 	$(JPREP) -p RING.ttab -f egfu1.tmp -cc post1 \
 	>        $@.1.tmp
 	grep -E  "\?" $@.1.tmp > $@.rest.tmp || :

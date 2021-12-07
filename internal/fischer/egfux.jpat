@@ -15,11 +15,11 @@ public class $(ASEQNO) extends ExponentialGeneratingFunction {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET));
+    super($(OFFSET) + 1);
   }
   
   @Override
   public Polynomial<Q> compute(final int n) {
-    return $(PARM1);
+    return n == 0 ? RING.one() : $(PARM1);
   }
 }

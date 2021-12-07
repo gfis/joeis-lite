@@ -19,7 +19,7 @@ public class $(ASEQNO) extends ExponentialGeneratingFunction {
   }
   
   @Override
-  public Polynomial<Q> compute(final int mN) {
+  public Polynomial<Q> compute(final int n) {
     return $(PARM1);
   }
 }
