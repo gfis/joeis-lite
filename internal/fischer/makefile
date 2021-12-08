@@ -221,7 +221,7 @@ select2: # require not in joeis: JO= (default) / require not in poeis: PO=1 (def
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(s.offset, '0') \
 	    , s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.parm8, s.name \
 	    FROM seq4 s LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
-	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(NJO)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
+	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
 	      AND (s.aseqno NOT IN (SELECT CONCAT('$(PO)', aseqno) FROM poeis)) \
 	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 	    ORDER BY 1" \
@@ -645,6 +645,10 @@ a126043:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+A135799: # 2021-12-08
+	grep -E "^A[0-9]" $@.man > $@.gen
+	wc -l    $@.gen
 #--------
 # A139149	null	A139149 a(n) = (n!+2)/2.
 a139149:
@@ -677,6 +681,11 @@ a157536:
 A161440:
 	grep -E "^A" $@.man \
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
+A162500: # 2021-12-08, RING -> GeneratingFunctionSequence
+	cp -v $@.man $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
@@ -3790,7 +3799,7 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp 
-	# echo -n "binomial"                         > binomx.deris.tmp
+	echo -n "binomial"                         > binomx.deris.tmp
 	# echo -n "characteristic|indicator"         > charfun.deris.tmp
 	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
@@ -3802,7 +3811,7 @@ deris1:
 	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
 	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
 	# echo -n "partial product"                  > partprod.deris.tmp
-	echo -n "partial sum"                      > partsum.deris.tmp
+	# echo -n "partial sum"                      > partsum.deris.tmp
 	# echo -n "prime"                            > primepos.deris.tmp
 	# echo -n "prime"                            > primeval.deris.tmp
 	# echo -n "record"                           > recordpos.deris.tmp
