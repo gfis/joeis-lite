@@ -31,4 +31,4 @@ UPDATE seq4 SET callcode = 'compseq0' WHERE aseqno IN ('A153282','A165991','A219
 DELETE FROM seq4 WHERE aseqno IN ('A214837', 'A226913','A274504'); -- primes; not sorted
 COMMIT;
 -- 2021-09-29
-DELETE FROM seq4 WHERE aseqno IN ('A104406','A278959');
+DELETE FROM seq4 WHERE aseqno IN ('A104406','A278959','A328077');

@@ -11,6 +11,6 @@ public class $(ASEQNO) extends BinomialTransform {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(new $(PARM1)(), $(PARM2), $(PARM3));
+    super(new $(PARM1)(), $(PARM2), true);
   }
 }
