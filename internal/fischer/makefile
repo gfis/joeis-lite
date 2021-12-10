@@ -1303,6 +1303,13 @@ bitoper:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #--------------------------------
+caelem:
+	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
+	| perl -ne 'print if substr($$_, 0, 7) ge "A050000";'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
+#----
 carule0:
 	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \
 	$(COMMON)/joeis_names.txt \
