@@ -1,5 +1,7 @@
 package irvine.oeis.ca;
 
+import java.util.Iterator;
+
 import irvine.math.z.Z;
 import irvine.oeis.Sequence;
 
@@ -18,8 +20,10 @@ public class ElementaryCellularAutomaton implements Sequence {
 
   /** The length of the blocks that are computed respectively retrieved from the table. */
   protected final static int BLOCK_LEN = 8;
+  /** The mask for the highest bit in a block. */
+  protected int mHighMask;
   /** Allocate rows in multiples of this number */
-  protected final static int CHUNK_SIZE = 64;
+  protected final static int CHUNK_SIZE = 16;
   /** Rule number 0..255, cf. ANKOS p. 53 */
   protected int mRule;
   /**
@@ -36,6 +40,8 @@ public class ElementaryCellularAutomaton implements Sequence {
   protected int[] mOldRow;
   /** Buffer for the bits of generation n+1 */
   protected int[] mNewRow;
+  /** Old block to be processed */
+  protected int mOldBlock;
   /** Length of the two rows. */
   protected int mRowLen; //
   /** Index of the block that has the center of the triangle in its lowest bit position */
@@ -55,6 +61,7 @@ public class ElementaryCellularAutomaton implements Sequence {
    * @param code a String specifying the type of the sequence
    */
   public ElementaryCellularAutomaton(final int rule, final String code) {
+  	mHighMask = 1 << (BLOCK_LEN - 1);
     mGen = 0;
     mRule = rule;
     mCode = code;
@@ -65,54 +72,144 @@ public class ElementaryCellularAutomaton implements Sequence {
     mCenter = mRowLen / 2 - 1; // this is the contract; left half in 0..31, right half in 32..63
   }
 
-  /**
-   * Expands both rows by <code>CHUNK_SIZE</code>,
-   * shifts the contents of the old row up, and re-adjusts the center.
-   * This method is called only when the odl row is completely filled.
+  /** 
+   * Iterator over all cells in a row of the triangle.
+   * The iterator scans over {@link #mOldRow} and returns bit positions,
+   * while it maintains the current block {@link #mOldBlock}.
+   * The iterator also extends the rows if necessary
    */
-  public void expandRows() {
-    final int newLen = mRowLen + CHUNK_SIZE;
-    mNewRow = new int[newLen];
-    System.arraycopy(mOldRow, 0, mNewRow, CHUNK_SIZE / 2, mRowLen); // first from [0..63] to [32..95]
-    mRowLen = newLen;
-    mOldRow = mNewRow; // exchange both rows
-    mNewRow = new int[newLen];
-    mCenter = mRowLen / 2 - 1; // contract
+  protected class RowIterator implements Iterator<Integer> {
+    protected int index; 
+    protected int bitPos;
+    protected int endIndex; 
+    protected int endBitPos;
+    
+    /**
+     * Construct the iterator with no rewrite.
+     * Initialize <code>mOldBlock</code>, and the starting and ending indices and bit positions.
+     */
+    protected RowIterator() {
+      final int dist = (mGen + BLOCK_LEN) / BLOCK_LEN;
+      final int bpos = mGen % BLOCK_LEN;
+      endIndex = mCenter + dist;
+      if (endIndex >= mRowLen) {
+        expandRows();
+        endIndex = mCenter + dist;
+      }
+      endBitPos = BLOCK_LEN - 1 - bpos;
+      index = mCenter - dist + 1;
+      mOldBlock = mOldRow[index];
+      bitPos = bpos;
+      if (mDebug > 0) {
+        System.out.println("# RowIterator"
+            + ", mGen="      + mGen
+            + ", index="     + index
+            + ", bitPos="    + bitPos
+            + ", endIndex="  + endIndex
+            + ", endBitPos=" + endBitPos
+            );
+      }
+    }
+    
+    /**
+     * Expands both rows by <code>CHUNK_SIZE</code>,
+     * shifts the contents of the old row up, and re-adjusts the center.
+     * This method is called only when the odl row is completely filled.
+     */
+    private void expandRows() {
+      final int newLen = mRowLen + CHUNK_SIZE;
+      mNewRow = new int[newLen];
+      System.arraycopy(mOldRow, 0, mNewRow, CHUNK_SIZE / 2, mRowLen); // first from [0..63] to [32..95]
+      mRowLen = newLen;
+      mOldRow = mNewRow; // exchange both rows
+      mNewRow = new int[newLen];
+      mCenter = mRowLen / 2 - 1; // contract
+    }
+
+    /**
+     * Gets the current index 
+     * @return <code>mOldRow[index]</code>}.
+     */
+    protected int getIndex() {
+      return index;
+    }
+    
+    /**
+     * Gets the index behind the last block occupied by the triangle.
+     * @return <code>mOldRow[lastIndex]</code>}.
+     */
+    protected int getEndIndex() {
+      return endIndex;
+    }
+    
+    /**
+     * Test whether there is a next cell in the row.
+     * @return true (false) if there is (no) next cell.
+     */
+    public boolean hasNext() {
+      return index < endIndex || bitPos > endBitPos;
+    }
+
+    /**
+     * Gets the bit position of the next cell in <code>mOldBlock</code>.
+     * @return a position between 0 and BLOCK_LEN - 1.
+     */
+    public Integer next() {
+      --bitPos;
+      if (bitPos < 0) {
+        ++index;
+        mOldBlock = mOldRow[index];
+        bitPos = BLOCK_LEN - 1;
+      } 
+      return bitPos;
+    }
   }
 
-   /**
+  /**
    * Displays the old row by using "1" and "." for 0 bits, and " " outside the triangle.
    * @param gen generation number starting with 0 for one black cell.
    * @param width total width of the generated line; must be a multiple of <code>BLOCK_LEN</code> (and of 2).
    */
   public void displayRow(final int gen, final int width) {
-    final int wb2 = width / BLOCK_LEN / 2;
     final StringBuilder sb = new StringBuilder(width);
-    sb.append(' '); // anchor for replacements below
-    for (int irow = mCenter - wb2; irow <= mCenter + wb2; ++irow) {
-      sb.append(String.format("%" + BLOCK_LEN + "s", Integer.toBinaryString(mOldRow[irow])));
+    final RowIterator riter = new RowIterator();
+    while (riter.hasNext()) {
+      final int bitPos = riter.next();
+      sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '\u2588' : '\u2591');
+  //  sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '.' : 'X');
     }
-    final String result = sb.toString()
-        .replaceAll("[ 0]",".") 
-        .replaceAll(" .", "  ") // replace leading dots by spaces
-        .replaceAll(".+\\Z", ""); // replace trailing dots by spaces
-    System.out.println(result.toString());
+    System.out.println(String.format("%3d: %" + String.valueOf(width / 2 - gen) + "s", gen, " ") + sb.toString());
   }
+
+  /**
+   * Computes the new row of the next generation from the old row.
+   */
+  public void computeNextRow() {
+    ++mGen;
+    final RowIterator riter = new RowIterator(); // just to determine the indices at both ends
+    final int start = riter.getIndex();
+    final int end = riter.getEndIndex();
+    int leftBit = 0;
+    int rightBit = (mOldRow[start + 1] & mHighMask) >> (BLOCK_LEN - 1);
+    for (int irow = start; irow < end; ++irow) {
+      mNewRow[irow] = computeNextBlock(mOldRow[irow], leftBit, rightBit);
+      leftBit = mNewRow[irow] & 1;
+      rightBit = (mOldRow[irow + 1] & mHighMask) >> (BLOCK_LEN - 1);
+    }
+    mOldRow = mNewRow;
+    mNewRow = new int[mRowLen];
+  }
+
 
   /**
    * Compute the next generation for a block (an array of cells).
    * @param oldBlock some number of cells, highest bit is leftmost cell.
-   * @param higherBit the bit to the left of the old block
-   * @param lowerBit the bit to the right of the old block
+   * @param leftBit the bit to the left of the old block
+   * @param rightBit the bit to the right of the old block
    * @result the new block
    */
-  protected int computeNextBlock(final int oldBlock, final int higherBit, final int lowerBit) {
-    int block = (oldBlock << 1) | lowerBit | (higherBit << (BLOCK_LEN + 2)); // attach boundary bits at both ends
-/*
-    if (mDebug > 0) {
-      System.out.println("block=0b" + Integer.toBinaryString(block));
-    }
-*/
+  protected int computeNextBlock(final int oldBlock, final int leftBit, final int rightBit) {
+    int block = (oldBlock << 1) | rightBit | (leftBit << (BLOCK_LEN + 2)); // attach boundary bits at both ends
     int newBlock = 0;
     int itar = 0; // fill to BLOCK_LEN
     for (int isrc = 0; isrc < BLOCK_LEN; ++isrc) { // from left to right
@@ -163,7 +260,7 @@ public class ElementaryCellularAutomaton implements Sequence {
     boolean bfile = false;
     String callCode = "ca1triangle";
     int debug    = 0;
-    int numTerms = 16;
+    int numTerms = 32;
     int ruleNo   = 30;
     int iarg = 0;
     while (iarg < args.length) { // consume all arguments
@@ -186,6 +283,7 @@ public class ElementaryCellularAutomaton implements Sequence {
       } catch (Exception exc) { // take default
       }
     } // while args
+    
     ElementaryCellularAutomaton ca = new ElementaryCellularAutomaton(ruleNo, callCode);
     ca.setDebug(debug);
     if (false) {
@@ -196,10 +294,18 @@ public class ElementaryCellularAutomaton implements Sequence {
         block = ca.computeNextBlock(block, 0, 0);
       }
     } else if (callCode.equals("row")){
+      ca.mOldRow[ca.mCenter] = 1;
+      for (int gen = 0; gen < numTerms; ++gen) {
+        ca.mGen = gen;
+        ca.computeNextRow();
+        ca.displayRow(gen, 128);
+      }
+    } else if (callCode.equals("row1")){
       int block = 0x010;
       ca.mOldRow[ca.mCenter] = block;
-      for (int gen = 0; gen < 16; ++gen) {
-        ca.displayRow(gen, ca.CHUNK_SIZE);
+      for (int gen = 0; gen < numTerms; ++gen) {
+        ca.mGen = gen;
+        ca.displayRow(gen, 128);
         ca.mOldRow[ca.mCenter] = ca.computeNextBlock(ca.mOldRow[ca.mCenter], 0, 0);
       }
     } else {
