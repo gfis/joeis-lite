@@ -19,7 +19,7 @@ import irvine.oeis.Sequence;
 public class ElementaryCellularAutomaton implements Sequence {
 
   /** The length of the blocks that are computed respectively retrieved from the table. */
-  protected final static int BLOCK_LEN = 8;
+  protected final static int BLOCK_LEN = 4;
   /** The mask for the highest bit in a block. */
   protected int mHighMask;
   /** The mask for the lowest bit in a block. */
@@ -215,7 +215,6 @@ public class ElementaryCellularAutomaton implements Sequence {
     int itar = 0; // fill to BLOCK_LEN - 1
     for (int isrc = 0; isrc < BLOCK_LEN; ++isrc) { // from left to right
       final int key3 = wrappedBlock & 7; // lowest 3 bits, values 0..7
-      wrappedBlock >>= 1;
       final int tarBit = ((mRule & (1 << key3)) != 0) ? 1 : 0;
       newBlock |= (tarBit << itar);
       if (mDebug >= 2) {
@@ -230,6 +229,7 @@ public class ElementaryCellularAutomaton implements Sequence {
             + ", newBlock="     + Integer.toBinaryString(newBlock)
             );
       }
+      wrappedBlock >>= 1;
       ++itar;
     }
     if (mDebug >= 1) {
@@ -251,39 +251,50 @@ public class ElementaryCellularAutomaton implements Sequence {
     final RowIterator riter = new RowIterator(); // just to determine the indices at both ends
     final int start = riter.getIndex();
     final int bpos = riter.getBitPosition();
-    final int end = mCenter + mGen / BLOCK_LEN + 1;
-    int mask = (1 << (bpos)) - 1; 
-    mOldRow[start] &= mask; // clear left garbage
-    mask <<= BLOCK_LEN - bpos;
-    mOldRow[end] &= mask; // clear right garbage
-    int leftBit = 0;
-    int rightBit = (mOldRow[start + 1] & mHighMask) >> (BLOCK_LEN - 1);
+    final int last = mCenter + (mGen - 1) / BLOCK_LEN + 1;
     if (mDebug >= 1) {
-        System.out.println("# computeNextRow" 
+        System.out.println("# computeNextRow.start" 
             + ", start="     + start
-            + ", end="       + end
-            + ", leftBit="   + Integer.toBinaryString(leftBit)
-            + ", rightBit="  + Integer.toBinaryString(rightBit) 
+            + ", bpos="      + bpos
+            + ", last="      + last
+            + ", mLowMask="  + Integer.toBinaryString(mLowMask)
+            + ", mHighMask=" + Integer.toBinaryString(mHighMask)
             );
     }
-    for (int irow = start; irow <= end; ++irow) {
+    for (int icol = start; icol <= last; ++icol) {
+      final int leftBit =   mOldRow[icol - 1] & mLowMask;
+      final int rightBit = (mOldRow[icol + 1] & mHighMask) >> (BLOCK_LEN - 1);
       if (mDebug >= 1) {
           System.out.println("# computeNextRow.loop" 
-              + ", irow="      + irow
-              + ", oldBlock="  + Integer.toBinaryString(mOldRow[irow])
+              + ", icol="      + icol
+              + ", oldBlock="  + Integer.toBinaryString(mOldRow[icol])
               + ", leftBit="   + Integer.toBinaryString(leftBit)
               + ", rightBit="  + Integer.toBinaryString(rightBit) 
               );
       }
-      int mNewBlock = transformBlock(mOldRow[irow], leftBit, rightBit);
+      int mNewBlock = transformBlock(mOldRow[icol], leftBit, rightBit);
       if (mDebug >= 1) {
           System.out.println("# -> mNewBlock=" + Integer.toBinaryString(mNewBlock));
       }
-      mNewRow[irow] = mNewBlock;
-      leftBit = mOldRow[irow] & mLowMask;
-      rightBit = (mOldRow[irow + 1] & mHighMask) >> (BLOCK_LEN - 1);
+      mNewRow[icol] = mNewBlock;
     }
     mOldRow = mNewRow;
+    final int maskLeft  = (1 << (bpos + 1)) - 1; 
+    final int maskRight = bpos == 0 
+        ? (1 << BLOCK_LEN) - 1
+        : ((1 << bpos) - 1) << (BLOCK_LEN - bpos);
+    mOldRow[start] &= maskLeft; // clear left garbage
+    mOldRow[last] &= maskRight; // clear right garbage
+    mOldRow[last + 1] = 0; // for safety
+    
+    if (mDebug >= 2) {
+        System.out.println("# computeNextRow.end" 
+            + ", maskLeft="                + Integer.toBinaryString(maskLeft)
+            + ", maskRight="               + Integer.toBinaryString(maskRight)
+            + ", mOldRow[" + start + "]="  + Integer.toBinaryString(mOldRow[start])
+            + ", mOldRow[" + last  + "]="  + Integer.toBinaryString(mOldRow[last])
+            );
+    }
     mNewRow = new int[mRowLen];
   }
 
@@ -355,15 +366,15 @@ public class ElementaryCellularAutomaton implements Sequence {
       ca.mOldRow[ca.mCenter] = 1; // start with a black cell in the rightmost bit of the center block
       for (int gen = 0; gen < numTerms; ++gen) {
         ca.mGen = gen;
-        ca.displayRow(ca.mGen, 128);
+        ca.displayRow(ca.mGen, 2 * numTerms + 2);
         ca.computeNextRow();
       }
     } else if (callCode.equals("row1")){
-      int block = 0x010;
+      int block = 0x10;
       ca.mOldRow[ca.mCenter] = block;
       for (int gen = 0; gen < numTerms; ++gen) {
         ca.mGen = gen;
-        ca.displayRow(gen, 128);
+        ca.displayRow(gen, 2 * numTerms + 2);
         ca.mOldRow[ca.mCenter] = ca.transformBlock(ca.mOldRow[ca.mCenter], 0, 0);
       }
     } else {
