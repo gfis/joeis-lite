@@ -11,6 +11,7 @@ GITS=../../..
 LITE=$(GITS)/joeis-lite
 HERE=../../joeis-lite/internal/fischer
 JOEIS=$(GITS)/joeis
+CA=$(GITS)/OEIS-mat/ca
 COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
 COMMON=$(GITS)/OEIS-mat/common
 CONSTANT=$(GITS)/OEIS-mat/constant
@@ -1102,6 +1103,16 @@ smoothn:	# smooth <= n
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+ca.ari:
+	grep -E "^A[0-9]" $(CA)/ari.gen > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+ca.1m:
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 decexp: # decimal expansion of expression
 	grep -E "^A[0-9]" $(CONSTANT)/decexp4.tmp \
 	| grep -vEE "A084257|A114041" \
@@ -1305,6 +1316,7 @@ bitoper:
 #--------------------------------
 caelem:
 	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
+	| grep -v ca1other \
 	| perl -ne 'print if substr($$_, 0, 7) ge "A050000";'\
 	>        $@.gen
 	head -n4 $@.gen
