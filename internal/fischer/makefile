@@ -1321,6 +1321,24 @@ caelem:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen	
+wa_stageb:
+	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
+	| grep -v ca1other \
+	| perl -ne 'print if substr($$_, 0, 7) ge "A050000";'\
+	| grep ca1stageb \
+	| sed -e "s/ca1stageb/$@/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
+wa_staged:
+	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
+	| grep -v ca1other \
+	| perl -ne 'print if substr($$_, 0, 7) ge "A050000";'\
+	| grep ca1staged \
+	| sed -e "s/ca1staged/$@/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 #----
 carule0:
 	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \

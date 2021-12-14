@@ -343,7 +343,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
             } elsif (($class_name !~ m{\AA\d+})               # A-number
                 and  ($class_name !~ m{\.})                   # contains dot
                 and  ($class_name !~ m{\A[A-Z]+\Z})           # only uppercase = constant
-                and  ($class_name !~ m{\A(String|Integer)\Z}) # common Java types
+                and  ($class_name !~ m{\A(String|Integer|StringBuilder)\Z}) # common Java types
                 and  ($class_name !~ m{\AComputableReals\Z})
                 and  ($class_name !~ m{\AUnaryCRFunction\Z})
                 and  ($class_name !~ m{\AFunction\Z})

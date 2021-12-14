@@ -14,7 +14,7 @@ public class Wolfram1DAutomaton implements Sequence {
   private final boolean[] mRule;
   private Z mCur;
   private long mRow;
-  private long mCol;
+  private int mCol;
   private int mLength;
   /** Number of the generation */
   protected int mGen;
@@ -47,8 +47,8 @@ public class Wolfram1DAutomaton implements Sequence {
     mRule[7] = (rule & 128) != 0;
     mCur = startState;
     mLength = Math.max(1, startState.bitLength());
-    mRow = -1;
-    mCol = -1;
+    mRow = 0;
+    mCol = 0;
     mGen = 0;
     mN = -1;
     mSum = Z.ZERO;
@@ -69,10 +69,22 @@ public class Wolfram1DAutomaton implements Sequence {
     return k < 0 || k >= mLength ? mRow > 1 && mRule[0] : set.testBit(k);
   }
 
+  /**
+   * Convenience method to return the next state of an automaton.
+   * @param rule rule number of the specific automaton
+   * @param state starting state
+   * @return next sate
+   */
+  private static Z step(final int rule, final Z state) {
+    final Wolfram1DAutomaton a = new Wolfram1DAutomaton(rule, state);
+    a.next(); // skip the input state
+    return a.next();
+  }
+
   public Z computeNextRow() {
-    if (++mRow == 0) {
-      return mCur;
-    }
+    ++mRow;
+    mCol = 0;
+    mBlackCount = 0;
     Z next = Z.ZERO;
     for (int k = 0; k < mLength + 2; ++k) {
       // get left, centre, right pixels
@@ -81,38 +93,20 @@ public class Wolfram1DAutomaton implements Sequence {
       final int r = isSet(mCur, k) ? 1 : 0;
       if (mRule[l | c | r]) {
         next = next.setBit(k);
+        ++mBlackCount;
       }
     }
     mLength += 2;
-    ++mRow;
     mCur = next;
     return mCur;
   }
 
   @Override
   public Z next() {
-    return mCur;
-  }
-
-  /**
-   * Convenience method to return the next state of an automaton.
-   * @param rule rule number of the specific automaton
-   * @param state starting state
-   * @return next sate
-   */
-  public static Z step(final int rule, final Z state) {
-    final Wolfram1DAutomaton a = new Wolfram1DAutomaton(rule, state);
-    a.next(); // skip the input state
-    return a.next();
-  }
-
-  /**
-   * Get the number of ON/BLACK cells in the current row.
-   * This method is the basis for the methods {@link #nextBlackCount}, {@link #nextBlackSum}, {@link #nextWhiteCount}, {@link #nextWhiteSum}.
-   * @return 3 for generation 2 of rule 30 (11001).
-   */
-  public int getBlackCount() {
-    return mCur.bitCount();
+    if (mCol >= mLength) {
+      computeNextRow();
+    }
+    return isSet(mCur, mCol++) ? Z.ONE : Z.ZERO;
   }
 
   /**
@@ -121,7 +115,9 @@ public class Wolfram1DAutomaton implements Sequence {
    */
   public Z nextStageB() {
     ++mN;
-    return new Z(new StringBuilder(computeNextRow().toString(2)).reverse());
+    mSum = new Z(new StringBuilder(mCur.toString(2)).reverse());
+    computeNextRow();
+    return mSum;
   }
 
   /**
@@ -130,7 +126,9 @@ public class Wolfram1DAutomaton implements Sequence {
    */
   public Z nextStageD() {
     ++mN;
-    return computeNextRow();
+    mSum = new Z(new StringBuilder(mCur.toString(2)).reverse(), 2);
+    computeNextRow();
+    return mSum;
   }
 
   /**
@@ -138,7 +136,9 @@ public class Wolfram1DAutomaton implements Sequence {
    * @return 0 for generation 2 of rule 30.
    */
   public Z nextMiddle() {
-    return computeNextRow().testBit(++mN) ? Z.ONE : Z.ZERO;
+    mSum = mCur.testBit(++mN) ? Z.ONE : Z.ZERO;
+    computeNextRow();
+    return mSum;
   }
 
   /**
@@ -146,7 +146,7 @@ public class Wolfram1DAutomaton implements Sequence {
    * @return 110 for generation 2 of rule 30.
    */
   public Z nextMiddleB() {
-    mSum = mSum.multiply(10).add(computeNextRow().testBit(++mN) ? 1 : 0);
+    mSum = mSum.multiply(10).add(mCur.testBit(++mN) ? 1 : 0);
     computeNextRow();
     return mSum;
   }
@@ -156,7 +156,7 @@ public class Wolfram1DAutomaton implements Sequence {
    * @return 6 for generation 2 of rule 30.
    */
   public Z nextMiddleD() {
-    mSum = mSum.shiftLeft(1).add(computeNextRow().testBit(++mN) ? 1 : 0);
+    mSum = mSum.shiftLeft(1).add(mCur.testBit(++mN) ? 1 : 0);
     computeNextRow();
     return mSum;
   }
@@ -167,7 +167,7 @@ public class Wolfram1DAutomaton implements Sequence {
    */
   public Z nextBlackCount() {
     ++mN;
-    mSum = Z.valueOf(getBlackCount());
+    mSum = Z.valueOf(mBlackCount);
     computeNextRow();
     return mSum;
   }
@@ -178,7 +178,7 @@ public class Wolfram1DAutomaton implements Sequence {
    */
   public Z nextBlackSum() {
     ++mN;
-    mSum = mSum.add(getBlackCount());
+    mSum = mSum.add(mBlackCount);
     computeNextRow();
     return mSum;
   }
@@ -189,7 +189,7 @@ public class Wolfram1DAutomaton implements Sequence {
    */
   public Z nextWhiteCount() {
     ++mN;
-    mSum = Z.valueOf(2 * mGen + 1).subtract(getBlackCount());
+    mSum = Z.valueOf(2 * mN + 1).subtract(mBlackCount);
     computeNextRow();
     return mSum;
   }
@@ -200,10 +200,8 @@ public class Wolfram1DAutomaton implements Sequence {
    */
   public Z nextWhiteSum() {
     ++mN;
-    mSum = mSum.add(Z.valueOf(2 * mGen + 1).subtract(getBlackCount()));
+    mSum = mSum.add(Z.valueOf(2 * mN + 1).subtract(mBlackCount));
     computeNextRow();
     return mSum;
   }
-
-
 }
