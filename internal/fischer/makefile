@@ -1317,6 +1317,7 @@ bitoper:
 caelem:
 	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
 	| grep -v ca1other \
+	| grep ca1stageb \
 	| perl -ne 'print if substr($$_, 0, 7) ge "A050000";'\
 	>        $@.gen
 	head -n4 $@.gen
