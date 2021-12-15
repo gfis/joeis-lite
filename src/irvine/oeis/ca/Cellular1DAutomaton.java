@@ -18,16 +18,20 @@ import irvine.oeis.Sequence;
  */
 public class Cellular1DAutomaton implements Sequence {
 
-  /** The length of the blocks that are computed respectively retrieved from the table. */
-  protected final static int BLOCK_LEN = 8;
+  /** Allocate rows in multiples of this number */
+  protected final static int CHUNK_SIZE = 32;
+  /** The bit length of the blocks that are computed respectively retrieved from the table. */
+  protected final static int BLOCK_LEN = 5;
   /** The mask for all bits in a block. */
   protected int mBlockMask;
   /** The mask for the highest bit in a block. */
   protected int mHighMask;
   /** The mask for the lowest bit in a block. */
   protected int mLowMask;
-  /** Allocate rows in multiples of this number */
-  protected final static int CHUNK_SIZE = 16;
+  /** The mask for the bit in the center of the row. */
+  protected int mCenterMask;
+  /** Shift the center bit by so many positions. */
+  protected int mCenterShift;
   /** Rule number 0..255, cf. ANKOS p. 53 */
   protected int mRule;
   /**
@@ -61,22 +65,15 @@ public class Cellular1DAutomaton implements Sequence {
   protected int mBlackCount;
 
   /**
-   * Creates a new cellular automaton for the given rule.
+   * Creates a sequence derived from the cellular automaton with the given rule.
    * @param rule rule number for this automaton (0-255).
    */
   public Cellular1DAutomaton(final int rule) {
-    this(rule, 1);
-  }
-
-  /**
-   * Creates a sequence derived from the cellular automaton with the given rule.
-   * @param rule rule number for this automaton (0-255).
-   * @param seed start bit pattern.
-   */
-  public Cellular1DAutomaton(final int rule, final int seed) {
     mBlockMask = (1 << BLOCK_LEN) - 1;
     mLowMask = 1;
     mHighMask = 1 << (BLOCK_LEN - 1);
+    mCenterShift = (BLOCK_LEN - 1) / 2;
+    mCenterMask = 1 << mCenterShift; // in the middle of the center block
     mGen = 0;
     mRule = rule;
     sDebug = 0;
@@ -84,11 +81,29 @@ public class Cellular1DAutomaton implements Sequence {
     mOldRow = new int[mRowLen]; // preset to zeroes
     mNewRow = new int[mRowLen];
     mCenter = mRowLen / 2 - 1; // this is the contract; left half in 0..31, right half in 32..63
-    mOldRow[mCenter] = seed; // start with a single BLACK/ON cell
-    mBackground = 0x0; // start with all zeros to the left and to the right of the triangle
+    mOldRow[mCenter] = mBlockMask & mCenterMask; // start with a single BLACK/ON cell
+    mOldBlock = mOldRow[mCenter];
+    mBackground = 0x0; // start with 00...0 to the left and to the right of the triangle
     mN = -1;
     mSum = Z.ZERO;
     mBlackCount = 1;
+  }
+
+  /**
+   * Prints the initial status of the automaton.
+   */
+  protected void printStatus() {
+    if (sDebug > 0) {
+      System.out.println("# new Cellular1DAutomaton(" + mRule + ")"
+          + ", mBlockMask="    + Integer.toBinaryString(mBlockMask)
+          + ", mLowMask="      + Integer.toBinaryString(mLowMask)
+          + ", mHighMask="     + Integer.toBinaryString(mHighMask)
+          + ", mCenterMask="   + Integer.toBinaryString(mCenterMask)
+          + ", mCenterShift="  + mCenterShift
+          + ", mCenter="       + mCenter
+          + ", mOldBlock="     + Integer.toBinaryString(mOldBlock)
+          );
+    }
   }
 
   /**
@@ -117,21 +132,38 @@ public class Cellular1DAutomaton implements Sequence {
      * Construct the iterator that runs over all cells in all blocks belonging or adjacent to the triangle.
      * Set the starting and ending indices and bit positions.
      * Maintain <code>mOldBlock</code> and the count of cells already processed.
+     * @param readOnly whether to iterate only; background is inserted when false.
      */
     protected RowIterator() {
+      this(true);
+    }
+    
+    /**
+     * Construct the iterator that runs over all cells in all blocks belonging or adjacent to the triangle.
+     * Set the starting and ending indices and bit positions.
+     * Maintain <code>mOldBlock</code> and the count of cells already processed.
+     * @param readOnly whether to iterate only; background is inserted when false.
+     */
+    protected RowIterator(final boolean readOnly) {
       count = 0;
       endCount = 2 * mGen + 1;
-      index = mCenter - (mGen / BLOCK_LEN); // first block covered by the triangle
+      bitPos = (mGen + (BLOCK_LEN - 1) / 2) % BLOCK_LEN;
+      final int dist = (mGen + mCenterShift) / BLOCK_LEN;
+      index = mCenter - dist; // first block covered by the triangle
       if (index <= 2) { // too close to the arrays' limit - expand them
         expandRows();
-        index = mCenter - (mGen / BLOCK_LEN);
+        index = mCenter - dist;
       }
-      endIndex = mCenter + (mGen + BLOCK_LEN - 1) / BLOCK_LEN + 1;
-      bitPos = mGen % BLOCK_LEN;
+      endIndex = mCenter + dist + 1; // behind last block covered by the triangle
+      if (! readOnly) {
+        insertBackground();
+      }
       mOldBlock = mOldRow[index];
       if (sDebug > 0) {
-        System.out.println("# new RowIterator()"
+        System.out.println("--------");
+        System.out.println("#   new RowIterator()"
             + ", mGen="      + mGen
+            + ", dist="      + dist
             + ", index="     + index
             + ", endIndex="  + endIndex
             + ", mOldBlock=" + Integer.toBinaryString(mOldBlock)
@@ -139,6 +171,39 @@ public class Cellular1DAutomaton implements Sequence {
             + ", count="     + count
             + ", endCount="  + endCount
             );
+      }
+    }
+
+    /**
+     * Determine the cells to the left and to the right of the current triangle row,
+     * and insert them into <code>mOldRow</code>
+     * For even rules, the background always stays 00..0 (white).
+     * For odd rules with high bit = 0, the background alternates between 00..0 and 11..1 (stripes),
+     * while with high bit = 1 it is constant 11..1 (black except for generation 0).
+     * @param bitPos position of first bit belonging to the triangle
+     */
+    protected void insertBackground() {
+      if ((mRule & 0x1) == 1) { // odd rule
+        if ((mRule & 0x80) == 0) { // odd, high bit 0: reverse the polarity
+          mBackground ^= mBlockMask;
+        } else { // odd, high bit 1: set 1
+          mBackground |= mBlockMask;
+        }
+      } // else even rule
+      if (mGen > 1) {
+        if (bitPos == 0) {
+          mOldRow[index       ] = mBackground;
+          mOldRow[endIndex - 1] = mBackground;
+        }
+        mOldRow[index - 1] = mBackground;
+        mOldRow[endIndex ] = mBackground;
+      }
+      if (sDebug >= 1) {
+        System.out.print("#   insertBackground");
+        for (int irow = index - 1; irow <= endIndex; ++irow) {
+          System.out.print(", [" + irow + "]=" + Integer.toBinaryString(mOldRow[irow]));
+        }
+        System.out.println();
       }
     }
 
@@ -203,6 +268,9 @@ public class Cellular1DAutomaton implements Sequence {
       mOldRow = mNewRow; // exchange both rows
       mNewRow = new int[newLen];
       mCenter = mRowLen / 2 - 1; // contract
+      if (sDebug >= 1) {
+        System.out.println("# expandRows(), newLen=" + newLen + ", mCenter=" + mCenter);
+      }
     }
 
     /**
@@ -228,41 +296,6 @@ public class Cellular1DAutomaton implements Sequence {
     protected int getBitPosition() {
       return bitPos;
     }
-  }
-
-  /**
-   * Determine the cells to the left and to the right of the current triangle row,
-   * and insert them into <code>mOldRow</code>
-   * For even rules, the background always stays 00 (white).
-   * For odd rules with high bit = 0, the background alternates between 00 and 11 (stripes),
-   * while with high bit = 1 it is set to 11 (black except for generation 0).
-   * @param riter a {@link #RowIterator} containing the first index and the one behind the triangle
-   */
-  protected void insertBackground(RowIterator riter) {
-    if ((mRule & 0x1) == 1) { // odd rule
-      if ((mRule & 0x80) == 0) { // odd, high bit 0: reverse the polarity
-        mBackground ^= mBlockMask;
-      } else { // odd, high bit 1: set 1
-        mBackground |= mBlockMask;
-      }
-    } // else even rule
-    mOldRow[riter.getIndex() - 1] = mBackground;
-    final int behind = riter.getEndIndex() + (riter.getBitPosition() == 1 ? -1 : 0);
-    mOldRow[behind] = mBackground;
-    if (sDebug >= 1) {
-      System.out.println("#   insertBackground"
-          + ", mOldRow[" + (riter.getIndex() - 1) + "]=" + Integer.toBinaryString(mBackground)
-          + ", mOldRow[" + (riter.getEndIndex()) + "]="  + Integer.toBinaryString(mBackground)
-          );
-    }
-/*
-    if (bitPos != BLOCK_LEN - 1) {
-      mOldRow[start] = (mOldRow[start] & ((1 << (bitPos + 1)) - 1)            | (mBackground << (bitPos + 1))) & mBlockMask;
-    }
-    if (bitPos != 0) {
-      mOldRow[last]  =  mOldRow[last]  & (mBlockMask << (BLOCK_LEN - bitPos)) | (mBackground & ((1 << (BLOCK_LEN - bitPos)) - 1));
-    }
-*/
   }
 
   /**
@@ -297,11 +330,11 @@ public class Cellular1DAutomaton implements Sequence {
       ++itar;
     }
     if (sDebug >= 1) {
-        System.out.println("#   transformBlock("
+        System.out.println("#     transformBlock("
             + Integer.toBinaryString(oldBlock)
             + ", " + Integer.toBinaryString(leftBit)
             + ", " + Integer.toBinaryString(rightBit) + ")"
-            + ", newBlock=" + Integer.toBinaryString(newBlock)
+            + " -> newBlock=" + Integer.toBinaryString(newBlock)
             );
     }
     return newBlock;
@@ -313,15 +346,14 @@ public class Cellular1DAutomaton implements Sequence {
   public void computeNextRow() {
     ++mGen;
     mBlackCount = 0;
-    final RowIterator riter = new RowIterator(); // determine the indices at both ends
-    insertBackground(riter);
+    final RowIterator riter = new RowIterator(false); // determine the indices at both ends
     while (riter.hasNextBlock()) {
       final int iblock = riter.nextBlockIndex();
       final int leftBit =   mOldRow[iblock - 1] & mLowMask;
       final int rightBit = (mOldRow[iblock + 1] & mHighMask) >> (BLOCK_LEN - 1);
       int mNewBlock = transformBlock(mOldRow[iblock], leftBit, rightBit);
       if (sDebug >= 1) {
-          System.out.println("# computeNextRow.loop"
+          System.out.println("#   computeNextRow.loop"
               + ", block="     + iblock
               + ", oldBlock="  + Integer.toBinaryString(mOldRow[iblock])
               + ", leftBit="   + Integer.toBinaryString(leftBit)
@@ -332,45 +364,6 @@ public class Cellular1DAutomaton implements Sequence {
       mNewRow[iblock] = mNewBlock;
     }
     mOldRow = mNewRow;
-    mNewRow = new int[mRowLen];
-  }
-
-  /**
-   * Computes the new row of the next generation from the old row.
-   */
-  public void computeNextRow_99() {
-    ++mGen;
-    mBlackCount = 0;
-    final RowIterator riter = new RowIterator(); // determine the indices at both ends
-    final int start = riter.getIndex();
-    final int bpos = riter.getBitPosition();
-    final int last = mCenter + (mGen - 1) / BLOCK_LEN + 1;
-    if (sDebug >= 1) {
-        System.out.println("# computeNextRow.start"
-            + ", start="     + start
-            + ", bpos="      + bpos
-            + ", last="      + last
-            + ", mLowMask="  + Integer.toBinaryString(mLowMask)
-            + ", mHighMask=" + Integer.toBinaryString(mHighMask)
-            );
-    }
-    for (int icol = start; icol <= last; ++icol) {
-      final int leftBit =   mOldRow[icol - 1] & mLowMask;
-      final int rightBit = (mOldRow[icol + 1] & mHighMask) >> (BLOCK_LEN - 1);
-      int mNewBlock = transformBlock(mOldRow[icol], leftBit, rightBit);
-      if (sDebug >= 1) {
-          System.out.println("# computeNextRow.loop"
-              + ", icol="      + icol
-              + ", oldBlock="  + Integer.toBinaryString(mOldRow[icol])
-              + ", leftBit="   + Integer.toBinaryString(leftBit)
-              + ", rightBit="  + Integer.toBinaryString(rightBit)
-              + "# -> mNewBlock=" + Integer.toBinaryString(mNewBlock)
-              );
-      }
-      mNewRow[icol] = mNewBlock;
-    }
-    mOldRow = mNewRow;
-    mOldRow[last + 1] = 0; // for safety
     mNewRow = new int[mRowLen];
   }
 
@@ -412,6 +405,15 @@ public class Cellular1DAutomaton implements Sequence {
       }
     }
     return result;
+  }
+
+  /**
+   * Get the cell value in the middle of the row.
+   * This method is the basis for the methods {@link #nextMiddle}, {@link #nextMiddleB}, {@link #nextMiddleD}.
+   * @return 0 for generation 2 of rule 30 (11001).
+   */
+  public int getMiddle() {
+    return mOldRow[mCenter] >> mCenterShift;
   }
 
   /**
@@ -462,7 +464,7 @@ public class Cellular1DAutomaton implements Sequence {
    */
   public Z nextMiddle() {
     ++mN;
-    mSum = Z.valueOf(mOldRow[mCenter] & 1);
+    mSum = Z.valueOf(getMiddle());
     computeNextRow();
     return mSum;
   }
@@ -473,7 +475,7 @@ public class Cellular1DAutomaton implements Sequence {
    */
   public Z nextMiddleB() {
     ++mN;
-    mSum = mSum.multiply(10).add(mOldRow[mCenter] & 1);
+    mSum = mSum.multiply(10).add(getMiddle());
     computeNextRow();
     return mSum;
   }
@@ -484,7 +486,7 @@ public class Cellular1DAutomaton implements Sequence {
    */
   public Z nextMiddleD() {
     ++mN;
-    mSum = mSum.shiftLeft(1).add(mOldRow[mCenter] & 1);
+    mSum = mSum.shiftLeft(1).add(getMiddle());
     computeNextRow();
     return mSum;
   }
@@ -549,7 +551,7 @@ public class Cellular1DAutomaton implements Sequence {
         sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '0' : '1');
       }
     }
-    System.out.println(String.format("%3d: %" + String.valueOf(width / 2 - mGen) + "s", mGen, " ") 
+    System.out.println(String.format("%3d: %" + String.valueOf(width / 2 - mGen) + "s", mGen, " ")
         + (mBackground == 0 ? "-" : "+") + sb.toString() + (mBackground == 0 ? "-" : "+"));
   }
 
@@ -595,9 +597,9 @@ public class Cellular1DAutomaton implements Sequence {
       }
     } // while args
 
-    Cellular1DAutomaton.setDebug(debug);
     Cellular1DAutomaton ca = new Cellular1DAutomaton(ruleNo);
     ca.setDebug(debug);
+    ca.printStatus();
     if (false) {
     } else if (callCode.equals("bfile")){
       for (int gen = 0; gen < numTerms; ++gen) {
