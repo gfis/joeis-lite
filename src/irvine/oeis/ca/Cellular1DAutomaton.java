@@ -86,6 +86,9 @@ public class Cellular1DAutomaton implements Sequence {
     mCenterShift = (BLOCK_LEN - 1) / 2;
     mCenterMask = 1 << mCenterShift; // in the middle of the center block
     mGen = 0;
+    if (seed > 1) {
+      mGen = Integer.highestOneBit(seed) / 2;
+    }
     mRule = rule;
     sDebug = 0;
     mRowLen = CHUNK_SIZE;
@@ -98,6 +101,14 @@ public class Cellular1DAutomaton implements Sequence {
     mSum = Z.ZERO;
     mBlackCount = 1;
     mIter = new RowIterator();
+  }
+
+  /**
+   * Set the debugging level.
+   * @param level code for the debugging level: 0 = none, 1 = some, 2 = more.
+   */
+  public static void setDebug(final int level) {
+    sDebug = level;
   }
 
   /**
@@ -205,9 +216,9 @@ public class Cellular1DAutomaton implements Sequence {
     }
 
     /**
-     * Expands both rows by <code>CHUNK_SIZE</code>,
-     * shifts the contents of the old row up, and re-adjusts the center.
-     * This method is called only when the odl row is completely filled.
+     * Expand both rows by <code>CHUNK_SIZE</code>,
+     * shift the contents of the old row up, and re-adjusts the center.
+     * This method is called only when the old row is nearly completely filled.
      */
     private void expandRows() {
       final int newLen = mRowLen + CHUNK_SIZE;
@@ -217,11 +228,6 @@ public class Cellular1DAutomaton implements Sequence {
       mOldRow = mNewRow; // exchange both rows
       mNewRow = new int[newLen];
       mCenter = mRowLen / 2 - 1; // contract
-/*
-      if (sDebug >= 1) {
-        System.out.println("# expandRows(), newLen=" + newLen + ", mCenter=" + mCenter);
-      }
-*/
     }
 
     /**
@@ -247,6 +253,65 @@ public class Cellular1DAutomaton implements Sequence {
     protected int getBitPosition() {
       return bitPos;
     }
+  }
+
+  /**
+   * Return the current row as a binary String encoded with decimal digits 0, 1.
+   * @return "11001" for example.
+   */
+  public String toBinaryString() {
+    final StringBuilder sb = new StringBuilder(1024);
+    final RowIterator riter = new RowIterator();
+    while (riter.hasNext()) {
+      final int bitPos = riter.next();
+      sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '0' : '1');
+    }
+    return sb.toString();
+  }
+  /**
+   * Compute the next generation for a block (an array of cells).
+   * @param oldBlock some number of cells, highest bit is leftmost cell.
+   * @param leftBit the bit to the left of the old block
+   * @param rightBit the bit to the right of the old block
+   * @result the new block
+   */
+  protected int transformBlock(final int oldBlock, final int leftBit, final int rightBit) {
+    int wrappedBlock = ((oldBlock | (leftBit << BLOCK_LEN)) << 1) | rightBit; // attach boundary bits at both ends
+    int newBlock = 0;
+    int itar = 0; // fill to BLOCK_LEN - 1
+    for (int isrc = 0; isrc < BLOCK_LEN; ++isrc) { // from left to right
+      final int key3 = wrappedBlock & 7; // lowest 3 bits, values 0..7
+      final int tarBit = ((mRule & (1 << key3)) != 0) ? 1 : 0;
+      mBlackCount += tarBit;
+      newBlock |= (tarBit << itar);
+/*
+      if (sDebug >= 2) {
+        System.out.println("#     transformBlock("
+            + Integer.toBinaryString(oldBlock)
+            + ", " + Integer.toBinaryString(leftBit)
+            + ", " + Integer.toBinaryString(rightBit) + ")"
+            + ", isrc="         + isrc
+            + ", itar="         + itar
+            + ", wrappedBlock=" + Integer.toBinaryString(wrappedBlock)
+            + ", tarBit="       + Integer.toBinaryString(tarBit)
+            + ", newBlock="     + Integer.toBinaryString(newBlock)
+            );
+      }
+*/
+      wrappedBlock >>= 1;
+      ++itar;
+    }
+/*
+    if (sDebug >= 1) {
+        System.out.println("#     transformBlock("
+            + Integer.toBinaryString(oldBlock)
+            + ", " + Integer.toBinaryString(leftBit)
+            + ", " + Integer.toBinaryString(rightBit) + ")"
+            + " -> newBlock=" + Integer.toBinaryString(newBlock)
+            );
+    }
+*/
+    return newBlock;
   }
 
   /**
@@ -308,74 +373,6 @@ public class Cellular1DAutomaton implements Sequence {
   }
 
   /**
-   * Compute the next generation for a block (an array of cells).
-   * @param oldBlock some number of cells, highest bit is leftmost cell.
-   * @param leftBit the bit to the left of the old block
-   * @param rightBit the bit to the right of the old block
-   * @result the new block
-   */
-  protected int transformBlock(final int oldBlock, final int leftBit, final int rightBit) {
-    int wrappedBlock = ((oldBlock | (leftBit << BLOCK_LEN)) << 1) | rightBit; // attach boundary bits at both ends
-    int newBlock = 0;
-    int itar = 0; // fill to BLOCK_LEN - 1
-    for (int isrc = 0; isrc < BLOCK_LEN; ++isrc) { // from left to right
-      final int key3 = wrappedBlock & 7; // lowest 3 bits, values 0..7
-      final int tarBit = ((mRule & (1 << key3)) != 0) ? 1 : 0;
-      mBlackCount += tarBit;
-      newBlock |= (tarBit << itar);
-/*
-      if (sDebug >= 2) {
-        System.out.println("#     transformBlock("
-            + Integer.toBinaryString(oldBlock)
-            + ", " + Integer.toBinaryString(leftBit)
-            + ", " + Integer.toBinaryString(rightBit) + ")"
-            + ", isrc="         + isrc
-            + ", itar="         + itar
-            + ", wrappedBlock=" + Integer.toBinaryString(wrappedBlock)
-            + ", tarBit="       + Integer.toBinaryString(tarBit)
-            + ", newBlock="     + Integer.toBinaryString(newBlock)
-            );
-      }
-*/
-      wrappedBlock >>= 1;
-      ++itar;
-    }
-/*
-    if (sDebug >= 1) {
-        System.out.println("#     transformBlock("
-            + Integer.toBinaryString(oldBlock)
-            + ", " + Integer.toBinaryString(leftBit)
-            + ", " + Integer.toBinaryString(rightBit) + ")"
-            + " -> newBlock=" + Integer.toBinaryString(newBlock)
-            );
-    }
-*/
-    return newBlock;
-  }
-
-  /**
-   * Set the debugging level.
-   * @param level code for the debugging level: 0 = none, 1 = some, 2 = more.
-   */
-  public static void setDebug(final int level) {
-    sDebug = level;
-  }
-
-  /**
-   * Return the current row as a binary String encoded with decimal digits 0, 1.
-   * @return "11001" for example.
-   */
-  public String toBinaryString() {
-    final StringBuilder sb = new StringBuilder(1024);
-    final RowIterator riter = new RowIterator();
-    while (riter.hasNext()) {
-      final int bitPos = riter.next();
-      sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '0' : '1');
-    }
-    return sb.toString();
-  }
-
-  /**
    * Get the number of ON/BLACK cells in the current row.
    * This method is the basis for the methods {@link #nextBlackCount}, {@link #nextBlackSum}, {@link #nextWhiteCount}, {@link #nextWhiteSum}.
    * @return 3 for generation 2 of rule 30 (11001).
@@ -404,8 +401,8 @@ public class Cellular1DAutomaton implements Sequence {
 
   /**
    * Get the next term of the sequence.
-   * The default implementation here yields the single cell values of the triangle row by row.
-   * Cf. interface {@link Segment}.
+   * The default implementation here yields the single cell values (1 for ON/BLACK, 0 for OFF/WHITE) of the triangle row by row.
+   * Cf. interface {@link Sequence}.
    * @return 0 or 1
    */
   @Override
@@ -414,8 +411,8 @@ public class Cellular1DAutomaton implements Sequence {
       computeNextRow();
       mIter = new RowIterator();
     }
-    final int bpos = mIter.next();
-    return ((mOldBlock & (1 << bpos)) == 0) ? Z.ZERO : Z.ONE;
+    final int bitPos = mIter.next();
+    return ((mOldBlock & (1 << bitPos)) == 0) ? Z.ZERO : Z.ONE;
   }
 
   /**
