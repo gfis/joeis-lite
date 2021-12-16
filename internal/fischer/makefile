@@ -245,15 +245,16 @@ cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 20 from p
 	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
 	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp 
-dirty: # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
+dirty: dirty0 # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
 	# ---- $@ CC=$(CC)
+	cp -v $(CC).dirty.tmp $(CC).gen
+	wc -l $(CC).gen
+dirty0:
 	wc -l $(CC).gen
 	cp    $(CC).gen $(CC).old.tmp
 	cut -b1-7 $(CC).pass.log > dirty.tmp
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > dirty.grep.tmp
 	grep -vf dirty.grep.tmp $(CC).gen > $(CC).dirty.tmp
-	cp -v $(CC).dirty.tmp $(CC).gen
-	wc -l $(CC).gen
 removelist: # remove all in removelist.man
 	# ---- $@ CC=$(CC)
 	find ../../src/irvine/oeis -iname "*.java" \
@@ -1317,8 +1318,7 @@ bitoper:
 caelem:
 	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
 	| grep -v ca1other \
-	| grep ca1stageb \
-	| perl -ne 'print if substr($$_, 0, 7) ge "A050000";'\
+	| perl -ne 'print if substr($$_, 0, 7) ge "A038000";'\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen	
