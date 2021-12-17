@@ -1321,7 +1321,13 @@ caelem:
 	| perl -ne 'print if substr($$_, 0, 7) ge "A038000";'\
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
+#--
+caelem_alt:
+	$(DBAT) -x "SELECT aseqno FROM seq4 WHERE parm2 <> 'nyi' ORDER BY 1" \
+	>        $@.tmp
+	perl copyalt.pl $@.tmp
+#----
 wa_stageb:
 	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
 	| grep -v ca1other \
