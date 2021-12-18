@@ -9,7 +9,7 @@ import irvine.oeis.Sequence;
  * Data structure and methods for the evaluation of an elementary, one-dimensional cellular automaton
  * with a fixed rule number between 0 and 255,
  * as described by Stephen Wolfram in the book "A New Kind Of Science" (ANKOS).
- * The computation of new generations proceeds in so-called <em>blocks</e>, that are bit arrays of size <code>BLOCK_LEN</code>,
+ * The computation of new generations proceeds in so-called <em>blocks</em>, that are bit arrays of size <code>BLOCK_LEN</code>,
  * stored in integer arrays.
  * For each new generation, the automaton scans over the row with the old blocks, and computes
  * the new row of new blocks. Thereafter, both rows are exchanged,
@@ -19,9 +19,9 @@ import irvine.oeis.Sequence;
 public class Cellular1DAutomaton implements Sequence {
 
   /** Allocate rows in multiples of this number */
-  protected final static int CHUNK_SIZE = 256;
+  protected static final int CHUNK_SIZE = 256;
   /** The bit length of the blocks that are computed respectively retrieved from the table. */
-  protected final static int BLOCK_LEN = 27;
+  protected static final int BLOCK_LEN = 27;
   /** The mask for all bits in a block. */
   protected int mBlockMask;
   /** The mask for the highest bit in a block. */
@@ -119,19 +119,19 @@ public class Cellular1DAutomaton implements Sequence {
    */
   protected class RowIterator implements Iterator<Integer> {
     /** Index of the current block in <code>mOldRow</code>*/
-    protected int index;
+    protected int mIndex;
     /** Index of the first block behind the triangle in <code>mOldRow</code>*/
-    protected int endIndex;
+    protected int mEndIndex;
     /**
      * Position of the current cell in <code>mOldRow[index]</code>.
      * In <code>mOldRow[start]</code>, bitPos addresses the leftmost (first) cell belonging to the triangle.
      * In <code>mOldRow[last]</code>, <code>BLOCK_LEN - bitPos - 1</code> addresses the first cell <em>behind</em> the triangle.
      */
-    protected int bitPos;
+    protected int mBitPos;
     /** Number of cells processed so far (starting with 0). */
-    protected int count;
+    protected int mCount;
     /** Number of cells belonging to the triangle in the current row. */
-    protected int endCount;
+    protected int mEndCount;
 
     /**
      * Construct the iterator that runs over all cells in all blocks belonging or adjacent to the triangle.
@@ -139,17 +139,17 @@ public class Cellular1DAutomaton implements Sequence {
      * Maintain <code>mOldBlock</code> and the count of cells already processed.
      */
     protected RowIterator() {
-      count = 0;
-      endCount = 2 * mGen + 1;
-      bitPos = (mGen + (BLOCK_LEN - 1) / 2) % BLOCK_LEN;
+      mCount = 0;
+      mEndCount = 2 * mGen + 1;
+      mBitPos = (mGen + (BLOCK_LEN - 1) / 2) % BLOCK_LEN;
       final int dist = (mGen + mCenterShift) / BLOCK_LEN;
-      index = mCenter - dist; // first block covered by the triangle
-      if (index <= 2) { // too close to the arrays' limit - expand them
+      mIndex = mCenter - dist; // first block covered by the triangle
+      if (mIndex <= 2) { // too close to the arrays' limit - expand them
         expandRows();
-        index = mCenter - dist;
+        mIndex = mCenter - dist;
       }
-      endIndex = mCenter + dist + 1; // behind last block covered by the triangle
-      mOldBlock = mOldRow[index];
+      mEndIndex = mCenter + dist + 1; // behind last block covered by the triangle
+      mOldBlock = mOldRow[mIndex];
 /*
       if (sDebug > 0) {
         System.out.println("--------");
@@ -169,10 +169,10 @@ public class Cellular1DAutomaton implements Sequence {
 
     /**
      * Get the index of the block behind the last block covered by triangle.
-     * @return {@link #endIndex}
+     * @return {@link #mEndIndex}
      */
     protected int getEndIndex() {
-      return endIndex;
+      return mEndIndex;
     }
 
     /**
@@ -180,7 +180,7 @@ public class Cellular1DAutomaton implements Sequence {
      * @return true (false) if there is (no) next cell.
      */
     public boolean hasNext() {
-      return count < endCount;
+      return mCount < mEndCount;
     }
 
     /**
@@ -188,14 +188,14 @@ public class Cellular1DAutomaton implements Sequence {
      * @return a position between 0 and BLOCK_LEN - 1.
      */
     public Integer next() {
-      if (bitPos < 0) {
-        ++index;
-        mOldBlock = mOldRow[index];
-        bitPos = BLOCK_LEN - 1;
+      if (mBitPos < 0) {
+        ++mIndex;
+        mOldBlock = mOldRow[mIndex];
+        mBitPos = BLOCK_LEN - 1;
       }
-      final int result = bitPos;
-      --bitPos;
-      ++count;
+      final int result = mBitPos;
+      --mBitPos;
+      ++mCount;
       return result;
     }
 
@@ -204,7 +204,7 @@ public class Cellular1DAutomaton implements Sequence {
      * @return true (false) if there is (no) next block.
      */
     public boolean hasNextBlock() {
-      return index < endIndex;
+      return mIndex < mEndIndex;
     }
 
     /**
@@ -212,7 +212,7 @@ public class Cellular1DAutomaton implements Sequence {
      * @return a position between 0 and BLOCK_LEN - 1.
      */
     public Integer nextBlockIndex() {
-      return index++;
+      return mIndex++;
     }
 
     /**
@@ -235,7 +235,7 @@ public class Cellular1DAutomaton implements Sequence {
      * @return <code>mOldRow[index]</code>}.
      */
     protected int getIndex() {
-      return index;
+      return mIndex;
     }
 
     /**
@@ -243,7 +243,7 @@ public class Cellular1DAutomaton implements Sequence {
      * @return <code>endCount</code>}.
      */
     protected int getEndCount() {
-      return endCount;
+      return mEndCount;
     }
 
     /**
@@ -251,7 +251,7 @@ public class Cellular1DAutomaton implements Sequence {
      * @return <code>bitPos</code>}.
      */
     protected int getBitPosition() {
-      return bitPos;
+      return mBitPos;
     }
   }
 
@@ -273,7 +273,7 @@ public class Cellular1DAutomaton implements Sequence {
    * @param oldBlock some number of cells, highest bit is leftmost cell.
    * @param leftBit the bit to the left of the old block
    * @param rightBit the bit to the right of the old block
-   * @result the new block
+   * @return the new block
    */
   protected int transformBlock(final int oldBlock, final int leftBit, final int rightBit) {
     int wrappedBlock = ((oldBlock | (leftBit << BLOCK_LEN)) << 1) | rightBit; // attach boundary bits at both ends
@@ -283,7 +283,7 @@ public class Cellular1DAutomaton implements Sequence {
       final int key3 = wrappedBlock & 7; // lowest 3 bits, values 0..7
       final int tarBit = ((mRule & (1 << key3)) != 0) ? 1 : 0;
       mBlackCount += tarBit;
-      newBlock |= (tarBit << itar);
+      newBlock |= tarBit << itar;
 /*
       if (sDebug >= 2) {
         System.out.println("#     transformBlock("
@@ -324,7 +324,7 @@ public class Cellular1DAutomaton implements Sequence {
     final int index = riter.getIndex();
     final int endIndex = riter.getEndIndex();
     mOldRow[index    - 1] = mBackground;
-    mOldRow[endIndex + 0] = mBackground;
+    mOldRow[endIndex] = mBackground;
     if (sDebug >= 1) {
       System.out.print("# old row @" + (index - 1) + ": ");
       for (int irow = index - 1; irow <= endIndex; ++irow) {
@@ -336,7 +336,7 @@ public class Cellular1DAutomaton implements Sequence {
       final int irow = riter.nextBlockIndex();
       final int leftBit =   mOldRow[irow - 1] & mLowMask;
       final int rightBit = (mOldRow[irow + 1] & mHighMask) >> (BLOCK_LEN - 1);
-      int mNewBlock = transformBlock(mOldRow[irow], leftBit, rightBit);
+      int newBlock = transformBlock(mOldRow[irow], leftBit, rightBit);
 /*
       if (sDebug >= 1) {
           System.out.println("#   computeNextRow.loop"
@@ -344,11 +344,11 @@ public class Cellular1DAutomaton implements Sequence {
               + ", oldBlock="  + Integer.toBinaryString(mOldRow[irow])
               + ", leftBit="   + Integer.toBinaryString(leftBit)
               + ", rightBit="  + Integer.toBinaryString(rightBit)
-              + " -> mNewBlock=" + Integer.toBinaryString(mNewBlock)
+              + " -> newBlock=" + Integer.toBinaryString(newBlock)
               );
       }
 */
-      mNewRow[irow] = mNewBlock;
+      mNewRow[irow] = newBlock;
     }
     if ((mRule & 0x1) == 1) { // odd rule
       if ((mRule & 0x80) == 0) { // odd, high bit 0: reverse the polarity
@@ -359,7 +359,7 @@ public class Cellular1DAutomaton implements Sequence {
     }
     mOldRow = mNewRow;
     mOldRow[index    - 1] = mBackground;
-    mOldRow[endIndex + 0] = mBackground;
+    mOldRow[endIndex] = mBackground;
 /*
     if (sDebug >= 1) {
       System.out.print("# new row @" + (index - 1) + ": ");
@@ -378,7 +378,6 @@ public class Cellular1DAutomaton implements Sequence {
    * @return 3 for generation 2 of rule 30 (11001).
    */
   public int getBlackCount() {
-    final StringBuilder sb = new StringBuilder(1024);
     final RowIterator riter = new RowIterator();
     int result = 0;
     while (riter.hasNext()) {
@@ -490,7 +489,7 @@ public class Cellular1DAutomaton implements Sequence {
    * @return 2 for generation 2 of rule 30 (11001).
    */
   public Z nextWhiteCount() {
-    mSum = Z.valueOf(2 * mGen + 1).subtract(getBlackCount());
+    mSum = Z.valueOf(2L * mGen + 1).subtract(getBlackCount());
     computeNextRow();
     return mSum;
   }
@@ -500,104 +499,108 @@ public class Cellular1DAutomaton implements Sequence {
    * @return 2 for generation 2 of rule 30 (1, 111, 11001).
    */
   public Z nextWhiteSum() {
-    mSum = mSum.add(Z.valueOf(2 * mGen + 1).subtract(getBlackCount()));
+    mSum = mSum.add(Z.valueOf(2L * mGen + 1).subtract(getBlackCount()));
     computeNextRow();
     return mSum;
   }
 
-//  /**
-//   * Displays the old row by using "1" and "." for 0 bits, and " " outside the triangle.
-//   * @param width total width of the generated line
-//   * @param mode 2 = binary as decimal, block display otherwise
-//   */
-//  public void displayRow(final int width, final int mode) {
-//    final StringBuilder sb = new StringBuilder(width);
-//    final RowIterator riter = new RowIterator();
-//    while (riter.hasNext()) {
-//      final int bitPos = riter.next();
-//      if (mode != 2) {
-//        sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '\u2588' : '\u2591');
-//      } else {
-//        sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '0' : '1');
-//      }
-//    }
-//    System.out.println(String.format("%3d: %" + String.valueOf(width / 2 - mGen) + "s", mGen, " ")
-//        + (mBackground == 0 ? "-" : "+") + sb.toString() + (mBackground == 0 ? "-" : "+"));
-//  }
-//
-//  /**
-//   * Main method for debugging.
-//   * @param args command line arguments:
-//   * <ul>
-//   * <li>-b  print in b-file format instead of comma separated list</li>
-//   * <li>-d  level debugging level (default 0=none, 1=some, 2=more)</li>
-//   * <li>-r  rule number</li>
-//   * <li>-n  numTerms number of terms to be computed (default: 16)</li>
-//   * <li>-cc callcode</li>
-//   * </ul>
-//   */
-//  public static void main(String[] args) {
-//    boolean bfile = false;
-//    String callCode = "rows";
-//    int debug    = 0;
-//    int mode     = 1;
-//    int numTerms = 32;
-//    int ruleNo   = 30;
-//    int iarg = 0;
-//    while (iarg < args.length) { // consume all arguments
-//      String opt = args[iarg ++];
-//      try {
-//        if (false) {
-//        } else if (opt.equals    ("-b")     ) {
-//          bfile    = true;
-//        } else if (opt.equals    ("-cc")     ) {
-//          callCode = args[iarg ++];
-//        } else if (opt.equals    ("-d")     ) {
-//          debug    = Integer.parseInt(args[iarg ++]);
-//        } else if (opt.equals    ("-m")     ) {
-//          mode     = Integer.parseInt(args[iarg ++]);
-//        } else if (opt.equals    ("-n")     ) {
-//          numTerms = Integer.parseInt(args[iarg ++]);
-//        } else if (opt.equals    ("-r")     ) {
-//          ruleNo   = Integer.parseInt(args[iarg ++]);
-//        } else {
-//          System.err.println("??? invalid option: \"" + opt + "\"");
-//        }
-//      } catch (Exception exc) { // take default
-//      }
-//    } // while args
-//
-//    Cellular1DAutomaton ca = new Cellular1DAutomaton(ruleNo);
-//    ca.setDebug(debug);
-//    if (false) {
-//    } else if (callCode.equals("bfile")){
-//      for (int gen = 0; gen < numTerms; ++gen) {
-//        ca.mGen = gen;
-//        System.out.println(gen + " " + ca.toBinaryString());
-//        ca.computeNextRow();
-//      }
-//    } else if (callCode.equals("block")){
-//      int block = 0x010;
-//      for (int gen = 0; gen < numTerms; ++gen) {
-//        System.out.println(Integer.toBinaryString(block));
-//        block = ca.transformBlock(block, 0, 0);
-//      }
-//    } else if (callCode.equals("rows")){
-//      for (int gen = 0; gen < numTerms; ++gen) {
-//        ca.displayRow(2 * numTerms + 4, mode);
-//        ca.computeNextRow();
-//      }
-//    } else if (callCode.equals("next")){
-//      for (int n = 0; n < numTerms; ++n) {
-//        if (bfile) {
-//          System.out.println(n + " " + ca.next());
-//        } else {
-//          System.out.print((n == 0 ? "" : ",") + ca.next());
-//        }
-//      }
-//    } else {
-//      System.err.println("??? invalid callCode: \"" + callCode + "\"");
-//    }
-//  } // main
+  /**
+   * Displays the old row by using "1" and "." for 0 bits, and " " outside the triangle.
+   * @param width total width of the generated line
+   * @param mode 2 = binary as decimal, block display otherwise
+   */
+  public void displayRow(final int width, final int mode) {
+    final StringBuilder sb = new StringBuilder(width);
+    final RowIterator riter = new RowIterator();
+    while (riter.hasNext()) {
+      final int bitPos = riter.next();
+      if (mode != 2) {
+        sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '\u2588' : '\u2591');
+      } else {
+        sb.append(((mOldBlock & (1 << bitPos)) == 0) ? '0' : '1');
+      }
+    }
+    System.out.println(String.format("%3d: %" + String.valueOf(width / 2 - mGen) + "s", mGen, " ")
+        + (mBackground == 0 ? "-" : "+") + sb.toString() + (mBackground == 0 ? "-" : "+"));
+  }
+
+  /**
+   * Main method for debugging.
+   * @param args command line arguments:
+   * <ul>
+   * <li>-b  print in b-file format instead of comma separated list</li>
+   * <li>-d  level debugging level (default 0=none, 1=some, 2=more)</li>
+   * <li>-r  rule number</li>
+   * <li>-n  numTerms number of terms to be computed (default: 16)</li>
+   * <li>-cc callcode</li>
+   * </ul>
+   */
+  public static void main(String[] args) {
+    boolean bfile = false;
+    String callCode = "rows";
+    int debug    = 0;
+    int mode     = 1;
+    int numTerms = 32;
+    int ruleNo   = 30;
+    int iarg = 0;
+    while (iarg < args.length) { // consume all arguments
+      String opt = args[iarg ++];
+      try {
+        if (false) {
+        } else if (opt.equals    ("-b")     ) {
+          bfile    = true;
+        } else if (opt.equals    ("-cc")     ) {
+          callCode = args[iarg ++];
+        } else if (opt.equals    ("-d")     ) {
+          debug    = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-m")     ) {
+          mode     = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-n")     ) {
+          numTerms = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-r")     ) {
+          ruleNo   = Integer.parseInt(args[iarg ++]);
+        } else {
+          System.err.println("??? invalid option: \"" + opt + "\"");
+        }
+      } catch (Exception exc) { // take default
+      }
+    } // while args
+
+    Cellular1DAutomaton ca = new Cellular1DAutomaton(ruleNo);
+    ca.setDebug(debug);
+    if (false) {
+    } else if (callCode.equals("bfile")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        ca.mGen = gen;
+        System.out.println(gen + " " + ca.toBinaryString());
+        ca.computeNextRow();
+      }
+    } else if (callCode.equals("block")){
+      int block = 0x010;
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(Integer.toBinaryString(block));
+        block = ca.transformBlock(block, 0, 0);
+      }
+    } else if (callCode.equals("rows")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        ca.displayRow(2 * numTerms + 4, mode);
+        ca.computeNextRow();
+      }
+    } else if (callCode.equals("stageb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(ca.nextStageB());
+      }
+    } else if (callCode.equals("next")){
+      for (int n = 0; n < numTerms; ++n) {
+        if (bfile) {
+          System.out.println(n + " " + ca.next());
+        } else {
+          System.out.print((n == 0 ? "" : ",") + ca.next());
+        }
+      }
+    } else {
+      System.err.println("??? invalid callCode: \"" + callCode + "\"");
+    }
+  } // main
 
 }

@@ -8,6 +8,8 @@
 #:# Usage:
 #:#   perl genman.pl [-d debug] [-e] [-n] [-p v1,v2...] [-s] [-t] [-u] [A]seqno
 #:#   -e generate "extends ..."
+#:#   -h generate a subclass of HolonomicRecurrence
+#:#   -m generate a subclass of MemorySequence
 #:#   -n generate ++mN
 #:#   -p v1,v2... names of parameters
 #:#   -s generate while loop for a subsequence
@@ -33,6 +35,7 @@ my $namesfile = "$basedir/names";
 my @pnames    = ();
 my $extends   = 0; # whether to generate "extends ..."
 my $holonomic = 0; # whether to generate "extends HolonomicRecurrence;"
+my $memory    = 0; # whether to generate "extends MemorySequence;"
 my $withn     = 0; # whether to generate ++mN
 my $subseq    = 0; # whether to generate a loop for a subsequence of the natural numbers
 my $triangle  = 0; # whether to generate a subclass of Triangle
@@ -57,6 +60,9 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
           $extends   = 1;
         } elsif ($opt   =~ m{h}) {
           $holonomic = 1;
+        } elsif ($opt   =~ m{m}) {
+          $memory    = 1;
+          $withn     = 1;
         } elsif ($opt   =~ m{t}) {
           $triangle  = 1;
         } elsif ($opt   =~ m{u}) {
@@ -104,6 +110,8 @@ GFis
         print OUT lc(substr($rseqno, 0, 4)) . ".$rseqno";
     } elsif ($holonomic == 1) {
         print OUT "HolonomicRecurrence";
+    } elsif ($memory    == 1) {
+        print OUT "MemorySequence";
     } elsif ($triangle  == 1) {
         print OUT "triangle.Triangle";
     } elsif ($upperleft == 1) {
@@ -126,6 +134,8 @@ GFis
         print OUT "extends $rseqno";
     } elsif ($holonomic  == 1) {
         print OUT "extends HolonomicRecurrence";
+    } elsif ($memory     == 1) {
+        print OUT "extends MemorySequence";
     } elsif ($triangle   == 1) {
         print OUT "extends Triangle";
     } elsif ($upperleft  == 1) {
@@ -196,6 +206,18 @@ GFis
 GFis
     #--------
     if (0) { # switch for methods
+    } elsif ($memory) {
+        print OUT <<"GFis";
+  \@Override
+  protected Z computeNext() {
+    final int n = size();
+    if ((n \& 1) == 0) {
+      return Z.valueOf(n);
+    } else {
+      return Z.valueOf(n);
+    }
+  }
+GFis
     } elsif ($triangle) {
         print OUT <<"GFis"; # Pascal's rule
   \@Override

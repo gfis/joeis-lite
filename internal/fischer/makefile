@@ -123,8 +123,8 @@ diff_ramath:
 	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis || :
 	# diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test || :
 diff_joeis:
-	ls -1 ../../src/irvine/oeis/*.java | xargs -l -innn \
-	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/ || :
+	ls -1 ../../src/irvine/oeis/ca/*.java | xargs -l -innn \
+	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/ca/ || :
 #	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/ || :
 diff_triangle:
 	ls -1 ../../src/irvine/oeis/triangle/*.java | xargs -l -innn \
