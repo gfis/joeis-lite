@@ -14,7 +14,7 @@ public class $(ASEQNO) extends Cellular1DAutomaton {
   public $(ASEQNO)() {
     super($(PARM1));
   }
-  
+
   @Override
   public Z next() {
     return super.nextBlackSum();

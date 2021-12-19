@@ -1315,9 +1315,17 @@ bitoper:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #--------------------------------
-caelem:
-	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
+ca1elem:
+	grep -E "^A[0-9]" $(COMMON)/../ca/$@.gen \
 	| grep -v ca1other \
+	| perl -ne 'print if substr($$_, 0, 7) ge "A038000";'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--
+ca2elem:
+	grep -E "^A[0-9]" $(COMMON)/../ca/$@.gen \
+	| grep -v ca2other \
 	| perl -ne 'print if substr($$_, 0, 7) ge "A038000";'\
 	>        $@.gen
 	head -n4 $@.gen

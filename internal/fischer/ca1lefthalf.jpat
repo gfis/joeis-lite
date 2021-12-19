@@ -17,6 +17,6 @@ public class $(ASEQNO) extends Cellular1DAutomaton {
 
   @Override
   public Z next() {
-    return super.nextBlackCount();
+    return super.nextLeftHalf();
   }
 }

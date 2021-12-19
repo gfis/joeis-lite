@@ -415,6 +415,36 @@ public class Cellular1DAutomaton implements Sequence {
   }
 
   /**
+   * Get the next term of the left half of each row (including the middle).
+   * @return 0 or 1
+   */
+  public Z nextLeftHalf() {
+    if (! mIter.hasNext()) {
+      computeNextRow();
+      mIter = new RowIterator();
+      mIter.mEndCount = mGen + 1;
+    }
+    final int bitPos = mIter.next();
+    return ((mOldBlock & (1 << bitPos)) == 0) ? Z.ZERO : Z.ONE;
+  }
+
+  /**
+   * Get the next term of the right half of each row (including the middle).
+   * @return 0 or 1
+   */
+  public Z nextRightHalf() {
+    if (! mIter.hasNext()) {
+      computeNextRow();
+      mIter = new RowIterator();
+      mIter.mCount = mGen;
+      mIter.mIndex = mCenter;
+      mIter.mBitPos = mCenterShift;
+    }
+    final int bitPos = mIter.next();
+    return ((mOldBlock & (1 << bitPos)) == 0) ? Z.ZERO : Z.ONE;
+  }
+
+  /**
    * Get the next row as a binary number represented by decimal digits.
    * @return 11001 for generation 2 of rule 30.
    */
