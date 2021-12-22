@@ -1,7 +1,5 @@
 package irvine.oeis.ca;
 
-import java.util.ArrayList;
-
 import irvine.math.z.Z;
 import irvine.oeis.Sequence;
 
@@ -14,10 +12,27 @@ import irvine.oeis.Sequence;
  * and the other parts of the 4 quadrants can be completed by reflection and rotation of that triangle.
  * "5-Neighbor Outer Totalistic" means that the new value of a specific cell depends on the old value of that cell
  * and the number of black values in the 4 cells to the north, east, south, west of that cell.
+ * For example Rule 614:
+ * <pre>
+ *     4433221100 neighbors
+ *     scscscscsc current cell is c=clear, s=set
+ *   0b1001100110 = decimal 614
+ * </pre>
+ * The current cell is set iff:
+ * <ul>
+ * <li>it was set  and no neighbor  was set</li>
+ * <li>it was clear and 1 neighbor  was set</li>
+ * <li>it was set   and 2 neighbors were set</li>
+ * <li>it was clear and 3 neighbors were set</li>
+ * <li>it was set   and 4 neighbors were set</li>
+ * </ul>
  * @author Georg Fischer
  */
-public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
+public class FiveNeighbor2DAutomaton implements Sequence {
 
+
+  /** Allocate rows in multiples of this number */
+  protected static final int CHUNK_SIZE = 8;
   /** Rule number 0..1023, cf. ANKOS pp. 170-179 */
   protected int mRule;
   /**
@@ -25,6 +40,10 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * in the lowest bit position of <code>mOldRow[mCenter]</code>
    */
   protected int mGen;
+  /** Buffer for the bits of generation n */
+  protected Z[] mOldTri;
+  /** Buffer for the bits of generation n+1 */
+  protected Z[] mNewTri;
 
   /** Index of next term */
   protected int mN;
@@ -47,10 +66,12 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
     mRule = rule;
     sDebug = 0;
     mSum = Z.ZERO;
-    mBlackCount = 1;
+    mBackground = 0;
     mN = -1;
-    add(Z.ONE); // set origin to black
-  }
+    mOldTri = new Z[CHUNK_SIZE];
+    mOldTri[0] = Z.ONE; // set origin to black
+    mBlackCount = 1;
+   }
 
   /**
    * Set the debugging level.
@@ -61,10 +82,105 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
   }
 
   /**
-   * Compute the new sqaure of the next generation from the old square.
+   * Compute the new square of the next generation from the old square.
+   * All rows are computed from <code>2^0</code> to <code>2^mGen</code>.
    */
   public void computeNext() {
-  	// ++mGen;
+    ++mGen;
+    mOldTri[mGen] = mBackground == 0 ? Z.ZERO : Z.ONE.shiftLeft(mGen + 1).subtract(1); // set the background in the next row
+    mOldTri[mGen + 1] = mBackground == 0 ? Z.ZERO : Z.ONE.shiftLeft(mGen + 2).subtract(1); // set the background in the next but one row
+    int newLen = mOldTri.length;
+    if (mGen + 2 >= newLen) {
+      newLen += CHUNK_SIZE;
+    }
+    final Z[] newTri = new Z[newLen];
+    // row 0 is special since first = last
+    newTri[0] = Z.ZERO;
+    int shift
+        = (mOldTri[1].testBit(0) ? 8 : 0)  // south * 4
+        + (mOldTri[0].testBit(0) ? 1 : 0); // self
+    if ((mRule & (1 << shift)) != 0) {
+      newTri[0] = newTri[0].setBit(0);
+    }
+    if (sDebug >= 1) {
+        System.out.println("#   Row 0"
+            + ", mRule="      + mRule + "=0b" + Integer.toBinaryString(mRule)
+            + ", shift="      + shift
+            + ", newTri[0]="  +  newTri[0].toString(2)
+            + ", mOldTri[0]=" + mOldTri[0].toString(2)
+            + ", mOldTri[1]=" + mOldTri[1].toString(2)
+            );
+    }
+    // compute rows >= 1
+    for (int irow = 1; irow <= mGen; ++irow) {
+      newTri[irow] = Z.ZERO;
+      // compute bit 2^0; icol = 0
+      int icol = 0;
+      shift
+          = (mOldTri[irow - 1].testBit(icol    ) ? 2 : 0)  // north
+          + (mOldTri[irow    ].testBit(icol + 1) ? 4 : 0)  // west = east
+          + (mOldTri[irow + 1].testBit(icol    ) ? 2 : 0)  // south
+          + (mOldTri[irow    ].testBit(icol    ) ? 1 : 0); // self
+      if ((mRule & (1 << shift)) != 0) {
+        newTri[irow] = newTri[irow].setBit(icol);
+      }
+      if (sDebug >= 3) {
+         System.out.println("#   irow=" + irow + ", first col=" + icol 
+            + ", shift="           + shift
+            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
+            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
+            );
+      }
+      ++icol;
+      // compute bits 2^1..2^(irow-1)
+      while (icol < irow) {
+        shift
+            = (mOldTri[irow - 1].testBit(icol    ) ? 2 : 0)  // north
+            + (mOldTri[irow    ].testBit(icol + 1) ? 2 : 0)  // west
+            + (mOldTri[irow    ].testBit(icol - 1) ? 2 : 0)  // east
+            + (mOldTri[irow + 1].testBit(icol    ) ? 2 : 0)  // south
+            + (mOldTri[irow    ].testBit(icol    ) ? 1 : 0); // self
+        if ((mRule & (1 << shift)) != 0) {
+          newTri[irow] = newTri[irow].setBit(icol);
+        }
+        if (sDebug >= 3) {
+          System.out.println("#   irow=" + irow + ", inner col=" + icol 
+            + ", shift="           + shift
+            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
+            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
+            );
+        }
+        ++icol;
+      }
+      // compute bit 2^irow; here: icol = irow
+      shift
+          = (mOldTri[irow    ].testBit(icol - 1) ? 4 : 0)  // east = north
+          + (mOldTri[irow + 1].testBit(icol    ) ? 4 : 0)  // south = west, background in the last row
+          + (mOldTri[irow    ].testBit(icol    ) ? 1 : 0); // self
+      if ((mRule & (1 << shift)) != 0) {
+        newTri[irow] = newTri[irow].setBit(icol);
+      }
+      if (sDebug >= 2) {
+         System.out.println("#   irow=" + irow + ", last  col=" + icol 
+            + ", shift="           + shift
+            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
+            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
+            );
+      }
+    }
+    mOldTri = newTri; //                4 3 2 1 0
+    if ((mRule & 1) == 1 && (mRule & 0b1000000000) == 0) {
+      mBackground ^= 1; // flip background
+    }
+    if (mRule >= 512) {
+      mBackground = 1;
+    }
   }
 
   /**
@@ -103,20 +219,25 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return
    */
   public Z nextOn() {
-    long org = get(0).testBit(0) ? 1 : 0;
+    long org = mOldTri[0].testBit(0) ? 1 : 0;
     long lsum = 0L; // left border of the triangle
     long rsum = 0L; // right border
     long tsum = 0L; // whole triangle
-    for (int irow = size() - 1; irow >= 0; --irow) {
-      final Z row = get(irow);
-      if (row.testBit(mGen)) {
+    for (int irow = 0; irow <= mGen; ++irow) {
+      final Z row = mOldTri[irow];
+      if (row.testBit(irow)) {
         ++lsum;
       }
       if (row.testBit(0)) {
         ++rsum;
       }
-      tsum += tsum + row.bitCount();
+      tsum += row.bitCount();
     }
+/*
+    if (sDebug >= 2) {
+      System.out.println("nextOn(" + mGen + "): org=" + org + ", tsum=" + tsum + ", lsum=" + lsum + ", rsum=" + rsum);
+    }
+*/
     tsum = tsum - lsum - rsum + org; // org was counted twice (in lsum and rsum); now we have the count of the inner triangle
     tsum = 8 * tsum + 4 * lsum + 4 * rsum - 7 * org;
     computeNext();
@@ -130,6 +251,7 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
   public Z nextOn2n_1() {
     ++mN;
     while (Integer.bitCount(mN + 1) != 1) {
+      computeNext();
       ++mN;
     }
     return nextOn();
@@ -141,7 +263,14 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextLeftOriginB() {
-    return mSum;
+    mSum = Z.ZERO;
+    for (int irow = mGen; irow >= 0; --irow) {
+      if (mOldTri[irow].testBit(0)) {
+        mSum = mSum.setBit(irow);
+      }
+    }
+    computeNext();
+    return new Z(mSum.toString(2));
   }
 
   /**
@@ -150,7 +279,14 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextOriginRightB() {
-    return mSum;
+    mSum = Z.ZERO;
+    for (int irow = mGen; irow >= 0; --irow) {
+      if (mOldTri[irow].testBit(0)) {
+        mSum = mSum.setBit(mGen - irow);
+      }
+    }
+    computeNext();
+    return new Z(mSum.toString(2));
   }
 
   /**
@@ -159,7 +295,14 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextCornerOriginB() {
-    return mSum;
+    mSum = Z.ZERO;
+    for (int irow = mGen; irow >= 0; --irow) {
+      if (mOldTri[irow].testBit(irow)) {
+        mSum = mSum.setBit(irow);
+      }
+    }
+    computeNext();
+    return new Z(mSum.toString(2));
   }
 
   /**
@@ -168,7 +311,14 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextOriginCornerB() {
-    return mSum;
+    mSum = Z.ZERO;
+    for (int irow = mGen; irow >= 0; --irow) {
+      if (mOldTri[irow].testBit(irow)) {
+        mSum = mSum.setBit(mGen - irow);
+      }
+    }
+    computeNext();
+    return new Z(mSum.toString(2));
   }
 
   /**
@@ -176,6 +326,13 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextLeftOriginD() {
+    mSum = Z.ZERO;
+    for (int irow = mGen; irow >= 0; --irow) {
+      if (mOldTri[irow].testBit(0)) {
+        mSum = mSum.setBit(irow);
+      }
+    }
+    computeNext();
     return mSum;
   }
 
@@ -184,6 +341,13 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextOriginRightD() {
+    mSum = Z.ZERO;
+    for (int irow = mGen; irow >= 0; --irow) {
+      if (mOldTri[irow].testBit(0)) {
+        mSum = mSum.setBit(mGen - irow);
+      }
+    }
+    computeNext();
     return mSum;
   }
 
@@ -192,6 +356,13 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextCornerOriginD() {
+    mSum = Z.ZERO;
+    for (int irow = mGen; irow >= 0; --irow) {
+      if (mOldTri[irow].testBit(irow)) {
+        mSum = mSum.setBit(irow);
+      }
+    }
+    computeNext();
     return mSum;
   }
 
@@ -200,18 +371,31 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextOriginCornerD() {
+    mSum = Z.ZERO;
+    for (int irow = mGen; irow >= 0; --irow) {
+      if (mOldTri[irow].testBit(irow)) {
+        mSum = mSum.setBit(mGen - irow);
+      }
+    }
+    computeNext();
     return mSum;
   }
 
   /**
-   * Displays the old row by using "1" and "." for 0 bits, and " " outside the triangle.
-   * @param width total width of the generated line
+   * Prints the old triangle by using "1" and "." for 0 bits, and " " outside the triangle.
+   * @param width width of the generated lines
    * @param mode 2 = binary as decimal, block display otherwise
    */
-  public void displaySquare(final int width, final int mode) {
-    final StringBuilder sb = new StringBuilder(width);
-    System.out.println(String.format("%3d: %" + String.valueOf(width / 2 - mGen) + "s", mGen, " ")
-        + (mBackground == 0 ? "-" : "+") + sb.toString() + (mBackground == 0 ? "-" : "+"));
+  public void printTriangle(final int width, final int mode) {
+    System.out.println("Generation " + mGen);
+    for (int irow = 0; irow <= mGen; ++irow) {
+      final Z row = mOldTri[irow];
+      StringBuilder sb = new StringBuilder();
+      for (int icol = irow; icol >= 0; --icol) {
+        sb.append(row.testBit(icol) ? 'X' : '.');
+      }
+      System.out.println(String.format("%" + String.valueOf(width - irow) + "s", " ") + sb.toString());
+    }
   }
 
   /**
@@ -222,15 +406,15 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
    * <li>-d  level debugging level (default 0=none, 1=some, 2=more)</li>
    * <li>-r  rule number</li>
    * <li>-n  numTerms number of terms to be computed (default: 16)</li>
-   * <li>-cc callcode</li>
+   * <li>-cc callcode: triangle</li>
    * </ul>
    */
   public static void main(String[] args) {
     boolean bfile = false;
-    String callCode = "rows";
+    String callCode = "triangle";
     int debug    = 0;
     int mode     = 1;
-    int numTerms = 32;
+    int numTerms = 8;
     int ruleNo   = 30;
     int iarg = 0;
     while (iarg < args.length) { // consume all arguments
@@ -259,24 +443,30 @@ public class FiveNeighbor2DAutomaton extends ArrayList<Z> implements Sequence {
     FiveNeighbor2DAutomaton ca = new FiveNeighbor2DAutomaton(ruleNo);
     ca.setDebug(debug);
     if (false) {
-    } else if (callCode.equals("bfile")){
+    } else if (callCode.equals("triangle")){
       for (int gen = 0; gen < numTerms; ++gen) {
-        ca.mGen = gen;
-        System.out.println(gen + " " );
+        ca.printTriangle(2 * numTerms + 4, mode);
         ca.computeNext();
       }
-    } else if (callCode.equals("rows")){
+    } else if (callCode.equals("on")){
       for (int gen = 0; gen < numTerms; ++gen) {
-        ca.displaySquare(2 * numTerms + 4, mode);
-        ca.computeNext();
+        System.out.println(gen + " " + ca.nextOn());
       }
-     } else if (callCode.equals("next")){
-      for (int n = 0; n < numTerms; ++n) {
-        if (bfile) {
-          System.out.println(n + " " + ca.next());
-        } else {
-          System.out.print((n == 0 ? "" : ",") + ca.next());
-        }
+    } else if (callCode.equals("leftb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextLeftOriginB());
+      }
+    } else if (callCode.equals("rightb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextOriginRightB());
+      }
+    } else if (callCode.equals("inb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextCornerOriginB());
+      }
+    } else if (callCode.equals("outb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextOriginCornerB());
       }
     } else {
       System.err.println("??? invalid callCode: \"" + callCode + "\"");

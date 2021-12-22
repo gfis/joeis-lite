@@ -1327,7 +1327,9 @@ ca2elem:
 	grep -E "^A[0-9]" $(COMMON)/../ca/$@.gen \
 	| grep -v ca2other \
 	| perl -ne 'print if substr($$_, 0, 7) ge "A038000";'\
-	>        $@.gen
+	>        $@.tmp
+	grep -E  "ca2on2" $@.tmp > ca2on2.gen
+	grep -vE "ca2on2" $@.tmp > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--
