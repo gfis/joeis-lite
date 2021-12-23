@@ -1332,6 +1332,9 @@ ca2elem:
 	grep -vE "ca2on2" $@.tmp > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+ca2on2:
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--
 caelem_alt:
 	$(DBAT) -x "SELECT aseqno FROM seq4 WHERE parm2 <> 'nyi' ORDER BY 1" \

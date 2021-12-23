@@ -42,9 +42,6 @@ public class FiveNeighbor2DAutomaton implements Sequence {
   protected int mGen;
   /** Buffer for the bits of generation n */
   protected Z[] mOldTri;
-  /** Buffer for the bits of generation n+1 */
-  protected Z[] mNewTri;
-
   /** Index of next term */
   protected int mN;
   /** Debugging mode: 0=none, 1=some, 2=more. */
@@ -53,8 +50,6 @@ public class FiveNeighbor2DAutomaton implements Sequence {
   protected int mBackground; //
   /** Summation term for several subtypes of sequences */
   protected Z mSum;
-  /** Count of BLACK/ON cells in current square */
-  protected int mBlackCount;
 
   /**
    * Creates a sequence derived from the cellular automaton with the given rule
@@ -70,7 +65,6 @@ public class FiveNeighbor2DAutomaton implements Sequence {
     mN = -1;
     mOldTri = new Z[CHUNK_SIZE];
     mOldTri[0] = Z.ONE; // set origin to black
-    mBlackCount = 1;
    }
 
   /**
@@ -184,25 +178,6 @@ public class FiveNeighbor2DAutomaton implements Sequence {
   }
 
   /**
-   * Reverse the bits in a number.
-   * The rightmost bit becomes the leftmost bit in a field of a specified length.
-   * Any remaining space is filled with zeros.
-   * @param num number
-   * @parmm width bit field length
-   * @return reversed number
-   */
-  public static Z reverse2(final Z num, final int width) {
-    final int last = width - 1;
-    Z result = Z.ZERO;
-    for (int bpos = 0; bpos <= last; ++bpos) {
-      if (num.testBit(bpos)) {
-        result = result.setBit(last - bpos);
-      }
-    }
-    return result;
-  }
-
-  /**
    * Get the next term of the sequence.
    * Cf. interface {@link Sequence}.
    * The implementation here is not used.
@@ -211,7 +186,7 @@ public class FiveNeighbor2DAutomaton implements Sequence {
    */
   @Override
   public Z next() {
-    return Z.ZERO;
+    throw new ArithmeticException("FiveNeighbor2DAutomaton.next() may not be called");
   }
 
   /**
@@ -263,14 +238,14 @@ public class FiveNeighbor2DAutomaton implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextLeftOriginB() {
-    mSum = Z.ZERO;
+    Z result = Z.ZERO;
     for (int irow = mGen; irow >= 0; --irow) {
       if (mOldTri[irow].testBit(0)) {
-        mSum = mSum.setBit(irow);
+        result = result.setBit(irow);
       }
     }
     computeNext();
-    return new Z(mSum.toString(2));
+    return new Z(result.toString(2));
   }
 
   /**
@@ -279,46 +254,46 @@ public class FiveNeighbor2DAutomaton implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextOriginRightB() {
-    mSum = Z.ZERO;
+    Z result = Z.ZERO;
     for (int irow = mGen; irow >= 0; --irow) {
       if (mOldTri[irow].testBit(0)) {
-        mSum = mSum.setBit(mGen - irow);
+        result = result.setBit(mGen - irow);
       }
     }
     computeNext();
-    return new Z(mSum.toString(2));
+    return new Z(result.toString(2));
   }
 
   /**
-   * Get the number whose bits represent the row segment from a corner to the origin.
+   * Get the number whose bits represent the diagonal segment from a corner to the origin.
    * The binary number is represented by decimal digits 0 and 1.
    * @return a number with bits set for black cells
    */
   public Z nextCornerOriginB() {
-    mSum = Z.ZERO;
+    Z result = Z.ZERO;
     for (int irow = mGen; irow >= 0; --irow) {
       if (mOldTri[irow].testBit(irow)) {
-        mSum = mSum.setBit(irow);
+        result = result.setBit(irow);
       }
     }
     computeNext();
-    return new Z(mSum.toString(2));
+    return new Z(result.toString(2));
   }
 
   /**
-   * Get the number whose bits represent the row segment from the origin to a corner.
+   * Get the number whose bits represent the diagonal segment from the origin to a corner.
    * The binary number is represented by decimal digits 0 and 1.
    * @return a number with bits set for black cells
    */
   public Z nextOriginCornerB() {
-    mSum = Z.ZERO;
+    Z result = Z.ZERO;
     for (int irow = mGen; irow >= 0; --irow) {
       if (mOldTri[irow].testBit(irow)) {
-        mSum = mSum.setBit(mGen - irow);
+        result = result.setBit(mGen - irow);
       }
     }
     computeNext();
-    return new Z(mSum.toString(2));
+    return new Z(result.toString(2));
   }
 
   /**
@@ -326,14 +301,14 @@ public class FiveNeighbor2DAutomaton implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextLeftOriginD() {
-    mSum = Z.ZERO;
+    Z result = Z.ZERO;
     for (int irow = mGen; irow >= 0; --irow) {
       if (mOldTri[irow].testBit(0)) {
-        mSum = mSum.setBit(irow);
+        result = result.setBit(irow);
       }
     }
     computeNext();
-    return mSum;
+    return result;
   }
 
   /**
@@ -341,44 +316,44 @@ public class FiveNeighbor2DAutomaton implements Sequence {
    * @return a number with bits set for black cells
    */
   public Z nextOriginRightD() {
-    mSum = Z.ZERO;
+    Z result = Z.ZERO;
     for (int irow = mGen; irow >= 0; --irow) {
       if (mOldTri[irow].testBit(0)) {
-        mSum = mSum.setBit(mGen - irow);
+        result = result.setBit(mGen - irow);
       }
     }
     computeNext();
-    return mSum;
+    return result;
   }
 
   /**
-   * Get the number whose bits represent the row segment from a corner to the origin.
+   * Get the number whose bits represent the diagonal segment from a corner to the origin.
    * @return a number with bits set for black cells
    */
   public Z nextCornerOriginD() {
-    mSum = Z.ZERO;
+    Z result = Z.ZERO;
     for (int irow = mGen; irow >= 0; --irow) {
       if (mOldTri[irow].testBit(irow)) {
-        mSum = mSum.setBit(irow);
+        result = result.setBit(irow);
       }
     }
     computeNext();
-    return mSum;
+    return result;
   }
 
   /**
-   * Get the number whose bits represent the row segment from the origin to a corner.
+   * Get the number whose bits represent the diagonal segment from the origin to a corner.
    * @return a number with bits set for black cells
    */
   public Z nextOriginCornerD() {
-    mSum = Z.ZERO;
+    Z result = Z.ZERO;
     for (int irow = mGen; irow >= 0; --irow) {
       if (mOldTri[irow].testBit(irow)) {
-        mSum = mSum.setBit(mGen - irow);
+        result = result.setBit(mGen - irow);
       }
     }
     computeNext();
-    return mSum;
+    return result;
   }
 
   /**
