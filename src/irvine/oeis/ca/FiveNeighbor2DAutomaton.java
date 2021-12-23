@@ -46,10 +46,6 @@ public class FiveNeighbor2DAutomaton implements Sequence {
   protected int mN;
   /** Debugging mode: 0=none, 1=some, 2=more. */
   protected static int sDebug;
-  /** Cell values for the rest of the square outside the current generation. */
-  protected int mBackground; //
-  /** Summation term for several subtypes of sequences */
-  protected Z mSum;
 
   /**
    * Creates a sequence derived from the cellular automaton with the given rule
@@ -60,11 +56,10 @@ public class FiveNeighbor2DAutomaton implements Sequence {
     mGen = 0;
     mRule = rule;
     sDebug = 0;
-    mSum = Z.ZERO;
-    mBackground = 0;
     mN = -1;
     mOldTri = new Z[CHUNK_SIZE];
     mOldTri[0] = Z.ONE; // set origin to black
+    mOldTri[1] = Z.ZERO; // initial background
    }
 
   /**
@@ -81,10 +76,18 @@ public class FiveNeighbor2DAutomaton implements Sequence {
    */
   public void computeNext() {
     ++mGen;
-    mOldTri[mGen] = mBackground == 0 ? Z.ZERO : Z.ONE.shiftLeft(mGen + 1).subtract(1); // set the background in the next row
-    mOldTri[mGen + 1] = mBackground == 0 ? Z.ZERO : Z.ONE.shiftLeft(mGen + 2).subtract(1); // set the background in the next but one row
+    Z background = mOldTri[mGen];
+    if (background.isZero()) {
+      mOldTri[mGen + 1] = background;
+      mOldTri[mGen + 2] = background;
+    } else {
+      background = background.setBit(mGen + 1);
+      mOldTri[mGen + 1] = background;
+      background = background.setBit(mGen + 2);
+      mOldTri[mGen + 2] = background;
+    }
     int newLen = mOldTri.length;
-    if (mGen + 2 >= newLen) {
+    if (mGen + 4 >= newLen) {
       newLen += CHUNK_SIZE;
     }
     final Z[] newTri = new Z[newLen];
@@ -106,7 +109,7 @@ public class FiveNeighbor2DAutomaton implements Sequence {
             );
     }
     // compute rows >= 1
-    for (int irow = 1; irow <= mGen; ++irow) {
+    for (int irow = 1; irow <= mGen + 1; ++irow) {
       newTri[irow] = Z.ZERO;
       // compute bit 2^0; icol = 0
       int icol = 0;
@@ -168,32 +171,16 @@ public class FiveNeighbor2DAutomaton implements Sequence {
             );
       }
     }
-    mOldTri = newTri; //                4 3 2 1 0
-    if ((mRule & 1) == 1 && (mRule & 0b1000000000) == 0) {
-      mBackground ^= 1; // flip background
-    }
-    if (mRule >= 512) {
-      mBackground = 1;
-    }
+    mOldTri = newTri; 
   }
 
   /**
    * Get the next term of the sequence.
    * Cf. interface {@link Sequence}.
-   * The implementation here is not used.
-   * Instead, the <code>next()</code> method of the subclasses calls one of the other <code>next*()</code> methods here.
-   * @return the next term.
+   * @return total number of black cells in the next generation
    */
   @Override
   public Z next() {
-    throw new ArithmeticException("FiveNeighbor2DAutomaton.next() may not be called");
-  }
-
-  /**
-   * Get the total number of black cells in the next generation.
-   * @return
-   */
-  public Z nextOn() {
     long org = mOldTri[0].testBit(0) ? 1 : 0;
     long lsum = 0L; // left border of the triangle
     long rsum = 0L; // right border
@@ -229,7 +216,7 @@ public class FiveNeighbor2DAutomaton implements Sequence {
       computeNext();
       ++mN;
     }
-    return nextOn();
+    return next();
   }
 
   /**
@@ -425,7 +412,7 @@ public class FiveNeighbor2DAutomaton implements Sequence {
       }
     } else if (callCode.equals("on")){
       for (int gen = 0; gen < numTerms; ++gen) {
-        System.out.println(gen + " " + ca.nextOn());
+        System.out.println(gen + " " + ca.next());
       }
     } else if (callCode.equals("leftb")){
       for (int gen = 0; gen < numTerms; ++gen) {
