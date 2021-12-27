@@ -17,6 +17,6 @@ public class $(ASEQNO) extends FiveNeighbor2DAutomaton {
 
   @Override
   public Z next() {
-    return super.nextOn2n_1();
+    return super.nextOn2n1();
   }
 }

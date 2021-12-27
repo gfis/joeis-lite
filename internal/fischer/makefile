@@ -123,8 +123,8 @@ diff_ramath:
 	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis || :
 	# diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test || :
 diff_joeis:
-	ls -1 ../../src/irvine/oeis/ca/*.java | xargs -l -innn \
-	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/ca/ || :
+	ls -1 ../../src/irvine/oeis/cons/*.java | xargs -l -innn \
+	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/cons/ || :
 #	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/ || :
 diff_triangle:
 	ls -1 ../../src/irvine/oeis/triangle/*.java | xargs -l -innn \
@@ -1328,7 +1328,8 @@ ca2elem:
 	| grep -v ca2other \
 	| perl -ne 'print if substr($$_, 0, 7) ge "A038000";'\
 	>        $@.tmp
-	grep -E  "ca2on2" $@.tmp > ca2on2.gen
+	grep -E  "ca2on2" $@.tmp \
+	| sed -e "s/$$/x/" > ca2on2.gen
 	grep -vE "ca2on2" $@.tmp > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

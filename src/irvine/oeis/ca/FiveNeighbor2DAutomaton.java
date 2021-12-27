@@ -99,15 +99,15 @@ public class FiveNeighbor2DAutomaton implements Sequence {
     if ((mRule & (1 << shift)) != 0) {
       newTri[0] = newTri[0].setBit(0);
     }
-//**    if (sDebug >= 1) {
-//**        System.out.println("#   Row 0"
-//**            + ", mRule="      + mRule + "=0b" + Integer.toBinaryString(mRule)
-//**            + ", shift="      + shift
-//**            + ", newTri[0]="  +  newTri[0].toString(2)
-//**            + ", mOldTri[0]=" + mOldTri[0].toString(2)
-//**            + ", mOldTri[1]=" + mOldTri[1].toString(2)
-//**            );
-//**    }
+    if (sDebug >= 1) {
+        System.out.println("#   Row 0"
+            + ", mRule="      + mRule + "=0b" + Integer.toBinaryString(mRule)
+            + ", shift="      + shift
+            + ", newTri[0]="  +  newTri[0].toString(2)
+            + ", mOldTri[0]=" + mOldTri[0].toString(2)
+            + ", mOldTri[1]=" + mOldTri[1].toString(2)
+            );
+    }
     // compute rows >= 1
     for (int irow = 1; irow <= mGen + 1; ++irow) {
       newTri[irow] = Z.ZERO;
@@ -121,15 +121,15 @@ public class FiveNeighbor2DAutomaton implements Sequence {
       if ((mRule & (1 << shift)) != 0) {
         newTri[irow] = newTri[irow].setBit(icol);
       }
-//**      if (sDebug >= 3) {
-//**         System.out.println("#   irow=" + irow + ", first col=" + icol 
-//**            + ", shift="           + shift
-//**            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
-//**            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
-//**            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
-//**            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
-//**            );
-//**      }
+      if (sDebug >= 3) {
+         System.out.println("#   irow=" + irow + ", first col=" + icol 
+            + ", shift="           + shift
+            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
+            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
+            );
+      }
       ++icol;
       // compute bits 2^1..2^(irow-1)
       while (icol < irow) {
@@ -142,15 +142,15 @@ public class FiveNeighbor2DAutomaton implements Sequence {
         if ((mRule & (1 << shift)) != 0) {
           newTri[irow] = newTri[irow].setBit(icol);
         }
-//**        if (sDebug >= 3) {
-//**          System.out.println("#   irow=" + irow + ", inner col=" + icol 
-//**            + ", shift="           + shift
-//**            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
-//**            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
-//**            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
-//**            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
-//**            );
-//**        }
+        if (sDebug >= 3) {
+          System.out.println("#   irow=" + irow + ", inner col=" + icol 
+            + ", shift="           + shift
+            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
+            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
+            );
+        }
         ++icol;
       }
       // compute bit 2^irow; here: icol = irow
@@ -161,15 +161,15 @@ public class FiveNeighbor2DAutomaton implements Sequence {
       if ((mRule & (1 << shift)) != 0) {
         newTri[irow] = newTri[irow].setBit(icol);
       }
-//**      if (sDebug >= 2) {
-//**         System.out.println("#   irow=" + irow + ", last  col=" + icol 
-//**            + ", shift="           + shift
-//**            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
-//**            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
-//**            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
-//**            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
-//**            );
-//**      }
+      if (sDebug >= 2) {
+         System.out.println("#   irow=" + irow + ", last  col=" + icol 
+            + ", shift="           + shift
+            + ", newTri[" + irow        + "]=" +  newTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow - 1) + "]=" + mOldTri[irow - 1].toString(2)
+            + ", mOldTri[" + irow       + "]=" + mOldTri[irow    ].toString(2)
+            + ", mOldTri[" + (irow + 1) + "]=" + mOldTri[irow + 1].toString(2)
+            );
+      }
     }
     mOldTri = newTri; 
   }
@@ -181,6 +181,15 @@ public class FiveNeighbor2DAutomaton implements Sequence {
    */
   @Override
   public Z next() {
+    return nextOn();
+  }
+
+  /**
+   * Get the next term of the sequence.
+   * Cf. interface {@link Sequence}.
+   * @return total number of black cells in the next generation
+   */
+  public Z nextOn() {
     long org = mOldTri[0].testBit(0) ? 1 : 0;
     long lsum = 0L; // left border of the triangle
     long rsum = 0L; // right border
@@ -195,9 +204,9 @@ public class FiveNeighbor2DAutomaton implements Sequence {
       }
       tsum += row.bitCount();
     }
-//**    if (sDebug >= 2) {
-//**      System.out.println("nextOn(" + mGen + "): org=" + org + ", tsum=" + tsum + ", lsum=" + lsum + ", rsum=" + rsum);
-//**    }
+    if (sDebug >= 2) {
+      System.out.println("nextOn(" + mGen + "): org=" + org + ", tsum=" + tsum + ", lsum=" + lsum + ", rsum=" + rsum);
+    }
     tsum = tsum - lsum - rsum + org; // org was counted twice (in lsum and rsum); now we have the count of the inner triangle
     tsum = 8 * tsum + 4 * lsum + 4 * rsum - 7 * org;
     computeNext();
@@ -208,13 +217,14 @@ public class FiveNeighbor2DAutomaton implements Sequence {
    * Get the total number of black cells in the next generation with number 2^n - 1
    * @return 0 or 1
    */
-  public Z nextOn2n_1() {
-    ++mN;
-    while (Integer.bitCount(mN + 1) != 1) {
+  public Z nextOn2n1() {
+    while (Integer.bitCount(mGen + 1) != 1) {
+      if (sDebug >= 1) {
+        System.out.println("mGen=" + mGen + ", bitcount=" + Integer.bitCount(mGen + 1));
+      }
       computeNext();
-      ++mN;
     }
-    return next();
+    return nextOn();
   }
 
   /**
@@ -341,95 +351,99 @@ public class FiveNeighbor2DAutomaton implements Sequence {
     return result;
   }
 
-//**  /**
-//**   * Prints the old triangle by using "1" and "." for 0 bits, and " " outside the triangle.
-//**   * @param width width of the generated lines
-//**   * @param mode 2 = binary as decimal, block display otherwise
-//**   */
-//**  public void printTriangle(final int width, final int mode) {
-//**    System.out.println("Generation " + mGen);
-//**    for (int irow = 0; irow <= mGen; ++irow) {
-//**      final Z row = mOldTri[irow];
-//**      StringBuilder sb = new StringBuilder();
-//**      for (int icol = irow; icol >= 0; --icol) {
-//**        sb.append(row.testBit(icol) ? 'X' : '.');
-//**      }
-//**      System.out.println(String.format("%" + String.valueOf(width - irow) + "s", " ") + sb.toString());
-//**    }
-//**  }
-//**
-//**  /**
-//**   * Main method for debugging.
-//**   * @param args command line arguments:
-//**   * <ul>
-//**   * <li>-b  print in b-file format instead of comma separated list</li>
-//**   * <li>-d  level debugging level (default 0=none, 1=some, 2=more)</li>
-//**   * <li>-r  rule number</li>
-//**   * <li>-n  numTerms number of terms to be computed (default: 16)</li>
-//**   * <li>-cc callcode: triangle</li>
-//**   * </ul>
-//**   */
-//**  public static void main(String[] args) {
-//**    boolean bfile = false;
-//**    String callCode = "triangle";
-//**    int debug    = 0;
-//**    int mode     = 1;
-//**    int numTerms = 8;
-//**    int ruleNo   = 30;
-//**    int iarg = 0;
-//**    while (iarg < args.length) { // consume all arguments
-//**      String opt = args[iarg ++];
-//**      try {
-//**        if (false) {
-//**        } else if (opt.equals    ("-b")     ) {
-//**          bfile    = true;
-//**        } else if (opt.equals    ("-cc")     ) {
-//**          callCode = args[iarg ++];
-//**        } else if (opt.equals    ("-d")     ) {
-//**          debug    = Integer.parseInt(args[iarg ++]);
-//**        } else if (opt.equals    ("-m")     ) {
-//**          mode     = Integer.parseInt(args[iarg ++]);
-//**        } else if (opt.equals    ("-n")     ) {
-//**          numTerms = Integer.parseInt(args[iarg ++]);
-//**        } else if (opt.equals    ("-r")     ) {
-//**          ruleNo   = Integer.parseInt(args[iarg ++]);
-//**        } else {
-//**          System.err.println("??? invalid option: \"" + opt + "\"");
-//**        }
-//**      } catch (Exception exc) { // take default
-//**      }
-//**    } // while args
-//**
-//**    FiveNeighbor2DAutomaton ca = new FiveNeighbor2DAutomaton(ruleNo);
-//**    ca.setDebug(debug);
-//**    if (false) {
-//**    } else if (callCode.equals("triangle")){
-//**      for (int gen = 0; gen < numTerms; ++gen) {
-//**        ca.printTriangle(2 * numTerms + 4, mode);
-//**        ca.computeNext();
-//**      }
-//**    } else if (callCode.equals("on")){
-//**      for (int gen = 0; gen < numTerms; ++gen) {
-//**        System.out.println(gen + " " + ca.next());
-//**      }
-//**    } else if (callCode.equals("leftb")){
-//**      for (int gen = 0; gen < numTerms; ++gen) {
-//**        System.out.println(gen + " " + ca.nextLeftOriginB());
-//**      }
-//**    } else if (callCode.equals("rightb")){
-//**      for (int gen = 0; gen < numTerms; ++gen) {
-//**        System.out.println(gen + " " + ca.nextOriginRightB());
-//**      }
-//**    } else if (callCode.equals("inb")){
-//**      for (int gen = 0; gen < numTerms; ++gen) {
-//**        System.out.println(gen + " " + ca.nextCornerOriginB());
-//**      }
-//**    } else if (callCode.equals("outb")){
-//**      for (int gen = 0; gen < numTerms; ++gen) {
-//**        System.out.println(gen + " " + ca.nextOriginCornerB());
-//**      }
-//**    } else {
-//**      System.err.println("??? invalid callCode: \"" + callCode + "\"");
-//**    }
-//**  } // main
+  /**
+   * Prints the old triangle by using "1" and "." for 0 bits, and " " outside the triangle.
+   * @param width width of the generated lines
+   * @param mode 2 = binary as decimal, block display otherwise
+   */
+  public void printTriangle(final int width, final int mode) {
+    System.out.println("Generation " + mGen);
+    for (int irow = 0; irow <= mGen; ++irow) {
+      final Z row = mOldTri[irow];
+      StringBuilder sb = new StringBuilder();
+      for (int icol = irow; icol >= 0; --icol) {
+        sb.append(row.testBit(icol) ? 'X' : '.');
+      }
+      System.out.println(String.format("%" + String.valueOf(width - irow) + "s", " ") + sb.toString());
+    }
+  }
+
+  /**
+   * Main method for debugging.
+   * @param args command line arguments:
+   * <ul>
+   * <li>-b  print in b-file format instead of comma separated list</li>
+   * <li>-d  level debugging level (default 0=none, 1=some, 2=more)</li>
+   * <li>-r  rule number</li>
+   * <li>-n  numTerms number of terms to be computed (default: 16)</li>
+   * <li>-cc callcode: triangle</li>
+   * </ul>
+   */
+  public static void main(String[] args) {
+    boolean bfile = false;
+    String callCode = "triangle";
+    int debug    = 0;
+    int mode     = 1;
+    int numTerms = 8;
+    int ruleNo   = 30;
+    int iarg = 0;
+    while (iarg < args.length) { // consume all arguments
+      String opt = args[iarg ++];
+      try {
+        if (false) {
+        } else if (opt.equals    ("-b")     ) {
+          bfile    = true;
+        } else if (opt.equals    ("-cc")     ) {
+          callCode = args[iarg ++];
+        } else if (opt.equals    ("-d")     ) {
+          debug    = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-m")     ) {
+          mode     = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-n")     ) {
+          numTerms = Integer.parseInt(args[iarg ++]);
+        } else if (opt.equals    ("-r")     ) {
+          ruleNo   = Integer.parseInt(args[iarg ++]);
+        } else {
+          System.err.println("??? invalid option: \"" + opt + "\"");
+        }
+      } catch (Exception exc) { // take default
+      }
+    } // while args
+
+    FiveNeighbor2DAutomaton ca = new FiveNeighbor2DAutomaton(ruleNo);
+    ca.setDebug(debug);
+    if (false) {
+    } else if (callCode.equals("triangle")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        ca.printTriangle(2 * numTerms + 4, mode);
+        ca.computeNext();
+      }
+    } else if (callCode.equals("on")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.next());
+      }
+    } else if (callCode.equals("on2")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextOn2n1());
+      }
+    } else if (callCode.equals("leftb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextLeftOriginB());
+      }
+    } else if (callCode.equals("rightb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextOriginRightB());
+      }
+    } else if (callCode.equals("inb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextCornerOriginB());
+      }
+    } else if (callCode.equals("outb")){
+      for (int gen = 0; gen < numTerms; ++gen) {
+        System.out.println(gen + " " + ca.nextOriginCornerB());
+      }
+    } else {
+      System.err.println("??? invalid callCode: \"" + callCode + "\"");
+    }
+  } // main
 }

@@ -1,12 +1,13 @@
 /* Test class, run an EulerTransform of a PeriodicSequence
  * @(#) $Id$
+ * 2021-12-27: subpackage irvine.oeis.transform
  * 2020-08-13, Georg Fischer: copied from EulerTransformPeriodTest
  */
 package irvine.test;
 
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
-import irvine.oeis.EulerTransform;
+import irvine.oeis.transform.EulerTransform;
 import irvine.oeis.PeriodicSequence;
 import irvine.oeis.Sequence;
 

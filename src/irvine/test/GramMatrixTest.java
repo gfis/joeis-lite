@@ -3,7 +3,7 @@ package irvine.test;
 import irvine.math.IntegerUtils;
 import irvine.math.z.Z;
 import irvine.oeis.GramMatrixThetaSeries;
-import irvine.oeis.InverseEulerTransform;
+import irvine.oeis.transform.InverseEulerTransform;
 import irvine.oeis.Sequence;
 
 /**
