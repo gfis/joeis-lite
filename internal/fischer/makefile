@@ -2943,6 +2943,11 @@ testaron: # A= B=
 	| tee    $@.tmp
 	perl test_aan.pl $@.tmp
 #--------------------------------
+inidig:
+	grep -E "^A" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 interleave:
 	grep -E "^A[0-9]" $@.man \
 	| perl -ne 'use strict; my @asns = m{(A\d\d+)}g; if (scalar(@asns) >= 3) { print join("\t", $$asns[0], "$@", 0, $$asns[1], $$asns[2], "". "") . "\n"; } '\
@@ -3799,6 +3804,10 @@ trideleh:
 #----
 triprod:
 	cp -v $(TRIREC)/triprod2.tmp $@.gen
+triprom:
+	grep -E "^A[0-9]" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 trisimple:
 	cp -v $(TRIREC)/$@.java $@.gen
 #------------------------------------------------------
