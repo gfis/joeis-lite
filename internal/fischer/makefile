@@ -3854,6 +3854,8 @@ posins2:
 	head -n2 posins.rest
 	wc -l    posins.gen posins.rest
 	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
+posind:
+	grep -E "^A[0-9]" posind.man > $@.gen
 #================================
 # Derived sequences processed with deris.pl
 #

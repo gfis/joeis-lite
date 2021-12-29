@@ -316,7 +316,7 @@ public class Cellular1DAutomaton implements Sequence {
     final RowIterator riter = new RowIterator(); // determine the indices at both ends
     final int index = riter.getIndex();
     final int endIndex = riter.getEndIndex();
-    mOldRow[index    - 1] = mBackground;
+    mOldRow[index - 1] = mBackground;
     mOldRow[endIndex] = mBackground;
 //**    if (sDebug >= 1) {
 //**      System.out.print("# old row @" + (index - 1) + ": ");
@@ -327,7 +327,7 @@ public class Cellular1DAutomaton implements Sequence {
 //**    }
     while (riter.hasNextBlock()) {
       final int irow = riter.nextBlockIndex();
-      final int leftBit =   mOldRow[irow - 1] & mLowMask;
+      final int leftBit = mOldRow[irow - 1] & mLowMask;
       final int rightBit = (mOldRow[irow + 1] & mHighMask) >> (BLOCK_LEN - 1);
       final int newBlock = transformBlock(mOldRow[irow], leftBit, rightBit);
 //**      if (sDebug >= 1) {
@@ -349,7 +349,7 @@ public class Cellular1DAutomaton implements Sequence {
       }
     }
     mOldRow = mNewRow;
-    mOldRow[index    - 1] = mBackground;
+    mOldRow[index - 1] = mBackground;
     mOldRow[endIndex] = mBackground;
 //**    if (sDebug >= 1) {
 //**      System.out.print("# new row @" + (index - 1) + ": ");
@@ -395,7 +395,7 @@ public class Cellular1DAutomaton implements Sequence {
    */
   @Override
   public Z next() {
-    if (! mIter.hasNext()) {
+    if (!mIter.hasNext()) {
       computeNextRow();
       mIter = new RowIterator();
     }
@@ -403,12 +403,12 @@ public class Cellular1DAutomaton implements Sequence {
     return ((mOldBlock & (1 << bitPos)) == 0) ? Z.ZERO : Z.ONE;
   }
 
- /**
+  /**
    * Get the next term of the left half of each row (including the middle).
    * @return 0 or 1
    */
   public Z nextLeftHalf() {
-    if (! mIter.hasNext()) {
+    if (!mIter.hasNext()) {
       computeNextRow();
       mIter = new RowIterator();
       mIter.mEndCount = mGen + 1;
@@ -422,7 +422,7 @@ public class Cellular1DAutomaton implements Sequence {
    * @return 0 or 1
    */
   public Z nextRightHalf() {
-    if (! mIter.hasNext()) {
+    if (!mIter.hasNext()) {
       computeNextRow();
       mIter = new RowIterator();
       mIter.mCount = mGen;
