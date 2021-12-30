@@ -60,10 +60,19 @@ INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
 OFFSET=0
+
+# Pattern rule: make Ammmmmmm Annnnnn ... from A*.man
+%: %.man
+	grep -E "^A[0-9]" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l $@.*
 #----------------
 all:
 	# Possible targets:
 	grep -E "^[a-z]" makefile | sort
+#----
+kill:
+	cmd /c tasklist | grep make | cut -b28-34 | xargs -l -innn cmd /c taskkill /F /PID nnn
 #----------------------------------
 runall: # current set of packages
 	make purge
@@ -379,6 +388,7 @@ summon:
 	rm -f batch.log
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 \
 	| head -n$(MANY) > ghead.tmp
+	wc -l ghead.tmp
 #========
 batch:
 	# ---- $@ 
@@ -544,11 +554,15 @@ A050201:
 	head -n4 $@.gen
 	wc -l    $@.gen
 A051803: # nonzero multiplicative products
-	grep -E "^A" $@.man > $@.gen
+	grep -E "^A[0-9]" $@.man > $@.gen
 	wc -l    $@.gen
 #----
 A052179: # Triangle recurrence with x,y
 	grep -E "^A[0-9]" $(TRIREC)/$@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+A056022: # 2021-12-29
+	grep -E "^A[0-9]" $@.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
