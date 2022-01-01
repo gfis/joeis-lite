@@ -3526,6 +3526,13 @@ primod:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+pricongr:
+	grep -i prime $(COMMON)/jcat25.txt | grep mod \
+	| perl pricongr.pl \
+	2>       $@.rest.tmp \
+	| sort - pricongr.man | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
 #--------------------------------
 # A216777 null    Primes p such that x^64 = -2 has no solution mod p.     nonn,easy,      1..1000
 # A216862 null    Primes p such that x^5 = 20 has a solution mod p.       nonn,easy,      1..1000
