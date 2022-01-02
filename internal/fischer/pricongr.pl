@@ -1,7 +1,7 @@
 #!perl
 
 # pricongr.pl - extract conguence conditions for primes
-# 2022-01-1, Georg Fischer
+# 2022-01-01, Georg Fischer
 #
 #:# Usage:
 #:#     grep -i prime jcat25.txt | grep mod | cut -b4- \
@@ -10,44 +10,50 @@
 use strict;
 use integer;
 
-my ($line, $aseqno, $catype, $callcode, $name, $nok, $offset, $list, $mod, $inits, $inilen);
+my ($line, $aseqno, $catype, $callcode, $name, $ok, $offset, $list, $mod, $inits, $inilen);
 $callcode = "pricongr";
 while (<>) {
     $line = $_;
-    $line =~ s{\s+\Z}{};
+    $line =~ s{\s+\Z}{}; # chompr
+    $line =~ s{\_.+}{}; # remove author name (may contain foreign characters)
     $inits = "";
     $inilen = 0;
-    $nok = 1; # assume failure
+    $ok   = 0; # assume failure
     $line =~ m{\A(..) (A\d+) +(.*)};
     ($catype, $aseqno, $name) = ($1, $2, $3);
+    #                         1   2       2 1
     if ($name =~ s{Except for (\d+(\, *\d+)*)\, *}{}) {
         $inits = $1;
         $inits =~ s{ }{}g;
         $inilen = scalar(split(/\,/, $inits));
         $inits .= ",";
     }
+    $name =~ s{(\, )?or}{\,}g;
     if (0) {
-    #                     1          1        2    2             3   45      5     4 3                6   6
-    } elsif ($name =~ m{\A(the |also )?primes (are )?congruent\D*(\d+((\,| or) *\d+)*)[^m]*mod[a-z]* *(\d+)}i) {
+    #                     1          1        2                                   2 3     4         4 3                5   5
+    } elsif ($name =~ m{\A(the |also )?primes (that|which|are|congruent|to|[ \(\{])+(\d+ *(\, *\d+ *)*)[^m]*mod[a-z]* *(\d+)}i) {
         $list = $3;
-        $mod  = $6;
-        $list =~ s{or}{\,}g;
-        $list =~ s{ }{}g;
-        $nok = 0;
-    #                          1          1         2   34      4     3 2          5   5
-    } elsif ($name =~ m{\APrime(s| numbers) *\=\= *(\d+((\,| or) *\d+)*)[^m]*mod *(\d+)}) {
-        $list = $2;
         $mod  = $5;
-        $list =~ s{or}{\,}g;
         $list =~ s{ }{}g;
-        $nok = 0;
+        $ok   = 1;
+    #                          1          1        2     3         3 2                4   4
+    } elsif ($name =~ m{\APrime(s| numbers) *\=\= *(\d+ *(\, *\d+ *)*)[^m]*mod[a-z]* *(\d+)}) {
+        $list = $2;
+        $mod  = $4;
+        $list =~ s{ }{}g;
+        $ok   = 2;
+    } elsif ($name =~ m{\APrime(s| numbers) *\=\= *(\d+ *(\, *\d+ *)*)[^m]*mod[a-z]* *(\d+)}) {
+        $list = $2;
+        $mod  = $4;
+        $list =~ s{ }{}g;
+        $ok   = 3;
     }
-    if ($nok != 0) {
-        if ($catype =~ m{\A\%[NCF]}) {
+    if ($ok == 0) {
+        if ($catype =~ m{\A.[NCF]}) {
             print STDERR "$line\n";
         }
     } else {
-        print join("\t", $aseqno, $callcode, 0, $mod, $inilen, "$inits$list", "", "", substr($line, 8)) . "\n";
+        print join("\t", $aseqno, $callcode, 0, $mod, $inilen, "$inits$list", "", "$ok", substr($line, 11)) . "\n";
     }
 } # while <>
 __DATA__

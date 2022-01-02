@@ -11,6 +11,6 @@ public class $(ASEQNO) extends CongruenceForm {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(PARM1), $(PARM2), $(PARM3));
+    super($(PARM1));
   }
 }

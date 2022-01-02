@@ -3530,9 +3530,31 @@ pricongr:
 	grep -i prime $(COMMON)/jcat25.txt | grep mod \
 	| perl pricongr.pl \
 	2>       $@.rest.tmp \
-	| sort - pricongr.man | uniq -w7 > $@.gen
+	>        $@.tmp
+	grep -E "^A[0-9]" $@.man >> $@.tmp
+	sort $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen $@.rest.tmp
+	wc -l    $@.gen $@.tmp $@.rest.tmp
+prisqua:
+	# grep -i prime $(COMMON)/jcat25.txt | grep -E "(square|Jacobi)" \
+	# | perl prisqua.pl \
+	# 2>       $@.rest.tmp \
+	# >        $@.tmp
+	grep -E "^A[0-9]" $@.man > $@.tmp || :
+	sort $@.tmp | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.tmp $@.rest.tmp
+prijacob:
+	grep -i prime $(COMMON)/jcat25.txt | grep -E "(square|Jacobi)" \
+	| perl prijacob.pl \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	grep -E "^A[0-9]" $@.man >> $@.tmp || :
+	sort $@.tmp | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.tmp $@.rest.tmp
+pricotest:
+	$(JAVA) irvine.oeis.prime.CongruenceForm -m $(MOD)
 #--------------------------------
 # A216777 null    Primes p such that x^64 = -2 has no solution mod p.     nonn,easy,      1..1000
 # A216862 null    Primes p such that x^5 = 20 has a solution mod p.       nonn,easy,      1..1000
