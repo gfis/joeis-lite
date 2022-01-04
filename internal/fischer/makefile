@@ -3572,18 +3572,22 @@ priquad2: # select all MMA calls of QuadPrimes2
 	make seq4 LIST=$@.tmp
 	$(DBAT) "UPDATE seq4 s SET parm6 = COALESCE((SELECT j.superclass FROM joeis j WHERE s.aseqno = j.aseqno), 'nyi');"
 	$(DBAT) -x -44444 seq4 \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 priquad3: # insert the ones covered by CC=pricongr (CongruenceForm)
 	make seq LIST=pricongr.gen
 	$(DBAT) "UPDATE seq4 s SET parm6 = 'CongruenceForm' WHERE EXISTS (SELECT a.aseqno FROM seq a WHERE s.aseqno = a.aseqno);"
 	$(DBAT) -x -44444 seq4 \
-	>        $@.gen
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+priquad4:
+	grep -E "^A[0-9]" priquad3.tmp > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 priquad_guess: # guess the remaining residues in priquad3.gen
-	perl priquad_guess.pl priquad3.gen > $@.tmp
+	perl priquad_guess.pl priquad3.tmp > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@*.tmp
 priquad:

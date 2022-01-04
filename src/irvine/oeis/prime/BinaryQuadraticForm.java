@@ -20,28 +20,45 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
   protected boolean mAnyInteger;
   protected boolean mPrimesOnly;
   protected Z mOldTerm; // previous term
+  protected int mMaxX; // current highest x
+  protected int mMinX; // current lowest  x
+  protected int mMaxY; // current highest y
+  protected int mMinY; // current lowest  y
   
   protected static int sDebug = 0;
 
   /**
-   * Construct an instance from a list of remainders.
+   * Construct an instance for primes
+   * @param a factor of <code>x^2</code>
+   * @param b factor of <code>x*y</code>
+   * @param c factor of <code>y^2</code>
+   * @param intMode 1 for nonnegative x and y, 2 for all integers
+   */
+  public BinaryQuadraticForm(final int a, final int b, final int c, final int intMode) {
+    this (a, b, c, intMode == 2 || b != 0, true);
+  }
+
+  /**
+   * Construct an instance for the general case.
    * @param start number of of initial terms, index of first residue
    * @param modulus divisor
    * @param residues list of initial terms followed by the residues
    */
-  public BinaryQuadraticForm(final int a, final int b, final int c, boolean anyInteger, boolean primesOnly) {
+  public BinaryQuadraticForm(final int a, final int b, final int c, final boolean anyInteger, final boolean primesOnly) {
     mA = a;
     mB = b;
     mC = c;
     mAnyInteger = anyInteger;
     mPrimesOnly = primesOnly;
     mOldTerm = Z.ZERO;
-    int x = 0;
-    int y = 0;
-    addEntry(0, 0);
+    mMaxX = 0;
+    mMaxY = 0;
+    mMinX = -1;
+    mMinY = -1;
+    addEntry(mMaxX, mMaxY);
     if (anyInteger) {
-      addEntry(-1, 0);
-      addEntry(0, -1);
+      addEntry(mMinX, 0);
+      addEntry(0, mMinY);
     }
   }
 
@@ -83,10 +100,31 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
       final int y0 = pair.right();
       final int x1 = advanceX(x0);
       final int y1 = advanceY(y0);
+      if (x0 == mMaxX) {
+        addEntry(x1, 0);
+        mMaxX = x1;
+      }
+      if (y0 == mMaxY) {
+        addEntry(0, y1);
+        mMaxY = y1;
+      }
+      if (mAnyInteger) {
+        if (x0 == mMinX) {
+          addEntry(x1, 0);
+          mMinX = x1;
+        }
+        if (y0 == mMinY) {
+          addEntry(0, y1);
+          mMinY = y1;
+        }
+      }
       addEntry(x0, y1);
       addEntry(x1, y0);
       addEntry(x1, y1);
-      if (!result.equals(mOldTerm)) {
+      if (sDebug >= 1) {
+        System.out.println("# mOldTerm=" + mOldTerm + "\tresult=" + result + "\tx0=" + x0 + "\ty0=" + y0 + "\tx1=" + x1 + "\ty1=" + y1);
+      }
+      if (mOldTerm.compareTo(result) < 0) {
         mOldTerm = result;
         if (!mPrimesOnly || result.isProbablePrime()) {
           return result;
@@ -121,7 +159,7 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
         } else if (opt.equals    ("-a")     ) {
           a       = Integer.parseInt(args[iarg++]);
         } else if (opt.equals    ("-bf")    ) {
-          bf      = true;
+          bFile   = true;
         } else if (opt.equals    ("-b")     ) {
           b       = Integer.parseInt(args[iarg++]);
         } else if (opt.equals    ("-c")     ) {
@@ -142,16 +180,13 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
     } // while args
 
     final BinaryQuadraticForm bf = new BinaryQuadraticForm(a, b, c, anyInteger, primesOnly);
+    for (int it = 1; it <= noTerms; ++it) {
+      if (bFile) {
+        System.out.println(it + " " + bf.next());
+      } else {
+        System.out.print((it == 1 ? "" : ", ") + " " + bf.next());
       }
-    } else {
-      for (int it = 1; it <= noTerms; ++it) {
-        if (bfile) {
-          System.out.println(it + " " + bf.next());
-        } else {
-          System.out.print((it == 0 ? "" : ", ") + " " + bf.next());
-        }
-      }
-      System.out.println();
-    } 
+    }
+    System.out.println();
   } // main
 }
