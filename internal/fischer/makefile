@@ -3553,8 +3553,48 @@ prijacob:
 	sort $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.tmp $@.rest.tmp
+prikronf:
+	grep -i prime $(COMMON)/jcat25.txt | grep -E "(square|Jacobi|Kronecker)" \
+	| perl prikronf.pl \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	grep -E "^A[0-9]" $@.man >> $@.tmp || :
+	sort $@.tmp | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.tmp $@.rest.tmp
+priquad2: # select all MMA calls of QuadPrimes2
+	grep -P "QuadPrimes2\[\d" $(COMMON)/jcat25.txt \
+	| perl priquad2.pl \
+	2>       $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) "UPDATE seq4 s SET parm6 = COALESCE((SELECT j.superclass FROM joeis j WHERE s.aseqno = j.aseqno), 'nyi');"
+	$(DBAT) -x -44444 seq4 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+priquad3: # insert the ones covered by CC=pricongr (CongruenceForm)
+	make seq LIST=pricongr.gen
+	$(DBAT) "UPDATE seq4 s SET parm6 = 'CongruenceForm' WHERE EXISTS (SELECT a.aseqno FROM seq a WHERE s.aseqno = a.aseqno);"
+	$(DBAT) -x -44444 seq4 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+priquad_guess: # guess the remaining residues in priquad3.gen
+	perl priquad_guess.pl priquad3.gen > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+priquad:
+	cp -v priquad_guess.tmp $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+
 pricotest:
 	$(JAVA) irvine.oeis.prime.CongruenceForm -m $(MOD)
+binquadtest:
+	$(JAVA) irvine.oeis.prime.BinaryQuadraticForm $(PARMS)
 #--------------------------------
 # A216777 null    Primes p such that x^64 = -2 has no solution mod p.     nonn,easy,      1..1000
 # A216862 null    Primes p such that x^5 = 20 has a solution mod p.       nonn,easy,      1..1000

@@ -57,7 +57,7 @@ public class CongruenceForm implements Sequence {
    */
   public static int[] quadResidues(final int discr) {
     TreeSet<Integer> ts = new TreeSet<Integer>();
-    for (int im = discr / 2 + 1; im >= 1; --im) {
+    for (int im = discr / 2 + 1; im >= 0; --im) {
       ts.add((im * im) % discr);
     }
     final int[] residues = new int[ts.size()];

@@ -14,17 +14,17 @@ public class JacobiForm implements Sequence {
   private final Fast mFast;
   private Z mP; // current prime number
   protected Z mModulus; // parameter of the Jacobi symbol
-  protected int mPolar; // desired value of the Jacobi symbol: +1 or -1
+  protected int mPolar; // desired value of the Jacobi symbol
 
   /**
    * Constructor with parameters.
    * @param modulus parameter of the Jacobi symbol
-   * @param polar desired value of the Jacobi symbol: +1 or -1
+   * @param polar the Jacobi symbol must be greater than or equal to this value: +1 or 0
    */
   public JacobiForm(final int modulus, final int polar) {
     mP = Z.ONE;
     mModulus = Z.valueOf(modulus);
-    mPolar = polar == 1 ? 1 : -1;
+    mPolar = polar;
     mFast = new Fast();
   }
 
@@ -32,7 +32,7 @@ public class JacobiForm implements Sequence {
   public Z next() {
     while (true) {
       mP = mFast.nextPrime(mP);
-      if (mP.jacobi(mModulus) == mPolar) {
+      if (mP.jacobi(mModulus) >= mPolar) {
         return mP;
       }
     }
