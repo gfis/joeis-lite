@@ -44,7 +44,7 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
    * @param intMode 1 for nonnegative x and y, 2 for all integers
    */
   public BinaryQuadraticForm(final int a, final int b, final int c, final int intMode) {
-    this (a, b, c, intMode == 2 || b != 0, true);
+    this (a, b, c, ! (intMode == 1 || b != 0), true);
   }
 
   /**
@@ -67,33 +67,9 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
     mColMix.add(x); // for column iy
     mColMax.add(x);
     addEntry(x, y);
-  }
-
-  /**
-   * Compute the next value of <code>x</code> in plus direction.
-   * @param x previous value
-   * @return new value
-   */
-  protected int increaseX(final int x) {
-    return x + 1;
-  }
-
-  /**
-   * Compute the next value of <code>x</code> in minus direction.
-   * @param x previous value
-   * @return new value
-   */
-  protected int decreaseX(final int x) {
-    return x - 1;
-  }
-
-  /**
-   * Compute the next value of <code>y</code> in plus direction.
-   * @param y previous value
-   * @return new value
-   */
-  protected int increaseY(final int y) {
-    return y + 1;
+    if (sDebug >= 1) {
+      System.out.println("# BinaryQuadraticForm(" + a + ", " + b + ", " + c + ", anyInteger=" + anyInteger + ", primesOnly=" + primesOnly);
+    }
   }
 
   /**
@@ -107,11 +83,17 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
     Pair<Integer, Integer> pair = get(result);
     if (pair == null) { // new key
       put(result, new Pair<Integer, Integer>(x, y));
+      if (sDebug >= 3) {
+        System.out.println("# add new @[" + x + "," + y + "]\t" + result);
+      }
     } else { // key exists
       final int x0 = pair.left();
       final int y0 = pair.right();
       if (y > y0) { // replace by the new one that is more to the right
         put(result, new Pair<Integer, Integer>(x, y));
+      }
+      if (sDebug >= 3) {
+        System.out.println("# modify @[" + x + "," + y + "]\t" + result);
       }
     } 
     return result;
@@ -130,7 +112,10 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
       final int y1 = ( 1)+(y0);
       if (y1 >= mColMix.size()) { // new column
         // determine the stopping element
-        final int x1 = - mB * (y1 + mA) / (2 * mA);
+        int x1 = (- mB * y1 + (mB > 0 ? -mA : mA)) / (2 * mA);
+        if (!mAnyInteger && x1 < 0) {
+          x1 = 0;
+        }
         mColMix.add(x1);
         mColMax.add(x1);
         final Z f1 = addEntry(x1, y1);
@@ -143,28 +128,36 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
           int xl = mColMix.get(yi);
           int xh = mColMax.get(yi);
           if (sDebug >= 3) {
-            System.out.println("# col. " + yi + "\t range start [" + xl + ".." + xh + "]");
+            System.out.println("# col. " + yi + "\t old range   [" + xl + ".." + xh + "]");
           }
-          while (addEntry(--xl, yi).compareTo(f1) <= 0) { // extend -> -x
+          if (mAnyInteger || xl >= 1) {
+            while (addEntry(--xl, yi).compareTo(f1) <= 0) { // extend -> -x
+            }
+            mColMix.set(yi, xl);
           }
-          mColMix.set(yi, xl);
           while (addEntry(++xh, yi).compareTo(f1) <= 0) { // extend -> +x
           }
           mColMax.set(yi, xh);
           if (sDebug >= 2) {
-            System.out.println("# col. " + yi + "\t queued to   [" + xl + ".." + xh + "]");
+            System.out.println("# col. " + yi + "\t extended to [" + xl + ".." + xh + "]");
           }
           ++yi;
         }
       }
       //--------
-      if (sDebug >= 1) {
-        System.out.println("# candidate @[" + x0 + "," + y0 + "]\t" + result);
-      }
-      if (mOldTerm.compareTo(result) < 0) { // sequence must be strictly increasing
-        mOldTerm = result;
-        if (!mPrimesOnly || result.isProbablePrime()) {
-          return result;
+      if (mAnyInteger || x0 >= 0) {
+        if (sDebug >= 1) {
+          System.out.println("# candidate @[" + x0 + "," + y0 + "]\t" + result);
+        }
+        if (mOldTerm.compareTo(result) < 0) { // sequence must be strictly increasing
+          mOldTerm = result;
+          if (!mPrimesOnly || result.isProbablePrime()) {
+            return result;
+          }
+        }
+      } else {
+        if (sDebug >= 1) {
+          System.out.println("# candidate @[" + x0 + "," + y0 + "]\t" + result + " skipped");
         }
       }
     }
@@ -218,10 +211,11 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
 
     final BinaryQuadraticForm bqf = new BinaryQuadraticForm(a, b, c, anyInteger, primesOnly);
     for (int it = 1; it <= noTerms; ++it) {
+      final Z term = bqf.next();
       if (bFile) {
-        System.out.println(it + " " + bqf.next());
+        System.out.println(it + " " + term);
       } else {
-        System.out.print((it == 1 ? "" : ", ") + " " + bqf.next());
+        System.out.print((it == 1 ? "" : ", ") + " " + term);
       }
     }
     System.out.println();
