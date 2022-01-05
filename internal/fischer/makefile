@@ -3596,9 +3596,9 @@ priquad:
 	wc -l    $@.gen
 
 pricotest:
-	$(JAVA) irvine.oeis.prime.CongruenceForm -m $(MOD)
+	$(JAVA) irvine.oeis.prime.CongruenceForm -m $(MOD) 2>&1
 binquadtest:
-	$(JAVA) irvine.oeis.prime.BinaryQuadraticForm $(PARMS)
+	$(JAVA) irvine.oeis.prime.BinaryQuadraticForm $(PARMS) 2>&1
 #--------------------------------
 # A216777 null    Primes p such that x^64 = -2 has no solution mod p.     nonn,easy,      1..1000
 # A216862 null    Primes p such that x^5 = 20 has a solution mod p.       nonn,easy,      1..1000

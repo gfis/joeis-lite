@@ -2,6 +2,7 @@ package irvine.oeis.prime;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.ArrayList;
 
 import irvine.math.z.Z;
 import irvine.util.Pair;
@@ -10,6 +11,17 @@ import irvine.oeis.Sequence;
 /**
  * A sequence of nonnegative numbers represented by a binary quadratic form <code>a*x^2 + b*x*y + c*y^2</code>.
  * <code>x</code> and <code>y</code> may be &gt=; 0 or any integer, and the numbers may be primes only.
+ *
+ * The algorithm operates on a matrix with rows for <code>-max &lt;= x &lt;= max</code> and columns for <code>0 &lt;= y &lt;= max</code>.
+ * The matrix elements to be investigated are stored in a {@link TreeMap}.
+ *
+ * For the minimum TreeMap entry <code>f(x0,y0) -&gt; (x0, y0)</code>:
+ * <ul>
+ * <li>determine and store the so-called "stopping element", a minimal element (x1, y1) in the next column <code>y1 = y0 + 1</code> by <code>x1 = - b * (y1 + a) / (2*a)</code> (partial d/dx of the form, rounded)</li>
+ * <li>extend and store the ranges in all columns <code>yi &lt;= y0</code> up to <code>min/max(xi)</code> such that <code>f(xi, yi) &gt;= f(x1,y1)</code></li>
+ * <li>find next minimal element <code>f(x0,y0) -&gt; (x0, y0)</code> and repeat</li>
+ * </ul>
+ * <code>mColMix[y], mColMax[y]</code> give the lower and upper <code>x</code> indexes for the entries that have already been stored in the TreeMap.
  * @author Georg Fischer
  */
 public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> implements Sequence {
@@ -20,11 +32,8 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
   protected boolean mAnyInteger;
   protected boolean mPrimesOnly;
   protected Z mOldTerm; // previous term
-  protected int mMaxX; // current highest x
-  protected int mMinX; // current lowest  x
-  protected int mMaxY; // current highest y
-  protected int mMinY; // current lowest  y
-  
+  private ArrayList<Integer> mColMix; // lower x index of the range that was stored
+  private ArrayList<Integer> mColMax; // upper x index
   protected static int sDebug = 0;
 
   /**
@@ -51,33 +60,40 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
     mAnyInteger = anyInteger;
     mPrimesOnly = primesOnly;
     mOldTerm = Z.ZERO;
-    mMaxX = 0;
-    mMaxY = 0;
-    mMinX = -1;
-    mMinY = -1;
-    addEntry(mMaxX, mMaxY);
-    if (anyInteger) {
-      addEntry(mMinX, 0);
-      addEntry(0, mMinY);
-    }
+    mColMix = new ArrayList<>();
+    mColMax = new ArrayList<>();
+    final int x = 0;
+    final int y = 0;
+    mColMix.add(x); // for column iy
+    mColMax.add(x);
+    addEntry(x, y);
   }
 
   /**
-   * Compute the next value of <code>x</code> in the same direction as the previous value.
+   * Compute the next value of <code>x</code> in plus direction.
    * @param x previous value
    * @return new value
    */
-  protected int advanceX(final int x) {
-    return x >= 0 ? x + 1 : x - 1;
+  protected int increaseX(final int x) {
+    return x + 1;
   }
 
   /**
-   * Compute the next value of <code>y</code> in the same direction as the previous value.
+   * Compute the next value of <code>x</code> in minus direction.
+   * @param x previous value
+   * @return new value
+   */
+  protected int decreaseX(final int x) {
+    return x - 1;
+  }
+
+  /**
+   * Compute the next value of <code>y</code> in plus direction.
    * @param y previous value
    * @return new value
    */
-  protected int advanceY(final int y) {
-    return y >= 0 ? y + 1 : y - 1;
+  protected int increaseY(final int y) {
+    return y + 1;
   }
 
   /**
@@ -86,45 +102,66 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
    * @param y variable y
    * @return <code>a*x^2 + b*x*y + c*y^2</code>
    */
-  protected void addEntry(final int x, final int y) {
-    put(Z.valueOf(mA).multiply(x * x).add(mB * x * y).add(mC * y * y), new Pair<Integer, Integer>(x, y));
+  protected Z addEntry(final int x, final int y) {
+    final Z result = Z.valueOf(mA).multiply(x * x).add(mB * x * y).add(mC * y * y);
+    Pair<Integer, Integer> pair = get(result);
+    if (pair == null) { // new key
+      put(result, new Pair<Integer, Integer>(x, y));
+    } else { // key exists
+      final int x0 = pair.left();
+      final int y0 = pair.right();
+      if (y > y0) { // replace by the new one that is more to the right
+        put(result, new Pair<Integer, Integer>(x, y));
+      }
+    } 
+    return result;
   }
 
   @Override
   public Z next() {
     while (true) {
+      // find next result and its coordinates
       final Map.Entry<Z, Pair<Integer, Integer>> entry = pollFirstEntry();
       final Z result = entry.getKey();
-      Pair<Integer, Integer> pair = entry.getValue();
+      final Pair<Integer, Integer> pair = entry.getValue();
       final int x0 = pair.left();
       final int y0 = pair.right();
-      final int x1 = advanceX(x0);
-      final int y1 = advanceY(y0);
-      if (x0 == mMaxX) {
-        addEntry(x1, 0);
-        mMaxX = x1;
-      }
-      if (y0 == mMaxY) {
-        addEntry(0, y1);
-        mMaxY = y1;
-      }
-      if (mAnyInteger) {
-        if (x0 == mMinX) {
-          addEntry(x1, 0);
-          mMinX = x1;
+
+      final int y1 = ( 1)+(y0);
+      if (y1 >= mColMix.size()) { // new column
+        // determine the stopping element
+        final int x1 = - mB * (y1 + mA) / (2 * mA);
+        mColMix.add(x1);
+        mColMax.add(x1);
+        final Z f1 = addEntry(x1, y1);
+        if (sDebug >= 1) {
+          System.out.println("# stopping element @[" + x1 + "," + y1 + "]\t" + f1);
         }
-        if (y0 == mMinY) {
-          addEntry(0, y1);
-          mMinY = y1;
+        // extend the ranges
+        int yi = 0;
+        while (yi <= y0) {
+          int xl = mColMix.get(yi);
+          int xh = mColMax.get(yi);
+          if (sDebug >= 3) {
+            System.out.println("# col. " + yi + "\t range start [" + xl + ".." + xh + "]");
+          }
+          while (addEntry(--xl, yi).compareTo(f1) <= 0) { // extend -> -x
+          }
+          mColMix.set(yi, xl);
+          while (addEntry(++xh, yi).compareTo(f1) <= 0) { // extend -> +x
+          }
+          mColMax.set(yi, xh);
+          if (sDebug >= 2) {
+            System.out.println("# col. " + yi + "\t queued to   [" + xl + ".." + xh + "]");
+          }
+          ++yi;
         }
       }
-      addEntry(x0, y1);
-      addEntry(x1, y0);
-      addEntry(x1, y1);
+      //--------
       if (sDebug >= 1) {
-        System.out.println("# mOldTerm=" + mOldTerm + "\tresult=" + result + "\tx0=" + x0 + "\ty0=" + y0 + "\tx1=" + x1 + "\ty1=" + y1);
+        System.out.println("# candidate @[" + x0 + "," + y0 + "]\t" + result);
       }
-      if (mOldTerm.compareTo(result) < 0) {
+      if (mOldTerm.compareTo(result) < 0) { // sequence must be strictly increasing
         mOldTerm = result;
         if (!mPrimesOnly || result.isProbablePrime()) {
           return result;
@@ -179,12 +216,12 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
       }
     } // while args
 
-    final BinaryQuadraticForm bf = new BinaryQuadraticForm(a, b, c, anyInteger, primesOnly);
+    final BinaryQuadraticForm bqf = new BinaryQuadraticForm(a, b, c, anyInteger, primesOnly);
     for (int it = 1; it <= noTerms; ++it) {
       if (bFile) {
-        System.out.println(it + " " + bf.next());
+        System.out.println(it + " " + bqf.next());
       } else {
-        System.out.print((it == 1 ? "" : ", ") + " " + bf.next());
+        System.out.print((it == 1 ? "" : ", ") + " " + bqf.next());
       }
     }
     System.out.println();
