@@ -76,12 +76,12 @@ kill:
 #----------------------------------
 runall: # current set of packages
 	make purge
-	# make CC=A051803 select gener 
-	make CC=A034939 select gener 
-	make CC=A015910 select gener 
-	make CC=A000301 select gener 
-	make CC=A128367 select gener 
-	make CC=A051803 select gener 
+	# make CC=A051803 select gener
+	make CC=A034939 select gener
+	make CC=A015910 select gener
+	make CC=A000301 select gener
+	make CC=A128367 select gener
+	make CC=A051803 select gener
 	make CC=man man dist testall
 #----------------------------------
 # Test programs
@@ -255,14 +255,14 @@ clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep fro
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > clean.grep.tmp
 	grep -f clean.grep.tmp $(CC).gen > $(CC).clean.tmp
 	cp -v $(CC).clean.tmp  $(CC).gen
-	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp 
+	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp
 cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 20 from previous test used to from $(CC).gen
 	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp
 	grep -P "^A\d+\t([2-9]\d+|\d\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
 	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
 	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
-	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp 
+	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp
 dirty: dirty0 # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
 	# ---- $@ CC=$(CC)
 	cp -v $(CC).dirty.tmp $(CC).gen
@@ -302,7 +302,7 @@ info: # compare CC= with joeis_names.txt
 	wc -l    $(CC).inf
 #----
 DATA=0
-annotate: # add comments with names of the dependant sequences, and optionally with their data 
+annotate: # add comments with names of the dependant sequences, and optionally with their data
 	# ---- $@ CC=$(CC)
 	perl annotate.pl -data $(DATA) $(CC).gen > $(CC).ann.tmp
 	uedit64 $(CC).ann.tmp
@@ -400,7 +400,7 @@ summon:
 	wc -l ghead.tmp
 #========
 batch:
-	# ---- $@ 
+	# ---- $@
 	make seq3 LIST=batch.log
 log: # CC=; generate an HTML page for the failed tests
 	# ---- $@ CC=$(CC)
@@ -497,7 +497,7 @@ a0330:
 A000301: # 2021-09-29
 	cp -v $@.man $@.gen
 #----
-A005754: # 2021-12-02  
+A005754: # 2021-12-02
 	grep -E "^A[0-9]" $@.man > $@.gen
 #----
 A007348: # < 2021-05-15
@@ -613,7 +613,7 @@ A090171: # T(n, k) = T(n-1, k) + T(n-1, k-1) + T(n-2, k) + T(n-2, k-1) + T(n-2, 
 	grep -E "^A[0-9]" $(TRIREC)/$@.man \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #----
 A095425:
 	grep -E "^A094324" anastret.txt \
@@ -652,7 +652,7 @@ A128367: # 2021-09-29
 A061037: # Numerator of 1/4 - 1/n^2.
 	grep -E "^A" $@.pa2 > $@.gen
 	wc -l    $@.gen
-A098941: # Numbers where 2 is the only even decimal digit. 
+A098941: # Numbers where 2 is the only even decimal digit.
 	grep -E "^A" $@.pa2 > $@.gen
 	wc -l    $@.gen
 A169964: # Numbers whose decimal expansion contains only 0's and 5's.
@@ -785,7 +785,7 @@ A231503: # 2021-11-19
 	grep -E "^A[0-9]" $@.man > $@.gen
 	wc -l    $@.gen
 #----
-A247750: # Numbers in decimal representation, such that in Czech their digits are in alphabetic order. 
+A247750: # Numbers in decimal representation, such that in Czech their digits are in alphabetic order.
 	grep -E "^A[0-9]" $(WORD)/$@.gen \
 	>        $@.gen
 	head -n4 $@.gen
@@ -826,7 +826,7 @@ aritfun: # The arithmetic function ...
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----------------
-arsimple: # $(CONTRIB)/ar/recur.man 
+arsimple: # $(CONTRIB)/ar/recur.man
 	grep -P "\tprev|\tsimple" $(CONTRIB)/ar/recur.man \
 	>        $@.gen
 	head -n4 $@.gen
@@ -1176,7 +1176,7 @@ deseq:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
-philo_tab: 
+philo_tab:
 	grep -E "^A[0-9]" $(CONSTANT)/philo_tab4.tmp \
 	| sort | uniq -w7 \
 	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\tdecexp\t}; '\
@@ -1267,7 +1267,7 @@ binomin4: # patch the initial terms - there may be no zero
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	grep -A2 -B1 syntax binomin3.tmp || :
-binomin5: # select the ones that failed 
+binomin5: # select the ones that failed
 	grep -P "^\# +A\d+\s+holof\s+" binomin3.tmp | sed -e "s/^# *//" \
 	| sort | uniq -w7 \
 	>        $@.tmp
@@ -1325,12 +1325,12 @@ bisect:
 	2>       $@.rest.tmp \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 bisect_9:
 	cat bisect0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #--------------------------------
 bitoper:
 	grep -E "XOR| OR | AND " $(COMMON)/joeis_names.txt \
@@ -1373,7 +1373,7 @@ wa_stageb:
 	| sed -e "s/ca1stageb/$@/" \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 wa_staged:
 	grep -E "^A[0-9]" $(COMMON)/../ca/caelem.gen \
 	| grep -v ca1other \
@@ -1382,7 +1382,7 @@ wa_staged:
 	| sed -e "s/ca1staged/$@/" \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #----
 carule0:
 	perl -ne 'if ((m{cellular automat}) and (m{Rule (\d+)})) { print; }' \
@@ -1623,7 +1623,7 @@ compleq9:
 	| grep -vE "self\-complementary|musical|Golay" \
 	| perl -ne 'print if m{of the (near\-)complementary equation};'
 #--
-# compleq.man contains the manual corrections. 
+# compleq.man contains the manual corrections.
 # CC=compleqa is set when $(PARM5) contains the complete body of method adjunct(n).
 compleq:
 	cut -b1-7 $@.man | grep -E "^A" > $@.grep.tmp
@@ -1766,7 +1766,7 @@ cofrman:
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 decofr: # Continued fraction of real expression
 	perl decofr.pl -i 0 $(COMMON)/joeis_names.txt \
 	>        $@.gen
@@ -1828,14 +1828,14 @@ deriv5: # convert to postfix, select the last of the shortest formula
 deriv6: # convert from postfix to Z-expressions
 	perl post_infix.pl -p Z.xpat deriv5.tmp \
 	2>       $@.rest \
-	>        $@.tmp 
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@.*
 deriv7: # adapt the offsets and initial terms
 	perl deriv_gen.pl deriv6.tmp \
 	2>       $@.rest \
 	| grep -vE "A065446|A070011|A145920|A178476|A277535|A185227|A185228|A185229|A255541|A282844" \
-	>        $@.tmp 
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc   -l  $@*.*
 deriv:
@@ -1875,7 +1875,7 @@ dex4:
 	| grep -vE "^(A114054|A117853|A202955|A248622)" \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc   -l  $@.tmp	
+	wc   -l  $@.tmp
 	grep "#" $@.tmp \
 	>        $@.rest || :
 	head -n4 $@.rest
@@ -1900,7 +1900,7 @@ digexch:
 	' }'\
 	>       $@.gen
 	head -4 $@.gen
-	wc   -l $@.gen	
+	wc   -l $@.gen
 #--------------------------------
 # A063616	A031146	Smallest k >= 0 such that 8^k has exactly n 0's in its decimal representation.	base,nonn,synth	0..50
 # A063617	null	Smallest k such that 8^k has exactly n 1's in its decimal representation.	base,nonn,synth	0..50
@@ -1948,9 +1948,9 @@ divpow:
 	perl divpow.pl -d 0 $(COMMON)/joeis_names.txt \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #--------------------------------
-dupl_prep: dupl1 dupl2 dupl3 # duplicates 
+dupl_prep: dupl1 dupl2 dupl3 # duplicates
 dupl1:
 	perl -ne \
 	'if (m{^\%\w (A\d+) (Duplicate of |Essentially the same as |Same as )(A\d+)})'\
@@ -1975,7 +1975,7 @@ dupl3:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-#	| grep -vE "A082627|A174781" 
+#	| grep -vE "A082627|A174781"
 dupl:
 	cp -v dupl3.tmp $@.gen
 #--------------------------------
@@ -2156,7 +2156,7 @@ fini_update: # select all (Brief|Finite|Noncomputable)Sequence for a retest
 	    ORDER BY 1 " \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen 
+	wc -l    $@.gen
 #----
 sciconst:
 	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
@@ -2175,7 +2175,7 @@ noncomp1:
 	| sort | uniq -w7 | sort -k4 -k1 \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc -l    $@.tmp	
+	wc -l    $@.tmp
 noncomp2:
 	grep -Ei 'Czech|Danish|Dutch|Finnish|French|Hungarian|Italian|Norwegian|Polish|Portuguese|Russian|Slovak|Spanish|Swedish|Turkish|atomic|chemical elem|electron|mass |nuclear|periodic (table|system)|planet|birth |death |burial |popes?|roulette|melting|boiling|noble gases' \
 	$(COMMON)/joeis_names.txt \
@@ -2188,9 +2188,9 @@ noncomp2:
 	sed -e "s/\t/\tnoncomp\t0\tmanual\t/" noncomp.man \
 	>>       $@.tmp
 	head -n4 $@.tmp
-	wc -l    $@.tmp	
+	wc -l    $@.tmp
 noncomp3:
-	# cat noncomp1.tmp noncomp2.tmp | sort | uniq -w7 
+	# cat noncomp1.tmp noncomp2.tmp | sort | uniq -w7
 	grep -E "^A[0-9]" $(CONSTANT)/noncomp.man \
 	| grep -vE "A005646|A094871" \
 	| cut -b1-7 | sed -e "s/$$/\tnoncomp\t0\t1/" \
@@ -2241,13 +2241,13 @@ noncomp_old:
 #--------------------------------
 flotest:
 	grep -E "^A[0-9]" $@.man > $@.gen
-#--	
+#--
 floor:
 	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-#--	
+#--
 floorn:
 	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \
 	| sort | uniq -w7 \
@@ -2257,7 +2257,7 @@ floorn:
 floorn_poeis:
 	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM poeis);"
 	$(DBAT) -x -444444 seq4 > floorn.gen
-#--	
+#--
 floorD:
 	grep -E "^A[0-9]" $(CONSTANT)/$@.gen \
 	| sort | uniq -w7 \
@@ -2305,7 +2305,7 @@ floold4:
 	perl cr_infix.pl      -d    1 floold3.tmp 2>&1 \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc   -l  $@.tmp	
+	wc   -l  $@.tmp
 	grep "#" $@.tmp \
 	>        $@.rest || :
 	head -n4 $@.rest
@@ -2358,12 +2358,12 @@ OFF=0
 GFTYPE=0
 fholo:
 	grep -E "^$(A)" $(COMMON)/asdata.txt
-	grep $(A) holink.gen | tee x.tmp 
+	grep $(A) holink.gen | tee x.tmp
 	$(HOLT) -n $(NT) -f x.tmp
 runholo:
 	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFF) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
 runmorf:
-	$(JAVA) irvine.oeis.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D) 
+	$(JAVA) irvine.oeis.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D)
 runce:
 	$(JAVA) irvine.oeis.ComplementaryEquationSequence -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
@@ -2399,7 +2399,7 @@ holco:
 # +(-8*n+4*n^2)*a(n-2) + (-4+12n-8n^2)*a(n-1) + (0-1*n+1n^2)*a(n)  = 0.
 # make runholo MATRIX="[[0],[0,-8,4],[-4,12,-8],[0,-1,1]]" INIT="[1,3]"
 # n*a(n) +3*(-3*n+2)*a(n-1) +12*(n-2)*a(n-2) +4*(-n+3)*a(n-3)=0. - R. J. Mathar, Jun 13 2013
-#  (12-4n)*a(n-3) + (-24 + 12n)*a(n-2) + (6-9*n)*a(n-1) + (0+1n)*a(n) = 0 
+#  (12-4n)*a(n-3) + (-24 + 12n)*a(n-2) + (6-9*n)*a(n-1) + (0+1n)*a(n) = 0
 # make runholo MATRIX="[[0],[12,-4],[-24,12],[6,9],[0,1]]" INIT="[1,3,18]"
 #----
 holregen:
@@ -2424,7 +2424,7 @@ homgf:
 	>        $(HOLREC)/rectab4.tmp
 	head -n4 $(HOLREC)/rectab4.tmp
 	wc -l    $(HOLREC)/rectab4.tmp
-	# | perl -ne 'print if ! m{\te(gf)?\t};' 
+	# | perl -ne 'print if ! m{\te(gf)?\t};'
 #----
 homegf3:
 	cat $(HOLREC)/homegf2.tmp \
@@ -2500,12 +2500,12 @@ hrem4:
 	cd $(COMMON) ; make -f checks.make joeis_check LOG=$(LOG)
 hrem5:
 	cp $(LOG).fail.log holos.fail.log
-	cp $(LOG).pass.log holos.pass.log 
+	cp $(LOG).pass.log holos.pass.log
 hrem6:
 	$(DBAT) "SELECT aseqno, SUBSTR(parm1, 1, 8), SUBSTR(parm2, 1, 8), parm4 FROM seq4 ORDER BY 1"
 holpatch:
 	make CC=holos NOT= select2
-	$(DBAT) "UPDATE seq4 
+	$(DBAT) "UPDATE seq4
 #---------------------
 holfinit0: holfinit1 holfinit2
 holfinit1:
@@ -2527,7 +2527,7 @@ holfinit2:
 #---------------------
 # new linrecs from OEIS-mat/lrindex - run make lrlink there
 holink0: holink1 holink2 holink3 holink4
-holink1: 
+holink1:
 	make seq2 LIST=holink.nadd.man
 holink2:
 	$(DBAT) -x "SELECT l.aseqno, 'holos', 0, l.sigorder \
@@ -2609,7 +2609,7 @@ holor2:
 #----
 holog_test:
 	$(HOLT) -d $(D) -n $(NT) -f $(LINREC)/raeval_holog.tmp
-holog0: 
+holog0:
 	cat $(LIST) \
 	>        $@.1.tmp
 	head -n8 $@.1.tmp
@@ -2646,7 +2646,7 @@ holog2:
 holog:
 	sed -e "s/holog1/holos/" \
 	-e "s/  //" holog0.2.tmp \
-	>        $@.gen	
+	>        $@.gen
 #----
 holol0: holol1 holol2 holol3
 # get all from lrlink which are not in joeis
@@ -2660,7 +2660,7 @@ holol1:
 	      AND l.signature <> '88888888' \
 	      ORDER BY 1" \
 	| perl $(LINREC)/reverse_signature.pl -h -i 3 \
-	>        $@.tmp 
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 holol2:
@@ -2714,7 +2714,7 @@ homapgf:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #--------
-hermite: 
+hermite:
 	grep -E "Numerator of Hermite" $(COMMON)/joeis_names.txt \
 	| perl gen_hermite.pl \
 	>        $@.gen
@@ -2727,9 +2727,9 @@ hermite_conj:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------
-# A157799 null    Numerator of Bernoulli(n, 1/3). 
+# A157799 null    Numerator of Bernoulli(n, 1/3).
 # A157800 null    Denominator of Bernoulli(n, 1/3).
-bernoulli: 
+bernoulli:
 	grep -E "(Numer|Denomin)ator of Bernoulli\(" $(COMMON)/joeis_names.txt \
 	| perl -ne 'if (m{\A(A\d+)\s+\w+\s+((Numer|Denomin)ator of [Bb]ernoulli\(n\,\s*(\-?\d+)\s*(\/\s*(\d+)\))?)}) { '\
 	' my @parms = ($$1, "bernoulli", 0, lc(substr($$2, 0, 3)), $$4, $$6 || 1, $$2, "dummy"); '\
@@ -2737,7 +2737,7 @@ bernoulli:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-eulerp: 
+eulerp:
 	grep -E "(Numer|Denomin)ator of Euler\(" $(COMMON)/joeis_names.txt \
 	| perl -ne 'if (m{\A(A\d+)\s+\w+\s+((Numer|Denomin)ator of [Ee]uler\(n\,\s*(\-?\d+)\s*(\/\s*(\d+)\))?)}) { '\
 	' my @parms = ($$1, "eulerp", 0, lc(substr($$2, 0, 3)), $$4, $$6 || 1, $$2, "dummy"); '\
@@ -2745,7 +2745,7 @@ eulerp:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-laguerre: 
+laguerre:
 	grep -E "(Numer|Denomin)ator of Laguerre\(" $(COMMON)/joeis_names.txt \
 	| perl -ne 'if (m{\A(A\d+)\s+\w+\s+((Numer|Denomin)ator of [Ll]aguerre\(n\,\s*(\-?\d+))}) { '\
 	' my @parms = ($$1, "parm3", 0, "A160621", (substr($$2, 0, 3) eq "Num") ? "true" : "false", $$4, $$2, "dummy"); '\
@@ -2791,11 +2791,11 @@ holref1: # select sequences which are holonomic
 	cut -f2  $@.tmp | sort | uniq -c
 	wc -l    $@.tmp
 holref2: # extract parameters by reflection
-	# perl keep_first.pl -n 4444444 holref1.tmp 
+	# perl keep_first.pl -n 4444444 holref1.tmp
 	cat holref1.tmp \
 	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
-	>        $@.tmp 
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp $@.rest.tmp
 holref2a: # extract parameters by reflection
@@ -2803,7 +2803,7 @@ holref2a: # extract parameters by reflection
 	| grep -E "A32435" \
 	| $(JAVA) irvine.oeis.RecurrenceReflector - \
 	2>       $@.rest.tmp \
-	>        $@.tmp 
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp $@.rest.tmp
 holref3: # postprocess the rest
@@ -2876,7 +2876,7 @@ holref_check:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-	grep -v " 3 " $@.tmp 
+	grep -v " 3 " $@.tmp
 #----
 holref_deris:
 	$(DBAT) -x "SELECT j.aseqno, h.aseqno, h.keyword, n.name \
@@ -2887,7 +2887,7 @@ holref_deris:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-	
+
 #---- $@.tmp
 holrefix: holrefix1 holrefix2 # which are in lrindx joined with their implementation in joeis
 holrefix1:
@@ -2958,7 +2958,7 @@ naronson:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--
-runaron: 
+runaron:
 	$(JAVA) irvine.oeis.NumericalAronsonSequence -d $(D) $(BF) -n $(NT) -s $(A) -o $(OFFSET)
 testaron: # A= B=
 	$(DBAT) -x "(SELECT b.aseqno, i.offset1, b.data FROM bfdata b, asinfo i WHERE b.aseqno = '$(A)' AND b.aseqno = i.aseqno) UNION \
@@ -2977,7 +2977,7 @@ interleave:
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #--------------------------------
 ASMIN=300
 ASMAX=400
@@ -3342,7 +3342,7 @@ mma_single: # single line MMA statement(s)
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-mma_joeis: # 
+mma_joeis: #
 	make seq2 LIST=mma_single.tmp
 	$(DBAT) "SELECT m.aseqno, SUBSTR(j.superclass, 1, 3), m.info FROM seq2 m LEFT JOIN joeis j ON m.aseqno = j.aseqno \
 		ORDER BY 3" \
@@ -3571,6 +3571,13 @@ prikronf:
 	sort $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.tmp $@.rest.tmp
+pribuild:
+	make purge pocre
+	make CC=pricongr select EX=xx gener poins CLASS=CongruenceForm
+	make CC=A038702  select EX=xx gener poins CLASS=A038702
+	grep A1910 pricongr.gen | cut -b1-64
+	make CC=prikronf select EX=xx gener poins CLASS=KroneckerForm  
+	make CC=pricongr man poeis_count dist testall log
 priquad2: # select all MMA calls of QuadPrimes2
 	grep -P "QuadPrimes2\[\d" $(COMMON)/jcat25.txt \
 	| perl priquad2.pl \
@@ -3665,9 +3672,9 @@ prodet:
 	head -n4 $@.gen
 	wc -l    $@.gen
 prodet3:
-	cat prodet3.gen	
+	cat prodet3.gen
 prodetm:
-	grep -E "^A" prodet.man > prodetm.gen	
+	grep -E "^A" prodet.man > prodetm.gen
 #----
 genet: # parameters for GeneralizedEulerTransform
 	cat prod1_xk.tmp prod1_xk.man \
@@ -3699,7 +3706,7 @@ genet_status:
 	make seq2 LIST=$@.tmp
 	$(DBAT) "UPDATE seq4 s4 SET s4.parm7 = COALESCE((SELECT s2.info FROM seq2 s2 WHERE s4.aseqno = s2.aseqno), 'v');"
 	$(DBAT) -x -44444 seq4 > genet.gen
-genet_check:	
+genet_check:
 	cut -f1,10,8-9 genet.gen
 #----
 # Generalized ET
@@ -3715,7 +3722,7 @@ prodsi: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 	wc -l    $@.*tmp
 #	| sort -k5,5 --field-separator="	" \
 #
-prodsi2: 
+prodsi2:
 	grep -E "^A[0-9]" $@.man \
 	>        $@.gen
 	head -n4 $@.gen
@@ -3777,15 +3784,15 @@ prodfin1:
 	| grep -ivE "produce|dot product|Multiplicative|gamma|sum|binomial|indices|E\.g\.f\.|Conjecture" \
 	| perl -ne 'if (m{prod.*=\d+\.\.\d+\}}i) { print join("\t", substr($$_, 3, 7), "prodfin", 0, substr($$_, 11)); } ' \
 	| sort | uniq -w7 \
-	>        $@.tmp 
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
 	make seq4 LIST=$@.tmp
 	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"
 	$(DBAT) -x -10000 seq4 > $@.tmp
-# A075511	prodfin	0	G.f.: 1/Product_{k=1..6} (1 - 2*k*x).									
-# A075512	prodfin	0	G.f.: 1/Product_{k=1..7} (1 - 2*k*x).									
-# A075515	prodfin	0	G.f.: 1/Product_{k=1..5} (1 - 3*k*x).									
+# A075511	prodfin	0	G.f.: 1/Product_{k=1..6} (1 - 2*k*x).
+# A075512	prodfin	0	G.f.: 1/Product_{k=1..7} (1 - 2*k*x).
+# A075515	prodfin	0	G.f.: 1/Product_{k=1..5} (1 - 3*k*x).
 prodfin:
 	cat prodfin1.tmp \
 	| perl -ne 's/\s*\Z//; my ($$aseqno, $$callcode, @parms) = split(/\t/); if ($$parms[1] =~ m{_\{k\=1\.\.(\d+)\} *\(1 *\- *(\d+)\*k}) {'\
@@ -3816,7 +3823,7 @@ ym1:
 ym2:
 	$(DBAT) -x "SELECT s.aseqno, j.superclass \
 	    FROM seq s LEFT JOIN joeis j ON s.aseqno = j.aseqno \
-	    ORDER BY 1" 
+	    ORDER BY 1"
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -3963,7 +3970,7 @@ deris0: deris1 # charfun2
 	head -n4 deris2.gen
 	wc -l    deris2.gen
 deris1:
-	rm -f *.deris.tmp 
+	rm -f *.deris.tmp
 	# echo -n "binomial"                         > binomx.deris.tmp
 	echo -n "characteristic|indicator"         > charfun.deris.tmp
 	 echo -n "complement"                       > compseq.deris.tmp
@@ -3991,7 +3998,7 @@ deris2:
 	| sed -e "s/ /\t/" -e "s/ /\t/" -e "s/^[^\%]*\%/\%/" \
 	| perl deris.pl $(DEROPT) -cc $(TARGET) -f $(COMMON)/joeis_ofter.txt \
 	>        $(TARGET).tmp \
-	2>       $(TARGET).rest.tmp 
+	2>       $(TARGET).rest.tmp
 	sort     $(TARGET).tmp | uniq -w7 \
 	>        $(TARGET).gen
 	head -n4 $(TARGET).gen
@@ -4000,7 +4007,7 @@ deris2:
 	>>       $@.gen
 #----
 deris:
-	# sort     deris2.gen charfuman.tmp | uniq -w7 
+	# sort     deris2.gen charfuman.tmp | uniq -w7
 	# sort     deris2.gen compseq.man | uniq -w7
 	sort     deris2.gen compseq.man | uniq -w7 \
 	| grep -vf not_same.man \
@@ -4062,7 +4069,7 @@ deris3:
 	cut -f2  deris2.gen | sort | uniq -c
 deris4:
 	grep -E "^\%[NCF] A[0-9]*" ../../../OEIS-mat/common/cat25.txt charfun2.tmp \
-	| grep -iE "`cat charfun.deris.tmp`" 
+	| grep -iE "`cat charfun.deris.tmp`"
 deris5:
 	echo -n "A054521" > x.tmp
 	grep -iE "`cat x.tmp`" charfun2.tmp
@@ -4276,7 +4283,7 @@ transpose_check:
 # A163493 Number of binary strings of length n which have the same number of 00 and 01 substrings.
 # cf. Zeilberger: https://arxiv.org/pdf/1112.6207.pdf
 #
-rpseqhol0: rpseqhol1 rpseqhol2 
+rpseqhol0: rpseqhol1 rpseqhol2
 rpseqhol1: # extract all word pairs
 	grep -E "Number of binary strings of length n "  $(COMMON)/joeis_names.txt \
 	| perl rpseqhol.pl \
@@ -4295,25 +4302,25 @@ rpseqhol:
 	| perl -ne 's/\[\]/\[0\]/g; print; '\
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #----------------
 greprec3:
 	cd $(HOLREC) ; make holminit LIST=$@.gen
-	grep -vE "^A176186" $(HOLREC)/holminit.tmp > $@.gen 
+	grep -vE "^A176186" $(HOLREC)/holminit.tmp > $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #----------------
 maplass:
 	grep -E "^A" $(HOLREC)/maplass4.tmp \
 	| grep -v "/" \
-	>        $@.gen 
+	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #----------------
 # A118351 Central terms of pendular triangle A118350
 # G.f. A=A(x) satisfies: A = 1 - 3*x*A + 3*x*A^2 + x*A^3.
 #
-satishol0: satishol1 satishol2 
+satishol0: satishol1 satishol2
 satishol1: # merge with initial terms
 	make seq4 LIST=$(HOLREC)/satis.gen
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, d.data \
@@ -4332,7 +4339,7 @@ satishol:
 	| perl -ne 's/\[\]/\[0\]/g; print; '\
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #--------------------------------
 # targets for sequencedb
 #
@@ -4342,7 +4349,7 @@ SDBaffine:
 	| sed -e "s/\t[0-9]*\t/\tpanext\t/" \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #----
 SDBdiff1: # A056526 03      9999    Δ[A000960(n)]
 	grep -P "\tΔ\[A\d+\(n\)\]\t" $(SDB)/seqdb4.tmp \
@@ -4354,7 +4361,7 @@ sdb_simple:
 	| perl -ne 's{\tinfix\t}{\t$@\t}; print;' \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #--------------------------------
 # A136811 Numbers n such that n and the square of n use only the digits 0, 1, 2, 3 and 5.
 squaredig: # Jonathan Wellons A136nnn
@@ -4428,7 +4435,7 @@ tilepre5:
 		  >  $@.tmp
 	head -4  $@.tmp
 	wc -l    $@.tmp
-tile2:	
+tile2:
 	$(DBAT) -x "SELECT c.aseqno, 'tile', 0, c.galid, c.stdnot, c.vtype, c.tarots, c.tilingno \
 	  FROM coors c \
 	  WHERE c.aseqno NOT IN (SELECT j.aseqno FROM joeis j) \
@@ -4630,7 +4637,7 @@ lingf:
 lingf_offset:
 	cp   lingf.gen lingf.gen.bak
 	perl lingf_offset.pl lingf.gen > x.tmp
-	cp   x.tmp     lingf.gen 
+	cp   x.tmp     lingf.gen
 	diff -w -C0 lingf.gen.bak lingf.gen || :
 #----
 tilegf:
@@ -4638,9 +4645,9 @@ tilegf:
 	| sed -e "s/lingfo/lingf/" \
 	> tilegf.gen
 #--------------------------------
-# A176832 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
+# A176832 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here
 # a(0)=1, a(1)=5, k=1 and l=-1.
-# A176854 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here 
+# A176854 Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here
 # a(0)=1, a(1)=0, k=-1 and l=0.
 choulet: choulet1 choulet2 choulet3
 choulet1:
@@ -4704,7 +4711,7 @@ weighi:
 ieuler:
 	# cp ieuler.man ieuler.gen
 	find manual -iname "*.java" | xargs -l -innn \
-	perl -i*.bak -e 'while (<>) { s{EulerTransformSequence}{EulerTransform}g; print; }' nnn 
+	perl -i*.bak -e 'while (<>) { s{EulerTransformSequence}{EulerTransform}g; print; }' nnn
 #----
 INIT=""
 TYPE=2
@@ -4730,7 +4737,7 @@ eulerx0: # grep cat25 - takes some time
 	2>       $@.rest.tmp \
 	>        $@.tmp
 	wc -l    $@.tmp $@.rest.tmp
-eulerx: eulerx1 eulerx2 eulerx3 
+eulerx: eulerx1 eulerx2 eulerx3
 eulerx1: # append manual ones and uniq
 	# grep -E "^A[0-9]" eulerxfm.man > $@.1.tmp
 	sort     eulerx0.tmp \
@@ -4794,7 +4801,7 @@ euguess2: # aseqno, "euleri"  , ofs, "nonn", prepend, termlist, "term"
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 euguess_check: # aseqno, "euleri" , ofs, "nonn", prepend, invlist  ,            "term"
-	# ->         aseqno, "euguess", ofs, 3     , prepend, left-init, right-pad, "term" 
+	# ->         aseqno, "euguess", ofs, 3     , prepend, left-init, right-pad, "term"
 	#            0       1          2    3       4        5
 	perl -e 'print join("\t", "aseqno", "callcode", "ofs", "seqtype", "prepend", "left-init", "right-pad", "original terms", "term") . "\n";' \
 	>        $@.txt
@@ -4804,14 +4811,14 @@ euguess_check: # aseqno, "euleri" , ofs, "nonn", prepend, invlist  ,            
 	head -n4 $@.txt
 	wc -l    $@.txt
 	cp -v    $@.txt $(COMMON)
-	cd $(COMMON) ; make -f checks.make -s html_check1 FILE=$@ 
+	cd $(COMMON) ; make -f checks.make -s html_check1 FILE=$@
 	rm -vf $(COMMON)/$@.txt
 etpart: # manually selected "Number of partition ... " with Indicatorsequence
 	grep -E "^A" etpart.man > etpart.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-euguess: #       aseqno, "euguess", ofs, "nonn", prepend, left-init, right-pad, "term" 
-	# ->         aseqno, "euguess", ofs, "nonn", prepend, left-init, right-pad, "term" 
+euguess: #       aseqno, "euguess", ofs, "nonn", prepend, left-init, right-pad, "term"
+	# ->         aseqno, "euguess", ofs, "nonn", prepend, left-init, right-pad, "term"
 	perl eulerxfm_post.pl euguess_check.txt \
 	>        $@.gen \
 	2>       $@.rest.tmp
@@ -4838,7 +4845,7 @@ euguess_sh2:
 	>        $@.tmp
 	wc -l    $@.tmp
 	make seq LIST=$@.tmp
-	make CC=euguess select 
+	make CC=euguess select
 	$(DBAT) -v "DELETE FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM seq);"
 euguman:
 	$(DBAT) -x "SELECT s.aseqno, callcode, offset, parm1, parm2, parm3, parm4, parm5, parm6, parm7, parm8, name \
@@ -4894,7 +4901,7 @@ eumapgf4:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-eumapgf: 
+eumapgf:
 	grep -vE "A078463|A167991|A337080|A337244" eumapgf4.tmp > $@.gen
 eumapgf5:
 	grep -E "FATO|pass" eumapgf.all.log \
@@ -4943,7 +4950,7 @@ molien:
 	head -n4 $@.gen
 	wc -l    $@.gen
 moldiff:
-	diff 
+	diff
 #--------
 etgeneric:
 	grep -E "^A[0-9]" $@.man > $@.gen
@@ -5222,7 +5229,7 @@ pad1mma:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 pad1par:
-	# A088689 (PARI) a(n)=[0, 1, 1, 0, 2, 2][n%6+1] \\ _Charles 
+	# A088689 (PARI) a(n)=[0, 1, 1, 0, 2, 2][n%6+1] \\ _Charles
 	cat $(COMMON)/cat25.txt \
 	| perl -ne 'use strict; if (m{\A\%o (A\d+)}) { my $$aseqno = $$1; '\
 	' if (m{\(PARI\) +a\(n\) *= *\[([^\]]*)\] *\[n *\% *(\d+) *\+ *1\] *[\;\\]}) { '\
@@ -5276,7 +5283,7 @@ period3:
 	>        $@.a.tmp
 	grep -Ef $@.a.tmp period.clean.gen \
 	>        $@.b.tmp
-	make padding 
+	make padding
 	cat padding.gen >> $@.b.tmp
 	wc -l    $@.b.tmp
 	sort $@.b.tmp | uniq -w7 > $@.tmp
@@ -5506,7 +5513,7 @@ linman_old: # g.f.s in $(LINREC)/linrec.man -> holos
 	head -n4 $@.gen
 	wc   -l  $@.gen
 linall:
-	make purge 
+	make purge
 	make CC=linman select gener
 	make CC=holom  select gener
 	make CC=man man dist testall log
@@ -5601,11 +5608,11 @@ moderiv: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 	wc   -l  $@.gen
 #-------------------
 # A109718 Periodic sequence with period {0,1,0,3}, or n^3 mod 4.
-# A109720 Periodic sequence {0,1,1,1,1,1,1} or n^6 mod 7.       
-# A109753 n^3 mod 8; the periodic sequence {0,1,0,3,0,5,0,7}.   
-# A159852 n^2 mod 60.                                           
-# A167129 n^7 mod 21.                                           
-# A167166 a(n) = n^7 mod 16.                                    
+# A109720 Periodic sequence {0,1,1,1,1,1,1} or n^6 mod 7.
+# A109753 n^3 mod 8; the periodic sequence {0,1,0,3,0,5,0,7}.
+# A159852 n^2 mod 60.
+# A167129 n^7 mod 21.
+# A167166 a(n) = n^7 mod 16.
 # all done
 modpow: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 	cat $(COMMON)/names \
@@ -5643,7 +5650,7 @@ jasinski:
 	wc -l    $@.tmp
 	# head -n4 $@.tmp
 nthprime:
-	# perl -ne 'my @parts = split(/\t/); print if $$parts[3] ne ""; ' $@.man 
+	# perl -ne 'my @parts = split(/\t/); print if $$parts[3] ne ""; ' $@.man
 	perl $@.pl \
 	>        $@.gen
 	head -n4 $@.gen
@@ -5793,7 +5800,7 @@ pfprime99:
 	$(DBAT) -x "SELECT * FROM seq4 \
 	    ORDER BY aseqno" \
 	>        $@.gen
-	# WHERE PARM1 < 10 AND PARM2 < 1000 
+	# WHERE PARM1 < 10 AND PARM2 < 1000
 pfprimex:
 	cp pfprime.gen pfprime.tmp
 	perl -pe 's{^(A032373|A050413|A050544|A050847|A050885|A056245|A056248|A056258|A059454'\
@@ -5824,7 +5831,7 @@ primof:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--
-anumof: 
+anumof:
 	make cat_names GREP="[0-9][0-9] a\([i-n]\) *\= *" \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -5995,7 +6002,7 @@ sumway.dupl.check:
 	cut -f4-9 sumway.gen | sort | uniq -c \
 	| grep -vE "^  *1  *" || :
 sumwan.check:
-	cut   -b1-7 sumway.gen | sed -e "s/\r//" > $@.1.tmp 
+	cut   -b1-7 sumway.gen | sed -e "s/\r//" > $@.1.tmp
 	grep -E "Number of ways of writing n as (the |a )sum of " $(COMMON)/names \
 	| grep -vf $@.1.tmp \
 	| cut -b1-120 \
@@ -6050,7 +6057,7 @@ wiki_stat:
 # A003325	Sequence	Numbers that are the sum of 2 positive cubes.	nonn,easy,nice,changed,	1..20000
 # A003327	A003338	Numbers that are the sum of 4 positive cubes in 1 or more way.	nonn,	1..1000
 # A003328	A003339	Numbers that are the sum of 5 positive cubes.	nonn,	1..1000
-sumpow0_not_used: # 
+sumpow0_not_used: #
 	cat $(COMMON)/joeis_names.txt \
 	| perl -ne \
 	'm{\A(A\d+)}; my $$aseqno = $$1; if ($$aseqno ge "A003325" and $$aseqno le "A003399") { '\
@@ -6058,7 +6065,7 @@ sumpow0_not_used: #
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
-sumpow: 
+sumpow:
 	# =====> don't forget copys
 	cat sumpow.man \
 	>        $@.gen
@@ -6188,7 +6195,7 @@ fininof_check: # Sequences with keywords "fini", but no "full"
 	head -n4 $@.txt
 	wc -l    $@.txt
 	cp -v    $@.txt $(COMMON)
-	cd $(COMMON) ; make html_checks 
+	cd $(COMMON) ; make html_checks
 	rm -vf $(COMMON)/$@.txt
 #----
 finibf_check: # Sequences with keywords "fini,full", but full terms are in b-file only
@@ -6233,7 +6240,7 @@ unsigned: unsigned1 unsigned2
 	sort unsigned2.tmp | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc   -l  $@.gen	
+	wc   -l  $@.gen
 unsigned1:
 	grep -E "^.[NCFY]" $(COMMON)/jcat25.txt | grep -Ei "unsigned" \
 	| perl unsigned.pl \
@@ -6268,12 +6275,12 @@ uvpoly: # in ./ck, A208510 ff.
 	sort ck/$@.tmp | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc   -l  $@.gen	
+	wc   -l  $@.gen
 uvpolx: # in ./ck, A208510 ff.
 	sort ck/$@.tmp | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
-	wc   -l  $@.gen	
+	wc   -l  $@.gen
 #--------------------------------
 weight_check:
 	grep "Weight distr" $(COMMON)/names \
@@ -6306,7 +6313,7 @@ wroot:
 	| grep -vE "A109160" \
 	>        $@.gen
 	head -n4 $@.gen
-	wc   -l  $@.gen	
+	wc   -l  $@.gen
 	# | grep -vE "A109479|A109481|A109483" \
 	#
 #--------------------------------
@@ -6417,7 +6424,7 @@ packlist_check1:
 	make seq LIST=$@.tmp
 	echo ====$(FILE)====
 	ls -al $(FILE)
-	$(DBAT) -x "SELECT aseqno FROM seq WHERE aseqno NOT IN (SELECT aseqno FROM joeis) ORDER BY 1;" 
+	$(DBAT) -x "SELECT aseqno FROM seq WHERE aseqno NOT IN (SELECT aseqno FROM joeis) ORDER BY 1;"
 #--------------------------
 analog: analog1 anasort anaprep anaload anastret
 analog1:
@@ -6425,7 +6432,7 @@ analog1:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-anasort: 
+anasort:
 	sed -e "s/\t/\#/g" analog1.tmp \
 	| sort --field-separator="#" -k4,4 -k3,3 -k1,1 -k5,5 \
 	| sed -e "s/\#/\t/g" \
