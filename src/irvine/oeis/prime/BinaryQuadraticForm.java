@@ -44,7 +44,7 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
    * @param intMode 1 for nonnegative x and y, 2 for all integers
    */
   public BinaryQuadraticForm(final int a, final int b, final int c, final int intMode) {
-    this (a, b, c, ! (intMode == 1 || b != 0), true);
+    this (a, b, c, intMode == 2 || ! (intMode == 1 || b != 0), true);
   }
 
   /**
@@ -59,14 +59,13 @@ public class BinaryQuadraticForm extends TreeMap<Z, Pair<Integer, Integer>> impl
     mC = c;
     mAnyInteger = anyInteger;
     mPrimesOnly = primesOnly;
-    mOldTerm = Z.ZERO;
     mColMix = new ArrayList<>();
     mColMax = new ArrayList<>();
     final int x = 0;
     final int y = 0;
     mColMix.add(x); // for column iy
     mColMax.add(x);
-    addEntry(x, y);
+    mOldTerm = addEntry(x, y).subtract(1);
     if (sDebug >= 1) {
       System.out.println("# BinaryQuadraticForm(" + a + ", " + b + ", " + c + ", anyInteger=" + anyInteger + ", primesOnly=" + primesOnly);
     }

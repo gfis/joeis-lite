@@ -192,10 +192,19 @@ podel: # CC= delete and export again
 bfresh: # CC=
 	cd $(COMMON) ; make bfresh
 #--
-poeis_check:
+poeis_diff:
 	$(DBAT) -x "SELECT LOWER(SUBSTR(aseqno, 1, 4)) || '/' || aseqno || '.java' FROM poeis ORDER BY 1" \
 	| sed -e "s/\r//" > x.tmp
 	cat x.tmp | xargs -l -innn diff -w -y --suppress-common-lines ../../../joeis/src/irvine/oeis/nnn ../../src/irvine/oeis/nnn
+poeis_extend:
+	$(DBAT) -x "SELECT aseqno, superclass FROM joeis j WHERE j.superclass IN (SELECT aseqno FROM POEIS) ORDER BY 1"
+poeis_replaces:
+	$(DBAT) -x "SELECT p.aseqno, p.superclass, j.superclass FROM poeis p, joeis j WHERE p.aseqno = j.aseqno ORDER BY 1"
+poeis_count:
+	$(DBAT) -x "SELECT CAST(a AS CHAR) || ' classes = ' || SUBSTR(CAST(a/b * 100 AS CHAR),1,7) \
+	    || '% out of ' || CAST(b AS CHAR) || ' sequences in poeis are replaced, ' || CAST(b - a AS CHAR) || ' are new' FROM \
+	    ( (SELECT COUNT(j.aseqno) as a FROM poeis p, joeis j WHERE p.aseqno = j.aseqno) j1 \
+	    , (SELECT COUNT(i.aseqno) as b FROM poeis i                                   ) j2)"
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
