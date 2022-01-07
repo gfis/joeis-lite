@@ -9,10 +9,11 @@ import irvine.oeis.Sequence;
  * A093211 a(n) is the largest number such that all of a(n)'s length-n substrings are distinct and divisible by 11..
  * @author Georg Fischer
  */
-public class A093211 extends HashSet<Long> implements Sequence {
+public class A093211 extends HashSet<Integer/**/> implements Sequence {
 
-  protected long mDivm;
-  protected long mN;
+  protected int/**/ mDivm;
+  protected int/**/ mLast;
+  protected int/**/ mN;
 
   /** Construct the sequence. */
   public A093211() {
@@ -35,20 +36,27 @@ public class A093211 extends HashSet<Long> implements Sequence {
 
   public int debug = 0;
 
-  private int[] setgoodlist(final long len, final long adiv) {
+  public int pow(int a, int b) { // from https://stackoverflow.com/questions/8071363/calculating-powers-of-integers
+      if (b == 0)        return 1;
+      if (b == 1)        return a;
+      if ((b & 1) == 0)  return     pow (a * a, b/2); //even a=(a^2)^b/2
+      else               return a * pow (a * a, b/2); //odd  a=a*(a^2)^b/2
+  }
+  
+  private int[] setgoodlist(final int/**/ len, final int/**/ adiv) {
     final int[] btmp = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // 0..9
     for (int i = 0; i < 10; ++i) {
-      final long remain = (adiv - i * Math.pow(10, len - 1)) % adiv;
+      final int/**/ remain = (adiv - i * this.pow(10, len - 1)) % adiv;
       if ((adiv - 10 * remain) % adiv > 9) {
         btmp[i] = 0; // remove
       }
     }
     // if (debug >= 2) { System.out.println(join(", ", @btmp) . "\n"; }
     return btmp;
-  } // public long setgoodlist
+  }
 
-  private long dropdigs(final long k, final long l) {
-    long ktmp = (k / l) * l;
+  private int/**/ dropdigs(final int/**/ k, final int/**/ l) {
+    int/**/ ktmp = (k / l) * l;
     ktmp --;
     while ((ktmp % mDivm) != 0) {
       ktmp --;
@@ -57,27 +65,27 @@ public class A093211 extends HashSet<Long> implements Sequence {
     return ktmp;
   } // dropdigs
 
-  private long walking(final long k) {
-    long aa = 0;
-    long kt = k * 10;
-    long ktl = kt % last;
+  private int/**/ walking(final int/**/ k) {
+    int/**/ aa = 0;
+    int/**/ kt = k * 10;
+    int/**/ ktl = kt % mLast;
     if (((ktl - 1) % mDivm) + 10 < mDivm) {
       return aa;
     }
-    long a;
+    int/**/ a;
     if (ktl % mDivm == 0) {
       a = kt;
     } else {
       a = kt + (mDivm - (ktl % mDivm));
     }
 
-    long al = a % last;
+    int/**/ al = a % mLast;
     if (! contains(al)) {
       add(al);
       if (a > aa) {
         aa = a;
       }
-      long atmp = walking(a);
+      int/**/ atmp = walking(a);
       if (atmp > aa) {
         aa = atmp;
       }
@@ -89,34 +97,34 @@ public class A093211 extends HashSet<Long> implements Sequence {
     return aa;
   } // walking
 
-  protected long compute(int n) {
+  protected int/**/ compute(int/**/ n) {
     final int[] goodlist = setgoodlist(n, mDivm);
-    last = Math.pow(10, n);
-    long beg = Math.pow(10, n) - 1; // '9' x n
-    long end = Math.pow(10, n-1);
+    mLast = this.pow(10, n);
+    int/**/ beg = this.pow(10, n) - 1; // '9' x n
+    int/**/ end = this.pow(10, n-1);
     if (debug >= 2) { System.out.println("n=" + n + ", beg=" + beg + ", end=" + end); }
-    long i = beg;
-    while (i % mDivm != 0) {
+    int/**/ i = beg;
+    while (i % mDivm != 0L) {
       i -= 1;
     }
-    long an = i;
-    long oldan = an;
-    long anlen = n;
+    int/**/ an = i;
+    int/**/ oldan = an;
+    int/**/ anlen = n;
     while (i > end) {
       add(i);
-      if (i % 100000 == 0) {
-        anlen = length(an);
+      if (i % 100000L == 0) {
+        anlen = String.valueOf(an).length();
         if (anlen > 2*n) {
           anlen = 2*n - 1;
         }
       }
-      long wi = walking(i);
+      int/**/ wi = walking(i);
       if (wi > an) {
         an = wi;
       }
       i -= mDivm;
-      for (long j = 0; j < anlen - n + 1; j ++) {
-        long jten = Math.pow(10, n - j - 1);
+      for (int/**/ j = 0; j < anlen - n + 1; j ++) {
+        int/**/ jten = this.pow(10, n - j - 1);
         if (jten < 1) {
           break;
         }
@@ -133,10 +141,10 @@ public class A093211 extends HashSet<Long> implements Sequence {
    * Main method for testing
    * @param args command line arguments: divisor
    */
-  public static void main(String[] args) {{
-    long divisor;
+  public static void main(String[] args) {
+    int/**/ divisor = 11;
     try {
-      divisor = Integer.parseInt(argv[0]);
+      divisor = Integer.parseInt(args[0]);
     } catch (Exception exc) {
     }
     
