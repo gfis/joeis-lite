@@ -481,6 +481,12 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
+anabuild: # 2022-01-06
+	make CC=A087630 select EX=xx gener
+	make CC=A050990 select EX=xx gener
+	make CC=A343523 select EX=xx gener
+	make man distel
+#================================================================
 A001482:
 	grep -E "^A" $@.man \
 	>        $@.gen
@@ -3571,7 +3577,7 @@ prikronf:
 	sort $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.tmp $@.rest.tmp
-pribuild:
+pribuild: # 2022-01-06
 	make purge pocre
 	make CC=pricongr select EX=xx gener poins CLASS=CongruenceForm
 	make CC=A038702  select EX=xx gener poins CLASS=A038702
@@ -3599,9 +3605,12 @@ priquad3: # insert the ones covered by CC=pricongr (CongruenceForm)
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 priquad4:
-	grep -E "^A[0-9]" priquad3.tmp > $@.gen
+	grep -E "^A[0-9]" priquad2.tmp \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#	| sed -e "s/priquad2/priquad4/" \
+#
 priquad_guess: # guess the remaining residues in priquad3.gen
 	perl priquad_guess.pl priquad3.tmp > $@.tmp
 	head -n4 $@.tmp
