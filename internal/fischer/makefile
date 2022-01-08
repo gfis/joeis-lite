@@ -481,11 +481,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # 2022-01-06
+anabuild: # 2022-01-08
+	make purge
 	make CC=A087630 select EX=xx gener
-	make CC=A050990 select EX=xx gener
+	make CC=A050990 select EX=xx gener # Knoedel numbers
 	make CC=A343523 select EX=xx gener
-	make man distel
+ab2:
+	make CC=A066432 select       gener # 10^n mod n^10
+	make CC=A093211 select       gener # all subsequences distinct and divisible by 11
+	make CC=A006938 select EX=xx gener # dec -> bin
+	make CC=A038500 select EX=xx gener # highest power of k dividing n
+	make CC=A054861 select EX=xx gener # highest power of k dividing n!
+	make CC=A110389 select EX=xx gener # Integers with mutual residues -1.
+	make CC=A093211 man dist testall pack
 #================================================================
 A001482:
 	grep -E "^A" $@.man \
@@ -604,6 +612,14 @@ A072921:
 	wc -l    $@.gen
 A075497:
 	grep -E "^A" $@.man > $@.gen
+	wc -l    $@.gen
+#----
+A093211: # a(n) is the largest number such that all of a(n)'s length-n substrings are distinct and divisible by 11.	base,nonn,synth	1..11
+	grep -P "^A0932[1-9][0-9]" $(COMMON)/joeis_names.txt \
+	| grep -vE "A093210|A093245|A093290" \
+	| perl -ne 'use strict; m{\A(A\d+)}; my $$aseqno = $$1; print join("\t", $$aseqno, "parm2", 1, "A093211", substr($$aseqno, 5, 2)) . "\n"; '\
+	>        $@.gen
+	head -n4 $@.gen
 	wc -l    $@.gen
 A094969:
 	cat $(COMMON)/joeis_names.txt \
@@ -6435,7 +6451,7 @@ packlist_check1:
 	ls -al $(FILE)
 	$(DBAT) -x "SELECT aseqno FROM seq WHERE aseqno NOT IN (SELECT aseqno FROM joeis) ORDER BY 1;"
 #--------------------------
-analog: analog1 anasort anaprep anaload anastret
+analog: analog1 anasort anaprep anaload anastret anastren
 analog1:
 	perl normalize_name.pl $(COMMON)/joeis_names.txt \
 	>        $@.tmp
@@ -6466,6 +6482,11 @@ anaload:
 	;"
 anastret:
 	$(DBAT) -x "SELECT * FROM seq4 ORDER BY 6,4,5" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc   -l  $@.txt
+anastren: # only the ones from anastret that contain no "Annnnnn"
+	grep -v "Annnnnn" anastret.txt \
 	>        $@.txt
 	head -n4 $@.txt
 	wc   -l  $@.txt

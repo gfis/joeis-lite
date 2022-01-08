@@ -1,0 +1,86 @@
+A332335	numquad2	1	-108	2	4	2	7	nyi			Numbers of the form 4x^2 + 2xy + 7y^2.
+A020668 Sequence        Numbers of the form x^2 + 4*y^2.        easy,nonn,      1..7500 unkn
+A020674 Sequence        Numbers of the form 2*x^2 + 5*y^2.      easy,nonn,changed,      1..7000 unkn
+A020693 Sequence        Numbers of the form 8*x^2 + 9*y^2.      easy,nonn,changed,synth 1..57   unkn
+A024614 A024612 Numbers of the form x^2 + xy + y^2, where x and y are positive integers.        nonn,easy,      1..10000        unkn
+A035121 Sequence        Numbers of the form x^2+82*y^2. nonn,synth      1..47   unkn
+A037942 Sequence        Numbers of the form x^2 + y^2 with x >= 0, y >= 0, gcd(x,y)=1, with multiplicity.       nonn,synth      1..49   unkn
+A092572 null    Numbers of the form x^2 + 3y^2 where x and y are positive integers.     nonn,   1..10000
+A123064 null    Numbers represented by the quadratic form 2 x^2 + xy + 4 y^2.   nonn,synth      1..65   nyi
+A219907 null    Numbers of the form 4x^2+2xy+7y^2, x, y >= 0.   nonn,   1..10000
+A242655 null    Numbers of the form 2x^2+2xy+3y^2 with x and y nonnegative.     nonn,synth      1..71   nyi
+A243173 null    Numbers of the form x^2+15y^2.  nonn,   1..1000 nyi
+A243175 null    Numbers of the form x^2 + xy + 7y^2.    nonn,changed,synth      1..79   nyi
+A243176 null    Numbers of the form x^2+xy+8y^2.        nonn,synth      1..80   nyi
+A243177 null    Numbers of the form 3x^2+2xy+3y^2.      nonn,changed,   1..10000        nyi
+A243178 null    Numbers of the form x^2+xy+9y^2.        nonn,synth      1..78   nyi
+A243179 null    Numbers of the form 3x^2+xy+3y^2.       nonn,synth      1..78   nyi
+A243180 null    Numbers of the form 8x^2+xy-8y^2.       nonn,changed,   1..1676 nyi
+A243181 null    Numbers of the form 4x^2+9xy-11y^2.     nonn,   1..2180 nyi
+A243182 null    Numbers of the form 2x^2+2xy+5y^2.      nonn,synth      1..79   nyi
+A244037 null    Numbers of the form x^2+14y^2.  nonn,changed,   1..10000        nyi
+A247881 null    Numbers of the form x^2 + 13y^2.        easy,nonn,synth 1..62   nyi
+A272933 null    Numbers of the form x^2 + 12*y^2.       nonn,easy,synth 1..58   nyi
+
+A138805 null    Theta series of quadratic form x^2 + x*y + 7*y^2.
+A138811 null    Theta series of quadratic form x^2 + x*y + 11*y^2.
+
+A243191 null    Nonnegative integers represented by the indefinite quadratic form x^2+7xy-y^2.  nonn,   1..10000        nyi
+A243192 null    Nonnegative integers represented by the indefinite quadratic form 3x^2+3xy-4y^2.        nonn,   1..3000 nyi
+A243193 null    Nonnegative integers represented by the indefinite quadratic form -3x^2+3xy+4y^2.       nonn,   1..3030 nyi
+A243654 null    Nonnegative numbers represented by the indefinite quadratic form 3x^2+5xy-3y^2, of discriminant 61.     nonn,   1..10000        nyi
+A243655 null    Positive numbers that are primitively represented by the indefinite quadratic form x^2 - 3y^2 of discriminant 12.       nonn,synth      1..54   n
+A243701 null    Primes represented by the indefinite quadratic form x^2+13xy-9y^2.      nonn,synth      1..47   nyi
+A243702 null    Nonnegative numbers represented by the indefinite quadratic form x^2+13xy-9y^2. nonn,synth      1..57   nyi
+A243703 null    Nonnegative numbers represented by the indefinite quadratic form -x^2+13xy+9y^2.        nonn,synth      1..55   nyi
+A243704 null    Primes represented by the indefinite quadratic form -x^2+13xy+9y^2.     nonn,synth      1..48   nyi
+A243705 null    Nonnegative numbers represented by the indefinite quadratic form 3x^2+13xy-3y^2.        nonn,synth      1..54   nyi
+A243706 null    Primes represented by the indefinite quadratic form 3x^2+13xy-3y^2.     nonn,synth      1..49   nyi
+A244029 null    Primes p such that the quadratic form x^2+p*y^2 does not represent a prime strictly between p and 2p.   nonn,synth      1..37   nyi
+A244030 null    Composite numbers n such that the quadratic form x^2+n*y^2 does not represent a prime strictly between n and 2n.        nonn,synth      1..67   n
+A244031 null    Integers n>1 such that the quadratic form x^2+n*y^2 does not represent a prime strictly between n and 2n.       nonn,   1..104  nyi
+A244257 null    Decimal expansion of the asymptotic evaluation of the constrained maximum of a certain quadratic form.  nonn,cons,easy,synth    1..100  nyi
+A244291 null    Positive numbers primitively represented by the binary quadratic form (1, 6, -3).       nonn,synth      1..55   nyi
+A244713 HolonomicRecurrence     Positive numbers primitively represented by the binary quadratic form (1, 1, -2).       nonn,   1..10000        holos
+A244779 null    Positive numbers primitively represented by the binary quadratic form (1, 1, 2).        nonn,   1..10000        nyi
+A244780 null    Positive numbers primitively represented by the binary quadratic form (1, 1, 3).        nonn,synth      1..58   nyi
+A244819 null    Positive numbers primitively represented by the binary quadratic form (1, 0, 3).        nonn,changed,synth      1..58   nyi
+
+A318984 GramMatrixThetaSeries   Theta series of quadratic form x^2 + x*y + 17*y^2.      nonn,changed,   0..10000        nisolut
+A318985 GramMatrixThetaSeries   Theta series of quadratic form x^2 + x*y + 41*y^2.      nonn,changed,   0..10000        nisolut
+A341420 null    The positive integer numbers k represented properly by the binary quadratic form x^2 + 4*y^2.   nonn,new,synth  1..60   nyi
+A344231 null    All positive integers k properly represented by the positive definite binary quadratic form X^2 + 5*Y^2 = k, in increasing order.       nonn,easy,changed,synth 1..65   nyi
+A344232 null    All positive integers k properly represented by the positive definite binary quadratic form 2*X^2 + 2*X*Y + 3*Y^2  = k, in increasing order.    nonn,easy,changed,synth 1..65   nyi
+
+A000394 Sequence        Numbers of form x^2 + y^2 + 7z^2.       nonn,synth      0..59   unkn
+A000398 Sequence        Numbers of form x^2 + 2y^2 + 2yz + 4z^2.        nonn,easy,      1..1000 unkn
+A000401 A000394 Numbers of form x^2 + y^2 + 2z^2.       nonn,   1..1000 unkn
+A002479 Sequence        Numbers of form x^2 + 2y^2.     easy,nonn,nice, 1..3148 unkn
+A002480 Sequence        Numbers of form 2x^2 + 3y^2.    nonn,synth      1..51   unkn
+A002481 Sequence        Numbers of form x^2 + 6y^2.     nonn,changed,   1..2064 unkn
+A020669 Sequence        Numbers of form x^2 + 5 y^2.    easy,nonn,changed,      1..13859        unkn
+A020670 Sequence        Numbers of form x^2 + 7y^2.     easy,nonn,      1..10000        unkn
+A020671 Sequence        Numbers of form x^2 + 8 y^2.    easy,nonn,      1..10000        unkn
+A020672 Sequence        Numbers of form x^2 + 9 y^2.    easy,nonn,      1..9600 unkn
+A020673 Sequence        Numbers of form x^2 + 10 y^2.   easy,nonn,synth 1..62   unkn
+A020675 Sequence        Numbers of form 2 x^2 + 7 y^2.  easy,nonn,synth 1..61   unkn
+A020676 Sequence        Numbers of form 2 x^2 + 9 y^2.  easy,nonn,      1..1000 unkn
+A020677 Sequence        Numbers of form 3*x^2 + 4*y^2.  easy,nonn,synth 1..60   unkn
+A020678 Sequence        Numbers of form 3 x^2 + 5 y^2.  easy,nonn,synth 1..60   unkn
+A020679 Sequence        Numbers of form 3*x^2 + 7*y^2.  easy,nonn,synth 1..59   unkn
+A020680 Sequence        Numbers of form 3 x^2 + 8 y^2.  easy,nonn,synth 1..59   unkn
+A020681 Sequence        Numbers of form 3 x^2 + 10 y^2. easy,nonn,synth 1..59   unkn
+A020682 Sequence        Numbers of form 4 x^2 + 5 y^2.  easy,nonn,synth 1..60   unkn
+A020683 Sequence        Numbers of form 4 x^2 + 7 y^2.  easy,nonn,synth 1..59   unkn
+A020684 Sequence        Numbers of form 4 x^2 + 9 y^2.  easy,nonn,synth 1..58   unkn
+A020685 Sequence        Numbers of form 5 x^2 + 6 y^2.  easy,nonn,      1..1000 unkn
+A020686 Sequence        Numbers of form 5 x^2 + 7 y^2.  easy,nonn,      1..1000 unkn
+A020687 Sequence        Numbers of form 5 x^2 + 8 y^2.  easy,nonn,synth 1..58   unkn
+A020688 Sequence        Numbers of form 5 x^2 + 9 y^2.  easy,nonn,changed,synth 1..58   unkn
+A020689 Sequence        Numbers of form 6 x^2 + 7 y^2.  easy,nonn,synth 1..58   unkn
+A020690 Sequence        Numbers of form 7 x^2 + 8 y^2.  easy,nonn,synth 1..58   unkn
+A020691 Sequence        Numbers of form 7 x^2 + 9 y^2.  easy,nonn,synth 1..58   unkn
+A020692 Sequence        Numbers of form 7 x^2 + 10 y^2. easy,nonn,synth 1..57   unkn
+A020694 Sequence        Numbers of form 9 x^2 + 10 y^2. easy,nonn,changed,      1..1000 unkn
+A024606 Sequence        Numbers of form x^2 + xy + y^2 with distinct x and y > 0.       nonn,easy,changed,synth 1..60   unkn
+A029718 GramMatrixRepresentatives       Numbers of form 2x^2 + 2xy + 3y^2.      nonn,changed,synth      1..61   unkn

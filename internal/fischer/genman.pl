@@ -30,7 +30,9 @@ if (scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
+my $copy      = "";
 my $basedir   = "../../../OEIS-mat/common";
+my $joeisdir  = "../../../joeis/src/irvine/oeis";
 my $namesfile = "$basedir/names";
 my @pnames    = ();
 my $extends   = 0; # whether to generate "extends ..."
@@ -45,6 +47,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     if (0) {
     } elsif ($opt  =~ m{d}) {
         $debug      = shift(@ARGV);
+    } elsif ($opt  =~ m{cp}) {
+        $copy       = shift(@ARGV);
     } else {
         if ($opt   =~ m{n}) {
           $withn    = 1;
@@ -78,114 +82,156 @@ if (scalar(@ARGV) <= 0) {
 my $aseqno = shift(@ARGV);
 $aseqno =~ s{\D*(\d+)}{$1};
 $aseqno = sprintf("A%06d", $aseqno);
-&output($aseqno);
+if (length($copy) > 0) {
+    &copyseq($copy, $aseqno);
+} else {
+    &output($aseqno);
+}
 #--------------------------------------------
+sub copyseq {
+    # preparations
+    my ($cseqno, $aseqno) = @_;
+    my $apack = lc(substr($aseqno, 0, 4));
+    my $cpack = lc(substr($cseqno, 0, 4));
+    my $tarfile = "manual/$aseqno.java";
+    open(TAR, ">", $tarfile) || die "cannot write \"$tarfile\"\n";
+    # get the target's name
+    my $tarname = `grep -E \"^$aseqno\" $namesfile`;
+    $tarname =~ s{\s+}{ }g; # replace (multiple) whitespace by 1 space
+    $tarname =~ s{\s+\Z}{}; # chompr
+    $tarname =~ s{\&}{\&amp;}g; # HTML encoding
+    $tarname =~ s{\<}{\&lt;}g;
+    $tarname =~ s{\>}{\&gt;}g;
+    $tarname =~ s{\'}{\&apos;}g;
+    $tarname =~ s{\"}{\&quot;}g;
+    substr($tarname, 8) =~ m{(A\d\d+)};
+    my $srcfile = "$joeisdir/$cpack/$cseqno.java";
+    open(SRC, "<", $srcfile) || die "cannot read \"$srcfile\"\n";
+    my $state = 0;
+    while (<SRC>) {
+        my $line = $_;
+        $line =~ s{\s+\Z}{}; # chompr
+        if ($line =~ m{\Apackage}) {
+            $line = "package irvine.oeis.$apack;";
+        }
+        if ($state == 0 && ($line =~ m{\A( *\* )$cseqno })) {
+            $line = "$1$tarname";
+            $state ++;
+        }
+        $line =~ s{$cseqno}{$aseqno}g;
+        print TAR "$line\n";
+    } # while SRC
+    close(SRC);
+    close(TAR);
+    print `uedit64 $tarfile`;
+} # copyseq
+#--------
 sub output {
     # preparations
     my ($aseqno) = @_;
     my ($pname, $sep);
-    my $package = lc(substr($aseqno, 0, 4));
-    my $filename = "manual/$aseqno.java";
-    open(OUT, ">", $filename) || die "cannot write \"$filename\"\n";
+    my $apack = lc(substr($aseqno, 0, 4));
+    my $tarfile = "manual/$aseqno.java";
+    open(TAR, ">", $tarfile) || die "cannot write \"$tarfile\"\n";
     # get the name
-    my $name = `grep -E \"^$aseqno\" $namesfile`;
-    $name =~ s{\s+}{ }g; # replace (multiple) whitespace by 1 space
-    $name =~ s{\s+\Z}{}; # chompr
-    $name =~ s{\&}{\&amp;}g; # HTML encoding
-    $name =~ s{\<}{\&lt;}g;
-    $name =~ s{\>}{\&gt;}g;
-    $name =~ s{\'}{\&apos;}g;
-    $name =~ s{\"}{\&quot;}g;
-    substr($name, 8) =~ m{(A\d\d+)};
+    my $tarname = `grep -E \"^$aseqno\" $namesfile`;
+    $tarname =~ s{\s+}{ }g; # replace (multiple) whitespace by 1 space
+    $tarname =~ s{\s+\Z}{}; # chompr
+    $tarname =~ s{\&}{\&amp;}g; # HTML encoding
+    $tarname =~ s{\<}{\&lt;}g;
+    $tarname =~ s{\>}{\&gt;}g;
+    $tarname =~ s{\'}{\&apos;}g;
+    $tarname =~ s{\"}{\&quot;}g;
+    substr($tarname, 8) =~ m{(A\d\d+)};
     my $rseqno = $1 || "A";
     #---------
-    print OUT <<"GFis"; # package and imports
-package irvine.oeis.$package;
+    print TAR <<"GFis"; # package and imports
+package irvine.oeis.$apack;
 
 import irvine.math.z.Z;
 GFis
-    print OUT "import irvine.oeis.";
+    print TAR "import irvine.oeis.";
     if (0) { # switch for superclass import
     } elsif ($extends   == 1) {
-        print OUT lc(substr($rseqno, 0, 4)) . ".$rseqno";
+        print TAR lc(substr($rseqno, 0, 4)) . ".$rseqno";
     } elsif ($holonomic == 1) {
-        print OUT "HolonomicRecurrence";
+        print TAR "HolonomicRecurrence";
     } elsif ($memory    == 1) {
-        print OUT "MemorySequence";
+        print TAR "MemorySequence";
     } elsif ($triangle  == 1) {
-        print OUT "triangle.Triangle";
+        print TAR "triangle.Triangle";
     } elsif ($upperleft == 1) {
-        print OUT "triangle.UpperLeftTriangle";
+        print TAR "triangle.UpperLeftTriangle";
     } else {
-        print OUT "Sequence";
+        print TAR "Sequence";
     } # end of superclass import
-    print OUT ";\n";
+    print TAR ";\n";
     #--------
-    print OUT <<"GFis"; # start of class
+    print TAR <<"GFis"; # start of class
 
 /**
- * $name
+ * $tarname
  * \@author Georg Fischer
  */
 GFis
-    print OUT "public class $aseqno ";
+    print TAR "public class $aseqno ";
     if (0) {
     } elsif ($extends    == 1) {
-        print OUT "extends $rseqno";
+        print TAR "extends $rseqno";
     } elsif ($holonomic  == 1) {
-        print OUT "extends HolonomicRecurrence";
+        print TAR "extends HolonomicRecurrence";
     } elsif ($memory     == 1) {
-        print OUT "extends MemorySequence";
+        print TAR "extends MemorySequence";
     } elsif ($triangle   == 1) {
-        print OUT "extends Triangle";
+        print TAR "extends Triangle";
     } elsif ($upperleft  == 1) {
-        print OUT "extends UpperLeftTriangle";
+        print TAR "extends UpperLeftTriangle";
     } else {
-        print OUT "implements Sequence";
+        print TAR "implements Sequence";
     }
-    print OUT " {\n";
+    print TAR " {\n";
     if ($withn) {
-        print OUT "\n  protected int mN;\n";
+        print TAR "\n  protected int mN;\n";
     }
     foreach $pname (@pnames) { # member properties
-        print OUT "  protected int m" . ucfirst($pname) . ";\n";
+        print TAR "  protected int m" . ucfirst($pname) . ";\n";
     } # foreach member property
     #--------
-    print OUT <<"GFis"; # start of empty constructor
+    print TAR <<"GFis"; # start of empty constructor
 
   /** Construct the sequence. */
   public $aseqno() {
 GFis
     if (0) {
     } elsif ($holonomic) {
-        print OUT "    super(0, \"[[0],[1],[1],[-1]\", \"0,1\", 0);\n"; # Fibonacci
+        print TAR "    super(0, \"[[0],[1],[1],[-1]\", \"0,1\", 0);\n"; # Fibonacci
     } elsif ($upperleft) {
-        print OUT "    super(1, 1, -1);\n";
+        print TAR "    super(1, 1, -1);\n";
     } elsif (scalar(@pnames) > 0) { # with generic constructor
-        print OUT "    this";
+        print TAR "    this";
         $sep = "(";
         foreach $pname (@pnames) {
-            print OUT "${sep}0";
+            print TAR "${sep}0";
             $sep = ", ";
         }
-        print OUT ");\n";
-        print OUT <<"GFis";
+        print TAR ");\n";
+        print TAR <<"GFis";
   }
 
   /**
    * Generic constructor with parameters
 GFis
         foreach $pname (@pnames) {
-            print OUT "   * \@param $pname \n";
+            print TAR "   * \@param $pname \n";
         }
-        print OUT "   */\n";
-        print OUT "  public $aseqno";
+        print TAR "   */\n";
+        print TAR "  public $aseqno";
         $sep = "(";
         foreach $pname (@pnames) {
-            print OUT "${sep}final int $pname";
+            print TAR "${sep}final int $pname";
             $sep = ", ";
         }
-        print OUT ") {\n";
+        print TAR ") {\n";
     } else { # without generic constructor
     }
     if ($withn) { # retrieve offset
@@ -195,19 +241,19 @@ GFis
             $offset = $1;
         }
         $offset--;
-        print OUT "    mN = $offset;\n";
+        print TAR "    mN = $offset;\n";
     }
     foreach $pname (@pnames) {
-        print OUT "    m" . ucfirst($pname) . " = $pname;\n";
+        print TAR "    m" . ucfirst($pname) . " = $pname;\n";
     }
-    print OUT <<"GFis"; # end of generic constructor
+    print TAR <<"GFis"; # end of generic constructor
   }
 
 GFis
     #--------
     if (0) { # switch for methods
     } elsif ($memory) {
-        print OUT <<"GFis";
+        print TAR <<"GFis";
   \@Override
   protected Z computeNext() {
     final int n = size();
@@ -219,7 +265,7 @@ GFis
   }
 GFis
     } elsif ($triangle) {
-        print OUT <<"GFis"; # Pascal's rule
+        print TAR <<"GFis"; # Pascal's rule
   \@Override
   public Z compute(final int n, final int k) {
     return n == 0 ? Z.ONE : get(n - 1, k - 1).multiply(1).add(get(n - 1, k).multiply(1));
@@ -227,7 +273,7 @@ GFis
 GFis
     #----
     } elsif ($upperleft) {
-        print OUT <<"GFis";
+        print TAR <<"GFis";
   \@Override
   public Z matrixElement(final int n, final int k) {
     return Z.valueOf(n == 1 ? k : n + k);
@@ -235,12 +281,12 @@ GFis
 GFis
     #----
     } else { # default method next()
-        print OUT <<"GFis";
+        print TAR <<"GFis";
   \@Override
   public Z next() {
 GFis
         if ($subseq) {
-            print OUT <<"GFis";
+            print TAR <<"GFis";
     while (true) {
       ++mN;
       if (true) {
@@ -249,18 +295,18 @@ GFis
     }
 GFis
         } else {
-            print OUT "    ++mN;\n" if $withn;
-            print OUT "    return super.next().mod(Z.TWO);\n" if $extends;
+            print TAR "    ++mN;\n" if $withn;
+            print TAR "    return super.next().mod(Z.TWO);\n" if $extends;
         }
-        print OUT <<"GFis"; # end of next()
+        print TAR <<"GFis"; # end of next()
   }
 GFis
     } # switch for methods
     #--------
-    print OUT <<"GFis"; # end of class
+    print TAR <<"GFis"; # end of class
 }
 GFis
-    close(OUT);
-    print `uedit64 $filename`;
+    close(TAR);
+    print `uedit64 $tarfile`;
 } # output
 __DATA__

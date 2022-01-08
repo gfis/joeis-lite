@@ -9,11 +9,13 @@ import irvine.oeis.Sequence;
  * A093211 a(n) is the largest number such that all of a(n)'s length-n substrings are distinct and divisible by 11..
  * @author Georg Fischer
  */
-public class A093211 extends HashSet<Long> implements Sequence {
+public class A093211 extends HashSet<Z> implements Sequence {
 
   protected long mDivm;
-  protected long mLast;
+  protected Z mDivz;
+  protected Z mLast;
   protected long mN;
+  public static int sDebug = 0;
 
   /** Construct the sequence. */
   public A093211() {
@@ -26,224 +28,132 @@ public class A093211 extends HashSet<Long> implements Sequence {
    */
   public A093211(final long div) {
     mDivm = div;
+    mDivz = Z.valueOf(mDivm);
     mN = 0;
   }
 
   @Override
   public Z next() {
-    return Z.valueOf(compute(++mN));
+    return compute(++mN);
   }
 
-  public int debug = 0;
-
-  public long pow(long a, long b) { // from https://stackoverflow.com/questions/8071363/calculating-powers-of-integers
-      if (b == 0)        return 1;
-      if (b == 1)        return a;
-      if ((b & 1) == 0)  return     pow (a * a, b/2); //even a=(a^2)^b/2
-      else               return a * pow (a * a, b/2); //odd  a=a*(a^2)^b/2
-  }
+  // The following code is adopted from 
+  // John Cerkan, Python2.7 in the OEIS
   
-  private int[] setgoodlist(final long len, final long adiv) {
+  private int[] setgoodlist(final long len) {
     final int[] btmp = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // 0..9
     for (int i = 0; i < 10; ++i) {
-      final long remain = (adiv - i * this.pow(10, len - 1)) % adiv;
-      if ((adiv - 10 * remain) % adiv > 9) {
+      final long remain = mDivz.subtract(Z.TEN.pow(len - 1).multiply(i)).longValue() % mDivm;
+      if ((mDivm - 10 * remain) % mDivm > 9) {
         btmp[i] = 0; // remove
       }
     }
-    if (debug >= 2) {
-      System.out.print("btmp=");
-      String sep = "[";
-      for (int i = 0; i < btmp.length; ++i) {
-      	if (btmp[i] != 0) {
-          System.out.print(sep + i);
-          sep = ", ";
-        }
-      }
-      System.out.println("]");
-    }
+//**    if (sDebug >= 2) {
+//**      System.out.print("btmp=");
+//**      String sep = "[";
+//**      for (int i = 0; i < btmp.length; ++i) {
+//**        if (btmp[i] != 0) {
+//**          System.out.print(sep + i);
+//**          sep = ", ";
+//**        }
+//**      }
+//**      System.out.println("]");
+//**    }
     return btmp;
   }
 
-  private long dropdigs(final long k, final long l) {
-    long ktmp = (k / l) * l;
-    ktmp --;
-    while ((ktmp % mDivm) != 0) {
-      ktmp --;
+  private Z dropdigs(final Z k, final Z l) {
+    Z ktmp = k.divide(l).multiply(l).subtract(1);
+    while (ktmp.mod(Z.valueOf(mDivm)).intValue() != 0) {
+      ktmp = ktmp.subtract(Z.ONE);
     }
-    if (debug >= 2) { System.out.println("dropdigs(" + k + "," + l + ") -> " + ktmp); }
+//**    if (sDebug >= 2) { System.out.println("dropdigs(" + k + "," + l + ") -> " + ktmp); }
     return ktmp;
-  } // dropdigs
+  }
 
-  private long walking(final long k) {
-    long aa = 0;
-    long kt = k * 10;
-    long ktl = kt % mLast;
-    if (debug >= 4) {
-      System.out.println("walk in(" + k + "), last=" + mLast + ", ktl=" + ktl);
-    }
-    if (((ktl - 1) % mDivm) + 10 < mDivm) {
-      if (debug >= 4) {
-        System.out.println("walk premature(" + k + "), aa=" + aa);
-      }
+  private Z walking(final Z k) {
+    Z aa = Z.ZERO;
+    Z kt = k.multiply(Z.TEN);
+    Z ktl = kt.mod(mLast);
+//**    if (sDebug >= 4) {
+//**      System.out.println("walk in(" + k + "), last=" + mLast + ", ktl=" + ktl);
+//**    }
+    if (ktl.subtract(1).mod(mDivz).add(Z.TEN).compareTo(mDivz) < 0) {
       return aa;
     }
-    long a = (ktl % mDivm == 0) ? kt : kt + (mDivm - (ktl % mDivm));
-    long al = a % mLast;
+    final Z a = ktl.mod(mDivz).isZero() ? kt : kt.add(mDivz.subtract(ktl.mod(mDivz)));
+    final Z al = a.mod(mLast);
     if (! contains(al)) {
-      if (debug >= 4) {
-        System.out.println("walk !contains(" + al + "), a=" + a);
-      }
       add(al);
-      if (a > aa) {
-        aa = a;
-      }
-      long atmp = walking(a);
-      if (atmp > aa) {
-        aa = atmp;
-      }
+      aa = aa.max(a);
+      aa = aa.max(walking(a));
       remove(al);
     } else {
-      if (debug >= 4) {
-        System.out.println("walk contains(" + al + "), a=" + a);
-      }
     }
-    if (debug >= 4) {
-      System.out.println("walk out(" + k + ") -> " + aa);
-    }
+//**    if (sDebug >= 4) {
+//**      System.out.println("walk out(" + k + ") -> " + aa);
+//**    }
     return aa;
-  } // walking
+  }
 
-  protected long compute(long n) {
-    final int[] goodlist = setgoodlist(n, mDivm);
-    mLast = this.pow(10, n);
-    long beg = this.pow(10, n) - 1; // '9' x n
-    long end = this.pow(10, n - 1) - 1;
-    long i = beg;
-    while (i % mDivm != 0L) {
-      i -= 1;
+  protected Z compute(long n) {
+    final int[] goodlist = setgoodlist(n);
+    mLast = Z.TEN.pow(n);
+    final Z beg = Z.TEN.pow(n).subtract(1); // '9' x n
+    final Z end = Z.TEN.pow(n - 1).subtract(1);
+    Z i = beg;
+    while (! i.mod(mDivz).isZero()) {
+      i = i.subtract(1);
     }
-    if (debug >= 2) { System.out.println("i=" + i + ", n=" + n + ", beg=" + beg + ", end=" + end); }
-    long an = i;
-    long oldan = an;
+//**    if (sDebug >= 2) { System.out.println("i=" + i + ", n=" + n + ", beg=" + beg + ", end=" + end); }
+    Z an = i;
+    Z oldan = an;
     long anlen = n;
-    while (i > end) {
+    while (i.compareTo(end) > 0) {
       clear();
       add(i);
-      if (i % 100000L == 0) {
-        anlen = String.valueOf(an).length();
+      if (i.mod(Z.valueOf(100000L)).isZero()) {
+        anlen = an.toString().length();
         if (anlen > 2 * n) {
           anlen = 2 * n - 1;
         }
       }
-      long wi = walking(i);
-      if (wi > an) {
+      Z wi = walking(i);
+      if (wi.compareTo(an) > 0) {
         an = wi;
       }
-      i -= mDivm;
+      i = i.subtract(mDivz);
       long j = 0;
       boolean busy = true;
       while (busy && j < anlen - n + 1) {
-        long jten = this.pow(10, n - j - 1);
-        if (jten < 1) {
+        if (n - j - 1 < 0) {
           busy = false;
         } else {
-          while (goodlist[(int) ((i / jten) % 10)] == 0) {
+          final Z jten = Z.TEN.pow(n - j - 1);
+          while (goodlist[i.divide(jten).mod(Z.TEN).intValue()] == 0) {
             i = dropdigs(i, jten);
           }
-          j ++;
+          ++j;
         }
-      } // for j
-    } // while i
+      }
+    }
     return an;
   }
 
-  /**
-   * Main method for testing
-   * @param args command line arguments: divisor
-   */
-  public static void main(String[] args) {
-    long divisor = 11;
-    try {
-      divisor = Integer.parseInt(args[0]);
-    } catch (Exception exc) {
-    }
-    
-    A093211 seq = new A093211(divisor);
-    for (int n = 1; n < 12; n ++) { // main loop
-      System.out.println(n + " " + seq.next());
-    }
-  }
-
+//**  /**
+//**   * Main method for testing
+//**   * @param args command line arguments: divisor
+//**   */
+//**  public static void main(String[] args) {
+//**    long divisor = 11;
+//**    try {
+//**      divisor = Integer.parseInt(args[0]);
+//**    } catch (Exception exc) {
+//**    }
+//**    
+//**    A093211 seq = new A093211(divisor);
+//**    for (int n = 1; n < 12; n ++) { // main loop
+//**      System.out.println(n + " " + seq.next());
+//**    }
+//**  }
 }
-
-/* John Cerkan, Python2.7 in the OEIS:
-divm = 11
-n = 11
-last = 10**n
-ssts = []
-
-def setgoodlist(len, adiv):
-    atmp = [0,1,2,3,4,5,6,7,8,9]
-    btmp = [0,1,2,3,4,5,6,7,8,9]
-    for i in atmp:
-        remain = (adiv - i*(10 **(len-1))) % adiv
-        if (adiv - 10*remain) % adiv > 9:
-            btmp.remove(i)
-    return btmp
-
-def dropdigs(k,l):
-    ktmp = (k // l) * l
-    ktmp -= 1
-    while (ktmp % divm) != 0:
-        ktmp -= 1
-    return ktmp
-
-def walking(k):
-    aa = 0
-    kt = k*10
-    ktl = kt % last
-    if ((ktl - 1) % divm) + 10 < divm:
-        return aa
-    if ktl % divm == 0:
-        a = kt
-    else:
-        a = kt + (divm - (ktl % divm))
-
-    al = a % last
-    if al not in ssts:
-        ssts.append(al)
-        aa = max(aa,a)
-        atmp = walking(a)
-        aa = max(aa,atmp)
-        ssts.remove(al)
-    return aa
-
-
-for n in range(2,12):
-    goodlist = setgoodlist(n,divm)
-    last = 10**n
-    beg = int(n*'9')
-    end = int((n-1)*"9")
-    i = beg
-    while i % divm != 0:
-        i -= 1
-    an = i
-    oldan = an
-    anlen = n
-    while i > end:
-        ssts = [i]
-        if i % 100000 == 0:
-            anlen = len(str(an))
-            if anlen > 2*n:
-                anlen = 2*n - 1
-        an = max(an,walking(i))
-        i -= divm
-        for j in range(anlen - n+1):
-            jten = 10 ** (n - j-1)
-            if jten < 1:
-                break
-            while (i // jten) % 10 not in goodlist:
-                i = dropdigs(i,jten)
-    print str(n) + "   " + str(an)
-*/
