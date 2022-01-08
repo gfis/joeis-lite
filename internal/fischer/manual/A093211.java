@@ -9,11 +9,11 @@ import irvine.oeis.Sequence;
  * A093211 a(n) is the largest number such that all of a(n)'s length-n substrings are distinct and divisible by 11..
  * @author Georg Fischer
  */
-public class A093211 extends HashSet<Integer/**/> implements Sequence {
+public class A093211 extends HashSet<Long> implements Sequence {
 
-  protected int/**/ mDivm;
-  protected int/**/ mLast;
-  protected int/**/ mN;
+  protected long mDivm;
+  protected long mLast;
+  protected long mN;
 
   /** Construct the sequence. */
   public A093211() {
@@ -24,7 +24,7 @@ public class A093211 extends HashSet<Integer/**/> implements Sequence {
    * Generic constructor with parameters
    * @param div divisor
    */
-  public A093211(final int div) {
+  public A093211(final long div) {
     mDivm = div;
     mN = 0;
   }
@@ -36,27 +36,37 @@ public class A093211 extends HashSet<Integer/**/> implements Sequence {
 
   public int debug = 0;
 
-  public int pow(int a, int b) { // from https://stackoverflow.com/questions/8071363/calculating-powers-of-integers
+  public long pow(long a, long b) { // from https://stackoverflow.com/questions/8071363/calculating-powers-of-integers
       if (b == 0)        return 1;
       if (b == 1)        return a;
       if ((b & 1) == 0)  return     pow (a * a, b/2); //even a=(a^2)^b/2
       else               return a * pow (a * a, b/2); //odd  a=a*(a^2)^b/2
   }
   
-  private int[] setgoodlist(final int/**/ len, final int/**/ adiv) {
+  private int[] setgoodlist(final long len, final long adiv) {
     final int[] btmp = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}; // 0..9
     for (int i = 0; i < 10; ++i) {
-      final int/**/ remain = (adiv - i * this.pow(10, len - 1)) % adiv;
+      final long remain = (adiv - i * this.pow(10, len - 1)) % adiv;
       if ((adiv - 10 * remain) % adiv > 9) {
         btmp[i] = 0; // remove
       }
     }
-    // if (debug >= 2) { System.out.println(join(", ", @btmp) . "\n"; }
+    if (debug >= 2) {
+      System.out.print("btmp=");
+      String sep = "[";
+      for (int i = 0; i < btmp.length; ++i) {
+      	if (btmp[i] != 0) {
+          System.out.print(sep + i);
+          sep = ", ";
+        }
+      }
+      System.out.println("]");
+    }
     return btmp;
   }
 
-  private int/**/ dropdigs(final int/**/ k, final int/**/ l) {
-    int/**/ ktmp = (k / l) * l;
+  private long dropdigs(final long k, final long l) {
+    long ktmp = (k / l) * l;
     ktmp --;
     while ((ktmp % mDivm) != 0) {
       ktmp --;
@@ -65,75 +75,86 @@ public class A093211 extends HashSet<Integer/**/> implements Sequence {
     return ktmp;
   } // dropdigs
 
-  private int/**/ walking(final int/**/ k) {
-    int/**/ aa = 0;
-    int/**/ kt = k * 10;
-    int/**/ ktl = kt % mLast;
+  private long walking(final long k) {
+    long aa = 0;
+    long kt = k * 10;
+    long ktl = kt % mLast;
+    if (debug >= 4) {
+      System.out.println("walk in(" + k + "), last=" + mLast + ", ktl=" + ktl);
+    }
     if (((ktl - 1) % mDivm) + 10 < mDivm) {
+      if (debug >= 4) {
+        System.out.println("walk premature(" + k + "), aa=" + aa);
+      }
       return aa;
     }
-    int/**/ a;
-    if (ktl % mDivm == 0) {
-      a = kt;
-    } else {
-      a = kt + (mDivm - (ktl % mDivm));
-    }
-
-    int/**/ al = a % mLast;
+    long a = (ktl % mDivm == 0) ? kt : kt + (mDivm - (ktl % mDivm));
+    long al = a % mLast;
     if (! contains(al)) {
+      if (debug >= 4) {
+        System.out.println("walk !contains(" + al + "), a=" + a);
+      }
       add(al);
       if (a > aa) {
         aa = a;
       }
-      int/**/ atmp = walking(a);
+      long atmp = walking(a);
       if (atmp > aa) {
         aa = atmp;
       }
       remove(al);
+    } else {
+      if (debug >= 4) {
+        System.out.println("walk contains(" + al + "), a=" + a);
+      }
     }
     if (debug >= 4) {
-      System.out.println("walking(" + k + ") -> " + aa);
+      System.out.println("walk out(" + k + ") -> " + aa);
     }
     return aa;
   } // walking
 
-  protected int/**/ compute(int/**/ n) {
+  protected long compute(long n) {
     final int[] goodlist = setgoodlist(n, mDivm);
     mLast = this.pow(10, n);
-    int/**/ beg = this.pow(10, n) - 1; // '9' x n
-    int/**/ end = this.pow(10, n-1);
-    if (debug >= 2) { System.out.println("n=" + n + ", beg=" + beg + ", end=" + end); }
-    int/**/ i = beg;
+    long beg = this.pow(10, n) - 1; // '9' x n
+    long end = this.pow(10, n - 1) - 1;
+    long i = beg;
     while (i % mDivm != 0L) {
       i -= 1;
     }
-    int/**/ an = i;
-    int/**/ oldan = an;
-    int/**/ anlen = n;
+    if (debug >= 2) { System.out.println("i=" + i + ", n=" + n + ", beg=" + beg + ", end=" + end); }
+    long an = i;
+    long oldan = an;
+    long anlen = n;
     while (i > end) {
+      clear();
       add(i);
       if (i % 100000L == 0) {
         anlen = String.valueOf(an).length();
-        if (anlen > 2*n) {
-          anlen = 2*n - 1;
+        if (anlen > 2 * n) {
+          anlen = 2 * n - 1;
         }
       }
-      int/**/ wi = walking(i);
+      long wi = walking(i);
       if (wi > an) {
         an = wi;
       }
       i -= mDivm;
-      for (int/**/ j = 0; j < anlen - n + 1; j ++) {
-        int/**/ jten = this.pow(10, n - j - 1);
+      long j = 0;
+      boolean busy = true;
+      while (busy && j < anlen - n + 1) {
+        long jten = this.pow(10, n - j - 1);
         if (jten < 1) {
-          break;
-        }
-        while (goodlist[(i / jten) % 10] == 0) {
-          i = dropdigs(i, jten);
+          busy = false;
+        } else {
+          while (goodlist[(int) ((i / jten) % 10)] == 0) {
+            i = dropdigs(i, jten);
+          }
+          j ++;
         }
       } // for j
     } // while i
-    System.out.println(n + " " + an);
     return an;
   }
 
@@ -142,7 +163,7 @@ public class A093211 extends HashSet<Integer/**/> implements Sequence {
    * @param args command line arguments: divisor
    */
   public static void main(String[] args) {
-    int/**/ divisor = 11;
+    long divisor = 11;
     try {
       divisor = Integer.parseInt(args[0]);
     } catch (Exception exc) {
