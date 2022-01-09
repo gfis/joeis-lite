@@ -37,11 +37,11 @@ while (<>) { # from joeis_names.txt
     if (0) {
     } elsif ($name =~ m{\A(Numbers \w such that \w\^2 contains only digits|Squares composed of digits)}) {
         my $mode = (substr($1, 0, 4) eq "Numb") ? 4 : 5;
-        $name =~ m{digits\D+([\d\, ]+)};
+        $name =~ m{digits +\{([\d\, ]+)};
         my $subset = $1;
         $subset =~ s{ }{}g;
-        my $zeroes = ($name =~ m{not ending with zero]) ? 1 : 0;
-        print join("\t", $aseqno, "$callcode", $offset, 10, $mode, $subset, $zeroes, $name) . "\n";
+        my $zeroes = ($name =~ m{not ending with zero}) ? 8 : 0;
+        print join("\t", $aseqno, "$callcode", $offset, 10, $mode + $zeroes, $subset, $name) . "\n";
     }
 } # while <>
 __DATA__

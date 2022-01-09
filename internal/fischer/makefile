@@ -4411,13 +4411,13 @@ squaredig: # Jonathan Wellons A136nnn
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 squaredig4: # A053880 ff.: digits required in square only
-	grep -E "^digits +\{[0-9]" $(COMMON)/joeis_names.txt \
+	grep -E "digits +\{ *[0-9]" $(COMMON)/joeis_names.txt \
 	| perl squaredig4.pl \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
 squaredig_test:
-	java -cp ../../dist/joeis-lite.jar irvine.oeis.SquareDigitsSequence $(NT) $(SC)
+	$(JAVA) irvine.oeis.SquareDigitsSequence -s $(S) -d $(D) -m $(M)
 squaredig_width:
 	$(DBAT) "SELECT b.aseqno, b.maxlen, n.name FROM bfinfo b, seq4 s, asname n \
 	WHERE b.aseqno = s.aseqno \

@@ -50,7 +50,7 @@ public class SquareDigitsSequence implements Sequence {
     mN = 0;
     //mBase = base;
     mMode = mode;
-    mSubset = subset;
+    mSubset = subset.replaceAll("\\D", "");
     mAllowPattern = Pattern.compile("[" + subset + "]*");
     if ((mode & 2) != 0) { // 2, 3: the number and its square must contain the subset only
       mDigLen = mSubset.length();
@@ -136,24 +136,33 @@ public class SquareDigitsSequence implements Sequence {
    *  Show various elements related to the runs of digits for some base in n.
    */
 /**/  public static void main(String[] args) {
-/**/    int index = 1;
-/**/    int noTerms = 32;
-/**/    String subset = "23467"; // A137071
+/**/    String  subset = "23467"; // A137071
+/**/    int     noTerms   = 8;
+/**/    int     mode = 2;
 /**/    int iarg = 0;
-/**/    if (iarg < args.length) {
+/**/    while (iarg < args.length) { // consume all arguments
+/**/      final String opt = args[iarg ++];
 /**/      try {
-/**/        noTerms = Integer.parseInt(args[iarg ++]);
-/**/      } catch (Exception exc) {
+/**/        if (false) {
+/**/        } else if (opt.equals    ("-d")     ) {
+/**/          SquareDigitsSequence.sDebug = Integer.parseInt(args[iarg++]);
+/**/        } else if (opt.equals    ("-m")     ) {
+/**/          mode    = Integer.parseInt(args[iarg++]);
+/**/        } else if (opt.equals    ("-n")     ) {
+/**/          noTerms = Integer.parseInt(args[iarg++]);
+/**/        } else if (opt.equals    ("-s")     ) {
+/**/          subset  = args[iarg++];
+/**/        } else {
+/**/          System.err.println("??? invalid option: \"" + opt + "\"");
+/**/        }
+/**/      } catch (Exception exc) { // take default
 /**/      }
-/**/    }
-/**/    if (iarg < args.length) {
-/**/      subset = args[iarg ++];
-/**/    }
-/**/    SquareDigitsSequence seq = new SquareDigitsSequence(1, 10, 4, subset);
-/**/    SquareDigitsSequence.sDebug = noTerms & 3; /// last 2 bits
+/**/    } // while args
+/**/    SquareDigitsSequence seq = new SquareDigitsSequence(1, 10, mode, subset);
+/**/    int index = 1;
 /**/    while (index < noTerms) {
 /**/      System.out.println(index + " " + seq.next().toString());
-/**/      index ++;
+/**/      ++index;
 /**/    } // while index
 /**/  } // main
 } // SquareDigitsSequence

@@ -12,6 +12,6 @@ public class $(ASEQNO) extends SquareDigitsSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), 10, 4, "$(PARM1)");
+    super($(OFFSET), $(PARM1), $(PARM2), "$(PARM3)");
   }
 }
