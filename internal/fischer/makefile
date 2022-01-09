@@ -481,12 +481,15 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # 2022-01-08
+anabuild.2022-01-09:
+	make purge
+	make CC=A087630 select EX=xx gener
+	make CC=A093211 man dist testall pack
+anabuild.2022-01-08:
 	make purge
 	make CC=A087630 select EX=xx gener
 	make CC=A050990 select EX=xx gener # Knoedel numbers
 	make CC=A343523 select EX=xx gener
-ab2:
 	make CC=A066432 select       gener # 10^n mod n^10
 	make CC=A093211 select       gener # all subsequences distinct and divisible by 11
 	make CC=A006938 select EX=xx gener # dec -> bin
@@ -494,6 +497,13 @@ ab2:
 	make CC=A054861 select EX=xx gener # highest power of k dividing n!
 	make CC=A110389 select EX=xx gener # Integers with mutual residues -1.
 	make CC=A093211 man dist testall pack
+future:
+	grep -P "power of \d+ dividing n\!\." jcat25.txt
+A136test:
+	grep -E "SquareDigit" $(COMMON)/joeis_names.txt \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #================================================================
 A001482:
 	grep -E "^A" $@.man \
@@ -4400,6 +4410,12 @@ squaredig: # Jonathan Wellons A136nnn
 	tail -n2 $@.gen
 	wc -l    $@.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+squaredig4: # A053880 ff.: digits required in square only
+	grep -E "^digits +\{[0-9]" $(COMMON)/joeis_names.txt \
+	| perl squaredig4.pl \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 squaredig_test:
 	java -cp ../../dist/joeis-lite.jar irvine.oeis.SquareDigitsSequence $(NT) $(SC)
 squaredig_width:
