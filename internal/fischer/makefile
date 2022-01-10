@@ -4416,6 +4416,11 @@ squaredig4: # A053880 ff.: digits required in square only
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
+squaredig2:
+	grep -E "SquareDigitsSequence" $(COMMON)/joeis_names.txt \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 squaredig_test:
 	$(JAVA) irvine.oeis.SquareDigitsSequence -s $(S) -d $(D) -m $(M)
 squaredig_width:
