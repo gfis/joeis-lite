@@ -36,6 +36,7 @@ public class SquareDigitsSequence implements Sequence {
   private Z mAdd1;
   private Z mAdd;
   private Z mMod;
+  private Z mOldK;
   private int mDig;
   protected int mN;
   private boolean mTestK;
@@ -74,6 +75,7 @@ public class SquareDigitsSequence implements Sequence {
     mAdd1 = Z.ONE;
     mAdd = mAdd1;
     mMod = Z.valueOf(mBase);
+    mOldK = Z.ZERO;
     mDig = 0;
     mN = 0;
   }
@@ -106,7 +108,8 @@ public class SquareDigitsSequence implements Sequence {
             mNewBlock[mNewIx++] = k; // push
             if (isAllowed(k2)) {
               if (!mTestK || isAllowed(k)) {
-                if (!mNoZeroTail || !k.mod(mBaseZ).isZero()) {
+                if ((!mNoZeroTail || !k.mod(mBaseZ).isZero()) && mOldK.compareTo(k) < 0) {
+                  mOldK = k;
                   ++mN;
                   return mNextK2 ? k2 : k;
                 }
@@ -128,7 +131,7 @@ public class SquareDigitsSequence implements Sequence {
       mNewIx = 0;
       mAdd1 = mAdd1.multiply(mBaseZ);
       mMod = mMod.multiply(mBaseZ);
-      mAdd = mAdd1;
+      mAdd = Z.ZERO; 
     }
   } // next
 
