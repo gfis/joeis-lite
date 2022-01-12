@@ -22,7 +22,7 @@ public class SquareDigitsSequence implements Sequence {
   protected String mSubset; // the decimal digits of the subset in ascending order
   protected int mBase; // base of the numbers: 2-99
   protected Z mBaseZ; // base of the numbers: 2-99
-  protected int mMode; // type of the test: 2 = digits in square
+  protected int mMask; // type of the test: 2 = digits in square
   protected Pattern mAllowPattern; // pattern matching the subset of not-allowed decimal digits
   protected int mDigLen; // number of digits in subset
   protected boolean[] mAllowedDigits; // the allowed digits as Strings
@@ -36,8 +36,11 @@ public class SquareDigitsSequence implements Sequence {
   private Z mAdd1;
   private Z mAdd;
   private Z mMod;
+  private Z mMod1;
   private Z mOldK;
   private int mDig;
+  private int mFirstDig;
+  private boolean mFirst0;
   protected int mN;
   private boolean mTestK;
   private boolean mNextK2;
@@ -49,23 +52,25 @@ public class SquareDigitsSequence implements Sequence {
    * and in its square.
    * @param offset first valid term has this index
    * @param base base of the numbers: 2-99
-   * @param mode type of the test to be applied to the digits: 2 = digits in square
+   * @param mask type of the test to be applied to the digits: 2 = digits in square
    * @param subset String of decimal digits in ascending order, representing the desire subset
    */
-  protected SquareDigitsSequence(final int offset, final int base, final int mode, final String subset) {
+  protected SquareDigitsSequence(final int offset, final int base, final int mask, final String subset) {
 //**    sDebug = 0;
     mBase = base;
     mBaseZ = Z.valueOf(mBase);
-    mMode = mode;
-    mTestK = (mode & 2) != 0;
-    mNextK2 = (mode & 1) != 0;
-    mNoZeroTail = (mode & 8) != 0;
-    mSubset = subset;
-    mAllowPattern = Pattern.compile("[" + subset.replaceAll("\\D","") + "]*");
-    mAllowedDigits = new boolean[mBase];
-    for (int isub = 0; isub < mBase; ++isub) {
-      mAllowedDigits[isub] = mSubset.indexOf(isub + '0') >= 0;
+    mMask = mask;
+    mTestK = (mask & 2) != 0;
+    mNextK2 = (mask & 1) != 0;
+    mNoZeroTail = (mask & 8) != 0;
+    mSubset = subset.replaceAll("\\D","");
+    mAllowPattern = Pattern.compile("[" + mSubset + "]*");
+    mAllowedDigits = new boolean[mBase]; // initialized with false
+    for (int isub = 0; isub < mSubset.length(); ++isub) { 
+      mAllowedDigits[Character.digit(mSubset.charAt(isub), mBase)] = true;
     } // for isub
+    mFirstDig = Character.digit(mSubset.charAt(0), mBase);
+    mFirst0 = mFirstDig == 0;
     mOldBlock = new Z[] { Z.ZERO };
     mOldIx = 0;
     mOldLen = mOldBlock.length;
@@ -73,7 +78,7 @@ public class SquareDigitsSequence implements Sequence {
     mNewBlock = new Z[mNewLen];
     mNewIx = 0;
     mAdd1 = Z.ONE;
-    mAdd = mAdd1;
+    mAdd = Z.ZERO;
     mMod = Z.valueOf(mBase);
     mOldK = Z.ZERO;
     mDig = 0;
@@ -101,21 +106,24 @@ public class SquareDigitsSequence implements Sequence {
     }
     while (true) {
       while (mDig < mBase) {
-        while (mOldIx < mOldLen) {
-          final Z k = mAdd.add(mOldBlock[mOldIx++]); // pop
-          final Z k2 = k.multiply(k);
-          if (isAllowed(k2.mod(mMod))) {
-            mNewBlock[mNewIx++] = k; // push
-            if (isAllowed(k2)) {
-              if (!mTestK || isAllowed(k)) {
-                if ((!mNoZeroTail || !k.mod(mBaseZ).isZero()) && mOldK.compareTo(k) < 0) {
-                  mOldK = k;
-                  ++mN;
-                  return mNextK2 ? k2 : k;
-                }
+        if (!mTestK || mAllowedDigits[mDig]) {
+          mMod1 = mMod.multiply(mFirstDig);
+          while (mOldIx < mOldLen) {
+            final Z k = mAdd.add(mOldBlock[mOldIx++]); // pop
+            final Z k2 = k.multiply(k);
+            final Z[] quot = k2.divideAndRemainder(mMod);
+            final Z remainder = mFirstDig == 0 ? quot[1] : quot[1].add(mMod1);
+            if (isAllowed(remainder)) {
+              mNewBlock[mNewIx++] = k; // push
+              if (  (quot[0].isZero() || isAllowed(quot[0]))
+                 && (!mTestK          || isAllowed(k))
+                 && (!mNoZeroTail     || k.mod(mBase) != 0)
+                 && mOldK.compareTo(k) < 0
+                 ) {
+                mOldK = k;
+                ++mN;
+                return mNextK2 ? k2 : k;
               }
-//**            } else if (sDebug >= 1) {
-//**                System.out.println("    # " + k + " " + k2);
             }
           }
         }
@@ -143,7 +151,7 @@ public class SquareDigitsSequence implements Sequence {
 //**  public static void main(String[] args) {
 //**    String  subset = "23467"; // A137071
 //**    int     noTerms   = 8;
-//**    int     mode = 2;
+//**    int     mask = 2;
 //**    int iarg = 0;
 //**    while (iarg < args.length) { // consume all arguments
 //**      final String opt = args[iarg ++];
@@ -152,7 +160,7 @@ public class SquareDigitsSequence implements Sequence {
 //**        } else if (opt.equals    ("-d")     ) {
 //**          SquareDigitsSequence.sDebug = Integer.parseInt(args[iarg++]);
 //**        } else if (opt.equals    ("-m")     ) {
-//**          mode    = Integer.parseInt(args[iarg++]);
+//**          mask    = Integer.parseInt(args[iarg++]);
 //**        } else if (opt.equals    ("-n")     ) {
 //**          noTerms = Integer.parseInt(args[iarg++]);
 //**        } else if (opt.equals    ("-s")     ) {
@@ -163,7 +171,7 @@ public class SquareDigitsSequence implements Sequence {
 //**      } catch (Exception exc) { // take default
 //**      }
 //**    } // while args
-//**    SquareDigitsSequence seq = new SquareDigitsSequence(1, 10, mode, subset);
+//**    SquareDigitsSequence seq = new SquareDigitsSequence(1, 10, mask, subset);
 //**    int index = 1;
 //**    while (index < noTerms) {
 //**      System.out.println(index + " " + seq.next().toString());
