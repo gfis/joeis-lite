@@ -36,12 +36,12 @@ while (<>) { # from joeis_names.txt
     next if $superclass ne "null";
     if (0) {
     } elsif ($name =~ m{\A(Numbers \w such that \w\^2 contains only digits|Squares composed of digits)}) {
-        my $mode = (substr($1, 0, 4) eq "Numb") ? 4 : 5;
+        my $mask = (substr($1, 0, 4) eq "Numb") ? 4 : 5;
         $name =~ m{digits +\{([\d\, ]+)};
         my $subset = $1;
         $subset =~ s{ }{}g;
         my $zeroes = ($name =~ m{not ending with zero}) ? 8 : 0;
-        print join("\t", $aseqno, "$callcode", $offset, 10, $mode + $zeroes, $subset, $name) . "\n";
+        print join("\t", $aseqno, "$callcode", $offset, 10, $mask + $zeroes, $subset, $name) . "\n";
     }
 } # while <>
 __DATA__

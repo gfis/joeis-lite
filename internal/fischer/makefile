@@ -4422,7 +4422,7 @@ squaredig2:
 	head -n2 $@.gen
 	wc -l    $@.gen
 squaredig_test:
-	$(JAVA) irvine.oeis.SquareDigitsSequence -s $(S) -d $(D) -m $(M)
+	$(JAVA) irvine.oeis.SquareDigitsSequence -s $(S) -d $(D) -m $(M) -n $(NT)
 squaredig_width:
 	$(DBAT) "SELECT b.aseqno, b.maxlen, n.name FROM bfinfo b, seq4 s, asname n \
 	WHERE b.aseqno = s.aseqno \

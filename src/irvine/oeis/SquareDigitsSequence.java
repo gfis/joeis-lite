@@ -6,57 +6,60 @@ import java.util.regex.Pattern;
 import irvine.math.z.Z;
 
 /**
- * Numbers that contain only a subset of digits in the square
- * and optionally in the number itself.
- * For some subsets of the 10 digits there are only rare or no solutions.
+ * Numbers <code>k</code> that contain only a subset of (decimal) digits in its square <code>k^2</code>
+ * and optionally in <code>k</code> itself.
+ * For some subsets of the digits there are only rare or no solutions.
  *
  * The algorithm processes a block of possible numbers of length <em>width</em>.
  * Any digit from the subset is prefixed to each member of the block,
  * and then the squares (and the numbers) are checked.
  * The numbers in the block are requeued if and only if the square mod 10^width has allowable digits only.
  * There is an additional option that forbids trailing '0' digits in the number.
+ * Complications arise when the digits subset contains '0' and by the omission of leading zeroes.
  * @author Georg Fischer
  */
 public class SquareDigitsSequence implements Sequence {
 
+  protected static int sDebug = 0;
   protected String mSubset; // the decimal digits of the subset in ascending order
+  private int mDig; // current digit to be prefixed
+  private int mFirstDig; // lowest valid digit, or 0
   protected int mBase; // base of the numbers: 2-99
-  protected Z mBaseZ; // base of the numbers: 2-99
-  protected int mMask; // type of the test: 2 = digits in square
+  protected Z mBaseZ; // base as Z
+  protected int mMask; // bitmask for the variants
   protected Pattern mAllowPattern; // pattern matching the subset of not-allowed decimal digits
-  protected int mDigLen; // number of digits in subset
-  protected boolean[] mAllowedDigits; // the allowed digits as Strings
-//**  protected static int sDebug;
-  private Z[] mOldBlock;
-  private int mOldIx;
-  private int mNewIx;
-  private int mOldLen;
-  private int mNewLen;
-  private Z[] mNewBlock;
-  private Z mAdd1;
-  private Z mAdd;
-  private Z mMod;
-  private Z mMod1;
-  private Z mOldK;
-  private int mDig;
-  private int mFirstDig;
-  private boolean mFirst0;
-  protected int mN;
-  private boolean mTestK;
-  private boolean mNextK2;
-  private boolean mNoZeroTail;
-
+  protected boolean[] mAllowedDigits; // true if a digit = index is allowed
+  private Z[] mOldBlock; // array of numbers k that were under concern
+  private Z[] mNewBlock; // array of numbers k now under concern
+  private int mOldIx; // index in mOldBlock
+  private int mNewIx; // index in mNewBlock
+  private int mOldLen; // length of occupied elements in mOldBlock
+  private Z mAdd; // put this digit in from of k
+  private Z mAdd1; // unit for mAdd
+  private Z mMod; // gives the width of the superdigit that always has a valid superdigit at the end of its square
+  private Z mMod1; // mMod * mFirstDig
+  private Z mOldK; // previous value of k
+  protected int mN; // current OEIS index
+  private boolean mTestK; // whether k should have valid digits also
+  private boolean mNextK2; // whether k^2 should be emitted isntead of k
+  private boolean mNoZeroTail; // whether a valid k may not have a trailing zero
+  private Z mBasePower; // for ZUtils.basePower()
+  private int mLogU; // for ZUtils.basePower()
+  
   /**
-   * Construct an instance which selects all numbers
-   * that contain only a subset of decimal digits in the number
-   * and in its square.
+   * Construct an instance for some variant.
    * @param offset first valid term has this index
    * @param base base of the numbers: 2-99
-   * @param mask type of the test to be applied to the digits: 2 = digits in square
-   * @param subset String of decimal digits in ascending order, representing the desire subset
+   * @param mask bit mask for variants of the tests to be applied to the digits: 
+   * <ul>
+   * <li>1 = emit <code>k^2</code> instead of <code>k</code></li>
+   * <li>2 = <code>k</code> and <code>k^2</code> must consists of the digits</li>
+   * <li>4 = only <code>k^2</code> must consists of the digits</li>
+   * <li>8 = the last digit of <code>k</code> may not be 0</li>
+   * </ul>
+   * @param subset String of decimal digits in ascending order, representing the desired subset
    */
   protected SquareDigitsSequence(final int offset, final int base, final int mask, final String subset) {
-//**    sDebug = 0;
     mBase = base;
     mBaseZ = Z.valueOf(mBase);
     mMask = mask;
@@ -68,14 +71,12 @@ public class SquareDigitsSequence implements Sequence {
     mAllowedDigits = new boolean[mBase]; // initialized with false
     for (int isub = 0; isub < mSubset.length(); ++isub) { 
       mAllowedDigits[Character.digit(mSubset.charAt(isub), mBase)] = true;
-    } // for isub
+    }
     mFirstDig = Character.digit(mSubset.charAt(0), mBase);
-    mFirst0 = mFirstDig == 0;
     mOldBlock = new Z[] { Z.ZERO };
     mOldIx = 0;
     mOldLen = mOldBlock.length;
-    mNewLen = mOldLen * mBase;
-    mNewBlock = new Z[mNewLen];
+    mNewBlock = new Z[mOldLen * mBase];
     mNewIx = 0;
     mAdd1 = Z.ONE;
     mAdd = Z.ZERO;
@@ -83,15 +84,57 @@ public class SquareDigitsSequence implements Sequence {
     mOldK = Z.ZERO;
     mDig = 0;
     mN = 0;
+    // from ZUtils.basePower():
+    mLogU = 0;
+    Z t = Z.valueOf(mBase);
+    mBasePower = Z.ONE;
+    while (t.bitLength() < Long.SIZE) {
+      mBasePower = t;
+      t = t.multiply(mBase);
+      ++mLogU;
+    }
   }
 
   /**
    * Test whether a number has allowable digits only.
-   * @param k number to be tested
-   * @return true or false
+   * Faster version, adapted from ZUtils.digitCounts().
+   * @param n number to be tested
+   * @return -1 if all digits are allowed, or exponent of <code>mBase</code> of first non-matching digit
    */
-  public boolean isAllowed(final Z k) {
-    return mAllowPattern.matcher(k.toString()).matches();
+  public int badDigitPosition(final Z n) {
+    final int base = mBase;
+    if (n.isZero()) {
+      return mFirstDig == 0 ? -1 : 0;
+    } else {
+      Z m = n;
+      int pos = 0;
+      long v;
+      while (m.compareTo(mBasePower) >= 0) {
+        final Z[] qr = m.divideAndRemainder(mBasePower);
+        v = qr[1].longValue();
+        for (int k = 0; k < mLogU; ++k) {
+          if (! mAllowedDigits[(int) (v % mBase)]) {
+            return pos;
+          };
+          v /= mBase;
+          ++pos;
+        }
+        m = qr[0];
+      }
+      v = m.longValue();
+      while (v != 0) {
+        if (! mAllowedDigits[(int) (v % mBase)]) {
+          return pos;
+        };
+        v /= mBase;
+        ++pos;
+      }
+    }
+    return -1;
+  }
+
+  public int badDigitPositionSlow(final Z k) {
+    return mAllowPattern.matcher(k.toString()).matches() ? -1 : 0;
   }
 
   /**
@@ -100,9 +143,11 @@ public class SquareDigitsSequence implements Sequence {
    */
   @Override
   public Z next() {
-    if (mN == 0 && isAllowed(Z.ZERO) && !mNoZeroTail) {
-      ++mN;
-      return Z.ZERO;
+    if (mN == 0) {
+      if (badDigitPosition(Z.ZERO) < 0 && !mNoZeroTail) {
+        ++mN;
+        return Z.ZERO;
+      }
     }
     while (true) {
       while (mDig < mBase) {
@@ -113,10 +158,13 @@ public class SquareDigitsSequence implements Sequence {
             final Z k2 = k.multiply(k);
             final Z[] quot = k2.divideAndRemainder(mMod);
             final Z remainder = mFirstDig == 0 ? quot[1] : quot[1].add(mMod1);
-            if (isAllowed(remainder)) {
+            if (badDigitPosition(remainder) < 0) {
               mNewBlock[mNewIx++] = k; // push
-              if (  (quot[0].isZero() || isAllowed(quot[0]))
-                 && (!mTestK          || isAllowed(k))
+//**          if (sDebug >= 1) {
+//**            System.out.println("    # " + k + " " + k2);
+//**          }
+              if (  (quot[0].isZero() || badDigitPosition(quot[0]) < 0)
+                 && (!mTestK          || badDigitPosition(k) < 0)
                  && (!mNoZeroTail     || k.mod(mBase) != 0)
                  && mOldK.compareTo(k) < 0
                  ) {
@@ -134,48 +182,50 @@ public class SquareDigitsSequence implements Sequence {
       mDig = 0;
       mOldLen = mNewIx;
       mOldBlock = mNewBlock;
-      mNewLen = mOldLen * mBase;
-      mNewBlock = new Z[mNewLen];
+      mNewBlock = new Z[mOldLen * mBase];
       mNewIx = 0;
       mAdd1 = mAdd1.multiply(mBaseZ);
       mMod = mMod.multiply(mBaseZ);
       mAdd = Z.ZERO; 
     }
-  } // next
+  }
 
-  //=====================================
-  /*  Test method
+  /*
+   *  Test method
    *  @param args command line arguments: [noterms [digits]]
    *  Show various elements related to the runs of digits for some base in n.
    */
-//**  public static void main(String[] args) {
-//**    String  subset = "23467"; // A137071
-//**    int     noTerms   = 8;
-//**    int     mask = 2;
-//**    int iarg = 0;
-//**    while (iarg < args.length) { // consume all arguments
-//**      final String opt = args[iarg ++];
-//**      try {
-//**        if (false) {
-//**        } else if (opt.equals    ("-d")     ) {
-//**          SquareDigitsSequence.sDebug = Integer.parseInt(args[iarg++]);
-//**        } else if (opt.equals    ("-m")     ) {
-//**          mask    = Integer.parseInt(args[iarg++]);
-//**        } else if (opt.equals    ("-n")     ) {
-//**          noTerms = Integer.parseInt(args[iarg++]);
-//**        } else if (opt.equals    ("-s")     ) {
-//**          subset  = args[iarg++];
-//**        } else {
-//**          System.err.println("??? invalid option: \"" + opt + "\"");
-//**        }
-//**      } catch (Exception exc) { // take default
-//**      }
-//**    } // while args
-//**    SquareDigitsSequence seq = new SquareDigitsSequence(1, 10, mask, subset);
-//**    int index = 1;
-//**    while (index < noTerms) {
-//**      System.out.println(index + " " + seq.next().toString());
-//**      ++index;
-//**    } // while index
-//**  } // main
-} // SquareDigitsSequence
+/*
+  public static void main(String[] args) {
+    String subset = "23467"; // A137071
+    int noTerms   = 8;
+    int mask = 2;
+    int iarg = 0;
+    while (iarg < args.length) { // consume all arguments
+      final String opt = args[iarg ++];
+      try {
+        if (false) {
+        } else if (opt.equals    ("-d")     ) {
+          SquareDigitsSequence.sDebug = Integer.parseInt(args[iarg++]);
+        } else if (opt.equals    ("-m")     ) {
+          mask    = Integer.parseInt(args[iarg++]);
+        } else if (opt.equals    ("-n")     ) {
+          noTerms = Integer.parseInt(args[iarg++]);
+        } else if (opt.equals    ("-s")     ) {
+          subset  = args[iarg++];
+        } else {
+          System.err.println("??? invalid option: \"" + opt + "\"");
+        }
+      } catch (Exception exc) { // take default
+      }
+    }
+    
+    SquareDigitsSequence seq = new SquareDigitsSequence(1, 10, mask, subset);
+    int index = 1;
+    while (index < noTerms) {
+      System.out.println(index + " " + seq.next().toString());
+      ++index;
+    }
+  }
+*/
+}
