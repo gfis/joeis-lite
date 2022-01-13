@@ -150,7 +150,11 @@ public class A055187 implements Sequence {
       attr = mSegment.get(iseg);
       noun = mSegment.get(iseg + 1);
       if (attr != 0 || (mWith0 & 1) != 0) {
-        mSeqLen.set(mSegNo, mSeqLen.get(mSegNo) + 1);
+        if (mSegNo >= mSeqLen.size()) {
+          mSeqLen.add(1);
+        } else {
+          mSeqLen.set(mSegNo, mSeqLen.get(mSegNo) + 1);
+        }
       }
     }
     if (sDebug >= 1) {
@@ -212,7 +216,11 @@ public class A055187 implements Sequence {
     for (int iseg = mFirst; iseg < mSegment.size(); iseg += 2) { // copy attr && determine maximum attr
       attr = mSegment.get(iseg);
       noun = mSegment.get(iseg + 1);
-      mCount.set(noun, attr); // copy old attr
+      if (noun >= mCount.size()) { // copy old attr
+        mCount.add(attr);
+      } else {
+        mCount.set(noun, attr);
+      } 
       if (attr > amax) {
         amax = attr;
       }
@@ -220,7 +228,12 @@ public class A055187 implements Sequence {
     int lastNoun = noun;
     noun = lastNoun + 1;
     while (noun <= amax) { // insert nouns with 0 attributes
-      mCount.set(noun++, 0);
+      if (noun >= mCount.size()) { // copy old attr
+        mCount.add(0);
+      } else {
+        mCount.set(noun, 0);
+      } 
+      noun++;
     }
     int ffCount = noun;
     // now add all (or row1, row2) to mCount[]
@@ -236,8 +249,13 @@ public class A055187 implements Sequence {
     // copy it back to the segment
     int iseg = 0;
     for (noun = 0; noun < ffCount; noun ++) { // add
-      mSegment.set(iseg, mCount.get(noun));
-      mSegment.set(iseg + 1, noun);
+      if (iseg >= mSegment.size()) {
+        mSegment.add(mCount.get(noun));
+        mSegment.add(noun);
+      } else {
+        mSegment.set(iseg, mCount.get(noun));
+        mSegment.set(iseg + 1, noun);
+      }
       iseg += 2;
     }
   }
@@ -376,7 +394,7 @@ public class A055187 implements Sequence {
       }
     }
     final Sequence seq = new A055187(offset, noeis, method, start, appear, row, first, with0, parm);
-    for (int n = offset; n <= noTerms; n ++) {
+    for (int n = offset; n <= noTerms; n++) {
       System.out.println("n " + seq.next());
     }
   }
