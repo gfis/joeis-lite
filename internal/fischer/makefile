@@ -481,6 +481,11 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
+anabuild: # 2022-01-14
+	make purge
+	make CC=cumulcnt select gener 
+	make CC=A018195  select gener 
+	make CC=cumulcnt man distel TO=16
 anabuild.2022-01-09:
 	make purge
 	make CC=A087630 select EX=xx gener
@@ -1725,6 +1730,12 @@ crystalb:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--------------------------------
+cumulcnt:
+	grep -E "^A[0-9]" $(COMMON)/../contrib/A055187/gen.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 dance:
 	grep -vE "^#" $@.man > $@.gen

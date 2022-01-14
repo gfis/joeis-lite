@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-01-14: V3.0: skip over empty callcodes
 # 2021-11-26: V2.9: but only "Binomial("
 # 2021-11-26: V2.8: import Binomial
 # 2021-11-11: V2.7: no import for "Function"
@@ -40,7 +41,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V2.9";
+my $program = "gen_seq4.pl V3.0";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -108,6 +109,7 @@ while (<>) { # read inputfile
     $aseqno   = shift(@parms);
     next if scalar(@parms) == 0; # only aseqno => came from CC=man
     $callcode = shift(@parms);
+    next if length($callcode) == 0; # skip over empty callcodes
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
     $name  = $parms[scalar(@parms) - 1]; # last parameter
