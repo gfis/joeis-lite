@@ -481,10 +481,15 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # 2022-01-14
+anabuild: # 2022-01-16
 	make purge
-	make CC=cumulcnt select gener 
-	make CC=A018195  select gener 
+	make CC=A027894 select EX=xx gener
+	make CC=A116081 select EX=xx gener
+	make CC=A116081 man distel
+anabuild.2022-01-14:
+	make purge
+	make CC=cumulcnt select gener
+	make CC=A018195  select gener
 	make CC=cumulcnt man distel TO=16
 anabuild.2022-01-09:
 	make purge
@@ -3619,7 +3624,7 @@ pribuild: # 2022-01-06
 	make CC=pricongr select EX=xx gener poins CLASS=CongruenceForm
 	make CC=A038702  select EX=xx gener poins CLASS=A038702
 	grep A1910 pricongr.gen | cut -b1-64
-	make CC=prikronf select EX=xx gener poins CLASS=KroneckerForm  
+	make CC=prikronf select EX=xx gener poins CLASS=KroneckerForm
 	make CC=pricongr man poeis_count dist testall log
 priquad2: # select all MMA calls of QuadPrimes2
 	grep -P "QuadPrimes2\[\d" $(COMMON)/jcat25.txt \

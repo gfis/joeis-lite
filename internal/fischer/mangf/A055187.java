@@ -68,7 +68,6 @@ public class A055187 implements Sequence {
   private int mAppear;
   private int mFirst;
   private String mMethod;
-  private int mNoeis;
   private int mOffset;
   private int mParm;
   private int mRow; // count in both rows,    output both; default
@@ -89,13 +88,12 @@ public class A055187 implements Sequence {
   private int mK2;
 
   public A055187() {
-    this(1, 55187, "A", 1, 3, 3, 0, 2, 0);
+    this(1, "A", 1, 3, 3, 0, 2, 0);
   }
 
-  public A055187(final int offset, final int noeis, final String method, final int start,
+  public A055187(final int offset, final String method, final int start,
       final int appear, final int row, final int first, final int with0, final int parm) {
     mOffset = offset;
-    mNoeis = noeis;
     mMethod = method;
     mStart = start;
     mCurMax = mStart - 1;
@@ -127,12 +125,12 @@ public class A055187 implements Sequence {
         emit(mStart, -1);
       }
     } else if (mMethod.matches("[D]")) {
-      store(mStart);
+      // store(mStart); why ??
     } else if (mMethod.matches("[N]")) {
       mSeqLen.add(0);
     } else if (mMethod.matches("[S]")) {
     } else if (mMethod.matches("[T]")) {
-      if (mNoeis == 240508) {
+      if (mParm == 240508) {
         store(1);
       }
     }
@@ -272,7 +270,7 @@ public class A055187 implements Sequence {
     if ((attr != 0 || (mWith0 & 1) != 0) && (noun != 0 || (mWith0 & 2) != 0) && (mRow != 5)) {
       mCount.set(noun, mCount.get(noun) + 1);
     }
-    if (attr == 0 && mNoeis == 79668) {
+    if (attr == 0 && mParm == 79668) {
       mFirst = 0;
     }
   }
@@ -285,7 +283,7 @@ public class A055187 implements Sequence {
       }
       mK2 ++;
     } else if (mMethod.matches("I")) {
-      System.err.print("cannot process method I for A" + mNoeis);
+      System.err.print("cannot process method I");
     } else if (mMethod.matches("J")) {
       if (attr > mCurMax) {
         store(attr);
@@ -393,7 +391,7 @@ public class A055187 implements Sequence {
       } catch (Exception exc) {
       }
     }
-    final Sequence seq = new A055187(offset, noeis, method, start, appear, row, first, with0, parm);
+    final Sequence seq = new A055187(offset, method, start, appear, row, first, with0, parm);
     for (int n = offset; n <= noTerms; n++) {
       System.out.println("n " + seq.next());
     }
