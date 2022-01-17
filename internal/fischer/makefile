@@ -481,7 +481,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # 2022-01-16
+anabuild: # 2022-01-17:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A275043 select EX=xx gener
+	make CC=A033981 select EX=xx gener
+	make CC=A104088 select EX=xx gener
+	make CC=A074476 select       gener
+a2:
+	make CC=A055473 select       gener
+	make CC=A167626 select       gener
+	make CC=A007693 select EX=xx gener
+	make CC=A023200 select EX=xx gener
+	make CC=A074476 man dist testall log pack
+anabuild.2022-01-16:
 	make purge
 	make CC=A027894 select EX=xx gener
 	make CC=A116081 select EX=xx gener

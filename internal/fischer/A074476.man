@@ -1,0 +1,53 @@
+A003021	parm3	1	A074476	10	1	Largest prime factor of (\d+)^n +(\d+)	m	i					
+A002590	parm3	1	A074476	16	1	Largest prime factor of (\d+)^n +(\d+)	m	i					
+A002592	parm3	1	A074476	9	1	Largest prime factor of (\d+)^n +(\d+)	m	i					
+A074476	parm3	1	A074476	3	1	Largest prime factor of (\d+)^n +(\d+)	m	i
+A274903	parm3	1	A074476	4	1	Largest prime factor of (\d+)^n +(\d+)	m	i
+A074478	parm3	1	A074476	5	1	Largest prime factor of (\d+)^n +(\d+)	m	i
+A274904	parm3	1	A074476	6	1	Largest prime factor of (\d+)^n +(\d+)	m	i
+A227575	parm3	1	A074476	7	1	Largest prime factor of (\d+)^n +(\d+)	m	i
+A274905	parm3	1	A074476	8	1	Largest prime factor of (\d+)^n +(\d+)	m	i
+A324941	parm3	1	A074476	17	1	Largest prime factor of (\d+)^n +(\d+)	m	i
+A074477	parm3	1	A074477	3	-1	Largest prime factor of (\d+)^n -(\d+)	m	i
+A274906	parm3	1	A074477	4	-1	Largest prime factor of (\d+)^n -(\d+)	m	i
+A074479	parm3	1	A074477	5	-1	Largest prime factor of (\d+)^n -(\d+)	m	i
+A274907	parm3	1	A074477	6	-1	Largest prime factor of (\d+)^n -(\d+)	m	i
+A074249	parm3	1	A074477	7	-1	Largest prime factor of (\d+)^n -(\d+)	m	i
+A274908	parm3	1	A074477	8	-1	Largest prime factor of (\d+)^n -(\d+)	m	i
+A274909	parm3	1	A074477	9	-1	Largest prime factor of (\d+)^n -(\d+)	m	i
+A274910	parm3	1	A074477	11	-1	Largest prime factor of (\d+)^n -(\d+)	m	i
+A005422	parm3	1	A074477	10	-1	Largest prime factor of (\d+)^n -(\d+)	
+A062308	parm3	1	A074476	11	1	Largest prime factor of 11^n+1 (A034524).       nonn,changed,   0..301  nyi
+
+A080443	parm3	1	A074476	3	2	Largest prime factor of 3^n+2.  nonn,changed,   0..210  nyi
+A080798	parm3	1	A074477	3	-2	Largest prime factor of 3^n-2.  nonn,changed,   2..210  nyi
+A093817	parm3	1	A074477	2	-3	Largest prime factor of 2^n-3.  nonn,   2..200  nyi
+A324941	parm3	1	A074476	17	1	Largest prime factor of 17^n + 1.       nonn,new,synth  0..24   nyi
+
+# A096172 null    Largest prime factor of n^4 + 1.
+# A164314 null    Largest prime factor of n^2 - 2.        nonn,   2..10000        nyi
+# A181447 FiniteSequence  Numbers n such that 3 is the largest prime factor of n^2 - 1.   nonn,fini,full,synth    1..4    unkn
+# A181448 FiniteSequence  Numbers n such that 5 is the largest prime factor of n^2 - 1.   fini,full,nonn,synth    1..8    unkn
+# A181449 FiniteSequence  Numbers n such that 7 is the largest prime factor of n^2 - 1.   fini,full,nonn,synth    1..16   unkn
+# A181450 FiniteSequence  Numbers n such that 11 is the largest prime factor of n^2 - 1.  fini,full,nonn,synth    1..20   unkn
+# A181451 FiniteSequence  Numbers n such that 13 is the largest prime factor of n^2 - 1.  fini,nonn,full,synth    1..34   unkn
+# A181452 null    Numbers n such that 17 is the largest prime factor of n^2 - 1.  fini,nonn,      1..47   nyi
+# A181453 null    Numbers n such that 19 is the largest prime factor of n^2 - 1.  fini,nonn,      1..72   nyi
+# A181454 FiniteSequence  Numbers n such that 23 is the largest prime factor of n^2 - 1.  fini,full,nonn, 1..95   finifull
+# A181455 null    Numbers n such that 29 is the largest prime factor of n^2 - 1.  fini,nonn,      1..126  nyi
+# A181456 FiniteSequence  Numbers n such that 31 is the largest prime factor of n^2 - 1.  fini,full,nonn, 1..168  finifull
+# A181457 null    Numbers n such that 37 is the largest prime factor of n^2 - 1.  fini,nonn,      1..208  nyi
+# A181458 null    Numbers n such that 41 is the largest prime factor of n^2 - 1.  fini,nonn,      1..262  nyi
+# A181459 null    Numbers n such that 43 is the largest prime factor of n^2 - 1.  fini,nonn,      1..343  nyi
+# A181460 null    Numbers n such that 47 is the largest prime factor of n^2-1.    fini,nonn,      1..433  nyi
+# A181461 null    Numbers n such that 53 is the largest prime factor of n^2-1.    fini,nonn,      1..507  nyi
+# A181462 null    Numbers n such that 59 is the largest prime factor of n^2-1.    fini,nonn,      1..634  nyi
+# A181463 null    Numbers n such that 61 is the largest prime factor of n^2-1.    fini,nonn,      1..799  nyi
+# A181464 null    Numbers n such that 67 is the largest prime factor of n^2-1.    fini,nonn,      1..976  nyi
+# A181465 null    Numbers n such that 71 is the largest prime factor of n^2-1.    fini,nonn,      1..1146 nyi
+# A181466 null    Numbers n such that 73 is the largest prime factor of n^2-1.    fini,nonn,      1..1439 nyi
+# A181467 null    Numbers n such that 79 is the largest prime factor of n^2-1.    fini,nonn,      1..1698 nyi
+# A181468 null    Numbers n such that 83 is the largest prime factor of n^2-1.    fini,nonn,      1..2082 nyi
+# A181469 null    Numbers n such that 89 is the largest prime factor of n^2-1.    fini,nonn,      1..2370 nyi
+# A181470 null    Numbers n such that 97 is the largest prime factor of n^2 - 1.  fini,full,nonn,changed, 1..2679 nyi
+# A181568 null    Numbers k such that the largest prime factor of k^2-1 is 101.   fini,nonn,changed,      1..3340 nyi
