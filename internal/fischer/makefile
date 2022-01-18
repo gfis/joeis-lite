@@ -4442,6 +4442,7 @@ squaredig: # Jonathan Wellons A136nnn
 squaredig4: # A053880 ff.: digits required in square only
 	grep -E "digits +\{ *[0-9]" $(COMMON)/joeis_names.txt \
 	| perl squaredig4.pl \
+	| grep squaredig4 \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
@@ -4457,6 +4458,15 @@ squaredig_width:
 	WHERE b.aseqno = s.aseqno \
 	  AND s.aseqno = n.aseqno \
 	  ORDER BY 1" | tee @$.tmp
+#----
+triangdig4: # A119033 ff.: digits required in triangular numbers only
+	grep -E "digits +\{ *[0-9]" $(COMMON)/joeis_names.txt \
+	| perl squaredig4.pl \
+	| grep triangdig4 \
+	| sed -e "s/triangdig4/squaredig4/" \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 subsetmod:
 	grep -P "^A\d+" $@.man \
