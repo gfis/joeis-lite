@@ -1,15 +1,32 @@
-A133355	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)	[[0],[-35,-12,-1],[-1,0,1]]	[1]
-A133238	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133239	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133240	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133241	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133317	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133318	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133319	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133348	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133349	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133350	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133351	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133352	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133353	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
-A133354	parm2	0	A133355		Dimensions of certain Lie algebra (see reference for precise definition)
+# A133238 t71 :((3*a+2*k+5)/(3*a+5))         * b(k+2*a  +3,k)*b(k+5*a/2+3,k)*b(k+3*a+4,k)/(b(k+a/2+1,k)*b(k+a+1,k)); [seq(t71(1,k),k=0..30)];
+# A133239 t71 :((3*a+2*k+5)/(3*a+5))         * b(k+2*a  +3,k)*b(k+5*a/2+3,k)*b(k+3*a+4,k)/(b(k+a/2+1,k)*b(k+a+1,k)); [seq(t71(2,k),k=0..30)];
+# A133240 t71 :((3*a+2*k+5)/(3*a+5))         * b(k+2*a  +3,k)*b(k+5*a/2+3,k)*b(k+3*a+4,k)/(b(k+a/2+1,k)*b(k+a+1,k)); [seq(t71(4,k),k=0..30)];
+# A133241 t71 :((3*a+2*k+5)/(3*a+5))         * b(k+2*a  +3,k)*b(k+5*a/2+3,k)*b(k+3*a+4,k)/(b(k+a/2+1,k)*b(k+a+1,k)); [seq(t71(6,k),k=0..30)];
+# A133317 t72a:((2*a+2*k+1)/(2*a+1))         * b(k+3*a/2-1,k)*b(k+3*a/2+1,k)*b(k+2*a  ,k)/(b(k+a/2-1,k)*b(k+a/2+1,k)); [seq(t72a(2,k),k=0..40)];
+# A133318 t72a:((2*a+2*k+1)/(2*a+1))         * b(k+3*a/2-1,k)*b(k+3*a/2+1,k)*b(k+2*a  ,k)/(b(k+a/2-1,k)*b(k+a/2+1,k)); [seq(t72a(4,k),k=0..40)];
+# A133319 t72a:((2*a+2*k+1)/(2*a+1))         * b(k+3*a/2-1,k)*b(k+3*a/2+1,k)*b(k+2*a  ,k)/(b(k+a/2-1,k)*b(k+a/2+1,k)); [seq(t72a(6,k),k=0..40)];
+# A133348 t72b:((  a+  k+1)/(  a+1))         * b(k+2*a  +1,k)*b(k+3*a/2+1,k)                                             / (b(k+a/2  ,k)); [seq(t72b(4,k),k=0..28)];
+# A133349 t72b:((  a+  k+1)/(  a+1))         * b(k+2*a  +1,k)*b(k+3*a/2+1,k)                                             / (b(k+a/2  ,k)); [seq(t72b(6,k),k=0..28)];
+# A133350 t72c:((3*a+4*k+2)/((3*a+2)*(k+1))) * b(k+  a    ,k)*b(k+  a  +1,k)*b(k+3*a/2-1,k)*b(k+3*a/2,k)*b(2*k+2*a+1,2*k)/ (b(k+a/2-1,k)*b(k+a/2,k)*b(2*k+a,2*k)); [seq(t72c(1,k),k=1..40)];
+# A133351 t72c:((3*a+4*k+2)/((3*a+2)*(k+1))) * b(k+  a    ,k)*b(k+  a  +1,k)*b(k+3*a/2-1,k)*b(k+3*a/2,k)*b(2*k+2*a+1,2*k)/ (b(k+a/2-1,k)*b(k+a/2,k)*b(2*k+a,2*k)); [seq(t72c(2,k),k=1..40)];
+# A133352 t72c:((3*a+4*k+2)/((3*a+2)*(k+1))) * b(k+  a    ,k)*b(k+  a  +1,k)*b(k+3*a/2-1,k)*b(k+3*a/2,k)*b(2*k+2*a+1,2*k)/ (b(k+a/2-1,k)*b(k+a/2,k)*b(2*k+a,2*k)); [seq(t72c(4,k),k=1..40)];
+# A133353 t72c:((3*a+4*k+2)/((3*a+2)*(k+1))) * b(k+  a    ,k)*b(k+  a  +1,k)*b(k+3*a/2-1,k)*b(k+3*a/2,k)*b(2*k+2*a+1,2*k)/ (b(k+a/2-1,k)*b(k+a/2,k)*b(2*k+a,2*k)); [seq(t72c(6,k),k=1..40)];
+# A133354 t72c:((3*a+4*k+2)/((3*a+2)*(k+1))) * b(k+  a    ,k)*b(k+  a  +1,k)*b(k+3*a/2-1,k)*b(k+3*a/2,k)*b(2*k+2*a+1,2*k)/ (b(k+a/2-1,k)*b(k+a/2,k)*b(2*k+a,2*k)); [seq(t72c(8,k),k=1..40)];
+# A133355 t73: ((2*k+a)*(k+a)/(a^2)) * b(k+a-1, k)*b(k+3*a/2-1, k)/(b(k+a/2, k)); [seq(t73(6, k), k=0..40)];
+
+A133355	holos	0	[[0],[-48,-14,-1],[0,2,1]]	[1]	0	0	proc(k)t73(6,k)
+A133354	holos	0	[[0],[-16803072,-13557504,-4660228,-884631,-100148,-6761,-252,-4],[0,3696,8504,7287,3112,713,84,4]]	[1]	0	0	proc(k)t72c(8,k)
+A133353	holos	0	[[0],[-1179360,-1257372,-571440,-143503,-21505,-1923,-95,-2],[0,360,1014,1123,635,195,31,2]]	[1]	0	0	proc(k)t72c(6,k)
+A133352	holos	0	[[0],[-151200,-238080,-159938,-59419,-13184,-1747,-128,-4],[0,60,244,403,346,163,40,4]]	[1]	0	0	proc(k)t72c(4,k)
+A133351	holos	0	[[0],[-720,-2208,-2888,-2088,-901,-232,-33,-2],[0,0,1,6,14,16,9,2]]	[1]	0	0	proc(k)t72c(2,k)
+A133350	holos	0	[[0],[-90,-327,-469,-332,-116,-16],[0,0,-1,-4,4,16]]	[1]	0	0	proc(k)t72c(1,k)
+A133349	holos	0	[[0],[-910,-291,-30,-1],[0,18,9,1]]	[1]	0	0	proc(k)t72b(6,k)
+A133348	holos	0	[[0],[-315,-143,-21,-1],[0,8,6,1]]	[1]	0	0	proc(k)t72b(4,k)
+A133319	holos	0	[[0],[-12480,-5768,-982,-73,-2],[0,88,82,23,2]]	[1]	0	0	proc(k)t72a(6,k)
+A133318	holos	0	[[0],[-2520,-1739,-442,-49,-2],[0,21,34,15,2]]	[1]	0	0	proc(k)t72a(4,k)
+A133317	holos	0	[[0],[-80,-72,-21,-2],[0,0,3,2]]	[1]	0	0	proc(k)t72a(2,k)
+A133241	holos	0	[[0],[-136620,-34788,-3257,-133,-2],[0,588,287,43,2]]	[1]	0	0	proc(k)t71(6,k)
+A133240	holos	0	[[0],[-38896,-13535,-1734,-97,-2],[0,225,150,31,2]]	[1]	0	0	proc(k)t71(4,k)
+A133239	holos	0	[[0],[-6160,-3386,-687,-61,-2],[0,54,57,19,2]]	[1]	0	0	proc(k)t71(2,k)
+A133238	holos	0	[[0],[-1540,-1193,-342,-43,-2],[0,18,27,13,2]]	[1]	0	0	proc(k)t71(1,k)
+

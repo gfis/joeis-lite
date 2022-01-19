@@ -490,6 +490,7 @@ anabuild: # .2022-01-19:
 	make CC=A050999 select EX=xx gener
 	make CC=A051801 select EX=xx gener
 	make CC=A082246 select EX=xx gener
+	make CC=A133355 select EX=xx gener
 	make CC=A171430 select EX=xx gener
 	make CC=A029709 man dist testall log pack
 anabuild.2022-01-17:
