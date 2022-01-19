@@ -481,14 +481,24 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # 2022-01-17:
+anabuild: # .2022-01-19:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A000449 select EX=xx gener
+	make CC=A029709 select EX=xx gener
+	make CC=A059695 select EX=xx gener
+	make CC=A050999 select EX=xx gener
+	make CC=A051801 select EX=xx gener
+	make CC=A082246 select EX=xx gener
+	make CC=A171430 select EX=xx gener
+	make CC=A029709 man dist testall log pack
+anabuild.2022-01-17:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A275043 select EX=xx gener
 	make CC=A033981 select EX=xx gener
 	make CC=A104088 select EX=xx gener
 	make CC=A074476 select       gener
-a2:
 	make CC=A055473 select       gener
 	make CC=A167626 select       gener
 	make CC=A007693 select EX=xx gener
@@ -873,6 +883,15 @@ adjacent:
 #----
 ajrank: # adjusted joint rank sequences (CK)
 	cd ck ; make $@
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----------------
+alsoprime:
+	grep "is also prime" $(COMMON)/joeis_names.txt \
+	| grep Primes \
+	| grep -v revers \
+	| perl alsoprime.pl \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----------------
