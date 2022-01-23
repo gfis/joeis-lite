@@ -481,7 +481,18 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-01-19:
+anabuild: # 2022-01-23:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A055960   select EX=xx gener
+	make CC=triselect select EX=xx gener
+	make CC=triselect man dist testall log pack1
+anabuild.2022-01-21:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A212846 select EX=xx gener
+	make CC=A212846 man dist testall log pack1
+anabuild.2022-01-19:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A000449 select EX=xx gener
@@ -3997,6 +4008,10 @@ triprom:
 	wc -l    $@.gen
 trisimple:
 	cp -v $(TRIREC)/$@.java $@.gen
+#------------------------------------------------------
+triselect: # use TriangleSelector
+	grep -E "^A[0-9]" $@.man > $@.gen
+	wc -l $@.gen
 #------------------------------------------------------
 negpos: # all done
 	cat ../../../fasces/oeis/A131393/negpos.gen \

@@ -1,0 +1,24 @@
+A055944	parm3	0	A055960	2	1	a(n) = n + (reversal of base-2 digits of n) (written in base 10).	base,nonn,changed,	0..10000	deriv
+A055945	parm3	0	A055960	2	-1	a(n) = n - (reversal of base-2 digits of n) (and then the result is written in base 10).	base,sign,look,changed,	0..16384	deriv
+A055946	parm3	0	A055960	3	1	n + reversal of base 3 digits of n (written in base 10).	base,nonn,	0..10000	deriv
+A055947	parm3	0	A055960	3	-1	n - reversal of base 3 digits of n (written in base 10).	base,sign,changed,	0..20000	deriv
+A055948	parm3	0	A055960	4	1	n + reversal of base 4 digits of n (written in base 10).	base,nonn,look,changed,	0..10000	deriv
+A055949	parm3	0	A055960	4	-1	n - reversal of base 4 digits of n (written in base 10).	base,sign,	0..20000	deriv
+A055950	parm3	0	A055960	5	1	a(n) = n + reversal of base 5 digits of n (written in base 10).	base,nonn,changed,	0..10000	deriv
+A055951	parm3	0	A055960	5	-1	n - reversal of base 5 digits of n (written in base 10).	base,sign,synth	0..83	deriv
+A055952	parm3	0	A055960	6	1	n + reversal of base 6 digits of n (written in base 10).	base,nonn,	0..10000	deriv
+A055953	parm3	0	A055960	6	-1	n - reversal of base 6 digits of n (written in base 10).	base,sign,synth	0..76	deriv
+A055954	parm3	0	A055960	7	1	n + reversal of base 7 digits of n (written in base 10).	base,nonn,	0..10000	deriv
+A055955	parm3	0	A055960	7	-1	a(n) = n - reversal of base 7 digits of n (written in base 10).	base,sign,changed,synth	0..76	deriv
+A055956	parm3	0	A055960	8	1	n + reversal of base 8 digits of n (written in base 10).	base,nonn,	0..10000	deriv
+A055957	parm3	0	A055960	8	-1	n - reversal of base 8 digits of n (written in base 10).	base,sign,synth	0..78	deriv
+A055958	parm3	0	A055960	9	1	a(n) = n + reversal of base 9 digits of n (written in base 10).	nonn,base,look,	0..10000	deriv
+A055959	parm3	0	A055960	9	-1	n - reversal of base 9 digits of n (written in base 10).	base,sign,synth	0..84	deriv
+A055960	parm3	0	A055960	11	1	n + reversal of base 11 digits of n (written in base 10).	base,nonn,synth	0..62	nyi
+A055961	parm3	0	A055960	11	-1	a(n) = n - (reversal of base-11 digits of n) (written in base 10).	base,sign,look,changed,	0..10000	nyi
+A055962	parm3	0	A055960	12	1	n + reversal of base 12 digits of n (written in base 10).	base,nonn,synth	0..61	nyi
+A055963	parm3	0	A055960	12	-1	n - reversal of base 12 digits of n (written in base 10).	base,sign,synth	0..74	nyi
+A055964	parm3	0	A055960	16	1	n + reversal of hexadecimal (base 16) digits of n (written in base 10).	base,nonn,synth	0..59	nyi
+A055965	parm3	0	A055960	16	-1	n - reversal of hexadecimal (base 16) digits of n (written in base 10).	base,sign,synth	0..68	nyi
+A055966	parm3	0	A055960	20	1	n + reversal of base 20 digits of n (written in base 10).	base,nonn,synth	0..58	nyi
+A055967	parm3	0	A055960	20	-1	n - reversal of base 20 digits of n (written in base 10).	base,sign,changed,synth	0..68	nyi
