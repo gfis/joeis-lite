@@ -1,38 +1,73 @@
-A054092	triselect	0	A054090	0	n, n	array T as in A054090.	nonn, synth	0..21	unkn
-A054093	triselect	0	A054090	0	n, n-1	array T as in A054090.	nonn, synth	1..19	unkn
-A054094	triselect	0	A054090	0	n, n-2	array T as in A054090.	nonn, synth	2..19	nyi
-A054095	triselect	0	A054090	0	n, n-3	array T as in A054090.	nonn, synth	3..19	nyi
-A054096	triselect	0	A054090	0	n, 2	array T as in A054090.	nonn, synth	2..19	nyi
-A054097	triselect	0	A054090	0	n, 3	array T as in A054090.	nonn, synth	3..19	nyi
-A054100	triselect	0	A054098	0	n, n	array T as in A054098.	nonn, synth	0..19	nyi
-A054101	triselect	0	A054098	0	n, n-1	array T as in A054098.	nonn, synth	1..19	nyi
-A054102	triselect	0	A054098	0	n, n-2	array T as in A054098.	nonn, synth	2..19	nyi
-A054103	triselect	0	A054098	0	n, n-3	array T as in A054098.	nonn, synth	3..19	nyi
-A054104	triselect	0	A054098	0	n, 2	array T as in A054098.	nonn, synth	2..19	nyi
-A054105	triselect	0	A054098	0	n, 3	array T as in A054098.	nonn, synth	3..19	nyi
-A054116	triselect	0	A054115	0	n, n-1	array T as in A054115.	nonn, 	1..100	nyi
-A054117	triselect	0	A054115	0	n, n-2	array T as in A054115.	nonn, synth	2..18	nyi
-A054118	triselect	0	A054115	0	n, n-3	array T as in A054115.	nonn, synth	2..17	nyi
-A054131	triselect	0	A054126	0	2*n, n	array T as in A054126.	nonn, changed, synth	0..14	nyi
-A054132	triselect	0	A054126	0	2*n+1, n	array T as in A054126.	nonn, synth	0..14	nyi
-A054133	triselect	0	A054126	0	2*n-1, n	nonn, synth	1..15	nyi
-A054137	triselect	0	A054134	0	n, 3	array T as in A054134.	nonn, synth	3..29	nyi
-A054138	triselect	0	A054134	0	n, 4	array T as in A054134.	nonn, synth	4..29	nyi
-A054139	triselect	0	A054134	0	2*n, n	array T as in A054134.	nonn, synth	0..15	nyi
-A054140	triselect	0	A054134	0	2*n+1, n	array T as in A054134.	nonn, synth	0..14	nyi
-A054141	triselect	0	A054134	0	2*n-1, n	array T as in A054134.	nonn, synth	1..15	nyi
-A055219	triselect	0	A055216	0	2*n+3, n	array T as in A055216.	nonn,synth	0..24	nyi
-A055220	triselect	0	A055216	0	2*n+4, n	array T as in A055216.	nonn,synth	0..23	nyi
-A055221	triselect	0	A055216	0	2*n+5, n	array T as in A055216.	nonn,synth	0..22	nyi
-A055222	triselect	0	A055216	0	2*n+6, n	array T as in A055216.	nonn,synth	0..22	nyi
-A055815	triselect	0	A055807	0	2*n+3, n	array T as in A055807.	nonn,changed,	0..250	nyi
-A055816	triselect	0	A055807	0	2*n+4, n	array T as in A055807.	nonn,changed,	0..250	nyi
-A055817	triselect	0	A055807	0	2*n+5, n	array T as in A055807.	nonn,changed,	0..250	nyi
-
-A056243	triselect	0	A056242	1	n, n-2	Third diagonal of triangle A056242.	nonn,easy,synth	3..29	nyi
+# A054092	triselect	0	A054090	0	n, n	array T as in A054090.	nonn, synth	0..21	unkn
+# A054093	triselect	0	A054090	0	n, n-1	array T as in A054090.	nonn, synth	1..19	unkn
+# A054094	triselect	0	A054090	0	n, n-2	array T as in A054090.	nonn, synth	2..19	nyi
+# A054095	triselect	0	A054090	0	n, n-3	array T as in A054090.	nonn, synth	3..19	nyi
+# A054096	triselect	0	A054090	0	n, 2	array T as in A054090.	nonn, synth	2..19	nyi
+# A054097	triselect	0	A054090	0	n, 3	array T as in A054090.	nonn, synth	3..19	nyi
+# A054100	triselect	0	A054098	0	n, n	array T as in A054098.	nonn, synth	0..19	nyi
+# A054101	triselect	0	A054098	0	n, n-1	array T as in A054098.	nonn, synth	1..19	nyi
+# A054102	triselect	0	A054098	0	n, n-2	array T as in A054098.	nonn, synth	2..19	nyi
+# A054103	triselect	0	A054098	0	n, n-3	array T as in A054098.	nonn, synth	3..19	nyi
+# A054104	triselect	0	A054098	0	n, 2	array T as in A054098.	nonn, synth	2..19	nyi
+# A054105	triselect	0	A054098	0	n, 3	array T as in A054098.	nonn, synth	3..19	nyi
+# A054116	triselect	0	A054115	0	n, n-1	array T as in A054115.	nonn, 	1..100	nyi
+# A054117	triselect	0	A054115	0	n, n-2	array T as in A054115.	nonn, synth	2..18	nyi
+# A054118	triselect	0	A054115	0	n, n-3	array T as in A054115.	nonn, synth	2..17	nyi
+# A054131	triselect	0	A054126	0	2*n, n	array T as in A054126.	nonn, changed, synth	0..14	nyi
+# A054132	triselect	0	A054126	0	2*n+1, n	array T as in A054126.	nonn, synth	0..14	nyi
+# A054133	triselect	0	A054126	0	2*n-1, n	nonn, synth	1..15	nyi
+# A054137	triselect	0	A054134	0	n, 3	array T as in A054134.	nonn, synth	3..29	nyi
+# A054138	triselect	0	A054134	0	n, 4	array T as in A054134.	nonn, synth	4..29	nyi
+# A054139	triselect	0	A054134	0	2*n, n	array T as in A054134.	nonn, synth	0..15	nyi
+# A054140	triselect	0	A054134	0	2*n+1, n	array T as in A054134.	nonn, synth	0..14	nyi
+# A054141	triselect	0	A054134	0	2*n-1, n	array T as in A054134.	nonn, synth	1..15	nyi
+# A055219	triselect	0	A055216	0	2*n+3, n	array T as in A055216.	nonn,synth	0..24	nyi
+# A055220	triselect	0	A055216	0	2*n+4, n	array T as in A055216.	nonn,synth	0..23	nyi
+# A055221	triselect	0	A055216	0	2*n+5, n	array T as in A055216.	nonn,synth	0..22	nyi
+# A055222	triselect	0	A055216	0	2*n+6, n	array T as in A055216.	nonn,synth	0..22	nyi
+# A055815	triselect	0	A055807	0	2*n+3, n	array T as in A055807.	nonn,changed,	0..250	nyi
+# A055816	triselect	0	A055807	0	2*n+4, n	array T as in A055807.	nonn,changed,	0..250	nyi
+# A055817	triselect	0	A055807	0	2*n+5, n	array T as in A055807.	nonn,changed,	0..250	nyi
+# A056243	triselect	0	A056242	1	n, n-2	Third diagonal of triangle A056242.	nonn,easy,synth	3..29	nyi
 
 # A054110	null	Triangular array T(n, k): in Pascal's triangle,  draw vertical lines through binomial(n-1, k-1) (if present) and binomial(n-1, k) (if present); then T(n, k) is the sum of binomial(i, j) that lie on or between the lines and not below binomial(n, k).	nonn, tabl, synth, tard	0..63	nyi
 # A054111	GeneratingFunctionSequence	Row sums of array T as in A054110.	nonn, synth	0..29	pattern
 # A054112	null	T(n, n-3	array T as in A054110.	nonn, synth	3..40	nyi
 # A054113	HolonomicRecurrence	T(2n, n	array T as in A054110.	nonn, synth	0..23	holos
 # A054114	HolonomicRecurrence	T(2n+1, n	array T as in A054110.	nonn, changed, synth	0..25	holos
+
+# nyi A059420	triselect	0	A059419	0	n, n	A diagonal of A059419.							
+# nyi A059421	triselect	0	A059419	0	n, n	A diagonal of A059419.							
+# nyi A066822	triselect	0	A038622	0	n, n	The fourth column of A038622, triangular array that counts rooted polyominoes.							
+# nyi A086764	triselect	0	A068106	0	n, n	Triangle T(n, k), read by row, related to Euler''s difference table A068106 (divide k-th diagonal of A068106 by k!).							
+# nyi A091303	triselect	0	A008970	0	n, n	Third diagonal of A008970 (after A000111 and A000708).							
+# nyi A144381	triselect	0	A142458	0	n, n	Fifth diagonal of A142458: A(n,k)= (3*n - 3*k + 1)A(n - 1, k - 1) + (3*k - 2)A(n - 1, k).							
+# nyi A159346	triselect	0	A008292	0	n, n	Triangle read by rows: every third term of every third row of A008292.							
+# nyi A275871	triselect	0	A046934	0	n, n	Row sums and second diagonal of A046934.							
+# nyi A287617	triselect	0	A045847	0	n, n	Main diagonal of A045847.							
+# nyi A292917	triselect	0	A008284	0	n, n	Numbers n for which the n-th row of A008284 (partitions of n into k parts) has duplicate values > 1.							
+# nyi A345651	triselect	0	A008296	0	n, n	Fourth column of A008296.							
+# nyi A347276	triselect	0	A008296	0	n, n	Third column of A008296.							
+# nyi A347429	triselect	0	A047920	0	n, n	a(n) is the alternating sum of the n-th row of A047920.							
+
+A056278	triselect	0	A137651	1	n,2	Column 2 of A137651.
+A056279	triselect	0	A137651	1	n,3	Column 3 of A137651.
+A056280	triselect	0	A137651	1	n,4	Column 4 of A137651.
+A056281	triselect	0	A137651	1	n,5	Column 5 of A137651.
+A056282	triselect	0	A137651	1	n,6	Column 6 of A137651.
+
+A056283	triselect	0	A087854	2	n,3	Column k=3 of A087854.
+A056284	triselect	0	A087854	3	n,4	Column k=4 of A087854.
+A056285	triselect	0	A087854	4	n,5	Column k=5 of A087854.
+A056286	triselect	0	A087854	5	n,6	Column k=6 of A087854.
+
+# does not work:
+# A103719	triselect	0	A103718	2	n,2	Column m=2 sequence of triangle A103718(n,m), n >= 0 (without leading zeros).
+# A103720	triselect	0	A103718	3	n,3	Column m=3 sequence (unsigned) of triangle A103718(n,m), n>=0, without leading zeros.
+# A103721	triselect	0	A103718	4	n,4	Column m=4 sequence of triangle A103718(n,m), n>=0, without leading zeros.
+# A103722	triselect	0	A103718	5	n,5	Column m=5 sequence of triangle A103718(n,m), n>=0, without leading zeros.
+# A103723	triselect	0	A103718	6	n,6	Column m=6 sequence of triangle A103718(n,m), n>=0.
+# A103724	triselect	0	A103718	7	n,7	Column m=7 sequence of triangle A103718(n,m), n>=0, without leading zeros.
+# A103725	triselect	0	A103718	8	n,8	Column m=8 sequence of triangle A103718(n,m), n>=0, without leading zeros.
+# A103726	triselect	0	A103718	9	n,9	Column m=9 sequence of triangle A103718(n,m), n>=0, without leading zeros.
+# A103727	triselect	0	A103718	10	n,10	Column m=10 sequence of triangle A103718(n,m), n>=0, without leading zeros.

@@ -481,7 +481,14 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # 2022-01-23:
+anabuild: # .2022-01-25:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A034695   select EX=xx gener
+	make CC=A055115   select EX=xx gener
+	make CC=triselect select EX=xx gener
+	make CC=triselect man dist testall log
+anabuild.2022-01-23:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A055960   select EX=xx gener
@@ -4012,6 +4019,12 @@ trisimple:
 triselect: # use TriangleSelector
 	grep -E "^A[0-9]" $@.man > $@.gen
 	wc -l $@.gen
+trisel2:
+	make seq4 LIST=$(TRIREC)/cdrof.tmp
+	$(DBAT) "DELETE FROM seq4 WHERE parm2 <> 'null' OR parm1 NOT IN (SELECT aseqno FROM joeis);"
+	$(DBAT) -x -44444 seq4 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #------------------------------------------------------
 negpos: # all done
 	cat ../../../fasces/oeis/A131393/negpos.gen \
