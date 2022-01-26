@@ -191,7 +191,7 @@ GFis
     }
     print TAR " {\n";
     if ($withn) {
-        print TAR "\n  protected int mN;\n";
+        print TAR "\n  private int mN;\n";
     }
     foreach $pname (@pnames) { # member properties
         print TAR "  protected int m" . ucfirst($pname) . ";\n";
