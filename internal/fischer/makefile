@@ -481,11 +481,12 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-01-29:
+anabuild: # .2022-01-31:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A277548   select EX=xx gener
-	make CC=A277548 man dist testall log
+	make CC=A321543   select EX=xx gener
+	make CC=A321543 man dist testall log
 anabuild.2022-01-27:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
@@ -4033,6 +4034,11 @@ trisel2:
 	make seq4 LIST=$(TRIREC)/cdrof.tmp
 	$(DBAT) "DELETE FROM seq4 WHERE parm2 <> 'null' OR parm1 NOT IN (SELECT aseqno FROM joeis);"
 	$(DBAT) -x -44444 seq4 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+tritest:
+	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass in ('Triangle','UpperLeftTriangle');" \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #------------------------------------------------------

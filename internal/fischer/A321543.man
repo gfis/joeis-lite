@@ -1,0 +1,49 @@
+A321543	parm2	1	A321543	2 	sumdiv(n, d, (-1)^(d-1)*d^2 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321544	parm2	1	A321543	5 	sumdiv(n, d, (-1)^(d-1)*d^5 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321545	parm2	1	A321543	6 	sumdiv(n, d, (-1)^(d-1)*d^6 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321547	parm2	1	A321543	8 	sumdiv(n, d, (-1)^(d-1)*d^8 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321548	parm2	1	A321543	9 	sumdiv(n, d, (-1)^(d-1)*d^9 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321549	parm2	1	A321543	10	sumdiv(n, d, (-1)^(d-1)*d^10), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321550	parm2	1	A321543	11	sumdiv(n, d, (-1)^(d-1)*d^11), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321551	parm2	1	A321543	12	sumdiv(n, d, (-1)^(d-1)*d^12), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+
+A321552	parm2	1	A321552	7 	apply( A321552(n)=sumdiv(n, d, (-1)^(n\d-1)*d^7 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321553	parm2	1	A321552	8 	apply( A321553(n)=sumdiv(n, d, (-1)^(n\d-1)*d^8 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321554	parm2	1	A321552	9 	apply( A321554(n)=sumdiv(n, d, (-1)^(n\d-1)*d^9 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321555	parm2	1	A321552	10	apply( A321555(n)=sumdiv(n, d, (-1)^(n\d-1)*d^10), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321556	parm2	1	A321552	11	apply( A321556(n)=sumdiv(n, d, (-1)^(n\d-1)*d^11), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321557	parm2	1	A321552	12	apply( A321557(n)=sumdiv(n, d, (-1)^(n\d-1)*d^12), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+
+A321558	parm2	0	A321558	2 	apply( A321558(n)=sumdiv(n, d, (-1)^(n\d-d)*d^2 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321559	parm2	0	A321558	3 	apply( A321559(n)=sumdiv(n, d, (-1)^(n\d-d)*d^3 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321560	parm2	0	A321558	4 	apply( A321560(n)=sumdiv(n, d, (-1)^(n\d-d)*d^4 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321561	parm2	0	A321558	5 	apply( A321561(n)=sumdiv(n, d, (-1)^(n\d-d)*d^5 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321562	parm2	0	A321558	6 	apply( A321562(n)=sumdiv(n, d, (-1)^(n\d-d)*d^6 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321563	parm2	0	A321558	7 	apply( A321563(n)=sumdiv(n, d, (-1)^(n\d-d)*d^7 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321564	parm2	0	A321558	8 	apply( A321564(n)=sumdiv(n, d, (-1)^(n\d-d)*d^8 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321565	parm2	0	A321558	9 	apply( A321565(n)=sumdiv(n, d, (-1)^(n\d-d)*d^9 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321807	parm2	0	A321558	10	apply( A321807(n)=sumdiv(n, d, (-1)^(d-n\d)*d^10), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321808	parm2	0	A321558	11	apply( A321808(n)=sumdiv(n, d, (-1)^(n\d-d)*d^11), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321809	parm2	0	A321558	12	apply( A321809(n)=sumdiv(n, d, (-1)^(n\d-d)*d^12), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+# 
+A321817	parm2	0	A321817	6 	apply( A321817(n)=sumdiv(n,d,if(bittest(n\d,0),d^6)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321818	parm2	0	A321817	8 	apply( A321818(n)=sumdiv(n,d,if(bittest(n\d,0),d^8)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321819	parm2	0	A321817	10	apply( A321819(n)=sumdiv(n,d,if(bittest(n\d,0),d^10)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321820	parm2	0	A321817	12 	apply( A321820(n)=sumdiv(n,d,if(bittest(n\d,0),d^12)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+# 
+A321821	parm2	0	A321821	5 	a(n) = Sum_{d|n,   d==1 mod 4} d^5  - Sum_{d|n,   d==3 mod 4} d^5 .	sign,mult,	1..10000	nyi
+A321822	parm2	0	A321821	6 	a(n) = Sum_{d|n,   d==1 mod 4} d^6  - Sum_{d|n,   d==3 mod 4} d^6 .	sign,mult,	1..10000	nyi
+A321823	parm2	0	A321821	7 	a(n) = Sum_{d|n,   d==1 mod 4} d^7  - Sum_{d|n,   d==3 mod 4} d^7 .	sign,mult,	1..10000	nyi
+A321824	parm2	0	A321821	8 	a(n) = Sum_{d|n,   d==1 mod 4} d^8  - Sum_{d|n,   d==3 mod 4} d^8 .	sign,mult,	1..10000	nyi
+A321825	parm2	0	A321821	9 	a(n) = Sum_{d|n,   d==1 mod 4} d^9  - Sum_{d|n,   d==3 mod 4} d^9 .	sign,mult,	1..10000	nyi
+A321826	parm2	0	A321821	10	a(n) = Sum_{d|n,   d==1 mod 4} d^10 - Sum_{d|n,   d==3 mod 4} d^10.	sign,mult,	1..10000	nyi
+A321827	parm2	0	A321821	11	a(n) = Sum_{d|n,   d==1 mod 4} d^11 - Sum_{d|n,   d==3 mod 4} d^11.	sign,mult,	1..10000	nyi
+A321828	parm2	0	A321821	12	a(n) = Sum_{d|n,   d==1 mod 4} d^12 - Sum_{d|n,   d==3 mod 4} d^12.	sign,mult,	1..10000	nyi
+A321829	parm2	0	A321829	5 	a(n) = Sum_{d|n, n/d==1 mod 4} d^5 -  Sum_{d|n, n/d==3 mod 4} d^5 .	nonn,mult,	1..10000	nyi
+A321830	parm2	0	A321829	6 	a(n) = Sum_{d|n, n/d==1 mod 4} d^6 -  Sum_{d|n, n/d==3 mod 4} d^6 .	nonn,mult,	1..10000	nyi
+A321831	parm2	0	A321829	7 	a(n) = Sum_{d|n, n/d==1 mod 4} d^7 -  Sum_{d|n, n/d==3 mod 4} d^7 .	nonn,mult,	1..10000	nyi
+A321832	parm2	0	A321829	8 	a(n) = Sum_{d|n, n/d==1 mod 4} d^8 -  Sum_{d|n, n/d==3 mod 4} d^8 .	nonn,mult,	1..10000	nyi
+A321833	parm2	0	A321829	9 	a(n) = Sum_{d|n, n/d==1 mod 4} d^9 -  Sum_{d|n, n/d==3 mod 4} d^9 .	nonn,mult,	1..10000	nyi
+A321834	parm2	0	A321829	10	a(n) = Sum_{d|n, n/d==1 mod 4} d^10 - Sum_{d|n, n/d==3 mod 4} d^10.	nonn,mult,	1..10000	nyi
+A321835	parm2	0	A321829	11	a(n) = Sum_{d|n, n/d==1 mod 4} d^11 - Sum_{d|n, n/d==3 mod 4} d^11.	nonn,mult,	1..10000	nyi
+A321836	parm2	0	A321829	12	a(n) = Sum_{d|n, n/d==1 mod 4} d^12 - Sum_{d|n, n/d==3 mod 4} d^12.	nonn,mult,	1..10000	nyi

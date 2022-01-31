@@ -1,0 +1,75 @@
+A284097	parm3	A284097	(sumdiv(n, d, if(Mod(d, 5)==1, d, 0)), ", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284098	parm3	A284097	(sumdiv(n, d, if(Mod(d, 6)==1, d, 0)), ", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284099	parm3	A284097	(sumdiv(n, d, if(Mod(d, 7)==1, d, 0)), ", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284100	parm3	A284097	(sumdiv(n, d, if(Mod(d, 8)==1, d, 0)), ", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284103	parm3	A284097	(sumdiv(n, d, if(Mod(d, 5)==4, d, 0)), ", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284104	parm3	A284097	(sumdiv(n, d, if(Mod(d, 6)==5, d, 0)),", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284105	parm3	A284097	(sumdiv(n, d, if(Mod(d, 7)==6, d, 0)),", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284150	parm3	A284097	(sumdiv(n, d, if(d%5==1 || d%5==4, d, 0)), ", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284151	parm3	A284097	(sumdiv(n, d, if(d%7==1 || d%7==6, d, 0)), ", ")) \\ _Indranil Ghosh_, Mar 21 2017
+A284280	parm3	A284097	(sumdiv(n, d, if(Mod(d, 5)==2, d, 0)), ", ")) \\ _Indranil Ghosh_, Mar 24 2017
+A284281	parm3	A284097	(sumdiv(n, d, if(Mod(d, 5)==3, d, 0)),", ")) \\ _Indranil Ghosh_, Mar 24 2017
+A284326	parm3	A284097	(sumdiv(n, d, ((d%6 )>0)*d          ),", ")) \\ _Indranil Ghosh_, Mar 25 2017
+A284341	parm3	A284097	(sumdiv(n, d, ((d%8 )>0)*d          ),", ")) \\ _Indranil Ghosh_, Mar 25 2017
+A284344	parm3	A284097	(sumdiv(n, d, ((d%10)>0)*d          ), ", ")) \\ _Indranil Ghosh_, Mar 25 2017
+
+A284900	sumdiv	0	a(n) = sumdiv(n, d, (-1)^(n/d + 1)*d^4); \\ _Indranil Ghosh_, Apr 05 2017
+A284926	sumdiv	0	a(n) = sumdiv(n, d, (-1)^(n/d + 1)*d^5); \\ _Indranil Ghosh_, Apr 06 2017
+A284927	sumdiv	0	a(n) = sumdiv(n, d, (-1)^(n/d + 1)*d^6); \\ _Indranil Ghosh_, Apr 06 2017
+
+A320087	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, 3 ^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Dec 11 2020
+A320088	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, 4 ^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Dec 11 2020
+A320089	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, 5 ^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Dec 11 2020
+A320090	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, 6 ^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Dec 11 2020
+A320091	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, 7 ^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Dec 11 2020
+A320092	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, 8 ^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Dec 11 2020
+A320093	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, 9 ^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Dec 11 2020
+A320094	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, 10^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Dec 11 2020
+A320095	sumdiv	0	a(n) = sum(j=1, n, sumdiv(j, d, n^(d-1)*moebius(j/d))); \\ _Michel Marcus_, Feb 16 2020
+
+A321543	sumdiv	0	apply( a(n)=sumdiv(n, d, (-1)^(d-1)*d^2 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321544	sumdiv	0	apply( a(n)=sumdiv(n, d, (-1)^(d-1)*d^5 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321545	sumdiv	0	apply( a(n)=sumdiv(n, d, (-1)^(d-1)*d^6 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321547	sumdiv	0	apply( a(n)=sumdiv(n, d, (-1)^(d-1)*d^8 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321548	sumdiv	0	apply( a(n)=sumdiv(n, d, (-1)^(d-1)*d^9 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321549	sumdiv	0	apply( a(n)=sumdiv(n, d, (-1)^(d-1)*d^10), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321550	sumdiv	0	apply( a(n)=sumdiv(n, d, (-1)^(d-1)*d^11), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321551	sumdiv	0	apply( a(n)=sumdiv(n, d, (-1)^(d-1)*d^12), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+
+A321552	sumdiv	0	apply( A321552(n)=sumdiv(n, d, (-1)^(n\d-1)*d^7 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321553	sumdiv	0	apply( A321553(n)=sumdiv(n, d, (-1)^(n\d-1)*d^8 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321554	sumdiv	0	apply( A321554(n)=sumdiv(n, d, (-1)^(n\d-1)*d^9 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321555	sumdiv	0	apply( A321555(n)=sumdiv(n, d, (-1)^(n\d-1)*d^10), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321556	sumdiv	0	apply( A321556(n)=sumdiv(n, d, (-1)^(n\d-1)*d^11), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321557	sumdiv	0	apply( A321557(n)=sumdiv(n, d, (-1)^(n\d-1)*d^12), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+
+A321558	sumdiv	0	apply( A321558(n)=sumdiv(n, d, (-1)^(n\d-d)*d^2 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321559	sumdiv	0	apply( A321559(n)=sumdiv(n, d, (-1)^(n\d-d)*d^3 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321560	sumdiv	0	apply( A321560(n)=sumdiv(n, d, (-1)^(n\d-d)*d^4 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321561	sumdiv	0	apply( A321561(n)=sumdiv(n, d, (-1)^(n\d-d)*d^5 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321562	sumdiv	0	apply( A321562(n)=sumdiv(n, d, (-1)^(n\d-d)*d^6 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321563	sumdiv	0	apply( A321563(n)=sumdiv(n, d, (-1)^(n\d-d)*d^7 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321564	sumdiv	0	apply( A321564(n)=sumdiv(n, d, (-1)^(n\d-d)*d^8 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321565	sumdiv	0	apply( A321565(n)=sumdiv(n, d, (-1)^(n\d-d)*d^9 ), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321807	sumdiv	0	apply( A321807(n)=sumdiv(n, d, (-1)^(d-n\d)*d^10), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321808	sumdiv	0	apply( A321808(n)=sumdiv(n, d, (-1)^(n\d-d)*d^11), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321809	sumdiv	0	apply( A321809(n)=sumdiv(n, d, (-1)^(n\d-d)*d^12), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+
+A321833	sumdiv	0	apply( a(n)=      sumdiv(n,d,if(bittest(n\d,0),(2-n\d%4)*d^9 )), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321834	sumdiv	0	apply( a(n)=      sumdiv(n,d,if(bittest(n\d,0),(2-n\d%4)*d^10)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321835	sumdiv	0	apply( a(n)=      sumdiv(n,d,if(bittest(n\d,0),(2-n\d%4)*d^11)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321836	sumdiv	0	apply( a(n)=      sumdiv(n,d,if(bittest(n\d,0),(2-n\d%4)*d^12)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+
+A321817	sumdiv	0	apply( A321817(n)=sumdiv(n,d,if(bittest(n\d,0),d^6 )), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321818	sumdiv	0	apply( A321818(n)=sumdiv(n,d,if(bittest(n\d,0),d^8 )), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321819	sumdiv	0	apply( A321819(n)=sumdiv(n,d,if(bittest(n\d,0),d^10)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+A321820	sumdiv	0	apply( A321820(n)=sumdiv(n,d,if(bittest(n\d,0),d^12)), [1..30]) \\ _M. F. Hasler_, Nov 26 2018
+
+A321821	sumdiv	0	apply( A321821(n)=sumdiv(n>>valuation(n,2),d,(2-d%4)*d^5 ), [1..40]) \\ _M. F. Hasler_, Nov 26 2018
+A321822	sumdiv	0	apply( A321822(n)=sumdiv(n>>valuation(n,2),d,(2-d%4)*d^6 ), [1..40]) \\ _M. F. Hasler_, Nov 26 2018
+A321823	sumdiv	0	apply( A321823(n)=sumdiv(n>>valuation(n,2),d,(2-d%4)*d^7 ), [1..40]) \\ _M. F. Hasler_, Nov 26 2018
+A321824	sumdiv	0	apply( A321824(n)=sumdiv(n>>valuation(n,2),d,(2-d%4)*d^8 ), [1..40]) \\ _M. F. Hasler_, Nov 26 2018
+A321825	sumdiv	0	apply( A321825(n)=sumdiv(n>>valuation(n,2),d,(2-d%4)*d^9 ), [1..40]) \\ _M. F. Hasler_, Nov 26 2018
+A321826	sumdiv	0	apply( A321826(n)=sumdiv(n>>valuation(n,2),d,(2-d%4)*d^10), [1..40]) \\ _M. F. Hasler_, Nov 26 2018
+A321827	sumdiv	0	apply( A321828(n)=sumdiv(n>>valuation(n,2),d,(2-d%4)*d^11), [1..40]) \\ _M. F. Hasler_, Nov 26 2018
+A321828	sumdiv	0	apply( A321828(n)=sumdiv(n>>valuation(n,2),d,(2-d%4)*d^12), [1..40]) \\ _M. F. Hasler_, Nov 26 2018
