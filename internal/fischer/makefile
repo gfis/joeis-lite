@@ -481,7 +481,13 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-01-31:
+gr1:
+	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}[ ijknmC\d\+\-\*\/\(\)\^\!]+\." $(COMMON)/jcat25.txt
+gr2:
+	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
+	| tee $@.tmp
+anabuild:
+anabuild.2022-01-31:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A277548   select EX=xx gener
@@ -4036,7 +4042,7 @@ trisel2:
 	$(DBAT) -x -44444 seq4 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-tritest:
+triusage:
 	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass in ('Triangle','UpperLeftTriangle');" \
 	>        $@.gen
 	head -n4 $@.gen
