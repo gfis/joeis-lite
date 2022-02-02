@@ -148,3 +148,14 @@ basvar:
 	head -n4 ../$@.gen
 	wc -l    ../$@.gen
 #--------
+m22:
+	grep -P "Number of 2 *X *2" cklist.txt
+wxyz:
+	grep -P "Number of \(w\, *x\, *y\, *z\)" cklist.txt
+#--------
+notuples:
+	perl $@.pl cklist.txt \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	cp -v $@.tmp ../A211422.man

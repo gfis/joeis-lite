@@ -1,0 +1,109 @@
+# this(n -> new Long[] { 0L, n }, (d,n) ->(d == 1 || d == -1), (w, x, y, z) -> w*z - x*y);
+
+A055507	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z + x*y == n	p=n
+A059306	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == 0	d=0
+A106634	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z + x*y == n	p=n
+A134506	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == 0	d=0
+A171503	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == 1	d=1
+A183761	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y > 0	d>0
+A196227	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == 1	d=1
+A197168	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == 2	d=2
+A209973	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == 2	d=2
+A209975	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == 3	d=3
+A209976	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == 4	d=4
+A209977	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == 5	d=5
+A209981	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == 0	d=0
+A209982	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == 1	d=1
+A209984	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == 2	d=2
+A209986	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == 3	d=3
+A209988	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == 4	d=4
+A209990	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == 5	d=5
+A211056	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y != 0	{1,...,n}.nonsingular     nonn,synth      33
+a210001	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == 3	d=3
+A210002	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == 4	d=4
+A210027	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == 5	d=5
+A210282	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == n	d=n
+A210283	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == n - 1	d=n-1
+A210284	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == n + 1	d=n+1
+A210285	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == n / 2	d=floor(n/2)
+A210290	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y >= 0	d>=0
+A210291	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y > n	d>n
+A210366	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y >= n	d>=n
+A210367	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y >= 2*n	d>=2n
+A210368	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y >= 3*n	d>=3n
+A210374	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w + z + x + y == n + 2	s=n+2
+A210375	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w + z + x + y == n + 3	s=n+3
+A210376	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w + z + x + y == n + 4	s=n+4
+A210377	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w + z + x + y == n + 5	s=n+5
+A210378	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> ((w + z) & 1) == 0	t is even
+A210379	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> ((w + z) & 1) == 1	t is odd
+A211033	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> (w*z - x*y) % 3 == 0	d=0 (mod 3)
+A211034	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> (w*z - x*y) % 3 == 1	d=1 (mod 3)
+A211053	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == n	d=n
+A211054	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == n - 1	d=n-1
+A211055	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y == n + 1	d=n+1
+A211058	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y >= 0	d>=0
+A211059	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y > 0	d>0
+A211060	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y > n	d>n
+A211061	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y >= n	d>=n
+A211062	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y >= 2*n	d>=2n
+A211063	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> w*z - x*y >= 3*n	d>=3n
+A211064	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> ((w*z - x*y) & 1) == 0	d is even
+A211065	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n, w, x, y, z) -> ((w*z - x*y) & 1) == 1	d is odd
+A211140	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == n	d=n
+A211141	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == n - 1	d=n-1
+A211142	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == n + 1	d=n+1
+A211143	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y == n*n	d=n^2
+A211147	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y >= 0	d>=0
+A211148	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y > 0	d>0
+A211150	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y > n	d>n
+A211151	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y >= n	d>=n
+A211152	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y >= 2*n	d>=2n
+A211153	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z - x*y >= 3*n	d>=3n
+
+A210286	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == w + z	d=trace
+A210288	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z + x*y == w + z	p=trace
+A210289	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z + x*y == (w + z) * (w + z)	p=(trace)^2
+A211145	parmof3	0	A210286	n -> new Long[] { -n, n }	(n, w, x, y, z) -> w*z + x*y == w + z	p=trace
+A280588	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z - x*y == w + x + y + z	d=s
+A280934	parmof3	0	A210286	n -> new Long[] { 0L, n }	(n, w, x, y, z) -> w*z + x*y == w + x + y + z	p=s
+
+A209979	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d == 1 || d == -1	|d|=1
+A209991	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= 0 && d <= 1	{0,...,n} and determinant in {0,1}.     nonn,synth      41
+A209992	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= 0 && d <= 1	{1,...,n} and determinant in {0,1}.     nonn,synth      41
+A209993	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= -1 && d <= 1	{0,...,n} and determinant in {-1,0,1}.  nonn,synth      41
+A209994	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= -1 && d <= 1	{1,...,n} and determinant in {-1,0,1}.  nonn,synth      41
+A209995	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= 0 && d <= n	{0,...,n} and determinant in {0,1,...,n}.       nonn,synth      37
+A211069	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= -n && d <= n	{1,...,n} and determinant in [-n,n].       nonn,synth      35
+A211070	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d > -n && d < n	{1,...,n} and determinant d satisfying -n < d < n. nonn,synth      35
+A210000	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d == 1 || d == -1	|d|=1
+A210369	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 0	d is even
+A210370	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 1	d is odd
+A210371	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 0 && d >= 0	d is even and >=0
+A210372	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 0 && d > 0	d is even and >0
+A210373	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 1 && d > 0	d is odd and >0
+A211031	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= -n && d <= n	d is in [-n,n]
+A211032	parmof4	0	A210000	n -> new Long[] { 0L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d > -n && d < n	d is in (-n,n)
+A211057	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= 0 && d <= n	d is in [0,n]
+A211066	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 0 && d >= 0	d is even and >=0
+A211067	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 0 && d > 0	d is even and >0
+A211068	parmof4	0	A210000	n -> new Long[] { 1L, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 1 && d > 0	d is odd and >0
+A211146	parmof4	0	A210000	n -> new Long[] { -n, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d >= 0 && d <= n	d in [0,n]
+A211149	parmof4	0	A210000	n -> new Long[] { -n, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> d < 0 || d > 0	d<0 or d>0
+A211154	parmof4	0	A210000	n -> new Long[] { -n, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 0	d is even
+A211155	parmof4	0	A210000	n -> new Long[] { -n, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 1	d is odd
+A211156	parmof4	0	A210000	n -> new Long[] { -n, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 0 && d >= 0	d is even and >=0
+A211157	parmof4	0	A210000	n -> new Long[] { -n, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 0 && d > 0	d is even and >0
+A211158	parmof4	0	A210000	n -> new Long[] { -n, n }	(w, x, y, z) -> w*z - x*y	(d,n) -> (d & 1) == 1 && d > 0	d is odd and >0
+
+
+# A211144=A211140	parmof4	0	A210000	n -> new Long[] { -n, n }	(w, x, y, z) -> w*z + x*y	(p,n) -> p == n	p=n
+
+A209974	dersimple	0	A209973	.divide(4)	nonn,changed,synth	51
+A209978	dersimple	0	A196227	.divide2()	nonn,changed,synth	51
+A209980	dersimple	0	A197168	.divide2()	nonn,synth	50
+A209983	dersimple	0	A209982	.divide2()	nonn,synth	41
+A209985	dersimple	0	A209984	.divide(4)	nonn,synth	41
+A209987	dersimple	0	A209986	.divide(8)	nonn,synth	41
+A209989	dersimple	0	A209988	.divide(4)	nonn,synth	41
+A209997	dersimple	0	A209990	.divide(8)	nonn,synth	41

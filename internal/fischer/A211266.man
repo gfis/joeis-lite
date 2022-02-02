@@ -1,0 +1,23 @@
+A038548	parmof3	0	A211266	1	(n, x, y) -> x*y == n  	1<=x<=y<=n
+A056924	parmof3	0	A211266	1	(n, x, y) -> x*y == n  	1<=x<y<=n
+A072670	parmof3	0	A211266	1	(n, x, y) -> x*y == n+1	1<=x<=y<=n
+A091627	parmof3	0	A211266	1	(n, x, y) -> x*y <= n+1	1<=x<=y<=n
+A094820	parmof3	0	A211266	1	(n, x, y) -> x*y <= n  	1<=x<=y<=n
+A181972	parmof3	0	A211266	1	(n, x, y) -> x*y <= n/2	1<=x<y<=n
+A211159	parmof3	0	A211266	1	(n, x, y) -> x*y == n+1	1<=x<y<=n
+A211261	parmof3	0	A211266	1	(n, x, y) -> x*y == 2*n	1<=x<y<=n
+A211262	parmof3	0	A211266	1	(n, x, y) -> x*y == 3*n	1<=x<y<=n
+A211263	parmof3	0	A211266	1	(n, x, y) -> x*y == n/2	1<=x<y<=n
+A211264	parmof3	0	A211266	1	(n, x, y) -> x*y <= n  	1<=x<y<=n
+A211265	parmof3	0	A211266	1	(n, x, y) -> x*y <= n+1	1<=x<y<=n
+A211266	parmof3	0	A211266	1	(n, x, y) -> x*y <= 2*n	1<=x<y<=n
+A211267	parmof3	0	A211266	1	(n, x, y) -> x*y <= 3*n	1<=x<y<=n
+
+A211270	parmof3	0	A211266	0	(n, x, y) -> x*y == 2*n	1<=x<=y<=n
+A211271	parmof3	0	A211266	0	(n, x, y) -> x*y == 3*n	1<=x<=y<=n
+A211272	parmof3	0	A211266	0	(n, x, y) -> x*y == n/2	1<=x<=y<=n
+A211273	parmof3	0	A211266	0	(n, x, y) -> x*y <= 2*n	1<=x<=y<=n
+A211274	parmof3	0	A211266	0	(n, x, y) -> x*y <= 3*n	1<=x<=y<=n
+A211275	parmof3	0	A211266	0	(n, x, y) -> x*y <= n/2	1<=x<=y<=n
+A211339	parmof3	0	A211266	0	(n, x, y) -> x*x+y*y<=n	1<=x<=y<=n
+A211340	parmof3	0	A211266	0	(n, x, y) -> x*x+y*y<=n*n	1<=x<=y<=n

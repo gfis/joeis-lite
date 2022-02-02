@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-02-02: V3.1: no #import Long|Boolean
 # 2022-01-14: V3.0: skip over empty callcodes
 # 2021-11-26: V2.9: but only "Binomial("
 # 2021-11-26: V2.8: import Binomial
@@ -41,7 +42,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V3.0";
+my $program = "gen_seq4.pl V3.1";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -345,7 +346,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
             } elsif (($class_name !~ m{\AA\d+})               # A-number
                 and  ($class_name !~ m{\.})                   # contains dot
                 and  ($class_name !~ m{\A[A-Z]+\Z})           # only uppercase = constant
-                and  ($class_name !~ m{\A(String|Integer|StringBuilder)\Z}) # common Java types
+                and  ($class_name !~ m{\A(String|Integer|Long|Boolean|StringBuilder)\Z}) # common Java types
                 and  ($class_name !~ m{\AComputableReals\Z})
                 and  ($class_name !~ m{\AUnaryCRFunction\Z})
                 and  ($class_name !~ m{\AFunction\Z})
