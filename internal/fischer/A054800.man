@@ -1,0 +1,41 @@
+A054800	parm4	1	A054800	1	0	4	p(m+1)-p(m) = p(m+2)-p(m+1) = p(m+3)-p(m+2).	nonn,	1..10000	nyi
+A054801	parm4	1	A054800	2	0	4	p(m)-p(m-1) = p(m+1)-p(m) = p(m+2)-p(m+1).	nonn,	1..1000	nyi
+A054802	parm4	1	A054800	3	0	4	p(m-1)-p(m-2) = p(m)-p(m-1) = p(m+1)-p(m).	nonn,synth	1..35	nyi
+A054803	parm4	1	A054800	4	0	4	p(m-2)-p(m-3) = p(m-1)-p(m-2) = p(m)-p(m-1).	nonn,	1..2000	nyi
+A054804	parm4	1	A054800	1	1	4	prime(m+1)-prime(m) > prime(m+2)-prime(m+1) > prime(m+3)-prime(m+2).	nonn,changed,	1..10000	nyi
+A054805	parm4	1	A054800	2	1	4	prime(m+1)-prime(m) > prime(m+2)-prime(m+1) > prime(m+3)-prime(m+2)..	nonn,changed,	1..10000	nyi
+A054806	parm4	1	A054800	3	1	4	prime(m+1)-prime(m) > prime(m+2)-prime(m+1) > prime(m+3)-prime(m+2).	nonn,changed,	1..10000	nyi
+A054807	parm4	1	A054800	4	1	4	prime(m+1)-prime(m) > prime(m+2)-prime(m+1) > prime(m+3)-prime(m+2).	nonn,changed,	1..10000	nyi
+A054808	parm4	1	A054800	1	1	5	p(m+1)-p(m) > p(m+2)-p(m+1) > p(m+3)-p(m+2) > p(m+4)-p(m+3).	nonn,synth	1..43	nyi
+A054809	parm4	1	A054800	2	1	5	p(m)-p(m-1) > p(m+1)-p(m) > p(m+2)-p(m+1) > p(m+3)-p(m+2).	nonn,	1..2000	nyi
+A054810	parm4	1	A054800	3	1	5	p(m-1)-p(m-2) > p(m)-p(m-1) > p(m+1)-p(m) > p(m+2)-p(m+1).	nonn,changed,	1..2000	nyi
+A054811	parm4	1	A054800	4	1	5	p(m-2)-p(m-3) > p(m-1)-p(m-2) > p(m)-p(m-1) > p(m+1)-p(m).	nonn,	1..2000	nyi
+A054812	parm4	1	A054800	5	1	5	p(m-3)-p(m-4) > p(m-2)-p(m-3) > p(m-1)-p(m-2) > p(m)-p(m-1).	nonn,	1..1000	nyi
+A054813	parm4	1	A054800	1	1	6	p(m+1)-p(m) > p(m+2)-p(m+1) > p(m+3)-p(m+2) > p(m+4)-p(m+3) > p(m+5)-p(m+4).	nonn,	1..2500	nyi
+A054814	parm4	1	A054800	2	1	6	p(m)-p(m-1) > p(m+1)-p(m) > p(m+2)-p(m+1) > p(m+3)-p(m+2) > p(m+4)-p(m+3).	nonn,	1..2500	nyi
+A054815	parm4	1	A054800	3	1	6	p(m-1)-p(m-2) > p(m)-p(m-1) > p(m+1)-p(m) > p(m+2)-p(m+1) > p(m+3)-p(m+2).	nonn,	0..2500	nyi
+A054816	parm4	1	A054800	4	1	6	p(m-2)-p(m-3) > p(m-1)-p(m-2) > p(m)-p(m-1) > p(m+1)-p(m) > p(m+2)-p(m+1).	nonn,synth	0..32	nyi
+A054817	parm4	1	A054800	5	1	6	p(m-3)-p(m-4) > p(m-2)-p(m-3) > p(m-1)-p(m-2) > p(m)-p(m-1) > p(m+1)-p(m).	nonn,synth	0..32	nyi
+A054818	parm4	1	A054800	6	1	6	p(m-4)-p(m-5) > p(m-3)-p(m-4) > p(m-2)-p(m-3) > p(m-1)-p(m-2) > p(m)-p(m-1).	nonn,synth	0..32	nyi
+A054819	parm4	1	A054800	1	-1	4	p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2).	nonn,changed,	1..1000	nyi
+A054820	parm4	1	A054800	2	-1	4	p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1).	nonn,synth	1..46	nyi
+A054821	parm4	1	A054800	3	-1	4	p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m).	nonn,synth	1..46	nyi
+A054822	parm4	1	A054800	4	-1	4	p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1).	nonn,synth	1..46	nyi
+A054823	parm4	1	A054800	1	-1	5	p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2) < p(m+4)-p(m+3).	nonn,synth	1..38	nyi
+A054824	parm4	1	A054800	2	-1	5	p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2).	nonn,changed,	1..2000	nyi
+A054825	parm4	1	A054800	3	-1	5	p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1).	nonn,	1..1000	nyi
+A054826	parm4	1	A054800	4	-1	5	p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m).	nonn,	1..10000	nyi
+A054827	parm4	1	A054800	5	-1	5	p(m-3)-p(m-4) < p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1).	nonn,changed,	1..10000	nyi
+A054828	parm4	1	A054800	1	-1	6	p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2) < p(m+4)-p(m+3) < p(m+5)-p(m+4).	nonn,	1..1000	nyi
+A054829	parm4	1	A054800	2	-1	6	p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2) < p(m+4)-p(m+3).	nonn,synth	1..33	nyi
+A054830	parm4	1	A054800	3	-1	6	p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2).	nonn,synth	1..33	nyi
+A054831	parm4	1	A054800	4	-1	6	p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1).	nonn,synth	1..33	nyi
+A054832	parm4	1	A054800	5	-1	6	p(m-3)-p(m-4) < p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m).	nonn,changed,	1..1000	nyi
+A054833	parm4	1	A054800	6	-1	6	p(m-4)-p(m-5) < p(m-3)-p(m-4) < p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1).	nonn,	1..1000	nyi
+A054834	parm4	1	A054800	1	-1	7	p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2) < p(m+4)-p(m+3) < p(m+5)-p(m+4) < p(m+6)-p(m+5).	nonn,changed,	1..1000	nyi
+A054835	parm4	1	A054800	2	-1	7	p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2) < p(m+4)-p(m+3) < p(m+5)-p(m+4).	nonn,	1..1000	nyi
+A054836	parm4	1	A054800	3	-1	7	p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2) < p(m+4)-p(m+3).	nonn,	1..1000	nyi
+A054837	parm4	1	A054800	4	-1	7	p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1) < p(m+3)-p(m+2).	nonn,	1..1000	nyi
+A054838	parm4	1	A054800	5	-1	7	p(m-3)-p(m-4) < p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m) < p(m+2)-p(m+1).	nonn,	1..1000	nyi
+A054839	parm4	1	A054800	6	-1	7	p(m-4)-p(m-5) < p(m-3)-p(m-4) < p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1) < p(m+1)-p(m).	nonn,	1..233	nyi
+A054840	parm4	1	A054800	7	-1	7	p(m-5)-p(m-6) < p(m-4)-p(m-5) < p(m-3)-p(m-4) < p(m-2)-p(m-3) < p(m-1)-p(m-2) < p(m)-p(m-1).	nonn,	1..233	nyi

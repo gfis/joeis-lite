@@ -158,4 +158,6 @@ notuples:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-	cp -v $@.tmp ../A211422.man
+notup2:
+	sort ../A211422.man notuples.tmp | uniq -w7 > ../A211422.tmp
+	mv -v ../A211422.tmp ../A211422.man

@@ -1,0 +1,11 @@
+A210001	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n,w,x,y,z) -> w*z - x*y == 3
+A212151	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n,w,x,y,z) -> w*z + x*y < n
+A212240	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n,w,x,y,z) -> w*z + x*y >= n
+A212241	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n,w,x,y,z) -> w*z + x*y > n
+A211415	parmof3	0	A211422	n -> new Long[] { -n, n }	(n,w,x,y) -> w*w + x*y == 1
+A211631	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w > x*x + y*y
+A211632	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> 2*w*w > x*x + y*y
+A211633	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w > 2*x*x + 2*y*y
+A211791	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w <= x*x + y*y
+A211792	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w*w <= x*x*x + y*y*y
+A211800	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> 2*w*w < x*x + y < 2
