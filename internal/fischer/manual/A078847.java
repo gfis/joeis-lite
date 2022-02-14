@@ -23,7 +23,7 @@ public class A078847 extends ConsecutiveSequence {
    * @param gaps list of differences between the consecutive primes
    */
   public A078847(final int termNo, final int ... gaps) {
-    mTermIx = termNo - 1;
+    super(termNo);
     mGaps = gaps;
   }
 
@@ -38,14 +38,5 @@ public class A078847 extends ConsecutiveSequence {
       ++m;
     }
     return result;
-  }
-
-  @Override
-  public Z next() {
-    advance();
-    while (! condition()) {
-      advance();
-    }
-    return mTerms[(mCix + mTermIx) & mMask];
   }
 }
