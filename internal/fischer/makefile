@@ -489,6 +489,13 @@ gr2:
 anabuild: # .2022-02-13:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
+	make CC=A054703   select EX=xx gener
+	make CC=A054718   select EX=xx gener
+	make CC=A001692   select EX=xx gener
+	make CC=man man dist testall log
+anabuild.2022-02-13:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
 	make CC=A034741   select EX=xx gener
 	make CC=A054703   select EX=xx gener
 	make CC=A054718   select EX=xx gener
