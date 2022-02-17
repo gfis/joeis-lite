@@ -1387,7 +1387,9 @@ binomin3: # convert the formula into hypergeometric parameters for HolonomicRecu
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 binomin4: # patch the initial terms - there may be no zero
-	sort binomin3.tmp | uniq -w7 > $@.tmp
+	sort binomin3.tmp | uniq -w7 \
+	| cut -f1-6 > $@.tmp
+	cp -v $@.tmp $@.old.tmp
 	make seq4 LIST=$@.tmp
 	$(DBAT)  "UPDATE seq4 s \
 	    SET s.parm4  = (SELECT SUBSTR(d.data, 1, 128) FROM asdata d WHERE d.aseqno = s.aseqno) \
@@ -1427,6 +1429,12 @@ binomin:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+rhpart5: # A159355 Number of n X n arrays of squares of integers summing to 4.
+	grep -E "^A[0-9]" $(CONTRIB)/rh/parts.tmp > binomin2.tmp
+	make binomin3 binomin4
+rhpart:
+	cp binomin4.tmp $@.gen
 #--------
 qpoch0:
 	grep -E "^\%p" $(COMMON)/jcat25.txt \

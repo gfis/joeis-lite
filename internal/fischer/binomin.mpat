@@ -1,5 +1,6 @@
 interface(prettyprint=0):
 with(StringTools):
+C:=binomial:
 binomin := proc(aseqno, offset, a); local fract, num, den, str, j;
   fract := simplify(simplify(-a(n)/a(n-1), GAMMA));
   printf("# %a\tholof\t%a\t\%a\t[%a]\t0\t%a\n", aseqno, offset, fract, 1, a);

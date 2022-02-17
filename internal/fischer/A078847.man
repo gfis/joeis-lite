@@ -97,21 +97,42 @@ A329578	parm3	1	A078847	1	48,48	First of three consecutive primes with common ga
 # A194430 null    Integers m such that 6m+1 and 6m+101 are two consecutive primes.        nonn,   1..3892 nyi
 # A158013 null    100*a(n)+13 and 100*a(n)+27 are consecutive primes, i.e., a prime gap 14.
 # A216290 null    Values of n such that 100n+1, 100n+3, 100n+7, 100n+9, 100n+13, 100n+27 are consecutive primes.  nonn,synth      1..33   nyi
-# A257638 null    Numbers n such that n-25, n-1, n+1 and n+25 are consecutive primes.     nonn,   1..10000        nyi
-# A262176 null    Numbers n where n-17, n-1, n+1 and n+17 are consecutive primes. nonn,   1..10000        nyi
-# A262668 null    Numbers n such that n-19, n-1, n+1 and n+19 are consecutive primes.     nonn,changed,   1..10000        nyi
-# A263298 null    Numbers n such that n-23, n-1, n+1 and n+23 are consecutive primes.     nonn,   1..10000        nyi
-# A265651 null    Numbers n such that n-29, n-1, n+1 and n+29 are consecutive primes.     nonn,   1..10000        nyi
-# A268305 null    Numbers n such that  n - 37, n - 1, n + 1, n + 37 are consecutive primes.       nonn,   1..10000        nyi
-# A270754 null    Numbers n such that n - 31, n - 1, n + 1 and n + 31 are consecutive primes.     nonn,changed,   1..100000       nyi
 # A271080 null    Integers n such that s(n) = 7523267 + 11184810*n and s(n) + 14 are consecutive primes.  nonn,   1..10000        nyi
-# A271323 null    Numbers n such that n - 41, n - 1, n + 1, n + 41 are consecutive primes.       nonn,changed,   1..10000        nyi
-# A271349 null    Numbers n such that n - 35, n - 1, n + 1, n + 35 are consecutive primes.     nonn,   1..10000        nyi
-# A273101 null    Numbers n such that n - 43, n - 1, n + 1, n + 43 are consecutive primes.        nonn,   1..10000        nyi
-# A273355 null    Numbers n such that n - 47, n - 1, n + 1, n + 47 are consecutive primes.        nonn,   1..10000        nyi
-# A273356 null    Numbers n such that n - 49, n - 1, n + 1, n + 49 are consecutive primes.        nonn,   1..10000        nyi
-# A274042 null    Numbers n such that n - 53, n - 1, n + 1, n + 53 are consecutive primes.        nonn,   1..
 # A289248 null    Numbers k such that 210*k + {11, 13, 17, 19, 23, 29, 31, 37, 41, 43} are consecutive primes.    nonn,changed,synth      1..19   nyi
+
+# A066082	null	Prime octets: numbers k such that 210*k - 105 +- 2^j are prime for all 1 <= j <= 4.	nonn,	1..100	nyi
+# A066174	null	First member of a prime sextet: p, (p-1)/2, (p-3)/4, (p-7)/8, (p-15)/16, (p-31)/32.	nonn,synth	1..22	nyi
+# A123085	null	Table read by rows: rows give successive prime sextets of form k, k+30, k+60, k+90, k+120, k+150.	nonn,tabf,changed,synth	1..48	nyi
+# A119892	null	Prime quartet leaders: largest number of a prime quartet.	base,nonn,changed,	1..2000	nyi
+# A333383	null	First index of weakly increasing prime quartets.	nonn,new,synth	1..57	nyi
+# A333488	null	First index of weakly decreasing prime quartets.	nonn,new,synth	1..55	nyi
+# A333490	null	First index of unequal prime quartets.	nonn,new,synth	1..64	nyi
+# A333491	null	First index of partially unequal prime quartets.	nonn,new,synth	1..67	nyi
+# A335277	null	First index of strictly increasing prime quartets.	nonn,new,synth	1..55	nyi
+# A335278	null	First index of strictly decreasing prime quartets.	nonn,new,synth	1..54	nyi
+
+# A123083	null	Prime quartets of form k, k+6, k+12, k+18.	nonn,synth	1..51	nyi
+# A123084	null	Prime quintets of form k, k+30, k+60, k+90, k+120.	nonn,	1..1000	nyi
+# A123107	null	Prime septets of form k, k+2100, k+4200, k+6300, k+8400, k+10500, k+12600.	nonn,synth	1..35	nyi
+# A140564	null	List of prime quartets (k - 7, k - 5, k + 5, k + 7).	nonn,	1..1000	nyi
+# A140565	null	List of prime quartets (k - 7, k - 1, k + 1, k + 7).	nonn,changed,	1..1000	nyi
+# A140566	null	List of prime quartets (k - 11, k - 1, k + 1, k + 11).	nonn,	1..1000	nyi
+# A140567	null	List of prime quartets (k - 10, k - 8, k + 8, k + 10).	nonn,	1..10000	nyi
+# A140568	null	List of prime quartets (k - 13, k - 1, k + 1, k + 13).	nonn,synth	1..52	nyi
+
+A257638	parm2	1	A257638	25	Numbers n such that n-25, n-1, n+1, n+25 are consecutive primes.     nonn,   1..10000        nyi
+A262176	parm2	1	A257638	17	Numbers n such that n-17, n-1, n+1, n+17 are consecutive primes. nonn,   1..10000        nyi
+A262668	parm2	1	A257638	19	Numbers n such that n-19, n-1, n+1, n+19 are consecutive primes.     nonn,changed,   1..10000        nyi
+A263298	parm2	1	A257638	23	Numbers n such that n-23, n-1, n+1, n+23 are consecutive primes.     nonn,   1..10000        nyi
+A265651	parm2	1	A257638	29	Numbers n such that n-29, n-1, n+1, n+29 are consecutive primes.     nonn,   1..10000        nyi
+A268305	parm2	1	A257638	37	Numbers n such that n-37, n-1, n+1, n+37 are consecutive primes.       nonn,   1..10000        nyi
+A270754	parm2	1	A257638	31	Numbers n such that n-31, n-1, n+1, n+31 are consecutive primes.     nonn,changed,   1..100000       nyi
+A271323	parm2	1	A257638	41	Numbers n such that n-41, n-1, n+1, n+41 are consecutive primes.       nonn,changed,   1..10000        nyi
+A271349	parm2	1	A257638	35	Numbers n such that n-35, n-1, n+1, n+35 are consecutive primes.     nonn,   1..10000        nyi
+A273101	parm2	1	A257638	43	Numbers n such that n-43, n-1, n+1, n+43 are consecutive primes.        nonn,   1..10000        nyi
+A273355	parm2	1	A257638	47	Numbers n such that n-47, n-1, n+1, n+47 are consecutive primes.        nonn,   1..10000        nyi
+A273356	parm2	1	A257638	49	Numbers n such that n-49, n-1, n+1, n+49 are consecutive primes.        nonn,   1..10000        nyi
+A274042	parm2	1	A257638	53	Numbers n such that n-53, n-1, n+1, n+53 are consecutive primes.        nonn,   1..
 #
 # A284531 null    Primes p such that 6p - 5 and 6p + 5 are consecutive primes.    nonn,   1..10000        nyi10000        nyi
 #
@@ -126,7 +147,6 @@ A329578	parm3	1	A078847	1	48,48	First of three consecutive primes with common ga
 # A284101 null    Initial primes of 14 consecutive primes all congruent to 5 mod 6.       nonn,   1..10000        nyi
 # A338374 null    Primes p such that, starting with p, there are 10 consecutive primes which are congruent mod 11 to {1,2,3,4,5,6,7,8,9,10} respectively. nonn,more,new,synth        1..12   nyi
 # A338394 null    Primes p such that 8 consecutive primes starting with p are congruent mod 13 to {1,2,3,4,5,6,7,8} respectively  nonn,more,new,synth     1..17   nyi
-#
 #
 A103169	parm3	1	A103169	1	7	Start of seven consecutive primes whose digit reversals are also prime. base,nonn,synth 1..30   nyi
 A103170	parm3	1	A103169	1	8	Start of eight consecutive primes whose digit reversals are also prime. base,nonn,synth 1..23   nyi
