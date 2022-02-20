@@ -3793,7 +3793,7 @@ prisquare:
 	wc -l    $@.gen
 #--------------------------------
 prod1_xk:
-	grep -iE "^\%[NFtpo]" $(COMMON)/cat25.txt \
+	grep -iE "^\%[NFtpo]" $(COMMON)/jcat25.txt \
 	| grep -iE "prod" \
 	| grep -vE "produce" \
 	| perl prod_polish.pl \
@@ -3839,6 +3839,10 @@ genet: # parameters for GeneralizedEulerTransform
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
 	cut -f2  $@.rest.tmp | sort | uniq -c
+genetm:
+	grep -E "^A[0-9]" genet.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 genet_plerr:
 	perl -ne 'if (m{(\?[0-9A-Z]\w+)}) { print "$$1\n";}' genet.pl | sort | uniq -c
 genet_joeis_names:

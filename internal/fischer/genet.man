@@ -1,9 +1,114 @@
 # all wrong, most be EulerInv
-A038063	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.TWO	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(-k^8)	1	1/(1 - x^k)^a(k) = 1 + 2x	Product_{k>=1}1/(1 - x^k)^a(k) = 1 + 2x
-A038064	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.THREE	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(-k^9)	1	(1-x^k)^(-k^9)	Expansion of Product_{k>=1} (1 - x^k)^(-k^9).
-A038065	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FOUR	Z.ONE	Z.valueOf(k)	1	(1+x^k)	10	(1+x^k)	Number of partitions of n into distinct parts >= 10.
-A038066	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FIVE	Z.ONE	Z.valueOf(k)	1	(1+x^k)^48	1	(1+x^k)^48	Expansion of Product_{m>=1} (1 + q^m)^48.
-A038067	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.TWO	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^k	1	(1+x^k)^k	Expansion of Product_{m>=1} (1 + q^m)^m; number of partitions of n into distinct parts, where n different parts of size n are available.
-A038068	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.THREE	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(2*k)	1	(1+x^k)^(2*k)	Expansion of Product_{m>=1} (1 + q^m)^(2*m).
-A038069	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FOUR	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(3*k)	1	(1+x^k)^(3*k)	Expansion of Product_{m>=1} (1 + q^m)^(3*m).
-A038070	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FIVE	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(3*k)	1	(1+x^k)^(3*k)	Expansion of Product_{m>=1} (1 + q^m)^(3*m).
+# A038063	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.TWO	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(-k^8)	1	1/(1 - x^k)^a(k) = 1 + 2x	Product_{k>=1}1/(1 - x^k)^a(k) = 1 + 2x
+# A038064	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.THREE	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(-k^9)	1	(1-x^k)^(-k^9)	Expansion of Product_{k>=1} (1 - x^k)^(-k^9).
+# A038065	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FOUR	Z.ONE	Z.valueOf(k)	1	(1+x^k)	10	(1+x^k)	Number of partitions of n into distinct parts >= 10.
+# A038066	genetf	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FIVE	Z.ONE	Z.valueOf(k)	1	(1+x^k)^48	1	(1+x^k)^48	Expansion of Product_{m>=1} (1 + q^m)^48.
+# A038067	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.TWO	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^k	1	(1+x^k)^k	Expansion of Product_{m>=1} (1 + q^m)^m; number of partitions of n into distinct parts, where n different parts of size n are available.
+# A038068	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.THREE	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(2*k)	1	(1+x^k)^(2*k)	Expansion of Product_{m>=1} (1 + q^m)^(2*m).
+# A038069	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FOUR	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(3*k)	1	(1+x^k)^(3*k)	Expansion of Product_{m>=1} (1 + q^m)^(3*m).
+# A038070	genetfg	0	~~    ~~super($(OFFSET), 1);	k > 1 ? Z.ZERO : Z.FIVE	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(3*k)	1	(1+x^k)^(3*k)	Expansion of Product_{m>=1} (1 + q^m)^(3*m).
+
+# A280088	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k!!)	>=1 
+A070933	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.ONE	Z.valueOf(k)	1	1/(1-2*t^k)	>=1 
+A075900	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(2).pow(k - 1)	Z.valueOf(k)	1	1/(1-2^(k-1)*x^k)
+A107895	genetfg	0	~~    ~~super($(OFFSET), 1);	FACTORIAL.factorial((int) k)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k!)	>=1 
+A110045	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE.shiftLeft((int) (k-1)).subtract(1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(2^(k-1)-1)
+A161969	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(-8)	((k & 1) == 1) ? Z.NEG_ONE : Z.ONE	Z.valueOf(k)	1	(1-(-x)^k)^8	>=1 
+A179327	genetfg	0	~~    ~~super($(OFFSET), 1);	FACTORIAL.factorial((int) (k - 1))	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^((k-1)!)	>=1 
+A187076	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(-4)	((k & 1) == 1) ? Z.NEG_ONE : Z.ONE	Z.valueOf(k)	1	(1-(-x)^k)^4	>=1 
+A209941	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(-6)	((k & 1) == 1) ? Z.NEG_ONE : Z.ONE	Z.valueOf(k)	1	(1-(-x)^k)^6	>=1 
+A217194	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE.shiftLeft(k - 1).add(Z.ONE.shiftLeft((k + 1)/2 - 1))	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(2^(k-1)+2^(floor((k+1)/2)-1))	>=1 
+A258386	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k + (((k & 1) == 1) ? -1 : 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k+(-1)^k)
+A261561	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k)	Z.TWO	Z.valueOf(k)	1	(1/(1-2*x^k))^k	>=1 
+A261565	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k)	Z.THREE	Z.valueOf(k)	1	(1/(1-3*x^k))^k	>=1 
+A261566	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k)	Z.valueOf(-2)	Z.valueOf(k)	1	(1/(1+2*x^k))^k	>=1 
+A261567	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k)	Z.valueOf(-3)	Z.valueOf(k)	1	(1/(1+3*x^k))^k	>=1 
+A261737	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Binomial.binomial(k + 2, 2)	Z.valueOf(k)	1	1/(1-binomial(k+2,2)*x^k)
+A261738	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Binomial.binomial(k + 3, 3)	Z.valueOf(k)	1	1/(1-binomial(k+3,3)*x^k)
+A261739	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Binomial.binomial(k + 4, 4)	Z.valueOf(k)	1	1/(1-binomial(k+4,4)*x^k)
+A261740	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Binomial.binomial(k + 5, 5)	Z.valueOf(k)	1	1/(1-binomial(k+5,5)*x^k)
+A261741	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Binomial.binomial(k + 6, 6)	Z.valueOf(k)	1	1/(1-binomial(k+6,6)*x^k)
+A261742	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Binomial.binomial(k + 7, 7)	Z.valueOf(k)	1	1/(1-binomial(k+7,7)*x^k)
+A261743	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Binomial.binomial(k + 8, 8)	Z.valueOf(k)	1	1/(1-binomial(k+8,8)*x^k)
+A261744	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Binomial.binomial(k + 9, 9)	Z.valueOf(k)	1	1/(1-binomial(k+9,9)*x^k)
+A266943	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.TWO	Z.TWO	Z.valueOf(k)	1	1/(1-2*x^k))^2	>=1 
+A266944	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.TWO	Z.THREE	Z.valueOf(k)	1	1/(1-3*x^k))^2	>=1 
+A266945	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.THREE	Z.TWO	Z.valueOf(k)	1	1/(1-2*x^k))^3	>=1 
+A283335	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(k - 1).negate()	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(k^(k-1))
+A283510	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(4 * k)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k^(4*k))
+A283534	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(2 * k).negate()	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(k^(2*k))
+A283536	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(3 * k).negate()	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(k^(3*k))
+A283579	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(2 * k)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k^(2*k))
+A283580	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(3 * k)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k^(3*k))
+A283803	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(4 * k).negate()	Z.ONE	Z.valueOf(k)	1	(1-x^k)^(k^(4*k))
+A287090	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k*k*(k+1)^2/4)
+A294611	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(2 * k)	Z.valueOf(k)	Z.valueOf(k)	1	1/(1-k*x^k)^(k^(2*k))
+A294953	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(- k)	Z.valueOf(k).pow(2*k)	Z.valueOf(k)	1	 (1 - k^(2*k)*x^k)^k.	sign,	0..213	nyi
+A294954	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k)	Z.valueOf(k).pow(2 * k)	Z.valueOf(k)	1	1/(1-k^(2*k)*x^k)^k
+A294957	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(k - 1)	Z.valueOf(k)	Z.valueOf(k)	1	1/(1-k*x^k)^(k^(k-1))
+A294958	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).multiply(k-2).square().add(k)).divide2()	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k*((k-2)^2+k)/2)
+A295179	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(3 * k * (k - 1) / 2 + 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(3*k*(k-1)/2+1)
+A295234	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(k-1).negate()	Z.valueOf(k)	Z.valueOf(k)	1	 (1 - k*x^k)^(k^(k-1)).	sign,	0..386	nyi
+A299786	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.valueOf(k).pow(k-1).negate()	Z.valueOf(k)	1	 (1 + k^(k-1)*x^k).	nonn,changed,	0..387	nyi
+A300579	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(3).pow(k - 1)	Z.valueOf(k)	1	1/(1-3^(k-1)*x^k)
+A300581	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(2).pow(k + 1)	Z.valueOf(k)	1	1/(1-2^(k+1)*x^k)
+A300582	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.ONE.shiftLeft((int) k).multiply(3)	Z.valueOf(k)	1	1/(1-3*2^k*x^k))	>=1 
+A300583	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.THREE.pow(k).multiply2()	Z.valueOf(k)	1	1/(1-2*3^k*x^k))	>=1 
+A302447	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).multiply(k+1).square()).divide2()	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k*(k+1)^2/2)
+A305653	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k + 1).multiply(Binomial.binomial(k + 2, 3)).divide2()	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^((k+1)*binomial(k+2,3)/2)
+A305867	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(2 * k - 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(2*k-1)!!	>=1 
+A307460	genetfg	0	~~    ~~super($(OFFSET), 1);	(((k & 1) == 1) ? Z.NEG_ONE : Z.ONE).multiply(k * k)	Z.ONE	Z.valueOf(k)	1	(1-x^k)^((-1)^k*k*k)
+A307504	genetfg	0	~~    ~~super($(OFFSET), 1);	(((k & 1) == 1) ? Z.NEG_ONE : Z.ONE).multiply(Z.valueOf(k).pow(k))	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^((-1)^k*k^k)
+A307514	genetfg	0	~~    ~~super($(OFFSET), 1);	(((k & 1) == 0) ? Z.NEG_ONE : Z.ONE).multiply(Z.valueOf(k).pow(k))	Z.ONE	Z.valueOf(k)	1	(1-x^k)^((-1)^k*k^k)
+A317017	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(3 * k + 1).multiply(Binomial.binomial(k+2,3)).divide(4)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^((3*k+1)*binomial(k+2,3)/4)
+A317019	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).multiply(Binomial.binomial(k + 2, 3))	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(k*binomial(k+2,3))
+A317020	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(5 * k - 1).multiply(Binomial.binomial(k+2,3)).divide(4)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^((5*k-1)*binomial(k+2,3)/4)
+A317021	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(3 * k - 1).multiply(Binomial.binomial(k+2,3)).divide2()	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^((3*k-1)*binomial(k+2,3)/2)
+A319918	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE.shiftLeft((int) k).subtract(1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(2^k-1)
+A321387	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(k).pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(k^(k-1)).	nonn,changed,synth	0..20	nyi
+A323634	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(k).pow(k - 1)	Z.valueOf(k)	1	1/(1-k^(k-1)*x^k)
+A337299	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.ONE.shiftLeft((int) (k-1))	Z.valueOf(k)	1	 (1 - 2^(k-1)*x^k).	sign,new,	0..1000	nyi
+A338645	genetfg	0	~~    ~~super($(OFFSET), 1);	Binomial.binomial(k + 2, 2).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^binomial(k+2,2).	nonn,new,	0..10000	nyi
+A338673	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(4).pow(k - 1)	Z.valueOf(k)	1	1/(1-4^(k-1)*x^k)
+A338674	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(5).pow(k - 1)	Z.valueOf(k)	1	1/(1-5^(k-1)*x^k)
+A338675	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(6).pow(k - 1)	Z.valueOf(k)	1	1/(1-6^(k-1)*x^k)
+A338676	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(7).pow(k - 1)	Z.valueOf(k)	1	1/(1-7^(k-1)*x^k)
+A338677	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(8).pow(k - 1)	Z.valueOf(k)	1	1/(1-8^(k-1)*x^k)
+A338678	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(9).pow(k - 1)	Z.valueOf(k)	1	1/(1-9^(k-1)*x^k)
+A338679	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.valueOf(10).pow(k - 1)	Z.valueOf(k)	1	1/(1-10^(k-1)*x^k)
+A343200	genetfg	0	~~    ~~super($(OFFSET), 1);	Binomial.binomial(k + 3, 3).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^binomial(k+3,3).	nonn,new,	0..7650	nyi
+A343331	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.TEN.pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(10^(k-1)).	nonn,new,synth	0..21	nyi
+A343349	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(4).pow(k - 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(4^(k-1))
+A343350	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(5).pow(k - 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(5^(k-1))
+A343351	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(6).pow(k - 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(6^(k-1))
+A343352	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(7).pow(k - 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(7^(k-1))
+A343353	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(8).pow(k - 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(8^(k-1))
+A343354	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.valueOf(9).pow(k - 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(9^(k-1))
+A343355	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.TEN.pow(k - 1)	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(10^(k-1))
+A343360	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.THREE.pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(3^(k-1)).	nonn,new,synth	0..28	nyi
+A343361	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.FOUR.pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(4^(k-1)).	nonn,new,synth	0..26	nyi
+A343362	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.FIVE.pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(5^(k-1)).	nonn,new,synth	0..24	nyi
+A343363	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.SIX.pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(6^(k-1)).	nonn,new,	0..1000	nyi
+A343364	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.SEVEN.pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(7^(k-1)).	nonn,new,synth	0..23	nyi
+A343365	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.EIGHT.pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(8^(k-1)).	nonn,new,synth	0..22	nyi
+A343366	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NINE.pow(k-1).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^(9^(k-1)).	nonn,new,synth	0..22	nyi
+A344062	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.THREE.pow(k-1).negate()	Z.valueOf(k)	1	 (1 + 3^(k-1)*x^k).	nonn,new,synth	0..27	nyi
+A344063	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.valueOf(4).pow(k-1).negate()	Z.valueOf(k)	1	(1+4^(k-1)*x^k)
+A344064	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.valueOf(5).pow(k-1).negate()	Z.valueOf(k)	1	(1+5^(k-1)*x^k)
+A344065	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.valueOf(6).pow(k-1).negate()	Z.valueOf(k)	1	(1+6^(k-1)*x^k)
+A344066	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.valueOf(7).pow(k-1).negate()	Z.valueOf(k)	1	(1+7^(k-1)*x^k)
+A344067	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.valueOf(8).pow(k-1).negate()	Z.valueOf(k)	1	(1+8^(k-1)*x^k)
+A344068	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.NEG_ONE	Z.valueOf(9).pow(k-1).negate()	Z.valueOf(k)	1	(1+9^(k-1)*x^k)
+A344097	genetfg	0	~~    ~~super($(OFFSET), 1);	Binomial.binomial(k + 4, 4).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^binomial(k+4,4).	nonn,new,synth	0..26	nyi
+A344099	genetfg	0	~~    ~~super($(OFFSET), 1);	Binomial.binomial(k + 3, 4).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^binomial(k+3,4).	nonn,new,synth	0..29	nyi
+A344100	genetfg	0	~~    ~~super($(OFFSET), 1);	Binomial.binomial(k + 4, 5).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^binomial(k+4,5).	nonn,new,synth	0..28	nyi
+A344101	genetfg	0	~~    ~~super($(OFFSET), 1);	Binomial.binomial(k + 5, 6).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^binomial(k+5,6).	nonn,new,synth	0..27	nyi
+A344130	genetfg	0	~~    ~~super($(OFFSET), 1);	Binomial.binomial(2 * k, k).negate()	Z.NEG_ONE	Z.valueOf(k)	1	 (1 + x^k)^binomial(2*k,k).	nonn,new,synth	0..25	nyi
+
+# A319130	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.ONE	Z.valueOf(k)	1	1/(1-x^k)^(2^A001221(k)) omega
+
+A261052	genetfg	0	~~    ~~super($(OFFSET), 1);	FACTORIAL.factorial((int) k),negate()	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^(k!)	>=1 
+A265950	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	Z.ONE	FACTORIAL.factorial((int) k),negate()	1	(1+k!*x^k)	>=1 
+A292280	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	FACTORIAL.factorial((int) k)	Z.valueOf(k)	1	(1-k!*x^k)	>=1 
+A321520	genetfg	0	~~    ~~super($(OFFSET), 1);	Z.ONE	FACTORIAL.factorial((int) (k - 1)).negate()	Z.valueOf(k)	1	(1+(k-1)!*x^k)	>=1 
+A321522	genetfg	0	~~    ~~super($(OFFSET), 1);	FACTORIAL.factorial((int) (k - 1)).negate()	Z.NEG_ONE	Z.valueOf(k)	1	(1+x^k)^((k-1)!)	>=1 
