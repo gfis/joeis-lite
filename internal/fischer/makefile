@@ -486,7 +486,16 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-02-14: # *GH=74
+anabuild: # .2022-02-22: # *JA=65
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A033981   select       gener
+	make CC=A055812   select       gener
+	make CC=A055685   select       gener
+	make CC=A061561   select       gener
+	make CC=A204574   select       gener
+	make CC=insect    gener man dist testall log
+anabuild.2022-02-14: # *GH=74
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A082246   select EX=xx gener
@@ -3824,6 +3833,9 @@ prodet3:
 prodetm:
 	grep -E "^A" prodet.man > prodetm.gen
 #----
+#========
+# Caution: if advanceH(k) is used, the k in advanceF and advancdG formulas must be replaced by mKh !
+#========
 genet: # parameters for GeneralizedEulerTransform
 	cat prod1_xk.tmp prod1_xk.man \
 	| grep -E "^A[0-9]" \
@@ -4139,24 +4151,24 @@ deris0: deris1 # charfun2
 deris1:
 	rm -f *.deris.tmp
 	# echo -n "binomial"                         > binomx.deris.tmp
-	echo -n "characteristic|indicator"         > charfun.deris.tmp
-	 echo -n "complement"                       > compseq.deris.tmp
-	 echo -n "difference"                       > diffseq.deris.tmp
-	 echo -n "dirichlet"                        > dirichinv.deris.tmp
-	 echo -n "dirichlet"                        > dirichcon.deris.tmp
-	 echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	 echo -n "euler"                            > eulerx.deris.tmp
-	 echo -n "euler"                            > eulerix.deris.tmp
-	 echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	 echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	 echo -n "partial product"                  > partprod.deris.tmp
-	 echo -n "partial sum"                      > partsum.deris.tmp
-	 echo -n "prime"                            > primepos.deris.tmp
-	 echo -n "prime"                            > primeval.deris.tmp
-	 echo -n "record"                           > recordpos.deris.tmp
-	 echo -n "record"                           > recordval.deris.tmp
-	 echo -n "stirling"                         > stirling2.deris.tmp
-	 echo -n "weigh"                            > weighx.deris.tmp
+	# echo -n "characteristic|indicator"         > charfun.deris.tmp
+	echo -n "complement"                       > compseq.deris.tmp
+	# echo -n "difference"                       > diffseq.deris.tmp
+	# echo -n "dirichlet"                        > dirichinv.deris.tmp
+	# echo -n "dirichlet"                        > dirichcon.deris.tmp
+	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	# echo -n "euler"                            > eulerx.deris.tmp
+	# echo -n "euler"                            > eulerix.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	# echo -n "partial product"                  > partprod.deris.tmp
+	# echo -n "partial sum"                      > partsum.deris.tmp
+	# echo -n "prime"                            > primepos.deris.tmp
+	# echo -n "prime"                            > primeval.deris.tmp
+	# echo -n "record"                           > recordpos.deris.tmp
+	# echo -n "record"                           > recordval.deris.tmp
+	# echo -n "stirling"                         > stirling2.deris.tmp
+	# echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
@@ -4187,6 +4199,15 @@ deris_shuffle:
 deris_ok:
 	grep -P "^A\d+" deris.ok | cut -b1-7 | sed -e "s/^/\^/" > $@.tmp
 	grep -Ef $@.tmp deris.gen > $@.gen
+	wc -l    $@.gen
+#----
+insect:
+	grep -i Intersection $(COMMON)/jcat25.txt \
+	| grep -E "^\%[NFC]" | cut -b 4- | sed -e "s/ /\t/" \
+	| perl insect.pl -d 0 \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
 	wc -l    $@.gen
 #----
 xfmpad0:

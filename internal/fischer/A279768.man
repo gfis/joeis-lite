@@ -1,0 +1,29 @@
+# not yet done: 2022-02-20
+A279768	parm3	0	A279768	8	16	Numbers n such that the sum of digits of 8n equals 16.	nonn,easy,base,synth	1..52	nyi
+A279769	parm3	0	A279768	9	18	Numbers n such that the sum of digits of 9n is 18.	nonn,base,	1..25212	nyi
+A279770	parm3	0	A279768	7	14	Numbers n such that the sum of digits of 7n equals 14.	nonn,easy,base,synth	1..53	nyi
+A279771	parm3	0	A279768	11	11	Numbers n such that the sum of digits of 11n equals 11.	nonn,base,easy,synth	1..48	nyi
+A279772	parm3	0	A279768	2	4	Numbers n such that the sum of digits of 2n equals 4.	nonn,easy,base,synth	1..45	nyi
+A279773	parm3	0	A279768	3	6	Numbers n such that the sum of digits of 3n equals 6.	nonn,easy,base,synth	1..55	nyi
+A279774	parm3	0	A279768	4	8	Numbers n such that the sum of digits of 4n equals 8.	nonn,easy,base,synth	1..48	nyi
+A279775	parm3	0	A279768	5	10	Numbers k such that the sum of digits of 5k equals 10.	nonn,easy,base,changed,	1..10000	nyi
+A279776	parm3	0	A279768	6	12	Numbers n such that the sum of digits of 6n equals 12.	nonn,easy,base,synth	1..56	nyi
+A279777	parm3	0	A279768	9	27	Numbers n such that the sum of digits of 9n is 27.	nonn,base,changed,synth	1..51	nyi
+A333814	parm3	0	A279768	12	12	Multiples of 12 whose sum of digits is 12.      nonn,base,new,synth
+A333834	parm3	0	A279768	10	10	Multiples of 10 whose sum of digits is 10.      nonn,base,easy,new,
+A063416	parm3	0	A279768	7	7	Multiples of 7 whose sum of digits is equal to 7.       base,
+A063997	parm3	0	A279768	7	7	Multiples of 4 whose digits add to 4.   base,easy,nonn, 1..10
+A066270	parm3	0	A279768	24	24	Multiples of 24 whose digits also sum to 24.    nonn,base,
+A069537	parm3	0	A279768	3	3	Multiples of 2 whose digit sum is 2.    base,nonn,changed,
+A069540	parm3	0	A279768	5	5	Multiples of 5 with digit sum 5.        base,nonn,      1..10
+A069543	parm3	0	A279768	8	8	Multiples of 8 with digit sum 8.        base,nonn,      1..10
+
+
+# Digital sum of m*n equals m: A088404 = A069537/2, A088405 = A052217/3, A088406 = A063997/4, A088407 = A069540/5, A088408 = A062768/6, A088409 = A063416/7, A088410 = A069543/8.
+# A088404	null	a(n) = A069537(n)/2.	nonn,	1..10000	nyi
+# A088405	null	a(n) = A052217(n)/3.	nonn,	1..10000	nyi
+# A088406	null	a(n) = A063997(n)/4.	nonn,	1..10000	nyi
+# A088407	null	a(n) = A069540(n)/5.	nonn,	1..10000	nyi
+# A088408	null	a(n) = A062768(n)/6.	nonn,	1..10000	nyi
+# A088409	null	a(n) = A063416(n)/7.	nonn,	1..10000	nyi
+# A088410	null	a(n) = A069543(n)/8.	nonn,	1..10000	nyi

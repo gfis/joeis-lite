@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2022-02-22, private; -p implies -n
 # 2021-10-28: -t, -e
 # 2021-06-26, Georg Fischer: copied from gen_linrec.pl
 #
@@ -51,26 +52,27 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $copy       = shift(@ARGV);
     } else {
         if ($opt   =~ m{n}) {
-          $withn    = 1;
+            $withn    = 1;
         }
         if ($opt   =~ m{p}) {
             @pnames = split(/\W+/, shift(@ARGV));
+            $withn     = 1;
         }
         if ($opt   =~ m{s}) {
-          $subseq   = 1;
+            $subseq   = 1;
         }
         if (0) {
         } elsif ($opt   =~ m{e}) {
-          $extends   = 1;
+            $extends   = 1;
         } elsif ($opt   =~ m{h}) {
-          $holonomic = 1;
+            $holonomic = 1;
         } elsif ($opt   =~ m{m}) {
-          $memory    = 1;
-          $withn     = 1;
+            $memory    = 1;
+            $withn     = 1;
         } elsif ($opt   =~ m{t}) {
-          $triangle  = 1;
+            $triangle  = 1;
         } elsif ($opt   =~ m{u}) {
-          $upperleft = 1;
+            $upperleft = 1;
         }
     }
 } # while $opt
@@ -194,7 +196,7 @@ GFis
         print TAR "\n  private int mN;\n";
     }
     foreach $pname (@pnames) { # member properties
-        print TAR "  protected int m" . ucfirst($pname) . ";\n";
+        print TAR "  private int m" . ucfirst($pname) . ";\n";
     } # foreach member property
     #--------
     print TAR <<"GFis"; # start of empty constructor
