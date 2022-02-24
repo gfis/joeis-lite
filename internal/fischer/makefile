@@ -4202,7 +4202,7 @@ deris_ok:
 	wc -l    $@.gen
 #----
 insect:
-	grep -i Intersection $(COMMON)/jcat25.txt \
+	grep -iE "(Intersection|Union) of" $(COMMON)/jcat25.txt \
 	| grep -E "^\%[NFC]" | cut -b 4- | sed -e "s/ /\t/" \
 	| perl insect.pl -d 0 \
 	| sort | uniq -w7 \

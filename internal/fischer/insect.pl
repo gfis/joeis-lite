@@ -1,6 +1,6 @@
 #!perl
 
-# Extract parameters for IntersectionSequence
+# Extract parameters for IntersectionSequence and UnionSequence
 # 2022-02-22, Georg Fischer
 #
 #:# Usage:
@@ -51,9 +51,7 @@ while (<>) { # from joeis_names.txt
     $line = $_;
     $callcode = "nyi";
     my @aseqnos;
-    ($aseqno
-        # for joeis_names.txt: , $superclass
-        , $name) = split(/\t/, $line);
+    ($aseqno, $name) = split(/\t/, $line);
     if (0) {
     } elsif ($name =~ m{Intersection of (A\d+) (and|inter) (A\d+)}i) {
         @aseqnos = ($1, $3);
@@ -61,9 +59,19 @@ while (<>) { # from joeis_names.txt
             $callcode = "insect2";
         }
     } elsif ($name =~ m{Intersection of +(A\d+)\, +(A\d+) +and +(A\d+)}i) {
-        @aseqnos = ($1, $2);
+        @aseqnos = ($1, $2, $3);
+        if (defined($ofters{$aseqnos[0]}) && defined($ofters{$aseqnos[1]}) && defined($ofters{$aseqnos[2]})) {
+            $callcode = "insect3";
+        }
+    } elsif ($name =~ m{Union of (A\d+) (and) (A\d+)}i) {
+        @aseqnos = ($1, $3);
         if (defined($ofters{$aseqnos[0]}) && defined($ofters{$aseqnos[1]})) {
-            $callcode = "insect2";
+            $callcode = "union2";
+        }
+    } elsif ($name =~ m{Union of +(A\d+)\, +(A\d+) +and +(A\d+)}i) {
+        @aseqnos = ($1, $2, $3);
+        if (defined($ofters{$aseqnos[0]}) && defined($ofters{$aseqnos[1]}) && defined($ofters{$aseqnos[2]})) {
+            $callcode = "union3";
         }
     }
     if ($callcode ne "nyi") {
