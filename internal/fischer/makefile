@@ -259,7 +259,7 @@ clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep fro
 cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 20 from previous test used to from $(CC).gen
 	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp
-	grep -P "^A\d+\t([2-9]\d+|\d\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
+	grep -P "^A\d+\t([2-9]\d*|\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
 	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
 	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp
@@ -486,7 +486,13 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-02-22: # *JA=65
+anabuild: # .2022-02-25: # *JA=65
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=cofrman   select       gener
+	make CC=insect    select       gener 
+	make CC=cofrman   man dist testall log
+anabuild.2022-02-22: # *JA=65
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A033981   select       gener
@@ -1916,7 +1922,9 @@ cofrman:
 	>        $@.tmp
 	grep -E "^A[0-9]" $(CONSTANT)/decofr1.man \
 	>>       $@.tmp
+	# 3 x FATOK _ loops?
 	sed -e "s/decofr/cofr/" $@.tmp \
+	| grep -vE "A244110|A265824|A265825" \
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
@@ -4205,6 +4213,7 @@ insect:
 	grep -iE "(Intersection|Union) of" $(COMMON)/jcat25.txt \
 	| grep -E "^\%[NFC]" | cut -b 4- | sed -e "s/ /\t/" \
 	| perl insect.pl -d 0 \
+	| grep -VE "A185188|A281627"
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
