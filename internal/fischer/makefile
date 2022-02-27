@@ -486,7 +486,19 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-02-25: # *JA=65
+anabuild: #.2022-02-27: 
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A008905   select       gener
+	make CC=A056176   select       gener
+	make CC=cofrseq   select       gener 
+	make CC=posins    select       gener 
+	make CC=man       man
+	cmd /c jodel A191359
+	cmd /c jodel A317413
+	cmd /c jodel A342652
+	make dist testall log
+anabuild.2022-02-25: # *JA=65
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=cofrman   select       gener
@@ -1925,6 +1937,12 @@ cofrman:
 	# 3 x FATOK _ loops?
 	sed -e "s/decofr/cofr/" $@.tmp \
 	| grep -vE "A244110|A265824|A265825" \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+cofrseq:
+	grep -E "^A[0-9]" $@.man \
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
@@ -4128,7 +4146,7 @@ periodic: # PeriodicSequence
 # Positions of ... in (the decimal expansion of |Annnnnn)
 posins: posins1 posins2
 posins1:
-	grep -E "Positions of " $(COMMON)/jcat25.txt \
+	grep -E "Indices|Indexes|Positions of " $(COMMON)/jcat25.txt \
 	| grep -E "^\%[NCF]" \
 	| grep -v "of records" \
 	| cut -b4- | sed -e "s/ /\t/" \

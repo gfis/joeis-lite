@@ -90,17 +90,21 @@ while (<>) {
             } elsif ($expr =~ m{\APi}i) {
                 $rseqno = "A000796";
             }   
-        } elsif ($name =~ m{Positions of 0 in base\-2 representation of 1\/sqrt\(2\)\.}) {
+        } elsif ($name =~ m{Positions? of 0s? in base\-2 representation of 1\/sqrt\(2\)\.}) {
             # A246339   null    Positions of 0 in base-2 representation of 1/sqrt(2).   nonn,easy,changed,  1..1000
             $rseqno = "A004539";
-            $value = 0;
-        } elsif ($name =~ m{Positions of 1 in the continued fraction expansion of Pi\.}) {
+            $value  = 0;
+        } elsif ($name =~ m{Positions? of 1s? in the continued fraction expansion of Pi\.}) {
             # A203168   null    Positions of 1 in the continued fraction expansion of Pi.   nonn,nice,changed,  1..1000
             $rseqno = "A001203";
-            $value = 1;
-        } elsif ($name =~ m{Positions of ([^A]+)(A\d{6})}) {
+            $value  = 1;
+        } elsif ($name =~ m{(Indices|Indexes) +(\w +)?(for which|such that|with) (A\d+)\(\w\) *\= *(\-?\d+)}) {
+        	# A317538 Indices m for which A317413(m) = 1.
+        	$rseqno = $4;
+        	$value  = $5;
+        } elsif ($name =~ m{Positions? of ([^A]+)(A\d{6})}) {
             $rseqno = $2;
-            $value = $1;
+            $value  = $1;
             $value =~ s{in \Z}{};
             if (0) {
             } elsif ($value =~ m{\A(\d+)\'?s? }) {
@@ -163,3 +167,5 @@ A171952 Positions of 2's in A181391.    nonn,   1..835
 A165461 Positions of zeros in A165460.  nonn,   0..1000
 A190889 Positions of 2 in A190886.
 A134251 Positions of 1 after decimal point in decimal expansion of 1/Pi.  nonn,base,changed,  1..10000
+
+A317538	Indices m for which A317413(m) = 1.
