@@ -1,0 +1,25 @@
+A066581	parm2	0	A067067	new A066547()	Product of nonzero digits of A066547(n).        easy,nonn,base,synth    1..25   nyi
+A066582	parm2	0	A067067	new A066549()	Product of nonzero digits of A066549(n).        easy,nonn,base,synth    1..24   nyi
+A066583	parm2	0	A067067	new A066551()	Product of nonzero digits of A066551(n).        easy,nonn,base,synth    1..24   nyi
+A066584	parm2	0	A067067	new A066553()	Product of nonzero digits of A066553(n).        easy,nonn,base,synth    1..25   nyi
+A066585	parm2	0	A067067	new A066555()	Product of nonzero digits of A066555(n).        easy,nonn,base,synth    1..26   nyi
+A067067	parm2	0	A067067	new A000142()	Product of nonzero digits of n! (A000142).      base,nonn,      0..200  nyi
+A101987	parm2	0	A067067	new A000040()	Product of nonzero digits of n-th prime.        base,easy,nonn,synth    1..77   nyi
+A227153	parm2	0	A067067	new A007623()	Product of nonzero digits of n in factorial base.       nonn,base,changed,      0..5040 nyi
+# fails at 2100th term: A328581	parm2	0	A067067	new A049345()	Product of nonzero digits in primorial base expansion of n.     nonn,new,       0..32768        nyi
+# A086992	parm2	0	A067067		Product of nonzero digits in n-th row of Pascal's triangle.     base,easy,nonn,synth    1..17   nyi
+# A096301	parm2	0	A067067		(Product of nonzero digits(sum of digits(n^n)). base,easy,nonn, 1..1000 nyi
+# A307714	parm3	0	A208575	10	Product of digits is noncomposite.      nonn,base,changed,synth 1..55   nyi
+
+# A105247	parm3	0	A208575	new A000007()	10	Product of digits of Roman Numerals.    base,easy,fini,nonn,changed,    1..3999 nyi
+A208575	parm3	0	A208575	new A007623()	10	Product of digits of n in factorial base.       nonn,base,changed,      0..10080        nyi
+# A227154	parm3	0	A208575	new A007623()	10	Product of digits+1 of n in factorial base.     nonn,base,changed,      0..5040 nyi
+A230200	parm3	0	A208575	new A002385()	10	Product of digits of n-th palindromic prime.    nonn,base,less, 1..5953 nyi
+# A244318	parm3	0	A208575	new A014418()	10	Product of digits+1 of n in Greedy Catalan Base (A014418).      nonn,base,      0..4862 nyi
+A309788	parm3	0	A208575	new A001477()	9	Product of digits of (n written in base 9).     nonn,base,look, 0..10000        nyi
+A309953	parm3	0	A208575	new A001477()	3	Product of digits of (n written in base 3).     nonn,base,look, 0..10000        nyi
+A309954	parm3	0	A208575	new A001477()	4	Product of digits of (n written in base 4).     nonn,base,      0..10000        nyi
+A309956	parm3	0	A208575	new A001477()	5	Product of digits of (n written in base 5).     nonn,base,look, 0..10000        nyi
+A309957	parm3	0	A208575	new A001477()	6	Product of digits of (n written in base 6).     nonn,base,      0..10000        nyi
+A309958	parm3	0	A208575	new A001477()	7	Product of digits of (n written in base 7).     nonn,base,new,  0..10000        nyi
+A309959	parm3	0	A208575	new A001477()	8	Product of digits of (n written in base 8).     nonn,base,new,  0..10000        nyi

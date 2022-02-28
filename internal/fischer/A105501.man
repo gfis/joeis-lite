@@ -1,0 +1,41 @@
+# leading digits; 2022-02-28
+A105501	parm2	1	A105501	1	Numbers n such that 1 is the leading digit of the n-th Fibonacci number in decimal representation.	nonn,base,	1..10000	nyi
+A105502	parm2	1	A105501	2	Numbers m such that 2 is the leading digit of the n-th Fibonacci number in decimal representation.	nonn,base,synth	1..56	nyi
+A105503	parm2	1	A105501	3	Numbers n such that 3 is the leading digit of the n-th Fibonacci number in decimal representation.	nonn,base,changed,synth	1..55	nyi
+A105504	parm2	1	A105501	4	Numbers m such that 4 is the leading digit of the n-th Fibonacci number in decimal representation.	nonn,base,synth	1..54	nyi
+A105505	parm2	1	A105501	5	Numbers n such that 5 is the leading digit of the n-th Fibonacci number in decimal representation.	nonn,base,changed,	1..10000	nyi
+A105506	parm2	1	A105501	6	Numbers m such that 6 is the leading digit of the n-th Fibonacci number in decimal representation.	nonn,base,synth	1..53	nyi
+A105507	parm2	1	A105501	7	Numbers m such that 7 is the leading digit of the n-th Fibonacci number in decimal representation.	nonn,base,synth	1..53	nyi
+A105508	parm2	1	A105501	8	Numbers m such that 8 is the leading digit of the m-th Fibonacci number in decimal representation.	nonn,base,synth	1..53	nyi
+A105509	parm2	1	A105501	9	Numbers m such that 9 is the leading digit of the m-th Fibonacci number in decimal representation.	nonn,base,changed,synth	1..51	nyi
+
+A105511	parm2	0	A105511	1	Number of times 1 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,synth	0..79	nyi
+A105512	parm2	0	A105511	2	Number of times 2 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,synth	0..86	nyi
+A105513	parm2	0	A105511	3	Number of times 3 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,synth	0..94	nyi
+A105514	parm2	0	A105511	4	Number of times 4 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,synth	0..104	nyi
+A105515	parm2	0	A105511	5	Number of times 5 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,synth	0..104	nyi
+A105516	parm2	0	A105511	6	Number of times 6 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,changed,synth	0..104	nyi
+A105517	parm2	0	A105511	7	Number of times 7 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,synth	0..104	nyi
+A105518	parm2	0	A105511	8	Number of times 8 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,synth	0..104	nyi
+A105519	parm2	0	A105511	9	Number of times 9 is the leading digit of the first n+1 Fibonacci numbers in decimal representation.	nonn,base,synth	0..104	nyi
+
+A224752	parm2	1	A224752	1	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,changed,synth	1..22	nyi
+A224753	parm2	1	A224752	2	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,changed,synth	1..23	nyi
+A224754	parm2	1	A224752	3	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,synth	1..20	nyi
+A224755	parm2	1	A224752	4	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,	1..1000	nyi
+A224756	parm2	1	A224752	5	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,synth	1..26	nyi
+A224757	parm2	1	A224752	6	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,synth	1..27	nyi
+A224758	parm2	1	A224752	7	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,synth	1..25	nyi
+A224759	parm2	1	A224752	8	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,synth	1..26	nyi
+A224760	parm2	1	A224752	9	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,synth	1..26	nyi
+A224761	parm2	1	A224752	10	; thereafter a(n) = smallest number m such that a(n-1)+m = (a(n-1) followed by the leading digit of m).	nonn,base,synth	1..26	nyi
+
+A068849	parm2	1	A068849	41	a(1)=41 ( the smallest prime beginning with 4) and then the smallest prime with leading digits containing a(n-1).	base,nonn,synth	1..7	nyi
+A068850	parm2	1	A068849	61	a(1)=61 ( the smallest prime beginning with 6) and then the smallest prime with leading digits containing a(n-1).	base,nonn,synth	1..10	nyi
+A068851	parm2	1	A068849	83	a(1)=83 ( the smallest prime beginning with 8) and then the smallest prime with leading digits containing a(n-1).	base,nonn,synth	1..5	nyi
+A068852	parm2	1	A068849	97	a(1)=97 ( the smallest prime beginning with 9) and then the smallest prime with leading digits containing a(n-1).	base,nonn,synth	1..9	nyi
+
+A067112	parm2	0	A067112	new A000040()	0	Let N = 2357111317192329313741434753..., the concatenation of the primes; a(n) = sum of first n digits of N.	easy,nonn,base,	0..1000	nyi
+A067113	parm2	0	A067112	new A000290()	1	Let N = 0.149162536496481100121... = A001191, the concatenation of the squares. Then a(n) = sum of first n digits of N.	base,easy,nonn,synth	1..59	nyi
+A067114	parm2	0	A067112	new A005843()	1	Let N = 24681012141618202224262830..., the concatenation of the even numbers. Then a(n) = sum of first n digits of N.	easy,nonn,base,synth	1..60	nyi
+A067115	parm2	0	A067112	new A005408()	0	Let N = 1357911131517192123252729... = concatenation of odd numbers. Then a(n) = sum of first n digits of N.	easy,nonn,base,changed,	1..1000	nyi
