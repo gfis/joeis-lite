@@ -486,7 +486,15 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: #.2022-03-01: 
+anabuild: #.2022-03-12: 
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A103123   select       gener
+	make CC=A145180   select EX=xx gener
+	make CC=A165471   select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-03-01: 
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A055143   select       gener
