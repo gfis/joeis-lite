@@ -486,10 +486,11 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: #.2022-03-13: 
-	make purge
+anabuild: #.2022-03-15: 
+	# make purge
 	git add -v *.man *.sql *.pl *.jpat
-	make CC=A000000   select EX=xx gener
+	make CC=A067480   select       gener
+	make CC=denrat    select       gener
 	make CC=man       man
 	make dist testall log
 anabuild.2022-03-12: 
@@ -1980,6 +1981,12 @@ decofr: # Continued fraction of real expression
 	head -n4 $@.gen
 	wc -l    $@.gen
 	# perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
+#--------------------------------
+denrat:
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 deriv0: deriv1 deriv_rest # prepare derived sequences
 deriv_rest: deriv2 deriv3 deriv4 deriv5 deriv6 deriv7
