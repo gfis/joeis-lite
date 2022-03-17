@@ -486,7 +486,20 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: #.2022-03-15: 
+anabuild: #.2022-03-17:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A099544   select       gener
+	make CC=A181447   select EX=xx gener
+	make CC=etgeneric select       gener
+	make CC=valuation select       gener
+	make CC=denrat    select       gener
+	cp -v  hold/*.java manual
+	cp -v  park/*.java manual
+	cp -v park2/*.java manual
+	make CC=man       man
+	make dist testall log
+anabuild.2022-03-15: 
 	# make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A067480   select       gener
@@ -1982,6 +1995,18 @@ decofr: # Continued fraction of real expression
 	wc -l    $@.gen
 	# perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #--------------------------------
+denrat0:
+	$(DBAT) -x "SELECT i.aseqno, COALESCE(SUBSTR(j.superclass, 1, 7), 'denrat') \
+	    , 0, i.aseqno, n.name, i.keyword, '[' || b.bfimin || '..' || b.bfimax || ']' \
+	    FROM  asinfo i, asname n, bfinfo b LEFT JOIN joeis j ON j.aseqno = b.aseqno \
+	    WHERE i.aseqno = n.aseqno \
+	      AND n.aseqno = b.aseqno \
+	      AND i.keyword LIKE '%frac%' \
+	      AND i.keyword LIKE '%tabl%' \
+	    ORDER BY 1 "\
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 denrat:
 	grep -E "^A[0-9]" $@.man \
 	>        $@.gen
@@ -6356,6 +6381,24 @@ trajen:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+valuation:
+	grep -E "^\%[NFC]" $(COMMON)/jcat25.txt | grep -E "[^e]valuation" | cut -b4- | sed -e "s/ /\t/" \
+	| perl valuation.pl \
+	2>       $@.rest.tmp \
+	| cat - valuation.man \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.*
+valupari:
+	grep -E "^\%[o]" $(COMMON)/jcat25.txt | grep -E "valuation" | cut -b4- | sed -e "s/ /\t/" \
+	| perl valuation.pl \
+	2>       $@.rest.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.*
 #================================
 old_one_time_patchs:
 	cat sumpow.man \
@@ -6666,19 +6709,21 @@ manual_check:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
-mangf_check:
-	find mangf -iname "A??????.java" -printf "%f\t%T+\n" | perl -pe 's{\.java}{}; s{\+.*}{}; '\
+DIR=mangf
+mangf_check: # DIR=
+	find $(DIR) -iname "A??????.java" -printf "%f\t%T+\n" | perl -pe 's{\.java}{}; s{\+.*}{}; '\
 	>        $@.tmp
 	head -n4 $@.tmp
 	make seq2 LIST=$@.tmp
-	$(DBAT) "SELECT s.aseqno, s.info, COALESCE(j.superclass, 'nyi') AS nyi, n.name \
+	$(DBAT) -x "SELECT s.aseqno, s.info, COALESCE(j.superclass, 'nyi') AS nyi, n.name \
 	  FROM seq2 s, asname n LEFT JOIN joeis j ON n.aseqno = j.aseqno \
 	  WHERE s.aseqno = n.aseqno \
 	  ORDER BY 2" \
-	| grep -P "\tnyi\t" | sort \
+	| sort \
 	>        $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
+	grep -P "\tnyi\t" $@.txt
 mangf_retest:
 	cut -f1 mangf_check.txt | grep -E "^A[0-9][0-9]" \
 	| xargs -l -innn cp -v mangf/nnn.java manual

@@ -1,0 +1,8 @@
+A099544	parm2	1	A099544	3	a(n)=bitand(n/(2^valuation(n,2)), 3); /* _Joerg Arndt_, Jul 18 2012 */
+A099545	parm2	1	A099544	4	a(n)=bitand(n/(2^valuation(n,2)), 3); /* _Joerg Arndt_, Jul 18 2012 */
+A099546	parm2	1	A099544	5	(n>>valuation(n, 2))%5 \\_Charles R Greathouse IV_, May 14 2014
+A099547	parm2	1	A099544	6	(n>>valuation(n, 2))%6 \\_Charles R Greathouse IV_, May 14 2014
+A099548	parm2	1	A099544	7	(n>>valuation(n, 2))%7 \\_Charles R Greathouse IV_, May 14 2014
+A099549	parm2	1	A099544	8	(n>>valuation(n, 2))%8 \\_Charles R Greathouse IV_, May 14 2014
+A099550	parm2	1	A099544	9	(n>>valuation(n, 2))%9 \\_Charles R Greathouse IV_, May 14 2014
+A099551	parm2	1	A099544	10	a(n)=(n>>valuation(n,2))%10 \\ _Charles R Greathouse IV_, Dec 28 2012

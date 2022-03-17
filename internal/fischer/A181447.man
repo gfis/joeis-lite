@@ -1,0 +1,25 @@
+A181447	parm2	1	A181447	 3	 is the largest prime factor of n^2 - 1.	nonn,fini,full,synth	1..4	unkn
+A181448	parm2	1	A181447	 5	 is the largest prime factor of n^2 - 1.	fini,full,nonn,synth	1..8	unkn
+A181449	parm2	1	A181447	 7	 is the largest prime factor of n^2 - 1.	fini,full,nonn,synth	1..16	unkn
+A181450	parm2	1	A181447	11	 is the largest prime factor of n^2 - 1.	fini,full,nonn,synth	1..20	unkn
+A181451	parm2	1	A181447	13	 is the largest prime factor of n^2 - 1.	fini,nonn,full,synth	1..34	unkn
+A181452	parm2	1	A181447	17	 is the largest prime factor of n^2 - 1.	fini,nonn,	1..47	nyi
+A181453	parm2	1	A181447	19	 is the largest prime factor of n^2 - 1.	fini,nonn,	1..72	nyi
+A181454	parm2	1	A181447	23	 is the largest prime factor of n^2 - 1.	fini,full,nonn,	1..95	finifull
+A181455	parm2	1	A181447	29	 is the largest prime factor of n^2 - 1.	fini,nonn,	1..126	nyi
+A181456	parm2	1	A181447	31	 is the largest prime factor of n^2 - 1.	fini,full,nonn,	1..168	finifull
+A181457	parm2	1	A181447	37	 is the largest prime factor of n^2 - 1.	fini,nonn,	1..208	nyi
+A181458	parm2	1	A181447	41	 is the largest prime factor of n^2 - 1.	fini,nonn,	1..262	nyi
+A181459	parm2	1	A181447	43	 is the largest prime factor of n^2 - 1.	fini,nonn,	1..343	nyi
+A181460	parm2	1	A181447	47	 is the largest prime factor of n^2-1.	fini,nonn,	1..433	nyi
+A181461	parm2	1	A181447	53	 is the largest prime factor of n^2-1.	fini,nonn,	1..507	nyi
+A181462	parm2	1	A181447	59	 is the largest prime factor of n^2-1.	fini,nonn,	1..634	nyi
+A181463	parm2	1	A181447	61	 is the largest prime factor of n^2-1.	fini,nonn,	1..799	nyi
+A181464	parm2	1	A181447	67	 is the largest prime factor of n^2-1.	fini,nonn,	1..976	nyi
+A181465	parm2	1	A181447	71	 is the largest prime factor of n^2-1.	fini,nonn,	1..1146	nyi
+A181466	parm2	1	A181447	73	 is the largest prime factor of n^2-1.	fini,nonn,	1..1439	nyi
+A181467	parm2	1	A181447	79	 is the largest prime factor of n^2-1.	fini,nonn,	1..1698	nyi
+A181468	parm2	1	A181447	83	 is the largest prime factor of n^2-1.	fini,nonn,	1..2082	nyi
+A181469	parm2	1	A181447	89	 is the largest prime factor of n^2-1.	fini,nonn,	1..2370	nyi
+A181470	parm2	1	A181447	97	 is the largest prime factor of n^2 - 1.	fini,full,nonn,changed,	1..2679	nyi
+A181568	parm2	1	A181447	101	(PARI) is(n)=n=n^2-1; forprime(p=2, 97, n/=p^valuation(n, p)); n>1 && 101^valuation(n, 101)==n
