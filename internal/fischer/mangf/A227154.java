@@ -1,18 +1,27 @@
 package irvine.oeis.a227;
-// manually 2022-02-28
 
 import irvine.math.z.Z;
-import irvine.math.z.ZUtils;
-import irvine.oeis.a007.A007623;
+import irvine.oeis.Sequence;
 
 /**
  * A227154 Product of digits+1 of n in factorial base.
+ * a(n)=my(b=2, t=1); while(n, t *= n%b + 1; n \= b; b++); t
  * @author Georg Fischer
  */
-public class A227154 extends A007623 {
+public class A227154 implements Sequence {
 
+  private long mN = -1;
+  
   @Override
   public Z next() {
-    return ZUtils.digitProduct(super.next(), 10).add(1);
+    Z n = Z.valueOf(++mN);
+    Z b = Z.TWO;
+    Z t = Z.ONE;
+    while (!n.isZero()) {
+      t = t.multiply(n.mod(b).add(1));
+      n = n.divide(b);
+      b = b.add(1);
+    }
+    return t;
   }
 }

@@ -1,0 +1,17 @@
+A061511	parm3	0	A061511	0	1		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 1.	base,nonn,	0..97	nyi
+A061512	parm3	0	A061511	1	2		a(0) = 1; a(n) is obtained by incrementing each digit of a(n-1) by 2.	base,nonn,synth	0..26	nyi
+A061513	parm3	0	A061511	0	2		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 2.	base,nonn,synth	0..26	nyi
+A061514	parm3	0	A061511	0	3		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 3.	base,nonn,synth	0..18	nyi
+A061515	parm3	0	A061511	1	3		a(0) = 1; a(n) is obtained by incrementing each digit of a(n-1) by 3.	base,nonn,synth	0..17	nyi
+A061516	parm3	0	A061511	1	4		a(0) = 1; a(n) is obtained by incrementing each digit of a(n-1) by 4.	base,nonn,synth	0..15	nyi
+A061517	parm3	0	A061511	0	4		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 4.	base,nonn,changed,	0..27	nyi
+A061518	parm3	0	A061511	0	5		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 5.	base,nonn,synth	0..12	nyi
+A061519	parm3	0	A061511	1	5		a(0) = 1; a(n) is obtained by incrementing each digit of a(n-1) by 5.	base,nonn,synth	0..11	nyi
+A061520	parm3	0	A061511	0	6		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 6.	base,nonn,changed,	0..17	nyi
+A061521	parm3	0	A061511	1	6		a(0) = 1; a(n) is obtained by incrementing each digit of a(n-1) by 6.	base,nonn,synth	0..12	nyi
+A061522	parm3	0	A061511	0	7		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 7.	base,nonn,	0..16	nyi
+A061746	parm3	0	A061511	1	7		a(0) = 1; a(n) is obtained by incrementing each digit of a(n-1) by 7.	base,nonn,synth	0..10	nyi
+A061747	parm3	0	A061511	0	8		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 8.	base,nonn,	0..15	nyi
+A061748	parm3	0	A061511	1	8		a(0) = 1; a(n) is obtained by incrementing each digit of a(n-1) by 8.	base,nonn,synth	0..9	nyi
+A061749	parm3	0	A061511	1	9		a(0) = 1; a(n) is obtained by incrementing each digit of a(n-1) by 9.	base,nonn,synth	0..7	nyi
+A061750	parm3	0	A061511	0	9		a(0) = 0; a(n) is obtained by incrementing each digit of a(n-1) by 9.	base,nonn,	0..12	nyi
