@@ -47,7 +47,7 @@ NC=
 OFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
-JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx3g -Xss2g
+JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx3g -Xss2g -Duser.language=en
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
@@ -486,7 +486,16 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-03-20:
+anabuild: # .2022-03-22:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A061403   select       gener
+	make CC=A092221   select       gener
+	make CC=A099542   select       gener
+	make CC=A288580   select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-03-20:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A061931   select       gener

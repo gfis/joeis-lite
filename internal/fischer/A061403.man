@@ -1,0 +1,20 @@
+# A061403	parm2	0	A061403	4	Denominators in the series for Bessel function J4(x).   nonn,easy,      0..220  nyi
+# A061404	parm2	0	A061403	5	Denominators in the series for Bessel function J5(x).   nonn,easy,      0..220  nyi
+# A061405	parm2	0	A061403	6	Denominators in the series for Bessel function J6(x).   nonn,easy,      0..220  nyi
+# A061406	parm2	0	A061403	7	Denominators in the series for Bessel function J7(x).   nonn,easy,      0..220  nyi
+# A061407	parm2	0	A061403	8	Denominators in the series for Bessel function J8(x).   nonn,easy,      0..220  nyi
+# A061440	parm2	0	A061403	9	Denominators in the series for Bessel function J9(x).   nonn,easy,      0..219  nyi
+# A061441	parm2	0	A061403	10	Denominators in the series for Bessel function J10(x).  nonn,easy,      0..219  nyi
+A002454	holos	0	[[0],[0,-1,-4],[1]] 	[1         ]	0
+A002474	holos	0	[[0],[0,-4,-4],[1]] 	[2         ]	0
+A002506	holos	0	[[0],[0,-8,-4],[1]] 	[8         ]	0
+A014401	holos	0	[[0],[0,-12,-4],[1]]	[48        ]	0
+A061403	holos	0	[[0],[0,-16,-4],[1]]	[384       ]	0
+A061404	holos	0	[[0],[0,-20,-4],[1]]	[3840      ]	0
+A061405	holos	0	[[0],[0,-24,-4],[1]]	[46080     ]	0
+A061406	holos	0	[[0],[0,-28,-4],[1]]	[645120    ]	0
+A061407	holos	0	[[0],[0,-32,-4],[1]]	[10321920  ]	0
+A061440	holos	0	[[0],[0,-36,-4],[1]]	[185794560 ]	0
+A061441	holos	0	[[0],[0,-40,-4],[1]]	[3715891200]	0
+
+# k:=3: f:= gfun:-rectoproc({a(n)-(4*n^2 + 4*n*k)*a(n-1),a(0)=2^k*k!}, a(n), remember): map(f, [$0..16]);
