@@ -7,49 +7,74 @@
 use strict;
 use integer;
 
-my ($aseqno, $cc, $name, $keyword, $bfrange, @rest);
-my ($var1, $start1, $end1, $form, $ok, $offset);
+my ($aseqno, $cc, $offset, $name, @rest);
+my ($var1, $beg1, $end1, $form, $cond, $ok, $offset);
 while (<>) {
-    ($aseqno, $cc, $name, $keyword, $bfrange, @rest) = split(/\t/);
-    $bfrange =~ m{\A(\d+)};
-    $offset = $1;
+    s{\s+\Z}{}; # chompr
+    ($aseqno, $cc, $offset, $name, @rest) = split(/\t/);
     $ok = 0;
-    if ($cc eq "null") {
-        if ($name =~ m{Product_\{([\w\+\-]+) *\= *(\d+)\.\.([\w\+\-]+)\} *(.*)}) {
-            $cc = "prodsi";
-            $var1 = $1;
-            $start1 = $2;
-            $end1 = $3;
-            $form = $4;
-
-            $end1 =~ s{n}{mN}g;
-            $end1 =~ s{\-}{ \- }g;
-            $end1 =~ s{(\d+)mN}{$1 \* mN}g;
-
-            $form =~ s{\.\Z}{};
-            $form =~ s{([nk])\^2}{$1\*$1}g;
-            $form =~ s{\^}{\.pow\(}g;
-            $form =~ s{(\d+)([i-n]+)}{$1 \* $2}g;
-            $form =~ s{\bn\b}{mN}g;
-            if ($form =~ m{\A(\(.*\))\!}) {
-                $form = "FACTORIAL.factorial$1";
-                $cc .= "f";
-            }
-            if ($form =~ s{binomial}{Binomial.binomial}g) {
-                $cc .= "b";
-            }
-        #   $form =~ s{(\A|\W)n(\W|\Z)}{"$1" . mN . "$2"}eg;
-            $ok = 1;
-            # Product_{i=0..
-        } else {
-            ($var1, $start1, $end1, $form) = ("k", 1, "mN", "??");
-        }
-        if ($ok) {
-            print        join("\t", $aseqno, $cc, $offset, $form, "for (int $var1 = $start1; $var1 <= $end1; ++$var1) {", "", $name) . "\n";
-        } else {
-            print STDERR join("\t", $aseqno, $cc, $offset, $form, "for (int $var1 = $start1; $var1 <= $end1; ++$var1) {", "", $name) . "\n";
-        }
-    } # null
+    if (0) {
+    } elsif ($name =~ m{Product_\{([\w\+\-]+) *\= *(\d+)\.\.([\w\+\-]+)\} *(.*)}) {
+        $cc   = "prodsi";
+        $var1 = $1;
+        $beg1 = $2;
+        $end1 = $3;
+        $form = $4;
+        &polish();
+        $ok = 1;
+        print        join("\t", $aseqno, $cc, $offset, "sum($beg1, $end1, $var1 -> $form)", "|", $name) . "\n";
+        # Product_{i=0..
+    } elsif ($name =~ m{[sS]um_\{(\w+) *\= *(\d+) *(\.\.|to) *([\w\+\-]+)\} *(.*)}) {
+        $cc   = "sumsi";
+        $var1 = $1;
+        $beg1 = $2;
+        $end1 = $4;
+        $form = $5;
+        &polish();
+        $ok = 1;
+        print        join("\t", $aseqno, $cc, $offset, $beg1, $end1, $var1, $form, $cond, "", "| $name") . "\n";
+        # Product_{i=0..
+    } else {
+        ($var1, $beg1, $end1, $form) = ("k", 1, "mN", "??");
+    }
+    # return Integers.SINGLETON.sum(1, mN, j -> Binomial.binomial(mN, j - 1).multiply(Binomial.binomial(3 * mN - 2 * j - 1, mN - j)).divide(2 * mN - j));
+    if ($ok == 0) {
+        print STDERR join("\t", $aseqno, $cc, $offset, "sum($beg1, $end1, $var1 -> $form)", "|", $name) . "\n";
+    }
 } # while <>
+#----
+sub polish {
+    $name =~ s{\. - .*}{};
+    $var1 =~ s{\bn\b}{mN}g;
+    $beg1 =~ s{\bn\b}{mN}g;
+    $end1 =~ s{\bn\b}{mN}g;
+    $end1 =~ s{\-}{ \- }g;
+    $end1 =~ s{(\d+)([i-n]+)}{$1 \* $2}g;
+    $form =~ s{\..*}{};
+    $cond = "";
+    if ($form =~ s{ for (.+)}{}) {
+        $cond = $1;
+    }
+    if ($form =~ s{\,? *where (.+)}{}) {
+        $cond = $1;
+    }
+    if ($form =~ s{\;(.*)}{}) {
+        $cond = $1;
+    }
+    $form =~ s{([i-n])\^2}{$1\*$1}g;
+    $form =~ s{\^}{\.pow\(}g;
+    $form =~ s{(\d+)([i-n]+)}{$1 \* $2}g;
+    $form =~ s{\bn\b}{mN}g;
+    if ($form =~ m{\A(\(.*\))\!}) {
+        $form = "FACTORIAL.factorial$1";
+        $cc .= "f";
+    }
+    $form =~ s{binomial}{Binomial.binomial}g;
+    $form =~ s{C(\([^\)]+\))}{Binomial.binomial$1}g;
+    $beg1 =~ s{ }{}g;
+    $end1 =~ s{ }{}g;
+    $form =~ s{ }{}g;
+    $ok = 1;
+} # polish
 __DATA__
 A294318 prodsi  0   for (int k = 0; k <= mN; ++k) { (3*k + 1)!      a(n) = Product_{k=0..n} (3*k + 1)!.

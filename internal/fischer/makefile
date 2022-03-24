@@ -486,7 +486,23 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-03-22:
+ab: # .2022-03-24:
+	make purge
+	make CC=A137952   select gener
+	make CC=A120134   select gener
+	make CC=A160931   select gener
+	make CC=man       man
+	make dist testall log
+anabuild: # .2022-03-24:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=partsumm  select       gener
+	make CC=A137952   select       gener
+	make CC=A120134   select       gener
+	make CC=A160931   select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-03-22:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A061403   select       gener
@@ -4035,13 +4051,38 @@ sumsi2: # A323545 a(n) = Product_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 	wc -l    $@.*tmp
 #	| sort -k5,5 --field-separator="	" \
 #
+sumsi0:
+	grep -E "^\%[NF]" $(COMMON)/jcat25.txt | cut -b4- | grep -iE "sum_\{" | sed -e "s/ /\tsumsi\t0\t/" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.*tmp
 sumsi:
+	grep -P "\ta\(n\) *\= *Sum" sumsi0.tmp \
+	| perl prodsi.pl \
+	2>       $@.rest.tmp \
+	| sort -k7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+partsumm:
+	cat sumsi.gen \
+	| perl -ne 'use strict; my @f = split(/\t/); if ($$f[6] =~ s{\A(A\d+)\([i-nI-N]+\)\Z}{$$1}) { '\
+	' print join("\t", $$f[0], "partsum", 0, $$f[6], "", "new $$f[6]()", "") . "\n"; }' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+partsumm_old:
 	grep -E "^A[0-9]" $@.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 sumsim:
-	grep -E "^A[0-9]" sumsi.man \
+	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+sumgcdm:
+	grep -E "^A[0-9]" sumgcd.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -4360,7 +4401,7 @@ dirichcon:
 essent:
 	cp -v $@.man $@.gen
 moebiusx:
-	cp -v $@.man $@.gen
+	cp -v $@.man $@.gen   
 stirling2: # A052856, A052875, A069321, A140585 manually mod.
 	cp -v $@.man $@.gen
 #----
