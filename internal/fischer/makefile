@@ -4303,15 +4303,15 @@ deris1:
 	rm -f *.deris.tmp
 	# echo -n "binomial"                         > binomx.deris.tmp
 	# echo -n "characteristic|indicator"         > charfun.deris.tmp
-	echo -n "complement"                       > compseq.deris.tmp
+	# echo -n "complement"                       > compseq.deris.tmp
 	# echo -n "difference"                       > diffseq.deris.tmp
 	# echo -n "dirichlet"                        > dirichinv.deris.tmp
 	# echo -n "dirichlet"                        > dirichcon.deris.tmp
 	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
 	# echo -n "euler"                            > eulerx.deris.tmp
 	# echo -n "euler"                            > eulerix.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	echo -n "m.e?bius"                         > moebiusix.deris.tmp
 	# echo -n "partial product"                  > partprod.deris.tmp
 	# echo -n "partial sum"                      > partsum.deris.tmp
 	# echo -n "prime"                            > primepos.deris.tmp
@@ -4339,7 +4339,7 @@ deris2:
 deris:
 	# sort     deris2.gen charfuman.tmp | uniq -w7
 	# sort     deris2.gen compseq.man | uniq -w7
-	sort     deris2.gen compseq.man | uniq -w7 \
+	sort     deris2.gen | uniq -w7 \
 	| grep -vf not_same.man \
 	| cut -b1-512 \
 	>        deris.gen
