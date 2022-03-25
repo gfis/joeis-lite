@@ -1,0 +1,39 @@
+A137952	parm3	0	A137952	2	3	sum(0, mN - 1, k -> Binomial.binomial(2*(mN-k),k).multiply(Binomial.binomial(3*k,mN-k-1)).divide(mN-k))
+A137953	parm3	0	A137952	3	2	sum(0, mN - 1, k -> Binomial.binomial(3*(mN-k),k).multiply(Binomial.binomial(2*k,mN-k-1)).divide(mN-k))
+A137955	parm3	0	A137952	2	4	sum(0, mN - 1, k -> Binomial.binomial(2*(mN-k),k).multiply(Binomial.binomial(4*k,mN-k-1)).divide(mN-k))
+A137956	parm3	0	A137952	4	2	sum(0, mN - 1, k -> Binomial.binomial(4*(mN-k),k).multiply(Binomial.binomial(2*k,mN-k-1)).divide(mN-k))
+A137957	parm3	0	A137952	3	4	sum(0, mN - 1, k -> Binomial.binomial(3*(mN-k),k).multiply(Binomial.binomial(4*k,mN-k-1)).divide(mN-k))
+A137958	parm3	0	A137952	4	3	sum(0, mN - 1, k -> Binomial.binomial(4*(mN-k),k).multiply(Binomial.binomial(3*k,mN-k-1)).divide(mN-k))
+A137960	parm3	0	A137952	2	5	sum(0, mN - 1, k -> Binomial.binomial(2*(mN-k),k).multiply(Binomial.binomial(5*k,mN-k-1)).divide(mN-k))
+A137961	parm3	0	A137952	5	2	sum(0, mN - 1, k -> Binomial.binomial(5*(mN-k),k).multiply(Binomial.binomial(2*k,mN-k-1)).divide(mN-k))
+A137962	parm3	0	A137952	3	5	sum(0, mN - 1, k -> Binomial.binomial(3*(mN-k),k).multiply(Binomial.binomial(5*k,mN-k-1)).divide(mN-k))
+A137963	parm3	0	A137952	5	3	sum(0, mN - 1, k -> Binomial.binomial(5*(mN-k),k).multiply(Binomial.binomial(3*k,mN-k-1)).divide(mN-k))
+A137964	parm3	0	A137952	4	5	sum(0, mN - 1, k -> Binomial.binomial(4*(mN-k),k).multiply(Binomial.binomial(5*k,mN-k-1)).divide(mN-k))
+A137965	parm3	0	A137952	5	4	sum(0, mN - 1, k -> Binomial.binomial(5*(mN-k),k).multiply(Binomial.binomial(4*k,mN-k-1)).divide(mN-k))
+A137967	parm3	0	A137952	2	6	sum(0, mN - 1, k -> Binomial.binomial(2*(mN-k),k).multiply(Binomial.binomial(6*k,mN-k-1)).divide(mN-k))
+A137968	parm3	0	A137952	6	2	sum(0, mN - 1, k -> Binomial.binomial(6*(mN-k),k).multiply(Binomial.binomial(2*k,mN-k-1)).divide(mN-k))
+A137969	parm3	0	A137952	3	6	sum(0, mN - 1, k -> Binomial.binomial(3*(mN-k),k).multiply(Binomial.binomial(6*k,mN-k-1)).divide(mN-k))
+A137970	parm3	0	A137952	6	3	sum(0, mN - 1, k -> Binomial.binomial(6*(mN-k),k).multiply(Binomial.binomial(3*k,mN-k-1)).divide(mN-k))
+A137971	parm3	0	A137952	4	6	sum(0, mN - 1, k -> Binomial.binomial(4*(mN-k),k).multiply(Binomial.binomial(6*k,mN-k-1)).divide(mN-k))
+A137972	parm3	0	A137952	6	4	sum(0, mN - 1, k -> Binomial.binomial(6*(mN-k),k).multiply(Binomial.binomial(4*k,mN-k-1)).divide(mN-k))
+A137973	parm3	0	A137952	5	6	sum(0, mN - 1, k -> Binomial.binomial(5*(mN-k),k).multiply(Binomial.binomial(6*k,mN-k-1)).divide(mN-k))
+A137974	parm3	0	A137952	6	5	sum(0, mN - 1, k -> Binomial.binomial(6*(mN-k),k).multiply(Binomial.binomial(5*k,mN-k-1)).divide(mN-k))
+
+A153291	A153291	0	k -> Binomial.binomial(3 * k + 1, k).multiply(Binomial.binomial(3 * mN - 2 * k, mN - k)).multiply(    k).divide(3 * k + 1).divide(3 * mN - 2 * k)	|	a(n) = Sum_{k=0..n} C(3k+1,k)/(3k+1) * C(3n-2k,n-k)*k/(3n-2k) for n>0 with a(0)=1.
+A153292	A153291	0	k -> Binomial.binomial(3 * k + 1, k).multiply(Binomial.binomial(3 * mN - k    , mN - k)).multiply(2 * k).divide(3 * k + 1).divide(3 * mN - k    )	|	a(n) = Sum_{k=0..n} C(3k+1,k)/(3k+1) * C(3n-k,n-k)*2k/(3n-k) for n>0 with a(0)=1.
+A153293	A153291	0	k -> Binomial.binomial(3 * k + 1, k).multiply(Binomial.binomial(3 * mN        , mN - k)).multiply(    k).divide(3 * k + 1).divide(    mN        )	|	a(n) = Sum_{k=0..n} C(3k+1,k)/(3k+1) * C(3n,n-k)*k/n for n>0 with a(0)=1.
+A153294	A153291	0	k -> Binomial.binomial(2 * k + 1, k).multiply(Binomial.binomial(2 * mN        , mN - k)).multiply(    k).divide(2 * k + 1).divide(    mN        )	|	a(n) = Sum_{k=0..n} C(2k+1,k)/(2k+1) * C(2n,n-k)*k/n for n>0 with a(0)=1.
+A153295	A153291	0	k -> Binomial.binomial(2 * k + 1, k).multiply(Binomial.binomial(3 * mN - k    , mN - k)).multiply(2 * k).divide(2 * k + 1).divide(3 * mN - k    )	|	a(n) = Sum_{k=0..n} C(2k+1,k)/(2k+1) * C(3n-k,n-k)*2k/(3n-k) for n>0 with a(0)=1.
+A153296	A153291	0	k -> Binomial.binomial(2 * k + 1, k).multiply(Binomial.binomial(3 * mN        , mN - k)).multiply(    k).divide(2 * k + 1).divide(    mN        )	|	a(n) = Sum_{k=0..n} C(2k+1,k)/(2k+1) * C(3n,n-k)*k/n for n>0 with a(0)=1.
+A153297	A153291	0	k -> Binomial.binomial(2 * k + 2, k).multiply(Binomial.binomial(3 * mN - k    , mN - k)).multiply(2 * k).divide(1 * k + 1).divide(3 * mN - k    )	|	a(n) = Sum_{k=0..n} C(2k+2,k)/(k+1) * C(3n-k,n-k)*2k/(3n-k) for n>0 with a(0)=1.
+A153298	A153291	0	k -> Binomial.binomial(2 * k + 2, k).multiply(Binomial.binomial(3 * mN        , mN - k)).multiply(    k).divide(1 * k + 1).divide(    mN        )	|	a(n) = Sum_{k=0..n} C(2k+2,k)/(k+1) * C(3n,n-k)*k/n for n>0 with a(0)=1.
+A153299	A153291	0	k -> Binomial.binomial(3 * k + 1, k).multiply(Binomial.binomial(2 * mN - k    , mN - k)).multiply(    k).divide(3 * k + 1).divide(2 * mN - k    )	|	a(n) = Sum_{k=0..n} C(3k+1,k)/(3k+1) * C(2n-k,n-k)*k/(2n-k) for n>0 with a(0)=1.
+A153390	A153291	0	k -> Binomial.binomial(3 * k + 2, k).multiply(Binomial.binomial(2 * mN - k    , mN - k)).multiply(2 * k).divide(3 * k + 2).divide(2 * mN - k    )	|	a(n) = Sum_{k=0..n} C(3k+2,k)*2/(3k+2) * C(2n-k,n-k)*k/(2n-k) for n>0 with a(0)=1.
+A153391	A153291	0	k -> Binomial.binomial(3 * k + 1, k).multiply(Binomial.binomial(2 * mN        , mN - k)).multiply(    k).divide(3 * k + 1).divide(    mN        )	|	a(n) = Sum_{k=0..n} C(3k+1,k)/(3k+1) * C(2n,n-k)*k/n for n>0 with a(0)=1.
+A153392	A153291	0	k -> Binomial.binomial(3 * k + 1, k).multiply(Binomial.binomial(2 * mN + k    , mN - k)).multiply(3 * k).divide(3 * k + 1).divide(2 * mN + k    )	|	a(n) = Sum_{k=0..n} C(3k+1,k)/(3k+1) * C(2n+k,n-k)*3k/(2n+k) for n>0 with a(0)=1.
+A153393	A153291	0	k -> Binomial.binomial(3 * k + 2, k).multiply(Binomial.binomial(2 * mN        , mN - k)).multiply(2 * k).divide(3 * k + 2).divide(    mN        )	|	a(n) = Sum_{k=0..n} C(3k+2,k)*2/(3k+2) * C(2n,n-k)*k/n for n>0 with a(0)=1.
+A153394	A153291	0	k -> Binomial.binomial(3 * k + 3, k).multiply(Binomial.binomial(2 * mN        , mN - k)).multiply(    k).divide(1 * k + 1).divide(    mN        )	|	a(n) = Sum_{k=0..n} C(3k+3,k)/(k+1) * C(2n,n-k)*k/n for n>0 with a(0)=1.
+A153395	A153291	0	k -> Binomial.binomial(2 * k + 1, k).multiply(Binomial.binomial(4 * mN - 3 * k, mN - k)).multiply(    k).divide(2 * k + 1).divide(4 * mN - 3 * k)	|	a(n) = Sum_{k=0..n} C(2k+1,k)/(2k+1) * C(4n-3k,n-k)*k/(4n-3k) for n>0 with a(0)=1.
+A153397	A153291	0	k -> Binomial.binomial(2 * k + 1, k).multiply(Binomial.binomial(4 * mN        , mN - k)).multiply(    k).divide(2 * k + 1).divide(    mN        )	|	a(n) = Sum_{k=0..n} C(2k+1,k)/(2k+1) * C(4n,n-k)*k/n for n>0 with a(0)=1.
+A153398	A153291	0	k -> Binomial.binomial(3 * k + 1, k).multiply(Binomial.binomial(4 * mN - 2 * k, mN - k)).multiply(    k).divide(3 * k + 1).divide(2 * mN - k    )	|	a(n) = Sum_{k=0..n} C(3k+1,k)/(3k+1) * C(4n-2k,n-k)*k/(2n-k) for n>0 with a(0)=1.
+A153399	A153291	0	k -> Binomial.binomial(3 * k + 1, k).multiply(Binomial.binomial(4 * mN - k    , mN - k)).multiply(3 * k).divide(3 * k + 1).divide(4 * mN - k    )	|	a(n) = Sum_{k=0..n} C(2k+1,k)/(2k+1) * C(4n-k,n-k)*3k/(4n-k) for n>0 with a(0)=1.

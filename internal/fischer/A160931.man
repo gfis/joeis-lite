@@ -1,0 +1,8 @@
+A160931	simple1	1	Z.valueOf(mN + ZUtils.digitSum(mN + 1))	a(n)= n + digital sum(n+1)      nonn,base,synth 1..71   nyi
+A160938	simple1	1	Z.valueOf(mN * ZUtils.digitSum(mN + 1))	a(n)= n * digital sum(n+1)      nonn,base,synth 1..57   nyi
+A160939	simple1	1	Z.valueOf(mN + ZUtils.digitSum(mN - 1))	a(n)= n + digital sum(n-1).   nonn,base,      1..5000 nyi
+A160941	simple1	1	Z.valueOf(mN - ZUtils.digitSum(mN - 1))	a(n)= n - digital sum(n-1)      nonn,base,synth 1..73   nyi
+A160942	simple1	1	Z.valueOf(mN * ZUtils.digitSum(mN - 1))	a(n)= n * digital sum(n-1)      nonn,base,synth 1..58   nyi
+A160943	simple1	1	Z.valueOf(mN + ZUtils.digitSum(mN - 1) + ZUtils.digitSum(mN + 1))	a(n)= n + digital sum(n-1) + digital sum(n+1). nonn,base,changed,synth 1..70   nyi
+A160944	simple1	1	Z.valueOf(mN * ZUtils.digitSum(mN - 1)).multiply(ZUtils.digitSum(mN + 1))	a(n)= n * digital sum(n-1) * digital sum(n+1)   nonn,base,easy,changed,synth    1..48   nyi
+A160949	simple1	1	Z.valueOf(mN - ZUtils.digitSum(mN + 1))	a(n)= n - digital sum(n+1)     base,sign,synth 1..73   nyi

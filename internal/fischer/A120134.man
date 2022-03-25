@@ -1,0 +1,76 @@
+A120134	parm4	0	A120134	 4	 8	2	a(1)= 4; a(n)=floor(( 8+Sum_{k=1..n-1} a(k))/2).	nonn,synth	1..38	nyi
+A120135	parm4	0	A120134	 5	11	2	a(1)= 5; a(n)=floor((11+sum(a(1) to a(n-1)))/2).	nonn,synth	1..37	nyi
+A120136	parm4	0	A120134	 7	14	2	a(1)= 7; a(n)=floor((14+sum(a(1) to a(n-1)))/2).	nonn,	1..1000	nyi
+A120137	parm4	0	A120134	 8	17	2	a(1)= 8; a(n)=floor((17+sum(a(1) to a(n-1)))/2).	nonn,synth	1..37	nyi
+A120138	parm4	0	A120134	10	20	2	a(1)=10; a(n)=floor((20+sum(a(1) to a(n-1)))/2).	nonn,synth	1..36	nyi
+A120139	parm4	0	A120134	11	23	2	a(1)=11; a(n)=floor((23+sum(a(1) to a(n-1)))/2).	nonn,synth	1..36	nyi
+A120140	parm4	0	A120134	13	26	2	a(1)=13; a(n)=floor((26+sum(a(1) to a(n-1)))/2).	nonn,synth	1..36	nyi
+A120141	parm4	0	A120134	14	29	2	a(1)=14; a(n)=floor((29+sum(a(1) to a(n-1)))/2).	nonn,	1..1000	nyi
+A120142	parm4	0	A120134	16	32	2	a(1)=16; a(n)=floor((32+sum(a(1) to a(n-1)))/2).	nonn,synth	1..35	nyi
+A120143	parm4	0	A120134	17	35	2	a(1)=17; a(n)=floor((35+sum(a(1) to a(n-1)))/2).	nonn,changed,	1..1000	nyi
+A120144	parm4	0	A120134	19	38	2	a(1)=19; a(n)=floor((38+sum(a(1) to a(n-1)))/2).	nonn,synth	1..35	nyi
+A120145	parm4	0	A120134	20	41	2	a(1)=20; a(n)=floor((41+sum(a(1) to a(n-1)))/2).	nonn,synth	1..34	nyi
+A120146	parm4	0	A120134	22	44	2	a(1)=22; a(n)=floor((44+sum(a(1) to a(n-1)))/2).	nonn,synth	1..34	nyi
+A120147	parm4	0	A120134	23	47	2	a(1)=23; a(n)=floor((47+sum(a(1) to a(n-1)))/2).	nonn,changed,	1..1000	nyi
+A120148	parm4	0	A120134	25	50	2	a(1)=25; a(n)=floor((50+sum(a(1) to a(n-1)))/2).	nonn,synth	1..34	nyi
+A120149	parm4	0	A120134	 2	 7	3	a(1)= 2; a(n)=floor(( 7+sum(a(1) to a(n-1)))/3).	nonn,synth	1..45	nyi
+A120150	parm4	0	A120134	 3	11	3	a(1)= 3; a(n)=floor((11+sum(a(1) to a(n-1)))/3).	nonn,synth	1..40	nyi
+A120151	parm4	0	A120134	 5	15	3	a(1)= 5; a(n)=floor((15+sum(a(1) to a(n-1)))/3).	nonn,synth	1..40	nyi
+A120152	parm4	0	A120134	 6	19	3	a(1)= 6; a(n)=floor((19+sum(a(1) to a(n-1)))/3).	nonn,synth	1..40	nyi
+A120153	parm4	0	A120134	 7	23	3	a(1)= 7; a(n)=floor((23+sum(a(1) to a(n-1)))/3).	nonn,synth	1..40	nyi
+A120154	parm4	0	A120134	 9	27	3	a(1)= 9; a(n)=floor((27+sum(a(1) to a(n-1)))/3).	nonn,synth	1..40	nyi
+A120155	parm4	0	A120134	10	31	3	a(1)=10; a(n)=floor((31+sum(a(1) to a(n-1)))/3).	nonn,synth	1..40	nyi
+A120156	parm4	0	A120134	11	35	3	a(1)=11; a(n)=floor((35+sum(a(1) to a(n-1)))/3).	nonn,synth	1..40	nyi
+A120157	parm4	0	A120134	13	39	3	a(1)=13; a(n)=floor((39+sum(a(1) to a(n-1)))/3).	nonn,	1..1000	nyi
+A120158	parm4	0	A120134	14	43	3	a(1)=14; a(n)=floor((43+sum(a(1) to a(n-1)))/3).	nonn,	1..1000	nyi
+A120159	parm4	0	A120134	15	47	3	a(1)=15; a(n)=floor((47+sum(a(1) to a(n-1)))/3).	nonn,synth	1..40	nyi
+A120161	parm4	0	A120134	 2	 9	4	a(1)= 2; a(n)=floor(( 9+sum(a(1) to a(n-1)))/4).	nonn,synth	1..50	nyi
+A120162	parm4	0	A120134	 3	14	4	a(1)= 3; a(n)=floor((14+sum(a(1) to a(n-1)))/4).	nonn,synth	1..40	nyi
+A120163	parm4	0	A120134	 4	19	4	a(1)= 4; a(n)=floor((19+sum(a(1) to a(n-1)))/4).	nonn,synth	1..40	nyi
+A120164	parm4	0	A120134	 6	24	4	a(1)= 6; a(n)=floor((24+sum(a(1) to a(n-1)))/4).	nonn,synth	1..40	nyi
+A120165	parm4	0	A120134	 7	29	4	a(1)= 7; a(n)=floor((29+sum(a(1) to a(n-1)))/4).	nonn,	1..10000	nyi
+A120166	parm4	0	A120134	 8	34	4	a(1)= 8; a(n)=floor((34+sum(a(1) to a(n-1)))/4).	nonn,synth	1..40	nyi
+A120167	parm4	0	A120134	 9	39	4	a(1)= 9; a(n)=floor((39+sum(a(1) to a(n-1)))/4).	nonn,changed,	1..1000	nyi
+A120168	parm4	0	A120134	11	44	4	a(1)=11; a(n)=floor((44+sum(a(1) to a(n-1)))/4).	nonn,synth	1..40	nyi
+A120169	parm4	0	A120134	12	49	4	a(1)=12; a(n)=floor((49+sum(a(1) to a(n-1)))/4).	nonn,	1..1000	nyi
+A120171	parm4	0	A120134	 2	11	5	a(1)= 2; a(n)=floor((11+sum(a(1) to a(n-1)))/5).	nonn,synth	1..54	nyi
+A120172	parm4	0	A120134	 3	17	5	a(1)= 3; a(n)=floor((17+sum(a(1) to a(n-1)))/5).	nonn,synth	1..52	nyi
+A120173	parm4	0	A120134	 4	23	5	a(1)= 4; a(n)=floor((23+sum(a(1) to a(n-1)))/5).	nonn,synth	1..40	nyi
+A120174	parm4	0	A120134	 5	29	5	a(1)= 5; a(n)=floor((29+sum(a(1) to a(n-1)))/5).	nonn,synth	1..40	nyi
+A120175	parm4	0	A120134	 7	35	5	a(1)= 7; a(n)=floor((35+sum(a(1) to a(n-1)))/5).	nonn,synth	1..40	nyi
+A120176	parm4	0	A120134	 8	41	5	a(1)= 8; a(n)=floor((41+sum(a(1) to a(n-1)))/5).	nonn,synth	1..40	nyi
+A120177	parm4	0	A120134	 9	47	5	a(1)= 9; a(n)=floor((47+sum(a(1) to a(n-1)))/5).	nonn,	1..1000	nyi
+A120179	parm4	0	A120134	 2	13	6	a(1)= 2; a(n)=floor((13+sum(a(1) to a(n-1)))/6).	nonn,synth	1..58	nyi
+A120180	parm4	0	A120134	 3	20	6	a(1)= 3; a(n)=floor((20+sum(a(1) to a(n-1)))/6).	nonn,synth	1..55	nyi
+A120181	parm4	0	A120134	 4	27	6	a(1)= 4; a(n)=floor((27+sum(a(1) to a(n-1)))/6).	nonn,synth	1..40	nyi
+A120182	parm4	0	A120134	 5	34	6	a(1)= 5; a(n)=floor((34+sum(a(1) to a(n-1)))/6).	nonn,synth	1..40	nyi
+A120183	parm4	0	A120134	 6	41	6	a(1)= 6; a(n)=floor((41+sum(a(1) to a(n-1)))/6).	nonn,synth	1..40	nyi
+A120184	parm4	0	A120134	 8	48	6	a(1)= 8; a(n)=floor((48+sum(a(1) to a(n-1)))/6).	nonn,changed,	1..1000	nyi
+A120185	parm4	0	A120134	 9	55	6	a(1)= 9; a(n)=floor((55+sum(a(1) to a(n-1)))/6).	nonn,synth	1..40	nyi
+A120187	parm4	0	A120134	 2	15	7	a(1)= 2; a(n)=floor((15+sum(a(1) to a(n-1)))/7).	nonn,synth	1..60	nyi
+A120188	parm4	0	A120134	 3	23	7	a(1)= 3; a(n)=floor((23+sum(a(1) to a(n-1)))/7).	nonn,synth	1..40	nyi
+A120189	parm4	0	A120134	 4	31	7	a(1)= 4; a(n)=floor((31+sum(a(1) to a(n-1)))/7).	nonn,synth	1..40	nyi
+A120190	parm4	0	A120134	 5	39	7	a(1)= 5; a(n)=floor((39+sum(a(1) to a(n-1)))/7).	nonn,changed,	1..1000	nyi
+A120191	parm4	0	A120134	 6	47	7	a(1)= 6; a(n)=floor((47+sum(a(1) to a(n-1)))/7).	nonn,changed,synth	1..40	nyi
+A120192	parm4	0	A120134	 7	55	7	a(1)= 7; a(n)=floor((55+sum(a(1) to a(n-1)))/7).	nonn,synth	1..40	nyi
+A120193	parm4	0	A120134	 9	63	7	a(1)= 9; a(n)=floor((63+sum(a(1) to a(n-1)))/7).	nonn,changed,	1..1000	nyi
+A120195	parm4	0	A120134	 2	17	8	a(1)= 2; a(n)=floor((17+sum(a(1) to a(n-1)))/8).	nonn,synth	1..62	nyi
+A120196	parm4	0	A120134	 3	26	8	a(1)= 3; a(n)=floor((26+Sum_{j=1..n-1} a(j))/8).	nonn,synth	1..60	nyi
+A120197	parm4	0	A120134	 4	35	8	a(1)= 4; a(n)=floor((35+sum(a(1) to a(n-1)))/8).	nonn,synth	1..40	nyi
+A120198	parm4	0	A120134	 5	44	8	a(1)= 5; a(n)=floor((44+sum(a(1) to a(n-1)))/8).	nonn,synth	1..40	nyi
+A120199	parm4	0	A120134	 6	53	8	a(1)= 6; a(n)=floor((53+sum(a(1) to a(n-1)))/8).	nonn,	1..1000	nyi
+A120200	parm4	0	A120134	 7	62	8	a(1)= 7; a(n)=floor((62+sum(a(1) to a(n-1)))/8).	nonn,synth	1..40	nyi
+A120201	parm4	0	A120134	 8	71	8	a(1)= 8; a(n)=floor((71+sum(a(1) to a(n-1)))/8).	nonn,	1..1000	nyi
+A120203	parm4	0	A120134	 2	19	9	a(1)= 2; a(n)=floor((19+Sum_{i=1..n-1} a(i))/9).	nonn,changed,synth	1..57	nyi
+A120204	parm4	0	A120134	 3	29	9	a(1)= 3; a(n)=floor((29+sum(a(1) to a(n-1)))/9).	nonn,synth	1..40	nyi
+A120205	parm4	0	A120134	 4	39	9	a(1)= 4; a(n)=floor((39+sum(a(1) to a(n-1)))/9).	nonn,synth	1..58	nyi
+A120206	parm4	0	A120134	 5	49	9	a(1)= 5; a(n)=floor((49+sum(a(1) to a(n-1)))/9).	nonn,synth	1..40	nyi
+A120207	parm4	0	A120134	 6	59	9	a(1)= 6; a(n)=floor((59+sum(a(1) to a(n-1)))/9).	nonn,synth	1..40	nyi
+A120208	parm4	0	A120134	 7	69	9	a(1)= 7; a(n)=floor((69+sum(a(1) to a(n-1)))/9).	nonn,synth	1..55	nyi
+A120209	parm4	0	A120134	 8	79	9	a(1)= 8; a(n)=floor((79+sum(a(1) to a(n-1)))/9).	nonn,synth	1..59	nyi
+A120160	parm4	0	A120160	 1	0	4	a(n)=ceiling( Sum_{i=1..n-1} a(i)/4), a(1)=1.	nonn,changed,synth	1..54	nyi
+A120170	parm4	0	A120160	 1	0	5	a(n)=ceiling( Sum_{i=1..n-1} a(i)/5), a(1)=1.	nonn,changed,	1..1000	nyi
+A120178	parm4	0	A120160	 1	0	6	a(n)=ceiling( sum_{i=1..n-1} a(i)/6), a(1)=1.	nonn,synth	1..62	nyi
+A120186	parm4	0	A120160	 1	0	7	a(n)=ceiling( Sum_{i=1..n-1} a(i)/7), a(1)=1.	nonn,changed,synth	1..65	nyi
+A120194	parm4	0	A120160	 1	0	8	a(n)=ceiling( Sum_{i=1..n-1} a(i)/8), a(1)=1.	nonn,changed,synth	1..68	nyi
+A120202	parm4	0	A120160	 1	0	9	a(n)=ceiling( sum_{i=1..n-1} a(i)/9), a(1)=1.	nonn,	1..10000	nyi

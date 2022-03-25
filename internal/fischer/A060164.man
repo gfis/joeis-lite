@@ -1,0 +1,159 @@
+# A060164	parm2	0	A060164	new A000364()	a(n) = (1/n)*Sum_{d|n} mu(d)*A000364(n/d).
+A060165	parm2	1	A060164	new A000984()	a(n) = (1/n)*Sum_{d|n} mu(d)*A000984(n/d) with mu = A008683.
+# A060166	parm2	0	A060164	new A001641()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001641(n/d).
+A060167	parm2	0	A060166	new A001642()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001642(n/d).
+A060168	parm2	0	A060166	new A001643()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001643(n/d).
+A060169	parm2	0	A060164	new A001945()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001945(n/d).
+A060170	parm2	0	A060170	new A005809()	a(n) = (1/n)*Sum_{d|n} mu(n/d)*A005809(d).
+A060171	parm2	0	A060166	new A006953()	a(n) = (1/n)*Sum_{d|n} mu(d)*A006953(n/d).
+A060172	parm2	0	A060164	new A027306()	a(n) = (1/n)*Sum_{d|n} mu(d)*A027306(n/d).
+A060173	parm2	0	A060166	new A056045()	a(n) = (1/n)*Sum_{d|n} mu(d)*A056045(n/d).
+A060217	parm2	1	A060164	new A001023()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001023(n/d).
+A060218	parm2	1	A060164	new A001024()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001024(n/d).
+A060220	parm2	1	A060164	new A001026()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001026(n/d).
+A060221	parm2	1	A060164	new A001027()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001027(n/d).
+A060222	parm2	1	A060164	new A001029()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001029(n/d).
+A060223	parm2	0	A060164	new A000670()	a(n) = (1/n)*Sum_{d|n} mu(d)*A000670(n/d) for n > 0, where mu is A008683, the Moebius function. - Edited by _Michel Marcus_, Mar 30 2016
+A060224	parm2	0	A060164	new A047863()	a(n) = (1/n)*Sum_{d|n} mu(d)*A047863(n/d).
+A060280	parm2	1	A060164	new A001350()	a(n) = (1/n)*Sum_{d|n} mu(d)*A001350(n/d).
+A060477	parm2	1	A060164	new A000051()	a(n) = (1/n)*Sum_{d|n} mu(d)*A000051(n/d).
+A060481	parm2	1	A060166	new A059991()	a(n) = (1/n)*Sum_{d|n} mu(d)*A059991(n/d). [Corrected by _Petros Hadjicostas_, Jan 14 2018]
+A092239	parm2	0	A060166	new A061693()	a(n) = (1/n)*Sum_{d|n} mu(d)*A061693(n/d).
+A091266	parm2	0	A060166	new A061694()	a(n) = (1/n)*Sum_{d|n} mu(d)*A061694(n/d).
+A185171	parm2	1	A060164	new A024023()	a(n) = (1/n)*Sum_{d|n} mu(d)*A024023(n/d) for n >= 1.
+A185172	parm2	1	A060164	new A024036()	a(n) = (1/n)*Sum_{d|n} mu(d)*A024036(n/d) for n >= 1.
+# Skip 1:
+A091112	parm2	0	A091112	new A061686()	a(n) = (1/n)*Sum_{d|n} mu(d)*A061686(n/d).
+A091160	parm2	0	A091112	new A061687()	a(n) = (1/n)*Sum_{d|n} mu(d)*A061687(n/d).
+A091201	parm2	0	A091112	new A061688()	a(n) = (1/n)*Sum_{d|n} mu(d)*A061688(n/d).
+A091268	parm2	0	A091112	new A061685()	a(n) = (1/n)*Sum_{d|n} mu(d)*A061685(n/d).
+A091315	parm2	0	A091112	new A061684()	a(n) = (1/n)*Sum_{d|n} mu(d)*A061684(n/d).
+
+A324485	parm2	0	A060170	new A152152()	a(n) = (1/n)*Sum_{d|n} mu(n/d)*A152152(d).
+A324489	parm2	0	A060170	new A324487()	a(n) = (1/n)*Sum_{d|n} mu(n/d)*A324487(d).
+
+# A056267	parm2	1	A056267	new A000918()	a(n) = Sum_{d|n} mu(d)*A000918(n/d), n>0.
+A056268	parm2	1	A056267	new A001117()	sum mu(d)*A001117(n/d) where d|n.
+A056269	parm2	1	A056271	new A000919()	sum mu(d)*A000919(n/d) where d|n.
+A056270	parm2	1	A056267	new A001118()	Sum mu(d)*A001118(n/d) where d|n.
+# A056271	parm2	1	A056267	new A000920()	Sum mu(d)*A000920(n/d) where d|n.
+# A056274	parm2	1	A056267	new A007051()	Sum mu(d)*A007051(n/d-1) where d|n and n>0.
+A056274	summu1	1	mN	d -> Z.THREE.pow(mN / d - 1).add(1).divide2().multiply(Mobius.mobius(d))	
+# A056275	parm2	1	A056267	new A007581()	a(n) = Sum_{d|n} mu(d)*A007581(n/d-1).
+A056275	summu1	1	mN	d -> Z.ONE.shiftLeft(mN / d - 1).add(1).multiply(Z.ONE.shiftLeft(mN / d - 1).add(2)).divide(6).multiply(Mobius.mobius(d))
+A056276	parm2	1	A056267	new A056272()	a(n) = Sum_{d|n} mu(d)*A056272(n/d).
+A056277	parm2	1	A056267	new A056273()	sum mu(d)*A056273(n/d) where d|n and n>0.
+A056278	parm2	1	A056267	new A000225()	a(n) = Sum_{d|n} mu(d)*A000225(n/d-1) where n>0.
+A056288	parm2	1	A056271	new A056283()	Sum mu(d)*A056283(n/d) where d|n.
+A056289	parm2	1	A056271	new A056284()	a(n) = Sum_{d|n} mu(d)*A056284(n/d).
+A056290	parm2	1	A056271	new A056285()	sum mu(d)*A056285(n/d) where d|n.
+A056291	parm2	1	A056271	new A056286()	Sum mu(d)*A056286(n/d) where d|n.
+# A056292	null	Number of n-bead necklace structures using a maximum of four different colored beads.	nonn,changed,synth	1..28	nyi
+# A056293	null	Number of n-bead necklace structures using a maximum of five different colored beads.	nonn,	1..500	nyi
+# A056294	null	Number of n-bead necklace structures using a maximum of six different colored beads.	nonn,synth	1..23	nyi
+# A056295	a(n) = A000013(n) - 1.	Number of n-bead necklace structures using exactly two different colored beads.	nonn,easy,	1..1000	nyi
+# A056296	a(n) = A002076(n) - A000013(n).	Number of n-bead necklace structures using exactly three different colored beads.	nonn,synth	1..31	nyi
+# A056297	a(n) = A056292(n) - A002076(n).	Number of n-bead necklace structures using exactly four different colored beads.	nonn,synth	1..28	nyi
+# A056298	a(n) = A056293(n) - A056292(n).	Number of n-bead necklace structures using exactly five different colored beads.	nonn,synth	1..24	nyi
+# A056299	a(n) = A056294(n) - A056293(n).	Number of n-bead necklace structures using exactly six different colored beads.	nonn,synth	1..24	nyi
+# A056300	a(n) = Sum_{d|n} mu(d) * A056292(n/d)	Number of primitive (period n) n-bead necklace structures using a maximum of four different colored beads.	nonn,synth	1..25	nyi
+# A056301	a(n) = Sum_{d|n} mu(d) * A056293(n/d)	Number of primitive (period n) n-bead necklace structures using a maximum of five different colored beads.	nonn,synth	1..24	nyi
+# A056302	parm2	1	A056267	new A056294()	sum mu(d)*A056294(n/d)	Number of primitive (period n) n-bead necklace structures using a maximum of six different colored beads.	nonn,synth	1..23	nyi
+# A056303	PrependSequence	Number of primitive (period n) n-bead necklace structures using exactly two different colored beads.	nonn,synth	1..37	unkn
+# A056304	sum mu(d)*A056296(n/d)	A002075(n)-A000048(n)	Number of primitive (period n) n-bead necklace structures using exactly three different colored beads.	nonn,synth	1..27	nyi
+# A056305	Sum mu(d)*A056297(n/d)	A056300(n)-A002075(n)	Number of primitive (period n) n-bead necklace structures using exactly four different colored beads.	nonn,synth	1..25	nyi
+# A056306	Sum mu(d)*A056298(n/d)	A056301(n)-A056300(n)	Number of primitive (period n) n-bead necklace structures using exactly five different colored beads.	nonn,synth	1..24	nyi
+# A056307	Sum mu(d)*A056299(n/d)	A056302(n)-A056301(n)
+A303546	parm2	1	A056267	new A007716()	a(n) = Sum_{d|n} mu(d)*A007716(n/d).
+A140706	parm2	1	A056271	new A014683()	a(n) = Sum_{d|n} mu(d)*A014683(n/d).
+A303551	parm2	1	A056267	new A034691()	a(n) = Sum_{d|n} mu(d)*A034691(n/d).
+
+# A056458	parm2	1	A056267	new A016116()	a(n) = Sum_{d|n} mu(d)*A016116(1 + n/d)
+A056458	summu1	1	mN	d -> Z.ONE.shiftLeft((mN / d + 1)/2).multiply(Mobius.mobius(d))
+A056459	parm2	1	A056267	new A056449()	a(n) = Sum_{d | n} mu(d)*A056449(n/d).
+A056460	parm2	1	A056267	new A056450()	a(n) = Sum_{d|n} mu(d)*A056450(n/d).
+A056461	parm2	1	A056267	new A056451()	Sum_{d|n} mu(d)*A056451(n/d).
+A056462	parm2	1	A056267	new A056452()	a(n) = Sum_{d|n} mu(d)*A056452(n/d).
+A056463	parm2	1	A056271	new A056453()	a(n) = Sum_{d|n} mu(d)*A056453(n/d).
+A056464	parm2	1	A056271	new A056454()	a(n) = Sum_{d|n} mu(d)*A056454(n/d).
+A056465	parm2	1	A056271	new A056455()	a(n) = Sum_{d|n} mu(d)*A056455(n/d).
+A056466	parm2	1	A056271	new A056456()	a(n) = Sum_{d|n} mu(d)*A056456(n/d).
+A056467	parm2	1	A056271	new A056457()	a(n) = Sum_{d|n} mu(d)*A056457(n/d).
+# A056362	parm2	1	A056267	new A056353()	a(n) = Sum_{d|n} mu(d)*A056353(n/d) for n > 0.
+# A056363	parm2	1	A056267	new A056354()	a(n) = Sum_{d|n} mu(d)*A056354(n/d) for n > 0.
+# A056364	parm2	1	A056267	new A056355()	a(n) = Sum_{d|n} mu(d)*A056355(n/d) for n > 0.
+# A056365	parm2	1	A056267	new A056356()	a(n) = Sum_{d|n} mu(d)*A056356(n/d) for n > 0.
+
+# A056476	parm2	1	A056267	new A016116()	a(n) = Sum_{d|n} mu(d)*A016116(n/d-1) for n > 0.
+
+# A056476	summu1	1	mN	d -> Z.ONE.shiftLeft(mN / (2*d) + 1).multiply(Mobius.mobius(d))
+# A056477	parm2	1	A056271	new A124302()	a(n) = Sum_{d|n} mu(d)*A124302(ceiling(n/(2*d))) for n > 0.
+# A056478	parm2	1	A056271	new A124303()	a(n) = Sum_{d|n} mu(d)*A124303(ceiling(n/(2*d))) for n > 0.
+# A056479	parm2	1	A056271	new A056470()	a(n) = Sum_{d|n} mu(d)*A056470(n/d) for n > 0.
+# A056480	parm2	1	A056271	new A056471()	a(n) = Sum_{d|n} mu(d)*A056471(n/d) for n > 0.
+# A056493	parm2	1	A056271	new A029744()	a(n) = Sum_{d|n} mu(d)*A029744(n+1) b(n/d), where b(n) = . [Corrected by _Petros Hadjicostas_, Oct 15 2017. The original formula referred to a previous version of sequence A029744 that had a different offset.]
+# A056494	parm2	1	A056271	new A038754()	a(n) = Sum_{d|n} mu(d)*A038754(n/d+1).
+A056495	parm2	1	A056271	new A056486()	a(n) = Sum_{d|n} mu(d)*A056486(n/d).
+# A056496	parm2	1	A056271	new A056487()	a(n) = Sum_{d|n} mu(d)*A056487(n/d).
+# A056498	parm2	1	A056271	new A027383()	a(n) = Sum_{d|n} mu(d)*A027383(n/d-2) assuming that A027383(-1)=0.
+
+A056497	parm2	1	A056271	new A056488()	a(n) = Sum_{d|n} mu(d)*A056488(n/d).
+A056499	parm2	1	A056271	new A056489()	a(n) = Sum_{d|n} mu(d)*A056489(n/d).
+A056500	parm2	1	A056271	new A056490()	a(n) = Sum_{d|n} mu(d)*A056490(n/d).
+A056501	parm2	1	A056271	new A056491()	a(n) = Sum_{d|n} mu(d)*A056491(n/d).
+A056502	parm2	1	A056271	new A056492()	a(n) = Sum_{d|n} mu(d)*A056492(n/d).
+# A056513	parm2	1	A056267	new A056503()	a(n) = Sum_{d|n} mu(d)*A056503(n/d) for n > 0.
+# A056514	parm2	1	A056267	new A056504()	a(n) = Sum_{d|n} mu(d)*A056504(n/d) for n > 0.
+# A056515	parm2	1	A056267	new A056505()	a(n) = Sum_{d|n} mu(d)*A056505(n/d) for n > 0.
+# A056516	parm2	1	A056267	new A056506()	a(n) = Sum_{d|n} mu(d)*A056506(n/d) for n > 0.
+# A056517	parm2	1	A056267	new A056507()	a(n) = Sum_{d|n} mu(d)*A056507(n/d) for n > 0.
+A296975	parm2	1	A056267	new A000670()	a(n) = Sum_{d|n} mu(d)*A000670(n/d).
+A062953	parm2	1	A056267	new A001615()	a(n) = Sum_{d|n} mu(d)*A001615(d), where psi is A001615.
+
+# A060216	parm2	1	A060164	new A000051()	a(n) = (1/n)*Sum_{d|n} mu(d)*13^(n/d).
+# A060219	parm2	1	A060164	new A000051()	a(n) = (1/n)*Sum_{d|n} mu(d)*16^(n/d).
+# A306715	parm2	1	A060164	new A000051()	a(n) = (1/n)*Sum_{d|n} mu(d)*2^(n*(n/d-1)/2 + n*floor(d/2)/d) for n > 0. - _Andrew Howroyd_, Aug 15 2019
+
+# A069828	parm2	1	A060164	new A000051()	a(n) = (n*(n-1)/2)*Sum_{d|n} mu(d)*tau(d)/d, n > 1.
+# A344996	parm2	1	A060164	new A000051()	a(n) = -[Sum_{d|n} mu(d)^2*d]*[Sum_{d|n, d<n} mu(n/d)*A001065(d)].
+# A185171	parm2	1	A060164	new A000051()	a(1) = 2 and a(n) = (1/n)*Sum_{d|n} mu(d)*3^(n/d) for n > 1 (from Eq. (95) in Novelli and Thibon (2008) or Eq. (100) in Novelli and Thibon (2010)).
+# A185172	parm2	1	A060164	new A000051()	a(1) = 3 and a(n) = (1/n)*Sum_{d|n} mu(d)*4^(n/d) for n > 1 (from Eq. (95) in Novelli and Thibon (2008) or Eq. (100) in Novelli and Thibon (2010)).
+# A324461	parm2	1	A060164	new A000051()	a(n) = Sum_{d|n} mu(d)*2^(n*(n/d-1)/2 + n*floor(d/2)/d) for n > 0. - _Andrew Howroyd_, Aug 15 2019
+# A162510	parm2	1	A060164	new A000051()	a(n) = Sum_{d|n} mu(d)*2^A001222(n/d). - _Daniel Suteu_, May 21 2020
+
+A133755	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(mN / d) * d / 3)	a(n) = Sum_{d|n} mu(d)*[n/(3d)] = Sum_{d|n} mu(n/d)*d/3. - _Max Alekseyev_
+A338656	summu1	1	mN	d -> Binomial.binomial(d + mN/d - 2, d - 1).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*binomial(d + n/d - 2, d-1).
+A338657	summu1	1	mN	d -> Binomial.binomial(d + mN/d - 1, d).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*.
+A063453	summu1	1	mN	d -> Z.valueOf(d).pow(3).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*d^3.
+A189922	summu1	1	mN	d -> Z.valueOf(d).pow(4).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*d^4 with the Moebius function mu = A008683.
+A189923	summu1	1	mN	d -> Z.valueOf(d).pow(5).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*d^5 with the Moebius function mu = A008683.
+A307653	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*d^d.
+A321222	summu1	1	mN	d -> Z.valueOf(d).pow(mN).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*d^n.
+A342693	summu1	1	mN	d -> Z.valueOf(mN / (d*d)).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*floor(n/d^2).
+A347251	summu1	1	mN	d -> Z.valueOf(d).pow(mN).multiply(Mobius.mobius(mN/d)).multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*mu(n/d)*d^n.
+A271102	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(mN/d)).square().multiply(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*mu(n/d)^2. - _Ridouane Oudra_, Jan 21 2021
+# A300717	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*phi(d)*phi(n/d). - _Ridouane Oudra_, Nov 18 2019
+# A276833	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*phi(d).
+# A106833	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*sigma(2*n/d)). - _Benoit Cloitre_, Oct 18 2009
+# A306408	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*tau(d)*sigma(n/d). - _Ridouane Oudra_, Nov 24 2019
+# A076479	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)*tau_2(d) = Sum_{d|n} A008683(d)*A000005(d) . - _Enrique Pérez Herrero_, Jan 17 2013
+# A345371	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)^2*c(n/d^2), where c(n) = ceiling(n) - floor(n).
+# A319132	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)^2*d*tau(n/d). - _Ridouane Oudra_, Nov 13 2019
+A065958	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d)).square().multiply(d*d)	a(n) = Sum_{d|n} mu(d)^2*d^2. - _Joerg Arndt_, Jul 06 2011
+A321236	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d)).square().multiply(Z.valueOf(d).pow(mN))	a(n) = Sum_{d|n} mu(d)^2*d^n.
+# A191750	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)^2*phi(d)*tau(n/d). - _Ridouane Oudra_, Nov 19 2019
+# A343442	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)^2*sigma(d).
+# A082476	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)^2*tau(d)^2.
+# A344337	summu1	1	mN	d -> Z.valueOf(Mobius.mobius(d))	a(n) = Sum_{d|n} mu(d)^2*tau(d)^3.
+# A321390	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	The Moebius transform c of a sequence b is c(n) = Sum_{d|n} mu(d)*b(n/d).
+# A332881	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = denominator of Sum_{d|n} mu(d)^2/d.
+# A332467	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = n!*Sum_{d|n} mu(d) / (d!)^(n/d).
+# A332466	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = n!*Sum_{d|n} mu(d) / d!.
+# A316985	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = n^2*Sum_{d|n} mu(d)^2/d for n odd.
+# A065958	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = n^2*Sum_{d|n} mu(d)^2/d^2 - _Benoit Cloitre_, Apr 07 2002
+# A065959	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = n^3*Sum_{d|n} mu(d)^2/d^3. - _Benoit Cloitre_, Apr 07 2002
+# A065960	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = n^4*Sum_{d|n} mu(d)^2/d^4. - _Benoit Cloitre_, Apr 07 2002
+# A063453	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	More generally, Dirichlet g.f. for Sum_{d|n} mu(d)*d^k, the Dirichlet inverse of the Jordan function J_k, is zeta(s)/zeta(s-k).
+# A332880	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = numerator of Sum_{d|n} mu(d)^2/d.
+# A058026	summu1	1	mN	d -> Z.valueOf(d).pow(d).multiply(Mobius.mobius(d))	a(n) = phi(n)*Sum_{d|n} mu(d)/phi(d), where mu(k) is the Moebius function and phi(k) is the Euler totient function. - _Daniel Suteu_, Jun 23 2018
+
