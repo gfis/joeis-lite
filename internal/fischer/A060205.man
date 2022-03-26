@@ -1,0 +1,63 @@
+A056852	parm2	2	A060205	p -> Z.valueOf(p).pow(p).add(1).divide(p + 1)		pr
+A060205	parm2	1	A060205	p -> Z.valueOf(p).pow(p).pow(p)		 where p is prime(n).
+A086801	parm2	1	A060205	p -> Z.valueOf(p).add(-3)			a(n) = P - 3.
+A098102	parm2	1	A060205	p -> Z.ONE.shiftLeft(p - 1).add(-1)		2^(p - 1) - 1		 where p is prime.     nonn,synth      1..18   nyi
+A098104	parm2	1	A060205	p -> Z.SEVEN.pow(p).subtract(Z.valueOf(p).pow(7))		 where p is prime. sign,synth      1..12   nyi
+A098640	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(1)				2^p + 1 		where p is prime.       nonn,easy,      1..200  nyi
+A098773	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).multiply(p).add(1)		p*2^p + 1 		where p is prime.     nonn,synth      1..17   nyi
+A098815	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(- 7)				2^p - 7 		where p is prime.       sign,   1..200  nyi
+A098935	parm2	1	A060205	p -> Z.valueOf(p*p - 1).multiply(p*p).add(-1).multiply(p).add(-1).multiply(p*p)	p^7 - p^5 - p^3 - p^2		p^7 - p^5 - p^3 - p^2 		where p is prime. nonn,synth      1..19   nyi
+A098996	parm2	1	A060205	p -> Z.valueOf(p).multiply(p + 1).multiply(2*p + 1) 		p(p+1)(2p+1) 		where p is prime.  nonn,changed,   1..1000 nyi
+A098997	parm2	1	A060205	p -> Z.valueOf(p).multiply(p + 1).multiply(2*p + 1).multiply(3*p*p+3*p-1).divide(30)	1/30*(p(p+1)(2p+1)(3p^2+3p-1)) 			(1/30)*(p(p+1)(2p+1)(3p^2+3p-1)) 		where p is prime.      nonn,changed,synth      1..24   nyi
+A098998	parm2	1	A060205	p -> Z.valueOf(p).multiply(11*p-7) 				p(11p-7) 		where p is prime.      nonn,synth      1..60   nyi
+A099051	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).multiply(p).add(-1) 				p*2^p - 1 		where p is prime.     nonn,easy,synth 1..17   nyi
+A099772	parm2	1	A060205	p -> Z.ONE.shiftLeft(p*p) 				2^(p^2) 		where p is prime.       nonn,synth      1..7    nyi
+A100626	parm2	1	A060205	p -> Z.ONE.shiftLeft(2*p+1) 				2^(2p+1) 		where p is prime.  nonn,changed,   1..260  nyi
+A100627	parm2	1	A060205	p -> Z.THREE.pow(2*p + 1) 				3^(2p + 1) 		where p is prime.    nonn,synth      1..13   nyi
+A100636	parm2	1	A060205	p -> Z.ONE.shiftLeft(2*p*p) 				4^(p^2) 		where p is prime.       nonn,synth      1..5    nyi
+A104129	parm2	1	A060205	p -> Z.valueOf(p).pow(p-1).add(p) 				p^(p-1)+p 		where p is prime.        easy,nonn,synth 1..10   nyi
+A113935	parm2	1	A060205	p -> Z.valueOf(p).add(+3)			a(n) = P + 3.
+A139049	parm2	1	A060205	p -> Z.valueOf(p).add(+6)			a(n) = P + 6.
+A139287	parm2	1	A060205	p -> Z.ONE.shiftLeft(2*p - 1).add(-1)		 where p is prime.       nonn,easy,      1..200  nyi
+A139288	parm2	1	A060205	p -> Z.ONE.shiftLeft(2*p - 1).divide2()		 where p is prime. nonn,changed,synth      1..14   nyi
+A139289	parm2	1	A060205	p -> Z.ONE.shiftLeft(2*p - 1).divide2().add(-1)	,		 where p is prime.     nonn,   1..260  nyi
+A139290	parm2	1	A060205	p -> Z.ONE.shiftLeft(2*p - 1).divide(4)		2^(2p - 1)/4,		 where p is prime. nonn,synth      1..14   nyi
+A139292	parm2	1	A060205	p -> Z.ONE.shiftLeft(2*p - 1).divide(8)		2^(2p - 1)/8,		 where p is prime. nonn,synth      1..14   nyi
+A139293	parm2	1	A060205	p -> Z.ONE.shiftLeft(2*p - 1).divide(8).add(-1)		(2^(2p - 1)/8)-1,		 where p is prime.     nonn,synth      1..14   nyi
+A140353	parm2	1	A060205	p -> Z.valueOf(p).add(+9)			a(n) = P + 9.
+A173064	parm2	1	A060205	p -> Z.valueOf(p).add(-5)			a(n) = P - 5.
+A174623	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(1).square() 				(2^p+1)^2 		where p is prime.     nonn,   1..200  nyi
+A174744	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(-1).square() 				(2^p-1)^2 		where p is prime.     nonn,synth      1..15   nyi
+A175221	parm2	1	A060205	p -> Z.valueOf(p).add(+4)			a(n) = P + 4.
+A175222	parm2	1	A060205	p -> Z.valueOf(p).add(+5)			a(n) = P + 5.
+A175223	parm2	1	A060205	p -> Z.valueOf(p).add(+7)			a(n) = P + 7.
+A175224	parm2	1	A060205	p -> Z.valueOf(p).add(+8)			a(n) = P + 8.
+A175225	parm2	1	A060205	p -> Z.valueOf(p).add(+10)			a(n) = P + 10.
+A211979	parm2	1	A060205	p -> new Z(Z.ONE.shiftLeft(p - 1).subtract(1).toString(2) + Z.ONE.shiftLeft(p - 1).toString(2), 10)		p 1's followed by p - 1 0's,		 where p is prime(n).   nonn,base,changed,synth 1..9    nyi
+A229065	parm2	1	A060205	p -> Z.ONE.shiftLeft(p - 1).add(3)	2^(p-1) + 3		 where p is prime.
+A238693	parm2	3	A238693	3	Quotients connected with the Banach matchboxes problem: Sum_{i=1..prime(n)-5} 2^(i-1)*binomial(i+1,2)/prime(n) (case 2).        nonn,changed,synth      3..21   nyi
+A238697	parm2	4	A238693	4	Quotients connected with the Banach matchboxes problem: Sum_{i=1..prime(n)-7} 2^(i-1)*binomial(i+2,3)/prime(n) (case 3).        nonn,synth      4..21   nyi
+A238698	parm2	5	A238693	5	Quotients connected with the Banach matchboxes problem: Sum_{i=1..prime(n)-9} 2^(i-1)*binomial(i+3,4)/prime(n) (case 4).        nonn,synth      5..21   nyi
+A238700	parm2	6	A238693	6	Quotients connected with the Banach matchboxes problem: Sum_{i=1..prime(n)-11} 2^(i-1)*binomial(i+4,5)/prime(n) (case 5).       nonn,synth      6..21   nyi
+A239690	parm2	1	A060205	p -> Z.valueOf(ZUtils.digitSum(p, 4))		Base 4 sum of digits of prime(n).       nonn,base,hear, 1..10000        nyi
+A239691	parm2	1	A060205	p -> Z.valueOf(ZUtils.digitSum(p, 5))		Base 5 sum of digits of prime(n).       nonn,base,      1..10000        nyi
+A239692	parm2	1	A060205	p -> Z.valueOf(ZUtils.digitSum(p, 6))		Base 6 sum of digits of prime(n).       nonn,base,      1..10000        nyi
+A239693	parm2	1	A060205	p -> Z.valueOf(ZUtils.digitSum(p, 7))		Base 7 sum of digits of prime(n).       nonn,base,      1..10000        nyi
+A239694	parm2	1	A060205	p -> Z.valueOf(ZUtils.digitSum(p, 8))		Base 8 sum of digits of prime(n).       nonn,base,      1..10000        nyi
+A239695	parm2	1	A060205	p -> Z.valueOf(ZUtils.digitSum(p, 9))		Base 9 sum of digits of prime(n).       nonn,base,      1..10000        nyi
+A241573	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(3)				2^p + 3 		where p is prime.       nonn,   1..200  nyi
+A241676	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(- 3)				2^p - 3 		where p is prime.       nonn,   1..200  nyi
+A241677	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(5)				2^p + 5 		where p is prime.       nonn,   1..200  nyi
+A241678	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(- 5)				2^p - 5 		where p is prime.       sign,   1..200  nyi
+A241679	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(7)				2^p + 7 		where p is prime.       nonn,   1..200  nyi
+A241680	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(11) 				2^p + 11 		where p is prime.      nonn,   1..200  nyi
+A242083	parm2	1	A060205	p -> Z.THREE.pow(p).subtract(Z.ONE.shiftLeft(p)).add(-1)		 where p is prime.        nonn,changed,   1..320  nyi
+A242084	parm2	1	A060205	p -> Z.FIVE.pow(p).subtract(Z.ONE.shiftLeft(2*p)).add(-1)		5^p - 4^p - 1 where p is prime.        nonn,less,      1..100  nest
+A244841	parm2	1	A060205	p -> Z.FOUR.pow(p).subtract(Z.THREE.pow(p)).add(-1)		 where p is prime.        nonn,   1..250  nyi
+A260531	parm2	1	A060205	p -> Z.ONE.shiftLeft(p).add(1).pow(p - 1).mod(Z.valueOf(p*p))		 (2^p+1)^(p-1) modulo p^2 where p is prime(n).
+A341655	parm2	1	A060205	p -> Cheetah.factor(Z.valueOf(p).pow(2).subtract(1)).sigma0()		a(n) is the number of divisors of prime(n)^2 - 1.       nonn,new,synth  1..66   nyi
+A341656	parm2	1	A060205	p -> Cheetah.factor(Z.valueOf(p).pow(4).subtract(1)).sigma0()		a(n) is the number of divisors of prime(n)^4 - 1.       nonn,new,synth  1..55   nyi
+A341657	parm2	1	A060205	p -> Cheetah.factor(Z.valueOf(p).pow(6).subtract(1)).sigma0()		a(n) is the number of divisors of prime(n)^6 - 1.       nonn,new,synth  1..51   nyi
+A341663	parm2	1	A060205	p -> Cheetah.factor(Z.valueOf(p).pow(3).subtract(1)).sigma0()		a(n) is the number of divisors of prime(n)^3 - 1.       nonn,new,synth  1..66   nyi
+A341664	parm2	1	A060205	p -> Cheetah.factor(Z.valueOf(p).pow(5).subtract(1)).sigma0()		a(n) is the number of divisors of prime(n)^5 - 1.       nonn,new,synth  1..66   nyi
+A341668	parm2	1	A060205	p -> Cheetah.factor(Z.valueOf(p).pow(7).subtract(1)).sigma0()		a(n) is the number of divisors of prime(n)^7 - 1.       nonn,new,synth  1..64   nyi

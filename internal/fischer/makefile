@@ -6112,6 +6112,15 @@ power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
 # A158645 a(n) = 729*n^2 + 27.
 # A158646 a(n) = 54*n^2 + 1.
 #-------------------
+primen: # Numbers derived from primes
+	grep -i "prime" $(COMMON)/joeis_names.txt \
+	| perl primen.pl \
+	2>       $@.rest.tmp \
+	| sort -k4,4 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp $@.rest.tmp
+#-------------------
 # Binary quadratic forms - Wiki has 695
 qfb: qfb0
 qfb0:

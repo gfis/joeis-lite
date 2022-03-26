@@ -1,0 +1,59 @@
+A057934	parm3	0	A057934	10	1		Number of prime factors of 10^n + 1 (counted with multiplicity).	nonn,changed,	1..310	nyi
+A057935	parm3	0	A057934	9	1		Number of prime factors of 9^n + 1 (counted with multiplicity).	nonn,changed,	1..329	nyi
+A057936	parm3	0	A057934	8	1		Number of prime factors of 8^n + 1 (counted with multiplicity).	nonn,changed,	1..354	nyi
+A057937	parm3	0	A057934	7	1		Number of prime factors of 7^n + 1 (counted with multiplicity).	nonn,changed,	1..372	nyi
+A057938	parm3	0	A057934	6	1		Number of prime factors of 6^n + 1 (counted with multiplicity).	nonn,changed,	1..408	nyi
+A057939	parm3	0	A057934	5	1		Number of prime factors of 5^n + 1 (counted with multiplicity).	nonn,changed,	1..451	nyi
+A057940	parm3	0	A057934	4	1		Number of prime factors of 4^n + 1 (counted with multiplicity).	nonn,changed,	1..531	nyi
+A057941	parm3	0	A057934	3	1		Number of prime factors of 3^n + 1 (counted with multiplicity).	nonn,changed,	1..658	nyi
+A057951	parm3	0	A057934	10	-1		Number of prime factors of 10^n - 1 (counted with multiplicity).	nonn,changed,	1..322	nyi
+A057952	parm3	0	A057934	9	-1		Number of prime factors of 9^n - 1 (counted with multiplicity).	nonn,changed,	1..330	nyi
+A057953	parm3	0	A057934	8	-1		Number of prime factors of 8^n - 1 (counted with multiplicity).	nonn,changed,	1..402	nyi
+A057954	parm3	0	A057934	7	-1		Number of prime factors of 7^n - 1 (counted with multiplicity).	nonn,changed,	1..378	nyi
+A057955	parm3	0	A057934	6	-1		Number of prime factors of 6^n - 1 (counted with multiplicity).	nonn,changed,	1..420	nyi
+A057956	parm3	0	A057934	5	-1		Number of prime factors of 5^n - 1 (counted with multiplicity).	nonn,changed,	1..448	nyi
+A057957	parm3	0	A057934	4	-1		Number of prime factors of 4^n - 1 (counted with multiplicity).	nonn,changed,	1..603	nyi
+A057958	parm3	0	A057934	3	-1		Number of prime factors of 3^n - 1 (counted with multiplicity).	nonn,changed,	1..660	nyi
+A135621	parm3	0	A057934	11	2		Number of prime factors of 11^n + 2 (counted with multiplicity).
+A085021	parm2	0	A085021	2		Number of prime factors of cyclotomic(n,2), which is A019320(n), the value of the n-th cyclotomic polynomial evaluated at x=2.  nonn,   1..500  nyi
+A085028	parm2	0	A085021	3		Number of prime factors of cyclotomic(n,3), which is A019321(n), the value of the n-th cyclotomic polynomial evaluated at x=3.  nonn,synth      1..100  nyi
+A085029	parm2	0	A085021	4		Number of prime factors of cyclotomic(n,4), which is A019322(n), the value of the n-th cyclotomic polynomial evaluated at x=4.  nonn,synth      1..100  nyi
+A085030	parm2	0	A085021	5		Number of prime factors of cyclotomic(n,5), which is A019323(n), the value of the n-th cyclotomic polynomial evaluated at x=5.  nonn,synth      1..100  nyi
+A085031	parm2	0	A085021	6		Number of prime factors of cyclotomic(n,6), which is A019324(n), the value of the n-th cyclotomic polynomial evaluated at x=6.  nonn,synth      1..91   nyi
+A085032	parm2	0	A085021	7		Number of prime factors of cyclotomic(n,7), which is A019325(n), the value of the n-th cyclotomic polynomial evaluated at x=7.  nonn,synth      1..84   nyi
+A085033	parm2	0	A085021	8		Number of prime factors of cyclotomic(n,8), which is A019326(n), the value of the n-th cyclotomic polynomial evaluated at x=8.  nonn,synth      1..84   nyi
+A085034	parm2	0	A085021	9		Number of prime factors of cyclotomic(n,9), which is A019327(n), the value of the n-th cyclotomic polynomial evaluated at x=9.  nonn,synth      1..78   nyi
+A085035	parm2	0	A085021	10		Number of prime factors of cyclotomic(n,10), which is A019328(n), the value of the n-th cyclotomic polynomial evaluated at x=10.        nonn,changed,   1..322  nyi
+
+A085097	parm2	1	A085097	3	Ramanujan sum c_n(3).   sign,easy,mult,changed, 1..65537        nyi
+A085384	parm2	1	A085097	4	Ramanujan sum c_n(4).   sign,mult,changed,      1..65537        nyi
+A085639	parm2	1	A085097	5	Ramanujan sum c_n(5).   sign,mult,changed,      1..65537        nyi
+A085906	parm2	1	A085097	6	Ramanujan sum c_n(6).   sign,mult,changed,      1..65537        nyi
+A086831	parm2	1	A085097	2	Ramanujan sum c_n(2).   sign,easy,mult,changed, 1..65537        nyi
+
+A085524	simple0	0	Z.valueOf(mN).pow(2*mN - 1)	a(0) = 0; a(n) = n^(2*n-1) for n > 0.	nonn,changed,	0..100	nyi
+A085525	simple0	0	Z.valueOf(mN).pow(2*mN + 2)	a(n) = n^(2*n + 2).	nonn,changed,synth	0..14	nyi
+A085527	simple0	0	Z.valueOf(2*mN + 1).pow(mN)	a(n) = (2n+1)^n.	nonn,easy,changed,	0..350	nyi
+A085528	simple0	0	Z.valueOf(2*mN + 1).pow(mN + 1)	a(n) = (2*n+1)^(n+1).	nonn,easy,changed,	0..100	nyi
+A085531	simple0	0	Z.valueOf(2*mN + 1).pow(2*mN - 1)	a(n) = (2*n+1)^(2*n-1).	nonn,	0..195	nyi
+A085532	simple0	0	Z.valueOf(2*mN).pow(mN + 1)	a(n) = (2n)^(n+1).	nonn,synth	0..16	nyi
+A085533	simple0	0	Z.valueOf(2*mN).pow(2*mN + 1)	a(n) = (2n)^(2n+1).	nonn,synth	0..13	nyi
+A085534	simple0	0	Z.valueOf(2*mN).pow(2*mN)	a(n) = (2n)^(2n).	nonn,changed,	0..100	nyi
+A085535	simple1	0	Z.valueOf(2*mN).pow(2*mN - 1)	a(n) = (2n)^(2n-1).	nonn,changed,synth	1..13	nyi
+A085536	simple0	0	Z.valueOf(3*mN).pow(3*mN)	a(n) = (3n)^(3n).	nonn,synth	0..11	nyi
+A085603	simple0	0	Z.valueOf(2*mN).pow(2*mN).add(1)	(2n)^(2n) + 1.	easy,nonn,synth	0..10	nyi
+A085606	simple0	0	Z.valueOf(mN - 1).pow(mN).subtract(1)	(n-1)^n - 1.	sign,synth	0..19	nyi
+A085781	simple0	0	Binomial.binomial(2*mN +1, mN + 1).multiply2().subtract(Z.ONE.shiftLeft(mN))	a(n) = 2*binomial(2*n+1,n+1) - 2^n.	nonn,easy,changed,synth	0..23	nyi
+A086166	simple1	0	Z.ONE.shiftLeft(mN).subtract(1).pow((1 << mN) - 1)	(2^n - 1)^(2^n - 1).	easy,nonn,synth	1..6	nyi
+A086756	simple1	0	Z.valueOf(mN).pow(mN).mod(Z.TEN.pow(mN))	a(n) = n^n mod 10^n.	base,nonn,synth	1..18	nyi
+A086815	simple1	0	Z.valueOf(mN - 1).multiply(Z.valueOf(mN).pow(2 * mN))	a(n)=(n-1)*n^(2*n)	nonn,synth	1..13	nyi
+
+A086801	parm2	1	A086801	-3	a(n) = prime(n) -3.    easy,sign,changed,synth 1..60   nyi
+A113935	parm2	1	A086801	+3	a(n) = prime(n) +3.    nonn,easy,changed,      1..1000 nyi
+A139049	parm2	1	A086801	+6	a(n) = prime(n) +6.    easy,nonn,changed,      1..10000        nyi
+A140353	parm2	1	A086801	+9	a(n) = prime(n) +9.    easy,nonn,changed,      1..10000        nyi
+A173064	parm2	1	A086801	-5	a(n) = prime(n) -5.    nonn,changed,   3..10000        nyi
+A175222	parm2	1	A086801	+5	a(n) = prime(n) +5.    nonn,easy,changed,      1..1000 nyi
+A175223	parm2	1	A086801	+7	a(n) = prime(n) +7.    nonn,easy,changed,      1..1000 nyi
+A175224	parm2	1	A086801	+8	a(n) = prime(n) +8.    nonn,changed,   1..10000        nyi
+A175225	parm2	1	A086801	+10	a(n) = prime(n) +10.   nonn,changed,   1..10000        nyi
