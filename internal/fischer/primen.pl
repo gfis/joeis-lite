@@ -14,7 +14,7 @@ use warnings;
 
 my $line = "";
 my ($aseqno, $superclass, $callcode, $name, @rest);
-my ($parms, $letter, $expr);
+my ($parms, $letter, $form);
 my $debug   = 0;
 my $offset = 0;
 my $rseqno = "";
@@ -35,7 +35,7 @@ while (<>) { # from joeis_names.txt
     $line = $_;
     $line =~ s{(\,? where .*|\(where .*)}{\t$1};
     $parms = "";
-    $expr  = "";
+    $form  = "";
     $callcode = "";
     $ok = 1; # assume success
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
@@ -48,14 +48,14 @@ while (<>) { # from joeis_names.txt
             $ok = 0;
         } else {
             if ($name =~ m{a\(n\) *\= *(.*)}) {
-                $expr = $1;
+                $form = $1;
                 $callcode = "primen";
                 &test_words();
             }
         }
     } elsif ($name =~ m{\A *a\(n\) *\= *(.*)}) {
             if (1) {
-                $expr = $1;
+                $form = $1;
                 $callcode = "primes";
                 &test_words();
             }
@@ -63,8 +63,8 @@ while (<>) { # from joeis_names.txt
     
     if (length($callcode) > 0) {
         if ($ok > 0) {
-        	$expr =~ s{\bP\b}{p}g;
-            print        join("\t", $aseqno, $callcode, 1, $expr, "", "", $name) . "\n";
+            $form =~ s{\bP\b}{p}g;
+            print        join("\t", $aseqno, $callcode, 1, $form, "", "", $name) . "\n";
         } else {
             print STDERR join("\t", $aseqno, $callcode, 1,        "", "", $name) . "\n";
         }
@@ -72,16 +72,33 @@ while (<>) { # from joeis_names.txt
 } # while <>
 #--------
 sub test_words {
-                $expr =~ s{\. *\Z}{};
-                $expr =~ s{ mod }{\%}g;
-                foreach my $word ($expr =~ m{([a-zA-Z]+)}g) {
-                    if ($word !~ m{\A(n|p|P|gcd|lcm|floor|abs|mod|phi)\Z}) {
-                        $ok = 0;
-                        $callcode = "nok?$word";
-                    } else {
-                        $expr =~ s{ }{}g;
-                    }
-                } # foreach
+    if (0) {
+    } elsif ($form =~ m{\.\.\.}) {
+        $ok = 0;
+        $callcode = "nok?dots";
+    } else {
+         $form =~ s{\. *\Z}{};
+         $form =~ s{ mod }{\%}g;
+         foreach my $word ($form =~ m{([a-zA-Z]+)}g) {
+             if ($word !~ m{\A(n|p|P|gcd|lcm|floor|abs|mod|phi)\Z}) {
+                 $ok = 0;
+                 $callcode = "nok?$word";
+             } else {
+                 $form =~ s{ }{}g;
+             }
+         } # foreach
+    }
+    $form =~ s{([i-n])\^2}{$1\*$1}g;
+#   $form =~ s{\^(\w)}{\.pow\($1\)}g;
+#   $form =~ s{\%(\w)}{\.mod\($1\)}g;
+    $form =~ s{(\d+)([i-p]+)}{$1\*$2}g;
+#   $form =~ s{\bn\b}{mN}g;
+#   if ($form =~ m{\A(\(.*\))\!}) {
+#       $form = "FACTORIAL.factorial$1";
+#       $callcode .= "f";
+#   }
+    $form =~ s{C(\([^\)]+\))}{binomial$1}g;
+#   $form =~ s{binomial}{Binomial.binomial}g;
 } # test_words
 #================
 __DATA__

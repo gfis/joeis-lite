@@ -62,7 +62,7 @@ sub polish {
         $cond = $1;
     }
     $form =~ s{([i-n])\^2}{$1\*$1}g;
-    $form =~ s{\^}{\.pow\(}g;
+    $form =~ s{\^(\w)}{\.pow\($1\)}g;
     $form =~ s{(\d+)([i-n]+)}{$1 \* $2}g;
     $form =~ s{\bn\b}{mN}g;
     if ($form =~ m{\A(\(.*\))\!}) {
