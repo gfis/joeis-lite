@@ -50,16 +50,16 @@
 # nyi A347276	triselect	0	A008296	0	n, n	Third column of A008296.							
 # nyi A347429	triselect	0	A047920	0	n, n	a(n) is the alternating sum of the n-th row of A047920.							
 
-A056278	triselect	0	A137651	1	n,2	Column 2 of A137651.
-A056279	triselect	0	A137651	1	n,3	Column 3 of A137651.
-A056280	triselect	0	A137651	1	n,4	Column 4 of A137651.
-A056281	triselect	0	A137651	1	n,5	Column 5 of A137651.
-A056282	triselect	0	A137651	1	n,6	Column 6 of A137651.
-
-A056283	triselect	0	A087854	2	n,3	Column k=3 of A087854.
-A056284	triselect	0	A087854	3	n,4	Column k=4 of A087854.
-A056285	triselect	0	A087854	4	n,5	Column k=5 of A087854.
-A056286	triselect	0	A087854	5	n,6	Column k=6 of A087854.
+# A056278	triselect	0	A137651	1	n,2	Column 2 of A137651.
+# A056279	triselect	0	A137651	1	n,3	Column 3 of A137651.
+# A056280	triselect	0	A137651	1	n,4	Column 4 of A137651.
+# A056281	triselect	0	A137651	1	n,5	Column 5 of A137651.
+# A056282	triselect	0	A137651	1	n,6	Column 6 of A137651.
+# 
+# A056283	triselect	0	A087854	2	n,3	Column k=3 of A087854.
+# A056284	triselect	0	A087854	3	n,4	Column k=4 of A087854.
+# A056285	triselect	0	A087854	4	n,5	Column k=5 of A087854.
+# A056286	triselect	0	A087854	5	n,6	Column k=6 of A087854.
 
 # does not work:
 # A103719	triselect	0	A103718	2	n,2	Column m=2 sequence of triangle A103718(n,m), n >= 0 (without leading zeros).
@@ -71,3 +71,27 @@ A056286	triselect	0	A087854	5	n,6	Column k=6 of A087854.
 # A103725	triselect	0	A103718	8	n,8	Column m=8 sequence of triangle A103718(n,m), n>=0, without leading zeros.
 # A103726	triselect	0	A103718	9	n,9	Column m=9 sequence of triangle A103718(n,m), n>=0, without leading zeros.
 # A103727	triselect	0	A103718	10	n,10	Column m=10 sequence of triangle A103718(n,m), n>=0, without leading zeros.
+
+A107863	triselect	1	A107862	0	n,1		Column 1 of triangle A107862; a(n) = binomial(n*(n+1)/2 + n, n).	nonn,changed,	0..350	nyi
+A107866	triselect	0	A107865	0	n,0		Column 0 of triangle A107865.	sign,synth	0..18	nyi
+A107868	triselect	0	A107867	0	n,0		Column 0 of triangl	
+A107869	triselect	1	A107867	0	n,1		Column 1 of triangle A107867; a(n) = binomial( n*(n+1)/2 + n+1, n).	nonn,synth	0..17	nyi
+A107871	triselect	0	A107870	0	n,0		Column 0 of triangle A107870; a(n) = C( n*(n-1)/2 + n+2, n).	nonn,synth	0..17	nyi
+A107872	triselect	1	A107870	0	n,1		Column 1 of triangle A107870; a(n) = C(n*(n+1)/2 + n+2, n).	nonn,	0..200	nyi
+A107874	triselect	0	A107873	0	n,0		Column 0 of triangle A107873; a(n) = C( n*(n-1)/2 + n+3, n).	nonn,changed,synth	0..17	nyi
+A107875	triselect	1	A107873	0	n,1		Column 1 of triangle A107873; a(n) = C( n*(n+1)/2 + n+3, n).	nonn,synth	0..16	nyi
+
+# A107865	triselect	0	A107862	1	n,1		Matrix inverse of triangle A107862.	sign,tabl,synth	0..51	nyi
+A107876	triprod	0	A107865	A107867
+A107880	triprod	0	A107876	A107876
+A107884	triprod	0	A107880	A107876
+A107877	triselect	1	A107876	0	n,1		Column 1 of triangle A107876.	nonn,changed,	0..390	nyi
+A107878	triselect	2	A107876	0	n,2		Column 2 of triangle A107876.	nonn,synth	0..18	nyi
+A107879	triselect	3	A107876	0	n,3		Column 3 of triangle A107876.	nonn,synth	0..17	nyi
+A107881	triselect	0	A107880	0	n,0		Column 0 of triangle A107880.	nonn,synth	0..19	nyi
+A107882	triselect	1	A107880	0	n,1		Column 1 of triangle A107880.	nonn,synth	0..18	nyi
+A107883	triselect	3	A107880	0	n,3		Column 3 of triangle A107880.	nonn,synth	0..17	nyi
+A107885	triselect	0	A107884	0	n,0		Column 0 of triangle A107884.	nonn,synth	0..18	nyi
+A107886	triselect	1	A107884	0	n,1		Column 1 of triangle A107884.	nonn,synth	0..18	nyi
+A107887	triselect	2	A107884	0	n,2		Column 2 of triangle A107884.	nonn,synth	0..17	nyi
+A107888	triselect	4	A107884	0	n,4		Column 4 of triangle A107884.	nonn,synth	0..17	nyi
