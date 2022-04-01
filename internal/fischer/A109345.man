@@ -1,0 +1,12 @@
+A109345	parm2	0	A109345	5	a(n) = 5^((n^2 - n)/2). nonn,easy,changed,      0..50   nyi
+A109354	parm2	0	A109345	6	a(n) = 6^((n^2 - n)/2). nonn,changed,   0..50   nyi
+A109493	parm2	0	A109345	7	a(n) = 7^((n^2 - n)/2). nonn,easy,changed,synth 0..10   nyi
+A109966	parm2	0	A109345	8	a(n) = 8^((n^2-n)/2).   nonn,easy,changed,synth 0..10   nyi
+A110195	parm2	0	A109345	11	a(n) = 11^((n^2-n)/2).
+A110147	parm2	0	A109345	10	       10^((n^2-n)/2).	
+A337949	parm2	0	A337949	2	a(n) = 2^(n*(n-1)/2) + 2^(n*(n+1)/2) for n > 0, with a(0) = 1.  nonn,new,synth  0..15   nyi
+A337951	parm2	0	A337949	4	a(n) = 4^(n*(n-1)/2) + 4^(n*(n+1)/2) for n > 0, with a(0) = 1.  nonn,changed,   0..57   nyi
+A337969	parm2	0	A337949	3	a(n) = 3^(n*(n-1)/2) + 3^(n*(n+1)/2) for n > 0, with a(0) = 1.  nonn,new,synth  0..13   nyi
+A337971	parm2	0	A337949	5	a(n) = 5^(n*(n-1)/2) + 5^(n*(n+1)/2) for n > 0, with a(0) = 1.  nonn,new,synth  0..11   nyi
+
+A109470	partsum	1	A007412	1	new A007412()		
