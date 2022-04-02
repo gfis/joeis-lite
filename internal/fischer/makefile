@@ -486,7 +486,13 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-04-01:
+anabuild: # .2022-04-02:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A109345   select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-04-01:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=triselect select       gener
@@ -6119,14 +6125,25 @@ power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
 # A158645 a(n) = 729*n^2 + 27.
 # A158646 a(n) = 54*n^2 + 1.
 #-------------------
-primen: # Numbers derived from primes
+primen0: # Numbers derived from primes
 	grep -i "prime" $(COMMON)/joeis_names.txt \
 	| perl primen.pl \
 	2>       $@.rest.tmp \
-	| sort -k4,4 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp $@.rest.tmp
+primen1:
+	$(JPREP) -p Z.ttab -f primen0.tmp -cc postrans \
+	>        $@.1.tmp
+	grep -E  "\?" $@.1.tmp > $@.rest.tmp || :
+	grep -vE "\?" $@.1.tmp > $@.tmp || :
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
+primen:
+	grep -E "^A[0-9]+" primen1.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 #-------------------
 # Binary quadratic forms - Wiki has 695
 qfb: qfb0

@@ -1,0 +1,29 @@
+0	numb	0	Z.ZERO	0
+1	numb	0	Z.ONE	0
+2	numb	0	Z.TWO	0
+3	numb	0	Z.THREE	0
+4	numb	0	Z.FOUR	0
+5	numb	0	Z.FIVE	0
+6	numb	0	Z.SIX	0
+7	numb	0	Z.SEVEN	0
+8	numb	0	Z.EIGHT	0
+9	numb	0	Z.NINE	0
+10	numb	0	Z.TEN	0
+01234567	numb	0	Z.valueOf(op1)	0
+n	name	0	Z.valueOf(n)	0
+p	name	0	Z.valueOf(p)	0
+
++	meth	2	op1.add(op2)	0
+-	meth	2	op1.subtract(op2)	0
+-.	meth	1	op1.negate()	0
+*	meth	2	op1.multiply(op2)	0
+/	meth	2	op1.divide(op2)	0
+%	meth	2	op1.mod(op2)	0
+^	meth	2	op1.pow(op2)	0
+!	func	1	FACTORIAL.factorial(op1)	0
+
+binomial)	func	2	Binomial.binomial(op1, op2)	0
+floor)	func	1	op1	0
+gcd)	func	2	op1.gcd(op2)	0
+lcm)	func	2	op1.lcm(op2)	0
+phi)	func	1	irvine.math.z.Euler.phi(op1)	0

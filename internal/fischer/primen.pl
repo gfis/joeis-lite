@@ -56,7 +56,7 @@ while (<>) { # from joeis_names.txt
     } elsif ($name =~ m{\A *a\(n\) *\= *(.*)}) {
             if (1) {
                 $form = $1;
-                $callcode = "primes";
+                $callcode = "primen";
                 &test_words();
             }
     } # if proper name
@@ -64,6 +64,7 @@ while (<>) { # from joeis_names.txt
     if (length($callcode) > 0) {
         if ($ok > 0) {
             $form =~ s{\bP\b}{p}g;
+            $callcode = (1 || ($form =~ m{\bn\b})) ? "primenp" : "primep";
             print        join("\t", $aseqno, $callcode, 1, $form, "", "", $name) . "\n";
         } else {
             print STDERR join("\t", $aseqno, $callcode, 1,        "", "", $name) . "\n";
