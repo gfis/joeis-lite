@@ -20,7 +20,7 @@ p	name	0	Z.valueOf(p)	0
 /	meth	2	op1.divide(op2)	0
 %	meth	2	op1.mod(op2)	0
 ^	meth	2	op1.pow(op2)	0
-!	func	1	FACTORIAL.factorial(op1)	0
+!	func	1	MemoryFactorial.SINGLETON.factorial(op1)	0
 
 binomial)	func	2	Binomial.binomial(op1, op2)	0
 floor)	func	1	op1	0

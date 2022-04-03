@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-04-03: V3.3: FACTORIAL.factorial 
 # 2022-03-26: V3.2: import Z, Integers, Cheetah.factor if necessary
 # 2022-02-02: V3.1: no #import Long|Boolean
 # 2022-01-14: V3.0: skip over empty callcodes
@@ -43,7 +44,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V3.2";
+my $program = "gen_seq4.pl V3.3";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -308,6 +309,11 @@ sub clean_imports { # remove all temporary imports, keep the ones from the patte
     } # foreach
 } # clean_imports
 #--------------------------------
+sub insertFactorial { # insert a static reference
+    # private static final MemoryFactorial FACTORIAL = new MemoryFactorial();
+    # nyi
+} # insertFactorial
+#--------------------------------
 sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     my ($line, $itype) = @_; # 1 = permanent for this pattern, 2 = temporary
     my @aseqnos = ($line =~ m{(A\d{6})}g);
@@ -318,8 +324,9 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WZeta\.}          ) { $imports{"irvine.math.cr.Zeta"}                   = $itype; }
     if ($line =~ m{\WIntegers\.}      ) { $imports{"irvine.math.z.Integers"}                = $itype; }
     if ($line =~ m{\WBinomial\.}      ) { $imports{"irvine.math.z.Binomial"}                = $itype; }
+    if ($line =~ m{\WFACTORIAL\.}     ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; insertFactorial();}
+    if ($line =~ m{\WMemoryFactorial} ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; insertFactorial();}
     if ($line =~ m{\WStringUtils\.}   ) { $imports{"irvine.util.string.StringUtils"}        = $itype; }
-    if ($line =~ m{\WMemoryFactorial} ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
     if ($line =~ m{\WQ\W}             ) { $imports{"irvine.math.q.Q"}                       = $itype; }
     if ($line =~ m{\WZ\W}             ) { $imports{"irvine.math.z.Z"}                       = $itype; }
     if ($line =~ m{\WCR\W}            ) { $imports{"irvine.math.cr.CR"}                     = $itype; }
