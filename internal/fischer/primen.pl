@@ -42,7 +42,7 @@ while (<>) { # from joeis_names.txt
     next if ($aseqno le "A054000"); # Mar 2022
     next if ($name =~ m{for which | such that |Primes });
     if (0) {
-    } elsif ($name =~ s{(\W)prime\(n\)}{${1}P}g) {
+    } elsif ($name =~ s{(\W)(prime|square|cube|semiprime)\(n\)}{${1}P}g) {
         if ($name =~ m{\Wprime\(n[^\)]}) { # prime(n+1)
             $callcode = "primen?1";
             $ok = 0;

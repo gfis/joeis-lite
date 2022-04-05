@@ -27,3 +27,5 @@ floor)	func	1	op1	0
 gcd)	func	2	op1.gcd(op2)	0
 lcm)	func	2	op1.lcm(op2)	0
 phi)	func	1	irvine.math.z.Euler.phi(op1)	0
+factorial)	func	1	MemoryFactorial.SINGLETON.factorial(op1)	0
+
