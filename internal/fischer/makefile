@@ -493,6 +493,9 @@ anabuild: # .2022-04-08:
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=n2        select       gener
 	make CC=posins    select       gener
+	make CC=transpose select       gener
+	make CC=trimirror select       gener
+	make CC=inbase2   select       gener
 	make CC=A090000   select       gener
 	make CC=A104808   select       gener
 	make CC=A309182   select       gener
