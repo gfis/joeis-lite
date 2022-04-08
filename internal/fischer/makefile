@@ -234,7 +234,7 @@ select2: # require not in joeis: JO= (default) / require not in poeis: PO=1 (def
 	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO)
 	make seq4 LIST=$(CC).gen
 	$(DBAT) "UPDATE seq4 s \
-	    SET name    = COALESCE((SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno), 'future sequence') \
+	    SET name    = SUBSTR(COALESCE((SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno), 'future sequence'), 1, 256) \
 	    ,   offset  = COALESCE((SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno), 0)"
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(s.offset, '0') \
@@ -458,9 +458,11 @@ joeis_class:
 potential: # rerun all targets that have accelaration potential
 	rm -f    $@.tmp
 	#---- start of list of all candidates
-	echo inbase2       > $@.tmp
-	echo transpose     > $@.tmp
-	echo trimirror     > $@.tmp
+	echo inbase2      >> $@.tmp
+	# echo n2           >> $@.tmp
+	# echo posins       >> $@.tmp
+	echo transpose    >> $@.tmp
+	echo trimirror    >> $@.tmp
 	#---- end of   list of all candidates
 	cat $@.tmp | xargs -l -innn make $@1 TARGET=nnn
 	cat $@.tmp | xargs -l -innn make $@2 TARGET=nnn
@@ -486,7 +488,17 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-04-05:
+anabuild: # .2022-04-08:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=n2        select       gener
+	make CC=posins    select       gener
+	make CC=A090000   select       gener
+	make CC=A104808   select       gener
+	make CC=A309182   select       gener
+	make CC=man       man
+	make dist testall log TO=24
+anabuild.2022-04-05:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make primen0 primen1
@@ -3759,6 +3771,15 @@ morwiki:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+n2:
+	cat $(COMMON)/jcat25.txt \
+	| perl -ne 'if (m{a\(n\) *\= *(A\d+)\((\d+)\*?n([ \+\-]\d+)?\)\.}) {'\
+	'  print join("\t", substr($$_, 3, 7), "n2", 0, $$1, $$3 || 0, $$2) . "\n"; }' \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 num1dig: # A126207 null    Number of 5's in decimal expansion of 5^n.
 	# grep -P "Number of (\d+\'s|zeroe?s|ones) " $(COMMON)/joeis_names.txt > $@.tmp
 	# grep -vE "^#" $@.man > $@.gen
@@ -4300,12 +4321,12 @@ posins1:
 	wc -l    $@.tmp
 posins2:
 	perl posins.pl -d 0 posins1.tmp \
-	2>       posins.rest \
+	2>       posins.rest.tmp \
 	| sort | uniq -w7 \
 	>        posins.gen
 	head -n4 posins.gen
-	head -n2 posins.rest
-	wc -l    posins.gen posins.rest
+	head -n2 posins.rest.tmp
+	wc -l    posins.gen posins.rest.tmp
 	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
 posind:
 	grep -E "^A[0-9]" posind.man > $@.gen

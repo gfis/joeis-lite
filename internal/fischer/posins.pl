@@ -2,6 +2,7 @@
 
 # Extract parameters for PositionSequence.java
 # @(#) $Id$
+# 2022-04-08: Indices of 1's in Annnnnn
 # 2021-08-26: read ofter
 # 2020-06-21: read deriv0.tmp; from cat25.txt
 # 2020-06-04, Georg Fischer
@@ -99,9 +100,13 @@ while (<>) {
             $rseqno = "A001203";
             $value  = 1;
         } elsif ($name =~ m{(Indices|Indexes) +(\w +)?(for which|such that|with) (A\d+)\(\w\) *\= *(\-?\d+)}) {
-        	# A317538 Indices m for which A317413(m) = 1.
-        	$rseqno = $4;
-        	$value  = $5;
+            # A317538 Indices m for which A317413(m) = 1.
+            $rseqno = $4;
+            $value  = $5;
+        } elsif ($name =~ m{(Indices|Indexes) of (\d)\'s in [^A]*(A\d+)}) {
+            # A316837 null    Indices of 0's in A254990.      nonn,   1..10000        nyi
+            $rseqno = $3;
+            $value  = $2;
         } elsif ($name =~ m{Positions? of ([^A]+)(A\d{6})}) {
             $rseqno = $2;
             $value  = $1;
@@ -168,4 +173,4 @@ A165461 Positions of zeros in A165460.  nonn,   0..1000
 A190889 Positions of 2 in A190886.
 A134251 Positions of 1 after decimal point in decimal expansion of 1/Pi.  nonn,base,changed,  1..10000
 
-A317538	Indices m for which A317413(m) = 1.
+A317538 Indices m for which A317413(m) = 1.

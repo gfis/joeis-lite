@@ -1,0 +1,11 @@
+A090000	parm3	0	A090000	new A000040()	1	Length of longest contiguous block of 1's in binary expansion of n-th prime.    nonn,base,changed,      1..20
+A090001	parm3	0	A090000	new A000290()	1	Length of longest contiguous block of 1's in binary expansion of n^2.   nonn,base,      0..1000 nyi
+A090002	parm3	0	A090000	new A000217()	1	Length of longest contiguous block of 1's in binary expansion of n-th triangular number.        nonn,base,
+A090003	parm3	0	A090000	new A000578()	1	Length of longest contiguous block of 1's in binary expansion of n^3.   nonn,base,      0..16384        nyi
+A090046	parm3	0	A090000	new A000040()	0	Length of longest contiguous block of 0's in binary expansion of n-th prime.    nonn,base,synth 1..105  nyi
+A090047	parm3	0	A090000	new A000290()	0	Length of longest contiguous block of 0's in binary expansion of n^2.   nonn,base,synth 0..101  nyi
+A090048	parm3	0	A090000	new A000217()	0	Length of longest contiguous block of 0's in binary expansion of n-th triangular number.        nonn,base,syn
+A090049	parm3	0	A090000	new A000578()	0	Length of longest contiguous block of 0's in binary expansion of n^3.   nonn,base,easy,changed, 0..10000
+A090050	parm3	0	A090000	new A000040()	1	Numbers having equal length of longest contiguous block of zeros and ones in binary expansion.  nonn,base,cha
+A092607	parm3	0	A090000	new A000142()	1	Length of longest contiguous block of ones in binary representation of n!.      nonn,synth      0..97   nyi
+# A300655	parm3	0	A090000	new A000040()	1	a(n) is the length of the longest contiguous block of ones in the binary expansion of 1/n.      nonn,base,syn

@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-04-08: V3.4: z.Euler.phi(n)
 # 2022-04-03: V3.3: FACTORIAL.factorial 
 # 2022-03-26: V3.2: import Z, Integers, Cheetah.factor if necessary
 # 2022-02-02: V3.1: no #import Long|Boolean
@@ -309,11 +310,6 @@ sub clean_imports { # remove all temporary imports, keep the ones from the patte
     } # foreach
 } # clean_imports
 #--------------------------------
-sub insertFactorial { # insert a static reference
-    # private static final MemoryFactorial FACTORIAL = new MemoryFactorial();
-    # nyi
-} # insertFactorial
-#--------------------------------
 sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     my ($line, $itype) = @_; # 1 = permanent for this pattern, 2 = temporary
     my @aseqnos = ($line =~ m{(A\d{6})}g);
@@ -324,8 +320,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WZeta\.}          ) { $imports{"irvine.math.cr.Zeta"}                   = $itype; }
     if ($line =~ m{\WIntegers\.}      ) { $imports{"irvine.math.z.Integers"}                = $itype; }
     if ($line =~ m{\WBinomial\.}      ) { $imports{"irvine.math.z.Binomial"}                = $itype; }
-    if ($line =~ m{\WFACTORIAL\.}     ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; insertFactorial();}
-    if ($line =~ m{\WMemoryFactorial} ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; insertFactorial();}
+    if ($line =~ m{\WFACTORIAL\.}     ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
+    if ($line =~ m{\WMemoryFactorial} ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
     if ($line =~ m{\WStringUtils\.}   ) { $imports{"irvine.util.string.StringUtils"}        = $itype; }
     if ($line =~ m{\WQ\W}             ) { $imports{"irvine.math.q.Q"}                       = $itype; }
     if ($line =~ m{\WZ\W}             ) { $imports{"irvine.math.z.Z"}                       = $itype; }
@@ -339,7 +335,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPrependSequence} ) { $imports{"irvine.oeis.PrependSequence"   }        = $itype; }
     if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }        = $itype; }
     if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}        = $itype; }
-    if ($line =~ m{\WCheetah\.}       ) { $imports{"irvine.factor.factor.Cheetah"}   = $itype; }
+    if ($line =~ m{\WCheetah\.}       ) { $imports{"irvine.factor.factor.Cheetah"       }   = $itype; }
+    if ($line =~ m{\WEuler\.}         ) { $imports{"irvine.math.z.Euler"                }   = $itype; }
     
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
