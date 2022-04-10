@@ -488,7 +488,15 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-04-08:
+anabuild: # .2022-04-09:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A090000   select       gener
+	make CC=A104808   select       gener
+	make CC=A309182   select       gener
+	make CC=man       man
+	make dist testall log TO=24
+anabuild.2022-04-08:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=n2        select       gener
@@ -6157,7 +6165,7 @@ power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
 # A158646 a(n) = 54*n^2 + 1.
 #-------------------
 primen0: # Numbers derived from primes
-	grep -i "prime" $(COMMON)/joeis_names.txt \
+	grep -iE "prime|square|cube" $(COMMON)/joeis_names.txt \
 	| perl primen.pl \
 	2>       $@.rest.tmp \
 	>        $@.tmp

@@ -39,7 +39,8 @@ while (<>) { # from joeis_names.txt
     $callcode = "";
     $ok = 1; # assume success
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
-    next if ($aseqno le "A054000"); # Mar 2022
+    my $org_name = $name;
+    next if ($aseqno le "A055000"); # Apr 2022
     next if ($name =~ m{for which | such that |Primes });
     if (0) {
     } elsif ($name =~ s{(\W)(prime|square|cube|semiprime)\(n\)}{${1}P}g) {
@@ -65,9 +66,9 @@ while (<>) { # from joeis_names.txt
         if ($ok > 0) {
             $form =~ s{\bP\b}{p}g;
             $callcode = (1 || ($form =~ m{\bn\b})) ? "primenp" : "primep";
-            print        join("\t", $aseqno, $callcode, 1, $form, "", "", $name) . "\n";
+            print        join("\t", $aseqno, $callcode, 1, $form, "", "", $org_name) . "\n";
         } else {
-            print STDERR join("\t", $aseqno, $callcode, 1,        "", "", $name) . "\n";
+            print STDERR join("\t", $aseqno, $callcode, 1, $form, "", "", $org_name) . "\n";
         }
     }
 } # while <>
