@@ -1,0 +1,40 @@
+A242787	parm3	1	A242787	-2	-2	Numbers n such that (n^n-2)/(n-2) is an integer.
+A242788	parm3	1	A242787	-3	-3	Numbers n such that (n^n-3)/(n-3) is an integer.
+A242800	parm3	1	A242787	+3	+3	Numbers n such that (n^n+3)/(n+3) is an integer.
+A242870	parm3	1	A242787	-4	-2	Numbers n such that (n^n-2^2)/(n-2) is an integer.
+A242871	parm3	1	A242787	-27	-3	Numbers n such that (n^n-3^3)/(n-3) is an integer.
+A242875	parm3	1	A242787	+4	+2	Numbers n such that (n^n+2^2)/(n+2) is an integer.
+A242883	parm3	1	A242787	+27	+3	Numbers n such that (n^n+3^3)/(n+3) is an integer.
+
+A166571	parm2	1	A166571	10	Prime numbers containing the string 10. nonn,base,      1..1000 nyi
+A166572	parm2	1	A166571	11	Prime numbers containing the string 11. nonn,base,      1..1000 nyi
+A166573	parm2	1	A166571	13	Prime numbers containing the string 13. nonn,base,      1..10000        nyi
+A166579	parm2	1	A166571	17	Prime numbers containing the string 17. nonn,base,less, 1..1000 nyi
+A166580	parm2	1	A166571	222	Prime numbers containing the string 222.        nonn,base,      1..1000 nyi
+A243527	parm2	1	A166571	111	Prime numbers containing the string 111.        nonn,base,easy, 1..1000 nyi
+A243529	parm2	1	A166571	12	Prime numbers containing the string 12. nonn,base,less, 1..1000 nyi
+A243530	parm2	1	A166571	14	Prime numbers containing the string 14. nonn,base,      1..1000 nyi
+A243531	parm2	1	A166571	15	Prime numbers containing the string 15. nonn,base,less, 1..1000 nyi
+A243532	parm2	1	A166571	16	Prime numbers containing the string 16. nonn,base,      1..1000 nyi
+
+# %C A244116 T(n,k) = (1-k)^(k-1) * k^(n-k) for k>0, while T(n,0) = 0^n by convention.
+# %C A244117 T(n,k)=(1-k)^(k-1)*k^(n-k)*binomial(n,k) for k>0, while T(n,0)=0^n by convention.
+# %C A244119 T(n,k)=(1+k)^(k-1)*(-k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0^n by convention.
+# %C A244120 T(n,k)=n*(n-k)^(k-1)*k^(n-k) for k>0, while T(n,0)=0^n by convention.
+# %C A244121 T(n,k)=n*(n-k)^(k-1)*k^(n-k)*binomial(n,k) for k>0, while T(n,0)=0^n by convention.
+# %C A244122 T(n,k)=n*(n+k)^(k-1)*(-k)^(n-k) for k>0, while T(n,0)=0^n by convention.
+# %C A244123 T(n,k)=n*(n+k)^(k-1)*(-k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0^n by convention.
+# %C A244124 T(n,k)=(1-k)^(k-1)*(1+k)^(n-k) for k>0, while T(n,0)=0 by convention.
+# %C A244125 T(n,k)=(1-k)^(k-1)*(1+k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0 by convention.
+# %C A244126 T(n,k)=(1+k)^(k-1)*(1-k)^(n-k) for k>0, while T(n,0)=0 by convention.
+# %C A244127 T(n,k)=(1+k)^(k-1)*(1-k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0 by convention.
+# %C A244128 T(n,k)=(-k)^(k-1)*k^(n-k) for k>0, while T(n,0)=0 by convention. The flattened triangle start with row 1, coefficient T(1,0).
+# %C A244129 T(n,k) = (-k)^(k-1) * k^(n-k) * binomial(n,k) for k>0, while T(n,0)=0 by convention.
+# %C A244130 T(n,k)=(-k)^(k-1)*(1+k)^(n-k) for k>0, while T(n,0)=0 by convention.
+# %C A244131 T(n,k)=(-k)^(k-1)*(1+k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0 by convention.
+# %C A244132 T(n,k)=(k)^(k-1)*(1-k)^(n-k) for k>0, while T(n,0)=0 by convention.
+# %C A244133 T(n,k)=(k)^(k-1)*(1-k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0 by convention.
+# %C A244134 T(n,k)=(-k)^(k-1)*(n+k)^(n-k) for k>0, while T(n,0)=0^n by convention.
+# %C A244135 T(n,k)=(-k)^(k-1)*(n+k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0^n by convention.
+# %C A244136 T(n,k)=(k)^(k-1)*(n-k)^(n-k) for k>0, while T(n,0)=0^n by convention.
+# %C A244137 T(n,k)=(k)^(k-1)*(n-k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0^n by convention.k)^(n-k)*binomial(n,k) for k>0, while T(n,0)=0^n by convention.

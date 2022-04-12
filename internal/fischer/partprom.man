@@ -1,0 +1,47 @@
+A057130	partprod	1			new A007528()		Product of first n primes of form 6k-1.	nonn,easy,synth	1..16	nyi
+A066266	partprod	1			new A002110()		Product of first n primorials + 1.	nonn,changed,	1..37	nyi
+A066268	partprod	1			new A002110()		Product of first n primorials - 1.	nonn,	1..37	nyi
+A074040	partprod	1			new A037074()		Product of first n twin prime pair products.	nonn,changed,synth	1..11	nyi
+A074041	partprod	1			new A007510()		Product of first n single (i.e., non-twin) primes.	nonn,changed,synth	1..15	nyi
+A074166	partprod	1			new A002113()		Product of first n palindromes.	base,nonn,	1..295	nyi
+A092609	partprod	1			new A030430()		Product of first n primes that end in 1.	nonn,easy,changed,	1..286	nyi
+A092610	partprod	1			new A030431()		Product of first n primes that end in 3.	nonn,changed,	1..289	nyi
+A092611	partprod	1			new A030433()		Product of first n primes that end in 9.	nonn,changed,synth	1..12	nyi
+A092612	partprod	1			new A030432()		Product of first n primes that end in 7.	nonn,changed,	1..200	nyi
+A098918	partprod	1			new A000668()		Product of first n Mersenne primes = Product_{k=1..n} A000668(k).	nonn,changed,	1..15	nyi
+A103845	partprod	1			new A000204()		Product of first n Lucas numbers, plus one.	easy,nonn,synth	0..15	nyi
+A118491	partprod	1			new A109611()		Product of first n Chen primes.	nonn,synth	0..17	nyi
+A140701	partprod	1			new A005448()		Product of first n centered triangular numbers.	easy,nonn,	1..244	nyi
+A163085	partprod	1			new A056040()		Product of first n swinging factorials (A056040).	nonn,synth	0..14	nyi
+A163086	partprod	1			new A163085()		Product of first n terms of A163085.	nonn,changed,synth	0..10	nyi
+A194157	partprod	1			new A001906()		Product of first n nonzero even-indexed Fibonacci numbers F(2), F(4), F(6), ..., F(2*n).	nonn,easy,	1..70	nyi
+A194158	partprod	1			new A001519()		Product of first n nonzero odd-indexed Fibonacci numbers F(1), ..., F(2*n-1).	nonn,easy,changed,	1..69	nyi
+A256832	partprod	1			new A000129()		Product of first n Pell numbers Pell(1), ... , Pell(n).	nonn,changed,synth	1..15	nyi
+# A294352	partprod	1			new A056040()		Product of first n terms of the binomial transform of the factorial.	nonn,synth	0..12	nyi
+A294373	partprod	1			new A000110()		Product of first n Bell numbers.	nonn,changed,	0..49	nyi
+A331583	partprod	1			new A001203()		Product of first n terms of continued fraction expansion of Pi.	nonn,new,	1..1000	nyi
+A342099	partprod	1			new A000182()		Product of first n tangent numbers.	nonn,new,synth	0..10	nyi
+A342166	partprod	1			new A000670()		Product of first n Fubini numbers.	nonn,new,synth	0..12	nyi
+A342170	partprod	1			new A001003()		Product of first n little Schröder numbers.	nonn,new,synth	0..13	nyi
+A342177	partprod	1			new A001006()		Product of first n Motzkin numbers.	nonn,new,synth	0..15	nyi
+A342178	partprod	1			new A001850()		Product of first n central Delannoy numbers.	nonn,new,synth	0..11	nyi
+A342181	partprod	1			new A005130()		Product of first n Robbins numbers.	nonn,new,synth	0..11	nyi
+A342210	partprod	1			new A000364()		Product of first n secant numbers.	nonn,new,synth	0..10	nyi
+
+
+A084675	partprod	1			new A056040()		Product of the first n digits of the Golden Ratio phi = 1.6180339... (treating 0's as if they were 1's).
+A112141	partprod	1			new A001358()		Product of the first n semiprimes.      easy,nonn,changed,      1..100  nyi
+A112228	partprod	1			new A186621()		Product of the first n (semiprimes - 1).        easy,nonn,synth 1..17   nyi
+A114425	partprod	1			new A014612()		Product of the first n 3-almost primes (A014612).       easy,nonn,changed,      1..364  nyi
+A114426	partprod	1			new A014613()		Product of the first n 4-almost primes (A014613).       easy,nonn,synth 1..13   nyi
+A121940	partprod	1			new A002476()		Product of the first n primes of the form 6k+1. easy,nonn,changed,      1..100  nyi
+# A122019	partprod	1			new A056040()		Product of the first n semiprimes, divided by product of the first n primes, rounded down.      easy,non
+# A122032	partprod	1			new A114425()		Product of the first n 3-almost primes, divided by product of the first n primes, rounded down. easy,non
+# A122093	partprod	1			new A056040()		Product of the first n 4-almost primes, divided by product of the first n primes, rounded down. easy,non
+A122123	partprod	1			new A014614()		Product of the first n 5-almost primes (A014614).       easy,nonn,synth 1..14   nyi
+# A122609	partprod	1			new A056040()		Product of the first n 5-almost primes (A014614), divided by product of the first n primes, rounded down
+A181181	partprod	1			new A181178()		Product of the first n zero-free positive numbers with digital sum n.   nonn,base,easy,synth    1..15   nyi
+# A217473	partprod	1			new A056040()		Product of the first n+1 odd-indexed Lucas numbers A000032.     nonn,easy,changed,synth 0..12   nyi
+A256625	partprod	1			new A000959()		Product of the first n lucky numbers.   easy,nonn,      1..315  nyi
+A260614	partprod	1			new A046882()		Product of the first n ultrafactorials ((n!)^(n!)).     nonn,easy,      0..5    nyi
+A321741	partprod	1			new A007318()		Product of the first n terms of A007318 (Pascal), read as a sequence.   nonn,easy,new,synth     1..36   nyi

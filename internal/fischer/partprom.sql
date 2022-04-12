@@ -1,4 +1,4 @@
--- Patches for partsumm
+-- Patches for partprom
 -- @(#) $Id$
 -- 2022-04-12, Georg Fischer
 

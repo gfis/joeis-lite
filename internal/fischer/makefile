@@ -488,7 +488,19 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-04-09:
+anabuild: # .2022-04-12:
+	make purge
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A126616   select       gener
+	make CC=A242787   select       gener
+	make CC=A245399   select       gener
+	make CC=A256293   select       gener
+	make CC=parshift  select EX=xx gener
+	make CC=partprom  select       gener
+	make CC=partsumm  select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-04-09:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A090000   select       gener
@@ -4115,15 +4127,10 @@ sumsi:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
-partsumm:
+partsum:
 	cat sumsi.gen \
 	| perl -ne 'use strict; my @f = split(/\t/); if ($$f[6] =~ s{\A(A\d+)\([i-nI-N]+\)\Z}{$$1}) { '\
 	' print join("\t", $$f[0], "partsum", 0, $$f[6], "", "new $$f[6]()", "") . "\n"; }' \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-partsumm_old:
-	grep -E "^A[0-9]" $@.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -6088,6 +6095,16 @@ palb: # 54
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------
+parshift0: # Paradigm Shift
+	grep -f parshift.grep $(COMMON)/jcat25.txt \
+	| grep -E "^[\%\#]F" | grep -P "a\(n\) *\= *\d" | sed -e "s/Recursive\: *//" -e "s/ all / /" \
+	| tee $@.tmp
+parshift:
+	perl parshift.pl parshift0.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------
 partion0:
 	$(DBAT) -x "SELECT n.aseqno, '$@', 0, '', SUBSTR(a.author,2,4), n.name, b.bfimax \
 	FROM  asinfo a, asname n, bfinfo b \
@@ -6132,6 +6149,15 @@ partcapp: partcond
 #--------------------------
 partmod11:
 	cp -v partmod11.man partmod11.gen
+#--------------------------
+partprom: # manual partprod
+	sort $@.man | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+partsumm: # manual partsum
+	sort $@.man | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------
 polyn:
 	cat $(COMMON)/names \

@@ -1,0 +1,8 @@
+A117943	parm2	1	A126616	3	a(1) = 0, a(2) = 1; a(3n) = a(n); if every third term (a(3), a(6), a(9), ...) is deleted, this gives back the original sequence.	nonn,easy,synth	1..105	nyi
+A126616	parm2	1	A126616	10	a(n) = n for n < 10, a(10*n) = a(n), and if the terms a(10), a(20), a(30), ... are deleted, one gets back the original sequence.	nonn,easy,synth	1..105	nyi
+A255824	parm2	1	A126616	4	a(n) = n for n < 4; a(4n) = a(n); if every 4th term (a(4), a(8), a(12),...) is deleted, this gives back the original sequence.	nonn,changed,synth	1..100	nyi
+A255825	parm2	1	A126616	5	a(n) = n for n < 5; a(5n) = a(n); if every 5th term (a(5), a(10), a(15),...) is deleted, this gives back the original sequence.	nonn,synth	1..100	nyi
+A255826	parm2	1	A126616	6	a(n) = n for n < 6; a(6n) = a(n); if every 6th term (a(6), a(12), a(18),...) is deleted, this gives back the original sequence.	nonn,synth	1..100	nyi
+A255827	parm2	1	A126616	7	a(n) = n for n < 7; a(7n) = a(n); if every 7th term (a(7), a(14), a(21),...) is deleted, this gives back the original sequence.	nonn,synth	1..100	nyi
+A255828	parm2	1	A126616	8	a(n) = n for n < 8; a(8n) = a(n); if every 8th term (a(8), a(16), a(24),...) is deleted, this gives back the original sequence.	nonn,synth	1..100	nyi
+A255829	parm2	1	A126616	9	a(n) = n for n < 9; a(9n) = a(n); if every 9th term (a(9), a(18), a(27),...) is deleted, this gives back the original sequence.	nonn,synth	1..100	nyi

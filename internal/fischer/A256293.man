@@ -1,0 +1,14 @@
+A256293	parm3	0	A256293	3	true	Apply the transformation 0 -> 1 -> 2 -> 0 to the digits of n written in base 3, then convert back to base 10.	nonn,base,easy,changed,synth	0..59	nyi
+A256294	parm3	0	A256293	4	true	Apply the transformation 0 -> 1 -> 2 -> 3 -> 0 to the digits of n written in base 4, then convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256295	parm3	0	A256293	5	true	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 0 to the digits of n written in base 5, then convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256296	parm3	0	A256293	6	true	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 0 to the digits of n written in base 6, then convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256297	parm3	0	A256293	7	true	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 0 to the digits of n written in base 7, then convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256298	parm3	0	A256293	8	true	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 0 to the digits of n written in base 8, then convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256299	parm3	0	A256293	9	true	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 0 to the digits of n written in base 9, then convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256303	parm3	0	A256293	3	false	Apply the transformation 0 -> 1 -> 2 -> 0 to the digits of n written in base 3; do not convert back to base 10.	nonn,base,easy,synth	0..51	nyi
+A256304	parm3	0	A256293	4	false	Apply the transformation 0 -> 1 -> 2 -> 3 -> 0 to the digits of n written in base 4; do not convert back to base 10.	nonn,base,easy,synth	0..57	nyi
+A256305	parm3	0	A256293	5	false	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 0 to the digits of n written in base 5; do not convert back to base 10.	nonn,base,easy,changed,	0..1000	nyi
+A256306	parm3	0	A256293	6	false	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 0 to the digits of n written in base 6; do not convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256307	parm3	0	A256293	7	false	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 0 to the digits of n written in base 7; do not convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256308	parm3	0	A256293	8	false	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 0 to the digits of n written in base 8; do not convert back to base 10.	nonn,base,easy,synth	0..59	nyi
+A256289	parm3	0	A256293	9	false	Apply the transformation 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 0 to the digits of n written in base 8; do not convert back to base 10.	nonn,base,easy,synth	0..59	nyi

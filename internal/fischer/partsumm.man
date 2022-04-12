@@ -1,40 +1,97 @@
-A060831	partsum	1	A001227		new A001227()		a(n) = Sum_{i=1..n} A001227(i).
-A062198	partsum	1	A001358		new A001358()		a(n) = Sum_{i=1..n} A001358(i)
-A071640	partsum	0	A040051		new A040051()		a(n) = Sum_{i=1..n} A040051(i).
-A073092	partsum	0	A000161		new A000161()		sum(0, mN, k -> A000161(k))	|	
-A078616	partsum	0	A010815		new A010815()		sum(0, mN, k -> A010815(k))	|	
-A086849	partsum	1	A000037		new A000037()		a(n) = Sum_{i=1..n} A000037(i).
-A097589	partsum	1	A005235		new A005235()		a(n) = Sum_{i=1..n} A005235(i).
-A109442	partsum	1	A000015		new A000015()		a(n) = Sum_{i=1..n} A000015(i).
-A109443	partsum	1	A031218		new A031218()		a(n) = Sum_{i=1..n} A031218(i).
-A109444	partsum	1	A000026		new A000026()		a(n) = Sum_{i=1..n} A000026(i).
-A109453	partsum	1	A000030		new A000030()		a(n) = Sum_{i=1..n} A000030(i).
-A109470	partsum	1	A007412		new A007412()		a(n) = Sum_{i=1..n} A007412(i).
-A109472	partsum	1	A000043		new A000043()		a(n) = Sum_{i=1..n} A000043(i).
-A118115	partsum	1	A000461		new A000461()		a(n) = Sum_{i=1..n} A000461(i).
-A118477	partsum	1	A037292		new A037292()		a(n) = Sum_{i=1..n} A037292(i).
-A159481	partsum	0	A010059		new A010059()		sum(0, mN, k -> A010059(k))	|	
-A173397	partsum	1	A000019		new A000019()		a(n) = Sum_{i=1..n} A000019(i).
-A173407	partsum	1	A002106		new A002106()		a(n) = Sum_{i=1..n} A002106(i).
-A178155	partsum	1	A003407		new A003407()		a(n) = Sum_{i=1..n} A003407(i).
-A178579	partsum	1	A001676		new A001676()		a(n) = Sum_{i=1..n} A001676(i).
-A213040	partsum	0	A004738		new A004738()		sum(0, mN, k -> A004738(k))	|	
-A256885	partsum	1	A014684		new A014684()		a(n) = Sum_{i=1..n} A014684(i).
-A264889	partsum	0	A002109		new A002109()		sum(0, mN, k -> A002109(k))	|	
-A280077	partsum	1	A007429		new A007429()		a(n) = Sum_{i=1..n} A007429(i).
-A280131	partsum	1	A029940		new A029940()		a(n) = Sum_{i=1..n} A029940(i).
-A280713	partsum	1	A055067		new A055067()		a(n) = Sum_{i=1..n} A055067(i).
-A284870	partsum	0	A006128		new A006128()		sum(0, mN, k -> A006128(k))	|	
-A329598	partsum	1	A014132		new A014132()		a(n) = Sum_{i=1..n} A014132(i).
-A337300	partsum	1	A049039		new A049039()		a(n) = Sum_{i=1..n} A049039(i)
-A345867	partsum	1	A035103		new A035103()		a(n) = Sum_{i=1..n} A035103(i).
-# A062762	partsum	0	A062761		new A062761()		sum(0, mN, k -> A062761(k))	|	a(n) = Sum_{k=0..n} A062761(k)
-# A130244	partsum	0	A130242		new A130242()		sum(0, mN, k -> A130242(k))	|	a(n) = Sum_{k=0..n} A130242(k).
-# A130251	partsum	0	A130249		new A130249()		sum(0, mN, k -> A130249(k))	|	a(n) = Sum_{k=0..n} A130249(k).
-# A130252	partsum	0	A130250		new A130250()		sum(0, mN, k -> A130250(k))	|
-# A258864	partsum	0	A258851		new A258851()		sum(0, mN, k -> A258851(k))	|	a(n) = Sum_{k=0..n} A258851(k).
-# A262320	partsum	0	A262321		new A262321()		sum(0, mN, k -> A262321(k))	|	a(n) = Sum_{k=0..n} A262321(k).
-# A265581	partsum	0	A265580		new A265580()		sum(0, mN, k -> A265580(k))	|	a(n) = Sum_{k=0..n} A265580(k).
-# A276796	partsum	0	A276793		new A276793()		sum(0, mN, k -> A276793(k), mN >= 0)	|	a(n) = Sum_{k=0..n} A276793(k), n >= 0.
-# A276797	partsum	0	A276794		new A276794()		sum(0, mN, k -> A276794(k))	|	a(n) = Sum_{k=0..n} A276794(k).
-# A326951	partsum	0	A327011		new A327011()		sum(0, mN, k -> A327011(k))	|	a(n) = Sum_{k = 0..n} A327011(k).
+A039928	partsum	0			new A039928()		Sum of first n terms of A_n (using absolute values of terms).	dumb,easy,nonn,synth	1..46	nyi
+A060831	partsum	1			new A001227()		a(n) = Sum_{i=1..n} A001227(i).
+A062198	partsum	0			new A001358()		Sum of first n semiprimes.	easy,nonn,changed,	1..1000	nyi
+A062762	partsum	0			new A062761()		sum(0, mN, k -> A062761(k))	|	a(n) = Sum_{k=0..n} A062761(k)
+A066379	partsum	0			new A066378()		Sum of the first n numbers m such that floor(log(m)) divides m.	nonn,	1..1000	nyi
+A066819	partsum	0			new A005384()		Sum of the first n Sophie Germain primes.	nonn,	1..10000	nyi
+A066869	partsum	0			new A005385()		Sum of the first n safe primes.	easy,nonn,synth	1..41	nyi
+A071117	partsum	0			new A001113()		Sum of first n digits of decimal expansion of e is prime.	base,easy,nonn,synth	1..55	nyi
+A071640	partsum	0			new A040051()		a(n) = Sum_{i=1..n} A040051(i).
+A073088	partsum	0			new A007400()		Sum of first n terms of the simple continued fraction of Sum_{k>=0} 1/2^(2^k) (cf. A007400).	easy,nonn,changed,synth	1..59	nyi
+A073092	partsum	0			new A000161()		sum(0, mN, k -> A000161(k))	|	
+A076408	partsum	0			new A001597()		Sum of first n perfect powers.	nonn,changed,	1..10000	nyi
+A078616	partsum	0			new A010815()		sum(0, mN, k -> A010815(k))	|	
+A084692	partsum	0			new A084692()		Sum of first n zeros of BesselJ function of zero order.	easy,nonn,synth	1..20	nyi
+A086046	partsum	0			new A014613()		Sum of first n 4-almost primes.	easy,nonn,	1..1000	nyi
+A086047	partsum	0			new A014614()		Sum of first n 5-almost primes.	easy,nonn,synth	1..42	nyi
+A086052	partsum	0			new A046306()		Sum of first n 6-almost primes.	easy,nonn,changed,	1..10000	nyi
+A086059	partsum	0			new A046308()		Sum of first n 7-almost primes.	easy,nonn,synth	1..38	nyi
+A086061	partsum	0			new A046310()		Sum of first n 8-almost primes.	easy,nonn,synth	1..35	nyi
+A086062	partsum	0			new A014612()		Sum of first n 3-almost primes.	easy,nonn,	1..1000	nyi
+A086169	partsum	0			new A054735()		Sum of the first n twin prime pairs.	nonn,changed,	1..1000	nyi
+A086849	partsum	1			new A000037()		a(n) = Sum_{i=1..n} A000037(i).
+A088930	partsum	0			new A088930()		Sum of first n terms of A(x)^n is A087457(n) for n>=1.	nonn,synth	0..24	nyi
+A092336	partsum	0			new A000396()		Sum of first n perfect numbers.	nonn,changed,synth	1..10	nyi
+A096061	partsum	0		no	new A096061()		a(n) = floor((Sum of the first n natural numbers)/(Sum of the first n terms of the harmonic series)).	nonn,	1..10000	nyi
+A097589	partsum	1			new A005235()		a(n) = Sum_{i=1..n} A005235(i).
+A099535	partsum	0			new A002162()		Sum of the first n decimal places of log(2).	base,easy,nonn,synth	1..57	nyi
+A099536	partsum	0			new A002117()		Sum of the first n digits of Zeta(3) (Apery's constant), including the initial 1.	base,easy,nonn,	1..1000	nyi
+A099537	partsum	0			new A002117()		Sum of the first n decimal places of zeta(3) (Apery's constant). This does not include the initial "1." of zeta(3).	base,easy,nonn,changed,synth	1..58	nyi
+A099538	partsum	0			new A002193()		Sum of the first n digits of sqrt(2), including the initial "1".	base,easy,nonn,	1..1000	nyi
+A099539	partsum	0			new A002193()		Sum of the first n decimal places of sqrt(2).	base,easy,nonn,	1..10000	nyi
+A099540	partsum	0			new A053510()		Sum of the first n digits of log(Pi)=1.14472988584940017...	base,easy,nonn,synth	1..58	nyi
+A099541	partsum	0			new A053510()		Sum of the first n decimal places of log(Pi).	base,easy,nonn,synth	1..58	nyi
+A099616	partsum	0			new A006752()		Sum of the first n decimal places of Catalan's constant 0.9159655941772... (sequence A006752).	base,easy,nonn,	1..10000	nyi
+A099850	partsum	0			new A004648()		Sum of the first n terms of A004648 (the remainder after dividing n-th prime by n).	easy,nonn,	1..10000	nyi
+A100543	partsum	0			new A100543()		Sum of first n terms of A_n (signed values).	dumb,easy,sign,synth	1..46	nyi
+A102066	partsum	0			new A000040()		Sum of the first n primes, mod 6.	easy,nonn,synth	1..86	nyi
+A109442	partsum	1			new A000015()		a(n) = Sum_{i=1..n} A000015(i).
+A109443	partsum	1			new A031218()		a(n) = Sum_{i=1..n} A031218(i).
+A109444	partsum	1			new A000026()		a(n) = Sum_{i=1..n} A000026(i).
+A109453	partsum	1			new A000030()		a(n) = Sum_{i=1..n} A000030(i).
+A109470	partsum	1			new A007412()		a(n) = Sum_{i=1..n} A007412(i).
+A109472	partsum	1			new A000043()		a(n) = Sum_{i=1..n} A000043(i).
+A113122	partsum	0			new A000045()		Sum of the first n Fibonacci numbers, in ascending order, as bases, with the same, in descending order, as exponents.	easy,nonn,synth	1..15	nyi
+A113153	partsum	0			new A000045()		Sum of the first n tribonacci numbers, in ascending order, as bases, with the same, in descending order, as exponents.	easy,nonn,synth	1..12	nyi
+A113154	partsum	0			new A000032()		Sum of the first n Lucas numbers, in ascending order, as bases, with the same, in descending order, as exponents.	easy,nonn,synth	1..11	nyi
+A114053	partsum	0			new A114053()		Sum of the first n n-digit primes less n*10^(n-1).	nonn,base,changed,	1..300	nyi
+A114605	partsum	0		no	new A114605()		Sum of first n digits of e to digit-wise power of first n digits of Pi.	base,easy,nonn,changed,synth	1..20	nyi
+A114844	partsum	0		no	new A114844()		Sum of first n digits of Pi to digit-wise power of first n digits of e.	base,easy,nonn,changed,	1..300	nyi
+A118115	partsum	1			new A000461()		a(n) = Sum_{i=1..n} A000461(i).
+A118477	partsum	1			new A037292()		a(n) = Sum_{i=1..n} A037292(i).
+A119491	partsum	0		no	new A119491()		Sum of the first n n-digit primes.	base,nonn,changed,	1..300	nyi
+A121060	partsum	0		no	new A121060()		Sum of the first n digits to the right of the decimal expansion of 1/n.	nonn,base,synth	1..63	nyi
+A125114	partsum	0			new A006037()		Sum of the first n weird numbers.	easy,nonn,synth	1..32	nyi
+A130244	partsum	0			new A130242()		sum(0, mN, k -> A130242(k))	|	a(n) = Sum_{k=0..n} A130242(k).
+A130251	partsum	0			new A130249()		sum(0, mN, k -> A130249(k))	|	a(n) = Sum_{k=0..n} A130249(k).
+A130252	partsum	0			new A130250()		sum(0, mN, k -> A130250(k))	|
+A153474	partsum	0			new A000668()		Sum of first n Mersenne primes A000668.	nonn,synth	1..12	nyi
+A153475	partsum	0			new A061652()		Sum of first n even superperfect numbers A061652.	nonn,synth	1..12	nyi
+A153476	partsum	0			new A061652()		Sum of first n even superperfect numbers A061652, divided by 2.	nonn,synth	1..12	nyi
+A153478	partsum	0			new A007510()		Sum of first n isolated (or single) primes A007510.	easy,nonn,	1..1000	nyi
+A159481	partsum	0			new A010059()		sum(0, mN, k -> A010059(k))	|	
+A161569	partsum	0			new A004648()		Sum of first n nonprimes minus their indices.	nonn,easy,synth	1..53	nyi
+A163061	partsum	0			new A004648()		Sum of the first n primes plus the first n nonprimes.	nonn,changed,	1..1000	nyi
+A163120	partsum	0			new A129808()		Sum of the first n digits of the concatenation of all nonprimes.	nonn,base,synth	1..62	nyi
+# A165906	partsum	0			new A004648()		Sum of first n primes divided by the n-th prime, rounded up to the nearest integer.	easy,nonn,	1..1000	nyi
+A166064	partsum	0			new A166064()		Sum of first n terms divides the concatenation of the first n terms.	base,nonn,synth	1..33	nyi
+A166448	partsum	0			new A166448()		Sum of first n primes minus next prime.	sign,	1..20000	nyi
+A168350	partsum	0			new A168350()		Sum of first n non-single or nonisolated numbers.	nonn,synth	1..52	nyi
+A173397	partsum	1			new A000019()		a(n) = Sum_{i=1..n} A000019(i).
+A173407	partsum	1			new A002106()		a(n) = Sum_{i=1..n} A002106(i).
+A175133	partsum	0			new A175133()		Sum of first n consecutive primes gives a triangular number.	nonn,more,synth	1..10	nyi
+A178155	partsum	1			new A003407()		a(n) = Sum_{i=1..n} A003407(i).
+A178579	partsum	1			new A001676()		a(n) = Sum_{i=1..n} A001676(i).
+# A191994	partsum	0			new A004648()		(Sum of first n Fibonacci numbers) times (product of first n Fibonacci numbers).	nonn,changed,	1..97	nyi
+A206920	partsum	0			new A006995()		Sum of the first n binary palindromes; a(n) = Sum_{k=1..n} A006995(k).	nonn,base,	1..10000	nyi
+A213040	partsum	0			new A004738()		sum(0, mN, k -> A004738(k))	|	
+# A217736	partsum	0			new A004648()		Sum of first n squares of semiprimes.	nonn,	1..10000	nyi
+A230833	partsum	0			new A000787()		Sum of the first n strobogrammatic numbers.	nonn,base,easy,synth	1..36	nyi
+A239659	partsum	0			new A239660()		Sum of first n parts of the spiral described in A239660.	nonn,tabf,changed,synth	1..68	nyi
+A256885	partsum	1			new A014684()		a(n) = Sum_{i=1..n} A014684(i).
+A258864	partsum	0			new A258851()		sum(0, mN, k -> A258851(k))	|	a(n) = Sum_{k=0..n} A258851(k).
+A262320	partsum	0			new A262321()		sum(0, mN, k -> A262321(k))	|	a(n) = Sum_{k=0..n} A262321(k).
+A264889	partsum	0			new A002109()		sum(0, mN, k -> A002109(k))	|	
+A265581	partsum	0			new A265580()		sum(0, mN, k -> A265580(k))	|	a(n) = Sum_{k=0..n} A265580(k).
+A276255	partsum	0			new A033548()		Sum of first n Honaker primes.	nonn,base,	1..7300	nyi
+A276796	partsum	0			new A276793()		sum(0, mN, k -> A276793(k), mN >= 0)	|	a(n) = Sum_{k=0..n} A276793(k), n >= 0.
+A276797	partsum	0			new A276794()		sum(0, mN, k -> A276794(k))	|	a(n) = Sum_{k=0..n} A276794(k).
+A279482	partsum	0			new A180363()		Sum of the first n Lucas numbers whose indices are prime.	nonn,	1..500	nyi
+A280077	partsum	1			new A007429()		a(n) = Sum_{i=1..n} A007429(i).
+A280131	partsum	1			new A029940()		a(n) = Sum_{i=1..n} A029940(i).
+A280713	partsum	1			new A055067()		a(n) = Sum_{i=1..n} A055067(i).
+A284870	partsum	0			new A006128()		sum(0, mN, k -> A006128(k))	|	
+A326951	partsum	0			new A327011()		sum(0, mN, k -> A327011(k))	|	a(n) = Sum_{k = 0..n} A327011(k).
+A329598	partsum	1			new A014132()		a(n) = Sum_{i=1..n} A014132(i).
+A337300	partsum	1			new A049039()		a(n) = Sum_{i=1..n} A049039(i)
+A345867	partsum	1			new A035103()		a(n) = Sum_{i=1..n} A035103(i).
