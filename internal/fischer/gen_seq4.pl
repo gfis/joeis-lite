@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-04-08: V3.5: Stirling, Fibonacci
 # 2022-04-08: V3.4: z.Euler.phi(n)
 # 2022-04-03: V3.3: FACTORIAL.factorial 
 # 2022-03-26: V3.2: import Z, Integers, Cheetah.factor if necessary
@@ -320,7 +321,9 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WZeta\.}          ) { $imports{"irvine.math.cr.Zeta"}                   = $itype; }
     if ($line =~ m{\WIntegers\.}      ) { $imports{"irvine.math.z.Integers"}                = $itype; }
     if ($line =~ m{\WBinomial\.}      ) { $imports{"irvine.math.z.Binomial"}                = $itype; }
+    if ($line =~ m{\WStirling\.}      ) { $imports{"irvine.math.z.Stirling"}                = $itype; }
     if ($line =~ m{\WFACTORIAL\.}     ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
+    if ($line =~ m{\WFibonacci\.}     ) { $imports{"irvine.math.z.Fibonacci"}               = $itype; }
     if ($line =~ m{\WMemoryFactorial} ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
     if ($line =~ m{\WStringUtils\.}   ) { $imports{"irvine.util.string.StringUtils"}        = $itype; }
     if ($line =~ m{\WQ\W}             ) { $imports{"irvine.math.q.Q"}                       = $itype; }

@@ -459,8 +459,8 @@ potential: # rerun all targets that have accelaration potential
 	rm -f    $@.tmp
 	#---- start of list of all candidates
 	echo inbase2      >> $@.tmp
-	# echo n2           >> $@.tmp
-	# echo posins       >> $@.tmp
+	echo n2           >> $@.tmp
+	echo posins       >> $@.tmp
 	echo transpose    >> $@.tmp
 	echo trimirror    >> $@.tmp
 	#---- end of   list of all candidates
@@ -488,7 +488,16 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-04-12:
+anabuild: # .2022-04-14:
+	make purge
+	cp -v hold/*.java manual
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A069272   select       gener
+	make CC=A066699   select       gener
+	make CC=prodsim   select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-04-12:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A126616   select       gener
@@ -4409,6 +4418,11 @@ deris_shuffle:
 deris_ok:
 	grep -P "^A\d+" deris.ok | cut -b1-7 | sed -e "s/^/\^/" > $@.tmp
 	grep -Ef $@.tmp deris.gen > $@.gen
+	wc -l    $@.gen
+#----
+compseqm:
+	grep -E "^A[0-9]" compseq.man > $@.gen
+	head -n4 $@.gen
 	wc -l    $@.gen
 #----
 insect:

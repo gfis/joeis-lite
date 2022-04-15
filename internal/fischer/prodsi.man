@@ -203,3 +203,12 @@ A334805	prodsid	1	Cheetah.factor(dd).sigma().lcm(dd)	for (final Z dd : Cheetah.f
 A334806	prodsid	1	Cheetah.factor(dd).sigma0().lcm(Cheetah.factor(dd).sigma())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} lcm(tau(d), sigma(d)) where tau(k) is the number of divisors of k (A000005) and sigma(k) is the sum of divisors of k (A000203).
 A334807	prodsid	1	Cheetah.factor(dd).sigma0().lcm(Cheetah.factor(dd).pod())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} lcm(tau(d), pod(d)) where tau(k) is the number of divisors of k (A000005) and pod(k) is the product of divisors of k (A007955).
 A334809	prodsid	1	Cheetah.factor(dd).sigma().lcm(Cheetah.factor(dd).pod())	for (final Z dd : Cheetah.factor(mN).divisors()) {	a(n) = Product_{d|n} lcm(sigma(d), pod(d)) where sigma(k) is the sum of divisors of k (A000203) and pod(k) is the product of divisors of k (A007955).
+
+
+A126675	prodsi	2	Stirling.firstKind(i, 2).abs()	for (int i = 2; i <= mN; ++i) {	Product_{i=2..n} |Stirling_1(i,2)|.	nonn,synth	2..14	nyi
+A126676	prodsi	3	Stirling.firstKind(i, 3).abs()	for (int i = 3; i <= mN; ++i) {	Product_{i=3..n} |Stirling_1(i,3)|.	nonn,synth	3..14	nyi
+A126677	prodsi	4	Stirling.firstKind(i, 4).abs()	for (int i = 4; i <= mN; ++i) {	Product_{i=4..n} |Stirling_1(i,4)|.	nonn,synth	4..15	nyi
+A126678	prodsi	5	Stirling.firstKind(i, 5).abs()	for (int i = 5; i <= mN; ++i) {	Product_{i=5..n} |Stirling_1(i,5)|.	nonn,synth	5..15	nyi
+A126679	prodsi	3	Stirling.secondKind(i, 3)	for (int i = 3; i <= mN; ++i) {	Product_{i=3..n} Stirling_2(i,3).	nonn,synth	3..16	nyi
+A126680	prodsi	4	Stirling.secondKind(i, 4)	for (int i = 4; i <= mN; ++i) {	Product_{i=4..n} Stirling_2(i,4).	nonn,synth	4..16	nyi
+A126681	prodsi	5	Stirling.secondKind(i, 5)	for (int i = 5; i <= mN; ++i) {	Product_{i=5..n} Stirling_2(i,5).	nonn,synth	5..16	nyi
