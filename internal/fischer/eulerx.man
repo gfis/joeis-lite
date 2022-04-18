@@ -1,4 +1,4 @@
-A048808	eulerx	0	A002865	0	new A002865()						
+A048808	eulerx	0	A002865	0	new A002865()
 
 t65 = [1, 0, 1, 1, 2, 2, 4, 4, 7, 8, 12, 14, 21, 24, 34, 41, 55, 66, 88, 105, 137, 165, 210, 253, 320, 383, 478, 574, 708, 847, 1039, 1238, 1507, 1794, 2167, 2573, 3094, 3660];
 t08 = [1, 1, 2, 3, 5, 7, 12, 18, 27, 42, 64, 96, 146, 219, 327, 491, 730, 1084, 1608, 2376, 3500];
@@ -9,3 +9,9 @@ EULER0(t65)
 EULER(t08)
 EULER0(t08)
 
+# A092119 EulerTransform  EULER transform of A001511.     nonn,changed,   0..10000        eulerx
+A072336	eulerx	0	A064831	0	new SkipSequence(new A064831(), 2)		EULER transform of A064831 (with its initial 1 omitted).
+A072337	eulerix	0	A064831	0	new SkipSequence(new A064831(), 2)		Inverse EULER transform of A064831 (with its initial 1 omitted)
+A072338	eulerx	0	A002620	0	new SkipSequence(new A002620(), 3)		EULER transform of A002620 (with the initial 0,0,1 omitted).
+A123915	eulerx	0	A051841	0	new A051841()		Number of binary words whose (unique) decreasing Lyndon decomposition is into Lyndo
+A123916	eulerx	0	A000048	0	new SkipSequence(new A000048(), 1)		Number of binary words whose (unique) decreasing Lyndon decompo

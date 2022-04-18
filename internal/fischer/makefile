@@ -488,7 +488,16 @@ gr1:
 gr2:
 	grep -P "^\%[NF] A\d+ (a\(n\) *\= *)?Sum_\{\w *\= *\d *\.\. *\w\}" $(COMMON)/jcat25.txt | grep -iE "binomial|stirling" \
 	| tee $@.tmp
-anabuild: # .2022-04-14:
+anabuild: # .2022-04-17:
+	make purge
+	cp -v hold/*.java manual
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=eulerxm   select       gener
+	make CC=A059007   select       gener
+	make CC=A070667   select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-04-14:
 	make purge
 	cp -v hold/*.java manual
 	git add -v *.man *.sql *.pl *.jpat
@@ -5205,6 +5214,10 @@ eulerx4:
 eulerxfm:
 	grep    "???" eulerx4.2.tmp || :
 	grep -v "???" eulerx4.2.tmp > $@.gen || :
+eulerxm:
+	grep -E "^A[0-9]" eulerx.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------
 euguess_all: euguess0 euguess1 euguess2 euguess_check
 euguess0: # aseqno, cc, ofs, keyw, data
