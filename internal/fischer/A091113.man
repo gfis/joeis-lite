@@ -1,0 +1,35 @@
+A091113	parm3	1	A091113	4	1	Nonprimes of the form 4*k+1.    nonn,changed,   1..10000        nyi
+A091236	parm3	1	A091113	4	3	Nonprimes of form 4k+3. easy,nonn,      1..1000 nyi
+A091300	parm3	1	A091113	6	1	Nonprimes of the form 6k + 1.   easy,nonn,changed,      1..10000        ny
+A092256	parm3	1	A091113	6	5	Nonprimes of form 6k+5. easy,nonn,changed,      1..10000        nyi
+A135657	parm3	1	A091113	24	7	Nonprimes of the form 24n+7.    nonn,easy,      1..1000 nyi
+A140376	parm3	1	A091113	26	1	Nonprimes of the form 26n+1.    nonn,less,      1..1000 nyi
+A140379	parm3	1	A091113	14	1	Nonprimes of the form 14k+1.    nonn,less,      1..1000 nyi
+A140390	parm3	1	A091113	21	1	Nonprimes of the form 21k+1.    nonn,less,      1..1000 nyi
+A140367	parm3	1	A091113	26	5	Composites of the form 26k + 5. nonn,less,synth 1..47   nyi
+A140368	parm3	1	A091113	26	17	Composites of the form 26k + 17.        nonn,less,synth 1..47   nyi
+A140369	parm3	1	A091113	26	19	Composites of the form 26k + 19.        nonn,less,synth 1..47   nyi
+A140370	parm3	1	A091113	26	21	Composites of the form 26k + 21.        nonn,less,synth 1..47   nyi
+A140377	parm3	1	A091113	26	3	Composites of the form 26k + 3. nonn,less,synth 1..47   nyi
+A140380	parm3	1	A091113	14	3	Composites of the form 14k + 3. nonn,less,synth 1..50   nyi
+A140381	parm3	1	A091113	14	9	Composites of the form 14k + 9. nonn,less,synth 1..52   nyi
+
+A122780	parm3	1	A122780	3	3	Nonprimes k such that 3^k == 3 (mod k). easy,nonn,changed,      1..10000
+A122781	parm3	1	A122780	4	4	Nonprimes n such that 4^n==4 (mod n).   easy,nonn,      1..500  nyi
+A122782	parm3	1	A122780	5	5	Nonprimes n such that 5^n==5 (mod n).   nonn,changed,   1..10000        ny
+A122783	parm3	1	A122780	6	6	Nonprimes k such that 6^k==6 (mod k).       easy,nonn,changed,      1.
+A122784	parm3	1	A122780	7	7	Nonprimes k such that 7^k == 7 (mod k). nonn,changed,   1..10000        ny
+A122785	parm3	1	A122780	8	8	Nonprimes n such that 8^n==8 (mod n).   nonn,synth      1..47   nyi
+A122786	parm3	1	A122780	9	9	Nonprimes n such that 9^n == 9 (mod n). nonn,changed,   1..10000        ny
+
+# A105882 null    Nonprimes of the form r(r(n)+1)+1, where A141468(n)=r(n)=n-th nonprime. no
+# A106613 null    Nonprimes of the form r(r(r(n)+1)+1)+1, where A141468(n)=r(n)=n-th nonprim
+# A106794 null    Nonprimes of the form r(r(r(r(n)+1)+1)+1)+1, where A141468(n)=r(n)=n-th no
+# A107355 null    Nonprimes of the form r(r(r(r(r(n)+1)+1)+1)+1)+1, where A141468(n)=r(n)=n-
+# A118073 null    Nonprimes of the form r(r(r(r(r(r(n)+1)+1)+1)+1)+1)+1, where A141468(n)=r(
+# A126134 null    Nonprimes of the form r(r(r(r(r(r(r(n)+1)+1)+1)+1)+1)+1)+1, where A141468(
+
+# A141469 null    Nonprimes of the form c(c(i)-3)-3, where A002808(i)=c(i)=i-th composite.        nonn,synth      1..62   nyi
+# A141587 null    Nonprimes of the form c(c(c(i)-3)-3)-3, where A002808(i)=c(i)=i-th composite.   nonn,synth      1..59   nyi
+# A141632 null    Nonprimes of the form c(c(c(c(i)-3)-3)-3)-3, where A002808(i)=c(i)=i-th composite.      nonn,synth      1..56   nyi
+# A141634 null    Nonprimes of the form c(c(c(c(c(i)-3)-3)-3)-3)-3, where A002808(i)=c(i)=i-th composite. nonn,synth      1..64   nyi
