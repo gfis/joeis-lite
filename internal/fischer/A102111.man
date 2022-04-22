@@ -16,6 +16,16 @@ A102123	A102119	0	ZUtils.reverse(mA).add(mB).add(ZUtils.reverse(mC))	Iccanobirt 
 A102124	A102119	0	ZUtils.reverse(mA).add(ZUtils.reverse(mB)).add(mC)	Iccanobirt numbers	Iccanobirt numbers (14 of 15): a(n) = R(R(a(n-1)) + R(a(n-2)) + a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
 A102125	A102119	0	ZUtils.reverse(mA).add(ZUtils.reverse(mB)).add(ZUtils.reverse(mC))	Ic	Iccanobirt numbers (15 of 15): a(n) = R(R(a(n-1)) + R(a(n-2)) + R(a(n-3))), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
 
+A101759	parm2	0	A102131	new A001129()	Iccanobif prime indices: Indices of prime numbers in A001129.   nonn,more,base,changed,synth    1..18   nyi
+A101760	parm2	0	A102131	new A014258()	Iccanobif prime indices: indices of prime numbers in A014258.   nonn,base,more,changed,synth    1..26   nyi
+A101761	parm2	0	A102131	new A014259()	Iccanobif prime indices: Indices of prime numbers in A014259.   nonn,base,more,changed,synth    1..10   nyi
+A101762	parm2	0	A102131	new A014260()	Iccanobif prime indices: Indices of prime numbers in A014260.   nonn,base,more,changed,synth    1..18   nyi
+                                      
+A101763	parm2	0	A102171	new A001129()	Iccanobif semiprime indices: Indices of semiprime numbers in A001129.   nonn,base,more,changed,synth    1..25   nyi
+A101764	parm2	0	A102171	new A014258()	Iccanobif semiprime indices: Indices of semiprime numbers in A014258.   nonn,base,more,changed,synth    1..38   nyi
+A101765	parm2	0	A102171	new A014259()	Iccanobif semiprime indices: Indices of semiprime numbers in A014259.   nonn,base,more,changed,synth    1..26   nyi
+A101766	parm2	0	A102171	new A014260()	Iccanobif semiprime indices: Indices of semiprime numbers in A014260.   nonn,base,more,changed,synth    1..30   nyi
+
 A102131	parm2	0	A102131	new A102111()	Iccanobirt prime indices ( 1 of 15): Indices of prime numbers in A102111.	nonn,more,base,changed,synth	1..15	nyi
 A102132	parm2	0	A102131	new A102112()	Iccanobirt prime indices ( 2 of 15): Indices of prime numbers in A102112.	nonn,more,base,changed,synth	1..12	nyi
 A102133	parm2	0	A102131	new A102113()	Iccanobirt prime indices ( 3 of 15): Indices of prime numbers in A102113.	nonn,more,base,synth	1..13	nyi
