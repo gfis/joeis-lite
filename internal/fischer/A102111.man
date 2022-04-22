@@ -1,0 +1,81 @@
+A102111	A102111	0	mA.add(mB).add(ZUtils.reverse(mC))	Iccanobirt numbers (1 of 15): a(n) = a(n-1) + a(n-2) + R(a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,changed,synth	0..35	nyi
+A102111	A102111	0	mA.add(mB).add(ZUtils.reverse(mC))	Iccanobirt numbers (1 of 15): a(n) = a(n-1) + a(n-2) + R(a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,changed,synth	0..35	nyi
+A102112	A102111	0	mA.add(ZUtils.reverse(mB)).add(mC)	Iccanobirt numbers (2 of 15): a(n) = a(n-1) + R(a(n-2)) + a(n-3), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
+A102113	A102111	0	mA.add(ZUtils.reverse(mB)).add(ZUtils.reverse(mC))	Iccanobirt numbers (3 of 15): a(n) = a(n-1) + R(a(n-2)) + R(a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
+A102114	A102111	0	ZUtils.reverse(mA).add(mB).add(mC)	Iccanobirt numbers (4 of 15): a(n) = R(a(n-1)) + a(n-2) + a(n-3), where R is the digit reversal function A004086.	nonn,base,easy,synth	0..34	nyi
+A102115	A102111	0	ZUtils.reverse(mA).add(mB).add(ZUtils.reverse(mC))	Iccanobirt numbers (5 of 15): a(n) = R(a(n-1)) + a(n-2) + R(a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
+A102116	A102111	0	ZUtils.reverse(mA).add(ZUtils.reverse(mB)).add(mC)	Iccanobirt numbers (6 of 15): a(n) = R(a(n-1)) + R(a(n-2)) + a(n-3), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
+A102117	A102111	0	ZUtils.reverse(mA).add(ZUtils.reverse(mB)).add(ZUtils.reverse(mC))	Iccanobirt numbers (7 of 15): a(n) = R(a(n-1)) + R(a(n-2)) + R(a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,	0..2664	nyi
+A102118	A102111	0	ZUtils.reverse(mA.add(mB).add(mC))	Iccanobirt numbers (8 of 15): a(n) = R(a(n-1) + a(n-2) + a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
+
+A102119	A102119	0	mA.add(mB).add(ZUtils.reverse(mC))	Iccanobirt numbers (1 of 15): a(n)	Iccanobirt numbers (9 of 15): a(n) = R(a(n-1) + a(n-2) + R(a(n-3))), where R is the digit reversal function A004086.	nonn,base,easy,synth	0..32	nyi
+A102120	A102119	0	mA.add(ZUtils.reverse(mB)).add(mC)	Iccanobirt numbers (2 of 15): a(n)	Iccanobirt numbers (10 of 15): a(n) = R(a(n-1) + R(a(n-2)) + a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,synth	0..32	nyi
+A102121	A102119	0	mA.add(ZUtils.reverse(mB)).add(ZUtils.reverse(mC))	Iccanobirt numbers	Iccanobirt numbers (11 of 15): a(n) = R(a(n-1) + R(a(n-2)) + R(a(n-3))), where R is the digit reversal function A004086.	nonn,base,easy,synth	0..35	nyi
+A102122	A102119	0	ZUtils.reverse(mA).add(mB).add(mC)	Iccanobirt numbers (4 of 15): a(n)	Iccanobirt numbers (12 of 15): a(n) = R(R(a(n-1)) + a(n-2) + a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,synth	0..32	nyi
+A102123	A102119	0	ZUtils.reverse(mA).add(mB).add(ZUtils.reverse(mC))	Iccanobirt numbers	Iccanobirt numbers (13 of 15): a(n) = R(R(a(n-1)) + a(n-2) + R(a(n-3))), where R is the digit reversal function A004086.	nonn,base,easy,synth	0..33	nyi
+A102124	A102119	0	ZUtils.reverse(mA).add(ZUtils.reverse(mB)).add(mC)	Iccanobirt numbers	Iccanobirt numbers (14 of 15): a(n) = R(R(a(n-1)) + R(a(n-2)) + a(n-3)), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
+A102125	A102119	0	ZUtils.reverse(mA).add(ZUtils.reverse(mB)).add(ZUtils.reverse(mC))	Ic	Iccanobirt numbers (15 of 15): a(n) = R(R(a(n-1)) + R(a(n-2)) + R(a(n-3))), where R is the digit reversal function A004086.	nonn,base,easy,	0..1000	nyi
+
+A102131	parm2	0	A102131	new A102111()	Iccanobirt prime indices ( 1 of 15): Indices of prime numbers in A102111.	nonn,more,base,changed,synth	1..15	nyi
+A102132	parm2	0	A102131	new A102112()	Iccanobirt prime indices ( 2 of 15): Indices of prime numbers in A102112.	nonn,more,base,changed,synth	1..12	nyi
+A102133	parm2	0	A102131	new A102113()	Iccanobirt prime indices ( 3 of 15): Indices of prime numbers in A102113.	nonn,more,base,synth	1..13	nyi
+A102134	parm2	0	A102131	new A102114()	Iccanobirt prime indices ( 4 of 15): Indices of prime numbers in A102114.	nonn,more,base,synth	1..19	nyi
+A102135	parm2	0	A102131	new A102115()	Iccanobirt prime indices ( 5 of 15): Indices of prime numbers in A102115.	nonn,more,base,changed,synth	1..13	nyi
+A102136	parm2	0	A102131	new A102116()	Iccanobirt prime indices ( 6 of 15): Indices of prime numbers in A102116.	nonn,more,base,changed,synth	1..13	nyi
+A102137	parm2	0	A102131	new A102117()	Iccanobirt prime indices ( 7 of 15): Indices of prime numbers in A102117.	nonn,more,base,synth	1..14	nyi
+A102138	parm2	0	A102131	new A102118()	Iccanobirt prime indices ( 8 of 15): Indices of prime numbers in A102118.	nonn,more,base,changed,synth	1..18	nyi
+A102139	parm2	0	A102131	new A102119()	Iccanobirt prime indices ( 9 of 15): Indices of prime numbers in A102119.	nonn,more,base,changed,synth	1..12	nyi
+A102140	parm2	0	A102131	new A102120()	Iccanobirt prime indices (10 of 15): Indices of prime numbers in A102120.	nonn,more,base,synth	1..19	nyi
+A102141	parm2	0	A102131	new A102121()	Iccanobirt prime indices (11 of 15): Indices of prime numbers in A102121.	nonn,more,base,changed,synth	1..19	nyi
+A102142	parm2	0	A102131	new A102122()	Iccanobirt prime indices (12 of 15): Indices of prime numbers in A102122.	nonn,more,base,changed,synth	1..24	nyi
+A102143	parm2	0	A102131	new A102123()	Iccanobirt prime indices (13 of 15): Indices of prime numbers in A102123.	nonn,more,base,changed,synth	1..16	nyi
+A102144	parm2	0	A102131	new A102124()	Iccanobirt prime indices (14 of 15): Indices of prime numbers in A102124.	nonn,more,base,changed,synth	1..20	nyi
+A102145	parm2	0	A102131	new A102125()	Iccanobirt prime indices (15 of 15): Indices of prime numbers in A102125.	nonn,more,base,changed,synth	1..22	nyi
+
+A102151	parm2	0	A102151	new A102111()	Iccanobirt primes ( 1 of 15): Prime numbers in A102111.	nonn,base,synth	1..7	nyi
+A102152	parm2	0	A102151	new A102112()	Iccanobirt primes ( 2 of 15): Prime numbers in A102112.	nonn,base,changed,synth	1..7	nyi
+A102153	parm2	0	A102151	new A102113()	Iccanobirt primes ( 3 of 15): Prime numbers in A102113.	nonn,base,synth	1..7	nyi
+A102154	parm2	0	A102151	new A102114()	Iccanobirt primes ( 4 of 15): Prime numbers in A102114.	nonn,less,base,changed,synth	1..13	nyi
+A102155	parm2	0	A102151	new A102115()	Iccanobirt primes ( 5 of 15): Prime numbers in A102115.	nonn,base,less,changed,synth	1..5	nyi
+A102156	parm2	0	A102151	new A102116()	Iccanobirt primes ( 6 of 15): Prime numbers in A102116.	nonn,base,synth	0..6	nyi
+A102157	parm2	0	A102151	new A102117()	Iccanobirt primes ( 7 of 15): Prime numbers in A102117.	nonn,base,less,changed,synth	1..8	nyi
+A102158	parm2	0	A102151	new A102118()	Iccanobirt primes ( 8 of 15): Prime numbers in A102118.	nonn,base,less,changed,synth	1..8	nyi
+A102159	parm2	0	A102151	new A102119()	Iccanobirt primes ( 9 of 15): Prime numbers in A102119.	nonn,base,less,changed,synth	1..6	nyi
+A102160	parm2	0	A102151	new A102120()	Iccanobirt primes (10 of 15): Prime numbers in A102120.	nonn,base,less,changed,synth	1..10	nyi
+A102161	parm2	0	A102151	new A102121()	Iccanobirt primes (11 of 15): Prime numbers in A102121.	nonn,base,less,changed,synth	1..8	nyi
+A102162	parm2	0	A102151	new A102122()	Iccanobirt primes (12 of 15): Prime numbers in A102122.	nonn,base,less,changed,synth	1..10	nyi
+A102163	parm2	0	A102151	new A102123()	Iccanobirt primes (13 of 15): Prime numbers in A102123.	nonn,base,less,changed,synth	1..10	nyi
+A102164	parm2	0	A102151	new A102124()	Iccanobirt primes (14 of 15): Prime numbers in A102124.	nonn,base,less,changed,synth	1..9	nyi
+A102165	parm2	0	A102151	new A102125()	Iccanobirt primes (15 of 15): Prime numbers in A102125.	nonn,base,less,changed,synth	1..11	nyi
+
+A102171	parm2	0	A102171	new A102111()	Iccanobirt semiprime indices ( 1 of 15): Indices of semiprime numbers in A102111.	nonn,more,less,base,changed,synth	1..19	nyi
+A102172	parm2	0	A102171	new A102112()	Iccanobirt semiprime indices ( 2 of 15): Indices of semiprime numbers in A102112.	nonn,more,less,base,changed,synth	1..18	nyi
+A102173	parm2	0	A102171	new A102113()	Iccanobirt semiprime indices ( 3 of 15): Indices of semiprime numbers in A102113.	nonn,more,less,base,changed,synth	1..18	nyi
+A102174	parm2	0	A102171	new A102114()	Iccanobirt semiprime indices ( 4 of 15): Indices of semiprime numbers in A102114.	nonn,more,less,base,changed,synth	1..17	nyi
+A102175	parm2	0	A102171	new A102115()	Iccanobirt semiprime indices ( 5 of 15): Indices of semiprime numbers in A102115.	nonn,more,less,base,changed,synth	1..21	nyi
+A102176	parm2	0	A102171	new A102116()	Iccanobirt semiprime indices ( 6 of 15): Indices of semiprime numbers in A102116.	nonn,more,less,base,changed,synth	1..20	nyi
+A102177	parm2	0	A102171	new A102117()	Iccanobirt semiprime indices ( 7 of 15): Indices of semiprime numbers in A102117.	nonn,more,less,base,changed,synth	1..23	nyi
+A102178	parm2	0	A102171	new A102118()	Iccanobirt semiprime indices ( 8 of 15): Indices of semiprime numbers in A102118.	nonn,more,less,base,changed,synth	1..25	nyi
+A102179	parm2	0	A102171	new A102119()	Iccanobirt semiprime indices ( 9 of 15): Indices of semiprime numbers in A102119.	nonn,more,less,base,changed,synth	1..27	nyi
+A102180	parm2	0	A102171	new A102120()	Iccanobirt semiprime indices (10 of 15): Indices of semiprime numbers in A102120.	nonn,more,less,base,changed,synth	1..25	nyi
+A102181	parm2	0	A102171	new A102121()	Iccanobirt semiprime indices (11 of 15): Indices of semiprime numbers in A102121.	nonn,more,less,base,changed,synth	1..31	nyi
+A102182	parm2	0	A102171	new A102122()	Iccanobirt semiprime indices (12 of 15): Indices of semiprime numbers in A102122.	nonn,more,less,base,changed,synth	1..24	nyi
+A102183	parm2	0	A102171	new A102123()	Iccanobirt semiprime indices (13 of 15): Indices of semiprime numbers in A102123.	nonn,base,more,less,changed,synth	1..34	nyi
+A102184	parm2	0	A102171	new A102124()	Iccanobirt semiprime indices (14 of 15): Indices of semiprime numbers in A102124.	nonn,more,less,base,changed,synth	1..27	nyi
+A102185	parm2	0	A102171	new A102125()	Iccanobirt semiprime indices (15 of 15): Indices of semiprime numbers in A102125.	nonn,base,more,less,changed,synth	1..31	nyi
+
+A102191	parm2	0	A102191	new A102111()	Iccanobirt semiprimes ( 1 of 15): Semiprime numbers in A102111.	nonn,less,base,changed,synth	1..12	nyi
+A102192	parm2	0	A102191	new A102112()	Iccanobirt semiprimes ( 2 of 15): Semiprime numbers in A102112.	nonn,less,base,changed,synth	1..14	nyi
+A102193	parm2	0	A102191	new A102113()	Iccanobirt semiprimes ( 3 of 15): Semiprime numbers in A102113.	nonn,less,base,changed,synth	1..13	nyi
+A102194	parm2	0	A102191	new A102114()	Iccanobirt semiprimes ( 4 of 15): Semiprime numbers in A102114.	nonn,less,base,changed,synth	1..13	nyi
+A102195	parm2	0	A102191	new A102115()	Iccanobirt semiprimes ( 5 of 15): Semiprime numbers in A102115.	nonn,less,base,changed,synth	1..14	nyi
+A102196	parm2	0	A102191	new A102116()	Iccanobirt semiprimes ( 6 of 15): Semiprime numbers in A102116.	nonn,less,base,changed,synth	1..11	nyi
+A102197	parm2	0	A102191	new A102117()	Iccanobirt semiprimes ( 7 of 15): Semiprime numbers in A102117.	nonn,less,base,changed,synth	1..13	nyi
+A102198	parm2	0	A102191	new A102118()	Iccanobirt semiprimes ( 8 of 15): Semiprime numbers in A102118.	nonn,less,base,changed,synth	1..16	nyi
+A102199	parm2	0	A102191	new A102119()	Iccanobirt semiprimes ( 9 of 15): Semiprime numbers in A102119.	nonn,less,base,changed,synth	1..17	nyi
+A102200	parm2	0	A102191	new A102120()	Iccanobirt semiprimes (10 of 15): Semiprime numbers in A102120.	nonn,less,base,changed,synth	1..15	nyi
+A102201	parm2	0	A102191	new A102121()	Iccanobirt semiprimes (11 of 15): Semiprime numbers in A102121.	nonn,less,base,changed,synth	1..16	nyi
+A102202	parm2	0	A102191	new A102122()	Iccanobirt semiprimes (12 of 15): Semiprime numbers in A102122.	nonn,less,base,changed,synth	1..14	nyi
+A102203	parm2	0	A102191	new A102123()	Iccanobirt semiprimes (13 of 15): Semiprime numbers in A102123.	nonn,less,base,changed,synth	1..21	nyi
+A102204	parm2	0	A102191	new A102124()	Iccanobirt semiprimes (14 of 15): Semiprime numbers in A102124.	nonn,less,base,changed,synth	1..14	nyi
+A102205	parm2	0	A102191	new A102125()	Iccanobirt semiprimes (15 of 15): Semiprime numbers in A102125.	nonn,less,base,changed,synth	1..20	nyi
