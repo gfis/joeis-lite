@@ -474,6 +474,8 @@ potential1:
 	make CC=$(TARGET) clean
 potential2:
 	make CC=$(TARGET) gener
+potential3:
+	ls -tclr *.gen | tail -n7 | cut -b47- | sed -e "s/\.gen//" | xargs -l -innn make CC=nnn gener
 #--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
@@ -483,7 +485,14 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-04-25:
+anabuild: # .2022-04-27:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=esf       select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-04-25:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v *.man *.sql *.pl *.jpat
@@ -2359,6 +2368,11 @@ engelex0:
 engelex:
 	grep -v VOID engelex.man \
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+esf: # ElementarySymmetricFunctionSequence
+	grep -E "^A[0-9]" $@.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
@@ -4390,25 +4404,25 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp
-	# echo -n "binomial"                         > binomx.deris.tmp
-	# echo -n "characteristic|indicator"         > charfun.deris.tmp
-	# echo -n "complement"                       > compseq.deris.tmp
-	# echo -n "difference"                       > diffseq.deris.tmp
-	# echo -n "dirichlet"                        > dirichinv.deris.tmp
-	# echo -n "dirichlet"                        > dirichcon.deris.tmp
-	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	# echo -n "euler"                            > eulerx.deris.tmp
-	# echo -n "euler"                            > eulerix.deris.tmp
+	echo -n "binomial"                         > binomx.deris.tmp
+	echo -n "characteristic|indicator"         > charfun.deris.tmp
+	echo -n "complement"                       > compseq.deris.tmp
+	echo -n "difference"                       > diffseq.deris.tmp
+	echo -n "dirichlet"                        > dirichinv.deris.tmp
+	echo -n "dirichlet"                        > dirichcon.deris.tmp
+	echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	echo -n "euler"                            > eulerx.deris.tmp
+	echo -n "euler"                            > eulerix.deris.tmp
 	echo -n "m.e?bius"                         > moebiusx.deris.tmp
 	echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	# echo -n "partial product"                  > partprod.deris.tmp
-	# echo -n "partial sum"                      > partsum.deris.tmp
-	# echo -n "prime"                            > primepos.deris.tmp
-	# echo -n "prime"                            > primeval.deris.tmp
-	# echo -n "record"                           > recordpos.deris.tmp
-	# echo -n "record"                           > recordval.deris.tmp
-	# echo -n "stirling"                         > stirling2.deris.tmp
-	# echo -n "weigh"                            > weighx.deris.tmp
+	echo -n "partial product"                  > partprod.deris.tmp
+	echo -n "partial sum"                      > partsum.deris.tmp
+	echo -n "prime"                            > primepos.deris.tmp
+	echo -n "prime"                            > primeval.deris.tmp
+	echo -n "record"                           > recordpos.deris.tmp
+	echo -n "record"                           > recordval.deris.tmp
+	echo -n "stirling"                         > stirling2.deris.tmp
+	echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
@@ -4430,6 +4444,7 @@ deris:
 	# sort     deris2.gen compseq.man | uniq -w7
 	sort     deris2.gen | uniq -w7 \
 	| grep -vf not_same.man \
+	| grep -vE "^(A318680|A318681|A214329|A219658|A237046|A087471)" \
 	| cut -b1-512 \
 	>        deris.gen
 	head -n4 $@.gen
