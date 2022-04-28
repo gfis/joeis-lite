@@ -47,7 +47,7 @@ NC=
 OFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
-JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx3g -Xss2g -Duser.language=en
+JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
@@ -4444,7 +4444,7 @@ deris:
 	# sort     deris2.gen compseq.man | uniq -w7
 	sort     deris2.gen | uniq -w7 \
 	| grep -vf not_same.man \
-	| grep -vE "^(A318680|A318681|A214329|A219658|A237046|A087471)" \
+	| grep -vE "^(A318680|A318681|A214329|A219658|A237046|A087471|A214305|A239348)" \
 	| cut -b1-512 \
 	>        deris.gen
 	head -n4 $@.gen
@@ -7041,3 +7041,11 @@ cklist:
 intin:
 	cd ck; make $@
 #================
+# Chapoton
+chapoton:
+	$(DBAT) "SELECT i.aseqno, SUBSTR(COALESCE(j.superclass, 'null'), 1, 8), n.name, i.author \
+		FROM asinfo i, asname n LEFT JOIN joeis j on n.aseqno = j.aseqno \
+		WHERE i.aseqno = n.aseqno \
+		  AND i.author LIKE '%Chapoton%' \
+		  ORDER BY 1;" \
+	| tee $@.tmp

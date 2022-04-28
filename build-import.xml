@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: 08b49ddc73ef271c7054bb70acb278bcff247562 $
+    2022-04-28: remove target="${jdk.version}" in task compile
     2019-07-25: joeis-lite.jar before joeis.jar
     2019-07-25: joeis.jar before joeis-lite.jar
     2019-04-09: delete ./expand
@@ -194,13 +195,14 @@
     </target>
 
     <!-- ============= compile ==========================================
+                source="${jdk.version}" target="${jdk.version}"
     -->
     <target name="compile"  depends="generate">
         <depend srcdir="${src.home}" destdir="${build.classes}" cache="${build.home}" dump="yes" />
         <javac  srcdir="${src.home}" destdir="${build.classes}" listfiles="yes"
                 encoding="utf8"
                 includeantruntime="false"
-                source="${jdk.version}" target="${jdk.version}"
+                source="${jdk.version}"
                 debug="${javac.debug}" debuglevel="${javac.debuglevel}">
             <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 4096 -Xmaxerrs 4096" />
             <classpath>
