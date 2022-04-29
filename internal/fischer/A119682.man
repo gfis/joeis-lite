@@ -1,0 +1,27 @@
+A058312	parm3	0	A119682	false	1	Denominator of the n-th alternating harmonic number, Sum_{k=1..n} (-1)^(k+1)/k. nonn,frac,nice,easy,    1..2000 nyi
+A058313	parm3	0	A119682	true	1	Numerator of the n-th alternating harmonic number, Sum_{k=1..n} (-1)^(k+1)/k.   nonn,frac,nice,easy,changed,    1..2000 nyi
+A119682	parm3	0	A119682	true	2	Numerator of Sum_{k=1..n} (-1)^(k+1)/k^2.       nonn,frac,changed,      1..240  nyi
+A120296	parm3	0	A119682	true	4	Numerator of Sum_{k=1..n} (-1)^(k+1)/k^4.       nonn,frac,changed,synth 1..15   nyi
+A136675	parm3	0	A119682	true	3	Numerator of Sum_{k=1..n} (-1)^(k+1)/k^3.       frac,nonn,changed,synth 1..17   nyi
+A136676	parm3	0	A119682	true	5	Numerator of Sum_{k=1..n} (-1)^(k+1)/k^5.       frac,nonn,changed,synth 1..13   nyi
+A136677	parm3	0	A119682	true	6	Numerator of Sum_{k=1..n} (-1)^(k+1)/k^6.       frac,nonn,changed,synth 1..14   nyi
+A334580	parm3	0	A119682	false	2	Denominator of Sum_{k=1..n} (-1)^(k+1)/k^2.     nonn,frac,new,synth     1..23   nyi
+A334582	parm3	0	A119682	false	3	Denominator of Sum_{k=1..n} (-1)^(k+1)/k^3.     nonn,frac,new,synth     0..17   nyi
+A334585	parm3	0	A119682	false	4	Denominator of Sum_{k=1..n} (-1)^(k+1)/k^4.     nonn,frac,new,synth     1..17   nyi
+A334604	parm3	0	A119682	false	5	Denominator of Sum_{k=1..n} (-1)^(k+1)/k^5.     nonn,new,synth  1..13   nyi
+A334605	parm3	0	A119682	false	6	Denominator of Sum_{k=1..n} (-1)^(k+1)/k^6.     nonn,frac,new,synth     1..13   nyi
+A334668	parm3	0	A119682	true	7	Numerator of Sum_{k=1..n} (-1)^(k+1)/k^7.       nonn,frac,new,synth     1..13   nyi
+A334669	parm3	0	A119682	false	7	Denominator of Sum_{k=1..n} (-1)^(k+1)/k^7.     nonn,frac,new,synth     1..13   nyi
+
+A099828	parm3	0	A099828	true	5	
+A069052	parm3	0	A099828	false	5	
+A103345	parm3	0	A099828	true	6	Numerator of Sum_{k=1..n} 1/k^6 = Zeta(6,n).    nonn,frac,easy,changed,synth    1..14   nyi
+A103346	parm3	0	A099828	false	6	Denominators of Sum_{k=1..n} 1/k^6 = Zeta(6,n). nonn,frac,easy,changed,synth    1..12   nyi
+A103347	parm3	0	A099828	true	7	Numerators of Sum_{k=1..n} 1/k^7 = Zeta(7,n).   nonn,frac,easy, 1..336  nyi
+A103348	parm3	0	A099828	false	7	Denominators of sum_{k=1..n} 1/k^7 = Zeta(7,n). nonn,frac,easy,synth    1..12   nyi
+A103349	parm3	0	A099828	true	8	Numerators of sum_{k=1..n} 1/k^8 = Zeta(8,n).   nonn,frac,easy,synth    1..10   nyi
+A103350	parm3	0	A099828	false	8	Denominators of sum_{k=1..n} 1/k^8 = Zeta(8,n). nonn,frac,easy,synth    1..10   nyi
+A103351	parm3	0	A099828	true	9	Numerators of sum_{k=1..n} 1/k^9 = Zeta(9,n).   nonn,frac,easy,synth    1..10   nyi
+A103352	parm3	0	A099828	false	9	Denominators of sum_{k=1..n} 1/k^9 = Zeta(9,n). nonn,frac,easy,synth    1..10   nyi
+A103716	parm3	0	A099828	true	10	Numerators of sum_{k=1..n} 1/k^10 =: Zeta(10,n).        nonn,frac,easy,synth    1..10   nyi
+A103717	parm3	0	A099828	false	10	Denominators of sum_{k=1..n} 1/k^10 = Zeta(10,n).       nonn,frac,easy,synth    1..10   nyi

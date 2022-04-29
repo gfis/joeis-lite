@@ -1,0 +1,53 @@
+# A196841	esf	0	new A000027()	0	Table of the elementary symmetric functions a_k(1,3,4,...,n+1). nonn,easy,tabl,synth    0..50   nyi
+# A196842	esf	0	new A000027()	0	Table of the elementary symmetric functions a_k(1,2,4,5,...,n+1).       nonn,easy,tabl,synth    0..50   nyi
+# A196843	esf	0	new A000027()	0	Table of the elementary symmetric functions a_k(1,2,3,5,6...n+1) (missing 4).   nonn,easy,tabl,synth    0..51   nyi
+# A196844	esf	0	new A000027()	0	Table of the elementary symmetric functions a_k(1,2,3,4,6,...,n+1) (5 missing). nonn,easy,tabl,synth    0..51   nyi
+# A196845	esf	0	new A000027()	0	Table of elementary symmetric function a_k(3,4,...,n+2) (no 1 and 2).   nonn,easy,tabl,synth    0..54   nyi
+# A196846	esf	0	new A000027()	0	Table of elementary symmetric functions a_k(1,2,5,6,...,n+2) (no 3,4).  nonn,easy,tabl,synth    0..54   nyi
+A203006	esf	1	new A000045()	1	(n-1)-st elementary symmetric function of the first n Fibonacci numbers.        nonn,synth      18
+A203007	esf	1	new A000045()	2	(n-1)-st elementary symmetric function of Fibonacci numbers F(2) to F(n).       nonn,synth      16
+A203008	esf	1	new A065091()	0	(n-1)-st elementary symmetric function of the first n odd primes.       nonn,synth      17
+A203009	esf	1	new A000032()	0	(n-1)-st elementary symmetric function of first n Lucas numbers, starting with L(0)=2.  nonn,synth      17
+A203010	esf	1	new A000032()	1	(n-1)-st elementary symmetric function of first n Lucas numbers, starting with L(1)=1.  nonn,synth      16
+A203011	esf	1	new A126646()	0	(n-1)-st elementary symmetric function of {1,3,7,15,31,63,...-1+2^n}.   nonn,   50
+A203147	esf	1	new A000027()	10	(n-1)-st elementary symmetric function of {11, 12, 13, 14, ..., 10 + n}.        nonn,   440
+A203148	esf	1	new A000244()	1	(n-1)-st elementary symmetric function of {3,9,...,3^n}.        nonn,changed,   60
+A203149	esf	1	new A024023()	1	(n-1)-st elementary symmetric function of {2,8,26,80,242,...,-1+3^n}.   nonn,synth      13
+A203150	esf	1	new A000034()	0	(n-1)-st elementary symmetric function of the first n terms of (1,2,1,2,1,2,1,2,1,2,...)=A000034.       nonn,easy,      1000
+A203151	esf	1	new A008619()	0	(n-1)-st elementary symmetric function of {1,1,2,2,3,3,4,4,5,5,...,Floor[(n+1)/2]}.     nonn,synth      23
+A203152	esf	1	new A008619()	1	(n-1)-st elementary symmetric function of {1, 2, 2, 3, 3, 4, 4, 5, 5, ..., floor(1+n/2)}.       nonn,   1000
+A203153	esf	1	new A008619()	2	(n-1)-st elementary symmetric function of {2, 2, 3, 3, 4, 4, 5, 5, ..., floor((n+3)/2)}.        nonn,   1000
+A203154	esf	1	new A008619()	3	(n-1)-st elementary symmetric function of {2, 3, 3, 4, 4, 5, 5,...,Floor[(n+4)/2]}.     nonn,   502
+A203155	esf	1	new A008619()	4	(n-1)-st elementary symmetric function of {3, 3, 4, 4, 5, 5,..., Floor[(n+5)/2]}.       nonn,synth      21
+A203156	esf	1	new A000290()	2	(n-1)-st elementary symmetric function of {4,9,16,25,..., (n+1)^2}.     nonn,synth      15
+A203157	esf	1	new A000217()	1	(n-1)-st elementary symmetric function of the first n triangular numbers.       nonn,synth      17
+A203159	esf	1	new A005843()	1	(n-1)-st elementary symmetric function of {2,4,6,8,...,2n}.     nonn,synth      18
+A203164	esf	1	new A010883()	3	(n-1)-st elementary symmetric function of the first n terms of the periodic sequence (4,1,2,3,4,1,2,3,...).     nonn,synth      28
+A203165	esf	1	new A010883()	2	(n-1)-st elementary symmetric function of the first n terms of the periodic sequence (3,4,1,2,3,4,1,2,...).     nonn,synth      28
+A203166	esf	1	new A010884()	0	(n-1)-st elementary symmetric function of the first n terms of (1,2,3,4,5,1,2,3,4,5,...)=A010884.       nonn,synth      26
+A203167	esf	1	new A130196()	1	(n-1)-st elementary symmetric function of the first n terms of (2,2,1,2,2,1,2,2,1,...)=(A130196 for n>0).       nonn,synth      34
+A203192	esf	1	new A124625()	2	(n-1)-st elementary symmetric function of the first n terms of (1,2,1,4,1,6,1,8,...)=(A124625 for n>1). nonn,synth      25
+A203193	esf	1	new A133622()	0	(n-1)-st elementary symmetric function of the first n terms of (1,2,1,3,1,4,1,5,...)=A133622.   nonn,synth      27
+A203194	esf	1	new A000984()	0	(n-1)-st elementary symmetric function of the first n terms of (1,2,6,20,70,252,...)=A000984.   nonn,synth      13
+A203195	esf	1	new A000108()	0	(n-1)-st elementary symmetric function of the first n Catalan numbers (A000108).        nonn,synth      14
+A203196	esf	1	new A103889()	0	(n-1)-st elementary symmetric function of the first n terms of (2,1,4,3,6,5,8,7,...)=A103889.   nonn,synth      20
+A203197	esf	1	new A000244()	0	(n-1)-st elementary symmetric function of the first n terms of (1,3,9,27,...)=A000244.  nonn,synth      13
+A203227	esf	1	new A000142()	0	(n-1)-st elementary symmetric function of (0!,...,(n-1)!)       nonn,changed,   44
+A203228	esf	1	new A000142()	1	(n-1)-st elementary symmetric function of (1!,...,(n-1)!).      nonn,synth      12
+A203229	esf	1	new A000583()	1	(n-1)-st elementary symmetric function of (1,16,...,n^4).       nonn,changed,synth      12
+A203230	esf	1	new A010684()	0	(n-1)-st elementary symmetric function of the first n terms of A010684. nonn,synth      32
+A203231	esf	1	new A010684()	1	(n-1)-st elementary symmetric function of the first n terms of the periodic sequence (3,1,3,1,3,1,3,1,...).     nonn,synth      32
+A203232	esf	1	new A010693()	0	(n-1)-st elementary symmetric function of the first n terms of the periodic sequence (2,3,2,3,2,3,...). nonn,synth      26
+A203233	esf	1	new A010693()	1	(n-1)-st elementary symmetric function of the first n terms of the periodic sequence (3,2,3,2,3,2,...). nonn,   2559
+A203234	esf	1	new A177704()	0	(n-1)-st elementary symmetric function of the first n terms of the periodic sequence (1,1,1,2,1,1,1,2,...).     nonn,synth      45
+A203235	esf	1	new A093148()	0	(n-1)-st elementary symmetric function of the first n terms of the periodic sequence (1,1,1,3,1,1,1,3,...).     nonn,synth      40
+A203236	esf	1	new A000201()	0	(n-1)-st elementary symmetric function of the first n terms of the lower Wythoff sequence, A000201.     nonn,synth      19
+A203237	esf	1	new A001950()	0	(n-1)-st elementary symmetric function of the first n terms of the upper Wythoff sequence, A001950.     nonn,synth      17
+A203238	esf	1	new LinearRecurrence(new long[] {-1, -2}, new long[] {2, -4})	0	(n-1)-st elementary symmetric function of the first n terms of (2, -4, 6, -8, 10, ...).    sign,synth      18
+# A203239	esf	1	new A000045()	0	Odd numbered terms of the sequence whose n-th term is the (n-1)-st elementary symmetric function of (i, 2i, 3i, ..., ni), where i=sqrt(-1).     sign,synth      13
+# A203240	esf	1	new A000045()	0	Real part of even numbered terms of the sequence s(n)=(n-1)-st elementary symmetric function of (i, 2i, 3i,...,ni).     sign,synth      14
+# A203242	esf	1	new A000045()	0	Second elementary symmetric function of the first n terms of (1, 3, 7, 15, 31, ...).    nonn,easy,changed,      1658
+# A203245	esf	1	new A000045()	0	Second elementary symmetric function of the first n terms of (1,2,3,5,8,...).   nonn,synth      26
+# A203246	esf	1	new A000045()	0	Second elementary symmetric function of the first n terms of (1,1,2,2,3,3,4,4,...).     nonn,synth      40
+# A203299	esf	1	new A000045()	0	Second elementary symmetric function of the first n terms of (2,2,3,3,4,4,5,5...).      nonn,synth      39
+# A203903	esf	1	new A000045()	0	a(n)=f(a(1),a(2),...,a(n-1)), where f=(n-2)-nd elementary symmetric function and a(1)=1, a(2)=1, a(3)=1.        nonn,synth      11

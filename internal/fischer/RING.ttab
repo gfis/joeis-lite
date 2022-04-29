@@ -1,5 +1,6 @@
 # RING.ttab - JoeisExpressionBuilder: Mapping table for PolynomialRing target expressions
 # @(#) $Id$
+# 2022-04-29: n -> mN
 # 2021-12-07: lambertW()
 # 2021-12-02: reverse(op1)
 # 2021-11-30, Georg Fischer: copied from CR.xpat
@@ -16,55 +17,55 @@ quarter	name	0	Q.ONE_QUARTER	0
 +	meth	2	RING.add(op1, op2)	0
 -	meth	2	RING.subtract(op1, op2)	0
 -.	meth	1	RING.negate(op1)	0
-*	meth	2	RING.multiply(op1, op2, n)	0
-/	meth	2	RING.series(op1, op2, n)	0
-^	meth	2	RING.exp(RING.multiply(RING.log(op1, n), op2, n), n)	0
-^n	meth	2	RING.pow(op1, op2, n)	0
+*	meth	2	RING.multiply(op1, op2, mN)	0
+/	meth	2	RING.series(op1, op2, mN)	0
+^	meth	2	RING.exp(RING.multiply(RING.log(op1, mN), op2, mN), mN)	0
+^mN	meth	2	RING.pow(op1, op2, mN)	0
 
-lambertw)	func	1	RING.lambertW(op1, n)
-reverse)	func	1	RING.reversion(op1, n)	0
-divx)	func	1	RING.divide(op1, new Q(n))	0
-exp)	func	1	RING.exp(op1, n)	0
-log)	func	1	RING.log(op1, n)	0
-sqrt)	func	1	RING.pow(op1, Q.HALF, n)	0
-# sqrt)	func	1	RING.sqrt(op1, n)	0
-# sqrt)	func	1	RING.pow(op1, Q.HALF, n)	0
-# sqrt)	func	1	RING.exp(RING.multiply(RING.log(op1, n), RING.monomial(Q.HALF, 0), n), n)	0
+lambertw)	func	1	RING.lambertW(op1, mN)
+reverse)	func	1	RING.reversion(op1, mN)	0
+divx)	func	1	RING.divide(op1, new Q(mN))	0
+exp)	func	1	RING.exp(op1, mN)	0
+log)	func	1	RING.log(op1, mN)	0
+sqrt)	func	1	RING.pow(op1, Q.HALF, mN)	0
+# sqrt)	func	1	RING.sqrt(op1, mN)	0
+# sqrt)	func	1	RING.pow(op1, Q.HALF, mN)	0
+# sqrt)	func	1	RING.exp(RING.multiply(RING.log(op1, mN), RING.monomial(Q.HALF, 0), mN), mN)	0
 # sqrt)	func	1	RING.sqrt1p(RING.subtract(op1, RING.one()),mN)	0
-sin)	func	1	RING.sin(op1, n)	0
-cos)	func	1	RING.cos(op1, n)	0
-tan)	func	1	RING.tan(op1, n)	1
-cot)	func	1	RING.series(RING.one(), RING.tan(op1, n), n)	1
-sec)	func	1	RING.sec(op1, n)	0
-csc)	func	1	RING.series(RING.one(), RING.sin(op1, n), n)	0
-arcsin)	func	1	RING.asin(op1, n)	1
-arccos)	func	1	RING.acos(op1, n)	1
-arctan)	func	1	RING.atan(op1, n)	1
-arccot)	func	1	RING.acot(op1, n)	1
-arcsec)	func	1	RING.asec(op1, n)	1
-arccsc)	func	1	RING.acsc(op1, n)	1
-asin)	func	1	RING.asin(op1, n)	1
-acos)	func	1	RING.acos(op1, n)	1
-atan)	func	1	RING.atan(op1, n)	1
-acot)	func	1	RING.acot(op1, n)	1
-asec)	func	1	RING.asec(op1, n)	1
-acsc)	func	1	RING.acsc(op1, n)	1
-sinh)	func	1	RING.sinh(op1, n)	1
-cosh)	func	1	RING.cosh(op1, n)	1
-tanh)	func	1	RING.tanh(op1, n)	1
-coth)	func	1	RING.series(RING.one(), RING.tanh(op1, n), n)	1
-sech)	func	1	RING.sech(op1, n)	1
-csch)	func	1	RING.series(RING.one(), RING.sinh(op1, n), n)	0
-cosech)	func	1	RING.series(RING.one(), RING.sinh(op1, n), n)	0
-arcsinh)	func	1	RING.asinh(op1, n)
-arccosh)	func	1	RING.acosh(op1, n)
-arctanh)	func	1	RING.atanh(op1, n)
-arccoth)	func	1	RING.acoth(op1, n)
-arcsech)	func	1	RING.asech(op1, n)
-arccsch)	func	1	RING.acsch(op1, n)
-arsinh)	func	1	RING.asinh(op1, n)
-arcosh)	func	1	RING.acosh(op1, n)
-artanh)	func	1	RING.atanh(op1, n)
-arcoth)	func	1	RING.acoth(op1, n)
-arsech)	func	1	RING.asech(op1, n)
-arcsch)	func	1	RING.acsch(op1, n)
+sin)	func	1	RING.sin(op1, mN)	0
+cos)	func	1	RING.cos(op1, mN)	0
+tan)	func	1	RING.tan(op1, mN)	1
+cot)	func	1	RING.series(RING.one(), RING.tan(op1, mN), mN)	1
+sec)	func	1	RING.sec(op1, mN)	0
+csc)	func	1	RING.series(RING.one(), RING.sin(op1, mN), mN)	0
+arcsin)	func	1	RING.asin(op1, mN)	1
+arccos)	func	1	RING.acos(op1, mN)	1
+arctan)	func	1	RING.atan(op1, mN)	1
+arccot)	func	1	RING.acot(op1, mN)	1
+arcsec)	func	1	RING.asec(op1, mN)	1
+arccsc)	func	1	RING.acsc(op1, mN)	1
+asin)	func	1	RING.asin(op1, mN)	1
+acos)	func	1	RING.acos(op1, mN)	1
+atan)	func	1	RING.atan(op1, mN)	1
+acot)	func	1	RING.acot(op1, mN)	1
+asec)	func	1	RING.asec(op1, mN)	1
+acsc)	func	1	RING.acsc(op1, mN)	1
+sinh)	func	1	RING.sinh(op1, mN)	1
+cosh)	func	1	RING.cosh(op1, mN)	1
+tanh)	func	1	RING.tanh(op1, mN)	1
+coth)	func	1	RING.series(RING.one(), RING.tanh(op1, mN), mN)	1
+sech)	func	1	RING.sech(op1, mN)	1
+csch)	func	1	RING.series(RING.one(), RING.sinh(op1, mN), mN)	0
+cosech)	func	1	RING.series(RING.one(), RING.sinh(op1, mN), mN)	0
+arcsinh)	func	1	RING.asinh(op1, mN)
+arccosh)	func	1	RING.acosh(op1, mN)
+arctanh)	func	1	RING.atanh(op1, mN)
+arccoth)	func	1	RING.acoth(op1, mN)
+arcsech)	func	1	RING.asech(op1, mN)
+arccsch)	func	1	RING.acsch(op1, mN)
+arsinh)	func	1	RING.asinh(op1, mN)
+arcosh)	func	1	RING.acosh(op1, mN)
+artanh)	func	1	RING.atanh(op1, mN)
+arcoth)	func	1	RING.acoth(op1, mN)
+arsech)	func	1	RING.asech(op1, mN)
+arcsch)	func	1	RING.acsch(op1, mN)
