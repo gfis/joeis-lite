@@ -1,0 +1,23 @@
+A240657	parm3	1	A240657	new PrependSequence(new A014664(), 0)	2	(n) is even (order of 2 mod prime(n)), 
+A240658	parm3	1	A240657	new A062117()	3	Least k such that 3^k == -1 (mod prime(n)), or 0 if no such k exists.		1
+A240659	parm3	1	A240657	new A082654()	4	Least k such that 4^k == -1 (mod prime(n)), or 0 if no such k exists.		1
+A240660	parm3	1	A240657	new A211241()	5	Least k such that 5^k == -1 (mod prime(n)), or 0 if no such k exists.		1
+A240661	parm3	1	A240657	new A211242()	6	Least k such that 6^k == -1 (mod prime(n)), or 0 if no such k exists.		1
+A240662	parm3	1	A240657	new A211243()	7	Least k such that 7^k == -1 (mod prime(n)), or 0 if no such k exists.		1
+A240663	parm3	1	A240657	new A211244()	8	Least k such that 8^k == -1 (mod prime(n)), or 0 if no such k exists.		1
+A240664	parm3	1	A240657	new A211245()	9	Least k such that 9^k == -1 (mod prime(n)), or 0 if no such k exists.		1
+A240665	parm3	1	A240657	new A002371()	10	Least k such that 10^k == -1 (mod prime(n)), or 0 if no such k exists.		2
+
+A014664	parm2	1	A062117	2	(n) is even (order of 2 mod prime(n)),
+A062117	parm2	1	A062117	3	(n) is even, otherwise 0.
+A082654	parm2	1	A062117	4	(n) is even, otherwise 0.
+A211241	parm2	1	A062117	5	(n)/2 if A211241(n) is even, otherwise 0.
+A211242	parm2	1	A062117	6	(n) is even, otherwise 0.
+A211243	parm2	1	A062117	7	(n)/2 if A211243(n) is even, otherwise 0.
+A211244	parm2	1	A062117	8	(n) is even, otherwise 0.
+A211245	parm2	1	A062117	9	(n)/2 if A211245(n) is even, otherwise 0.
+A002371	parm2	1	A062117	10	(n) is even, otherwise 0.
+
+# A240666		Least k such that k^m == -1 (mod prime(n)) has a solution for some m.
+# A072936 (zero terms)
+

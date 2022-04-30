@@ -1,0 +1,54 @@
+# A063983	parm2	1	A063983	2	Least k such that k* 2^n +/- 1 are twin primes.	nonn,	0..2300	nyi
+# A064213	parm2	1	A063983	2	Least k such that k* 3^n +/- 1 are twin primes.	nonn,	0..225	nyi
+# A064214	parm2	1	A063983	2	Least k such that k* 5^n +/- 1 are twin primes.	nonn,synth	1..51	nyi
+# A064215	parm2	1	A063983	2	Least k such that k* 6^n +/- 1 are twin primes.	nonn,	1..240	nyi
+# A064217	parm2	1	A063983	2	Least k such that k* 7^n +/- 1 are twin primes.	nonn,synth	1..47	nyi
+# A064218	parm2	1	A063983	2	Least k such that k*10^n +/- 1 are twin primes.	nonn,synth	1..50	nyi
+# A064220	parm2	1	A063983	2	Least k such that k*11^n +/- 1 are twin primes.	nonn,changed,synth	1..47	nyi
+# A064221	parm2	1	A063983	2	Least k such that k*12^n +/- 1 are twin primes.	nonn,synth	1..51	nyi
+#           parm2	1	A063983	2
+# A096681	parm2	1	A063983	2	Least k such that decimal representation of k*n contains only digits 0 and 2.	base,nonn,changed,	1..10000	nyi
+# A096682	parm2	1	A063983	2	Least k such that decimal representation of k*n contains only digits 0 and 3.	base,nonn,	1..10000	nyi
+# A096683	parm2	1	A063983	2	Least k such that decimal representation of k*n contains only digits 0 and 4.	base,nonn,	1..10000	nyi
+# A096684	parm2	1	A063983	2	Least k such that decimal representation of k*n contains only digits 0 and 5.	base,nonn,synth	1..41	nyi
+# A096685	parm2	1	A063983	2	Least k such that decimal representation of k*n contains only digits 0 and 6.	base,nonn,synth	1..52	nyi
+# A096686	parm2	1	A063983	2	Least k such that decimal representation of k*n contains only digits 0 and 7.	base,nonn,look,	1..10000	nyi
+# A096687	parm2	1	A063983	2	Least k such that decimal representation of k*n contains only digits 0 and 8.	base,nonn,	1..9998	nyi
+# A096688	parm2	1	A063983	2	Least k such that decimal representation of k*n contains only digits 0 and 9.	base,nonn,synth	1..51	nyi
+#           parm2	1	A063983	2
+# A097525	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+1) and k*P(n)#+P(n+1) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..63	nyi
+# A097526	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+2) and k*P(n)#+P(n+2) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..63	nyi
+# A097527	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+3) and k*P(n)#+P(n+3) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..63	nyi
+# A097528	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+4) and k*P(n)#+P(n+4) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..62	nyi
+# A097529	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+5) and k*P(n)#+P(n+5) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..63	nyi
+# A097530	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+6) and k*P(n)#+P(n+6) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..62	nyi
+# A097531	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+7) and k*P(n)#+P(n+7) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..63	nyi
+# A097532	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+8) and k*P(n)#+P(n+8) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..62	nyi
+# A097533	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+9) and k*P(n)#+P(n+9) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..63	nyi
+# A097534	parm2	1	A063983	2	Least k such that k*P(n)#-P(n+10) and k*P(n)#+P(n+10) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.	easy,nonn,synth	1..63	nyi
+#           parm2	1	A063983	2
+# A098872	parm2	1	A063983	2	Least k such that 2*(6*n)^k + 1 is prime.	nonn,changed,synth	1..101	nyi
+# A098873	parm2	1	A063983	2	Least k such that 2*(6*n)^k - 1 is prime.	nonn,synth	1..50	nyi
+# A098876	parm2	1	A063983	2	Least k such that 3*(6*n)^k - 1 is prime.	nonn,synth	1..71	nyi
+# A098877	parm2	1	A063983	2	Least k such that 3*(6*n)^k + 1 is prime.	nonn,synth	1..96	nyi
+#           parm2	1	A063983	2
+A118119	parm2	1	A118119	1		Smallest integer m for which gcd(m^n + 1, (m+1)^n + 1) > 1.
+A255852	parm2	1	A118119	2	Least k > 0 such that gcd(k^n+ 2, (k+1)^n +2) > 1, or 0 if there is no such k.	nonn,hard,more,synth	0..38	nyi
+A255853	parm2	1	A118119	3	Least k > 0 such that gcd(k^n+ 3, (k+1)^n +3) > 1, or 0 if there is no such k.	nonn,hard,synth	0..42	nyi
+A255854	parm2	1	A118119	4	Least k > 0 such that gcd(k^n+ 4, (k+1)^n +4) > 1, or 0 if there is no such k.	nonn,synth	0..52	nyi
+A255855	parm2	1	A118119	5	Least k > 0 such that gcd(k^n+ 5, (k+1)^n +5) > 1, or 0 if there is no such k.	nonn,hard,synth	0..46	nyi
+A255856	parm2	1	A118119	6	Least k > 0 such that gcd(k^n+ 6, (k+1)^n +6) > 1, or 0 if there is no such k.	nonn,hard,more,synth	0..36	nyi
+A255857	parm2	1	A118119	7	Least k > 0 such that gcd(k^n+ 7, (k+1)^n +7) > 1, or 0 if there is no such k.	nonn,	0..36	nyi
+A255858	parm2	1	A118119	8	Least k > 0 such that gcd(k^n+ 8, (k+1)^n +8) > 1, or 0 if there is no such k.	nonn,hard,synth	0..46	nyi
+A255859	parm2	1	A118119	9	Least m > 0 such that gcd(k^n+ 9, (k+1)^n +9) > 1, or 0 if there is no such m.	nonn,hard,more,changed,synth	0..36	nyi
+A255860	parm2	1	A118119	10	Least m > 0 such that gcd(k^n+10, (k+1)^n+10) > 1, or 0 if there is no such m.	nonn,hard,synth	0..40	nyi
+A255861	parm2	1	A118119	11	Least m > 0 such that gcd(k^n+11, (k+1)^n+11) > 1, or 0 if there is no such m.	nonn,synth	0..52	nyi
+A255862	parm2	1	A118119	12	Least m > 0 such that gcd(k^n+12, (k+1)^n+12) > 1, or 0 if there is no such m.	nonn,hard,more,synth	0..36	nyi
+A255863	parm2	1	A118119	13	Least m > 0 such that gcd(k^n+13, (k+1)^n+13) > 1, or 0 if there is no such m.	nonn,hard,synth	0..46	nyi
+A255864	parm2	1	A118119	14	Least m > 0 such that gcd(k^n+14, (k+1)^n+14) > 1, or 0 if there is no such m.	nonn,hard,	0..40	nyi
+A255865	parm2	1	A118119	15	Least m > 0 such that gcd(k^n+15, (k+1)^n+15) > 1, or 0 if there is no such m.	nonn,	0..42	nyi
+A255866	parm2	1	A118119	16	Least m > 0 such that gcd(k^n+16, (k+1)^n+16) > 1, or 0 if there is no such m.	nonn,hard,synth	0..42	nyi
+A255867	parm2	1	A118119	17	Least m > 0 such that gcd(k^n+17, (k+1)^n+17) > 1, or 0 if there is no such m.	nonn,hard,changed,synth	0..60	nyi
+A255868	parm2	1	A118119	18	Least m > 0 such that gcd(k^n+18, (k+1)^n+18) > 1, or 0 if there is no such m.	nonn,hard,synth	0..42	nyi
+A255869	parm2	1	A118119	19	Least m > 0 such that gcd(k^n+19, (k+1)^n+19) > 1, or 0 if there is no such m.	nonn,hard,synth	0..42	nyi
+

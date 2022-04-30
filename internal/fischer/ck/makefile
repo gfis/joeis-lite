@@ -108,6 +108,13 @@ ajrank: # adjusted joint rank sequences
 #================
 # ck_guides
 #----
+A213500: # -a U
+	perl ck_guides.pl -a U \
+	| sort | uniq -w7 \
+	>        ../$@.man
+	head -n4 ../$@.man
+	wc -l    ../$@.man
+#----
 morfck: # -a PQ
 	perl ck_guides.pl -a PQ \
 	| sort | uniq -w7 \

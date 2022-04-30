@@ -1,0 +1,55 @@
+A067418	parm3	1	A213500	new A000045()	new A000045()	Fibo(h)	Fibo(h)
+A212891	parm3	1	A213500	new A001477()	new A000290()	h	h^2
+A213500	parm3	1	A213500	new A001477()	new A001477()	h	h
+A213503	parm3	1	A213500	new A000290()	new A001477()	h^2	h
+A213505	parm3	1	A213500	new A000290()	new A000290()	h^2	h^2
+A213548	parm3	1	A213500	new A001477()	new A000217()	h	h*(h+1)/2
+A213550	parm3	1	A213500	new A000217()	new A001477()	h*(h+1)/2	h
+A213551	parm3	1	A213500	new A000217()	new A000217()	h*(h+1)/2	h*(h+1)/2
+A213553	parm3	1	A213500	new A001477()	new A000578()	h	h^3
+A213555	parm3	1	A213500	new A000578()	new A001477()	h^3	h
+A213558	parm3	1	A213500	new A000578()	new A000578()	h^3	h^3
+A213561	parm3	1	A213500	new A000290()	new A000217()	h^2	h*(h+1)/2
+A213564	parm3	1	A213500	new A000217()	new A000290()	h*(h+1)/2	h^2
+A213566	parm3	1	A213500	new A000045()	new A000290()	Fibo(h)	h^2
+A213568	parm3	1	A213500	new A131577()	new A001477()	2^(h-1)	h
+A213571	parm3	1	A213500	new A001477()	new A000225()	h	-1+2^h
+A213573	parm3	1	A213500	new A131577()	new A000290()	2^(h-1)	h^2
+A213576	parm3	1	A213500	new A001477()	new A000045()	h	Fibo(h)
+A213579	parm3	1	A213500	new A000045()	new A001477()	Fibo(h)	h
+A213582	parm3	1	A213500	new A000225()	new A001477()	-1+2^h	h
+A213584	parm3	1	A213500	new SkipSequence(new A000045(), 1)	new A001477()	Fibo(h+1)	h
+A213587	parm3	1	A213500	new SkipSequence(new A000045(), 1)	new SkipSequence(new A000045(), 1)	Fibo(n+1)	Fibo(h+1)
+A213590	parm3	1	A213500	new A000290()	new A000045()	h^2	Fibo(h)
+A213747	parm3	1	A213500	new A000225()	new A000225()	-1+2^h	-1+2^h
+A213750	parm3	1	A213500	new A001477()	new PrependSequence(new A005408(), 0)	h	2*h-1
+A213751	parm3	1	A213500	new PrependSequence(new A005408(), 0)	new A001477()	2*h-1	h
+A213752	parm3	1	A213500	new PrependSequence(new A005408(), 0)	new PrependSequence(new A005408(), 0)	2*h-1	2*h-1
+A213753	parm3	1	A213500	new PrependSequence(new A005408(), 0)	new A000225()	2*h-1	-1+2^h
+A213756	parm3	1	A213500	new A000225()	new PrependSequence(new A005408(), 0)	-1+2^h	2*h-1
+A213761	parm3	1	A213500	new A001477()	new PrependSequence(new A016777(), 0)	h	3*h-2
+A213762	parm3	1	A213500	new A131577()	new PrependSequence(new A005408(), 0)	2^(n-1)	2*h-1
+A213765	parm3	1	A213500	new PrependSequence(new A005408(), 0)	new A000045()	2*h-1	Fibo(h)
+A213768	parm3	1	A213500	new A000045()	new PrependSequence(new A005408(), 0)	Fibo(h)	2*h-1
+A213771	parm3	1	A213500	new PrependSequence(new A016777(), 0)	new A001477()	3*h-2	h
+A213773	parm3	1	A213500	new PrependSequence(new A016777(), 0)	new PrependSequence(new A016777(), 0)	3*h-2	3*h-2
+A213774	parm3	1	A213500	new SkipSequence(new A000045(), 1)	new PrependSequence(new A005408(), 0)	Fibo(h+1)	2*h-1
+A213777	parm3	1	A213500	new A000045()	new SkipSequence(new A000045(), 1)	Fibo(h)	Fibo(h+1)
+A213778	parm3	1	A213500	new A001477()	new A008619()	h	1+[h/2]
+A213781	parm3	1	A213500	new A008619()	new A001477()	1+[h/2]	h
+A213783	parm3	1	A213500	new A008619()	new A110654()	1+[h/2]	[(h+1)/2]
+A213819	parm3	1	A213500	new A001477()	new PrependSequence(new A016789(), 0)	h	3*h-1
+A213821	parm3	1	A213500	new PrependSequence(new A016789(), 0)	new A001477()	3*h-1	h
+A213822	parm3	1	A213500	new PrependSequence(new A016789(), 0)	new PrependSequence(new A016789(), 0)	3*h-1	3*h-1
+A213825	parm3	1	A213500	new PrependSequence(new A016789(), 0)	new PrependSequence(new A016777(), 0)	3*h-1	3*h-2
+A213828	parm3	1	A213500	new PrependSequence(new A016777(), 0)	new PrependSequence(new A016789(), 0)	3*h-2	3*h-1
+A213831	parm3	1	A213500	new PrependSequence(new A005408(), 0)	new PrependSequence(new A016777(), 0)	2*h-1	3*h-2
+A213833	parm3	1	A213500	new PrependSequence(new A016777(), 0)	new PrependSequence(new A005408(), 0)	3*h-2	2*h-1
+A213835	parm3	1	A213500	new A001477()	new PrependSequence(new A016813(), 0)	h	4*h-3
+A213836	parm3	1	A213500	new PrependSequence(new A016813(), 0)	new A001477()	4*h-3	h
+A213838	parm3	1	A213500	new PrependSequence(new A016813(), 0)	new PrependSequence(new A005408(), 0)	4*h-3	2*h-1
+A213841	parm3	1	A213500	new PrependSequence(new A005408(), 0)	new PrependSequence(new A016813(), 0)	2*h-1	4*h-3
+A213844	parm3	1	A213500	new PrependSequence(new A005408(), 0)	new PrependSequence(new A004767(), 0)	2*h-1	4*h-1
+A213847	parm3	1	A213500	new PrependSequence(new A004767(), 0)	new PrependSequence(new A005408(), 0)	4*h-1	2*h-1
+A213849	parm3	1	A213500	new A110654()	new A110654()	[(h+1)/2]	[(h+1)/2]
+A213853	parm3	1	A213500	new A001477()	new PrependSequence(new A000984(), 0)	h	C(2*h-2,h-1)

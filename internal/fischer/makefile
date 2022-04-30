@@ -485,7 +485,15 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-04-29:
+anabuild: # .2022-04-30:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A062117   select       gener
+	make CC=A213500   select       gener
+	make CC=man       man
+	make dist testall log
+anabuild.2022-04-29:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v *.man *.sql *.pl *.jpat
@@ -3682,6 +3690,13 @@ kpytha_eval:
 kpytha_bad:
 	perl kpytha.pl -a comp -t -b 65536 -m 100 -k 1/5 \
 	| grep -E "9   [0-9]" | tee $@.1-5.tmp
+#--------------------------------
+leastk:
+	grep -P "[Ll]east +\w[ \>\=\d]+such that" $(COMMON)/joeis_names.txt \
+	| grep -P "\tnull\t" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------------------------------
 # Linear Recurrences and generating functions
 linr_count:
