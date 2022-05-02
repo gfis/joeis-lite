@@ -1,0 +1,24 @@
+A205546	parm4	1	A204892	new	A000312()	0	1	k such that n divides k^k-j^j for some j in [1,k-1].     nonn,synth      94
+A205551	parm4	1	A204892	new A000312()	0	2	
+A205554	parm4	1	A204892	new	A000169()	1	1	k such that n divides k^(k-1)-j^(j-1) for some j in [1,k-1].     nonn,sy
+A205555	parm4	1	A204892	new	A000169()	1	2	j such that n divides k^(k-1)-j^(j-1), where k (as in A205554) is the le
+A205561	parm4	1	A204892	new	A010050()	0	1	k such that n divides (2k)!-(2j)! for some j in [1,k-1]. nonn,synth     
+A205562	parm4	1	A204892	new	A010050()	0	2	j such that n divides (2k)!-(2j)!, where k, as in A205561, is the least 
+A205563	parm4	1	A204892	new	A052849()	0	1	k such that n divides 2k!-2j! for some j in [1,k-1].     nonn,synth     
+A205564	parm4	1	A204892	new	A052849()	0	2	j such that n divides 2k!-2j!, where k, as in A205563, is the least numb
+A205778	parm4	1	A204892	new	A000108()	0	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A000108 (
+A205779	parm4	1	A204892	new	A000108()	0	2	j such that n divides C(k)-C(j), where k, as in A205778, is the least nu
+A205780	parm4	1	A204892	new SkipSequence(new A007598(), 1)	0	1	k such that n divides C(k)-C(j) for some j in [1,k-1
+A205781	parm4	1	A204892	new SkipSequence(new A007598(), 1)	0	2	j such that n divides C(k)-C(j), where k, as in A205
+A205782	parm4	1	A204892	new	A205824()	1	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A205824. 
+A205784	parm4	1	A204892	new	A205824()	1	2	j such that n divides C(k)-C(j), where k, as in A205782, is the least nu
+A205785	parm4	1	A204892	new	A205825()	0	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A205825. 
+A205786	parm4	1	A204892	new	A205825()	0	2	j such that n divides C(k)-C(j), where k, as in A205785, is the least nu
+A205787	parm4	1	A204892	new	A000578()	0	1	k such that n divides k^3-j^3 for some j in [1,k-1].     nonn,changed,sy
+A205788	parm4	1	A204892	new	A000578()	0	2	j such that n divides k^3-j^3, where k, as in A205787, is the least numb
+A205789	parm4	1	A204892	new	A000583()	0	1	k such that n divides k^4-j^4 for some j in [1,k-1].     nonn,synth     
+A205790	parm4	1	A204892	new	A000583()	0	2	j such that n divides k^4-j^4, where k, as in A205789, is the least numb
+A205791	parm4	1	A204892	new	A000584()	0	1	k such that n divides k^5-j^5 for some j in [1,k-1].     nonn,look,chang
+A205792	parm4	1	A204892	new	A000584()	0	2	j such that n divides k^5-j^5, where k, as in A205791, is the least numb
+A205793	parm4	1	A204892	new	A002808()	1	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A002808 (
+A205794	parm4	1	A204892	new	A002808()	1	2	j such that n divides C(k)-C(j) , where k, as in A205793, is the least n
