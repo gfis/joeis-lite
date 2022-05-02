@@ -12,6 +12,7 @@ LITE=$(GITS)/joeis-lite
 HERE=../../joeis-lite/internal/fischer
 JOEIS=$(GITS)/joeis
 CA=$(GITS)/OEIS-mat/ca
+CK=./ck
 COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
 COMMON=$(GITS)/OEIS-mat/common
 CONSTANT=$(GITS)/OEIS-mat/constant
@@ -273,6 +274,9 @@ dirty0:
 	cut -b1-7 $(CC).pass.log > dirty.tmp
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > dirty.grep.tmp
 	grep -vf dirty.grep.tmp $(CC).gen > $(CC).dirty.tmp
+fatok:
+	grep -E "^A[0-9]" $(CC).fail.log | grep FATOK | cut -b1-7 | sed -e "s/\r//" \
+	| xargs -innn $(JAVA) irvine.test.SequenceTest -a nnn -n $(NT) -o $(OFFSET)
 removelist: # remove all in removelist.man
 	# ---- $@ CC=$(CC)
 	find ../../src/irvine/oeis -iname "*.java" \
@@ -485,7 +489,16 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-04-30:
+anabuild: # .2022-05-02:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A063983   select       gener
+	make CC=A204892   select       gener
+	make CC=A205546   select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-04-30:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v *.man *.sql *.pl *.jpat
@@ -1112,6 +1125,14 @@ A202670: # self-fusion matrices = correlation triangles
 #----
 A202692: # The first of three triangles counting 3-colored alternating permutations by their last value.	nonn,tabl,more,changed,synth	1..16	nyi
 	grep -E "^A[0-9]" $@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+A204892:
+	perl $(CK)/$@.pl \
+	| grep -vE "^(A205407)" \
+	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

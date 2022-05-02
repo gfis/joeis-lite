@@ -1,0 +1,56 @@
+A205546	parm4	1	A204892	new A000312()	0	1	
+A205551	parm4	1	A204892	new A000312()	0	2	
+A205554	parm4	1	A204892	new A000169()	1	1	
+A205555	parm4	1	A204892	new A000169()	1	2	
+A205561	parm4	1	A204892	new A010050()	0	1	
+A205562	parm4	1	A204892	new A010050()	0	2	
+A205563	parm4	1	A204892	new A052849()	0	1	
+A205564	parm4	1	A204892	new A052849()	0	2	
+
+A205778	parm4	1	A204892	new A000108()	0	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A000108 (Catalan numbers).	
+A205779	parm4	1	A204892	new A000108()	0	2	j such that n divides C(k)-C(j), where k, as in A205778, is the least number for which there 
+A205780	parm4	1	A204892	new SkipSequence(new A007598(), 1)	0	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A007598 (squared Fibonacci num
+A205781	parm4	1	A204892	new SkipSequence(new A007598(), 1)	0	2	j such that n divides C(k)-C(j), where k, as in A205780, is the least number for which there 
+A205782	parm4	1	A204892	new A205824()	1	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A205824.	nonn,synth	93
+A205784	parm4	1	A204892	new A205824()	1	2	j such that n divides C(k)-C(j), where k, as in A205782, is the least number for which there 
+A205785	parm4	1	A204892	new A205825()	0	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A205825.	nonn,synth	86
+A205786	parm4	1	A204892	new A205825()	0	2	j such that n divides C(k)-C(j), where k, as in A205785, is the least number for which there 
+A205787	parm4	1	A204892	new A000578()	0	1	k such that n divides k^3-j^3 for some j in [1,k-1].	nonn,changed,synth	81
+A205788	parm4	1	A204892	new A000578()	0	2	j such that n divides k^3-j^3, where k, as in A205787, is the least number for which there is
+A205789	parm4	1	A204892	new A000583()	0	1	k such that n divides k^4-j^4 for some j in [1,k-1].	nonn,synth	87
+A205790	parm4	1	A204892	new A000583()	0	2	j such that n divides k^4-j^4, where k, as in A205789, is the least number for which there is
+A205791	parm4	1	A204892	new A000584()	0	1	k such that n divides k^5-j^5 for some j in [1,k-1].	nonn,look,changed,	3000
+A205792	parm4	1	A204892	new A000584()	0	2	j such that n divides k^5-j^5, where k, as in A205791, is the least number for which there is
+A205793	parm4	1	A204892	new A002808()	1	1	k such that n divides C(k)-C(j) for some j in [1,k-1], where C=A002808 (composite numbers).	
+A205794	parm4	1	A204892	new A002808()	1	2	j such that n divides C(k)-C(j) , where k, as in A205793, is the least number for which there
+
+A204916	parm4	1	A204892	new A001248()	1	1	prime(n)^2
+A204917	parm4	1	A204892	new A001248()	1	2	
+A204918	parm4	1	A204892	new A001248()	1	3	
+A204919	parm4	1	A204892	new A001248()	1	4	
+A204920	parm4	1	A204892	new A001248()	1	5	
+A204921	parm4	1	A204892	new A001248()	1	6	
+
+A204890	parm3	1	A204890	new A000040()	1	7	Ordered differences of primes.  nonn,tabl,easy,synth    74
+A204898	parm3	1	A204890	new A000040()	1	7	Ordered differences of odd primes.      nonn,synth      73
+A204906	parm3	1	A204890	new A000040()	1	7	Ordered differences of primes >=5.      nonn,synth      73
+A204912	parm3	1	A204890	new A000040()	1	7	Ordered differences of double factorials.       nonn,synth      50
+A204914	parm3	1	A204890	new A000040()	1	7	Ordered differences of squared primes.  nonn,changed,   10000
+A204922	parm3	1	A204890	new A000040()	1	7	Ordered differences of Fibonacci numbers.       nonn,changed,   5050
+A204930	parm3	1	A204890	new A000040()	1	7	Ordered differences of factorials.      nonn,synth      38
+A204980	parm3	1	A204890	new A000040()	1	7	Ordered differences of distinct averages of two consecutive odd primes. nonn,synth      74
+A204985	parm3	1	A204890	new A000040()	1	7	Ordered differences of numbers 2^k for k>=1.    nonn,synth      52
+A205008	parm3	1	A204890	new A000040()	1	7	Ordered differences of central binomial coefficients.   nonn,synth      43
+A205016	parm3	1	A204890	new A000040()	1	7	Ordered differences of oblong numbers.  nonn,synth      62
+A205105	parm3	1	A204890	new A000040()	1	7	Ordered differences of numbers 3^j-2^j, as in A001047.  nonn,synth      41
+A205112	parm3	1	A204890	new A000040()	1	7	Ordered differences of Lucas numbers.   nonn,synth      62
+A205120	parm3	1	A204890	new A000040()	1	7	Ordered differences of distinct numbers k*(2^(k-1)).    nonn,synth      46
+A205128	parm3	1	A204890	new A000040()	1	7	Ordered differences of distinct hexagonal numbers.      nonn,synth      58
+A205136	parm3	1	A204890	new A000040()	1	7	Ordered differences of distinct pentagonal numbers.     nonn,synth      60
+A205144	parm3	1	A204890	new A000040()	1	7	Ordered differences of distinct binary products of consecutive primes.  nonn,synth      50
+A205371	parm3	1	A204890	new A000040()	1	7	Ordered differences of odd-indexed Fibonacci numbers.   nonn,synth      48
+A205376	parm3	1	A204890	new A000040()	1	7	Ordered differences of distinct odd squares, stored in triangle.        nonn,tabl,synth,tard    54
+A205384	parm3	1	A204890	new A000040()	1	7	Ordered differences of numbers s(j)=(1/2)C(2j,j)).      nonn,synth      42
+A205392	parm3	1	A204890	new A000040()	1	7	Ordered differences of numbers s(j)=ceiling(j^2/2).     nonn,synth      70
+A205400	parm3	1	A204890	new A000040()	1	7	Ordered differences of quarter-squares. nonn,synth      73
+A205448	parm3	1	A204890	new A000040()	1	7	Ordered differences of even-indexed Fibonacci numbers.  nonn,synth      47
