@@ -35,15 +35,16 @@ while (<DATA>) {
         ($a1, $a2) = ($1, $3);
         &output($a1, 3);
         &output($a2, 4);
-    } elsif ($line =~ m{\A\W*xxxd\(n\)[^\:]*\:\s*(A\d+)(\([^\)*]\))*\,\s*(A\d+)}) {
+    } elsif ($line =~ m{\A\W*d\(n\)[^\:]*\:\s*(A\d+)(\([^\)*]\))*\,\s*(A\d+)}) {
         ($a1, $a2) = ($1, $3);
+        my @save = ($callcode, $qseqno, $rseqno, $dist);
         $callcode = "parm3";
         $qseqno   = "A204890";
         &output($a1, 7);
+        $rseqno   = "new $a1()";
         $qseqno   = "A204891";
         &output($a2, 8);
-        $qseqno   = "A204892";
-        $callcode = "parm4";
+        ($callcode, $qseqno, $rseqno, $dist) = @save;
     } elsif ($line =~ m{\A\W+s\(k\(n\)\)\-[^\:]+\:\s*(A\d+)(\([^\)*]\))*\,\s*(A\d+)}) {
         ($a1, $a2) = ($1, $3);
         &output($a1, 5);
