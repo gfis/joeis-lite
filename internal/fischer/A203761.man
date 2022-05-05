@@ -1,0 +1,7 @@
+A203761	parm4	1	A203761	1	0	0	a(n)=f(a(n-1)+1,a(n-2) , a(n-3)  ), where f(x,y,z)=yz+zx+xy and (a(1),a(2),a(3))=(0,0,1)     n
+A203762	parm4	1	A203761	0	1	0	a(n)=f(a(n-1)  ,a(n-2)+1,a(n-3)  ), where f(x,y,z)=yz+zx+xy and (a(1),a(2),a(3))=(0,0,1).   n
+A203768	parm4	1	A203761	0	0	1	a(n)=f(a(n-1)  ,a(n-2)  ,a(n-3)+1), where f(x,y,z)=yz+zx+xy and (a(1),a(2),a(3))=(0,0,1).   n
+A203772	parm4	1	A203761	0	1	1	a(n)=f(a(n-1)  ,a(n-2)+1,a(n-3)+1), where f(x,y,z)=yz+zx+xy and (a(1),a(2),a(3))=(0,0,1). n
+A203900	parm4	1	A203761	1	0	1	a(n)=f(a(n-1)+1,a(n-2)  ,a(n-3)+1), where f(x,y,z)=yz+zx+xy and (a(1),a(2),a(3))=(0,0,1). n
+A203901	parm4	1	A203761	1	1	0	a(n)=f(a(n-1)+1,a(n-2)+1,a(n-3)  ), where f(x,y,z)=yz+zx+xy and (a(1),a(2),a(3))=(0,0,1). n
+A203902	parm4	1	A203761	1	1	1	a(n)=f(a(n-1)+1,a(n-2)+1,a(n-3)+1), where f(x,y,z)=yz+zx+xy and (a(1),a(2),a(3))=(0,0,1).

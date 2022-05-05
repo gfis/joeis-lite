@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-05-05: V3.6: LongUtils
 # 2022-04-08: V3.5: Stirling, Fibonacci
 # 2022-04-08: V3.4: z.Euler.phi(n)
 # 2022-04-03: V3.3: FACTORIAL.factorial 
@@ -46,7 +47,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V3.3";
+my $program = "gen_seq4.pl V3.6";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -321,6 +322,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WZeta\.}          ) { $imports{"irvine.math.cr.Zeta"}                   = $itype; }
     if ($line =~ m{\WIntegers\.}      ) { $imports{"irvine.math.z.Integers"}                = $itype; }
     if ($line =~ m{\WBinomial\.}      ) { $imports{"irvine.math.z.Binomial"}                = $itype; }
+    if ($line =~ m{\WLongUtils\.}     ) { $imports{"irvine.math.LongUtils"}                 = $itype; }
     if ($line =~ m{\WStirling\.}      ) { $imports{"irvine.math.z.Stirling"}                = $itype; }
     if ($line =~ m{\WFACTORIAL\.}     ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
     if ($line =~ m{\WFibonacci\.}     ) { $imports{"irvine.math.z.Fibonacci"}               = $itype; }

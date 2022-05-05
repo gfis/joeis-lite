@@ -489,7 +489,17 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-05-03:
+anabuild: # .2022-05-05:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A203264   select       gener 
+	make CC=A203761   select       gener
+	make CC=A205558   select       gener
+	make CC=perman    select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-05-03:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v *.man *.sql *.pl *.jpat
@@ -3942,6 +3952,11 @@ palidsum:
 	cp -v $@.man $@.gen
 fact1dig:
 	cp -v $@.man $@.gen
+#----
+perman: # Permanents with A085244
+	grep -E "^A[0-9]" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 pisot:
 	grep -P "null\s+Pisot sequence" $(COMMON)/joeis_names.txt \
