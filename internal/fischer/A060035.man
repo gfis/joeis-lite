@@ -1,0 +1,56 @@
+# A214069	parmof3	1	A060035	1	(n,k) -> n-m	Least m>0 such that prime(n)+m and n-m are relatively prime.    nonn,easy,
+# A214714	parmof3	1	A060035	1	(n,k) -> n-m	Least m>0 such that prime(n)-m and n-m are relatively prime.    nonn,easy,
+# A214715	parmof3	1	A060035	1	(n,k) -> n-m	Least m>0 such that prime(n+1)-m and n-m are relatively prime.  nonn,easy,
+# A325817	parmof3	1	A060035	1	(n,k) -> n-m	least k >= 0 such that n-k   and n-(sigma(n)-k) are relatively prime.
+A191618	parmof3	1	A060035	0	(n,k) -> Z.ONE.shiftLeft(n).add(+k).multiply(Z.ONE.shiftLeft(n)).add(-1).isProbablePrime()	Least a such that (2^n+k)*2^n - 1 is prime.	nonn,	1..5000	nyi
+A191619	parmof3	1	A060035	0	(n,k) -> Z.ONE.shiftLeft(n).add(-k).multiply(Z.ONE.shiftLeft(n)).add(+1).isProbablePrime()	Least a such that (2^n-k)*2^n + 1 is a prime number	nonn,	1..5000	nyi
+A191620	parmof3	1	A060035	1	(n,k) -> Z.ONE.shiftLeft(n).add(-k).multiply(Z.ONE.shiftLeft(n)).add(-1).isProbablePrime()	Least k such that (2^n-k)*2^n - 1 is a prime number	nonn,changed,	1..5000	nyi
+A191751	parmof3	1	A060035	1	(n,k) -> Z.ONE.shiftLeft(n).add(-1).multiply(Z.ONE.shiftLeft(n)).add(-k).isProbablePrime()	Least k such that (2^n-1)*2^n - k is a prime number.	nonn,changed,	1..1500	nyi
+A200920	parmof3	1	A060035	1	(n,k) -> Z.THREE.pow(n).add(+k).multiply(Z.THREE.pow(n)).add(+1).isProbablePrime()	Least k such that (3^n +k)*3^n +1 is a prime number.	nonn,synth	1..69	nyi
+A200921	parmof3	1	A060035	1	(n,k) -> Z.THREE.pow(n).add(+k).multiply(Z.THREE.pow(n)).add(-1).isProbablePrime()	Least k such that (3^n +k)*3^n -1 is a prime number.	nonn,synth	1..67	nyi
+A200922	parmof3	1	A060035	1	(n,k) -> Z.THREE.pow(n).add(-k).multiply(Z.THREE.pow(n)).add(-1).isProbablePrime()	Least k such that (3^n -k)*3^n -1 is a prime number.	nonn,synth	1..66	nyi
+A200923	parmof3	1	A060035	1	(n,k) -> Z.THREE.pow(n).add(-k).multiply(Z.THREE.pow(n)).add(+1).isProbablePrime()	Least k such that (3^n -k)*3^n +1 is a prime number.	nonn,synth	1..68	nyi
+A201131	parmof3	1	A060035	1	(n,k) -> Z.FIVE.pow(n).add(-k).multiply(Z.FIVE.pow(n)).add(+1).isProbablePrime()	Least k such that (5^n -k)*5^n +1 is a prime number.	nonn,synth	1..64	nyi
+A201132	parmof3	1	A060035	1	(n,k) -> Z.FIVE.pow(n).add(-k).multiply(Z.FIVE.pow(n)).add(-1).isProbablePrime()	Least k such that (5^n -k)*5^n -1 is a prime number.	nonn,synth	1..63	nyi
+A201133	parmof3	1	A060035	1	(n,k) -> Z.FIVE.pow(n).add(+k).multiply(Z.FIVE.pow(n)).add(+1).isProbablePrime()	Least k such that (5^n +k)*5^n +1 is a prime number.	nonn,synth	1..65	nyi
+A201134	parmof3	1	A060035	1	(n,k) -> Z.FIVE.pow(n).add(+k).multiply(Z.FIVE.pow(n)).add(-1).isProbablePrime()	Least k such that (5^n +k)*5^n -1 is a prime number.	nonn,synth	1..63	nyi
+A201456	parmof3	1	A060035	1	(n,k) -> Z.SEVEN.pow(n).add(+k).multiply(Z.SEVEN.pow(n)).add(+1).isProbablePrime()	Least k such that (7^n +k)*7^n +1 is a prime number.	nonn,synth	1..78	nyi
+A201457	parmof3	1	A060035	1	(n,k) -> Z.SEVEN.pow(n).add(+k).multiply(Z.SEVEN.pow(n)).add(-1).isProbablePrime()	Least k such that (7^n +k)*7^n -1 is a prime number.	nonn,synth	1..79	nyi
+A201459	parmof3	1	A060035	1	(n,k) -> Z.SEVEN.pow(n).add(-k).multiply(Z.SEVEN.pow(n)).add(-1).isProbablePrime()	Least k such that (7^n -k)*7^n -1 is a prime number.	nonn,synth	1..81	nyi
+A201460	parmof3	1	A060035	1	(n,k) -> Z.SEVEN.pow(n).add(-k).multiply(Z.SEVEN.pow(n)).add(+1).isProbablePrime()	Least k such that (7^n -k)*7^n +1 is a prime number.	nonn,synth	1..79	nyi
+A213852	parmof3	1	A060035	1	(n,m) -> Z.valueOf(n + 1 + m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	Least m>0 such that n+1+m and n-m   are relatively prime. nonn,easy,changed,
+A214071	parmof3	1	A060035	1	(n,m) -> Z.ONE.shiftLeft(n).subtract(m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	Least m>0 such that 2^n-m and n-m   are relatively prime. nonn,easy,changed,
+A214073	parmof3	1	A060035	1	(n,m) -> Z.ONE.shiftLeft(n).subtract(m).gcd(Z.valueOf(n).pow(2).subtract(m)).equals(Z.ONE) 	Least m>0 such that 2^n-m and n^2-m are relatively prime.       nonn,easy,
+A214074	parmof3	1	A060035	1	(n,m) -> Z.ONE.shiftLeft(n).subtract(m).gcd(Z.valueOf(3).pow(n).subtract(m)).equals(Z.ONE) 	Least m>0 such that 2^n-m and 3^n-m are relatively prime.       nonn,easy,
+A214180	parmof3	1	A060035	1	(n,m) -> Z.ONE.shiftLeft(n).subtract(m).gcd(Z.valueOf(5).pow(n).subtract(m)).equals(Z.ONE) 	Least m>0 such that 2^n-m and 5^n-m are relatively prime.       nonn,easy,
+A214707	parmof3	1	A060035	1	(n,m) -> Z.THREE.pow(n).subtract(m).gcd(Z.valueOf(4).pow(n).subtract(m)).equals(Z.ONE) 	Least m>0 such that 3^n-m and 4^n-m are relatively prime.       nonn,easy,
+A214708	parmof3	1	A060035	1	(n,m) -> Z.FOUR.pow(n).subtract(m).gcd(Z.valueOf(5).pow(n).subtract(m)).equals(Z.ONE) 	Least m>0 such that 4^n-m and 5^n-m are relatively prime.       nonn,easy,
+A214709	parmof3	1	A060035	1	(n,m) -> MemoryFactorial.SINGLETON.factorial(n).subtract(m).gcd(Z.ONE.shiftLeft(n).subtract(m)).equals(Z.ONE) 	Least m>0 such that n!-m  and 2^n-m are relatively prime.        nonn,easy,
+A214710	parmof3	1	A060035	1	(n,m) -> MemoryFactorial.SINGLETON.factorial(n).subtract(m).gcd(MemoryFactorial.SINGLETON.doubleFactorial(n).subtract(m)).equals(Z.ONE) 	Least m>0 such that n!-m  and n!!-m are relatively prime.        nonn,easy,
+A214712	parmof3	1	A060035	1	(n,m) -> Fibonacci.fibonacci(n).subtract(m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	least m>0 such that Fibonacci(n)-m and n-m are relatively prime.
+A214713	parmof3	1	A060035	1	(n,m) -> Fibonacci.fibonacci(n + 1).subtract(m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	least m>0 such that Fibonacci(n+1)-m and n-m are relatively prime
+A214716	parmof3	1	A060035	1	(n,m) -> Z.THREE.pow(n).subtract(m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	Least m>0 such that 3^n-m and n-m   are relatively prime. nonn,easy,      1..1000
+A214717	parmof3	1	A060035	1	(n,m) -> Z.FOUR.pow(n).subtract(m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	Least m>0 such that 4^n-m and n-m   are relatively prime. nonn,easy,      1..1000
+A214718	parmof3	1	A060035	1	(n,m) -> Z.FIVE.pow(n).subtract(m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	Least m>0 such that 5^n-m and n-m   are relatively prime. nonn,easy,      1..1000
+A214719	parmof3	1	A060035	1	(n,m) -> Z.SIX.pow(n).subtract(m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	Least m>0 such that 6^n-m and n-m   are relatively prime. nonn,easy,synth 1..87
+A214720	parmof3	1	A060035	1	(n,m) -> Z.valueOf(n).pow(2).subtract(m).gcd(Z.valueOf(n - m)).equals(Z.ONE)	Least m>0 such that n^2-m and n-m   are relatively prime. nonn,easy,      1..1000
+A260119	parmof3	1	A060035	1	(n,k) -> Z.ONE.shiftLeft(n).subtract(1).gcd(Z.valueOf(k).pow(n).subtract(1)).equals(Z.ONE) 	least k   such that 2^n-1 and k^n-1 are relatively p
+A268081	parmof3	1	A060035	1	(n,k) -> Z.THREE.pow(n).subtract(1).gcd(Z.valueOf(k).pow(n).subtract(1)).equals(Z.ONE) 	Least k   such that 3^n-1 and k^n-1 are relatively prime.
+A270360	parmof3	1	A060035	1	(n,k) -> Z.FIVE.pow(n).subtract(1).gcd(Z.valueOf(k).pow(n).subtract(1)).equals(Z.ONE) 	Least k   such that 5^n-1 and k^n-1 are relatively prime.
+A214736	parmof3	1	A060035	1	(n,m) -> Z.valueOf(n + 1 + m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides n+1+m.	nonn,easy,	2..1000	nyi
+A214738	parmof3	1	A060035	1	(n,m) -> Fibonacci.fibonacci(n).add(m).remainder(Z.valueOf(n - m)).isZero()	least m>0 such that n-m divides Fibonacci(n)+m.	nonn,easy,	2..1000	nyi
+A214739	parmof3	1	A060035	1	(n,m) -> Z.ONE.shiftLeft(n - 1).add(m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides 2^(n-1)+m.	nonn,easy,	2..1000	nyi
+A214740	parmof3	1	A060035	1	(n,m) -> Z.ONE.shiftLeft(n).add(m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides 2^n+m.	nonn,easy,	2..1000	nyi
+# A214741	parmof3	1	A060035	1	(n,m) -> Fibonacci.lucas(n).add(m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides L(n)+m, where L = A000201 (lower Wythoff sequence).	nonn,easy,	2..1000	nyi
+A214745	parmof3	1	A060035	1	(n,m) -> Z.valueOf(2*n - 1 + m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides 2*n-1+m.	nonn,easy,	2..1000	nyi
+A214747	parmof3	1	A060035	1	(n,m) -> MemoryFactorial.SINGLETON.doubleFactorial(n).add(m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides n!!+m.	nonn,easy,	2..1000	nyi
+A214748	parmof3	1	A060035	1	(n,m) -> MemoryFactorial.SINGLETON.doubleFactorial(2*n - 1).add(m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides (2*n-1)!!+m.	nonn,easy,	2..1000	nyi
+A214749	parmof3	1	A060035	1	(n,m) -> Z.valueOf(n).square().add(m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides n^2+m.	nonn,easy,	2..1000	nyi
+A214750	parmof3	1	A060035	1	(n,m) -> Z.valueOf(n).square().add(m*m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides n^2+m^2.	nonn,easy,changed,	2..1000	nyi
+A214967	parmof3	1	A060035	1	(n,m) -> Fibonacci.fibonacci(n).add(-m).remainder(Z.valueOf(n - m)).isZero()	least m>0 such that n-m divides Fibonacci(n)-m.	nonn,easy,	2..1000	nyi
+A214968	parmof3	1	A060035	1	(n,m) -> Fibonacci.lucas(n).add(-m).remainder(Z.valueOf(n - m)).isZero()	Least m>0 such that n-m divides L(n)-m, where L = A000032 (Lucas numbers).	nonn,easy,	2..1000	nyi
+# A214917	parmof3	1	A060035	1	(n,m) -> Fibonacci.fibonacci(n - m).remainder(Fibonacci.fibonacci(n + 1 + m)).isZero()	Fibonacci(n-m) divides Fibonacci(n+1+m).	nonn,easy,	2..1000	nyi
+# A214918	parmof3	1	A060035	1	(n,m) -> Fibonacci.fibonacci(n - m).remainder(Fibonacci.fibonacci(n + 2 + m)).isZero()	Fibonacci(n-m) divides Fibonacci(n+2+m).	nonn,easy,	2..1000	nyi
+A214919	parmof3	1	A060035	1	(n,m) -> Fibonacci.lucas(n - m).remainder(Fibonacci.fibonacci(n + m)).isZero()	Lucas(n-m) divides Fibonacci(n+m).	nonn,easy,	2..1000	nyi
+A214920	parmof3	1	A060035	1	(n,m) -> Fibonacci.fibonacci(n - m).remainder(Fibonacci.lucas(n + m)).isZero()	Fibonacci(n-m) divides Lucas(n+m).	nonn,easy,	2..1000	nyi
+A214962	parmof3	1	A060035	1	(n,m) -> Fibonacci.fibonacci(n - m).remainder(Fibonacci.fibonacci(2*n + 2*m)).isZero()	Fibonacci(n-m) divides Fibonacci(2n+2m).	nonn,easy,	2..1000	nyi

@@ -489,7 +489,17 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-05-05:
+anabuild: # .2022-05-06:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v *.man *.sql *.pl *.jpat
+	make CC=A060035   select       gener
+	make CC=A237276   select       gener
+	make CC=A238208   select       gener
+	make CC=perman    select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-05-05:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v *.man *.sql *.pl *.jpat
