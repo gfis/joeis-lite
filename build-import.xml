@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: 08b49ddc73ef271c7054bb70acb278bcff247562 $
+    2022-05-08: compile with -Xdiags:verbose
     2022-04-28: remove target="${jdk.version}" in task compile
     2019-07-25: joeis-lite.jar before joeis.jar
     2019-07-25: joeis.jar before joeis-lite.jar
@@ -204,7 +205,7 @@
                 includeantruntime="false"
                 source="${jdk.version}"
                 debug="${javac.debug}" debuglevel="${javac.debuglevel}">
-            <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 4096 -Xmaxerrs 4096" />
+            <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 4096 -Xmaxerrs 4096 -Xdiags:verbose" />
             <classpath>
                 <path refid="compile.classpath"/>
             </classpath>

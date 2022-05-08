@@ -1,0 +1,10 @@
+A261301	parm2	1	A261301	1	a(n+1) = abs(a(n) - gcd(a(n), 1*n+0)), a(1) = 1.	nonn,	1..10000	nyi
+A261302	parm2	1	A261301	2	a(n+1) = abs(a(n) - gcd(a(n), 2*n+1)), a(1) = 1.	nonn,easy,synth	1..81	nyi
+A261303	parm2	1	A261301	3	a(n+1) = abs(a(n) - gcd(a(n), 3*n+2)), a(1) = 1.	nonn,synth	1..80	nyi
+A261304	parm2	1	A261301	4	a(n+1) = abs(a(n) - gcd(a(n), 4*n+3)), a(1) = 1.	nonn,synth	1..78	nyi
+A261305	parm2	1	A261301	5	a(n+1) = abs(a(n) - gcd(a(n), 5*n+4)), u(1) = 1.	nonn,synth	1..81	nyi
+A261306	parm2	1	A261301	6	a(n+1) = abs(a(n) - gcd(a(n), 6*n+5)), a(1) = 1.	nonn,synth	1..82	nyi
+A261307	parm2	1	A261301	7	a(n+1) = abs(a(n) - gcd(a(n), 7*n+6)), a(1) = 1.	nonn,	1..1000	nyi
+A261308	parm2	1	A261301	8	a(n+1) = abs(a(n) - gcd(a(n), 8*n+7)), a(1) = 1.	nonn,synth	1..66	nyi
+A261309	parm2	1	A261301	9	a(n+1) = abs(a(n) - gcd(a(n), 9*n+8)), u(1) = 1.	nonn,synth	1..68	nyi
+A261310	parm2	1	A261301	10	a(n+1) = abs(a(n) - gcd(a(n), 10n+9)), a(1) = 1.	nonn,synth	1..67	nyi
