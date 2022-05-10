@@ -1,0 +1,35 @@
+A184271	parm2	1	A184271	2		1..5050	Table read by antidiagonals: T(n,k) = number of distinct n X k toroidal binary arrays (n >= 1, k >= 1).
+A184284	parm2	1	A184271	3		1..1275	Table read by antidiagonals: T(n,k) = number of distinct n X k toroidal 0..2 arrays.
+A184277	parm2	1	A184271	4		1..1275	Table read by antidiagonals: T(n,k) = number of distinct n X k toroidal 0..3 arrays.
+A184288	parm2	1	A184271	5		1..1275	Table read by antidiagonals: T(n,k) = number of distinct n X k toroidal 0..4 arrays.
+A184291	parm2	1	A184271	6		1..1275	Table read by antidiagonals: T(n,k) = number of distinct n X k toroidal 0..5 arrays.
+A184331	parm2	1	A184271	7		1..1275	Table read by antidiagonals: T(n,k) = number of distinct n X k toroidal 0..6 arrays.
+A184294	parm2	1	A184271	8		1..2145	Table read by antidiagonals: T(n,k) = number of distinct n X k toroidal 0..7 arrays.
+
+A184264	arronk	1	A184271	1	mN	2	1..1000	Number of distinct n X 2 toroidal binary arrays.
+A184265	arronk	1	A184271	1	mN	3	1..1000	Number of distinct n X 3 toroidal binary arrays.
+A184266	arronk	1	A184271	1	mN	4	1..820	Number of distinct n X 4 toroidal binary arrays.
+A184267	arronk	1	A184271	1	mN	5	1..660	Number of distinct n X 5 toroidal binary arrays.
+A184268	arronk	1	A184271	1	mN	6	1..550	Number of distinct n X 6 toroidal binary arrays.
+A184269	arronk	1	A184271	1	mN	7	1..470	Number of distinct n X 7 toroidal binary arrays.
+A184270	arronk	1	A184271	1	mN	8	1..410	Number of distinct n X 8 toroidal binary arrays.
+A184272	arronk	1	A184277	1	mN	mN	1..25	Number of distinct n X n toroidal 0..3 arrays.
+A184273	arronk	1	A184277	1	mN	2	1..100	Number of distinct n X 2 toroidal 0..3 arrays.
+A184274	arronk	1	A184277	1	mN	3	1..100	Number of distinct n X 3 toroidal 0..3 arrays.
+A184275	arronk	1	A184277	1	mN	4	1..100	Number of distinct n X 4 toroidal 0..3 arrays.
+A184276	arronk	1	A184277	1	mN	5	1..100	Number of distinct n X 5 toroidal 0..3 arrays.
+A184278	arronk	1	A184284	1	mN	mN	1..40	Number of distinct n X n toroidal 0..2 arrays.
+A184279	arronk	1	A184284	1	mN	2	1..200	Number of distinct n X 2 toroidal 0..2 arrays.
+A184280	arronk	1	A184284	1	mN	3	1..100	Number of distinct n X 3 toroidal 0..2 arrays.
+A184281	arronk	1	A184284	1	mN	4	1..100	Number of distinct n X 4 toroidal 0..2 arrays.
+A184282	arronk	1	A184284	1	mN	5	1..50	Number of distinct n X 5 toroidal 0..2 arrays.
+A184283	arronk	1	A184284	1	mN	6	1..50	Number of distinct n X 6 toroidal 0..2 arrays.
+A184285	arronk	1	A184288	1	mN	2	1..100	Number of distinct n X 2 toroidal 0..4 arrays.
+A184286	arronk	1	A184288	1	mN	3	1..100	Number of distinct n X 3 toroidal 0..4 arrays.
+A184287	arronk	1	A184288	1	mN	4	1..100	Number of distinct n X 4 toroidal 0..4 arrays.
+A184289	arronk	1	A184291	1	mN	2	1..100	Number of distinct n X 2 toroidal 0..5 arrays.
+A184290	arronk	1	A184291	1	mN	3	1..100	Number of distinct n X 3 toroidal 0..5 arrays.
+A184292	arronk	1	A184294	1	mN	2	1..100	Number of distinct n X 2 toroidal 0..7 arrays.
+A184293	arronk	1	A184294	1	mN	3	1..100	Number of distinct n X 3 toroidal 0..7 arrays.
+A184329	arronk	1	A184331	1	mN	2	1..100	Number of distinct n X 2 toroidal 0..6 arrays.	nonn,	1..100	nyi
+A184330	arronk	1	A184331	1	mN	3	1..100	Number of distinct n X 3 toroidal 0..6 arrays.	nonn,	1..100	nyi
