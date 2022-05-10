@@ -493,10 +493,12 @@ anabuild: # .2022-05-10:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
-	rm -f build.man
-	echo A147682 A180281 A184271 A210062 A295028 A305161 A318754 A319501 \
-	| xargs -n1 echo | xargs -innn cat nnn.man >> build.man
-	make CC=build     select       gener
+	rm -f build.man build.tmp
+	echo A147682 A180281 A183568 A184271 A194621 A210062 A229653 A244372 A295028 \
+	     A305161 A308680 A316074 A318754 A319501 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A032305|A063524|A244407|A244410|A299039" build.tmp > build.man
+	make CC=build     select EX=xx gener
 	make CC=man       man
 	make dist testall log TO=8
 anabuild.2022-05-07:
