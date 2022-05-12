@@ -1,0 +1,51 @@
+# 2022-05-12 dependants of A324162:
+# A000007	trionk	0	A324162	0	mN	0
+# A000110	trionk	0	A324162	0	mN	1
+A060311	trionk	0	A324162	0	mN	2
+A327504	trionk	0	A324162	0	mN	3
+A327505	trionk	0	A324162	0	mN	4
+A327506	trionk	0	A324162	0	mN	5
+A327507	trionk	0	A324162	0	mN	6
+A327508	trionk	0	A324162	0	mN	7
+A327509	trionk	0	A324162	0	mN	8
+A327510	trionk	0	A324162	0	mN	9
+A327511	trionk	0	A324162	0	mN	10
+A324238	rowsums	0	A324162	0	mN	0	Row sums give
+A324241	trionk	0	A324162	0	2 * mN	mN	T(2n,n) gives
+# A008277	trionk	0	A324162	0	mN	0	Cf.
+# A048993	trionk	0	A324162	0	mN	1	Cf.
+# A039810	trionk	0	A324162	0	mN	2	Cf.
+# A130191	trionk	0	A324162	0	mN	3	Cf.
+# A325929	trionk	0	A324162	0	mN	4	Cf.
+
+# jOEIS already implemented:
+# A000110 389     FATO    timeout   4012 ms
+# A039810 3161    FATO    timeout   4048 ms
+# A060311 36      FATO    timeout   4550 ms
+# A130191 0       FATAL   construction failed
+# A324238 0       FATAL   construction failed
+# A324241 0       FATAL   construction failed
+# A325929 0       FATAL   construction failed
+# A327504 40      FATO    timeout   4637 ms
+# A327505 42      FATO    timeout   4592 ms
+# A327506 43      FATO    timeout   4197 ms
+# A327507 45      FATO    timeout   4615 ms
+# A327508 46      FATO    timeout   4498 ms
+# A327509 47      FATO    timeout   4262 ms
+# A327510 49      FATO    timeout   4467 ms
+# A327511 0       FATAL   construction failed
+
+# via this Triangle:
+# A000110 374     FATO    timeout   4010 ms
+# A060311 386     FATO    timeout   4010 ms
+# A324162 8579    FATO    timeout   4005 ms
+# A324238 135     FATO    timeout   4094 ms
+# A324241 269     FATO    timeout   4034 ms
+# A327504 353     FATO    timeout   4013 ms
+# A327505 352     FATO    timeout   4011 ms
+# A327506 385     FATO    timeout   4001 ms
+# A327507 383     FATO    timeout   4010 ms
+# A327508 379     FATO    timeout   4027 ms
+# A327509 383     FATO    timeout   4001 ms
+# A327510 384     FATO    timeout   4027 ms
+# A327511 383     FATO    timeout   4011 ms

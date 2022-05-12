@@ -344,7 +344,7 @@ gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
 	# ---- $@ CC=$(CC)
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	perl gen_seq4.pl -d $(D) -cc $(CC) $(NC) ghead.tmp
-	make -i $(CC).patch || :
+	# make -i $(CC).patch || :
 man: # copy sources that where manually edited
 	# ---- $@ CC=$(CC)
 	perl copyman.pl > $@.gen
@@ -489,7 +489,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-05-10:
+anabuild: # .2022-05-12:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	# echo A244372 A299038 rewritten/retested
+	echo A237018 A239550 A240608 A242447 A242451 A242464 A243081 A244454 A244530 A255982 A324162 A346500 A346517 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp > build.man
+	make CC=build     select EX=xx gener
+	make CC=man       man
+	make dist testall log TO=4
+anabuild.2022-05-10:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
