@@ -1146,6 +1146,12 @@ A183194: # Final prime of first member of A019518 that is divisible by 3^n.
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------
+A183953: # RH*150, Number of strings of numbers x(i=1.. n) in 0..n with sum i^2*x(i)^1 equal to n^3
+	perl $@.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----
 A189011: # Zero-one sequence based on triangular numbers: a(A000217(k))=a(k); a(A014132(k))=1-a(k); a(1)=0.
 	cd ck; make $@
