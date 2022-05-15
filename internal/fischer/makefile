@@ -350,6 +350,8 @@ man: # copy sources that where manually edited
 	perl copyman.pl > $@.gen
 	sort $@.gen $(CC).gen | uniq -w7 > $@.tmp
 	mv $@.tmp $(CC).gen
+cm:
+	make CC=man man distel
 dist:
 	# ---- $@ CC=$(CC)
 	rm -f dist.log
@@ -489,7 +491,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-05-12:
+anabuild: #.2022-05-15:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A060642 A075196 A080510 A143453 A145111 A180887 A184887 A193515 \
+	     A245405 A306800 A323224 A334218 A346426 A346520 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp > build.man
+	make CC=holom     select       gener
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=4
+anabuild.2022-05-12:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -1152,6 +1167,10 @@ A183953: # RH*150, Number of strings of numbers x(i=1.. n) in 0..n with sum i^2*
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+A184887:
+	cp -v $(CONTRIB)/ph/$@.man $@.gen
+	grep -E "^A18"  $(CONTRIB)/ph/$@.man | cut -f1,4
 #----
 A189011: # Zero-one sequence based on triangular numbers: a(A000217(k))=a(k); a(A014132(k))=1-a(k); a(1)=0.
 	cd ck; make $@

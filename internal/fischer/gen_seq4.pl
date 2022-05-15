@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-05-15: V3.7: 0 - 1 -> -1
 # 2022-05-05: V3.6: LongUtils
 # 2022-04-08: V3.5: Stirling, Fibonacci
 # 2022-04-08: V3.4: z.Euler.phi(n)
@@ -47,7 +48,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V3.6";
+my $program = "gen_seq4.pl V3.7";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -250,6 +251,7 @@ sub write_output {
     $copy =~ s{\$\(PROG\)}           {$program}g;
     $copy =~ s{\$\(NAME\)}           {$name}g;
     $copy =~ s{\$\(OFFSET\) *\- *1}  {$offset - 1}eg;
+    $copy =~ s{( *)0 *\- *1( *)}     {\-1}g;
     $copy =~ s{\$\(OFFSET\)}         {$offset}g;
     $copy =~ s{\$\(PACK\)}           {$package}g;
     my $package = lc(substr($aseqno, 0, 4));
