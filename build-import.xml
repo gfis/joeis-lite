@@ -77,7 +77,7 @@
     <property name="test.home"          value="${basedir}/test" />
     <property name="javac.debug"        value="on" />
     <property name="javac.debuglevel"   value="lines,vars,source" />
-    <property name="jdk.version"        value="1.8" />
+    <property name="jdk.version"        value="1.11" />
 
     <path id="compile.classpath">
         <fileset dir="${dist.home}">
@@ -197,13 +197,14 @@
 
     <!-- ============= compile ==========================================
                 source="${jdk.version}" target="${jdk.version}"
+                source="${jdk.version}"
     -->
     <target name="compile"  depends="generate">
         <depend srcdir="${src.home}" destdir="${build.classes}" cache="${build.home}" dump="yes" />
         <javac  srcdir="${src.home}" destdir="${build.classes}" listfiles="yes"
                 encoding="utf8"
                 includeantruntime="false"
-                source="${jdk.version}"
+                
                 debug="${javac.debug}" debuglevel="${javac.debuglevel}">
             <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 4096 -Xmaxerrs 4096 -Xdiags:verbose" />
             <classpath>
