@@ -491,7 +491,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-05-16:
+anabuild: #.2022-05-20:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	make CC=trecpas   select       gener
+	echo A225466 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=4
+anabuild.2022-05-18:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -5090,6 +5102,13 @@ tilepack:
 	find $(COORS) -name "*.java" -printf "%P\n" \
 	| grep -vE "^(BFile|SVGFile|TilingTest|Sequence|Tiler[12]|Z)\.java" \
 	| xargs -l -i{} perl tilepack.pl -t -p org.teherba.tile $(COORS)/{} $(TARGET)/{}
+#--------------------------------
+trecpas: # received from $(TRIREC)/trecpas.tmp
+	grep -E "^A[0-9]" $@.tmp \
+	| grep -vE "A090971|A127156|A128134" \
+	| sort | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 # A151255 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
 #   and consisting of n steps taken from {(-1, -1), (-1, 1), (1, 0)}	nonn,walk,synth	0..34
