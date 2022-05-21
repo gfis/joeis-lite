@@ -63,8 +63,8 @@ while (<>) { # from joeis_names.txt
     if (defined($ofters{$aseqno}) and ($superclass !~ m{BriefSequence|ComplementSequence|FiniteSequence|PowerFactorPrimeSequence})) {
         # print STDERR "# $aseqno $superclass - ignore since already implemented\n";
         $expr = "";
-    #                       1     1           2                              2 3      3      4  4        5     5
-    } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is (a )?prime *(\Z|\.)}) {
+    #                       1     1           2                              2 3      3      4  4
+    } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is (a )?prime}) { #  *(\Z|\.)}) {
         $letter = $1;
         $expr   = $3;
         $expr   =~ s{$letter}{k}g;

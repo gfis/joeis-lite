@@ -491,7 +491,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-05-20:
+anabuild: #.2022-05-21:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A111528 A121022 A128367 A145609 A172455 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp > build.man
+	make CC=A147571   select EX=xx gener
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=4
+anabuild.2022-05-20:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -1174,6 +1186,13 @@ A165824:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------
+A172455_hol:
+	$(DBAT) "SELECT s.aseqno, s.parm2 || ',' || s.parm3 || ',' || s.parm4, COALESCE(h.matrix, 'matrix?'), h.init, h.shift, h.gftype, h.keyword \
+	FROM  seq4 s LEFT JOIN holref h ON s.aseqno = h.aseqno \
+	ORDER BY 2 " > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------
 A176627:
 	cp -v $(TRIREC)/$@.man $@.gen
@@ -2257,7 +2276,7 @@ cofr:
 #----
 decofr0:
 	grep -B1 -E "Continued fraction" $(COMMON)/joeis_names.txt \
-	| grep -B1 -P "\tnull\t" | cut -b1-128 \
+	| grep -B1 -P "\tnyi" | cut -b1-128 \
 	| tee    $@.tmp
 cofrman:
 	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
@@ -3600,7 +3619,7 @@ inbase2:
 # A059376 null    Jordan function J_3(n). nonn,mult,easy,changed, 1..1000 nyi
 jordan: # J_k(n)
 	grep -E "Jordan " $(COMMON)/joeis_names.txt \
-	| perl -ne 'if (m{null\tJordan function J_(\d+)}) { my $$num = $$1; s/\tnull\t.*/\tparm2\t1\tA059376\t$$num/; print; } '\
+	| perl -ne 'if (m{null\tJordan function J_(\d+)}) { my $$num = $$1; s/\tnyi[^\t]*\t.*/\tparm2\t1\tA059376\t$$num/; print; } '\
 	>        $@.gen
 	head -n44 $@.gen
 	wc -l    $@.gen
@@ -3831,7 +3850,7 @@ kpytha_bad:
 #--------------------------------
 leastk:
 	grep -P "[Ll]east +\w[ \>\=\d]+such that" $(COMMON)/joeis_names.txt \
-	| grep -P "\tnull\t" \
+	| grep -P "\tnyi[^\t]*\t" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -4051,7 +4070,7 @@ perman: # Permanents with A085244
 #--------------------------------
 pisot:
 	grep -P "null\s+Pisot sequence" $(COMMON)/joeis_names.txt \
-	| perl -ne 'm{\A(A\d+)\tnull\tPisot sequence (\w)\((\d+)\, *(\d+)}; my ($$aseqno, $$p1, $$p2, $$p3) = ($$1, $$2, $$3, $$4); '\
+	| perl -ne 'm{\A(A\d+)\tnyi[^\t]*\tPisot sequence (\w)\((\d+)\, *(\d+)}; my ($$aseqno, $$p1, $$p2, $$p3) = ($$1, $$2, $$3, $$4); '\
 	' my $$callcode = "pisot" . (($$p1 eq "L") ? "l" : ""); '\
 	' print join("\t", $$aseqno, $$callcode, 0, $$p2, $$p3) . "\n"; '\
 	>        $@.gen
@@ -4660,7 +4679,7 @@ charfuman:
 charfun3:
 	grep -E "Characteristic function " $(COMMON)/joeis_names.txt \
 	| grep -E "null" \
-	| perl -ne 's{\tnull\tCharacteristic function (of|for) }{\tcharfun\t0\t};'\
+	| perl -ne 's{\tnyi[^\t]*\tCharacteristic function (of|for) }{\tcharfun\t0\t};'\
 	' s{(.)(A\d{6})}{$$1$$2\t\t}; print; '\
 	>        $@.tmp
 	wc -l    $@.tmp

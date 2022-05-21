@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-05-20: V3.9, Cheetah -> Jaguar
 # 2022-05-18: V3.8: mN = 0 - 1; again
 # 2022-05-15: V3.7: 0 - 1 -> -1
 # 2022-05-05: V3.6: LongUtils
@@ -343,8 +344,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPrependSequence} ) { $imports{"irvine.oeis.PrependSequence"   }        = $itype; }
     if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }        = $itype; }
     if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}        = $itype; }
-    if ($line =~ m{\WCheetah\.}       ) { $imports{"irvine.factor.factor.Cheetah"       }   = $itype; }
-    if ($line =~ m{\WEuler\.}         ) { $imports{"irvine.math.z.Euler"                }   = $itype; }
+    if ($line =~ m{\WJaguar\.}        ) { $imports{"irvine.factor.factor.Jaguar"   }        = $itype; }
+    if ($line =~ m{\WEuler\.}         ) { $imports{"irvine.math.z.Euler"           }        = $itype; }
     
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
