@@ -491,7 +491,22 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-05-21:
+anabuild: #.2022-05-22:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A124262 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp > build.man
+	make CC=A139056   select EX=xx gener
+	make CC=A144779   select EX=xx gener
+	make CC=prilist   select       gener
+	make CC=prilistm  select       gener
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-05-21:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -6512,6 +6527,21 @@ pfprimex:
 	'|A101001|A101003|A101722|A101732|A101734|A259137|A259138|A281063|A295399|A293592|A322935)}{\# $$1};' \
 	pfprime.tmp > pfprime.gen
 #-------------------
+prilist:
+	grep -E "(Numbers|Integers)" $(COMMON)/joeis_names.txt \
+	| grep -E 'ers [a-z] (such that|for which) ' \
+	| grep -E 'are *prime' \
+	>        $@.tmp
+	perl prilist.pl $@.tmp \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.*
+prilistm:
+	cp -v prilist.man $@.gen
+	head -n4 $@.gen
+	wc -l    $@.*
+#----
 EE=
 prisub:
 	grep -E "(Numbers|Integers)" $(COMMON)/joeis_names.txt \

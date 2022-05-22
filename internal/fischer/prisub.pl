@@ -1,6 +1,7 @@
 #!perl
 
-# Extract parameters for PrimeSubsequence from names like "Numbers such that ... is prime"
+# Extract parameters for PrimePositionSubsequence 
+# from names like "Numbers such that ... is prime"
 # 2021-01-12, Georg Fischer: copied from suchprim.pl
 #
 #:# Usage:
@@ -63,8 +64,8 @@ while (<>) { # from joeis_names.txt
     if (defined($ofters{$aseqno}) and ($superclass !~ m{BriefSequence|ComplementSequence|FiniteSequence|PowerFactorPrimeSequence})) {
         # print STDERR "# $aseqno $superclass - ignore since already implemented\n";
         $expr = "";
-    #                       1     1           2                              2 3      3      4  4
-    } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is (a )?prime}) { #  *(\Z|\.)}) {
+    #                       1     1           2                              2 3      3
+    } elsif ($name =~ m{ers ([a-z]) such that (the string |the concatenation )?([^\;]+)\; is prime}) {
         $letter = $1;
         $expr   = $3;
         $expr   =~ s{$letter}{k}g;

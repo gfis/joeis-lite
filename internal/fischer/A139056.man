@@ -1,0 +1,64 @@
+A082672	parm2	0	A139056	2	
+A089085	parm2	0	A139056	3	
+A139061	parm2	0	A139056	4	Numbers n for which (4+n!)/4 is prime.	nonn,synth	1..21	nyi	_Artur Jasinski_, Apr 07 2008
+A139060	parm2	0	A139057	4	Primes of the form  (4+k!)/4.	nonn,synth	1..8	nyi	_Artur Jasinski_, Apr 07 2008
+A139058	parm2	0	A139056	5	Numbers n such that (5+n!)/5 is prime.	nonn,synth	1..20	nyi	_Artur Jasinski_, Apr 07 2008
+A139059	parm2	0	A139057	5	Primes of the form  (5+k!)/5.	nonn,changed,synth	1..7	nyi	_Artur Jasinski_, Apr 07 2008
+A139063	parm2	0	A139056	6	Numbers k for which (6+k!)/6 is prime.	nonn,synth	1..27	nyi	_Artur Jasinski_, Apr 07 2008
+A139062	parm2	0	A139057	6	Primes of the form  (6+k!)/6.	nonn,synth	1..8	nyi	_Artur Jasinski_, Apr 07 2008
+A139065	parm2	0	A139056	7	Numbers k for which (7+k!)/7 is prime.	nonn,hard,more,synth	1..22	nyi	_Artur Jasinski_, Apr 07 2008
+A139064	parm2	0	A139057	7	Primes of the form  (7+k!)/7.	nonn,synth	1..6	nyi	_Artur Jasinski_, Apr 07 2008
+A151913	parm2	0	A139056	8	Numbers n for which (8+n!)/8 is prime.  nonn,synth      1..16   nyi     _Artur Jasinski_, Apr 07 2008
+A139066	parm2	0	A139057	8	Primes of the form  (8+k!)/8.	nonn,synth	1..10	nyi	_Artur Jasinski_, Apr 07 2008
+A137390	parm2	0	A139056	9	Numbers k for which (9 + k!)/9 is prime.
+A139068	parm2	0	A139057	9	Primes of the form  k!/9 + 1.	nonn,bref,synth	1..3	bref	_Artur Jasinski_, Apr 07 2008
+A139071	parm2	0	A139056	10	Numbers k for which (10+k!)/10 is prime.	nonn,synth	1..23	nyi	_Artur Jasinski_, Apr 07 2008
+A139070	parm2	0	A139057	10	Primes of the form  (10+k!)/10.	nonn,synth	1..9	nyi	_Artur Jasinski_, Apr 07 2008
+A082671	parm2	0	A139056	-2	
+A139056	parm2	0	A139056	-3	Numbers k for which (k!-3)/3 is prime.	nonn,more,changed,synth	1..14	nyi	_Artur Jasinski_, Apr 07 2008
+A139057	parm2	0	A139057	-3	Primes of the form  (k!-3)/3.	nonn,synth	1..7	nyi	_Artur Jasinski_, Apr 07 2008
+A139199	parm2	0	A139056	-4	Numbers k such that (k!-4)/4 is prime.	hard,more,nonn,synth	1..20	nyi	_Artur Jasinski_, Apr 11 2008
+A139200	parm2	0	A139056	-5	Numbers k such that (k!-5)/5 is prime.	hard,more,nonn,synth	1..17	nyi	_Artur Jasinski_, Apr 11 2008
+A139201	parm2	0	A139056	-6	Numbers k such that (k!-6)/6 is prime.	nonn,changed,synth	1..24	nyi	_Artur Jasinski_, Apr 11 2008
+A139202	parm2	0	A139056	-7	Numbers k such that (k!-7)/7 is prime.	hard,more,nonn,synth	1..18	nyi	_Artur Jasinski_, Apr 11 2008
+A139203	parm2	0	A139056	-8	Numbers k such that (k!-8)/8 is prime.	hard,more,nonn,synth	1..16	nyi	_Artur Jasinski_, Apr 11 2008
+A139204	parm2	0	A139056	-9	Numbers k such that (k!-9)/9 is prime.	hard,more,nonn,synth	1..22	nyi	_Artur Jasinski_, Apr 11 2008
+A139205	parm2	0	A139056	-10	Numbers k such that (k!-10)/10 is prime.	hard,more,nonn,synth	1..18	nyi	_Artur Jasinski_, Apr 11 2008
+
+A139159	parmof2	0	A139160	+1	a(n)=(prime(n)!+1)  .   nonn,synth      1..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139160	parmof2	0	A139160	+2	a(n)=(prime(n)!+2)/2.   nonn,synth      1..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139161	parmof2	0	A139160	+3	a(n)=(prime(n)!+3)/3.   nonn,synth      2..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139162	parmof2	0	A139160	+4	a(n)=(prime(n)!+4)/4.   nonn,synth      3..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139163	parmof2	0	A139160	+5	a(n)=(prime(n)!+5)/5.   nonn,synth      3..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139164	parmof2	0	A139160	+6	a(n)=(prime(n)!+6)/6. nonn,changed,synth      2..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139165	parmof2	0	A139160	+7	a(n)=(prime(n)!+7)/7.   nonn,synth      4..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139166	parmof2	0	A139160	+8	a(n)=(prime(n)!+8)/8.   nonn,synth      3..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139168	parmof2	0	A139160	+10	a(n)=(prime(n)!+10)/10.     nonn,synth      3..11   unkn    _Artur Jasinski_, Apr 11 2008
+A139190	parmof2	0	A139160	-2	a(n)=(prime(n)!-2)/2. nonn,   1..85   deriv   _Artur Jasinski_, Apr 11 2008
+A139191	parmof2	0	A139160	-3	form (prime(n)!-3)/3.    nonn,synth      1..15   deriv   _Artur Jasinski_, Apr 11 2008
+A139192	parmof2	0	A139160	-4	a(n)=(prime(n)!-4)/4.       nonn,   3..87   unkn    _Artur Jasinski_, Apr 11 2008
+A139193	parmof2	0	A139160	-5	 orm (prime(n)!-5)/5.  nonn,synth      1..9    nyi     _Artur Jasinski_, Apr 11 2008
+A139194	parmof2	0	A139160	-6	form (prime(n)!-6)/6.    nonn,synth      1..10   nyi     _Artur Jasinski_, Apr 11 2008
+A139195	parmof2	0	A139160	-7	     (prime(n)!-7)/7.        nonn,synth      4..12   nyi     _Artur Jasinski_, Apr 11 2008
+A139196	parmof2	0	A139160	-8	a(n)=(prime(n)!-8)/8. nonn,synth      3..12   unkn    _Artur Jasinski_, Apr 11 2008
+A139197	parmof2	0	A139160	-9	form (prime(n)!-9)/9.    nonn,changed,synth      1..8    nyi     _Artur Jasinski_, Apr 11 2008
+A139198	parmof2	0	A139160	-10	a(n)=(prime(n)!-10)/10.       nonn,synth      3..11   unkn    _Artur Jasinski_, Apr 11 2008
+
+A139439	parm2	0	A139439	+4	Numbers n such that primorial(n)/2 + 4    is prime.	nonn,more,changed,synth	1..17	nyi	_Artur Jasinski_, Apr 21 2008
+A139440	parm2	0	A139439	-4	Numbers n such that primorial(n)/2 - 4    is prime.	nonn,synth	1..19	nyi	_Artur Jasinski_, Apr 21 2008
+A139441	parm2	0	A139439	+8	Numbers n such that primorial(n)/2 + 8    is prime.	nonn,synth	1..27	nyi	_Artur Jasinski_, Apr 21 2008
+A139442	parm2	0	A139439	-8	Numbers n such that primorial(n)/2 - 8    is prime.	nonn,synth	1..29	nyi	_Artur Jasinski_, Apr 21 2008
+A139443	parm2	0	A139439	+16	Numbers n such that primorial(n)/2 + 16    is prime.	nonn,synth	1..28	nyi	_Artur Jasinski_, Apr 21 2008
+A139444	parm2	0	A139439	-16	Numbers n such that primorial(n)/2 - 16    is prime.	nonn,more,synth	1..25	nyi	_Artur Jasinski_, Apr 21 2008
+A139445	parm2	0	A139439	+32	Numbers n such that primorial(n)/2 + 32    is prime.	nonn,more,synth	1..29	nyi	_Artur Jasinski_, Apr 21 2008
+A139446	parm2	0	A139439	-32	Numbers n such that primorial(n)/2 - 32    is prime.	nonn,synth	1..21	nyi	_Artur Jasinski_, Apr 21 2008
+A139447	parm2	0	A139439	+64	Numbers n such that primorial(n)/2 + 64    is prime.	nonn,synth	1..17	nyi	_Artur Jasinski_, Apr 21 2008
+A139448	parm2	0	A139439	-64	Numbers n such that primorial(n)/2 - 64    is prime.	nonn,synth	1..32	nyi	_Artur Jasinski_, Apr 21 2008
+A139449	parm2	0	A139439	+128	Numbers n such that primorial(n)/2 + 128  is prime.	nonn,synth	1..26	nyi	_Artur Jasinski_, Apr 21 2008
+A139450	parm2	0	A139439	-128	Numbers n such that primorial(n)/2 - 128  is prime.	nonn,synth	1..18	nyi	_Artur Jasinski_, Apr 21 2008
+A139451	parm2	0	A139439	+256	Numbers n such that primorial(n)/2 + 256  is prime.	nonn,synth	1..23	nyi	_Artur Jasinski_, Apr 21 2008
+A139452	parm2	0	A139439	-256	Numbers n such that primorial(n)/2 - 256  is prime.	nonn,synth	1..17	nyi	_Artur Jasinski_, Apr 21 2008
+A139453	parm2	0	A139439	+512	Numbers n such that primorial(n)/2 + 512  is prime.	nonn,synth	1..23	nyi	_Artur Jasinski_, Apr 21 2008
+A139454	parm2	0	A139439	-512	Numbers n such that primorial(n)/2 - 512  is prime.	nonn,synth	1..20	nyi	_Artur Jasinski_, Apr 21 2008
+A139455	parm2	0	A139439	+1024	Numbers n such that primorial(n)/2 + 1024 is prime.	nonn,synth	1..25	nyi	_Artur Jasinski_, Apr 21 2008
+A139456	parm2	0	A139439	-1024	Numbers n such that primorial(n)/2 - 1024 is prime.	nonn,synth	1..19	nyi	_Artur Jasinski_, Apr 21 2008
