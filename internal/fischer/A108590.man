@@ -1,0 +1,73 @@
+#x A108586 A038130	BeattySequence  Floor(2*n*Pi/(2*Pi-1)). nonn,synth      1..72   beatty2 _Reinhard Zumkeller_, Jun 11
+
+#x A108587 A108120	BeattySequence  Floor(n/(1-sin(1))).    nonn,synth      1..55   beatty2 _Reinhard Zumkeller_, Jun 11 20
+
+#x A108589 A140758	BeattySequence  Floor(n*Pi/(Pi-2)).     nonn,easy,      1..7000 beatty2 _Reinhard Zumkeller_, Jun 11 2
+#x A140758 A108589	BeattySequence  a(n) = floor(n*Pi/2).   nonn,changed,synth      0..67   beatty2 _Reinhard Zumkeller_,
+
+# A108598 A022839	BeattySequence  Floor(n*((5+sqrt(5))/4)).       nonn,synth      1..67   beatty2 _Reinhard Zumkeller_, Jun
+
+#x A109231 A109232	BeattySequence  a(n) = floor(n*cosh(1)).        nonn,changed,synth      1..65   beatty2r        _Reinhard Zumkelle
+#x A109232 BeattySequence  a(n) = floor(n*(e^2+1)/(e-1)^2).        nonn,changed,synth      1..57   beatty2r        _Reinhard
+
+#x A109234 A109235	BeattySequence  a(n) = floor(n*sinh(1)).        nonn,changed,synth      1..66   beatty2r        _Reinhard Zumkelle
+#x A109235 BeattySequence  a(n) = floor(n*(e^2-1)/(e^2-2*e-1)).    nonn,changed,synth      1..52   beatty2r        _Reinh
+
+#x A109237 A109238	BeattySequence  a(n) = floor(n*coth(1)).        nonn,changed,synth      1..66   beatty2r        _Reinhard Zumkelle
+#x A109238 BeattySequence  a(n) = floor(n*(e^2+1)/2).      nonn,changed,synth      1..54   beatty2r        _Reinhard Zumkel
+
+#x A109259 A109260	BeattySequence  a(n) = floor(n*sqrt(2)^sqrt(2)).        nonn,   1..10000        beatty2r        _Reinhard Zumkeller_
+#x A109260 BeattySequence  a(n) = floor(n*sqrt(2)^sqrt(2)/(sqrt(2)^sqrt(2)-1)).    nonn,   1..10000        beatty2r
+
+#x A110117 A110118	BeattySequence  a(n) = floor(n * (sqrt(2) + sqrt(3))).  nonn,changed,   1..5000 beatty2 _Reinhar
+#x A110118 BeattySequence  a(n) = floor(n*(sqrt(6) + sqrt(2) + 2)/4).      nonn,   1..10000        beatty2 _Reinhard Z
+
+# A115180 nyi Ft  Beatty sequence for (Champernowne constant)*10 = 1.234567891011121314....       nonn,synth
+# A115181 nyi Ft  Beatty sequence for (Cc/(Cc-1)) with Cc = 1.234567891011121314... = 10*(Champernowne
+# A115182 nyi F   Self-inverse integer permutation induced by Beatty sequences for CC and Cc/(Cc-1) with
+
+#x A137803 A137804	BeattySequence  a(n) = floor(n*(sqrt(2) + 1/2)).        nonn,   1..10000        beatty2 _Reinhard Zumkeller_,
+#x A137804 BeattySequence  a(n) = floor(n*(4*sqrt(2)+9)/7).        nonn,   1..1000 beatty2 _Reinhard Zumkeller_,
+
+#x A138235 A022840	BeattySequence  a(n) = floor(n*(6 + sqrt(6))/5).        nonn,changed,   1..1000 beatty2 _Reinhard Zumk
+
+#x A164086 A164087	BeattySequence  Beatty sequence for 4*Pi/3 = 4.1887902... .     nonn,changed,synth      1..58   beatty2
+#x A164087 BeattySequence  Beatty sequence for 4*Pi/(4*Pi-3) = 1.3135986... .      nonn,changed,synth      1..72   b
+
+A108590	parmof5	1	A108590	1	new A108589()	0	new A140758()	Self-inverse integer permutation induced by Beatty sequences for Pi/2 and Pi/(Pi-2).    n
+A108591	parmof5	1	A108590	1	new A022844()	1	new A054386()	Self-inverse integer permutation induced by Beatty sequences for Pi and Pi/(Pi-1).      non
+A108592	parmof5	1	A108590	1	new A038130()	1	new A108586()	Self-inverse integer permutation induced by Beatty sequences for 2*Pi and 2*Pi/(2*Pi-1
+A108593	parmof5	1	A108590	1	new A108120()	1	new A108587()	Self-inverse integer permutation induced by Beatty sequences for 1/sin(1) and 1/(1-sin
+A108599	parmof5	1	A108590	1	new A022843()	1	new A054385()	Self-inverse integer permutation induced by Beatty sequences for e and e/(e-1). nonn,s
+A109233	parmof5	1	A108590	1	new A109231()	1	new A109232()	Self-inverse integer permutation induced by Beatty sequences for (e+1/e)/2 and (e^2+1)
+A109236	parmof5	1	A108590	1	new A109234()	1	new A109235()	Self-inverse integer permutation induced by Beatty sequences for (e-1/e)/2 and (e^2+1)
+A109239	parmof5	1	A108590	1	new A109237()	1	new A109238()	Self-inverse integer permutation induced by Beatty sequences for (e^2+1)/(e^2-1) and (
+A109250	parmof5	1	A108590	1	new A003151()	1	new A003152()	Self-inverse integer permutation induced by Beatty sequences for 1+sqrt(2) and 1+1/sqr
+A109261	parmof5	1	A108590	1	new A109259()	1	new A109260()	Self-inverse integer permutation induced by Beatty sequences for sqrt(2)^sqrt(2) and s
+A110119	parmof5	1	A108590	1	new A110117()	1	new A110118()	Self-inverse integer permutation induced by Beatty sequences for x and (x+1)/(2*sqrt(2
+A137805	parmof5	1	A108590	1	new A137803()	1	new A137804()	Self-inverse integer permutation induced by Beatty sequences for Sqrt(2)+1/2 and (4*Sq
+A138236	parmof5	1	A108590	1	new A138235()	1	new A022840()	Self-inverse integer permutation induced by Beatty sequences for Sqrt(6) and (6+Sqrt(6
+A164088	parmof5	1	A108590	1	new A164086()	1	new A164087()	Self-inverse integer permutation induced by Beatty sequences for 4*Pi/3 and 4*Pi/(4*Pi
+
+A002251	parmof5	1	A108590	1	new A000201()	1	new A001950()
+A001951	parmof5	1	A108590	1	new A001951()	1	new A001952()
+A300003	parmof5	1	A108590	1	new A001961()	1	new A001962()	new
+A300004	parmof5	1	A108590	1	new A004976()	1	new A184522()
+A300005	parmof5	1	A108590	1	new A184522()	1	new A184523()	new
+A300006	parmof5	1	A108590	1	new A187395()	1	new A187396()	new
+A300007	parmof5	1	A108590	1	new A329825()	1	new A329826()	new
+A300008	parmof5	1	A108590	1	new A329827()	1	new A329828()	new
+A026255	parmof5	1	A108590	1	new A329829()	1	new A329830()
+A300010	parmof5	1	A108590	1	new A329831()	1	new A329832()	new
+A300011	parmof5	1	A108590	1	new A329833()	1	new A329834()	A189681, A329834, A059542??
+A300012	parmof5	1	A108590	1	new A329835()	1	new A329836()	new
+A300013	parmof5	1	A108590	1	new A329837()	1	new A329838()	new
+A329840	parmof5	1	A108590	1	new A329839()	1	new A329840()	A329840
+A300015	parmof5	1	A108590	1	new A329841()	1	new A329842()	new
+A300016	parmof5	1	A108590	1	new A329843()	1	new A329844()
+A300017	parmof5	1	A108590	1	new A329845()	1	new A329846()
+A300018	parmof5	1	A108590	1	new A329847()	1	new A329848()
+A300019	parmof5	1	A108590	1	new A329923()	1	new A329924()
+A300020	parmof5	1	A108590	1	new A329925()	1	new A329926()
+# A130526	null	A permutation of the integers induced by the lower and upper Wythoff sequences.	sign,synth	69
+# A130527	null	A permutation of the integers induced by the Beatty sequence for sqrt(2).	sign,synth	68

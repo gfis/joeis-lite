@@ -1,0 +1,29 @@
+A061870	parm3	0	A061870	2	1	|first digit - second digit + third digit - fourth digit ...| = 1.	nonn,base,easy,	1..10000	nyi	_Robert G. Wilson v_, May 10 2001
+A061871	parm3	0	A061870	2	2	|First digit - second digit + third digit - fourth digit ...| = 2.	nonn,base,easy,synth	1..55	nyi	_Robert G. Wilson v_, May 10 2001
+A061872	parm3	0	A061870	2	3	|First digit - second digit + third digit - fourth digit ...| = 3.	nonn,base,easy,	1..1000	nyi	_Robert G. Wilson v_, May 10 2001
+A061873	parm3	0	A061870	2	4	|first digit - second digit + third digit - fourth digit ...| = 4.	nonn,base,easy,changed,	1..10000	nyi	_Robert G. Wilson v_, May 10 2001
+A061874	parm3	0	A061870	2	5	|First digit - second digit + third digit - fourth digit ...| = 5.	nonn,base,easy,synth	1..54	nyi	_Robert G. Wilson v_, May 10 2001
+A061875	parm3	0	A061870	2	6	|First digit - second digit + third digit - fourth digit ...| = 6.	nonn,base,easy,changed,	1..1000	nyi	_Robert G. Wilson v_, May 10 2001
+A061876	parm3	0	A061870	2	7	|First digit - second digit + third digit - fourth digit ...| = 7.	nonn,base,easy,	1..1000	nyi	_Robert G. Wilson v_, May 10 2001
+A061877	parm3	0	A061870	2	8	|First digit - second digit + third digit - fourth digit ...| = 8.	nonn,base,easy,changed,	1..1000	nyi	_Robert G. Wilson v_, May 10 2001
+A061878	parm3	0	A061870	2	9	|First digit - second digit + third digit - fourth digit ...| = 9.	nonn,base,easy,synth	1..52	nyi	_Robert G. Wilson v_, May 10 2001
+A060978	parm3	0	A061870	2	10	|First digit - second digit + third digit - fourth digit ...| = 10.	nonn,base,easy,changed,	1..1000	nyi	_Robert G. Wilson v_, May 10 2001
+A060979	parm3	0	A061870	2	11	|First digit - second digit + third digit - fourth digit ...| = 11.	base,nonn,easy,	1..1000	nyi	_Robert G. Wilson v_, May 10 2001
+A060980	parm3	0	A061870	2	12	|First digit - second digit + third digit - fourth digit ...| = 12.	base,nonn,easy,	1..1000	nyi	_Robert G. Wilson v_, May 10 2001
+A061470	parm3	0	A061870	1	1	First (leftmost) digit - second digit + third digit - fourth digit .... = 1.	nonn,base,easy,changed,	1..10000	nyi	_Amarnath Murthy_, May 05 2001
+A061471	parm3	0	A061870	1	2	First (leftmost) digit - second digit + third digit - fourth digit .... = 2.	nonn,base,easy,changed,	1..10000	nyi	_Amarnath Murthy_, May 05 2001
+A061472	parm3	0	A061870	1	3	First (leftmost) digit - second digit + third digit - fourth digit .... = 3.	nonn,base,easy,changed,	1..10000	nyi	_Amarnath Murthy_, May 05 2001
+A061473	parm3	0	A061870	1	4	First (leftmost) digit - second digit + third digit - fourth digit .... = 4.	nonn,base,easy,	1..1000	nyi	_Amarnath Murthy_, May 05 2001
+A061474	parm3	0	A061870	1	5	First (leftmost) digit - second digit + third digit - fourth digit .... = 5.	nonn,base,easy,	1..1000	nyi	_Amarnath Murthy_, May 05 2001
+A061475	parm3	0	A061870	1	6	First (leftmost) digit - second digit + third digit - fourth digit .... = 6.	nonn,base,easy,synth	1..53	nyi	_Amarnath Murthy_, May 05 2001
+A061476	parm3	0	A061870	1	7	First (leftmost) digit - second digit + third digit - fourth digit .... = 7.	nonn,base,easy,changed,synth	1..52	nyi	_Amarnath Murthy_, May 05 2001
+A061477	parm3	0	A061870	1	8	First (leftmost) digit - second digit + third digit - fourth digit .... = 8.	nonn,base,easy,	1..1000	nyi	_Amarnath Murthy_, May 05 2001
+A061478	parm3	0	A061870	1	9	First (leftmost) digit - second digit + third digit - fourth digit .... = 9.	nonn,base,easy,	1..1000	nyi	_Amarnath Murthy_, May 05 2001
+A061879	parm3	0	A061870	1	10	First digit - second digit + third digit - fourth digit .... = 10.	nonn,base,easy,	1..10000	nyi	Larry Reeves (larryr(AT)acm.org), May 15 2001
+A061880	parm3	0	A061870	1	11	First digit - second digit + third digit - fourth digit .... = 11.	base,nonn,easy,	1..1000	nyi	Larry Reeves (larryr(AT)acm.org), May 15 2001
+A061881	parm3	0	A061870	1	12	First digit - second digit + third digit - fourth digit .... = 12.	base,nonn,easy,changed,synth	1..47	nyi	Larry Reeves (larryr(AT)acm.org), May 15 2001
+# A061479	nyi	Smallest number m such that first digit - second digit + third digit - fourth digit ... (of m) = n.	nonn,base,synth	0..38	nyi	_Amarnath Murthy_, May 05 2001
+# 0,   1,  2,  3,  4,  5,  6,  7,  8,  9, 109, 209, 309, 409, 509, 609, 709, 809, 909, 10909, 20909, 30909, 40909, 50909, 60909, 70909, 80909, 90909, 1090909, 2090909, 3090909, 4090909, 5090909, 6090909, 7090909, 8090909, 9090909, 109090909, 209090909
+# 11, 10, 20, 30, 40, 50, 60, 70, 80, 90, 109, 209, 309, 409, 509, 609, 709, 809, 909, 10909, 20909, 30909, 40909, 50909, 60909, 70909, 80909, 90909, 1090909, 2090909, 3090909, 4090909, 5090909, 6090909, 7090909, 8090909, 9090909, 109090909
+# A061882	nyi	Smallest nontrivial number m such that first (leftmost) digit - second digit + third digit - fourth digit ... = n.	base,nonn,easy,synth	0..37	nyi	Larry Reeves (larryr(AT)acm.org), May 15 2001
+# A060982 nyi Fto Smallest nontrivial number m such that |first digit - second digit + third digit - fourth digit ...| = n.
