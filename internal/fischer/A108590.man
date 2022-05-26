@@ -35,10 +35,10 @@
 #x A164087 BeattySequence  Beatty sequence for 4*Pi/(4*Pi-3) = 1.3135986... .      nonn,changed,synth      1..72   b
 
 A108590	parmof5	1	A108590	1	new A108589()	0	new A140758()	Self-inverse integer permutation induced by Beatty sequences for Pi/2 and Pi/(Pi-2).    n
-A108591	parmof5	1	A108590	1	new A022844()	1	new A054386()	Self-inverse integer permutation induced by Beatty sequences for Pi and Pi/(Pi-1).      non
-A108592	parmof5	1	A108590	1	new A038130()	1	new A108586()	Self-inverse integer permutation induced by Beatty sequences for 2*Pi and 2*Pi/(2*Pi-1
+A108591	parmof5	1	A108590	0	new A022844()	1	new A054386()	Self-inverse integer permutation induced by Beatty sequences for Pi and Pi/(Pi-1).      non
+A108592	parmof5	1	A108590	0	new A038130()	1	new A108586()	Self-inverse integer permutation induced by Beatty sequences for 2*Pi and 2*Pi/(2*Pi-1
 A108593	parmof5	1	A108590	1	new A108120()	1	new A108587()	Self-inverse integer permutation induced by Beatty sequences for 1/sin(1) and 1/(1-sin
-A108599	parmof5	1	A108590	1	new A022843()	1	new A054385()	Self-inverse integer permutation induced by Beatty sequences for e and e/(e-1). nonn,s
+A108599	parmof5	1	A108590	0	new A022843()	1	new A054385()	Self-inverse integer permutation induced by Beatty sequences for e and e/(e-1). nonn,s
 A109233	parmof5	1	A108590	1	new A109231()	1	new A109232()	Self-inverse integer permutation induced by Beatty sequences for (e+1/e)/2 and (e^2+1)
 A109236	parmof5	1	A108590	1	new A109234()	1	new A109235()	Self-inverse integer permutation induced by Beatty sequences for (e-1/e)/2 and (e^2+1)
 A109239	parmof5	1	A108590	1	new A109237()	1	new A109238()	Self-inverse integer permutation induced by Beatty sequences for (e^2+1)/(e^2-1) and (
@@ -49,25 +49,25 @@ A137805	parmof5	1	A108590	1	new A137803()	1	new A137804()	Self-inverse integer p
 A138236	parmof5	1	A108590	1	new A138235()	1	new A022840()	Self-inverse integer permutation induced by Beatty sequences for Sqrt(6) and (6+Sqrt(6
 A164088	parmof5	1	A108590	1	new A164086()	1	new A164087()	Self-inverse integer permutation induced by Beatty sequences for 4*Pi/3 and 4*Pi/(4*Pi
 
-A002251	parmof5	1	A108590	1	new A000201()	1	new A001950()
-A001951	parmof5	1	A108590	1	new A001951()	1	new A001952()
-A300003	parmof5	1	A108590	1	new A001961()	1	new A001962()	new
-A300004	parmof5	1	A108590	1	new A004976()	1	new A184522()
-A300005	parmof5	1	A108590	1	new A184522()	1	new A184523()	new
-A300006	parmof5	1	A108590	1	new A187395()	1	new A187396()	new
-A300007	parmof5	1	A108590	1	new A329825()	1	new A329826()	new
-A300008	parmof5	1	A108590	1	new A329827()	1	new A329828()	new
-A026255	parmof5	1	A108590	1	new A329829()	1	new A329830()
-A300010	parmof5	1	A108590	1	new A329831()	1	new A329832()	new
-A300011	parmof5	1	A108590	1	new A329833()	1	new A329834()	A189681, A329834, A059542??
-A300012	parmof5	1	A108590	1	new A329835()	1	new A329836()	new
-A300013	parmof5	1	A108590	1	new A329837()	1	new A329838()	new
-A329840	parmof5	1	A108590	1	new A329839()	1	new A329840()	A329840
-A300015	parmof5	1	A108590	1	new A329841()	1	new A329842()	new
-A300016	parmof5	1	A108590	1	new A329843()	1	new A329844()
-A300017	parmof5	1	A108590	1	new A329845()	1	new A329846()
-A300018	parmof5	1	A108590	1	new A329847()	1	new A329848()
-A300019	parmof5	1	A108590	1	new A329923()	1	new A329924()
-A300020	parmof5	1	A108590	1	new A329925()	1	new A329926()
+###A002251	parmof5	1	A108590	1	new A000201()	1	new A001950()
+###A001951	parmof5	1	A108590	1	new A001951()	1	new A001952()
+###A300003	parmof5	1	A108590	1	new A001961()	1	new A001962()	new
+###A300004	parmof5	1	A108590	1	new A004976()	1	new A184522()
+###A300005	parmof5	1	A108590	1	new A184522()	1	new A184523()	new
+###A300006	parmof5	1	A108590	1	new A187395()	1	new A187396()	new
+###A300007	parmof5	1	A108590	1	new A329825()	1	new A329826()	new
+###A300008	parmof5	1	A108590	1	new A329827()	1	new A329828()	new
+###A026255	parmof5	1	A108590	1	new A329829()	1	new A329830()
+###A300010	parmof5	1	A108590	1	new A329831()	1	new A329832()	new
+###A300011	parmof5	1	A108590	1	new A329833()	1	new A329834()	A189681, A329834, A059542??
+###A300012	parmof5	1	A108590	1	new A329835()	1	new A329836()	new
+###A300013	parmof5	1	A108590	1	new A329837()	1	new A329838()	new
+###A329840	parmof5	1	A108590	1	new A329839()	1	new A329840()	A329840
+###A300015	parmof5	1	A108590	1	new A329841()	1	new A329842()	new
+###A300016	parmof5	1	A108590	1	new A329843()	1	new A329844()
+###A300017	parmof5	1	A108590	1	new A329845()	1	new A329846()
+###A300018	parmof5	1	A108590	1	new A329847()	1	new A329848()
+###A300019	parmof5	1	A108590	1	new A329923()	1	new A329924()
+###A300020	parmof5	1	A108590	1	new A329925()	1	new A329926()
 # A130526	null	A permutation of the integers induced by the lower and upper Wythoff sequences.	sign,synth	69
 # A130527	null	A permutation of the integers induced by the Beatty sequence for sqrt(2).	sign,synth	68

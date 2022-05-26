@@ -491,7 +491,18 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-05-25:
+anabuild: #.2022-05-26:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo  \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-05-25:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -3570,6 +3581,11 @@ interleave:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------------
+inverse:
+	perl inverse.pl > $@.gen 2> $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@.*
 #--------------------------------
 ASMIN=300
 ASMAX=400
