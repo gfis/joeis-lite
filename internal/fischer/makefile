@@ -491,12 +491,12 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-05-26:
+anabuild: #.2022-05-27:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
-	echo  \
+	echo A069537 A069588 A151843 A166311 A262344 \
 	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
 	grep -vE "A001761" build.tmp > build.man
 	make CC=build     select       gener
