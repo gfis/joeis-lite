@@ -361,8 +361,8 @@ dist:
 dist1:
 	cd ../.. ; ant -silent dist 2>&1
 #--
-distel:  dist test    log
-disteal: dist testall log
+distel:  man dist test    log
+disteal: man dist testall log
 #--
 testout: # parameter: CC
 	# ---- $@ CC=$(CC)
@@ -491,7 +491,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-05-27:
+anabuild: #.2022-05-29:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A144416 A246049 A241981 A246522 A246609 A261780 A271423 A271424 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-05-27:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
