@@ -491,7 +491,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-05-29:
+anabuild: #.2022-05-30:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A253095 A250261 A246935 adiveo \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-05-29:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -1371,6 +1383,15 @@ A289064: # 2021-12-05
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================
+adiveo0:
+	grep -P "\ba\([i-n] *\/ *\d+\)" $(COMMON)/joeis_names.txt | grep nyi | cut -f1-5 | grep -vP "[Ss]um|[Ll]east|A\d+\(" \
+	>        $@.tmp
+	uedit64  $@.tmp
+adiveo:
+	grep -E "^A[0-9]" $@.man > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------
 # A126358 Number of base 4 n-digit numbers with adjacent digits differing by one or less
 adjacent:
 	cp -v $(COMBSTRUCT)/adjacent2.tmp $@.gen
