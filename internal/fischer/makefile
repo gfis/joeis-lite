@@ -6658,6 +6658,21 @@ proprep:
 	head -n4   $@.sort.tmp
 	cut -f5    $@.gen | sort | uniq -c | sort -r | grep -v " 1 " | tee $@.code.tmp
 #----
+somos0:
+	grep -E "^\%[NF]" $(COMMON)/jcat25.txt | grep -P "\ba\(\w[^\)]*\) *([\*\/] *a\(|\^[\d\*\/\^\+\-\(\) ]+a\()" \
+	| grep -viP "(sum|prime|that|smallest|least|digit|lim|Expansion|Conjecture|triangle|concatenate|sqrt|a\(n\) *\>\=)" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+somos4:
+	grep -E "^A[0-9]" somos.man | grep -P "somos4" > $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT) "UPDATE seq4 s SET parm3 = (SELECT SUBSTR(data, 1, 64) FROM asdata d WHERE d.aseqno = s.aseqno);"
+	$(DBAT) -x -444444 seq4 > $@.tmp
+	perl somos_inits.pl       $@.tmp > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 suchprim:
 	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'ers [a-z] such *that' | grep -E 'is (a )?prime' \
 	| grep -v "PowerFactorPrimeSequence" \

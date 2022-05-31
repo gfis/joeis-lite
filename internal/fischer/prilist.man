@@ -1,0 +1,32 @@
+A061668	prilist	0	1	30,-19, 30,-17, 30,-13, 30,-11	Numbers k such that x-4, x-2, x+2, x+4; is prime, where x = 30*k - 15.	nyi to
+A075751	prilist	0	1	210,-13, 210,+13	Numbers n such that 210*n -/+ 13; is prime.	nyi to
+A105610	prilist	0	0	2,+3, 4,+5	Numbers n such that p1=2n+3, p2=4n+5; is prime.	nyi
+A115334	prilist	0	1	2,+3, 4,+3	Numbers n such that 3+2n, 3+4n; is prime.	nyi Fto
+A120222	prilist	0	1	1,+6, 6,+1	Numbers n such that a+n, a*n+1; is prime, case a=6.	nyi p
+A120226	prilist	0	1	1,+4, 4,+1	a+k+0, a,+1	Numbers n such that a+n, a*n+1; is prime, case a=4.	nyi pt
+A120227	prilist	0	1	1,+5, 5,+1	a+k+0, a,+1	Numbers n such that a+n, a*n+1; is prime, case a=5.	nyi t
+A120228	prilist	0	1	1,+8, 8,+1	a+k+0, a,+1	Numbers n such that a+n, a*n+1; is prime, case a=8.	nyi t
+A139527	prilist	0	0	24,+5	Numbers n such that numbers 24n+5; is prime.	nyi t
+A139528	prilist	0	0	24,+11	Numbers n such that numbers 24n+11; is prime.	nyi to
+A139529	prilist	0	0	24,+13	Numbers n such that numbers 24n+13; is prime.	nyi t
+A139532	prilist	0	0	24,+19	Numbers n such that numbers 24n+19; is prime.	nyi to
+A173904	prilist	0	1	7,+1, 7,-1	Numbers n such that 7*n+-1; is prime.	nyi to
+A248372	prilist	0	1	52,+1, 2704,+53	p=52,+1, q=52*p+1	Numbers m such that p = 52*m + 1 ,  q = 52*p + 1; is prime.	nyi to
+A254010	prilist	0	1	4,+1, 4,+5	Numbers n such that 4n+1, 4(n+1)+1; is prime.	nyi pto
+A255608	prilist	0	1	36,+11, 36,+47, 36,+83, 36,+119	Numbers n such that 36n+11, 36(n+1)+11, 36(n+2)+11, 36(n+3)+11; is prime.	nyi pto
+A263309	prilist	0	1	6,+1, 36,+7	Numbers n such that p=6n+1, q=6p+1; is prime.	nyi pto
+A263310	prilist	0	1	6,+1, 36,+7, 216,+43	Numbers n such that p=6*n+1, q=6*p+1, r=6*q+1; is prime.	nyi pto
+A284659	prilist	0	1	30,+1, 30,+31, 30,+61, 30,+91, 30,+121, 30,+151	Numbers n such that numbers 30(n+k) + 1; is prime for k=0..5.	nyi pt
+
+# 2022-05-25
+A124065	prilist	0	1	8,-1, 8,+1	Numbers k such that 8*k - 1 and 8*k + 1 are twin primes.        nonn,changed,   1..10000        nyi     _Artur Jasin
+A124192	prilist	0	0	8,+3, 8,+5	Numbers k for which 8*k + 3 and 8*k + 5 are twin primes.        nonn,changed,   1..10000        nyi     _Artur Jasin
+A124518	prilist	0	1	10,-1, 10,+1	Numbers k such that 10k-1 and 10k+1 are twin primes.    nonn,changed,   1..10000        nyi     _Artur Jasinski_, No
+A124519	prilist	0	1	12,-1, 12,+1	Numbers k such that 12*k - 1 and 12*k + 1 are twin primes.      nonn,changed,   1..10000        nyi     _Artur Jasin
+A124520	prilist	0	1	14,-1, 14,+1	Numbers k such that 14*k - 1 and 14*k + 1 are twin primes.      nonn,changed,   1..10000        nyi     _Artur Jasin
+A124521	prilist	0	1	16,-1, 16,+1	Numbers k such that 16*k - 1 and 16*k + 1 are twin primes.      nonn,changed,   1..10000        nyi     _Artur Jasin
+A125821	prilist	0	1	8,+5, 8,+7	Numbers n for which 8n+5 and 8n+7 are twin primes.      nonn,   1..1000 nyi     _Artur Jasinski_, Dec 10 2006
+A125822	prilist	0	1	8,+1, 8,+3	Numbers k for which 8*k + 1 and 8*k + 3 are twin primes.        nonn,changed,   1..10000        nyi     _Artur Jasin
+A139404	prilist	0	0	24,+5, 24,+7	Numbers k such that 24*k + 5 and 24*k + 7 are twin primes.      nonn,changed,   1..10000        nyi     _Artur Jasin
+A139533	prilist	0	0	24,+11, 24,+13	Numbers k such that numbers 24*k + 11 and 24*k + 13 are twin primes.    nonn,changed,   1..10000        nyi     _Art
+A139534	prilist	0	0	24,+17, 24,+19	Numbers k such that numbers 24*k + 17 and 24*k + 19 are twin primes.    nonn,changed,   1..10000        nyi     _Art
