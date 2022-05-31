@@ -40,7 +40,7 @@ public class GeneralRecurrence extends MemorySequence {
     mLambda = new ArrayList<>();
     mInitLen = initTerms.length;
     initialize();
-    mNTuple = mLambda.size(); // number of n-sections
+    mNTuple = mLambda.size(); // number of n-section
   }
 
   /**

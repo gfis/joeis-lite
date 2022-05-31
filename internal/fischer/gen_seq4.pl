@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-05-31: V4.0, suppress "\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)"
 # 2022-05-20: V3.9, Cheetah -> Jaguar
 # 2022-05-18: V3.8: mN = 0 - 1; again
 # 2022-05-15: V3.7: 0 - 1 -> -1
@@ -256,6 +257,7 @@ sub write_output {
     $copy =~ s{mN\s*\=\s*(\d+)\s*\-\s*1\s*\;}{"mN = " . ($1 - 1) . ";"}e;
     $copy =~ s{\$\(OFFSET\)}         {$offset}g;
     $copy =~ s{\$\(PACK\)}           {$package}g;
+    $copy =~ s{\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)}{}g;
     my $package = lc(substr($aseqno, 0, 4));
     # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
     if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.java")) { # overwrite or does not yet exist

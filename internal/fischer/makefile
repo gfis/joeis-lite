@@ -6664,10 +6664,16 @@ somos0:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+somos1:
+	grep -E "^\%[NFC]" $(COMMON)/jcat25.txt \
+	| perl somos_grep.pl \
+	| sort | uniq -w7 > $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 somos4:
 	grep -E "^A[0-9]" somos.man | grep -P "somos4" > $@.tmp
 	make seq4 LIST=$@.tmp
-	$(DBAT) "UPDATE seq4 s SET parm3 = (SELECT SUBSTR(data, 1, 64) FROM asdata d WHERE d.aseqno = s.aseqno);"
+	$(DBAT) "UPDATE seq4 s SET parm2 = (SELECT SUBSTR(data, 1, 64) FROM asdata d WHERE d.aseqno = s.aseqno);"
 	$(DBAT) -x -444444 seq4 > $@.tmp
 	perl somos_inits.pl       $@.tmp > $@.gen
 	head -n4 $@.gen
