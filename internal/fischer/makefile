@@ -87,9 +87,11 @@ runall: # current set of packages
 #----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
-	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET)     | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) -D $(A)    | tee x.tmp
+seqtri: # A=$(A) - print data up to 260 characters
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -T $(A)    | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.test.SequenceTest -a $(A) -n $(NT) -o $(OFFSET) -bf | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -o $(OFFSET) -B $(A) | tee x.tmp
 jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
 	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
 spectest:
@@ -6665,11 +6667,16 @@ somos0:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 somos1:
-	grep -E "^\%[NFC]" $(COMMON)/jcat25.txt \
-	| perl somos_grep.pl \
-	| sort | uniq -w7 > $@.tmp
+	grep -E "^\%[NFC]" $(COMMON)/jcat25.txt | grep -E "a\(n\) *\=" \
+	| grep -viE "Empirical|conjecture|apparently" \
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+somos2:
+	perl somos_grep.pl somos1.tmp 2> $@.rest.tmp \
+	| sort | uniq -w7 > $@.tmp 
+	head -n4 $@.tmp
+	wc -l    $@.*tmp
 somos4:
 	grep -E "^A[0-9]" somos.man | grep -P "somos4" > $@.tmp
 	make seq4 LIST=$@.tmp

@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2022-06-01: package recur
 # 2022-02-22, private; -p implies -n
 # 2021-10-28: -t, -e
 # 2021-06-26, Georg Fischer: copied from gen_linrec.pl
@@ -157,7 +158,7 @@ GFis
     } elsif ($extends   == 1) {
         print TAR lc(substr($rseqno, 0, 4)) . ".$rseqno";
     } elsif ($holonomic == 1) {
-        print TAR "HolonomicRecurrence";
+        print TAR "recur.HolonomicRecurrence";
     } elsif ($memory    == 1) {
         print TAR "MemorySequence";
     } elsif ($triangle  == 1) {
