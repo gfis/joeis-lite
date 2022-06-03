@@ -236,23 +236,17 @@ PO=1
 select2: # require not in joeis: JO= (default) / require not in poeis: PO=1 (default)
 	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO)
 	make seq4 LIST=$(CC).gen
-	$(DBAT) "UPDATE seq4 s \
-	    SET name    = SUBSTR(COALESCE((SELECT a.name    FROM asname a WHERE s.aseqno = a.aseqno), 'future sequence'), 1, 256) \
-	    ,   offset  = COALESCE((SELECT a.offset1 FROM asinfo a WHERE s.aseqno = a.aseqno), 0)"
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(s.offset, '0') \
 	    , s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.parm8, s.name \
 	    FROM seq4 s LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
 	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
-	      AND (s.aseqno NOT IN (SELECT CONCAT('$(PO)', aseqno) FROM poeis)) \
 	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 		  >  $(CC).gen
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
-	#     AND (callcode NOT IN ('lingf','holos') OR aseqno NOT IN (SELECT aseqno FROM cojec)) \
-	# $(DBAT) -x "SELECT COUNT(aseqno) FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM joeis)"
 clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep from $(CC).gen
 	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > clean.grep.tmp
@@ -6677,6 +6671,10 @@ somos2:
 	| sort | uniq -w7 > $@.tmp 
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
+somos3:
+	grep -E "^A[0-9]" somos2.tmp > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 somos4:
 	grep -E "^A[0-9]" somos.man | grep -P "somos4" > $@.tmp
 	make seq4 LIST=$@.tmp

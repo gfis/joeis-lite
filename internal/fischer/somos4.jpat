@@ -12,11 +12,11 @@ public class $(ASEQNO) extends ConstantOrderRecurrence {
 
   /** Construct the sequence */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM1), 0, $(PARM2));
+    super($(OFFSET), $(PARM1), $(PARM2), $(PARM3));
   }
   
   @Override
   protected Z compute(final int n) {
-    return a(n - 1).multiply(a(n - 3)).multiply($(PARM3)).add(a(n - 2).square().multiply($(PARM4))).divide(a(n - 4));
+    return a(n - 1).multiply(a(n - 3)).multiply($(PARM4)).add(a(n - 2).square().multiply($(PARM5))).divide(a(n - 4));
   }
 }
