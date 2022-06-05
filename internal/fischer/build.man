@@ -1,73 +1,61 @@
 
 #
-# 
-# 2022-05-30 dependants of A246935:
-# A000007	arronk	0	A246935	0	mN	0	
-# A000111	arronk	0	A250261	0	mN	2	
-# A001477	arronk	0	A246935	0	mN	1	Rows n=0-4 give: 
-# A002378	arronk	0	A246935	0	mN	2	Rows n=0-4 give: 
-# A027444	arronk	0	A246935	0	mN	3	Rows n=0-4 give: 
-# A028387	arronk	0	A250261	0	mN	0	
-# A087165	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	1,1	a(n)=1 when n == 1 (mod 4), otherwise a(n) = a(n - ceiling(n/4)) + 1. Removing all the 1's results in the original sequence with every term incremented by 1.	nonn,changed,synth
-# A096796	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	1,1	a(n) = n for n <= 2; for n > 2, a(n) = 2a(n-1) - a(n - floor( 1/2 + sqrt(2n) )).	nonn,easy,
-# A096824	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	1,1	a(n) = n for n <= 2; for n > 2, a(n) = 2a(n-1) - a(n - floor(1/2 + sqrt(2(n-1)))).	nonn,easy,
-# A104774	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	1,2,0,4	a(1)=1, a(2) = 2, a(3) = 0, a(4) = 4, and for n > 4, if n is an even number, a(n) = a(n/2) - (1 if a(n/2) is not zero), otherwise if n is an odd semiprime p*q (with q >= p), then a(n) = p+q, otherwise 0.	nonn,changed,	1..16384
-# A144064	arronk	0	A246935	0	mN	0	Cf. 
-# A147952	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	0,1,1	a(0) = 0, a(1) = a(2) = 1, and for n >= 3, a(n) = a(a(n-2)) + r(n), where r(n) = a(a(floor(n/3)) when n == 0 or 1 (mod 3) and = a(n - a(floor(n/3))) when n == 2 (mod 3).	nonn,changed,synth
-# A152602	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	1,1	A symmetrical vector coefficient recursion sequence: a(n)=2*{0,a(n-2,0}+2*{-1/2,a(n-1)}+2*{a(n-1),-1/2}.	nonn,uned,tabl,obsc,synth
-# A255970	arronk	0	A246935	0	mN	1	Cf. 
-# A256130	arronk	0	A246935	0	mN	2	Cf. 
-# A262951	adiveo	1	A068915	0	n -> a(n - 1)	n -> a(n/2)	1,3,4	a(1) = 1, a(2) = 3, a(3) = 4 and for n>=4, a(n) = (a(n-3)+a(n-2)+a(n-1)+k) mod 10 where k = a(n/6) 
-# A295556	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	1,1	a(n) = 0 for n <= 1; thereafter a(n) = a(floor(n/2)) + a(ceiling(n/2)) + floor(n/2) if n not congruent to 0 mod 4, a(n) = a(n/2-1) + a(n/2+1) + n/2 if n == 0 (mod 4).	nonn,changed,synth
-# A318388	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	1	a(1) = 1, a(n) = -floor(e*a(n/2)) if n is even, a(n) = n - a(n-1) if n is odd.	sign,look,	1..10752
-# bad A267363	adiveo	0	A068915	2	n -> Z.valueOf(2 * n + 1)	n -> a(n/2 - a(n - 1).intValueExact())	0	a(0) = 0; a(odd n) = 2n+1; a(even n) = a(n/2 - a(n-1)).	sign,easy,
-A068915	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	0,1	a(n)=n if n<2; a(n) = |a(n/2)-a(n/2-1)| if n is even, and a(n) = a((n-1)/2) + a((n-1)/2+1) if n is odd.	easy,nonn,changed,	0..10000
-A070933	arronk	0	A246935	0	mN	2	
-A071991	adiveo	1	A068915	0	n -> a(n/3).add(a(n-n/3))	n -> a(n/2)	1,1	a(1) = a(2) = 1; a(n) = a(floor(n/3)) + a(n - floor(n/3)).	easy,nonn,synth
-A071995	adiveo	1	A068915	0	n -> a(n/3).add(a(n-n/3))	n -> a(n/2)	1,0	a(1) = 1, a(2) = 0, a(n) = a(floor(n/3)) + a(n - floor(n/3)).	easy,nonn,changed,
-A071996	adiveo	1	A068915	0	n -> a(n/3).add(a(n-n/3))	n -> a(n/2)	0,1	a(1) = 0, a(2) = 1, a(n) = a(floor(n/3)) + a(n - floor(n/3)).	easy,nonn,
-A078912	adiveo	1	A068915	2	n -> a(n - 1).add(a(n - 2))	n -> a(n-1).add(a(n/2))	1,1	a(1)=a(2)=1, a(n)=a(n-1)+a(n-2) if n is odd, a(n)=a(n-1)+a(n/2) if n is even.	nonn,synth	1..42
-A078913	adiveo	1	A068915	3	n -> a(n - 1).add(a(n - 2))	n -> a(n-1).add(a(n/3))	1,1	a(1)=a(2)=1, a(n)=a(n-1)+a(n-2) if n is not congruent to 3, a(n)=a(n-1)+a(n/3) if n is congruent to 3.	nonn,synth	1..42
-A081742	adiveo	1	A068915	3	n -> a(n - 1)	n -> a(n/3).add(1)	1	a(1)=1; then if n is a multiple of 3 a(n)=a(n/3)+1, if n is not a multiple of 3 but even a(n)=a(n/2)+1, a(n)=a(n-1)+1 otherwise.	nonn,synth	1..102
-A082560	adiveo	1	A068915	2	n -> a(n - 1).multiply2()	n -> a(n/2).add(1)	1	a(1)=1, a(n)=2*a(n-1) if n is odd, or a(n)=a(n/2)+1 if n is even.	nonn,tabf,look,	1..8191
-A082561	adiveo	1	A068915	3	n -> a(n - 1).multiply(3)	n -> a(n/3).add(1)	1	a(1)=1, a(n)=3*a(n-1) if n is not a multiple of 3, or a(n)=a(n/3)+1 if n is a multiple of 3.	nonn,synth	1..67
-A096273	adiveo	0	A068915	2	n -> a(n - 1).add(n - 1)	n -> a(n/2).add(n/2)	0	a(0)=0, then a(n)=a(n-1)+(n-1) if n is odd, a(n)=a(n/2)+n/2 otherwise.	nonn,changed,	0..10000
-A101402	adiveo	0	A068915	2	n -> a(n - 1)	n -> a(n/2)	0,1	a(0)=0, a(1)=1; for n>=2, let k = smallest power of 2 that is >= n, then a(n) = a(k/2) + a(n-1-k/2).	easy,nonn,	0..10000
-A116522	adiveo	0	A068915	2	n -> a((n-1)/2).multiply(6).add(a((n+1)/2))	n -> a(n/2).multiply(7)	0,1	a(0)=1, a(1)=1, a(n)=7*a(n/2) for n=2,4,6,..., a(n)=6*a((n-1)/2)+a((n+1)/2) for n=3,5,7,....	nonn,changed,	0..2500
-A116523	adiveo	0	A068915	2	n -> a((n-1)/2).multiply(16).add(a((n+1)/2))	n -> a(n/2).multiply(17)	0,1	a(0)=1, a(1)=1, a(n) = 17*a(n/2) for n=2,4,6,..., a(n) = 16*a((n-1)/2) + a((n+1)/2) for n=3,5,7,....	nonn,changed,	0..2500
-A116524	adiveo	0	A068915	2	n -> a((n-1)/2).multiply(12).add(a((n+1)/2))	n -> a(n/2).multiply(13)	0,1	a(0)=1, a(1)=1, a(n) = 13*a(n/2) for n=2,4,6,..., a(n) = 12*a((n-1)/2) + a((n+1)/2) for n=3,5,7,....	nonn,look,changed,	0..2500
-A116525	adiveo	0	A068915	2	n -> a((n-1)/2).multiply(10).add(a((n+1)/2))	n -> a(n/2).multiply(11)	0,1	a(0)=1, a(1)=1, a(n) = 11*a(n/2) for even n, and a(n) = 10*a((n-1)/2) + a((n+1)/2) for odd n >= 3.	nonn,changed,	0..2500
-A116526	adiveo	0	A068915	2	n -> a((n-1)/2).multiply(8).add(a((n+1)/2))	n -> a(n/2).multiply(9)	1,1	a(0)=1, a(1)=1, a(n) = 9*a(n/2) for even n >= 2, and a(n) = 8*a((n-1)/2) + a((n+1)/2) for odd n >= 3.	nonn,changed,	0..2500
-A119476	adiveo	1	A068915	2	n -> a((n+1)/2).add(1)	n -> a(n/2).add(2)	1	a(1)=1, a(n)=a((n+1)/2)+1 if n is odd, a(n)=a(n/2)+2 if n is even.	nonn,synth	1..82
-A119477	adiveo	1	A068915	2	n -> a((n+1)/2).add(2)	n -> a(n/2).add(1)	1	a(1)=1, a(n) = a((n+1)/2) + 2 if n is odd, a(n) = a(n/2) + 1 if n is even.	nonn,changed,synth	1..86
-A124577	arronk	0	A246935	0	mN	mN	Main diagonal gives 
-A129095	adiveo	1	A068915	2	n -> a(n - 1).multiply2().add(a(n - 2))	n -> a(n/2)	1	Semi-Pell numbers: a(n) = a(n/2) (n even), a(n) = 2*a(n-1) + a(n-2) (n odd >1), with a(1) = 1.	easy,nonn,changed,	1..1024
-A186636	arronk	0	A246935	0	4	mN	Rows n=0-4 give: 
-A229137	adiveo	1	A068915	3	n -> a(n - 1).add(a(n - 2))	n -> a(n/3)	1,1	a(1) = a(2) = 1; if n == 0 (mod 3), then a(n) = a(n/3), otherwise a(n) = a(n-1) + a(n-2).	nonn,	1..10000
-A242587	arronk	0	A246935	0	mN	3	
-A246936	arronk	0	A246935	0	mN	4	
-A246937	arronk	0	A246935	0	mN	5	
-A246938	arronk	0	A246935	0	mN	6	
-A246939	arronk	0	A246935	0	mN	7	
-A246940	arronk	0	A246935	0	mN	8	
-A246941	arronk	0	A246935	0	mN	9	
-A246942	arronk	0	A246935	0	mN	10	
-A249402	arronk	0	A250261	0	mN	3	
-A250259	arronk	0	A250261	0	mN	4	
-A250260	arronk	0	A250261	0	mN	5	
-A250262	arronk	0	A250261	0	mN	6	
-A250263	arronk	0	A250261	0	mN	7	
-A250264	arronk	0	A250261	0	mN	8	
-A250265	arronk	0	A250261	0	mN	9	
-A250266	arronk	0	A250261	0	mN	10	
-A253095	parm2	0	A253095	4
-A253096	parm2	0	A253095	5
-A253097	parm2	0	A253095	6
-A277778	adiveo	1	A068915	2	n -> a((n-1)/2).subtract(a((n+1)/2))	n -> a(n/2 - 1)	1,1	If n is even, a(n) = a(n/2-1), and if n is odd, a(n) = a((n-1)/2) - a((n+1)/2), with a(1) = a(2) = 1.	sign,
-A278347	adiveo	1	A068915	2	n -> a((n-1)/2).subtract(a((n+1)/2))	n -> a(n/2 -1).subtract(a(n/2 +1))	1,1	If n is even, a(n) = a(n/2 -1) - a(n/2 +1), and if n is odd, a(n) = a((n-1)/2) - a((n+1)/2), with a(1) = a(2) = 1.	easy,sign,
-A304493	adiveo	0	A068915	0	n -> a(n-a(n/2).intValueExact()).add(a(n-a(n/4).intValueExact()))	n -> a(n/2)	1	a(0) = 1; a(n) = a(n-a(floor(n/2))) + a(n-a(floor(n/4))).	nonn,look,changed,
-A305865	adiveo	1	A068915	3	n -> Z.valueOf(n).subtract(a(n - 1))	n -> a(n/3).multiply(-5)	1	a(1) = 1, a(n) = -5*a(n/3) if n is divisible by 3, otherwise a(n) = n - a(n-1).	sign,look,	1..19682
-A317825	adiveo	1	A068915	2	n -> Z.valueOf(n).subtract(a(n - 1))	n -> a(n/2).multiply(3)	1	a(1) = 1, a(n) = 3*a(n/2) if n is even, a(n) = n - a(n-1) if n is odd.	sign,look,	1..16383
-A318265	adiveo	1	A068915	3	n -> Z.valueOf(n).subtract(a(n - 1))	n -> a(n/3).multiply(5)	1	a(1) = 1, a(n) = 5*a(n/3) if n is divisible by 3, otherwise a(n) = n - a(n-1).	sign,look,	1..19682
-A318303	adiveo	0	A068915	2	n -> Z.valueOf(n).add(a(n - 1))	n -> a(n/2).multiply(-3)	0	a(0) = 0, a(n) = n + a(n-1) if n is odd, a(n) = -3*a(n/2) if n is even.	sign,look,	0..32767
-A318488	adiveo	0	A068915	3	n -> Z.valueOf(n).add(a(n - 1))	n -> a(n/3).multiply(-5)	0	a(0) = 0, a(n) = -5*a(n/3) if n is divisible by 3, otherwise a(n) = n + a(n-1).	sign,look,	0..19682
+# 2022-06-05 dependants of A212957:
+# Columns k=1-10 give: A000004, A059499, A059885, A059886, A059887, A059888, A059889, A059890, A059891, A059892.
+# Main diagonal gives A252760.
+# Rows n=1-10 give: A000005, A059907, A059908, A059909, A059910, A059911, A218256, A218257, A218258, A218259.
+A059499	arronk	1	A212957	1	mN	2	x
+A059885	arronk	1	A212957	1	mN	3	x
+A059886	arronk	1	A212957	1	mN	4	x
+A059887	arronk	1	A212957	1	mN	5	x
+A059888	arronk	1	A212957	1	mN	6	x
+A059889	arronk	1	A212957	1	mN	7	x
+A059890	arronk	1	A212957	1	mN	8	x
+A059891	arronk	1	A212957	1	mN	9	x
+A059892	arronk	1	A212957	1	mN	10	x
+A059907	arronk	1	A212957	1	2	mN	x
+A059908	arronk	1	A212957	1	3	mN	x
+A059909	arronk	1	A212957	1	4	mN	x
+A059910	arronk	1	A212957	1	5	mN	x
+A059911	arronk	1	A212957	1	6	mN	x
+A205963	parmof2	0	A205963	new A000118()	a(n) = Fibonacci(n)*A000118(n) for n>=1 with a(0)=1, where A000118(n) is the number of ways of writing n as a sum of 4 squares.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 03 2012
+A205964	parmof2	0	A205963	new A000143()	a(n) = Fibonacci(n)*A000143(n) for n>=1 with a(0)=1, where A000143(n) is the number of ways of writing n as a sum of 8 squares.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 03 2012
+A205965	parmof2	0	A205963	new A001227()	a(n) = Fibonacci(n)*A001227(n) for n>=1, where A001227(n) is the number of odd divisors of n.	nonn,	1..2500	nyi	_Paul D. Hanna_, Feb 03 2012
+A205966	parmof2	0	A205963	new A004016()	a(n) = Fibonacci(n)*A004016(n) for n>=1, with a(0)=1, where A004016(n) is the number of integer solutions (x,y) to x^2 + x*y + y^2 = n.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 03 2012
+A205967	parmof2	0	A205963	new A008653()	a(n) = Fibonacci(n)*A008653(n) for n>=1, with a(0)=1, where A008653 is the theta series of direct sum of 2 copies of hexagonal lattice.	nonn,	0..2500	nyi	_Paul D. Hanna_, Feb 04 2012
+A205968	parmof2	0	A205963	new A008655()	a(n) = Fibonacci(n)*A008655(n) for n >= 1, with a(0)=1, where A008655 lists the coefficients in (theta_3(x)*theta_3(3*x) + theta_2(x)*theta_2(3*x))^4.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 04 2012
+A205969	parmof2	0	A205963	new A113973()	a(n) = Fibonacci(n)*A113973(n) for n>=1, with a(0)=1, where A113973 lists the coefficients in phi(x^3)^3/phi(x) and phi() is a Ramanujan theta function.	sign,	0..2500	nyi	_Paul D. Hanna_, Feb 04 2012
+A205970	parmof2	0	A205963	new A132973()	a(n) = Fibonacci(n)*A132973(n) for n>=1, with a(0)=1, where A132973 lists the coefficients in psi(-q)^3/psi(-q^3) and where psi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Feb 04 2012
+A205971	parmof2	0	A205963	new A034896()	a(n) = Fibonacci(n)*A034896(n) for n >= 1, with a(0)=1, where A034896 lists the number of solutions to a^2 + b^2 + 3*c^2 + 3*d^2 = n.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 04 2012
+A205972	parmof2	0	A205963	new A122859()	a(n) = Fibonacci(n)*A122859(n) for n>=1, with a(0)=1, where A122859 lists the coefficients in phi(-q)^3/phi(-q^3) and phi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Feb 04 2012
+A205973	parmof2	0	A205963	new A109041()	a(n) = Fibonacci(n)*A109041(n) for n>=1, with a(0)=1, where A109041 lists the coefficients in eta(q)^9/eta(q^3)^3.	sign,synth	0..30	nyi	_Paul D. Hanna_, Feb 04 2012
+A205974	parmof2	0	A205963	new A033719()	a(n) = Fibonacci(n)*A033719(n) for n>=1, with a(0)=1, where A033719 lists the coefficients in theta_3(q)*theta_3(q^7).	nonn,synth	0..55	nyi	_Paul D. Hanna_, Feb 04 2012
+A205975	parmof2	0	A205963	new A002652()	a(n) = Fibonacci(n)*A002652(n) for n>=1, with a(0)=1, where A002652 lists the coefficients in theta series of Kleinian lattice Z[(-1+sqrt(-7))/2].	nonn,synth	0..49	nyi	_Paul D. Hanna_, Feb 04 2012
+A205976	parmof2	0	A205963	new A028594()	a(n) = Fibonacci(n)*A028594(n) for n>=1, with a(0)=1, where A028594 lists the coefficients in  (theta_3(x)*theta_3(7*x)+theta_2(x)*theta_2(7*x))^2.	nonn,synth	0..34	nyi	_Paul D. Hanna_, Feb 04 2012
+A209443	parmof2	0	A209443	new A000118()	a(n) = Pell(n)*A000118(n) for n>=1 with a(0)=1, where A000118(n) is the number of ways of writing n as a sum of 4 squares.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 09 2012
+A209444	parmof2	0	A209443	new A000143()	a(n) = Pell(n)*A000143(n) for n>=1 with a(0)=1, where A000143(n) is the number of ways of writing n as a sum of 8 squares.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 09 2012
+A209445	parmof2	0	A209443	new A001227()	a(n) = Pell(n)*A001227(n) for n >= 1, where A001227(n) is the number of odd divisors of n.	nonn,	1..1000	nyi	_Paul D. Hanna_, Mar 09 2012
+A209446	parmof2	0	A209443	new A004016()	a(n) = Pell(n)*A004016(n) for n >= 1, with a(0)=1, where A004016(n) is the number of integer solutions (x,y) to x^2 + x*y + y^2 = n.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209447	parmof2	0	A209443	new A008653()	a(n) = Pell(n)*A008653(n) for n>=1, with a(0)=1, where A008653 is the theta series of direct sum of 2 copies of hexagonal lattice.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209448	parmof2	0	A209443	new A008655()	a(n) = Pell(n)*A008655(n) for n>=1, with a(0)=1, where A008655 lists the coefficients in (theta_3(x)*theta_3(3*x)+theta_2(x)*theta_2(3*x))^4.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209449	parmof2	0	A209443	new A113973()	a(n) = Pell(n)*A113973(n) for n>=1, with a(0)=1, where A113973 lists the coefficients in phi(x^3)^3/phi(x) and phi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209450	parmof2	0	A209443	new A132973()	a(n) = Pell(n)*A132973(n) for n>=1, with a(0)=1, where A132973 lists the coefficients in psi(-q)^3/psi(-q^3) and where psi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209451	parmof2	0	A209443	new A034896()	a(n) = Pell(n)*A034896(n) for n >= 1, with a(0)=1, where A034896 lists the number of solutions to a^2 + b^2 + 3*c^2 + 3*d^2 = n.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209452	parmof2	0	A209443	new A122859()	a(n) = Pell(n)*A122859(n) for n>=1, with a(0)=1, where A122859 lists the coefficients in phi(-q)^3/phi(-q^3) and phi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209453	parmof2	0	A209443	new A109041()	a(n) = Pell(n)*A109041(n) for n>=1, with a(0)=1, where A109041 lists the coefficients in eta(q)^9/eta(q^3)^3.	sign,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209454	parmof2	0	A209443	new A033719()	a(n) = Pell(n)*A033719(n) for n>=1, with a(0)=1, where A033719 lists the coefficients in theta_3(q)*theta_3(q^7).	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209455	parmof2	0	A209443	new A002652()	a(n) = Pell(n)*A002652(n) for n>=1, with a(0)=1, where A002652 lists the coefficients in theta series of Kleinian lattice Z[(-1+sqrt(-7))/2].	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A209456	parmof2	0	A209443	new A028594()	a(n) = Pell(n)*A028594(n) for n>=1, with a(0)=1, where A028594 lists the coefficients in (theta_3(x)*theta_3(7*x)+theta_2(x)*theta_2(7*x))^2.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
+A218256	arronk	1	A212957	1	7	mN	x
+A218257	arronk	1	A212957	1	8	mN	x
+A218258	arronk	1	A212957	1	9	mN	x
+A218259	arronk	1	A212957	1	10	mN	x
+A251583	parm3	0	A251583	3	"1*n^1 + 3"	a(n) = 3^(n-1) * (n+1)^(n-3) * (n+3).	nonn,	0..330	nyi	_Paul D. Hanna_, Dec 06 2014
+A251584	parm3	0	A251583	4	"3*n^2 + 13*n + 16"	a(n) = 4^(n-2) * (n+1)^(n-4) * (3*n^2 + 13*n + 16).	nonn,changed,	0..322	nyi	_Paul D. Hanna_, Dec 06 2014
+A251585	parm3	0	A251583	5	"16*n^3 + 87*n^2 + 172*n + 125"	a(n) = 5^(n-3) * (n+1)^(n-5) * (16*n^3 + 87*n^2 + 172*n + 125).	nonn,	0..312	nyi	_Paul D. Hanna_, Dec 06 2014
+A251586	parm3	0	A251583	6	"125*n^4 + 810*n^3 + 2095*n^2 + 2586*n + 1296"	a(n) = 6^(n-4) * (n+1)^(n-6) * (125*n^4 + 810*n^3 + 2095*n^2 + 2586*n + 1296).	nonn,	0..306	nyi	_Paul D. Hanna_, Dec 06 2014
+A251587	parm3	0	A251583	7	"1296*n^5 + 9720*n^4 + 30555*n^3 + 50665*n^2 + 44621*n + 16807"	a(n) = 7^(n-5) * (n+1)^(n-7) * (1296*n^5 + 9720*n^4 + 30555*n^3 + 50665*n^2 + 44621*n + 16807).	nonn,	0..300	nyi	_Paul D. Hanna_, Dec 06 2014
+A251588	parm3	0	A251583	8	"16807*n^6 + 143031*n^5 + 525875*n^4 + 1074745*n^3 + 1294846*n^2 + 876856*n + 262144"	a(n) = 8^(n-6) * (n+1)^(n-8) * (16807*n^6 + 143031*n^5 + 525875*n^4 + 1074745*n^3 + 1294846*n^2 + 876856*n + 262144).	nonn,	0..296	nyi	_Paul D. Hanna_, Dec 06 2014
+A251589	parm3	0	A251583	9	"262144*n^7 + 2494464*n^6 + 10470208*n^5 + 25229505*n^4 + 37857568*n^3 + 35537670*n^2 + 19414368*n + 4782969)"	a(n) = 9^(n-7) * (n+1)^(n-9) * (262144*n^7 + 2494464*n^6 + 10470208*n^5 + 25229505*n^4 + 37857568*n^3 + 35537670*n^2 + 19414368*n + 4782969).	nonn,	0..293	nyi	_Paul D. Hanna_, Dec 06 2014
+A251590	parm3	0	A251583	10	"4782969*n^8 + 50309748*n^7 + 237013938*n^6 + 655232760*n^5 + 1166624361*n^4 + 1374998212*n^3 + 1051760172*n^2 + 479277840*n + 100000000"	a(n) = 10^(n-8) * (n+1)^(n-10) * (4782969*n^8 + 50309748*n^7 + 237013938*n^6 + 655232760*n^5 + 1166624361*n^4 + 1374998212*n^3 + 1051760172*n^2 + 479277840*n + 100000000).	nonn,changed,	0..289	nyi	_Paul D. Hanna_, Dec 06 2014
+A252760	arronk	1	A212957	1	mN	mN	x

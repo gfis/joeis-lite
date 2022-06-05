@@ -112,6 +112,10 @@ tritest:
 	$(JAVA) irvine.oeis.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
 ej:
 	echo $(JAVA)
+regtest:
+	grep -P "\AA\d+\t$(CLASS)\t" $(COMMON)/joeis_names.txt | cut -f1 > $(CLASS).gen
+	wc -l $(CLASS).gen
+	make CC=$(CLASS) test log
 #----------------------------------
 # Generation of groups of sequences
 #----------------------------------
@@ -237,7 +241,7 @@ select2: # require not in joeis: JO= (default) / require not in poeis: PO=1 (def
 	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO)
 	make seq4 LIST=$(CC).gen
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
-	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(s.offset, '0') \
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(i.offset1, s.offset) \
 	    , s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.parm8, s.name \
 	    FROM seq4 s LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
 	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
@@ -487,7 +491,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-05-30:
+anabuild: #.2022-06-05:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo phlist A212957 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-05-30:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -6661,13 +6677,19 @@ somos0:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 somos1:
-	grep -E "^\%[NFC]" $(COMMON)/jcat25.txt | grep -E "a\(n\) *\=" \
-	| grep -viE "Empirical|conjecture|apparently" \
-	>        $@.tmp
+	grep -E "^\%[NFCO]" $(COMMON)/jcat25.txt | grep -P "a\(n[\+\-\d]+\) *\=|\A\%O" \
+	| grep -vEi "sum|prod" > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+cordrec:
+	perl cordrec.pl -A somos1.tmp 2> $@.rest.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen 
+	head -n4 $@.gen
+	cut -f6  $@.rest.tmp | sort | uniq -c
+	wc -l    $@.gen $@.rest.tmp
 somos2:
-	perl somos_grep.pl somos1.tmp 2> $@.rest.tmp \
+	perl somos_grep.pl -A somos1.tmp 2> $@.rest.tmp \
 	| sort | uniq -w7 > $@.tmp 
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
