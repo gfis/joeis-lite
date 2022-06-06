@@ -1,61 +1,41 @@
-
-#
-# 2022-06-05 dependants of A212957:
-# Columns k=1-10 give: A000004, A059499, A059885, A059886, A059887, A059888, A059889, A059890, A059891, A059892.
-# Main diagonal gives A252760.
-# Rows n=1-10 give: A000005, A059907, A059908, A059909, A059910, A059911, A218256, A218257, A218258, A218259.
-A059499	arronk	1	A212957	1	mN	2	x
-A059885	arronk	1	A212957	1	mN	3	x
-A059886	arronk	1	A212957	1	mN	4	x
-A059887	arronk	1	A212957	1	mN	5	x
-A059888	arronk	1	A212957	1	mN	6	x
-A059889	arronk	1	A212957	1	mN	7	x
-A059890	arronk	1	A212957	1	mN	8	x
-A059891	arronk	1	A212957	1	mN	9	x
-A059892	arronk	1	A212957	1	mN	10	x
-A059907	arronk	1	A212957	1	2	mN	x
-A059908	arronk	1	A212957	1	3	mN	x
-A059909	arronk	1	A212957	1	4	mN	x
-A059910	arronk	1	A212957	1	5	mN	x
-A059911	arronk	1	A212957	1	6	mN	x
-A205963	parmof2	0	A205963	new A000118()	a(n) = Fibonacci(n)*A000118(n) for n>=1 with a(0)=1, where A000118(n) is the number of ways of writing n as a sum of 4 squares.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 03 2012
-A205964	parmof2	0	A205963	new A000143()	a(n) = Fibonacci(n)*A000143(n) for n>=1 with a(0)=1, where A000143(n) is the number of ways of writing n as a sum of 8 squares.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 03 2012
-A205965	parmof2	0	A205963	new A001227()	a(n) = Fibonacci(n)*A001227(n) for n>=1, where A001227(n) is the number of odd divisors of n.	nonn,	1..2500	nyi	_Paul D. Hanna_, Feb 03 2012
-A205966	parmof2	0	A205963	new A004016()	a(n) = Fibonacci(n)*A004016(n) for n>=1, with a(0)=1, where A004016(n) is the number of integer solutions (x,y) to x^2 + x*y + y^2 = n.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 03 2012
-A205967	parmof2	0	A205963	new A008653()	a(n) = Fibonacci(n)*A008653(n) for n>=1, with a(0)=1, where A008653 is the theta series of direct sum of 2 copies of hexagonal lattice.	nonn,	0..2500	nyi	_Paul D. Hanna_, Feb 04 2012
-A205968	parmof2	0	A205963	new A008655()	a(n) = Fibonacci(n)*A008655(n) for n >= 1, with a(0)=1, where A008655 lists the coefficients in (theta_3(x)*theta_3(3*x) + theta_2(x)*theta_2(3*x))^4.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 04 2012
-A205969	parmof2	0	A205963	new A113973()	a(n) = Fibonacci(n)*A113973(n) for n>=1, with a(0)=1, where A113973 lists the coefficients in phi(x^3)^3/phi(x) and phi() is a Ramanujan theta function.	sign,	0..2500	nyi	_Paul D. Hanna_, Feb 04 2012
-A205970	parmof2	0	A205963	new A132973()	a(n) = Fibonacci(n)*A132973(n) for n>=1, with a(0)=1, where A132973 lists the coefficients in psi(-q)^3/psi(-q^3) and where psi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Feb 04 2012
-A205971	parmof2	0	A205963	new A034896()	a(n) = Fibonacci(n)*A034896(n) for n >= 1, with a(0)=1, where A034896 lists the number of solutions to a^2 + b^2 + 3*c^2 + 3*d^2 = n.	nonn,	0..1000	nyi	_Paul D. Hanna_, Feb 04 2012
-A205972	parmof2	0	A205963	new A122859()	a(n) = Fibonacci(n)*A122859(n) for n>=1, with a(0)=1, where A122859 lists the coefficients in phi(-q)^3/phi(-q^3) and phi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Feb 04 2012
-A205973	parmof2	0	A205963	new A109041()	a(n) = Fibonacci(n)*A109041(n) for n>=1, with a(0)=1, where A109041 lists the coefficients in eta(q)^9/eta(q^3)^3.	sign,synth	0..30	nyi	_Paul D. Hanna_, Feb 04 2012
-A205974	parmof2	0	A205963	new A033719()	a(n) = Fibonacci(n)*A033719(n) for n>=1, with a(0)=1, where A033719 lists the coefficients in theta_3(q)*theta_3(q^7).	nonn,synth	0..55	nyi	_Paul D. Hanna_, Feb 04 2012
-A205975	parmof2	0	A205963	new A002652()	a(n) = Fibonacci(n)*A002652(n) for n>=1, with a(0)=1, where A002652 lists the coefficients in theta series of Kleinian lattice Z[(-1+sqrt(-7))/2].	nonn,synth	0..49	nyi	_Paul D. Hanna_, Feb 04 2012
-A205976	parmof2	0	A205963	new A028594()	a(n) = Fibonacci(n)*A028594(n) for n>=1, with a(0)=1, where A028594 lists the coefficients in  (theta_3(x)*theta_3(7*x)+theta_2(x)*theta_2(7*x))^2.	nonn,synth	0..34	nyi	_Paul D. Hanna_, Feb 04 2012
-A209443	parmof2	0	A209443	new A000118()	a(n) = Pell(n)*A000118(n) for n>=1 with a(0)=1, where A000118(n) is the number of ways of writing n as a sum of 4 squares.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 09 2012
-A209444	parmof2	0	A209443	new A000143()	a(n) = Pell(n)*A000143(n) for n>=1 with a(0)=1, where A000143(n) is the number of ways of writing n as a sum of 8 squares.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 09 2012
-A209445	parmof2	0	A209443	new A001227()	a(n) = Pell(n)*A001227(n) for n >= 1, where A001227(n) is the number of odd divisors of n.	nonn,	1..1000	nyi	_Paul D. Hanna_, Mar 09 2012
-A209446	parmof2	0	A209443	new A004016()	a(n) = Pell(n)*A004016(n) for n >= 1, with a(0)=1, where A004016(n) is the number of integer solutions (x,y) to x^2 + x*y + y^2 = n.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209447	parmof2	0	A209443	new A008653()	a(n) = Pell(n)*A008653(n) for n>=1, with a(0)=1, where A008653 is the theta series of direct sum of 2 copies of hexagonal lattice.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209448	parmof2	0	A209443	new A008655()	a(n) = Pell(n)*A008655(n) for n>=1, with a(0)=1, where A008655 lists the coefficients in (theta_3(x)*theta_3(3*x)+theta_2(x)*theta_2(3*x))^4.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209449	parmof2	0	A209443	new A113973()	a(n) = Pell(n)*A113973(n) for n>=1, with a(0)=1, where A113973 lists the coefficients in phi(x^3)^3/phi(x) and phi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209450	parmof2	0	A209443	new A132973()	a(n) = Pell(n)*A132973(n) for n>=1, with a(0)=1, where A132973 lists the coefficients in psi(-q)^3/psi(-q^3) and where psi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209451	parmof2	0	A209443	new A034896()	a(n) = Pell(n)*A034896(n) for n >= 1, with a(0)=1, where A034896 lists the number of solutions to a^2 + b^2 + 3*c^2 + 3*d^2 = n.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209452	parmof2	0	A209443	new A122859()	a(n) = Pell(n)*A122859(n) for n>=1, with a(0)=1, where A122859 lists the coefficients in phi(-q)^3/phi(-q^3) and phi() is a Ramanujan theta function.	sign,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209453	parmof2	0	A209443	new A109041()	a(n) = Pell(n)*A109041(n) for n>=1, with a(0)=1, where A109041 lists the coefficients in eta(q)^9/eta(q^3)^3.	sign,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209454	parmof2	0	A209443	new A033719()	a(n) = Pell(n)*A033719(n) for n>=1, with a(0)=1, where A033719 lists the coefficients in theta_3(q)*theta_3(q^7).	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209455	parmof2	0	A209443	new A002652()	a(n) = Pell(n)*A002652(n) for n>=1, with a(0)=1, where A002652 lists the coefficients in theta series of Kleinian lattice Z[(-1+sqrt(-7))/2].	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A209456	parmof2	0	A209443	new A028594()	a(n) = Pell(n)*A028594(n) for n>=1, with a(0)=1, where A028594 lists the coefficients in (theta_3(x)*theta_3(7*x)+theta_2(x)*theta_2(7*x))^2.	nonn,	0..1000	nyi	_Paul D. Hanna_, Mar 10 2012
-A218256	arronk	1	A212957	1	7	mN	x
-A218257	arronk	1	A212957	1	8	mN	x
-A218258	arronk	1	A212957	1	9	mN	x
-A218259	arronk	1	A212957	1	10	mN	x
-A251583	parm3	0	A251583	3	"1*n^1 + 3"	a(n) = 3^(n-1) * (n+1)^(n-3) * (n+3).	nonn,	0..330	nyi	_Paul D. Hanna_, Dec 06 2014
-A251584	parm3	0	A251583	4	"3*n^2 + 13*n + 16"	a(n) = 4^(n-2) * (n+1)^(n-4) * (3*n^2 + 13*n + 16).	nonn,changed,	0..322	nyi	_Paul D. Hanna_, Dec 06 2014
-A251585	parm3	0	A251583	5	"16*n^3 + 87*n^2 + 172*n + 125"	a(n) = 5^(n-3) * (n+1)^(n-5) * (16*n^3 + 87*n^2 + 172*n + 125).	nonn,	0..312	nyi	_Paul D. Hanna_, Dec 06 2014
-A251586	parm3	0	A251583	6	"125*n^4 + 810*n^3 + 2095*n^2 + 2586*n + 1296"	a(n) = 6^(n-4) * (n+1)^(n-6) * (125*n^4 + 810*n^3 + 2095*n^2 + 2586*n + 1296).	nonn,	0..306	nyi	_Paul D. Hanna_, Dec 06 2014
-A251587	parm3	0	A251583	7	"1296*n^5 + 9720*n^4 + 30555*n^3 + 50665*n^2 + 44621*n + 16807"	a(n) = 7^(n-5) * (n+1)^(n-7) * (1296*n^5 + 9720*n^4 + 30555*n^3 + 50665*n^2 + 44621*n + 16807).	nonn,	0..300	nyi	_Paul D. Hanna_, Dec 06 2014
-A251588	parm3	0	A251583	8	"16807*n^6 + 143031*n^5 + 525875*n^4 + 1074745*n^3 + 1294846*n^2 + 876856*n + 262144"	a(n) = 8^(n-6) * (n+1)^(n-8) * (16807*n^6 + 143031*n^5 + 525875*n^4 + 1074745*n^3 + 1294846*n^2 + 876856*n + 262144).	nonn,	0..296	nyi	_Paul D. Hanna_, Dec 06 2014
-A251589	parm3	0	A251583	9	"262144*n^7 + 2494464*n^6 + 10470208*n^5 + 25229505*n^4 + 37857568*n^3 + 35537670*n^2 + 19414368*n + 4782969)"	a(n) = 9^(n-7) * (n+1)^(n-9) * (262144*n^7 + 2494464*n^6 + 10470208*n^5 + 25229505*n^4 + 37857568*n^3 + 35537670*n^2 + 19414368*n + 4782969).	nonn,	0..293	nyi	_Paul D. Hanna_, Dec 06 2014
-A251590	parm3	0	A251583	10	"4782969*n^8 + 50309748*n^7 + 237013938*n^6 + 655232760*n^5 + 1166624361*n^4 + 1374998212*n^3 + 1051760172*n^2 + 479277840*n + 100000000"	a(n) = 10^(n-8) * (n+1)^(n-10) * (4782969*n^8 + 50309748*n^7 + 237013938*n^6 + 655232760*n^5 + 1166624361*n^4 + 1374998212*n^3 + 1051760172*n^2 + 479277840*n + 100000000).	nonn,changed,	0..289	nyi	_Paul D. Hanna_, Dec 06 2014
-A252760	arronk	1	A212957	1	mN	mN	x
+# A000012	parm2	1	A112557	0
+# A000960	parm2	1	A112557	2
+# A002491	parm2	1	A112557	1
+# A075834(x=1), A111088(x=2), A113131(x=4), A113132(x=5), A113133(x=6), A113134(x=7), A113135(x=8).
+# A113749	parm2	1	A112557	k	x
+# Annnn	parm2	0	A075834	9	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 8.	nonn,synth	0..15	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+# Cf. {k=-1..12} A000012, A002491, A000960 (Flavius Josephus's sieve), A112557, A112558, A113742, A113743, A113744, A113745, A113746, A113747, A113748; det. A113749.
+A075834	parm2	0	A075834	1	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 1.	nonn,synth	0..17	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A111088	parm2	0	A075834	2	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 2.	nonn,synth	0..17	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A112557	parm2	1	A112557	3	x
+A112558	parm2	1	A112557	4	x
+A113130	parm2	0	A075834	3	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 3.	nonn,synth	0..17	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113131	parm2	0	A075834	4	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 4.	nonn,synth	0..17	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113132	parm2	0	A075834	5	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 5.	nonn,synth	0..16	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113133	parm2	0	A075834	6	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 6.	nonn,synth	0..16	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113134	parm2	0	A075834	7	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 7.	nonn,synth	0..15	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113135	parm2	0	A075834	8	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 8.	nonn,synth	0..15	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113742	parm2	1	A112557	5	x
+A113743	parm2	1	A112557	6	x
+A113744	parm2	1	A112557	7	x
+A113745	parm2	1	A112557	8	x
+A113746	parm2	1	A112557	9	x
+A113747	parm2	1	A112557	10	x
+A113748	parm2	1	A112557	11	x
+A120590	parm6	0	A120593	 4	 1	  1	 3	1,1,3	 4*A(x)  = 3  +   1*x + A(x)^ 3,  [1,1,3]	nonn,	0..70	holos	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
+A120592	parm6	0	A120593	 5	 2	  4	 3	1,2,6	 5*A(x)  = 4  +   4*x + A(x)^ 3,  [1,2,6]	nonn,	0..70	holos	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
+A120593	parm6	0	A120593	 5	 4	  1	 4	1,1,6	 5*A(x)  = 4  +   1*x + A(x)^ 4,  [1,1,6]	nonn,synth	0..17	nyi	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
+A120594	parm6	0	A120593	 8	 4	  8	 4	1,2,6	 8*A(x)  = 7  +   8*x + A(x)^ 4,  [1,2,6]	nonn,synth	0..18	nyi	_Paul D. Hanna_, Jun 16 2006
+A120595	parm6	0	A120593	13	 9	 27	 4	1,3,6	13*A(x) = 12  +  27*x + A(x)^ 4,  [1,3,6]	nonn,synth	0..19	nyi	_Paul D. Hanna_, Jun 16 2006
+A120596	parm6	0	A120593	 6	 1	  1	 5	1,1,10	 6*A(x)  = 5  +   1*x + A(x)^ 5, [1,1,10]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120597	parm6	0	A120593	 9	 4	  8	 5	1,2,10	 9*A(x)  = 8  +   8*x + A(x)^ 5, [1,2,10]	nonn,synth	0..17	nyi	_Paul D. Hanna_, Jun 16 2006
+A120598	parm6	0	A120593	30	25	125	 5	1,5,10	30*A(x) = 29  + 125*x + A(x)^ 5, [1,5,10]	nonn,synth	0..18	nyi	_Paul D. Hanna_, Jun 16 2006
+A120599	parm6	0	A120593	13	 8	 32	 5	1,4,20	13*A(x) = 12  +  32*x + A(x)^ 5, [1,4,20]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120600	parm6	0	A120593	 7	 1	  1	 6	1,1,15	 7*A(x)  = 6  +   1*x + A(x)^ 6, [1,1,15]	nonn,synth	0..15	nyi	_Paul D. Hanna_, Jun 16 2006
+A120601	parm6	0	A120593	15	 9	 27	 6	1,3,15	15*A(x) = 14  +  27*x + A(x)^ 6, [1,3,15]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120602	parm6	0	A120593	31	25	125	 6	1,5,15	31*A(x) = 30  + 125*x + A(x)^ 6, [1,5,15]	nonn,synth	0..17	nyi	_Paul D. Hanna_, Jun 16 2006
+A120603	parm6	0	A120593	16	 9	 27	 7	1,3,21	16*A(x) = 15  +  27*x + A(x)^ 7, [1,3,21]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120604	parm6	0	A120593	24	16	 64	 8	1,4,28	24*A(x) = 23  +  64*x + A(x)^ 8, [1,4,28]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120605	parm6	0	A120593	25	16	 64	 9	1,4,36	25*A(x) = 24  +  64*x + A(x)^ 9, [1,4,36]	nonn,synth	0..15	nyi	_Paul D. Hanna_, Jun 16 2006
+A120606	parm6	0	A120593	36	27	 81	 9	1,3,12	36*A(x) = 35  +  81*x + A(x)^ 9, [1,3,12]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120607	parm6	0	A120593	37	27	 81	10	1,3,15	37*A(x) = 36  +  81*x + A(x)^10, [1,3,15]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006

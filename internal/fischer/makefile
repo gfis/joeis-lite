@@ -88,10 +88,16 @@ runall: # current set of packages
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) -D $(A)    | tee x.tmp
-seqtri: # A=$(A) - print data up to 260 characters
+seqtri: # A=$(A) - print data in triangle format
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -T $(A)    | tee x.tmp
+seqtris: # A=$(A) - print data in upper left triangle format
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -S $(A)    | tee x.tmp
+seqtrir: # A=$(A) - print data in upper right triangle format
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -R $(A)    | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
 	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -o $(OFFSET) -B $(A) | tee x.tmp
+seqhelp: # 
+	$(JAVA) irvine.oeis.SequenceFactory --help
 jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
 	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
 spectest:
@@ -491,7 +497,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-06-05:
+anabuild: #.2022-06-06: # RH=76
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A075834 A112557 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-06-05:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat

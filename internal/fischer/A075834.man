@@ -1,0 +1,10 @@
+# A075834(x=1), A111088(x=2), A113131(x=4), A113132(x=5), A113133(x=6), A113134(x=7), A113135(x=8).
+A075834	parm2	0	A075834	1	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 1.	nonn,synth	0..17	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A111088	parm2	0	A075834	2	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 2.	nonn,synth	0..17	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113130	parm2	0	A075834	3	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 3.	nonn,synth	0..17	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113131	parm2	0	A075834	4	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 4.	nonn,synth	0..17	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113132	parm2	0	A075834	5	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 5.	nonn,synth	0..16	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113133	parm2	0	A075834	6	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 6.	nonn,synth	0..16	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113134	parm2	0	A075834	7	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 7.	nonn,synth	0..15	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+A113135	parm2	0	A075834	8	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 8.	nonn,synth	0..15	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
+# Annnn	parm2	0	A075834	9	a(0) = a(1) = 1, a(2) = x, a(3) = 2x^2, a(n) = x*(n-1)*a(n-1) + Sum_{j=2..n-2} (j-1)*a(j)*a(n-j), n>=4 and for x = 8.	nonn,synth	0..15	nyi	_Philippe Deléham_ and _Paul D. Hanna_, Oct 28 2005
