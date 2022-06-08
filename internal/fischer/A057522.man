@@ -1,0 +1,28 @@
+# grep -Pi "(\d+|p)\*?x *\+ *1[^m]+map" jcat25.txt
+# 2022-06-07, Georg Fischer
+A057522	parm3	0	A057522	73	2,3,5,7,11,13
+A057534	parm3	0	A057522	61	2,3,5,7,11,13,17
+A057614	parm3	0	A057522	17	2,3,5,7,11
+A057684	parm3	0	A057522	13	2,3,5,7,11,13
+A057685	parm3	0	A057522	19	2,3,5,7,11,13,17,19
+A057686	parm3	0	A057522	23	2,3,5,7,11,13,17,19,23
+A057687	parm3	0	A057522	29	2,3,5,7,11,13,17,19,23,29
+A057614	parm3	0	A057522	17	2,3,5,7,11
+A100709	parm3	0	A057522	1001	2,3
+# %N A057684 Trajectory of 13 under the '13x+1' map.
+# %N A057685 Trajectory of 19 under the `19x+1' map.
+# %N A057686 Trajectory of 23 under the `23x+1' map.
+# %N A057687 Trajectory of 29 under the `29x+1' map.
+# %N A057689 Maximal term in trajectory of P under the 'Px+1' map, where P = n-th prime, or -1 if no such term exists.
+# %N A057690 Length of cycle in trajectory of P under the 'Px+1' map, where P = n-th prime, or -1 if trajectory does not cycle.
+# %N A057691 Number of terms before entering cycle in trajectory of P under the 'Px+1' map, where P = n-th prime, or -1 if trajectory does not cycle.
+# %N A100709 Trajectory of 1001 under "3x+1" map.
+# %N A133420 Number of steps to reach 1 under repeated applications of the "5x+1" map of A133419, or -1 if 1 is never reached.
+# %C A133423 The 5x+1 map sends x to x/2 if x is even, x/3 if x is divisible by 3, otherwise 5x+1.
+# %C A133424 The 5x+1 map sends x to x/2 if x is even, x/3 if x is divisible by 3, otherwise 5x+1.
+# %C A133425 The 7x+1 map sends x to x/2 if x is even, x/3 if x is divisible by 3, x/5 if x is divisible by 5, otherwise 7x+1.
+# %C A133426 The 7x+1 map sends x to x/2 if x is even, x/3 if x is divisible by 3, x/5 if x is divisible by 5, otherwise 7x+1.
+# %N A267703 Conjectured list of numbers n such that the trajectory of n under the '7x+1' map does not cycle.
+# %N A276290 Products of odd primes p and q such that either p or q is in the trajectory of (p*q)+1 under the Collatz 3x+1 map (A014682).
+# %C A276290 Conjecture: If n is the product of two odd primes p and q and p is equal to 3, then neither p nor q is in the trajectory of (p*q)+1 under the Collatz 3x+1 map (A014682). - _Marina Ibrishimova_, Aug 29 2016
+# %C A332018 This is the '5x+1' map with the successive dividing steps removed. The 'Px+1' map with those steps removed: If x is divisible by any prime < P, then divide out those primes; otherwise multiply x by P, add 1, and then divide out the primes < P.

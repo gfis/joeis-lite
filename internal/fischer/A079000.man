@@ -1,0 +1,41 @@
+A079000	parmof4	1	A079000	1	1	n -> n.isOdd()	"spig"	is odd".	
+A079253	parmof4	0	A079000	0	1	n -> n.isEven()	"spig"	is even".	
+A079254	parmof4	1	A079000	1	1	n -> n.isProbablePrime()	"spig"	is prime".	
+# limit? A079256	parmof4	1	A079000	1	1	n -> n.bitCount() == 1	"spig"	is a power of 2".	
+A079257	parmof4	0	A079000	0	1	n -> n.multiply(8).add(1).isSquare()	"spig"	is a triangular number".	
+A079258	parmof4	0	A079000	0	1	n -> n.isSquare()	"spig"	is a square".	
+A079313	parmof4	1	A079000	1	02	n -> n.isOdd()	"spip"	is odd".	
+# ??? A079358	parmof4	1	A079000	1	1	n -> !n.mod(Z.THREE).isZero() && !n.mod(Z.FOUR).isZero()	"spig"	is not a multiple of either 3 or 4.".	
+A080029	parmof4	0	A079000	0	02	n -> n.mod(Z.THREE).isZero()	"spip"	is a multiple of 3".	
+A080030	parmof4	0	A079000	2	02	n -> n.mod(Z.THREE).equals(Z.ONE)	"spip"	is congruent to 1 mod 3".	
+A080031	parmof4	1	A079000	1	02	n -> n.mod(Z.THREE).equals(Z.TWO)	"spip"	is congruent to 2 mod 3".	
+A080032	parmof4	1	A079000	1	2	n -> n.isEven()	"spip"	is even".	
+A080033	parmof4	1	A079000	1	2	n -> n.mod(Z.FOUR).isZero()	"spip"	is a multiple of 4".	
+A080034	parmof4	1	A079000	1	2	n -> n.mod(Z.FOUR).equals(Z.THREE)	"spip"	is congruent to 3 mod 4".	
+A080591	parmof4	1	A079000	1	1	n -> n.mod(Z.FOUR).equals(Z.THREE)	"spig"	is congruent to 3 mod 4".	
+A080639	parmof4	1	A079000	1	04	n -> n.isEven()	"s ig"	is even".	
+A080640	parmof4	1	A079000	3	1	n -> n.mod(Z.FOUR).isZero()	"s ig"	is divisible by 4".	
+A080641	parmof4	1	A079000	4	1	n -> n.mod(Z.FIVE).isZero()	"s ig"	is divisible by 5".	
+A080644	parmof4	1	A079000	5	1	n -> n.mod(Z.SIX).isZero()	"s ig"	is divisible by 6".	
+# ??? A080645	parmof4	1	A079000	1	04	n -> n.isEven()	"s ig"	is even".	
+# ??? A080646	parmof4	1	A079000	3	04	n -> n.mod(Z.FIVE).isZero()	"s ig"	is divisible by 3".	
+A080710	parmof4	0	A079000	1	1	n -> n.mod(Z.THREE).isZero()	"s ig"	is a multiple of 3".	
+A080711	parmof4	0	A079000	2	1	n -> n.mod(Z.THREE).isZero()	"s ig"	is a multiple of 3".	
+A080712	parmof4	0	A079000	4	1	n -> n.mod(Z.THREE).isZero()	"s ig"	is a multiple of 3".	
+A080720	parmof4	0	A079000	5	1	n -> n.mod(Z.THREE).isZero()	"s ig"	is a multiple of 3".	
+A080722	parmof4	0	A079000	0	04	n -> n.mod(Z.THREE).equals(Z.ONE)	"s ig"	== 1 mod 3".	
+A080723	parmof4	0	A079000	1	04	n -> n.mod(Z.THREE).equals(Z.ONE)	"s ig"	== 1 mod 3".	
+A080724	parmof4	0	A079000	2	1	n -> n.mod(Z.THREE).equals(Z.ONE)	"s ig"	== 1 mod 3".	
+A080725	parmof4	1	A079000	2	1	n -> n.mod(Z.THREE).equals(Z.ONE)	"s ig"	== 1 mod 3".	
+A080726	parmof4	0	A079000	0	04	n -> n.mod(Z.THREE).equals(Z.TWO)	"s ig"	== 2 mod 3".	
+A080727	parmof4	0	A079000	1	1	n -> n.mod(Z.THREE).equals(Z.TWO)	"s ig"	== 2 mod 3".	
+A080728	parmof4	0	A079000	3	1	n -> n.mod(Z.THREE).equals(Z.TWO)	"s ig"	== 2 mod 3".	
+A085925	parmof4	1	A079000	1	1	n -> !n.isProbablePrime()	"s ig"	is not prime".	
+A099797	parmof4	1	A079000	1	1	n -> !n.isProbablePrime() && !n.equals(Z.ONE)	"spig"	is composite".	
+A099798	parmof4	1	A079000	1	1	n -> n.isProbablePrime() || n.equals(Z.ONE)	"spig"	is not composite".	
+A334067	parmof4	1	A079000	1	1	n -> n.isProbablePrime()	"spig"	is prime" where indices start from 0.	
+
+# A079325	parmof4	1	A079000	1	n -> n.	"spig"	is a member of A079000".	
+# A080653	parmof4	1	A079000	2	n -> n.	"s ig"	nice,synth	1..65	unkn	_Matthew Vandermast_, Mar 01 2003
+# A079259	parmof4	1	A079000	1	n -> n.	"spig"	and a(n+1) are both odd" can be satisfied.	
+# A079255	parmof4	1	A079000	1	n -> n.	"spig"	is odd and a(n+1) is even" can be satisfied.	

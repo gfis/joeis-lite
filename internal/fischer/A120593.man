@@ -1,3 +1,6 @@
+# relies on the abandoned version of A120590.
+# superceeded by HolonomicRecurrences
+# 2022-06-06, Georg Fischer; RH=76
 A120590	parm6	0	A120593	 4	 1	  1	 3	1,1,3	 4*A(x)  = 3  +   1*x + A(x)^ 3,  [1,1,3]	nonn,	0..70	holos	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
 A120592	parm6	0	A120593	 5	 2	  4	 3	1,2,6	 5*A(x)  = 4  +   4*x + A(x)^ 3,  [1,2,6]	nonn,	0..70	holos	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
 A120593	parm6	0	A120593	 5	 4	  1	 4	1,1,6	 5*A(x)  = 4  +   1*x + A(x)^ 4,  [1,1,6]	nonn,synth	0..17	nyi	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
@@ -9,6 +12,7 @@ A120598	parm6	0	A120593	30	25	125	 5	1,5,10	30*A(x) = 29  + 125*x + A(x)^ 5, [1,
 A120599	parm6	0	A120593	13	 8	 32	 5	1,4,20	13*A(x) = 12  +  32*x + A(x)^ 5, [1,4,20]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
 A120600	parm6	0	A120593	 7	 1	  1	 6	1,1,15	 7*A(x)  = 6  +   1*x + A(x)^ 6, [1,1,15]	nonn,synth	0..15	nyi	_Paul D. Hanna_, Jun 16 2006
 A120601	parm6	0	A120593	15	 9	 27	 6	1,3,15	15*A(x) = 14  +  27*x + A(x)^ 6, [1,3,15]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+# not yet holon.:
 A120602	parm6	0	A120593	31	25	125	 6	1,5,15	31*A(x) = 30  + 125*x + A(x)^ 6, [1,5,15]	nonn,synth	0..17	nyi	_Paul D. Hanna_, Jun 16 2006
 A120603	parm6	0	A120593	16	 9	 27	 7	1,3,21	16*A(x) = 15  +  27*x + A(x)^ 7, [1,3,21]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
 A120604	parm6	0	A120593	24	16	 64	 8	1,4,28	24*A(x) = 23  +  64*x + A(x)^ 8, [1,4,28]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006

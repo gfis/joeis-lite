@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-05-31: V4.1, last parm was not generated
 # 2022-05-31: V4.0, suppress "\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)"
 # 2022-05-20: V3.9, Cheetah -> Jaguar
 # 2022-05-18: V3.8: mN = 0 - 1; again
@@ -51,7 +52,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V4.0";
+my $program = "gen_seq4.pl V4.1";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -112,6 +113,7 @@ while (<>) { # read inputfile
     next if m{\A\s*\Z}; # skip empty lines
     my $line = $_;
     $line =~ s/\s+\Z//; # chompr
+    $line .= "\t"; # why ??? (last parm problem)
     if ($debug >= 1) {
         print "$line\n";
     }

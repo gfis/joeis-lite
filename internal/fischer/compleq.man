@@ -65,3 +65,14 @@ A299547	compl_s	0		0	"[[0],[-1]]"	"[1,2,3]","[4,3,5,6,7]"	0				Solution a( ) of 
 
 # needs c? A305847	compleq	1		0	"[[0,5],[-1]]"	"[1]","[4]"	-b(n)				Solution a() of the complementary equation a(n) + b(n) = 5*n, where a(1) = 1. See Comments.
 # needs c? A305848	compleq	1		1	"[[0,5],[-1]]"	"[1]","[4]"	-b(n)				Solution b() of the complementary equation a(n) + b(n) = 5n, where a(1) = 1. See Comments.
+
+#----
+# 2022-06-08; FP=8
+A305129	compleq	0		0	"[[0],[-1],[2],[-1]]"	"[1,2]","[3,4,5]"	b(n)				Solution (a(n)) of the complementary equation a(n) = 2*a(n-1) - a(n-2) + b(n)
+A305329	compleq	0		0	"[[0],[-1],[2],[-1]]"	"[1,2]","[3,4,5]"	b(n-2)				Solution (a(n)) of the complementary equation a(n) = 2*a(n-1) - a(n-2) + b(n-2)
+A305330	compleq	0		0	"[[0],[-1],[2],[-1]]"	"[1,2]","[3,4,5]"	b(n-1)+b(n)				Solution (a(n)) of the complementary equation a(n) = 2*a(n-1) - a(n-2) + b(n-1) + b(n)
+
+A296557	compleq	0	 	0	"[[0,-1],[1],[1],[-1]]"	"[1,2]","[3,4,5]"	b(n)-n				a(n) = a(n-1) + a(n-2) + b(n) - n, where a(0) = 1, a(1) = 2, b(0) = 3, b(1) = 4, b(2) = 5, and (a(n)) and (b(n)) are increasing complementary sequences.
+A295621	compleq	0		0	"[[0],[-2],[-2],[3],[1],[-1]]"	"[1,2,3,4]","[5,6,7,8]"	b(n-3)				a(n) = a(n-1) + 3*a(n-2) -2*a(n-3) - 2*a(n-4) + b(n-4), where a(0) = 1, a(1) = 2, a(2) = 3, a(3) = 4, b(0) = 5, b(1) = 6, b(2) = 7, b(3) = 8, and (a(n)) and (b(n)) are increasing complementary sequences.
+A305847	compleq	0		1	"[[0,5],[-1]]"	"[1]","[]"	-b(n)				Solution a() of the complementary equation a(n) + b(n) = 5*n,
+A305848	compleq	0		1	"[[0,5],[-1]]"	"[1]","[]"	-b(n)				Solution b() of the complementary equation a(n) + b(n) = 5n, w

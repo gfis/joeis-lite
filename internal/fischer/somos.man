@@ -51,3 +51,25 @@ A277279	somos4	0	4	0	xxxx	1	-1	Somos-4 sequence
 # A162547	Somos-4 variant: if n!=4k+1, then a(n) = (4*a(n-1)*a(n-3) - 4*a(n-2)^2) / a(n-4), otherwise a(n) = 0, with a(-2) = a(-1) = a(0) = 1.
 # A185160            Somos-4 variation with periodic coefficients.   nonn,   0..132  nyi     _Michael Somos_, Dec 26 2012
 
+A276530	?nok	0	0	0	trailing words	 (a(n-1) * a(n-5) + a(n-3)^3) / a(n-6)	a(n) = (a(n-1) * a(n-5) + a(n-3)^3) / a(n-6), a(0) = a(1) = 
+A276531	?nok	0	0	0	trailing words	 (a(n-1) * a(n-5) + a(n-2) * a(n-3) * a(n-4)) / a(n-6)	a(n) = (a(n-1) * a(n-5) + a(n-2) * a(n-3) * a(n-4)) / a(n-6),
+A276531	?nok	0	0	0	not a(n...) =		a(n) * a(n-6) = a(n-1) * a(n-5) + a(n-2) * a(n-3) * a(n-4)
+A276532	?nok	0	0	0	trailing words	 (a(n-1) * a(n-6) + a(n-2) * a(n-3) * a(n-4) * a(n-5)) / a(n-7)	a(n) = (a(n-1) * a(n-6) + a(n-2) * a(n-3) * a(n-4) * a(n-5)) / a(n-7),
+A276532	?nok	0	0	0	not a(n...) =		a(n) * a(n-7) = a(n-1) * a(n-6) + a(n-2) * a(n-3) * a(n-4) * a(n-5)
+A276534	?nok	0	0	0	trailing words	 a(n-1) * a(n-4) * (a(n-2) * a(n-3) + 1) / a(n-5)	a(n) = a(n-1) * a(n-4) * (a(n-2) * a(n-3) + 1) / a(n-5),
+A276534	?nok	0	0	0	not a(n...) =		a(n+1)/a(n) is integer
+A276534	?nok	0	0	0	not a(n...) =		a(n) * a(n-5) = a(n-1) * a(n-4) + a(n-1) * a(n-2) * a(n-3) * a(n-4)
+A276535	?nok	0	0	0	trailing words	 a(n-1) * a(n-6) * (a(n-2) * a(n-5) * (a(n-3) * a(n-4) + 1) + 1) / a(n-7)	a(n) = a(n-1) * a(n-6) * (a(n-2) * a(n-5) * (a(n-3) * a(n-4) + 1) + 1) / a(n-7),
+A276535	?nok	0	0	0	not a(n...) =		a(n+1)/a(n) is integer
+A276535	?nok	0	0	0	not a(n...) =		a(n) * a(n-7) = a(n-1) * a(n-6) + a(n-1) * a(n-2) * a(n-5) * a(n-6) + a(n-1) * a(n-2) * a(n-3) * a(n-4) * a(n-5) * a(n-6)
+A276095	?nok	1	0	0	not a(n...) =		a(n)*a(n-1)*a(n-2)*a(n-3) = ((a(n) + a(n-1) + a(n-2) + a(n-3))/4)^2
+A276097	?nok	1	0	0	not a(n...) =		a(n)*a(n-1)*a(n-2)*a(n-3)*a(n-4) = ((a(n) + a(n-1) + a(n-2) + a(n-3) + a(n-4))/5)^2
+A276175	?nok	0	4	0	interior / %	(b_1.a<(b_2.p[1)]>>.a<(b_3.p[1)]>>.a<Z.valueOf(1)/b_4)>	a(n) = (a(n-1)+1)*(a(n-2)+1)*(a(n-3)+1)/a(n-4)
+A276175	?nok	0	0	0	trailing words	 a(3-n)	a(n) = a(3-n), 0 = a(n)*a(n+4)*(a(n+4)+1) - a(n+5)*a(n+1)*(a(n+1)+1)
+A276256	?nok	1	0	0	not a(n...) =		a(n)*a(n-1)*a(n-2) = ((a(n) + a(n-1) + a(n-2) + 1)/4)^2
+A276257	?nok	1	0	0	not a(n...) =		a(n)*a(n-1)*a(n-2)*a(n-3) = ((a(n) + a(n-1) + a(n-2) + a(n-3) + 1)/5)^2
+A276258	?nok	1	0	0	trailing words	 4*a(n-1)*a(n-2) - a(n-3)	a(n) = 4*a(n-1)*a(n-2) - a(n-3),
+A276258	?nok	1	0	0	not a(n...) =		a(n)*a(n+1)*a(n+2) = (a(n)^2+a(n+1)^2+a(n+2)^2+1)/4
+A276259	?nok	1	0	0	not a(n...) =		a(n)*a(n+1)*a(n+2)*a(n+3) = (a(n)^2 + a(n+1)^2 + a(n+2)^2 + a(n+3)^2 + 1)/5
+A276267	?nok	0	0	0	trailing words	 ( a(n-1)^2*a(n-2)^2*a(n-3)^2 + 1 ) / a(n-4)	a(n) = ( a(n-1)^2*a(n-2)^2*a(n-3)^2 + 1 ) / a(n-4),
+A276416	?nok	0	0	0	trailing words	 a(n-1)*(1 + a(n-1)/a(n-4))	a(n) = a(n-1)*(1 + a(n-1)/a(n-4)),

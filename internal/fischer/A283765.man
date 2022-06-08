@@ -1,0 +1,14 @@
+A283765	posubse	1	A000201	term.isEven()		a(n+1) - a(n) is in {1,3,4}
+A283766	posubse	1	A000201	term.isOdd()		a(n+1) - a(n) is in {1,3,4}
+A283767	posubse	1	A001950	term.isEven()		a(n+1) - a(n) is in {1,2,3}
+A283768	posubse	1	A001950	term.isOdd()		a(n+1) - a(n) is in {1,2,3}
+A283769	posubse	1	A000201	term.mod(Z.THREE).equals(Z.ZERO)		a(n+1) - a(n) is in {2,5,7}
+A283770	posubse	1	A000201	term.mod(Z.THREE).equals(Z.ONE)		a(n+1) - a(n) is in {2,5,7}
+A283771	posubse	1	A000201	term.mod(Z.THREE).equals(Z.TWO)		a(n+1) - a(n) is in {2,5,7}
+A283772	posubse	1	A001950	term.mod(Z.THREE).equals(Z.ZERO)		a(n+1) - a(n) is in {1,6,7}
+A283773	posubse	1	A001950	term.mod(Z.THREE).equals(Z.ONE)		a(n+1) - a(n) is in {1,6,7}
+A283774	posubse	1	A001950	term.mod(Z.THREE).equals(Z.TWO)		a(n+1) - a(n) is in {1,6,7}
+A283775	posubse	1	A022838	term.isEven()		a(n+1) - a(n) is in {1,4,5}
+A283776	posubse	1	A022838	term.isOdd()		a(n+1) - a(n) is in {1,4,5}
+A283777	posubse	0	A022843	term.isEven()	next();	a(n+1) - a(n) is in {1,2,3}
+A283778	posubse	0	A022843	term.isOdd()		a(n+1) - a(n) is in {1,2,3}

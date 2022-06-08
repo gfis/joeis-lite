@@ -1,0 +1,46 @@
+# guide in A298338
+A298338	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(n/2))                           	a(n) = a(n-1)+a(n-2)+a([n/2])                            1,1,1
+A298339	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(n/2))                           	a(n) = a(n-1)+a(n-2)+a([n/2])                            1,2,3
+A298340	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(n/3))                           	a(n) = a(n-1)+a(n-2)+a([n/3])                            1,1,1
+A298341	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(n/3))                           	a(n) = a(n-1)+a(n-2)+a([n/3])                            1,2,3
+A298342	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(2*n/3))                         	a(n) = a(n-1)+a(n-2)+a([2n/3])                           1,1,1
+A298343	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(2*n/3))                         	a(n) = a(n-1)+a(n-2)+a([2n/3])                           1,2,3
+A298344	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(n/3)).add(a(2*n/3))             	a(n) = a(n-1)+a(n-2)+a([n/3]) +  a([2n/3])               1,1,1
+A298345	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(n/3)).add(a(2*n/3))             	a(n) = a(n-1)+a(n-2)+a([n/3]) +  a([2n/3])               1,2,3
+A298346	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(n/2).multiply2())               	a(n) = a(n-1)+a(n-2)+2 a([n/2])                          1,1,1
+A298347	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(n/2).multiply2())               	a(n) = a(n-1)+a(n-2)+2 a([n/2])                          1,2,3
+A298348	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a((n+1)/2))                       	a(n) = a(n-1)+a(n-2)+2 a([(n+1)/2])                      1,1,1
+A298349	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a((n+1)/2))                       	a(n) = a(n-1)+a(n-2)+2 a([(n+1)/2])                      1,2,3
+A298350	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a((int) Math.ceil((double) n/2)).multiply2())                       	a(n) = a(n-1)+a(n-2)+2 a(ceiling(n/2))                   1,1,1
+A298351	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a((int) Math.ceil((double) n/2)).multiply2())                       	a(n) = a(n-1)+a(n-2)+2 a(ceiling(n/2))                   1,2,3
+# A298350	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(-(-n/2)).multiply2())           	a(n) = a(n-1)+a(n-2)+2 a(ceiling(n/2))                   1,1,1
+# A298351	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(-(-n/2)).multiply2())           	a(n) = a(n-1)+a(n-2)+2 a(ceiling(n/2))                   1,2,3
+A298352	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a((n-1)/2))                       	a(n) = a(n-1)+a(n-2)+a([(n-1)/2])                        1,1,1
+A298353	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a((n-1)/2))                       	a(n) = a(n-1)+a(n-2)+a([(n-1)/2])                        1,2,3
+A298354	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a((n-1)/2).multiply2())           	a(n) = a(n-1)+a(n-2)+2 a([(n-1)/2])                      1,1,1
+A298355	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a((n-1)/2).multiply2())           	a(n) = a(n-1)+a(n-2)+2 a([(n-1)/2])                      1,2,3
+A298400	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).subtract(a(n/2).multiply(n))          	a(n) = a(n-1)+a(n-2)-a([n/2])                            1,1,1
+A298401	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).subtract(a(n/2).multiply(n))          	a(n) = a(n-1)+a(n-2)-a([n/2])                            1,2,3
+A298402	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(a(n/2))          	a(n) = 2*a(n-1)-a(n-3)+a([n/2])                          1,1,1
+A298403	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(a(n/2))          	a(n) = 2*a(n-1)-a(n-3)+a([n/2])                          1,2,3
+A298404	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(a((int) Math.ceil((double) n/2)))      	a(n) = 2*a(n-1)-a(n-3)+a(ceiling(n/2))                   1,1,1
+A298405	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(a((int) Math.ceil((double) n/2)))      	a(n) = 2*a(n-1)-a(n-3)+a(ceiling(n/2))                   1,2,3
+# A298404	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(a(-(-n/2)))      	a(n) = 2*a(n-1)-a(n-3)+a(ceiling(n/2))                   1,1,1
+# A298405	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(a(-(-n/2)))      	a(n) = 2*a(n-1)-a(n-3)+a(ceiling(n/2))                   1,2,3
+
+A298356	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k)))      	a(n) = a(n-1)+a(n-2)+a(n/2])+a([n/3]+...+a([n/n})       1,1,1
+A298357	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k)))      	a(n) = a(n-1)+a(n-2)+a(n/2])+a([n/3]+...+a([n/n})       1,2,3
+A298369	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k).multiply(k)))  	a(n) = a(n-1)+a(n-2)+2a([n/2])+3a([n/3]+...+4 a([n/n})   1,1,1
+A298370	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k).multiply(k))) 	a(n) = a(n-1)+a(n-2)+2a([n/2])+3a([n/3]+...+4a([n/n])    1,2,3
+A298406	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k)))  	a(n) = 2*a(n-1)-a(n-3)+a([n/2])+a([n/3]+...+ a([n/n])    1,1,1
+A298407	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k)))  	a(n) = 2*a(n-1)-a(n-3)+a([n/2])+a([n/3]+...+ a([n/n])    1,2,3
+A298408	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k).multiply(k)))	a(n) = 2*a(n-1)-a(n-3)+2a([n/2])+3a([n/3]+...+ 4a([n/n]) 1,1,1
+A298409	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k).multiply(k)))	a(n) = 2*a(n-1)-a(n-3)+2a([n/2])+3a([n/3]+...+ 4a([n/n]) 1,2,3
+
+A298413	genrec1	0	1,2,3	n -> a(n/2).multiply(a((int) Math.ceil((double) n/2)))	, where a(0) = 1, a(1) = 2, a(2) = 3.	a(n) = a(floor(n/2))*a(ceiling(n/2)), where a(0) = 1, a(1) = 2, a(2) = 3.	
+A298415	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2).multiply2()).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = a(n-1) + 2*a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
+A298414	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-2)).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = 2*a(n-1) - a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
+A298412	genrec1	0	1,1,1	n -> a(n-1).multiply2().add(a(n-2)).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = 2*a(n-1) + a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
+A298416	genrec1	0	1,1,1	n -> a(n-1).multiply2().add(a(n-2).multiply2()).subtract(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = 2*a(n-1) + 2*a(n-2) - a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
+A298417	genrec1	0	1,1,1	n -> a(n-1).multiply2().add(a(n-2).multiply2()).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = 2*a(n-1) + 2*a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
+A298419	genrec1	0	1,1,1	n -> a(n-1).multiply(n).subtract(a(n-2)).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = n*a(n-1) - a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	

@@ -87,16 +87,18 @@ runall: # current set of packages
 #----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
-	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) -D $(A)    | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) -D $(A)               2>&1   | tee x.tmp
+seqte: # A=$(A) - test with errors
+	$(JAVA) irvine.test.SequenceTest -a $(A)               -n $(NT) -o $(OFFSET)                       2>&1   | tee x.tmp
 seqtri: # A=$(A) - print data in triangle format
-	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -T $(A)    | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -T $(A) 2>&1   | tee x.tmp
 seqtris: # A=$(A) - print data in upper left triangle format
-	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -S $(A)    | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -S $(A) 2>&1   | tee x.tmp
 seqtrir: # A=$(A) - print data in upper right triangle format
-	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -R $(A)    | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -R $(A) 2>&1   | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
 	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -o $(OFFSET) -B $(A) | tee x.tmp
-seqhelp: # 
+seqhelp: #
 	$(JAVA) irvine.oeis.SequenceFactory --help
 jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
 	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
@@ -497,7 +499,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-06-06: # RH=76
+anabuild: #.2022-06-07: # RH=76
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	LATER=
+	echo A057522 A062634 A065122 A079000 A103566 A175442 A175434 A283765 A298338 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A001761" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-06-06: # RH=76
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -691,7 +706,7 @@ anabuild.2022-05-05:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v *.man *.sql *.pl *.jpat
-	make CC=A203264   select       gener 
+	make CC=A203264   select       gener
 	make CC=A203761   select       gener
 	make CC=A205558   select       gener
 	make CC=perman    select       gener
@@ -880,14 +895,14 @@ anabuild.2022-03-17:
 	cp -v park2/*.java manual
 	make CC=man       man
 	make dist testall log
-anabuild.2022-03-15: 
+anabuild.2022-03-15:
 	# make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A067480   select       gener
 	make CC=denrat    select       gener
 	make CC=man       man
 	make dist testall log
-anabuild.2022-03-12: 
+anabuild.2022-03-12:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A103123   select       gener
@@ -895,26 +910,26 @@ anabuild.2022-03-12:
 	make CC=A165471   select       gener
 	make CC=man       man
 	make dist testall log
-anabuild.2022-03-01: 
+anabuild.2022-03-01:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A055143   select       gener
 	make CC=man       man
 	make dist testall log
-anabuild.2022-02-28: 
+anabuild.2022-02-28:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A067067   select       gener
 	make CC=A105501   select       gener
 	make CC=man       man
 	make dist testall log
-anabuild.2022-02-27: 
+anabuild.2022-02-27:
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=A008905   select       gener
 	make CC=A056176   select       gener
-	make CC=cofrseq   select       gener 
-	make CC=posins    select       gener 
+	make CC=cofrseq   select       gener
+	make CC=posins    select       gener
 	make CC=man       man
 	cmd /c jodel A191359
 	cmd /c jodel A317413
@@ -924,7 +939,7 @@ anabuild.2022-02-25: # *JA=65
 	make purge
 	git add -v *.man *.sql *.pl *.jpat
 	make CC=cofrman   select       gener
-	make CC=insect    select       gener 
+	make CC=insect    select       gener
 	make CC=cofrman   man dist testall log
 anabuild.2022-02-22: # *JA=65
 	make purge
@@ -4813,7 +4828,7 @@ dirichcon:
 essent:
 	cp -v $@.man $@.gen
 moebiusx:
-	cp -v $@.man $@.gen   
+	cp -v $@.man $@.gen
 stirling2: # A052856, A052875, A069321, A140585 manually mod.
 	cp -v $@.man $@.gen
 #----
@@ -6573,7 +6588,7 @@ primen:
 	grep -E "^A[0-9]+" primen1.tmp \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #-------------------
 # Binary quadratic forms - Wiki has 695
 qfb: qfb0
@@ -6695,20 +6710,27 @@ somos0:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 somos1:
-	grep -E "^\%[NFCO]" $(COMMON)/jcat25.txt | grep -P "a\(n[\+\-\d]+\) *\=|\A\%O" \
-	| grep -vEi "sum|prod" > $@.tmp
+	grep -E "^\%[NFCO]" $(COMMON)/jcat25.txt | grep -P "a\(n[\+\-\d]+\)|\A\%O" \
+	| grep -vEi "sum|prod|divi|digit" \
+	| perl oshrink.pl \
+	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-cordrec:
-	perl cordrec.pl -A somos1.tmp 2> $@.rest.tmp \
-	| sort | uniq -w7 \
-	>        $@.gen 
-	head -n4 $@.gen
+cordrec_prep:
+	perl cordrec_prep.pl -A somos1.tmp 2> $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
 	cut -f6  $@.rest.tmp | sort | uniq -c
-	wc -l    $@.gen $@.rest.tmp
+	wc -l    $@.tmp $@.rest.tmp
+cordrec:
+	perl cordrec.pl -A cordrec_prep.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 somos2:
 	perl somos_grep.pl -A somos1.tmp 2> $@.rest.tmp \
-	| sort | uniq -w7 > $@.tmp 
+	| sort | uniq -w7 > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.*tmp
 somos3:
