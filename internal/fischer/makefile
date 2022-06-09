@@ -124,6 +124,8 @@ regtest:
 	grep -P "\AA\d+\t$(CLASS)\t" $(COMMON)/joeis_names.txt | cut -f1 > $(CLASS).gen
 	wc -l $(CLASS).gen
 	make CC=$(CLASS) test log
+runpari:
+	$(JAVA) org.teherba.extcas.RunPARI  $(CMD)
 #----------------------------------
 # Generation of groups of sequences
 #----------------------------------
