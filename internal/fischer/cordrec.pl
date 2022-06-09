@@ -8,7 +8,7 @@
 #:# Usage:
 #:# grep -E "^\%[NFCO]" $(COMMON)/jcat25.txt \
 #:# | perl cordrec_prep.pl \
-#:# | perl cordrec.pl [-A] > output.seq4 
+#:# | perl cordrec.pl [-A] > output.seq4
 #:#   -A do not generate when there are foreign A-numbers
 #:#
 #:# Offsets come at the end of a block in cat25.txt.
@@ -19,14 +19,14 @@ use integer;
 use warnings;
 
 my $debug = 0;
-my $withoutA = 0;
+my $withA = 1;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt  =~ m{d}) {
         $debug      = shift(@ARGV);
     } elsif ($opt  =~ m{A}) {
-        $withoutA   = 1;
+        $withA      = 0;
     }
 } # while $opt
 
@@ -45,32 +45,46 @@ my $order;
 while (<>) {
     my $line = $_;
     $line =~ s/\s+\Z//; # chompr
-    ($aseqno, $callcode, $offset, $order, $nshift, $inits, $expr, $name = split(/\t/, $line);
-    if (0) {
-    } else {
-        $expr = &unshield(&zexpr($expr));
-        if (length($expr) > 1024) {
-            $nok = "length  > 1024";
+    $nok = "";
+    if ($line !~ m{\AA\d+}) { # comment line
+        print "$line\n";
+    } else { # seq4 record
+        ($aseqno, $callcode, $offset, $order, $nshift, $inits, $expr, $name) = split(/\t/, $line);
+        if (0) {
+        } else {
+            $expr = &unshield($expr);
+            if (length($expr) > 1024) {
+                $nok = "length  > 1024";
+            }
+            if (($expr =~ m{mA\d+}) && $withA == 0) {
+                $nok = "skip A-number";
+            }
         }
-        if ($withoutA && ($expr =~ m{mA\d+})) {
-            $nok = "with A-number";
+        if (length($nok) == 0) {
+            #                      aseqno    callcode  offset   parm1   parm2    parm3   parm4  parm5
+            print  join("\t",     $aseqno, $callcode, $offset, $order, $nshift, $inits, $expr, $name) . "\n";
+        } else {
+            print STDERR join("\t", $aseqno, "$nok" , $offset, $order, $nshift, $inits, $expr, $name) . "\n";
         }
-    }
-    if (length($nok) == 0) {
-        #                      aseqno    callcode  offset   parm1   parm2    parm3   parm4  parm5
-        print  join("\t",     $aseqno, $callcode, $offset, $order, $nshift, $inits, $expr, $name) . "\n";
-    } else {
-        print STDERR join("\t", $aseqno, "$nok" , $offset, $order, $nshift, $inits, $expr, $name) . "\n";
-    }
+    } # seq4 record
 } # while
 #----
 sub unshield {
     my ($expr) = @_;
-    $expr =~ tr{\<\>\{\}\[\]}
-               {\(\)\(\)\(\)]; # unshield brackets
-    $expr =~ s{\.mul\(} {\.multiply\(}g;
-    $expr =~ s{\.add\(} {\.add\(}g;
-    $expr =~ s{\.sub\(} {\.subtract\(}g;
+#   $expr =~ tr{\<\>\{\}\[\]\~\#\µ\°}
+#              {\(\)\(\)\(\)\-\+\/\*}; # unshield brackets and + - * /
+    $expr =~ tr{\<\>\{\}\[\]\~\#}
+               {\(\)\(\)\(\)\-\+}; # unshield brackets and + - * /
+    $expr =~ s{\°}{\*}g;
+    $expr =~ s{\µ}{\/}g;
+    $expr =~ s{\.mul\(}             {\.multiply\(}g;
+#   $expr =~ s{\.add\(}             {\.add\(}g;
+    $expr =~ s{\.sub\(}             {\.subtract\(}g;
+    $expr =~ s{\A\-(${esc}__?\d+)}  {$1\.negate\(\)};
+    $expr =~ s{\A\-(\d+)}           {Z\.valueOf\(\-$1\)};
+    $expr =~ s{\A\(\-([n\d]+)}         {\(Z\.valueOf\(\-$1\)};
+    $expr =~ s{\A\(([n\d]+)}        {\(Z\.valueOf\($1};
+    $expr =~ s{\(\(([n\d]+)}        {\(Z\.valueOf\($1};
     $expr =~ s{${Esc}(\d+)_0}       {mA$1m0}g;
     $expr =~ s{${Esc}(\d+)__(\d+)}  {mA$1p$2}g;
     $expr =~ s{${Esc}(\d+)_(\d+)}   {mA$1m$2}g;
@@ -78,8 +92,12 @@ sub unshield {
     $expr =~ s{${esc}__(\d+)}       {a\(n\+$1\)}g;
     $expr =~ s{${esc}_(\d+)}        {a\(n\-$1\)}g;
     # patches:
-    $expr =~ s{\.mod\((\d+|n)\)}    {\.mod\(Z.valueOf\($1\)\)}g;
-    $expr =~ s{\.xor\((\d+|n)\)}    {\.mod\(Z.valueOf\($1\)\)}g;
+    #            1            1
+    $expr =~ s{\((\([^\(\)]+\))\)}                  {$1}g;
+    $expr =~ s{\.mod\((\d+|n)\)}                    {\.mod\(Z.valueOf\($1\)\)}g;
+    $expr =~ s{\.xor\((\d+|n)\)}                    {\.xor\(Z.valueOf\($1\)\)}g;
+    $expr =~ s{\.add\(Z\.valueOf\((\d+|n)\)\)}      {\.add\($1\)}g;
+    $expr =~ s{\((\d+|n)\.}                         {\(Z\.valueOf\($1\)\.}g;
     return $expr;
 } # unshield
 #========

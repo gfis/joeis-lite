@@ -85,19 +85,42 @@ while (<>) {
                         $max = $max > $d ? $max : $d + 0;
                     } ($expr =~ m{a\(n([+\-]\d+)?\)}g);
                     $order = $max - $min;
+                    $expr =~ s{\)([na$Esc])}       {\)\*$1}g;  # )b -> )*b
+                    $expr =~ s{(\d)(\(|[a-z])}     {$1\*$2}g;  # 3( -> 3*(, 3b -> 3*b
+                    $expr =~ s{\)\(}               {\)\*\(}g;  # )( -> )*(
+                    $expr =~ s{n\^2}               {n\*n}g;    # n^2 -> n*n
                     $expr =~ s{A(\d+)\(n\)}        {$Esc${1}_0}g;
                     $expr =~ s{A(\d+)\(n\+(\d+)\)} {$Esc${1}__$2}g;
                     $expr =~ s{A(\d+)\(n\-(\d+)\)} {$Esc${1}_$2}g;
-                    $expr =~ s{\)([na$Esc])}       {\)\*$1}g;  # )b -> )*b
-                    $expr =~ s{(\d)(\(|a)}         {$1\*$2}g;  # 3( -> 3*(, 3b -> 3*b
-                    $expr =~ s{\)\(}               {\)\*\(}g;  # )( -> )*(
                     $expr =~ s{a\(n\)}             {${esc}_0}g;
                     $expr =~ s{a\(n\+(\d+)\)}      {${esc}__$1}g;
                     $expr =~ s{a\(n\-(\d+)\)}      {${esc}_$1}g;
+                    my $repls = 1;
+                    while ($repls > 0) {
+                        $repls = (
+                            #          1       12                      2
+                            $expr =~ s{([^a]|\A)(\([n\d\~\+\#\*\°\/\µ]*)\-}     {$1$2\~}g # shield "(n-..." -> (n~
+                          ) + (                    
+                            $expr =~ s{([^a]|\A)(\([n\d\-\~\#\*\°\/\µ]*)\+}     {$1$2\#}g # shield "(n+..." -> (n#
+                          ) + (                    
+                            $expr =~ s{([^a]|\A)(\([n\d\-\~\+\#\°\/\µ]*)\*}     {$1$2\°}g # shield "(n*..." -> (n°
+                          ) + (                    
+                            $expr =~ s{([^a]|\A)(\([n\d\-\~\+\#\*\°\µ]*)\/}     {$1$2\µ}g # shield "(n/..." -> (nµ
+                          )
+                    } # while repls
+                    #                               1                          1
+                    $expr =~             s{\(\~1\)\^(n|\d+|\([n\~\#\°\µ\d]+\))} {\(\($1 \& 1\) \=\= 0\) \? Z\.ONE \: Z\.NEG_ONE\)}g;
+                    $expr =~ s{\(\~(\d|n)\)}       {\(\~$1\)}g; # shield "(-2)" -> (~2)
+                    #                               1                          1
+                    $expr =~                 s{\b2\^(n|\d+|\([n\~\#\°\µ\d]+\))} {Z\.ONE\.shiftLeft\($1\)}g; # replace 2^(n~1)
+                    #          1                 1  2                          2
+                    $expr =~ s{(\d+|\([\~\-]\d+\))\^(n|\d+|\([n\~\#\°\µ\d]+\))} {Z\.valueOf\($1\)\.pow\($2\)}g; # replace 10^(n~1)
+                    print join("\t", "# $aseqno", $expr) . "\n";
+                    $expr =~ s{\)([\#\~][n\~\#\+\-\*\d]+)\)}  {\)\.add\($1\)\)}g; # )+1) -> ).add(+1))
                     if (0) {
                     } elsif ($order > 16) {
                         $nok = "order > 16";
-                    } elsif ($expr =~ m{a|A\d+}   ) {
+                    } elsif ($expr =~ m{a\(|A\d+}   ) {
                         $nok = "remaining aA()";
                     } elsif ($expr !~ m{[\d\)n]\Z}) {
                         $nok = "wrong tail";
@@ -129,11 +152,11 @@ sub zexpr { # handle trailing mod and divisor
     my ($numer, $denom) = ("", "");
     if (0) {
     #                       1      1    23    3    2
-    } elsif ($expr =~ m{\A\(([^\)]+)\)\/(.*)\Z}) { # cut of trailing divisor
+    } elsif ($expr =~ m{\A\(([^\)]+)\)\/(.*)\Z}) { # cut off trailing divisor
         ($numer, $denom) = ($1, $2);
         $expr = &zsum($numer) . ".divide($denom)";
     #                       1      1    23    3    2
-    } elsif ($expr =~ m{\A\(([^\)]+)\)\%(.*)\Z}) { # cut of trailing mod
+    } elsif ($expr =~ m{\A\(([^\)]+)\)\%(.*)\Z}) { # cut off trailing mod
         ($numer, $denom) = ($1, $2);
         $expr = &zsum($numer) . ".mod($denom)";
     } 
@@ -147,8 +170,11 @@ sub zexpr { # handle trailing mod and divisor
 #----
 sub zsum { # handle sum separated by "+" and "-"
     my ($expr) = @_;
-    $expr =~ s{([\-])}{\+$1}g; # shield "-" = subtract
+    $expr =~ s{([\-])}{\+$1}g; # shield "-" -> "+-"
     my @parts = split(/\+/, $expr); # split on shield
+    for (my $ipa = 0; $ipa < scalar(@parts); $ipa ++) {
+        $parts[$ipa] = &zprod($parts[$ipa]);
+    } # for $ipa
     if (scalar(@parts) > 0 && ($parts[0] =~ m{\A([\-]?(\d+|n|\(\[n\d\+\-]+\)))})) { # first starts with simple
         if (scalar(@parts) == 1) { # the only one
             $parts[0] = "Z.valueOf($parts[0])";
@@ -162,11 +188,11 @@ sub zsum { # handle sum separated by "+" and "-"
         my $part = $parts[$ipa];
         if (0) {
         } elsif ($ipa == 0) {
-            $parts[$ipa] =            &zprod($part);
+            $parts[$ipa] =           $part;
         } elsif ($ipa == 1) {
-            $parts[$ipa] =  ".add<" . &zprod($part) . ">";
+            $parts[$ipa] = ".add<" . $part . ">";
         } else {
-            $parts[$ipa] = ">.add<" . &zprod($part) . ">";
+            $parts[$ipa] = ".add<" . $part . ">";
         }
     } # for $ipa
     my $result = join("", @parts);
@@ -179,9 +205,10 @@ sub zsum { # handle sum separated by "+" and "-"
 #----
 sub zprod { # handle product separated by "*", put non-Z factors at the 2nd position
     my ($expr) = @_;
-    $expr =~ s({[\%\§])}{\*$1}g; # shield "%" = mod and "§" = xor
+    $expr =~ s({[\%\§])}{\*$1}g; # shield "%" -> "*%" (mod) and "§" -> "*§" (xor)
     my @parts = split(/\*/, $expr);
-    if (scalar(@parts) > 0 && ($parts[0] =~ m{\A([\%\§]?(\d+|n|\(\[n\d\+\-]+\)))})) { # first starts with simple
+    #                                           1       2                                 21
+    if (scalar(@parts) > 0 && ($parts[0] =~ m{\A([\%\§]?(\d+|n|\(\[n\d\-\~\+\#\*\°\/\µ]+\)))})) { # first starts with simple
         if (scalar(@parts) == 1) { # the only one
             $parts[0] = "Z.valueOf($parts[0])";
         } else { # switch to 2nd pos.
@@ -198,9 +225,9 @@ sub zprod { # handle product separated by "*", put non-Z factors at the 2nd posi
         } elsif ($ipa == 0) {
             $parts[$ipa] =                 $part;
         } elsif ($ipa == 1) {
-            $parts[$ipa] =  ".mul[" . $part . "]";
+            $parts[$ipa] = ".mul[" . $part . "]";
         } else {
-            $parts[$ipa] = "].mul[" . $part . "]";
+            $parts[$ipa] = ".mul[" . $part . "]";
         }
     } # for $ipa
     my $result = join("", @parts);
@@ -210,6 +237,12 @@ sub zprod { # handle product separated by "*", put non-Z factors at the 2nd posi
     $result =~ s{\(\.mul\[\-(\d+)\]\)}{\{-$1\}}g;
     return $result;
 } # zprod
+#----
+sub shipm { # shield + - 
+	my ($expr) = @_;
+	$expr =~ tr{\-\+}{\~\#};
+	return $expr;
+} # shipm
 #========
 __DATA__
 A141542	genrec	0	4	0	xxxx	µ1+µ2+µ3+µ4				a(n) =a(n - 1) + a(n - 2) + a(n - 3) + a(n - 4); Renormalized factorial; f(n) = a(n)*n*f(n - 1)/a(n - 1); Neo-combination: t(n, m) = f(n)/(f(n - m)*f(m))

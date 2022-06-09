@@ -7,10 +7,16 @@ UPDATE seq4 s SET s.parm3
      WHERE d.aseqno = s.aseqno
   );
 DELETE FROM seq4 WHERE aseqno IN 
-( 'A079352'
-, 'A081090'
-, 'A133266'
-, 'A173329'
-, 'A322567'
+('A079352'
+,'A081090'
+,'A133266'
+,'A173329'
+,'A217592'
+,'A224550'
+,'A255228'
+,'A322567'
 );
+UPDATE seq4 s SET s.parm3 = '1,1,1,2' WHERE aseqno IN ('A064183');
+UPDATE seq4 s SET s.parm3 = '1,1,3'   WHERE aseqno IN ('A329470');
+UPDATE seq4 s SET s.name = (SELECT SUBSTR(n.name,1, 256) FROM asname n WHERE n.aseqno = s.aseqno);
 COMMIT;

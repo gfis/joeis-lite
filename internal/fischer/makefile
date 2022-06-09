@@ -358,8 +358,6 @@ man: # copy sources that where manually edited
 	perl copyman.pl > $@.gen
 	sort $@.gen $(CC).gen | uniq -w7 > $@.tmp
 	mv $@.tmp $(CC).gen
-cm:
-	make CC=man man distel
 dist:
 	# ---- $@ CC=$(CC)
 	rm -f dist.log
@@ -499,7 +497,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-06-07: # RH=76
+anabuild: #.2022-06-09:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	LATER=
+	echo  \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-06-08: # FP=8
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -6717,19 +6728,22 @@ somos1:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 cordrec_prep:
-	perl cordrec_prep.pl -A somos1.tmp 2> $@.rest.tmp \
+	perl cordrec_prep.pl -A  somos1.tmp 2> $@.rest.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	cut -f6  $@.rest.tmp | sort | uniq -c
 	wc -l    $@.tmp $@.rest.tmp
 cordrec:
-	perl cordrec.pl -A cordrec_prep.tmp \
+	perl cordrec.pl -A cordrec_prep.tmp 2> $@.rest.tmp \
 	| sort | uniq -w7 \
 	>        $@.gen
+	#
+	wc -l    $@.gen $@.rest.tmp
+	# make overwrite SRC=$@.man TAR=$@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen
+	wc -l    $@.gen $@.rest.tmp
 somos2:
-	perl somos_grep.pl -A somos1.tmp 2> $@.rest.tmp \
+	perl somos_grep.pl -A somos1.tmp    2> $@.rest.tmp \
 	| sort | uniq -w7 > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.*tmp

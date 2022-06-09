@@ -6,6 +6,7 @@ import irvine.oeis.recur.ConstantOrderRecurrence;
 
 /**
  * $(ASEQNO) $(NAME)
+ * <code>$(PARM5)</code>
  * @author $(AUTHOR)
  */
 public class $(ASEQNO) extends ConstantOrderRecurrence {
@@ -14,7 +15,7 @@ public class $(ASEQNO) extends ConstantOrderRecurrence {
   public $(ASEQNO)() {
     super($(OFFSET), $(PARM1), $(PARM2), $(PARM3));
   }
-  
+
   @Override
   protected Z compute(final int n) {
     return $(PARM4);
