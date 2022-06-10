@@ -72,7 +72,7 @@ all:
 	# Possible targets:
 	grep -E "^[a-z]" makefile | sort
 #----
-kill:
+killmake:
 	cmd /c tasklist | grep make | cut -b28-34 | xargs -l -innn cmd /c taskkill /F /PID nnn
 #----------------------------------
 runall: # current set of packages
@@ -252,8 +252,10 @@ select2: # require not in joeis: JO= (default) / require not in poeis: PO=1 (def
 	make seq4 LIST=$(CC).gen
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(i.offset1, s.offset) \
-	    , s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.parm8, s.name \
+	    , s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.parm8, \
+	    COALESCE(SUBSTR(n.name, 1, 256), 'Name?') \
 	    FROM seq4 s LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
+	                LEFT JOIN asname n ON i.aseqno = n.aseqno \
 	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
 	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 	    ORDER BY 1" \
@@ -1772,6 +1774,14 @@ bindec:	# binary constants (characteristic functions) -> decimal
 	wc -l    $@.gen
 smoothn:	# smooth <= n
 	grep -E "^A[0-9]" $(CONSTANT)/$@.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+# bridges
+paria:
+	head -n$(MANY) $(COMMON)/../bridge/paria_mm.gen \
+	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

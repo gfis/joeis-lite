@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-06-10: V4.2, suppress auto-import generation for uppercase in PARI scripts (Strings)
 # 2022-05-31: V4.1, last parm was not generated
 # 2022-05-31: V4.0, suppress "\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)"
 # 2022-05-20: V3.9, Cheetah -> Jaguar
@@ -359,7 +360,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
             my $last_name = $1;
             my $found = 0;
             foreach my $key (keys(%imports)) {
-                if ($key =~ m{\.$last_name\Z}) {
+                if (($key =~ m{\.$last_name\Z}) || ($key =~ m{cheat\.bridge})) {
                     $found = 1;
                 }
             } # foreach $key

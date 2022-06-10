@@ -2,6 +2,7 @@
 
 # Kill running java process BatchTest
 # @(#) $Id$
+# 2022-06-10: kill any gpbridge processes also
 # 2020-06-19, Georg Fischer
 #
 #:# Usage:
@@ -54,6 +55,27 @@ if (scalar(@bt_line) == 1) {
         print "BatchTest process not found\n";
     }
 }
+# now kill any remaining gpbridge processes
+if ($is_unix) {
+    foreach my $line (split(/\r?\n/, `tasklist | grep gpbridge` . "\n")) {
+        if ($line =~ m{\Agpbridge\S+\s+(\d+)}) {
+            my $pid = $1;
+            print `kill -9 $pid`;
+        }
+    }
+    # Unix
+} else { # Windows
+    foreach my $line (split(/\r?\n/, `ps -efa | grep gpbridge` . "\n")) {
+        if ($line =~ m{\Agpbridge\S+\s+(\d+)}) {
+            my $pid = $1;
+            print `taskkill /F /PID $pid`;
+        }
+    }
+    # Windows
+}
 
 #---------------------------------------
 __DATA__
+gpbridge.exe                 12512 Console                    1        11.348 K
+gpbridge.exe                  9860 Console                    1        11.340 K
+gpbridge.exe                 10160 Console                    1        11.328 K

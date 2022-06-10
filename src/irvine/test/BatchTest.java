@@ -1,5 +1,7 @@
+package irvine.test;
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  2022-06-10: V3.0: FATO destroys the subprocess of a CASBridge sequence
  *  2020-10-10: V2.3: "Total" message
  *  2020-08-30: V2.2: trailing "/" in b-file path is optional
  *  2020-08-16: V2.1: 8 terms for FAIL
@@ -21,10 +23,6 @@
  *  2019-04-09: read from b-file
  *  2019-04-05, Georg Fischer: copied from org.teherba.ramath.util.ExpressionReader
  */
-package irvine.test;
-import irvine.math.z.Z;
-import irvine.oeis.Sequence;
-
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File; // delete()
@@ -35,6 +33,10 @@ import java.nio.channels.FileChannel; // seekable()
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 
+import cheat.bridge.CASBridge;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+
 /** Reads a subset of OEIS 'stripped', calls jOEIS sequence classes
  *  and compares the results
  *  @author Dr. Georg Fischer
@@ -43,7 +45,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V2.3";
+  private static String VERSION = "BatchTest V3.0";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -303,6 +305,9 @@ public class BatchTest {
         printLog( "FAIL", diffExpected, "computed:\t" + diffComputed);
       }
       try {
+        if (seq instanceof CASBridge) {
+          ((CASBridge) seq).destroy(); // destroy the subprocess
+        }
         if (seq instanceof Closeable) {
           ((Closeable) seq).close();
         }
