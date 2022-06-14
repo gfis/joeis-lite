@@ -1,170 +1,124 @@
-
-#
-# %C A133423 The 5x+1 map sends x to x/2 if x is even, x/3 if x is divisible by 3, otherwise 5x+1.
-# %C A276290 Conjecture: If n is the product of two odd primes p and q and p is equal to 3, then neither p nor q is in the trajectory of (p*q)+1 under the Collatz 3x+1 map (A014682). - _Marina Ibrishimova_, Aug 29 2016
-# %C A332018 This is the '5x+1' map with the successive dividing steps removed. The 'Px+1' map with those steps removed: If x is divisible by any prime < P, then divide out those primes; otherwise multiply x by P, add 1, and then divide out the primes < P.
-# %N A057684 Trajectory of 13 under the '13x+1' map.
-# %N A100709 Trajectory of 1001 under "3x+1" map.
-# %N A267703 Conjectured list of numbers n such that the trajectory of n under the '7x+1' map does not cycle.
-# 2022-06-07
-# ??? A079358	parmof4	1	A079000	1	1	n -> !n.mod(Z.THREE).isZero() && !n.mod(Z.FOUR).isZero()	"spig"	is not a multiple of either 3 or 4.".	
-# A079255	parmof4	1	A079000	1	n -> n.	"spig"	is odd and a(n+1) is even" can be satisfied.	
-# A079325	parmof4	1	A079000	1	n -> n.	"spig"	is a member of A079000".	
-# A080653	parmof4	1	A079000	2	n -> n.	"s ig"	nice,synth	1..65	unkn	_Matthew Vandermast_, Mar 01 2003
-# A175527 nyi Fto  Digit sum of 13^n.      base,nonn,      0..1000 nyi     _N. J
-# A298350	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(-(-n/2)).multiply2())           	a(n) = a(n-1)+a(n-2)+2 a(ceiling(n/2))                   1,1,1
-# A298404	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(a(-(-n/2)))      	a(n) = 2*a(n-1)-a(n-3)+a(ceiling(n/2))                   1,1,1
-# grep -Pi "(\d+|p)\*?x *\+ *1[^m]+map" jcat25.txt
-# guide in A298338
-# limit? A079256	parmof4	1	A079000	1	1	n -> n.bitCount() == 1	"spig"	is a power of 2".	
-A057522	parm3	0	A057522	73	2,3,5,7,11,13
-A057534	parm3	0	A057522	61	2,3,5,7,11,13,17
-A057614	parm3	0	A057522	17	2,3,5,7,11
-A057684	parm3	0	A057522	13	2,3,5,7,11,13
-A057685	parm3	0	A057522	19	2,3,5,7,11,13,17,19
-A057686	parm3	0	A057522	23	2,3,5,7,11,13,17,19,23
-A057687	parm3	0	A057522	29	2,3,5,7,11,13,17,19,23,29
-A062634	parm3	1	A062634	false	1	every divisor       of k contains the digit 1.	nonn,base,easy,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062649	parm3	1	A062634	true	1	Composite hat every divisor            contains the digit 1.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062653	parm3	1	A062634	false	2	Every divisor (except 1) contains the digit 2.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062664	parm3	1	A062634	true	2	Composite and every divisor (except 1) contains the digit 2.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062667	parm3	1	A062634	false	3	Every divisor (except 1) contains the digit 3.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062668	parm3	1	A062634	true	3	Composite and every divisor (except 1) contains the digit 3.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062669	parm3	1	A062634	false	4	Every divisor (except 1) contains the digit 4.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062670	parm3	1	A062634	true	4	Composite and every divisor (except 1) contains the digit 4.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062671	parm3	1	A062634	false	5	Every divisor (except 1) contains the digit 5.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062672	parm3	1	A062634	true	5	Composite and every divisor (except 1) contains the digit 5.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062673	parm3	1	A062634	false	6	Every divisor (except 1) contains the digit 6.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062674	parm3	1	A062634	true	6	Composite and every divisor (except 1) contains the digit 6.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062675	parm3	1	A062634	false	7	Every divisor (except 1) contains the digit 7.	nonn,base,easy,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062676	parm3	1	A062634	true	7	Composite and every divisor (except 1) contains the digit 7.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062677	parm3	1	A062634	false	8	every divisor (except 1) contains the digit 8.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062678	parm3	1	A062634	true	8	Composite and every divisor (except 1) contains the digit 8.	base,easy,nonn,changed,	1..10000	nyi	_Erich Friedman_, Jul 04 2001
-A062679	parm3	1	A062634	false	9	Numbers such that every divisor (except 1, but including the number itself) contains the digit 9.
-A062680	parm3	1	A062634	true	9	Composite numbers whose divisors (except 1) all contain the digit 9.
-A065122	parm3	1	A065122	10	 2	a(n) is smallest prime > 10*a(n-1)  a(1) =  2; .
-A065533	parm3	1	A065122	10	 3	a(n) is smallest prime > 10*a(n-1), a(1) =  3.
-A065534	parm3	1	A065122	10	 5	a(n) is smallest prime > 10*a(n-1), a(1) =  5.
-A065537	parm3	1	A065122	10	 7	a(n) is smallest prime > 10*a(n-1), a(1) =  7.
-A065538	parm3	1	A065122	10	11	a(n) is smallest prime > 10*a(n-1), a(1) = 11.
-A065539	parm3	1	A065122	10	13	a(n) is smallest prime > 10*a(n-1), a(1) = 13.
-A065540	parm3	1	A065122	 3	 3	a(n) is smallest prime >  3*a(n-1), a(1) =  3.
-A065541	parm3	1	A065122	 5	 5	a(n) is smallest prime >  5*a(n-1), a(1) =  5.
-A065542	parm3	1	A065122	 7	 7	a(n) is smallest prime >  7*a(n-1), a(1) =  7.
-A065543	parm3	1	A065122	11	11	a(n) is smallest prime > 11*a(n-1), a(1) = 11.
-A065544	parm3	1	A065122	13	13	a(n) is smallest prime > 13*a(n-1), a(1) = 13.
-A065545	parm3	1	A065122	 2	 3	a(n) is smallest prime >  2*a(n-1), a(1) =  3.
-A065546	parm3	1	A065122	 2	13	a(n) is smallest prime >  2*a(n-1), a(1) = 13.
-A076656	parm3	1	A065122	 3	 2	a(n) is smallest prime >  3*a(n-1)  a(1) =  2;
-A079000	parmof4	1	A079000	1	1	n -> n.isOdd()	"spig"	is odd".	
-A079253	parmof4	0	A079000	0	1	n -> n.isEven()	"spig"	is even".	
-A079254	parmof4	1	A079000	1	1	n -> n.isProbablePrime()	"spig"	is prime".	
-A079257	parmof4	0	A079000	0	1	n -> n.multiply(8).add(1).isSquare()	"spig"	is a triangular number".	
-A079258	parmof4	0	A079000	0	1	n -> n.isSquare()	"spig"	is a square".	
-A079313	parmof4	1	A079000	1	02	n -> n.isOdd()	"spip"	is odd".	
-A080029	parmof4	0	A079000	0	02	n -> n.mod(Z.THREE).isZero()	"spip"	is a multiple of 3".	
-A080030	parmof4	0	A079000	2	02	n -> n.mod(Z.THREE).equals(Z.ONE)	"spip"	is congruent to 1 mod 3".	
-A080031	parmof4	1	A079000	1	02	n -> n.mod(Z.THREE).equals(Z.TWO)	"spip"	is congruent to 2 mod 3".	
-A080032	parmof4	1	A079000	1	2	n -> n.isEven()	"spip"	is even".	
-A080033	parmof4	1	A079000	1	2	n -> n.mod(Z.FOUR).isZero()	"spip"	is a multiple of 4".	
-A080034	parmof4	1	A079000	1	2	n -> n.mod(Z.FOUR).equals(Z.THREE)	"spip"	is congruent to 3 mod 4".	
-A080591	parmof4	1	A079000	1	1	n -> n.mod(Z.FOUR).equals(Z.THREE)	"spig"	is congruent to 3 mod 4".	
-A080639	parmof4	1	A079000	1	04	n -> n.isEven()	"s ig"	is even".	
-A080640	parmof4	1	A079000	3	1	n -> n.mod(Z.FOUR).isZero()	"s ig"	is divisible by 4".	
-A080641	parmof4	1	A079000	4	1	n -> n.mod(Z.FIVE).isZero()	"s ig"	is divisible by 5".	
-A080644	parmof4	1	A079000	5	1	n -> n.mod(Z.SIX).isZero()	"s ig"	is divisible by 6".	
-A080710	parmof4	0	A079000	1	1	n -> n.mod(Z.THREE).isZero()	"s ig"	is a multiple of 3".	
-A080711	parmof4	0	A079000	2	1	n -> n.mod(Z.THREE).isZero()	"s ig"	is a multiple of 3".	
-A080712	parmof4	0	A079000	4	1	n -> n.mod(Z.THREE).isZero()	"s ig"	is a multiple of 3".	
-A080720	parmof4	0	A079000	5	1	n -> n.mod(Z.THREE).isZero()	"s ig"	is a multiple of 3".	
-A080722	parmof4	0	A079000	0	04	n -> n.mod(Z.THREE).equals(Z.ONE)	"s ig"	== 1 mod 3".	
-A080723	parmof4	0	A079000	1	04	n -> n.mod(Z.THREE).equals(Z.ONE)	"s ig"	== 1 mod 3".	
-A080724	parmof4	0	A079000	2	1	n -> n.mod(Z.THREE).equals(Z.ONE)	"s ig"	== 1 mod 3".	
-A080725	parmof4	1	A079000	2	1	n -> n.mod(Z.THREE).equals(Z.ONE)	"s ig"	== 1 mod 3".	
-A080726	parmof4	0	A079000	0	04	n -> n.mod(Z.THREE).equals(Z.TWO)	"s ig"	== 2 mod 3".	
-A080727	parmof4	0	A079000	1	1	n -> n.mod(Z.THREE).equals(Z.TWO)	"s ig"	== 2 mod 3".	
-A080728	parmof4	0	A079000	3	1	n -> n.mod(Z.THREE).equals(Z.TWO)	"s ig"	== 2 mod 3".	
-A085925	parmof4	1	A079000	1	1	n -> !n.isProbablePrime()	"s ig"	is not prime".	
-A099797	parmof4	1	A079000	1	1	n -> !n.isProbablePrime() && !n.equals(Z.ONE)	"spig"	is composite".	
-A099798	parmof4	1	A079000	1	1	n -> n.isProbablePrime() || n.equals(Z.ONE)	"spig"	is not composite".	
-A100709	parm3	0	A057522	1001	2,3
-A103566	parm3	1	A103566	new A039701()	1	a(n+1)-a(n) = A039701(n+4) (first differences)
-A103567	parm3	1	A103566	new A039703()	2	a(n+1)-a(n) = A039703(n+4)
-A103568	parm3	1	A103566	new A039705()	0	a(n+1)-a(n) = A039705(n+4)
-A103569	parm3	1	A103566	new A039709()	7	a(n+1)-a(n) = A039709(n+4)
-A103570	parm3	1	A103566	new A039711()	7	a(n+1)-a(n) = A039711(n+4)
-A103571	parm3	1	A103566	new A039715()	7	a(n+1)-a(n) = A039715(n+4)
-A103572	parm3	1	A103566	new A033633()	7	a(n+1)-a(n) = A033633(n+4)
-A175434	parm2	1	A175434	2	(Digit sum of 2^n) mod n.	nonn,base,synth	1..100	nyi	_N. J. A. Sloane_, Dec 03 2010
-A175435	parm2	1	A175434	3	(Digit sum of 3^n) mod n.	nonn,base,	1..5000	nyi	_N. J. A. Sloane_, Dec 03 2010
-A175442	parm3	1	A175442	2	3	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=3
-A175443	parm3	1	A175442	2	5	         a(n+1) = smallest prime > a(n) such that a(n+1)+a(n) is multiple of 5.
-A175444	parm3	1	A175442	2	7	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=7
-A175445	parm3	1	A175442	2	9	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=9
-A175446	parm3	1	A175442	2	11	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=11
-A175447	parm3	1	A175442	2	13	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=13
-A175448	parm3	1	A175442	2	15	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=15
-A175449	parm3	1	A175442	2	17	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=17
-A175450	parm3	1	A175442	2	19	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=19
-A175451	parm3	1	A175442	2	21	a(n)>a(n-1), a(n) = smallest prime such that a(n)+a(n-1) is multiple of m, m=21
-A175456	parm2	1	A175434	5	(Digit sum of 5^n) mod n.	nonn,base,synth	1..100	nyi	_N. J. A. Sloane_, Dec 03 2010
-A175457	parm2	1	A175434	6	(Digit sum of 6^n) mod n.	nonn,base,synth	1..100	nyi	_N. J. A. Sloane_, Dec 03 2010
-A175512	parm2	1	A175434	7	(Digit sum of 7^n) mod n.       base,nonn,synth 1..100  nyi
-A175528	parm2	1	A175434	13	(Digit sum of 13^n) mod n.      nonn,base,      1..10000
-A175560	parm2	1	A175434	167	(Digit sum of 167^n) mod n.     base,nonn,synth 1..120  nyi
-A243819	parm3	1	A062634	true	0	Composite numbers n such that every divisor greater than one of n contains the digit 0.
-A243825	parm3	1	A062634	false	0	Numbers n such that every divisor greater than 1 contains the digit 0.
-A283765	posubse	1	A000201	term.isEven()		a(n+1) - a(n) is in {1,3,4}
-A283766	posubse	1	A000201	term.isOdd()		a(n+1) - a(n) is in {1,3,4}
-A283767	posubse	1	A001950	term.isEven()		a(n+1) - a(n) is in {1,2,3}
-A283768	posubse	1	A001950	term.isOdd()		a(n+1) - a(n) is in {1,2,3}
-A283769	posubse	1	A000201	term.mod(Z.THREE).equals(Z.ZERO)		a(n+1) - a(n) is in {2,5,7}
-A283770	posubse	1	A000201	term.mod(Z.THREE).equals(Z.ONE)		a(n+1) - a(n) is in {2,5,7}
-A283771	posubse	1	A000201	term.mod(Z.THREE).equals(Z.TWO)		a(n+1) - a(n) is in {2,5,7}
-A283772	posubse	1	A001950	term.mod(Z.THREE).equals(Z.ZERO)		a(n+1) - a(n) is in {1,6,7}
-A283773	posubse	1	A001950	term.mod(Z.THREE).equals(Z.ONE)		a(n+1) - a(n) is in {1,6,7}
-A283774	posubse	1	A001950	term.mod(Z.THREE).equals(Z.TWO)		a(n+1) - a(n) is in {1,6,7}
-A283775	posubse	1	A022838	term.isEven()		a(n+1) - a(n) is in {1,4,5}
-A283776	posubse	1	A022838	term.isOdd()		a(n+1) - a(n) is in {1,4,5}
-A283777	posubse	0	A022843	term.isEven()	next();	a(n+1) - a(n) is in {1,2,3}
-A283778	posubse	0	A022843	term.isOdd()		a(n+1) - a(n) is in {1,2,3}
-A298338	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(n/2))                           	a(n) = a(n-1)+a(n-2)+a([n/2])                            1,1,1
-A298339	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(n/2))                           	a(n) = a(n-1)+a(n-2)+a([n/2])                            1,2,3
-A298340	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(n/3))                           	a(n) = a(n-1)+a(n-2)+a([n/3])                            1,1,1
-A298341	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(n/3))                           	a(n) = a(n-1)+a(n-2)+a([n/3])                            1,2,3
-A298342	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(2*n/3))                         	a(n) = a(n-1)+a(n-2)+a([2n/3])                           1,1,1
-A298343	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(2*n/3))                         	a(n) = a(n-1)+a(n-2)+a([2n/3])                           1,2,3
-A298344	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(n/3)).add(a(2*n/3))             	a(n) = a(n-1)+a(n-2)+a([n/3]) +  a([2n/3])               1,1,1
-A298345	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(n/3)).add(a(2*n/3))             	a(n) = a(n-1)+a(n-2)+a([n/3]) +  a([2n/3])               1,2,3
-A298346	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a(n/2).multiply2())               	a(n) = a(n-1)+a(n-2)+2 a([n/2])                          1,1,1
-A298347	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a(n/2).multiply2())               	a(n) = a(n-1)+a(n-2)+2 a([n/2])                          1,2,3
-A298348	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a((n+1)/2))                       	a(n) = a(n-1)+a(n-2)+2 a([(n+1)/2])                      1,1,1
-A298349	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a((n+1)/2))                       	a(n) = a(n-1)+a(n-2)+2 a([(n+1)/2])                      1,2,3
-A298350	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a((int) Math.ceil((double) n/2)).multiply2())                       	a(n) = a(n-1)+a(n-2)+2 a(ceiling(n/2))                   1,1,1
-A298351	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a((int) Math.ceil((double) n/2)).multiply2())                       	a(n) = a(n-1)+a(n-2)+2 a(ceiling(n/2))                   1,2,3
-A298352	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a((n-1)/2))                       	a(n) = a(n-1)+a(n-2)+a([(n-1)/2])                        1,1,1
-A298353	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a((n-1)/2))                       	a(n) = a(n-1)+a(n-2)+a([(n-1)/2])                        1,2,3
-A298354	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(a((n-1)/2).multiply2())           	a(n) = a(n-1)+a(n-2)+2 a([(n-1)/2])                      1,1,1
-A298355	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(a((n-1)/2).multiply2())           	a(n) = a(n-1)+a(n-2)+2 a([(n-1)/2])                      1,2,3
-A298356	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k)))      	a(n) = a(n-1)+a(n-2)+a(n/2])+a([n/3]+...+a([n/n})       1,1,1
-A298357	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k)))      	a(n) = a(n-1)+a(n-2)+a(n/2])+a([n/3]+...+a([n/n})       1,2,3
-A298369	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k).multiply(k)))  	a(n) = a(n-1)+a(n-2)+2a([n/2])+3a([n/3]+...+4 a([n/n})   1,1,1
-A298370	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k).multiply(k))) 	a(n) = a(n-1)+a(n-2)+2a([n/2])+3a([n/3]+...+4a([n/n])    1,2,3
-A298400	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2)).subtract(a(n/2).multiply(n))          	a(n) = a(n-1)+a(n-2)-a([n/2])                            1,1,1
-A298401	genrec1	0	1,2,3	n -> a(n-1).add(a(n-2)).subtract(a(n/2).multiply(n))          	a(n) = a(n-1)+a(n-2)-a([n/2])                            1,2,3
-A298402	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(a(n/2))          	a(n) = 2*a(n-1)-a(n-3)+a([n/2])                          1,1,1
-A298403	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(a(n/2))          	a(n) = 2*a(n-1)-a(n-3)+a([n/2])                          1,2,3
-A298404	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(a((int) Math.ceil((double) n/2)))      	a(n) = 2*a(n-1)-a(n-3)+a(ceiling(n/2))                   1,1,1
-A298405	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(a((int) Math.ceil((double) n/2)))      	a(n) = 2*a(n-1)-a(n-3)+a(ceiling(n/2))                   1,2,3
-A298406	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k)))  	a(n) = 2*a(n-1)-a(n-3)+a([n/2])+a([n/3]+...+ a([n/n])    1,1,1
-A298407	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k)))  	a(n) = 2*a(n-1)-a(n-3)+a([n/2])+a([n/3]+...+ a([n/n])    1,2,3
-A298408	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-3)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k).multiply(k)))	a(n) = 2*a(n-1)-a(n-3)+2a([n/2])+3a([n/3]+...+ 4a([n/n]) 1,1,1
-A298409	genrec1	0	1,2,3	n -> a(n-1).multiply2().subtract(a(n-3)).add(Integers.SINGLETON.sum(2, n, k -> a(n/k).multiply(k)))	a(n) = 2*a(n-1)-a(n-3)+2a([n/2])+3a([n/3]+...+ 4a([n/n]) 1,2,3
-A298412	genrec1	0	1,1,1	n -> a(n-1).multiply2().add(a(n-2)).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = 2*a(n-1) + a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
-A298413	genrec1	0	1,2,3	n -> a(n/2).multiply(a((int) Math.ceil((double) n/2)))	, where a(0) = 1, a(1) = 2, a(2) = 3.	a(n) = a(floor(n/2))*a(ceiling(n/2)), where a(0) = 1, a(1) = 2, a(2) = 3.	
-A298414	genrec1	0	1,1,1	n -> a(n-1).multiply2().subtract(a(n-2)).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = 2*a(n-1) - a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
-A298415	genrec1	0	1,1,1	n -> a(n-1).add(a(n-2).multiply2()).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = a(n-1) + 2*a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
-A298416	genrec1	0	1,1,1	n -> a(n-1).multiply2().add(a(n-2).multiply2()).subtract(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = 2*a(n-1) + 2*a(n-2) - a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
-A298417	genrec1	0	1,1,1	n -> a(n-1).multiply2().add(a(n-2).multiply2()).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = 2*a(n-1) + 2*a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
-A298419	genrec1	0	1,1,1	n -> a(n-1).multiply(n).subtract(a(n-2)).add(a(n/2))	, where a(0) = 1, a(1) = 1, a(2) = 1.	a(n) = n*a(n-1) - a(n-2) + a([n/2]), where a(0) = 1, a(1) = 1, a(2) = 1.	
-A334067	parmof4	1	A079000	1	1	n -> n.isProbablePrime()	"spig"	is prime" where indices start from 0.	
+#                                                                    A151626 a(n) = {15^n - (2*n + 1)*10^n + binomial(2*n+1, 2)*6^n - binomial(2*n+1, 3)*3^n + binomial(2*n+1, 4) }
+#   return (k ->    Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(4*k, k)).divide(3*k + 1))).apply(++mN)
+# 2022-06-06, Georg Fischer; RH=76
+# A151625 a(n) = 10^n - (2*n + 1)*6^n + binomial(2*n+1, 2)*3^n - binomial(2*n+1, 3)
+# A277543 a(n) = n/5^valuation(n, 5) % 5;
+# A336538 {a(n) = sum(k=0, n, 2^(n-k)*binomial(n, k)*binomial(3*n+k+1, n)/(3*n+k+1))}
+# A337152	lambda	0	2^mN.multiply(MemoryFactorial.SINGLETON.factorial(mN).square()).multiply(Integers.SINGLETON.sum(0, mN, k -> 1 / ((-2)^k * (k!)^2))	
+# A339684 sum(k=0, n, (-1)^(n-k)*binomial(n, k)*binomial(4*k, k)/(3*k+1));
+# A346577 a(n) = sumdiv(n, d, moebius(n/d)*binomial(3*d, d))/(3*n);
+# a(n) = if (n<=1, 3^n, 3^n - sumdiv(n, d, moebius(d)*3^(n/d))/n);
+# not yet holon.:
+# relies on the abandoned version of A120590.
+# superceeded by HolonomicRecurrences
+A058818	lambda	0	mN<=1 ? Z.valueOf(3).pow(mN) : Z.valueOf(3).pow(mN).subtract(Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(3).pow(mN/d).multiply(irvine.math.Mobius.mobius(d))).divide(mN))	
+A058819	lambda	0	mN<=1 ? Z.valueOf(4).pow(mN) : Z.valueOf(4).pow(mN).subtract(Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(4).pow(mN/d).multiply(irvine.math.Mobius.mobius(d))).divide(mN))	
+A058820	lambda	0	mN<=1 ? Z.valueOf(5).pow(mN) : Z.valueOf(5).pow(mN).subtract(Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(5).pow(mN/d).multiply(irvine.math.Mobius.mobius(d))).divide(mN))	
+A058822	lambda	0	mN<=1 ? Z.valueOf(7).pow(mN) : Z.valueOf(7).pow(mN).subtract(Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(7).pow(mN/d).multiply(irvine.math.Mobius.mobius(d))).divide(mN))	
+A058823	lambda	0	mN<=1 ? Z.valueOf(8).pow(mN) : Z.valueOf(8).pow(mN).subtract(Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(8).pow(mN/d).multiply(irvine.math.Mobius.mobius(d))).divide(mN))	
+A058824	lambda	0	mN<=1 ? Z.valueOf(9).pow(mN) : Z.valueOf(9).pow(mN).subtract(Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(9).pow(mN/d).multiply(irvine.math.Mobius.mobius(d))).divide(mN))	
+A092813	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(mN,k).pow(3).multiply(Binomial.binomial(mN+k,k).pow(3)))	
+A092814	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(mN,k).pow(4).multiply(Binomial.binomial(mN+k,k).pow(4)))	
+A092815	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(mN,k).pow(5).multiply(Binomial.binomial(mN+k,k).pow(5)))	
+A099121	lambda	0	Binomial.binomial(Binomial.binomial(mN + 2, mN).add(mN - 1), Z.valueOf(mN))	
+A099122	lambda	0	Binomial.binomial(Binomial.binomial(mN + 3, mN).add(mN - 1), Z.valueOf(mN))	
+A099123	lambda	0	Binomial.binomial(Binomial.binomial(mN + 4, mN).add(mN - 1), Z.valueOf(mN))	
+A099124	lambda	0	Binomial.binomial(Binomial.binomial(mN + 5, mN).add(mN - 1), Z.valueOf(mN))	
+A099125	lambda	0	Binomial.binomial(Binomial.binomial(mN + 6, mN).add(mN - 1), Z.valueOf(mN))	
+A099126	lambda	0	Binomial.binomial(Binomial.binomial(mN + 7, mN).add(mN - 1), Z.valueOf(mN))	
+A099127	lambda	0	Binomial.binomial(Binomial.binomial(mN + 8, mN).add(mN - 1), Z.valueOf(mN))	
+A099128	lambda	0	Binomial.binomial(Binomial.binomial(mN + 9, mN).add(mN - 1), Z.valueOf(mN))	
+A120590	parm6	0	A120602	 4	 1	  1	 3	1,1,3	 4*A(x)  = 3  +   1*x + A(x)^ 3,  [1,1,3]	nonn,	0..70	holos	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
+A120592	parm6	0	A120602	 5	 2	  4	 3	1,2,6	 5*A(x)  = 4  +   4*x + A(x)^ 3,  [1,2,6]	nonn,	0..70	holos	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
+A120593	parm6	0	A120602	 5	 4	  1	 4	1,1,6	 5*A(x)  = 4  +   1*x + A(x)^ 4,  [1,1,6]	nonn,synth	0..17	nyi	_Paul D. Hanna_, Jun 16 2006, Jan 24 2008
+A120594	parm6	0	A120602	 8	 4	  8	 4	1,2,6	 8*A(x)  = 7  +   8*x + A(x)^ 4,  [1,2,6]	nonn,synth	0..18	nyi	_Paul D. Hanna_, Jun 16 2006
+A120595	parm6	0	A120602	13	 9	 27	 4	1,3,6	13*A(x) = 12  +  27*x + A(x)^ 4,  [1,3,6]	nonn,synth	0..19	nyi	_Paul D. Hanna_, Jun 16 2006
+A120596	parm6	0	A120602	 6	 1	  1	 5	1,1,10	 6*A(x)  = 5  +   1*x + A(x)^ 5, [1,1,10]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120597	parm6	0	A120602	 9	 4	  8	 5	1,2,10	 9*A(x)  = 8  +   8*x + A(x)^ 5, [1,2,10]	nonn,synth	0..17	nyi	_Paul D. Hanna_, Jun 16 2006
+A120598	parm6	0	A120602	30	25	125	 5	1,5,10	30*A(x) = 29  + 125*x + A(x)^ 5, [1,5,10]	nonn,synth	0..18	nyi	_Paul D. Hanna_, Jun 16 2006
+A120599	parm6	0	A120602	13	 8	 32	 5	1,4,20	13*A(x) = 12  +  32*x + A(x)^ 5, [1,4,20]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120600	parm6	0	A120602	 7	 1	  1	 6	1,1,15	 7*A(x)  = 6  +   1*x + A(x)^ 6, [1,1,15]	nonn,synth	0..15	nyi	_Paul D. Hanna_, Jun 16 2006
+A120601	parm6	0	A120602	15	 9	 27	 6	1,3,15	15*A(x) = 14  +  27*x + A(x)^ 6, [1,3,15]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120602	parm6	0	A120602	31	25	125	 6	1,5,15	31*A(x) = 30  + 125*x + A(x)^ 6, [1,5,15]	nonn,synth	0..17	nyi	_Paul D. Hanna_, Jun 16 2006
+A120603	parm6	0	A120602	16	 9	 27	 7	1,3,21	16*A(x) = 15  +  27*x + A(x)^ 7, [1,3,21]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120604	parm6	0	A120602	24	16	 64	 8	1,4,28	24*A(x) = 23  +  64*x + A(x)^ 8, [1,4,28]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120605	parm6	0	A120602	25	16	 64	 9	1,4,36	25*A(x) = 24  +  64*x + A(x)^ 9, [1,4,36]	nonn,synth	0..15	nyi	_Paul D. Hanna_, Jun 16 2006
+A120606	parm6	0	A120602	36	27	 81	 9	1,3,12	36*A(x) = 35  +  81*x + A(x)^ 9, [1,3,12]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120607	parm6	0	A120602	37	27	 81	10	1,3,15	37*A(x) = 36  +  81*x + A(x)^10, [1,3,15]	nonn,synth	0..16	nyi	_Paul D. Hanna_, Jun 16 2006
+A120798	lambda	0	Z.THREE.pow(mN * mN).add(Z.ONE.shiftLeft(mN))	
+A120799	lambda	0	Z.THREE.pow(mN * mN).subtract(Z.ONE.shiftLeft(mN))	
+A120838	lambda	0	Z.FIVE .pow(mN * mN).add(Z.THREE.pow(mN * mN))	
+A120840	lambda	0	Z.FIVE .pow(mN * mN).subtract(Z.THREE.pow(mN * mN))	
+A151625	lambda	0	Z.valueOf( 10).pow(mN).subtract(Z.valueOf( 6).pow(mN).multiply(2*mN + 1)).add(Binomial.binomial(2*mN+1, 2).multiply(Z.valueOf(3 ).pow(mN))).subtract(Binomial.binomial(2*mN+1, 3))	
+A151626	lambda	0	Z.valueOf( 15).pow(mN).subtract(Z.valueOf(10).pow(mN).multiply(2*mN + 1)).add(Binomial.binomial(2*mN+1, 2).multiply(Z.valueOf(6 ).pow(mN))).subtract(Binomial.binomial(2*mN+1, 3).multiply(Z.THREE.pow(mN))).add(Binomial.binomial(2*mN+1, 4))	
+A151633	lambda	0	Z.valueOf( 20).pow(mN).subtract(Z.valueOf(10).pow(mN).multiply(3*mN + 1)).add(Binomial.binomial(3*mN+1, 2).multiply(Z.valueOf(4 ).pow(mN))).subtract(Binomial.binomial(3*mN+1, 3))	
+A151634	lambda	0	Z.valueOf( 35).pow(mN).subtract(Z.valueOf(20).pow(mN).multiply(3*mN + 1)).add(Binomial.binomial(3*mN+1, 2).multiply(Z.valueOf(10).pow(mN))).subtract(Binomial.binomial(3*mN+1, 3).multiply(Z.FOUR. pow(mN))).add(Binomial.binomial(3*mN+1, 4))	
+A151641	lambda	0	Z.valueOf( 35).pow(mN).subtract(Z.valueOf(15).pow(mN).multiply(4*mN + 1)).add(Binomial.binomial(4*mN+1, 2).multiply(Z.valueOf(5 ).pow(mN))).subtract(Binomial.binomial(4*mN+1, 3))	
+A151642	lambda	0	Z.valueOf( 70).pow(mN).subtract(Z.valueOf(35).pow(mN).multiply(4*mN + 1)).add(Binomial.binomial(4*mN+1, 2).multiply(Z.valueOf(15).pow(mN))).subtract(Binomial.binomial(4*mN+1, 3).multiply(Z.FIVE. pow(mN))).add(Binomial.binomial(4*mN+1, 4))	
+A151648	lambda	0	Z.valueOf( 56).pow(mN).subtract(Z.valueOf(21).pow(mN).multiply(5*mN + 1)).add(Binomial.binomial(5*mN+1, 2).multiply(Z.valueOf(6 ).pow(mN))).subtract(Binomial.binomial(5*mN+1, 3))	
+A151652	lambda	0	Z.valueOf( 84).pow(mN).subtract(Z.valueOf(28).pow(mN).multiply(6*mN + 1)).add(Binomial.binomial(6*mN+1, 2).multiply(Z.valueOf(7 ).pow(mN))).subtract(Binomial.binomial(6*mN+1, 3))	
+A151657	lambda	0	Z.valueOf(120).pow(mN).subtract(Z.valueOf(36).pow(mN).multiply(7*mN + 1)).add(Binomial.binomial(7*mN+1, 2).multiply(Z.valueOf(8 ).pow(mN))).subtract(Binomial.binomial(7*mN+1, 3))	
+A182421	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(mN,k).pow(7))	
+A182422	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(mN,k).pow(8))	
+A182446	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(mN,k).pow(9))	
+A182447	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(mN,k).pow(10))	
+A190592	parm2	0	A054055	3	a(n) = if (n==0, 0, vecmax(digits(n, 3)));	
+A190593	parm2	0	A054055	4	a(n) = if (n, vecmax(digits(n, 4)), 0);	
+A190594	parm2	0	A054055	5	a(n) = if (n, vecmax(digits(n, 5)), 0);	
+A190595	parm2	0	A054055	6	a(n) = if (n, vecmax(digits(n, 6)), 0);	
+A190596	parm2	0	A054055	7	a(n) = if (n, vecmax(digits(n, 7)), 0);	
+A190597	parm2	0	A054055	8	a(n) = if (n, vecmax(digits(n, 8)), 0);	
+A190598	parm2	0	A054055	9	a(n) = if (n, vecmax(digits(n, 9)), 0);	
+A262737	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(5*(mN+1),k).multiply(Binomial.binomial(4*(mN+1)-k-2,(mN+1)-k-1))).divide(mN+1)	
+A262738	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(6*(mN+1),k).multiply(Binomial.binomial(5*(mN+1)-k-2,(mN+1)-k-1))).divide(mN+1)	
+A262739	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(7*(mN+1),k).multiply(Binomial.binomial(6*(mN+1)-k-2,(mN+1)-k-1))).divide(mN+1)	
+A262740	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Binomial.binomial(8*(mN+1),k).multiply(Binomial.binomial(7*(mN+1)-k-2,(mN+1)-k-1))).divide(mN+1)	
+A277543	lambda	0	Z.valueOf(mN).divide(Z.FIVE .pow(irvine.math.LongUtils.valuation(mN, 5))).mod(Z.FIVE)	
+A277544	lambda	0	Z.valueOf(mN).divide(Z.SIX  .pow(irvine.math.LongUtils.valuation(mN, 6))).mod(Z.SIX)	
+A277545	lambda	0	Z.valueOf(mN).divide(Z.SEVEN.pow(irvine.math.LongUtils.valuation(mN, 7))).mod(Z.SEVEN)	
+A277546	lambda	0	Z.valueOf(mN).divide(Z.EIGHT.pow(irvine.math.LongUtils.valuation(mN, 8))).mod(Z.EIGHT)	
+A277547	lambda	0	Z.valueOf(mN).divide(Z.NINE .pow(irvine.math.LongUtils.valuation(mN, 9))).mod(Z.NINE)	
+A283498	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow(d+1))	
+A283533	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow(2*d+1))	
+A283535	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow(3*d+1))	
+A284900	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> ((((mN/d + 1) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Z.valueOf(d).pow(4)))	
+A284926	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> ((((mN/d + 1) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Z.valueOf(d).pow(5)))	
+A284927	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> ((((mN/d + 1) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Z.valueOf(d).pow(6)))	
+A289945	lambda	0	Integers.SINGLETON.sum(1, mN, k -> MemoryFactorial.SINGLETON.factorial(k).pow(4))	
+A289946	lambda	0	Integers.SINGLETON.sum(1, mN, k -> MemoryFactorial.SINGLETON.factorial(k).pow(6))	
+A289948	lambda	0	Integers.SINGLETON.sum(0, mN, k -> MemoryFactorial.SINGLETON.factorial(k).pow(3))	
+A289949	lambda	0	Integers.SINGLETON.sum(0, mN, k -> MemoryFactorial.SINGLETON.factorial(k).pow(4))	
+A321014	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> (d>3) ? Z.ONE : Z.ZERO)	
+A336538	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Z.ONE.shiftLeft(mN-k).multiply(Binomial.binomial(  mN  , k)).multiply(Binomial.binomial(3*mN+k+1, mN))  .divide(3*mN+k+1))	
+A336539	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Z.ONE.shiftLeft(mN-k).multiply(Binomial.binomial(3*mN+1, k)).multiply(Binomial.binomial(4*mN-k, mN-k))  .divide(3*mN+1))	
+A336540	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Z.ONE.shiftLeft(mN-k).multiply(Binomial.binomial(  mN  , k)).multiply(Binomial.binomial(4*mN+k+1, mN))  .divide(4*mN+k+1))	
+A336572	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Z.ONE.shiftLeft(mN-k).multiply(Binomial.binomial(4*mN+1, k)).multiply(Binomial.binomial(5*mN-k, mN-k))  .divide(4*mN+1))	
+A336578	lambda	0	Integers.SINGLETON.sum(0, mN, k -> Z.ONE.shiftLeft(mN-k).multiply(Binomial.binomial(  mN  , k)).multiply(Binomial.binomial(mN*mN+k+1, mN)) .divide(mN*mN+k+1))	
+A338648	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> (d>4) ? Z.ONE : Z.ZERO)	
+A338649	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> (d>5) ? Z.ONE : Z.ZERO)	
+A338650	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> (d>6) ? Z.ONE : Z.ZERO)	
+A338651	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> (d>7) ? Z.ONE : Z.ZERO)	
+A338652	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> (d>8) ? Z.ONE : Z.ZERO)	
+A338653	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> (d>9) ? Z.ONE : Z.ZERO)	
+A339684	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(4).pow(d-1))	
+A339685	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(5).pow(d-1))	
+A339686	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(6).pow(d-1))	
+A339687	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(7).pow(d-1))	
+A339688	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(8).pow(d-1))	
+A339689	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(9).pow(d-1))	
+A346577	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Binomial.binomial(3*d,d).multiply(irvine.math.Mobius.mobius(mN/d))).divide(3*mN)	
+A346578	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Binomial.binomial(4*d,d).multiply(irvine.math.Mobius.mobius(mN/d))).divide(4*mN)	
+A346579	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Binomial.binomial(5*d,d).multiply(irvine.math.Mobius.mobius(mN/d))).divide(5*mN)	
+A346580	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Binomial.binomial(6*d,d).multiply(irvine.math.Mobius.mobius(mN/d))).divide(6*mN)	
+A346581	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Binomial.binomial(7*d,d).multiply(irvine.math.Mobius.mobius(mN/d))).divide(7*mN)	
+A346582	lambda	0	Integers.SINGLETON.sumdiv(mN, d -> Binomial.binomial(8*d,d).multiply(irvine.math.Mobius.mobius(mN/d))).divide(8*mN)	
+A346664	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(mN,k)).multiply(Binomial.binomial(4*k,k)).divide(3*k + 1))	
+A346665	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(mN,k)).multiply(Binomial.binomial(5*k,k)).divide(4*k + 1))	
+A346666	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(mN,k)).multiply(Binomial.binomial(6*k,k)).divide(5*k + 1))	
+A346667	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(mN,k)).multiply(Binomial.binomial(7*k,k)).divide(6*k + 1))	
+A346668	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(mN,k)).multiply(Binomial.binomial(8*k,k)).divide(7*k + 1))	
+A346680	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(4*k, k)).divide(3*k + 1))	
+A346681	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(5*k, k)).divide(4*k + 1))	
+A346682	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(6*k, k)).divide(5*k + 1))	
+A346683	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(7*k, k)).divide(6*k + 1))	
+A346684	lambda	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN-k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Binomial.binomial(8*k, k)).divide(7*k + 1))	

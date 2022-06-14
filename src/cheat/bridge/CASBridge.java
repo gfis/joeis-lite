@@ -51,12 +51,24 @@ public class CASBridge implements Sequence {
     String line = null;
     try {
       // assume that the subprocess emits single lines with terms of the form <code>\-?\d+</code>
-      while ((line = mCasOut.readLine()) != null) {
-        return new Z(line);
+      boolean busy = true;
+      while (busy && (line = mCasOut.readLine()) != null) {
+        char ch = line.charAt(0);
+        if (Character.isDigit(ch) || ch == '-' && line.length() >= 2 && Character.isDigit(line.charAt(1))) {
+          return new Z(line);
+        } 
+        if (line.indexOf("warning") >= 0) { 
+          // ignore
+        } else {
+          busy = false;
+          mCasOut.close();
+          destroy();
+          throw new RuntimeException("PARI error: " + line);
+        }
       }
       mCasOut.close();
       while ((line = mCasErr.readLine()) != null) {
-        System.err.println(line);
+        throw new RuntimeException("PARI syntax: " + line);
       }
       mCasErr.close();
       mCasProcess.destroy();

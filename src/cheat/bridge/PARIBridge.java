@@ -24,7 +24,7 @@ public class PARIBridge extends CASBridge {
       mCasIn.println(script);
       if (false) {
       } else if (pattern.equals("a(n)")) {
-        mCasIn.println("for(mN=" + offset + ",+oo,print(a(mN)))");
+        mCasIn.println("alarm(4,for(mN=" + offset + ",+oo,print(a(mN))))");
       } else if (pattern.equals("lista")) {
         mCasIn.println("lista(" + mNoTerms + ")");
       }

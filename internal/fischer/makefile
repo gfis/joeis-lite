@@ -421,6 +421,13 @@ batch:
 log: # CC=; generate an HTML page for the failed tests
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
+logf: # CC=; generate an HTML page for the failed tests (but no "FATO")
+	# ---- $@ CC=$(CC)
+	cd $(COMMON); make -f checks.make joeis_fail LOG=$(CC)
+bridgestat:
+	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp 
+	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp 
+	wc -l $(CC).pass.log FATO.tmp
 retest: # run the failed ones again (with a higher timeout)
 	# ---- $@ CC=$(CC)
 	cut -b1-7 $(CC).fail.log > failed.tmp
@@ -501,7 +508,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-06-09:
+anabuild: #.2022-06-14:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	LATER=
+	echo A054055 A120602 A346577 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-06-09:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -1171,6 +1191,13 @@ A056022: # 2021-12-29
 A060722:
 	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen
+#----
+A062450: # 2022-06-14
+	perl a062450.pl -u 2000 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 A063555: # 2021-05-29
 	grep -E "^A[0-9]" $@.man > $@.gen
 wraptr2:
@@ -1779,11 +1806,17 @@ smoothn:	# smooth <= n
 	wc -l    $@.gen
 #--------------------------------
 # bridges
-paria:
-	head -n$(MANY) $(COMMON)/../bridge/paria_mm.gen \
-	| sort | uniq -w7 \
-	>        $@.gen
-	head -n4 $@.gen
+pari_mm:
+	head -n$(MANY) $(COMMON)/../bridge/$@.gen | sort | uniq -w7 > $@.gen
+	wc -l    $@.gen
+pari_cg:
+	head -n$(MANY) $(COMMON)/../bridge/$@.gen | sort | uniq -w7 > $@.gen
+	wc -l    $@.gen
+pari_ah:
+	head -n$(MANY) $(COMMON)/../bridge/$@.gen | sort | uniq -w7 > $@.gen
+	wc -l    $@.gen
+pari_ms:
+	head -n$(MANY) $(COMMON)/../bridge/$@.gen | sort | uniq -w7 > $@.gen
 	wc -l    $@.gen
 #--------------------------------
 ca.ari:

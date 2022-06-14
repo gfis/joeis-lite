@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-06-14: V4.3, Rationals
 # 2022-06-10: V4.2, suppress auto-import generation for uppercase in PARI scripts (Strings)
 # 2022-05-31: V4.1, last parm was not generated
 # 2022-05-31: V4.0, suppress "\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)"
@@ -53,7 +54,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V4.1";
+my $program = "gen_seq4.pl V4.3";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -330,6 +331,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WZUtils\.}        ) { $imports{"irvine.math.z.ZUtils"}                  = $itype; }
     if ($line =~ m{\WZeta\.}          ) { $imports{"irvine.math.cr.Zeta"}                   = $itype; }
     if ($line =~ m{\WIntegers\.}      ) { $imports{"irvine.math.z.Integers"}                = $itype; }
+    if ($line =~ m{\WRationals\.}     ) { $imports{"irvine.math.q.Rationals"}               = $itype; }
     if ($line =~ m{\WBinomial\.}      ) { $imports{"irvine.math.z.Binomial"}                = $itype; }
     if ($line =~ m{\WLongUtils\.}     ) { $imports{"irvine.math.LongUtils"}                 = $itype; }
     if ($line =~ m{\WStirling\.}      ) { $imports{"irvine.math.z.Stirling"}                = $itype; }
