@@ -2,6 +2,7 @@
 
 # Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing
 # @(#) $Id$
+# 2022-06-17: select3, gengp
 # 2021-10-29: distel
 # 2020-06-21: test with BatchMonitor
 # 2019-07-15: joeis parallel to joeis-lite
@@ -12,6 +13,7 @@ LITE=$(GITS)/joeis-lite
 HERE=../../joeis-lite/internal/fischer
 JOEIS=$(GITS)/joeis
 CA=$(GITS)/OEIS-mat/ca
+CAS=$(GITS)/OEIS-mat/cas
 CK=./ck
 COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
 COMMON=$(GITS)/OEIS-mat/common
@@ -30,7 +32,7 @@ HOLT=$(RAMATH)   irvine.test.HolonomicRecurrenceTest
 PFRACT=$(RAMATH) org.teherba.ramath.symbolic.PolyFraction
 WORD=$(GITS)/OEIS-mat/word
 BVA=$(RAMATH)    org.teherba.ramath.linear.BigVectorArray
-NT=16
+NT=32
 MANY=999999
 CLASS=dummy.java
 D=0
@@ -48,7 +50,8 @@ NC=
 OFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
-JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en
+VERBOSE=false
+JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE)
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
@@ -97,7 +100,8 @@ seqtris: # A=$(A) - print data in upper left triangle format
 seqtrir: # A=$(A) - print data in upper right triangle format
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -R $(A) 2>&1   | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -o $(OFFSET) -B $(A) | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -o $(OFFSET) -B $(A) 
+# --priority "java,gp" 
 seqhelp: #
 	$(JAVA) irvine.oeis.SequenceFactory --help
 jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
@@ -239,7 +243,7 @@ OFS=offset
 ccall: select clean purge gener dist test pack # parameter: CC
 #----
 NOT=NOT
-select: select1 select2 # parameter: CC, OFS
+select: select1 select2 select3 # parameter: CC, OFS
 select1:
 	# ---- $@ CC=$(CC)
 	make $(CC)
@@ -251,6 +255,7 @@ select2: # require not in joeis: JO= (default) / require not in poeis: PO=1 (def
 	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO)
 	make seq4 LIST=$(CC).gen
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
+select3:
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(i.offset1, s.offset) \
 	    , s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.parm8, \
 	    COALESCE(SUBSTR(n.name, 1, 256), 'Name?') \
@@ -345,23 +350,31 @@ prune: purge # parameter: CC; dist.log from previous dist is stripped off $(CC).
 	grep  -f prune.grep.tmp $(CC).gen > $(CC).javer.tmp || :
 	sed -e "s/\r//" $(CC).prune.tmp > $(CC).gen
 	wc -l $(CC).*
-purge: # remove all oeis/annn directories
-	# ---- $@ CC=$(CC)
-	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
-	rm -rf                     ../../src/irvine/oeis/a???
-	mkdir  $(LITE)/src/irvine/oeis/a000
-	# cp -v $(JOEIS)/src/irvine/oeis/a000/A000001.java $(LITE)/src/irvine/oeis/a000/A000001.java
-	rm -vf *.bak
-gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen
+gener: # parameter: CC, MANY, NC; test sequences in $(CC).gen - generate for java (default)
 	# ---- $@ CC=$(CC)
 	head -n$(MANY) $(CC).gen      > ghead.tmp
 	perl gen_seq4.pl -d $(D) -cc $(CC) $(NC) ghead.tmp
 	# make -i $(CC).patch || :
+purge: # remove all oeis/annn directories
+	# ---- $@ CC=$(CC)
+	rm -rf  ../../target/WEB-INF/classes/irvine/oeis/a???
+	rm -rf                     ../../src/irvine/oeis/a???
+	rm -vf *.bak
+#--
+gengp: # parameter: CC, MANY, NC; test sequences in $(CC).gen - generate for PARI
+	# ---- $@ CC=$(CC)
+	head -n$(MANY) $(CC).gen      > ghead.tmp
+	perl gen_seq4.pl -d $(D) -cc $(CC) $(NC) -t ./prog/gp -x gp ghead.tmp
+purgep: # remove all ./prog/gp/annn directories
+	# ---- $@ CC=$(CC)
+	rm -rf ./prog/gp/a???
+#----
 man: # copy sources that where manually edited
 	# ---- $@ CC=$(CC)
 	perl copyman.pl > $@.gen
 	sort $@.gen $(CC).gen | uniq -w7 > $@.tmp
 	mv $@.tmp $(CC).gen
+#----
 dist:
 	# ---- $@ CC=$(CC)
 	rm -f dist.log
@@ -424,7 +437,7 @@ log: # CC=; generate an HTML page for the failed tests
 logf: # CC=; generate an HTML page for the failed tests (but no "FATO")
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_fail LOG=$(CC)
-bridgestat:
+casstat:
 	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp 
 	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp 
 	wc -l $(CC).pass.log FATO.tmp
@@ -1805,18 +1818,57 @@ smoothn:	# smooth <= n
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-# bridges
+# cas
 pari_mm:
-	head -n$(MANY) $(COMMON)/../bridge/$@.gen | sort | uniq -w7 > $@.gen
+	head -n$(MANY) $(COMMON)/../cas/$@.gen | sort | uniq -w7 > $@.gen
 	wc -l    $@.gen
 pari_cg:
-	head -n$(MANY) $(COMMON)/../bridge/$@.gen | sort | uniq -w7 > $@.gen
+	head -n$(MANY) $(COMMON)/../cas/$@.gen | sort | uniq -w7 > $@.gen
 	wc -l    $@.gen
 pari_ah:
-	head -n$(MANY) $(COMMON)/../bridge/$@.gen | sort | uniq -w7 > $@.gen
+	head -n$(MANY) $(COMMON)/../cas/$@.gen | sort | uniq -w7 > $@.gen
 	wc -l    $@.gen
 pari_ms:
-	head -n$(MANY) $(COMMON)/../bridge/$@.gen | sort | uniq -w7 > $@.gen
+	head -n$(MANY) $(COMMON)/../cas/$@.gen | sort | uniq -w7 > $@.gen
+	wc -l    $@.gen
+#----
+pari_an:
+	head -n$(MANY) $(COMMON)/../cas/$@.tmp | sort | uniq -w7 > $@.gen
+	wc -l    $@.gen
+paritest:
+	grep -E "^A[0-9]" $(CAS)/pari_an.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+parifail:
+	gawk -e '{ print $$1 "\t" $$2 "\t" $$3 "\t" $$4 "\t0\t" $$5 "\t" }' paritest.log \
+	| grep FAIL > $(COMMON)/joeis_check.txt
+	cd $(COMMON) ; make -f checks.make html_check1 FILE=joeis_check
+#----
+paripat1: # insert 1 column
+	# 0         1   2       3       4
+	# A007117	7	FATO	4010 ms	19
+	grep -E "^A[0-9]" paritest.4s.2022-06-19.22.00.log \
+	| perl -ne 'my @f = split(/\t/); push(@f, $$f[4]); $$f[4] = ""; print join("\t", @f); '\
+	>   paritest.4s.2022-06-20.00.00.log
+#----
+batlog_populate: # PAT= fill test results into table 'batlog'
+	$(DBAT) -f batlog.create.sql
+	cat $(PAT) | grep -E "^A[0-9]" \
+	|sort | uniq -w7 | $(DBAT) -m csv -s "\t" -r batlog
+	§(DBAT) "UPDATE batlog SET timeout=4 WHERE result='pass'; \
+	         UPDATE batlog SET timeout=8 WHERE result='pass' AND aseqno BETWEEN 'A089587' AND 'A182589';"
+	$(DBAT) -n batlog
+	$(DBAT) -4 batlog
+	$(DBAT) "SELECT result, COUNT(result) FROM batlog GROUP BY result ORDER BY 1;"
+#----
+prog_an:
+	$(DBAT)    "DELETE FROM seq4 WHERE aseqno NOT IN       (SELECT b.aseqno  FROM batlog b WHERE b.result = 'pass'  );"
+	$(DBAT)    "UPDATE seq4 s SET s.callcode='an', parm5 = (SELECT b.timeout FROM batlog b WHERE b.aseqno = s.aseqno);"
+	$(DBAT) -x -$(MANY) "SELECT * FROM seq4 ORDER BY 1" \
+	>        $@.gen
+	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
 ca.ari:

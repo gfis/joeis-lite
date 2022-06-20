@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-06-17: V4.4, generate for prog/gp
 # 2022-06-14: V4.3, Rationals
 # 2022-06-10: V4.2, suppress auto-import generation for uppercase in PARI scripts (Strings)
 # 2022-05-31: V4.1, last parm was not generated
@@ -35,12 +36,12 @@
 #
 #:# Usage:
 #:#   perl gen_seq4.pl [-d debug] [-a author] [-cc callcode] [-l maxlen]
-#:#          [-p patprefix] [-t targetdir] [-nc] infile > logfile
+#:#          [-x {java|gp|gap...}] [-t targetdir] [-nc] infile > logfile
 #:#   -a  author     Sean or Georg
 #:#   -cc callcode   overwrites the callcode in the infile
-#:#   -l  maxlen     maximum length of a line during $(PARMi) expansion
-#:#   -nc           do not overwrite if already present in $maindir
-#:#   -p  patprefix  directory prefix where to find the *.jpat pattern file(s)
+#:#   -t  targetdir  generate into targetdir/*.ext (default ../../src/irvine/oeis)
+#:#   -x  ext        extension (default ".java")
+#:#   -nc            do not overwrite if already present in $maindir
 #:#
 #:#   infile lines have the format: ASEQNO CALLCODE OFFSET PARM1 PARM2 PARM3 PARM4 ... PARM8 NAME
 #:#   The pattern file(s) may contain all of these
@@ -54,12 +55,12 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $program = "gen_seq4.pl V4.3";
+my $version_id  = "gen_seq4.pl V4.4";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
-my $indent = 6;
-my $debug = 0;
+my $indent   = 6;
+my $debug   = 0;
 if (scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
@@ -69,9 +70,12 @@ my $patprefix = "./";
 my $patext    = ".jpat";
 my $cc        = "";
 my $callcode  = "cfsnum";
+my $lang      = "java";
+my $ext       = ".java";
 my %patterncache  = (); # empty at the beginning
 my $basedir   = "../../../OEIS-mat/common";
 my $targetdir = "../../src/irvine/oeis";
+my %dirs      = (); # hash for the directories to be created
 my $maindir   = "../../../joeis/src/irvine/oeis";
 my $clobber   = 1; # overwrite even if already present in $maindir
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
@@ -84,13 +88,16 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     } elsif ($opt  =~ m{d}) {
         $debug     =  shift(@ARGV);
     } elsif ($opt  =~ m{l}) {
-        $max_line_len = shift(@ARGV);
+        $lang      = shift(@ARGV);
     } elsif ($opt  =~ m{nc}) {
         $clobber   = 0;
     } elsif ($opt  =~ m{p}) {
         $patprefix =  shift(@ARGV);
     } elsif ($opt  =~ m{t}) {
         $targetdir =  shift(@ARGV);
+    } elsif ($opt  =~ m{x}) {
+        $ext       =  shift(@ARGV);
+        $ext = ".$ext" if ($ext !~ m{\A\.});
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -255,7 +262,7 @@ sub write_output {
     $copy =~ s{\$\(DATE\)}           {$timestamp}g;
     $copy =~ s{\$\(GEN\)}            {$0}g;
     $copy =~ s{\$\(IMPORT\)}         {&get_imports($aseqno)}eg;
-    $copy =~ s{\$\(PROG\)}           {$program}g;
+    $copy =~ s{\$\(PROG\)}           {$version_id}g;
     $copy =~ s{\$\(NAME\)}           {$name}g;
     $copy =~ s{\$\(OFFSET\) *\- *1}  {$offset - 1}eg;
     $copy =~ s{mN\s*\=\s*(\d+)\s*\-\s*1\s*\;}{"mN = " . ($1 - 1) . ";"}e;
@@ -264,13 +271,14 @@ sub write_output {
     $copy =~ s{\.(multiply|divide)\(1\)|\.(add|subtract)\(0\)}{}g;
     my $package = lc(substr($aseqno, 0, 4));
     # print STDERR "==> $maindir/$package/$aseqno.java ?\n";
-    if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.java")) { # overwrite or does not yet exist
+    if ($clobber == 1 or (! -r "$maindir/$package/$aseqno.$ext")) { # overwrite or does not yet exist
         my $packdir = "$targetdir/$package";
-        if ($old_package ne $package) {
-            mkdir $packdir;
-            $old_package = $package;
+        if (! defined($dirs{$packdir}) or ! -d "$packdir") { # tarpath not yet readable
+            $dirs{$packdir} = 1;
+            mkdir($packdir);
+            print STDERR "made $packdir\n";
         }
-        my $filename = "$packdir/$aseqno.java";
+        my $filename = "$packdir/$aseqno$ext";
         open(OUT, ">", $filename) || die "cannot write \"$filename\"\n";
         print OUT $copy;
         close(OUT);

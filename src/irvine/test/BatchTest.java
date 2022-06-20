@@ -1,6 +1,7 @@
 package irvine.test;
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
- *  @(#) $Id: BatchTest.java 744 2019-04-05 06:29:20Z gfis $
+ *  @(#) $Id$
+ *  2022-06-18: V3.1: CASBridge removed
  *  2022-06-10: V3.0: FATO destroys the subprocess of a CASBridge sequence
  *  2020-10-10: V2.3: "Total" message
  *  2020-08-30: V2.2: trailing "/" in b-file path is optional
@@ -33,7 +34,7 @@ import java.nio.channels.FileChannel; // seekable()
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 
-import cheat.bridge.CASBridge;
+// import cheat.bridge.CASBridge;
 import irvine.math.z.Z;
 import irvine.oeis.Sequence;
 
@@ -305,9 +306,11 @@ public class BatchTest {
         printLog( "FAIL", diffExpected, "computed:\t" + diffComputed);
       }
       try {
+      /*
         if (seq instanceof CASBridge) {
           ((CASBridge) seq).destroy(); // destroy the subprocess
         }
+      */
         if (seq instanceof Closeable) {
           ((Closeable) seq).close();
         }
