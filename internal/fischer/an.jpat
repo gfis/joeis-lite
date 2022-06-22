@@ -1,2 +1,2 @@
-\\ https://oeis.org/$aseqno type=$(CALLCODE) offset=(OFFSET) bfimax=$(PARM3) rev=$(PARM4) timeout=$(PARM5)
-$(PARM2)
+\\ source=https://oeis.org/$(ASEQNO) lang=pari curno=$(PARM2) type=an  rev=$(PARM4) offset=$(OFFSET) bfimax=$(PARM3) timeout=4
+$(PARM1)

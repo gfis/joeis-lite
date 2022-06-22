@@ -1,15 +1,5 @@
-package irvine.test;
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
- *  @(#) $Id$
- *  2022-06-20: V4.0: use SequenceFactory
- *  2022-06-18: V3.1: CASBridge removed
- *  2022-06-10: V3.0: FATO destroys the subprocess of a CASBridge sequence
- *  2020-10-10: V2.3: "Total" message
- *  2020-08-30: V2.2: trailing "/" in b-file path is optional
- *  2020-08-16: V2.1: 8 terms for FAIL
- *  2020-06-19: V2.0: -s seekPosition
- *  2020-06-17, V1.7: -s skipAseqno; output process id
- *  2020-01-07, V1.6: instantiate seq outside
+ *  @(#) $Id: BatchTest2.java 744 2019-04-05 06:29:20Z gfis $
  *  2019-07-11: catch Throwable instead of Exception
  *  2019-06-28: -u giveUpLimit
  *  2019-06-26: print total elapsed time in ms at the end
@@ -25,44 +15,36 @@ package irvine.test;
  *  2019-04-09: read from b-file
  *  2019-04-05, Georg Fischer: copied from org.teherba.ramath.util.ExpressionReader
  */
-import java.io.BufferedReader;
-import java.io.Closeable;
-import java.io.File; // delete()
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel; // seekable()
-import java.nio.channels.ReadableByteChannel;
-import java.util.ArrayList;
+package irvine.test;
+import  irvine.math.z.Z;
+import  irvine.oeis.Sequence;
 
-import irvine.math.z.Z;
-import irvine.oeis.Sequence;
-import irvine.oeis.SequenceFactory;
+import  java.io.BufferedReader;
+import  java.io.Closeable;
+import  java.io.FileInputStream;
+import  java.io.InputStreamReader;
+import  java.nio.channels.Channels;
+import  java.nio.channels.ReadableByteChannel;
+import  java.util.ArrayList;
 
-/** Reads a subset of OEIS 'stripped', calls jOEIS sequence classes
- *  and compares the results
+/** Reads a subset of OEIS 'stripped', calls referenced jOEIS sequence classes
+ *  and compares the results with stripped data or the b-files.
  *  @author Dr. Georg Fischer
  */
-public class BatchTest {
-  public final static String CVSID = "@(#) $Id$";
+public class BatchTest2 {
+  public final static String CVSID = "@(#) $Id: BatchTest2.java 744 2019-04-05 06:29:20Z gfis $";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V4.1";
+  private static String VERSION = "BatchTest2 V1.4";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
 
   /** Directory where b-files can be found */
-  private String  bFilePath;
+  private String  bFileDirectory;
 
   /** Number of terms already computed by the sequence */
-  private int     mCount;
-
-  /** Index of first difference */
-  private int     mDiff;
-
-  /** Index from b-file */
-  private int     mBFIndex;
+  private int     count;
 
   /** Debugging level: 0 = none, 1 = some, 2 = more */
   private int     debug;
@@ -94,17 +76,8 @@ public class BatchTest {
   /** Whether to read terms from corresponding b-file */
   private boolean readFromBFile;
 
-  /** Position where to start reading, or behind the last line read */
-  private long    seekPosition;
-
-  /** File which contains the {@link #seekString}; will be deleted at EOF */
-  private String  seekFileName;
-
   /** Flag which is reset when the timer has expired */
   public boolean  sequenceMayRun;
-
-  /** Skip all records up to and including this A-number */
-  private String  skipAseqno;
 
   /** Encoding of the input file */
   private String  srcEncoding;
@@ -115,22 +88,20 @@ public class BatchTest {
   /** difference between current time and {@link #startTime} */
   private long    timeDiff;
 
-  /** Level of output verbosity (0-3, default 1) */
+  /** Level of output verbosity (0-3, default 0) */
   private int     verbosity;
 
   /** No-args Constructor
    */
-  public BatchTest() {
+  public BatchTest2() {
     // set default for variables and arguments
     debug          = 0;
     giveUpLimit    = 0; // process all b-file terms
-    maxFailCount   = 8;
+    maxFailCount   = 4;
     millisToRun    = 4000L;
     sequenceMayRun = true;
-    bFilePath      = "../../../OEIS-mat/common/bfile/";
-    seekPosition   = 0L; // start at beginning of input file
+    bFileDirectory = "./bfile";
     readFromBFile  = false;
-    skipAseqno     = "A000000";
     verbosity      = 1;
     srcEncoding    = "UTF-8";
   } // no-args Constructor
@@ -146,7 +117,7 @@ public class BatchTest {
     while (icall <      callPoints.length) {
       String element =  callPoints[icall].toString();
       result += ", " +  element;
-      if (element.contains("BatchTest.testNext")) {
+      if (element.contains("BatchTest2.testNext")) {
         icall =         callPoints.length; // break loop
       }
       icall ++;
@@ -167,57 +138,41 @@ public class BatchTest {
       return result;
   } // abbrev
 
-  /**
-   *  Prints the messages to the log file
-   *  @param status "pass", "FAIL", "FATAL" etc.
-   *  @param expected expected term list
-   *  @param computed computed term list
-   */
-  public void printLog(String status, String expected, String computed) {
-    System.out.println(aseqno 
-        + "\t" + (status.equals("FAIL") ? mDiff : mCount)
-        + "\t" + status
-        + "\t" + expected
-        + "\t" + computed
-        );
-  } // printLog
-  
   /** Test the next term computed by the sequence
    *  @param  seq Sequence to be tested
-   *  @param  indexStr index from b-file
    *  @param  expected expected term for a(n)
    *  @return 0 = passed, 1 = failed
    */
-  private int testNext(Sequence seq, String indexStr, String expected) {
+  private int testNext(Sequence seq, String expected) {
     int failure = 0; // assume pass
     try {
       Z term = seq.next();
-      mCount ++; // one more is computed
-      String computed = term == null ? "null" : term.toString();
-      if (! computed.equals(expected) || failCount > 0) {
-        int clen = computed.length();
-        int elen = expected.length();
-        diffComputed += "," + abbrev(computed);
-        diffExpected += "," + abbrev(expected);
-        if (failCount == 0) {
-          mDiff = Integer.parseInt(indexStr);
-        }
-        failCount ++; // maybe FAIL
-        if (failCount >= maxFailCount) {
-          failure = 1;
-        }
-      } else if (! sequenceMayRun) {
+      count ++; // one more is computed
+      if (term == null) { // e.g. beyond end of FiniteSequence
         failure = 1; // FAIL
-        printLog("FATAL", String.valueOf(timeDiff) + " ms", "timeout expired");
+        System.out.println    (aseqno + "\t" + count + "\tFAIL\t"
+            + expected + "\tcomputed:\tnull");
+      } else {
+        String computed = term.toString();
+        if (! computed.equals(expected) || failCount > 0) {
+          int clen = computed.length();
+          int elen = expected.length();
+          diffComputed += "," + abbrev(computed);
+          diffExpected += "," + abbrev(expected);
+          failCount ++; // maybe FAIL
+          if (failCount >= maxFailCount) {
+            failure = 1;
+          }
+        } else if (! sequenceMayRun) {
+          failure = 1; // FAIL
+          System.out.println  (aseqno + "\t" + count + "\tFATAL\t"
+              + timeDiff + " ms timeout expired");
+        }
       }
     } catch (Throwable exc) {
       failure = 1; // FAIL
-      // failCount ++;
-      String trace = getShortTrace(exc).substring(2);
-      if (trace.length() > 64) {
-          trace = trace.substring(0,64);
-      }
-      printLog("FATAL", "Exception " + exc.getMessage(), trace);
+      System.out.println      (aseqno + "\t" + count + "\tFATAL\tException\t"
+          + exc.getMessage() + ", Stack: " + getShortTrace(exc));
     }
     return failure;
   } // testNext
@@ -229,7 +184,7 @@ public class BatchTest {
   private int testAgainstBFile(Sequence seq) {
     int failure = 0; // assume pass
     try {
-      String fileName = bFilePath + "b" + aseqno.substring(1) + ".txt";
+      String fileName = bFileDirectory + "/b" + aseqno.substring(1) + ".txt";
       ReadableByteChannel lineChannel = (new FileInputStream(fileName)).getChannel();
       BufferedReader lineReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
       String line = null;
@@ -237,8 +192,8 @@ public class BatchTest {
       if (giveUpLimit > 0) {
         termNoLimit = giveUpLimit;
       }
-      mCount = 0;
-      while (sequenceMayRun && failure == 0 && mCount < termNoLimit
+      count = 0;
+      while (sequenceMayRun && failure == 0 && count < termNoLimit
           && (line = lineReader.readLine()) != null) { // read and process lines
         if (line != null) {
           int hashPos = line.indexOf('#');
@@ -250,9 +205,8 @@ public class BatchTest {
           if (line.length() > 0) { // line not empty
             int spacePos = line.indexOf(' ');
             String expected = line.substring(spacePos + 1);
-            String index = line.substring(0, spacePos);
-            failure = testNext(seq, index, expected);
-            // mCount is incremented in testNext
+            failure = testNext(seq, expected);
+            // count is incremented in testNext
           } // line not empty
         } // line != null
         timeDiff = System.currentTimeMillis() - startTime;
@@ -262,15 +216,16 @@ public class BatchTest {
       } // while ! eof
       lineReader.close();
     } catch (Throwable exc) {
-      printLog("FATAL", "read b-file error: " + exc.getMessage(), "Stack: " + getShortTrace(exc));
+      System.out.println      (aseqno + "\t" + count + "\tFATAL - read b-file error: "
+          + exc.getMessage() + ", Stack: " + getShortTrace(exc));
       failure = READ_ERROR; // read failure
     } // try
     return failure;
   } // testAgainstBFile
 
-  /** Test one sequences with an array of terms
+  /** Test one sequence with an array of terms
    *  either from file 'stripped', or from the b-file.
-   *  @param seq sequence to be tested, != null
+   *  @param seq the sequence to be tested
    *  @param terms array of integer values (as Strings)
    */
   private void testSequence(Sequence seq, String[] terms) {
@@ -288,7 +243,7 @@ public class BatchTest {
         termNoLimit = giveUpLimit;
       }
       if (debug >= 2) {
-        System.out.println("#BT BatchTest starts " + aseqno + " with " + termNo + " terms");
+        System.err.println("BatchTest2 starts " + aseqno + " with " + termNo + " terms");
       }
       int failure = 0; // assume passed
       if (readFromBFile) { // try the b-file first
@@ -296,12 +251,12 @@ public class BatchTest {
       }
       if ((failure == READ_ERROR && termNo > 0) || ! readFromBFile) {
         // test against terms from 'stripped', maybe as fallback
-        mCount = 0; // number of evaluated tests
+        count = 0; // number of evaluated tests
         failure = 0; // assume pass
-        while (sequenceMayRun && failure == 0 && mCount < termNoLimit
+        while (sequenceMayRun && failure == 0 && count < termNoLimit
             ) {
-          failure = testNext(seq, String.valueOf(mCount), terms[mCount]);
-          // mCount is incremented in testNext
+          failure = testNext(seq, terms[count]);
+          // count is incremented in testNext
           timeDiff = System.currentTimeMillis() - startTime;
           if (timeDiff > millisToRun) {
             sequenceMayRun = false;
@@ -309,56 +264,34 @@ public class BatchTest {
         } // while n
       } // terms from 'stripped'
       if (! sequenceMayRun) {
-        printLog("FATO", "timeout", String.format("%6d ms", timeDiff));
-      } else if (failCount == 0) {
-        if (verbosity >= 1) {
-          printLog( "pass", String.valueOf(timeDiff), " ms");
-        }
-      } else if (failCount > 0) {
-        printLog("FAIL", diffExpected, "computed:\t" + diffComputed);
+        System.out.println    (aseqno + "\t" + count + "\tFAIL - timeout "
+            + timeDiff + " > " + millisToRun + " ms");
+      } else if (failure == 0) {
+        if (failCount == 0) {
+          if (verbosity >= 1) {
+            System.out.println    (aseqno + "\t" + count + "\tpass"
+                // + (count < termNo ? "=" + count : "" )
+                + "\t" + timeDiff + " ms");
+          }
+        } else { // if (failCount > 0) {
+            System.out.println  (aseqno + "\t" + count
+                + "\tFAIL\t"      + diffExpected
+                + "\tcomputed:\t" + diffComputed + "");
+        } // failCount > 0
+      } else {
+            System.out.println  (aseqno + "\t" + count
+                + "\tFAIL\t"      + diffExpected
+                + "\tcomputed:\t" + diffComputed + "");
       }
       try {
-      /*
-        if (seq instanceof CASBridge) {
-          ((CASBridge) seq).destroy(); // destroy the subprocess
-        }
-      */
         if (seq instanceof Closeable) {
           ((Closeable) seq).close();
         }
       } catch (Throwable exc) {
-        printLog("FATAL - could not close sequence", exc.getMessage(), "Stack: " + getShortTrace(exc));
+        System.out.println      (aseqno + "\t" + count + "\tFATAL - could not close sequence, "
+          + exc.getMessage() + ", Stack: " + getShortTrace(exc));
       }
   } // testSequence
-
-  /** Determine the length of the line separator: single "\n" or "\r\n"
-   *  @param charReader file reader to be examined
-   *  @return 1 (Unix, single "\n") or 2 (Windows, "\r\n")
-   */
-  public int newlineLength(BufferedReader charReader) {
-    int result = 1;
-    int limit = 512; // a rather long line
-    try {
-      charReader.mark(limit);
-      char[] buffer = new char[limit];
-      limit = charReader.read(buffer, 0, limit);
-      boolean busy = true; // as long as no "\r" or "\n" was found
-      int ichar = 0; 
-      while (busy && ichar < limit) {
-        if (buffer[ichar] == '\n') {
-          busy = false; // result = 1
-        } else if (buffer[ichar] == '\r') {
-          busy = false;
-          result = 2;
-        }
-        ichar ++;
-      } // while
-      charReader.reset();
-    } catch (Throwable exc) {
-       printLog("FATAL - input read error", exc.getMessage(), "Stack: " + getShortTrace(exc));
-    } // try
-    return result;
-  } // newlineLength
 
   /** Processes lines of the form
    *  <pre>A040954 ,31,2,2,62,2,2,62,</pre>
@@ -366,70 +299,62 @@ public class BatchTest {
    *  @param fileName name of input file or "-" for STDIN
    */
   public void processBatch(String fileName) {
+    BufferedReader lineReader = null;
     long totalTime = System.currentTimeMillis();
     int lineNo = 0;
     try {
-      FileChannel channel = (new FileInputStream (fileName)).getChannel();
-      channel.position(seekPosition); // from -s seek
-      BufferedReader charReader = new BufferedReader(Channels.newReader(channel, srcEncoding));
-      final int nlLen = newlineLength(charReader);
+      if (fileName == null || fileName.length() <= 0 || fileName.equals("-")) {
+        lineReader = new BufferedReader(new InputStreamReader(System.in, srcEncoding));
+      } else {
+        ReadableByteChannel lineChannel = (new FileInputStream(fileName)).getChannel();
+        lineReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
+      }
       String line = null;
-      while ((line = charReader.readLine()) != null) { // read and process lines
-        seekPosition += line.length() + nlLen;
+      while ((line = lineReader.readLine()) != null) { // read and process lines
         lineNo ++;
         if (line != null) {
           if (debug >= 2) {
-            System.out.println("#BT BatchTest read \"" + line + "\"");
+            System.err.println("BatchTest2 read \"" + line + "\"");
           }
           if (line.startsWith("A")) { // valid A-number
-            String[] parts = line.split("\\s\\,?"); // 2 parts; line from strip.tmp is: aseqno space [comma term}+ 
+            String[] parts = line.split("\\s\\,?");
             aseqno  = parts[0];
-            if (aseqno.compareTo(skipAseqno) > 0) { // not skipped
-              if (verbosity >= 2) {
-                System.out.println("#BT start\t" + aseqno + String.format("\t0x%x", seekPosition));
-              }
-              Sequence seq   = null; // invoke this sequence
-              String message = "construction failed";
-              try {
-                // seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno).getDeclaredConstructor().newInstance();
-                seq = SequenceFactory.sequence(aseqno);
-              } catch (Throwable exc) {
-                // seq remains null for any errors
-              }
-              // construction failed: irvine.oeis.a332.A332993
-              if (seq != null) { // could be constructed
-                if (readFromBFile) {
-                  if (parts.length > 0) {
-                    testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,")); // for fallback
-                  } else {
-                    testSequence(seq, new String[] {});
-                  }
-                } else { // terms from 'stripped'
-                    testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,"));
+            if (verbosity >= 2) {
+              System.out.println(aseqno + "\tstart");
+            }
+            Sequence seq   = null; // invoke this sequence
+            String message = "\t0\tFATAL: construction failed: ";
+            try {
+              seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4)
+                  + '.' + aseqno).getDeclaredConstructor().newInstance();
+            } catch (Throwable exc) {
+              // seq remains null for any errors
+              message += exc.getMessage() + getShortTrace(exc);
+            }
+            if (seq != null) {
+              if (readFromBFile) {
+                if (parts.length > 0) {
+                  testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,")); // for fallback
+                } else {
+                  testSequence(seq, new String[] {});
                 }
-              } else {
-                mCount = 0;
-                printLog("FATAL", message, "");
-              } // seq == null
-              if (seq instanceof Closeable) {
-                ((Closeable) seq).close();
+              } else { // terms from 'stripped'
+                  testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,"));
               }
-            } // not skipped
+            } else {
+              System.out.println(aseqno + message);
+            }
           } else { // commented out, empty ...
-            System.out.println("#BT ignored: " + line);
+            System.out.println("# ignored: " + line);
           }
         } // line != null
       } // while ! eof
-      charReader.close();
-      if ((new File(seekFileName)).delete()) {
-        System.out.println("#BT file " + seekFileName + " deleted");
-      } else {
-        System.out.println("#BT could not delete " + seekFileName);
-      }
+      lineReader.close();
     } catch (Throwable exc) {
-       printLog("FATAL - cannot read \"" + fileName + "\"", exc.getMessage(), "Stack: " + getShortTrace(exc));
+        System.out.println      (aseqno + "\t" + count + "\tFATAL - input read error, "
+          + exc.getMessage() + ", Stack: " + getShortTrace(exc));
     } // try
-    System.out.println("Total\t" + lineNo + "\tpass+f\t" 
+    System.out.println("Total\t" + lineNo + "\tpass+f\t"
         + String.valueOf(System.currentTimeMillis() - totalTime) + " ms");
   } // processBatch
 
@@ -446,13 +371,12 @@ public class BatchTest {
   public void processArguments(String[] args) {
     int iarg = 0;
     if (args.length == 0) {
-      System.out.print("Usage: BatchTest [-v[v]] [-d level] [-b bfile-dir] [-t timeout] {- | filename}\n"
-          + "    -b path       check against b-files in this directory (default: off)\n"
-          + "    -d level      debugging level: 0=none, 1=some, 2=more (default: 0)\n"
-          + "    -s seekpos    seek to position (decimal or hex offset printed behind \"# start\" (default: 0x0)\n"
+      System.out.print("Usage: BatchTest2 [-v[v]] [-b bfile-dir] [-t timeout] {- | filename}\n"
+          + "    -b directory  check against b-files in this directory (default: off)\n"
+          + "    -d 0          debugging level: 0 = none, 1 = some, 2 = more\n"
+          + "    -v, -vv, -vvv verbosity level\n"
           + "    -t seconds    interrupt a sequence after this time (default: 4 s)\n"
           + "    -u limit      give up after limit terms (default: process whole b-file)\n"
-          + "    -v, -vv, -vvv verbosity level\n"
           );
       return;
     }
@@ -460,39 +384,15 @@ public class BatchTest {
     while (iarg < args.length && args[iarg].startsWith("-")) {
       String arg = args[iarg ++];
       if (false) {
-
       } else if (arg.startsWith("-b")) {
-        bFilePath = args[iarg ++];
-        if (! bFilePath.endsWith("/")) {
-          bFilePath += '/';
-        }
-        readFromBFile = true;
-
+        bFileDirectory = args[iarg ++];
+        readFromBFile  = true;
       } else if (arg.startsWith("-d")) {
         try {
           debug = Integer.parseInt(args[iarg ++]);
         } catch (Throwable exc) {
           // silently assume default
         }
-
-      } else if (arg.startsWith("-s")) {
-        try {
-          seekPosition = 2906194706L;
-          seekFileName = args[iarg ++];
-          ReadableByteChannel lineChannel = (new FileInputStream(seekFileName)).getChannel();
-          BufferedReader charReader = new BufferedReader(Channels.newReader(lineChannel , srcEncoding));
-          String line = null;
-          while ((line = charReader.readLine()) != null) { // read and process lines
-            seekPosition = Long.decode(line);
-          } // while in -s
-          if (debug >= 1) {
-            System.out.println("#BT -s seeks to " + String.format("0x%x", seekPosition));
-          }
-          charReader.close();
-        } catch (Throwable exc) {
-          System.out.println("#BT? -s read problem: " + exc.getMessage());
-        }
-
       } else if (arg.startsWith("-t")) {
         try {
           int tsecs = Integer.parseInt(args[iarg ++]);
@@ -504,7 +404,6 @@ public class BatchTest {
         } catch (Throwable exc) {
           // silently assume the default
         }
-
       } else if (arg.startsWith("-u")) {
         try {
           giveUpLimit = Integer.parseInt(args[iarg ++]);
@@ -514,17 +413,15 @@ public class BatchTest {
       } else if (arg.startsWith("-v")) {
         verbosity = arg.length() - 1;
       } else {
-        System.err.println("#BT BatchTest: unknown option: " + args[iarg]);
+        System.err.println("BatchTest2: unknown option: " + args[iarg]);
       }
-
     } // while iarg
     if (iarg < args.length) {
       fileName = args[iarg ++];
     }
     if (debug > 0) {
-      System.out.println("#BT BatchTest reads from \"" + fileName + "\"");
+      System.err.println("BatchTest2 reads from \"" + fileName + "\"");
     }
-    System.out.println("# " + VERSION + " starting at " + String.format("0x%x", seekPosition) + " in " + fileName);
     processBatch(fileName);
   } // processArguments
 
@@ -532,7 +429,8 @@ public class BatchTest {
    *  @param args command line arguments: filename or "-"
    */
   public static void main(String[] args) {
-    (new BatchTest()).processArguments(args);
+    System.err.println(VERSION);
+    (new BatchTest2()).processArguments(args);
   } // main
 
-} // BatchTest
+} // BatchTest2

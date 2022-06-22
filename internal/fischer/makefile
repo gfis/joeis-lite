@@ -2,6 +2,7 @@
 
 # Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing
 # @(#) $Id$
+# 2022-06-21: old poeis -> noeis, new poeis for OEIS-prog
 # 2022-06-17: select3, gengp
 # 2021-10-29: distel
 # 2020-06-21: test with BatchMonitor
@@ -14,6 +15,7 @@ HERE=../../joeis-lite/internal/fischer
 JOEIS=$(GITS)/joeis
 CA=$(GITS)/OEIS-mat/ca
 CAS=$(GITS)/OEIS-mat/cas
+PROG=$(GITS)/OEIS-prog
 CK=./ck
 COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
 COMMON=$(GITS)/OEIS-mat/common
@@ -51,7 +53,7 @@ OFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
 VERBOSE=false
-JOPT=-Doeis.big-factor-limit=1000000000 -Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE)
+JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
@@ -59,7 +61,7 @@ else
 endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 JJAVA=java $(JOPT) -cp "$(JOEIS)/build.tmp/joeis.jar"
-BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -u $(GU)
+BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU)
 INIT=0
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
@@ -188,44 +190,44 @@ pack2:
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
-poeis: pocre podir # create a list of freshly implmented classes
-pocre:
+noeis: nocre nodir # create a list of freshly implmented classes
+nocre:
 	# ---- $@ CC=$(CC)
-	$(DBAT) -f $(COMMON)/poeis.create.sql
-podir:
+	$(DBAT) -f $(COMMON)/noeis.create.sql
+nodir:
 	# ---- $@ CC=$(CC)
 	find ../../src/irvine/oeis/a* -iname "A*.java" | perl -ne 'm{\/(A\d+)}; print "$$1\n";' \
-	| $(DBAT) -r poeis
-	$(DBAT) -4   poeis
-	$(DBAT) -n   poeis
-poins:
+	| $(DBAT) -r noeis
+	$(DBAT) -4   noeis
+	$(DBAT) -n   noeis
+noins:
 	# ---- $@ CC=$(CC)
 	cut -b1-7 $(CC).gen \
 	| sed -e "s/$$/\t$(CLASS)\t/" \
-	| $(DBAT) -m csv -r poeis
-	$(DBAT) -4 poeis
-	$(DBAT) -n poeis
-podel: # CC= delete and export again
+	| $(DBAT) -m csv -r noeis
+	$(DBAT) -4 noeis
+	$(DBAT) -n noeis
+nodel: # CC= delete and export again
 	# ---- $@ CC=$(CC)
-	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM poeis)";
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM noeis)";
 	$(DBAT) -n         seq4
 	$(DBAT) -x -444444 seq4 > $(CC).gen
 bfresh: # CC=
 	cd $(COMMON) ; make bfresh
 #--
-poeis_diff:
-	$(DBAT) -x "SELECT LOWER(SUBSTR(aseqno, 1, 4)) || '/' || aseqno || '.java' FROM poeis ORDER BY 1" \
+noeis_diff:
+	$(DBAT) -x "SELECT LOWER(SUBSTR(aseqno, 1, 4)) || '/' || aseqno || '.java' FROM noeis ORDER BY 1" \
 	| sed -e "s/\r//" > x.tmp
 	cat x.tmp | xargs -l -innn diff -w -y --suppress-common-lines ../../../joeis/src/irvine/oeis/nnn ../../src/irvine/oeis/nnn
-poeis_extend:
-	$(DBAT) -x "SELECT aseqno, superclass FROM joeis j WHERE j.superclass IN (SELECT aseqno FROM POEIS) ORDER BY 1"
-poeis_replaces:
-	$(DBAT) -x "SELECT p.aseqno, p.superclass, j.superclass FROM poeis p, joeis j WHERE p.aseqno = j.aseqno ORDER BY 1"
-poeis_count:
+noeis_extend:
+	$(DBAT) -x "SELECT aseqno, superclass FROM joeis j WHERE j.superclass IN (SELECT aseqno FROM noeis) ORDER BY 1"
+noeis_replaces:
+	$(DBAT) -x "SELECT p.aseqno, p.superclass, j.superclass FROM noeis p, joeis j WHERE p.aseqno = j.aseqno ORDER BY 1"
+noeis_count:
 	$(DBAT) -x "SELECT CAST(a AS CHAR) || ' classes = ' || SUBSTR(CAST(a/b * 100 AS CHAR),1,7) \
-	    || '% out of ' || CAST(b AS CHAR) || ' sequences in poeis are replaced, ' || CAST(b - a AS CHAR) || ' are new' FROM \
-	    ( (SELECT COUNT(j.aseqno) as a FROM poeis p, joeis j WHERE p.aseqno = j.aseqno) j1 \
-	    , (SELECT COUNT(i.aseqno) as b FROM poeis i                                   ) j2)"
+	    || '% out of ' || CAST(b AS CHAR) || ' sequences in noeis are replaced, ' || CAST(b - a AS CHAR) || ' are new' FROM \
+	    ( (SELECT COUNT(j.aseqno) as a FROM noeis p, joeis j WHERE p.aseqno = j.aseqno) j1 \
+	    , (SELECT COUNT(i.aseqno) as b FROM noeis i                                   ) j2)"
 #==========================
 remove: # parameter: CC
 	rm -f remlist.tmp
@@ -251,7 +253,7 @@ select1:
 	wc   -l  $(CC).gen
 EX=
 PO=1
-select2: # require not in joeis: JO= (default) / require not in poeis: PO=1 (default)
+select2: # require not in joeis: JO= (default) / require not in noeis: PO=1 (default)
 	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO)
 	make seq4 LIST=$(CC).gen
 	$(DBAT) -v -f $(CC).sql > $(CC).sql.tmp || :
@@ -387,7 +389,7 @@ dist1:
 distel:  man dist test    log
 disteal: man dist testall log
 #--
-testout: # parameter: CC
+batest: # parameter: CC
 	# ---- $@ CC=$(CC)
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen      > ghead.tmp
@@ -396,6 +398,7 @@ testout: # parameter: CC
 runbt: # Run BatchTest for this group
 	# ---- $@ CC=$(CC)
 	$(BATLIT) strip.tmp 2>&1 | tee -a batch.log
+	# end of test
 #========
 test: test1 test2
 test1:
@@ -1818,22 +1821,9 @@ smoothn:	# smooth <= n
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-# cas
-pari_mm:
-	head -n$(MANY) $(COMMON)/../cas/$@.gen | sort | uniq -w7 > $@.gen
-	wc -l    $@.gen
-pari_cg:
-	head -n$(MANY) $(COMMON)/../cas/$@.gen | sort | uniq -w7 > $@.gen
-	wc -l    $@.gen
-pari_ah:
-	head -n$(MANY) $(COMMON)/../cas/$@.gen | sort | uniq -w7 > $@.gen
-	wc -l    $@.gen
-pari_ms:
-	head -n$(MANY) $(COMMON)/../cas/$@.gen | sort | uniq -w7 > $@.gen
-	wc -l    $@.gen
-#----
+# prog
 pari_an:
-	head -n$(MANY) $(COMMON)/../cas/$@.tmp | sort | uniq -w7 > $@.gen
+	head -n$(MANY) $(PROG)/sandbox/$@.tmp | sort | uniq -w7 > $@.gen
 	wc -l    $@.gen
 paritest:
 	grep -E "^A[0-9]" $(CAS)/pari_an.tmp \
@@ -1853,23 +1843,30 @@ paripat1: # insert 1 column
 	| perl -ne 'my @f = split(/\t/); push(@f, $$f[4]); $$f[4] = ""; print join("\t", @f); '\
 	>   paritest.4s.2022-06-20.00.00.log
 #----
+PAT=paritest.*s.2022-06-20.*.log
 batlog_populate: # PAT= fill test results into table 'batlog'
 	$(DBAT) -f batlog.create.sql
-	cat $(PAT) | grep -E "^A[0-9]" \
-	|sort | uniq -w7 | $(DBAT) -m csv -s "\t" -r batlog
-	§(DBAT) "UPDATE batlog SET timeout=4 WHERE result='pass'; \
-	         UPDATE batlog SET timeout=8 WHERE result='pass' AND aseqno BETWEEN 'A089587' AND 'A182589';"
+	cat $(PAT) | grep -E "^A[0-9]" | sort | uniq -w7 \
+	| $(DBAT) -m csv -s "\t" -r batlog
+	$(DBAT) "UPDATE batlog SET timeout=4 WHERE result='pass';"
+	$(DBAT) "UPDATE batlog SET timeout=8 WHERE result='pass' AND aseqno BETWEEN 'A089587' AND 'A182589';"
 	$(DBAT) -n batlog
 	$(DBAT) -4 batlog
-	$(DBAT) "SELECT result, COUNT(result) FROM batlog GROUP BY result ORDER BY 1;"
+	$(DBAT) "SELECT result, COUNT(result) FROM batlog GROUP BY result ORDER BY 1;" \
+	| tee $@.tmp
 #----
 prog_an:
 	$(DBAT)    "DELETE FROM seq4 WHERE aseqno NOT IN       (SELECT b.aseqno  FROM batlog b WHERE b.result = 'pass'  );"
 	$(DBAT)    "UPDATE seq4 s SET s.callcode='an', parm5 = (SELECT b.timeout FROM batlog b WHERE b.aseqno = s.aseqno);"
 	$(DBAT) -x -$(MANY) "SELECT * FROM seq4 ORDER BY 1" \
+	| perl -ne 'my @f = split(/\t/); $$f[3] = substr($$f[3], 2); $$f[3] .= ";" if ($$f[3] !~ m{\; *\Z}); print join("\t", @f); '\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+prog_clean:
+	grep -vE "start|pass" batch.log | cut -f1 \
+	| perl -e 'while(<>) { my $$aseqno = substr($$_, 0, 7); my $$aseq = lc(substr($$aseqno, 0,4));'\
+	' print "$$aseqno "; print unlink("./prog/gp/$$aseq/$$aseqno.gp") . "\n"; }'
 #--------------------------------
 ca.ari:
 	grep -E "^A[0-9]" $(CA)/ari.gen > $@.gen
@@ -2065,7 +2062,7 @@ bisect0: # either take the 1st or the 2nd term from pairs of terms in the base s
 	head -n4 $@.1.tmp
 	wc -l    $@.1.tmp
 	make seq4 LIST=$@.1.tmp
-	$(DBAT)  "DELETE FROM seq4 WHERE parm1 NOT IN ((SELECT aseqno FROM joeis) UNION (SELECT aseqno FROM poeis));"
+	$(DBAT)  "DELETE FROM seq4 WHERE parm1 NOT IN ((SELECT aseqno FROM joeis) UNION (SELECT aseqno FROM noeis));"
 	$(DBAT)  "UPDATE seq4 s SET s.parm3 = (SELECT SUBSTR(d.data, 1,  64) FROM asdata d WHERE d.aseqno = s.aseqno) \
 	                          , s.parm4 = (SELECT SUBSTR(d.data, 1, 128) FROM asdata d WHERE d.aseqno = s.parm1 );"
 	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
@@ -3043,8 +3040,8 @@ floorn:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-floorn_poeis:
-	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM poeis);"
+floorn_noeis:
+	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM noeis);"
 	$(DBAT) -x -444444 seq4 > floorn.gen
 #--
 floorD:
@@ -4387,12 +4384,12 @@ prikronf:
 	head -n4 $@.gen
 	wc -l    $@.gen $@.tmp $@.rest.tmp
 pribuild: # 2022-01-06
-	make purge pocre
-	make CC=pricongr select EX=xx gener poins CLASS=CongruenceForm
-	make CC=A038702  select EX=xx gener poins CLASS=A038702
+	make purge nocre
+	make CC=pricongr select EX=xx gener noins CLASS=CongruenceForm
+	make CC=A038702  select EX=xx gener noins CLASS=A038702
 	grep A1910 pricongr.gen | cut -b1-64
-	make CC=prikronf select EX=xx gener poins CLASS=KroneckerForm
-	make CC=pricongr man poeis_count dist testall log
+	make CC=prikronf select EX=xx gener noins CLASS=KroneckerForm
+	make CC=pricongr man noeis_count dist testall log
 priquad2: # select all MMA calls of QuadPrimes2
 	grep -P "QuadPrimes2\[\d" $(COMMON)/jcat25.txt \
 	| perl priquad2.pl \
