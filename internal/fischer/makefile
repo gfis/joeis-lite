@@ -190,6 +190,7 @@ pack2:
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
+#--------
 noeis: nocre nodir # create a list of freshly implmented classes
 nocre:
 	# ---- $@ CC=$(CC)
@@ -229,6 +230,12 @@ noeis_count:
 	    ( (SELECT COUNT(j.aseqno) as a FROM noeis p, joeis j WHERE p.aseqno = j.aseqno) j1 \
 	    , (SELECT COUNT(i.aseqno) as b FROM noeis i                                   ) j2)"
 #==========================
+rm_gp: # parameter: LIST
+	echo all: > $@.tmp
+	grep -vP "\t(pass|FATO|pato)\t" $(LIST) \
+	| cut -b1-7 | sort | uniq \
+	| perl -ne 'm{^A(\d\d\d)(\d+)}; print "\trm -v prog/gp/a$$1/A$$1$$2.gp\n";' | tee -a $@.tmp
+	wc -l     $@.tmp
 remove: # parameter: CC
 	rm -f remlist.tmp
 	perl -ne 'm{^A(\d\d\d)(\d+)}; print "a$$1/A$$1$$2.java\n";' $(CC).gen > remlist.tmp
@@ -1827,11 +1834,10 @@ smoothn:	# smooth <= n
 	wc -l    $@.gen
 #--------------------------------
 # prog
-xpari_an:
-	make seq4 LIST=$(PROG)/maint/pari/$@.tmp
-	make batlog LIST=pari_an.2022-06-22.*.log
 pari_an:
-	$(DBAT) "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4, '$(TO)' \
+	make seq4 LIST=$(PROG)/maint/pari/$@.tmp
+	make batlog LIST=xx.pari_an.2022-06-22.*.log
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4, '$(TO)' \
 	  , CASE WHEN b.result = 'pass' THEN b.result ELSE b.idiff END \
 	  FROM seq4 s, batlog b \
 	  WHERE s.aseqno = b.aseqno \
@@ -1841,6 +1847,8 @@ pari_an:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+pe:
+	echo scp $@.gen ~/work/gits/$(FISCHER)
 pari_isok:
 	head -n$(MANY) $(PROG)/maint/pari/$@.tmp | sort | uniq -w7 > $@.gen
 	wc -l    $@.gen

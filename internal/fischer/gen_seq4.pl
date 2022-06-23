@@ -126,7 +126,7 @@ while (<>) { # read inputfile
     if ($debug >= 1) {
         print "$line\n";
     }
-    @parms    = split(/\t/, $line); # this is a row from db table 'seq4'
+    @parms    = split(/\t/, "$line\t", -1); # this is a row from db table 'seq4'
     $aseqno   = shift(@parms);
     next if scalar(@parms) == 0; # only aseqno => came from CC=man
     $callcode = shift(@parms);

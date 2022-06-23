@@ -1,2 +1,0 @@
-sub conv_x_base_n { my($x, $b) = @_; my ($r, $z) = (0, ''); do { $r = $x % $b; $x = ($x - $r)/$b; $z = "$r" . $z; } while(0 != $x); return($z); }
-for($i=1; $i <= 50; $i++) { my $cc; if(($cc=conv_x_base_n($i, 3)) =~ /^(2(0|1)*|(0|1)*(02)?(0|1)*)$/) { print $cc, ", "; } }
