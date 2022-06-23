@@ -9,7 +9,7 @@ CREATE  TABLE            batlog
     , idiff    INT                   -- index of first difference
     , result   VARCHAR(16)           -- pass, FAIL, FATO, e_*
     , expected VARCHAR(256)          -- or elapsed
-    , timeout  VARCHAR(8)            -- or empty
+    , timeout  VARCHAR(32)           -- or empty
     , computed VARCHAR(256)          -- or bfimax
     , PRIMARY KEY(aseqno)
     );

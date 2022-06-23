@@ -434,6 +434,11 @@ summon:
 batch:
 	# ---- $@
 	make seq3 LIST=batch.log
+remlog: # CC=
+	scp gfis@atair:~/work/gits/joeis-lite/internal/fischer/batch.log x.log
+	cp -v x.log $(CC).`date +%Y-%m-%d.%H.%M`.log
+	grep -vP "\tFATO\t" x.log > batch.log
+	make evaluate log 
 log: # CC=; generate an HTML page for the failed tests
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
@@ -1822,8 +1827,22 @@ smoothn:	# smooth <= n
 	wc -l    $@.gen
 #--------------------------------
 # prog
+xpari_an:
+	make seq4 LIST=$(PROG)/maint/pari/$@.tmp
+	make batlog LIST=pari_an.2022-06-22.*.log
 pari_an:
-	head -n$(MANY) $(PROG)/sandbox/$@.tmp | sort | uniq -w7 > $@.gen
+	$(DBAT) "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4, '$(TO)' \
+	  , CASE WHEN b.result = 'pass' THEN b.result ELSE b.idiff END \
+	  FROM seq4 s, batlog b \
+	  WHERE s.aseqno = b.aseqno \
+	    AND b.result LIKE 'pa%' \
+	    AND s.aseqno NOT IN ((SELECT aseqno FROM poeis) UNION (SELECT aseqno FROM joeis)) \
+	    ORDER BY 1" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+pari_isok:
+	head -n$(MANY) $(PROG)/maint/pari/$@.tmp | sort | uniq -w7 > $@.gen
 	wc -l    $@.gen
 paritest:
 	grep -E "^A[0-9]" $(CAS)/pari_an.tmp \
@@ -1843,10 +1862,23 @@ paripat1: # insert 1 column
 	| perl -ne 'my @f = split(/\t/); push(@f, $$f[4]); $$f[4] = ""; print join("\t", @f); '\
 	>   paritest.4s.2022-06-20.00.00.log
 #----
+batlog: # store result logs in table 'batlog'
+	$(DBAT) -f batlog.create.sql
+	grep -E "^A[0-9]" $(LIST) | grep -P "\t(pass|FATO)\t" | sort | uniq -w7 \
+	| $(DBAT) -m csv -s "\t" -r batlog
+	$(DBAT) "UPDATE batlog b SET b.timeout=$(TO) WHERE b.result='pass';"
+	$(DBAT) "UPDATE batlog b SET b.result = 'pato' \
+	    , b.expected =              COALESCE((SELECT termno FROM asdata d WHERE d.aseqno = b.aseqno), -1) \
+	    WHERE b.result='FATO' AND b.idiff >= (SELECT termno FROM asdata d WHERE d.aseqno = b.aseqno);"
+	$(DBAT) "SELECT result, COUNT(result) FROM batlog GROUP BY result ORDER BY 1;" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#----
 PAT=paritest.*s.2022-06-20.*.log
 batlog_populate: # PAT= fill test results into table 'batlog'
 	$(DBAT) -f batlog.create.sql
-	cat $(PAT) | grep -E "^A[0-9]" | sort | uniq -w7 \
+	grep -E "^A[0-9]" $(PAT) | grep -P "\t(FATO|pass)\t" | sort | uniq -w7 \
 	| $(DBAT) -m csv -s "\t" -r batlog
 	$(DBAT) "UPDATE batlog SET timeout=4 WHERE result='pass';"
 	$(DBAT) "UPDATE batlog SET timeout=8 WHERE result='pass' AND aseqno BETWEEN 'A089587' AND 'A182589';"
@@ -1854,6 +1886,17 @@ batlog_populate: # PAT= fill test results into table 'batlog'
 	$(DBAT) -4 batlog
 	$(DBAT) "SELECT result, COUNT(result) FROM batlog GROUP BY result ORDER BY 1;" \
 	| tee $@.tmp
+batfato1:
+	$(DBAT) -v "DELETE FROM batlog WHERE 0 = 1;"
+batok: # select those that were ok: "pass" or "FATO" with idiff > termno
+	$(DBAT) -x "SELECT b.aseqno, b.idiff, b.result, d.termno, b.timeout, b.computed \
+	    FROM batlog b, asdata d \
+	    WHERE d.aseqno = b.aseqno \
+	      AND b.idiff > d.termno \
+	    ORDER BY 1" \
+	>        $(CC).$@.tmp
+	head -n4 $(CC).$@.tmp
+	wc -l    $(CC).$@.tmp
 #----
 prog_an:
 	$(DBAT)    "DELETE FROM seq4 WHERE aseqno NOT IN       (SELECT b.aseqno  FROM batlog b WHERE b.result = 'pass'  );"

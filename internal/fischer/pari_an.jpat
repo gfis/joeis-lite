@@ -1,2 +1,2 @@
-\\ source=https://oeis.org/$(ASEQNO) lang=pari curno=$(PARM2) type=an offset=$(OFFSET) bfimax=$(PARM3) rev=$(PARM4) created=$(PARM5) author=$(PARM6)
+\\ source=https://oeis.org/$(ASEQNO) lang=pari curno=$(PARM2) type=an  rev=$(PARM4) offset=$(OFFSET) bfimax=$(PARM3) timeout=$(PARM5) status=$(PARM6)
 $(PARM1)

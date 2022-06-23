@@ -48,9 +48,17 @@ public class PariSequence implements Sequence, Closeable {
     final String programType = header.getType();
     mOut.println(pariProgram); // Send the program to PARI
     switch (programType) {
+      case "an0":
+        mOut.println("alarm(" + mTimeout + ",for(n=0,+oo,print(a(n))));"); // special for P.H.
+        break;
       case "an":
         mOut.println("alarm(" + mTimeout + ",for(n=" + offset + ",+oo,print(a(n))));");
-        mOut.println("alarm(" + mTimeout + ",for(n=" + offset + ",+oo,print(a(n))));");
+        break;
+      case "isok0":
+        mOut.println("alarm(" + mTimeout + ",for(n=0,+oo,if(isok(n),print(n))));");
+        break;
+      case "isok":
+        mOut.println("alarm(" + mTimeout + ",for(n=" + offset + ",+oo,if(isok(n),print(n))));");
         break;
       default:
         throw new RuntimeException("Unknown type of PARI program " + programType + "\n" + pariProgram);
