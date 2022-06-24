@@ -17,7 +17,6 @@ public class PariSequence implements Sequence, Closeable {
 
   // todo This should be considered preliminary
   //  - it needs to handle more styles of PARI programs
-  //  - it needs to deal with offsets
   //  - it needs to check the error stream
   //  - it needs to check other error conditions
 
@@ -44,21 +43,19 @@ public class PariSequence implements Sequence, Closeable {
     }
     //System.out.println("Sending: " + pariProgram);
     final Header header = new Header(pariProgram);
+    final int nStart = header.getNStart();
     final int offset = header.getOffset();
     final String programType = header.getType();
     mOut.println(pariProgram); // Send the program to PARI
     switch (programType) {
-      case "an0":
-        mOut.println("alarm(" + mTimeout + ",for(n=0,+oo,print(a(n))));"); // special for P.H.
-        break;
       case "an":
         mOut.println("alarm(" + mTimeout + ",for(n=" + offset + ",+oo,print(a(n))));");
         break;
-      case "isok0":
-        mOut.println("alarm(" + mTimeout + ",for(n=0,+oo,if(isok(n),print(n))));");
+      case "an0":
+        mOut.println("alarm(" + mTimeout + ",for(n=" + nStart + "+oo,print(a(n))));"); // special for P.H.
         break;
       case "isok":
-        mOut.println("alarm(" + mTimeout + ",for(n=" + offset + ",+oo,if(isok(n),print(n))));");
+        mOut.println("alarm(" + mTimeout + ",for(n=" + nStart + ",+oo,if(isok(n),print(n))));");
         break;
       default:
         throw new RuntimeException("Unknown type of PARI program " + programType + "\n" + pariProgram);

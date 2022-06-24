@@ -1,2 +1,2 @@
-\\ source=https://oeis.org/$(ASEQNO) lang=pari curno=$(PARM2) type=isok  rev=$(PARM4) offset=$(OFFSET) bfimax=$(PARM3) timeout=4
+\\ source=https://oeis.org/$(ASEQNO) lang=pari curno=$(PARM2) type=isok  rev=$(PARM4) offset=$(OFFSET) bfimax=$(PARM3) timeout=$(PARM5) status=$(PARM6) nstart=$(PARM7)
 $(PARM1)

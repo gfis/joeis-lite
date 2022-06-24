@@ -1847,6 +1847,19 @@ pari_an:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+pari_isok_prog:
+	make seq4 LIST=$(PROG)/maint/pari/$@.tmp
+	make batlog LIST=xx.pari_an.2022-06-22.*.log
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4, '$(TO)' \
+	  , CASE WHEN b.result = 'pass' THEN b.result ELSE b.idiff END \
+	  FROM seq4 s, batlog b \
+	  WHERE s.aseqno = b.aseqno \
+	    AND b.result LIKE 'pa%' \
+	    AND s.aseqno NOT IN ((SELECT aseqno FROM poeis) UNION (SELECT aseqno FROM joeis)) \
+	    ORDER BY 1" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 pe:
 	echo scp $@.gen ~/work/gits/$(FISCHER)
 pari_isok:
