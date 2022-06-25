@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Seqbox - Web interface for jOEIS programs.
- *  @author Dr. Georg Fischer
+ *  @author Georg Fischer
  */
 public class SeqboxServlet extends HttpServlet {
     public final static long serialVersionUID = 19470629;
@@ -60,67 +60,19 @@ public class SeqboxServlet extends HttpServlet {
      * @throws IOException for IO errors
      */
     public void generateResponse(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
-        String view     = BasePage.getInputField(request, "view"  , "");
-        String area     = BasePage.getInputField(request, "area"  , "rset");
-        String opt      = BasePage.getInputField(request, "opt"   , "norm");
-        String form1    = BasePage.getInputField(request, "form1" , "(a-b)^3");
-        String form2    = BasePage.getInputField(request, "form2" , "");
-        String form2c   = BasePage.getInputField(request, "form2c", ""); // HTML colored
+        String view     = BasePage.getInputField(request, "view"  , "index");
         String language = "en";
+        String aseqno   = BasePage.getInputField(request, "aseqno", "A007318");
+        String mode     = BasePage.getInputField(request, "mode"  , "D");
+        String opt      = BasePage.getInputField(request, "opt"   , "");
+        String area     = BasePage.getInputField(request, "area"  , "");
         int index = 0;
         boolean found = false;
-        int mode = 3; // with PrimeFactorization and HTML coloring
         String newPage = null;
         try {
             if (false) {
-            } else if (view.equals("upper")
-                    || view.equals("index")
-                    ) {
-                if (false) {
-                } else if (area.equals("rset")) {
-                    index = 0;
-                    found = true;
-                    while (found) {
-                        String key   = request.getParameter("key" + String.valueOf(index));
-                        String value = request.getParameter("val" + String.valueOf(index));
-                        if (key == null || value == null) {
-                            found = false;
-                        }
-                        index ++;
-                    } // while found
-                    if (opt.indexOf("norm") >= 0) {
-                        //** rset.deflateIt();
-                    }
-                    //** form2  =  rset.toString(mode);
-                    //** form2c =  rset.toString(mode + 1) + "<br />" + rset.toString(0);
-                    (new IndexPage    ()).dialog(request, response, mBasePage, language, area, opt, form1, form2, form2c);
-                } else { // invalid area
-                    mBasePage.writeMessage(request, response, language, new String[] { "401", "area", area });
-                }
-
-            } else if (view.equals("lower")) {
-                if (false) {
-                } else if (area.equals("rset")) {
-                    //** rset = RelationSet.parse(form2);
-                    //** rmap = rset.getRefiningMap("x"); // maps x -> name
-                    index = 0;
-                    found = true;
-                    while (found) {
-                        String key   = request.getParameter("key" + String.valueOf(index));
-                        String value = request.getParameter("val" + String.valueOf(index));
-                        if (key == null || value == null) {
-                            found = false;
-                        }
-                        index ++;
-                    } // while found
-                    if (opt.indexOf("norm") >= 0) {
-                        //** rset.deflateIt();
-                    }
-                    //** form1 = rset.toString(mode);
-                    (new IndexPage()).dialog(request, response, mBasePage, language, area, opt, form1, form2, form2c);
-                } else {
-                    mBasePage.writeMessage(request, response, language, new String[] { "401", "area", area });
-                }
+            } else if (view.equals("joeis") || view.equals("index")) {
+                (new IndexPage    ()).dialog(request, response, mBasePage, language, aseqno, mode, opt, area);
 
             } else if (view.equals("license")
                     || view.equals("manifest")

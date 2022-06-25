@@ -1,7 +1,7 @@
 package seqbox;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.Iterator;
@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.ServletOutputStream;
 
 /**
  * This class contains common code for classes which output web pages.
@@ -32,7 +33,7 @@ public class BasePage {
     public final static long serialVersionUID = 19470629;
 
     /** the response writer */
-    protected PrintWriter mOut;
+    protected ServletOutputStream mOut;
     /** (short) application name, for example "Dbat" */
     private String mAppName;
     /** Stores the message patterns */
@@ -155,11 +156,11 @@ public class BasePage {
      * @param view <em>view</em> parameter in the Http request calling this method.
      * <p>
      * Assumes that {@link #mOut} is set by a previous call to {@link #writeHeader}.
-     * Deprecated, use <em>mOut.write(getOtherAuxiliaryLinks(language, view);</em> instead.
+     * Deprecated, use <em>mOut.print(getOtherAuxiliaryLinks(language, view);</em> instead.
      * @throws IOException if an IO error occurs
      */
     public void writeAuxiliaryLinks(final String language, final String view) throws IOException {
-        mOut.write(getOtherAuxiliaryLinks(language, view));
+        mOut.print(getOtherAuxiliaryLinks(language, view));
     } // writeAuxiliaryLinks
 
     /**
@@ -227,27 +228,27 @@ public class BasePage {
      */
     public void writeTrailer(final String language, final String features) throws IOException {
         if (true) { // try {
-            mOut.write("<!-- language=\"" + language + "\", features=\"" + features + "\" -->\n");
+            mOut.print("<!-- language=\"" + language + "\", features=\"" + features + "\" -->\n");
             if (features.indexOf("back") >= 0) {
-                mOut.write("<p>\n");
-                mOut.write(this.getReplacedText(language, new String[]
+                mOut.print("<p>\n");
+                mOut.print(this.getReplacedText(language, new String[]
                         { "902"
                         , getReplacedText(language, new String[] { "001", language })
                         } ));
-                mOut.write("</p>\n");
+                mOut.print("</p>\n");
             } // back
 
             if (features.indexOf("quest") >= 0) {
-                mOut.write("<p><span style=\"font-size:small\">\n");
-                mOut.write(this.getReplacedText(language, new String[]
+                mOut.print("<p><span style=\"font-size:small\">\n");
+                mOut.print(this.getReplacedText(language, new String[]
                         { "903"
                         , this.getReplacedText(language, new String[] { "002" }) // mailto: link
                         } ));
-                mOut.write("</span></p>\n");
+                mOut.print("</span></p>\n");
             } // quest
 
             // close the HTML document in any case
-            mOut.write("</body></html>\n");
+            mOut.print("</body></html>\n");
         }
     } // writeTrailer
 
@@ -269,18 +270,18 @@ public class BasePage {
             , final String language
             , final String[] parms
             ) throws IOException {
-        PrintWriter mOut = this.writeHeader(request, response, language);
+        mOut = this.writeHeader(request, response, language);
         String messNo   = parms[0];
         String text     = this.getReplacedText(language, parms);
         String messWord = this.getReplacedText(language, new String[] { "901" });
-        mOut.write("<title>" + this.getAppName() + messWord + " " + messNo + "</title>\n");
+        mOut.print("<title>" + this.getAppName() + messWord + " " + messNo + "</title>\n");
         if (messNo.equals("301")) {
-            mOut.write("<meta http-equiv=\"refresh\" content=\"" + parms[3] + "; URL=" + parms[2] + "\" />\n");
+            mOut.print("<meta http-equiv=\"refresh\" content=\"" + parms[3] + "; URL=" + parms[2] + "\" />\n");
         }
-        mOut.write("</head>\n");
-        mOut.write("<body>\n");
-        mOut.write("<!--lang=" + language + ", messno=" + messNo + ", text=" + text + "-->\n");
-        mOut.write("<h3>" + this.get(language, "001") + messWord + " " + messNo + ": "+ text + "</h3>\n");
+        mOut.print("</head>\n");
+        mOut.print("<body>\n");
+        mOut.print("<!--lang=" + language + ", messno=" + messNo + ", text=" + text + "-->\n");
+        mOut.print("<h3>" + this.get(language, "001") + messWord + " " + messNo + ": "+ text + "</h3>\n");
         writeTrailer(language, "quest");
     } // writeMessage
 
@@ -344,21 +345,21 @@ public class BasePage {
      * @return the writer for the response
      * @throws IOException if an IO error occurs
      */
-    public PrintWriter writeHeader(final HttpServletRequest request, final HttpServletResponse response
+    public ServletOutputStream writeHeader(final HttpServletRequest request, final HttpServletResponse response
             , String language
             ) throws IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        mOut = response.getWriter(); // side effect
-        mOut.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        mOut.write("\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n");
-        mOut.write("    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n");
-        mOut.write("<html xmlns=\"http://www.w3.org/1999/xhtml\">\n");
-        mOut.write("<head>\n");
-        mOut.write("<meta http-equiv=\"Content-Type\" content=\"application/xhtml+xml;charset=UTF-8\" />\n");
-        mOut.write("<meta name=\"robots\" content=\"noindex, nofollow\" />\n");
-        mOut.write("<link rel=\"stylesheet\" title=\"common\" type=\"text/css\" href=\"stylesheet.css\" />\n");
+        mOut = response.getOutputStream(); // side effect
+        mOut.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+        mOut.print("\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n");
+        mOut.print("    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n");
+        mOut.print("<html xmlns=\"http://www.w3.org/1999/xhtml\">\n");
+        mOut.print("<head>\n");
+        mOut.print("<meta http-equiv=\"Content-Type\" content=\"application/xhtml+xml;charset=UTF-8\" />\n");
+        mOut.print("<meta name=\"robots\" content=\"noindex, nofollow\" />\n");
+        mOut.print("<link rel=\"stylesheet\" title=\"common\" type=\"text/css\" href=\"stylesheet.css\" />\n");
         return mOut;
     } // writeHeader
 

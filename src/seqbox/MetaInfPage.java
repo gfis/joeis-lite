@@ -3,7 +3,7 @@ package seqbox;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -11,6 +11,7 @@ import java.util.TreeSet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletOutputStream;
 
 /** 
  * This class prints metadata for the application:
@@ -55,17 +56,17 @@ public class MetaInfPage {
     public void showMetaInf(final HttpServletRequest request, final HttpServletResponse response
             , final BasePage basePage, final String language, String view, final HttpServlet callingServlet
             ) throws IOException {
-        PrintWriter out = basePage.writeHeader(request, response, language);
-        out.write("<title>" + basePage.getAppName() + " " + view + "</title>\n");
-        out.write("</head>\n<body>\n");
-        out.write("<!-- language=\"" + language + "\", view=\"" + view + "\" -->\n");
+        ServletOutputStream out = basePage.writeHeader(request, response, language);
+        out.print("<title>" + basePage.getAppName() + " " + view + "</title>\n");
+        out.print("</head>\n<body>\n");
+        out.print("<!-- language=\"" + language + "\", view=\"" + view + "\" -->\n");
         String resourceName = null;
         if (view == null) {
             view = "manifest";
         }
         if (view.equals("package")) {
             // Package [] packs = this.getClass().getClassLoader().getPackages();
-            out.write("<a name=\"package\" />\n<h3>Available Java Packages</h3>\n");
+            out.print("<a name=\"package\" />\n<h3>Available Java Packages</h3>\n");
             Package [] packs = Package.getPackages();
             TreeSet<String> packNames = new TreeSet<String>();
             int ipack = 0;
@@ -73,7 +74,7 @@ public class MetaInfPage {
                 packNames.add(packs[ipack].getName());
                 ipack ++;
             } // while ipack
-            out.write("<tt>\n<pre>\n");
+            out.print("<tt>\n<pre>\n");
             Iterator<String> piter = packNames.iterator();
             while (piter.hasNext()) {
                 String packName = piter.next();
@@ -83,9 +84,9 @@ public class MetaInfPage {
                     out.println(packName);
                 }
             } // while piter
-            out.write("</pre>\n</tt>\n");
+            out.print("</pre>\n</tt>\n");
         } else { // read from a resource in the JAR file
-            out.write("<h3>" + basePage.getAuxiliaryLink(language, view) + "</h3>\n");
+            out.print("<h3>" + basePage.getAuxiliaryLink(language, view) + "</h3>\n");
             if (false) {
             } else if (view.equals("license")) {
                 resourceName = "LICENSE.txt";
@@ -94,9 +95,9 @@ public class MetaInfPage {
             } else { // if (view.equals("manifest")) {
                 resourceName = "META-INF/MANIFEST.MF";
             }
-            out.write("<!-- appName=\"" + basePage.getAppName() + "\", resource=\"" + resourceName + "\" -->\n");
+            out.print("<!-- appName=\"" + basePage.getAppName() + "\", resource=\"" + resourceName + "\" -->\n");
             URL url = getMyResourceURL(callingServlet, basePage.getAppName(), resourceName);
-            out.write("<pre>\n");
+            out.print("<pre>\n");
             if (url != null) { // resource found
                 BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
                 String line = null;
@@ -104,7 +105,7 @@ public class MetaInfPage {
                     out.println(line);
                 } // while
             } // url != null
-            out.write("</pre>\n");
+            out.print("</pre>\n");
         } // not "package"
 
         basePage.writeTrailer(language, "back,quest");
@@ -133,7 +134,6 @@ public class MetaInfPage {
             while (busy && resEnum.hasMoreElements()) {
                 URL url = resEnum.nextElement();
                 String urlst = url.toString();
-                // log.info(urlst);
                 if (    urlst.indexOf(appName + ".jar!/")            >= 0 ||
                         urlst.indexOf(appName + "/WEB-INF/classes/") >= 0) {
                     busy = false;
@@ -159,8 +159,7 @@ public class MetaInfPage {
      */
     public String getVersionString(final Object localObject, final String appName) throws IOException {
         String result = "V";
-        if (true) { // try {
-            /* unzip -p dist/dbat.jar      META-INF/MANIFEST.MF shows:
+/* unzip -p dist/dbat.jar      META-INF/MANIFEST.MF shows:
 Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.9.6
 Created-By: 1.8.0_91-8u91-b14-3ubuntu1~16.04.1-b14 (Oracle Corporation
@@ -175,36 +174,35 @@ Specification-Vendor: Dr. Georg Fischer, D-79341 Kenzingen, Germany
 Implementation-Title: teherba.org/dbat
 Implementation-Version: 24 2016-09-16 13.51.24
 Implementation-Vendor: www.teherba.org
-           */
-            URL url = getMyResourceURL(localObject, appName, "META-INF/MANIFEST.MF");
-            if (url != null) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-                String line = null;
-                while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split("\\s+");
-                    if (false) {
-                    } else if (line.startsWith("Specification-Version:" )) {
-                        if (parts.length >= 2) {
-                            result += parts[1];
-                        } else {
-                            result += "10";
+*/
+        URL url = getMyResourceURL(localObject, appName, "META-INF/MANIFEST.MF");
+        if (url != null) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\s+");
+                if (false) {
+                } else if (line.startsWith("Specification-Version:" )) {
+                    if (parts.length >= 2) {
+                        result += parts[1];
+                    } else {
+                        result += "10";
+                    }
+                } else if (line.startsWith("Implementation-Version:")) {
+                    if (parts.length >= 4) {
+                        String buildNo = parts[1].replaceAll("\\.", "");
+                        if (false) { // force buildNo to 4 digits
+                        } else if (buildNo.length() > 4) {
+                            buildNo = buildNo.substring(buildNo.length() - 4);
+                        } else if (buildNo.length() < 4) {
+                            buildNo = ("0000".substring(buildNo.length())) + buildNo;
                         }
-                    } else if (line.startsWith("Implementation-Version:")) {
-                        if (parts.length >= 4) {
-                            String buildNo = parts[1].replaceAll("\\.", "");
-                            if (false) { // force buildNo to 4 digits
-                            } else if (buildNo.length() > 4) {
-                                buildNo = buildNo.substring(buildNo.length() - 4);
-                            } else if (buildNo.length() < 4) {
-                                buildNo = ("0000".substring(buildNo.length())) + buildNo;
-                            }
-                            result += "." + buildNo + "/" + parts[2];
-                        } // >= 4 parts
-                    } // Implementation-Version
-                } // while reading lines from MANIFEST.MF
-            } else { // did not find my resource
-                result = "V00.0000/0000-00-00"; // indicates failure
-            } // while resEnum
+                        result += "." + buildNo + "/" + parts[2];
+                    } // >= 4 parts
+                } // Implementation-Version
+            } // while reading lines from MANIFEST.MF
+        } else { // did not find my resource
+            result = "V00.0000/0000-00-00"; // indicates failure
         }
         return result;
     }
