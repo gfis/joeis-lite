@@ -47,6 +47,10 @@ public class PariSequence implements Sequence, Closeable {
     final int offset = header.getOffset();
     final String programType = header.getType();
     mOut.println(pariProgram); // Send the program to PARI
+    if (mVerbose) {
+      System.out.println("type=" + programType + ", nStart=" + nStart + ", offset=" + offset);
+      System.out.println(pariProgram);
+    }
     switch (programType) {
       case "an":
         mOut.println("alarm(" + mTimeout + ",for(n=" + offset + ",+oo,print(a(n))));");

@@ -1838,7 +1838,7 @@ pari_an:
 	make seq4 LIST=$(PROG)/maint/pari/$@.tmp
 	make batlog LIST=xx.pari_an.2022-06-22.*.log
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4, '$(TO)' \
-	  , CASE WHEN b.result = 'pass' THEN b.result ELSE b.idiff END \
+	  , CASE WHEN b.result = 'pass' THEN b.result ELSE b.idiff END, s.parm7 \
 	  FROM seq4 s, batlog b \
 	  WHERE s.aseqno = b.aseqno \
 	    AND b.result LIKE 'pa%' \
@@ -1848,10 +1848,10 @@ pari_an:
 	head -n4 $@.gen
 	wc -l    $@.gen
 pari_isok_prog:
-	make seq4 LIST=$(PROG)/maint/pari/$@.tmp
-	make batlog LIST=xx.pari_an.2022-06-22.*.log
+	make seq4 LIST=$(PROG)/maint/pari/pari_isok.tmp
+	make batlog LIST=pari_isok.2022-06-24.*.log
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4, '$(TO)' \
-	  , CASE WHEN b.result = 'pass' THEN b.result ELSE b.idiff END \
+	  , CASE WHEN b.result = 'pass' THEN b.result ELSE b.idiff END, s.parm7 \
 	  FROM seq4 s, batlog b \
 	  WHERE s.aseqno = b.aseqno \
 	    AND b.result LIKE 'pa%' \
@@ -1860,8 +1860,6 @@ pari_isok_prog:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-pe:
-	echo scp $@.gen ~/work/gits/$(FISCHER)
 pari_isok:
 	head -n$(MANY) $(PROG)/maint/pari/$@.tmp | sort | uniq -w7 > $@.gen
 	wc -l    $@.gen
@@ -1885,7 +1883,8 @@ paripat1: # insert 1 column
 #----
 batlog: # store result logs in table 'batlog'
 	$(DBAT) -f batlog.create.sql
-	grep -E "^A[0-9]" $(LIST) | grep -P "\t(pass|FATO)\t" | sort | uniq -w7 \
+	cat $(LIST) \
+	| grep -E "^A[0-9]" | grep -P "\t(pass|FATO)\t" | sort | uniq -w7 \
 	| $(DBAT) -m csv -s "\t" -r batlog
 	$(DBAT) "UPDATE batlog b SET b.timeout=$(TO) WHERE b.result='pass';"
 	$(DBAT) "UPDATE batlog b SET b.result = 'pato' \
@@ -4676,6 +4675,20 @@ sumgcdm:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+ggpartsum: # Sean 2022-06-23
+	$(DBAT) -f $(COMMON)/seq2.create.sql
+	sed -e "s/ /\t/" partial_sum_stage2.out.ut \
+	| $(DBAT) -r seq2
+gg2:
+	$(DBAT) "(SELECT s.aseqno, ' -> ', s.info   FROM asxref x, seq2 s \
+	           WHERE s.aseqno = x.aseqno AND s.info = x.rseqno) \
+	UNION    (SELECT s.aseqno, ' <- ', s.info   FROM asxref x, seq2 s \
+	           WHERE s.aseqno = x.rseqno AND s.info = x.aseqno) \
+	UNION    (SELECT s.aseqno, ' ?? ', s.info   FROM seq2 s \
+	           WHERE s.info   NOT IN (SELECT x.rseqno FROM asxref x WHERE x.aseqno = s.aseqno) \
+	             AND s.aseqno NOT IN (SELECT x.rseqno FROM asxref x WHERE x.aseqno = s.info  ) ) \
+	ORDER BY 1"
 #--------------------------------
 peravoid:
 	grep -iP "permutations of \[?n\]? avoiding " $(COMMON)/joeis_names.txt | grep null \
