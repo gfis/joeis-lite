@@ -89,6 +89,9 @@
         <fileset dir="${lib.home}">
             <include name="*.jar"/>
         </fileset>
+        <fileset dir="${tomcat.home}/lib"><!-- contains the servlet-api jar -->
+            <include name="*.jar"/>
+        </fileset>
     </path>
 
     <!-- ============= all ==============================================
@@ -129,9 +132,35 @@
         <mkdir dir="${docs.home}"/>
         <mkdir dir="${docs.home}/api"/>
         <mkdir dir="${dist.home}"/>
+        <!-- The following line must be expanded in (Apache Tomcat)/conf/catalina.properties:
+        common.loader="c:/var/lib/tomcat/openlib/*.jar","${catalina.base}/lib","${catalina.base}/lib/*.jar","${catalina.home}/lib","${catalina.home}/lib/*.jar"
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        Tomcat must be restarted for this to work.
+        xxpreservelastmodified="true"
+        -->
+        <mkdir dir="${tomcat.base}/openlib" />
     </target>
 
     <target name="clean" depends="empty,fill.lib">
+        <!-- only when Tomcat is stopped -->
+    <!--
+        Normally the libraries are overwritten.
+        Caution, if the name (it's version number) is changed, the library must be removed manually.
+
+        <delete failonerror="false" verbose="true" >
+            <fileset dir="${tomcat.base}/openlib">
+                <include name="**/*.jar" />
+            </fileset>
+        </delete>
+        <available file="${tomcat.base}/openlib/activation.jar" property="not.deleted" />
+        <fail message="Tomcat must be stopped for clean" if="${not.deleted}"  />
+    -->
+        <copy todir="${tomcat.base}/openlib" verbose="true">
+            <fileset dir="${lib.home}">
+                <include name="*.jar" />
+            </fileset>
+        </copy>
+
         <unzip dest="${build.expand}">
             <fileset dir="${lib.home}">
                 <include name="*.jar" />
@@ -170,6 +199,7 @@
         <copy todir="${build.classes}">
             <fileset dir="${etc.home}">
                 <include name="*.properties"/>
+                <include name="*.xml"/>
             </fileset>
             <fileset dir="${app.path}">
                 <include name="LICENSE.txt"/>
@@ -178,12 +208,12 @@
         </copy>
 
         <!-- copy web.xml and application.xml to build directory
+        -->
         <copy todir="${build.home}/WEB-INF">
             <fileset dir="${etc.home}/WEB-INF">
                 <include name="web.xml"/>
             </fileset>
         </copy>
-        -->
 
         <!-- copy all XML specs, stylesheets, HTML pages, Javascript and images -->
         <copy todir="${build.home}">
@@ -229,7 +259,7 @@
             <section name="${ant.project.name}">
                 <attribute name="Specification-Title"       value="${ant.project.name}${core}"/>
                 <attribute name="Specification-Version"     value="${app.version} ${build.jdk}"/>
-                <attribute name="Specification-Vendor"      value="Dr. Georg Fischer, D-79341 Kenzingen, Germany"/>
+                <attribute name="Specification-Vendor"      value="Georg Fischer, D-79341 Kenzingen, Germany"/>
                 <attribute name="Implementation-Title"      value="teherba.org/${ant.project.name}${core}"/>
                 <attribute name="Implementation-Version"    value="${build.number} ${build.date}"/>
                 <attribute name="Implementation-Vendor"     value="www.teherba.org"/>
@@ -265,10 +295,11 @@
             <fileset dir="${build.expand}" />
         </jar>
         <!-- without libraries, with web files 
-        <war destfile="${dist.home}/${ant.project.name}.war"
+                excludes="**/web.xml,dependencies.txt"
+        -->
+        <war destfile="${dist.home}/${war.name}.war"
                 basedir="${build.home}"
                 manifest="${build.classes}/META-INF/MANIFEST.MF"
-                excludes="**/web.xml,dependencies.txt"
                 webxml="${build.home}/WEB-INF/web.xml"
                 defaultexcludes="no"
                 >
@@ -276,9 +307,10 @@
         </war>
         <copy todir="${build.home}/META-INF">
             <fileset dir="${etc.home}/META-INF">
-                <include name="geronimo-application.xml" />
+                <include name="application.xml" />
             </fileset>
         </copy>
+        <!-- no EAR
         <ear destfile="${dist.home}/${ant.project.name}.ear"
                 basedir="${etc.home}/META-INF"
                 excludes="**/application.xml,dependencies.txt"
@@ -289,9 +321,16 @@
         -->
     </target>
 
-    <!-- ============= (un-) deployment =====================
+    <!-- ============= (un-) deployment to Tomcat and Axis =====================
     -->
-    <target name="deploy" depends="dist" />
+    <target name="deploy" depends="dist,deploy.webapps" />
+
+    <!-- Tomcat -->
+    <target name="deploy.webapps" depends="dist">
+        <touch file="${dist.home}/${war.name}.war" />
+        <copy file="${dist.home}/${war.name}.war"          tofile="${tomcat.base}/webapps/${war.name}.wr"  />
+        <move file="${tomcat.base}/webapps/${war.name}.wr" tofile="${tomcat.base}/webapps/${war.name}.war" />
+    </target>
 
     <target name="run">
         <java classname="${class}" classpathref="compile.classpath" fork="true">
@@ -310,7 +349,7 @@
                 additionalparam="-linksource -sourcetab 4 -keywords"
                 >
             <!--
-                packagenames="org.teherba.${ant.project.name}.*"
+                packagenames="org.teherba.${war.name}.*"
                 excludepackagenames="org.apache.*"
             -->
             <classpath refid="compile.classpath"/>
@@ -325,8 +364,8 @@
             <arg value="-v" /><arg value="dist/${ant.project.name}.jar" />
         </exec>
         <mkdir dir="${docs.home}/api/directories" />
-        <exec dir="${basedir}" executable="unzip" output="${docs.home}/api/directories/${ant.project.name}.war.lst" >
-            <arg value="-v" /><arg value="dist/${ant.project.name}.war" />
+        <exec dir="${basedir}" executable="unzip" output="${docs.home}/api/directories/${war.name}.war.lst" >
+            <arg value="-v" /><arg value="dist/${war.name}.war" />
         </exec>
     </target>
 

@@ -2,14 +2,18 @@
 <!--
     ant-buildfile for joeis-lite
     @(#) $Id: build.xml 970 2012-10-25 16:49:32Z gfis $
+    2022-06-25: tomcat.base, tomcat.home
     2019-05-25: app.main-class was BatchTest
     2019-04-06, Georg Fischer: copied from ramath
 -->
 
 <project name="joeis-lite" default="dist" basedir=".">
     <property name="app.name"           value="joeis-lite"/>
-    <property name="app.version"        value="1.1"/>
+    <property name="war.name"           value="seqbox"/>
+    <property name="app.version"        value="2.0"/>
     <property name="app.main-class"     value="irvine.test.SequenceTest"/>
+    <property name="tomcat.base"        value="/var/lib/tomcat" />
+    <property name="tomcat.home"        value="/usr/share/tomcat" />
     <property name="test"               value="%" />
     <import file="build-import.xml" />
 

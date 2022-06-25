@@ -1,0 +1,24 @@
+/* Cascaded Style Sheet for Seqbox
+   @(#) $Id$
+   2022-06-25, Georg Fischer
+*/
+.grn    { color:black    ; background-color: lightgreen      }
+.red    { color:black    ; background-color: lightsalmon     }
+
+.p1     { color:black    ; background-color: lightgray       }
+.p2     { color:black    ; background-color: lightsalmon     }
+.p3     { color:black    ; background-color: yellow          }
+.p5     { color:black    ; background-color: lightgreen      }
+.p7     { color:black    ; background-color: lightblue       }
+
+body,p,h1,h2,h3,h4,dl,dd,dt,ul,ol,li,div,td,th,address,blockquote,nobr,b,i,a,br,img
+    { font-family:Verdana,Arial,sans-serif; }
+dt  
+    { font-weight: bold }
+tt
+    { font-family:Courier; }
+td
+    { vertical-align:top }
+body
+    { background-color:white }
+
