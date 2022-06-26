@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Seqbox - Web interface for jOEIS programs.
- *  @author Georg Fischer
+/** 
+ * Seqbox - Web interface for jOEIS programs.
+ * This class is configured in WEB-INF/web.xml and to be used with a Tomcat web container.
+ * @author Georg Fischer
  */
 public class SeqboxServlet extends HttpServlet {
     public final static long serialVersionUID = 19470629;
@@ -61,18 +63,11 @@ public class SeqboxServlet extends HttpServlet {
      */
     public void generateResponse(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         String view     = BasePage.getInputField(request, "view"  , "index");
-        String language = "en";
-        String aseqno   = BasePage.getInputField(request, "aseqno", "A007318");
-        String mode     = BasePage.getInputField(request, "mode"  , "D");
-        String opt      = BasePage.getInputField(request, "opt"   , "");
-        String area     = BasePage.getInputField(request, "area"  , "");
-        int index = 0;
-        boolean found = false;
-        String newPage = null;
+        String language = BasePage.getInputField(request, "lnag"  , "en");
         try {
             if (false) {
             } else if (view.equals("joeis") || view.equals("index")) {
-                (new IndexPage    ()).dialog(request, response, mBasePage, language, aseqno, mode, opt, area);
+                (new IndexPage    ()).dialog(request, response, mBasePage, language);
 
             } else if (view.equals("license")
                     || view.equals("manifest")

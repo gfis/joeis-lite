@@ -1,10 +1,9 @@
 /* Cascaded Style Sheet for Seqbox
    @(#) $Id$
-   2022-06-25, Georg Fischer
+   2022-06-26, Georg Fischer
 */
 .grn    { color:black    ; background-color: lightgreen      }
 .red    { color:black    ; background-color: lightsalmon     }
-
 .p1     { color:black    ; background-color: lightgray       }
 .p2     { color:black    ; background-color: lightsalmon     }
 .p3     { color:black    ; background-color: yellow          }
@@ -20,5 +19,6 @@ tt
 td
     { vertical-align:top }
 body
-    { background-color:white }
-
+    { background-color:lightyellow }
+button:first-letter 
+    { text-decoration:underline }

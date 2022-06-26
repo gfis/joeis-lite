@@ -13,6 +13,7 @@ import java.util.List;
 import org.apfloat.ApfloatRuntimeException;
 
 import irvine.math.z.Z;
+import irvine.oeis.SequenceWithOffset;
 import irvine.oeis.producer.MetaProducer;
 import irvine.oeis.producer.Producer;
 import irvine.util.CliFlags;

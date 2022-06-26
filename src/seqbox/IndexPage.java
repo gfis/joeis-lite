@@ -5,6 +5,7 @@ import irvine.oeis.SequenceFactory;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletOutputStream;
@@ -60,20 +61,24 @@ public class IndexPage implements Serializable {
      * @param response response with writer
      * @param basePage reference to common methods and error messages
      * @param language 2-letter code en, de etc.
-     * @param aseqno A-number
-     * @param mode how to display the terms (data, b-file, triangle and so on)
-     * @param opt options 
-     * @param area output textarea for computed terms
      * @throws IOException for IO errors
      */
     public void dialog(final HttpServletRequest request, final HttpServletResponse response
             , final BasePage basePage
             , final String language
-            , String aseqno
-            , String mode
-            , String opt
-            , String area
             ) throws IOException {
+        String aseqno   = basePage.getInputField(request, "aseqno"   , "A007318").trim(); // A-number
+        String mode     = basePage.getInputField(request, "mode"     , "D"); // how to display the terms (data, b-file, triangle and so on)
+        String area     = basePage.getInputField(request, "area"     , ""); // output area for terms
+        String offset   = basePage.getInputField(request, "offset"   , "").trim(); // index of first term (needed for  b-files)
+        String terms    = basePage.getInputField(request, "terms"    , "64").trim(); // number of terms to be computed
+        String rows     = basePage.getInputField(request, "rows"     , "8").trim(); // number of rows for triangles and squares
+        String dataLen  = basePage.getInputField(request, "datalen"  , "260").trim(); // character length of data (0 = unlimited)
+        String rowNums  = basePage.getInputField(request, "rowNums"  , "").trim(); // whether to display row numbers for triangles and squares 
+        String header   = basePage.getInputField(request, "header"   , "").trim(); // whether to display a header at the beginning of the b-file
+        String timestamp= basePage.getInputField(request, "timestamp", "").trim(); // whether to display a timestamp before each term
+        String priority = basePage.getInputField(request, "priority" , "java,gp").trim().replaceAll(" ","").toLowerCase(); // order for producers
+        String author   = basePage.getInputField(request, "author"   , "").trim(); // string to be displayes as author in the header
         ServletOutputStream out = basePage.writeHeader(request, response, language);
         if (aseqno == null || aseqno.length() < 2) {
           aseqno = "A007318";
@@ -85,8 +90,6 @@ public class IndexPage implements Serializable {
         out.print("</head>\n<body>\n");
 
         String border = "0";
-        int width  = 128;
-        int height = 8;
         String[] optMode    = new String []
                 { "D"    // 0
                 , "B"    // 1
@@ -95,14 +98,16 @@ public class IndexPage implements Serializable {
                 , "T"    // 4
                 } ;
         String[] enMode     = new String []
-                { "D - data"
-                , "B - b-file"
-                , "R - upper right triangle"
-                , "S - square array"
-                , "T - triangle"
+                { "Data section"
+                , "B-file"
+                , "Upper right triangle"
+                , "Square array"
+                , "Triangle"
                 } ;
         int index = 0;
-        out.print("<!-- aseqno=\"" + aseqno + "\", mode=\""  + mode + "\", opt=\"" + opt + "\"\n");
+        out.print("<!-- aseqno=\"" + aseqno + "\", mode=\""  + mode + "\"\n");
+        out.print(", terms=\"" + terms + "\", rows=\""  + rows + "\", dataLen=\"" + dataLen + "\"\n");
+        out.print(", rowNums=\"" + rowNums + "\", header=\""  + header + "\", timestamp=\"" + timestamp + "\", author=\"" + author + "\"\n");
         out.print("  area=\""  + area + "\"\n");
         out.print("-->\n");
         out.print("<h2>Seqbox - Toolkit for Seqfans</h2>\n");
@@ -111,11 +116,13 @@ public class IndexPage implements Serializable {
         out.print("  <table cellpadding=\"0\" border=\"" + border + "\">\n");
         out.print("    <tr valign=\"top\">\n");
         out.print("      <td><strong>A-Number:</strong><br />\n");
-        out.print("        <input name=\"aseqno\" maxsize=\"10\" size=\"7\" value=\"" + aseqno + "\" />\n");
-        out.print("        <br />\n");
-        out.print("        <input type=\"submit\" value=\"Compute\" />\n");
+        out.print("        <strong><a href=\"https://oeis.org/" + aseqno + "\" title=\"OEIS description\" target=\"_blank\">OEIS </a>\n");
+        out.print("        <input name=\"aseqno\" maxsize=\"10\" size=\"7\" value=\"" + aseqno + "\" /></strong>\n");
+        out.print("        <br /><button type=\"submit\" value=\"Generate\" accesskey=\"g\"><u>G</u>enerate</button>\n");
+        out.print("        <br /><br /><a target=\"_blank\" href=\"https://raw.githubusercontent.com/archmageirvine/joeis/master/src/irvine/oeis/" 
+            + aseqno.substring(0,4).toLowerCase() + "/" + aseqno + ".java\">Java source</a>\n");
         out.print("      </td><td>\n");
-        out.print("        Mode:<br />\n");
+        out.print("        Output Mode:<br />\n");
         out.print("        <select name=\"mode\" size=\"5\">\n");
         for (int ix = 0; ix < optMode.length; ++ix) {
           out.print("         <option value=\"" + optMode[ix] + "\"" + (optMode[ix].equals(mode) ? " selected" : "")
@@ -123,22 +130,56 @@ public class IndexPage implements Serializable {
         }
         out.print("                </select>\n");
         out.print("      </td><td>\n");
-        out.print("        Options:<br />");
-        out.print("        <input name=\"opt\" maxsize=\"100\" size=\"12\" value=\"" + opt + "\" />\n");
-        out.print("        <br /><br />\n");
+        out.print("        Options:");
+        out.print("        <br /><input name=\"offset\"   maxsize=\"10\" size=\"3\" value=\"" + offset  + "\" /> offset\n");
+        out.print("        <br /><input name=\"terms\"    maxsize=\"10\" size=\"3\" value=\"" + terms   + "\" /> terms\n");
+        out.print("        <br /><input name=\"rows\"     maxsize=\"10\" size=\"3\" value=\"" + rows    + "\" /> rows\n");
+        out.print("        <br /><input name=\"datalen\"  maxsize=\"10\" size=\"3\" value=\"" + dataLen + "\" /> Data characters\n");
+        out.print("      </td><td>\n");
+        out.print("        <br />Author:&#xa0;<input name=\"author\" maxsize=\"64\" size=\"16\" value=\"" + author + "\" />\n");
+        out.print("        <br /><input type=\"checkbox\" id=\"rowNums\"   name=\"rowNums\"   value=\"true\"><label for=\"rowNums\" > row numbers</label>\n");
+        out.print("        <br /><input type=\"checkbox\" id=\"header\"    name=\"header\"    value=\"true\"><label for=\"header\"  > b-file header</label>\n");
+        out.print("        <br /><input type=\"checkbox\" id=\"timestamp\" name=\"timestamp\" value=\"true\"><label for=\"vehicle3\"> timestamp</label>\n");
+        out.print("        <br />Priority: <input name=\"priority\" maxsize=\"64\" size=\"16\" value=\"" + priority + "\" />\n");
         out.print("      </td>\n");
         out.print("    </tr>\n");
         out.print("    <tr valign=\"top\">\n");
-        out.print("      <td align=\"left\" colspan=\"3\">\n");
-        out.print("        <textarea name=\"area\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
-        SequenceFactory.compute(new String[] { "-" + mode, "-n", "64", aseqno } , out);
+        out.print("      <td align=\"left\" colspan=\"4\">\n");
+        final int width  = 96;
+        final int height = 8;
+/*
+        out.print("        <textarea name=\"area\" id=\"area\" class=\"js-copytextarea\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
+*/
+        out.print("        <textarea name=\"area\" id=\"myInput\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
+        final ArrayList<String> args = new ArrayList<>(16);
+        args.add("-" + mode);
+        args.add("--terms="       + (terms  .trim().length() == 0 ? "0" : terms  ));
+        args.add("--rows="        + (rows   .trim().length() == 0 ? "0" : rows   ));
+        args.add("--data-length=" + (dataLen.trim().length() == 0 ? "0" : dataLen));
+        args.add("--author="      + (author .trim().length() == 0 ? ""  : author ));
+        if (rowNums.equals("true"))   {
+          args.add("--row-numbers");
+        }
+        if (offset.length() > 0)    {
+          args.add("--offset=" + offset);
+        }
+        if (header.equals("true"))    {
+          args.add("--header");
+        }
+        if (timestamp.equals("true")) {
+          args.add("--timestamp");
+        }
+        args.add(aseqno);
+        String[] arrs = new String[args.size()];
+        arrs = args.toArray(arrs);
+        SequenceFactory.compute(arrs, out);
         out.print("        </textarea>\n");
+        out.print("        <button onclick=\"myFunction()\" style=\"vertical-align:top;align:right;\" accesskey=\"c\"><u>C</u>opy</button>\n");
         out.print("      </td>\n");
         out.print("    </tr>\n");
         out.print("  </table>\n");
         out.print("</form><!-- joeis -->\n");
-        out.print("<br /><br />\n");
-        out.print("See also: ");
+        out.print("<br />\n");
         basePage.writeAuxiliaryLinks(language, "main");
         basePage.writeTrailer(language, "quest");
     }

@@ -121,31 +121,35 @@ public class BasePage {
         basePage.add("fr", smess, "{parm}Wiki</a> Documentation");
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"github\"      href=\"https://github.com/gfis/"
-                + appLowerName + "\" target=\"_new\">");
+//              + appLowerName + "\" target=\"_new\">");
+                + "joeis-lite" + "\" target=\"_new\">");
         basePage.add("en", smess, "{parm}Git Repository</a>");
         basePage.add("de", smess, "{parm}Git Repository</a>");
         basePage.add("fr", smess, "{parm}Dépot Git</a>");
+/*
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"api\"         href=\"docs/api/index.html\">");
         basePage.add("en", smess, "{parm}Java API</a> Documentation");
         basePage.add("de", smess, "{parm}Java API</a>-Dokumentation");
         basePage.add("fr", smess, "{parm}Java API</a> Documentation");
-
+*/
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"manifest\"    href=\"servlet?view=manifest&lang={parm}\">");
-        basePage.add("en", smess, "{parm}Manifest</a>, ");
-        basePage.add("de", smess, "{parm}Manifest</a>, ");
-        basePage.add("fr", smess, "{parm}Manifest</a>, ");
+        basePage.add("en", smess, "{parm}Manifest</a> ");
+        basePage.add("de", smess, "{parm}Manifest</a> ");
+        basePage.add("fr", smess, "{parm}Manifest</a> ");
+/*
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"license\"     href=\"servlet?view=license&lang={parm}\">");
-        basePage.add("en", smess, "{parm}License</a>, ");
-        basePage.add("de", smess, "{parm}Lizenz</a>, ");
-        basePage.add("fr", smess, "{parm}Licence</a>, ");
+        basePage.add("en", smess, "{parm}License</a> ");
+        basePage.add("de", smess, "{parm}Lizenz</a> ");
+        basePage.add("fr", smess, "{parm}Licence</a> ");
         smess = String.format("%03d", imess ++);
         basePage.add(laux, smess, "<a title=\"notice\"      href=\"servlet?view=notice&lang={parm}\">");
-        basePage.add("en", smess, "{parm}References</a>");
-        basePage.add("de", smess, "{parm}Referenzen</a>");
-        basePage.add("fr", smess, "{parm}Références</a>");
+        basePage.add("en", smess, "{parm}References</a> ");
+        basePage.add("de", smess, "{parm}Referenzen</a> ");
+        basePage.add("fr", smess, "{parm}Références</a> ");
+*/
         //--------
         return imess;
     } // addStandardLinks
@@ -360,6 +364,7 @@ public class BasePage {
         mOut.print("<meta http-equiv=\"Content-Type\" content=\"application/xhtml+xml;charset=UTF-8\" />\n");
         mOut.print("<meta name=\"robots\" content=\"noindex, nofollow\" />\n");
         mOut.print("<link rel=\"stylesheet\" title=\"common\" type=\"text/css\" href=\"stylesheet.css\" />\n");
+        mOut.print("<script src=\"javascript.js\" type=\"text/javascript\"></script>\n");
         return mOut;
     } // writeHeader
 
