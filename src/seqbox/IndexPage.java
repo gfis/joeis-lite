@@ -131,25 +131,26 @@ public class IndexPage implements Serializable {
         out.print("                </select>\n");
         out.print("      </td><td>\n");
         out.print("        Options:");
-        out.print("        <br /><input name=\"offset\"   maxsize=\"10\" size=\"3\" value=\"" + offset  + "\" /> offset\n");
-        out.print("        <br /><input name=\"terms\"    maxsize=\"10\" size=\"3\" value=\"" + terms   + "\" /> terms\n");
-        out.print("        <br /><input name=\"rows\"     maxsize=\"10\" size=\"3\" value=\"" + rows    + "\" /> rows\n");
+        out.print("        <br /><input name=\"offset\"   maxsize=\"10\" size=\"3\" value=\"" + offset  + "\" /> Offset\n");
+        out.print("        <br /><input name=\"terms\"    maxsize=\"10\" size=\"3\" value=\"" + terms   + "\" /> Terms\n");
+        out.print("        <br /><input name=\"rows\"     maxsize=\"10\" size=\"3\" value=\"" + rows    + "\" /> Rows\n");
         out.print("        <br /><input name=\"datalen\"  maxsize=\"10\" size=\"3\" value=\"" + dataLen + "\" /> Data characters\n");
         out.print("      </td><td>\n");
-        out.print("        <br />Author:&#xa0;<input name=\"author\" maxsize=\"64\" size=\"16\" value=\"" + author + "\" />\n");
-        out.print("        <br /><input type=\"checkbox\" id=\"rowNums\"   name=\"rowNums\"   value=\"true\"><label for=\"rowNums\" > row numbers</label>\n");
-        out.print("        <br /><input type=\"checkbox\" id=\"header\"    name=\"header\"    value=\"true\"><label for=\"header\"  > b-file header</label>\n");
-        out.print("        <br /><input type=\"checkbox\" id=\"timestamp\" name=\"timestamp\" value=\"true\"><label for=\"vehicle3\"> timestamp</label>\n");
-        out.print("        <br />Priority: <input name=\"priority\" maxsize=\"64\" size=\"16\" value=\"" + priority + "\" />\n");
+        out.print("        <table cellpadding=\"0\" border=\"0\"><tr><td>Author:</td><td><input name=\"author\" maxsize=\"64\" size=\"12\" value=\"" + author + "\" />\n");
+        out.print("          </td></tr><tr><td>Priority:</td><td><input name=\"priority\" maxsize=\"64\" size=\"12\" value=\"" + priority + "\" /></td></tr></table>\n");
+        out.print("              <input type=\"checkbox\" id=\"rowNums\"   name=\"rowNums\"   value=\"true\"><label for=\"rowNums\" > Row numbers</label>\n");
+        out.print("        <br /><input type=\"checkbox\" id=\"header\"    name=\"header\"    value=\"true\"><label for=\"header\"  > B-file header</label>\n");
+        out.print("        <br /><input type=\"checkbox\" id=\"timestamp\" name=\"timestamp\" value=\"true\"><label for=\"vehicle3\"> Timestamp</label>\n");
         out.print("      </td>\n");
         out.print("    </tr>\n");
         out.print("    <tr valign=\"top\">\n");
         out.print("      <td align=\"left\" colspan=\"4\">\n");
-        final int width  = 96;
-        final int height = 8;
-/*
-        out.print("        <textarea name=\"area\" id=\"area\" class=\"js-copytextarea\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
-*/
+        int width  = 96;
+        int height = 8;
+        if (mode.equals("B")) {
+          width  = 32;
+          height = 64;
+        }
         out.print("        <textarea name=\"area\" id=\"myInput\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
         final ArrayList<String> args = new ArrayList<>(16);
         args.add("-" + mode);
