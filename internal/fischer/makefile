@@ -407,8 +407,14 @@ runbt: # Run BatchTest for this group
 	$(BATLIT) strip.tmp 2>&1 | tee -a batch.log
 	# end of test
 #========
-test: test1 test2
+test: test0 test2
 test1:
+	# ---- $@ CC=$(CC)
+	rm -f batch.log
+	echo $(A) >  ghead.tmp
+	echo $(A) >> ghead.tmp
+	make test2
+test0:
 	# ---- $@ CC=$(CC)
 	rm -f batch.log
 	head -n$(MANY) $(CC).gen \
@@ -537,6 +543,20 @@ similar:
 	wc -l    $@.gen
 #================================================================
 anabuild: #.2022-06-14:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	LATER=
+	echo A341064 A341074  \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=deris     select       gener
+	make CC=build     select       gener
+	make CC=man       man
+	make dist testall log TO=8
+anabuild.2022-06-14:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -1834,9 +1854,11 @@ smoothn:	# smooth <= n
 	wc -l    $@.gen
 #--------------------------------
 # prog
+pari_an2:
+	cp -v $(PROG)/maint/pari/$@.tmp $@.gen
 pari_an:
 	make seq4 LIST=$(PROG)/maint/pari/$@.tmp
-	make batlog LIST=xx.pari_an.2022-06-22.*.log
+	make batlog LIST=pari_an.2022-07-01.*.log
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset, s.parm1, s.parm2, s.parm3, s.parm4, '$(TO)' \
 	  , CASE WHEN b.result = 'pass' THEN b.result ELSE b.idiff END, s.parm7 \
 	  FROM seq4 s, batlog b \
@@ -1895,13 +1917,13 @@ batlog: # store result logs in table 'batlog'
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #----
-PAT=paritest.*s.2022-06-20.*.log
+PAT=pari_an.2022-07-01.*.log
 batlog_populate: # PAT= fill test results into table 'batlog'
 	$(DBAT) -f batlog.create.sql
 	grep -E "^A[0-9]" $(PAT) | grep -P "\t(FATO|pass)\t" | sort | uniq -w7 \
 	| $(DBAT) -m csv -s "\t" -r batlog
 	$(DBAT) "UPDATE batlog SET timeout=4 WHERE result='pass';"
-	$(DBAT) "UPDATE batlog SET timeout=8 WHERE result='pass' AND aseqno BETWEEN 'A089587' AND 'A182589';"
+	# $(DBAT) "UPDATE batlog SET timeout=8 WHERE result='pass' AND aseqno BETWEEN 'A089587' AND 'A182589';"
 	$(DBAT) -n batlog
 	$(DBAT) -4 batlog
 	$(DBAT) "SELECT result, COUNT(result) FROM batlog GROUP BY result ORDER BY 1;" \
@@ -4905,25 +4927,25 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp
-	echo -n "binomial"                         > binomx.deris.tmp
+	# echo -n "binomial"                         > binomx.deris.tmp
 	echo -n "characteristic|indicator"         > charfun.deris.tmp
-	echo -n "complement"                       > compseq.deris.tmp
-	echo -n "difference"                       > diffseq.deris.tmp
-	echo -n "dirichlet"                        > dirichinv.deris.tmp
-	echo -n "dirichlet"                        > dirichcon.deris.tmp
-	echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	echo -n "euler"                            > eulerx.deris.tmp
-	echo -n "euler"                            > eulerix.deris.tmp
-	echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	echo -n "partial product"                  > partprod.deris.tmp
-	echo -n "partial sum"                      > partsum.deris.tmp
-	echo -n "prime"                            > primepos.deris.tmp
-	echo -n "prime"                            > primeval.deris.tmp
-	echo -n "record"                           > recordpos.deris.tmp
-	echo -n "record"                           > recordval.deris.tmp
-	echo -n "stirling"                         > stirling2.deris.tmp
-	echo -n "weigh"                            > weighx.deris.tmp
+	# echo -n "complement"                       > compseq.deris.tmp
+	# echo -n "difference"                       > diffseq.deris.tmp
+	# echo -n "dirichlet"                        > dirichinv.deris.tmp
+	# echo -n "dirichlet"                        > dirichcon.deris.tmp
+	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	# echo -n "euler"                            > eulerx.deris.tmp
+	# echo -n "euler"                            > eulerix.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	# echo -n "partial product"                  > partprod.deris.tmp
+	# echo -n "partial sum"                      > partsum.deris.tmp
+	# echo -n "prime"                            > primepos.deris.tmp
+	# echo -n "prime"                            > primeval.deris.tmp
+	# echo -n "record"                           > recordpos.deris.tmp
+	# echo -n "record"                           > recordval.deris.tmp
+	# echo -n "stirling"                         > stirling2.deris.tmp
+	# echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
@@ -4941,12 +4963,12 @@ deris2:
 	>>       $@.gen
 #----
 deris:
-	# sort     deris2.gen charfuman.tmp | uniq -w7
 	# sort     deris2.gen compseq.man | uniq -w7
-	sort     deris2.gen | uniq -w7 \
-	| grep -vf not_same.man \
-	| grep -vE "^(A318680|A318681|A214329|A219658|A237046|A087471|A214305|A239348)" \
-	| cut -b1-512 \
+	# sort     deris2.gen | uniq -w7 \
+	# | grep -vf not_same.man \
+	# | grep -vE "^(A318680|A318681|A214329|A219658|A237046|A087471|A214305|A239348)" \
+	# | cut -b1-512 \
+	sort     deris2.gen charfuman.man | uniq -w7 \
 	>        deris.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

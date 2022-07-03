@@ -241,6 +241,7 @@
                 <path refid="compile.classpath"/>
             </classpath>
         </javac>
+    <!--
         <delete failonerror="false" verbose="true" >
             <fileset dir="${build.classes}">
                 <include name="**/*Test.class" />
@@ -248,6 +249,7 @@
                 <include name="**/Recurrence*.class" />
             </fileset>
         </delete>
+    -->
     </target>
 
     <!-- ============= manifest =========================================

@@ -32,3 +32,6 @@ DELETE FROM seq4 WHERE aseqno IN ('A214837', 'A226913','A274504'); -- primes; no
 COMMIT;
 -- 2021-09-29
 DELETE FROM seq4 WHERE aseqno IN ('A104406','A278959','A328077');
+
+UPDATE seq4 s SET s.name = (SELECT n.name FROM asname n WHERE n.aseqno = s.aseqno);
+COMMIT;
