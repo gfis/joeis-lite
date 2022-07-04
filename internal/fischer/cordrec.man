@@ -1,0 +1,12 @@
+# A174400	cordrec	0	5	5	xxxx		a(n)*a(n+5) = a(n+1)*a(n+4) - 2*a(n+2)*a(n+3)
+# A190840	?nok	0	1	1	1   		a(n+1) = 4*a(n)*(a(n)+1)
+
+%N A058058 Generalized Somos-7 sequence: a(n)*a(n+7) = 3*a(n+1)*a(n+6) - 4*a(n+2)* a(n+5) + 4*a(n+3)*a(n+4).
+%F A058181 a(n)^2 = a(n+1) + a(n-1), a(-1-n) = a(n).
+
+A279075	cordrec	0	1	0	0	(a(n-1).multiply(5).divide(4)).add(1)	a(n) = (a(n-1)*5/4) + 1				Maximum starting value of X such that repeated replacement of X with X-ceiling(X/5) requires n steps to reach 0.
+A279076	cordrec	0	1	0	0	(a(n-1).multiply(6).divide(5)).add(1)	a(n) = (a(n-1)*6/5) + 1				Maximum starting value of X such that repeated replacement of X with X-ceiling(X/6) requires n steps to reach 0.
+A279077	cordrec	0	1	0	0	(a(n-1).multiply(7).divide(6)).add(1)	a(n) = (a(n-1)*7/6) + 1				Maximum starting value of X such that repeated replacement of X with X-ceiling(X/7) requires n steps to reach 0.
+A279078	cordrec	0	1	0	0	(a(n-1).multiply(8).divide(7)).add(1)	a(n) = (a(n-1)*8/7) + 1				Maximum starting value of X such that repeated replacement of X with X-ceiling(X/8) requires n steps to reach 0.
+A279079	cordrec	0	1	0	0	(a(n-1).multiply(9).divide(8)).add(1)	a(n) = (a(n-1)*9/8) + 1				Maximum starting value of X such that repeated replacement of X with X-ceiling(X/9) requires n steps to reach 0.
+A279080	cordrec	0	1	0	0	(a(n-1).multiply(10).divide(9)).add(1)	a(n) = (a(n-1)*10/9) + 1				Maximum starting value of X such that repeated replacement of X with X-ceiling(X/10) requires n steps to reach 0.

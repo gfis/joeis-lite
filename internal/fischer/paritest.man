@@ -1,0 +1,16 @@
+A058009	pari	0	a(n)	a(n) = my(k = n); for (j=1, n, k = prime(k);); k;	MM
+A058067	pari	0	a(n)	a(n) = prod(k=0, n-1, n/gcd(n, k!));	MM
+A058193	pari	0	a(n)	a(n) = {p=3; q = nextprime(p+1); while((q-p) != 6*n, p = q; q = nextprime(q+1)); p;};	MM
+A058221	pari	0	a(n)	a(n) = N = 2^(2^n); N - precprime(precprime(N)-1);	MM
+A058262	pari	0	a(n)	a(n) = my(v=vector(n, k, prime(k)-1)); prod(k=1, #v, v[k])/lcm(v);	MM
+A058266	pari	0	a(n)	a(n) = floor(sumdiv(n, d, sqrt(d)));	MM
+A058699	pari	0	a(n)	a(n) = numbpart(numbpart(n));	MM
+A058764	pari	0	a(n)	a(n) = {x = 1; while(x - eulerphi(x) != 2^n, x++); x;};	MM
+A058808	pari	0	a(n)	a(n) = prod(k=1, n, stirling(n, k, 2));	MM
+A058818	pari	0	a(n)	a(n) = if (n<=1, 3^n, 3^n - sumdiv(n, d, moebius(d)*3^(n/d))/n);	MM
+A058819	pari	0	a(n)	a(n) = if (n<=1, 4^n, 4^n - sumdiv(n, d, moebius(d)*4^(n/d))/n);	MM
+A058820	pari	0	a(n)	a(n) = if (n<=1, 5^n, 5^n - sumdiv(n, d, moebius(d)*5^(n/d))/n);	MM
+A058822	pari	0	a(n)	a(n) = if (n<=1, 7^n, 7^n - sumdiv(n, d, moebius(d)*7^(n/d))/n);	MM
+A058823	pari	0	a(n)	a(n) = if (n<=1, 8^n, 8^n - sumdiv(n, d, moebius(d)*8^(n/d))/n);	MM
+A058824	pari	0	a(n)	a(n) = if (n<=1, 9^n, 9^n - sumdiv(n, d, moebius(d)*9^(n/d))/n);	MM
+A058887	pari	0	a(n)	a(n) = my(p=2); while(istotient(2^n*p), p=nextprime(p+1)); p;	MM
