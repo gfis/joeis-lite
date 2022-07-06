@@ -122,18 +122,19 @@ while (<>) { # read inputfile
     next if m{\A\s*\Z}; # skip empty lines
     my $line = $_;
     $line =~ s/\s+\Z//; # chompr
-    $line .= "\t"; # why ??? (last parm problem)
+    # $line .= "\t"; # why ??? (last parm problem)
     if ($debug >= 1) {
         print "$line\n";
     }
-    @parms    = split(/\t/, "$line\t", -1); # this is a row from db table 'seq4'
+    @parms    = split(/\t/, "$line\t\t", -1); # this is a row from db table 'seq4'
     $aseqno   = shift(@parms);
     next if scalar(@parms) == 0; # only aseqno => came from CC=man
     $callcode = shift(@parms);
     next if length($callcode) == 0; # skip over empty callcodes
+    # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
-    $name  = $parms[scalar(@parms) - 1]; # last parameter
+    $name  = $parms[9]; # by convention, in target makefile.select3
     $name =~ s{\&}{\&amp\;}g;
     $name =~ s{\'}{\&apos\;}g;
     $name =~ s{\"}{\&quot\;}g;
@@ -256,6 +257,7 @@ sub write_output {
         }
         $line
         } split(/\n/, $copy);
+    # print STDERR "# name $aseqno: $name\n";
     $copy =~ s{\$\(ASEQNO\)}         {$aseqno}g;
     $copy =~ s{\$\(AUTHOR\)}         {$author}g;
     $copy =~ s{\$\(CALLCODE\)}       {$call1}g;

@@ -2,6 +2,7 @@
 
 # Extract parameters for partitions with conditions
 # @(#) $Id$
+# 2022-07-06: revisited
 # 2020-10-22: 0 < cn() ...
 # 2020-09-05, Georg Fischer: copied from deris.pl
 #
@@ -45,7 +46,7 @@ my $VOID = "VOID";
 my $line;
 my @parms; # records in joeis_names.txt
 my ($p1, $p2, $p3);
-
+my %rseqnos = ();
 while (<>) {
     $line = $_;
     $line =~ s/\s+\Z//; # chompr
@@ -141,7 +142,7 @@ while (<>) {
        # A161090 Number of partitions of n into squares where every part appears at least 2 times.  nonn,changed,   1..1000
        # A161103 Number of partitions of n into nonzero triangular numbers where every part appears at least 2 times    nonn,   1..1000
        #                                          1          2     3                                                                                                                      4 
-       } elsif ($name =~ m{\ANumber of partitions (of \d?n )?(into (Fibonacci numbers|odd numbers|powers of two minus one|powers of two|primes or 1|squares|nonzero triangular numbers|) )(in which no part occurs just once|where every part appears more than two times|where every part appears at least \d+ times|where every part appears at least twice)}) {
+       } elsif ($name =~ m{\ANumber of partitions (of \d?n )?(into (Somos\-4 sequence numbers A006720|numbers not divisible by [34]|Lucas numbers A000032|central polygonal numbers A000124|central binomial coefficients A001405|Catalan numbers A000108|Fibonacci numbers|odd numbers|powers of two minus one|powers of two|primes or 1|squares|nonzero triangular numbers) )?(in which no part occurs just once|where every part appears more than two times|where every part appears at least \d+ times|where every part appears at least twice)}) {
             my $subseq = $3 || "";
             my $appears = $4;
             if (0) {
@@ -158,7 +159,7 @@ while (<>) {
             if (0) {
             } elsif ($subseq eq "") { # empty
                 $parms[$iparm ++] = "A160974";
-            } elsif ($subseq =~ m{Fibon}) {
+            } elsif ($subseq =~ m{Fibonacci}) {
                 $parms[$iparm ++] = "A161026";
             } elsif ($subseq =~ m{odd}) {
                 $parms[$iparm ++] = "A161039";
@@ -172,8 +173,27 @@ while (<>) {
                 $parms[$iparm ++] = "A161090";
             } elsif ($subseq =~ m{triangular}) {
                 $parms[$iparm ++] = "A161103";
+            } elsif ($subseq =~ m{A000108}) {
+                $parms[$iparm ++] = "A161227";
+            } elsif ($subseq =~ m{A001405}) {
+                $parms[$iparm ++] = "A161240";
+            } elsif ($subseq =~ m{A000124}) {
+                $parms[$iparm ++] = "A161254";
+            } elsif ($subseq =~ m{Lucas}) {
+                $parms[$iparm ++] = "A161268";
+            } elsif ($subseq =~ m{not divisible by 3}) { # A001651}) {
+                $parms[$iparm ++] = "A161281";
+            } elsif ($subseq =~ m{not divisible by 4}) { # A042968}) {
+                $parms[$iparm ++] = "A161293";
+            } elsif ($subseq =~ m{A006720}) {
+                $parms[$iparm ++] = "A161306";
             } else {
                 $parms[$iparm ++] = "A160974";
+            }
+            my $rseqno = $parms[$iparm - 1];
+            if (! defined($rseqnos{$rseqno})) {
+                $rseqnos{$rseqno} = $subseq;
+                print join("\t", "# $rseqno", "partcapp", 0, , $appears, "$subseq") . "\n";
             }
             $parms[$iparm ++] = $appears;
             $parms[$iparm ++] = "";

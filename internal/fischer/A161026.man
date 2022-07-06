@@ -1,0 +1,121 @@
+A160974	partcap1	0	4	0	n -> Z.valueOf(n + 1)
+A161026	partcap1	0	2	2	n -> Fibonacci.fibonacci(n)	Fibonacci numbers
+A161039	partcap1	0	3	0	n -> Z.valueOf(2 * n + 1)	odd numbers
+A161051	partcap1	0	2	0	n -> Z.ONE.shiftLeft(n)	powers of two
+A161064	partcap1	0	2	1	n -> Z.ONE.shiftLeft(n).subtract(1)	powers of two minus one
+A161077	partcap2	0	2	1	n -> mSeq.a(n)	new PrependSequence(new A000040(), 0, 1)	primes or 1
+A161090	partcap1	0	2	1	n -> Z.valueOf(n * n)	squares
+A161103	partcap1	0	2	1	n -> Z.valueOf(n * (n + 1) / 2)	nonzero triangular numbers
+A161227	partcap1	0	2	1	n -> Binomial.binomial(2 * n, n).divide(n + 1)	Catalan numbers A000108
+A161240	partcap1	0	1	1	n -> Binomial.binomial(n, n / 2)	central binomial coefficients A001405
+A161254	partcap1	0	1	0	n -> Z.valueOf(n * (n + 1) / 2 + 1)	central polygonal numbers A000124
+A161268	partcap1	0	2	0	n -> Fibonacci.lucas(n)	Lucas numbers A000032
+A161281	partcap1	0	3	1	n -> Z.valueOf((3 * n - 1) / 2)	numbers not divisible by 3
+A161293	partcap1	0	2	0	n -> Z.valueOf((4 * n + 3) / 3)	numbers not divisible by 4
+A161306	partcap2	0	1	0	n -> mSeq.a(n)	new PrependSequence(3, new A006720())	Somos-4 sequence numbers A006720
+# A097242	partcapp	0	A161039	2							Number of partitions of n into odd numbers where every part appears at least 3 times.
+
+
+    l:=(1, 1, 1, 1, 2, 3, 7, 23, 59, 314, 1529, 8209, 83313, 620297, 7869898, 126742987, 1687054711, 47301104551, 1123424582771, 32606721084786, 1662315215971057, 61958046554226593):
+    # A161306
+    app:=2: p2:=1:
+    F:= proc(n) option remember; l[n+3] end:
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=1..20);
+    
+    l:=(1, 2,3,5,7,11,13,17,19,23,29,31,37);
+    # A161077
+    app:=2: p2:=1:
+    F:= proc(n) option remember; l[n] end:
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=1..20);
+    
+
+    # A161026
+    app:=2: p2:=0:
+    F:= proc(n) option remember; (<<0|1>, <1|1>>^n)[1, 2] end:
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=0..80);
+
+    app:=2: p2:=0:
+    F:=proc(n) option remember: if n=0 then 2 elif n=1 then 1 else F(n-1) + F(n-2) fi end: # lucas, A161268	
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=1..80);
+
+    app:=2: p2:=1:
+    F:=proc(n) option remember: n^2 end: # squares
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=1..80);
+
+    app:=2: p2:=1:
+    F:=proc(n) option remember: binomial(2*n,n)/(n+1) end: # Catalan, A161227
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=1..80);
+
+    app:=1: p2:=1:
+    F:=proc(n) option remember: binomial(n, iquo(n,2)) end: # central binomial coefficients A001405, A161240
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=0..80);
+
+    app:=1: p2:=0:
+    F:=proc(n) option remember: n * (n+1) / 2 + 1 end: # central polygonal numbers A000124, A161254
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=0..80);
+
+    app:=2: p2:=1:
+    F:=proc(n) option remember: 2^n - 1 end: # powers of two minus one, A161064
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=1..80);
+
+    app:=3:
+    F:=proc(n) option remember: 2 * n + 1 end: # odd
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, 0):
+    seq(a(n), n=0..80);
+
+    app:=4: p2:=0:
+    F:=proc(n) option remember: n + 1 end: # odd
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f-> `if`(app*f > n or f = 0, 0,
+      add(b(n-j*f, i+1), j=[0, $app..iquo(n, f)])))(F(i)))
+    end:
+    a:= n-> b(n, p2):
+    seq(a(n), n=0..80);
+
+
+
+    # A160974
+    app:= 4; F:= proc(n) option remember; n end:
+    b:= proc(n, i) option remember; `if`(n=0, 1, (f -> `if`(i<1, 0,
+      add(b(n-i*j, i-1), j=[0, $app..iquo(n, i)]))(F(i)))
+    end:
+    a:= n-> b(n$2):
+    seq(a(n), n=0..80);
