@@ -542,7 +542,21 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-07-06:
+anabuild: #.2022-07-07:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A214258 A214269 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build     select       gener
+	make CC=partcapp  select EX=xx gener
+	make CC=A161026   select EX=xx gener
+	make CC=man       man
+	make CC=$@ dist testall log TO=8 pack
+anabuild.2022-07-06:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
