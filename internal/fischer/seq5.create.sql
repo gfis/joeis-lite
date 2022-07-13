@@ -12,7 +12,7 @@ DROP    TABLE  IF EXISTS seq4;
 CREATE  TABLE            seq4
     ( aseqno   VARCHAR(10) NOT NULL  -- A322469
     , callcode VARCHAR(32)           -- cfsnum
-    , offset   VARCHAR(32)           -- offset
+    , offset1   VARCHAR(32)           -- offset1
     , parm1    VARCHAR(8192)
     , parm2    VARCHAR(4096)
     , parm3    VARCHAR(2048)

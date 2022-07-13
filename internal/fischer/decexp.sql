@@ -53,7 +53,7 @@ DELETE FROM seq4 WHERE aseqno IN
    , 'A341863' -- Decimal expansion of (4/1)^(9/4)^...^((n+1)^2/n^2)^... .
    , 'A021002' --
    );
-SELECT *  FROM seq4 WHERE offset < -64 OR offset > 64;
-DELETE    FROM seq4 WHERE offset < -64 OR offset > 64;
+SELECT *  FROM seq4 WHERE offset1 < -64 OR offset1 > 64;
+DELETE    FROM seq4 WHERE offset1 < -64 OR offset1 > 64;
 
 COMMIT;

@@ -1,0 +1,26 @@
+# A342611 a(0) = 0, a(1) = 1; a(2*n) = 7*a(n), a(2*n+1) = a(n) + a(n+1).
+# A002487	parmof2	0	A342611	1
+# A000027	parmof2	0	A342611	2
+A178590	parmof4	1	A342611	1	3	3
+# A237711	parmof4	0	A342611	1	6	6	Game of Nim
+# A244643	parmof4	0	A342611	0	1	6	Game of Nim, offset -1
+A342610	parmof4	0	A342611	0	1	5
+A342611	parmof4	0	A342611	0	1	7
+A342614	parmof4	0	A342611	0	1	8
+A342615	parmof4	0	A342611	0	1	9
+A178569	parmof4	1	A342611	1	10	10
+# triangle A178568
+
+# A342638 a(0) = 0, a(1) = 1; a(2*n) = a(n), a(2*n+1) = 9*a(n) + a(n+1).
+# A002487	parmof2	0	A342638	1
+A116528	parmof4	0	A342638	0	1	2
+A342603	parmof4	0	A342638	0	1	6
+A342633	parmof4	0	A342638	0	1	3
+A342634	parmof4	0	A342638	0	1	4
+A342635	parmof4	0	A342638	0	1	5
+A342636	parmof4	0	A342638	0	1	7
+A342637	parmof4	0	A342638	0	1	8
+A342638	parmof4	0	A342638	0	1	9
+A178243	parmof4	1	A342638	1	1	10
+# triangle A178239
+

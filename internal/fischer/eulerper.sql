@@ -3,9 +3,9 @@
 --  2020-08-15: Georg Fischer
 --
 -- UPDATE seq4 SET parm3 = CASE
---   WHEN offset = 1 THEN 'next();'
---   WHEN offset = 2 THEN 'next(); next();'
---   WHEN offset = 3 THEN 'next(); next(); next();'
+--   WHEN offset1 = 1 THEN 'next();'
+--   WHEN offset1 = 2 THEN 'next(); next();'
+--   WHEN offset1 = 3 THEN 'next(); next(); next();'
 --   ELSE                 ''
 --   END;
 

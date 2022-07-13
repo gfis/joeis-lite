@@ -1,4 +1,4 @@
 -- A062450.sql
 -- 2022-06-14, Georg Fischer
-UPDATE seq4 SET offset = 0 WHERE aseqno BETWEEN 'A062482' AND 'A062499';
+UPDATE seq4 SET offset1 = 0 WHERE aseqno BETWEEN 'A062482' AND 'A062499';
 COMMIT;

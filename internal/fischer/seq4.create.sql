@@ -1,5 +1,6 @@
 --  Table for OEIS - working table for sequence numbers and 8 parameter fields
 --  @(#) $Id$
+--  2022-07-13: MariaDB 10.6 has 'offset1' as keyword
 --  2022-02-17: parm1 was 8192
 --  2021-01-26: parm1 was 4096
 --  2020-09-23: callcode was (32)
@@ -12,7 +13,7 @@ DROP    TABLE  IF EXISTS seq4;
 CREATE  TABLE            seq4
     ( aseqno   VARCHAR(10) NOT NULL  -- A322469
     , callcode VARCHAR(16)           -- cfsnum
-    , offset   VARCHAR(16)           -- offset
+    , offset1  VARCHAR(16)           -- offset1
     , parm1    VARCHAR(16384)
     , parm2    VARCHAR(2048)
     , parm3    VARCHAR(1024)

@@ -9,7 +9,7 @@ DROP    TABLE  IF EXISTS suw4;
 CREATE  TABLE            suw4
     ( aseqno   VARCHAR(10) NOT NULL  -- A322469
     , callcode VARCHAR(32)           -- cfsnum
-    , offset   VARCHAR(16)           -- offset
+    , offset1   VARCHAR(16)           -- offset1
     , parm1    VARCHAR(4096)
     , parm2    VARCHAR(1024)
     , parm3    VARCHAR(256)

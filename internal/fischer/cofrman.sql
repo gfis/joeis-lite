@@ -5,5 +5,5 @@
 --
 -- DELETE FROM seq4 WHERE callcode NOT IN ('cofr');
 DELETE FROM seq4 WHERE parm1    NOT IN (SELECT aseqno FROM joeis WHERE superclass IN ('DecimalExpansionSequence'));
--- SELECT s.aseqno, s.callcode, s.offset, s.parm1, n.name FROM seq4 s, asname n WHERE s.parm1 = n.aseqno;
+-- SELECT s.aseqno, s.callcode, s.offset1, s.parm1, n.name FROM seq4 s, asname n WHERE s.parm1 = n.aseqno;
 COMMIT;

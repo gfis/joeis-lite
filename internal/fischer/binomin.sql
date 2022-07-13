@@ -31,16 +31,16 @@ UPDATE seq4 SET parm2  ='[8,16,24,27,32,35,40,43,48,51,54,56,59,62,64,67,70,72,7
 COMMIT;
 UPDATE seq4 SET parm1  = '[[0],[2,-3,3,-1],[3,-3,1]]', parm2='[1,1,3,7,26]' WHERE aseqno IN ('A108217');
 UPDATE seq4 SET parm2  ='[1,0,6,20,81,324]'                                 WHERE aseqno IN ('A118265');
-UPDATE seq4 SET parm2  ='[1,0,10,40,205,1024]', offset=5                    WHERE aseqno IN ('A118266');
+UPDATE seq4 SET parm2  ='[1,0,10,40,205,1024]', offset1=5                    WHERE aseqno IN ('A118266');
 UPDATE seq4 SET parm1  ='[0,1,-2,3,-4,3,-2,1]', parm2='[0,-1,0,2,1,-1,1,4]' WHERE aseqno IN ('A131505');
 UPDATE seq4 SET parm2  ='[1,2,6]'                                           WHERE aseqno IN ('A131352');
 UPDATE seq4 SET parm2  ='[1,2,6]'                                           WHERE aseqno IN ('A131352');
 UPDATE seq4 SET parm2  ='[1,2,6]'                                           WHERE aseqno IN ('A131352');
 UPDATE seq4 SET parm2  ='[1,2,3,4,9,19,44,94,194,294]'                      WHERE aseqno IN ('A258274');
 COMMIT;
-UPDATE seq4 SET parm1  ='[[0],[24,-176,384,-256],[-12,-48,-27,27]]', parm2='[0,4]', offset=1 
+UPDATE seq4 SET parm1  ='[[0],[24,-176,384,-256],[-12,-48,-27,27]]', parm2='[0,4]', offset1=1 
                                                                             WHERE aseqno IN ('A283049');
-UPDATE seq4 SET offset = 0                                                  WHERE aseqno IN ('A152456');
-UPDATE seq4 SET offset = 1                                                  WHERE aseqno IN ('A052795','A060080','A085375','A120408','A120409');
-UPDATE seq4 SET offset = 2                                                  WHERE aseqno IN ('A188554');
+UPDATE seq4 SET offset1 = 0                                                  WHERE aseqno IN ('A152456');
+UPDATE seq4 SET offset1 = 1                                                  WHERE aseqno IN ('A052795','A060080','A085375','A120408','A120409');
+UPDATE seq4 SET offset1 = 2                                                  WHERE aseqno IN ('A188554');
 COMMIT;

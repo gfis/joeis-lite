@@ -11,14 +11,14 @@ UPDATE seq4 a SET a.callcode = 'diriproin' WHERE a.aseqno in ('A035251', 'A03524
 -- determine the superclass for indices of nonzero ...
 UPDATE seq4 a SET a.parm2 = COALESCE(
     ( SELECT r.aseqno FROM seq4 r 
-      WHERE r.callcode LIKE 'diriprod%' AND a.parm1 = r.parm1 AND a.offset = r.offset
+      WHERE r.callcode LIKE 'diriprod%' AND a.parm1 = r.parm1 AND a.offset1 = r.offset1
     ), '') 
     WHERE callcode = 'diriproin';
 
 -- determine the superclass for nonzero ...
 UPDATE seq4 a SET a.parm2 = COALESCE(
     ( SELECT r.aseqno FROM seq4 r 
-      WHERE r.callcode LIKE 'diriprod%' AND a.parm1 = r.parm1 AND a.offset = r.offset
+      WHERE r.callcode LIKE 'diriprod%' AND a.parm1 = r.parm1 AND a.offset1 = r.offset1
     ), '') 
     WHERE callcode = 'diripronz';
 COMMIT;
