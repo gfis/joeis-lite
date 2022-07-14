@@ -28,7 +28,7 @@ HOLREC=$(GITS)/OEIS-mat/holrec
 WEIDIS=$(GITS)/OEIS-mat/weidis
 SDB=$(GITS)/OEIS-mat/sequencedb
 TRIREC=$(GITS)/OEIS-mat/trirec
-DBAT=java -jar $(GITS)/dbat/dist/dbat.jar -e UTF-8 -c worddb
+DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar
 JPREP=$(RAMATH)  org.teherba.ramath.sequence.JoeisPreparer
 HOLT=$(RAMATH)   irvine.test.HolonomicRecurrenceTest
@@ -103,8 +103,8 @@ seqtris: # A=$(A) - print data in upper left triangle format
 seqtrir: # A=$(A) - print data in upper right triangle format
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -R $(A) 2>&1   | tee x.tmp
 seqtest: # A=$(A) NT=$(NT) OFFSET=$(OFFSET) - print b-file
-	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -o $(OFFSET) -B $(A) 
-# --priority "java,gp" 
+	$(JAVA) irvine.oeis.SequenceFactory -a  --header -n $(NT) -o $(OFFSET) -B $(A)
+# --priority "java,gp"
 seqhelp: #
 	$(JAVA) irvine.oeis.SequenceFactory --help
 jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
@@ -452,7 +452,7 @@ remlog: # CC=
 	scp gfis@atair:~/work/gits/joeis-lite/internal/fischer/batch.log x.log
 	cp -v x.log $(CC).`date +%Y-%m-%d.%H.%M`.log
 	grep -vP "\tFATO\t" x.log > batch.log
-	make evaluate log 
+	make evaluate log
 log: # CC=; generate an HTML page for the failed tests
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
@@ -460,8 +460,8 @@ logf: # CC=; generate an HTML page for the failed tests (but no "FATO")
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_fail LOG=$(CC)
 casstat:
-	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp 
-	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp 
+	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp
+	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp
 	wc -l $(CC).pass.log FATO.tmp
 retest: # run the failed ones again (with a higher timeout)
 	# ---- $@ CC=$(CC)
@@ -543,7 +543,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-07-12:
+anabuild: #.2022-07-14:  # CZK=70
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A888888 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=rectoproc select EX=xx gener
+	make CC=build     select EX=xx gener
+	make CC=man       man
+	make CC=$@ dist testall log TO=8 pack
+anabuild.2022-07-13:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -5142,17 +5155,11 @@ vpost3:
 	rm -vf $(COMMON)/nonincr.txt
 #================================
 rectoproc:
-	grep -E 'rectoproc' $(COMMON)/cat25.txt \
-	| cut -b 4- | sed -e "s/ /\t/" \
-	| grep -vE "A110908" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
-	cd $(COMMON); make seq2 LIST=../../joeis-lite/internal/fischer/$@.tmp
-	$(DBAT) -x "SELECT * FROM seq2 WHERE aseqno NOT IN (SELECT aseqno FROM joeis) ORDER BY 1" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc   -l  $@.tmp
+	grep -E "^A[0-9]" $(HOLREC)/$@.tmp \
+	| grep -vE "A110908|A261141" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
 #--------------------------------
 shownin:
 	grep -E "^A" $(COMMON)/names \
@@ -7011,6 +7018,19 @@ somos4:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+cordrectab:
+	perl cordrec_prep.pl -A $(HOLREC)/cordrectab.tmp 2> $@.rest.tmp \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp $@.rest.tmp
+	cut -f6  $@.rest.tmp | sort | uniq -c
+	#
+	perl cordrec.pl -A $@.tmp 2> $@.rest2.tmp \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest*.tmp
+#----------------
 suchprim:
 	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'ers [a-z] such *that' | grep -E 'is (a )?prime' \
 	| grep -v "PowerFactorPrimeSequence" \
@@ -7635,7 +7655,7 @@ anaload:
 	make seq4 LIST=anaprep.txt
 	$(DBAT) "UPDATE seq4 s \
 	  SET s.parm4 = SUBSTR(COALESCE((SELECT h.matrix FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 2048) \
-	  ,   s.parm5 = SUBSTR(COALESCE((SELECT h.init   FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 1024) \
+	  ,   s.parm5 = SUBSTR(COALESCE((SELECT h.inits  FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 1024) \
 	;"
 anastret:
 	$(DBAT) -x "SELECT * FROM seq4 ORDER BY 6,4,5" \
@@ -7700,10 +7720,10 @@ chapoton:
 	| tee $@.tmp
 #-------
 s1:
-	scp ../../src/irvine/oeis/recur/GeneralRecurrence.java 	gf:~/work/gits/joeis/src/irvine/oeis/recur
+	cp ../../src/irvine/oeis/recur/GeneralRecurrence.jav 	$(JOEIS)/src/irvine/oeis/recur
 s2:
-	scp ../../src/irvine/oeis/triangle/BaseTriangle.java 	gfis@atair:~/work/gits/joeis/src/irvine/oeis/triangle
+	cp ../../src/irvine/oeis/triangle/BaseTriangle.jav 		$(JOEIS)/src/irvine/oeis/triangle
 s3:
 	scp ../../src/irvine/test/HolonomicRecurrenceTest.java 	gf:~/work/gits/joeis/src/irvine/test
 s4:
-	# scp ../../src/irvine/oeis/RecurrenceReflector.java 	gf:~/work/gits/joeis/internal/irvine/oeis/
+	scp ../../internal/irvine/oeis/RecurrenceReflector.java	gf:~/work/gits/joeis/internal/irvine/oeis/

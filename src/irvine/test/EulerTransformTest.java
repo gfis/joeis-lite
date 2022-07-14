@@ -1,5 +1,6 @@
 /* Test class, run a EulerTransform of a Finite or PeriodicSequence
  * @(#) $Id$
+ * 2022-07-13: recur.PeriodicSequence
  * 2021-12-27: subpackage irvine.oeis.transform
  * 2021-02-13: new name InverseEulerTransform
  * 2020-08-18: EulerInvTransform
@@ -12,8 +13,8 @@ import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
 import irvine.oeis.transform.EulerTransform;
 import irvine.oeis.FiniteSequence;
+import irvine.oeis.recur.PeriodicSequence;
 import irvine.oeis.transform.InverseEulerTransform;
-import irvine.oeis.PeriodicSequence;
 import irvine.oeis.Sequence;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -124,7 +125,7 @@ public class EulerTransformTest {
       parms[6] = "expt=" + (expectedList.length() < limit ? expectedList : expectedList.substring(0, limit));
       parms[7] = "comp=" + (computedList.length() < limit ? computedList : computedList.substring(0, limit));
       if (sDebug >= 2) {
-        System.err.println("# ** aseqno: " + aseqno + ", expected=" + expectedList 
+        System.err.println("# ** aseqno: " + aseqno + ", expected=" + expectedList
             + ", computed=" + computedList + " -> start=" + start + ", prefix=" + prefixList);
       }
     }
@@ -168,7 +169,7 @@ public class EulerTransformTest {
         iparm ++; // skip seqType
         parms[iparm] = computePrefix(expectedList, et);
         iparm ++;
-        
+
         parms[iparm ++] = mPeriodString;
         reproduce();
       } else {

@@ -1,20 +1,19 @@
 package irvine.oeis.a147;
 
-import java.util.HashMap;
 import irvine.math.MemoryFunctionIntArray;
-import irvine.math.q.Q;
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.SequenceWithOffset;
 
 /**
- * A147682 Late-growing permutations: number of permutations of 2 indistinguishable copies of 1..n
- * with every partial sum <= the same partial sum averaged over all permutations.
+ * A147682 Late-growing permutations: number of permutations of 2 indistinguishable copies of 1..n with every partial sum &lt;= the same partial sum averaged over all permutations.
+ * with every partial sum &lt;= the same partial sum averaged over all permutations.
  * @author Georg Fischer
  */
-public class A147682 implements Sequence {
+public class A147682 implements SequenceWithOffset {
 
   private int mN;
-  private Integer mCopies;
+  private int mOffset;
+  private final Integer mCopies;
 
   /** Construct the sequence. */
   public A147682() {
@@ -27,6 +26,7 @@ public class A147682 implements Sequence {
    * @param copies number of copies
    */
   public A147682(final int offset, final int copies) {
+    mOffset = offset;
     mN = offset - 1;
     mCopies = copies;
   }
@@ -42,7 +42,7 @@ public class A147682 implements Sequence {
     a:= n-> b([2$n]):
     seq(a(n), n=1..4);  # Alois P. Heinz, Aug 16 2012
   */
-  private final MemoryFunctionIntArray<Z> mB = new MemoryFunctionIntArray<Z>() {
+  public final static MemoryFunctionIntArray<Z> mB = new MemoryFunctionIntArray<Z>() {
     @Override
     protected Z compute(final int[] list) {
       final int m = list.length - 1;
@@ -56,11 +56,11 @@ public class A147682 implements Sequence {
       Z sum = Z.ZERO;
       long g = 0;
       for (int k = 1; k <= m; ++k) {
-        g += k * list[k];
+        g += (long) k * list[k];
       }
       final long g2 = g * 2 - (m + 1) * (n - 1);
       for (int i = 1; i <= m; ++i) {
-        if (list[i] > 0 && i * 2 <= g2) {
+        if (list[i] > 0 && i * 2L <= g2) {
           final int[] list2 = new int[m + 1];
           list2[0] = 0;
           for (int k = 1; k <= m; ++k) {
@@ -72,6 +72,11 @@ public class A147682 implements Sequence {
       return sum;
     }
   };
+
+  @Override
+  public int getOffset() {
+    return mOffset;
+  }
 
   @Override
   public Z next() {

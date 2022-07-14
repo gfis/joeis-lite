@@ -1,5 +1,6 @@
 /* Test a single sequence, and write a b-file
  * @(#) $Id$
+ * 2022-07-13: recur.HolonomicRecurrence
  * 2019-05-11: renamed from ../oeis/SequenceFactory.java
  * 2019-05-09, Georg Fischer: joeis-lite version, writes b-file format
  * 2019-01-01: Sean Irvine, class SequenceFactory
@@ -8,7 +9,7 @@ package irvine.test;
 import irvine.oeis.a310.A310215;
 import irvine.math.z.Z;
 import irvine.oeis.Sequence;
-import irvine.oeis.HolonomicRecurrence;
+import irvine.oeis.recur.HolonomicRecurrence;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,10 +50,10 @@ public final class SpecialTest {
           nterms = Integer.parseInt(args[iarg ++]);
           if (iarg < args.length) {
             offset1 = Integer.parseInt(args[iarg ++]);
-          } 
-        } catch (Exception exc) { 
+          }
+        } catch (Exception exc) {
           // ignore and take defaults
-        } 
+        }
         int iterm = offset1;
         final int ilast = iterm + nterms - 1;
         System.out.print("# Table of n, a(n) for n = " + offset1 + ".." + ilast + "\n");

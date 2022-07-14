@@ -1,20 +1,26 @@
-/*  Reads a list of A-numbers and appends the parameters of the sequences 
+/*  Reads a list of A-numbers and appends the parameters of the sequences
  *  @(#) $Id: RecurrenceReflector.java $
+ *  2022-07-13: in joeis/internal/irvine/oeis
  *  2021-07-03: PolynomialRootSequence
  *  2021-05-01: revitalized
- *  2021-01-29: LatticeCoordinationSequence / latti -> gener 
+ *  2021-01-29: LatticeCoordinationSequence / latti -> gener
  *  2021-01-23, Georg Fischer: copied from BatchTest
  */
 package irvine.oeis;
-
-import irvine.math.z.Z;
-import irvine.oeis.cons.ContinuedFractionOfSqrtSequence;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.nio.channels.Channels;
+import java.nio.charset.StandardCharsets;
+
+import irvine.math.z.Z;
+import irvine.oeis.cons.ContinuedFractionOfSqrtSequence;
+import irvine.oeis.recur.GeneratingFunctionSequence;
+import irvine.oeis.recur.HolonomicRecurrence;
+import irvine.oeis.recur.LinearRecurrence;
+import irvine.oeis.recur.PaddingSequence;
+import irvine.oeis.recur.PeriodicSequence;
 
 /** Reads a list of A-numbers and appends the parameters of the sequences.
  *  The output file is tab-separated: aseqno, callcode, offset, matrix, init, dist, gftype
@@ -22,12 +28,12 @@ import java.nio.channels.Channels;
  */
 public class RecurrenceReflector {
   /** CVS identifier. */
-  public static final String CVSID = "@(#) $Id: RecurrenceReflector.java 744 2019-04-05 06:29:20Z gfis $";
+  public static final String CVSID = "@(#) $Id $";
 
   /**
    * This program's version
    */
-  private static final String VERSION = "RecurrenceReflector V1.0";
+  private static final String VERSION = "RecurrenceReflector V1.1";
 
   /**
    * A-number of sequence currently tested
@@ -52,9 +58,9 @@ public class RecurrenceReflector {
     mDebug = 0;
     mSrcEncoding = "UTF-8";
   } // no-args Constructor
-/*  
+/*
   public class WrapCFSequence extends ContinuedFractionOfSqrtSequence {
-    
+
     protected WrapCFSequence(final int offset) {
       super(offset);
     }
@@ -99,11 +105,11 @@ public class RecurrenceReflector {
    * @param sign2 dito
    * @return a vector for the recurrence, for example
    * <pre>
-   * signature (1,3,-3,-3,3,1,-1) for A228958(n) = 1*2 + 3*4 + 5*6 + 7*8 
+   * signature (1,3,-3,-3,3,1,-1) for A228958(n) = 1*2 + 3*4 + 5*6 + 7*8
    * signature (1,-3,3,-3,3,-1,1) for A319885(n) = 2*1 - 4*3 + 6*5 - 8*7 + 10*9
    * signature (1,0,4,-4,0,-6,6,0,4,-4,0,-1,1) for a(n) = 1*2*3 + 4*5*6
-   * signature (1,0,-4,4,0,-6,6,0,-4,4,0,-1,1) for a(n) = 3*2*1 - 6*5*4 + 9*8*7 - 
-   * signature (1,0,0,5,-5,0,0,-10,10,0,0,10,-10,0,0,-5,5,0,0,1,-1) 
+   * signature (1,0,-4,4,0,-6,6,0,-4,4,0,-1,1) for a(n) = 3*2*1 - 6*5*4 + 9*8*7 -
+   * signature (1,0,0,5,-5,0,0,-10,10,0,0,10,-10,0,0,-5,5,0,0,1,-1)
    * </pre>
    */
   public static String getBlockRecurrence(final int nrow, final int sign1, final int sign2) {
@@ -170,7 +176,7 @@ public class RecurrenceReflector {
           nums[iterm] = hseq.getNumerator();
           dens[iterm] = hseq.getDenominator();
           terms[iterm] = hseq.next(); // does iterate(), iterateConvergent()
-          ++iterm; 
+          ++iterm;
         }
         final int last = iterm - 1;
         if (terms[last].equals(nums[last]) || terms[last].equals(dens[last])) { // it was the numerator or denominator
@@ -197,11 +203,11 @@ public class RecurrenceReflector {
           result[2] = getVectorString(terms);
         } else { // it was some different call - return empty Strings
         }
-      }    
+      }
     } catch (Exception exc) { // could not reflect next() method
     }
     return result;
-  } 
+  }
 
   /**
    * Processes lines of the form
@@ -256,7 +262,7 @@ public class RecurrenceReflector {
                 final BlockMultAddSequence hseq = (BlockMultAddSequence) Class.forName(className).getDeclaredConstructor().newInstance();
                 seq = hseq;
                 ipart++; // skip offset
-                
+
                 final String oper = hseq.getOper();
                 final char lgt = oper.charAt(0);
                 int pos = 1;
@@ -334,8 +340,8 @@ public class RecurrenceReflector {
                 parts[ipart++] = "0";
                 parts[ipart++] = String.valueOf(hseq.getGfType());
 
-              } else if (callCode.startsWith("holon")    // holonomic recurrence
-                      || callCode.startsWith("polyn")) { // polynomial root
+              } else if (callCode.startsWith("holon")    // HolonomicRecurrence
+                      || callCode.startsWith("polyn")) { // PolynomialRootSequence
                 superNextMethod = holonNextMethod;
                 final HolonomicRecurrence hseq = (HolonomicRecurrence) Class.forName(className).getDeclaredConstructor().newInstance();
                 seq = hseq;
@@ -404,10 +410,10 @@ public class RecurrenceReflector {
                 } else {
                   seq = null; // ignore it below
                 }
-                
+
               } else { // ignore
               } // end of switch for callCodes
-              
+
               if (seq == null) {
                 // ignore
               } else if (parts[3].length() < 8192 && parts[4].length() < 4096) {

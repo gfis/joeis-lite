@@ -45,7 +45,7 @@ while (<>) {
     } elsif ($line =~ m{\A\%[NFC] (A\d+) +(.*)}) { # nyi; relevant line
         ($aseqno, $name) = ($1, $2);
         if ($name ne "" and ($name !~ m{Empirical|conjecture|apparent}i) ) {
-            if ($name =~ m{\Aa\(n([\-\+]\d+)?\)}) { # contains a(n...)
+            if ($name =~ m{\Aa\((n|\d+)([\-\+]\d+)?\)}) { # contains a(n...)
                 $name =~ s{[^\.] +\- +_[A-Z]}{\.}; # remove author even if no "." before
                 push(@names, $name); # remember several relevant names before the "O" line
             }
@@ -129,6 +129,8 @@ while (<>) {
                     } else {
                         $expr = &zexpr($expr);
                     }
+                    $expr =~ s{\Ab_Z\.valueOf\((\d+)\)}{a\(n\-$1\)}; # b_Z.valueOf(1)
+                    $expr =~ s{a\(n\-0\)}{a\(n\)}g;
                 } else {
                     $nok = "trailing words";
                 }
