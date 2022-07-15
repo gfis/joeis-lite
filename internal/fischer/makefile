@@ -543,18 +543,18 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-07-14:  # CZK=70
+anabuild: #.2022-07-15:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
-	echo A888888 \
+	echo A067443 A067903 A067934 \
 	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
 	grep -vE "A999999" build.tmp \
 	| sort | uniq -w7 > build.man
-	make CC=rectoproc select EX=xx gener
-	make CC=build     select EX=xx gener
-	make CC=man       man
+	make CC=cordrectab select gener
+	make CC=build      select EX=xx gener
+	make CC=man        man
 	make CC=$@ dist testall log TO=8 pack
 anabuild.2022-07-13:
 	make purge
@@ -7018,15 +7018,20 @@ somos4:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-cordrectab:
-	perl cordrec_prep.pl -A $(HOLREC)/cordrectab.tmp 2> $@.rest.tmp \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp $@.rest.tmp
-	cut -f6  $@.rest.tmp | sort | uniq -c
+cordrectab0:
+	perl cordrec_prep.pl -A $(HOLREC)/cordrectab.tmp 2> cordrectab.rest.tmp \
+	>        cordrectab.tmp
+	head -n4 cordrectab.tmp
+	wc -l    cordrectab.tmp cordrectab.rest.tmp
+	cut -f6  cordrectab.rest.tmp | sort | uniq -c
 	#
-	perl cordrec.pl -A $@.tmp 2> $@.rest2.tmp \
+	perl cordrec.pl -A cordrectab.tmp 2> cordrectab.rest2.tmp \
 	| sort | uniq -w7 \
+	>        cordrectab.gen
+	head -n4 cordrectab.gen
+	wc -l    cordrectab.gen cordrectab.rest*.tmp
+cordrectab:
+	cat cordrectab.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest*.tmp

@@ -115,7 +115,7 @@ while (<>) {
                     $expr =~                 s{\b2\^(n|\d+|\([n\~\#\°\µ\d]+\))} {Z\.ONE\.shiftLeft\($1\)}g; # replace 2^(n~1)
                     #          1                 1  2                          2
                     $expr =~ s{(\d+|\([\~\-]\d+\))\^(n|\d+|\([n\~\#\°\µ\d]+\))} {Z\.valueOf\($1\)\.pow\($2\)}g; # replace 10^(n~1)
-                    print join("\t", "# $aseqno", $expr) . "\n";
+                    # print join("\t", "# $aseqno", $expr) . "\n";
                     $expr =~ s{\)([\#\~][n\~\#\+\-\*\d]+)\)}  {\)\.add\($1\)\)}g; # )+1) -> ).add(+1))
                     if (0) {
                     } elsif ($order > 16) {

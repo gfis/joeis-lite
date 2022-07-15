@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2022-07-15: SequenceWithOffset
 # 2022-06-01: package recur
 # 2022-02-22, private; -p implies -n
 # 2021-10-28: -t, -e
@@ -166,7 +167,7 @@ GFis
     } elsif ($upperleft == 1) {
         print TAR "triangle.UpperLeftTriangle";
     } else {
-        print TAR "Sequence";
+        print TAR "SequenceWithOffset";
     } # end of superclass import
     print TAR ";\n";
     #--------
@@ -186,11 +187,11 @@ GFis
     } elsif ($memory     == 1) {
         print TAR "extends MemorySequence";
     } elsif ($triangle   == 1) {
-        print TAR "extends Triangle";
+        print TAR "extends BaseTriangle";
     } elsif ($upperleft  == 1) {
         print TAR "extends UpperLeftTriangle";
     } else {
-        print TAR "implements Sequence";
+        print TAR "implements SequenceWithOffset";
     }
     print TAR " {\n";
     if ($withn) {
@@ -270,8 +271,8 @@ GFis
     } elsif ($triangle) {
         print TAR <<"GFis"; # Pascal's rule
   \@Override
-  public Z compute(final int n, final int k) {
-    return n == 0 ? Z.ONE : get(n - 1, k - 1).multiply(1).add(get(n - 1, k).multiply(1));
+  public Z triangleElement(final int n, final int k) {
+    return Z.valueOf(n == 1 ? k : n + k);
   }
 GFis
     #----
@@ -307,6 +308,11 @@ GFis
     } # switch for methods
     #--------
     print TAR <<"GFis"; # end of class
+
+  @Override
+  public int getOffset() {
+    return mOffset;
+  }
 }
 GFis
     close(TAR);
