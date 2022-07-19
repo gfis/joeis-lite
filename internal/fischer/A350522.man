@@ -1,0 +1,1074 @@
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A058215 MATRIX="[[0],[0,0,30,-2],[0,0,-15,1]]" INIT="2,6,12,30,60,120,240,510,1020" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,30,-2],[0,0,-15,1]]" -i "2,6,12,30,60,120,240,510,1020" -o 0 -d 0 -dist 0 -t 0 
+2,6,12,30,60,120,240,510,1020,2040,4080,8160,16320,32640,65280,null
+perl -e 'print join("\t", A058215, "holos", 0, "[[0],[0,0,30,-2],[0,0,-15,1]]", "2,6,12,30,60,120,240,510,1020", 0) . "\n";'
+A058215	holos	0	[[0],[0,0,30,-2],[0,0,-15,1]]	2,6,12,30,60,120,240,510,1020	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A058764 MATRIX="[[0],[0,0,0,-2],[0,0,0,1]]" INIT="2,4,6,12,24,48,96,192,384" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-2],[0,0,0,1]]" -i "2,4,6,12,24,48,96,192,384" -o 0 -d 0 -dist 0 -t 0 
+2,4,6,12,24,48,96,192,384,768,1536,3072,6144,12288,24576,49152,98304,196608,393216,786432,1572864,3145728,6291456,12582912,25165824,50331648,100663296,201326592,402653184,805306368,1610612736,3221225472
+perl -e 'print join("\t", A058764, "holos", 0, "[[0],[0,0,0,-2],[0,0,0,1]]", "2,4,6,12,24,48,96,192,384", 0) . "\n";'
+A058764	holos	0	[[0],[0,0,0,-2],[0,0,0,1]]	2,4,6,12,24,48,96,192,384	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A060293 MATRIX="[[0],[0,-40,21,-2],[0,56,-23,2]]" INIT="0,1,3,6,9,12,15,19,22" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-40,21,-2],[0,56,-23,2]]" -i "0,1,3,6,9,12,15,19,22" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,6,9,12,15,19,22,26,30,34,38,42,46,50,54,58,62,66,70,74,78,82,86,90,94,98,102,106,110,114
+perl -e 'print join("\t", A060293, "holos", 0, "[[0],[0,-40,21,-2],[0,56,-23,2]]", "0,1,3,6,9,12,15,19,22", 0) . "\n";'
+A060293	holos	0	[[0],[0,-40,21,-2],[0,56,-23,2]]	0,1,3,6,9,12,15,19,22	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A061219 MATRIX="[[0],[-5904,1322,-65,-1],[5832,-1305,64,1]]" INIT="1,2,3,4,5,6,7,8,9" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-5904,1322,-65,-1],[5832,-1305,64,1]]" -i "1,2,3,4,5,6,7,8,9" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,4,5,6,7,8,9,null
+perl -e 'print join("\t", A061219, "holos", 0, "[[0],[-5904,1322,-65,-1],[5832,-1305,64,1]]", "1,2,3,4,5,6,7,8,9", 0) . "\n";'
+A061219	holos	0	[[0],[-5904,1322,-65,-1],[5832,-1305,64,1]]	1,2,3,4,5,6,7,8,9	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A061887 MATRIX="[[0],[-648,81,8,-1],[576,-64,-9,1]]" INIT="0,2,3,4,8,9,10,11,12" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-648,81,8,-1],[576,-64,-9,1]]" -i "0,2,3,4,8,9,10,11,12" -o 0 -d 0 -dist 0 -t 0 
+0,2,3,4,8,9,10,11,12,null
+perl -e 'print join("\t", A061887, "holos", 0, "[[0],[-648,81,8,-1],[576,-64,-9,1]]", "0,2,3,4,8,9,10,11,12", 0) . "\n";'
+A061887	holos	0	[[0],[-648,81,8,-1],[576,-64,-9,1]]	0,2,3,4,8,9,10,11,12	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A063055 MATRIX="[[0],[0,0,-7639,-90],[0,0,7549,90]]" INIT="2996,3995,5993,6992,7991,8089,8179,8269,8359" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-7639,-90],[0,0,7549,90]]" -i "2996,3995,5993,6992,7991,8089,8179,8269,8359" -o 0 -d 0 -dist 0 -t 0 
+2996,3995,5993,6992,7991,8089,8179,8269,8359,8449,8539,8629,8719,8809,8899,8989,9079,9169,9259,9349,9439,9529,9619,9709,9799,9889,9979,10069,10159,10249,10339,10429
+perl -e 'print join("\t", A063055, "holos", 0, "[[0],[0,0,-7639,-90],[0,0,7549,90]]", "2996,3995,5993,6992,7991,8089,8179,8269,8359", 0) . "\n";'
+A063055	holos	0	[[0],[0,0,-7639,-90],[0,0,7549,90]]	2996,3995,5993,6992,7991,8089,8179,8269,8359	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A063434 MATRIX="[[0],[0,102345,602,-495],[0,-94920,-1097,495]]" INIT="11567,12557,13547,14537,15527,16517,17507,20576,21566" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,102345,602,-495],[0,-94920,-1097,495]]" -i "11567,12557,13547,14537,15527,16517,17507,20576,21566" -o 0 -d 0 -dist 0 -t 0 
+11567,12557,13547,14537,15527,16517,17507,20576,21566,22556,23546,24536,25526,26516,27506,null
+perl -e 'print join("\t", A063434, "holos", 0, "[[0],[0,102345,602,-495],[0,-94920,-1097,495]]", "11567,12557,13547,14537,15527,16517,17507,20576,21566", 0) . "\n";'
+A063434	holos	0	[[0],[0,102345,602,-495],[0,-94920,-1097,495]]	11567,12557,13547,14537,15527,16517,17507,20576,21566	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A063915 MATRIX="[[0],[0,-405,147,-8],[0,525,-155,8]]" INIT="1,3,5,9,13,17,21,29,37" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-405,147,-8],[0,525,-155,8]]" -i "1,3,5,9,13,17,21,29,37" -o 0 -d 0 -dist 0 -t 0 
+1,3,5,9,13,17,21,29,37,45,53,61,69,77,85,null
+perl -e 'print join("\t", A063915, "holos", 0, "[[0],[0,-405,147,-8],[0,525,-155,8]]", "1,3,5,9,13,17,21,29,37", 0) . "\n";'
+A063915	holos	0	[[0],[0,-405,147,-8],[0,525,-155,8]]	1,3,5,9,13,17,21,29,37	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A063916 MATRIX="[[0],[945,-408,83,-4],[-1350,555,-91,4]]" INIT="1,4,9,18,31,48,69,98,135" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[945,-408,83,-4],[-1350,555,-91,4]]" -i "1,4,9,18,31,48,69,98,135" -o 0 -d 0 -dist 0 -t 0 
+1,4,9,18,31,48,69,98,135,180,233,294,363,440,525,null
+perl -e 'print join("\t", A063916, "holos", 0, "[[0],[945,-408,83,-4],[-1350,555,-91,4]]", "1,4,9,18,31,48,69,98,135", 0) . "\n";'
+A063916	holos	0	[[0],[945,-408,83,-4],[-1350,555,-91,4]]	1,4,9,18,31,48,69,98,135	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A064466 MATRIX="[[0],[0,0,-3,-1],[0,0,2,1]]" INIT="6,8,10,12,14,16,18,20,22" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-3,-1],[0,0,2,1]]" -i "6,8,10,12,14,16,18,20,22" -o 0 -d 0 -dist 0 -t 0 
+6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68
+perl -e 'print join("\t", A064466, "holos", 0, "[[0],[0,0,-3,-1],[0,0,2,1]]", "6,8,10,12,14,16,18,20,22", 0) . "\n";'
+A064466	holos	0	[[0],[0,0,-3,-1],[0,0,2,1]]	6,8,10,12,14,16,18,20,22	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A068060 MATRIX="[[0],[3240,-846,72,-2],[-1620,423,-36,1]]" INIT="1,2,4,7,14,28,50,100,200" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[3240,-846,72,-2],[-1620,423,-36,1]]" -i "1,2,4,7,14,28,50,100,200" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,7,14,28,50,100,200,null
+perl -e 'print join("\t", A068060, "holos", 0, "[[0],[3240,-846,72,-2],[-1620,423,-36,1]]", "1,2,4,7,14,28,50,100,200", 0) . "\n";'
+A068060	holos	0	[[0],[3240,-846,72,-2],[-1620,423,-36,1]]	1,2,4,7,14,28,50,100,200	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A068900 MATRIX="[[0],[-144,-38,15,-1],[72,55,-16,1]]" INIT="11,22,33,44,55,66,77,88,99" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-144,-38,15,-1],[72,55,-16,1]]" -i "11,22,33,44,55,66,77,88,99" -o 0 -d 0 -dist 0 -t 0 
+11,22,33,44,55,66,77,88,99,null
+perl -e 'print join("\t", A068900, "holos", 0, "[[0],[-144,-38,15,-1],[72,55,-16,1]]", "11,22,33,44,55,66,77,88,99", 0) . "\n";'
+A068900	holos	0	[[0],[-144,-38,15,-1],[72,55,-16,1]]	11,22,33,44,55,66,77,88,99	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A072207 MATRIX="[[0],[0,-360,54,-2],[0,180,-27,1]]" INIT="1,2,4,8,16,32,52,104,208" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-360,54,-2],[0,180,-27,1]]" -i "1,2,4,8,16,32,52,104,208" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,8,16,32,52,104,208,416,832,1664,null
+perl -e 'print join("\t", A072207, "holos", 0, "[[0],[0,-360,54,-2],[0,180,-27,1]]", "1,2,4,8,16,32,52,104,208", 0) . "\n";'
+A072207	holos	0	[[0],[0,-360,54,-2],[0,180,-27,1]]	1,2,4,8,16,32,52,104,208	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A072442 MATRIX="[[0],[0,0,-3,-1],[0,0,2,1]]" INIT="1,3,4,5,7,8,9,10,11" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-3,-1],[0,0,2,1]]" -i "1,3,4,5,7,8,9,10,11" -o 0 -d 0 -dist 0 -t 0 
+1,3,4,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34
+perl -e 'print join("\t", A072442, "holos", 0, "[[0],[0,0,-3,-1],[0,0,2,1]]", "1,3,4,5,7,8,9,10,11", 0) . "\n";'
+A072442	holos	0	[[0],[0,0,-3,-1],[0,0,2,1]]	1,3,4,5,7,8,9,10,11	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A072795 MATRIX="[[0],[-1008,166,3,-1],[936,-149,-4,1]]" INIT="1,2,4,5,9,10,11,12,13" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1008,166,3,-1],[936,-149,-4,1]]" -i "1,2,4,5,9,10,11,12,13" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,5,9,10,11,12,13,null
+perl -e 'print join("\t", A072795, "holos", 0, "[[0],[-1008,166,3,-1],[936,-149,-4,1]]", "1,2,4,5,9,10,11,12,13", 0) . "\n";'
+A072795	holos	0	[[0],[-1008,166,3,-1],[936,-149,-4,1]]	1,2,4,5,9,10,11,12,13	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A073775 MATRIX="[[0],[12,-85,-27,-2],[-72,37,21,2]]" INIT="-2,17,47,90,148,223,317,432,570" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[12,-85,-27,-2],[-72,37,21,2]]" -i "-2,17,47,90,148,223,317,432,570" -o 0 -d 0 -dist 0 -t 0 
+-2,17,47,90,148,223,317,432,570,733,923,1142,1392,1675,1993,2348,2742,3177,3655,4178,4748,5367,6037,6760,7538,8373,9267,10222,11240,12323,13473,14692
+perl -e 'print join("\t", A073775, "holos", 0, "[[0],[12,-85,-27,-2],[-72,37,21,2]]", "-2,17,47,90,148,223,317,432,570", 0) . "\n";'
+A073775	holos	0	[[0],[12,-85,-27,-2],[-72,37,21,2]]	-2,17,47,90,148,223,317,432,570	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A073849 MATRIX="[[0],[0,32,4,-1],[0,-24,-5,1]]" INIT="0,1,3,4,5,6,8,10,12" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,32,4,-1],[0,-24,-5,1]]" -i "0,1,3,4,5,6,8,10,12" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,4,5,6,8,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
+perl -e 'print join("\t", A073849, "holos", 0, "[[0],[0,32,4,-1],[0,-24,-5,1]]", "0,1,3,4,5,6,8,10,12", 0) . "\n";'
+A073849	holos	0	[[0],[0,32,4,-1],[0,-24,-5,1]]	0,1,3,4,5,6,8,10,12	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A074991 MATRIX="[[0],[-2448,-241846,57205,-3367],[-239976,299085,-60572,3367]]" INIT="4,41,78,115,152,189,226,263,2970" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-2448,-241846,57205,-3367],[-239976,299085,-60572,3367]]" -i "4,41,78,115,152,189,226,263,2970" -o 0 -d 0 -dist 0 -t 0 
+4,41,78,115,152,189,226,263,2970,null
+perl -e 'print join("\t", A074991, "holos", 0, "[[0],[-2448,-241846,57205,-3367],[-239976,299085,-60572,3367]]", "4,41,78,115,152,189,226,263,2970", 0) . "\n";'
+A074991	holos	0	[[0],[-2448,-241846,57205,-3367],[-239976,299085,-60572,3367]]	4,41,78,115,152,189,226,263,2970	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A074999 MATRIX="[[0],[-816243240485664,-80615356709632804,19068349034679001,-1122334455667789],[-79991837567595144,99695042455985217,-20190683490346790,1122334455667789]]" INIT="1371742,13717421,260630990,3840876779,50754344568,630990012357,7543445680146,87677901347935,990012357015724" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-816243240485664,-80615356709632804,19068349034679001,-1122334455667789],[-79991837567595144,99695042455985217,-20190683490346790,1122334455667789]]" -i "1371742,13717421,260630990,3840876779,50754344568,630990012357,7543445680146,87677901347935,990012357015724" -o 0 -d 0 -dist 0 -t 0 
+1371742,13717421,260630990,3840876779,50754344568,630990012357,7543445680146,87677901347935,990012357015724,null
+perl -e 'print join("\t", A074999, "holos", 0, "[[0],[-816243240485664,-80615356709632804,19068349034679001,-1122334455667789],[-79991837567595144,99695042455985217,-20190683490346790,1122334455667789]]", "1371742,13717421,260630990,3840876779,50754344568,630990012357,7543445680146,87677901347935,990012357015724", 0) . "\n";'
+A074999	holos	0	[[0],[-816243240485664,-80615356709632804,19068349034679001,-1122334455667789],[-79991837567595144,99695042455985217,-20190683490346790,1122334455667789]]	1371742,13717421,260630990,3840876779,50754344568,630990012357,7543445680146,87677901347935,990012357015724	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A075543 MATRIX="[[0],[0,-130,13,-1],[0,144,-15,1]]" INIT="2,5,9,14,20,27,35,44,45" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-130,13,-1],[0,144,-15,1]]" -i "2,5,9,14,20,27,35,44,45" -o 0 -d 0 -dist 0 -t 0 
+2,5,9,14,20,27,35,44,45,47,50,54,59,65,72,80,89,99,110,122,135,149,164,180,197,215,234,254,275,297,320,344
+perl -e 'print join("\t", A075543, "holos", 0, "[[0],[0,-130,13,-1],[0,144,-15,1]]", "2,5,9,14,20,27,35,44,45", 0) . "\n";'
+A075543	holos	0	[[0],[0,-130,13,-1],[0,144,-15,1]]	2,5,9,14,20,27,35,44,45	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A076095 MATRIX="[[0],[0,-8,1,-1],[0,10,-3,1]]" INIT="1,2,3,5,9,13,19,25,32" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-8,1,-1],[0,10,-3,1]]" -i "1,2,3,5,9,13,19,25,32" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,5,9,13,19,25,32,40,49,59,70,82,95,109,124,140,157,175,194,214,235,257,280,304,329,355,382,410,439,469
+perl -e 'print join("\t", A076095, "holos", 0, "[[0],[0,-8,1,-1],[0,10,-3,1]]", "1,2,3,5,9,13,19,25,32", 0) . "\n";'
+A076095	holos	0	[[0],[0,-8,1,-1],[0,10,-3,1]]	1,2,3,5,9,13,19,25,32	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A077368 MATRIX="[[0],[0,15,14,-1],[0,15,-16,1]]" INIT="0,1,3,6,10,15,21,28,36" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,15,14,-1],[0,15,-16,1]]" -i "0,1,3,6,10,15,21,28,36" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,6,10,15,21,28,36,45,55,66,78,91,105,null
+perl -e 'print join("\t", A077368, "holos", 0, "[[0],[0,15,14,-1],[0,15,-16,1]]", "0,1,3,6,10,15,21,28,36", 0) . "\n";'
+A077368	holos	0	[[0],[0,15,14,-1],[0,15,-16,1]]	0,1,3,6,10,15,21,28,36	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A078256 MATRIX="[[0],[0,0,-1,-1],[0,0,-1,1]]" INIT="0,1,3,6,10,15,21,28,36" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-1,-1],[0,0,-1,1]]" -i "0,1,3,6,10,15,21,28,36" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,6,10,15,21,28,36,45,55,66,78,91,105,120,136,153,171,190,210,231,253,276,300,325,351,378,406,435,465,496
+perl -e 'print join("\t", A078256, "holos", 0, "[[0],[0,0,-1,-1],[0,0,-1,1]]", "0,1,3,6,10,15,21,28,36", 0) . "\n";'
+A078256	holos	0	[[0],[0,0,-1,-1],[0,0,-1,1]]	0,1,3,6,10,15,21,28,36	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A078453 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A078453, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A078453	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A079037 MATRIX="[[0],[0,0,1248,-355],[0,0,-1603,355]]" INIT="1,3,5,11,344,1054,1764,2474,3184" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,1248,-355],[0,0,-1603,355]]" -i "1,3,5,11,344,1054,1764,2474,3184" -o 0 -d 0 -dist 0 -t 0 
+1,3,5,11,344,1054,1764,2474,3184,3894,4604,5314,6024,6734,7444,8154,8864,9574,10284,10994,11704,12414,13124,13834,14544,15254,15964,16674,17384,18094,18804,19514
+perl -e 'print join("\t", A079037, "holos", 0, "[[0],[0,0,1248,-355],[0,0,-1603,355]]", "1,3,5,11,344,1054,1764,2474,3184", 0) . "\n";'
+A079037	holos	0	[[0],[0,0,1248,-355],[0,0,-1603,355]]	1,3,5,11,344,1054,1764,2474,3184	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A079043 MATRIX="[[0],[0,0,-1,-7],[0,0,-6,7]]" INIT="1,8,15,22,29,36,43,50,57" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-1,-7],[0,0,-6,7]]" -i "1,8,15,22,29,36,43,50,57" -o 0 -d 0 -dist 0 -t 0 
+1,8,15,22,29,36,43,50,57,64,71,78,85,92,99,106,113,120,127,134,141,148,155,162,169,176,183,190,197,204,211,218
+perl -e 'print join("\t", A079043, "holos", 0, "[[0],[0,0,-1,-7],[0,0,-6,7]]", "1,8,15,22,29,36,43,50,57", 0) . "\n";'
+A079043	holos	0	[[0],[0,0,-1,-7],[0,0,-6,7]]	1,8,15,22,29,36,43,50,57	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A080970 MATRIX="[[0],[0,104,-5,-1],[0,-96,4,1]]" INIT="4,8,9,10,13,14,17,19,21" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,104,-5,-1],[0,-96,4,1]]" -i "4,8,9,10,13,14,17,19,21" -o 0 -d 0 -dist 0 -t 0 
+4,8,9,10,13,14,17,19,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44
+perl -e 'print join("\t", A080970, "holos", 0, "[[0],[0,104,-5,-1],[0,-96,4,1]]", "4,8,9,10,13,14,17,19,21", 0) . "\n";'
+A080970	holos	0	[[0],[0,104,-5,-1],[0,-96,4,1]]	4,8,9,10,13,14,17,19,21	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A081291 MATRIX="[[0],[-1890,51,20,-1],[1680,-22,-21,1]]" INIT="0,3,6,7,8,14,15,16,17" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1890,51,20,-1],[1680,-22,-21,1]]" -i "0,3,6,7,8,14,15,16,17" -o 0 -d 0 -dist 0 -t 0 
+0,3,6,7,8,14,15,16,17,18,19,20,21,22,null
+perl -e 'print join("\t", A081291, "holos", 0, "[[0],[-1890,51,20,-1],[1680,-22,-21,1]]", "0,3,6,7,8,14,15,16,17", 0) . "\n";'
+A081291	holos	0	[[0],[-1890,51,20,-1],[1680,-22,-21,1]]	0,3,6,7,8,14,15,16,17	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A081690 MATRIX="[[0],[-216,-21,14,-1],[144,38,-15,1]]" INIT="0,1,3,4,5,7,8,9,10" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-216,-21,14,-1],[144,38,-15,1]]" -i "0,1,3,4,5,7,8,9,10" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,4,5,7,8,9,10,null
+perl -e 'print join("\t", A081690, "holos", 0, "[[0],[-216,-21,14,-1],[144,38,-15,1]]", "0,1,3,4,5,7,8,9,10", 0) . "\n";'
+A081690	holos	0	[[0],[-216,-21,14,-1],[144,38,-15,1]]	0,1,3,4,5,7,8,9,10	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A082768 MATRIX="[[0],[-1260,-36,23,-1],[1050,65,-24,1]]" INIT="1,3,7,9,10,11,12,13,14" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1260,-36,23,-1],[1050,65,-24,1]]" -i "1,3,7,9,10,11,12,13,14" -o 0 -d 0 -dist 0 -t 0 
+1,3,7,9,10,11,12,13,14,15,16,17,18,19,null
+perl -e 'print join("\t", A082768, "holos", 0, "[[0],[-1260,-36,23,-1],[1050,65,-24,1]]", "1,3,7,9,10,11,12,13,14", 0) . "\n";'
+A082768	holos	0	[[0],[-1260,-36,23,-1],[1050,65,-24,1]]	1,3,7,9,10,11,12,13,14	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A084505 MATRIX="[[0],[936,-509,81,-4],[-1224,577,-85,4]]" INIT="0,1,3,5,8,11,14,17,20" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[936,-509,81,-4],[-1224,577,-85,4]]" -i "0,1,3,5,8,11,14,17,20" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,5,8,11,14,17,20,null
+perl -e 'print join("\t", A084505, "holos", 0, "[[0],[936,-509,81,-4],[-1224,577,-85,4]]", "0,1,3,5,8,11,14,17,20", 0) . "\n";'
+A084505	holos	0	[[0],[936,-509,81,-4],[-1224,577,-85,4]]	0,1,3,5,8,11,14,17,20	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A084515 MATRIX="[[0],[0,0,2,-1],[0,0,-3,1]]" INIT="0,1,3,6,9,12,16,20,24" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,2,-1],[0,0,-3,1]]" -i "0,1,3,6,9,12,16,20,24" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,6,9,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100,104,108,112,116
+perl -e 'print join("\t", A084515, "holos", 0, "[[0],[0,0,2,-1],[0,0,-3,1]]", "0,1,3,6,9,12,16,20,24", 0) . "\n";'
+A084515	holos	0	[[0],[0,0,2,-1],[0,0,-3,1]]	0,1,3,6,9,12,16,20,24	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A084525 MATRIX="[[0],[0,0,2,-1],[0,0,-3,1]]" INIT="0,1,3,6,9,12,16,20,24" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,2,-1],[0,0,-3,1]]" -i "0,1,3,6,9,12,16,20,24" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,6,9,12,16,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100,104,108,112,116
+perl -e 'print join("\t", A084525, "holos", 0, "[[0],[0,0,2,-1],[0,0,-3,1]]", "0,1,3,6,9,12,16,20,24", 0) . "\n";'
+A084525	holos	0	[[0],[0,0,2,-1],[0,0,-3,1]]	0,1,3,6,9,12,16,20,24	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A084555 MATRIX="[[0],[936,-509,81,-4],[-1224,577,-85,4]]" INIT="0,1,3,5,8,11,14,17,20" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[936,-509,81,-4],[-1224,577,-85,4]]" -i "0,1,3,5,8,11,14,17,20" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,5,8,11,14,17,20,null
+perl -e 'print join("\t", A084555, "holos", 0, "[[0],[936,-509,81,-4],[-1224,577,-85,4]]", "0,1,3,5,8,11,14,17,20", 0) . "\n";'
+A084555	holos	0	[[0],[936,-509,81,-4],[-1224,577,-85,4]]	0,1,3,5,8,11,14,17,20	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A088648 MATRIX="[[0],[0,0,5,-2],[0,0,-7,2]]" INIT="1,5,11,15,19,25,35,45,55" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,5,-2],[0,0,-7,2]]" -i "1,5,11,15,19,25,35,45,55" -o 0 -d 0 -dist 0 -t 0 
+1,5,11,15,19,25,35,45,55,65,75,85,95,105,115,125,135,145,155,165,175,185,195,205,215,225,235,245,255,265,275,285
+perl -e 'print join("\t", A088648, "holos", 0, "[[0],[0,0,5,-2],[0,0,-7,2]]", "1,5,11,15,19,25,35,45,55", 0) . "\n";'
+A088648	holos	0	[[0],[0,0,5,-2],[0,0,-7,2]]	1,5,11,15,19,25,35,45,55	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A090273 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A090273, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A090273	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A090274 MATRIX="[[0],[-144,-38,15,-1],[72,55,-16,1]]" INIT="1,2,3,4,5,6,7,8,9" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-144,-38,15,-1],[72,55,-16,1]]" -i "1,2,3,4,5,6,7,8,9" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,4,5,6,7,8,9,null
+perl -e 'print join("\t", A090274, "holos", 0, "[[0],[-144,-38,15,-1],[72,55,-16,1]]", "1,2,3,4,5,6,7,8,9", 0) . "\n";'
+A090274	holos	0	[[0],[-144,-38,15,-1],[72,55,-16,1]]	1,2,3,4,5,6,7,8,9	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A093053 MATRIX="[[0],[3276,-850,72,-2],[-1638,425,-36,1]]" INIT="1,2,5,11,23,46,93,186,372" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[3276,-850,72,-2],[-1638,425,-36,1]]" -i "1,2,5,11,23,46,93,186,372" -o 0 -d 0 -dist 0 -t 0 
+1,2,5,11,23,46,93,186,372,null
+perl -e 'print join("\t", A093053, "holos", 0, "[[0],[3276,-850,72,-2],[-1638,425,-36,1]]", "1,2,5,11,23,46,93,186,372", 0) . "\n";'
+A093053	holos	0	[[0],[3276,-850,72,-2],[-1638,425,-36,1]]	1,2,5,11,23,46,93,186,372	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A093472 MATRIX="[[0],[-193608,-25567,14141,-990],[122328,42397,-15131,990]]" INIT="159,258,357,456,555,654,753,852,951" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-193608,-25567,14141,-990],[122328,42397,-15131,990]]" -i "159,258,357,456,555,654,753,852,951" -o 0 -d 0 -dist 0 -t 0 
+159,258,357,456,555,654,753,852,951,null
+perl -e 'print join("\t", A093472, "holos", 0, "[[0],[-193608,-25567,14141,-990],[122328,42397,-15131,990]]", "159,258,357,456,555,654,753,852,951", 0) . "\n";'
+A093472	holos	0	[[0],[-193608,-25567,14141,-990],[122328,42397,-15131,990]]	159,258,357,456,555,654,753,852,951	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A098080 MATRIX="[[0],[0,50,-51,-101],[0,-151,-50,101]]" INIT="0,12,34,56,78,910,1112,1314,1516" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,50,-51,-101],[0,-151,-50,101]]" -i "0,12,34,56,78,910,1112,1314,1516" -o 0 -d 0 -dist 0 -t 0 
+0,12,34,56,78,910,1112,1314,1516,1718,1920,2122,2324,2526,2728,2930,3132,3334,3536,3738,3940,4142,4344,4546,4748,4950,5152,5354,5556,5758,5960,6162
+perl -e 'print join("\t", A098080, "holos", 0, "[[0],[0,50,-51,-101],[0,-151,-50,101]]", "0,12,34,56,78,910,1112,1314,1516", 0) . "\n";'
+A098080	holos	0	[[0],[0,50,-51,-101],[0,-151,-50,101]]	0,12,34,56,78,910,1112,1314,1516	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A098385 MATRIX="[[0],[0,-26,-16,-2],[0,6,6,1]]" INIT="13,44,132,368,976,2496,6208,15104,36096" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-26,-16,-2],[0,6,6,1]]" -i "13,44,132,368,976,2496,6208,15104,36096" -o 0 -d 0 -dist 0 -t 0 
+13,44,132,368,976,2496,6208,15104,36096,84992,197632,454656,1036288,2342912,5259264,11730944,26017792,57409536,126091264,275775488,600834048,1304428544,2822766592,6090129408,13103005696,28118614016,60196651008,128580583424,274072600576,583041810432,1238024323072,2624225017856
+perl -e 'print join("\t", A098385, "holos", 0, "[[0],[0,-26,-16,-2],[0,6,6,1]]", "13,44,132,368,976,2496,6208,15104,36096", 0) . "\n";'
+A098385	holos	0	[[0],[0,-26,-16,-2],[0,6,6,1]]	13,44,132,368,976,2496,6208,15104,36096	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A099260 MATRIX="[[0],[0,2,-1,-1],[0,-1,0,1]]" INIT="1,2,3,4,6,7,8,9,10" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,2,-1,-1],[0,-1,0,1]]" -i "1,2,3,4,6,7,8,9,10" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,4,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33
+perl -e 'print join("\t", A099260, "holos", 0, "[[0],[0,2,-1,-1],[0,-1,0,1]]", "1,2,3,4,6,7,8,9,10", 0) . "\n";'
+A099260	holos	0	[[0],[0,2,-1,-1],[0,-1,0,1]]	1,2,3,4,6,7,8,9,10	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A099356 MATRIX="[[0],[0,45,12,-1],[0,-30,-13,1]]" INIT="0,1,3,4,6,8,9,10,11" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,45,12,-1],[0,-30,-13,1]]" -i "0,1,3,4,6,8,9,10,11" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,4,6,8,9,10,11,12,13,14,15,16,17,null
+perl -e 'print join("\t", A099356, "holos", 0, "[[0],[0,45,12,-1],[0,-30,-13,1]]", "0,1,3,4,6,8,9,10,11", 0) . "\n";'
+A099356	holos	0	[[0],[0,45,12,-1],[0,-30,-13,1]]	0,1,3,4,6,8,9,10,11	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A101616 MATRIX="[[0],[420,-268,31,-1],[-630,297,-32,1]]" INIT="1,2,4,6,7,8,9,10,12" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[420,-268,31,-1],[-630,297,-32,1]]" -i "1,2,4,6,7,8,9,10,12" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,6,7,8,9,10,12,14,16,18,20,22,null
+perl -e 'print join("\t", A101616, "holos", 0, "[[0],[420,-268,31,-1],[-630,297,-32,1]]", "1,2,4,6,7,8,9,10,12", 0) . "\n";'
+A101616	holos	0	[[0],[420,-268,31,-1],[-630,297,-32,1]]	1,2,4,6,7,8,9,10,12	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A102827 MATRIX="[[0],[-144,-38,15,-1],[72,55,-16,1]]" INIT="1,2,3,4,5,6,7,8,9" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-144,-38,15,-1],[72,55,-16,1]]" -i "1,2,3,4,5,6,7,8,9" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,4,5,6,7,8,9,null
+perl -e 'print join("\t", A102827, "holos", 0, "[[0],[-144,-38,15,-1],[72,55,-16,1]]", "1,2,3,4,5,6,7,8,9", 0) . "\n";'
+A102827	holos	0	[[0],[-144,-38,15,-1],[72,55,-16,1]]	1,2,3,4,5,6,7,8,9	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A104356 MATRIX="[[0],[0,0,0,-2],[0,0,0,1]]" INIT="1,5,10,15,20,32,64,128,256" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-2],[0,0,0,1]]" -i "1,5,10,15,20,32,64,128,256" -o 0 -d 0 -dist 0 -t 0 
+1,5,10,15,20,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576,2097152,4194304,8388608,16777216,33554432,67108864,134217728,268435456,536870912,1073741824,2147483648
+perl -e 'print join("\t", A104356, "holos", 0, "[[0],[0,0,0,-2],[0,0,0,1]]", "1,5,10,15,20,32,64,128,256", 0) . "\n";'
+A104356	holos	0	[[0],[0,0,0,-2],[0,0,0,1]]	1,5,10,15,20,32,64,128,256	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A107037 MATRIX="[[0],[0,16,6,-1],[0,-8,-7,1]]" INIT="1,2,3,4,5,6,7,8,10" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,16,6,-1],[0,-8,-7,1]]" -i "1,2,3,4,5,6,7,8,10" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33
+perl -e 'print join("\t", A107037, "holos", 0, "[[0],[0,16,6,-1],[0,-8,-7,1]]", "1,2,3,4,5,6,7,8,10", 0) . "\n";'
+A107037	holos	0	[[0],[0,16,6,-1],[0,-8,-7,1]]	1,2,3,4,5,6,7,8,10	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A107784 MATRIX="[[0],[0,320,-32,-1],[0,-312,31,1]]" INIT="2,6,7,17,18,19,20,21,48" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,320,-32,-1],[0,-312,31,1]]" -i "2,6,7,17,18,19,20,21,48" -o 0 -d 0 -dist 0 -t 0 
+2,6,7,17,18,19,20,21,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71
+perl -e 'print join("\t", A107784, "holos", 0, "[[0],[0,320,-32,-1],[0,-312,31,1]]", "2,6,7,17,18,19,20,21,48", 0) . "\n";'
+A107784	holos	0	[[0],[0,320,-32,-1],[0,-312,31,1]]	2,6,7,17,18,19,20,21,48	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A111708 MATRIX="[[0],[0,10,9,-1],[0,0,-10,1]]" INIT="9,18,27,36,45,54,63,72,81" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,10,9,-1],[0,0,-10,1]]" -i "9,18,27,36,45,54,63,72,81" -o 0 -d 0 -dist 0 -t 0 
+9,18,27,36,45,54,63,72,81,90,null
+perl -e 'print join("\t", A111708, "holos", 0, "[[0],[0,10,9,-1],[0,0,-10,1]]", "9,18,27,36,45,54,63,72,81", 0) . "\n";'
+A111708	holos	0	[[0],[0,10,9,-1],[0,0,-10,1]]	9,18,27,36,45,54,63,72,81	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A112594 MATRIX="[[0],[-432,30,11,-1],[360,-13,-12,1]]" INIT="0,3,4,5,8,9,10,11,12" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-432,30,11,-1],[360,-13,-12,1]]" -i "0,3,4,5,8,9,10,11,12" -o 0 -d 0 -dist 0 -t 0 
+0,3,4,5,8,9,10,11,12,null
+perl -e 'print join("\t", A112594, "holos", 0, "[[0],[-432,30,11,-1],[360,-13,-12,1]]", "0,3,4,5,8,9,10,11,12", 0) . "\n";'
+A112594	holos	0	[[0],[-432,30,11,-1],[360,-13,-12,1]]	0,3,4,5,8,9,10,11,12	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A114086 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A114086, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A114086	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A117884 MATRIX="[[0],[0,0,-9,-1],[0,0,8,1]]" INIT="0,10,11,12,13,14,15,16,17" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-9,-1],[0,0,8,1]]" -i "0,10,11,12,13,14,15,16,17" -o 0 -d 0 -dist 0 -t 0 
+0,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40
+perl -e 'print join("\t", A117884, "holos", 0, "[[0],[0,0,-9,-1],[0,0,8,1]]", "0,10,11,12,13,14,15,16,17", 0) . "\n";'
+A117884	holos	0	[[0],[0,0,-9,-1],[0,0,8,1]]	0,10,11,12,13,14,15,16,17	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A118471 MATRIX="[[0],[-3265272,770895,-45334,-1],[3265200,-770878,45333,1]]" INIT="1,2,6,7,8,9,63,504,4536" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-3265272,770895,-45334,-1],[3265200,-770878,45333,1]]" -i "1,2,6,7,8,9,63,504,4536" -o 0 -d 0 -dist 0 -t 0 
+1,2,6,7,8,9,63,504,4536,null
+perl -e 'print join("\t", A118471, "holos", 0, "[[0],[-3265272,770895,-45334,-1],[3265200,-770878,45333,1]]", "1,2,6,7,8,9,63,504,4536", 0) . "\n";'
+A118471	holos	0	[[0],[-3265272,770895,-45334,-1],[3265200,-770878,45333,1]]	1,2,6,7,8,9,63,504,4536	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A118759 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A118759, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A118759	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A118760 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A118760, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A118760	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A119027 MATRIX="[[0],[1728,-552,58,-2],[-864,276,-29,1]]" INIT="0,1,2,4,9,18,36,72,145" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[1728,-552,58,-2],[-864,276,-29,1]]" -i "0,1,2,4,9,18,36,72,145" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,4,9,18,36,72,145,null
+perl -e 'print join("\t", A119027, "holos", 0, "[[0],[1728,-552,58,-2],[-864,276,-29,1]]", "0,1,2,4,9,18,36,72,145", 0) . "\n";'
+A119027	holos	0	[[0],[1728,-552,58,-2],[-864,276,-29,1]]	0,1,2,4,9,18,36,72,145	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A119771 MATRIX="[[0],[0,0,-2,-1],[-1,3,-3,1]]" INIT="0,1,16,90,320,875,2016,4116,7680" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-2,-1],[-1,3,-3,1]]" -i "0,1,16,90,320,875,2016,4116,7680" -o 0 -d 0 -dist 0 -t 0 
+0,1,16,90,320,875,2016,4116,7680,13365,22000,34606,52416,76895,109760,153000,208896,280041,369360,480130,616000,781011,979616,1216700,1497600,1828125,2214576,2663766,3183040,3780295,4464000,5243216
+perl -e 'print join("\t", A119771, "holos", 0, "[[0],[0,0,-2,-1],[-1,3,-3,1]]", "0,1,16,90,320,875,2016,4116,7680", 0) . "\n";'
+A119771	holos	0	[[0],[0,0,-2,-1],[-1,3,-3,1]]	0,1,16,90,320,875,2016,4116,7680	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A120401 MATRIX="[[0],[0,-210,29,-1],[-210,239,-30,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-210,29,-1],[-210,239,-30,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,null
+perl -e 'print join("\t", A120401, "holos", 0, "[[0],[0,-210,29,-1],[-210,239,-30,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A120401	holos	0	[[0],[0,-210,29,-1],[-210,239,-30,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A130237 MATRIX="[[0],[0,-104,21,-1],[-104,125,-22,1]]" INIT="0,2,6,12,16,25,30,35,48" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-104,21,-1],[-104,125,-22,1]]" -i "0,2,6,12,16,25,30,35,48" -o 0 -d 0 -dist 0 -t 0 
+0,2,6,12,16,25,30,35,48,54,60,66,72,null
+perl -e 'print join("\t", A130237, "holos", 0, "[[0],[0,-104,21,-1],[-104,125,-22,1]]", "0,2,6,12,16,25,30,35,48", 0) . "\n";'
+A130237	holos	0	[[0],[0,-104,21,-1],[-104,125,-22,1]]	0,2,6,12,16,25,30,35,48	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A130240 MATRIX="[[0],[0,-88,43,-4],[0,120,-47,4]]" INIT="0,2,4,6,9,12,15,18,21" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-88,43,-4],[0,120,-47,4]]" -i "0,2,4,6,9,12,15,18,21" -o 0 -d 0 -dist 0 -t 0 
+0,2,4,6,9,12,15,18,21,25,29,33,37,41,45,49,53,57,61,65,69,73,77,81,85,89,93,97,101,105,109,113
+perl -e 'print join("\t", A130240, "holos", 0, "[[0],[0,-88,43,-4],[0,120,-47,4]]", "0,2,4,6,9,12,15,18,21", 0) . "\n";'
+A130240	holos	0	[[0],[0,-88,43,-4],[0,120,-47,4]]	0,2,4,6,9,12,15,18,21	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A130261 MATRIX="[[0],[0,0,3,-1],[0,0,-4,1]]" INIT="0,1,2,4,6,8,10,12,15" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,3,-1],[0,0,-4,1]]" -i "0,1,2,4,6,8,10,12,15" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,4,6,8,10,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84
+perl -e 'print join("\t", A130261, "holos", 0, "[[0],[0,0,3,-1],[0,0,-4,1]]", "0,1,2,4,6,8,10,12,15", 0) . "\n";'
+A130261	holos	0	[[0],[0,0,3,-1],[0,0,-4,1]]	0,1,2,4,6,8,10,12,15	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A130262 MATRIX="[[0],[0,-24,11,-1],[0,32,-12,1]]" INIT="0,1,3,5,8,11,14,17,20" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-24,11,-1],[0,32,-12,1]]" -i "0,1,3,5,8,11,14,17,20" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,5,8,11,14,17,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100,104,108,112
+perl -e 'print join("\t", A130262, "holos", 0, "[[0],[0,-24,11,-1],[0,32,-12,1]]", "0,1,3,5,8,11,14,17,20", 0) . "\n";'
+A130262	holos	0	[[0],[0,-24,11,-1],[0,32,-12,1]]	0,1,3,5,8,11,14,17,20	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A131673 MATRIX="[[0],[0,-22,3,-1],[0,26,-5,1]]" INIT="1,3,5,7,10,14,19,25,31" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-22,3,-1],[0,26,-5,1]]" -i "1,3,5,7,10,14,19,25,31" -o 0 -d 0 -dist 0 -t 0 
+1,3,5,7,10,14,19,25,31,38,46,55,65,76,88,101,115,130,146,163,181,200,220,241,263,286,310,335,361,388,416,445
+perl -e 'print join("\t", A131673, "holos", 0, "[[0],[0,-22,3,-1],[0,26,-5,1]]", "1,3,5,7,10,14,19,25,31", 0) . "\n";'
+A131673	holos	0	[[0],[0,-22,3,-1],[0,26,-5,1]]	1,3,5,7,10,14,19,25,31	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A131674 MATRIX="[[0],[0,-18,3,-1],[0,22,-5,1]]" INIT="0,1,3,5,8,12,17,23,29" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-18,3,-1],[0,22,-5,1]]" -i "0,1,3,5,8,12,17,23,29" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,5,8,12,17,23,29,36,44,53,63,74,86,99,113,128,144,161,179,198,218,239,261,284,308,333,359,386,414,443
+perl -e 'print join("\t", A131674, "holos", 0, "[[0],[0,-18,3,-1],[0,22,-5,1]]", "0,1,3,5,8,12,17,23,29", 0) . "\n";'
+A131674	holos	0	[[0],[0,-18,3,-1],[0,22,-5,1]]	0,1,3,5,8,12,17,23,29	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A132271 MATRIX="[[0],[0,10,9,-1],[0,0,-10,1]]" INIT="1,2,3,4,5,6,7,8,9" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,10,9,-1],[0,0,-10,1]]" -i "1,2,3,4,5,6,7,8,9" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,4,5,6,7,8,9,10,null
+perl -e 'print join("\t", A132271, "holos", 0, "[[0],[0,10,9,-1],[0,0,-10,1]]", "1,2,3,4,5,6,7,8,9", 0) . "\n";'
+A132271	holos	0	[[0],[0,10,9,-1],[0,0,-10,1]]	1,2,3,4,5,6,7,8,9	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A132831 MATRIX="[[0],[2688,-752,68,-2],[-1344,376,-34,1]]" INIT="1,2,3,6,11,22,44,88,175" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[2688,-752,68,-2],[-1344,376,-34,1]]" -i "1,2,3,6,11,22,44,88,175" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,6,11,22,44,88,175,350,700,1400,null
+perl -e 'print join("\t", A132831, "holos", 0, "[[0],[2688,-752,68,-2],[-1344,376,-34,1]]", "1,2,3,6,11,22,44,88,175", 0) . "\n";'
+A132831	holos	0	[[0],[2688,-752,68,-2],[-1344,376,-34,1]]	1,2,3,6,11,22,44,88,175	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A133231 MATRIX="[[0],[0,-60,19,-1],[0,75,-20,1]]" INIT="1,2,3,5,7,9,12,15,20" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-60,19,-1],[0,75,-20,1]]" -i "1,2,3,5,7,9,12,15,20" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,5,7,9,12,15,20,25,30,35,40,45,50,null
+perl -e 'print join("\t", A133231, "holos", 0, "[[0],[0,-60,19,-1],[0,75,-20,1]]", "1,2,3,5,7,9,12,15,20", 0) . "\n";'
+A133231	holos	0	[[0],[0,-60,19,-1],[0,75,-20,1]]	1,2,3,5,7,9,12,15,20	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A133897 MATRIX="[[0],[-17640,2226,-55,-1],[17430,-2197,54,1]]" INIT="42,43,44,45,46,47,48,91,92" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-17640,2226,-55,-1],[17430,-2197,54,1]]" -i "42,43,44,45,46,47,48,91,92" -o 0 -d 0 -dist 0 -t 0 
+42,43,44,45,46,47,48,91,92,93,94,95,96,97,null
+perl -e 'print join("\t", A133897, "holos", 0, "[[0],[-17640,2226,-55,-1],[17430,-2197,54,1]]", "42,43,44,45,46,47,48,91,92", 0) . "\n";'
+A133897	holos	0	[[0],[-17640,2226,-55,-1],[17430,-2197,54,1]]	42,43,44,45,46,47,48,91,92	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A133898 MATRIX="[[0],[0,896,-104,-1],[0,-888,103,1]]" INIT="56,57,58,59,60,61,62,63,120" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,896,-104,-1],[0,-888,103,1]]" -i "56,57,58,59,60,61,62,63,120" -o 0 -d 0 -dist 0 -t 0 
+56,57,58,59,60,61,62,63,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143
+perl -e 'print join("\t", A133898, "holos", 0, "[[0],[0,896,-104,-1],[0,-888,103,1]]", "56,57,58,59,60,61,62,63,120", 0) . "\n";'
+A133898	holos	0	[[0],[0,896,-104,-1],[0,-888,103,1]]	56,57,58,59,60,61,62,63,120	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A133899 MATRIX="[[0],[-10368,2376,-127,-1],[10296,-2359,126,1]]" INIT="72,73,74,75,76,77,78,79,80" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-10368,2376,-127,-1],[10296,-2359,126,1]]" -i "72,73,74,75,76,77,78,79,80" -o 0 -d 0 -dist 0 -t 0 
+72,73,74,75,76,77,78,79,80,null
+perl -e 'print join("\t", A133899, "holos", 0, "[[0],[-10368,2376,-127,-1],[10296,-2359,126,1]]", "72,73,74,75,76,77,78,79,80", 0) . "\n";'
+A133899	holos	0	[[0],[-10368,2376,-127,-1],[10296,-2359,126,1]]	72,73,74,75,76,77,78,79,80	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A134025 MATRIX="[[0],[-1296,234,-1,-1],[1224,-217,0,1]]" INIT="0,1,3,4,9,10,11,12,13" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1296,234,-1,-1],[1224,-217,0,1]]" -i "0,1,3,4,9,10,11,12,13" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,4,9,10,11,12,13,null
+perl -e 'print join("\t", A134025, "holos", 0, "[[0],[-1296,234,-1,-1],[1224,-217,0,1]]", "0,1,3,4,9,10,11,12,13", 0) . "\n";'
+A134025	holos	0	[[0],[-1296,234,-1,-1],[1224,-217,0,1]]	0,1,3,4,9,10,11,12,13	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A134421 MATRIX="[[0],[840,-746,91,-3],[-1470,833,-94,3]]" INIT="1,2,4,6,8,11,14,17,20" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[840,-746,91,-3],[-1470,833,-94,3]]" -i "1,2,4,6,8,11,14,17,20" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,6,8,11,14,17,20,23,26,29,32,35,null
+perl -e 'print join("\t", A134421, "holos", 0, "[[0],[840,-746,91,-3],[-1470,833,-94,3]]", "1,2,4,6,8,11,14,17,20", 0) . "\n";'
+A134421	holos	0	[[0],[840,-746,91,-3],[-1470,833,-94,3]]	1,2,4,6,8,11,14,17,20	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A134779 MATRIX="[[0],[210,-239,30,-1],[-420,268,-31,1]]" INIT="1,4,6,8,11,14,16,18,21" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[210,-239,30,-1],[-420,268,-31,1]]" -i "1,4,6,8,11,14,16,18,21" -o 0 -d 0 -dist 0 -t 0 
+1,4,6,8,11,14,16,18,21,24,27,30,33,36,null
+perl -e 'print join("\t", A134779, "holos", 0, "[[0],[210,-239,30,-1],[-420,268,-31,1]]", "1,4,6,8,11,14,16,18,21", 0) . "\n";'
+A134779	holos	0	[[0],[210,-239,30,-1],[-420,268,-31,1]]	1,4,6,8,11,14,16,18,21	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A135454 MATRIX="[[0],[720,-386,61,-3],[-936,437,-64,3]]" INIT="1,6,21,52,103,174,262,360,461" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[720,-386,61,-3],[-936,437,-64,3]]" -i "1,6,21,52,103,174,262,360,461" -o 0 -d 0 -dist 0 -t 0 
+1,6,21,52,103,174,262,360,461,null
+perl -e 'print join("\t", A135454, "holos", 0, "[[0],[720,-386,61,-3],[-936,437,-64,3]]", "1,6,21,52,103,174,262,360,461", 0) . "\n";'
+A135454	holos	0	[[0],[720,-386,61,-3],[-936,437,-64,3]]	1,6,21,52,103,174,262,360,461	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A136219 MATRIX="[[0],[256,-88,31,-3],[-336,146,-37,3]]" INIT="1,3,7,13,22,33,47,64,84" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[256,-88,31,-3],[-336,146,-37,3]]" -i "1,3,7,13,22,33,47,64,84" -o 0 -d 0 -dist 0 -t 0 
+1,3,7,13,22,33,47,64,84,106,131,159,190,224,261,301,344,390,439,491,546,604,665,729,796,866,939,1015,1094,1176,1261,1349
+perl -e 'print join("\t", A136219, "holos", 0, "[[0],[256,-88,31,-3],[-336,146,-37,3]]", "1,3,7,13,22,33,47,64,84", 0) . "\n";'
+A136219	holos	0	[[0],[256,-88,31,-3],[-336,146,-37,3]]	1,3,7,13,22,33,47,64,84	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A138234 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A138234, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A138234	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A138887 MATRIX="[[0],[0,32,4,-1],[0,-24,-5,1]]" INIT="0,1,4,6,7,8,9,10,12" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,32,4,-1],[0,-24,-5,1]]" -i "0,1,4,6,7,8,9,10,12" -o 0 -d 0 -dist 0 -t 0 
+0,1,4,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
+perl -e 'print join("\t", A138887, "holos", 0, "[[0],[0,32,4,-1],[0,-24,-5,1]]", "0,1,4,6,7,8,9,10,12", 0) . "\n";'
+A138887	holos	0	[[0],[0,32,4,-1],[0,-24,-5,1]]	0,1,4,6,7,8,9,10,12	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A138892 MATRIX="[[0],[-720,98,7,-1],[648,-81,-8,1]]" INIT="0,5,7,9,10,12,14,15,17" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-720,98,7,-1],[648,-81,-8,1]]" -i "0,5,7,9,10,12,14,15,17" -o 0 -d 0 -dist 0 -t 0 
+0,5,7,9,10,12,14,15,17,null
+perl -e 'print join("\t", A138892, "holos", 0, "[[0],[-720,98,7,-1],[648,-81,-8,1]]", "0,5,7,9,10,12,14,15,17", 0) . "\n";'
+A138892	holos	0	[[0],[-720,98,7,-1],[648,-81,-8,1]]	0,5,7,9,10,12,14,15,17	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A140134 MATRIX="[[0],[0,0,26,-2],[0,0,-13,1]]" INIT="1,2,4,8,16,32,63,126,252" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,26,-2],[0,0,-13,1]]" -i "1,2,4,8,16,32,63,126,252" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,8,16,32,63,126,252,504,1008,2016,4032,null
+perl -e 'print join("\t", A140134, "holos", 0, "[[0],[0,0,26,-2],[0,0,-13,1]]", "1,2,4,8,16,32,63,126,252", 0) . "\n";'
+A140134	holos	0	[[0],[0,0,26,-2],[0,0,-13,1]]	1,2,4,8,16,32,63,126,252	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A141214 MATRIX="[[0],[0,-6,-7,-1],[0,0,5,1]]" INIT="3,7,12,18,25,33,42,52,63" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-6,-7,-1],[0,0,5,1]]" -i "3,7,12,18,25,33,42,52,63" -o 0 -d 0 -dist 0 -t 0 
+3,7,12,18,25,33,42,52,63,75,88,102,117,133,150,168,187,207,228,250,273,297,322,348,375,403,432,462,493,525,558,592
+perl -e 'print join("\t", A141214, "holos", 0, "[[0],[0,-6,-7,-1],[0,0,5,1]]", "3,7,12,18,25,33,42,52,63", 0) . "\n";'
+A141214	holos	0	[[0],[0,-6,-7,-1],[0,0,5,1]]	3,7,12,18,25,33,42,52,63	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A153826 MATRIX="[[0],[0,2144,-260,-1],[0,-2136,259,1]]" INIT="0,2,22,23,24,25,26,91,276" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,2144,-260,-1],[0,-2136,259,1]]" -i "0,2,22,23,24,25,26,91,276" -o 0 -d 0 -dist 0 -t 0 
+0,2,22,23,24,25,26,91,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299
+perl -e 'print join("\t", A153826, "holos", 0, "[[0],[0,2144,-260,-1],[0,-2136,259,1]]", "0,2,22,23,24,25,26,91,276", 0) . "\n";'
+A153826	holos	0	[[0],[0,2144,-260,-1],[0,-2136,259,1]]	0,2,22,23,24,25,26,91,276	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A161226 MATRIX="[[0],[0,0,15,-1],[-15,31,-17,1]]" INIT="0,1,4,8,16,25,32,49,64" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,15,-1],[-15,31,-17,1]]" -i "0,1,4,8,16,25,32,49,64" -o 0 -d 0 -dist 0 -t 0 
+0,1,4,8,16,25,32,49,64,81,100,121,144,169,196,null
+perl -e 'print join("\t", A161226, "holos", 0, "[[0],[0,0,15,-1],[-15,31,-17,1]]", "0,1,4,8,16,25,32,49,64", 0) . "\n";'
+A161226	holos	0	[[0],[0,0,15,-1],[-15,31,-17,1]]	0,1,4,8,16,25,32,49,64	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A161983 MATRIX="[[0],[-864,132,5,-1],[792,-115,-6,1]]" INIT="0,3,4,5,10,11,12,13,14" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-864,132,5,-1],[792,-115,-6,1]]" -i "0,3,4,5,10,11,12,13,14" -o 0 -d 0 -dist 0 -t 0 
+0,3,4,5,10,11,12,13,14,null
+perl -e 'print join("\t", A161983, "holos", 0, "[[0],[-864,132,5,-1],[792,-115,-6,1]]", "0,3,4,5,10,11,12,13,14", 0) . "\n";'
+A161983	holos	0	[[0],[-864,132,5,-1],[792,-115,-6,1]]	0,3,4,5,10,11,12,13,14	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A167208 MATRIX="[[0],[7056,-9658,1985,-111],[-15048,11545,-2096,111]]" INIT="12,123,234,345,456,567,678,789,890" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[7056,-9658,1985,-111],[-15048,11545,-2096,111]]" -i "12,123,234,345,456,567,678,789,890" -o 0 -d 0 -dist 0 -t 0 
+12,123,234,345,456,567,678,789,890,null
+perl -e 'print join("\t", A167208, "holos", 0, "[[0],[7056,-9658,1985,-111],[-15048,11545,-2096,111]]", "12,123,234,345,456,567,678,789,890", 0) . "\n";'
+A167208	holos	0	[[0],[7056,-9658,1985,-111],[-15048,11545,-2096,111]]	12,123,234,345,456,567,678,789,890	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A167231 MATRIX="[[0],[71064,-96771,19874,-1111],[-151056,115658,-20985,1111]]" INIT="123,1234,2345,3456,4567,5678,6789,7890,8901" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[71064,-96771,19874,-1111],[-151056,115658,-20985,1111]]" -i "123,1234,2345,3456,4567,5678,6789,7890,8901" -o 0 -d 0 -dist 0 -t 0 
+123,1234,2345,3456,4567,5678,6789,7890,8901,null
+perl -e 'print join("\t", A167231, "holos", 0, "[[0],[71064,-96771,19874,-1111],[-151056,115658,-20985,1111]]", "123,1234,2345,3456,4567,5678,6789,7890,8901", 0) . "\n";'
+A167231	holos	0	[[0],[71064,-96771,19874,-1111],[-151056,115658,-20985,1111]]	123,1234,2345,3456,4567,5678,6789,7890,8901	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A167632 MATRIX="[[0],[0,1,0,-1],[0,-2,-1,1]]" INIT="0,4,36,72,108,144,180,216,252" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,1,0,-1],[0,-2,-1,1]]" -i "0,4,36,72,108,144,180,216,252" -o 0 -d 0 -dist 0 -t 0 
+0,4,36,72,108,144,180,216,252,288,324,360,396,432,468,504,540,576,612,648,684,720,756,792,828,864,900,936,972,1008,1044,1080
+perl -e 'print join("\t", A167632, "holos", 0, "[[0],[0,1,0,-1],[0,-2,-1,1]]", "0,4,36,72,108,144,180,216,252", 0) . "\n";'
+A167632	holos	0	[[0],[0,1,0,-1],[0,-2,-1,1]]	0,4,36,72,108,144,180,216,252	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A169919 MATRIX="[[0],[0,0,10,-1],[0,10,-11,1]]" INIT="0,2,4,6,8,10,12,14,16" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,10,-1],[0,10,-11,1]]" -i "0,2,4,6,8,10,12,14,16" -o 0 -d 0 -dist 0 -t 0 
+0,2,4,6,8,10,12,14,16,18,null
+perl -e 'print join("\t", A169919, "holos", 0, "[[0],[0,0,10,-1],[0,10,-11,1]]", "0,2,4,6,8,10,12,14,16", 0) . "\n";'
+A169919	holos	0	[[0],[0,0,10,-1],[0,10,-11,1]]	0,2,4,6,8,10,12,14,16	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A171635 MATRIX="[[0],[-4608,1016,-47,-1],[4536,-999,46,1]]" INIT="0,1,2,3,4,5,6,7,64" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-4608,1016,-47,-1],[4536,-999,46,1]]" -i "0,1,2,3,4,5,6,7,64" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,64,null
+perl -e 'print join("\t", A171635, "holos", 0, "[[0],[-4608,1016,-47,-1],[4536,-999,46,1]]", "0,1,2,3,4,5,6,7,64", 0) . "\n";'
+A171635	holos	0	[[0],[-4608,1016,-47,-1],[4536,-999,46,1]]	0,1,2,3,4,5,6,7,64	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A171644 MATRIX="[[0],[-7344,1662,-85,-1],[7272,-1645,84,1]]" INIT="0,1,2,3,4,5,6,7,100" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-7344,1662,-85,-1],[7272,-1645,84,1]]" -i "0,1,2,3,4,5,6,7,100" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,100,null
+perl -e 'print join("\t", A171644, "holos", 0, "[[0],[-7344,1662,-85,-1],[7272,-1645,84,1]]", "0,1,2,3,4,5,6,7,100", 0) . "\n";'
+A171644	holos	0	[[0],[-7344,1662,-85,-1],[7272,-1645,84,1]]	0,1,2,3,4,5,6,7,100	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A171885 MATRIX="[[0],[0,832,-96,-1],[0,-824,95,1]]" INIT="0,1,4,5,24,25,26,27,112" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,832,-96,-1],[0,-824,95,1]]" -i "0,1,4,5,24,25,26,27,112" -o 0 -d 0 -dist 0 -t 0 
+0,1,4,5,24,25,26,27,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135
+perl -e 'print join("\t", A171885, "holos", 0, "[[0],[0,832,-96,-1],[0,-824,95,1]]", "0,1,4,5,24,25,26,27,112", 0) . "\n";'
+A171885	holos	0	[[0],[0,832,-96,-1],[0,-824,95,1]]	0,1,4,5,24,25,26,27,112	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A179052 MATRIX="[[0],[288,-140,21,-1],[-360,157,-22,1]]" INIT="1,2,3,4,5,6,7,8,9" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[288,-140,21,-1],[-360,157,-22,1]]" -i "1,2,3,4,5,6,7,8,9" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,4,5,6,7,8,9,null
+perl -e 'print join("\t", A179052, "holos", 0, "[[0],[288,-140,21,-1],[-360,157,-22,1]]", "1,2,3,4,5,6,7,8,9", 0) . "\n";'
+A179052	holos	0	[[0],[288,-140,21,-1],[-360,157,-22,1]]	1,2,3,4,5,6,7,8,9	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A179095 MATRIX="[[0],[-6,-1,-6,-11],[-22,49,-38,11]]" INIT="0,1,10,45,135,320,651,1190,2010" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-6,-1,-6,-11],[-22,49,-38,11]]" -i "0,1,10,45,135,320,651,1190,2010" -o 0 -d 0 -dist 0 -t 0 
+0,1,10,45,135,320,651,1190,2010,3195,4840,7051,9945,13650,18305,24060,31076,39525,49590,61465,75355,91476,110055,131330,155550,182975,213876,248535,287245,330310,378045,430776
+perl -e 'print join("\t", A179095, "holos", 0, "[[0],[-6,-1,-6,-11],[-22,49,-38,11]]", "0,1,10,45,135,320,651,1190,2010", 0) . "\n";'
+A179095	holos	0	[[0],[-6,-1,-6,-11],[-22,49,-38,11]]	0,1,10,45,135,320,651,1190,2010	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A179239 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A179239, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A179239	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A181497 MATRIX="[[0],[0,-680,213,-16],[0,808,-229,16]]" INIT="0,1,3,7,11,19,27,35,43" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-680,213,-16],[0,808,-229,16]]" -i "0,1,3,7,11,19,27,35,43" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,7,11,19,27,35,43,59,75,91,107,123,139,155,171,187,203,219,235,251,267,283,299,315,331,347,363,379,395,411
+perl -e 'print join("\t", A181497, "holos", 0, "[[0],[0,-680,213,-16],[0,808,-229,16]]", "0,1,3,7,11,19,27,35,43", 0) . "\n";'
+A181497	holos	0	[[0],[0,-680,213,-16],[0,808,-229,16]]	0,1,3,7,11,19,27,35,43	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A181662 MATRIX="[[0],[0,0,16,-2],[0,0,-8,1]]" INIT="3,14,68,152,304,608,1984,3968,12032" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,16,-2],[0,0,-8,1]]" -i "3,14,68,152,304,608,1984,3968,12032" -o 0 -d 0 -dist 0 -t 0 
+3,14,68,152,304,608,1984,3968,12032,24064,48128,96256,192512,385024,770048,1540096,3080192,6160384,12320768,24641536,49283072,98566144,197132288,394264576,788529152,1577058304,3154116608,6308233216,12616466432,25232932864,50465865728,100931731456
+perl -e 'print join("\t", A181662, "holos", 0, "[[0],[0,0,16,-2],[0,0,-8,1]]", "3,14,68,152,304,608,1984,3968,12032", 0) . "\n";'
+A181662	holos	0	[[0],[0,0,16,-2],[0,0,-8,1]]	3,14,68,152,304,608,1984,3968,12032	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A182028 MATRIX="[[0],[3024,-804,70,-2],[-1512,402,-35,1]]" INIT="0,1,2,4,9,18,37,74,148" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[3024,-804,70,-2],[-1512,402,-35,1]]" -i "0,1,2,4,9,18,37,74,148" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,4,9,18,37,74,148,null
+perl -e 'print join("\t", A182028, "holos", 0, "[[0],[3024,-804,70,-2],[-1512,402,-35,1]]", "0,1,2,4,9,18,37,74,148", 0) . "\n";'
+A182028	holos	0	[[0],[3024,-804,70,-2],[-1512,402,-35,1]]	0,1,2,4,9,18,37,74,148	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A185440 MATRIX="[[0],[1680,-2122,269,-9],[-3570,2383,-278,9]]" INIT="0,5,10,19,28,37,46,55,64" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[1680,-2122,269,-9],[-3570,2383,-278,9]]" -i "0,5,10,19,28,37,46,55,64" -o 0 -d 0 -dist 0 -t 0 
+0,5,10,19,28,37,46,55,64,73,82,91,100,109,null
+perl -e 'print join("\t", A185440, "holos", 0, "[[0],[1680,-2122,269,-9],[-3570,2383,-278,9]]", "0,5,10,19,28,37,46,55,64", 0) . "\n";'
+A185440	holos	0	[[0],[1680,-2122,269,-9],[-3570,2383,-278,9]]	0,5,10,19,28,37,46,55,64	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A198759 MATRIX="[[0],[360,-189,26,-1],[-480,212,-27,1]]" INIT="1,2,4,7,11,15,20,25,30" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[360,-189,26,-1],[-480,212,-27,1]]" -i "1,2,4,7,11,15,20,25,30" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,7,11,15,20,25,30,36,42,48,54,60,66,null
+perl -e 'print join("\t", A198759, "holos", 0, "[[0],[360,-189,26,-1],[-480,212,-27,1]]", "1,2,4,7,11,15,20,25,30", 0) . "\n";'
+A198759	holos	0	[[0],[360,-189,26,-1],[-480,212,-27,1]]	1,2,4,7,11,15,20,25,30	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A220657 MATRIX="[[0],[0,0,9,-4],[0,0,-13,4]]" INIT="0,1,3,6,9,12,15,19,23" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,9,-4],[0,0,-13,4]]" -i "0,1,3,6,9,12,15,19,23" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,6,9,12,15,19,23,27,31,35,39,43,47,51,55,59,63,67,71,75,79,83,87,91,95,99,103,107,111,115
+perl -e 'print join("\t", A220657, "holos", 0, "[[0],[0,0,9,-4],[0,0,-13,4]]", "0,1,3,6,9,12,15,19,23", 0) . "\n";'
+A220657	holos	0	[[0],[0,0,9,-4],[0,0,-13,4]]	0,1,3,6,9,12,15,19,23	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A221180 MATRIX="[[0],[0,0,26,-2],[0,0,-13,1]]" INIT="1,2,4,8,16,32,64,128,256" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,26,-2],[0,0,-13,1]]" -i "1,2,4,8,16,32,64,128,256" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,8,16,32,64,128,256,512,1024,2048,4096,null
+perl -e 'print join("\t", A221180, "holos", 0, "[[0],[0,0,26,-2],[0,0,-13,1]]", "1,2,4,8,16,32,64,128,256", 0) . "\n";'
+A221180	holos	0	[[0],[0,0,26,-2],[0,0,-13,1]]	1,2,4,8,16,32,64,128,256	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A222945 MATRIX="[[0],[0,0,-1,-4],[0,0,-3,4]]" INIT="1,7,9,13,17,21,25,29,33" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-1,-4],[0,0,-3,4]]" -i "1,7,9,13,17,21,25,29,33" -o 0 -d 0 -dist 0 -t 0 
+1,7,9,13,17,21,25,29,33,37,41,45,49,53,57,61,65,69,73,77,81,85,89,93,97,101,105,109,113,117,121,125
+perl -e 'print join("\t", A222945, "holos", 0, "[[0],[0,0,-1,-4],[0,0,-3,4]]", "1,7,9,13,17,21,25,29,33", 0) . "\n";'
+A222945	holos	0	[[0],[0,0,-1,-4],[0,0,-3,4]]	1,7,9,13,17,21,25,29,33	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A223134 MATRIX="[[0],[0,0,-1,-2],[0,0,-1,2]]" INIT="1,4,5,7,9,11,13,15,17" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-1,-2],[0,0,-1,2]]" -i "1,4,5,7,9,11,13,15,17" -o 0 -d 0 -dist 0 -t 0 
+1,4,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63
+perl -e 'print join("\t", A223134, "holos", 0, "[[0],[0,0,-1,-2],[0,0,-1,2]]", "1,4,5,7,9,11,13,15,17", 0) . "\n";'
+A223134	holos	0	[[0],[0,0,-1,-2],[0,0,-1,2]]	1,4,5,7,9,11,13,15,17	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A227722 MATRIX="[[0],[0,0,-10,-1],[0,0,9,1]]" INIT="0,1,3,5,6,7,15,17,18" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-10,-1],[0,0,9,1]]" -i "0,1,3,5,6,7,15,17,18" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,5,6,7,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41
+perl -e 'print join("\t", A227722, "holos", 0, "[[0],[0,0,-10,-1],[0,0,9,1]]", "0,1,3,5,6,7,15,17,18", 0) . "\n";'
+A227722	holos	0	[[0],[0,0,-10,-1],[0,0,9,1]]	0,1,3,5,6,7,15,17,18	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A228295 MATRIX="[[0],[120,-263,47,-2],[-360,309,-49,2]]" INIT="0,2,4,6,8,10,12,14,15" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[120,-263,47,-2],[-360,309,-49,2]]" -i "0,2,4,6,8,10,12,14,15" -o 0 -d 0 -dist 0 -t 0 
+0,2,4,6,8,10,12,14,15,17,19,21,23,25,27,null
+perl -e 'print join("\t", A228295, "holos", 0, "[[0],[120,-263,47,-2],[-360,309,-49,2]]", "0,2,4,6,8,10,12,14,15", 0) . "\n";'
+A228295	holos	0	[[0],[120,-263,47,-2],[-360,309,-49,2]]	0,2,4,6,8,10,12,14,15	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A232779 MATRIX="[[0],[0,32,4,-1],[0,-24,-5,1]]" INIT="0,1,3,4,7,8,9,10,12" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,32,4,-1],[0,-24,-5,1]]" -i "0,1,3,4,7,8,9,10,12" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,4,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
+perl -e 'print join("\t", A232779, "holos", 0, "[[0],[0,32,4,-1],[0,-24,-5,1]]", "0,1,3,4,7,8,9,10,12", 0) . "\n";'
+A232779	holos	0	[[0],[0,32,4,-1],[0,-24,-5,1]]	0,1,3,4,7,8,9,10,12	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A236305 MATRIX="[[0],[0,-211,42,-3],[0,256,-48,3]]" INIT="1,4,7,16,19,28,43,64,67" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-211,42,-3],[0,256,-48,3]]" -i "1,4,7,16,19,28,43,64,67" -o 0 -d 0 -dist 0 -t 0 
+1,4,7,16,19,28,43,64,67,76,91,112,139,172,211,256,307,364,427,496,571,652,739,832,931,1036,1147,1264,1387,1516,1651,1792
+perl -e 'print join("\t", A236305, "holos", 0, "[[0],[0,-211,42,-3],[0,256,-48,3]]", "1,4,7,16,19,28,43,64,67", 0) . "\n";'
+A236305	holos	0	[[0],[0,-211,42,-3],[0,256,-48,3]]	1,4,7,16,19,28,43,64,67	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A238804 MATRIX="[[0],[0,0,-17,-1],[0,0,16,1]]" INIT="0,2,5,10,17,21,22,24,25" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-17,-1],[0,0,16,1]]" -i "0,2,5,10,17,21,22,24,25" -o 0 -d 0 -dist 0 -t 0 
+0,2,5,10,17,21,22,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48
+perl -e 'print join("\t", A238804, "holos", 0, "[[0],[0,0,-17,-1],[0,0,16,1]]", "0,2,5,10,17,21,22,24,25", 0) . "\n";'
+A238804	holos	0	[[0],[0,0,-17,-1],[0,0,16,1]]	0,2,5,10,17,21,22,24,25	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A244218 MATRIX="[[0],[0,16,6,-1],[0,-8,-7,1]]" INIT="0,1,2,3,5,6,7,8,10" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,16,6,-1],[0,-8,-7,1]]" -i "0,1,2,3,5,6,7,8,10" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33
+perl -e 'print join("\t", A244218, "holos", 0, "[[0],[0,16,6,-1],[0,-8,-7,1]]", "0,1,2,3,5,6,7,8,10", 0) . "\n";'
+A244218	holos	0	[[0],[0,16,6,-1],[0,-8,-7,1]]	0,1,2,3,5,6,7,8,10	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A244219 MATRIX="[[0],[-144,-38,15,-1],[72,55,-16,1]]" INIT="0,1,2,3,4,6,7,8,9" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-144,-38,15,-1],[72,55,-16,1]]" -i "0,1,2,3,4,6,7,8,9" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,6,7,8,9,null
+perl -e 'print join("\t", A244219, "holos", 0, "[[0],[-144,-38,15,-1],[72,55,-16,1]]", "0,1,2,3,4,6,7,8,9", 0) . "\n";'
+A244219	holos	0	[[0],[-144,-38,15,-1],[72,55,-16,1]]	0,1,2,3,4,6,7,8,9	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A246831 MATRIX="[[0],[0,0,11,-1],[0,11,-12,1]]" INIT="0,7,22,57,76,95,210,245,280" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,11,-1],[0,11,-12,1]]" -i "0,7,22,57,76,95,210,245,280" -o 0 -d 0 -dist 0 -t 0 
+0,7,22,57,76,95,210,245,280,315,350,null
+perl -e 'print join("\t", A246831, "holos", 0, "[[0],[0,0,11,-1],[0,11,-12,1]]", "0,7,22,57,76,95,210,245,280", 0) . "\n";'
+A246831	holos	0	[[0],[0,0,11,-1],[0,11,-12,1]]	0,7,22,57,76,95,210,245,280	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A248182 MATRIX="[[0],[0,0,-3,-1],[0,0,2,1]]" INIT="2,3,4,5,6,7,9,10,11" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-3,-1],[0,0,2,1]]" -i "2,3,4,5,6,7,9,10,11" -o 0 -d 0 -dist 0 -t 0 
+2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34
+perl -e 'print join("\t", A248182, "holos", 0, "[[0],[0,0,-3,-1],[0,0,2,1]]", "2,3,4,5,6,7,9,10,11", 0) . "\n";'
+A248182	holos	0	[[0],[0,0,-3,-1],[0,0,2,1]]	2,3,4,5,6,7,9,10,11	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A248195 MATRIX="[[0],[-72,-127,33,-2],[-72,161,-35,2]]" INIT="1,2,4,6,8,10,12,14,16" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-72,-127,33,-2],[-72,161,-35,2]]" -i "1,2,4,6,8,10,12,14,16" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,6,8,10,12,14,16,null
+perl -e 'print join("\t", A248195, "holos", 0, "[[0],[-72,-127,33,-2],[-72,161,-35,2]]", "1,2,4,6,8,10,12,14,16", 0) . "\n";'
+A248195	holos	0	[[0],[-72,-127,33,-2],[-72,161,-35,2]]	1,2,4,6,8,10,12,14,16	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A248196 MATRIX="[[0],[0,8,7,-1],[0,0,-8,1]]" INIT="3,5,7,9,11,13,15,17,18" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,8,7,-1],[0,0,-8,1]]" -i "3,5,7,9,11,13,15,17,18" -o 0 -d 0 -dist 0 -t 0 
+3,5,7,9,11,13,15,17,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64
+perl -e 'print join("\t", A248196, "holos", 0, "[[0],[0,8,7,-1],[0,0,-8,1]]", "3,5,7,9,11,13,15,17,18", 0) . "\n";'
+A248196	holos	0	[[0],[0,8,7,-1],[0,0,-8,1]]	3,5,7,9,11,13,15,17,18	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A248786 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,29,58,87,116,145,174,203,232" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,29,58,87,116,145,174,203,232" -o 0 -d 0 -dist 0 -t 0 
+0,29,58,87,116,145,174,203,232,261,290,319,348,377,406,435,464,493,522,551,580,609,638,667,696,725,754,783,812,841,870,899
+perl -e 'print join("\t", A248786, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,29,58,87,116,145,174,203,232", 0) . "\n";'
+A248786	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,29,58,87,116,145,174,203,232	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A249079 MATRIX="[[0],[0,0,15,-1],[0,15,-16,1]]" INIT="0,29,58,87,116,145,174,203,232" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,15,-1],[0,15,-16,1]]" -i "0,29,58,87,116,145,174,203,232" -o 0 -d 0 -dist 0 -t 0 
+0,29,58,87,116,145,174,203,232,261,290,319,348,377,406,null
+perl -e 'print join("\t", A249079, "holos", 0, "[[0],[0,0,15,-1],[0,15,-16,1]]", "0,29,58,87,116,145,174,203,232", 0) . "\n";'
+A249079	holos	0	[[0],[0,0,15,-1],[0,15,-16,1]]	0,29,58,87,116,145,174,203,232	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A249988 MATRIX="[[0],[0,24,133,-17],[0,112,-150,17]]" INIT="0,17,34,52,69,87,104,121,139" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,24,133,-17],[0,112,-150,17]]" -i "0,17,34,52,69,87,104,121,139" -o 0 -d 0 -dist 0 -t 0 
+0,17,34,52,69,87,104,121,139,156,173,190,207,224,241,258,275,292,309,326,343,360,377,394,411,428,445,462,479,496,513,530
+perl -e 'print join("\t", A249988, "holos", 0, "[[0],[0,24,133,-17],[0,112,-150,17]]", "0,17,34,52,69,87,104,121,139", 0) . "\n";'
+A249988	holos	0	[[0],[0,24,133,-17],[0,112,-150,17]]	0,17,34,52,69,87,104,121,139	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A256266 MATRIX="[[0],[0,-140,31,-1],[0,172,-33,1]]" INIT="0,6,18,24,48,66,78,84,132" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-140,31,-1],[0,172,-33,1]]" -i "0,6,18,24,48,66,78,84,132" -o 0 -d 0 -dist 0 -t 0 
+0,6,18,24,48,66,78,84,132,174,210,240,264,282,294,300,300,294,282,264,240,210,174,132,84,30,-30,-96,-168,-246,-330,-420
+perl -e 'print join("\t", A256266, "holos", 0, "[[0],[0,-140,31,-1],[0,172,-33,1]]", "0,6,18,24,48,66,78,84,132", 0) . "\n";'
+A256266	holos	0	[[0],[0,-140,31,-1],[0,172,-33,1]]	0,6,18,24,48,66,78,84,132	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A256530 MATRIX="[[0],[2648,-843,96,-4],[-3192,975,-104,4]]" INIT="0,1,9,21,49,61,97,157,225" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[2648,-843,96,-4],[-3192,975,-104,4]]" -i "0,1,9,21,49,61,97,157,225" -o 0 -d 0 -dist 0 -t 0 
+0,1,9,21,49,61,97,157,225,237,273,333,417,525,657,813,993,1197,1425,1677,1953,2253,2577,2925,3297,3693,4113,4557,5025,5517,6033,6573
+perl -e 'print join("\t", A256530, "holos", 0, "[[0],[2648,-843,96,-4],[-3192,975,-104,4]]", "0,1,9,21,49,61,97,157,225", 0) . "\n";'
+A256530	holos	0	[[0],[2648,-843,96,-4],[-3192,975,-104,4]]	0,1,9,21,49,61,97,157,225	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A256534 MATRIX="[[0],[2048,-640,72,-3],[-2456,739,-78,3]]" INIT="0,4,16,28,64,76,112,172,256" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[2048,-640,72,-3],[-2456,739,-78,3]]" -i "0,4,16,28,64,76,112,172,256" -o 0 -d 0 -dist 0 -t 0 
+0,4,16,28,64,76,112,172,256,268,304,364,448,556,688,844,1024,1228,1456,1708,1984,2284,2608,2956,3328,3724,4144,4588,5056,5548,6064,6604
+perl -e 'print join("\t", A256534, "holos", 0, "[[0],[2048,-640,72,-3],[-2456,739,-78,3]]", "0,4,16,28,64,76,112,172,256", 0) . "\n";'
+A256534	holos	0	[[0],[2048,-640,72,-3],[-2456,739,-78,3]]	0,4,16,28,64,76,112,172,256	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A256577 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A256577, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A256577	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A260139 MATRIX="[[0],[-1296,234,-1,-1],[1224,-217,0,1]]" INIT="0,2,6,7,8,9,18,21,24" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1296,234,-1,-1],[1224,-217,0,1]]" -i "0,2,6,7,8,9,18,21,24" -o 0 -d 0 -dist 0 -t 0 
+0,2,6,7,8,9,18,21,24,null
+perl -e 'print join("\t", A260139, "holos", 0, "[[0],[-1296,234,-1,-1],[1224,-217,0,1]]", "0,2,6,7,8,9,18,21,24", 0) . "\n";'
+A260139	holos	0	[[0],[-1296,234,-1,-1],[1224,-217,0,1]]	0,2,6,7,8,9,18,21,24	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A261692 MATRIX="[[0],[0,-140,30,-1],[0,171,-32,1]]" INIT="0,1,4,5,12,17,20,21,36" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-140,30,-1],[0,171,-32,1]]" -i "0,1,4,5,12,17,20,21,36" -o 0 -d 0 -dist 0 -t 0 
+0,1,4,5,12,17,20,21,36,49,60,69,76,81,84,85,84,81,76,69,60,49,36,21,4,-15,-36,-59,-84,-111,-140,-171
+perl -e 'print join("\t", A261692, "holos", 0, "[[0],[0,-140,30,-1],[0,171,-32,1]]", "0,1,4,5,12,17,20,21,36", 0) . "\n";'
+A261692	holos	0	[[0],[0,-140,30,-1],[0,171,-32,1]]	0,1,4,5,12,17,20,21,36	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A261930 MATRIX="[[0],[0,0,20,-2],[0,0,-10,1]]" INIT="1,2,3,6,12,22,44,88,176" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,20,-2],[0,0,-10,1]]" -i "1,2,3,6,12,22,44,88,176" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,6,12,22,44,88,176,352,null
+perl -e 'print join("\t", A261930, "holos", 0, "[[0],[0,0,20,-2],[0,0,-10,1]]", "1,2,3,6,12,22,44,88,176", 0) . "\n";'
+A261930	holos	0	[[0],[0,0,20,-2],[0,0,-10,1]]	1,2,3,6,12,22,44,88,176	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A262620 MATRIX="[[0],[0,-559,120,-4],[0,683,-128,4]]" INIT="1,5,17,21,49,69,81,85,145" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-559,120,-4],[0,683,-128,4]]" -i "1,5,17,21,49,69,81,85,145" -o 0 -d 0 -dist 0 -t 0 
+1,5,17,21,49,69,81,85,145,197,241,277,305,325,337,341,337,325,305,277,241,197,145,85,17,-59,-143,-235,-335,-443,-559,-683
+perl -e 'print join("\t", A262620, "holos", 0, "[[0],[0,-559,120,-4],[0,683,-128,4]]", "1,5,17,21,49,69,81,85,145", 0) . "\n";'
+A262620	holos	0	[[0],[0,-559,120,-4],[0,683,-128,4]]	1,5,17,21,49,69,81,85,145	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A266535 MATRIX="[[0],[1240,-395,46,-2],[-1496,459,-50,2]]" INIT="0,1,3,7,11,15,23,35,43" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[1240,-395,46,-2],[-1496,459,-50,2]]" -i "0,1,3,7,11,15,23,35,43" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,7,11,15,23,35,43,47,55,67,83,103,127,155,187,223,263,307,355,407,463,523,587,655,727,803,883,967,1055,1147
+perl -e 'print join("\t", A266535, "holos", 0, "[[0],[1240,-395,46,-2],[-1496,459,-50,2]]", "0,1,3,7,11,15,23,35,43", 0) . "\n";'
+A266535	holos	0	[[0],[1240,-395,46,-2],[-1496,459,-50,2]]	0,1,3,7,11,15,23,35,43	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A266538 MATRIX="[[0],[0,-70,14,-1],[0,85,-16,1]]" INIT="0,2,4,10,12,18,28,42,44" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-70,14,-1],[0,85,-16,1]]" -i "0,2,4,10,12,18,28,42,44" -o 0 -d 0 -dist 0 -t 0 
+0,2,4,10,12,18,28,42,44,50,60,74,92,114,140,170,204,242,284,330,380,434,492,554,620,690,764,842,924,1010,1100,1194
+perl -e 'print join("\t", A266538, "holos", 0, "[[0],[0,-70,14,-1],[0,85,-16,1]]", "0,2,4,10,12,18,28,42,44", 0) . "\n";'
+A266538	holos	0	[[0],[0,-70,14,-1],[0,85,-16,1]]	0,2,4,10,12,18,28,42,44	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A268287 MATRIX="[[0],[0,0,-11,-15],[0,0,-4,15]]" INIT="0,17,34,52,69,85,101,116,131" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-11,-15],[0,0,-4,15]]" -i "0,17,34,52,69,85,101,116,131" -o 0 -d 0 -dist 0 -t 0 
+0,17,34,52,69,85,101,116,131,146,161,176,191,206,221,236,251,266,281,296,311,326,341,356,371,386,401,416,431,446,461,476
+perl -e 'print join("\t", A268287, "holos", 0, "[[0],[0,0,-11,-15],[0,0,-4,15]]", "0,17,34,52,69,85,101,116,131", 0) . "\n";'
+A268287	holos	0	[[0],[0,0,-11,-15],[0,0,-4,15]]	0,17,34,52,69,85,101,116,131	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A271988 MATRIX="[[0],[0,135,21,-2],[0,-105,-23,2]]" INIT="7,12,19,27,37,49,63,69,75" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,135,21,-2],[0,-105,-23,2]]" -i "7,12,19,27,37,49,63,69,75" -o 0 -d 0 -dist 0 -t 0 
+7,12,19,27,37,49,63,69,75,81,87,93,99,105,111,null
+perl -e 'print join("\t", A271988, "holos", 0, "[[0],[0,135,21,-2],[0,-105,-23,2]]", "7,12,19,27,37,49,63,69,75", 0) . "\n";'
+A271988	holos	0	[[0],[0,135,21,-2],[0,-105,-23,2]]	7,12,19,27,37,49,63,69,75	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A271990 MATRIX="[[0],[435,166,32,-3],[-285,-86,-38,3]]" INIT="9,27,63,92,127,168,215,267,325" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[435,166,32,-3],[-285,-86,-38,3]]" -i "9,27,63,92,127,168,215,267,325" -o 0 -d 0 -dist 0 -t 0 
+9,27,63,92,127,168,215,267,325,389,459,535,617,705,799,null
+perl -e 'print join("\t", A271990, "holos", 0, "[[0],[435,166,32,-3],[-285,-86,-38,3]]", "9,27,63,92,127,168,215,267,325", 0) . "\n";'
+A271990	holos	0	[[0],[435,166,32,-3],[-285,-86,-38,3]]	9,27,63,92,127,168,215,267,325	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A273670 MATRIX="[[0],[-432,30,11,-1],[360,-13,-12,1]]" INIT="1,3,4,5,7,9,10,11,13" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-432,30,11,-1],[360,-13,-12,1]]" -i "1,3,4,5,7,9,10,11,13" -o 0 -d 0 -dist 0 -t 0 
+1,3,4,5,7,9,10,11,13,null
+perl -e 'print join("\t", A273670, "holos", 0, "[[0],[-432,30,11,-1],[360,-13,-12,1]]", "1,3,4,5,7,9,10,11,13", 0) . "\n";'
+A273670	holos	0	[[0],[-432,30,11,-1],[360,-13,-12,1]]	1,3,4,5,7,9,10,11,13	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A280724 MATRIX="[[0],[0,-24,11,-1],[0,32,-12,1]]" INIT="1,2,3,5,7,9,11,13,15" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-24,11,-1],[0,32,-12,1]]" -i "1,2,3,5,7,9,11,13,15" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,5,7,9,11,13,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,75,78,81,84
+perl -e 'print join("\t", A280724, "holos", 0, "[[0],[0,-24,11,-1],[0,32,-12,1]]", "1,2,3,5,7,9,11,13,15", 0) . "\n";'
+A280724	holos	0	[[0],[0,-24,11,-1],[0,32,-12,1]]	1,2,3,5,7,9,11,13,15	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A282025 MATRIX="[[0],[0,0,-2,-5],[0,0,-3,5]]" INIT="3,8,13,18,23,27,32,37,42" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-2,-5],[0,0,-3,5]]" -i "3,8,13,18,23,27,32,37,42" -o 0 -d 0 -dist 0 -t 0 
+3,8,13,18,23,27,32,37,42,47,52,57,62,67,72,77,82,87,92,97,102,107,112,117,122,127,132,137,142,147,152,157
+perl -e 'print join("\t", A282025, "holos", 0, "[[0],[0,0,-2,-5],[0,0,-3,5]]", "3,8,13,18,23,27,32,37,42", 0) . "\n";'
+A282025	holos	0	[[0],[0,0,-2,-5],[0,0,-3,5]]	3,8,13,18,23,27,32,37,42	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A288135 MATRIX="[[0],[0,0,0,-2],[0,0,0,1]]" INIT="1,3,5,9,18,36,72,144,288" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-2],[0,0,0,1]]" -i "1,3,5,9,18,36,72,144,288" -o 0 -d 0 -dist 0 -t 0 
+1,3,5,9,18,36,72,144,288,576,1152,2304,4608,9216,18432,36864,73728,147456,294912,589824,1179648,2359296,4718592,9437184,18874368,37748736,75497472,150994944,301989888,603979776,1207959552,2415919104
+perl -e 'print join("\t", A288135, "holos", 0, "[[0],[0,0,0,-2],[0,0,0,1]]", "1,3,5,9,18,36,72,144,288", 0) . "\n";'
+A288135	holos	0	[[0],[0,0,0,-2],[0,0,0,1]]	1,3,5,9,18,36,72,144,288	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A293315 MATRIX="[[0],[3120,-812,70,-2],[-1560,406,-35,1]]" INIT="2,3,6,13,26,52,104,207,414" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[3120,-812,70,-2],[-1560,406,-35,1]]" -i "2,3,6,13,26,52,104,207,414" -o 0 -d 0 -dist 0 -t 0 
+2,3,6,13,26,52,104,207,414,828,null
+perl -e 'print join("\t", A293315, "holos", 0, "[[0],[3120,-812,70,-2],[-1560,406,-35,1]]", "2,3,6,13,26,52,104,207,414", 0) . "\n";'
+A293315	holos	0	[[0],[3120,-812,70,-2],[-1560,406,-35,1]]	2,3,6,13,26,52,104,207,414	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A293321 MATRIX="[[0],[3120,-812,70,-2],[-1560,406,-35,1]]" INIT="3,5,10,21,42,84,168,335,670" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[3120,-812,70,-2],[-1560,406,-35,1]]" -i "3,5,10,21,42,84,168,335,670" -o 0 -d 0 -dist 0 -t 0 
+3,5,10,21,42,84,168,335,670,1340,null
+perl -e 'print join("\t", A293321, "holos", 0, "[[0],[3120,-812,70,-2],[-1560,406,-35,1]]", "3,5,10,21,42,84,168,335,670", 0) . "\n";'
+A293321	holos	0	[[0],[3120,-812,70,-2],[-1560,406,-35,1]]	3,5,10,21,42,84,168,335,670	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A293325 MATRIX="[[0],[2808,-762,68,-2],[-1404,381,-34,1]]" INIT="2,4,7,14,28,56,111,222,444" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[2808,-762,68,-2],[-1404,381,-34,1]]" -i "2,4,7,14,28,56,111,222,444" -o 0 -d 0 -dist 0 -t 0 
+2,4,7,14,28,56,111,222,444,null
+perl -e 'print join("\t", A293325, "holos", 0, "[[0],[2808,-762,68,-2],[-1404,381,-34,1]]", "2,4,7,14,28,56,111,222,444", 0) . "\n";'
+A293325	holos	0	[[0],[2808,-762,68,-2],[-1404,381,-34,1]]	2,4,7,14,28,56,111,222,444	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A293328 MATRIX="[[0],[3960,-954,76,-2],[-1980,477,-38,1]]" INIT="1,2,3,5,10,19,37,74,148" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[3960,-954,76,-2],[-1980,477,-38,1]]" -i "1,2,3,5,10,19,37,74,148" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,5,10,19,37,74,148,296,592,null
+perl -e 'print join("\t", A293328, "holos", 0, "[[0],[3960,-954,76,-2],[-1980,477,-38,1]]", "1,2,3,5,10,19,37,74,148", 0) . "\n";'
+A293328	holos	0	[[0],[3960,-954,76,-2],[-1980,477,-38,1]]	1,2,3,5,10,19,37,74,148	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A293332 MATRIX="[[0],[1728,-552,58,-2],[-864,276,-29,1]]" INIT="3,5,9,18,36,72,144,287,573" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[1728,-552,58,-2],[-864,276,-29,1]]" -i "3,5,9,18,36,72,144,287,573" -o 0 -d 0 -dist 0 -t 0 
+3,5,9,18,36,72,144,287,573,null
+perl -e 'print join("\t", A293332, "holos", 0, "[[0],[1728,-552,58,-2],[-864,276,-29,1]]", "3,5,9,18,36,72,144,287,573", 0) . "\n";'
+A293332	holos	0	[[0],[1728,-552,58,-2],[-864,276,-29,1]]	3,5,9,18,36,72,144,287,573	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A293336 MATRIX="[[0],[0,-252,46,-2],[0,126,-23,1]]" INIT="0,1,2,4,7,14,29,57,114" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-252,46,-2],[0,126,-23,1]]" -i "0,1,2,4,7,14,29,57,114" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,4,7,14,29,57,114,null
+perl -e 'print join("\t", A293336, "holos", 0, "[[0],[0,-252,46,-2],[0,126,-23,1]]", "0,1,2,4,7,14,29,57,114", 0) . "\n";'
+A293336	holos	0	[[0],[0,-252,46,-2],[0,126,-23,1]]	0,1,2,4,7,14,29,57,114	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A293338 MATRIX="[[0],[0,-330,52,-2],[0,165,-26,1]]" INIT="3,5,11,22,43,87,174,348,696" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-330,52,-2],[0,165,-26,1]]" -i "3,5,11,22,43,87,174,348,696" -o 0 -d 0 -dist 0 -t 0 
+3,5,11,22,43,87,174,348,696,1392,2784,null
+perl -e 'print join("\t", A293338, "holos", 0, "[[0],[0,-330,52,-2],[0,165,-26,1]]", "3,5,11,22,43,87,174,348,696", 0) . "\n";'
+A293338	holos	0	[[0],[0,-330,52,-2],[0,165,-26,1]]	3,5,11,22,43,87,174,348,696	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A293363 MATRIX="[[0],[3276,-850,72,-2],[-1638,425,-36,1]]" INIT="1,2,3,6,12,23,45,89,178" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[3276,-850,72,-2],[-1638,425,-36,1]]" -i "1,2,3,6,12,23,45,89,178" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,6,12,23,45,89,178,null
+perl -e 'print join("\t", A293363, "holos", 0, "[[0],[3276,-850,72,-2],[-1638,425,-36,1]]", "1,2,3,6,12,23,45,89,178", 0) . "\n";'
+A293363	holos	0	[[0],[3276,-850,72,-2],[-1638,425,-36,1]]	1,2,3,6,12,23,45,89,178	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A296354 MATRIX="[[0],[0,136,-1,-2],[0,-120,-1,2]]" INIT="0,1,6,8,22,25,28,31,66" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,136,-1,-2],[0,-120,-1,2]]" -i "0,1,6,8,22,25,28,31,66" -o 0 -d 0 -dist 0 -t 0 
+0,1,6,8,22,25,28,31,66,70,74,78,82,86,90,94,98,102,106,110,114,118,122,126,130,134,138,142,146,150,154,158
+perl -e 'print join("\t", A296354, "holos", 0, "[[0],[0,136,-1,-2],[0,-120,-1,2]]", "0,1,6,8,22,25,28,31,66", 0) . "\n";'
+A296354	holos	0	[[0],[0,136,-1,-2],[0,-120,-1,2]]	0,1,6,8,22,25,28,31,66	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A296484 MATRIX="[[0],[-432,30,11,-1],[360,-13,-12,1]]" INIT="1,3,6,7,8,9,10,12,13" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-432,30,11,-1],[360,-13,-12,1]]" -i "1,3,6,7,8,9,10,12,13" -o 0 -d 0 -dist 0 -t 0 
+1,3,6,7,8,9,10,12,13,null
+perl -e 'print join("\t", A296484, "holos", 0, "[[0],[-432,30,11,-1],[360,-13,-12,1]]", "1,3,6,7,8,9,10,12,13", 0) . "\n";'
+A296484	holos	0	[[0],[-432,30,11,-1],[360,-13,-12,1]]	1,3,6,7,8,9,10,12,13	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A297468 MATRIX="[[0],[0,0,-4,-1],[0,0,3,1]]" INIT="3,4,5,6,7,8,9,11,12" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-4,-1],[0,0,3,1]]" -i "3,4,5,6,7,8,9,11,12" -o 0 -d 0 -dist 0 -t 0 
+3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
+perl -e 'print join("\t", A297468, "holos", 0, "[[0],[0,0,-4,-1],[0,0,3,1]]", "3,4,5,6,7,8,9,11,12", 0) . "\n";'
+A297468	holos	0	[[0],[0,0,-4,-1],[0,0,3,1]]	3,4,5,6,7,8,9,11,12	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A298469 MATRIX="[[0],[-1890,-579,107,-4],[1050,695,-111,4]]" INIT="1,3,17,21,25,29,33,37,41" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1890,-579,107,-4],[1050,695,-111,4]]" -i "1,3,17,21,25,29,33,37,41" -o 0 -d 0 -dist 0 -t 0 
+1,3,17,21,25,29,33,37,41,45,49,53,57,61,null
+perl -e 'print join("\t", A298469, "holos", 0, "[[0],[-1890,-579,107,-4],[1050,695,-111,4]]", "1,3,17,21,25,29,33,37,41", 0) . "\n";'
+A298469	holos	0	[[0],[-1890,-579,107,-4],[1050,695,-111,4]]	1,3,17,21,25,29,33,37,41	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A298470 MATRIX="[[0],[0,0,-12,-5],[0,0,7,5]]" INIT="2,3,22,27,32,37,42,47,52" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-12,-5],[0,0,7,5]]" -i "2,3,22,27,32,37,42,47,52" -o 0 -d 0 -dist 0 -t 0 
+2,3,22,27,32,37,42,47,52,57,62,67,72,77,82,87,92,97,102,107,112,117,122,127,132,137,142,147,152,157,162,167
+perl -e 'print join("\t", A298470, "holos", 0, "[[0],[0,0,-12,-5],[0,0,7,5]]", "2,3,22,27,32,37,42,47,52", 0) . "\n";'
+A298470	holos	0	[[0],[0,0,-12,-5],[0,0,7,5]]	2,3,22,27,32,37,42,47,52	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A298471 MATRIX="[[0],[0,0,-7,-3],[0,0,4,3]]" INIT="2,4,22,32,38,44,50,56,62" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-7,-3],[0,0,4,3]]" -i "2,4,22,32,38,44,50,56,62" -o 0 -d 0 -dist 0 -t 0 
+2,4,22,32,38,44,50,56,62,68,74,80,86,92,98,104,110,116,122,128,134,140,146,152,158,164,170,176,182,188,194,200
+perl -e 'print join("\t", A298471, "holos", 0, "[[0],[0,0,-7,-3],[0,0,4,3]]", "2,4,22,32,38,44,50,56,62", 0) . "\n";'
+A298471	holos	0	[[0],[0,0,-7,-3],[0,0,4,3]]	2,4,22,32,38,44,50,56,62	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A299639 MATRIX="[[0],[0,0,-25019,-355],[0,0,24664,355]]" INIT="0,4,5,52168,52878,53588,54298,55008,55718" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-25019,-355],[0,0,24664,355]]" -i "0,4,5,52168,52878,53588,54298,55008,55718" -o 0 -d 0 -dist 0 -t 0 
+0,4,5,52168,52878,53588,54298,55008,55718,56428,57138,57848,58558,59268,59978,60688,61398,62108,62818,63528,64238,64948,65658,66368,67078,67788,68498,69208,69918,70628,71338,72048
+perl -e 'print join("\t", A299639, "holos", 0, "[[0],[0,0,-25019,-355],[0,0,24664,355]]", "0,4,5,52168,52878,53588,54298,55008,55718", 0) . "\n";'
+A299639	holos	0	[[0],[0,0,-25019,-355],[0,0,24664,355]]	0,4,5,52168,52878,53588,54298,55008,55718	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A299640 MATRIX="[[0],[0,0,-47553,-710],[0,0,46843,710]]" INIT="0,1,2,8,27,360,51813,52523,53233" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-47553,-710],[0,0,46843,710]]" -i "0,1,2,8,27,360,51813,52523,53233" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,8,27,360,51813,52523,53233,53943,54653,55363,56073,56783,57493,58203,58913,59623,60333,61043,61753,62463,63173,63883,64593,65303,66013,66723,67433,68143,68853,69563
+perl -e 'print join("\t", A299640, "holos", 0, "[[0],[0,0,-47553,-710],[0,0,46843,710]]", "0,1,2,8,27,360,51813,52523,53233", 0) . "\n";'
+A299640	holos	0	[[0],[0,0,-47553,-710],[0,0,46843,710]]	0,1,2,8,27,360,51813,52523,53233	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A304812 MATRIX="[[0],[-216,-21,14,-1],[144,38,-15,1]]" INIT="1,3,4,5,6,7,8,9,10" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-216,-21,14,-1],[144,38,-15,1]]" -i "1,3,4,5,6,7,8,9,10" -o 0 -d 0 -dist 0 -t 0 
+1,3,4,5,6,7,8,9,10,null
+perl -e 'print join("\t", A304812, "holos", 0, "[[0],[-216,-21,14,-1],[144,38,-15,1]]", "1,3,4,5,6,7,8,9,10", 0) . "\n";'
+A304812	holos	0	[[0],[-216,-21,14,-1],[144,38,-15,1]]	1,3,4,5,6,7,8,9,10	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A309538 MATRIX="[[0],[0,22,-8,-14],[0,-4,-3,7]]" INIT="0,1,3,7,17,40,93,210,469" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,22,-8,-14],[0,-4,-3,7]]" -i "0,1,3,7,17,40,93,210,469" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,7,17,40,93,210,469,1036,2268,4928,10640,22848,48832,103936,220416,465920,982016,2064384,4329472,9060352,18923520,39452672,82116608,170655744,354156544,734003200,1519386624,3141533696,6488588288,13388218368
+perl -e 'print join("\t", A309538, "holos", 0, "[[0],[0,22,-8,-14],[0,-4,-3,7]]", "0,1,3,7,17,40,93,210,469", 0) . "\n";'
+A309538	holos	0	[[0],[0,22,-8,-14],[0,-4,-3,7]]	0,1,3,7,17,40,93,210,469	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A322288 MATRIX="[[0],[0,0,4449,-710],[0,0,-5159,710]]" INIT="0,6,12,56,100,144,188,521,1231" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,4449,-710],[0,0,-5159,710]]" -i "0,6,12,56,100,144,188,521,1231" -o 0 -d 0 -dist 0 -t 0 
+0,6,12,56,100,144,188,521,1231,1941,2651,3361,4071,4781,5491,6201,6911,7621,8331,9041,9751,10461,11171,11881,12591,13301,14011,14721,15431,16141,16851,17561
+perl -e 'print join("\t", A322288, "holos", 0, "[[0],[0,0,4449,-710],[0,0,-5159,710]]", "0,6,12,56,100,144,188,521,1231", 0) . "\n";'
+A322288	holos	0	[[0],[0,0,4449,-710],[0,0,-5159,710]]	0,6,12,56,100,144,188,521,1231	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A322615 MATRIX="[[0],[-128,40,197,-25],[-48,382,-247,25]]" INIT="0,13,50,113,201,314,452,616,804" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-128,40,197,-25],[-48,382,-247,25]]" -i "0,13,50,113,201,314,452,616,804" -o 0 -d 0 -dist 0 -t 0 
+0,13,50,113,201,314,452,616,804,1018,1257,1521,1810,2124,2463,2827,3216,3630,4069,4533,5022,5536,6075,6639,7228,7842,8481,9145,9834,10548,11287,12051
+perl -e 'print join("\t", A322615, "holos", 0, "[[0],[-128,40,197,-25],[-48,382,-247,25]]", "0,13,50,113,201,314,452,616,804", 0) . "\n";'
+A322615	holos	0	[[0],[-128,40,197,-25],[-48,382,-247,25]]	0,13,50,113,201,314,452,616,804	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A325101 MATRIX="[[0],[240,-166,25,-1],[-360,189,-26,1]]" INIT="0,1,2,4,5,7,9,11,12" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[240,-166,25,-1],[-360,189,-26,1]]" -i "0,1,2,4,5,7,9,11,12" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,4,5,7,9,11,12,14,16,18,20,22,24,null
+perl -e 'print join("\t", A325101, "holos", 0, "[[0],[240,-166,25,-1],[-360,189,-26,1]]", "0,1,2,4,5,7,9,11,12", 0) . "\n";'
+A325101	holos	0	[[0],[240,-166,25,-1],[-360,189,-26,1]]	0,1,2,4,5,7,9,11,12	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A325413 MATRIX="[[0],[0,0,-5,-1],[0,0,4,1]]" INIT="0,1,3,5,8,9,10,12,13" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-5,-1],[0,0,4,1]]" -i "0,1,3,5,8,9,10,12,13" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,5,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36
+perl -e 'print join("\t", A325413, "holos", 0, "[[0],[0,0,-5,-1],[0,0,4,1]]", "0,1,3,5,8,9,10,12,13", 0) . "\n";'
+A325413	holos	0	[[0],[0,0,-5,-1],[0,0,4,1]]	0,1,3,5,8,9,10,12,13	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A326494 MATRIX="[[0],[0,0,-1,-2],[0,0,-1,2]]" INIT="1,2,4,6,9,11,13,15,17" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-1,-2],[0,0,-1,2]]" -i "1,2,4,6,9,11,13,15,17" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,6,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63
+perl -e 'print join("\t", A326494, "holos", 0, "[[0],[0,0,-1,-2],[0,0,-1,2]]", "1,2,4,6,9,11,13,15,17", 0) . "\n";'
+A326494	holos	0	[[0],[0,0,-1,-2],[0,0,-1,2]]	1,2,4,6,9,11,13,15,17	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A326665 MATRIX="[[0],[-80,50,3,-1],[112,-38,-5,1]]" INIT="1,5,11,19,30,43,58,75,94" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-80,50,3,-1],[112,-38,-5,1]]" -i "1,5,11,19,30,43,58,75,94" -o 0 -d 0 -dist 0 -t 0 
+1,5,11,19,30,43,58,75,94,116,140,166,194,224,256,290,326,364,404,446,490,536,584,634,686,740,796,854,914,976,1040,1106
+perl -e 'print join("\t", A326665, "holos", 0, "[[0],[-80,50,3,-1],[112,-38,-5,1]]", "1,5,11,19,30,43,58,75,94", 0) . "\n";'
+A326665	holos	0	[[0],[-80,50,3,-1],[112,-38,-5,1]]	1,5,11,19,30,43,58,75,94	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A329356 MATRIX="[[0],[3640,-904,74,-2],[-1820,452,-37,1]]" INIT="0,1,2,4,9,19,38,77,154" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[3640,-904,74,-2],[-1820,452,-37,1]]" -i "0,1,2,4,9,19,38,77,154" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,4,9,19,38,77,154,308,null
+perl -e 'print join("\t", A329356, "holos", 0, "[[0],[3640,-904,74,-2],[-1820,452,-37,1]]", "0,1,2,4,9,19,38,77,154", 0) . "\n";'
+A329356	holos	0	[[0],[3640,-904,74,-2],[-1820,452,-37,1]]	0,1,2,4,9,19,38,77,154	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A334199 MATRIX="[[0],[11616,-3476,341,-11],[-7392,2212,-217,7]]" INIT="1,2,3,5,7,11,21,33,49" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[11616,-3476,341,-11],[-7392,2212,-217,7]]" -i "1,2,3,5,7,11,21,33,49" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,5,7,11,21,33,49,77,121,null
+perl -e 'print join("\t", A334199, "holos", 0, "[[0],[11616,-3476,341,-11],[-7392,2212,-217,7]]", "1,2,3,5,7,11,21,33,49", 0) . "\n";'
+A334199	holos	0	[[0],[11616,-3476,341,-11],[-7392,2212,-217,7]]	1,2,3,5,7,11,21,33,49	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A334525 MATRIX="[[0],[-1890,-579,107,-4],[1050,695,-111,4]]" INIT="1,5,9,13,17,21,25,37,41" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1890,-579,107,-4],[1050,695,-111,4]]" -i "1,5,9,13,17,21,25,37,41" -o 0 -d 0 -dist 0 -t 0 
+1,5,9,13,17,21,25,37,41,45,49,53,57,61,null
+perl -e 'print join("\t", A334525, "holos", 0, "[[0],[-1890,-579,107,-4],[1050,695,-111,4]]", "1,5,9,13,17,21,25,37,41", 0) . "\n";'
+A334525	holos	0	[[0],[-1890,-579,107,-4],[1050,695,-111,4]]	1,5,9,13,17,21,25,37,41	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A338760 MATRIX="[[0],[-18,10,-3,-1],[30,-13,0,1]]" INIT="1,2,4,8,15,28,47,73,107" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-18,10,-3,-1],[30,-13,0,1]]" -i "1,2,4,8,15,28,47,73,107" -o 0 -d 0 -dist 0 -t 0 
+1,2,4,8,15,28,47,73,107,150,203,267,343,432,535,653,787,938,1107,1295,1503,1732,1983,2257,2555,2878,3227,3603,4007,4440,4903,5397
+perl -e 'print join("\t", A338760, "holos", 0, "[[0],[-18,10,-3,-1],[30,-13,0,1]]", "1,2,4,8,15,28,47,73,107", 0) . "\n";'
+A338760	holos	0	[[0],[-18,10,-3,-1],[30,-13,0,1]]	1,2,4,8,15,28,47,73,107	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A341770 MATRIX="[[0],[-5,4,5,-4],[18,1,-13,4]]" INIT="1,8,23,34,61,62,97,138,189" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-5,4,5,-4],[18,1,-13,4]]" -i "1,8,23,34,61,62,97,138,189" -o 0 -d 0 -dist 0 -t 0 
+1,8,23,34,61,62,97,138,189,248,315,390,473,564,663,770,885,1008,1139,1278,1425,1580,1743,1914,2093,2280,2475,2678,2889,3108,3335,3570
+perl -e 'print join("\t", A341770, "holos", 0, "[[0],[-5,4,5,-4],[18,1,-13,4]]", "1,8,23,34,61,62,97,138,189", 0) . "\n";'
+A341770	holos	0	[[0],[-5,4,5,-4],[18,1,-13,4]]	1,8,23,34,61,62,97,138,189	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A343048 MATRIX="[[0],[38010,-11549,1051,-30],[-44310,12419,-1081,30]]" INIT="0,1,3,5,11,17,23,29,59" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[38010,-11549,1051,-30],[-44310,12419,-1081,30]]" -i "0,1,3,5,11,17,23,29,59" -o 0 -d 0 -dist 0 -t 0 
+0,1,3,5,11,17,23,29,59,89,119,149,179,209,null
+perl -e 'print join("\t", A343048, "holos", 0, "[[0],[38010,-11549,1051,-30],[-44310,12419,-1081,30]]", "0,1,3,5,11,17,23,29,59", 0) . "\n";'
+A343048	holos	0	[[0],[38010,-11549,1051,-30],[-44310,12419,-1081,30]]	0,1,3,5,11,17,23,29,59	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A347327 MATRIX="[[0],[1470,-623,65,-2],[-1890,681,-67,2]]" INIT="0,1,2,3,4,5,6,7,9" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[1470,-623,65,-2],[-1890,681,-67,2]]" -i "0,1,2,3,4,5,6,7,9" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,9,11,13,15,17,19,null
+perl -e 'print join("\t", A347327, "holos", 0, "[[0],[1470,-623,65,-2],[-1890,681,-67,2]]", "0,1,2,3,4,5,6,7,9", 0) . "\n";'
+A347327	holos	0	[[0],[1470,-623,65,-2],[-1890,681,-67,2]]	0,1,2,3,4,5,6,7,9	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A348338 MATRIX="[[0],[0,-3,-1,-1],[0,3,-1,1]]" INIT="1,4,9,15,23,33,45,59,75" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-3,-1,-1],[0,3,-1,1]]" -i "1,4,9,15,23,33,45,59,75" -o 0 -d 0 -dist 0 -t 0 
+1,4,9,15,23,33,45,59,75,93,113,135,159,185,213,243,275,309,345,383,423,465,509,555,603,653,705,759,815,873,933,995
+perl -e 'print join("\t", A348338, "holos", 0, "[[0],[0,-3,-1,-1],[0,3,-1,1]]", "1,4,9,15,23,33,45,59,75", 0) . "\n";'
+A348338	holos	0	[[0],[0,-3,-1,-1],[0,3,-1,1]]	1,4,9,15,23,33,45,59,75	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A348553 MATRIX="[[0],[0,0,-1,-1],[0,0,0,1]]" INIT="1,2,3,4,5,6,7,8,9" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-1,-1],[0,0,0,1]]" -i "1,2,3,4,5,6,7,8,9" -o 0 -d 0 -dist 0 -t 0 
+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32
+perl -e 'print join("\t", A348553, "holos", 0, "[[0],[0,0,-1,-1],[0,0,0,1]]", "1,2,3,4,5,6,7,8,9", 0) . "\n";'
+A348553	holos	0	[[0],[0,0,-1,-1],[0,0,0,1]]	1,2,3,4,5,6,7,8,9	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A348845 MATRIX="[[0],[0,0,-11,-24],[0,0,-13,24]]" INIT="11,35,59,83,107,131,155,179,203" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-11,-24],[0,0,-13,24]]" -i "11,35,59,83,107,131,155,179,203" -o 0 -d 0 -dist 0 -t 0 
+11,35,59,83,107,131,155,179,203,227,251,275,299,323,347,371,395,419,443,467,491,515,539,563,587,611,635,659,683,707,731,755
+perl -e 'print join("\t", A348845, "holos", 0, "[[0],[0,0,-11,-24],[0,0,-13,24]]", "11,35,59,83,107,131,155,179,203", 0) . "\n";'
+A348845	holos	0	[[0],[0,0,-11,-24],[0,0,-13,24]]	11,35,59,83,107,131,155,179,203	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A349682 MATRIX="[[0],[-1,-11,-36,-36],[-10,47,-72,36]]" INIT="1,84,455,1330,2925,5456,9139,14190,20825" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1,-11,-36,-36],[-10,47,-72,36]]" -i "1,84,455,1330,2925,5456,9139,14190,20825" -o 0 -d 0 -dist 0 -t 0 
+1,84,455,1330,2925,5456,9139,14190,20825,29260,39711,52394,67525,85320,105995,129766,156849,187460,221815,260130,302621,349504,400995,457310,518665,585276,657359,735130,818805,908600,1004731,1107414
+perl -e 'print join("\t", A349682, "holos", 0, "[[0],[-1,-11,-36,-36],[-10,47,-72,36]]", "1,84,455,1330,2925,5456,9139,14190,20825", 0) . "\n";'
+A349682	holos	0	[[0],[-1,-11,-36,-36],[-10,47,-72,36]]	1,84,455,1330,2925,5456,9139,14190,20825	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A349808 MATRIX="[[0],[0,4,-7,-7],[0,-4,-7,7]]" INIT="1,50,190,400,680,1030,1450,1940,2500" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,4,-7,-7],[0,-4,-7,7]]" -i "1,50,190,400,680,1030,1450,1940,2500" -o 0 -d 0 -dist 0 -t 0 
+1,50,190,400,680,1030,1450,1940,2500,3130,3830,4600,5440,6350,7330,8380,9500,10690,11950,13280,14680,16150,17690,19300,20980,22730,24550,26440,28400,30430,32530,34700
+perl -e 'print join("\t", A349808, "holos", 0, "[[0],[0,4,-7,-7],[0,-4,-7,7]]", "1,50,190,400,680,1030,1450,1940,2500", 0) . "\n";'
+A349808	holos	0	[[0],[0,4,-7,-7],[0,-4,-7,7]]	1,50,190,400,680,1030,1450,1940,2500	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A350051 MATRIX="[[0],[0,0,-19,-24],[0,0,-5,24]]" INIT="19,43,67,91,115,139,163,187,211" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-19,-24],[0,0,-5,24]]" -i "19,43,67,91,115,139,163,187,211" -o 0 -d 0 -dist 0 -t 0 
+19,43,67,91,115,139,163,187,211,235,259,283,307,331,355,379,403,427,451,475,499,523,547,571,595,619,643,667,691,715,739,763
+perl -e 'print join("\t", A350051, "holos", 0, "[[0],[0,0,-19,-24],[0,0,-5,24]]", "19,43,67,91,115,139,163,187,211", 0) . "\n";'
+A350051	holos	0	[[0],[0,0,-19,-24],[0,0,-5,24]]	19,43,67,91,115,139,163,187,211	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A350052 MATRIX="[[0],[0,0,-17,-24],[0,0,-7,24]]" INIT="17,41,65,89,113,137,161,185,209" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-17,-24],[0,0,-7,24]]" -i "17,41,65,89,113,137,161,185,209" -o 0 -d 0 -dist 0 -t 0 
+17,41,65,89,113,137,161,185,209,233,257,281,305,329,353,377,401,425,449,473,497,521,545,569,593,617,641,665,689,713,737,761
+perl -e 'print join("\t", A350052, "holos", 0, "[[0],[0,0,-17,-24],[0,0,-7,24]]", "17,41,65,89,113,137,161,185,209", 0) . "\n";'
+A350052	holos	0	[[0],[0,0,-17,-24],[0,0,-7,24]]	17,41,65,89,113,137,161,185,209	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A350055 MATRIX="[[0],[0,0,-35,-36],[0,0,-1,36]]" INIT="35,71,107,143,179,215,251,287,323" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-35,-36],[0,0,-1,36]]" -i "35,71,107,143,179,215,251,287,323" -o 0 -d 0 -dist 0 -t 0 
+35,71,107,143,179,215,251,287,323,359,395,431,467,503,539,575,611,647,683,719,755,791,827,863,899,935,971,1007,1043,1079,1115,1151
+perl -e 'print join("\t", A350055, "holos", 0, "[[0],[0,0,-35,-36],[0,0,-1,36]]", "35,71,107,143,179,215,251,287,323", 0) . "\n";'
+A350055	holos	0	[[0],[0,0,-35,-36],[0,0,-1,36]]	35,71,107,143,179,215,251,287,323	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A350116 MATRIX="[[0],[0,-8,-9,-1],[0,-6,5,1]]" INIT="0,12,45,110,220,390,637,980,1440" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-8,-9,-1],[0,-6,5,1]]" -i "0,12,45,110,220,390,637,980,1440" -o 0 -d 0 -dist 0 -t 0 
+0,12,45,110,220,390,637,980,1440,2040,2805,3762,4940,6370,8085,10120,12512,15300,18525,22230,26460,31262,36685,42780,49600,57200,65637,74970,85260,96570,108965,122512
+perl -e 'print join("\t", A350116, "holos", 0, "[[0],[0,-8,-9,-1],[0,-6,5,1]]", "0,12,45,110,220,390,637,980,1440", 0) . "\n";'
+A350116	holos	0	[[0],[0,-8,-9,-1],[0,-6,5,1]]	0,12,45,110,220,390,637,980,1440	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A350286 MATRIX="[[0],[0,-22,-13,-1],[0,-8,7,1]]" INIT="0,55,286,910,2275,4900,9520,17136,29070" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-22,-13,-1],[0,-8,7,1]]" -i "0,55,286,910,2275,4900,9520,17136,29070" -o 0 -d 0 -dist 0 -t 0 
+0,55,286,910,2275,4900,9520,17136,29070,47025,73150,110110,161161,230230,322000,442000,596700,793611,1041390,1349950,1730575,2196040,2760736,3440800,4254250,5221125,6363630,7706286,9276085,11102650,13218400,15658720
+perl -e 'print join("\t", A350286, "holos", 0, "[[0],[0,-22,-13,-1],[0,-8,7,1]]", "0,55,286,910,2275,4900,9520,17136,29070", 0) . "\n";'
+A350286	holos	0	[[0],[0,-22,-13,-1],[0,-8,7,1]]	0,55,286,910,2275,4900,9520,17136,29070	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A350521 MATRIX="[[0],[0,0,-2,-9],[0,0,-7,9]]" INIT="4,22,40,58,76,94,112,130,148" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-2,-9],[0,0,-7,9]]" -i "4,22,40,58,76,94,112,130,148" -o 0 -d 0 -dist 0 -t 0 
+4,22,40,58,76,94,112,130,148,166,184,202,220,238,256,274,292,310,328,346,364,382,400,418,436,454,472,490,508,526,544,562
+perl -e 'print join("\t", A350521, "holos", 0, "[[0],[0,0,-2,-9],[0,0,-7,9]]", "4,22,40,58,76,94,112,130,148", 0) . "\n";'
+A350521	holos	0	[[0],[0,0,-2,-9],[0,0,-7,9]]	4,22,40,58,76,94,112,130,148	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A350522 MATRIX="[[0],[0,0,-8,-9],[0,0,-1,9]]" INIT="16,34,52,70,88,106,124,142,160" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-8,-9],[0,0,-1,9]]" -i "16,34,52,70,88,106,124,142,160" -o 0 -d 0 -dist 0 -t 0 
+16,34,52,70,88,106,124,142,160,178,196,214,232,250,268,286,304,322,340,358,376,394,412,430,448,466,484,502,520,538,556,574
+perl -e 'print join("\t", A350522, "holos", 0, "[[0],[0,0,-8,-9],[0,0,-1,9]]", "16,34,52,70,88,106,124,142,160", 0) . "\n";'
+A350522	holos	0	[[0],[0,0,-8,-9],[0,0,-1,9]]	16,34,52,70,88,106,124,142,160	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A351576 MATRIX="[[0],[0,0,0,-1],[0,0,-1,1]]" INIT="0,1,2,3,4,5,6,7,8" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,0,-1],[0,0,-1,1]]" -i "0,1,2,3,4,5,6,7,8" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+perl -e 'print join("\t", A351576, "holos", 0, "[[0],[0,0,0,-1],[0,0,-1,1]]", "0,1,2,3,4,5,6,7,8", 0) . "\n";'
+A351576	holos	0	[[0],[0,0,0,-1],[0,0,-1,1]]	0,1,2,3,4,5,6,7,8	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A354047 MATRIX="[[0],[-420,-152,27,-1],[210,181,-28,1]]" INIT="0,1,2,3,4,5,6,9,10" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-420,-152,27,-1],[210,181,-28,1]]" -i "0,1,2,3,4,5,6,9,10" -o 0 -d 0 -dist 0 -t 0 
+0,1,2,3,4,5,6,9,10,11,12,13,14,15,null
+perl -e 'print join("\t", A354047, "holos", 0, "[[0],[-420,-152,27,-1],[210,181,-28,1]]", "0,1,2,3,4,5,6,9,10", 0) . "\n";'
+A354047	holos	0	[[0],[-420,-152,27,-1],[210,181,-28,1]]	0,1,2,3,4,5,6,9,10	0
+
+C:\Users\User\work\gits\joeis-lite\internal\fischer>make runholo OFF=0 A=A354902 MATRIX="[[0],[0,-11,6,-2],[0,19,-10,2]]" INIT="1,3,7,11,19,31,47,67,91" 
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,-11,6,-2],[0,19,-10,2]]" -i "1,3,7,11,19,31,47,67,91" -o 0 -d 0 -dist 0 -t 0 
+1,3,7,11,19,31,47,67,91,119,151,187,227,271,319,371,427,487,551,619,691,767,847,931,1019,1111,1207,1307,1411,1519,1631,1747
+perl -e 'print join("\t", A354902, "holos", 0, "[[0],[0,-11,6,-2],[0,19,-10,2]]", "1,3,7,11,19,31,47,67,91", 0) . "\n";'
+A354902	holos	0	[[0],[0,-11,6,-2],[0,19,-10,2]]	1,3,7,11,19,31,47,67,91	0

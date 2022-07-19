@@ -459,6 +459,9 @@ log: # CC=; generate an HTML page for the failed tests
 logf: # CC=; generate an HTML page for the failed tests (but no "FATO")
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_fail LOG=$(CC)
+loga: # CC=; generate an HTML page for the failed tests (but no "FATO")
+	# ---- $@ CC=$(CC)
+	cd $(COMMON); make -f checks.make joeis_all LOG=$(CC)
 casstat:
 	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp
 	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp
@@ -543,7 +546,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-07-15:
+anabuild: #.2022-07-19:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A112813 A130433 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=mult1      select EX=xx gener
+	make CC=build      select EX=xx gener
+	make CC=man        man
+	make CC=$@ dist testall log TO=8 pack
+anabuild.2022-07-15:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -3290,6 +3306,8 @@ fholo:
 	$(HOLT) -n $(NT) -f x.tmp
 runholo:
 	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFF) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
+parmholo:
+	perl -e 'print join("\t", $(A), "holos", $(OFF), "$(MATRIX)", "$(INIT)", 0) . "\n";' >> $@.tmp
 runmorf:
 	$(JAVA) irvine.oeis.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D)
 runce:
@@ -3876,6 +3894,13 @@ holrefpow:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------------------------------
+hygsolve:
+	grep -E "runholo" $(HOLREC)/hygsolve2.tmp \
+	| perl parmholo.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 revert:
 	grep -iE "series reversion|series inversion|inverse series|revert transform" joeis_names.txt \
 	>        $@.tmp
@@ -4403,6 +4428,12 @@ morwiki:
 	    AND s.aseqno NOT IN (SELECT aseqno FROM seq4 ) \
 	    ORDER BY 1;" \
 	| sed -e "s/ /\t/g" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+mult: # Multiplicative with ...
+	grep -Pi "Multiplicative with" $(COMMON)/jcat25.txt \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

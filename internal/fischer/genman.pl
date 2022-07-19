@@ -167,7 +167,7 @@ GFis
     } elsif ($upperleft == 1) {
         print TAR "triangle.UpperLeftTriangle";
     } else {
-        print TAR "SequenceWithOffset";
+        print TAR "Sequence";
     } # end of superclass import
     print TAR ";\n";
     #--------
@@ -191,7 +191,7 @@ GFis
     } elsif ($upperleft  == 1) {
         print TAR "extends UpperLeftTriangle";
     } else {
-        print TAR "implements SequenceWithOffset";
+        print TAR "implements Sequence";
     }
     print TAR " {\n";
     if ($withn) {
@@ -309,7 +309,7 @@ GFis
     #--------
     print TAR <<"GFis"; # end of class
 
-  @Override
+  \@Override
   public int getOffset() {
     return mOffset;
   }
