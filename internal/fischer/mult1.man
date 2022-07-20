@@ -1,0 +1,154 @@
+A065958	mult	0	p.pow(2*e).add(p.pow(2*e-2))	Multiplicative with a(p^e) = p.pow(2*e)+p^(2*e-2). - _Vladeta Jovovic_, Dec 09 2001
+A065959	mult	0	p.pow(3*e).add(p.pow(3*e-3))	Multiplicative with a(p^e) = p.pow(3*e)+p^(3*e-3). - _Vladeta Jovovic_, Dec 09 2001
+A065960	mult	0	p.pow(4*e).add(p.pow(4*e-4))	Multiplicative with a(p^e) = p.pow(4*e)+p^(4*e-4). - _Vladeta Jovovic_, Dec 09 2001
+A059376	mult	0	p.pow(3*e).subtract(p.pow(3*(e-1)))	Multiplicative with a(p^e) = p.pow(3*e)-p^(3e-3). - _Vladeta Jovovic_, Jul 26 2001
+A059377	mult	0	p.pow(4*e).subtract(p.pow(4*(e-1)))	Multiplicative with a(p^e) = p.pow(4*e)-p^(4(e-1)).
+A059378	mult	0	p.pow(5*e).subtract(p.pow(5*(e-1)))	Multiplicative with a(p^e) = p.pow(5*e)-p^(5(e-1)).
+A069091	mult	0	p.pow(6*e).subtract(p.pow(6*(e-1)))	Multiplicative with a(p^e) = p.pow(6*e)-p^(6(e-1)).
+A069092	mult	0	p.pow(7*e).subtract(p.pow(7*(e-1)))	Multiplicative with a(p^e) = p.pow(7*e)-p^(7(e-1)).
+A069093	mult	0	p.pow(8*e).subtract(p.pow(8*(e-1)))	Multiplicative with a(p^e) = p.pow(8*e)-p^(8(e-1)).
+A069094	mult	0	p.pow(9*e).subtract(p.pow(9*(e-1)))	Multiplicative with a(p^e) = p.pow(9*e)-p^(9(e-1)).
+A069095	mult	0	p.pow(10*e).subtract(p.pow(10*(e-1)))	Multiplicative with a(p^e) = .pow(1*0e)-p^(10(e-1)).
+
+A166632	mult	0	p.add(-1).multiply(2).pow(e)	Multiplicative with a(p^e) = (2*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(p(k)-1)^e(k). a(n) = A061142(n) * A003958(n) = 2^bigomega(n) * A003958(n) = 2^A001222(n) * A003958(n).
+A166633	mult	0	p.add(-1).multiply(3).pow(e)	Multiplicative with a(p^e) = (3*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (3*(p(k)-1)^e(k). a(n) = A165824(n) * A003958(n) = 3^bigomega(n) * A003958(n) = 3^A001222(n) * A003958(n).
+A166634	mult	0	p.add(-1).multiply(4).pow(e)	Multiplicative with a(p^e) = (4*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (4*(p(k)-1)^e(k). a(n) = A165825(n) * A003958(n) = 4^bigomega(n) * A003958(n) = 4^A001222(n) * A003958(n).
+A166635	mult	0	p.add(-1).multiply(5).pow(e)	Multiplicative with a(p^e) = (5*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (5*(p(k)-1)^e(k). a(n) = A165826(n) * A003958(n) = 5^bigomega(n) * A003958(n) = 5^A001222(n) * A003958(n).
+A166636	mult	0	p.add(-1).multiply(6).pow(e)	Multiplicative with a(p^e) = (6*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (6*(p(k)-1)^e(k). a(n) = A165827(n) * A003958(n) = 6^bigomega(n) * A003958(n) = 6^A001222(n) * A003958(n).
+A166637	mult	0	p.add(-1).multiply(7).pow(e)	Multiplicative with a(p^e) = (7*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (7*(p(k)-1)^e(k). a(n) = A165828(n) * A003958(n) = 7^bigomega(n) * A003958(n) = 7^A001222(n) * A003958(n).
+A166638	mult	0	p.add(-1).multiply(8).pow(e)	Multiplicative with a(p^e) = (8*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (8*(p(k)-1)^e(k). a(n) = A165829(n) * A003958(n) = 8^bigomega(n) * A003958(n) = 8^A001222(n) * A003958(n).
+A166640	mult	0	p.add(-1).multiply(9).pow(e)	Multiplicative with a(p^e) = (9*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (9*(p(k)-1)^e(k). a(n) = A165830(n) * A003958(n) = 9^bigomega(n) * A003958(n) = 9^A001222(n) * A003958(n).
+A166641	mult	0	p.add(-1).multiply(10).pow(e)	Multiplicative with a(p^e) = (10*(p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (10*(p(k)-1)^e(k). a(n) = A165831(n) * A003958(n) = 10^bigomega(n) * A003958(n) = 10^A001222(n) * A003958(n).
+A166642	mult	0	p.add(+1).multiply(2).pow(e)	Multiplicative with a(p^e) = (2*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(p(k)+1)^e(k). a(n) = A061142(n) * A003959(n) = 2^bigomega(n) * A003959(n) = 2^A001222(n) * A003959(n).
+A166643	mult	0	p.add(+1).multiply(3).pow(e)	Multiplicative with a(p^e) = (3*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (3*(p(k)+1)^e(k). a(n) = A165824(n) * A003959(n) = 3^bigomega(n) * A003959(n) = 3^A001222(n) * A003959(n).
+A166644	mult	0	p.add(+1).multiply(4).pow(e)	Multiplicative with a(p^e) = (4*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (4*(p(k)+1)^e(k). a(n) = A165825(n) * A003959(n) = 4^bigomega(n) * A003959(n) = 4^A001222(n) * A003959(n).
+A166645	mult	0	p.add(+1).multiply(5).pow(e)	Multiplicative with a(p^e) = (5*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (5*(p(k)+1)^e(k). a(n) = A165826(n) * A003959(n) = 5^bigomega(n) * A003959(n) = 5^A001222(n) * A003959(n).
+A166646	mult	0	p.add(+1).multiply(6).pow(e)	Multiplicative with a(p^e) = (6*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (6*(p(k)+1)^e(k). a(n) = A165827(n) * A003959(n) = 6^bigomega(n) * A003959(n) = 6^A001222(n) * A003959(n).
+A166647	mult	0	p.add(+1).multiply(7).pow(e)	Multiplicative with a(p^e) = (7*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (7*(p(k)+1)^e(k). a(n) = A165828(n) * A003959(n) = 7^bigomega(n) * A003959(n) = 7^A001222(n) * A003959(n).
+A166648	mult	0	p.add(+1).multiply(8).pow(e)	Multiplicative with a(p^e) = (8*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (8*(p(k)+1)^e(k). a(n) = A165829(n) * A003959(n) = 8^bigomega(n) * A003959(n) = 8^A001222(n) * A003959(n).
+A166649	mult	0	p.add(+1).multiply(9).pow(e)	Multiplicative with a(p^e) = (9*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (9*(p(k)+1)^e(k). a(n) = A165830(n) * A003959(n) = 9^bigomega(n) * A003959(n) = 9^A001222(n) * A003959(n).
+A166650	mult	0	p.add(+1).multiply(10).pow(e)	Multiplicative with a(p^e) = (10*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (10*(p(k)+1)^e(k). a(n) = A165831(n) * A003959(n) = 10^bigomega(n) * A003959(n) = 10^A001222(n) * A003959(n).
+A166651	mult	0	p.multiply(2).add(-1).pow(e)	Multiplicative with a(p^e) = (2p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (2*p(k)-1)^e(k).
+A166652	mult	0	p.multiply(3).add(-1).pow(e)	Multiplicative with a(p^e) = (3p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (3*p(k)-1)^e(k).
+A166653	mult	0	p.multiply(4).add(-1).pow(e)	Multiplicative with a(p^e) = (4p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (4*p(k)-1)^e(k).
+A166654	mult	0	p.multiply(5).add(-1).pow(e)	Multiplicative with a(p^e) = (5p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (5*p(k)-1)^e(k).
+A166655	mult	0	p.multiply(6).add(-1).pow(e)	Multiplicative with a(p^e) = (6p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (6*p(k)-1)^e(k).
+A166656	mult	0	p.multiply(7).add(-1).pow(e)	Multiplicative with a(p^e) = (7p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (7*p(k)-1)^e(k).
+A166657	mult	0	p.multiply(8).add(-1).pow(e)	Multiplicative with a(p^e) = (8p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (8*p(k)-1)^e(k).
+A166658	mult	0	p.multiply(9).add(-1).pow(e)	Multiplicative with a(p^e) = (9p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (9*p(k)-1)^e(k).
+A166659	mult	0	p.multiply(10).add(-1).pow(e)	Multiplicative with a(p^e) = (10p-1)^e. If n = Product p(k)^e(k) then a(n) = Product (10*p(k)-1)^e(k).
+A166660	mult	0	p.multiply(2).add(+1).pow(e)	Multiplicative with a(p^e) = (2p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (2*p(k)+1)^e(k).
+A166661	mult	0	p.multiply(3).add(+1).pow(e)	Multiplicative with a(p^e) = (3p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (3*p(k)+1)^e(k).
+A166662	mult	0	p.multiply(4).add(+1).pow(e)	Multiplicative with a(p^e) = (4p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (4*p(k)+1)^e(k).
+A166663	mult	0	p.multiply(5).add(+1).pow(e)	Multiplicative with a(p^e) = (5p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (5*p(k)+1)^e(k).
+A166664	mult	0	p.multiply(6).add(+1).pow(e)	Multiplicative with a(p^e) = (6p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (6*p(k)+1)^e(k).
+A166665	mult	0	p.multiply(7).add(+1).pow(e)	Multiplicative with a(p^e) = (7p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (7*p(k)+1)^e(k).
+A166666	mult	0	p.multiply(8).add(+1).pow(e)	Multiplicative with a(p^e) = (8p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (8*p(k)+1)^e(k).
+A166667	mult	0	p.multiply(9).add(+1).pow(e)	Multiplicative with a(p^e) = (9p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (9*p(k)+1)^e(k).
+A166668	mult	0	p.multiply(10).add(+1).pow(e)	Multiplicative with a(p^e) = (10p+1)^e. If n = Product p(k)^e(k) then a(n) = Product (10*p(k)+1)^e(k).
+A166669	mult	0	p.multiply(3).add(-2).pow(e)	Multiplicative with a(p^e) = (3p-2)^e. If n = Product p(k)^e(k) then a(n) = Product (3*p(k)-2)^e(k).
+A166670	mult	0	p.multiply(5).add(-2).pow(e)	Multiplicative with a(p^e) = (5p-2)^e. If n = Product p(k)^e(k) then a(n) = Product (5*p(k)-2)^e(k).
+A166671	mult	0	p.multiply(7).add(-2).pow(e)	Multiplicative with a(p^e) = (7p-2)^e. If n = Product p(k)^e(k) then a(n) = Product (7*p(k)-2)^e(k).
+A166672	mult	0	p.multiply(9).add(-2).pow(e)	Multiplicative with a(p^e) = (9p-2)^e. If n = Product p(k)^e(k) then a(n) = Product (9*p(k)-2)^e(k).
+A166673	mult	0	p.multiply(3).add(+2).pow(e)	Multiplicative with a(p^e) = (3p+2)^e. If n = Product p(k)^e(k) then a(n) = Product (3*p(k)+2)^e(k).
+A166674	mult	0	p.multiply(5).add(+2).pow(e)	Multiplicative with a(p^e) = (5p+2)^e. If n = Product p(k)^e(k) then a(n) = Product (5*p(k)+2)^e(k).
+A166675	mult	0	p.multiply(7).add(+2).pow(e)	Multiplicative with a(p^e) = (7p+2)^e. If n = Product p(k)^e(k) then a(n) = Product (7*p(k)+2)^e(k).
+A166676	mult	0	p.multiply(9).add(+2).pow(e)	Multiplicative with a(p^e) = (9p+2)^e. If n = Product p(k)^e(k) then a(n) = Product (9*p(k)+2)^e(k).
+
+A167294	mult	0	p.add(-2).multiply(2).pow(e)	Multiplicative with a(p^e) = (2*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A061142(n) * A166586(n) = 2^bigomega(n) * A166586(n) = 2^A001222(n) * A166586(n).
+A167295	mult	0	p.add(-2).multiply(3).pow(e)	Multiplicative with a(p^e) = (3*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (3*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A165824(n) * A166586(n) = 3^bigomega(n) * A166586(n) = 3^A001222(n) * A166586(n).
+A167296	mult	0	p.add(-2).multiply(4).pow(e)	Multiplicative with a(p^e) = (4*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (4*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A165825(n) * A166586(n) = 4^bigomega(n) * A166586(n) = 4^A001222(n) * A166586(n).
+A167297	mult	0	p.add(-2).multiply(5).pow(e)	Multiplicative with a(p^e) = (5*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (5*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A165826(n) * A166586(n) = 5^bigomega(n) * A166586(n) = 5^A001222(n) * A166586(n).
+A167298	mult	0	p.add(-2).multiply(5).pow(e)	Multiplicative with a(p^e) = (5*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (6*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A165827(n) * A166586(n) = 6^bigomega(n) * A166586(n) = 6^A001222(n) * A166586(n).
+A167299	mult	0	p.add(-2).multiply(7).pow(e)	Multiplicative with a(p^e) = (7*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (7*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A165828(n) * A166586(n) = 7^bigomega(n) * A166586(n) = 7^A001222(n) * A166586(n).
+A167300	mult	0	p.add(-2).multiply(8).pow(e)	Multiplicative with a(p^e) = (8*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (8*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A165829(n) * A166586(n) = 8^bigomega(n) * A166586(n) = 8^A001222(n) * A166586(n).
+A167301	mult	0	p.add(-2).multiply(9).pow(e)	Multiplicative with a(p^e) = (9*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (9*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A165830(n) * A166586(n) = 9^bigomega(n) * A166586(n) = 9^A001222(n) * A166586(n).
+A167302	mult	0	p.add(-2).multiply(10).pow(e)	Multiplicative with a(p^e) = (10*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (10*(p(k)-2))^e(k). a(2k) = 0 for k >= 1. a(n) = A165831(n) * A166586(n) = 10^bigomega(n) * A166586(n) = 10^A001222(n) * A166586(n).
+A167303	mult	0	p.add(+2).multiply(2).pow(e)	Multiplicative with a(p^e) = (2*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(p(k)+2))^e(k). a(n) = A061142(n) * A166590(n) = 2^bigomega(n) * A166590(n) = 2^A001222(n) * A166590(n).
+A167304	mult	0	p.add(+2).multiply(3).pow(e)	Multiplicative with a(p^e) = (3*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (3*(p(k)+2))^e(k). a(n) = A165824(n) * A166590(n) = 3^bigomega(n) * A166590(n) = 3^A001222(n) * A166590(n).
+A167305	mult	0	p.add(+2).multiply(4).pow(e)	Multiplicative with a(p^e) = (4*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (4*(p(k)+2))^e(k). a(n) = A165825(n) * A166590(n) = 4^bigomega(n) * A166590(n) = 4^A001222(n) * A166590(n).
+A167306	mult	0	p.add(+2).multiply(5).pow(e)	Multiplicative with a(p^e) = (5*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (5*(p(k)+2))^e(k). a(n) = A165826(n) * A166590(n) = 5^bigomega(n) * A166590(n) = 5^A001222(n) * A166590(n).
+A167307	mult	0	p.add(+2).multiply(6).pow(e)	Multiplicative with a(p^e) = (6*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (6*(p(k)+2))^e(k). a(n) = A165827(n) * A166590(n) = 6^bigomega(n) * A166590(n) = 6^A001222(n) * A166590(n).
+A167308	mult	0	p.add(+2).multiply(7).pow(e)	Multiplicative with a(p^e) = (7*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (7*(p(k)+2))^e(k). a(n) = A165828(n) * A166590(n) = 7^bigomega(n) * A166590(n) = 7^A001222(n) * A166590(n).
+A167309	mult	0	p.add(+2).multiply(8).pow(e)	Multiplicative with a(p^e) = (8*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (8*(p(k)+2))^e(k). a(n) = A165829(n) * A166590(n) = 8^bigomega(n) * A166590(n) = 8^A001222(n) * A166590(n).
+A167310	mult	0	p.add(+2).multiply(9).pow(e)	Multiplicative with a(p^e) = (9*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (9*(p(k)+2))^e(k). a(n) = A165830(n) * A166590(n) = 9^bigomega(n) * A166590(n) = 9^A001222(n) * A166590(n).
+A167311	mult	0	p.add(+2).multiply(10).pow(e)	Multiplicative with a(p^e) = (10*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (10*(p(k)+2))^e(k). a(n) = A165831(n) * A166590(n) = 10^bigomega(n) * A166590(n) = 10^A001222(n) * A166590(n).
+A167312	mult	0	p.add(-3).multiply(2).pow(e)	Multiplicative with a(p^e) = (2*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A061142(n) * A166589(n) = 2^bigomega(n) * A166589(n) = 2^A001222(n) * A166589(n).
+A167313	mult	0	p.add(-3).multiply(3).pow(e)	Multiplicative with a(p^e) = (3*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (3*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A165824(n) * A166589(n) = 3^bigomega(n) * A166589(n) = 3^A001222(n) * A166589(n).
+A167314	mult	0	p.add(-3).multiply(4).pow(e)	Multiplicative with a(p^e) = (4*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (4*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A165825(n) * A166589(n) = 4^bigomega(n) * A166589(n) = 4^A001222(n) * A166589(n).
+A167315	mult	0	p.add(-3).multiply(5).pow(e)	Multiplicative with a(p^e) = (5*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (5*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A165826(n) * A166589(n) = 5^bigomega(n) * A166589(n) = 5^A001222(n) * A166589(n).
+A167316	mult	0	p.add(-3).multiply(6).pow(e)	Multiplicative with a(p^e) = (6*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (6*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A165827(n) * A166589(n) = 6^bigomega(n) * A166589(n) = 6^A001222(n) * A166589(n).
+A167317	mult	0	p.add(-3).multiply(7).pow(e)	Multiplicative with a(p^e) = (7*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (7*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A165828(n) * A166589(n) = 7^bigomega(n) * A166589(n) = 7^A001222(n) * A166589(n).
+A167318	mult	0	p.add(-3).multiply(8).pow(e)	Multiplicative with a(p^e) = (8*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (8*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A165829(n) * A166589(n) = 8^bigomega(n) * A166589(n) = 8^A001222(n) * A166589(n).
+A167319	mult	0	p.add(-3).multiply(9).pow(e)	Multiplicative with a(p^e) = (9*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (9*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A165830(n) * A166589(n) = 9^bigomega(n) * A166589(n) = 9^A001222(n) * A166589(n).
+A167320	mult	0	p.add(-3).multiply(10).pow(e)	Multiplicative with a(p^e) = (10*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (10*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A165831(n) * A166589(n) = 10^bigomega(n) * A166589(n) = 10^A001222(n) * A166589(n).
+A167321	mult	0	p.add(+3).multiply(2).pow(e)	Multiplicative with a(p^e) = (2*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(p(k)+3))^e(k). a(n) = A061142(n) * A166591(n) = 2^bigomega(n) * A166591(n) = 2^A001222(n) * A166591(n).
+A167322	mult	0	p.add(+3).multiply(3).pow(e)	Multiplicative with a(p^e) = (3*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (3*(p(k)+3))^e(k). a(n) = A165824(n) * A166591(n) = 3^bigomega(n) * A166591(n) = 3^A001222(n) * A166591(n).
+A167323	mult	0	p.add(+3).multiply(4).pow(e)	Multiplicative with a(p^e) = (4*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (4*(p(k)+3))^e(k). a(n) = A165825(n) * A166591(n) = 4^bigomega(n) * A166591(n) = 4^A001222(n) * A166591(n).
+A167324	mult	0	p.add(+3).multiply(5).pow(e)	Multiplicative with a(p^e) = (5*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (5*(p(k)+3))^e(k). a(n) = A165826(n) * A166591(n) = 5^bigomega(n) * A166591(n) = 5^A001222(n) * A166591(n).
+A167325	mult	0	p.add(+3).multiply(6).pow(e)	Multiplicative with a(p^e) = (6*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (6*(p(k)+3))^e(k). a(n) = A165827(n) * A166591(n) = 6^bigomega(n) * A166591(n) = 6^A001222(n) * A166591(n).
+A167326	mult	0	p.add(+3).multiply(7).pow(e)	Multiplicative with a(p^e) = (7*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (7*(p(k)+3))^e(k). a(n) = A165828(n) * A166591(n) = 7^bigomega(n) * A166591(n) = 7^A001222(n) * A166591(n).
+A167327	mult	0	p.add(+3).multiply(8).pow(e)	Multiplicative with a(p^e) = (8*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (8*(p(k)+3))^e(k). a(n) = A165829(n) * A166591(n) = 8^bigomega(n) * A166591(n) = 8^A001222(n) * A166591(n).
+A167328	mult	0	p.add(+3).multiply(9).pow(e)	Multiplicative with a(p^e) = (9*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (9*(p(k)+3))^e(k). a(n) = A165830(n) * A166591(n) = 9^bigomega(n) * A166591(n) = 9^A001222(n) * A166591(n).
+A167329	mult	0	p.add(+3).multiply(10).pow(e)	Multiplicative with a(p^e) = (10*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (10*(p(k)+3))^e(k). a(n) = A165831(n) * A166591(n) = 10^bigomega(n) * A166591(n) = 10^A001222(n) * A166591(n).
+A167330	mult	0	p.multiply(2).add(-1).multiply2().pow(e)	Multiplicative with a(p^e) = (2*(2p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(2*p(k)-1))^e(k). a(n) = A061142(n) * A166651(n) = 2^bigomega(n) * A166651(n) = 2^A001222(n) * A166651(n).
+A167331	mult	0	p.multiply(3).add(-1).multiply2().pow(e)	Multiplicative with a(p^e) = (2*(3p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(3*p(k)-1))^e(k). a(n) = A061142(n) * A166652(n) = 2^bigomega(n) * A166652(n) = 2^A001222(n) * A166652(n).
+A167332	mult	0	p.multiply(4).add(-1).multiply2().pow(e)	Multiplicative with a(p^e) = (2*(4p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(4*p(k)-1))^e(k). a(n) = A061142(n) * A166653(n) = 2^bigomega(n) * A166653(n) = 2^A001222(n) * A166653(n).
+A167333	mult	0	p.multiply(5).add(-1).multiply2().pow(e)	Multiplicative with a(p^e) = (2*(5p-1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(5*p(k)-1))^e(k). a(n) = A061142(n) * A166654(n) = 2^bigomega(n) * A166654(n) = 2^A001222(n) * A166654(n).
+A167334	mult	0	p.multiply(2).add(+1).multiply2().pow(e)	Multiplicative with a(p^e) = (2*(2p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(2*p(k)+1))^e(k). a(n) = A061142(n) * A166660(n) = 2^bigomega(n) * A166660(n) = 2^A001222(n) * A166660(n).
+A167335	mult	0	p.multiply(3).add(+1).multiply2().pow(e)	Multiplicative with a(p^e) = (2*(3p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(3*p(k)+1))^e(k). a(n) = A061142(n) * A166661(n) = 2^bigomega(n) * A166661(n) = 2^A001222(n) * A166661(n).
+A167336	mult	0	p.multiply(4).add(+1).multiply2().pow(e)	Multiplicative with a(p^e) = (2*(4p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(4*p(k)+1))^e(k). a(n) = A061142(n) * A166662(n) = 2^bigomega(n) * A166662(n) = 2^A001222(n) * A166662(n).
+A167337	mult	0	p.multiply(5).add(+1).multiply2().pow(e)	Multiplicative with a(p^e) = (2*(5p+1))^e. If n = Product p(k)^e(k) then a(n) = Product (2*(5*p(k)+1))^e(k). a(n) = A061142(n) * A166663(n) = 2^bigomega(n) * A166663(n) = 2^A001222(n) * A166663(n).
+A167338	mult	0	p.multiply(p.add(+1)).pow(e)	Multiplicative with a(p^e) = (p*(p+1))^e.
+A167339	mult	0	p.multiply(p.add(-2)).pow(e)	Multiplicative with a(p^e) = (p*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product (p(k)*(p(k)-2))^e(k). a(2k) = 0 for k >= 1, a(n) = A000027(n) * A166586(n).
+A167340	mult	0	p.multiply(p.add(+2)).pow(e)	Multiplicative with a(p^e) = (p*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product (p(k)*(p(k)+2))^e(k). a(n) = n * A166590(n).
+A167341	mult	0	p.multiply(p.add(-3)).pow(e)	Multiplicative with a(p^e) = (p*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (p(k)*(p(k)-3))^e(k).
+A167342	mult	0	p.multiply(p.add(+3)).pow(e)	Multiplicative with a(p^e) = (p*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product (p(k)*(p(k)+3))^e(k). a(n) = n * A166591(n).
+A167344	mult	0	p.add(-1).multiply(p.add(+1)).pow(e)	Multiplicative with a(p^e) = ((p-1)*(p+1))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-1)*(p(k)+1))^e(k).
+A167345	mult	0	p.add(-1).multiply(p.add(-2)).pow(e)	Multiplicative with a(p^e) = ((p-1)*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-1)*(p(k)-2))^e(k). a(2k) = 0 for k >= 1, a(n) = A003958(n) * A166586(n).
+A167346	mult	0	p.add(-1).multiply(p.add(+2)).pow(e)	Multiplicative with a(p^e) = ((p-1)*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-1)*(p(k)+2))^e(k). a(n) = A003958(n) * A166590(n).
+A167347	mult	0	p.add(-1).multiply(p.add(-3)).pow(e)	Multiplicative with a(p^e) = ((p-1)*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-1)*(p(k)-3))^e(k). a(3k) = 0 for k >= 1, a(n) = A003958(n) * A166589(n).
+A167350	mult	0	p.add(+1).multiply(p.add(-2)).pow(e)	Multiplicative with a(p^e) = ((p+1)*(p-2))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+1)*(p(k)-2))^e(k). a(2k) = 0 for k >= 1, a(n) = A003959(n) * A166586(n).
+A167351	mult	0	p.add(+1).multiply(p.add(+2)).pow(e)	Multiplicative with a(p^e) = ((p+1)*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+1)*(p(k)+2))^e(k). a(n) = A003959(n) * A166590(n).
+A167352	mult	0	p.add(+1).multiply(p.add(-3)).pow(e)	Multiplicative with a(p^e) = ((p+1)*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+1)*(p(k)-3))^e(k). a(3k) = 0 for k >= 1, a(n) = A003959(n) * A166589(n).
+A167353	mult	0	p.add(+1).multiply(p.add(+3)).pow(e)	Multiplicative with a(p^e) = ((p+1)*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+1)*(p(k)+3))^e(k). a(n) = A003959(n) * A166591(n).
+A167355	mult	0	p.add(-2).multiply(p.add(+2)).pow(e)	Multiplicative with a(p^e) = ((p-2)*(p+2))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-2)*(p(k)+2))^e(k). a(2k) = 0 for k >= 1, a(n) = A166586(n) * A166590(n).
+A167356	mult	0	p.add(-2).multiply(p.add(-3)).pow(e)	Multiplicative with a(p^e) = ((p-2)*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-2)*(p(k)-3))^e(k). a(2k) = 0 for k >= 1, a(3k) = 0 for k >= 1. a(n) = A166586(n) * A166589(n).
+A167357	mult	0	p.add(-2).multiply(p.add(+3)).pow(e)	Multiplicative with a(p^e) = ((p-2)*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-2)*(p(k)+3))^e(k). a(2k) = 0 for k >= 1. a(n) = A166586(n) * A166591(n).
+A167359	mult	0	p.add(+2).multiply(p.add(-3)).pow(e)	Multiplicative with a(p^e) = ((p+2)*(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+2)*(p(k)-3))^e(k). a(3k) = 0 for k >= 1. a(n) = A166590(n) * A166589(n).
+A167360	mult	0	p.add(+2).multiply(p.add(+3)).pow(e)	Multiplicative with a(p^e) = ((p+2)*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+2)*(p(k)+3))^e(k). a(n) = A166590(n) * A166591(n).
+A167362	mult	0	p.add(-3).multiply(p.add(+3)).pow(e)	Multiplicative with a(p^e) = ((p-3)*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-3)*(p(k)+3))^e(k). a(n) = A166589(n) * A166591(n).
+A167363	mult	0	p.add(+3).square().pow(e)	Multiplicative with a(p^e) = ((p+3)^2)^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+3)^2)^e(k). a(n) = A166591(n)^2.
+A167343	mult	0	p.add(-1).square().pow(e)	Multiplicative with a(p^e) = ((p-1)^2)^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-1)^2)^e(k). a(n) = A003958(n)^2.
+A167349	mult	0	p.add(+1).square().pow(e)	Multiplicative with a(p^e) = ((p+1)^2)^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+1)^2)^e(k). a(n) = A003959(n)^2.
+A167354	mult	0	p.add(-2).square().pow(e)	Multiplicative with a(p^e) = ((p-2)^2)^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-2)^2)^e(k). a(2k) = 0 for k >= 1, a(n) = A166586(n)^2.
+A167358	mult	0	p.add(+2).square().pow(e)	Multiplicative with a(p^e) = ((p+2)^2)^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)+2)^2)^e(k). a(n) = A166590(n)^2.
+A167361	mult	0	p.add(-3).square().pow(e)	Multiplicative with a(p^e) = ((p-3)^2)^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-3)^2)^e(k). a(3k) = 0 for k >= 1. a(n) = A166589(n)^2.
+
+
+A111217	mult	0	Binomial.binomial(e + 6, 6)	Multiplicative with a(p^e) = binomial(e+6,6). - _Amiram Eldar_, Sep 13 2020
+A111218	mult	0	Binomial.binomial(e + 7, 7)	Multiplicative with a(p^e) = binomial(e+7,7). - _Amiram Eldar_, Sep 13 2020
+A111219	mult	0	Binomial.binomial(e + 8, 8)	Multiplicative with a(p^e) = binomial(e+8,8). - _Amiram Eldar_, Sep 13 2020
+A111220	mult	0	Binomial.binomial(e + 9, 9)	Multiplicative with a(p^e) = binomial(e+9,9). - _Amiram Eldar_, Sep 13 2020
+A111221	mult	0	Binomial.binomial(e + 10, 10)	Multiplicative with a(p^e) = binomial(e+10,10). - _Amiram Eldar_, Sep 13 2020
+A111306	mult	0	Binomial.binomial(e + 11, 11)	Multiplicative with a(p^e) = binomial(e+11,11). - _Amiram Eldar_, Sep 13 2020
+
+A317848	mult	0	Binomial.binomial(2*e, e)	Multiplicative with a(p^e) = binomial(2*e, e).
+A341831	mult	0	Binomial.binomial(5, e).multiply(((e & 1) == 0) ? 1 : -1)	Multiplicative with a(p^e) = (-1)^e * binomial(5, e).
+A341832	mult	0	Binomial.binomial(6, e).multiply(((e & 1) == 0) ? 1 : -1)	Multiplicative with a(p^e) = (-1)^e * binomial(6, e).
+A341833	mult	0	Binomial.binomial(7, e).multiply(((e & 1) == 0) ? 1 : -1)	Multiplicative with a(p^e) = (-1)^e * binomial(7, e).
+A341834	mult	0	Binomial.binomial(8, e).multiply(((e & 1) == 0) ? 1 : -1)	Multiplicative with a(p^e) = (-1)^e * binomial(8, e).
+A341835	mult	0	Binomial.binomial(9, e).multiply(((e & 1) == 0) ? 1 : -1)	Multiplicative with a(p^e) = (-1)^e * binomial(9, e).
+A341836	mult	0	Binomial.binomial(10, e).multiply(((e & 1) == 0) ? 1 : -1)	Multiplicative with a(p^e) = (-1)^e * binomial(10, e).
+
+A342007	mult	0	p.pow(Z.valueOf(e).divide(p).intValue())	Multiplicative with a(p^e) = p^floor(e/p).
+A343785	mult	0	p.mod(Z.THREE).equals(Z.TWO) ? Z.valueOf(((e & 1) == 0) ? 1 : -1) : Z.ONE	a(n) is completely multiplicative with a(p^e) = (-1)^e if p == 2 (mod 3) and a(p^e) = 1 otherwise.
+A344326	mult	0	p.add(-1).multiply(e-1).negate().add(2)	Multiplicative with a(p^e) = 2 - (e-1)*(p-1). - _Amiram Eldar_, May 18 2021
+A344327	mult	0	Z.valueOf(4 * e + 1)	Multiplicative with a(p^e) = 4*e+1.
+A344328	mult	0	Z.valueOf(5 * e + 1)	Multiplicative with a(p^e) = 5*e+1.
+A344329	mult	0	Z.valueOf(6 * e + 1)	Multiplicative with a(p^e) = 6*e+1.
+A343526	mult	0	Z.valueOf(7 * e + 1)	Multiplicative with a(p^e) = 7*e+1.
+A344335	mult	0	Z.valueOf(8 * e + 1)	Multiplicative with a(p^e) = 8*e+1.
+A344336	mult	0	Z.valueOf(9 * e + 1)	Multiplicative with a(p^e) = 9*e+1.
+A344337	mult	0	Z.NINE	Multiplicative with a(p^e) = 9.
+

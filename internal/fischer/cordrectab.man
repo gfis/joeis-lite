@@ -1,0 +1,44 @@
+# den A209430	cordrec	1	2	0	1,1	a(n-1).add(a(n-2).multiply(2)).divide(n)	a(n)=a(n-1)+(2*a(n-2))/n				Denominator of l(n), where l(1)=1, l(2)=2, l(n)=l(n-1)+2*l(n-2)/n.
+# num A185332	cordrec	1	3	0	1,1,1	a(n-1).add(a(n-2)).divide(a(n-3))	a(n)=(a(n-1)+a(n-2))/a(n-3)				Numerators of u(n) where u(n) = (u(n-1) + u(n-2)) / u(n-3), with u(1) = u(2) = u(3) = 1.
+# prime A267438	cordrec	1	4	0	11,23,67,151	a(n-1).multiply(4).subtract(Z.valueOf(7).multiply(a(n-2))).add(a(n-3).multiply(8)).subtract(Z.valueOf(4).multiply(a(n-4)))	a(n)=4*a(n-1)-7*a(n-2)+8*a(n-3)-4*a(n-4)				Abatzoglou-Silverberg-Sutherland-Wong primes: primes in A267437.
+A059232	cordrec	1	1	0	1	a(n-1).pow(a(n-1)).add(n)	a(n)=a(n-1)^a(n-1)+n				a(1)= 1, a(n) = (a(n-1)^a(n-1)) + n.
+A063404	cordrec	0	3	0	1,1,1	a(n-1).add(a(n-2).add(1).multiply(a(n-3).add(1)))	a(n)=a(n-1)+(1+a(n-2))*(1+a(n-3))				a(0)=1; a(1)=1; a(2)=1; a(n) = a(n-1) + (1 + a(n-2))*(1 + a(n-3)).
+A067339	cordrec	1	1	0	2	a(n-1).multiply(a(n-1).add(1)).divide(2).add(2)	a(n)=a(n-1)*(a(n-1)+1)/2+2				Divide the natural numbers in sets of consecutive numbers, starting with {1,2}, each set with number of elements equal to the sum of elements of the preceding set. The final element of the n-th set gives a(n).
+A072042	cordrec	1	2	2	1,1	a(n+1).multiply(a(n)).add(a(n+1).multiply(a(n)).divide(n))	a(n+2)=a(n+1)*a(n)*(1+1/n)				a(n+2) = a(n+1)*a(n)*(1+1/n), a(1)=a(2)=1.
+A072291	cordrec	1	2	0	1,1	a(n-1).add(a(n-2).pow(n))	a(n)=a(n-1)+a(n-2)^n				a(n)=a(n-1)+a(n-2)^n with a(1)=a(2)=1.
+A079755	cordrec	3	1	0	0	a(n-1).multiply(n).add(Z.valueOf(n-1).multiply((n-1) / 2))	a(n)=n*a(n-1)+(n-1)*((n-1)/2)				Operation count to create all permutations of n distinct elements using the "streamlined" version of Knuth's Algorithm L (lexicographic permutation generation).
+A086857	cordrec	0	2	0	0,1	a(n-1).add(a(n-2)).add(1).square()	a(n)=(a(n-1)+a(n-2)+1)^2				a(0) = 0, a(1) = 1; for n > 1, a(n) = (a(n-1) + a(n-2) + 1)^2.
+A096423	cordrec	1	2	0	1,1	a(n-1).add(1).multiply(a(n-2).add(1))	a(n)=(a(n-1)+1)*(a(n-2)+1)				a(1)=a(2)=1, a(n) = (a(n-1)+1)*(a(n-2)+1) for n > 2.
+A096658	cordrec	0	2	0	1,2	Z.ONE.shiftLeft(n).multiply(a(n-1)).add(Z.ONE.shiftLeft(n-1).multiply(a(n-2)))	a(n)=2^n*a(n-1)+2^(n-1)*a(n-2)				a(n) = (2^n)*a(n-1) + (2^(n-1))*a(n-2), a(0)=1, a(1)=2.
+A099185	cordrec	0	1	1	2	a(n).pow(3).multiply2().add(a(n)).divide(3)	a(n+1)=(2*a(n)^3+a(n))/3				Iterated octahedral numbers, starting at a(0) = 2.
+A108225	cordrec	0	2	0	0,2	a(n-1).add(a(n-2)).multiply(a(n-1).subtract(a(n-2)).add(1)).divide(2)	a(n)=(a(n-1)+a(n-2))*(a(n-1)-a(n-2)+1)/2				a(0) = 0, a(1) = 2; for n >= 2, a(n) = (a(n-1) + a(n-2))*(a(n-1) - a(n-2) + 1)/2.
+A109173	cordrec	1	1	0	1	a(n-1).pow(2).add(a(n-1).multiply(((n & 1) == 0) ? 1 : -1)).add(((n & 1) == 0) ? 1 : -1)	a(n)=a(n-1)^2+(-1)^n*a(n-1)+(-1)^n				Recursive form of A109845 but with a(1)=1.
+A111236	cordrec	1	4	0	1,1,1,1	a(n-1).add(a(n-2)).multiply(a(n-3).add(a(n-4)))	a(n)=(a(n-1)+a(n-2))*(a(n-3)+a(n-4))				a(1)=a(2)=a(3)=a(4)=1. For n >= 5, a(n)= (a(n-1)+a(n-2)) * (a(n-3)+a(n-4)).
+A111491	cordrec	0	1	0	1	Z.ONE.shiftLeft(n).subtract(1).multiply(a(n-1)).subtract(((n & 1) == 0) ? 1 : -1)	a(n)=(2^n-1)*a(n-1)-(-1)^n				a(0) = 1; for n>0, a(n) = (2^n-1)*a(n-1)-(-1)^n.
+A113606	cordrec	1	2	0	1,1	a(n-1).add(Z.ONE.shiftLeft(a(n-2).intValue()))	a(n)=a(n-1)+2^a(n-2)				Binary power sequence: a(n) = a(n-1) + 2^a(n-2).
+A113848	cordrec	1	2	0	1,1	a(n-2).multiply(2).add(a(n-1).pow(2))	a(n)=2*a(n-2)+a(n-1)^2				a(1) = a(2) = 1, a(n+2) = 2*a(n) + a(n+1)^2.
+A115590	cordrec	0	1	0	0	a(n-1).add(1).pow(3)	a(n)=(a(n-1)+1)^3				a(0) = 1; a(n+1) = (1+a(n))^3.
+A116944	cordrec	1	1	0	1	a(n-1).add(1).pow(n)	a(n)=(a(n-1)+1)^n				a(1) = 1; for n>1, a(n)=(a(n-1)+1)^n.
+A119565	cordrec	0	2	0	1,2,3,5,7,10	a(n-1).add(1).add(a(n-2).divide(6))	a(n)=(a(n-1)+1+a(n-2)/6)				a(0)=1, a(1)=2, a(2)=3, a(3)=5, a(4)=7, a(5)=10; a(n) = floor(a(n-1) + 1 + a(n-2)/6) for n>=6.
+A122024	cordrec	0	6	0	1,1,1,1,1,1	a(n-5).multiply(a(n-1)).multiply(3).subtract(a(n-2).multiply(a(n-4))).divide(a(n-6))	a(n)=(3*a(n-1)*a(n-5)-a(n-2)*a(n-4))/a(n-6)				a(n) = (3*a(n - 1)a(n - 5) - a(n - 2)*a(n - 4))/a(n - 6); a(0) = 1, a(1) = 1, a(2) = 1, a(3) = 1, a(4) = 1, a(5) = 1.
+A122025	cordrec	0	5	0	1,1,1,1,1	a(n-4).multiply(a(n-1)).multiply(3).subtract(a(n-2).multiply(a(n-3))).divide(a(n-5))	a(n)=(3*a(n-1)*a(n-4)-a(n-2)*a(n-3))/a(n-5)				a(n) = (3*a(n-1)*a(n-4) - a(n-2)*a(n-3)) / a(n-5).
+A123672	cordrec	1	1	0	1	Z.ONE.shiftLeft(n).subtract(1).multiply(a(n-1)).add(((n & 1) == 0) ? 1 : -1)	a(n)=(2^n-1)*a(n-1)+(-1)^n				a(1) = 1; for n > 1, a(n) = (2^n-1)*a(n-1) + (-1)^n.
+A129440	cordrec	0	1	0	0,1,5,55	a(n-1).multiply(a(n-1).add(1)).multiply(a(n-1).multiply(2).add(1)).divide(6)	a(n)=a(n-1)*(a(n-1)+1)*(2*a(n-1)+1)/6				a(0)=0, a(1)=1, a(2)=5 and for n>2: a(n)=a(n-1)*(a(n-1)+1)*(2*a(n-1)+1)/6.
+A144229	cordrec	0	2	0	1,1	(a(n-2).pow(2).add(a(n-1)).square())	a(n)=(a(n-2)^2+a(n-1))^2				The numerators of the convergents to the recursion x=1/(x^2+1).
+# prime A152184	cordrec	1	2	0	2,3	(a(n-1).add(1).add(a(n-2).divide(6)))	a(n)=(a(n-1)+1+a(n-2)/6)				Primes in A119565.
+A155698	cordrec	1	3	0	1,1,1	a(n-1).add(a(n-2).pow(a(n-3).intValue()))	a(n)=a(n-1)+a(n-2)^a(n-3)				a(n)=a(n-1)+a(n-2)^a(n-3); a(1)=a(2)=a(3)=1.
+A165902	cordrec	0	2	0	0,1,1	a(n-1).add(Z.valueOf(3).pow(n-3).multiply(a(n-2)))	a(n)=a(n-1)+3^(n-3)*a(n-2)				a(0)=0, a(1)=1, a(n) = a(n-1) + 3^(n-3)*a(n-2).
+A172028	cordrec	1	1	0	2	a(n-1).multiply(3).multiply(a(n-1).add(1)).add(1)	a(n)=1+3*a(n-1)*(1+a(n-1))				a(1) = 2; for n > 1, a(n) = smallest k such that a(n-1)^3+k is a cube.
+A186738	cordrec	0	3	0	0,0,1	a(n-1).multiply(2).add(Z.valueOf(n-2).multiply(a(n-2))).subtract(a(n-3).multiply(n-2))	a(n)=2*a(n-1)+(n-2)*a(n-2)-(n-2)*a(n-3)				a(0)=0, a(1)=0; for n>1, a(n) = a(n-1) + (n-1)*a(n-2) + 1.
+A210098	cordrec	0	5	0	0,1,1,1,1,2	a(n-1).multiply(a(n-4)).subtract(a(n-2).multiply(a(n-3))).divide(a(n-5))	a(n)=(a(n-1)*a(n-4)-a(n-2)*a(n-3))/a(n-5)				Somos-5 sequence variant: a(n) = (a(n-1) * a(n-4) - a(n-2) * a(n-3)) / a(n-5), a(0) = 0, a(1) = a(2) = a(3) = a(4) = 1, a(5) = 2.
+A230053	cordrec	0	2	2	1,1	Z.valueOf(n+2).multiply(a(n+1)).multiply(a(n))	a(n+2)=(n+2)*a(n+1)*a(n)				Recurrence a(n+2) = (n+2)*a(n+1)*a(n), with a(0) = a(1) = 1.
+A242107	cordrec	0	5	0	0,1,1,1,1,-1	a(n-1).negate().multiply(a(n-4)).add(a(n-2).multiply(a(n-3))).divide(a(n-5))	a(n)=(-a(n-1)*a(n-4)+a(n-2)*a(n-3))/a(n-5)				Reduced division polynomials associated with elliptic curve y^2 + x*y = x^3 - x^2 - x + 1 and multiples of point (0, 1).
+A242995	cordrec	1	2	0	2,3	a(n-1).pow(2).add(a(n-1).multiply(a(n-2).pow(2))).subtract(a(n-2).pow(4))	a(n)=a(n-1)^2+a(n-1)*a(n-2)^2-a(n-2)^4				a(n) = a(n-1)^2 + a(n-1)*a(n-2)^2 - a(n-2)^4 with a(1) = 2, a(2) = 3.
+A244373	cordrec	0	7	0	1,0,1,2,-1,4,3,4,15	a(n-6).negate().multiply(a(n-1)).add(a(n-2).multiply(2).multiply(a(n-5))).add(a(n-3).multiply(2).multiply(a(n-4))).divide(a(n-7))	a(n)=(-a(n-6)*a(n-1)+2*a(n-2)*a(n-5)+2*a(n-3)*a(n-4))/a(n-7)				a(n) = A242107(n+1) * A242107(n-1) * (1 + mod(n,2)).
+A263048	cordrec	0	2	0	0,1	a(n-2).pow(a(n-1)).add(a(n-1).pow(a(n-2)))	a(n)=a(n-2)^a(n-1)+a(n-1)^a(n-2)				a(0)=0, a(1)=1; for n>1, a(n) = a(n-2)^a(n-1) + a(n-1)^a(n-2).
+A264932	cordrec	1	2	0	1,3	a(n-1).pow(a(n-2).pow(a(n-2)))	a(n)=a(n-1)^a(n-2)^a(n-2)				a(1) = 1, a(2) = 3, a(n)= H_4(a(n-1),a(n-2)).
+A264933	cordrec	0	3	0	0,1,2	a(n-1).pow(a(n-2).pow(a(n-3)))	a(n)=a(n-1)^a(n-2)^a(n-3)				a(0)=0; a(1)=1; a(2)=2; a(n) = a(n-1)^a(n-2)^a(n-3).
+# A271215	cordrec	0	5	0	1,0,1,4,24	a(n-1).multiply(2).add(Z.valueOf(2*n-3).multiply(a(n-2))).subtract(a(n-3).multiply(2*n-5)).add(a(n-4).multiply(2)).subtract(a(n-5))	a(n)=2*a(n-1)+(2*n-3)*a(n-2)-(2*n-5)*a(n-3)+2*a(n-4)-a(n-5)				Number of loop-free assembly graphs with n rigid vertices.
+A275865	cordrec	0	2	0	1,1,0,-1	a(n-1).multiply(3).divide(2).subtract(a(n-2).multiply(3).divide(2))	a(n)=((3*a(n-1))/2)-((3*a(n-2))/2)				Floor(r*a(n-1)) - floor(r*a(n-2)), where r = 3/2, a(0) = 1, a(1) = 1.
+A304780	cordrec	1	1	0	1	a(n-1).multiply(3).multiply(a(n-1).add(1)).divide(2)	a(n)=(3*a(n-1)*(a(n-1)+1))/2				Consider a triangle whose first row is {1,2} and, for n > 1, has as its n-th row the integers k through 2k where k is the sum of the numbers in the (n-1)th row. Then a(n) is the first number in the n-th row.
+A319536	cordrec	1	2	0	0,2	Z.valueOf(2*n-1).multiply(a(n-1)).add(Z.valueOf((n-2) * 2).multiply(a(n-2)))	a(n)=(2*n-1)*a(n-1)+2*(n-2)*a(n-2)				Number of signed permutations of length n where numbers occur in consecutive order.

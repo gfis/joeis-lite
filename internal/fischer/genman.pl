@@ -167,7 +167,8 @@ GFis
     } elsif ($upperleft == 1) {
         print TAR "triangle.UpperLeftTriangle";
     } else {
-        print TAR "Sequence";
+        print TAR "MemorySequence";
+        print TAR ";\nimport irvine.oeis.SequenceWithOffset";
     } # end of superclass import
     print TAR ";\n";
     #--------
@@ -191,7 +192,7 @@ GFis
     } elsif ($upperleft  == 1) {
         print TAR "extends UpperLeftTriangle";
     } else {
-        print TAR "implements Sequence";
+        print TAR "implements SequenceWithOffset";
     }
     print TAR " {\n";
     if ($withn) {
@@ -253,6 +254,11 @@ GFis
     print TAR <<"GFis"; # end of generic constructor
   }
 
+  \@Override
+  public int getOffset() {
+    return mOffset;
+  }
+
 GFis
     #--------
     if (0) { # switch for methods
@@ -308,11 +314,6 @@ GFis
     } # switch for methods
     #--------
     print TAR <<"GFis"; # end of class
-
-  \@Override
-  public int getOffset() {
-    return mOffset;
-  }
 }
 GFis
     close(TAR);

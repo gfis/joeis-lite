@@ -1,0 +1,58 @@
+A073775	holos	0	[[0],[12,-85,-27,-2],[-72,37,21,2]]	-2	0
+#A073775	holos	0	[[0],[12,-85,-27,-2],[-72,37,21,2]]	-2,17,47,90,148,223,317,432,570	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[12,-85,-27,-2],[-72,37,21,2]]-i "-2,17,47,90,148,223,317,432,570-o 0 -d 0 -dist 0 -t 0 
+-2,17,47,90,148,223,317,432,570,733,923,1142,1392,1675,1993,2348,2742,3177,3655,4178,4748,5367,6037,6760,7538,8373,9267,10222,11240,12323,13473,14692
+
+A119771	holos	0	[[0],[0,0,-2,-1],[-1,3,-3,1]]	0,1	0
+#A119771	holos	0	[[0],[0,0,-2,-1],[-1,3,-3,1]]	0,1,16,90,320,875,2016,4116,7680	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[0,0,-2,-1],[-1,3,-3,1]]-i "0,1,16,90,320,875,2016,4116,7680-o 0 -d 0 -dist 0 -t 0 
+0,1,16,90,320,875,2016,4116,7680,13365,22000,34606,52416,76895,109760,153000,208896,280041,369360,480130,616000,781011,979616,1216700,1497600,1828125,2214576,2663766,3183040,3780295,4464000,5243216
+
+A136219	holos	0	[[0],[256,-88,31,-3],[-336,146,-37,3]]	1,3,7	0
+#A136219	holos	0	[[0],[256,-88,31,-3],[-336,146,-37,3]]	1,3,7,13,22,33,47,64,84	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[256,-88,31,-3],[-336,146,-37,3]]-i "1,3,7,13,22,33,47,64,84-o 0 -d 0 -dist 0 -t 0 
+1,3,7,13,22,33,47,64,84,106,131,159,190,224,261,301,344,390,439,491,546,604,665,729,796,866,939,1015,1094,1176,1261,1349
+
+A179095	holos	0	[[0],[-6,-1,-6,-11],[-22,49,-38,11]]	0,1	0
+#A179095	holos	0	[[0],[-6,-1,-6,-11],[-22,49,-38,11]]	0,1,10,45,135,320,651,1190,2010	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-6,-1,-6,-11],[-22,49,-38,11]]-i "0,1,10,45,135,320,651,1190,2010-o 0 -d 0 -dist 0 -t 0 
+0,1,10,45,135,320,651,1190,2010,3195,4840,7051,9945,13650,18305,24060,31076,39525,49590,61465,75355,91476,110055,131330,155550,182975,213876,248535,287245,330310,378045,430776
+
+A256530	holos	0	[[0],[2648,-843,96,-4],[-3192,975,-104,4]]	0,1	0
+#A256530	holos	0	[[0],[2648,-843,96,-4],[-3192,975,-104,4]]	0,1,9,21,49,61,97,157,225	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[2648,-843,96,-4],[-3192,975,-104,4]]-i "0,1,9,21,49,61,97,157,225-o 0 -d 0 -dist 0 -t 0 
+0,1,9,21,49,61,97,157,225,237,273,333,417,525,657,813,993,1197,1425,1677,1953,2253,2577,2925,3297,3693,4113,4557,5025,5517,6033,6573
+
+A256534	holos	0	[[0],[2048,-640,72,-3],[-2456,739,-78,3]]	0,4	0
+#A256534	holos	0	[[0],[2048,-640,72,-3],[-2456,739,-78,3]]	0,4,16,28,64,76,112,172,256	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[2048,-640,72,-3],[-2456,739,-78,3]]-i "0,4,16,28,64,76,112,172,256-o 0 -d 0 -dist 0 -t 0 
+0,4,16,28,64,76,112,172,256,268,304,364,448,556,688,844,1024,1228,1456,1708,1984,2284,2608,2956,3328,3724,4144,4588,5056,5548,6064,6604
+
+A266535	holos	0	[[0],[1240,-395,46,-2],[-1496,459,-50,2]]	0,1	0
+#A266535	holos	0	[[0],[1240,-395,46,-2],[-1496,459,-50,2]]	0,1,3,7,11,15,23,35,43	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[1240,-395,46,-2],[-1496,459,-50,2]]-i "0,1,3,7,11,15,23,35,43-o 0 -d 0 -dist 0 -t 0 
+0,1,3,7,11,15,23,35,43,47,55,67,83,103,127,155,187,223,263,307,355,407,463,523,587,655,727,803,883,967,1055,1147
+
+A322615	holos	0	[[0],[-128,40,197,-25],[-48,382,-247,25]]	0,13	0
+#A322615	holos	0	[[0],[-128,40,197,-25],[-48,382,-247,25]]	0,13,50,113,201,314,452,616,804	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-128,40,197,-25],[-48,382,-247,25]]-i "0,13,50,113,201,314,452,616,804-o 0 -d 0 -dist 0 -t 0 
+0,13,50,113,201,314,452,616,804,1018,1257,1521,1810,2124,2463,2827,3216,3630,4069,4533,5022,5536,6075,6639,7228,7842,8481,9145,9834,10548,11287,12051
+
+A326665	holos	0	[[0],[-80,50,3,-1],[112,-38,-5,1]]	1	0
+#A326665	holos	0	[[0],[-80,50,3,-1],[112,-38,-5,1]]	1,5,11,19,30,43,58,75,94	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-80,50,3,-1],[112,-38,-5,1]]-i "1,5,11,19,30,43,58,75,94-o 0 -d 0 -dist 0 -t 0 
+1,5,11,19,30,43,58,75,94,116,140,166,194,224,256,290,326,364,404,446,490,536,584,634,686,740,796,854,914,976,1040,1106
+
+A338760	holos	0	[[0],[-18,10,-3,-1],[30,-13,0,1]]	1,2,4,8,15	0
+#A338760	holos	0	[[0],[-18,10,-3,-1],[30,-13,0,1]]	1,2,4,8,15,28,47,73,107	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-18,10,-3,-1],[30,-13,0,1]]-i "1,2,4,8,15,28,47,73,107-o 0 -d 0 -dist 0 -t 0 
+1,2,4,8,15,28,47,73,107,150,203,267,343,432,535,653,787,938,1107,1295,1503,1732,1983,2257,2555,2878,3227,3603,4007,4440,4903,5397
+
+A349682	holos	0	[[0],[-1,-11,-36,-36],[-10,47,-72,36]]	1	0
+#A349682	holos	0	[[0],[-1,-11,-36,-36],[-10,47,-72,36]]	1,84,455,1330,2925,5456,9139,14190,20825	0
+java -Ddebug=0 -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp-Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jarirvine.test.HolonomicRecurrenceTest -n 32 -p "[[0],[-1,-11,-36,-36],[-10,47,-72,36]]-i "1,84,455,1330,2925,5456,9139,14190,20825-o 0 -d 0 -dist 0 -t 0 
+1,84,455,1330,2925,5456,9139,14190,20825,29260,39711,52394,67525,85320,105995,129766,156849,187460,221815,260130,302621,349504,400995,457310,518665,585276,657359,735130,818805,908600,1004731,1107414
+
+A090296	holos	0	[[0],[-21,-91,-62,-14,-1],[-21,5,26,10,1]]	14	0
+A179096	holos	0	[[0],[-12,-5,-5,-25,-13],[-18,10,35,-40,13]]	0,1	0
+A179097	holos	0	[[0],[-40,14,-19,-56,-19],[-36,32,43,-58,19]]	0,1	0

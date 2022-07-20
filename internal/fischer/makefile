@@ -81,21 +81,11 @@ all:
 killmake:
 	cmd /c tasklist | grep make | cut -b28-34 | xargs -l -innn cmd /c taskkill /F /PID nnn
 #----------------------------------
-runall: # current set of packages
-	make purge
-	# make CC=A051803 select gener
-	make CC=A034939 select gener
-	make CC=A015910 select gener
-	make CC=A000301 select gener
-	make CC=A128367 select gener
-	make CC=A051803 select gener
-	make CC=man man dist testall
-#----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) -D $(A)               2>&1   | tee x.tmp
 seqte: # A=$(A) - test with errors
-	$(JAVA) irvine.test.SequenceTest -a $(A)               -n $(NT) -o $(OFFSET)                       2>&1   | tee x.tmp
+	$(JAVA) irvine.test.SequenceTest    $(A)               -n $(NT) -o $(OFFSET)                       2>&1   | tee x.tmp
 seqtri: # A=$(A) - print data in triangle format
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -T $(A) 2>&1   | tee x.tmp
 seqtris: # A=$(A) - print data in upper left triangle format
@@ -4432,11 +4422,40 @@ morwiki:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-mult: # Multiplicative with ...
+mult: mult1 mult2 mult3  # Multiplicative with ...
+mult1: # grep nyi from jcat25
 	grep -Pi "Multiplicative with" $(COMMON)/jcat25.txt \
-	>        $@.gen
+	| grep -E "^\%" | cut -b4- \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+mult2: 
+	make seq LIST=mult1.tmp
+	$(DBAT) -x "SELECT i.aseqno, n.name \
+	  FROM asinfo i, asname n \
+	  WHERE i.keyword LIKE '%mult%' \
+	    AND i.aseqno = n.aseqno \
+	    AND i.aseqno NOT IN (SELECT aseqno FROM seq) \
+	    AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+mult3: 
+	sort -k2 mult1.tmp \
+	| perl multprep.pl \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+mult4:
+	perl multext.pl mult2.gen \
+	| sort | uniq -w7 \
+	| tee    $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+mult5:
+	cp mult3.man mult3.gen
 #--------------------------------
 n2:
 	cat $(COMMON)/jcat25.txt \

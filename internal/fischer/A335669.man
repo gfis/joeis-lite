@@ -1,0 +1,85 @@
+A335669	parmof4	0	A335669	new A006497()	1	3	pass A006497(m)^1 == 3 (mod m).	nonn,changed,	1..5
+A335670	parmof4	0	A335669	new A014448()	1	4	pass A014448(m)^1 == 4 (mod m).	nonn,new,	1..1000	
+A335671	parmof4	0	A335669	new A087130()	1	5	pass A087130(m)^1 == 5 (mod m).	nonn,new,	1..1000	
+A335672	parmof4	0	A335669	new A005248()	1	3	pass A005248(m)^1 == 3 (mod m).	nonn,new,	1..1000	
+A335674	parmof4	0	A335669	new A003501()	1	5	pass A003501(m)^1 == 5 (mod m).	nonn,new,	1..1000	
+A338078	parmof4	0	A335669	new A085447()	1	6	pass A085447(m)^1 == 6 (mod m).	nonn,new,synth	1..4
+A338079	parmof4	0	A335669	new A086902()	1	7	pass A086902(m)^1 == 7 (mod m).	nonn,new,synth	1..4
+A338082	parmof4	0	A335669	new A056854()	1	7	pass A056854(m)^1 == 7 (mod m).	nonn,synth	1..49	
+A337231	parmof4	0	A335669	new A000045()	2	1	pass A000045(m)^2 == 1 (mod m)	where F(m) is the m-
+A337234	parmof4	0	A335669	new A006190()	2	1	pass A006190(m)^2 == 1 (mod m)	nonn,changed,synth	
+A337237	parmof4	0	A335669	new PrependSequence(new A052918(), 0)	2	1	A052918(m-1)^2 == 1 (mod m).
+A338007	parmof4	0	A335669	new A001906()	2	1	pass A001906(m)^2 == 1 (mod m)	nonn,changed,synth	
+A338008	parmof4	0	A335669	new A001353()	2	1	pass A001353(m)^2 == 1 (mod m)	nonn,new,synth	1..4
+A338009	parmof4	0	A335669	new A004254()	2	1	pass A004254(m)^2 == 1 (mod m)	nonn,changed,synth	
+A338010	parmof4	0	A335669	new A001109()	2	1	pass A001109(m)^2 == 1 (mod m)	nonn,new,synth	1..4
+A338011	parmof4	0	A335669	new A004187()	2	1	pass A004187(m)^2 == 1 (mod m)	nonn,changed,synth	
+
+A337625	parmof6	0	A337625	new A000045()	2	1	FATO new A000032()	1	A000045(m)^2 == 1 (mod m) an
+A337626	parmof6	0	A337625	new A006190()	2	1	new A006497()	3	pass A001353(m)^2 == 1 (mod m) an
+# A337626	insect2	0	new A335669()	new A337234()
+A337627	parmof6	0	A337625	new A001076()	2	1	new A014448()	4	pass A001353(m)^2 == 1 (mod m) an
+# A337627	insect2	0	new A335670()	new A337236()
+A337628	parmof6	0	A337625	new PrependSequence(new A052918(), 0)	2	1	new A087130()	5	A001353(m)^2 == 1 (mod m) an
+# A337628	insect2	0	new A335671()	new A337237()
+A337629	parmof6	0	A337625	new A005668()	2	1	new A085447()	6	A001353(m)^2 == 1 (mod m) an
+A337630	parmof6	0	A337625	new PrependSequence(new A054413(), 0)	2	1	new A086902()	7	A001353(m)^2 == 1 (mod m) an
+A337778	parmof6	0	A337625	new A001353()	2	1	new A003500()	4	pass A001353(m)^2 == 1 (mod m) an
+A337779	parmof6	0	A337625	new A004254()	2	1	new A003501()	5	A001353(m)^2 == 1 (mod m) an
+A337781	parmof6	0	A337625	new A004187()	2	1	new A056854()	7	A001353(m)^2 == 1 (mod m) an
+
+A339129	parmof5	0	A339129	new A005248()	1	 5	 2	pass A005248(1*m-J(m, 5)) ==  2         (mod m)	
+A339521	parmof5	0	A339130	new A005248()	2	 5	 3	pass A005248(2*m-J(m, 5)) ==  3         (mod m)	
+A340095	parmof5	0	A339130	new PrependSequence(new A052918(), 0)	1	29	 0	A052918(1*m-J(m,29)) ==  0         (mod m)	
+A340096	parmof5	0	A339130	new PrependSequence(new A054413(), 0)	1	53	 0	A054413(1*m-J(m,53)) ==  0         (mod m)	
+A340097	parmof5	0	A339130	new A001906()	1	 5	 0	FAIL A001906(1*m-J(m, 5)) ==  0         (mod m)	
+A340118	parmof5	0	A339130	new A000045()	2	 5	 1	pass A000045(2*m-J(m, 5)) ==  1         (mod m)	
+A340119	parmof5	0	A339130	new A006190()	2	13	 1	pass A006190(2*m-J(m,13)) ==  1         (mod m)	
+A340120	parmof5	0	A339130	new PrependSequence(new A052918(), 0)	2	29	 1	A052918(2*m-J(m,29)) ==  1         (mod m)	
+A340121	parmof5	0	A339130	new PrependSequence(new A054413(), 0)	2	53	 1	A054413(2*m-J(m,53)) ==  1         (mod m)	
+A340235	parmof5	0	A339130	new A000045()	3	 5	 1	pass A000045(3*m-J(m, 5)) ==  1         (mod m)	
+A340236	parmof5	0	A339130	new A006190()	3	13	 3	pass A006190(3*m-J(m,13)) ==  3         (mod m)	
+A340237	parmof5	0	A339130	new PrependSequence(new A052918(), 0)	3	29	 5	A052918(3*m-J(m,29)) ==  5         (mod m)	
+A340238	parmof5	0	A339130	new PrependSequence(new A054413(), 0)	3	53	 7	A054413(3*m-J(m,53)) ==  7         (mod m)	
+A339728	parmof5	0	A339130	new A005248()	3	 5	 7	pass A005248(3*m-J(m, 5)) ==  7         (mod m)	
+
+A339130	parmof5	0	A339130	new A003501()	1	21	 2	pass A003501(1*m-J(m,21)) ==  2         (mod m)
+A339131	parmof5	0	A339130	new A056854()	1	45	 2	pass A056854(1*m-J(m,45)) ==  2         (mod m)
+A339522	parmof5	0	A339130	new A003501()	2	21	 5	pass A003501(2*m-J(m,21)) ==  5         (mod m)
+A339523	parmof5	0	A339130	new A056854()	2	45	 7	pass A056854(2*m-J(m,45)) ==  7         (mod m)
+A340098	parmof5	0	A339130	new A004254()	1	21	 0	pass A004254(1*m-J(m,21)) ==  0         (mod m)
+A340099	parmof5	0	A339130	new A004187()	1	45	 0	pass A004187(1*m-J(m,45)) ==  0         (mod m)
+A339729	parmof5	0	A339130	new A003501()	3	21	23	pass A003501(3*m-J(m,21)) == 23         (mod m)
+A339730	parmof5	0	A339130	new A056854()	3	45	47	pass A056854(3*m-J(m,45)) == 47         (mod m)
+
+A339125	parmof5	0	A339125	new A000032()	1	 5	 2	pass A000032(1*m-J(m, 5)) ==  2*J(m, 5) (mod m)
+A339126	parmof5	0	A339125	new A006497()	1	13	 2	pass A006497(1*m-J(m,13)) ==  2*J(m,13) (mod m)
+A339127	parmof5	0	A339125	new A087130()	1	29	 2	pass A087130(1*m-J(m,29)) ==  2*J(m,29) (mod m)
+A339128	parmof5	0	A339125	new A086902()	1	53	 2	pass A086902(1*m-J(m,53)) ==  2*J(m,53) (mod m)
+A339517	parmof5	0	A339125	new A000032()	2	 5	 1	pass A000032(2*m-J(m, 5)) ==  1*J(m, 5) (mod m)
+A339518	parmof5	0	A339125	new A006497()	2	13	 3	pass A006497(2*m-J(m,13)) ==  3*J(m,13) (mod m)
+A339519	parmof5	0	A339125	new A087130()	2	29	 5	pass A087130(2*m-J(m,29)) ==  5*J(m,29) (mod m)
+A339520	parmof5	0	A339125	new A086902()	2	53	 7	pass A086902(2*m-J(m,53)) ==  7*J(m,53) (mod m)
+A339724	parmof5	0	A339125	new A000032()	3	 5	 3	pass A000032(3*m-J(m, 5)) ==  3*J(m, 5) (mod m)
+A339725	parmof5	0	A339125	new A006497()	3	13	11	pass A006497(3*m-J(m,13)) == 11*J(m,13) (mod m)
+A339726	parmof5	0	A339125	new A087130()	3	29	27	pass A087130(3*m-J(m,29)) == 27*J(m,29) (mod m)
+A339727	parmof5	0	A339125	new A086902()	3	53	51	pass A086902(3*m-J(m,53)) == 51*J(m,53) (mod m)
+A340122	parmof5	0	A340123	new A001906()	2	 5	 1	FAIL A001906(2*m-J(m, 5)) ==  1*J(m, 5) (mod m)
+A340239	parmof5	0	A340123	new A001906()	3	 5	 3	FAIL A001906(3*m-J(m, 5)) ==  3*J(m, 5) (mod m)
+
+A340123	parmof5	0	A340123	new A004254()	2	21	 1	pass A004254(2*m-J(m,21)) ==  1*J(m,21) (mod m)
+A340124	parmof5	0	A340123	new A004187()	2	45	 1	pass A004187(2*m-J(m,45)) ==  1*J(m,45) (mod m)
+A340240	parmof5	0	A340123	new A004254()	3	21	 5	pass A004254(3*m-J(m,21)) ==  5*J(m,21) (mod m)
+A340241	parmof5	0	A340123	new A004187()	3	45	 7	pass A004187(3*m-J(m,45)) ==  7*J(m,45) (mod m)
+
+A337232	parmof4	0	A337232	new A000045()	2	1	Even composite integers m such that A000045(m)^2 == 1 (mod m)	
+A337235	parmof4	0	A337232	new A006190()	2	1	Even composite integers m such that A006190(m)^2 == 1 (mod m)	
+A337783	parmof4	0	A337232	new A004187()	2	1	Even composite integers m such that A004187(m)^2 == 1 (mod m)	
+A338314	parmof4	0	A337232	new A004254()	2	1	Even composite integers m such that A004254(m)^2 == 1 (mod m)	
+
+A337777	parmof6	0	A337777	new A001906()	2	1	new A005248()	3	Even A001906(m)^2 == 1 (mod m) and A005248(m) == 3 (mod m)
+A337782	parmof6	0	A337777	new A004187()	2	1	new A056854()	7	Even A004187(m)^2 == 1 (mod m) and A056854(m) == 7 (mod m)
+
+A335673	parmof4	0	A335673	new A003500()	1	4	Composite integers m such that A003500(m) == 4 (mod m)
+A337233	parmof4	0	A335673	new A000129()	2	1	Composite integers m such that P(m)^2 == 1 (mod m),Pell number A000129(m)
+A337236	parmof4	0	A335673	new A001076()	2	1	Composite integers m such that A001076(m)^2 == 1 (mod m)

@@ -1,0 +1,421 @@
+A108951	mult	0	#A previous description of this sequence was: "Multiplicative with a(p^e) equal to the product of the e-th powers of all primes at most p" (see extensions), _Giuseppe Coppoletta_, Feb 28 2015
+A198956	mult	0	#Conjecture: Multiplicative with a(3^e) = 3^e, a(p^e) = sigma_3(p^e) for prime p <> 3. - _Andrew Howroyd_, Aug 08 2018
+A109386	mult	0	#G.f.: Sum_{n>0} n*A000005(n)*x^n/(1+x^n). a(n) = A060640(n) if n is odd, else a(n) = A060640(n)-2*A060640(n/2). Multiplicative with a(2^e) = 2^(e+1)-1 and a(p^e) = (p^(e+2)*(e+1)-p^(e+1)*(e+2)+1)/(p-1)^2 for p>2. - _Vladeta Jovovic_, Jul 05 2005
+A079707	mult	0	#Multiplicative with 2->2 and prime(k)->prime(k-1), k>1.
+A284587	mult	0	#Multiplicative with a(13^e) = 1 and a(p^e) = (p^(e+1)-1)/(p-1) otherwise. - _Amiram Eldar_, Sep 17 2020
+A257477	mult	0	#Multiplicative with a(2) = 0, a(4) = -1, a(2^e) = 0 if e>2, a(3) = -1, a(3^e) = 0^e if e>1, a(p^e) = 1 if p == 1, 3 (mod 8), a(p^e) = (1 + (-1)^e) / 2 if p == 5, 7 (mod 8).
+A257403	mult	0	#Multiplicative with a(2) = 1, a(2^e) = 0 if e>1, a(3^e) = 0^e, a(p^e) = e+1 if p == 1, 3 (mod 8), a(p^e) = (1 + (-1)^e) / 2 if p == 5, 7 (mod 8).
+A319100	mult	0	#Multiplicative with a(2) = 1, a(4) = 2, a(2^e) = 4 for e >= 3; a(3) = 2, a(3^e) = 6 if e >= 2; for other primes p, a(p^e) = 6 if p == 1 (mod 6), a(p^e) = 2 if p == 5 (mod 6).
+A060594	mult	0	#Multiplicative with a(2) = 1; a(2^2) = 2; a(2^e) = 4 for e > 2; a(q^e) = 2 for q an odd prime. - _Eric M. Schmidt_, Jul 09 2013
+A327730	mult	0	#Multiplicative with a(2) = 2 and a(2^e) = 4 for e > 1; a(p^e) = 2 for odd primes p.
+A182039	mult	0	#Multiplicative with a(2) = 2, a(4) = 16, a(2^e) = 2^(e+3) for e >= 3; a(p^e) = 2*(p-1)*p^(e-1) if p == 1 (mod 4), 2*(p+1)*p^(e-1) if p == 3 (mod 4).
+A304182	mult	0	#Multiplicative with a(2) = 3, a(2^e) = 4 (for e>1), and a(p^e) = 2 (for p>2).
+A062771	mult	0	#Multiplicative with a(2) = 6, a(2^e) = 2^(e+1), e>1, a(p^e) = (p-1)*p^(e-1), p>2. - _Christian G. Bower_, May 18 2005
+A089146	mult	0	#Multiplicative with a(2) = 8, a(2^e) = 4 if e >= 2, a(p^e) = 1 otherwise. - _David W. Wilson_, Jun 12 2005
+A111973	mult	0	#Multiplicative with a(2)=2, a(2^e)=6 if e>1, a(p^e)=(p^(e+1)-1)/(p-1) if p>2.
+A319997	mult	0	#Multiplicative with a(2^1) = -1, a(2^e) = 0 for e > 1, and a(p^e) = (p - 1)*p^(e-1) when p is an odd prime.
+A319993	mult	0	#Multiplicative with a(2^1) = -1, a(2^e) = 0 for e > 1, and a(p^e) = p^(e-1) when p is an odd prime.
+A076109	mult	0	#Multiplicative with a(2^1) = 1; a(2^e) = 0 if e >= 2; a(p^e) = p if p >= 3. - David W. Wilson, Jun 10 2005
+A087782	mult	0	#Multiplicative with a(2^1) = 2, a(2^e) = 1 for e > 1, a(p^e) = 3 for p mod 4 == 1, a(p^e) = 1 for p mod 4 == 3. - _Andrew Howroyd_, Jul 15 2018
+A316985	mult	0	#Multiplicative with a(2^1) = 4, a(2^2) = 24, a(2^e) = 2^(2*e+1) for e > 2, a(p^e) = (p+1)*p^(2*e-1) for odd prime p.
+A115076	mult	0	#Multiplicative with a(2^1) = 4, a(2^e) = 3*2^(2*e-2) for e > 1, a(p^e) = (p+1)*p^(2*e-1) for p mod 4 == 1, a(p^e) = (p-1)*p^(2*e-1) for p mod 4 == 3. - _Andrew Howroyd_, Jul 04 2018
+A290099	mult	0	#Multiplicative with a(2^e) = (-1)^e and a(p^e) = prevprime(p)^e for odd primes p.
+A236313	mult	0	#Multiplicative with a(2^e) = (1 + 3^e)/2, a(p^e) = 1 for odd prime p. - _Andrew Howroyd_, Jul 31 2018
+A300853	mult	0	#Multiplicative with a(2^e) = (1 - (-2)^(e + 1))/3, and a(p^e) = (p^(2*floor(e/2 + 1)) - 1)/(p^2 - 1) for an odd prime p. - _Amiram Eldar_, Oct 25 2020
+A328667	mult	0	#Multiplicative with a(2^e) = (2*(2*e+1) + 7)/3 = A321358(e) if e>0, else a(p^e) = (p^(2*e+2) - 1)/(p^2 - 1).
+A078306	mult	0	#Multiplicative with a(2^e) = (2*4^e+1)/3, a(p^e) = (p^(2*e+2)-1)/(p^2-1), p > 2.
+A065766	mult	0	#Multiplicative with a(2^e) = (4^(e+1)-1)/3 and a(p^e) = (p^(2*e+1)-1)/(p-1) for an odd prime p. - _Vladeta Jovovic_, Dec 01 2001
+A328407	mult	0	#Multiplicative with a(2^e) = (4^(e+1)-1)/3, and a(p^e) = p^(2*e) for an odd prime p. - _Amiram Eldar_, Oct 25 2020
+A078747	mult	0	#Multiplicative with a(2^e) = (4^e-1)/3, a(p^e) = (p^(2*e+1)+1)/(p+1), p>2.
+A078307	mult	0	#Multiplicative with a(2^e) = (6*8^e+1)/7, a(p^e) = (p^(3*e+3)-1)/(p^3-1), p > 2.
+A123726	mult	0	#Multiplicative with a(2^e) = (e + 1)^2, a(p^e) = 1 for odd prime p. - _Andrew Howroyd_, Jul 31 2018
+A288571	mult	0	#Multiplicative with a(2^e) = (e+1)*(2-e)/2, and a(p^e) = (e+1)*(e+2)/2 for an odd prime p. - _Amiram Eldar_, Oct 25 2020
+A326417	mult	0	#Multiplicative with a(2^e) = (e+1)*(e+2)/2, and a(p^e) = (e+1)*(e+2)*(e+3)/6 for odd primes p. - _Amiram Eldar_, Dec 02 2020
+A317529	mult	0	#Multiplicative with a(2^e) = -floor(e/2+1) for odd e, -floor((e-1)/2) for even e, and a(p^e) = floor(e/2+1) for an odd prime p. - _Amiram Eldar_, Oct 25 2020
+A123565	mult	0	#Multiplicative with a(2^e) = 0 and a(p^e) = (p-3)*p^(e-1) for odd primes p. - _Amiram Eldar_, Nov 22 2020
+A328373	mult	0	#Multiplicative with a(2^e) = 0 if e is odd, and 1 if e is even, and for p > 2, a(p^e) = (p^(e + 2) - p)/(p^2 - 1) if e is odd, and (p^(e + 2) - 1)/(p^2 - 1) if e is even. - _Amiram Eldar_, Oct 16 2020
+A229297	mult	0	#Multiplicative with a(2^e) = 1 + (-1)^e, a(p^e) = p^floor(e/2) for odd prime p.
+A318768	mult	0	#Multiplicative with a(2^e) = 1 + (7-e^2)*e/6, and a(p^e) = binomial(e+3,3) for an odd prime p. - _Amiram Eldar_, Oct 25 2020
+A089242	mult	0	#Multiplicative with a(2^e) = 1 + a(e), a(p^e) = 1 for odd prime p. - _Andrew Howroyd_, Jul 27 2018
+A298735	mult	0	#Multiplicative with a(2^e) = 1 and a(p^e) = floor(e/2) + 1 for p > 2. - _Amiram Eldar_, Sep 11 2020
+A064989	mult	0	#Multiplicative with a(2^e) = 1 and a(p^e) = prevprime(p)^e for odd primes p.
+A250207	mult	0	#Multiplicative with a(2^e) = 1 for e<=3; a(2^e) = 2^(e-4) for e>=4; a(p^e) = p^(e-1)*(p-1)/4 for e>=1 and p == 1 (mod 4); a(p^e) = p^(e-1)*(p-1)/2 for e>=1 and p == 3 (mod 4). (Derived from A073103.) - _R. J. Mathar_, Oct 13 2017
+A293485	mult	0	#Multiplicative with a(2^e) = 1 for e<=5, a(2^e) = 2^(e-5) for e>=5; a(p^e) = (p-1)*p^(e-1)/8 for p == 1 (mod 8); a(p^e) = (p-1)*p^(e-1)/4 for p == 5 (mod 8); a(p^e) = (p-1)*p^(e-1)/2 for p == {3,5} (mod 8). - _R. J. Mathar_, Oct 15 2017
+A300894	mult	0	#Multiplicative with a(2^e) = 1 if e = 1, and -3 otherwise, and a(p^e) = p+1 for an odd prime p. - _Amiram Eldar_, Oct 25 2020
+A109712	mult	0	#Multiplicative with a(2^e) = 1+2^e, a(p^e)=p^e-1 for primes p>2, e>0. - _R. J. Mathar_, Jun 02 2011
+A104117	mult	0	#Multiplicative with a(2^e) = 1+e, and a(p^e)=0 for odd primes p and e>=1. Dirichlet convolution square of A209229. - _R. J. Mathar_, Mar 12 2012
+A244611	mult	0	#Multiplicative with a(2^e) = 1, a(3^e) = (-1)^e, and a(p^e) = (1 + (-1)^e) / 2 if p>3.
+A132740	mult	0	#Multiplicative with a(2^e) = 1, a(5^e) = 1 and a(p^e) = p^e for p = 3 and p >= 7.
+A336649	mult	0	#Multiplicative with a(2^e) = 1, a(p^1) = 1 and a(p^e) = (p^e - 1)/(p-1) if e > 1.
+A347385	mult	0	#Multiplicative with a(2^e) = 1, a(p^e) = (p+1)*p^(e-1) for all odd primes p.
+A275367	mult	0	#Multiplicative with a(2^e) = 1, a(p^e) = 2*e + 1 for odd prime p. - _Andrew Howroyd_, Jul 20 2018
+A206787	mult	0	#Multiplicative with a(2^e) = 1, and a(p^e) = p + 1 for p > 2. - _Amiram Eldar_, Sep 18 2020
+A192066	mult	0	#Multiplicative with a(2^e) = 1, and a(p^e) = p^e + 1 for p > 2. - _Amiram Eldar_, Sep 18 2020
+A336652	mult	0	#Multiplicative with a(2^e) = 1, and for odd primes p, a(p^e) = (p + p^2 + ... + p^e) = sigma(p^e)-1.
+A326041	mult	0	#Multiplicative with a(2^e) = 1, and for odd primes p, a(p^e) = (q^(e+1)-1)/(q-1), where q = A151799(p).
+A256232	mult	0	#Multiplicative with a(2^e) = 1-e, a(3^e) = 1, a(p^e) = e+1 if p>3.
+A062327	mult	0	#Multiplicative with a(2^e) = 2*e+1, a(p^e) = e+1 if p mod 4=3 and a(p^e) = (e+1)^2 if p mod 4=1. - _Vladeta Jovovic_, Jan 23 2003
+A309324	mult	0	#Multiplicative with a(2^e) = 2, and a(p^e) = (p^e*(p+1)-2)/(p-1) for odd primes p. - _Amiram Eldar_, Dec 01 2020
+A344875	mult	0	#Multiplicative with a(2^e) = 2^(1+e) - 1, and a(p^e) = p^e - 1 for odd primes p.
+A079458	mult	0	#Multiplicative with a(2^e) = 2^(2*e-1), a(p^e) = (p^2-1)*p^(2*e-2) if p mod 4=3 and a(p^e) = (p-1)^2*p^(2*e-2) if p mod 4=1.
+A332793	mult	0	#Multiplicative with a(2^e) = 2^(2*e-1), and a(p^e) = -p if e=1 and 0 for e>1, for odd primes p. - _Amiram Eldar_, Dec 02 2020
+A214682	mult	0	#Multiplicative with a(2^e) = 2^(2*floor(e/2)), and a(p^e) = p^e for odd primes p. - _Amiram Eldar_, Dec 09 2020
+A316148	mult	0	#Multiplicative with a(2^e) = 2^(2e+1)*(2^e-1), a(p^e) = p^(3e)+p^(3e-1)-p^(2e-1) for odd primes p.
+A069256	mult	0	#Multiplicative with a(2^e) = 2^(4*e-3) and a(p^e) = power of 2 in prime factorization of (p - 1)*(p^2-1) for an odd prime p. - _Vladeta Jovovic_, Apr 17 2002
+A238534	mult	0	#Multiplicative with a(2^e) = 2^(6*e-1), a(p^e) = (p - 1)*p^(6*e - 4)*(p^3 - (-1)^(3*(p-1)/2)) for odd prime p. - _Andrew Howroyd_, Aug 07 2018
+A239441	mult	0	#Multiplicative with a(2^e) = 2^(8*e-1), a(p^e) = (p - 1)*p^(8*e - 5)*(p^4 - 1) for odd prime p. - _Andrew Howroyd_, Aug 06 2018
+A297402	mult	0	#Multiplicative with a(2^e) = 2^(e+1), a(p^e) = 1 for odd prime p. - _Andrew Howroyd_, Jul 25 2018
+A065745	mult	0	#Multiplicative with a(2^e) = 2^(e+1)-1, a(p^e) = (p^(e+2)-1)/(p-1)/(p+1) for odd p and even e and a(p^e) = (p^(e+1)-1)/(p-1)/(p+1) for odd p and odd e.
+A107749	mult	0	#Multiplicative with a(2^e) = 2^(e+1)-1, a(p^e) = p^e+1 for p>2, e>0.
+A174238	mult	0	#Multiplicative with a(2^e) = 2^(e+1)-1, and a(p^e) = e+1 for p > 2. - _Amiram Eldar_, Sep 30 2020
+A113184	mult	0	#Multiplicative with a(2^e) = 2^(e+1)-3 if e>0, a(p^e) = (p^(e+1)-1)/(p-1) if p>2.
+A317623	mult	0	#Multiplicative with a(2^e) = 2^(e-1), a(3^e) = 3^e, a(p^e) = 1 + floor( p^(e+1)/(2*p+2) ) for prime p >= 5.
+A290731	mult	0	#Multiplicative with a(2^e) = 2^(e-1), a(p^2) = 1 + floor(p^(e+1)/(2*p+2)) for odd prime p. - _Andrew Howroyd_, Aug 01 2018
+A329272	mult	0	#Multiplicative with a(2^e) = 2^(e-2) for 2 <= e <= 5, a(2^e) = 0 for e = 1 or e >= 6; a(p^e) = gcd(p-1, 8)-1 if p > 2 and e = 1, a(p^e) = 0 if p > 2 and e >= 2.
+A117659	mult	0	#Multiplicative with a(2^e) = 2^e for e < 3 and 2^(e-1) + 4 for e >= 3, and a(p^e) =  p^(e-1) + 2 for p > 2. - _Amiram Eldar_, Sep 08 2020
+A089002	mult	0	#Multiplicative with a(2^e) = 2^e for e <= 2, a(2^e) = 0 for e > 2, a(p^e) = (p-1)*p^(e-1) for p-2 mod 8 = +-1, a(p^e) = (p+1)*p^(e-1) for p-2 mod 8 = +-3. - _Andrew Howroyd_, Jul 15 2018
+A088965	mult	0	#Multiplicative with a(2^e) = 2^e for e <= 2, a(2^e) = 2^(e + 1) for e > 2, a(p^e) = (p-1)*p^(e-1) for p-2 mod 8 = +-1, a(p^e) = (p+1)*p^(e-1) for p-2 mod 8 = +-3. - _Andrew Howroyd_, Jul 13 2018
+A089003	mult	0	#Multiplicative with a(2^e) = 2^e for e <= 2, a(2^e) = 2^(e+1) for e > 2, a(p^e) = (p-1)*p^(e-1) for p == +-1 (mod 8), a(p^e) = (p+1)*p^(e-1) for p == +-3 (mod 8). - _Andrew Howroyd_, Jul 15 2018
+A069184	mult	0	#Multiplicative with a(2^e) = 2^e+1 and a(p^e) = (p^(e+1)-1)/(p-1) for an odd prime p.
+A290732	mult	0	#Multiplicative with a(2^e) = 2^e, a(3^e) = 3^e, a(p^e) = 1 + floor( p^(e+1)/(2*p+2) ) for prime p >= 5. - _Andrew Howroyd_, Nov 03 2018
+A117484	mult	0	#Multiplicative with a(2^e) = 2^e, a(p^e) = floor(p^(e+1)/(2p+2))+1 for p > 2.
+A087561	mult	0	#Multiplicative with a(2^e) = 2^e, a(p^e) = p^(2*floor(e/2)) for p - 2 == +-3 (mod 8), a(p^e) = ((p-1)*e+p)*p^(e-1) for p - 2 == +-1 (mod 8). - _Andrew Howroyd_, Jul 16 2018
+A088964	mult	0	#Multiplicative with a(2^e) = 2^e, a(p^e) = p^(2*floor(e/2)) for p mod 8 = +-3, a(p^e) = ((p-1)*e+p)*p^(e-1) for p mod 8 = +-1. - _Andrew Howroyd_, Jul 13 2018
+A235872	mult	0	#Multiplicative with a(2^e) = 2^e, a(p^e) = p^(2*floor(e/2)). - _Andrew Howroyd_, Aug 06 2018
+A227091	mult	0	#Multiplicative with a(2^e) = 2^min(e, 3); a(p^e) = 4 for p == 1 (mod 4); a(p^e) = 2 for p == 3 (mod 4). - _Eric M. Schmidt_, Jul 09 2013
+A185152	mult	0	#Multiplicative with a(2^e) = 3 * 2^e if e>0, a(p^e) = p^e * (p^(e+1) - 1) / (p - 1) otherwise.
+A328154	mult	0	#Multiplicative with a(2^e) = 3 - 2^(e+1) and a(p^e) = p^e for e >= 0 and prime p > 2.
+A240226	mult	0	#Multiplicative with a(2^e) = 4^ceiling(e/2), a(p^e) = 1 for odd prime p. (End)
+A076598	mult	0	#Multiplicative with a(2^e) = 4^e+1, a(p^e) = (p^(2*e+2)-1)/(p^2-1) for an odd prime p. G.f.: Sum_{m>0} m^2*x^m*(1+2*x^m+3*x^(2*m))/(1+x^(2*m))/(1+x^m). More generally, if b(n, k) is sum of k-th powers of divisors d of n such that d or n/d is odd then b(n, k) = sigma_k(n)-2^k*sigma_k(n/4) if n mod 4=0, otherwise b(n, k) = sigma_k(n). G.f. for b(n, k): Sum_{m>0} m^k*x^m*(1+x^m+x^(2*m)-(2^k-1)*x^(3*m))/(1-x^(4*m)). b(n, k) is multiplicative and b(2^e, k) = 2^(k*e)+1, b(p^e, k) = (p^(k*e+k)-1)/(p^k-1) for an odd prime p.
+A284341	mult	0	#Multiplicative with a(2^e) = 7 if e>=3, and a(p^e) = (p^(e + 1) - 1)/(p - 1) otherwise. - _Amiram Eldar_, Sep 17 2020
+A335115	mult	0	#Multiplicative with a(2^e) = A001045(e+1) and a(p^e) = p^e for e >= 0 and prime p > 2. - _Werner Schulte_, Oct 05 2020
+A082388	mult	0	#Multiplicative with a(2^e) = A006012(e), a(p^e) = 1 for odd prime p. - _Andrew Howroyd_, Jul 31 2018
+A268361	mult	0	#Multiplicative with a(2^e) = Fibonacci(2 + e), a(p^e) = 1 for odd prime p. - _Andrew Howroyd_, Aug 02 2018
+A129502	mult	0	#Multiplicative with a(2^e) = binomial(e + 2, 2), a(p^e) = 0 for odd prime p.
+A288417	mult	0	#Multiplicative with a(2^e) = e+1 and a(p^e) = Sum_{i=0..e} (i+1)*p^(e-i) for e >= 0 and prime p > 2. - _Werner Schulte_, Jan 05 2021
+A065704	mult	0	#Multiplicative with a(2^e) = e+1 and a(p^e) = floor(e/2)+1 for an odd prime p.
+A320111	mult	0	#Multiplicative with a(2^e) = e, a(p^e) = (e+1) for odd primes p.
+A099751	mult	0	#Multiplicative with a(2^e) = e-1 if e>0, a(3^e) = 1, a(p^e) = e+1 if p>3.
+A112329	mult	0	#Multiplicative with a(2^e) = e-1 if e>0, a(p^e) = 1+e if p>2.
+A228441	mult	0	#Multiplicative with a(2^e) = e-3 if e>0, a(p^e) = e+1 if p>2.
+A326813	mult	0	#Multiplicative with a(2^e) = floor(e/2) + 1, and a(p^e) = 0 if e is odd and 1 if e is even, for odd primes p. - _Amiram Eldar_, Nov 30 2020
+A317797	mult	0	#Multiplicative with a(2^e) = sigma(2^(2e)) = 2^(2e+1) - 1, a(p^e) = sigma(p^e)^2 = ((p^(e+1) - 1)/(p - 1))^2 if p == 1 (mod 4) and sigma_2(p^e) = A001157(p^e) = (p^(2e+2) - 1)/(p^2 - 1) if p == 3 (mod 4).
+A099892	mult	0	#Multiplicative with a(2^e) =3*2^(e-1), a(p^e) = 0 otherwise. - _David W. Wilson_, Jun 12 2005
+A267092	mult	0	#Multiplicative with a(2^e)=(e+2)*2^(e-1) and a(p^e)=p^e for p>2 and e>0.
+A065330	mult	0	#Multiplicative with a(2^e)=1, a(3^e)=1, a(p^e)=p^e, p>3. - _Vladeta Jovovic_, Nov 02 2001
+A091396	mult	0	#Multiplicative with a(2^e)=1, a(p^e)=0 if p mod 8=3 or p mod 8=5 and a(p^e)=2 if p mod 8=1 or p mod 8=7. - _Vladeta Jovovic_, Mar 02 2004
+A255655	mult	0	#Multiplicative with a(2^e)=2^(e-1) for e>0 and a(p^e)=((p-1)*e+p)*p^(e-1) for e>0 and p>2. - _Werner Schulte_, Feb 04 2018
+A132741	mult	0	#Multiplicative with a(2^e)=2^e, a(5^e)=5^e and a(p^e)=1 for p=3 or p>=7. - _R. J. Mathar_, Sep 06 2011
+A086933	mult	0	#Multiplicative with a(2^e)=2^e, a(p^e)=p^(e-(e mod 2)) if p mod 4=3, a(p^e)=((p-1)*e+p)*p^(e-1) if p mod 4<>3 and p<>2. - _Vladeta Jovovic_, Sep 22 2003
+A109040	mult	0	#Multiplicative with a(2^e)=a(3^e)=1, a(p^e)=(p^(e+1)-1)/(p-1) if p = 1, 11 (mod 12), a(p^e)=((-p)^(e+1)-1)/(-p-1) if p = 5, 7 (mod 12).
+A062803	mult	0	#Multiplicative with a(2^e)=e*2^e and a(p^e)=((p-1)*e+p)*p^(e-1) for an odd prime p. - _Vladeta Jovovic_, Sep 22 2003
+A279395	mult	0	#Multiplicative with a(2^k) = 2^4*(2^(4*k)-1)/(2^4-1) - 1 = (2^(4*(k+1)) - 31)/15 and a(p^k) = (p^(4*(k+1))-1)/(p^4-1) for primes p > 2 (see A001159).
+A115364	mult	0	#Multiplicative with a(2^k) = A000217(k+1), a(p^k) = 1 for odd primes p. - _Antti Karttunen_, Nov 02 2018
+A264740	mult	0	#Multiplicative with a(2^k) = k + 1, a(p^k) = sigma(p^k) = (p^(k+1)-1) / (p-1) for p > 2.
+A060839	mult	0	#Multiplicative with a(3) = 1, a(3^e) = 3, e >= 2, a((3k+1)^e) = 3, a((3k+2)^e) = 1. _David W. Wilson_, May 22 2005
+A117660	mult	0	#Multiplicative with a(3) = 2, a(3^e) = 3^(e-1) + 3 for e > 1, and for p != 3, if p == 1 (mod 3), a(p^e) = p^(e-1) + 3, and if p == 2 (mod 3), a(p^e) = p^(e-1) + 1. - _Amiram Eldar_, Sep 08 2020
+A087692	mult	0	#Multiplicative with a(3) = 2, a(3^k) = 2*3^(k-2) otherwise;
+A235489	mult	0	#Multiplicative with a(3^(2k)) = 2^3k = 8^k, a(3^(2k+1)) = 3*2^3k, a(2^(3k)) = 3^2k = 9^k, a(2^(3k+1)) = 2*9^k, a(2^(3k+2)) = 4*9^k, a(p_i) = p_{a(i)} for primes with index i, and a(u*v) = a(u) * a(v) for composites other than 8 or 9.
+A319445	mult	0	#Multiplicative with a(3^e) = 2*3^(2*e-1), a(p^e) = phi(p^e)^2 = (p-1)^2*p^(2*e-2) if p == 1 (mod 3) and J_2(p^e) = A007434(p^e) = (p^2 - 1)*p^(2*e-2) if p == 2 (mod 3).
+A319442	mult	0	#Multiplicative with a(3^e) = 2*e + 1, a(p^e) = (e + 1)^2 if p == 1 (mod 3) and e + 1 if p == 2 (mod 3).
+A087694	mult	0	#Multiplicative with a(3^e) = 3^e, a(p^e) = ((p-1)*e+p)*p^(e-1) if p mod 3 = 1, a(p^e) = p^(2*floor(e/2)) if p mod 3 = 2. - _Vladeta Jovovic_, Sep 27 2003
+A326401	mult	0	#Multiplicative with a(3^e) = 3^e, a(p^e) = (p^(e+1) - 1)/(p - 1) if p == 2 (mod 3), and (p^(e+1) + (-1)^e)/(p + 1) if p == 1 (mod 3). - _Amiram Eldar_, Oct 25 2020
+A319449	mult	0	#Multiplicative with a(3^e) = sigma(3^(2e)) = (3^(2e+1) - 1)/2, a(p^e) = sigma(p^e)^2 = ((p^(e+1) - 1)/(p - 1))^2 if p == 1 (mod 3) and sigma_2(p^e) = A001157(p^e) = (p^(2e+2) - 1)/(p^2 - 1) if p == 2 (mod 3).
+A227128	mult	0	#Multiplicative with a(3^e)=3^e, a(p^e) = p^(e-1)*(p-1) if p== 1 (mod 3) and a(p^e) = p^(e-1)*(p+1) if p = 2 (mod 3). - _R. J. Mathar_, Jul 10 2013
+A235201	mult	0	#Multiplicative with a(3^k) = 2^(2k), a(2^(2k)) = 3^k, a(2^(2k+1)) = 2*3^k, a(p_i) = p_{a(i)} for primes with index i > 2, and for composites > 4, a(u * v) = a(u) * a(v) for u, v > 0.
+A160499	mult	0	#Multiplicative with a(4) = 1, a(8) = 2, a(16) = 4, a(2^e) = 0 for e = 1 or e >= 5; for odd primes p, a(p) = 3 if p == 1 (mod 4) and 1 if p == 3 (mod 4), a(p^e) = 0 for e >= 2. - _Jianing Song_, Mar 02 2019
+A307381	mult	0	#Multiplicative with a(4) = 1, a(8) = 2, a(2^e) = 0 for e = 1 or e >= 4; a(3) = 1, a(9) = 4, a(3^e) = 0 for e >= 3; a(p) = 5 if p == 1 (mod 6) and 1 if p == 5 (mod 6), a(p^e) = 0 if p > 3 and e >= 2.
+A319099	mult	0	#Multiplicative with a(5) = 1, a(5^e) = 5 if e >= 2; for other primes p, a(p^e) = 5 if p == 1 (mod 5), a(p^e) = 1 otherwise.
+A319101	mult	0	#Multiplicative with a(7) = 1, a(7^e) = 7 if e >= 2; for other primes p, a(p^e) = 7 if p == 1 (mod 7), a(p^e) = 1 otherwise.
+A287926	mult	0	#Multiplicative with a(7^e) = 8 and a(p^e) = (p^(e+1)-1)/(p-1) otherwise. - _Amiram Eldar_, Sep 17 2020
+A160102	mult	0	#Multiplicative with a(A050376(m)) = Prime(m) = A000040(m). If k = 2^{i_1} + ... + 2^{i_j} is the binary representation of k, a(p^k) = a(p^2^{i_1}) * ... * a(p^2^{i_j}). [edited by _Peter Munn_, Jan 07 2020]
+A338224	mult	0	#Multiplicative with a(A246655(k)) = prime(k) for any k > 0 (where prime(k) denotes the k-th prime number).
+A259445	mult	0	#Multiplicative with a(n) = n if n is odd and a(2^s)=2.
+A279510	mult	0	#Multiplicative with a(p(i)^j) = p(i+1)^a(j) for i-th prime p(i) and j>0.
+A072028	mult	0	#Multiplicative with a(p) = (if p mod 4 = 1 and p+2 is prime then p+2 else (if p mod 4 = 3 and p-2 is prime then p-2 else p)), p prime.
+A072029	mult	0	#Multiplicative with a(p) = (if p mod 4 = 3 and p+2 is prime then p+2 else (if p mod 4 = 1 and p-2 is prime then p-2 else p)), p prime.
+A072963	mult	0	#Multiplicative with a(p) = (if p+2 or p-2 is prime then p else 1), p prime.
+A072027	mult	0	#Multiplicative with a(p) = (if p<=3 then 5-p else (if p+2 is prime then p+2 else (if p-2 is prime then p-2 else p))), p prime.
+A072026	mult	0	#Multiplicative with a(p) = (if p<=3 then p else (if p+2 is prime then p+2 else (if p-2 is prime then p-2 else p))), p prime.
+A072436	mult	0	#Multiplicative with a(p) = (if p==3 (mod 4) then 1 else p).
+A254981	mult	0	#Multiplicative with a(p) = 1 + p; a(p^e) = p^(e-2) * (1 + p + p^2), for e>1.
+A295295	mult	0	#Multiplicative with a(p) = 1 and a(p^e) = (p+1) for e > 1.
+A295294	mult	0	#Multiplicative with a(p) = 1 and a(p^e) = (p^(e+1)-1)/(p-1) for e > 1.
+A308993	mult	0	#Multiplicative with a(p) = 1 and a(p^e) = p^a(e) for any e > 1 and prime number p.
+A295879	mult	0	#Multiplicative with a(p) = 1, a(p^e) = prime(e-1) if e > 1.
+A071785	mult	0	#Multiplicative with a(p) = A007953(p), p prime.
+A122261	mult	0	#Multiplicative with a(p) = A065333(p-1), for p prime.
+A345699	mult	0	#Multiplicative with a(p) = a(p-1) and a(p^e) = a(p) + a(e) if e>1.
+A072010	mult	0	#Multiplicative with a(p) = p + 2*(2 - p mod 4), p prime.
+A063659	mult	0	#Multiplicative with a(p) = p and a(p^e) = p^e-p^(e-2), e>1. - _Vladeta Jovovic_, Jul 26 2001
+A092261	mult	0	#Multiplicative with a(p) = p+1 and a(p^e) = 1 for e > 1. - _Vladeta Jovovic_, Feb 22 2004
+A254503	mult	0	#Multiplicative with a(p) = p; a(p^e) = phi(p^e), for e > 1.
+A063445	mult	0	#Multiplicative with a(p) = p^2 - p - 1 and a(p^e) = p^(2*e) - p^(2*e-1) - p^(2*e-2) + p^(2*e-3), e > 1. - _Vladeta Jovovic_, Jul 29 2001
+A309002	mult	0	#Multiplicative with a(p) = p^2 and a(p^e) = p^a(e) for any e > 1 and prime number p.
+A254520	mult	0	#Multiplicative with a(p) = p^2; a(p^e) = p^(2e) - p^(2e-2), for e > 1.
+A254521	mult	0	#Multiplicative with a(p) = p^3; a(p^2) = p^6; a(p^e) = p^(3e) - p^(3e-6), for e > 2.
+A072438	mult	0	#Multiplicative with a(p)=(if p==1 (mod 4) then 1 else p).
+A189021	mult	0	#Multiplicative with a(p)=1, a(p^2)=-1 and a(p^e)=0 if e>=3. Dirichlet g.f. product_{primes p} (1+p^(-s)-p^(-2s)). - _R. J. Mathar_, Oct 31 2011
+A091306	mult	0	#Multiplicative with a(p)=p^2+1 and a(p^e)=1 for e>1.
+A295878	mult	0	#Multiplicative with a(p^(2e)) = 1, a(p^(2e-1)) = prime(e).
+A300828	mult	0	#Multiplicative with a(p^2) = 1, a(p^3) = -2 and a(p^e) = 0 when e = 1 or e > 3.
+A324706	mult	0	#Multiplicative with a(p^3) = 1 + p + p^2 + p^3, a(p^6) = 1 + p^2 + p^4 + p^6, and a(p^e) = 1 + p^e otherwise.
+A241405	mult	0	#Multiplicative with a(p^a) = sum p^b such that b+1 divides a+1.
+A253206	mult	0	#Multiplicative with a(p^d) = 1 if d == 0 mod 5, -1 if d == 1 mod 5, 0 otherwise. - _Robert Israel_, Mar 27 2015
+A097988	mult	0	#((e+1)*(e+2)/2)^2. - _Amiram Eldar_, Sep 20 2020
+A069193	mult	0	#((e+1)*p - 1) * p^(e-1). - _Amiram Eldar_, Sep 15 2019
+A109624	mult	0	#((p-1)*(p+3))^e. If n = Product p(k)^e(k) then a(n) = Product ((p(k)-1)*(p(k)+3))^e(k). a(n) = A003958(n) * A166591(n).
+A072861	mult	0	#((p^(e+1)-1)/(p-1))^2. a(n) = Sum_{d|n} n/d*sigma(d^2). - _Vladeta Jovovic_, Jul 30 2002
+A247343	mult	0	#(-1)^e * binomial(4, e). - _Amiram Eldar_, Sep 11 2020
+A158523	mult	0	#(-1)^e*(p+1)*p^(e-1), e>0. a(1)=1.
+A329445	mult	0	#(-1)^e*binomial(p,e) for prime p and e >= 0.
+A197774	mult	0	#(-1)^sqrt(e) if e is a square, 0 otherwise. - _Franklin T. Adams-Watters_, Oct 18 2011
+A076792	mult	0	#(1+(-1)^e*p^(2*e+2))/(1+p^2).
+A265708	mult	0	#(1/1 + ..., + 1/sigma(p^(e-1)) + 1/sigma(p^(e))) * lcm{1, ..., sigma(p^(e-1)), sigma(p^(e))}.
+A344683	mult	0	#(1/2)*(p-1)*p^(e-3)*(e^2*(p-1)^2 + 3*e*(p^2-1) + 2*(p^2 + p + 1)).
+A324910	mult	0	#(2^e)-1.
+A347136	mult	0	#(A151800(p)^(e+1) - p^(e+1))/(A151800(p)-p). - _Amiram Eldar_, Aug 24 2021
+A166707	mult	0	#(a(p-1)+10)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+10)^e(k).
+A166699	mult	0	#(a(p-1)+2)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+2)^e(k).
+A166700	mult	0	#(a(p-1)+3)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+3)^e(k).
+A166701	mult	0	#(a(p-1)+4)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+4)^e(k).
+A166702	mult	0	#(a(p-1)+5)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+5)^e(k).
+A166703	mult	0	#(a(p-1)+6)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+6)^e(k).
+A166704	mult	0	#(a(p-1)+7)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+7)^e(k).
+A166705	mult	0	#(a(p-1)+8)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+8)^e(k).
+A166706	mult	0	#(a(p-1)+9)^e. If n = Product p(k)^e(k) then a(n) = Product (a(p(k)-1)+9)^e(k).
+A166698	mult	0	#(a(p-1)-1)^e.
+A326815	mult	0	#(e+1)*(2-e)/2 = A080956(e). - _Amiram Eldar_, Oct 26 2020
+A062368	mult	0	#(e+1)*(e+2)*(4*e+3)/6.
+A306379	mult	0	#(e-1)*(p+1)^2*p^(e-2) + 2*(p+1)*p^(e-1).
+A305186	mult	0	#(p - 1)*(p^2 - 1)*(p^3 - 1)*(p^4 - 1)*p^(16*e-10).
+A306411	mult	0	#(p - 1)*p^(6*e-1).
+A306412	mult	0	#(p - 1)*p^(8*e-1).
+A090780	mult	0	#(p - 1)*p^e/2 = A000217(p-1)*p^(e-1).
+A069088	mult	0	#(p+1)*(e+1)/2 if e odd, and (p+1)*e/2 + 1 if e even. - _Amiram Eldar_, Sep 03 2020
+A319132	mult	0	#(p+1)*e+1. - _Amiram Eldar_, Oct 25 2020
+A166590	mult	0	#(p+2)^e.
+A166591	mult	0	#(p+3)^e.
+A166586	mult	0	#(p-2)^e. If n = Product p(k)^e(k) then a(n) = Product (p(k) - 2)^e(k). a(2k) = 0 for k >= 1.
+A166589	mult	0	#(p-3))^e. If n = Product p(k)^e(k) then a(n) = Product (p(k)-3)^e(k). a(3k) = 0 for k >= 1. Abs (a(2^k)) = 1 for k >= 1.
+A077455	mult	0	#(p^(12*e+3) + p^(8*e+2) + p^(4*e+1) + 1)/(p^3 + p^2 + p + 1). - _Amiram Eldar_, Sep 09 2020
+A062952	mult	0	#(p^(2*e+2)-p^(e+1)-p^e+p)/(p^2-1).
+A077456	mult	0	#(p^(20*e+4) + p^(15*e+3) + p^(10*e+2) + p^(5*e+1) + 1)/(p^4 + p^3 + p^2 + p + 1). - _Amiram Eldar_, Sep 09 2020
+A113061	mult	0	#(p^(3*(1+floor(e/3)))-1)/(p^3-1). The Dirichlet generating function is zeta(s)*zeta(3s-3). The sequence is the inverse Mobius transform of n*A010057(n). - _R. J. Mathar_, Feb 18 2011
+A175926	mult	0	#(p^(3e+1)-1)/(p-1). - _R. J. Mathar_, Mar 31 2011
+A300909	mult	0	#(p^(4*(1+floor(e/4)))-1)/(p^4-1). - _Robert Israel_, Mar 15 2018
+A084218	mult	0	#(p^(4*e + 2) + 1)/(p^2 + 1). - _Amiram Eldar_, Sep 13 2020
+A202994	mult	0	#(p^(4*e+1)-1)/(p-1) for prime p. - _Andrew Howroyd_, Jul 23 2018
+A065827	mult	0	#(p^(4*e+2)-1)/(p^2-1).
+A203556	mult	0	#(p^(5*e+1)-1)/(p-1) for prime p. - _Andrew Howroyd_, Jul 23 2018
+A084220	mult	0	#(p^(6*e + 3) + 1)/(p^3 + 1). - _Amiram Eldar_, Sep 13 2020
+A077454	mult	0	#(p^(6*e+2) + p^(3*e+1) + 1)/(p^2 + p + 1). - _Amiram Eldar_, Sep 09 2020
+A077457	mult	0	#(p^(8*e+2) + 1)/(p^2 + 1). - _Amiram Eldar_, Sep 09 2020
+A328181	mult	0	#(p^(e+1) - (-1)^e*(2*p+1))/(p+1). - _Amiram Eldar_, Dec 02 2020
+A324891	mult	0	#(p^(e+1) - 1)/(p-1) if p == 1 (mod 4), otherwise a(p^e) = 1.
+A324893	mult	0	#(p^(e+1) - 1)/(p-1) if p == 3 (mod 4), otherwise a(p^e) = 1.
+A069546	mult	0	#(p^(e+1)*(p^(e+1)-1)-(p-1)*(e+1))/(p-1)^2.
+A188999	mult	0	#(p^(e+1)-1)/(p-1) if e is odd, a(p^e) = (p^(e+1)-1)/(p-1) -p^(e/2) if e is even.
+A069208	mult	0	#(p^(e+1)-p^e+p^(e-1)-1)/(p-1).
+A076752	mult	0	#(p^(e+2)-1)/(p^2-1) for even e and a(p^e) = p*(p^(e+1)-1)/(p^2-1) for odd e.
+A068984	mult	0	#(p^(e+3)-3*p^(e+2)+4*p^(e+1)-p-1+2*p^(e+3)*e-6*p^(e+2)*e+4*p^(e+1)*e+p^(e+3)*e^2-2*p^(e+2)*e^2+p^(e+1)*e^2)/(p-1)^3.
+A321140	mult	0	#(p^3*(p^(3e+3) - e - 2) + e + 1)/(p^3 - 1)^2.
+A342661	mult	0	#(p^e) * (q^(e+1)-1)/(q-1), where q = 1 for p = 2, and for odd primes p, q = A151799(p), i.e., the previous prime.
+A190125	mult	0	#(p^e)^(p^e) = p^(e*p^e).
+A210826	mult	0	#-1 + ((e+2) mod 3). Thus the Dirichlet g.f. is indeed zeta(3s)/zeta(s). Also sumdiv(n,d,a(d))=1 iff n is a cube, else sumdiv(n,d,a(d))=0 hence Sum_{k=1..n} a(k)*floor(n/k) = floor(n^(1/3)). - _Benoit Cloitre_, Oct 28 2012
+A326814	mult	0	#-3 if e = 1, 2 if e = 2, and 0 otherwise. - _Amiram Eldar_, Oct 26 2020
+A197881	mult	0	#0 if e = 1, 2 if e = 2, and 1 otherwise.
+A091069	mult	0	#0 if p = 2 or e > 1, a(p) = 1 if p == +-1 (mod 8) and -1 if p == +-3 (mod 8).
+A318608	mult	0	#0 if p = 2 or e > 1, a(p) = 1 if p == 1 (mod 4) and -1 if p == 3 (mod 4).
+A319448	mult	0	#0 if p = 3 or e > 1, a(p) = 1 if p == 1 (mod 3) and -1 if p == 2 (mod 3).
+A062370	mult	0	#1 + Sum_{k=1..e} (2k+1)sigma(p^k). - _Mitch Harris_, May 24 2005
+A117658	mult	0	#1 + p^(e-1) for primes p. - _Robert Israel_, Jul 06 2016
+A068963	mult	0	#1 + p^2 * (p-1)*(p^(3e)-1)/(p^3-1).
+A068970	mult	0	#1 + p^3 + (p-1)(p^(4e)-1)/(p^4-1).
+A062380	mult	0	#1 + sum_{k=1..e} (2k+1)(p^k-p^{k-1}) = ((2e+1)p^(e+1) - (2e+3)p^e+2)/(p-1). - _Mitch Harris_, May 24 2005
+A323308	mult	0	#1 for e = 1 and 2 otherwise.
+A227291	mult	0	#1 if e=2, a(p^e) = 0 if e=1 or e>2. - _Antti Karttunen_, Jul 28 2017
+A242603	mult	0	#1 if p = 7, else p^e.
+A083346	mult	0	#1 iff p|e, p otherwise. For f(n) = A083345(n)/A083346(n), f(p^i*q^j*...) = f(p^i)+f(q^j)+ ... The denominator of each term is 1 or the prime, thus the denominator of the sum is the product of the denominators of the components. - _Christian G. Bower_, May 16 2005
+A070919	mult	0	#1+3*e+3*e^2 for prime p and e >= 0. - _Werner Schulte_, Nov 30 2018
+A069915	mult	0	#1+Sum_{k=1..e, gcd(k, e)=1} p^k.
+A328729	mult	0	#2 - p - e if e < 3, and 0 otherwise. - _Amiram Eldar_, Dec 02 2020
+A277847	mult	0	#2 if p = 2; oddpart(p-1)*p^(e-1) + 1 if p > 2.
+A160498	mult	0	#2 if p^e = 9 or p == 1 (mod 3) and e = 1, otherwise 0. - _Jianing Song_, Mar 02 2019
+A100635	mult	0	#2*((e+1)^2) - 1.
+A074722	mult	0	#2*(-1)^(e+1)*((-p)^(e+1)-1)/(p+1)-p^e.
+A298473	mult	0	#2*(-p)^e (p prime, e>0).
+A256452	mult	0	#2*e + 1 if p == 1 (mod 4), otherwise a(p^e) = 1.
+A307000	mult	0	#2*e + 1, a(2) = 3 and a(2^e) = 4*e - 2 for e >= 2.
+A322327	mult	0	#2*e for prime p and e > 0.
+A335852	mult	0	#2*e if p = 2, e if p == 3 (mod 4) and e^2 if p == 1 (mod 4).
+A176345	mult	0	#2*p^e-p^(e-1).
+A318472	mult	0	#2^A000045(e).
+A318474	mult	0	#2^A000045(e+1).
+A318476	mult	0	#2^A000108(e).
+A318307	mult	0	#2^A002487(e).
+A318316	mult	0	#2^A007306(e).
+A318465	mult	0	#2^A007895(e), where A007895(n) gives the number of terms in the Zeckendorf representation of n.
+A331109	mult	0	#2^A112310(e).
+A278908	mult	0	#2^omega(e), where omega = A001221.
+A092089	mult	0	#2e+1 if p is odd; a(2) = 2, a(2^e)= 4*(e-1), if e > 1. - _Michel Marcus_, Jun 26 2014
+A286779	mult	0	#2e^2 + 2.
+A087688	mult	0	#3 for p an odd prime, a(2^1) = 2, a(2^2) = 3, a(2^e) = 5 for e >= 3. - _Eric M. Schmidt_, Apr 08 2013
+A226602	mult	0	#3*e, p prime and e>0.
+A224516	mult	0	#4 for p == 1 (mod 3); a(p^e) = 2 for p == 2 (mod 3); a(3^1) = 2; a(3^e) = 4 for e > 1.
+A335385	mult	0	#4 if e = 3 or 6, and a(p^e) = 2 otherwise.
+A332476	mult	0	#4 if p == 1 (mod 4) and 2 otherwise.
+A307380	mult	0	#4 if p^e = 25 or p == 1 (mod 5) and e = 1, otherwise 0.
+A322328	mult	0	#4*e for prime p and e > 0.
+A307382	mult	0	#6 if p^e = 49 or p == 1 (mod 7) and e = 1, otherwise 0.
+A061389	mult	0	#A000010(e)+1.
+A295316	mult	0	#A000035(e).
+A188581	mult	0	#A000070(e). - _Amiram Eldar_, Sep 09 2020
+A072084	mult	0	#A000120(p)^e
+A339904	mult	0	#A000265(q-1) * q^(e-1), where q = A151800(p), the next prime larger than p.
+A095691	mult	0	#A000720(e)+1.
+A095683	mult	0	#A000720(e). - _Vladeta Jovovic_, Jul 06 2004
+A295665	mult	0	#A000720(p)^(e*A010051(A000720(p))).
+A322885	mult	0	#A001399(e).
+A324106	mult	0	#A005940(p^e).
+A318469	mult	0	#A019565(A003714(e)).
+A293443	mult	0	#A019565(A193231(e)).
+A294931	mult	0	#A019565(A289813(e)).
+A294932	mult	0	#A019565(A289814(e)).
+A293442	mult	0	#A019565(e).
+A265390	mult	0	#A025529(e+1) = (1/1 + 1/2 + 1/3 + ... + 1/(e+1)) * lcm{1, 2, 3, ..., e+1}.
+A332712	mult	0	#A028242(e). - _Amiram Eldar_, Nov 30 2020
+A307848	mult	0	#A037445(e).
+A336457	mult	0	#A065330(1 + p + p^2 + ... + p^e).
+A324911	mult	0	#A156552(p^e).
+A318470	mult	0	#A260443(e).
+A324283	mult	0	#A276086(p^e).
+A324108	mult	0	#A324054((p^e)-1).
+A336455	mult	0	#A335915(1 + p + p^2 + ... + p^e).
+A336468	mult	0	#A336466(p-1) * A336466(p)^(e-1).
+A113176	mult	0	#F(p). - _Franklin T. Adams-Watters_, Jun 05 2006
+A113195	mult	0	#F(p^e). - _Franklin T. Adams-Watters_, Jun 05 2006
+A331107	mult	0	#Product_{i} (p^s(i) + 1), where s(i) are the terms in the Zeckendorf representation of e (A014417).
+A331110	mult	0	#Product_{i} (p^s(i) + 1), where s(i) are the terms in the dual Zeckendorf representation of e (A104326).
+A069934	mult	0	#Product_{k=2..e+1} Phi_k(p), where Phi_k(x) is k-th cyclotomic polynomial.
+A322857	mult	0	#Sum_{d|e, gcd(d, e/d)==1} p^d.
+A293303	mult	0	#Sum_{d|e} A008683(e/d)*p^d.
+A341343	mult	0	#Sum_{i=0..e} trinomial(2,i) for prime p and e >= 0, where trinomial(n,k) = 0 if 2*n < k.
+A328271	mult	0	#Sum_{i=0..floor(e/2)} p^(2*e-4*i) for prime p, i.e., a(p^(2*e)) = (p^(4*e+4)-1)/(p^4-1) and a(p^(2*e+1)) = p^2 * (p^(4*e+4)-1)/(p^4-1) for prime p. - _Werner Schulte_, Jul 24 2021
+A308056	mult	0	#Sum_{i=1..e, gcd(i,e)=1} p^i.
+A203908	mult	0	#abs(p-e).
+A286324	mult	0	#e + (e mod 2). - _Andrew Howroyd_, Aug 05 2018
+A338690	mult	0	#e + 1 if p == 1 (mod 4), a(p^e) = (1 + (-1)^e)/2 if p = 2 or p == 3 (mod 4).
+A303915	mult	0	#e*(-1)^e, p prime and e > 0.
+A343068	mult	0	#e*a(p-1).
+A124315	mult	0	#e+1+floor(e^2/4). - _R. J. Mathar_, Apr 14 2011
+A090740	mult	0	#e+2 if p = 2; 1 if p > 2. G.f.: A(x) = 1/(1-x^2) + Sum_{k>=0} x^(2^k)/(1-x^(2^k)). - _Vladeta Jovovic_, Jan 19 2004
+A092520	mult	0	#floor((3*e+2)/2) = A001651(e+1), p prime and e >= 0.
+A325837	mult	0	#floor((e+1)/2).
+A322483	mult	0	#floor((e+3)/2).
+A061704	mult	0	#floor(e/3) + 1. - _Mitch Harris_, Apr 19 2005
+A326043	mult	0	#floor[((e-1)+sigma(p^e)) / e].
+A190867	mult	0	#max(1,e-1).
+A252505	mult	0	#min(e, 3) + 1. - _Amiram Eldar_, Sep 19 2020
+A161946	mult	0	#oddpart(p^e+1), where oddpart(n) = A000265(n) is the largest odd divisor of n.
+A058035	mult	0	#p ^ min(e,3), p prime, e > 0. [_Reinhard Zumkeller_, Jan 06 2012]
+A323309	mult	0	#p for e = 1 and p^e + p otherwise.
+A327936	mult	0	#p if e >= p, otherwise 1.
+A329376	mult	0	#p when e == 2, otherwise a(p^e) = 1.
+A170819	mult	0	#p*A011765(p+1), e > 0. - R. J. Mathar, Jun 07 2011
+A302138	mult	0	#p, p > 2; a(2^e) = 2 for even e and 8 for odd e.
+A130107	mult	0	#p-1 if e=1,  a(p^e) = p^2-p-1 if e=2, a(p^e) = p^(e-3)*(p+1)*(p-1)^2. - _Enrique Pérez Herrero_, Apr 03 2014
+A270419	mult	0	#p^(-A065620(e)) for evil e, a(p^e)=1 for odious e, or equally, a(p^e) = p^(A010059(e) * -A065620(e)).
+A066990	mult	0	#p^(2 - e mod 2), p prime, e>0.
+A191414	mult	0	#p^(2*e)-1, e>0.
+A087786	mult	0	#p^(2*floor(2*e/3)) + Sum_{i=0..floor((e-1)/3)} k*(p-1)*p^(e+i-1) where k = 3 if (p = 3 and 3*i+1 = e) or (p mod 3 = 1) otherwise k = 1. - _Andrew Howroyd_, Jul 17 2018
+A328621	mult	0	#p^(2e mod p).
+A105634	mult	0	#p^(2e) if p = 7; (p^(2e+2)-1)/(p^2-1) if p == 1, 2, 4 (mod 7); (p^(2e+2)+(-1)^e)/(p^2+1) if p == 3, 5, 6 (mod 7).
+A059479	mult	0	#p^(3e - (e % 2)). - _Mitch Harris_, Jun 09 2005
+A115226	mult	0	#p^(6*e - 4)*(p^3 - 1)*(p - 1). - _Amiram Eldar_, Sep 10 2020
+A087122	mult	0	#p^(e + floor(e/2) - 1)*((p-1)*ceiling(e/2) + p). - _Andrew Howroyd_, Jul 15 2018
+A327938	mult	0	#p^(e mod p).
+A327939	mult	0	#p^(e-(e mod p)).
+A319516	mult	0	#p^(e-1) if p <= 5; (p-4)*p^(e-1) if p > 5.
+A321029	mult	0	#p^(e-1) if p <= 5; (p-5)*p^(e-1) if p >= 7.
+A321030	mult	0	#p^(e-1) if p <= 7; (p-6)*p^(e-1) if p > 7.
+A319534	mult	0	#p^(e-1) if p = 2,3; (p-3)*p^(e-1) if p > 3.
+A241663	mult	0	#p^(e-1)*(p-4) for p > 3. a(2^e) = a(3^e) = 0 for e > 0.
+A062354	mult	0	#p^(e-1)*(p^(e+1)-1). - _Vladeta Jovovic_, Apr 17 2002
+A306198	mult	0	#p^(e-1)*(p^2 - p - 1).
+A204617	mult	0	#p^(e-1)*H(p). H(2)=1, H(p) = p-1 if p=1 (mod 4) and H(p) = p+1 if p=3 (mod 4).
+A331738	mult	0	#p^(e-A000265(e)), where A000265(x) gives the odd part of x.
+A327937	mult	0	#p^(p-1) if e >= p, otherwise a(p^e) = p^e.
+A133482	mult	0	#p^(pe). If n = Product p(k)^e(k) then a(n) = Product p(k)^(p(k)*e(k)). - _Jaroslav Krizek_, Oct 17 2009
+A321322	mult	0	#p^2 - 2 if e = 1 and (p^2 - 1)^2 * p^(2*e - 4) otherwise. - _Amiram Eldar_, Oct 26 2020
+A078615	mult	0	#p^2. - _Mitch Harris_, May 17 2005
+A331737	mult	0	#p^A000265(e), where A000265(x) gives the odd part of x.
+A270437	mult	0	#p^A048724(e), where A048724(e) = (e XOR 2e).
+A270418	mult	0	#p^A065620(e) for odious e, a(p^e)=1 for evil e, or equally, a(p^e) = p^(A010060(e)*A065620(e)).
+A270436	mult	0	#p^A065621(e).
+A307037	mult	0	#p^e + (-1)^e.
+A306408	mult	0	#p^e - (p^e - 1)/(p-1).
+A324894	mult	0	#p^e if (p^(1+e) - 1)/(p-1) = 1 + p + p^2 + ... + p^e is composite, and 1 otherwise.
+A324892	mult	0	#p^e if (p^(1+e) - 1)/(p-1) = 1 + p + p^2 + ... + p^e is prime, and 1 otherwise.
+A326575	mult	0	#p^e if p < 5, (p^(e+1)-(-1)^(e+1))/(p+1) if p == 5 (mod 6), and (p^(e+1)-1)/(p-1) if p == 1 (mod 6). - _Amiram Eldar_, Dec 02 2020
+A328618	mult	0	#p^e if p = 2 or e is a multiple of p, otherwise a(p^e) = p^((p*floor(e/p)) + (2e mod p)).
+A111938	mult	0	#p^e if p = 2; (e+1)p^e if p == 1 (mod 4); (1+(-1)^e)/2 p^e if p == 3 (mod 4).
+A155918	mult	0	#p^e if p == 1 (mod 4); ceiling(p^(e+1)/(p+1)) if p == 3 (mod 4); 2^(e-1) + 1 if p = 2. - _Jianing Song_, Apr 20 2019
+A085731	mult	0	#p^e if p divides e; a(p^e) = p^(e-1) otherwise. - _Eric M. Schmidt_, Oct 22 2013
+A282254	mult	0	#p^e*(p^(9*(e+1))-1)/(p^9-1). - _Jianing Song_, Aug 12 2020
+A069194	mult	0	#p^e*(p^e - p^(e-1)) + (p^(2*e) - 1)/(p^2 - 1). - _Amiram Eldar_, Sep 15 2019
+A064971	mult	0	#p^e*(p^e+1). - _Vladeta Jovovic_, Nov 01 2001
+A328617	mult	0	#p^e, if e = 0 mod p, otherwise a(p^e) = p^((p*floor(e/p)) + A124223(A000720(p),e mod p).
+A117657	mult	0	#p^floor(2*e/3) + (p-1)*p^(e-1) for prime p. - _Andrew Howroyd_, Jul 17 2018
+A117656	mult	0	#p^floor(e/2) + (p-1)*p^(e-1) for prime p. - _Andrew Howroyd_, Jul 17 2018
+A305461	mult	0	#p^floor(e/2) + 1 for prime p. - _Andrew Howroyd_, Jul 22 2018
+A197863	mult	0	#p^max(e,2).
+A062379	mult	0	#p^max(e-3, 0). - _Amiram Eldar_, Sep 07 2020
+A073103	mult	0	#p^min(e-1, 3) if p = 2, 4 if p == 1 (mod 4), 2 if p == 3 (mod 4). - _David W. Wilson_, Jun 09 2005
+A247257	mult	0	#p^min(e-1, 4) if p = 2, gcd(8, p-1) if p > 2. - _Jianing Song_, Nov 10 2019
+A304203	mult	0	#p^prime(e). - _M. F. Hasler_, Nov 20 2018
+A338782	mult	0	#p^rad(e), where rad(k) is the largest squarefree number dividing k (A007947).
+A058067	mult	0	#p^t_p(e). - _David W. Wilson_, Aug 14 2005 [t_p(e) = Sum_{k>=0: e > A090622(k, p)} (e - A090622(k, p)) = p * Sum_{k = 1..e} max(0, k - A090622(e-k, p)). In particular, t_p(e) = p*e*(e+1)/2 for e <= p. - _Andrey Zabolotskiy_, Nov 09 2017 and Sep 29 2020]
+A102631	mult	0	#p^{2e-1}. - _Franklin T. Adams-Watters_, Nov 17 2006
+A126246	mult	0	#phi(p^e) = p*(p-1)^(e-1), except when p=2, then a(2)=2, because F(1)=F(2)=1 and a(2^e) = 3*(2^(e-2)), (e > 1, all smaller Fibonacci numbers are coprime, except ones that are multiples of 3, i.e., every 4th one). - _Jud McCranie_, Nov 11 2017
+A301315	mult	0	#prime(p) ^ a(e) (where prime(k) denotes the k-th prime number).
+A064988	mult	0	#prime(p)^e.
+A321874	mult	0	#prime(p)^prime(e). - _M. F. Hasler_, Nov 20 2018
+A290641	mult	0	#prime(p-1)^e.
+A347125	mult	0	#q^(e-1)*(p^e*(q*p-1)-q+1)/(p-1), where q = A151800(p). - _Sebastian Karlsson_, Sep 02 2021
+A342662	mult	0	#q^e * (p^(e+1)-1)/(p-1), where q = 1 for p = 2, and for odd primes p, q = A151799(p), i.e., the previous prime.
+A102574	mult	0	#sigma(p^(2e)) = (p^(2e+1) - 1)/(p - 1) if p = 2 or p == 1 (mod 4); sigma_2(p^e) = (p^(2e+2) - 1)/(p^2 - 1) if p == 3 (mod 4). - _Jianing Song_, Aug 03 2018
+A322485	mult	0	#sigma(p^floor((e-1)/2)) + p^e = (p^floor((e+1)/2) - 1)/(p-1) + p^e.
+A333926	mult	0	#Multiplicative with a(p^k) = 1 + Sum_{d recursive divisor of k} p^d.
+A303809	mult	0	#Multiplicative with a(p^k) = 2^a(k).
+A303822	mult	0	#Multiplicative with a(p^k) = 3^a(k).
+A300955	mult	0	#Multiplicative with a(p^k) = A064614(p)^a(k).
+A326304	mult	0	#Multiplicative with a(p^k) = a(p-1)^k + 1 for any k > 0 and any prime number p.
+A279513	mult	0	#Multiplicative with a(p^k) = p*a(k) for any prime p and k>0.
+A183091	mult	0	#Multiplicative with a(p^k) = p^(k*(k+1)/2).
+A279912	mult	0	#Multiplicative with a(p^k) = p^(k-1) * ((p-1) * p^k + 1). - _Daniel Suteu_, Oct 24 2018
+A087780	mult	0	#Multiplicative with a(p^m) = 2 for p == 1, 7 (mod 8); a(p^m) = 0 for p == 3, 5 (mod 8); a(2^1) = 1; a(2^m) = 0 for m > 1. - _Eric M. Schmidt_, Apr 20 2013
+A069739	mult	0	#Multiplicative with a(p^m) = Catalan(m) (A000108). Coincides with A066060 up to n=63 except for n=32.
+A066060	mult	0	#Multiplicative with a(p^m) equal to the number of groups of order p^m.
+A317934	mult	0	#Multiplicative with a(p^n) = 2^A011371(n); denominators for certain "Dirichlet Square Roots" sequences.
+A159253	mult	0	#Multiplicative with a(p^{3n}) = p^{3n}, a(p^{3n+1}) = p^{3n+2), and a(p^{3n+2)) = p^{3n+1).
+A234744	mult	0	#Multiplicative with a(p_i) = p_{A235048(i)} for primes with index i, except for cases i=3 and i=4, use p_18 and p_8 (61 and 19) instead of 19 and 61. For the composites, the value is determined as: a(u*v) = a(u) * a(v).
+A235487	mult	0	#Multiplicative with a(p_i) = p_{a(i)} for primes with index i <> 4, a(7) = 8, a(2^(3k)) = 7^k, a(2^(3k+1)) = 2*7^k, a(2^(3k+2)) = 4*7^k, and for other composites, a(u * v) = a(u) * a(v).
+A318363	mult	0	#Multiplicative with a(prime(i)^k) = prime(k)^2^(i-1).
+A308317	mult	0	#Multiplicative with a(prime(k)^e) = A005117(e+1)^(2^(k-1)).
+A156061	mult	0	#Multiplicative with a(prime(k)^e) = k. Note that in contrast to A003963, this is not fully multiplicative. a(1) = 1 as an empty product. - _Antti Karttunen_, Aug 13 2017
+A290106	mult	0	#Multiplicative with a(prime(k)^e) = k^(e-1).
+A299200	mult	0	#Multiplicative with a(prime(n)) = A000041(n).
+A262401	mult	0	#Multiplicative with p -> A054055(p), p prime.
+A108548	mult	0	#Multiplicative with p -> A108546(A049084(p)), p prime.
+A124508	mult	0	#Multiplicative with p^e -> 3*2^e, p prime and e>0.
+A081210	mult	0	#Multiplicative with p^e -> A070321(p^e), p prime.
+A097246	mult	0	#Multiplicative with p^e -> NextPrime(p)^floor(e/2) * p^(e mod 2), where p prime and NextPrime(p)=A000040(A049084(p)+1).
+A268385	mult	0	#Multiplicative with p^e -> p^A193231(e), p prime and e > 0.
+A124859	mult	0	#Multiplicative with p^e -> primorial(e), p prime and e > 0.
+A102440	mult	0	#Multiplicative with prime(i) -> (if i<=2 then prime(i) else A102415(i)).
+A287620	mult	0	#Multiplicative with:
+A125139	mult	0	#SENSigma: p*(p^e-1)/(p-1) - (-1)^e.
+A067856	mult	0	#Sum_{n > 0} a(n)*x^n/(1 + x^n) = x. Moebius transform of A048298. Multiplicative with a(2^e) = 2^(e - 1), a(p) = -1 for p > 2, a(p^e) = 0 for p > 2 and e > 1. - _Vladeta Jovovic_, Jan 02 2003
+A064950	mult	0	#a(n) = Sum_{d|n} d*tau(d^2). (p^(e+2) - 3*p^(e+1) + p + 1 + 2*p^(e+2)*e - 2*p^(e+1)*e)/(p-1)^2.
+A115075	mult	0	#a(n)=n^3-A115077(n). For squarefree n, a(n)=n^2. Multiplicative with a(p^e)=p^(e)*(p^(e)+p^(e-1)-p^(ceiling(e/2)-1))
