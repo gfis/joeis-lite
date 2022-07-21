@@ -4422,7 +4422,7 @@ morwiki:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-mult: mult1 mult2 mult3  # Multiplicative with ...
+mult0: mult1 mult3  # Multiplicative with ...
 mult1: # grep nyi from jcat25
 	grep -Pi "Multiplicative with" $(COMMON)/jcat25.txt \
 	| grep -E "^\%" | cut -b4- \
@@ -4454,8 +4454,12 @@ mult4:
 	| tee    $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-mult5:
-	cp mult3.man mult3.gen
+mult:
+	perl multsplit.pl -j mult3.java \
+	| grep -P "\tmult\t" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 n2:
 	cat $(COMMON)/jcat25.txt \

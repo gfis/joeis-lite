@@ -24,7 +24,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 } # while $opt
 
 my ($aseqno, $callcode, $offset, $name);
-$callcode = "xult";
+$callcode = "mul";
 $offset = 0;
 while (<>) {
     s/\s+\Z//; # chompr
@@ -34,16 +34,17 @@ while (<>) {
     ($aseqno, $name) = split(/\t/);
     if ($name =~ s{Multiplicative with ([^\.]+)\.}{M.w. $1\.}i) {
         my $expr = $1;
-        if ($expr =~ m{a\(p\^k\)}) {
+        if ($expr =~ m{a\([p2]\^k\)}) {
             $expr =~ s{k}{e}g;
         }
         $expr =~ s{a\(p\^e\) *\= ([^p])p*}{Z.valueOf($1}g;
         $expr =~ s{a\(p\^e\) *\= *}{}g;
         $expr =~ s{a\(2\^e\) *\= *}{p\.equals\(Z\.TWO\) ? Z\.valueOf\(}g;
         $expr =~ s{p\^\(}{p\.pow\(}g;
+        $expr =~ s{p\^e}{p\.pow\(e\)}g;
         $expr =~~s {\A([^p])}{Z\.valueOf\($1};
         $expr =~ s{\(\-1\)\^e}{\(\(\(e \& 1\) == 0) ? 1 : \-1\)}g;
-        $expr =~ s{ *for.*}{};
+        $expr =~ s{ *for .*}{};
         $expr =~ s{otherwise}{};
         $expr =~ s{ and }{ \: }g;
         $expr =~ s{2\^\(}{Z.ONE.shiftLeft\(}g;
@@ -55,6 +56,7 @@ while (<>) {
 } # while <>
 #--------------------------------------------
 __DATA__
+A001511 Multiplicative with a(2^k) = k + 1, a(p^k) = 1 for any odd prime p. - _Franklin T. Adams-Watters_, Jun 09 2009
 A327937 Multiplicative with p^(p-1) if e >= p, otherwise a(p^e) = p^e.
 A133482 Multiplicative with p^(pe). If n = Product p(k)^e(k) then a(n) = Product p(k)^(p(k)*e(k)). - _Jaroslav Krizek_, Oct 17 2009
 A321322 Multiplicative with p^2 - 2 if e = 1 and (p^2 - 1)^2 * p^(2*e - 4) otherwise. - _Amiram Eldar_, Oct 26 2020
