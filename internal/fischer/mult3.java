@@ -323,7 +323,7 @@ A132705	mul	0
 # If a(1) were 1 rather than 3, the sequence would be completely M.w. a(p) = p + 2. - _Charles R Greathouse IV_, Sep 02 2009
 
 A092342	mul	0
-# b(3^e) = 0^e, b(p^e) = (p.pow(3*e+3).subtract(1) / (p^3 - 1)
+# b(3^e) = 0^e, b(p^e) = (p.pow(3*e+3).subtract(1).divide(p^3 - 1)
 # If b(3*n) = 0, b(3*n+1) = a(n), b(3*n+2) = A092343(n), then b(n) is M.w. b(3^e) = 0^e, b(p^e) = (p^(3*e+3) - 1) / (p^3 - 1) otherwise. - _Michael Somos_, Aug 22 2007
 
 A253193	mul	0
@@ -335,7 +335,7 @@ A091306	mul	0
 # If b(n,k) = sum of k-th powers of unitary, squarefree divisors of n, including 1, then b(n,k) is M.w. b(p,k)=p^k+1 and b(p^e,k)=1 for e>1.
 
 A249010	mul	0
-# b(2^e) = 2 - 2^e, b(5^e) = 1, : b(p^e) = (p.pow(e+1).subtract(1) / (p.subtract(1))
+# b(2^e) = 2 - 2^e, b(5^e) = 1, : b(p^e) = (p.pow(e+1).subtract(1).divide(p.subtract(1))
 # If n>0 then a(n) = -3 * b(n) where b is M.w. b(2^e) = 2 - 2^e, b(5^e) = 1, and b(p^e) = (p^(e+1) - 1) / (p - 1) otherwise.
 
 A329378	mul	0
@@ -351,7 +351,7 @@ A341343	mul	0
 # Let b(n), n > 0, be the Dirichlet inverse of a(n); b(n) is M.w. b(p^(3*e)) = 1 for e >= 0, and b(p^(3*e-2)) = -3*e and b(p^(3*e-1)) = 3*e for e > 0 and prime p.
 
 A182139	mul	0
-# a_q(p^e) = (q^(e+1).subtract(1)/ (q-1)
+# a_q(p^e) = (q^(e+1).subtract(1).divide(q-1)
 # More generally: Let a_q(n) be M.w. a_q(p^e) = (q^(e+1)-1)/ (q-1) for prime p, e >= 0 and some fixed integer q. Then a_q(n) is the inverse Moebius transform of the completely multiplicative sequence b_q(n) = q^bigomega(n) with b_q(p) = q and b_q(1) = 1. For q = 1 see a_q(n) = A000005(n) and b_q(n) = A000012(n), for q = 0 see a_q(n) = A000012(n) and b_q(n) = A000007(n) with offset 1, and for q = -1 see a_q(n) = A010052(n) with offset 1 and b_q(n) = A008836(n). - _Werner Schulte_, Feb 20 2019
 
 A079707	mul	0
@@ -791,7 +791,7 @@ A115364	mul	0
 # M.w. a(2^k) = A000217(k+1), a(p^k) = 1 for odd primes p. - _Antti Karttunen_, Nov 02 2018
 
 A264740	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(e + 1, Z.valueOf(sigmp.pow(e+1)-1) / (p-1)
+# p.equals(Z.TWO) ? Z.valueOf(e + 1, Z.valueOf(sigmp.pow(e+1)-1).divide(p-1)
 # M.w. a(2^k) = k + 1, a(p^k) = sigma(p^k) = (p^(k+1)-1) / (p-1) for p > 2.
 
 A060839	mul	0
@@ -1207,7 +1207,7 @@ A321140	mult	0
 # M.w. a(p^e) = (p^3*(p^(3e+3) - e - 2) + e + 1).divide(p^3 - 1)^2.
 
 A342661	mul	0
-# p.pow(e) * (q^(e+1).subtract(1)/(q-1), where q = 1
+# p.pow(e) * (q^(e+1).subtract(1).divide(q-1), where q = 1
 # M.w. a(p^e) = (p^e) * (q^(e+1)-1).divide(q-1), where q = 1 for p = 2, and for odd primes p, q = A151799(p), i.e., the previous prime.
 
 A190125	mult	0
@@ -1492,7 +1492,7 @@ A293303	mul	0
 
 A328271	mul	0
 # Z.valueOf(Sum_{i=0
-# M.w. a(p^e) = Sum_{i=0..floor(e/2)} p^(2*e-4*i) for prime p, i.e., a(p^(2*e)) = (p^(4*e+4).subtract(1).divide(p^4-1) and a(p^(2*e+1)) = p^2 * (p^(4*e+4).subtract(1)/(p^4-1) for prime p. - _Werner Schulte_, Jul 24 2021
+# M.w. a(p^e) = Sum_{i=0..floor(e/2)} p^(2*e-4*i) for prime p, i.e., a(p^(2*e)) = (p^(4*e+4).subtract(1).divide(p^4-1) and a(p^(2*e+1)) = p^2 * (p^(4*e+4).subtract(1).divide(p^4-1) for prime p. - _Werner Schulte_, Jul 24 2021
 
 A308056	mul	0
 # Z.valueOf(Sum_{i=1
@@ -1598,8 +1598,8 @@ A087786	mul	0
 # p.pow(2*(2*e/3)) + Sum_{i=0
 # M.w. a(p^e) = p^(2*floor(2*e/3)) + Sum_{i=0..floor((e-1)/3)} k*(p-1)*p^(e+i-1) where k = 3 if (p = 3 and 3*i+1 = e) or (p mod 3 = 1) otherwise k = 1. - _Andrew Howroyd_, Jul 17 2018
 
-A328621	mul	0
-# p.pow(2e mod p)
+A328621	mult	0
+# p.pow(Z.valueOf(2*e).mod(p))
 # M.w. a(p^e) = p^(2e mod p).
 
 A105634	mult	0
@@ -1678,12 +1678,12 @@ A078615	mult	0
 # p.square()
 # M.w. a(p^e) = p^2. - _Mitch Harris_, May 17 2005
 
-A331737	mul	0
-# p^A000265(e), where A000265(x) gives the odd part of x
+A331737	mult	0
+# p.pow(e >> LongUtils.valuation(e, 2))
 # M.w. a(p^e) = p^A000265(e), where A000265(x) gives the odd part of x.
 
-A270437	mul	0
-# p^A048724(e), where A048724(e) = (e XOR 2e)
+A270437	mult	0
+# p.pow(e ^ (2*e))
 # M.w. a(p^e) = p^A048724(e), where A048724(e) = (e XOR 2e).
 
 A270418	mul	0
@@ -1718,52 +1718,52 @@ A155918	mul	0
 # p^e if p == 1 (mod 4); ceiling(p.pow(e+1).divide(p+1)) if p == 3 (mod 4); Z.ONE.shiftLeft(e-1) + 1 if p = 2
 # M.w. a(p^e) = p^e if p == 1 (mod 4); ceiling(p^(e+1)/(p+1)) if p == 3 (mod 4); 2^(e-1) + 1 if p = 2. - _Jianing Song_, Apr 20 2019
 
-A085731	mul	0
-# p^e if p divides e; p.pow(e-1)
+A085731	mult	0
+# Z.valueOf(e).remainder(p).isZero() ? p.pow(e) : p.pow(e-1)
 # M.w. a(p^e) = p^e if p divides e; a(p^e) = p^(e-1) otherwise. - _Eric M. Schmidt_, Oct 22 2013
 
-A282254	mul	0
-# p^e*(p.pow(9*(e+1)).subtract(1).divide(p^9-1)
+A282254	mult	0
+# p.pow(e).multiply(p.pow(9*(e+1)).subtract(1)).divide(p.pow(9).subtract(1))
 # M.w. a(p^e) = p^e*(p^(9*(e+1))-1)/(p^9-1). - _Jianing Song_, Aug 12 2020
 
-A069194	mul	0
-# p^e*(p^e - p.pow(e-1)) + (p.pow(2*e).subtract(1).divide(p.square().subtract(1))
+A069194	mult	0
+# p.pow(e).multiply(p.pow(e).subtract(p.pow(e-1)).add(p.pow(2*e)).subtract(1)).divide(p.square().subtract(1))
 # M.w. a(p^e) = p^e*(p^e - p^(e-1)) + (p^(2*e) - 1)/(p^2 - 1). - _Amiram Eldar_, Sep 15 2019
 
-A064971	mul	0
-# p^e*(p^e+1)
+A064971	mult	0
+# p.pow(e).multiply(p.pow(e).add(1))
 # M.w. a(p^e) = p^e*(p^e+1). - _Vladeta Jovovic_, Nov 01 2001
 
 A328617	mul	0
-# p^e, if e = 0 mod p,  p.pow((p*floor(e/p)) + A124223(A000720(p),e mod p)
+# Z.valueOf(e).mod(p).isZero() ? p.pow(e) : p.pow((p.multiply(Z.valueOf(e).divide(p)) + A124223(A000720(p),e mod p)
 # M.w. a(p^e) = p^e, if e = 0 mod p, otherwise a(p^e) = p^((p*floor(e/p)) + A124223(A000720(p),e mod p).
 
-A117657	mul	0
-# p^floor(2*e/3) + (p.subtract(1))*p.pow(e-1)
+A117657	mult	0
+# p.pow(2*e/3).add(p.subtract(1).multiply(p.pow(e-1)))
 # M.w. a(p^e) = p^floor(2*e/3) + (p-1)*p^(e-1) for prime p. - _Andrew Howroyd_, Jul 17 2018
 
-A117656	mul	0
-# p^floor(e/2) + (p.subtract(1))*p.pow(e-1)
+A117656	mult	0
+# p.pow(e/2).add(p.subtract(1).multiply(p.pow(e-1)))
 # M.w. a(p^e) = p^floor(e/2) + (p-1)*p^(e-1) for prime p. - _Andrew Howroyd_, Jul 17 2018
 
-A305461	mul	0
-# p^floor(e/2) + 1
+A305461	mult	0
+# p.pow(e/2).add(1)
 # M.w. a(p^e) = p^floor(e/2) + 1 for prime p. - _Andrew Howroyd_, Jul 22 2018
 
-A197863	mul	0
-# p^max(e,2)
+A197863	mult	0
+# p.pow(e > 2 ? e : 2)
 # M.w. a(p^e) = p^max(e,2).
 
-A062379	mul	0
-# p^max(e-3, 0)
+A062379	mulr	0
+# p.pow(e - 3 > 0 ? e - 3 : 0)
 # M.w. a(p^e) = p^max(e-3, 0). - _Amiram Eldar_, Sep 07 2020
 
-A073103	mul	0
-# p^min(e-1, 3) if p = 2, 4 if p == 1 (mod 4), 2 if p == 3 (mod 4)
+A073103	mult	0
+# p.equals(Z.TWO) ? p.pow(e-1 < 3 ? e-1 : 3) : (p.mod(Z.FOUR).equals(Z.ONE) ? Z.FOUR : Z.TWO)
 # M.w. a(p^e) = p^min(e-1, 3) if p = 2, 4 if p == 1 (mod 4), 2 if p == 3 (mod 4). - _David W. Wilson_, Jun 09 2005
 
-A247257	mul	0
-# p^min(e-1, 4) if p = 2, gcd(8, p-1) if p > 2
+A247257	mult	0
+# p.equals(Z.TWO) ? p.pow(e-1 < 4 ? e-1 : 4) : p.subtract(1).gcd(Z.EIGHT)
 # M.w. a(p^e) = p^min(e-1, 4) if p = 2, gcd(8, p-1) if p > 2. - _Jianing Song_, Nov 10 2019
 
 A304203	mul	0
@@ -1778,8 +1778,8 @@ A058067	mul	0
 # p^t_p(e)
 # M.w. a(p^e) = p^t_p(e). - _David W. Wilson_, Aug 14 2005 [t_p(e) = Sum_{k>=0: e > A090622(k, p)} (e - A090622(k, p)) = p * Sum_{k = 1..e} max(0, k - A090622(e-k, p)). In particular, t_p(e) = p*e*(e+1)/2 for e <= p. - _Andrey Zabolotskiy_, Nov 09 2017 and Sep 29 2020]
 
-A102631	mul	0
-# p^{2e-1}
+A102631	mult	0
+# p.pow(2*e-1)
 # M.w. a(p^e) = p^{2e-1}. - _Franklin T. Adams-Watters_, Nov 17 2006
 
 A126246	mul	0
@@ -1806,8 +1806,8 @@ A347125	mul	0
 # Z.valueOf(q^(e-1).multiply(p^e*(q*p-1)-q+1).divide(p.subtract(1)), where q = A151800(p)
 # M.w. a(p^e) = q^(e-1)*(p^e*(q*p-1)-q+1)/(p-1), where q = A151800(p). - _Sebastian Karlsson_, Sep 02 2021
 
-A342662	mul	0
-# Z.valueOf(q^e * (p.pow(e+1).subtract(1).divide(p.subtract(1)), where q = 1
+A342662	mult	0
+# p.pow(e+1).subtract(1).divide(p.subtract(1))
 # M.w. a(p^e) = q^e * (p^(e+1)-1)/(p-1), where q = 1 for p = 2, and for odd primes p, q = A151799(p), i.e., the previous prime.
 
 A102574	mul	0
@@ -1842,20 +1842,20 @@ A279513	mul	0
 # p*a(e)
 # M.w. a(p^k) = p*a(k) for any prime p and k>0.
 
-A183091	mul	0
+A183091	mult	0
 # p.pow(e*(e+1)/2)
 # M.w. a(p^k) = p^(k*(k+1)/2).
 
-A279912	mul	0
-# p.pow(e-1) * ((p.subtract(1)) * p^e + 1)
+A279912	mult	0
+# p.pow(e-1).multiply(p.subtract(1).multiply(p.pow(e)).add(1))
 # M.w. a(p^k) = p^(k-1) * ((p-1) * p^k + 1). - _Daniel Suteu_, Oct 24 2018
 
-A087780	mul	0
-# a(p^m) = 2
+A087780	mult	0
+# p.equals(Z.TWO) ? (e == 1 ? Z.ONE : Z.ZERO) : (p.equals(Z.THREE) ? Z.ZERO : (p.mod(Z.EIGHT).bitCount() == 2 ? Z.ZERO : Z.TWO))
 # M.w. a(p^m) = 2 for p == 1, 7 (mod 8); a(p^m) = 0 for p == 3, 5 (mod 8); a(2^1) = 1; a(2^m) = 0 for m > 1. - _Eric M. Schmidt_, Apr 20 2013
 
-A069739	mul	0
-# a(p^m) = Catalan(m) (A000108)
+A069739	mult	0
+# Binomial.binomial(2*e, e).divide(e + 1)
 # M.w. a(p^m) = Catalan(m) (A000108). Coincides with A066060 up to n=63 except for n=32.
 
 A066060	mul	0
@@ -1866,8 +1866,8 @@ A317934	mul	0
 # a(p^n) = 2^A011371(n); denominators
 # M.w. a(p^n) = 2^A011371(n); denominators for certain "Dirichlet Square Roots" sequences.
 
-A159253	mul	0
-# a(p^{3n}) = p^{3n}, a(p^{3n+1}) = p^{3n+2), : a(p^{3n+2)) = p^{3n+1)
+A159253	mult	0
+# e % 3 == 0 ? p.pow(e) : (e % 3 == 1 ? p.pow(e + 1) : p.pow(e - 1))
 # M.w. a(p^{3n}) = p^{3n}, a(p^{3n+1}) = p^{3n+2), and a(p^{3n+2)) = p^{3n+1).
 
 A234744	mul	0
@@ -1906,8 +1906,8 @@ A108548	mul	0
 # p -> A108546(A049084(p)), p prime
 # M.w. p -> A108546(A049084(p)), p prime.
 
-A124508	mul	0
-# p^e -> 3*2^e, p prime : e>0
+A124508	mult	0
+# Z.ONE.shiftLeft(e).multiply(3)
 # M.w. p^e -> 3*2^e, p prime and e>0.
 
 A081210	mul	0
@@ -1962,16 +1962,16 @@ A325117	mul	0
 # d(p^i)=i+1
 # Proof: Let d be the number of divisors function (A000005). Recall that it is M.w. d(p^i)=i+1. If m = 2 mod 4 and has 18 divisors, then m/2 is odd and has 9 divisors, so m=2*r^2 for some odd r. Then m-2=2(r-1)(r+1). r-1 and r+1 are even and one of them is divisible by 4, so 2^4 divides m-2. r-1 and r+1 have no prime factors in common except 2, so if they are both divisible by odd primes, call them s and t, then m-2 is divisible by 2^4*s*t and has at least 20 divisors, contrary to hypothesis. Therefore either r-1 or r+1 is a power of 2; call it 2^j. Then the exponent of 2 in m-2 is j+2, so j+3 divides 18, so j is 3 or 6. This leaves 4 possibilities for m-2: 2*6*8, 2*8*10, 2*62*64, or 2*64*66. Of these, only 2*62*64 has 18 divisors, and 2*62*64+2 does not have 18 divisors.
 
-A125139	mul	0
-# p*(p^e-1).divide(p.subtract(1)) - (((e & 1) == 0) ? 1 : -1)
+A125139	mult	0
+# p.multiply(p.pow(e).subtract(1)).divide(p.subtract(1)).subtract(((e & 1) == 0) ? 1 : -1)
 # SENSigma: M.w. a(p^e) = p*(p^e-1)/(p-1) - (-1)^e.
 
 A329602	mul	0
 # a(prime(i)) = prime(i)# = Product_{i=1
 # Square root of largest square dividing A108951(n), where A108951 is fully M.w. a(prime(i)) = prime(i)# = Product_{i=1..i} A000040(i).
 
-A067856	mul	0
-# p.equals(Z.TWO) ? Z.ONE.shiftLeft(e - 1), a(p) = -1
+A067856	mult	0
+# p.equals(Z.TWO) ? Z.ONE.shiftLeft(e - 1) : (e == 1 ? Z.NEG_ONE : Z.ZERO)
 # Sum_{n > 0} a(n)*x^n/(1 + x^n) = x. Moebius transform of A048298. M.w. a(2^e) = 2^(e - 1), a(p) = -1 for p > 2, a(p^e) = 0 for p > 2 and e > 1. - _Vladeta Jovovic_, Jan 02 2003
 
 A305191	mul	0
@@ -1990,16 +1990,16 @@ A236852	mul	0
 # a(p) = A234742(p) although neither A234741 or A234742 are even multiplicative
 # This sequence appears to be completely M.w. a(p) = A234742(p) although neither A234741 or A234742 are even multiplicative. Terms tested up to n = 10^7. - _Andrew Howroyd_, Aug 01 2018
 
-A114643	mul	0
-# a(2) = 0, a(4) = 1, a(8) = 2, a(2^r) = 0
+A114643	mult	0
+# p.equals(Z.TWO) ? (e == 1 ? Z.ZERO : (e == 2 ? Z.ONE : (e == 3 ? Z.TWO : Z.ZERO))) : (e == 1 ? Z.ONE : Z.ZERO)
 # This sequence is M.w. a(2) = 0, a(4) = 1, a(8) = 2, a(2^r) = 0 for r > 3, a(p) = 1 for prime p > 2 and a(p^r) = 0 for r > 1. - _Steven Finch_, Mar 08 2006 (With correction by _Jianing Song_, Jun 28 2018)
 
-A114811	mul	0
-# a(2)=1, a(4)=1, a(8)=2, a(2^r)=0
+A114811	mult	0
+# p.equals(Z.TWO) ? (e <= 2 ? Z.ONE : (e == 3 ? Z.TWO : Z.ZERO)) : (e == 1 ? Z.TWO : Z.ZERO)
 # This sequence is M.w. a(2)=1, a(4)=1, a(8)=2, a(2^r)=0 for r>2, a(p)=2 for prime p>2 and a(p^r)=0 for r>1. - _Steven Finch_, Mar 08 2006
 
-A318935	mul	0
-# a(2^m) = (8^(m+1).subtract(1)/7, : Z.ONE
+A318935	mult	0
+# p.equals(Z.TWO) ? Z.EIGHT.pow(e + 1).subtract(1).divide(7) : Z.ONE
 # Thus M.w. a(2^m) = (8^(m+1)-1)/7, and a(p^e) = 1 for odd primes p. - _Antti Karttunen_, Nov 07 2018
 
 A067029	mul	0
@@ -2010,20 +2010,20 @@ A120119	mul	0
 # a(Prime(k)) = A055025(k)
 # Totally M.w. a(Prime(k)) = A055025(k).
 
-A061142	mul	0
-# a(p) = 2
+A061142	mult	0
+# e == 1 ? Z.TWO : p.pow(e)
 # Totally M.w. a(p) = 2. - _Franklin T. Adams-Watters_, Oct 04 2006
 
-A123667	mul	0
-# a(p) = 2p
+A123667	mult	0
+# e == 1 ? p.multiply2() : p.pow(e)
 # Totally M.w. a(p) = 2p.
 
-A113175	mul	0
-# a(p) = F(p)
+A113175	mult	0
+# Fibonacci.fibonacci(p.intValue()).pow(e)
 # Totally M.w. a(p) = F(p). - _Franklin T. Adams-Watters_, Jun 05 2006
 
-A079579	mul	0
-# p -> (p.subtract(1))*p, p prime
+A079579	mult	0
+# p.subtract(1).multiply(p)
 # Totally M.w. p -> (p-1)*p, p prime.
 
 A192577	mul	0
@@ -2063,7 +2063,7 @@ A138811	mul	0
 # a(n) = 2*b(n) where b() is M.w. b(43^e) = 1, b(p^e) = e + 1 if Kronecker(-43, p) = 1, b(p^e) = (1 + (-1)^e) / 2 otherwise.
 
 A281786	mul	0
-# b(2^e) = 1, b(3^e) = -8 if e>0, b(p^e) = (p.pow(e+1).subtract(1) / (p.subtract(1)) if p>3
+# b(2^e) = 1, b(3^e) = -8 if e>0, b(p^e) = (p.pow(e+1).subtract(1).divide(p.subtract(1)) if p>3
 # a(n) = 3*b(n) if n>0 where b() is M.w. b(2^e) = 1, b(3^e) = -8 if e>0, b(p^e) = (p^(e+1) - 1) / (p - 1) if p>3.
 
 A217220	mul	0
@@ -2071,7 +2071,7 @@ A217220	mul	0
 # a(n) = 4 * b(n) where b() is M.w. b(2^e) = (1+(-1)^e)*3/4, b(3^e) = 1, b(p^e) = (1+(-1)^e)/2 if p == 5 (mod 6), b(p^e) = e+1 if p == 1 (mod 6). - _Michael Somos_, Feb 01 2017
 
 A125510	mul	0
-# b(2^e) = 1, b(3^e) = 3^(e+1) - 2, b(p^e) = (p.pow(e+1).subtract(1) / (p.subtract(1)) if p>3
+# b(2^e) = 1, b(3^e) = 3^(e+1) - 2, b(p^e) = (p.pow(e+1).subtract(1).divide(p.subtract(1)) if p>3
 # a(n) = 6*b(n) where b() is M.w. b(2^e) = 1, b(3^e) = 3^(e+1) - 2, b(p^e) = (p^(e+1) - 1) / (p-1) if p>3. - _Michael Somos_, Feb 17 2017
 
 A345047	mul	0
@@ -2114,8 +2114,8 @@ A344879	mul	0
 # p.equals(Z.TWO) ? Z.ONE.shiftLeft(1+e) - 1, : p^e -1
 # a(n) = A344875(n) / A344878(n), where A344875(n) is M.w. a(2^e) = 2^(1+e) - 1, and a(p^e) = p^e -1 for odd primes p, and A344878(n) gives the least common multiple of the same factors.
 
-A064950	mul	0
-# p.pow(e+2) - 3*p.pow(e+1) + p + 1 + 2*p.pow(e+2)*e - 2*p.pow(e+1)*e).divide(p.subtract(1)).square()
+A064950	mult	0
+# (p.pow(e+2).subtract(p.pow(e+1).multiply(3)).add(p).add(1).add(p.pow(e+2).multiply(2*e)).subtract(p.pow(e+1).multiply(2*e))).divide(p.subtract(1).square())
 # a(n) = Sum_{d|n} d*tau(d^2). M.w. a(p^e) = (p^(e+2) - 3*p^(e+1) + p + 1 + 2*p^(e+2)*e - 2*p^(e+1)*e)/(p-1)^2.
 
 A122266	mul	0
@@ -2139,7 +2139,7 @@ A262780	mul	0
 # a(n) = b(2*n + 1) where b() is M.w. b(2^e) = 0^e, b(3^e) = 1, b(p^e) = e+1 if p == 1, 19 (mod 24), b(p^e) = (-1)^e * (e+1) if p == 7, 13 (mod 24), b(p^e) = (1 + (-1)^e) / 2 if p == 5 (mod 6).
 
 A134080	mul	0
-# b(2^e) = 0^e, b(5^e) = 5^e, b(p^e) = (p.pow(e+1).subtract(1) / (p.subtract(1)) if p == 1, 9 (mod 10), b(p^e) = (p.pow(e+1)  + (((e & 1) == 0) ? 1 : -1)) / (p + 1) if p == 3, 7 (mod 10)
+# b(2^e) = 0^e, b(5^e) = 5^e, b(p^e) = (p.pow(e+1).subtract(1).divide(p.subtract(1)) if p == 1, 9 (mod 10), b(p^e) = (p.pow(e+1)  + (((e & 1) == 0) ? 1 : -1)).divide(p + 1) if p == 3, 7 (mod 10)
 # a(n) = b(2*n + 1) where b() is M.w. b(2^e) = 0^e, b(5^e) = 5^e, b(p^e) = (p^(e+1) - 1) / (p - 1) if p == 1, 9 (mod 10), b(p^e) = (p^(e+1)  + (-1)^e) / (p + 1) if p == 3, 7 (mod 10).
 
 A133827	mul	0
@@ -2147,7 +2147,7 @@ A133827	mul	0
 # a(n) = b(2*n + 1) where b() is M.w. b(2^e) = 0^e, b(7^e) = 1, b(p^e) = (1 + (-1)^e) / 2 if p == 3, 5, 6 (mod 7), b(p^e) = e + 1 if p == 1, 2, 4 (mod 7).
 
 A228443	mul	0
-# b(2^e) = 0^e, b(p^e) = (p.pow(e+1).subtract(1) / (p.subtract(1)) if p == 1 (mod 4), b(p^e) = (p.pow(e+1) + (((e & 1) == 0) ? 1 : -1)) / (p + 1) if p == 3 (mod 4), with a(0) = 1
+# b(2^e) = 0^e, b(p^e) = (p.pow(e+1).subtract(1).divide(p.subtract(1)) if p == 1 (mod 4), b(p^e) = (p.pow(e+1) + (((e & 1) == 0) ? 1 : -1)).divide(p + 1) if p == 3 (mod 4), with a(0) = 1
 # a(n) = b(2*n + 1) where b() is M.w. b(2^e) = 0^e, b(p^e) = (p^(e+1) - 1) / (p - 1) if p == 1 (mod 4), b(p^e) = (p^(e+1) + (-1)^e) / (p + 1) if p == 3 (mod 4), with a(0) = 1.
 
 A317690	mul	0
@@ -2159,7 +2159,7 @@ A252731	mul	0
 # a(n) = b(2*n + 1) where b() is M.w. b(p^e) = (-1)^e if p = 11, b(p^e) = b(p)*b(p^(e-1)) - p*b(p^(e-2)) if p != 11.
 
 A204342	mul	0
-# b(2^e) = 0^e, b(p^e) = ((p^4)^(e+1) + 1) / (p^4 + 1) if p == 3 (mod 4), b(p^e) = ((p^4)^(e+1).subtract(1) / (p^4 - 1) if p == 1 (mod 4)
+# b(2^e) = 0^e, b(p^e) = ((p^4)^(e+1) + 1).divide(p^4 + 1) if p == 3 (mod 4), b(p^e) = ((p^4)^(e+1).subtract(1).divide(p^4 - 1) if p == 1 (mod 4)
 # a(n) = b(2*n + 1) where b(n) is M.w. b(2^e) = 0^e, b(p^e) = ((p^4)^(e+1) + 1) / (p^4 + 1) if p == 3 (mod 4), b(p^e) = ((p^4)^(e+1) - 1) / (p^4 - 1) if p == 1 (mod 4).
 
 A228072	mul	0
@@ -2246,12 +2246,12 @@ A330749	mul	0
 # a(2) = 1 : a(prime(k)) = prime(k-1)
 # a(n) = gcd(n, A064989(n)), where A064989 is fully M.w. a(2) = 1 and a(prime(k)) = prime(k-1) for odd primes.
 
-A322362	mul	0
-# a(p) = p+2
+A322362	mult	0
+# p.add(2).pow(e)
 # a(n) = gcd(n, A166590(n)), where A166590 is completely M.w. a(p) = p+2 for prime p.
 
-A344877	mul	0
-# p.equals(Z.TWO) ? Z.ONE.shiftLeft(1+e) - 1, : p^e -1
+A344877	mult	0
+# p.equals(Z.TWO) ? Z.ONE.shiftLeft(1+e).subtract(1) : p.pow(e).subtract(1)
 # a(n) = gcd(n, A344875(n)), where A344875 is M.w. a(2^e) = 2^(1+e) - 1, and a(p^e) = p^e -1 for odd primes p.
 
 A342673	mul	0
@@ -2266,8 +2266,8 @@ A342672	mul	0
 # a(prime(k)) = prime(k+1), : sigma is the sum of divisors of n
 # a(n) = lcm(sigma(n), A003961(n)), where A003961 is fully M.w. a(prime(k)) = prime(k+1), and sigma is the sum of divisors of n.
 
-A227131	mul	0
-# a(0) = 1, a(5^e) = 6 if e>0, p.pow(e+1).subtract(1) / (p.subtract(1))
+A227131	mult	0
+# p.equals(Z.FIVE) ? Z.SIX : p.pow(e+1).subtract(1).divide(p.subtract(1))
 # a(n) is M.w. a(0) = 1, a(5^e) = 6 if e>0, a(p^e) = (p^(e+1) - 1) / (p - 1) otherwise.
 
 A129522	mul	0
@@ -2294,43 +2294,45 @@ A187096	mul	0
 # a(19^e) = 1, Z.valueOf(a(p) * a(p.pow(e-1)) - p * a(p.pow(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity
 # a(n) is M.w. a(19^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity.
 
-A133691	mul	0
-# a(2) = -2, p.equals(Z.TWO) ? Z.valueOf(-6 if e>1, p.pow(e+1).subtract(1) / (p.subtract(1)) if p>2
+A133691	mult	0
+# p.equals(Z.TWO) ? Z.valueOf(e == 1 ? -2 : -6) : p.pow(e+1).subtract(1).divide(p.subtract(1))
 # a(n) is M.w. a(2) = -2, a(2^e) = -6 if e>1, a(p^e) = (p^(e+1) - 1) / (p - 1) if p>2.
 
-A134015	mul	0
-# a(2) = 0, p.equals(Z.TWO) ? Z.valueOf(-2 if e>1, Z.valueOf(e+1 if p == 1 (mod 4), Z.valueOf((1+(((e & 1) == 0) ? 1 : -1))/2 if p == 3 (mod 4)
+A134015	mult	0
+# p.equals(Z.TWO) ? Z.valueOf(e == 1 ? 0 : -2) : (p.mod(Z.FOUR).equals(Z.ONE) ? Z.valueOf(e+1) : Z.valueOf(1+(((e & 1) == 0) ? 1 : -1)/2))
 # a(n) is M.w. a(2) = 0, a(2^e) = -2 if e>1, a(p^e) = e+1 if p == 1 (mod 4), a(p^e) = (1+(-1)^e)/2 if p == 3 (mod 4).
 
-A125096	mul	0
-# a(2) = 0, p.equals(Z.TWO) ? Z.valueOf(2 if e>1, Z.valueOf(e+1 if p == 1, 3 (mod 8), Z.valueOf((1+(((e & 1) == 0) ? 1 : -1))/2 if p == 5, 7 (mod 8)
+A125096	mult	0
+# p.equals(Z.TWO) ? Z.valueOf(e == 1 ? 0 : 2) : isMod2(8, p, 1, 3) ? Z.valueOf(e+1) : Z.valueOf(1+(((e & 1) == 0) ? 1 : -1)/2))
 # a(n) is M.w. a(2) = 0, a(2^e) = 2 if e>1, a(p^e) = e+1 if p == 1, 3 (mod 8), a(p^e) = (1+(-1)^e)/2 if p == 5, 7 (mod 8).
 
-A258260	mul	0
-# a(2) = 1, p.equals(Z.TWO) ? Z.valueOf(0 if e>1, a(3) = -1, a(3^e) = 4 * (((e & 1) == 0) ? 1 : -1) if e>1, Z.ONE if p == 1 (mod 4), Z.valueOf((((e & 1) == 0) ? 1 : -1) if p == 3 (mod 4)
+A258260	mult	0
+# p.equals(Z.TWO) ? Z.valueOf(e == 1 ? 1 : 0) : (p.equals(Z.THREE) ? Z.valueOf(e == 1 ? -1 : 4) : (p.mod(Z.FOUR).equals(Z.ONE) ? Z.ONE : Z.valueOf(((e & 1) == 0) ? 1 : -1)))
 # a(n) is M.w. a(2) = 1, a(2^e) = 0 if e>1, a(3) = -1, a(3^e) = 4 * (-1)^e if e>1, a(p^e) = 1 if p == 1 (mod 4), a(p^e) = (-1)^e if p == 3 (mod 4).
 
 A227239	mul	0
+# p.equals(Z.TWO) ? Z.valueOf(e == 1 ? 8 : 0) : ??
 # a(2) = 8, p.equals(Z.TWO) ? Z.valueOf(0 if e > 1, Z.valueOf(a(p) * a(p.pow(e-1)) - p^5 * a(p.pow(e-2)) if p > 2
 # a(n) is M.w. a(2) = 8, a(2^e) = 0 if e > 1, a(p^e) = a(p) * a(p^(e-1)) - p^5 * a(p^(e-2)) if p > 2.
 
-A092673	mul	0
-# a(2)= -2, a(4)= 1, p.equals(Z.TWO) ? Z.valueOf(0 if e>2
+A092673	mult	0
+# p.equals(Z.TWO) ? Z.valueOf(e == 1 ? -2 : (e == 2 ? 1 : 0)) : (e == 1 ? Z.NEG_ONE : Z.ZERO)
 # a(n) is M.w. a(2)= -2, a(4)= 1, a(2^e)= 0 if e>2. a(p)= -1, a(p^e)= 0 if e>1, p>2. - _Michael Somos_, Mar 26 2007
 
 A261278	mul	0
 # a(Z.ONE.shiftLeft(2*k)) = (-8)^k, a(Z.ONE.shiftLeft(2*k+1)) = 4 * (-8)^k, a(3^e) = 0^e, a(p.pow(2*k)) = (-p)^(3^k) : a(p.pow(2*k+1)) = 0 if p == 5 (mod 6), Z.valueOf(a(p) * a(p.pow(e-1)) - p^3 * a(p.pow(e-2)) if p == 1 (mod 6)
 # a(n) is M.w. a(2^(2*k)) = (-8)^k, a(2^(2*k+1)) = 4 * (-8)^k, a(3^e) = 0^e, a(p^(2*k)) = (-p)^(3^k) and a(p^(2*k+1)) = 0 if p == 5 (mod 6), a(p^e) = a(p) * a(p^(e-1)) - p^3 * a(p^(e-2)) if p == 1 (mod 6).
 
-A138507	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(((-2)^(e+1).subtract(1) / 3, Z.valueOf(((-p)^(e+1) - 1) / (-p - 1) if p == 3, 7 (mod 10), p.pow(e+1).subtract(1) / (p.subtract(1)) if p == 1, 9 (mod 10)
+A138507	mult	0
+# p.equals(Z.TWO) ? Z.TWO.negate().pow(e+1).subtract(1).divide(3) : (p.mod(Z.TEN).and(Z.THREE).equals(Z.THREE) ? p.negate().pow(e+1).subtract(1).divide(p.add(1).negate()) : p.pow(e+1).subtract(1).divide(p.subtract(1)))
 # a(n) is M.w. a(2^e) = ((-2)^(e+1) - 1) / 3, a(p^e) = ((-p)^(e+1) - 1) / (-p - 1) if p == 3, 7 (mod 10), a(p^e) = (p^(e+1) - 1) / (p - 1) if p == 1, 9 (mod 10).
 
 A113260	mul	0
 # p.equals(Z.TWO) ? Z.valueOf(((-2)^(e+2).subtract(1)/3, a(5^e) = 1, p.pow(e+1).subtract(1).divide(p.subtract(1)) if p == 1, 4 (mod 5), Z.valueOf(((-p)^(e+1).subtract(1).divide(-p-1) if p == 2, 3 (mod 5)
 # a(n) is M.w. a(2^e) = ((-2)^(e+2)-1)/3, a(5^e) = 1, a(p^e) = (p^(e+1)-1)/(p-1) if p == 1, 4 (mod 5), a(p^e) = ((-p)^(e+1)-1)/(-p-1) if p == 2, 3 (mod 5).
 
-A258998	mul	0
+A258998	mult	0
+# p.equals(Z.TWO) ? (((e & 1) == 0) ? Z.ONE.shiftLeft(e/2) : Z.ZERO) : (((e & 1) == 0) ? Z.ONE : Z.ZERO)
 # p.equals(Z.TWO) ? Z.valueOf((-1)^(e/2) if e even, Z.ONE if p>2 : e even,  0
 # a(n) is M.w. a(2^e) = (-1)^(e/2) if e even, a(p^e) = 1 if p>2 and e even, otherwise 0.
 
@@ -2362,12 +2364,12 @@ A123331	mul	0
 # p.equals(Z.TWO) ? Z.valueOf((3-(((e & 1) == 0) ? 1 : -1))/2, a(3^e) = 1, Z.valueOf(e+1 if p == 1 (mod 6), Z.valueOf((1+(((e & 1) == 0) ? 1 : -1))/2 if p == 5 (mod 6)
 # a(n) is M.w. a(2^e) = (3-(-1)^e)/2, a(3^e) = 1, a(p^e) = e+1 if p == 1 (mod 6), a(p^e) = (1+(-1)^e)/2 if p == 5 (mod 6).
 
-A143521	mul	0
-# p.equals(Z.TWO) ? Z.valueOf((3-e) * 2^e if e>0, Z.valueOf((e+1) * p^e if p>2
+A143521	mult	0
+# p.equals(Z.TWO) ? Z.valueOf(3-e).multiply(Z.ONE.shiftLeft(e)) : p.pow(e).multiply(e+1)
 # a(n) is M.w. a(2^e) = (3-e) * 2^e if e>0, a(p^e) = (e+1) * p^e if p>2.
 
-A143520	mul	0
-# p.equals(Z.TWO) ? Z.valueOf((e-1) * 2^e if e>0, Z.valueOf((e+1) * p^e if p>2
+A143520	mult	0
+# p.equals(Z.TWO) ? Z.valueOf(e-1).multiply(Z.ONE.shiftLeft(e)) : p.pow(e).multiply(e+1)
 # a(n) is M.w. a(2^e) = (e-1) * 2^e if e>0, a(p^e) = (e+1) * p^e if p>2.
 
 A230277	mul	0
@@ -2395,7 +2397,7 @@ A113186	mul	0
 # a(n) is M.w. a(2^e) = -1 if e>0, a(5^e) = 1, a(p^e) = (p^(e+1)-1)/(p-1) if p == 1, 9 (mod 10), a(p^e) = ((-p)^(e+1)-1)/(-p-1) if p == 3, 7 (mod 10).
 
 A138505	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(-1 if e>0, Z.valueOf(((p^2)^(e+1).subtract(1) / (p.square().subtract(1)) if p == 1 (mod 4), Z.valueOf(((-p^2)^(e+1).subtract(1) / ( -p.square().subtract(1)) if p == 3 (mod 4)
+# p.equals(Z.TWO) ? Z.valueOf(-1 if e>0, Z.valueOf(((p^2)^(e+1).subtract(1).divide(p.square().subtract(1)) if p == 1 (mod 4), Z.valueOf(((-p^2)^(e+1).subtract(1).divide( -p.square().subtract(1)) if p == 3 (mod 4)
 # a(n) is M.w. a(2^e) = -1 if e>0, a(p^e) = ((p^2)^(e+1) - 1) / (p^2 - 1) if p == 1 (mod 4), a(p^e) = ((-p^2)^(e+1) - 1) / ( -p^2 - 1) if p == 3 (mod 4).
 
 A133693	mul	0
@@ -2410,16 +2412,16 @@ A137608	mul	0
 # p.equals(Z.TWO) ? Z.valueOf(-1 unless e=0, a(3^e) = 1, Z.valueOf(e + 1 if p == 1 (mod 6), Z.valueOf((1 + (((e & 1) == 0) ? 1 : -1)) / 2 if p == 5 (mod 6)
 # a(n) is M.w. a(2^e) = -1 unless e=0, a(3^e) = 1, a(p^e) = e + 1 if p == 1 (mod 6), a(p^e) = (1 + (-1)^e) / 2 if p == 5 (mod 6).
 
-A143348	mul	0
-# p.equals(Z.TWO) ? Z.ONE - Z.ONE.shiftLeft(e+1) if e > 0, p.pow(e+1).subtract(1) / (p.subtract(1)) if p > 2
+A143348	mult	0
+# p.equals(Z.TWO) ? Z.ONE.subtract(Z.ONE.shiftLeft(e+1)) : p.pow(e+1).subtract(1).divide(p.subtract(1))
 # a(n) is M.w. a(2^e) = 1 - 2^(e+1) if e > 0, a(p^e) = (p^(e+1) - 1) / (p - 1) if p > 2.
 
-A209198	mul	0
-# p.equals(Z.TWO) ? Z.ONE if e!=1, a(3^e) = 1 if e<2, a(7^e) = 0^e, Z.ONE
+A209198	mult	0
+# p.equals(Z.TWO) ? (e > 1 ? Z.ONE : Z.TWO) : (p.equals(Z.THREE) ? (e == 1 ? Z.ONE : p.pow(e)) : (p.equals(Z.SEVEN) ? Z.ZERO : Z.ONE))
 # a(n) is M.w. a(2^e) = 1 if e!=1, a(3^e) = 1 if e<2, a(7^e) = 0^e, a(p^e) = 1 otherwise.
 
 A251913	mul	0
-# p.equals(Z.TWO) ? Z.ONE, a(13^e) = (((e & 1) == 0) ? 1 : -1), else Z.valueOf(a(p) * a(p.pow(e-1)) - p * a(p.pow(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity
+# p.equals(Z.TWO) ? Z.ONE , a(13^e) = (((e & 1) == 0) ? 1 : -1), else Z.valueOf(a(p) * a(p.pow(e-1)) - p * a(p.pow(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity
 # a(n) is M.w. a(2^e) = 1, a(13^e) = (-1)^e, else a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity.
 
 A256678	mul	0
@@ -2430,12 +2432,12 @@ A138950	mul	0
 # p.equals(Z.TWO) ? Z.ONE, a(3^e) = -1 + 2 * (((e & 1) == 0) ? 1 : -1), Z.valueOf(e+1 if p == 1, 5 (mod 12), Z.valueOf((1 + (((e & 1) == 0) ? 1 : -1)) / 2 if p == 7, 11 (mod 12)
 # a(n) is M.w. a(2^e) = 1, a(3^e) = -1 + 2 * (-1)^e, a(p^e) = e+1 if p == 1, 5 (mod 12), a(p^e) = (1 + (-1)^e) / 2 if p == 7, 11 (mod 12).
 
-A281785	mul	0
-# p.equals(Z.TWO) ? Z.ONE, a(3^e) = -8 if e>0, p.pow(e+1).subtract(1) / (p.subtract(1)) if p>3
+A281785	mult	0
+# p.equals(Z.TWO) ? Z.ONE : (p.equals(Z.THREE) ? Z.valueOf(-8) : p.pow(e+1).subtract(1).divide(p.subtract(1)))
 # a(n) is M.w. a(2^e) = 1, a(3^e) = -8 if e>0, a(p^e) = (p^(e+1) - 1) / (p - 1) if p>3.
 
-A279929	mul	0
-# p.equals(Z.TWO) ? Z.ONE, a(3^e) = 0^e, p.pow(e+1).subtract(1) / (p.subtract(1)) if p>3
+A279929	mult	0
+# p.equals(Z.TWO) ? Z.ONE : (p.equals(Z.THREE) ? Z.ZERO : p.pow(e+1).subtract(1).divide(p.subtract(1)))
 # a(n) is M.w. a(2^e) = 1, a(3^e) = 0^e, a(p^e) = (p^(e+1) - 1) / (p-1) if p>3.
 
 A255648	mul	0
@@ -2446,44 +2448,44 @@ A163746	mul	0
 # p.equals(Z.TWO) ? Z.ONE, a(3^e) = 2-(((e & 1) == 0) ? 1 : -1), Z.valueOf(e+1 if p == 1 (mod 4), = (1-(((e & 1) == 0) ? 1 : -1))/2 if p == 3 (mod 4)
 # a(n) is M.w. a(2^e) = 1, a(3^e) = 2-(-1)^e, a(p^e) = e+1 if p == 1 (mod 4), a(p^e) == (1-(-1)^e)/2 if p == 3 (mod 4).
 
-A131944	mul	0
-# p.equals(Z.TWO) ? Z.ONE, a(3^e) = 4- 3^(e+1), p.pow(e+1).subtract(1) / (p.subtract(1)) if p>3
+A131944	mult	0
+# p.equals(Z.TWO) ? Z.ONE : (p.equals(Z.THREE) ? Z.FOUR.subtract(Z.THREE.pow(e+1)) : p.pow(e+1).subtract(1).divide(p.subtract(1)))
 # a(n) is M.w. a(2^e) = 1, a(3^e) = 4- 3^(e+1), a(p^e) = (p^(e+1) - 1) / (p-1) if p>3.
 
 A117000	mul	0
-# p.equals(Z.TWO) ? Z.ONE, p.pow(e+1).subtract(1) / (p.subtract(1)) if p == 1, 7 (mod 8), ((-p)^(e+1) - 1) / (-p - 1) if p == 3, 5 (mod 8)
+# p.equals(Z.TWO) ? Z.ONE, p.pow(e+1).subtract(1).divide(p.subtract(1)) if p == 1, 7 (mod 8), ((-p)^(e+1) - 1).divide(-p - 1) if p == 3, 5 (mod 8)
 # a(n) is M.w. a(2^e) = 1, a(p^e) = (p^(e+1).subtract(1) / (p - 1) if p == 1, 7 (mod 8), ((-p)^(e+1) - 1) / (-p - 1) if p == 3, 5 (mod 8). - _Michael Somos_, Aug 08 2007
 
 A173763	mul	0
-# p.equals(Z.TWO) ? Z.ONE6^e, Z.valueOf(a(p) * a(p.pow(e-1)) - p^9 * a(p.pow(e-2)) if p>2
+# p.equals(Z.TWO) ? Z.valoeOf(16).pow(e) : ??? Z.valueOf(a(p) * a(p.pow(e-1)) - p^9 * a(p.pow(e-2)) if p>2
 # a(n) is M.w. a(2^e) = 16^e, a(p^e) = a(p) * a(p^(e-1)) - p^9 * a(p^(e-2)) if p>2.
 
 A132001	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(2 + ((-4)^(e+1).subtract(1)/5, a(3^e) = 1, Z.valueOf((q^(e+1) - 1) / (q - 1) where q = p^2 * Kronecker(-3, p) if p > 3
+# p.equals(Z.TWO) ? Z.valueOf(2 + ((-4)^(e+1).subtract(1)/5, a(3^e) = 1, Z.valueOf((q^(e+1) - 1).divide(q - 1) where q = p^2 * Kronecker(-3, p) if p > 3
 # a(n) is M.w. a(2^e) = 2 + ((-4)^(e+1) - 1)/5, a(3^e) = 1, a(p^e) = (q^(e+1) - 1) / (q - 1) where q = p^2 * Kronecker(-3, p) if p > 3.
 
 A132004	mul	0
 # p.equals(Z.TWO) ? Z.valueOf(2*0^e - 1, a(3^e) = 1, Z.valueOf(e + 1 if p == 1 (mod 4), Z.valueOf((1 + (((e & 1) == 0) ? 1 : -1)) / 2 if p == 3 (mod 4)
 # a(n) is M.w. a(2^e) = 2*0^e - 1, a(3^e) = 1, a(p^e) = e + 1 if p == 1 (mod 4), a(p^e) = (1 + (-1)^e) / 2 if p == 3 (mod 4).
 
-A163659	mul	0
-# p.equals(Z.TWO) ? Z.ONE.shiftLeft(e+1) - 1, a(3^e) = -2 if e>0, Z.ONE if p>3
+A163659	mult	0
+# p.equals(Z.TWO) ? Z.ONE.shiftLeft(e+1).subtract(1) : (p.equals(Z.THREE) ? Z.valueOf(-2) : Z.ONE)
 # a(n) is M.w. a(2^e) = 2^(e+1) - 1, a(3^e) = -2 if e>0, a(p^e) = 1 if p>3. - _Michael Somos_, Feb 14 2011
 
-A131947	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(3 - Z.ONE.shiftLeft(e+1), a(3^e) = 1, p.pow(e+1).subtract(1) / (p.subtract(1)) if p>3
+A131947	mult	0
+# p.equals(Z.TWO) ? Z.ONE.shiftLeft(e+1).negate().add(3) : (p.equals(Z.THREE) ? Z.ONE : p.pow(e+1).subtract(1).divide(p.subtract(1)))
 # a(n) is M.w. a(2^e) = 3 - 2^(e+1), a(3^e) = 1, a(p^e) = (p^(e+1) - 1) / (p-1) if p>3.
 
-A204386	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(3/2 * 8^e if e>0, Z.valueOf(((p^3) ^ (e+1).subtract(1) / (p^3 - 1)
+A204386	mult	0
+# p.equals(Z.TWO) ? Z.EIGHT.pow(e).divide2().multiply(3) : (p.pow(3).pow(e+1).subtract(1).divide(p.pow(3).subtract(1)))
 # a(n) is M.w. a(2^e) = 3/2 * 8^e if e>0, a(p^e) = ((p^3) ^ (e+1) - 1) / (p^3 - 1).
 
-A133639	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(a(3^e) = -1 if e=1, 0 if e>1, Z.valueOf((((e & 1) == 0) ? 1 : -1) if p > 3
+A133639	mult	0
+# p.compareTo(Z.THREE) <= 0 ? Z.valueOf(e == 1 ? -1 : 0) : Z.valueOf(((e & 1) == 0) ? 1 : -1)
 # a(n) is M.w. a(2^e) = a(3^e) = -1 if e=1, 0 if e>1, a(p^e) = (-1)^e if p > 3.
 
-A186099	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(a(3^e) = 1, p.pow(e+1).subtract(1) / (p.subtract(1)) if p>3
+A186099	mult	0
+# p.compareTo(Z.THREE) <= 0 ? Z.ONE : p.pow(e+1).subtract(1).divide(p.subtract(1))
 # a(n) is M.w. a(2^e) = a(3^e) = 1, a(p^e) = (p^(e+1) - 1) / (p - 1) if p>3.
 
 A163819	mul	0
@@ -2494,8 +2496,8 @@ A260649	mul	0
 # p.equals(Z.TWO) ? Z.valueOf(|e-1|, a(3^e) = a(5^e) = 1, Z.valueOf(e+1 if p == 1, 2, 4, 8 (mod 15), Z.valueOf((1 + (((e & 1) == 0) ? 1 : -1))/2 if p == 7, 11, 13, 14 (mod 15)
 # a(n) is M.w. a(2^e) = |e-1|, a(3^e) = a(5^e) = 1, a(p^e) = e+1 if p == 1, 2, 4, 8 (mod 15), a(p^e) = (1 + (-1)^e)/2 if p == 7, 11, 13, 14 (mod 15).
 
-A110399	mul	0
-# p.equals(Z.TWO) ? Z.valueOf(|e-1|, a(7^e)= 1, Z.valueOf(e+1 if p == 1, 2, 4 (mod 7), Z.valueOf((1+(((e & 1) == 0) ? 1 : -1))/2 if p == 3, 5, 6 (mod 7)
+A110399	mult	0
+# p.equals(Z.TWO) ? Z.valueOf(e-1).abs() : (p.equals(Z.SEVEN) ? Z.ONE : (p.mod(Z.SEVEN).bitCount() == 1 ? Z.valueOf(e+1) : Z.valueOf((1+(((e & 1) == 0) ? 1 : -1))/2)))
 # a(n) is M.w. a(2^e) = |e-1|, a(7^e)= 1, a(p^e) = e+1 if p == 1, 2, 4 (mod 7), a(p^e) = (1+(-1)^e)/2 if p == 3, 5, 6 (mod 7).
 
 A226010	mul	0
@@ -2506,8 +2508,8 @@ A226086	mul	0
 # a(2^n) = 64^n, Z.valueOf(a(p) * a(p.pow(e-1)) - p^13 * a(p.pow(e-2)) if p>2
 # a(n) is M.w. a(2^n) = 64^n, a(p^e) = a(p) * a(p^(e-1)) - p^13 * a(p^(e-2)) if p>2.
 
-A229143	mul	0
-# a(3) = -3, a(3^e) = 0 if e>1, Z.valueOf(e+1 if p == 1 (mod 3), Z.valueOf((1 + (((e & 1) == 0) ? 1 : -1)) / 2 if p == 2 (mod 3)
+A229143	mult	0
+# p.equals(Z.THREE) ? Z.valueOf(e == 1 ? -3 : 0) : (p.mod(Z.THREE).equals(Z.ONE) ? Z.valueOf(e+1) : Z.valueOf((1+(((e & 1) == 0) ? 1 : -1))/2))
 # a(n) is M.w. a(3) = -3, a(3^e) = 0 if e>1, a(p^e) = e+1 if p == 1 (mod 3), a(p^e) = (1 + (-1)^e) / 2 if p == 2 (mod 3).
 
 A136747	mul	0
@@ -2515,11 +2517,12 @@ A136747	mul	0
 # a(n) is M.w. a(3^e) = (-27)^e, a(p^e) = a(p) * a(p^(e-1)) - p^7 * a(p^(e-2)) unless p = 3.
 
 A115155	mul	0
+# p.equals(Z.THREE) ? Z.THREE.negate().pow(e) : (p.equals(Z.FIVE) ? p.pow(e) : (....??? ))
 # a(3^e) = (-3)^e, a(5^e) = 5^e, p^e if e even else 0 if p == 7, 11, 13, 14 (mod 15), Z.valueOf(a(p) * a(p.pow(e-1)) - p^2 * a(p.pow(e-2)) if p == 1, 2, 4, 8 (mod 15)
 # a(n) is M.w. a(3^e) = (-3)^e, a(5^e) = 5^e, a(p^e) = p^e if e even else 0 if p == 7, 11, 13, 14 (mod 15), a(p^e) = a(p) * a(p^(e-1)) - p^2 * a(p^(e-2)) if p == 1, 2, 4, 8 (mod 15).
 
-A113262	mul	0
-# a(3^e) = 1, p.equals(Z.TWO) ? Z.ONE.shiftLeft(e+1) - 3, p.pow(e+1).subtract(1) / (p.subtract(1)) if p > 3
+A113262	mult	0
+# p.equals(Z.TWO) ? Z.ONE.shiftLeft(e+1).subtract(3) : (p.equals(Z.THREE) ? Z.ONE : p.pow(e+1).subtract(1).divide(p.subtract(1)))
 # a(n) is M.w. a(3^e) = 1, a(2^e) = 2^(e+1) - 3, a(p^e) = (p^(e+1) - 1) / (p - 1) if p > 3.
 
 A187846	mul	0
@@ -2534,8 +2537,8 @@ A136549	mul	0
 # a(3^e) = 3^e, a(5^e) = (-5)^e, p^e * (1 + (((e & 1) == 0) ? 1 : -1)) / 2 if p == 7, 11, 13, 14 (mod 15), Z.valueOf(a(p) * a(p.pow(e-1)) - p^2 * a(p.pow(e-2)) if p == 1, 2, 4, 8 (mod 15)
 # a(n) is M.w. a(3^e) = 3^e, a(5^e) = (-5)^e, a(p^e) = p^e * (1 + (-1)^e) / 2 if p == 7, 11, 13, 14 (mod 15), a(p^e) = a(p) * a(p^(e-1)) - p^2 * a(p^(e-2)) if p == 1, 2, 4, 8 (mod 15).
 
-A116607	mul	0
-# a(3^e) = 4 if e>0, p.pow(e+1).subtract(1) / (p.subtract(1))
+A116607	mult	0
+# p.equals(Z.THREE) ? Z.FOUR : p.pow(e+1).subtract(1).divide(p.subtract(1))
 # a(n) is M.w. a(3^e) = 4 if e>0, a(p^e) = (p^(e+1) - 1) / (p - 1) otherwise.
 
 A332332	mul	0
@@ -2546,8 +2549,8 @@ A115672	mul	0
 # a(5^e) = (((e & 1) == 0) ? 1 : -1), a(7^e) = 1, Z.valueOf(a(p) * a(p.pow(e-1)) - p * a(p.pow(e-2))
 # a(n) is M.w. a(5^e) = (-1)^e, a(7^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) otherwise.
 
-A116073	mul	0
-# a(5^e) = 1, p.pow(e+1).subtract(1).divide(p.subtract(1))
+A116073	mult	0
+# p.equals(Z.FIVE) ? Z.ONE : p.pow(e+1).subtract(1).divide(p.subtract(1))
 # a(n) is M.w. a(5^e) = 1, a(p^e) = (p^(e+1)-1)/(p-1) otherwise.
 
 A129666	mul	0
@@ -2558,20 +2561,20 @@ A114810	mul	0
 # a(p)=phi(p), phi(p^e)-phi(p.pow(e-1)) : phi(n)=A000010(n)
 # a(n) is M.w. a(p)=phi(p), a(p^k)=phi(p^k)-phi(p^(k-1)) and phi(n)=A000010(n).
 
-A266288	mul	0
-# Z.valueOf(((p^4)^(e+1) - s^(e+1)) / (p^4 - s) where s = 0 if p = 3, s = 1 if p == 1 (mod 3), s = -1 if p == 2 (mod 3)
+A266288	mult	0
+# { final int m = p.mod(Z.THREE).intValue(); final int s = (m == 0 ? 0 : (m == 1 ? 1 : -1)); return p.pow(4).pow(e+1).subtract(Z.valueOf(s).pow(e+1)).divide(p.pow(4).subtract(Z.valueOf(s))); }
 # a(n) is M.w. a(p^e) = ((p^4)^(e+1) - s^(e+1)) / (p^4 - s) where s = 0 if p = 3, s = 1 if p == 1 (mod 3), s = -1 if p == 2 (mod 3).
 
-A245485	mul	0
-# Z.valueOf((((e & 1) == 0) ? 1 : -1) if p = 7, Z.valueOf((1 + (((e & 1) == 0) ? 1 : -1)) / 2
+A245485	mult	0
+# p.equals(Z.SEVEN) ? Z.valueOf(((e & 1) == 0) ? 1 : -1) : Z.valueOf((1 + (((e & 1) == 0) ? 1 : -1)) / 2)
 # a(n) is M.w. a(p^e) = (-1)^e if p = 7, a(p^e) = (1 + (-1)^e) / 2 otherwise.
 
-A248003	mul	0
-# Z.valueOf((-1)*p.pow(2e-1)/2
+A248003	mult	0
+# p.subtract(1).multiply(p.pow(2*e-1)).divide2()
 # a(n) is M.w. a(p^e) = (p-1)*p^(2e-1)/2.
 
 A140782	mul	0
-# p.pow(e+1).subtract(1) / (p.subtract(1)) * Kronecker(13, p)^e
+# p.pow(e+1).subtract(1).divide(p.subtract(1)) * Kronecker(13, p)^e
 # a(n) is M.w. a(p^e) = (p^(e+1) - 1) / (p - 1) * Kronecker(13, p)^e.
 
 A255647	mul	0
@@ -2583,11 +2586,11 @@ A113063	mul	0
 # a(n) is M.w. a(p^e) = 2 if p = 3 and e>0, a(p^e) = e+1 if p == 1 (mod 6), a(p^e) = (1 + (-1)^e) / 2 if p == 2, 5 (mod 6).
 
 A226347	mul	0
-# p.pow(2*e) if p=5, else Z.valueOf(a(p) * a(p.pow(e-1)) - p^6 * a(p.pow(e-2))
+# p.equals(Z.FIVE) ? p.pow(2*e) : ??? a(p) * a(p.pow(e-1)) - p^6 * a(p.pow(e-2))
 # a(n) is M.w. a(p^e) = p^(2*e) if p=5, else a(p^e) = a(p) * a(p^(e-1)) - p^6 * a(p^(e-2)).
 
 A226333	mul	0
-# p.pow(3*e) if p=5, else p.pow(3*(e+1)).subtract(1) / (p^3 - 1)
+# p.pow(3*e) if p=5, else p.pow(3*(e+1)).subtract(1).divide(p^3 - 1)
 # a(n) is M.w. a(p^e) = p^(3*e) if p=5, else a(p^e) = (p^(3*(e+1)) - 1) / (p^3 - 1).
 
 A099991	mul	0

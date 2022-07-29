@@ -1966,7 +1966,7 @@ paripat1: # insert 1 column
 	| perl -ne 'my @f = split(/\t/); push(@f, $$f[4]); $$f[4] = ""; print join("\t", @f); '\
 	>   paritest.4s.2022-06-20.00.00.log
 #----
-batlog: # store result logs in table 'batlog'
+batlog: # LIST= store result logs in table 'batlog'
 	$(DBAT) -f batlog.create.sql
 	cat $(LIST) \
 	| grep -E "^A[0-9]" | grep -P "\t(pass|FATO)\t" | sort | uniq -w7 \
@@ -3884,12 +3884,32 @@ holrefpow:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------------------------------
-hygsolve:
+hygsolve0:
 	grep -E "runholo" $(HOLREC)/hygsolve2.tmp \
 	| perl parmholo.pl \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+hygsolve:
+	grep -E "^A[0-9]" hygsolve2.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+hygsolve_eval:
+	# make batlog LIST=hygsolve.pass.log
+	$(DBAT) -x "SELECT l.aseqno, '+' || LPAD(l.idiff, 6, ' ') \
+	  , RPAD(COALESCE((SELECT j.superclass FROM joeis j WHERE j.aseqno = l.aseqno), 'nyi'), 24, ' ') || '.'  \
+	  , CASE WHEN COALESCE(c.aseqno, '_') = '_' THEN '.....' ELSE 'cojec' END \
+	  , s.parm1, s.parm2 \
+	  FROM seq4 s, batlog l \
+	  LEFT JOIN cojec c ON c.aseqno = l.aseqno \
+	  WHERE s.aseqno = l.aseqno \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+#	  LEFT JOIN joeis j ON l.aseqno = j.aseqno \
+#
 #--------------------------------
 revert:
 	grep -iE "series reversion|series inversion|inverse series|revert transform" joeis_names.txt \
@@ -4454,8 +4474,13 @@ mult4:
 	| tee    $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-mult:
+mult5:
 	perl multsplit.pl -j mult3.java \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+mult:
+	perl multsplit.pl -j mult5.java \
 	| grep -P "\tmult\t" \
 	>        $@.gen
 	head -n4 $@.gen
@@ -5210,6 +5235,13 @@ vpost3:
 #================================
 rectoproc:
 	grep -E "^A[0-9]" $(HOLREC)/$@.tmp \
+	| grep -vE "A110908|A261141" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#----
+dfinite:
+	grep -E "^A[0-9]" $(CONTRIB)/rm/df_prep.tmp \
 	| grep -vE "A110908|A261141" \
 	>        $@.gen
 	head -n4 $@.gen
