@@ -452,6 +452,9 @@ logf: # CC=; generate an HTML page for the failed tests (but no "FATO")
 loga: # CC=; generate an HTML page for the failed tests (but no "FATO")
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_all LOG=$(CC)
+logp: # CC=; generate an HTML page for the PASSed tests
+	# ---- $@ CC=$(CC)
+	cd $(COMMON); make -f checks.make joeis_pass LOG=$(CC)
 casstat:
 	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp
 	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp
