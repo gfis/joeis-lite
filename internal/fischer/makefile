@@ -3517,7 +3517,7 @@ holof1:
 	wc -l    $@.tmp
 #----
 holom:
-	grep -E "^A[0-9]" holos.man > holom.gen
+	grep -E "^A[0-9]" $(HOLREC)/holom.man > holom.gen
 holoman:
 	cp -v $(HOLREC)/holom.gen $@.gen
 	wc -l $@.gen
@@ -4484,7 +4484,13 @@ mult5:
 	wc -l    $@.gen
 mult:
 	perl multsplit.pl -j mult5.java \
-	| grep -P "\tmult\t" \
+	| grep -P "\tmultb?\t" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+multb:
+	perl multsplit.pl -j mult5.java \
+	| grep -P "\tmultb\t" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
