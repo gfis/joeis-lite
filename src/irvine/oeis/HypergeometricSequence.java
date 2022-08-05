@@ -169,32 +169,7 @@ public class HypergeometricSequence implements SequenceWithOffset {
    * @return a rational
    */
   public Q nextQ() {
-    ++mN;
-    Q sum = Q.ONE; // for mExp = 0
-    mExp = 1;
-    Z fact = Z.ONE; // mExp!
-    final Q var = evalPoly(mPolyLen - 1, mN); // the trailing variable, evaluated for mN
-    Q varPow = Q.ONE; // power of var
-    mNonZero = true;
-    while (mNonZero && mExp < 8 * mN) { // increase mExp as long as no product becomes 0
-      varPow = varPow.multiply(var);
-      fact = fact.multiply(mExp);
-      Q prod = Q.ONE;
-      int ix = 0; 
-      while (mNonZero && ix < mPolyLen - 1) { // evaluate all Pochhammer symbols
-        if (ix < mP) { // in the "numerator" - multiply
-          prod = prod.multiply(evalPochhammer(ix, mExp));
-        } else { // in the "denominator" - divide
-          prod = prod.divide(evalPochhammer(ix, mExp));
-        }
-        //** System.out.println("\tprod, mN=" + mN + ", mExp=" + mExp + ", ix=" + ix + ", prod=" + prod + (ix < mP ? ", mul" : ", div") + ", sum=" + sum);
-        ++ix;
-      }
-      sum = sum.add(prod.multiply(varPow).divide(fact));
-      //** System.out.println("nextQ(n=" + mExp + "), varPow=" + varPow + ", fact=" + fact + ", sum=" + sum + "\n");
-      ++mExp;
-    }
-    return sum;
+    return getTerm(++mN);
   }
 
   /**
