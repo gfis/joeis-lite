@@ -6,7 +6,7 @@
 # 2019-08-29, Georg Fischer: copied from get_stretchables.pl
 #
 #:# Usage:
-#:#   perl stretchables.pl [-d debug] [-m min] analogs.tmp > stretch_blocks
+#:#   perl stretchable.pl [-d debug] [-m min] anasort.tmp > anastret.tmp
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -49,8 +49,9 @@ while (<>) { # read inputfile
         $blk_aseqno = $new_aseqno;
         &output_block();
     }
+    #                                                        parm1      parm2     parm3      
     $block .= join("\t", ($blk_aseqno, $new_aseqno, $offset, $new_code, $new_num, $new_name, "m", "i")) . "\n";
-    if ($new_code =~ m{\Azzzz}) { # not in joeis
+    if ($new_code =~ m{\Anyi}) { # not in joeis
         $ocount ++;
     } else { # in joeis
         $jcount ++;

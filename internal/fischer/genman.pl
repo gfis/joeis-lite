@@ -163,7 +163,7 @@ GFis
     } elsif ($memory    == 1) {
         print TAR "MemorySequence";
     } elsif ($triangle  == 1) {
-        print TAR "triangle.Triangle";
+        print TAR "triangle.BaseTriangle";
     } elsif ($upperleft == 1) {
         print TAR "triangle.UpperLeftTriangle";
     } else {

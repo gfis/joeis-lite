@@ -539,7 +539,23 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-07-19:
+anabuild: #.2022-08-02:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	# A116611 ??
+	echo A006988 A050449 A051222 A274022 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	make CC=man        man
+	make CC=$@ dist 
+	make CC=A006988 test TO=8 GU=8 log
+	make CC=A274022 test TO=8 GU=8 log
+	make CC=A050449 testall log 
+anabuild.2022-07-19:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -3912,7 +3928,14 @@ hygsolve_eval:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #	  LEFT JOIN joeis j ON l.aseqno = j.aseqno \
-#
+#----
+hygeom:
+	grep -E "^A[0-9]" $(HOLREC)/$@.java \
+	| grep -P "\thygeom?\t" \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 revert:
 	grep -iE "series reversion|series inversion|inverse series|revert transform" joeis_names.txt \
@@ -7745,17 +7768,17 @@ anaprep:
 	perl stretchable.pl anasort.tmp \
 	>        $@.tmp
 	grep -v "cellular automaton" $@.tmp \
-	>        $@.txt
+	>        $@.txt || :
 	head -n4 $@.txt
 	wc   -l  $@.txt
 	grep    "cellular automaton" $@.tmp \
-	>        $@.ca.txt
+	>        $@.ca.txt || :
 	wc   -l  $@.ca.txt
 anaload:
 	make seq4 LIST=anaprep.txt
 	$(DBAT) "UPDATE seq4 s \
-	  SET s.parm4 = SUBSTR(COALESCE((SELECT h.matrix FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 2048) \
-	  ,   s.parm5 = SUBSTR(COALESCE((SELECT h.inits  FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 1024) \
+	  SET s.parm4 = SUBSTR(COALESCE((SELECT h.matrix FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 1024) \
+	  ,   s.parm5 = SUBSTR(COALESCE((SELECT h.init   FROm holref h WHERE s.callcode = h.aseqno), ''), 1, 128 ) \
 	;"
 anastret:
 	$(DBAT) -x "SELECT * FROM seq4 ORDER BY 6,4,5" \
@@ -7764,7 +7787,7 @@ anastret:
 	wc   -l  $@.txt
 anastren: # only the ones from anastret that contain no "Annnnnn"
 	grep -v "Annnnnn" anastret.txt \
-	>        $@.txt
+	>        $@.txt || :
 	head -n4 $@.txt
 	wc   -l  $@.txt
 #--
