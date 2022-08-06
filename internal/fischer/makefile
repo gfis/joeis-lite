@@ -544,8 +544,8 @@ anabuild: #.2022-08-02:
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
-	# A116611 ??
-	echo A006988 A050449 A051222 A274022 \
+	# A006988 A116611  A051222 A274022
+	echo  A050449 \
 	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
 	grep -vE "A999999" build.tmp \
 	| sort | uniq -w7 > build.man
@@ -1625,6 +1625,12 @@ alsoprime:
 	| grep Primes \
 	| grep -v revers \
 	| perl alsoprime.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----------------
+apery:
+	grep -E "^A[0-9]" $(HOLREC)/apery1.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -3931,7 +3937,8 @@ hygsolve_eval:
 #----
 hygeom:
 	grep -E "^A[0-9]" $(HOLREC)/$@.java \
-	| grep -P "\thygeom?\t" \
+	| grep -P "\thyge[omn]+\t" \
+	| sed -e "s/\thygen\t/\thygeo\t/" | sed -e "s/\thygeon\t/\thygeom\t/" \
 	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen

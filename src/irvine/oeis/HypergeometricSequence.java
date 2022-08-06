@@ -24,10 +24,12 @@ public class HypergeometricSequence implements SequenceWithOffset {
   private int mQ; // number of Pochhammer symbols in the "denominator".
   private Q[][] mPolyArray; // polynomials as rational coefficients of <code>n^i, i=0..m</code>
   private int mPolyLen; // size of <code>mPolyArray</code>
-  private boolean[] mIsVarPoch; // whether the Pochhammer symbol (or the trailing variable) contain the variable <code>n</code>.
-  private ArrayList<ArrayList<Q>> mPochList; // values of the constant Pochhammer symbols (or the trailing variable)
   private boolean mNonZero; // false if one of the Pochhammer symbols became zero, true otherwise
   private int mExp; // exponent n in the hypergeometric power series
+/* for later optimization:
+  private boolean[] mIsVarPoch; // whether the Pochhammer symbol (or the trailing variable) contain the variable <code>n</code>.
+  private ArrayList<ArrayList<Q>> mPochList; // values of the constant Pochhammer symbols (or the trailing variable)
+*/
 
   /**
    * Empty constructor.
@@ -63,6 +65,10 @@ public class HypergeometricSequence implements SequenceWithOffset {
     mQ = q;
     mPolyArray = polyArray;
     mPolyLen = mPolyArray.length;
+    if (p + q + 1 != polyArray.length) {
+      throw new RuntimeException("p + q + 1 != polyArray.length");
+    }
+  /* for later optimization:
     mIsVarPoch = new boolean[mPolyLen];
     mPochList = new ArrayList<ArrayList<Q>>();
     for (int ip = 0; ip < mPolyLen; ++ip) {
@@ -72,6 +78,7 @@ public class HypergeometricSequence implements SequenceWithOffset {
       poch.add(evalPoly(ip, mN)); // start values for k = 1
       mPochList.add(poch); 
     }
+  */
   }
 
   /**
@@ -143,7 +150,7 @@ public class HypergeometricSequence implements SequenceWithOffset {
     final Q var = evalPoly(mPolyLen - 1, n); // the trailing variable, evaluated for n
     Q varPow = Q.ONE; // power of var
     mNonZero = true;
-    while (mNonZero && mExp < 8 * n) { // increase mExp as long as no product becomes 0
+    while (mNonZero && mExp < 8 * n) { // 8 = safety limit; increase mExp as long as no product becomes 0
       varPow = varPow.multiply(var);
       fact = fact.multiply(mExp);
       Q prod = Q.ONE;
@@ -160,6 +167,9 @@ public class HypergeometricSequence implements SequenceWithOffset {
       sum = sum.add(prod.multiply(varPow).divide(fact));
       //** System.out.println("nextQ(n=" + mExp + "), varPow=" + varPow + ", fact=" + fact + ", sum=" + sum + "\n");
       ++mExp;
+    }
+    if (mNonZero && mExp > 1) {
+      throw new RuntimeException("probably nonterminating, mExp=" + mExp);
     }
     return sum;
   }
