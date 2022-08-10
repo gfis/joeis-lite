@@ -545,7 +545,7 @@ anabuild: #.2022-08-02:
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
 	# A006988 A116611  A051222 A274022
-	echo  A050449 \
+	echo  A116611 \
 	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
 	grep -vE "A999999" build.tmp \
 	| sort | uniq -w7 > build.man
@@ -555,6 +555,7 @@ anabuild: #.2022-08-02:
 	make CC=A006988 test TO=8 GU=8 log
 	make CC=A274022 test TO=8 GU=8 log
 	make CC=A050449 testall log 
+# hygeom + A050449: 2022-08-06
 anabuild.2022-07-19:
 	make purge
 	cp -v hold/*.java manual || :
@@ -1630,10 +1631,17 @@ alsoprime:
 	wc -l    $@.gen
 #----------------
 apery:
-	grep -E "^A[0-9]" $(HOLREC)/apery1.tmp \
+	grep -E "^A[0-9]" $(HOLREC)/apery.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+aperz:
+	grep -E "^A[0-9]" $(HOLREC)/aperz.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+aperz_update:
+	perl -i.bak -pe 's{\tholos\t\d+\t}{\tholos\t0\t};' aperz.gen
 #----------------
 aritfun: # The arithmetic function ...
 	grep -E "^A[0-9]" $@.man > $@.gen
