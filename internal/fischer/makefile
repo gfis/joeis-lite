@@ -100,7 +100,7 @@ seqhelp: #
 jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
 	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
 spectest:
-	$(JAVA) irvine.test.SpecialTest       $(NT) $(OFFSET)
+	$(JAVA) irvine.oeis.a225.A225401 $(ARGS)
 crtest:
 	$(JAVA) irvine.math.cr.CR $(NUM)
 ebtest:

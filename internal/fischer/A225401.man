@@ -10,6 +10,31 @@ A225411	parmof7	0	A225401	3	9	3	3	-1	10	b(1)=3, b(n)=b(n-1) + 9 * (3 * b(n-1)^3 
 A225412	parmof7	0	A225401	9	7	9	3	-1	10	b(1)=9, b(n)=b(n-1) + 7 * (9 * b(n-1)^3 -  1) mod 10^n
 A225458	parmof7	0	A225401	9	1	1	9	-9	10	b(1)=9, b(n)=b(n-1) + 1 * (1 * b(n-1)^9 -  9) mod 10^n
 A225464	parmof7	0	A225401	9	9	9	9	-1	10	b(1)=9, b(n)=b(n-1) + 9 * (9 * b(n-1)^9 -  1) mod 10^n
+
+# A225441 nyi o   10-adic integer x such that x^7 = -7/9. nonn,base,changed,      0..10000
+# A225442 nyi o   10-adic integer x such that x^7 = -1/3. nonn,base,changed,      0..10000
+# A225443 nyi o   Digits of the 10-adic integer (-1/9)^(1/7).     nonn,base,changed,      
+# A225444 nyi o   10-adic integer x such that x^7 = 3.    nonn,base,changed,      0..10000
+# A225445 nyi o   10-adic integer x such that x^7 = 7.    nonn,base,changed,      0..10000
+# A225446 nyi o   Digits of the 10-adic integer 9^(1/7).  nonn,base,changed,      0..10000
+# A225447 nyi o   10-adic integer x such that x^7 = -3.   nonn,base,changed,      0..10000
+# A225448 nyi o   10-adic integer x such that x^7 = -7.   nonn,base,changed,      0..10000
+# A225449 nyi o   Digits of the 10-adic integer (-9)^(1/7).       nonn,base,changed,      
+# A225451 nyi o   10-adic integer x such that x^7 = 1/3.  nonn,base,changed,      0..10000
+# A225452 nyi o   Digits of the 10-adic integer (1/9)^(1/7).      nonn,base,changed,      
+# A225453 nyi o   10-adic integer x such that x^9 = -7/9. nonn,base,changed,      0..10000
+# A225454 nyi o   10-adic integer x such that x^9 = -1/3. nonn,base,changed,      0..10000
+# A225455 nyi po  10-adic integer x such that x^9 == (10^n-1)/9 mod 10^n for all n.       
+# A225456 nyi o   10-adic integer x such that x^9 = 3.    nonn,base,changed,      0..10000
+# A225457 nyi o   10-adic integer x such that x^9 = 7.    nonn,base,changed,      0..10000
+# A225458 nyi Fo  10-adic integer x such that x^9 = 9.    nonn,base,changed,      0..10000
+# A225459 nyi o   10-adic integer x such that x^9 = -3.   nonn,base,changed,      0..10000
+# A225460 nyi o   10-adic integer x such that x^9 = -7.   nonn,base,changed,      0..10000
+# A225462 nyi o   10-adic integer x such that x^9 = 7/9.  nonn,base,changed,      0..10000
+# A225463 nyi o   10-adic integer x such that x^9 = 1/3.  nonn,base,changed,      0..10000
+# A225464 nyi Fo  10-adic integer x such that x^9 = 1/9.  nonn,base,changed,      0..10000
+
+
 A309569	parmof7	0	A225401	3	9	3	3	-11	10	b(1)=3, b(n)=b(n-1) + 9 * (3 * b(n-1)^3 - 11) mod 10^n
 A309570	parmof7	0	A225401	9	1	3	3	-17	10	b(1)=9, b(n)=b(n-1) + 1 * (3 * b(n-1)^3 - 17) mod 10^n korr
 A309595	parmof7	0	A225401	1	7	9	3	+31	10	b(1)=1, b(n)=b(n-1) + 7 * (9 * b(n-1)^3 + 31) mod 10^n
@@ -44,7 +69,24 @@ A322931	parmof7	0	A225401	3	5	1	3	- 3	 8	b(1)=3, b(n)=b(n-1) + 5 * (1 * b(n-1)^3
 A322932	parmof7	0	A225401	5	5	1	3	- 5	 8	b(1)=5, b(n)=b(n-1) + 5 * (1 * b(n-1)^3 -  5) mod  8^n
 A322933	parmof7	0	A225401	7	5	1	3	- 7	 8	b(1)=7, b(n)=b(n-1) + 5 * (1 * b(n-1)^3 -  7) mod  8^n
 
-# A225455 nyi po  10-adic integer x such that x^9 == (10^n-1)/9 mod 10^n for all n.       
+
+A309641	parmof7	0	A225401	7	9	3	3	+11	10	b(1)=7, b(n)=b(n-1) + 9 * (3 * b(n-1)^3 + 11) mod 10^n for n > 1,
+A309640	parmof7	0	A225401	1	1	3	3	+17	10	b(1)=1, b(n)=b(n-1) +      3 * b(n-1)^3 + 17  mod 10^n
+
+
+# A322169	parmof7	0	A225401							Digits of the 5-adic integer 7^(1/5).
+# A322931	parmof7	0	A225401							Digits of the 8-adic integer 3^(1/3).
+# A322932	parmof7	0	A225401							Digits of the 8-adic integer 5^(1/3).
+# A322933	parmof7	0	A225401							Digits of the 8-adic integer 7^(1/3).
+# A323000	parmof7	0	A225401							Digits of the 2-adic integer 3^(1/3).
+# A323045	parmof7	0	A225401							Digits of the 2-adic integer 5^(1/3).
+# A323095	parmof7	0	A225401							Digits of the 2-adic integer 7^(1/3).
+# A323096	parmof7	0	A225401							Digits of the 2-adic integer 9^(1/3).
+# A325896	parmof7	0	A225401							Digits of the 2-adic integer 3^(1/5).
+# A325897	parmof7	0	A225401							Digits of the 2-adic integer 5^(1/5).
+# A325898	parmof7	0	A225401							Digits of the 2-adic integer 7^(1/5).
+# A325899	parmof7	0	A225401							Digits of the 2-adic integer 9^(1/5).
+
 
 # A309818 nyi o   Digits of the 10-adic integer (987654321/(1-10^9))^(1/3)
 # A309819 nyi o   Digits of the 10-adic integer (987654321/(1-10^9))^(1/7)
@@ -78,39 +120,7 @@ A322933	parmof7	0	A225401	7	5	1	3	- 7	 8	b(1)=7, b(n)=b(n-1) + 5 * (1 * b(n-1)^3
 # A309453 (7-adic, 5^(1/5));
 # A309454 (7-adic, 6^(1/5)).                                       
 # 
-# A309569 nyi Fo  Digits of the 10-adic integer (11/3)^(1/3). 
-# A309570 nyi Fo  Digits of the 10-adic integer (17/3)^(1/3). 
-# A309595 nyi Fo  Digits of the 10-adic integer (-31/9)^(1/3).
-# A309600 nyi Fo  Digits of the 10-adic integer (17/9)^(1/3). 
-# A309601 nyi Fo  Digits of the 10-adic integer (53/9)^(1/3). 
-# A309602 nyi Fo  Digits of the 10-adic integer (71/9)^(1/3). 
-# A309603 nyi Fo  Digits of the 10-adic integer (-11/9)^(1/3).
-# A309604 nyi Fo  Digits of the 10-adic integer (43/9)^(1/3). 
-# A309605 nyi Fo  Digits of the 10-adic integer (61/9)^(1/3). 
-# A309606 nyi Fpo Digits of the 10-adic integer (-7/3)^(1/3). 
-# A309608 nyi Fo  Digits of the 10-adic integer (-13/9)^(1/3).
-# A309609 nyi Fo  Digits of the 10-adic integer (23/9)^(1/3). 
-# A309610 nyi Fo  Digits of the 10-adic integer (41/9)^(1/3). 
-# A309611 nyi Fo  Digits of the 10-adic integer (-41/9)^(1/3).
-# A309612 nyi Fo  Digits of the 10-adic integer (-23/9)^(1/3).
-# A309613 nyi Fo  Digits of the 10-adic integer (13/9)^(1/3). 
-# A309614 nyi Fo  Digits of the 10-adic integer (31/9)^(1/3). 
-# A309640 nyi Fo  Digits of the 10-adic integer (-17/3)^(1/3).
-# A309641 nyi Fo  Digits of the 10-adic integer (-11/3)^(1/3).
-# A309642 nyi Fo  Digits of the 10-adic integer (7/3)^(1/3).  
-# A309643 nyi Fo  Digits of the 10-adic integer (-61/9)^(1/3).
-# A309644 nyi Fo  Digits of the 10-adic integer (-43/9)^(1/3).
-# A309645 nyi Fo  Digits of the 10-adic integer (11/9)^(1/3). 
-# A309646 nyi Fo  Digits of the 10-adic integer (-71/9)^(1/3).
-# A309647 nyi Fo  Digits of the 10-adic integer (-53/9)^(1/3).
-# A309648 nyi Fo  Digits of the 10-adic integer (-17/9)^(1/3).
-# A309698 nyi Fo  Digits of the  4-adic integer 3^(1/3)       
-# A309699 nyi Fo  Digits of the  6-adic integer 5^(1/5)       
-# A309700 nyi Fo  Digits of the  8-adic integer 7^(1/7)       
-# A309722 nyi Fo  Digits of the  4-adic integer (1/3)^(1/3).
-# A309723 nyi Fo  Digits of the  6-adic integer (1/5)^(1/5).
-# A309724 nyi Fo  Digits of the  8-adic integer (1/7)^(1/7).
-# 
+ 
 # A319739 nyi o   The 10-adic integer cube root of one seventh (1/7), that is, satisfying 7 * x^3 == 1 (mod 10^(n+1)), for all n.
 # A319740 nyi po  The 10-adic integer cube root of one eleventh (1/11), that is, satisfying 11 * x^3 == 1 (mod 10^n), for all n.
 #         
@@ -118,37 +128,3 @@ A322933	parmof7	0	A225401	7	5	1	3	- 7	 8	b(1)=7, b(n)=b(n-1) + 5 * (1 * b(n-1)^3
 # A321107 nyi FoG Digits of one of the three 13-adic integers 5^(1/3) that is related to A320915. nonn,ba
 # A321108 nyi FoG Digits of one of the three 13-adic integers 5^(1/3) that is related to A321105. nonn,ba
 # 
-# A322169 nyi FpoG        Digits of the 5-adic integer 7^(1/5).
-# A322931 nyi Fo  Digits of the 8-adic integer 3^(1/3).
-# A322932 nyi Fo  Digits of the 8-adic integer 5^(1/3).
-# A322933 nyi Fo  Digits of the 8-adic integer 7^(1/3).
-# A323000 nyi FoG Digits of the 2-adic integer 3^(1/3).
-# A323045 nyi FoG Digits of the 2-adic integer 5^(1/3).
-# A323095 nyi FoG Digits of the 2-adic integer 7^(1/3).
-# A323096 nyi FoG Digits of the 2-adic integer 9^(1/3).
-# A325896 nyi FoG Digits of the 2-adic integer 3^(1/5).
-# A325897 nyi FoG Digits of the 2-adic integer 5^(1/5).
-# A325898 nyi FoG Digits of the 2-adic integer 7^(1/5).
-# A325899 nyi FoG Digits of the 2-adic integer 9^(1/5).
-# 
-# A225441 nyi o   10-adic integer x such that x^7 = -7/9. nonn,base,changed,      0..10000
-# A225442 nyi o   10-adic integer x such that x^7 = -1/3. nonn,base,changed,      0..10000
-# A225443 nyi o   Digits of the 10-adic integer (-1/9)^(1/7).     nonn,base,changed,      
-# A225444 nyi o   10-adic integer x such that x^7 = 3.    nonn,base,changed,      0..10000
-# A225445 nyi o   10-adic integer x such that x^7 = 7.    nonn,base,changed,      0..10000
-# A225446 nyi o   Digits of the 10-adic integer 9^(1/7).  nonn,base,changed,      0..10000
-# A225447 nyi o   10-adic integer x such that x^7 = -3.   nonn,base,changed,      0..10000
-# A225448 nyi o   10-adic integer x such that x^7 = -7.   nonn,base,changed,      0..10000
-# A225449 nyi o   Digits of the 10-adic integer (-9)^(1/7).       nonn,base,changed,      
-# A225451 nyi o   10-adic integer x such that x^7 = 1/3.  nonn,base,changed,      0..10000
-# A225452 nyi o   Digits of the 10-adic integer (1/9)^(1/7).      nonn,base,changed,      
-# A225453 nyi o   10-adic integer x such that x^9 = -7/9. nonn,base,changed,      0..10000
-# A225454 nyi o   10-adic integer x such that x^9 = -1/3. nonn,base,changed,      0..10000
-# A225456 nyi o   10-adic integer x such that x^9 = 3.    nonn,base,changed,      0..10000
-# A225457 nyi o   10-adic integer x such that x^9 = 7.    nonn,base,changed,      0..10000
-# A225458 nyi Fo  10-adic integer x such that x^9 = 9.    nonn,base,changed,      0..10000
-# A225459 nyi o   10-adic integer x such that x^9 = -3.   nonn,base,changed,      0..10000
-# A225460 nyi o   10-adic integer x such that x^9 = -7.   nonn,base,changed,      0..10000
-# A225462 nyi o   10-adic integer x such that x^9 = 7/9.  nonn,base,changed,      0..10000
-# A225463 nyi o   10-adic integer x such that x^9 = 1/3.  nonn,base,changed,      0..10000
-# A225464 nyi Fo  10-adic integer x such that x^9 = 1/9.  nonn,base,changed,      0..10000
