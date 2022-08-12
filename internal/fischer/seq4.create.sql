@@ -17,8 +17,8 @@ CREATE  TABLE            seq4
     , parm1    VARCHAR(16384)
     , parm2    VARCHAR(2048)
     , parm3    VARCHAR(1024)
-    , parm4    VARCHAR(1024)
-    , parm5    VARCHAR(128)
+    , parm4    VARCHAR(128 )
+    , parm5    VARCHAR(1024) -- holos remark
     , parm6    VARCHAR(128)
     , parm7    VARCHAR(64)
     , parm8    VARCHAR(64)

@@ -5281,11 +5281,13 @@ vpost3:
 	rm -vf $(COMMON)/nonincr.txt
 #================================
 rectoproc:
-	grep -E "^A[0-9]" $(HOLREC)/$@.tmp \
+	grep -E "^A[0-9]" $(HOLREC)/rectopost.tmp \
 	| grep -vE "A110908|A261141" \
+	| sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
+
 #----
 dfinite:
 	grep -E "^A[0-9]" $(CONTRIB)/rm/df_prep.tmp \
