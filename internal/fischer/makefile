@@ -5326,6 +5326,19 @@ nisolut_eval:
 	wc -l    $@.tmp
 nisoman:
 	cp -v nisolut.man $@.gen
+#--------
+offinspect:
+	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	$(JAVA) irvine.oeis.OffsetInspector $@.tmp \
+	| tee    $@.txt
+offinsp1:
+	grep Holonom offinspect.txt | cut -f1 \
+	| perl -ne 's/\s//g; print lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
+	| xargs -innn grep -iH "pl holos" $(JOEIS)/src/irvine/oeis/nnn \
+	| perl -ne 'm{at ([\d\: \-]+)}; print "$$1\n";'
+	# | tee $@.tmp
 #--------------------------------
 wraptr: # WrappedRecurrence
 	cd $(TRIREC); make wraptr

@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: 08b49ddc73ef271c7054bb70acb278bcff247562 $
+    2022-08-14: compile internal/irvine also; CK=65
     2022-05-08: compile with -Xdiags:verbose
     2022-04-28: remove target="${jdk.version}" in task compile
     2019-07-25: joeis-lite.jar before joeis.jar
@@ -69,6 +70,7 @@
     <property name="dist.home"          value="${basedir}/dist" />
     <property name="etc.home"           value="${basedir}/etc" />
     <property name="lib.home"           value="${basedir}/lib" />
+    <property name="internal.home"      value="${basedir}/internal/irvine" />
     <property name="src.home"           value="${basedir}/src" />
     <property name="web.home"           value="${basedir}/web" />
     <property name="webapp.path"        value="${build.home}" />
@@ -229,7 +231,7 @@
                 source="${jdk.version}" target="${jdk.version}"
                 source="${jdk.version}"
     -->
-    <target name="compile"  depends="generate">
+    <target name="compile"  depends="compile-internal,generate">
         <depend srcdir="${src.home}" destdir="${build.classes}" cache="${build.home}" dump="yes" />
         <javac  srcdir="${src.home}" destdir="${build.classes}" listfiles="yes"
                 encoding="utf8"
@@ -252,6 +254,19 @@
     -->
     </target>
 
+    <target name="compile-internal"  depends="generate">
+        <depend srcdir="${internal.home}" destdir="${build.classes}" cache="${build.home}" dump="yes" />
+        <javac  srcdir="${internal.home}" destdir="${build.classes}" listfiles="yes"
+                encoding="utf8"
+                includeantruntime="false"
+                
+                debug="${javac.debug}" debuglevel="${javac.debuglevel}">
+            <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 4096 -Xmaxerrs 4096 -Xdiags:verbose" />
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </javac>
+    </target>
     <!-- ============= manifest =========================================
     -->
     <target name="manifest">

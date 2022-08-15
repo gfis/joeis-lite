@@ -18,11 +18,11 @@ CREATE  TABLE            seq4
     , parm2    VARCHAR(2048)
     , parm3    VARCHAR(1024)
     , parm4    VARCHAR(128 )
-    , parm5    VARCHAR(1024) -- holos remark
+    , parm5    VARCHAR(768 ) -- holos remark
     , parm6    VARCHAR(128)
     , parm7    VARCHAR(64)
     , parm8    VARCHAR(64)
-    , name     VARCHAR(256)
+    , name     VARCHAR(512)
 --  , status   VARCHAR(16)           -- pass, FAIL
     , PRIMARY KEY(aseqno, callcode)
     );
