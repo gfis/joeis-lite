@@ -539,7 +539,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-08-02:
+anabuild: #.2022-08-16:
+	make purge
+	cp -v hold/*.java manual || :
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo  A288108 A288318 A288972  \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	make CC=man        man
+	make CC=$@ dist 
+anabuild.2022-08-02:
 	make purge
 	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
@@ -5339,10 +5351,15 @@ offinsp1:
 	| xargs -innn grep -iH "pl holos" $(JOEIS)/src/irvine/oeis/nnn \
 	| perl -ne 'm{at ([\d\: \-]+)}; print "$$1\n";'
 	# | tee $@.tmp
+offholon: # put it in table seq
+	grep Holonom offinspect.dec1.txt | grep -E "^A[0-9]" | cut -f1 > $@.tmp
+	cd $(COMMON) ; make seq LIST=$(HERE)/$@.tmp
+offholrem: # remove all that are not in offinspect.txt
+	$(DBAT) -x -v "DELETE FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM seq);"
 #--------------------------------
 wraptr: # WrappedRecurrence
 	cd $(TRIREC); make wraptr
-	head -n4 $@.gen
+	head -n4 $@.gen 
 	wc   -l  $@.gen
 #--
 tricodiff: # ConstantDifferenceTriangle
