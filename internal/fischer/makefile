@@ -5341,12 +5341,16 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 #--------
-offinspect:
+offinspect: offinspect1 offinspect2
+offinspect1:
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
-	$(JAVA) irvine.oeis.OffsetInspector $@.tmp \
+	wc -l    $@.tmp
+offinspect2:
+	$(JAVA) irvine.oeis.OffsetInspector offinspect1.tmp \
 	| tee    $@.txt
+	wc -l    $@.txt
 offinsp1:
 	grep Holonom offinspect.txt | cut -f1 \
 	| perl -ne 's/\s//g; print lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
