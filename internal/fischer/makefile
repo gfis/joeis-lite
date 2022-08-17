@@ -147,6 +147,8 @@ diff_ramath:
 	# diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test || :
 diff_reflect:
 	diff -wsy --suppress-common-lines ../../src/irvine/oeis/Recur*.java ../../../joeis/internal/irvine/oeis/
+diff_factory:
+	diff -wsy --suppress-common-lines ../../src/irvine/oeis/SequenceFactory.java ../../../joeis/src/irvine/oeis/
 diff_joeis:
 	ls -1 ../../src/irvine/oeis/cons/*.java | xargs -l -innn \
 	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/cons/ || :
@@ -5356,6 +5358,41 @@ offholon: # put it in table seq
 	cd $(COMMON) ; make seq LIST=$(HERE)/$@.tmp
 offholrem: # remove all that are not in offinspect.txt
 	$(DBAT) -x -v "DELETE FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM seq);"
+#--------
+compareall0:
+	find ../../src/irvine/oeis/a* -iname "*.java" | cut -b7- | xargs -innn diff -C0 ../../nnn ../../../joeis/nnn \
+	> $@.1.tmp
+compareall1:
+	cut -b1-7 baddex.man \
+	| perl -ne 's/\s//g; print "src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
+	| xargs -innn diff -C0 ../../nnn ../../../joeis/nnn \
+	| tee $@.tmp
+compareall:
+	grep -vP "^(\*\*\*\*|\*\*\*\s\d|\!\s+\/\/|\!\s+super\(|\-\-\- )" $@.1.tmp | tee $@.2.tmp
+patchoffhol:
+	grep -E "Holonomic" offinspect.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+patchoffproot:
+	grep -E "PolynomialRoot" offinspect.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+patchoffdex:
+	make purge
+	grep -E "DecimalExpansionSequence" offinspect.txt \
+	| grep -v BinaryToDecimal \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	cut -b1-7 baddex.man \
+	| perl -ne 's/\s//g; print "src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
+	| xargs -innn rm -v ../../nnn 
+	make dist testall log TO=8 GU=8
+	make CC=$@ pack1
+#----
+packprep:
+	find ../../src -iname "*.java" \
+	| cut -b7- | grep -vE "seqbox|Batch|Test" \
+	| tee $@.tmp
 #--------------------------------
 wraptr: # WrappedRecurrence
 	cd $(TRIREC); make wraptr

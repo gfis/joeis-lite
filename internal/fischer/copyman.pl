@@ -6,9 +6,8 @@
 
 use strict;
 use integer;
-undef $/; # slurp mode
 
-my @names;
+undef $/; # slurp mode
 my %dirs;
 my $tarroot = "../../src/irvine/oeis";
 foreach my $name(glob("manual/*.java")) {
@@ -29,13 +28,3 @@ foreach my $name(glob("manual/*.java")) {
     print STDERR "copied manual/$aseqno.java -> $tarpath/$aseqno.java\n";
 }
 __DATA__
-foreach my $name(glob("manual/*.java")) {
-    $name =~ m{\/(A\d+)};
-    my $aseqno = $1;
-    my $tarpath = lc(substr($aseqno, 0, 4));
-    if (! defined($dirs{$tarpath})) {
-        $dirs{$tarpath} = 1;
-        print `mkdir -p $tarroot/$tarpath`;
-    }
-    print `cp -v manual/$aseqno.java $tarroot/$tarpath`;
-}
