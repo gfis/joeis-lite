@@ -543,7 +543,6 @@ similar:
 #================================================================
 anabuild: #.2022-08-16:
 	make purge
-	cp -v hold/*.java manual || :
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
 	echo  A288108 A288318 A288972  \
@@ -552,7 +551,7 @@ anabuild: #.2022-08-16:
 	| sort | uniq -w7 > build.man
 	make CC=build      select EX=xx gener
 	make CC=man        man
-	make CC=$@ dist 
+	make CC=$@ dist testall pack
 anabuild.2022-08-02:
 	make purge
 	cp -v hold/*.java manual || :
@@ -5377,10 +5376,6 @@ patchoffhol:
 	grep -E "Holonomic" offinspect.txt \
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
-patchoffproot:
-	grep -E "PolynomialRoot" offinspect.txt \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
 patchoffdex:
 	make purge
 	grep -E "DecimalExpansionSequence" offinspect.txt \
@@ -5392,6 +5387,11 @@ patchoffdex:
 	| xargs -innn rm -v ../../nnn 
 	make dist testall log TO=8 GU=8
 	make CC=$@ pack1
+poffmix1:
+	grep -E "PolynomialRoot|BinaryToDecimalExpansion|FloorSequence" offinspect.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
 #----
 packprep:
 	find ../../src -iname "*.java" \

@@ -1,0 +1,11 @@
+# 2022-08-16 dependants of A288972:
+# %Y A288972 Columns k=0-2 give: A000012, A289020, A289054.
+# A000012	arronk	0	A288972	0	mN	0	
+A289020	arronk	0	A288972	0	mN	1	
+A289054	arronk	0	A288972	0	mN	2	
+# %Y A288972 Rows n=0+1,2,3 give: A000012, A176479, A289030.
+# A000012	arronk	0	A288972	0	0	mN	Rows n=0+1,2,3 :
+A176479	arronk	0	A288972	0	2	mN	Rows n=0+1,2,3 :
+A289030	arronk	0	A288972	0	3	mN	Rows n=0+1,2,3 :
+# %Y A288972 Main diagonal gives A288940.
+A288940	arronk	0	A288972	0	mN	mN	Main diagonal

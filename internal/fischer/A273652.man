@@ -1,0 +1,52 @@
+A273652	parmof2	0	A273652	2	a(n) = C(n, 2) * Sum_{j=0.. 2} Stirling2( 2,j) * j^(n- 2)
+A273653	parmof2	0	A273652	3	a(n) = C(n, 3) * Sum_{j=0.. 3} Stirling2( 3,j) * j^(n- 3)
+A273654	parmof2	0	A273652	4	a(n) = C(n, 4) * Sum_{j=0.. 4} Stirling2( 4,j) * j^(n- 4)
+A273655	parmof2	0	A273652	5	a(n) = C(n, 5) * Sum_{j=0.. 5} Stirling2( 5,j) * j^(n- 5)
+A273656	parmof2	0	A273652	6	a(n) = C(n, 6) * Sum_{j=0.. 6} Stirling2( 6,j) * j^(n- 6)
+A273657	parmof2	0	A273652	7	a(n) = C(n, 7) * Sum_{j=0.. 7} Stirling2( 7,j) * j^(n- 7)
+A273658	parmof2	0	A273652	8	a(n) = C(n, 8) * Sum_{j=0.. 8} Stirling2( 8,j) * j^(n- 8)
+A273659	parmof2	0	A273652	9	a(n) = C(n, 9) * Sum_{j=0.. 9} Stirling2( 9,j) * j^(n- 9)
+A273660	parmof2	0	A273652	10	a(n) = C(n,10) * Sum_{j=0..10} Stirling2(10,j) * j^(n-10)
+
+A277391	parmof2	0	A277391	2	a(n) = n! * Sum_{k=0..n} binomial(n, k) * 2^k * n^k / k!.
+A277392	parmof2	0	A277391	3	a(n) = n! * Sum_{k=0..n} binomial(n, k) * 3^k * n^k / k!.
+A277418	parmof2	0	A277391	4	a(n) = n! * Sum_{k=0..n} binomial(n, k) * 4^k * n^k / k!.
+A277419	parmof2	0	A277391	5	a(n) = n! * Sum_{k=0..n} binomial(n, k) * 5^k * n^k / k!.
+A277420	parmof2	0	A277391	6	a(n) = n! * Sum_{k=0..n} binomial(n, k) * 6^k * n^k / k!.
+A277421	parmof2	0	A277391	7	a(n) = n! * Sum_{k=0..n} binomial(n, k) * 7^k * n^k / k!.
+A277422	parmof2	0	A277391	8	a(n) = n! * Sum_{k=0..n} binomial(n, k) * 8^k * n^k / k!.
+# A277409 a(n) = Sum_{k=0..n} binomial(n!,k) * k!/n! * (-1)^(n-k) * Stirling1(n,k).
+# A277453 a(n) = Sum_{k=0..n} binomial(n,k) * 2^k * n^k * k!.
+# A277454 a(n) = 1 + Sum_{k=1..n} binomial(n,k) * 2^k * k^k.
+# A277456 a(n) = 1 + Sum_{k=1..n} binomial(n,k) * 3^k * k^k.
+
+A055790	holos	0	[[0],[-2,1],[0,1],[-1]]	0,2	0	0	For n>= 3: a(n) = Sum_{j=0..n- 2} (-1)^j*binomial(n- 2,j)*(n-j)!.
+A277609	holos	1	[[0],[-3,1],[0,1],[-1]]	0,0,6	1	0	For n>= 4: a(n) = Sum_{j=0..n- 3} (-1)^j*binomial(n- 3,j)*(n-j)!.
+A277563	holos	1	[[0],[-4,1],[0,1],[-1]]	0,0,0,24	1	0	For n>= 5: a(n) = Sum_{j=0..n- 4} (-1)^j*binomial(n- 4,j)*(n-j)!.
+A280425	holos	1	[[0],[-5,1],[0,1],[-1]]	0,0,0,0,120	1	0	For n>= 6: a(n) = Sum_{j=0..n- 5} (-1)^j*binomial(n- 5,j)*(n-j)!.
+A280920	holos	1	[[0],[-6,1],[0,1],[-1]]	0,0,0,0,0,720	1	0	For n>= 7: a(n) = Sum_{j=0..n- 6} (-1)^j*binomial(n- 6,j)*(n-j)!.
+A284204	holos	1	[[0],[-7,1],[0,1],[-1]]	0,0,0,0,0,0,5040	1	0	For n>= 8: a(n) = Sum_{j=0..n- 7} (-1)^j*binomial(n- 7,j)*(n-j)!.
+A284205	holos	1	[[0],[-8,1],[0,1],[-1]]	0,0,0,0,0,0,0,40320	1	0	For n>= 9: a(n) = Sum_{j=0..n- 8} (-1)^j*binomial(n- 8,j)*(n-j)!.
+A284206	holos	1	[[0],[-9,1],[0,1],[-1]]	0,0,0,0,0,0,0,0,362880	1	0	For n>=10: a(n) = Sum_{j=0..n- 9} (-1)^j*binomial(n- 9,j)*(n-j)!.
+A284207	holos	1	[[0],[-10,1],[0,1],[-1]]	0,0,0,0,0,0,0,0,0,3628800	1	0	For n>=11: a(n) = Sum_{j=0..n-10} (-1)^j*binomial(n-10,j)*(n-j)!.
+
+A138378	parmof2	0	A288785	1	a(n) = Sum_{j=0..n- 1} binomial(n,j) * Bell(j)
+A124325	parmof2	0	A288785	2	a(n) = Sum_{j=0..n- 2} binomial(n,j) * Bell(j)
+A288785	parmof2	0	A288785	3	a(n) = Sum_{j=0..n- 3} binomial(n,j) * Bell(j).
+A288786	parmof2	0	A288785	4	a(n) = Sum_{j=0..n- 4} binomial(n,j) * Bell(j).
+A288787	parmof2	0	A288785	5	a(n) = Sum_{j=0..n- 5} binomial(n,j) * Bell(j).
+A288788	parmof2	0	A288785	6	a(n) = Sum_{j=0..n- 6} binomial(n,j) * Bell(j).
+A288789	parmof2	0	A288785	7	a(n) = Sum_{j=0..n- 7} binomial(n,j) * Bell(j).
+A288790	parmof2	0	A288785	8	a(n) = Sum_{j=0..n- 8} binomial(n,j) * Bell(j).
+A288791	parmof2	0	A288785	9	a(n) = Sum_{j=0..n- 9} binomial(n,j) * Bell(j).
+A288792	parmof2	0	A288785	10	a(n) = Sum_{j=0..n-10} binomial(n,j) * Bell(j).
+# 
+# A333981 a(0) = 0; a(n) = 2^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 2^(k-1) * (n-k) * a(n-k).
+# A333982 a(0) = 0; a(n) = 3^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 3^(k-1) * (n-k) * a(n-k).
+# A333983 a(0) = 0; a(n) = 4^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 4^(k-1) * (n-k) * a(n-k).
+# A333984 a(0) = 0; a(n) = 5^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 5^(k-1) * (n-k) * a(n-k).
+# A333985 a(0) = 0; a(n) = 6^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 6^(k-1) * (n-k) * a(n-k).
+# 
+# A336195 a(0) = 1; a(n) = Sum_{k=0..n-1} binomial(n,k)^3 * a(k).
+# A336196 a(0) = 1; a(n) = Sum_{k=0..n-1} binomial(n,k)^4 * a(k).
+# A336197 a(0) = 1; a(n) = Sum_{k=0..n-1} binomial(n,k)^5 * a(k).

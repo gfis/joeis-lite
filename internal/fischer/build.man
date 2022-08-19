@@ -1,24 +1,38 @@
-A090082	parmof2	1	A130433	5	Even pseudoprimes to base 5.
-A090083	parmof2	1	A130433	9	Even pseudoprimes to base 9.
-A090084	parmof2	1	A130433	11	Even pseudoprimes to base 11.
-A098464	parmof2	1	A112813	1 	Numbers k such that lcm(1,2,3,...,k) equals the denominator of the k-th harmonic number H(k).
-A112813	parmof2	1	A112813	3 	Numbers k such that lcm(1,2,3,...,k)/3 equals the denominator of the k-th harmonic number H(k).	nonn,changed,	1..10000	nyi	_Robert G. Wilson v_, Sep 17 2005
-A112814	parmof2	1	A112813	5 	Numbers k such that lcm(1,2,3,...,k)/5 equals the denominator of the k-th harmonic number H(k).	nonn,changed,	1..10000	nyi	_Robert G. Wilson v_, Sep 17 2005
-A112815	parmof2	1	A112813	7 	Numbers k such that lcm(1,2,3,...,k)/7 equals the denominator of the k-th harmonic number H(k).	nonn,changed,	1..10000	nyi	_Robert G. Wilson v_, Sep 17 2005
-A112816	parmof2	1	A112813	9 	Numbers k such that lcm(1,2,3,...,k)/9 equals the denominator of the k-th harmonic number H(k).	nonn,changed,	1..10000	nyi	_Robert G. Wilson v_, Sep 17 2005
-A112817	parmof2	1	A112813	11	Numbers k such that lcm(1,2,3,...,k)/11 equals the denominator of the k-th harmonic number H(k).	nonn,changed,	1..10000	nyi	_Robert G. Wilson v_, Sep 17 2005
-A112818	parmof2	1	A112813	13	Numbers k such that lcm(1,2,3,...,k)/13 equals the denominator of the k-th harmonic number H(k).	nonn,changed,	1..851	nyi	_Robert G. Wilson v_, Sep 17 2005
-A112819	parmof2	1	A112813	15	Numbers k such that lcm(1,2,3,...,k)/15 equals the denominator of the k-th harmonic number H(k).	nonn,more,changed,	1..10000	nyi	_Robert G. Wilson v_, Sep 17 2005
-A112820	parmof2	1	A112813	17	Numbers k such that lcm(1,2,3,...,k)/17 equals the denominator of the k-th harmonic number H(k).	nonn,changed,	1..10000	nyi	_Robert G. Wilson v_, Sep 17 2005
-A112821	parmof2	1	A112813	19	Numbers n such that lcm(1,2,3,...,n)/19 equals the denominator of the n-th harmonic number H(n).	nonn,more,synth	1..18	nyi	_Robert G. Wilson v_, Sep 17 2005
-A130433	parmof2	1	A130433	3	Even pseudoprimes to base 3.	nonn,	1..68	nyi	_Alexander Adamchuk_, May 26 2007, Jun 17 2007
-A130434	parmof2	1	A130433	7	Even pseudoprimes to base 7.	nonn,	1..37	nyi	_Alexander Adamchuk_, May 26 2007
-A130435	parmof2	1	A130433	13	Even pseudoprimes to base 13.	nonn,	1..101	nyi	_Alexander Adamchuk_, May 26 2007
-A130436	parmof2	1	A130433	17	Even pseudoprimes to base 17.	nonn,	1..119	nyi	_Alexander Adamchuk_, May 26 2007
-A130437	parmof2	1	A130433	19	Even pseudoprimes to base 19.	nonn,	1..51	nyi	_Alexander Adamchuk_, May 26 2007
-A130438	parmof2	1	A130433	23	Even pseudoprimes to base 23.	nonn,	1..78	nyi	_Alexander Adamchuk_, May 26 2007
-A130439	parmof2	1	A130433	29	Even pseudoprimes to base 29.	nonn,	1..121	nyi	_Alexander Adamchuk_, May 26 2007
-A130440	parmof2	1	A130433	31	Even pseudoprimes to base 31.	nonn,	1..87	nyi	_Alexander Adamchuk_, May 26 2007
-A130441	parmof2	1	A130433	37	Even pseudoprimes to base 37.	nonn,	1..243	nyi	_Alexander Adamchuk_, May 26 2007
-A130442	parmof2	1	A130433	41	Even pseudoprimes to base 41.	nonn,	1..146	nyi	_Alexander Adamchuk_, May 26 2007
-A130443	parmof2	1	A130433	43	Even pseudoprimes to base 43.	nonn,	1..46	nyi	_Alexander Adamchuk_, May 26 2007, Jun 20 2007
+# %Y A288108 Cf. A000108, A288318.
+# 2022-08-15 dependants of A288318:
+# A000007	trionk	0	A288318	0	mN	0	
+# A000108	treonk	0	A288108	0	mN	0	Cf.
+# A000984	trionk	0	A288318	0	mN	1	Cf.
+# A005564	trionk	0	A288318	0	mN	2	Cf.
+# A287987	trionk	0	A288318	0	mN	0	Row sums
+# A288108	trionk	0	A288318	0	mN	3	Cf.
+# A288318	treonk	0	A288108	0	mN	1	Cf.
+# A288940	trionk	0	A288318	0	mN	4	Cf.
+A156043	treonk	0	A288108	1	2*mN	mN	T(2n,n)
+A176479	arronk	0	A288972	0	2	mN	Rows n=0+1,2,3 :
+A281874	treonk	0	A288108	0	mN	1
+A287843	treonk	0	A288108	0	mN	2
+A287845	treonk	0	A288318	0	mN	2	
+A287846	treonk	0	A288318	0	mN	1	
+A287987	rowsums	0	A288318
+A288109	rowsums	0	A288108	0	mN	0	Row sums
+A288110	treonk	0	A288108	0	mN	3
+A288111	treonk	0	A288108	0	mN	4
+A288112	treonk	0	A288108	0	mN	5
+A288113	treonk	0	A288108	0	mN	6
+A288114	treonk	0	A288108	0	mN	7
+A288115	treonk	0	A288108	0	mN	8
+A288116	treonk	0	A288108	0	mN	9
+A288117	treonk	0	A288108	0	mN	10
+A288319	treonk	0	A288318	0	mN	3	
+A288320	treonk	0	A288318	0	mN	4	
+A288321	treonk	0	A288318	0	mN	5	
+A288322	treonk	0	A288318	0	mN	6	
+A288323	treonk	0	A288318	0	mN	7	
+A288324	treonk	0	A288318	0	mN	8	
+A288325	treonk	0	A288318	0	mN	9	
+A288326	treonk	0	A288318	0	mN	10	
+A288940	arronk	0	A288972	0	mN	mN	Main diagonal
+A289020	arronk	0	A288972	0	mN	1	
+A289030	arronk	0	A288972	0	3	mN	Rows n=0+1,2,3 :
+A289054	arronk	0	A288972	0	mN	2	
