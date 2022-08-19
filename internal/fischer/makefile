@@ -541,7 +541,18 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-08-16:
+anabuild: #.2022-08-19:
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo  A288108 A288318 A288972  \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	make CC=man        man
+	make CC=$@ dist testall pack
+anabuild.2022-08-19:
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -5373,22 +5384,33 @@ compareall1:
 compareall:
 	grep -vP "^(\*\*\*\*|\*\*\*\s\d|\!\s+\/\/|\!\s+super\(|\-\-\- )" $@.1.tmp | tee $@.2.tmp
 patchoffhol:
-	grep -E "Holonomic" offinspect.txt \
+	grep -E "Holonomic" offinspect2.txt \
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
 patchoffdex:
 	make purge
-	grep -E "DecimalExpansionSequence" offinspect.txt \
+	grep -E "DecimalExpansionSequence" offinspect2.txt \
 	| grep -v BinaryToDecimal \
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
 	cut -b1-7 baddex.man \
 	| perl -ne 's/\s//g; print "src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
-	| xargs -innn rm -v ../../nnn 
+	| xargs -innn rm -v ../../nnn  test2 log
 	make dist testall log TO=8 GU=8
 	make CC=$@ pack1
+poffgf:
+	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass = 'GeneratingFunctionSequence' ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	cp -v $@.tmp ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log
+poffgf2:
+	grep -P "\tGenera" offinspect2.txt | cut -b1-7 | xargs -l perl genman.pl -h 
 poffmix1:
-	grep -E "PolynomialRoot|BinaryToDecimalExpansion|FloorSequence" offinspect.txt \
+	# grep -E "PolynomialRoot|BinaryToDecimalExpansion|GeneratingFunctionSequence" offinspect2.txt
+	grep -E "GeneratingFunctionSequence" offinspect2.txt \
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8

@@ -209,7 +209,18 @@ GFis
 GFis
     if (0) {
     } elsif ($holonomic) {
-        print TAR "    super(0, \"[[0],[1],[1],[-1]\", \"0,1\", 0);\n"; # Fibonacci
+        my $rec = `grep $aseqno holref.txt`;
+        $rec =~ s{\s+\Z}{};
+        # A000352 holos   4       [0,6,-17,17,-7,1]       [5,29,118,418,1383]     0       0       gener
+        if ($rec !~ m{\A\s*\Z}) {
+            my ($dummy, $cc, $off, $matrix, $init, $dist, $gftype, $remark) = split(/\t/, $rec);
+            print TAR "    super($off, \"$matrix\", \"$init\", $dist);\n";
+            open(RUN, ">", "run.cmd") || die "cannot write run.cmd";
+            print RUN "make runholo MATRIX=\"$matrix\" INIT=\"$init\" DIST=$dist OFF=$off\n";
+            close(RUN);
+        } else {
+            print TAR "    super(0, \"[[0],[1],[1],[-1]\", \"0,1\", 0);\n"; # Fibonacci
+        }
     } elsif ($upperleft) {
         print TAR "    super(1, 1, -1);\n";
     } elsif (scalar(@pnames) > 0) { # with generic constructor
@@ -253,15 +264,10 @@ GFis
     }
     print TAR <<"GFis"; # end of generic constructor
   }
-
-  \@Override
-  public int getOffset() {
-    return mOffset;
-  }
-
 GFis
     #--------
     if (0) { # switch for methods
+    } elsif ($holonomic) {
     } elsif ($memory) {
         print TAR <<"GFis";
   \@Override
@@ -292,6 +298,11 @@ GFis
     #----
     } else { # default method next()
         print TAR <<"GFis";
+  \@Override
+  public int getOffset() {
+    return mOffset;
+  }
+
   \@Override
   public Z next() {
 GFis
