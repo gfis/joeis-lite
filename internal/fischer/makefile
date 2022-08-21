@@ -5351,16 +5351,19 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 #--------
+# Check whether SequenceWithOffset returns the proper offset
 offinspect: offinspect1 offinspect2
-offinspect1:
+offinspect1: # select the eligible programs
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-offinspect2:
+offinspect2: # run the  OffsetInspector and determine old and new offsets
 	$(JAVA) irvine.oeis.OffsetInspector offinspect1.tmp \
 	| tee    $@.txt
 	wc -l    $@.txt
+offinspect3: # count the occurrences 
+	cut -f3 offinspect2.txt | sort | uniq -c | sort -n
 offinsp1:
 	grep Holonom offinspect.txt | cut -f1 \
 	| perl -ne 's/\s//g; print lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
@@ -5411,6 +5414,16 @@ poffgf2:
 poffmix1:
 	# grep -E "PolynomialRoot|BinaryToDecimalExpansion|GeneratingFunctionSequence" offinspect2.txt
 	grep -E "GeneratingFunctionSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poff19:
+	grep -E "A019899" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffcor:
+	grep -E "ConstantOrderRecurrence" offinspect2.txt \
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8

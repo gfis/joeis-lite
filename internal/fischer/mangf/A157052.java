@@ -1,47 +1,16 @@
 package irvine.oeis.a157;
-// manually 2021-09-27
 
-import irvine.math.group.IntegerField;
-import irvine.math.group.PolynomialRingField;
-import irvine.math.polynomial.Polynomial;
 import irvine.math.z.Z;
-import irvine.oeis.GeneratingFunctionSequence;
-import irvine.oeis.a088.A088855;
+import irvine.oeis.recur.HolonomicRecurrence;
 
 /**
- * A157052 Number of integer sequences of length n+1 with sum zero and sum of absolute values 6. 
+ * A157052 Number of integer sequences of length n+1 with sum zero and sum of absolute values 6.
  * @author Georg Fischer
  */
-public class A157052 extends GeneratingFunctionSequence {
+public class A157052 extends HolonomicRecurrence {
 
-  private static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
-  
   /** Construct the sequence. */
   public A157052() {
-    this(6);
+    super(1, "[0,-1,7,-21,35,-35,21,-7,1]", "[2,18,92,340,1010,2562,5768,11832]", 0);
   }
-
-  /**
-   * Generic constructor with parameter
-   * @param parm parameter "of absolute value"
-   */
-  public A157052(final int parm) {
-    final Polynomial<Z> den = RING.pow(RING.oneMinusXToTheN(1), parm + 1);
-    Polynomial<Z> num = RING.zero();
-    for (int i = 1; i <= parm - 1; ++i) {
-      num = RING.add(num, RING.monomial(A088855.element(parm - 1, i), i));
-    }
-    num = RING.multiply(num, RING.monomial(Z.TWO, 1)); // *2*x
-    mNum = new Z[num.degree() + 1];
-    mDen = new Z[den.degree() + 1];
-    for (int i = 0; i < mNum.length; ++i) {
-      mNum[i] = num.coeff(i);
-    }
-    for (int i = 0; i < mDen.length; ++i) {
-      mDen[i] = den.coeff(i);
-    }
-    next();
-    next();
-  }
-
 }

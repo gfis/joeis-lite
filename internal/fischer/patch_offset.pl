@@ -2,10 +2,13 @@
 
 # Patch offsets in Java source files
 # @(#) $Id$
+# 2022-08-20: -m; UHZ=3. Tag
 # 2022-08-16, Georg Fischer
 #
 #:# Usage:
-#:#   perl patch_offset.pl [-d debug] infile > outfile
+#:#   perl patch_offset.pl [-d debug] [-m {modpre|pre}] infile > outfile
+#:#       -m modpre  modify offset or prefix it
+#:#       -m prefix  prefix offset in any case
 #:#       infile has tsv fields aseqno, offo -> offn, superclass
 #--------------------------------------------------------
 use strict;
@@ -17,12 +20,15 @@ if (0 && scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
+my $mode = "modpre";
 my $debug = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
+    } elsif ($opt  =~ m{m}) {
+        $mode      = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -71,6 +77,12 @@ sub patch1 {
     my $offset;
     # the real patch follows:
     if (0) {
+    } elsif ($mode=~ m{\Apre}m) { # prefix in any case
+        if ($buffer =~ m{(\n\s*super\()}m) { # super(
+            $buffer =~ s{(\n\s*super\()}{$1$offn, }m;
+        } else {
+            print "#?? $aseqno: joeis offset = $offset, old $offo, new $offn - skipped\n$buffer\n";
+        }
     } elsif ($buffer     =~ m{(\n\s*super\()(\-?\d+)}m) { # super(0, 
         $offset = $2;
         if ($offset eq $offo) {
