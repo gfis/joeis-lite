@@ -54,7 +54,8 @@ BOFS=1
 BF=
 WITHB=-b $(COMMON)/bfile -t $(TO)
 VERBOSE=false
-JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
+# JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
+JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
 ifeq ($(OS),Windows_NT)
     CPS=;
 else
@@ -157,6 +158,8 @@ diff_triangle:
 	ls -1 ../../src/irvine/oeis/triangle/*.java | xargs -l -innn \
 	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/triangle || :
 #	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/triangle || :
+diffgf:
+	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/recur/GeneratingFunctionSequence.java ../../src/irvine/oeis/recur || :
 diffhr:
 	diff -wy  ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
 #	diff -wC0 ../../../joeis/src/irvine/oeis/CompementaryEquationSequence.java   ../../src/irvine/oeis || :

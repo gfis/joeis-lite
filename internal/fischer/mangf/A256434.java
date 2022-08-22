@@ -24,4 +24,9 @@ public class A256434 extends CharacteristicFunction {
     ++mN;
     return mN < 1 ? Z.ONE : super.next();
   }
+
+  @Override
+  public int getOffset() {
+    return 0;
+  }
 }
