@@ -5399,6 +5399,8 @@ patchoffdex:
 	| grep -v BinaryToDecimal \
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+podex99:
 	cut -b1-7 baddex.man \
 	| perl -ne 's/\s//g; print "src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
 	| xargs -innn rm -v ../../nnn  test2 log
@@ -5430,6 +5432,18 @@ poffcor:
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8
+poffbdex:
+	grep -E "BinaryToDecimal" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffegf:
+	make purge
+	grep -E "ExponentialGeneratingFunction" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	find ../../src/irvine/oeis/a* -iname "A*.java" | xargs -innn cp -v nnn manual
+	# make dist testall log TO=8 GU=8
 #----
 packprep:
 	find ../../src -iname "*.java" \
