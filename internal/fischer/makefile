@@ -101,7 +101,7 @@ seqhelp: #
 jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
 	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
 spectest:
-	$(JAVA) irvine.oeis.a225.A225401 $(ARGS)
+	$(JAVA) irvine.oeis.cons.FoldedContinuedFraction $(ARGS)
 crtest:
 	$(JAVA) irvine.math.cr.CR $(NUM)
 ebtest:
@@ -544,7 +544,18 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-08-19:
+anabuild: # .2022-08-31: 
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo  A058304 A285684  \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	make CC=man        man
+	make CC=$@ dist testall pack
+anabuild.2022-08-20: # ??? delivered?
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -5229,9 +5240,9 @@ binomx:
 charfuman:
 	grep -E "^A" $@.man \
 	| grep -v A294905 \
-	>>       $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 charfun3:
 	grep -E "Characteristic function " $(COMMON)/joeis_names.txt \
 	| grep -E "null" \
@@ -5382,6 +5393,8 @@ offholrem: # remove all that are not in offinspect.txt
 compareall0:
 	find ../../src/irvine/oeis/a* -iname "*.java" | cut -b7- | xargs -innn diff -C0 ../../nnn ../../../joeis/nnn \
 	> $@.1.tmp
+sumall:
+	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
 compareall1:
 	cut -b1-7 baddex.man \
 	| perl -ne 's/\s//g; print "src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
@@ -5393,7 +5406,7 @@ patchoffhol:
 	grep -E "Holonomic" offinspect2.txt \
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
-patchoffdex:
+poffdex:
 	make purge
 	grep -E "DecimalExpansionSequence" offinspect2.txt \
 	| grep -v BinaryToDecimal \
@@ -7881,8 +7894,8 @@ mangf_retest:
 #----
 packlist_check:
 	rm -f $@.tmp
-	ls -tcl ../../pack.*.lst | cut -b45- \
-	| xargs -l -innn make -s packlist_check1 FILE=nnn\
+	ls -tcl ../../pack*.lst | cut -b44- \
+	| xargs -innn make -s packlist_check1 FILE=nnn \
 	| tee -a $@.tmp
 packlist_check1:
 	cat $(FILE) | perl -ne 'm{\/(A\d+)}; print "$$1\n"; ' | sort | uniq > $@.tmp

@@ -1,124 +1,129 @@
-A072401	charfun	0	A004215	1	new A004215()				0,0,0,0,0,0,0,1	7,15,23,28,31,39,47,55	1 iff n is of the form 4^m*(8k+7).
-A091225	charfun	0	A014580	1	new A014580()				0,0,1,1,0,0,0,1	2,3,7,11,13,19,25,31	Characteristic function of A014580: 1 if the n-th GF(2)[X] polynomial is irreducible, 0 otherwise.
-A136522	charfun	0	A002113	1	new A002113()				1,1,1,1,1,1,1,1	0,1,2,3,4,5,6,7	a(n) = 1 if n is a palindrome, otherwise 0.
-A151774	charfun	0	A018900	1	new A018900()				0,0,0,1,0,1,1,0	3,5,6,9,10,12,17,18	Characteristic function of numbers with binary weight 2 (A018900).
-A156659	charfun	0	A005385	1	new A005385()				0,0,0,0,0,1,0,1	5,7,11,23,47,59,83,107	Characteristic function of safe primes.
-A156660	charfun	0	A005384	1	new A005384()				0,0,1,1,0,1,0,0	2,3,5,11,23,29,41,53	Characteristic function of Sophie Germain primes.
-A168046	charfun	0	A052382	1	new A052382()				0,1,1,1,1,1,1,1	1,2,3,4,5,6,7,8	Characteristic function of zerofree numbers in decimal representation.
-A178225	charfun	0	A006995	1	new A006995()				1,1,0,1,0,1,0,1	0,1,3,5,7,9,15,17	Characteristic function of A006995 (binary palindromes).
-A178226	charfun	0	A154809	1	new A154809()				0,0,1,0,1,0,1,0	2,4,6,8,10,11,12,13	Characteristic function of A154809 (numbers that are not binary palindromes)
-A209229	charfun	0	A000079	0	new A000079()				0,1,1,0,1,0,0,0	1,2,4,8,16,32,64,128	Characteristic function of powers of 2, cf. A000079.
-A212793	charfun	1	A004709	1	new A004709()				1,1,1,1,1,1,1,0	1,2,3,4,5,6,7,9	Characteristic function of cubefree numbers, A004709.
-A215480	charfun	1	A007774	1	new A007774()				0,0,0,0,0,1,0,0	6,10,12,14,15,18,20,21	Characteristic function of numbers n with exactly two distinct prime factors
-A217096	charfun	0	A011540	1	new A011540()				1,0,0,0,0,0,0,0	0,10,20,30,40,50,60,70	Characteristic function of numbers that have a nonleading zero in their decimal representation (A011540). 0 itself is also included, so a(0) = 1.
-A229062	charfun	0	A001481	1	new A001481()				1,1,1,0,1,1,0,0	0,1,2,4,5,8,9,10	1 if n is representable as sum of two nonnegative squares, otherwise 0.
-A239681	charfun	1	A016027	1	new A016027()				1,1,1,1,0,1,1,1	1,2,3,4,6,7,8,11	Primality of Mersenne number 2^prime(n)-1
-A240025	charfun	0	A002620	0	new A002620()				1,1,1,0,1,0,1,0	0,0,1,2,4,6,9,12	Characteristic function of quarter squares, cf. A002620.
-A245656	charfun	1	A003601	1	new A003601()				1,0,1,0,1,1,1,0	1,3,5,6,7,11,13,14	Characteristic function of arithmetic numbers, cf. A003601.
-A254379	charfun	0	A128309	1	new A128309()				0,0,1,0,1,0,0,0	2,4,8,14,16,22,26,28	Characteristic function of the even odious numbers (A128309).
-A302777	charfun	1	A050376	1	new A050376()				0,1,1,1,1,0,1,0	2,3,4,5,7,9,11,13	a(n) = 1 if n is of the form p^(2^k) where p is prime and k >= 0, otherwise 0.
-A322585	charfun	1	A025487	1	new A025487()				1,1,0,1,0,1,0,1	1,2,4,6,8,12,16,24	a(n) = 1 if n is a product of primorial numbers (A002110), 0 otherwise.
-A322586	charfun	1	A002182	1	new A002182()				1,1,0,1,0,1,0,0	1,2,4,6,12,24,36,48	a(n) = 1 if n is a highly composite number (A002182), 0 otherwise.
-A322860	charfun	1	A005153	1	new A005153()				1,1,0,1,0,1,0,1	1,2,4,6,8,12,16,18	If n is practical (in A005153), a(n) = 1, otherwise a(n) = 0.
-A324053	charfun	1	A033553	1	new A033553()				0,0,0,0,0,0,0,0	9,15,21,33,39,51,57,63	a(n) = 1 if n > 3 and A002322(n) divides n-3, 0 otherwise; Characteristic function of 3-Knödel numbers.
-A336040	charfun	1	A033950	1	new A033950()				1,1,0,0,0,0,0,1	1,2,8,9,12,18,24,36	Characteristic function of refactorable numbers (A033950).
-#----
-# 2021-06-22
-A065202	charfun	0	A065201						: a(n) = if A065201(k) = n for some k then 1 else 0.
-A069513	charfun	0	A000961						the prime powers p^k, k >= 1.	easy,nonn,	1..100000
-A080110	charfun	0	A080112						.	nonn,synth	1..105	nyi
-A080111	charfun	0	A080113						.	nonn,synth	1..105	nyi
-A083923	charfun	0	A057548						.	nonn,synth	0..100	nyi
-A083924	charfun	0	A072795						.	nonn,synth	0..100	nyi
-A091247	charfun	0	A091242						: 1 if the n-th GF(2)[X] polynomial is reducible, 0 othe
-A099104	charfun	0	A066680						badly sieved numbers ().	nonn,	1..65537	nyi
-A118952	charfun	0	A118957						numbers that can be written as p+2^k, where p is prime a
-# A122261	charfun	0	numbers having only factors that are Pierpont primes.	nonn,mult,	1..12289
-# A133010	charfun	0	the Riemann zeta function: If n is a nearest integer to imaginary part of zero,
-# A133011	charfun	0	the Riemann zeta function: If n is a nearest integer to imaginary part of zero,
-A137794	charfun	0	A073491						numbers having no prime gaps in their factorization.
-# A139312	charfun	0	the good primes (version 1).	nonn,easy,synth	2..106	nyi
-A160351	charfun	0	A057166						.	nonn,synth	1..105	nyi
-A162518	charfun	0	A018226						magic numbers 						: 1 if n is a magic
-A175608	charfun	0	A061304						squarefree triangular integers: 1 if n(n+1)/2 is squaref
-A178333	charfun	0	A134941						mountain numbers.	nonn,base,	0..20000	nyi
-A178788	charfun	0	A010784						numbers having distinct digits in their decimal represen
-A179527	charfun	0	A083207						numbers in A083207						.	nonn,	1..1
-# 2022-07-01
-A185705	charfun	0	A030430						positive numbers that are primes ending in 1.	nonn,bas
-A185706	charfun	0	A030431						positive numbers that are primes ending in 3.	base,non
-A185708	charfun	0	A030432						positive numbers that are primes ending in 7.	base,non
-A185709	charfun	0	A030433						positive numbers that are primes ending in 9.	base,non
-A188641	charfun	0	A005349						Niven (or Harshad) numbers.	nonn,base,changed,	1..10000
-A188642	charfun	0	A007602						numbers that are divisible by the product of their digit
-A192280	charfun	0	A073485						numbers that are the product of consecutive primes.	nonn
-A196368	charfun	0	A043096						numbers having in decimal representation only distinct a
-# A202238	charfun	0	positive integers not prime and not a power of 2.	nonn,easy,	1..65537	nyi
-A210455	charfun	0	A005835						pseudoperfect (or semiperfect) numbers.	nonn,	1..10000
-A213719	charfun	0	A179016						.	nonn,	0..1024	nyi
-A227291	charfun	0	A062503						squarefree numbers squared ().	nonn,mult,easy,changed,
-A228495	charfun	0	A092246						the odd odious numbers ().	nonn,changed,	0..65537
-A228710	charfun	0	A030141						numbers with alternating parities of their digits in dec
-A235046	charfun	0	A235033						.	nonn,	0..8191	nyi
-A236677	charfun	0	A079599						a(0)=1 and for n>0, a(n) = (1-a(floor(log2(n)))) * a(n-m
-A236861	charfun	0	A236841						 (A234741): a(n) = 1 if n is a result of downward remult
-A236862	charfun	0	A236842						 (A234742): a(n) = 1, if n is a result of "upward" remul
-A244992	charfun	0	A244991						: a(n) = A000035(A061395(n)).	nonn,	1..10001	nyi
-A246260	charfun	0	A246261						: a(n) = A000035(A048673(n)).	nonn,synth	1..120	nyi
-# A246500	charfun	0	the prime numbers mod 9 over the set {2,4,8,1,5,7}.	nonn,easy,base,	1..10002
-A249832	charfun	0	A093018						numbers having a valid Luhn mod 10 check digit.	nonn,bas
-A252233	charfun	0	A030059						the integers that are the product of an odd number of pr
-A252372	charfun	0	A251726						: a(n) = 1 if n > 1 and gpf(n) < spf(n)^2, otherwise 0;
-A252742	charfun	0	A246282						: if A003961(n) > 2*n, then a(n) = 1, otherwise 0 (when
-A254377	charfun	0	A230709						: a(n) = 1 if n is either evil (A001969) or even odious
-A254378	charfun	0	A092246						Run lengths of A228495						 (Characteri
-A254651	charfun	0	A254614						, numbers that are either odd or evil (or both).	nonn
-# A254655	null	Run lengths of A254379						 (Characteristic function of the even od
-A255339	charfun	0	A255057						; the first differences of A255338.	nonn,	0..8590	nyi
-A255849	charfun	0	A000326						pentagonal numbers.	nonn,synth	0..70	nyi
-A256432	charfun	0	A005900						octahedral numbers.	nonn,synth	0..85	nyi
-A256433	charfun	0	A006566						dodecahedral numbers.	nonn,	0..105995	nyi
-A256434	charfun	0	A006564						icosahedral numbers.	nonn,	0..104160	nyi
-A256436	charfun	0	A000332						pentatope numbers.	nonn,synth	0..81	nyi
-A257000	charfun	0	A206074						.	nonn,	0..65537	nyi
-A257680	charfun	0	A256450						: 1 if there is at least one 1-digit present in the fact
-A262683	charfun	0	A182859						.	nonn,	1..10000	nyi
-A262693	charfun	0	A259934						.	nonn,	0..65538	nyi
-A265333	charfun	0	A265334						: a(n) = 1 if n >= k! but < 2*k! for some k, 0 otherwise
-A266112	charfun	0	A266114						 (numbers that are least siblings in A263267-tree).	nonn
-A268340	charfun	0	A000961						the prime powers p^k, k >= 2.	nonn,easy,changed,	1..6
-A276950	charfun	0	A273670						: 1 if there is at least one maximal digit present in th
-A278169	charfun	0	A000960						.	nonn,	1..9889	nyi
-A280710	charfun	0	A006881						squarefree semiprimes.	nonn,easy,	1..65537	nyi
-A290079	charfun	0	A249721						: a(n) = 1 if there are either no 1-digits at all in bas
-A290098	charfun	0	A003658						 (fundamental discriminants of real quadratic fields).
-A292438	charfun	0	A164276						non-isolated nonprimes.	nonn,	0..65539	nyi
-A293449	charfun	0	A056166						, numbers that have no nonprime exponents present in the
-A294878	charfun	0	A001608						, Perrin sequence.	nonn,	0..65537	nyi
-A294905	charfun	0	A000120						-nonabundant numbers: a(n) = 1 if A292257(n) <= A000120(
-A294930	charfun	0	A091191						, primitive abundant numbers: abundant numbers (A005101)
-A294934	charfun	0	A005100						deficient numbers (): a(n) = 1 if A001065(n) < n, 0 othe
-A294935	charfun	0	A263837						nonabundant numbers (): a(n) = 1 if A001065(n) <= n, 0 o
-A294936	charfun	0	A023196						nondeficient numbers (): a(n) = 1 if A001065(n) >= n, 0
-A294937	charfun	0	A005101						abundant numbers (): a(n) = 1 if A001065(n) > n, 0 other
-A295308	charfun	0	A066694						: a(n) = 1 if n < phi(sigma(n)), 0 otherwise.	nonn,
-A295309	charfun	0	A295307						: a(n) = 1 if n > phi(sigma(n)), 0 otherwise.	nonn,
-A296210	charfun	0	A104210						: a(n) = 1 if n is divisible by at least 2 consecutive p
-A302048	charfun	0	A001248						a(n) = 1 if n = p^2 for some prime p, otherwise 0. Chara
-A302052	charfun	0	A302053						; an analog of A010052 (char. fun of squares) for the no
-A316341	charfun	0	A000142						the factorials 1!, 2!, 3!, ...	nonn,	0..65537	nyi
-A320006	charfun	0	A126001						a(n) = 1 if n encodes a nonnegative combinatorial game (
-A321512	charfun	0	A321580						the reverse in the shuffle (perfect faro shuffle with cu
-A324731	charfun	0	A324551						: a(n) = 1 if 2*A156552(n) < A323243(n), and 0 otherwise
-A324732	charfun	0	A324721						: a(n) = 1 if 2*A156552(n) > A323243(n), and 0 otherwise
-A326956	charfun	0	A228354						.	nonn,new,synth	1..105	nyi
-A336355	charfun	0	A336357						, numbers k for which A001221(A000203(k)) < A001221(k).
-A336356	charfun	0	A336359						, numbers k for which A001222(A000203(k)) < A001222(k).
-A341389	charfun	0	A158705						, nonnegative integers with an odd number of even powers
-A341609	charfun	0	A337372						: a(n) = 1 if A337345(n) = 1, otherwise 0.	nonn,new,
-A341612	charfun	0	A341614						: a(n) = 1 if sigma(n) <= 2n < A003961(n), 0 otherwise.
-A341613	charfun	0	A341615						: a(n) = 1 if sigma(n) < 2n < A003961(n), otherwise 0.
-A341629	charfun	0	A055932						: a(n) = 1 if n is a number all of whose prime divisors
-A342704	charfun	0	A171000						base-2 lunar primes: a(n) = 1 if n is a base-2 lunar pri
-A344438	charfun	0	A001013						a(n) = 1 if n can be written as a product of factorials
+###	A072401	charfun	0	A004215	1	new A004215()
+###	A091225	charfun	0	A014580	1	new A014580()
+###	A136522	charfun	0	A002113	1	new A002113()
+###	A151774	charfun	0	A018900	1	new A018900()
+###	A156659	charfun	0	A005385	1	new A005385()
+###	A156660	charfun	0	A005384	1	new A005384()
+###	A168046	charfun	0	A052382	1	new A052382()
+###	A178225	charfun	0	A006995	1	new A006995()
+###	A178226	charfun	0	A154809	1	new A154809()
+###	A209229	charfun	0	A000079	0	new A000079()
+###	A212793	charfun	1	A004709	1	new A004709()
+###	A215480	charfun	1	A007774	1	new A007774()
+###	A217096	charfun	0	A011540	1	new A011540()
+###	A229062	charfun	0	A001481	1	new A001481()
+###	A239681	charfun	1	A016027	1	new A016027()
+###	A240025	charfun	0	A002620	0	new A002620()
+###	A245656	charfun	1	A003601	1	new A003601()
+###	A254379	charfun	0	A128309	1	new A128309()
+###	A302777	charfun	1	A050376	1	new A050376()
+###	A322585	charfun	1	A025487	1	new A025487()
+###	A322586	charfun	1	A002182	1	new A002182()
+###	A322860	charfun	1	A005153	1	new A005153()
+###	A324053	charfun	1	A033553	1	new A033553()
+###	A336040	charfun	1	A033950	1	new A033950()
+###	#----
+###	# 2021-06-22
+###	A065202	charfun	0	A065201						: a(
+###	A069513	charfun	0	A000961						the
+###	A080110	charfun	0	A080112						.
+###	A080111	charfun	0	A080113						.
+###	A083923	charfun	0	A057548						.
+###	A083924	charfun	0	A072795						.
+###	A091247	charfun	0	A091242						: 1
+###	A099104	charfun	0	A066680						badl
+###	A118952	charfun	0	A118957						numb
+###	# A122261	charfun	0	numbers having only factors
+###	# A133010	charfun	0	the Riemann zeta function: I
+###	# A133011	charfun	0	the Riemann zeta function: I
+###	A137794	charfun	0	A073491						numb
+###	# A139312	charfun	0	the good primes (version 1).
+###	A160351	charfun	0	A057166						.
+###	A162518	charfun	0	A018226						magi
+###	A175608	charfun	0	A061304						squa
+###	A178333	charfun	0	A134941						moun
+###	A178788	charfun	0	A010784						numb
+###	A179527	charfun	0	A083207						numb
+###	# 2022-07-01
+###	A185705	charfun	0	A030430						posi
+###	A185706	charfun	0	A030431						posi
+###	A185708	charfun	0	A030432						posi
+###	A185709	charfun	0	A030433						posi
+###	A188641	charfun	0	A005349						Nive
+###	A188642	charfun	0	A007602						numb
+###	A192280	charfun	0	A073485						numb
+###	A196368	charfun	0	A043096						numb
+###	# A202238	charfun	0	positive integers not prime
+###	A210455	charfun	0	A005835						pseu
+###	A213719	charfun	0	A179016						.
+###	A227291	charfun	0	A062503						squa
+###	A228495	charfun	0	A092246						the
+###	A228710	charfun	0	A030141						numb
+###	A235046	charfun	0	A235033						.
+###	A236677	charfun	0	A079599						a(0)
+###	A236861	charfun	0	A236841						 (A2
+###	A236862	charfun	0	A236842						 (A2
+###	A244992	charfun	0	A244991						: a(
+###	A246260	charfun	0	A246261						: a(
+###	# A246500	charfun	0	the prime numbers mod 9 over
+###	# A249832	charfun	0	A093018						numb
+###	A252233	charfun	0	A030059						the
+###	A252372	charfun	0	A251726						: a(
+###	A252742	charfun	0	A246282						: if
+###	A254377	charfun	0	A230709						: a(
+###	A254378	charfun	0	A092246						Run
+###	A254651	charfun	0	A254614						, nu
+###	# A254655	null	Run lengths of A254379
+###	A255339	charfun	0	A255057						; th
+###	A255849	charfun	0	A000326						pent
+###	A256432	charfun	0	A005900						octa
+###	A256433	charfun	0	A006566						dode
+###	A256434	charfun	0	A006564						icos
+###	A256436	charfun	0	A000332						pent
+###	A257000	charfun	0	A206074						.
+###	A257680	charfun	0	A256450						: 1
+###	A262683	charfun	0	A182859						.
+###	A262693	charfun	0	A259934						.
+###	A265333	charfun	0	A265334						: a(
+###	A266112	charfun	0	A266114						 (nu
+###	A268340	charfun	0	A000961						the
+###	A276950	charfun	0	A273670						: 1
+###	A278169	charfun	0	A000960						.
+###	A280710	charfun	0	A006881						squa
+###	A290079	charfun	0	A249721						: a(
+###	A290098	charfun	0	A003658						 (fu
+###	A292438	charfun	0	A164276						non-
+###	A293449	charfun	0	A056166						, nu
+###	A294878	charfun	0	A001608						, Pe
+###	A294905	charfun	0	A000120						-non
+###	A294930	charfun	0	A091191						, pr
+###	A294934	charfun	0	A005100						defi
+###	A294935	charfun	0	A263837						nona
+###	A294936	charfun	0	A023196						nond
+###	A294937	charfun	0	A005101						abun
+###	A295308	charfun	0	A066694						: a(
+###	A295309	charfun	0	A295307						: a(
+###	A296210	charfun	0	A104210						: a(
+###	A302048	charfun	0	A001248						a(n)
+###	A302052	charfun	0	A302053						; an
+###	A316341	charfun	0	A000142						the
+###	A320006	charfun	0	A126001						a(n)
+###	A321512	charfun	0	A321580						the
+###	A324731	charfun	0	A324551						: a(
+###	A324732	charfun	0	A324721						: a(
+###	A326956	charfun	0	A228354						.
+###	A336355	charfun	0	A336357						, nu
+###	A336356	charfun	0	A336359						, nu
+###	A341389	charfun	0	A158705						, no
+###	A341609	charfun	0	A337372						: a(
+###	A341612	charfun	0	A341614						: a(
+###	A341613	charfun	0	A341615						: a(
+###	A341629	charfun	0	A055932						: a(
+###	A344438	charfun	0	A001013						a(n)
 
+
+#---- 2022-08-31
+nyi A249832	charfun	0	A093018						Char
+nyi A342704	charfun	1	A067139						Char
+A353463	charfun	1	A001359						
+A353464	charfun	1	A006512						
