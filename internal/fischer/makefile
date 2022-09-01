@@ -326,6 +326,13 @@ info: # compare CC= with joeis_names.txt
 	>        $(CC).inf
 	head -n4 $(CC).inf
 	wc -l    $(CC).inf
+checkdir: # DIR=
+	find $(DIR) -iname "*.java" | perl -pe 's{\A.*\/(A\d+).*}{$$1\n}' > $@.tmp
+	make seq LIST=$@.tmp
+	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') FROM seq s LEFT JOIN joeis j ON s.aseqno = j.aseqno ORDER BY 1" \
+	| tee    $@.tmp
+sumall:
+	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
 #----
 DATA=0
 annotate: # add comments with names of the dependant sequences, and optionally with their data
@@ -545,6 +552,18 @@ similar:
 	wc -l    $@.gen
 #================================================================
 anabuild: # .2022-08-31: 
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo  A173841 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	cp -pv hold/*.java manual
+	make CC=man        man
+	make CC=$@ dist testall pack
+anabuild.2022-08-31: 
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -5393,8 +5412,6 @@ offholrem: # remove all that are not in offinspect.txt
 compareall0:
 	find ../../src/irvine/oeis/a* -iname "*.java" | cut -b7- | xargs -innn diff -C0 ../../nnn ../../../joeis/nnn \
 	> $@.1.tmp
-sumall:
-	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
 compareall1:
 	cut -b1-7 baddex.man \
 	| perl -ne 's/\s//g; print "src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
