@@ -5444,6 +5444,22 @@ poffgf:
 	cp -v $@.tmp ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log
+poffca_show:
+	$(DBAT) "SELECT j.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j \
+	  WHERE i.aseqno = j.aseqno \
+	    AND j.superclass LIKE '%DAutomaton' \
+	    AND offset1 <> 0 ORDER BY 1" \
+	| tee $@.tmp
+poffca:
+	grep -P "DAutomaton" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffloor:
+	grep -P "FloorSeq" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
 poffgf2:
 	grep -P "\tGenera" offinspect2.txt | cut -b1-7 | xargs -l perl genman.pl -h 
 poffmix1:
@@ -5454,6 +5470,16 @@ poffmix1:
 	make dist testall log TO=8 GU=8
 poff19:
 	grep -E "A019899" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poff796:
+	grep -E "A000796" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poff1113:
+	grep -E "A001113" offinspect2.txt \
 	| perl patch_offset.pl -d 1 -m prefix \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8

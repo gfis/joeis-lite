@@ -78,17 +78,20 @@ sub patch1 {
     # the real patch follows:
     if (0) {
     } elsif ($mode=~ m{\Apre}m) { # prefix in any case
-        if ($buffer =~ m{(\n\s*super\()}m) { # super(
-            $buffer =~ s{(\n\s*super\()}{$1$offn, }m;
+        if (0) {
+        } elsif ($buffer =~ m{(\n\s*super\(\))}m) { # super()
+                 $buffer =~ s{(\n\s*super\()}{$1$offn\)}m;
+        } elsif ($buffer =~ m{(\n\s*super\()}m) { # super(
+                 $buffer =~ s{(\n\s*super\()}{$1$offn, }m;
         } else {
-            print "#?? $aseqno: joeis offset = $offset, old $offo, new $offn - skipped\n$buffer\n";
+            print "#?? $aseqno: old $offo, new $offn - skipped\n$buffer\n";
         }
     } elsif ($buffer     =~ m{(\n\s*super\()(\-?\d+)}m) { # super(0, 
         $offset = $2;
         if ($offset eq $offo) {
             $buffer =~ s{(\n\s*super\()(\-?\d+)}{$1$offn}m;
         } else {
-            print "#?? $aseqno: joeis offset = $offset, old $offo, new $offn - skipped\n$buffer\n";
+            print "#?? $aseqno: old $offo, new $offn - skipped\n$buffer\n";
         }
     } elsif ($buffer     =~ m{(\n\s*super\([a-zA-Z])}m) { # super(0, 
             $buffer =~ s{(\n\s*super\()}{$1$offn, }m;
