@@ -1,0 +1,14 @@
+A100846	parmof2	0	A100846	1	Concatenate 1nn1
+A100896	parmof2	0	A100846	3
+A100897	parmof2	0	A100846	7
+A102484	parmof2	0	A100846	9
+
+# For primes in these sequences: A102496, A102497 (1nn1); A102498, A102499 (3nn3); A102500, A102501 (7nn7); A102502, A102503 (9nn9); A102504 (intersection).
+A102496	parmof2	1	A102496	1	Values of n for which the concatenation of the form 1nn1 (sequence A100846) are primes. easy,nonn,base, 1..10000        nyi     Mark Hudson (mrmarkhudso
+A102497	parmof2	1	A102497	1	Primes of the concatenated form 1nn1 where n is an integer >=0. easy,nonn,base,synth    1..28   nyi     Mark Hudson (mrmarkhudson(AT)hotmail.com), Jan 1
+A102498	parmof2	0	A102496	3	Values of n for which the concatenation 3nn3 (from sequence A100896) are primes.        easy,nonn,base, 0..1000 nyi     Mark Hudson (mrmarkhudson(AT)hot
+A102499	parmof2	1	A102497	3	Primes of the concatenated form 3nn3.   easy,nonn,base,synth    1..25   nyi     Mark Hudson (mrmarkhudson(AT)hotmail.com), Jan 13 2005
+A102500	parmof2	1	A102496	7	Values of n for which the concatenation 7nn7 (from sequence A100897) are primes.        easy,nonn,base,synth    1..49   nyi     Mark Hudson (mrmarkhudso
+A102501	parmof2	1	A102497	7	Primes of the concatenated form 7nn7.   easy,nonn,base,synth    1..25   nyi     Mark Hudson (mrmarkhudson(AT)hotmail.com), Jan 13 2005
+A102502	parmof2	1	A102496	9	Values of n for which the concatenation 9nn9 (from sequence A102484) are primes.        easy,nonn,base,synth    1..50   nyi     Mark Hudson (mrmarkhudso
+A102503	parmof2	1	A102497	9	Primes of the concatenated form 9nn9.   easy,nonn,base,changed, 1..2500 nyi     Mark Hudson (mrmarkhudson(AT)hotmail.com), Jan 13 2005

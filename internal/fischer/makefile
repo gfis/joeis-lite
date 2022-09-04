@@ -551,7 +551,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-09-03: 
+anabuild: #.2022-09-04: 
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A074993 A095709 A100846 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	cp -pv hold/*.java manual
+	make CC=man        man
+	make CC=$@ dist testall pack GU=4
+anabuild.2022-09-03: 
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -2644,13 +2656,22 @@ conexdig:
 # A115527	null	Numbers n such that the concatenation of n with 2*n gives a square.	nonn,base,synth	1..5
 # A115528	null	Numbers n such that the square of n is the concatenation of two numbers m and 2*m.	nonn,base,synth	1..5
 # A116094 Numbers n such that n concatenated with n-9 gives the product of two numbers which differ by 1.
-concprod:
-	perl -n concprod.pl \
-	$(COMMON)/names \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
+
+concprod: concprod1 concprod2 # concatenation of twin numbers give a product of twins
+concprod1:
+	grep -iP "concatenat|juxtapos" $(COMMON)/joeis_names.txt \
+	| grep -iE "product|square|\^2" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 concprod2:
+	perl concprod.pl concprod1.tmp \
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@*
+	grep -E "^A11[56]" $@.rest.tmp || :
+concprod2_old:
 	perl -ne \
 	's{Numbers \w such that }{}; '\
 	'if (m{^(A\d+)\s+(the concatenation of \w with [\w\+\-\*\d]{3}|\w concatenated with [\w\+\-\*\d]{3}|the square of \w|\w times [\w\+\-\*\d]{3}) (gives|is) '\
@@ -5395,8 +5416,9 @@ offinspect2: # run the  OffsetInspector and determine old and new offsets
 	$(JAVA) irvine.oeis.OffsetInspector offinspect1.tmp \
 	| tee    $@.txt
 	wc -l    $@.txt
-offinspect3: # count the occurrences 
-	cut -f3 offinspect2.txt | sort | uniq -c | sort -n
+	cut -f3 offinspect2.txt | sort | uniq -c | sort -n | grep -vP "\A\s+1\s" \
+	| tee -a $@.txt
+#----
 offinsp1:
 	grep Holonom offinspect.txt | cut -f1 \
 	| perl -ne 's/\s//g; print lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
@@ -5408,6 +5430,8 @@ offholon: # put it in table seq
 	cd $(COMMON) ; make seq LIST=$(HERE)/$@.tmp
 offholrem: # remove all that are not in offinspect.txt
 	$(DBAT) -x -v "DELETE FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM seq);"
+offcount: # SUPER= count the different offset for some jOEIS superclass
+	$(DBAT) -x "SELECT COUNT(i.offset1), i.offset1 FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno AND j.superclass LIKE '$(SUPER)%' GROUP BY i.offset1 ORDER BY 1"
 #--------
 compareall0:
 	find ../../src/irvine/oeis/a* -iname "*.java" | cut -b7- | xargs -innn diff -C0 ../../nnn ../../../joeis/nnn \
@@ -5419,7 +5443,9 @@ compareall1:
 	| tee $@.tmp
 compareall:
 	grep -vP "^(\*\*\*\*|\*\*\*\s\d|\!\s+\/\/|\!\s+super\(|\-\-\- )" $@.1.tmp | tee $@.2.tmp
-patchoffhol:
+#----
+# patches for various superclasses
+poffhol:
 	grep -E "Holonomic" offinspect2.txt \
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp

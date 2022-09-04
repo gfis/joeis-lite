@@ -12,7 +12,7 @@ import irvine.oeis.triangle.UpperLeftTriangle;
 public class A261780 extends UpperLeftTriangle {
 
   /** Construct the sequence. */
-  public A261780 () {
+  public A261780() {
     super(0, 0, -1);
     hasRAM(true);
   }
@@ -23,7 +23,7 @@ public class A261780 extends UpperLeftTriangle {
         end:
     seq(seq(A(n, d-n), n=0..d), d=0..12);
   */
-  private final MemoryFunctionInt2<Z> mB = new MemoryFunctionInt2<Z>() {
+  public final static MemoryFunctionInt2<Z> mB = new MemoryFunctionInt2<Z>() { // used in A261781
     @Override
     protected Z compute(final int n, final int k) {
       if (n == 0) {
@@ -36,7 +36,7 @@ public class A261780 extends UpperLeftTriangle {
       return sum;
     }
   };
- 
+
   @Override
   public Z matrixElement(final int n, final int k) {
     return mB.get(n, k);

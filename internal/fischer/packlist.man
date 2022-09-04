@@ -11,12 +11,9 @@
 # src/irvine/oeis/recur/CoordinationSequence.java
 # src/irvine/oeis/ExponentialGeneratingFunction.java
 # src/irvine/oeis/FloorSequence.java
-src/irvine/oeis/GramMatrixThetaSeries
-src/irvine/oeis/McKayThompsonSequence
 # src/irvine/oeis/NegativePositiveSequence.java
 # src/irvine/oeis/NestedSequence.java
 # src/irvine/oeis/NumericalAronsonSequence.java
-src/irvine/oeis/PositionSequence.java
 # src/irvine/oeis/PositionSubsequence.java
 # src/irvine/oeis/prime/BinaryQuadraticForm.java
 # src/irvine/oeis/prime/PowerFactorPrimeSequence.java
@@ -38,3 +35,22 @@ src/irvine/oeis/PositionSequence.java
 # src/irvine/oeis/WalkCubeSequence.java
 # src/irvine/oeis/WeylGroupSequence.java
 # src/org/teherba/tile/TilingSequence.java
+
+# 2022-09-04:
+# src/irvine/oeis/GramMatrixThetaSeries.java
+# src/irvine/oeis/McKayThompsonSequence.java
+# src/irvine/oeis/PositionSequence.java
+
+# 2022-09-04
+src/irvine/oeis/SumOfLikePowersSequence.java
+src/irvine/oeis/LimitedSumOfLikePowersSequence.java
+src/irvine/oeis/DirectSumOfLikePowersSequence.java
+src/irvine/oeis/LimitedSumOfPrimePowersSequence.java
+#    203 x offset=1
+src/irvine/oeis/PisotSequence.java
+#    110 x offset=0
+src/irvine/oeis/UnionSequence.java
+src/irvine/oeis/SetDifferenceSequence.java
+src/irvine/oeis/IntersectionSequence.java
+
+# src/irvine/oeis/digit/ConcatenatedProductSequence.java
