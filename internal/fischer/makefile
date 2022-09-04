@@ -551,18 +551,18 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-08-31: 
+anabuild: #.2022-09-03: 
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
-	echo  A173841 \
+	echo A261835 A261836 A261781 A261718 A261719 A053600 \
 	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
 	grep -vE "A999999" build.tmp \
 	| sort | uniq -w7 > build.man
 	make CC=build      select EX=xx gener
 	cp -pv hold/*.java manual
 	make CC=man        man
-	make CC=$@ dist testall pack
+	make CC=$@ dist testall pack GU=4
 anabuild.2022-08-31: 
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
@@ -5488,6 +5488,11 @@ poffcor:
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8
+poffcos:
+	grep -E "CoordinationSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
 poffbdex:
 	grep -E "BinaryToDecimal" offinspect2.txt \
 	| perl patch_offset.pl -d 1 \
@@ -5500,6 +5505,11 @@ poffegf:
 	| tee $@.tmp
 	find ../../src/irvine/oeis/a* -iname "A*.java" | xargs -innn cp -v nnn manual
 	# make dist testall log TO=8 GU=8
+poffpos:
+	grep -E "PositionSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
 #----
 packprep:
 	find ../../src -iname "*.java" \

@@ -1,0 +1,24 @@
+# 2022-09-03 dependants of A261781:
+# %Y A261781 Columns k=0..10 give A000007, A131577, A293579, A293580, A293581, A293582, A293583, A293584, A293585, A293586, A293587.
+# A000007	treonk	0	A261781	0	mN	0	
+A131577	treonk	0	A261781	0	mN	1	
+A293579	treonk	0	A261781	2	mN	2	
+A293580	treonk	0	A261781	3	mN	3	
+A293581	treonk	0	A261781	4	mN	4	
+A293582	treonk	0	A261781	5	mN	5	
+A293583	treonk	0	A261781	6	mN	6	
+A293584	treonk	0	A261781	7	mN	7	
+A293585	treonk	0	A261781	8	mN	8	
+A293586	treonk	0	A261781	9	mN	9	
+A293587	treonk	0	A261781	10	mN	10	
+# %Y A261781 Row sums give A120733.
+A120733	rowsums	0	A261781	0	mN	0	Row sums
+# %Y A261781 Main diagonal gives A000670.
+# A000670	treonk	0	A261781	0	mN	0	Main diagonal
+# %Y A261781 T(2n,n) gives A261784.
+A261784	treonk	0	A261781	0	2*mN	mN	T(2n,n)
+# %Y A261781 T(n+1,n)/2 gives A083385.
+# A083385	treonk	0	A261781	0	mN	0	T(n+1,n)/2
+# %Y A261781 Cf. A261719 (same for partitions), A261780.
+# A261719	treonk	0	A261781	0	mN	0	Cf.
+# A261780	treonk	0	A261781	0	mN	1	Cf.

@@ -1,10 +1,88 @@
-A173841	parmof2	0	A173841	1	Number of permutations of 1..n with no adjacent pair summing to n+1.
-A173842	parmof2	0	A173841	2	Number of permutations of 1..n with no adjacent pair summing to n+2.
-A173843	parmof2	0	A173841	3	Number of permutations of 1..n with no adjacent pair summing to n+3.
-A173844	parmof2	0	A173841	4	Number of permutations of 1..n with no adjacent pair summing to n+4.
-A173845	parmof2	0	A173841	5	Number of permutations of 1..n with no adjacent pair summing to n+5.
-A173846	parmof2	0	A173841	6	Number of permutations of 1..n with no adjacent pair summing to n+6.
-A173847	parmof2	0	A173841	7	Number of permutations of 1..n with no adjacent pair summing to n+7.
-A173848	parmof2	0	A173841	8	Number of permutations of 1..n with no adjacent pair summing to n + 8.
-A173849	parmof2	0	A173841	9	Number of permutations of 1..n with no adjacent pair summing to n + 9.
-A173850	parmof2	0	A173841	10	Number of permutations of 1..n with no adjacent pair summing to n+10.
+# %Y A261718 Cf. A144064, A261719, A261780.
+# 2022-09-03 dependants of A261718:
+# A000007	arronk	0	A261718	0	mN	0
+# A000670	treonk	0	A261781	0	mN	0	Main diagonal
+# A001477	arronk	0	A261718	0	mN	1	Rows n=0-2 :
+# A005449	arronk	0	A261718	0	mN	2	Rows n=0-2 :
+# A005651	treonk	0	A261719	0	mN	mN	Main diagonal
+# A032011	treonk	0	A261836	0	mN	mN	Main diagonal
+# A035341	rowsums	0	A261719	0	mN	0	Row sums
+# A060642	treonk	0	A261719	0	mN	0	Cf.
+# A083385	treonk	0	A261781	0	mN	0	T(n+1,n)/2
+# A144064	arronk	0	A261718	0	mN	0	Cf.
+# A228317	arronk	0	A261835	0	4	mN	4
+# A255211	arronk	0	A261835	0	3	mN	3
+# A261718	treonk	0	A261719	0	mN	1	Cf.
+# A261835	treonk	0	A261836	0	mN	1	Cf.
+A053600	parmof2	1	A053600	"2"
+A074141	arronk	0	A261718	0	mN	2
+A082563	parmof2	1	A053600	"3"
+A120733	rowsums	0	A261781	0	mN	0	Row sums
+A131577	treonk	0	A261781	0	mN	1	
+A209668	arronk	0	A261718	0	mN	mN	Main diagonal
+A260250	parmof2	2	A053600	"000000000"
+A260459	parmof2	1	A053600	"010"
+A261732	treonk	0	A261719	0	2*mN	mN	T(2n,n)
+A261737	arronk	0	A261718	0	mN	3
+A261738	arronk	0	A261718	0	mN	4
+A261739	arronk	0	A261718	0	mN	5
+A261740	arronk	0	A261718	0	mN	6
+A261741	arronk	0	A261718	0	mN	7
+A261742	arronk	0	A261718	0	mN	8
+A261743	arronk	0	A261718	0	mN	9
+A261744	arronk	0	A261718	0	mN	10
+A261784	treonk	0	A261781	0	2*mN	mN	T(2n,n)
+A261818	parmof2	1	A053600	"1"
+A261820	parmof2	1	A053600	"111"
+A261821	parmof2	1	A053600	"4"
+A261822	parmof2	1	A053600	"5"
+A261823	parmof2	1	A053600	"6"
+A261824	parmof2	1	A053600	"7"
+A261825	parmof2	1	A053600	"8"
+A261826	parmof2	1	A053600	"9"
+A261828	treonk	0	A261836	0	2*mN	mN	T(2n,n)
+A261837	arronk	0	A261835	0	mN	mN	Main diagonal
+A261838	rowsums	0	A261836	0	mN	0	Row sums
+A261840	arronk	0	A261835	0	mN	2
+A261841	arronk	0	A261835	0	mN	3
+A261842	arronk	0	A261835	0	mN	4
+A261843	arronk	0	A261835	0	mN	5
+A261844	arronk	0	A261835	0	mN	6
+A261845	arronk	0	A261835	0	mN	7
+A261846	arronk	0	A261835	0	mN	8
+A261847	arronk	0	A261835	0	mN	9
+A261848	arronk	0	A261835	0	mN	10
+A261853	treonk	0	A261836	2	mN	2	
+A261854	treonk	0	A261836	3	mN	3	
+A261855	treonk	0	A261836	4	mN	4	
+A261856	treonk	0	A261836	5	mN	5	
+A261857	treonk	0	A261836	6	mN	6	
+A261858	treonk	0	A261836	7	mN	7	
+A261859	treonk	0	A261836	8	mN	8	
+A261860	treonk	0	A261836	9	mN	9	
+A261861	treonk	0	A261836	10	mN	10	
+A261881	parmof2	1	A053600	"0"
+A262497	parmof2	1	A053600	"11111"
+A262498	parmof2	1	A053600	"1111111"
+A262499	parmof2	1	A053600	"111111111"
+A262531	parmof2	2	A053600	"000"
+A262532	parmof2	2	A053600	"00000"
+A262533	parmof2	2	A053600	"0000000"
+A293366	treonk	0	A261719	2	mN	2
+A293367	treonk	0	A261719	3	mN	3
+A293368	treonk	0	A261719	4	mN	4
+A293369	treonk	0	A261719	5	mN	5
+A293370	treonk	0	A261719	6	mN	6
+A293371	treonk	0	A261719	7	mN	7
+A293372	treonk	0	A261719	8	mN	8
+A293373	treonk	0	A261719	9	mN	9
+A293374	treonk	0	A261719	10	mN	10
+A293579	treonk	0	A261781	2	mN	2	
+A293580	treonk	0	A261781	3	mN	3	
+A293581	treonk	0	A261781	4	mN	4	
+A293582	treonk	0	A261781	5	mN	5	
+A293583	treonk	0	A261781	6	mN	6	
+A293584	treonk	0	A261781	7	mN	7	
+A293585	treonk	0	A261781	8	mN	8	
+A293586	treonk	0	A261781	9	mN	9	
+A293587	treonk	0	A261781	10	mN	10	
