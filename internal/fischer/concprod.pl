@@ -61,30 +61,30 @@ while (<>) { # read inputfile
     # 'c' = the result is the concatenated base number, 'a' = addititive, 'm' = multiplicative
     } elsif ($name =~ m{Numbers \w such that the concatenation of \w with \w *([\+\-] *\d+) (is|gives) a square}) {
         &out("ca", 0, $1, 0);
-    } elsif ($name =~ m{Numbers \w such that \w concatenated with \w *([\+\-] *\d+) gives the product of two numbers which differ by (\d+)}) {
-        &out("ca", 0, $1, $2);
-    } elsif ($name =~ m{Numbers \w such that \w concatenated with (itself) gives the product of two numbers which differ by (\d+)}) {
-        &out("ca", 0, 0, $2);
+    } elsif ($name =~ m{Numbers \w such that \w concatenated with \w *([\+\-] *\d+) (is|gives) the product of two numbers which differ by (\d+)}) {
+        &out("ca", 0, $1, $3);
+    } elsif ($name =~ m{Numbers \w such that \w concatenated with (itself) (is|gives) the product of two numbers which differ by (\d+)}) {
+        &out("ca", 0,  0, $3);
     } elsif ($name =~ m{Numbers \w such that the concatenation of \w with (\d+) *\* *\w (is|gives) a square}) {
         &out("cm", 1, $1, 0);
     } elsif ($name =~ m{Numbers \w such that the concatenation of (\d+) *\* *\w with \w (is|gives) a square}) {
         &out("cm", $1, 1, 0);
-    } elsif ($name =~ m{Numbers \w such that the square of \w is the concatenation of two numbers \w and (\d+) *\* *\w}) {
-        &out("cm", 1, $1, 0);
+    } elsif ($name =~ m{Numbers \w such that the square of \w (is|gives) the concatenation of two numbers \w and (\d+) *\* *\w}) {
+        &out("cm", 1, $2, 0);
     #--------
     # 'p' = the result is the base of the product, a = addititive, m=multiplicative
-    } elsif ($name =~ m{Numbers whose square is the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
-        &out("pa", 0, $1, 0);
-    } elsif ($name =~ m{Numbers \w such that \w\^2 is the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
-        &out("pa", 0, $1, 0);
-    } elsif ($name =~ m{Numbers \w such that the square of \w is the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
-        &out("pa", 0, $1, 0);
-    } elsif ($name =~ m{Numbers \w such that \w\^2 is the concatenation of two numbers \w and (\d+) *\* *\w}) {
-        &out("pm", 1, $1, 0);
-    } elsif ($name =~ m{Numbers \w such that \w\^2 is the concatenation of two numbers (\d+) *\* *\w and \w}) {
-        &out("pm", 1, $1, 0);
-    } elsif ($name =~ m{Numbers (\w )?whose square is the concatenation of two numbers (\d+) *\* *\w and \w}) {
-        &out("pm", $2, 1, 0);
+    } elsif ($name =~ m{Numbers whose square (is|gives) the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
+        &out("pa", 0, $2, 0);
+    } elsif ($name =~ m{Numbers \w such that \w\^2 (is|gives) the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
+        &out("pa", 0, $2, 0);
+    } elsif ($name =~ m{Numbers \w such that the square of \w (is|gives) the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
+        &out("pa", 0, $2, 0);
+    } elsif ($name =~ m{Numbers \w such that \w\^2 (is|gives) the concatenation of two numbers \w and (\d+) *\* *\w}) {
+        &out("pm", 1, $2, 0);
+    } elsif ($name =~ m{Numbers \w such that \w\^2 (is|gives) the concatenation of two numbers (\d+) *\* *\w and \w}) {
+        &out("pm", 1, $2, 0);
+    } elsif ($name =~ m{Numbers (\w )?whose square (is|gives) the concatenation of two numbers (\d+) *\* *\w and \w}) {
+        &out("pm", $3, 1, 0);
     #--------
     } else {
         print STDERR join("\t", $aseqno, $name, $range) . "\n";
@@ -109,3 +109,9 @@ A115537	Numbers k such that the concatenation of 4*k with k gives a square.	1..9
 A115556	Numbers whose square is the concatenation of two numbers 9*m and m.	1..3
 A115536 Numbers k such that the square of k is the concatenation of two numbers m and 4*m.      1..27
 A116154	Numbers k such that k concatenated with itself gives the product of two numbers which differ by 1.	1..23
+
+A116225	nyi	n times n+1 gives the concatenation of two numbers m and m-9.	nonn,base,synth	1..11	nyi	_Giovanni Resta_, Feb 06 2006
+A116229	nyi	Numbers k such that k*(k+6) gives the concatenation of two numbers m and m-9.	nonn,base,changed,synth	1..20	nyi	_Giovanni Resta_, Feb 06 2006
+
+A116289	nyi	Numbers k such that k*(k+5) gives the concatenation of a number m with itself.	nonn,base,changed,synth	1..28	nyi	_Giovanni Resta_, Feb 06 2006
+A116290	nyi	n times n+6 gives the concatenation of a number m with itself.	nonn,base,synth	1..27	nyi	_Giovanni Resta_, Feb 06 2006

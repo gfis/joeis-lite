@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-05-05: V4.6: ZString
 # 2022-05-05: V4.5: IntegerUtils
 # 2022-06-17: V4.4, generate for prog/gp
 # 2022-06-14: V4.3, Rationals
@@ -56,7 +57,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V4.5";
+my $version_id  = "gen_seq4.pl V4.6";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -279,7 +280,7 @@ sub write_output {
         if (! defined($dirs{$packdir}) or ! -d "$packdir") { # tarpath not yet readable
             $dirs{$packdir} = 1;
             mkdir($packdir);
-            print STDERR "made $packdir\n";
+            print STDERR "mkdir $packdir\n";
         }
         my $filename = "$packdir/$aseqno$ext";
         open(OUT, ">", $filename) || die "cannot write \"$filename\"\n";

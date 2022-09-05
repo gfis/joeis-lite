@@ -1,36 +1,91 @@
 
-# For primes in these sequences: A102496, A102497 (1nn1); A102498, A102499 (3nn3); A102500, A102501 (7nn7); A102502, A102503 (9nn9); A102504 (intersection).
-A036377	parmof2	0	A074993	7
-A073086	parmof2	0	A074993	8
-A074991	parmof2	0	A074993	3
-A074993	parmof2	0	A074993	2	a(n) = floor((concatenation of n, n+1)/2).      base,easy,nonn,changed,synth    0..47   nyi     _Amarnath Murthy_, Aug 31 2002
-A074994	parmof2	0	A074993	4	Floor of concatenation of n, n+1, n+2, n+3 divided by 4.        base,easy,nonn,synth    0..27   nyi     _Amarnath Murthy_, Aug 31 2002
-A074995	parmof2	0	A074993	5	Floor of concatenation of n, n+1, n+2, n+3, n+4 divided by 5.   base,easy,nonn,synth    0..23   nyi     _Amarnath Murthy_, Aug 31 2002
-A074996	parmof2	0	A074993	6	Floor of concatenation of n, n+1, n+2, n+3, n+4, n+5 divided by 6.      base,easy,nonn,synth    0..18   nyi     _Amarnath Murthy_, Aug 31 2002
-A074999	parmof2	0	A074993	9	Floor[concatenation of nine consecutive numbers from n to n+8 divided by 9].    base,easy,nonn, 0..1000 nyi     _Amarnath Murthy_, Aug 31 2002
-A075003	parmof2	0	A074993	-2	Floor[ concatenation of n+1 and n divided by 2 ].       base,nonn,synth 0..47   nyi     _Amarnath Murthy_, Sep 01 2002
-A075004	parmof2	0	A074993	-3	Floor[ concatenation of n+2, n+1 and n divided by 3 ].  base,nonn,synth 0..35   nyi     _Amarnath Murthy_, Sep 01 2002
-A075005	parmof2	0	A074993	-4	Floor[ concatenation of n+3, n+2, n+1 and n divided by 4 ].     base,nonn,synth 0..27   nyi     _Amarnath Murthy_, Sep 01 2002
-A075006	parmof2	0	A074993	-5	Floor[ concatenation of n+4, n+3, n+2, n+1 and n divided by 5]. base,nonn,synth 0..23   nyi     _Amarnath Murthy_, Sep 01 2002
-A075007	parmof2	0	A074993	-6	Floor[ concatenation of n+5, n+4,n+3, n+2, n+1 and n divided by 6].     base,nonn,synth 0..19   nyi     _Amarnath Murthy_, Sep 01 2002
-A075008	parmof2	0	A074993	-7	Floor[ concatenation of 7 numbers from n+6 to n in that order divided by 7].    base,nonn,changed,      0..1000 nyi     _Amarnath Murthy_, Sep 01 2002
-A075009	parmof2	0	A074993	-8	Floor[ concatenation of 8 numbers from n+7 to n in that order divided by 8].    base,nonn,      0..1000 nyi     _Amarnath Murthy_, Sep 01 2002
-A075010	parmof2	0	A074993	-9	a(n) = floor( concatenation of 9 numbers from n+8 to n in that order divided by 9 ).    base,nonn,changed,synth 0..15   nyi     _Amarnath Murthy_, Sep 01 2002
-A095709	parmof2	1	A095709	new A000796()	Triangle of numbers obtained by reversing the first n digits of Pi and juxtaposing.
-A095710	parmof2	1	A095709	new PrependSequence(new A049541(), 0)	Triangle of numbers obtained by reversing the first n digits of 1/Pi and juxtaposing.
-A095711	parmof2	1	A095709	new A001113()	Triangle of numbers obtained by reversing the first n digits of e and juxtaposing.	b
-A095712	parmof2	1	A095709	new PrependSequence(new A068985(), 0)	Triangle of numbers obtained by reversing the first n digits of 1/e and juxtaposing.	b
-A095713	parmof2	1	A095709	new A001622()	Triangle of numbers obtained by reversing the first n digits of golden ratio phi and
-A095715	parmof2	1	A095709	new PrependSequence(new A094214(), 0)	Triangle of numbers obtained by reversing the first n digits of 1/phi and juxtaposing 
-A100846	parmof2	0	A100846	1	Concatenate 1nn1
-A100896	parmof2	0	A100846	3
-A100897	parmof2	0	A100846	7
-A102484	parmof2	0	A100846	9
-A102496	parmof2	1	A102496	1	Values of n for which the concatenation of the form 1nn1 (sequence A100846) are primes. easy,nonn,base, 1..10000        nyi     Mark Hudson (mrmarkhudso
-A102497	parmof2	1	A102497	1	Primes of the concatenated form 1nn1 where n is an integer >=0. easy,nonn,base,synth    1..28   nyi     Mark Hudson (mrmarkhudson(AT)hotmail.com), Jan 1
-A102498	parmof2	0	A102496	3	Values of n for which the concatenation 3nn3 (from sequence A100896) are primes.        easy,nonn,base, 0..1000 nyi     Mark Hudson (mrmarkhudson(AT)hot
-A102499	parmof2	1	A102497	3	Primes of the concatenated form 3nn3.   easy,nonn,base,synth    1..25   nyi     Mark Hudson (mrmarkhudson(AT)hotmail.com), Jan 13 2005
-A102500	parmof2	1	A102496	7	Values of n for which the concatenation 7nn7 (from sequence A100897) are primes.        easy,nonn,base,synth    1..49   nyi     Mark Hudson (mrmarkhudso
-A102501	parmof2	1	A102497	7	Primes of the concatenated form 7nn7.   easy,nonn,base,synth    1..25   nyi     Mark Hudson (mrmarkhudson(AT)hotmail.com), Jan 13 2005
-A102502	parmof2	1	A102496	9	Values of n for which the concatenation 9nn9 (from sequence A102484) are primes.        easy,nonn,base,synth    1..50   nyi     Mark Hudson (mrmarkhudso
-A102503	parmof2	1	A102497	9	Primes of the concatenated form 9nn9.   easy,nonn,base,changed, 1..2500 nyi     Mark Hudson (mrmarkhudson(AT)hotmail.com), Jan 13 2005
+# A073730	simple1	1		Concatenation of largest and smallest digits of n in decimal representation.	nonn,base,look,	1..10000	nyi	_Reinhard Zumkeller_, Aug 05 2002
+# A260860	parmof2	0	A173426	60	Base-60 representation of a(n) is the concatenation of the base-60 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..11	nyi	_M. F. Hasler_, Aug 01 2015
+A073729	simple1	1	n.mod(Z.TEN).add((String.valueOf(mN).charAt(0) - '0') * 10)	Concatenation of initial and final digits of n in decimal representation.	nonn,base,easy,look,	1..10000	nyi	_Reinhard Zumkeller_, Aug 05 2002
+A082252	simple1	1	new Z(String.valueOf(3*mN - 2) + String.valueOf(3*mN - 1) + String.valueOf(3*mN)).divide(3)	Concatenation of (3n-2), (3n-1) and 3n divided by 3.	base,easy,nonn,changed,	1..1000	nyi	_Amarnath Murthy_, Apr 11 2003
+A082253	simple1	1	new Z(String.valueOf(5*mN - 4) + String.valueOf(5*mN - 3) + String.valueOf(5*mN - 2) + String.valueOf(5*mN - 1) + String.valueOf(5*mN)).divide(5)	Concatenation of (5n-4), (5n-3), (5n-2), (5n-1) and 5n divided by 5.	base,easy,nonn,changed,	1..1000	nyi	_Amarnath Murthy_, Apr 11 2003
+A082254	simple1	1	new Z(String.valueOf(6*mN - 5) + String.valueOf(6*mN - 4) + String.valueOf(6*mN - 3) + String.valueOf(6*mN - 2) + String.valueOf(6*mN - 1) + String.valueOf(6*mN)).divide(6)	Concatenation of (6n-5), (6n-4), (6n-3), (6n-2), (6n-1) and 6n divided by 6.	base,easy,nonn,changed,	1..1000	nyi	_Amarnath Murthy_, Apr 11 2003
+A082255	simple1	1	new Z(String.valueOf(8*mN - 3) + String.valueOf(8*mN - 2) + String.valueOf(8*mN - 1) + String.valueOf(8*mN) + String.valueOf(8*mN + 1) + String.valueOf(8*mN + 2) + String.valueOf(8*mN + 3) + String.valueOf(8*mN + 4)).divide(8)	Integer part of (concatenation of (8n-3), (8n-2), (8n-1), (8n), (8n+1), (8n+2), (8n+3), (8n+4) divided by 8).	base,easy,nonn,synth	1..12	nyi	_Amarnath Murthy_, Apr 11 2003
+A082256	simple1	1	new Z(String.valueOf(9*mN - 8) + String.valueOf(9*mN - 7) + String.valueOf(9*mN - 6) + String.valueOf(9*mN - 5) + String.valueOf(9*mN - 4) + String.valueOf(9*mN - 3) + String.valueOf(9*mN - 2) + String.valueOf(9*mN - 1) + String.valueOf(9*mN)).divide(9)	(Concatenation of 9n-8, 9n-7, 9n-6, 9n-5, 9n-4, 9n-3, 9n-2, 9n-1 and 9n) divided by 9.	base,easy,nonn,synth	1..10	nyi	_Amarnath Murthy_, Apr 11 2003
+A084009	simple0	0	new Z(n.square().toString() + new StringBuilder(n.square().toString()).reverse()).divide(11)	a(n) = n^2 concatenated with reverse(n^2) divided by 11.	0..36
+A087737	simple1	1	new Z(n.toString(2) + (n.add(1)).toString(2), 2)	Value of (n,n+1) concatenated in binary representation.	nonn,base,	1..10000	nyi	_Reinhard Zumkeller_, Oct 01 2003
+A087744	simple1	1	new Z(n.toString(2) + String.valueOf(mN))	Binary and decimal representation of n concatenated.	nonn,base,changed,	1..10000	nyi	_Reinhard Zumkeller_, Oct 02 2003
+A105814	simple1	1	n.square().add(new Z(n.toString() + n.toString())))	a(n) = n^2 + (n concatenated with n).	1..10000
+A113697	simple1	1	new Z(String.valueOf(mN) + String.valueOf(mN + 2)).divide(mN + 1)	Floor[n concatenated with n+2 divided by n+1].	base,nonn,synth	1..72	nyi	_Amarnath Murthy_, Nov 11 2005
+A132901	parmof2	1	A132901	11	Numbers formed by concatenating 11 consecutive prime numbers.	easy,nonn,base,	1..10000	nyi	_Omar E. Pol_, Sep 04 2007
+A132902	parmof2	1	A132901	12	Numbers formed by concatenating 12 consecutive prime numbers.	easy,nonn,base,synth	1..7	nyi	_Omar E. Pol_, Sep 04 2007
+A132903	parmof2	1	A132901	3	Numbers formed by concatenating 3 consecutive prime numbers.	easy,nonn,base,changed,	1..1000	nyi	_Omar E. Pol_, Sep 04 2007
+A132904	parmof2	1	A132901	4	Numbers formed by concatenating 4 consecutive prime numbers.	easy,nonn,base,synth	1..23	nyi	_Omar E. Pol_, Sep 04 2007
+A132905	parmof2	1	A132901	5	Numbers formed by concatenating 5 consecutive prime numbers.	easy,nonn,base,synth	1..19	nyi	_Omar E. Pol_, Sep 04 2007
+A132906	parmof2	1	A132901	6	Numbers formed by concatenating 6 consecutive prime numbers.	easy,nonn,base,synth	1..16	nyi	_Omar E. Pol_, Sep 04 2007
+A132907	parmof2	1	A132901	7	Numbers formed by concatenating 7 consecutive prime numbers.	easy,nonn,base,synth	1..13	nyi	_Omar E. Pol_, Sep 04 2007
+A132908	parmof2	1	A132901	8	Numbers formed by concatenating 8 consecutive prime numbers.	easy,nonn,base,synth	1..12	nyi	_Omar E. Pol_, Sep 04 2007
+A132909	parmof2	1	A132901	9	Numbers formed by concatenating 9 consecutive prime numbers.	easy,nonn,base,synth	1..10	nyi	_Omar E. Pol_, Sep 04 2007
+A132910	parmof2	1	A132901	10	Numbers formed by concatenating 10 consecutive prime numbers.	easy,nonn,base,synth	1..9	nyi	_Omar E. Pol_, Sep 04 2007
+A136613	simple0	0	new Z(String.valueOf(ZUtils.digitSum(n)) + String.valueOf(mN))	Concatenation of (sum of digits of n) and n.	nonn,base,look,	0..10000	nyi	_Reinhard Zumkeller_, Jan 13 2008
+A173426	parmof2	1	A173426	10	Base-10 representation of a(n) is the concatenation of the base-10 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..11	nyi	_M. F. Hasler_, Aug 01 2015
+A173427	parmof2	1	A173426	2	Decimal value a(n) of the binary number b(n) obtained by starting from 1, sequentially concatenating all binary numbers up to n and then sequentially concatenating all binary numbers from n-1 down to 1.
+A239460	simple1	1	new Z(n.square().toString() + n.pow(3).toString())	Concatenation of n^2 and n^3.	1..1000
+A239461	simple1	1	new Z(n.pow(3).toString() + n.square().toString())	Concatenation of n^3 and n^2.1..1000
+A246972	simple0	0	new Z(n.add(1).square().toString() + n.square().toString())	(n+1)^2 concatenated with n^2.	0..1000
+A246973	simple0	0	new Z(n.square().toString() + n.add(1).square().toString())	n^2 concatenated with (n+1)^2.	0..1000
+A248038	simple1	1	new Z(String.valueOf(3 * mN) + String.valueOf(3 * mN))	3n concatenated with itself.	nonn,base,easy,changed,synth	1..41	nyi	_Larry Guindine_, Sep 30 2014
+A248378	simple0	0	((mN & 1) == 0) ? new Z(String.valueOf(mN / 2 + 1) + String.valueOf(mN / 2 + 2)) : new Z(String.valueOf(mN / 2 + 2) + String.valueOf(mN / 2 + 1))	a(2n) = concatenation of n+1 with n+2, a(2n+1) = concatenation of n+2 with n+1.	nonn,base,easy,	0..10000	nyi	_N. J. A. Sloane_, Oct 07 2014
+A248422	simple1	1	new Z(String.valueOf(2 * mN) + String.valueOf(2 * mN))	Even integers concatenated with themselves.	nonn,base,changed,	1..1000	nyi	_Lev Krasnovsky_, Oct 06 2014
+A248555	simple1	1	new Z(String.valueOf(3 * mN - 2) + String.valueOf(3 * mN) + String.valueOf(3 * mN - 1))	a(n) is the concatenation of 3n-2, 3n and 3n-1.	nonn,base,less,changed,	1..1000	nyi	_Charles Duvall_, Oct 08 2014
+A248556	simple1	1	new Z(String.valueOf(3 * mN - 2) + String.valueOf(3 * mN - 1) + String.valueOf(3 * mN))	Concatenate (3n-2,3n-1,3n).	nonn,base,easy,synth	1..33	nyi	_Charles Duvall_, Oct 08 2014
+A249350	parmof2	1	A249350	6	Prime numbers Q such that the concatenation Q,6,Q is prime.	nonn,base,	1..10000	nyi	_Pierre CAMI_, Oct 26 2014
+A249373	parmof2	1	A249350	0	Prime numbers Q such that the concatenation Q,d,Q is prime for at least one d in the set {1, 2, 3, 4, 5, 6, 7, 8, 9}.	nonn,base,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A249374	parmof2	1	A249350	1	Prime numbers Q such that the concatenation Q,1,Q is prime.	nonn,base,changed,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A249375	parmof2	1	A249350	2	Prime numbers Q such that the concatenation Q,2,Q is prime.	nonn,base,changed,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A249376	parmof2	1	A249350	3	Prime numbers Q such that the concatenation Q,3,Q is prime.	nonn,base,changed,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A249377	parmof2	1	A249350	4	Prime numbers Q such that the concatenation Q,4,Q is prime.	nonn,base,changed,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A249378	parmof2	1	A249350	5	Prime numbers Q such that the concatenation Q,5,Q is prime.	nonn,changed,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A249379	parmof2	1	A249350	7	Prime numbers Q such that the concatenation Q,7,Q is prime.	nonn,base,changed,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A249380	parmof2	1	A249350	8	Prime numbers Q such that the concatenation Q,8,Q is prime.	nonn,base,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A249381	parmof2	1	A249350	9	Prime numbers Q such that the concatenation Q,9,Q is prime.	nonn,base,changed,	1..10000	nyi	_Pierre CAMI_, Oct 27 2014
+A250073	simple0	0	new Z(Z.ONE.shiftLeft(mN).toTwoDigits(60))	Powers of 2 written in base 60, concatenating the decimal values of the sexagesimal digits.	nonn,base,synth	0..32	nyi	_Michael De Vlieger_, Nov 11 2014
+A253445	simple1	1	new Z(n.square().toString() + n.square().toString())	a(n) = concatenation of n^2 with itself.	1..10000
+A254334	simple0	0	new Z(Z.THREE.pow(mN).toTwoDigits(60))	Powers of 3 in base 60, concatenating the decimal values of the sexagesimal digits.	nonn,base,	0..1200	nyi	_Michael De Vlieger_, Jan 28 2015
+A254335	simple0	0	new Z(Z.FIVE.pow(mN).toTwoDigits(60))	Powers of 5 in base 60, concatenating the decimal values of the sexagesimal digits.	nonn,base,	0..1200	nyi	_Michael De Vlieger_, Jan 28 2015
+A254336	simple0	0	new Z(Z.TEN.pow(mN).toTwoDigits(60))	Powers of 10 in base 60, concatenating the decimal values of the sexagesimal digits.	nonn,base,	0..600	nyi	_Michael De Vlieger_, Jan 28 2015
+A260853	parmof2	0	A173426	3	Base-3 representation of a(n) is the concatenation of the base-3 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..15	nyi	_M. F. Hasler_, Aug 01 2015
+A260854	parmof2	0	A173426	4	Base-4 representation of a(n) is the concatenation of the base-4 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..15	nyi	_M. F. Hasler_, Aug 01 2015
+A260855	parmof2	0	A173426	5	Base-5 representation of a(n) is the concatenation of the base-5 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260856	parmof2	0	A173426	6	Base-6 representation is the concatenation of the base-6 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260857	parmof2	0	A173426	7	Base-7 representation of a(n) is the concatenation of the base-7 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260858	parmof2	0	A173426	8	Base-8 representation of a(n) is the concatenation of the base-8 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260859	parmof2	0	A173426	9	Base-9 representation of a(n) is the concatenation of the base-9 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260861	parmof2	0	A173426	11	Base-11 representation of a(n) is the concatenation of the base-11 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260862	parmof2	0	A173426	12	Base-12 representation of a(n) is the concatenation of the base-12 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260863	parmof2	0	A173426	13	Base-13 representation of a(n) is the concatenation of the base-13 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260864	parmof2	0	A173426	14	Base-14 representation of a(n) is the concatenation of the base-14 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A260865	parmof2	0	A173426	15	Base-15 representation of a(n) is the concatenation of the base-15 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..13	nyi	_M. F. Hasler_, Aug 01 2015
+A260866	parmof2	0	A173426	16	Base-16 representation of a(n) is the concatenation of the base-16 representations of 1, 2, ..., n, n-1, ..., 1.	nonn,base,changed,synth	0..14	nyi	_M. F. Hasler_, Aug 01 2015
+A262571	parmof2	2	A262571	1	Concatenation of the numbers from 2 to n.	nonn,base,changed,synth	2..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262572	parmof2	1	A262571	2	Concatenation of the numbers from 1 to n but omitting 2.	nonn,base,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262573	parmof2	1	A262571	3	Concatenation of the numbers from 1 to n but omitting 3.	nonn,base,changed,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262574	parmof2	1	A262571	4	Concatenation of the numbers from 1 to n but omitting 4.	nonn,base,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262575	parmof2	1	A262571	5	Concatenation of the numbers from 1 to n but omitting 5.	nonn,base,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262576	parmof2	1	A262571	6	Concatenation of the numbers from 1 to n but omitting 6.	nonn,base,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262577	parmof2	1	A262571	7	Concatenation of the numbers from 1 to n but omitting 7.	nonn,base,changed,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262578	parmof2	1	A262571	8	Concatenation of the numbers from 1 to n but omitting 8.	nonn,base,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262579	parmof2	1	A262571	9	Concatenation of the numbers from 1 to n but omitting 9.	nonn,base,changed,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262580	parmof2	1	A262571	10	Concatenation of the numbers from 1 to n but omitting 10.	nonn,base,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262581	parmof2	1	A262571	11	Concatenation of the numbers from 1 to n but omitting 11.	nonn,base,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A262582	parmof2	1	A262571	12	Concatenation of the numbers from 1 to n but omitting 12.	nonn,base,synth	1..19	nyi	_N. J. A. Sloane_, Sep 25 2015
+A287300	parmof4	1	A287300	3	0	1	Primes that can be generated by the concatenation in base 3, in ascending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..44	nyi	_Paolo P. Lava_, May 23 2017
+A287301	parmof4	1	A287300	3	0	-1	Primes that can be generated by the concatenation in base 3, in descending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..44	nyi	_Paolo P. Lava_, May 23 2017
+A287302	parmof4	1	A287300	4	0	1	Primes that can be generated by the concatenation in base 4, in ascending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..39	nyi	_Paolo P. Lava_, May 23 2017
+A287303	parmof4	1	A287300	4	0	-1	Primes that can be generated by the concatenation in base 4, in descending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..39	nyi	_Paolo P. Lava_, May 23 2017
+A287304	parmof4	1	A287300	5	0	1	Primes that can be generated by the concatenation in base 5, in ascending order, of two consecutive integers read in base 10.	nonn,base,easy,changed,synth	1..44	nyi	_Paolo P. Lava_, May 23 2017
+A287305	parmof4	1	A287300	5	0	-1	Primes that can be generated by the concatenation in base 5, in descending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..45	nyi	_Paolo P. Lava_, May 23 2017
+A287306	parmof4	1	A287300	6	0	1	Primes that can be generated by the concatenation in base 6, in ascending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..38	nyi	_Paolo P. Lava_, May 23 2017
+A287307	parmof4	1	A287300	6	0	-1	Primes that can be generated by the concatenation in base 6, in descending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..38	nyi	_Paolo P. Lava_, May 23 2017
+A287308	parmof4	1	A287300	7	0	1	Primes that can be generated by the concatenation in base 7, in ascending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..41	nyi	_Paolo P. Lava_, May 23 2017
+A287309	parmof4	1	A287300	7	0	-1	Primes that can be generated by the concatenation in base 7, in descending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..42	nyi	_Paolo P. Lava_, May 23 2017
+A287310	parmof4	1	A287300	8	0	1	Primes that can be generated by the concatenation in base 8, in ascending order, of two consecutive integers read in base 10.	nonn,base,easy,changed,	1..10000	nyi	_Paolo P. Lava_, May 24 2017
+A287311	parmof4	1	A287300	8	0	-1	Primes that can be generated by the concatenation in base 8, in descending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..39	nyi	_Paolo P. Lava_, May 24 2017
+A287312	parmof4	1	A287300	9	0	1	Primes that can be generated by the concatenation in base 9, in ascending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..42	nyi	_Paolo P. Lava_, May 24 2017
+A287313	parmof4	1	A287300	9	0	-1	Primes that can be generated by the concatenation in base 9, in descending order, of two consecutive integers read in base 10.	nonn,base,easy,synth	1..42	nyi	_Paolo P. Lava_, May 24 2017
+A337148	simple0	0	new Z(n.add(n.add(1)).toString() + n.multiply(n.add(1)).toString())	Concatenation of sum n+(n+1) and product n*(n+1) in decimal.	0..38

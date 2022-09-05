@@ -551,7 +551,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-09-04: 
+anabuild: #.2022-09-05: 
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo concsimple A132901 A173426 A249350 A262571 A287300 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	cp -pv hold/*.java manual
+	make CC=man        man
+	make CC=$@ dist testall pack 
+anabuild.2022-09-04: 
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -2646,6 +2658,14 @@ conexdig:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+concsim0:
+	grep -iP "concatenat|juxtapos" $(COMMON)/joeis_names.txt \
+	| grep -ivE "product|square|\^2" \
+	| grep -P "\tnyi" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	
 # A030465 Numbers n such that n concatenated with n+1 is a square.
 # A030466 Squares that are concatenations of two consecutive nonzero numbers.
 # A030467 Numbers n such that n^2 is a concatenation of two successive numbers.
@@ -2660,7 +2680,7 @@ conexdig:
 concprod: concprod1 concprod2 # concatenation of twin numbers give a product of twins
 concprod1:
 	grep -iP "concatenat|juxtapos" $(COMMON)/joeis_names.txt \
-	| grep -iE "product|square|\^2" \
+	| grep -iE "product|square|\^2|two numbers|with itself|Giovanni Resta" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -2668,6 +2688,7 @@ concprod2:
 	perl concprod.pl concprod1.tmp \
 	>        $@.gen \
 	2>       $@.rest.tmp
+	cat concprod2.man >> $@.gen
 	head -n4 $@.gen
 	wc -l    $@*
 	grep -E "^A11[56]" $@.rest.tmp || :
