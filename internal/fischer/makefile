@@ -551,7 +551,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-09-05: 
+anabuild: #.2022-09-06: 
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo concsimple \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	cp -pv hold/*.java manual
+	make CC=man        man
+	make CC=$@ dist testall pack 
+anabuild.2022-09-05: 
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -2094,17 +2106,21 @@ batlog: # LIST= store result logs in table 'batlog'
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #----
-PAT=pari_an.2022-07-01.*.log
+PAT=concprod2.fail.log
 batlog_populate: # PAT= fill test results into table 'batlog'
 	$(DBAT) -f batlog.create.sql
-	grep -E "^A[0-9]" $(PAT) | grep -P "\t(FATO|pass)\t" | sort | uniq -w7 \
-	| $(DBAT) -m csv -s "\t" -r batlog
-	$(DBAT) "UPDATE batlog SET timeout=4 WHERE result='pass';"
-	# $(DBAT) "UPDATE batlog SET timeout=8 WHERE result='pass' AND aseqno BETWEEN 'A089587' AND 'A182589';"
+	grep -E "^A[0-9]" $(PAT) | sort | uniq -w7 \
+	>        batlog.tmp
+	$(DBAT) -m csv -s "\t" -r batlog < batlog.tmp
 	$(DBAT) -n batlog
-	$(DBAT) -4 batlog
 	$(DBAT) "SELECT result, COUNT(result) FROM batlog GROUP BY result ORDER BY 1;" \
-	| tee $@.tmp
+	| tee    $@.tmp
+batlog_eval:
+	$(DBAT) "SELECT b.aseqno, b.result, s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.name, b.expected, b.computed \
+	  FROM seq4 s, batlog b \
+	  WHERE s.aseqno = b.aseqno \
+	    AND b.result = 'FAIL' \
+	  ORDER BY 1"
 batfato1:
 	$(DBAT) -v "DELETE FROM batlog WHERE 0 = 1;"
 batok: # select those that were ok: "pass" or "FATO" with idiff > termno
@@ -2677,40 +2693,29 @@ concsim0:
 # A115528	null	Numbers n such that the square of n is the concatenation of two numbers m and 2*m.	nonn,base,synth	1..5
 # A116094 Numbers n such that n concatenated with n-9 gives the product of two numbers which differ by 1.
 
-concprod: concprod1 concprod2 # concatenation of twin numbers give a product of twins
-concprod1:
+# concatenation of twin numbers give a product of twins
+concprod0:
 	grep -iP "concatenat|juxtapos" $(COMMON)/joeis_names.txt \
 	| grep -iE "product|square|\^2|two numbers|with itself|Giovanni Resta" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-concprod2:
-	perl concprod.pl concprod1.tmp \
+concprod:
+	perl concprod.pl concprod0.tmp \
 	>        $@.gen \
 	2>       $@.rest.tmp
-	cat concprod2.man >> $@.gen
+	cat concprod.man >> $@.gen
 	head -n4 $@.gen
 	wc -l    $@*
 	grep -E "^A11[56]" $@.rest.tmp || :
-concprod2_old:
-	perl -ne \
-	's{Numbers \w such that }{}; '\
-	'if (m{^(A\d+)\s+(the concatenation of \w with [\w\+\-\*\d]{3}|\w concatenated with [\w\+\-\*\d]{3}|the square of \w|\w times [\w\+\-\*\d]{3}) (gives|is) '\
-	'(the concatenation of two numbers \w and [\w\+\-\*\d]{3}|the product of two numbers which differ by \d+|a square)})'\
-	'{ my ($$aseqno, @both) = ($$1, $$2, $$4); '\
-	'  my ($$left, $$right) = map { s{times}{\*}; s{concatenated with}{\/\/}; '\
-	'  s{the concatenation of (\w) with ([\w\+\-\*\d\.]{3})}{$$1 \/\/ ($$2)};'\
-	'  s{(\w) concatenated with ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
-	'  s{the concatenation of two numbers (\w) and ([\w\+\-\*\d]{3})}{$$1 \/\/ ($$2)};'\
-	'  s{the product of two numbers which differ by (\d+)}{m \* (m\+$$1)};'\
-	'  s{the square of (\w)}{$$1 * $$1}; s{a square}{n * n};'\
-	'  $$_} @both;'\
-	'  $$left =~ s{[a-z]}{k}g; $$right =~ s{[a-z]}{m}g;'\
-	'  print join("\t", $$aseqno, "$@", 0, $$left, " ; $$right") . "\n"; }' \
-	$(COMMON)/names \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
+concprod_test:
+	perl concprod.pl 
+concprod_eval: 
+	make batlog_populate PAT=concprod.fail.log
+	make batlog_eval \
+	| grep -E "^A[0-9]" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
 #--------------------------------
 crystalb:
 	grep -iE "Crystal ball|Coordination sequence" $(COMMON)/joeis_names.txt | grep -i lattice \

@@ -56,62 +56,70 @@ while (<>) { # read inputfile
     $name =~ s{juxtapose}       {concatenate}g;
     $name =~ s{juxtaposing}     {concatenating}g;
     $name =~ s{juxtaposition}   {concatenation}ig;
+    # print "# $name\n";
     if (0) {
     #--------
     # 'c' = the result is the concatenated base number, 'a' = addititive, 'm' = multiplicative
     } elsif ($name =~ m{Numbers \w such that the concatenation of \w with \w *([\+\-] *\d+) (is|gives) a square}) {
-        &out("ca", 0, $1, 0);
+        &out(110, "ca", 0, $1, 0);
     } elsif ($name =~ m{Numbers \w such that \w concatenated with \w *([\+\-] *\d+) (is|gives) the product of two numbers which differ by (\d+)}) {
-        &out("ca", 0, $1, $3);
+        &out(120, "ca", 0, $1, $3);
     } elsif ($name =~ m{Numbers \w such that \w concatenated with (itself) (is|gives) the product of two numbers which differ by (\d+)}) {
-        &out("ca", 0,  0, $3);
+        &out(130, "ca", 0,  0, $3);
     } elsif ($name =~ m{Numbers \w such that the concatenation of \w with (\d+) *\* *\w (is|gives) a square}) {
-        &out("cm", 1, $1, 0);
+        &out(145, "cm", 1, $1, 0);
     } elsif ($name =~ m{Numbers \w such that the concatenation of (\d+) *\* *\w with \w (is|gives) a square}) {
-        &out("cm", $1, 1, 0);
-    } elsif ($name =~ m{Numbers \w such that the square of \w (is|gives) the concatenation of two numbers \w and (\d+) *\* *\w}) {
-        &out("cm", 1, $2, 0);
+        &out(155, "cm", $1, 1, 0);
     #--------
     # 'p' = the result is the base of the product, a = addititive, m=multiplicative
     } elsif ($name =~ m{Numbers whose square (is|gives) the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
-        &out("pa", 0, $2, 0);
+        &out(210, "pa", 0, $2, 0);
     } elsif ($name =~ m{Numbers \w such that \w\^2 (is|gives) the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
-        &out("pa", 0, $2, 0);
+        &out(220, "pa", 0, $2, 0);
     } elsif ($name =~ m{Numbers \w such that the square of \w (is|gives) the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
-        &out("pa", 0, $2, 0);
+        &out(230, "pa", 0, $2, 0);
+    } elsif ($name =~ m{Numbers \w such that the square of \w (is|gives) the concatenation of two numbers \w and (\d+) *\* *\w}) {
+        &out(245, "pm", 1, $2, 0);
     } elsif ($name =~ m{Numbers \w such that \w\^2 (is|gives) the concatenation of two numbers \w and (\d+) *\* *\w}) {
-        &out("pm", 1, $2, 0);
+        &out(255, "pm", 1, $2, 0);
     } elsif ($name =~ m{Numbers \w such that \w\^2 (is|gives) the concatenation of two numbers (\d+) *\* *\w and \w}) {
-        &out("pm", 1, $2, 0);
+        &out(265, "pm", $2, 1, 0);
     } elsif ($name =~ m{Numbers (\w )?whose square (is|gives) the concatenation of two numbers (\d+) *\* *\w and \w}) {
-        &out("pm", $3, 1, 0);
+        &out(275, "pm", $3, 1, 0);
+    } elsif ($name =~ m{\w times \w *([\+\-] *\d+) (is|gives) the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
+        &out(280, "pa", 0, $3, $1);
+    } elsif ($name =~ m{\w times \w *([\+\-] *\d+) (is|gives) the concatenation of a number \w with itself}) {
+        &out(290, "pa", 0,  0, $1);
+    #                                                      1           1   2        2                                                   3           3
+    } elsif ($name =~ m{Numbers \w such that \w *\* *\(\w *([\+\-] *\d+)\) (is|gives) the concatenation of two numbers \w and \w *([\+\-] *\d+)}) {
+        &out(300, "pa", 0, $3, $1);
+    } elsif ($name =~ m{Numbers \w such that \w *\* *\(\w *([\+\-] *\d+)\) (is|gives) the concatenation of a number \w with itself}) {
+        &out(310, "pa", 0,  0, $1);
     #--------
     } else {
-        print STDERR join("\t", $aseqno, $name, $range) . "\n";
+        print STDERR join("\t", $aseqno, "????", 1, $name, $range) . "\n";
     }
 } # while <>
 #----
 sub out {
-    my ($mode, $conc1, $conc2, $pdiff) = @_;
-    my $offset = ($range =~ m{\A(\-?\d+)\.}) ? $1 : 1;
-    print join("\t", $aseqno, "concprod", $offset, $mode, $conc1, $conc2, $pdiff, $name) ."\n";
+    my ($code, $mode, $conc1, $conc2, $pdiff) = @_;
+    my $offset = ($range =~ m{\A(\-?\d+)\.}) ? $1 || 1 : 1;
+    #                                              parm1  2       3       4       5      6  7   8   name
+    print join("\t", $aseqno, "concprod", $offset, $mode, $conc1, $conc2, $pdiff, $code, 0, "", "", $name) ."\n";
 } # out
 __DATA__
-A115426	Numbers k such that the concatenation of k with k+2 gives a square.
-A115427	Numbers k such that k^2 is the concatenation of two numbers m and m+2.	base,nonn,changed,synth	1..15	nyi	_Giovanni Resta_, Jan 24 2006
-A115439	Numbers m such that the square of m is the concatenation of two numbers k and k+5.	1..3733
-A115447	Numbers whose square is the concatenation of two numbers k and k-9.	1..19
-A116094	Numbers k such that k concatenated with k-9 gives the product of two numbers which differ by 1.	1..11
+A115535	super	Numbers k such that the concatenation of k with 4*k gives a square.	key	1..32	rest
+A115536	super	Numbers k such that the square of k is the concatenation of two numbers m and 4*m.	key	1..27	rest
+A115537	super	Numbers k such that the concatenation of 4*k with k gives a square.	key	1..9	rest
+A115556	super	Numbers whose square is the concatenation of two numbers 9*m and m.	key	1..3	rest
+A115426	super	Numbers k such that the concatenation of k with k+2 gives a square.	key	1..1	nyi	Resta
+A115427	super	Numbers k such that k^2 is the concatenation of two numbers m and m+2.	base,nonn,changed,synth	1..15	nyi	_Giovanni Resta_, Jan 24 2006
+A115439	super	Numbers m such that the square of m is the concatenation of two numbers k and k+5.	key	1..3733	rest
+A115447	super	Numbers whose square is the concatenation of two numbers k and k-9.	key	1..19	rest
+A116094	super	Numbers k such that k concatenated with k-9 gives the product of two numbers which differ by 1.	key	1..11	rest
+A116154	super	Numbers k such that k concatenated with itself gives the product of two numbers which differ by 1.	key	1..23	rest
+A116225	super	n times n+1 gives the concatenation of two numbers m and m-9.	nonn,base,synth	1..11	nyi	_Giovanni Resta_, Feb 06 2006
+A116229	super	Numbers k such that k*(k+6) gives the concatenation of two numbers m and m-9.	nonn,base,changed,synth	1..20	nyi	_Giovanni Resta_, Feb 06 2006
+A116289	super	Numbers k such that k*(k+5) gives the concatenation of a number m with itself.	nonn,base,changed,synth	1..28	nyi	_Giovanni Resta_, Feb 06 2006
+A116290	super	n times n+6 gives the concatenation of a number m with itself.	nonn,base,synth	1..27	nyi	_Giovanni Resta_, Feb 06 2006
 
-A115535	Numbers k such that the concatenation of k with 4*k gives a square.	1..32
-A115536	Numbers k such that the square of k is the concatenation of two numbers m and 4*m.	1..27
-A115537	Numbers k such that the concatenation of 4*k with k gives a square.	1..9
-A115556	Numbers whose square is the concatenation of two numbers 9*m and m.	1..3
-A115536 Numbers k such that the square of k is the concatenation of two numbers m and 4*m.      1..27
-A116154	Numbers k such that k concatenated with itself gives the product of two numbers which differ by 1.	1..23
-
-A116225	nyi	n times n+1 gives the concatenation of two numbers m and m-9.	nonn,base,synth	1..11	nyi	_Giovanni Resta_, Feb 06 2006
-A116229	nyi	Numbers k such that k*(k+6) gives the concatenation of two numbers m and m-9.	nonn,base,changed,synth	1..20	nyi	_Giovanni Resta_, Feb 06 2006
-
-A116289	nyi	Numbers k such that k*(k+5) gives the concatenation of a number m with itself.	nonn,base,changed,synth	1..28	nyi	_Giovanni Resta_, Feb 06 2006
-A116290	nyi	n times n+6 gives the concatenation of a number m with itself.	nonn,base,synth	1..27	nyi	_Giovanni Resta_, Feb 06 2006

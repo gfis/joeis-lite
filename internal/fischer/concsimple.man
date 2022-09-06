@@ -28,3 +28,9 @@ A250073	simple0	0	new Z(Z.ONE.shiftLeft(mN).toTwoDigits(60))	Powers of 2 written
 A254334	simple0	0	new Z(Z.THREE.pow(mN).toTwoDigits(60))	Powers of 3 in base 60, concatenating the decimal values of the sexagesimal digits.	nonn,base,	0..1200	nyi	_Michael De Vlieger_, Jan 28 2015
 A254335	simple0	0	new Z(Z.FIVE.pow(mN).toTwoDigits(60))	Powers of 5 in base 60, concatenating the decimal values of the sexagesimal digits.	nonn,base,	0..1200	nyi	_Michael De Vlieger_, Jan 28 2015
 A254336	simple0	0	new Z(Z.TEN.pow(mN).toTwoDigits(60))	Powers of 10 in base 60, concatenating the decimal values of the sexagesimal digits.	nonn,base,	0..600	nyi	_Michael De Vlieger_, Jan 28 2015
+
+A061086	simple1	1	new Z(String.valueOf(mN) + n.pow(3).tostring())	a(n) is the concatenation of n with n^3.	nonn,base,changed,	1..10000	nyi	_Amarnath Murthy_, Apr 19 2001
+A178664	simple0	0	new Z(Z.ONE.shiftLeft(mN).toString() + Z.ONE.shiftLeft(mN).toString())	2^n concatenated with itself.	0..200
+A206527	simple0	0	new Z(Z.THREE.pow(mN).toString() + Z.THREE.pow(mN).toString())	3^n concatenated with itself.	0..200
+A206528	simple0	0	new Z(Z.FIVE.pow(mN).toString() + Z.FIVE.pow(mN).toString())	5^n concatenated with itself.	0..200
+A206529	simple0	0	new Z(Z.SEVEN.pow(mN).toString() + Z.SEVEN.pow(mN).toString())	7^n concatenated with itself.	0..200

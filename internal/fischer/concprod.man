@@ -1,0 +1,14 @@
+# from concprod2.man:
+#               		1	2	3	4	5	6	7	8	name
+A030465	concprod	1	ca	0	1	0	man	0			Numbers k such that k concatenated with k+1 is a square.
+A102567	concprod	1	ca	0	0	0	man	0			Numbers k such that the concatenation of k with itself is a biperiod square.	1..1098	nyi
+A328089	concprod	1	ca	1	0	0	man	0			Numbers k such that k+1 concatenated with k is a square.	1..21
+A340231	concprod	1	pa	0	1	4	man	0			Numbers of the form m^2-4 and also equal to some k concatenated with k+1.	1..18
+#    must be modified pa+2?
+
+# A068144	nyi	Triangular numbers which are a concatenation of two or more positive triangular numbers.	nonn,base,	1..1000	nyi	_Amarnath Murthy_, Feb 23 2002
+# A094609	nyi t	Numbers n such that n concatenated with n+1 is triangular.	base,nonn,synth	1..31	nyi	_Jason Earls_, Jun 06 2004
+# A226742	nyi to	Triangular numbers obtained as the concatenation of 2n and n.	nonn,base,synth	1..22	nyi	_Antonio Rold√°n_, Jun 18 2013
+# A226772	nyi pto	Triangular numbers obtained as the concatenation of n and 2n.	nonn,base,changed,	1..1509	nyi	_Antonio Rold√°n_, Jun 18 2013
+# A226788	nyi to	Triangular numbers obtained as the concatenation of n and n+1.	nonn,base,synth	1..27	nyi	_Antonio Rold√°n_, Jun 18 2013
+# A226789	nyi to	Triangular numbers obtained as the concatenation of n+1 and n.	nonn,base,more,changed,synth	1..6	nyi	_Antonio Rold√°n_, Jun 18 2013
