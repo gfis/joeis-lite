@@ -90,18 +90,23 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
               ? (mLC + mIncr1) * mLShift + (mLC + mIncr2)
               : (mLC * mIncr1) * mLShift + (mLC * mIncr2);
           final long comparision = conc - prod;
-          // System.out.println((mAdditive ? "+ " : "* ") + "comparision=" + comparision + ", mLP=" + mLP + ", conc=" + conc + ", prod=" + prod + ", mDist=" + mDist + ", mIncr1=" + mIncr1 + ", mIncr2=" + mIncr2 + ", mShift=" + mShift);
+          // System.out.println((mAdditive ? "+ " : "* ") + "comparision=" + comparision + ", mLC=" + mLC + ", mLP=" + mLP + ", conc=" + conc + ", prod=" + prod + ", mDist=" + mDist + ", mIncr1=" + mIncr1 + ", mIncr2=" + mIncr2 + ", mLShift=" + mLShift);
           if (comparision < 0) { // advance conc
             ++mLC;
             adjustLShift();
           } else if (comparision > 0) { // advance prod
             ++mLP;
-          } else if (mLC + mIncr1 != 0L && mLC + mIncr2 != 0) { // match found
+          } else {
             final Z result = Z.valueOf(mReturnConc ? mLC : mLP);
+            if (mLC + mIncr1 != 0L && mLC + mIncr2 != 0) { // match found
+              ++mLC;
+              adjustLShift();
+              ++mLP;
+              return result;
+            }
             ++mLC;
             adjustLShift();
             ++mLP;
-            return result;
           }
         }
         mLevel = 1;

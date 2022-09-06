@@ -2119,7 +2119,7 @@ batlog_eval:
 	$(DBAT) "SELECT b.aseqno, b.result, s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.name, b.expected, b.computed \
 	  FROM seq4 s, batlog b \
 	  WHERE s.aseqno = b.aseqno \
-	    AND b.result = 'FAIL' \
+	    AND b.result LIKE 'FA%' \
 	  ORDER BY 1"
 batfato1:
 	$(DBAT) -v "DELETE FROM batlog WHERE 0 = 1;"
