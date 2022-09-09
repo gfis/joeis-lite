@@ -158,8 +158,8 @@ diff_triangle:
 	ls -1 ../../src/irvine/oeis/triangle/*.java | xargs -l -innn \
 	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/triangle || :
 #	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/triangle || :
-diffgf:
-	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/recur/GeneratingFunctionSequence.java ../../src/irvine/oeis/recur || :
+diffrec:
+	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/recur/ConstantOrderRecurrence.java ../../src/irvine/oeis/recur || :
 diffhr:
 	diff -wy  ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
 #	diff -wC0 ../../../joeis/src/irvine/oeis/CompementaryEquationSequence.java   ../../src/irvine/oeis || :
@@ -2716,6 +2716,12 @@ concprod_eval:
 	| grep -E "^A[0-9]" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+concprod_data:
+	$(DBAT) -x "SELECT d.aseqno, d.data FROM bfdata d, seq4 s WHERE d.aseqno = s.aseqno AND s.parm1 LIKE '_a%' ORDER BY 1" \
+	>        $@.tmp
+concprod_progs:
+	$(DBAT) -x "SELECT s.aseqno, i.program, s.name FROM asinfo i, seq4 s WHERE i.aseqno = s.aseqno AND LENGTH(i.program) > 0 ORDER BY 1" \
+	| tee    $@.tmp
 #--------------------------------
 crystalb:
 	grep -iE "Crystal ball|Coordination sequence" $(COMMON)/joeis_names.txt | grep -i lattice \

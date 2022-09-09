@@ -29,8 +29,6 @@
 # src/irvine/oeis/SquareDigitsSequence.java
 # src/irvine/oeis/transform/ElementarySymmetricFunctionSequence.java
 # src/irvine/oeis/transform/GeneralizedEulerTransform.java
-# src/irvine/oeis/triangle/ArraySelector.java
-# src/irvine/oeis/triangle/GeneratingFunctionTriangle.java
 # src/irvine/oeis/triangle/TriangleSelector.java
 # src/irvine/oeis/WalkCubeSequence.java
 # src/irvine/oeis/WeylGroupSequence.java
@@ -53,4 +51,6 @@
 # src/irvine/oeis/SetDifferenceSequence.java
 # src/irvine/oeis/IntersectionSequence.java
 
-src/irvine/oeis/digit/ConcatenatedProductSequence.java
+# src/irvine/oeis/digit/ConcatenatedProductSequence.java
+src/irvine/oeis/triangle/BaseTriangle.java
+src/irvine/oeis/triangle/UpperLeftTriangle.java

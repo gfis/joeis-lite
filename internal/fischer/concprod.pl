@@ -1,26 +1,12 @@
-# concprod.pl
+#!perl
+
+# concprod.pl - grep parameters for CC=concprod
 # @(#) $Id$
+# 2022-09-05: revised
 # 2019-07-25, Georg Fischer
 #
 #:# usage:
 #:#     perl -n concprod.pl ../../../OEIS-mat/common/names
-#
-# A116224       0   0   +9  9
-# A116225       0   1   -9  1
-#                rs   i   j
-#   rs=0:  Numbers k such that k // (k+i) = m * (m+j)
-#   rs=1:  Numbers k such that m // (m+i) = k * (k+j)
-#
-# A030465 Numbers n such that n concatenated with n+1 is a square.
-# A030466 Squares that are concatenations of two consecutive nonzero numbers.
-# A030467 Numbers n such that n^2 is a concatenation of two successive numbers.
-# A116353	null	Numbers n such that n times n+7 gives the concatenation of two numbers m and m+9.	nonn,base,synth	1..5
-# A116354	null	n times n+8 gives the concatenation of two numbers m and m+9.	nonn,base,synth	1..23
-# A115437	null	Numbers n such that the concatenation of n with n+4 gives a square.	base,nonn,synth	1..24
-# A115438	null	Numbers n such that the square of n is the concatenation of two numbers k and k+4.	base,nonn,synth	1..25
-# A115527	null	Numbers n such that the concatenation of n with 2*n gives a square.	nonn,base,synth	1..5
-# A115528	null	Numbers n such that the square of n is the concatenation of two numbers m and 2*m.	nonn,base,synth	1..5
-# A116094 Numbers n such that n concatenated with n-9 gives the product of two numbers which differ by 1.
 #----------------------------------------------------
 use strict;
 use integer;

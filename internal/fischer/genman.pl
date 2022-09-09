@@ -9,7 +9,8 @@
 # 2021-06-26, Georg Fischer: copied from gen_linrec.pl
 #
 #:# Usage:
-#:#   perl genman.pl [-d debug] [-e] [-n] [-p v1,v2...] [-s] [-t] [-u] [A]seqno
+#:#   perl genman.pl [-d debug] [-e] [-n] [-p v1,v2...] [-cp aseqno] [-s] [-t] [-u] [A]seqno
+#:#   -cp copy from - to
 #:#   -e generate "extends ..."
 #:#   -h generate a subclass of HolonomicRecurrence
 #:#   -m generate a subclass of MemorySequence
