@@ -1,5 +1,6 @@
 package irvine.oeis.digit;
 
+import irvine.math.z.QuadraticCongruence;
 import irvine.math.z.Z;
 import irvine.oeis.SequenceWithOffset;
 
@@ -84,7 +85,7 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
     switch (mLevel) {
       default:
       case 0: // start with long arithmetic
-        while (mLP <= 1000000) {
+        while (mLP <= 100) {
           final long prod = mLP * (mLP + mDist);
           final long conc = mAdditive
               ? (mLC + mIncr1) * mLShift + (mLC + mIncr2)

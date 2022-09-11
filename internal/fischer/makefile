@@ -101,7 +101,8 @@ seqhelp: #
 jseqtest: # A=$(A) $(NT)=; b-file from jOEIS only
 	$(JJAVA) irvine.test.SequenceTest $(A) $(NT) | tee x.tmp
 spectest:
-	$(JAVA) irvine.oeis.cons.FoldedContinuedFraction $(ARGS)
+	$(JAVA) irvine.math.z.QuadraticCongruence $(ARGS)
+#	$(JAVA) irvine.oeis.cons.FoldedContinuedFraction $(ARGS)
 crtest:
 	$(JAVA) irvine.math.cr.CR $(NUM)
 ebtest:

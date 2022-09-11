@@ -52,9 +52,11 @@ A211651	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w*w >= x*x*x 
 A211652	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w*w*w < x*x*x*x + y*y*y*y
 A211653	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w*w*w > x*x*x*x + y*y*y*y
 A211787	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n,w,x,y,z) -> w*x <= 2*y*z
+A211791	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w <= LongUtils.sqrt(x*x + y*y)	Number of ordered triples (w,x,y) such that x and y are in {1,...,n} and w^2<=x^2+y^2.	nonn,synth	1..39
+A211792	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> w*w*w <= Z.valueOf(x*x*x + y*y*y).root(3).longValue()	Number of ordered triples (w,x,y) such that x and y are in {1,...,n} and w^3<=x^3+y^3.	nonn,synth	1..40
 A211795	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n,w,x,y,z) -> w*x < 2*y*z
 A211797	parmof3	0	A210286	n -> new Long[] { 1L, n }	(n,w,x,y,z) -> w*x > 2*y*z
-A211800	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> 2*w*w < x*x + y < 2
+A211800	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> 2*w*w < x*x + y*y
 A211801	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> 2*w*w*w < x*x*x + y*y*y
 A211803	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> 2*w*w >= x*x + y*y
 A211804	parmof3	0	A211422	n -> new Long[] { 1L, n }	(n,w,x,y) -> 2*w*w*w >= x*x*x + y*y*y
