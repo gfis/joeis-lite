@@ -2720,9 +2720,16 @@ concprod_eval:
 concprod_data:
 	$(DBAT) -x "SELECT d.aseqno, d.data FROM bfdata d, seq4 s WHERE d.aseqno = s.aseqno AND s.parm1 LIKE '_a%' ORDER BY 1" \
 	>        $@.tmp
+	perl htmlize.pl $@.tmp > $@.htm
+	cmd /c start             $@.htm
 concprod_progs:
 	$(DBAT) -x "SELECT s.aseqno, i.program, s.name FROM asinfo i, seq4 s WHERE i.aseqno = s.aseqno AND LENGTH(i.program) > 0 ORDER BY 1" \
 	| tee    $@.tmp
+concprod_subset: # select first of each decision branch (parm5)
+	$(DBAT) -x "SELECT MIN(aseqno), s.callcode, s.offset1, s.parm1, s.parm2, s.parm3, s.parm4, s.parm5 FROM seq4 s \
+	  GROUP BY s.parm5 \
+	  ORDER BY 1" \
+	| tee    $@.gen
 #--------------------------------
 crystalb:
 	grep -iE "Crystal ball|Coordination sequence" $(COMMON)/joeis_names.txt | grep -i lattice \
