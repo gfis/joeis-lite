@@ -15,21 +15,17 @@ import irvine.oeis.SequenceWithOffset;
 public class ConcatenatedProductSequence implements SequenceWithOffset {
 
   private static final boolean VERBOSE = "true".equals(System.getProperty("oeis.verbose"));
-//private static final long LIMIT = 10000000000000000L; // use simple long arithmetic up to 10^16
   private static final long LIMIT = 100L; // use simple long arithmetic
   private boolean mReturnConc; // true to yield base of the concatenation, false to yield base of the product
-  private boolean mAdditive; // true for additive, false for multiplicative
+  private boolean mAdditive; // true for additive, false for multiplicative modification of concatenation parts
   private int mIncr1; // add/multiply this to the first value of the concatenation.
   private int mIncr2; // add/multiply this to the second value of the concatenation.
   private int mDist; // distance of the two factors of the resulting product (0 = square).
-  private Z mP; // unmodified factor of the product
-  private Z mC; // unmodified component of the concatenation
-  private Z mShift; // power of 10 for the shifting of the left concatenation part
+  private int mLevel; // 0 for long algorithm, 1 for msolve algorithm
   private long mLP; // unmodified factor of the product
-  private long mLC; // unmodified component of the concatenation
+  private long mLC; // unmodified part of the concatenation
   private long mLShift; // power of 10 for the shifting of the left concatenation part
   protected int mOffset; // first index
-  private int mLevel;
   private Z mPow10; // determines the width of the left concatenation number k resp. k+mIncr1 resp. k*mIncr1
   private TreeSet<Z> mGood;
 
@@ -37,12 +33,12 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
    * Construct the sequence.
    * @param offset first index
    * @param mode a two-letter code for the type of operation:
-   * 'c' = the result is the concatenated base number,
-   * 'p' = the result is the base of the product,
-   * 'a' = addititive,
-   * 'm' = multiplicative.
-   * @param conc1 add/multiply this to the first value of the concatenation.
-   * @param conc2 add/multiply this to the second value of the concatenation.
+   * 'c' = the result is the concatenated base number
+   * 'p' = the result is the base of the product
+   * 'a' = addititive modification of concatenation parts
+   * 'm' = multiplicative modification of concatenation parts
+   * @param conc1 add/multiply this to the first part of the concatenation.
+   * @param conc2 add/multiply this to the second part of the concatenation.
    * @param dist distance of the two factors of the resulting product (0 = square).
    */
   public ConcatenatedProductSequence(final int offset, final String mode, final int conc1, final int conc2, final int dist) {
@@ -60,23 +56,6 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
       mLC = 1;
     }
     mLShift = 10;
-    adjustLShift();
-  }
-
-  /**
-   * Ensure that {@link #mShift} is a proper shift for the left concatenation part
-   */
-  private void adjustShift() {
-    final Z right = mAdditive ? mC.add(mIncr2) : mC.multiply(mIncr2);
-    while (mShift.compareTo(right) <= 0) {
-      mShift = mShift .multiply(10);
-    } // now mShift > right
-  }
-
-  /**
-   * Ensure that {@link #mLShift} is a proper shift for the left concatenation part
-   */
-  private void adjustLShift() {
     final long right = mAdditive ? mLC + mIncr2 : mLC * mIncr2;
     while (mLShift <= right) {
       mLShift *= 10;
@@ -130,9 +109,6 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
           ++mLP;
         }
         mLevel = 1;
-        mP = Z.valueOf(mLP);
-        mC = Z.valueOf(mLC);
-        mShift = Z.valueOf(mLShift);
         mPow10 = Z.valueOf(LIMIT);
         mGood = new TreeSet<Z>();
         // no(!) break - fall through
@@ -152,19 +128,19 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
           map(t -> t-2, sort(convert(As, list))); # Robert Israel, Aug 20 2019
         */
         while (mGood.size() <= 0) {
-          final Z m10p1 = mPow10.multiply(10);
-          TreeSet<Z> acands = new TreeSet<Z>(QuadraticCongruence.solve(Z.ONE, Z.valueOf(mDist), Z.valueOf(-mIncr2), m10p1.add(1)));
+          final Z pow10p1 = mPow10.multiply(10);
+          TreeSet<Z> acands = new TreeSet<Z>(QuadraticCongruence.solve(Z.ONE, Z.valueOf(mDist), Z.valueOf(-mIncr2), pow10p1.add(1)));
             // for A116170: solve(1,1,-2,10^m+1
           for (final Iterator<Z> ita = acands.iterator(); ita.hasNext();) {
             final Z ta = ita.next();
-            final Z bcand = ta.multiply(ta.add(mDist)).mod(m10p1);
+            final Z bcand = ta.multiply(ta.add(mDist)).mod(pow10p1);
             if (bcand.compareTo(mPow10) >= 0) {
               mGood.add(mReturnConc ? bcand : (mAdditive ? ta.add(mIncr2) : ta.multiply(mIncr2)));
             }
           }
-          mPow10 = m10p1;
+          mPow10 = pow10p1;
           if (VERBOSE) {
-            System.out.println("m10p1=" + m10p1 + ", acands=" + acands + ", mGood=" + mGood);
+            System.out.println("pow10p1=" + pow10p1 + ", acands=" + acands + ", mGood=" + mGood);
           }
         }
         return mGood.pollFirst().subtract(mIncr2);
