@@ -115,7 +115,7 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
 
       case 1: // continue with an algorithm using Maple.msolve
         /*
-          A116170 Numbers k such that k concatenated with k+2 gives the product of two numbers which differ by 1.       5
+          A116170 Numbers k such that k concatenated with k+2 gives the product of two numbers which differ by 1.
           590, 738, 830, 1080, 4508, 20660, 29754, 980300, 6694218, 49826988, 117738578, 131505858, 132231404, 176445054, 177285320, 247979808, 252028388, 335180054, 336337790, 404958680, 406231130, 431477468, 499519478 (list; graph; refs; listen; history; edit; text; internal format)
           As:= {}:
           for m from 2 to 12 do
@@ -133,9 +133,23 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
             // for A116170: solve(1,1,-2,10^m+1
           for (final Iterator<Z> ita = acands.iterator(); ita.hasNext();) {
             final Z ta = ita.next();
-            final Z bcand = ta.multiply(ta.add(mDist)).mod(pow10p1);
-            if (bcand.compareTo(mPow10) >= 0) {
-              mGood.add(mReturnConc ? bcand : (mAdditive ? ta.add(mIncr2) : ta.multiply(mIncr2)));
+            final Z prod = ta.multiply(ta.add(mDist));
+            final Z bcand = prod.mod(pow10p1);
+          /*
+            int lo = mIncr1;
+            int hi = mIncr2;
+            if (lo > hi) {
+              lo = mIncr2;
+              hi = mIncr1;
+            }
+          */
+            if (bcand.compareTo(mPow10) >= 0) { // && ta.compareTo(mPow10) >= 0) {
+              if (false || prod.toString().startsWith(bcand.add(-mIncr2).toString())) {
+                mGood.add(mReturnConc ? bcand : (mAdditive ? ta.add(mIncr2) : ta.multiply(mIncr2)));
+              }
+            }
+            if (VERBOSE) {
+              System.out.println("ta=" + ta + ", prod=" + prod + ", bcand=" + bcand);
             }
           }
           mPow10 = pow10p1;
