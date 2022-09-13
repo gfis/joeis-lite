@@ -15,7 +15,8 @@ import irvine.oeis.SequenceWithOffset;
 public class ConcatenatedProductSequence implements SequenceWithOffset {
 
   private static final boolean VERBOSE = "true".equals(System.getProperty("oeis.verbose"));
-  private static final long LIMIT = 10000000000000000L; // use simple long arithmetic up to 10^16
+//private static final long LIMIT = 10000000000000000L; // use simple long arithmetic up to 10^16
+  private static final long LIMIT = 100L; // use simple long arithmetic
   private boolean mReturnConc; // true to yield base of the concatenation, false to yield base of the product
   private boolean mAdditive; // true for additive, false for multiplicative
   private int mIncr1; // add/multiply this to the first value of the concatenation.
@@ -91,7 +92,7 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
   public Z next() {
     switch (mLevel) {
       default:
-      case 0:
+      case 0: // compute initial terms with long arithmetic and an algorithm along the description
       /*
         # A116283 k times k+7 gives the concatenation of two numbers m and m-1.
         # (Python)
@@ -128,35 +129,6 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
           }
           ++mLP;
         }
-        return null;
-      case 20: // start with long arithmetic
-        while (mLP <= LIMIT) {
-          final long prod = mLP * (mLP + mDist);
-          final long conc = mAdditive
-              ? (mLC + mIncr1) * mLShift + (mLC + mIncr2)
-              : (mLC * mIncr1) * mLShift + (mLC * mIncr2);
-          final long comparision = conc - prod;
-          if (VERBOSE) {
-            System.out.println((mAdditive ? "+ " : "* ") + "comparision=" + comparision + ", mLC=" + mLC + ", mLP=" + mLP + ", conc=" + conc + ", prod=" + prod + ", mDist=" + mDist + ", mIncr1=" + mIncr1 + ", mIncr2=" + mIncr2 + ", mLShift=" + mLShift);
-          }
-          if (comparision < 0) { // advance conc
-            ++mLC;
-            adjustLShift();
-          } else if (comparision > 0) { // advance prod
-            ++mLP;
-          } else {
-            final Z result = Z.valueOf(mReturnConc ? mLC : mLP);
-            if (mLC + mIncr1 != 0L && mLC + mIncr2 != 0) { // match found
-              ++mLC;
-              adjustLShift();
-              ++mLP;
-              return result;
-            }
-            ++mLC;
-            adjustLShift();
-            ++mLP;
-          }
-        }
         mLevel = 1;
         mP = Z.valueOf(mLP);
         mC = Z.valueOf(mLC);
@@ -164,7 +136,8 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
         mPow10 = Z.valueOf(LIMIT);
         mGood = new TreeSet<Z>();
         // no(!) break - fall through
-      case 21: // continue with Maple's msolve pattern
+
+      case 1: // continue with an algorithm using Maple.msolve
         /*
           A116170 Numbers k such that k concatenated with k+2 gives the product of two numbers which differ by 1.       5
           590, 738, 830, 1080, 4508, 20660, 29754, 980300, 6694218, 49826988, 117738578, 131505858, 132231404, 176445054, 177285320, 247979808, 252028388, 335180054, 336337790, 404958680, 406231130, 431477468, 499519478 (list; graph; refs; listen; history; edit; text; internal format)
@@ -180,12 +153,13 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
         */
         while (mGood.size() <= 0) {
           final Z m10p1 = mPow10.multiply(10);
-          TreeSet<Z> acands = new TreeSet<Z>(QuadraticCongruence.solve(Z.ONE, Z.ONE, Z.TWO.negate(), m10p1.add(mDist))); // <-- specific for A116170
+          TreeSet<Z> acands = new TreeSet<Z>(QuadraticCongruence.solve(Z.ONE, Z.valueOf(mDist), Z.valueOf(-mIncr2), m10p1.add(1)));
+            // for A116170: solve(1,1,-2,10^m+1
           for (final Iterator<Z> ita = acands.iterator(); ita.hasNext();) {
             final Z ta = ita.next();
             final Z bcand = ta.multiply(ta.add(mDist)).mod(m10p1);
             if (bcand.compareTo(mPow10) >= 0) {
-              mGood.add(bcand);
+              mGood.add(mReturnConc ? bcand : (mAdditive ? ta.add(mIncr2) : ta.multiply(mIncr2)));
             }
           }
           mPow10 = m10p1;
@@ -194,30 +168,6 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
           }
         }
         return mGood.pollFirst().subtract(mIncr2);
-        
-  /* old code:
-      case 99: // continue with Z arithmetic
-        while (true) {
-          final Z prod = mP.multiply(mP.add(mDist));
-          final Z conc = mAdditive
-              ? mC.add(mIncr1).multiply(mShift).add(mC.add(mIncr2))
-              : mC.multiply(mIncr1).multiply(mShift).add(mC.multiply(mIncr2));
-          final int comparision = conc.compareTo(prod);
-          // System.out.println((mAdditive ? "+ " : "* ") + "comparision=" + comparision + ", mP=" + mP + ", conc=" + conc + ", prod=" + prod + ", mDist=" + mDist + ", mIncr1=" + mIncr1 + ", mIncr2=" + mIncr2 + ", mShift=" + mShift);
-          if (comparision < 0) { // advance conc
-            mC = mC.add(1);
-            adjustShift();
-          } else if (comparision > 0) { // advance prod
-            mP = mP.add(1);
-          } else { // match found
-            final Z result = mReturnConc ? mC : mP;
-            mC = mC.add(1);
-            adjustShift();
-            mP = mP.add(1);
-            return result;
-          }
-        }
-*/
     }
   }
 }

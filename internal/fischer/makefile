@@ -2730,6 +2730,7 @@ concprod_subset: # select first of each decision branch (parm5)
 	  GROUP BY s.parm5 \
 	  ORDER BY 1" \
 	| tee    $@.gen
+	grep A116170 concprod.gen | tee -a $@.gen
 #--------------------------------
 crystalb:
 	grep -iE "Crystal ball|Coordination sequence" $(COMMON)/joeis_names.txt | grep -i lattice \
