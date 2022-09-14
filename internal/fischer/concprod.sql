@@ -14,5 +14,5 @@ UPDATE seq4 s SET s.parm7
      WHERE d.aseqno = s.aseqno
   );
 COMMIT;
-DELETE FROM seq4 WHERE parm1 LIKE '%m';
+-- DELETE FROM seq4 WHERE parm1 LIKE '%m';
 COMMIT;

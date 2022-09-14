@@ -2709,8 +2709,20 @@ concprod:
 	head -n4 $@.gen
 	wc -l    $@*
 	grep -E "^A11[56]" $@.rest.tmp || :
-concprod_test:
-	perl concprod.pl 
+concadd:
+	perl concprod.pl concprod0.tmp \
+	| grep -P "\t[pc]a\t" \
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@*
+concmul:
+	perl concprod.pl concprod0.tmp \
+	| grep -P "\t[pc]m\t" \
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@*
 concprod_eval: 
 	make batlog_populate PAT=concprod.fail.log
 	make batlog_eval \
