@@ -8,7 +8,7 @@ import irvine.oeis.SequenceWithOffset;
 
 /**
  * A sequences that enumerates numbers that are formed by the concatenation of two numbers,
- * and that are the product of two other numbers, with conditions on both pairs.
+ * and that are a square or a product of two other numbers, with conditions on both pairs.
  * @author Georg Fischer
  */
 public class ConcatenatedProductSequence implements SequenceWithOffset {
@@ -22,7 +22,6 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
   private final int mDist; // distance of the two factors of the resulting product (0 = square).
   private int mLevel; // 0 for long algorithm, 1 for msolve algorithm
   private long mLP; // unmodified factor of the product
-  private long mLC; // unmodified part of the concatenation
   protected int mOffset; // first index
   private Z mPow10; // determines the width of the left concatenation number k resp. k+mIncr1 resp. k*mIncr1
   private TreeSet<Z> mGood;
@@ -48,11 +47,9 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
     mDist = dist;
     mLP = 1;
     if (mAdditive) {
-      mLC = conc2 == 0 ? 1 : (conc2 > 0 ? 0 : - conc2);
       mLevel = 0;
       mPow10 = Z.valueOf(LIMIT);
     } else {
-      mLC = 1;
       mLevel = 2;
       mPow10 = Z.ONE;
     }
@@ -75,11 +72,6 @@ public class ConcatenatedProductSequence implements SequenceWithOffset {
             final int slen = s.length();
             if (slen > 1) {
               int half = ((slen & 1) == 0) ? slen / 2 : (mIncr1 < mIncr2 ? slen / 2 : (slen + 1) / 2); // half or half - 1
-/*
-              if (!mAdditive && mIncr1 > 1 && (slen & 1) == 0) {
-                ++half;
-              }
-*/
               final String his = s.substring(0, half);
               final String los = s.substring(half);
               if (!los.isEmpty() && !his.isEmpty() && los.charAt(0) != '0') {
