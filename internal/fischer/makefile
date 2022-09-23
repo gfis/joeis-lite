@@ -7321,7 +7321,8 @@ pfprimex:
 prilist:
 	grep -E "(Numbers|Integers)" $(COMMON)/joeis_names.txt \
 	| grep -E 'ers [a-z] (such that|for which) ' \
-	| grep -E 'are *prime' \
+	| grep -P 'are +(all +)?prime' \
+	| grep -P "\tnyi" \
 	>        $@.tmp
 	perl prilist.pl $@.tmp \
 	2>       $@.rest.tmp \

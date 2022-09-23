@@ -30,3 +30,7 @@ A125822	prilist	0	1	8,+1, 8,+3	Numbers k for which 8*k + 1 and 8*k + 3 are twin 
 A139404	prilist	0	0	24,+5, 24,+7	Numbers k such that 24*k + 5 and 24*k + 7 are twin primes.      nonn,changed,   1..10000        nyi     _Artur Jasin
 A139533	prilist	0	0	24,+11, 24,+13	Numbers k such that numbers 24*k + 11 and 24*k + 13 are twin primes.    nonn,changed,   1..10000        nyi     _Art
 A139534	prilist	0	0	24,+17, 24,+19	Numbers k such that numbers 24*k + 17 and 24*k + 19 are twin primes.    nonn,changed,   1..10000        nyi     _Art
+
+# 2022-09-23
+A267123	nyi toG	n+2, n+8, n+32, n+152, n+872, n+5912	Integers n such that n+2!, n+2!+3!, n+2!+3!+4!, n+2!+3!+4!+5!, n+2!+3!+4!+5!+6!, and n+2!+3!+4!+5!+6!+7! are all prime.	nonn,	1..10000	nyi	_Emre APARI_, Jan 10 2016
+A267125	nyi to	n+2, n+8, n+32, n+152, n+872, n+5912, n+46232, n+409112, n+4037912	Numbers n such that n+2!, n+2!+3!, n+2!+3!+4!, n+2!+3!+4!+5!, n+2!+3!+4!+5!+6!, n+2!+3!+4!+5!+6!+7!, n+2!+3!+4!+5!+6!+7!+8!, n+2!+3!+4!+5!+6!+7!+8!+9!, and n+2!+3!+4!+5!+6!+7!+8!+9!+10! are all prime.	nonn,	1..10000	nyi	_Emre APARI_, Jan 10 2016

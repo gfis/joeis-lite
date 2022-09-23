@@ -42,41 +42,58 @@ while (<>) { # from joeis_names.txt
     $parms = "";
     $expr  = ""; 
     ($aseqno, $superclass, $name, @rest) = split(/\t/, $line);
+    $name =~ s{ all }{ }g;
     $name =~ s{ (are|is) primes?}{\; is prime};
     $name =~ s{\,? and }{\, };
     $name =~ s{ for which }{ such that };
     $name =~ s{ such that both }{ such that };
+    $name =~ s{\bp\d+\=}{}g;
+    $name =~ s{10\^(\d+)}{"1" . (0 x $1)}eg;
+    my @pairs = ();
+    my $ok = 1;
     if (0) {
-    #                       1     1           2      2
-    } elsif ($name =~ m{ers ([a-z]) such that ([^\;]+)\; is prime}) {
+    } elsif ($line =~ m{prime power}) {
+        $ok = 0;
+    #                       1     1                    2      2
+    } elsif ($name =~ m{ers ([a-z]) such that [\[\{\(]?([^\;]+)[\]\}\)]?\; is prime}) {
         $letter = $1;
         $expr   = $2;
         $expr   =~ s{$letter}{k}g;
-        my $ok = 1;
-        my @pairs = map {
+        $expr   =~ s{ }{}g; # remove spaces
+        #              1   1   2      2        3          3
+        if ($expr =~ m{(\d+)\*k([\+\-])[\[\{\(]([^\]\}\)]+)[\]\}\)]}) {
+            my ($mul, $sign, $list) = ($1, $2, $3);
+            @pairs = map {
+                "$mul\*k$sign$_"
+                } split(/\,/, $list);
+            $expr = join(",", @pairs);
+        }
+        @pairs = map {
             my $pair = $_;
-            $pair =~ s{ }{}g;          # remove spaces
-            $pair =~ s{\Ak}{1\*k};     # prefix with "1*"
-            $pair =~ s{k\Z}{k\+0};     # append "+0"
-            $pair =~ s{(\d)k}{$1\*k}g; # insert "*"
-            $pair =~ s{\*k}{\,}g;
-            if ($pair !~ m{\A\d+\,[\+\-]\d+\Z}) {
+            $pair =~ s{k\*(\d+)}{$1\,}g;   # put constant in front
+            $pair =~ s{\Ak}{1\*k};         # prefix with "1*"
+            $pair =~ s{k\Z}{k\+0};         # append "+0"
+            $pair =~ s{(\d)k}{$1\*k}g;     # insert "*"
+            $pair =~ s{\*k}{\,}g;          # k -> ","
+            $pair =~ s{(\d{6})\,}{${1}L\,}g; # force longer ints to long 
+            if ($pair !~ m{\A\d+L?\,[\+\-]\d+\Z}) {
                 $ok = 0;
             }
             $pair
             } split(/\, ?/, $expr);
-        $callcode = "prilist";
-        if ($ok == 1) {
-            print        join("\t", $aseqno, $callcode, 0, 1, join(", ", @pairs), $name, $superclass) . "\n";
-        } else {
-            print STDERR join("\t", $aseqno, "nok $ok", 0, 1, join(", ", @pairs), $name, $superclass) . "\n";
-        }
+    } else {
+        $ok = 0;
+    }
+    $callcode = "prilist";
+    if ($ok == 1) {
+        print        join("\t", $aseqno, $callcode, 0, 1, join(", ", @pairs), $name, $superclass) . "\n";
     } else {
         print STDERR "$line\n";
     }
 } # while <>
 #================
 __DATA__
+A063799	nyi o	Numbers k such that (k+3, k+5, k+17, k+257, k+65537) are all primes.	easy,nonn,	1..1000	nyi	_Felice Russo_, Aug 20 2001
 A123983	nyi pt	Numbers k for which 8*k+1, 8*k+5, 8*k+7 and 8*k+11 are primes.	nonn,changed,	1..10000	nyi	_Artur Jasinski_, Oct 30 2006
 A123985	nyi to	Numbers n for which 12n+1, 12n+5, 12n+7 and 12n+11 are primes.	nonn,changed,	1..1000	nyi	_Artur Jasinski_, Oct 30 2006
 A123987	nyi t	Numbers k for which 14*k+1, 14*k+5, 14*k+11 and 14*k+13 are primes.	nonn,changed,	1..10000	nyi	_Artur Jasinski_, Oct 30 2006
@@ -84,4 +101,4 @@ A123990	nyi t	Numbers k for which 16*k+1, 16*k+3, 16*k+7, 16*k+13 and 16*k+15 ar
 A123992	nyi pt	Numbers k such that 16*k+1, 16*k+3 and 16*k+13 are primes.	nonn,changed,	1..10000	nyi	_Artur Jasinski_, Oct 30 2006
 A123997	nyi t	Numbers k for which 16*k+1, 16*k+3 and 16*k+15 are primes.	nonn,changed,	1..10000	nyi	_Artur Jasinski_, Oct 31 2006
 A123998	nyi to	Numbers k such that 2k+1 and 4k+1 are primes.	nonn,easy,changed,	1..1000	nyi	_Artur Jasinski_, Oct 31 2006
-A
+A100418	nyi to	Numbers k such that 30*k + {1,11,13,17,19,23,29} are all prime.	easy,nonn,changed,	1..10309	nyi	Ferenc Adorjan (fadorjan(AT)freemail.hu), Nov 19 2004
