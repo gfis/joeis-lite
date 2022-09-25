@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-09-25: V4.7: recur.{Period|Padding}Sequence
 # 2022-05-05: V4.6: ZString
 # 2022-05-05: V4.5: IntegerUtils
 # 2022-06-17: V4.4, generate for prog/gp
@@ -57,7 +58,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V4.6";
+my $version_id  = "gen_seq4.pl V4.7";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -358,9 +359,9 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WComputableReals} ) { $imports{"irvine.math.cr.ComputableReals"}        = $itype; }
     if ($line =~ m{\WUnaryCRFunction} ) { $imports{"irvine.math.cr.UnaryCRFunction"}        = $itype; }
     if ($line =~ m{\WAbsoluteSequence}) { $imports{"irvine.oeis.AbsoluteSequence"  }        = $itype; }
-    if ($line =~ m{\WLinearRecurrence}) { $imports{"irvine.oeis.LinearRecurrence"  }        = $itype; }
-    if ($line =~ m{\WPaddingSequence} ) { $imports{"irvine.oeis.PaddingSequence"   }        = $itype; }
-    if ($line =~ m{\WPeriodicSequence}) { $imports{"irvine.oeis.PeriodicSequence"  }        = $itype; }
+    if ($line =~ m{\WLinearRecurrence}) { $imports{"irvine.oeis.recur.LinearRecurrence"}    = $itype; }
+    if ($line =~ m{\WPaddingSequence} ) { $imports{"irvine.oeis.recur.PaddingSequence" }    = $itype; }
+    if ($line =~ m{\WPeriodicSequence}) { $imports{"irvine.oeis.recur.PeriodicSequence"}    = $itype; }
     if ($line =~ m{\WPrependSequence} ) { $imports{"irvine.oeis.PrependSequence"   }        = $itype; }
     if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }        = $itype; }
     if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}        = $itype; }

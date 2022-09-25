@@ -556,6 +556,18 @@ anabuild: #.2022-09-06:
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
+	echo A202670 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	cp -pv hold/*.java manual
+	make CC=man        man
+	make CC=$@ dist testall pack 
+anabuild.2022-09-06: 
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
 	echo concsimple \
 	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
 	grep -vE "A999999" build.tmp \
@@ -1633,6 +1645,7 @@ A202670: # self-fusion matrices = correlation triangles
 	cd $(TRIREC); make trigB
 	grep trig_b1 $(TRIREC)/trigB.tmp \
 	| sed -e "s/\ttrig_b1\t/\tparm3\t/" -e "s/\trseqno\t/\tA202670\t/" \
+	| sed -e "s/\tparm/\tparmof/" \
 	| sort | uniq -w7 \
 	| grep -vE "^A0" \
 	>        $@.gen
@@ -2506,16 +2519,6 @@ cfsper:
 # A013649	Period of continued fraction for sqrt(n) contains exactly two 1's.
 # A013650	Period of continued fraction for sqrt(n) contains exactly three 1's.
 # A013651	Period of continued fraction for sqrt(n) contains at least two 1's.
-# A013652	Period of continued fraction for sqrt(n) contains at least three 1's.
-# A020440	Period of continued fraction for sqrt(n) contains exactly four 1's.
-# A020441	Period of continued fraction for sqrt(n) contains exactly five 1's.
-# A020442	Period of continued fraction for sqrt(n) contains exactly six 1's.
-# A020443	Period of continued fraction for sqrt(n) contains exactly seven 1's.
-# A020444	Period of continued fraction for sqrt(n) contains exactly eight 1's.
-# A020445	Period of continued fraction for sqrt(n) contains exactly nine 1's.
-# A020446	Period of continued fraction for sqrt(n) contains exactly ten 1's.
-# A031779	Period of continued fraction for sqrt(n) contains exactly 11 ones.
-# A031780	Period of continued fraction for sqrt(n) contains exactly 12 ones.
 # PARM1="==" PARM2=11 PARM3=1
 cfspercount:
 	perl -ne \
@@ -4708,6 +4711,15 @@ palidsum:
 	cp -v $@.man $@.gen
 fact1dig:
 	cp -v $@.man $@.gen
+#----
+period1: # select a few PeriodicSequence with offset != 0
+	$(DBAT) "SELECT i.aseqno, 'period1', i.offset1, n.name \
+	  FROM asinfo i, asname n \
+	  WHERE i.aseqno = n.aseqno \
+	    AND i.aseqno IN (SELECT aseqno FROM joeis WHERE superclass = 'PeriodicSequence') \
+	    AND i.offset1 <> 0 \
+	  ORDER BY 1" \
+	| tee $@.tmp
 #----
 perman: # Permanents with A085244
 	grep -E "^A[0-9]" $@.man > $@.gen
