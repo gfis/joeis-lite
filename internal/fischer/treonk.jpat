@@ -10,7 +10,12 @@ import irvine.math.z.Z;
 public class $(ASEQNO) extends $(PARM1) {
 
   private int mN = $(PARM2) - 1;
-  
+
+  @Override
+  public int getOffset() {
+    return $(PARM2);
+  }
+
   @Override
   public Z next() {
     ++mN;

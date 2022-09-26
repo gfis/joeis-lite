@@ -552,17 +552,18 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-09-06: 
+anabuild: #.2022-09-26: 
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
-	echo A202670 \
+	echo A261719 A261781 A261836 A306800 \
 	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
 	grep -vE "A999999" build.tmp \
 	| sort | uniq -w7 > build.man
 	make CC=build      select EX=xx gener
 	cp -pv hold/*.java manual
 	make CC=man        man
+	cmd /c jodel.cmd A239368
 	make CC=$@ dist testall pack 
 anabuild.2022-09-06: 
 	make purge
@@ -5479,9 +5480,10 @@ offinspect1: # select the eligible programs
 	wc -l    $@.tmp
 offinspect2: # run the  OffsetInspector and determine old and new offsets
 	$(JAVA) irvine.oeis.OffsetInspector offinspect1.tmp \
-	| tee    $@.txt
-	wc -l    $@.txt
-	cut -f3 offinspect2.txt | sort | uniq -c | sort -n | grep -vP "\A\s+1\s" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	cp -v    $@.tmp $@.txt
+	cut -f3 offinspect2.tmp | sort | uniq -c | sort -n | grep -vP "\A\s+1\s" \
 	| tee -a $@.txt
 #----
 offinsp1:
