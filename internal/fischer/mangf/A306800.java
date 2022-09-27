@@ -12,8 +12,8 @@ import irvine.oeis.triangle.UpperLeftTriangle;
 public class A306800 extends UpperLeftTriangle {
 
   /** Construct the sequence. */
-  public A306800 () {
-    super(0, 0, -1);
+  public A306800() {
+    super(1, 0, 0, -1);
     hasRAM(true);
   }
 
@@ -41,7 +41,7 @@ public class A306800 extends UpperLeftTriangle {
       return sum;
     }
   };
- 
+
   @Override
   public Z matrixElement(final int n, final int k) {
     return mB.get(n, n, k);

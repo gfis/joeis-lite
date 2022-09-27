@@ -552,7 +552,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-09-26: 
+anabuild: #.2022-09-27: 
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select EX=xx gener
+	cp -pv hold/*.java manual
+	make CC=man        man
+	make CC=$@ dist testall pack 
+anabuild.2022-09-26: 
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -5472,7 +5484,9 @@ nisoman:
 	cp -v nisolut.man $@.gen
 #--------
 # Check whether SequenceWithOffset returns the proper offset
-offinspect: offinspect1 offinspect2
+offinspect: offinspect_update offinspect1 offinspect2
+offinspect_update:
+	$(DBAT) "UPDATE asinfo SET offset1 = 1 WHERE aseqno IN ('A049032','A102156','A102768','A155809','A157202','A188459');"
 offinspect1: # select the eligible programs
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
 	>        $@.tmp

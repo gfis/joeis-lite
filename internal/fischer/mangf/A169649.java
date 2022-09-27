@@ -15,7 +15,7 @@ public class A169649 extends FiveNeighbor2DAutomaton {
   /** Construct the sequence. */
   public A169649() {
     super(-1, 942);
-    mN = -2;
+    mN = getOffset() - 1;
   }
 
   @Override

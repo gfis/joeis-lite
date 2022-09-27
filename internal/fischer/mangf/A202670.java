@@ -4,6 +4,7 @@ package irvine.oeis.a202;
 import irvine.math.z.Z;
 import irvine.oeis.MemorySequence;
 import irvine.oeis.Sequence;
+import irvine.oeis.SequenceWithOffset;
 import irvine.oeis.a000.A000290;
 import irvine.oeis.triangle.UpperLeftTriangle;
 
@@ -12,32 +13,40 @@ import irvine.oeis.triangle.UpperLeftTriangle;
  * This is the prototype for an array called "self-fusion matrix" by Kimberling.
  * @author Georg Fischer
  */
-public class A202670 extends UpperLeftTriangle {
+public class A202670 extends UpperLeftTriangle implements SequenceWithOffset {
 
   protected final MemorySequence mSeq;
   protected final int mSkip;
+  private int mOffset;
 
   /** Construct the sequence. */
   public A202670() {
-    this(new A000290(), 1);
+    this(1, new A000290(), 1);
   }
 
   /**
    * Generic constructor with parameters
+   * @param offset first index
    * @param seq underlying Sequence
    * @param skip number of terms in <code>mSeq</code> to be skipped.
    * 
    */
-  public A202670(final Sequence seq, int skip) {
+  public A202670(final int offset, final Sequence seq, final int skip) {
     super(1, 1, -1);
+    mOffset = offset;
     mSeq = MemorySequence.cachedSequence(seq);
     mSkip = skip;
+  }
+
+  @Override
+  public int getOffset() {
+    return mOffset;
   }
 
   /**
    * Access the underlying Sequence with shifted offset.
    * The underlying sequence is addressed as if it had offset 1, 
-   * while the resulting triangle starts with <code>T(0,0)</code>.
+   * while the resulting triangle starts with <code>T(0, 0)</code>.
    * @param n index
    * @return <code>mSeq(n - 1)</code> if <code>n &gt;= 1</code>, 0 otherwise.
    */
@@ -45,13 +54,12 @@ public class A202670 extends UpperLeftTriangle {
     return n + mSkip < 0 ? Z.ZERO : mSeq.a(n + mSkip);
   }
   
-  @Override
   /**
    * Computes a triangle element.
    * @param i row number, 1-based
    * @param j column number, 1-based
    * @return UpperLeftTriangle element <code>T(i, j)</code>
-   * The elements are inner product sums of terms in the underlying sequence 1,4,9,16.
+   * The elements are inner product sums of terms in the underlying sequence 1, 4, 9, 16.
    * <pre>
    * Triangle order:
    * n/k  0         1         2         3
@@ -69,6 +77,7 @@ public class A202670 extends UpperLeftTriangle {
    *  3   149G.0001   
    * </pre>
    */
+  @Override
   public Z matrixElement(final int i, final int j) {
     final int n = i - mRow0;
     final int k = j - mCol0;
