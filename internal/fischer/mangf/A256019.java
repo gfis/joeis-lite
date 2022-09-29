@@ -14,7 +14,12 @@ public class A256019 extends A255433 {
   {
     super.next();
   }
-  
+
+  @Override
+  public int getOffset() {
+    return 1;
+  }
+
   @Override
   public Z next() {
     ++mN;

@@ -84,7 +84,7 @@ killmake:
 #----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
-	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) -D $(A)               2>&1   | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) -D $(A) --data-length=4096 2>&1   | tee x.tmp
 seqte: # A=$(A) - test with errors
 	$(JAVA) irvine.test.SequenceTest    $(A)               -n $(NT) -o $(OFFSET)                       2>&1   | tee x.tmp
 seqtri: # A=$(A) - print data in triangle format
@@ -3475,7 +3475,7 @@ fholo:
 	grep $(A) holink.gen | tee x.tmp
 	$(HOLT) -n $(NT) -f x.tmp
 runholo:
-	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFF) -d $(D) -dist $(DIST) -t $(GFTYPE) $(BF)
+	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFF) -d $(D) -dist $(DIST) -t $(GFTYPE) $(GF)
 parmholo:
 	perl -e 'print join("\t", $(A), "holos", $(OFF), "$(MATRIX)", "$(INIT)", 0) . "\n";' >> $@.tmp
 runmorf:
@@ -4063,6 +4063,15 @@ holrefpow:
 	      ORDER BY 1;" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+#--------
+# get all signatures form lrindex recreation
+holsig:
+	grep -E "^A[0-9]" $(COMMON)/../lrindex/lrindx_nyi_check.txt \
+	| perl sig_matrix.pl \
+	>        $@.gen \
+	2>       $@.holo.run
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 hygsolve0:
 	grep -E "runholo" $(HOLREC)/hygsolve2.tmp \
@@ -5486,7 +5495,7 @@ nisoman:
 # Check whether SequenceWithOffset returns the proper offset
 offinspect: offinspect_update offinspect1 offinspect2
 offinspect_update:
-	$(DBAT) "UPDATE asinfo SET offset1 = 1 WHERE aseqno IN ('A049032','A102156','A102768','A155809','A157202','A188459');"
+	# $(DBAT) "UPDATE asinfo SET offset1 = 1 WHERE aseqno IN ('A049032','A102156','A102768','A155809','A157202','A188459');"
 offinspect1: # select the eligible programs
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
 	>        $@.tmp

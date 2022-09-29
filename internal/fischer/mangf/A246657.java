@@ -12,7 +12,13 @@ import irvine.oeis.a129.A129164;
 public class A246657 extends A129164 {
 
   private int mN = -1;
-  
+
+  @Override
+  public int getOffset() {
+    return 0;
+  }
+
+  /** Construct the sequence. */
   public Z next() {
     ++mN;
     return mN == 0 ? Z.ZERO : new Q(super.next(), Z.valueOf(mN)).round();

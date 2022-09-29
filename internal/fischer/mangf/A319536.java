@@ -1,5 +1,5 @@
 package irvine.oeis.a319;
-// manually cordrectab/cordrec at 2022-07-15 07:53
+// manually cordrectab/cordrec at 2022-07-15
 
 import irvine.math.z.Z;
 import irvine.oeis.Sequence;
@@ -14,11 +14,16 @@ import irvine.oeis.a271.A271212;
 public class A319536 extends A271212 {
 
   private final Sequence mSeq = new A000165();
-  
+
   /** Construct the sequence */
   public A319536() {
     super.next();
     mSeq.next();
+  }
+
+  @Override
+  public int getOffset() {
+    return 1;
   }
 
   @Override
