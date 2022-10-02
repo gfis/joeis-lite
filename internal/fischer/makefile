@@ -23,11 +23,12 @@ COMMON=$(GITS)/OEIS-mat/common
 CONSTANT=$(GITS)/OEIS-mat/constant
 CONTRIB=$(GITS)/OEIS-mat/contrib
 COORS=$(GITS)/OEIS-mat/coors
-LINREC=$(GITS)/OEIS-mat/linrec
 HOLREC=$(GITS)/OEIS-mat/holrec
-WEIDIS=$(GITS)/OEIS-mat/weidis
+LINREC=$(GITS)/OEIS-mat/linrec
+PL=$(CONTRIB)/pl
 SDB=$(GITS)/OEIS-mat/sequencedb
 TRIREC=$(GITS)/OEIS-mat/trirec
+WEIDIS=$(GITS)/OEIS-mat/weidis
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar
 JPREP=$(RAMATH)  org.teherba.ramath.sequence.JoeisPreparer
@@ -7247,6 +7248,20 @@ partsumm: # manual partsum
 	sort $@.man | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------
+# PL's PartitionTransform
+partran0: # select those pairs where the finding does not occur too often
+	make seq4 LIST=$(PL)/ptsr_join.tmp
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset1, s.parm1, i.author, n.name \
+	  FROM seq4 s, asinfo i, asname n \
+	  WHERE s.aseqno = i.aseqno \
+	    AND i.aseqno = n.aseqno \
+	    ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+partran:
+	cp -v partran0.tmp partran.gen
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
