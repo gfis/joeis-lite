@@ -213,7 +213,7 @@ public class BatchTest {
     } catch (Throwable exc) {
       failure = 1; // FAIL
       // failCount ++;
-      String trace = getShortTrace(exc).substring(2);
+      String trace = getShortTrace(exc);
       if (trace.length() > 64) {
           trace = trace.substring(0,64);
       }

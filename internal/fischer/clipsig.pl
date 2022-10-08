@@ -43,4 +43,6 @@ print "sig=" . join(", ", @terms) . "\n";
 print "rev=" . join(", ", @revte) . "\n";
 print "sig=" . join(",",  @terms) . "\n";
 print "rev=" . join(",",  @revte) . "\n";
+print "    super(0, \"[0,"        . join(",",  @revte) . ",-1]\", \"1\", 0);\n";
+print "make runholo MATRIX=\"[0," . join(",",  @revte) . ",-1]\" INIT=\"1\" OFF=0\n";
 __DATA__

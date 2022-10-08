@@ -41,10 +41,13 @@ public class PartitionTransformTriangle extends BaseTriangle {
    * @param accu whether the input terms should by multiplicatively accumulated
    */
   public PartitionTransformTriangle(final int offset, final Sequence seq, final boolean inverse, final boolean accu) {
-    super(offset, 0, 0); // no row or column shift
+    super(offset, 0, 0, n -> n + 1); // no row or column shift
     mSeq = MemorySequence.cachedSequence(seq);
     mInverse = inverse;
     mAccu = accu;
+    if (! mInverse) {
+      next();
+    }
   }
 
   /**
@@ -57,8 +60,7 @@ public class PartitionTransformTriangle extends BaseTriangle {
     if (k > n || k < 0) {
       return Z.ZERO;
     } else if (n == 0) {
-      mLastRow = new Z[] { Z.ONE };
-      return mLastRow[0];
+      return Z.ONE;
     } else if (n == mRow && k <= mCol) {
       return mLastRow[k];
     } 
@@ -70,26 +72,35 @@ public class PartitionTransformTriangle extends BaseTriangle {
    * Increase the row index, add a new, empty row and reset the column index.
    * The row length is <code>mRow + 1</code>.
    */
+  @Override
   protected void addRow() {
+    super.addRow();
+  /*
     ++mRow;
     mRowLen = mSizeFct.apply(mRow);
     add(new Z[mRowLen]);
     mLastRow = get(mRow);
+    mCol = 0;
+  */
+    // System.out.println("addRow, mRow=" + mRow + ", mRowLen=" + mRowLen + ", mLastRow.length=" + mLastRow.length);
     int k = mRowLen - 1;
-    final int m = mRow;
-    Z sum = Z.ZERO;
+    final int m = k;
     if (mInverse) {
-      mLastRow[k] = get(m - 1, m - 1).divide(mSeq.a(0));
+      mLastRow[k--] = get(m - 1, m - 1).divide(mSeq.a(0));
+      // System.out.println("inverse, m=" + m + ", k=" + k + ", a(0)=" + mSeq.a(0) + ", mLastRow.length=" + mLastRow.length);
       while (k >= 0) {
+        Z sum = Z.ZERO;
         for (int i = 0; i <= m - k + 1; ++i) {
-          sum = sum.add(mSeq.a(i).multiply(mLastRow[k + i]));
+          sum = sum.add(mSeq.a(i).multiply(k + i > m || mLastRow[k + i] == null ? Z.ZERO : mLastRow[k + i]));
         }
         mLastRow[k] = get(m - 1, k - 1).subtract(sum).divide(mSeq.a(0));
         --k;
       }
     } else { // not inverse
-      mLastRow[k] = get(m - 1, m - 1).multiply(mSeq.a(0));
+      mLastRow[k--] = get(m - 1, m - 1).multiply(mSeq.a(0));
+      // System.out.println("m=" + m + ", k=" + k + ", a(0)=" + mSeq.a(0) + ", mLastRow.length=" + mLastRow.length);
       while (k >= 0) {
+        Z sum = Z.ZERO;
         for (int i = 0; i <= m - k + 1; ++i) {
           sum = sum.add(mSeq.a(i).multiply(get(m - i - 1, k - 1)));
         }
@@ -97,7 +108,19 @@ public class PartitionTransformTriangle extends BaseTriangle {
         --k;
       }
     }
-    mCol = 0;
+  }
+
+  /**
+   * Compute an element of the triangle.
+   * The requirement is that all previous elements <code>T(0..n-1,k), T(n,0..k-1)</code>were already computed.
+   * The default implementation here is Pascal's rule.
+   * @param n row number
+   * @param k column number
+   * @return T(n,k)
+   */
+  @Override
+  protected Z compute(final int n, final int k) {
+    return mLastRow[k];
   }
 
   /**
@@ -107,7 +130,25 @@ public class PartitionTransformTriangle extends BaseTriangle {
    * @param k shifted column index
    * @return T(n, k)
    */
+  @Override
   public Z triangleElement(final int n, final int k) {
     return get(n, k);
+  }
+
+  /**
+   * Return next term, reading the triangle row by row from left to right, starting with T(0,0).
+   * @return the next term of the sequence.
+   */
+  @Override
+  public Z next() {
+    ++mCol;
+    // System.out.println("next, mCol=" + mCol + ", mRow=" + mRow + ", mRowLen=" + mRowLen);
+    if (mCol >= mRowLen) {
+      addRow();
+    }
+    if (! mInverse && mCol == 0 && mRow >= 1) {
+      ++mCol;
+    }
+    return mInverse && mRow <= 0 ? Z.ONE : mLastRow[mCol];
   }
 }

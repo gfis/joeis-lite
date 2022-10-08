@@ -5493,6 +5493,40 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 #--------
+# Extract minimal linear recurrences for all not in table holref
+lrixamine: purge dist lrixamine1 lrixamine2 lrixamine4
+lrixamine1: # select the eligible programs
+	$(DBAT) -x "SELECT a.aseqno, '$@', a.offset1, i.signature, 0, j.superclass \
+	  FROM asinfo a, lrindx i, joeis j \
+	  WHERE a.aseqno = 'A' || i.seqno \
+	    AND a.aseqno = j.aseqno \
+	    AND a.aseqno NOT IN (SELECT aseqno FROM holref) \
+	    AND LENGTH(i.signature) >= 1 \
+	    AND i.signature NOT LIKE '%.%' \
+	  ORDER BY 1" \
+	| sed -e "s/ //g" \
+	| 
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+lrixamine2: #   run the LinearRecurrenceInspector and determine the parameters for HolonomicRecurrence
+	cat lrixamine1.tmp \
+	| grep -vE "A001224" \
+	| grep -vE "A005784|A005785|A005943|A036517|A048345|A068616|A068617|A079921"
+	| $(JAVA) irvine.oeis.LinearRecurrenceInspector -f - -n 16 \
+	2>       $@.err.tmp \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+lrixamine_test: # run the LinearRecurrenceInspector with a few test cases
+	$(JAVA) irvine.oeis.LinearRecurrenceInspector -d 2 -n 16 -f lrixamine1.man \
+	| tee x.tmp
+lrixamine3:
+	sort lrixamine2.tmp \
+	| grep -vE "A005785|A157074" \
+	| uniq -w7 > $@.gen
+lrixamine4: # full test
+	make CC=lrixamine3 select EX=xx gener distel
+#--------
 # Check whether SequenceWithOffset returns the proper offset
 offinspect: offinspect_update offinspect1 offinspect2
 offinspect_update:
@@ -7260,8 +7294,22 @@ partran0: # select those pairs where the finding does not occur too often
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-partran:
+#--
+partran: # PartitionSTransformTriagle from some generator sequence
 	cp -v partran0.tmp partran.gen
+#--
+partralr: # check the ones with ls != 1(,1)+ and rs == 1(,1)+
+	grep -P "\tName\t" $(TRIREC)/modlr.tmp \
+	| sed -e "s/Name/partralr/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+partrarl: # check the ones with ls == 1(,1)+ and rs != 1(,1)+ and transpose them
+	grep -P "\tName\t" $(TRIREC)/modrl.tmp \
+	| sed -e "s/Name/partrarl/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
