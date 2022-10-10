@@ -5493,6 +5493,42 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 #--------
+# For ContinuedFractionSequence, determine the underlying DecimalExpansionSequence
+cofrefl: cofrefl1 cofrefl2
+cofrefl1:
+	$(DBAT) -x "SELECT a.aseqno, 'cofr', a.offset1 \
+	  FROM asinfo a, joeis j \
+	  WHERE a.aseqno = j.aseqno \
+	    AND j.superclass = 'ContinuedFractionSequence' \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+cofrefl2:
+	cat cofrefl1.tmp \
+	| $(JAVA) irvine.oeis.ConstantReflector -f - 
+	2>       $@.err.tmp \
+	| tee    $@.tmp
+	wc -l    $@*.tmp
+#--------
+# For ContinuedFractionSequence, determine the underlying DecimalExpansionSequence
+dexrefl: dexrefl1 dexrefl2
+dexrefl1:
+	$(DBAT) -x "SELECT a.aseqno, 'exp', a.offset1 \
+	  FROM asinfo a, joeis j \
+	  WHERE a.aseqno = j.aseqno \
+	    AND j.superclass = 'DecimalExpansionSequence' \
+	  ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+dexrefl2:
+	grep -vE "A002210|A00471[0-7]|A00559[67]|A013705|A027606|A028999|A030171|A051762|A111197|A258815" dexrefl1.tmp \
+	| $(JAVA) irvine.oeis.ConstantReflector -f - 
+	2>       $@.err.tmp \
+	| tee    $@.tmp
+	wc -l    $@*.tmp
+#--------
 # Extract minimal linear recurrences for all not in table holref
 lrixamine: purge dist lrixamine1 lrixamine2 lrixamine4
 lrixamine1: # select the eligible programs
@@ -5505,7 +5541,6 @@ lrixamine1: # select the eligible programs
 	    AND i.signature NOT LIKE '%.%' \
 	  ORDER BY 1" \
 	| sed -e "s/ //g" \
-	| 
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -7310,6 +7345,16 @@ partrarl: # check the ones with ls == 1(,1)+ and rs != 1(,1)+ and transpose them
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+partralr_eval:
+	grep FATAL partralr.fail.log | cut -b1-7 \
+	| sed -e "s/^/\^/" \
+	| tee    $@.1.tmp
+	grep -E --file=$@.1.tmp $(TRIREC)/modlr.tmp | grep -E "LeftSide|Name" \
+	| perl -pe "s/^[^\:]:\://" \
+	>        $@.2.tmp
+	perl partra_join.pl -lr -md $@.2.tmp \
+	| tee    $@.tmp
+	wc -l    $@.tmp
 #--------------------------
 polyn:
 	cat $(COMMON)/names \
