@@ -553,15 +553,16 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-09-27: 
+anabuild: #.2022-10-12: # *IP=48
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
-	echo A \
+	echo A152578 A204574 A246708 A255636 \
 	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
 	grep -vE "A999999" build.tmp \
 	| sort | uniq -w7 > build.man
-	make CC=build      select EX=xx gener
+	make CC=build      select       gener
+	make CC=A046005    select EX=xx gener
 	cp -pv hold/*.java manual
 	make CC=man        man
 	make CC=$@ dist testall pack 

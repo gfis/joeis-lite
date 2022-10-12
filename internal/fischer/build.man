@@ -1,56 +1,55 @@
-# %Y A261719 Cf. A060642, A261718, A261781 (same for compositions).
-# 2022-05-15 dependants of A306800:
-# A000007	arronk	0	A306800	0	mN	0	
-# A000142	arronk	0	A306800	0	mN	1	
-# A000312	arronk	0	A306800	0	mN	0	
-# A000670	treonk	0	A261781	0	mN	0	Main diagonal
-# A005651	treonk	0	A261719	0	mN	mN	Main diagonal
-# A012244	arronk	0	A306800	0	mN	2	
-# A032011	treonk	0	A261836	0	mN	mN	Main diagonal
-# A035341	rowsums	0	A261719	0	mN	0	Row sums
-# A060642	treonk	0	A261719	0	mN	0	Cf.
-# A083385	treonk	0	A261781	0	mN	0	T(n+1,n)/2
-# A209289	arronk	0	A306800	0	mN	0	Number of functions with preimage condition given by the even nonnegative integers: 
-# A245413	arronk	0	A306800	0	mN	0	Similar array for preimage condition {i>=0 | i!=k}: 
-# A261718	treonk	0	A261719	0	mN	1	Cf.
-# A261835	treonk	0	A261836	0	mN	1	Cf.
-A120733	rowsums	0	A261781	0	mN	0	Row sums
-A131577	treonk	0	A261781	0	mN	1	
-A239368	arronk	0	A306800	0	mN	3	
-A261732	treonk	0	A261719	0	2*mN	mN	T(2n,n)
-A261784	treonk	0	A261781	0	2*mN	mN	T(2n,n)
-A261828	treonk	0	A261836	0	2*mN	mN	T(2n,n)
-A261838	rowsums	0	A261836	0	mN	0	Row sums
-A261853	treonk	0	A261836	2	mN	2	
-A261854	treonk	0	A261836	3	mN	3	
-A261855	treonk	0	A261836	4	mN	4	
-A261856	treonk	0	A261836	5	mN	5	
-A261857	treonk	0	A261836	6	mN	6	
-A261858	treonk	0	A261836	7	mN	7	
-A261859	treonk	0	A261836	8	mN	8	
-A261860	treonk	0	A261836	9	mN	9	
-A261861	treonk	0	A261836	10	mN	10	
-A293366	treonk	0	A261719	2	mN	2
-A293367	treonk	0	A261719	3	mN	3
-A293368	treonk	0	A261719	4	mN	4
-A293369	treonk	0	A261719	5	mN	5
-A293370	treonk	0	A261719	6	mN	6
-A293371	treonk	0	A261719	7	mN	7
-A293372	treonk	0	A261719	8	mN	8
-A293373	treonk	0	A261719	9	mN	9
-A293374	treonk	0	A261719	10	mN	10
-A293579	treonk	0	A261781	2	mN	2	
-A293580	treonk	0	A261781	3	mN	3	
-A293581	treonk	0	A261781	4	mN	4	
-A293582	treonk	0	A261781	5	mN	5	
-A293583	treonk	0	A261781	6	mN	6	
-A293584	treonk	0	A261781	7	mN	7	
-A293585	treonk	0	A261781	8	mN	8	
-A293586	treonk	0	A261781	9	mN	9	
-A293587	treonk	0	A261781	10	mN	10	
-A324804	arronk	0	A306800	0	mN	4	
-A324805	arronk	0	A306800	0	mN	5	
-A324806	arronk	0	A306800	0	mN	6	
-A324807	arronk	0	A306800	0	mN	7	
-A324808	arronk	0	A306800	0	mN	8	
-A324809	arronk	0	A306800	0	mN	9	
+# %Y A255636 Cf. A255704.
+# 2022-10-03 dependants of A255636:
+# A000081	treonk	0	A255636	0	mN	0	Main diagonal
+# A103581	parm3	0	A204574	new A102371()	2	 written in base 2.
+# A255704	treonk	0	A255636	0	mN	0	Cf.
+A002955	arronk	0	A255636	1	mN	2	
+A052321	arronk	0	A255636	1	mN	3	
+A052327	arronk	0	A255636	1	mN	4	
+A052328	arronk	0	A255636	1	mN	5	
+A052329	arronk	0	A255636	1	mN	6	
+A061561	parm3	0	A204574	new A058042()	2		
+A063524	arronk	0	A255636	1	mN	1	
+A072805	parm3	0	A204574	new A002145()	3		Primes of form 4k+3 written in base 3.
+A086994	parm3	0	A204574	new A000796()	2
+A086996	parm3	0	A204574	new A001113()	2
+A103175	parm3	0	A204574	new A001787()	2	 written in base 2.
+A152578	parmof2	0	A152578	5	Numbers of the form 5^(2^n) + 2.	nonn,synth	1..7	nyi	_Cino Hilliard_, Dec 08 2008
+A152580	parmof2	0	A152578	7	a(n) = 7^(2^n) + 2.	nonn,easy,synth	0..5	nyi	_Cino Hilliard_, Dec 08 2008
+A152582	parmof2	0	A152578	9	Numbers of the form 9^(2^n) + 2.	nonn,changed,synth	1..7	nyi	_Cino Hilliard_, Dec 08 2008
+A152583	parmof2	0	A152578	11	Numbers of the form 11^(2^n) + 2.	nonn,synth	1..7	nyi	_Cino Hilliard_, Dec 08 2008
+A152586	parmof2	0	A152578	13	Numbers of the form 13^(2^n) + 2.	nonn,synth	1..7	nyi	_Cino Hilliard_, Dec 08 2008
+A152588	parmof2	0	A152578	15	15^(2^n) + 2.	nonn,synth	0..6	nyi	_Cino Hilliard_, Dec 08 2008
+A152591	parmof2	0	A152578	17	17^(2^n) + 2.	easy,nonn,synth	0..6	nyi	_Cino Hilliard_, Dec 08 2008
+A169631	parm3	0	A204574	new A005132()	2	 bin
+A204574	parm4	0	A204574	new A001541()	2	0	written in binary
+A204575	parm3	0	A204574	new A055792()	2		written in binary
+A204576	parm4	0	A204574	new A084703()	2	0	written in binary
+A204577	parm4	0	A204574	new A001542()	2	0	written in binary
+A246708	parmof3	0	A246708	6	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A246709	parmof3	0	A246708	7	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A246711	parmof3	0	A246708	10	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A255637	arronk	0	A255636	1	mN	7	
+A255638	arronk	0	A255636	1	mN	8	
+A255639	arronk	0	A255636	1	mN	9	
+A255640	arronk	0	A255636	1	mN	10	
+A259883	parm3	0	A204574	new A005204()	2	 written in base 2.
+A264663	parm3	0	A204574	new A000108()	2	Catalan numbers written in base 2.
+A287014	parm3	0	A204574	new A000110()	2	
+A291962	parmof3	0	A204574	new A002275()	2	Decimal repunits written in base (\d+)	m	i				
+A351208	parmof3	0	A246708	11	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351209	parmof3	0	A246708	12	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351210	parmof3	0	A246708	13	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351211	parmof3	0	A246708	14	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351212	parmof3	0	A246708	15	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351213	parmof3	0	A246708	16	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351214	parmof3	0	A246708	17	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351215	parmof3	0	A246708	18	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351216	parmof3	0	A246708	19	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A351217	parmof3	0	A246708	20	3	Decimal expansion of the (\d+)th root of (\d+)	m	i
+A353142	parmof3	0	A204574	new A002275()	3	Decimal repunits written in base (\d+)	m	i				
+A353144	parmof3	0	A204574	new A002275()	5	Decimal repunits written in base (\d+)	m	i				
+A353145	parmof3	0	A204574	new A002275()	6	Decimal repunits written in base (\d+)	m	i				
+A353146	parmof3	0	A204574	new A002275()	7	Decimal repunits written in base (\d+)	m	i				
+A353147	parmof3	0	A204574	new A002275()	8	Decimal repunits written in base (\d+)	m	i				
+A353148	parmof3	0	A204574	new A002275()	9	Decimal repunits written in base (\d+)	m	i				
