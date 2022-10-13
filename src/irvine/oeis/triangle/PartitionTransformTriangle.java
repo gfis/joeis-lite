@@ -75,13 +75,6 @@ public class PartitionTransformTriangle extends BaseTriangle {
   @Override
   protected void addRow() {
     super.addRow();
-  /*
-    ++mRow;
-    mRowLen = mSizeFct.apply(mRow);
-    add(new Z[mRowLen]);
-    mLastRow = get(mRow);
-    mCol = 0;
-  */
     // System.out.println("addRow, mRow=" + mRow + ", mRowLen=" + mRowLen + ", mLastRow.length=" + mLastRow.length);
     int k = mRowLen - 1;
     final int m = k;

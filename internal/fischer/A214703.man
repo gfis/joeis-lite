@@ -1,44 +1,6 @@
-
-5^n == k (mod n): 
-A015891	parmof3	1	A116611	5	-5
-A015919	parmof3	1	A116611	2	2	
-A015949	parmof3	1	A116611	3	-1
-A015951	parmof3	1	A116611	5	-1
-A015954	parmof3	1	A116611	7	-1
-A015973	parmof3	1	A116611	3	-2
-A032810	parmof3	1	A032810	2	3	Numbers using only digits (\d+) and (\d+)	m	i
-A032834	parmof3	1	A032810	3	4
-A067945	parmof3	1	A116611	3	1
-A067946	parmof3	1	A116611	5	1
-A067947	parmof3	1	A116611	7	1
-A116611	parmof3	1	A116611	13	5	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116620	parmof3	1	A116611	13	10	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116621	parmof3	1	A116611	13	1
-A116622	parmof3	1	A116611	13	2
-A116629	parmof3	1	A116611	13	3
-A116630	parmof3	1	A116611	13	4
-A116631	parmof3	1	A116611	13	6
-A116632	parmof3	1	A116611	13	7
-A116636	parmof3	1	A116611	13	9
-A116638	parmof3	1	A116611	13	11	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116639	parmof3	1	A116611	13	15
-A123047	parmof3	1	A116611	5	-4
-A123052	parmof3	1	A116611	5	-3
-A123061	parmof3	1	A116611	5	3
-A123062	parmof3	1	A116611	5	-2
-A123091	parmof3	1	A116611	5	5
-A124246	parmof3	1	A116611	5	2
-A125949	parmof3	1	A116611	5	4
-A130421	parmof3	1	A116611	4	2	
-A143967	parmof3	1	A032810	3	7
 A214703	parmof4	1	A214703	2	3	5	Primes that contain only the digits (2, 3, 5).  nonn,base,easy, 1..1000 nyi     _Vincenzo
 A214704	parmof4	1	A214703	2	3	7	Primes that contain only the digits (2, 3, 7).  nonn,base,easy, 1..1000 nyi     _Vincenzo
 A214705	parmof4	1	A214703	2	5	7	Primes that contain only the digits (2, 5, 7).  nonn,base,easy,changed, 1..1000 nyi     _V
-A256290	parmof3	1	A032810	4	5
-A256291	parmof3	1	A032810	5	6
-A256292	parmof3	1	A032810	6	7
-A256340	parmof3	1	A032810	7	8
-A256341	parmof3	1	A032810	8	9
 A260125	parmof4	1	A214703	0	2	3	0	Primes that contain only the digits (2, 3, 0).  nonn,base,easy,changed, 1..10000        nyi     _
 A260126	parmof4	1	A214703	2	3	6	Primes that contain only the digits (2, 3, 6).  nonn,base,easy, 1..10000        nyi     _Vincenzo
 A260127	parmof4	1	A214703	2	3	8	Primes that contain only the digits (2, 3, 8).  nonn,easy,base, 1..10000        nyi     _Vincenzo
@@ -75,28 +37,3 @@ A261184	parmof4	1	A214703	6	7	9	Primes that contain only the digits (6, 7, 9).  
 A261267	parmof4	1	A214703	0	2	7	Primes that contain only the digits (0, 2, 7).  nonn,easy,base, 1..10000        nyi     _Vincenzo
 A261268	parmof4	1	A214703	0	2	9	Primes that contain only the digits (0, 2, 9).  nonn,easy,base, 1..10000        nyi     _Vincenzo
 A261434	parmof4	1	A214703	0	3	8	Primes that contain only the digits (0, 3, 8).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A276037	parmof3	1	A032810	1	5	Numbers using only digits (\d+) and (\d+)	m	i
-A276039	parmof3	1	A032810	1	7	Numbers using only digits (\d+) and (\d+)	m	i
-A276671	parmof3	1	A116611	3	2
-A276740	parmof3	1	A116611	3	5
-A277126	parmof3	1	A116611	3	7
-A277274	parmof3	1	A116611	3	11
-A277288	parmof3	1	A116611	3	-5
-A277289	parmof3	1	A116611	3	-7
-A277340	parmof3	1	A116611	3	-11 
-A277348	parmof3	1	A116611	5	-6
-A277350	parmof3	1	A116611	5	6		Positive integers n such that 5^n == 6 (mod n).     
-A277370	parmof3	1	A116611	7	-2
-A277371	parmof3	1	A116611	7	-3
-A277401	parmof3	1	A116611	7	2
-A277554	parmof3	1	A116611	7	3
-A277628	parmof3	1	A116611	3	6
-A277630	parmof3	1	A116611	3	8
-A284293	parmof3	1	A032810	1	6	Numbers using only digits (\d+) and (\d+)	m	i
-A284294	parmof3	1	A032810	1	9	Numbers using only digits (\d+) and (\d+)	m	i
-A295532	parmof3	1	A116611	13	8	Positive integers n such that 13^n == 8 (mod n).
-A321365	parmof3	1	A116611	13	14	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A333134	parmof3	1	A116611	11	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A333269	parmof3	1	A116611	17	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-Cf. Solutions to b^n == 2 (mod n): 
-Solutions to 3^n == k (mod n): 

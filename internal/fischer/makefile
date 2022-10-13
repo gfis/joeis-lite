@@ -553,7 +553,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-10-12: # *IP=48
+anabuild: #.2022-10-13:
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A032810 A116611 A214703 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select gener
+	cp -pv hold/*.java manual
+	make CC=man        man
+	make CC=$@ dist testall pack 
+anabuild.2022-10-12: # *IP=48
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -8106,7 +8118,7 @@ seq3: # parameter: $(LIST)
 	$(DBAT) -n seq3
 seq4: # parameter: $(LIST) with aseqno, offset1, parm1, parm2, parm3, parm4, name
 	$(DBAT) -f seq4.create.sql
-	cat $(LIST) | grep -E "^A" | sort | uniq > seq4.tmp
+	cat $(LIST) | grep -E "^A" | sort | uniq -w7 > seq4.tmp
 	$(DBAT) -m csv -r seq4 < seq4.tmp
 	$(DBAT) -4 seq4
 	$(DBAT) -n seq4

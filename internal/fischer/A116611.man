@@ -1,23 +1,79 @@
 A116611	parmof3	1	A116611	13	5	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A277401	parmof3	1	A116611	7	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A333134	parmof3	1	A116611	11	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A321365	parmof3	1	A116611	13	14	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A333269	parmof3	1	A116611	17	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A277628	parmof3	1	A116611	3	6	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A277126	parmof3	1	A116611	3	7	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A277630	parmof3	1	A116611	3	8	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A277350	parmof3	1	A116611	5	6	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A277554	parmof3	1	A116611	7	3	Positive integers n such that (\d+)^n ==(\d+)(mod n)
 A116620	parmof3	1	A116611	13	10	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116638	parmof3	1	A116611	13	11	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116639	parmof3	1	A116611	13	15	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A295532	parmof3	1	A116611	13	8	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A277274	parmof3	1	A116611	3 	11	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A116621	parmof3	1	A116611	13	1	Positive integers n such that (\d+)^n ==(\d+)(mod n)
 A116622	parmof3	1	A116611	13	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
 A116629	parmof3	1	A116611	13	3	Positive integers n such that (\d+)^n ==(\d+)(mod n)
 A116630	parmof3	1	A116611	13	4	Positive integers n such that (\d+)^n ==(\d+)(mod n)
 A116631	parmof3	1	A116611	13	6	Positive integers n such that (\d+)^n ==(\d+)(mod n)
 A116632	parmof3	1	A116611	13	7	Positive integers n such that (\d+)^n ==(\d+)(mod n)
 A116636	parmof3	1	A116611	13	9	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A116638	parmof3	1	A116611	13	11	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A116639	parmof3	1	A116611	13	15	Positive integers n such that (\d+)^n ==(\d+)(mod n)
 A276671	parmof3	1	A116611	3 	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116621	parmof3	1	A116611	13	1	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A277126	parmof3	1	A116611	3	7	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A277274	parmof3	1	A116611	3 	11	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A277350	parmof3	1	A116611	5	6	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A277401	parmof3	1	A116611	7	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A277554	parmof3	1	A116611	7	3	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A277628	parmof3	1	A116611	3	6	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A277630	parmof3	1	A116611	3	8	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A321365	parmof3	1	A116611	13	14	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A333134	parmof3	1	A116611	11	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+A333269	parmof3	1	A116611	17	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
+
+5^n == k (mod n): 
+A277348	parmof3	1	A116611	5	-6
+A015891	parmof3	1	A116611	5	-5
+A123047	parmof3	1	A116611	5	-4
+A123052	parmof3	1	A116611	5	-3
+A123062	parmof3	1	A116611	5	-2
+A015951	parmof3	1	A116611	5	-1
+A067946	parmof3	1	A116611	5	1
+A124246	parmof3	1	A116611	5	2
+A123061	parmof3	1	A116611	5	3
+A125949	parmof3	1	A116611	5	4
+A123091	parmof3	1	A116611	5	5
+A277350	parmof3	1	A116611	5	6		Positive integers n such that 5^n == 6 (mod n).     
+
+A116621	parmof3	1	A116611	13	1
+A116622	parmof3	1	A116611	13	2
+A116629	parmof3	1	A116611	13	3
+A116630	parmof3	1	A116611	13	4
+A116611	parmof3	1	A116611	13	5 
+A116631	parmof3	1	A116611	13	6
+A116632	parmof3	1	A116611	13	7
+A295532	parmof3	1	A116611	13	8	Positive integers n such that 13^n == 8 (mod n).
+A116636	parmof3	1	A116611	13	9
+A116620	parmof3	1	A116611	13	10 
+A116638	parmof3	1	A116611	13	11 
+A116639	parmof3	1	A116611	13	15
+
+Solutions to 7^n == k (mod n): 
+A277371	parmof3	1	A116611	7	-3
+A277370	parmof3	1	A116611	7	-2
+A015954	parmof3	1	A116611	7	-1
+A067947	parmof3	1	A116611	7	1
+A277401	parmof3	1	A116611	7	2
+A277554	parmof3	1	A116611	7	3
+
+Cf. Solutions to b^n == 2 (mod n): 
+A015919	parmof3	1	A116611	2	2	
+A276671	parmof3	1	A116611	3	2	
+A130421	parmof3	1	A116611	4	2	
+A124246	parmof3	1	A116611	5	2	
+A277401	parmof3	1	A116611	7	2	
+A116622	parmof3	1	A116611	13	2	
+
+Solutions to 3^n == k (mod n): 
+A277340	parmof3	1	A116611	3	-11 
+A277289	parmof3	1	A116611	3	-7
+A277288	parmof3	1	A116611	3	-5
+A015973	parmof3	1	A116611	3	-2
+A015949	parmof3	1	A116611	3	-1
+A067945	parmof3	1	A116611	3	1
+A276671	parmof3	1	A116611	3	2
+A276740	parmof3	1	A116611	3	5
+A277628	parmof3	1	A116611	3	6
+A277126	parmof3	1	A116611	3	7
+A277630	parmof3	1	A116611	3	8
+A277274	parmof3	1	A116611	3	11
