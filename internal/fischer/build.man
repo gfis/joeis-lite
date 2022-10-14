@@ -1,102 +1,104 @@
 
-5^n == k (mod n): 
-A015891	parmof3	1	A116611	5	-5
-A015919	parmof3	1	A116611	2	2	
-A015949	parmof3	1	A116611	3	-1
-A015951	parmof3	1	A116611	5	-1
-A015954	parmof3	1	A116611	7	-1
-A015973	parmof3	1	A116611	3	-2
-A032810	parmof3	1	A032810	2	3	Numbers using only digits (\d+) and (\d+)	m	i
-A032834	parmof3	1	A032810	3	4
-A067945	parmof3	1	A116611	3	1
-A067946	parmof3	1	A116611	5	1
-A067947	parmof3	1	A116611	7	1
-A116611	parmof3	1	A116611	13	5	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116620	parmof3	1	A116611	13	10	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116621	parmof3	1	A116611	13	1
-A116622	parmof3	1	A116611	13	2
-A116629	parmof3	1	A116611	13	3
-A116630	parmof3	1	A116611	13	4
-A116631	parmof3	1	A116611	13	6
-A116632	parmof3	1	A116611	13	7
-A116636	parmof3	1	A116611	13	9
-A116638	parmof3	1	A116611	13	11	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A116639	parmof3	1	A116611	13	15
-A123047	parmof3	1	A116611	5	-4
-A123052	parmof3	1	A116611	5	-3
-A123061	parmof3	1	A116611	5	3
-A123062	parmof3	1	A116611	5	-2
-A123091	parmof3	1	A116611	5	5
-A124246	parmof3	1	A116611	5	2
-A125949	parmof3	1	A116611	5	4
-A130421	parmof3	1	A116611	4	2	
-A143967	parmof3	1	A032810	3	7
-A214703	parmof4	1	A214703	2	3	5	Primes that contain only the digits (2, 3, 5).  nonn,base,easy, 1..1000 nyi     _Vincenzo
-A214704	parmof4	1	A214703	2	3	7	Primes that contain only the digits (2, 3, 7).  nonn,base,easy, 1..1000 nyi     _Vincenzo
-A214705	parmof4	1	A214703	2	5	7	Primes that contain only the digits (2, 5, 7).  nonn,base,easy,changed, 1..1000 nyi     _V
-A256290	parmof3	1	A032810	4	5
-A256291	parmof3	1	A032810	5	6
-A256292	parmof3	1	A032810	6	7
-A256340	parmof3	1	A032810	7	8
-A256341	parmof3	1	A032810	8	9
-A260125	parmof4	1	A214703	0	2	3	0	Primes that contain only the digits (2, 3, 0).  nonn,base,easy,changed, 1..10000        nyi     _
-A260126	parmof4	1	A214703	2	3	6	Primes that contain only the digits (2, 3, 6).  nonn,base,easy, 1..10000        nyi     _Vincenzo
-A260127	parmof4	1	A214703	2	3	8	Primes that contain only the digits (2, 3, 8).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260128	parmof4	1	A214703	2	3	9	Primes that contain only the digits (2, 3, 9).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260223	parmof4	1	A214703	0	3	5	0	Primes that contain only the digits (3, 5, 0).  nonn,easy,base,changed, 1..10000        nyi     _
-A260224	parmof4	1	A214703	1	3	5	Primes that contain only the digits (1, 3, 5).  nonn,easy,base,changed, 1..1000 nyi     _V
-A260225	parmof4	1	A214703	3	5	6	Primes that contain only the digits (3, 5, 6).  nonn,base,      1..10000        nyi     _Vincenzo Lib
-A260226	parmof4	1	A214703	3	5	8	Primes that contain only the digits (3, 5, 8).  nonn,easy,base,changed, 1..10000        nyi     _
-A260227	parmof4	1	A214703	3	5	9	Primes that contain only the digits (3, 5, 9).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260266	parmof4	1	A214703	0	1	4	Primes that contain only digits in  {0, 1, 4}.   nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260267	parmof4	1	A214703	1	2	4	Primes that contain only digits in  {1, 2, 4}.   nonn,easy,base,synth    1..40   nyi     _Vincenz
-A260268	parmof4	1	A214703	1	4	5	Primes that contain only the digits (1, 4, 5).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260269	parmof4	1	A214703	1	4	6	Primes that contain only the digits (1, 4, 6).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260270	parmof4	1	A214703	1	4	8	Primes that contain only the digits (1, 4, 8).  nonn,easy,base,changed, 1..10000        nyi     _
-A260271	parmof4	1	A214703	1	4	9	Primes that contain only the digits (1, 4, 9).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260378	parmof4	1	A214703	0	3	7	Primes that contain only the digits (0, 3, 7).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260379	parmof4	1	A214703	1	3	7	Primes that contain only the digits (1, 3, 7).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260380	parmof4	1	A214703	3	6	7	Primes that contain only the digits (3, 6, 7).  nonn,easy,base,changed, 1..10000        nyi     _
-A260381	parmof4	1	A214703	3	7	8	Primes that contain only the digits (3, 7, 8).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260382	parmof4	1	A214703	3	7	9	Primes that contain only the digits (3, 7, 9).  nonn,easy,base,changed, 1..10000        nyi     _
-A260827	parmof4	1	A214703	0	5	7	Primes that contain only the digits (0, 5, 7).  nonn,easy,base,changed, 1..10000        nyi     _
-A260828	parmof4	1	A214703	1	5	7	Primes that contain only the digits (1, 5, 7).  nonn,easy,base,changed, 1..10000        nyi     _
-A260829	parmof4	1	A214703	5	6	7	Primes that contain only the digits (5, 6, 7).  nonn,easy,base,changed, 1..10000        nyi     _
-A260830	parmof4	1	A214703	5	7	8	Primes that contain only the digits (5, 7, 8).  nonn,easy,base,changed, 1..10000        nyi     _
-A260831	parmof4	1	A214703	5	7	9	Primes that contain only the digits (5, 7, 9).  nonn,easy,base,changed, 1..10000        nyi     _
-A260889	parmof4	1	A214703	1	2	7	Primes that contain only the digits (1, 2, 7).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260891	parmof4	1	A214703	1	6	7	Primes that contain only the digits (1, 6, 7).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260892	parmof4	1	A214703	1	7	8	Primes that contain only the digits (1, 7, 8).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A260893	parmof4	1	A214703	1	7	9	Primes that contain only the digits (1, 7, 9).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A261181	parmof4	1	A214703	0	7	9	Primes that contain only the digits (0, 7, 9).  nonn,easy,base,changed, 1..10000        nyi     _
-A261182	parmof4	1	A214703	2	7	9	Primes that contain only the digits (2, 7, 9).  nonn,easy,base, 1..1000 nyi     _Vincenzo
-A261183	parmof4	1	A214703	4	7	9	Primes that contain only the digits (4, 7, 9).  nonn,easy,base,changed, 1..20000        nyi     _
-A261184	parmof4	1	A214703	6	7	9	Primes that contain only the digits (6, 7, 9).  nonn,easy,base,changed, 1..10000        nyi     _
-A261267	parmof4	1	A214703	0	2	7	Primes that contain only the digits (0, 2, 7).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A261268	parmof4	1	A214703	0	2	9	Primes that contain only the digits (0, 2, 9).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A261434	parmof4	1	A214703	0	3	8	Primes that contain only the digits (0, 3, 8).  nonn,easy,base, 1..10000        nyi     _Vincenzo
-A276037	parmof3	1	A032810	1	5	Numbers using only digits (\d+) and (\d+)	m	i
-A276039	parmof3	1	A032810	1	7	Numbers using only digits (\d+) and (\d+)	m	i
-A276671	parmof3	1	A116611	3	2
-A276740	parmof3	1	A116611	3	5
-A277126	parmof3	1	A116611	3	7
-A277274	parmof3	1	A116611	3	11
-A277288	parmof3	1	A116611	3	-5
-A277289	parmof3	1	A116611	3	-7
-A277340	parmof3	1	A116611	3	-11 
-A277348	parmof3	1	A116611	5	-6
-A277350	parmof3	1	A116611	5	6		Positive integers n such that 5^n == 6 (mod n).     
-A277370	parmof3	1	A116611	7	-2
-A277371	parmof3	1	A116611	7	-3
-A277401	parmof3	1	A116611	7	2
-A277554	parmof3	1	A116611	7	3
-A277628	parmof3	1	A116611	3	6
-A277630	parmof3	1	A116611	3	8
-A284293	parmof3	1	A032810	1	6	Numbers using only digits (\d+) and (\d+)	m	i
-A284294	parmof3	1	A032810	1	9	Numbers using only digits (\d+) and (\d+)	m	i
-A295532	parmof3	1	A116611	13	8	Positive integers n such that 13^n == 8 (mod n).
-A321365	parmof3	1	A116611	13	14	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A333134	parmof3	1	A116611	11	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-A333269	parmof3	1	A116611	17	2	Positive integers n such that (\d+)^n ==(\d+)(mod n)
-Cf. Solutions to b^n == 2 (mod n): 
-Solutions to 3^n == k (mod n): 
+A004094	parmof2	0	A004094	new A000079()	2	Powers of (\d+) written backwards
+A004167	parmof2	0	A004094	new A000244()	3	Powers of (\d+) written backwards
+A034906	parmof2	1	A034906	new A004094()	2	Powers of (\d+) written backwards and sorted
+A048724	parmof2	0	A048724	2
+A048725	parmof2	0	A048724	4
+A050523	parmof4	1	A050528	7	2	-1	Primes of the form (\d+)*(\d+)^n-(\d+)	m	i
+A050524	parmof4	1	A050528	9	2	-1	Primes of the form (\d+)*(\d+)^n-(\d+)	m	i
+A050528	parmof4	1	A050528	9	2	1	Primes of the form (\d+)*(\d+)^n+(\d+)	m	i
+A068712	parmof4	1	A050528	5	2	3	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A068715	parmof4	1	A050528	10	3	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A071582	parmof2	0	A004094	new A000302()	4	Powers of (\d+) written backwards
+A071583	parmof2	0	A004094	new A000351()	5	Powers of (\d+) written backwards
+A071584	parmof2	0	A004094	new A000420()	7	Powers of (\d+) written backwards
+A071586	parmof2	0	A004094	new A001018()	8	Powers of (\d+) written backwards
+A071587	parmof2	0	A004094	new A001019()	9	Powers of (\d+) written backwards
+A071588	parmof2	0	A004094	new A000400()	6	Powers of (\d+) written backwards
+A079363	parmof4	1	A050528	2	3	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A093945	parmof4	1	A050528	5	10	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A093946	parmof4	1	A050528	6	10	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A093947	parmof4	1	A050528	8	10	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A093948	parmof4	1	A050528	9	10	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A105322	parmof4	1	A050528	8	10	-7	Primes of the form (\d+)*(\d+)^n-(\d+)	m	i
+A108837	parmof4	1	A050528	5	10	-7	Primes of the form (\d+)*(\d+)^n-(\d+)	m	i
+A111974	parmof4	1	A050528	2	3	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A120376	parmof4	1	A050528	2	5	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A120377	parmof4	1	A050528	2	11	-1	Primes of the form (\d+)*(\d+)^n-(\d+)	m	i
+A125734	parmof4	1	A050528	4	3	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A133136	parmof2	1	A034906	new A004167()	3	Powers of (\d+) written backwards and sorted
+A134110	parmof2	1	A034906	new A071582()	4	Powers of (\d+) written backwards and sorted
+A134111	parmof2	1	A034906	new A071583()	5	Powers of (\d+) written backwards and sorted
+A134112	parmof2	1	A034906	new A071588()	6	Powers of (\d+) written backwards and sorted
+A134113	parmof2	1	A034906	new A071584()	7	Powers of (\d+) written backwards and sorted
+A134114	parmof2	1	A034906	new A071586()	8	Powers of (\d+) written backwards and sorted
+A134115	parmof2	1	A034906	new A071587()	9	Powers of (\d+) written backwards and sorted
+A158795	parmof4	1	A050528	2	7	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A160034	parmof3	1	A274022	0	807	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A163617	parmof2	0	A163617	2	
+A173872	parmof4	1	A050528	12	2	-11	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A177132	parmof4	1	A050528	6	10	1	Primes of the form (\d+)*(\d+)^n+(\d+)	m	i
+A177134	parmof4	1	A050528	2	10	3	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A177135	parmof4	1	A050528	2	10	-3	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A177190	parmof4	1	A050528	5	10	-3	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A177504	parmof4	1	A050528	5	10	-9	Primes of the form (\d+)*(\d+)^n-(\d+)	m	i
+A177506	parmof4	1	A050528	4	10	1	Primes of the form (\d+)*(\d+)^n+(\d+)	m	i
+A177507	parmof4	1	A050528	4	10	3	Primes of the form (\d+)*(\d+)^n+(\d+)	m	i
+A177508	parmof4	1	A050528	2	10	-7	Primes of the form (\d+)*(\d+)^n-(\d+)	m	i
+A178729	parmof2	0	A048724	3
+A178731	parmof2	0	A048724	5
+A178732	parmof2	0	A048724	6
+A178733	parmof2	0	A048724	7
+A178734	parmof2	0	A048724	8
+A178735	parmof2	0	A048724	9
+A178736	parmof2	0	A048724	10
+A178890	parmof2	0	A163617	3	a(n) = n OR 3n, where OR is bitwise OR. nonn,synth      0..60   n
+A178891	parmof2	0	A163617	4	a(n) = n OR 4n, where OR is bitwise OR. nonn,synth      0..57   n
+A178892	parmof2	0	A163617	5	a(n) = n OR 5n, where OR is bitwise OR. nonn,synth      0..56   n
+A178893	parmof2	0	A163617	6	a(n) = n OR 6n, where OR is bitwise OR. nonn,synth      0..55   n
+A178894	parmof2	0	A163617	7	a(n) = n OR 7n, where OR is bitwise OR. nonn,look,      0..10000
+A178895	parmof2	0	A163617	8	a(n) = n OR 8n, where OR is bitwise OR. nonn,look,changed,      0
+A178896	parmof2	0	A163617	9	a(n) = n OR 9n, where OR is bitwise OR. nonn,synth      0..54   n
+A178897	parmof2	0	A163617	10	a(n) = n OR 10n, where OR is bitwise OR.        nonn,synth      0
+A186104	parmof4	1	A050528	3	6	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A186105	parmof4	1	A050528	3	6	1	Primes of the form (\d+)*(\d+)^n+(\d+)	m	i
+A195745	parmof4	1	A050528	15	2	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A195908	parmof2	1	A238938	7
+A195945	parmof2	1	A238938	13
+A195946	parmof2	1	A238938	11
+A195948	parmof2	1	A238938	5
+A196656	parmof4	1	A050528	33	2	7	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A196658	parmof4	1	A050528	63	2	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A196940	parmof4	1	A050528	15	2	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A205771	parmof4	1	A050528	2	5	1	Primes of the form (\d+)*(\d+)^n+(\d+)	m	i
+A205776	parmof4	1	A050528	2	6	1	Primes of the form (\d+)*(\d+)^n+(\d+)	m	i
+A230168	parmof4	1	A050528	45	2	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A238936	parmof2	1	A238938	6
+A238938	parmof2	1	A238938	2
+A238939	parmof2	1	A238938	3
+A238940	parmof2	1	A238938	4
+A240945	parmof2	1	A238938	9
+A245852	parmof2	1	A238938	8
+A245853	parmof2	1	A238938	12
+A259866	parmof4	1	A050528	3	10	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A273547	parmof3	1	A274022	0	27	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273548	parmof3	1	A274022	1	163	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273549	parmof3	1	A274022	0	165	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273550	parmof3	1	A274022	0	177	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273551	parmof3	1	A274022	1	253	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273552	parmof3	1	A274022	0	267	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273804	parmof3	1	A274022	1	301	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273805	parmof3	1	A274022	1	331	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273806	parmof3	1	A274022	0	357	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273807	parmof3	1	A274022	1	427	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273808	parmof3	1	A274022	1	463	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273809	parmof3	1	A274022	1	487	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273810	parmof3	1	A274022	0	597	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A273811	parmof3	1	A274022	1	805	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A274022	parmof3	1	A274022	1	3	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A274023	parmof3	1	A274022	1	13	Primes of the form (\d+)^((\d+)^n)+ (\d+)
+A300406	parmof4	1	A050528	13	2	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A300407	parmof4	1	A050528	17	2	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A300408	parmof4	1	A050528	19	2	1	Primes of the form (\d+)*(\d+)^n +(\d+)	m	i
+A319535	parmof4	1	A050528	2	6	-1	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
+A321356	parmof4	1	A050528	3	2	-25	Primes of the form (\d+)*(\d+)^n -(\d+)	m	i
