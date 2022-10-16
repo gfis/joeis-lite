@@ -247,6 +247,14 @@ mangen: # parameter: CC; copy all in CC.gen to fischer/manual
 	cat coplist.tmp | xargs -l -i{} cp -v ../../../joeis/src/irvine/oeis/{} manual
 	ls -al manual
 #--------
+REMOTE=dummy
+# git_remote:
+	# scp ../../../joeis/src/irvine/oeis/BlockMultAddSequence.java             $(REMOTE)/joeis/src/irvine/oeis/
+	# scp ../../../joeis/src/irvine/oeis/cons/DecimalExpansionSequence.java    $(REMOTE)/joeis/src/irvine/oeis/cons/
+	# scp ../../../joeis/src/irvine/oeis/recur/CoxeterSequence.java            $(REMOTE)/joeis/src/irvine/oeis/recur/
+	# scp ../../../joeis/src/irvine/oeis/triangle/BaseTriangle.java            $(REMOTE)/joeis/src/irvine/oeis/triangle/
+	# scp ../../../joeis/internal/irvine/oeis/RecurrenceReflector.java         $(REMOTE)/joeis/internal/irvine/oeis/
+#--------
 ccall: select clean purge gener dist test pack # parameter: CC
 #----
 NOT=NOT
@@ -5549,7 +5557,7 @@ dexrefl1:
 	wc -l    $@.tmp
 dexrefl2:
 	grep -vE "A002210|A00471[0-7]|A00559[67]|A013705|A027606|A028999|A030171|A051762|A111197|A258815" dexrefl1.tmp \
-	| $(JAVA) irvine.oeis.ConstantReflector -f - 
+	| $(JAVA) irvine.oeis.ConstantReflector -f - \
 	2>       $@.err.tmp \
 	| tee    $@.tmp
 	wc -l    $@*.tmp
@@ -5615,7 +5623,7 @@ offholon: # put it in table seq
 	cd $(COMMON) ; make seq LIST=$(HERE)/$@.tmp
 offholrem: # remove all that are not in offinspect.txt
 	$(DBAT) -x -v "DELETE FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM seq);"
-offcount: # SUPER= count the different offset for some jOEIS superclass
+offcount: # SUPER= count the different offsets for some jOEIS superclass
 	$(DBAT) -x "SELECT COUNT(i.offset1), i.offset1 FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno AND j.superclass LIKE '$(SUPER)%' GROUP BY i.offset1 ORDER BY 1"
 #--------
 compareall0:
