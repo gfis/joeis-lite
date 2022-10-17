@@ -406,8 +406,8 @@ dist:
 dist1:
 	cd ../.. ; ant -silent dist 2>&1
 #--
-distel:  man dist test    log
-disteal: man dist testall log
+maditel: man dist test    log
+madital: man dist testall log
 #--
 batest: # parameter: CC
 	# ---- $@ CC=$(CC)
@@ -4183,6 +4183,13 @@ interleave:
 #--------------------------------
 inverse:
 	perl inverse.pl > $@.gen 2> $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@.*
+#--------------------------------
+inverti: # InverseInvertTransform
+	grep -E "^A[0-9]" $@.man \
+	| grep -vE "A089836|A141308|A141314|A182216|A216040|A255906" \
+	> $@.gen
 	head -n4 $@.gen
 	wc -l    $@.*
 #--------------------------------
