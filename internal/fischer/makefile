@@ -120,8 +120,8 @@ tritest:
 	$(JAVA) irvine.oeis.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
 ej:
 	echo $(JAVA)
-regtest:
-	grep -P "\AA\d+\t$(CLASS)\t" $(COMMON)/joeis_names.txt | cut -f1 > $(CLASS).gen
+regtest: # CLASS= rerun all these classes
+	grep -P "\AA\d+\t$(CLASS)" $(COMMON)/joeis_names.txt | cut -f1 > $(CLASS).gen
 	wc -l $(CLASS).gen
 	make CC=$(CLASS) test log
 runpari:
@@ -246,6 +246,17 @@ mangen: # parameter: CC; copy all in CC.gen to fischer/manual
 	perl -ne 'm{^A(\d\d\d)(\d+)}; print "a$$1/A$$1$$2.java\n";' $(CC).gen > coplist.tmp
 	cat coplist.tmp | xargs -l -i{} cp -v ../../../joeis/src/irvine/oeis/{} manual
 	ls -al manual
+sumall: # copy all generated in joeis-lite/src to ./manual
+	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
+s4diff: # compare existing seqs. in joeis/src with selected ones in seq4
+	$(DBAT) -x "SELECT LOWER(SUBSTR(aseqno, 1, 4)) || '/' || aseqno FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis) ORDER BY 1" \
+	| sed -e "s/\r//" \
+	| xargs -innn diff -s -C0 $(JOEIS)/src/irvine/oeis/nnn.java $(LITE)/src/irvine/oeis/nnn.java \
+	| tee     $@.tmp
+ccdiff: # compare seqs. in joeis/src with generated ones in joeis-lite/src
+	cd ../.. ; find src/irvine/oeis -iname "A??????.java" \
+	| xargs -innn diff -s -C0 ../joeis/nnn nnn \
+	| tee     internal/fischer/$@.tmp
 #--------
 REMOTE=dummy
 # git_remote:
@@ -341,8 +352,6 @@ checkdir: # DIR=
 	make seq LIST=$@.tmp
 	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') FROM seq s LEFT JOIN joeis j ON s.aseqno = j.aseqno ORDER BY 1" \
 	| tee    $@.tmp
-sumall:
-	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
 #----
 DATA=0
 annotate: # add comments with names of the dependant sequences, and optionally with their data
@@ -7371,7 +7380,8 @@ partran0: # select those pairs where the finding does not occur too often
 	wc -l    $@.tmp
 #--
 partran: # PartitionSTransformTriagle from some generator sequence
-	cp -v partran0.tmp partran.gen
+	cp -v partran0.tmp $@.gen
+	cat A180177.man >> $@.gen
 #--
 partralr: # check the ones with ls != 1(,1)+ and rs == 1(,1)+
 	grep -P "\tName\t" $(TRIREC)/modlr.tmp \

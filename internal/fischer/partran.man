@@ -1,48 +1,9 @@
-# awi
-A007318	partran	0	A000012
-A030528	partran	1	A019590
-A037027	partran	0	new SkipSequence(new A000045(), 1)
-A049310	partran	0	A056594
-A059594	partran	0	A008619
-# A060642	partran	1	does not work
-A078812	partran	0	A000027
 
-# nyi 2022-10-03
-A096164	partran	1	A054341
-A101950	partran	0	A010892
-A105422	partran	0	A212804	Triangle read by rows: T(n,k) is the number of compositions of n having exactly k parts equal to 1.
+# nyi 2022-10-18
+# A100100	partran	0	A088218 = 1st column, but other Riordan array
 A105477	partran	0	A205399	_Emeric Deutsch_, Apr 09 2005
-A108073	partran	0	new SkipSequence(new A052709(), 1)	Triangle in A071943 with rows reversed.
 A111373	partran	0	A321429	_N. J. A. Sloane_, Nov 09 2005
-A111959	partran	0	A126869	Renewal array for aerated central binomial coefficients.
-A113413	partran	0	A040000	A Riordan array of coordination sequences.
-A126030	partran	0	new SkipSequence(new A131531(), 2)	Riordan array (1/(1+x^3),x/(1+x^3)).
-A127893	partran	0	new SkipSequence(new A000217(), 1)	Riordan array (1/(1-x)^3, x/(1-x)^3).
-# ?? A128627	partran	1	A001996	Triangular array illustrating the application of cyclic ...
-A130595	partran	0	A033999	_Philippe Del‚ąö¬©ham_, Jun 17 2007	Triangle read by rows: lower triangular matrix which is inverse to Pascal''s triangle (A007318) regarded as a lower triangular matrix.						Triangle read by rows: lower triangular matrix which is inverse to Pascal's triangle (A007318) regarded as a lower triangular matrix.
-A156062	partran	0	A121262	Riordan array (1/(1-x^4), x/(1-x^4)).
-A156064	partran	0	new PeriodicSequence(1, 0, 0, 0, -1, 0, 0, 0)	Inverse of Riordan array (1/(1-x^4), x/(1-x^4)), A156062.
-# ?? A162981	partran	1	A003426	Number of Dyck paths with no UUU's and no DDD's of semilength n and having k returns to the x-axis (1 <= k <= n; U=(1,1), D=(1,-1)).
-A168561	partran	0	A059841	_Philippe Del‚ąö¬©ham_, Nov 29 2009	Riordan array (1/(1-x^2), x/(1-x^2)). Unsigned version of A049310.						Riordan array (1/(1-x^2), x/(1-x^2)). Unsigned version of A049310.
-# A171568	partran	0	A064613	a(39)=20762 probably wrong		Riordan array (f(x), x*f(x)) where f(x) is the g.f. of A064613.
-A180177	partran	1	A060576	_Emeric Deutsch_, Aug 15 2010	Triangle read by rows: T(n,k) is the number of compositions of n without 2''s and having k parts; 1<=k<=n.						Triangle read by rows: T(n,k) is the number of compositions of n without 2's and having k parts; 1<=k<=n.
-A180178	partran	1	A266678	_Emeric Deutsch_, Aug 15 2010	Triangle read by rows: T(n,k) is the number of compositions of n without 3''s and having k parts; 1 <= k <= n.						Triangle read by rows: T(n,k) is the number of compositions of n without 3's and having k parts; 1 <= k <= n.
-A180179	partran	1	A267871
-A180180	partran	1	A267871	_Emeric Deutsch_, Aug 15 2010	Triangle read by rows: T(n,k) is the number of compositions of n without 5''s and having k parts; 1 <= k <= n.						Triangle read by rows: T(n,k) is the number of compositions of n without 5's and having k parts; 1 <= k <= n.
-A180181	partran	1	A011750	_Emeric Deutsch_, Aug 15 2010	Triangle read by rows: T(n,k) is the number of compositions of n without 6''s and having k parts; 1 <= k <= n.						Triangle read by rows: T(n,k) is the number of compositions of n without 6's and having k parts; 1 <= k <= n.
-A180182	partran	1	A035160	_Emeric Deutsch_, Aug 15 2010	Triangle read by rows: T(n,k) is the number of compositions of n without 7''s and having k parts; 1 <= k <= n.						Triangle read by rows: T(n,k) is the number of compositions of n without 7's and having k parts; 1 <= k <= n.
-A180183	partran	1	A000164	_Emeric Deutsch_, Aug 15 2010	Triangle read by rows: T(n,k) is the number of compositions of n without 8''s and having k parts; 1 <= k <= n.						Triangle read by rows: T(n,k) is the number of compositions of n without 8's and having k parts; 1 <= k <= n.
-
-A171224	partran	0	A117641
 A171243	partran	0	A126952	(f(x)#x*g(x))
-A171486	partran	0	A033321
 A171488	partran	0	new SkipSequence(new A005773(), 1)
-A171505	partran	0	A059738
-A171509	partran	0	A126931
-A171515	partran	0	A033543
-A171567	partran	0	A168491
-A171568	partran	0	A064613
-A171589	partran	0	A104455
-A174687	partran	0	
-
-A100100	partran	0	A088218
+# A174687	partran	0	 with Holon.
+A060642	partran	1	new SkipSequence(new A000041(), 1)	
