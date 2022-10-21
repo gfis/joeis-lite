@@ -16,6 +16,6 @@ public class $(ASEQNO) extends PartitionTransformTriangle {
 
   /** Construct the sequence. */
   public $(ASEQNO)() throws FileNotFoundException {
-    super($(OFFSET), new TriangleSelector($(OFFSET), new PseudoSequence("$(ASEQNO)"), 0, n -> new int[]{n, 0}));
+    super($(OFFSET), new TriangleSelector($(OFFSET), new PseudoSequence("$(ASEQNO)"), 0, n -> new int[]{n, 0}), 0, "i");
   }
 }

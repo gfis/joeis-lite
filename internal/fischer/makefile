@@ -153,13 +153,10 @@ diff_reflect:
 diff_factory:
 	diff -wsy --suppress-common-lines ../../src/irvine/oeis/SequenceFactory.java ../../../joeis/src/irvine/oeis/
 diff_joeis:
-	ls -1 ../../src/irvine/oeis/cons/*.java | xargs -l -innn \
-	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/cons/ || :
-#	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/ || :
-diff_triangle:
-	ls -1 ../../src/irvine/oeis/triangle/*.java | xargs -l -innn \
-	  diff -wsy --suppress-common-lines nnn ../../../joeis/src/irvine/oeis/triangle || :
-#	  diff -wsC0                        nnn ../../../joeis/src/irvine/oeis/triangle || :
+	unzip -v ../../dist/joeis-lite.jar | grep "irvine/oeis" | grep ".class" | sed -e "s/  */\t/g" \
+	| grep -vP "oeis/a|\$\d+\." | cut -f9 | sed -e "s/.class/.java/" | tee $@.tmp \
+	| xargs -innn diff -ws -C0 ../../../joeis/src/nnn ../../src/nnn \
+	>> $@.tmp
 diffrec:
 	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/recur/ConstantOrderRecurrence.java ../../src/irvine/oeis/recur || :
 diffhr:
@@ -7382,6 +7379,8 @@ partran0: # select those pairs where the finding does not occur too often
 partran: # PartitionSTransformTriagle from some generator sequence
 	cp -v partran0.tmp $@.gen
 	cat A180177.man >> $@.gen
+partrapl:
+	grep -vE "A31920" $(CONTRIB)/pl/check_extract.tmp > $@.gen
 #--
 partralr: # check the ones with ls != 1(,1)+ and rs == 1(,1)+
 	grep -P "\tName\t" $(TRIREC)/modlr.tmp \

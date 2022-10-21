@@ -1,6 +1,7 @@
 package irvine.oeis.a060;
+// manually reverted 2022-10-21
 
-import irvine.factor.factor.Cheetah;
+import irvine.factor.factor.Jaguar;
 import irvine.math.MemoryFunction2;
 import irvine.math.z.Binomial;
 import irvine.math.z.Z;
@@ -13,7 +14,7 @@ import irvine.oeis.triangle.Triangle;
 public class A060642 extends Triangle {
 
   /** Construct the sequence. */
-  public A060642 () {
+  public A060642() {
     hasRAM(true);
   }
 
@@ -32,12 +33,12 @@ public class A060642 extends Triangle {
       }
       Z sum = Z.ZERO;
       for (int j = 1; j <= n; ++j) {
-        sum = sum.add(get(n - j, k).multiply(Cheetah.factor(j).sigma()));
+        sum = sum.add(get(n - j, k).multiply(Jaguar.factor(j).sigma()));
       }
       return sum.multiply(k).divide(n);
     }
   };
- 
+
   @Override
   protected Z compute(int n, int k) {
     ++n;
