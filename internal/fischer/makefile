@@ -297,10 +297,10 @@ clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep fro
 	grep -f clean.grep.tmp $(CC).gen > $(CC).clean.tmp
 	cp -v $(CC).clean.tmp  $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp
-cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 20 from previous test used to from $(CC).gen
+cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 100 from previous test used to from $(CC).gen
 	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp
-	grep -P "^A\d+\t([2-9]\d*|\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
+	grep -P "^A\d+\t(\d\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
 	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
 	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp
@@ -4112,6 +4112,17 @@ holsig:
 	2>       $@.holo.run
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+holsig2: # get signatures from jcat25
+	grep "Index entries for linear recurrences with constant coefficients" $(COMMON)/jcat25.txt \
+	| perl -ne 'use strict; if (m{\A\%H (A\d+)[^\#]+\#order_([0-4]\d)[^\(]+\(([^\)]+)\)}) {'\
+	' my ($$aseqno, $$order, $$signature) = ($$1, $$2, $$3); $$signature =~ s{ }{}g; $$order =~ s{\A0+}{};'\
+	' print join("\t", $$aseqno, "holsig", 0, $$signature, $$order, $$order) . "\n"; }' \
+	| perl sig_matrix.pl \
+	2>       $@.holo.run \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen	
 #--------------------------------
 hygsolve0:
 	grep -E "runholo" $(HOLREC)/hygsolve2.tmp \
@@ -5330,25 +5341,25 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp
-	# echo -n "binomial"                         > binomx.deris.tmp
+	echo -n "binomial"                         > binomx.deris.tmp
 	echo -n "characteristic|indicator"         > charfun.deris.tmp
-	# echo -n "complement"                       > compseq.deris.tmp
-	# echo -n "difference"                       > diffseq.deris.tmp
-	# echo -n "dirichlet"                        > dirichinv.deris.tmp
-	# echo -n "dirichlet"                        > dirichcon.deris.tmp
-	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	# echo -n "euler"                            > eulerx.deris.tmp
-	# echo -n "euler"                            > eulerix.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	# echo -n "partial product"                  > partprod.deris.tmp
-	# echo -n "partial sum"                      > partsum.deris.tmp
-	# echo -n "prime"                            > primepos.deris.tmp
-	# echo -n "prime"                            > primeval.deris.tmp
-	# echo -n "record"                           > recordpos.deris.tmp
-	# echo -n "record"                           > recordval.deris.tmp
-	# echo -n "stirling"                         > stirling2.deris.tmp
-	# echo -n "weigh"                            > weighx.deris.tmp
+	echo -n "complement"                       > compseq.deris.tmp
+	echo -n "difference"                       > diffseq.deris.tmp
+	echo -n "dirichlet"                        > dirichinv.deris.tmp
+	echo -n "dirichlet"                        > dirichcon.deris.tmp
+	echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	echo -n "euler"                            > eulerx.deris.tmp
+	echo -n "euler"                            > eulerix.deris.tmp
+	echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	echo -n "partial product"                  > partprod.deris.tmp
+	echo -n "partial sum"                      > partsum.deris.tmp
+	echo -n "prime"                            > primepos.deris.tmp
+	echo -n "prime"                            > primeval.deris.tmp
+	echo -n "record"                           > recordpos.deris.tmp
+	echo -n "record"                           > recordval.deris.tmp
+	echo -n "stirling"                         > stirling2.deris.tmp
+	echo -n "weigh"                            > weighx.deris.tmp
 # -n: no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
