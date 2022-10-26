@@ -300,7 +300,7 @@ clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep fro
 cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 100 from previous test used to from $(CC).gen
 	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp
-	grep -P "^A\d+\t(\d\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
+	grep -P "^A\d+\t(\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
 	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
 	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp
