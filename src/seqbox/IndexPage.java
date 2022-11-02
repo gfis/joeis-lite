@@ -183,7 +183,7 @@ public class IndexPage implements Serializable {
         String[] arrs = new String[args.size()];
         arrs = args.toArray(arrs);
         out.print("        <textarea name=\"area\" id=\"myInput\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
-        SequenceFactory.process(arrs, out);
+        SequenceFactory.process(arrs, out, false); // exit not ok
         out.print("        </textarea>\n");
         out.print("        <button onclick=\"myFunction()\" style=\"vertical-align:top;align:right;\" accesskey=\"c\"><u>C</u>opy</button>\n");
         out.print("      </td>\n");
