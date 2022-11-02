@@ -157,7 +157,7 @@ public class IndexPage implements Serializable {
         int width  = 96;
         int height = 8;
         if (mode.equals("B")) {
-          width  = 32;
+          width  = 96;
           height = 64;
         }
         final ArrayList<String> args = new ArrayList<>(16);

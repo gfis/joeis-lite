@@ -106,6 +106,9 @@ spectest:
 #	$(JAVA) irvine.oeis.cons.FoldedContinuedFraction $(ARGS)
 crtest:
 	$(JAVA) irvine.math.cr.CR $(NUM)
+URI=https://oeis.org/b303116.txt 
+uritest:
+	$(JAVA) org.teherba.common.URIReader $(URI) UTF-8
 ebtest:
 	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
 gramtest:
@@ -115,7 +118,7 @@ tiletest:
 runjava: # CLASS= ARGS=
 	$(JAVA) $(CLASS) $(ARGS)
 pseudotest: # A=
-	$(JAVA) irvine.oeis.PseudoSequence $(A)
+	$(JAVA) irvine.oeis.producer.PseudoSequence $(A) 2>&1
 tritest:
 	$(JAVA) irvine.oeis.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
 ej:

@@ -329,8 +329,9 @@ public class URIReader extends InputStream {
                 charReader = unzipStream(byteStream);
                 isEncoded = true;
             } // doUnzip
-        } catch (FileNotFoundException fnf) {
-            isOpened = false; // no message
+        } catch (FileNotFoundException exc) {
+            isOpened = false;
+            log.error(exc.getMessage() + ", parmURI=\"" + parmURI + "\", enc=\"" + enc + "\"\n", exc);
         } catch (Exception exc) {
             isOpened = false; // for any problem
             log.error(exc.getMessage() + ", parmURI=\"" + parmURI + "\", enc=\"" + enc + "\"\n", exc);

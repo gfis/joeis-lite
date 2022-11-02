@@ -18,7 +18,8 @@ public class PseudoProducer implements Producer {
       return new PseudoSequence(aNumber);
     } catch (Exception exc) {
       String env = System.getenv("BFPATH"); // Use environment variable BFPATH if that is set
-      System.err.println("PseudoProducer: BFPATH=" + env + ", A-number=" + aNumber + " could not be read");
+      System.err.println("PseudoProducer: BFPATH=" + env + ", A-number=" + aNumber + " could not be read: " + exc.getMessage());
+      exc.printStackTrace();
       return null;
     }
   }
