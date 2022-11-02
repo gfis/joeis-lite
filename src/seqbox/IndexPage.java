@@ -67,21 +67,30 @@ public class IndexPage implements Serializable {
             , final BasePage basePage
             , final String language
             ) throws IOException {
-        String aseqno   = basePage.getInputField(request, "aseqno"   , "A007318").trim(); // A-number
-        String mode     = basePage.getInputField(request, "mode"     , "D"); // how to display the terms (data, b-file, triangle and so on)
-        String area     = basePage.getInputField(request, "area"     , ""); // output area for terms
-        String offset   = basePage.getInputField(request, "offset"   , "").trim(); // index of first term (needed for  b-files)
-        String terms    = basePage.getInputField(request, "terms"    , "64").trim(); // number of terms to be computed
-        String rows     = basePage.getInputField(request, "rows"     , "8").trim(); // number of rows for triangles and squares
-        String dataLen  = basePage.getInputField(request, "datalen"  , "260").trim(); // character length of data (0 = unlimited)
-        String rowNums  = basePage.getInputField(request, "rowNums"  , "").trim(); // whether to display row numbers for triangles and squares 
-        String header   = basePage.getInputField(request, "header"   , "").trim(); // whether to display a header at the beginning of the b-file
-        String timestamp= basePage.getInputField(request, "timestamp", "").trim(); // whether to display a timestamp before each term
-        String priority = basePage.getInputField(request, "priority" , "java,gp").trim().replaceAll(" ","").toLowerCase(); // order for producers
-        String author   = basePage.getInputField(request, "author"   , "").trim(); // string to be displayes as author in the header
+        String aNumber   = basePage.getInputField(request, "aNumber"  , "A007318").trim().toUpperCase(); // A-number
+        String mode      = basePage.getInputField(request, "mode"     , "D").trim(); // how to display the terms (data, b-file, triangle and so on)
+        String area      = basePage.getInputField(request, "area"     , "").trim(); // output area for terms
+        String offset    = basePage.getInputField(request, "offset"   , "").trim(); // index of first term (needed for  b-files)
+        String terms     = basePage.getInputField(request, "terms"    , "64").trim(); // number of terms to be computed
+        String rows      = basePage.getInputField(request, "rows"     , "8").trim(); // number of rows for triangles and squares
+        String dataLen   = basePage.getInputField(request, "datalen"  , "260").trim(); // character length of data (0 = unlimited)
+        String rowNums   = basePage.getInputField(request, "rowNums"  , "false").trim(); // whether to display row numbers for triangles and squares 
+        String header    = basePage.getInputField(request, "header"   , "false").trim(); // whether to display a header at the beginning of the b-file
+        String timestamp = basePage.getInputField(request, "timestamp", "false").trim(); // whether to display a timestamp before each term
+        String priority  = basePage.getInputField(request, "priority" , "java,gp").trim().replaceAll(" ","").toLowerCase(); // order for producers
+        String author    = basePage.getInputField(request, "author"   , "").trim(); // string to be displayes as author in the header
         ServletOutputStream out = basePage.writeHeader(request, response, language);
-        if (aseqno == null || aseqno.length() < 2) {
-          aseqno = "A007318";
+        if (aNumber == null || aNumber.length() < 2) {
+          aNumber = "A007318";
+        }
+        if (aNumber.charAt(0) != 'A') {
+          aNumber = "A" + aNumber;
+        }
+        if (aNumber.length() > 7) {
+          aNumber = aNumber.substring(0, 1) + aNumber.substring(aNumber.length() - 6);
+        }
+        if (aNumber.length() < 7) {
+          aNumber = aNumber.substring(0, 1) + "000000".substring(0, 7 - aNumber.length()) + aNumber.substring(1);
         }
         if (mode == null || mode.length() < 1) {
           mode = "D";
@@ -105,10 +114,10 @@ public class IndexPage implements Serializable {
                 , "Triangle"
                 } ;
         int index = 0;
-        out.print("<!-- aseqno=\"" + aseqno + "\", mode=\""  + mode + "\"\n");
+        out.print("<!-- aNumber=\"" + aNumber + "\", mode=\""  + mode + "\", offset=\"" + offset + "\", priority=\"" + priority + "\"\n");
         out.print(", terms=\"" + terms + "\", rows=\""  + rows + "\", dataLen=\"" + dataLen + "\"\n");
         out.print(", rowNums=\"" + rowNums + "\", header=\""  + header + "\", timestamp=\"" + timestamp + "\", author=\"" + author + "\"\n");
-        out.print("  area=\""  + area + "\"\n");
+    //  out.print("  area=\""  + area + "\"\n");
         out.print("-->\n");
         out.print("<h2>Seqbox - Toolkit for Seqfans</h2>\n");
         out.print("<form action=\"servlet\" method=\"get\">\n");
@@ -116,11 +125,11 @@ public class IndexPage implements Serializable {
         out.print("  <table cellpadding=\"0\" border=\"" + border + "\">\n");
         out.print("    <tr valign=\"top\">\n");
         out.print("      <td><strong>A-Number:</strong><br />\n");
-        out.print("        <strong><a href=\"https://oeis.org/" + aseqno + "\" title=\"OEIS description\" target=\"_blank\">OEIS </a>\n");
-        out.print("        <input name=\"aseqno\" maxsize=\"10\" size=\"7\" value=\"" + aseqno + "\" /></strong>\n");
+        out.print("        <strong><a href=\"https://oeis.org/" + aNumber + "\" title=\"OEIS description\" target=\"_blank\">OEIS </a>\n");
+        out.print("        <input name=\"aNumber\" maxsize=\"10\" size=\"7\" value=\"" + aNumber + "\" /></strong>\n");
         out.print("        <br /><button type=\"submit\" value=\"Generate\" accesskey=\"g\"><u>G</u>enerate</button>\n");
         out.print("        <br /><br /><a target=\"_blank\" href=\"https://raw.githubusercontent.com/archmageirvine/joeis/master/src/irvine/oeis/" 
-            + aseqno.substring(0,4).toLowerCase() + "/" + aseqno + ".java\">Java source</a>\n");
+            + aNumber.substring(0,4).toLowerCase() + "/" + aNumber + ".java\">Java source</a>\n");
         out.print("      </td><td>\n");
         out.print("        Output Mode:<br />\n");
         out.print("        <select name=\"mode\" size=\"5\">\n");
@@ -138,9 +147,9 @@ public class IndexPage implements Serializable {
         out.print("      </td><td>\n");
         out.print("        <table cellpadding=\"0\" border=\"0\"><tr><td>Author:</td><td><input name=\"author\" maxsize=\"64\" size=\"12\" value=\"" + author + "\" />\n");
         out.print("          </td></tr><tr><td>Priority:</td><td><input name=\"priority\" maxsize=\"64\" size=\"12\" value=\"" + priority + "\" /></td></tr></table>\n");
-        out.print("              <input type=\"checkbox\" id=\"rowNums\"   name=\"rowNums\"   value=\"true\"><label for=\"rowNums\" > Row numbers</label>\n");
-        out.print("        <br /><input type=\"checkbox\" id=\"header\"    name=\"header\"    value=\"true\"><label for=\"header\"  > B-file header</label>\n");
-        out.print("        <br /><input type=\"checkbox\" id=\"timestamp\" name=\"timestamp\" value=\"true\"><label for=\"vehicle3\"> Timestamp</label>\n");
+        out.print("              <input type=\"checkbox\" id=\"rowNums\"   name=\"rowNums\"   " + (rowNums  .equals("on") ? "checked" : "") + "><label for=\"rowNums\" > Row numbers</label>\n");
+        out.print("        <br /><input type=\"checkbox\" id=\"header\"    name=\"header\"    " + (header   .equals("on") ? "checked" : "") + "><label for=\"header\"  > B-file header</label>\n");
+        out.print("        <br /><input type=\"checkbox\" id=\"timestamp\" name=\"timestamp\" " + (timestamp.equals("on") ? "checked" : "") + "><label for=\"vehicle3\"> Timestamp</label>\n");
         out.print("      </td>\n");
         out.print("    </tr>\n");
         out.print("    <tr valign=\"top\">\n");
@@ -151,29 +160,30 @@ public class IndexPage implements Serializable {
           width  = 32;
           height = 64;
         }
-        out.print("        <textarea name=\"area\" id=\"myInput\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
         final ArrayList<String> args = new ArrayList<>(16);
         args.add("-" + mode);
-        args.add("--terms="       + (terms  .trim().length() == 0 ? "0" : terms  ));
-        args.add("--rows="        + (rows   .trim().length() == 0 ? "0" : rows   ));
-        args.add("--data-length=" + (dataLen.trim().length() == 0 ? "0" : dataLen));
-        args.add("--author="      + (author .trim().length() == 0 ? ""  : author ));
-        if (rowNums.equals("true"))   {
+        args.add("--author="      + (author  .trim().length() == 0 ? "Georg Fischer" : author ));
+        args.add("--data-length=" + (dataLen .trim().length() == 0 ? "260"       : dataLen));
+        args.add("--priority="    + (priority.trim().length() == 0 ? "java,pari" : priority));
+        args.add("--rows="        + (rows    .trim().length() == 0 ? "8"         : rows   ));
+        args.add("--terms="       + (terms   .trim().length() == 0 ? "64"        : terms  ));
+        if (rowNums.equals("on"))   {
           args.add("--row-numbers");
         }
         if (offset.length() > 0)    {
           args.add("--offset=" + offset);
         }
-        if (header.equals("true"))    {
+        if (header.equals("on"))    {
           args.add("--header");
         }
-        if (timestamp.equals("true")) {
+        if (timestamp.equals("on")) {
           args.add("--timestamp");
         }
-        args.add(aseqno);
+        args.add(aNumber);
         String[] arrs = new String[args.size()];
         arrs = args.toArray(arrs);
-        SequenceFactory.compute(arrs, out);
+        out.print("        <textarea name=\"area\" id=\"myInput\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
+        SequenceFactory.process(arrs, out);
         out.print("        </textarea>\n");
         out.print("        <button onclick=\"myFunction()\" style=\"vertical-align:top;align:right;\" accesskey=\"c\"><u>C</u>opy</button>\n");
         out.print("      </td>\n");
