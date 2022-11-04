@@ -220,7 +220,7 @@ GFis
             print RUN "make runholo MATRIX=\"$matrix\" INIT=\"$init\" DIST=$dist OFF=$off\n";
             close(RUN);
         } else {
-            print TAR "    super(0, \"[[0],[1],[1],[-1]\", \"0,1\", 0);\n"; # Fibonacci
+            print TAR "    super(0, \"[[0],[1],[1],[1],[1],[1],[1],[-1]]\", \"1\", 0);\n"; # Fibonacci
         }
     } elsif ($upperleft) {
         print TAR "    super(1, 1, -1);\n";
