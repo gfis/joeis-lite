@@ -1,6 +1,8 @@
 package seqbox;
 
+import irvine.oeis.Sequence;
 import irvine.oeis.SequenceFactory;
+import irvine.oeis.producer.MetaProducer;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -126,10 +128,8 @@ public class IndexPage implements Serializable {
         out.print("    <tr valign=\"top\">\n");
         out.print("      <td><strong>A-Number:</strong><br />\n");
         out.print("        <strong><a href=\"https://oeis.org/" + aNumber + "\" title=\"OEIS description\" target=\"_blank\">OEIS </a>\n");
-        out.print("        <input name=\"aNumber\" maxsize=\"10\" size=\"7\" value=\"" + aNumber + "\" /></strong>\n");
+        out.print("        <input class=\"bold\" name=\"aNumber\" maxsize=\"10\" size=\"7\" value=\"" + aNumber + "\" /></strong>\n");
         out.print("        <br /><button type=\"submit\" value=\"Generate\" accesskey=\"g\"><u>G</u>enerate</button>\n");
-        out.print("        <br /><br /><a target=\"_blank\" href=\"https://raw.githubusercontent.com/archmageirvine/joeis/master/src/irvine/oeis/" 
-            + aNumber.substring(0,4).toLowerCase() + "/" + aNumber + ".java\">Java source</a>\n");
         out.print("      </td><td>\n");
         out.print("        Output Mode:<br />\n");
         out.print("        <select name=\"mode\" size=\"5\">\n");
@@ -183,13 +183,21 @@ public class IndexPage implements Serializable {
         String[] arrs = new String[args.size()];
         arrs = args.toArray(arrs);
         out.print("        <textarea name=\"area\" id=\"myInput\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
-        SequenceFactory.process(arrs, out, false); // exit not ok
+        final Sequence seq = SequenceFactory.process(arrs, out, false); // exit not ok
         out.print("        </textarea>\n");
         out.print("        <button onclick=\"myFunction()\" style=\"vertical-align:top;align:right;\" accesskey=\"c\"><u>C</u>opy</button>\n");
         out.print("      </td>\n");
         out.print("    </tr>\n");
         out.print("  </table>\n");
         out.print("</form><!-- joeis -->\n");
+        final String programType = MetaProducer.getProgramType(seq);
+        String generator = programType;
+        if (programType.startsWith("Java")) {
+          generator = "<a target=\"_blank\" href=\"https://raw.githubusercontent.com/archmageirvine/joeis/master/src/irvine/oeis/" 
+              + aNumber.substring(0,4).toLowerCase() + "/" + aNumber + ".java\">jOEIS (Java)</a>";
+        }
+        generator = (programType.startsWith("b-") ? "from " : "by ") + "<strong>" + generator + "</strong>";
+        out.print("Output generated " + generator + "\n");
         out.print("<br />\n");
         basePage.writeAuxiliaryLinks(language, "main");
         basePage.writeTrailer(language, "quest");

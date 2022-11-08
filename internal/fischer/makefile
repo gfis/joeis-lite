@@ -3557,6 +3557,12 @@ holco:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----------------
+hologfm: # ogf -> hol with FPS, Maple 2022
+	grep -E "^A[0-9]" $(HOLREC)/hologfm.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----------------
 # A054122
 # +(-8*n+4*n^2)*a(n-2) + (-4+12n-8n^2)*a(n-1) + (0-1*n+1n^2)*a(n)  = 0.
 # make runholo MATRIX="[[0],[0,-8,4],[-4,12,-8],[0,-1,1]]" INIT="[1,3]"
@@ -6265,6 +6271,7 @@ genf3:
 lingf:
 	uniq -w7 $(HOLREC)/lingf2.tmp \
 	| sed -e "s/lingfo/lingf/" \
+	| grep -vE "A055911" \
 	> lingf.gen
 lingf_offset:
 	cp   lingf.gen lingf.gen.bak

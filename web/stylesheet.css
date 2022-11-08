@@ -1,5 +1,6 @@
 /* Cascaded Style Sheet for Seqbox
    @(#) $Id$
+   2022-11-05: .bold
    2022-06-26, Georg Fischer
 */
 .grn    { color:black    ; background-color: lightgreen      }
@@ -9,10 +10,11 @@
 .p3     { color:black    ; background-color: yellow          }
 .p5     { color:black    ; background-color: lightgreen      }
 .p7     { color:black    ; background-color: lightblue       }
+.bold   { font-weight: bold }
 
 body,p,h1,h2,h3,h4,dl,dd,dt,ul,ol,li,div,td,th,address,blockquote,nobr,b,i,a,br,img
     { font-family:Verdana,Arial,sans-serif; }
-dt  
+dt
     { font-weight: bold }
 tt
     { font-family:Courier; }
@@ -20,5 +22,5 @@ td
     { vertical-align:top }
 body
     { background-color:lightyellow }
-button:first-letter 
+button:first-letter
     { text-decoration:underline }
