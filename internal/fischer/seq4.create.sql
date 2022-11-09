@@ -16,11 +16,11 @@ CREATE  TABLE            seq4
     ( aseqno   VARCHAR(10) NOT NULL  -- A322469
     , callcode VARCHAR(16)           -- cfsnum
     , offset1  VARCHAR(16)           -- offset1
-    , parm1    VARCHAR(15384)
+    , parm1    VARCHAR(12000)
     , parm2    VARCHAR(2048)
-    , parm3    VARCHAR(1024)
-    , parm4    VARCHAR(1024)
-    , parm5    VARCHAR(768 ) -- holos remark
+    , parm3    VARCHAR(2048)
+    , parm4    VARCHAR(2048)
+    , parm5    VARCHAR(2048) -- holos remark
     , parm6    VARCHAR(128)
     , parm7    VARCHAR(128)
     , parm8    VARCHAR(64)

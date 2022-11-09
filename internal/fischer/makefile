@@ -3562,6 +3562,13 @@ hologfm: # ogf -> hol with FPS, Maple 2022
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--
+hologf4: # ogf -> hol with FPS, Maple 2022
+	grep -E "^A[0-9]" $(HOLREC)/hologf4.tmp \
+	| grep -vE "A068246|A112951|A129155|A132058|A132059|A248426|A274254|A325918|A325920|Catalan" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----------------
 # A054122
 # +(-8*n+4*n^2)*a(n-2) + (-4+12n-8n^2)*a(n-1) + (0-1*n+1n^2)*a(n)  = 0.
@@ -8180,8 +8187,8 @@ seq4: # parameter: $(LIST) with aseqno, offset1, parm1, parm2, parm3, parm4, nam
 	$(DBAT) -f seq4.create.sql
 	cat $(LIST) | grep -E "^A" | sort | uniq -w7 > seq4.tmp
 	$(DBAT) -m csv -r seq4 < seq4.tmp
-	$(DBAT) -4 seq4
-	$(DBAT) -n seq4
+	# $(DBAT) -4 seq4
+	# $(DBAT) -n seq4
 delseq: seq # parameters: $(TAB) $(LIST)
 	$(DBAT) -v "DELETE FROM $(TAB) WHERE aseqno IN (SELECT aseqno FROM seq)"
 #----
