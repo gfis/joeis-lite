@@ -8343,6 +8343,11 @@ cklist:
 	cd ck; make $@
 intin:
 	cd ck; make $@
+philo1:
+	cd $(CONTRIB)/ck ; make philo1
+	cat $(CONTRIB)/ck/philo1.tmp \
+	| tee    $@.gen
+	wc -l    $@.gen
 #================
 # Chapoton
 chapoton:
