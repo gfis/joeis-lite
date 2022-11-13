@@ -1,6 +1,5 @@
 package irvine.oeis.a165;
 
-import irvine.math.z.Z;
 import irvine.oeis.recur.HolonomicRecurrence;
 
 /**
@@ -12,6 +11,6 @@ public class A165968 extends HolonomicRecurrence {
   /** Construct the sequence. */
   public A165968() {
     // b(n) = 2*(n-1)*b(n-1) +2*(n-2)*b(n-2)
-    super(0, "[[0],[-4,2],[-2,2],[-1]", "0,1", 0);
+    super(1, "[[0],[-4, 2],[-2, 2],[-1]", "0,1", 1);
   }
 }
