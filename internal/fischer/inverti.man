@@ -1,0 +1,56 @@
+A051573	inverti	0	new A000081()	INVERTi transform of A000081
+# A073133	inverti	0		The array can be extended infinitely above the Fibonacci row by taking successive INVERTi transforms, resulting in:
+# A073133	inverti	0		  This results in an infinite array in which sequences above the (1, 0, 1, 0, ...) are reflections of the sequences below, except for the alternate signs. Any sequence in the (+ sign) row starting (1, n, ...) is the (2*n-th) INVERT transform of the same sequence but with alternate signs.  Example: (1, 2, 5, 12, ...) is the (2*2) = fourth INVERT transform of (1, -2, 5, -12, ...) by inspection. Conjecture:  This "reflection" principle will result from taking successive INVERT transforms of any aerated sequence starting 1, ... and with positive signs. Likewise, the rows above the aerated sequence are successive INVERTi transforms of the aerated sequence. - _Gary W. Adamson_, Jul 14 2019
+# A073776	inverti	0		The definition in the heading follows from the INVERTi transform of (1, 2, 3, 6, 9, 17,...) equals -mu(n) for n>=2 (Cf. A157658).
+A089835	inverti	0	new A089836()	a(n) = A001246(n)*A000142(n+1) = A001813(n)*A000108(n). INVERTi transform of A089836.
+A094060	inverti	0	new A002898()	INVERTi transform of A002898. - _R. J. Mathar_, Sep 29 2020
+A095989	inverti	0	new A000570()	INVERTi transform applied to the ordered Bell numbers.
+# A107717	inverti	0		Column 0 is A107716 (INVERTi of triple factorials). Column 1 is A107718 (twcie column 0 of T^(2/3), offset 1). The matrix logarithm divided by 3 yields the integer triangle A107724.
+A115974	inverti	0	new SkipSequence(new A001147(), 2)	a(n) is the INVERTi transform of A001147(n+2), starting at n=2.
+A140456	inverti	0	new SkipSequence(new A000085(), 1)	a(n) is the INVERTi transform of A000085(n+1)
+# A140456	inverti	0		More generally, if c(n)=int(x^n*rho(x),x=a..b) with rho(x) a probability density function of class C1, then the INVERTi transform of (c(1),..c(n),..) starting at n=2 gives the moments of mu(x) = rho(x) / ((s(x))^2+(Pi*rho(x))^2) with s(x) = int( rho'(t)*log(abs(1-t/x)), t=a..b) + rho(b)*log(x/(b-x)) + rho(a)*log((x-a)/x).
+# A141307	inverti	0		2^n*op(n,INVERTi([seq(k!, k=1..n)]))
+A141309	inverti	0	new A141308()	INVERTi transform of A141308.
+# A141313	inverti	0		2^n*op(n,INVERTi([seq((k+1)^(k-1), k=1..n)]))
+A141315	inverti	0	new A141314()	INVERTi transform of A141314.
+A141319	inverti	0	new A141318()	INVERTi transform of A141318.
+# A144106	inverti	0		Eigentriangle by rows, T(n,k) = A078050(n-k) * X; where X = an infinite lower triangular matrix with (1, 1, 3, 5, 7, 9,...) in the main diagonal and the rest zeros. A078050 is signed: (1, 2, 0, -4, -4, 4, 12, 4, -20, -28,...) = the INVERTi transform of the odd numbers: (1, 3, 5, 7,...).
+# A144172	inverti	0		T(n,k) = A010056(n-k+1)*A076739(k-1). A010056, the characteristic function of the Fibonacci numbers, starts with offset 1: (1, 1, 1, 0, 1,...). A076739(k-1), the INVERTi transform of (1, 1, 1, 0, 1,...) starts with offset 0: (1, 1, 2, 4, 7, 14,...).
+A146061	inverti	0	new SkipSequence(new A000009(), 1)	The INVERTi transform of A000009 starting with offset 1 = (1, 0, 1, -1, -1, 1, -2, 2, -2, 2, -3, 3, -3, 4, -5, 5, -5, 6,...); i.e. A000700 signed = left border.
+# A146061	inverti	0		The signed version of A000700 as indicated: (alternate signs starting with A000700(3): (+-+...) = the INVERTi transform of A000009.
+# A152431	inverti	0		Left border = A074664 (1, 1, 2, 6, 22 92, 426,...), the INVERTi transform of (1, 2, 5, 15, 52,...).
+A155728	inverti	0	new A054765()	INVERTi transform of A054765: (1, 3, 19, 160, 1744,...).
+A156791	inverti	0	new A006973()	0	INVERTi transform of A006973.
+A156791	inverti	0	new SkipSequence(new A006973(), 1)	1	INVERTi transform of (A006973 with offset 1) = (1, 2, 9, 24, 130, 720, ...).
+A159933	inverti	0	new A000005()	INVERTi transform of d(n), A000005.
+# A159934	inverti	0		Triangle = an infinite lower triangular Toeplitz matrix with the INVERTi transform of d(n) in every column; i.e. A159933: (1, 1, -1, 0, -1, 2, -1,...). Row sums of the resulting eigentriangle of d(n) = d(n).
+# A163204	inverti	0		Descending antidiagonals of a multiplication table formed by convolving A095989 with A000670, where A095989 is the INVERTi transform of A000670 starting (1, 3, 13, 75,...).
+A175010	inverti	0	new SkipSequence(new A000041(), 1)	The INVERTi transform of A000041 starting with offset 1 follows from the definition of the INVERT transform, given 1/p(x) = A010815.
+# A175011	inverti	0		Given S(x) = (1 + 2x + 3x^2 + ...), where (1, 2, 3,...) = the INVERTi transform
+A188143	inverti	0	new SkipSequence(new A010842(), 2)	a(n) is also the INVERTi transform of A010842(n+1) starting at n=2.
+# A188143	inverti	0		More generally, for every integer k, the sequence a(n,k)=int(x^n*exp(x-k) / ((Ei(x-k))^2+Pi^2), x=k..infinity) is the INVERTi transform of the sequence b(n+1,k), starting at n=2, with b(n,k)=int(x^n*exp(x-k), x=k..infinity) whose e.g.f. is exp(k*x)/(1-x).
+A188144	inverti	0	new SkipSequence(new A005425(), 1)	a(n) is also the INVERTi transform of A005425(n+1) (self-inverse partial permutations) starting at n=2.
+A215252	inverti	0	new A216040()	INVERTi transform of A216040.
+A215257	inverti	0	new A182216()	INVERTi transform of A182216.
+A273396	inverti	0	new A255906()	Indecomposable collections of multisets with a total of n objects having entries {1,2,...,k} for some k<=n or INVERTi transform of A255906.
+A273396	inverti	0	new A255906()	INVERTi transform of A255906.
+# A337048	inverti	0		The ordinary generating function of column k is g(x)^k, where g(x) = x +x^3 +x5 +x^6+.. is the ordinary generating function of column k=1 and g(x) is also the INVERTi transform of A005169.
+# A344567	inverti	0		Given a sequence a(n), we call the sequence b(n) Cameron's inverse of a, or, as dubbed by Sloane, INVERTi(a) (see the link 'Transforms' in the footer of the page), if 1 + Sum_{n>=1} a(n)*x^n = 1/(1 - Sum_{n>=1} b(n)*x^n).
+# A344567	inverti	0		  INVERTi(a) = A059738.
+# A344567	inverti	0		  INVERTi(INVERTi(a)) = A005773.
+# A344567	inverti	0		  INVERTi(INVERTi(INVERTi(a))) = A001006, Motzkin numbers.
+# A344567	inverti	0		  INVERTi(INVERTi(INVERTi(INVERTi(a)))) = A005043.
+# A344567	inverti	0		  INVERTi(INVERTi(INVERTi(INVERTi(INVERTi(a))))) = A344507.
+
+# Sean did 2022-10-18:
+src/irvine/oeis/a060/A060011.java
+src/irvine/oeis/a094/A094060.java
+src/irvine/oeis/a095/A095989.java
+src/irvine/oeis/a115/A115974.java
+src/irvine/oeis/a140/A140456.java
+src/irvine/oeis/a141/A141319.java
+src/irvine/oeis/a155/A155728.java
+src/irvine/oeis/a156/A156791.java
+src/irvine/oeis/a159/A159933.java
+src/irvine/oeis/a188/A188143.java
+src/irvine/oeis/a188/A188144.java
