@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2022-11-24: Sequence0
 # 2022-07-15: SequenceWithOffset
 # 2022-06-01: package recur
 # 2022-02-22, private; -p implies -n
@@ -169,7 +170,7 @@ GFis
         print TAR "triangle.UpperLeftTriangle";
     } else {
         print TAR "MemorySequence";
-        print TAR ";\nimport irvine.oeis.SequenceWithOffset";
+        print TAR ";\nimport irvine.oeis.Sequence0";
     } # end of superclass import
     print TAR ";\n";
     #--------
@@ -193,7 +194,7 @@ GFis
     } elsif ($upperleft  == 1) {
         print TAR "extends UpperLeftTriangle";
     } else {
-        print TAR "implements SequenceWithOffset";
+        print TAR "extends Sequence0";
     }
     print TAR " {\n";
     if ($withn) {
@@ -299,6 +300,7 @@ GFis
     #----
     } else { # default method next()
         print TAR <<"GFis";
+
   \@Override
   public int getOffset() {
     return mOffset;
