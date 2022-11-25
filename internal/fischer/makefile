@@ -2275,6 +2275,13 @@ philo_tab:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+philo_tab2:
+	grep -E "^A[0-9]" $(CONSTANT)/philo_tab1.tmp \
+	| sort | uniq -w7 \
+	| grep -vE "sqrt|phi" | grep parmof4 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 mersenne_tab: # expansion of Mersenne primes
 	grep -E "^A[0-9]" $(CONSTANT)/mersenne_tab1.tmp \
 	| perl -pe 's{\A(A\d+)\t(\w+)\t}{$$1\tzbasex\t}; '\
