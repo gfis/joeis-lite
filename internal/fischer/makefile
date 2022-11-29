@@ -1732,6 +1732,12 @@ A205558:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+A214999: # Power ceiling-floor sequence of (golden ratio)^4.
+	perl $(CONTRIB)/ck/ck_guides.pl -a b \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 A216703: # 2021-11-17 EFF+2
 	grep -E "^A[0-9]" $@.man \
 	>        $@.gen
@@ -3108,6 +3114,12 @@ diriprod:
 #--------------------------------
 divpow:
 	perl divpow.pl -d 0 $(COMMON)/joeis_names.txt \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
+doubled:
+	grep "double" $(COMMON)/doubled1.tmp | grep -v nyi \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
