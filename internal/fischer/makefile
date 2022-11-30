@@ -3250,6 +3250,11 @@ egypfr:
 	head -n4 $@.gen
 	wc   -l  $@.gen $@.rest.tmp
 #--------------------------------
+fiboluca:
+	cp -v $(COMMON)/$@.tmp $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#--------------------------------
 finifull: # finite and full
 	$(DBAT) -x "SELECT i.aseqno, '$@', i.offset1, d.data \
 		FROM asinfo i, bfinfo b, bfdata d \
