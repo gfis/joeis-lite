@@ -12,11 +12,16 @@ public class A348131 extends Sequence0 {
   private int mN = 0;
 
   @Override
+  public int getOffset() {
+    return 1;
+  }
+
+  @Override
   public Z next() {
     // a(2n-1) = n^(2n-1) - (n-1)^(2n-1) and a(2n) = ((2n+1)^(2n) - (2n-1)^(2n)) / 2.
     ++mN;
     final int n = mN / 2;
-    return ((mN & 1) == 1) ? Z.valueOf(n + 1).pow(mN).subtract(Z.valueOf(n).pow(mN)) 
-        : Z.valueOf(mN + 1).pow(mN).subtract(Z.valueOf(mN - 1).pow(mN)).divide2();
+    return ((mN & 1) == 1) ? Z.valueOf(n + 1).pow(mN).subtract(Z.valueOf(n).pow(mN))
+      : Z.valueOf(mN + 1).pow(mN).subtract(Z.valueOf(mN - 1).pow(mN)).divide2();
   }
 }

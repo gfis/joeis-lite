@@ -10,10 +10,15 @@ import irvine.oeis.a008.A008324;
 public class A087114 extends A008324 {
 
   private int mN = 0;
-  
+
   /** Construct the sequence. */
   public A087114() {
     super.next();
+  }
+
+  @Override
+  public int getOffset() {
+    return 1;
   }
 
   @Override

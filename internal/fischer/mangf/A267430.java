@@ -10,11 +10,17 @@ import irvine.oeis.a000.A000290;
  */
 public class A267430 extends A000290 {
 
+
+  @Override
+  public int getOffset() {
+    return 1;
+  }
+
   @Override
   public Z next() {
     while (true) {
       final Z result = super.next();
-      if (! Z.valueOf(ZUtils.digitSum(result)).isPrime()) {
+      if (!Z.valueOf(ZUtils.digitSum(result)).isPrime()) {
         return result;
       }
     }
