@@ -4633,6 +4633,13 @@ mma_joeis: #
 	head -n4 $@.txt
 	wc -l    $@.txt
 #--------------------------------
+modi:
+	grep -E "^%" $(COMMON)/jcat25.txt \
+	| perl -ne 'if (m{\A\%[NFC] +(A\d+)\s+a\(n\) *\= *(A\d+)\([^\)]+\) *mod *([\w\+\-\(\)\*\/\^]+) *[\.\=]}i) {'\
+	' print join("\t", $$1, $@, 0, $$2, $$3, $$_); }' \
+	| tee    $@.gen
+	wc -l    $@.gen
+#--------------------------------
 morfix:
 	CLASS=MorphismSequence
 	perl -ne \
@@ -5374,6 +5381,18 @@ posins2:
 	# perl callcode_wiki.pl -p 1 posins.gen > posins.wiki
 posind:
 	grep -E "^A[0-9]" posind.man > $@.gen
+#----------------
+charf:
+	grep -E "^%" $(COMMON)/jcat25.txt \
+	| perl -ne 'if (m{\A\%[NFY] +(A\d+)\s+Characteristic *function *of *(A\d+)[\.\,\:]}i) {'\
+	' print join("\t", $$1, $@, 0, $$2, $$_); }' \
+	| uniq -w7 \
+	| tee    $@.gen
+	wc -l    $@.gen
+charfm:
+	grep -E "^A" charf.man \
+	| tee    $@.gen
+	wc -l    $@.gen
 #================================
 # Derived sequences processed with deris.pl
 #
