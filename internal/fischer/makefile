@@ -3120,6 +3120,7 @@ divpow:
 #--------------------------------
 doubled:
 	grep "double" $(COMMON)/doubled1.tmp | grep -v nyi \
+	| grep -vE "A108784|A164660" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
