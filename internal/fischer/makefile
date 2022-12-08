@@ -1536,6 +1536,10 @@ A090171: # T(n, k) = T(n-1, k) + T(n-1, k-1) + T(n-2, k) + T(n-2, k-1) + T(n-2, 
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
+A095072:
+	grep -P "Primes in whose binary expansion" $(COMMON)/joeis_names.txt | cut -b1-120 \
+	>        $@.tmp
+#----
 A095425:
 	grep -E "^A094324" anastret.txt \
 	| perl -ne 's/\s+\Z//; my ($$d1, $$aseqno, $$d2, @parms) = split(/\t/); '\
@@ -1801,6 +1805,39 @@ alsoprime:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----------------
+amoda: # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
+	grep -Pi "a\(n\) *\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\) *\." $(COMMON)/jcat25.txt \
+	| grep -E "^\%" \
+	| cut -b 4- | sed -e "s/ /\t/" \
+	| perl -ne 'if (m{\A(A\d+)\s+a\([^\)]+\) *\= *(A\d+)\(n\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *(A\d+)\([^\)]+\)}i) {'\
+	' print join("\t", $$1, $@, 0, $$2, $$4); my $$op = $$3;'\
+	' $$op =~ s{\+}{add}; $$op =~ s{\-}{subtract}; $$op =~ s{\*}{multiply}; $$op =~ s{\/}{divide}; $$op =~ s{\^}{pow}; $$op = lc($$op);'\
+	' print "\t$$op\n"; }'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--
+# simple formula a(n) = Aqseno(n...) op Arseqno(n...)
+anopan0:
+	grep -Pi "a\(n\) *\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\)" $(COMMON)/jcat25.txt \
+	| grep -E "^\%" | cut -b 4-  | sort | uniq -w7 | sed -e "s/ /\t/" \
+	>        $@.tmp
+	wc -l    $@.tmp
+	make seq2 LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, 'anopan', i.offset1, REGEXP_SUBSTR(d.data, '[\-0-9]+(\,[\-0-9]+){8}'), s.info \
+	  FROM seq2 s, asinfo i, asdata d \
+	  WHERE s.aseqno = i.aseqno \
+	    AND i.aseqno = d.aseqno \
+	    ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+anopan:
+	perl anopan.pl anopan0.tmp \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
 #----------------
 apery:
 	grep -E "^A[0-9]" $(HOLREC)/apery.man \
