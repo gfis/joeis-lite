@@ -1835,6 +1835,8 @@ anopan0:
 anopan:
 	perl anopan.pl anopan0.tmp \
 	2>       $@.rest.tmp \
+	>        $@.tmp
+	grep -vE "\tanonap\" $@.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
