@@ -16,6 +16,7 @@ public class $(ASEQNO) extends AbstractSequence {
   private $(PARM1) mSeq1 = new $(PARM1)();
   private $(PARM2) mSeq2 = new $(PARM2)();
 
+  /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
 $(PARM5)
@@ -24,6 +25,6 @@ $(PARM5)
   @Override
   public Z next() {
     ++mN;
-    return mN < INITS.length ? INITS[mN] : mSeq1.next().$(PARM3)(mSeq2.next()$(PARM4));
+    return mN < INITS.length ? Z.valueOf(INITS[mN]) : mSeq1.next().$(PARM3)(mSeq2.next()$(PARM4));
   }
 }

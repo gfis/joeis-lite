@@ -136,7 +136,8 @@ while (<>) {
         if (length($inits) > 0) { # pattern with INITS[]
             $callcode = "anopap";
         }
-        print        join("\t", $aseqno, $callcode, $aofs, $qseqno, $rseqno, $op,  $modif, $skip, $inits, $name, "$qofs,$rofs") . "\n";
+        $inits = "?INITS";
+        print        join("\t", $aseqno, $callcode, $aofs, $qseqno, $rseqno, $op,  $modif, $skip, $inits, "$qofs,$rofs") . "\n";
         #                                                  parm1    parm2    parm3 $parm4  $parm5 $parm6  $parm7 parm8
     } else {
         print STDERR join("\t", $aseqno, $nok     , $name) . "\n";

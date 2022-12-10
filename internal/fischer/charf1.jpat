@@ -11,6 +11,7 @@ import irvine.oeis.PrependSequence;
  */
 public class $(ASEQNO) extends CharacteristicFunction {
 
+  /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET), new PrependSequence(0, new $(PARM1)(), 1), true, 4);
   }

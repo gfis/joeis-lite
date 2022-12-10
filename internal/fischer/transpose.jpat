@@ -10,6 +10,7 @@ import irvine.oeis.triangle.Transpose;
  */
 public class $(ASEQNO) extends Transpose {
 
+  /** Construct the sequence. */
   public $(ASEQNO)() {
     super(new $(PARM1)());
   }
