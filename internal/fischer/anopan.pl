@@ -98,34 +98,51 @@ while (<>) {
     } elsif ($name =~ m{\A\s*(a\(n\) *\= *)?(A\d+)(\(n([\+\-]\d+)?\))? *([\*\/\+\-\^]|x?and|mod|x?or) *(A\d+)(\(n([\+\-]\d+)?\))? *([\.\;\:\,\=]|\Z)}) {
         #                    1              2     3   4                 5                              6     7   8
         ($qseqno, $qshift, $op, $rseqno, $rshift) = ($2, $4 || 0, $5, $6, $8 || 0);
-        if (defined($ofters{$qseqno}) && defined($ofters{$rseqno})) {
-            ($modif, $qdisp, $rdisp, $skip) = ("", "", "", "");
-            $inits = "";
-            $callcode = "anopan";
-            $qofs = $ofters{$qseqno};
-            $rofs = $ofters{$rseqno};
-            if (defined($ophash{$op})) {
-                $op = $ophash{$op};
-            } else {
-                $nok = "?op";
-            }
-            if ($op eq "pow") {
-                $modif = ".intValue()";
-            }
-            
-            # now determine the skip and prepend instructions
-            my $qinx = $qofs + $qshift;
-            my $rinx = $rofs + $rshift;
-            $qinx = &adjust(1, $qinx);
-            $rinx = &adjust(2, $rinx);
-            if ($qinx == $rinx && $rinx == $aofs) {
-                # ok
-            } else {
-                $callcode = "anopap";
-            }
+        ($modif, $qdisp, $rdisp, $skip) = ("", "", "", "");
+        $inits = "";
+        if (defined($ophash{$op})) {
+            $op = $ophash{$op};
         } else {
-            $nok = "?qrseq";
+            $nok = "?op";
         }
+        if ($op eq "pow") {
+            $modif = ".intValue()";
+        }
+        if ($nok ne "") { # failed already
+        } elsif ($qseqno eq $rseqno) { # only 1 dependant sequence
+            if (defined($ofters{$qseqno})) {
+                $callcode = "anopsn";
+                $qofs = $ofters{$qseqno};
+                # now determine the skip and prepend instructions
+                my $qinx = $qofs + $qshift;
+                $qinx = &adjust(1, $qinx);
+                if ($qinx == $aofs) {
+                    # ok
+                } else {
+                    $callcode = "anopsp";
+                }
+            } else {
+                $nok = "?q2seq";
+            }
+        } else { # 2 dependant sequences
+            if (defined($ofters{$qseqno}) && defined($ofters{$rseqno})) {
+                $callcode = "anopan";
+                $qofs = $ofters{$qseqno};
+                $rofs = $ofters{$rseqno};
+                # now determine the skip and prepend instructions
+                my $qinx = $qofs - $qshift;
+                my $rinx = $rofs - $rshift;
+                $qinx = &adjust(1, $qinx);
+                $rinx = &adjust(2, $rinx);
+                if ($qinx == $rinx && $rinx == $aofs) {
+                    # ok
+                } else {
+                    $callcode = "anopap";
+                }
+            } else {
+                $nok = "?qrseq";
+            }
+        } # 2 dependant sequences
     } else {
         $nok = "?.end";
     }

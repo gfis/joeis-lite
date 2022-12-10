@@ -320,6 +320,8 @@ dirty0:
 fatok:
 	grep -E "^A[0-9]" $(CC).fail.log | grep FATOK | cut -b1-7 | sed -e "s/\r//" \
 	| xargs -innn $(JAVA) irvine.test.SequenceTest -a nnn -n $(NT) -o $(OFFSET)
+refresh: # generate a list of A-numbers whose b-files should be refreshed
+	grep "read" $(CC).fail.log | cut -b1-24 | tee $(CONTRIB)/refresh.list.man
 removelist: # remove all in removelist.man
 	# ---- $@ CC=$(CC)
 	find ../../src/irvine/oeis -iname "*.java" \
@@ -1820,8 +1822,8 @@ amoda: # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
 #--
 # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
 anopan0:
-	grep -Pi "a\(n\) *\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\)" $(COMMON)/jcat25.txt \
-	| grep -E "^\%" | cut -b 4-  | sort | uniq -w7 | sed -e "s/ /\t/" \
+	grep -Pi "\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\)" $(COMMON)/jcat25.txt \
+	| grep -E "^\%" | cut -b 4- | sed -e "s/ /\t/" \
 	>        $@.tmp
 	wc -l    $@.tmp
 	make seq2 LIST=$@.tmp
@@ -1832,14 +1834,18 @@ anopan0:
 	    ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
-anopan:
+anopan1:
 	perl anopan.pl anopan0.tmp \
 	2>       $@.rest.tmp \
 	>        $@.tmp
-	grep -vP "\tanopap\t" $@.tmp \
+	wc -l    $@.tmp $@.rest.tmp
+	cut -f 2 $@.tmp | sort | uniq -c
+anopan:
+	grep -P "\tanopan\t" anopan1.tmp \
+	| grep -vE "A068310" \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen $@.rest.tmp
+	wc -l    $@.gen
 #----------------
 apery:
 	grep -E "^A[0-9]" $(HOLREC)/apery.man \
