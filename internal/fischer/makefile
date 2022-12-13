@@ -1842,7 +1842,7 @@ anopan1:
 	cut -f 2 $@.tmp | sort | uniq -c
 anopan:
 	grep -P "\tanopan\t" anopan1.tmp \
-	| grep -vE "A068310|A123538|A178467|A262348" \
+	| grep -vE "A068310|A121835|A123538|A130911|A137851|A178467|A185246|A262348|A274996|A277078" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

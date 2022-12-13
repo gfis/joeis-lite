@@ -25,7 +25,8 @@ if (0 and scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
-my $ofter_file = "../../../OEIS-mat/common/joeis_ofter.txt";
+my $COMMON = "../../../OEIS-mat/common";
+my $ofter_file = "$COMMON/joeis_ofter.txt";
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
