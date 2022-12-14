@@ -1823,7 +1823,7 @@ amoda: # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
 # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
 anopan0:
 	grep -Pi "\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\)" $(COMMON)/jcat25.txt \
-	| grep -E "^\%" | cut -b 4- | sort | uniq -w7 | sed -e "s/ /\t/" \
+	| grep -E "^\%[NFC]" | cut -b 4- | sort | uniq -w7 | sed -e "s/ /\t/" \
 	>        $@.tmp
 	wc -l    $@.tmp
 	make seq2 LIST=$@.tmp
@@ -1843,6 +1843,12 @@ anopan1:
 anopan:
 	grep -P "\tanopan\t" anopan1.tmp \
 	| grep -vE "A068310|A121835|A123538|A130911|A137851|A178467|A185246|A262348|A274996|A277078" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+anopsn:
+	grep -P "\tanopsn\t" anopan1.tmp \
+	| grep -vE "A068310|A121835" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
