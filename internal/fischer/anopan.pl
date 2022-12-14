@@ -76,6 +76,7 @@ my $initlist;
 my $inits;
 my $tail;
 my $nok;
+my $iseq;
 my %ophash =
     ( "+",   "add"
     , "-",   "subtract"
@@ -98,9 +99,9 @@ while (<>) {
     if ($name =~ m{apparent|empirical|conject}i) {
         $nok = "?conj"; # ignore the unproven
     } else {
-    	my $iseq = 0;
-        #                       1  1  2    23   4         4   3   5                           5  6    67   8         8   7   9               9
-    	while ($name =~ s{[^\=]*(\=) *(A\d+)(\(n([\+\-]\d+)?\))? *([\*\/\+\-\^]|x?and|mod|x?or) *(A\d+)(\(n([\+\-]\d+)?\))? *([\.\;\:\,\=]|\Z)}{}i) {
+        $iseq = 0;
+        #                       1  1  2    23   4         4   3   5                           5  6    67   8         8   7   9                                  9
+        while ($name =~ s{[^\=]*(\=) *(A\d+)(\(n([\+\-]\d+)?\))? *([\*\/\+\-\^]|x?and|mod|x?or) *(A\d+)(\(n([\+\-]\d+)?\))? *([\.\;\:\,\=]|for +n *\>\=? *\d+|\Z)}{}i) {
             ($qseqno, $qshift, $op, $rseqno, $rshift, $tail) = ($2, $4 || 0, $5, $6, $8 || 0, $9);
             ($modif, $qdisp, $rdisp, $skip) = ("", "", "", "");
             $nok = "";
@@ -164,10 +165,8 @@ while (<>) {
                 #                                                  parm1    parm2    parm3 $parm4  $parm5 $parm6  $parm7 parm8
             }
         } # while "= ... " matches
-    } else {
-        $nok = "?.end";
     }
-    if ($nok eq "") {
+    if ($nok eq "" && $iseq > 0) {
     } else {
         print STDERR join("\t", $aseqno, $nok     , $name) . "\n";
     }

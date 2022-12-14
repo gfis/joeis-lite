@@ -1834,6 +1834,7 @@ anopan0:
 	    ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
+	wc -l    $@.tmp
 anopan1:
 	perl anopan.pl anopan0.tmp \
 	2>       $@.rest.tmp \
