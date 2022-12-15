@@ -548,6 +548,8 @@ joeis_class:
 potential: # rerun all targets that have accelaration potential
 	rm -f    $@.tmp
 	#---- start of list of all candidates
+	# echo anopan       >> $@.tmp
+	# echo anopan       >> $@.tmp
 	echo inbase2      >> $@.tmp
 	echo n2           >> $@.tmp
 	echo posins       >> $@.tmp

@@ -36,7 +36,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 my $aseqno = shift(@ARGV);
 my $offset = 1;
 my $terms;
-my $line = `grep $aseqno anopsn.gen`;
+my $line = `grep $aseqno anopan.gen`;
 my $callcode;
 my $aofs;   # offset for $aseqno
 my $initlist;
