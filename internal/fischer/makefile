@@ -1855,6 +1855,14 @@ anopsn:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+anminan:
+	grep -Pi "min\(A\d+\([^\)]+\) *\, *A\d+\([^\)]+\)\)" $(COMMON)/jcat25.txt \
+	| grep -E "^\%[NFC]" | cut -b 4- | sort | uniq -w7 | sed -e "s/ /\t/" \
+	| perl anminan.pl \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
 #----------------
 apery:
 	grep -E "^A[0-9]" $(HOLREC)/apery.man \
