@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-12-19: V4.8: do not import if it is imported with subpackage
 # 2022-09-25: V4.7: recur.{Period|Padding}Sequence
 # 2022-05-05: V4.6: ZString
 # 2022-05-05: V4.5: IntegerUtils
@@ -58,7 +59,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V4.7";
+my $version_id  = "gen_seq4.pl V4.8";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -381,6 +382,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
                 }
             } # foreach $key
             if ($found) { # already there - do nothing
+            } elsif ( $class_name =~ m{Transform}) {          # .transform.xxx
+                $imports{"irvine.oeis.transform.$class_name"} = $itype;
             } elsif (($class_name !~ m{\AA\d+})               # A-number
                 and  ($class_name !~ m{\.})                   # contains dot
                 and  ($class_name !~ m{\A[A-Z]+\Z})           # only uppercase = constant

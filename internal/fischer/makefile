@@ -4703,6 +4703,25 @@ modi:
 	| tee    $@.gen
 	wc -l    $@.gen
 #--------------------------------
+TF=Mobius
+transform0: # # TF=
+	grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " $(TF) transform" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+trafo:
+	cut -b4- transform0.tmp | sed -e "s/ /\t/" \
+	| perl trafo.pl -tf "$(TF)" \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	grep -E "^A[0-9]" trafo.man >> $@.gen || :
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+moebius:
+	cut -b 4- | sed -e "s/ /\t/" \transform0.tmp \
+	| perl moebius.pl \
+	| tee    $@.gen
+	wc -l    $@.gen
+#--------------------------------
 morfix:
 	CLASS=MorphismSequence
 	perl -ne \
