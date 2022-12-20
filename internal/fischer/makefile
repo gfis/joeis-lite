@@ -5788,6 +5788,15 @@ offinsp1:
 	| xargs -innn grep -iH "pl holos" $(JOEIS)/src/irvine/oeis/nnn \
 	| perl -ne 'm{at ([\d\: \-]+)}; print "$$1\n";'
 	# | tee $@.tmp
+#----
+offinspectall:
+	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass \
+	  FROM asinfo i LEFT JOIN joeis j ON i.aseqno = j.aseqno ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	zip offinspectall.zip offinspectall.tmp
+#----
 offholon: # put it in table seq
 	grep Holonom offinspect.dec1.txt | grep -E "^A[0-9]" | cut -f1 > $@.tmp
 	cd $(COMMON) ; make seq LIST=$(HERE)/$@.tmp
