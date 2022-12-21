@@ -85,7 +85,7 @@ killmake:
 #----------------------------------
 # Test programs
 seqt: # A=$(A) - print data up to 260 characters
-	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) -D $(A) --data-length=4096 2>&1   | tee x.tmp
+	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) --data-length=4096  -D $(A) 2>&1   | tee x.tmp
 seqte: # A=$(A) - test with errors
 	$(JAVA) irvine.test.SequenceTest   -a $(A)             -n $(NT) -o $(OFFSET)                       2>&1   | tee x.tmp
 seqtri: # A=$(A) - print data in triangle format
@@ -4704,12 +4704,13 @@ modi:
 	wc -l    $@.gen
 #--------------------------------
 TF=Mobius
-transform0: # # TF=
-	grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " $(TF) transform" \
+trafo0: # select all transforms
+	# grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " (Binomial|Euler|M..?bius|Invert|Logarithmic|Revert|Weigh|Witt) transform" \
+	grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " \w+ transform" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
-trafo:
-	cut -b4- transform0.tmp | sed -e "s/ /\t/" \
+trafo: # TF= select a specific transform
+	cut -b4- trafo0.tmp | sed -e "s/ /\t/" \
 	| perl trafo.pl -tf "$(TF)" \
 	2>       $@.rest.tmp \
 	>        $@.gen
@@ -4717,7 +4718,7 @@ trafo:
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
 moebius:
-	cut -b 4- | sed -e "s/ /\t/" \transform0.tmp \
+	cut -b 4- | sed -e "s/ /\t/" \trafo0.tmp \
 	| perl moebius.pl \
 	| tee    $@.gen
 	wc -l    $@.gen
