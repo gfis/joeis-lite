@@ -364,11 +364,12 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPaddingSequence} ) { $imports{"irvine.oeis.recur.PaddingSequence" }    = $itype; }
     if ($line =~ m{\WPeriodicSequence}) { $imports{"irvine.oeis.recur.PeriodicSequence"}    = $itype; }
     if ($line =~ m{\WPrependSequence} ) { $imports{"irvine.oeis.PrependSequence"   }        = $itype; }
+    if ($line =~ m{\WSequence(\d|\$\(OFFSET\))}) { $imports{"irvine.oeis.Sequence$1" }      = $itype; }
     if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }        = $itype; }
     if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}        = $itype; }
     if ($line =~ m{\WJaguar\.}        ) { $imports{"irvine.factor.factor.Jaguar"   }        = $itype; }
     if ($line =~ m{\WEuler\.}         ) { $imports{"irvine.math.z.Euler"           }        = $itype; }
-    
+    delete($imports{"irvine.oeis.Sequence"});
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
             my $class_name = $1; 

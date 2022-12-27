@@ -7,18 +7,13 @@ import irvine.math.z.Z;
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) extends $(PARM1) {
+public class $(ASEQNO) extends Sequence$(OFFSET) {
   
-  /** Construct the sequence. */
-  public $(ASEQNO)() {
-    if ($(PARM2) == 1) {
-      super.next();
-    }
-  }
+  private final $(PARM1) mSeq = new $(PARM1)();
   
   public Z next() {
-    final Z result = super.next();
-    super.next();
+    final Z result = mSeq.next();
+    mSeq.next();
     return result;
   }
 }

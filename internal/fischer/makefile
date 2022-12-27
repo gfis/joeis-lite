@@ -248,6 +248,10 @@ mangen: # parameter: CC; copy all in CC.gen to fischer/manual
 	ls -al manual
 sumall: # copy all generated in joeis-lite/src to ./manual
 	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
+sumfail: # CC= copy all FAILed to ./manual
+	grep FAIL $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" | tee grep.tmp
+	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f grep.tmp | xargs -innn cp -pv nnn manual 
+	cat grep.tmp | xargs -innn uedit64 manual/nnn.java
 s4diff: # compare existing seqs. in joeis/src with selected ones in seq4
 	$(DBAT) -x "SELECT LOWER(SUBSTR(aseqno, 1, 4)) || '/' || aseqno FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis) ORDER BY 1" \
 	| sed -e "s/\r//" \
@@ -2481,31 +2485,36 @@ qpoch:
 	wc -l    $@.gen
 #--------------------------------
 bisect0: # either take the 1st or the 2nd term from pairs of terms in the base sequence
-	grep -Ei "section of A[0-9]+" $(COMMON)/joeis_names.txt \
+	grep -Ei "section of " $(COMMON)/joeis_names.txt \
 	| grep -vi intersection \
 	| perl bisect0.pl \
-	>        $@.1.tmp
-	head -n4 $@.1.tmp
-	wc -l    $@.1.tmp
-	make seq4 LIST=$@.1.tmp
-	$(DBAT)  "DELETE FROM seq4 WHERE parm1 NOT IN ((SELECT aseqno FROM joeis) UNION (SELECT aseqno FROM noeis));"
-	$(DBAT)  "UPDATE seq4 s SET s.parm3 = (SELECT SUBSTR(d.data, 1,  64) FROM asdata d WHERE d.aseqno = s.aseqno) \
-	                          , s.parm4 = (SELECT SUBSTR(d.data, 1, 128) FROM asdata d WHERE d.aseqno = s.parm1 );"
-	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
+	2>       $@.rest.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+	make seq4 LIST=$@.tmp
+	$(DBAT)  "UPDATE seq4 s SET s.parm3 = (SELECT SUBSTR(d.data, 1,  64) FROM asdata d WHERE d.aseqno = s.aseqno) \
+	                          , s.parm4 = (SELECT SUBSTR(d.data, 1,  64) FROM asdata d WHERE d.aseqno = s.parm1 );"
+	$(DBAT)  -x "SELECT aseqno, callcode, offset1, parm1, parm2, parm3, parm4, parm5 FROM seq4 ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp $@.rest.tmp 
 bisect:
 	perl bisect.pl bisect0.tmp \
 	2>       $@.rest.tmp \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen
+	wc -l    $@.gen $@.rest.tmp
 bisect_9:
 	cat bisect0.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+nsect:
+	grep -P "a\(n\) *\= *A\d+\(\d+\*?n([\+\-]\d+)\)" $(COMMON)/jcat25.txt | grep -E "^\%[NFCY] A[0-9]" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 #--------------------------------
 bitoper:
 	grep -E "XOR| OR | AND " $(COMMON)/joeis_names.txt \
@@ -5488,26 +5497,26 @@ deris0: deris1 # charfun2
 	wc -l    deris2.gen
 deris1:
 	rm -f *.deris.tmp
-	echo -n "binomial"                         > binomx.deris.tmp
-	echo -n "characteristic|indicator"         > charfun.deris.tmp
-	echo -n "complement"                       > compseq.deris.tmp
-	echo -n "difference"                       > diffseq.deris.tmp
-	echo -n "dirichlet"                        > dirichinv.deris.tmp
-	echo -n "dirichlet"                        > dirichcon.deris.tmp
-	echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
-	echo -n "euler"                            > eulerx.deris.tmp
-	echo -n "euler"                            > eulerix.deris.tmp
-	echo -n "m.e?bius"                         > moebiusx.deris.tmp
-	echo -n "m.e?bius"                         > moebiusix.deris.tmp
-	echo -n "partial product"                  > partprod.deris.tmp
+	#echo -n "binomial"                         > binomx.deris.tmp
+	# echo -n "characteristic|indicator"         > charfun.deris.tmp
+	# echo -n "complement"                       > compseq.deris.tmp
+	# echo -n "difference"                       > diffseq.deris.tmp
+	# echo -n "dirichlet"                        > dirichinv.deris.tmp
+	# echo -n "dirichlet"                        > dirichcon.deris.tmp
+	# echo -n "essent|same|identical|duplicate|apart" > essent.deris.tmp
+	# echo -n "euler"                            > eulerx.deris.tmp
+	# echo -n "euler"                            > eulerix.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusx.deris.tmp
+	# echo -n "m.e?bius"                         > moebiusix.deris.tmp
+	# echo -n "partial product"                  > partprod.deris.tmp
 	echo -n "partial sum"                      > partsum.deris.tmp
-	echo -n "prime"                            > primepos.deris.tmp
-	echo -n "prime"                            > primeval.deris.tmp
-	echo -n "record"                           > recordpos.deris.tmp
-	echo -n "record"                           > recordval.deris.tmp
-	echo -n "stirling"                         > stirling2.deris.tmp
-	echo -n "weigh"                            > weighx.deris.tmp
-# -n: no trailing newline!
+	# echo -n "prime"                            > primepos.deris.tmp
+	# echo -n "prime"                            > primeval.deris.tmp
+	# echo -n "record"                           > recordpos.deris.tmp
+	# echo -n "record"                           > recordval.deris.tmp
+	# echo -n "stirling"                         > stirling2.deris.tmp
+	# echo -n "weigh"                            > weighx.deris.tmp
+# -n:  no trailing newline!
 deris2:
 	#================================ $(TARGET) ====
 	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/jcat25.txt charfun2.tmp \
@@ -7529,6 +7538,13 @@ partprom: # manual partprod
 	wc -l    $@.gen
 partsumm: # manual partsum
 	sort $@.man | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+partsum2:
+	grep -iP "partials? sums? of A\d+" $(COMMON)/jcat25.txt | grep -E "^%[NFCY]" | cut -b4- | sort | uniq -w7 \
+	| perl -ne 'use strict; if (m{\A(A\d+) +Partials? sums? of (A\d+)}) { '\
+	' print join("\t", $$1, "partsum2", 1, $$2, "") . "\n"; }'\
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------

@@ -19,6 +19,7 @@ while(<>) {
     s{\s+\Z}{}; # chompr
     $line = $_;
     ($aseqno, $callcode, $offset, $rseqno, $polar, $lista, $listr, $name) = split(/\t/, $line);
+    #                             parm1    parm2   parm3   parm4   parm5
     my  @termas = split(/\,/, $lista); 
     pop(@termas); # maybe incomplete
     my  @termrs = split(/\,/, $listr); 
