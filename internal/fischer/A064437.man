@@ -1,0 +1,31 @@
+A064437	parmof4	1	A064437	1	+3	+2	a(1)=1, a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-1)+2 otherwise.
+A079355	parmof4	1	A064437	1	-3	+4	a(1)=1; a(n)=a(n-1)-3 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
+A079357	parmof4	1	A064437	1	-1	+4	a(1)=1; a(n)=a(n-1)-1 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
+A080199	parmof4	1	A064437	1	-3	+6	a(1)=1; a(n)=a(n-1)-3 if n is already in the sequence, a(n)=a(n-1)+6 otherwise.
+A080353	parmof4	1	A064437	5	+1	+2	a(1)=5; a(n)=a(n-1)+1 if n is already in the sequence, a(n)=a(n-1)+2 otherwise.
+A080578	parmof4	1	A064437	1	+1	+3	a(1)=1; a(n)=a(n-1)+1 if n is already in the sequence, a(n)=a(n-1)+3 otherwise.
+A080579	parmof4	1	A064437	1	+1	+4	a(1)=1; a(n)=a(n-1)+1 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
+A080590	parmof4	1	A064437	1	+3	+4	a(1)=1; a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
+A080667	parmof4	1	A064437	3	+4	+3	a(1)=3; a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+3 otherwise.
+A080783	parmof4	1	A064437	1	-1	+5	a(1)=1, a(n)=a(n-1)-1 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
+A080900	parmof4	1	A064437	1	-2	+5	a(1)=1; a(n)=a(n-1)-2 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
+A080901	parmof4	1	A064437	2	-2	+5	a(1)=2; a(n)=a(n-1)-2 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
+A080903	parmof4	1	A064437	1	+4	+2	a(1)=1; a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+2 otherwise.
+A080904	parmof4	1	A064437	1	-4	+5	a(1)=1; a(n)=a(n-1)-4 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
+A080939	parmof4	1	A064437	3	-2	+5	a(1)=3; a(n)=a(n-1)-2 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
+A080949	parmof4	1	A064437	0	-2	+5	a(1)=0; a(n)=a(n-1)-2 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
+A081746	parmof4	1	A064437	1	-3	+5	a(1)=1; a(n)=a(n-1)-3 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
+A081834	parmof4	1	A064437	1	+4	+3	a(1)=1, a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+3 otherwise.
+A081835	parmof4	1	A064437	1	+5	+4	a(1)=1, a(n)=a(n-1)+5 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
+A081839	parmof4	1	A064437	0	+4	+5	a(1)=0, a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
+A081840	parmof4	1	A064437	0	+3	+4	a(1)=0, a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
+A081841	parmof4	1	A064437	0	+3	+2	a(1)=0, a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-1)+2 otherwise.
+A081842	parmof4	1	A064437	0	+4	+3	a(1)=0, a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+3 otherwise.
+A081843	parmof4	1	A064437	0	+5	+4	a(1)=0, a(n)=a(n-1)+5 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
+A111202	parmof4	1	A064437	2	+3	+1	a(1)=2, a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-2)+1 otherwise.
+
+A079406	parmof4	1	A064437	1	17	17	a(1)=1, a(n)=a(n-1)-n if n is already in the sequence, a(n)=a(n-1)+n otherwise.
+A079352	parmof4	1	A064437	1	17	17	a(1)=1,          a(n)=3*a(n-1) if n is already in the sequence, a(n)=2*a(n-1) otherwise.
+A080037	parmof4	0	A064437	2	+1	+2	a(0)=2, a(1)=4;  a(n)=a(n-1)+1 if n is already in the sequence, a(n)=a(n-1)+2 otherwise. [corrected by _Jon E. Schoenfield_, Jun 24 2018]
+A111201	parmof4	1	A064437	1	+17	+17	a(1)=1 then      a(n)=a(n-1)+n if n is already in the sequence, a(n)=a(n-1)+n+1 otherwise.
+A126091	parmof4	1	A064437	1	+3	+1	a(1)=1;a(2)=4;   a(n)=a(n-2)+3 if n is already in the sequence, a(n)=a(n-2)+1 otherwise.

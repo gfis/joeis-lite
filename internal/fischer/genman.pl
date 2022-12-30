@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2022-12-30: private long mN;
 # 2022-11-24: Sequence0
 # 2022-07-15: SequenceWithOffset
 # 2022-06-01: package recur
@@ -198,7 +199,7 @@ GFis
     }
     print TAR " {\n";
     if ($withn) {
-        print TAR "\n  private int mN;\n";
+        print TAR "\n  private long mN;\n";
     }
     foreach $pname (@pnames) { # member properties
         print TAR "  private int m" . ucfirst($pname) . ";\n";

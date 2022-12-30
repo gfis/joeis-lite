@@ -1,0 +1,7 @@
+A055775	parm3	1	A114853	new A000142()	1	a(n) = floor(n^n/n!).
+A114853	parm3	1	A114853	new A006882()	1	a(n) = floor(n^n/n!!).	easy,nonn,synth	1..21	nyi	_Jonathan Vos Post_, Feb 20 2006
+A114854	parm3	1	A114853	new A006882()	2	a(n) = floor(n^(n/2)/n!!).	easy,nonn,changed,synth	1..35	nyi	_Jonathan Vos Post_, Feb 20 2006
+A114863	parm3	1	A114853	new A007661()	3	a(n) = floor(n^(n/3)/n!!!).	easy,nonn,changed,	1..1000	nyi	_Jonathan Vos Post_, Feb 20 2006
+A114868	parm3	1	A114853	new A007662()	4	a(n) = floor(n^(n/4)/n!!!!).	easy,nonn,synth	1..28	nyi	_Jonathan Vos Post_, Feb 20 2006
+A114869	parm3	1	A114853	new A085157()	5	a(n) = floor(n^(n/5)/n!!!!!).	easy,nonn,synth	1..59	nyi	_Jonathan Vos Post_, Feb 20 2006
+A114968	parm3	1	A114853	new A085158()	6	a(n) = floor(n^(n/6)/n!!!!!!).	easy,nonn,synth	1..62	nyi	_Jonathan Vos Post_, Feb 22 2006

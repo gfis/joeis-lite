@@ -554,6 +554,7 @@ potential: # rerun all targets that have accelaration potential
 	#---- start of list of all candidates
 	# echo anopan       >> $@.tmp
 	# echo anopan       >> $@.tmp
+	echo decexro      >> $@.tmp # after cd cons ; make cons conjs decexro0
 	echo inbase2      >> $@.tmp
 	echo n2           >> $@.tmp
 	echo posins       >> $@.tmp
@@ -581,7 +582,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-10-14:
+anabuild: #.2022-12-28:
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A064437 A096173 A293761 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select gener EX=xx
+	make CC=decexro    select gener
+	cp -pv hold/*.java manual || :
+	make CC=man        man
+	make CC=$@ dist testall pack 
+anabuild.2022-10-14:
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -2510,11 +2524,13 @@ bisect_9:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-nsect:
+ansect:
 	grep -P "a\(n\) *\= *A\d+\(\d+\*?n([\+\-]\d+)\)" $(COMMON)/jcat25.txt | grep -E "^\%[NFCY] A[0-9]" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
+	| perl ansect.pl \
+	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 bitoper:
 	grep -E "XOR| OR | AND " $(COMMON)/joeis_names.txt \

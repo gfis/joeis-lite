@@ -3,7 +3,7 @@ package irvine.oeis.$(PACK);
 
 import irvine.math.cr.CR;
 import irvine.math.polynomial.Polynomial;
-import irvine.oeis.PolynomialRootExpansionSequence;
+import irvine.oeis.cons.PolynomialRootExpansionSequence;
 /**
  * $(ASEQNO) $(NAME)
  * Polynomial: $(PARM4)
