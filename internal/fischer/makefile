@@ -582,7 +582,19 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: #.2022-12-28:
+anabuild: # .2022-12-31:
+	make purge
+	git add -v A*.man *.sql *.pl *.jpat
+	rm -f build.man build.tmp
+	echo A000001 \
+	| xargs -n1 echo | xargs -innn cat nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > build.man
+	make CC=build      select gener EX=xx
+	cp -pv hold/*.java manual || :
+	make CC=man        man
+	make CC=$@ dist testall pack 
+anabuild.2022-12-30:
 	make purge
 	git add -v A*.man *.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -592,6 +604,7 @@ anabuild: #.2022-12-28:
 	| sort | uniq -w7 > build.man
 	make CC=build      select gener EX=xx
 	make CC=decexro    select gener
+	make CC=concatf    select gener
 	cp -pv hold/*.java manual || :
 	make CC=man        man
 	make CC=$@ dist testall pack 
@@ -2498,6 +2511,13 @@ qpoch:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+ansect: # %F A334224 a(n) = A003418(2n-1) = A076100(n) for n>1.
+	grep -P "a\(n\) *\= *A\d+\(\d*\*?n([\+\-]\d+)?\)" $(COMMON)/jcat25.txt | grep -E "^\%[NFCY] A[0-9]" \
+	| perl ansect.pl \
+	2>       $@.rest.tmp \
+	| uniq > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
 bisect0: # either take the 1st or the 2nd term from pairs of terms in the base sequence
 	grep -Ei "section of " $(COMMON)/joeis_names.txt \
 	| grep -vi intersection \
@@ -2521,13 +2541,6 @@ bisect:
 	wc -l    $@.gen $@.rest.tmp
 bisect_9:
 	cat bisect0.tmp \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-ansect:
-	grep -P "a\(n\) *\= *A\d+\(\d+\*?n([\+\-]\d+)\)" $(COMMON)/jcat25.txt | grep -E "^\%[NFCY] A[0-9]" \
-	| perl ansect.pl \
-	2>       $@.rest.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -7938,6 +7951,13 @@ numdiv:
 	wc -l    $@.gen
 numdiv_test:
 	$(JAVA) irvine.oeis.a030.A030515 $(K)
+sumform:
+	grep "Number of divisors" $(COMMON)/joeis_names.txt \
+	| perl -ne 'if (m{Number of divisors of (\d+)\*n([\+\-]\d) of form (\d+)\*[a-z]([\+\-]\d+)\.}) {'\
+	' print join("\t", substr($$_, 0, 7), "parm5", 1, "A359212", $$1, $$2, $$3, $$4) ."\n"; }'\
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------
 # Sums of like powers
 sumlipo: sumlipo_extract sumlipo_load sumlipo_unload sumlipo_wiki

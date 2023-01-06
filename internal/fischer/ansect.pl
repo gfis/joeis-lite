@@ -49,19 +49,20 @@ print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read fr
 while(<>) {
     s{\s+\Z}{}; # chompr
     $line = substr($_, 3);
-    $line =~ s{\..*}{}; # remove all behind 1st dot
-    ($aseqno, $name) = split(/ /, $line);
-    $name =~ m{(A\d+)}; 
-    $rseqno = $1 || "";
+    $line =~ s{\. \- _.*}{}; # remove all behind signature
+    $line =~ s{ }{\t};
+    ($aseqno, $name) = split(/\t/, $line);
     if (! defined($ofters{$aseqno})) { # nyi in jOEIS
-        if (defined($ofters{$rseqno})) {
-            $polar = -2; 
-            if ($name =~ m{(even |odd |first |second |third |)bisection}i) { 
-                $polar = substr(lc($1), 0, 1); 
-                $polar =~ tr{eofst}{01102}; 
+        my $aai = 1; # all already implemented
+        foreach $rseqno ($name =~ m{(A\d+)}g) { 
+            if (!defined($ofters{$rseqno})) {
+                $aai = 0;
             }
-            print        join("\t", $aseqno, $cc, -2, $rseqno, $polar, "",   "",   substr($name, 0, 64)) . "\n";
-            #                                       parm1    parm2   parm3 parm4 parm5 
+        }
+        if ($aai == 1) {
+            $polar = -2; 
+            print        join("\t", $aseqno, $cc, -2, $rseqno, $polar, "",   "",   substr($name, 0, 128)) . "\n";
+            #                                         parm1    parm2   parm3 parm4 parm5 
         } else {
             print STDERR join("\t", $aseqno, "?rseqno", -2, $rseqno, $name) . "\n";
         }
