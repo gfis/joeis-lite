@@ -1,0 +1,42 @@
+A050926	parm3	1	A353104	new A007908()	2	
+A097580	parm3	1	A353104	new A007908()	3	
+A353104	parm3	1	A353104	new A007908()	4	Base-4 representation of A007908(n).    nonn,base,new,  1..236  nyi     _Seiichi Manyama_, Apr 23 2022
+A353105	parm3	1	A353104	new A007908()	5	Base-5 representation of A007908(n).    nonn,base,new,  1..269  nyi     _Seiichi Manyama_, Apr 23 2022
+A353106	parm3	1	A353104	new A007908()	6	Base-6 representation of A007908(n).    nonn,base,new,  1..295  nyi     _Seiichi Manyama_, Apr 23 2022
+A353107	parm3	1	A353104	new A007908()	9	Base-9 representation of A007908(n).    nonn,base,new,  1..354  nyi     _Seiichi Manyama_, Apr 23 2022
+
+A353110	parm3	1	A353104	new A000422()	2	Binary representation of A000422(n).    nonn,base,synth 1..10   nyi     _Seiichi Manyama_, Apr 24 2022
+A353111	parm3	1	A353104	new A000422()	3	Base-3 representation of A000422(n).    nonn,base,synth 1..13   nyi     _Seiichi Manyama_, Apr 24 2022
+A353112	parm3	1	A353104	new A000422()	4	Base-4 representation of A000422(n).    nonn,base,synth 1..14   nyi     _Seiichi Manyama_, Apr 24 2022
+A353113	parm3	1	A353104	new A000422()	5	Base-5 representation of A000422(n).    nonn,base,synth 1..15   nyi     _Seiichi Manyama_, Apr 24 2022
+A353114	parm3	1	A353104	new A000422()	6	Base-6 representation of A000422(n).    nonn,base,synth 1..15   nyi     _Seiichi Manyama_, Apr 24 2022
+A353115	parm3	1	A353104	new A000422()	7	Base-7 representation of A000422(n).    nonn,base,synth 1..16   nyi     _Seiichi Manyama_, Apr 24 2022
+A353116	parm3	1	A353104	new A000422()	8	Base-8 representation of A000422(n).    nonn,base,synth 1..16   nyi     _Seiichi Manyama_, Apr 24 2022
+A353117	parm3	1	A353104	new A000422()	9	Base-9 representation of A000422(n).    nonn,base,synth 1..16   nyi     _Seiichi Manyama_, Apr 24 2022
+
+A038573	parm2	0	A319652	2	+1	
+A038574	parm2	0	A319652	3	+1	
+A319652	parm2	0	A319652	4	+1	Write n in 4-ary, sort digits into increasing order.    nonn,base,      0..4095 nyi     _Seiichi Manyama_, Sep 25 2018
+A319653	parm2	0	A319652	5	+1	Write n in 5-ary, sort digits into increasing order.    nonn,base,look, 0..3124 nyi     _Seiichi Manyama_, Sep 25 2018
+A319654	parm2	0	A319652	6	+1	Write n in 6-ary, sort digits into increasing order.    nonn,base,look,changed, 0..7775 nyi     _Seiichi Manyama_, Sep 25 2018
+A319655	parm2	0	A319652	7	+1	Write n in 7-ary, sort digits into increasing order.    nonn,base,look, 0..2400 nyi     _Seiichi Manyama_, Sep 25 2018
+A319656	parm2	0	A319652	8	+1	Write n in 8-ary, sort digits into increasing order.    nonn,base,look, 0..4095 nyi     _Seiichi Manyama_, Sep 25 2018
+A319657	parm2	0	A319652	9	+1	Write n in 9-ary, sort digits into increasing order.    nonn,base,look, 0..6560 nyi     _Seiichi Manyama_, Sep 25 2018
+
+A073138	parm2	0	A319720	2	-1
+A319651	parm2	0	A319720	3	-1
+A319720	parm2	0	A319720	4	-1	Write n in 4-ary, sort digits into decreasing order.    nonn,base,      0..4095 nyi     _Seiichi Manyama_, Sep 26 2018
+A319722	parm2	0	A319720	5	-1	Write n in 5-ary, sort digits into decreasing order.    nonn,base,      0..3124 nyi     _Seiichi Manyama_, Sep 26 2018
+A319723	parm2	0	A319720	6	-1	Write n in 6-ary, sort digits into decreasing order.    nonn,base,      0..7775 nyi     _Seiichi Manyama_, Sep 26 2018
+A319724	parm2	0	A319720	7	-1	Write n in 7-ary, sort digits into decreasing order.    nonn,base,look, 0..2400 nyi     _Seiichi Manyama_, Sep 26 2018
+A319725	parm2	0	A319720	8	-1	Write n in 8-ary, sort digits into decreasing order.    nonn,base,look, 0..4095 nyi     _Seiichi Manyama_, Sep 26 2018
+A319726	parm2	0	A319720	9	-1	Write n in 9-ary, sort digits into decreasing order.    nonn,base,look,changed, 0..6560 nyi     _Seiichi Manyama_, Sep 26 2018
+
+A319747	parm3	0	A319747	new A319726()	new A319657()	a(n) = A319726(n) + A319657(n). nonn,base,look, 0..6560 nyi     _Seiichi Manyama_, Sep 27 2018
+A319785	parm3	0	A319747	new A073138()	new A038573()	a(n) = A073138(n) + A038573(n). nonn,base,look, 0..8191 anopan  _Seiichi Manyama_, Se
+A319803	parm3	0	A319747	new A319651()	new A038574()	a(n) = A319651(n) + A038574(n). nonn,base,      0..6560 nyi     _Seiichi Manyama_, Sep 28 2018
+A319804	parm3	0	A319747	new A319720()	new A319652()	a(n) = A319720(n) + A319652(n). nonn,base,      0..4095 nyi     _Seiichi Manyama_, Sep 28 2018
+A319805	parm3	0	A319747	new A319722()	new A319653()	a(n) = A319722(n) + A319653(n). nonn,base,      0..3124 nyi     _Seiichi Manyama_, Sep 28 2018
+A319806	parm3	0	A319747	new A319723()	new A319654()	a(n) = A319723(n) + A319654(n). nonn,base,look, 0..7775 nyi     _Seiichi Manyama_, Sep 28 2018
+A319807	parm3	0	A319747	new A319724()	new A319655()	a(n) = A319724(n) + A319655(n). nonn,base,look, 0..2400 nyi     _Seiichi Manyama_, Sep 28 2018
+A319808	parm3	0	A319747	new A319725()	new A319656()	a(n) = A319725(n) + A319656(n). nonn,base,look, 0..4095 nyi     _Seiichi Manyama_, Sep 28 2018
