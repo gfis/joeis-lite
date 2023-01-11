@@ -1852,6 +1852,26 @@ amoda: # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#---------------
+andiv0: # simple formula: a(n) = Annnnnn(n) / n 
+	grep -E "^\%" $(COMMON)/jcat25.txt | grep -E "a\(n\) *\=" | grep -P "a\(n\) *\= *A\d+\(n\) *[\+\-\*\/] *n" \
+	| cut -b 4- | sed -e "s/ /\t/" \
+	| perl -ne 'if (m{\A(A\d+)\s+a\([^\)]+\) *\= *(A\d+)\(n\) *([\+\-\*\/]) *(n)}i) {'\
+	' print join("\t", $$1, $$2); my $$op = $$3;'\
+	' $$op =~ s{\+}{add}; $$op =~ s{\-}{subtract}; $$op =~ s{\*}{multiply}; $$op =~ s{\/}{divide}; $$op =~ s{\^}{pow}; $$op = lc($$op);'\
+	' print "\t$$op\n"; }'\
+	>        $@.tmp
+	make seq3 LIST=$@.tmp
+andiv:
+	$(DBAT) -x "SELECT s.aseqno, '$@', i.offset1, s.pattern, s.info \
+	  FROM seq3 s, asinfo i \
+	  WHERE s.aseqno = i.aseqno \
+	    AND s.pattern IN (SELECT aseqno FROM joeis) \
+	    ORDER BY 1" \
+	| grep -vE "A160764" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--
 # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
 anopan0:
