@@ -11,7 +11,7 @@ public class $(ASEQNO) extends PartialSumSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(PARM3));
+    super($(OFFSET), $(PARM3));
 $(PARM4)
   }
 }

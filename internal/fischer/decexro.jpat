@@ -13,6 +13,6 @@ public class $(ASEQNO) extends PolynomialRootExpansionSequence {
 
   /** Construct the sequence */
   public $(ASEQNO)() {
-    super(Polynomial.create($(PARM1)), CR.valueOf($(PARM2)), CR.valueOf($(PARM3)));
+    super($(OFFSET), Polynomial.create($(PARM1)), CR.valueOf($(PARM2)), CR.valueOf($(PARM3)));
   }
 }

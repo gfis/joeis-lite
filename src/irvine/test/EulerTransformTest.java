@@ -278,7 +278,7 @@ public class EulerTransformTest {
    * Main method, runs the transform from the arguments and writes a terms list to STDOUT.
    * @param args command line arguments:
    * <ul>
-   * <li>-m number of terms to be generated (default: 32)
+   * <li>-n number of terms to be generated (default: 32)
    * <li>-p period list of terms
    * <li>-s number of initial terms to skip (default: 0)
    * </ul>

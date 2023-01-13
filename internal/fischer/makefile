@@ -111,6 +111,8 @@ uritest:
 	$(JAVA) org.teherba.common.URIReader $(URI) UTF-8
 ebtest:
 	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
+ettest:
+	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
 gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
 tiletest:
@@ -5838,15 +5840,10 @@ offinspect2: # run the  OffsetInspector and determine old and new offsets
 	| tee    $@.tmp
 	wc -l    $@.tmp
 	cp -v    $@.tmp $@.txt
-	cut -f3 offinspect2.tmp | sort | uniq -c | sort -n | grep -vP "\A\s+1\s" \
+	cut -f3 offinspect2.tmp | sort | uniq -c | sort -n \
 	| tee -a $@.txt
-#----
-offinsp1:
-	grep Holonom offinspect.txt | cut -f1 \
-	| perl -ne 's/\s//g; print lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
-	| xargs -innn grep -iH "pl holos" $(JOEIS)/src/irvine/oeis/nnn \
-	| perl -ne 'm{at ([\d\: \-]+)}; print "$$1\n";'
-	# | tee $@.tmp
+	# | grep -vP "\A\s+1\s" \
+	#
 #----
 offinspectall:
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass \
@@ -5855,6 +5852,9 @@ offinspectall:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	zip offinspectall.zip offinspectall.tmp
+#----
+offrepair: # copy all with failing offset into ./manual and open them in Uedit64
+	grep -E "^A[0-9]" offinspect2.tmp | cut -b1-7 | head -n111111 | xargs -l cmd /c jom
 #----
 offholon: # put it in table seq
 	grep Holonom offinspect.dec1.txt | grep -E "^A[0-9]" | cut -f1 > $@.tmp
@@ -5938,6 +5938,11 @@ poff796:
 poff1113:
 	grep -E "A001113" offinspect2.txt \
 	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffet:
+	grep -E "EulerTransform" offinspect2.txt | grep -v "EulerTransformSequence" \
+	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8
 poffcor:
@@ -6558,6 +6563,9 @@ INIT=""
 TYPE=2
 euler: # manual EulerTest PER="1,0,1" INIT=1 NT=32 TYPE=2
 	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -s $(TYPE) -n $(NT) -i $(INIT)
+#-----
+eulerper2:
+	grep "Euler transform of a period" jcat25.txt | grep -E "^%"
 #----
 eulerper0:
 	perl eulerper.pl $(COMMON)/cat25.txt \
