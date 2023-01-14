@@ -11,10 +11,10 @@ import irvine.oeis.a083.A083064;
 public class A191690 extends A083064 {
 
   private int mN = -1;
-  
+
   @Override
   public int getOffset() {
-    return 0;
+    return 1;
   }
 
   @Override
