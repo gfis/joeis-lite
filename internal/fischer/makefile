@@ -114,7 +114,7 @@ ebtest:
 Q=-1/1
 INIT=1
 epstest:
-	$(JAVA) irvine.oeis.transform.EtaProductSequence -p "$(P)" -i "$(INIT)" -q "$(Q)"
+	$(JAVA) irvine.oeis.transform.EtaProductSequence -p "$(P)" -i "$(INIT)" -q "$(Q)" -n $(NT)
 ettest:
 	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
 gramtest:
@@ -3360,9 +3360,10 @@ etper4:
 #--------
 etaprod: # EtaProductSequence
 	# perl $(COMMON)/../eta/martin.a030203.pl \
+	# perl $(COMMON)/../eta/moy.pl \
+	# perl $(COMMON)/../eta/acres_broadhurst.pl 
 	# perl $(COMMON)/../eta/williams2.pl | grep -v A999999 \
-	# perl $(COMMON)/../eta/acres_broadhurst.pl \
-	perl $(COMMON)/../eta/moy.pl \
+	cat $(COMMON)/../eta/etaprod.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

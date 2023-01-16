@@ -1,0 +1,16 @@
+package irvine.oeis.a001;
+
+import irvine.oeis.transform.EulerTransform;
+import irvine.oeis.a002.A002862;
+
+/**
+ * A001373 Number of functional digraphs (digraphs of functions on n nodes where every node has outdegree 1 and loops of length 1 are forbidden).
+ * @author Sean A. Irvine
+ */
+public class A001373 extends EulerTransform {
+
+  /** Construct the sequence. */
+  public A001373() {
+    super(new A002862(), 1);
+  }
+}
