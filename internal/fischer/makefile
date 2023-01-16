@@ -111,6 +111,10 @@ uritest:
 	$(JAVA) org.teherba.common.URIReader $(URI) UTF-8
 ebtest:
 	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
+Q=-1/1
+INIT=1
+epstest:
+	$(JAVA) irvine.oeis.transform.EtaProductSequence -p "$(P)" -i "$(INIT)" -q "$(Q)"
 ettest:
 	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
 gramtest:
@@ -3353,6 +3357,15 @@ etper4:
 	sort $@.raw.tmp > $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--------
+etaprod: # EtaProductSequence
+	# perl $(COMMON)/../eta/martin.a030203.pl \
+	# perl $(COMMON)/../eta/williams2.pl | grep -v A999999 \
+	# perl $(COMMON)/../eta/acres_broadhurst.pl \
+	perl $(COMMON)/../eta/moy.pl \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 eulerian:
 	grep -E "\%[CFN]" $(COMMON)/cat25.txt | grep -E "Eulerian[\[]" \
