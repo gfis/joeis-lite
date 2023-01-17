@@ -28,6 +28,7 @@ public class EtaProductSequence extends AbstractSequence {
   private int mPQFNum; // numerator of mPQF
   private int mPQFDen; // denominator of mPQF
   private int mN; // for skipping if mPQF != "-1/1"
+  private Z mFactor; // optional factor to be multiplied on to the resulting terms
 
   /**
    * Construct an eta product sequence from String parameters.
@@ -42,6 +43,7 @@ public class EtaProductSequence extends AbstractSequence {
     mEtaString = etaString;
     mPreTerms = ZUtils.toZ(preTerms);
     mPQF = pqf;
+    mFactor = null; // default: no factor
     mN = -1;
   }
 
@@ -64,17 +66,6 @@ public class EtaProductSequence extends AbstractSequence {
     this(offset, etaString, "-1/1", new long[0]);
   }
 
-  /**
-   * Construct an eta product sequence from String parameters.
-   * @param offset     first valid term has this index
-   * @param etaString  a list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
-   * @param preTerms  list of initial terms as String
-   */
-/*
-  public EtaProductSequence(final int offset, final String etaString, final String preTerms) {
-    this(offset, etaString, "-1/1", preTerms.isEmpty() ? new long[0] : ZUtils.toZ(preTerms));
-  }
-*/
   /**
    * Construct an eta product sequence from String parameters.
    * @param offset     first valid term has this index
@@ -135,7 +126,22 @@ public class EtaProductSequence extends AbstractSequence {
   }
 
   /**
-   * Get the String of factors defining the eta product
+   * Set the factor.
+   * @param factor multiply this on to the resulting terms
+   */
+  public void setFactor(final long factor) {
+    mFactor = factor != 1 ? Z.valueOf(factor) : null;
+  }
+
+  /**
+   * Set no factor.
+   */
+  public void setFactor() {
+    mFactor = null;
+  }
+
+  /**
+   * Get the String of factors defining the eta product.
    * @return a String of the form "[k0,m0;k1,m1;...]"
    */
   public String getEtaString() {
@@ -191,7 +197,7 @@ public class EtaProductSequence extends AbstractSequence {
       ++mN;
       final Z result = mET.next();
       if (mN % mPQFDen == 0) {
-        return result;
+        return mFactor == null ? result : result.multiply(mFactor);
       }
     }
   }
