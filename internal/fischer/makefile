@@ -113,12 +113,17 @@ ebtest:
 	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
 Q=-1/1
 INIT=1
+#--
 epstest:
 	$(JAVA) irvine.oeis.transform.EtaProductSequence -p "$(P)" -i "$(INIT)" -q "$(Q)" -n $(NT)
 ettest:
-	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
+	cat et.data.txt | $(JAVA) irvine.oeis.transform.EulerTransform 
+iettest:
+	cat iet.data.txt | $(JAVA) irvine.oeis.transform.InverseEulerTransform 
+#	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
 gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
+#--
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(NT)
 runjava: # CLASS= ARGS=
