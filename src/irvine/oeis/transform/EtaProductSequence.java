@@ -1,6 +1,5 @@
 package irvine.oeis.transform;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import irvine.math.IntegerUtils;
@@ -9,7 +8,6 @@ import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
 import irvine.oeis.AbstractSequence;
 import irvine.oeis.recur.PeriodicSequence;
-import irvine.oeis.transform.EulerTransform;
 
 /**
  * This class implements a sequence that is derived from the coefficients
@@ -20,11 +18,11 @@ public class EtaProductSequence extends AbstractSequence {
 
   private static int sDebug = 0;
   private EulerTransform mET; // the EulerTransform used to compute the sequence
-  private Z[] mPreTerms; // initial terms for a(n)
-  private boolean mIsConfigured; // whether the period for the EUlerTransform has already been computed
-  private String mEtaString; // a list of pairs (k=exponent of q, m=exponent of eta(q^k)) as a String of the form "[k0,m0;k1,m1;...]".
+  private final Z[] mPreTerms; // initial terms for a(n)
+  private boolean mIsConfigured; // whether the period for the EulerTransform has already been computed
+  private final String mEtaString; // a list of pairs (k=exponent of q, m=exponent of eta(q^k)) as a String of the form "[k0,m0;k1,m1;...]".
   private long[] mPeriod; // expanded list of numbers used for the Euler transform
-  private String mPQF; // power of leading q factor
+  private final String mPQF; // power of leading q factor
   private int mPQFNum; // numerator of mPQF
   private int mPQFDen; // denominator of mPQF
   private int mN; // for skipping if mPQF != "-1/1"
@@ -32,10 +30,10 @@ public class EtaProductSequence extends AbstractSequence {
 
   /**
    * Construct an eta product sequence from String parameters.
-   * @param offset     first valid term has this index
-   * @param etaString  list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
-   * @param preTerms   list of initial terms
-   * @param pqf        power of leading q factor
+   * @param offset first valid term has this index
+   * @param etaString list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
+   * @param preTerms list of initial terms
+   * @param pqf power of leading q factor
    */
   public EtaProductSequence(final int offset, final String etaString, final String pqf, final long... preTerms) {
     super(offset);
@@ -49,9 +47,9 @@ public class EtaProductSequence extends AbstractSequence {
 
   /**
    * Construct an eta product sequence from String parameters.
-   * @param offset     first valid term has this index
-   * @param etaString  list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
-   * @param preTerms   list of initial terms
+   * @param offset first valid term has this index
+   * @param etaString list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
+   * @param preTerms list of initial terms
    */
   public EtaProductSequence(final int offset, final String etaString, final long... preTerms) {
     this(offset, etaString, "-1/1", preTerms);
@@ -59,8 +57,8 @@ public class EtaProductSequence extends AbstractSequence {
 
   /**
    * Construct an eta product sequence from String parameters.
-   * @param offset     first valid term has this index
-   * @param etaString  a list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
+   * @param offset first valid term has this index
+   * @param etaString a list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
    */
   public EtaProductSequence(final int offset, final String etaString) {
     this(offset, etaString, "-1/1", new long[0]);
@@ -68,19 +66,20 @@ public class EtaProductSequence extends AbstractSequence {
 
   /**
    * Construct an eta product sequence from String parameters.
-   * @param offset     first valid term has this index
-   * @param etaString  a list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
-   * @param preTerms   list of initial terms as String
-   * @param pqf        pqf of leading q factor
+   * @param offset first valid term has this index
+   * @param etaString a list of pairs (spread, factor) as a String of the form "[k0,m0;k1,m1;k2,m2]".
+   * @param preTerms list of initial terms as String
+   * @param pqf pqf of leading q factor
    */
   public EtaProductSequence(final int offset, final String etaString, final String pqf, final String preTerms) {
     this(offset, etaString, pqf, LongUtils.toLong(preTerms));
   }
+
   /**
    * Configure the class by computing the period for the Euler transform.
    */
   protected void configure() {
-    final int ETA = -1;
+    final int eta = -1;
     final String[] pairs = mEtaString.replaceAll("[\\[\\]]", "").split("[\\;\\/\\|]");
     final int noPairs = pairs.length;
     final int[] spreads = new int[noPairs];
@@ -89,21 +88,21 @@ public class EtaProductSequence extends AbstractSequence {
     for (int ip = 0; ip < noPairs; ++ip) {
       spreads[ip] = 1;
       factors[ip] = 1;
-      String[] pair = pairs[ip].split("\\,");
-//**  System.out.println("pairs[" + ip + "]: " + pair[0] +  "," + pair[1]);
+      final String[] pair = pairs[ip].split("\\,");
+//  System.out.println("pairs[" + ip + "]: " + pair[0] +  "," + pair[1]);
       try {
         spreads[ip] = Integer.parseInt(pair[0]);
         factors[ip] = Integer.parseInt(pair[1]);
-      } catch (Exception exc) { // take default 1
+      } catch (final NumberFormatException exc) { // take default 1
       }
       lcm = IntegerUtils.lcm(lcm, spreads[ip]);
-//**  System.out.println("lcm: " + lcm);
+//  System.out.println("lcm: " + lcm);
     }
     mPeriod = new long[lcm];
     Arrays.fill(mPeriod, 0);
     for (int ip = 0; ip < noPairs; ++ip) {
       for (int j = spreads[ip]; j <= lcm; j += spreads[ip]) {
-        mPeriod[j - 1] += ETA * factors[ip];
+        mPeriod[j - 1] += eta * factors[ip];
       }
     }
     mET = new EulerTransform(new PeriodicSequence(mPeriod), mPreTerms);
@@ -112,7 +111,7 @@ public class EtaProductSequence extends AbstractSequence {
       mPQFDen = 1;
       mPQFNum = Integer.parseInt(mPQF.substring(0, mPQF.indexOf('/')));
       mPQFDen = Integer.parseInt(mPQF.substring(mPQF.indexOf('/') + 1));
-    } catch (Exception exc) { // take default 1
+    } catch (final NumberFormatException exc) { // take default 1
     }
     mIsConfigured = true;
   }
@@ -168,7 +167,7 @@ public class EtaProductSequence extends AbstractSequence {
       configure();
     }
     final StringBuilder result = new StringBuilder(256);
-    for(int j = 0; j < mPreTerms.length; ++j) {
+    for (int j = 0; j < mPreTerms.length; ++j) {
       if (j > 0) {
         result.append(',');
       }
@@ -212,41 +211,39 @@ public class EtaProductSequence extends AbstractSequence {
    * <li>-q power of q factor as String fraction (default: "-1/1")</li>
    * </ul>
    */
-  public static void main(String[] args) {
-    int sDebug = 0;
+  public static void main(final String[] args) {
+    sDebug = 0;
     String etaString = "[1,5;5,-5]"; // A285932
     String initString = "1";
     String pqf = "-1/1";
     int noTerms = 32;
     int iarg = 0;
     while (iarg < args.length) { // consume all arguments
-      String opt = args[iarg ++];
+      final String opt = args[iarg++];
       try {
-        if (false) {
-        } else if (opt.equals("-d")) {
+        if (opt.equals("-d")) {
           sDebug = 1;
-          sDebug = Integer.parseInt(args[iarg ++]);
+          sDebug = Integer.parseInt(args[iarg++]);
         } else if (opt.equals("-i")) {
-          initString  = args[iarg ++].replaceAll("\\s",""); // remove whitespace
+          initString = args[iarg++].replaceAll("\\s", ""); // remove whitespace
         } else if (opt.equals("-n")) {
-          noTerms  = Integer.parseInt(args[iarg ++]);
+          noTerms = Integer.parseInt(args[iarg++]);
         } else if (opt.equals("-p")) {
-          etaString = args[iarg ++].replaceAll("\\s",""); // remove whitespace
+          etaString = args[iarg++].replaceAll("\\s", ""); // remove whitespace
         } else if (opt.equals("-q")) {
-          pqf = args[iarg ++].replaceAll("\\s",""); // remove whitespace
+          pqf = args[iarg++].replaceAll("\\s", ""); // remove whitespace
         } else {
           System.err.println("??? invalid option: \"" + opt + "\"");
         }
-      } catch (Exception exc) { // take default
+      } catch (final NumberFormatException exc) { // take default
       }
     } // while args
-    EtaProductSequence eps = new EtaProductSequence(0, etaString, pqf, initString);
-    eps.setDebug(sDebug);
-    long[] period = eps.getPeriod();
+    final EtaProductSequence eps = new EtaProductSequence(0, etaString, pqf, initString);
+    final long[] period = eps.getPeriod();
     System.out.print("period: [");
     for (int i = 0; i < period.length; ++i) {
       if (i > 0) {
-      	System.out.print(",");
+        System.out.print(",");
       }
       System.out.print(period[i]);
     }

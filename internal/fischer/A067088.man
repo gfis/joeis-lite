@@ -1,0 +1,23 @@
+A036843	A000217	Floor(X/Y) where X = concatenation of the triangular numbers and Y = concatenation of natural numbers.	nonn,base,less,synth	1..22	unkn	_Robert G. Wilson v_, Jan 09 2002
+A067088	nyi t	Floor[X/Y] where X = concatenation of (n+1), (n+2), ...up to 2n and Y = concatenation of 1,2,3,4,... up to n.	easy,base,nonn,synth	0..22	nyi	_Amarnath Murthy_, Jan 07 2002
+A067089	nyi t	Floor[X/Y] where X = concatenation of (2n), (2n-1), ... down to n+1 and Y = concatenation of n, n-1, n-2, ... down to 1.	easy,base,nonn,synth	0..22	nyi	_Amarnath Murthy_, Jan 07 2002
+A067090	nyi t	Floor(X/Y) where X = concatenation of (2n), (2n-1), ... down to n+1 and Y = concatenation of 1,2,3,... up to n.	easy,base,nonn,synth	0..22	nyi	_Amarnath Murthy_, Jan 07 2002
+A067091	nyi t	Floor[X/Y] where X = concatenation of the (n+1)-st even number through the (2n)-th even number and Y = concatenation of first n even numbers.	easy,base,nonn,synth	1..30	nyi	_Amarnath Murthy_, Jan 07 2002
+A067092	nyi t	floor(X/Y) where X = concatenation in decreasing order of (2n)-th even number to (n+1)-th even number and Y = that of first n even numbers in increasing order.	easy,nonn,base,changed,	0..1000	nyi	_Amarnath Murthy_, Jan 07 2002
+A067093	nyi t	Floor[X/Y] where X = concatenation of (n+1)-st odd number through the 2n-th odd number and Y = concatenation of first n odd numbers.	easy,base,nonn,synth	1..29	nyi	_Amarnath Murthy_, Jan 07 2002
+A067094	nyi t	Floor[X/Y] where X = concatenation in decreasing order of (n+1)-st odd number through the 2n-th odd number and Y = concatenation in decreasing order of first n odd numbers.	easy,nonn,base,synth	1..29	nyi	_Amarnath Murthy_, Jan 07 2002
+A067095	nyi Ft	floor(X/Y) where X = concatenation in increasing order of the first n even numbers and Y is that of the first n odd numbers.	easy,nonn,base,changed,synth	1..65	nyi	_Amarnath Murthy_, Jan 07 2002
+A067096	nyi tL	Floor[X/Y] where X = concatenation in increasing order of first n even numbers and Y = that of first n natural numbers.	easy,nonn,base,synth	1..34	nyi	_Amarnath Murthy_, Jan 07 2002
+A067097	nyi t	Floor[X/Y] where X = concatenation in increasing order of first n powers of 2 and Y = that of first n natural numbers.	easy,base,nonn,changed,synth	1..17	nyi	_Amarnath Murthy_, Jan 07 2002
+A067098	nyi t	Floor[X/Y] where X = concatenation in increasing order of first n powers of 3 and Y = that of first n natural numbers.	easy,base,nonn,changed,synth	1..13	nyi	_Amarnath Murthy_, Jan 07 2002
+A067101	nyi t	Floor[X/Y] where X = concatenation of the primes and Y = concatenation of natural numbers.	easy,base,nonn,synth	1..31	nyi	_Amarnath Murthy_, Jan 07 2002
+A067102	nyi tL	Floor[X/Y] where X = concatenation of the squares and Y = concatenation of natural numbers.	easy,base,nonn,synth	1..20	nyi	_Amarnath Murthy_, Jan 07 2002
+A067103	nyi pto	floor(X/Y) where X = concatenation of cubes and Y = concatenation of natural numbers.	nonn,base,synth	1..17	nyi	_Robert G. Wilson v_, Jan 09 2002
+A067104	nyi tL	floor[X/Y] where X = concatenation of first n factorials and Y = concatenation of first n natural numbers.	easy,nonn,base,changed,	1..44	nyi	_Amarnath Murthy_, Jan 07 2002
+A067105	nyi t	floor[X/Y] where X = concatenation of k^k from 1 up to n^n and Y = concatenation of 1, ..., n.	easy,nonn,base,synth	1..10	nyi	_Amarnath Murthy_, Jan 07 2002
+A067118	nyi pt	floor[X/Y] where X = concatenation of first n even numbers in decreasing order and Y = that of first n odd numbers in increasing order.	easy,nonn,base,synth	1..70	nyi	_Amarnath Murthy_, Jan 08 2002
+A067119	nyi ptL	floor[X/Y] where X = concatenation of first n even numbers in increasing order and Y = n-th triangular number.	easy,nonn,base,changed,	1..352	nyi	_Amarnath Murthy_, Jan 08 2002
+A067120	nyi ptL	floor[X/Y] where X = concatenation of first n ODD numbers in increasing order and Y = n-th triangular number.	easy,nonn,base,less,changed,	1..353	nyi	_Amarnath Murthy_, Jan 08 2002
+A067121	nyi ptL	floor[X/Y] where X = concatenation of the first n even numbers in increasing order and Y = their sum.	easy,nonn,base,	1..352	nyi	_Amarnath Murthy_, Jan 08 2002
+A067122	nyi L	Floor[X/Y] where X = concatenation of first n odd numbers in increasing order (A019519) and Y = their sum (A000290 = n^2).	base,nonn,synth	1..16	nyi	_Amarnath Murthy_, Jan 08 2002
+A067123	nyi tL	Floor[X/Y] where X = concatenation of first n cubes in increasing order and Y = concatenation of first n squares.	easy,nonn,base,changed,	1..467	nyi	_Amarnath Murthy_, Jan 08 2002

@@ -435,6 +435,7 @@ dist1:
 deploy:
 	cd ../.. ; ant         deploy 2>&1
 #--
+geditel: gener dist test log
 maditel: man dist test    log
 madital: man dist testall log
 #--
@@ -3370,6 +3371,11 @@ etaprod: # EtaProductSequence
 	# perl $(COMMON)/../eta/williams2.pl | grep -v A999999 \
 	cat $(COMMON)/../eta/etaprod.gen \
 	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+rootet:
+	grep -E "^A[0-9]" $@.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
