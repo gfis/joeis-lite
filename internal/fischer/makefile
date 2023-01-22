@@ -183,7 +183,7 @@ count:
 	find ../../src -iname "A??????.java" | wc -l
 list:
 	find ../../src -iname "A??????.java" -ls
-pack: pack1 pack2
+pack: pack1 pack2 pack3
 pack1:
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
@@ -198,6 +198,10 @@ pack1:
 pack2:
 	git commit -a
 	git push origin master
+pack3:
+	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 > $@.tmp
+	make seq LIST=$@.tmp
+	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') FROM seq s LEFT JOIN joeis j on s.aseqno = j.aseqno ORDER BY 1"
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"

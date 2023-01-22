@@ -1,21 +1,202 @@
-A112144	rooteta	-1	A097340	-64	1	2	0	T8a=rootn(e4A-64,2)	
-A112153	rootetz	-1	A112145	0,-4	1	2	7	sqrt(T8c - 4*q), where T8c = A112145
-A112168	rooteta	-1	A112146	-3	1	3	0	(T9b - 3*q)^(1/3), where T9b = A112146
-A112170	rooteta	-1	A058513	2	1	2	0	sqrt(2 + T15b),, where T15b = A058513
-A112183	rooteta	-1	A058103	4	1	4	0	(T10b + 4)^(1/4), where T10b = A058103	
-A112185	rooteta	-1	A058513	-3	1	3	0	(T15b - 3)^(1/3), where T15b = A058513	
-A112188	rootetz	-1	A112164	-2	1	2	1	sqrt(T24g - 2*q), where T24g = A112164
-A112189	rootetz	-1	A112164	2	1	2	1	sqrt(T24g + 2*q), where T24g = A112164
-A112190	rootetz	-1	A058587	-2	1	2	1	sqrt(T24d - 2*q), where T24d = A058587
-A112191	rootetz	-1	A058587	2	1	2	1	sqrt(T24d + 2*q), where T24d = A058587
-A112195	rootet	-1	A058604	0	1	2	0	sqrt(T27d), where T27d = A058604
-A112196	rooteta	-1	A112169	2	1	2	0	sqrt(T28B + 2), where T28B = A112169
-A112200	rootet	-1	A058614	0	1	2	0	sqrt(T30C), where T30C = A058614
-A112202	rooteta	-1	A058626	-2	1	2	0	T60d = sqrt(T30e-2), where T30e = A058626
-A112204	rootet	-1	A058563	0	1	3	0	T63a = (q*T21A)^(1/3), where T21A = A058563
-A112210	rootet	-1	A058670	0	1	2	0	T82a=rootn(T41A,2), where T41A = A058670
-A112218	rooteta	-1	A058704	2	1	2	0	sqrt(2 + T51A), where T51A = A058704	
-A112220	rooteta	-1	A058659	3	1	3	0	(T39A + 3)^(1/3), where T39A = A058659	
-A112221	rootet	-1	A058726	0	1	2	0	sqrt(T60B), where T60B = A058726
-A112223	rootet	-1	A058739	0	1	2	0	sqrt(T66A), where T66A = A058739
-A112224	rooteta	-1	A058744	2	1	2	0	sqrt(T70A + 2), where T70A = A058744	
+# A112144	rooteta	-1	A097340	-64	1	2	0	T8a=rootn(e4A-64,2)	
+# A112153	rootetz	-1	A112145	0,-4	1	2	7	sqrt(T8c - 4*q), where T8c = A112145
+# A112168	rooteta	-1	A112146	-3	1	3	0	(T9b - 3*q)^(1/3), where T9b = A112146
+# A112170	rooteta	-1	A058513	2	1	2	0	sqrt(2 + T15b),, where T15b = A058513
+# A112183	rooteta	-1	A058103	4	1	4	0	(T10b + 4)^(1/4), where T10b = A058103	
+# A112185	rooteta	-1	A058513	-3	1	3	0	(T15b - 3)^(1/3), where T15b = A058513	
+# A112188	rootetz	-1	A112164	-2	1	2	1	sqrt(T24g - 2*q), where T24g = A112164
+# A112189	rootetz	-1	A112164	2	1	2	1	sqrt(T24g + 2*q), where T24g = A112164
+# A112190	rootetz	-1	A058587	-2	1	2	1	sqrt(T24d - 2*q), where T24d = A058587
+# A112191	rootetz	-1	A058587	2	1	2	1	sqrt(T24d + 2*q), where T24d = A058587
+# A112195	rootet	-1	A058604	0	1	2	0	sqrt(T27d), where T27d = A058604
+# A112196	rooteta	-1	A112169	2	1	2	0	sqrt(T28B + 2), where T28B = A112169
+# A112200	rootet	-1	A058614	0	1	2	0	sqrt(T30C), where T30C = A058614
+# A112202	rooteta	-1	A058626	-2	1	2	0	T60d = sqrt(T30e-2), where T30e = A058626
+# A112204	rootet	-1	A058563	0	1	3	0	T63a = (q*T21A)^(1/3), where T21A = A058563
+# A112210	rootet	-1	A058670	0	1	2	0	T82a=rootn(T41A,2), where T41A = A058670
+# A112218	rooteta	-1	A058704	2	1	2	0	sqrt(2 + T51A), where T51A = A058704	
+# A112220	rooteta	-1	A058659	3	1	3	0	(T39A + 3)^(1/3), where T39A = A058659	
+# A112221	rootet	-1	A058726	0	1	2	0	sqrt(T60B), where T60B = A058726
+# A112223	rootet	-1	A058739	0	1	2	0	sqrt(T66A), where T66A = A058739
+# A112224	rooteta	-1	A058744	2	1	2	0	sqrt(T70A + 2), where T70A = A058744	
+
+# Cf. A006352 (E_2), A004009 (E_4), A013973 (E_6), A008410 (E_8), A013974 (E_10), A029828 (E_12), 
+# A058550 (E_14), A029829 (E_16), A029830 (E_20), A029831 (E_24).
+A288816	rootet	0	A006352	0	-1	1	0	Coefficients in expansion of 1/E_2.
+A285836	rootet	0	A013974	0	-1	1	0	Coefficients in expansion of 1/E_10.
+A287933	rootet	0	A008410	0	-1	1	0	Coefficients in expansion of 1/E_8.
+A287964	rootet	0	A058550	0	-1	1	0	Coefficients in expansion of 1/E_14.
+
+A295790	rootet	0	A013974	0	-1	4	0	Coefficients in expansion of E_10^(-1/4).
+A295791	rootet	0	A006352	0	-1	4	0	Coefficients in expansion of E_2^(-1/4).
+A295815	rootet	0	A004009	0	-1	4	0	Coefficients in expansion of E_4^(-1/4).
+A295816	rootet	0	A013973	0	-1	4	0	Coefficients in expansion of E_6^(-1/4).
+A295817	rootet	0	A058550	0	-1	4	0	Coefficients in expansion of E_14^(-1/4).
+A299955	rootet	0	A004009	0	3	2	0	Coefficients in expansion of E_4^(3/2).
+
+A289247	rootet	0	A004009	0	-1	8	0	Coefficients in expansion of E_4^(-1/8).
+A289291	rootet	0	A006352	0	1	2	0	Coefficients in expansion of E_2^(1/2).
+A289292	rootet	0	A004009	0	1	2	0	Coefficients in expansion of E_4^(1/2).
+A289293	rootet	0	A013973	0	1	2	0	Coefficients in expansion of E_6^(1/2).
+A289294	rootet	0	A013974	0	1	2	0	Coefficients in expansion of E_10^(1/2).
+A289295	rootet	0	A058550	0	1	2	0	Coefficients in expansion of E_14^(1/2).
+A289307	rootet	0	A004009	0	1	4	0	Coefficients in expansion of E_4^(1/4).
+A289308	rootet	0	A004009	0	3	8	0	Coefficients in expansion of E_4^(3/8).
+A289309	rootet	0	A004009	0	5	8	0	Coefficients in expansion of E_4^(5/8).
+A289318	rootet	0	A004009	0	3	4	0	Coefficients in expansion of E_4^(3/4).
+A289319	rootet	0	A004009	0	7	8	0	Coefficients in expansion of E_4^(7/8).
+A289325	rootet	0	A013973	0	1	6	0	Coefficients in expansion of E_6^(1/6).
+A289326	rootet	0	A013973	0	1	4	0	Coefficients in expansion of E_6^(1/4).
+A289327	rootet	0	A013973	0	1	3	0	Coefficients in expansion of E_6^(1/3).
+A289328	rootet	0	A013973	0	5	12	0	Coefficients in expansion of E_6^(5/12).
+A289345	rootet	0	A013973	0	7	12	0	Coefficients in expansion of E_6^(7/12).
+A289346	rootet	0	A013973	0	2	3	0	Coefficients in expansion of E_6^(2/3).
+A289347	rootet	0	A013973	0	3	4	0	Coefficients in expansion of E_6^(3/4).
+A289348	rootet	0	A013973	0	5	6	0	Coefficients in expansion of E_6^(5/6).
+A289349	rootet	0	A013973	0	11	12	0	Coefficients in expansion of E_6^(11/12).
+A289391	rootet	0	A058550	0	1	4	0	Coefficients in expansion of E_14^(1/4).
+A289392	rootet	0	A006352	0	1	4	0	Coefficients in expansion of E_2^(1/4).
+A289393	rootet	0	A006352	0	3	4	0	Coefficients in expansion of E_2^(3/4).
+A289540	rootet	0	A013973	0	-1	12	0	Coefficients in expansion of E_6^(-1/12).
+A289565	rootet	0	A006352	0	-1	2	0	Coefficients in expansion of E_2^(-1/2).
+A289566	rootet	0	A004009	0	-1	2	0	Coefficients in expansion of E_4^(-1/2).
+A289567	rootet	0	A013973	0	-1	2	0	Coefficients in expansion of E_6^(-1/2).
+A289568	rootet	0	A013974	0	-1	2	0	Coefficients in expansion of E_10^(-1/2).
+A289569	rootet	0	A058550	0	-1	2	0	Coefficients in expansion of E_14^(-1/2).
+A289570	rootet	0	A013973	0	-3	2	0	Coefficients in expansion of E_6^(-3/2).    
+
+
+# from A288846: (q*j(q))^(k/24): 
+A289397	rootet	0	A000521	0	-1	24	0	Coefficients in expansion of (q*j(q))^(-1/24).
+A106205	rootet	0	A000521	0	1	24	0	Expansion of (q*j(q))^(1/24) where j(q) is the elliptic modular invariant (A000521).
+A289297	rootet	0	A000521	0	1	12	0	Expansion of (q*j(q))^(1/12) where j(q) is the elliptic modular invariant (A000521).
+A289298	rootet	0	A000521	0	1	8	0	Expansion of (q*j(q))^(1/8) where j(q) is the elliptic modular invariant (A000521).
+A289299	rootet	0	A000521	0	1	6	0	Expansion of (q*j(q))^(1/6) where j(q) is the elliptic modular invariant (A000521).
+A289300	rootet	0	A000521	0	5	24	0	Expansion of (q*j(q))^(5/24) where j(q) is the elliptic modular invariant (A000521).
+A289301	rootet	0	A000521	0	1	4	0	Expansion of (q*j(q))^(1/4) where j(q) is the elliptic modular invariant (A000521).
+A289302	rootet	0	A000521	0	7	24	0	Expansion of (q*j(q))^(7/24) where j(q) is the elliptic modular invariant (A000521).
+A007245	rootet	0	A000521	0	1	3	0	McKay-Thompson series of class 3C for the Monster group.
+A289303	rootet	0	A000521	0	3	8	0	Expansion of (q*j(q))^(3/8) where j(q) is the elliptic modular invariant (A000521).
+A289304	rootet	0	A000521	0	5	12	0	Expansion of (q*j(q))^(5/12) where j(q) is the elliptic modular invariant (A000521).
+A289305	rootet	0	A000521	0	11	24	0	Expansion of (q*j(q))^(11/24) where j(q) is the elliptic modular invariant (A000521).
+A161361	rootet	0	A000521	0	1	2	0	Convolution square root of A000521.
+A028512	rootet	0	A000521	0	2	3	0	Character of extremal vertex operator algebra of rank 16.
+A028513	rootet	0	A000521	0	4	3	0	Character of extremal vertex operator algebra of rank 32.
+A028514	rootet	0	A000521	0	5	3	0	Character of extremal vertex operator algebra of rank 40.
+A028515	rootet	0	A000521	0	2	1	0	Character of extremal vertex operator algebra of rank 48.
+A288846	rootet	0	A000521	0	3	1	0	Expansion of (q*j)^3 where j is a modular function A000521.
+                           	0         	
+A066395	rootet	1	A000521	0	-1	1	0	Expansion of reciprocal of j-function (see A000521).
+A288727	rootet	2	A000521	0	-2	1	0	Expansion of 1/j^2 where j is the elliptic modular invariant (A000521).
+A289454	rootet	3	A000521	0	-3	1	0	Expansion of 1/j^3 where j is the elliptic modular invariant (A000521).
+A289455	rootet	4	A000521	0	-4	1	0	Expansion of 1/j^4 where j is the elliptic modular invariant (A000521).
+A289455	rootet	4	A000521	0	-4	1	0	Expansion of 1/j^4 where j is the elliptic modular invariant (A000521).
+A289512	rootet	5	A000521	0	-5	1	0	Expansion of 1/j^5 where j is the elliptic modular invariant (A000521).
+A289513	rootet	6	A000521	0	-6	1	0	Expansion of 1/j^6 where j is the elliptic modular invariant (A000521).
+A289514	rootet	7	A000521	0	-7	1	0	Expansion of 1/j^7 where j is the elliptic modular invariant (A000521).
+A289515	rootet	8	A000521	0	-8	1	0	Expansion of 1/j^8 where j is the elliptic modular invariant (A000521).
+A289516	rootet	9	A000521	0	-9	1	0	Expansion of 1/j^9 where j is the elliptic modular invariant (A000521).
+A289517	rootet	10	A000521	0	-10	1	0	Expansion of 1/j^10 where j is the elliptic modular invariant (A000521).
+                           	0         
+A299826	rootet	1	A000521	0	-1	12	0	Coefficients in expansion of (q*j(q))^(-1/12) where j(q) is the elliptic modular invariant (A000521).
+A299827	rootet	1	A000521	0	-1	8	0	Coefficients in expansion of (q*j(q))^(-1/8) where j(q) is the elliptic modular invariant (A000521). 
+A299828	rootet	1	A000521	0	-1	6	0	Coefficients in expansion of (q*j(q))^(-1/6) where j(q) is the elliptic modular invariant (A000521). 
+A299829	rootet	1	A000521	0	-5	24	0	Coefficients in expansion of (q*j(q))^(-5/24) where j(q) is the elliptic modular invariant (A000521).
+A299830	rootet	1	A000521	0	-1	4	0	Coefficients in expansion of (q*j(q))^(-1/4) where j(q) is the elliptic modular invariant (A000521). 
+A299831	rootet	1	A000521	0	-1	3	0	Coefficients in expansion of (q*j(q))^(-1/3) where j(q) is the elliptic modular invariant (A000521). 
+A299832	rootet	1	A000521	0	-1	2	0	Coefficients in expansion of (q*j(q))^(-1/2) where j(q) is the elliptic modular invariant (A000521). 
+
+%N A302407 Euler transform is q*(j - 744) where j is j-function (A000521).
+%N A305757 Inverse Euler transform of q*(j-720) where j is j-function (A000521).
+%N A192731 Euler transform is 1 / (q j(q)) where j is j-function (A000521).
+
+# from A289209		Coefficients in expansion of E_4^3/E_6^2. (E_4^3/E_6^2)^(k/288): 
+#      NYINYINYI
+# A289365	rootet	0	A289209	0	1	288	0	(k=1)
+# A299694	rootet	0	A289209	0	2	288	0	(k=2)
+# A299696	rootet	0	A289209	0	3	288	0	(k=3)
+# A299697	rootet	0	A289209	0	4	288	0	(k=4)
+# A299698	rootet	0	A289209	0	6	288	0	(k=6)
+# A299943	rootet	0	A289209	0	8	288	0	(k=8)
+# A299949	rootet	0	A289209	0	9	288	0	(k=9)
+# A289369	rootet	0	A289209	0	12	288	0	(k=12)
+# A299950	rootet	0	A289209	0	16	288	0	(k=16)
+# A299951	rootet	0	A289209	0	18	288	0	(k=18)
+# A299953	rootet	0	A289209	0	24	288	0	(k=24)
+# A299993	rootet	0	A289209	0	32	288	0	(k=32)
+# A299994	rootet	0	A289209	0	36	288	0	(k=36)
+# A300052	rootet	0	A289209	0	48	288	0	(k=48)
+# A300053	rootet	0	A289209	0	72	288	0	(k=72)
+# A300054	rootet	0	A289209	0	96	288	0	(k=96)
+# A300055	rootet	0	A289209	0	144	288	0	(k=144)
+# A289209	rootet	0	A289209	0	288	288	0	(k=288) <--.
+
+# from A289210, (E_6^2/E_4^3)^(k/288): 
+A289366	rootet	0	A289210	0	1	288	0	(k=1), 
+A296609	rootet	0	A289210	0	2	288	0	(k=2) this sequence, 
+A296614	rootet	0	A289210	0	3	288	0	(k=3), 
+A296652	rootet	0	A289210	0	4	288	0	(k=4), 
+A297021	rootet	0	A289210	0	6	288	0	(k=6), 
+A299422	rootet	0	A289210	0	8	288	0	(k=8), 
+A299862	rootet	0	A289210	0	9	288	0	(k=9), 
+A289368	rootet	0	A289210	0	12	288	0	(k=12), 
+A299856	rootet	0	A289210	0	16	288	0	(k=16), 
+A299857	rootet	0	A289210	0	18	288	0	(k=18), 
+A299858	rootet	0	A289210	0	24	288	0	(k=24), 
+A299863	rootet	0	A289210	0	32	288	0	(k=32), 
+A299859	rootet	0	A289210	0	36	288	0	(k=36), 
+A299860	rootet	0	A289210	0	48	288	0	(k=48), 
+A299861	rootet	0	A289210	0	72	288	0	(k=72), 
+A299414	rootet	0	A289210	0	96	288	0	(k=96), 
+A299413	rootet	0	A289210	0	144	288	0	(k=144), 
+A289210	rootet	0	A289210	0	288	288	0	(k=288) <--
+
+# (q*(j(q)-744))^(k/4): A305698 (k=-2), A305696 (k=-1), A304020 (k=1), A305697 (k=2).
+# Cf. A000521 (j), A014708 (j-744), A066395, A289417.
+
+# from A299955, E_4^(k/8): 
+A108091	rootet	1	A004009	0	1	8	0	(k=1), 
+A289307	rootet	1	A004009	0	2	8	0	(k=2), 
+A289308	rootet	1	A004009	0	3	8	0	(k=3), 
+A289292	rootet	1	A004009	0	4	8	0	(k=4), 
+A289309	rootet	1	A004009	0	5	8	0	(k=5), 
+A289318	rootet	1	A004009	0	6	8	0	(k=6), 
+A289319	rootet	1	A004009	0	7	8	0	(k=7), 
+A004009	rootet	1	A004009	0	8	8	0	(k=8), 
+A299955	rootet	1	A004009	0	12	8	0	(k=12), 
+A008410	rootet	1	A004009	0	16	8	0	(k=16), 
+A008411	rootet	1	A004009	0	24	8	0	(k=24), 
+A282012	rootet	1	A004009	0	32	8	0	(k=32), 
+A282015	rootet	1	A004009	0	40	8	0	(k=40).
+
+A109143	rootet	1	A004007	0	1	3	0	G.f.: cube root of theta series of E_6 lattice (cf. A004007).
+A109817	rootet	1	A013973	0	1	12	0	G.f.: 12th root of Eisenstein series E_6 (cf. A013973).
+A110150	rootet	1	A013974	0	1	4	0	G.f.: 4th root of Eisenstein series E_10 (cf. A013974).  
+# A280869	rootet	1	A008410	0	2	1	0	Expansion of E_8(q)^2 in powers of q. Does not work, nor with E_6
+A282253	rootet	1	A013973	0	3	1	0	Coefficients in q-expansion of E_6^3, where E_6 is the Eisenstein series shown in A013973.
+A282292	rootet	1	A013974	0	2	1	0	Coefficients in q-expansion of E_10^2, where E_10 is the Eisenstein series A013974.
+A282330	rootet	1	A004009	0	6	1	0	Coefficients in q-expansion of E_4^6, where E_4 is the Eisenstein series A004009.
+A282331	rootet	1	A013973	0	4	1	0	Coefficients in q-expansion of E_6^4, where E_6 is the Eisenstein series A013973.
+A282402	rootet	1	A004009	0	7	1	0	Coefficients in q-expansion of E_4^7, where E_4 is the Eisenstein series A004009.
+A282431	rootet	1	A006352	0	5	1	0	Coefficients in q-expansion of E_2^5, where E_2 is the Eisenstein series A006352.
+A282433	rootet	1	A013973	0	5	1	0	Coefficients in q-expansion of E_6^5, where E_6 is the Eisenstein series A013973.
+A282474	rootet	1	A004009	0	8	1	0	Coefficients in q-expansion of E_4^8, where E_4 is the Eisenstein series A004009.
+
+# Eisenstein series:
+# A145154 (E_1) joeis
+# A006352 (E_2), 
+# A004009 (E_4), 
+# A013973 (E_6) joeis
+# A008410 (E_8), 
+# A013974 (E_10), 
+# A029828 (691*E_12), 
+# A058550 (E_14), 
+# A029829 (3617*E_16), 
+# A279892 (43867*E_18) nyi
+# A029830 (174611*E_20), 
+# A279893 (77683*E_22) nyi
+# A029831 (236364091*E_24).
+# A282356 Eisenstein series E_26(q) (alternate convention E_13(q)), multiplied by 657931.       
+# A282401 Eisenstein series E_28(q) (alternate convention E_14(q)), multiplied by 3392780147.   
+# A282540 Eisenstein series E_32(q) (alternate convention E_16(q)), multiplied by 7709321041217.
+
