@@ -65,7 +65,7 @@ endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 JJAVA=java $(JOPT) -cp "$(JOEIS)/build.tmp/joeis.jar"
 BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU)
-INIT=0
+INIT="1"
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
 OFFSET=0
@@ -111,13 +111,14 @@ uritest:
 	$(JAVA) org.teherba.common.URIReader $(URI) UTF-8
 ebtest:
 	$(RAMATH) org.teherba.ramath.sequence.JoeisExpressionBuilder -d 1 -p CR.xpat "$(POST)"
-Q=-1/1
-INIT=1
+Q="-1/1"
+INIT="1"
 #--
+eps: epstest # 
 epstest:
-	$(JAVA) irvine.oeis.transform.EtaProductSequence -p "$(P)" -i "$(INIT)" -q "$(Q)" -n $(NT)
+	$(JAVA) irvine.oeis.transform.EtaProductSequence -p "$(P)" -i $(INIT) -q $(Q) -n $(NT)
 ettest:
-	cat et.data.txt | $(JAVA) irvine.oeis.transform.EulerTransform 
+	cat et.data.txt  | $(JAVA) irvine.oeis.transform.EulerTransform 
 iettest:
 	cat iet.data.txt | $(JAVA) irvine.oeis.transform.InverseEulerTransform 
 #	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
@@ -201,7 +202,8 @@ pack2:
 pack3:
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 > $@.tmp
 	make seq LIST=$@.tmp
-	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') FROM seq s LEFT JOIN joeis j on s.aseqno = j.aseqno ORDER BY 1"
+	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') FROM seq s, joeis j WHERE s.aseqno = j.aseqno ORDER BY 1"
+	wc -l    $@.tmp
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
@@ -5768,7 +5770,7 @@ shownin:
 # A320124 null    Number of integer solutions to a^2 + b^2 + 2*c^2 + 3*d^2 = n
 nisolut:
 	grep -E "solution|Gram matrix" $(COMMON)/cat25.txt | cut -b4- \
-	| perl nisolut.pl -d 0 \
+	| perl nisolut.pl -d 0 -e \
 	2>       $@.rest.tmp \
 	| sort | uniq -w7 \
 	>        $@.gen
@@ -6588,9 +6590,9 @@ ieuler:
 	find manual -iname "*.java" | xargs -l -innn \
 	perl -i*.bak -e 'while (<>) { s{EulerTransformSequence}{EulerTransform}g; print; }' nnn
 #----
-INIT=""
+INIT="1"
 TYPE=2
-euler: # manual EulerTest PER="1,0,1" INIT=1 NT=32 TYPE=2
+euler: # manual EulerTest PER="1,0,1" INIT="1" NT=32 TYPE=2
 	$(JAVA) irvine.test.EulerTransformTest -p $(PER) -s $(TYPE) -n $(NT) -i $(INIT)
 #-----
 eulerper2:

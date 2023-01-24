@@ -1,10 +1,15 @@
 -- etaprod.sql
 -- @(#) $Id$
--- 2023-01-15, Georg Fischer
+-- 2023-01-23, Georg Fischer
 DELETE FROM seq4 WHERE aseqno IN 
 ('A000118'
+,'A113418'
+,'A113661'
+,'A187429'
+,'A260676' -- deviation at a[120], email-draft
 );
 UPDATE seq4 SET parm2 = '[2,8;1,-4]'          WHERE aseqno =  'A008438';
+-- UPDATE seq4 SET parm2 = '[126,1;36,1;28,1;9,1;7,1;2,1;252,-1;63,-1;18,-1;14,-1;4,-1;1,-1]' WHERE aseqno = 'A119952';
 
 UPDATE seq4 SET parm2 = '-1/3'      WHERE aseqno IN ('A096727');
 UPDATE seq4 SET parm2 = '-1/2'      WHERE aseqno IN

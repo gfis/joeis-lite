@@ -2,12 +2,14 @@
 
 # Extract parameters for GramMatrixThetaSeries
 # @(#) $Id$
+# 2023-01-24, output of epsigs for EtaProductSequence
 # 2020-10-28, Georg Fischer: copied from partcond.pl
 #
 #:# Usage:
 #:#     grep -E "Number of integer solutions " $(COMMON)/cat25.txt | cut -b4- \
-#:#     | perl nisolut.pl [-d debug] > nisolut.gen
+#:#     | perl nisolut.pl [-d debug] [-e] > nisolut.gen
 #:#         -d  debugging level (0=none (default), 1=some, 2=more)
+#:#         -e  whether to output eta product signatures as comments
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -22,11 +24,14 @@ if (scalar(@ARGV) == 0) {
     exit;
 }
 my $cc = "nisolut";
+my $with_epsig = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
     } elsif ($opt   =~ m{\-d}  ) {
         $debug      = shift(@ARGV);
+    } elsif ($opt   =~ m{\-e}  ) {
+        $with_epsig = 1;
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -75,6 +80,9 @@ while (<>) {
                 $matrix = "{" . join(", ", @rows) . "}";
             } # ne ""
             push(@parms, $matrix);
+            if (0 && $with_epsig) { # not working if there are non-diagonal elements
+                print "# " . join("\t", $aseqno, "epsig", $offset, join(",", @expons), $name) . "\n";
+            }
         } else {
             $callcode = "#2";
         } # no "="
@@ -88,16 +96,22 @@ while (<>) {
         $matrix =~ s/\s//g;
         $matrix =~ s/\;/\}, \{/g;
         push(@parms, "{{" . $matrix . "}}");
-
     } else {
         $callcode = "#4"; # ignore this record
     }
  
     if ($callcode !~ m{\A\#}) {
-        print join("\t", $aseqno, $callcode, $offset, @parms, "1", "", $name) . "\n";
+        print        join("\t", $aseqno, $callcode, $offset, @parms, "1", "", $name) . "\n";
     } else {
-        print STDERR "$callcode $line\n";
+        print STDERR join("\t", $aseqno, $callcode, $offset, $name) . "\n";;
     }
 } # while <>
 #----------------
 __DATA__
+A029682	nisolut	0	{{2,1,0}, {1,2,1}, {0,1,4}}	1		Theta series of quadratic form with Gram matrix [ 2, 1, 0; 1, 2, 1; 0, 1, 4 ]
+A033701	nisolut	0	{{4,0,2,-2,0,-1}, {0,4,-2,0,-2,1}, {2,-2,4,-1,1,-2}, {-2,0,-1,4,0,2}, {0,-2,1,0,4,-2}, {-1,1,-2,2,-2,4}}	1		Gram matrix [4, 0, 2, -2, 0, -1; 0, 4, -2, 0, -2, 1; 2, -2, 4, -1, 1, -2; -2, 0, -1, 4, 0, 2; 0, -2, 1, 0, 4, -2; -1, 1, -2, 2, -2, 4]
+A033715	nisolut	0	{{1,0}, {0,2}}	1		Number of integer solutions (x, y) to the equation x^2 + 2y^2 = n
+A033716	nisolut	0	{{1,0}, {0,3}}	1		Number of integer solutions to the equation x^2 + 3y^2 = n
+A033717	nisolut	0	{{1,0,0}, {0,2,0}, {0,0,4}}	1		Number of integer solutions to the equation x^2 + 2*y^2 + 4*z^2 = n
+A033719	nisolut	0	{{1,0}, {0,7}}	1		Number of integer solutions to the equation x^2 + 7*y^2 = n
+
