@@ -71,8 +71,8 @@ REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
 OFFSET=0
 
 # Pattern rule: make Ammmmmmm Annnnnn ... from A*.man
-%: %.man
-	grep -E "^A[0-9]" $@.man > $@.gen
+%: aman/%.man
+	grep -E "^A[0-9]" aman/$@.man > $@.gen
 	head -n4 $@.gen
 	wc -l $@.*
 #----------------
@@ -141,6 +141,9 @@ regtest: # CLASS= rerun all these classes
 	make CC=$(CLASS) test log
 runpari:
 	$(JAVA) org.teherba.extcas.RunPARI  $(CMD)
+#----
+ingit:
+	git ls-tree -r master --name-only
 #----------------------------------
 # Generation of groups of sequences
 #----------------------------------
