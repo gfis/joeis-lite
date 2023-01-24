@@ -5787,6 +5787,12 @@ nisolut_eval:
 	wc -l    $@.tmp
 nisoman:
 	cp -v nisolut.man $@.gen
+theta3_epsig:
+	perl theta3_epsig.pl -d 0 gramdiag.man \
+	| perl ../../../OEIS-mat/eta/norm_epsig.pl -d 0 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
 #--------
 # For ContinuedFractionSequence, determine the underlying DecimalExpansionSequence
 cofrefl: cofrefl1 cofrefl2

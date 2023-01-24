@@ -47,7 +47,7 @@ while (<>) {
     foreach my $diag(split(/\,/, $powlist)) {
         push(@result, &theta3_pow($diag));
     }
-    print join("\t", $aseqno, $callcode, $offset, join(",", @result), $dummy1, $dummy2, $name) . "\n";
+    print join("\t", $aseqno, $callcode, $offset, join(",", @result), "-1/1", ", 1", 1, $name) . "\n";
 } # while <>
 #----
 sub theta3_pow {
