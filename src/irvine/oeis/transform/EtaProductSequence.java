@@ -24,78 +24,46 @@ public class EtaProductSequence extends AbstractSequence {
   private long[] mPeriod; // expanded list of numbers used for the Euler transform
   private int[] mQpowers; // powers of q
   private int[] mEpowers; // powers of the eta functions
-  private final String mPQF; // power of leading q factor
-  private int mPQFNum; // numerator of mPQF
-  private int mPQFDen; // denominator of mPQF
-  private int mN; // for skipping if mPQF != "-1/1"
+  protected Q mPqfCalc; // power of leading q factor computed from the sum of qi * ei
+  protected Q mPqfSpec; // specified pqf = mPqfParm
+  private int mSqueezeIndex; // for squeezing out zeros if mPqfParm != -mPqfCalc
+  private int mSqueeze; // (number of zeros to be squeezed out) - 1; take every mSqueeze'th term if > 1
 
   /**
    * Construct an eta product sequence from String parameters.
    * @param offset first valid term has this index
    * @param epsig list of pairs (q, e) as a String of the form "[q0,e0;q1,e1;q2,e2]".
-   * @param preTerms list of initial terms
-   * @param pqf power of leading q factor
    */
-  public EtaProductSequence(final int offset, final String epsig, final String pqf, final long... preTerms) {
+  public EtaProductSequence(final int offset, final String epsig) {
+    this(offset, epsig, "-1/1");
+  }
+
+  /**
+   * Construct an eta product sequence from String parameters.
+   * @param offset first valid term has this index
+   * @param epsig list of pairs (q, e) as a String of the form "[q0,e0;q1,e1;q2,e2]".
+   * @param pqf leading power of q factor
+   */
+  public EtaProductSequence(final int offset, final String epsig, final String pqf) {
     super(offset);
     mIsConfigured = false;
     mEPSig = epsig;
-    mPreTerms = ZUtils.toZ(preTerms);
-    mPQF = pqf;
-    mN = -1;
-  }
-
-  /**
-   * Construct an eta product sequence from String parameters.
-   * @param offset first valid term has this index
-   * @param epsig list of pairs (q, e) as a String of the form "[q0,e0;q1,e1;q2,e2]".
-   * @param preTerms list of initial terms
-   */
-  public EtaProductSequence(final int offset, final String epsig, final long... preTerms) {
-    this(offset, epsig, "-1/1", preTerms);
-  }
-
-  /**
-   * Construct an eta product sequence from String parameters.
-   * @param offset first valid term has this index
-   * @param epsig list of pairs (q, e) as a String of the form "[q0,e0;q1,e1;q2,e2]".
-   * @param pqf power of leading q factor
-   */
-  public EtaProductSequence(final int offset, final String epsig, final String pqf) {
-    this(offset, epsig, pqf, new long[] { 1 });
-  }
-
-  /**
-   * Construct an eta product sequence from String parameters.
-   * @param offset first valid term has this index
-   * @param epsig a list of pairs (q, e) as a String of the form "[q0,e0;q1,e1;q2,e2]".
-   */
-  public EtaProductSequence(final int offset, final String epsig) {
-    this(offset, epsig, "-1/1", new long[] { 1 });
-  }
-
-  /**
-   * Construct an eta product sequence from String parameters.
-   * @param offset first valid term has this index
-   * @param epsig a list of pairs (q, e) as a String of the form "[q0,e0;q1,e1;q2,e2]".
-   * @param preTerms list of initial terms as String
-   * @param pqf pqf of leading q factor
-   */
-  public EtaProductSequence(final int offset, final String epsig, final String pqf, final String preTerms) {
-    this(offset, epsig, pqf, LongUtils.toLong(preTerms));
+    int pqfNum = -1; // defaults
+    int pqfDen = 1;
+    int slashPos = pqf.indexOf('/');
+    try {
+      pqfNum = Integer.parseInt(slashPos < 0 ? pqf : pqf.substring(0, slashPos));
+      pqfDen = slashPos < 0 ? 1 : Integer.parseInt(pqf.substring(slashPos + 1));
+    } catch (final NumberFormatException exc) { 
+      // take default 1
+    }
+    mPqfSpec = new Q(pqfNum, pqfDen);
   }
 
   /**
    * Configure the class by computing the period for the Euler transform.
    */
   protected void configure() {
-    mPQFNum = -1; // defaults
-    mPQFDen = 1;
-    try {
-      mPQFNum = Integer.parseInt(mPQF.substring(0, mPQF.indexOf('/')));
-      mPQFDen = Integer.parseInt(mPQF.substring(mPQF.indexOf('/') + 1));
-    } catch (final NumberFormatException exc) { // take default 1
-    }
     final String[] pairs = mEPSig.replaceAll("[\\[\\]]", "").split("[\\;\\/\\|]"); // pair separator may be ";", "/" or "|"
     final int noPairs = pairs.length;
     mQpowers = new int[noPairs];
@@ -120,12 +88,33 @@ public class EtaProductSequence extends AbstractSequence {
         mPeriod[j - 1] += -mEpowers[ip]; // eta = period[-1]
       }
     }
-    Z pqf = Z.ZERO;
+    Z innerProd = Z.ZERO;
     for (int ip = 0; ip < noPairs; ++ip) {
-      pqf = pqf.add(Z.valueOf(mQpowers[ip]).multiply(mEpowers[ip]));
+      innerProd = innerProd.add(Z.valueOf(mQpowers[ip]).multiply(mEpowers[ip]));
     }
-    final int shift = pqf.divide(24).intValue() - (getOffset() - (-1)) + 1;
-    final int numer = pqf.mod(Z.valueOf(24)).intValue();
+    int shift = innerProd.divide(24).intValue() - (getOffset() - (-1)) + 1;
+    final int numer = innerProd.mod(Z.valueOf(24)).intValue();
+    mPqfCalc = new Q(innerProd, Z.valueOf(-24));
+    if (mPqfSpec.equals(mPqfCalc)) {
+      mSqueeze = 1;
+    } else {
+      mSqueeze =  mPqfCalc.divide(mPqfSpec).num().intValue();
+      if (mSqueeze <= 0) {
+        mSqueeze = 1;
+      }
+    }
+    mSqueezeIndex = mSqueeze - 2;
+    if (shift < 0) {
+        if (sDebug >= 1) {
+          System.err.println("# shift was negative: " + shift);
+        }
+        shift = 0;
+    }
+    if (sDebug >= 1) {
+      System.err.println("# pqs specified: " + mPqfSpec + ", calculated: " + mPqfCalc 
+          + ", innerProd=" + innerProd + ", shift=" + shift + ", offset=" + getOffset() 
+          + ", mSqueeze=" + mSqueeze + ", mSqueezeIndex=" + mSqueezeIndex);
+    }
     mPreTerms = new Z[shift + 1];
     int ipre = mPreTerms.length;
     mPreTerms[--ipre] = Z.ONE;
@@ -149,6 +138,9 @@ public class EtaProductSequence extends AbstractSequence {
    * @return a String of the form "[k0,m0;k1,m1;...]"
    */
   public String getEPSig() {
+    if (!mIsConfigured) {
+      configure();
+    }
     return mEPSig;
   }
 
@@ -182,11 +174,11 @@ public class EtaProductSequence extends AbstractSequence {
   }
 
   /**
-   * Get the leading power of q factor
+   * Get the specified leading power of q factor
    * @return a string of the form "n/d"
    */
-  public String getPQF() {
-    return mPQF;
+  public String getPqfSpec() {
+    return mPqfSpec.toString();
   }
 
   /**
@@ -198,9 +190,9 @@ public class EtaProductSequence extends AbstractSequence {
       configure();
     }
     while (true) {
-      ++mN;
+      ++mSqueezeIndex;
       final Z result = mET.next();
-      if (mN % mPQFDen == 0) {
+      if (mSqueezeIndex % mSqueeze == 0) {
         return result;
       }
     }
@@ -217,9 +209,8 @@ public class EtaProductSequence extends AbstractSequence {
    * </ul>
    */
   public static void main(final String[] args) {
-    sDebug = 0;
+    int debug = 0;
     String epsig = "[1,5;5,-5]"; // A285932
-    String initString = "1";
     String pqf = "-1/1";
     int noTerms = 32;
     int iarg = 0;
@@ -227,10 +218,7 @@ public class EtaProductSequence extends AbstractSequence {
       final String opt = args[iarg++];
       try {
         if (opt.equals("-d")) {
-          sDebug = 1;
-          sDebug = Integer.parseInt(args[iarg++]);
-        } else if (opt.equals("-i")) {
-          initString = args[iarg++].replaceAll("\\s", ""); // remove whitespace
+          debug = Integer.parseInt(args[iarg++]);
         } else if (opt.equals("-n")) {
           noTerms = Integer.parseInt(args[iarg++]);
         } else if (opt.equals("-p")) {
@@ -243,12 +231,13 @@ public class EtaProductSequence extends AbstractSequence {
       } catch (final NumberFormatException exc) { // take default
       }
     } // while args
-    final EtaProductSequence eps = new EtaProductSequence(0, epsig, pqf, initString);
-    final String preTerms = eps.getPreTerms();
-    System.out.println("PreTerms=" + preTerms);
+    final EtaProductSequence eps = new EtaProductSequence(0, epsig, pqf);
+    eps.setDebug(debug);
+    System.out.println("PreTerms=" + eps.getPreTerms());
+    System.out.println("pqs specified: " + eps.getPqfSpec() + ", calculated: " + eps.mPqfCalc);
     final long[] period = eps.getPeriod();
     final int plen = period.length > 0x100 ? 0x100 : period.length; // show the first 256 only
-    System.out.print("period of length " + period.length + ":\n[");
+    System.out.print("period of length " + period.length + ": [");
     for (int i = 0; i < plen; ++i) {
       if (i > 0) {
         System.out.print(",");

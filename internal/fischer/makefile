@@ -117,7 +117,7 @@ INIT="1"
 #--
 eps: epstest # 
 epstest:
-	$(JAVA) irvine.oeis.transform.EtaProductSequence -p "$(P)" -i $(INIT) -q $(Q) -n $(NT)
+	$(JAVA) irvine.oeis.transform.EtaProductSequence  -d $(D) -n $(NT) -p "$(P)" -q $(Q) 
 ettest:
 	cat et.data.txt  | $(JAVA) irvine.oeis.transform.EulerTransform 
 iettest:
@@ -2556,11 +2556,17 @@ etper4:
 	wc -l    $@.tmp
 #--------
 etaprod: # EtaProductSequence
-	# perl $(COMMON)/../eta/martin.a030203.pl \
-	# perl $(COMMON)/../eta/moy.pl \
-	# perl $(COMMON)/../eta/acres_broadhurst.pl 
-	# perl $(COMMON)/../eta/williams2.pl | grep -v A999999 \
 	cat $(COMMON)/../eta/etaprod.gen \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+etalists: # lists from the literature
+	# perl $(COMMON)/../eta/acres.pl 
+	# perl $(COMMON)/../eta/martin.pl 
+	# perl $(COMMON)/../eta/moy.pl 
+	# perl $(COMMON)/../eta/williams2.pl 
+	cat $(COMMON)/../eta/etalists.lst \
+	| grep -v A999999 | sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

@@ -13,7 +13,7 @@ public class $(ASEQNO) extends EtaProductSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), "$(PARM1)");
+    super($(OFFSET), "$(PARM1)", "$(PARM2)");
   }
   
   @Override
