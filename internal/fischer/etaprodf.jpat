@@ -13,7 +13,11 @@ public class $(ASEQNO) extends EtaProductSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), "$(PARM1)", "$(PARM2)"$(PARM3));
-    setFactor($(PARM4));
+    super($(OFFSET), "$(PARM1)");
+  }
+  
+  @Override
+  public Z next() {
+    return super.next().multiply(Z.valueOf($(PARM4)));
   }
 }

@@ -616,7 +616,7 @@ anabuild: # .2022-12-31:
 	cp -pv hold/*.java manual || :
 	make CC=man        man
 	make CC=$@ dist testall pack 
-ake CC=A093211 man dist testall pack
+	make CC=A093211 man dist testall pack
 future:
 	grep -P "power of \d+ dividing n\!\." jcat25.txt
 A136test:
