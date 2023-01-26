@@ -23,10 +23,10 @@ public class EtaProductSequence extends AbstractSequence {
   private boolean mIsConfigured; // whether the period for the EulerTransform has already been computed
   private final String mEPSig; // a list of pairs (k=exponent of q, m=exponent of eta(q^k)) as a String of the form "[k0,m0;k1,m1;...]".
   private long[] mPeriod; // expanded list of numbers used for the Euler transform
-  private int[] mQpowers; // powers of q
-  private int[] mEpowers; // powers of the eta functions
-  protected Q mPqfSpec; // specified pqf = mPqfParm
-  protected Q mPqfCalc; // power of leading q factor computed from the sum of qi * ei
+  protected int[] mQpowers; // powers of q
+  protected int[] mEpowers; // powers of the eta functions
+  private Q mPqfSpec; // specified pqf = mPqfParm
+  private Q mPqfCalc; // power of leading q factor computed from the sum of qi * ei
   private int mSqueezeIndex; // for squeezing out zeros if mPqfParm != -mPqfCalc
   private int mSqueeze; // (number of zeros to be squeezed out) - 1; take every mSqueeze'th term if > 1
 
@@ -99,24 +99,18 @@ public class EtaProductSequence extends AbstractSequence {
       innerProd += mQpowers[ip] * mEpowers[ip];
     }
     mPqfCalc = new Q(innerProd, 24);
-
+    int shift = 0;
     mSqueeze = 1;
-    int shift = mPqfCalc.floor().intValue() - (getOffset() - (-1)) + 1;
-    if (shift < 0) {
-      shift = 0;
-    }
-    if (mPqfSpec == null) { // no pqf specified - assume no shift and no squeeze
-      mSqueeze = 1;
-    } else if (mPqfSpec.den().equals(mPqfCalc.den())) { // same denominator: believe the shifting, suppress the squeeze
-    } else { // believe both shift and squeeze
+    if (mPqfSpec != null) { // believe specified shift and squeeze
+      shift = mPqfSpec.add(mPqfCalc).floor().intValue() - (getOffset() - (-1)) + 1;
       mSqueeze =  mPqfCalc.den().divide(mPqfSpec.den()).intValue();
     }
     mSqueezeIndex = mSqueeze - 2;
     if (shift < 0) {
-        if (sDebug >= 1) {
-          System.err.println("# shift was negative: " + shift);
-        }
-        shift = 0;
+      if (sDebug >= 1) {
+        System.err.println("# shift was negative: " + shift);
+      }
+      shift = 0;
     }
     if (sDebug >= 1) {
       System.err.println("# pqs specified: " + mPqfSpec + ", calculated: " + mPqfCalc 
@@ -143,13 +137,22 @@ public class EtaProductSequence extends AbstractSequence {
 
   /**
    * Get the eta product signature.
-   * @return a String of the form "[k0,m0;k1,m1;...]"
+   * @return a String of the form ""[q0,e0;q1,e1;q2,e2]""
    */
   public String getEPSig() {
     if (!mIsConfigured) {
       configure();
     }
-    return mEPSig;
+    final StringBuilder sb = new StringBuilder();
+    for (int ip = 0; ip < mQpowers.length; ++ip) {
+      sb.append(';');
+      sb.append(mQpowers[ip]);
+      sb.append(',');
+      sb.append(mEpowers[ip]);
+    }
+    sb.append(']');
+    sb.setCharAt(0, '[');
+    return sb.toString();
   }
 
   /**
@@ -244,7 +247,7 @@ public class EtaProductSequence extends AbstractSequence {
     } // while args
     final EtaProductSequence eps = new EtaProductSequence(0, epsig, pqf);
     eps.setDebug(debug);
-    System.out.println("PreTerms=" + eps.getPreTerms());
+    System.out.println("EPSIG=" + eps.getEPSig() + ", PreTerms=" + eps.getPreTerms());
     System.out.println("pqs specified: " + eps.getPqfSpec() + ", calculated: " + eps.mPqfCalc);
     final long[] period = eps.getPeriod();
     final int plen = period.length > 0x100 ? 0x100 : period.length; // show the first 256 only
