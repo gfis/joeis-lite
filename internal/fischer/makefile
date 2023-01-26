@@ -24,6 +24,7 @@ COMMON=$(GITS)/OEIS-mat/common
 CONSTANT=$(GITS)/OEIS-mat/constant
 CONTRIB=$(GITS)/OEIS-mat/contrib
 COORS=$(GITS)/OEIS-mat/coors
+ETA=$(GITS)/OEIS-mat/eta
 HOLREC=$(GITS)/OEIS-mat/holrec
 LINREC=$(GITS)/OEIS-mat/linrec
 PL=$(CONTRIB)/pl
@@ -294,6 +295,8 @@ REMOTE=dummy
 ccall: select clean purge gener dist test pack # parameter: CC
 #----
 NOT=NOT
+selexx:
+	make select CC=$(CC) EX=xx
 select: select1 select2 select3 # parameter: CC
 select1:
 	# ---- $@ CC=$(CC)
@@ -2556,16 +2559,16 @@ etper4:
 	wc -l    $@.tmp
 #--------
 etaprod: # EtaProductSequence
-	cat $(COMMON)/../eta/etaprod.gen \
+	cat $(ETA)/etaprod.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 etalists: # lists from the literature
-	# perl $(COMMON)/../eta/acres.pl 
-	# perl $(COMMON)/../eta/martin.pl 
-	# perl $(COMMON)/../eta/moy.pl 
-	# perl $(COMMON)/../eta/williams2.pl 
-	cat $(COMMON)/../eta/etalists.lst \
+	# perl $(ETA)/acres.pl 
+	# perl $(ETA)/martin.pl 
+	# perl $(ETA)/moy.pl 
+	# perl $(ETA)/williams2.pl 
+	cat $(ETA)/etalists.lst \
 	| grep -v A999999 | sort | uniq -w7 \
 	>        $@.gen
 	head -n4 $@.gen
@@ -4979,8 +4982,15 @@ nisolut_eval:
 nisoman:
 	cp -v nisolut.man $@.gen
 theta3_epsig:
-	perl theta3_epsig.pl -d 0 gramdiag.man \
-	| perl ../../../OEIS-mat/eta/norm_epsig.pl -d 0 \
+	cat gramdiag.man \
+	| perl $(ETA)/theta3_epsig.pl -d 0 \
+	| perl $(ETA)/norm_epsig.pl -d 0 \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+psipsik_epsig:
+	  perl $(ETA)/psipsik_epsig.pl -d 0 \
+	| perl $(ETA)/norm_epsig.pl -d 0 \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
@@ -6064,15 +6074,15 @@ etlin0:
 	wc -l    $@.tmp
 #--------
 etpsymm:
-	cd $(COMMON)/../eta ; make ecalc
-	grep -E "p" $(COMMON)/../eta/ecalc.tmp \
+	cd $(ETA) ; make ecalc
+	grep -E "p" $(ETA)/ecalc.tmp \
 	| grep -vE "etproot" \
 	| grep -vE "^A999999" \
 	| grep -vE "unknown" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-	make seq2 LIST=$(COMMON)/../eta/ein1sk.tmp
+	make seq2 LIST=$(ETA)/ein1sk.tmp
 etpsymm_eval: batch
 	$(DBAT) -x "SELECT s4.aseqno, s4.callcode, s4.offset1, s4.parm1, s3.info, s4.parm4, s4.parm5, s4.parm6 FROM seq4 s4, seq3 s3 \
 	  WHERE s3.aseqno = s4.aseqno \

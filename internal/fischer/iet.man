@@ -1,0 +1,81 @@
+A061256	Euler transform of sigma(n), cf. A000203.
+A065417	Inverse Euler transform of A078012. (The inverse of 1-1/(p^3-p^2) is p^2(p-1)/(p^3-p^2-1) = 1-1/(1+p^2-p^3). Setting 1/p=x gives (1-x)/(1-x-x^3), the g.f. of A078012.) - _R. J. Mathar_, Jul 26 2010
+A065492	Inverse Euler transform of A077925 shifted by two places: 1, 0, 1, -1, 3, -5,... [From _R. J. Mathar_, Jul 26 2010]
+A094448	Inverse Euler transform of A000679.
+A095993	Inverse Euler transform of the ordered Bell numbers A000670.
+A103563	Euler transform of the characteristic function of the even-subscripted Fibonacci numbers.
+A103577	Euler transform of 2 x the characteristic function of the Fibonacci numbers.
+A104460	Euler transform of powers of 3 [1, 3, 9, 27, 81, ...]. A000578
+A104500	Euler transform of 1, 3, 7, 18, 42, 104, 244, 585, 1373, ... = A034691.
+A104575	Euler transform of -A008965(n).
+A106407	Euler transform of sequence b(n) where b(2^k)=-2 and zero otherwise.
+A109509	Euler transform of the right-shifted Fibonacci numbers A000045.
+A110163	Negative of inverse Euler transform of [240, 2160, ...] A004009.
+A112354	Inverse Euler transform of n! A000142
+A112865	Euler transform of sequence b(n) where b(1) = 1, b(2^(2*k-1)) = -1, b(2^(2*k)) = 2 unless k=0, b(n) = 0 otherwise.
+A115593	Euler transform of b(n), where b(2n+1) = a(n) and b(2n) = 0.
+A116653	Inverse Euler transform of A029726.
+A119428	Euler transform of period 10 sequence: [1,1,0,0,-2,0,0,1,1,-2]; also,
+A137917	Euler transform of A001429. - _Geoffrey Critzer_, Oct 12 2012
+A137975	Inverse Euler transform of A052171.
+A138386	Euler transform of 2, 5, 13, 33, ... (A001429). - _Vladeta Jovovic_, Sep 17 2008
+A141312	Inverse Euler transform of A003480.
+A156303	Euler transform of Dedekind psi function, cf. A001615. - _Vladeta Jovovic_, Feb 12 2009
+A156733	Euler transform of n*A065958(n).
+A158952	Inverse Euler transform of the number of partitions in expanding space (A023881).
+A174118	Partial sum of Inverse Euler transform of A000112.
+A191970	Inverse Euler transform of A053419.
+A192323	Euler transform of a period 60 sequence.
+A198518	Euler transform of A001678(n + 1). - _Gus Wiseman_, Feb 03 2020
+A200544	Euler Transform of A000045 starting at index 2, i.e. EULER(1, 2, 3, 5, 8, 13, ...). - _Guy P. Srinivasan_, Nov 05 2013
+A200751	Euler transform of [ -1, -2, -4, -8, -16, ... ]. A154589
+A208546	Euler transform of a period 80 sequence.
+A226999	Inverse Euler transform of A005169 (fountains of coins).
+A260676	Euler transform of a period 60 sequence.
+A261031	Euler transform of Lucas numbers. A000032
+A261047	Euler transform of (n+1)!. A000142
+A281451	Euler transform of a period 36 sequence.
+A281452	Euler transform of a period 36 sequence.
+A281453	Euler transform of a period 36 sequence.
+A290277	Inverse Euler Transform of the Motzkin Numbers. A001006
+A290351	Euler transform of the Bell numbers (A000110).
+A290352	Euler transform of the Fubini numbers (ordered Bell numbers, A000670).
+A290356	The seventh Euler transform of the sequence with g.f. 1+x.
+A290357	The eighth Euler transform of the sequence with g.f. 1+x.
+A290358	The ninth Euler transform of the sequence with g.f. 1+x.
+A290359	The tenth Euler transform of the sequence with g.f. 1+x.
+A290750	Inverse Euler transform of [3, 13, 55, 233, 987, 4181, 17711, 75025, 317811, ...], Fibonacci(3*k+1). A000045
+A292518	Euler transform of {-1 if n is a triangular number else 0, n > 0} = -A010054. - _Gus Wiseman_, Oct 22 2018
+A300300	Euler transform of {Q(1), 0, Q(3), 0, Q(5), 0, ...} where Q = A000009.
+A304962	Euler transform of c(n) with g.f.: -x*(-2*x^2-x+2)/(-4*x^3+2*x^2+2*x-1). - _Simon Plouffe_, Jun 20 2018
+A305754	Inverse Euler transform of n^n A000312.
+A305757	Inverse Euler transform of q*(j-720) where j is j-function (A000521).
+A305786	Inverse Euler transform of (-1)^n * n!.
+A305787	Inverse Euler transform of (-n)^n A000312
+A305868	Inverse Euler transform of A001147.
+A305920	Inverse Euler transform of A008408.
+A308290	Inverse Euler transform of triangular numbers (A000217).
+A308291	Inverse Euler transform of tetrahedral numbers (A000292).
+A308297	Inverse Euler transform of A010052.
+A308447	Inverse Euler transform of A000225.
+A308448	Inverse Euler transform of A000129.
+A316149	Inverse Euler transform of Thue-Morse sequence A001285.
+A316152	Inverse Euler transform of n^2. A000290
+A320490	Inverse Euler transform of A004106.
+A320776	Inverse Euler transform of the number of prime factors (with multiplicity) function A001222.
+A320777	Inverse Euler transform of the number of distinct prime factors (without multiplicity) function A001221.
+A320778	Inverse Euler transform of the Euler totient function phi = A000010.
+A320779	Inverse Euler transform of the number of divisors function A000005.
+A320780	Inverse Euler transform of the sum-of-divisors or sigma function A000203.
+A320781	Inverse Euler transform of the Moebius function A008683.
+A320782	Inverse Euler transform of the unsigned Moebius function A008966.
+A320784	Negated inverse Euler transform of {-1 if n is a triangular number else 0, n > 0} = -A010054.
+A320785	Inverse Euler transform of the number of factorizations function A001055.
+A320786	Inverse Euler transform of {1,0,1,0,0,0,...}
+A323819	Inverse Euler transform of A055621.
+A334335	Inverse Euler transform of A000568.
+A347011	Euler transform of j-> ceiling(2^(j-2)).
+A349904	Inverse Euler transform of the tribonacci numbers A000073.
+A349977	Inverse Euler transform of the classical tribonacci numbers.
+A352609	Inverse Euler transform of odd primes.  A065091
+A353065	Euler transform of odd primes.  A065091

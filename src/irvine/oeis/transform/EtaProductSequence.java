@@ -12,6 +12,7 @@ import irvine.oeis.recur.PeriodicSequence;
 /**
  * This class implements a sequence that is derived from the coefficients
  * of a product of eta functions.
+ * 
  * @author Georg Fischer
  */
 public class EtaProductSequence extends AbstractSequence {
@@ -24,8 +25,8 @@ public class EtaProductSequence extends AbstractSequence {
   private long[] mPeriod; // expanded list of numbers used for the Euler transform
   private int[] mQpowers; // powers of q
   private int[] mEpowers; // powers of the eta functions
-  protected Q mPqfCalc; // power of leading q factor computed from the sum of qi * ei
   protected Q mPqfSpec; // specified pqf = mPqfParm
+  protected Q mPqfCalc; // power of leading q factor computed from the sum of qi * ei
   private int mSqueezeIndex; // for squeezing out zeros if mPqfParm != -mPqfCalc
   private int mSqueeze; // (number of zeros to be squeezed out) - 1; take every mSqueeze'th term if > 1
 
@@ -33,9 +34,14 @@ public class EtaProductSequence extends AbstractSequence {
    * Construct an eta product sequence from String parameters.
    * @param offset first valid term has this index
    * @param epsig list of pairs (q, e) as a String of the form "[q0,e0;q1,e1;q2,e2]".
+   * Since the leading power of q factor is not specified, it is asumed to be "-1/1", 
+   * that is there is no shifting or zero insertion.
    */
   public EtaProductSequence(final int offset, final String epsig) {
-    this(offset, epsig, "-1/1");
+    super(offset);
+    mIsConfigured = false;
+    mEPSig = epsig;
+    mPqfSpec = null;
   }
 
   /**
@@ -43,11 +49,11 @@ public class EtaProductSequence extends AbstractSequence {
    * @param offset first valid term has this index
    * @param epsig list of pairs (q, e) as a String of the form "[q0,e0;q1,e1;q2,e2]".
    * @param pqf leading power of q factor
+   * Since there is an explicit leading power of q factor, that may result 
+   * in a shift and/or insertion of zeros.
    */
   public EtaProductSequence(final int offset, final String epsig, final String pqf) {
-    super(offset);
-    mIsConfigured = false;
-    mEPSig = epsig;
+    this(offset, epsig);
     int pqfNum = -1; // defaults
     int pqfDen = 1;
     int slashPos = pqf.indexOf('/');
@@ -88,20 +94,22 @@ public class EtaProductSequence extends AbstractSequence {
         mPeriod[j - 1] += -mEpowers[ip]; // eta = period[-1]
       }
     }
-    Z innerProd = Z.ZERO;
+    int innerProd = 0;
     for (int ip = 0; ip < noPairs; ++ip) {
-      innerProd = innerProd.add(Z.valueOf(mQpowers[ip]).multiply(mEpowers[ip]));
+      innerProd += mQpowers[ip] * mEpowers[ip];
     }
-    int shift = innerProd.divide(24).intValue() - (getOffset() - (-1)) + 1;
-    final int numer = innerProd.mod(Z.valueOf(24)).intValue();
-    mPqfCalc = new Q(innerProd, Z.valueOf(-24));
-    if (mPqfSpec.equals(mPqfCalc)) {
+    mPqfCalc = new Q(innerProd, 24);
+
+    mSqueeze = 1;
+    int shift = mPqfCalc.floor().intValue() - (getOffset() - (-1)) + 1;
+    if (shift < 0) {
+      shift = 0;
+    }
+    if (mPqfSpec == null) { // no pqf specified - assume no shift and no squeeze
       mSqueeze = 1;
-    } else {
-      mSqueeze =  mPqfCalc.divide(mPqfSpec).num().intValue();
-      if (mSqueeze <= 0) {
-        mSqueeze = 1;
-      }
+    } else if (mPqfSpec.den().equals(mPqfCalc.den())) { // same denominator: believe the shifting, suppress the squeeze
+    } else { // believe both shift and squeeze
+      mSqueeze =  mPqfCalc.den().divide(mPqfSpec.den()).intValue();
     }
     mSqueezeIndex = mSqueeze - 2;
     if (shift < 0) {
@@ -212,6 +220,7 @@ public class EtaProductSequence extends AbstractSequence {
     int debug = 0;
     String epsig = "[1,5;5,-5]"; // A285932
     String pqf = "-1/1";
+    int factor = 1;
     int noTerms = 32;
     int iarg = 0;
     while (iarg < args.length) { // consume all arguments
@@ -219,6 +228,8 @@ public class EtaProductSequence extends AbstractSequence {
       try {
         if (opt.equals("-d")) {
           debug = Integer.parseInt(args[iarg++]);
+        } else if (opt.equals("-f")) {
+          factor  = Integer.parseInt(args[iarg++]);
         } else if (opt.equals("-n")) {
           noTerms = Integer.parseInt(args[iarg++]);
         } else if (opt.equals("-p")) {
@@ -252,7 +263,7 @@ public class EtaProductSequence extends AbstractSequence {
       if (iterm > 0) {
         System.out.print(",");
       }
-      System.out.print(eps.next());
+      System.out.print(eps.next().multiply(factor));
     } // for iterm
     System.out.println();
   } // main
