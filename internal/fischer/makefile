@@ -5862,6 +5862,15 @@ eulerxm:
 	grep -E "^A[0-9]" eulerx.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+etman:
+	grep -P "\tEuler" iet.man \
+	| perl -ne 'use strict; my $$line = $$_; '\
+	' if ($$line =~ s{\A(A\d+)}{}) { my $$aseqno = $$1; my $$rseqno = "A000045"; '\
+	' if ($$line =~ m{\b(A\d+)}  ) {    $$rseqno = $$1; }'\
+	' print join("\t", $$aseqno, "etman", 0, $$rseqno) . "\n"; }' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------
 euguess_all: euguess0 euguess1 euguess2 euguess_check
 euguess0: # aseqno, cc, ofs, keyw, data

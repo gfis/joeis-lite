@@ -1,14 +1,13 @@
-A061256	Euler transform of sigma(n), cf. A000203.
 A065417	Inverse Euler transform of A078012. (The inverse of 1-1/(p^3-p^2) is p^2(p-1)/(p^3-p^2-1) = 1-1/(1+p^2-p^3). Setting 1/p=x gives (1-x)/(1-x-x^3), the g.f. of A078012.) - _R. J. Mathar_, Jul 26 2010
 A065492	Inverse Euler transform of A077925 shifted by two places: 1, 0, 1, -1, 3, -5,... [From _R. J. Mathar_, Jul 26 2010]
 A094448	Inverse Euler transform of A000679.
 A095993	Inverse Euler transform of the ordered Bell numbers A000670.
-A103563	Euler transform of the characteristic function of the even-subscripted Fibonacci numbers.
-A103577	Euler transform of 2 x the characteristic function of the Fibonacci numbers.
-A104460	Euler transform of powers of 3 [1, 3, 9, 27, 81, ...]. A000578
+A103563	Euler transform of the characteristic function of the even-subscripted Fibonacci numbers. A001906
+A103577	Euler transform of 2 x the characteristic function of the Fibonacci numbers. A000045
+A104460	Euler transform of powers of 3 [1, 3, 9, 27, 81, ...]. A000244
 A104500	Euler transform of 1, 3, 7, 18, 42, 104, 244, 585, 1373, ... = A034691.
 A104575	Euler transform of -A008965(n).
-A106407	Euler transform of sequence b(n) where b(2^k)=-2 and zero otherwise.
+A106407	Euler transform of sequence b(n) where b(2^k)=-2 and zero otherwise. A209229
 A109509	Euler transform of the right-shifted Fibonacci numbers A000045.
 A110163	Negative of inverse Euler transform of [240, 2160, ...] A004009.
 A112354	Inverse Euler transform of n! A000142
@@ -25,9 +24,8 @@ A156733	Euler transform of n*A065958(n).
 A158952	Inverse Euler transform of the number of partitions in expanding space (A023881).
 A174118	Partial sum of Inverse Euler transform of A000112.
 A191970	Inverse Euler transform of A053419.
-A192323	Euler transform of a period 60 sequence.
 A198518	Euler transform of A001678(n + 1). - _Gus Wiseman_, Feb 03 2020
-A200544	Euler Transform of A000045 starting at index 2, i.e. EULER(1, 2, 3, 5, 8, 13, ...). - _Guy P. Srinivasan_, Nov 05 2013
+A200544	Euler Transform of A000045 starting at index 2, i.e. EULER(1, 2, 3, 5, 8, 13, ...). A000045
 A200751	Euler transform of [ -1, -2, -4, -8, -16, ... ]. A154589
 A208546	Euler transform of a period 80 sequence.
 A226999	Inverse Euler transform of A005169 (fountains of coins).
