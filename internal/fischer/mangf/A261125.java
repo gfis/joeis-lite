@@ -2,17 +2,16 @@ package irvine.oeis.a261;
 
 import irvine.math.factorial.MemoryFactorial;
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.Sequence0;
+
 /**
  * A261125 a(n) = (2^(n-1))!*a(n-1), a(1)=1.
  * @author Georg Fischer
  */
-public class A261125 implements Sequence {
+public class A261125 extends Sequence0 {
 
   private int mN;
   private Z mA;
-  private static final MemoryFactorial FACTORIAL = new MemoryFactorial();
-  
 
   /** Construct the sequence. */
   public A261125() {
@@ -26,7 +25,7 @@ public class A261125 implements Sequence {
     if (mN == 1) {
       return Z.ONE;
     }
-    mA = mA.multiply(FACTORIAL.factorial(Z.ONE.shiftLeft(mN - 1).intValue()));
+    mA = mA.multiply(MemoryFactorial.SINGLETON.factorial(Z.ONE.shiftLeft(mN - 1)));
     return mA;
   }
 }
