@@ -5183,6 +5183,11 @@ poffet:
 	| perl patch_offset.pl -d 1 \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8
+poffiet:
+	grep -P "InverseEulerTransform" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
 poffcor:
 	grep -E "ConstantOrderRecurrence" offinspect2.txt \
 	| perl patch_offset.pl -d 1 \
@@ -5863,11 +5868,21 @@ eulerxm:
 	head -n4 $@.gen
 	wc -l    $@.gen
 etman:
-	grep -P "\tEuler" iet.man \
+	grep -P "\tEuler"        iet.man \
 	| perl -ne 'use strict; my $$line = $$_; '\
 	' if ($$line =~ s{\A(A\d+)}{}) { my $$aseqno = $$1; my $$rseqno = "A000045"; '\
 	' if ($$line =~ m{\b(A\d+)}  ) {    $$rseqno = $$1; }'\
-	' print join("\t", $$aseqno, "etman", 0, $$rseqno) . "\n"; }' \
+	' print join("\t", $$aseqno, "$@", 0, $$rseqno) . "\n"; }' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+ietman:
+	grep -P "\tInverse Euler" iet.man \
+	| perl -ne 'use strict; my $$line = $$_; '\
+	' if ($$line =~ s{\A(A\d+)}{}) { my $$aseqno = $$1; my $$rseqno = "A000045"; '\
+	' if ($$line =~ m{\b(A\d+)}  ) {    $$rseqno = $$1; }'\
+	' print join("\t", $$aseqno, "$@", 0, $$rseqno) . "\n"; }' \
+	| grep -vE "A000679|A029726|A094448|A116653" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
