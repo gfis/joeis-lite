@@ -1,6 +1,6 @@
 package irvine.oeis.a005;
 
-import irvine.oeis.InverseEulerTransform;
+import irvine.oeis.transform.InverseEulerTransform;
 import irvine.oeis.a129.A129427;
 
 /**
@@ -11,7 +11,7 @@ public class A005967 extends InverseEulerTransform {
 
   /** Construct the sequence. */
   public A005967() {
-    super(new A129427(), 1);
+    super(1, new A129427(), 1);
     next();
   }
 }

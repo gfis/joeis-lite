@@ -1,6 +1,6 @@
 package irvine.oeis.a002;
 
-import irvine.oeis.InverseEulerTransform;
+import irvine.oeis.transform.InverseEulerTransform;
 
 /**
  * A002877 Number of connected weighted linear spaces of total weight n.
@@ -10,7 +10,7 @@ public class A002877 extends InverseEulerTransform {
 
   /** Construct the sequence. */
   public A002877() {
-    super(new A002876(), 0);
+    super(1, new A002876(), 0);
     next();
   }
 }
