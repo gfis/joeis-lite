@@ -1,63 +1,83 @@
-
-# A186688		Semiprimes of the form n^4 + 1.A293761	parm4	1	A293761	0	0	CR.SQRT2	Numbers k such that (d(k), d(k+1)) = (0,0) in the base-2 digits d(i) of sqrt(2).	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A064437	parmof4	1	A064437	1	+3	+2	a(1)=1, a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-1)+2 otherwise.
-A079352	parmof4	1	A064437	1	17	17	a(1)=1,          a(n)=3*a(n-1) if n is already in the sequence, a(n)=2*a(n-1) otherwise.
-A079355	parmof4	1	A064437	1	-3	+4	a(1)=1; a(n)=a(n-1)-3 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
-A079357	parmof4	1	A064437	1	-1	+4	a(1)=1; a(n)=a(n-1)-1 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
-A079406	parmof4	1	A064437	1	17	17	a(1)=1, a(n)=a(n-1)-n if n is already in the sequence, a(n)=a(n-1)+n otherwise.
-A080037	parmof4	0	A064437	2	+1	+2	a(0)=2, a(1)=4;  a(n)=a(n-1)+1 if n is already in the sequence, a(n)=a(n-1)+2 otherwise. [corrected by _Jon E. Schoenfield_, Jun 24 2018]
-A080199	parmof4	1	A064437	1	-3	+6	a(1)=1; a(n)=a(n-1)-3 if n is already in the sequence, a(n)=a(n-1)+6 otherwise.
-A080353	parmof4	1	A064437	5	+1	+2	a(1)=5; a(n)=a(n-1)+1 if n is already in the sequence, a(n)=a(n-1)+2 otherwise.
-A080578	parmof4	1	A064437	1	+1	+3	a(1)=1; a(n)=a(n-1)+1 if n is already in the sequence, a(n)=a(n-1)+3 otherwise.
-A080579	parmof4	1	A064437	1	+1	+4	a(1)=1; a(n)=a(n-1)+1 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
-A080590	parmof4	1	A064437	1	+3	+4	a(1)=1; a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
-A080667	parmof4	1	A064437	3	+4	+3	a(1)=3; a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+3 otherwise.
-A080783	parmof4	1	A064437	1	-1	+5	a(1)=1, a(n)=a(n-1)-1 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
-A080900	parmof4	1	A064437	1	-2	+5	a(1)=1; a(n)=a(n-1)-2 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
-A080901	parmof4	1	A064437	2	-2	+5	a(1)=2; a(n)=a(n-1)-2 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
-A080903	parmof4	1	A064437	1	+4	+2	a(1)=1; a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+2 otherwise.
-A080904	parmof4	1	A064437	1	-4	+5	a(1)=1; a(n)=a(n-1)-4 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
-A080939	parmof4	1	A064437	3	-2	+5	a(1)=3; a(n)=a(n-1)-2 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
-A080949	parmof4	1	A064437	0	-2	+5	a(1)=0; a(n)=a(n-1)-2 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
-A081746	parmof4	1	A064437	1	-3	+5	a(1)=1; a(n)=a(n-1)-3 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
-A081834	parmof4	1	A064437	1	+4	+3	a(1)=1, a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+3 otherwise.
-A081835	parmof4	1	A064437	1	+5	+4	a(1)=1, a(n)=a(n-1)+5 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
-A081839	parmof4	1	A064437	0	+4	+5	a(1)=0, a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+5 otherwise.
-A081840	parmof4	1	A064437	0	+3	+4	a(1)=0, a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
-A081841	parmof4	1	A064437	0	+3	+2	a(1)=0, a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-1)+2 otherwise.
-A081842	parmof4	1	A064437	0	+4	+3	a(1)=0, a(n)=a(n-1)+4 if n is already in the sequence, a(n)=a(n-1)+3 otherwise.
-A081843	parmof4	1	A064437	0	+5	+4	a(1)=0, a(n)=a(n-1)+5 if n is already in the sequence, a(n)=a(n-1)+4 otherwise.
-A096173	parm2	1	A096173	3	Numbers k such that k^3+1 is an odd semiprime.
-A103854	parm2	1	A104238	6	Positive integers n such that n^6  + 1 is semiprime.     easy,nonn,changed,      1..1134 nyi     _Jonathan Vos Post_, Mar 31 2005
-A104238	parm2	1	A104238	5	Positive integers n such that n^5  + 1 is semiprime.     easy,nonn,changed,      1..1414 nyi     _Jonathan Vos Post_, Apr 02 2005
-A104335	parm2	1	A104238	14	Positive integers n such that n^14 + 1 is semiprime (A001538).  easy,nonn,      1..1114 nyi     _Jonathan Vos Post_, Apr 17 2005
-A104479	parm2	1	A096173	16	Positive integers n such that n^16 + 1 is semiprime (A001358).  easy,nonn,      1..102  nyi     _Jonathan Vos Post_, Apr 18 2005
-A104494	parm2	1	A104238	17	Positive integers n such that n^17 + 1 is semiprime (A001358).  easy,nonn,      1..1000 nyi     _Jonathan Vos Post_, Apr 19 2005
-A104657	parm2	1	A104238	19	Positive integers n such that n^19 + 1 is semiprime (A001358).  easy,nonn,changed,      1..1000 nyi     _Jonathan Vos Post_, Apr 21 2005
-A105041	parm2	1	A104238	7	Positive integers k such that k^7 + 1 is semiprime.
-A105066	parm2	1	A096173	8	Positive integers n such that n^8  + 1 is semiprime.     easy,nonn,      1..1000 nyi     _Jonathan Vos Post_, Apr 05 2005
-A105078	parm2	1	A104238	10	Positive integers n such that n^10 + 1 is semiprime.    easy,nonn,      1..1105 nyi     _Jonathan Vos Post_, Apr 06 2005
-A105122	parm2	1	A104238	11	Positive integers n such that n^11 + 1 is semiprime.    easy,nonn,      1..4303 nyi     _Jonathan Vos Post_, Apr 08 2005
-A105142	parm2	1	A104238	12	Positive integers n such that n^12 + 1 is semiprime.    easy,nonn,      1..1515 nyi     _Jonathan Vos Post_, Apr 09 2005
-A105237	parm2	1	A104238	13	Positive integers n such that n^13 + 1 is semiprime.    easy,nonn,      1..1036 nyi     _Jonathan Vos Post_, Apr 12 2005
-A105282	parm2	1	A104238	20	Positive integers n such that n^20 + 1 is semiprime (A001358).  easy,nonn,      1..1405 nyi     _Jonathan Vos Post_, Apr 25 2005
-A105934	parm2	1	A104238	22	Positive integers n such that n^22 + 1 is semiprime (A001358).  easy,nonn,synth 1..10   nyi     _Jonathan Vos Post_, Apr 26 2005
-A111201	parmof4	1	A064437	1	+17	+17	a(1)=1 then      a(n)=a(n-1)+n if n is already in the sequence, a(n)=a(n-1)+n+1 otherwise.
-A111202	parmof4	1	A064437	2	+3	+1	a(1)=2, a(n)=a(n-1)+3 if n is already in the sequence, a(n)=a(n-2)+1 otherwise.
-A126091	parmof4	1	A064437	1	+3	+1	a(1)=1;a(2)=4;   a(n)=a(n-2)+3 if n is already in the sequence, a(n)=a(n-2)+1 otherwise.
-A186689	parm2	1	A096173	4	Numbers n such that n^4 + 1 is a semiprime.
-A293762	parm4	1	A293761	0	1	CR.SQRT2	Numbers k such that (d(k), d(k+1)) = (0,1) in the base-2 digits d(i) of sqrt(2).	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293763	parm4	1	A293761	1	0	CR.SQRT2	Numbers k such that (d(k), d(k+1)) = (1,0) in the base-2 digits d(i) of sqrt(2).	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293764	parm4	1	A293761	1	1	CR.SQRT2	Numbers k such that (d(k), d(k+1)) = (1,1) in the base-2 digits d(i) of sqrt(2).	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293787	parm4	1	A293761	0	0	CR.THREE.sqrt()	Numbers k such that (d(k), d(k+1)) = (0,0) in the base-2 digits d(i) of sqrt(3).	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293788	parm4	1	A293761	0	1	CR.THREE.sqrt()	Numbers k such that (d(k), d(k+1)) = (0,1) in the base-2 digits d(i) of sqrt(3).	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293789	parm4	1	A293761	1	0	CR.THREE.sqrt()	Numbers k such that (d(k), d(k+1)) = (1,0) in the base-2 digits d(i) of sqrt(3).	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293790	parm4	1	A293761	1	1	CR.THREE.sqrt()	Numbers k such that (d(k), d(k+1)) = (1,1) in the base-2 digits d(i) of sqrt(3).	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293792	parm4	1	A293761	0	0	CR.E	Numbers k such that (d(k), d(k+1)) = (0,0) in the base-2 digits d(i) of e.	nonn,easy,base,changed,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293793	parm4	1	A293761	0	1	CR.E	Numbers k such that (d(k), d(k+1)) = (0,1) in the base-2 digits d(i) of e.	nonn,easy,base,changed,	1..10000	nyi	_Clark Kimberling_, Oct 19 2017
-A293794	parm4	1	A293761	1	0	CR.E	Numbers k such that (d(k), d(k+1)) = (1,0) in the base-2 digits d(i) of e.	nonn,easy,base,changed,	1..10000	nyi	_Clark Kimberling_, Oct 20 2017
-A293795	parm4	1	A293761	1	1	CR.E	Numbers k such that (d(k), d(k+1)) = (1,1) in the base-2 digits d(i) of e.	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 20 2017
-A293828	parm4	1	A293761	0	0	CR.PI	Numbers k such that (d(k), d(k+1)) = (0,0) in the base-2 digits d(i) of Pi.	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 20 2017
-A293829	parm4	1	A293761	0	1	CR.PI	Numbers k such that (d(k), d(k+1)) = (0,1) in the base-2 digits d(i) of Pi.	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 20 2017
-A293830	parm4	1	A293761	1	0	CR.PI	Numbers k such that (d(k), d(k+1)) = (1,0) in the base-2 digits d(i) of Pi.	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 20 2017
-A293831	parm4	1	A293761	1	1	CR.PI	Numbers k such that (d(k), d(k+1)) = (1,1) in the base-2 digits d(i) of Pi.	nonn,easy,base,	1..10000	nyi	_Clark Kimberling_, Oct 20 2017
+# 2023-02-13
+A006553	parm2	1	A006553	3
+A059671	parm2	1	A006553	10
+A059675	parm2	1	A006553	6
+A059676	parm2	1	A006553	5
+A086661	parm2	1	A006553	4
+A242200	parm2	1	A006553	7
+A242201	parm2	1	A006553	8
+A242202	parm2	1	A006553	9
+A256326	parm3	1	A256326	3	-2	Numbers k such that 3*R_(k+2) - 2*10^k is prime, where R_k = 11...1 is the repunit (A0
+A256375	parm3	1	A256326	3	-1	Numbers k such that 3*R_(k+2) - 10^k is prime, where R_k = 11...1 is the repunit (A002
+A256458	parm3	1	A256326	3	1	Numbers k such that 3*R_(k+2) + 10^k is prime, where R_k = 11...1 is the repunit (A002
+A256788	parm3	1	A256326	3	2	Numbers k such that 3*R_(k+2) + 2*10^k is prime, where R_k = 11...1 is the repunit (A0
+A256912	parm3	1	A256326	1	-1	Numbers k such that R_(k+2) - 10^k is prime, where R_k = 11...1 is the repunit (A0022
+A256925	parm3	1	A256326	1	1	Numbers k such that R_(k+2) + 10^k is prime, where R_k = 11...1 is the repunit (A0022
+A256926	parm3	1	A256326	1	2	Numbers k such that R_(k+2) + 2*10^k is prime, where R_k = 11...1 is the repunit (A00
+A256927	parm3	1	A256326	1	3	Numbers k such that R_(k+2) + 3*10^k is prime, where R_k = 11...1 is the repunit (A00
+A256928	parm3	1	A256326	1	4	Numbers k such that R_(k+2) + 4*10^k is prime, where R_k = 11...1 is the repunit (A00
+A256931	parm3	1	A256326	1	5	Numbers k such that R_(k+2) + 5*10^k is prime, where R_k = 11...1 is the repunit (A00
+A256932	parm3	1	A256326	1	6	Numbers k such that R_(k+2) + 6*10^k is prime, where R_k = 11...1 is the repunit (A00
+A256933	parm3	1	A256326	1	7	Numbers k such that R_(k+2) + 7*10^k is prime, where R_k = 11...1 is the repunit (A00
+A256934	parm3	1	A256326	1	8	Numbers k such that R_(k+2) + 8*10^k is prime, where R_k = 11...1 is the repunit (A00
+A257025	parm3	1	A256326	3	4	Numbers k such that 3*R_(k+2) + 4*10^k is prime, where R_k = 11...1 is the repunit (A
+A257026	parm3	1	A256326	3	5	Numbers k such that 3*R_(k+2) + 5*10^k is prime, where R_k = 11...1 is the repunit (A
+A257027	parm3	1	A256326	7	-6	Numbers k such that 7*R_(k+2) - 6*10^k is prime, where R_k = 11...1 is the repunit (A
+A257028	parm3	1	A256326	7	-5	Numbers k such that 7*R_(k+2) - 5*10^k is prime, where R_k = 11...1 is the repunit (A
+A257029	parm3	1	A256326	7	-4	Numbers k such that 7*R_(k+2) - 4*10^k is prime, where R_k = 11...1 is the repunit (A
+A257030	parm3	1	A256326	7	-3	Numbers k such that 7*R_(k+2) - 3*10^k is prime, where R_k = 11...1 is the repunit (A
+A257031	parm3	1	A256326	7	-2	Numbers k such that 7*R_(k+2) - 2*10^k is prime, where R_k = 11...1 is the repunit (A
+A257032	parm3	1	A256326	7	-1	Numbers k such that 7*R_(k+2) - 10^k is prime, where R_k = 11...1 is the repunit (A00
+A257033	parm3	1	A256326	7	1	Numbers k such that 7*R_(k+2) + 10^k is prime, where R_k = 11...1 is the repunit (A00
+A257034	parm3	1	A256326	7	2	Numbers k such that 7*R_(k+2) + 2*10^k is prime, where R_k = 11...1 is the repunit (A
+A257036	parm3	1	A256326	9	-8	Numbers k such that 9*R_(k+2) - 8*10^k is prime, where R_k = 11...1 is the repunit (A
+A257037	parm3	1	A256326	9	-7	Numbers k such that 9*R_(k+2) - 7*10^k is prime, where R_k = 11...1 is the repunit (A
+A257038	parm3	1	A256326	9	-5	Numbers k such that 9*R_(k+2) - 5*10^k is prime, where R_k = 11...1 is the repunit (A
+A257039	parm3	1	A256326	9	-4	Numbers k such that 9*R_(k+2) - 4*10^k is prime, where R_k = 11...1 is the repunit (A
+A257040	parm3	1	A256326	9	-2	Numbers k such that 9*R_(k+2) - 2*10^k is prime, where R_k = 11...1 is the repunit (A
+A257041	parm3	1	A256326	9	-1	Numbers k such that 9*R_(k+2) - 10^k is prime, where R_k = 11...1 is the repunit (A00# 2023-02-14; GH=75
+A260558	parm2	1	A260558	29	Numbers n such that (n^29+1)/(n+1)
+A260559	parm2	1	A260558	31	Numbers n such that (n^31+1)/(n+1)
+A260560	parm2	1	A260558	37	Numbers n such that (n^37+1)/(n+1)
+A260561	parm2	1	A260558	41	Numbers n such that (n^41+1)/(n+1)
+A260562	parm2	1	A260558	43	Numbers n such that (n^43+1)/(n+1)
+A260563	parm2	1	A260558	47	Numbers n such that (n^47+1)/(n+1)
+A260564	parm2	1	A260558	53	Numbers n such that (n^53+1)/(n+1)
+A260565	parm2	1	A260558	59	Numbers n such that (n^59+1)/(n+1)
+A260566	parm2	1	A260558	61	Numbers n such that (n^61+1)/(n+1)
+A260567	parm2	1	A260558	67	Numbers n such that (n^67+1)/(n+1)
+A260568	parm2	1	A260558	71	Numbers n such that (n^71+1)/(n+1)
+A260569	parm2	1	A260558	73	Numbers n such that (n^73+1)/(n+1)
+A260570	parm2	1	A260558	79	Numbers n such that (n^79+1)/(n+1)
+A260571	parm2	1	A260558	83	Numbers n such that (n^83+1)/(n+1)
+A260572	parm2	1	A260558	89	Numbers n such that (n^89+1)/(n+1)
+A260573	parm2	1	A260558	97	Numbers n such that (n^97+1)/(n+1)
+A269227	parm4	1	A269227	7	+6	+1	Numbers n such that 7^n+6^(n+1) is prime.   nonn,more,synth 1..17   nyi  
+A271883	parm4	1	A269227	9	-8	-1	Numbers n such that 9^n-8^(n-1) is prime.       nonn,more,synth 1..5    nyi  
+A271884	parm4	1	A269227	4	-3	-1	Numbers n such that 4^n-3^(n-1) is prime.       nonn,more,synth 1..17   nyi  
+A272272	parm4	1	A269227	4	-3	+1	Numbers k such that 4^k-3^(k+1) is prime.       nonn,more,changed,synth 1..20
+A272296	parm4	1	A269227	5	-4	-1	Numbers n such that 5^n-4^(n-1) is prime.       nonn,more,synth 1..10   nyi  
+A272345	parm4	1	A269227	8	-7	-1	Numbers n such that 8^n-7^(n-1) is prime.       nonn,more,synth 1..12   nyi  
+A272366	parm4	1	A269227	5	-4	+1	Numbers n such that 5^n-4^(n+1) is prime.       nonn,more,synth 1..18   nyi  
+A272621	parm4	1	A269227	10	-9	-1	Numbers n such that 10^n-9^(n-1) is prime.      nonn,more,synth 1..15   nyi  
+A272781	parm4	1	A269227	6	-5	+1	Numbers n such that 6^n-5^(n+1) is prime.       nonn,more,synth 1..19   nyi  
+A272829	parm4	1	A269227	8	-7	+1	Numbers n such that 8^n-7^(n+1) is prime.       nonn,more,synth 1..9    nyi  
+A273524	parm4	1	A269227	7	-6	-1	Numbers n such that 7^n-6^(n-1) is prime.       nonn,more,synth 1..19   nyi  
+A273868	parm4	1	A269227	10	-9	+1	Numbers k such that 10^k-9^(k+1) is prime.    nonn,more,synth 1..10   nyi  
+A273937	parm4	1	A269227	7	-6	+1	Numbers n such that 7^n-6^(n+1) is prime.     nonn,more,synth 1..21   nyi  
+A274135	parm4	1	A269227	6	+5	+1	Numbers n such that 6^n+5^(n+1) is prime.     nonn,more,synth 1..20   nyi  
+A274215	parm4	1	A269227	8	+7	+1	Numbers n such that 8^n+7^(n+1) is prime.     nonn,more,synth 1..8    nyi  
+A274239	parm4	1	A269227	9	+8	+1	Numbers n such that 9^n+8^(n+1) is prime.     nonn,more,synth 1..16   nyi  
+A274693	parm4	1	A269227	4	+3	+1	Numbers n such that 4^n+3^(n+1) is prime.     nonn,more,synth 1..31   nyi  
+A274711	parm4	1	A269227	5	+4	+1	Numbers n such that 5^n+4^(n+1) is prime.     nonn,more,synth 1..7    nyi  
+A275783	parm4	1	A269227	10	+9	+1	Numbers n such that 10^n+9^(n+1) is prime.    nonn,more,synth 1..24   nyi  
+A299374	parm2	1	A006553	11
+A299375	parm2	1	A006553	12
+A299376	parm2	1	A006553	13
+A299377	parm2	1	A006553	14
+A299378	parm2	1	A006553	15
+A299379	parm2	1	A006553	16
+A299380	parm2	1	A006553	17
+A299381	parm2	1	A006553	18
+A299382	parm2	1	A006553	19
+A299383	parm2	1	A006553	20

@@ -607,7 +607,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2022-12-31:
+anabuild: # .2023-02-14: # *GH
+	make purge
+	git add -v aman/A*.man sql/*.sql *.pl *.jpat
+	rm -f aman/build.man build.tmp || :
+	echo A006553 A256326 A260558 A269227 \
+	| xargs -n1 echo | xargs -innn cat aman/nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > aman/build.man
+	make CC=build      select gener EX=xx
+	make CC=prisuba    select gener
+	cp -pv hold/*.java manual || :
+	make CC=man        man
+	make CC=$@ dist testall GU=3 pack 
+anabuild.2022-12-31:
 	make purge
 	git add -v aman/A*.man sql/*.sql *.pl *.jpat
 	rm -f build.man build.tmp
@@ -7040,6 +7053,11 @@ prisub:
 	>        $@.tmp
 	perl prisub.pl $(EE) $@.tmp \
 	2>       $@.rest.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.*
+prisuba:
+	grep $@ prisub.gen \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.*

@@ -3,7 +3,7 @@ package irvine.oeis.$(PACK);
 
 import irvine.math.z.Z;
 import irvine.oeis.AddConstantSequence;
-import irvine.oeis.HolonomicRecurrence;
+import irvine.oeis.recur.HolonomicRecurrence;
 import irvine.oeis.prime.PrimePositionSubsequence;
 
 /**
