@@ -111,25 +111,24 @@ A299832	rootet	1	A000521	0	-1	2	0	Coefficients in expansion of (q*j(q))^(-1/2) w
 %N A192731 Euler transform is 1 / (q j(q)) where j is j-function (A000521).
 
 # from A289209		Coefficients in expansion of E_4^3/E_6^2. (E_4^3/E_6^2)^(k/288): 
-#      NYINYINYI
-# A289365	rootet	0	A289209	0	1	288	0	(k=1)
-# A299694	rootet	0	A289209	0	2	288	0	(k=2)
-# A299696	rootet	0	A289209	0	3	288	0	(k=3)
-# A299697	rootet	0	A289209	0	4	288	0	(k=4)
-# A299698	rootet	0	A289209	0	6	288	0	(k=6)
-# A299943	rootet	0	A289209	0	8	288	0	(k=8)
-# A299949	rootet	0	A289209	0	9	288	0	(k=9)
-# A289369	rootet	0	A289209	0	12	288	0	(k=12)
-# A299950	rootet	0	A289209	0	16	288	0	(k=16)
-# A299951	rootet	0	A289209	0	18	288	0	(k=18)
-# A299953	rootet	0	A289209	0	24	288	0	(k=24)
-# A299993	rootet	0	A289209	0	32	288	0	(k=32)
-# A299994	rootet	0	A289209	0	36	288	0	(k=36)
-# A300052	rootet	0	A289209	0	48	288	0	(k=48)
-# A300053	rootet	0	A289209	0	72	288	0	(k=72)
-# A300054	rootet	0	A289209	0	96	288	0	(k=96)
-# A300055	rootet	0	A289209	0	144	288	0	(k=144)
-# A289209	rootet	0	A289209	0	288	288	0	(k=288) <--.
+A289365	rootet	0	A289210	0	-1	288	0	(k=1)
+A299694	rootet	0	A289210	0	-2	288	0	(k=2)
+A299696	rootet	0	A289210	0	-3	288	0	(k=3)
+A299697	rootet	0	A289210	0	-4	288	0	(k=4)
+A299698	rootet	0	A289210	0	-6	288	0	(k=6)
+A299943	rootet	0	A289210	0	-8	288	0	(k=8)
+A299949	rootet	0	A289210	0	-9	288	0	(k=9)
+A289369	rootet	0	A289210	0	-12	288	0	(k=12)
+A299950	rootet	0	A289210	0	-16	288	0	(k=16)
+A299951	rootet	0	A289210	0	-18	288	0	(k=18)
+A299953	rootet	0	A289210	0	-24	288	0	(k=24)
+A299993	rootet	0	A289210	0	-32	288	0	(k=32)
+A299994	rootet	0	A289210	0	-36	288	0	(k=36)
+A300052	rootet	0	A289210	0	-48	288	0	(k=48)
+A300053	rootet	0	A289210	0	-72	288	0	(k=72)
+A300054	rootet	0	A289210	0	-96	288	0	(k=96)
+A300055	rootet	0	A289210	0	-144	288	0	(k=144)
+A289209	rootet	0	A289210	0	-288	288	0	(k=288) <--.
 
 # from A289210, (E_6^2/E_4^3)^(k/288): 
 A289366	rootet	0	A289210	0	1	288	0	(k=1), 
@@ -192,11 +191,25 @@ A282474	rootet	1	A004009	0	8	1	0	Coefficients in q-expansion of E_4^8, where E_4
 # A029828 (691*E_12), 
 # A058550 (E_14), 
 # A029829 (3617*E_16), 
-# A279892 (43867*E_18) nyi
+# A279892 nyi (43867*E_18) nyi
 # A029830 (174611*E_20), 
-# A279893 (77683*E_22) nyi
+# A279893 nyi (77683*E_22) nyi
 # A029831 (236364091*E_24).
-# A282356 Eisenstein series E_26(q) (alternate convention E_13(q)), multiplied by 657931.       
-# A282401 Eisenstein series E_28(q) (alternate convention E_14(q)), multiplied by 3392780147.   
-# A282540 Eisenstein series E_32(q) (alternate convention E_16(q)), multiplied by 7709321041217.
+# A282356 nyi Eisenstein series E_26(q) (alternate convention E_13(q)), multiplied by 657931.       
+# A282401 nyi Eisenstein series E_28(q) (alternate convention E_14(q)), multiplied by 3392780147.   
+# A282540 nyi Eisenstein series E_32(q) (alternate convention E_16(q)), multiplied by 7709321041217.
 
+# (q*(j(q)-1728))^(k/24): 
+A289563	rootet	1	A289063	0	-96	24	0	(k=-96)
+A289562	rootet	1	A289063	0	-72	24	0	(k=-72)
+A289561	rootet	1	A289063	0	-48	24	0	(k=-48)
+A289417	rootet	1	A289063	0	-24	24	0	(k=-24)
+A289416	rootet	1	A289063	0	-1	24	0	(k=-1)
+A106203	rootet	1	A289063	0	1 	24	0	(k=1)
+A289330	rootet	1	A289063	0	2 	24	0	(k=2)
+A289331	rootet	1	A289063	0	3 	24	0	(k=3)
+A289332	rootet	1	A289063	0	4 	24	0	(k=4)
+A289333	rootet	1	A289063	0	5 	24	0	(k=5)
+A289334	rootet	1	A289063	0	6 	24	0	(k=6)
+A007242	rootet	1	A289063	0	12	24	0	(k=12)
+A289063	rootet	1	A289063	0	24	24	0	(k=24).
