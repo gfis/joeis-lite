@@ -213,3 +213,126 @@ A289333	rootet	1	A289063	0	5 	24	0	(k=5)
 A289334	rootet	1	A289063	0	6 	24	0	(k=6)
 A007242	rootet	1	A289063	0	12	24	0	(k=12)
 A289063	rootet	1	A289063	0	24	24	0	(k=24).
+
+
+A107657	rootet	1	A004046	1	1	12	0	Coefficients of 12th root of theta series of lattice in A004046.
+A107658	rootet	1	A004010	1	1	6	0	Coefficients of 6th root of theta series of Coxeter-Todd lattice K_{12} (see A004010).
+A108092	rootet	1	A004011	1	1	4	0	Coefficients of series whose 4th power is the theta series of D_4 (see A004011).
+A108093	rootet	1	A008408	1	1	24	0	Coefficients of series whose 24th power is the theta series of the Leech lattice (see A008408).
+A108094	rootet	1	A008409	1	1	16	0	Coefficients of series whose 16th power is the theta series of the 16-dimensional Barnes-Wall lattice (see A008409).
+# A109006	rootet	1	A109005	1	1	18	0	18th root of theta series in A109005.
+A109147	rootet	1	A004673	1	1	8	0	G.f.: 8th root of theta series of lattice in A004673.
+A109148	rootet	1	A004672	1	1	48	0	G.f.: 48th root of theta series of lattice in A004672.
+
+A060797	parmof2	0	A060797	2
+A127600	parmof2	0	A060797	3
+A127601	parmof2	0	A060797	4
+A127602	parmof2	0	A060797	5
+A127603	parmof2	0	A060797	6
+A127604	parmof2	0	A060797	7
+
+A341842	rootet	1	A282019	0	1	12	0	Coefficients of the series whose 12th power equals E_2*E_4,
+
+# A289339 Coefficients of (q*(j(q)-1728))^(7/24) where j(q) is the elliptic modular invariant.
+# A289340 Coefficients of (q*(j(q)-1728))^(1/3) where j(q) is the elliptic modular invariant.
+# A292117 Coefficients of a power series f(q) with coefficients +1 or -1 such that Product_{m >= 1} f(q^(2m-1)) = Sum_{m = -oo..oo} q^(m(3m-1)/2).
+# A301734 Coefficients of q-series associated with the 8_5 knot.
+# A301735 Coefficients of q-series associated with the colored tetrahedron graph J_{6j,0}.
+# A304020 Coefficients of (q*(j(q)-744))^(1/4) where j(q) is the elliptic modular invariant.
+# A305696 Coefficients of (q*(j(q)-744))^(-1/4) where j(q) is the elliptic modular invariant.
+# A305697 Coefficients of (q*(j(q)-744))^(1/2) where j(q) is the elliptic modular invariant.
+# A305698 Coefficients of (q*(j(q)-744))^(-1/2) where j(q) is the elliptic modular invariant.
+# A305699 Coefficients of 1/(q*(j(q)-744)) where j(q) is the elliptic modular invariant.
+# A305756 Coefficients of (q*(j(q)-720))^(1/24) where j(q) is the elliptic modular invariant.
+# A305758 Coefficients of (q*(j(q)-720))^(-1/24) where j(q) is the elliptic modular invariant.
+# A305760 Coefficients of 1/(q*(j(q)-720)) where j(q) is the elliptic modular invariant.
+
+A073267	rootet	0	A036987	0	2	1	0	prepend 0,0,
+A073610	rootet	0	A010051	0	2	1	0	prepend 0,0,0,
+A085359	rootet	0	A085357	0	3	1	0
+A108802	rootet	0	A040051	0	2	1	0	
+A108804	rootet	0	A010060	0	2	1	0	
+A108806	rootet	0	A000002	0	2	1	0	
+A137610	rootet	0	A014062	0	2	1	0	
+A143927	rootet	0	A006605	0	2	1	0	
+# A089624 When convolved
+# A116986 When convolved with itself and doubled, gives the sequence A000609. with itself gives A002894.
+# A113662 Self-convolution of A000699.
+# A118341 Self-convolution square of A108447.
+# A118342 Self-convolution cube of A108447.
+# A136650 Self-convolution of A006125(n)
+# A136651 Self-convolution of A014070:
+# A137610 Self-convolution of A014062,
+# A137637 tion of A073157.
+# A143927 Self-convolution of A006605.
+# A160647 Self-convolution of sequence A001402.
+# A168357 Self-convolution of A006664
+# A168451 Self-convolution of A004304
+# A180125 Self-convolution of period-doubling sequence A035263
+# A182152 Equals the self-convolution cube of the flattened Pascal's triangle (A007318).
+# A182153 Equals the self-convolution of the flattened triangle of trinomial coefficients (A027907)
+# A186284 Self-convolution 4th power equals A002897.
+# A187655 Self-convolution of the central Stirling numbers of the second kind A007820 offset 0?
+# A208977 Self-convolution square-root of A005810, where A005810(n) = binomial(4*n,n)
+# A245931 Self-convolution yields A245930.
+# A277362 Self-convolution of a(n) gives A047053.
+# A298435 Self-convolution of A007294.
+# A300417 Self-convolution of A024940.
+# A305120 Self-convolution of A006128.
+# A307502 Self-convolution of the Dedekind psi function (A001615).
+# A320236 Self-convolution of A006171.
+# A327215 Self-convolution of A008485.
+# A334768 Self-convolution of A061397.
+# A355957 In essence the self-convolution of A005189 (omitting the first 2 terms).
+
+# 2023-02-20, from OEIS-mat/common/selfconv.man
+A073267	rootet	0	A036987	0	2	1	0	, the characteristic function of the powers of 2. [_Gary W. Adamson_, Feb 23 2010]
+A073610	rootet	0	A010051	0	2	1	0	). - _Graeme McRae_, Jul 18 2006
+A085359	rootet	0	A085357	0	3	1	0	}} (residues of binomial(3k,k)/(2k+1) modulo 2).
+A089624	rootet	0	A002894	0	1	2	0	When convolved with itself gives {{A002894}}.
+A108802	rootet	0	A040051	0	2	1	0	 (parity of partition function).
+A108804	rootet	0	A010060	0	2	1	0	 (Thue-Morse sequence).
+A108806	rootet	0	A000002	0	2	1	0	 (Kolakoski sequence).
+A113662	rootet	0	A000699	0	2	1	0	.
+A118195	rootet	0	A118191	0	1	2	0	Self-convolution square-root of {{A118191}}
+A120880	rootet	0	A039966	0	2	1	0	. Row sums of triangle A117947(n,k) = balanced ternary of C(n,
+A132608	rootet	0	A062817	0	1	2	0		 Self-convolution square-root of {{A062817}} (offset 2);
+A136650	rootet	0	A006125	0	2	1	0	(n) = 2^{n(n-1)/2}.
+A136651	rootet	0	A014070	0	2	1	0	: a(n) = Sum_{k=0..n} C(2^k,k)*C(2^(n-k),n-k).
+A137610	rootet	0	A014062	0	2	1	0	, where {{A014062}}(n) = C(n^2, n).
+A137637	rootet	0	A073157	0	2	1	0	.
+A143927	rootet	0	A006605	0	2	1	0	.
+A160647	rootet	0	A001402	0	2	1	0	.
+A168451	rootet	0	A004304	0	2	1	0	, where {{A004304}}(n) is the number of planar tree-rooted map
+A180125	rootet	0	A035263	0	2	1	0	
+A182152	rootet	0	A007318	0	3	1	0	Equals the self-convolution cube of the flattened Pascal's tri
+A182153	rootet	0	A027907	0	2	1	0	Equals the self-convolution of the flattened triangle of trino
+A183161	rootet	0	A183160	0	1	2	0	Self-convolution equals {{A183160}}.
+A184359	rootet	0	A184358	0	1	2	0	Self-convolution equals {{A184358}}.
+A184424	rootet	0	A184423	0	1	2	0	Self-convolution equals {{A184423}}, where {{A184423}}(n) = (2
+A184888	rootet	0	A184887	0	2	1	0	}}, where
+A184890	rootet	0	A184889	0	2	1	0	}}:
+A184892	rootet	0	A184891	0	2	1	0	}}, where
+A184896	rootet	0	A184895	0	2	1	0	}}, where {{A184895}}(n) = (7^n/n!^2) * Product_{k=0..n-1} (14
+A184898	rootet	0	A184897	0	2	1	0	}}, where {{A184897}}(n) = (8^n/n!^2) * Product_{k=0..n-1} (16
+A186284	rootet	0	A127776	0	1	2	0	 Self-convolution square equals {{A127776}}.
+A186284	rootet	0	A002897	0	1	4	0	 Self-convolution 4th power equals {{A002897}}.
+A208977	rootet	0	A005810	0	1	2	0	 Self-convolution square-root of {{A005810}}, where {{A005810}
+A214377	rootet	0	A078531	0	2	1	0	}}.
+A219197	rootet	0	A199033	0	1	2	0	 Self-convolution equals {{A199033}}.
+A226045	rootet	0	A187746	0	1	2	0	 Self-convolution equals {{A187746}}.
+A227846	rootet	0	A227845	0	1	2	0	 Self-convolution equals {{A227845}}.
+# A243951	rootet	0	A243950	0	1	2	0	 Self-convolution square-root of A243950, which is the sums of
+A245931	rootet	0	A245930	0	1	2	0	 Self-convolution equals {{A245930}}.
+A277362	rootet	0	A000142	0	1	2	0	 Self-convolution of a(n)/4^n gives factorials ({{A000142}}).
+A277362	rootet	0	A047053	0	1	2	0	 Self-convolution of a(n) gives {{A047053}}.
+A277363	rootet	0	A003266	0	1	2	0	 Self-convolution of a(n)/4^n gives fibonorials ({{A003266}}).
+A298435	rootet	0	A007294	0	2	1	0	.
+A300417	rootet	0	A024940	0	2	1	0	.
+A305120	rootet	0	A006128	0	2	1	0	.
+A307502	rootet	0	A001615	0	2	1	0	).
+A320235	rootet	0	A107742	0	2	1	0	.
+A320236	rootet	0	A006171	0	2	1	0	.
+A327215	rootet	0	A008485	0	2	1	0	.
+# A334768	rootet	0	A061397	0	2	1	0	does not work?.
+A355957	rootet	0	A005189	0	2	1	0	(omitting the first 2 terms).

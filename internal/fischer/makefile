@@ -126,6 +126,8 @@ iettest:
 #	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
 gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
+rstest:
+	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
 #--
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(NT)
@@ -7726,6 +7728,8 @@ manual_check:
 	  ORDER BY 2" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+manual_joeis: sumall manual_check # CC= prematurely update table joeis with new classes
+	$(DBAT) "INSERT INTO joeis (SELECT aseqno, $(CC), 'new', SUBSTR($(CC),1,6), 'gfis' FROM seq2)"
 #----
 DIR=mangf
 mangf_check: # DIR=
