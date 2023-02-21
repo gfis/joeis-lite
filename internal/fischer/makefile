@@ -609,7 +609,21 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2023-02-14: # *GH
+anabuild: # .2023-02-21: # *JA=66
+	make purge
+	git add -v aman/A*.man sql/*.sql *.pl *.jpat
+	rm -f aman/build.man build.tmp || :
+	echo A064560 A115140  \
+	| xargs -n1 echo | xargs -innn cat aman/nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > aman/build.man
+	make CC=build      select gener EX=xx
+	make CC=rootet     select gener
+	make CC=convinv    select gener
+	cp -pv hold/*.java manual || :
+	make CC=man        man
+	make CC=$@ dist testall TO=8 pack 
+anabuild.2023-02-14: # *GH
 	make purge
 	git add -v aman/A*.man sql/*.sql *.pl *.jpat
 	rm -f aman/build.man build.tmp || :
@@ -2593,6 +2607,13 @@ rootet:
 	grep -E "^A[0-9]" $@.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+eisenst:
+	grep -P "\bE_(\d\d?)\b" $(COMMON)/jcat25.txt | grep -E "^\%[NFC]" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+convinv:
+	cp -v $(COMMON)/$@.tmp $@.gen
 #--------------------------------
 eulerian:
 	grep -E "\%[CFN]" $(COMMON)/cat25.txt | grep -E "Eulerian[\[]" \

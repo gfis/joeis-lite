@@ -1,0 +1,8 @@
+A064560	parm4	1	A064560	0	i -> Z.ONE.shiftLeft(6*i).multiply(Z.NINE)	i -> Z.FIVE.pow(6*i).multiply(Z.NINE)	Numbers n such that reciprocal of n terminates with an infinite repetition of digit 1. Multiples of 10 are omitted.
+A064561	parm4	1	A064560	1	i -> Z.ONE.shiftLeft(6*i - 1).multiply(Z.NINE)	i -> Z.FIVE.pow(6*i - 5).multiply(Z.NINE)	Reciprocal of n terminates with an infinite repetition of digit 2. Multiples of 10 are omitted.
+A064562	parm4	1	A064560	0	i -> Z.ONE.shiftLeft(2*i).multiply(Z.THREE)	i -> Z.FIVE.pow(2*i).multiply(Z.THREE)	Reciprocal of n terminates with an infinite repetition of digit 3. Multiples of 10 are omitted.
+A064563	parm4	1	A064560	1	i -> Z.ONE.shiftLeft(6*i - 2).multiply(Z.NINE)	i -> Z.FIVE.pow(6*i - 4).multiply(Z.NINE)	Reciprocal of n terminates with an infinite repetition of digit 4. Multiples of 10 are omitted.
+A064564	parm4	1	A064560	1	i -> Z.ONE.shiftLeft(6*i - 5).multiply(Z.NINE)	i -> Z.FIVE.pow(6*i - 1).multiply(Z.NINE)	Reciprocal of n terminates with an infinite repetition of digit 5. Multiples of 10 are omitted.
+A064565	parm4	1	A064560	0	i -> Z.ONE.shiftLeft(2*i + 1).multiply(Z.THREE)	i -> Z.FIVE.pow(2*i + 1).multiply(Z.THREE)	Reciprocal of n terminates with an infinite repetition of digit 6. Multiples of 10 are omitted.
+A064566	parm4	1	A064560	1	i -> Z.ONE.shiftLeft(6*i - 4).multiply(Z.NINE)	i -> Z.FIVE.pow(6*i - 2).multiply(Z.NINE)	Reciprocal of n terminates with an infinite repetition of digit 7. Multiples of 10 are omitted.
+A064567	parm4	1	A064560	1	i -> Z.ONE.shiftLeft(6*i - 3).multiply(Z.NINE)	i -> Z.FIVE.pow(6*i - 3).multiply(Z.NINE)	Reciprocal of n terminates with an infinite repetition of digit 8. Multiples of 10 are omitted.
