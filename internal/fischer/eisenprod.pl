@@ -64,23 +64,64 @@ while (<>) {
     ($aseqno, $name) = split(/\t/, $line);
     $name =~ s{\bDelta\b}{E_99}g;
     $name =~ s{\([qx]\)}{}g;
-    my $expr;
+    my $root = 1;
+    my $expr = "";
     if (0) {
     } elsif ($name =~ m{expansion of ([E\d\_\^\*\/\(\) ]+)[\,\.w]}i) {
         $expr = $1;
         $expr =~ s{ }{}g;
     } elsif ($name =~ m{whose (\d+)\w\w power equals ([E\d\_\^\*\/\(\) ]+)[\,\.w]}i) {
-        my $root = $1; 
+        $root = $1; 
         $expr = $2;
         $expr =~ s{ }{}g;
-        $expr = "($expr)^(1/$root)";
     } else {
-        $nok = "nok";
+        $nok = "nok0";
+    }
+    if ($expr =~ m{E_12}) {
+        $expr =~ s{691(\^\d+)?\*}{};
+        $nok = "nok1";
+    }
+    if ($expr =~ m{E_24}) {
+        $expr =~ s{236364091(\^\d+)?\*}{};
+        $nok = "nok2";
+    }
+    if ($expr =~ s{\((.*)\)\^\(1\/(\d+)\)\Z}{$1}) {
+        $root = $2;
     }
     if ($nok eq "") {
-        print join("\t", $aseqno, $callcode, 0, $expr) . "\n";
+        print        join("\t", $aseqno, $callcode, 0, &parse($expr, $root), $expr, "", "", "", "", "", $name) . "\n";
+        #                                           parm1  2                 3      4   5   6   7   8
+    } else {
+        print STDERR join("\t", $aseqno, $callcode, 0, $name) . "\n";
     }
 } # while <>
+#----
+sub parse {
+    my ($expr, $root) = @_;
+    my $qlist = "";
+    my $alist = "";
+    my $etop = "+";
+    foreach my $part(split(/([\*\/])/, "$expr")) {
+        if (0) {
+        } elsif ($part eq "*") {
+            $etop = "+";
+        } elsif ($part eq "/") {
+            $etop = "-";
+        } else { # power of E_nn
+            if ($part !~ m{\^}) {
+                $part .= "^1";
+            }
+            my ($eisen, $expon) = split(/\^/, $part);
+            if ($root != 1) {
+                $expon .= "/$root";
+            }
+            $qlist .= ",$etop$expon";
+            my $aseqno = $eisenmap{$eisen} || $eisen;
+            $alist .= ", new $aseqno()";
+        }
+    } # foreach $part
+    return (substr($qlist, 1), substr($alist, 2)); # remove leading ", "
+} # parse
 #----------------
 __DATA__
 %N A289981 Coefficients in expansion of 236364091*E_24/Delta^2 where Delta is the generating function of Ramanujan's tau function (A000594).

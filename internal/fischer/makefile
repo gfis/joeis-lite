@@ -128,6 +128,8 @@ gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
 rstest:
 	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
+cptest:
+	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)"
 #--
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(NT)
@@ -609,7 +611,7 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2023-02-21: # *JA=66
+anabuild: # .2023-02-23: 
 	make purge
 	git add -v aman/A*.man sql/*.sql *.pl *.jpat
 	rm -f aman/build.man build.tmp || :
@@ -620,6 +622,8 @@ anabuild: # .2023-02-21: # *JA=66
 	make CC=build      select gener EX=xx
 	make CC=rootet     select gener
 	make CC=convinv    select gener
+	make CC=eisenprod  select gener
+	make CC=finifull   select gener
 	cp -pv hold/*.java manual || :
 	make CC=man        man
 	make CC=$@ dist testall TO=8 pack 
@@ -2607,11 +2611,15 @@ rootet:
 	grep -E "^A[0-9]" $@.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-eisenst:
+eisenprod:
 	grep -P "\bE_(\d\d?)\b" $(COMMON)/jcat25.txt | grep -E "^\%[NFC]" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
+	| perl eisenprod.pl \
+	2>       $@.rest.tmp \
+	>        $@.gen 
+	head -n4 $@.gen
+	wc -l    $@.gen $@.*tmp
+#	| grep -vE "A288472|A288989|A289981|A290009|A290010|A290049|A290050" \
+#
 convinv:
 	cp -v $(COMMON)/$@.tmp $@.gen
 #--------------------------------
