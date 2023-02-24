@@ -2622,6 +2622,14 @@ eisenprod:
 #
 convinv:
 	cp -v $(COMMON)/$@.tmp $@.gen
+convprom:
+	grep -E "^A[0-9]" convprod.man > $@.gen
+convprod:
+	perl convprod.pl $(COMMON)/convprod.tmp \
+	2>       $@.rest.tmp \
+	>        $@.gen 
+	head -n4 $@.gen
+	wc -l    $@.gen $@.*tmp
 #--------------------------------
 eulerian:
 	grep -E "\%[CFN]" $(COMMON)/cat25.txt | grep -E "Eulerian[\[]" \

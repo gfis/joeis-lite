@@ -5,13 +5,8 @@
 # 2023-02-21, Georg Fischer: copied from anopan.pl; *JA=66
 #
 #:# Usage:
-#:#     grep -Pi "a\(n\) *\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\) *\." $(COMMON)/jcat25.txt \
-#:#     | grep -E "^\%" \
-#:#     | cut -b 4- | sed -e "s/ /\t/" \
-#:#     | perl anopan.pl [-d debug] [-f ofter_file] > $@.tmp 2> $@.rest.tmp
+#:#     perl eisenprod.pl [-d mode] input > output
 #:#     -d  debugging level (0=none (default), 1=some, 2=more)
-#:#     -f  file with aseqno, offset1, terms (default $(COMMON)/joeis_ofter.txt)
-#:# Reads ofter_file for implemented jOEIS sequences with their offsets and first terms
 #--------------------------------------------------------
 use strict;
 use integer;
