@@ -2619,7 +2619,7 @@ eisenprod:
 	head -n4 $@.gen
 	wc -l    $@.gen $@.*tmp
 #	| grep -vE "A288472|A288989|A289981|A290009|A290010|A290049|A290050" \
-#
+#----
 convinv:
 	cp -v $(COMMON)/$@.tmp $@.gen
 convprom:
