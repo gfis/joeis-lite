@@ -3,13 +3,13 @@ package irvine.oeis.$(PACK);
 
 import irvine.factor.factor.Jaguar;
 import irvine.math.z.Z;
+
 /**
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
 public class $(ASEQNO) extends $(PARM1) {
 
-  
   @Override
   public Z next() {
     return Jaguar.factor(super.next()).sigma0();

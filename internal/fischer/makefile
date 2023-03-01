@@ -857,9 +857,6 @@ A098941: # Numbers where 2 is the only even decimal digit.
 A169964: # Numbers whose decimal expansion contains only 0's and 5's.
 	grep -E "^A" $@.pa2 > $@.gen
 	wc -l    $@.gen
-sigma0:
-	grep -E "^A" $@.pa2 > $@.gen
-	wc -l    $@.gen
 #================================
 # A126043	null	Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 3.	nonn,synth	1..47	nyi
 a126043:
@@ -5012,6 +5009,45 @@ shownin:
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
+#--------
+sigma0: # grepped a(k) = A000005(Annnnnn(k)) = sigma_0(Annnnnn)
+	perl $@.pl $(COMMON)/joeis_names.txt \
+	2>       $@.rest.tmp \
+	| grep -vE "A108504|A181801|A216326|A294880|A322584|A342929" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+sigma0_2:
+	grep -P " A000005\(A\d+" $(COMMON)/jcat25.txt | grep -E "^\%[NFC]" \
+	| cut -b4- \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+sigman0: # manually a(k) = A000005(Annnnnn(k))
+	grep -E "^A[0-9]" $@.man | sort | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+sigman1: # manually a(k) = A000203(Annnnnn(k))
+	grep -E "^A[0-9]" $@.man | sort | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#----
+knestpark: # remember A-numbers in ./park
+	ls -1 park | sed -e "s/\./\t1\t/" > $@.tmp
+	make seq3 LIST=$@.tmp
+	dbat -4  seq3
+	dbat -n  seq3
+knest: # known nested functions
+	grep -E "^\%[NFC]" $(COMMON)/jcat25.txt \
+	| perl $@.pl \
+	>        $@.gen \
+	2>       $@.rest.tmp
+	head -n4 $@.gen
+	wc -l    $@.gen $@.rest.tmp
+knest2: # repair skipping of underlying sequences
+	perl repair_head.pl -n 3 -s knest-1.fail.log | tee sql/$@.sql
+	$(DBAT) -f sql/$@.sql
+	make select3 # CC= must be set 
 #--------------------------------
 # A320124 null    Number of integer solutions to a^2 + b^2 + 2*c^2 + 3*d^2 = n
 nisolut:

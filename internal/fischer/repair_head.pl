@@ -1,11 +1,13 @@
 #!perl
 
 # Evaluates a FAIL log and generates "UPDATE SET parm1=..." for proper skipping/prepending
+# 2023-03-01, with "~~"
 # 2020-08-27, Georg Fischer
 #
 #:# Usage:
-#:#   perl shuffle_head.pl input > output
+#:#   perl repair_head.pl [-n fnum] [-s] input > output
 #:#     -n field number (counted from 1, default 4) 
+#:#     -s for 'super.next()' instead of 'next();'
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -16,6 +18,7 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1
 
 my $debug = 0;
 my $nparm = 4; # counted from 1
+my $super = "";
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -23,6 +26,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $debug     = shift(@ARGV);
     } elsif ($opt  =~ m{n}) {
         $nparm     = shift(@ARGV);
+    } elsif ($opt  =~ m{s}) {
+        $super     = "super.";
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -49,12 +54,12 @@ while (<>) {
     #       $mod1 = "new PrependSequence(";
     #       $mod2 = ", "  .join(",", splice(@expect, 0, 2) . ")");
         } elsif (&check(0, 1) == 1) {
-            $mod1 =    "next();";
+            $mod1 =    "${super}next();";
         } elsif (&check(0, 2) == 1) {
-            $mod1 =    "next(); next();";
+            $mod1 =    "${super}next();~~  ${super}next();";
         }
         if (length($mod1 . $mod2) > 0) {
-            print "UPDATE seq4 SET parm$nparm=\'$mod1\' WHERE aseqno=\'$aseqno\';"
+            print "UPDATE seq4 SET parm$nparm=\'~~  ~~{~~  $mod1~~}~~ ~~\' WHERE aseqno=\'$aseqno\';"
                 . "-- $expected $computed\n";
         }
     }
