@@ -1,0 +1,45 @@
+-- sigman1.sql
+-- @(#) $Id$ 
+-- 2023-02-28, Georg Fischer
+--
+DELETE FROM seq4 WHERE parm1 NOT IN ((SELECT aseqno FROM joeis) UNION (SELECT aseqno FROM seq4));
+COMMIT;
+DELETE FROM seq4 WHERE aseqno IN
+('A151948'
+,'A152990'
+,'A173745'
+,'A243129'
+,'A319076'
+,'A351456'
+,'A353767'
+);
+COMMIT;
+UPDATE seq4 SET callcode = 'sigma1s' WHERE aseqno IN 
+('A000001'
+,'A063477'
+,'A064139'
+,'A067819'
+,'A069061'
+,'A074370'
+,'A075708'
+,'A076887'
+,'A087025'
+,'A102146'
+,'A102359'
+,'A102360'
+,'A103759'
+,'A103968'
+,'A104353'
+,'A104362'
+,'A114705'
+,'A124052'
+,'A139041'
+,'A224613'
+,'A234645'
+,'A243915'
+,'A260622'
+,'A262613'
+,'A346865'
+,'A346866'
+);
+COMMIT;

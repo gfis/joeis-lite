@@ -1,0 +1,24 @@
+-- sigman0.sql
+-- @(#) $Id$ 
+-- 2023-02-28, Georg Fischer
+DELETE FROM seq4 WHERE parm1 NOT IN (SELECT aseqno FROM joeis);
+COMMIT;
+UPDATE seq4 SET callcode = 'sigma0s' WHERE aseqno IN 
+('A063375'
+,'A063440'
+,'A074369'
+,'A076888'
+,'A087024'
+,'A104352'
+,'A104361'
+,'A272122'
+,'A276681'
+,'A276682'
+,'A276683'
+,'A279081'
+,'A334167'
+,'A344897'
+,'A347191'
+,'A349212'
+);
+COMMIT;

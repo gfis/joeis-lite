@@ -1,0 +1,78 @@
+Sum of the k-th powers of the primes dividing n for k=0..10: 
+# A001221 (k=0)
+# A008472 (k=1)
+A005063	parm2	1	A005063	2
+A005064	parm2	1	A005063	3
+A005065	parm2	1	A005063	4
+A351193	parm2	1	A005063	5
+A351194	parm2	1	A005063	6
+A351195	parm2	1	A005063	7
+A351196	parm2	1	A005063	8
+A351197	parm2	1	A005063	9
+A351198	parm2	1	A005063	10
+
+Sum of the k-th powers of the squarefree divisors of n for k=0..10: 
+# A034444 (k=0)
+A048250	parm2	1	A048250	1
+A351265	parm2	1	A048250	2
+A351266	parm2	1	A048250	3
+A351267	parm2	1	A048250	4
+A351268	parm2	1	A048250	5
+A351269	parm2	1	A048250	6
+A351270	parm2	1	A048250	7
+A351271	parm2	1	A048250	8
+A351272	parm2	1	A048250	9
+A351273	parm2	1	A048250	10
+
+# A351300 Sum of the 5th powers of the divisor complements of the squarefree divisors of n.
+# Sequences of the form n^k * Product_ {p|n, p prime} (1 + 1/p^k) for k=0..10: 
+# A034444	parm2	1	A065958	0
+# A001615	parm2	1	A065958	1
+A065958	parm2	1	A065958	2
+A065959	parm2	1	A065958	3
+A065960	parm2	1	A065958	4
+A351300	parm2	1	A065958	5
+A351301	parm2	1	A065958	6
+A351302	parm2	1	A065958	7
+A351303	parm2	1	A065958	8
+A351304	parm2	1	A065958	9
+A351305	parm2	1	A065958	10
+
+# Sum of the k-th powers of the square divisors of n for k=0..10: 
+# A046951	parm2	1	A035316	0
+A035316	parm2	1	A035316	1
+A351307	parm2	1	A035316	2
+A351308	parm2	1	A035316	3
+A351309	parm2	1	A035316	4
+A351310	parm2	1	A035316	5
+A351311	parm2	1	A035316	6
+A351313	parm2	1	A035316	7
+A351314	parm2	1	A035316	8
+A351315	parm2	1	A035316	9
+A351316	parm2	1	A035316	10
+
+# Sum of the k-th powers of the odd proper divisors of n for k=0..10: 
+# A091954	parm2	1	A091570	0
+A091570	parm2	1	A091570	1
+A351647	parm2	1	A091570	2
+A352031	parm2	1	A091570	3
+A352032	parm2	1	A091570	4
+A352033	parm2	1	A091570	5
+A352034	parm2	1	A091570	6
+A352035	parm2	1	A091570	7
+A352036	parm2	1	A091570	8
+A352037	parm2	1	A091570	9
+A352038	parm2	1	A091570	10
+# 
+# Sum of the k-th powers of the divisor complements of the odd proper divisors of n for k=0..10: 
+# A091954	parm2	1	A352047	0
+A352047	parm2	1	A352047	1
+A352048	parm2	1	A352047	2
+A352049	parm2	1	A352047	3
+A352050	parm2	1	A352047	4
+A352051	parm2	1	A352047	5
+A352052	parm2	1	A352047	6
+A352053	parm2	1	A352047	7
+A352054	parm2	1	A352047	8
+A352055	parm2	1	A352047	9
+A352056	parm2	1	A352047	10
