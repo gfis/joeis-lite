@@ -1,0 +1,76 @@
+A068792	knest	0	A060072	super.next().square()			(n)^2.
+A072470	knest	0	A018930	super.next().square()			(n)^2. - _Benoit Cloitre_, Jun 21 2002
+A080169	knest	0	A002144	super.next().pow(3) 			(n)^3, n >= 1.
+A184877	knest	0	A006882	super.next().square()			(n)^2. - _Gionata Neri_, Oct 29 2015
+A186080	knest	0	A056810	super.next().pow(4) 			(n)^4.
+A191871	knest	0	A000265	super.next().square()			(n^2) = A000265(n)^2. - _M. F. Hasler_, Jun 19 2011
+A239350	knest	0	A006939	super.next().square()			(n)^2.
+A263727	knest	0	A061287	super.next().square()			(n)^2. - _Michel Marcus_, Oct 25 2015
+A276266	knest	0	A208209	super.next().square()			(n)^2.
+A278254	knest	0	A046523	super.next().square()			(n^2) = A046523(n)^2.
+A285985	knest	0	A006454	super.next().square()			(n)^2.
+A320965	knest	0	A060687	super.next().square()			(n)^2.
+A322240	knest	0	A084605	super.next().square()			(n)^2, the square of the central coefficient in (1 + x + 4*x^2)^n.
+A322240	knest	0	A084605	super.next().square()			(n)^2, where A084605(n) = Sum_{k=0..n} (-3)^(n-k) * 2^k * binomial(n,
+A322245	knest	0	A322244	super.next().square()			(n)^2, the square of the central coefficient in (1 + 3*x + 16x^2)^n.
+A322245	knest	0	A322244	super.next().square()			(n)^2, where A322244(n) = a(n) = Sum_{k=0..n} 11^(n-k) * (-4)^k * bin
+A322247	knest	0	A322246	super.next().square()			(n)^2, the square of the central coefficient in (1 + 5*x + 9*x^2)^n.
+A322247	knest	0	A322248	super.next().square()			(n)^2, where A322248(n) = a(n) = Sum_{k=0..n} (-1)^(n-k) * 3^k * bino
+A322249	knest	0	A322248	super.next().square()			(n)^2, the square of the central coefficient in (1 + 5*x + 16*x^2)^n.
+A322249	knest	0	A322248	super.next().square()			(n)^2, where A322248(n) = a(n) = Sum_{k=0..n} (-3)^(n-k) * 4^k * bino
+A322249	knest	0	A322248	super.next().square()			(n)^2, where A322248(n) = a(n) = Sum_{k=0..n} 13^(n-k) * (-4)^k * bin
+A326039	knest	0	A326038	super.next().square()			(n)^2.
+A342455	knest	0	A002110	super.next().pow(5) 			(n)^5.
+A351683	knest	0	A007655	super.next().square()			(n)^2.
+A352598	knest	0	A051801	super.next().square()			(n)^2.
+
+A063647	knest	0	A018892	super.next().subtract(1)		(n)-1. If n = (p1^a1)(p2^a2)...(pt^at), a(n) = ((2*a1+1)(2*a2+1)...(2*at+1)-1)/2.
+A067772	knest	0	A331262	super.next().divide2()		(n)/2. - _Omar E. Pol_, Jun 18 2022
+A069283	knest	0	A001227	super.next().subtract(1)		(n)-1.
+A069912	knest	0	A067552	super.next().divide(9)		(n)/9 where A067552(n) = SumOfDigits(n)^2 - SumOfDigits(n^2), with SumOfDigits = A007953.
+A078326	knest	0	A060355	super.next().add(1)   		(n)+1.
+A086005	knest	0	A056809	super.next().add(1)   		(n)+1. - _Zak Seidov_, Sep 30 2012
+A088404	knest	0	A069537	super.next().divide2()		(n)/2.
+A097509	knest	0	A006337	super.next().subtract(1)		(n)-1. - _Robert G. Wilson v_, Aug 21 2014
+A098295	knest	0	A098294	super.next().subtract(1)		(n)-1, n >= 1.
+# A102552	knest	0	A036263	super.next().divide2()		(n)/2. - _T. D. Noe_, Oct 06 2006
+A107578	knest	0	A005669	super.next().add(1)   		(n)+1. - _Jens Kruse Andersen_, Oct 19 2010
+A108572	knest	0	A018783	super.next().subtract(1)		(n)-1, n>1. - _Vladeta Jovovic_, Jul 28 2005
+A127920	knest	0	A127918	super.next().divide2()		(n)/2. - _Michel Marcus_, Apr 09 2017
+A135505	knest	0	A076954	super.next().subtract(1)		(n)-1, n>0. - _R. J. Mathar_, Nov 01 2009
+A136796	knest	0	A052764	super.next().multiply2()		(n)*2.
+A137781	knest	0	A137389	super.next().divide(4)		(n)/4.
+# A144460	knest	0	A000045	super.next().add(1)   		(n)+1;b(n)=A000045(n+1)-1; t(n,m)=a(m)*b(n) - b(m)*a(n).
+# A144461	knest	0	A000045	super.next().add(1)   		(n)+1;b(n)=A000045(n+1)-1; t(n,m)=a(m)*(a(n) + 1) - If[ m < n, Round[(a(m) - 1)/a(n) + 1], a(n) + 1]*a(n).
+A152679	knest	0	A152678	super.next().divide2()		(n)/2.
+A160549	knest	0	A160539	super.next().divide(7)		(n)/7, n > 0.
+A216144	knest	0	A060797	super.next().add(1)   		(n)+1. - _M. F. Hasler_, Sep 02 2012
+A217626	knest	0	A209280	super.next().divide(9)		(n)/9, for n < 9!. - _M. F. Hasler_, Jan 12 2013
+A227590	knest	0	A003022	super.next().add(1)   		(n)+1 with a(1)=1.
+A253786	knest	0	A254046	super.next().subtract(1)		(n)-1.
+A258934	knest	0	A072473	super.next().divide2()		(n)/2.
+A260721	knest	0	A260722	super.next().divide2()		(n)/2.
+# A271312	knest	0	A001155	super.next().divide(10)		(n)/10, and is further related to other look-and-say sequences seeded by a value that cannot appear in a normal sequence; e.g. A001140, A001141, A001143, A001145, A001151, A001154 - any that start with a number other than 1, 2, or 3.
+# A272063	knest	0	A004431	super.next().subtract(1)		(n)-1 when A004431(n) = k^2 + (k+1)^2 == A001844(k), k>=1.
+A275798	knest	0	A054247	super.next().divide2()		(n)/2, n >= 1.
+A277968	knest	0	A273845	super.next().divide(3)		(n)/3, n > 0.
+A277974	knest	0	A277212	super.next().divide(5)		(n)/5, n > 0.
+A289394	knest	0	A288968	super.next().divide(4)		(n)/4.
+A289395	knest	0	A110163	super.next().divide(8)		(n)/8.
+A289396	knest	0	A288851	super.next().divide(12)		(n)/12.
+A296944	knest	0	A296943	super.next().subtract(2)		(n)-2, a(0) = 0, a(1) = 1.
+A322250	knest	0	A000265	super.next().subtract(1)		(n)-1, unless A000265(n) = 1 in which case a(n) = 1.
+A347906	knest	0	A006935	super.next().divide2()		(n)/2.
+A348772	knest	0	A348769	super.next().divide2()		(n)/2.
+# A351299	knest	0	A061348	super.next().divide2()		(n)/2 where floor((n-1)/2) is even.
+A352804	knest	0	A028876	super.next().divide2()		(n)/2; numbers k such that 4*k^2 - 5 is prime.
+A353058	knest	0	A061339	super.next().subtract(1)		(n)-1. - _Rémy Sigrist_, Apr 22 2022
+
+A068485	knest	0	A067755	super.next().divide(60)		(n+2)/60, n>=1.
+A076273	knest	0	A001043	super.next().subtract(1)		(n-1)-1, n>1. - _R. J. Mathar_, Jun 04 2020
+A242172	knest	0	A100071	super.next().divide2()		(n+2)/2. \\ _Michel Marcus_, Sep 14 2015
+A245685	knest	0	A247159	super.next().divide2()		(n+1)/2. - _Omar E. Pol_, Nov 22 2014
+A275202	knest	0	A005942	super.next().divide2()		(n+1)/2, and the latter satisfies a simple recurrence. - _N. J. A. Sloane_, Jun 04 2019
+A345889	knest	0	A054116	super.next().divide2()		(n+1)/2.
+A352805	knest	0	A296507	super.next().divide2()		(n+1)/6; numbers k such that 36*k^2 - 13 is prime.
+A357753	knest	0	A017912	super.next().square()		(n-1)^2.

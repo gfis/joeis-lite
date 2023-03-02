@@ -5047,7 +5047,11 @@ knest: # known nested functions
 knest2: # repair skipping of underlying sequences
 	perl repair_head.pl -n 3 -s knest-1.fail.log | tee sql/$@.sql
 	$(DBAT) -f sql/$@.sql
-	make select3 # CC= must be set 
+	make select3 # CC= must be set
+knestm:
+	grep -E "^A[0-9]" aman/$@.man > $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
 #--------------------------------
 # A320124 null    Number of integer solutions to a^2 + b^2 + 2*c^2 + 3*d^2 = n
 nisolut:

@@ -13,4 +13,22 @@ DELETE FROM seq4 WHERE aseqno IN
 ,'A210679'
 );
 COMMIT;
+UPDATE seq4 SET parm3='~~  ~~{~~  super.next();~~}~~ ~~' WHERE aseqno IN
+('A000001'
+,'A069060'
+,'A069112'
+,'A079112'
+,'A137427'
+,'A139477'
+,'A157845'
+,'A185381'
+,'A219188'
+,'A259368'
+,'A299700'
+,'A309761'
+,'A327248'
+,'A336857'
+,'A348367'
+);
+COMMIT;
 

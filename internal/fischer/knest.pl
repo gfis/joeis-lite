@@ -66,6 +66,16 @@ my %known = qw(
     A007947 rad
     A007953 digitSum
     A008472 sopf
+    A070939 bitLength
+    A007814 valuation
+    A000035 mod2
+    A008683 moebius
+    A000045 fibonacci
+    A000196 sqrt
+    A007953 digitsum
+    A007954 digitproduct
+    A007955 pod
+    A007913 core
     );
 #   A007947 squareFreeKernel
 
@@ -81,12 +91,15 @@ while (<>) {
         $nok = "";
         $rseqno = "A000000";
         $name =~ s{\bOmega\b}{bigOmega}g;
+        $name =~ s{\b(mobius|möbius|mu)\b}{moebius}ig;
         if (0) {
         } elsif ( 0 #           1                                                                         1      2    3   4         4   3 2
-                || ($name =~ m{\= *(A001222|bigomega|A001221|omega|A000005|tau|A000010|phi|A000203|sigma_?\d*)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i) # Jaguar
-                || ($name =~ m{\= *(A008472|sopf|A001414|sopfr|A006530|Gpf|largestPrimeFacor|A046523|xxxxxxxx)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i) # Jaguar
-                || ($name =~ m{\= *(A020639|leastPrimeFactor|A007947|squareFreeKernel|rad|xxxxxxxxxxxxxxxxxxx)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i) # Jaguar
-            #   || ($name =~ m{\= *(A000120|bitcount|A000720|PrimePi|pi|xxxx)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i) ||
+            #   || ($name =~ m{\= *(A001222|bigomega|A001221|omega|A000005|tau|A000010|phi|A000203|sigma_?\d*)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i) # Jaguar
+            #   || ($name =~ m{\= *(A020639|leastPrimeFactor|A007947|squareFreeKernel|rad|xxxxxxxxxxxxxxxxxxx)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i) # Jaguar
+                || ($name =~ m{\= *(A000120|bitcount|A070939|A000523|bitlength|A007953|digitsum|A007088|tobinary)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i)
+                || ($name =~ m{\= *(A000045|fibonacci|A007913|core|A001414|sopfr|A007955|pod)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i)
+            #   || ($name =~ m{\= *(A000720|PrimePi|pi)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i)
+            #   || ($name =~ m{\= *(A008472|sopf|A006530|Gpf|largestPrimeFacor|A046523|xxxxxxxx)[\(\[](A\d+(\(n([\+\-]\d+)?\))?)[\)\]] *[\.\;\,\=]}i) # Jaguar
                 ) {
             $funct  = $1; # aseqno or function
             $rseqno = $2 || "A000001";
@@ -96,42 +109,53 @@ while (<>) {
                 $funct = $known{$funct} || "undef"; # replace by function name
             }
             $funct = lc($funct); # force to lowercase
-            $callcode = "jaguar";
+            $callcode = "knest";
             if (0) {
             } elsif ($funct eq "tau") {
-                $funct = "sigma0()";
+                $funct = "Jaguar.factor(super.next()).sigma0()";
             } elsif ($funct =~ m{\Asigma(.*)}) {
                 my $app = $1;
                 $app =~ s{\_?}{};
                 if (0) {
                 } elsif ($app eq "0") { # ok
-                    $funct = "sigma0()";
+                    $funct = "Jaguar.factor(super.next()).sigma0()";
                 } elsif ($app eq "1") {
-                    $funct = "sigma()";
+                    $funct = "Jaguar.factor(super.next()).sigma()";
                 } elsif ($app =~ m{\A(\d+)}) {
-                    $funct = "sigma($1)";
+                    $funct = "Jaguar.factor(super.next()).sigma($1)";
                 } else {
-                    $funct = "sigma()";
+                    $funct = "Jaguar.factor(super.next()).sigma()";
                 }
             } elsif ($funct eq "bigomega") {
-                $funct = "bigOmega()";
-                $callcode = "jaguarz";
-            } elsif ($funct eq "omega") { # ok
-                $funct = "omega()";
-                $callcode = "jaguarz";
+                $funct = "Z.valueOf(Jaguar.factor(super.next().bigOmega())";
+            } elsif ($funct eq "core") { # ok
+                $funct = "Jaguar.factor(super.next()).core()";
             } elsif ($funct eq "gpf" or $funct eq "largestprimefactor") {
-                $funct = "largestPrimeFactor()";
+                $funct = "Jaguar.factor(super.next()).largestPrimeFactor()";
             } elsif ($funct eq "lpf" or $funct eq "leastprimefactor") {
-                $funct = "leastPrimeFactor()";
-            } elsif ($funct eq "rad") {
-                $funct = "squareFreeKernel()";
-
+                $funct = "Jaguar.factor(super.next()).leastPrimeFactor()";
+            } elsif ($funct eq "omega") { # ok
+                $funct = "Z.valueOf(Jaguar.factor(super.next().omega())";
             } elsif ($funct eq "phi") { #
-                $funct = "Euler.phi";
-                $callcode = "eulphi";
+            #   $funct = "Euler.phi(super.next())";
+                $funct = "Jaguar.factor(super.next()).phi()";
+            } elsif ($funct eq "pod") {
+                $funct = "Jaguar.factor(super.next()).pod()";
+            } elsif ($funct eq "rad") {
+                $funct = "Jaguar.factor(super.next()).squareFreeKernel()";
+            } elsif ($funct eq "sopfr") { #
+                $funct = "Jaguar.factor(super.next()).sopfr()";
+
             } elsif ($funct eq "bitcount") { #
-                $funct = "bitCount()";
-                $callcode = "bitcnt";
+                $funct = "Z.valueOf(super.next().bitCount())";
+            } elsif ($funct eq "bitlength") { #
+                $funct = "Z.valueOf(super.next().bitLength())";
+            } elsif ($funct eq "digitsum") { #
+                $funct = "Z.valueOf(ZUtils.digitSum(super.next()))";
+            } elsif ($funct eq "fibonacci") { #
+                $funct = "Fibonacci.fibonacci(super.next().intValue())";
+            } elsif ($funct eq "tobinary") { #
+                $funct = "new Z(super.next().toString(2))";
             } else {
                 $nok = "fun";
             }
