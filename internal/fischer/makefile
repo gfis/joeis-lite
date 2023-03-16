@@ -611,7 +611,20 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2023-02-23: 
+anabuild: # .2023-03-16: 
+	make purge
+	git add -v aman/A*.man sql/*.sql *.pl *.jpat
+	rm -f aman/build.man build.tmp || :
+	echo A030000 A062845 A068127 A080445 A213027  \
+	| xargs -n1 echo | xargs -innn cat aman/nnn.man >> build.tmp
+	grep -vE "A999999" build.tmp \
+	| sort | uniq -w7 > aman/build.man
+	make CC=build      select gener EX=xx
+	make CC=simbinom   select gener
+	cp -pv hold/*.java manual || :
+	make CC=man        man
+	make CC=$@ dist testall TO=8 pack 
+anabuild.2023-02-23: 
 	make purge
 	git add -v aman/A*.man sql/*.sql *.pl *.jpat
 	rm -f aman/build.man build.tmp || :
@@ -5029,6 +5042,11 @@ sigman0: # manually a(k) = A000005(Annnnnn(k))
 	wc   -l  $@.gen
 sigman1: # manually a(k) = A000203(Annnnnn(k))
 	grep -E "^A[0-9]" $@.man | sort | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+#----
+simbinom:
+	grep -E "^A[0-9]" $@.man > $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #----
