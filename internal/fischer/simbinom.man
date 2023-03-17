@@ -1,0 +1,283 @@
+#?# A073028	simbinom	0	Binomial.binomial(mN - A060065(mN), A060065(mN))
+#?# A073354	simbinom	0	Binomial.binomial(mN, A007947(mN))
+#?# A130563	simbinom	0	Binomial.binomial(mN,3)*A001147(mN+1).divide(105)
+#?# A180272	simbinom	0	Binomial.binomial(mN, A002024(mN+1)-1) where A002024 is "mN appears mN times"
+#?# A201050	simbinom	0	Binomial.binomial(A034386(mN), A034386(mN-1))
+#?# A214308	simbinom	0	Binomial.binomial(mN,2) * A056342(mN)
+#?# A214310	simbinom	0	Binomial.binomial(mN,3) * A056343(mN)
+#?# A214312	simbinom	0	Binomial.binomial(mN,4) * A056344(mN)
+#?# A214313	simbinom	0	Binomial.binomial(mN,5) * A056345(mN)
+#?# A242342	simbinom	0	Binomial.binomial(mN, A007978(mN))
+#?# A249716	simbinom	0	Binomial.binomial(mN, A249442(mN))
+#?# A322620	simbinom	0	Binomial.binomial(mN,k) * A322190(mN,k)
+#?# A337273	simbinom	0	Binomial.binomial(mN - tau(mN), 2) where tau(mN) is the number of divisors of mN (cf
+#?# A343580	simbinom	0	abs(A021009(mN, floor(mN/2))).
+#?# A355703	simbinom	0	Binomial.binomial(mN, floor(log(mN)))
+#?# A357812	simbinom	0	Binomial.binomial(mN, A029837(mN+1))
+#?
+#?# A081409	simbinom	0	Binomial.binomial(mN!, lcm(1,
+#?# A086687	simbinom	0	Binomial.binomial(MemoryFactorial.SINGLETON.factorial(mN).intValue(), mN)
+#?# A131673	simbinom	0	Binomial.binomial(mN+2-b_n, 2)+2(2^{b_n}-b_n)
+#?# A163436	simbinom	0	Binomial.binomial(mN * mN, mN).add(Binomial.binomial((mN - 1) * mN, mN).multiply(-4)).add(Binomial.binomial((mN - 1) * (mN - 1), mN).multiply(4)).add(Binomial.binomial((mN - 2) * mN, mN).multiply(2)).add(Binomial.binomial((mN - 2) * (mN - 1), mN).multiply(-4).add(Binomial.binomial((mN - 2) * (mN - 2), mN)
+#?# A187083	simbinom	0	Binomial.binomial(Z.valueOf(mN).pow(mN).intValue(), mN)
+#?# A214282	simbinom	0	Binomial.binomial(mN - 1, mN/2) when mN is even, a(mN) = Binomial.binomial(mN - 1, (mN + 1)/2) when mN is 3 mod 4, and a(mN) = Binomial.binomial(mN - 1, (mN - 1)/2) when is 1 mod 4
+#?# A238452	simbinom	0	Binomial.binomial(mN+1, floor(mN/2)+1) / (floor(mN/2)+2) if mN is odd, and 2*Binomial.binomial(mN, floor(mN/2)+1) otherwise
+#?# A246659	simbinom	0	Binomial.binomial(mN-h,h)*hypergeometric([h-mN/2,h-(mN-1)/2],[1],4), h = floor(mN/4)
+#?# A290745	simbinom	0	Binomial.binomial(mN + 1, 2) - (s-p)*Binomial.binomial(m + 1, 2) - p*Binomial.binomial(m + 2, 2) + s where s=10, m=floor(mN/s), p=mN-m*s
+#?# A291665	simbinom	0	Binomial.binomial(mN, 2^floor(log_2(mN)))
+#?# A304403	simbinom	0	Binomial.binomial(mN * (mN + 1) / 2, mN) - Sum_{k=0
+#?# A308677 For k = 2, a(mN) = Binomial.binomial(mN*k - 2k + mN - 1, mN - 1) - (1 / k(mN - 1) + 1) Binomial.binomial((k + 1)(mN - 1)/(mN - 1))
+#?# A351580	simbinom	0	Binomial.binomial(MemoryFactorial.SINGLETON.factorial(mN).intValue() + mN - 2, mN - 1)
+#?# A242511	simbinom	0	Binomial.binomial(mN, mN / 2 - 1).divide(6).multiply(...)
+#?# A242512	simbinom	0	Binomial.binomial(mN, mN / 2 - 1).divide(2).multiply(...)
+#?
+#?# A255886 For mN>1, a(mN) = Binomial.binomial(mN,2)! * 2^(mN-2) / A000108(mN-1)
+
+#ari#	A065942	simbinom	0	Binomial.binomial(mN + mN/2, mN)
+#ari#	A066300	simbinom	0	Binomial.binomial(mN, 2).pow(mN)
+#ari#	A066789	simbinom	0	Binomial.binomial(mN * mN * mN, mN * mN)
+#ari#	A080211	simbinom	0	Binomial.binomial(mN, Jaguar.factor(mN).leastPrimeFactor().intValue())
+#ari#	A080213	simbinom	0	Binomial.binomial(mN, Jaguar.factor(mN).largestPrimeFactor().intValue())
+#ari#	A080911	simbinom	0	Binomial.binomial(MemoryFactorial.SINGLETON.factorial(mN).intValue(), MemoryFactorial.SINGLETON.factorial(mN-1).intValue())
+#ari#	A081623	simbinom	0	Binomial.binomial(mN * mN, (mN * mN)/2)
+#ari#	A102366	simbinom	0	Binomial.binomial(mN, IntegerUtils.sqrt(mN))
+#ari#	A107446	simbinom	0	Binomial.binomial(mN * mN * mN * mN, mN)
+#ari#	A128936	simbinom	0	Binomial.binomial(mN, ZUtils.digitSum(mN))
+#ari#	A133891	simbinom	0	Binomial.binomial(mN+12,12).mod(Z.valueOf(12))
+#ari#	A135757	simbinom	0	Binomial.binomial(mN*(mN + 1), mN*(mN + 1) / 2)
+#ari#	A135860	simbinom	0	Binomial.binomial(mN*(mN + 1), mN)
+#ari#	A135861	simbinom	0	Binomial.binomial(mN*(mN + 1), mN).divide(mN + 1)
+#ari#	A135862	simbinom	0	Binomial.binomial(mN*(mN + 1), mN).divide(mN * mN + 1)
+#ari#	A162676	simbinom	0	Binomial.binomial(mN * mN, mN).subtract(Binomial.binomial((mN - 1) * mN, mN).multiply2()).add(Binomial.binomial((mN - 1) * (mN - 1), mN))
+#ari#	A165984	simbinom	0	Binomial.binomial(mN * mN * mN + mN - 1, mN)
+#ari#	A177234	simbinom	0	Binomial.binomial(mN * mN, mN).divide(mN + 1)
+#ari#	A177400	simbinom	0	Binomial.binomial(mN * (1 << mN), mN)
+#ari#	A177456	simbinom	0	Binomial.binomial(mN * mN, mN + 1).divide(mN)
+#ari#	A177466	simbinom	0	Binomial.binomial(mN * mN * mN, mN * mN).divide(mN * mN + mN + 1)
+#ari#	A177784	simbinom	0	Binomial.binomial(mN * mN, mN).divide(mN * (mN+1))
+#ari#	A177788	simbinom	0	Binomial.binomial(mN * mN, mN + 1).divide(mN - 1)
+#ari#	A178034	simbinom	0	Binomial.binomial(mN * Jaguar.factor(mN).bigOmega(), Jaguar.factor(mN).bigOmega()).divide(mN)
+#ari#	A182316	simbinom	0	Binomial.binomial(mN * mN + 3 * mN, mN).divide((mN + 1) * (mN + 1))
+#ari#	A186245	simbinom	0	Binomial.binomial(mN * mN, 2 * mN)
+#ari#	A189046	simbinom	0	Binomial.binomial(mN + 5, 6).divide(IntegerUtils.gcd(mN, 5) * (((mN-1) % 4) / 2+1))
+#ari#	A199747	simbinom	0	Binomial.binomial(mN * (3 * mN + 1)/2, mN)
+#ari#	A199748	simbinom	0	Binomial.binomial(mN * (3 * mN - 1)/2, mN)
+#ari#	A201686	simbinom	0	Binomial.binomial(mN, mN / 2).subtract(2)
+#ari#	A214400	simbinom	0	Binomial.binomial(mN * mN + 3 * mN, mN)
+#ari#	A228509	simbinom	0	Binomial.binomial(mN * mN + mN + 1, mN).multiply(mN + 1).divide(mN * mN + mN + 1)
+#ari#	A278704	simbinom	0	Binomial.binomial(mN, 3).multiply(Z.ONE.shiftLeft(Binomial.binomial(mN, 2).intValue() - 3))
+#ari#	A278705	simbinom	0	Binomial.binomial(mN, 4).multiply(Z.ONE.shiftLeft(Binomial.binomial(mN, 2).intValue())).multiply(3)
+#ari#	A278736	simbinom	0	Binomial.binomial(mN, 4).multiply(Z.ONE.shiftLeft(Binomial.binomial(mN, 2).intValue() - 6))
+#ari#	A293656	simbinom	0	Binomial.binomial(mN + 1, 2).multiply(MemoryFactorial.SINGLETON.factorial(mN)).divide(MemoryFactorial.SINGLETON.doubleFactorial(mN))
+#ari#	A332231	simbinom	0	Binomial.binomial(mN * (mN + 1), 2 * mN).multiply(Binomial.binomial(2 * mN, mN)).divide(Binomial.binomial(mN * (mN + 1) / 2, mN))
+#ari#	A343581	simbinom	0	Binomial.binomial(mN - 1, mN / 2 - 1).multiply(MemoryFactorial.SINGLETON.factorial(mN)).divide(MemoryFactorial.SINGLETON.factorial(mN / 2))
+#ari#	A344690	simbinom	0	Binomial.binomial(MemoryFactorial.SINGLETON.factorial(mN).intValue() + mN - 1, mN)
+#ari#	A349510	simbinom	0	Binomial.binomial(mN * mN * mN - (((mN - 1) * (mN - 1) * (mN - 1) + 1) / 2), 3 * mN * mN - 3 * mN + 1).add(Binomial.binomial(mN * mN * mN - (((mN - 1) * (mN - 1) * (mN - 1) + 2) / 2), 3 * mN * mN - 3 * mN + 1))
+#ari#	A349512	simbinom	0	Binomial.binomial(mN * mN * mN + 3 * mN * mN - 3 * mN + 1, mN * mN * mN)
+#ari#	A351501	simbinom	0	Binomial.binomial(mN * mN + mN - 1, mN).divide(mN * mN + mN - 1)
+#?#	A268286	simbinom	0	BellNumbers.bell(prime(mN)).  nonn,   1..100  nyi     _Vincenzo Librandi_, Jan
+#?#	A290444	simbinom	0	BellNumbers.bell(mN)*Motzkin(mN).      nonn,synth      0..21   nyi     _N. J. A
+#?#	A290445	simbinom	0	BellNumbers.bell(mN-1)*Motzkin(mN).    nonn,synth      1..22   nyi     _N. J. A
+#?#	A290446	simbinom	0	BellNumbers.bell(mN)*Motzkin(mN-1).    nonn,synth      1..21   nyi     _N. J. A
+#?#	A346654	simbinom	0	BellNumbers.bell(2*mN,mN).     nonn,new,       0..198  nyi     _Vaclav
+#?#	A346655	simbinom	0	BellNumbers.bell(3*mN,mN).     nonn,new,       0..137  nyi     _Vaclav
+
+#?# A089451	simbinom	0	Mobius.mobius(prime(mN)-1)
+#?# A089495	simbinom	0	Mobius.mobius(prime(mN)+1)
+#?# A089496	simbinom	0	Mobius.mobius(prime(mN)+1) + Mobius.mobius(prime(mN)-1)
+#??? A334076	simbinom	0	Z.valueOf(mN).or(Z.valueOf(2 * mN)).not().and(Z.ONE.shiftLeft(Integer.highestOneBit(mN) << 1).subtract(1))	bitwise NOR of mN and 2n.
+#??? A348011	simbinom	0	Euler.phi(Z.valueOf(mN * mN)).multiply(Integers.SINGLETON.sumdiv(mN, d -> Z.ONE.shiftLeft(Jaguar.factor(d).omega()).divide(d)))
+#??? A122645	simbinom	0	Euler.phi(Z.valueOf(mN)_phi(mN) where phi() = A000010.
+#nyi<A079530	simbinom	0	Euler.phi(Z.valueOf(mN) - ceiling(sqrt(mN)).
+#nyi<A079531	simbinom	0	Euler.phi(Z.valueOf(mN) - ceiling(mN^(2/3)).
+#nyi<A079528	simbinom	0	Jaguar.factor(mN).sigma() - ceiling(mN + sqrt mN).
+#nyi<A334874	simjagfa	0	fs.sigma(1) - tau(2) + sigma(3) - tau(4) + sigma(5) - tau(6) + ... - (up to mN).
+#??? A074699	simbinom	0	Jaguar.factor(Fibonacci.fibonacci(24 * (1 << mN))).tau().divide(Z.ONE.shiftLeft(mN).multiply(24))	 where tau(x) is the number of divisors of x (A000005(x)).
+#??? A354443	simbinom	0	Fibonacci.fibonacci(Z.valueOf(mN).pow(mN).intValue()).mod(Z.valueOf(mN))	.    nonn,look,new,  1..10000
+#??? A174340	simbinom	0	Z.valueOf(Mobius.mobius(Fibonacci.fibonacci(mN).intValue()))	
+
+A062755	simbinom	0	Jaguar.factor(mN * mN).sigma(mN)
+A063077	simbinom	0	Euler.phi(Z.valueOf(mN * mN + 1)).subtract(2 * mN)	.
+A063439	simbinom	0	Euler.phi(Z.valueOf(mN)).pow(Euler.phiAsLong(mN))	.
+A063514	simbinom	0	Jaguar.factor(mN).sigma().mod(Euler.phi(Z.valueOf(mN)))
+A064145	simbinom	0	Jaguar.factor(MemoryFactorial.SINGLETON.factorial(mN).subtract(1)).tau()
+A064165	simbinom	0	Jaguar.factor(Jaguar.factor(mN).sigma(mN)).tau()
+A065814	simjagfa	0	fs.tau().square().subtract(Jaguar.factor(mN * mN).tau())
+A066791	simbinom	0	Euler.phi(Z.valueOf(mN * mN + mN + 1))	.
+A066856	simbinom	0	Z.valueOf(Jaguar.factor(MemoryFactorial.SINGLETON.factorial(mN).add(1)).omega())
+A066877	simbinom	0	Z.valueOf(Jaguar.factor(MemoryFactorial.SINGLETON.factorial(mN).subtract(1)).omega())
+A069925	simbinom	0	Euler.phi(Z.ONE.shiftLeft(mN).add(1)).divide(2 * mN)	.
+A070812	simbinom	0	Euler.phi(Z.valueOf(Jaguar.factor(mN).largestPrimeFactor().intValue())).subtract(Jaguar.factor(Euler.phiAsLong(mN)).largestPrimeFactor())	 - gpf(phi(mN))	 = A000010(A006530(mN)) - A006530(A000010(mN)).
+A072779	simbinom	0	Jaguar.factor(mN).sigma(2).add(Euler.phi(Z.valueOf(mN)).multiply(Jaguar.factor(mN).sigma()))
+A072780	simjagfa	0	fs.sigma(2).add(Euler.phi(Z.valueOf(mN)).multiply(fs.sigma()).subtract(2 * mN * mN))	, which is A072779(mN) - 2*mN^2.
+A074700	simbinom	0	Jaguar.factor(Fibonacci.fibonacci(1 << mN)).tau()	 where tau(x) is the number of divisors of x (A000005(x)) and F(k) the k-th Fibonacci number (A000045(k)).
+A077088	simbinom	0	Euler.phi(Jaguar.factor(mN).sigma().subtract(Euler.phi(Z.valueOf(mN))))	
+A079535	simbinom	0	Euler.phi(Z.valueOf(mN)).multiply(Jaguar.factor(mN).tau()).subtract(mN)	.
+A079536	simjagfa	0	Euler.phi(Z.valueOf(mN)).multiply(fs.tau()).subtract(fs.sigma())	..
+A079537	simbinom	0	Euler.phi(Z.valueOf(2 * mN + 1)).multiply(Jaguar.factor(2 * mN + 1).tau()).subtract(Jaguar.factor(2 * mN + 1).sigma())
+A079538	simjagfa	0	fs.sigma(2).subtract(Euler.phi(Z.valueOf(mN)).square()).subtract(fs.tau().square())
+A079539	simjagfa	0	Jaguar.factor(mN).sigma(3).subtract(Euler.phi(Z.valueOf(mN)).pow(3)).subtract(fs.tau().pow(3))
+A079540	simjagfa	0	Euler.phi(Z.valueOf(mN)).add(fs.tau().multiply(mN - Euler.phiAsLong(mN)).subtract(fs.sigma()))
+A079546	simbinom	0	Jaguar.factor(mN).sigma().subtract(Euler.phi(Z.valueOf(mN)).multiply(4))
+A080323	simbinom	0	Z.valueOf(Mobius.mobius(mN)).pow(mN)	
+A080847	simbinom	0	Z.valueOf(Mobius.mobius(mN)).add(2)	
+A081864	simbinom	0	Jaguar.factor(2 * mN - 1).sigma(5)
+A081865	simbinom	0	Jaguar.factor(2 * mN - 1).sigma(7)
+A081866	simbinom	0	Jaguar.factor(2 * mN - 1).sigma(9)
+A083538	simbinom	0	Jaguar.factor(mN).sigma().multiply(Jaguar.factor(mN + 1).sigma()).divide(Jaguar.factor(mN + 1).sigma().gcd(Jaguar.factor(mN).sigma()).square())
+A083539	simbinom	0	Jaguar.factor(mN).sigma().multiply(Jaguar.factor(mN + 1).sigma())
+A083542	simbinom	0	Euler.phi(Z.valueOf(mN)).multiply(Euler.phi(Z.valueOf(mN + 1)))
+A091304	simbinom	0	Z.valueOf(Jaguar.factor(2 * mN - 1).bigOmega())
+A091986	simbinom	0	Jaguar.factor(2 * mN).sigma(3)
+A092341	simbinom	0	Jaguar.factor(3 * mN).sigma(3)
+A092342	simbinom	0	Jaguar.factor(3 * mN + 1).sigma(3)
+A092343	simbinom	0	Jaguar.factor(3 * mN + 2).sigma(3)
+A092344	simbinom	0	Jaguar.factor(mN).sigma(2).add(Jaguar.factor(mN).sigma(3))
+A092345	simbinom	0	Jaguar.factor(mN).sigma().add(Jaguar.factor(mN).sigma(3))
+A092346	simbinom	0	Jaguar.factor(mN).sigma().add(Jaguar.factor(mN).sigma(2))
+A092347	simbinom	0	Jaguar.factor(mN).sigma().add(Jaguar.factor(mN).sigma(2)).add(Jaguar.factor(mN).sigma(3))
+A092348	simbinom	0	Jaguar.factor(mN).sigma(3).subtract(Jaguar.factor(mN).sigma())
+A092349	simbinom	0	Jaguar.factor(mN).sigma(3).subtract(Jaguar.factor(mN).sigma(2))
+A092350	simbinom	0	Jaguar.factor(mN).sigma(3).subtract(Jaguar.factor(mN).sigma(2)).subtract(Jaguar.factor(mN).sigma())
+A092403	simbinom	0	Jaguar.factor(mN).sigma().add(Jaguar.factor(mN + 1).sigma())
+A092405	simbinom	0	Jaguar.factor(mN).tau().add(Jaguar.factor(mN + 1).tau())
+A092410	simbinom	0	Z.valueOf(Mobius.mobius(mN)).add(Mobius.mobius(mN + 1))	. s
+A092411	simbinom	0	Jaguar.factor(mN).sigma(2).add(Jaguar.factor(mN + 1).sigma(2))
+A099990	simbinom	0	Z.valueOf(Mobius.mobius(2 * mN + 1))	.   sign,easy,changed
+A100388	simbinom	0	BellNumbers.bell(mN).add(Fibonacci.fibonacci(mN))	.  nonn,changed,   0..500  nyi
+A100389	simbinom	0	BellNumbers.bell(mN).subtract(Fibonacci.fibonacci(mN))	.  nonn,changed,synth      0..25
+A105825	simbinom	0	Jaguar.factor(mN).sigma().mod(Z.FIVE)
+A105826	simbinom	0	Jaguar.factor(mN).sigma().mod(Z.SEVEN)
+A105827	simbinom	0	Jaguar.factor(mN).sigma().mod(Z.EIGHT)
+A108223	simbinom	0	Jaguar.factor(mN * mN).sigma(2 * mN).divide(Jaguar.factor(mN * mN).sigma(mN))
+A117291	simbinom	0	Euler.phi(Z.valueOf(mN)).pow(mN - Euler.phiAsLong(mN))
+A117295	simbinom	0	Euler.phi(Z.valueOf(mN)).multiply(mN - Euler.phiAsLong(mN))
+A124897	simbinom	0	Z.valueOf(Mobius.mobius(mN * mN + 1))	, mu = A008683.
+A125287	simbinom	0	Z.valueOf(Mobius.mobius(mN)).multiply(mN * (mN + 1) / 2)	.      sign,easy,chang
+A128261	simbinom	0	Jaguar.factor(mN).tau().add(Jaguar.factor(mN - 1).tau().multiply(mN - 1))
+A129076	simbinom	0	Jaguar.factor(Jaguar.factor(Jaguar.factor(Jaguar.factor(mN).sigma()).sigma()).sigma()).sigma()
+A130674	simbinom	0	MemoryFactorial.SINGLETON.factorial(Jaguar.factor(mN).sigma0().intValue())
+A131637	simbinom	0	Euler.phi(BellNumbers.bell(mN))
+A131928	simbinom	0	Euler.phi(Binomial.binomial(2*mN, mN).multiply(mN))
+A140588	simbinom	0	BellNumbers.bell(mN).multiply(Fibonacci.fibonacci(mN))	.  nonn,changed,synth      0..22
+A143268	simbinom	0	Euler.phi(Z.valueOf(mN)).multiply(mN * (mN + 1) / 2)
+A143272	simbinom	0	Jaguar.factor(mN).tau().multiply(mN * (mN + 1) / 2)
+A144837	simbinom	0	Fibonacci.lucas(Z.FIVE.pow(mN).intValue())	.
+A151948	simbinom	0	Jaguar.factor(Jaguar.factor(Euler.phi(Z.valueOf(mN))).sigma()).tau()
+A152772	simjagfa	0	fs.sigma().subtract(fs.tau().multiply(3)).add(3)
+A153824	simbinom	0	Jaguar.factor(MemoryFactorial.SINGLETON.factorial(mN)).sigma().subtract(MemoryFactorial.SINGLETON.factorial(mN))
+A154415	simbinom	0	Stirling.firstKind(mN, mN / 2)	.  
+A158033	simbinom	0	Jaguar.factor(mN).sigma(Fibonacci.fibonacci(mN).intValue())
+A160680	simbinom	0	Jaguar.factor(Fibonacci.fibonacci(mN - 1)).sigma0().add(Jaguar.factor(Fibonacci.fibonacci(mN - 2)).sigma0())
+A162664	simjagfa	0	fs.sigma().add(fs.tau().square())
+A162665	simjagfa	0	fs.sigma(2).add(fs.sigma().multiply(fs.tau()).multiply(3)).add(fs.tau().pow(3))
+A162964	simbinom	0	Jaguar.factor(Jaguar.factor(Jaguar.factor(Jaguar.factor(Jaguar.factor(mN).sigma()).sigma()).sigma()).sigma()).sigma()
+A163107	simbinom	0	Jaguar.factor(Jaguar.factor(Jaguar.factor(mN).sigma()).tau()).tau()
+A163367	simbinom	0	Euler.phi(Jaguar.factor(Jaguar.factor(mN).sigma()).tau())
+A163371	simbinom	0	Jaguar.factor(Euler.phi(Jaguar.factor(mN).sigma())).tau()
+A163373	simbinom	0	Euler.phi(Euler.phi(Jaguar.factor(mN).sigma()))
+A167368	simbinom	0	Jaguar.factor(MemoryFactorial.SINGLETON.factorial(MemoryFactorial.SINGLETON.doubleFactorial(mN).intValue())).sigma()
+A172155	simbinom	0	Z.valueOf(Jaguar.factor(6 * mN - 1).bigOmega()).multiply(Jaguar.factor(6 * mN + 1).bigOmega())
+A176311	simbinom	0	Jaguar.factor(Z.ONE.shiftLeft(mN).multiply(mN)).sigma()
+A176362	simbinom	0	Jaguar.factor(Z.ONE.shiftLeft(mN - 1).multiply(mN)).sigma()
+A179504	simbinom	0	Jaguar.factor(2 * mN).sigma(mN)
+A180876	simbinom	0	Jaguar.factor(mN).sopfr().subtract(Z.valueOf(mN).sqrt().multiply(Jaguar.factor(mN).bigOmega()))
+A181183	simbinom	0	Jaguar.factor(Jaguar.factor(mN).tau().longValue()).sigma().mod(Z.TWO)
+A186749	simbinom	0	Euler.phi(Z.valueOf(mN).subtract(Euler.phi(Z.valueOf(mN))).add(3))
+A189393	simbinom	0	Euler.phi(Z.valueOf(mN).pow(4))
+A189827	simbinom	0	Jaguar.factor(mN - 1).tau().add(Jaguar.factor(mN + 1).tau())
+A195459	simbinom	0	Euler.phi(Z.valueOf(3 * mN)).divide2()
+A197191	simbinom	0	Euler.phi(Fibonacci.lucas(mN * mN))
+A203838	simbinom	0	Jaguar.factor(mN).sigma(3).multiply(Fibonacci.fibonacci(mN))
+A203847	simbinom	0	Jaguar.factor(mN).tau().multiply(Fibonacci.fibonacci(mN))
+A203848	simbinom	0	Jaguar.factor(mN).sigma().multiply(Fibonacci.fibonacci(mN)) 
+A203849	simbinom	0	Jaguar.factor(mN).sigma(2).multiply(Fibonacci.fibonacci(mN)) 
+A217872	simbinom	0	Jaguar.factor(mN).sigma().pow(mN)
+A217913	simbinom	0	Stirling.secondKind(3 * mN, mN)
+A217914	simbinom	0	Stirling.secondKind(4 * mN, mN)
+A217915	simbinom	0	Stirling.secondKind(5 * mN, mN)
+A222526	simbinom	0	Stirling.secondKind(6 * mN, mN)
+A222527	simbinom	0	Stirling.secondKind(7 * mN, mN)
+A222528	simbinom	0	Stirling.secondKind(8 * mN, mN)
+A222529	simbinom	0	Stirling.secondKind(9 * mN, mN)
+A222530	simbinom	0	Stirling.secondKind(10 * mN, mN)
+A218141	simbinom	0	Stirling.secondKind(mN * mN, mN)	.       nonn,   0..25   nyi     _Paul D. Hann
+A218142	simbinom	0	Stirling.secondKind(mN * mN + mN, mN)	.     nonn,   0..25   nyi     _Paul D. Hann
+A218143	simbinom	0	Stirling.secondKind(mN * (mN + 1) / 2, mN)	. nonn,   0..30   nyi     _Paul D. Hann
+A224440	simbinom	0	Jaguar.factor(mN).sigma().pow(mN - 1)
+A224903	simbinom	0	Jaguar.factor(Z.valueOf(mN).pow(4).multiply2()).sigma().subtract(Jaguar.factor(Z.valueOf(mN).pow(4)).sigma())
+A225528	simbinom	0	Jaguar.factor(mN).sigma().multiply(Fibonacci.lucas(mN))
+A225959	simbinom	0	Jaguar.factor(Z.TWO.multiply(Z.valueOf(mN).pow(3))).sigma().subtract(Jaguar.factor(Z.valueOf(mN).pow(3)).sigma())
+A227241	simjagfa	0	fs.sigma().multiply(fs.sigma().multiply(2).add(1))
+A227733	simbinom	0	Jaguar.factor(2*mN).sigma().square().subtract(Jaguar.factor(mN).sigma().square())
+A228498	simbinom	0	Jaguar.factor(mN * mN).sigma().add(Euler.phi(Z.valueOf(mN * mN))).subtract(2 * mN * mN)
+A231821	simbinom	0	Z.valueOf(Mobius.mobius(mN)).add(3)	
+A236328	simbinom	0	Integers.SINGLETON.sum(1, mN, k -> Jaguar.factor(mN).sigma(k))
+A236329	simbinom	0	Integers.SINGLETON.product(1, mN, k -> Jaguar.factor(mN).sigma(k))
+A239442	simbinom	0	Euler.phi(Z.valueOf(mN).pow(7))
+A239443	simbinom	0	Euler.phi(Z.valueOf(mN).pow(9))	
+A243129	simbinom	0	Jaguar.factor(Jaguar.factor(Jaguar.factor(Jaguar.factor(mN).tau()).tau()).tau()).sigma()
+A243997	simbinom	0	Euler.phi(Jaguar.factor(mN).sigma().subtract(Euler.phi(Z.valueOf(mN))).subtract(Jaguar.factor(mN).tau()))
+A245497	simbinom	0	Euler.phi(Z.valueOf(mN)).square().divide2()	
+A246456	simbinom	0	Jaguar.factor(Jaguar.factor(mN).sigma().add(mN)).sigma()
+A246908	simjagfa	0	Jaguar.factor(fs.sigma().add(mN)).sigma().subtract(fs.sigma())
+A249767	simbinom	0	Z.valueOf(Mobius.mobius(mN)).add(Jaguar.factor(mN).omega())	.        nonn,   1..5000
+A250222	simbinom	0	Euler.phi(Z.valueOf(2 * mN + 1)).subtract(Euler.phi(Z.valueOf(2 * mN)))	
+A252922	simbinom	0	Jaguar.factor(mN - 1).sigma().add(Jaguar.factor(mN - 2).sigma()).add(Jaguar.factor(mN - 3).sigma())	, with a(1)=0, a(2)=1, a(3)=4.
+A255384	simbinom	0	Jaguar.factor(mN).sopfr().square().subtract(2 * mN)
+A256754	simbinom	0	Z.valueOf(mN).and(ZUtils.reverse(Z.valueOf(mN)))	bitwise AND of mN and the reverse of mN.
+A256755	simbinom	0	Z.valueOf(mN).or(ZUtils.reverse(Z.valueOf(mN)))	bitwise OR of mN and the reverse of mN.
+A256756	simbinom	0	Z.valueOf(mN).xor(ZUtils.reverse(Z.valueOf(mN)))	bitwise XOR of mN and the reverse of mN.
+A261768	simbinom	0	Euler.phi(Z.valueOf(mN)).pow(mN).subtract(Z.valueOf(mN).pow(Euler.phiAsLong(mN)))
+A283237	simbinom	0	Jaguar.factor(3 * mN).sigma(2)
+A284438	simbinom	0	Euler.phi(Z.valueOf(mN)).pow(mN)
+A286530	simjagfa	0	Jaguar.factor(fs.tau().add(mN)).tau().subtract(fs.tau())
+A288312	simbinom	0	Stirling.secondKind(2 * mN, mN).multiply(MemoryFactorial.SINGLETON.factorial(mN)).multiply(Binomial.binomial(2 * mN, mN))
+A295012	simbinom	0	Jaguar.factor(12 * mN - 1).sigma().divide(12)
+A295302	simbinom	0	Jaguar.factor(Euler.phi(Z.valueOf(mN))).sigma().subtract(mN)
+A295305	simjagfa	0	Jaguar.factor(fs.sigma()).tau().subtract(fs.tau())
+A295315	simjagfa	0	Euler.phi(fs.sigma()).divide(fs.sigma().gcd(Euler.phi(fs.sigma())))
+A295496	simbinom	0	Euler.phi(Z.SIX.pow(mN).subtract(1)).divide(mN)	
+A295497	simbinom	0	Euler.phi(Z.TEN.pow(mN).subtract(1)).divide(mN)	
+A295501	simbinom	0	Euler.phi(Z.FOUR.pow(mN).subtract(1))	
+A295502	simbinom	0	Euler.phi(Z.FIVE.pow(mN).subtract(1))	
+A302976	simjagfa	0	fs.tau().pow(mN).mod(Z.valueOf(mN).pow(fs.tau()))
+A308570	simbinom	0	Jaguar.factor(mN).sigma(2 * mN)
+A308571	simbinom	0	Jaguar.factor(mN).sigma(mN * mN)
+A319089	simbinom	0	Jaguar.factor(mN).tau().pow(3)
+A319183	simbinom	0	Euler.phi(Z.valueOf(mN).pow(mN).subtract(1)).divide(mN)	 where phi is A000010.
+A319210	simbinom	0	Euler.phi(Z.valueOf(mN * mN - 1)).divide2()	 where phi is A000010.
+A319213	simbinom	0	Euler.phi(Z.valueOf(mN).pow(3).subtract(1)).divide(3)	 where phi is A000010.
+A319214	simbinom	0	Euler.phi(Z.valueOf(mN).pow(5).subtract(1)).divide(5)	where phi is A000010.
+A320917	simjagfa	0	fs.sigma(2).multiply(fs.sigma(3)).divide(fs.sigma())
+A324122	simjagfa	0	fs.sigma().subtract(fs.tau().multiply(mN).gcd(fs.sigma()))
+A329890	simjagfa	0	Jaguar.factor(Z.ONE.shiftLeft(mN).subtract(1)).sigma().subtract(Jaguar.factor(Z.ONE.shiftLeft(mN - 1).subtract(1)).sigma())
+A330323	simbinom	0	Z.valueOf(Mobius.mobius(mN)).multiply(Mobius.mobius(mN + 1))	. s    
+A337524	simjagfa	0	fs.tau().multiply(fs.tau().subtract(1))
+A339965	simjagfa	0	fs.sigma().divide(fs.sigma().gcd(Z.valueOf(mN + 1)))
+A343278	simbinom	0	Stirling.secondKind(mN, new Q(mN, 2).ceiling().longValue())	.      nonn,new,synth  0..25   nyi     _Pete
+A343279	simbinom	0	Stirling.secondKind(mN, mN / 2)	.        nonn,new,synth  0..25   nyi  
+A343910	simbinom	0	Z.valueOf(Mobius.mobius(Euler.phiAsLong(mN)))	
+A344397	simbinom	0	Stirling.secondKind(mN, mN / 2).multiply(MemoryFactorial.SINGLETON.factorial(mN / 2))	  nonn,new,synth  0..22
+A344863	simbinom	0	Z.valueOf(Mobius.mobius(Jaguar.factor(mN).sigma().intValue()))	.    sign,new,synth  1..88
+A348155	simjagfa	0	fs.tau().square().add(Z.valueOf(fs.omega()).multiply(fs.sigma().subtract(fs.tau())))
+A348688	simbinom	0	Jaguar.factor(mN).sigma().add(Jaguar.factor(mN + 1).sigma()).add(Jaguar.factor(mN + 2).sigma()).subtract(Jaguar.factor(mN + 3).sigma())
+A348689	simbinom	0	Jaguar.factor(mN).sigma().add(Jaguar.factor(mN + 1).sigma()).subtract(Jaguar.factor(mN + 2).sigma())
+A353276	simjagfa	0	Euler.phi(Z.valueOf(mN)).add(fs.tau().pow(fs.omega())).subtract(fs.sigma())
+A353644	simjagfa	0	Euler.phi(Z.valueOf(mN)).divide(Euler.phi(Z.valueOf(mN)).gcd(Euler.phi(Jaguar.factor(mN).sigma())))
+A353646	simjagfa	0	Euler.phi(fs.sigma()).divide(Euler.phi(Z.valueOf(mN)).gcd(Euler.phi(fs.sigma())))
+A353768	simbinom	0	Euler.phi(Z.valueOf(mN)).mod(Z.FOUR)	Euler totient function reduced modulo 4.
+A356534	simbinom	0	Jaguar.factor(mN).sigma(3).square()
+A357552	simbinom	0	Jaguar.factor(mN).sigma().multiply(Binomial.binomial(2 * mN - 1, mN))
+A358061	simbinom	0	Euler.phi(Z.valueOf(mN)).mod(Jaguar.factor(mN).tau())
+A358714	simbinom	0	Euler.phi(Z.valueOf(mN)).pow(3)	.
+A358917	simbinom	0	Fibonacci.fibonacci(mN + 1).pow(4).subtract(Fibonacci.fibonacci(mN - 1).pow(4))	.     nonn,
+A358934	simbinom	0	Fibonacci.fibonacci(mN + 1).pow(5).subtract(Fibonacci.fibonacci(mN - 1).pow(5))	.     nonn,easy,new
+A359101	simbinom	0	Euler.phi(Z.valueOf(5 * mN)).divide(4)	.
+A359102	simbinom	0	Euler.phi(Z.valueOf(7 * mN)).divide(6)	.
+A359211	simbinom	0	Jaguar.factor(3 * mN - 1).tau().divide2()
+A360467	simbinom	0	Fibonacci.fibonacci(4 * mN + 2).add(Fibonacci.fibonacci(2 * mN + 1).square().multiply(3))	. nonn,
+A361147	simbinom	0	Jaguar.factor(mN).sigma().pow(3)
+A361148	simbinom	0	Euler.phi(Z.valueOf(mN)).pow(4)	.
+A361179	simbinom	0	Jaguar.factor(mN).sigma().pow(4)
+

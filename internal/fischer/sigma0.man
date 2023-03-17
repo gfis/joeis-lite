@@ -1,0 +1,185 @@
+# sigma0.pl: 154222 jOEIS offsets and some terms read from ../../../OEIS-mat/common/joeis_ofter.txt
+A063375	sigma0	0	A999999	Number of divisors of Fibonacci(n).
+A063440	sigma0	0	A999999	Number of divisors of n-th triangular number.
+A063774	sigma0	0	A999999	Number of divisors of n^2 is a square.
+A063982	sigma0	0	A999999	Number of divisors of 2^n - 1 that are relatively prime to 2^m - 1 for all 0 < m < n.
+A064041	sigma0	0	A064040	Number of divisors of A064040(n).
+A064122	sigma0	0	A999999	Number of divisors of 3^n - 1 that are relatively prime to 3^m - 1 for all 0 < m < n.
+A064123	sigma0	0	A999999	Number of divisors of 5^n - 1 that are relatively prime to 5^m - 1 for all 0 < m < n.
+A064124	sigma0	0	A999999	Number of divisors of 7^n - 1 that are relatively prime to 7^m - 1 for all 0 < m < n.
+A064126	sigma0	0	A999999	Number of divisors of 10^n - 1 that are relatively prime to 10^m - 1 for all 0 < m < n.
+A064127	sigma0	0	A999999	Number of divisors of 11^n - 1 that are relatively prime to 11^m - 1 for all 0 < m < n.
+A064128	sigma0	0	A999999	Number of divisors of 6^n - 1 that are relatively prime to 6^m - 1 for all 0 < m < n.
+A064129	sigma0	0	A999999	Number of divisors of 12^n - 1 that are relatively prime to 12^m - 1 for all 0 < m < n.
+A064130	sigma0	0	A999999	Number of divisors of 2^n + 1 that are relatively prime to 2^m + 1 for all 0 < m < n.
+A064131	sigma0	0	A999999	Number of divisors of 3^n + 1 that are relatively prime to 3^m + 1 for all 0 < m < n.
+A064132	sigma0	0	A999999	Number of divisors of 5^n + 1 that are relatively prime to 5^m + 1 for all 0 < m < n.
+A064133	sigma0	0	A999999	Number of divisors of 6^n + 1 that are relatively prime to 6^m + 1 for all 0 < m < n.
+A064134	sigma0	0	A999999	Number of divisors of 7^n + 1 that are relatively prime to 7^m + 1 for all 0 < m < n.
+A064137	sigma0	0	A999999	Number of divisors of 12^n + 1 that are relatively prime to 12^m + 1 for all 0 < m < n.
+A065773	sigma0	0	A065405	Number of divisors of square of true prime powers arising in A065405.
+A067349	sigma0	0	A065387	Number of divisors of sigma(n)+phi(n).
+A067399	sigma0	0	A999999	Number of divisors of n in OR-numbral arithmetic.
+A067547	sigma0	0	A999999	Number of divisors of n equals the average of distinct prime factors of n.
+A067743	sigma0	0	A999999	Number of divisors of n not in the half-open interval [sqrt(n/2), sqrt(n*2)).
+A070824	sigma0	0	A000027	Number of divisors of n which are > 1 and < n (nontrivial divisors).
+A072056	sigma0	0	A072055	Number of divisors of 2*prime(n)+1.
+A073180	sigma0	0	A999999	Number of divisors of n which are not greater than the squarefree kernel of n.
+A073182	sigma0	0	A999999	Number of divisors of n which are not greater than the cubefree kernel of n.
+A073803	sigma0	0	A999999	Number of divisors of n is smaller than that of sigma(n).
+A073804	sigma0	0	A999999	Number of divisors of n is greater than that of sigma[n].
+A073806	sigma0	0	A999999	Number of divisors of sum of square of divisors.
+A073807	sigma0	0	A999999	Number of divisors of sum of cube of divisors.
+A074369	sigma0	0	A999999	Number of divisors of Sum_{i=1..n} prime(i).
+A076400	sigma0	0	A999999	Number of divisors of n-th perfect power.
+A077418	sigma0	0	A000045	Number of divisors of Fibonacci(n+2)-1.
+A078381	sigma0	0	A999999	Number of divisors of numbers which can be written as sum of a positive square and a positive cube.
+A078664	sigma0	0	A999999	Number of divisors of the n-th Ulam number.
+A078809	sigma0	0	A999999	Number of divisors of the average of consecutive odd primes.
+A079088	sigma0	0	A999999	Number of divisors of (prime(n)+1)*(prime(n+1)+1)/4.
+A079275	sigma0	0	A999999	Number of divisors of n that are semiprimes with distinct factors.
+A080942	sigma0	0	A999999	Number of divisors of n that are also suffixes of n in binary representation.
+A083888	sigma0	0	A999999	Number of divisors of n with largest digit = 1 (base 10).
+A083889	sigma0	0	A999999	Number of divisors of n with largest digit = 2 (base 10).
+A083890	sigma0	0	A999999	Number of divisors of n with largest digit = 3 (base 10).
+A083891	sigma0	0	A999999	Number of divisors of n with largest digit = 4 (base 10).
+A083892	sigma0	0	A999999	Number of divisors of n with largest digit = 5 (base 10).
+A083893	sigma0	0	A999999	Number of divisors of n with largest digit = 6 (base 10).
+A083894	sigma0	0	A999999	Number of divisors of n with largest digit = 7 (base 10).
+A083895	sigma0	0	A999999	Number of divisors of n with largest digit = 8 (base 10).
+A083896	sigma0	0	A999999	Number of divisors of n with largest digit = 9 (base 10).
+A083897	sigma0	0	A999999	Number of divisors of n with largest digit <= 2 (base 10).
+A083898	sigma0	0	A999999	Number of divisors of n with largest digit <= 3 (base 10).
+A083899	sigma0	0	A999999	Number of divisors of n with largest digit <= 4 (base 10).
+A083900	sigma0	0	A999999	Number of divisors of n with largest digit <= 5 (base 10).
+A083901	sigma0	0	A999999	Number of divisors of n with largest digit <= 6 (base 10).
+A083902	sigma0	0	A999999	Number of divisors of n with the largest digit of the divisor <= 7 (base 10).
+A083903	sigma0	0	A999999	Number of divisors of n with largest digit <= 8 (base 10).
+A083910	sigma0	0	A999999	Number of divisors of n that are congruent to 0 modulo 10.
+A083911	sigma0	0	A999999	Number of divisors of n that are congruent to 1 modulo 10.
+A083912	sigma0	0	A999999	Number of divisors of n that are congruent to 2 modulo 10.
+A083913	sigma0	0	A999999	Number of divisors of n that are congruent to 3 modulo 10.
+A083914	sigma0	0	A999999	Number of divisors of n that are congruent to 4 modulo 10.
+A083915	sigma0	0	A999999	Number of divisors of n that are congruent to 5 modulo 10.
+A083916	sigma0	0	A999999	Number of divisors of n that are congruent to 6 modulo 10.
+A083917	sigma0	0	A999999	Number of divisors of n that are congruent to 7 modulo 10.
+A083918	sigma0	0	A999999	Number of divisors of n that are congruent to 8 modulo 10.
+A083919	sigma0	0	A999999	Number of divisors of n that are congruent to 9 modulo 10.
+A085627	sigma0	0	A999999	Number of divisors of n-th highly powerful number.
+A086292	sigma0	0	A999999	Number of divisors of 7-smooth numbers.
+A086416	sigma0	0	A999999	Number of divisors of 3-smooth numbers.
+A087024	sigma0	0	A999999	Number of divisors of n-th cyclic number.
+A087133	sigma0	0	A999999	Number of divisors of n that are not greater than the greatest prime-factor of n; a(1)=1.
+A088843	sigma0	0	A999999	Number of divisors of multiply-perfect numbers.
+A089284	sigma0	0	A999999	Number of divisors of floor(Pi*10^n), Pi=3.14...
+A089371	sigma0	0	A999999	Number of divisors of n that do not exceed the abundance of n.
+A090329	sigma0	0	A999999	Number of divisors of n that are prefixes of other divisors of n in binary representation.
+A090346	sigma0	0	A001043	Number of divisors of prime(n) + prime(n+1).
+A090498	sigma0	0	A999999	Number of divisors of all the numbers from (1/2)n(n-1)+1 to n(n+1)/2, i.e., tau(1), tau(2)+tau(3), tau(4)+tau(5)+tau(6), tau(7)+tau(8)+tau(9)+tau(10), ..., where tau(j) is the number of divisors of j.
+A091050	sigma0	0	A999999	Number of divisors of n that are perfect powers.
+A091220	sigma0	0	A999999	Number of divisors of the n-th GF(2)[X]-polynomial.
+A093640	sigma0	0	A999999	Number of divisors of n whose binary representation is contained in that of n.
+A093993	sigma0	0	A999999	Number of divisors of n with a prime digital sum.
+A095960	sigma0	0	A999999	Number of divisors of n that are less than the squarefree kernel of n.
+A095997	sigma0	0	A999999	Number of divisors of n! that are coprime to n.
+A095999	sigma0	0	A999999	Number of divisors of n that are < log(n).
+A098109	sigma0	0	A999999	Number of divisors of a(n)! exceeds 10^n.
+A098895	sigma0	0	A002201	Number of divisors of the n-th superior highly composite number.
+A099774	sigma0	0	A005408	Number of divisors of 2*n-1.
+A101756	sigma0	0	A076711	Number of divisors of highly composite triangular numbers.
+A103178	sigma0	0	A019518	Number of divisors of the decimal concatenation of the first n primes.
+A103189	sigma0	0	A048795	Number of divisors of prime p concatenated p times.
+A103578	sigma0	0	A999999	Number of divisors of m^2, where m is the smallest number with at least n divisors.
+A103859	sigma0	0	A103855	Number of divisors of prime(n)! - prime(n)# + 1.
+A103894	sigma0	0	A103890	Number of divisors of prime(n)! / prime(n)# + 1.
+A105191	sigma0	0	A999999	Number of divisors of n100000000001.
+A105192	sigma0	0	A999999	Number of divisors of n101.
+A105193	sigma0	0	A999999	Number of divisors of n1001.
+A105351	sigma0	0	A019519	Number of divisors of 135....(2n+1), the concatenation of the first n odd numbers.
+A105388	sigma0	0	A019520	Number of divisors of concatenated even numbers.
+A117215	sigma0	0	A114536	Number of divisors of x^n-1 having the maximal height A114536(n).
+A121041	sigma0	0	A999999	Number of divisors of n that are also contained in the decimal representation of n.
+A129292	sigma0	0	A999999	Number of divisors of n^4 - 1 that are not greater than n.
+A129294	sigma0	0	A999999	Number of divisors of n^3 - 1 that are not greater than n.
+A129296	sigma0	0	A999999	Number of divisors of n^2 - 1 that are not greater than n.
+A130331	sigma0	0	A123240	Number of divisors of A123240(n).
+A130451	sigma0	0	A123193	Number of divisors of A123193(n).
+A132650	sigma0	0	A999999	Number of divisors of n, d(n) raised to power d(n).
+A133202	sigma0	0	A000594	Number of divisors of the absolute value of Ramanujan tau numbers.
+A138707	sigma0	0	A999999	Number of divisors of n that are also divisors of some d(k)*10^k, where n=Sum(d(k)*10^k).
+A140410	sigma0	0	A138113	Number of divisors of A138113(n).
+A141264	sigma0	0	A999999	Number of divisors of m^2 where m is the smallest number with exactly n divisors.
+A161506	sigma0	0	A999999	Number of divisors of n that are greater than phi(n)/2, where phi is Euler's totient function.
+A164978	sigma0	0	A999999	Number of divisors of n*(n+1)/2 that are >= n.
+A166469	sigma0	0	A999999	Number of divisors of n which are not multiples of consecutive primes.
+A167447	sigma0	0	A999999	Number of divisors of n which are not multiples of 3 consecutive primes.
+A169594	sigma0	0	A999999	Number of divisors of n, counting divisor multiplicity in n.
+A175462	sigma0	0	A004770	Number of divisors of integers of form 5 + 8n.
+A181805	sigma0	0	A181804	Number of divisors of A181804(n) that are highly composite (A002182).
+A181807	sigma0	0	A181806	Number of divisors of A181806(n) that are highly composite (A002182).
+A193432	sigma0	0	A002522	Number of divisors of n^2 + 1.
+A193562	sigma0	0	A002523	Number of divisors of n^4+1.
+A195052	sigma0	0	A183010	Number of divisors of 24*n - 1 divided by 2.
+A216325	sigma0	0	A999999	Number of divisors of the degree of the minimal polynomial for 2*cos(Pi/n), n >= 1.
+A217984	sigma0	0	A999999	Number of divisors of n^3 + 1 of the form a^3 + 1.
+A229949	sigma0	0	A999999	Number of divisors of the n-th positive quarter-square.
+A242585	sigma0	0	A001110	Number of divisors of the n-th positive number that is both triangular and square.
+A243982	sigma0	0	A999999	Number of divisors of n minus the number of parts in the symmetric representation of sigma(n).
+A249784	sigma0	0	A999999	Number of divisors of n^(n^n).
+A276681	sigma0	0	A999999	Number of divisors of the n-th octagonal number.
+A276682	sigma0	0	A999999	Number of divisors of the n-th 9-gonal number.
+A276683	sigma0	0	A999999	Number of divisors of the n-th 10-gonal number.
+A279060	sigma0	0	A999999	Number of divisors of n of the form 6*k + 1.
+A279061	sigma0	0	A999999	Number of divisors of n of the form 7*k + 1.
+A279081	sigma0	0	A999999	Number of divisors of the n-th tetrahedral number.
+A294883	sigma0	0	A999999	Number of divisors of n that are irreducible when their binary expansion is interpreted as polynomial over GF(2).
+A294884	sigma0	0	A999999	Number of divisors of n that are not irreducible when their binary expansion is interpreted as polynomial over GF(2).
+A294890	sigma0	0	A091191	Number of divisors of n that are primitively abundant (A091191).
+A294903	sigma0	0	A257691	Number of divisors of n that are in A257691.
+A294904	sigma0	0	A175526	Number of divisors of n that are in A175526.
+A304817	sigma0	0	A999999	Number of divisors of n that are either 1 or not a perfect power.
+A305436	sigma0	0	A999999	Number of divisors of n of the form 2^k + 1 for k >= 0.
+A318979	sigma0	0	A289509	Number of divisors of n with relatively prime prime indices, meaning they belong to A289509.
+A319995	sigma0	0	A999999	Number of divisors of n of the form 6*k + 5.
+A323305	sigma0	0	A999999	Number of divisors of the number of prime factors of n counted with multiplicity.
+A324191	sigma0	0	A297167	Number of divisors of n minus the number of distinct values that A297167 obtains over the divisors > 1 of n: a(n) = A000005(n) - A324190(n).
+A325339	sigma0	0	A999999	Number of divisors of n^3 that are <= n.
+A325801	sigma0	0	A999999	Number of divisors of n minus the number of distinct positive subset-sums of the prime indices of n.
+A326196	sigma0	0	A999999	Number of divisors of n that are reachable from n with some combination of transitions x -> gcd(x,sigma(x)) and x -> gcd(x,phi(x)).
+A326197	sigma0	0	A999999	Number of divisors of n that are not reachable from n with any combination of transitions x -> gcd(x,sigma(x)) and x -> gcd(x,phi(x)).
+A327391	sigma0	0	A999999	Number of divisors of n that are 1, prime, or whose prime indices are pairwise coprime.
+A327513	sigma0	0	A999999	Number of divisors of n that are 1, 2, or a nonprime number whose prime indices are pairwise coprime.
+A327530	sigma0	0	A999999	Number of divisors of n that are 1 or whose prime indices are relatively prime.
+A327536	sigma0	0	A999999	Number of divisors of n that are 1, prime, or whose prime indices are relatively prime.
+A327657	sigma0	0	A999999	Number of divisors of n that are 1 or whose prime indices have a common divisor > 1.
+A328043	sigma0	0	A259180	Number of divisors of the amicable pairs.
+A329605	sigma0	0	A108951	Number of divisors of A108951(n), where A108951 is fully multiplicative with a(prime(i)) = prime(i)# = Product_{i=1..i} A000040(i).
+A336414	sigma0	0	A999999	Number of divisors of n! with distinct prime multiplicities.
+A336415	sigma0	0	A999999	Number of divisors of n! with equal prime multiplicities.
+A339526	sigma0	0	A999999	Number of divisors of n that are adjacent to at least one prime.
+A339558	sigma0	0	A999999	Number of divisors of 2n that are the average of a pair of twin primes.
+A339915	sigma0	0	A999999	Number of divisors of n with the same number of decimal digits as n.
+A345219	sigma0	0	A999999	Number of divisors of n with an odd number of primes not exceeding them.
+A345220	sigma0	0	A999999	Number of divisors of n with an even number of primes not exceeding them.
+A345222	sigma0	0	A999999	Number of divisors of n with a prime number of divisors.
+A345957	sigma0	0	A999999	Number of divisors of n with exactly half as many prime factors as n, counting multiplicity.
+A347191	sigma0	0	A005563	Number of divisors of n^2-1.
+A347516	sigma0	0	A999999	Number of divisors of n that are at most n^(1/3).
+A347526	sigma0	0	A999999	Number of divisors of n that are at most n^(1/4).
+A351394	sigma0	0	A999999	Number of divisors of n that are either squarefree, prime powers, or both.
+A351408	sigma0	0	A999999	Number of divisors of n that are either trivial or are nonsquares with a square divisor > 1.
+A351411	sigma0	0	A999999	Number of divisors of n not of the form p^p, p prime.
+A351414	sigma0	0	A999999	Number of divisors of n that are either prime or have at least 1 square divisor > 1 and at least two distinct prime factors.
+A351416	sigma0	0	A999999	Number of divisors of n that are either squarefree semiprimes, numbers of the form p^k (p prime, k>1), or numbers with at least one square divisor > 1 and 3 or more distinct prime factors.
+A351417	sigma0	0	A999999	Number of divisors of n that are either prime or have at least one square divisor > 1.
+A351418	sigma0	0	A999999	Number of divisors of n that are either of the form p^k (p prime, k>1) or are nonprime squarefree numbers.
+A353235	sigma0	0	A999999	Number of divisors of n whose arithmetic derivative is odd.
+A353236	sigma0	0	A999999	Number of divisors of n whose arithmetic derivative is even.
+A353371	sigma0	0	A999999	Number of divisors of n that are not in A325698.
+A353375	sigma0	0	A999999	Number of divisors of n that are not in A345452.
+A353381	sigma0	0	A999999	Number of divisors of n not in A353355.
+A356069	sigma0	0	A999999	Number of divisors of n whose prime indices cover an interval of positive integers (A073491).
+A356224	sigma0	0	A999999	Number of divisors of n whose prime indices cover an initial interval of positive integers.
+A356225	sigma0	0	A999999	Number of divisors of n whose prime indices do not cover an initial interval of positive integers.
+A357879	sigma0	0	A999999	Number of divisors of n with the same sum of prime indices as their quotient. Central column of A321144, taking gaps as 0's.
+A360119	sigma0	0	A999999	Number of divisors of n which are not also differences between consecutive divisors, minus the number of differences between consecutive divisors of n which are not also divisors of n. Here the differences are counted with repetition if they occur more than once.

@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-12-19: V4.9: BellNumbers, Mobius
 # 2022-12-19: V4.8: do not import if it is imported with subpackage
 # 2022-09-25: V4.7: recur.{Period|Padding}Sequence
 # 2022-05-05: V4.6: ZString
@@ -59,7 +60,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V4.8";
+my $version_id  = "gen_seq4.pl V4.9";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -349,16 +350,18 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WBinomial\.}      ) { $imports{"irvine.math.z.Binomial"}                = $itype; }
     if ($line =~ m{\WIntegerUtils\.}  ) { $imports{"irvine.math.IntegerUtils"}              = $itype; }
     if ($line =~ m{\WLongUtils\.}     ) { $imports{"irvine.math.LongUtils"}                 = $itype; }
-    if ($line =~ m{\WStirling\.}      ) { $imports{"irvine.math.z.Stirling"}                = $itype; }
     if ($line =~ m{\WFACTORIAL\.}     ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
-    if ($line =~ m{\WFibonacci\.}     ) { $imports{"irvine.math.z.Fibonacci"}               = $itype; }
     if ($line =~ m{\WMemoryFactorial} ) { $imports{"irvine.math.factorial.MemoryFactorial"} = $itype; }
-    if ($line =~ m{\WStringUtils\.}   ) { $imports{"irvine.util.string.StringUtils"}        = $itype; }
+    if ($line =~ m{\WBellNumbers\.}   ) { $imports{"irvine.math.z.BellNumbers"     }        = $itype; }
+    if ($line =~ m{\WFibonacci\.}     ) { $imports{"irvine.math.z.Fibonacci"}               = $itype; }
+    if ($line =~ m{\WEuler\.}         ) { $imports{"irvine.math.z.Euler"           }        = $itype; }
+    if ($line =~ m{\WStirling\.}      ) { $imports{"irvine.math.z.Stirling"}                = $itype; }
     if ($line =~ m{\WQ\W}             ) { $imports{"irvine.math.q.Q"}                       = $itype; }
     if ($line =~ m{\WZ\W}             ) { $imports{"irvine.math.z.Z"}                       = $itype; }
     if ($line =~ m{\WCR\W}            ) { $imports{"irvine.math.cr.CR"}                     = $itype; }
     if ($line =~ m{\WComputableReals} ) { $imports{"irvine.math.cr.ComputableReals"}        = $itype; }
     if ($line =~ m{\WUnaryCRFunction} ) { $imports{"irvine.math.cr.UnaryCRFunction"}        = $itype; }
+    if ($line =~ m{\WMobius}          ) { $imports{"irvine.math.Mobius"}                    = $itype; }
     if ($line =~ m{\WAbsoluteSequence}) { $imports{"irvine.oeis.AbsoluteSequence"  }        = $itype; }
     if ($line =~ m{\WLinearRecurrence}) { $imports{"irvine.oeis.recur.LinearRecurrence"}    = $itype; }
     if ($line =~ m{\WPaddingSequence} ) { $imports{"irvine.oeis.recur.PaddingSequence" }    = $itype; }
@@ -368,7 +371,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }        = $itype; }
     if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}        = $itype; }
     if ($line =~ m{\WJaguar\.}        ) { $imports{"irvine.factor.factor.Jaguar"   }        = $itype; }
-    if ($line =~ m{\WEuler\.}         ) { $imports{"irvine.math.z.Euler"           }        = $itype; }
+    if ($line =~ m{\WStringUtils\.}   ) { $imports{"irvine.util.string.StringUtils"}        = $itype; }
     delete($imports{"irvine.oeis.Sequence"});
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase

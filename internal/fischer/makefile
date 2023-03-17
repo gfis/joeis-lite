@@ -5046,7 +5046,7 @@ sigman1: # manually a(k) = A000203(Annnnnn(k))
 	wc   -l  $@.gen
 #----
 simbinom:
-	grep -E "^A[0-9]" $@.man > $@.gen
+	grep -E "^A[0-9]+" $@.man > $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #----

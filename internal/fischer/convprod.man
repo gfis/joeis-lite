@@ -1,0 +1,21 @@
+#*# A064053	convprod	0	-1,1	new A000041(), new A000025()	Convolution of this sequence and {{A000041}} is {{A000025}}
+#*# A094945	convprod	0	1,1	new A023532(), new A011557()	Convolution of {{A023532}}(n) and 10^n
+#*# A101556	convprod	0	1,1	new A010060(), new A011557()	Convolution of {{A010060}} and 10^n.
+#*# A130579	convprod	0	1,1	new A000108(), new A001764()	Convolution of {{A000108}} (Catalan numbers) and {{A001764}} (ternary trees)
+#*# A167479	convprod	0	1,1	new A000108(), new A122803()	Convolution of the Catalan numbers {{A000108}}(n) and (-2)^n.
+#*# A175704	convprod	0	1,1	new A008472(), new A008472()	Auto-convolution of {{A008472}}
+#*# A178841	convprod	0	-1,1	new A000041(), new A001782()	The convolution of a(n) with {{A000041}}(n), the partitions of n, is {{A001782}}(n).
+#*# A187662	convprod	0	1,1	new A187535(), new A007820()	Convolution of the (signless) central Lah numbers ({{A187535}}) and the central Stirling numbers of the second kind ({{A007820}}).
+#*# A275388	convprod	0	1,1	new SkipSequence(new A000045(), 1), new A000041()	Convolution of Fibonacci numbers ({{A000045}}) and partition numbers ({{A000041}}).
+#*# A334768	convprod	0	1,1	new A061397(), new A061397()	Self-convolution of {{A061397}}.
+#*# A334895	convprod	0	1,1	new A000040(), new A010815()	Convolution of primes with {{A010815}}.
+#*#   
+#*# # 2023-02-25  
+#*# A128378	convprod	0	24,1	new A000012(), new A000594()	
+#*# A128379	convprod	0	23,1	new A000012(), new A000594()	
+#----
+# 2023-02-28 *BF
+A289062	convprod	0	12,-1	new A006352(), new A000594()	Coefficients in expansion of E_2^12/Product_{k>=1} (1-q^k)^24.
+A289344	convprod	0	1/2,-1	new A006352(), new A010815()	Coefficients in expansion of E_2^(1/2)/Product_{k>=1} (1-q^k).
+A289350	convprod	0	1,-1	new A006352(), new A002107()	Coefficients in expansion of E_2/Product_{k>=1} (1-q^k)^2.
+A289571	convprod	0	1,1	new A000594(), new A289570()	Coefficients in expansion of q * Product_{n>=1} (1 - q^n)^24/E_6^(3/2).
