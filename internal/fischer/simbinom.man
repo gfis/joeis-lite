@@ -276,8 +276,86 @@ A358934	simbinom	0	Fibonacci.fibonacci(mN + 1).pow(5).subtract(Fibonacci.fibonac
 A359101	simbinom	0	Euler.phi(Z.valueOf(5 * mN)).divide(4)	.
 A359102	simbinom	0	Euler.phi(Z.valueOf(7 * mN)).divide(6)	.
 A359211	simbinom	0	Jaguar.factor(3 * mN - 1).tau().divide2()
-A360467	simbinom	0	Fibonacci.fibonacci(4 * mN + 2).add(Fibonacci.fibonacci(2 * mN + 1).square().multiply(3))	. nonn,
+A360467	simbinom	0	Fibonacci.fibonacci(4 * mN + 2).add(Fibonacci.fibonacci(2 * mN + 1).square().multiply(3))
 A361147	simbinom	0	Jaguar.factor(mN).sigma().pow(3)
-A361148	simbinom	0	Euler.phi(Z.valueOf(mN)).pow(4)	.
+A361148	simbinom	0	Jaguar.factor(mN).phi().pow(4)
 A361179	simbinom	0	Jaguar.factor(mN).sigma().pow(4)
+
+#---- 2023-03-19
+A351265	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 2).multiply(LongUtils.pow(Mobius.mobius(d), 2)))
+A351266	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 3).multiply(LongUtils.pow(Mobius.mobius(d), 2)))
+A351267	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 4).multiply(LongUtils.pow(Mobius.mobius(d), 2)))
+A351268	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 5).multiply(LongUtils.pow(Mobius.mobius(d), 2)))
+A351269	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 6).multiply(LongUtils.pow(Mobius.mobius(d), 2)))
+A351270	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 7).multiply(LongUtils.pow(Mobius.mobius(d), 2)))
+A351271	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 8).multiply(LongUtils.pow(Mobius.mobius(d), 2)))
+A351272	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 9).multiply(LongUtils.pow(Mobius.mobius(d), 2)))
+A351273	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow(10).multiply(LongUtils.pow(Mobius.mobius(d),2)))
+# a(n) = Sum_{d^2|n} (d^2)^3
+A351307	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow( 2)))
+A351308	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow( 3)))
+A351309	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow( 4)))
+A351310	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow( 5)))
+A351311	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow( 6)))
+A351313	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow( 7)))
+A351314	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow( 8)))
+A351315	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow( 9)))
+A351316	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Z.ZERO : Z.valueOf(d).pow(10)))
+# a(n) = Sum_{d|n} d^5 * mu(n/d)^2.
+A351300	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 5).multiply(LongUtils.pow(Mobius.mobius(mN / d), 2)))
+A351301	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 6).multiply(LongUtils.pow(Mobius.mobius(mN / d), 2)))
+A351302	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 7).multiply(LongUtils.pow(Mobius.mobius(mN / d), 2)))
+A351303	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 8).multiply(LongUtils.pow(Mobius.mobius(mN / d), 2)))
+A351304	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow( 9).multiply(LongUtils.pow(Mobius.mobius(mN / d), 2)))
+A351305	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Z.valueOf(d).pow(10).multiply(LongUtils.pow(Mobius.mobius(mN / d), 2)))  
+# a(n) = n^3 * Sum_{d^2|n} 1 / d^3.
+A340774	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt()        ))).multiply(Z.valueOf(mN)        ).num()
+A351600	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow( 2)))).multiply(Z.valueOf(mN).pow( 2)).num()
+A351601	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow( 3)))).multiply(Z.valueOf(mN).pow( 3)).num()
+A351602	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow( 4)))).multiply(Z.valueOf(mN).pow( 4)).num()
+A351603	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow( 5)))).multiply(Z.valueOf(mN).pow( 5)).num()
+A351604	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow( 6)))).multiply(Z.valueOf(mN).pow( 6)).num()
+A351605	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow( 7)))).multiply(Z.valueOf(mN).pow( 7)).num()
+A351606	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow( 8)))).multiply(Z.valueOf(mN).pow( 8)).num()
+A351607	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow( 9)))).multiply(Z.valueOf(mN).pow( 9)).num()
+A351608	simbinom	0	Rationals.SINGLETON.sumdiv(mN, d -> (!Z.valueOf(d).isSquare() ? Q.ZERO : new Q(Z.ONE, Z.valueOf(d).sqrt().pow(10)))).multiply(Z.valueOf(mN).pow(10)).num()
+   
+# (1/n) * Sum_{d|n} moebius(n/d) * Lucas(d)^2  
+A203853	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Fibonacci.lucas(d).pow(2).multiply(Mobius.mobius(mN / d))).divide(mN)
+A203854	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Fibonacci.lucas(d).pow(3).multiply(Mobius.mobius(mN / d))).divide(mN)
+A203855	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Fibonacci.lucas(d).pow(4).multiply(Mobius.mobius(mN / d))).divide(mN)
+A203856	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Fibonacci.lucas(d).pow(5).multiply(Mobius.mobius(mN / d))).divide(mN)
+A203857	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Fibonacci.lucas(d).pow(6).multiply(Mobius.mobius(mN / d))).divide(mN)
+A203858	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Fibonacci.lucas(d).pow(7).multiply(Mobius.mobius(mN / d))).divide(mN)
+A203859	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Fibonacci.lucas(d).pow(8).multiply(Mobius.mobius(mN / d))).divide(mN)
+# Sum_{d|n} phi(d)^4 
+A342470	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).phi().pow(4))
+A342487	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).phi().pow(mN + 1))
+A342490	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).phi().pow(mN - 1))
+# Sum_{d|n} phi(n/d) * tau(d)^3
+A344132	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(mN / d).phi().multiply(Jaguar.factor(d).tau().pow(3)))
+A344138	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(mN / d).phi().multiply(Jaguar.factor(d).tau().pow(4)))
+A344139	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(mN / d).phi().multiply(Jaguar.factor(d).tau().pow(5)))
+A344140	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(mN / d).phi().multiply(Jaguar.factor(d).tau().pow(mN)))
+
+A065018	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).sigma().pow(2))
+A342470	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).phi().pow(4))
+A342471	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).phi().pow(mN))
+A344044	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).sigma().pow(3))
+A344047	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).sigma().pow(d))
+A344060	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).sigma().pow(mN))	a(n) = Sum_{d|n} sigma(d)^n
+A344061	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).sigma().pow(mN / d))
+A344080	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).tau().pow(mN))	a(n) = Sum_{d|n} tau(d)^n
+A344081	simbinom	0	Integers.SINGLETON.sumdiv(mN, d -> Jaguar.factor(d).tau().pow(d))
+
+A136505	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(1), Z.valueOf(mN))
+A136506	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(2), Z.valueOf(mN))
+A136556	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).subtract(1), Z.valueOf(mN))
+A132683	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(mN), Z.valueOf(mN))	 + n, n).
+A132684	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(mN + 1), Z.valueOf(mN))	 + n + 1, n).
+A132685	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(2 * mN), Z.valueOf(mN))	 + 2*n, n).
+A132686	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(2 * mN + 1), Z.valueOf(mN))	 + 2*n + 1, n).
+A132687	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(3 * mN - 1), Z.valueOf(mN))	 + 3*n - 1, n).
+A132688	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(3 * mN), Z.valueOf(mN))	 + 3*n, n).
+A132689	simbinom	0	Binomial.binomial(Z.ONE.shiftLeft(mN).add(3 * mN + 1), Z.valueOf(mN))	 + 3*n + 1, n).
 
