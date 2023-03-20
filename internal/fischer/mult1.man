@@ -152,3 +152,4 @@ A344335	mult	0	Z.valueOf(8 * e + 1)	Multiplicative with a(p^e) = 8*e+1.
 A344336	mult	0	Z.valueOf(9 * e + 1)	Multiplicative with a(p^e) = 9*e+1.
 A344337	mult	0	Z.NINE	Multiplicative with a(p^e) = 9.
 
+A071786	mult	0	ZUtils.reverse(p).pow(e)

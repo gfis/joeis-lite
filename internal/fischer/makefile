@@ -4228,6 +4228,11 @@ multb:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+multm:
+	grep -E "^A[0-9]" mult1.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 n2:
 	cat $(COMMON)/jcat25.txt \
@@ -5046,6 +5051,10 @@ sigman1: # manually a(k) = A000203(Annnnnn(k))
 	wc   -l  $@.gen
 #----
 simbinom:
+	grep -E "^A[0-9]+" $@.man > $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
+simple:
 	grep -E "^A[0-9]+" $@.man > $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
