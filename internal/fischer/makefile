@@ -5058,6 +5058,12 @@ simple:
 	grep -E "^A[0-9]+" $@.man > $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
+simple3:
+	grep -E "^A[0-9]+" $@.man \
+	| grep -vE "A234599|A286299|A308867|A349606" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc   -l  $@.gen
 #----
 knestpark: # remember A-numbers in ./park
 	ls -1 park | sed -e "s/\./\t1\t/" > $@.tmp
