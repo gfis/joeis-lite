@@ -151,5 +151,10 @@ A343526	mult	0	Z.valueOf(7 * e + 1)	Multiplicative with a(p^e) = 7*e+1.
 A344335	mult	0	Z.valueOf(8 * e + 1)	Multiplicative with a(p^e) = 8*e+1.
 A344336	mult	0	Z.valueOf(9 * e + 1)	Multiplicative with a(p^e) = 9*e+1.
 A344337	mult	0	Z.NINE	Multiplicative with a(p^e) = 9.
-
 A071786	mult	0	ZUtils.reverse(p).pow(e)
+
+# 2023-03-25
+A145378	mult	0	is2(p) ? Z.ONE.shiftLeft(e + 2).subtract(Z.THREE.multiply(e + 1)) : p.multiply(p.pow(e + 1).add(-1)).subtract(p.add(-1).multiply(e + 1)).divide(p.add(-1).square())	# a(2^e) = 2^(e+2) - 3*(e+1) and a(p^e) = (p*(p^(e+1)-1) - (p-1)*(e+1))/(p-1)^2 if p > 2.
+A145396	mult	0	is2(p) ? Z.ONE.shiftLeft(e + 1).multiply(5).subtract(4 * e + 9) : p.multiply(p.pow(e + 1).add(-1)).subtract(p.add(-1).multiply(e + 1)).divide(p.add(-1).square())	# a(2^e) = 2^(e+2) - 3*(e+1) and a(p^e) = (p*(p^(e+1)-1) - (p-1)*(e+1))/(p-1)^2 if p > 2.
+A145398	mult	0	is2(p) ? Z.ONE.shiftLeft(e + 1).multiply(3).subtract(4 * e + 5) : p.multiply(p.pow(e + 1).add(-1)).subtract(p.add(-1).multiply(e + 1)).divide(p.add(-1).square())	# a(2^e) = 2^(e+2) - 3*(e+1) and a(p^e) = (p*(p^(e+1)-1) - (p-1)*(e+1))/(p-1)^2 if p > 2.
+A349469	mult	1	p.pow(e).multiply(p.pow(2 * e).add(-1)).multiply(p.add(-1)).divide(p.add(1))	a(p^e) = p^e * (p^(2*e)-1) * (p-1) / (p+1) for e > 0 and prime p.

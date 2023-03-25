@@ -3,6 +3,7 @@ package irvine.oeis.$(PACK);
 
 import irvine.math.z.Z;
 import irvine.oeis.AbstractSequence;
+import irvine.oeis.DirichletConvolutionSequence;
 import irvine.oeis.DirichletInverseSequence;
 
 /**
@@ -11,7 +12,7 @@ import irvine.oeis.DirichletInverseSequence;
  */
 public class $(ASEQNO) extends AbstractSequence {
 
-  private final DirichletInverseSequence mSeq = new DirichletInverseSequence($(PARM1));
+  private final DirichletConvolutionSequence mSeq = new DirichletConvolutionSequence($(PARM1), $(PARM2), new DirichletInverseSequence($(PARM3)), 0);
 
   /** Construct the sequence. */
   public $(ASEQNO)() {

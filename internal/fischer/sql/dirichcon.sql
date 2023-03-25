@@ -1,10 +1,12 @@
--- dirichcon.sql - Patches for dirichcon
+-- dirichcon.sql
 -- @(#) $Id$
--- 2021-04-22, Georg Fischer
---
-UPDATE seq4 SET parm5 = 0, callcode = 'dirichcop2' WHERE aseqno IN 
-  ('A054617','A251662');
-UPDATE seq4 SET parm5 = 1, callcode = 'dirichcop2' WHERE aseqno IN 
-  ('A323765','A323766');
--- DELETE FROM seq4 WHERE aseqno IN ('A159046','A185291','A299149','A328484','A328721','A328851','A328876','A340774');
+-- 2023-04-24, Georg Fischer
+
+-- A349612  dirichcon2  1   new A342001()   1   new A325126()   1   
+--                          parm1               12345678        parm4
+DELETE FROM seq4 WHERE SUBSTR(parm1, 5, 7) NOT IN (select aseqno FROM joeis);
+DELETE FROM seq4 WHERE SUBSTR(parm3, 5, 7) NOT IN (select aseqno FROM joeis) AND s.callcode LIKE 'dirichc%';
+COMMIT;
+UPDATE seq4 s SET parm2 = (SELECT offset1 FROM asinfo i WHERE i.aseqno = SUBSTR(s.parm1, 5, 7));
+UPDATE seq4 s SET parm4 = (SELECT offset1 FROM asinfo i WHERE i.aseqno = SUBSTR(s.parm3, 5, 7) AND s.callcode LIKE 'dirichc%');
 COMMIT;
