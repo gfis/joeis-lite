@@ -1,0 +1,37 @@
+grep -E "%[NF]" jcat25.txt | grep -Pi "catalan\(" > catalan.man
+A062627	simbinom	0	Binomial.catalan(mN).multiply(Mobius.mobius(mN))	a(n) = mu(n) * Catalan(n).
+A063017	simbinom	0	Binomial.catalan(mN).multiply(Z.THREE.pow(mN + 1).subtract(Z.ONE.shiftLeft(mN + 1)).add(1).divide2())	a(n) = Catalan(n)*(3^(n+1) - 2^(n+1) + 1)/2.
+A067770	simbinom	0	Binomial.catalan(mN).mod(Z.TWO.add(mN))	a(n) = Catalan(n) mod (n+2).
+A079103	simbinom	0	Binomial.catalan(mN).pow(2 * mN - 2)	Catalan(n)^(2n-2).
+A099398	simbinom	0	new Q(Binomial.catalan(mN), Z.ONE.shiftLeft(2 * mN - 1).multiply(mN + 2)).num()	a(n) = numerator(A(n)) with A(n):= Catalan(n)/((n+2)*2^(2*n-1)) where Catalan(n):=A000108(n)=binomial(2*n, n)/(n+1).
+A119549	simbinom	0	Binomial.binomial(Binomial.catalan(mN), Z.FOUR)	Binomial( Catalan(n), 4).
+A170829	simbinom	0	Binomial.catalan(mN).gcd(MemoryFactorial.SINGLETON.factorial(mN))	a(n) = gcd(Catalan(n), n!).
+A241907	simbinom	0	Binomial.catalan(2 * mN).divide(Binomial.catalan(mN).square())	a(n) = floor( Catalan( 2*n ) / Catalan(n)^2 ).
+A246604	simbinom	0	Binomial.catalan(mN).subtract(mN)	a(n) = Catalan(n) - n.
+A246846	simbinom	0	Binomial.catalan(mN).mod(Fibonacci.fibonacci(mN))	a(n) = Catalan(n) mod Fibonacci(n).
+A289679	simbinom	0	Binomial.catalan(mN - 1).multiply(BellNumbers.bell(mN))	a(n) = Catalan(n-1)*Bell(n).
+A289680	simbinom	0	Binomial.catalan(mN + 1).multiply(BellNumbers.bell(mN))	a(n) = Catalan(n+1)*Bell(n).
+A336257	simbinom	0	Binomial.catalan(mN).mod(Z.valueOf(2 * mN + 1))	a(n) = Catalan(n) mod (2*n+1).
+A342906	simbinom	0	Z.ONE.shiftLeft(2 * mN - 2).subtract(Binomial.catalan(mN))	a(n) = 2^(2*n-2) - Catalan(n).
+A338979	simbinom	0	Integers.SINGLETON.sum(0, mN, k -> Z.valueOf(mN).pow(k).multiply(Binomial.binomial(mN, k)).multiply(Binomial.catalan(mN)))	Sum_{k=0..n}  n^k * binomial(n,k) * Catalan(k).
+A339001	simbinom	0	(((mN & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Integers.SINGLETON.sum(0, mN, k -> Z.valueOf(- mN).pow(k).multiply(Binomial.binomial(mN, k)).multiply(Binomial.catalan(k))))	(-1)^n * Sum_{k=0..n} (-n)^k * binomial(n,k) * Catalan(k).
+A341303	simbinom	0	MemoryFactorial.SINGLETON.factorial(mN).subtract(Binomial.catalan(mN).multiply(6)).add(Z.ONE.shiftLeft(mN).multiply(5)).add(Binomial.binomial(mN, 2).multiply(4)).subtract(Fibonacci.fibonacci(mN).multiply2()).add(Z.valueOf(-14 * mN + 20))	n!-6*Catalan(n)+5*2^n+4*binomial(n,2)-2*Fibonacci(n)-14*n+20.
+A342906	simbinom	0	Z.ONE.shiftLeft(2 * mN - 2).subtract(Binomial.catalan(mN))	2^(2*n-2) - Catalan(n).
+A355290	simbinom	0	Integers.SINGLETON.sum(0, mN, k -> ((((mN - k) & 1) == 0) ? Z.ONE : Z.NEG_ONE).multiply(Stirling.secondKind(mN, k)).multiply(Binomial.catalan(k)))	Sum_{k=0..n} (-1)^(n-k) * Stirling2(n,k) * Catalan(k).
+A355292	simbinom	0	Integers.SINGLETON.sum(1, mN, k -> Stirling.firstKind(mN, k).abs().multiply(Binomial.catalan(k - 1)))	Sum_{k=1..n} |Stirling1(n,k)| * Catalan(k-1).
+
+A072012	nest	1	A072010	A072010	1	1
+A072085	nest	1	A072084	A072084	1	1
+A082315	nest	0	A057501	A057501	0	0
+A082316	nest	0	A057502	A057502	0	0
+A088460	nest	1	A001359	A001359	1	1
+A088463	nest	1	A006512	A006512	1	1
+A091022	nest	1	A001358	A001358	1	1
+A101300	nest	0	A151800	A151800	0	0
+A156986	nest	0	A006882	A006882	0	0
+# A240054	nest	1	A068346	A068346	0	0
+A245447	nest	1	A048673	A048673	1	1
+A245448	nest	1	A064216	A064216	1	1
+A249142	nest	1	A068527	A068527	0	0
+A256607	nest	1	A007733	A007733	1	1
+A278040	nest	0	A003144	A003144	0	0

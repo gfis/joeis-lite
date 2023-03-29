@@ -1,0 +1,141 @@
+A063839	dirichcon	1	A000045	A000142	Dirichlet convolution of A000045 with A000142 Fibonacci numbers with factorials.
+A093811	dirichcon	1	A007954	A000012	Inverse Moebius transfor A007954 with A000012 (n), where operation * denotes Dirichlet convolution for n >= 1. Dirichlet convolution of functions b(n), c(n) is function a(n) = b(n) * c(n) = Sum_{d|n} b(d)*c(n/d). Simultaneously holds Dirichlet multiplication: a(n) * A008683(n) = A007954(n). [From _Jaroslav Krizek_, Mar 22 2009]
+A118209	dirichcon	1	A061019	A062157	Dirichlet convolution of A061019 and  A062157. a(n) = Sum_{d|n} (-1)^(n/d - 1)*lambda(d)*d, 
+A145390	dirichcon	1	A000012	A098178	Dirichlet convolution of A000012 and  A098178. - Domenico (domenicoo(AT)gmail.com), Oct 21 2009
+A159046	dirichcon	1	A007247	A029937	Dirichlet convolution of A007247 and  A029937. - _Michael Somos_, May 10 2015
+A185291	dirichcon	1	A000001	A000001	Dirichlet convolution of A000001 with A000001 itself.
+A188585	dirichcon	1	A000688	A008683	Dirichlet convolution of A000688 with A008683 the Moebius function.
+A226602	dirichcon	1	A034444	A056624	Dirichlet convolution of A034444 and  A056624(n).
+A258171	dirichcon	1	A000010	A000110	Dirichlet convolution of A000010 and  A000110 the Bell numbers () (n >= 1). - _Richard L. Ollerton_, May 09 2021
+A285989	dirichcon	1	A000035	A000583	Dirichlet convolution of A000035 and  A000583 which are both multiplicative. - _Andrew Howroyd_, Aug 05 2018
+A288418	dirichcon	1	A000290	A000593	Dirichlet convolution of A000290 and  A000593 which are both multiplicative. - _Andrew Howroyd_, Jul 27 2018
+A288419	dirichcon	1	A000578	A000593	Dirichlet convolution of A000578 and  A000593 which are both multiplicative. - _Andrew Howroyd_, Jul 27 2018
+A288420	dirichcon	1	A000583	A000593	Dirichlet convolution of A000583 and  A000593 which are both multiplicative. - _Andrew Howroyd_, Jul 20 2018
+A293303	dirichcon	1	A008683	A000027	Dirichlet convolution of A008683 and  A000027.
+A306379	dirichcon	1	A001615	A001615	Dirichlet convolution of A001615 and  A001615 psi(n) with itself.
+A307427	dirichcon	1	A210826	A271102	Dirichlet convolution of A210826 and  A271102.
+A307427	dirichcon	1	A307424	A008683	Dirichlet convolution of A307424 and  A008683.
+A307430	dirichcon	1	A227291	A008966	Dirichlet convolution of A227291 and  A008966.
+A309322	dirichcon	1	A000010	A000217	Dirichlet convolution of A000010 with A000217 Euler totient function with triangular numbers.
+A309323	dirichcon	1	A000010	A000292	Dirichlet convolution of A000010 with A000292 Euler totient function with tetrahedral numbers.
+A322328	dirichcon	1	A034444	A034444	Dirichlet convolution of A034444 with A034444 itself.
+A322885	dirichcon	1	A061704	A010052	Dirichlet convolution of A061704 and  A010052. Dirichlet convolution of A046951 and A010057.
+A323599	dirichcon	1	A000027	A001221	Dirichlet convolution of A000027 the  A001221 identity function with omega.
+A323600	dirichcon	1	A000203	A001221	Dirichlet convolution of A000203 with A001221 sigma with omega.
+A327030	dirichcon	1	A000010	A000142	Dirichlet convolution of A000010 with A000142 phi(n) and n! (n >= 1). - _Richard L. Ollerton_, May 09 2021
+A328709	dirichcon	1	A050367	A050368	Dirichlet convolution of A050367 with A050368.
+A328721	dirichcon	1	A000688	A050361	Dirichlet convolution of A000688 with A050361.
+A328851	dirichcon	1	A001055	A050367	Dirichlet convolution of A001055 with A050367.
+A328854	dirichcon	1	A061142	A061142	Dirichlet convolution of A061142 with A061142 itself.
+A328876	dirichcon	1	A045778	A050368	Dirichlet convolution of A045778 with A050368.
+A329347	dirichcon	1	A000027	A001222	Dirichlet convolution of A000027 with A001222 bigomega.
+A331314	dirichcon	1	A000027	A002322	Dirichlet convolution of A000027 with A002322 the reduced totient function.
+A331376	dirichcon	1	A002322	A002322	Dirichlet convolution of A002322 with A002322	the reduced totient function with itself.
+A344683	dirichcon	1	A000010	A029935	Dirichlet convolution of A000010 with A029935.
+A346558	dirichcon	1	A000225	A000010	Dirichlet convolution of A000225 and  A000010. - _R. J. Mathar_, Sep 30 2021
+A347130	dirichcon	1	A000027	A003415	Dirichlet convolution of A000027 with A003415.
+A347131	dirichcon	1	A000010	A003415	Dirichlet convolution of A000010 with A003415.
+A347132	dirichcon	1	A001615	A003415	Dirichlet convolution of A001615 and  A003415 	Dedekind psi function () with the arithmetic derivative (
+A347133	dirichcon	1	A003415	A069359	Dirichlet convolution of A003415 with A069359.(arithmetic derivative) 
+A347134	dirichcon	1	A000010	A069359	Dirichlet convolution of A000010 with A069359.(Euler totient function phi) 
+A347135	dirichcon	1	A001615	A069359	Dirichlet convolution of A001615 and  A069359 (Dedekind psi function) with .
+A347135	dirichcon	1	A001221	A322577	Dirichlet convolution of A001221 with A322577 (omega, number of distinct prime factors of n) .
+A347136	dirichcon	1	A000010	A003973	Dirichlet convolution of A000010 and  A003973 ) with the prime shifted sigma (
+A347137	dirichcon	1	A000027	A003972	Dirichlet convolution of A000027 and  A003972 ) with the prime shifted phi (
+A347235	dirichcon	1	A000010	A342001	Dirichlet convolution of A000010 and  A342001, where A342001(n) = A003415(n) / A003557(n).
+A347236	dirichcon	1	A003961	A061019	Dirichlet convolution of A003961 and  A061019.
+A347237	dirichcon	1	A003972	A061019	Dirichlet convolution of A003972 with A061019. (prime shifted phi) 
+A347395	dirichcon	1	A008836	A342001	Dirichlet convolution of A008836 with A342001, Liouville's lambda (
+A347954	dirichcon	1	A003602	A342001	Dirichlet convolution of A003602 with A342001.
+A347955	dirichcon	1	A003415	A003602	Dirichlet convolution of A003415 with A003602 (arithmetic derivative) (Kimberling's paraphrases).
+A347956	dirichcon	1	A003602	A069359	Dirichlet convolution of A003602 with A069359.
+A347957	dirichcon	1	A001221	A003602	Dirichlet convolution of A001221 with A003602 (Kimberling's paraphrases).
+A347961	dirichcon	1	A342001	A342001	Dirichlet convolution of A342001 with A342001 itself.
+A347963	dirichcon	1	A342001	A003557	Dirichlet convolution of A342001 with A003557.
+A347965	dirichcon	1	A003415	A003961	Dirichlet convolution of A003415 with A003961  (arithmetic derivative)(prime shift towards larger primes).
+A348980	dirichcon	1	A322582	A000027	Dirichlet convolution of A322582 with A000027.
+A348981	dirichcon	1	A000010	A322582	Dirichlet convolution of A000010 with A322582.
+A348982	dirichcon	1	A001615	A322582	Dirichlet convolution of A001615 with A322582.
+A348983	dirichcon	1	A322582	A038040	Dirichlet convolution of A322582 with A038040, which is the Dirichlet convolution of the identity function (A000027) with itself.
+A349123	dirichcon	1	A003415	A038040	Dirichlet convolution of A003415 with A038040,
+A349129	dirichcon	1	A003958	A003959	Dirichlet convolution of A003958 with A003959.
+A349130	dirichcon	1	A003958	A000027	Dirichlet convolution of A003958 with A000027. the identity function, 
+A349131	dirichcon	1	A003958	A000010	Dirichlet convolution of A003958 with A000010. Euler totient function phi, 
+A349132	dirichcon	1	A003958	A001615	Dirichlet convolution of A003958 with A001615. Dedekind psi function, 
+A349133	dirichcon	1	A003415	A003958	Dirichlet convolution of A003415 with A003958, where A003415 is the arithmetic derivative and A003958 is fully multiplicative with a(p) = (p-1).
+A349139	dirichcon	1	A322582	A348507	Dirichlet convolution of A322582 with A348507.
+A349140	dirichcon	1	A348507	A000027	Dirichlet convolution of A348507 with A000027.
+A349140	dirichcon	1	A000203	A348971	Dirichlet convolution of A000203 with A348971.
+A349141	dirichcon	1	A000010	A348507	Dirichlet convolution of A000010 with A348507.
+A349142	dirichcon	1	A001615	A348507	Dirichlet convolution of A001615 with A348507.
+A349143	dirichcon	1	A348507	A038040	Dirichlet convolution of A348507 with A038040, which is the Dirichlet convolution of the identity function (A000027) with itself.
+A349143	dirichcon	1	A060640	A348971	Dirichlet convolution of A060640 with A348971.
+A349170	dirichcon	1	A003959	A000027	Dirichlet convolution of A003959 with A000027.
+A349170	dirichcon	1	A000203	A003968	Dirichlet convolution of A000203 with A003968.
+A349171	dirichcon	1	A003959	A000010	Dirichlet convolution of A003959 with A000010.
+A349172	dirichcon	1	A001615	A003959	Dirichlet convolution of A001615 with A003959.
+A349173	dirichcon	1	A003415	A003959	Dirichlet convolution of A003415 with A003959, where A003415 is the arithmetic derivative and A003959 is fully multiplicative with a(p) = (p+1).
+A349355	dirichcon	1	A003958	A063441	Dirichlet convolution of A003958 with A063441 (Dirichlet inverse of A003959), where A003958 and A003959 are fully multiplicative with a(p) = p-1 and p+1 respectively.
+A349356	dirichcon	1	A003959	A097945	Dirichlet convolution of A003959 with A097945 (Dirichlet inverse of A003958), where A003958 and A003959 are fully multiplicative with a(p) = p-1 and p+1 respectively.
+A349370	dirichcon	1	A003602	A003602	Dirichlet convolution of A003602 with A003602 itself.
+A349372	dirichcon	1	A003602	A000005	Dirichlet convolution of A003602 with A000005 tau (number of divisors, A000005).
+A349373	dirichcon	1	A003602	A023900	Dirichlet convolution of A003602 with A023900 Dirichlet inverse of Euler phi (A023900).
+A349374	dirichcon	1	A003602	A007913	Dirichlet convolution of A003602 with A007913 squarefree part of n (
+A349375	dirichcon	1	A003602	A008836	Dirichlet convolution of A003602 with A008836 Liouville's lambda.
+A349380	dirichcon	1	A003415	A349134	Dirichlet convolution of A003415 with A349134 (Dirichlet inverse of Kimberling's paraphrases).
+A349387	dirichcon	1	A003961	A055615	Dirichlet convolution of A003961 with A055615 (Dirichlet inverse of n), where A003961 is fully multiplicative with a(p) = nextprime(p).
+A349388	dirichcon	1	A000027	A346234	Dirichlet convolution of A000027 with A346234 (Dirichlet inverse of A003961), where A003961 is fully multiplicative with a(p) = nextprime(p).
+A349397	dirichcon	1	A064216	A323893	Dirichlet convolution of A064216 with A323893, which is the Dirichlet inverse of A048673. Therefore, convolving A048673 with this sequence gives A064216.
+A349398	dirichcon	1	A048673	A349358	Dirichlet convolution of A048673 with A349358, which is the Dirichlet inverse of A064216 (inverse permutation of A048673). Therefore, convolving A064216 with this sequence gives A048673.
+A349431	dirichcon	1	A003602	A055615	Dirichlet convolution of A003602 with A055615 (Kimberling's paraphrases) (Dirichlet inverse of n)
+A349432	dirichcon	1	A000027	A349134	Dirichlet convolution of A000027 with A349134 (Dirichlet inverse of Kimberling's paraphrases).
+A349434	dirichcon	1	A129283	A349337	Dirichlet convolution of A129283 with A349337 (n + its arithmetic derivative)  (Dirichlet inverse of A230593).
+A349441	dirichcon	1	A057521	A055615	Dirichlet convolution of A057521 with A055615 (powerful part of n) (Dirichlet inverse of n).
+A349442	dirichcon	1	A000027	A349350	Dirichlet convolution of A000027 with A349350 (Dirichlet inverse of the powerful part of n).
+A349444	dirichcon	1	A003602	A092673	Dirichlet convolution of A003602 with A092673 (Kimberling's paraphrases)(Dirichlet inverse of A001511).
+A349445	dirichcon	1	A001511	A349134	Dirichlet convolution of A001511 with A349134 (the 2-adic valuation of 2n) (the Dirichlet inverse of Kimberling's paraphrases).
+A349447	dirichcon	1	A003602	A326937	Dirichlet convolution of A003602 with A326937 (Kimberling's paraphrases) (Dirichlet inverse of A000265).
+A349448	dirichcon	1	A000265	A349134	Dirichlet convolution of A000265 with A349134 (odd part of n) (Dirichlet inverse of Kimberling's paraphrases).
+A349564	dirichcon	1	A011782	A349450	Dirichlet convolution of A011782 with A349450 [2^(n-1))] [Dirichlet inverse of right-shifted Catalan numbers].
+A349566	dirichcon	1	A011782	A349451	Dirichlet convolution of A011782 with A349451 (2^(n-1))  (Dirichlet inverse of Fibonacci numbers).
+A349568	dirichcon	1	A011782	A349453	Dirichlet convolution of A011782 with A349453 [2^(n-1))] (Dirichlet inverse of A133494, 3^(n-1)).
+A349570	dirichcon	1	A011782	A055615	Dirichlet convolution of A011782 with A055615 [2^(n-1))] (Dirichlet inverse of n).
+A349571	dirichcon	1	A048673	A055615	Dirichlet convolution of A048673 with A055615 (Dirichlet inverse of n).
+A349606	dirichcon	1	A000120	A000120	Dirichlet convolution of A000120 with A000120 the binary digital sum function ( itself.
+A349618	dirichcon	1	A003415	A325126	Dirichlet convolution of A003415 with A325126 arithmetic derivative [Dirichlet inverse of rad(n)].
+A349692	dirichcon	1	A018804	A018804	Dirichlet convolution of A018804 with A018804 the gcd-sum function (itself.
+A349693	dirichcon	1	A001511	A001511	Dirichlet convolution of A001511 with A001511 the ruler function () with itself.
+A349694	dirichcon	1	A007947	A007947	Dirichlet convolution of A007947 with A007947 the squarefree kernel function (A007947) with itself.
+A349711	dirichcon	1	A001414	A001414	Dirichlet convolution of A001414 with A001414 itself.
+A349712	dirichcon	1	A008472	A008472	Dirichlet convolution of A008472 with A008472 itself.
+A349770	dirichcon	1	A034448	A034448	Dirichlet convolution of A034448 with A034448 itself.
+A350872	dirichcon	1	A000089	A154269	Dirichlet convolution of A000089 with A154269.
+A350872	dirichcon	1	A338690	A271102	Dirichlet convolution of A338690 with A271102.
+
+# A145378 Dirichlet convolution of [1,-2,0,4,0,0,0..] with A007429.
+# A145396 Dirichlet convolution of [1,3,0,0,0,0,0,...] and A007429.
+# A145398 Dirichlet convolution of [1,-1,0,4,0,0...] with A007429.
+# A303915 Dirichlet convolution with A048691 yields   A092520(n).
+# A349569 Dirichlet convolution with A034729 gives    A000203 sigma, , and convolution with A034738 gives A018804.
+# A349564 Dirichlet convolution with A034731 gives    A034729.
+# A349469 Dirichlet convolution with A057660 equals   A068963.
+# A349563 Dirichlet convolution with A034729 gives    A034731.
+# A349565 Dirichlet convolution with A034738 produces A034748.
+# A349566 Dirichlet convolution with A034748 produces A034738.
+# A349567 Dirichlet convolution with A034738 produces A034754.
+# A349568 Dirichlet convolution with A034754 produces A034738.
+# A349396 Dirichlet convolution with A000010 is       A346485.(Euler phi) 
+# 
+# A349396 Dirichlet convolution of A342001 ({arithmetic derivative of n}/A003557(n)) with A055615 (Dirichlet inverse of n).
+# A349612 Dirichlet convolution of A342001 [{arithmetic derivative of n}/A003557(n)] with A325126 [Dirichlet inverse of rad(n)].
+# 
+# A349376 Dirichlet convolution of A006368 with the Dirichlet inverse of A006369, where A006368 is the "amusical permutation", and A006369 is its inverse permutation.
+# A349377 Dirichlet convolution of A006369 with the Dirichlet inverse of A006368, where A006368 is the "amusical permutation", and A006369 is its inverse permutation.
+# A349384 Dirichlet convolution of A003961 with the Dirichlet inverse of A048673, where A003961 is fully multiplicative with a(p) = nextprime(p), and A048673(n) = (1+A003961(n))/2.
+# A349385 Dirichlet convolution of A048673 with the Dirichlet inverse of A003961, where A003961 is fully multiplicative with a(p) = nextprime(p), and A048673(n) = (1+A003961(n))/2.
+# A349619 Dirichlet convolution of A003415 with the Dirichlet inverse of A003557.
+# A349620 Dirichlet convolution of A003415 with the Dirichlet inverse of A003958.
+# A349621 Dirichlet convolution of A003415 with the Dirichlet inverse of A003959.
+# A349572 Dirichlet convolution of A000027 with the Dirichlet inverse of A048673.
+# A349616 Dirichlet convolution of A000027 with the Dirichlet inverse of the inverse permutation of EKG-permutation.
+# 

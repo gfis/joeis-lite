@@ -4233,6 +4233,16 @@ multm:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+multkey:
+	$(DBAT) "SELECT COUNT(*) FROM asinfo i WHERE i.keyword LIKE '%mult%';"
+multnyi:
+	$(DBAT) "SELECT i.aseqno, i.offset1, n.name FROM asinfo i, asname n \
+	WHERE i.aseqno = n.aseqno \
+	  AND i.keyword LIKE '%mult%' \
+	  AND i.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  ORDER BY 1;" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
 #--------------------------------
 n2:
 	cat $(COMMON)/jcat25.txt \
