@@ -1,0 +1,18 @@
+# Glaisher's Delta'_i (i=0..12): 
+# 2023-03-26, Georg Fischer
+# A285989 a(2^e) = 2^(4*e) and a(p^e) = (p^(4*e+4)-1)/(p^4-1) for p > 2.
+# A096960 a(2^e) = 2^(5*e) and a(p^e) = (p^(5*e+5)-1)/(p^5-1) for p > 2.
+A001227	parmof2	1	A076577	0
+A002131	parmof2	1	A076577	1
+A076577	parmof2	1	A076577	2
+A007331	parmof2	0	A076577	3
+A285989	parmof2	0	A076577	4
+A096960	parmof2	1	A076577	5
+A321817	parmof2	1	A076577	6
+A096961	parmof2	1	A076577	7
+A321818	parmof2	1	A076577	8
+A096962	parmof2	1	A076577	9
+A321819	parmof2	1	A076577	10
+A096963	parmof2	1	A076577	11
+A321820	parmof2	1	A076577	12
+

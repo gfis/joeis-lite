@@ -128,3 +128,76 @@ A309640	parmof7	0	A225401	1	1	3	3	+17	10	b(1)=1, b(n)=b(n-1) +      3 * b(n-1)^3
 # A321107 nyi FoG Digits of one of the three 13-adic integers 5^(1/3) that is related to A320915. nonn,ba
 # A321108 nyi FoG Digits of one of the three 13-adic integers 5^(1/3) that is related to A321105. nonn,ba
 # 
+%o A091664 (PARI)  ec(n)=Vecrev(digits(lift(chinese(Mod(0,2^n),Mod(-1,5^n))))))(99) \\ _M. F. Hasler_, Jan 26 2020
+
+A225401	parmof7	0	A225401	3	3	9	3	+7	10	b(1)=3, b(n)=b(n-1) + 3 * (9 * b(n-1)^3 +  7) mod 10^n
+
+#o A225401 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-7/9+O(2^N))^(1/3), 2^N), Mod((-7/9+O(5^N))^(1/3), 5^N)))), N) \\ _Seiichi Manyama_, Aug 05 2019
+#o A225402 (PARI) upto(N=100, m=1/3)=Vecrev(digits(lift(chinese(Mod((-m+O(5^N))^m, 5^N), Mod((-m+O(2^N))^m, 2^N)))), N) \\ Following _Andrew Howroyd_'s code for A319740. - _M. F. Hasler_, Jan 02 2019
+#o A225405 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((7+O(2^N))^(1/3), 2^N), Mod((7+O(5^N))^(1/3), 5^N)))), N) \\ _Seiichi Manyama_, Aug 05 2019
+#o A225406 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((9+O(2^N))^(1/3), 2^N), Mod((9+O(5^N))^(1/3), 5^N)))), N) \\ _Seiichi Manyama_, Aug 04 2019
+#o A225407 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-3+O(2^N))^(1/3), 2^N), Mod((-3+O(5^N))^(1/3), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+#o A225408 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-7+O(2^N))^(1/3), 2^N), Mod((-7+O(5^N))^(1/3), 5^N)))), N) \\ _Seiichi Manyama_, Aug 04 2019
+#o A225409 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-9+O(2^N))^(1/3), 2^N), Mod((-9+O(5^N))^(1/3), 5^N)))), N) \\ _Seiichi Manyama_, Aug 04 2019
+#o A225410 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((7/9+O(2^N))^(1/3), 2^N), Mod((7/9+O(5^N))^(1/3), 5^N)))), N) \\ _Seiichi Manyama_, Aug 05 2019
+#o A225411 (PARI) upto(N=100,m=1/3)=Vecrev(digits(lift(chinese(Mod((m+O(5^N))^m, 5^N), Mod((m+O(2^N))^m, 2^N)))),N) \\ Following _Andrew Howroyd_'s code for A319740. - _M. F. Hasler_, Jan 02 2019
+#o A225412 (PARI) upto(N=100, m=1/3)=Vecrev(digits(lift(chinese(Mod((1/9+O(5^N))^m, 5^N), Mod((1/9+O(2^N))^m, 2^N)))), N) \\ Following _Andrew Howroyd_'s code for A319740. - _M. F. Hasler_, Jan 02 2019
+%o A225441 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-7/9+O(2^N))^(1/7), 2^N), Mod((-7/9+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+%o A225442 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-1/3+O(2^N))^(1/7), 2^N), Mod((-1/3+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+%o A225443 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-1/9+O(2^N))^(1/7), 2^N), Mod((-1/9+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 04 2019
+%o A225444 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((3+O(2^N))^(1/7), 2^N), Mod((3+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+%o A225445 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((7+O(2^N))^(1/7), 2^N), Mod((7+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+%o A225446 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((9+O(2^N))^(1/7), 2^N), Mod((9+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 04 2019
+%o A225447 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-3+O(2^N))^(1/7), 2^N), Mod((-3+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+%o A225448 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-7+O(2^N))^(1/7), 2^N), Mod((-7+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+%o A225449 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-9+O(2^N))^(1/7), 2^N), Mod((-9+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 04 2019
+%o A225451 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((1/3+O(2^N))^(1/7), 2^N), Mod((1/3+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+%o A225452 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((1/9+O(2^N))^(1/7), 2^N), Mod((1/9+O(5^N))^(1/7), 5^N)))), N) \\ _Seiichi Manyama_, Aug 04 2019
+%o A225453 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-7/9+O(2^N))^(1/9), 2^N), Mod((-7/9+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 07 2019
+%o A225454 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-1/3+O(2^N))^(1/9), 2^N), Mod((-1/3+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 07 2019
+%o A225456 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((3+O(2^N))^(1/9), 2^N), Mod((3+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 07 2019
+%o A225457 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((7+O(2^N))^(1/9), 2^N), Mod((7+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 07 2019
+#o A225458 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((9+O(2^N))^(1/9), 2^N), Mod((9+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 06 2019
+%o A225459 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-3+O(2^N))^(1/9), 2^N), Mod((-3+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 07 2019
+%o A225460 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-7+O(2^N))^(1/9), 2^N), Mod((-7+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 05 2019
+%o A225462 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((7/9+O(2^N))^(1/9), 2^N), Mod((7/9+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 07 2019
+%o A225463 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((1/3+O(2^N))^(1/9), 2^N), Mod((1/3+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 07 2019
+#o A225464 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((1/9+O(2^N))^(1/9), 2^N), Mod((1/9+O(5^N))^(1/9), 5^N)))), N) \\ _Seiichi Manyama_, Aug 07 2019
+#o A309569 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((11/3+O(2^N))^(1/3), 2^N), Mod((11/3+O(5^N))^(1/3), 5^N)))), N)
+#o A309570 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((17/3+O(2^N))^(1/3), 2^N), Mod((17/3+O(5^N))^(1/3), 5^N)))), N)
+#o A309595 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-31/9+O(2^N))^(1/3), 2^N), Mod((-31/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309600 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((17/9+O(2^N))^(1/3), 2^N), Mod((17/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309601 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((53/9+O(2^N))^(1/3), 2^N), Mod((53/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309602 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((71/9+O(2^N))^(1/3), 2^N), Mod((71/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309603 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-11/9+O(2^N))^(1/3), 2^N), Mod((-11/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309604 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((43/9+O(2^N))^(1/3), 2^N), Mod((43/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309605 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((61/9+O(2^N))^(1/3), 2^N), Mod((61/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309606 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-7/3+O(2^N))^(1/3), 2^N), Mod((-7/3+O(5^N))^(1/3), 5^N)))), N)
+#o A309608 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-13/9+O(2^N))^(1/3), 2^N), Mod((-13/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309609 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((23/9+O(2^N))^(1/3), 2^N), Mod((23/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309610 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((41/9+O(2^N))^(1/3), 2^N), Mod((41/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309611 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-41/9+O(2^N))^(1/3), 2^N), Mod((-41/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309612 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-23/9+O(2^N))^(1/3), 2^N), Mod((-23/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309613 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((13/9+O(2^N))^(1/3), 2^N), Mod((13/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309614 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((31/9+O(2^N))^(1/3), 2^N), Mod((31/9+O(5^N))^(1/3), 5^N)))), N)
+%o A309640 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-17/3+O(2^N))^(1/3), 2^N), Mod((-17/3+O(5^N))^(1/3), 5^N)))), N)
+%o A309641 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-11/3+O(2^N))^(1/3), 2^N), Mod((-11/3+O(5^N))^(1/3), 5^N)))), N)
+#o A309642 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((7/3+O(2^N))^(1/3), 2^N), Mod((7/3+O(5^N))^(1/3), 5^N)))), N)
+#o A309643 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-61/9+O(2^N))^(1/3), 2^N), Mod((-61/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309644 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-43/9+O(2^N))^(1/3), 2^N), Mod((-43/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309645 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((11/9+O(2^N))^(1/3), 2^N), Mod((11/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309646 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-71/9+O(2^N))^(1/3), 2^N), Mod((-71/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309647 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-53/9+O(2^N))^(1/3), 2^N), Mod((-53/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309648 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((-17/9+O(2^N))^(1/3), 2^N), Mod((-17/9+O(5^N))^(1/3), 5^N)))), N)
+#o A309699 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((5+O(2^N))^(1/5), 2^N), Mod((5+O(3^N))^(1/5), 3^N))), 6), N)
+#o A309723 (PARI) N=100; Vecrev(digits(lift(chinese(Mod((1/5+O(2^N))^(1/5), 2^N), Mod((1/5+O(3^N))^(1/5), 3^N))), 6), N)
+%o A309818 (PARI) N=100; M=987654321/(1-10^9); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/3), 2^N), Mod((M+O(5^N))^(1/3), 5^N)))), N)
+%o A309819 (PARI) N=100; M=987654321/(1-10^9); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/7), 2^N), Mod((M+O(5^N))^(1/7), 5^N)))), N)
+%o A309820 (PARI) N=100; M=987654321/(1-10^9); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/9), 2^N), Mod((M+O(5^N))^(1/9), 5^N)))), N)
+%o A309821 (PARI) N=100; M=123456789/(1-10^9); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/3), 2^N), Mod((M+O(5^N))^(1/3), 5^N)))), N)
+%o A309822 (PARI) N=100; M=123456789/(1-10^9); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/7), 2^N), Mod((M+O(5^N))^(1/7), 5^N)))), N)
+%o A309823 (PARI) N=100; M=123456789/(1-10^9); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/9), 2^N), Mod((M+O(5^N))^(1/9), 5^N)))), N)
+%o A309824 (PARI) N=100; M=2345678987654321/(1-10^16); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/3), 2^N), Mod((M+O(5^N))^(1/3), 5^N)))), N)
+%o A309825 (PARI) N=100; M=2345678987654321/(1-10^16); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/7), 2^N), Mod((M+O(5^N))^(1/7), 5^N)))), N)
+%o A309826 (PARI) N=100; M=2345678987654321/(1-10^16); Vecrev(digits(lift(chinese(Mod((M+O(2^N))^(1/9), 2^N), Mod((M+O(5^N))^(1/9), 5^N)))), N)
+%o A331549 (PARI) A331549_vec(n)=Vecrev(digits(lift(chinese(Mod(0,3^n),Mod(1,5^n))),15)) \\ or simpler but slower: Vecrev(digits(lift(Mod(3^4,15^n)^5^(n-1)),15)) \\ _M. F. Hasler_, Jan 26 2020

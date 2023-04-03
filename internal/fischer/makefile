@@ -5237,6 +5237,24 @@ offholrem: # remove all that are not in offinspect.txt
 offcount: # SUPER= count the different offsets for some jOEIS superclass
 	$(DBAT) -x "SELECT COUNT(i.offset1), i.offset1 FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno AND j.superclass LIKE '$(SUPER)%' GROUP BY i.offset1 ORDER BY 1"
 #--------
+finspect: finspect1 finspect2
+finspect1:
+	$(DBAT) -x "SELECT b.aseqno, b.bfimax - b.bfimin + 1 \
+	FROM bfinfo b, joeis j \
+	WHERE b.aseqno = j.aseqno \
+	  AND j.superclass IN ('FiniteSequence','NoncomputableSequence') \
+	ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+finspect2: # run the FiniteInspector and check the number of terms
+	$(JAVA) irvine.oeis.FiniteInspector finspect1.tmp \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	cp -v    $@.tmp $@.txt
+	cut -f3 finspect2.tmp | sort | uniq -c | sort -n \
+	| tee -a $@.txt
+#--------
 compareall0:
 	find ../../src/irvine/oeis/a* -iname "*.java" | cut -b7- | xargs -innn diff -C0 ../../nnn ../../../joeis/nnn \
 	> $@.1.tmp
