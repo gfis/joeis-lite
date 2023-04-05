@@ -7386,8 +7386,13 @@ sumdiv0:
 	wc -l    $@.tmp
 	#-e "s/\\\\.*//" \
 	#
-sumdiv:
+sumdiv1:
 	perl $@.pl sumdiv0.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+sumdiv:
+	grep -v "#" sumdiv.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

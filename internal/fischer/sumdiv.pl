@@ -1,6 +1,7 @@
 #!perl
 
 # Extract parameters for "a(n) = sumdiv(....)"
+# 2023-04-03: repaired
 # 2021-04-28, Georg Fischer: copied from numdiv.pl
 #
 #:# Usage:
@@ -30,6 +31,7 @@ while (<>) { # from joeis_names.txt
     s/\s+\Z//; # chompr
     $line = $_;
     ($aseqno, $callcode, $offset, $name) = split(/\t/, $line);
+    next if ! defined($name);
     $callcode = "";
     $name =~ s{ *\\\\.*}{}; # remove comment
     if ($name =~ m{\A\{}) {
@@ -37,22 +39,30 @@ while (<>) { # from joeis_names.txt
         $name =~ s{\} *\;? *\Z}{};
     }
     $name =~ s{\; *\Z}{}; # remove ";"
+    my $old_name = $name;
+    $name =~ s{binomial\(}{Binomial\.binomial\(}g;
+    $name =~ s{eulerphi\(}{Euler\.phi\(}g;
+    $name =~ s{(m.+bius|mu)\(}{Mobius\.mobius\(}g;
+    $name =~ s{\(\-1\)\^}{\(\(\( \& 1\) \=\= 0\) \? \: \)}g;
+    $name =~ s{2\^}{Z.ONE.shiftLeft\(}g;
+    $name =~ s{\^}{\)\.pow\(}g;
+    $name =~ s{\!}{MemoryFactorial.SINGLETON.factorial\(}g;
     if (0) {
     } elsif ($name =~ m{\A(lista|a|A\d+)\(n\) *\= *sumdiv\(n\, *d\, *(.*)}) {
         $name = $2;
-        $name =~ s{\)}{}; # remove parenthesis of "sumdiv"
+        # $name =~ s{\)}{}; # remove parenthesis of "sumdiv"
         $callcode = "sumdiv";
-        print join("\t", $aseqno, $callcode, $offset, $name) . "\n"; 
+        print join("\t", $aseqno, $callcode, $offset, "#$name", $old_name) . "\n"; 
     } elsif ($name =~ m{\Afor\(n *\= *\d+\, *\d+\, *print1\(sumdiv\(n\, *d\, *(.*)}) {
         $name = $1;
-        $name =~ s{\)\, *\"\, *\"\)\)\;? *\Z}{}; # remove parenthesis of print1 and sumdiv
+        # $name =~ s{\)\, *\"\, *\"\)\)\;? *\Z}{}; # remove parenthesis of print1 and sumdiv
         $callcode = "sumdivp";
-        print join("\t", $aseqno, $callcode, $offset, $name) . "\n"; 
+        print join("\t", $aseqno, $callcode, $offset, "#$name", $old_name) . "\n"; 
     } elsif ($name =~ m{\Avector\(\d+\, *n\, *sumdiv\(n\, *\w\, *(.*)}) {
         $name = $1;
-        $name =~ s{ *\) *\)\;? *\Z}{}; # remove parenthesis of vector and sumdiv
+        # $name =~ s{ *\) *\)\;? *\Z}{}; # remove parenthesis of vector and sumdiv
         $callcode = "sumdivv";
-        print join("\t", $aseqno, $callcode, $offset, $name) . "\n"; 
+        print join("\t", $aseqno, $callcode, $offset, "#$name", $old_name) . "\n"; 
     } 
 } # while <>
 __DATA__

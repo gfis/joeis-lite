@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2022-04-04: V5.0: IntegerUtils, LongUtils
 # 2022-12-19: V4.9: BellNumbers, Mobius
 # 2022-12-19: V4.8: do not import if it is imported with subpackage
 # 2022-09-25: V4.7: recur.{Period|Padding}Sequence
@@ -60,7 +61,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V4.9";
+my $version_id  = "gen_seq4.pl V5.0";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -371,6 +372,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WSkipSequence}    ) { $imports{"irvine.oeis.SkipSequence"      }        = $itype; }
     if ($line =~ m{\WTranspose}       ) { $imports{"irvine.oeis.triangle.Transpose"}        = $itype; }
     if ($line =~ m{\WJaguar\.}        ) { $imports{"irvine.factor.factor.Jaguar"   }        = $itype; }
+    if ($line =~ m{\WIntegerUtils\.}  ) { $imports{"irvine.math.IntegerUtils"      }        = $itype; }
+    if ($line =~ m{\WLongUtils\.}     ) { $imports{"irvine.math.LongUtils"         }        = $itype; }
     if ($line =~ m{\WStringUtils\.}   ) { $imports{"irvine.util.string.StringUtils"}        = $itype; }
     delete($imports{"irvine.oeis.Sequence"});
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
