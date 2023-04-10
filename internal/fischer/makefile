@@ -7391,8 +7391,8 @@ sumdiv1:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-sumdiv:
-	grep -v "#" sumdiv.man \
+sumdiv2:
+	grep -v "#" sumdiv2.man \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
