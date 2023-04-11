@@ -7396,6 +7396,11 @@ sumdiv2:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+sumdiv3:
+	grep -v "#" sumdiv3.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 numdiv:
 	perl numdiv.pl $(COMMON)/joeis_names.txt \
 	| sort -n -k4 \
