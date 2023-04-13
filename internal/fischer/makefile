@@ -6742,6 +6742,11 @@ latriang:
 list1:
 	cp -v list1.man list1.gen
 #----------------
+loda:
+	cp -v $(GITS)/OEIS-prog/maint/loda/gen_loda.gen $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----------------
 logmod:
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -7378,8 +7383,15 @@ sumdig: # sum of digits in various bases
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------
+sum0:
+	grep -P "^\%o" $(COMMON)/jcat25.txt | grep -E "[s]um\(" | grep -E "\(PARI\)" | cut -b4- \
+	| sed -e "s/ *(PARI) */\tsum\t0\t/" -e "s/\/\*.*//" \
+	| grep -P "\= *sum" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
 sumdiv0:
-	grep -E "^\%o" $(COMMON)/jcat25.txt | grep -E "[ns]umdiv\(" | grep -E "\(PARI\)" | grep -E "_" | cut -b4- \
+	grep -E "^\%o" $(COMMON)/jcat25.txt | grep -E "[ns]umdiv\(" | grep -E "\(PARI\)" | cut -b4- \
 	| sed -e "s/ (PARI) /\tsumdiv\t0\t/" -e "s/\/\*.*//" \
 	>        $@.tmp
 	head -n4 $@.tmp
