@@ -8,10 +8,16 @@ import irvine.oeis.producer.LodaSequence;
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) extends AbstractSequence {
+public class $(ASEQNO) extends LodaSequence {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+$(PARM1)
 
   @Override
   public Z next() {
-$(PARM1)
+$(PARM2)
   }
 }

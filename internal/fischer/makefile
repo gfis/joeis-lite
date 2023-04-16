@@ -3649,6 +3649,7 @@ interleave:
 	grep -E "^A[0-9]" $@.man \
 	| perl -ne 'use strict; my @asns = m{(A\d\d+)}g; if (scalar(@asns) >= 3) { print join("\t", $$asns[0], "$@", 0, $$asns[1], $$asns[2], "". "") . "\n"; } '\
 	| sort | uniq -w7 \
+	| grep -vE "A083924|A113685|A181363|A256252|A256253" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -6743,7 +6744,8 @@ list1:
 	cp -v list1.man list1.gen
 #----------------
 loda:
-	cp -v $(GITS)/OEIS-prog/maint/loda/gen_loda.gen $@.gen
+	grep -P "\tloda\t" $(GITS)/OEIS-prog/maint/loda/compile_loda.gen \
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----------------

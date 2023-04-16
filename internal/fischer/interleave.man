@@ -39,3 +39,46 @@ A194451	interleave	Partition numbers of positive integers A000041 and positive i
 # A330958	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of x OR y (where OR denotes the bitwise OR operator).	nonn,base,new,synth	0..86	nyi
 # A330959	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of x XOR y (where XOR denotes the bitwise XOR operator).	nonn,base,new,synth	0..86	nyi
 # A330962	null	For any n >= 0: consider all pairs of numbers (x, y) whose binary representations can be interleaved (or shuffled) to produce the binary representation of n (possibly with leading zeros); a(n) is the least possible value of x^2 + y^2.	nonn,base,new,synth	0..71	nyi
+
+A083924 The sequence obtained by counting the runs of 0- and 1-bits 1,2,1,2,3,5,9,14,28,... is essentially the sequence A000108 interleaved with the sequence A000245, which appears to be A026008.
+A089849 The number of n-node binary trees fixed by the corresponding automorphism(s). A000984 interleaved with A000108.
+A090802 Antidiagonal sums [1,2,5,12,30,76,198,528,1448,4080...] appear to be binomial transform of A000522 interleaved with itself, i.e. 1,1,2,2,5,5,16,16,65,65... - _Ross La Haye_, Sep 09 2006
+A113685 Let M = an infinite lower triangular matrix with A000041 interleaved with zeros: (1, 0, 1, 0, 2, 0, 3, 0, 5, ...) and Q = A000009 diagonalized with the rest zeros.
+A127137 A001813 interleaved with A090470.
+A127138 A001147 interleaved with A076729.
+A127144 A126967 interleaved with A001147.
+A127170 Column k lists the terms of A000005 interleaved with k - 1 zeros.
+A134771 Second inverse binomial transform of A134770. A134770 interleaved with threes.
+A141700 Triangle read by rows: A120007 interleaved with (k-1) zeros.
+A141701 Triangle read by rows: A001414 interleaved with (k-1) zeros.
+A144966 Square array T(n,k) read by antidiagonals up. A055615 interleaved with k-1 zeros in each column. Redheffer type matrix.
+A153659 Triangle read by rows. A074206 interleaved with k-1 zeros in the k-th column.
+A161780 Square array read by antidiagonals up. Redheffer type matrix. A007427 interleaved with k-1 zeros in the columns.
+A176202 Let M = an infinite lower triangular matrix with A000041 interleaved with two
+A239446 Triangle read by rows: T(n,k), n>=1, k>=1, in which column k lists the elements of A004273 interleaved with k zeros, and the first element of column k is in row k*(k+1)/2.
+A239662 Triangle read by rows: T(n,k), n>=1, k>=1, in which column k lists the numbers A017113 interleaved with k-1 zeros, and the first element of column k is in row k(k+1)/2.
+A272026 Triangle read by rows: T(n,k), n>=1, k>=1, in which column k lists the numbers A016945 interleaved with k-1 zeros, and the first element of column k is in row k(k+1)/2.
+A303607 A000108 interleaved with this sequence gives floor(C(n/2)).
+A316828 A010060 interleaved with A007395. - _Antti Karttunen_, Oct 08 2018
+A335955 A002425 interleaved with A028296.
+A352833 (1) This is A064428 interleaved with A001522.
+
+A082500 A000027 and A000040 interleaved
+A088610 Squarefree (A005117) and nonsquarefree numbers (A013929) interleaved, the former at odd n and the latter at even n.
+A089849 The number of n-node binary trees fixed by the corresponding automorphism(s). A000984 interleaved with A000108.
+A110145 Interleaves A002458 and A037964.
+A123029 A194157 A194158
+A129767 Interleaved primes A000040 and semiprimes A001358
+A130008 A000012 and A008578 interleaved. - _Omar E. Pol_, Feb 05 2014
+A156274 A023201 and A046117 interleaved. [From _R. J. Mathar_, Feb 19 2009]
+A160017 Evil numbers (A001969) interleaved with Odious numbers (A000069). - _Philippe Deléham_, Jan 01 2012
+A181363 a(2*n-1) = A008578(n); a(2*n+1) = A000040(n)
+A210957 A020481 and A020482 interleaved.
+A215067 This sequence interleaves the counts of the closely related sequences A109081 and A106228.
+A247361 Interleave A000861\{0} and A247359: positive numbers with English name ending in a vowel resp. consonant.
+A247362 Interleave A000861 and A247359, numbers ending in a vowel resp. consonant in English.
+A256252 Number of successive odd noncomposite numbers A006005 and number of successive odd composite numbers A071904, interleaved.
+A256253 Number of successive odd nonprimes A014076 and number of successive odd primes A065091, interleaved.
+A262138 a(2*n-1) = A001223(n); a(2*n) = A036263(n+2); Interleaved first and second differences of the prime numbers.
+A290705 A004013 and 3*A045828, interleaved.
+A316828 A010060 interleaved with A007395. - _Antti Karttunen_, Oct 08 2018
