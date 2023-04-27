@@ -5304,6 +5304,11 @@ poffca:
 	| perl patch_offset.pl -d 1 -m prefix \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8
+poffalt:
+	grep -P "AlternatingSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
 poffloor:
 	grep -P "FloorSeq" offinspect2.txt \
 	| perl patch_offset.pl -d 1 \
