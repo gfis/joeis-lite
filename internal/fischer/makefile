@@ -778,12 +778,23 @@ A062450: # 2022-06-14
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-A063nnn: # Conjectures for A063081 Dimension of the space of weight 2n cusp forms for Gamma_0( 13 ).
+A063nnn0: # Conjectures for A063081 Dimension of the space of weight 2n cusp forms for Gamma_0( 13 ).
 	grep -E "^\?F A063[0-3]" $(COMMON)/jcat25.txt | grep -iE "(g\.f\.)" \
 	| cut -b 4- \
 	| perl -ne 's/ /\togfc\t1\t/; s/ //g; s/(Empirical|Conjectured?)\:?//i; s/g\.f\.\:? *//i; s/\[.*//; s/\.\Z//; print;' \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+A063nnn: # convert to num, den tuples with JPREP
+	$(JPREP) -f aman/$@.man \
+	>        $@.tmp
+	grep -E "fract1" $@.tmp | sed -e "s/fract1/lingfcj/" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+A063nnn_den: # show the denominator coefficients
+	cut -f1,3,5,12 A063nnn.gen | sort -k3.3 -k12.12 \
+	| sed -e "s/Dimension of the space of weight//" \
+	| tee    $@.tmp
 #----
 A063555: # 2021-05-29
 	grep -E "^A[0-9]" $@.man > $@.gen
