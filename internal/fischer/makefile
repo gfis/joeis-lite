@@ -33,6 +33,7 @@ TRIREC=$(GITS)/OEIS-mat/trirec
 WEIDIS=$(GITS)/OEIS-mat/weidis
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
 RAMATH=java -cp $(GITS)/ramath/dist/ramath.jar
+ROBOT=$(GITS)/OEIS-mat/robot
 JPREP=$(RAMATH)  org.teherba.ramath.sequence.JoeisPreparer
 HOLT=$(RAMATH)   irvine.test.HolonomicRecurrenceTest
 PFRACT=$(RAMATH) org.teherba.ramath.symbolic.PolyFraction
@@ -211,7 +212,9 @@ pack2:
 pack3:
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 > $@.tmp
 	make seq LIST=$@.tmp
-	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') FROM seq s, joeis j WHERE s.aseqno = j.aseqno ORDER BY 1"
+	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') \
+	  FROM seq s, joeis j WHERE s.aseqno = j.aseqno ORDER BY 1" \
+	| tee    $@.tmp
 	wc -l    $@.tmp
 rename:
 	echo cfs*.jpat | xargs -l \
@@ -602,6 +605,12 @@ potential2:
 	make CC=$(TARGET) gener
 potential3:
 	ls -tclr *.gen | tail -n7 | cut -b47- | sed -e "s/\.gen//" | xargs -l -innn make CC=nnn gener
+#--------
+robot: 
+	make robot1 CC=ogf
+robot1:
+	cp -v $(ROBOT)/$(CC).gen .
+	make purge select2 select3 gener man maditel cleanto maditel pack
 #--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
