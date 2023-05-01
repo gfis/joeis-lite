@@ -207,7 +207,7 @@ pack1:
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\S*}{}" | uniq -c
 pack2:
-	git commit -a
+	git commit -a -m"`wc -l $(CC).pass.log`"
 	git push origin master
 pack3:
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 > $@.tmp
@@ -609,6 +609,7 @@ potential3:
 robot: 
 	make robot1 CC=ogf
 robot1:
+	cd $(ROBOT) ; make $(CC)
 	cp -v $(ROBOT)/$(CC).gen .
 	make purge select2 select3 gener man maditel cleanto maditel pack
 #--------
