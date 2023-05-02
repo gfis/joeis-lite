@@ -606,12 +606,27 @@ potential2:
 potential3:
 	ls -tclr *.gen | tail -n7 | cut -b47- | sed -e "s/\.gen//" | xargs -l -innn make CC=nnn gener
 #--------
-robot: 
-	make robot1 CC=ogf
+robots:
+	# prelude
+	rm -f   robot.gen
+	make purge
+	#-- all in action
+	make CC=ogf     robot1
+	make CC=fract21 robot1
+	make CC=fract22 robot1
+	#-- postlude
+	make CC=robot purge gener maditel TO=8
+	wc -l   robot.gen
+	mv -v   robot.gen robot.`date +%Y-%m-%d.%H`.gen
+	make sumall
+	mv -v manual/A*.java park1/
 robot1:
 	cd $(ROBOT) ; make $(CC)
 	cp -v $(ROBOT)/$(CC).gen .
-	make purge select2 select3 gener man maditel cleanto maditel pack
+	make purge 
+	make select2 select3 gener man dist test log TO=8
+	make cleanto  
+	cat  $(CC).gen >> robot.gen
 #--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
@@ -2499,7 +2514,7 @@ diriprod_short:
 	wc -l    $@.gen
 #--
 diriprod0:
-	cat $(COMMON)/cat25.txt \
+	cat $(COMMON)/jcat25.txt \
 	grep -E "^\%[NFC]" | grep -E "Dirichlet|Kronecker" | cut -b4- \
 	| perl dirichlet_product.pl -d 0 \
 	>        $@.tmp
@@ -7075,6 +7090,8 @@ partran0: # select those pairs where the finding does not occur too often
 partran: # PartitionSTransformTriagle from some generator sequence
 	cp -v partran0.tmp $@.gen
 	cat A180177.man >> $@.gen
+partram: # manual ones
+	cat partran.man >> $@.gen
 partrapl:
 	grep -vE "A31920" $(CONTRIB)/pl/check_extract.tmp > $@.gen
 #--

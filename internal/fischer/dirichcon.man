@@ -1,7 +1,3 @@
-
-
-
-
 # A293303	dirichcon2	1	new A008683()	1	new A000027()	1	Dirichlet convolution of A008683 and  A000027.
 # A349469	dirichcin	1	new A068963()	1	new A057660()	1	Dirichlet convolution with A057660 equals   A068963.
 # A349616	dirichcin	1	new A000027()	1	new A064664()	1	Dirichlet convolution of A000027 with the Dirichlet inverse of the inverse permutation of EKG-permutation.
@@ -181,3 +177,12 @@ A355689	dirichinv0	1	new A166486()	1	Dirichlet inverse of A166486, characteristi
 A355690	dirichinv0	1	new A152822()	1	Dirichlet inverse of A152822, characteristic function of numbers not congruent to 2 mod 4.
 # 2023-03-27
 A349435	dirichcon2	1	new A230593()	1	new A347084()	1	Dirichlet convolution of A230593 with A347084, which is Dirichlet inverse of {n + its arithmetic derivative}.
+
+# 2023-05-02
+A349390	dirichcon2	1	new A126760()	0	new A003602()	1	Dirichlet convolution of A126760 with Kimberling's paraphrases, A003602.
+A349391	dirichcon2	1	new A126760()	0	new A001221()	1	Dirichlet convolution of A126760 with omega. A001221
+A349392	dirichcon2	1	new A126760()	0	new A000005()	1	Dirichlet convolution of A126760 with tau (number of divisors function). A000005
+A349393	moebiusix	1	new A126760()	0		Inverse Möbius transform of A126760.
+A349395	dirichcon2	1	new A126760()	0	new A008836()	1	Dirichlet convolution of A126760 with Liouville's lambda. A008836
+A353460	dirichcon2	1	new A126760()	0	new A349134()	1	Dirichlet convolution of A126760 with A349134 (the Dirichlet inverse of Kimberling's paraphrases).
+A353461	dirichcon2	1	new A323881()	1	new A003602()	1	Dirichlet convolution of A003602 (Kimberling's paraphrases) with A323881 (the Dirichlet inverse of A126760).
