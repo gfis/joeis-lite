@@ -4,7 +4,6 @@ package irvine.oeis.a337;
 import irvine.math.factorial.MemoryFactorial;
 import irvine.math.z.Z;
 import irvine.oeis.AbstractSequence;
-import irvine.oeis.a337.A337302;
 
 /**
  * A337303 Number of X-based filling of diagonals in a diagonal Latin square of order n.
@@ -17,7 +16,7 @@ public class A337303 extends AbstractSequence {
 
   /** Construct the sequence. */
   public A337303() {
-    super(1);
+    super(0);
     mN = 0;
     mSeq1.next();
   }

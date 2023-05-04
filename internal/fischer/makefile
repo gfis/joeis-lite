@@ -609,11 +609,15 @@ potential3:
 robots:
 	# prelude
 	rm -f   robot.gen
+	cp -v hold/*.java  manual
 	make purge
 	#-- all in action
-	make CC=ogf     robot1
-	make CC=fract21 robot1
-	make CC=fract22 robot1
+	make   CC=charfun    robot1
+	make   CC=ogf        robot1
+	  make CC=fract21    robot1
+	  make CC=fract22    robot1
+	make   CC=partprod   robot1
+	make   CC=partsum    robot1
 	#-- postlude
 	make CC=robot purge gener maditel TO=8
 	wc -l   robot.gen
@@ -621,11 +625,13 @@ robots:
 	make sumall
 	mv -v manual/A*.java park1/
 robot1:
+	echo ======== $(CC) ========
 	cd $(ROBOT) ; make $(CC)
 	cp -v $(ROBOT)/$(CC).gen .
 	make purge 
-	make select2 select3 gener man dist test log TO=8
-	make cleanto  
+	make select2 select3 gener maditel TO=8
+	mv -v $@.fail.log $@.faro.log || :
+	make cleanto
 	cat  $(CC).gen >> robot.gen
 #--------
 seqlist:
@@ -7059,6 +7065,10 @@ partcap1:
 partmod11:
 	cp -v partmod11.man partmod11.gen
 #--------------------------
+partprod: # partprod from ./robot
+	sort $(ROBOT)/$@.gen | uniq -w7 > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 partprom: # manual partprod
 	sort $@.man | uniq -w7 > $@.gen
 	head -n4 $@.gen
