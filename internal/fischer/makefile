@@ -17,6 +17,7 @@ HERE=../../joeis-lite/internal/fischer
 JOEIS=$(GITS)/joeis
 CA=$(GITS)/OEIS-mat/ca
 CAS=$(GITS)/OEIS-mat/cas
+DATA=$(GITS)/OEIS-mat/data
 PROG=$(GITS)/OEIS-prog
 CK=./ck
 COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
@@ -335,10 +336,10 @@ clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep fro
 	grep -f clean.grep.tmp $(CC).gen > $(CC).clean.tmp
 	cp -v $(CC).clean.tmp  $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp
-cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 100 from previous test used to from $(CC).gen
+cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 20 from previous test used to from $(CC).gen
 	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp
-	grep -P "^A\d+\t(\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
+	grep -P "^A\d+\t(\d\d\d+|[32-9]\d)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
 	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
 	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
 	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp
@@ -390,10 +391,9 @@ checkdir: # DIR=
 	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') FROM seq s LEFT JOIN joeis j ON s.aseqno = j.aseqno ORDER BY 1" \
 	| tee    $@.tmp
 #----
-DATA=0
 annotate: # add comments with names of the dependant sequences, and optionally with their data
 	# ---- $@ CC=$(CC)
-	perl annotate.pl -data $(DATA) $(CC).gen > $(CC).ann.tmp
+	perl annotate.pl -data 0 $(CC).gen > $(CC).ann.tmp
 	uedit64 $(CC).ann.tmp
 #----
 control: # extract shorter descriptions for passed seqs.
@@ -1171,9 +1171,9 @@ andiv:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--
-# simple formula a(n) = Aqseno(n...) op Arseqno(n...)
+# simple formula a(n) = Aqseqno(n...) op Arseqno(n...)
 anopan0:
-	grep -Pi "\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\)" $(COMMON)/jcat25.txt \
+	grep -Pi "\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\)" $(DATA)/jcat28.txt \
 	| grep -E "^\%[NFC]" | cut -b 4- | sort | uniq -w7 | sed -e "s/ /\t/" \
 	>        $@.tmp
 	wc -l    $@.tmp
