@@ -338,10 +338,10 @@ clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep fro
 	wc -l $(CC).gen $(CC).pass.log clean.grep.tmp $(CC).clean.tmp
 cleanto: purge # parameter: CC; $(CC).pass.log and FATO with more than 20 from previous test used to from $(CC).gen
 	# ---- $@ CC=$(CC)
-	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp
-	grep -P "^A\d+\t(\d\d\d+|[32-9]\d)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp
-	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp
-	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen
+	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >  $@.grep.tmp || :
+	grep -P "^A\d+\t(\d\d\d+|[32-9]\d)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" >> $@.grep.tmp || :
+	grep -f $@.grep.tmp $(CC).gen > $(CC).$@.tmp || :
+	grep -vE "A092847|A198034|A226913" $(CC).$@.tmp > $(CC).gen || :
 	wc -l $(CC).gen $(CC).pass.log $@.grep.tmp $(CC).$@.tmp
 dirty: dirty0 # parameter: CC; $(CC).pass.log from previous test is stripped off $(CC).gen
 	# ---- $@ CC=$(CC)
@@ -609,10 +609,10 @@ potential3:
 robots:
 	# prelude
 	rm -f   robot.gen
-	cp -v hold/*.java  manual
+	cp -v hold/*.java  manual || :
 	make purge
 	#-- all in action
-	make   CC=charfun    robot1
+	# make   CC=charfun    robot1
 	make   CC=ogf        robot1
 	  make CC=fract21    robot1
 	  make CC=fract22    robot1
