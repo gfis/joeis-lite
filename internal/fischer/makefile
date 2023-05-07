@@ -5598,7 +5598,7 @@ satishol1: # merge with initial terms
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 satishol2: # convert algebraic equation into P-finite recurrences
-	perl $(COMMON)/callmaple.pl -t 6 -n 16 -p satishol.mpat satishol1.tmp \
+	perl $(COMMON)/callmap22.pl -t 6 -n 16 -p satishol.mpat satishol1.tmp \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
@@ -6396,7 +6396,8 @@ mctest:
 	$(JAVA) irvine.oeis.McKayThompsonSequence -d $(D)  -n $(NT) $(ARGS)
 #--------
 nest0:
-	grep -E "a\(n\) *\= *A[0-9][0-9]*\(A[0-9]" $(COMMON)/cat25.txt \
+	grep -E "a\(n\) *\= *A[0-9][0-9]*\(A[0-9]" $(COMMON)/jcat25.txt \
+	| grep -P "\%[NFC]" \
 	| cut -b4- | sed -e "s/ /\t/" -e "s/\. - _.*/\./" \
 	| perl nest.pl \
 	| sort | uniq -w7 \
@@ -6897,15 +6898,16 @@ gen_mmac:
 # A030801 [ exp(17/24)*n! ].
 # A030802 a(n) = floor( exp(13/24)*n! ).
 # A030810 Floor(exp(19/23) * n!).
-flexfact: all done
-	perl -ne \
+flexfact: # all done
+	grep -E "^%[NF]" $(COMMON)/jcat25.txt \
+	| perl -ne \
 	'if (m{^(A\d+)\s+\[\s*exp\((\d+)\/(\d+)\)\s*\*\s*n\s*\!\s*\]}) { print join("\t", $$1, "$@", 0, $$2, $$3) . "\n" }' \
-	$(COMMON)/names \
-	> $@.gen
-	perl -ne \
+	>        $@.tmp
+	grep -E "^%[NF]" $(COMMON)/jcat25.txt \
+	| perl -ne \
 	'if (m{^(A\d+)\s+(a\(n\)\s*\=\s*)?[fF]loor\s*\(\s*exp\(\s*(\d+)\/(\d+)\)\s*\*\s*n\!\s*\)}) { print join("\t", $$1, "$@", 0, $$3, $$4) . "\n" }' \
-	$(COMMON)/names \
-	>        $@.gen
+	>>       $@.tmp
+	sort     $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
 #-------------------
@@ -6913,8 +6915,7 @@ flexfact: all done
 # A126058 null    Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 18.   nonn,more,synth 1..47
 # A126812 null    Ramanujan numbers (A000594) read mod 4. nonn,   1..65537
 moderiv: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
-	cat $(COMMON)/joeis_names.txt \
-	| grep -vE "Mersenne primes|Bell numbers" \
+	grep -E "^%[NF]" $(COMMON)/jcat25.txt \
 	| perl -ne 'my ($$aseqno, $$dummy, $$name, @rest) = split(/\t/, $$_); '\
 	'$$name =~ s{Pascal.s triangle}{A007318}; '\
 	'$$name =~ s{(A\d{6})}{\($$1\)}g; '\
@@ -6944,11 +6945,11 @@ moderiv: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 # A167166 a(n) = n^7 mod 16.
 # all done
 modpow: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
-	cat $(COMMON)/names \
+	grep -E "^%[NF]" $(COMMON)/jcat25.txt \
 	| perl -ne \
 	'if (m{[^\(a-z]n\^(\d+) mod (\d+)(.)}) { '\
 	'if ($$3 ne "^") { '\
-	'print join("\t", substr($$_, 0, 7), "$@", 0, $$1, $$2, $$3) . "\n"; }}' \
+	'print join("\t", substr($$_, 3, 7), "$@", 0, $$1, $$2, $$3) . "\n"; }}' \
 	| uniq -w 7 \
 	>        $@.gen
 	head -n4 $@.gen
@@ -6958,8 +6959,9 @@ modpow: # names: Annnnnn a(n) = (\d+)*n^(\d+) mod (\d+)
 # A036161	null	a(n) = 2^n mod 227.	nonn,easy,changed,	1
 modpow2: # names: Annnnnn [a(n) = ](\d+)^n mod (\d+)
 	# all done
-	perl -ne \
-	' if (m{\A(A\d+)\s+(a\(n\)\s*\=\s*)?(\d+)\^n\s+mod\s+(\d+)([^\.]*)\.}) {'\
+	grep -E "^%[NF]" $(COMMON)/jcat25.txt \
+	| perl -ne \
+	' if (m{\A.. (A\d+)\s+(a\(n\)\s*\=\s*)?(\d+)\^n\s+mod\s+(\d+)([^\.]*)\.}) {'\
 	' my ($$aseqno, $$base, $$mod, $$rest) = ($$1, $$3, $$4, $$5); $$rest =~ s{\s}{}g;'\
 	' if ($$rest eq "" or $$rest eq "^n") {'\
 	' print join("\t", $$aseqno, ($$rest eq "" ? "modpow2" : "modpow3"), 0, $$base, $$mod) . "\n"; }}' \
@@ -7099,7 +7101,7 @@ partran0: # select those pairs where the finding does not occur too often
 #--
 partran: # PartitionSTransformTriagle from some generator sequence
 	cp -v partran0.tmp $@.gen
-	cat A180177.man >> $@.gen
+	# cat A180177.man >> $@.gen
 partram: # manual ones
 	cat partran.man >> $@.gen
 partrapl:
@@ -7128,23 +7130,19 @@ partralr_eval:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #--------------------------
-polyn:
-	cat $(COMMON)/names \
+polyn0:
+	cat $(COMMON)/jcat25.txt \
 	| perl -ne \
-	'if (! m{\.\.\.} and m{\A(A\d{6}\s+\w\(([a-z])\)\s*\=\s*[ \d\+\-\*\/\!ank\[\]\{\}\(\)\^]+)\.})'\
+	'if (! m{\.\.\.} and m{\A\%[NF] (A\d{6}\s+\w\(([a-z])\)\s*\=\s*[ \d\+\-\*\/\!ank\[\]\{\}\(\)\^]+)\.})'\
 	'{ print "$$1\n"; }' \
 	| sed -e "s/ /\t/" -e "s/ //g" -e "y/[]{}/()()/" \
 	| grep -v '\.\.' \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc   -l  $@.tmp
-	make seq2 LIST=$@.tmp
-	$(DBAT) "SELECT aseqno, info \
-		FROM  seq2 \
-		WHERE aseqno NOT IN (SELECT aseqno FROM JOEIS) \
-		ORDER BY 1" \
-	>        $@.gen
-	head -n4 $@.gen
+polyn:
+	cp -v polyn0.tmp $@.gen
+	head -n2 $@.gen
 	wc -l    $@.gen
 #-------------------
 power: # names: Annnnnn a(n) = (\d+)*n^(\d+) +- (\d+)
