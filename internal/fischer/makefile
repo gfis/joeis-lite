@@ -1141,14 +1141,14 @@ alsoprime:
 #----------------
 amoda: # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
 	grep -Pi "a\(n\) *\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *A\d+\([^\)]+\) *\." $(COMMON)/jcat25.txt \
-	| grep -E "^\%" \
+	| grep -E "^%" \
 	| cut -b 4- | sed -e "s/ /\t/" \
 	| perl -ne 'if (m{\A(A\d+)\s+a\([^\)]+\) *\= *(A\d+)\(n\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *(A\d+)\([^\)]+\)}i) {'\
 	' print join("\t", $$1, $@, 0, $$2, $$4); my $$op = $$3;'\
 	' $$op =~ s{\+}{add}; $$op =~ s{\-}{subtract}; $$op =~ s{\*}{multiply}; $$op =~ s{\/}{divide}; $$op =~ s{\^}{pow}; $$op = lc($$op);'\
 	' print "\t$$op\n"; }'\
 	>        $@.gen
-	head -n4 $@.gen
+	head -n2 $@.gen
 	wc -l    $@.gen
 #---------------
 andiv0: # simple formula: a(n) = Annnnnn(n) / n 
@@ -1746,17 +1746,17 @@ binom:
 #--------------------------------
 binomin0: binomin1 binomin2 binomin3 binomin4
 binomin1: # extract all single formulas containing binomial functions and/or factorials
-	grep -E "^\%[NFpto]" $(COMMON)/jcat25.txt \
+	grep -E "^%[NFpto]" $(COMMON)/jcat25.txt \
 	| grep -viE "[mk]\)|satisf|reap|flatten|nest|accum|while|fibon|sum|prod|add|sqrt|exp|coeff|abs|floor|ceil|transform|gcd|lcm|for\(|mod|prime|euler|phi|sigma|div" \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 binomin234: binomin2 binomin3 binomin4
 binomin2:
 	perl binomin.pl -s 2 binomin1.tmp \
 	2>       $@.rest.tmp \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 	make seq4 LIST=binomin2.tmp
 	$(DBAT) "DELETE FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis);"
@@ -1764,12 +1764,12 @@ binomin2:
 	  ,'A128406','A128889','A128889','A133460','A237419','A276100','A338965');"
 	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 binomin3: # convert the formula into hypergeometric parameters for HolonomicRecurrence
-	perl $(COMMON)/callmaple.pl -t 2 -n 64 -p binomin.mpat binomin2.tmp \
+	perl $(COMMON)/callmap22.pl -t 2 -n 64 -p binomin.mpat binomin2.tmp \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 binomin4: # patch the initial terms - there may be no zero
 	sort binomin3.tmp | uniq -w7 \
@@ -1782,7 +1782,7 @@ binomin4: # patch the initial terms - there may be no zero
 	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
 	| perl binomin_patch.pl \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 	grep -A2 -B1 syntax binomin3.tmp || :
 binomin5: # select the ones that failed
@@ -1797,17 +1797,17 @@ binomin5: # select the ones that failed
 	  ,'A128406','A128889','A128889','A133460','A237419','A276100','A338965');"
 	$(DBAT)  -x "SELECT * FROM seq4 ORDER BY 1" \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 binomin6: # convert by Maple
 	perl $(COMMON)/callmaple.pl -t 2 -n 64 -p binomin.mpat binomin5.tmp \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 binomin7:
 	grep -E "^A" binomin6.tmp \
 	>        $@.tmp
-	head -n4 $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 binomin:
 	cat binomin4.tmp binomin.man | grep -P "^A[0-9]" | sort | uniq -w7\
@@ -3042,7 +3042,7 @@ holco:
 #----------------
 hologfm: # ogf -> hol with FPS, Maple 2022
 	grep -E "^A[0-9]" $(HOLREC)/hologf4.tmp \
-	| grep -vE "A115399" \
+	| grep -vE "A115399|A274254" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -3243,7 +3243,7 @@ holoman:
 	cp -v $(HOLREC)/holom.gen $@.gen
 	wc -l $@.gen
 aphrec: # Recurrences from Maple programs of A.P.H.
-	grep -E "^A" $(HOLREC)/aphrec5.tmp > $@.gen
+	grep -E "^A" $(HOLREC)/aphrec3.tmp > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 recman: # Recurrences from Mathematica RecurrenceTable
@@ -3655,7 +3655,8 @@ hygsolve_eval:
 #	  LEFT JOIN joeis j ON l.aseqno = j.aseqno \
 #----
 hygeom:
-	grep -E "^A[0-9]" $(HOLREC)/$@.java \
+	# grep -E "^A[0-9]" $(HOLREC)/$@.java ???
+	grep -E "^A[0-9]" $(HOLREC)/$@.tmp \
 	| grep -P "\thyge[omn]+\t" \
 	| sed -e "s/\thygen\t/\thygeo\t/" | sed -e "s/\thygeon\t/\thygeom\t/" \
 	| sort | uniq -w7 \
@@ -4102,9 +4103,9 @@ modi:
 #--------------------------------
 TF=Mobius
 trafo0: # select all transforms
-	# grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " (Binomial|Euler|M..?bius|Invert|Logarithmic|Revert|Weigh|Witt) transform" \
+	# grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " (Binomial|Euler|M..?bius|Invert|Logarithmic|Revert|Weigh|Witt) transform" 
 	grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " \w+ transform" \
-	| tee    $@.tmp
+	>        $@.tmp
 	wc -l    $@.tmp
 trafo: # TF= select a specific transform
 	cut -b4- trafo0.tmp | sed -e "s/ /\t/" \
