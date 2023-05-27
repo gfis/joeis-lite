@@ -630,7 +630,7 @@ robot1:
 	cp -v $(ROBOT)/$(CC).gen .
 	make purge 
 	make select2 select3 gener maditel TO=8
-	mv -v $@.fail.log $@.faro.log || :
+	mv -v $@.fail.log $(CC).faro.log || :
 	make cleanto
 	cat  $(CC).gen >> robot.gen
 #--------
@@ -7966,7 +7966,8 @@ mangf_check: # DIR=
 	>        $@.txt
 	head -n4 $@.txt
 	wc -l    $@.txt
-	grep -P "\tnyi\t" $@.txt
+	grep -P "\tnyi\t" $@.txt || :
+	grep -P "\tnyi\t" $@.txt | wc
 mangf_retest:
 	cut -f1 mangf_check.txt | grep -E "^A[0-9][0-9]" \
 	| xargs -l -innn cp -v mangf/nnn.java manual
