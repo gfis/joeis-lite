@@ -140,7 +140,7 @@ runjava: # CLASS= ARGS=
 pseudotest: # A=
 	$(JAVA) irvine.oeis.producer.PseudoSequence $(A) 2>&1
 tritest:
-	$(JAVA) irvine.oeis.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
+	$(JAVA) irvine.oeis.triangle.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
 ej:
 	echo $(JAVA)
 regtest: # CLASS= rerun all these classes
@@ -633,6 +633,11 @@ robot1:
 	mv -v $@.fail.log $(CC).faro.log || :
 	make cleanto
 	cat  $(CC).gen >> robot.gen
+robot2:
+	cd $(ROBOT) ; make $(CC)
+	cp -v $(ROBOT)/$(CC).gen .
+	make purge 
+	make select2 select3 gener maditel TO=8
 #--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
@@ -4809,7 +4814,8 @@ trideleh:
 	cp -v $(TRIREC)/$@.man $@.gen
 #----
 triprod:
-	cp -v $(TRIREC)/triprod2.tmp $@.gen
+	# cp -v $(TRIREC)/triprod2.tmp $@.gen
+	cat $(ROBOT)/triprod.gen triprod.man > $@.gen
 triprom:
 	grep -E "^A[0-9]" $@.man > $@.gen
 	head -n4 $@.gen
