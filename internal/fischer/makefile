@@ -132,6 +132,10 @@ rstest:
 	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
 cptest:
 	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)"
+tptest:
+	$(JAVA) irvine.oeis.triangle.Product -d $(D) -n $(NT) -a "$(A)"
+titest:
+	$(JAVA) irvine.oeis.triangle.Inverse -d $(D) -n $(NT) -a "$(A)"
 #--
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(NT)
@@ -1942,6 +1946,11 @@ caruniq:
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 #	perl -ne 'if ((m{cellular automat}) and ( m{Rule (\d+)})) { s{\"?Rule (\d+)\"?}{Rule 17}ig; print substr($$_, 8); }' \
+#----
+cacheck:
+	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass = 'Cellular1DAutomaton' ORDER BY 1" | sed -e "s/\r//" \
+	>        ghead.tmp
+	make test2
 #--------------------------------
 cencube: # superclass is A005898
 	grep "entered cube" $(COMMON)/joeis_names.txt \

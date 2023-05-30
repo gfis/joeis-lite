@@ -11,6 +11,6 @@ public class $(ASEQNO) extends Product {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(new $(PARM1)(), new $(PARM2)());
+    super($(OFFSET), new $(PARM1)(), new $(PARM2)());
   }
 }

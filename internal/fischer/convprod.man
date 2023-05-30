@@ -21,6 +21,6 @@
 #*# A289571	convprod	0	1,1	new A000594(), new A289570()	Coefficients in expansion of q * Product_{n>=1} (1 - q^n)^24/E_6^(3/2).
 
 # 2023-05-29, Adamson
-A154107	convprod	0	1,-1	new A000110(), new A014182()	
-A154108	convprod	0	1,-1	new SkipSequence(new A000110(), 1), new A000027()	
+#*# A154107	convprod	0	1,-1	new A000110(), new A014182()	
+#*# A154108	convprod	0	1,-1	new SkipSequence(new A000110(), 1), new A000027()	
 # A162957	convprod	0	1,1	new A162956(), new PaddingSequence("1,3", "0,0")	 convolved with (1, 3, 0, 0, 0, ...).
