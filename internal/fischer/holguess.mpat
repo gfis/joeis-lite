@@ -1,0 +1,37 @@
+#!Maple
+# Convert a list of terms into a matrix for HolonomicRecurrence
+# 2022-11-25, Georg Fischer
+with(LREtools): with(StringTools):
+toString:= proc(expr) DeleteSpace(convert(expr, string)) end:
+C:= proc(x) (1 - sqrt(1 - 4*x)) / (2*x) end: # A000108 Catalan's g.f.
+Catlan:= proc(x) (1 - sqrt(1 - 4*x)) / (2*x) end:
+holguess:= proc(aseqno, offset, inits) local req1, reqm, ope1, opea, ord1, ordm, orda, dist, ins1, i, j, u, matstr, inistr;
+  try
+    dist:= 0:
+    req1:= GuessRecurrence(inits, u(n));
+    ord1:= nops(op(1, req1));
+    ins1:= seq(u(i-1)=inits[i], i=1..ord1);
+    reqm:= MinimalRecurrence(req1, u(n), {ins1})[1];
+    i:= 0; do i:= i + 1 until not has(reqm, u(n+i+1)):
+    reqm:= subs(n=n-i-offset, reqm);
+    if coeff(coeff(op(1, reqm), u(n)), n, degree(coeff(op(1, reqm), u(n)))) >= 0 then reqm:= -reqm fi:
+    _Env_LRE_tau:= A ;_Env_LRE_x:= n; ope1:= RecurrenceToOperator(reqm, u(n));
+    orda:= degree(ope1, A);
+    opea:= subs(n=n-orda-offset, ope1);
+    seq(coeff(opea, A, i), i=orda..0, -1);
+    matstr:= toString([[0], seq([if coeff(opea, A, i) = 0 then 0 else seq(coeff(coeff(opea, A, i), n, j), j=0..degree(coeff(opea, A, i), n)) fi], i=0..orda)]);
+    j := 0; do j:= j + 1 until (j >= nops(inits)-1 or inits[j] <> 0):
+    inistr:= toString([seq(inits[i], i=1..orda + j)]);
+    printf("%a\t%a\t%a\t%s\t%s\t%a\t%a\t%a\n", aseqno, cc, offset, matstr, inistr, dist, reqm, ogf);
+    printf("make runholo A=%a OFF=%a MATRIX=\"%s\" INIT=\"%s\" DIST=%a\n", aseqno, offset, matstr, inistr, dist);
+  catch:
+    printf("# %a failed: %q\n", aseqno, lastexception):
+    error
+  end try
+end;
+# trace(holguess);
+# holguess(A212303, 0, [0, 1, 2, 3, 12, 10, 60, 35, 280, 126, 1260, 462, 5544, 1716, 24024, 6435, 102960, 24310, 437580, 92378, 1847560, 352716, 7759752, 1352078, 32449872, 5200300, 135207800, 20058300, 561632400, 77558760, 2326762800, 300540195, 9617286240, 1166803110, 39671305740]);
+#        aseqno   offset inits
+
+timelimit($(TIMEOUT), holguess($(PARM0), $(PARM1), [$(PARM2)]));
+holguess(A339356, 1, [16, 32, 144, 256, 688, 1120, 2352, 3584, 6496, 9408, 15456, 21504, 32928, 44352, 64416, 84480, 117744, 151008, 203632, 256256, 336336, 416416, 534352, 652288, 821184, 990080, 1226176, 1462272, 1785408, 2108544, 2542656, 2976768, 3550416, 4124064, 4870992]);
