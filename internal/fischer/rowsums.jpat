@@ -11,6 +11,6 @@ public class $(ASEQNO) extends RowSumSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(new $(PARM1)());
+    super($(OFFSET), new $(PARM1)());
   }
 }

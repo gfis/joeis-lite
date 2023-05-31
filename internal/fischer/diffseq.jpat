@@ -11,6 +11,6 @@ public class $(ASEQNO) extends DifferenceSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(PARM3));
+    super($(OFFSET), new $(PARM1)());
   }
 }

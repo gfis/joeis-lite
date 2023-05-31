@@ -136,6 +136,8 @@ tptest:
 	$(JAVA) irvine.oeis.triangle.Product -d $(D) -n $(NT) -a "$(A)"
 titest:
 	$(JAVA) irvine.oeis.triangle.Inverse -d $(D) -n $(NT) -a "$(A)"
+vptest:
+	$(JAVA) irvine.oeis.triangle.VectorProduct -d $(D) -n $(NT) -a "$(A)"
 #--
 tiletest:
 	$(JAVA) org.teherba.tile.TilingSequence -n $(NT)

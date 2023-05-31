@@ -1,4 +1,74 @@
+# A103994	triprod	0	A129360	A115361	tabl,sign	1..1275	nyi	_Gary W. Adamson_
+# A124790	triprod	0	A124788	A124305	Triangle is the product of A124788 and A124305, that is, it is the product of the expansion of (1+x*y
+# A137631	treonk	1	A137629	0	mN	1	
+#? A143420	rowsums	0	A143419	Row sums of triangle A143419.   nonn    2..8    nyi     _Gary W. A
+#? A158793	triprod	0	A130595	A092392	Triangle read by rows: product of A130595 and A092392 considered as infinite lower triangular arrays.
+# A158841	triprod	0	A145677	A004736	Triangle read by rows, matrix product of A145677 * A004736.
+# A174714	triprov	0	Triangle read by rows, Q*M; Q = an infinite lower triangular matrix with A000726 shifted down thrice, M = triangle A174712, the diagonalized variant of A000041.	nonn,tabf	0..44	nyi	_Gary W. Adamson_
+# A174715	triprov	0	Triangle read by rows, Q*M as infinite lower triangular matrices. Q = A001935 shifted down four times by columns, M = A174712, the diagonalized variant of A000041.	nonn,tabf	0..35	nyi	_Gary W. Adamson_
+# A363154	triprod	0	A173018	A349203	Triangle read by rows. The Hadamard product of A173018 and A349203.  
+
+A095674	triprod	0	A007318	A011971	Triangle read by rows, formed from product of Pascal's triangle (A007318) and Aitken's (or Bell's) triangle (A011971).	nonn,tabl,easy	0..46	nyi	_N. J. A. Sloane_, based on a suggestion from _Gary W. Adamson_
+A095675	triprod	0	A011971	A007318	Triangle read by rows, formed from product of Aitken's (or Bell's) triangle (A011971) and Pascal's triangle (A007318).	nonn,tabl,easy	0..41	nyi	_N. J. A. Sloane_, based on a suggestion from _Gary W. Adamson_
+A095676	rowsums	1	A095675
+A095729	triprod	0	A002260	A002260	squared, as an infinite lower triangular matrix, read by rows.	nonn,tabl	1..63	nyi	_Gary W. Adamson_, Feb 17 2007
+A095799	triprod	1	A011971	A011971
+A095801	triprod	0	A001263	A001263	Square of Narayana triangle A001263: View A001263 as a lower triangular matrix. Then the square of that matrix is also lower triangular. Sequence gives this lower triangle, read by rows.	nonn,easy,nice,tabl	1..50	nyi	_Gary W. Adamson_
+A104587	triprod	0	A094727	A000012
+A124800	triprov	0	A007318	A007442	Let M be a diagonal matrix with A007442 on the diagonal and P = Pascal's triangle as an infinite lower triangular matrix. Now read the triangle P*M by rows.
+A126124	trinv	0	A124733	
+A127108	triprod	0	A127099	A000012	Triangle read by rows, A127099 * A000012.	nonn,tabl	0..77	nyi	_Gary W. Adamson_, Jul 27 2008
+A127139	trinv	0	A126988		Inverse triangle of A126988.	tabl,sign	1..55	nyi	_Gary W. Adamson_
+A127168	triprod	0	A126988	A126988	Triangle, square of A126988, row sums = A060640.	nonn,tabl	0..45	nyi	_Gary W. Adamson_
+A127169	tripro3	0	A126988	A126988	A126988	Triangle, cube of A126988.	nonn,tabl	1..57	nyi	_Gary W. Adamson_
+A127192	triprod	0	A054523	A054523	Triangle, square of A054523; row sums = A018804.	nonn,tabl	1..68	nyi	_Gary W. Adamson_
+A127332	triprov	0	A126988	A002321	sign	1..10000	nyi	_Gary W. Adamson_
+A127445	triprod	0	A126988	A127368	Triangle defined by the matrix product A126988 * A127368, read by rows.	nonn,tabl	1..77	nyi	_Gary W. Adamson_
+A127474	triprod	0	A054522	A054522	Triangle, square of A054522.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A127506	triprov	0	A054521	A000010	Triangle read by rows: T(n,k) = A054521(n,k)*A000010(k), 1<=k<=n .	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A127514	triprov	0	A007318	A008683
+A127569	triprov	0	A054525	A000203	Triangle read by rows: product of the Mobius matrix A054525 by the diagonal matrix diag(A000203(n)).	tabl,sign	1..115	nyi	_Gary W. Adamson_
+A128078	triprod	0	A002260	A128064	tabl,sign	1..36	nyi	_Gary W. Adamson_
+A128184	triprod	0	A051731	A097806	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A128188	rowsums	0	A128187	Row sums of A128187.    nonn    1..70   nyi     _Gary W. Adamson_
+A128190	trinv	0	A128189		Inverse of A128189.	tabl,sign	0..54	nyi	_Gary W. Adamson_
+A128521	tripro3	0	A128174	A054525	A000012		.	tabl,sign	1..55	nyi	_Gary W. Adamson_
+A128522	tripro3	0	A054525	A128174	A000012		.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A129691	trinv	0	A054523
+A130093	triprov	0	A051731	A036987	on the main diagonal and the rest zeros.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A130106	triprov	0	A051731	A063659		nonn,tabl	1..105	nyi	_Gary W. Adamson_
+A130115	triprov	0	A051731	A130113	Inverse Moebius transform of A130113 as a diagonalized matrix.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A130116	triprov	0	A051731	A007436	Inverse Moebius transform of a diagonalized matrix of A007436.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A130160	triprov	0	A051731	A130159	 as a diagonalized matrix.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A130161	triprov	0	A054525	A036989	 as a diagonalized matrix.	tabl,sign	0..54	nyi	_Gary W. Adamson_
+A130162	triprov	0	A051731	A000837	 as a diagonalized matrix.	nonn,tabl	0..77	nyi	_Gary W. Adamson_
+A130586	rowsums	0	A130585	Row sums of triangle A130585.   nonn    0..29   nyi     _Gary W. A
+A132820	rowsums	0	A132819	Row sums of triangle A132819.   nonn    1..22   nyi     _Gary W. A
+A133727	triprov	0	A051731	A007438	 as a diagonalized matrix.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A133734	triprov	0	A000012	A002865	 as a diagonalized matrix.	nonn,tabl	0..54	nyi	_Gary W. Adamson_
+A133934	triprov	0	A007318	A124625	.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A133935	triprov	0	A007318	A093178	 as a diagonalized matrix.	nonn,tabl	0..54	nyi	_Gary W. Adamson_
+A135223	tripro3	0	A000012	A127648	A103451		, read by rows.	nonn,tabl	1..100	nyi	_Gary W. Adamson_
+A135224	tripro3	0	A103451	A007318	A000012		, read by rows. T(n, k) for 0 <= k <= n.	nonn,tabl	0..100	nyi	_Gary W. Adamson_
+A136536	tripro3	0	A001263	A128064	A000012		 as infinite lower triangular matrices.	nonn,tabl	1..53	nyi	_Gary W. Adamson_
+A137629	triprod	0	A026794	A026794	
+A137630	rowsums	0	A137629	Row sums of triangle A137629 (square of the partition triangle A02
+A137640	rowsums	1 	A137639	Row sums of triangle A137639.
+A139633	triprov	0	A007318	A026741	Triangle read by rows: binomial transform of a diagonalized matrix of A026741.	nonn,tabl	1..72	nyi	_Gary W. Adamson_ and _Roger L. Bagula_
+A143037	tripro3	0	A000012	A127773	A000012		. A000012 is an infinite lower triangular matrix with all 1's, A127773 = (1; 0,3; 0,0,6; 0,0,0,10; ...).	nonn,tabl,easy	1..55	nyi	_Gary W. Adamson_ & _Roger L. Bagula_
+A143038	tripro3	0	A000012	A134309	A000012		, where A134309 = an infinite lower triangular matrix with (1, 1, 2, 4, 8, 16, ...) in the main diagonal and the rest zeros.	nonn,tabl	0..54	nyi	_Gary W. Adamson_
+A143061	tripro3	0	A000012	A127647	A000012		.	nonn,tabl	1..10011	nyi	_Gary W. Adamson_
+A143230	tripro3	0	A130207	A000012	A130207		.	nonn,easy,tabl	1..78	nyi	_Gary W. Adamson_
+A143269	tripro3	0	A127648	A000012	A130207		, 1<=k<=n.	nonn,tabl	1..66	nyi	_Gary W. Adamson_
+A143724	triprov	0	A051731	A116470	Triangle read by rows, inverse M√∂bius transform of a diagonalized matrix of A116470.	nonn,tabl	1..78	nyi	_Gary W. Adamson_
+A143956	tripro3	0	A000012	A136521	A000012		; 1<=k<=n.	nonn,tabl	1..66	nyi	_Gary W. Adamson_ & _Roger L. Bagula_
+A144736	tripro3	0	A051731	A000012	A051731		 * A054533	tabl,sign	1..66	nyi	_Gary W. Adamson_
+A144826	rowsums	0	A144825	Row sums of triangle A144825    nonn    1..13   nyi     _Gary W. A
+A163313	triprov	0	A010766	A014668	Triangle read by rows, A010766 convolved with A014668 (diagonalized as an infinite lower triangular matrix)	nonn,tabl	1..55	nyi	_Gary W. Adamson_ & _Mats Granvik_
+A166555	triprov	0	A047999	A000079	Triangle read by rows, Sierpinski's gasket, A047999 * (1,2,4,8,...) diagonalized.	nonn,tabl	0..65	nyi	_Gary W. Adamson_
+A167364	triprov	0	A047999	A010060	Triangle read by rows, A047999 * A010060 (diagonalized); as infinite lower triangular matrices.	nonn,tabl	1..78	nyi	_Gary W. Adamson_ & _Mats Granvik_
+A176917	triprov	0	A077049	A002033	Triangle read by rows, A077049 * the diagonalized version of A002033.	nonn,tabl	1..78	nyi	_Gary W. Adamson_ & _Mats Granvik_
+A177446	triprov	0	A000012	A177445	Triangle read by rows, A000012 * A177445 * the diagonalized variant of A120562	nonn,tabl	0..90	nyi	_Gary W. Adamson_
 A177991	triprod	0	A070909	A177990		A070909 * A177990 = 
 A177992	triprod	0	A007318	A177990		A007318 * A177990 = 
 A177993	triprod	0	A177990	A007318		A177990 * A007318 =
- 
