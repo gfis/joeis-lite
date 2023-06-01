@@ -591,7 +591,6 @@ potential: # rerun all targets that have accelaration potential
 	rm -f    $@.tmp
 	#---- start of list of all candidates
 	# echo anopan       >> $@.tmp
-	# echo anopan       >> $@.tmp
 	echo decexro      >> $@.tmp # after cd cons ; make cons conjs decexro0
 	echo inbase2      >> $@.tmp
 	echo n2           >> $@.tmp
@@ -618,12 +617,17 @@ robots:
 	cp -v hold/*.java  manual || :
 	make purge
 	#-- all in action
-	# make   CC=charfun    robot1
+	make   CC=charfun    robot1
+	make   CC=diffseq    robot1
 	make   CC=ogf        robot1
 	  make CC=fract21    robot1
 	  make CC=fract22    robot1
 	make   CC=partprod   robot1
 	make   CC=partsum    robot1
+	make   CC=rowsums    robot1
+	make   CC=triprod    robot1
+	make   robot3
+robot3:
 	#-- postlude
 	make CC=robot purge gener maditel TO=8
 	wc -l   robot.gen
@@ -4828,7 +4832,7 @@ triprod:
 	# cp -v $(TRIREC)/triprod2.tmp $@.gen
 	cat $(ROBOT)/triprod.gen triprod.man > $@.gen
 triprom:
-	grep -E "^A[0-9]" $@.man > $@.gen
+	grep -E "^A[0-9]" $@.man | sort | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 trisimple:

@@ -1,33 +1,129 @@
-A035530	binomx	0	A003603	0	new A003603()				1,2,4,9,20,44,97,212	1,1,1,2,1,3,2,1	Binomial transform of A003603.
-A054185	binomx	0	A000031	0	new A000031()				1,3,8,20,49,119,290,714	1,2,3,4,6,8,14,20	Binomial transform of A000031.
-A054190	binomx	0	A001037	0	new A001037()				1,3,6,12,26,62,158,418	1,2,1,2,3,6,9,18	Binomial transform of A001037.
-A054195	binomx	0	A001371	0	new A001371()				1,3,6,12,26,62,157,409	1,2,1,2,3,6,8,16	Binomial transform of A001371.
-A054196	binomx	0	A000013	0	new A000013()				1,2,5,12,29,70,169,410	1,1,2,2,4,4,8,10	Binomial transform of A000013.
-A054197	binomx	0	A000048	0	new A000048()				1,2,4,8,17,39,95,241	1,1,1,1,2,3,5,9	Binomial transform of A000048.
-A054198	binomx	0	A000011	0	new A000011()				1,2,5,12,29,70,169,409	1,1,2,2,4,4,8,9	Binomial transform of A000011.
-A065979	binomx	1	A002024	0	new A002024()				1,3,7,16,36,79,170,362	1,2,2,3,3,3,4,4	Binomial transform of A002024.
-A073596	binomx	0	A000254	0	new A000254()				0,1,5,23,116,669,4429,33375	0,1,3,11,50,274,1764,13068	Expansion of exp(x)*log(1-x)/(x-1).
-A075272	binomx	0	A005329	0	new A005329()				1,2,6,34,422,11586,678982,82653026	1,1,3,21,315,9765,615195,78129765	BinomialMean (BM) transform of A075271, which see for the definition of (BM).
-A081673	binomx	0	A081672	0	new A081672()				1,3,11,33,99,293,869,2579	1,2,6,8,22,32,84,128	Expansion of exp(3*x) - exp(x)*(1-BesselI_0(2*x)).
-A084153	binomx	0	A084152	0	new A084152()				0,0,1,6,33,170,861,4326	0,0,1,3,15,55,231,903	Binomial transform of a Jacobsthal convolution.
-A084625	binomx	0	A084624	0	new A084624()				1,3,8,21,55,143,366,919	1,2,3,5,8,12,16,22	Binomial transform of A084624.
-A086331	binomx	0	A000312	0	new A000312()				1,2,7,43,393,4721,69853,1225757	1,1,4,27,256,3125,46656,823543	E.g.f.: exp(x)/(1 + LambertW(-x)).
-A088129	binomx	0	A037256	0	new A037256()				0,1,4,19,104,661,4812,39607	0,1,2,10,48,296,2080,16752	Expansion of sinh(x)/(1-x)^2.
-A097332	binomx	0	A097331	0	new A097331()				1,2,3,5,9,18,39,90	1,1,0,1,0,2,0,5	Expansion of (1/(1-x))(1+2x/(1-x+sqrt(1-2x-3x^2))).
-A099063	binomx	0	A000960	0	new A000960()				1,4,14,44,126,338,870,2178	1,3,7,13,19,27,39,49	Binomial transform of A000960.
-A100442	binomx	1	A003418	0	new A003418()				1,2,5,16,53,206,757,2780	1,1,2,6,12,60,60,420	Binomial transform of A003418.
-A106397	binomx	0	A002321	0	new A002321()				1,1,0,-3,-11,-30,-72,-162	1,0,-1,-1,-2,-1,-2,-2	Binomial transform of Mertens's function sequence A002321.
-A110810	binomx	0	A000796	0	new A000796()				3,4,9,19,40,92,220,513	3,1,4,1,5,9,2,6	Binomial transform of A000796.
-A112657	binomx	0	A100098	0	new A100098()				1,2,7,23,79,272,943,3278	1,1,4,7,22,46,130,295	A Motzkin transform of Jacobsthal numbers.
-A116387	binomx	0	A116383	0	new A116383()				1,2,7,22,72,234,763,2486	1,1,4,6,19,33,93,175	Expansion of 1/(sqrt(1-2*x-3*x^2)*(2-M(x))), where M(x) is the g.f. of the Motzkin numbers A001006.
-A119968	binomx	0	A036987	0	new A036987()				1,2,3,5,9,16,27,44	1,1,0,1,0,0,0,1	Binomial transform of Fredholm-Rueppel sequence.
-A126082	binomx	0	A001113	0	new A001113()				2,9,17,34,70,145,298,605	2,7,1,8,2,8,1,8	Binomial transform of A001113.
-A136649	binomx	0	A014070	0	new A014070()				1,3,11,81,2089,211107,76211147,95054910473	1,2,6,56,1820,201376,74974368,94525795200	Binomial transform of A014070: a(n) = Sum_{k=0..n} C(n,k)*C(2^k,k).
-A153197	binomx	0	A006789	0	new A006789()				1,2,5,15,51,189,748,3128	1,1,2,5,14,43,143,509	Binomial transform of Bessel numbers A006789.
-A166078	binomx	0	A114191	0	new A114191()				1,0,2,-6,30,-150,806,-4494	1,-1,3,-13,67,-381,2307,-14589	Expansion of (3(1-x)-sqrt(1+6x-7x^2))/(2(1-x)(1-2x)).
-A172634	binomx	0	A002898	0	new A002898()				1,1,7,31,175,991,5881,35617	1,0,6,12,90,360,2040,10080	Number of n X 3 0..2 arrays with row sums 3 and column sums n.
-A227094	binomx	0	A013999	0	new A013999()				1,2,5,18,91,574,4199,34650	1,1,2,8,42,258,1824,14664	Binomial transform of A013999.
-A305923	binomx	0	A005444	0	new A005444()				1,2,6,21,105,580,4332,33173	1,1,3,8,50,214,2086,11976	Expansion of e.g.f. exp(x)/(1 - log(1 + x) - log(1 + x)^2).
-A307259	binomx	0	A022629	0	new A022629()				1,2,5,15,44,126,357,1003	1,1,2,5,7,15,25,43	Expansion of (1/(1 - x)) * Product_{k>=1} (1 + k*x^k/(1 - x)^k).
-A307264	binomx	0	A000700	0	new A000700()				1,2,3,5,10,22,49,107	1,1,0,1,1,1,1,1	Expansion of (1/(1 - x)) * Product_{k>=1} 1/(1 + (-x)^k/(1 - x)^k).
-A330046	binomx	0	A006154	0	new A006154()				1,2,5,17,77,437,2975,23627	1,1,2,7,32,181,1232,9787	Expansion of e.g.f. exp(x) / (1 - sinh(x)).
+A091918	trinv	0	A091917
+A098384	A098385	Triangle read by rows of coefficients used to generate diagonals of ordered factorizations as displayed in A098348.
+A100936	A051163	Symmetric square array, read by antidiagonals, where the inverse binomial transform of row n equals: [C(n,0)*1, C(n,1)*2,..., C(n,k)*A051163(k), ..., C(n,n)*A051163(n)] and where A051162 equals the antidiagonal sums.
+A103446	A000041	Unlabeled analog of A025168.
+A104495	trinv	0	A099602
+A107893	A055129	Triangle read by rows, related to A055129 (repunits in base k).
+A108087	A000110	Array, read by antidiagonals, where A(n,k) = exp(-1)*Sum_{i>=0} (i+k)^n/i!.
+A108290	A060543	Triangle, read by rows, such that row n equals the inverse binomial transform of row n of table A060543, where A060543(n,k) = C(n+n*k+k, n*k+k).
+A108625	A063007	Square array, read by antidiagonals, where row n equals the crystal ball sequence for A_n lattice.
+A110115	A046161	Numerators in expansion of 1/((1-4x^2)^(1/4)*sqrt(1+x)).
+A110506	A110509	Riordan array (1/(1-xc(2x)),xc(2x)/(1-xc(2x))), c(x) the g.f. of A000108.
+A113174
+A116672	A007318	Triangle read by rows in which the binomial transform of the n-th row gives the Euler transform of the n-th diagonal of Pascal's triangle (A007318).
+A116853	A000142	Difference triangle of factorial numbers read by upward diagonals.
+A116924	A016777	Triangle T(n,k) = B(k,n) - B(k-1,n) where B(n,m) = Sum_{i=0..n} binomial(m,i) (3*i+1).
+A117267	A000073	Difference row triangle of A117189.
+A117935	A000129	Triangle, row terms converge to the Pell sequence.
+A118978	A014410	Array read by antidiagonals: the n-th row contains the binomial transform of row n-1 of A014410.
+A124840	A008683	Triangle, row sums = A008683, the Mobius sequence.
+A124842	A124841	Triangle, row sums = A005614, the rabbit sequence.
+A125053	A000182	Variant of triangle A008301, read by rows of 2*n+1 terms, such that the first column is the secant numbers (A000364).
+A126136	triprod	0	A007318	A107430	Binomial transform of A107430.
+A128544	triprod	0	A007318	A128540	
+A128585	triprod	0	A130595	A128541.
+A128586	triprod	0	A130595	A128540.
+A130197	triprod	0	A007318	A130196
+A130300	triprod	0	A007318	A130296
+A130584	triprod	0	A007318	A054522
+A130587	triprod	0	A007318	A130008
+A131046	triprod	0	A007318	A000203
+A131249	triprod	0	A007318	A052509
+A132476	A007318	A130595 * [3*A007318^2 - 2*A000012].
+A132478	A007318	A130595 * [4*A007318^(2) - 3*A000012].
+A132814	triprod	0	A130595	A132813.
+A132816	triprod	0	A130595	A132812.
+A133110	triprod	0	A007318	A133109	
+A133341	triprod	0	A007318	A134312	
+A133544	triprod	0	A007318	A052474	
+A133729	triprod	0	A007318	A133728	
+A133807	A097806	A007318 * (A097806 + A133566 - I), where I is the identity matrix.
+A133935	triprod	0	A007318	A093178	 as a diagonalized matrix.
+A134232	A007318	A007318 * M, where M = triangle in which row n consists of n-1 zeros followed by 2n-1, n+1.
+A134308	triprod	0	A007318	A082137	.
+A134318
+A134377
+A134380
+A134417	triprov	0	A007318	A133632	 * Triangle with A133632 as the diagonal and the rest zeros.
+A134443	tripro3	0	A007318	A007318	A007248
+A134761	A134760	A007318^(-2) * A134760.
+A136104	triprov	0	A007318	A002110	; a(n) = Sum_{k=0..n} binomial(n,k)*A002110(k).
+A136394	A008306	Triangle read by rows: T(n,k) is the number of permutations of an n-set having k cycles of size > 1 (0<=k<=floor(n/2)).
+A138354	A018224	Central moment sequence of tr(A^4) in USp(4).
+A143239
+A143603
+A144955	A026729	Binomial transform of a modified version of A026729
+A153859	A007476	Triangle read by rows, A007318 * (A007476 * 0 ^(n-k))
+A153860	triprod	0	A007318	A153861	Triangle by columns: leftmost column = (1, 0, 1, -1, 1, -1, 1, ...); columns >1 = (1, 1, 0, 0, 0, ...).
+A153868	A040027	Triangle read by rows, A135278 * (A040027 * 0^(n-k)).
+A154603	A002105	Binomial transform of reduced tangent numbers (A002105).
+A157898	A059576	Triangle read by rows: inverse binomial transform of A059576
+A158303	A158300	Triangle read by rows, A007318 * ((A158300 * 0^(n-k)).
+A163840	A163865	Triangle interpolating the binomial transform of the swinging factorial (A163865) with the swinging factorial (A056040).
+A163945	A163872	Triangle interpolating between (-1)^n (A033999) and the swinging factorial function (A056040) restricted to odd indices (2n+1)$ (A002457).
+A168423	A123125	Triangle read by rows: expansion of (1 - x)/(exp(t)*(1 - x*exp(t*(1 - x))))
+A173755	A046161	Table read by rows, T(n,k) = (-1)^(n-k)*2^(2*k-bw(k)), where bw(k) is the binary weight of k (A000120).
+A177953	triprod	0	A007318	A070909	
+A182176	A000079	Number of affine subspaces of GF(2)^n.
+A186185	A001764	Expansion of 1/(1 - x*A001764(x/(1-x))/(1-x)).
+A187848	A003319	a(n) is the moment of order n for the probability density function defined by rho(x)=exp(x-1)/((Ei(x-1))^2+Pi^2) over the interval 1..infinity, with Ei the exponential integral.
+A187914	A000957	Generalized Riordan array based on the binomial transform of the Fine's numbers A000957.
+A213268	A001477	Denominators of the Inverse semi-binomial transform of A001477(n) read downwards antidiagonals.
+A222115	A218481	a(n) = 1 + Sum_{k=1..n} binomial(n,k) * sigma(k).
+A227418	A002605	Array A(n,k) with all numbers m such that 3*m^2 +- 3^k is a square and their corresponding square roots, read downward by diagonals.
+A228405	A000129	Pellian Array, A(n, k) with numbers m such that 2*m^2 +- 2^k is a square, and their corresponding square roots, read downward by diagonals.
+A244237	A164555	Numerators of the inverse binomial transform of (-1 followed by A164555(n+1)/A027642(n+1)).
+A244605	A027641	Numerators of the Akiyama-Tanigawa transform applied to 1/(n+1) with -1/2 instead of 1/2.
+A262704	A000172	Triangle: Newton expansion of C(n,m)^3, read by rows.
+A262705	A005260	Triangle: Newton expansion of C(n,m)^4, read by rows.
+A290158	A000312	a(n) = n! * [x^n] exp(-n*x)/(1 + LambertW(-x)).
+A290215	A000169	a(n) = n! * [x^n] -exp(-n*x)*LambertW(-x).
+A290219	A000110	a(n) = n! * [x^n] exp(exp(x) - n*x - 1).
+A290596
+A290598
+A290824	A000312	Square array A(n,k), n >= 0, k >= 0, read by antidiagonals, where column k is the expansion of e.g.f. exp(k*x)/(1 + LambertW(-x)).
+A292219
+A292627	A126869	Square array A(n,k), n >= 0, k >= 0, read by antidiagonals, where column k is the expansion of e.g.f. exp(k*x)*BesselI(0,2*x).
+A292628	A138364	Square array A(n,k), n>=0, k>=0, read by antidiagonals, where column k is the expansion of e.g.f. exp(k*x)*BesselI(1,2*x).
+A292629	A138364	a(n) = n! * [x^n] exp(n*x)*BesselI(1,2*x).
+A292630	A001405	Square array A(n,k), n>=0, k>=0, read by antidiagonals, where column k is the expansion of e.g.f. exp(k*x)*(BesselI(0,2*x) + BesselI(1,2*x)).
+A292631	A001405	a(n) = n! * [x^n] exp(n*x)*(BesselI(0,2*x) + BesselI(1,2*x)).
+A292632	A000108	a(n) = n! * [x^n] exp((n+2)*x)*(BesselI(0,2*x) - BesselI(1,2*x)).
+A292633	A000169	a(n) = n! * [x^n] -exp(n*x)*LambertW(-x).
+A292915	A000670	Square array A(n,k), n >= 0, k >= 0, read by antidiagonals, where column k is the expansion of e.g.f. exp(k*x)/(2 - exp(x)).
+A292916	A000670	a(n) = n! * [x^n] exp(n*x)/(2 - exp(x)).
+A292975	A000111	Square array A(n,k), n >= 0, k >= 0, read by antidiagonals, where column k is the expansion of e.g.f. exp(k*x)*(sec(x) + tan(x)).
+A292977	A000142	Square array A(n,k), n >= 0, k >= 0, read by antidiagonals, where column k is the expansion of e.g.f. exp(-k*x)/(1 - x).
+A293491	A000984	a(n) = n! * [x^n] exp((n+2)*x)*BesselI(0,2*x).
+A294573	A001006	a(n) = n! * [x^n] exp((n+1)*x)*BesselI(1,2*x)/x.
+A295098	A006882	a(n) = n! * [x^n] exp(n*x)*(1 + exp(x^2/2)*x*(1 + sqrt(Pi/2)*erf(x/sqrt(2)))).
+A295099	A001147	a(n) = n! * [x^n] exp(n*x)/sqrt(1 - 2*x).
+A295100	A000165	a(n) = n! * [x^n] exp(n*x)/(1 - 2*x).
+A305004	A030019	Number of labeled hypertrees (connected acyclic antichains) spanning some subset of {1,...,n} without singleton edges.
+A306810	A306809	Inverse binomial transform of the continued fraction expansion of e.
+A307249	A014466	Number of simplicial complexes with n nodes.
+A307803	A003418	Inverse binomial transform of least common multiple sequence.
+A307974	A164555	Inverse binomial transform of the "original" Bernoulli numbers [A164555(n)/A027642(n)] with 1 and 1/2 swapped. Numerators.
+A320568	A000203	a(n) = Sum_{k=1..n} (-1)^(n-k)*binomial(n,k)*sigma(k).
+A320586	A000593	Expansion of (1/(1 - x)) * Sum_{k>=1} k*x^k/(x^k + (1 - x)^k).
+A320589	A000593	Expansion of (1/(1 + x)) * Sum_{k>=1} k*x^k/(x^k + (1 + x)^k).
+A325668	A022839	First term of n-th difference sequence of (floor(k*r)), r = sqrt(5), k >= 0.
+A325735	A121384	First term of n-th difference sequence of (floor(-k*e)), k >= 0.
+A326878	A000798	Number of topologies whose points are a subset of {1..n}.
+A326900	A006058	Number of set-systems on n vertices that are closed under union and intersection.
+A326964	A323818	Number of connected set-systems covering a subset of {1..n}.
+A327459	A327762	Inverse binomial transform of A327460.
+A329959	A050166	Binomial transform of a signed variant of triangle A050166.
+A330140	A026300	Triangle read by rows: binomial transform of a signed variant of triangle A026300 with alternating signs in each column.
+A330141	A007317	Triangle read by rows: binomial transform of triangle A330140.
+A330603	A000670	a(n) = Sum_{k>=0} (k - n)^n / 2^(k + 1).
+A349591	A007556	G.f. A(x) satisfies: A(x) = 1 / (1 - 2*x) + x * (1 - 2*x)^6 * A(x)^8.
+A359626
+A361380	A000110	Sum over the j-th term of the (n-j)-th inverse binomial transform of the Bell numbers (A000110) for all j in [n].
+A361781	A000110	A(n,k) is the n-th term of the k-th inverse binomial transform of the Bell numbers (A000110); square array A(n,k), n>=0, k>=0, read by antidiagonals.
+A362357
+A362566
+A362577
+A362904
+A362906
+A363350

@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2023-06-01: -t constructor; UP=54
 # 2022-12-30: private long mN;
 # 2022-11-24: Sequence0
 # 2022-07-15: SequenceWithOffset
@@ -224,8 +225,12 @@ GFis
         } else {
             print TAR "    super(0, \"[[0],[1],[1],[1],[1],[1],[1],[-1]]\", \"1\", 0);\n"; # Fibonacci
         }
+    } elsif ($triangle) {
+        print TAR "    super(0, 0, 0);\n";
+        print TAR "    hasRAM(true);\n";
     } elsif ($upperleft) {
         print TAR "    super(1, 1, -1);\n";
+        print TAR "    hasRAM(true);\n";
     } elsif (scalar(@pnames) > 0) { # with generic constructor
         print TAR "    this";
         $sep = "(";
@@ -285,14 +290,16 @@ GFis
 GFis
     } elsif ($triangle) {
         print TAR <<"GFis"; # Pascal's rule
+
   \@Override
   public Z triangleElement(final int n, final int k) {
-    return Z.valueOf(n == 1 ? k : n + k);
+    return (k == n) ? Z.ONE : ((k == n - 1) ? Z.valueOf(k) : Z.ZERO);
   }
 GFis
     #----
     } elsif ($upperleft) {
         print TAR <<"GFis";
+
   \@Override
   public Z matrixElement(final int n, final int k) {
     return Z.valueOf(n == 1 ? k : n + k);
