@@ -639,7 +639,7 @@ robot1:
 	cd $(ROBOT) ; make $(CC)
 	cp -v $(ROBOT)/$(CC).gen .
 	make purge 
-	make select2 select3 gener maditel TO=8
+	make select2 select3 geditel TO=8
 	mv -v $@.fail.log $(CC).faro.log || :
 	make cleanto
 	cat  $(CC).gen >> robot.gen
@@ -3074,6 +3074,9 @@ hologf4: # ogf -> hol with FPS, Maple 2022
 	wc -l    $@.gen
 	# | grep -vE "A068246|A112951|A129155|A132058|A132059|A248426|A274254|A325918|A325920|Catalan" \
 	#
+recuf7:
+	cp recuf7.tmp recuf7.gen
+	wc -l recuf7.gen
 #----------------
 # A054122
 # +(-8*n+4*n^2)*a(n-2) + (-4+12n-8n^2)*a(n-1) + (0-1*n+1n^2)*a(n)  = 0.
@@ -4431,7 +4434,7 @@ prisqua:
 	grep -E "^A[0-9]" $@.man > $@.tmp || :
 	sort $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen $@.tmp $@.rest.tmp
+	wc -l    $@.gen $@.tmp $@.rest.tmp || :
 prijacob:
 	grep -i prime $(COMMON)/jcat25.txt | grep -E "(square|Jacobi)" \
 	| perl prijacob.pl \
@@ -4659,6 +4662,7 @@ sumsi:
 	| perl prodsi.pl \
 	2>       $@.rest.tmp \
 	| sort -k7 \
+	| grep -vE "A058715|A064405|A064636|A064888" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
@@ -4702,7 +4706,7 @@ peravoid:
 #--------------------------------
 prodfin0: prodfin1 prodfin
 prodfin1:
-	grep -iE "^\%[NFtpo]" $(COMMON)/cat25.txt \
+	grep -iE "^\%[NFtpo]" $(COMMON)/jcat25.txt \
 	| grep -iE "prod" \
 	| grep -ivE "produce|dot product|Multiplicative|gamma|sum|binomial|indices|E\.g\.f\.|Conjecture" \
 	| perl -ne 'if (m{prod.*=\d+\.\.\d+\}}i) { print join("\t", substr($$_, 3, 7), "prodfin", 0, substr($$_, 11)); } ' \
@@ -4726,7 +4730,7 @@ prodfin:
 	wc -l    $@.gen
 #--------
 recip:
-	grep -i "Sign diagram" $(COMMON)/cat25.txt \
+	grep -i "Sign diagram" $(COMMON)/jcat25.txt \
 	| perl recip.pl \
 	| grep -E "^A0491[567]" | grep -vE "^A04917[1-9]" \
 	>        $@.gen
@@ -4753,7 +4757,7 @@ ym2:
 #--------------------------------
 # %F A238745 a(n) = A181819(A124859(n)).
 seqop: # ???
-	grep -E "a\(n\) *= *A[0-9][0-9]*(\([a-z]\))? *[\+\-\*\/m]" $(COMMON)/cat25.txt \
+	grep -E "a\(n\) *= *A[0-9][0-9]*(\([a-z]\))? *[\+\-\*\/m]" $(COMMON)/jcat25.txt \
 	| perl -ne 'my $$line = $$_; $$line =~ s{\s+\Z}{}; '\
 	'if ($$line =~ m{^\%\w (A\d+)\s*a\(n\) *= *(A\d+)(\(\w\))?\s*([\+\-\*\/]|mod)\s*([a-z0-9])\.}) { '\
 	'my ($$aseqno, $$bseqno, $$op, $$term) = ($$1, $$2, $$4, $$5); $$term =~ s{n}{mN}; '\
@@ -4870,7 +4874,7 @@ periodic: # PeriodicSequence
 	' if (m{^(\%\w) (A\d+)\s+Period [^\{\(\[]*[\{\(\[]([\- \d\,]+)}) {'\
 	' my ($$aseqno, $$list) = ($$2, $$3); $$list =~ s{ }{}g; '\
 	' print join("\t", $$aseqno, "period", 0, $$list) . "\n"; }' \
-	  $(COMMON)/cat25.txt \
+	  $(COMMON)/jcat25.txt \
 	| grep -v A210188 \
 	>        $@.gen
 	head -n2 $@.gen
@@ -4990,7 +4994,7 @@ insect:
 	wc -l    $@.gen
 #----
 xfmpad0:
-	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/cat25.txt \
+	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/jcat25.txt \
 	| grep -iE " transform of[\(\[\{ ]*\-?[0-9][0-9]*\," \
 	| sed -e "s/ /\t/" -e "s/ /\t/" -e "s/^[^\%]*\%/\%/" \
 	| perl xfmpad.pl \
@@ -5170,7 +5174,7 @@ knestm:
 #--------------------------------
 # A320124 null    Number of integer solutions to a^2 + b^2 + 2*c^2 + 3*d^2 = n
 nisolut:
-	grep -E "solution|Gram matrix" $(COMMON)/cat25.txt | cut -b4- \
+	grep -E "solution|Gram matrix" $(COMMON)/jcat25.txt | cut -b4- \
 	| perl nisolut.pl -d 0 -e \
 	2>       $@.rest.tmp \
 	| sort | uniq -w7 \

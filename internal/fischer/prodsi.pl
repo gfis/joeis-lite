@@ -32,7 +32,9 @@ while (<>) {
         $form = $5;
         &polish();
         $ok = 1;
-        print        join("\t", $aseqno, $cc, $offset, $beg1, $end1, $var1, $form, $cond, "", "| $name") . "\n";
+        if (length($end1) < 1024) {
+            print        join("\t", $aseqno, $cc, $offset, $beg1, $end1, $var1, $form, $cond, "", "| $name") . "\n";
+        }
         # Product_{i=0..
     } else {
         ($var1, $beg1, $end1, $form) = ("k", 1, "mN", "??");
