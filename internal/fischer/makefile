@@ -219,7 +219,7 @@ pack2:
 pack3:
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 > $@.tmp
 	make seq LIST=$@.tmp
-	$(DBAT) "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') \
+	$(DBAT) -x "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') \
 	  FROM seq s, joeis j WHERE s.aseqno = j.aseqno ORDER BY 1" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
