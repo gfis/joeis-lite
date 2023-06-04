@@ -24,3 +24,19 @@
 #*# A154107	convprod	0	1,-1	new A000110(), new A014182()	
 #*# A154108	convprod	0	1,-1	new SkipSequence(new A000110(), 1), new A000027()	
 # A162957	convprod	0	1,1	new A162956(), new PaddingSequence("1,3", "0,0")	 convolved with (1, 3, 0, 0, 0, ...).
+
+# 2023-06-01
+A307520	convprod	0	-1	new A318570()
+A307574	convprod	0	-1	new A320563()
+A309867	convprod	0	-1	new A322204()
+A316788	convprod	0	-1	new A280366()
+A319243	convprod	0	-1	new A103265()
+A319244	convprod	0	-1	new A280263()
+A320844	convprod	0	-1	new A007279()
+A320971	convprod	0	-1	new A301555()
+A320972	convprod	0	-1	new A301556()
+A321241	convprod	0	-1	new A305050()
+A321302	convprod	0	-1	new A321240()
+A321327	convprod	0	-1	new A073709()
+A343776	convprod	0	-1	new A004101()
+A346770	convprod	0	-1	new A061255()

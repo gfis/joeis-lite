@@ -619,9 +619,11 @@ robots:
 	#-- all in action
 	make   CC=charfun    robot1
 	make   CC=diffseq    robot1
+	make   CC=dirichcon  robot1
 	make   CC=ogf        robot1
 	  make CC=fract21    robot1
 	  make CC=fract22    robot1
+	make   CC=m1pow      robot1
 	make   CC=partprod   robot1
 	make   CC=partsum    robot1
 	make   CC=rowsums    robot1
@@ -2428,7 +2430,7 @@ deriv5: # convert to postfix, select the last of the shortest formula
 	    ORDER BY 1" \
 	| sed -e "s/\r//" \
 	| grep -vE "^(A095775|A102954|A130517|A131241|A131783|A131784|A136489|A187791|A247270)" \
-	>        $@.tmp
+	>        $@.tmp || :
 	tail -n4 $@.tmp
 	wc   -l  $@.tmp
 deriv6: # convert from postfix to Z-expressions
@@ -2635,7 +2637,7 @@ etlen2:
 #----
 etper: etper1 etper2
 etper1:
-	grep -E "Euler transform of period" $(COMMON)/cat25.txt \
+	grep -E "Euler transform of period" $(COMMON)/jcat25.txt \
 	| cut -b4- \
 	       > $@.tmp
 	head -n4 $@.tmp
@@ -2711,7 +2713,7 @@ convprod:
 	wc -l    $@.gen $@.*tmp
 #--------------------------------
 eulerian:
-	grep -E "\%[CFN]" $(COMMON)/cat25.txt | grep -E "Eulerian[\[]" \
+	grep -E "\%[CFN]" $(COMMON)/jcat25.txt | grep -E "Eulerian[\[]" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
@@ -3388,7 +3390,7 @@ holsq3:
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 #----------------
 homapgf:
-	grep -E "^%p" $(COMMON)/cat25.txt | grep -iE "gf *:=" \
+	grep -E "^%p" $(COMMON)/jcat25.txt | grep -iE "gf *:=" \
 	| cut -b 4- | sed -e "s/ /\t/" | sort | uniq -w7 > x.tmp
 	make seq2 LIST=x.tmp
 	$(DBAT) "SELECT * FROM seq2 WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
@@ -4088,6 +4090,11 @@ linr1:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+#--------------------------------
+m1pow:
+	grep -E "^A[0-9]" $@.man > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 mixed:
 	cat \

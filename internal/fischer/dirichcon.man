@@ -186,3 +186,12 @@ A349393	moebiusix	1	new A126760()	0		Inverse Möbius transform of A126760.
 A349395	dirichcon2	1	new A126760()	0	new A008836()	1	Dirichlet convolution of A126760 with Liouville's lambda. A008836
 A353460	dirichcon2	1	new A126760()	0	new A349134()	1	Dirichlet convolution of A126760 with A349134 (the Dirichlet inverse of Kimberling's paraphrases).
 A353461	dirichcon2	1	new A323881()	1	new A003602()	1	Dirichlet convolution of A003602 (Kimberling's paraphrases) with A323881 (the Dirichlet inverse of A126760).
+
+# 2023-06-04, BD=77
+A296302	dirichcon2	1	new A008683()	1	new A008683()	1	
+A323364	combiner	1	new A001615()	ADD	new A323363()	Sum of Dedekind's psi, A001615, and its Dirichlet inverse, A323363.
+A323913	combiner	1	new A083254()	ADD	new A323912()	Sum of A083254 (2*phi(n) - n) and its Dirichlet inverse.
+A347087	combiner	1	new A000027()	ADD	new A003415()	Sum of n and the Dirichlet inverse of n - A003415(n).
+A347091	combiner	1	new A332844()	ADD	new A323363()	Sum of A332844 and its Dirichlet inverse.
+A347082	dirichinv	1	new A00
+A168036	combiner	1	new A003415()	SUBTRACT	new A0000
