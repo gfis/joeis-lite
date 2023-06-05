@@ -1,0 +1,23 @@
+# 2023-04-29 dependants of A257673:
+# %Y A257673 Columns k=0-10 give: A000007, A000219 (for n>0), A321947, A321948, A321949, A321950, A321951, A321952, A321953, A321954, A321955.
+# A000007	treonk	0	A257673	0	mN	0	
+# A000219	treonk	0	A257673	0	mN	1	
+A321947	treonk	2	A257673	2	mN	2	
+A321948	treonk	3	A257673	3	mN	3	
+A321949	treonk	4	A257673	4	mN	4	
+A321950	treonk	5	A257673	5	mN	5	
+A321951	treonk	6	A257673	6	mN	6	
+A321952	treonk	7	A257673	7	mN	7	
+A321953	treonk	8	A257673	8	mN	8	
+A321954	treonk	9	A257673	9	mN	9	
+A321955	treonk	10	A257673	10	mN	10	
+# %Y A257673 Main diagonal and lower diagonals give: A000012, A008585, A081266.
+# A000012	treonk	0	A257673	0	mN	0	Main diagonal and lower diagonals :
+# A008585	treonk	0	A257673	0	mN	1	Main diagonal and lower diagonals :
+# A081266	treonk	0	A257673	0	mN	2	Main diagonal and lower diagonals :
+# %Y A257673 Row sums give A257674.
+A257674	rowsums	0	A257673	0	mN	0	Row sums
+# %Y A257673 T(2n,n) give A257675.
+A257675	treonk	0	A257673	0	mN*2	mN	T(2n,n)
+# %Y A257673 Cf. A255961.
+# A255961	treonk	0	A257673	0	mN	0	Cf.

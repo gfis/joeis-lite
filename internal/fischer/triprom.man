@@ -100,7 +100,7 @@ A132814	triprod	0	A130595	A132813
 A132816	triprod	0	A130595	A132812	
 A133110	triprod	0	A007318	A133109	
 A133341	triprod	0	A007318	A134312	
-A133544	triprod	0	A007318	A052474	
+A133544	triprov	0	A007318	A052474	
 A133729	triprod	0	A007318	A133728	
 A133935	triprod	0	A007318	A093178	 as a diagonalized matrix.
 A134308	triprod	0	A007318	A082137	
@@ -110,7 +110,7 @@ A136104	triprov	0	A007318	A002110	a(n) = Sum_{k=0..n} binomial(n,k)*A002110(k).
 A153860	triprod	0	A007318	A153861	Triangle by columns: leftmost column = (1, 0, 1, -1, 1, -1, 1, ...); columns >1 = (1, 1, 0, 0, 0, ...).
 A177953	triprod	0	A007318	A070909	
 
-A126125	trirpod	0	A061554	A061554	
+A126125	triprod	0	A061554	A061554	
 A126127	triprod	0	A046854	A046854	
 A143620	triprod	0	A054521	A054521	
 A145973	triprod	0	A053121	A053121	
@@ -119,3 +119,29 @@ A166453	triprod	0	A047999	A047999
 A168316	triprod	0	A101688	A101688	
 A161363	trinv	0	A026794	
 A159937	triprod	0	A054525	A127478	
+
+A136790	triprod	0	A011971	A130595		 * A007318^(-1).
+A128313	triprod	0	A054525	A130595		
+A128315	triprod	0	A051731	A130595	Inverse Moebius transform of signed A007318.	tabl,sign	1..54	nyi	_Gary W. Adamson_
+A128317	triprod	0	A054523	A130595	 * signed A007318.	tabl,sign	1..55	nyi	_Gary W. Adamson_
+A131255	triprod	0	A004070	A097807	
+A131257	triprod	0	A052509	A097807	A052509 * A000012(signed).						A052509 * A000012(signed).
+A136789	triprod	0	A130595	A011971	Triangle read by rows: A007318^(-1) * A011971.
+A131331	triprod	0	A046854	A097807	A046854 * A000012(signed by columns, + - + -...).						A046854 * A000012(signed).
+A131332	triprod	1	A065941	A097807	A065941 * A000012(signed by columns, + - + -...).						A065941 * A000012(signed).
+A133603	triprov	0	A133566	A000108	A133566 * A000108 where A133566 = an infinite lower triangular matrix and A000108 = the Catalan sequence. For odd n, a(n) = C(n). For even n, a(n) = C(n) + C(n-1) = A005807(n-1).						The matrix-vector product A133566 * A000108.
+
+# A137631	treonk	1	A137629	1	mN	1	
+
+A130271	triprod	0	A051340	A051340	.
+A130297	triprod	0	A130296	A130296	.      nonn,tabl       1..
+A130322	triprod	0	A130321	A130321	.      nonn,tabl       0..
+A130324	triprod	0	A059268	A059268	.      nonn,tabl       0..
+A131243	triprod	0	A065941	A065941	 as an infinite lower tria
+A131245	triprod	0	A046854	A046854	 as an infinite lower tria
+A134443	triprod	0	A007318	A007318	 * A007248.    nonn    0..
+A134699	triprod	0	A051731	A051731	 * A000012.    nonn,tabl,m
+A135858	triprod	0	A128229	A128229	 * A000012.    nonn,tabl
+A141210	triprod	0	A140207	A140207	.
+A134700	tripro3	0	A000012	A051731	A051731	^2.    nonn,tabl,m
+A135184	tripro3	0	A000012	A128229	A128229	^2.    nonn,tabl

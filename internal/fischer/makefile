@@ -4840,8 +4840,9 @@ trideleh:
 	cp -v $(TRIREC)/$@.man $@.gen
 #----
 triprod:
-	# cp -v $(TRIREC)/triprod2.tmp $@.gen
-	cat $(ROBOT)/triprod.gen triprod.man > $@.gen
+	cp -v $(ROBOT)/$@.gen  $@.gen
+tripro3:
+	cp -v $(ROBOT)/$@.gen  $@.gen
 triprom:
 	grep -E "^A[0-9]" $@.man | sort | uniq -w7 > $@.gen
 	head -n4 $@.gen
