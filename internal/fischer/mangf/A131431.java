@@ -1,18 +1,22 @@
 package irvine.oeis.a131;
-// manually triconst at 2021-10-19 19:47
 
-import irvine.oeis.a016.A016777;
-import irvine.oeis.triangle.WrappedConstantTriangle;
+import irvine.math.z.Z;
+import irvine.oeis.triangle.BaseTriangle;
 
 /**
  * A131431 3n + 1 preceded by n zeros.
  * @author Georg Fischer
  */
-public class A131431 extends WrappedConstantTriangle {
+public class A131431 extends BaseTriangle {
 
   /** Construct the sequence. */
   public A131431() {
-    super("0", new A016777());
-    setPlus("0");
+    super(0, 0, 0);
+    hasRAM(true);
+  }
+
+  @Override
+  public Z triangleElement(final int n, final int k) {
+    return (k == n) ? Z.valueOf(3 * n + 1) : Z.ZERO;
   }
 }
