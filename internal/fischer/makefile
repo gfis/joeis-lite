@@ -614,7 +614,6 @@ potential3:
 robots:
 	# prelude
 	rm -f   robot.gen
-	cp -v hold/*.java  manual || :
 	make purge
 	#-- all in action
 	make   CC=charfun    robot1
@@ -628,9 +627,11 @@ robots:
 	make   CC=partsum    robot1
 	make   CC=rowsums    robot1
 	make   CC=triprod    robot1
+	make   CC=trisum     robot1
 	make   robot3
 robot3:
 	#-- postlude
+	cp -v hold/*.java  manual || :
 	make CC=robot purge gener maditel TO=8
 	wc -l   robot.gen
 	mv -v   robot.gen robot.`date +%Y-%m-%d.%H`.gen

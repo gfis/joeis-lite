@@ -226,7 +226,7 @@ GFis
             print TAR "    super(0, \"[[0],[1],[1],[1],[1],[1],[1],[-1]]\", \"1\", 0);\n"; # Fibonacci
         }
     } elsif ($triangle) {
-        print TAR "    super(0, 0, 0);\n";
+        print TAR "    super(1, 1, 1);\n";
         print TAR "    hasRAM(true);\n";
     } elsif ($upperleft) {
         print TAR "    super(1, 1, -1);\n";
