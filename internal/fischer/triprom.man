@@ -131,11 +131,11 @@ A177992	triprod	0	A007318	A177990		A007318 * A177990 =
 A177993	triprod	0	A177990	A007318		A177990 * A007318 =
 A363154	triprod	0	A173018	A349203	Triangle read by rows. The Hadamard product of A173018 and A349203.  
 
-A127705	gasort	0	Row sums of          A127704. nonn 1..10000
-A131912	gasort	0	Row sums of triangle A131911. nonn 1..55
-A132790	gasort	0	Row sums of triangle A132789. nonn 1..200
-A136574	gasort	0	Row sums of triangle A136573. nonn 0..20
-A143420	gasort	0	Row sums of triangle A143419. nonn 2..8
-A145974	gasort	0	Row sums of triangle A145973. nonn 0..25
-A161375	gasort	0	Row sums of triangle A161363. sign,changed 1..43
+A127705	rowsums	0	A127704	Row sums of          A127704. nonn 1..10000
+A131912	rowsums	0	A131911	Row sums of triangle A131911. nonn 1..55
+A132790	rowsums	0	A132789	Row sums of triangle A132789. nonn 1..200
+A136574	rowsums	0	A136573	Row sums of triangle A136573. nonn 0..20
+A143420	rowsums	0	A143419	Row sums of triangle A143419. nonn 2..8
+A145974	rowsums	0	A145973	Row sums of triangle A145973. nonn 0..25
+A161375	rowsums	0	A161363	Row sums of triangle A161363. sign,changed 1..43
 

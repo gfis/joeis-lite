@@ -4608,6 +4608,14 @@ genet_status:
 	$(DBAT) -x -44444 seq4 > genet.gen
 genet_check:
 	cut -f1,10,8-9 genet.gen
+genet_head:
+	cat genet_old.txt | xargs -innn head -n2 ../../../joeis/src/irvine/oeis/nnn.java \
+	| tee $@.tmp
+#----
+gentm: # new GeneraoizedEulerTransform
+	grep -E "^A[0-9]" gentm.man > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 #----
 # Generalized ET
 a151668:
