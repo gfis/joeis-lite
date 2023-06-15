@@ -4587,6 +4587,12 @@ prodet3:
 prodetm:
 	grep -E "^A" prodet.man > prodetm.gen
 #----
+iprot:
+	sed -e "s/\t\genet/\tiprot/" ./geneto/retrogen.gen > $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+retrogen:
+	grep -E "^A[0-9]" ./geneto/$@.gen > $@.gen
 #========
 # Caution: if advanceH(k) is used, the k in advanceF and advancdG formulas must be replaced by mKh !
 #========

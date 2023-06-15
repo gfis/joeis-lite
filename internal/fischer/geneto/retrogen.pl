@@ -11,9 +11,12 @@ use integer;
 use warnings;
 
 my $debug  = 0;
+my $cc     = "genet";
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt =     shift(@ARGV);
     if (0) {
+    } elsif ($opt  =~ m{cc}) {
+        $cc     = shift(@ARGV);
     } elsif ($opt  =~ m{d}) {
         $debug  = shift(@ARGV);
     } else {
@@ -22,57 +25,65 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 } # while $opt
 
 my $state = 0;
-my ($aseqno, $code, %parm, $offset, $kstart, $parmno);
+my ($aseqno, $code, %parm, $offset, $kstart, $parmno, $callcode);
+$parmno = 0;
 $aseqno = "A000000";
 while (<>) {
     my $line = $_;
     $line =~ s/\s+\Z//; # chompr
     if ($debug >= 1) {
-    	print STDERR "$state $line\n";
+        print STDERR "$state $parmno $line\n";
     }
     if (0) {
     } elsif (               ($line =~ m{\Apackage}                          )) {
-    	if ($state != 0) {
-    	    print STDERR "# $aseqno not properly closed, state=$state\n";
-    	}
+        if ($state != 0) {
+            print STDERR "# $aseqno not properly closed, state=$state\n";
+        }
         $state       = 0;
-    } elsif ($state == 0 && ($line =~ m{\Apublic class (A\d+) }             )) {
+    } elsif ($state == 0 && ($line =~ m{\Apublic class (A\d+) } )) {
         $state       = 1;
         $aseqno      = $1;
+        $parmno      = 1;
         %parm = ()
 
-    } elsif ($state == 1 && ($line =~ m{\A  public $aseqno\(}               )) {
+    } elsif ($state == 1 && ($line =~ m{\A  public $aseqno\(}   )) { # start of constructor
         $state       = 2;
-        $parm{1}     = "~~    ";
-    } elsif ($state == 2 && ($line =~ m{\A  \}}                             )) {
-        $state       = 3;
-    } elsif ($state == 2) { # append to body of contructor
+        $parm{$parmno} = "~~    ";
+    } elsif ($state == 2 && ($line =~ m{\A  \}}                 )) { # end of constructor
+        $state       = 3; 
+    } elsif ($state == 2)                                          { # in body of contructor
         $line =~ s{\A *}{};
         if ($line =~ m{super\((\d+)\, *(\d+)\)}) {
           ($offset, $kstart) = ($1, $2);
         }
-        $parm{1}    .= "~~$line";
+        $parm{$parmno} .= "~~$line";
 
-    } elsif ($state == 3 && ($line =~ m{\A\}}                               )) {
-    	my $callcode = "genet";
-    	$callcode .= "f" if defined($parm{2});
-    	$callcode .= "g" if defined($parm{3});
-    	$callcode .= "h" if defined($parm{4});
-    	$callcode =~ s{fgh}{}; # "genet" only
+    } elsif ($state == 3 && ($line =~ m{\A\}}                   )) { # end of class
+        $callcode    = $cc;
+        $callcode   .= "f" if defined($parm{2});
+        $callcode   .= "g" if defined($parm{3});
+        $callcode   .= "h" if defined($parm{4});
+        $callcode    =~ s{fgh}{}; # "genet" only
         $state       = 0; # proper end of class
+        $parmno      = 0;
         print join("\t", $aseqno, $callcode, $offset
-            , $parm{1} || "", $parm{2} || "", $parm{3} || "", $parm{3} || ""
-            , $kstart) . "\n"; # write the seq4 record
+            , $parm{1} || "", $parm{2} || "", $parm{3} || "", $parm{4} || ""
+            , $kstart, "", "", "", "", "", "") . "\n"; # write the seq4 record
 
-    } elsif ($state == 3 && ($line =~ m{\A  protected Z(\[\])? advance(\w)} )) {
+    } elsif ($state == 3 && ($line =~ m{\A  protected Z(\[\])? advance([FGH])} )) { #start of advanceX method
+        $code        = lc($2);
+        $parmno      = $code;
+        $parmno      =~ tr{fgh}{234};
+        if ($parmno !~ m{\A[234]\Z}) {
+            print STDERR "# invalid parmno=$parmno in $aseqno\n";
+        }
         $state       = 4;
-        $code        = $2;
-        $parmno      = ($code =~ tr{fgh}{234});
-    } elsif ($state == 4 && ($line =~ m{\A +return([^\;]+)}                 )) {
+    } elsif ($state == 4 && ($line =~ m{\A +return ([^\;]+)\;}  )) { # return in advanceX
         my $ret      = $1;
-        $ret =~ s{( new Z\[\] \{ | *\})}{}g;
+        $ret =~ s{( *new +Z\[\] *\{ *| *\})}{}g;
+        $ret =~ s{FACTORIAL}{MemoryFactorial.SINGLETON}g;
         $parm{$parmno} = $ret;
-    } elsif ($state == 4 && ($line =~ m{\A +\}}                             )) {
+    } elsif ($state == 4 && ($line =~ m{\A   *\}}               )) { # end of advanceX method
         $state       = 3;
     } else {
         # ignore

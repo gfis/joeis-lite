@@ -88,8 +88,20 @@ existest:
 retrogen:
 	cat oldsrc/*.java \
 	| perl $@.pl -d $(D) \
+	| grep -vE "A032178|A344063" \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
-
+jpats:
+	ls -1 ../genet*.jpat | cut -b 4- | xargs -innn cp -v ../nnn nnn.tmp
+	ls -1 *.jpat.tmp | sed -e "s/.jpat.tmp//" -e "s/genet/t/" | xargs -innn mv -v genennn.jpat.tmp ipronnn.jpat
+	rm -vf *.bak
+	ls -1 iprot*.jpat | xargs -innn \
+	  perl -i.bak -e 'undef $$/; my $$buffer = <>; $$buffer =~ s/GeneralizedEulerTransform/InfiniteProductTransform/g; print $$buffer;' nnn
+	cp -v iprot*.jpat ..
+rest:
+#	
+	
+	sed -e "s/GeneralizedEulerTransform/InfiniteProductTransform/g" nnn > nnn.jpat
+	
 	
