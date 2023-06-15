@@ -1,6 +1,6 @@
 #!perl
 
-# Split or joein lines for mult.gen
+# Split or join lines for mult.gen
 # @(#) $Id$
 # 2022-07-21, Georg Fischer
 #

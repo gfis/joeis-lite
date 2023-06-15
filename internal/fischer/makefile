@@ -128,10 +128,12 @@ iettest:
 #	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
 gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
-rstest:
-	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
 cptest:
 	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)"
+rstest:
+	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
+sstest:
+	$(JAVA) irvine.oeis.SequenceSum  -d $(D) -n $(NT) -s "$(S)" 
 tptest:
 	$(JAVA) irvine.oeis.triangle.Product -d $(D) -n $(NT) -a "$(A)"
 titest:
@@ -643,7 +645,7 @@ robot1:
 	cp -v $(ROBOT)/$(CC).gen .
 	make purge 
 	make select2 select3 geditel TO=8
-	mv -v $@.fail.log $(CC).faro.log || :
+	cp -v $@.fail.log $(CC).faro.log || :
 	make cleanto
 	cat  $(CC).gen >> robot.gen
 robot2:
@@ -1168,6 +1170,17 @@ amoda: # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
+amodn: # simple formula a(n) = Aqseno(n...) op n
+	grep -Pi "a\(n\) *\= *A\d+\([^\)]+\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *(n|\d+) *\." $(COMMON)/jcat25.txt \
+	| grep -E "^%" \
+	| cut -b 4- | sed -e "s/ /\t/" \
+	| perl -ne 'if (m{\A(A\d+)\s+a\([^\)]+\) *\= *(A\d+)\(n\) *([\+\-\*\/\^]|and|or|xor|xand|mod) *(n|\d+) *\.}i) {'\
+	' print join("\t", $$1, $@, 0, $$2, $$4); my $$op = $$3;'\
+	' $$op =~ s{\+}{add}; $$op =~ s{\-}{subtract}; $$op =~ s{\*}{multiply}; $$op =~ s{\/}{divide}; $$op =~ s{\^}{pow}; $$op = lc($$op);'\
+	' print "\t$$op\n"; }'\
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 #---------------
 andiv0: # simple formula: a(n) = Annnnnn(n) / n 
 	grep -E "^\%" $(COMMON)/jcat25.txt | grep -E "a\(n\) *\=" | grep -P "a\(n\) *\= *A\d+\(n\) *[\+\-\*\/] *n" \
@@ -1184,6 +1197,8 @@ andiv:
 	  WHERE s.aseqno = i.aseqno \
 	    AND s.pattern IN (SELECT aseqno FROM joeis) \
 	    ORDER BY 1" \
+	>        $@.tmp 2> $@.err.tmp
+	cat $@.tmp \
 	| grep -vE "A160764" \
 	>        $@.gen
 	head -n4 $@.gen
@@ -3028,6 +3043,9 @@ fholo:
 	$(HOLT) -n $(NT) -f x.tmp
 runholo:
 	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFF) -d $(D) -dist $(DIST) -t $(GFTYPE) $(GF)
+P=[[0,1,1],[-2]]
+latest:
+	$(JAVA) irvine.oeis.LambdaSequence -n $(NT) -p "$(P)" -o $(OFF)
 parmholo:
 	perl -e 'print join("\t", $(A), "holos", $(OFF), "$(MATRIX)", "$(INIT)", 0) . "\n";' >> $@.tmp
 runmorf:
@@ -4538,7 +4556,7 @@ prisquare:
 	wc -l    $@.gen
 #--------------------------------
 prod1_xk:
-	grep -iE "^\%[NFtpo]" $(COMMON)/jcat25.txt \
+	grep -iP "^.[NFtpo]" $(COMMON)/jcat25.txt \
 	| grep -iE "prod" \
 	| grep -vE "produce" \
 	| perl prod_polish.pl \
