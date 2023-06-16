@@ -5350,7 +5350,8 @@ offinspectall:
 	zip offinspectall.zip offinspectall.tmp
 #----
 offrepair: # copy all with failing offset into ./manual and open them in Uedit64
-	grep -E "^A[0-9]" offinspect2.tmp | cut -b1-7 | head -n111111 | xargs -l cmd /c jom
+	grep -E "^A[0-9]" offinspect2.tmp | cut -b1-7 \
+	| head -n$(MANY) | xargs -l cmd /c jom
 #----
 offholon: # put it in table seq
 	grep Holonom offinspect.dec1.txt | grep -E "^A[0-9]" | cut -f1 > $@.tmp
@@ -5493,6 +5494,16 @@ poffegf:
 	# make dist testall log TO=8 GU=8
 poffpos:
 	grep -E "PositionSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+pdiff:
+	grep -E "DifferenceSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+prows:
+	grep -E "RowSumSequence|PartialProductSequence" offinspect2.txt \
 	| perl patch_offset.pl -d 1 -m prefix \
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8

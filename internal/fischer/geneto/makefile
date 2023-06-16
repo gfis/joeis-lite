@@ -6,6 +6,7 @@
 #
 GITS=../../../..
 COMMON=$(GITS)/OEIS-mat/common
+COHERE=../../joeis-lite/internal/fischer/genet
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
 JOEIS=$(GITS)/joeis
 SRC=src/irvine/oeis
@@ -104,4 +105,12 @@ rest:
 	
 	sed -e "s/GeneralizedEulerTransform/InfiniteProductTransform/g" nnn > nnn.jpat
 	
-	
+#----
+ratpow:
+	cd $(COMMON) ; grep -iP "(Expansion of( the)?|G\.f\.\:?) *prod(uct)?\_\{\w\>" jcat25.txt | grep -E "^%[NFCY]" \
+	| grep -P "\^\(\d\/" | perl nyi.pl -p 2>&1 \
+	| grep -svE "Decimal expansion" \
+	| grep -sP "^.[A-Z] " \
+	>        $@.tmp
+	cp -v $(COMMON)/$@.tmp .
+	wc -l    $@.tmp
