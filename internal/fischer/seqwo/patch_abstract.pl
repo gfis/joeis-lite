@@ -79,7 +79,7 @@ sub patch1 {
             {class $aseqno extends AbstractSequence \{};
     } else { # has no constructor
         $buffer =~ s{class +$aseqno +implements +Sequence *\{}
-            {class $aseqno extends AbstractSequence \{\n\n  \/\* Construct the sequence. \*\/\n  public $aseqno() \{\n    super\($offn\)\;\n  \}}mg;
+            {class $aseqno extends AbstractSequence \{\n\n  \/\*\* Construct the sequence. \*\/\n  public $aseqno() \{\n    super\($offn\)\;\n  \}}mg;
     }
     $buffer =~ s{\bimport irvine.oeis.Sequence\b}{import irvine.oeis.AbstractSequence}mg;
     if ($buffer =~ m{\bSequence\b}m) {
