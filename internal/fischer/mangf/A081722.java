@@ -1,6 +1,5 @@
 package irvine.oeis.a081;
 
-import irvine.math.z.Z;
 import irvine.oeis.triangle.RowSumSequence;
 
 /**
@@ -11,6 +10,6 @@ public class A081722 extends RowSumSequence {
 
   /** Construct the sequence. */
   public A081722() {
-    super(new A081720());
+    super(1, new A081720());
   }
 }

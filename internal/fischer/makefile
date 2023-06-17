@@ -5508,6 +5508,10 @@ prows:
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8
 #----
+pabstract:
+	cp seqwo/liseq.txt $@.gen
+	make CC=$@ man dist test log TO=2 GU=4
+#----
 packprep:
 	find ../../src -iname "*.java" \
 	| cut -b7- | grep -vE "seqbox|Batch|Test" \

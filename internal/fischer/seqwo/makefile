@@ -1,12 +1,12 @@
 #!make
 
-# makefile for transition of GeneralizedEulerTransfor -> LambdaEulerTransform
+# makefile for transition of Sequence -> AbstractSequence
 # @(#) $Id$
-# 2023-06-10, Georg Fischer
+# 2023-06-17, Georg Fischer
 #
 GITS=../../../..
 COMMON=$(GITS)/OEIS-mat/common
-COHERE=../../joeis-lite/internal/fischer/geneto
+COHERE=../../joeis-lite/internal/fischer/seqwo
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
 JOEIS=$(GITS)/joeis
 SRC=src/irvine/oeis
@@ -15,6 +15,21 @@ D=0
 all:
 	grep -P "^\w" makefile
 #----:
+liseq: # list those with "implements Sequence"
+	grep -P "\tSequence\t" $(COMMON)/joeis_names.txt \
+	| perl -ne 's/\t.*/\t0/; print;' \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	$(DBAT) -f $(COMMON)/seq2.create.sql
+	$(DBAT) -r seq2 < $@.tmp
+	$(DBAT) "UPDATE seq2 s SET info = (SELECT offset1 FROM asinfo i WHERE s.aseqno = i.aseqno);"
+	$(DBAT) -x "SELECT * FROM seq2 ORDER BY 1;" > $@.txt
+	head -n2 $@.txt
+	wc -l    $@.txt
+patchseq: # patch all in the list above
+	perl patch_abstract.pl liseq.txt
+#========
 enpack:
 	cat genet_old.txt \
 	| perl -ne 'my $$aseqno = substr($$_, 0, 7); print lc(substr($$aseqno, 0, 4)) . "/$$_";' \
