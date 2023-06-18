@@ -69,6 +69,7 @@ endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 JJAVA=java $(JOPT) -cp "$(JOEIS)/build.tmp/joeis.jar"
 BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU)
+ABSINSPECT=$(JAVA) irvine.oeis.AbstractInspector
 INIT="1"
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
@@ -5331,15 +5332,33 @@ offinspect1: # select the eligible programs
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-offinspect2: # run the  OffsetInspector and determine old and new offsets
-	$(JAVA) irvine.oeis.OffsetInspector offinspect1.tmp \
+offinspect2: # run the AbstractInspector and determine jOEIS and OEIS offsets
+	$(ABSINSPECT) offin offinspect1.tmp 2>&1 \
 	| tee    $@.tmp
 	wc -l    $@.tmp
-	cp -v    $@.tmp $@.txt
-	cut -f3 offinspect2.tmp | sort | uniq -c | sort -n \
-	| tee -a $@.txt
-	# | grep -vP "\A\s+1\s" \
-	#
+	grep -E "^#" $@.tmp
+	cut -f3  $@.tmp | sort | uniq -c | sort -n \
+	>        $@.txt
+noabstract: # run the AbstractInspector and determine which jOEIS sequences do not extend AbstractSequence
+	$(ABSINSPECT) noabs offinspect1.tmp 2>&1 \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	grep -E "^#" $@.tmp
+	cut -f4  $@.tmp | sort | uniq -c | sort -n \
+	>        $@.txt
+seqwithout: # run the AbstractInspector and determine which jOEIS still implement SequenceWithOffset, but do not extend AbstractSequence
+	$(ABSINSPECT) seqwo offinspect1.tmp 2>&1 \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	grep -E "^#" $@.tmp
+	cut -f4  $@.tmp | sort | uniq -c | sort -n \
+	>        $@.txt
+abstreport:
+	grep -iHE "^#" offinspect2.tmp noabstract.tmp seqwithout.tmp \
+	| grep -v " at " \
+	| sed -e "s/#/\t/" -e s/"\.tmp//" -e "s/inspect2/inspect/" | tee $@.txt
+abstrbig:
+	tail -n32 noabstract.txt
 #----
 offinspectall:
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass \
@@ -5358,8 +5377,9 @@ offholon: # put it in table seq
 	cd $(COMMON) ; make seq LIST=$(HERE)/$@.tmp
 offholrem: # remove all that are not in offinspect.txt
 	$(DBAT) -x -v "DELETE FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM seq);"
-offcount: # SUPER= count the different offsets for some jOEIS superclass
-	$(DBAT) -x "SELECT COUNT(i.offset1), i.offset1 FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno AND j.superclass LIKE '$(SUPER)%' GROUP BY i.offset1 ORDER BY 1"
+offcount: # S=superclass; count the different offsets for some jOEIS superclass
+	grep $(S) $(COMMON)/joeis_names.txt | cut -f2,5 | sed -e "s/\.\..*//" | sort | uniq -c
+	# $(DBAT) -x "SELECT COUNT(i.offset1), i.offset1 FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno AND j.superclass LIKE '$(SUPER)%' GROUP BY i.offset1 ORDER BY 1"
 #--------
 finspect: finspect1 finspect2
 finspect1:
@@ -5509,7 +5529,9 @@ prows:
 	make dist testall log TO=8 GU=8
 #----
 pabstract:
-	cp seqwo/liseq.txt $@.gen
+	sed -e "s/\t/\tpabstract\t/" -e "s/\r//" seqwo/liseq.txt > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 	make CC=$@ man dist test log TO=2 GU=4
 #----
 packprep:

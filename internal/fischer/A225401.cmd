@@ -1,0 +1,2 @@
+echo  b1 init, pm1, pm2, exp(onent), pa(dd), base 
+java -Ddebug=0 -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=./prog -Doeis.verbose=false -Doeis.priority="java,gp" -Doeis.timeout=4 -cp "../../../joeis-lite/dist/joeis-lite.jar;../../../joeis/build.tmp/joeis.jar" irvine.oeis.a225.A225401 %1 %2 %3 %4 %5 %6 %7 %8 %9

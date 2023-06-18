@@ -1,0 +1,890 @@
+src/irvine/oeis/a023/A023866.java:public class A023866 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023866.java-
+src/irvine/oeis/a023/A023866.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023866.java-  public A023866() {
+src/irvine/oeis/a023/A023866.java-    super(new A001477(), new PrependSequence(new A000201(), 0));
+src/irvine/oeis/a023/A023862.java:public class A023862 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023862.java-
+src/irvine/oeis/a023/A023862.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023862.java-  public A023862() {
+src/irvine/oeis/a023/A023862.java-    super(new A001477(), new PrependSequence(new A008578(), 0));
+src/irvine/oeis/a023/A023859.java:public class A023859 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023859.java-
+src/irvine/oeis/a023/A023859.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023859.java-  public A023859() {
+src/irvine/oeis/a023/A023859.java-    super(new A001477(), new A023532());
+src/irvine/oeis/a023/A023870.java:public class A023870 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023870.java-
+src/irvine/oeis/a023/A023870.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023870.java-  public A023870() {
+src/irvine/oeis/a023/A023870.java-    super(new A001477(), new A008578());
+src/irvine/oeis/a023/A023867.java:public class A023867 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023867.java-
+src/irvine/oeis/a023/A023867.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023867.java-  public A023867() {
+src/irvine/oeis/a023/A023867.java-    super(new A001477(), new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a023/A023860.java:public class A023860 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023860.java-
+src/irvine/oeis/a023/A023860.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023860.java-  public A023860() {
+src/irvine/oeis/a023/A023860.java-    super(new A001477(), new A000045());
+src/irvine/oeis/a023/A023863.java:public class A023863 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023863.java-
+src/irvine/oeis/a023/A023863.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023863.java-  public A023863() {
+src/irvine/oeis/a023/A023863.java-    super(new A001477(), new PrependSequence(new A002808(), 0));
+src/irvine/oeis/a023/A023869.java:public class A023869 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023869.java-
+src/irvine/oeis/a023/A023869.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023869.java-  public A023869() {
+src/irvine/oeis/a023/A023869.java-    super(new A001477(), new A014306());
+src/irvine/oeis/a023/A023868.java:public class A023868 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023868.java-
+src/irvine/oeis/a023/A023868.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023868.java-  public A023868() {
+src/irvine/oeis/a023/A023868.java-    super(new A001477(), new A023533());
+src/irvine/oeis/a023/A023861.java:public class A023861 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023861.java-
+src/irvine/oeis/a023/A023861.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023861.java-  public A023861() {
+src/irvine/oeis/a023/A023861.java-    super(new A001477(), new A000032());
+src/irvine/oeis/a023/A023858.java:public class A023858 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023858.java-
+src/irvine/oeis/a023/A023858.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023858.java-  public A023858() {
+src/irvine/oeis/a023/A023858.java-    super(new A001477(), new A023531());
+src/irvine/oeis/a023/A023864.java:public class A023864 extends HalfConvolutionSequence {
+src/irvine/oeis/a023/A023864.java-
+src/irvine/oeis/a023/A023864.java-  /** Construct the sequence. */
+src/irvine/oeis/a023/A023864.java-  public A023864() {
+src/irvine/oeis/a023/A023864.java-    super(new A001477(), new SkipSequence(new A000045(), 1));
+src/irvine/oeis/a025/A025086.java:public class A025086 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025086.java-
+src/irvine/oeis/a025/A025086.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025086.java-  public A025086() {
+src/irvine/oeis/a025/A025086.java-    super(new A000045(), new A023533(), false);
+src/irvine/oeis/a025/A025073.java:public class A025073 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025073.java-
+src/irvine/oeis/a025/A025073.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025073.java-  public A025073() {
+src/irvine/oeis/a025/A025073.java-    super(new A023532(), new PrependSequence(new A000201(), 0), false);
+src/irvine/oeis/a025/A025089.java:public class A025089 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025089.java-
+src/irvine/oeis/a025/A025089.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025089.java-  public A025089() {
+src/irvine/oeis/a025/A025089.java-    super(new A000032(), false);
+src/irvine/oeis/a025/A025095.java:public class A025095 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025095.java-
+src/irvine/oeis/a025/A025095.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025095.java-  public A025095() {
+src/irvine/oeis/a025/A025095.java-    super(new A000032(), new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a025/A025097.java:public class A025097 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025097.java-
+src/irvine/oeis/a025/A025097.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025097.java-  public A025097() {
+src/irvine/oeis/a025/A025097.java-    super(new A000032(), new A014306(), false);
+src/irvine/oeis/a025/A025088.java:public class A025088 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025088.java-
+src/irvine/oeis/a025/A025088.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025088.java-  public A025088() {
+src/irvine/oeis/a025/A025088.java-    super(new A000045(), new A008578(), false);
+src/irvine/oeis/a025/A025078.java:public class A025078 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025078.java-
+src/irvine/oeis/a025/A025078.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025078.java-  public A025078() {
+src/irvine/oeis/a025/A025078.java-    super(new A000045(), false);
+src/irvine/oeis/a025/A025128.java:public class A025128 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025128.java-
+src/irvine/oeis/a025/A025128.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025128.java-  public A025128() {
+src/irvine/oeis/a025/A025128.java-    super(new A014306(), false);
+src/irvine/oeis/a025/A025102.java:public class A025102 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025102.java-
+src/irvine/oeis/a025/A025102.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025102.java-  public A025102() {
+src/irvine/oeis/a025/A025102.java-    super(new A018252(), false);
+src/irvine/oeis/a025/A025077.java:public class A025077 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025077.java-
+src/irvine/oeis/a025/A025077.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025077.java-  public A025077() {
+src/irvine/oeis/a025/A025077.java-    super(new A023532(), new A008578(), false);
+src/irvine/oeis/a025/A025075.java:public class A025075 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025075.java-
+src/irvine/oeis/a025/A025075.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025075.java-  public A025075() {
+src/irvine/oeis/a025/A025075.java-    super(new A023532(), new A023533(), false);
+src/irvine/oeis/a025/A025098.java:public class A025098 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025098.java-
+src/irvine/oeis/a025/A025098.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025098.java-  public A025098() {
+src/irvine/oeis/a025/A025098.java-    super(new A000032(), new A008578(), false);
+src/irvine/oeis/a025/A025083.java:public class A025083 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025083.java-
+src/irvine/oeis/a025/A025083.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025083.java-  public A025083() {
+src/irvine/oeis/a025/A025083.java-    super(new A000045(), new PrependSequence(new A005408(), 0), false);
+src/irvine/oeis/a025/A025129.java:public class A025129 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025129.java-
+src/irvine/oeis/a025/A025129.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025129.java-  public A025129() {
+src/irvine/oeis/a025/A025129.java-    super(new A008578(), false);
+src/irvine/oeis/a025/A025099.java:public class A025099 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025099.java-
+src/irvine/oeis/a025/A025099.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025099.java-  public A025099() {
+src/irvine/oeis/a025/A025099.java-    super(new PrependSequence(new A008578(), 0), false);
+src/irvine/oeis/a025/A025082.java:public class A025082 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025082.java-
+src/irvine/oeis/a025/A025082.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025082.java-  public A025082() {
+src/irvine/oeis/a025/A025082.java-    super(new A000045(), new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a025/A025093.java:public class A025093 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025093.java-
+src/irvine/oeis/a025/A025093.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025093.java-  public A025093() {
+src/irvine/oeis/a025/A025093.java-    super(new A000032(), new PrependSequence(new A005408(), 0), false);
+src/irvine/oeis/a025/A025122.java:public class A025122 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025122.java-
+src/irvine/oeis/a025/A025122.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025122.java-  public A025122() {
+src/irvine/oeis/a025/A025122.java-    super(new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a025/A025127.java:public class A025127 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025127.java-
+src/irvine/oeis/a025/A025127.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025127.java-  public A025127() {
+src/irvine/oeis/a025/A025127.java-    super(new A023533(), new A008578(), false);
+src/irvine/oeis/a025/A025126.java:public class A025126 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025126.java-
+src/irvine/oeis/a025/A025126.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025126.java-  public A025126() {
+src/irvine/oeis/a025/A025126.java-    super(new A023533(), new A014306(), false);
+src/irvine/oeis/a025/A025116.java:public class A025116 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025116.java-
+src/irvine/oeis/a025/A025116.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025116.java-  public A025116() {
+src/irvine/oeis/a025/A025116.java-    super(new PrependSequence(new A005408(), 0), new A014306(), false);
+src/irvine/oeis/a025/A025114.java:public class A025114 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025114.java-
+src/irvine/oeis/a025/A025114.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025114.java-  public A025114() {
+src/irvine/oeis/a025/A025114.java-    super(new PrependSequence(new A005408(), 0), new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a025/A025079.java:public class A025079 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025079.java-
+src/irvine/oeis/a025/A025079.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025079.java-  public A025079() {
+src/irvine/oeis/a025/A025079.java-    super(new A000045(), new A000032(), false);
+src/irvine/oeis/a025/A025101.java:public class A025101 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025101.java-
+src/irvine/oeis/a025/A025101.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025101.java-  public A025101() {
+src/irvine/oeis/a025/A025101.java-    super(new PrependSequence(new A008578(), 0), new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a025/A025103.java:public class A025103 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025103.java-
+src/irvine/oeis/a025/A025103.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025103.java-  public A025103() {
+src/irvine/oeis/a025/A025103.java-    super(new A018252(), new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a025/A025084.java:public class A025084 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025084.java-
+src/irvine/oeis/a025/A025084.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025084.java-  public A025084() {
+src/irvine/oeis/a025/A025084.java-    super(new A000045(), new PrependSequence(new A000201(), 0), false);
+src/irvine/oeis/a025/A025110.java:public class A025110 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025110.java-
+src/irvine/oeis/a025/A025110.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025110.java-  public A025110() {
+src/irvine/oeis/a025/A025110.java-    super(new SkipSequence(new A000045(), 1), new A014306(), false);
+src/irvine/oeis/a025/A025074.java:public class A025074 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025074.java-
+src/irvine/oeis/a025/A025074.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025074.java-  public A025074() {
+src/irvine/oeis/a025/A025074.java-    super(new A023532(), new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a025/A025100.java:public class A025100 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025100.java-
+src/irvine/oeis/a025/A025100.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025100.java-  public A025100() {
+src/irvine/oeis/a025/A025100.java-    super(new PrependSequence(new A008578(), 0), new A018252(), false);
+src/irvine/oeis/a025/A025108.java:public class A025108 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025108.java-
+src/irvine/oeis/a025/A025108.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025108.java-  public A025108() {
+src/irvine/oeis/a025/A025108.java-    super(new SkipSequence(new A000045(), 1), new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a025/A025090.java:public class A025090 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025090.java-
+src/irvine/oeis/a025/A025090.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025090.java-  public A025090() {
+src/irvine/oeis/a025/A025090.java-    super(new A000032(), new PrependSequence(new A008578(), 0), false);
+src/irvine/oeis/a025/A025113.java:public class A025113 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025113.java-
+src/irvine/oeis/a025/A025113.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025113.java-  public A025113() {
+src/irvine/oeis/a025/A025113.java-    super(new PrependSequence(new A005408(), 0), new PrependSequence(new A000201(), 0), false);
+src/irvine/oeis/a025/A025081.java:public class A025081 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025081.java-
+src/irvine/oeis/a025/A025081.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025081.java-  public A025081() {
+src/irvine/oeis/a025/A025081.java-    super(new A000045(), new A018252(), false);
+src/irvine/oeis/a025/A025072.java:public class A025072 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025072.java-
+src/irvine/oeis/a025/A025072.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025072.java-  public A025072() {
+src/irvine/oeis/a025/A025072.java-    super(new A023532(), new PrependSequence(new A005408(), 0), false);
+src/irvine/oeis/a025/A025118.java:public class A025118 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025118.java-
+src/irvine/oeis/a025/A025118.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025118.java-  public A025118() {
+src/irvine/oeis/a025/A025118.java-    super(new PrependSequence(new A000201(), 0), false);
+src/irvine/oeis/a025/A025115.java:public class A025115 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025115.java-
+src/irvine/oeis/a025/A025115.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025115.java-  public A025115() {
+src/irvine/oeis/a025/A025115.java-    super(new PrependSequence(new A005408(), 0), new A023533(), false);
+src/irvine/oeis/a025/A025123.java:public class A025123 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025123.java-
+src/irvine/oeis/a025/A025123.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025123.java-  public A025123() {
+src/irvine/oeis/a025/A025123.java-    super(new PrependSequence(new A001950(), 0), new A023533(), false);
+src/irvine/oeis/a025/A025087.java:public class A025087 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025087.java-
+src/irvine/oeis/a025/A025087.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025087.java-  public A025087() {
+src/irvine/oeis/a025/A025087.java-    super(new A000045(), new A014306(), false);
+src/irvine/oeis/a025/A025106.java:public class A025106 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025106.java-
+src/irvine/oeis/a025/A025106.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025106.java-  public A025106() {
+src/irvine/oeis/a025/A025106.java-    super(new SkipSequence(new A000045(), 1), new PrependSequence(new A005408(), 0), false);
+src/irvine/oeis/a025/A025094.java:public class A025094 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025094.java-
+src/irvine/oeis/a025/A025094.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025094.java-  public A025094() {
+src/irvine/oeis/a025/A025094.java-    super(new A000032(), new PrependSequence(new A000201(), 0), false);
+src/irvine/oeis/a025/A025069.java:public class A025069 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025069.java-
+src/irvine/oeis/a025/A025069.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025069.java-  public A025069() {
+src/irvine/oeis/a025/A025069.java-    super(new A023532(), new PrependSequence(new A008578(), 0), false);
+src/irvine/oeis/a025/A025117.java:public class A025117 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025117.java-
+src/irvine/oeis/a025/A025117.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025117.java-  public A025117() {
+src/irvine/oeis/a025/A025117.java-    super(new PrependSequence(new A005408(), 0), new A008578(), false);
+src/irvine/oeis/a025/A025107.java:public class A025107 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025107.java-
+src/irvine/oeis/a025/A025107.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025107.java-  public A025107() {
+src/irvine/oeis/a025/A025107.java-    super(new SkipSequence(new A000045(), 1), new PrependSequence(new A000201(), 0), false);
+src/irvine/oeis/a025/A025091.java:public class A025091 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025091.java-
+src/irvine/oeis/a025/A025091.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025091.java-  public A025091() {
+src/irvine/oeis/a025/A025091.java-    super(new A000032(), new A018252(), false);
+src/irvine/oeis/a025/A025096.java:public class A025096 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025096.java-
+src/irvine/oeis/a025/A025096.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025096.java-  public A025096() {
+src/irvine/oeis/a025/A025096.java-    super(new A000032(), new A023533(), false);
+src/irvine/oeis/a025/A025104.java:public class A025104 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025104.java-
+src/irvine/oeis/a025/A025104.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025104.java-  public A025104() {
+src/irvine/oeis/a025/A025104.java-    super(new A018252(), new PrependSequence(new A005408(), 0), false);
+src/irvine/oeis/a025/A025109.java:public class A025109 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025109.java-
+src/irvine/oeis/a025/A025109.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025109.java-  public A025109() {
+src/irvine/oeis/a025/A025109.java-    super(new SkipSequence(new A000045(), 1), new A023533(), false);
+src/irvine/oeis/a025/A025066.java:public class A025066 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025066.java-
+src/irvine/oeis/a025/A025066.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025066.java-  public A025066() {
+src/irvine/oeis/a025/A025066.java-    super(new A023532(), false);
+src/irvine/oeis/a025/A025111.java:public class A025111 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025111.java-
+src/irvine/oeis/a025/A025111.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025111.java-  public A025111() {
+src/irvine/oeis/a025/A025111.java-    super(new SkipSequence(new A000045(), 1), new A008578(), false);
+src/irvine/oeis/a025/A025119.java:public class A025119 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025119.java-
+src/irvine/oeis/a025/A025119.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025119.java-  public A025119() {
+src/irvine/oeis/a025/A025119.java-    super(new PrependSequence(new A000201(), 0), new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a025/A025120.java:public class A025120 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025120.java-
+src/irvine/oeis/a025/A025120.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025120.java-  public A025120() {
+src/irvine/oeis/a025/A025120.java-    super(new PrependSequence(new A000201(), 0), new A023533(), false);
+src/irvine/oeis/a025/A025121.java:public class A025121 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025121.java-
+src/irvine/oeis/a025/A025121.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025121.java-  public A025121() {
+src/irvine/oeis/a025/A025121.java-    super(new PrependSequence(new A000201(), 0), new A014306(), false);
+src/irvine/oeis/a025/A025071.java:public class A025071 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025071.java-
+src/irvine/oeis/a025/A025071.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025071.java-  public A025071() {
+src/irvine/oeis/a025/A025071.java-    super(new A023532(), new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a025/A025124.java:public class A025124 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025124.java-
+src/irvine/oeis/a025/A025124.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025124.java-  public A025124() {
+src/irvine/oeis/a025/A025124.java-    super(new PrependSequence(new A001950(), 0), new A014306(), false);
+src/irvine/oeis/a025/A025092.java:public class A025092 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025092.java-
+src/irvine/oeis/a025/A025092.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025092.java-  public A025092() {
+src/irvine/oeis/a025/A025092.java-    super(new A000032(), new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a025/A025125.java:public class A025125 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025125.java-
+src/irvine/oeis/a025/A025125.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025125.java-  public A025125() {
+src/irvine/oeis/a025/A025125.java-    super(new A023533(), false);
+src/irvine/oeis/a025/A025085.java:public class A025085 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025085.java-
+src/irvine/oeis/a025/A025085.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025085.java-  public A025085() {
+src/irvine/oeis/a025/A025085.java-    super(new A000045(), new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a025/A025076.java:public class A025076 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025076.java-
+src/irvine/oeis/a025/A025076.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025076.java-  public A025076() {
+src/irvine/oeis/a025/A025076.java-    super(new A023532(), new A014306(), false);
+src/irvine/oeis/a025/A025105.java:public class A025105 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025105.java-
+src/irvine/oeis/a025/A025105.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025105.java-  public A025105() {
+src/irvine/oeis/a025/A025105.java-    super(new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a025/A025070.java:public class A025070 extends HalfConvolutionSequence {
+src/irvine/oeis/a025/A025070.java-
+src/irvine/oeis/a025/A025070.java-  /** Construct the sequence. */
+src/irvine/oeis/a025/A025070.java-  public A025070() {
+src/irvine/oeis/a025/A025070.java-    super(new A023532(), new A018252(), false);
+src/irvine/oeis/a024/A024367.java:public class A024367 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024367.java-
+src/irvine/oeis/a024/A024367.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024367.java-  public A024367() {
+src/irvine/oeis/a024/A024367.java-    super(new A023532(), new A000045());
+src/irvine/oeis/a024/A024690.java:public class A024690 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024690.java-
+src/irvine/oeis/a024/A024690.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024690.java-  public A024690() {
+src/irvine/oeis/a024/A024690.java-    super(new PrependSequence(new A001950(), 0), new A023533());
+src/irvine/oeis/a024/A024307.java:public class A024307 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024307.java-
+src/irvine/oeis/a024/A024307.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024307.java-  public A024307() {
+src/irvine/oeis/a024/A024307.java-    super(new A000027(), new A023531());
+src/irvine/oeis/a024/A024458.java:public class A024458 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024458.java-
+src/irvine/oeis/a024/A024458.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024458.java-  public A024458() {
+src/irvine/oeis/a024/A024458.java-    super(new A000045());
+src/irvine/oeis/a024/A024888.java:public class A024888 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024888.java-
+src/irvine/oeis/a024/A024888.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024888.java-  public A024888() {
+src/irvine/oeis/a024/A024888.java-    super(new A023531(), new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a024/A024855.java:public class A024855 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024855.java-
+src/irvine/oeis/a024/A024855.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024855.java-  public A024855() {
+src/irvine/oeis/a024/A024855.java-    super(new A001477(), new A023531(), false);
+src/irvine/oeis/a024/A024870.java:public class A024870 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024870.java-
+src/irvine/oeis/a024/A024870.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024870.java-  public A024870() {
+src/irvine/oeis/a024/A024870.java-    super(new A000027(), new A023531(), false);
+src/irvine/oeis/a024/A024864.java:public class A024864 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024864.java-
+src/irvine/oeis/a024/A024864.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024864.java-  public A024864() {
+src/irvine/oeis/a024/A024864.java-    super(new A001477(), new PrependSequence(new A001950(), 0), false);
+src/irvine/oeis/a024/A024308.java:public class A024308 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024308.java-
+src/irvine/oeis/a024/A024308.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024308.java-  public A024308() {
+src/irvine/oeis/a024/A024308.java-    super(new A000027(), new A023532());
+src/irvine/oeis/a024/A024472.java:public class A024472 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024472.java-
+src/irvine/oeis/a024/A024472.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024472.java-  public A024472() {
+src/irvine/oeis/a024/A024472.java-    super(new A000032(), new SkipSequence(new A000045(), 1));
+src/irvine/oeis/a024/A024886.java:public class A024886 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024886.java-
+src/irvine/oeis/a024/A024886.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024886.java-  public A024886() {
+src/irvine/oeis/a024/A024886.java-    super(new A023531(), new PrependSequence(new A005408(), 0), false);
+src/irvine/oeis/a024/A024464.java:public class A024464 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024464.java-
+src/irvine/oeis/a024/A024464.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024464.java-  public A024464() {
+src/irvine/oeis/a024/A024464.java-    super(new A000045(), new PrependSequence(new A000201(), 0));
+src/irvine/oeis/a024/A024591.java:public class A024591 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024591.java-
+src/irvine/oeis/a024/A024591.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024591.java-  public A024591() {
+src/irvine/oeis/a024/A024591.java-    super(new SkipSequence(new A000045(), 1));
+src/irvine/oeis/a024/A024324.java:public class A024324 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024324.java-
+src/irvine/oeis/a024/A024324.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024324.java-  public A024324() {
+src/irvine/oeis/a024/A024324.java-    super(new A023531(), new PrependSequence(new A000201(), 0));
+src/irvine/oeis/a024/A024592.java:public class A024592 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024592.java-
+src/irvine/oeis/a024/A024592.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024592.java-  public A024592() {
+src/irvine/oeis/a024/A024592.java-    super(new SkipSequence(new A000045(), 1), new PrependSequence(new A005408(), 0));
+src/irvine/oeis/a024/A024689.java:public class A024689 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024689.java-
+src/irvine/oeis/a024/A024689.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024689.java-  public A024689() {
+src/irvine/oeis/a024/A024689.java-    super(new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a024/A024889.java:public class A024889 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024889.java-
+src/irvine/oeis/a024/A024889.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024889.java-  public A024889() {
+src/irvine/oeis/a024/A024889.java-    super(new A023531(), new A023533(), false);
+src/irvine/oeis/a024/A024600.java:public class A024600 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024600.java-
+src/irvine/oeis/a024/A024600.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024600.java-  public A024600() {
+src/irvine/oeis/a024/A024600.java-    super(new PrependSequence(new A005408(), 0), new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a024/A024373.java:public class A024373 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024373.java-
+src/irvine/oeis/a024/A024373.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024373.java-  public A024373() {
+src/irvine/oeis/a024/A024373.java-    super(new A023532(), new PrependSequence(new A000201(), 0));
+src/irvine/oeis/a024/A024370.java:public class A024370 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024370.java-
+src/irvine/oeis/a024/A024370.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024370.java-  public A024370() {
+src/irvine/oeis/a024/A024370.java-    super(new A023532(), new PrependSequence(new A002808(), 0));
+src/irvine/oeis/a024/A024477.java:public class A024477 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024477.java-
+src/irvine/oeis/a024/A024477.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024477.java-  public A024477() {
+src/irvine/oeis/a024/A024477.java-    super(new A000032(), new A014306());
+src/irvine/oeis/a024/A024882.java:public class A024882 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024882.java-
+src/irvine/oeis/a024/A024882.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024882.java-  public A024882() {
+src/irvine/oeis/a024/A024882.java-    super(new A023531(), new A000032(), false);
+src/irvine/oeis/a024/A024594.java:public class A024594 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024594.java-
+src/irvine/oeis/a024/A024594.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024594.java-  public A024594() {
+src/irvine/oeis/a024/A024594.java-    super(new SkipSequence(new A000045(), 1), new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a024/A024686.java:public class A024686 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024686.java-
+src/irvine/oeis/a024/A024686.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024686.java-  public A024686() {
+src/irvine/oeis/a024/A024686.java-    super(new PrependSequence(new A000201(), 0), new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a024/A024867.java:public class A024867 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024867.java-
+src/irvine/oeis/a024/A024867.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024867.java-  public A024867() {
+src/irvine/oeis/a024/A024867.java-    super(new A001477(), new A008578(), false);
+src/irvine/oeis/a024/A024318.java:public class A024318 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024318.java-
+src/irvine/oeis/a024/A024318.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024318.java-  public A024318() {
+src/irvine/oeis/a024/A024318.java-    super(new A023531(), new A000045());
+src/irvine/oeis/a024/A024319.java:public class A024319 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024319.java-
+src/irvine/oeis/a024/A024319.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024319.java-  public A024319() {
+src/irvine/oeis/a024/A024319.java-    super(new A023531(), new A000032());
+src/irvine/oeis/a024/A024310.java:public class A024310 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024310.java-
+src/irvine/oeis/a024/A024310.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024310.java-  public A024310() {
+src/irvine/oeis/a024/A024310.java-    super(new A000027(), new A000032());
+src/irvine/oeis/a024/A024891.java:public class A024891 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024891.java-
+src/irvine/oeis/a024/A024891.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024891.java-  public A024891() {
+src/irvine/oeis/a024/A024891.java-    super(new A023531(), new A008578(), false);
+src/irvine/oeis/a024/A024322.java:public class A024322 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024322.java-
+src/irvine/oeis/a024/A024322.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024322.java-  public A024322() {
+src/irvine/oeis/a024/A024322.java-    super(new A023531(), new SkipSequence(new A000045(), 1));
+src/irvine/oeis/a024/A024696.java:public class A024696 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024696.java-
+src/irvine/oeis/a024/A024696.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024696.java-  public A024696() {
+src/irvine/oeis/a024/A024696.java-    super(new A014306(), new A008578());
+src/irvine/oeis/a024/A024604.java:public class A024604 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024604.java-
+src/irvine/oeis/a024/A024604.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024604.java-  public A024604() {
+src/irvine/oeis/a024/A024604.java-    super(new PrependSequence(new A002808(), 0), new A008578());
+src/irvine/oeis/a024/A024463.java:public class A024463 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024463.java-
+src/irvine/oeis/a024/A024463.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024463.java-  public A024463() {
+src/irvine/oeis/a024/A024463.java-    super(new A000045(), new PrependSequence(new A005408(), 0));
+src/irvine/oeis/a024/A024372.java:public class A024372 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024372.java-
+src/irvine/oeis/a024/A024372.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024372.java-  public A024372() {
+src/irvine/oeis/a024/A024372.java-    super(new A023532(), new PrependSequence(new A005408(), 0));
+src/irvine/oeis/a024/A024688.java:public class A024688 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024688.java-
+src/irvine/oeis/a024/A024688.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024688.java-  public A024688() {
+src/irvine/oeis/a024/A024688.java-    super(new PrependSequence(new A000201(), 0), new A014306());
+src/irvine/oeis/a024/A024476.java:public class A024476 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024476.java-
+src/irvine/oeis/a024/A024476.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024476.java-  public A024476() {
+src/irvine/oeis/a024/A024476.java-    super(new A000032(), new A023533());
+src/irvine/oeis/a024/A024692.java:public class A024692 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024692.java-
+src/irvine/oeis/a024/A024692.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024692.java-  public A024692() {
+src/irvine/oeis/a024/A024692.java-    super(new A023533());
+src/irvine/oeis/a024/A024325.java:public class A024325 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024325.java-
+src/irvine/oeis/a024/A024325.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024325.java-  public A024325() {
+src/irvine/oeis/a024/A024325.java-    super(new A023531(), new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a024/A024693.java:public class A024693 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024693.java-
+src/irvine/oeis/a024/A024693.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024693.java-  public A024693() {
+src/irvine/oeis/a024/A024693.java-    super(new A023533(), new A014306());
+src/irvine/oeis/a024/A024475.java:public class A024475 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024475.java-
+src/irvine/oeis/a024/A024475.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024475.java-  public A024475() {
+src/irvine/oeis/a024/A024475.java-    super(new A000032(), new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a024/A024691.java:public class A024691 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024691.java-
+src/irvine/oeis/a024/A024691.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024691.java-  public A024691() {
+src/irvine/oeis/a024/A024691.java-    super(new PrependSequence(new A001950(), 0), new A014306());
+src/irvine/oeis/a024/A024879.java:public class A024879 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024879.java-
+src/irvine/oeis/a024/A024879.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024879.java-  public A024879() {
+src/irvine/oeis/a024/A024879.java-    super(new A023531(), false);
+src/irvine/oeis/a024/A024465.java:public class A024465 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024465.java-
+src/irvine/oeis/a024/A024465.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024465.java-  public A024465() {
+src/irvine/oeis/a024/A024465.java-    super(new A000045(), new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a024/A024460.java:public class A024460 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024460.java-
+src/irvine/oeis/a024/A024460.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024460.java-  public A024460() {
+src/irvine/oeis/a024/A024460.java-    super(new A000045(), new PrependSequence(new A008578(), 0));
+src/irvine/oeis/a024/A024371.java:public class A024371 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024371.java-
+src/irvine/oeis/a024/A024371.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024371.java-  public A024371() {
+src/irvine/oeis/a024/A024371.java-    super(new PrependSequence(new A023532(), 0), new A000045());
+src/irvine/oeis/a024/A024470.java:public class A024470 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024470.java-
+src/irvine/oeis/a024/A024470.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024470.java-  public A024470() {
+src/irvine/oeis/a024/A024470.java-    super(new A000032(), new PrependSequence(new A008578(), 0));
+src/irvine/oeis/a024/A024368.java:public class A024368 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024368.java-
+src/irvine/oeis/a024/A024368.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024368.java-  public A024368() {
+src/irvine/oeis/a024/A024368.java-    super(new A023532(), new A000032());
+src/irvine/oeis/a024/A024884.java:public class A024884 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024884.java-
+src/irvine/oeis/a024/A024884.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024884.java-  public A024884() {
+src/irvine/oeis/a024/A024884.java-    super(new A023531(), new PrependSequence(new A002808(), 0), false);
+src/irvine/oeis/a024/A024856.java:public class A024856 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024856.java-
+src/irvine/oeis/a024/A024856.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024856.java-  public A024856() {
+src/irvine/oeis/a024/A024856.java-    super(new A001477(), new A023532(), false);
+src/irvine/oeis/a024/A024366.java:public class A024366 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024366.java-
+src/irvine/oeis/a024/A024366.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024366.java-  public A024366() {
+src/irvine/oeis/a024/A024366.java-    super(new A023532());
+src/irvine/oeis/a024/A024376.java:public class A024376 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024376.java-
+src/irvine/oeis/a024/A024376.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024376.java-  public A024376() {
+src/irvine/oeis/a024/A024376.java-    super(new A023532(), new A014306());
+src/irvine/oeis/a024/A024593.java:public class A024593 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024593.java-
+src/irvine/oeis/a024/A024593.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024593.java-  public A024593() {
+src/irvine/oeis/a024/A024593.java-    super(new SkipSequence(new A000045(), 1), new PrependSequence(new A000201(), 0));
+src/irvine/oeis/a024/A024375.java:public class A024375 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024375.java-
+src/irvine/oeis/a024/A024375.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024375.java-  public A024375() {
+src/irvine/oeis/a024/A024375.java-    super(new A023532(), new A023533());
+src/irvine/oeis/a024/A024697.java:public class A024697 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024697.java-
+src/irvine/oeis/a024/A024697.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024697.java-  public A024697() {
+src/irvine/oeis/a024/A024697.java-    super(new A008578());
+src/irvine/oeis/a024/A024601.java:public class A024601 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024601.java-
+src/irvine/oeis/a024/A024601.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024601.java-  public A024601() {
+src/irvine/oeis/a024/A024601.java-    super(new PrependSequence(new A005408(), 0), new A023533());
+src/irvine/oeis/a024/A024326.java:public class A024326 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024326.java-
+src/irvine/oeis/a024/A024326.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024326.java-  public A024326() {
+src/irvine/oeis/a024/A024326.java-    super(new A023531(), new A023533());
+src/irvine/oeis/a024/A024471.java:public class A024471 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024471.java-
+src/irvine/oeis/a024/A024471.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024471.java-  public A024471() {
+src/irvine/oeis/a024/A024471.java-    super(new A000032(), new PrependSequence(new A002808(), 0));
+src/irvine/oeis/a024/A024695.java:public class A024695 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024695.java-
+src/irvine/oeis/a024/A024695.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024695.java-  public A024695() {
+src/irvine/oeis/a024/A024695.java-    super(new A014306());
+src/irvine/oeis/a024/A024474.java:public class A024474 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024474.java-
+src/irvine/oeis/a024/A024474.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024474.java-  public A024474() {
+src/irvine/oeis/a024/A024474.java-    super(new A000032(), new PrependSequence(new A000201(), 0));
+src/irvine/oeis/a024/A024588.java:public class A024588 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024588.java-
+src/irvine/oeis/a024/A024588.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024588.java-  public A024588() {
+src/irvine/oeis/a024/A024588.java-    super(new PrependSequence(new A002808(), 0));
+src/irvine/oeis/a024/A024369.java:public class A024369 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024369.java-
+src/irvine/oeis/a024/A024369.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024369.java-  public A024369() {
+src/irvine/oeis/a024/A024369.java-    super(new A023532(), new PrependSequence(new A008578(), 0));
+src/irvine/oeis/a024/A024481.java:public class A024481 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024481.java-
+src/irvine/oeis/a024/A024481.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024481.java-  public A024481() {
+src/irvine/oeis/a024/A024481.java-    super(new PrependSequence(new A008578(), 0), new SkipSequence(new A000045(), 1));
+src/irvine/oeis/a024/A024860.java:public class A024860 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024860.java-
+src/irvine/oeis/a024/A024860.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024860.java-  public A024860() {
+src/irvine/oeis/a024/A024860.java-    super(new A001477(), new PrependSequence(new A002808(), 0), false);
+src/irvine/oeis/a024/A024480.java:public class A024480 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024480.java-
+src/irvine/oeis/a024/A024480.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024480.java-  public A024480() {
+src/irvine/oeis/a024/A024480.java-    super(new PrependSequence(new A008578(), 0), new PrependSequence(new A002808(), 0));
+src/irvine/oeis/a024/A024327.java:public class A024327 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024327.java-
+src/irvine/oeis/a024/A024327.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024327.java-  public A024327() {
+src/irvine/oeis/a024/A024327.java-    super(new A023531(), new A014306());
+src/irvine/oeis/a024/A024599.java:public class A024599 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024599.java-
+src/irvine/oeis/a024/A024599.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024599.java-  public A024599() {
+src/irvine/oeis/a024/A024599.java-    super(new PrependSequence(new A005408(), 0), new PrependSequence(new A000201(), 0));
+src/irvine/oeis/a024/A024863.java:public class A024863 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024863.java-
+src/irvine/oeis/a024/A024863.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024863.java-  public A024863() {
+src/irvine/oeis/a024/A024863.java-    super(new A001477(), new PrependSequence(new A000201(), 0), false);
+src/irvine/oeis/a024/A024858.java:public class A024858 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024858.java-
+src/irvine/oeis/a024/A024858.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024858.java-  public A024858() {
+src/irvine/oeis/a024/A024858.java-    super(new A001477(), new A000032(), false);
+src/irvine/oeis/a024/A024317.java:public class A024317 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024317.java-
+src/irvine/oeis/a024/A024317.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024317.java-  public A024317() {
+src/irvine/oeis/a024/A024317.java-    super(new A023531(), new A023532());
+src/irvine/oeis/a024/A024461.java:public class A024461 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024461.java-
+src/irvine/oeis/a024/A024461.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024461.java-  public A024461() {
+src/irvine/oeis/a024/A024461.java-    super(new A000045(), new PrependSequence(new A002808(), 0));
+src/irvine/oeis/a024/A024589.java:public class A024589 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024589.java-
+src/irvine/oeis/a024/A024589.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024589.java-  public A024589() {
+src/irvine/oeis/a024/A024589.java-    super(new PrependSequence(new A002808(), 0), new SkipSequence(new A000045(), 1));
+src/irvine/oeis/a024/A024323.java:public class A024323 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024323.java-
+src/irvine/oeis/a024/A024323.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024323.java-  public A024323() {
+src/irvine/oeis/a024/A024323.java-    super(new A023531(), new PrependSequence(new A005408(), 0));
+src/irvine/oeis/a024/A024596.java:public class A024596 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024596.java-
+src/irvine/oeis/a024/A024596.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024596.java-  public A024596() {
+src/irvine/oeis/a024/A024596.java-    super(new SkipSequence(new A000045(), 1), new A014306());
+src/irvine/oeis/a024/A024871.java:public class A024871 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024871.java-
+src/irvine/oeis/a024/A024871.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024871.java-  public A024871() {
+src/irvine/oeis/a024/A024871.java-    super(new A000027(), new A023532(), false);
+src/irvine/oeis/a024/A024866.java:public class A024866 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024866.java-
+src/irvine/oeis/a024/A024866.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024866.java-  public A024866() {
+src/irvine/oeis/a024/A024866.java-    super(new A001477(), new A014306(), false);
+src/irvine/oeis/a024/A024597.java:public class A024597 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024597.java-
+src/irvine/oeis/a024/A024597.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024597.java-  public A024597() {
+src/irvine/oeis/a024/A024597.java-    super(new SkipSequence(new A000045(), 1), new A008578());
+src/irvine/oeis/a024/A024595.java:public class A024595 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024595.java-
+src/irvine/oeis/a024/A024595.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024595.java-  public A024595() {
+src/irvine/oeis/a024/A024595.java-    super(new SkipSequence(new A000045(), 1), new A023533());
+src/irvine/oeis/a024/A024694.java:public class A024694 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024694.java-
+src/irvine/oeis/a024/A024694.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024694.java-  public A024694() {
+src/irvine/oeis/a024/A024694.java-    super(new A023533(), new A008578());
+src/irvine/oeis/a024/A024374.java:public class A024374 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024374.java-
+src/irvine/oeis/a024/A024374.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024374.java-  public A024374() {
+src/irvine/oeis/a024/A024374.java-    super(new A023532(), new PrependSequence(new A001950(), 0));
+src/irvine/oeis/a024/A024467.java:public class A024467 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024467.java-
+src/irvine/oeis/a024/A024467.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024467.java-  public A024467() {
+src/irvine/oeis/a024/A024467.java-    super(new A000045(), new A014306());
+src/irvine/oeis/a024/A024865.java:public class A024865 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024865.java-
+src/irvine/oeis/a024/A024865.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024865.java-  public A024865() {
+src/irvine/oeis/a024/A024865.java-    super(new A001477(), new A023533(), false);
+src/irvine/oeis/a024/A024469.java:public class A024469 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024469.java-
+src/irvine/oeis/a024/A024469.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024469.java-  public A024469() {
+src/irvine/oeis/a024/A024469.java-    super(new A000032());
+src/irvine/oeis/a024/A024377.java:public class A024377 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024377.java-
+src/irvine/oeis/a024/A024377.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024377.java-  public A024377() {
+src/irvine/oeis/a024/A024377.java-    super(new A023532(), new A008578());
+src/irvine/oeis/a024/A024315.java:public class A024315 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024315.java-
+src/irvine/oeis/a024/A024315.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024315.java-  public A024315() {
+src/irvine/oeis/a024/A024315.java-    super(new SkipSequence(new A000027(), 1), new SkipSequence(new A000045(), 1));
+src/irvine/oeis/a024/A024309.java:public class A024309 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024309.java-
+src/irvine/oeis/a024/A024309.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024309.java-  public A024309() {
+src/irvine/oeis/a024/A024309.java-    super(new A000027(), new A000045());
+src/irvine/oeis/a024/A024890.java:public class A024890 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024890.java-
+src/irvine/oeis/a024/A024890.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024890.java-  public A024890() {
+src/irvine/oeis/a024/A024890.java-    super(new A023531(), new A014306(), false);
+src/irvine/oeis/a024/A024880.java:public class A024880 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024880.java-
+src/irvine/oeis/a024/A024880.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024880.java-  public A024880() {
+src/irvine/oeis/a024/A024880.java-    super(new A023531(), new A023532(), false);
+src/irvine/oeis/a024/A024602.java:public class A024602 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024602.java-
+src/irvine/oeis/a024/A024602.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024602.java-  public A024602() {
+src/irvine/oeis/a024/A024602.java-    super(new PrependSequence(new A005408(), 0), new A014306());
+src/irvine/oeis/a024/A024306.java:public class A024306 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024306.java-
+src/irvine/oeis/a024/A024306.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024306.java-  public A024306() {
+src/irvine/oeis/a024/A024306.java-    super(new A000027(), new SkipSequence(new A000027(), 1));
+src/irvine/oeis/a024/A024468.java:public class A024468 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024468.java-
+src/irvine/oeis/a024/A024468.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024468.java-  public A024468() {
+src/irvine/oeis/a024/A024468.java-    super(new A000045(), new A008578());
+src/irvine/oeis/a024/A024861.java:public class A024861 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024861.java-
+src/irvine/oeis/a024/A024861.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024861.java-  public A024861() {
+src/irvine/oeis/a024/A024861.java-    super(new A001477(), new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a024/A024320.java:public class A024320 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024320.java-
+src/irvine/oeis/a024/A024320.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024320.java-  public A024320() {
+src/irvine/oeis/a024/A024320.java-    super(new A023531(), new PrependSequence(new A008578(), 0));
+src/irvine/oeis/a024/A024459.java:public class A024459 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024459.java-
+src/irvine/oeis/a024/A024459.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024459.java-  public A024459() {
+src/irvine/oeis/a024/A024459.java-    super(new A000045(), new A000032());
+src/irvine/oeis/a024/A024473.java:public class A024473 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024473.java-
+src/irvine/oeis/a024/A024473.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024473.java-  public A024473() {
+src/irvine/oeis/a024/A024473.java-    super(new A000032(), new PrependSequence(new A005408(), 0));
+src/irvine/oeis/a024/A024478.java:public class A024478 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024478.java-
+src/irvine/oeis/a024/A024478.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024478.java-  public A024478() {
+src/irvine/oeis/a024/A024478.java-    super(new A000032(), new A008578());
+src/irvine/oeis/a024/A024887.java:public class A024887 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024887.java-
+src/irvine/oeis/a024/A024887.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024887.java-  public A024887() {
+src/irvine/oeis/a024/A024887.java-    super(new A023531(), new PrependSequence(new A000201(), 0), false);
+src/irvine/oeis/a024/A024466.java:public class A024466 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024466.java-
+src/irvine/oeis/a024/A024466.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024466.java-  public A024466() {
+src/irvine/oeis/a024/A024466.java-    super(new A000045(), new A023533());
+src/irvine/oeis/a024/A024479.java:public class A024479 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024479.java-
+src/irvine/oeis/a024/A024479.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024479.java-  public A024479() {
+src/irvine/oeis/a024/A024479.java-    super(new PrependSequence(new A008578(), 0));
+src/irvine/oeis/a024/A024321.java:public class A024321 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024321.java-
+src/irvine/oeis/a024/A024321.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024321.java-  public A024321() {
+src/irvine/oeis/a024/A024321.java-    super(new A023531(), new PrependSequence(new A002808(), 0));
+src/irvine/oeis/a024/A024878.java:public class A024878 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024878.java-
+src/irvine/oeis/a024/A024878.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024878.java-  public A024878() {
+src/irvine/oeis/a024/A024878.java-    super(new SkipSequence(new A000027(), 1), new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a024/A024316.java:public class A024316 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024316.java-
+src/irvine/oeis/a024/A024316.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024316.java-  public A024316() {
+src/irvine/oeis/a024/A024316.java-    super(new A023531());
+src/irvine/oeis/a024/A024590.java:public class A024590 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024590.java-
+src/irvine/oeis/a024/A024590.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024590.java-  public A024590() {
+src/irvine/oeis/a024/A024590.java-    super(new PrependSequence(new A002808(), 0), new PrependSequence(new A005408(), 0));
+src/irvine/oeis/a024/A024685.java:public class A024685 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024685.java-
+src/irvine/oeis/a024/A024685.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024685.java-  public A024685() {
+src/irvine/oeis/a024/A024685.java-    super(new PrependSequence(new A000201(), 0));
+src/irvine/oeis/a024/A024885.java:public class A024885 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024885.java-
+src/irvine/oeis/a024/A024885.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024885.java-  public A024885() {
+src/irvine/oeis/a024/A024885.java-    super(new A023531(), new SkipSequence(new A000045(), 1), false);
+src/irvine/oeis/a024/A024687.java:public class A024687 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024687.java-
+src/irvine/oeis/a024/A024687.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024687.java-  public A024687() {
+src/irvine/oeis/a024/A024687.java-    super(new PrependSequence(new A000201(), 0), new A023533());
+src/irvine/oeis/a024/A024603.java:public class A024603 extends HalfConvolutionSequence {
+src/irvine/oeis/a024/A024603.java-
+src/irvine/oeis/a024/A024603.java-  /** Construct the sequence. */
+src/irvine/oeis/a024/A024603.java-  public A024603() {
+src/irvine/oeis/a024/A024603.java-    super(new PrependSequence(new A005408(), 0), new A008578());

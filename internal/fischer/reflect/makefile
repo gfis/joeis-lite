@@ -6,7 +6,7 @@
 #
 GITS=../../../..
 COMMON=$(GITS)/OEIS-mat/common
-COHERE=../../joeis-lite/internal/fischer/seqwo
+COHERE=../../joeis-lite/internal/fischer/reflect
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
 JOEIS=$(GITS)/joeis
 SRC=src/irvine/oeis
@@ -27,8 +27,23 @@ liseq: # list those with "implements Sequence"
 	$(DBAT) -x "SELECT * FROM seq2 ORDER BY 1;" > $@.txt
 	head -n2 $@.txt
 	wc -l    $@.txt
-patchseq: # patch all in the list above
+#----
+patch_abstract: # patch all in the list above
 	perl patch_abstract.pl liseq.txt
+patch_prepnew: # remove any leading skip parameter in PrependSequence and append ".skip(...)" if not 0
+	cat prepend0.man \
+	| perl -ne 'm{\/(A\d{6})}; print "$$1\n";' \
+	| perl patch_prepend.pl -m new
+	cat $(GITS)/joeis-lite/$(SRC)/a161/A161306.java
+	cd .. ; make dist testall TO=8 GU=4
+patch_prepext: # remove any leading skip parameter in the constructor of sequences with "extends PrependSequence" and append ".skip(...)" if not 0
+	grep PrependSequence $(COMMON)/joeis_names.txt \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	perl patch_prepend.pl -d 1 -m ext $@.tmp 2> $@.debug.tmp
+	# cat $(GITS)/joeis-lite/$(SRC)/a161/A161306.java
+	# cd .. ; make dist testall TO=8 GU=4
 #========
 enpack:
 	cat genet_old.txt \
