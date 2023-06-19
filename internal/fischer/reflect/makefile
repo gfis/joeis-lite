@@ -6,15 +6,44 @@
 #
 GITS=../../../..
 COMMON=$(GITS)/OEIS-mat/common
+LITE=$(GITS)/joeis-lite
+JOEIS=$(GITS)/joeis
 COHERE=../../joeis-lite/internal/fischer/reflect
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
-JOEIS=$(GITS)/joeis
 SRC=src/irvine/oeis
+# JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
+JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
+ifeq ($(OS),Windows_NT)
+    CPS=;
+else
+    CPS=:
+endif
+JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
+ABSINSPECT=$(JAVA) irvine.oeis.AbstractInspector
 D=0
 #--------
 all:
 	grep -P "^\w" makefile
 #----:
+absref_stat: absref_stat1 absref_stat2 # 3 AbstractSequence reflections with statistics
+absref_stat1:
+	cd .. ;  make offinspect1
+	make absref1 MODE=offin
+	make absref1 MODE=noabs
+	# make absref1 MODE=seqwo
+absref_stat2:
+	tail -n4 offin.tmp noabs.tmp seqwo.tmp \
+	| grep -P  "^\d\d\d\d\-" | tee -a reflect_progress.txt
+absref1: # MODE=; run one reflection for MODE
+	$(ABSINSPECT) $(MODE) ../offinspect1.tmp 2>&1 \
+	>        $(MODE).tmp
+	wc -l    $(MODE).tmp
+	grep -E  "^#" $(MODE).tmp
+	grep -vE "^#" $(MODE).tmp \
+	| cut -f3 $(MODE).tmp | sort | uniq -c | sort -n \
+	>        $(MODE).txt
+	tail -n16 $(MODE).txt
+#----	
 liseq: # list those with "implements Sequence"
 	grep -P "\tSequence\t" $(COMMON)/joeis_names.txt \
 	| perl -ne 's/\t.*/\t0/; print;' \

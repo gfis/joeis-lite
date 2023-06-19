@@ -79,12 +79,9 @@ sub patch1 {
         $write_it = (
             $buffer =~                s{super\((\w+)\, *(new A\d+\(\))}              {super\($2.skip\($1\)}mg
             );
-        if ($debug >= 1 && $write_it > 0) {
-            $buffer =~ m{\n(\s+super[^\;]+\;)};
-            print "# $tarpath/$aseqno.java: $1\n";
-        }
-        #                12    2            3    3            4   4      1
-        if ($buffer =~ m{((\n *)super\(new +(A\d+)\(\)\.skip\((\d+)\)\)\;)}m) { # no prepending = SkipSequence replacement
+        if (0) {
+        #                     12    2            3    3            4   4      1
+        } elsif ($buffer =~ m{((\n *)super\(new +(A\d+)\(\)\.skip\((\d+)\)\)\;)}m) { # no prepending = SkipSequence replacement
             my ($whole, $indent, $rseqno, $skip) = ($1, $2, $3, $4);
             $buffer =~ s{\nimport irvine\.oeis\.PrependSequence\;}{}m;
             $buffer =~ s{extends PrependSequence}{extends $rseqno}m;
@@ -94,6 +91,24 @@ sub patch1 {
                 $buffer =~ s{((\n *)super\(new +(A\d+)\(\)\.skip\((\d+)\)\)\;)}{}m;
             }
             $write_it = 1;
+        #                     12           23   3   4      4  1
+        } elsif ($buffer =~ m{((\n *super\()(\d+)\, ([^\;]+)\;)}m) { # no inner Annnnnn
+            # super(1, new Stirling2TransformSequence(new A000142(), 0), 0);
+            my ($whole, $head, $offo, $tail) = ($1, $2, $3, $4);
+            $tail =~ s{\)\Z}{}; # remove last ")"
+            my @parts = split(/\,/, $tail);
+            my $last = scalar(@parts);
+            while ($last > 0 && ($parts[$last - 1] != m{\)}) {
+            	$last --;
+            }
+            my $inits = join("\, ", splice(@parts, $last);
+            $tail     = join("\, ", splice(@parts, 0);
+            $buffer   =~ s{((\n *)super\((\d+)\, ([^\;]+)\;)}{$head$tail\.skip\($offo\)\,$inits\)\;}m;
+            $write_it = 1;
+        }
+        if ($debug >= 1 && $write_it > 0) {
+            $buffer =~ m{\n(\s+super[^\;]+\;)};
+            print "# $tarpath/$aseqno.java: $1\n";
         }
     } else {
         die "$0: invalid mode $mode";

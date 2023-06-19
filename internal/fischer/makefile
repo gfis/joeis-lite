@@ -193,7 +193,7 @@ diff_joeis:
 	| xargs -innn diff -ws -C0 ../../../joeis/src/nnn ../../src/nnn \
 	>> $@.tmp
 diffrec:
-	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/recur/ConstantOrderRecurrence.java ../../src/irvine/oeis/recur || :
+	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/PrependSequence.java ../../src/irvine/oeis/ || :
 diffhr:
 	diff -wy  ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
 #	diff -wC0 ../../../joeis/src/irvine/oeis/CompementaryEquationSequence.java   ../../src/irvine/oeis || :
