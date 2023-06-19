@@ -30,20 +30,35 @@ liseq: # list those with "implements Sequence"
 #----
 patch_abstract: # patch all in the list above
 	perl patch_abstract.pl liseq.txt
+#--------
+# targets for PrependSequence - skip conversion
+patch_prep: patch_prepnew patch_prepext
+	cd .. ; make man dist testall TO=8 GU=4
 patch_prepnew: # remove any leading skip parameter in PrependSequence and append ".skip(...)" if not 0
 	cat prepend0.man \
 	| perl -ne 'm{\/(A\d{6})}; print "$$1\n";' \
 	| perl patch_prepend.pl -m new
 	cat $(GITS)/joeis-lite/$(SRC)/a161/A161306.java
-	cd .. ; make dist testall TO=8 GU=4
 patch_prepext: # remove any leading skip parameter in the constructor of sequences with "extends PrependSequence" and append ".skip(...)" if not 0
 	grep PrependSequence $(COMMON)/joeis_names.txt \
 	>        $@.tmp
 	head -n2 $@.tmp
 	wc -l    $@.tmp
-	perl patch_prepend.pl -d 1 -m ext $@.tmp 2> $@.debug.tmp
-	# cat $(GITS)/joeis-lite/$(SRC)/a161/A161306.java
-	# cd .. ; make dist testall TO=8 GU=4
+	perl patch_prepend.pl -d 1 -m ext $@.tmp \
+	| tee $@.debug.tmp
+	cat $(GITS)/joeis-lite/$(SRC)/a088/A088802.java
+#----
+# ../../../src/irvine/oeis/a065/A065144.java:     super(new A029948().skip(1));
+prepskip: # detect SkipSequence applications
+	grep "))" patch_prepext.debug.tmp | cut -b10- \
+	| perl -ne 'use strict; if (m{\/(A\d+).java[^\(]*\(new +(A\d+)\(\)\.skip\((\d+)\)\)}) { '\
+	' my ($$aseqno, $$rseqno, $$skip) = ($$1, $$2, $$3); '\
+	' print join("\t", $$aseqno, $$rseqno, $$skip) . "\n"; }'\
+	| sort \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+prepskip1:
+	cat prepskip.
 #========
 enpack:
 	cat genet_old.txt \
