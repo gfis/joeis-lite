@@ -98,11 +98,11 @@ sub patch1 {
             $tail =~ s{\)\Z}{}; # remove last ")"
             my @parts = split(/\,/, $tail);
             my $last = scalar(@parts);
-            while ($last > 0 && ($parts[$last - 1] != m{\)}) {
+            while ($last > 0 && ($parts[$last - 1] !~ m{\)})) {
             	$last --;
             }
-            my $inits = join("\, ", splice(@parts, $last);
-            $tail     = join("\, ", splice(@parts, 0);
+            my $inits = join("\, ", splice(@parts, $last));
+            $tail     = join("\, ", splice(@parts,     0));
             $buffer   =~ s{((\n *)super\((\d+)\, ([^\;]+)\;)}{$head$tail\.skip\($offo\)\,$inits\)\;}m;
             $write_it = 1;
         }

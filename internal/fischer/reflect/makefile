@@ -76,6 +76,10 @@ patch_prepext: # remove any leading skip parameter in the constructor of sequenc
 	perl patch_prepend.pl -d 1 -m ext $@.tmp \
 	| tee $@.debug.tmp
 	cat $(GITS)/joeis-lite/$(SRC)/a088/A088802.java
+patch_prep2: # those without Annnnnn in the super statement
+	perl patch_prepend.pl -d 1 -m ext nosuit.man \
+	| tee $@.debug.tmp
+	cat $(GITS)/joeis-lite/$(SRC)/a325/A325765.java
 #----
 # ../../../src/irvine/oeis/a065/A065144.java:     super(new A029948().skip(1));
 prepskip: # detect SkipSequence applications
