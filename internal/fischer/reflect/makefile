@@ -25,17 +25,20 @@ D=0
 all:
 	grep -P "^\w" makefile
 #----:
-absref_stat: absref_stat1 absref_stat2 # 3 AbstractSequence reflections with statistics
-absref_stat1:
-	cd .. ;  make offinspect1
-	make absref1 MODE=offin
-	make absref1 MODE=noabs
+absref_stat: absref_statf absref_stato absref_stat9 # 3 AbstractSequence reflections with statistics
+absref_statf:
+	make finite1
+	make absref1 MODE=finit LIST=finite1.tmp
+absref_stato:
+	make offinspect1
+	make absref1 MODE=noabs LIST=offinspect1.tmp
+	make absref1 MODE=offin LIST=offinspect1.tmp
 	# make absref1 MODE=seqwo
-absref_stat2:
+absref_stat9:
 	tail -n4 offin.tmp noabs.tmp seqwo.tmp \
 	| grep -P  "^\d\d\d\d\-" | tee -a reflect_progress.txt
-absref1: # MODE=; run one reflection for MODE
-	$(ABSINSPECT) $(MODE) ../offinspect1.tmp 2>&1 \
+absref1: # MODE= LIST= ; run one reflection for MODE and sequences in LIST
+	$(ABSINSPECT) $(MODE) $(LIST) \
 	>        $(MODE).tmp
 	wc -l    $(MODE).tmp
 	grep -E  "^#" $(MODE).tmp
@@ -43,6 +46,27 @@ absref1: # MODE=; run one reflection for MODE
 	| cut -f3 $(MODE).tmp | sort | uniq -c | sort -n \
 	>        $(MODE).txt
 	tail -n16 $(MODE).txt
+#----
+dead_joeis: # detect DeadSequence consistency
+	#     dead in OEIS and not dead in jOEIS
+	$(DBAT) -x "SELECT i.aseqno, 'dead', i.offset1, i.keyword, j.superclass, '', '', '', '', '', '', n.name \
+	  FROM asname n, asinfo i LEFT JOIN joeis j ON i.aseqno = j.aseqno \
+		WHERE n.aseqno = i.aseqno \
+		  AND i.keyword        LIKE '%dead%'   \
+		  AND COALESCE(j.superclass, 'UnknownSequence') NOT LIKE 'DeadSeq%' \
+		ORDER BY 1" \
+	| tee    ../dead.gen
+	wc -l    ../dead.gen
+	# not dead in OEIS and     dead in jOEIS
+	$(DBAT) -x "SELECT i.aseqno, 'dead', i.offset1, i.keyword, j.superclass \
+	  FROM joeis j LEFT JOIN asinfo i ON i.aseqno = j.aseqno \
+		WHERE i.keyword    NOT LIKE '%dead%'   \
+		  AND j.superclass     LIKE 'DeadSeq%' \
+		ORDER BY 1" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+dead_robot: dead_joeis # generate DeadSequence's
+	cd .. ; make CC=dead gener dist
 #----	
 liseq: # list those with "implements Sequence"
 	grep -P "\tSequence\t" $(COMMON)/joeis_names.txt \
@@ -56,6 +80,18 @@ liseq: # list those with "implements Sequence"
 	$(DBAT) -x "SELECT * FROM seq2 ORDER BY 1;" > $@.txt
 	head -n2 $@.txt
 	wc -l    $@.txt
+#----
+finite1:     # select the eligable programs
+	$(DBAT) -x "SELECT i.aseqno, i.termno,  j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno \
+	  AND superclass IN ('FiniteSequence', 'NoncomputableSequence', 'BriefSequence') ORDER BY 1" \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+offinspect1: # select the eligible programs
+	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
 #----
 patch_abstract: # patch all in the list above
 	perl patch_abstract.pl liseq.txt

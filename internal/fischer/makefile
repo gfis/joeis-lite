@@ -339,6 +339,8 @@ select3:
 		  >  $(CC).gen
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
+antclean: purge # recompile all
+	cd ../.. ; ant clean dist
 clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep from $(CC).gen
 	# ---- $@ CC=$(CC)
 	grep -E "^A[0-9]" $(CC).pass.log | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" > clean.grep.tmp
@@ -2318,7 +2320,7 @@ dead:
 	wc -l    $@.gen
 	make seq4 LIST=$@.gen
 dead_check: # Where are dead, erroneous sequences still referenced?
-	$(DBAT) "SELECT r.aseqno, b.keyword, s.aseqno, s.parm2, a.keyword \
+	$(DBAT) -x "SELECT r.aseqno, b.keyword, s.aseqno, s.parm2, a.keyword \
 		FROM asxref r, seq4 s, asinfo a, asinfo b \
 		WHERE r.aseqno = b.aseqno \
 		  AND s.aseqno = r.rseqno \
@@ -2779,6 +2781,10 @@ finifubf1:
 	make seqtest A=A$(S) NT=1000 OFFSET=1 | grep -P "^\d+ \-?\d+\Z" \
 	>                          bftmp/b$(S).txt
 	perl -e 'print "\n\n";' >> bftmp/b$(S).txt
+finiload: # LIST= ; refresh the b-files for all in LIST
+	grep -E "^A[0-9] $(LIST) | cut -b2-7 | xargs -innn make finiload1 S=nnn
+finiload1:
+	cd $(CONTRIB) ; make wgeto 
 #----
 noncomp: # similar to finifull and bref
 	cat $(CONSTANT)/noncomp.man \
