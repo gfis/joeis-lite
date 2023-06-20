@@ -48,6 +48,14 @@ absref1: # MODE= LIST= ; run one reflection for MODE and sequences in LIST
 	tail -n16 $(MODE).txt
 #----
 dead_joeis: # detect DeadSequence consistency
+	# not dead in OEIS and     dead in jOEIS
+	$(DBAT) -x "SELECT i.aseqno, 'dead', i.offset1, i.keyword, j.superclass \
+	  FROM joeis j LEFT JOIN asinfo i ON i.aseqno = j.aseqno \
+		WHERE i.keyword    NOT LIKE '%dead%'   \
+		  AND j.superclass     LIKE 'DeadSeq%' \
+		ORDER BY 1" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
 	#     dead in OEIS and not dead in jOEIS
 	$(DBAT) -x "SELECT i.aseqno, 'dead', i.offset1, i.keyword, j.superclass, '', '', '', '', '', '', n.name \
 	  FROM asname n, asinfo i LEFT JOIN joeis j ON i.aseqno = j.aseqno \
@@ -57,16 +65,8 @@ dead_joeis: # detect DeadSequence consistency
 		ORDER BY 1" \
 	| tee    ../dead.gen
 	wc -l    ../dead.gen
-	# not dead in OEIS and     dead in jOEIS
-	$(DBAT) -x "SELECT i.aseqno, 'dead', i.offset1, i.keyword, j.superclass \
-	  FROM joeis j LEFT JOIN asinfo i ON i.aseqno = j.aseqno \
-		WHERE i.keyword    NOT LIKE '%dead%'   \
-		  AND j.superclass     LIKE 'DeadSeq%' \
-		ORDER BY 1" \
-	| tee    $@.tmp
-	wc -l    $@.tmp
 dead_robot: dead_joeis # generate DeadSequence's
-	cd .. ; make CC=dead gener dist
+	cd .. ; make CC=dead gener
 #----	
 liseq: # list those with "implements Sequence"
 	grep -P "\tSequence\t" $(COMMON)/joeis_names.txt \

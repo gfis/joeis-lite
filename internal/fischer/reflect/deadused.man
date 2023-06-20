@@ -1,0 +1,64 @@
+2023-06-20 -> Sean:
+
+there were 3 that we had as DeadSequence, but they 
+weren't dead in the OEIS:
+
+A015994 -> modified: code of A023109 works 
+A092199 -> is removed in repo
+A233552 -> is removed in repo
+
+Furthermore there are 88 dead in the OEIS, among them
+20 which we had already in jOEIS: 
+
+A010760 AbstractSequence
+A070690 LinearRecurrence
+A081126 Sequence0
+A094628 LinearRecurrence
+A094629 LinearRecurrence
+A102292 FiniteSequence
+A102293 FiniteSequence
+A134330 PrependSequence
+A144075 GeneratingFunctionSequence
+A144726 A046966
+A175726 FiniteSequence
+A195742 NoncomputableSequence
+A248688 FiniteSequence
+A248689 FiniteSequence
+A248690 FiniteSequence
+A248691 FiniteSequence
+A267651 A016725
+A280090 FiniteSequence
+A313986 A314169
+A314169 TilingSequence
+
+I ran a complete search over src/irvine/oeis/ for these
+A-numbers. The problematic cases that are referenced 
+elsewhere are:
+
+A010760:   public A010760() {
+A010760:  * A010760 Duplicate of A085587.
+A010760: public class A010760 extends AbstractSequence {
+  -> code moved to A085587
+
+A018191: import irvine.oeis.a081.A081126;
+A018191: public class A018191 extends A081126 {
+  -> code of A081126 moved here
+
+A085587: import irvine.oeis.a010.A010760;
+A085587: public class A085587 extends A010760 {
+  -> code of A010760 moved here
+
+A144727:  * A144727 Primes arising in A144726.
+A144727: public class A144727 extends A144726 {
+  -> proposed "dead" in OEIS
+
+A267309:    super(1, new A267651());
+  -> A267651() replaced by A016725()
+
+
+A015994 and the 88 regenerated DeadSequences are in
+this dead.2023-06-20.11.tgz.
+
+Almost I would have pushed that myself, but then I thought
+it's better you look over it also.
+
