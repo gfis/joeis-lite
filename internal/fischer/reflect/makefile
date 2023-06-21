@@ -94,6 +94,9 @@ finite1:     # select the eligable programs
 	head -n2 $@.tmp
 	wc -l    $@.tmp
 #----
+offcount: # SUP=superclass ; count the different offsets for some jOEIS superclass
+	grep $(SUP) $(COMMON)/joeis_names.txt | cut -f2,5 | sed -e "s/\.\..*//" | sort | uniq -c
+#--
 offinspect1: # select the eligible programs
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
 	>        $@.tmp
@@ -154,6 +157,160 @@ prepskip: # detect SkipSequence applications
 	wc -l    $@.tmp
 prepskip1:
 	cat prepskip.
+#========
+# patches for various superclasses
+patches:
+	cd .. ; make purge
+	make patch1 DEFOFF=1 SUP=MorphismFixedPointSequence
+	cd .. ; make count dist testall log TO=8 GU=8
+patch1:
+	grep -P $(SUP) noabs.tmp | grep -vP "\t$(DEFOFF)\t" \
+	| perl -ne 's/\t(\-?\d+)\t/\t$(DEFOFF) \-\> $$1\t/; print; '\
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl patch_offset.pl -d 1 $@.tmp 2>&1 \
+	| tee    $@.log.tmp
+	wc -l    $@.log.tmp
+old_patches:
+	make patch1 DEFOFF=1 SUP=MorphismFixedPointSequence
+#----
+poffdex:
+	make purge
+	grep -E "DecimalExpansionSequence" offinspect2.txt \
+	| grep -v BinaryToDecimal \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+podex99:
+	cut -b1-7 baddex.man \
+	| perl -ne 's/\s//g; print "src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
+	| xargs -innn rm -v ../../nnn  test2 log
+	make dist testall log TO=8 GU=8
+	make CC=$@ pack1
+poffgf:
+	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass = 'GeneratingFunctionSequence' ORDER BY 1" \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+	cp -v $@.tmp ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log
+poffca_show:
+	$(DBAT) "SELECT j.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j \
+	  WHERE i.aseqno = j.aseqno \
+	    AND j.superclass LIKE '%DAutomaton' \
+	    AND offset1 <> 0 ORDER BY 1" \
+	| tee $@.tmp
+poffca:
+	grep -P "DAutomaton" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffalt:
+	grep -P "AlternatingSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffloor:
+	grep -P "FloorSeq" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffgf2:
+	grep -P "\tGenera" offinspect2.txt | cut -b1-7 | xargs -l perl genman.pl -h 
+poffmix1:
+	# grep -E "PolynomialRoot|BinaryToDecimalExpansion|GeneratingFunctionSequence" offinspect2.txt
+	grep -E "GeneratingFunctionSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poff19:
+	grep -E "A019899" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poff796:
+	grep -E "A000796" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poff1113:
+	grep -E "A001113" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffet:
+	grep -E "EulerTransform" offinspect2.txt | grep -v "EulerTransformSequence" \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffiet:
+	grep -P "InverseEulerTransform" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffcor:
+	grep -E "ConstantOrderRecurrence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffcos:
+	grep -E "CoordinationSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffbdex:
+	grep -E "BinaryToDecimal" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+poffegf:
+	make purge
+	grep -E "ExponentialGeneratingFunction" offinspect2.txt \
+	| perl patch_offset.pl -d 1 \
+	| tee $@.tmp
+	find ../../src/irvine/oeis/a* -iname "A*.java" | xargs -innn cp -v nnn manual
+	# make dist testall log TO=8 GU=8
+poffpos:
+	grep -E "PositionSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+pdiff:
+	grep -E "DifferenceSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+prows:
+	grep -E "RowSumSequence|PartialProductSequence" offinspect2.txt \
+	| perl patch_offset.pl -d 1 -m prefix \
+	| tee $@.tmp
+	make dist testall log TO=8 GU=8
+#========
+# retrofit of RaddSequence
+
+raddlist2: # generate a list with pack/A-number
+	grep RaddSequence ../joxref/joxref.txt | cut -f1 | grep -E "^A" \
+	| perl -ne 'my $$aseqno = substr($$_, 0, 7); print lc(substr($$aseqno, 0, 4)) . "/$$_";' \
+	| sort | tee $@.txt
+	wc -l   $@.txt
+raddsrc:
+	mkdir -p radd
+	cat raddlist2.txt | xargs -innn cp -v $(JOEIS)/$(SRC)/nnn.java radd
+	ls -1 radd | wc -l
+raddgrep:
+	grep super radd/*.java \
+	| tee   $@.tmp
+# radd/A120218.java:    super(10, 100103, 2);
+# radd/A213012.java:    super(2, 26);
+# radd/A281301.java:    super(10, new Z("1000004999700144385"));
+radd3gen:
+	cat raddgrep.tmp \
+	| perl -ne 'use strict; s/\r?\n//; my $$line = $$_; if ($$line =~ m{\/(A\d+)}) { my $$aseqno = $$1;'\
+	' $$line =~ m{\((.*)}; my $$list = $$1; $$list =~ s{\)\;}{}; my @parts = split(/\, */, $$list);'\
+	' print join("\t", $$aseqno, "radd" . scalar(@parts), 0, @parts) . "\n"; } '\
+	|   tee radd3.gen
+	wc -l   radd3.gen
 #========
 enpack:
 	cat genet_old.txt \

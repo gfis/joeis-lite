@@ -5383,9 +5383,6 @@ offholon: # put it in table seq
 	cd $(COMMON) ; make seq LIST=$(HERE)/$@.tmp
 offholrem: # remove all that are not in offinspect.txt
 	$(DBAT) -x -v "DELETE FROM seq4 WHERE aseqno NOT IN (SELECT aseqno FROM seq);"
-offcount: # S=superclass; count the different offsets for some jOEIS superclass
-	grep $(S) $(COMMON)/joeis_names.txt | cut -f2,5 | sed -e "s/\.\..*//" | sort | uniq -c
-	# $(DBAT) -x "SELECT COUNT(i.offset1), i.offset1 FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno AND j.superclass LIKE '$(SUPER)%' GROUP BY i.offset1 ORDER BY 1"
 #--------
 finspect: finspect1 finspect2
 finspect1:
@@ -5416,123 +5413,6 @@ compareall1:
 compareall:
 	grep -vP "^(\*\*\*\*|\*\*\*\s\d|\!\s+\/\/|\!\s+super\(|\-\-\- )" $@.1.tmp | tee $@.2.tmp
 #----
-# patches for various superclasses
-poffhol:
-	grep -E "Holonomic" offinspect2.txt \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-poffdex:
-	make purge
-	grep -E "DecimalExpansionSequence" offinspect2.txt \
-	| grep -v BinaryToDecimal \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-podex99:
-	cut -b1-7 baddex.man \
-	| perl -ne 's/\s//g; print "src/irvine/oeis/" . lc(substr($$_, 0, 4)) . "/$$_.java\n";'\
-	| xargs -innn rm -v ../../nnn  test2 log
-	make dist testall log TO=8 GU=8
-	make CC=$@ pack1
-poffgf:
-	$(DBAT) -x "SELECT aseqno FROM joeis WHERE superclass = 'GeneratingFunctionSequence' ORDER BY 1" \
-	>        $@.tmp
-	head -n4 $@.tmp
-	wc -l    $@.tmp
-	cp -v $@.tmp ghead.tmp
-	rm -f batch.log
-	make CC=$@ test2 log
-poffca_show:
-	$(DBAT) "SELECT j.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j \
-	  WHERE i.aseqno = j.aseqno \
-	    AND j.superclass LIKE '%DAutomaton' \
-	    AND offset1 <> 0 ORDER BY 1" \
-	| tee $@.tmp
-poffca:
-	grep -P "DAutomaton" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffalt:
-	grep -P "AlternatingSequence" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffloor:
-	grep -P "FloorSeq" offinspect2.txt \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffgf2:
-	grep -P "\tGenera" offinspect2.txt | cut -b1-7 | xargs -l perl genman.pl -h 
-poffmix1:
-	# grep -E "PolynomialRoot|BinaryToDecimalExpansion|GeneratingFunctionSequence" offinspect2.txt
-	grep -E "GeneratingFunctionSequence" offinspect2.txt \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poff19:
-	grep -E "A019899" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poff796:
-	grep -E "A000796" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poff1113:
-	grep -E "A001113" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffet:
-	grep -E "EulerTransform" offinspect2.txt | grep -v "EulerTransformSequence" \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffiet:
-	grep -P "InverseEulerTransform" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffcor:
-	grep -E "ConstantOrderRecurrence" offinspect2.txt \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffcos:
-	grep -E "CoordinationSequence" offinspect2.txt \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffbdex:
-	grep -E "BinaryToDecimal" offinspect2.txt \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-poffegf:
-	make purge
-	grep -E "ExponentialGeneratingFunction" offinspect2.txt \
-	| perl patch_offset.pl -d 1 \
-	| tee $@.tmp
-	find ../../src/irvine/oeis/a* -iname "A*.java" | xargs -innn cp -v nnn manual
-	# make dist testall log TO=8 GU=8
-poffpos:
-	grep -E "PositionSequence" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-pdiff:
-	grep -E "DifferenceSequence" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
-prows:
-	grep -E "RowSumSequence|PartialProductSequence" offinspect2.txt \
-	| perl patch_offset.pl -d 1 -m prefix \
-	| tee $@.tmp
-	make dist testall log TO=8 GU=8
 #----
 pabstract:
 	sed -e "s/\t/\tpabstract\t/" -e "s/\r//" seqwo/liseq.txt > $@.gen
@@ -7545,6 +7425,8 @@ radd_wiki: # too few seqs.
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+radd3:
+	grep -E "^A[0-9]" reflect/$@.gen >  $@.gen
 #--------------------------
 subsele: # A047161 null Number of nonempty subsets of {1,2,...,n} in which exactly 1/3 of the elements are <= n/2.	nonn,changed,	1..1000	nyi
 	grep -E "in which exactly [0-9][0-9]*\/" $(COMMON)/joeis_names.txt \

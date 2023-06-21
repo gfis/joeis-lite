@@ -2,6 +2,7 @@
 
 # Patch offsets in Java source files
 # @(#) $Id$
+# 2023-06-21: moved here from ..
 # 2022-08-20: -m; UHZ=3. Tag
 # 2022-08-16, Georg Fischer
 #
@@ -35,8 +36,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 } # while $opt
 
 my %tardirs;
-my $srcroot = "../../../joeis/src/irvine/oeis";
-my $tarroot = "../../src/irvine/oeis";
+my $srcroot = "../../../../joeis/src/irvine/oeis";
+my $tarroot = "../../../src/irvine/oeis";
 my $patch_count = 0;
 my $aseqno;
 my $otrans;
@@ -64,47 +65,50 @@ sub patch1 {
     my $tarpath = "$tarroot/$adir";
     if (! defined($tardirs{$tarpath}) or ! -d "$tarpath") { # tarpath not yet readable
         $tardirs{$tarpath} = 1;
-        mkdir($tarpath);
+        mkdir($tarpath) || die "cannot mkdir $tarpath";
     }
     open(SRC, "<", $srcname) || die "cannot read $srcname\n";
     my $buffer;
     my $read_len = 100000000; # 100 MB
     read(SRC, $buffer, $read_len);
     close(SRC);
-    #========
-    $buffer =~ s{\A(package [^\n]+\n)(\/\/[^\n]+\n)+}{$1$comment}m;
-    $buffer =~ s{\n\n\n}{\n\n}mg;
+    $buffer =~ s{\n\/\/ *DO NOT EDIT[^\n]*}{}; # remove this
+    $buffer =~ s{\n\n\n}{\n\n}mg; # remove duplicate newlines
     my $offset;
+    my $write_it = 0; # assume that the target needs not be written
     # the real patch follows:
     if (0) {
-    } elsif ($mode=~ m{\Apre}m) { # prefix in any case
-        if (0) {
-        } elsif ($buffer =~ m{(\n\s*super\(\))}m) { # super()
-                 $buffer =~ s{(\n\s*super\()}{$1$offn\)}m;
-        } elsif ($buffer =~ m{(\n\s*super\()}m) { # super(
-                 $buffer =~ s{(\n\s*super\()}{$1$offn, }m;
-        } else {
-            print "#?? $aseqno: old $offo, new $offn - skipped\n$buffer\n";
-        }
-    } elsif ($buffer     =~ m{(\n\s*super\()(\-?\d+)}m) { # super(0, 
+    #========
+    #                     1               12      2
+    } elsif ($buffer =~ m{(\n\s*super\(\s*)(\-?\d+)}m) { # there was already some offset "super(0, "
         $offset = $2;
-        if ($offset eq $offo) {
-            $buffer =~ s{(\n\s*super\()(\-?\d+)}{$1$offn}m;
+        if ($offset ne $offn) {
+    #                     1               12      2  
+            $buffer  =~ s{(\n\s*super\(\s*)(\-?\d+)}   {$1$offn}m;
+            $write_it = 1;
         } else {
-            print "#?? $aseqno: old $offo, new $offn - skipped\n$buffer\n";
+            print "#?? $aseqno: $offn is already ok\n";
         }
-    } elsif ($buffer     =~ m{(\n\s*super\([a-zA-Z])}m) { # super(0, 
-            $buffer =~ s{(\n\s*super\()}{$1$offn, }m;
+    #                     1               1
+    } elsif ($buffer =~ m{(\n\s*super\(\s*)\)}m)       { # no offset so far: "super()"
+            $buffer  =~ s{(\n\s*super\(\s*)\)}         {$1$offn\)}m;
+            $write_it = 1;
+    #                     1            1
+    } elsif ($buffer =~ m{(\n\s*super\(\s*)[\'\"a-zA-Z]}m) { # no offset so far: super(new, super(" ...
+            $buffer  =~ s{(\n\s*super\(\s*)}           {$1$offn, }m;
+            $write_it = 1;
     } else {
             print "#?? $aseqno: super not found:\n$buffer\n";
     }
     #========
-    if ($debug >= 2) {
-        print "#----------------\n$buffer";
-    }
-    open(TAR, ">", "$tarpath/$aseqno.java") || die "cannot write $tarpath/$aseqno.java\n";
-    print TAR $buffer;
-    close(TAR);
+    if ($write_it > 0) {
+        if ($debug >= 2) {
+            print "#----------------\n$buffer";
+        }
+        open(TAR, ">", "$tarpath/$aseqno.java") || die "cannot write $tarpath/$aseqno.java\n";
+        print TAR $buffer;
+        close(TAR);
+    } # write_it
 } # patch1
 __DATA__
 # Starting report at 2022-08-16 15:32:35

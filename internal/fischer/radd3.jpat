@@ -12,6 +12,6 @@ public class $(ASEQNO) extends RaddSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM1), $(PARM2));
+    super($(OFFSET), $(PARM1), $(PARM2), $(PARM3));
   }
 }
