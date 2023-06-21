@@ -67,7 +67,13 @@ dead_joeis: # detect DeadSequence consistency
 	wc -l    ../dead.gen
 dead_robot: dead_joeis # generate DeadSequence's
 	cd .. ; make CC=dead gener
-#----	
+#----
+interfaces:
+	cut -f1-2 $(COMMON)/joeis_names.txt | grep -v nyi | grep -P " " | grep -v Conjectural \
+	| grep -P "SequenceWithOffset"
+	| tee    $@.tmp
+	wc -l    $@.tmp
+#----
 liseq: # list those with "implements Sequence"
 	grep -P "\tSequence\t" $(COMMON)/joeis_names.txt \
 	| perl -ne 's/\t.*/\t0/; print;' \
@@ -87,8 +93,28 @@ finite1:     # select the eligable programs
 	>        $@.tmp
 	head -n2 $@.tmp
 	wc -l    $@.tmp
+#----
 offinspect1: # select the eligible programs
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+offman: # check the offsets in ../manual
+	ls -1 ../manual/*.java | sed -e "s/.java//" | cut -b11- > $@.tmp
+	cd .. ; make seq LIST=reflect/$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, i.offset1, 'dummy' FROM seq s, asinfo i WHERE s.aseqno = i.aseqno" > $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	make absref1 MODE=offin LIST=$@.tmp
+
+offlev1: # first level in class hierarchy
+	grep -P "^A\d+\t[^\t]*\tA\d{6}" offin.tmp | sed -e "s/ //g" \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	$(DBAT) -f $(COMMON)/seq3.create.sql
+	$(DBAT) -r seq3 < $@.tmp
+	$(DBAT) -x "SELECT * FROM seq3 WHERE info NOT IN (SELECT aseqno FROM seq3) ORDER BY 1" \
 	>        $@.tmp
 	head -n2 $@.tmp
 	wc -l    $@.tmp
