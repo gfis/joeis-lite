@@ -4,7 +4,6 @@ package irvine.oeis.a202;
 import irvine.math.z.Z;
 import irvine.oeis.MemorySequence;
 import irvine.oeis.Sequence;
-import irvine.oeis.SequenceWithOffset;
 import irvine.oeis.a000.A000290;
 import irvine.oeis.triangle.UpperLeftTriangle;
 
@@ -13,7 +12,7 @@ import irvine.oeis.triangle.UpperLeftTriangle;
  * This is the prototype for an array called "self-fusion matrix" by Kimberling.
  * @author Georg Fischer
  */
-public class A202670 extends UpperLeftTriangle implements SequenceWithOffset {
+public class A202670 extends UpperLeftTriangle {
 
   protected final MemorySequence mSeq;
   protected final int mSkip;
@@ -29,23 +28,18 @@ public class A202670 extends UpperLeftTriangle implements SequenceWithOffset {
    * @param offset first index
    * @param seq underlying Sequence
    * @param skip number of terms in <code>mSeq</code> to be skipped.
-   * 
    */
   public A202670(final int offset, final Sequence seq, final int skip) {
     super(1, 1, -1);
+    setOffset(offset);
     mOffset = offset;
     mSeq = MemorySequence.cachedSequence(seq);
     mSkip = skip;
   }
 
-  @Override
-  public int getOffset() {
-    return mOffset;
-  }
-
   /**
    * Access the underlying Sequence with shifted offset.
-   * The underlying sequence is addressed as if it had offset 1, 
+   * The underlying sequence is addressed as if it had offset 1,
    * while the resulting triangle starts with <code>T(0, 0)</code>.
    * @param n index
    * @return <code>mSeq(n - 1)</code> if <code>n &gt;= 1</code>, 0 otherwise.

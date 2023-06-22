@@ -5,19 +5,19 @@ import irvine.math.z.Z;
 import irvine.oeis.triangle.BaseTriangle;
 
 /**
- * A143086 Triangle: T(n,k) = 2^(k + 1) - 1 if k &lt; = floor(n/2), otherwise 2^(n - k + 1) - 1.
+ * A143086 Triangle read by rows: T(n,k) = 2^(k + 1) - 1 if k &lt; = floor(n/2), otherwise 2^(n - k + 1) - 1, for 0 &lt;= k &lt;= n.
  * @author Georg Fischer
  */
 public class A143086 extends BaseTriangle {
 
   /** Construct the sequence. */
   public A143086() {
-    super(1, 0, 0);
+    super(0, 0, 0);
     hasRAM(true);
   }
-  
+
   @Override
   public Z triangleElement(final int n, final int k) {
-    return (k <= n/2) ? Z.ONE.shiftLeft(k + 1).subtract(1) : Z.ONE.shiftLeft(n - k + 1).subtract(1);
+    return (k <= n / 2) ? Z.ONE.shiftLeft(k + 1).subtract(1) : Z.ONE.shiftLeft(n - k + 1).subtract(1);
   }
 }

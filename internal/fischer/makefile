@@ -193,7 +193,7 @@ diff_joeis:
 	| xargs -innn diff -ws -C0 ../../../joeis/src/nnn ../../src/nnn \
 	>> $@.tmp
 diffrec:
-	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/PrependSequence.java ../../src/irvine/oeis/ || :
+	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/transform/InverseMobiusTransformSequence.java ../../src/irvine/oeis/transform || :
 diffhr:
 	diff -wy  ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
 #	diff -wC0 ../../../joeis/src/irvine/oeis/CompementaryEquationSequence.java   ../../src/irvine/oeis || :
@@ -459,6 +459,10 @@ dist:
 	rm -f dist.log
 	make dist1 2>&1 | tee dist.log
 	wc -l dist.log | perl -ne 'm{(\d+)}; exit(1) if $$1 > 8;'
+	unzip -v ../../dist/joeis-lite.jar | grep -vP "\/\Z" \
+	| perl -ne 'use strict; if (m{irvine\/oeis\/(.*)} && ! m{\$$} '\
+	' && ! m{\/a\d\d\d\/|producer\/|ector\b|\b(SequenceFactory|Explorer|Names|Report)\b}) { '\
+	' my $$class = $$1; $$class =~ s{\.class}{}; print "src/irvine/oeis/$$class.java\n"; }'
 	#################################################################
 dist1:
 	cd ../.. ; ant -silent dist 2>&1

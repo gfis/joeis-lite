@@ -4,13 +4,13 @@ import java.util.TreeSet;
 import java.util.function.Function;
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.AbstractSequence;
 
 /**
- * A079000 a(n) is taken to be the smallest positive integer greater than a(n-1) which is consistent with the condition &quot;n is a member of the sequence if and only if a(n) is odd&quot;.
+ * A079000 a(n) is taken to be the smallest positive integer greater than a(n-1) which is consistent with the condition "n is a member of the sequence if and only if a(n) is odd".
  * @author Georg Fischer
  */
-public class A079000 implements Sequence {
+public class A079000 extends AbstractSequence {
 
   private int mN;
   private int mOffset;
@@ -32,6 +32,7 @@ public class A079000 implements Sequence {
    * @param options optional configuration settings: 4 = take start value
    */
   public A079000(final int offset, final int start, final int options, final Function<Z, Boolean> condition) {
+    super(offset);
     mOffset = offset;
     mN = offset - 1;
     mC = Z.valueOf(start - 1);
@@ -46,7 +47,7 @@ public class A079000 implements Sequence {
     if (mN == mOffset && (mOptions & 4) != 0) { // first term
       mC = mC.add(1); // = start
       mMembers.add(mC);
-      return mC; 
+      return mC;
     }
     final boolean ncond = mCondition.apply(nz);
     final boolean ndef = mMembers.contains(nz);
@@ -58,7 +59,7 @@ public class A079000 implements Sequence {
         if (ndef || mC.equals(nz)) {
           mMembers.add(mC);
           return mC;
-        } 
+        }
       } else {
         if (!ndef && !mC.equals(nz)) {
           mMembers.add(mC);

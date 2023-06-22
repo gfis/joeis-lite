@@ -96,6 +96,7 @@ finite1:     # select the eligable programs
 #----
 offcount: # SUP=superclass ; count the different offsets for some jOEIS superclass
 	grep $(SUP) $(COMMON)/joeis_names.txt | cut -f2,5 | sed -e "s/\.\..*//" | sort | uniq -c
+	grep $(SUP) noabs.tmp | grep -vP "\t1\t" | sort 
 #--
 offinspect1: # select the eligible programs
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
