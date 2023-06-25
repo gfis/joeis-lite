@@ -1,4 +1,5 @@
 package irvine.oeis.a158;
+// manually 2023-06-24
 
 import irvine.math.z.Z;
 import irvine.oeis.triangle.BaseTriangle;
@@ -18,7 +19,7 @@ public class A158821 extends BaseTriangle {
   @Override
   public Z triangleElement(final int n, final int k) {
     if (k + n == 0) {
-        return Z.ONE;
+      return Z.ONE;
     }
     return (k == n) ? Z.ONE : ((k == 0) ? Z.valueOf(n) : Z.ZERO);
   }
