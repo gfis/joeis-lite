@@ -157,7 +157,7 @@ patch_linrec: # prefix the LinearRecurrence constructor calls with "offset, "; a
 	# grep -P "(LinearRecurrence)Sequence" offin.tmp | sed -e "s/Linear/transform/Linear/" \
 	grep   -P "(LinearRecurrence)Sequence" offin.tmp  \
 	| perl patch_offset.pl -m pref
-	cd .. ; make count dist testall GU=64
+	cd .. ; make count dist testall GU=16
 #----
 # ../../../src/irvine/oeis/a065/A065144.java:     super(new A029948().skip(1));
 prepskip: # detect SkipSequence applications

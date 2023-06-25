@@ -7692,11 +7692,9 @@ sumwiki2: # determine which are not yet covered by sumlipo (first "make CC=sumli
 	>        $@.tmp
 	wc -l    $@.tmp
 #--------------------------
-tridiag:
-	grep -P "^A\d+" $(TRIREC)/trixdiag.tmp | perl -ne 's{^(A\d+)}{lc(substr($$1, 0, 4)) . "/$$1"}e; print; '\
-	| cut -f1 \
-	| xargs -innn cp -pv $(JOEIS)/src/irvine/oeis/nnn.java manual || :
-	grep -iHP "super\(" manual/*.java
+trixdiag:
+	grep -P "^A\d+" $(TRIREC)/trixdiag.man \
+	>        $@.gen
 #--------------------------
 mmacall:
 	make seq2 LIST=$(LINREC)/lrlink_mma2.tmp
