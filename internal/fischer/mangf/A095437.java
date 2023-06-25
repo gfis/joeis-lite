@@ -2,7 +2,6 @@ package irvine.oeis.a095;
 // manually 2021-05-14 
 
 import irvine.math.z.Z;
-import irvine.oeis.a095.A095425;
 
 /**
  * A095437 a(n) = 21 written in base 10 - n.
@@ -19,10 +18,11 @@ public class A095437 extends A095425 {
 
   /**
    * Generic constructor with parameters
-   * @param parm number to be written in base parm2 - n
+   * @param parm number to be written in base <code>parm2 - n</code>
    * @param parm2 negative shift for n
    */
   public A095437(final int parm, final int parm2) {
+    setOffset(0);
     super.mParm = parm;
     mParm2 = parm2;
     super.mN = -1;

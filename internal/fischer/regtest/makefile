@@ -49,7 +49,7 @@ pull: # copy the result of a previous "make grep" from joeis/src into ../manual
 edit: # call the editor for the result of a previous "make grep"
 #----
 GU=2
-test: # SUP= GU= ; select all sequences that use the base sequence in EXPR
+test: # SUP= GU= ; select all sequences that use the base sequence(s) in SUP
 	grep -iP "$(SUP)" ../joxref/joxref.txt | cut -f1 | sort | uniq -w7 \
 	| tee   ../regtest.gen
 	wc -l   ../regtest.gen

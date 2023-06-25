@@ -4,6 +4,7 @@ package irvine.oeis.a123;
 
 import irvine.oeis.RecordSubsequence;
 import irvine.oeis.a062.A062039;
+
 /**
  * A123643 Record values in A062039.
  * @author Georg Fischer
@@ -12,6 +13,6 @@ public class A123643 extends RecordSubsequence {
 
   /** Construct the sequence. */
   public A123643() {
-    super(new A062039());
+    super(0, new A062039());
   }
 }

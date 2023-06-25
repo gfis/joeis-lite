@@ -48,12 +48,11 @@ while (<>) { # read inputfile
     s{\s+\Z}{}; # chompr
     my $line = $_;
     next if ($line !~ m{\AA\d+});
-    $patch_count ++;
     if ($debug >= 1) {
         print "$line\n";
     }
     ($aseqno, $otrans, $superclass) = split(/\t/, $line);
-    $otrans =~ s{ \-\> }{\,};
+    $otrans =~ s{ \-\> }{\,}; # split "0 -> 1"
     ($offo, $offn) = split(/ *\, */, $otrans);
     &patch1();
 } # while <>
@@ -79,29 +78,59 @@ sub patch1 {
     # the real patch follows:
     if (0) {
     #========
-    #                     1               12      2
-    } elsif ($buffer =~ m{(\n\s*super\(\s*)(\-?\d+)}m) { # there was already some offset "super(0, "
-        $offset = $2;
-        if ($offset ne $offn) {
-    #                     1               12      2  
-            $buffer  =~ s{(\n\s*super\(\s*)(\-?\d+)}   {$1$offn}m;
-            $write_it = 1;
+    } elsif($mode =~ m{cond}) { # conditionally
+        if (0) {
+        #                     1               12      2
+        } elsif ($buffer =~ m{(\n\s*super\(\s*)(\-?\d+)}m) { # there was already some offset "super(0, "
+            $offset = $2;
+            if ($offset ne $offn) {
+        #                     1               12      2  
+                $buffer  =~ s{(\n\s*super\(\s*)(\-?\d+)}   {$1$offn}m;
+                $write_it = 1;
+            } else {
+                print "#?? $aseqno: $offn is already ok\n";
+            }
+        #                     1               1
+        } elsif ($buffer =~ m{(\n\s*super\(\s*)\)}m)       { # no offset so far: "super()"
+                $buffer  =~ s{(\n\s*super\(\s*)\)}         {$1$offn\)}m;
+                $write_it = 1;
+        #                     1            1
+        } elsif ($buffer =~ m{(\n\s*super\(\s*)[\'\"a-zA-Z]}m) { # no offset so far: super(new, super(" ...
+                $buffer  =~ s{(\n\s*super\(\s*)}           {$1$offn, }m;
+                $write_it = 1;
         } else {
-            print "#?? $aseqno: $offn is already ok\n";
+                print "#?? $aseqno: super not found:\n$buffer\n";
         }
-    #                     1               1
-    } elsif ($buffer =~ m{(\n\s*super\(\s*)\)}m)       { # no offset so far: "super()"
-            $buffer  =~ s{(\n\s*super\(\s*)\)}         {$1$offn\)}m;
-            $write_it = 1;
-    #                     1            1
-    } elsif ($buffer =~ m{(\n\s*super\(\s*)[\'\"a-zA-Z]}m) { # no offset so far: super(new, super(" ...
-            $buffer  =~ s{(\n\s*super\(\s*)}           {$1$offn, }m;
-            $write_it = 1;
-    } else {
-            print "#?? $aseqno: super not found:\n$buffer\n";
+
+    } elsif($mode =~ m{pref}) { # prefix always
+        if (0) {
+        #                     1               1
+        } elsif ($buffer =~ m{(\n\s*super\(\s*)}m)         { # insert after "super("
+                $buffer  =~ s{(\n\s*super\(\s*)}           {$1$offn, }m;
+                $write_it = 1;
+        } else {
+                print "#?? $aseqno: super not found:\n$buffer\n";
+        }
+    } elsif($mode =~ m{fini}) { # prefix always with offset and attr
+        if (0) {
+        #                     1               1
+        } elsif ($buffer =~ m{(\n\s*super\(\s*)}m)         { # insert after "super("
+                my $attr = uc(substr($superclass, 0, 5));
+                $attr =~ s{BRIEF.*}{BRIEF};
+                $attr =~ s{FINIT.*}{FINITE};
+                $attr =~ s{NONCO.*}{NONCOMPUTABLE};
+                $buffer  =~ s{(\n\s*super\(\s*)}           {$1$offn, $attr, }m;
+                $write_it = 1;
+        } else {
+                print "#?? $aseqno: super not found:\n$buffer\n";
+        }
     }
     #========
     if ($write_it > 0) {
+        $patch_count ++;
+        if ($patch_count % 256 == 0) {
+            print "# +$patch_count: write $tarpath/$aseqno.java\n";
+        }
         if ($debug >= 2) {
             print "#----------------\n$buffer";
         }
@@ -112,12 +141,12 @@ sub patch1 {
 } # patch1
 __DATA__
 # Starting report at 2022-08-16 15:32:35
-A002162	1 -> 0	DecimalExpansionSequence
-A002285	1 -> 0	DecimalExpansionSequence
-A002389	1 -> 0	DecimalExpansionSequence
-A002390	1 -> 0	DecimalExpansionSequence
-A002580	0 -> 1	DecimalExpansionSequence
-A002794	1 -> 0	A030125
-A002795	1 -> 0	A002794
-A003077	1 -> 0	DecimalExpansionSequence
-A003676	1 -> -33	DecimalExpansionSequence
+A002162 1 -> 0  DecimalExpansionSequence
+A002285 1 -> 0  DecimalExpansionSequence
+A002389 1 -> 0  DecimalExpansionSequence
+A002390 1 -> 0  DecimalExpansionSequence
+A002580 0 -> 1  DecimalExpansionSequence
+A002794 1 -> 0  A030125
+A002795 1 -> 0  A002794
+A003077 1 -> 0  DecimalExpansionSequence
+A003676 1 -> -33    DecimalExpansionSequence

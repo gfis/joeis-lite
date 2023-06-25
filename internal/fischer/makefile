@@ -287,6 +287,8 @@ mangen: # parameter: CC; copy all in CC.gen to fischer/manual
 	ls -al manual
 sumall: # copy all generated in joeis-lite/src to ./manual
 	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
+copall: # LIST= ; copy all in LIST from joeis/src to ./manual
+	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f $(LIST) | xargs -innn cp -pv nnn manual 
 sumfail: # CC= copy all FAILed to ./manual
 	grep FAIL $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" | tee grep.tmp
 	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f grep.tmp | xargs -innn cp -pv nnn manual 
@@ -7690,8 +7692,11 @@ sumwiki2: # determine which are not yet covered by sumlipo (first "make CC=sumli
 	>        $@.tmp
 	wc -l    $@.tmp
 #--------------------------
-traits:
-	ls -al traits.*
+tridiag:
+	grep -P "^A\d+" $(TRIREC)/trixdiag.tmp | perl -ne 's{^(A\d+)}{lc(substr($$1, 0, 4)) . "/$$1"}e; print; '\
+	| cut -f1 \
+	| xargs -innn cp -pv $(JOEIS)/src/irvine/oeis/nnn.java manual || :
+	grep -iHP "super\(" manual/*.java
 #--------------------------
 mmacall:
 	make seq2 LIST=$(LINREC)/lrlink_mma2.tmp

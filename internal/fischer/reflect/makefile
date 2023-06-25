@@ -35,7 +35,7 @@ absref_stato:
 	make absref1 MODE=offin LIST=offinspect1.tmp
 	# make absref1 MODE=seqwo
 absref_stat9:
-	tail -n4 offin.tmp noabs.tmp seqwo.tmp \
+	tail -n4 offin.tmp noabs.tmp \
 	| grep -P  "^\d\d\d\d\-" | tee -a reflect_progress.txt
 absref1: # MODE= LIST= ; run one reflection for MODE and sequences in LIST
 	$(ABSINSPECT) $(MODE) $(LIST) \
@@ -146,6 +146,18 @@ patch_prep2: # those without Annnnnn in the super statement
 	perl patch_prepend.pl -d 1 -m ext nosuit.man \
 	| tee $@.debug.tmp
 	cat $(GITS)/joeis-lite/$(SRC)/a325/A325765.java
+#----
+patch_fini: # prefix the Finite... constructor calls with "offset, attr,"; assume DEFOFF=0
+	cd .. ; make purge
+	grep -P "(Finite|Noncomputable|Brief)Sequence" offin.tmp\
+	| perl patch_offset.pl -m fini
+	cd .. ; make count dist testall GU=8
+#----
+patch_linrec: # prefix the LinearRecurrence constructor calls with "offset, "; assume DEFOFF=0
+	# grep -P "(LinearRecurrence)Sequence" offin.tmp | sed -e "s/Linear/transform/Linear/" \
+	grep   -P "(LinearRecurrence)Sequence" offin.tmp  \
+	| perl patch_offset.pl -m pref
+	cd .. ; make count dist testall GU=64
 #----
 # ../../../src/irvine/oeis/a065/A065144.java:     super(new A029948().skip(1));
 prepskip: # detect SkipSequence applications
