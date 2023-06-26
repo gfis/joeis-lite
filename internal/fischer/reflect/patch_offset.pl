@@ -64,7 +64,7 @@ sub patch1 {
     my $tarpath = "$tarroot/$adir";
     if (! defined($tardirs{$tarpath}) or ! -d "$tarpath") { # tarpath not yet readable
         $tardirs{$tarpath} = 1;
-        mkdir($tarpath) || die "cannot mkdir $tarpath";
+        mkdir($tarpath); # || die "cannot mkdir $tarpath";
     }
     open(SRC, "<", $srcname) || die "cannot read $srcname\n";
     my $buffer;

@@ -154,8 +154,7 @@ patch_fini: # prefix the Finite... constructor calls with "offset, attr,"; assum
 	cd .. ; make count dist testall GU=8
 #----
 patch_linrec: # prefix the LinearRecurrence constructor calls with "offset, "; assume DEFOFF=0
-	# grep -P "(LinearRecurrence)Sequence" offin.tmp | sed -e "s/Linear/transform/Linear/" \
-	grep   -P "(LinearRecurrence)Sequence" offin.tmp  \
+	grep   -P "LinearRecurrence" offin.tmp  \
 	| perl patch_offset.pl -m pref
 	cd .. ; make count dist testall GU=16
 #----

@@ -7693,7 +7693,10 @@ sumwiki2: # determine which are not yet covered by sumlipo (first "make CC=sumli
 	wc -l    $@.tmp
 #--------------------------
 trixdiag:
-	grep -P "^A\d+" $(TRIREC)/trixdiag.man \
+	grep -P "^A\d+" $(TRIREC)/$@.man \
+	>        $@.gen
+trixint0:
+	grep -P "^A\d+" $(TRIREC)/$@.man \
 	>        $@.gen
 #--------------------------
 mmacall:
