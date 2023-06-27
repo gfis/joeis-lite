@@ -7698,6 +7698,8 @@ trixdiag:
 trixint0:
 	grep -P "^A\d+" $(TRIREC)/$@.man \
 	>        $@.gen
+	tail -n2 $@.gen
+	wc -l    $@.gen
 #--------------------------
 mmacall:
 	make seq2 LIST=$(LINREC)/lrlink_mma2.tmp
