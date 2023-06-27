@@ -68,6 +68,8 @@ dead_joeis: # detect DeadSequence consistency
 dead_robot: dead_joeis # generate DeadSequence's
 	cd .. ; make CC=dead gener
 #----
+
+#----
 interfaces:
 	cut -f1-2 $(COMMON)/joeis_names.txt | grep -v nyi | grep -P " " | grep -v Conjectural \
 	| grep -P "SequenceWithOffset"
@@ -152,6 +154,24 @@ patch_fini: # prefix the Finite... constructor calls with "offset, attr,"; assum
 	grep -P "(Finite|Noncomputable|Brief)Sequence" offin.tmp\
 	| perl patch_offset.pl -m fini
 	cd .. ; make count dist testall GU=8
+#----
+patch_gener:
+	ls -1 ../aman/A*[0-9].man \
+	| perl -ne 'm{(A\d+)}; print "$$1\t0\tdummy\n";' \
+	> $@.tmp
+	sed -e "s/$$/\t0\tdummy/" $@.tmp \
+	| perl -w patch_offset.pl -m gener
+	# cd .. ; make sumall
+gener2: # select those that have offset problems
+	cd .. ; make seq LIST=reflect/patch_gener.tmp
+	cat offin.txt \
+	| perl -ne 'if (m{\A\s*(\d+)\s+(A\d+)}) { print "$$2\t$$1\n"; }' \
+	>        $@.lst
+	wc -l    $@.lst
+	cd .. ; make seq2 LIST=reflect/offin.tmp
+	$(DBAT) -x "SELECT aseqno FROM seq WHERE aseqno IN (SELECT info FROM seq2);" \
+	> tee    $@.txt
+	wc -l    $@.txt
 #----
 patch_linrec: # prefix the LinearRecurrence constructor calls with "offset, "; assume DEFOFF=0
 	grep   -P "LinearRecurrence" offin.tmp  \
@@ -324,6 +344,11 @@ radd3gen:
 	|   tee radd3.gen
 	wc -l   radd3.gen
 #========
+# tolite: # copy a list of A-numbers to joeis-lite/src - but mkdir?
+# 	cat $LIST) \
+# 	| perl -ne 'my $$aseqno = substr($$_, 0, 7); print lc(substr($$aseqno, 0, 4)) . "/$$_";' \
+# 	| sort | xargs -innn cp -pv $(JOEIS)/src/irvine/oeis/nnn.java $(LITE)/src/irvine/oeis/nnn.java
+# 	wc -l $@.txt
 enpack:
 	cat genet_old.txt \
 	| perl -ne 'my $$aseqno = substr($$_, 0, 7); print lc(substr($$aseqno, 0, 4)) . "/$$_";' \

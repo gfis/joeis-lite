@@ -61,12 +61,15 @@ print STDERR "# $patch_count files modified\n";
 sub patch1 {
     my $adir = lc(substr($aseqno, 0, 4));
     my $srcname = "$srcroot/$adir/$aseqno.java";
+    if (! open(SRC, "<", $srcname)) {
+        print STDERR "#** cannot read $srcname\n";
+        return; # skip nonexisting source file
+    }
     my $tarpath = "$tarroot/$adir";
     if (! defined($tardirs{$tarpath}) or ! -d "$tarpath") { # tarpath not yet readable
         $tardirs{$tarpath} = 1;
         mkdir($tarpath); # || die "cannot mkdir $tarpath";
     }
-    open(SRC, "<", $srcname) || die "cannot read $srcname\n";
     my $buffer;
     my $read_len = 100000000; # 100 MB
     read(SRC, $buffer, $read_len);
@@ -102,6 +105,30 @@ sub patch1 {
                 print "#?? $aseqno: super not found:\n$buffer\n";
         }
 
+    } elsif($mode =~ m{gener}) { # generic constructors
+        if (1) {
+        	$write_it = 1; # but do not change at the moment
+        #                     1               12      2
+        } elsif ($buffer =~ m{(\n\s*super\(\s*)(\-?\d+)}m) { # there was already some offset "super(0, "
+            $offset = $2;
+            if ($offset ne $offn) {
+        #                     1               12      2  
+                $buffer  =~ s{(\n\s*super\(\s*)(\-?\d+)}   {$1$offn}m;
+                $write_it = 1;
+            } else {
+                print "#?? $aseqno: $offn is already ok\n";
+            }
+        #                     1               1
+        } elsif ($buffer =~ m{(\n\s*super\(\s*)\)}m)       { # no offset so far: "super()"
+                $buffer  =~ s{(\n\s*super\(\s*)\)}         {$1$offn\)}m;
+                $write_it = 1;
+        #                     1            1
+        } elsif ($buffer =~ m{(\n\s*super\(\s*)[\'\"a-zA-Z]}m) { # no offset so far: super(new, super(" ...
+                $buffer  =~ s{(\n\s*super\(\s*)}           {$1$offn, }m;
+                $write_it = 1;
+        } else {
+                print "#?? $aseqno: super not found:\n$buffer\n";
+        }
     } elsif($mode =~ m{pref}) { # prefix always
         if (0) {
         #                     1               1
