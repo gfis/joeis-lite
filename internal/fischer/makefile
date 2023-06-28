@@ -185,6 +185,8 @@ diff_ramath:
 	# diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test || :
 diff_reflect:
 	diff -wsy --suppress-common-lines ../../src/irvine/oeis/Recur*.java ../../../joeis/internal/irvine/oeis/
+diff_sup:
+	diff -wsy --suppress-common-lines ../../src/irvine/oeis/$(SUP).java ../../../joeis/src/irvine/oeis/
 diff_factory:
 	diff -wsy --suppress-common-lines ../../src/irvine/oeis/SequenceFactory.java ../../../joeis/src/irvine/oeis/
 diff_joeis:
@@ -226,6 +228,18 @@ pack3:
 	  FROM seq s, joeis j WHERE s.aseqno = j.aseqno ORDER BY 1" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+newer: # DIR= ; compare dates of aseqnos in DIR and jOEIS
+	ls --full-time $(DIR) | perl -ne 'my @a = split(/\s+/); if ($$a[8] =~ m{\AA\d+} ) { print substr($$a[8], 0, 7) . "\t$$a[5]\t$(DIR)\n"; }' \
+	>        $@.n.tmp
+	cut -f1 $@.n.tmp | perl -ne 'm{(A\d+)}; print lc(substr($$1, 0, 4)) . "/$$1.java\n";' \
+	| xargs -innn ls --full-time $(JOEIS)/src/irvine/oeis/nnn 2>&1 \
+	| perl -ne 'use strict; my $$line = $$_; my @a = split(/\s+/, $$line); '\
+	' $$line =~ m{\A[^A]*(A\d+).*}; my $$aseqno = $$1; print "$$aseqno\t"; '\
+	' if ($$line =~ m{cannot}) { print ".......-->\tnyi\n"; } else { print "$$a[5]\tjOEIS\n"; } '\
+	' print "$$aseqno\t----------\tz--------\n"; '\
+	>        $@.o.tmp
+	sort -k1.1 -k3.1r $@.n.tmp $@.o.tmp
+# ls: cannot access '../../../joeis/src/irvine/oeis/a132/A132788.java': No such file or directory
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
@@ -772,8 +786,8 @@ A034939: # 2021-09-29
 	cp -v $@.man $@.gen
 	wc -l    $@.gen
 #----
-A035536: # < 2021-05-15
-	cp -v $@.man $@.gen
+# A035536: # < 2021-05-15
+#	cp -v aman/$@.man $@.gen
 A039832: # 2021-05-21
 	grep -P "^A\d+" $@.man > $@.gen
 A046966:

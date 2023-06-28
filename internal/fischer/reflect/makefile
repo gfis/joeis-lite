@@ -45,7 +45,7 @@ absref1: # MODE= LIST= ; run one reflection for MODE and sequences in LIST
 	grep -vE "^#" $(MODE).tmp \
 	| cut -f3 $(MODE).tmp | sort | uniq -c | sort -n \
 	>        $(MODE).txt
-	tail -n16 $(MODE).txt
+	tail -n64 $(MODE).txt
 #----
 dead_joeis: # detect DeadSequence consistency
 	# not dead in OEIS and     dead in jOEIS
@@ -148,6 +148,11 @@ patch_prep2: # those without Annnnnn in the super statement
 	perl patch_prepend.pl -d 1 -m ext nosuit.man \
 	| tee $@.debug.tmp
 	cat $(GITS)/joeis-lite/$(SRC)/a325/A325765.java
+patch_prepend: # prefix if not DEFOFF
+	cd .. ; make purge
+	grep -iP "PrependSequence" offin.tmp\
+	| perl patch_offset.pl -m cond
+	cd .. ; make count dist testall GU=8
 #----
 patch_fini: # prefix the Finite... constructor calls with "offset, attr,"; assume DEFOFF=0
 	cd .. ; make purge
@@ -164,14 +169,16 @@ patch_gener:
 	# cd .. ; make sumall
 gener2: # select those that have offset problems
 	cd .. ; make seq LIST=reflect/patch_gener.tmp
-	cat offin.txt \
-	| perl -ne 'if (m{\A\s*(\d+)\s+(A\d+)}) { print "$$2\t$$1\n"; }' \
+	perl -ne 'if (m{\A\s*(\d+)\s+(A\d+)}) { print "$$2\t$$1\n"; }' offin.txt \
 	>        $@.lst
 	wc -l    $@.lst
 	cd .. ; make seq2 LIST=reflect/offin.tmp
 	$(DBAT) -x "SELECT aseqno FROM seq WHERE aseqno IN (SELECT info FROM seq2);" \
 	> tee    $@.txt
 	wc -l    $@.txt
+gener3:
+	grep -iH -A1 -P "\(final int offset|extends" ../manual/*.java \
+	| tee    $@.tmp
 #----
 patch_linrec: # prefix the LinearRecurrence constructor calls with "offset, "; assume DEFOFF=0
 	grep   -P "LinearRecurrence" offin.tmp  \

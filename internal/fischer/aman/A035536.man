@@ -1,1 +1,301 @@
-A035536	A035536	0	0
+A035534	partcond	0	A035536	3	1	0,1	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 1 (mod 3).
+A035535	partcond	0	A035536	3	1	0,2	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 2 (mod 3).
+A035536	partcond	0	A035536	3	1	1,2	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1 and 2 (mod 3)
+A035537	partcond	0	A035536	3	1	0,1	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 1 (mod 3).
+A035538	partcond	0	A035536	3	1	0,2	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 2 (mod 3)
+A035539	partcond	0	A035536	3	1	1,2	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1 and 2 (mod 3)
+A035540	partcond	0	A035536	4	1	0,1	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 1 (mod 4)
+A035541	partcond	0	A035536	4	1	0,2	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 2 (mod 4)
+A035542	partcond	0	A035536	4	1	0,3	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 3 (mod 4)
+A035543	partcond	0	A035536	4	1	1,2	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1 and 2 (mod 4)
+A035544	partcond	0	A035536	4	1	1,3	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1 and 3 (mod 4)
+A035545	partcond	0	A035536	4	1	2,3	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 2 and 3 (mod 4)
+A035546	partcond	0	A035536	4	1	0,1	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 1 (mod 4)
+A035547	partcond	0	A035536	4	1	0,2	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 2 (mod 4)
+A035548	partcond	0	A035536	4	1	0,3	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 3 (mod 4)
+A035549	partcond	0	A035536	4	1	1,2	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1 and 2 (mod 4)
+A035550	partcond	0	A035536	4	1	1,3	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1 and 3 (mod 4)
+A035551	partcond	0	A035536	4	1	2,3	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 2 and 3 (mod 4)
+A035552	partcond	0	A035536	5	1	0,1	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 1 (mod 5)
+A035553	partcond	0	A035536	5	1	0,2	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 2 (mod 5)
+A035554	partcond	0	A035536	5	1	0,3	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 3 (mod 5)
+A035555	partcond	0	A035536	5	1	0,4	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0 and 4 (mod 5)
+A035556	partcond	0	A035536	5	1	1,2	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1 and 2 (mod 5)
+A035557	partcond	0	A035536	5	1	1,3	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1 and 3 (mod 5)
+A035558	partcond	0	A035536	5	1	1,4	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1 and 4 (mod 5)
+A035559	partcond	0	A035536	5	1	2,3	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 2 and 3 (mod 5)
+A035560	partcond	0	A035536	5	1	2,4	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 2 and 4 (mod 5)
+A035561	partcond	0	A035536	5	1	3,4	(cn[0] == cn[1] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 3 and 4 (mod 5)
+A035562	partcond	0	A035536	5	1	0,1	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 1 (mod 5).
+A035563	partcond	0	A035536	5	1	0,2	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 2 (mod 5)
+A035564	partcond	0	A035536	5	1	0,3	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 3 (mod 5)
+A035565	partcond	0	A035536	5	1	0,4	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0 and 4 (mod 5)
+A035566	partcond	0	A035536	5	1	1,2	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1 and 2 (mod 5)
+A035567	partcond	0	A035536	5	1	1,3	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1 and 3 (mod 5)
+A035568	partcond	0	A035536	5	1	1,4	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1 and 4 (mod 5)
+A035569	partcond	0	A035536	5	1	2,3	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 2 and 3 (mod 5)
+A035570	partcond	0	A035536	5	1	2,4	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 2 and 4 (mod 5)
+A035571	partcond	0	A035536	5	1	3,4	(cn[0] == cn[1] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 3 and 4 (mod 5)
+A035572	partcond	0	A035536	5	1	0,1,2	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1 and 2 (mod 5)
+A035573	partcond	0	A035536	5	1	0,1,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1 and 3 (mod 5)
+A035574	partcond	0	A035536	5	1	0,1,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1 and 4 (mod 5)
+A035575	partcond	0	A035536	5	1	0,2,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 2 and 3 (mod 5)
+A035576	partcond	0	A035536	5	1	0,2,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 2 and 4 (mod 5)
+A035577	partcond	0	A035536	5	1	0,3,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 3 and 4 (mod 5)
+A035578	partcond	0	A035536	5	1	1,2,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1, 2 and 3 (mod 5)
+A035579	partcond	0	A035536	5	1	1,2,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1, 2 and 4 (mod 5)
+A035580	partcond	0	A035536	5	1	1,3,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1, 3 and 4 (mod 5)
+A035581	partcond	0	A035536	5	1	2,3,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 2, 3 and 4 (mod 5)
+A035582	partcond	0	A035536	5	1	0,1,2	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1 and 2 (mod 5)
+A035583	partcond	0	A035536	5	1	0,1,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1 and 3 (mod 5)
+A035584	partcond	0	A035536	5	1	0,1,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1 and 4 (mod 5)
+A035585	partcond	0	A035536	5	1	0,2,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 2 and 3 (mod 5)
+A035586	partcond	0	A035536	5	1	0,2,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 2 and 4 (mod 5)
+A035587	partcond	0	A035536	5	1	0,3,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 3 and 4 (mod 5)
+A035588	partcond	0	A035536	5	1	1,2,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1, 2 and 3 (mod 5)
+A035589	partcond	0	A035536	5	1	1,2,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1, 2 and 4 (mod 5)
+A035590	partcond	0	A035536	5	1	1,3,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1, 3 and 4 (mod 5)
+A035591	partcond	0	A035536	5	1	2,3,4	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 2, 3 and 4 (mod 5)
+A035618	partcond	1	A035679	3	1	0,1	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 3k and 3k+1 with at least one part of each type.
+A035619	partcond	1	A035679	3	1	0,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 3k and 3k+2 with at least one part of each type.
+A035620	partcond	1	A035679	3	1	1,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 3k+1 and 3k+2 with at least one part of each type.
+A035621	partcond	1	A035679	4	1	0,1	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 4k and 4k+1 with at least one part of each type.
+A035622	partcond	0	A035679	4	1	0,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 4k and 4k+2 with at least one part of each type.
+A035623	partcond	1	A035679	4	1	0,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 4k and 4k+3 with at least one part of each type.
+A035624	partcond	1	A035679	4	1	1,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 4k+1 and 4k+2 with at least one part of each type.
+A035625	partcond	1	A035679	4	1	1,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 4k+1 and 4k+3 with at least one part of each type.
+A035626	partcond	1	A035679	4	1	2,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 4k+2 and 4k+3 with at least one part of each type.
+A035627	partcond	1	A035679	5	1	0,1	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k and 5k+1 with at least one part of each type.
+A035628	partcond	1	A035679	5	1	0,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k and 5k+2 with at least one part of each type.
+A035629	partcond	1	A035679	5	1	0,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k and 5k+3 with at least one part of each type.
+A035630	partcond	1	A035679	5	1	0,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k and 5k+4 with at least one part of each type.
+A035631	partcond	1	A035679	5	1	1,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k+1 and 5k+2 with at least one part of each type.
+A035632	partcond	1	A035679	5	1	1,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k+1 and 5k+3 with at least one part of each type.
+A035633	partcond	1	A035679	5	1	1,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k+1 and 5k+4 with at least one part of each type.
+A035634	partcond	1	A035679	5	1	2,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k+2 and 5k+3 with at least one part of each type.
+A035635	partcond	1	A035679	5	1	2,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k+2 and 5k+4 with at least one part of each type.
+A035636	partcond	1	A035679	5	1	3,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 5k+3 and 5k+4 with at least one part of each type.
+A035637	partcond	1	A035679	6	1	0,1	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k and 6k+1 with at least one part of each type.
+A035638	partcond	1	A035679	6	1	0,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k and 6k+2 with at least one part of each type.
+A035639	partcond	1	A035679	6	1	0,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k and 6k+3 with at least one part of each type.
+A035640	partcond	1	A035679	6	1	0,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k and 6k+4 with at least one part of each type.
+A035641	partcond	1	A035679	6	1	0,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k and 6k+5 with at least one part of each type.
+A035642	partcond	1	A035679	6	1	1,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+1 and 6k+2 with at least one part of each type.
+A035643	partcond	1	A035679	6	1	1,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+1 and 6k+3 with at least one part of each type.
+A035644	partcond	1	A035679	6	1	1,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+1 and 6k+4 with at least one part of each type.
+A035645	partcond	1	A035679	6	1	1,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+1 and 6k+5 with at least one part of each type.
+A035646	partcond	1	A035679	6	1	2,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+2 and 6k+3 with at least one part of each type.
+A035647	partcond	1	A035679	6	1	2,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+2 and 6k+4 with at least one part of each type.
+A035648	partcond	1	A035679	6	1	2,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+2 and 6k+5 with at least one part of each type.
+A035649	partcond	1	A035679	6	1	3,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+3 and 6k+4 with at least one part of each type.
+A035650	partcond	1	A035679	6	1	3,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+3 and 6k+5 with at least one part of each type.
+A035651	partcond	1	A035679	7	1	0,1	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k and 7k+1 with at least one part of each type.
+A035652	partcond	1	A035679	7	1	0,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k and 7k+2 with at least one part of each type.
+A035653	partcond	1	A035679	7	1	0,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k and 7k+3 with at least one part of each type.
+A035654	partcond	1	A035679	7	1	0,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k and 7k+4 with at least one part of each type.
+A035655	partcond	1	A035679	7	1	0,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k and 7k+5 with at least one part of each type.
+A035656	partcond	1	A035679	7	1	0,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k and 7k+6 with at least one part of each type.
+A035657	partcond	1	A035679	7	1	1,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+1 and 7k+2 with at least one part of each type.
+A035658	partcond	1	A035679	7	1	1,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+1 and 7k+3 with at least one part of each type.
+A035659	partcond	1	A035679	7	1	1,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+1 and 7k+4 with at least one part of each type.
+A035660	partcond	1	A035679	7	1	1,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+1 and 7k+5 with at least one part of each type.
+A035661	partcond	1	A035679	7	1	1,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+1 and 7k+6 with at least one part of each type.
+A035662	partcond	1	A035679	7	1	2,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+2 and 7k+3 with at least one part of each type.
+A035663	partcond	1	A035679	7	1	2,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+2 and 7k+4 with at least one part of each type.
+A035664	partcond	1	A035679	7	1	2,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+2 and 7k+5 with at least one part of each type.
+A035665	partcond	1	A035679	7	1	2,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+2 and 7k+6 with at least one part of each type.
+A035666	partcond	1	A035679	7	1	3,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+3 and 7k+4 with at least one part of each type.
+A035667	partcond	1	A035679	7	1	3,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+3 and 7k+5 with at least one part of each type.
+A035668	partcond	1	A035679	7	1	3,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+3 and 7k+6 with at least one part of each type.
+A035669	partcond	1	A035679	7	1	4,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+4 and 7k+5 with at least one part of each type.
+A035670	partcond	1	A035679	7	1	4,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+4 and 7k+6 with at least one part of each type.
+A035671	partcond	1	A035679	7	1	5,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 7k+5 and 7k+6 with at least one part of each type.
+A035672	partcond	1	A035679	8	1	0,1	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k and 8k+1 with at least one part of each type.
+A035673	partcond	1	A035679	8	1	0,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k and 8k+2 with at least one part of each type.
+A035674	partcond	1	A035679	8	1	0,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k and 8k+3 with at least one part of each type.
+A035675	partcond	1	A035679	8	1	0,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k and 8k+4 with at least one part of each type.
+A035676	partcond	1	A035679	8	1	0,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k and 8k+5 with at least one part of each type.
+A035677	partcond	1	A035679	8	1	0,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k and 8k + 6 with at least one part of each type.
+A035678	partcond	1	A035679	8	1	0,7	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k and 8k+7 with at least one part of each type.
+A035679	partcond	1	A035679	8	1	1,2	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+1 and 8k+2 with at least one part of each type.
+A035680	partcond	1	A035679	8	1	1,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+1 and 8k+3 with at least one part of each type.
+A035681	partcond	1	A035679	8	1	1,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+1 and 8k+4 with at least one part of each type.
+A035682	partcond	1	A035679	8	1	1,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+1 and 8k+5 with at least one part of each type.
+A035683	partcond	1	A035679	8	1	1,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+1 and 8k+6 with at least one part of each type.
+A035684	partcond	1	A035679	8	1	1,7	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+1 and 8k+7 with at least one part of each type.
+A035685	partcond	1	A035679	8	1	2,3	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+2 and 8k+3 with at least one part of each type.
+A035686	partcond	1	A035679	8	1	2,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+2 and 8k+4 with at least one part of each type.
+A035687	partcond	1	A035679	8	1	2,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+2 and 8k+5 with at least one part of each type.
+A035688	partcond	1	A035679	8	1	2,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+2 and 8k+6 with at least one part of each type.
+A035689	partcond	1	A035679	8	1	2,7	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+2 and 8k+7 with at least one part of each type.
+A035690	partcond	1	A035679	8	1	3,4	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+3 and 8k+4 with at least one part of each type.
+A035691	partcond	1	A035679	8	1	3,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+3 and 8k+5 with at least one part of each type.
+A035692	partcond	1	A035679	8	1	3,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+3 and 8k+6 with at least one part of each type.
+A035693	partcond	1	A035679	8	1	3,7	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+3 and 8k+7 with at least one part of each type.
+A035694	partcond	1	A035679	8	1	4,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+4 and 8k+5 with at least one part of each type.
+A035695	partcond	1	A035679	8	1	4,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+4 and 8k+6 with at least one part of each type.
+A035696	partcond	1	A035679	8	1	4,7	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+4 and 8k+7 with at least one part of each type.
+A035697	partcond	1	A035679	8	1	5,6	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+5 and 8k+6 with at least one part of each type.
+A035698	partcond	1	A035679	8	1	5,7	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+5 and 8k+7 with at least one part of each type.
+A035699	partcond	1	A035679	8	1	6,7	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 8k+6 and 8k+7 with at least one part of each type.
+A035788	partcond	1	A035679	6	1	4,5	Z.valueOf(cn[0]).multiply(Z.valueOf(cn[1]))				Number of partitions of n into parts 6k+4 and 6k+5 with at least one part of each type.
+A036801	partcond	1	A035536	5	1		(cn[0] <= cn[2] && cn[0] <= cn[3] && cn[0] <= cn[1] && cn[0] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) <= cn(2,5) and cn(0,5) <= cn(3,5) and cn(0,5) <= cn(1,5) and cn(0,5) <= cn(4,5)).
+A036802	partcond	1	A035536	5	1		(cn[2] <= cn[1] && cn[3] <= cn[1] && cn[2] <= cn[4] && cn[3] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(2,5) <= cn(1,5) and cn(3,5) <= cn(1,5) and cn(2,5) <= cn(4,5) and cn(3,5) <= cn(4,5)).
+A036803	partcond	1	A035536	5	1		(cn[1] <= cn[2] && cn[1] <= cn[3] && cn[4] <= cn[2] && cn[4] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(1,5) <= cn(2,5) and cn(1,5) <= cn(3,5) and cn(4,5) <= cn(2,5) and cn(4,5) <= cn(3,5)).
+A036804	partcond	1	A035536	5	1		(cn[0] <= cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) <= cn(2,5) = cn(3,5)).
+A036805	partcond	1	A035536	5	1		(cn[2] == cn[3] && cn[0] <= cn[1] && cn[0] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(2,5) = cn(3,5) and cn(0,5) <= cn(1,5) and cn(0,5) <= cn(4,5)).
+A036806	partcond	1	A035536	5	1		(cn[0] == 0 && cn[2] <= cn[1] && cn[3] <= cn[1] && cn[2] <= cn[4] && cn[3] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) = 0 and cn(2,5) <= cn(1,5) and cn(3,5) <= cn(1,5) and cn(2,5) <= cn(4,5) and cn(3,5) <= cn(4,5)).
+A036807	partcond	1	A035536	5	1		(cn[0] <= cn[2] && cn[2] == cn[3] && cn[0] <= cn[1] && cn[0] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) <= cn(2,5) = cn(3,5) and cn(0,5) <= cn(1,5) and cn(0,5) <= cn(4,5)).
+A036808	partcond	1	A035536	5	1		(cn[2] == cn[3] && cn[2] <= cn[1] && cn[2] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(2,5) = cn(3,5) and cn(2,5) <= cn(1,5) and cn(2,5) <= cn(4,5)).
+A036809	partcond	1	A035536	5	1		(cn[0] <= cn[1] && cn[1] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) <= cn(1,5) = cn(4,5)).
+A036810	partcond	1	A035536	5	1		(cn[1] == cn[4] && cn[0] <= cn[2] && cn[0] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(1,5) = cn(4,5) and cn(0,5) <= cn(2,5) and cn(0,5) <= cn(3,5)).
+A036811	partcond	1	A035536	5	1		(cn[2] == cn[3] && cn[0] <= cn[1] && cn[0] <= cn[4] && cn[2] <= cn[1] && cn[2] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(2,5) = cn(3,5) and cn(0,5) <= cn(1,5) and cn(0,5) <= cn(4,5) and cn(2,5) <= cn(1,5) and cn(2,5) <= cn(4,5)).
+A036812	partcond	1	A035536	5	1		(cn[0] == 0 && cn[1] <= cn[2] && cn[1] <= cn[3] && cn[4] <= cn[2] && cn[4] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) = 0 and cn(1,5) <= cn(2,5) and cn(1,5) <= cn(3,5) and cn(4,5) <= cn(2,5) and cn(4,5) <= cn(3,5)).
+A036813	partcond	1	A035536	5	1		(cn[0] <= cn[1] && cn[1] == cn[4] && cn[0] <= cn[2] && cn[0] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) <= cn(1,5) = cn(4,5) and cn(0,5) <= cn(2,5) and cn(0,5) <= cn(3,5)).
+A036814	partcond	1	A035536	5	1		(cn[1] == cn[4] && cn[1] <= cn[2] && cn[1] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(1,5) = cn(4,5) and cn(1,5) <= cn(2,5) and cn(1,5) <= cn(3,5)).
+A036815	partcond	1	A035536	5	1		(cn[0] == 0 && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) = 0 and cn(2,5) = cn(3,5)).
+A036816	partcond	1	A035536	5	1		(cn[0] <= cn[2] && cn[2] == cn[3] && cn[2] <= cn[1] && cn[2] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) <= cn(2,5) = cn(3,5) and cn(2,5) <= cn(1,5) and cn(2,5) <= cn(4,5)).
+A036817	partcond	1	A035536	5	1		(cn[1] == cn[4] && cn[0] <= cn[2] && cn[0] <= cn[3] && cn[1] <= cn[2] && cn[1] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(1,5) = cn(4,5) and cn(0,5) <= cn(2,5) and cn(0,5) <= cn(3,5) and cn(1,5) <= cn(2,5) and cn(1,5) <= cn(3,5)).
+A036818	partcond	1	A035536	5	1		(cn[0] == 0 && cn[1] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) = 0 and cn(1,5) = cn(4,5)).
+A036819	partcond	1	A035536	5	1		(cn[0] <= cn[1] && cn[1] == cn[4] && cn[1] <= cn[2] && cn[1] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) <= cn(1,5) = cn(4,5) and cn(1,5) <= cn(2,5) and cn(1,5) <= cn(3,5)).
+A036820	partcond	0	A035536	5	1		(cn[2] == cn[3] && cn[3] == 0) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(2,5) = cn(3,5) = 0).
+A036821	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] == cn[3] && cn[0] <= cn[1] && cn[0] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) = cn(2,5) = cn(3,5) and cn(0,5) <= cn(1,5) and cn(0,5) <= cn(4,5)).
+A036822	partcond	1	A035536	5	1		(cn[1] == cn[4] && cn[4] == 0) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) = cn(4,5) = 0.
+A036823	partcond	1	A035536	5	1		(cn[2] == cn[3] && cn[3] == 0 && cn[0] <= cn[1] && cn[0] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(2,5) = cn(3,5) = 0 and cn(0,5) <= cn(1,5) and cn(0,5) <= cn(4,5)).
+A036824	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] == cn[4] && cn[0] <= cn[2] && cn[0] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(0,5) = cn(1,5) = cn(4,5) and cn(0,5) <= cn(2,5) and cn(0,5) <= cn(3,5)).
+A036825	partcond	1	A035536	5	1		(cn[1] == cn[4] && cn[4] == 0 && cn[0] <= cn[2] && cn[0] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying (cn(1,5) = cn(4,5) = 0 and cn(0,5) <= cn(2,5) and cn(0,5) <= cn(3,5)).
+A036846	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] <= cn[3] && cn[3] == cn[4] && cn[4] <= cn[1]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) <= cn(3,5) = cn(4,5) <= cn(1,5).
+A036847	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] <= cn[3] && cn[3] == cn[4] && cn[4] < cn[1]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) <= cn(3,5) = cn(4,5) < cn(1,5).
+A036848	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] <= cn[1] && cn[1] <= cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) <= cn(1,5) <= cn(3,5) = cn(4,5).
+A036849	partcond	1	A035536	5	1		(cn[1] <= cn[0] && cn[0] == cn[2] && cn[2] <= cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(1,5) <= cn(0,5) = cn(2,5) <= cn(3,5) = cn(4,5).
+A036850	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] <= cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) = cn(2,5) <= cn(3,5) = cn(4,5).
+A036851	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] <= cn[1] && cn[1] < cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) <= cn(1,5) < cn(3,5) = cn(4,5).
+A036852	partcond	1	A035536	5	1		(cn[1] <= cn[0] && cn[0] == cn[2] && cn[2] < cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(1,5) <= cn(0,5) = cn(2,5) < cn(3,5) = cn(4,5).
+A036853	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] < cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) = cn(2,5) < cn(3,5) = cn(4,5).
+A036854	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] < cn[3] && cn[3] == cn[4] && cn[4] <= cn[1]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) < cn(3,5) = cn(4,5) <= cn(1,5).
+A036855	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] <= cn[1] && cn[1] == cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) <= cn(1,5) = cn(3,5) = cn(4,5).
+A036856	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] < cn[1] && cn[1] <= cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) < cn(1,5) <= cn(3,5) = cn(4,5).
+A036857	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] < cn[1] && cn[1] == cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) < cn(1,5) = cn(3,5) = cn(4,5).
+A036858	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] < cn[3] && cn[3] == cn[4] && cn[4] < cn[1]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) < cn(3,5) = cn(4,5) < cn(1,5).
+A036859	partcond	1	A035536	5	1		(cn[1] < cn[0] && cn[0] == cn[2] && cn[2] <= cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(1,5) < cn(0,5) = cn(2,5) <= cn(3,5) = cn(4,5).
+A036860	partcond	1	A035536	5	1		(cn[0] == cn[2] && cn[2] < cn[1] && cn[1] < cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(2,5) < cn(1,5) < cn(3,5) = cn(4,5).
+A036861	partcond	1	A035536	5	1		(cn[1] < cn[0] && cn[0] == cn[2] && cn[2] < cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(1,5) < cn(0,5) = cn(2,5) < cn(3,5) = cn(4,5).
+A036862	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] <= cn[2] && cn[2] == cn[4] && cn[4] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) <= cn(2,5) = cn(4,5) <= cn(3,5).
+A036863	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] <= cn[2] && cn[2] == cn[4] && cn[4] < cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) <= cn(2,5) = cn(4,5) < cn(3,5).
+A036864	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] <= cn[3] && cn[3] <= cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) <= cn(3,5) <= cn(2,5) = cn(4,5).
+A036865	partcond	1	A035536	5	1		(cn[3] <= cn[0] && cn[0] == cn[1] && cn[1] <= cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(3,5) <= cn(0,5) = cn(1,5) <= cn(2,5) = cn(4,5).
+A036866	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] == cn[3] && cn[3] <= cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) = cn(3,5) <= cn(2,5) = cn(4,5).
+A036867	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] <= cn[3] && cn[3] < cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) <= cn(3,5) < cn(2,5) = cn(4,5).
+A036868	partcond	1	A035536	5	1		(cn[3] <= cn[0] && cn[0] == cn[1] && cn[1] < cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(3,5) <= cn(0,5) = cn(1,5) < cn(2,5) = cn(4,5).
+A036869	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] == cn[3] && cn[3] < cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) = cn(3,5) < cn(2,5) = cn(4,5).
+A036870	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] < cn[2] && cn[2] == cn[4] && cn[4] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) < cn(2,5) = cn(4,5) <= cn(3,5).
+A036871	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] <= cn[2] && cn[2] == cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) <= cn(2,5) = cn(3,5) = cn(4,5).
+A036872	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] < cn[3] && cn[3] <= cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) < cn(3,5) <= cn(2,5) = cn(4,5).
+A036873	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] < cn[2] && cn[2] == cn[3] && cn[3] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) < cn(2,5) = cn(3,5) = cn(4,5).
+A036874	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] < cn[2] && cn[2] == cn[4] && cn[4] < cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) < cn(2,5) = cn(4,5) < cn(3,5).
+A036875	partcond	1	A035536	5	1		(cn[3] < cn[0] && cn[0] == cn[1] && cn[1] <= cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(3,5) < cn(0,5) = cn(1,5) <= cn(2,5) = cn(4,5).
+A036876	partcond	1	A035536	5	1		(cn[0] == cn[1] && cn[1] < cn[3] && cn[3] < cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(0,5) = cn(1,5) < cn(3,5) < cn(2,5) = cn(4,5).
+A036877	partcond	1	A035536	5	1		(cn[3] < cn[0] && cn[0] == cn[1] && cn[1] < cn[2] && cn[2] == cn[4]) ? Z.ONE : Z.ZERO				Number of partitions of n such that cn(3,5) < cn(0,5) = cn(1,5) < cn(2,5) = cn(4,5).
+A036880	partcond	1	A035536	5	5		(cn[0] <= cn[1] && cn[1] == cn[4] && cn[4] <= cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(0,5) <= cn(1,5) = cn(4,5) <= cn(2,5) = cn(3,5).
+A036881	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] <= cn[0] && cn[0] <= cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) <= cn(0,5) <= cn(2,5) = cn(3,5).
+A036882	partcond	0	A035536	5	5		(cn[1] == cn[4] && cn[4] <= cn[2] && cn[2] == cn[3] && cn[3] <= cn[0]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) <= cn(2,5) = cn(3,5) <= cn(0,5).
+A036883	partcond	1	A035536	5	5		(cn[0] <= cn[1] && cn[1] == cn[4] && cn[4] < cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(0,5) <= cn(1,5) = cn(4,5) < cn(2,5) = cn(3,5).
+A036884	partcond	1	A035536	5	5		(cn[0] == cn[1] && cn[1] == cn[4] && cn[4] <= cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(0,5) = cn(1,5) = cn(4,5) <= cn(2,5) = cn(3,5).
+A036885	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] <= cn[0] && cn[0] < cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) <= cn(0,5) < cn(2,5) = cn(3,5).
+A036886	partcond	1	A035536	5	5		(cn[0] == cn[1] && cn[1] == cn[4] && cn[4] < cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(0,5) = cn(1,5) = cn(4,5) < cn(2,5) = cn(3,5).
+A036887	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] <= cn[2] && cn[2] == cn[3] && cn[3] < cn[0]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) <= cn(2,5) = cn(3,5) < cn(0,5).
+A036888	partcond	1	A035536	5	5		(cn[0] < cn[1] && cn[1] == cn[4] && cn[4] <= cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(0,5) < cn(1,5) = cn(4,5) <= cn(2,5) = cn(3,5).
+A036889	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] <= cn[0] && cn[0] == cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) <= cn(0,5) = cn(2,5) = cn(3,5).
+A036890	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] < cn[0] && cn[0] <= cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) < cn(0,5) <= cn(2,5) = cn(3,5).
+A036891	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] < cn[2] && cn[2] == cn[3] && cn[3] <= cn[0]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) < cn(2,5) = cn(3,5) <= cn(0,5).
+A036892	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] < cn[0] && cn[0] == cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) < cn(0,5) = cn(2,5) = cn(3,5).
+A036893	partcond	1	A035536	5	5		(cn[0] < cn[1] && cn[1] == cn[4] && cn[4] < cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(0,5) < cn(1,5) = cn(4,5) < cn(2,5) = cn(3,5).
+A036894	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] < cn[0] && cn[0] < cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) < cn(0,5) < cn(2,5) = cn(3,5).
+A036895	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] < cn[2] && cn[2] == cn[3] && cn[3] < cn[0]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) < cn(2,5) = cn(3,5) < cn(0,5).
+A039837	partcond	1	A035536	5	1		(cn[0] <= cn[1] && cn[0] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) <= cn(1,5) and cn(0,5) <= cn(4,5).
+A039838	partcond	1	A035536	5	1		(cn[0] <= cn[2] && cn[0] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) <= cn(2,5) and cn(0,5) <= cn(3,5).
+A039839	partcond	1	A035536	5	1		(cn[0] <= cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) <= cn(1,5) + cn(4,5).
+A039840	partcond	1	A035536	5	1		(cn[0] <= cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) <= cn(2,5) + cn(3,5).
+A039841	partcond	1	A035536	5	1		(cn[0] < cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) < cn(2,5) + cn(3,5).
+A039842	partcond	1	A035536	5	1		(cn[0] < cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) < cn(1,5) + cn(4,5).
+A039843	partcond	0	A035536	5	1		(cn[0] <= cn[1] + cn[2] && cn[0] <= cn[4] + cn[2] && cn[0] <= cn[1] + cn[3] && cn[0] <= cn[4] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) <= cn(1,5) + cn(2,5) and cn(0,5) <= cn(4,5) + cn(2,5) and cn(0,5) <= cn(1,5) + cn(3,5) and cn(0,5) <= cn(4,5) + cn(3,5).
+A039844	partcond	1	A035536	5	1		(cn[0] <= cn[1] + cn[4] + cn[2] && cn[0] <= cn[1] + cn[4] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) <= cn(1,5) + cn(4,5) + cn(2,5) and cn(0,5) <= cn(1,5) + cn(4,5) + cn(3,5).
+A039845	partcond	1	A035536	5	1		(cn[0] <= cn[1] + cn[2] + cn[3] && cn[0] <= cn[4] + cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) <= cn(1,5) + cn(2,5) + cn(3,5) and cn(0,5) <= cn(4,5) + cn(2,5) + cn(3,5).
+A039846	partcond	1	A035536	5	1		(cn[0] < cn[1] + cn[4] + cn[2] && cn[0] < cn[1] + cn[4] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) < cn(1,5) + cn(4,5) + cn(2,5) and cn(0,5) < cn(1,5) + cn(4,5) + cn(3,5).
+A039847	partcond	1	A035536	5	1		(cn[0] < cn[1] + cn[2] + cn[3] && cn[0] < cn[4] + cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) < cn(1,5) + cn(2,5) + cn(3,5) and cn(0,5) < cn(4,5) + cn(2,5) + cn(3,5).
+A039848	partcond	1	A035536	5	1		(cn[0] < cn[1] + cn[4] + cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) < cn(1,5) + cn(4,5) + cn(2,5) + cn(3,5).
+A039849	partcond	1	A035536	5	1		(cn[0] <= cn[1] + cn[4] + cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) <= cn(1,5) + cn(4,5) + cn(2,5) + cn(3,5).
+A039850	partcond	1	A035536	5	1		(cn[0] + cn[1] <= 1 && cn[0] + cn[4] <= 1) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(1,5) <= 1 and cn(0,5) + cn(4,5) <= 1.
+A039851	partcond	1	A035536	5	1		(cn[0] + cn[2] <= 1 && cn[0] + cn[3] <= 1) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(2,5) <= 1 and cn(0,5) + cn(3,5) <= 1.
+A039852	partcond	1	A035536	5	1		(cn[0] + cn[1] + cn[4] <= 1) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(1,5) + cn(4,5) <= 1.
+A039853	partcond	1	A035536	5	1		(cn[0] + cn[2] + cn[3] <= 1) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(2,5) + cn(3,5) <= 1.
+A039854	partcond	1	A035536	5	1		(cn[1] <= 1 && cn[4] <= 1) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) <= 1 and cn(4,5) <= 1.
+A039855	partcond	1	A035536	5	1		(cn[2] <= 1 && cn[3] <= 1) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) <= 1 and cn(3,5) <= 1.
+A039856	partcond	1	A035536	5	1		(cn[1] + cn[4] <= 1) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) + cn(4,5) <= 1.
+A039857	partcond	1	A035536	5	1		(cn[2] + cn[3] <= 1) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) + cn(3,5) <= 1.
+A039858	partcond	1	A035536	5	1		(cn[0] == cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) = cn(1,5) + cn(4,5).
+A039859	partcond	1	A035536	5	1		(cn[0] == cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) = cn(2,5) + cn(3,5).
+A039860	partcond	1	A035536	5	1		(cn[1] + cn[4] <= cn[0]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) + cn(4,5) <= cn(0,5).
+A039861	partcond	1	A035536	5	1		(cn[2] + cn[3] <= cn[0]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) + cn(3,5) <= cn(0,5).
+A039862	partcond	1	A035536	5	1		(cn[1] <= cn[0] && cn[4] <= cn[0]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) <= cn(0,5) and cn(4,5) <= cn(0,5).
+A039863	partcond	1	A035536	5	1		(cn[2] <= cn[0] && cn[3] <= cn[0]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) <= cn(0,5) and cn(3,5) <= cn(0,5).
+A039864	partcond	1	A035536	5	1		(cn[1] + cn[4] <= cn[0] + cn[2] && cn[1] + cn[4] <= cn[0] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) + cn(4,5) <= cn(0,5) + cn(2,5) and cn(1,5) + cn(4,5) <= cn(0,5) + cn(3,5).
+A039865	partcond	1	A035536	5	1		(cn[2] + cn[3] <= cn[0] + cn[1] && cn[2] + cn[3] <= cn[0] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) + cn(3,5) <= cn(0,5) + cn(1,5) and cn(2,5) + cn(3,5) <= cn(0,5) + cn(4,5).
+A039866	partcond	1	A035536	5	1		(cn[1] + cn[4] <= cn[0] + cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) + cn(4,5) <= cn(0,5) + cn(2,5) + cn(3,5).
+A039867	partcond	1	A035536	5	1		(cn[2] + cn[3] <= cn[0] + cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) + cn(3,5) <= cn(0,5) + cn(1,5) + cn(4,5).
+A039868	partcond	1	A035536	5	1		(cn[1] + cn[4] < cn[0] + cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) + cn(4,5) < cn(0,5) + cn(2,5) + cn(3,5).
+A039869	partcond	1	A035536	5	1		(cn[2] + cn[3] < cn[0] + cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) + cn(3,5) < cn(0,5) + cn(1,5) + cn(4,5).
+A039870	partcond	1	A035536	5	1		(cn[1] <= cn[0] + cn[2] + cn[3] && cn[4] <= cn[0] + cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) <= cn(0,5) + cn(2,5) + cn(3,5) and cn(4,5) <= cn(0,5) + cn(2,5) + cn(3,5).
+A039871	partcond	1	A035536	5	1		(cn[2] <= cn[0] + cn[1] + cn[4] && cn[3] <= cn[0] + cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) <= cn(0,5) + cn(1,5) + cn(4,5) and cn(3,5) <= cn(0,5) + cn(1,5) + cn(4,5).
+A039872	partcond	1	A035536	5	1		(cn[1] < cn[0] + cn[2] + cn[3] && cn[4] < cn[0] + cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) < cn(0,5) + cn(2,5) + cn(3,5) and cn(4,5) < cn(0,5) + cn(2,5) + cn(3,5).
+A039873	partcond	1	A035536	5	1		(cn[2] < cn[0] + cn[1] + cn[4] && cn[3] < cn[0] + cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) < cn(0,5) + cn(1,5) + cn(4,5) and cn(3,5) < cn(0,5) + cn(1,5) + cn(4,5).
+A039874	partcond	1	A035536	5	1		(cn[1] <= cn[0] + cn[2] && cn[1] <= cn[0] + cn[3] && cn[4] <= cn[0] + cn[2] && cn[4] <= cn[0] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) <= cn(0,5) + cn(2,5) and cn(1,5) <= cn(0,5) + cn(3,5) and cn(4,5) <= cn(0,5) + cn(2,5) and cn(4,5) <= cn(0,5) + cn(3,5).
+A039875	partcond	1	A035536	5	1		(cn[2] <= cn[0] + cn[3] && cn[2] <= cn[0] + cn[4] && cn[3] <= cn[0] + cn[1] && cn[3] <= cn[0] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) <= cn(0,5) + cn(3,5) and cn(2,5) <= cn(0,5) + cn(4,5) and cn(3,5) <= cn(0,5) + cn(1,5) and cn(3,5) <= cn(0,5) + cn(4,5).
+A039876	partcond	1	A035536	5	1		(cn[1] + cn[4] <= cn[2] && cn[1] + cn[4] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) + cn(4,5) <= cn(2,5) and cn(1,5) + cn(4,5) <= cn(3,5).
+A039877	partcond	1	A035536	5	1		(cn[2] + cn[3] <= cn[1] && cn[2] + cn[3] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) + cn(3,5) <= cn(1,5) and cn(2,5) + cn(3,5) <= cn(4,5).
+A039878	partcond	1	A035536	5	1		(cn[0] + cn[1] + cn[4] <= cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(1,5) + cn(4,5) <= cn(2,5) + cn(3,5).
+A039879	partcond	1	A035536	5	1		(cn[0] + cn[2] + cn[3] <= cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(2,5) + cn(3,5) <= cn(1,5) + cn(4,5).
+A039880	partcond	1	A035536	5	1		(cn[0] + cn[1] + cn[4] < cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(1,5) + cn(4,5) < cn(2,5) + cn(3,5).
+A039881	partcond	1	A035536	5	1		(cn[0] + cn[2] + cn[3] < cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(2,5) + cn(3,5) < cn(1,5) + cn(4,5).
+A039882	partcond	1	A035536	5	1		(cn[0] + cn[1] <= cn[2] && cn[0] + cn[1] <= cn[3] && cn[0] + cn[4] <= cn[2] && cn[0] + cn[4] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(1,5) <= cn(2,5) and cn(0,5) + cn(1,5) <= cn(3,5) and cn(0,5) + cn(4,5) <= cn(2,5) and cn(0,5) + cn(4,5) <= cn(3,5).
+A039883	partcond	1	A035536	5	1		(cn[0] + cn[2] <= cn[1] && cn[0] + cn[2] <= cn[4] && cn[0] + cn[3] <= cn[1] && cn[0] + cn[3] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(2,5) <= cn(1,5) and cn(0,5) + cn(2,5) <= cn(4,5) and cn(0,5) + cn(3,5) <= cn(1,5) and cn(0,5) + cn(3,5) <= cn(4,5).
+A039884	partcond	1	A035536	5	1		(cn[0] + cn[1] < cn[2] + cn[3] && cn[0] + cn[4] < cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(1,5) < cn(2,5) + cn(3,5) and cn(0,5) + cn(4,5) < cn(2,5) + cn(3,5).
+A039885	partcond	1	A035536	5	1		(cn[0] + cn[2] < cn[1] + cn[4] && cn[0] + cn[3] < cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(2,5) < cn(1,5) + cn(4,5) and cn(0,5) + cn(3,5) < cn(1,5) + cn(4,5).
+A039886	partcond	1	A035536	5	1		(cn[0] + cn[1] <= cn[2] + cn[3] && cn[0] + cn[4] <= cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(1,5) <= cn(2,5) + cn(3,5) and cn(0,5) + cn(4,5) <= cn(2,5) + cn(3,5).
+A039887	partcond	1	A035536	5	1		(cn[0] + cn[2] <= cn[1] + cn[4] && cn[0] + cn[3] <= cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(2,5) <= cn(1,5) + cn(4,5) and cn(0,5) + cn(3,5) <= cn(1,5) + cn(4,5).
+A039888	partcond	1	A035536	5	1		(cn[1] < cn[2] + cn[3] && cn[4] < cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) < cn(2,5) + cn(3,5) and cn(4,5) < cn(2,5) + cn(3,5).
+A039889	partcond	1	A035536	5	1		(cn[2] < cn[1] + cn[4] && cn[3] < cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) < cn(1,5) + cn(4,5) and cn(3,5) < cn(1,5) + cn(4,5).
+A039890	partcond	1	A035536	5	1		(cn[1] <= cn[2] + cn[3] && cn[4] <= cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) <= cn(2,5) + cn(3,5) and cn(4,5) <= cn(2,5) + cn(3,5).
+A039891	partcond	1	A035536	5	1		(cn[2] <= cn[1] + cn[4] && cn[3] <= cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) <= cn(1,5) + cn(4,5) and cn(3,5) <= cn(1,5) + cn(4,5).
+A039892	partcond	1	A035536	5	1		(cn[1] + cn[4] < cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) + cn(4,5) < cn(2,5) + cn(3,5).
+A039893	partcond	1	A035536	5	1		(cn[2] + cn[3] < cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) + cn(3,5) < cn(1,5) + cn(4,5).
+A039894	partcond	1	A035536	5	1		(cn[1] + cn[4] <= cn[2] + cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(1,5) + cn(4,5) <= cn(2,5) + cn(3,5).
+A039895	partcond	1	A035536	5	1		(cn[2] + cn[3] <= cn[1] + cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(2,5) + cn(3,5) <= cn(1,5) + cn(4,5).
+A039906	partcond	1	A035536	5	1		(cn[0] + cn[1] + cn[4] <= cn[2] && cn[0] + cn[1] + cn[4] <= cn[3]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(1,5) + cn(4,5) <= cn(2,5) and cn(0,5) + cn(1,5) + cn(4,5) <= cn(3,5).
+A039908	partcond	1	A035536	5	1		(cn[0] + cn[2] + cn[3] <= cn[1] && cn[0] + cn[2] + cn[3] <= cn[4]) ? Z.ONE : Z.ZERO				Number of partitions satisfying cn(0,5) + cn(2,5) + cn(3,5) <= cn(1,5) and cn(0,5) + cn(2,5) + cn(3,5) <= cn(4,5).
+A046765	partcond	0	A035536	3	1	0,1,2	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1 and 2 (mod 3).
+A046766	partcond	0	A035536	4	1	0,1,2	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1 and 2 (mod 4).
+A046767	partcond	0	A035536	4	1	0,1,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1 and 3 (mod 4).
+A046768	partcond	0	A035536	4	1	0,2,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 2 and 3 (mod 4).
+A046769	partcond	0	A035536	4	1	1,2,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1, 2 and 3 (mod 4).
+A046770	partcond	0	A035536	4	1	0,1,2,3	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1, 2 and 3 (mod 4).
+A046771	partcond	0	A035536	5	1	0,1,2,3	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1, 2 and 3 (mod 5).
+A046772	partcond	0	A035536	5	1	0,1,2,4	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1, 2 and 4 (mod 5).
+A046773	partcond	0	A035536	5	1	0,1,3,4	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 1, 3 and 4 (mod 5).
+A046774	partcond	0	A035536	5	1	0,2,3,4	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 0, 2, 3 and 4 (mod 5).
+A046775	partcond	0	A035536	5	1	1,2,3,4	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 0) ? Z.ONE : Z.ZERO				Number of partitions of n with equal number of parts congruent to each of 1, 2, 3 and 4 (mod 5).
+A046777	partcond	0	A035536	3	1	0,1,2	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1 and 2 (mod 3).
+A046778	partcond	0	A035536	4	1	0,1,2	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1 and 2 (mod 4).
+A046779	partcond	0	A035536	4	1	0,1,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1 and 3 (mod 4).
+A046780	partcond	0	A035536	4	1	0,2,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 2 and 3 (mod 4).
+A046781	partcond	0	A035536	4	1	1,2,3	(cn[0] == cn[1] && cn[1] == cn[2] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 1, 2 and 3 (mod 4).
+A046782	partcond	0	A035536	4	1	0,1,2,3	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1, 2 and 3 (mod 4).
+A046783	partcond	0	A035536	5	1	0,1,2,3	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1, 2 and 3 (mod 5).
+A046784	partcond	0	A035536	5	1	0,1,2,4	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1, 2 and 4 (mod 5).
+A046785	partcond	0	A035536	5	1	0,1,3,4	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 1, 3 and 4 (mod 5).
+A046786	partcond	0	A035536	5	1	0,2,3,4	(cn[0] == cn[1] && cn[1] == cn[2] && cn[2] == cn[3] &&  cn[0] >= 1) ? Z.ONE : Z.ZERO				Number of partitions of n with equal nonzero number of parts congruent to each of 0, 2, 3 and 4 (mod 5).
+A202085	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] == cn[2] && cn[2] == cn[3] && cn[3] <= cn[0]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) = cn(2,5) = cn(3,5) <= cn(0,5).
+A202086	partcond	1	A035536	5	5		(cn[1] == cn[4] && cn[4] == cn[2] && cn[2] == cn[3] && cn[3] < cn[0]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) = cn(2,5) = cn(3,5) < cn(0,5).
+A202087	partcond	0	A035536	5	5		(cn[0] <= cn[1] && cn[1] == cn[4] && cn[4] == cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(0,5) <= cn(1,5) = cn(4,5) = cn(2,5) = cn(3,5).
+A202088	partcond	0	A035536	5	5		(cn[0] < cn[1] && cn[1] == cn[4] && cn[4] == cn[2] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(0,5) < cn(1,5) = cn(4,5) = cn(2,5) = cn(3,5).
+A202091	partcond	0	A035536	5	5		(cn[1] == cn[4] && cn[2] == cn[3]) ? Z.ONE : Z.ZERO				Number of partitions of 5n such that cn(1,5) = cn(4,5) and cn(2,5) = cn(3,5).
