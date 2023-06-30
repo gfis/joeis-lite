@@ -1,8 +1,8 @@
 package irvine.oeis.a145;
 // manually (diffseq) at 2021-06-28
 
-import irvine.oeis.PrependSequence;
 import irvine.oeis.DifferenceSequence;
+import irvine.oeis.PrependSequence;
 import irvine.oeis.a002.A002071;
 
 /**
@@ -13,6 +13,6 @@ public class A145604 extends PrependSequence {
 
   /** Construct the sequence. */
   public A145604() {
-    super(new DifferenceSequence(new A002071()), 1);
+    super(1, new DifferenceSequence(new A002071()), 1);
   }
 }

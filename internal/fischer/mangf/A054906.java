@@ -1,7 +1,6 @@
 package irvine.oeis.a054;
-// manually deris 1 A020483 at 2021-10-28 22:51
+// manually 2023-06-18
 
-import irvine.oeis.PrependSequence;
 import irvine.oeis.a020.A020483;
 
 /**
@@ -9,13 +8,10 @@ import irvine.oeis.a020.A020483;
  *
  * @author Georg Fischer
  */
-public class A054906 extends PrependSequence {
+public class A054906 extends A020483 {
 
-  /**
-   * Construct the sequence.
-   */
+  /** Construct the sequence. */
   public A054906() {
-    super(0, new A020483());
     next();
   }
 }

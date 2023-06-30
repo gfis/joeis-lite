@@ -22,8 +22,8 @@ JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis
 ABSINSPECT=$(JAVA) irvine.oeis.AbstractInspector
 D=0
 #--------
-all:
-	grep -P "^\w" makefile
+all: absref_stat
+	# grep -P "^\w" makefile
 #----:
 absref_stat: absref_statf absref_stato absref_stat9 # 3 AbstractSequence reflections with statistics
 absref_statf:
@@ -35,8 +35,9 @@ absref_stato:
 	make absref1 MODE=offin LIST=offinspect1.tmp
 	# make absref1 MODE=seqwo
 absref_stat9:
-	tail -n4 offin.tmp noabs.tmp \
-	| grep -P  "^\d\d\d\d\-" | tee -a reflect_progress.txt
+	tail -n16 offin.tmp noabs.tmp \
+	| grep -P  "^\d\d\d\d\-" >> reflect_progress.txt
+	tail -n8 reflect_progress.txt
 absref1: # MODE= LIST= ; run one reflection for MODE and sequences in LIST
 	$(ABSINSPECT) $(MODE) $(LIST) \
 	>        $(MODE).tmp

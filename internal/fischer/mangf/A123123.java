@@ -5,13 +5,13 @@ import irvine.oeis.PrependSequence;
 import irvine.oeis.a048.A048974;
 
 /**
- * A123123 Numbers n such that, modulo k with 2&lt;=k&lt;=n, only one of the residues is equal to 2.
+ * A123123 Numbers m such that m mod k = 2 for only one integer k in 2..m.
  * @author Georg Fischer
  */
 public class A123123 extends PrependSequence {
 
   /** Construct the sequence. */
   public A123123() {
-    super(1, new A048974(), 5, 6);
+    super(1, new A048974().skip(1), 5, 6);
   }
 }

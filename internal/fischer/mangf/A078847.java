@@ -1,6 +1,5 @@
 package irvine.oeis.a078;
 
-import irvine.math.z.Z;
 import irvine.oeis.prime.ConsecutiveSequence;
 
 /**
@@ -9,12 +8,12 @@ import irvine.oeis.prime.ConsecutiveSequence;
  */
 public class A078847 extends ConsecutiveSequence {
 
-  protected int mTermIx; // 0 for first, 1 for second term in the set etc.
+  private final static int DEFOFF = 1;
   protected int[] mGaps; // gaps between the consecutive primes
 
   /** Construct the sequence. */
   public A078847() {
-    this(1, 2,4,6);
+    this(1, 2, 4, 6); // 1 = initial term
   }
 
   /**
@@ -22,15 +21,15 @@ public class A078847 extends ConsecutiveSequence {
    * @param termNo which term is selected: 1st, 2nd ...
    * @param gaps list of differences between the consecutive primes
    */
-  public A078847(final int termNo, final int ... gaps) {
-    super(termNo);
+  public A078847(final int termNo, final int... gaps) {
+    super(DEFOFF, termNo, 16);
     mGaps = gaps;
   }
 
   @Override
   protected boolean condition() {
     boolean result = true; // assume success
-    int m = 0; 
+    int m = 0;
     while (result && m < mGaps.length) {
       if (mDiffs[(mCix + m + 1) & mMask] != mGaps[m]) {
         result = false;

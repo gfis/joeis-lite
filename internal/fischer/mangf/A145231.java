@@ -2,16 +2,16 @@ package irvine.oeis.a145;
 
 import irvine.math.z.Fibonacci;
 import irvine.math.z.Z;
-import irvine.oeis.Sequence0;
+import irvine.oeis.AbstractSequence;
 
 /**
  * A145231 a(n) = Fibonacci(4^n).
  * @author Georg Fischer
  */
-public class A145231 extends Sequence0 {
+public class A145231 extends AbstractSequence {
 
   private int mOffset;
-  private int mBase;
+  private final int mBase;
   private int mProd;
 
   /** Construct the sequence. */
@@ -21,10 +21,11 @@ public class A145231 extends Sequence0 {
 
   /**
    * Generic constructor with parameters
-   * @param offset fírst index
+   * @param offset first index
    * @param base take a power of this
    */
   public A145231(final int offset, final int base) {
+    super(offset);
     mOffset = offset;
     mBase = base;
     mProd = 1;

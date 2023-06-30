@@ -1,19 +1,30 @@
 package irvine.oeis.a210;
 
-import java.util.function.Function;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.AbstractSequence;
 
 /**
  * A210000 Number of unimodular 2 X 2 matrices having all terms in {0,1,...,n}.
  * @author Georg Fischer
  */
-public class A210000 implements Sequence {
+public class A210000 extends AbstractSequence {
 
+  /**
+   * Four longs.
+   */
   @FunctionalInterface
-  public interface Long4{
+  public interface Long4 {
+    /**
+     * Evaluate a function.
+     * @param w parameter
+     * @param x parameter
+     * @param y parameter
+     * @param z parameter
+     * @return evaluation
+     */
     long evaluate(long w, long x, long y, long z);
   }
 
@@ -24,7 +35,7 @@ public class A210000 implements Sequence {
 
   /** Construct the sequence. */
   public A210000() {
-    this(0, n -> new Long[] { 0L, n }, (w, x, y, z) -> w*z - x*y, (d, n) -> (d == 1 || d == -1));
+    this(0, n -> new Long[] {0L, n}, (w, x, y, z) -> w * z - x * y, (d, n) -> d == 1 || d == -1);
   }
 
   /**
@@ -35,6 +46,7 @@ public class A210000 implements Sequence {
    * @param aggr a function of the 4 terms: discriminant, permanent or sum of terms
    */
   public A210000(final int offset, final Function<Long, Long[]> range, final Long4 aggr, final BiFunction<Long, Long, Boolean> cond) {
+    super(offset);
     mRange = range;
     mCond = cond;
     mLong4 = aggr;
@@ -44,7 +56,7 @@ public class A210000 implements Sequence {
   /**
    * Count the number of aggregated values fulfilling the condition in a range
    * @param n current index
-   * @result count
+   * @return count
    */
   protected Z count(final long n) {
     final Long[] ab = mRange.apply(n);

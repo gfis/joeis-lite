@@ -11,7 +11,7 @@ import irvine.oeis.a190.A190803;
  */
 public class A191285 extends PrependSequence {
 
-  private static class mSeq extends A190803 {
+  private static class MySequence extends A190803 {
     @Override
     public void insertTerms(final Z x) {
       insert(x.multiply(x).divide2());
@@ -19,7 +19,8 @@ public class A191285 extends PrependSequence {
     }
   }
 
+  /** Construct the sequence. */
   public A191285() {
-    super(0, new mSeq(), 0);
+    super(1, new MySequence().skip(0), 0);
   }
 }

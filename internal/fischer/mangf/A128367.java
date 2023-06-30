@@ -1,16 +1,16 @@
 package irvine.oeis.a128;
 // manually 2021-09-29
 
-import irvine.math.z.Z;
 import irvine.math.LongUtils;
-import irvine.oeis.Sequence;
+import irvine.math.z.Z;
+import irvine.oeis.AbstractSequence;
 
 /**
  * A128367 a(n) = least k such that the remainder when 27^k is divided by k is n.
  * @author Sean A. Irvine
  * @author Georg Fischer
  */
-public class A128367 implements Sequence {
+public class A128367 extends AbstractSequence {
 
   protected int mParm;
   private final long[] mCache = new long[1000000];
@@ -28,7 +28,8 @@ public class A128367 implements Sequence {
    * @param parm parameter
    */
   public A128367(final int offset, final int parm) {
-  	mN = offset - 1;
+    super(offset);
+    mN = offset - 1;
     mParm = parm;
   }
 

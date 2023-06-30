@@ -183,8 +183,14 @@
 # src/irvine/oeis/transform/BinomialTransformSequence.java
 # src/irvine/oeis/triangle/Diagonal.java
 
-# 2023-06-27
+# 2023-06-28
+# src/irvine/oeis/ComplementSequence.java
+# src/irvine/oeis/prime/ConsecutiveSequence.java
+# src/irvine/oeis/PrependSequence.java
+# src/irvine/oeis/memory/AbstractFunctionSequence.java
+# src/irvine/oeis/memory/FunctionInt2ArrayZSequence.java
 
-src/irvine/oeis/ComplementSequence.java
-src/irvine/oeis/prime/ConsecutiveSequence.java
-src/irvine/oeis/PrependSequence.java
+# 2023-06-30
+#--src/irvine/oeis/memory/FunctionIntListZSequence.java
+src/irvine/oeis/memory/FunctionInt3ZSequence.java
+src/irvine/oeis/transform/RevertTransformSequence.java

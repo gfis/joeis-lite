@@ -10,7 +10,7 @@ import irvine.oeis.a078.A078847;
 public class A257638 extends A078847 {
 
   protected int mDist;
-  
+
   /** Construct the sequence. */
   public A257638() {
     this(25);
@@ -23,13 +23,13 @@ public class A257638 extends A078847 {
   public A257638(final int dist) {
     super(1);
     mDist = dist;
-    mGaps = new int[] { dist - 1, 2, dist - 1 };
+    mGaps = new int[]{dist - 1, 2, dist - 1};
   }
 
   @Override
   public Z next() {
     advance();
-    while (! condition()) {
+    while (!condition()) {
       advance();
     }
     return mTerms[(mCix + mTermIx) & mMask].add(mDist);

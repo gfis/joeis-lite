@@ -5,13 +5,13 @@ import irvine.oeis.PrependSequence;
 import irvine.oeis.a051.A051950;
 
 /**
- * A341062 future sequence
+ * A341062 Sequence whose partial sums give A000005.
  * @author Georg Fischer
  */
 public class A341062 extends PrependSequence {
 
   /** Construct the sequence. */
   public A341062() {
-    super(new A051950(), 1);
+    super(1, new A051950(), 1);
   }
 }

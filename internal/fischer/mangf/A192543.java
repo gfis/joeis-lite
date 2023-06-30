@@ -5,13 +5,13 @@ import irvine.oeis.PrependSequence;
 import irvine.oeis.a034.A034887;
 
 /**
- * A192543 Same as A034887 except for the offset and a(1). - _T. D. Noe_, Feb 11 2013
+ * A192543 Let r be the largest real zero of x^n - x^(n-1) - x^(n-2) - ... - 1 = 0. Then a(n) is the value of k which satisfies the equation 0.5/10^k &lt; 2 - r &lt; 5/10^k.
  * @author Georg Fischer
  */
 public class A192543 extends PrependSequence {
 
   /** Construct the sequence. */
   public A192543() {
-    super(1, new A034887(), 0);
+    super(1, new A034887().skip(1), 0);
   }
 }

@@ -3,16 +3,27 @@ package irvine.oeis.a211;
 import java.util.function.Function;
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.AbstractSequence;
 
 /**
  * A211422 Number of ordered triples (w,x,y) with all terms in {-n,...,0,...,n} and w^2 + x*y = 0.
  * @author Georg Fischer
  */
-public class A211422 implements Sequence {
+public class A211422 extends AbstractSequence {
 
+  /**
+   * Four longs.
+   */
   @FunctionalInterface
-  public interface Long4Cond{
+  public interface Long4Cond {
+    /**
+     * Evaluate a function.
+     * @param n parameter
+     * @param w parameter
+     * @param x parameter
+     * @param y parameter
+     * @return evaluation
+     */
     boolean evaluate(long n, long w, long x, long y);
   }
 
@@ -22,7 +33,7 @@ public class A211422 implements Sequence {
 
   /** Construct the sequence. */
   public A211422() {
-    this(0, n -> new Long[] { -n, n }, (n, w, x, y) -> w*w + x*y == 0);
+    this(0, n -> new Long[] {-n, n}, (n, w, x, y) -> w * w + x * y == 0);
   }
 
   /**
@@ -32,6 +43,7 @@ public class A211422 implements Sequence {
    * @param cond condition for the n and the 4 terms to be counted
    */
   public A211422(final int offset, final Function<Long, Long[]> range, final Long4Cond cond) {
+    super(offset);
     mRange = range;
     mCond = cond;
     mN = offset - 1;
@@ -40,7 +52,7 @@ public class A211422 implements Sequence {
   /**
    * Count the number of aggregated values fulfilling the condition in a range
    * @param n current index
-   * @result count
+   * @return count
    */
   protected Z count(final long n) {
     final Long[] ab = mRange.apply(n);

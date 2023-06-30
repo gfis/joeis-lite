@@ -6,6 +6,7 @@ import irvine.math.group.IntegerField;
 import irvine.math.group.MatrixRing;
 import irvine.math.matrix.DefaultMatrix;
 import irvine.math.z.Z;
+import irvine.oeis.AbstractSequence;
 import irvine.oeis.MemorySequence;
 import irvine.oeis.Sequence;
 import irvine.oeis.a134.A134446;
@@ -15,7 +16,7 @@ import irvine.oeis.triangle.UpperLeftTriangle;
  * A203264 Permanent of the n-th principal submatrix of (A134446 in square format).
  * @author Georg Fischer
  */
-public class A203264 implements Sequence {
+public class A203264 extends AbstractSequence {
 
   protected UpperLeftTriangle mULT;
   protected int mN; // current index n
@@ -44,16 +45,17 @@ public class A203264 implements Sequence {
    * @param start value of first term
    */
   public A203264(final int offset, final Sequence seq, final int start) {
+    super(offset);
     if (seq instanceof UpperLeftTriangle) {
       mULT = (UpperLeftTriangle) seq;
     } else {
       final MemorySequence mSeq = MemorySequence.cachedSequence(seq);
       mULT = new UpperLeftTriangle(1, 1, -1) {
-          @Override
-          public Z matrixElement(final int i, final int j) {
-            return mSeq.a((i - mRow0) * (i - mRow0 + 1) / 2 + j - mCol0);
-          }
-        };
+        @Override
+        public Z matrixElement(final int i, final int j) {
+          return mSeq.a((i - mRow0) * (i - mRow0 + 1) / 2 + j - mCol0);
+        }
+      };
     }
     mN = offset - 1;
     mOffset = offset;
@@ -62,7 +64,7 @@ public class A203264 implements Sequence {
 
   @Override
   public Z next() {
-    if(++mN == mOffset && mStart != null) {
+    if (++mN == mOffset && mStart != null) {
       return mStart;
     }
     // Construct the n-th principal submatrix

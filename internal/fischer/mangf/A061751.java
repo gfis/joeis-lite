@@ -1,17 +1,17 @@
 package irvine.oeis.a061;
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.AbstractSequence;
 
 /**
  * A061751 Numbers k such that k! is divisible by (k+1)^3.
  * @author Georg Fischer
  */
-public class A061751 implements Sequence {
+public class A061751 extends AbstractSequence {
 
   private int mN;
-  private int mAdd;
-  private int mExpon;
+  private final int mAdd;
+  private final int mExpon;
   private Z mFact;
 
   /** Construct the sequence. */
@@ -21,11 +21,12 @@ public class A061751 implements Sequence {
 
   /**
    * Generic constructor with parameters
-   * @param offset idnex of first term
+   * @param offset index of first term
    * @param add additive constant
    * @param expon exponent
    */
   public A061751(final int offset, final int add, final int expon) {
+    super(offset);
     mN = offset - 1;
     mAdd = add;
     mExpon = expon;

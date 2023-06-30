@@ -184,7 +184,7 @@ diff_ramath:
 	diff -wC0 ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis || :
 	# diff -wC0 ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test || :
 diff_reflect:
-	diff -wsy --suppress-common-lines ../../src/irvine/oeis/Recur*.java ../../../joeis/internal/irvine/oeis/
+	diff -wsy --suppress-common-lines ../../src/irvine/oeis/Complement*.java ../../../joeis/internal/irvine/oeis/
 diff_sup:
 	diff -wsy --suppress-common-lines ../../src/irvine/oeis/$(SUP).java ../../../joeis/src/irvine/oeis/
 diff_factory:
@@ -215,9 +215,9 @@ pack1:
 	                                         >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC).gen        >> pack.$(CC).lst \
 	; echo internal/fischer/$(CC).jpat       >> pack.$(CC).lst || : \
-	; grep -vE "^\#" internal/fischer/packlist.man     >> pack.$(CC).lst || :
+	; grep -vP "^#" internal/fischer/packlist.man     >> pack.$(CC).lst || :
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
-	| perl -pe "s{\/A\S*}{}" | uniq -c
+	| perl -pe "s{\/A\d{6}\S*}{}" | uniq -c
 pack2:
 	git commit -a -m"`wc -l $(CC).pass.log`"
 	git push origin master
@@ -669,7 +669,7 @@ robot1:
 	make purge 
 	make select2 select3 geditel TO=8
 	cp -v $@.fail.log $(CC).faro.log || :
-	make cleanto
+	# make cleanto
 	cat  $(CC).gen >> robot.gen
 robot2:
 	cd $(ROBOT) ; make $(CC)
