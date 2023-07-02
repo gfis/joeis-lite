@@ -128,6 +128,17 @@ offlev1: # first level in class hierarchy
 #----
 patch_abstract: # patch all in the list above
 	perl patch_abstract.pl liseq.txt
+#----
+patch_A049150:
+	cd .. ; make purge
+	grep -iP "A049150" offin.tmp\
+	| perl patch_offset.pl -m pref
+	cd .. ; make count dist testall GU=8
+patch_Egyptian:
+	cd .. ; make purge
+	grep -iP "EgyptianFractionSequence" offin.tmp\
+	| perl patch_offset.pl -m pref
+	cd .. ; make count dist testall GU=8
 #--------
 # targets for PrependSequence - skip conversion
 patch_prep: patch_prepnew patch_prepext
