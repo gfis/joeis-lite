@@ -129,16 +129,32 @@ offlev1: # first level in class hierarchy
 patch_abstract: # patch all in the list above
 	perl patch_abstract.pl liseq.txt
 #----
-patch_A049150:
+patch_toff:
 	cd .. ; make purge
-	grep -iP "A049150" offin.tmp\
-	| perl patch_offset.pl -m pref
-	cd .. ; make count dist testall GU=8
-patch_Egyptian:
+	grep -iP "\bSequence[01]\b" offin.tmp\
+	| perl patch_offset.pl -m toff
+	cd .. ; make count dist testall GU=4
+patch_noabs: # SUP= prefix offset in super(...) when "Annnnnn extends $(SUP)" 
 	cd .. ; make purge
-	grep -iP "EgyptianFractionSequence" offin.tmp\
+	grep -iP "$(SUP)" noabs.tmp \
 	| perl patch_offset.pl -m pref
-	cd .. ; make count dist testall GU=8
+	cd .. ; make count dist testall GU=4 sumall
+patch_offin: # SUP= prefix offset in super(...) when "Annnnnn extends $(SUP)" 
+	cd .. ; make purge
+	grep -iP "$(SUP)" offin.tmp \
+	| perl patch_offset.pl -m pref
+	cd .. ; make count dist testall GU=4 sumall
+patch_sup:
+	# make patch_noabs SUP=SkipSequence
+	# make patch_offin SUP=A049150
+	# make patch_offin SUP=EgyptianFractionSequence
+	# make patch_noabs SUP=RecordPositionSequence
+	# make patch_noabs SUP=RunLengthSequence
+	# make patch_noabs SUP=PierceExpansionSequence
+	# make patch_offin SUP=ContinuedFractionSequence
+	# make patch_offin SUP=PaddingSequence
+	# make patch_offin SUP=ConvolutionSequence
+	# make patch_offin SUP=InverseSequence
 #--------
 # targets for PrependSequence - skip conversion
 patch_prep: patch_prepnew patch_prepext
@@ -185,12 +201,39 @@ gener2: # select those that have offset problems
 	>        $@.lst
 	wc -l    $@.lst
 	cd .. ; make seq2 LIST=reflect/offin.tmp
-	$(DBAT) -x "SELECT aseqno FROM seq WHERE aseqno IN (SELECT info FROM seq2);" \
-	> tee    $@.txt
-	wc -l    $@.txt
 gener3:
-	grep -iH -A1 -P "\(final int offset|extends" ../manual/*.java \
+	$(DBAT) -x "SELECT s.aseqno FROM seq s, seq2 s2 WHERE s.aseqno = s2.aseqno ORDER BY 1;" \
+	| perl -ne 's/\r?\n//; my $$aseqno = substr($$_, 0, 7); print lc(substr($$aseqno, 0, 4)) . "/$$_\n";' \
 	| tee    $@.tmp
+	wc -l    $@.tmp
+gener4:
+	cat gener3.tmp | xargs -innn grep -A1 -HP "extends|final int offset" $(JOEIS)/src/irvine/oeis/nnn.java \
+	| tee    $@.tmp
+#----
+patch_triselect0:
+	# ../aman/A337165.man:A338464        trionk  0       A337165 0       2*mN    mN      T(2n,n)
+	find ../aman -name "A??????.man" | xargs -innn grep  trionk nnn \
+	| grep -v "#" \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+patch_triselect:
+	cat patch_triselect0.tmp \
+	| perl -ne 'my $$line = $$_; $$line =~ s/\s*\Z//; if ($$line =~ s/\ttrionk\t/\ttriselect\t/) { my @parts = split(/\t/, $$line); '\
+	' if (substr($$parts[0], 1) > 50000) { '\
+	' $$parts[5] .= ",$$parts[6]"; $$parts[5] =~ s{mN}{n}g; print join("\t", @parts) . "\n"; }} '\
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	cd .. ; make purge CC=$@ select EX=xx geditel GU=4 TO=8
+patch_tripnk:
+	cat patch_triselect0.tmp \
+	| perl -ne 'my $$line = $$_; $$line =~ s/\s*\Z//; if ($$line =~ s/\ttrionk\t/\ttripnk\t/) '\
+	' { print "$$line\n"; } '\
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	cd .. ; make purge CC=$@ select EX=xx geditel GU=4 TO=8
 #----
 patch_linrec: # prefix the LinearRecurrence constructor calls with "offset, "; assume DEFOFF=0
 	grep   -P "LinearRecurrence" offin.tmp  \

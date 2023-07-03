@@ -2,14 +2,18 @@
 
 # Patch offsets in Java source files
 # @(#) $Id$
+# 2023-07-03: -m seq -s
 # 2023-06-21: moved here from ..
 # 2022-08-20: -m; UHZ=3. Tag
 # 2022-08-16, Georg Fischer
 #
 #:# Usage:
 #:#   perl patch_offset.pl [-d debug] [-m {modpre|pre}] infile > outfile
-#:#       -m modpre  modify offset or prefix it
-#:#       -m prefix  prefix offset in any case
+#:#       -m cond   modify offset or prefix it
+#:#       -m pref   prefix offset in any case
+#:#       -m fini   prefix offset and attr
+#:#       -m gener
+#:#       -m toff   toggle offset: Sequence0 -> Sequence1 or vice versa
 #:#       infile has tsv fields aseqno, offo -> offn, superclass
 #--------------------------------------------------------
 use strict;
@@ -21,8 +25,9 @@ if (0 && scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
-my $mode = "modpre";
+my $mode = "pref";
 my $debug = 0;
+my $toff = 0; # new offseq
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -30,6 +35,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $debug     = shift(@ARGV);
     } elsif ($opt  =~ m{m}) {
         $mode      = shift(@ARGV);
+    } elsif ($opt  =~ m{t}) {
+        $toff      = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -54,6 +61,9 @@ while (<>) { # read inputfile
     ($aseqno, $otrans, $superclass) = split(/\t/, $line);
     $otrans =~ s{ \-\> }{\,}; # split "0 -> 1"
     ($offo, $offn) = split(/ *\, */, $otrans);
+    if (! defined($offn)) {
+        $offn = $offo;
+    }
     &patch1();
 } # while <>
 print STDERR "# $patch_count files modified\n";
@@ -134,6 +144,17 @@ sub patch1 {
         #                     1               1
         } elsif ($buffer =~ m{(\n\s*super\(\s*)}m)         { # insert after "super("
                 $buffer  =~ s{(\n\s*super\(\s*)}           {$1$offn, }m;
+                $write_it = 1;
+        } else {
+                print "#?? $aseqno: super not found:\n$buffer\n";
+        }
+    } elsif($mode =~ m{toff}) { # toggle offset: Sequence0 .- Sequence1 or vice versa
+        if (0) {
+        } elsif ($buffer =~ m{Sequence0}m)                 {
+                $buffer  =~ s{Sequence0}{Sequence1}mg;
+                $write_it = 1;
+        } elsif ($buffer =~ m{Sequence1}m)                 {
+                $buffer  =~ s{Sequence1}{Sequence0}mg;
                 $write_it = 1;
         } else {
                 print "#?? $aseqno: super not found:\n$buffer\n";

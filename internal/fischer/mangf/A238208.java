@@ -1,14 +1,13 @@
 package irvine.oeis.a238;
 
-import irvine.math.MemoryFunctionInt3;
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.memory.FunctionInt3ZSequence;
 
 /**
- * A238208 The total number of 1&apos;s in all partitions of n into an odd number of distinct parts.
+ * A238208 The total number of 1's in all partitions of n into an odd number of distinct parts.
  * @author Georg Fischer
  */
-public class A238208 extends MemoryFunctionInt3<Z> implements Sequence {
+public class A238208 extends FunctionInt3ZSequence {
 
   protected int mDigit;
   protected int mParity;
@@ -16,7 +15,7 @@ public class A238208 extends MemoryFunctionInt3<Z> implements Sequence {
 
   /** Construct the sequence. */
   public A238208() {
-    this (0, 1, 1);
+    this(0, 1, 1);
   }
 
   /**
@@ -26,6 +25,7 @@ public class A238208 extends MemoryFunctionInt3<Z> implements Sequence {
    * @param parity even=0, odd=1
    */
   public A238208(final int offset, final int digit, final int parity) {
+    super(offset);
     mN = offset - 1;
     mDigit = digit;
     mParity = parity;

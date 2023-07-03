@@ -2,40 +2,41 @@ package irvine.oeis.a217;
 // manually 2020-11-24
 
 import irvine.math.z.Z;
-import irvine.math.z.ZUtils;
+import irvine.oeis.AbstractSequence;
 import irvine.oeis.Sequence;
-import irvine.oeis.a000.A000032; // Lucas numbers
-import irvine.oeis.a000.A000045; // Fibonacci numbers
+import irvine.oeis.a000.A000032;
+import irvine.oeis.a000.A000045;
 
 /**
  * A217157 a(n) is the least value of k such that the decimal expansion of n^k contains two consecutive identical digits.
- * Superclass for various sequences which look for consecutive digits in 
- * some underlying sequence (see the construcor with parameters).
+ * Superclass for various sequences which look for consecutive digits in
+ * some underlying sequence (see the constructor with parameters).
  * @author Georg Fischer
  */
-public class A217157 implements Sequence {
+public class A217157 extends AbstractSequence {
 
   protected int mCount; // number of required digits
   protected int mN; // current index
   protected int mFeatures; // 3 = k, 4 = repeated digit, 5 = number length, 6 = fixed base
   protected int mBase; // base of the number to be raised to some power
   protected int mNumSystem = 10; // base of the number system, normally 10.
-  
+
   /**
    * A sequence which returns <code>n^k, k &gt;= 0</code>.
    */
-  private class PowSeries implements Sequence {
+  private static class PowSeries implements Sequence {
     
-    private Z mNum;
+    private final Z mNum;
     private Z mTerm;
     
-    public PowSeries(final Z num) {
+    PowSeries(final Z num) {
       mNum = num;
       mTerm = Z.ONE; // n^0
     }
-    
+
+    @Override
     public Z next() {
-      Z result = mTerm;
+      final Z result = mTerm;
       mTerm = mTerm.multiply(mNum);
       return result;
     }
@@ -66,9 +67,10 @@ public class A217157 implements Sequence {
    * <li>3 = length of number with repeated digits</li>
    * </ul>
    * @param count number of required digits, or -1 for <code>mBase^k</code>
-   * @param base base for powers: 0 for n^k, 2,3,5 and so on for A217285-A217292
+   * @param base base for powers: 0 for n^k, 2, 3, 5 and so on for A217285-A217292
    */
   public A217157(final int offset, final int features, final int count, final int base) {
+    super(offset);
     mN = offset - 1;
     mFeatures = features;
     mCount = count;

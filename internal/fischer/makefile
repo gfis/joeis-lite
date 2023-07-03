@@ -4930,6 +4930,10 @@ triusage:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+patch_triselect:
+	cp -v reflect/$@.tmp $@.gen
+patch_tripnk:
+	cp -v reflect/$@.tmp $@.gen
 #------------------------------------------------------
 negpos: # all done
 	cat ../../../fasces/oeis/A131393/negpos.gen \
