@@ -1,9 +1,7 @@
 package irvine.oeis.a107;
 // manually triselect
 
-import irvine.math.z.Z;
 import irvine.oeis.SkipSequence;
-import irvine.oeis.a107.A107880;
 import irvine.oeis.triangle.TriangleSelector;
 
 /**
@@ -14,7 +12,7 @@ public class A107883 extends SkipSequence {
 
   /** Construct the sequence. */
   public A107883() {
-    super(new TriangleSelector(0, new A107880(), 0, n -> new int[] { n,3 }), 3);
+    super(0, new TriangleSelector(0, new A107880(), 0, n -> new int[] {n, 3}), 3);
   }
 }
 

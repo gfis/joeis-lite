@@ -1,16 +1,15 @@
 package irvine.oeis.a054;
 
-import irvine.math.z.Z;
-import irvine.oeis.PositionOfNSequence;
+import irvine.oeis.InverseSequence;
 
 /**
  * A054239 Inverse of A054238.
  * @author Georg Fischer
  */
-public class A054239 extends PositionOfNSequence {
+public class A054239 extends InverseSequence {
 
   /** Construct the sequence. */
   public A054239() {
-    super(new A054238(), 0, 0);
+    super(0, new A054238(), 0, 0);
   }
 }

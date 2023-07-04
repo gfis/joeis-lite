@@ -1,7 +1,7 @@
 package irvine.oeis.a152;
 // manually 2020-12-30
 
-import irvine.oeis.PaddingSequence;
+import irvine.oeis.recur.PaddingSequence;
 
 /**
  * A152623 Decimal expansion of 3/2.
@@ -11,6 +11,6 @@ public class A152623 extends PaddingSequence {
 
   /** Construct the sequence. */
   public A152623() {
-    super(new long[] {1,5}, new long[] {0});
+    super(1, new long[] {1, 5}, new long[] {0});
   }
 }

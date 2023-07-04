@@ -7,7 +7,7 @@ import irvine.oeis.cons.ContinuedFractionSequence;
 import irvine.oeis.cons.DecimalExpansionSequence;
 
 /**
- * A086703 Continued fraction expansion of Levy&apos;s constant.
+ * A086703 Continued fraction expansion of Levy's constant.
  * L = exp(Pi^2/12/log(2))
  * @author Georg Fischer
  */
@@ -17,7 +17,7 @@ public class A086703 extends ContinuedFractionSequence {
 
   /** Construct the sequence. */
   public A086703() {
-    super(new DecimalExpansionSequence(REALS.exp(REALS.pow(CR.PI, CR.TWO).divide(CR.valueOf(12).multiply(CR.TWO.log())))));
+    super(0, new DecimalExpansionSequence(REALS.exp(REALS.pow(CR.PI, CR.TWO).divide(CR.valueOf(12).multiply(CR.TWO.log())))));
   }
 }
 

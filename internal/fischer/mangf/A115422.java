@@ -1,13 +1,13 @@
 package irvine.oeis.a115;
 
 import irvine.math.z.Z;
-import irvine.oeis.Sequence;
+import irvine.oeis.AbstractSequence;
 
 /**
  * A115422 Integers n &gt; 0 such that n XOR 20*n = 21*n.
  * @author Georg Fischer
  */
-public class A115422 implements Sequence {
+public class A115422 extends AbstractSequence {
 
   protected long mN;
   protected long mF1;
@@ -22,11 +22,12 @@ public class A115422 implements Sequence {
   /**
    * Generic constructor with parameters
    * @param offset first index
-   * @param f1 
-   * @param f2 
-   * @param f3 
+   * @param f1
+   * @param f2
+   * @param f3
    */
-  public A115422(final long offset, final long f1, final long f2, final long f3) {
+  public A115422(final int offset, final long f1, final long f2, final long f3) {
+    super(offset);
     mN = offset - 1;
     mF1 = f1;
     mF2 = f2;

@@ -1,8 +1,7 @@
 package irvine.oeis.a048;
 // manually, 2021-07-01
 
-import irvine.math.z.Z;
-import irvine.oeis.EulerTransform;
+import irvine.oeis.transform.EulerTransform;
 import irvine.oeis.PrependSequence;
 import irvine.oeis.SkipSequence;
 
@@ -14,6 +13,6 @@ public class A048813 extends SkipSequence {
 
   /** Construct the sequence. */
   public A048813() {
-    super(new EulerTransform(new PrependSequence(new A048812(), 0, 0, 0, 0, 0, 0, 0)), 7);
+    super(9, new EulerTransform(new PrependSequence(new A048812(), 0, 0, 0, 0, 0, 0, 0)), 7);
   }
 }

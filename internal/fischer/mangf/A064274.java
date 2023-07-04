@@ -12,12 +12,12 @@ import irvine.oeis.a035.A035513;
 public class A064274 extends InverseSequence {
 
   private int mN = -1;
-  
+
   /** Construct the sequence. */
   public A064274() {
-    super(new A035513(), 1, 1);
+    super(0, new A035513(), 1, 1);
   }
-  
+
   @Override
   public Z next() {
     if (++mN == 0) {

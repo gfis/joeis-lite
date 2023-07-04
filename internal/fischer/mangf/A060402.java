@@ -10,12 +10,12 @@ import irvine.oeis.cons.DecimalExpansionSequence;
  * A060402 Continued fraction expansion of tanh(Pi).
  * @author Georg Fischer
  */
-public class A060402 extends ContinuedFractionSequence{
+public class A060402 extends ContinuedFractionSequence {
 
   private static final ComputableReals REALS = ComputableReals.SINGLETON;
 
   /** Construct the sequence. */
   public A060402() {
-    super(new DecimalExpansionSequence(REALS.tanh(CR.PI)));
+    super(0, new DecimalExpansionSequence(REALS.tanh(CR.PI)));
   }
 }
