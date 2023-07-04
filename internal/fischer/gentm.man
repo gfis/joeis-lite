@@ -1,0 +1,11 @@
+A294607	gent	0	1	-k^(2*k)	1	1			(1-k*x^k)^(k^(2*k))	>=1						Expansion of Product_{k>=1} (1 - k*x^k)^(k^(2*k)).
+A294777	gent	0	1	-k*(k-1)/2	-1	2*k-1		(1+x^(2*k-1))^(k*(k-1)/2)	>=1						Expansion of Product_{k>=1} (1 + x^(2*k-1))^(k*(k-1)/2).
+A294778	gent	0	1	 k*(k-1)/2	1	2*k-1		1/(1-x^(2*k-1))^(k*(k-1)/2)	>=1						Expansion of Product_{k>=1} 1/(1 - x^(2*k-1))^(k*(k-1)/2).
+A296237	gent	0	1	1	1	k*(3*k+1)/2		1/(1-x^(k*(3*k+1)/2))	>=1						Expansion of Product_{k>0} 1/(1 - x^(k*(3*k+1)/2)).
+A296238	gent	0	1	-1	-1	k*(3*k+1)/2			(1+x^(k*(3*k+1)/2))	>=1						Expansion of Product_{k>0} (1 + x^(k*(3*k+1)/2)).
+A298246	gent	0	1	-1	-1	k*(k+1)*(2*k+1)/6	(1+x^(k*(k+1)*(2*k+1)/6))	>=1						Expansion of Product_{k>=1} (1 + x^(k*(k+1)*(2*k+1)/6)).
+A298247	gent	0	1	-1	1	k*(k+1)*(k+2)/6		(1-x^(k*(k+1)*(k+2)/6))	>=1						Expansion of Product_{k>=1} (1 - x^(k*(k+1)*(k+2)/6)).
+A298249	gent	0	1	-1	1	k*(k+1)*(2*k+1)/6	(1-x^(k*(k+1)*(2*k+1)/6))	>=1						Expansion of Product_{k>=1} (1 - x^(k*(k+1)*(2*k+1)/6)).
+A298730	gent	0	1	 k*(k+1)/2	1	k*(k+1)/2	1/(1-x^(k*(k+1)/2))^(k*(k+1)/2)	>=1						Expansion of Product_{k>=1} 1/(1 - x^(k*(k+1)/2))^(k*(k+1)/2).
+A298850	gent	0	1	-k*(k+1)/2	-1	k*(k+1)/2	  (1+x^(k*(k+1)/2))^(k*(k+1)/2)	>=1						Expansion of Product_{k>=1} (1 + x^(k*(k+1)/2))^(k*(k+1)/2).
+A352402	gent	0	1	1	 prod1_xk        0       k       1/(1+2^(k-1)*x^k)
