@@ -183,14 +183,14 @@ public class IndexPage implements Serializable {
         String[] arrs = new String[args.size()];
         arrs = args.toArray(arrs);
         out.print("        <textarea name=\"area\" id=\"myInput\" wrap=\"virtual\" cols=\"" + width + "\" rows=\"" + height + "\">");
-        final Sequence seq = SequenceFactory.process(arrs, out, false); // exit not ok
+        // final Sequence seq = SequenceFactory.process(arrs, out, false); // exit not ok
         out.print("        </textarea>\n");
         out.print("        <button onclick=\"myFunction()\" style=\"vertical-align:top;align:right;\" accesskey=\"c\"><u>C</u>opy</button>\n");
         out.print("      </td>\n");
         out.print("    </tr>\n");
         out.print("  </table>\n");
         out.print("</form><!-- joeis -->\n");
-        final String programType = MetaProducer.getProgramType(seq);
+        final String programType = "Java"; // MetaProducer.getProgramType(seq);
         String generator = programType;
         if (programType.startsWith("Java")) {
           generator = "<a target=\"_blank\" href=\"https://raw.githubusercontent.com/archmageirvine/joeis/master/src/irvine/oeis/" 

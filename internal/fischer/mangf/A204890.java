@@ -1,9 +1,9 @@
 package irvine.oeis.a204;
 
 import irvine.math.z.Z;
-import irvine.oeis.a000.A000040;
 import irvine.oeis.MemorySequence;
 import irvine.oeis.Sequence;
+import irvine.oeis.a000.A000040;
 import irvine.oeis.triangle.Triangle;
 
 /**
@@ -18,7 +18,6 @@ public class A204890 extends Triangle {
   /** Construct the sequence. */
   public A204890() {
     this(new A000040(), 1);
-    hasRAM(true);
   }
 
   /**
@@ -27,6 +26,7 @@ public class A204890 extends Triangle {
    * @param dist number of zeros to be prepended to the underlying sequence
    */
   public A204890(final Sequence seq, final int dist) {
+    setOffset(1);
     mSeq = MemorySequence.cachedSequence(seq);
     mDist = dist;
     hasRAM(true);

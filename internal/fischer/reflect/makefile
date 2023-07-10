@@ -27,11 +27,11 @@ all: absref_stat
 #----:
 absref_stat: absref_statf absref_stato absref_stat9 # 3 AbstractSequence reflections with statistics
 absref_statf:
-	make finite1
-	make absref1 MODE=finit LIST=finite1.tmp
+	# make finite1
+	# make absref1 MODE=finit LIST=finite1.tmp
 absref_stato:
 	make offinspect1
-	make absref1 MODE=noabs LIST=offinspect1.tmp
+	# make absref1 MODE=noabs LIST=offinspect1.tmp
 	make absref1 MODE=offin LIST=offinspect1.tmp
 	# make absref1 MODE=seqwo
 absref_stat9:
@@ -98,8 +98,8 @@ finite1:     # select the eligable programs
 	wc -l    $@.tmp
 #----
 offcount: # SUP=superclass ; count the different offsets for some jOEIS superclass
-	grep $(SUP) $(COMMON)/joeis_names.txt | cut -f2,5 | sed -e "s/\.\..*//" | sort | uniq -c
-	grep $(SUP) noabs.tmp | grep -vP "\t1\t" | sort 
+	grep $(SUP) offinspect1.tmp | cut -f2-3 | sort | uniq -c
+	# grep $(SUP) noabs.tmp | grep -vP "\t1\t" | sort 
 #--
 offinspect1: # select the eligible programs
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
@@ -124,6 +124,44 @@ offlev1: # first level in class hierarchy
 	$(DBAT) -x "SELECT * FROM seq3 WHERE info NOT IN (SELECT aseqno FROM seq3) ORDER BY 1" \
 	>        $@.tmp
 	head -n2 $@.tmp
+	wc -l    $@.tmp
+offsort: # sort offin.tmp with superclasses ASC
+	sort -k5.1 -k1.1 offin.tmp | sed -e "s/\r//" > offin.srt
+offin_table: # create table 'offin' 
+	$(DBAT) -f offin.create.sql
+	grep -E "^A[0-9]" offin.tmp | sed -e "s/ //g" \
+	| $(DBAT) -r offin
+	$(DBAT) -4 offin
+	$(DBAT) -n offin
+offin_eval2: # select those with all subclasses needing the same offset patch, on 2 levels
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass \
+	                            , o2.shift, o2.superclass \
+	  FROM  offin o1, offin o2 \
+	  WHERE o2.aseqno = o1.superclass AND o2.shift = o1.shift \
+	  ORDER BY 5,3,1;" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+offin_eval3: # select those with all subclasses needing the same offset patch, on 3 levels
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass \
+	                            , o2.shift, o2.superclass \
+	                            , o3.shift, o3.superclass \
+	  FROM  offin o1, offin o2, offin o3 \
+	  WHERE o2.aseqno = o1.superclass AND o2.shift = o1.shift \
+	    AND o3.aseqno = o2.superclass AND o3.shift = o2.shift \
+	  ORDER BY 7,5,3,1;" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+offin_eval4: # select those with all subclasses needing the same offset patch, on 4 levels
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass \
+	                            , o2.shift, o2.superclass \
+	                            , o3.shift, o3.superclass \
+	                            , o4.shift, o4.superclass \
+	  FROM  offin o1, offin o2, offin o3, offin o4 \
+	  WHERE o2.aseqno = o1.superclass AND o2.shift = o1.shift \
+	    AND o3.aseqno = o2.superclass AND o3.shift = o2.shift \
+	    AND o4.aseqno = o3.superclass AND o4.shift = o3.shift \
+	  ORDER BY 9,7,5,3,1;" \
+	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
 patch_abstract: # patch all in the list above
@@ -250,8 +288,39 @@ prepskip: # detect SkipSequence applications
 	| tee    $@.tmp
 	wc -l    $@.tmp
 prepskip1:
-	cat prepskip.
-#========
+	cat prepskip.tmp
+#----
+pull: # LIST= copy the ones in LIST into ../manual
+	grep -E "^A[0-9]" $(LIST) | cut -f1 | sort | uniq -w7 \
+	| perl -ne 'my $$aseqno = substr($$_, 0, 7); print lc(substr($$aseqno, 0, 4)) . "/$$_";' \
+	> $@.tmp
+	cat $@.tmp | xargs -innn cp -vp $(JOEIS)/src/irvine/oeis/nnn.java ../manual
+	wc -l $@.tmp
+getoffset: # all that define getOffset(int), from Sean's list
+	rm -f oldsrc/*.java
+	cut -b19- override-of-getOffset.txt \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	cat $@.tmp | xargs -innn cp $(JOEIS)/src/irvine/oeis/nnn oldsrc
+	ls -1 oldsrc | wc -l
+getoffset2: # which came from treonk/arronk
+	grep -iP "(matrix|triangle)Elem" oldsrc/*.java | wc
+geto_comt: # comments of the ones in oldsrc
+	grep -iP "// (manually|Generated)" oldsrc/*.java | tee $@.tmp
+#----
+triangle:
+	rm -f oldsrc/*.java
+	grep -P "\tTriangle\t" $(COMMON)/joeis_names.txt | cut -f1 \
+	| perl -ne 'my $$aseqno = substr($$_, 0, 7); print lc(substr($$aseqno, 0, 4)) . "/$$_";' \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	cat $@.tmp | xargs -innn cp $(JOEIS)/src/irvine/oeis/nnn.java oldsrc
+	ls -1 oldsrc | wc -l
+triangle_super:
+	grep -iHP "super *\(" oldsrc/*.java | tee $@.tmp
+#================================
 # patches for various superclasses
 patches:
 	cd .. ; make purge

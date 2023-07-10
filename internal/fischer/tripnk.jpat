@@ -9,10 +9,12 @@ import irvine.math.z.Z;
  */
 public class $(ASEQNO) extends $(PARM1) {
 
-  private int mN = $(PARM2) - 1;
+  private int mN;
   
-  {
-    setOffset($(OFFSET));
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    setOffset($(PARM2));
+    mN = $(PARM2) - 1;
   }
   
   @Override
