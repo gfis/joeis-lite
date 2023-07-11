@@ -1,0 +1,4099 @@
+#!queue	A000837	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a000;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A000837 Number of partitions of n into relatively prime parts. Also aperiodic partitions.
+ * @author Sean A. Irvine
+ */
+public class A000837 extends MobiusTransformSequence {
+
+  /** Construct this sequence. */
+  public A000837() {
+    super($(OFFSET), new A000041(), 1, Z.ONE);
+  }
+}
+#!queue	A001010	0	->	1	AlternatingSequence	--------------------------------
+package irvine.oeis.a001;
+
+import irvine.math.z.Z;
+import irvine.oeis.AlternatingSequence;
+import irvine.oeis.a000.A000682;
+import irvine.oeis.a007.A007822;
+
+/**
+ * A001010 Number of symmetric foldings of a strip of n stamps.
+ * @author Sean A. Irvine
+ */
+public class A001010 extends AlternatingSequence {
+
+  private boolean mFirst = true;
+
+  /** Construct the sequence. */
+  public A001010() {
+    super($(OFFSET), new A007822(), new A000682().skip(1));
+  }
+
+  @Override
+  public Z next() {
+    if (mFirst) {
+      mFirst = false;
+      return super.next();
+    } else {
+      return super.next().multiply2();
+    }
+  }
+}
+#!queue	A002069	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a002;
+
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a000.A000326;
+
+/**
+ * A002069 Palindromic pentagonal numbers.
+ * @author Sean A. Irvine
+ */
+public class A002069 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A002069() {
+    super($(OFFSET), new A000326(), PALINDROME);
+  }
+}
+#!queue	A003098	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a003;
+
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a000.A000217;
+
+/**
+ * A003098 Palindromic triangular numbers.
+ * @author Sean A. Irvine
+ */
+public class A003098 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A003098() {
+    super($(OFFSET), new A000217(), PALINDROME);
+  }
+}
+#!queue	A003671	1	->	0	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a003;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A003671 Decimal expansion of Bohr radius (meters).
+ * @author Sean A. Irvine
+ */
+public class A003671 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A003671() {
+    super($(OFFSET), PhysicsConstants.BOHR_RADIUS, PhysicsConstants.BOHR_RADIUS_UNC);
+  }
+}
+#!queue	A003672	1	->	0	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a003;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A003672 Decimal expansion of electron mass (mass units).
+ * @author Sean A. Irvine
+ */
+public class A003672 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A003672() {
+    super($(OFFSET), PhysicsConstants.ELECTRON_MASS, PhysicsConstants.ELECTRON_MASS_UNC);
+  }
+}
+#!queue	A003673	1	->	0	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a003;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A003673 Decimal expansion of fine-structure constant alpha.
+ * @author Sean A. Irvine
+ */
+public class A003673 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A003673() {
+    super($(OFFSET), PhysicsConstants.FINE_STRUCTURE_CONSTANT, PhysicsConstants.FINE_STRUCTURE_CONSTANT_UNC);
+  }
+}
+#!queue	A004123	0	->	1	Stirling2TransformSequence	--------------------------------
+package irvine.oeis.a004;
+
+import irvine.oeis.transform.Stirling2TransformSequence;
+import irvine.oeis.a000.A000165;
+
+/**
+ * A004123 Number of generalized weak orders on n points.
+ * @author Sean A. Irvine
+ */
+public class A004123 extends Stirling2TransformSequence {
+
+  /** Construct the sequence. */
+  public A004123() {
+    super($(OFFSET), new A000165(), 0);
+  }
+}
+#!queue	A005594	1	->	0	CycleTransformSequence	--------------------------------
+package irvine.oeis.a005;
+
+import irvine.oeis.transform.CycleTransformSequence;
+import irvine.oeis.a054.A054977;
+
+/**
+ * A005594 States of a dynamic storage system.
+ * @author Sean A. Irvine
+ */
+public class A005594 extends CycleTransformSequence {
+
+  /** Construct the sequence. */
+  public A005594() {
+    super($(OFFSET), new A054977(), 0);
+  }
+}
+
+#!queue	A005595	1	->	0	DikTransformSequence	--------------------------------
+package irvine.oeis.a005;
+
+import irvine.oeis.transform.DikTransformSequence;
+import irvine.oeis.a054.A054977;
+
+/**
+ * A005595 States of a dynamic storage system.
+ * @author Sean A. Irvine
+ */
+public class A005595 extends DikTransformSequence {
+
+  /** Construct the sequence. */
+  public A005595() {
+    super($(OFFSET), new A054977(), 0);
+  }
+}
+
+#!queue	A005601	1	->	4	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a005;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A005601 Decimal expansion of proton-to-electron mass ratio.
+ * @author Sean A. Irvine
+ */
+public class A005601 extends DoubleDecimalExpansionSequence {
+
+  private static double error() {
+    final double mpR = PhysicsConstants.PROTON_MASS_UNC / PhysicsConstants.PROTON_MASS;
+    final double meR = PhysicsConstants.ELECTRON_MASS_UNC / PhysicsConstants.ELECTRON_MASS;
+    final double e = mpR + meR;
+    return e * PhysicsConstants.PROTON_MASS / PhysicsConstants.ELECTRON_MASS;
+  }
+
+  /** Construct the sequence. */
+  public A005601() {
+    super($(OFFSET), PhysicsConstants.PROTON_MASS / PhysicsConstants.ELECTRON_MASS, error());
+  }
+}
+#!queue	A005663	1	->	0	ContinuedFractionNumeratorSequence	--------------------------------
+package irvine.oeis.a005;
+
+import irvine.oeis.cons.ContinuedFractionNumeratorSequence;
+import irvine.oeis.a020.A020857;
+
+/**
+ * A005663 Numerators of convergents to log_2(3) = log(3)/log(2).
+ * @author Sean A. Irvine
+ */
+public class A005663 extends ContinuedFractionNumeratorSequence {
+
+  /** Construct the sequence. */
+  public A005663() {
+    super($(OFFSET), new A020857());
+  }
+}
+
+#!queue	A005664	1	->	0	ContinuedFractionDenominatorSequence	--------------------------------
+package irvine.oeis.a005;
+
+import irvine.oeis.cons.ContinuedFractionDenominatorSequence;
+import irvine.oeis.a020.A020857;
+
+/**
+ * A005664 Denominators of convergents to log_2 3.
+ * @author Sean A. Irvine
+ */
+public class A005664 extends ContinuedFractionDenominatorSequence {
+
+  /** Construct the sequence. */
+  public A005664() {
+    super($(OFFSET), new A020857());
+  }
+}
+
+#!queue	A005804	0	->	1	Stirling2TransformSequence	--------------------------------
+package irvine.oeis.a005;
+
+import irvine.oeis.transform.Stirling2TransformSequence;
+import irvine.oeis.a000.A000311;
+
+/**
+ * A005804 Number of phylogenetic rooted trees with n labels.
+ * @author Sean A. Irvine
+ */
+public class A005804 extends Stirling2TransformSequence {
+
+  /** Construct the sequence. */
+  public A005804() {
+    super($(OFFSET), new A000311(), 0);
+    next();
+  }
+}
+#!queue	A005805	0	->	1	Stirling2TransformSequence	--------------------------------
+package irvine.oeis.a005;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.Stirling2TransformSequence;
+import irvine.oeis.a000.A000311;
+
+/**
+ * A005805 Number of phylogenetic trees with n labels.
+ * @author Sean A. Irvine
+ */
+public class A005805 extends Stirling2TransformSequence {
+
+  /** Construct the sequence. */
+  public A005805() {
+    // We need to shove an extra "1" into A000311
+    super($(OFFSET), new A000311() {
+      private boolean mFirst = true;
+      @Override
+      public Z next() {
+        if (mFirst) {
+          mFirst = false;
+          return Z.ZERO;
+        }
+        return Z.ONE.max(super.next());
+      }
+    }, 0);
+    next();
+  }
+}
+#!queue	A006195	1	->	0	RevertTransformSequence	--------------------------------
+package irvine.oeis.a006;
+
+import irvine.oeis.transform.RevertTransformSequence;
+import irvine.oeis.a000.A000122;
+
+/**
+ * A006195 Reversion of Jacobi theta_3.
+ * @author Sean A. Irvine
+ */
+public class A006195 extends RevertTransformSequence {
+
+  /** Construct the sequence. */
+  public A006195() {
+    super($(OFFSET), new A000122());
+  }
+}
+
+#!queue	A006677	0	->	1	Stirling2TransformSequence	--------------------------------
+package irvine.oeis.a006;
+
+import irvine.math.z.Z;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.transform.Stirling2TransformSequence;
+import irvine.oeis.a001.A001147;
+
+/**
+ * A006677 Number of planted binary phylogenetic trees with n labels.
+ * @author Sean A. Irvine
+ */
+public class A006677 extends Stirling2TransformSequence {
+
+  /** Construct the sequence. */
+  public A006677() {
+    super($(OFFSET), new PrependSequence(new A001147(), Z.ONE), 0);
+    next();
+  }
+}
+#!queue	A006833	1	->	4	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a006;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A006833 Decimal expansion of neutron-to-electron mass ratio.
+ * @author Sean A. Irvine
+ */
+public class A006833 extends DoubleDecimalExpansionSequence {
+
+  private static double error() {
+    final double mnR = PhysicsConstants.NEUTRON_MASS_UNC / PhysicsConstants.NEUTRON_MASS;
+    final double meR = PhysicsConstants.ELECTRON_MASS_UNC / PhysicsConstants.ELECTRON_MASS;
+    final double e = mnR + meR;
+    return e * PhysicsConstants.NEUTRON_MASS / PhysicsConstants.ELECTRON_MASS;
+  }
+
+  /** Construct the sequence. */
+  public A006833() {
+    super($(OFFSET), PhysicsConstants.NEUTRON_MASS / PhysicsConstants.ELECTRON_MASS, error());
+  }
+}
+#!queue	A006900	1	->	0	LogarithmicTransformSequence	--------------------------------
+package irvine.oeis.a006;
+
+import irvine.oeis.transform.LogarithmicTransformSequence;
+import irvine.oeis.a000.A000081;
+
+/**
+ * A006900 Log of g.f. for rooted trees.
+ * @author Sean A. Irvine
+ */
+public class A006900 extends LogarithmicTransformSequence {
+
+  /** Construct the sequence. */
+  public A006900() {
+    super($(OFFSET), new A000081(), 1);
+  }
+}
+#!queue	A006936	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a006;
+
+import irvine.oeis.transform.MobiusTransformSequence;
+import irvine.oeis.a000.A000670;
+
+/**
+ * A006936 Moebius transform of numbers of preferential arrangements.
+ * @author Sean A. Irvine
+ */
+public class A006936 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A006936() {
+    super($(OFFSET), new A000670(), 0);
+  }
+}
+#!queue	A007022	3	->	1	ParallelPlantriSequence	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.math.plantri.Plantri;
+import irvine.math.plantri.PlantriGraphState;
+import irvine.oeis.ParallelPlantriSequence;
+
+/**
+ * A007022 Number of 4-regular polyhedra with n nodes.
+ * @author Sean A. Irvine
+ */
+public class A007022 extends ParallelPlantriSequence {
+
+  /** Construct the sequence. */
+  public A007022() {
+    super($(OFFSET), 2, 7);
+  }
+
+  @Override
+  protected boolean accept(final Plantri plantri, final PlantriGraphState state) {
+    return true;
+  }
+
+  @Override
+  protected long runPlantri(final Plantri plantri) {
+    return plantri.count(mN, -1, 3, -1, false, false, true, false);
+  }
+}
+
+#!queue	A007083	4	->	2	ParallelPlantriSequence	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.math.plantri.Plantri;
+import irvine.math.plantri.PlantriGraphState;
+import irvine.oeis.ParallelPlantriSequence;
+
+/**
+ * A007083 Number of unlabeled trivalent 3-connected bipartite planar graphs with 2n nodes.
+ * @author Sean A. Irvine
+ */
+public class A007083 extends ParallelPlantriSequence {
+
+  /** Construct the sequence. */
+  public A007083() {
+    super($(OFFSET), 3, 0);
+  }
+
+  @Override
+  protected boolean accept(final Plantri plantri, final PlantriGraphState state) {
+    return true;
+  }
+
+  @Override
+  protected long runPlantri(final Plantri plantri) {
+    plantri.setBipartite(true);
+    return plantri.count(mN, -1, -1, -1, false, false, false, false);
+  }
+}
+
+#!queue	A007317	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.oeis.transform.BinomialTransformSequence;
+import irvine.oeis.a000.A000108;
+
+/**
+ * A007317 Binomial transform of Catalan numbers.
+ * @author Sean A. Irvine
+ */
+public class A007317 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A007317() {
+    super($(OFFSET), new A000108(), 0);
+  }
+}
+
+#!queue	A007442	0	->	1	InverseBinomialTransformSequence	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.oeis.transform.InverseBinomialTransformSequence;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A007442 Inverse binomial transform of primes.
+ * @author Sean A. Irvine
+ */
+public class A007442 extends InverseBinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A007442() {
+    super($(OFFSET), new A000040(), 0);
+  }
+}
+#!queue	A007443	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.oeis.transform.BinomialTransformSequence;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A007443 Binomial transform of primes.
+ * @author Sean A. Irvine
+ */
+public class A007443 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A007443() {
+    super($(OFFSET), new A000040(), 0);
+  }
+}
+#!queue	A007466	0	->	1	ExponentialConvolutionSequence	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.oeis.ExponentialConvolutionSequence;
+import irvine.oeis.a000.A000027;
+
+/**
+ * A007466 Exponential-convolution of natural numbers with themselves.
+ * @author Sean A. Irvine
+ */
+public class A007466 extends ExponentialConvolutionSequence {
+
+  /** Construct the sequence. */
+  public A007466() {
+    super($(OFFSET), new A000027());
+  }
+}
+#!queue	A007814	0	->	1	AlternatingSequence	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.oeis.AlternatingSequence;
+import irvine.oeis.a000.A000004;
+import irvine.oeis.a001.A001511;
+
+/**
+ * A007814 Exponent of highest power of 2 dividing n, a.k.a. the binary carry sequence, the ruler sequence, or the 2-adic valuation of n.
+ * @author Sean A. Irvine
+ */
+public class A007814 extends AlternatingSequence {
+
+  /** Construct the sequence. */
+  public A007814() {
+    super($(OFFSET), new A000004(), new A001511());
+  }
+}
+#!queue	A007832	0	->	1	Stirling2TransformSequence	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.math.z.Z;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.transform.Stirling2TransformSequence;
+
+/**
+ * A007832 Number of point labeled 5,6-free two-graphs with n nodes.
+ * @author Sean A. Irvine
+ */
+public class A007832 extends Stirling2TransformSequence {
+
+  /** Construct the sequence. */
+  public A007832() {
+    super($(OFFSET), new PrependSequence(new A007831(), Z.ZERO), 0);
+    next();
+  }
+}
+#!queue	A008510	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a008;
+
+import irvine.oeis.FilterSequence;
+
+/**
+ * A008510 Numbers k such that both k and the k-th triangular number are palindromes.
+ * @author Sean A. Irvine
+ */
+public class A008510 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A008510() {
+    super($(OFFSET), new A008509(), PALINDROME);
+  }
+}
+
+#!queue	A014320	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a014;
+
+import irvine.oeis.DistinctSequence;
+import irvine.oeis.a001.A001223;
+
+/**
+ * A014320 The next new gap between successive primes.
+ * @author Sean A. Irvine
+ */
+public class A014320 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A014320() {
+    super($(OFFSET), new A001223());
+  }
+}
+#!queue	A014631	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a014;
+
+import irvine.oeis.DistinctSequence;
+import irvine.oeis.a007.A007318;
+
+/**
+ * A014631 Numbers in order in which they appear in Pascal's triangle.
+ * @author Sean A. Irvine
+ */
+public class A014631 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A014631() {
+    super($(OFFSET), new A007318());
+  }
+}
+#!queue	A019442	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence0;
+import irvine.oeis.transform.BinomialTransformSequence;
+
+/**
+ * A019442 Numbers n such that a Hadamard matrix of order n exists.
+ * @author Sean A. Irvine
+ */
+public class A019442 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A019442() {
+    super($(OFFSET), new Sequence0() {
+
+      private long mN = -1;
+
+      @Override
+      public Z next() {
+        return ++mN < 4 ? Z.ONE : Z.valueOf((mN & 1) == 0 ? -(2 * mN - 5) : 2 * mN - 5);
+      }
+    }, 0);
+  }
+}
+#!queue	A026353	1	->	2	SumBetweenSequence	--------------------------------
+package irvine.oeis.a026;
+
+import irvine.oeis.SumBetweenSequence;
+
+/**
+ * A026353 a(n) = sum of the numbers between the two n's in A026350.
+ * @author Sean A. Irvine
+ */
+public class A026353 extends SumBetweenSequence {
+
+  /** Construct the sequence. */
+  public A026353() {
+    super($(OFFSET), new A026350(), 2);
+  }
+}
+#!queue	A026357	1	->	3	SumBetweenSequence	--------------------------------
+package irvine.oeis.a026;
+
+import irvine.oeis.SumBetweenSequence;
+
+/**
+ * A026357 a(n) = sum of the numbers between the two n's in A026354.
+ * @author Sean A. Irvine
+ */
+public class A026357 extends SumBetweenSequence {
+
+  /** Construct the sequence. */
+  public A026357() {
+    super($(OFFSET), new A026354(), 3);
+  }
+}
+#!queue	A026361	1	->	2	SumBetweenSequence	--------------------------------
+package irvine.oeis.a026;
+
+import irvine.oeis.SumBetweenSequence;
+
+/**
+ * A026361 a(n) = sum of the numbers between the two n's in A026358.
+ * @author Sean A. Irvine
+ */
+public class A026361 extends SumBetweenSequence {
+
+  /** Construct the sequence. */
+  public A026361() {
+    super($(OFFSET), new A026358(), 2);
+  }
+}
+#!queue	A028269	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a028;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A028269 Distinct even elements in 3-Pascal triangle A028262 (by row).
+ * @author Sean A. Irvine
+ */
+public class A028269 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A028269() {
+    super($(OFFSET), new A028266());
+  }
+}
+#!queue	A029636	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a029;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A029636 Distinct numbers in the (1,2)-Pascal triangle A029635.
+ * @author Sean A. Irvine
+ */
+public class A029636 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A029636() {
+    super($(OFFSET), new A029635());
+  }
+}
+#!queue	A029654	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a029;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A029654 Distinct numbers in the (2,1)-Pascal triangle A029653.
+ * @author Sean A. Irvine
+ */
+public class A029654 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A029654() {
+    super($(OFFSET), new A029653());
+  }
+}
+#!queue	A029881	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a029;
+
+import irvine.oeis.transform.MobiusTransformSequence;
+import irvine.oeis.a001.A001285;
+
+/**
+ * A029881 Moebius transform of Thue-Morse sequence A001285.
+ * @author Sean A. Irvine
+ */
+public class A029881 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A029881() {
+    super($(OFFSET), new A001285(), 0);
+    next();
+  }
+}
+#!queue	A029882	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a029;
+
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+import irvine.oeis.a001.A001285;
+
+/**
+ * A029882 Inverse Moebius transform of Thue-Morse sequence A001285.
+ * @author Sean A. Irvine
+ */
+public class A029882 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A029882() {
+    super($(OFFSET), new A001285(), 0);
+    next();
+  }
+}
+#!queue	A030870	1	->	0	Sequence1	--------------------------------
+package irvine.oeis.a030;
+
+import irvine.math.cr.CR;
+import irvine.math.q.Q;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence0;
+
+/**
+ * A030870 [ exp(8/19)*n! ].
+ * @author Sean A. Irvine
+ */
+public class A030870 extends Sequence0 {
+
+  private static final CR EXP8_19 = CR.valueOf(new Q(8, 19)).exp();
+  private Z mF = Z.ONE;
+  private long mN = 0;
+
+  @Override
+  public Z next() {
+    mF = mF.multiply(++mN);
+    return EXP8_19.multiply(mF).floor();
+  }
+}
+#!queue	A032243	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a032;
+
+import irvine.oeis.transform.DhkTransformSequence;
+import irvine.oeis.a059.A059841;
+
+/**
+ * A032243 "DHK" (bracelet, identity, unlabeled) transform of 1,0,1,0,... (odd).
+ * @author Sean A. Irvine
+ */
+public class A032243 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A032243() {
+    super($(OFFSET), new A059841());
+  }
+}
+#!queue	A032244	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a032;
+
+import irvine.oeis.transform.DhkTransformSequence;
+import irvine.oeis.a057.A057427;
+
+/**
+ * A032244 "DHK" (bracelet, identity, unlabeled) transform of 0,1,1,1,...
+ * @author Sean A. Irvine
+ */
+public class A032244 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A032244() {
+    super($(OFFSET), new A057427());
+  }
+}
+#!queue	A032245	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a032;
+
+import irvine.oeis.transform.DhkTransformSequence;
+import irvine.oeis.a000.A000012;
+
+/**
+ * A032245 "DHK" (bracelet, identity, unlabeled) transform of 1,1,1,1,...
+ * @author Sean A. Irvine
+ */
+public class A032245 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A032245() {
+    super($(OFFSET), new A000012());
+  }
+}
+#!queue	A032251	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a032;
+
+import irvine.oeis.transform.DhkTransformSequence;
+import irvine.oeis.recur.PeriodicSequence;
+
+/**
+ * A032251 "DHK" (bracelet, identity, unlabeled) transform of 2,2,2,2,...
+ * @author Sean A. Irvine
+ */
+public class A032251 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A032251() {
+    super($(OFFSET), new PeriodicSequence(2));
+  }
+}
+#!queue	A032252	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a032;
+
+import irvine.oeis.transform.DhkTransformSequence;
+import irvine.oeis.a054.A054977;
+
+/**
+ * A032252 "DHK" (bracelet, identity, unlabeled) transform of 2,1,1,1,...
+ * @author Sean A. Irvine
+ */
+public class A032252 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A032252() {
+    super($(OFFSET), new A054977());
+  }
+}
+#!queue	A032253	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a032;
+
+import irvine.oeis.transform.DhkTransformSequence;
+import irvine.oeis.recur.PeriodicSequence;
+
+/**
+ * A032253 "DHK" (bracelet, identity, unlabeled) transform of 3,3,3,3,...
+ * @author Sean A. Irvine
+ */
+public class A032253 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A032253() {
+    super($(OFFSET), new PeriodicSequence(3));
+  }
+}
+#!queue	A032254	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a032;
+
+import irvine.oeis.transform.DhkTransformSequence;
+import irvine.oeis.a000.A000027;
+
+/**
+ * A032254 "DHK" (bracelet, identity, unlabeled) transform of 1,2,3,4,...
+ * @author Sean A. Irvine
+ */
+public class A032254 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A032254() {
+    super($(OFFSET), new A000027());
+  }
+}
+#!queue	A032255	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a032;
+
+import irvine.oeis.transform.DhkTransformSequence;
+import irvine.oeis.a005.A005408;
+
+/**
+ * A032255 "DHK" (bracelet, identity, unlabeled) transform of 1,3,5,7,...
+ * @author Sean A. Irvine
+ */
+public class A032255 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A032255() {
+    super($(OFFSET), new A005408());
+  }
+}
+#!queue	A033091	1	->	0	RecordSequence	--------------------------------
+package irvine.oeis.a033;
+
+import irvine.oeis.RecordSequence;
+import irvine.oeis.a002.A002852;
+
+/**
+ * A033091 Incrementally largest terms in the continued fraction for Euler's constant gamma (A002852).
+ * @author Sean A. Irvine
+ */
+public class A033091 extends RecordSequence {
+
+  /** Construct the sequence. */
+  public A033091() {
+    super($(OFFSET), new A002852());
+  }
+}
+#!queue	A033494	1	->	0	RecordSequence	--------------------------------
+package irvine.oeis.a033;
+
+import irvine.oeis.RecordSequence;
+
+/**
+ * A033494 Record sum of numbers in trajectory of 3x+1 problem.
+ * @author Sean A. Irvine
+ */
+public class A033494 extends RecordSequence {
+
+  /** Construct the sequence. */
+  public A033494() {
+    super($(OFFSET), new A033493());
+  }
+}
+#!queue	A033886	1	->	0	ParallelGenerateGraphsSequence	--------------------------------
+package irvine.oeis.a033;
+
+import irvine.math.graph.Graph;
+import irvine.math.nauty.GenerateGraphs;
+import irvine.math.z.Z;
+import irvine.oeis.ParallelGenerateGraphsSequence;
+
+/**
+ * A033886 Number of connected 4-regular simple graphs on n vertices with girth at least 4.
+ * @author Sean A. Irvine
+ */
+public class A033886 extends ParallelGenerateGraphsSequence {
+
+  private boolean mFirst = true;
+
+  /** Construct the sequence. */
+  public A033886() {
+    super($(OFFSET), 0, 0, false, false, false);
+  }
+
+  @Override
+  protected long getCount(final Graph graph) {
+    return graph.order() == 0 || graph.girth() >= 4 ? 1 : 0;
+  }
+
+  @Override
+  protected void graphGenInit(final GenerateGraphs gg) {
+    gg.setVertices(mN);
+    gg.setMinEdges(2 * mN);
+    gg.setMaxEdges(2 * mN);
+    gg.setMinDeg(4);
+    gg.setMaxDeg(4);
+    gg.setConnectionLevel(1);
+  }
+
+  @Override
+  public Z next() {
+    if (mFirst) {
+      mFirst = false;
+      return Z.ONE;
+    }
+    return super.next();
+  }
+
+}
+#!queue	A034003	1	->	0	DigitSequence	--------------------------------
+package irvine.oeis.a034;
+
+import irvine.oeis.a007.A007890;
+import irvine.oeis.base.DigitSequence;
+
+/**
+ * A034003 A007890 expanded into single digits.
+ * @author Sean A. Irvine
+ */
+public class A034003 extends DigitSequence {
+
+  /** Construct the sequence. */
+  public A034003() {
+    super($(OFFSET), new A007890());
+  }
+}
+#!queue	A034005	1	->	0	DigitSequence	--------------------------------
+package irvine.oeis.a034;
+
+import irvine.oeis.a000.A000108;
+import irvine.oeis.base.DigitSequence;
+
+/**
+ * A034005 Successive digits of Catalan numbers.
+ * @author Sean A. Irvine
+ */
+public class A034005 extends DigitSequence {
+
+  /** Construct the sequence. */
+  public A034005() {
+    super($(OFFSET), new A000108());
+  }
+}
+#!queue	A035054	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a035;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+import irvine.oeis.a000.A000055;
+
+/**
+ * A035054 Number of forests of identical trees.
+ * @author Sean A. Irvine
+ */
+public class A035054 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A035054() {
+    super($(OFFSET), new A000055(), 1, Z.ONE);
+  }
+}
+#!queue	A035124	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a035;
+
+import irvine.math.z.ZUtils;
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a000.A000578;
+import irvine.util.string.StringUtils;
+
+/**
+ * A035124 Nonpalindromic cubes remaining cubic which written backwards: take the cube root of n, reverse its digits, cube that and the result is n with its digits reversed.
+ * @author Sean A. Irvine
+ */
+public class A035124 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A035124() {
+    super($(OFFSET), new A000578(), cube -> cube.mod(10) != 0 && !StringUtils.isPalindrome(cube.toString()) && ZUtils.isCube(ZUtils.reverse(cube)));
+  }
+}
+
+#!queue	A035349	1	->	0	DikTransformSequence	--------------------------------
+package irvine.oeis.a035;
+
+import irvine.oeis.transform.DikTransformSequence;
+import irvine.oeis.a000.A000237;
+
+/**
+ * A035349 "DIK" (bracelet, indistinct, unlabeled) transform of A000237.
+ * @author Sean A. Irvine
+ */
+public class A035349 extends DikTransformSequence {
+
+  /** Construct the sequence. */
+  public A035349() {
+    super($(OFFSET), new A000237(), 1);
+  }
+}
+
+#!queue	A035350	1	->	0	BikTransformSequence	--------------------------------
+package irvine.oeis.a035;
+
+import irvine.oeis.a000.A000237;
+import irvine.oeis.transform.BikTransformSequence;
+
+/**
+ * A035350 "BIK" (reversible, indistinct, unlabeled) transform of A000237.
+ * @author Sean A. Irvine
+ */
+public class A035350 extends BikTransformSequence {
+
+  /** Construct the sequence. */
+  public A035350() {
+    super($(OFFSET), new A000237(), 1);
+  }
+}
+
+#!queue	A035354	1	->	0	DhkTransformSequence	--------------------------------
+package irvine.oeis.a035;
+
+import irvine.oeis.transform.DhkTransformSequence;
+
+/**
+ * A035354 "DHK" (bracelet, identity, unlabeled) transform of A035353.
+ * @author Sean A. Irvine
+ */
+public class A035354 extends DhkTransformSequence {
+
+  /** Construct the sequence. */
+  public A035354() {
+    super($(OFFSET), new A035353().skip(1));
+  }
+}
+#!queue	A038083	0	->	1	WeighTransformSequence	--------------------------------
+package irvine.oeis.a038;
+
+import irvine.math.z.Z;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.transform.WeighTransformSequence;
+
+/**
+ * A038083 Number of n-node rooted identity trees of height at most 4.
+ * @author Sean A. Irvine
+ */
+public class A038083 extends WeighTransformSequence {
+
+  /** Construct the sequence. */
+  public A038083() {
+    super($(OFFSET), new PrependSequence(new A038082(), 1));
+  }
+
+  @Override
+  public Z next() {
+    final Z t = super.next();
+    return t.isZero() ? null : t;
+  }
+}
+#!queue	A038084	0	->	1	WeighTransformSequence	--------------------------------
+package irvine.oeis.a038;
+
+import irvine.math.z.Z;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.transform.WeighTransformSequence;
+
+/**
+ * A038084 Number of n-node rooted identity trees of height at most 5.
+ * @author Sean A. Irvine
+ */
+public class A038084 extends WeighTransformSequence {
+
+  /** Construct the sequence. */
+  public A038084() {
+    super($(OFFSET), new PrependSequence(new A038083(), 1));
+  }
+
+  @Override
+  public Z next() {
+    final Z t = super.next();
+    return t.isZero() ? null : t;
+  }
+}
+#!queue	A038085	0	->	1	WeighTransformSequence	--------------------------------
+package irvine.oeis.a038;
+
+import irvine.math.z.Z;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.transform.WeighTransformSequence;
+
+/**
+ * A038085 Number of n-node rooted identity trees of height at most 6.
+ * @author Sean A. Irvine
+ */
+public class A038085 extends WeighTransformSequence {
+
+  /** Construct the sequence. */
+  public A038085() {
+    super($(OFFSET), new PrependSequence(new A038084(), 1));
+  }
+
+  @Override
+  public Z next() {
+    final Z t = super.next();
+    return t.isZero() ? null : t;
+  }
+}
+#!queue	A038086	0	->	1	WeighTransformSequence	--------------------------------
+package irvine.oeis.a038;
+
+import irvine.math.z.Z;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.transform.WeighTransformSequence;
+
+/**
+ * A038086 Number of n-node rooted identity trees of height at most 7.
+ * @author Sean A. Irvine
+ */
+public class A038086 extends WeighTransformSequence {
+
+  /** Construct the sequence. */
+  public A038086() {
+    super($(OFFSET), new PrependSequence(new A038085(), 1));
+  }
+
+  @Override
+  public Z next() {
+    final Z t = super.next();
+    return t.isZero() ? null : t;
+  }
+}
+#!queue	A038087	0	->	1	WeighTransformSequence	--------------------------------
+package irvine.oeis.a038;
+
+import irvine.math.z.Z;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.transform.WeighTransformSequence;
+
+/**
+ * A038087 Number of n-node rooted identity trees of height at most 8.
+ * @author Sean A. Irvine
+ */
+public class A038087 extends WeighTransformSequence {
+
+  /** Construct the sequence. */
+  public A038087() {
+    super($(OFFSET), new PrependSequence(new A038086(), 1));
+  }
+
+  @Override
+  public Z next() {
+    final Z t = super.next();
+    return t.isZero() ? null : t;
+  }
+}
+#!queue	A038200	0	->	1	InverseBinomialTransformSequence	--------------------------------
+package irvine.oeis.a038;
+
+import irvine.oeis.transform.InverseBinomialTransformSequence;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.a000.A000005;
+
+/**
+ * A038200 Row sums of triangle K(m, n), inverse to triangle T(m,n) in A020921.
+ * @author Sean A. Irvine
+ */
+public class A038200 extends InverseBinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A038200() {
+    super($(OFFSET), new PrependSequence(new A000005(), 0), 0);
+    next();
+  }
+}
+#!queue	A039509	1	->	0	RecordSequence	--------------------------------
+package irvine.oeis.a039;
+
+import irvine.oeis.RecordSequence;
+
+/**
+ * A039509 Incrementally greatest values of A039508.
+ * @author Sean A. Irvine
+ */
+public class A039509 extends RecordSequence {
+
+  /** Construct the sequence. */
+  public A039509() {
+    super($(OFFSET), new A039508());
+  }
+}
+#!queue	A045625	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+import irvine.oeis.a005.A005418;
+
+/**
+ * A045625 Number of n-bead black-white reversible strings with fundamental period n.
+ * @author Sean A. Irvine
+ */
+public class A045625 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045625() {
+    super($(OFFSET), new A005418(), 1, Z.ONE);
+  }
+}
+#!queue	A045627	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+import irvine.oeis.a032.A032123;
+
+/**
+ * A045627 Number of 2n-bead black-white reversible strings with n black beads and fundamental period 2n.
+ * @author Sean A. Irvine
+ */
+public class A045627 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045627() {
+    super($(OFFSET), new A032123(), 1, Z.ONE);
+  }
+}
+#!queue	A045628	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+import irvine.oeis.a005.A005648;
+
+/**
+ * A045628 Number of 2n-bead black-white reversible necklaces with n black beads and fundamental period 2n.
+ * @author Sean A. Irvine
+ */
+public class A045628 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045628() {
+    super($(OFFSET), new A005648(), 1, Z.ONE);
+  }
+}
+#!queue	A045631	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A045631 Number of 2n-bead black-white reversible complementable strings with n black beads and fundamental period 2n.
+ * @author Sean A. Irvine
+ */
+public class A045631 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045631() {
+    super($(OFFSET), new A045723(), 1, Z.ONE);
+  }
+}
+#!queue	A045632	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A045632 Number of 2n-bead black-white complementable necklaces with n black beads and fundamental period 2n.
+ * @author Sean A. Irvine
+ */
+public class A045632 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045632() {
+    super($(OFFSET), new A045629(), 1, Z.ONE);
+  }
+}
+#!queue	A045633	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+import irvine.oeis.a006.A006840;
+
+/**
+ * A045633 Number of 2n-bead black-white reversible complementable necklaces with n black beads and fundamental period 2n.
+ * @author Sean A. Irvine
+ */
+public class A045633 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045633() {
+    super($(OFFSET), new A006840(), 1, Z.ONE);
+  }
+}
+#!queue	A045635	0	->	1	ConvolutionSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.oeis.ConvolutionSequence;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.a002.A002212;
+
+/**
+ * A045635 Catafusenes (see references for precise definition).
+ * @author Sean A. Irvine
+ */
+public class A045635 extends ConvolutionSequence {
+
+  private static final class MySequence extends PrependSequence {
+    private MySequence() {
+      super(1, new A002212().skip(1), 0);
+    }
+  }
+
+  /** Construct the sequence. */
+  public A045635() {
+    super($(OFFSET), new MySequence(), new ConvolutionSequence(new MySequence(), new MySequence()));
+    next();
+  }
+}
+#!queue	A045680	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+import irvine.oeis.a128.A128014;
+
+/**
+ * A045680 Number of 2n-bead balanced binary necklaces of fundamental period 2n equivalent to reverse.
+ * @author Sean A. Irvine
+ */
+public class A045680 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045680() {
+    super($(OFFSET), new A128014(), 1, Z.ONE);
+  }
+}
+
+#!queue	A045683	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A045683 Number of 2n-bead balanced binary necklaces of fundamental period 2n which are equivalent to their reverse, complement and reversed complement.
+ * @author Sean A. Irvine
+ */
+public class A045683 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045683() {
+    super($(OFFSET), new A045674(), 1, Z.ONE);
+  }
+}
+
+#!queue	A045684	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A045684 Number of 2n-bead balanced binary necklaces of fundamental period 2n which are inequivalent to their reverse, complement and reversed complement.
+ * @author Sean A. Irvine
+ */
+public class A045684 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045684() {
+    super($(OFFSET), new A045675(), 1);
+  }
+}
+
+#!queue	A045685	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A045685 Number of 2n-bead balanced binary necklaces of fundamental period 2n which are equivalent to their reverse, but not equivalent to their complement and reversed complement.
+ * @author Sean A. Irvine
+ */
+public class A045685 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045685() {
+    super($(OFFSET), new A045676(), 1);
+  }
+}
+
+#!queue	A045686	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A045686 Number of 2n-bead balanced binary necklaces of fundamental period 2n which are equivalent to their complement, but not equivalent to their reverse and their reversed complement.
+ * @author Sean A. Irvine
+ */
+public class A045686 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045686() {
+    super($(OFFSET), new A045677(), 1);
+  }
+}
+
+#!queue	A045687	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a045;
+
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A045687 Number of 2n-bead balanced binary necklaces of fundamental period 2n which are equivalent to their reversed complement, but are not equivalent to their reverse and complement.
+ * @author Sean A. Irvine
+ */
+public class A045687 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A045687() {
+    super($(OFFSET), new A045678(), 1);
+  }
+}
+
+#!queue	A046201	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046201 Distinct odd numbers in the triangle of denominators in Leibniz's Harmonic Triangle.
+ * @author Sean A. Irvine
+ */
+public class A046201 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046201() {
+    super($(OFFSET), new A046200());
+  }
+}
+#!queue	A046202	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+import irvine.oeis.a003.A003506;
+
+/**
+ * A046202 Distinct numbers in the triangle of denominators in Leibniz's Harmonic Triangle.
+ * @author Sean A. Irvine
+ */
+public class A046202 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046202() {
+    super($(OFFSET), new A003506());
+  }
+}
+#!queue	A046204	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046204 Distinct even numbers in the triangle of denominators in Leibniz's Harmonic Triangle.
+ * @author Sean A. Irvine
+ */
+public class A046204 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046204() {
+    super($(OFFSET), new A046203());
+  }
+}
+#!queue	A046220	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046220 Distinct numbers in writing first numerator and then denominator of 1/2-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046220 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046220() {
+    super($(OFFSET), new A046213());
+  }
+}
+#!queue	A046364	1	->	0	FilterSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.factor.factor.Jaguar;
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a071.A071904;
+
+/**
+ * A046364 Odd numbers whose sum of prime factors is prime (counted with multiplicity).
+ * @author Sean A. Irvine
+ */
+public class A046364 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A046364() {
+    super($(OFFSET), new A071904(), k -> Jaguar.factor(k).sopfr().isProbablePrime());
+  }
+}
+#!queue	A046541	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046541 Distinct numbers seen when writing first numerator and then denominator of each element of 1/3-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046541 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046541() {
+    super($(OFFSET), new A046534());
+  }
+}
+#!queue	A046545	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046545 Distinct numbers in writing first numerator and then denominator of the central elements of the 1/3-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046545 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046545() {
+    super($(OFFSET), new A046543());
+  }
+}
+#!queue	A046557	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046557 Distinct odd numbers in the numerators of the 1/3-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046557 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046557() {
+    super($(OFFSET), new A046542());
+  }
+}
+#!queue	A046559	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046559 Distinct even numbers in the numerators of the 1/3-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046559 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046559() {
+    super($(OFFSET), new A046558());
+  }
+}
+#!queue	A046560	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046560 Distinct numbers in writing first numerator and then denominator of each element to the right of the central elements of the 1/3-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046560 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046560() {
+    super($(OFFSET), new A046546());
+  }
+}
+#!queue	A046570	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046570 Distinct numbers in writing first numerator and then denominator of each element of the 1/4-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046570 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046570() {
+    super($(OFFSET), new A046563());
+  }
+}
+#!queue	A046574	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046574 Distinct numbers in writing first numerator and then denominator of the central elements of the 1/4-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046574 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046574() {
+    super($(OFFSET), new A046572());
+  }
+}
+#!queue	A046586	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046586 Distinct odd numbers in the numerators of the 1/4-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046586 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046586() {
+    super($(OFFSET), new A046571());
+  }
+}
+#!queue	A046588	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046588 Distinct numbers in writing first numerator and then denominator of each element to the right of the central elements of the 1/4-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046588 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046588() {
+    super($(OFFSET), new A046575());
+  }
+}
+#!queue	A046589	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046589 Distinct even numbers in writing first numerator and then denominator of each element of the 1/4-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046589 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046589() {
+    super($(OFFSET), new A046587());
+  }
+}
+#!queue	A046608	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046608 Distinct numbers in writing first numerator and then denominator of each element of the 1/5-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046608 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046608() {
+    super($(OFFSET), new A046601());
+  }
+}
+#!queue	A046612	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046612 Distinct numbers in writing first numerator and then denominator of the central elements of the 1/5-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046612 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046612() {
+    super($(OFFSET), new A046611());
+  }
+}
+#!queue	A046624	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046624 Distinct odd numbers in the numerators of the 1/5-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046624 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046624() {
+    super($(OFFSET), new A046609());
+  }
+}
+#!queue	A046626	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046626 Distinct even numbers in the numerators of the 1/5-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046626 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046626() {
+    super($(OFFSET), new A046625());
+  }
+}
+#!queue	A046627	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A046627 Distinct numbers in writing first numerator and then denominator of each element to the right of the central elements of the 1/5-Pascal triangle (by row).
+ * @author Sean A. Irvine
+ */
+public class A046627 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A046627() {
+    super($(OFFSET), new A046613());
+  }
+}
+#!queue	A048148	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a048;
+
+import irvine.oeis.DistinctSequence;
+import irvine.oeis.a045.A045948;
+
+/**
+ * A048148 Distinct elements of A045948.
+ * @author Sean A. Irvine
+ */
+public class A048148 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A048148() {
+    super($(OFFSET), new A045948());
+  }
+}
+
+#!queue	A048802	0	->	1	Stirling2TransformSequence	--------------------------------
+package irvine.oeis.a048;
+
+import irvine.oeis.PrependSequence;
+import irvine.oeis.transform.Stirling2TransformSequence;
+import irvine.oeis.a000.A000169;
+
+/**
+ * A048802 Number of labeled rooted trees of nonempty sets with n points. (Each node is a set of 1 or more points.).
+ * @author Sean A. Irvine
+ */
+public class A048802 extends Stirling2TransformSequence {
+
+  /** Construct the sequence. */
+  public A048802() {
+    super($(OFFSET), new PrependSequence(new A000169(), 0), 0);
+    next();
+  }
+}
+#!queue	A050463	0	->	1	Sequence0	--------------------------------
+package irvine.oeis.a050;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+
+/**
+ * A050463 a(n) = Sum_{d|n, n/d=1 mod 4} d^4.
+ * @author Sean A. Irvine
+ */
+public class A050463 extends Sequence1 {
+
+  private long mN = 0;
+
+  @Override
+  public Z next() {
+    Z sum = Z.ZERO;
+    for (final Z d : Jaguar.factor(++mN).divisors()) {
+      if (d.mod(4) == 1) {
+        sum = sum.add(Z.valueOf(mN / d.longValue()).pow(4));
+      }
+    }
+    return sum;
+  }
+}
+#!queue	A050614	1	->	0	DistinctMultiplicativeClosureSequence	--------------------------------
+package irvine.oeis.a050;
+
+import irvine.oeis.DistinctMultiplicativeClosureSequence;
+import irvine.oeis.a001.A001566;
+
+/**
+ * A050614 Products of distinct terms of A001566: a(n) = Product_{i=0..floor(log_2(n+1))} L(2^(i+1))^bit(n,i).
+ * @author Sean A. Irvine
+ */
+public class A050614 extends DistinctMultiplicativeClosureSequence {
+
+  /** Construct the sequence. */
+  public A050614() {
+    super($(OFFSET), new A001566());
+  }
+}
+#!queue	A051730	1	->	0	RecordSequence	--------------------------------
+package irvine.oeis.a051;
+
+import irvine.oeis.RecordSequence;
+
+/**
+ * A051730 Distance from A051650(n) to nearest prime.
+ * @author Sean A. Irvine
+ */
+public class A051730 extends RecordSequence {
+
+  /** Construct the sequence. */
+  public A051730() {
+    super($(OFFSET), new A051700());
+  }
+}
+#!queue	A051860	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a051;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A051860 Prime numbers in order of their appearance in A051686.
+ * @author Sean A. Irvine
+ */
+public class A051860 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A051860() {
+    super($(OFFSET), new A051686());
+  }
+}
+#!queue	A052467	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a052;
+
+import irvine.oeis.transform.BinomialTransformSequence;
+import irvine.oeis.a010.A010051;
+
+/**
+ * A052467 Binomial transform of {b(n)}, where b(n)=1 for prime n and b(n)=0 otherwise.
+ * @author Sean A. Irvine
+ */
+public class A052467 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A052467() {
+    super($(OFFSET), new A010051(), 0);
+  }
+}
+#!queue	A054058	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000031;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A054058 Inverse Moebius transform of A000031 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054058 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054058() {
+    super($(OFFSET), new A000031(), 0);
+    next();
+  }
+}
+#!queue	A054079	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000031;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A054079 Moebius transform of A000031 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054079 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054079() {
+    super($(OFFSET), new A000031(), 0);
+    next();
+  }
+}
+#!queue	A054080	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a001.A001037;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A054080 Inverse Moebius transform of A001037 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054080 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054080() {
+    super($(OFFSET), new A001037(), 0);
+    next();
+  }
+}
+#!queue	A054089	0	->	1	AlternatingSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.AlternatingSequence;
+import irvine.oeis.a026.A026351;
+import irvine.oeis.a026.A026352;
+
+/**
+ * A054089 For k &gt;= 1, let p(k)=least h in N not already an a(i), q(k)=p(k)+k, a(2k)=q(k), a(2k+1)=p(k).
+ * @author Sean A. Irvine
+ */
+public class A054089 extends AlternatingSequence {
+
+  /** Construct the sequence. */
+  public A054089() {
+    super($(OFFSET), new A026351(), new A026352().skip(1));
+  }
+}
+#!queue	A054154	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a001.A001037;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A054154 Moebius transform of A001037 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054154 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054154() {
+    super($(OFFSET), new A001037(), 0);
+    next();
+  }
+}
+#!queue	A054155	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000029;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A054155 Inverse Moebius transform of A000029 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054155 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054155() {
+    super($(OFFSET), new A000029(), 0);
+    next();
+  }
+}
+#!queue	A054156	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000029;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A054156 Moebius transform of A000029 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054156 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054156() {
+    super($(OFFSET), new A000029(), 0);
+    next();
+  }
+}
+#!queue	A054158	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a001.A001371;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A054158 Inverse Moebius transform of A001371 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054158 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054158() {
+    super($(OFFSET), new A001371(), 0);
+    next();
+  }
+}
+#!queue	A054160	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a001.A001371;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A054160 Moebius transform of A001371 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054160 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054160() {
+    super($(OFFSET), new A001371(), 0);
+    next();
+  }
+}
+#!queue	A054168	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000013;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A054168 Inverse Moebius transform of A000013 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054168 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054168() {
+    super($(OFFSET), new A000013(), 0);
+    next();
+  }
+}
+#!queue	A054170	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000013;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A054170 Moebius transform of A000013 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054170 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054170() {
+    super($(OFFSET), new A000013(), 0);
+    next();
+  }
+}
+#!queue	A054172	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000048;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A054172 Inverse Moebius transform of A000048 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054172 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054172() {
+    super($(OFFSET), new A000048(), 0);
+    next();
+  }
+}
+#!queue	A054174	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000048;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A054174 Moebius transform of A000048 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054174 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054174() {
+    super($(OFFSET), new A000048(), 0);
+    next();
+  }
+}
+#!queue	A054181	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000011;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A054181 Inverse Moebius transform of A000011 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054181 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054181() {
+    super($(OFFSET), new A000011(), 0);
+    next();
+  }
+}
+#!queue	A054183	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a000.A000011;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A054183 Moebius transform of A000011 (starting at term 0).
+ * @author Sean A. Irvine
+ */
+public class A054183 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A054183() {
+    super($(OFFSET), new A000011(), 0);
+    next();
+  }
+}
+#!queue	A054642	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A054642 Distinct values of GCD of divisor sum of primorials and primorial itself: gcd(A002110(n), A000203(A002110(n))).
+ * @author Sean A. Irvine
+ */
+public class A054642 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A054642() {
+    super($(OFFSET), new A054641());
+  }
+}
+#!queue	A054910	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a000.A000566;
+
+/**
+ * A054910 Palindromic heptagonal numbers.
+ * @author Sean A. Irvine
+ */
+public class A054910 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A054910() {
+    super($(OFFSET), new A000566(), PALINDROME);
+  }
+}
+#!queue	A054952	0	->	1	WeighTransformSequence	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.oeis.a035.A035512;
+import irvine.oeis.transform.WeighTransformSequence;
+
+/**
+ * A054952 Number of unlabeled semi-strong digraphs on n nodes with pairwise different components.
+ * @author Sean A. Irvine
+ */
+public class A054952 extends WeighTransformSequence {
+
+  /** Construct the sequence. */
+  public A054952() {
+    super($(OFFSET), new A035512());
+    next();
+  }
+}
+#!queue	A055563	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a055;
+
+import irvine.math.z.Z;
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a022.A022424;
+
+/**
+ * A055563 a(n) = least number greater than a(n-1) not the sum of an earlier pair of consecutive terms, a(0) = 3.
+ * @author Sean A. Irvine
+ */
+public class A055563 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A055563() {
+    super($(OFFSET), new A022424(), Z.THREE);
+  }
+}
+#!queue	A055890	1	->	0	CycleTransformSequence	--------------------------------
+package irvine.oeis.a055;
+
+import irvine.oeis.a000.A000041;
+import irvine.oeis.transform.CycleTransformSequence;
+
+/**
+ * A055890 CIK transform of partition numbers A000041.
+ * @author Sean A. Irvine
+ */
+public class A055890 extends CycleTransformSequence {
+
+  /** Construct the sequence. */
+  public A055890() {
+    super($(OFFSET), new A000041(), 1);
+  }
+}
+#!queue	A055891	1	->	0	CycleTransformSequence	--------------------------------
+package irvine.oeis.a055;
+
+import irvine.oeis.a000.A000079;
+import irvine.oeis.transform.CycleTransformSequence;
+
+/**
+ * A055891 CIK (necklace, indistinct, unlabeled) transform of powers of 2.
+ * @author Sean A. Irvine
+ */
+public class A055891 extends CycleTransformSequence {
+
+  /** Construct the sequence. */
+  public A055891() {
+    super($(OFFSET), new A000079(), 1);
+  }
+}
+#!queue	A056222	1	->	0	LittleHankelTransform	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.oeis.a000.A000041;
+import irvine.oeis.transform.LittleHankelTransform;
+
+/**
+ * A056222 Image of partition numbers (A000041) under "little Hankel" transform that sends [c_0, c_1, ...] to [d_0, d_1, ...] where d_n = c_n^2 - c_{n+1}*c_{n-1}.
+ * @author Sean A. Irvine
+ */
+public class A056222 extends LittleHankelTransform {
+
+  /** Construct the sequence. */
+  public A056222() {
+    super($(OFFSET), new A000041());
+  }
+}
+#!queue	A056362	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A056362 Number of primitive (period n) bracelet structures using a maximum of three different colored beads.
+ * @author Sean A. Irvine
+ */
+public class A056362 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A056362() {
+    super($(OFFSET), new A056353(), 1, Z.ONE);
+  }
+}
+#!queue	A056363	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A056363 Number of primitive (period n) bracelet structures using a maximum of four different colored beads.
+ * @author Sean A. Irvine
+ */
+public class A056363 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A056363() {
+    super($(OFFSET), new A056354(), 1, Z.ONE);
+  }
+}
+#!queue	A056364	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A056364 Number of primitive (period n) bracelet structures using a maximum of five different colored beads.
+ * @author Sean A. Irvine
+ */
+public class A056364 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A056364() {
+    super($(OFFSET), new A056355(), 1, Z.ONE);
+  }
+}
+#!queue	A056365	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A056365 Number of primitive (period n) bracelet structures using a maximum of six different colored beads.
+ * @author Sean A. Irvine
+ */
+public class A056365 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A056365() {
+    super($(OFFSET), new A056356(), 1, Z.ONE);
+  }
+}
+#!queue	A057107	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a057;
+
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a000.A000567;
+
+/**
+ * A057107 Octagonal palindromes.
+ * @author Sean A. Irvine
+ */
+public class A057107 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A057107() {
+    super($(OFFSET), new A000567(), PALINDROME);
+  }
+}
+#!queue	A057215	1	->	0	MorphismTransform	--------------------------------
+package irvine.oeis.a057;
+// Generated by gen_seq4.pl mortra at 2021-09-23 21:42
+
+import irvine.oeis.base.MorphismTransform;
+import irvine.oeis.a026.A026600;
+
+/**
+ * A057215 [1-&gt;01, 2-&gt;10, 3-&gt;01]-transform of 3-symbol Thue-Morse A026600.
+ * @author Georg Fischer
+ */
+public class A057215 extends MorphismTransform {
+
+  /** Construct the sequence. */
+  public A057215() {
+    super($(OFFSET), new A026600(), "1->01, 2->10, 3->01");
+  }
+}
+#!queue	A057716	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a057;
+
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a000.A000079;
+
+/**
+ * A057716 The nonpowers of 2.
+ * @author Sean A. Irvine
+ */
+public class A057716 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A057716() {
+    super($(OFFSET), new A000079());
+  }
+}
+#!queue	A057717	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a057;
+
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a011.A011557;
+
+/**
+ * A057717 The non-powers of 10.
+ * @author Sean A. Irvine
+ */
+public class A057717 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A057717() {
+    super($(OFFSET), new A011557());
+  }
+}
+#!queue	A057961	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a057;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A057961 Number of points in square lattice covered by a disc centered at (0,0) as its radius increases.
+ * @author Sean A. Irvine
+ */
+public class A057961 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A057961() {
+    super($(OFFSET), new A057655());
+  }
+}
+#!queue	A058065	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a058;
+// manually compseq at 2021-09-27 19:03
+
+import irvine.math.z.Z;
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a057.A057843;
+/**
+ * A058065 Complement of A057843.
+ * @author Georg Fischer
+ */
+public class A058065 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A058065() {
+    super($(OFFSET), new A057843(), Z.ZERO);
+  }
+}
+#!queue	A058068	1	->	0	ContinuedFractionDenominatorSequence	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.math.cr.CR;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a033.A033307;
+import irvine.oeis.cons.ContinuedFractionDenominatorSequence;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A058068 Denominators of convergents to Champernowne constant (A033307).
+ * @author Sean A. Irvine
+ */
+public class A058068 extends ContinuedFractionDenominatorSequence {
+
+  static final CR CHAMPERKNOWNE_CONSTANT = new CR() {
+    private final Sequence mChamperknowne = new A033307();
+    private Z mA = Z.ZERO;
+    private Z mB = Z.ONE;
+
+    @Override
+    protected Z approximate(final int precision) {
+      while (mA.bitLength() <= -precision) {
+        mA = mA.multiply(10).add(mChamperknowne.next());
+        mB = mB.multiply(10);
+      }
+      return scale(mA, -precision).divide(mB);
+    }
+  };
+
+  /** Construct the sequence. */
+  public A058068() {
+    super($(OFFSET), new DecimalExpansionSequence(CHAMPERKNOWNE_CONSTANT));
+  }
+}
+#!queue	A058069	1	->	0	ContinuedFractionNumeratorSequence	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.oeis.cons.ContinuedFractionNumeratorSequence;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A058069 Numerators of convergents to Champernowne constant (A033307).
+ * @author Sean A. Irvine
+ */
+public class A058069 extends ContinuedFractionNumeratorSequence {
+
+  /** Construct the sequence. */
+  public A058069() {
+    super($(OFFSET), new DecimalExpansionSequence(A058068.CHAMPERKNOWNE_CONSTANT));
+  }
+}
+#!queue	A058255	0	->	1	DistinctSequence	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.oeis.DistinctSequence;
+
+/**
+ * A058255 Distinct values of lcm_{i=1..n} (p(i)-1), where p() are the primes.
+ * @author Sean A. Irvine
+ */
+public class A058255 extends DistinctSequence {
+
+  /** Construct the sequence. */
+  public A058255() {
+    super($(OFFSET), new A058254());
+  }
+}
+#!queue	A058275	1	->	0	ParallelGenerateGraphsSequence	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.math.graph.Graph;
+import irvine.math.nauty.GenerateGraphs;
+import irvine.math.z.Z;
+import irvine.oeis.ParallelGenerateGraphsSequence;
+
+/**
+ * A058275 Number of connected 5-regular simple graphs on 2n vertices with girth at least 4.
+ * @author Sean A. Irvine
+ */
+public class A058275 extends ParallelGenerateGraphsSequence {
+
+  private boolean mFirst = true;
+
+  /** Construct the sequence. */
+  public A058275() {
+    super($(OFFSET), 0, 0, false, false, false);
+  }
+
+  @Override
+  protected long getCount(final Graph graph) {
+    return graph.order() == 0 || graph.girth() >= 4 ? 1 : 0;
+  }
+
+  @Override
+  protected void graphGenInit(final GenerateGraphs gg) {
+    gg.setVertices(mN);
+    gg.setMinEdges(5 * mN / 2);
+    gg.setMaxEdges(5 * mN / 2);
+    gg.setMinDeg(5);
+    gg.setMaxDeg(5);
+    gg.setConnectionLevel(1);
+  }
+
+  @Override
+  protected void init(final int n) {
+    ++mN;
+  }
+
+  @Override
+  public Z next() {
+    if (mFirst) {
+      mFirst = false;
+      return Z.ONE;
+    }
+    return super.next();
+  }
+
+}
+#!queue	A058276	1	->	0	ParallelGenerateGraphsSequence	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.math.graph.Graph;
+import irvine.math.nauty.GenerateGraphs;
+import irvine.math.z.Z;
+import irvine.oeis.ParallelGenerateGraphsSequence;
+
+/**
+ * A058276 Number of connected 6-regular simple graphs on n vertices with girth at least 4.
+ * @author Sean A. Irvine
+ */
+public class A058276 extends ParallelGenerateGraphsSequence {
+
+  private boolean mFirst = true;
+
+  /** Construct the sequence. */
+  public A058276() {
+    super($(OFFSET), 0, 0, false, false, false);
+  }
+
+  @Override
+  protected long getCount(final Graph graph) {
+    return graph.order() == 0 || graph.girth() >= 4 ? 1 : 0;
+  }
+
+  @Override
+  protected void graphGenInit(final GenerateGraphs gg) {
+    gg.setVertices(mN);
+    gg.setMinEdges(3 * mN);
+    gg.setMaxEdges(3 * mN);
+    gg.setMinDeg(6);
+    gg.setMaxDeg(6);
+    gg.setConnectionLevel(1);
+  }
+
+  @Override
+  public Z next() {
+    if (mFirst) {
+      mFirst = false;
+      return Z.ONE;
+    }
+    return super.next();
+  }
+}
+#!queue	A058343	1	->	0	ParallelGenerateGraphsSequence	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.math.graph.Graph;
+import irvine.math.nauty.GenerateGraphs;
+import irvine.math.z.Z;
+import irvine.oeis.ParallelGenerateGraphsSequence;
+
+/**
+ * A058343 Number of connected 4-regular simple graphs on n vertices with girth at least 5.
+ * @author Sean A. Irvine
+ */
+public class A058343 extends ParallelGenerateGraphsSequence {
+
+  private boolean mFirst = true;
+
+  /** Construct the sequence. */
+  public A058343() {
+    super($(OFFSET), 0, 0, false, false, false);
+  }
+
+  @Override
+  protected long getCount(final Graph graph) {
+    return graph.order() == 0 || graph.girth() >= 5 ? 1 : 0;
+  }
+
+  @Override
+  protected void graphGenInit(final GenerateGraphs gg) {
+    gg.setVertices(mN);
+    gg.setMinEdges(2 * mN);
+    gg.setMaxEdges(2 * mN);
+    gg.setMinDeg(4);
+    gg.setMaxDeg(4);
+    gg.setConnectionLevel(1);
+  }
+
+  @Override
+  public Z next() {
+    if (mFirst) {
+      mFirst = false;
+      return Z.ONE;
+    }
+    return super.next();
+  }
+
+}
+#!queue	A058348	1	->	0	ParallelGenerateGraphsSequence	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.math.graph.Graph;
+import irvine.math.nauty.GenerateGraphs;
+import irvine.math.z.Z;
+import irvine.oeis.ParallelGenerateGraphsSequence;
+
+/**
+ * A058348 Number of connected 4-regular simple graphs on n vertices with girth at least 6.
+ * @author Sean A. Irvine
+ */
+public class A058348 extends ParallelGenerateGraphsSequence {
+
+  private boolean mFirst = true;
+
+  /** Construct the sequence. */
+  public A058348() {
+    super($(OFFSET), 0, 0, false, false, false);
+  }
+
+  @Override
+  protected long getCount(final Graph graph) {
+    return graph.order() == 0 || graph.girth() >= 6 ? 1 : 0;
+  }
+
+  @Override
+  protected void graphGenInit(final GenerateGraphs gg) {
+    gg.setVertices(mN);
+    gg.setMinEdges(2 * mN);
+    gg.setMaxEdges(2 * mN);
+    gg.setMinDeg(4);
+    gg.setMaxDeg(4);
+    gg.setConnectionLevel(1);
+  }
+
+  @Override
+  public Z next() {
+    if (mFirst) {
+      mFirst = false;
+      return Z.ONE;
+    }
+    return super.next();
+  }
+
+}
+#!queue	A058631	1	->	0	ContinuedFractionSequence	--------------------------------
+package irvine.oeis.a058;
+// Generated by gen_seq4.pl cofrseq/cofr at 2022-02-27 23:17
+
+import irvine.oeis.a010.A010060;
+import irvine.oeis.cons.ContinuedFractionSequence;
+
+/**
+ * A058631 Continued fraction for the Morse-Thue constant .01101001100101101001... formed from A010060.
+ * @author Georg Fischer.
+ */
+public class A058631 extends ContinuedFractionSequence {
+
+  /** Construct the sequence */
+  public A058631() {
+    super(0, new A010060());
+  }
+}
+#!queue	A058982	1	->	0	RecordSequence	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.oeis.RecordSequence;
+
+/**
+ * A058982 Increasing values of the Improperly Reduced Fibonacci Sequence (A058981).
+ * @author Sean A. Irvine
+ */
+public class A058982 extends RecordSequence {
+
+  /** Construct the sequence. */
+  public A058982() {
+    super($(OFFSET), new A058981());
+  }
+}
+#!queue	A059590	1	->	0	DistinctAdditiveClosureSequence	--------------------------------
+package irvine.oeis.a059;
+
+import irvine.oeis.DistinctAdditiveClosureSequence;
+import irvine.oeis.a000.A000142;
+
+/**
+ * A059590 Numbers obtained by reinterpreting base-2 representation of n in the factorial base: a(n) = Sum_{k&gt;=0} A030308(n,k)*A000142(k+1).
+ * @author Sean A. Irvine
+ */
+public class A059590 extends DistinctAdditiveClosureSequence {
+
+  /** Construct the sequence. */
+  public A059590() {
+    super($(OFFSET), new A000142().skip(1));
+  }
+}
+#!queue	A060689	0	->	1	Combiner	--------------------------------
+package irvine.oeis.a060;
+
+import irvine.oeis.Combiner;
+import irvine.oeis.a000.A000001;
+import irvine.oeis.a000.A000688;
+
+/**
+ * A060689 Number of non-Abelian groups of order n.
+ * @author Sean A. Irvine
+ */
+public class A060689 extends Combiner {
+
+  /** Construct the sequence. */
+  public A060689() {
+    super($(OFFSET), new A000001().skip(1), new A000688(), SUBTRACT);
+  }
+}
+#!queue	A061305	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.factor.Jaguar;
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A061305 Squarefree Fibonacci numbers.
+ * @author Sean A. Irvine
+ */
+public class A061305 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A061305() {
+    super($(OFFSET), new A000045().skip(1), k -> Jaguar.factor(k).isSquareFree());
+  }
+}
+#!queue	A061560	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a005.A005728;
+
+/**
+ * A061560 Lengths of Farey-series (A005728) which are not primes.
+ * @author Sean A. Irvine
+ */
+public class A061560 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A061560() {
+    super($(OFFSET), new A005728(), NONPRIME);
+  }
+}
+#!queue	A061727	0	->	1	AlternatingSequence	--------------------------------
+package irvine.oeis.a061;
+// manually interleave at 2021-11-02 15:18
+
+import irvine.oeis.AlternatingSequence;
+import irvine.oeis.a000.A000217;
+
+/**
+ * A061727 A000217 interleaved with A061726.
+ * @author Georg Fischer
+ */
+public class A061727 extends AlternatingSequence {
+
+  /** Construct the sequence. */
+  public A061727() {
+    super($(OFFSET), new A000217().skip(1), new A061726());
+  }
+}
+#!queue	A061900	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.factor.Jaguar;
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a000.A000217;
+
+/**
+ * A061900 Triangular numbers that are not squarefree.
+ * @author Sean A. Irvine
+ */
+public class A061900 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A061900() {
+    super($(OFFSET), new A000217(), k -> !Jaguar.factor(k).isSquareFree());
+  }
+}
+#!queue	A062363	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a062;
+
+import irvine.oeis.a000.A000142;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A062363 a(n) = Sum_{d|n} d!.
+ * @author Sean A. Irvine
+ */
+public class A062363 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A062363() {
+    super($(OFFSET), new A000142(), 1);
+  }
+}
+#!queue	A062797	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a062;
+
+import irvine.oeis.a002.A002110;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A062797 Inverse Moebius transform of f(x) = primorial(x) = A002110(x).
+ * @author Sean A. Irvine
+ */
+public class A062797 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A062797() {
+    super($(OFFSET), new A002110(), 1);
+    next();
+  }
+}
+#!queue	A062798	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a062;
+
+import irvine.oeis.a001.A001405;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A062798 Inverse Moebius transform of central binomial coefficients f[x]=C(c,[x/2])=A001405[x].
+ * @author Sean A. Irvine
+ */
+public class A062798 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A062798() {
+    super($(OFFSET), new A001405(), 1);
+    next();
+  }
+}
+#!queue	A062819	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a062;
+
+import irvine.oeis.a000.A000396;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A062819 Values of inverse Moebius transform of perfect numbers, A000396.
+ * @author Sean A. Irvine
+ */
+public class A062819 extends InverseMobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A062819() {
+    super($(OFFSET), new A000396(), 0);
+    next();
+  }
+}
+#!queue	A063509	1	->	0	FilterSequence	--------------------------------
+package irvine.oeis.a063;
+
+import irvine.factor.factor.Jaguar;
+import irvine.oeis.FilterSequence;
+import irvine.oeis.a000.A000032;
+
+/**
+ * A063509 Squarefree Lucas numbers.
+ * @author Sean A. Irvine
+ */
+public class A063509 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A063509() {
+    super($(OFFSET), new A000032(), k -> Jaguar.factor(k).isSquareFree());
+  }
+}
+#!queue	A063934	0	->	1	AlternatingSequence	--------------------------------
+package irvine.oeis.a063;
+
+import irvine.oeis.AlternatingSequence;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.a000.A000040;
+import irvine.oeis.a024.A024675;
+
+/**
+ * A063934 Numbers which are either prime or the average of consecutive odd primes.
+ * @author Sean A. Irvine
+ */
+public class A063934 extends AlternatingSequence {
+
+  /** Construct the sequence. */
+  public A063934() {
+    super($(OFFSET), new PrependSequence(new A024675(), 2), new A000040().skip(1));
+  }
+}
+#!queue	A064085	0	->	1	Combiner	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.oeis.Combiner;
+import irvine.oeis.a000.A000225;
+
+/**
+ * A064085 Quotient of A000225 and A064084.
+ * @author Sean A. Irvine
+ */
+public class A064085 extends Combiner {
+
+  /** Construct the sequence. */
+  public A064085() {
+    super($(OFFSET), new A000225().skip(1), new A064084(), DIVIDE);
+  }
+}
+#!queue	A064086	0	->	1	FilterSequence	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.math.z.Z;
+import irvine.oeis.FilterSequence;
+
+/**
+ * A064086 Condensed version of A064085: all terms of A064085 with values greater than 1 (which coincides with all terms of A064085 with nonprime power index).
+ * @author Sean A. Irvine
+ */
+public class A064086 extends FilterSequence {
+
+  /** Construct the sequence. */
+  public A064086() {
+    super($(OFFSET), new A064085(), k -> k.compareTo(Z.ONE) > 0);
+  }
+}
+#!queue	A064291	1	->	0	RecordSequence	--------------------------------
+package irvine.oeis.a064;
+// Generated by gen_seq4.pl recordval at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.RecordSequence;
+import irvine.oeis.a005.A005132;
+
+/**
+ * A064291 Record high values in Recam\u00e1n's sequence A005132.
+ * @author Georg Fischer
+ */
+public class A064291 extends RecordSequence {
+
+  /** Construct the sequence. */
+  public A064291() {
+    super($(OFFSET), new A005132());
+  }
+}
+#!queue	A064406	1	->	0	PartialSumSequence	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.oeis.PartialSumSequence;
+
+/**
+ * A064406 Partial sums of A064405.
+ * @author Sean A. Irvine
+ */
+public class A064406 extends PartialSumSequence {
+
+  /** Construct the sequence. */
+  public A064406() {
+    super($(OFFSET), new A064405());
+  }
+}
+
+#!queue	A064442	0	->	1	DecimalExpansionFromContinuedFractionSequence	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.oeis.a000.A000040;
+import irvine.oeis.cons.DecimalExpansionFromContinuedFractionSequence;
+
+/**
+ * A064442 Decimal expansion of number with continued fraction expansion 2, 3, 5, 7, 11, 13, 17, 19, ... = 2.3130367364335829063839516 ...
+ * @author Sean A. Irvine
+ */
+public class A064442 extends DecimalExpansionFromContinuedFractionSequence {
+
+  /** Construct the sequence. */
+  public A064442() {
+    super($(OFFSET), new A000040());
+  }
+}
+#!queue	A064446	0	->	1	Combiner	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.math.z.Z;
+import irvine.oeis.Combiner;
+import irvine.oeis.a000.A000312;
+import irvine.oeis.a003.A003418;
+
+/**
+ * A064446 a(n) = gcd(n!, n^n, lcm(1, 2, ..., n)), or gcd(n^n, lcm(1, 2, ..., n)).
+ * @author Sean A. Irvine
+ */
+public class A064446 extends Combiner {
+
+  /** Construct the sequence. */
+  public A064446() {
+    super($(OFFSET), new A003418(), new A000312(), Z::gcd);
+    next();
+  }
+}
+#!queue	A064448	0	->	1	Combiner	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.math.z.Z;
+import irvine.oeis.Combiner;
+import irvine.oeis.a000.A000312;
+
+/**
+ * A064448 a(n) = gcd(n^n, EulerPhi(n^n)).
+ * @author Sean A. Irvine
+ */
+public class A064448 extends Combiner {
+
+  /** Construct the sequence. */
+  public A064448() {
+    super($(OFFSET), new A064447(), new A000312().skip(), Z::gcd);
+  }
+}
+#!queue	A065979	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a065;
+// Generated by gen_seq4.pl binomx at 2020-09-22 19:46
+// DO NOT EDIT here!
+
+import irvine.oeis.transform.BinomialTransformSequence;
+import irvine.oeis.a002.A002024;
+
+/**
+ * A065979 Binomial transform of A002024.
+ * @author Georg Fischer
+ */
+public class A065979 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A065979() {
+    super($(OFFSET), new A002024(), 0);
+  }
+}
+#!queue	A066396	1	->	-1	RevertTransformSequence	--------------------------------
+package irvine.oeis.a066;
+// Generated by gen_seq4.pl serrevas at 2021-05-02 19:34
+// DO NOT EDIT here!
+
+import irvine.oeis.transform.RevertTransformSequence;
+import irvine.oeis.a000.A000521;
+
+
+/**
+ * A066396 Reversion of j-function (see A000521).
+ * @author Georg Fischer
+ */
+public class A066396 extends RevertTransformSequence {
+
+  /** Construct the sequence. */
+  public A066396() {
+    super($(OFFSET), new A000521());
+  }
+}
+#!queue	A070058	1	->	-10	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a070;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A070058 Decimal expansion of Newton's gravitational constant in SI units.
+ * @author Sean A. Irvine
+ */
+public class A070058 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A070058() {
+    super($(OFFSET), PhysicsConstants.GRAVITATION_CONSTANT, PhysicsConstants.GRAVITATION_CONSTANT_UNC, true);
+  }
+}
+#!queue	A070059	1	->	-26	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a070;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A070059 Decimal expansion of proton mass (in kilograms).
+ * @author Sean A. Irvine
+ */
+public class A070059 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A070059() {
+    super($(OFFSET), PhysicsConstants.u2kg(PhysicsConstants.PROTON_MASS), PhysicsConstants.u2kg(PhysicsConstants.PROTON_MASS_UNC), true);
+  }
+}
+#!queue	A071014	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a071;
+// manually deris2/binomx at 2021-12-08 08:19
+
+import irvine.oeis.transform.BinomialTransformSequence;
+import irvine.oeis.a002.A002487;
+
+/**
+ * A071014 Binomial transform of A002487.
+ * @author Georg Fischer
+ */
+public class A071014 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A071014() {
+    super($(OFFSET), new A002487(), 2);
+  }
+}
+#!queue	A071015	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a071;
+// Generated by gen_seq4.pl invbinom at 2021-12-09 23:00
+
+import irvine.oeis.a002.A002487;
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A071015 Inverse binomial transform of A002487.
+ * @author Georg Fischer
+ */
+public class A071015 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A071015() {
+    super($(OFFSET), new A002487(), 2, true);
+  }
+}
+#!queue	A078301	1	->	-7	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a078;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A078301 Decimal expansion of Planck mass.
+ * @author Sean A. Irvine
+ */
+public class A078301 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A078301() {
+    super($(OFFSET), PhysicsConstants.PLANCK_MASS, PhysicsConstants.PLANCK_MASS_UNC, true);
+  }
+}
+#!queue	A080337	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a080;
+// manually binomx at 2021-12-07
+
+import irvine.oeis.transform.BinomialTransformSequence;
+import irvine.oeis.a002.A002872;
+
+/**
+ * A080337 Bisection of A080107.
+ * @author Georg Fischer
+ */
+public class A080337 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A080337() {
+    super($(OFFSET), new A002872(), 0);
+  }
+}
+#!queue	A081801	1	->	-30	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A081801 Decimal expansion of electron mass in kg.
+ * @author Sean A. Irvine
+ */
+public class A081801 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A081801() {
+    super($(OFFSET), PhysicsConstants.u2kg(PhysicsConstants.ELECTRON_MASS), PhysicsConstants.u2kg(PhysicsConstants.ELECTRON_MASS_UNC), true);
+  }
+}
+#!queue	A081820	1	->	-7	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A081820 Decimal expansion of the Stefan-Boltzmann constant sigma in the 2019 SI system in units Watt/(m^2*K^4).
+ * @author Sean A. Irvine
+ */
+public class A081820 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A081820() {
+    super($(OFFSET), PhysicsConstants.STEFAN_BOLTZMANN, PhysicsConstants.STEFAN_BOLTZMANN_UNC, true);
+  }
+}
+#!queue	A081821	1	->	8	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A081821 Rydberg constant, in inverse meters.
+ * @author Sean A. Irvine
+ */
+public class A081821 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A081821() {
+    super($(OFFSET), PhysicsConstants.RYDBERG, PhysicsConstants.RYDBERG_UNC);
+  }
+}
+#!queue	A094435	0	->	1	Transpose	--------------------------------
+package irvine.oeis.a094;
+// Generated by gen_seq4.pl transpose at 2023-06-02 09:39
+
+import irvine.oeis.triangle.Transpose;
+
+/**
+ * A094435 Triangular array read by rows: T(n,k) = Fibonacci(k)*C(n,k), k = 1...n; n&gt;=1.
+ * @author Georg Fischer
+ */
+public class A094435 extends Transpose {
+
+  /** Construct the sequence. */
+  public A094435() {
+    super($(OFFSET), new A094440());
+  }
+}
+#!queue	A094696	1	->	0	RecordSequence	--------------------------------
+package irvine.oeis.a094;
+// Generated by gen_seq4.pl recordval at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.RecordSequence;
+import irvine.oeis.a007.A007321;
+
+/**
+ * A094696 Records in A007321.
+ * @author Georg Fischer
+ */
+public class A094696 extends RecordSequence {
+
+  /** Construct the sequence. */
+  public A094696() {
+    super($(OFFSET), new A007321());
+  }
+}
+#!queue	A096346	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a096;
+// Generated by gen_seq4.pl compseq at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a004.A004128;
+
+/**
+ * A096346 Complement of A004128.
+ * @author Georg Fischer
+ */
+public class A096346 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A096346() {
+    super($(OFFSET), new A004128());
+  }
+}
+#!queue	A100442	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a100;
+// Generated by gen_seq4.pl binomx at 2020-09-22 19:46
+// DO NOT EDIT here!
+
+import irvine.oeis.transform.BinomialTransformSequence;
+import irvine.oeis.a003.A003418;
+
+/**
+ * A100442 Binomial transform of A003418.
+ * @author Georg Fischer
+ */
+public class A100442 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A100442() {
+    super($(OFFSET), new A003418(), 0);
+  }
+}
+#!queue	A101370	0	->	1	InverseBinomialTransformSequence	--------------------------------
+package irvine.oeis.a101;
+
+import irvine.math.z.Z;
+import irvine.oeis.transform.InverseBinomialTransformSequence;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.a007.A007322;
+
+/**
+ * A101370 Number of zero-one matrices with n ones and no zero rows or columns.
+ * @author Sean A. Irvine
+ */
+public class A101370 extends InverseBinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A101370() {
+    super($(OFFSET), new PrependSequence(new A007322(), Z.ZERO), 0);
+    next();
+  }
+}
+#!queue	A103838	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a103;
+// Generated by gen_seq4.pl compseq at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a001.A001671;
+
+/**
+ * A103838 Complement of A001671.
+ * @author Georg Fischer
+ */
+public class A103838 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A103838() {
+    super($(OFFSET), new A001671());
+    next();
+  }
+}
+#!queue	A104723	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a104;
+
+import irvine.oeis.a001.A001045;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A104723 Moebius transform of Jacobsthal numbers.
+ * @author Sean A. Irvine
+ */
+public class A104723 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A104723() {
+    super($(OFFSET), new A001045(), 1);
+  }
+}
+#!queue	A106462	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a106;
+// Generated by gen_seq4.pl invbinom/binomtf at 2021-12-09 23:00
+
+import irvine.oeis.a007.A007318;
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A106462 Binomial transform of A007318 (Pascal's triangle by rows).
+ * @author Georg Fischer
+ */
+public class A106462 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A106462() {
+    super($(OFFSET), new A007318(), 0);
+  }
+}
+#!queue	A107907	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a107;
+// Generated by gen_seq4.pl compseq at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a000.A000975;
+
+/**
+ * A107907 Numbers having consecutive zeros or consecutive ones in binary representation.
+ * @author Georg Fischer
+ */
+public class A107907 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A107907() {
+    super($(OFFSET), new A000975());
+  }
+}
+#!queue	A113062	1	->	0	InverseMobiusTransformSequence	--------------------------------
+package irvine.oeis.a113;
+
+import irvine.math.z.Z;
+import irvine.oeis.recur.PeriodicSequence;
+import irvine.oeis.transform.InverseMobiusTransformSequence;
+
+/**
+ * A113062 Expansion of theta series of hexagonal net with respect to a node.
+ * @author Georg Fischer
+ */
+public class A113062 extends InverseMobiusTransformSequence {
+
+  private long mN = -1;
+
+  /** Construct the sequence. */
+  public A113062() {
+    super($(OFFSET), new PeriodicSequence(3, -3, 3, 3, -3, -3, 3, -3, 0), 0);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return ++mN == 0 ? Z.ONE : super.next();
+  }
+}
+#!queue	A116451	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a116;
+// Generated by gen_seq4.pl compseq at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a029.A029744;
+
+/**
+ * A116451 Numbers having fewer prime factors than at least one smaller number.
+ * @author Georg Fischer
+ */
+public class A116451 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A116451() {
+    super($(OFFSET), new A029744());
+    next();
+  }
+}
+#!queue	A124839	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a124;
+// Generated by gen_seq4.pl invbinom at 2021-12-09 23:00
+
+import irvine.oeis.a008.A008683;
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A124839 Inverse binomial transform of the Moebius sequence {mu(k), k &gt;= 1}, A008683.
+ * @author Georg Fischer
+ */
+public class A124839 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A124839() {
+    super($(OFFSET), new A008683(), 0, true);
+  }
+}
+#!queue	A128334	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a128;
+// Generated by gen_seq4.pl binomx at 2021-05-28 22:45
+// DO NOT EDIT here!
+
+import irvine.oeis.transform.BinomialTransformSequence;
+import irvine.oeis.a000.A000594;
+
+/**
+ * A128334 Binomial transform of A000594.
+ *
+ * @author Georg Fischer
+ */
+public class A128334 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A128334() {
+    super($(OFFSET), new A000594(), 0);
+  }
+}
+#!queue	A128377	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a128;
+// Generated by gen_seq4.pl invbinom at 2021-12-09 23:00
+
+import irvine.oeis.a000.A000594;
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A128377 Inverse binomial transform of A000594 (assuming offset 0 in both sequences).
+ * @author Georg Fischer
+ */
+public class A128377 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A128377() {
+    super($(OFFSET), new A000594(), 0, true);
+  }
+}
+#!queue	A131439	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a131;
+// Generated by gen_seq4.pl invbinom at 2021-12-09 23:00
+
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A131439 Inverse binomial transform of A131438 (assuming zero offset in both sequences).
+ * @author Georg Fischer
+ */
+public class A131439 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A131439() {
+    super($(OFFSET), new A131438(), 0, true);
+  }
+}
+#!queue	A131763	1	->	0	RevertTransformSequence	--------------------------------
+package irvine.oeis.a131;
+// Generated by gen_seq4.pl serrevgf at 2021-05-02 19:34
+// DO NOT EDIT here!
+
+import irvine.oeis.recur.GeneratingFunctionSequence;
+import irvine.oeis.transform.RevertTransformSequence;
+
+
+/**
+ * A131763 Series reversion of x*(1-4x)/(1-x) is x*A(x) where A(x) is the generating function.
+ * @author Georg Fischer
+ */
+public class A131763 extends RevertTransformSequence {
+
+  /** Construct the sequence. */
+  public A131763() {
+    super($(OFFSET), new GeneratingFunctionSequence(new long[]{1, -4}, new long[]{1, -1}));
+  }
+}
+#!queue	A134513	0	->	1	Product	--------------------------------
+package irvine.oeis.a134;
+
+import irvine.math.z.Z;
+import irvine.oeis.a049.A049310;
+import irvine.oeis.a097.A097806;
+import irvine.oeis.transform.SimpleTransformSequence;
+import irvine.oeis.triangle.Product;
+
+/**
+ * A134513 A049310 * A097806.
+ * @author Georg Fischer
+ */
+public class A134513 extends Product {
+
+  /** Construct the sequence. */
+  public A134513() {
+    super($(OFFSET), new SimpleTransformSequence(new A049310(), Z::abs), new A097806());
+  }
+}
+#!queue	A135224	1	->	0	Product	--------------------------------
+package irvine.oeis.a135;
+// manually triprom/tripro3 at 2023-06-01 20:27
+
+import irvine.oeis.a000.A000012;
+import irvine.oeis.a007.A007318;
+import irvine.oeis.a103.A103451;
+import irvine.oeis.triangle.Product;
+
+/**
+ * A135224 Triangle A103451 * A007318 * A000012, read by rows. T(n, k) for 0 &lt;= k &lt;= n.
+ * @author Georg Fischer
+ */
+public class A135224 extends Product {
+
+  /** Construct the sequence. */
+  public A135224() {
+    super($(OFFSET), new Product(0, new A103451(), new A007318()), new A000012());
+  }
+}
+#!queue	A136282	0	->	1	BinomialTransformSequence	--------------------------------
+package irvine.oeis.a136;
+// manually (binomx) at 2021-06-28 
+
+import irvine.oeis.a110.A110041;
+import irvine.oeis.transform.BinomialTransformSequence;
+
+/**
+ * A136282 Number of graphs on n labeled nodes with degree at most 3.
+ * @author Georg Fischer
+ */
+public class A136282 extends BinomialTransformSequence {
+
+  /** Construct the sequence. */
+  public A136282() {
+    super($(OFFSET), new A110041(), 0);
+    skip();
+  }
+}
+#!queue	A143980	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a143;
+// manually invbinom/binomtf at 2021-12-09 12:26
+
+import irvine.oeis.PrependSequence;
+import irvine.oeis.a079.A079260;
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A143980 Binomial transform of A079260.
+ * @author Georg Fischer
+ */
+public class A143980 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A143980() {
+    super($(OFFSET), new PrependSequence(new A079260(), 0));
+    next();
+  }
+}
+#!queue	A143982	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a143;
+// manually invbinom/binomtf at 2021-12-09 12:26
+
+import irvine.oeis.PrependSequence;
+import irvine.oeis.a079.A079261;
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A143982 Binomial transform of A079261.
+ * @author Georg Fischer
+ */
+public class A143982 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A143982() {
+    super($(OFFSET), new PrependSequence(new A079261(), 0));
+    next();
+  }
+}
+#!queue	A147658	0	->	1	AlternatingSequence	--------------------------------
+package irvine.oeis.a147;
+// manually interleave at 2021-11-02 15:18
+
+import irvine.oeis.AlternatingSequence;
+import irvine.oeis.recur.LinearRecurrence;
+import irvine.oeis.recur.PeriodicSequence;
+
+/**
+ * A147658 (1, 2, -4, 6, -8, ...) interleaved with (3, -3, 3, -3, 3, ...).
+ * @author Georg Fischer
+ */
+public class A147658 extends AlternatingSequence {
+
+  /** Construct the sequence. */
+  public A147658() {
+    super($(OFFSET), new LinearRecurrence(new long[] {-1, -2}, new long[] {2, -4}, 1), new PeriodicSequence("3,-3"));
+  }
+}
+#!queue	A163765	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a163;
+// Generated by gen_seq4.pl invbinom at 2021-12-09 23:00
+
+import irvine.oeis.a048.A048775;
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A163765 Inverse binomial transform of A048775 (assuming offset zero in both sequences).
+ * @author Georg Fischer
+ */
+public class A163765 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A163765() {
+    super($(OFFSET), new A048775(), 0, true);
+  }
+}
+#!queue	A163999	1	->	5	DoubleDecimalExpansionSequence	--------------------------------
+package irvine.oeis.a163;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DoubleDecimalExpansionSequence;
+
+/**
+ * A163999 Decimal expansion of the Faraday constant according to the 2019 SI system.
+ * @author Sean A. Irvine
+ */
+public class A163999 extends DoubleDecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A163999() {
+    super($(OFFSET), PhysicsConstants.FARADAY, PhysicsConstants.FARADAY_UNC, true);
+  }
+}
+#!queue	A164981	0	->	1	Transpose	--------------------------------
+package irvine.oeis.a164;
+// Generated by gen_seq4.pl transpose at 2023-06-02 15:26
+
+import irvine.oeis.a210.A210557;
+import irvine.oeis.triangle.Transpose;
+
+/**
+ * A164981 A triangle with Pell numbers in the first column.
+ * @author Georg Fischer
+ */
+public class A164981 extends Transpose {
+
+  /** Construct the sequence. */
+  public A164981() {
+    super($(OFFSET), new A210557());
+  }
+}
+#!queue	A165593	1	->	0	FilterPositionSequence	--------------------------------
+package irvine.oeis.a165;
+// Generated by gen_seq4.pl posins at 2023-06-02 16:07
+
+import irvine.oeis.FilterPositionSequence;
+
+/**
+ * A165593 Positions of zeros in A165592.
+ * @author Georg Fischer
+ */
+public class A165593 extends FilterPositionSequence {
+
+  /** Construct the sequence. */
+  public A165593() {
+    super($(OFFSET), 0, new A165592(), 0);
+  }
+}
+#!queue	A165598	1	->	0	FilterPositionSequence	--------------------------------
+package irvine.oeis.a165;
+// Generated by gen_seq4.pl posins at 2023-06-02 16:07
+
+import irvine.oeis.FilterPositionSequence;
+
+/**
+ * A165598 Positions of zeros in A165597.
+ * @author Georg Fischer
+ */
+public class A165598 extends FilterPositionSequence {
+
+  /** Construct the sequence. */
+  public A165598() {
+    super($(OFFSET), 0, new A165597(), 0);
+  }
+}
+#!queue	A183869	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a183;
+// Generated by gen_seq4.pl compseq at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a004.A004116;
+
+/**
+ * A183869 n+floor(sqrt(4n+5)); complement of A004116.
+ * @author Georg Fischer
+ */
+public class A183869 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A183869() {
+    super($(OFFSET), new A004116());
+    next();
+  }
+}
+#!queue	A185966	1	->	0	RevertTransformSequence	--------------------------------
+package irvine.oeis.a185;
+// Generated by gen_seq4.pl serrevas at 2021-05-02 19:34
+// DO NOT EDIT here!
+
+import irvine.oeis.transform.RevertTransformSequence;
+import irvine.oeis.a028.A028310;
+
+
+/**
+ * A185966 Series reversion of A028310.
+ * @author Georg Fischer
+ */
+public class A185966 extends RevertTransformSequence {
+
+  /** Construct the sequence. */
+  public A185966() {
+    super($(OFFSET), new A028310());
+  }
+}
+#!queue	A194451	0	->	1	AlternatingSequence	--------------------------------
+package irvine.oeis.a194;
+// manually interleave at 2021-11-02 15:18
+
+import irvine.oeis.AlternatingSequence;
+import irvine.oeis.a000.A000027;
+import irvine.oeis.a000.A000041;
+
+/**
+ * A194451 Partition numbers of positive integers and positive integers interleaved.
+ * @author Georg Fischer
+ */
+public class A194451 extends AlternatingSequence {
+
+  /** Construct the sequence. */
+  public A194451() {
+    super($(OFFSET), new A000041().skip(1), new A000027());
+  }
+}
+#!queue	A196161	0	->	1	BinomialTransform	--------------------------------
+package irvine.oeis.a196;
+// Generated by gen_seq4.pl invbinom/binomtf at 2021-12-09 23:00
+
+import irvine.oeis.a004.A004111;
+import irvine.oeis.transform.BinomialTransform;
+
+/**
+ * A196161 Binomial transform of {A004111(n), n &gt;= 1}.
+ * @author Georg Fischer
+ */
+public class A196161 extends BinomialTransform {
+
+  /** Construct the sequence. */
+  public A196161() {
+    super($(OFFSET), new A004111(), 1);
+  }
+}
+#!queue	A197911	1	->	0	ComplementSequence	--------------------------------
+package irvine.oeis.a197;
+// Generated by gen_seq4.pl compseq at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.ComplementSequence;
+import irvine.oeis.a003.A003158;
+
+/**
+ * A197911 Representable by A001045 (Jacobsthal sequence). Complement of A003158.
+ * @author Georg Fischer
+ */
+public class A197911 extends ComplementSequence {
+
+  /** Construct the sequence. */
+  public A197911() {
+    super($(OFFSET), new A003158());
+  }
+}
+#!queue	A211480	1	->	0	GeneratingFunctionSequence	--------------------------------
+package irvine.oeis.a211;
+// Generated by gen_pattern.pl
+
+import irvine.oeis.Conjectural;
+import irvine.oeis.recur.GeneratingFunctionSequence;
+
+/**
+ * A211480 Number of ordered triples (w,x,y) with all terms in {-n,...,0,...,n} and w + 2x + 3y = 1.
+ * @author Georg Fischer
+ */
+public class A211480 extends GeneratingFunctionSequence implements Conjectural {
+
+  /** Construct the sequence. */
+  public A211480() {
+    super(1, new long[] {0, 0, 3, 2, 3},
+      new long[] {1, -2, 1, -1, 2, -1});
+    setOffset(0);
+  }
+}
+#!queue	A227209	1	->	0	PartialSumSequence	--------------------------------
+package irvine.oeis.a227;
+// Generated by ./gen_seq4.pl /partsum at 2022-06-25 09:09
+
+import irvine.oeis.PartialSumSequence;
+import irvine.oeis.a171.A171477;
+
+/**
+ * A227209 Expansion of 1/((1-x)^2*(1-2x)*(1-4x)).
+ * @author Sean A. Irvine
+ */
+public class A227209 extends PartialSumSequence {
+
+  /** Construct the sequence. */
+  public A227209() {
+    super($(OFFSET), new A171477());
+  }
+}
+#!queue	A228371	0	->	1	AlternatingSequence	--------------------------------
+package irvine.oeis.a228;
+// Generated by gen_seq4.pl interleave at 2021-11-02 22:34
+
+import irvine.oeis.AlternatingSequence;
+import irvine.oeis.a001.A001511;
+import irvine.oeis.a006.A006519;
+
+/**
+ * A228371 First differences of A228370. Also A001511 and A006519 interleaved.
+ * @author Georg Fischer
+ */
+public class A228371 extends AlternatingSequence {
+
+  /** Construct the sequence. */
+  public A228371() {
+    super($(OFFSET), new A001511(), new A006519());
+  }
+}
+#!queue	A235351	1	->	0	RevertTransformSequence	--------------------------------
+package irvine.oeis.a235;
+// Generated by gen_seq4.pl serrevgf at 2021-05-02 19:34
+// DO NOT EDIT here!
+
+import irvine.oeis.recur.GeneratingFunctionSequence;
+import irvine.oeis.transform.RevertTransformSequence;
+
+
+/**
+ * A235351 Series reversion of x*(1-3*x-2*x^2)/(1-x).
+ * @author Georg Fischer
+ */
+public class A235351 extends RevertTransformSequence {
+
+  /** Construct the sequence. */
+  public A235351() {
+    super($(OFFSET), new GeneratingFunctionSequence(new long[]{+1, -3, -2}, new long[]{1, -1}));
+  }
+}
+#!queue	A296135	1	->	0	MorphismTransform	--------------------------------
+package irvine.oeis.a296;
+// Generated by gen_seq4.pl mortra at 2021-09-23 21:42
+
+import irvine.oeis.base.MorphismTransform;
+import irvine.oeis.a003.A003849;
+
+/**
+ * A296135 {0-&gt;01}-transform of the Fibonacci word A003849.
+ * @author Georg Fischer
+ */
+public class A296135 extends MorphismTransform {
+
+  /** Construct the sequence. */
+  public A296135() {
+    super($(OFFSET), new A003849(), "0->01");
+  }
+}
+#!queue	A299027	0	->	1	WeighTransformSequence	--------------------------------
+package irvine.oeis.a299;
+// manually deris2/weighx at 2021-11-04
+
+import irvine.oeis.transform.WeighTransformSequence;
+import irvine.oeis.a167.A167934;
+
+/**
+ * A299027 Number of compositions of n whose standard factorization into Lyndon words has all distinct weakly increasing factors.
+ * Weigh transform of A167934.
+ * @author Georg Fischer
+ */
+public class A299027 extends WeighTransformSequence {
+
+  /** Construct the sequence. */
+  public A299027() {
+    super($(OFFSET), new A167934());
+    next();
+  }
+}
+#!queue	A346615	1	->	0	MobiusTransformSequence	--------------------------------
+package irvine.oeis.a346;
+// Generated by gen_seq4.pl deris/moebiusx at 2022-12-15 10:39
+
+import irvine.oeis.a344.A344005;
+import irvine.oeis.transform.MobiusTransformSequence;
+
+/**
+ * A346615 Moebius transform of A344005.
+ * @author Georg Fischer
+ */
+public class A346615 extends MobiusTransformSequence {
+
+  /** Construct the sequence. */
+  public A346615() {
+    super($(OFFSET), new A344005(), 0);
+    next();
+  }
+}
+#!queue	A999999	0	0	0	0

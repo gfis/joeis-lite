@@ -164,15 +164,20 @@ offin_eval4: # select those with all subclasses needing the same offset patch, o
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
-packa: # A=A018940 pack all sources that extend $(A)
-	grep -E "$(A)" offin.tmp \
-	| perl queue.pl -p > $@_$(A).txt
+pack: # GREP=A018940 pack all sources that extend $(A)
+	grep -P "$(GREP)" offin.tmp \
+	| perl queue.pl -p > set.pack
+unpackall: \
+	A018940u \
+	basecu \
+	wraprecu \
+	#
 #--
 A018940: # pack all sources that extend $(A)
 	grep -P "$@" offin.tmp \
 	| perl queue.pl -p > $@.pack
 A018940u:
-	perl queue.pl -u 018940.pack
+	perl queue.pl -u A018940.pack
 wraprec:
 	$(DBAT) -x "SELECT i.aseqno, 0, '->', i.offset1, j.superclass FROM asinfo i, joeis j \
 	  WHERE i.aseqno = j.aseqno \

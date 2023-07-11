@@ -1,0 +1,1672 @@
+#!queue	A019067	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import irvine.oeis.a018.A018940;
+import irvine.util.io.IOUtils;
+
+/**
+ * A019067 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite BEA = Beta Nan [ AlnSi64-n O128 ] with n 7.
+ * @author Sean A. Irvine
+ */
+public class A019067 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // BEA
+    try (final BufferedReader reader = IOUtils.reader("irvine/oeis/a019/a019067.dat.gz")) {
+      return IOUtils.readAll(reader);
+    } catch (final IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+#!queue	A019076	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019076 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite BIK = Bikitaite Li2 [ Al2Si4O12 ] . 2 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019076 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // BIK
+    return "a-1: b-6(000) a-3(00+) a-3(000) b-2(000)\n"
+      + "b-2: b-6(--0) b-4(0-+) b-4(0-0)\n"
+      + "a-3: b-5(000) b-4(000)\n"
+      + "b-4: b-5(++0)\n"
+      + "b-5: b-6(-00) b-6(-0-)\n";
+  }
+}
+
+#!queue	A019078	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019078 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite BOG = Boggsite Na4Ca7 [ Al18Si78O192 ] . 74 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019078 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // BOG
+    return "a-1: a-37(00-) f-18(-00) f-6(000) c-3(000)\n"
+      + "c-3: c-21(000) e-17(000) e-5(000)\n"
+      + "f-6: e-23(000) a-13(--0)\n"
+      + "a-37: f-42(0-0) c-39(000)\n"
+      + "b-2: b-44(000) b-38(000) f-6(0+0) d-4(-00)\n"
+      + "d-4: d-46(000) d-22(++0) e-5(000)\n"
+      + "b-38: f-42(00-) d-40(-0-)\n"
+      + "b-44: f-48(0+0) d-46(-00)\n"
+      + "e-5: f-24(000) c-15(000)\n"
+      + "c-21: e-23(000)\n"
+      + "d-22: d-28(000) e-23(000)\n"
+      + "d-46: e-47(000)\n"
+      + "c-15: e-17(000)\n"
+      + "a-13: a-25(00-) f-18(0+0) c-15(000)\n"
+      + "a-7: a-43(000) f-24(0-0) f-12(0-0) c-9(000)\n"
+      + "c-9: e-23(+00) c-15(0-0) e-11(000)\n"
+      + "f-12: a-19(000) e-17(000)\n"
+      + "a-43: f-48(000) c-45(000)\n"
+      + "b-8: b-44(000) b-38(000) f-12(000) d-10(-00)\n"
+      + "d-10: d-40(00-) d-16(+00) e-11(000)\n"
+      + "e-11: c-21(+00) f-18(000)\n"
+      + "d-16: d-34(00-) e-17(000)\n"
+      + "d-40: e-41(000)\n"
+      + "a-19: a-31(000) f-24(000) c-21(000)\n"
+      + "a-25: f-42(+00) f-30(000) c-27(000)\n"
+      + "b-14: b-32(000) b-26(000) f-18(00+) d-16(+0+)\n"
+      + "b-26: f-30(0-0) d-28(+00)\n"
+      + "b-32: f-36(000) d-34(+00)\n"
+      + "d-34: d-40(-00) e-35(000)\n"
+      + "a-31: f-48(0+0) f-36(0+0) c-33(000)\n"
+      + "b-20: b-32(000) b-26(000) f-24(0-0) d-22(+00)\n"
+      + "d-28: d-46(--0) e-29(000)\n"
+      + "c-27: c-45(000) e-41(000) e-29(000)\n"
+      + "f-30: e-47(000) a-37(++0)\n"
+      + "e-29: f-48(000) c-39(000)\n"
+      + "c-45: e-47(000)\n"
+      + "c-39: e-41(000)\n"
+      + "c-33: e-47(-00) c-39(0+0) e-35(000)\n"
+      + "f-36: a-43(000) e-41(000)\n"
+      + "e-35: c-45(-00) f-42(000)\n";
+  }
+}
+
+#!queue	A019084	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019084 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite BRE = Brewsterite (Sr,Ba)2 [ Al4Si12O32 ] . 10 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019084 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // BRE
+    return "a-1: a-13(000) d-4(000) c-3(000) b-2(000)\n"
+      + "b-2: c-11(0-0) d-4(-00) c-3(00+)\n"
+      + "c-3: d-12(0-0) b-10(0-0)\n"
+      + "d-4: d-12(+-0) c-11(0-0)\n"
+      + "a-13: d-16(000) c-15(000) b-14(000)\n"
+      + "b-10: d-12(+00) c-11(00-)\n"
+      + "a-5: a-9(000) d-8(000) c-7(000) b-6(000)\n"
+      + "b-6: c-15(000) d-8(+00) c-7(00-)\n"
+      + "c-7: d-16(000) b-14(000)\n"
+      + "d-8: d-16(-00) c-15(000)\n"
+      + "a-9: d-12(000) c-11(000) b-10(000)\n"
+      + "b-14: d-16(-00) c-15(00+)\n";
+  }
+}
+
+#!queue	A019088	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019088 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite CAS = Cesium Aluminosilicate (Araki) Cs4[ Al4Si20O48 ].
+ * @author Sean A. Irvine
+ */
+public class A019088 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // CAS
+    return "a-1: a-10(000) c-3(0+0) c-3(-00) b-2(000)\n"
+      + "b-2: b-8(0++) b-8(-0+) c-3(000)\n"
+      + "c-3: c-9(00+)\n"
+      + "a-10: c-12(0+0) c-12(-00) b-11(000)\n"
+      + "b-8: c-9(000)\n"
+      + "a-4: a-7(000) c-6(+00) c-6(0-0) b-5(000)\n"
+      + "b-5: b-11(+00) b-11(0-0) c-6(000)\n"
+      + "c-6: c-12(000)\n"
+      + "a-7: c-9(+00) c-9(0-0) b-8(000)\n"
+      + "b-11: c-12(000)\n";
+  }
+}
+
+#!queue	A019091	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019091 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite CHI = Chiavennite Ca4Mn4 [ Be8Si20O52(OH)8 ] . 8 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019091 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // CHI
+    return "a-1: e-26(-00) e-26(--0) e-19(00-) g-7(000)\n"
+      + "g-7: f-20(0+-) f-20(00-)\n"
+      + "e-19: f-20(000)\n"
+      + "e-26: f-27(000)\n"
+      + "b-2: d-18(000) f-6(0+0) d-4(00-)\n"
+      + "d-4: c-17(000) b-16(000)\n"
+      + "f-6: g-21(000) g-21(0-0)\n"
+      + "c-3: d-18(000) g-7(000) d-4(00-)\n"
+      + "b-16: f-20(0+0) d-18(000)\n"
+      + "c-17: g-21(000) d-18(000)\n"
+      + "e-5: a-22(000) a-22(0-0) a-15(000) f-6(000)\n"
+      + "a-15: g-21(000)\n"
+      + "a-22: g-28(000)\n"
+      + "a-8: e-26(000) e-19(++0) e-19(+00) g-14(000)\n"
+      + "g-14: f-27(000) f-27(0-0)\n"
+      + "b-9: d-25(000) f-13(0-0) d-11(000)\n"
+      + "d-11: c-24(000) b-23(000)\n"
+      + "f-13: g-28(0++) g-28(00+)\n"
+      + "c-10: d-25(000) g-14(000) d-11(000)\n"
+      + "b-23: f-27(0-0) d-25(00-)\n"
+      + "c-24: g-28(000) d-25(00-)\n"
+      + "e-12: a-22(00+) a-15(0+0) a-15(000) f-13(000)\n";
+  }
+}
+
+#!queue	A019095	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019095 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite CON = CIT-1 H2[ B2Si54O112 ].
+ * @author Sean A. Irvine
+ */
+public class A019095 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // CON
+    return "a-1: d-18(000) f-6(00-) e-5(0+0) c-3(000)\n"
+      + "c-3: c-24(-+0) f-13(000) g-7(000)\n"
+      + "e-5: e-26(000) b-16(000)\n"
+      + "f-6: f-27(-+0) c-10(000)\n"
+      + "d-18: e-19(00-)\n"
+      + "b-2: e-19(000) g-7(000) f-6(000) d-4(0+0)\n"
+      + "d-4: d-25(000) a-15(000) e-5(00+)\n"
+      + "g-7: g-28(-+0) g-14(000)\n"
+      + "f-13: f-20(-+0)\n"
+      + "c-24: g-28(000)\n"
+      + "a-15: f-20(00+) e-19(0-0) c-17(000)\n"
+      + "d-25: e-26(00+)\n"
+      + "b-16: g-21(000) f-20(000) d-18(0-0)\n"
+      + "c-10: c-17(-+0) g-14(000)\n"
+      + "g-14: g-21(-+0)\n"
+      + "a-8: d-25(000) f-13(00+) e-12(-00) c-10(000)\n"
+      + "e-12: b-23(000) e-19(000)\n"
+      + "b-9: e-26(000) g-14(000) f-13(000) d-11(-00)\n"
+      + "d-11: a-22(000) d-18(000) e-12(00-)\n"
+      + "c-17: f-27(000) g-21(000)\n"
+      + "a-22: f-27(00-) e-26(+00) c-24(000)\n"
+      + "b-23: g-28(000) f-27(000) d-25(+00)\n"
+      + "f-20: c-24(000)\n"
+      + "g-21: g-28(000)\n";
+  }
+}
+
+#!queue	A019102	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019102 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite DAC = Dachiardite Na5[ Al5Si19O48 ] . 12 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019102 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // DAC
+    return "a-1: a-11(000) b-10(0+0) a-9(0+-) c-3(0+0)\n"
+      + "c-3: a-11(-00) d-8(--0) d-4(000)\n"
+      + "b-2: b-12(000) b-10(0+0) a-9(0+0) d-4(0+0)\n"
+      + "d-4: b-12(-00) c-7(--0)\n"
+      + "d-8: b-10(0+0)\n"
+      + "c-7: a-9(0+0) d-8(000)\n"
+      + "a-5: b-12(-00) a-11(-0+) a-9(000) c-7(-00)\n"
+      + "b-6: b-12(-00) a-11(-00) b-10(000) d-8(-00)\n";
+  }
+}
+
+#!queue	A019106	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019106 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite DDR = Deca-dodecasil 3R [ Si120O240 ]q R.
+ * @author Sean A. Irvine
+ */
+public class A019106 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // DDR
+    return "a-1: b-32(000) b-19(000) f-6(00+) d-4(000)\n"
+      + "d-4: d-31(000) d-27(000)\n"
+      + "f-6: a-13(0-0) a-8(-00) g-7(000)\n"
+      + "b-19: b-36(0-+) e-33(00+) c-26(000)\n"
+      + "b-2: b-40(+0-) e-33(000) a-18(000) c-10(000)\n"
+      + "c-10: b-39(000) d-11(000)\n"
+      + "a-18: b-38(000) f-22(00-) d-21(000)\n"
+      + "c-3: b-40(000) b-14(000) g-7(00+) d-4(000)\n"
+      + "g-7: c-15(0-0) c-10(-00)\n"
+      + "b-14: b-38(0-+) e-37(000) a-24(000)\n"
+      + "e-5: b-38(000) e-37(0+-) e-35(000) b-32(00-)\n"
+      + "a-8: b-34(000) b-29(000) d-11(000)\n"
+      + "a-13: b-36(000) b-25(000) d-16(000)\n"
+      + "c-15: b-38(000) d-16(000)\n"
+      + "d-11: d-27(000) d-21(000)\n"
+      + "b-29: e-35(+00) b-32(+0-)\n"
+      + "b-9: b-39(-+0) e-35(000) a-28(000) c-15(000)\n"
+      + "a-28: b-40(000) d-31(000)\n"
+      + "e-12: b-40(000) e-37(000) b-34(-00) e-33(-0+)\n"
+      + "d-16: d-31(000) d-21(000)\n"
+      + "b-25: e-37(0+0) b-34(-+0) c-30(000)\n"
+      + "a-24: b-39(000) d-27(000)\n"
+      + "e-17: b-39(000) b-36(0-0) e-35(+-0) e-33(000)\n"
+      + "f-22: a-28(+00) a-24(0+0) g-23(000)\n"
+      + "c-26: b-34(000) d-27(000)\n"
+      + "c-20: b-36(000) b-29(000) g-23(00-) d-21(000)\n"
+      + "g-23: c-30(+00) c-26(0+0)\n"
+      + "c-30: b-32(000) d-31(000)\n";
+  }
+}
+
+#!queue	A019113	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019113 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite DOH = Dodecasil 1H [ Si34O68 ] . q R.
+ * @author Sean A. Irvine
+ */
+public class A019113 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // DOH
+    return "a-1: b-33(00-) a-18(0-0) a-5(000) b-2(000)\n"
+      + "b-2: d-8(000) c-7(000) c-3(000)\n"
+      + "a-5: b-26(00-) a-9(-00) b-6(000)\n"
+      + "a-18: b-21(00-) b-19(000)\n"
+      + "b-33: c-34(000)\n"
+      + "c-3: c-22(000) b-19(0-0) c-14(000)\n"
+      + "c-7: c-34(000) c-17(000)\n"
+      + "d-8: d-23(00-) b-16(000) b-10(000)\n"
+      + "c-14: c-32(000)\n"
+      + "b-19: c-20(000)\n"
+      + "c-22: b-33(000) c-32(000)\n"
+      + "d-4: d-30(00-) b-19(000) b-13(000) b-6(000)\n"
+      + "b-6: c-11(000) c-7(000)\n"
+      + "b-13: c-17(000) c-14(0+0)\n"
+      + "a-9: b-31(00-) a-12(0-0) b-10(000)\n"
+      + "b-26: c-34(000) d-30(000) c-27(000)\n"
+      + "c-11: c-27(000) c-20(000)\n"
+      + "c-17: c-25(000)\n"
+      + "b-10: c-14(000) c-11(+00)\n"
+      + "b-16: c-20(+00) c-17(000)\n"
+      + "d-23: b-33(000) b-31(000) b-28(000)\n"
+      + "a-12: b-24(00-) a-15(000) b-13(000)\n"
+      + "b-31: c-32(000)\n"
+      + "c-20: c-29(000)\n"
+      + "c-27: b-31(-00) c-29(000)\n"
+      + "a-15: b-28(00-) a-18(+00) b-16(000)\n"
+      + "b-24: c-32(0+0) d-30(000) c-25(000)\n"
+      + "b-28: c-29(+00)\n"
+      + "c-25: c-34(000) b-28(000)\n"
+      + "b-21: d-30(000) c-29(000) c-22(0+0)\n";
+  }
+}
+
+#!queue	A019117	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019117 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite EPI = Epistilbite Ca3 [ Al6Si18O48 ] . 16 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019117 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // EPI
+    return "a-1: c-12(0-0) a-7(0-0) a-4(000) b-2(0-0)\n"
+      + "b-2: b-11(-+0) b-5(00+) c-3(-00)\n"
+      + "a-4: a-10(+00) c-9(+00) b-5(+00)\n"
+      + "a-7: a-10(000) b-8(0+0)\n"
+      + "c-3: a-10(+00) c-9(+0+) c-6(00+)\n"
+      + "b-5: b-8(-+0) c-6(0+0)\n"
+      + "b-11: c-12(0-0)\n"
+      + "c-6: c-12(0--) a-7(0-0)\n"
+      + "c-9: c-12(00-)\n"
+      + "a-10: b-11(-00)\n"
+      + "b-8: b-11(00-) c-9(+00)\n";
+  }
+}
+
+#!queue	A019120	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import irvine.oeis.a018.A018940;
+import irvine.util.io.IOUtils;
+
+/**
+ * A019120 Cycle class sequence c(n) (number of true cycles of length n in which a certain node is included) for zeolite EUO = EU-1 Nan [ AlnSi112-n O224 ].
+ * @author Sean A. Irvine
+ */
+public class A019120 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // EUO
+    try (final BufferedReader reader = IOUtils.reader("irvine/oeis/a019/a019120.dat.gz")) {
+      return IOUtils.readAll(reader);
+    } catch (final IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+#!queue	A019130	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019130 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite FER = Ferrierite Na2Mg2[ Al6Si30O72 ] . 18 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019130 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // FER
+    return "a-1: b-15(000) a-12(0-0) b-6(0-0) d-4(000)\n"
+      + "d-4: c-11(--0) a-9(-0-)\n"
+      + "b-6: b-16(-+0) b-15(-00) c-7(0+0)\n"
+      + "a-12: b-18(000)\n"
+      + "b-2: b-16(-00) b-15(000) a-5(000) c-3(000)\n"
+      + "c-3: b-18(000) c-11(000) d-4(000)\n"
+      + "a-5: b-16(0+0) a-9(0+0) d-8(+00)\n"
+      + "c-11: b-16(0+0)\n"
+      + "a-9: b-17(0-0) b-13(000)\n"
+      + "d-8: c-14(-00) a-12(00+)\n"
+      + "c-7: b-17(0-0) c-14(000) d-8(0-0)\n"
+      + "c-14: b-15(000)\n"
+      + "b-13: b-18(+0+) b-17(+00) c-14(000)\n"
+      + "b-10: b-18(+00) b-17(0--) a-12(0-0) c-11(0-0)\n";
+  }
+}
+
+#!queue	A019134	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019134 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite HEU = Heulandite Ca4 [ Al8Si28O72 ] . 24 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019134 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // HEU
+    return "a-1: e-9(000) b-6(-00) e-5(00-) b-2(0+-)\n"
+      + "b-2: d-13(0-0) c-12(000) d-4(00+)\n"
+      + "e-5: e-9(000)\n"
+      + "b-6: d-17(+00) c-16(000) d-8(00-)\n"
+      + "d-4: c-12(000) b-11(0-0) e-5(0-0)\n"
+      + "c-12: e-14(000)\n"
+      + "d-13: e-14(0+0)\n"
+      + "c-3: c-16(000) d-13(000) b-11(000) e-5(000)\n"
+      + "b-11: d-13(00-)\n"
+      + "c-16: e-18(000)\n"
+      + "d-8: c-16(000) b-15(+00) e-9(+00)\n"
+      + "d-17: e-18(-00)\n"
+      + "c-7: d-17(000) b-15(000) c-12(000) e-9(000)\n"
+      + "b-15: d-17(00+)\n"
+      + "a-10: e-18(00-) b-15(+0-) e-14(000) b-11(0-0)\n"
+      + "e-14: e-18(000)\n";
+  }
+}
+
+#!queue	A019139	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019139 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite LOV = Lovdarite K4Na12 [ Be8Si28O72 ] . 18 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019139 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // LOV
+    return "a-1: a-11(00-) b-8(000) a-7(000) b-2(000)\n"
+      + "b-2: b-8(0+0) a-7(-00) c-6(0+0)\n"
+      + "a-7: a-13(00-) b-8(+00)\n"
+      + "a-11: b-14(000) a-13(000) b-12(000)\n"
+      + "c-6: b-18(000) b-16(-00) b-8(000)\n"
+      + "c-3: b-14(0-0) b-12(000) b-10(-00) b-5(000)\n"
+      + "b-5: b-10(-00) a-9(0-0)\n"
+      + "b-12: b-14(0-0) a-13(-00)\n"
+      + "a-4: a-15(000) b-10(000) a-9(000) b-5(000)\n"
+      + "a-9: a-17(000) b-10(0+0)\n"
+      + "a-15: b-18(000) a-17(000) b-16(000)\n"
+      + "b-16: b-18(+00) a-17(0-0)\n"
+      + "a-13: b-14(+00)\n"
+      + "a-17: b-18(0+0)\n";
+  }
+}
+
+#!queue	A019142	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019142 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MAZ = Mazzite (Na2,K2,Ca,Mg)5 [ Al10Si26O72 ] . 28 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019142 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MAZ
+    return "a-1: b-34(000) a-23(000) a-21(000) b-18(00-)\n"
+      + "b-18: b-34(000) b-27(000)\n"
+      + "a-21: b-29(00-)\n"
+      + "a-23: b-27(00-)\n"
+      + "b-2: b-31(000) b-28(000) a-17(00-) b-16(-0-)\n"
+      + "b-16: b-36(000) b-29(000)\n"
+      + "a-17: b-28(000)\n"
+      + "b-28: b-36(-00)\n"
+      + "a-3: b-31(00+) b-22(000) a-17(000) a-15(000)\n"
+      + "a-15: b-30(000)\n"
+      + "b-22: b-31(000) b-28(000)\n"
+      + "b-4: b-36(000) b-29(000) a-21(000) b-20(0-0)\n"
+      + "b-20: b-33(000) b-30(000)\n"
+      + "b-29: b-33(0-+)\n"
+      + "a-5: b-36(000) a-21(000) a-19(000) b-16(00-)\n"
+      + "a-19: b-25(00-)\n"
+      + "b-6: b-33(000) b-30(000) a-15(00-) b-14(00-)\n"
+      + "b-14: b-35(000) b-25(000)\n"
+      + "b-30: b-35(000)\n"
+      + "a-7: b-33(00+) b-20(000) a-15(000) a-13(000)\n"
+      + "a-13: b-26(000)\n"
+      + "b-8: b-35(000) b-25(000) b-24(+00) a-19(000)\n"
+      + "b-24: b-32(000) b-26(000)\n"
+      + "b-25: b-32(+0+)\n"
+      + "a-9: b-35(000) a-23(000) a-19(000) b-14(00-)\n"
+      + "b-10: b-32(000) b-26(000) b-18(0+-) a-13(00-)\n"
+      + "b-26: b-34(0+0)\n"
+      + "a-11: b-32(00+) b-24(000) a-17(000) a-13(000)\n"
+      + "b-12: b-34(000) b-27(000) a-23(000) b-22(000)\n"
+      + "b-27: b-31(00+)\n";
+  }
+}
+
+#!queue	A019144	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019144 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MEI = ZSM-18 Nan [ AlnSi34-nO68 ] . 28 H2O (n=2.1-5.7).
+ * @author Sean A. Irvine
+ */
+public class A019144 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MEI
+    return "a-1: b-22(0-0) b-16(000) c-3(000) b-2(000)\n"
+      + "b-2: a-21(0-0) a-9(000) d-4(000)\n"
+      + "c-3: a-29(000) c-17(000) c-11(000)\n"
+      + "b-16: a-31(000)\n"
+      + "b-22: a-27(000) d-23(000)\n"
+      + "d-4: d-26(000) b-16(000) b-10(000)\n"
+      + "a-9: b-28(+00) c-11(000) b-10(000)\n"
+      + "a-21: b-32(000) b-22(000)\n"
+      + "c-11: a-33(000) c-17(000)\n"
+      + "c-17: a-24(000)\n"
+      + "a-29: b-30(00+)\n"
+      + "b-10: a-27(+00) a-15(000)\n"
+      + "d-26: b-34(000) b-30(000)\n"
+      + "a-5: b-25(000) b-19(00-) c-7(000) b-6(00-)\n"
+      + "b-6: a-24(000) a-12(00+) d-8(000)\n"
+      + "c-7: a-31(000) c-20(000) c-14(000)\n"
+      + "b-19: a-33(-00)\n"
+      + "b-25: a-29(00-) d-26(000)\n"
+      + "d-8: d-23(000) b-19(000) b-13(000)\n"
+      + "a-12: b-30(0+0) c-14(000) b-13(00-)\n"
+      + "a-24: b-34(00+) b-25(00+)\n"
+      + "c-14: a-21(000) c-20(000)\n"
+      + "c-20: a-27(000)\n"
+      + "a-31: b-32(000)\n"
+      + "b-13: a-29(0+0) a-18(00+)\n"
+      + "d-23: b-32(000) b-28(000)\n"
+      + "b-28: a-31(000)\n"
+      + "a-15: b-32(000) c-17(000) b-16(000)\n"
+      + "a-27: b-28(000)\n"
+      + "a-33: b-34(00+)\n"
+      + "b-30: a-33(00-)\n"
+      + "a-18: b-34(-00) c-20(000) b-19(00-)\n";
+  }
+}
+
+#!queue	A019148	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019148 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MEL = ZSM-11 Nan[ AlnSi96-nO192 ].
+ * @author Sean A. Irvine
+ */
+public class A019148 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MEL
+    return "a-1: a-44(-00) b-30(-00) e-19(-00) d-4(000)\n"
+      + "d-4: d-37(000) g-21(000)\n"
+      + "e-19: e-48(000) e-33(000)\n"
+      + "b-30: d-32(+00) c-31(0-0)\n"
+      + "a-44: d-47(000)\n"
+      + "b-2: a-29(000) f-6(000) d-4(000) c-3(000)\n"
+      + "c-3: c-41(000) g-7(000) e-5(000)\n"
+      + "f-6: b-30(-00) f-27(0-0) f-13(-00)\n"
+      + "a-29: e-38(000) d-32(000)\n"
+      + "e-5: e-43(000) e-38(000) a-15(000)\n"
+      + "g-7: d-37(000) c-31(000) d-18(000)\n"
+      + "c-41: e-43(000)\n"
+      + "g-21: c-36(000) d-32(000)\n"
+      + "a-15: a-39(+00) b-35(000) d-18(000)\n"
+      + "e-43: a-44(000)\n"
+      + "f-13: b-45(00-) f-20(0--)\n"
+      + "f-27: b-40(0+0)\n"
+      + "d-18: d-32(++0)\n"
+      + "c-31: e-33(0+0)\n"
+      + "a-8: b-45(000) a-34(0-0) e-26(000) d-11(000)\n"
+      + "d-11: d-42(0-0) g-28(00+)\n"
+      + "e-26: e-48(000) e-38(000)\n"
+      + "a-34: d-37(000)\n"
+      + "b-45: d-47(00+) c-46(+00)\n"
+      + "b-9: a-44(000) f-13(000) d-11(00-) c-10(0-0)\n"
+      + "c-10: c-31(000) g-14(000) e-12(0+0)\n"
+      + "e-12: e-43(000) e-33(000) a-22(0-0)\n"
+      + "g-14: c-46(00-) d-42(00-) d-25(000)\n"
+      + "g-28: d-47(000) c-41(000)\n"
+      + "a-22: b-40(0+0) a-29(0+0) d-25(000)\n"
+      + "e-33: a-34(0-0)\n"
+      + "f-20: b-35(000) f-27(+0+)\n"
+      + "d-25: d-47(-00)\n"
+      + "c-46: e-48(-00)\n"
+      + "b-35: d-37(000) c-36(000)\n"
+      + "a-39: e-48(-00) d-42(000)\n"
+      + "b-16: a-34(0-0) f-20(0-0) d-18(0-0) c-17(+00)\n"
+      + "c-17: c-46(000) g-21(000) e-19(-00)\n"
+      + "c-36: e-38(000)\n"
+      + "b-40: d-42(0--) c-41(000)\n"
+      + "b-23: a-39(+00) f-27(+0+) d-25(+0+) c-24(000)\n"
+      + "c-24: c-36(000) g-28(00+) e-26(000)\n";
+  }
+}
+
+#!queue	A019155	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019155 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MEP = Melanophlogite [ Si46O92 ] . q R.
+ * @author Sean A. Irvine
+ */
+public class A019155 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MEP
+    return "a-1: b-38(000) b-27(000) b-24(000) b-23(0-0)\n"
+      + "b-23: c-42(000)\n"
+      + "b-24: c-45(0-0) b-29(-00)\n"
+      + "b-27: c-41(000) b-30(-00)\n"
+      + "b-38: c-44(000)\n"
+      + "b-2: c-43(-00) b-20(00-) a-18(000) c-3(000)\n"
+      + "c-3: c-34(000) b-25(000) b-24(000)\n"
+      + "a-18: b-33(000) b-32(-00)\n"
+      + "b-20: c-41(000) a-22(000) c-21(-00)\n"
+      + "b-25: c-41(00-) b-31(0-0)\n"
+      + "c-34: b-38(000) b-36(000)\n"
+      + "a-4: b-35(00-) b-31(000) b-26(000) b-16(000)\n"
+      + "b-16: c-42(000) b-36(000) c-17(000)\n"
+      + "b-26: c-39(00-) b-28(0+0)\n"
+      + "b-31: c-45(000)\n"
+      + "b-35: c-46(000)\n"
+      + "b-5: c-44(000) b-33(000) a-22(000) c-6(000)\n"
+      + "c-6: b-35(000) b-23(000) c-15(000)\n"
+      + "b-33: c-42(000) c-34(000)\n"
+      + "c-15: b-31(00+) b-27(0+0)\n"
+      + "a-7: b-37(000) b-30(000) b-29(000) b-19(0-0)\n"
+      + "b-19: c-46(000) b-23(000)\n"
+      + "b-29: c-43(000)\n"
+      + "b-30: c-39(0-0)\n"
+      + "b-37: c-40(000) b-38(000)\n"
+      + "b-8: c-45(000) a-18(000) b-14(00-) c-9(-00)\n"
+      + "c-9: b-29(0+0) b-26(000) c-17(000)\n"
+      + "b-14: c-39(-00) a-22(000) c-15(000)\n"
+      + "c-17: b-32(000) b-19(000)\n"
+      + "a-10: b-36(000) b-28(000) b-25(000) b-13(00-)\n"
+      + "b-13: c-44(000) b-35(000)\n"
+      + "b-28: c-43(000)\n"
+      + "b-36: c-40(000)\n"
+      + "b-11: c-46(000) b-32(000) a-22(+00) c-12(000)\n"
+      + "c-12: b-37(000) c-21(000) b-13(000)\n"
+      + "b-32: c-40(000)\n"
+      + "c-21: b-30(000) b-28(00+)\n"
+      + "c-39: c-46(000)\n"
+      + "c-42: c-45(000)\n"
+      + "c-41: c-44(000)\n"
+      + "c-40: c-43(000)\n";
+  }
+}
+
+#!queue	A019158	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import irvine.oeis.a018.A018940;
+import irvine.util.io.IOUtils;
+
+/**
+ * A019158 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MFI = ZSM-5 Nan[ AlnSi96-nO192 ].
+ * @author Sean A. Irvine
+ */
+public class A019158 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MFI
+    try (final BufferedReader reader = IOUtils.reader("irvine/oeis/a019/a019158.dat.gz")) {
+      return IOUtils.readAll(reader);
+    } catch (final IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+#!queue	A019170	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019170 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MFS = ZSM-57 H1.5[ Al1.5Si34.5O72 ].
+ * @author Sean A. Irvine
+ */
+public class A019170 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MFS
+    return "a-1: b-15(000) d-12(000) g-7(000) b-2(000)\n"
+      + "b-2: c-18(000) b-15(0--) e-5(000)\n"
+      + "g-7: f-14(000) a-9(000)\n"
+      + "d-12: c-16(000)\n"
+      + "e-5: b-17(-00) e-13(000) h-8(--0)\n"
+      + "c-3: b-17(00+) c-16(00+) d-12(0-0) f-6(000)\n"
+      + "f-6: c-18(000) f-14(00+) g-7(0-0)\n"
+      + "d-4: c-18(0+0) c-11(000) a-9(000) h-8(-00)\n"
+      + "h-8: e-13(+0-) d-12(00-)\n"
+      + "a-9: b-17(-00) b-10(-00)\n"
+      + "c-11: c-18(00-) b-15(00-) f-14(000)\n"
+      + "e-13: b-15(000)\n"
+      + "f-14: c-16(000)\n"
+      + "b-10: b-17(0++) c-16(000) e-13(+00)\n";
+  }
+}
+
+#!queue	A019178	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019178 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MON = Montesommaite (K,Na)9[ Al9Si23O64 ] . 10 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019178 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MON
+    return "a-1: a-8(00+) a-7(0-0) a-5(0-0) a-3(000)\n"
+      + "a-3: a-8(-00) a-7(---) a-6(---)\n"
+      + "a-5: a-6(000)\n"
+      + "a-7: a-8(000)\n"
+      + "a-2: a-7(--0) a-6(---) a-5(0-0) a-4(000)\n"
+      + "a-4: a-8(-0+) a-6(-00) a-5(00+)\n";
+  }
+}
+
+#!queue	A019179	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019179 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MOR = Mordenite Na8[ Al8Si40O96 ] . 24 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019179 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MOR
+    return "a-1: a-19(000) b-18(00+) a-9(00+) c-7(00+)\n"
+      + "c-7: a-19(000) c-11(000) d-8(000)\n"
+      + "a-9: a-23(000) b-22(00-) c-15(00-)\n"
+      + "a-19: a-23(000)\n"
+      + "b-2: b-20(000) b-18(0++) a-17(00+) d-8(0++)\n"
+      + "d-8: b-20(0-0) d-12(000)\n"
+      + "a-17: a-21(00-)\n"
+      + "c-3: a-17(00+) c-15(000) a-5(000) d-4(000)\n"
+      + "d-4: b-18(0++) d-16(000) b-6(0+0)\n"
+      + "a-5: b-20(000) a-17(000) a-13(000)\n"
+      + "c-15: a-23(000) d-16(000)\n"
+      + "b-6: b-20(0-0) a-19(000) b-18(000)\n"
+      + "d-16: b-24(-00)\n"
+      + "a-13: b-24(000) a-21(000)\n"
+      + "c-11: a-21(00-) a-13(000) d-12(000)\n"
+      + "d-12: b-22(+0-) b-14(+00)\n"
+      + "b-10: b-24(000) b-22(+0-) a-21(00-) d-16(+0-)\n"
+      + "b-14: b-24(-00) a-23(000) b-22(000)\n";
+  }
+}
+
+#!queue	A019183	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019183 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MTN = ZSM-39 [ Si136O272 ] . q R.
+ * @author Sean A. Irvine
+ */
+public class A019183 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MTN
+    return "a-1: c-33(000) c-17(000) b-8(000) a-7(000)\n"
+      + "a-7: a-18(00+) a-15(00+)\n"
+      + "b-8: a-29(-00) a-28(0-0)\n"
+      + "c-17: a-21(000)\n"
+      + "b-2: a-26(0-0) a-25(-00) a-7(00-) c-3(000)\n"
+      + "c-3: b-20(0-0) b-14(-00) b-8(00-)\n"
+      + "a-25: a-34(+00)\n"
+      + "a-26: b-32(0+0)\n"
+      + "b-14: a-24(00-) a-22(000) a-19(0-0)\n"
+      + "b-20: a-27(00-)\n"
+      + "a-4: a-29(-00) a-25(-00) b-10(-00) a-9(000)\n"
+      + "a-9: a-28(0-0) a-26(0-0)\n"
+      + "b-10: c-33(000) a-18(00+)\n"
+      + "b-5: c-17(000) a-15(00+) a-9(0+0) c-6(-00)\n"
+      + "c-6: a-23(000) b-16(00+) b-10(0+0)\n"
+      + "a-15: a-34(000) a-27(00-)\n"
+      + "b-16: a-34(+00) b-32(0+0) a-31(000)\n"
+      + "a-23: a-30(00+)\n"
+      + "a-18: b-32(000) a-24(00-)\n"
+      + "c-11: a-34(+00) a-21(+00) b-20(+00) a-19(000)\n"
+      + "a-19: b-32(0+0)\n"
+      + "a-21: a-29(-00) a-23(-00)\n"
+      + "a-12: c-33(000) a-28(0-0) a-23(0-0) a-19(0-0)\n"
+      + "a-13: a-31(000) a-26(000) b-20(000) c-17(000)\n"
+      + "a-22: c-33(000) a-31(000) a-25(000)\n"
+      + "a-24: a-30(00+) a-29(000)\n"
+      + "a-27: a-30(00+) a-28(000)\n"
+      + "a-30: a-31(000)\n";
+  }
+}
+
+#!queue	A019186	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019186 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MTT = ZSM-23 Nan[ AlnSi24-nO48 ].
+ * @author Sean A. Irvine
+ */
+public class A019186 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MTT
+    return "a-1: f-6(000) e-5(000) c-3(+00) c-3(000)\n"
+      + "c-3: e-12(000)\n"
+      + "e-5: c-10(000)\n"
+      + "f-6: a-15(0-0) g-7(+00) g-7(000)\n"
+      + "b-2: b-9(00+) b-9(-0+) d-4(00+) c-3(000)\n"
+      + "d-4: g-7(000) e-5(000) e-5(-00)\n"
+      + "b-9: d-11(00-) c-10(000)\n"
+      + "g-7: d-18(0-0)\n"
+      + "a-15: e-19(000) c-17(+00) c-17(000)\n"
+      + "d-18: e-19(000) e-19(-00)\n"
+      + "a-8: f-13(000) e-12(000) c-10(000) c-10(-00)\n"
+      + "f-13: a-20(000) g-14(000) g-14(-00)\n"
+      + "d-11: g-14(000) e-12(+00) e-12(000)\n"
+      + "g-14: d-23(000)\n"
+      + "a-20: e-24(000) c-22(000) c-22(-00)\n"
+      + "d-23: e-24(+00) e-24(000)\n"
+      + "c-17: e-24(000)\n"
+      + "e-19: c-22(000)\n"
+      + "b-16: b-21(00+) b-21(-0+) d-18(00+) c-17(000)\n"
+      + "b-21: d-23(00-) c-22(000)\n";
+  }
+}
+
+#!queue	A019193	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019193 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite MTW = ZSM-12 Nan[ AlnSi28-nO56 ].
+ * @author Sean A. Irvine
+ */
+public class A019193 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // MTW
+    return "a-1: f-13(0-0) f-13(-00) g-7(000) e-5(000)\n"
+      + "e-5: c-10(0-0) c-10(-00) f-6(00+)\n"
+      + "g-7: g-14(0-0) g-14(-00)\n"
+      + "b-2: d-11(0-0) d-11(-00) c-10(--0) c-3(00+)\n"
+      + "c-3: e-12(0-0) e-12(-00) b-9(--0)\n"
+      + "d-11: g-14(000) f-13(000)\n"
+      + "b-9: c-10(00-)\n"
+      + "e-12: f-13(00-)\n"
+      + "d-4: b-9(0-0) b-9(-00) g-7(000) f-6(000)\n"
+      + "f-6: a-8(0-0) a-8(-00)\n"
+      + "a-8: g-14(000) e-12(000)\n";
+  }
+}
+
+#!queue	A019200	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019200 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite NAT = Natrolite Na16[ Al16Si24O80 ] . 16 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019200 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // NAT
+    return "a-1: a-10(000) a-9(000) a-8(-+-) b-2(0+0)\n"
+      + "b-2: a-10(+00) a-9(+00) a-5(0-0)\n"
+      + "a-5: a-10(000) a-9(000) b-7(0+0)\n"
+      + "a-3: a-10(+0+) a-8(000) b-7(000) b-4(+00)\n"
+      + "b-4: a-8(0+0) b-7(0+0) a-6(-00)\n"
+      + "a-6: a-9(+-0) a-8(000) b-7(000)\n";
+  }
+}
+
+#!queue	A019202	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019202 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite NES = NU-87 H4[ Al4Si64O136 ] . n H2O.
+ * @author Sean A. Irvine
+ */
+public class A019202 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // NES
+    return "a-1: b-32(000) f-19(00-) e-18(00-) d-4(0-0)\n"
+      + "d-4: a-33(000) c-10(000) g-7(000)\n"
+      + "e-18: a-29(000)\n"
+      + "f-19: a-31(0-0) g-20(000)\n"
+      + "b-32: b-34(000)\n"
+      + "b-2: a-31(000) c-16(0+0) b-15(000) b-9(000)\n"
+      + "b-9: a-33(000) c-23(+00) b-22(000)\n"
+      + "b-15: a-27(000) b-22(000)\n"
+      + "c-16: b-34(000) d-24(000)\n"
+      + "c-3: b-30(+00) c-23(+0-) b-15(00-) d-11(000)\n"
+      + "d-11: a-31(00-)\n"
+      + "c-23: b-32(00+)\n"
+      + "b-30: b-34(000)\n"
+      + "g-7: f-13(000) d-11(000)\n"
+      + "c-10: b-28(0+0) b-22(000) c-16(0+0)\n"
+      + "e-5: a-33(-00) e-25(000) e-18(-+-) a-14(0+0)\n"
+      + "a-14: b-28(000) d-17(00-)\n"
+      + "e-25: a-27(00-)\n"
+      + "f-6: a-27(00-) f-19(0+-) a-14(0+0) g-7(000)\n"
+      + "f-13: a-29(000) f-26(+00) a-21(+00)\n"
+      + "a-8: b-34(000) f-26(000) e-25(000) d-11(-00)\n"
+      + "f-26: a-33(-00)\n"
+      + "b-22: a-29(000)\n"
+      + "b-28: b-32(000) b-30(000)\n"
+      + "e-12: a-31(0-0) e-25(+-+) a-21(+00) e-18(000)\n"
+      + "a-21: b-30(000) d-24(000)\n"
+      + "d-17: a-29(-00) c-23(000) g-20(000)\n"
+      + "d-24: a-27(0-0)\n"
+      + "g-20: f-26(000) d-24(000)\n";
+  }
+}
+
+#!queue	A019209	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019209 Cycle class sequence c(n) (number of true cycles of length n in which a certain node is included) for zeolite NON = Nonasil-[ 4158 ] [ Si88O176 ] . 4 R.
+ * @author Sean A. Irvine
+ */
+public class A019209 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // NON
+    return "a-1: c-17(-00) d-14(-00) b-12(00-) a-11(000)\n"
+      + "b-12: a-20(000) b-16(00+)\n"
+      + "d-14: a-22(00-)\n"
+      + "c-17: a-21(000)\n"
+      + "b-2: a-22(-00) a-11(0+0) e-10(000) b-7(-+0)\n"
+      + "b-7: a-21(0-0) a-15(+00)\n"
+      + "e-10: d-18(000) b-12(000)\n"
+      + "c-3: a-20(0-0) c-17(--+) a-15(00+) c-8(000)\n"
+      + "c-8: a-19(-00) c-13(--+) a-11(000)\n"
+      + "a-20: a-22(000)\n"
+      + "d-4: a-20(0-0) d-18(0-0) a-11(000) e-5(000)\n"
+      + "e-5: b-16(000) d-14(000) b-7(000)\n"
+      + "d-18: a-21(000)\n"
+      + "b-16: a-19(00-)\n"
+      + "a-6: d-18(0-0) b-16(000) a-15(000) c-13(0-0)\n"
+      + "c-13: a-22(00-) c-17(000)\n"
+      + "a-19: a-21(000)\n"
+      + "d-9: a-19(-00) a-15(00+) d-14(-0+) e-10(000)\n";
+  }
+}
+
+#!queue	A019214	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019214 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite RON = Roggianite Ca16[ Be8Al16Si32O104(OH)16 ] . 19 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019214 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // RON
+    return "a-1: d-19(000) c-18(000) b-14(-00) c-3(000)\n"
+      + "c-3: c-24(--0) c-15(-0-) c-7(0-0)\n"
+      + "b-14: c-24(0-0) b-20(000) d-16(00-)\n"
+      + "c-18: c-24(000) b-23(000) d-22(00-)\n"
+      + "d-19: c-24(000)\n"
+      + "b-2: b-26(--0) d-25(000) a-5(000) d-4(000)\n"
+      + "d-4: d-25(000)\n"
+      + "a-5: b-23(000) b-20(000) c-7(0-0)\n"
+      + "d-25: d-28(000)\n"
+      + "c-7: b-26(-00) c-11(-0-)\n"
+      + "c-15: c-27(0-0)\n"
+      + "b-20: b-26(000)\n"
+      + "b-23: b-26(000)\n"
+      + "b-6: d-28(-00) b-17(000) a-9(0+0) d-8(00+)\n"
+      + "d-8: b-17(00-)\n"
+      + "a-9: d-25(000) c-21(000) c-11(--0)\n"
+      + "b-17: c-27(000)\n"
+      + "c-11: d-28(000) c-15(0+0)\n"
+      + "c-21: d-28(000) b-23(00+) d-22(000)\n"
+      + "b-10: c-27(000) d-19(000) a-13(++0) d-12(000)\n"
+      + "d-12: d-19(000)\n"
+      + "a-13: d-22(000) b-17(000) c-15(-00)\n"
+      + "d-22: c-27(000)\n"
+      + "d-16: b-20(00+)\n";
+  }
+}
+
+#!queue	A019218	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019218 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite RSN = RUB-17 K4Na12 [ Zn8Si28O72 ] . 18 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019218 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // RSN
+    return "a-1: a-10(0-0) b-7(0-0) a-6(000) b-2(0-0)\n"
+      + "b-2: b-7(00+) a-6(-00) e-5(00+)\n"
+      + "a-6: a-15(+00) b-7(+00)\n"
+      + "a-10: b-16(0+0) a-15(000) b-11(0+0)\n"
+      + "e-5: c-8(0+0) b-7(000)\n"
+      + "c-3: d-9(000) c-8(++0) e-5(+00) d-4(00-)\n"
+      + "d-4: d-18(000) d-9(000) c-8(00+)\n"
+      + "c-8: d-9(000)\n"
+      + "d-9: d-13(000)\n"
+      + "a-15: b-16(-00)\n"
+      + "d-13: d-18(000) c-17(000)\n"
+      + "b-11: b-16(00-) a-15(+00) e-14(000)\n"
+      + "e-14: c-17(0-0) b-16(00-)\n"
+      + "c-12: d-18(00-) c-17(--0) e-14(-00) d-13(000)\n"
+      + "c-17: d-18(00-)\n";
+  }
+}
+
+#!queue	A019223	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019223 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite RTE = RUB-3 [ Si24O48 ] . 2 R.
+ * @author Sean A. Irvine
+ */
+public class A019223 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // RTE
+    return "a-1: c-9(+00) a-4(00+) c-3(00+) b-2(000)\n"
+      + "b-2: b-11(000) b-5(000) c-3(000)\n"
+      + "c-3: c-12(000) a-7(+00)\n"
+      + "a-4: c-12(0-0) c-6(00-) b-5(000)\n"
+      + "b-5: b-8(000) c-6(000)\n"
+      + "b-11: c-12(000)\n"
+      + "a-7: a-10(00-) c-9(00-) b-8(000)\n"
+      + "c-6: a-10(0-0) c-9(000)\n"
+      + "b-8: b-11(000) c-9(000)\n"
+      + "a-10: c-12(00+) b-11(000)\n";
+  }
+}
+
+#!queue	A019226	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019226 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite RTH = RUB-13 [ B2Si30O64 ] . 2 R.
+ * @author Sean A. Irvine
+ */
+public class A019226 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // RTH
+    return "a-1: c-15(-00) b-14(000) a-5(000) c-3(000)\n"
+      + "c-3: a-13(0+0) d-12(00+) d-4(0+0)\n"
+      + "a-5: c-11(0+0) b-10(000) c-7(000)\n"
+      + "b-14: d-16(000)\n"
+      + "c-15: d-16(+00)\n"
+      + "b-2: b-14(000) a-13(000) b-6(00+) d-4(000)\n"
+      + "d-4: c-11(00+) d-8(--+)\n"
+      + "b-6: b-10(000) a-9(000) d-8(000)\n"
+      + "a-13: c-15(000)\n"
+      + "d-12: d-16(++-)\n"
+      + "d-8: c-15(00-)\n"
+      + "c-11: d-12(0-0)\n"
+      + "c-7: d-16(00-) a-9(-00) d-8(-00)\n"
+      + "b-10: b-14(00-) d-12(000)\n"
+      + "a-9: a-13(000) c-11(000)\n";
+  }
+}
+
+#!queue	A019230	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019230 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite RUT = RUB-10 R4 [ B4Si32O72 ].
+ * @author Sean A. Irvine
+ */
+public class A019230 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // RUT
+    return "a-1: c-16(000) c-12(000) d-8(000) d-4(000)\n"
+      + "d-4: d-17(-+0) e-5(000)\n"
+      + "d-8: d-13(-+0) e-9(000)\n"
+      + "c-12: d-13(0+0)\n"
+      + "c-16: d-17(-00)\n"
+      + "b-2: e-18(000) b-15(000) e-9(0-+) c-3(000)\n"
+      + "c-3: c-16(000) a-10(000) d-4(0-0)\n"
+      + "e-9: b-11(000)\n"
+      + "b-15: c-16(000)\n"
+      + "a-10: d-17(000) d-13(000)\n"
+      + "e-5: b-15(000) e-9(00+) b-6(-0+)\n"
+      + "d-17: e-18(000)\n"
+      + "b-6: e-14(000) b-11(000) c-7(000)\n"
+      + "c-7: c-12(000) a-10(000) d-8(+00)\n"
+      + "b-11: e-18(0+-) c-12(000)\n"
+      + "e-14: e-18(00-) b-15(+0-)\n"
+      + "d-13: e-14(000)\n";
+  }
+}
+
+#!queue	A019235	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019235 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite SGT = Sigma-2 [ Si64O128 ] . 4 R.
+ * @author Sean A. Irvine
+ */
+public class A019235 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // SGT
+    return "a-1: d-31(000) a-9(0-0) d-4(000) b-2(000)\n"
+      + "b-2: b-27(000) b-24(000) c-3(000)\n"
+      + "d-4: c-25(-00) a-17(-0-) c-15(000)\n"
+      + "a-9: d-29(00-) d-12(000) b-10(00-)\n"
+      + "c-3: d-30(000) c-11(000) d-8(000)\n"
+      + "b-24: c-25(-00)\n"
+      + "b-27: c-28(00+)\n"
+      + "d-8: a-23(000) c-22(000)\n"
+      + "c-11: d-32(00-) d-16(000)\n"
+      + "c-15: d-29(000)\n"
+      + "a-17: d-31(000) a-20(0-0) b-18(00+)\n"
+      + "c-25: d-29(+00) c-28(000)\n"
+      + "a-5: d-32(000) a-13(-00) d-8(00+) b-6(00+)\n"
+      + "b-6: b-21(000) b-18(000) c-7(00-)\n"
+      + "a-13: d-30(000) d-16(000) b-14(000)\n"
+      + "c-7: d-31(000) c-15(000) d-12(00+)\n"
+      + "b-18: c-19(0--)\n"
+      + "b-21: c-22(000)\n"
+      + "d-12: c-28(000) a-20(000)\n"
+      + "c-22: d-30(000)\n"
+      + "a-23: d-32(0+0) a-26(-00) b-24(000)\n"
+      + "b-10: b-27(000) b-24(000) c-11(0++)\n"
+      + "d-16: a-26(0-0) c-19(0--)\n"
+      + "a-20: d-29(+00) b-21(000)\n"
+      + "c-28: d-31(00-)\n"
+      + "b-14: b-21(000) b-18(000) c-15(+00)\n"
+      + "c-19: d-32(0+0) c-22(000)\n"
+      + "a-26: d-30(00-) b-27(00-)\n";
+  }
+}
+
+#!queue	A019239	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019239 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite STI = Stilbite Na4Ca8[ Al20Si52O144 ] . 56 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019239 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // STI
+    return "a-1: b-14(000) b-10(000) b-6(000) b-2(000)\n"
+      + "b-2: a-9(0--) d-4(00-) c-3(-00)\n"
+      + "b-6: d-8(000) c-7(0-0)\n"
+      + "b-10: b-18(0--) d-12(0-0) c-11(000)\n"
+      + "b-14: d-16(-00) c-15(00-)\n"
+      + "c-3: d-16(000) c-11(000) a-5(00-)\n"
+      + "d-4: c-15(000) d-8(000) a-5(-00)\n"
+      + "a-9: a-17(000)\n"
+      + "a-5: a-17(000) b-6(+00)\n"
+      + "c-11: a-13(0-0)\n"
+      + "d-16: b-18(00-)\n"
+      + "d-8: c-11(000) a-9(0-0)\n"
+      + "c-15: b-18(-00)\n"
+      + "a-17: b-18(000)\n"
+      + "c-7: c-15(000) d-12(000) a-9(000)\n"
+      + "d-12: d-16(000) a-13(000)\n"
+      + "a-13: a-17(000) b-14(+00)\n";
+  }
+}
+
+#!queue	A019243	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019243 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite TON = Theta-1 Nan[ AlnSi24-nO48 ].
+ * @author Sean A. Irvine
+ */
+public class A019243 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // TON
+    return "a-1: a-9(00+) a-9(000) d-4(000) b-2(0-0)\n"
+      + "b-2: b-6(0++) b-6(0+0) c-3(000)\n"
+      + "d-4: a-11(000) c-7(00+) c-7(000)\n"
+      + "a-9: b-10(-00)\n"
+      + "c-3: b-12(000) d-8(00+) d-8(000)\n"
+      + "b-6: c-7(000)\n"
+      + "d-8: a-9(000)\n"
+      + "c-7: b-10(000)\n"
+      + "a-11: b-12(+00)\n"
+      + "a-5: a-11(000) a-11(00-) d-8(000) b-6(0+0)\n"
+      + "b-10: b-12(+00) b-12(+0-)\n";
+  }
+}
+
+#!queue	A019247	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019247 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite VET = VPI-8 [ Si17O34 ].
+ * @author Sean A. Irvine
+ */
+public class A019247 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // VET
+    return "a-1: d-17(000) b-15(00+) b-15(000) c-3(000)\n"
+      + "c-3: b-11(0-0) d-4(00+) d-4(000)\n"
+      + "b-2: c-12(0-0) a-6(00+) a-6(000) e-5(000)\n"
+      + "e-5: b-15(-00) b-11(--0) b-7(0-0)\n"
+      + "a-6: c-8(000)\n"
+      + "c-12: d-13(00+) d-13(000)\n"
+      + "d-4: d-13(0-0) a-6(000)\n"
+      + "b-11: a-14(00+) a-14(000)\n"
+      + "d-13: a-14(000)\n"
+      + "b-7: c-16(-00) a-10(000) a-10(00-)\n"
+      + "c-8: b-15(-00) d-9(000) d-9(00-)\n"
+      + "a-10: c-12(000)\n"
+      + "c-16: d-17(000) d-17(00-)\n"
+      + "d-9: d-17(-00) a-10(000)\n"
+      + "a-14: c-16(000)\n";
+  }
+}
+
+#!queue	A019252	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import irvine.oeis.a018.A018940;
+import irvine.util.io.IOUtils;
+
+/**
+ * A019252 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite VNI = VPI-9 Rb44K4[ Zn24Si96O240 ] . 48 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019252 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // VNI
+    try (final BufferedReader reader = IOUtils.reader("irvine/oeis/a019/a019252.dat.gz")) {
+      return IOUtils.readAll(reader);
+    } catch (final IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+#!queue	A019259	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019259 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite VSV = VPI-7 Na26H6[ Zn16Si56O144 ] . 44 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019259 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // VSV
+    return "a-1: a-17(000) a-10(-0-) b-5(0-0) a-4(000)\n"
+      + "a-4: b-18(000) b-11(0--)\n"
+      + "b-5: a-17(00-) a-10(0+0) c-6(000)\n"
+      + "a-10: b-18(000) a-17(000)\n"
+      + "b-2: b-18(-0-) b-11(000) a-4(000) c-3(000)\n"
+      + "c-3: c-16(000) a-14(000) b-11(000)\n"
+      + "b-11: b-18(-+0)\n"
+      + "a-14: c-16(000)\n"
+      + "c-6: a-17(00-) b-13(000) b-8(00-)\n"
+      + "b-8: b-15(-00) b-13(00+) c-9(-00)\n"
+      + "b-13: b-15(000)\n"
+      + "a-7: c-16(+-0) a-14(0--) a-12(000) c-9(000)\n"
+      + "c-9: b-15(0--) b-13(000)\n"
+      + "a-12: c-16(+0+) b-15(000) a-14(000)\n";
+  }
+}
+
+#!queue	A019262	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019262 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite WEI = Weinebeneite Ca4[ Be12P8O32(OH)8 ] . 16 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019262 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // WEI
+    return "a-1: a-8(00+) a-4(000) a-3(0-0) b-2(000)\n"
+      + "b-2: a-5(000) a-4(000) a-3(000)\n"
+      + "a-3: a-6(00+) a-5(000)\n"
+      + "a-4: a-10(000) a-5(-00)\n"
+      + "a-8: a-10(000)\n"
+      + "a-5: a-9(000)\n"
+      + "a-6: a-9(000) a-8(0+0) b-7(000)\n"
+      + "a-9: a-10(+00)\n"
+      + "b-7: a-10(000) a-9(000) a-8(000)\n";
+  }
+}
+
+#!queue	A019264	2	->	3	A018940	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.a018.A018940;
+
+/**
+ * A019264 Cycle class sequence c(n) (the number of true cycles of length n in which a certain node is included) for zeolite YUG = Yugawaralite Ca2[ Al4Si12O32 ] . 8 H2O.
+ * @author Sean A. Irvine
+ */
+public class A019264 extends A018940 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET), 1);
+  }
+
+  @Override
+  protected String getNeighbourhoodDescription() {
+    // YUG
+    return "a-1: b-6(0-+) a-5(0-0) a-3(000) b-2(000)\n"
+      + "b-2: b-8(000) a-5(0-+) b-4(00+)\n"
+      + "a-3: b-8(+0-) a-7(+00) b-4(000)\n"
+      + "a-5: a-7(000) b-6(000)\n"
+      + "b-6: b-8(00-)\n"
+      + "b-4: a-7(+0-) b-6(000)\n"
+      + "a-7: b-8(000)\n";
+  }
+}
+
+#!queue	A999999	0	0	0	0

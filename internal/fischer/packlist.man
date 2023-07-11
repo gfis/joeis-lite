@@ -220,7 +220,7 @@
 # src/irvine/oeis/ZeroSpacedSequence.java
 # src/irvine/oeis/NaiveHunterSequence.java
 
-# 2023-07-05
+# 2023-07-05 not done
 #~src/irvine/oeis/triangle/WrappedRecurrence.java
 # src/irvine/oeis/AlonsoSequence.java
 #~src/irvine/oeis/base/DigitSequence.java
@@ -231,8 +231,27 @@
 #~src/irvine/oeis/triangle.Triangle.java
 #~src/irvine/oeis/triangle/Triangle.java
 #~src/irvine/oeis/triangle/BaseTriangle.java
-#~src/irvine/oeis/trinagle/PartitionTransformTriangle.java
-#~src/irvine/oeis/triangle/PartitionTransformTriangle.java
-#~src/irvine/oeis/triangle/PartitionTransformTriangle.java
-#~src/irvine/oeis/triangle/WrappedRecurrence.java
-#~src/irvine/oeis/triangle/WrappedRecurrence.java
+
+# 2023-07-11
+src/irvine/oeis/triangle/WrappedRecurrence.java
+src/irvine/oeis/cons/DoubleDecimalExpansionSequence.java
+src/irvine/oeis/transform/CycleTransformSequence.java
+src/irvine/oeis/transform/LyndonTransformSequence.java
+src/irvine/oeis/transform/SimpleTransformSequence.java
+src/irvine/oeis/transform/WeighTransformSequence.java
+src/irvine/oeis/base/MorphismTransform.java
+src/irvine/oeis/RecordSequence.java
+src/irvine/oeis/base/DigitSequence.java
+src/irvine/oeis/transform/DhkTransformSequence.java
+src/irvine/oeis/ParallelGenerateGraphsSequence.java
+src/irvine/oeis/cons/ContinuedFractionNumeratorSequence.java
+src/irvine/oeis/cons/ContinuedFractionDenominatorSequence.java
+src/irvine/oeis/transform/LittleHankelTransform.java
+src/irvine/oeis/transform/DikTransformSequence.java
+src/irvine/oeis/DistinctAdditiveClosureSequence.java
+src/irvine/oeis/DistinctMultiplicativeClosureSequence.java
+src/irvine/oeis/SumBetweenSequence.java
+src/irvine/oeis/transform/BikTransformSequence.java
+src/irvine/oeis/ParallelPlantriSequence.java
+src/irvine/oeis/transform/LogarithmicTransformSequence.java
+src/irvine/oeis/cons/ContinuedFractionSequence.java

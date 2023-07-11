@@ -121,7 +121,9 @@ sub unpack1 {
         open(TAR, ">", "$tarpath/$aseqno.java") || die "cannot write $tarpath/$aseqno.java\n";
         print TAR $change;
         close(TAR);
-        print STDERR "# $aseqno written\n";
+        if ($debug >= 1) {
+            print STDERR "# $aseqno written\n";
+        }
         $pack_count ++;
     } else {
         print STDERR "# $aseqno unchanged\n";
