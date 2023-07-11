@@ -6,15 +6,15 @@ import irvine.math.z.Z;
 import irvine.oeis.triangle.Triangle;
 
 /**
- * A105599 Triangle read by rows: T(n, m) = number of forests with n nodes and m labeled trees. 
+ * A105599 Triangle read by rows: T(n, m) = number of forests with n nodes and m labeled trees. Also number of forests with exactly n - m edges on n labeled nodes.
  * Also number of forests with exactly n - m edges on n labeled nodes.
  * @author Georg Fischer
  */
 public class A105599 extends Triangle {
 
   /** Construct the sequence. */
-  public A105599 () {
-    super(1, 1, -1);
+  public A105599() {
+    super(1);
     hasRAM(true);
   }
 

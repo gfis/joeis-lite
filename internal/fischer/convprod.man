@@ -46,19 +46,19 @@ A117209	convprod	0	-1	new A117208()
 A066898	convoseq	0	1,1	new A000041(), new A183063()	Convolution of A000041 and A183063.
 A066966	convoseq	0	1,1	new A000041(), new A146076()	Convolution of A000041 and A146076.
 A084370	convoseq	0	1,1	new A065091(), new A065091()	Convolution of odd primes with themselves.
-A086717	convoseq	0	1,1	new A000040(), new A000041()	Convolution of primes with partition numbers.
+A086717	convoseq	0	1,1	new A000040(), new A000041().skip(1)	Convolution of primes with partition numbers.
 A086718	convoseq	0	1,1	new A000040(), new A000203()	Convolution of A000040 and A000203.
 A086733	convoseq	0	1,1	new A340793(), new A002088().skip(1)	Convolution of A340793 and the nonzero terms of A002088. - _Omar E. Pol_, Feb 17 2021
-A086734	convoseq	0	1,1	new A000040(), new A000005()	Convolution of the prime numbers with phi(n).
+A086734	convoseq	0	1,1	new A000040(), new A000010()	Convolution of the prime numbers with phi(n).
 A086735	convprod	0	1,1,1	new A000040(), new A000005(), new A000203()	Convolution of the prime numbers with phi(n) convoluted with sigma(n).
 A115784	convprod	0	1,-1	new A005928(), new A004016()	Convolution inverse is A215690. Convolution with A004016 is A005928.
 A130579	convprod	0	1,1	new A000108(), new A001764()	Convolution of A000108 (Catalan numbers) and A001764 (ternary trees):
 A152039	convprod	0	1,1	new A084938(), new A084938()	Convolution of A084938 with itself.
-A153206	convprod	0	1,1	new PrependSequence(new A153197(), 1), new A006789(), new A006789()	A153197 prefaced with a 1: (1, 1, 2, 5, 15, 51,...) convolved with A006789 (1, 1, 2, 5, 14, 43,...) = A006789 shifted: (1, 2, 5, 14, 43, 143,...).
-A153462	convprod	0	1,1	new A153462(), new A000073()	An eigentriangle by rows, the Padovan sequence convolved with the tribonacci numbers.
+# A153206	convprod	0	1,1	new PrependSequence(new A153197(), 1), new A006789(), new A006789()	A153197 prefaced with a 1: (1, 1, 2, 5, 15, 51,...) convolved with A006789 (1, 1, 2, 5, 14, 43,...) = A006789 shifted: (1, 2, 5, 14, 43, 143,...).
+# A153462	convprod	0	1,1	new A153462(), new A000073()	An eigentriangle by rows, the Padovan sequence convolved with the tribonacci numbers.
 A157793	convoseq	0	1,1	new A023416(), new A000120()	Convolution of numbers of binary zeros and ones.
-A171238	convprod	0	2	new A018819()	Convolution square of A018819. - _Michael Somos_, Mar 28 2014
-A175704	convprod	0	1,1	new A008472()	Auto-convolution of A008472.
+#? A171238	convprod	0	2	new A018819()	Convolution square of A018819. - _Michael Somos_, Mar 28 2014 - wrong
+A175704	convoseq	0	1,1	new A008472(), new A008472()	Auto-convolution of A008472.
 A187542	convprod	0	1,1	new A187535(), new A187535()	Convolutions of the central Lah numbers (A187535).
 A187662	convprod	0	1,1	new A187535(), new A007820()	Convolution of the (signless) central Lah numbers (A187535) and the central Stirling numbers of the second kind (A007820).
 A206434	convoseq	0	1,1	new A002865(), new A183063()	Convolution of A002865 and A183063.
@@ -76,12 +76,12 @@ A277175	convprod	0	1,1	new A000108(), new A000142()	Convolution of Catalan numbe
 A281905	convoseq	0	1,1	new A000041(), new A005069()	Convolution of the sequences A000041 and A005069.
 A281906	convoseq	0	1,1	new A000041(), new A023889()	Convolution of the sequences A000041 and A023889.    
 A292617	convprod	0	1,1	new A000041(), new A000108()	Convolution of number of partitions into distinct parts and Catalan numbers. 
-A292619	convprod	0	1,1	new A000041(), new A000108()	Convolution of number of overpartitions and Catalan numbers.                 
+A292619	convprod	0	1,1	new A015128(), new A000108()	Convolution of number of overpartitions and Catalan numbers.                 
 A300519	convoseq	0	1,1	new A000142(), new A000312()	Convolution of n! and n^n.
 A302577	convprod	0	1/2	new A186284()	Convolution square root of A186284 multiplied by 2^n.
 A304823	convprod	0	1,1	new A000009(), new A000984()	Convolution of number of partitions into distinct parts and central binomial coefficients.
 A304824	convprod	0	1,1	new A000984(), new A000041()	Convolution of central binomial coefficients and partition numbers.
 A305105	convoseq	0	1,1	new A067588(), new A000041()	Convolution of A067588 and A000041.
 A321336	convprod	0	1,1	new A321327(), new A321327()	Equals the self-convolution of A321327.
-A334768	convprod	0	1,1	new A061397(), new A061397()	Self-convolution of A061397.
+A334768	convoseq	0	1,1	new A061397(), new A061397()	Self-convolution of A061397.
 A334895	convoseq	0	1,1	new A000040(), new A010815()	Convolution of primes with A010815.

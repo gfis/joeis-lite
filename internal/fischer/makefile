@@ -69,7 +69,7 @@ endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 JJAVA=java $(JOPT) -cp "$(JOEIS)/build.tmp/joeis.jar"
 BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU)
-ABSINSPECT=$(JAVA) irvine.oeis.AbstractInspector
+INSPECTOR=$(JAVA) irvine.oeis.AbstractInspector
 INIT="1"
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
 REMOTE=gfis@atair:~/work/gits/joeis-lite/internal/fischer
@@ -478,7 +478,7 @@ dist:
 	wc -l dist.log | perl -ne 'm{(\d+)}; exit(1) if $$1 > 8;'
 	unzip -v ../../dist/joeis-lite.jar | grep -vP "\/\Z" \
 	| perl -ne 'use strict; if (m{irvine\/oeis\/(.*)} && ! m{\$$} '\
-	' && ! m{\/a\d\d\d\/|producer\/|ector\b|\b(SequenceFactory|Explorer|Names|Report)\b}) { '\
+	' && ! m{\/a\d\d\d\/|ector\b|\b(Explorer|Names|Report)\b}) { '\
 	' my $$class = $$1; $$class =~ s{\.class}{}; print "src/irvine/oeis/$$class.java\n"; }'
 	#################################################################
 dist1:
@@ -5372,21 +5372,21 @@ offinspect1: # select the eligible programs
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 offinspect2: # run the AbstractInspector and determine jOEIS and OEIS offsets
-	$(ABSINSPECT) offin offinspect1.tmp 2>&1 \
+	$(INSPECTOR) offin offinspect1.tmp 2>&1 \
 	| tee    $@.tmp
 	wc -l    $@.tmp
 	grep -E "^#" $@.tmp
 	cut -f3  $@.tmp | sort | uniq -c | sort -n \
 	>        $@.txt
 noabstract: # run the AbstractInspector and determine which jOEIS sequences do not extend AbstractSequence
-	$(ABSINSPECT) noabs offinspect1.tmp 2>&1 \
+	$(INSPECTOR) noabs offinspect1.tmp 2>&1 \
 	| tee    $@.tmp
 	wc -l    $@.tmp
 	grep -E "^#" $@.tmp
 	cut -f4  $@.tmp | sort | uniq -c | sort -n \
 	>        $@.txt
 seqwithout: # run the AbstractInspector and determine which jOEIS still implement SequenceWithOffset, but do not extend AbstractSequence
-	$(ABSINSPECT) seqwo offinspect1.tmp 2>&1 \
+	$(INSPECTOR) seqwo offinspect1.tmp 2>&1 \
 	| tee    $@.tmp
 	wc -l    $@.tmp
 	grep -E "^#" $@.tmp
