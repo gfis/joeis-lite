@@ -170,6 +170,7 @@ pack: # GREP=A018940 pack all sources that extend $(A)
 unpackall: \
 	A018940u \
 	basecu \
+	wrapconu \
 	wraprecu \
 	#
 #--
@@ -178,15 +179,7 @@ A018940: # pack all sources that extend $(A)
 	| perl queue.pl -p > $@.pack
 A018940u:
 	perl queue.pl -u A018940.pack
-wraprec:
-	$(DBAT) -x "SELECT i.aseqno, 0, '->', i.offset1, j.superclass FROM asinfo i, joeis j \
-	  WHERE i.aseqno = j.aseqno \
-	    AND j.superclass = 'WrappedRecurrence' ORDER BY 1" > $@.tmp
-	tail -n2 $@.tmp
-	wc -l    $@.tmp
-	perl queue.pl -p $@.tmp > $@.pack
-wraprecu:
-	perl queue.pl -u wraprec.pack
+#--
 basec:
 	grep -P "[a-z]" offin.tmp \
 	| grep -vP "WrappedRecurrence|Memory|Triangle" \
@@ -196,6 +189,26 @@ basec:
 	perl queue.pl -p $@.tmp > $@.pack
 basecu:
 	perl queue.pl -u basec.pack
+wrapcon:
+	$(DBAT) -x "SELECT i.aseqno, 0, '->', i.offset1, j.superclass FROM asinfo i, joeis j \
+	  WHERE i.aseqno = j.aseqno \
+	    AND j.superclass = 'WrappedConstantTriangle' ORDER BY 1" > $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp > $@.pack
+	uedit64 $@.pack
+wrapconu:
+	perl queue.pl -u wrapcon.pack
+wraprec:
+	$(DBAT) -x "SELECT i.aseqno, 0, '->', i.offset1, j.superclass FROM asinfo i, joeis j \
+	  WHERE i.aseqno = j.aseqno \
+	    AND j.superclass = 'WrappedRecurrence' ORDER BY 1" > $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp > $@.pack
+	uedit64 $@.pack
+wraprecu:
+	perl queue.pl -u wraprec.pack
 #----
 patch_abstract: # patch all in the list above
 	perl patch_abstract.pl liseq.txt
