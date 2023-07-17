@@ -49,9 +49,13 @@ pull: # copy the result of a previous "make grep" from joeis/src into ../manual
 edit: # call the editor for the result of a previous "make grep"
 #----
 GU=2
-test: # SUP= GU= ; select all sequences that use the base sequence(s) in SUP
+testsup: # SUP= GU= ; select all sequences that use the base sequence(s) in SUP
 	grep -iP "$(SUP)" ../joxref/joxref.txt | cut -f1 | sort | uniq -w7 \
 	| tee   ../regtest.gen
 	wc -l   ../regtest.gen
 	cd .. ; make CC=regtest test log TO=8 GU=$(GU)
+
+test: # test the failing sequences from a previous "make grep"
+	cut -f1 grep.tmp | sort | uniq -w7 > ../ghead.tmp
+	cd .. ; make CC=man test2 log
 

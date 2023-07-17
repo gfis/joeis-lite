@@ -1,0 +1,300 @@
+#!queue	A063882	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a063;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A063882 a(n) = a(n - a(n - 1)) + a(n - a(n - 4)), with a(1) = ... = a(4) = 1.
+ * @author Sean A. Irvine
+ */
+public class A063882 extends Sequence1 {
+
+  private MemorySequence mSeq = new MemorySequence() {
+      {
+        add(null);
+      }
+      
+      @Override
+      protected Z computeNext() {
+        final int n = size();
+        if (n <= 4) {
+          return Z.ONE;
+        }
+        return a(n - a(n - 1).intValueExact()).add(a(n - a(n - 4).intValueExact()));
+      }
+    };
+
+  @Override
+  public Z next() {
+    return mSeq.next();
+  }
+}
+#!queue	A063884	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a063;
+
+import java.util.HashSet;
+import java.util.TreeSet;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A063884 a(1) = 2, a(2) = 3 and a(k+1) is the least prime not already chosen that divides some a(i)*a(j)+1, where 1&lt;=i&lt;=j&lt;=k.
+ * @author Sean A. Irvine
+ */
+public class A063884 extends Sequence1 {
+  private MemorySequence mSeq = new MemorySequence() {
+      protected final TreeSet<Z> mA = new TreeSet<>();
+      protected final HashSet<Z> mUsed = new HashSet<>();
+    
+      {
+        mA.add(Z.TWO);
+        mA.add(Z.THREE);
+      }
+    
+      protected void update(final Z n) {
+        for (final Z p : Jaguar.factor(n).toZArray()) {
+          if (!mUsed.contains(p)) {
+            mA.add(p);
+          }
+        }
+      }
+    
+      @Override
+      protected Z computeNext() {
+        final Z t = mA.pollFirst();
+        mUsed.add(t);
+        update(t.square().add(1)); // needed because we did not yet add to the sequence
+        for (final Z v : this) {
+          update(v.multiply(t).add(1));
+        }
+        return t;
+      }
+    };
+
+  @Override
+  public Z next() {
+    return mSeq.next();
+  }
+}
+#!queue	A063894	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a063;
+
+import irvine.math.z.Integers;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A063894 Start with x, y; then concatenate each word in turn with all preceding words, getting x y xy xxy yxy xxxy yxxy xyxxy ...; sequence gives number of words of length n. Also binary trees by degree: x y (x,y) (x,(x,y)) (y,(x,y)) (x,(x,(x,y))) (y,(x,(x,y))) ((x,y),(x,(x,y)))...
+ * @author Sean A. Irvine
+ */
+public class A063894 extends Sequence1 {
+
+
+private MemorySequence mSeq = new MemorySequence() {
+      {
+        add(null);
+      }
+    
+      @Override
+      protected Z computeNext() {
+        final int n = size();
+        if (n == 1) {
+          return Z.TWO;
+        }
+        final Z sum = Integers.SINGLETON.sum(1, (n - 1) / 2, k -> a(k).multiply(a(n - k)));
+        return (n & 1) == 0 ? sum.add(a(n / 2).subtract(1).multiply(a(n / 2)).divide2()) : sum;
+      }
+    };
+
+  @Override
+  public Z next() {
+    return mSeq.next();
+  }
+}
+#!queue	A063895	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a063;
+
+import irvine.math.z.Integers;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A063895 Start with x, xy; then concatenate each word in turn with all preceding words, getting x xy xxy xxxy xyxxy xxxxy xyxxxy xxyxxxy ...; sequence gives number of words of length n. Also binary trees by degree: x (x,y) (x,(x,y)) (x,(x,(x,y))) ((x,y),(x,(x,y)))...
+ * @author Sean A. Irvine
+ */
+public class A063895 extends Sequence1 {
+
+  private MemorySequence mSeq = new MemorySequence() {
+      {
+        add(null);
+      }
+    
+      @Override
+      protected Z computeNext() {
+        final int n = size();
+        if (n <= 2) {
+          return Z.ONE;
+        }
+        final Z sum = Integers.SINGLETON.sum(1, (n - 1) / 2, k -> a(k).multiply(a(n - k)));
+        return (n & 1) == 0 ? sum.add(a(n / 2).subtract(1).multiply(a(n / 2)).divide2()) : sum;
+      }
+    };
+
+  @Override
+  public Z next() {
+    return mSeq.next();
+  }
+}
+
+#!queue	A064002	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A064002 List pairs (i,j) with 1 &lt;= i &lt;= j in lexicographic order: (1,1), (1,2), (2,2), (1,3), (2,3), (3,3), (1,4), ... Let a(1) = 1. Then for n&gt;=2 if the (n-1)-st pair is (i,j) then a(n) = a(i) + a(j) + 1.
+ * @author Sean A. Irvine
+ */
+public class A064002 extends Sequence1 {
+
+  private MemorySequence mSeq = new MemorySequence() {
+      private int mN = 0;
+      private int mM = 0;
+
+      @Override
+      protected Z computeNext() {
+        if (size() == 0) {
+          return Z.ONE;
+        }
+        if (++mM > mN) {
+          ++mN;
+          mM = 1;
+        }
+        return a(mN - 1).add(a(mM - 1)).add(1);
+      }
+    };
+
+  @Override
+  public Z next() {
+    return mSeq.next();
+  }
+}
+#!queue	A064097	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.factor.factor.LeastPrimeFactorizer;
+import irvine.factor.prime.Fast;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A064097 A quasi-logarithm defined inductively by a(1) = 0 and a(p) = 1 + a(p-1) if p is prime and a(n*m) = a(n) + a(m) if m,n &gt; 1.
+ * @author Sean A. Irvine
+ */
+public class A064097 extends Sequence1 {
+
+  private MemorySequence mSeq = new MemorySequence() {
+
+  private final Fast mPrime = new Fast();
+      {
+        add(null);
+      }
+    
+      @Override
+      protected Z computeNext() {
+        final int n = size();
+        if (n == 1) {
+          return Z.ZERO;
+        }
+        if (mPrime.isPrime(n)) {
+          return a(n - 1).add(1);
+        }
+        final int lpf = LeastPrimeFactorizer.lpf(Z.valueOf(n)).intValueExact();
+        return a(lpf).add(a(n / lpf));
+      }
+    };
+
+  @Override
+  public Z next() {
+    return mSeq.next();
+  }
+}
+#!queue	A064171	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.math.q.Q;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A064171 a(1) = 1; a(n+1) = product of numerator and denominator of the continued fraction, [a(1); a(2), a(3),..., a(n)].
+ * @author Sean A. Irvine
+ */
+public class A064171 extends Sequence1 {
+
+  private MemorySequence mSeq = new MemorySequence() {
+      @Override
+      protected Z computeNext() {
+        if (size() == 0) {
+          return Z.ONE;
+        }
+        Q s = new Q(a(size() - 1));
+        for (int k = size() - 2; k >= 0; --k) {
+          s = s.reciprocal().add(a(k));
+        }
+        return s.num().multiply(s.den());
+      }
+    };
+
+  @Override
+  public Z next() {
+    return mSeq.next();
+  }
+}
+
+#!queue	A064194	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence1;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A064194 a(2n) = 3*a(n), a(2n+1) = 2*a(n+1)+a(n), with a(1) = 1.
+ * @author Sean A. Irvine
+ */
+public class A064194 extends Sequence1 {
+
+  private MemorySequence mSeq = new MemorySequence() {
+      {
+        add(null);
+      }
+    
+      @Override
+      protected Z computeNext() {
+        final int n = size();
+        if (n == 1) {
+          return Z.ONE;
+        }
+        return (n & 1) == 0 ? a(n / 2).multiply(3) : a(n / 2).add(a(n / 2 + 1).multiply2());
+      }
+    };
+
+  @Override
+  public Z next() {
+    return mSeq.next();
+  }
+}
+
+#!queue	A999999	0	0	0	0

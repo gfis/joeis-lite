@@ -1,26 +1,26 @@
-A057036	parm4	0	A057036	new A005408()	1	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057036(n)=i(2n-1).	nonn,synth	81
-A057037	parm4	0	A057036	new A005408()	2	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057037(n)=j(2n-1).	nonn,synth	80
-A057038	parm4	0	A057036	new A005843()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057038(n)=i(2n).	nonn,synth	81
-A057039	parm4	0	A057036	new A005843()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057039(n)=j(2n).	nonn,synth	79
-A057040	parm4	0	A057036	new A000045()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057040(n)=i(F(n)), where F(n) is the n-th Fibonacci number.	nonn,synth	44
-A057041	parm4	0	A057036	new A000045()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057041(n)=j(F(n)), where F(n) is the n-th Fibonacci number.	nonn,synth	45
-A057042	parm4	0	A057036	new A000045()	3	1	; 2,3; 4,5,6; ...; the n-th Fibonacci number is in antidiagonal a(n).	nonn,synth	45
-A057043	parm4	0	A057036	new A000032()	1	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057043(n)=i(L(n)), where L(n) is the n-th Lucas number.	nonn,synth	42
-A057044	parm4	0	A057036	new A000032()	2	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057044(n)=j(L(n)), where L(n) is the n-th Lucas number.	nonn,synth	42
-A057045	parm4	0	A057036	new A000032()	3	0	; 2,3; 4,5,6; ...; the n-th Lucas number is in antidiagonal a(n).	nonn,	1000
-A057046	parm4	0	A057036	new A000079()	1	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057046(n)=i(2^n).	nonn,synth	32
-A057047	parm4	0	A057036	new A000079()	2	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057047(n)=j(2^n).	nonn,synth	32
-# A057048	parm4	0	A057036	new A005408()	3	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057047(n)=j(2^n).	nonn,synth	32
-A057049	parm4	0	A057036	new A000290()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057049(n)=i(n^2).	nonn,	10000
-A057050	parm4	0	A057036	new A000290()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057050(n)=j(n^2).	nonn,synth	67
-A057052	parm4	0	A057036	new A000578()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057052(n)=i(n^3).	nonn,	10000
-A057053	parm4	0	A057036	new A000578()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057053(n)=j(n^3).	nonn,synth	56
-A057054	parm4	0	A057036	new A000578()	3	1	; 2,3; 4,5,6; ...; n^3 is in antidiagonal a(n).	nonn,changed,synth	50
-A057055	parm4	0	A057036	new A000292()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057055(n)=i(C(n,3)).	nonn,synth	58
-A057056	parm4	0	A057036	new A000292()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057056(n)=j(C(n,3)).	nonn,synth	60
-A057057	parm4	0	A057036	new A000292()	3	1	; 2,3; 4,5,6; ...; C(n,3) is in antidiagonal a(n).	nonn,changed,synth	53
-A057058	parm4	0	A057036	new A057027()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and a(n)=i(A057027(n))	nonn,changed,synth	85
-A057059	parm4	0	A057036	new A057027()	2	1	; 2,3; 4,5,6; ... Define i(m) and j(m) by R(i(m),j(m)) = m. Then a(n) = j(A057027(n)).	nonn,easy,changed,synth	85
-A057060	parm4	0	A057036	new A000040()	1	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057058(n)=i(n-th prime)).	nonn,synth	77
-A057061	parm4	0	A057036	new A000040()	2	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057058(n)=j(n-th prime)).	nonn,synth	74
-A057062	parm4	0	A057036	new A000040()	3	0	idiagonals 1; ...; the n-th prime is in antidiagonal a(n).	nonn,	1000
+# A057036	parmof4	0	A057036	new A005408()	1	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057036(n)=i(2n-1).	nonn,synth	81
+A057037	parmof4	0	A057036	new A005408()	2	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057037(n)=j(2n-1).	nonn,synth	80
+A057038	parmof4	0	A057036	new A005843()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057038(n)=i(2n).	nonn,synth	81
+A057039	parmof4	0	A057036	new A005843()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057039(n)=j(2n).	nonn,synth	79
+A057040	parmof4	0	A057036	new A000045()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057040(n)=i(F(n)), where F(n) is the n-th Fibonacci number.	nonn,synth	44
+A057041	parmof4	0	A057036	new A000045()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057041(n)=j(F(n)), where F(n) is the n-th Fibonacci number.	nonn,synth	45
+A057042	parmof4	0	A057036	new A000045()	3	1	; 2,3; 4,5,6; ...; the n-th Fibonacci number is in antidiagonal a(n).	nonn,synth	45
+A057043	parmof4	0	A057036	new A000032()	1	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057043(n)=i(L(n)), where L(n) is the n-th Lucas number.	nonn,synth	42
+A057044	parmof4	0	A057036	new A000032()	2	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057044(n)=j(L(n)), where L(n) is the n-th Lucas number.	nonn,synth	42
+A057045	parmof4	0	A057036	new A000032()	3	0	; 2,3; 4,5,6; ...; the n-th Lucas number is in antidiagonal a(n).	nonn,	1000
+A057046	parmof4	0	A057036	new A000079()	1	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057046(n)=i(2^n).	nonn,synth	32
+A057047	parmof4	0	A057036	new A000079()	2	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057047(n)=j(2^n).	nonn,synth	32
+# A057048	parmof4	0	A057036	new A005408()	3	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057047(n)=j(2^n).	nonn,synth	32
+A057049	parmof4	0	A057036	new A000290()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057049(n)=i(n^2).	nonn,	10000
+A057050	parmof4	0	A057036	new A000290()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057050(n)=j(n^2).	nonn,synth	67
+A057052	parmof4	0	A057036	new A000578()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057052(n)=i(n^3).	nonn,	10000
+A057053	parmof4	0	A057036	new A000578()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057053(n)=j(n^3).	nonn,synth	56
+A057054	parmof4	0	A057036	new A000578()	3	1	; 2,3; 4,5,6; ...; n^3 is in antidiagonal a(n).	nonn,changed,synth	50
+A057055	parmof4	0	A057036	new A000292()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057055(n)=i(C(n,3)).	nonn,synth	58
+A057056	parmof4	0	A057036	new A000292()	2	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057056(n)=j(C(n,3)).	nonn,synth	60
+A057057	parmof4	0	A057036	new A000292()	3	1	; 2,3; 4,5,6; ...; C(n,3) is in antidiagonal a(n).	nonn,changed,synth	53
+A057058	parmof4	0	A057036	new A057027()	1	1	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and a(n)=i(A057027(n))	nonn,changed,synth	85
+A057059	parmof4	0	A057036	new A057027()	2	1	; 2,3; 4,5,6; ... Define i(m) and j(m) by R(i(m),j(m)) = m. Then a(n) = j(A057027(n)).	nonn,easy,changed,synth	85
+A057060	parmof4	0	A057036	new A000040()	1	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057058(n)=i(n-th prime)).	nonn,synth	77
+A057061	parmof4	0	A057036	new A000040()	2	0	; 2,3; 4,5,6; ...; each k is an R(i(k),j(k)) and A057058(n)=j(n-th prime)).	nonn,synth	74
+A057062	parmof4	0	A057036	new A000040()	3	0	idiagonals 1; ...; the n-th prime is in antidiagonal a(n).	nonn,	1000

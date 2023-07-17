@@ -1,6 +1,6 @@
 #!make
 
-# makefile for transition of GeneralizedEulerTransfor -> LambdaEulerTransform
+# makefile for transition of GeneralizedEulerTransform -> GeneralizedProductTransform
 # @(#) $Id$
 # 2023-06-10, Georg Fischer
 #

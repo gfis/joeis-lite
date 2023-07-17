@@ -4,7 +4,6 @@ package irvine.oeis.$(PACK);
 
 import irvine.oeis.EulerTransform;
 import irvine.oeis.PrependSequence;
-import irvine.oeis.SkipSequence;
 
 /**
  * $(ASEQNO) $(NAME)
@@ -14,7 +13,7 @@ public class $(ASEQNO) extends PrependSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(new EulerTransform(new SkipSequence($(PARM3), 1)), 1);
+    super(new EulerTransform($(PARM3).skip(1)), 1);
 $(PARM4)
   }
 }

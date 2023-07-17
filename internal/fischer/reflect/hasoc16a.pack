@@ -1,0 +1,105 @@
+#!queue	A169964	0	->	1	AbstractSequence	--------------------------------
+package irvine.oeis.a169;
+// manually 2021-06-24
+
+import irvine.math.z.Z;
+import irvine.oeis.AbstractSequence;
+import irvine.oeis.a007.A007088;
+
+/**
+ * A169964 Numbers whose decimal expansion contains only 0's and 5's.
+ * @author Georg Fischer
+ */
+public class A169964 extends AbstractSequence {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  protected Z mDigit;
+  private final A007088 mSeq = new A007088();
+
+  /** Construct the sequence. */
+  public A169964() {
+    this(0, 5);
+  }
+
+  /**
+   * Generic constructor with parameter
+   * @param offset offset of the sequence
+   * @param parm digit to multiply on A007088
+   */
+  public A169964(final int offset, final int parm) {
+    super(offset);
+    mDigit = Z.valueOf(parm);
+  }
+
+  @Override
+  public Z next() {
+    return mSeq.next().multiply(mDigit);
+  }
+}
+#!queue	A215861	1	->	0	Triangle	--------------------------------
+package irvine.oeis.a215;
+
+import irvine.math.MemoryFunctionInt2;
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Binomial;
+import irvine.math.z.Z;
+import irvine.oeis.triangle.Triangle;
+
+/**
+ * A215861 Number T(n,k) of simple labeled graphs on n nodes with exactly k connected components that are trees or cycles; triangle T(n,k), n&gt;=0, 0&lt;=k&lt;=n, read by rows.
+ * @author Georg Fischer
+ */
+public class A215861 extends Triangle {
+
+  /** Constructor with offset.
+   * @param offset first index
+   */
+  public $(ASEQNO)(final int offset) {
+    super(offset);
+  }
+
+  /** Construct the sequence. */
+  public A215861() {
+    super(1, 1, -1);
+    hasRAM(true);
+  }
+
+  /* Maple:
+    T:= proc(n, k) option remember; `if`(k<0 or k>n, 0,
+          `if`(n=0, 1, add(binomial(n-1, i)*T(n-1-i, k-1)*
+          `if`(i<2, 1, i!/2 +(i+1)^(i-1)), i=0..n-k)))
+        end:
+    seq(seq(T(n, k), k=0..n), n=0..12);
+  */
+  private final MemoryFunctionInt2<Z> mB = new MemoryFunctionInt2<Z>() {
+    @Override
+    protected Z compute(final int n, final int k) {
+      if (k < 0 || k > n) {
+        return Z.ZERO;
+      }
+      if (n == 0) {
+        return Z.ONE;
+      }
+      Z sum = Z.ZERO;
+      final int imax = n - k;
+      for (int i = 0; i <= imax; ++i) {
+        Z term = get(n - 1 - i, k - 1).multiply(Binomial.binomial(n - 1, i));
+        if (i >= 2) {
+          term = term.multiply(MemoryFactorial.SINGLETON.factorial(i).divide2().add(Z.valueOf(i + 1).pow(i - 1)));
+        }
+        sum = sum.add(term);
+      }
+      return sum;
+    }
+  };
+
+  @Override
+  protected Z compute(final int n, final int k) {
+    return mB.get(n, k);
+  }
+}
+#!queue	A999999	0	0	0	0

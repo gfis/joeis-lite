@@ -24,6 +24,8 @@ D=0
 #--------
 all: absref_stat
 	# grep -P "^\w" makefile
+help:
+	grep -E "^[a-z]" makefile | sort
 #----:
 absref_stat: absref_statf absref_stato absref_stat9 # 3 AbstractSequence reflections with statistics
 absref_statf:
@@ -34,6 +36,8 @@ absref_stato:
 	# make absref1 MODE=noabs LIST=offinspect1.tmp
 	make absref1 MODE=offin LIST=offinspect1.tmp
 	# make absref1 MODE=seqwo
+absref_stat2:
+	make absref1 MODE=trian LIST=offinspect1.tmp
 absref_stat9:
 	tail -n16 offin.tmp noabs.tmp \
 	| grep -P  "^\d\d\d\d\-" >> reflect_progress.txt
@@ -97,6 +101,11 @@ finite1:     # select the eligable programs
 	head -n2 $@.tmp
 	wc -l    $@.tmp
 #----
+hasoc_grep: # DIR= grep all that have a constructor with an isolated offset parameter
+	find $(DIR) -iname "A*.java" | xargs -l grep -P "(public|protected) *A\d+\(final *int *offset\)" \
+	| perl -ne 'm{(A\d+)}; print "$$1\n"; '\
+	| tee    $@.tmp
+#----
 offcount: # SUP=superclass ; count the different offsets for some jOEIS superclass
 	grep $(SUP) offinspect1.tmp | cut -f2-3 | sort | uniq -c
 	# grep $(SUP) noabs.tmp | grep -vP "\t1\t" | sort 
@@ -113,17 +122,21 @@ offman: # check the offsets in ../manual
 	head -n2 $@.tmp
 	wc -l    $@.tmp
 	make absref1 MODE=offin LIST=$@.tmp
-
-offlev1: # first level in class hierarchy
-	grep -P "^A\d+\t[^\t]*\tA\d{6}" offin.tmp | sed -e "s/ //g" \
-	>        $@.tmp
-	head -n2 $@.tmp
+offindep: # superclasses that do not occur in offin 1175
+	$(DBAT) -x "SELECT DISTINCT(o2.superclass) FROM offin o2 WHERE o2.aseqno NOT IN (SELECT o1.superclass FROM offin o1) ORDER BY 1" \
+	| tee    $@.tmp
 	wc -l    $@.tmp
-	$(DBAT) -f $(COMMON)/seq3.create.sql
-	$(DBAT) -r seq3 < $@.tmp
-	$(DBAT) -x "SELECT * FROM seq3 WHERE info NOT IN (SELECT aseqno FROM seq3) ORDER BY 1" \
-	>        $@.tmp
-	head -n2 $@.tmp
+offindep2: # superclasses that do occur in offin
+	$(DBAT) -x "SELECT o2.superclass, COUNT(o2.aseqno) FROM offin o2 WHERE o2.aseqno IN (SELECT o1.superclass FROM offin o1) GROUP BY o2.superclass ORDER BY 1" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+offindep3: # superclasses that do not occur in offin 627
+	$(DBAT) -x "SELECT DISTINCT(o2.superclass) FROM offin o2, joeis j \
+	  WHERE o2.aseqno NOT IN (SELECT o1.superclass FROM offin o1) \
+	    AND o2.superclass = j.aseqno \
+	    AND j.superclass LIKE 'AbstractSequence' \
+	  ORDER BY 1" \
+	| tee    $@.tmp
 	wc -l    $@.tmp
 offsort: # sort offin.tmp with superclasses ASC
 	sort -k5.1 -k1.1 offin.tmp | sed -e "s/\r//" > offin.srt
@@ -133,6 +146,10 @@ offin_table: # create table 'offin'
 	| $(DBAT) -r offin
 	$(DBAT) -4 offin
 	$(DBAT) -n offin
+hasoc: # create table 'hasoc' 
+	$(DBAT) -f hasoc.create.sql
+	$(DBAT) -r hasoc < hasoc.tab
+	$(DBAT) -x -44444 hasoc
 offin_eval2: # select those with all subclasses needing the same offset patch, on 2 levels
 	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass \
 	                            , o2.shift, o2.superclass \
@@ -164,21 +181,78 @@ offin_eval4: # select those with all subclasses needing the same offset patch, o
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
+genall: genall1 genall2 # assemble all *.gen *.man aman/*.man
+	grep -f genall2.tmp genall1.tmp > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+genall1:
+	cat ../*.gen ../*.man ../aman/*.man \
+	| perl -ne 's{\A[^A][^A]?[^A]?[^A]?}{}; print if m{\AA};'\
+	| sort | uniq -w32 > $@.tmp
+	wc -l $@.tmp
+genall2:
+	cut -f1 offin.tmp > $@.tmp
+genall3: # count the callcodes
+	cut -f2 genall.gen | sort | uniq -c | sort | tee $@.tmp
+#----
 pack: # GREP=A018940 pack all sources that extend $(A)
 	grep -P "$(GREP)" offin.tmp \
 	| perl queue.pl -p > set.pack
-unpackall: \
-	A018940u \
-	basecu \
-	wrapconu \
-	wraprecu \
-	#
+unpackall:
+	cd .. ; make purge
+#	# make unpack1 P=A018940
+#	# make unpack1 P=basec
+#	# make unpack1 P=wrapcon
+#	# make unpack1 P=wraprec
+#	# ---- 2023-07-12:
+#	# cd .. ; make CC=A001482 gener
+#	# cd .. ; make CC=A004035 gener
+#	# cd .. ; make CC=A105599 gener
+#	# make unpack1 P=overgo
+#	# make unpack1 P=based
+#	# make unpack1 P=triangle0
+#	# make unpack1 P=A000217
+#	# make unpack1 P=triangle1
+#	# make unpack1 P=memfun
+#	# cp -pv ../hold_many/A*.java ../manual
+#	# cp -pv ../hold_tresimple/A*.java ../manual
+#	# ---- 2023-07-12:
+#	make unpack1 P=trionk2
+#	make unpack1 P=offin.07-13
+#	make unpack1 P=memor14
+#	make unpack1 P=protect14
+#	cp -pv ../hold_man/A*.java ../manual
+#	cp -pv ../hold_robots/A*.java ../manual
+#	cd .. ; rm -f manual/A171238.java
+#	cd .. ; make CC=A105599 gener
+#	cd .. ; make CC=A115422 gener
+#	cd .. ; make CC=refl_trionk man dist testall TO=8 GU=4 pack1
+	# ---- 2023-07-16:
+	make unpack1 P=offin16
+	make unpack1 P=hasoc16a
+	make unpack1 P=hasoc16b
+	cd .. ; make CC=A052179 select EX=xx gener
+	cd .. ; make CC=A055235 select EX=xx gener
+	cd .. ; make CC=A057036 select EX=xx gener
+	cd .. ; make CC=A067480 select EX=xx gener
+	cd .. ; make CC=A069588 select EX=xx gener
+	cd .. ; make CC=A098941 select EX=xx gener
+	#cd .. ; make CC=A069588 select EX=xx gener
+	cd .. ; make CC=A105471 select EX=xx gener
+	cd .. ; make CC=A169964 select EX=xx gener
+	cd .. ; make CC=refl_hasoc16b man dist testall TO=8 GU=4 pack1
+unpack1: # P= ; unpack 1 *.pack, and write ../refl_$(P).gen
+	perl queue.pl -u $(P).pack
+	grep -P "\A\#\!queue" $(P).pack | cut -f2 | grep -v A999 > ../refl_$(P).gen
 #--
+A000217: # pack all sources that extend $(A)
+	grep -P "$@" offin.tmp | perl queue.pl -p \
+	| perl -ne 's{(\Apublic +class +A\d+ +extends *$@ *\{)}'\
+	'  {$$1\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$$\(ASEQNO\)\(\) \{\n    super\(\$$\(OFFSET\)\);\n  \}}; print; '\
+	>        $@.pack
+	uedit64  $@.pack
 A018940: # pack all sources that extend $(A)
-	grep -P "$@" offin.tmp \
-	| perl queue.pl -p > $@.pack
-A018940u:
-	perl queue.pl -u A018940.pack
+	grep -P "$@" offin.tmp | perl queue.pl -p > $@.pack
 #--
 basec:
 	grep -P "[a-z]" offin.tmp \
@@ -187,8 +261,99 @@ basec:
 	tail -n2 $@.tmp
 	wc -l    $@.tmp
 	perl queue.pl -p $@.tmp > $@.pack
-basecu:
-	perl queue.pl -u basec.pack
+based:
+	grep -P "[a-z]" offin.tmp \
+	| grep -vP "Memory|\bTriangle" \
+	>        $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp > $@.pack
+#--
+hasoc16a:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass FROM offin o1 \
+	  WHERE o1.superclass IN (SELECT superclass FROM hasoc) \
+	    AND o1.aseqno NOT IN (SELECT superclass FROM offin) ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	| perl -ne 's{(\Apublic +class +A\d+ +extends +[^\{]+ *\{)}'\
+	'  {$$1\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$$\(ASEQNO\)\(\) \{\n    super\(\$$\(OFFSET\)\);\n  \}}; print; '\
+	>        $@.pack
+	uedit64  $@.pack
+hasoc16b:
+	$(DBAT) -x "SELECT DISTINCT o1.superclass, i.offset1, '->', i.offset1, j.superclass FROM offin o1, joeis j, asinfo i \
+	  WHERE o1.superclass = j.aseqno \
+	    AND  j.aseqno     = i.aseqno \
+	    AND  j.superclass IN (SELECT superclass FROM hasoc) \
+	  ORDER BY 1" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	| perl -ne 's{(\Apublic +class +A\d+ +extends +[^\{]+ *\{)}'\
+	'  {$$1\n\n  \/\*\* Constructor with offset\.\n   \* \@param offset first index\n   \*\/\n  public \$$\(ASEQNO\)\(final int offset\) \{\n    super\(offset\);\n  \}}; print; '\
+	>        $@.pack
+	uedit64  $@.pack
+hasoc16c:
+	grep -P "  (protected|public) *A\d+\(final ([^i]|[^\,]+\,)" hasoc16b.pack | tee $@.tmp
+	uedit64 $@.tmp
+#--
+memfun:
+	grep -P "MemoryFunction" offin.tmp \
+	>        $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	| perl -ne 's{(\Apublic +class +A\d+ +extends +[^\{]+ *\{)}'\
+	'  {$$1\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$$\(ASEQNO\)\(\) \{\n    super\(\$$\(OFFSET\)\);\n  \}}; print; '\
+	>        $@.pack
+	uedit64  $@.pack
+#--
+overgo: # which do override getOffset()?
+	cat override-of-getOffset.txt \
+	| perl -ne 'm{(A\d{6})}; print "$$1\n";' \
+	>        $@.tmp
+	tail -n2 $@.tmp
+	cd .. ; make seq LIST=reflect/$@.tmp
+	$(DBAT) -x "SELECT s.aseqno, 0, '->', i.offset1, j.superclass FROM seq s, asinfo i, joeis j \
+	  WHERE s.aseqno = i.aseqno AND i.aseqno = j.aseqno ORDER BY 1" \
+	>        $@.2.tmp
+	wc -l    $@.2.tmp
+	# $(ABSINSPECT) offin $@.2.tmp \
+	# >        $@.3.tmp
+	perl queue.pl -p $@.2.tmp > $@.pack
+	uedit64  $@.pack
+overgo2: # repeat the nes that failed
+	cd .. ; make seq LIST=reflect/$@.fail
+	$(DBAT) -x "SELECT s.aseqno, 0, '->', i.offset1, j.superclass FROM seq s, asinfo i, joeis j \
+	  WHERE s.aseqno = i.aseqno AND i.aseqno = j.aseqno ORDER BY 1" \
+	>        $@.2.tmp
+	wc -l    $@.2.tmp
+	# $(ABSINSPECT) offin $@.2.tmp \
+	# >        $@.3.tmp
+	perl queue.pl -p $@.2.tmp > $@.pack
+	uedit64  $@.pack
+#--
+trionk: # insert an IIB into those stemming from callcode=trionk
+	grep -B20 -P "super.compute\(" offin.pack  | grep -P "#!queue" | cut -f2- \
+	| perl queue.pl -p \
+	| perl -ne 's{(\Apublic +class +A\d+ +extends +[^\{]+ *\{)}'\
+	'  {$$1\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$$\(ASEQNO\)\(\) \{\n    setOffset\(\$$\(OFFSET\)\);\n  \}}; print; '\
+	| perl -ne 's{(private int mN = *)(\d+) *\- *(\d+)}{"$$1" . ($$2 - $$3)}e; print; '\
+	>        $@.pack
+	uedit64  $@.pack
+#--
+triangle1:
+	grep -P "\bTriangle" offin.tmp \
+	>        $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	| perl -ne 's{(^\s*hasRAM\()}{    setOffset\(\$$\(OFFSET\)\);\n$$1}m; print; '\
+	| perl -e 'undef $$/; while (<>) { s{(extends *\w+ *\{\n)(\s*\@Override)}{$$1\n  \/\*\* Construct the sequence\. \*\/\n  public \$$\(ASEQNO\)\(\) \{\n    super\(\$$\(OFFSET\)\);\n    hasRAM\(false\);\n  \}$$2}mg; print; } '\
+	>        $@.pack
+	uedit64  $@.pack
+#--
 wrapcon:
 	$(DBAT) -x "SELECT i.aseqno, 0, '->', i.offset1, j.superclass FROM asinfo i, joeis j \
 	  WHERE i.aseqno = j.aseqno \
@@ -197,8 +362,6 @@ wrapcon:
 	wc -l    $@.tmp
 	perl queue.pl -p $@.tmp > $@.pack
 	uedit64 $@.pack
-wrapconu:
-	perl queue.pl -u wrapcon.pack
 wraprec:
 	$(DBAT) -x "SELECT i.aseqno, 0, '->', i.offset1, j.superclass FROM asinfo i, joeis j \
 	  WHERE i.aseqno = j.aseqno \
@@ -207,8 +370,6 @@ wraprec:
 	wc -l    $@.tmp
 	perl queue.pl -p $@.tmp > $@.pack
 	uedit64 $@.pack
-wraprecu:
-	perl queue.pl -u wraprec.pack
 #----
 patch_abstract: # patch all in the list above
 	perl patch_abstract.pl liseq.txt

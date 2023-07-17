@@ -1,0 +1,20 @@
+A048715	parmof3	0	A098941	2	"(100(0)*)*(0|1|10)?"		Binary expansion matches (100(0)*)*; or, Zeckendorf-like expansion of n using recurrence
+A048716	parmof3	0	A098941	2	"(1(1)?00(0)*)*(0|1|10|11|110)?"		Numbers n such that binary expansion matches ((0)*00(1?)1)*(0*).
+A048717	parmof3	0	A098941	2	"(11(1)*00(0)*)*(0|11(1)*(0)?)?"		Binary expansion matches ((0)*00(1*)11)*(0*).
+A048718	parmof3	0	A098941	2	"(1000(0)*)*(0|1|10|100)?"		Binary expansion matches ((0)*0001)*(0*); or, Zeckendorf-like expansion of n using recur
+A048719	parmof3	0	A098941	2	"(1100(0)*)*(0|11(0)?)?"		Binary expansion matches ((0)*0011)*(0*).
+A050607	parmof3	0	A098941	5	"([012]*([01][34])?|[34])[012]*"		Numbers n such that base 5 expansion matches (0|1|2)*((0|1)(3|4))?(0|1|2)*
+A050608	parmof3	0	A098941	7	"([0123]*([012][456])?|[456])[0123]*"		Numbers n such that base 7 expansion matches (0|1|2|3)*((0|1|2)(4|5|6))?(0|1|2|3)*
+A051382	parmof3	0	A098941	3	"(2(0|1)*|(0|1)*(02)?(0|1)*)"		Numbers n whose base 3 expansion matches (0|1)*(02)?(0|1)* (no more than one "02" allowe
+A066099	diffseq	0	A030303	0	new A030303()
+A096844	parmof3	0	A098941	10	"[013579]*0[013579]*"
+# A098941	parmof3	0	A098941	10	"[123579]*2[123579]*"
+A098942	parmof3	0	A098941	10	"[134579]*4[134579]*"
+A098943	parmof3	0	A098941	10	"[135679]*6[135679]*"
+A098944	parmof3	0	A098941	10	"[135789]*8[135789]*"
+A098945	parmof3	0	A098941	10	"[012468]*1[012468]*"
+A098946	parmof3	0	A098941	10	"[023468]*3[023468]*"
+A098947	parmof3	0	A098941	10	"[024568]*5[024568]*"
+A098948	parmof3	0	A098941	10	"[024678]*7[024678]*"
+A098949	parmof3	0	A098941	10	"[024689]*9[024689]*"
+# A098941 (2), A098942 (4), A098943 (6), A098944 (8), A098945 (1), A098946 (3), A098947 (5), A098948 (7), A098949 (9)

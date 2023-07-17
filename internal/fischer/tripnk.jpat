@@ -7,20 +7,21 @@ import irvine.math.z.Z;
  * $(ASEQNO) $(NAME)
  * @author $(AUTHOR)
  */
-public class $(ASEQNO) extends $(PARM1) {
+public class $(ASEQNO) extends AbstractSequence {
 
   private int mN;
+  private final $(PARM1) mSeq = new $(PARM1)();
   
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    setOffset($(PARM2));
+    super($(OFFSET));
     mN = $(PARM2) - 1;
   }
   
   @Override
   public Z next() {
     ++mN;
-    return super.compute($(PARM3), $(PARM4));
+    return mSeq.compute($(PARM3), $(PARM4));
   }
 }
 

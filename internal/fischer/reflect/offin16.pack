@@ -1,0 +1,361 @@
+#!queue	A063884	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a063;
+
+import java.util.HashSet;
+import java.util.TreeSet;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A063884 a(1) = 2, a(2) = 3 and a(k+1) is the least prime not already chosen that divides some a(i)*a(j)+1, where 1&lt;=i&lt;=j&lt;=k.
+ * @author Sean A. Irvine
+ */
+public class A063884 extends MemorySequence {
+
+  protected final TreeSet<Z> mA = new TreeSet<>();
+  protected final HashSet<Z> mUsed = new HashSet<>();
+
+  /** Construct the sequence. */
+  public A063884() {
+    super(1);
+    mA.add(Z.TWO);
+    mA.add(Z.THREE);
+  }
+
+  protected void update(final Z n) {
+    for (final Z p : Jaguar.factor(n).toZArray()) {
+      if (!mUsed.contains(p)) {
+        mA.add(p);
+      }
+    }
+  }
+
+  @Override
+  protected Z computeNext() {
+    final Z t = mA.pollFirst();
+    mUsed.add(t);
+    update(t.square().add(1)); // needed because we did not yet add to the sequence
+    for (final Z v : this) {
+      update(v.multiply(t).add(1));
+    }
+    return t;
+  }
+}
+
+#!queue	A064493	1	->	0	RecordSequence	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.math.z.Z;
+import irvine.oeis.Combiner;
+import irvine.oeis.RecordSequence;
+import irvine.oeis.a000.A000142;
+import irvine.oeis.a058.A058006;
+
+/**
+ * A064493 List of distinct greatest common divisors of { k! and k! - (k-1)! + (k-2)! - ... + (-1)^k*0!, k = 0 .. n}.
+ * @author Sean A. Irvine
+ */
+public class A064493 extends RecordSequence {
+
+  /** Construct the sequence. */
+  public A064493() {
+    super(0, new Combiner(new A000142(), new A058006(), Z::gcd));
+  }
+}
+#!queue	A215861	1	->	0	Triangle	--------------------------------
+package irvine.oeis.a215;
+
+import irvine.math.MemoryFunctionInt2;
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Binomial;
+import irvine.math.z.Z;
+import irvine.oeis.triA063904angle.Triangle;
+
+/**
+ * A215861 Number T(n,k) of simple labeled graphs on n nodes with exactly k connected components that are trees or cycles; triangle T(n,k), n&gt;=0, 0&lt;=k&lt;=n, read by rows.
+ * @author Georg Fischer
+ */
+public class A215861 extends Triangle {
+
+  /** Construct the sequence. */
+  public A215861() {
+    super(0);
+    hasRAM(true);
+  }
+
+  /* Maple:
+    T:= proc(n, k) option remember; `if`(k<0 or k>n, 0,
+          `if`(n=0, 1, add(binomial(n-1, i)*T(n-1-i, k-1)*
+          `if`(i<2, 1, i!/2 +(i+1)^(i-1)), i=0..n-k)))
+        end:
+    seq(seq(T(n, k), k=0..n), n=0..12);
+  */
+  private final MemoryFunctionInt2<Z> mB = new MemoryFunctionInt2<Z>() {
+    @Override
+    protected Z compute(final int n, final int k) {
+      if (k < 0 || k > n) {
+        return Z.ZERO;
+      }
+      if (n == 0) {
+        return Z.ONE;
+      }
+      Z sum = Z.ZERO;
+      final int imax = n - k;
+      for (int i = 0; i <= imax; ++i) {
+        Z term = get(n - 1 - i, k - 1).multiply(Binomial.binomial(n - 1, i));
+        if (i >= 2) {
+          term = term.multiply(MemoryFactorial.SINGLETON.factorial(i).divide2().add(Z.valueOf(i + 1).pow(i - 1)));
+        }
+        sum = sum.add(term);
+      }
+      return sum;
+    }
+  };
+
+  @Override
+  protected Z compute(final int n, final int k) {
+    return mB.get(n, k);
+  }
+}
+#!queue	A271423	1	->	0	Triangle	--------------------------------
+package irvine.oeis.a271;
+
+import irvine.math.MemoryFunctionInt3;
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Binomial;
+import irvine.math.z.Z;
+import irvine.oeis.triangle.Triangle;
+
+/**
+ * A271423 Number T(n,k) of set partitions of [n] with maximal block length multiplicity equal to k; triangle T(n,k), n&gt;=0, 0&lt;=k&lt;=n, read by rows.
+ * @author Georg Fischer
+ */
+public class A271423 extends Triangle {
+
+  /** Construct the sequence. */
+  public A271423() {
+    super(0);
+    hasRAM(true);
+  }
+
+  /* Maple:
+    with(combinat):
+    b:= proc(n, i, k) option remember; `if`(n=0, 1,
+          `if`(i<1, 0, add(multinomial(n, n-i*j, i$j)
+            *b(n-i*j, i-1, k)/j!, j=0..min(k, n/i))))
+        end:
+    T:= (n, k)-> b(n$2, k)-`if`(k=0, 0, b(n$2, k-1)):
+    seq(seq(T(n, k), k=0..n), n=0..12);
+  */
+  private final MemoryFunctionInt3<Z> mB = new MemoryFunctionInt3<Z>() {
+    @Override
+    protected Z compute(final int n, final int i, final int k) {
+      if (n == 0) {
+        return Z.ONE;
+      }
+      if (i < 1) {
+        return Z.ZERO;
+      }
+      Z sum = Z.ZERO;
+      final int ni = n / i;
+      final int jmax = k < ni ? k : ni;
+      for (int j = 0; j <= jmax; ++j) {
+        final int[] list = new int[j + 1];
+        list[0] = n - i * j;
+        for (int l = 1; l <= j; ++l) {
+          list[l] = i;
+        }
+        sum = sum.add(Binomial.multinomial(n, list).multiply(get(n - i * j, i - 1, k)).divide(MemoryFactorial.SINGLETON.factorial(j)));
+      }
+      return sum;
+    }
+  };
+
+  @Override
+  public Z compute(final int n, final int k) {
+    Z result = mB.get(n, n, k);
+    if (k != 0) {
+      result = result.subtract(mB.get(n, n, k - 1));
+    }
+    return result;
+  }
+}
+#!queue	A319394	1	->	0	Triangle	--------------------------------
+package irvine.oeis.a319;
+
+import irvine.math.MemoryFunction1;
+import irvine.math.MemoryFunctionInt2;
+import irvine.math.group.IntegerField;
+import irvine.math.group.PolynomialRingField;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.z.Z;
+import irvine.oeis.triangle.Triangle;
+
+/**
+ * A319394 Number T(n,k) of partitions of n into exactly k positive Fibonacci numbers; triangle T(n,k), n&gt;=0, 0&lt;=k&lt;=n, read by rows.
+ * @author Georg Fischer
+ */
+public class A319394 extends Triangle {
+
+  private static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
+
+  /** Construct the sequence. */
+  public A319394() {
+    super(0);
+    hasRAM(true);
+  }
+
+  /* Maple:
+    h:= proc(n) option remember; `if`(n<1, 0, `if`((t->
+          issqr(t+4) or issqr(t-4))(5*n^2), n, h(n-1)))
+        end:
+    b:= proc(n, i) option remember; `if`(n=0 or i=1, x^n,
+          b(n, h(i-1))+expand(x*b(n-i, h(min(n-i, i)))))
+        end:
+    T:= n-> (p-> seq(coeff(p, x, i), i=0..n))(b(n, h(n))):
+    seq(T(n), n=0..20);
+  */
+  private final MemoryFunction1<Integer> mH = new MemoryFunction1<Integer>() {
+    @Override
+    protected Integer compute(final int n) {
+      if (n < 1) {
+        return 0;
+      }
+      final int t = 5 * n * n;
+      return Z.valueOf(t + 4).isSquare() || Z.valueOf(t - 4).isSquare() ? n : get(n - 1);
+    }
+  };
+
+  private final MemoryFunctionInt2<Polynomial<Z>> mB = new MemoryFunctionInt2<Polynomial<Z>>() {
+    @Override
+    protected Polynomial<Z> compute(final int n, final int i) {
+      if (n == 0 || i == 1) {
+        return RING.monomial(Z.ONE, n);
+      }
+      return RING.add(get(n, mH.get(i - 1)), RING.shift(get(n - i, mH.get(Math.min(i, n - i))), 1));
+    }
+  };
+
+  @Override
+  protected Z compute(final int n, final int k) {
+    return mB.get(n, mH.get(n)).coeff(k);
+  }
+}
+#!queue	A319797	1	->	0	Triangle	--------------------------------
+package irvine.oeis.a319;
+
+import irvine.math.MemoryFunction1;
+import irvine.math.MemoryFunctionInt2;
+import irvine.math.group.IntegerField;
+import irvine.math.group.PolynomialRingField;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.z.Z;
+import irvine.oeis.triangle.Triangle;
+
+/**
+ * A319797 Number T(n,k) of partitions of n into exactly k positive triangular numbers; triangle T(n,k), n&gt;=0, 0&lt;=k&lt;=n, read by rows.
+ * @author Georg Fischer
+ */
+public class A319797 extends Triangle {
+
+  private static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
+
+  /** Construct the sequence. */
+  public A319797() {
+    super(0);
+    hasRAM(true);
+  }
+
+  /* Maple:
+    h:= proc(n) option remember; `if`(n<1, 0,
+          `if`(issqr(8*n+1), n, h(n-1)))
+        end:
+    b:= proc(n, i) option remember; `if`(n=0 or i=1, x^n,
+          b(n, h(i-1))+expand(x*b(n-i, h(min(n-i, i)))))
+        end:
+    T:= n-> (p-> seq(coeff(p, x, i), i=0..n))(b(n, h(n))):
+    seq(T(n), n=0..20);
+  */
+  private final MemoryFunction1<Integer> mH = new MemoryFunction1<Integer>() {
+    @Override
+    protected Integer compute(final int n) {
+      if (n < 1) {
+        return 0;
+      }
+      return Z.valueOf(8 * n + 1).isSquare() ? n : get(n - 1);
+    }
+  };
+
+  private final MemoryFunctionInt2<Polynomial<Z>> mB = new MemoryFunctionInt2<Polynomial<Z>>() {
+    @Override
+    protected Polynomial<Z> compute(final int n, final int i) {
+      if (n == 0 || i == 1) {
+        return RING.monomial(Z.ONE, n);
+      }
+      return RING.add(get(n, mH.get(i - 1)), RING.shift(get(n - i, mH.get(i < n - i ? i : n - i)), 1));
+    }
+  };
+
+  @Override
+  protected Z compute(final int n, final int k) {
+    return mB.get(n, mH.get(n)).coeff(k);
+  }
+}
+#!queue	A337165	1	->	0	Triangle	--------------------------------
+package irvine.oeis.a337;
+
+import irvine.math.IntegerUtils;
+import irvine.math.MemoryFunction1;
+import irvine.math.group.IntegerField;
+import irvine.math.group.PolynomialRingField;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.z.Z;
+import irvine.oeis.triangle.Triangle;
+
+/**
+ * A337165 Number T(n,k) of compositions of n into k nonzero squares; triangle T(n,k), n&gt;=0, 0&lt;=k&lt;=n, read by rows.
+ * @author Georg Fischer
+ */
+public class A337165 extends Triangle {
+
+  private static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
+
+  /** Construct the sequence. */
+  public A337165() {
+    super(0);
+    hasRAM(true);
+  }
+
+  /* Maple:
+    b:= proc(n) option remember; `if`(n=0, 1, add((s->
+         `if`(s>n, 0, expand(x*b(n-s))))(j^2), j=1..isqrt(n)))
+        end:
+    T:= n-> (p-> seq(coeff(p, x, i), i=0..n))(b(n)):
+    seq(T(n), n=0..14);
+  */
+  private final MemoryFunction1<Polynomial<Z>> mB = new MemoryFunction1<Polynomial<Z>>() {
+    @Override
+    protected Polynomial<Z> compute(final int n) {
+      if (n == 0) {
+        return RING.one();
+      }
+      Polynomial<Z> sum = RING.zero();
+      final int jmax = IntegerUtils.sqrt(n);
+      for (int j = 1; j <= jmax; ++j) {
+        final int s = j * j;
+        if (s <= n) {
+          sum = RING.add(sum, RING.shift(get(n - s), 1));
+        }
+      }
+      return sum;
+    }
+  };
+
+  @Override
+  public Z compute(final int n, final int k) {
+    return mB.get(n).coeff(k);
+  }
+}
+#!queue	A999999	0	0	0	0

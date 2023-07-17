@@ -1,0 +1,178 @@
+#!queue	A038498	1	->	1	AbstractSequence	--------------------------------
+package irvine.oeis.a038;
+
+import irvine.math.api.Matrix;
+import irvine.math.group.MatrixField;
+import irvine.math.matrix.DefaultMatrix;
+import irvine.math.q.Q;
+import irvine.math.q.Rationals;
+import irvine.math.z.Z;
+import irvine.oeis.AbstractSequence;
+import irvine.oeis.Sequence;
+import irvine.oeis.a008.A008284;
+
+/**
+ * A038498 Matrix inverse of partition triangle A008284.
+ * @author Sean A. Irvine
+ */
+public class A038498 extends AbstractSequence {
+
+  /** Constructor with offset.
+   * @param offset first index
+   */
+  public $(ASEQNO)(final int offset) {
+    super(offset);
+  }
+
+  private final DefaultMatrix<Q> mA = new DefaultMatrix<>(0, 0, Q.ZERO);
+  private final Sequence mSeq;
+  private Matrix<Q> mAInverse = null;
+  private int mN = 0;
+  private int mM = 0;
+
+  protected A038498(final Sequence triangle) {
+    super(1);
+    mSeq = triangle;
+  }
+
+  /** Construct the sequence. */
+  public A038498() {
+    this(new A008284());
+  }
+
+  protected int exponent() {
+    return 1;
+  }
+
+  @Override
+  public Z next() {
+    if (++mM >= mN) {
+      mA.setRows(++mN);
+      mA.setCols(mN);
+      for (int k = 0; k < mN; ++k) {
+        mA.set(mN - 1, k, new Q(mSeq.next()));
+      }
+      final MatrixField<Q> field = new MatrixField<>(mN, Rationals.SINGLETON);
+      mAInverse = field.pow(field.inverse(mA), exponent());
+      mM = 0;
+    }
+    return mAInverse.get(mN - 1, mM).toZ();
+  }
+}
+#!queue	A048557	1	->	1	AbstractSequence	--------------------------------
+package irvine.oeis.a048;
+
+import irvine.math.cr.CR;
+import irvine.math.z.Z;
+import irvine.oeis.AbstractSequence;
+
+/**
+ * A048557 a(1) = 1; a(n+1) is next smallest nontrivial square beginning with a(n).
+ * @author Sean A. Irvine
+ */
+public class A048557 extends AbstractSequence {
+
+  /** Constructor with offset.
+   * @param offset first index
+   */
+  public $(ASEQNO)(final int offset) {
+    super(offset);
+  }
+
+  private Z mA = null;
+  private final Z mStart;
+
+  protected A048557(final Z start) {
+    super(1);
+    mStart = start;
+  }
+
+  /** Construct the sequence. */
+  public A048557() {
+    this(Z.ONE);
+  }
+
+  @Override
+  public Z next() {
+    if (mA == null) {
+      mA = mStart;
+    } else {
+      Z u = mA;
+      while (true) {
+        u = u.multiply(10);
+        final String s = mA.toString();
+        final Z sqrt = CR.valueOf(u).sqrt().ceil();
+        Z t = sqrt.square();
+        if (t.equals(u)) {
+          t = sqrt.add(1).square();
+        }
+        if (t.toString().startsWith(s)) {
+          mA = t;
+          break;
+        }
+      }
+    }
+    return mA;
+  }
+}
+#!queue	A048805	0	->	0	AbstractSequence	--------------------------------
+package irvine.oeis.a048;
+
+import irvine.math.api.Matrix;
+import irvine.math.group.MatrixField;
+import irvine.math.matrix.DefaultMatrix;
+import irvine.math.q.Q;
+import irvine.math.q.Rationals;
+import irvine.math.z.Z;
+import irvine.oeis.AbstractSequence;
+import irvine.oeis.Sequence;
+
+/**
+ * A048805 Matrix inverse of A048804.
+ * @author Sean A. Irvine
+ */
+public class A048805 extends AbstractSequence {
+
+  /** Constructor with offset.
+   * @param offset first index
+   */
+  public $(ASEQNO)(final int offset) {
+    super(offset);
+  }
+
+  private final Sequence mSeq;
+  private final DefaultMatrix<Q> mA = new DefaultMatrix<>(0, 0, Q.ZERO);
+  protected Matrix<Q> mAInverse = null;
+  protected int mN = 0;
+  private int mM = 0;
+
+  protected A048805(final Sequence seq) {
+    super(0);
+    mSeq = seq;
+  }
+
+  /** Construct the sequence. */
+  public A048805() {
+    this(new A048804());
+  }
+
+  protected void step() {
+    mA.setRows(++mN);
+    mA.setCols(mN);
+    for (int k = 0; k < mN; ++k) {
+      mA.set(mN - 1, k, new Q(mSeq.next()));
+    }
+    mAInverse = new MatrixField<>(mN, Rationals.SINGLETON).inverse(mA);
+    mM = 0;
+  }
+
+  @Override
+  public Z next() {
+    if (++mM >= mN) {
+      step();
+    }
+    return mAInverse.get(mN - 1, mM).toZ();
+  }
+}
+
+#!queue	A999999	1	1	1

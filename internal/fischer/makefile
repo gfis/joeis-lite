@@ -244,6 +244,9 @@ newer: # DIR= ; compare dates of aseqnos in DIR and jOEIS
 rename:
 	echo cfs*.jpat | xargs -l \
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
+#----
+movejav: # move base classes *.java to *.jav
+	find ../../src/irvine/oeis -iname "*.java" | sed -e "s/.java//" | xargs -innn mv -v nnn.java nnn.jav 
 #--------
 noeis: nocre nodir # create a list of freshly implmented classes
 nocre:
@@ -642,9 +645,13 @@ robots:
 	rm -f   robot.gen
 	make purge
 	#-- all in action
-	make   CC=charfun    robot1
+	# make   CC=anopan     robot1
+	# make   CC=binomx     robot1
+	# make   CC=charfun    robot1
+	make   CC=convol     robot1
 	make   CC=diffseq    robot1
 	make   CC=dirichcon  robot1
+	make   CC=m1pow      robot1
 	make   CC=ogf        robot1
 	  make CC=fract21    robot1
 	  make CC=fract22    robot1
@@ -652,31 +659,31 @@ robots:
 	make   CC=partprod   robot1
 	make   CC=partsum    robot1
 	make   CC=rowsums    robot1
+	# make   CC=seqsum     robot1
 	make   CC=triprod    robot1
 	make   CC=trisum     robot1
 	make   robot3
-robot3:
-	#-- postlude
-	cp -v hold/*.java  manual || :
-	make CC=robot purge gener maditel TO=8
-	wc -l   robot.gen
-	mv -v   robot.gen robot.`date +%Y-%m-%d.%H`.gen
-	make sumall
-	mv -v manual/A*.java park1/
-robot1:
+robot1: # make 1 of the robots
 	echo ======== $(CC) ========
 	cd $(ROBOT) ; make $(CC)
 	cp -v $(ROBOT)/$(CC).gen .
-	make purge 
-	make select2 select3 geditel TO=8
-	cp -v $@.fail.log $(CC).faro.log || :
-	# make cleanto
+	make select2 select3
 	cat  $(CC).gen >> robot.gen
-robot2:
+robot2: # make an individual robot
 	cd $(ROBOT) ; make $(CC)
 	cp -v $(ROBOT)/$(CC).gen .
 	make purge 
 	make select2 select3 gener maditel TO=8
+robot3: # compile and test all
+	#-- postlude
+	cp -v hold/*.java  manual || :
+	wc -l   robot.gen
+	make CC=robot purge gener maditel TO=8
+	mv -v   robot.gen robot.`date +%Y-%m-%d.%H`.gen
+	make sumall
+	mv -v manual/A*.java park1/
+robot4: # remain the clean ones only
+	make CC=robot cleanto gener maditel TO=8
 #--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
@@ -749,11 +756,6 @@ A136test:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-A001482:
-	grep -E "^A" $@.man \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
 A004050:
 	grep -E "^A" $@.man \
 	>        $@.gen
@@ -840,11 +842,6 @@ A050201:
 	wc -l    $@.gen
 A051803: # nonzero multiplicative products
 	grep -E "^A[0-9]" $@.man > $@.gen
-	wc -l    $@.gen
-#----
-A052179: # Triangle recurrence with x,y
-	grep -E "^A[0-9]" $(TRIREC)/$@.man > $@.gen
-	head -n4 $@.gen
 	wc -l    $@.gen
 A056022: # 2021-12-29
 	grep -E "^A[0-9]" $@.man > $@.gen
@@ -944,13 +941,7 @@ A095425:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-A105471: # 2021-08-15
-	grep -E "^A[0-9]" $@.man > $@.gen
-#----
 A105479: # 2021-12-04
-	grep -E "^A[0-9]" $@.man > $@.gen
-#----
-A115422: # 2021-11-15
 	grep -E "^A[0-9]" $@.man > $@.gen
 #----
 A127757:
@@ -958,19 +949,6 @@ A127757:
 #----
 A128367: # 2021-09-29
 	cp -v $@.man $@.gen
-#----
-#================
-# *.pa2
-#
-A061037: # Numerator of 1/4 - 1/n^2.
-	grep -E "^A" $@.pa2 > $@.gen
-	wc -l    $@.gen
-A098941: # Numbers where 2 is the only even decimal digit.
-	grep -E "^A" $@.pa2 > $@.gen
-	wc -l    $@.gen
-A169964: # Numbers whose decimal expansion contains only 0's and 5's.
-	grep -E "^A" $@.pa2 > $@.gen
-	wc -l    $@.gen
 #================================
 # A126043	null	Exponents p of the Mersenne primes 2^p - 1 (see A000043) read mod 3.	nonn,synth	1..47	nyi
 a126043:
@@ -4908,6 +4886,9 @@ invbinom:
 trideleh:
 	cp -v $(TRIREC)/$@.man $@.gen
 #----
+trionk: # retrofit trionk sequences
+	cp reflect/trionk.tmp $@.gen
+#----
 triprod:
 	cp -v $(ROBOT)/$@.gen  $@.gen
 tripro3:
@@ -4923,7 +4904,14 @@ trisumm:
 	head -n4 $@.gen
 	wc -l    $@.gen
 trisimple:
-	cp -v $(TRIREC)/$@.java $@.gen
+	cp -vp $(TRIREC)/$@.java $@.gen
+tresimple:
+	grep -P "trisimple" $(TRIREC)/trisimple.java | grep -E "^A[0-9]" \
+	| cut -f1-3,5- | sed -e "s/trisimple/tresimple/" \
+	| grep -vE "A059036" \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 #------------------------------------------------------
 triselect: # use TriangleSelector
 	grep -E "^A[0-9]" $@.man > $@.gen

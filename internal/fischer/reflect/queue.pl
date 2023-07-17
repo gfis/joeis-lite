@@ -126,7 +126,9 @@ sub unpack1 {
         }
         $pack_count ++;
     } else {
-        print STDERR "# $aseqno unchanged\n";
+        if ($debug >= 2) {
+            print STDERR "# $aseqno unchanged\n";
+        }
     }
 } # unpack1
 __DATA__

@@ -13,6 +13,6 @@ public class $(ASEQNO) extends EulerTransform {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super(new SkipSequence(new $(PARM2)$(PARM1)));
+    super(new $(PARM2).skip($(PARM1)));
   }
 }

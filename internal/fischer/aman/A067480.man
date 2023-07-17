@@ -1,62 +1,62 @@
-A067488	parm2	0	A067480	1	Powers of 2 with initial digit 1.	base,easy,nonn,changed,	1..993	nyi 
-A067480	parm2	0	A067480	2	Powers of 2 with initial digit 2.	base,easy,nonn,	1..400	nyi
-A320859	parm2	0	A067480	3	Powers of 2 with initial digit 3.	base,nonn,	1..410	nyi
-A320860	parm2	0	A067480	4	Powers of 2 with initial digit 4.	base,nonn,	1..320	nyi
-A320861	parm2	0	A067480	5	Powers of 2 with initial digit 5.	base,nonn,	1..263	nyi
-A320862	parm2	0	A067480	6	Powers of 2 with initial digit 6.	base,nonn,	1..220	nyi
-A320863	parm2	0	A067480	7	Powers of 2 with initial digit 7.	base,nonn,	1..170	nyi
-A320864	parm2	0	A067480	8	Powers of 2 with initial digit 8.	base,nonn,	1..170	nyi
-A320865	parm2	0	A067480	9	Powers of 2 with initial digit 9.	base,nonn,	1..150	nyi
+A067488	parmof2	0	A067480	1	Powers of 2 with initial digit 1.	base,easy,nonn,changed,	1..993	nyi 
+# A067480	parmof2	0	A067480	2	Powers of 2 with initial digit 2.	base,easy,nonn,	1..400	nyi
+A320859	parmof2	0	A067480	3	Powers of 2 with initial digit 3.	base,nonn,	1..410	nyi
+A320860	parmof2	0	A067480	4	Powers of 2 with initial digit 4.	base,nonn,	1..320	nyi
+A320861	parmof2	0	A067480	5	Powers of 2 with initial digit 5.	base,nonn,	1..263	nyi
+A320862	parmof2	0	A067480	6	Powers of 2 with initial digit 6.	base,nonn,	1..220	nyi
+A320863	parmof2	0	A067480	7	Powers of 2 with initial digit 7.	base,nonn,	1..170	nyi
+A320864	parmof2	0	A067480	8	Powers of 2 with initial digit 8.	base,nonn,	1..170	nyi
+A320865	parmof2	0	A067480	9	Powers of 2 with initial digit 9.	base,nonn,	1..150	nyi
 
-A067497	parm2	0	A067497	1	Smallest power of 2 with n+1 digits (n>=0). Also numbers k such that 1 is the first digit of 2^k.	base,nonn,easy,changed,	0..5000	nyi
-A067469	parm2	0	A067497	2	Numbers k such that 2 is the first digit of 2^k.	nonn,base,changed,	1..5000	nyi
-A172404	parm2	0	A067497	3	Numbers k such that 3 is the first digit of 2^k   
-A330243	parm2	0	A067497	7	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
-A097415	parm2	0	A067497	9	Values of k such that the first digit of 2^k is 9.
-# notin OEIS A330244	parm2	0	A067497	4	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
-# notin OEIS A330245	parm2	0	A067497	5	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
-# notin OEIS A330246	parm2	0	A067497	6	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
-# notin OEIS A330248	parm2	0	A067497	8	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
+#* A067497	parm2	0	A067497	1	Smallest power of 2 with n+1 digits (n>=0). Also numbers k such that 1 is the first digit of 2^k.	base,nonn,easy,changed,	0..5000	nyi
+#* A067469	parm2	0	A067497	2	Numbers k such that 2 is the first digit of 2^k.	nonn,base,changed,	1..5000	nyi
+#* A172404	parm2	0	A067497	3	Numbers k such that 3 is the first digit of 2^k   
+#* A330243	parm2	0	A067497	7	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
+#* A097415	parm2	0	A067497	9	Values of k such that the first digit of 2^k is 9.
+# notin OEIS A330244	parmof2	0	A067497	4	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
+# notin OEIS A330245	parmof2	0	A067497	5	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
+# notin OEIS A330246	parmof2	0	A067497	6	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
+# notin OEIS A330248	parmof2	0	A067497	8	Numbers k such that the first digit of the decimal expansion of 2^k is 7.
 
 # man A067468	null	Numbers n such that 7 is the first digit of 7^n.	nonn,base,synth	1..53	nyi
 # A067470	FiniteSequence	Smallest n-digit n-th power.	base,easy,full,nonn,fini,synth	1..21	finifull
 # A067471	FiniteSequence	n-th root of A067470(n).	base,easy,fini,full,nonn,synth	1..21	unkn
-A067472	parmof2	0	A067472	2	Smallest n-digit square starting with 2.	base,easy,nonn,changed,synth	2..18	nyi
-A067473	parmof2	0	A067472	3	Smallest n-digit square starting with 3.	base,easy,nonn,synth	2..18	nyi
-A067474	parmof2	0	A067472	4	Smallest n-digit square starting with 4.	nonn,base,easy,changed,synth	1..20	nyi
-A067475	parmof2	0	A067472	5	Smallest n-digit square starting with 5.	base,easy,nonn,	3..998	nyi
-A067476	parmof2	0	A067472	6	Smallest n-digit square starting with 6.	base,easy,nonn,synth	2..18	nyi
-A067477	parmof2	0	A067472	7	Smallest n-digit square starting with 7.	base,easy,nonn,synth	3..18	nyi
-A067478	parmof2	0	A067472	8	Smallest n-digit square starting with 8.	nonn,base,easy,changed,synth	2..20	nyi
-A067479	parmof2	0	A067472	9	Smallest n-digit square starting with 9, or 0 if no such number exists.	base,easy,nonn,changed,synth	1..18	nyi
+#* A067472	parm2	0	A067472	2	Smallest n-digit square starting with 2.	base,easy,nonn,changed,synth	2..18	nyi
+#* A067473	parm2	0	A067472	3	Smallest n-digit square starting with 3.	base,easy,nonn,synth	2..18	nyi
+#* A067474	parm2	0	A067472	4	Smallest n-digit square starting with 4.	nonn,base,easy,changed,synth	1..20	nyi
+#* A067475	parm2	0	A067472	5	Smallest n-digit square starting with 5.	base,easy,nonn,	3..998	nyi
+#* A067476	parm2	0	A067472	6	Smallest n-digit square starting with 6.	base,easy,nonn,synth	2..18	nyi
+#* A067477	parm2	0	A067472	7	Smallest n-digit square starting with 7.	base,easy,nonn,synth	3..18	nyi
+#* A067478	parm2	0	A067472	8	Smallest n-digit square starting with 8.	nonn,base,easy,changed,synth	2..20	nyi
+#* A067479	parm2	0	A067472	9	Smallest n-digit square starting with 9, or 0 if no such number exists.	base,easy,nonn,changed,synth	1..18	nyi
 
-A067481	parm3	0	A067481	3	3	Powers of 3 with initial digit 3.	base,easy,nonn,	1..261	unkn
-A067482	parm3	0	A067481	4	4	Powers of 4 with initial digit 4.	base,easy,nonn,	1..71	nyi
-A067483	parm3	0	A067481	5	5	Powers of 5 with initial digit 5.	base,easy,nonn,	1..114	nyi
-A067484	parm3	0	A067481	6	6	Powers of 6 with initial digit 6.	base,easy,nonn,	1..89	nyi
-A067485	parm3	0	A067481	7	7	Powers of 7 with initial digit 7.	base,easy,nonn,	1..70	nyi
-A067486	parm3	0	A067481	8	8	Powers of 8 with initial digit 8.	base,easy,nonn,	1..57	nyi
-A067487	parm3	0	A067481	9	9	Powers of 9 with initial digit 9.	base,easy,nonn,	1..48	nyi
-A067489	parm3	0	A067481	3	1	Powers of 3 with initial digit 1.	base,easy,nonn,	1..625	nyi
-A067490	parm3	0	A067481	4	1	Powers of 4 with initial digit 1.	base,easy,nonn,	1..400	nyi
-A067491	parm3	0	A067481	5	1	Powers of 5 with initial digit 1.	base,easy,nonn,	1..300	nyi
-A067492	parm3	0	A067481	6	1	Powers of 6 with initial digit 1.	base,easy,nonn,	1..387	nyi
-A067493	parm3	0	A067481	7	1	Powers of 7 with initial digit 1.	base,easy,nonn,	1..357	nyi
-A067494	parm3	0	A067481	8	1	Powers of 8 with initial digit 1.	base,easy,nonn,	1..330	nyi
-A067495	parm3	0	A067481	9	1	Powers of 9 having initial digit 1.	base,easy,nonn,	1..250	nyi
+#* A067481	parm3	0	A067481	3	3	Powers of 3 with initial digit 3.	base,easy,nonn,	1..261	unkn
+#* A067482	parm3	0	A067481	4	4	Powers of 4 with initial digit 4.	base,easy,nonn,	1..71	nyi
+#* A067483	parm3	0	A067481	5	5	Powers of 5 with initial digit 5.	base,easy,nonn,	1..114	nyi
+#* A067484	parm3	0	A067481	6	6	Powers of 6 with initial digit 6.	base,easy,nonn,	1..89	nyi
+#* A067485	parm3	0	A067481	7	7	Powers of 7 with initial digit 7.	base,easy,nonn,	1..70	nyi
+#* A067486	parm3	0	A067481	8	8	Powers of 8 with initial digit 8.	base,easy,nonn,	1..57	nyi
+#* A067487	parm3	0	A067481	9	9	Powers of 9 with initial digit 9.	base,easy,nonn,	1..48	nyi
+#* A067489	parm3	0	A067481	3	1	Powers of 3 with initial digit 1.	base,easy,nonn,	1..625	nyi
+#* A067490	parm3	0	A067481	4	1	Powers of 4 with initial digit 1.	base,easy,nonn,	1..400	nyi
+#* A067491	parm3	0	A067481	5	1	Powers of 5 with initial digit 1.	base,easy,nonn,	1..300	nyi
+#* A067492	parm3	0	A067481	6	1	Powers of 6 with initial digit 1.	base,easy,nonn,	1..387	nyi
+#* A067493	parm3	0	A067481	7	1	Powers of 7 with initial digit 1.	base,easy,nonn,	1..357	nyi
+#* A067494	parm3	0	A067481	8	1	Powers of 8 with initial digit 1.	base,easy,nonn,	1..330	nyi
+#* A067495	parm3	0	A067481	9	1	Powers of 9 having initial digit 1.	base,easy,nonn,	1..250	nyi
 
-A067499	parm2	1	A067499	2	Powers of 2 with digit sum also a power of 2.	base,nonn,changed,	1..13	nyi
-A067500	parm2	1	A067499	3	Powers of 3 with digit sum also a power of 3.	base,easy,nonn,synth	1..18	nyi
-A067501	parm2	1	A067499	4	Powers of 4 with digit sum also a power of 4.	nonn,base,changed,synth	0..5	nyi
-A067502	parm2	1	A067499	5	Powers of 5 with digit sum also a power of 5.	base,nonn,synth	0..3	nyi
-A067503	parm2	1	A067499	6	Powers of 6 with digit sum also a power of 6.	base,easy,nonn,synth	0..8	nyi
-A067504	parm2	1	A067499	7	Powers of 7 with digit sum also a power of 7.	base,easy,nonn,synth	1..4	nyi
-A067505	parm2	1	A067499	8	Powers of 8 with digit sum also a power of 8.	base,easy,nonn,synth	1..5	nyi
-A067506	parm2	1	A067499	9	Powers of 9 with digit sum also a power of 9.	base,easy,nonn,synth	1..4	nyi
+# A067499	parmof2	1	A067499	2	Powers of 2 with digit sum also a power of 2.	base,nonn,changed,	1..13	nyi
+A067500	parmof2	1	A067499	3	Powers of 3 with digit sum also a power of 3.	base,easy,nonn,synth	1..18	nyi
+A067501	parmof2	1	A067499	4	Powers of 4 with digit sum also a power of 4.	nonn,base,changed,synth	0..5	nyi
+A067502	parmof2	1	A067499	5	Powers of 5 with digit sum also a power of 5.	base,nonn,synth	0..3	nyi
+A067503	parmof2	1	A067499	6	Powers of 6 with digit sum also a power of 6.	base,easy,nonn,synth	0..8	nyi
+A067504	parmof2	1	A067499	7	Powers of 7 with digit sum also a power of 7.	base,easy,nonn,synth	1..4	nyi
+A067505	parmof2	1	A067499	8	Powers of 8 with digit sum also a power of 8.	base,easy,nonn,synth	1..5	nyi
+A067506	parmof2	1	A067499	9	Powers of 9 with digit sum also a power of 9.	base,easy,nonn,synth	1..4	nyi
 
 # man A067507	null	Powers of 2 with even digit sum.	base,easy,nonn,synth	1..22	nyi
-A067508	parm2	1	A067508	4	Powers of 4 with digit sum divisible by 4.	base,easy,nonn,synth	0..8	nyi
-A067509	parm2	1	A067508	5	Powers of 5 with digit sum divisible by 5.	base,easy,nonn,changed,	1..298	nyi
-A067510	parm2	1	A067508	6	Powers of 6 with digit sum divisible by 6.	base,easy,nonn,changed,	1..630	nyi
-A067511	parm2	1	A067508	7	Powers of 7 with digit sum divisible by 7.	base,easy,nonn,synth	0..8	nyi
+# A067508	parmof2	1	A067508	4	Powers of 4 with digit sum divisible by 4.	base,easy,nonn,synth	0..8	nyi
+A067509	parmof2	1	A067508	5	Powers of 5 with digit sum divisible by 5.	base,easy,nonn,changed,	1..298	nyi
+A067510	parmof2	1	A067508	6	Powers of 6 with digit sum divisible by 6.	base,easy,nonn,changed,	1..630	nyi
+A067511	parmof2	1	A067508	7	Powers of 7 with digit sum divisible by 7.	base,easy,nonn,synth	0..8	nyi
 

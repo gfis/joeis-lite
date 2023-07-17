@@ -1,0 +1,7907 @@
+#!queue	A000235	0	->	1	A001383	------ CAUTION: 19 are overridden at the end ! --------------------------
+package irvine.oeis.a000;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001383;
+
+/**
+ * A000235 Number of n-node rooted trees of height 3.
+ * @author Sean A. Irvine
+ */
+public class A000235 extends A001383 {
+
+  private final A000041 mPartitions = new A000041();
+
+  /** Construct the sequence. */
+  public A000235() {
+    setOffset(1);
+    super.next(); // skip 0th entry of A001383
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mPartitions.next());
+  }
+}
+
+#!queue	A000299	0	->	1	A001384	--------------------------------
+package irvine.oeis.a000;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001383;
+import irvine.oeis.a001.A001384;
+
+/**
+ * A000299 Number of n-node rooted trees of height 4.
+ * @author Sean A. Irvine
+ */
+public class A000299 extends A001384 {
+
+  private final A001383 mA1383 = new A001383();
+
+  {
+    setOffset(1);
+    mA1383.next();
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA1383.next());
+  }
+}
+#!queue	A000393	0	->	1	A034823	--------------------------------
+package irvine.oeis.a000;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001385;
+import irvine.oeis.a034.A034823;
+
+/**
+ * A000393 Number of n-node rooted trees of height 6.
+ * @author Sean A. Irvine
+ */
+public class A000393 extends A034823 {
+
+  private final A001385 mA = new A001385();
+
+  {
+    setOffset(1);
+    // skip one entry
+    super.next();
+    mA.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA.next());
+  }
+}
+#!queue	A000418	0	->	1	A034824	--------------------------------
+package irvine.oeis.a000;
+
+import irvine.math.z.Z;
+import irvine.oeis.a034.A034823;
+import irvine.oeis.a034.A034824;
+
+/**
+ * A000418 Number of n-node rooted trees of height 7.
+ * @author Sean A. Irvine
+ */
+public class A000418 extends A034824 {
+
+  private final A034823 mA = new A034823();
+
+  {
+    setOffset(1);
+    // skip one entry
+    super.next();
+    mA.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA.next());
+  }
+}
+#!queue	A000429	0	->	1	A034825	--------------------------------
+package irvine.oeis.a000;
+
+import irvine.math.z.Z;
+import irvine.oeis.a034.A034824;
+import irvine.oeis.a034.A034825;
+
+/**
+ * A000429 Number of n-node rooted trees of height 8.
+ * @author Sean A. Irvine
+ */
+public class A000429 extends A034825 {
+
+  private final A034824 mA = new A034824();
+
+  {
+    setOffset(1);
+    // skip one entry
+    super.next();
+    mA.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA.next());
+  }
+}
+#!queue	A000550	0	->	8	A000235	--------------------------------
+package irvine.oeis.a000;
+
+import irvine.math.group.IntegerField;
+import irvine.math.group.PolynomialRingField;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.z.Z;
+
+/**
+ * A000550 Number of trees of diameter 7.
+ * @author Sean A. Irvine
+ */
+public class A000550 extends A000235 {
+
+  private static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
+
+  private Polynomial<Z> mA = RING.zero();
+  private int mN = -1;
+
+  {
+    setOffset(8);
+  }
+
+  @Override
+  public Z next() {
+    do {
+      mA = RING.add(mA, RING.monomial(super.next(), ++mN));
+    } while (mN < 6);
+    return RING.add(RING.pow(mA, 2, mN), mA.substitutePower(2, mN)).coeff(mN).divide2();
+  }
+}
+
+#!queue	A000784	0	->	1	A048140	--------------------------------
+package irvine.oeis.a000;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a048.A048140;
+import irvine.oeis.a048.A048141;
+
+/**
+ * A000784 Number of symmetrical planar partitions of n (planar partitions (A000219) that when regarded as 3-D objects have just one symmetry plane).
+ * @author Sean A. Irvine
+ */
+public class A000784 extends A048140 {
+
+  private final Sequence mC3v = new A048141();
+  private final Sequence mA219 = new A000219().skip(1);
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().multiply2().subtract(mC3v.next()).subtract(mA219.next());
+  }
+}
+#!queue	A002286	0	->	1	A002470	--------------------------------
+package irvine.oeis.a002;
+
+import irvine.math.z.Z;
+
+/**
+ * A002286 Bisection of A002470.
+ * @author Sean A. Irvine
+ */
+public class A002286 extends A002470 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    super.next();
+    return super.next();
+  }
+}
+#!queue	A002287	0	->	1	A002470	--------------------------------
+package irvine.oeis.a002;
+
+import irvine.math.z.Z;
+
+/**
+ * A002287 Bisection of A002470.
+ * @author Sean A. Irvine
+ */
+public class A002287 extends A002470 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    final Z t = super.next();
+    super.next();
+    return t;
+  }
+}
+#!queue	A002470	0	->	0	A100130	--------------------------------
+package irvine.oeis.a002;
+
+import irvine.math.group.IntegerField;
+import irvine.math.group.PolynomialRingField;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.polynomial.ThetaFunctions;
+import irvine.math.z.Z;
+import irvine.oeis.a100.A100130;
+
+/**
+ * A002470 Glaisher's function W(n).
+ * @author Sean A. Irvine
+ */
+public class A002470 extends A100130 {
+
+  private static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
+  private final Polynomial<Z> mA100130 = RING.empty();
+  private final A100130 mSeq = new A100130();
+
+  {
+    setOffset(0);
+    mA100130.add(Z.ZERO);
+  }
+
+  private int mN = -1;
+
+  @Override
+  public Z next() {
+    mA100130.add(mSeq.next());
+    final Polynomial<Z> a = ThetaFunctions.theta3z(++mN);
+    return RING.multiply(RING.pow(RING.multiply(a, a, mN), 7, mN), mA100130, mN).coeff(mN);
+  }
+}
+#!queue	A003676	0	->	-33	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a003;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A003676 Decimal expansion of the Planck constant h (Joule * second).
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A003676 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A003676() {
+    super(1, PhysicsConstants.PLANCK_CONSTANT_CR.multiply(Z.TEN.pow(33)));
+    setOffset(-33);
+  }
+}
+#!queue	A005745	0	->	1	A002727	--------------------------------
+package irvine.oeis.a005;
+
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002623;
+import irvine.oeis.a002.A002727;
+
+/**
+ * A005745 Number of n-covers of an unlabeled 3-set.
+ * @author Sean A. Irvine
+ */
+public class A005745 extends A002727 {
+
+  private final A002623 mA = new A002623();
+
+  {
+    setOffset(1);
+    next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA.next());
+  }
+}
+#!queue	A014186	0	->	0	A002113	--------------------------------
+package irvine.oeis.a014;
+
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002113;
+
+/**
+ * A014186 Squares of palindromes.
+ * @author Sean A. Irvine
+ */
+public class A014186 extends A002113 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().square();
+  }
+}
+#!queue	A014187	0	->	0	A002113	--------------------------------
+package irvine.oeis.a014;
+
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002113;
+
+/**
+ * A014187 Cubes of palindromes.
+ * @author Sean A. Irvine
+ */
+public class A014187 extends A002113 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().pow(3);
+  }
+}
+#!queue	A014188	0	->	0	A002113	--------------------------------
+package irvine.oeis.a014;
+
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002113;
+
+/**
+ * A014188 Fourth powers of palindromes.
+ * @author Sean A. Irvine
+ */
+public class A014188 extends A002113 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().pow(4);
+  }
+}
+#!queue	A014246	0	->	1	A022843	--------------------------------
+package irvine.oeis.a014;
+
+import irvine.math.z.Z;
+import irvine.oeis.a022.A022843;
+import irvine.oeis.a054.A054385;
+
+/**
+ * A014246 a(n) = (n-th term of Beatty sequence for e) - (n-th term of Beatty sequence for e/(e-1)).
+ * @author Sean A. Irvine
+ */
+public class A014246 extends A022843 {
+
+  private final A054385 mA = new A054385();
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA.next());
+  }
+}
+#!queue	A019449	0	->	1	CoordinationSequence	Conjectural	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.Conjectural;
+import irvine.oeis.recur.CoordinationSequence;
+
+/**
+ * A019449 Irreducible quadruple Euler sums of weight 2n+10 (verified for n &lt;= 14).
+ * @author Sean A. Irvine
+ */
+public class A019449 extends CoordinationSequence implements Conjectural {
+
+  /** Construct the sequence. */
+  public A019449() {
+    super(
+      new long[] {1, 0, 2, 1, 1, 2, 0, 1, -1},
+      new int[] {1, 3, 4, 6});
+    setOffset(1);
+  }
+}
+#!queue	A019450	0	->	1	CoordinationSequence	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.recur.CoordinationSequence;
+
+/**
+ * A019450 Conjectured formula for irreducible 5-fold Euler sums of weight 2n+13.
+ * @author Sean A. Irvine
+ */
+public class A019450 extends CoordinationSequence {
+
+  /** Construct the sequence. */
+  public A019450() {
+    super(
+      new long[] {1, 2, 3, 3, 2},
+      new int[] {2, 2, 3, 3, 5});
+    setOffset(1);
+  }
+}
+#!queue	A019459	0	->	1	CoordinationSequence	--------------------------------
+package irvine.oeis.a019;
+
+import irvine.oeis.recur.CoordinationSequence;
+
+/**
+ * A019459 Conjectured formula for irreducible 6-fold Euler sums of weight 2n+16.
+ * @author Sean A. Irvine
+ */
+public class A019459 extends CoordinationSequence {
+
+  /** Construct the sequence. */
+  public A019459() {
+    super(
+      new long[] {1, 2, 3, 4, 6, 6, 6, 7, 4, 5, 4, 2, 2, 0, 0, 0, -1, 1},
+      new int[] {1, 2, 3, 4, 6, 9});
+    setOffset(1);
+  }
+}
+#!queue	A022413	0	->	0	A000201	--------------------------------
+package irvine.oeis.a022;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000201;
+
+/**
+ * A022413 Kim-sums: "Kimberling sums" K_n + K_2.
+ * @author Sean A. Irvine
+ */
+public class A022413 extends A000201 {
+
+  private long mN = 2;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return ++mN == 3 ? Z.ONE : super.next().add(mN);
+  }
+}
+#!queue	A022816	0	->	1	CoordinationSequence	--------------------------------
+package irvine.oeis.a022;
+
+import irvine.oeis.recur.CoordinationSequence;
+
+/**
+ * A022816 Number of terms in 6th derivative of a function composed with itself n times.
+ * @author Sean A. Irvine
+ */
+public class A022816 extends CoordinationSequence {
+
+  /** Construct the sequence. */
+  public A022816() {
+    super(new long[] {1, 5, -7, 2}, new int[] {1, 1, 1, 1, 1, 1});
+    setOffset(1);
+  }
+}
+#!queue	A027652	0	->	-1	A134414	--------------------------------
+package irvine.oeis.a027;
+
+import irvine.math.group.PolynomialRing;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.z.Integers;
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a004.A004009;
+import irvine.oeis.a134.A134414;
+
+/**
+ * A027652 Values of Zagier's function J_1.
+ * @author Sean A. Irvine
+ */
+public class A027652 extends A134414 {
+
+  private static final PolynomialRing<Z> RING = new PolynomialRing<>(Integers.SINGLETON);
+  private final Sequence mE4 = new A004009();
+  private final Polynomial<Z> mE4x4 = RING.empty();
+  private final Polynomial<Z> mA = RING.empty();
+
+  {
+    setOffset(-1);
+  }
+
+  @Override
+  public Z next() {
+    mA.add(super.next());
+    mE4x4.add((mN & 3) == 0 ? mE4.next() : Z.ZERO);
+    return RING.multiply(mA, mE4x4, mN).coeff(mN).negate();
+  }
+}
+#!queue	A027653	0	->	1	A027652	--------------------------------
+package irvine.oeis.a027;
+
+import irvine.math.z.Z;
+
+/**
+ * A027653 Values of Zagier's function J_1(k) as k runs through the numbers -1, 0, 3, 4, 7, 8, ... which are == -1 or 0 mod 4.
+ * @author Sean A. Irvine
+ */
+public class A027653 extends A027652 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z t = super.next();
+      if ((mN & 3) <= 1) {
+        return t;
+      }
+    }
+  }
+}
+#!queue	A027654	0	->	0	A027652	--------------------------------
+package irvine.oeis.a027;
+
+import irvine.math.z.Z;
+
+/**
+ * A027654 Zagier's function -J_1(4*n-1).
+ * @author Sean A. Irvine
+ */
+public class A027654 extends A027652 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z t = super.next();
+      if ((mN & 3) == 0) {
+        return t.negate();
+      }
+    }
+  }
+}
+#!queue	A027655	0	->	0	A027652	--------------------------------
+package irvine.oeis.a027;
+
+import irvine.math.z.Z;
+
+/**
+ * A027655 Zagier's function J_1(4*n).
+ * @author Sean A. Irvine
+ */
+public class A027655 extends A027652 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z t = super.next();
+      if ((mN & 3) == 1) {
+        return t;
+      }
+    }
+  }
+}
+#!queue	A033259	0	->	0	A085984	--------------------------------
+package irvine.oeis.a033;
+
+import irvine.math.cr.CR;
+import irvine.oeis.a085.A085984;
+
+/**
+ * A033259 Decimal expansion of Laplace's limit constant.
+ * @author Sean A. Irvine
+ */
+public class A033259 extends A085984 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public CR getCR() {
+    return super.getCR().square().subtract(CR.ONE).sqrt();
+  }
+}
+
+#!queue	A033926	0	->	0	A033923	--------------------------------
+package irvine.oeis.a033;
+
+/**
+ * A033926 Base 6 digital convolution sequence.
+ * @author Sean A. Irvine
+ */
+public class A033926 extends A033923 {
+
+  @Override
+  protected int base() {
+    return 6;
+  }
+
+  {
+    setOffset(0);
+  }
+}
+#!queue	A034023	0	->	0	A001481	--------------------------------
+package irvine.oeis.a034;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001481;
+
+/**
+ * A034023 Imprimitively represented by x^2+y^2.
+ * @author Sean A. Irvine
+ */
+public class A034023 extends A001481 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z n = super.next();
+      if (!Jaguar.factor(n).isSquareFree()) {
+        return n;
+      }
+    }
+  }
+}
+#!queue	A035308	0	->	0	A045757	--------------------------------
+package irvine.oeis.a035;
+
+import irvine.math.z.Z;
+import irvine.oeis.a045.A045757;
+
+/**
+ * A035308 Expansion of 1/(1-100*x)^(1/10), related to deca-factorial numbers A045757.
+ * @author Sean A. Irvine
+ */
+public class A035308 extends A045757 {
+
+  private long mN = -1;
+  private Z mF = Z.ONE;
+  private Z mT = Z.ONE;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    if (++mN == 0) {
+      return Z.ONE;
+    }
+    mF = mF.multiply(mN);
+    mT = mT.multiply(10);
+    return mT.multiply(super.next()).divide(mF);
+  }
+}
+
+#!queue	A038798	0	->	0	A038739	--------------------------------
+package irvine.oeis.a038;
+
+/**
+ * A038798 T(2n+5,n), array T as in A038792.
+ * @author Sean A. Irvine
+ */
+public class A038798 extends A038739 {
+  // Apparently the same (except for the offset).
+
+  {
+    setOffset(0);
+  }
+}
+#!queue	A038799	0	->	0	A038732	--------------------------------
+package irvine.oeis.a038;
+
+/**
+ * A038799 T(2n+6,n), array T as in A038792.
+ * @author Sean A. Irvine
+ */
+public class A038799 extends A038732 {
+  // Apparently the same (except for the offset):
+
+  {
+    setOffset(0);
+  }
+}
+#!queue	A039624	0	->	1	A004601	--------------------------------
+package irvine.oeis.a039;
+
+import irvine.math.z.Z;
+import irvine.oeis.a004.A004601;
+
+/**
+ * A039624 Numbers n such that there are equal numbers of 0's and 1's in first n digits of binary representation of Pi.
+ * @author Sean A. Irvine
+ */
+public class A039624 extends A004601 {
+
+  private long mN = 0;
+  private long mBias = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      ++mN;
+      mBias += 1 - super.next().longValueExact() * 2;
+      if (mBias == 0) {
+        return Z.valueOf(mN);
+      }
+    }
+  }
+}
+#!queue	A039977	0	->	1	A052709	--------------------------------
+package irvine.oeis.a039;
+
+import irvine.math.z.Z;
+import irvine.oeis.a052.A052709;
+
+/**
+ * A039977 An example of a d-perfect sequence.
+ * @author Sean A. Irvine
+ */
+public class A039977 extends A052709 {
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  private long mMult = -1;
+
+  @Override
+  public Z next() {
+    final long r = super.next().mod(3);
+    mMult = -mMult;
+    return Z.valueOf((3 + r * mMult) % 3);
+  }
+}
+
+#!queue	A039981	0	->	1	A052709	--------------------------------
+package irvine.oeis.a039;
+
+import irvine.math.z.Z;
+import irvine.oeis.a052.A052709;
+
+/**
+ * A039981 An example of a d-perfect sequence.
+ * @author Sean A. Irvine
+ */
+public class A039981 extends A052709 {
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().mod(Z.THREE);
+  }
+}
+
+#!queue	A039984	0	->	1	A090345	--------------------------------
+package irvine.oeis.a039;
+
+import irvine.math.z.Z;
+import irvine.oeis.a090.A090345;
+
+/**
+ * A039984 An example of a d-perfect sequence.
+ * @author Georg Fischer
+ */
+public class A039984 extends A090345 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().isEven() ? Z.ZERO : Z.ONE;
+  }
+}
+#!queue	A046168	0	->	1	GeneratingFunctionSequence	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.math.group.PolynomialRing;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.z.Integers;
+import irvine.math.z.Z;
+import irvine.oeis.recur.GeneratingFunctionSequence;
+
+/**
+ * A046168 Number of minimal covers on n objects with 8 members.
+ * @author Sean A. Irvine
+ */
+public class A046168 extends GeneratingFunctionSequence {
+
+  private static final PolynomialRing<Z> RING = new PolynomialRing<>(Integers.SINGLETON);
+
+  static Polynomial<Z> denominator(final int k) {
+    Polynomial<Z> d = RING.one();
+    final int sk = 1 << k;
+    for (int j = sk - k - 1; j < sk; ++j) {
+      d = RING.multiply(d, RING.oneMinusXToTheN(Z.valueOf(j), 1));
+    }
+    return d;
+  }
+
+  protected A046168(final int members) {
+    super(RING.monomial(Z.ONE, members), denominator(members));
+    setOffset(1);
+    next(); // skip 0th
+  }
+
+  /** Construct the sequence. */
+  public A046168() {
+    this(8);
+  }
+}
+#!queue	A046399	0	->	0	A002113	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.factor.factor.Jaguar;
+import irvine.factor.util.FactorSequence;
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002113;
+import irvine.util.array.LongDynamicArray;
+
+/**
+ * A046399 Smallest squarefree palindrome with exactly n distinct prime factors.
+ * @author Sean A. Irvine
+ */
+public class A046399 extends A002113 {
+
+  private final LongDynamicArray<Z> mA = new LongDynamicArray<>();
+  private long mN = -1;
+
+  {
+    setOffset(0);
+    super.next(); // skip 0
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    while (mA.get(mN) == null) {
+      final Z t = super.next();
+      final FactorSequence fs = Jaguar.factor(t);
+      final long omega = fs.bigOmega();
+      if (mA.get(omega) == null && omega == fs.omega()) {
+        mA.set(omega, t);
+      }
+    }
+    return mA.get(mN);
+  }
+}
+#!queue	A046897	0	->	1	A000118	--------------------------------
+package irvine.oeis.a046;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000118;
+
+/**
+ * A046897 Sum of divisors of n that are not divisible by 4.
+ * @author Sean A. Irvine
+ */
+public class A046897 extends A000118 {
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().divide(8);
+  }
+}
+#!queue	A047760	0	->	1	A047750	--------------------------------
+package irvine.oeis.a047;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+
+/**
+ * A047760 Number of dissectable polyhedra with symmetry of type F.
+ * @author Sean A. Irvine
+ */
+public class A047760 extends A047750 {
+
+  private final Sequence mA = new A047751();
+  private final Sequence mB = new A047753();
+  private long mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    final Z t = mA.next().add(mB.next());
+    if ((++mN & 1) != 1) {
+      return Z.ZERO;
+    } else {
+      return super.next().subtract(t).divide2();
+    }
+  }
+}
+
+#!queue	A047761	0	->	0	A047760	--------------------------------
+package irvine.oeis.a047;
+
+import irvine.math.z.Z;
+
+/**
+ * A047761 a(n) = A047760(2n+1).
+ * @author Sean A. Irvine
+ */
+public class A047761 extends A047760 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z res = super.next();
+    super.next();
+    return res;
+  }
+}
+
+#!queue	A047808	0	->	0	A001481	--------------------------------
+package irvine.oeis.a047;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001481;
+
+/**
+ * A047808 a(n) counts different values of i^2 + j^2 &lt;= n^2 or number of distances from the origin to all integer points inside a circle of radius n.
+ * @author Sean A. Irvine
+ */
+public class A047808 extends A001481 {
+
+  private Z mA = super.next();
+  private long mC = 0;
+  private long mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z n2 = Z.valueOf(++mN).square();
+    while (mA.compareTo(n2) <= 0) {
+      ++mC;
+      mA = super.next();
+    }
+    return Z.valueOf(mC);
+  }
+}
+#!queue	A048140	0	->	1	A000219	--------------------------------
+package irvine.oeis.a048;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000219;
+import irvine.oeis.a005.A005987;
+
+/**
+ * A048140 Number of planar partitions of n, but partitions that are mirror images of each other (when regarded as 3-D objects) are counted only once.
+ * @author Sean A. Irvine
+ */
+public class A048140 extends A000219 {
+
+  private final A005987 mS = new A005987();
+
+  {
+    setOffset(1);
+    super.next();
+    mS.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().add(mS.next()).divide2();
+  }
+}
+
+#!queue	A048460	0	->	2	A105321	--------------------------------
+package irvine.oeis.a048;
+
+import irvine.math.z.Z;
+import irvine.oeis.a105.A105321;
+
+/**
+ * A048460 Total of odd numbers in the generations from 2 onwards.
+ * @author Sean A. Irvine
+ */
+public class A048460 extends A105321 {
+
+  {
+    setOffset(2);
+    super.next();
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().divide2();
+  }
+}
+#!queue	A049035	0	->	1	A006988	--------------------------------
+package irvine.oeis.a049;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a001.A001359;
+import irvine.oeis.a006.A006988;
+
+/**
+ * A049035 Number of pairs of twin primes whose smaller element is &lt;= 10^n-th prime.
+ * @author Sean A. Irvine
+ */
+public class A049035 extends A006988 {
+
+  private final Sequence mTwinLower = new A001359();
+  private Z mP = mTwinLower.next();
+  private long mCnt = 0;
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    final Z lim = super.next();
+    while (mP.compareTo(lim) <= 0) {
+      ++mCnt;
+      mP = mTwinLower.next();
+    }
+    return Z.valueOf(mCnt);
+  }
+}
+#!queue	A052442	0	->	1	A001349	--------------------------------
+package irvine.oeis.a052;
+
+import irvine.math.z.Z;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.Sequence;
+import irvine.oeis.a001.A001349;
+import irvine.oeis.a002.A002218;
+
+/**
+ * A052442 Number of simple unlabeled n-node graphs of connectivity 1.
+ * @author Sean A. Irvine
+ */
+public class A052442 extends A001349 {
+
+  private final Sequence mA = new PrependSequence(new A002218().skip(2), 1, 0);
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA.next());
+  }
+}
+#!queue	A052446	0	->	1	A001349	--------------------------------
+package irvine.oeis.a052;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001349;
+import irvine.oeis.a007.A007146;
+
+/**
+ * A052446 Number of unlabeled simple connected bridged graphs on n nodes.
+ * @author Sean A. Irvine
+ */
+public class A052446 extends A001349 {
+
+  private final A007146 mA = new A007146();
+
+  {
+    setOffset(1);
+    super.next(); // skip 0th
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA.next());
+  }
+}
+#!queue	A053216	0	->	1	A001156	--------------------------------
+package irvine.oeis.a053;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001156;
+
+/**
+ * A053216 Number of integers that can be partitioned into squares in n different ways, or the number of times n occurs in A001156.
+ * @author Sean A. Irvine
+ */
+public class A053216 extends A001156 {
+
+  private Z mN = Z.ZERO;
+  private Z mA = super.next();
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    mN = mN.add(1);
+    long cnt = 0;
+    while (mA.equals(mN)) {
+      ++cnt;
+      mA = super.next();
+    }
+    return Z.valueOf(cnt);
+  }
+}
+#!queue	A053398	0	->	1	UpperLeftTriangle	--------------------------------
+package irvine.oeis.a053;
+
+import irvine.math.z.Z;
+import irvine.oeis.triangle.UpperLeftTriangle;
+
+/**
+ * A053398 Nim-values from game of Kopper's Nim.
+ * @author Georg Fischer
+ */
+public class A053398 extends UpperLeftTriangle {
+
+  /** Construct the sequence. */
+  public A053398() {
+    super(0, 0, -1);
+    setOffset(1);
+  }
+
+  @Override
+  public Z matrixElement(final int n, final int k) {
+    return /* n + k == 0 ? Z.ZERO : */ Z.valueOf(Long.numberOfTrailingZeros((n | k) + 1));
+  }
+}
+#!queue	A054586	0	->	0	MultiplicativeSequence	--------------------------------
+package irvine.oeis.a054;
+// Generated by gen_seq4.pl mult3/mult at 2022-07-19 22:09
+
+import irvine.math.z.Z;
+import irvine.oeis.MultiplicativeSequence;
+
+/**
+ * A054586 Sum_{d|2n+1} phi(d)*mu(d).
+ * @author Georg Fischer
+ */
+public class A054586 extends MultiplicativeSequence {
+
+  /** Construct the sequence. */
+  public A054586() {
+    super(0, 2, (p, e) -> Z.TWO.subtract(p));
+  }
+}
+#!queue	A054915	0	->	1	A001349	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a000.A000088;
+import irvine.oeis.a001.A001349;
+
+/**
+ * A054915 Number of unlabeled connected graphs with n nodes such that complement is also connected.
+ * @author Sean A. Irvine
+ */
+public class A054915 extends A001349 {
+
+  private final Sequence mA = new A000088();
+
+  {
+    setOffset(1);
+    next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().multiply2().subtract(mA.next());
+  }
+}
+#!queue	A054920	0	->	1	A054919	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a000.A000595;
+
+/**
+ * A054920 Number of connected unlabeled reflexive relations with n nodes such that complement is also connected.
+ * @author Sean A. Irvine
+ */
+public class A054920 extends A054919 {
+
+  private final Sequence mA = new A000595();
+
+  {
+    setOffset(1);
+    next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().multiply2().subtract(mA.next());
+  }
+}
+#!queue	A054931	0	->	1	A001349	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a000.A000088;
+import irvine.oeis.a000.A000171;
+import irvine.oeis.a001.A001349;
+
+/**
+ * A054931 Number of unlabeled connected graphs up to complementarity.
+ * @author Sean A. Irvine
+ */
+public class A054931 extends A001349 {
+
+  private final Sequence mA = new A000088();
+  private final Sequence mB = new A000171();
+
+  {
+    setOffset(1);
+    super.next();
+    mA.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().add(mB.next().subtract(mA.next()).divide2());
+  }
+}
+#!queue	A054938	0	->	1	A054499	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a018.A018191;
+
+/**
+ * A054938 Number of chiral chord diagrams on n nodes.
+ * @author Sean A. Irvine
+ */
+public class A054938 extends A054499 {
+
+  private final Sequence mA = new A018191();
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(mA.next());
+  }
+}
+#!queue	A054991	0	->	1	A033312	--------------------------------
+package irvine.oeis.a054;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a033.A033312;
+
+/**
+ * A054991 Number of prime divisors of n! - 1 (counted with multiplicity).
+ * @author Sean A. Irvine
+ */
+public class A054991 extends A033312 {
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return Z.valueOf(Jaguar.factor(super.next()).bigOmega());
+  }
+}
+#!queue	A055200	0	->	-1	A001113	--------------------------------
+package irvine.oeis.a055;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001113;
+
+/**
+ * A055200 a(-1) = 2; for n &gt;= 0, a(n) is the 10^n-th digit of e after the decimal point.
+ * @author Sean A. Irvine
+ */
+public class A055200 extends A001113 {
+
+  private long mLim = -1;
+  private long mM = 0;
+
+  {
+    setOffset(-1);
+  }
+
+  @Override
+  public Z next() {
+    if (mLim < 0) {
+      mLim = 0;
+      return super.next();
+    }
+    mLim = mLim == 0 ? 1 : mLim * 10;
+    while (++mM < mLim) {
+      super.next();
+    }
+    return super.next();
+  }
+}
+#!queue	A055913	0	->	7	GeneratingFunctionSequence	--------------------------------
+package irvine.oeis.a055;
+
+import irvine.oeis.recur.GeneratingFunctionSequence;
+
+/**
+ * A055913 Column 7 of triangle A055907.
+ * @author Sean A. Irvine
+ */
+public class A055913 extends GeneratingFunctionSequence {
+
+  /** Construct the sequence. */
+  public A055913() {
+    super(0, A055916.TERMS,
+      new long[] {1, -8, 31, -80, 156, -240, 288, -240, 40, 336, -852, 1392, -1766, 1760, -1210, 80, 1486, -3168, 4526, -5104, 4560, -2800, 60, 3120, -6011, 7880, -8189, 6752, -3812, 0, 3812, -6752, 8189, -7880, 6011, -3120, -60, 2800, -4560, 5104, -4526, 3168, -1486, -80, 1210, -1760, 1766, -1392, 852, -336, -40, 240, -288, 240, -156, 80, -31, 8, -1});
+    setOffset(7);
+  }
+}
+#!queue	A055914	0	->	8	GeneratingFunctionSequence	--------------------------------
+package irvine.oeis.a055;
+
+import irvine.oeis.recur.GeneratingFunctionSequence;
+
+/**
+ * A055914 Column 8 of triangle A055907.
+ * @author Sean A. Irvine
+ */
+public class A055914 extends GeneratingFunctionSequence {
+
+  /** Construct the sequence. */
+  public A055914() {
+    super(0, A055917.TERMS,
+      new long[] {1, -9, 41, -129, 317, -645, 1120, -1680, 2163, -2299, 1742, -158, -2640, 6544, -11035, 15155, -17604, 16980, -12137, 2593, 11113, -27249, 42989, -54821, 59223, -53487, 36519, -9391, -24519, 59903, -90388, 109732, -113126, 98310, -66257, 21225, 29869, -78645, 116809, -137729, 137729, -116809, 78645, -29869, -21225, 66257, -98310, 113126, -109732, 90388, -59903, 24519, 9391, -36519, 53487, -59223, 54821, -42989, 27249, -11113, -2593, 12137, -16980, 17604, -15155, 11035, -6544, 2640, 158, -1742, 2299, -2163, 1680, -1120, 645, -317, 129, -41, 9, -1});
+    setOffset(8);
+  }
+}
+#!queue	A055915	0	->	9	GeneratingFunctionSequence	--------------------------------
+package irvine.oeis.a055;
+
+import irvine.oeis.recur.GeneratingFunctionSequence;
+
+/**
+ * A055915 Column 9 of triangle A055907.
+ * @author Sean A. Irvine
+ */
+public class A055915 extends GeneratingFunctionSequence {
+
+  /** Construct the sequence. */
+  public A055915() {
+    super(0, A055918.TERMS,
+      new long[] {1, -10, 52, -190, 549, -1332, 2810, -5264, 8863, -13478, 18460, -22450, 23314, -18306, 4536, 20242, -56599, 102356, -151756, 195236, -220112, 212348, -159356, 53468, 104547, -302778, 517164, -712894, 848546, -882710, 782250, -530766, 135510, 369010, -922116, 1443318, -1843562, 2039854, -1970896, 1610802, -978009, 137160, 807152, -1724328, 2477493, -2945770, 3045196, -2744398, 2071915, -1113568, 0, 1113568, -2071915, 2744398, -3045196, 2945770, -2477493, 1724328, -807152, -137160, 978009, -1610802, 1970896, -2039854, 1843562, -1443318, 922116, -369010, -135510, 530766, -782250, 882710, -848546, 712894, -517164, 302778, -104547, -53468, 159356, -212348, 220112, -195236, 151756, -102356, 56599, -20242, -4536, 18306, -23314, 22450, -18460, 13478, -8863, 5264, -2810, 1332, -549, 190, -52, 10, -1});
+    setOffset(9);
+  }
+}
+#!queue	A056581	0	->	1	A056580	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.math.cr.CR;
+import irvine.math.z.Z;
+
+/**
+ * A056581 Nearest integer to 1/(A056580(n) - exp(sqrt(n)*Pi)).
+ * @author Sean A. Irvine
+ */
+public class A056581 extends A056580 {
+
+  {
+    setOffset(1);
+    super.next(); // skip 0
+  }
+
+  @Override
+  public Z next() {
+    return CR.valueOf(super.next()).subtract(CR.PI.multiply(CR.valueOf(mN).sqrt()).exp()).inverse().round();
+  }
+}
+#!queue	A057553	0	->	1	A057552	--------------------------------
+package irvine.oeis.a057;
+
+import irvine.math.z.Binomial;
+import irvine.math.z.Z;
+
+/**
+ * A057553 Rank of (1,1,...,1) (n 1's) when {0,1,2,...}^n is lexicographically ordered.
+ * @author Sean A. Irvine
+ */
+public class A057553 extends A057552 {
+
+  private boolean mFirst = true;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    if (mFirst) {
+      mFirst = false;
+      return Z.ONE;
+    }
+    return super.next().add(Binomial.binomial(2L * mN + 3, mN + 2)).add(1);
+  }
+}
+#!queue	A058102	0	->	0	A007251	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.math.group.PolynomialRingField;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.math.q.Rationals;
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007251;
+
+/**
+ * A058102 McKay-Thompson series of class 10a for Monster.
+ * @author Sean A. Irvine
+ */
+public class A058102 extends A007251 {
+
+  private static final PolynomialRingField<Q> RING = new PolynomialRingField<>(Rationals.SINGLETON);
+  private int mN = -1;
+  private final Polynomial<Q> mA = RING.empty();
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z t = super.next();
+    mA.add(++mN == 1 ? new Q(16) : new Q(t));
+    return RING.sqrt(mA, mN).coeff(mN).toZ();
+  }
+}
+#!queue	A058639	0	->	0	A152944	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.math.group.PolynomialRingField;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.math.q.Rationals;
+import irvine.math.z.Z;
+import irvine.oeis.a152.A152944;
+
+/**
+ * A058639 McKay-Thompson series of class 34a for the Monster group.
+ * @author Sean A. Irvine
+ */
+public class A058639 extends A152944 {
+
+  private static final PolynomialRingField<Q> RING = new PolynomialRingField<>(Rationals.SINGLETON);
+  private final Polynomial<Q> mA = RING.empty();
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    mA.add(new Q(super.next()));
+    return RING.sqrt(mA, ++mN).coeff(mN).toZ();
+  }
+}
+#!queue	A058915	0	->	6	A001349	--------------------------------
+package irvine.oeis.a058;
+
+import irvine.math.group.PolynomialRing;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.z.Integers;
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001349;
+
+/**
+ * A058915 Number of graphs with 3 distinct components.
+ * @author Sean A. Irvine
+ */
+public class A058915 extends A001349 {
+
+  private static final PolynomialRing<Z> RING = new PolynomialRing<>(Integers.SINGLETON);
+  private final Polynomial<Z> mF = RING.empty();
+
+  {
+    setOffset(6);
+    mF.add(Z.ZERO);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    while (mN < 5) {
+      mF.add(super.next());
+    }
+    mF.add(super.next());
+    return RING.pow(mF, 3, mN).coeff(mN)
+      .subtract(RING.multiply(mF, mF.substitutePower(2, mN), mN).coeff(mN).multiply(3))
+      .add(mF.substitutePower(3, mN).coeff(mN).multiply2())
+      .divide(6);
+  }
+}
+#!queue	A059373	0	->	2	A059370	--------------------------------
+package irvine.oeis.a059;
+
+import irvine.math.z.Z;
+
+/**
+ * A059373 Second diagonal of triangle in A059370.
+ * @author Sean A. Irvine
+ */
+public class A059373 extends A059370 {
+
+  private int mN = 0;
+
+  {
+    setOffset(2);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    for (int k = 0; k < mN; ++k) {
+      super.next();
+    }
+    return super.next();
+  }
+}
+#!queue	A060276	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a060;
+
+import java.util.TreeSet;
+
+import irvine.factor.prime.Fast;
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A060276 a(1) = 2; a(n) = smallest prime &gt; a(n-1) such that the sum of any three nondecreasing terms, chosen from a(1), ..., a(n-1) and a(n), is unique.
+ * @author Sean A. Irvine
+ */
+public class A060276 extends MemorySequence {
+
+  private final Fast mPrime = new Fast();
+  private final TreeSet<Z> mSums = new TreeSet<>();
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  protected Z computeNext() {
+    if (size() == 0) {
+      mSums.add(Z.SIX);
+      return Z.TWO;
+    }
+    Z n = a(size() - 1);
+    while (true) {
+      n = mPrime.nextPrime(n);
+      boolean ok = true;
+      outer:
+      for (final Z a : this) {
+        final Z an = a.add(n);
+        if (mSums.contains(an.add(n))) {
+          ok = false;
+          break;
+        }
+        for (final Z b : this) {
+          if (mSums.contains(an.add(b))) {
+            ok = false;
+            break outer;
+          }
+          if (b.equals(a)) {
+            break;
+          }
+        }
+      }
+      if (ok) {
+        mSums.add(n.multiply(3));
+        for (final Z a : this) {
+          final Z an = a.add(n);
+          mSums.add(an.add(n)); // a + 2n
+          for (final Z b : this) {
+            mSums.add(an.add(b));
+            if (b.equals(a)) {
+              break;
+            }
+          }
+        }
+        return n;
+      }
+    }
+  }
+}
+
+#!queue	A060341	0	->	2	A000040	--------------------------------
+package irvine.oeis.a060;
+
+import java.util.HashSet;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A060341 Non-adding primes: next term is smallest prime not the sum of any primes so far.
+ * @author Sean A. Irvine
+ */
+public class A060341 extends A000040 {
+
+  private final HashSet<Z> mForbidden = new HashSet<>();
+
+  {
+    setOffset(2);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z p = super.next();
+      if (!mForbidden.contains(p)) {
+        final HashSet<Z> newForbidden = new HashSet<>();
+        newForbidden.add(p);
+        for (final Z q : mForbidden) {
+          newForbidden.add(q.add(p));
+        }
+        mForbidden.addAll(newForbidden);
+        return p;
+      }
+    }
+  }
+}
+#!queue	A060487	0	->	3	A188445	--------------------------------
+package irvine.oeis.a060;
+
+import irvine.math.group.DegreeLimitedPolynomialRingField;
+import irvine.math.group.PolynomialRingField;
+import irvine.math.partitions.IntegerPartition;
+import irvine.math.polynomial.Polynomial;
+import irvine.math.polynomial.PolynomialUtils;
+import irvine.math.q.Q;
+import irvine.math.q.Rationals;
+import irvine.math.z.Z;
+import irvine.oeis.a188.A188445;
+
+/**
+ * A060487 Triangle T(n,k) of k-block tricoverings of an n-set (n &gt;= 3, k &gt;= 4).
+ * @author Sean A. Irvine
+ */
+public class A060487 extends A188445 {
+
+  // After Andrew Howroyd
+
+  private int mN = 2;
+  private int mM = 0;
+  private Polynomial<Q> mRow = RING.zero();
+
+  private Polynomial<Q> row(final int n, final int k) {
+    if (n == 0) {
+      return RING.one();
+    }
+    final int m = n * k + 1;
+    final DegreeLimitedPolynomialRingField<Q> inner = new DegreeLimitedPolynomialRingField<>("y", Rationals.SINGLETON, m);
+    final PolynomialRingField<Polynomial<Q>> ring = new PolynomialRingField<>("x", inner);
+    final Polynomial<Q> exp = inner.exp(inner.integrate(inner.negate(inner.series(inner.monomial(Q.ONE, n), CMX, m - 1))), m);
+    final Polynomial<Polynomial<Q>> lift = PolynomialUtils.lift(exp);
+
+    // The code by Howroyd uses f(x) / (y+x), but that does not work well for me here, because it
+    // cannot be expanded as polynomial series.  So instead I do f(x) / (1/y + x), and deal with
+    // the consequences of that change.
+
+    // 1 / (1/y + x) = y - y^2*x + y^3*x^2 - y^*x^3 + ...
+    final Polynomial<Polynomial<Q>> invDen = ring.empty();
+    for (int j = 0; j <= m; ++j) {
+      invDen.add(inner.monomial((j & 1) == 0 ? Q.ONE : Q.NEG_ONE, j + 1));
+    }
+    final Polynomial<Polynomial<Q>> q = ring.multiply(lift, invDen, m);
+    Polynomial<Q> sum = RING.zero();
+    for (int j = 0; j <= m; ++j) {
+      Q s = Q.ZERO;
+      final IntegerPartition part = new IntegerPartition(j);
+      int[] p;
+      while ((p = part.next()) != null) {
+        if (isMaxPart(p, n)) {
+          s = s.signedAdd((p.length & 1) == 0, d(p, n, k));
+        }
+      }
+      sum = RING.add(sum, RING.series(RING.multiply(q.coeff(q.degree() - j), s).shift(-1 - k), RING.onePlusXToTheN(1), m));
+    }
+    return (m & 1) == 0 ? sum : RING.negate(sum);
+  }
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    if (--mM < 0) {
+      ++mN;
+      mM = 0;
+      mRow = row(3, mN);
+      mM = mRow.degree();
+    }
+    return mRow.coeff(mM).toZ();
+  }
+}
+#!queue	A060504	0	->	0	A000040	--------------------------------
+package irvine.oeis.a060;
+
+import irvine.math.z.Z;
+import irvine.math.z.ZUtils;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A060504 Let p be a prime that has a primitive root between 0 and p that is not also a primitive root of p^2 (A060503); sequence gives smallest such primitive root.
+ * @author Sean A. Irvine
+ */
+public class A060504 extends A000040 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z p = super.next();
+      final Z pp = p.square();
+      for (Z k = Z.ONE; k.compareTo(p) < 0; k = k.add(1)) {
+        if (ZUtils.isPrimitiveRoot(k, p) && !ZUtils.isPrimitiveRoot(k, pp)) {
+          return k;
+        }
+      }
+    }
+  }
+}
+#!queue	A060829	0	->	0	A120427	--------------------------------
+package irvine.oeis.a060;
+
+import irvine.math.z.Z;
+import irvine.oeis.a120.A120427;
+
+/**
+ * A060829 For each y &gt;= 1 there are only finitely many values of x &gt;= 1 such that x-y and x+y are both squares; list all such pairs (x,y) with gcd(x,y) = 1 ordered by values of y; sequence gives x values.
+ * @author Sean A. Irvine
+ */
+public class A060829 extends A120427 {
+
+  private Z mPrev = Z.ZERO;
+  private Z mA = Z.ZERO;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z t = super.next();
+    if (!t.equals(mPrev)) {
+      mPrev = t;
+      mA = t;
+    }
+    while (true) {
+      mA = mA.add(1);
+      if (Z.ONE.equals(mA.gcd(t)) && mA.subtract(t).isSquare() && mA.add(t).isSquare()) {
+        return mA;
+      }
+    }
+  }
+}
+#!queue	A060916	0	->	0	A000040	--------------------------------
+package irvine.oeis.a060;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A060916 Similar to A060400, but more than one digit may be taken (in order) from each prime.
+ * @author Sean A. Irvine
+ */
+public class A060916 extends A000040 {
+
+  private char mN = '0';
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z p = super.next();
+      final String s = p.toString();
+      int pos = s.indexOf(mN);
+      if (pos >= 0) {
+        while (pos >= 0) {
+          mN = mN == '9' ? '0' : (char) (mN + 1);
+          pos = s.indexOf(mN, pos + 1);
+        }
+        return p;
+      }
+    }
+  }
+}
+
+#!queue	A060965	0	->	0	A000040	--------------------------------
+package irvine.oeis.a060;
+
+import irvine.math.LongUtils;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A060965 For p=prime(n), a(n) = number of points (x,y) on the elliptic curve x^3 + y^3 = 1 (mod p), including the point at infinity.
+ * @author Sean A. Irvine
+ */
+public class A060965 extends A000040 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    long cnt = 1; // pt at infinity
+    final long p = super.next().longValueExact();
+    for (long x = 0; x < p; ++x) {
+      final long xm = LongUtils.modPow(x, 3, p);
+      for (long y = 0; y <= x; ++y) {
+        final long ym = LongUtils.modPow(y, 3, p);
+        if ((xm + ym) % p == 1) {
+          cnt += y == x ? 1 : 2;
+        }
+      }
+    }
+    return Z.valueOf(cnt);
+  }
+}
+
+#!queue	A061025	0	->	2	A000040	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A061025 a(n) = prime(n)! * prime(n+1)!.
+ * @author Sean A. Irvine
+ */
+public class A061025 extends A000040 {
+
+  private Z mF = super.next(); // 2
+  private long mM = 3;
+
+  {
+    setOffset(2);
+  }
+
+  @Override
+  public Z next() {
+    final Z t = mF;
+    final long p = super.next().longValueExact();
+    while (mM <= p) {
+      mF = mF.multiply(mM);
+      ++mM;
+    }
+    return t.multiply(mF);
+  }
+}
+#!queue	A061067	0	->	0	A000040	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A061067 m-th prime prime(m) is included iff prime(m) + m is also prime.
+ * @author Sean A. Irvine
+ */
+public class A061067 extends A000040 {
+
+  private long mN = 0;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z p = super.next();
+      if (mPrime.isPrime(p.add(++mN))) {
+        return p;
+      }
+    }
+  }
+}
+#!queue	A061143	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.ContinuedFractionUtils;
+import irvine.math.q.Q;
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A061143 a(1) = 1; a(n) = sum of terms in the continued fraction for the square of the continued fraction [a(1); a(2), a(3), a(4),..., a(n-1)].
+ * @author Sean A. Irvine
+ */
+public class A061143 extends MemorySequence {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  protected Z computeNext() {
+    final int n = size();
+    if (n <= 1) {
+      return Z.ONE;
+    }
+    Q d = new Q(a(n - 1));
+    for (int k = n - 2; k >= 0; --k) {
+      d = d.reciprocal().add(a(k));
+    }
+    d = d.square();
+    return ContinuedFractionUtils.continuedFractionSum(d);
+  }
+}
+#!queue	A061192	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A061192 a(1) = 1; a(n+1) = a(1) +(a(2) +(a(3) +...(a(n-1) +a(n)^2)^2...)^2)^2.
+ * @author Sean A. Irvine
+ */
+public class A061192 extends MemorySequence {
+
+  {
+    setOffset(1);
+    add(null);
+  }
+
+  @Override
+  protected Z computeNext() {
+    final int n = size();
+    if (n == 1) {
+      return Z.ONE;
+    }
+    Z t = Z.ZERO;
+    for (int k = n - 1; k > 1; --k) {
+      t = t.add(a(k)).square();
+    }
+    return t.add(1);
+  }
+}
+
+#!queue	A061291	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A061291 a(1) = 1; a(n+1) = a(1) + a(2)*(a(2) + a(3)*(a(3) +...+a(n-1)*(a(n-1) + a(n))...)).
+ * @author Sean A. Irvine
+ */
+public class A061291 extends MemorySequence {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  protected Z computeNext() {
+    final int n = size();
+    if (n == 0) {
+      return Z.ONE;
+    }
+    Z t = a(n - 1);
+    for (int k = n - 2; k >= 0; --k) {
+      t = t.add(a(k)).multiply(a(k));
+    }
+    return t;
+  }
+}
+#!queue	A061346	0	->	1	A061345	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.z.Z;
+
+/**
+ * A061346 Odd numbers that are neither primes nor prime powers.
+ * @author Sean A. Irvine
+ */
+public class A061346 extends A061345 {
+
+  private Z mA = super.next();
+  private Z mN = Z.NEG_ONE;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      mN = mN.add(2);
+      if (mN.equals(mA)) {
+        mA = super.next();
+      } else {
+        return mN;
+      }
+    }
+  }
+}
+
+#!queue	A061351	0	->	0	A001359	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001359;
+
+/**
+ * A061351 Between p and the next prime either there are no numbers or there is a single squarefree number.
+ * @author Sean A. Irvine
+ */
+public class A061351 extends A001359 {
+
+  private boolean mFirst = true;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    if (mFirst) {
+      mFirst = false;
+      return Z.TWO;
+    }
+    while (true) {
+      final Z p = super.next();
+      if (Jaguar.factor(p.add(1)).isSquareFree()) {
+        return p;
+      }
+    }
+  }
+}
+
+#!queue	A061373	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.prime.Fast;
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A061373 "Natural" logarithm, defined inductively by a(1)=1, a(p) = 1 + a(p-1) if p is prime and a(n*m) = a(n) + a(m) if n, m&gt;1.
+ * @author Sean A. Irvine
+ */
+public class A061373 extends MemorySequence {
+
+  private final Fast mPrime = new Fast();
+
+  {
+    setOffset(1);
+    add(null);
+  }
+
+  @Override
+  protected Z computeNext() {
+    final int n = size();
+    if (n == 1) {
+      return Z.ONE;
+    }
+    if (mPrime.isPrime(n)) {
+      return a(n - 1).add(1);
+    }
+    for (int k = 2; true; ++k) {
+      if (n % k == 0) {
+        return a(k).add(a(n / k));
+      }
+    }
+  }
+}
+
+#!queue	A061456	0	->	1	A060032	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.z.Z;
+import irvine.oeis.a060.A060032;
+
+/**
+ * A061456 Binary representation of a(n) corresponds to "ana"-sequence.
+ * @author Sean A. Irvine
+ */
+public class A061456 extends A060032 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    final String t = super.next().toString();
+    Z r = Z.ZERO;
+    for (int k = 0; k < t.length(); ++k) {
+      r = r.multiply2();
+      if (t.charAt(k) == '1') {
+        r = r.add(1);
+      }
+    }
+    return r;
+  }
+}
+
+#!queue	A061466	0	->	0	A000040	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A061466 Product of primes prime(3*n+1), prime(3*n+2), prime(3*n+3).
+ * @author Sean A. Irvine
+ */
+public class A061466 extends A000040 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().multiply(super.next()).multiply(super.next());
+  }
+}
+
+#!queue	A061482	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.LongUtils;
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A061482 a(1) = 1, a(2) = 2, a(n) = sum of products of previous terms taking n-2 at a time.
+ * @author Sean A. Irvine
+ */
+public class A061482 extends MemorySequence {
+
+  {
+    setOffset(1);
+  }
+
+  protected Z computeNext() {
+    final int n = size();
+    if (n < 2) {
+      return n == 0 ? Z.ONE : Z.TWO;
+    }
+    Z sum = Z.ZERO;
+    final long lim = 1L << n;
+    for (long s = (1L << (n - 1)) - 1; s < lim; s = LongUtils.swizzle(s)) {
+      long t = s;
+      Z prod = Z.ONE;
+      int k = 0;
+      while (t != 0) {
+        if ((t & 1) == 1) {
+          prod = prod.multiply(a(k));
+        }
+        ++k;
+        t >>>= 1;
+      }
+      sum = sum.add(prod);
+    }
+    return sum;
+  }
+}
+
+#!queue	A061701	0	->	0	A061680	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.math.z.Z;
+import irvine.util.array.DynamicLongArray;
+
+/**
+ * A061701 Smallest number m such that GCD of d(m^2) and d(m) is 2n+1 where d(m) is the number of divisors of m.
+ * @author Sean A. Irvine
+ */
+public class A061701 extends A061680 {
+
+  // This is not good enough to get more than a few terms
+
+  private final DynamicLongArray mFirst = new DynamicLongArray();
+  private int mN = -1;
+  private long mM = 0;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    while (mFirst.get(mN) == 0) {
+      ++mM;
+      final Z g = super.next();
+      if (g.isOdd()) {
+        final int h = g.divide2().intValueExact();
+        if (mFirst.get(h) == 0) {
+          mFirst.set(h, mM);
+        }
+      }
+    }
+    return Z.valueOf(mFirst.get(mN));
+  }
+}
+
+#!queue	A061775	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.factor.Jaguar;
+import irvine.factor.prime.Fast;
+import irvine.factor.util.FactorSequence;
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+import irvine.oeis.PrependSequence;
+import irvine.oeis.a000.A000720;
+
+/**
+ * A061775 Number of nodes in rooted tree with Matula-Goebel number n.
+ * @author Sean A. Irvine
+ */
+public class A061775 extends MemorySequence {
+
+  private final Fast mPrime = new Fast();
+  private final MemorySequence mPrimePi = MemorySequence.cachedSequence(new PrependSequence(new A000720(), 0));
+
+  {
+    setOffset(1);
+    add(null); // 0th unused
+  }
+
+  @Override
+  protected Z computeNext() {
+    final int n = size();
+    if (n == 1) {
+      return Z.ONE;
+    }
+    if (mPrime.isPrime(n)) {
+      return a(mPrimePi.a(n).intValueExact()).add(1);
+    }
+    final FactorSequence fs = Jaguar.factor(n);
+    Z sum = Z.ONE;
+    for (final Z p : fs.toZArray()) {
+      sum = sum.add(a(p.intValueExact()).subtract(1).multiply(fs.getExponent(p)));
+    }
+    return sum;
+  }
+}
+#!queue	A061846	0	->	3	A065091	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Euler;
+import irvine.math.z.Z;
+import irvine.oeis.a065.A065091;
+
+/**
+ * A061846 Number of nonisomorphic circulant self-complementary undirected p^2-graphs, indexed by odd primes p.
+ * @author Sean A. Irvine
+ */
+public class A061846 extends A065091 {
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    final int p = super.next().intValueExact();
+    Z sum1 = Z.ZERO;
+    Z sum2 = Z.ZERO;
+    final int s = (p - 1) / 2;
+    for (final Z rr : Jaguar.factor(s).divisors()) {
+      if (rr.isEven()) {
+        final int r = rr.intValue();
+        final int q = s / r;
+        final Z phi = Z.valueOf(Euler.phiAsLong(r));
+        sum1 = sum1.add(phi.multiply(Z.ONE.shiftLeft((p + 1) * q).subtract(Z.ONE.shiftLeft(2 * q))));
+        sum2 = sum2.add(phi.shiftLeft(q));
+      }
+    }
+    sum1 = sum1.divide(p).divide(s);
+    sum2 = sum2.divide(s).square();
+    return sum1.add(sum2);
+  }
+}
+#!queue	A061847	0	->	3	A065091	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Euler;
+import irvine.math.z.Z;
+import irvine.oeis.a065.A065091;
+
+/**
+ * A061847 Circulant self-complementary undirected p^2-graphs up to rotations only, indexed by odd primes p.
+ * @author Sean A. Irvine
+ */
+public class A061847 extends A065091 {
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    final int p = super.next().intValueExact();
+    Z sum1 = Z.ZERO;
+    Z sum2 = Z.ZERO;
+    final int s = (p - 1) / 2;
+    for (final Z rr : Jaguar.factor(s).divisors()) {
+      if (rr.isEven()) {
+        final int r = rr.intValue();
+        final int q = s / r;
+        final Z phi = Z.valueOf(Euler.phiAsLong(r));
+        sum1 = sum1.add(phi.shiftLeft((p + 1) * q));
+        sum2 = sum2.add(phi.shiftLeft(2 * q));
+      }
+    }
+    sum1 = sum1.divide(p - 1);
+    return sum1.add(sum2).multiply2().divide(p);
+  }
+}
+#!queue	A061848	0	->	3	A065091	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Euler;
+import irvine.math.z.Z;
+import irvine.oeis.a065.A065091;
+
+/**
+ * A061848 An intermediate sequence for nonisomorphic circulant self-complementary undirected p^2-graphs, indexed by odd primes p.
+ * @author Sean A. Irvine
+ */
+public class A061848 extends A065091 {
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    final int p = super.next().intValueExact();
+    Z sum = Z.ZERO;
+    final int s = (p - 1) / 2;
+    for (final Z rr : Jaguar.factor(s).divisors()) {
+      if (rr.isEven()) {
+        final int r = rr.intValue();
+        sum = sum.add(Z.valueOf(Euler.phiAsLong(r)).shiftLeft(2 * s / r));
+      }
+    }
+    return sum.divide(s);
+  }
+}
+#!queue	A061849	0	->	3	A065091	--------------------------------
+package irvine.oeis.a061;
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Euler;
+import irvine.math.z.Z;
+import irvine.oeis.a065.A065091;
+
+/**
+ * A061849 Non-Cayley-isomorphic circulant self-complementary undirected p^2-graphs, indexed by odd primes p.
+ * @author Sean A. Irvine
+ */
+public class A061849 extends A065091 {
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    final int p = super.next().intValueExact();
+    final int s = (p - 1) / 2;
+    Z sum = Z.ZERO;
+    for (final Z rr : Jaguar.factor(s).divisors()) {
+      if (rr.isEven()) {
+        final int r = rr.intValue();
+        sum = sum.add(Z.valueOf(Euler.phiAsLong(r)).shiftLeft(s / r));
+      }
+    }
+    return sum.divide(s).square();
+  }
+}
+#!queue	A062065	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a062;
+
+import java.util.TreeSet;
+
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A062065 a(1) = 1; for n &gt;= 1, a(n+1) is smallest number such that the sums of any one, two or three of a(1), ..., a(n) are distinct (repetitions not allowed).
+ * @author Sean A. Irvine
+ */
+public class A062065 extends MemorySequence {
+
+  private final TreeSet<Z> mSums = new TreeSet<>();
+
+  {
+    setOffset(1);
+  }
+
+  private boolean isOk(final Z n) {
+    if (mSums.contains(n)) {
+      return false;
+    }
+    for (final Z a : this) {
+      final Z an = a.add(n);
+      if (mSums.contains(an)) {
+        return false;
+      }
+      for (final Z b : this) {
+        if (b.equals(a)) {
+          break;
+        }
+        if (mSums.contains(an.add(b))) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  @Override
+  protected Z computeNext() {
+    if (size() == 0) {
+      mSums.add(Z.ONE);
+      return Z.ONE;
+    }
+    Z n = a(size() - 1);
+    while (true) {
+      n = n.add(1);
+      if (isOk(n)) {
+        for (final Z a : this) {
+          final Z an = a.add(n);
+          for (final Z b : this) {
+            if (b.equals(a)) {
+              break;
+            }
+            mSums.add(an.add(b));
+          }
+          mSums.add(an); // a + n
+        }
+        mSums.add(n);
+        return n;
+      }
+    }
+  }
+}
+#!queue	A062959	0	->	1	A053986	--------------------------------
+package irvine.oeis.a062;
+// manually sigma0 at 2023-02-28 13:16
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a053.A053986;
+
+/**
+ * A062959 Number of divisors of n^(n!) (A053986).
+ * @author Georg Fischer
+ */
+public class A062959 extends A053986 {
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return Jaguar.factor(super.next()).sigma0();
+  }
+}
+#!queue	A063375	0	->	1	A000045	--------------------------------
+package irvine.oeis.a063;
+// Generated by gen_seq4.pl sigman0/sigma0s at 2023-02-28 16:47
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A063375 Number of divisors of Fibonacci(n).
+ * @author Georg Fischer
+ */
+public class A063375 extends A000045 {
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return Jaguar.factor(super.next()).sigma0();
+  }
+}
+#!queue	A063477	0	->	1	A000045	--------------------------------
+package irvine.oeis.a063;
+// Generated by gen_seq4.pl sigman1/sigma1s at 2023-02-28 23:52
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A063477 a(n) is the sum of the divisors of Fibonacci(n) (A000045).
+ * @author Georg Fischer
+ */
+public class A063477 extends A000045 {
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return Jaguar.factor(super.next()).sigma();
+  }
+}
+#!queue	A063751	0	->	0	A002477	--------------------------------
+package irvine.oeis.a063;
+// Generated by gen_seq4.pl knest/eulphi at 2023-03-01 20:54
+
+import irvine.math.z.Euler;
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002477;
+
+/**
+ * A063751 a(n) = phi(A002477(n)).
+ * @author Georg Fischer
+ */
+public class A063751 extends A002477 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return Euler.phi(super.next());
+  }
+}
+#!queue	A064334	0	->	0	BaseTriangle	--------------------------------
+package irvine.oeis.a064;
+
+import irvine.math.z.Binomial;
+import irvine.math.z.Integers;
+import irvine.math.z.Z;
+import irvine.oeis.triangle.BaseTriangle;
+
+/**
+ * A064334 Triangle composed of generalized Catalan numbers.
+ * T(n, m) = Sum_{k=0..n-m-1} (n-m-k)*binomial(n-m-1+k, k)*(-m)^k/(n-m), with T(n, 0) = T(n,n)=1.
+ * @author Georg Fischer
+ */
+public class A064334 extends BaseTriangle {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z triangleElement(final int n, final int k) {
+    return n == k || k == 0 ? Z.ONE : Integers.SINGLETON.sum(0, n - k - 1,
+      j -> Binomial.binomial(n - k - 1 + j, j).multiply(n - k - j).multiply(Z.valueOf(-k).pow(j)).divide(n - k));
+  }
+}
+#!queue	A067043	0	->	0	RecordPositionSubsequence	--------------------------------
+package irvine.oeis.a067;
+// Generated by gen_seq4.pl recordpos at 2021-06-29
+
+import irvine.oeis.RecordPositionSubsequence;
+import irvine.oeis.a048.A048377;
+
+/**
+ * A067043 Nondecreasing sums of digits: a(0) = 0 and for n&gt;0: a(n) = Min{m&gt;n|SumOfDigits(m)&gt;= SumOfDigits(a(n-1))}, where SumOfDigits = A007953.
+ * @author Georg Fischer
+ */
+public class A067043 extends RecordPositionSubsequence {
+
+  /** Construct the sequence. */
+  public A067043() {
+    super(0, new A048377());
+  }
+}
+
+#!queue	A067418	0	->	0	A213500	--------------------------------
+package irvine.oeis.a067;
+// Generated by gen_seq4.pl A213500/parm3 at 2022-05-01
+
+import irvine.oeis.a000.A000045;
+import irvine.oeis.a213.A213500;
+
+/**
+ * A067418 Triangle A067330 with rows read backwards.
+ * @author Georg Fischer
+ */
+public class A067418 extends A213500 {
+
+  /** Construct the sequence. */
+  public A067418() {
+    super(new A000045(), new A000045());
+    setOffset(0);
+  }
+}
+#!queue	A070063	0	->	-22	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a070;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A070063 Decimal expansion of the Boltzmann constant k in the 2019 SI system in units J/K.
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A070063 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A070063() {
+    super(-22, PhysicsConstants.BOLTZMANN_CR.multiply(Z.TEN.pow(23)));
+  }
+}
+#!queue	A071434	0	->	1	A002186	--------------------------------
+package irvine.oeis.a071;
+
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002186;
+
+/**
+ * A071434 Sprague-Grundy values for octal game .1377.
+ * @author Georg Fischer
+ */
+public class A071434 extends A002186 {
+
+  private int mN = 0;
+  private Z mA;
+
+  /** Construct the sequence. */
+  public A071434() {
+    setOffset(1);
+    mA = super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    if ((mN & 1) == 1) {
+      mA = super.next();
+    }
+    return mA;
+  }
+}
+#!queue	A073060	0	->	0	UpperLeftTriangle	--------------------------------
+package irvine.oeis.a073;
+
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+import irvine.oeis.Sequence;
+import irvine.oeis.a006.A006005;
+import irvine.oeis.triangle.UpperLeftTriangle;
+
+/**
+ * A073060 Multiplication table for 1 and odd primes, read by antidiagonals.
+ * @author Georg Fischer
+ */
+public class A073060 extends UpperLeftTriangle {
+
+  protected MemorySequence mSeq;
+
+  /** Construct the sequence. */
+  public A073060() {
+    this(0, new A006005(), 0);
+  }
+
+  /**
+   * Generic constructor with parameter
+   * @param seq underlying Sequence
+   */
+  public A073060(final Sequence seq) {
+    this(0, seq, 0);
+  }
+
+  /**
+   * Generic constructor with parameters.
+   * @param seq underlying Sequence
+   * @param skip number of terms of <code>seq</code> to be skipped
+   */
+  public A073060(final Sequence seq, final int skip) {
+    this(0, seq, skip);
+  }
+
+  /**
+   * Generic constructor with parameters.
+   * @param offset first index
+   * @param seq underlying Sequence
+   * @param skip number of terms of <code>seq</code> to be skipped
+   */
+  public A073060(final int offset, final Sequence seq, final int skip) {
+    super(offset, skip, skip, -1);
+    mSeq = MemorySequence.cachedSequence(seq);
+  }
+
+  @Override
+  public Z matrixElement(final int n, final int k) {
+    return mSeq.a(n).multiply(mSeq.a(k));
+  }
+}
+#!queue	A075197	0	->	0	A075196	--------------------------------
+package irvine.oeis.a075;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A075197 Number of partitions of n balls of n colors.
+ * @author Georg Fischer
+ */
+public class A075197 extends A075196 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN);
+  }
+}
+
+#!queue	A076157	0	->	1	FoldedContinuedFraction	--------------------------------
+package irvine.oeis.a076;
+
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Z;
+import irvine.oeis.cons.FoldedContinuedFraction;
+
+/**
+ * A076157 Continued fraction expansion for c=sum_{k&gt;=0} 1/2^(k!).
+ * a(3*2^n) = 2^((n+1)*((n+2)!)) - 1
+ * @author Georg Fischer
+ */
+public class A076157 extends FoldedContinuedFraction {
+
+  /** Construct the sequence */
+  public A076157() {
+    super(1, k -> Z.TWO.pow(MemoryFactorial.SINGLETON.factorial(k).multiply(k - 1)), new long[] {1, 3, 1, 3, 4});
+    setStart(2);
+  }
+}
+#!queue	A076278	0	->	1	A033995	--------------------------------
+package irvine.oeis.a076;
+// Generated by gen_seq4.pl dersimpln at 2021-08-25 22:45
+
+import irvine.math.z.Z;
+import irvine.oeis.a033.A033995;
+
+/**
+ * A076278 Number of 2-chromatic (i.e., chromatic number equals 2) simple graphs on n nodes.
+ * @author Georg Fischer
+ */
+public class A076278 extends A033995 {
+
+  /** Construct the sequence. */
+  public A076278() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(1);
+  }
+}
+#!queue	A077418	0	->	1	A000045	--------------------------------
+package irvine.oeis.a077;
+// manually sigman0/sigma0 at 2023-02-28 21:57
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A077418 Number of divisors of Fibonacci(n+2)-1.
+ * @author Georg Fischer
+ */
+public class A077418 extends A000045 {
+
+  {
+    setOffset(1);
+    super.next();
+    super.next();
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return Jaguar.factor(super.next().subtract(1)).sigma0();
+  }
+}
+#!queue	A080108	0	->	1	ExponentialGeneratingFunction	--------------------------------
+package irvine.oeis.a080;
+// generated by patch_offset.pl at 2022-08-27 22:54
+
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.oeis.ExponentialGeneratingFunction;
+
+/**
+ * A080108 a(n) = Sum_{k=1..n} k^(n-k)*binomial(n-1,k-1).
+ * E.g.f.: exp(x*(1+exp(x)))
+ * @author Georg Fischer
+ */
+public class A080108 extends ExponentialGeneratingFunction {
+
+  /** Construct the sequence. */
+  public A080108() {
+    super(1);
+  }
+
+  @Override
+  public Polynomial<Q> compute(final int n) {
+    return RING.exp(RING.multiply(RING.x(), RING.add(RING.one(), RING.exp(RING.x(), n)), n), n);
+  }
+}
+#!queue	A081478	0	->	1	A007018	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007018;
+
+/**
+ * A081478 Consider the mapping f(a/b) = (a - b)/(ab). Taking a = 2 and b = 1 to start with and carrying out this mapping repeatedly on each new (reduced) rational number gives the following sequence 2/1,1/2,-1/2,-3/-2,-1/6,... Sequence contains the denominators.
+ * Taking a = 2 and b = 1 to start with and carrying out this mapping repeatedly on each new (reduced) rational number
+ * gives the following sequence 2/1, 1/2,-1/2,-3/-2,-1/6,... Sequence contains the denominators.
+ * @author Georg Fischer
+ */
+public class A081478 extends A007018 {
+
+  private int mN = 0;
+  private Z mA;
+
+  /** Construct the sequence. */
+  public A081478() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    // a(2n-1) = A007018(n-1), a(2n) = -A007018(n-1) for n >= 2
+    ++mN;
+    if (mN <= 2) {
+      return Z.valueOf(mN);
+    }
+    if ((mN & 1) == 1) {
+      mA = super.next();
+      return mA;
+    }
+    return mA.negate();
+  }
+}
+#!queue	A081799	0	->	-11	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.cr.CR;
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A081799 Decimal expansion of the electric permittivity of vacuum in SI units as defined before 20 May 2019.
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A081799 extends DecimalExpansionSequence {
+
+  private static final CR LIGHT_SPEED_SQUARED = CR.valueOf(Z.valueOf(PhysicsConstants.SPEED_OF_LIGHT).square());
+
+  /** Construct the sequence. */
+  public A081799() {
+    super(-11, CR.TAU.multiply(CR.TWO).multiply(LIGHT_SPEED_SQUARED).inverse());
+  }
+}
+#!queue	A081823	0	->	-18	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A081823 Decimal expansion of the elementary charge e in coulombs (C).
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A081823 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A081823() {
+    super(-18, PhysicsConstants.ELEMENTARY_CHARGE_CR.multiply(Z.TEN.pow(18)));
+  }
+}
+#!queue	A081824	0	->	-4	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.cr.CR;
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A081824 Decimal expansion of conductance quantum in units of S.
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A081824 extends DecimalExpansionSequence {
+
+  /** Conductance quantum G_0 in S. */
+  private static final CR CONDUCTANCE_QUANTUM = PhysicsConstants.ELEMENTARY_CHARGE_CR.multiply(PhysicsConstants.ELEMENTARY_CHARGE_CR).multiply(CR.TWO).divide(PhysicsConstants.PLANCK_CONSTANT_CR).multiply(10000);
+
+  /** Construct the sequence. */
+  public A081824() {
+    super(-4, CONDUCTANCE_QUANTUM);
+  }
+}
+#!queue	A082775	0	->	2	A346426	--------------------------------
+package irvine.oeis.a082;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a346.A346426;
+
+/**
+ * A082775 Convolution of natural numbers &gt;= 2 and the partition numbers (A000041).
+ * @author Georg Fischer
+ */
+public class A082775 extends A346426 {
+
+  private int mN = -1;
+
+  {
+    setOffset(2);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 2);
+  }
+}
+
+#!queue	A083069	0	->	0	A083064	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083069 Main diagonal of number array A083064.
+ * @author Georg Fischer
+ */
+public class A083069 extends A083064 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN);
+  }
+}
+
+#!queue	A083070	0	->	1	A083064	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083070 First super-diagonal of number array A083064.
+ * @author Georg Fischer
+ */
+public class A083070 extends A083064 {
+
+  private int mN = -1;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN + 1, mN);
+  }
+}
+
+#!queue	A083071	0	->	0	A083064	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083071 First subdiagonal of number array A083064.
+ * @author Georg Fischer
+ */
+public class A083071 extends A083064 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN + 1);
+  }
+}
+
+#!queue	A083072	0	->	0	A083064	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083072 A subdiagonal of number array A083064.
+ * @author Georg Fischer
+ */
+public class A083072 extends A083064 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN + 2);
+  }
+}
+
+#!queue	A083073	0	->	0	A083064	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083073 A subdiagonal of number array A083064.
+ * @author Georg Fischer
+ */
+public class A083073 extends A083064 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN + 3);
+  }
+}
+
+#!queue	A083080	0	->	0	A083075	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083080 Main diagonal of number array A083075.
+ * @author Georg Fischer
+ */
+public class A083080 extends A083075 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN);
+  }
+}
+
+#!queue	A083081	0	->	1	A083075	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083081 First super-diagonal of number array A083075.
+ * @author Georg Fischer
+ */
+public class A083081 extends A083075 {
+
+  private int mN = -1;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN + 1, mN);
+  }
+}
+
+#!queue	A083082	0	->	0	A083075	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083082 First subdiagonal of number array A083075.
+ * @author Georg Fischer
+ */
+public class A083082 extends A083075 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN + 1);
+  }
+}
+
+#!queue	A083083	0	->	0	A083075	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083083 A diagonal of number array A083075.
+ * @author Georg Fischer
+ */
+public class A083083 extends A083075 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN + 2);
+  }
+}
+
+#!queue	A083084	0	->	0	A083075	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl A083064/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A083084 A diagonal of number array A083075.
+ * @author Georg Fischer
+ */
+public class A083084 extends A083075 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN + 3);
+  }
+}
+
+#!queue	A083187	0	->	1	CharacteristicFunction	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl charfun at 2020-08-28 13:59
+
+import irvine.oeis.CharacteristicFunction;
+import irvine.oeis.a002.A002379;
+
+/**
+ * A083187 a(n) = floor(log_3/2(n+1)) - floor(log_3/2(n)).
+ * @author Georg Fischer
+ */
+public class A083187 extends CharacteristicFunction {
+
+  /** Construct the sequence. */
+  public A083187() {
+    super(1, new A002379());
+    next();
+  }
+}
+#!queue	A083385	0	->	1	A261781	--------------------------------
+package irvine.oeis.a083;
+// manually 2022-09-03
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A083385 Total height of all elements in all preferential arrangements of n elements, where elements at the bottom level have height 1.
+ * a(n) = A261781(n+1,n)/2.
+ * @author Georg Fischer
+ */
+public class A083385 extends A261781 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN + 1, mN).divide2();
+  }
+}
+
+#!queue	A083563	0	->	0	A319539	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a319.A319539;
+
+/**
+ * A083563 Number of binary rooted trees (every node has out-degree 0 or 2) with n labeled leaves (2n-1 nodes in all) and at most 2 distinct labels. Also the number of expressions in at most two variables constructible with n-1 instances of a single commutative and nonassociative binary operator.
+ * @author Georg Fischer
+ */
+public class A083563 extends A319539 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 2);
+  }
+}
+
+#!queue	A086677	0	->	2	ExponentialGeneratingFunction	--------------------------------
+package irvine.oeis.a086;
+// generated by patch_offset.pl at 2022-08-27 22:54
+
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.oeis.ExponentialGeneratingFunction;
+
+/**
+ * A086677 Number of Steiner topologies on n points.
+ * E.g.f.: 4*(x-3)/(x+1)^4 - (-13+22*x+3*x^2)/((-x^2-4*x+1)^(1/2)*(x+1)^4)
+ * @author Georg Fischer
+ */
+public class A086677 extends ExponentialGeneratingFunction {
+
+  /** Construct the sequence. */
+  public A086677() {
+    super(2);
+  }
+
+  @Override
+  public Polynomial<Q> compute(final int n) {
+    return RING.subtract(RING.series(RING.multiply(RING.monomial(Q.FOUR, 0), RING.subtract(RING.x(), RING.monomial(Q.THREE, 0)), n), RING.pow(RING.add(RING.x(), RING.one()), 4, n), n), RING.series(RING.add(RING.add(RING.negate(RING.monomial(new Q(13), 0)), RING.monomial(new Q(22), 1)), RING.monomial(Q.THREE, 2)), RING.multiply(RING.exp(RING.multiply(RING.log(RING.add(RING.subtract(RING.negate(RING.pow(RING.x(), 2, n)), RING.monomial(Q.FOUR, 1)), RING.one()), n), RING.series(RING.one(), RING.monomial(Q.TWO, 0), n), n), n), RING.pow(RING.add(RING.x(), RING.one()), 4, n), n), n));
+  }
+}
+#!queue	A087114	0	->	1	A008324	--------------------------------
+package irvine.oeis.a087;
+
+import irvine.math.z.Z;
+import irvine.oeis.a008.A008324;
+
+/**
+ * A087114 Number of regular bipartite simple graphs on n nodes.
+ * @author Georg Fischer
+ */
+public class A087114 extends A008324 {
+
+  private int mN = 0;
+
+  /** Construct the sequence. */
+  public A087114() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    //  * a(2*n + 1) = 1, a(2*n) = A008324(n).
+    ++mN;
+    return ((mN & 1) == 1) ? Z.ONE : super.next();
+  }
+}
+#!queue	A089156	0	->	0	A069722	--------------------------------
+package irvine.oeis.a089;
+// Generated by gen_seq4.pl dersimple at 2021-08-21
+
+import irvine.math.z.Z;
+import irvine.oeis.a069.A069722;
+
+/**
+ * A089156 a(n) = A069722(n+1)^2.
+ * @author Georg Fischer
+ */
+public class A089156 extends A069722 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().square();
+  }
+}
+#!queue	A090439	0	->	1	HypergeometricSequence	--------------------------------
+package irvine.oeis.a090;
+// manually hygeom at 2022-08-04 18:01
+
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Z;
+import irvine.oeis.HypergeometricSequence;
+
+/**
+ * A090439 Alternating row sums of array A090438 ((4,2)-Stirling2).
+ * @author Georg Fischer
+ */
+public class A090439 extends HypergeometricSequence {
+
+  private int mN = -1;
+
+  /** Construct the sequence. */
+  public A090439() {
+    super(1, 1, 1, "[[0,-2],[3],[1]]"); // "assuming offset 0"
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.nextQ().multiply(MemoryFactorial.SINGLETON.factorial(2 * mN + 2)).divide(2).num();
+  }
+}
+#!queue	A092187	0	->	2	A092186	--------------------------------
+package irvine.oeis.a092;
+// manually divmul at 2021-08-20
+
+import irvine.math.z.Z;
+
+/**
+ * A092187 A092186(n)/2.
+ * @author Georg Fischer
+ */
+public class A092187 extends A092186 {
+
+  /** Construct the sequence. */
+  public A092187() {
+    setOffset(2);
+    super.next();
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().divide2();
+  }
+}
+#!queue	A096936	0	->	1	A033716	--------------------------------
+package irvine.oeis.a096;
+// Generated by gen_seq4.pl dersimpln at 2021-08-25 22:45
+
+import irvine.math.z.Z;
+import irvine.oeis.a033.A033716;
+
+/**
+ * A096936 Half of number of integer solutions to the equation x^2 + 3y^2 = n.
+ * @author Georg Fischer
+ */
+public class A096936 extends A033716 {
+
+  /** Construct the sequence. */
+  public A096936() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().divide2();
+  }
+}
+#!queue	A097348	0	->	0	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a097;
+// Generated by gen_seq4.pl decexpr at 2021-07-16 22:36
+
+import irvine.math.cr.CR;
+import irvine.math.cr.ComputableReals;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A097348 Decimal expansion of arccsch(2)/log(10).
+ * Formula: arccsch(2)/log(10)
+ * @author Georg Fischer
+ */
+public class A097348 extends DecimalExpansionSequence {
+
+  private static final ComputableReals REALS = ComputableReals.SINGLETON;
+
+  /** Construct the sequence. */
+  public A097348() {
+    super(0, REALS.acsch(CR.TWO).divide(CR.TEN.log()));
+  }
+}
+#!queue	A099059	0	->	0	A000594	--------------------------------
+package irvine.oeis.a099;
+// Generated by gen_seq4.pl bisect at 2021-05-28 14:26
+// DO NOT EDIT here!
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000594;
+
+
+/**
+ * A099059 The odd bisection of A000594.
+ * @author Georg Fischer
+ */
+public class A099059 extends A000594 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z result = super.next();
+    super.next();
+    return result;
+  }
+}
+#!queue	A099395	0	->	1	CharacteristicFunction	--------------------------------
+package irvine.oeis.a099;
+// Generated by gen_seq4.pl charfun at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.CharacteristicFunction;
+import irvine.oeis.a007.A007283;
+
+/**
+ * A099395 One if odd part of n is 3, zero otherwise.
+ * @author Georg Fischer
+ */
+public class A099395 extends CharacteristicFunction {
+
+  /** Construct the sequence. */
+  public A099395() {
+    super(1, new A007283());
+    next();
+  }
+}
+#!queue	A101297	0	->	0	A001622	--------------------------------
+package irvine.oeis.a101;
+// Generated by gen_seq4.pl bisect at 2021-07-05
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001622;
+
+
+/**
+ * A101297 Bisection of A001622 (decimal expansion of the golden ratio).
+ * @author Georg Fischer
+ */
+public class A101297 extends A001622 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z result = super.next();
+    super.next();
+    return result;
+  }
+}
+#!queue	A101298	0	->	0	A098801	--------------------------------
+package irvine.oeis.a101;
+// Generated by gen_seq4.pl bisect at 2021-07-05 22:21
+
+import irvine.math.z.Z;
+import irvine.oeis.a098.A098801;
+
+
+/**
+ * A101298 Bisection of A098801 (decimal expansion of Pi + 1/Pi).
+ * @author Georg Fischer
+ */
+public class A101298 extends A098801 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z result = super.next();
+    super.next();
+    return result;
+  }
+}
+#!queue	A102419	0	->	1	A060445	--------------------------------
+package irvine.oeis.a102;
+
+import irvine.math.z.Z;
+import irvine.oeis.a060.A060445;
+
+/**
+ * A102419 "Dropping time" in 3x+1 problem starting at n (number of steps to reach a lower number than starting value); a(1) = 0 by convention. Also called glide(n).
+ * a(1) = 0 by convention. Also called glide(n).
+ * @author Georg Fischer
+ */
+public class A102419 extends A060445 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    // a(2n) = 1; a(2n+1) = A060445(n).
+    ++mN;
+    return ((mN & 1) == 0) ? Z.ONE : super.next();
+  }
+}
+#!queue	A104344	0	->	1	A061062	--------------------------------
+package irvine.oeis.a104;
+// Generated by gen_seq4.pl dersimpln at 2021-08-21 22:23
+
+import irvine.math.z.Z;
+import irvine.oeis.a061.A061062;
+
+/**
+ * A104344 a(n) = Sum_{k=1..n} k!^2.
+ * @author Georg Fischer
+ */
+public class A104344 extends A061062 {
+
+  /** Construct the sequence. */
+  public A104344() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(1);
+  }
+}
+#!queue	A109447	0	->	1	A119900	--------------------------------
+package irvine.oeis.a109;
+// manually deris/essent at 2022-04-27 19:28
+
+import irvine.math.z.Z;
+import irvine.oeis.a119.A119900;
+
+/**
+ * A109447 Binomial coefficients C(n,k) with n-k odd, read by rows.
+ * @author Georg Fischer
+ */
+public class A109447 extends A119900 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z t = super.next();
+      if (!t.isZero()) {
+        return t;
+      }
+    }
+  }
+}
+#!queue	A111672	0	->	1	A144150	--------------------------------
+package irvine.oeis.a111;
+
+import irvine.math.z.Z;
+import irvine.oeis.a144.A144150;
+
+/**
+ * A111672 Array T(n,k) = A153277(n-1,k) = A144150(n,k-1) read by downwards antidiagonals.
+ * @author Georg Fischer
+ */
+public class A111672 extends A144150 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z matrixElement(final int n, final int k) {
+    return super.matrixElement(n + 1, k);
+  }
+}
+#!queue	A112539	0	->	1	A112865	--------------------------------
+package irvine.oeis.a112;
+
+import irvine.math.z.Z;
+
+/**
+ * A112539 Half-baked Thue-Morse: at successive steps the sequence or its bit-inverted form is appended to itself.
+ * @author Georg Fischer
+ */
+public class A112539 extends A112865 {
+
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    final Z result = super.next();
+    return result.equals(Z.ONE) ? result : Z.ZERO;
+  }
+}
+#!queue	A113474	0	->	1	A005187	--------------------------------
+package irvine.oeis.a113;
+
+import irvine.math.z.Z;
+import irvine.oeis.a005.A005187;
+
+/**
+ * A113474 a(n) = a(floor(n/2)) + floor(n/2) with a(1) = 1.
+ * @author Georg Fischer
+ */
+public class A113474 extends A005187 {
+
+  private int mN = 0;
+
+  /** Construct the sequence. */
+  public A113474() {
+    setOffset(1);
+    super.next(); // skip A005187(0)
+  }
+
+  @Override
+  public Z next() {
+    // a(n) = A005187(n) - n + 1
+    ++mN;
+    return super.next().add(1).subtract(mN);
+  }
+}
+#!queue	A117298	0	->	1	A002865	--------------------------------
+package irvine.oeis.a117;
+
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002865;
+
+/**
+ * A117298 Number of partitions of n with unique smallest part and unique largest part.
+ * @author Georg Fischer
+ */
+public class A117298 extends A002865 {
+
+  private int mN = 0;
+
+  /** Construct the sequence. */
+  public A117298() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    // a(2*n+1)= A002865(2*n+1)+1, a(2*n)= A002865(2*n).
+    ++mN;
+    return ((mN & 1) == 1) ? super.next().add(1) : super.next();
+  }
+}
+#!queue	A117826	0	->	1	A000142	--------------------------------
+package irvine.oeis.a117;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000142;
+
+/**
+ * A117826 First four terms of the sequence are doubled, then those numbers are tripled and then those numbers are quadrupled, etc.
+ * @author Georg Fischer
+ */
+public class A117826 extends A000142 {
+
+  private int mN = 0;
+  private Z mA;
+
+  /** Construct the sequence. */
+  public A117826() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    // a(4n-3) = A000142(n), a(4n-2)=2*A000142(n), a(4n-1)=3*A000142(n), a(4n)=4*A000142(n)
+    ++mN;
+    if ((mN & 3) == 1) {
+      mA = super.next();
+      return mA;
+    }
+    if ((mN & 3) == 2) {
+      return mA.multiply2();
+    }
+    if ((mN & 3) == 3) {
+      return mA.multiply(3);
+    }
+    return mA.multiply(4);
+  }
+}
+#!queue	A119907	0	->	0	A212551	--------------------------------
+package irvine.oeis.a119;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a212.A212551;
+
+/**
+ * A119907 Number of partitions of n such that if k is the largest part, then k-2 occurs as a part.
+ * @author Georg Fischer
+ */
+public class A119907 extends A212551 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 2);
+  }
+}
+
+#!queue	A121104	0	->	2	A000045	--------------------------------
+package irvine.oeis.a121;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a000.A000040;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A121104 a(n) = Fibonacci(n - 1) modulo the n-th prime number.
+ * @author Georg Fischer
+ */
+public class A121104 extends A000045 {
+
+  private int mN = 1;
+  private final Sequence mSeq = new A000040();
+
+  {
+    setOffset(2);
+    super.next();
+    mSeq.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.next().mod(mSeq.next());
+  }
+}
+#!queue	A121568	0	->	2	A000040	--------------------------------
+package irvine.oeis.a121;
+
+import irvine.math.z.Fibonacci;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A121568 Fibonacci[ (p - 1)/2 ], where p = Prime[n].
+ * @author Georg Fischer
+ */
+public class A121568 extends A000040 {
+
+  {
+    setOffset(2);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return Fibonacci.fibonacci((super.next().intValue() - 1) / 2);
+  }
+}
+#!queue	A121569	0	->	2	A000040	--------------------------------
+package irvine.oeis.a121;
+
+import irvine.math.z.Fibonacci;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000040;
+
+/**
+ * A121569 a(n) = Fibonacci((prime(n)+3)/2) - 1.
+ * @author Georg Fischer
+ */
+public class A121569 extends A000040 {
+
+  {
+    setOffset(2);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return Fibonacci.fibonacci((super.next().intValue() + 3) / 2).subtract(1);
+  }
+}
+#!queue	A127884	0	->	1	A000045	--------------------------------
+package irvine.oeis.a127;
+
+import irvine.math.z.Fibonacci;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A127884 a(n) = floor(Fibonacci(n)/n).
+ * @author Georg Fischer
+ */
+public class A127884 extends A000045 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return Fibonacci.fibonacci(mN).divide(mN);
+  }
+}
+#!queue	A128280	0	->	0	A055265	--------------------------------
+package irvine.oeis.a128;
+
+import irvine.math.z.Z;
+import irvine.oeis.a055.A055265;
+
+/**
+ * A128280 a(n) is the least number not occurring earlier such that a(n)+a(n-1) is prime, a(0) = 0.
+ * @author Georg Fischer
+ */
+public class A128280 extends A055265 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    // a(2n-1) = A055265(2n-1) + 1, a(2n) = A055265(2n) - 1, for all n >= 1.
+    ++mN;
+    if (mN == 0) {
+      return Z.ZERO;
+    }
+    return ((mN & 1) == 0) ? super.next().subtract(1) : super.next().add(1);
+  }
+}
+#!queue	A130660	0	->	0	A000517	--------------------------------
+package irvine.oeis.a130;
+// manually dersimple at 2021-08-25 19:44
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000517;
+
+/**
+ * A130660 1/16 the number of permutations of 0..n having exactly 4 maxima.
+ * @author Georg Fischer
+ */
+public class A130660 extends A000517 {
+
+  private int mN = 0;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return mN <= 6 ? Z.ZERO : super.next().divide(16);
+  }
+}
+#!queue	A130661	0	->	0	A179708	--------------------------------
+package irvine.oeis.a130;
+// Generated by gen_seq4.pl dersimple at 2021-08-25 19:44
+
+import irvine.math.z.Z;
+import irvine.oeis.a179.A179708;
+
+/**
+ * A130661 1/256 the number of permutations of 0..n having exactly 5 maxima.
+ * @author Georg Fischer
+ */
+public class A130661 extends A179708 {
+
+  private int mN = 0;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return mN <= 7 ? Z.ZERO : super.next().divide(256);
+  }
+}
+#!queue	A131577	0	->	0	A261781	--------------------------------
+package irvine.oeis.a131;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A131577 Zero followed by powers of 2 (cf. A000079).
+ * @author Georg Fischer
+ */
+public class A131577 extends A261781 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 1);
+  }
+}
+
+#!queue	A135416	0	->	1	MemorySequence	--------------------------------
+package irvine.oeis.a135;
+
+import irvine.math.z.Z;
+import irvine.oeis.MemorySequence;
+
+/**
+ * A135416 a(n) = A036987(n)*(n+1)/2.
+ * @author Georg Fischer
+ */
+public class A135416 extends MemorySequence {
+
+  protected int mN;
+  private final int mI;
+  private final int mJ;
+
+  /** Construct the sequence. */
+  public A135416() {
+    this(1, 5);
+    setOffset(1);
+  }
+
+  /**
+   * Generic constructor with parameters for function GS(i,j) of Guy Steele.
+   * @param i first parameter of GS
+   * @param j second parameter of GS
+   */
+  public A135416(final int i, final int j) {
+    super(0);
+    add(Z.ZERO);
+    mN = 0;
+    mI = i;
+    mJ = j;
+  }
+
+  @Override
+  public Z computeNext() {
+    ++mN;
+    if (mN == 1) {
+      return Z.ONE;
+    }
+    final int m = size();
+    final int n = m / 2;
+    switch (((m & 1) == 0) ? mI : mJ) {
+      case 1:
+        return Z.ZERO;
+      case 2:
+        return Z.ONE;
+      case 3:
+        return a(n);
+      case 4:
+        return a(n).add(1);
+      case 5:
+        return a(n).multiply2();
+      case 6:
+      default:
+        return a(n).multiply2().add(1);
+    }
+  }
+}
+#!queue	A135481	0	->	0	A135416	--------------------------------
+package irvine.oeis.a135;
+// manually A135416/parm3 at 2022-12-20 16:28
+
+import irvine.math.z.Z;
+
+/**
+ * A135481 a(n) = 2^A007814(n+1) - 1.
+ * This is Guy Steele's sequence GS(1, 6) (see A135416).
+ * @author Georg Fischer
+ */
+public class A135481 extends A135416 {
+
+  private int mN = -1;
+  private final A135416 mSeq = new A135416(1, 6);
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return (mN == 0) ? Z.ZERO : mSeq.next();
+  }
+}
+#!queue	A135517	0	->	0	A135416	--------------------------------
+package irvine.oeis.a135;
+// manually A135416/parm3 at 2022-12-20 16:28
+
+import irvine.math.z.Z;
+
+/**
+ * A135517 a(n) = 2^(A091090(n)-1).
+ * @author Georg Fischer
+ */
+public class A135517 extends A135416 {
+
+  private int mN = -1;
+  private final A135416 mSeq = new A135416(2, 5);
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return (mN == 0) ? Z.ONE : mSeq.next();
+  }
+}
+#!queue	A136138	0	->	0	A136136	--------------------------------
+package irvine.oeis.a136;
+// manually A136136/parm2 at 2023-03-13
+
+/**
+ * A136138 a(n+1)=sopfr(4a(n)+1), with sopfr=A001414. Finishes with the cycle (34, 137, 67, 269, 362, 36).
+ * @author Georg Fischer
+ */
+public class A136138 extends A136136 {
+
+  {
+    setOffset(0);
+  }
+
+  /** Construct the sequence. */
+  public A136138() {
+    super(4);
+  }
+}
+#!queue	A142584	0	->	1	A000032	--------------------------------
+package irvine.oeis.a142;
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000032;
+
+/**
+ * A142584 a(n) = A014217(n+1) - A115360(n+2).
+ * @author Georg Fischer
+ */
+public class A142584 extends A000032 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+    super.next();
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    // a(n) = Lucas(n+1) - (1/2)*(1 + (-1)^((n+2) mod 3)).
+    ++mN;
+    return super.next().subtract((1 + ((((mN + 2) % 3) & 1) == 0 ? 1 : -1)) / 2);
+  }
+}
+#!queue	A147560	0	->	0	A046162	--------------------------------
+package irvine.oeis.a147;
+
+import irvine.math.z.Z;
+import irvine.oeis.a046.A046162;
+
+/**
+ * A147560 a(n) = 4*A046162(n+1).
+ * @author Georg Fischer
+ */
+public class A147560 extends A046162 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().multiply(4);
+  }
+}
+#!queue	A152184	0	->	1	A119565	--------------------------------
+package irvine.oeis.a152;
+// manually cordrectab/cordrec at 2022-07-15 07:53
+
+import irvine.math.z.Z;
+import irvine.oeis.a119.A119565;
+
+/**
+ * A152184 Primes in A119565.
+ * <code>a(n)=(a(n-1)+1+a(n-2)/6)</code>
+ * @author Georg Fischer
+ */
+public class A152184 extends A119565 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z result = super.next();
+      if (result.isProbablePrime()) {
+        return result;
+      }
+    }
+  }
+}
+#!queue	A156043	0	->	1	A288108	--------------------------------
+package irvine.oeis.a156;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a288.A288108;
+
+/**
+ * A156043 A(n,n), where A(n,k) is the number of compositions (ordered partitions) of n into k parts (parts of size 0 being allowed), with the first part being greater than or equal to all the rest.
+ * @author Georg Fischer
+ */
+public class A156043 extends A288108 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(2 * mN, mN);
+  }
+}
+
+#!queue	A159039	0	->	1	ExponentialGeneratingFunction	--------------------------------
+package irvine.oeis.a159;
+// generated by patch_offset.pl at 2022-08-27 22:54
+
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.oeis.ExponentialGeneratingFunction;
+
+/**
+ * A159039 E.g.f. sec(x)/(1-x) = 1/( cos(x) * (1-x) ).
+ * E.g.f.: 1/( cos(x) * (1-x) ).
+ * @author Georg Fischer
+ */
+public class A159039 extends ExponentialGeneratingFunction {
+
+  /** Construct the sequence. */
+  public A159039() {
+    super(1);
+  }
+
+  @Override
+  public Polynomial<Q> compute(final int n) {
+    return RING.series(RING.one(), RING.multiply(RING.cos(RING.x(), n), RING.oneMinusXToTheN(1), n), n);
+  }
+}
+#!queue	A161411	0	->	1	A048883	--------------------------------
+package irvine.oeis.a161;
+// Generated by gen_seq4.pl dersimple at 2021-08-21 22:23
+
+import irvine.math.z.Z;
+import irvine.oeis.a048.A048883;
+
+/**
+ * A161411 First differences of A160410.
+ * @author Georg Fischer
+ */
+public class A161411 extends A048883 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().multiply(4);
+  }
+}
+#!queue	A164001	0	->	1	A242464	--------------------------------
+package irvine.oeis.a164;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a242.A242464;
+
+/**
+ * A164001 Spiral of triangles around a hexagon.
+ * @author Georg Fischer
+ */
+public class A164001 extends A242464 {
+
+  private int mN = -1;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 2);
+  }
+}
+
+#!queue	A167403	0	->	1	A305161	--------------------------------
+package irvine.oeis.a167;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a305.A305161;
+
+/**
+ * A167403 Number of decimal numbers having n or fewer digits and having the sum of their digits equal to n.
+ * @author Georg Fischer
+ */
+public class A167403 extends A305161 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 9);
+  }
+}
+
+#!queue	A167892	0	->	1	A094639	--------------------------------
+package irvine.oeis.a167;
+// Generated by gen_seq4.pl dersimpln at 2021-08-21 22:23
+
+import irvine.math.z.Z;
+import irvine.oeis.a094.A094639;
+
+/**
+ * A167892 a(n) = Sum_{k=1..n} Catalan(k)^2.
+ * @author Georg Fischer
+ */
+public class A167892 extends A094639 {
+
+  /** Construct the sequence. */
+  public A167892() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().subtract(1);
+  }
+}
+#!queue	A168138	0	->	1	A000045	--------------------------------
+package irvine.oeis.a168;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a000.A000005;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A168138 a(n) = Fibonacci(n+1)^tau(n).
+ * @author Georg Fischer
+ */
+public class A168138 extends A000045 {
+
+  private final Sequence mSeq = new A000005();
+
+  {
+    setOffset(1);
+    super.next();
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().pow(mSeq.next().intValue());
+  }
+}
+#!queue	A169588	0	->	4	A346426	--------------------------------
+package irvine.oeis.a169;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a346.A346426;
+
+/**
+ * A169588 The total number of ways of partitioning the multiset {1,1,1,1,2,3,...,n-3}.
+ * @author Georg Fischer
+ */
+public class A169588 extends A346426 {
+
+  private int mN = -1;
+
+  {
+    setOffset(4);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(4, mN);
+  }
+}
+
+#!queue	A169888	0	->	0	A145855	--------------------------------
+package irvine.oeis.a169;
+
+import irvine.math.z.Z;
+import irvine.oeis.a145.A145855;
+
+/**
+ * A169888 Number of n-member subsets of 1..2n whose elements sum to a multiple of n.
+ * @author Georg Fischer
+ */
+public class A169888 extends A145855 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    if (mN == 0) {
+      return Z.ONE;
+    }
+    return super.next().multiply2();
+  }
+}
+#!queue	A170805	0	->	0	A170803	--------------------------------
+package irvine.oeis.a170;
+
+import irvine.math.z.Z;
+
+/**
+ * A170805 a(n) = A170803(n-1) + 2, with a(0) = 1, a(1) = 2.
+ * @author Georg Fischer
+ */
+public class A170805 extends A170803 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return (++mN <= 1) ? Z.valueOf(mN + 1) : super.next().add(Z.TWO);
+  }
+}
+#!queue	A176787	0	->	1	A058006	--------------------------------
+package irvine.oeis.a176;
+// manually 2021-06-12
+
+import irvine.math.z.Z;
+import irvine.oeis.a058.A058006;
+
+/**
+ * A176787 a(n) = (0!-1!+2!-3!....(-1)^(n-1)*(n-1)!) mod n.
+ * a(n) = A058006(n) mod n.
+ * @author Georg Fischer
+ */
+public class A176787 extends A058006 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    return super.next().mod(Z.valueOf(++mN));
+  }
+}
+#!queue	A177518	0	->	1	A242784	--------------------------------
+package irvine.oeis.a177;
+// Generated by gen_seq4.pl tricol/arrcol
+
+import irvine.math.z.Z;
+import irvine.oeis.a242.A242784;
+
+/**
+ * A177518 Number of permutations of 1..n avoiding adjacent step pattern up, down, down, down.
+ * @author Georg Fischer
+ */
+public class A177518 extends A242784 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    return super.matrixElement(++mN, 14);
+  }
+}
+
+#!queue	A180433	0	->	1	A004601	--------------------------------
+package irvine.oeis.a180;
+
+import irvine.math.z.Z;
+import irvine.oeis.a004.A004601;
+
+/**
+ * A180433 Binary string formed from the binary expansion of Pi by exchanging 0's and 1's.
+ * @author Georg Fischer
+ */
+public class A180433 extends A004601 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    return Z.ONE.subtract(super.next());
+  }
+}
+#!queue	A185182	0	->	0	NoncomputableSequence	--------------------------------
+package irvine.oeis.a185;
+// manually simple3 at 2023-03-24
+
+import irvine.oeis.NoncomputableSequence;
+
+/**
+ * A185182 a(n) = 2^n*A185181(n).
+ * @author Georg Fischer
+ */
+public class A185182 extends NoncomputableSequence {
+
+  /** Construct the sequence. */
+  public A185182() {
+    super(0, 2, 4, 56, 1056, 25152, 728192, 24242048);
+  }
+
+}
+#!queue	A191690	0	->	1	A083064	--------------------------------
+package irvine.oeis.a191;
+// manually A083064/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a083.A083064;
+
+/**
+ * A191690 a(n) = n^n-n^(n-1)-n^(n-2)-...-n^2-n-1.
+ * @author Georg Fischer
+ */
+public class A191690 extends A083064 {
+
+  private int mN = -1;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return (mN == 0) ? Z.ZERO : super.matrixElement(mN + 1, mN - 1);
+  }
+}
+
+#!queue	A196618	0	->	0	A196617	--------------------------------
+package irvine.oeis.a196;
+// Generated by gen_seq4.pl getcr1 at 2021-08-10
+
+import irvine.math.cr.CR;
+
+/**
+ * A196618 Decimal expansion of cos(x), where x is the least positive solution of 1 = (x^2)*cos(x).
+ * @author Georg Fischer
+ */
+public class A196618 extends A196617 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public CR getCR() {
+    return super.getCR().cos();
+  }
+}
+#!queue	A196619	0	->	0	A196617	--------------------------------
+package irvine.oeis.a196;
+// Generated by gen_seq4.pl getcr2 at 2021-08-10
+
+import irvine.math.cr.CR;
+
+/**
+ * A196619 Decimal expansion of the number c for which the curve y=cos(x) is tangent to the curve y=(1/x)-c, and 0&lt;x&lt;2*Pi.
+ * @author Georg Fischer
+ */
+public class A196619 extends A196617 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public CR getCR() {
+    final CR xt = super.getCR();
+    return xt.inverse().subtract(xt.cos());
+  }
+}
+#!queue	A196620	0	->	0	A196617	--------------------------------
+package irvine.oeis.a196;
+// Generated by gen_seq4.pl getcr1 at 2021-08-10
+
+import irvine.math.cr.CR;
+
+/**
+ * A196620 Decimal expansion of the slope (negative) of the tangent line at the point of tangency of the curves y=cos(x) and y=(1/x)-c, where c is given by A196619.
+ * @author Georg Fischer
+ */
+public class A196620 extends A196617 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public CR getCR() {
+    return super.getCR().sin();
+  }
+}
+#!queue	A205505	0	->	1	A000045	--------------------------------
+package irvine.oeis.a205;
+
+import irvine.math.z.Fibonacci;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A205505 Fibonacci(n*(n+1)) / Fibonacci(n).
+ * @author Georg Fischer
+ */
+public class A205505 extends A000045 {
+
+  private int mN = 0;
+
+  {
+    setOffset(0);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return Fibonacci.fibonacci(mN * (mN + 1)).divide(super.next());
+  }
+}
+#!queue	A212543	0	->	3	A212551	--------------------------------
+package irvine.oeis.a212;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A212543 Number of partitions of n containing at least one part m-3 if m is the largest part.
+ * @author Georg Fischer
+ */
+public class A212543 extends A212551 {
+
+  private int mN = 2;
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 3);
+  }
+}
+
+#!queue	A212544	0	->	4	A212551	--------------------------------
+package irvine.oeis.a212;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A212544 Number of partitions of n containing at least one part m-4 if m is the largest part.
+ * @author Georg Fischer
+ */
+public class A212544 extends A212551 {
+
+  private int mN = 3;
+
+  {
+    setOffset(4);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 4);
+  }
+}
+
+#!queue	A212545	0	->	5	A212551	--------------------------------
+package irvine.oeis.a212;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A212545 Number of partitions of n containing at least one part m-5 if m is the largest part.
+ * @author Georg Fischer
+ */
+public class A212545 extends A212551 {
+
+  private int mN = 4;
+
+  {
+    setOffset(5);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 5);
+  }
+}
+
+#!queue	A212546	0	->	6	A212551	--------------------------------
+package irvine.oeis.a212;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A212546 Number of partitions of n containing at least one part m-6 if m is the largest part.
+ * @author Georg Fischer
+ */
+public class A212546 extends A212551 {
+
+  private int mN = 5;
+
+  {
+    setOffset(6);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 6);
+  }
+}
+
+#!queue	A212547	0	->	7	A212551	--------------------------------
+package irvine.oeis.a212;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A212547 Number of partitions of n containing at least one part m-7 if m is the largest part.
+ * @author Georg Fischer
+ */
+public class A212547 extends A212551 {
+
+  private int mN = 6;
+
+  {
+    setOffset(7);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 7);
+  }
+}
+
+#!queue	A212548	0	->	8	A212551	--------------------------------
+package irvine.oeis.a212;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A212548 Number of partitions of n containing at least one part m-8 if m is the largest part.
+ * @author Georg Fischer
+ */
+public class A212548 extends A212551 {
+
+  private int mN = 7;
+
+  {
+    setOffset(8);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 8);
+  }
+}
+
+#!queue	A212549	0	->	9	A212551	--------------------------------
+package irvine.oeis.a212;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A212549 Number of partitions of n containing at least one part m-9 if m is the largest part.
+ * @author Georg Fischer
+ */
+public class A212549 extends A212551 {
+
+  private int mN = 8;
+
+  {
+    setOffset(9);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 9);
+  }
+}
+
+#!queue	A212550	0	->	10	A212551	--------------------------------
+package irvine.oeis.a212;
+// Generated by gen_seq4.pl A212551/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A212550 Number of partitions of n containing at least one part m-10 if m is the largest part.
+ * @author Georg Fischer
+ */
+public class A212550 extends A212551 {
+
+  private int mN = 9;
+
+  {
+    setOffset(10);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 10);
+  }
+}
+
+#!queue	A218472	0	->	0	A213027	--------------------------------
+package irvine.oeis.a218;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a213.A213027;
+
+/**
+ * A218472 Number of 3n-length n-ary words, either empty or beginning with the first letter of the alphabet, that can be built by repeatedly inserting triples of identical letters into the initially empty word.
+ * @author Georg Fischer
+ */
+public class A218472 extends A213027 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN);
+  }
+}
+
+#!queue	A218473	0	->	0	A213027	--------------------------------
+package irvine.oeis.a218;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a213.A213027;
+
+/**
+ * A218473 Number of 3n-length 3-ary words, either empty or beginning with the first letter of the alphabet, that can be built by repeatedly inserting triples of identical letters into the initially empty word.
+ * @author Georg Fischer
+ */
+public class A218473 extends A213027 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 3);
+  }
+}
+
+#!queue	A218474	0	->	0	A213027	--------------------------------
+package irvine.oeis.a218;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a213.A213027;
+
+/**
+ * A218474 Number of 3n-length 4-ary words, either empty or beginning with the first letter of the alphabet, that can be built by repeatedly inserting triples of identical letters into the initially empty word.
+ * @author Georg Fischer
+ */
+public class A218474 extends A213027 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 4);
+  }
+}
+
+#!queue	A226435	0	->	1	ExponentialGeneratingFunction	--------------------------------
+package irvine.oeis.a226;
+// generated by patch_offset.pl at 2022-08-27 22:54
+
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.oeis.ExponentialGeneratingFunction;
+
+/**
+ * A226435 Number of permutations of 1..n with fewer than 2 interior elements having values lying between the values of their neighbors.
+ * lying between the values of their neighbors.
+ * E.g.f.: (sec(x) + tan(x)) - (sec(x) + tan(x))^2 + (sec(x) + tan(x))^3
+ * @author Georg Fischer
+ */
+public class A226435 extends ExponentialGeneratingFunction {
+
+  /** Construct the sequence. */
+  public A226435() {
+    super(1);
+  }
+
+  @Override
+  public Polynomial<Q> compute(final int n) {
+    return RING.add(RING.subtract(RING.add(RING.sec(RING.x(), n), RING.tan(RING.x(), n)), RING.pow(RING.add(RING.sec(RING.x(), n), RING.tan(RING.x(), n)), 2, n)), RING.pow(RING.add(RING.sec(RING.x(), n), RING.tan(RING.x(), n)), 3, n));
+  }
+}
+#!queue	A229949	0	->	1	A002620	--------------------------------
+package irvine.oeis.a229;
+// manually sigman0/sigma0 at 2023-02-28 16:08
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a002.A002620;
+
+/**
+ * A229949 Number of divisors of the n-th positive quarter-square.
+ * @author Georg Fischer
+ */
+public class A229949 extends A002620 {
+
+  {
+    setOffset(1);
+    super.next();
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return Jaguar.factor(super.next()).sigma0();
+  }
+}
+#!queue	A236339	0	->	1	A237018	--------------------------------
+package irvine.oeis.a236;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a237.A237018;
+
+/**
+ * A236339 Association types in 2-dimensional algebra.
+ * @author Georg Fischer
+ */
+public class A236339 extends A237018 {
+
+  private int mN = -1;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 2);
+  }
+}
+
+#!queue	A236342	0	->	1	A237018	--------------------------------
+package irvine.oeis.a236;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a237.A237018;
+
+/**
+ * A236342 Association types in 3-dimensional algebra.
+ * @author Georg Fischer
+ */
+public class A236342 extends A237018 {
+
+  private int mN = -1;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 3);
+  }
+}
+
+#!queue	A237274	0	->	0	A236283	--------------------------------
+package irvine.oeis.a237;
+// Generated by gen_seq4.pl dersimple at 2021-08-25 19:44
+
+import irvine.math.z.Z;
+import irvine.oeis.a236.A236283;
+
+/**
+ * A237274 a(n) = A236283(n) mod 9.
+ * @author Georg Fischer
+ */
+public class A237274 extends A236283 {
+
+  private int mN = 0;
+
+  {
+    setOffset(0);
+    // super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return mN <= 1 ? Z.TWO : super.next().mod(Z.NINE);
+  }
+}
+#!queue	A239580	0	->	1	A227364	--------------------------------
+package irvine.oeis.a239;
+
+import irvine.math.z.Z;
+import irvine.oeis.a227.A227364;
+
+/**
+ * A239580 Numbers k such that A227364(k) = 1 + 2*3 + 4*5*6 + 7*8*9*10 + ... + ...*k  is a prime.
+ * @author Georg Fischer
+ */
+public class A239580 extends A227364 {
+
+  private int mK = -1;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      ++mK;
+      if (super.next().isProbablePrime()) {
+        return Z.valueOf(mK);
+      }
+    }
+  }
+}
+#!queue	A241172	0	->	2	A241171	--------------------------------
+package irvine.oeis.a241;
+
+import irvine.math.z.Z;
+
+/**
+ * A241172 Joffe's central differences of 0: A241171(n,n-2).
+ * @author Georg Fischer
+ */
+public class A241172 extends A241171 {
+
+  private int mN = 0;
+
+  {
+    setOffset(2);
+    next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return joffeDifference(mN, mN - 2);
+  }
+}
+#!queue	A243112	0	->	0	RecordPositionSubsequence	--------------------------------
+package irvine.oeis.a243;
+// Generated by gen_seq4.pl deris/recordpos at 2022-04-27
+
+import irvine.oeis.RecordPositionSubsequence;
+import irvine.oeis.a055.A055941;
+
+/**
+ * A243112 a(n) is the smallest number that requires at least n adjacent bit swaps in order to pack all the ones to the right.
+ * @author Georg Fischer
+ */
+public class A243112 extends RecordPositionSubsequence {
+
+  /** Construct the sequence. */
+  public A243112() {
+    super(0, new A055941());
+  }
+
+}
+#!queue	A246657	0	->	0	A129164	--------------------------------
+package irvine.oeis.a246;
+// manually hygeom/hygeo at 2022-08-05 15:24
+
+import irvine.math.q.Q;
+import irvine.math.z.Z;
+import irvine.oeis.a129.A129164;
+
+/**
+ * A246657 a(n) = round(3F2([1, 3/2, 1 - n], [2, 2], -4)).
+ * @author Georg Fischer
+ */
+public class A246657 extends A129164 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  /** Construct the sequence. */
+  public Z next() {
+    ++mN;
+    return mN == 0 ? Z.ZERO : new Q(super.next(), Z.valueOf(mN)).round();
+  }
+}
+#!queue	A247954	0	->	1	A008438	--------------------------------
+package irvine.oeis.a247;
+// manually sigman1/sigma1 at 2023-02-28 22:58
+
+import irvine.factor.factor.Jaguar;
+import irvine.math.z.Z;
+import irvine.oeis.a008.A008438;
+
+/**
+ * A247954 a(n) = sigma(sigma(2n-1)).
+ * @author Georg Fischer
+ */
+public class A247954 extends A008438 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    return Jaguar.factor(super.next()).sigma();
+  }
+}
+#!queue	A248507	0	->	-14	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a248;
+
+import irvine.math.cr.CR;
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A248507 Decimal expansion of a single magnetic flux quantum Phi_0 in SI units.
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A248507 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A248507() {
+    super(-1, PhysicsConstants.PLANCK_CONSTANT_CR.divide(PhysicsConstants.ELEMENTARY_CHARGE_CR).divide(CR.TWO).multiply(Z.TEN.pow(15)));
+  }
+}
+#!queue	A254181	0	->	-33	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a254;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A254181 Decimal expansion of reduced Planck constant (in joule seconds).
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A254181 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A254181() {
+    super(-33, PhysicsConstants.HBAR_CR.multiply(Z.TEN.pow(33))); // 1
+  }
+}
+#!queue	A255637	0	->	1	A255636	--------------------------------
+package irvine.oeis.a255;
+// Generated by gen_seq4.pl A255636/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A255637 Number of n-node rooted trees with a forbidden limb of length 7.
+ * @author Georg Fischer
+ */
+public class A255637 extends A255636 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 7);
+  }
+}
+
+#!queue	A255638	0	->	1	A255636	--------------------------------
+package irvine.oeis.a255;
+// Generated by gen_seq4.pl A255636/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A255638 Number of n-node rooted trees with a forbidden limb of length 8.
+ * @author Georg Fischer
+ */
+public class A255638 extends A255636 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 8);
+  }
+}
+
+#!queue	A255639	0	->	1	A255636	--------------------------------
+package irvine.oeis.a255;
+// Generated by gen_seq4.pl A255636/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A255639 Number of n-node rooted trees with a forbidden limb of length 9.
+ * @author Georg Fischer
+ */
+public class A255639 extends A255636 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 9);
+  }
+}
+
+#!queue	A255640	0	->	1	A255636	--------------------------------
+package irvine.oeis.a255;
+// Generated by gen_seq4.pl A255636/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A255640 Number of n-node rooted trees with a forbidden limb of length 10.
+ * @author Georg Fischer
+ */
+public class A255640 extends A255636 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 10);
+  }
+}
+
+#!queue	A255672	0	->	0	A255961	--------------------------------
+package irvine.oeis.a255;
+// Generated by gen_seq4.pl A255961/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A255672 Coefficient of x^n in Product_{k&gt;=1} 1/(1-x^k)^(k*n).
+ * @author Georg Fischer
+ */
+public class A255672 extends A255961 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN);
+  }
+}
+
+#!queue	A255738	0	->	1	CharacteristicFunction	--------------------------------
+package irvine.oeis.a255;
+// Generated by gen_seq4.pl charfun at 2020-08-28 13:59
+
+import irvine.oeis.CharacteristicFunction;
+import irvine.oeis.a094.A094373;
+
+/**
+ * A255738 a(1) = 1; for n &gt; 1, a(n) = 1*0^{A000120(n-1) - 1}.
+ * @author Georg Fischer
+ */
+public class A255738 extends CharacteristicFunction {
+
+  /** Construct the sequence. */
+  public A255738() {
+    super(1, new A094373());
+    next();
+  }
+}
+#!queue	A256019	0	->	1	A255433	--------------------------------
+package irvine.oeis.a256;
+// Generated by gen_seq4.pl dersimple at 2021-08-25 19:44
+
+import irvine.math.z.Z;
+import irvine.oeis.a255.A255433;
+
+/**
+ * A256019 a(n) = Sum_{i=1..n-1} (i^3 * a(i)), a(1)=1.
+ * @author Georg Fischer
+ */
+public class A256019 extends A255433 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return mN <= 1 ? Z.ONE : super.next().divide2();
+  }
+}
+#!queue	A256020	0	->	1	A255434	--------------------------------
+package irvine.oeis.a256;
+// Generated by gen_seq4.pl dersimple at 2021-08-25 19:44
+
+import irvine.math.z.Z;
+import irvine.oeis.a255.A255434;
+
+/**
+ * A256020 a(n) = Sum_{i=1..n-1} (i^4 * a(i)), a(1)=1.
+ * @author Georg Fischer
+ */
+public class A256020 extends A255434 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return mN <= 1 ? Z.ONE : super.next().divide2();
+  }
+}
+#!queue	A256434	0	->	0	CharacteristicFunction	--------------------------------
+package irvine.oeis.a256;
+// manually, charfun at 2021-06-22 17:32
+
+import irvine.math.z.Z;
+import irvine.oeis.CharacteristicFunction;
+import irvine.oeis.a006.A006564;
+
+/**
+ * A256434 Characteristic function of icosahedral numbers.
+ * @author Georg Fischer
+ */
+public class A256434 extends CharacteristicFunction {
+
+  protected int mN;
+  
+  /** Construct the sequence. */
+  public A256434() {
+    super(0, new A006564());
+    mN = -1;
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return mN < 1 ? Z.ONE : super.next();
+  }
+}
+#!queue	A257675	0	->	0	A257673	--------------------------------
+package irvine.oeis.a257;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A257675 a(n) = A257673(2n,n).
+ * @author Georg Fischer
+ */
+public class A257675 extends A257673 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN * 2, mN);
+  }
+}
+
+#!queue	A261732	0	->	0	A261719	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261732 Number of partitions of 2n where each part i is marked with a word of length i over an n-ary alphabet whose letters appear in alphabetical order and all n letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A261732 extends A261719 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(2 * mN, mN);
+  }
+}
+
+#!queue	A261784	0	->	0	A261781	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261784 Number of compositions of 2n where each part i is marked with a word of length i over an n-ary alphabet whose letters appear in alphabetical order and all n letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261784 extends A261781 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(2 * mN, mN);
+  }
+}
+
+#!queue	A261828	0	->	0	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261828 Number of compositions of 2n into distinct parts where each part i is marked with a word of length i over an n-ary alphabet whose letters appear in alphabetical order and all n letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261828 extends A261836 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(2 * mN, mN);
+  }
+}
+
+#!queue	A261853	0	->	2	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261853 Number of compositions of n into distinct parts where each part i is marked with a word of length i over a binary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261853 extends A261836 {
+
+  private int mN = 1;
+
+  {
+    setOffset(2);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 2);
+  }
+}
+
+#!queue	A261854	0	->	3	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261854 Number of compositions of n into distinct parts where each part i is marked with a word of length i over a ternary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261854 extends A261836 {
+
+  private int mN = 2;
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 3);
+  }
+}
+
+#!queue	A261855	0	->	4	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261855 Number of compositions of n into distinct parts where each part i is marked with a word of length i over a quaternary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261855 extends A261836 {
+
+  private int mN = 3;
+
+  {
+    setOffset(4);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 4);
+  }
+}
+
+#!queue	A261856	0	->	5	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261856 Number of compositions of n into distinct parts where each part i is marked with a word of length i over a quinary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261856 extends A261836 {
+
+  private int mN = 4;
+
+  {
+    setOffset(5);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 5);
+  }
+}
+
+#!queue	A261857	0	->	6	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261857 Number of compositions of n into distinct parts where each part i is marked with a word of length i over a senary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261857 extends A261836 {
+
+  private int mN = 5;
+
+  {
+    setOffset(6);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 6);
+  }
+}
+
+#!queue	A261858	0	->	7	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261858 Number of compositions of n into distinct parts where each part i is marked with a word of length i over a septenary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261858 extends A261836 {
+
+  private int mN = 6;
+
+  {
+    setOffset(7);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 7);
+  }
+}
+
+#!queue	A261859	0	->	8	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261859 Number of compositions of n into distinct parts where each part i is marked with a word of length i over an octonary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261859 extends A261836 {
+
+  private int mN = 7;
+
+  {
+    setOffset(8);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 8);
+  }
+}
+
+#!queue	A261860	0	->	9	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261860 Number of compositions of n into distinct parts where each part i is marked with a word of length i over a nonary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261860 extends A261836 {
+
+  private int mN = 8;
+
+  {
+    setOffset(9);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 9);
+  }
+}
+
+#!queue	A261861	0	->	10	A261836	--------------------------------
+package irvine.oeis.a261;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+
+/**
+ * A261861 Number of compositions of n into distinct parts where each part i is marked with a word of length i over a denary alphabet whose letters appear in alphabetical order and all letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A261861 extends A261836 {
+
+  private int mN = 9;
+
+  {
+    setOffset(10);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 10);
+  }
+}
+
+#!queue	A267430	0	->	1	A000290	--------------------------------
+package irvine.oeis.a267;
+
+import irvine.math.z.Z;
+import irvine.math.z.ZUtils;
+import irvine.oeis.a000.A000290;
+
+/**
+ * A267430 Squares whose digit sum is not a prime.
+ * @author Georg Fischer
+ */
+public class A267430 extends A000290 {
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      final Z result = super.next();
+      if (!Z.valueOf(ZUtils.digitSum(result)).isPrime()) {
+        return result;
+      }
+    }
+  }
+}
+#!queue	A270470	0	->	1	A001654	--------------------------------
+package irvine.oeis.a270;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001654;
+
+/**
+ * A270470 Integers n such that A001654(n) is divisible by n*(n+1)/2.
+ * @author Georg Fischer
+ */
+public class A270470 extends A001654 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    while (true) {
+      ++mN;
+      if (super.next().mod(Z.valueOf(mN * (mN + 1) / 2)).isZero()) {
+        return Z.valueOf(mN);
+      }
+    }
+  }
+}
+#!queue	A278350	0	->	1	A000045	--------------------------------
+package irvine.oeis.a278;
+
+import irvine.math.z.Euler;
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A278350 Cototient of Fibonacci(n).
+ * @author Georg Fischer
+ */
+public class A278350 extends A000045 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    // a(n) = fibonacci(n) - eulerphi(fibonacci(n));
+    ++mN;
+    final Z fib = super.next();
+    return fib.subtract(Euler.phi(fib));
+  }
+}
+#!queue	A288954	0	->	2	HolonomicRecurrence	--------------------------------
+package irvine.oeis.a288;
+// manually at 2022-08-15
+
+import irvine.oeis.recur.HolonomicRecurrence;
+
+/**
+ * A288954 Number of relaxed compacted binary trees of right height at most one with minimal sequences between branch nodes except before the first and after the last branch node on level 0.
+ * E.g.f. 1/(3*(1-z))*( 1/sqrt(1-z^2) + (3*z^3-z^2-2*z+2)/((1-z)*(1-z^2)) ).
+ * @author Georg Fischer
+ */
+public class A288954 extends HolonomicRecurrence {
+
+  /** Construct the sequence. */
+  public A288954() {
+    super(0, "[[0],[6,-5, 1],[-10, 11,-3],[1,-4, 1],[1,-8, 3],[0, 6,-2]]", "[1, 1, 3, 13]", 0);
+    setGfType(1);
+    setOffset(2);
+  }
+}
+#!queue	A289210	0	->	0	A066395	--------------------------------
+package irvine.oeis.a289;
+
+import irvine.math.z.Z;
+import irvine.oeis.a066.A066395;
+
+/**
+ * A289210 Coefficients in expansion of E_6^2/E_4^3.
+ * a(n) = -1728 * A066395(n) for n &gt; 0.
+ * @author Georg Fischer
+ */
+public class A289210 extends A066395 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    return (++mN == 0) ? Z.ONE : super.next().multiply(-1728);
+  }
+}
+#!queue	A290354	0	->	0	A290353	--------------------------------
+package irvine.oeis.a290;
+// Generated by gen_seq4.pl A290353/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A290354 a(n) is the n-th term of the n-th Euler transform of the sequence with g.f. 1+x.
+ * @author Georg Fischer
+ */
+public class A290354 extends A290353 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, mN);
+  }
+}
+
+#!queue	A290356	0	->	0	A290353	--------------------------------
+package irvine.oeis.a290;
+// Generated by gen_seq4.pl A290353/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A290356 The seventh Euler transform of the sequence with g.f. 1+x.
+ * @author Georg Fischer
+ */
+public class A290356 extends A290353 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 7);
+  }
+}
+
+#!queue	A290357	0	->	0	A290353	--------------------------------
+package irvine.oeis.a290;
+// Generated by gen_seq4.pl A290353/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A290357 The eighth Euler transform of the sequence with g.f. 1+x.
+ * @author Georg Fischer
+ */
+public class A290357 extends A290353 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 8);
+  }
+}
+
+#!queue	A290358	0	->	0	A290353	--------------------------------
+package irvine.oeis.a290;
+// Generated by gen_seq4.pl A290353/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A290358 The ninth Euler transform of the sequence with g.f. 1+x.
+ * @author Georg Fischer
+ */
+public class A290358 extends A290353 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 9);
+  }
+}
+
+#!queue	A290359	0	->	0	A290353	--------------------------------
+package irvine.oeis.a290;
+// Generated by gen_seq4.pl A290353/arronk
+
+import irvine.math.z.Z;
+
+/**
+ * A290359 The tenth Euler transform of the sequence with g.f. 1+x.
+ * @author Georg Fischer
+ */
+public class A290359 extends A290353 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 10);
+  }
+}
+
+#!queue	A293145	0	->	0	HypergeometricSequence	--------------------------------
+package irvine.oeis.a293;
+// manually hygeom at 2022-08-06 15:16
+
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Z;
+import irvine.oeis.HypergeometricSequence;
+
+/**
+ * A293145 a(n) = n! * [x^n] exp(n*x/(1 - x)).
+ * <code>Join[{1}, Table[n n! Hypergeometric1F1[1 - n, 2, -n], {n, 1, 18}]]</code>
+ * @author Georg Fischer
+ */
+public class A293145 extends HypergeometricSequence {
+
+  private int mN = -1;
+
+  /** Construct the sequence. */
+  public A293145() {
+    super(0, 1, 1, "[[1,-1],[2],[0,-1]]"); // 1
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    if (mN == 0) {
+      return Z.ONE;
+    } else {
+      return super.nextQ().multiply(mN).multiply(MemoryFactorial.SINGLETON.factorial(mN)).num();
+    }
+  }
+}
+#!queue	A293342	0	->	0	A068425	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl dersimpln at 2021-09-02 16:26
+
+import irvine.math.z.Z;
+import irvine.oeis.a068.A068425;
+
+/**
+ * A293342 Least integer k such that k/2^n &gt; Pi.
+ * @author Georg Fischer
+ */
+public class A293342 extends A068425 {
+
+  protected int mN;
+
+  /** Construct the sequence */
+  public A293342() {
+    setOffset(0);
+    mN = -1;
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.next().add(1);
+  }
+}
+#!queue	A293366	0	->	2	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293366 Number of partitions of n where each part i is marked with a word of length i over a binary alphabet whose letters appear in alphabetical order and both letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293366 extends A261719 {
+
+  private int mN = 1;
+
+  {
+    setOffset(2);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 2);
+  }
+}
+
+#!queue	A293367	0	->	3	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293367 Number of partitions of n where each part i is marked with a word of length i over a ternary alphabet whose letters appear in alphabetical order and all three letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293367 extends A261719 {
+
+  private int mN = 2;
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 3);
+  }
+}
+
+#!queue	A293368	0	->	4	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293368 Number of partitions of n where each part i is marked with a word of length i over a quaternary alphabet whose letters appear in alphabetical order and all four letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293368 extends A261719 {
+
+  private int mN = 3;
+
+  {
+    setOffset(4);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 4);
+  }
+}
+
+#!queue	A293369	0	->	5	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293369 Number of partitions of n where each part i is marked with a word of length i over a quinary alphabet whose letters appear in alphabetical order and all five letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293369 extends A261719 {
+
+  private int mN = 4;
+
+  {
+    setOffset(5);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 5);
+  }
+}
+
+#!queue	A293370	0	->	6	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293370 Number of partitions of n where each part i is marked with a word of length i over a senary alphabet whose letters appear in alphabetical order and all six letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293370 extends A261719 {
+
+  private int mN = 5;
+
+  {
+    setOffset(6);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 6);
+  }
+}
+
+#!queue	A293371	0	->	7	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293371 Number of partitions of n where each part i is marked with a word of length i over a septenary alphabet whose letters appear in alphabetical order and all seven letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293371 extends A261719 {
+
+  private int mN = 6;
+
+  {
+    setOffset(7);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 7);
+  }
+}
+
+#!queue	A293372	0	->	8	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293372 Number of partitions of n where each part i is marked with a word of length i over an octonary alphabet whose letters appear in alphabetical order and all eight letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293372 extends A261719 {
+
+  private int mN = 7;
+
+  {
+    setOffset(8);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 8);
+  }
+}
+
+#!queue	A293373	0	->	9	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293373 Number of partitions of n where each part i is marked with a word of length i over a nonary alphabet whose letters appear in alphabetical order and all nine letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293373 extends A261719 {
+
+  private int mN = 8;
+
+  {
+    setOffset(9);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 9);
+  }
+}
+
+#!queue	A293374	0	->	10	A261719	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261719;
+
+/**
+ * A293374 Number of partitions of n where each part i is marked with a word of length i over a denary alphabet whose letters appear in alphabetical order and all ten letters occur at least once in the partition.
+ * @author Georg Fischer
+ */
+public class A293374 extends A261719 {
+
+  private int mN = 9;
+
+  {
+    setOffset(10);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 10);
+  }
+}
+
+#!queue	A293579	0	->	2	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293579 Number of compositions of n where each part i is marked with a word of length i over a binary alphabet whose letters appear in alphabetical order and both letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293579 extends A261781 {
+
+  private int mN = 1;
+
+  {
+    setOffset(2);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 2);
+  }
+}
+
+#!queue	A293580	0	->	3	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293580 Number of compositions of n where each part i is marked with a word of length i over a ternary alphabet whose letters appear in alphabetical order and all three letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293580 extends A261781 {
+
+  private int mN = 2;
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 3);
+  }
+}
+
+#!queue	A293581	0	->	4	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293581 Number of compositions of n where each part i is marked with a word of length i over a quaternary alphabet whose letters appear in alphabetical order and all four letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293581 extends A261781 {
+
+  private int mN = 3;
+
+  {
+    setOffset(4);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 4);
+  }
+}
+
+#!queue	A293582	0	->	5	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293582 Number of compositions of n where each part i is marked with a word of length i over a quinary alphabet whose letters appear in alphabetical order and all five letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293582 extends A261781 {
+
+  private int mN = 4;
+
+  {
+    setOffset(5);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 5);
+  }
+}
+
+#!queue	A293583	0	->	6	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293583 Number of compositions of n where each part i is marked with a word of length i over a senary alphabet whose letters appear in alphabetical order and all six letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293583 extends A261781 {
+
+  private int mN = 5;
+
+  {
+    setOffset(6);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 6);
+  }
+}
+
+#!queue	A293584	0	->	7	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293584 Number of compositions of n where each part i is marked with a word of length i over a septenary alphabet whose letters appear in alphabetical order and all seven letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293584 extends A261781 {
+
+  private int mN = 6;
+
+  {
+    setOffset(7);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 7);
+  }
+}
+
+#!queue	A293585	0	->	8	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293585 Number of compositions of n where each part i is marked with a word of length i over an octonary alphabet whose letters appear in alphabetical order and all eight letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293585 extends A261781 {
+
+  private int mN = 7;
+
+  {
+    setOffset(8);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 8);
+  }
+}
+
+#!queue	A293586	0	->	9	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293586 Number of compositions of n where each part i is marked with a word of length i over a nonary alphabet whose letters appear in alphabetical order and all nine letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293586 extends A261781 {
+
+  private int mN = 8;
+
+  {
+    setOffset(9);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 9);
+  }
+}
+
+#!queue	A293587	0	->	10	A261781	--------------------------------
+package irvine.oeis.a293;
+// Generated by gen_seq4.pl build/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a261.A261781;
+
+/**
+ * A293587 Number of compositions of n where each part i is marked with a word of length i over a denary alphabet whose letters appear in alphabetical order and all ten letters occur at least once in the composition.
+ * @author Georg Fischer
+ */
+public class A293587 extends A261781 {
+
+  private int mN = 9;
+
+  {
+    setOffset(10);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 10);
+  }
+}
+
+#!queue	A299105	0	->	0	A286354	--------------------------------
+package irvine.oeis.a299;
+// Generated by gen_seq4.pl A286354/adsums
+
+import irvine.math.z.Z;
+import irvine.oeis.a286.A286354;
+
+/**
+ * A299105 Expansion of 1/(1 - x*Product_{k&gt;=1} (1 - x^k)).
+ * @author Georg Fischer
+ */
+public class A299105 extends A286354 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    Z sum = Z.ZERO;
+    for (int j = 0; j <= mN; ++j) {
+      sum = sum.add(super.matrixElement(mN - j, j));
+    }
+    return sum;
+  }
+}
+
+#!queue	A299166	0	->	0	A255961	--------------------------------
+package irvine.oeis.a299;
+// Generated by gen_seq4.pl A255961/adsums
+
+import irvine.math.z.Z;
+import irvine.oeis.a255.A255961;
+
+/**
+ * A299166 Expansion of 1/(1 - x*Product_{k&gt;=1} 1/(1 - x^k)^k).
+ * @author Georg Fischer
+ */
+public class A299166 extends A255961 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    Z sum = Z.ZERO;
+    for (int j = 0; j <= mN; ++j) {
+      sum = sum.add(super.matrixElement(mN - j, j));
+    }
+    return sum;
+  }
+}
+
+#!queue	A302855	0	->	1	A000152	--------------------------------
+package irvine.oeis.a302;
+// manually 2023-01-13; dersimpln at 2021-08-25 22:45
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000152;
+
+/**
+ * A302855 Expansion of ((1 + 2 * Sum_{k&gt;=1} q^(k^2))^16 - 1) / 32.
+ * @author Georg Fischer
+ */
+public class A302855 extends A000152 {
+
+  protected int mN;
+
+  /** Construct the sequence. */
+  public A302855() {
+    setOffset(1);
+    mN = 0;
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.next().divide(32);
+  }
+}
+#!queue	A302857	0	->	1	A302856	--------------------------------
+package irvine.oeis.a302;
+// manually 2023-01-13; dersimpln at 2021-08-25 22:45
+
+import irvine.math.z.Z;
+
+/**
+ * A302857 Expansion of ((1 + 2 * Sum_{k&gt;=1} q^(k^2))^32 - 1) / 64.
+ * @author Georg Fischer
+ */
+public class A302857 extends A302856 {
+
+  /** Construct the sequence. */
+  public A302857() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().divide(64);
+  }
+}
+#!queue	A305994	0	->	0	A067745	--------------------------------
+package irvine.oeis.a305;
+
+import irvine.math.z.Z;
+import irvine.oeis.a067.A067745;
+
+/**
+ * A305994 a(n) = ((A000265(3*n + 1) + 1) mod 4)/2.
+ * @author Georg Fischer
+ */
+public class A305994 extends A067745 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    // a(n) = A067745(n+1) mod 4.
+    return super.next().add(1).mod(Z.FOUR).divide(2);
+  }
+}
+#!queue	A317202	0	->	1	A192918	--------------------------------
+package irvine.oeis.a317;
+// Generated by gen_seq4.pl getcr2 at 2021-08-10
+
+import irvine.math.cr.CR;
+import irvine.oeis.a192.A192918;
+
+/**
+ * A317202 Decimal expansion of 3 + (t^2+t^4)/2, where t = 0.543689... (A192918) is the real root of x^3 + x^2 + x = 1.
+ * @author Georg Fischer
+ */
+public class A317202 extends A192918 {
+
+  @Override
+  public CR getCR() {
+    final CR xt = super.getCR();
+    return xt.multiply(xt).add(xt.pow(4)).divide(CR.TWO).add(CR.THREE);
+  }
+
+  {
+    setOffset(1);
+  }
+}
+#!queue	A319536	0	->	1	A271212	--------------------------------
+package irvine.oeis.a319;
+// manually cordrectab/cordrec at 2022-07-15
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a000.A000165;
+import irvine.oeis.a271.A271212;
+
+/**
+ * A319536 Number of signed permutations of length n where numbers occur in consecutive order.
+ * <code>a(n) = A000165(n) - A271212(n).</code>
+ * @author Georg Fischer
+ */
+public class A319536 extends A271212 {
+
+  private final Sequence mSeq = new A000165();
+
+  /** Construct the sequence */
+  public A319536() {
+    setOffset(1);
+    super.next();
+    mSeq.next();
+  }
+
+  @Override
+  public Z next() {
+    return mSeq.next().subtract(super.next());
+  }
+}
+#!queue	A320534	0	->	0	HypergeometricSequence	--------------------------------
+package irvine.oeis.a320;
+// manually hygeom at 2022-08-06 18:18
+
+import irvine.math.z.Z;
+import irvine.oeis.HypergeometricSequence;
+
+/**
+ * A320534 a(n) = ((1 + sqrt(4*n^2 + 1))^n + (1 - sqrt(4*n^2 + 1))^n)/2^n.
+ * @author Georg Fischer
+ */
+public class A320534 extends HypergeometricSequence {
+
+  private int mN = -1;
+
+  /** Construct the sequence. */
+  public A320534() {
+    super(0, 2, 1, "[[1/2,-1/2],[0,-1/2],[1/2],[1, 0, 4]]"); // 1
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    if (mN == 0) {
+      return Z.TWO;
+    } else {
+      return super.nextQ().divide(Z.ONE.shiftLeft(mN - 1)).num();
+    }
+  }
+}
+#!queue	A321947	0	->	2	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321947 Column k=2 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321947 extends A257673 {
+
+  private int mN = 1;
+
+  {
+    setOffset(2);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 2);
+  }
+}
+
+#!queue	A321948	0	->	3	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321948 Column k=3 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321948 extends A257673 {
+
+  private int mN = 2;
+
+  {
+    setOffset(3);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 3);
+  }
+}
+
+#!queue	A321949	0	->	4	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321949 Column k=4 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321949 extends A257673 {
+
+  private int mN = 3;
+
+  {
+    setOffset(4);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 4);
+  }
+}
+
+#!queue	A321950	0	->	5	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321950 Column k=5 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321950 extends A257673 {
+
+  private int mN = 4;
+
+  {
+    setOffset(5);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 5);
+  }
+}
+
+#!queue	A321951	0	->	6	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321951 Column k=6 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321951 extends A257673 {
+
+  private int mN = 5;
+
+  {
+    setOffset(6);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 6);
+  }
+}
+
+#!queue	A321952	0	->	7	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321952 Column k=7 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321952 extends A257673 {
+
+  private int mN = 6;
+
+  {
+    setOffset(7);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 7);
+  }
+}
+
+#!queue	A321953	0	->	8	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321953 Column k=8 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321953 extends A257673 {
+
+  private int mN = 7;
+
+  {
+    setOffset(8);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 8);
+  }
+}
+
+#!queue	A321954	0	->	9	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321954 Column k=9 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321954 extends A257673 {
+
+  private int mN = 8;
+
+  {
+    setOffset(9);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 9);
+  }
+}
+
+#!queue	A321955	0	->	10	A257673	--------------------------------
+package irvine.oeis.a321;
+// Generated by gen_seq4.pl A257673/treonk
+
+import irvine.math.z.Z;
+import irvine.oeis.a257.A257673;
+
+/**
+ * A321955 Column k=10 of triangle A257673.
+ * @author Georg Fischer
+ */
+public class A321955 extends A257673 {
+
+  private int mN = 9;
+
+  {
+    setOffset(10);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.triangleElement(mN, 10);
+  }
+}
+
+#!queue	A324804	0	->	0	A306800	--------------------------------
+package irvine.oeis.a324;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a306.A306800;
+
+/**
+ * A324804 a(n) is the number of endofunctions on a set of size n with preimage constraint {0, 1, 2, 3, 4}.
+ * @author Georg Fischer
+ */
+public class A324804 extends A306800 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 4);
+  }
+}
+
+#!queue	A324805	0	->	0	A306800	--------------------------------
+package irvine.oeis.a324;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a306.A306800;
+
+/**
+ * A324805 a(n) is the number of endofunctions on a set of size n with preimage constraint {0, 1, 2, 3, 4, 5}.
+ * @author Georg Fischer
+ */
+public class A324805 extends A306800 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 5);
+  }
+}
+
+#!queue	A324806	0	->	0	A306800	--------------------------------
+package irvine.oeis.a324;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a306.A306800;
+
+/**
+ * A324806 a(n) is the number of endofunctions on a set of size n with preimage constraint {0, 1, 2, 3, 4, 5, 6}.
+ * @author Georg Fischer
+ */
+public class A324806 extends A306800 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 6);
+  }
+}
+
+#!queue	A324807	0	->	0	A306800	--------------------------------
+package irvine.oeis.a324;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a306.A306800;
+
+/**
+ * A324807 a(n) is the number of endofunctions on a set of size n with preimage constraint {0, 1, 2, 3, 4, 5, 6, 7}.
+ * @author Georg Fischer
+ */
+public class A324807 extends A306800 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 7);
+  }
+}
+
+#!queue	A324808	0	->	0	A306800	--------------------------------
+package irvine.oeis.a324;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a306.A306800;
+
+/**
+ * A324808 a(n) is the number of endofunctions on a set of size n with preimage constraint {0, 1, 2, 3, 4, 5, 6, 7, 8}.
+ * @author Georg Fischer
+ */
+public class A324808 extends A306800 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 8);
+  }
+}
+
+#!queue	A324809	0	->	0	A306800	--------------------------------
+package irvine.oeis.a324;
+// Generated by gen_seq4.pl build/arronk
+
+import irvine.math.z.Z;
+import irvine.oeis.a306.A306800;
+
+/**
+ * A324809 a(n) is the number of endofunctions on a set of size n with preimage constraint {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}.
+ * @author Georg Fischer
+ */
+public class A324809 extends A306800 {
+
+  private int mN = -1;
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.matrixElement(mN, 9);
+  }
+}
+
+#!queue	A325174	0	->	1	A000045	--------------------------------
+package irvine.oeis.a325;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+import irvine.oeis.a000.A000040;
+import irvine.oeis.a000.A000045;
+
+/**
+ * A325174 a(n) = Fibonacci(n)^n mod prime(n).
+ * @author Georg Fischer
+ */
+public class A325174 extends A000045 {
+
+  private int mN = 0;
+  private final Sequence mSeq = new A000040();
+
+  {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.next().pow(mN).mod(mSeq.next());
+  }
+}
+#!queue	A325913	0	->	1	A054414	--------------------------------
+package irvine.oeis.a325;
+// Generated by gen_seq4.pl dersimpln at 2021-09-02
+
+import irvine.math.z.Z;
+import irvine.oeis.a054.A054414;
+
+/**
+ * A325913 Integers m such that there are exactly two powers of 2 between 3^m and 3^(m+1).
+ * @author Georg Fischer
+ */
+public class A325913 extends A054414 {
+
+  protected int mN;
+
+  /** Construct the sequence */
+  public A325913() {
+    setOffset(1);
+    mN = 0;
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.next().subtract(mN).subtract(1);
+  }
+}
+#!queue	A341710	0	->	1	A120963	--------------------------------
+package irvine.oeis.a341;
+// manually divmul at 2021-08-20 23:36
+
+import irvine.math.z.Z;
+import irvine.oeis.a120.A120963;
+
+/**
+ * A341710 a(n) = A120963(n)/2.
+ * @author Georg Fischer
+ */
+public class A341710 extends A120963 {
+
+  /** Construct the sequence. */
+  public A341710() {
+    setOffset(1);
+    super.next();
+  }
+
+  @Override
+  public Z next() {
+    return super.next().divide2();
+  }
+}
+#!queue	A342279	0	->	0	A000201	--------------------------------
+package irvine.oeis.a342;
+// Generated by gen_seq4.pl bisect at 2021-07-05 22:21
+// DO NOT EDIT here!
+
+import irvine.math.z.Z;
+import irvine.oeis.a000.A000201;
+
+
+/**
+ * A342279 A bisection of A000201: a(n) = A000201(2*n+1).
+ * @author Georg Fischer
+ */
+public class A342279 extends A000201 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z result = super.next();
+    super.next();
+    return result;
+  }
+}
+#!queue	A342280	0	->	0	A001952	--------------------------------
+package irvine.oeis.a342;
+
+import irvine.math.z.Z;
+import irvine.oeis.a001.A001952;
+
+/**
+ * A342280 a(n) = A001952(2*n+1).
+ * @author Georg Fischer
+ */
+public class A342280 extends A001952 {
+
+  {
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    final Z result = super.next();
+    super.next();
+    return result;
+  }
+}
+#!queue	A348131	0	->	1	Sequence0	--------------------------------
+package irvine.oeis.a348;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence0;
+
+/**
+ * A348131 a(n) is the numerator of the relativistic sum of n velocities of 1/n, in units where the speed of light is 1.
+ * @author Georg Fischer
+ */
+public class A348131 extends Sequence0 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    // a(2n-1) = n^(2n-1) - (n-1)^(2n-1) and a(2n) = ((2n+1)^(2n) - (2n-1)^(2n)) / 2.
+    ++mN;
+    final int n = mN / 2;
+    return ((mN & 1) == 1) ? Z.valueOf(n + 1).pow(mN).subtract(Z.valueOf(n).pow(mN))
+      : Z.valueOf(mN + 1).pow(mN).subtract(Z.valueOf(mN - 1).pow(mN)).divide2();
+  }
+}
+#!queue	A348132	0	->	1	Sequence0	--------------------------------
+package irvine.oeis.a348;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence0;
+
+/**
+ * A348132 a(n) is the denominator of the relativistic sum of n velocities of 1/n, in units where the speed of light is 1.
+ * @author Georg Fischer
+ */
+public class A348132 extends Sequence0 {
+
+  private int mN = 0;
+
+  {
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    // a(2n-1) = n^(2n-1) - (n-1)^(2n-1) and a(2n) = ((2n+1)^(2n) - (2n-1)^(2n)) / 2.
+    ++mN;
+    final int n = mN / 2;
+    return ((mN & 1) == 1) ? Z.valueOf(n + 1).pow(mN).add(Z.valueOf(n).pow(mN))
+      : Z.valueOf(mN + 1).pow(mN).add(Z.valueOf(mN - 1).pow(mN)).divide2();
+  }
+}
+#!queue	A352184	0	->	0	FiniteSequence	--------------------------------
+package irvine.oeis.a352;
+
+import irvine.oeis.FiniteSequence;
+
+/**
+ * A352184 Coxeter-Catalan numbers for the Coxeter groups A_0, A_1, A_2, A_3 = D_3, D_4, D_5, E_6, E_7, E_8.
+ * @author Georg Fischer
+ */
+public class A352184 extends FiniteSequence {
+
+  /** Construct the sequence. */
+  public A352184() {
+    super(0, FINITE, "1, 2, 5, 14, 50, 182, 833, 4160, 25080");
+  }
+}
+#!queue	A054586	0	->	0	MultiplicativeSequence	--------------------------------
+package irvine.oeis.a054;
+// Generated by gen_seq4.pl mult3/mult at 2022-07-19 22:09
+
+import irvine.math.z.Z;
+import irvine.oeis.MultiplicativeSequence;
+
+/**
+ * A054586 Sum_{d|2n+1} phi(d)*mu(d).
+ * @author Georg Fischer
+ */
+public class A054586 extends MultiplicativeSequence {
+
+  /** Construct the sequence. */
+  public A054586() {
+    super(1, 2, (p, e) -> Z.TWO.subtract(p));
+    setOffset(0);
+  }
+}
+#!queue	A070063	0	->	-22	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a070;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A070063 Decimal expansion of the Boltzmann constant k in the 2019 SI system in units J/K.
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A070063 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A070063() {
+    super(1, PhysicsConstants.BOLTZMANN_CR.multiply(Z.TEN.pow(23)));
+    setOffset(-22);
+  }
+}
+#!queue	A076157	0	->	1	FoldedContinuedFraction	--------------------------------
+package irvine.oeis.a076;
+
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Z;
+import irvine.oeis.cons.FoldedContinuedFraction;
+
+/**
+ * A076157 Continued fraction expansion for c=sum_{k&gt;=0} 1/2^(k!).
+ * a(3*2^n) = 2^((n+1)*((n+2)!)) - 1
+ * @author Georg Fischer
+ */
+public class A076157 extends FoldedContinuedFraction {
+
+  /** Construct the sequence */
+  public A076157() {
+    super(0, k -> Z.TWO.pow(MemoryFactorial.SINGLETON.factorial(k).multiply(k - 1)), new long[] {1, 3, 1, 3, 4});
+    setOffset(1);
+    setStart(2);
+  }
+}
+#!queue	A080108	0	->	1	ExponentialGeneratingFunction	--------------------------------
+package irvine.oeis.a080;
+// generated by patch_offset.pl at 2022-08-27 22:54
+
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.oeis.ExponentialGeneratingFunction;
+
+/**
+ * A080108 a(n) = Sum_{k=1..n} k^(n-k)*binomial(n-1,k-1).
+ * E.g.f.: exp(x*(1+exp(x)))
+ * @author Georg Fischer
+ */
+public class A080108 extends ExponentialGeneratingFunction {
+
+  /** Construct the sequence. */
+  public A080108() {
+    super(0);
+    setOffset(1);
+  }
+
+  @Override
+  public Polynomial<Q> compute(final int n) {
+    return RING.exp(RING.multiply(RING.x(), RING.add(RING.one(), RING.exp(RING.x(), n)), n), n);
+  }
+}
+#!queue	A081799	0	->	-11	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.cr.CR;
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A081799 Decimal expansion of the electric permittivity of vacuum in SI units as defined before 20 May 2019.
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A081799 extends DecimalExpansionSequence {
+
+  private static final CR LIGHT_SPEED_SQUARED = CR.valueOf(Z.valueOf(PhysicsConstants.SPEED_OF_LIGHT).square());
+
+  /** Construct the sequence. */
+  public A081799() {
+    super(-18, CR.TAU.multiply(CR.TWO).multiply(LIGHT_SPEED_SQUARED).inverse());
+    setOffset(-11);
+  }
+}
+#!queue	A081823	0	->	-18	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A081823 Decimal expansion of the elementary charge e in coulombs (C).
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A081823 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A081823() {
+    super(1, PhysicsConstants.ELEMENTARY_CHARGE_CR.multiply(Z.TEN.pow(18)));
+    setOffset(-18);
+  }
+}
+#!queue	A081824	0	->	-4	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a081;
+
+import irvine.math.cr.CR;
+import irvine.math.r.PhysicsConstants;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A081824 Decimal expansion of conductance quantum in units of S.
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A081824 extends DecimalExpansionSequence {
+
+  /** Conductance quantum G_0 in S. */
+  private static final CR CONDUCTANCE_QUANTUM = PhysicsConstants.ELEMENTARY_CHARGE_CR.multiply(PhysicsConstants.ELEMENTARY_CHARGE_CR).multiply(CR.TWO).divide(PhysicsConstants.PLANCK_CONSTANT_CR).multiply(10000);
+
+  /** Construct the sequence. */
+  public A081824() {
+    super(1, CONDUCTANCE_QUANTUM);
+    setOffset(-4);
+  }
+}
+#!queue	A083187	0	->	1	CharacteristicFunction	--------------------------------
+package irvine.oeis.a083;
+// Generated by gen_seq4.pl charfun at 2020-08-28 13:59
+
+import irvine.oeis.CharacteristicFunction;
+import irvine.oeis.a002.A002379;
+
+/**
+ * A083187 a(n) = floor(log_3/2(n+1)) - floor(log_3/2(n)).
+ * @author Georg Fischer
+ */
+public class A083187 extends CharacteristicFunction {
+
+  /** Construct the sequence. */
+  public A083187() {
+    super(0, new A002379());
+    setOffset(1);
+    next();
+  }
+}
+#!queue	A086677	0	->	2	ExponentialGeneratingFunction	--------------------------------
+package irvine.oeis.a086;
+// generated by patch_offset.pl at 2022-08-27 22:54
+
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.oeis.ExponentialGeneratingFunction;
+
+/**
+ * A086677 Number of Steiner topologies on n points.
+ * E.g.f.: 4*(x-3)/(x+1)^4 - (-13+22*x+3*x^2)/((-x^2-4*x+1)^(1/2)*(x+1)^4)
+ * @author Georg Fischer
+ */
+public class A086677 extends ExponentialGeneratingFunction {
+
+  /** Construct the sequence. */
+  public A086677() {
+    super(0);
+    setOffset(2);
+  }
+
+  @Override
+  public Polynomial<Q> compute(final int n) {
+    return RING.subtract(RING.series(RING.multiply(RING.monomial(Q.FOUR, 0), RING.subtract(RING.x(), RING.monomial(Q.THREE, 0)), n), RING.pow(RING.add(RING.x(), RING.one()), 4, n), n), RING.series(RING.add(RING.add(RING.negate(RING.monomial(new Q(13), 0)), RING.monomial(new Q(22), 1)), RING.monomial(Q.THREE, 2)), RING.multiply(RING.exp(RING.multiply(RING.log(RING.add(RING.subtract(RING.negate(RING.pow(RING.x(), 2, n)), RING.monomial(Q.FOUR, 1)), RING.one()), n), RING.series(RING.one(), RING.monomial(Q.TWO, 0), n), n), n), RING.pow(RING.add(RING.x(), RING.one()), 4, n), n), n));
+  }
+}
+#!queue	A090439	0	->	1	HypergeometricSequence	--------------------------------
+package irvine.oeis.a090;
+// manually hygeom at 2022-08-04 18:01
+
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Z;
+import irvine.oeis.HypergeometricSequence;
+
+/**
+ * A090439 Alternating row sums of array A090438 ((4,2)-Stirling2).
+ * @author Georg Fischer
+ */
+public class A090439 extends HypergeometricSequence {
+
+  private int mN = -1;
+
+  /** Construct the sequence. */
+  public A090439() {
+    super(0, 1, 1, "[[0,-2],[3],[1]]"); // "assuming offset 0"
+    setOffset(1);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return super.nextQ().multiply(MemoryFactorial.SINGLETON.factorial(2 * mN + 2)).divide(2).num();
+  }
+}
+#!queue	A099395	0	->	1	CharacteristicFunction	--------------------------------
+package irvine.oeis.a099;
+// Generated by gen_seq4.pl charfun at 2020-08-28 13:59
+// DO NOT EDIT here!
+
+import irvine.oeis.CharacteristicFunction;
+import irvine.oeis.a007.A007283;
+
+/**
+ * A099395 One if odd part of n is 3, zero otherwise.
+ * @author Georg Fischer
+ */
+public class A099395 extends CharacteristicFunction {
+
+  /** Construct the sequence. */
+  public A099395() {
+    super(0, new A007283());
+    setOffset(1);
+    next();
+  }
+}
+#!queue	A159039	0	->	1	ExponentialGeneratingFunction	--------------------------------
+package irvine.oeis.a159;
+// generated by patch_offset.pl at 2022-08-27 22:54
+
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.oeis.ExponentialGeneratingFunction;
+
+/**
+ * A159039 E.g.f. sec(x)/(1-x) = 1/( cos(x) * (1-x) ).
+ * E.g.f.: 1/( cos(x) * (1-x) ).
+ * @author Georg Fischer
+ */
+public class A159039 extends ExponentialGeneratingFunction {
+
+  /** Construct the sequence. */
+  public A159039() {
+    super(0);
+    setOffset(1);
+  }
+
+  @Override
+  public Polynomial<Q> compute(final int n) {
+    return RING.series(RING.one(), RING.multiply(RING.cos(RING.x(), n), RING.oneMinusXToTheN(1), n), n);
+  }
+}
+#!queue	A226435	0	->	1	ExponentialGeneratingFunction	--------------------------------
+package irvine.oeis.a226;
+// generated by patch_offset.pl at 2022-08-27 22:54
+
+import irvine.math.polynomial.Polynomial;
+import irvine.math.q.Q;
+import irvine.oeis.ExponentialGeneratingFunction;
+
+/**
+ * A226435 Number of permutations of 1..n with fewer than 2 interior elements having values lying between the values of their neighbors.
+ * lying between the values of their neighbors.
+ * E.g.f.: (sec(x) + tan(x)) - (sec(x) + tan(x))^2 + (sec(x) + tan(x))^3
+ * @author Georg Fischer
+ */
+public class A226435 extends ExponentialGeneratingFunction {
+
+  /** Construct the sequence. */
+  public A226435() {
+    super(0);
+    setOffset(1);
+  }
+
+  @Override
+  public Polynomial<Q> compute(final int n) {
+    return RING.add(RING.subtract(RING.add(RING.sec(RING.x(), n), RING.tan(RING.x(), n)), RING.pow(RING.add(RING.sec(RING.x(), n), RING.tan(RING.x(), n)), 2, n)), RING.pow(RING.add(RING.sec(RING.x(), n), RING.tan(RING.x(), n)), 3, n));
+  }
+}
+#!queue	A248507	0	->	-14	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a248;
+
+import irvine.math.cr.CR;
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A248507 Decimal expansion of a single magnetic flux quantum Phi_0 in SI units.
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A248507 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A248507() {
+    super(1, PhysicsConstants.PLANCK_CONSTANT_CR.divide(PhysicsConstants.ELEMENTARY_CHARGE_CR).divide(CR.TWO).multiply(Z.TEN.pow(15)));
+    setOffset(-14);
+  }
+}
+#!queue	A254181	0	->	-33	DecimalExpansionSequence	--------------------------------
+package irvine.oeis.a254;
+
+import irvine.math.r.PhysicsConstants;
+import irvine.math.z.Z;
+import irvine.oeis.cons.DecimalExpansionSequence;
+
+/**
+ * A254181 Decimal expansion of reduced Planck constant (in joule seconds).
+ * @author Sean A. Irvine
+ * @author Georg Fischer
+ */
+public class A254181 extends DecimalExpansionSequence {
+
+  /** Construct the sequence. */
+  public A254181() {
+    super(1, PhysicsConstants.HBAR_CR.multiply(Z.TEN.pow(33)));
+    setOffset(-33);
+  }
+}
+#!queue	A255738	0	->	1	CharacteristicFunction	--------------------------------
+package irvine.oeis.a255;
+// Generated by gen_seq4.pl charfun at 2020-08-28 13:59
+
+import irvine.oeis.CharacteristicFunction;
+import irvine.oeis.a094.A094373;
+
+/**
+ * A255738 a(1) = 1; for n &gt; 1, a(n) = 1*0^{A000120(n-1) - 1}.
+ * @author Georg Fischer
+ */
+public class A255738 extends CharacteristicFunction {
+
+  /** Construct the sequence. */
+  public A255738() {
+    super(0, new A094373());
+    setOffset(1);
+    next();
+  }
+}
+#!queue	A256434	0	->	0	CharacteristicFunction	--------------------------------
+package irvine.oeis.a256;
+// manually, charfun at 2021-06-22 17:32
+
+import irvine.math.z.Z;
+import irvine.oeis.CharacteristicFunction;
+import irvine.oeis.a006.A006564;
+
+/**
+ * A256434 Characteristic function of icosahedral numbers.
+ * @author Georg Fischer
+ */
+public class A256434 extends CharacteristicFunction {
+
+  protected int mN;
+  
+  /** Construct the sequence. */
+  public A256434() {
+    super(1, new A006564());
+    setOffset(0);
+    mN = -1;
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    return mN < 1 ? Z.ONE : super.next();
+  }
+}
+#!queue	A293145	0	->	0	HypergeometricSequence	--------------------------------
+package irvine.oeis.a293;
+// manually hygeom at 2022-08-06 15:16
+
+import irvine.math.factorial.MemoryFactorial;
+import irvine.math.z.Z;
+import irvine.oeis.HypergeometricSequence;
+
+/**
+ * A293145 a(n) = n! * [x^n] exp(n*x/(1 - x)).
+ * <code>Join[{1}, Table[n n! Hypergeometric1F1[1 - n, 2, -n], {n, 1, 18}]]</code>
+ * @author Georg Fischer
+ */
+public class A293145 extends HypergeometricSequence {
+
+  private int mN = -1;
+
+  /** Construct the sequence. */
+  public A293145() {
+    super(1, 1, 1, "[[1,-1],[2],[0,-1]]");
+    setOffset(0);
+  }
+
+  @Override
+  public Z next() {
+    ++mN;
+    if (mN == 0) {
+      return Z.ONE;
+    } else {
+      return super.nextQ().multiply(mN).multiply(MemoryFactorial.SINGLETON.factorial(mN)).num();
+    }
+  }
+}
+#!queue	A320534	0	->	0	HypergeometricSequence	--------------------------------
+package irvine.oeis.a320;
+// manually hygeom at 2022-08-06 18:18
+
+import irvine.math.z.Z;
+import irvine.oeis.HypergeometricSequence;
+
+/**
+ * A320534 a(n) = ((1 + sqrt(4*n^2 + 1))^n + (1 - sqrt(4*n^2 + 1))^n)/2^n.
+ * @author Georg Fischer
+ */
+public class A320534 extends HypergeometricSequence {
+
+  private int mN = -1;
+
+  /** Construct the sequence. */
+  public A320534() {
+    super(1, 2, 1, "[[1/2,-1/2],[0,-1/2],[1/2],[1, 0, 4]]");
+    setOffset(0);
+  }
+  
+  @Override
+  public Z next() {
+    ++mN;
+    if (mN == 0) {
+      return Z.TWO;
+    } else {
+      return super.nextQ().divide(Z.ONE.shiftLeft(mN - 1)).num();
+    }
+  }
+}
+#!queue	A999999	0	0	0	0

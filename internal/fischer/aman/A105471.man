@@ -1,7 +1,7 @@
-A105471	parm2	0	A105471	100		a(n) = Fibonacci(n) mod 100.    nonn,easy,      0..1000 nyi
-A137290	parm2	0	A105471	30		Fibonacci(n) mod 30.    nonn,   1..130  nyi
-A248740	parm2	0	A105471	1000		a(n) = Fibonacci(n) mod 1000.   nonn,   0..3000 nyi
-A261606	parm2	0	A105471	60		a(n) = Fibonacci(n) mod 60.     nonn,base,      0..10000        nyi
+# A105471	parmof2	0	A105471	100		a(n) = Fibonacci(n) mod 100.    nonn,easy,      0..1000 nyi
+A137290	parmof2	0	A105471	30		Fibonacci(n) mod 30.    nonn,   1..130  nyi
+A248740	parmof2	0	A105471	1000		a(n) = Fibonacci(n) mod 1000.   nonn,   0..3000 nyi
+A261606	parmof2	0	A105471	60		a(n) = Fibonacci(n) mod 60.     nonn,base,      0..10000        nyi
 # A182167	parm2	0	A105471	100		Min( f(n), n-f(n) ), where f(n) = A002708(n) = Fibonacci(n) mod n.      nonn,
 # A217737	parm2	0	A105471	100		a(n) = Fibonacci(n) mod n*(n+1).        nonn,easy,      1..10000        nyi
 # A253109	parm2	0	A105471	100		a(n) = n ^ (Fibonacci(n) mod n).        nonn,easy,synth 1..26   nyi
