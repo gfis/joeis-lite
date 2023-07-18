@@ -6,7 +6,8 @@
 #
 #:# Usage:
 #:#   perl queue.pl [-d debug] -p listfile > outfile
-#:#   perl queue.pl [-d debug] {-p|-u infile} > outfile
+#:#   perl queue.pl [-d debug] {-p|-u[f] infile} > outfile
+#:#       -uf force update
 #:#       listfile has tsv fields aseqno, p1, p2, p3 ...
 #--------------------------------------------------------
 use strict;
@@ -21,6 +22,7 @@ if (0 && scalar(@ARGV) == 0) {
 my $mode = "p";
 my $debug = 0;
 my $separator = "#!queue";
+my $force = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -30,6 +32,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $mode      =   "p";
     } elsif ($opt  =~ m{u}) {
         $mode      =   "u";
+        $force = ($opt =~ m{f}) ? 1 : 0;
     } else {
         die "invalid option \"$opt\"\n";
     }
@@ -115,7 +118,7 @@ sub unpack1 {
     close(SRC);
     my $b1 = $buffer; $b1 =~ s{\s}{}mg;
     my $b2 = $change; $b2 =~ s{\s}{}mg;
-    if ($b1 ne $b2) {
+    if ($force or ($b1 ne $b2)) {
         $change =~ s{\n\/\/ *DO NOT EDIT[^\n]*}{};
         $change =~ s{\n\n\n}{\n\n}mg;
         open(TAR, ">", "$tarpath/$aseqno.java") || die "cannot write $tarpath/$aseqno.java\n";

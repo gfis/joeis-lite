@@ -39,6 +39,7 @@ absref_stato:
 absref_stat2:
 	make absref1 MODE=trian LIST=offinspect1.tmp
 absref_stat9:
+	make offin hasoc
 	tail -n16 offin.tmp noabs.tmp \
 	| grep -P  "^\d\d\d\d\-" >> reflect_progress.txt
 	tail -n8 reflect_progress.txt
@@ -140,7 +141,7 @@ offindep3: # superclasses that do not occur in offin 627
 	wc -l    $@.tmp
 offsort: # sort offin.tmp with superclasses ASC
 	sort -k5.1 -k1.1 offin.tmp | sed -e "s/\r//" > offin.srt
-offin_table: # create table 'offin' 
+offin: # create table 'offin' 
 	$(DBAT) -f offin.create.sql
 	grep -E "^A[0-9]" offin.tmp | sed -e "s/ //g" \
 	| $(DBAT) -r offin
@@ -149,7 +150,7 @@ offin_table: # create table 'offin'
 hasoc: # create table 'hasoc' 
 	$(DBAT) -f hasoc.create.sql
 	$(DBAT) -r hasoc < hasoc.tab
-	$(DBAT) -x -44444 hasoc
+	$(DBAT) -n hasoc
 offin_eval2: # select those with all subclasses needing the same offset patch, on 2 levels
 	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass \
 	                            , o2.shift, o2.superclass \
@@ -204,7 +205,7 @@ unpackall:
 #	# make unpack1 P=basec
 #	# make unpack1 P=wrapcon
 #	# make unpack1 P=wraprec
-#	# ---- 2023-07-12:
+# 2023-07-12:
 #	# cd .. ; make CC=A001482 gener
 #	# cd .. ; make CC=A004035 gener
 #	# cd .. ; make CC=A105599 gener
@@ -216,7 +217,7 @@ unpackall:
 #	# make unpack1 P=memfun
 #	# cp -pv ../hold_many/A*.java ../manual
 #	# cp -pv ../hold_tresimple/A*.java ../manual
-#	# ---- 2023-07-12:
+# 2023-07-12:
 #	make unpack1 P=trionk2
 #	make unpack1 P=offin.07-13
 #	make unpack1 P=memor14
@@ -226,48 +227,65 @@ unpackall:
 #	cd .. ; rm -f manual/A171238.java
 #	cd .. ; make CC=A105599 gener
 #	cd .. ; make CC=A115422 gener
-#	cd .. ; make CC=refl_trionk man dist testall TO=8 GU=4 pack1
-	# ---- 2023-07-16:
-	make unpack1 P=offin16
-	make unpack1 P=hasoc16a
-	make unpack1 P=hasoc16b
-	cd .. ; make CC=A052179 select EX=xx gener
-	cd .. ; make CC=A055235 select EX=xx gener
-	cd .. ; make CC=A057036 select EX=xx gener
-	cd .. ; make CC=A067480 select EX=xx gener
-	cd .. ; make CC=A069588 select EX=xx gener
-	cd .. ; make CC=A098941 select EX=xx gener
-	#cd .. ; make CC=A069588 select EX=xx gener
-	cd .. ; make CC=A105471 select EX=xx gener
-	cd .. ; make CC=A169964 select EX=xx gener
-	cd .. ; make CC=refl_hasoc16b man dist testall TO=8 GU=4 pack1
+#	cd .. ; make CC=refl_trionk man dist testall log TO=8 GU=4 pack1
+#	cd .. ; make CC=A052179 gener
+#	cd .. ; make CC=A055235 gener
+#	cd .. ; make CC=A057036 gener
+#	cd .. ; make CC=A067067 gener
+#	cd .. ; make CC=A067480 gener
+#	cd .. ; make CC=A069588 gener
+#	cd .. ; make CC=A098941 gener
+#	cd .. ; make CC=A105471 gener
+#	cd .. ; make CC=A169964 gener
+#	make unpack1 P=offin16
+#	make unpack1 P=hasoc16a
+#	perl queue.pl -uf hasoc16d.pack
+#	cd .. ; make CC=refl_hasoc16d man dist testall log TO=8 GU=4 pack1
+# 2023-07-17
+#	perl queue.pl -uf hasoc17b.pack
+#	cd .. ; make CC=refl_hasoc17b man dist testall log TO=10 GU=2 pack1
+# 2023-07-18:
+	make unpack1 P=hasoc18a
+	cd .. ; cp -pv hold/*.java manual
+	make hasoc18b
+	make unpack1 P=hasoc18b
+	cd .. ; make CC=refl_hasoc18b man dist testall log TO=8 GU=32 pack1
+	# make absref_stat
+#--------
 unpack1: # P= ; unpack 1 *.pack, and write ../refl_$(P).gen
 	perl queue.pl -u $(P).pack
-	grep -P "\A\#\!queue" $(P).pack | cut -f2 | grep -v A999 > ../refl_$(P).gen
-#--
-A000217: # pack all sources that extend $(A)
-	grep -P "$@" offin.tmp | perl queue.pl -p \
-	| perl -ne 's{(\Apublic +class +A\d+ +extends *$@ *\{)}'\
-	'  {$$1\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$$\(ASEQNO\)\(\) \{\n    super\(\$$\(OFFSET\)\);\n  \}}; print; '\
+	grep -P "\A\#\!queue" $(P).pack | cut -f2 | grep -v A999 > ../refl_$(P).gen 
+hasoc18b:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass FROM offin o1 \
+	  WHERE o1.superclass IN ('A003285','A007695','A011804','A027157','A047749','A133687','A285012','A318795') \
+	    ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	| perl patch_queue.pl -m hasoc18b \
 	>        $@.pack
 	uedit64  $@.pack
-A018940: # pack all sources that extend $(A)
-	grep -P "$@" offin.tmp | perl queue.pl -p > $@.pack
-#--
-basec:
-	grep -P "[a-z]" offin.tmp \
-	| grep -vP "WrappedRecurrence|Memory|Triangle" \
-	>        $@.tmp
-	tail -n2 $@.tmp
+hasoc18a:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass FROM offin o1 \
+	  WHERE o1.superclass IN (SELECT superclass FROM hasoc) \
+	    ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| tee    $@.tmp
 	wc -l    $@.tmp
-	perl queue.pl -p $@.tmp > $@.pack
-based:
-	grep -P "[a-z]" offin.tmp \
-	| grep -vP "Memory|\bTriangle" \
-	>        $@.tmp
-	tail -n2 $@.tmp
-	wc -l    $@.tmp
-	perl queue.pl -p $@.tmp > $@.pack
+	perl queue.pl -p $@.tmp \
+	>        $@.pack
+	uedit64  $@.pack
+hasoc16z:
+	cd .. ; make CC=A052179 select EX=xx
+	cd .. ; make CC=A055235 select EX=xx
+	cd .. ; make CC=A057036 select EX=xx
+	cd .. ; make CC=A067067 select EX=xx
+	cd .. ; make CC=A067480 select EX=xx
+	cd .. ; make CC=A069588 select EX=xx
+	cd .. ; make CC=A098941 select EX=xx
+	cd .. ; make CC=A105471 select EX=xx
+	cd .. ; make CC=A169964 select EX=xx
 #--
 hasoc16a:
 	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass FROM offin o1 \
@@ -297,6 +315,45 @@ hasoc16b:
 hasoc16c:
 	grep -P "  (protected|public) *A\d+\(final ([^i]|[^\,]+\,)" hasoc16b.pack | tee $@.tmp
 	uedit64 $@.tmp
+hasoc16d:
+	perl patch_queue.pl -m hasoc16 hasoc16b.pack > $@.pack
+hasoc17a:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass FROM offin o1 \
+	  WHERE o1.superclass IN (SELECT superclass FROM hasoc) \
+	    ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	>        $@.pack
+	uedit64  $@.pack
+hasoc17b:
+	perl patch_queue.pl -m hasoc17 hasoc17a.pack > $@.pack
+	uedit64  $@.pack
+#--
+A000217: # pack all sources that extend $(A)
+	grep -P "$@" offin.tmp | perl queue.pl -p \
+	| perl -ne 's{(\Apublic +class +A\d+ +extends *$@ *\{)}'\
+	'  {$$1\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$$\(ASEQNO\)\(\) \{\n    super\(\$$\(OFFSET\)\);\n  \}}; print; '\
+	>        $@.pack
+	uedit64  $@.pack
+A018940: # pack all sources that extend $(A)
+	grep -P "$@" offin.tmp | perl queue.pl -p > $@.pack
+#--
+basec:
+	grep -P "[a-z]" offin.tmp \
+	| grep -vP "WrappedRecurrence|Memory|Triangle" \
+	>        $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp > $@.pack
+based:
+	grep -P "[a-z]" offin.tmp \
+	| grep -vP "Memory|\bTriangle" \
+	>        $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp > $@.pack
 #--
 memfun:
 	grep -P "MemoryFunction" offin.tmp \
