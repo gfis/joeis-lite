@@ -103,8 +103,8 @@ finite1:     # select the eligable programs
 	wc -l    $@.tmp
 #----
 hasoc_grep: # DIR= grep all that have a constructor with an isolated offset parameter
-	find $(DIR) -iname "A*.java" | xargs -l grep -P "(public|protected) *A\d+\(final *int *offset\)" \
-	| perl -ne 'm{(A\d+)}; print "$$1\n"; '\
+	find src/irvine/oeis -iname "A*.java" | xargs -l grep -P "(public|protected) \w+\(final *int *offset\)" \
+	| perl -ne 'm{\/oeis\/([^\.]+)}; print "$$1\n"; '\
 	| tee    $@.tmp
 #----
 offcount: # SUP=superclass ; count the different offsets for some jOEIS superclass

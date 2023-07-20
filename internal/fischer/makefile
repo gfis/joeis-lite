@@ -676,14 +676,13 @@ robot2: # make an individual robot
 	make select2 select3 gener maditel TO=8
 robot3: # compile and test all
 	#-- postlude
-	cp -v hold/*.java  manual || :
-	wc -l   robot.gen
-	make CC=robot purge gener maditel TO=8
-	mv -v   robot.gen robot.`date +%Y-%m-%d.%H`.gen
-	make sumall
-	mv -v manual/A*.java park1/
-robot4: # remain the clean ones only
-	make CC=robot cleanto gener maditel TO=8
+	# cp -v hold/*.java  manual || :
+	grep -vf robots.fail.lst robot.gen > robots.gen
+	wc -l   robot*
+	make CC=robots purge gener maditel TO=8
+	mv -v   robots.gen robots.`date +%Y-%m-%d.%H`.gen
+robot4: # keep the clean ones only
+	make CC=robots cleanto gener maditel TO=8
 #--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
@@ -3296,7 +3295,8 @@ holof1:
 	wc -l    $@.tmp
 #----
 holom:
-	grep -E "^A[0-9]" $(HOLREC)/holom.man > holom.gen
+	# cd $(HOLREC) ; make holom
+	grep -E "^A[0-9]" $(HOLREC)/holom.gen > holom.gen
 holoman:
 	cp -v $(HOLREC)/holom.gen $@.gen
 	wc -l $@.gen

@@ -1,133 +1,185 @@
-#!queue	A027158	1	->	0	A027157	--------------------------------
-package irvine.oeis.a027;
+#!queue	A000512	0	->	1	A133687	--------------------------------
+package irvine.oeis.a000;
 
 import irvine.math.z.Z;
+import irvine.oeis.a133.A133687;
 
 /**
- * A027158 a(n) = T(2n,n), T given by A027157.
+ * A000512 Number of equivalence classes of n X n matrices over {0,1} with rows and columns summing to 3, where equivalence is defined by row and column permutations.
  * @author Sean A. Irvine
  */
-public class A027158 extends A027157 {
+public class A000512 extends A133687 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private long mN = -1;
+  private int mN = 0;
 
   @Override
   public Z next() {
-    return t(2 * ++mN, mN);
+    return Z.valueOf(get(++mN, 3));
   }
 }
-#!queue	A027160	1	->	2	A027157	--------------------------------
-package irvine.oeis.a027;
+#!queue	A000513	0	->	1	A133687	--------------------------------
+package irvine.oeis.a000;
 
 import irvine.math.z.Z;
+import irvine.oeis.a133.A133687;
 
 /**
- * A027160 a(n) = T(2n,n-2), T given by A027157.
+ * A000513 Number of equivalence classes of n X n matrices over {0,1} with rows and columns summing to 4, where equivalence is defined by row and column permutations. Also number of isomorphism classes of bicolored quartic bipartite graphs, where isomorphism cannot exchange the colors.
  * @author Sean A. Irvine
  */
-public class A027160 extends A027157 {
+public class A000513 extends A133687 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private long mN = 1;
+  private int mN = 0;
 
   @Override
   public Z next() {
-    return t(2 * ++mN, mN - 2);
+    return Z.valueOf(get(++mN, 4));
   }
 }
-#!queue	A027162	1	->	2	A027157	--------------------------------
-package irvine.oeis.a027;
+#!queue	A000516	0	->	1	A133687	--------------------------------
+package irvine.oeis.a000;
 
 import irvine.math.z.Z;
+import irvine.oeis.a133.A133687;
 
 /**
- * A027162 a(n) = T(2n-1,n-2), T given by A027157.
+ * A000516 Number of equivalence classes of n X n matrices over {0,1} with rows and columns summing to 5, where equivalence is defined by row and column permutations. Isomorphism classes of bicolored 5-regular bipartite graphs, where isomorphism cannot exchange the colors.
  * @author Sean A. Irvine
  */
-public class A027162 extends A027157 {
+public class A000516 extends A133687 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private long mN = 1;
+  private int mN = 0;
 
   @Override
   public Z next() {
-    return t(2 * ++mN - 1, mN - 2);
+    return Z.valueOf(get(++mN, 5));
   }
 }
-#!queue	A027163	1	->	0	A027157	--------------------------------
-package irvine.oeis.a027;
+#!queue	A000519	0	->	1	A133687	--------------------------------
+package irvine.oeis.a000;
 
 import irvine.math.z.Z;
+import irvine.oeis.a133.A133687;
 
 /**
- * A027163 a(n) = T(n,[ n/2 ]), T given by A027157.
+ * A000519 Number of equivalence classes of nonzero regular 0-1 matrices of order n.
  * @author Sean A. Irvine
  */
-public class A027163 extends A027157 {
+public class A000519 extends A133687 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private long mN = -1;
-
-  @Override
-  public Z next() {
-    return t(++mN, mN / 2);
-  }
-}
-#!queue	A027164	1	->	0	A027157	--------------------------------
-package irvine.oeis.a027;
-
-import irvine.math.z.Z;
-
-/**
- * A027164 a(n) = T(n,0) + T(n,1) + ... + T(n,n), T given by A027157.
- * @author Sean A. Irvine
- */
-public class A027164 extends A027157 {
-
-  /** Construct the sequence. */
-  public $(ASEQNO)() {
-    super($(OFFSET));
-  }
-
-  private long mN = -1;
+  private int mN = 0;
 
   @Override
   public Z next() {
     ++mN;
     Z sum = Z.ZERO;
-    for (long k = 0; k <= mN; ++k) {
-      sum = sum.add(t(mN, k));
+    for (int k = 0; k < mN; ++k) {
+      sum = sum.add(get(mN, k));
     }
     return sum;
   }
 }
-#!queue	A027165	1	->	0	A027157	--------------------------------
-package irvine.oeis.a027;
+#!queue	A007065	0	->	-1	A011804	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.oeis.a011.A011804;
+
+/**
+ * A007065 Number of M-sequences from multicomplexes on at most 5 variables with no monomial of degree greater than n.
+ * @author Sean A. Irvine
+ */
+public class A007065 extends A011804 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  @Override
+  protected long start() {
+    return -2;
+  }
+
+  @Override
+  protected long variables() {
+    return 5;
+  }
+}
+#!queue	A007625	0	->	-1	A011804	--------------------------------
+package irvine.oeis.a007;
+
+import irvine.oeis.a011.A011804;
+
+/**
+ * A007625 Number of M-sequences from multicomplexes on at most 6 variables with no monomial of degree more than n-1.
+ * @author Sean A. Irvine
+ */
+public class A007625 extends A011804 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  @Override
+  protected long start() {
+    return -2;
+  }
+
+  @Override
+  protected long variables() {
+    return 6;
+  }
+}
+#!queue	A011808	0	->	1	A011804	--------------------------------
+package irvine.oeis.a011;
+
+/**
+ * A011808 M-sequences from multicomplexes on at most 11 variables with no monomial of degree more than n-1.
+ * @author Sean A. Irvine
+ */
+public class A011808 extends A011804 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  @Override
+  protected long variables() {
+    return 11;
+  }
+}
+#!queue	A011821	0	->	1	A011804	--------------------------------
+package irvine.oeis.a011;
 
 import irvine.math.z.Z;
 
 /**
- * A027165 T(n,0) + T(n,1) + ... + T(n,[ n/2 ]), T given by A027157.
+ * A011821 Number of M-sequences m_0,...,m_5 with m_1 &lt; n.
  * @author Sean A. Irvine
  */
-public class A027165 extends A027157 {
+public class A011821 extends A011804 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
@@ -138,24 +190,19 @@ public class A027165 extends A027157 {
 
   @Override
   public Z next() {
-    ++mN;
-    Z sum = Z.ZERO;
-    for (long k = 0; k <= mN / 2; ++k) {
-      sum = sum.add(t(mN, k));
-    }
-    return sum;
+    return m(++mN, 5);
   }
 }
-#!queue	A027167	1	->	0	A027157	--------------------------------
-package irvine.oeis.a027;
+#!queue	A011822	0	->	1	A011804	--------------------------------
+package irvine.oeis.a011;
 
 import irvine.math.z.Z;
 
 /**
- * A027167 a(n) = Sum_{k=0..floor(n/2)} A027157(n-k, k).
+ * A011822 M-sequences m_0,...,m_6 with m_1 &lt; n.
  * @author Sean A. Irvine
  */
-public class A027167 extends A027157 {
+public class A011822 extends A011804 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
@@ -166,24 +213,257 @@ public class A027167 extends A027157 {
 
   @Override
   public Z next() {
-    ++mN;
-    Z sum = Z.ZERO;
-    for (long k = 0; k <= mN / 2; ++k) {
-      sum = sum.add(t(mN - k, k));
-    }
-    return sum;
+    return m(++mN, 6);
   }
 }
-#!queue	A027168	1	->	0	A027157	--------------------------------
-package irvine.oeis.a027;
+#!queue	A011823	0	->	1	A011804	--------------------------------
+package irvine.oeis.a011;
 
 import irvine.math.z.Z;
 
 /**
- * A027168 Greatest number in row n of array T given by A027157.
+ * A011823 M-sequences m_0,...,m_7 with m_1 &lt; n.
  * @author Sean A. Irvine
  */
-public class A027168 extends A027157 {
+public class A011823 extends A011804 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return m(++mN, 7);
+  }
+}
+#!queue	A011824	0	->	1	A011804	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+
+/**
+ * A011824 M-sequences m_0,...,m_8 with m_1 &lt; n.
+ * @author Sean A. Irvine
+ */
+public class A011824 extends A011804 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return m(++mN, 8);
+  }
+}
+#!queue	A011825	0	->	1	A011804	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+
+/**
+ * A011825 M-sequences m_0,...,m_9 with m_1 &lt; n.
+ * @author Sean A. Irvine
+ */
+public class A011825 extends A011804 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return m(++mN, 9);
+  }
+}
+#!queue	A011827	0	->	1	A007695	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007695;
+
+/**
+ * A011827 f-vectors for simplicial complexes of dimension at most 2 on at most n-1 vertices.
+ * @author Sean A. Irvine
+ */
+public class A011827 extends A007695 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return f(++mN, 3);
+  }
+}
+#!queue	A011828	0	->	1	A007695	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007695;
+
+/**
+ * A011828 Number of f-vectors for simplicial complexes of dimension at most 3 on at most n-1 vertices.
+ * @author Sean A. Irvine
+ */
+public class A011828 extends A007695 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return f(++mN, 4);
+  }
+}
+#!queue	A011829	0	->	1	A007695	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007695;
+
+/**
+ * A011829 Number of f-vectors for simplicial complexes of dimension at most 4 on at most n-1 vertices.
+ * @author Sean A. Irvine
+ */
+public class A011829 extends A007695 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return f(++mN, 5);
+  }
+}
+#!queue	A011830	0	->	1	A007695	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007695;
+
+/**
+ * A011830 f-vectors for simplicial complexes of dimension at most 5 on at most n-1 vertices.
+ * @author Sean A. Irvine
+ */
+public class A011830 extends A007695 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return f(++mN, 6);
+  }
+}
+#!queue	A011831	0	->	1	A007695	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007695;
+
+/**
+ * A011831 f-vectors for simplicial complexes of dimension at most 6 on at most n-1 vertices.
+ * @author Sean A. Irvine
+ */
+public class A011831 extends A007695 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return f(++mN, 7);
+  }
+}
+#!queue	A011832	0	->	1	A007695	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007695;
+
+/**
+ * A011832 f-vectors for simplicial complexes of dimension at most 7 on at most n-1 vertices.
+ * @author Sean A. Irvine
+ */
+public class A011832 extends A007695 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return f(++mN, 8);
+  }
+}
+#!queue	A011833	0	->	1	A007695	--------------------------------
+package irvine.oeis.a011;
+
+import irvine.math.z.Z;
+import irvine.oeis.a007.A007695;
+
+/**
+ * A011833 Number of f-vectors for simplicial complexes of dimension at most 8 on at most n-1 vertices.
+ * @author Sean A. Irvine
+ */
+public class A011833 extends A007695 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = -1;
+
+  @Override
+  public Z next() {
+    return f(++mN, 9);
+  }
+}
+#!queue	A027610	0	->	1	A047749	--------------------------------
+package irvine.oeis.a027;
+
+import irvine.math.z.Z;
+import irvine.oeis.a047.A047749;
+
+/**
+ * A027610 Number of chordal planar triangulations; also number of planar triangulations with maximal number of triangles; also number of graphs obtained from the tetrahedron by repeatedly inserting vertices of degree 3 into a triangular face; also number of uniquely 4-colorable planar graphs; also number of simplicial 3-clusters with n cells; also Apollonian networks.
+ * @author Sean A. Irvine
+ */
+public class A027610 extends A047749 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
@@ -194,24 +474,35 @@ public class A027168 extends A027157 {
 
   @Override
   public Z next() {
-    ++mN;
-    Z max = Z.ZERO;
-    for (long k = 0; k <= mN; ++k) {
-      max = max.max(t(mN, k));
+    Z res = a1764(++mN).multiply2().divide(mN + 1).add(a47749(mN).multiply(9));
+    if ((mN & 1) == 0) {
+      res = res.add(a1764(mN / 2).multiply(5));
     }
-    return max;
+    if ((mN - 1) % 3 == 0) {
+      res = res.add(a1764((mN - 1) / 3).multiply(8));
+    }
+    if ((mN - 1) % 4 == 0) {
+      res = res.add(a1764((mN - 1) / 4).multiply(6));
+    }
+    if ((mN - 2) % 6 == 0) {
+      res = res.add(a1764((mN - 2) / 6).multiply(4));
+    }
+    if ((2 * mN - 1) % 3 == 0) {
+      res = res.add(a47749((2 * mN - 1) / 3).multiply(4));
+    }
+    return res.divide(24);
   }
 }
-#!queue	A027169	1	->	0	A027157	--------------------------------
-package irvine.oeis.a027;
+#!queue	A047751	0	->	1	A047749	--------------------------------
+package irvine.oeis.a047;
 
 import irvine.math.z.Z;
 
 /**
- * A027169 a(n) = self-convolution of row n of array T given by A027157.
+ * A047751 Number of dissectable polyhedra with symmetry of type K.
  * @author Sean A. Irvine
  */
-public class A027169 extends A027157 {
+public class A047751 extends A047749 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
@@ -222,148 +513,198 @@ public class A027169 extends A027157 {
 
   @Override
   public Z next() {
-    ++mN;
-    Z sum = Z.ZERO;
-    for (long k = 0; k <= mN; ++k) {
-      sum = sum.add(t(mN, k).multiply(t(mN, mN - k)));
-    }
-    return sum;
-  }
-}
-#!queue	A035015	1	->	2	A003285	--------------------------------
-package irvine.oeis.a035;
-
-import irvine.math.LongUtils;
-import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
-
-/**
- * A035015 Period of continued fraction for square root of n-th squarefree integer.
- * @author Sean A. Irvine
- */
-public class A035015 extends A003285 {
-
-  /** Construct the sequence. */
-  public $(ASEQNO)() {
-    super($(OFFSET));
-  }
-
-  @Override
-  public Z next() {
-    while (true) {
-      final Z t = super.next();
-      if (LongUtils.isSquareFree(mN) && !t.isZero()) {
-        return t;
-      }
+    if (++mN == 1) {
+      return Z.ONE;
+    } else if (mN % 12 != 5) {
+      return Z.ZERO;
+    } else {
+      return super.next();
     }
   }
 }
-#!queue	A059853	1	->	2	A003285	--------------------------------
-package irvine.oeis.a059;
+
+#!queue	A047752	0	->	1	A047749	--------------------------------
+package irvine.oeis.a047;
 
 import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
+import irvine.oeis.Sequence;
+import irvine.oeis.a001.A001764;
 
 /**
- * A059853 Period of continued fraction for sqrt(n^2+3), n &gt;= 2.
+ * A047752 Number of dissectable polyhedra with symmetry of type J.
  * @author Sean A. Irvine
  */
-public class A059853 extends A003285 {
-
-  /** Construct the sequence. */
-  public $(ASEQNO)() {
-    super($(OFFSET));
-    mN = 1;
-  }
-
-  @Override
-  public Z next() {
-    return period(Z.valueOf(++mN).square().add(3));
-  }
-}
-#!queue	A059854	1	->	3	A003285	--------------------------------
-package irvine.oeis.a059;
-
-import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
-
-/**
- * A059854 Period of continued fraction for sqrt(n^2+5), n &gt;= 3.
- * @author Sean A. Irvine
- */
-public class A059854 extends A003285 {
-
-  /** Construct the sequence. */
-  public $(ASEQNO)() {
-    super($(OFFSET));
-    mN = 2;
-  }
-
-  @Override
-  public Z next() {
-    return period(Z.valueOf(++mN).square().add(5));
-  }
-}
-#!queue	A059866	1	->	2	A003285	--------------------------------
-package irvine.oeis.a059;
-
-import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
-
-/**
- * A059866 Period length of the continued fraction for sqrt(2^n-1).
- * @author Sean A. Irvine
- */
-public class A059866 extends A003285 {
+public class A047752 extends A047749 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private Z mA = Z.TWO;
+  private final Sequence mA = new A001764();
+  private long mN = 0;
 
   @Override
   public Z next() {
-    mA = mA.multiply2();
-    return period(mA.subtract(1));
+    if (++mN % 12 != 5) {
+      return Z.ZERO;
+    } else {
+      return mA.next().subtract(super.next()).divide2();
+    }
   }
 }
-#!queue	A059926	1	->	4	A003285	--------------------------------
-package irvine.oeis.a059;
+
+#!queue	A047762	0	->	1	A047749	--------------------------------
+package irvine.oeis.a047;
 
 import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
+import irvine.oeis.Sequence;
 
 /**
- * A059926 Length of period of the continued fraction expansion of sqrt(2^n+1).
+ * A047762 Number of dissectable polyhedra with symmetry of type E.
  * @author Sean A. Irvine
  */
-public class A059926 extends A003285 {
+public class A047762 extends A047749 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private int mN = 3;
+  {
+    super.next();
+  }
+  private final Sequence mA = new A047760();
+  private final Sequence mB = new A047758();
+  private final Sequence mC = new A047754();
+  private final Sequence mD = new A047753();
+  private final Sequence mE = new A047752();
+  private final Sequence mF = new A047751();
+  private boolean mEven = true;
 
   @Override
   public Z next() {
-    return period(Z.ONE.shiftLeft(++mN).add(1));
+    final Z t = super.next().subtract(mA.next().multiply2()
+      .add(mB.next().multiply(6))
+      .add(mC.next().multiply2())
+      .add(mD.next().multiply(3))
+      .add(mE.next().multiply2())
+      .add(mF.next())
+    );
+    mEven = !mEven;
+    if (mEven) {
+      return Z.ZERO;
+    } else {
+      return t.divide(4);
+    }
   }
 }
-#!queue	A059927	1	->	0	A003285	--------------------------------
-package irvine.oeis.a059;
+#!queue	A047764	0	->	1	A047749	--------------------------------
+package irvine.oeis.a047;
 
 import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
 
 /**
- * A059927 Period length of the continued fraction for sqrt(2^(2n+1)).
+ * A047764 Number of dissectable polyhedra with symmetry of type Q.
  * @author Sean A. Irvine
  */
-public class A059927 extends A003285 {
+public class A047764 extends A047749 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private long mN = 0;
+
+  @Override
+  public Z next() {
+    return (++mN % 6) != 2 ? Z.ZERO : super.next();
+  }
+}
+
+#!queue	A047765	0	->	1	A047749	--------------------------------
+package irvine.oeis.a047;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+
+/**
+ * A047765 Number of dissectable polyhedra with symmetry of type P.
+ * @author Sean A. Irvine
+ */
+public class A047765 extends A047749 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  {
+    super.next();
+  }
+  private final Sequence mA = new A047764();
+  private boolean mOdd = false;
+
+  @Override
+  public Z next() {
+    final Z a = mA.next();
+    mOdd = !mOdd;
+    return mOdd ? Z.ZERO : super.next().subtract(a);
+  }
+}
+#!queue	A047775	0	->	1	A047749	--------------------------------
+package irvine.oeis.a047;
+
+import irvine.math.z.Z;
+import irvine.oeis.Sequence;
+
+/**
+ * A047775 Number of dissectable polyhedra with symmetry of type B.
+ * @author Sean A. Irvine
+ */
+public class A047775 extends A047749 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  {
+    super.next();
+  }
+
+  private final Sequence mA = new A047773();
+  private final Sequence mB = new A047760();
+  private final Sequence mC = new A047753();
+  private final Sequence mD = new A047751();
+  private final Sequence mE = new A047764();
+  private final Sequence mF = new A047765();
+
+  @Override
+  public Z next() {
+    return super.next()
+      .subtract(mA.next().multiply2())
+      .subtract(mB.next().multiply2())
+      .subtract(mC.next())
+      .subtract(mD.next())
+      .subtract(mE.next())
+      .subtract(mF.next())
+      .divide2();
+  }
+}
+
+#!queue	A052366	1	->	0	A318795	--------------------------------
+package irvine.oeis.a052;
+
+import irvine.math.z.Z;
+import irvine.oeis.a318.A318795;
+
+/**
+ * A052366 Number of nonnegative integer 4 X 4 matrices with sum of elements equal to n, under row and column permutations.
+ * @author Sean A. Irvine
+ */
+public class A052366 extends A318795 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
@@ -374,131 +715,175 @@ public class A059927 extends A003285 {
 
   @Override
   public Z next() {
-    mN += 2;
-    return period(Z.ONE.shiftLeft(mN));
+    return m(4, 4, ++mN);
   }
 }
-#!queue	A061490	1	->	0	A003285	--------------------------------
-package irvine.oeis.a061;
+#!queue	A052367	1	->	0	A318795	--------------------------------
+package irvine.oeis.a052;
 
 import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
-import irvine.util.string.StringUtils;
+import irvine.oeis.a318.A318795;
 
 /**
- * A061490 Smallest number which when iterated n times under A003285 gives a square.
+ * A052367 Number of nonnegative integer 5 X 5 matrices with sum of elements equal to n, under row and column permutations.
  * @author Sean A. Irvine
  */
-public class A061490 extends A003285 {
+public class A052367 extends A318795 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private final boolean mVerbose = "true".equals(System.getProperty("oeis.verbose"));
   private int mN = -1;
 
-  private boolean is(final long k, final int n) {
-    Z t = Z.valueOf(k);
-    for (int j = 0; j < n; ++j) {
-      if (t.isSquare()) {
-        return false;
-      }
-      t = period(t);
-    }
-    return t.isSquare();
-  }
-
   @Override
   public Z next() {
-    ++mN;
-    long k = 0;
-    while (true) {
-      if (is(++k, mN)) {
-        return Z.valueOf(k);
-      }
-      if (mVerbose && k % 100000 == 0) {
-        StringUtils.message("n=" + mN + " search completed to " + k);
-      }
-    }
+    return m(5, 5, ++mN);
   }
 }
-
-#!queue	A061682	1	->	2	A003285	--------------------------------
-package irvine.oeis.a061;
+#!queue	A052372	1	->	0	A318795	--------------------------------
+package irvine.oeis.a052;
 
 import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
+import irvine.oeis.a318.A318795;
 
 /**
- * A061682 Length of period of continued fraction expansion of square root of (2^(2n+1)+1).
+ * A052372 Number of nonnegative integer 6 X 6 matrices with sum of elements equal to n, under row and column permutations.
  * @author Sean A. Irvine
  */
-public class A061682 extends A003285 {
+public class A052372 extends A318795 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private int mN = 1;
+  private int mN = -1;
 
   @Override
   public Z next() {
-    return period(Z.ONE.shiftLeft(2 * ++mN + 1).add(1));
+    return m(6, 6, ++mN);
   }
 }
-
-#!queue	A062328	1	->	0	A003285	--------------------------------
-package irvine.oeis.a062;
+#!queue	A052373	1	->	0	A318795	--------------------------------
+package irvine.oeis.a052;
 
 import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
+import irvine.oeis.a318.A318795;
 
 /**
- * A062328 Length of period of continued fraction expansion of square root of 3^n+1.
+ * A052373 Number of nonnegative integer 7 X 7 matrices with sum of elements equal to n, under row and column permutations.
  * @author Sean A. Irvine
  */
-public class A062328 extends A003285 {
+public class A052373 extends A318795 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private Z mA = null;
+  private int mN = -1;
 
   @Override
   public Z next() {
-    mA = mA == null ? Z.ONE : mA.multiply(3);
-    return period(mA.add(1));
+    return m(7, 7, ++mN);
   }
 }
-#!queue	A064025	1	->	2	A003285	--------------------------------
-package irvine.oeis.a064;
+#!queue	A056504	1	->	0	A285012	--------------------------------
+package irvine.oeis.a056;
 
 import irvine.math.z.Z;
-import irvine.oeis.a003.A003285;
+import irvine.oeis.a285.A285012;
 
 /**
- * A064025 Length of period of the continued fraction for sqrt(n!).
+ * A056504 Number of periodic palindromic structures of length n using a maximum of three different symbols.
  * @author Sean A. Irvine
  */
-public class A064025 extends A003285 {
+public class A056504 extends A285012 {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
     super($(OFFSET));
   }
 
-  private Z mF = Z.ONE;
-  private long mN = 1;
+  private int mN = -1;
 
   @Override
   public Z next() {
-    mF = mF.multiply(++mN);
-    return period(mF);
+    return t(++mN, 3).add(t(mN, 2)).add(t(mN, 1));
+  }
+}
+#!queue	A056505	1	->	0	A285012	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.math.z.Z;
+import irvine.oeis.a285.A285012;
+
+/**
+ * A056505 Number of periodic palindromic structures using a maximum of four different symbols.
+ * @author Sean A. Irvine
+ */
+public class A056505 extends A285012 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private int mN = -1;
+
+  @Override
+  public Z next() {
+    return t(++mN, 4).add(t(mN, 3)).add(t(mN, 2)).add(t(mN, 1));
+  }
+}
+#!queue	A056506	1	->	0	A285012	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.math.z.Z;
+import irvine.oeis.a285.A285012;
+
+/**
+ * A056506 Number of periodic palindromic structures using a maximum of five different symbols.
+ * @author Sean A. Irvine
+ */
+public class A056506 extends A285012 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private int mN = -1;
+
+  @Override
+  public Z next() {
+    return t(++mN, 5).add(t(mN, 4)).add(t(mN, 3)).add(t(mN, 2)).add(t(mN, 1));
+  }
+}
+#!queue	A056507	1	->	0	A285012	--------------------------------
+package irvine.oeis.a056;
+
+import irvine.math.z.Z;
+import irvine.oeis.a285.A285012;
+
+/**
+ * A056507 Number of periodic palindromic structures using a maximum of six different symbols.
+ * @author Sean A. Irvine
+ */
+public class A056507 extends A285012 {
+
+  /** Construct the sequence. */
+  public $(ASEQNO)() {
+    super($(OFFSET));
+  }
+
+  private int mN = -1;
+
+  @Override
+  public Z next() {
+    return t(++mN, 6).add(t(mN, 5)).add(t(mN, 4)).add(t(mN, 3)).add(t(mN, 2)).add(t(mN, 1));
   }
 }
 #!queue	A999999	0	0	0	0
