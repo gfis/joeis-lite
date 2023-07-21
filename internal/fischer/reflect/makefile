@@ -102,10 +102,18 @@ finite1:     # select the eligable programs
 	head -n2 $@.tmp
 	wc -l    $@.tmp
 #----
-hasoc_grep: # DIR= grep all that have a constructor with an isolated offset parameter
-	find src/irvine/oeis -iname "A*.java" | xargs -l grep -P "(public|protected) \w+\(final *int *offset\)" \
-	| perl -ne 'm{\/oeis\/([^\.]+)}; print "$$1\n"; '\
+hasoc_prep: # DIR= grep all that have a constructor with an isolated offset parameter
+	find src/irvine/oeis -iname "*.java" | xargs -l grep -P "(public|protected) \w+\(final *int *offset" \
 	| tee    $@.tmp
+hasoc: # create table 'hasoc'
+	perl $@.pl hasoc_prep.tmp \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	tail -n8 $@.tmp
+	wc -l    $@.tmp
+	$(DBAT) -f hasoc.create.sql
+	$(DBAT) -r hasoc < $@.tmp
+	$(DBAT) -n hasoc
 #----
 offcount: # SUP=superclass ; count the different offsets for some jOEIS superclass
 	grep $(SUP) offinspect1.tmp | cut -f2-3 | sort | uniq -c
@@ -147,10 +155,6 @@ offin: # create table 'offin'
 	| $(DBAT) -r offin
 	$(DBAT) -4 offin
 	$(DBAT) -n offin
-hasoc: # create table 'hasoc' 
-	$(DBAT) -f hasoc.create.sql
-	$(DBAT) -r hasoc < hasoc.tab
-	$(DBAT) -n hasoc
 offin_eval2: # select those with all subclasses needing the same offset patch, on 2 levels
 	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass \
 	                            , o2.shift, o2.superclass \
@@ -245,16 +249,57 @@ unpackall:
 #	perl queue.pl -uf hasoc17b.pack
 #	cd .. ; make CC=refl_hasoc17b man dist testall log TO=10 GU=2 pack1
 # 2023-07-18:
-	make unpack1 P=hasoc18a
+#	make unpack1 P=hasoc18a
+#	cd .. ; cp -pv hold/*.java manual
+#	make hasoc18b
+#	make unpack1 P=hasoc18b
+#	cd .. ; make CC=refl_hasoc18b man dist testall log TO=8 GU=32 pack1
+#	# make absref_stat
+# 2023-07-21:
+	make unpack1 P=hasoc21a
+	make unpack1 P=hasoc21b
+	make unpack1 P=hasoc21c
 	cd .. ; cp -pv hold/*.java manual
-	make hasoc18b
-	make unpack1 P=hasoc18b
-	cd .. ; make CC=refl_hasoc18b man dist testall log TO=8 GU=32 pack1
+	cd .. ; make CC=refl_hasoc21c man dist testall log TO=4 
 	# make absref_stat
-#--------
+#--
 unpack1: # P= ; unpack 1 *.pack, and write ../refl_$(P).gen
 	perl queue.pl -u $(P).pack
 	grep -P "\A\#\!queue" $(P).pack | cut -f2 | grep -v A999 > ../refl_$(P).gen 
+#--------
+hasoc21c:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
+	  FROM offin o1, hasoc h\
+	  WHERE o1.superclass = h.superclass \
+	  ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	>        $@.pack
+	uedit64  $@.pack
+hasoc21b:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
+	  FROM offin o1, hasoc h\
+	  WHERE o1.superclass = h.superclass \
+	  ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	>        $@.pack
+	uedit64  $@.pack
+hasoc21a:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
+	  FROM offin o1, hasoc h\
+	  WHERE o1.superclass = h.superclass \
+	  ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	>        $@.pack
+	uedit64  $@.pack
 hasoc18b:
 	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass FROM offin o1 \
 	  WHERE o1.superclass IN ('A003285','A007695','A011804','A027157','A047749','A133687','A285012','A318795') \

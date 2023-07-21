@@ -1254,6 +1254,8 @@ anminan:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.rest.tmp
+nopan:
+	grep -P "\tnopan\t" $(ROBOT)/nopan1.man | grep -E "^A[0-9]" > $@.gen
 #----------------
 apery:
 	grep -E "^A[0-9]" $(HOLREC)/apery.man \
@@ -7314,18 +7316,19 @@ proprep:
 	cut -f5    $@.gen | sort | uniq -c | sort -r | grep -v " 1 " | tee $@.code.tmp
 #----
 somos0:
-	grep -E "^\%[NF]" $(COMMON)/jcat25.txt | grep -P "\ba\(\w[^\)]*\) *([\*\/] *a\(|\^[\d\*\/\^\+\-\(\) ]+a\()" \
-	| grep -viP "(sum|prime|that|smallest|least|digit|lim|Expansion|Conjecture|triangle|concatenate|sqrt|a\(n\) *\>\=)" \
+	grep -E "^%[NF]" $(COMMON)/jcat25.txt | grep -P "\ba\(\w[^\)]*\) *([\*\/] *a\(|\^[\d\*\/\^\+\-\(\) ]+a\()" \
+	| grep -viP "(sum|prime|that|smallest|least|digit|lim|Expansion|Conjecture|triangle|concatenate|sqrt|a\((m\+)?n\) *\>\=)" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 somos1:
-	grep -E "^\%[NFCO]" $(COMMON)/jcat25.txt | grep -P "a\(n[\+\-\d]+\)|\A\%O" \
+	grep -E "^%[NFCO]" $(COMMON)/jcat25.txt | grep -P "a\(n[\+\-\d]+\)|\A\%O" \
 	| grep -vEi "sum|prod|divi|digit" \
-	| perl oshrink.pl \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
+	# | perl oshrink.pl \
+	#
 cordrec_prep:
 	perl cordrec_prep.pl -A  somos1.tmp 2> $@.rest.tmp \
 	>        $@.tmp
