@@ -254,19 +254,64 @@ unpackall:
 #	make hasoc18b
 #	make unpack1 P=hasoc18b
 #	cd .. ; make CC=refl_hasoc18b man dist testall log TO=8 GU=32 pack1
-#	# make absref_stat
 # 2023-07-21:
-	make unpack1 P=hasoc21a
-	make unpack1 P=hasoc21b
-	make unpack1 P=hasoc21c
+#	make unpack1 P=hasoc21a
+#	make unpack1 P=hasoc21b
+#	make unpack1 P=hasoc21c
+#	cd .. ; cp -pv hold/*.java manual
+#	cd .. ; make CC=refl_hasoc21c man dist testall log TO=4 
+# 2023-07-22:
+#	make unpack1 P=hasoc22a
+#	cd .. ; cp -pv hold/*.java manual
+#	cd .. ; make CC=refl_hasoc22a man dist testall log TO=4 
+# 2023-07-22:
+	make unpack1 P=offin23a
+	make unpack1 P=offin23b
 	cd .. ; cp -pv hold/*.java manual
-	cd .. ; make CC=refl_hasoc21c man dist testall log TO=4 
-	# make absref_stat
+	cd .. ; make CC=refl_offin23a man dist testall log TO=4 GU=2
+	make absref_stat
 #--
 unpack1: # P= ; unpack 1 *.pack, and write ../refl_$(P).gen
 	perl queue.pl -u $(P).pack
 	grep -P "\A\#\!queue" $(P).pack | cut -f2 | grep -v A999 > ../refl_$(P).gen 
 #--------
+offin23b:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
+	  FROM offin o1 LEFT JOIN hasoc h ON o1.superclass = h.superclass \
+	  ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| grep -vE "A173930" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	| perl patch_queue.pl -m $@ \
+	>        $@.pack
+	uedit64  $@.pack
+offin23a:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
+	  FROM offin o1 LEFT JOIN hasoc h ON o1.superclass = h.superclass \
+	  ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| grep -vE "A173930" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	| perl patch_queue.pl -m $@ \
+	>        $@.pack
+	uedit64  $@.pack
+#--------
+hasoc22a:
+	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
+	  FROM offin o1 LEFT JOIN hasoc h ON o1.superclass = h.superclass \
+	  ORDER BY 1" \
+	| perl -ne 's{\-\>}{\t\-\>\t}; print; '\
+	| grep -vf ../refl_hasoc22a.javer.tmp \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	perl queue.pl -p $@.tmp \
+	| perl patch_queue.pl -m $@ \
+	>        $@.pack
+	uedit64  $@.pack
 hasoc21c:
 	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
 	  FROM offin o1, hasoc h\

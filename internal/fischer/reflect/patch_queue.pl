@@ -93,6 +93,28 @@ sub patch1 {
                         [extends $1 \{\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$\(ASEQNO\)\(\) \{\n    super\(\$\(OFFSET\)\)\;\n  \}\n]m;
         }
         print $change;
+    } elsif ($mode =~ m{hasoc22a}) {
+        # public class A000763 extends A052894 {
+        if ($change =~ m{super\.}) {
+            $change =~ s{super\.}{mSeq1\.}mg;
+            if ($change =~ m{(\n *public *A\d+\(\) *\{\n *)}) {
+                $change =~ s{class +(A\d+) +extends +(A\d+) *\{\n+}
+                            {class $1 extends AbstractSequence \{\n\n  private final $2 mSeq1 = new $2()\;\n\n}mg;
+                $change =~ s{(\n *public *A\d+\(\) *\{\n *)}
+                            {$1super\(\$\(OFFSET\)\)\;\n    }m;
+            } else {
+                $change =~ s{class +(A\d+) +extends +(A\d+) *\{\n+}
+                            {class $1 extends AbstractSequence \{\n\n  private final $2 mSeq1 = new $2()\;\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$\(ASEQNO\)\(\) \{\n    super\(\$\(OFFSET\)\)\;\n  \}\n\n}mg;
+            }
+            $change =~ s{(\n\n\/\*\*)}
+                        {\nimport irvine\.oeis\.AbstractSequence\;\n\n\/\*\*}m;
+            print $change;
+        }
+    } elsif ($mode =~ m{offin23a}) {
+        $change =~ s[(class +A\d+ +extends +\w+( +implements +\w+)? *\{\n+)]
+                    [$1  \{\n    setOffset\(\$\(OFFSET\)\)\;\n  \}\n\n]mg;
+        $change =~ s[\n  \}\n *\n  \{][]m;
+        print $change;
     } else {
         print STDERR "unknown mode $mode\n";
     }
