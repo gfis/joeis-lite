@@ -204,7 +204,7 @@ pack: # GREP=A018940 pack all sources that extend $(A)
 	grep -P "$(GREP)" offin.tmp \
 	| perl queue.pl -p > set.pack
 unpackall:
-	cd .. ; make purge
+	# cd .. ; make purge
 #	# make unpack1 P=A018940
 #	# make unpack1 P=basec
 #	# make unpack1 P=wrapcon

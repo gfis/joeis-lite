@@ -110,7 +110,7 @@ sub patch1 {
                         {\nimport irvine\.oeis\.AbstractSequence\;\n\n\/\*\*}m;
             print $change;
         }
-    } elsif ($mode =~ m{offin23a}) {
+    } elsif ($mode =~ m{offin23}) {
         $change =~ s[(class +A\d+ +extends +\w+( +implements +\w+)? *\{\n+)]
                     [$1  \{\n    setOffset\(\$\(OFFSET\)\)\;\n  \}\n\n]mg;
         $change =~ s[\n  \}\n *\n  \{][]m;
