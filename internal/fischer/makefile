@@ -5781,6 +5781,13 @@ trecpas: # received from $(TRIREC)/trecpas.tmp
 	| sort | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+tricut1:
+	grep -P              "\ttricut1ny\t" $(TRIREC)/trixcut3.tmp \
+	| sed -e "s/\r//" -e "s/tricut1ny/tricut1/" \
+	>        tricut1.gen
+	head -n2 tricut1.gen
+	wc -l    tricut1.gen
 #--------------------------------
 # A151255 Number of walks within N^2 (the first quadrant of Z^2) starting at (0,0)
 #   and consisting of n steps taken from {(-1, -1), (-1, 1), (1, 0)}	nonn,walk,synth	0..34
