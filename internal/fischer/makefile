@@ -5782,16 +5782,21 @@ trecpas: # received from $(TRIREC)/trecpas.tmp
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-tricut1:
+tricut1: # target triangle results from source by removing the leading column
 	grep -P              "\ttricut1ny\t" $(TRIREC)/trixcut3.tmp \
 	| sed -e "s/\r//" -e "s/tricut1ny/tricut1/" \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
-tricut2:
+tricut2: # target triangle results from source by adding a leading column
 	# grep -P              "\ttricut1yn\t" $(TRIREC)/trixcut3.tmp \
 	# | sed -e "s/\r//" -e "s/tricut1yn/tricut2/" 
 	grep new aman/tricut2.man \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+tritoep: # Toeplitz triangle generated from a column sequence
+	grep -P              "\ttritoep\t" $(TRIREC)/trixtoep3.man \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
