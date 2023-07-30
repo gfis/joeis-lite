@@ -1165,6 +1165,14 @@ ajrank: # adjusted joint rank sequences (CK)
 	cd ck ; make $@
 	head -n4 $@.gen
 	wc -l    $@.gen
+rankxf: # rank transforms, and the complements
+	rm -f    $@.gen
+	grep -E "^A[0-9]" aman/rankxf.man > $@.gen
+	cat aman/rankxf.man \
+	| perl -ne 'if (m{^(A\d+)[^\#]+\#(A\d+)}) { print join("\t", $$2, "complem", 1, $$1, ", Z.ONE") . "\n"; }' \
+	>>       $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 #----------------
 alsoprime:
 	grep "is also prime" $(COMMON)/joeis_names.txt \
@@ -5805,6 +5813,11 @@ tricut2: # target triangle results from source by adding a leading column
 	# grep -P              "\ttricut1yn\t" $(TRIREC)/trixcut3.tmp \
 	# | sed -e "s/\r//" -e "s/tricut1yn/tricut2/" 
 	grep new aman/tricut2.man \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+trireluc: # ReluctantSequence, triangle generated from a row sequence
+	grep -P               "\ttrireluc\t" $(TRIREC)/trixrelu3.man \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
