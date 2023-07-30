@@ -19,11 +19,11 @@ CA=$(GITS)/OEIS-mat/ca
 CAS=$(GITS)/OEIS-mat/cas
 DATA=$(GITS)/OEIS-mat/data
 PROG=$(GITS)/OEIS-prog
-CK=./ck
 COMBSTRUCT=$(GITS)/OEIS-mat/combstruct
 COMMON=$(GITS)/OEIS-mat/common
 CONSTANT=$(GITS)/OEIS-mat/constant
 CONTRIB=$(GITS)/OEIS-mat/contrib
+CK=$(CONTRIB)/ck
 COORS=$(GITS)/OEIS-mat/coors
 ETA=$(GITS)/OEIS-mat/eta
 HOLREC=$(GITS)/OEIS-mat/holrec
@@ -1060,6 +1060,13 @@ A194368: # Numbers m such that Sum_{k=1..m} (<1/2 + k*r> - <k*r>) = 0, where r=s
 	cd ck; perl ck_guides.pl -a O \
 	>        ../$@.gen
 	head -n4 $@.gen
+	wc -l    $@.gen
+#----
+A194832: # permutation of fractional parts, A194832
+	perl $(CK)/ck_guides.pl -a X \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n2 $@.gen
 	wc -l    $@.gen
 #----
 A200313: # 2021-12-06
@@ -5549,6 +5556,12 @@ triman:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+trimirr:
+	grep trimirrorny $(TRIREC)/trimirr4.tmp | sed -e "s/trimirrorny/trimirror/" \
+	| grep -vE "A085880|A264391|A304042|A330240|A354487" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 trimirror:
 	cd $(TRIREC) ; make $@
 	cp -v $(TRIREC)/$@.tmp $@.gen
@@ -5796,7 +5809,8 @@ tricut2: # target triangle results from source by adding a leading column
 	head -n2 $@.gen
 	wc -l    $@.gen
 tritoep: # Toeplitz triangle generated from a column sequence
-	grep -P              "\ttritoep\t" $(TRIREC)/trixtoep3.man \
+	grep -P               "\ttrixtoep\t" $(TRIREC)/trixtoep3.man \
+	| sed -e "s/\r//" -e "s/trixtoep/tritoep/" \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
