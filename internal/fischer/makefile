@@ -1023,6 +1023,12 @@ A176627:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
+A182788: # Triangle graph order
+	cd $(CONTRIB) ; perl $@.pl | grep A182 > $@.tmp
+	cp -v $(CONTRIB)/$@.tmp $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+#--------
 A183194: # Final prime of first member of A019518 that is divisible by 3^n.
 	grep -E "^A" $@.man \
 	>        $@.gen
@@ -4908,6 +4914,10 @@ trionk: # retrofit trionk sequences
 #----
 triprod:
 	cp -v $(ROBOT)/$@.gen  $@.gen
+triprodm:
+	grep -E "^A[0-9]" aman/triprod.man | sort | uniq -w7 > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 tripro3:
 	cp -v $(ROBOT)/$@.gen  $@.gen
 triprom:
@@ -5813,6 +5823,7 @@ tricut2: # target triangle results from source by adding a leading column
 	# grep -P              "\ttricut1yn\t" $(TRIREC)/trixcut3.tmp \
 	# | sed -e "s/\r//" -e "s/tricut1yn/tricut2/" 
 	grep new aman/tricut2.man \
+	| grep -vE "A304042|A354487" \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
