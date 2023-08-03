@@ -1,0 +1,35 @@
+A101508	triprod	0	A007318	A051731
+A187480	rankxf	1	new HolonomicRecurrence(0, "[0,-1,2,-2,2,-1]", "0,1,2,2,2,3", 0)		new A004524().skip(2)
+A187481	complem	1	A187480	, Z.ONE
+A187689	rankxf	1	new HolonomicRecurrence(0, "[0,-1,2,-2,2,-2,2,-2,2,-1]", "1,2,2,3,4,4,5,6", 0)		
+A187690	complem	1	A187689	, Z.ONE
+A187225	complem	1	A187224	, Z.ONE
+A187350	complem	1	A187349	, Z.ONE
+A187573	complem	1	A187572	, Z.ONE
+A187683	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(2*n).divide(CR.THREE).floor())		floor(2n/3); complement of A187683.	nonn	1..95
+A187684	complem	1	A187683	, Z.ONE	.	nonn	1..68
+A194117	partsum	1	A003511
+A194140	partsum	1	A054088
+A194821	lambdas	1	Z.ONE.add(ComputableReals.SINGLETON.sum(1, n, k -> CR.SQRT2.multiply(CR.valueOf(((k & 1) == 0) ? k : -k)).frac()).floor())			a(n) = 1+floor(sum{<((-1)^k)*k*sqrt(2)> : 1<=k<=n}), where < > = fractional part.	nonn	1..10000
+A194822	lambdas	1	Z.THREE.add(ComputableReals.SINGLETON.sum(1, n, k -> CR.PHI.multiply(CR.valueOf(((k & 1) == 0) ? k : -k)).frac()).floor())			a(n) = 3+floor(sum{<((-1)^k)*k*sqrt(3)> : 1<=k<=n}), where < > = fractional part.	sign	1..10000
+A194823	lambdas	1	Z.TWO.add(ComputableReals.SINGLETON.sum(1, n, k -> CR.E.multiply(CR.valueOf(((k & 1) == 0) ? k : -k)).frac()).floor())			a(n) = 2+floor(sum{<((-1)^k)*k*e> : 1<=k<=n}), where < > = fractional part.	nonn	1..10000
+A194824	lambdas	1	Z.TWO.add(ComputableReals.SINGLETON.sum(1, n, k -> CR.THREE.sqrt().multiply(CR.valueOf(((k & 1) == 0) ? k : -k)).frac()).floor())			a(n) = 2+floor(sum{<((-1)^k)*k*sqrt(3)> : 1<=k<=n}), where < > = fractional part.	sign	1..10000
+
+# A182788	LinearRecurrence	Number of n-colorings of the Triangle Graph of order 3.	nonn,easy	0..1000	unkn	_Alois P. Heinz_
+# A182789	LinearRecurrence	Number of n-colorings of the Triangle Graph of order 4.	nonn,easy	0..1000	unkn	_Alois P. Heinz_
+# A182790	nyi Fp	Number of n-colorings of the Triangle Graph of order 5.	nonn	0..1000	nyi	_Alois P. Heinz_
+# A182791	nyi Fp	Number of n-colorings of the Triangle Graph of order 6.	nonn	0..1000	nyi	_Alois P. Heinz_
+# A182792	nyi Fp	Number of n-colorings of the Triangle Graph of order 7.	nonn	0..1000	nyi	_Alois P. Heinz_
+# A182793	HolonomicRecurrence	Number of n-colorings of the Triangle Graph of order 8.	nonn	0..1000	holos	_Alois P. Heinz_
+# A182794	nyi Fp	Number of n-colorings of the Triangle Graph of order 9.	nonn	0..1000	nyi	_Alois P. Heinz_
+# A182795	nyi Fp	Number of n-colorings of the Triangle Graph of order 10.	nonn	0..1000	nyi	_Alois P. Heinz_
+# A182796	nyi Fp	Number of n-colorings of the Triangle Graph of order 11.	nonn	0..1000	nyi	_Alois P. Heinz_
+# A182798	nyi F	Number of 4-colorings of the Triangle Graph of order n.	nonn	1..15	nyi	_Alois P. Heinz_
+
+# A194118	WrappedRecurrence	Triangular array:  T(n,k)=C(n+2,k)+C(n+2,k+2), 0<=k<=n.	nonn,tabl	0..59
+# A194119	null	Triangular array:  T(n,k)=C(n+3,k)+C(n+3,k+3), 0<=k<=n.	nonn,tabl	0..54
+# A194120	null	Triangular array:  T(n,k)=C(n+4,k)+C(n+4,k+4), 0<=k<=n.	nonn,tabl	0..51
+# A194121	null	Triangular array:  T(n,k)=C(n+2,k)+C(n+2,k+1)+C(n+2,k+2), 0<=k<=n.	nonn,tabl	0..57
+# A194122	null	Triangular array: T(n,k) = C(n+4,k) + C(n+4,k+1) + C(n+4,k+2) + C(n+4,k+3) + C(n+4,k+4), 0 <= k <= n.	nonn,tabl	0..150
+# A194123	null	Triangular array:  T(n,k)=|C(n+2,k)-C(n+2,k+2)|, 0<=k<=n.	nonn,tabl	0..65
+# A194124	null	a(n) = Sum_{k=0..floor(n/2)} (C(n+2,k) - C(n+2,k+2)).	nonn	0..31

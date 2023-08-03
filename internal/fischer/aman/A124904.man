@@ -1,0 +1,17 @@
+A124904	parmof3	1	A124904	3	2	a(n) = least integer j>=0 such that n=floor[(3^j)/(2^k)] for some integer k>=0.	nonn	1..8192
+A124905	parmof3	1	A124904	3	4	a(n) = least integer j>=0 such that n=floor((3^j)/(4^k)) for some integer k>=0.	nonn	1..73
+A124906	parmof3	1	A124904	3	5	a(n) = least integer j>=0 such that n=Floor[(3^j)/(5^k)] for some integer k>=0.	nonn	1..73
+A124907	parmof3	1	A124904	2	3	a(n) = least integer j>=0 such that n=Floor[(2^j)/(3^k)] for some integer k>=0.	nonn	1..76
+A124908	parmof3	1	A124904	2	5	a(n) = least integer j>=0 such that n=floor((2^j)/(5^k)) for some integer k>=0.	nonn,look	1..10000
+A124909	parmof3	1	A124904	4	3	a(n) = least integer j>=0 such that n=Floor[(4^j)/(3^k)] for some integer k>=0.	nonn	1..74
+A124910	parmof3	1	A124904	5	3	a(n) = least integer j>=0 such that n=Floor[(5^j)/(3^k)] for some integer k>=0.	nonn	1..76
+A124911	parmof3	1	A124904	5	2	a(n) = least integer j>=0 such that n=Floor[(5^j)/(2^k)] for some integer k>=0.	nonn	1..79
+
+A124912	parmof3	1	A124912	3	2	a(n) = least integer k>=0 such that n=Floor[(3^j)/(2^k)] for some integer j>=0.	nonn	1..79
+A124913	parmof3	1	A124912	3	4	a(n) = least integer k>=0 such that n=Floor[(3^j)/(4^k)] for some integer j>=0.	nonn	1..77
+A124914	parmof3	1	A124912	3	5	a(n) = least integer k>=0 such that n=Floor[(3^j)/(5^k)] for some integer j>=0.	nonn	1..78
+A124915	parmof3	1	A124912	2	3	a(n) = least integer k>=0 such that n=Floor[(2^j)/(3^k)] for some integer j>=0.	nonn	1..80
+A124916	parmof3	1	A124912	2	5	a(n) = least integer k>=0 such that n=Floor[(2^j)/(5^k)] for some integer j>=0.	nonn	1..80
+A124917	parmof3	1	A124912	4	3	a(n) = least integer k>=0 such that n=Floor[(4^j)/(3^k)] for some integer j>=0.	nonn	1..74
+A124918	parmof3	1	A124912	5	3	a(n) = least integer k>=0 such that n=Floor[(5^j)/(3^k)] for some integer j>=0.	nonn	1..74
+A124919	parmof3	1	A124912	5	2	a(n) = least integer k>=0 such that n=Floor[(5^j)/(2^k)] for some integer j>=0.	nonn	1..75

@@ -1,0 +1,52 @@
+# ?? A065070	rankxf	1	new A000720()	  nonn    0..74   nyi     Klaus Strassburger (strass(AT)ddfi.uni-duesseldorf.de)
+A187417	rankxf	1	new A003159()		#A187418.       nonn    1..77   nyi     _Clark Kimberling_
+A187895	rankxf	1	new A115384()		#A187896.  nonn    1..92   nyi     _Clark Kimberling_
+A187897	rankxf	1	new A159481()		#A187898.  nonn    1..92   nyi     _Clark Kimberling_
+A187413	rankxf	1	new A000201()		#A187414.    nonn    1..83   nyi     _Clark Kimberling_
+A187484	rankxf	1	new A004526()		#A187475.        nonn    1..96   nyi     _Clark Kimberling_
+A179185	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.SQRT2).floor())				#A186543. nonn    1..79   nyi     _Clark Kimberling_
+A187224	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(3*n).divide(CR.TWO).floor())			.    nonn    1..110  nyi     _Clark Kimberling_
+A187226	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.FOUR).floor())				#A187227.       nonn    1..108  nyi     _Clark Kimberling_
+A187228	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(3*n).divide(CR.FOUR).floor())				#A187229.      nonn    1..101  nyi     _Clark Kimberling_
+A187230	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(5*n).divide(CR.FOUR).floor())				#A187231.      nonn    1..96   nyi     _Clark Kimberling_
+A187232	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(7*n).divide(CR.FOUR).floor())				#A187233.      nonn    1..96   nyi     _Clark Kimberling_
+A187319	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.THREE.sqrt()).floor())				#A187410. nonn    1..92   nyi     _Clark Kimberling_
+A187343	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(6*n).divide(CR.FIVE).floor())				#A187344.      nonn    1..68   nyi     _Clark Kimberling_
+A187345	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(7*n).divide(CR.FIVE).floor())				#A187346.      nonn    1..67   nyi     _Clark Kimberling_
+A187347	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(8*n).divide(CR.FIVE).floor())				#A187348.      nonn    1..66   nyi     _Clark Kimberling_
+A187349	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(9*n).divide(CR.FIVE).floor())				#A187348.      nonn    1..65   nyi     _Clark Kimberling_
+A187351	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.SQRT2).floor())				#A187352. nonn    1..71   nyi     _Clark Kimberling_
+A187411	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.THREE.sqrt()).floor())				#A187412. nonn    1..89   nyi     _Clark Kimberling_
+A187415	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.FIVE.sqrt().subtract(CR.ONE)).floor())				#A187416.    nonn    1..88   nyi     _Clark Kimberling_
+A187472	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.E.subtract(CR.ONE)).floor())				#A187473.    nonn    1..66   nyi     _Clark Kimberling_
+A187474	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.PI.subtract(CR.TWO)).floor())				#A187475.  nonn    1..68   nyi     _Clark Kimberling_
+A187476	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(3*(n-1)).divide(CR.TWO).floor())				#A187477. nonn    1..66   nyi     _Clark Kimberling_
+A187478	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(3*(n-2)).divide(CR.TWO).floor())				#A187479. nonn    1..67   nyi     _Clark Kimberling_
+# round A187480	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.TWO).round())				A187481.       nonn    1..92   nyi     _Clark Kimberling_
+A187482	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(2*n).divide(CR.THREE).ceil())			#A187483.    nonn    1..91   ???patch_prepend        _Clark Kimberling_
+A187568	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(2*n).divide(CR.THREE).round())				#A187569.      nonn    1..91   nyi     _Clark Kimberling_
+A187570	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.THREE).ceil())				#A187571.     nonn    1..92   unkn    _Clark Kimberling_
+A187572	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.THREE).round())				#A187473.       nonn    1..97   nyi     _Clark Kimberling_
+A187574	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.THREE.pow(CR.ONE_THIRD)).floor())				#A187575. nonn    1..89   nyi     _Clark Kimberling_
+A187576	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n-1).divide(CR.TWO).floor().multiply(2))				#A187577.        nonn    1..84   nyi     _Clark Kimberling_
+A187578	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.THREE).floor().multiply(3))				#A187579.     nonn    1..90   nyi     _Clark Kimberling_
+A187580	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.TWO).floor().multiply(2))				#A187581.     nonn    1..84   nyi     _Clark Kimberling_
+A187582	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.TWO).floor().multiply(3))				#A187583.     nonn    1..89   nyi     _Clark Kimberling_
+A187681	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).divide(CR.THREE).floor())				#A187682.       nonn    1..97   nyi     _Clark Kimberling_
+A187683	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(2*n).divide(CR.THREE).floor())				#A187683.      nonn    1..95   nyi     _Clark Kimberling_
+A187685	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(4*n).divide(CR.THREE).floor())				#A187686.      nonn    1..82   nyi     _Clark Kimberling_
+A187687	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(5*n).divide(CR.THREE).floor())				#A187688.      nonn    1..81   nyi     _Clark Kimberling_
+# A187689	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(3*n).divide(CR.FOUR).round())				A187690.      nonn    1..93   nyi     _Clark Kimberling_
+A187691	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(3*n).divide(CR.FOUR).ceil())				#A187692.    nonn    1..93   nyi     _Clark Kimberling_
+A187833	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(3*n).divide(CR.TWO).subtract(CR.HALF).floor())				#A187834.  nonn    1..82   nyi     _Clark Kimberling_
+A187835	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(3*n).divide(CR.TWO).subtract(CR.TWO.divide(CR.THREE)).floor())				#A187836.  nonn    1..82   nyi     _Clark Kimberling_
+A187837	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.FIVE.sqrt().add(CR.ONE).divide(CR.TWO)).subtract(CR.HALF).floor())			#A187838.        nonn    1..81   nyi     _Clark Kimberling_
+A187839	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.SQRT2).subtract(CR.HALF).floor())				#A187840.     nonn    1..10000        nyi     _Clark Kimberling_
+A187841	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.SQRT2).add(CR.HALF).floor())				#A187842.     nonn    1..82   nyi     _Clark Kimberling_
+A187899	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.TWO.subtract(CR.SQRT2)).floor())				#A187900.      nonn    1..94   nyi     _Clark Kimberling_
+A187901	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.THREE.subtract(CR.THREE.sqrt())).floor())				#A187902.      nonn    1..83   nyi     _Clark Kimberling_
+A187903	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.TWO.subtract(CR.ONE.divide(CR.SQRT2))).floor())				#A187904.    nonn    1..83   nyi     _Clark Kimberling_
+A187905	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.THREE.subtract(CR.FIVE.sqrt())).floor())				#A187906.      nonn    1..84   nyi     _Clark Kimberling_
+A187907	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.FOUR.subtract(CR.FIVE.sqrt())).floor())				#A187908.   nonn    1..81   nyi     _Clark Kimberling_
+A187909	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.FIVE.sqrt().subtract(CR.ONE).divide(CR.TWO)).floor())				#A187910.   nonn    1..84   nyi     _Clark Kimberling_
+A187911	rankxf	1	new LambdaSequence(1, n -> CR.valueOf(n).multiply(CR.FIVE.sqrt().subtract(CR.ONE).divide(CR.TWO)).floor().add(1))				#A187912.   nonn    1..84   nyi     _Clark Kimberling_
