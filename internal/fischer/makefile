@@ -5577,7 +5577,7 @@ triman:
 trimirr:
 	grep trimirrorny $(TRIREC)/trimirr4.tmp | sed -e "s/trimirrorny/trimirror/" \
 	| grep -vE "A085880|A264391|A304042|A330240|A354487" \
-	>        $@.gen
+	>        $@.gen || :
 	head -n4 $@.gen
 	wc -l    $@.gen
 trimirror:
