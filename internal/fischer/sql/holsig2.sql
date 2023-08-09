@@ -1,5 +1,6 @@
 -- @(#) $Id$
 -- Patches for holsig2
+-- 2023-08-08: extended; *FF=116
 -- 2022-10-25, Georg Fischer
 DELETE FROM seq4 WHERE aseqno IN
 ('A000000'
@@ -38,6 +39,8 @@ DELETE FROM seq4 WHERE aseqno IN
 ,'A327561' -- huge
 ,'A328550' -- reallocated
 ,'A333347' -- huge
+,'A334502' -- cellular, conjectured
+,'A334503' -- cellular, conjectured
 ,'A337240' -- 10^10 inits
 ,'A337241' -- 10^10 inits
 ,'A337398' -- >Mega inits
@@ -50,6 +53,8 @@ DELETE FROM seq4 WHERE aseqno IN
 ,'A346325' -- 	0	FATAL	construction...
 ,'A350539' -- calendar, order 31, possible
 ,'A355873' -- 9876543210 inits
+,'A363319' -- wrong -> Kimberling
+,'A364155' -- -> ogf
 );
 COMMIT;
 -- replace parm2 with initial data terms

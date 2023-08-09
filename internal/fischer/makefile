@@ -3199,6 +3199,8 @@ homegf:
 #----
 holfsig:
 	cp -v $(HOLREC)/$@.gen $@.gen
+holdfing:
+	cp -v $(HOLREC)/$@.tmp $@.gen
 holdfin:
 	cp -v $(HOLREC)/$@.gen $@.gen
 holgrep:
