@@ -651,6 +651,9 @@ robots:
 	make   CC=convol     robot1
 	make   CC=diffseq    robot1
 	make   CC=dirichcon  robot1
+	cd $(HOLREC) ; make holdfin
+	make   CC=holdfin
+	make   CC=holsig2
 	make   CC=m1pow      robot1
 	make   CC=ogf        robot1
 	  make CC=fract21    robot1
@@ -3108,7 +3111,7 @@ hiteval:
 	cp -v $(HOLREC)/hiteval.gen $@.gen
 #----------------
 holco:
-	grep -E "CoefficientList\[Series" $(COMMON)/cat25.txt \
+	grep -E "CoefficientList\[Series" $(COMMON)/jcat25.txt \
 	| grep -viE "Sum|Product|Bessel|Elliptic|Hyper|theta|catalan|Drop|Pochhammer|Lambert|Continued" \
 	| cut -b4- \
 	| uniq -w7 \
@@ -3251,10 +3254,9 @@ holpatch:
 #---------------------
 holfinit0: holfinit1 holfinit2
 holfinit1:
-	grep -E "[PDC]\-finite " $(COMMON)/cat25.txt \
+	grep -E "[PDC]\-finite " $(COMMON)/jcat25.txt | grep -P "^\%[NFC]" \
 	| cut -b4- \
 	| grep -vEi "Conject|Empiric" \
-	| grep -E "^A...... D\-finite with" \
 	| sed -e "s/ /\t/" \
 	| uniq -w7 \
 	>        $@.tmp
@@ -3330,7 +3332,7 @@ aphrec: # Recurrences from Maple programs of A.P.H.
 	head -n4 $@.gen
 	wc -l    $@.gen
 recman: # Recurrences from Mathematica RecurrenceTable
-	grep -E "^A" $(HOLREC)/recman3.man > $@.gen
+	grep -E "^A" $(HOLREC)/recman2.tmp > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
@@ -4857,6 +4859,12 @@ seqop: # ???
 		ORDER BY 1"\
 	>         $@.gen
 	head -n4  $@.gen
+	wc -l     $@.gen
+#-------------------------------
+simgcd: # Hugo's GCD extracts
+	grep -E "^A[0-9]" $(CONTRIB)/hp/gcd_check.tmp \
+	>         $@.gen
+	head -n2  $@.gen
 	wc -l     $@.gen
 #-------------------------------
 # Triangles
