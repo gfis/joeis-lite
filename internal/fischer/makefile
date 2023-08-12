@@ -2338,19 +2338,29 @@ dance_hol:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
-dead:
-	$(DBAT) -x "SELECT i.aseqno, n.name, 0 \
-	    FROM asinfo i, asname n \
+dead_all: # a list of all dead sequences
+	$(DBAT) -x "SELECT i.aseqno, n.name, COALESCE(j.superclass, 'NotYetImplemented') \
+	    FROM asname n, asinfo i LEFT JOIN joeis j ON i.aseqno = j.aseqno  \
 	    WHERE i.aseqno = n.aseqno \
 	      AND i.keyword LIKE '%dead%' \
 	    ORDER BY 1" \
-	| perl -ne 'my ($$aseqno, $$name, $$rest) = split(/\t/); $$name =~ m{(A\d\d\d+)}; my $$bseqno = $$1; '\
+	| perl -ne 's/\s+\Z//; my ($$aseqno, $$name, @rest) = split(/\t/); $$name =~ m{(A\d\d\d+)}; my $$bseqno = $$1; '\
 	' my $$code = lc(substr($$name, 0, 4)); $$code =~ s{inco|not |van |appa|appe}{erro}i; '\
-	' print join("\t", $$aseqno, "$@", 0, $$bseqno, $$code, substr($$name, 0, 64)) . "\n";'\
+	' print join("\t", $$aseqno, "$@", 0, $$bseqno, $$code, @rest, substr($$name, 0, 64)) . "\n";'\
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-	make seq4 LIST=$@.gen
+dead: # only those that are nyi or are no subclass of DeadSequence
+	$(DBAT) -x "SELECT i.aseqno, n.name, COALESCE(j.superclass, 'NotYetImplemented') \
+	    FROM asname n, asinfo i LEFT JOIN joeis j ON i.aseqno = j.aseqno  \
+	    WHERE i.aseqno = n.aseqno \
+	      AND i.keyword LIKE '%dead%' \
+	    ORDER BY 1" \
+	| perl -ne 's/\s+\Z//; my ($$aseqno, $$name, $$superclass, @rest) = split(/\t/); $$name =~ m{(A\d\d\d+)}; my $$bseqno = $$1; '\
+	' my $$code = lc(substr($$name, 0, 4)); $$code =~ s{inco|not |van |appa|appe}{erro}i; '\
+	' if ($$superclass ne 'DeadSequence') { print join("\t", $$aseqno, "$@", 0, $$bseqno, $$code, $$superclass, substr($$name, 0, 64)) . "\n"; } '\
+	| tee    $@.gen
+	wc -l    $@.gen
 dead_check: # Where are dead, erroneous sequences still referenced?
 	$(DBAT) -x "SELECT r.aseqno, b.keyword, s.aseqno, s.parm2, a.keyword \
 		FROM asxref r, seq4 s, asinfo a, asinfo b \
@@ -4862,7 +4872,7 @@ seqop: # ???
 	wc -l     $@.gen
 #-------------------------------
 simgcd: # Hugo's GCD extracts
-	grep -E "^A[0-9]" $(CONTRIB)/hp/gcd_check.tmp \
+	grep -E "^A[0-9]" $(CONTRIB)/hp/gcd_check.man \
 	>         $@.gen
 	head -n2  $@.gen
 	wc -l     $@.gen
