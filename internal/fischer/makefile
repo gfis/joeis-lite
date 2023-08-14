@@ -665,6 +665,7 @@ robots:
 	# make   CC=seqsum     robot1
 	make   CC=triprod    robot1
 	make   CC=trisum     robot1
+	make   CC=union      robot1
 	make   robot3
 robot1: # make 1 of the robots
 	echo ======== $(CC) ========
@@ -680,10 +681,12 @@ robot2: # make an individual robot
 robot3: # compile and test all
 	#-- postlude
 	# cp -v hold/*.java  manual || :
-	grep -vf robots.fail.lst robot.gen > robots.gen
-	wc -l   robot*
+	grep -vf robots.fail.lst robot.gen \
+	grep -vE "A363319|A364463|A364463|A364575|A364671" \
+	>        robots.gen
+	wc -l    robot*
 	make CC=robots purge gener maditel TO=8
-	mv -v   robots.gen robots.`date +%Y-%m-%d.%H`.gen
+	cp -v   robots.gen robots.`date +%Y-%m-%d.%H`.gen
 robot4: # keep the clean ones only
 	make CC=robots cleanto gener maditel TO=8
 #--------
@@ -4503,6 +4506,10 @@ pricongr:
 	sort $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.tmp $@.rest.tmp
+pricongrm:
+	grep -E "^A[0-9]" pricongr.man | sort | uniq -w7 > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 prisqua:
 	# grep -i prime $(COMMON)/jcat25.txt | grep -E "(square|Jacobi)" \
 	# | perl prisqua.pl \
@@ -7893,6 +7900,11 @@ cofr_sqrt:
 	" \
 	| tee $@.tmp
 	wc -l $@.tmp
+#--------------------------------
+unionm: # manual unions
+	grep -E "^A[0-9]" aman/$@.man > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 unsigned: unsigned1 unsigned2
 	sort unsigned2.tmp | uniq -w7 \

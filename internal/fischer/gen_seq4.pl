@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2023-08-14: V5.2: HolonomicRecurrence; *CK=67
 # 2023-07-27: V5.1: HolonomicRecurrence
 # 2022-04-04: V5.0: IntegerUtils, LongUtils
 # 2022-12-19: V4.9: BellNumbers, Mobius
@@ -62,7 +63,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V5.1";
+my $version_id  = "gen_seq4.pl V5.2";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -369,6 +370,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WLinearRecurrence}    ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WPaddingSequence}     ) { $imports{"irvine.oeis.recur.PaddingSequence" }            = $itype; }
     if ($line =~ m{\WPeriodicSequence}    ) { $imports{"irvine.oeis.recur.PeriodicSequence"}            = $itype; }
+    if ($line =~ m{\WSimpleTransform}     ) { $imports{"irvine.oeis.transform.SimpleTransform"}         = $itype; }
     if ($line =~ m{\WPrependSequence}     ) { $imports{"irvine.oeis.PrependSequence"   }                = $itype; }
     if ($line =~ m{\WSequence(\d|\$\(OFFSET\))})     { $imports{"irvine.oeis.Sequence$1" }              = $itype; }
     if ($line =~ m{\WSkipSequence}        ) { $imports{"irvine.oeis.SkipSequence"      }                = $itype; }
