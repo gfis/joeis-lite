@@ -682,7 +682,7 @@ robot3: # compile and test all
 	#-- postlude
 	# cp -v hold/*.java  manual || :
 	grep -vf robots.fail.lst robot.gen \
-	grep -vE "A363319|A364463|A364463|A364575|A364671" \
+	| grep -vE "A363319|A364463|A364463|A364575|A364671" \
 	>        robots.gen
 	wc -l    robot*
 	make CC=robots purge gener maditel TO=8
@@ -4497,7 +4497,8 @@ primod:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-pricongr:
+#----
+pricongr: # CongruenceForm
 	grep -i prime $(COMMON)/jcat25.txt | grep mod \
 	| perl pricongr.pl \
 	2>       $@.rest.tmp \
@@ -4506,10 +4507,16 @@ pricongr:
 	sort $@.tmp | uniq -w7 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.tmp $@.rest.tmp
-pricongrm:
+pricongrm: # manual ones
 	grep -E "^A[0-9]" pricongr.man | sort | uniq -w7 > $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
+pricong: # prime/pricong.pl
+	grep -E "^A[0-9]" $(COMMON)/../prime/$@.tmp \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#----
 prisqua:
 	# grep -i prime $(COMMON)/jcat25.txt | grep -E "(square|Jacobi)" \
 	# | perl prisqua.pl \
