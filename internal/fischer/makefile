@@ -81,9 +81,8 @@ OFFSET=0
 	head -n4 $@.gen
 	wc -l $@.*
 #----------------
-all:
-	# Possible targets:
-	grep -E "^[a-z]" makefile | sort
+all: # all possible targets:
+	grep -P "^\w[^\:]*\:" makefile | sort 
 #----
 killmake:
 	cmd /c tasklist | grep make | cut -b28-34 | xargs -l -innn cmd /c taskkill /F /PID nnn
@@ -5863,6 +5862,12 @@ tricut2: # target triangle results from source by adding a leading column
 	wc -l    $@.gen
 trireluc: # ReluctantSequence, triangle generated from a row sequence
 	grep -P               "\ttrireluc\t" $(TRIREC)/trixrelu3.man \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+trithin: # "thin" triangles generated from a column sequence
+	grep -P               "\ttrixthi\t" $(TRIREC)/trixthin3.man \
+	| sed -e "s/\r//" -e "s/trixthin/trithin/" \
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
