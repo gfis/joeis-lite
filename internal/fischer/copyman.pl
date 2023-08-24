@@ -10,6 +10,7 @@ use integer;
 undef $/; # slurp mode
 my %dirs;
 my $tarroot = "../../src/irvine/oeis";
+my $count = 0;
 foreach my $name(glob("manual/*.java")) {
     $name =~ m{\/(A\d+)};
     my $aseqno  = $1;
@@ -29,5 +30,7 @@ foreach my $name(glob("manual/*.java")) {
     close(TAR);
     print "$aseqno\n";
     print STDERR "copied manual/$aseqno.java -> $tarpath/$aseqno.java" . (($srcpack ne $tarpack) ? " ** wrong source package $srcpack **" : "") . "\n";
-}
+    $count ++;
+} # foreach
+print STDERR "# $count files distributed\n";
 __DATA__

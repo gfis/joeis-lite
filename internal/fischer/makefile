@@ -203,11 +203,12 @@ update:
 	cp -v     ../../../joeis/src/irvine/oeis/EulerTransform.java      ../../src/irvine/oeis || :
 #	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gits/joeis/{} {}
 count:
-	find ../../src -iname "A??????.java" | wc -l
+	find ../../src -inamrobot3e "A??????.java" | wc -l
 list:
 	find ../../src -iname "A??????.java" -ls
-pack: pack1 pack2 pack3
-pack1:
+#----
+pack: pack1 pack2 pack3 # pack successful sources into a *.tgz, and check for existence
+pack1: # pack sources into a *.tgz (with packlist.man)
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
@@ -218,16 +219,24 @@ pack1:
 	; grep -vP "^#" internal/fischer/packlist.man     >> pack.$(CC).lst || :
 	cd ../.. ; tar --files-from=pack.$(CC).lst -cvzf $(CC).`date +%Y-%m-%d.%H`.tgz \
 	| perl -pe "s{\/A\d{6}\S*}{}" | uniq -c
-pack2:
+pack2: # update joeis-lite
 	git commit -a -m"`wc -l $(CC).pass.log`"
 	git push origin master
-pack3:
+pack3: # check for existence
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 > $@.tmp
 	make seq LIST=$@.tmp
 	$(DBAT) -x "SELECT s.aseqno, COALESCE(j.superclass, 'nyi') \
 	  FROM seq s, joeis j WHERE s.aseqno = j.aseqno ORDER BY 1" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+#----
+packfail:
+	cd reflect ; grep FAIL ../$(CC).fail.log | perl queue.pl -s joeis-lite -p > ../$(CC).fail.pack
+	uedit64 $(CC).fail.pack
+packtest:
+	cd reflect ; cat ../$(CC).fail.pack | perl queue.pl -s joeis-lite -uf
+	make dist test log
+#----
 newer: # DIR= ; compare dates of aseqnos in DIR and jOEIS
 	ls --full-time $(DIR) | perl -ne 'my @a = split(/\s+/); if ($$a[8] =~ m{\AA\d+} ) { print substr($$a[8], 0, 7) . "\t$$a[5]\t$(DIR)\n"; }' \
 	>        $@.n.tmp
