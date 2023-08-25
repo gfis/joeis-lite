@@ -2,6 +2,7 @@
 
 # Read a *.pack file and patch all members
 # @(#) $Id$
+# 2023-08-25: -m ratio; *RW=80
 # 2023-07-17, Georg Fischer: copied from queue.pl; Solar ok?
 #
 #:# Usage:
@@ -69,6 +70,18 @@ sub patch1 {
     $pack_count ++;
     #---- start of real patch
     if (0) {
+    } elsif ($mode =~ m{ratio}) {
+        $change =~ s[(\.z\.Z\;)][$1\nimport irvine\.math\.q\.Q\;];
+        $change =~ s[\.z\.Integers;][\.q\.Rationals\;]g;
+        $change =~ s[Integers\.][Rationals\.]g;
+        $change =~ s[Z\.ONE\.shiftLeft][Z\.TWO\.pow]g;
+        $change =~ s[Z\.][Q\.]g;
+        $change =~ s[Q\.valueOf][new Q]g;
+        $change =~ s[\)\)\)\;][\)\)\.num\(\)\)\;]g;
+        #            1                                      (       )1
+        $change =~ s[(MemoryFactorial\.SINGLETON\.factorial\([^\)]+\))][new Q\($1\)];
+        print $change;
+
     } elsif ($mode =~ m{hasoc16}) {
         $change =~ s{\n  public \$\(ASEQNO\)\(final int offset\)}
                     {\n  protected \$\(ASEQNO\)\(final int offset\)}m;
@@ -115,6 +128,7 @@ sub patch1 {
                     [$1  \{\n    setOffset\(\$\(OFFSET\)\)\;\n  \}\n\n]mg;
         $change =~ s[\n  \}\n *\n  \{][]m;
         print $change;
+
     } else {
         print STDERR "unknown mode $mode\n";
     }

@@ -39,8 +39,8 @@ absref_stato:
 absref_stat2:
 	make absref1 MODE=trian LIST=offinspect1.tmp
 absref_stat9:
-	make offin hasoc
-	tail -n16 offin.tmp noabs.tmp \
+	make offin
+	tail -n16 offin.tmp \
 	| grep -P  "^\d\d\d\d\-" >> reflect_progress.txt
 	tail -n8 reflect_progress.txt
 absref1: # MODE= LIST= ; run one reflection for MODE and sequences in LIST

@@ -231,8 +231,19 @@ pack3: # check for existence
 	wc -l    $@.tmp
 #----
 packfail:
-	cd reflect ; grep FAIL ../$(CC).fail.log | perl queue.pl -s joeis-lite -p > ../$(CC).fail.pack
+	cd reflect ; grep FAIL  ../$(CC).fail.log | perl queue.pl -s joeis-lite -p > ../$(CC).fail.pack
 	uedit64 $(CC).fail.pack
+packfatal:
+	cd reflect ; grep FATAL ../$(CC).fail.log | perl queue.pl -s joeis-lite -p \
+	| perl patch_queue.pl -m ratio \
+	> ../$(CC).fatal.pack
+	uedit64 $(CC).fatal.pack
+	make purge
+	cd reflect ; perl queue.pl -uf ../$(CC).fatal.pack
+	make CC=ration dist testall log
+packpass:
+	cd reflect ; grep pass  ../$(CC).pass.log | perl queue.pl -s joeis-lite -p > ../$(CC).`date +%Y-%m-%d.%H`.pass.pack
+	ls -al $(CC).*.pass.pack
 packtest:
 	cd reflect ; cat ../$(CC).fail.pack | perl queue.pl -s joeis-lite -uf
 	make dist test log
