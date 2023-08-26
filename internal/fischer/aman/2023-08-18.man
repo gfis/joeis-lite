@@ -1,0 +1,25 @@
+A104125	simtraf	0	new A064413()	t -> t.square()	^2, that is each term in the EKG sequence is squared.
+A108805	simtraf	0	new A108804()	t -> t.mod(Z.FOUR)
+A108807	simtraf	0	new A108806()	t -> t.mod(Z.FOUR)
+A113978	simtraf	0	new A074854()	t -> new Z(t.toString(2))
+A131828	triprod	0	A131821	A131821
+A137180	simtraf	0	new A136687()	t -> t.subtract(1)
+A141446	simtraf	0	new A102055()	t -> (t.compareTo(Z.ZERO) >= 0) ? t.mod(Z.NINE) : t.mod(Z.NINE).subtract(9)	 mod 9
+A143803	simtraf	0	new A001614()	t -> t.multiply2().subtract(1)	a(n) = 2*A001614(n) - 1 where A001614 lists the Connell numbers. nonn,tabl 1..55
+A144735	triprod	0	A054533	A054533	 ^2, as an infinite lower triangular matrix.
+A154810	simtraf	0	new A154809()	t -> new Z(t.toString(2))
+A165972	prepend	0	new A006093().skip(2)	1
+A171369	simtraf	1	new A169695().skip(1)	t -> t.equals(Z.TWO) ? Z.THREE : t	Triangle read by rows, replace 2's with 3's in A169695.
+A171645	simtraf	0	new PrependSequence(new A057602(), 1)	t -> t.multiply2()	
+A173919	union2	0	new A006093()	new A000040()
+A174219	union2	0	new A000040()	new A014574()
+# A198808	convprod	0	2	new A002898()
+# A208846	simtraf	0	new A056915()	t -> t.mod(Z.valueOf(76057)).mod(Z.valueOf(13))
+# A208847	simtraf	0	new A056915()	t -> t.mod(Z.valueOf(5228905)).mod(Z.valueOf(17))
+A258713	simtraf	0	new A001172()	Z::divide2	/2: Least k such that 2k is a sum of two odd primes in exactly n ways.
+A278637	union2	0	new A001605()	new A072381()
+A281265	union2	0	new A007992()	new A015630()
+A331754	simtraf	0	new A290131()	Z::divide2	/2.
+A350215	simtraf	0	new A048715()	t -> new Z(t.toString(2))
+A352575	simtraf	0	new A109812()	t -> new Z(t.toString(2))
+A106344	simtraf	0	new A084938()	t -> t.and(1)

@@ -1,0 +1,22 @@
+A094438	trilamb	0	0	0	Fibonacci.fibonacci(k+3).multiply(Binomial.binomial(n, k))		, k=0..n, n>=0.  nonn,easy,tabl  0..100
+A094439	trilamb	0	0	0	Fibonacci.fibonacci(k+4).multiply(Binomial.binomial(n, k))		, k=0..n, n>=0.  nonn,tabl       0..100
+A094443	trilamb	0	0	0	Fibonacci.fibonacci(n+3-k).multiply(Binomial.binomial(n, k))		, k=0..n, n>=0.        nonn,tabl       0..100
+A094444	trilamb	0	0	0	Fibonacci.fibonacci(n+4-k).multiply(Binomial.binomial(n, k))		, k=0..n, n>=0.        nonn,tabl       0..100
+A094570	trilamb	0	0	0	Fibonacci.fibonacci(k).add(Fibonacci.fibonacci(n - k))		Triangle T(n,k) read by rows: T(n,k) = F(k) + F(n-k) where F(n) is the n-th Fibonacci number.   nonn,tabl       0..125
+A169613	trilamb	1	3	1	new Q(Fibonacci.fibonacci(n), Fibonacci.fibonacci(n - k)).floor()		k=1,2,...,n-2; n>=3, where F=A000045 (Fibonacci numbers).  nonn,tabl       3..85
+A169614	trilamb	1	3	1	new Q(Fibonacci.fibonacci(n), Fibonacci.fibonacci(n - k)).round()		, k=1,2,...,n-2; n>=3, where F=A000045 (Fibonacci numbers). nonn,tabl       1..83
+A169615	transpose	1	A169613		new Q(Fibonacci.fibonacci(n + k), Fibonacci.fibonacci(n)).floor()		floor(F(n+k)/F(k)), k=1,2,...,n-2; n>=3, where F=A000045 (Fibonacci numbers).  nonn,tabl       1..81
+A169616	transpose	1	A169614		new Q(Fibonacci.fibonacci(n + k), Fibonacci.fibonacci(n)).round()		F(n+k)/F(k), k=1,2,...,n-2; n>=3, where F=A000045 (Fibonacci numbers). nonn,tabl       1..81
+A171729	trilamb	1	1	1	Fibonacci.fibonacci(n + 1).subtract((k == n) ? Z.ZERO : Fibonacci.fibonacci(n - k + 1))		F(n+1)-`if`(k=n, 0, F(n-k+1)):	differences of Fibonacci numbers.   nonn,tabl       1..11325
+A171730	trilamb	1	1	1	Fibonacci.fibonacci(n + 1).subtract((k == 1) ? Z.ZERO : Fibonacci.fibonacci(k))		F(n+1)-`if`(k=1, 0, F(k))	differences of Fibonacci numbers.   nonn,tabl       1..11325
+A193891	trimirror	1	A193892		
+A194119	trilamb	0	0	0	Binomial.binomial(n+3, k).add(Binomial.binomial(n+3, k+3))		, 0<=k<=n.	nonn,tabl	0..54
+A194120	trilamb	0	0	0	Binomial.binomial(n+4, k).add(Binomial.binomial(n+4, k+4))		, 0<=k<=n.	nonn,tabl	0..51
+A194121	trilamb	0	0	0	Binomial.binomial(n+2, k).add(Binomial.binomial(n+2, k+1)).add(Binomial.binomial(n+2, k+2))		, 0<=k<=n.	nonn,tabl	0..57
+A194122	trilamb	0	0	0	Binomial.binomial(n+4, k).add(Binomial.binomial(n+4, k+1)).add(Binomial.binomial(n+4, k+2)).add(Binomial.binomial(n+4, k+3)).add(Binomial.binomial(n+4, k+4))		, 0 <= k <= n.	nonn,tabl	0..150
+A194123	trilamb	0	0	0	Binomial.binomial(n+2, k).subtract(Binomial.binomial(n+2,k +2)).abs()		, 0<=k<=n.	nonn,tabl	0..65
+A194124	lambdas	0	Integers.SINGLETON.sum(0, n/2, k -> Binomial.binomial(n + 2, k + 2).subtract(Binomial.binomial(n + 2, k)))		a(n) = Sum_{k=0..floor(n/2)} (C(n+2,k) - C(n+2,k+2)).	nonn	0..31
+
+A144580	holos	0	[[0],[-1536,896,-128],[-528,416,-80],[-348,372,-96],[30,-69,21],[0,2,4]]	0
+A295371	holos	0	[[0],[-1437004800,4459328640,-5794678656,4242044664,-1971620508,618210450,-134970693,20779902,-2248389,167310,-8151,234,-3],[0],[-68947200,201944160,-242317944,159780500,-64921670,17139045,-2997687,344850,-25080,1045,-19],[45722880,-135880416,166238568,-112292280,46961190,-12820248,2329614,-279720,21330,-936,18],[-1814400,4931280,-5315580,3027780,-1010205,204120,-24570,1620,-45],[2298240,-6352128,7007496,-4110960,1421742,-299712,37884,-2640,78],[-631440,1760868,-1967596,1174551,-415618,90237,-11839,864,-27],[62640,-156708,148686,-70020,17520,-2232,114],[-28944,73044,-70272,33795,-8721,1161,-63],[2520,-5340,3840,-1140,120],[-744,1602,-1191,378,-45],[84,-132,48],[-6,9,-9],[6]]	[1]	0
+A110040	holos	0	[[0],[39916800,-120543840,150917976,-105258076,45995730,-13339535,2637558,-357423,32670,-1925,66,-1],[-3628800,10628640,-12753576,8409500,-3416930,902055,-157773,18150,-1320,55,-1],[13789440,-40098528,47642328,-31017940,12405390,-3212349,548919,-61410,4320,-173,3],[-564480,1534176,-1653736,941976,-314286,63504,-7644,504,-14],[1285200,-3483540,3740700,-2120055,702870,-140910,16800,-1095,30],[54000,-140940,142968,-74613,21945,-3675,327,-12],[-13680,39516,-45636,27681,-9600,1914,-204,9],[-1198752,97256,2120,-730,112,-6],[-4152,9322,-7449,2699,-447,27],[-420,708,-309,12,9],[-36,18,36,-18],[48,-48],[24]]	1,0,0,1,10	12	

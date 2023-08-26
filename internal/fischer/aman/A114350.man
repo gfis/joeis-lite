@@ -1,0 +1,55 @@
+A073337	parmof3	1	A114350	1	x -> x.pow(2).multiply(  4).add(x.multiply(-10)).add(  +7)	  4*x^2-10*x  +7
+A078114	parmof3	1	A114350	1	x -> x.pow(4).multiply(3).add(x.pow(3)).add(x.pow(2).multiply(4)).add(x).add(5)	3*x^4 + 1*x^3 + 4*x^2 + 1*x + 5, x a positive in
+A078115	parmof3	1	A114350	1	x -> x.pow(6).multiply(2).add(x.pow(5).multiply(7)).add(x.pow(4)).add(x.pow(3).multiply(8)).add(x.pow(2).multiply(2)).add(x.multiply(8)).add(1)	2*x^6 + 7*x^5 + 1*x^4 + 8*x^3 + 2*x^2 + 8*x + 1 f
+A078624	parmof3	1	A114350	0	x -> x.pow(3).multiply(7).add(x.pow(2).multiply(5)).add(x.multiply(3)).add(2)	Primes of the form 7x^3 + 5x^2 + 3x + 2.
+A080020	parmof3	1	A114350	0	x -> x.pow(2).multiply(  9).add(x.multiply(+ 3)).add(+367)	  9*x^2+ 3*x+367
+A087856	parmof3	1	A114350	0	x -> x.pow(2).multiply( 64).add(x.multiply(+64)).add( +41)	 64*x^2+64*x +41
+A087871	parmof3	1	A114350	0	x -> x.pow(2).multiply( 32).add(x.multiply(+24)).add(  +5)	 32*x^2+24*x  +5
+A087872	parmof3	1	A114350	0	x -> x.pow(2).multiply( 32).add(x.multiply(+40)).add( +13)	 32*x^2+40*x +13
+A095697	parmof3	1	A114350	0	x -> x.pow(2).multiply(  2).add(x.multiply( +3)).add(  +3)	  2*x^2 +3*x  +3
+A098828	parmof3	1	A114350	1	x -> x.pow(2).multiply(2).add(x.multiply(-2)).add(-2)	Primes of the form 3x^2 - y^2, where x and y are two consecutive numbers.
+A114350	parmof3	1	A114350	1	x -> x.pow(3).multiply(2).add(x).add(1)	Primes of the form 2x^3 + x +1
+A114351	parmof3	1	A114350	1	x -> x.pow(3).multiply(3).add(x).add(1)	Primes of the form 3x^3+x+1.
+A114352	parmof3	1	A114350	1	x -> x.pow(3).multiply(5).add(x).add(1)	Primes of the form 5x^3+x+1.
+A114353	parmof3	1	A114350	1	x -> x.pow(3).multiply(7).add(x).add(1)	Primes of the form 7x^3+x+1.
+A114354	parmof3	1	A114350	1	x -> x.pow(3).multiply(9).add(x).add(1)	Primes of the form 9x^3+x+1.
+A114355	parmof3	1	A114350	1	x -> x.pow(3).multiply(11).add(x).add(1)	Primes of the form 11x^3+x+1.
+A114356	parmof3	1	A114350	1	x -> x.pow(3).multiply(13).add(x).add(1)	Primes of the form 13x^3+x+1.
+A114357	parmof3	1	A114350	1	x -> x.pow(3).multiply(15).add(x).add(1)	Primes of the form 15x^3+x+1.
+A144127	parmof3	1	A114350	1	x -> x.pow(6).multiply(924).add(x.pow(5).multiply(2772)).add(x.pow(4).multiply(3150)).add(x.pow(3).multiply(1680)).add(x.pow(2).multiply(420)).add(x.multiply(42)).add(1)	924*x^6+2772x^5+3150x^4+1680x^3+420x^2+42x+1
+A153502	parmof3	1	A114350	1	x -> x.pow(2).multiply(  3).add(x.multiply( -3)).add( +11)	  3*x^2 -3*x +11
+A154356	parmof3	1	A114350	0	x -> x.pow(2).multiply( 25).add(x.multiply(-14)).add(  +2)	 25*x^2-14*x  +2
+A159071	parmof3	1	A114350	1	x -> x.pow(2).multiply(  3).add(x.multiply(+18)).add( +35)	  3*x^2+18*x +35
+A171749	parmof3	1	A114350	1	x -> x.pow(2).multiply( 16).add(x.multiply( -2)).add(  -1)	 16*x^2 -2*x  -1	
+A176470	parmof3	1	A114350	0	x -> x.pow(2).multiply(  2).add(x.multiply(+10)).add(  +5)	  2*x^2+10*x  +5
+A176557	parmof3	1	A114350	1	x -> x.pow(2).multiply(2).add(x.multiply(10)).add(-5)	Primes of the form 2x^2+10x-5, x>=1.
+A176608	parmof3	1	A114350	0	x -> x.pow(2).multiply(6).add(x.multiply(10)).add(5)	Also primes of the form 6*x^2+10*x+5.
+A177077	parmof3	1	A114350	1	x -> x.pow(2).multiply(3).add(x.multiply(-4)).add(-2)	3*n^2-4*n-2	3*n^2-4*n-2
+A185658	parmof3	1	A114350	0	x -> x.pow(2).multiply( 43).add(x.multiply( +3)).add(  +1)	 43*x^2 +3*x  +1
+A217439	parmof3	1	A114350	0	x -> x.pow(2).multiply(  8).add(x.multiply(-298)).add(2113)	 valuesofprimesoftheform8*x^2-298*x+2113forx>=0
+A217440	parmof3	1	A114350	0	x -> x.pow(2).multiply(  8).add(x.multiply(-326)).add(2659)	 valuesofprimesoftheform8*x^2-326*x+2659forx>=0
+A217604	parmof3	1	A114350	0	x -> x.pow(2).multiply( 59).add(x.multiply(-1873)).add(8941)	 valuesofprimesoftheform59*x^2-1873*x+8941forx>=0
+A220081	parmof3	1	A114350	1	x -> x.pow(2).multiply( 15).add(x.multiply(-15)).add( +17)	 15*x^2-15*x +17
+A221902	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply(+10)).add(  +3)	  2*x^2+10*x  +3
+A221903	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply(+42)).add( +19)	  2*x^2+42*x +19
+A227412	parmof3	1	A114350	1	x -> x.pow(3).multiply(  2).add(x.pow(2).multiply(3)).add(x.multiply(3)).add(3)	  2*x^3+3*x^2+3*x+3
+A227994	parmof3	1	A114350	1	x -> x.pow(2).multiply(  3).add(x.multiply(+42)).add(+245)	  3*x^2+42*x+245
+A243888	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply(+26)).add( +11)	  2*x^2+26*x +11
+A243889	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply(+30)).add( +13)	  2*x^2+30*x +13
+A243890	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply(+38)).add( +17)	  2*x^2+38*x +17
+A243891	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply(+62)).add( +29)	  2*x^2+62*x +29
+A243957	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply(+66)).add( +31)	  2*x^2+66*x +31
+A243958	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply(+86)).add( +41)	  2*x^2+86*x +41
+A256376	parmof3	1	A114350	7	x -> x.pow(2).multiply( 10).add(x.multiply(-90)).add(+163)	 10*x^2-90*x+163
+A268063	parmof3	1	A114350	1	x -> x.pow(3).multiply(  4).add(x.pow(2).multiply(4)).add(-1)	  4*x^3+4*x^2-1
+A269784	parmof3	1	A114350	0	x -> x.pow(2).multiply(  2).add(x.multiply(+10)).add(  +7)	  2*x^2+10*x  +7
+A269785	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply( +2)).add( -11)	  2*x^2 +2*x -11
+A269786	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply( +2)).add( -15)	  2*x^2 +2*x -15
+A269787	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply( +2)).add( -21)	  2*x^2 +2*x -21
+A269788	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply( +2)).add( -23)	  2*x^2 +2*x -23
+A269789	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply( +2)).add( -29)	  2*x^2 +2*x -29
+A269790	parmof3	1	A114350	1	x -> x.pow(2).multiply(  2).add(x.multiply( +2)).add( -39)	  2*x^2 +2*x -39
+A271144	parmof3	1	A114350	0	x -> x.pow(3).multiply( 42).add(x.pow(2).multiply(270)).add(x.multiply(-26436)).add(250703)	 42*x^3+270*x^2-26436*x+250703
+A272285	parmof3	1	A114350	0	x -> x.pow(2).multiply( 43).add(x.multiply(-537)).add(2971)	 43*x^2-537*x+2971
+A320752	parmof3	1	A114350	1	x -> x.pow(2).multiply(  5).add(x.multiply( -5)).add( +13)	  5*x^2 -5*x +13
+A356727	parmof3	1	A114350	0	x -> x.pow(2).multiply(  4).add(x.multiply(+84)).add( +43)	  4*x^2+84*x +43

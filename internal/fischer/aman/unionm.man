@@ -1,0 +1,68 @@
+A070739	union2	1	new A081091()	new A000215()		This sequence is the union of A081091 and the Fermat primes, A000215. - _T. D. Noe_, Jun 22 2007
+A078779	union3	1	new A056911()	new SimpleTransformSequence(new A056911(), Z::multiply2)	new SimpleTransformSequence(new A056911(), t -> t.multiply(4))	S, 2S and 4S, where S = odd squarefree numbers (A056911).      nonn    1..7098 nyi     _Benoit Cloitre_
+A079142	union3	1	new A001248()	new A036690()	new SimpleTransformSequence(new A000040(), t -> t.multiply(t.add(2)))		Union of the 3 sequences A001248={p^2}, A036690={p(p+1)} and {p(p+2)} for p prime.
+A079143	union2	1	new A001248()	new A036689()	Union of the 2 sequences A001248={p^2} and A036689={p(p-1)} for p prime.
+# A080078	union2	1			A080105 and A080106.   nonn    0..50   nyi     _N. J. A. Sloane_
+# A080324	union2	1	new A001747().skip(2)	new A030229()			even squarefree numbers (A001747) and squarefree numbers for which the number of prime factors is even (A030229).      nonn    1..62   nyi     _Reinhard Zumkeller_
+A081061	union2	1	new A003586()	new A000961()		3-smooth numbers and prime powers.     nonn    1..10000        nyi     _Reinhard Zumkeller_
+A084116	union2	1	new A000040()	new A007422()		Union of primes and multiplicatively perfect numbers (A000040, A007422).
+A090865	union2	1	new A005385().skip(1)	new A090866()		Union of (A005385 \ {5}) and A090866.
+A103826	union2	1	new A005408()	new SimpleTransformSequence(new A022544(), Z::multiply2)	Union of the odd numbers (A005408) and twice the numbers that are not the sum of 2 squares (A022544).
+# A107062	union2	1			set of Belgian-k numbers for k = 0..9 which begin with k.      base,easy,nonn  0..65   nyi     _Eric Angelini_
+#? changed A109441	union3	1	new A000217()	new A016742()	new A033996()		triangular numbers, even squares, and one less the odd squares, without duplicates.    nonn    1..57   nyi     _Roger L. Bagula_
+# A111980	union2	1			pairs of consecutive primes p, q with q-p = 4. nonn    1..55   nyi     _Ray Chandler_
+A114522	union2	1	new A000040()	new A047820()		Sequence is the union of the primes and sequence A047820.
+A116974	prepend	1	new A000040().skip(3)	2,3,5,6	Union of 6 and A000040: the prime numbers.
+# ?? 4,8,12, ??? A121176	union3	1	new A005117()	new SimpleTransformSequence(new A005117(), Z::multiply2)	new SimpleTransformSequence(new A005117(), Z::multiply(4), new FiniteSequence(8, 9, 18)	, S, 2S and 4S, where S = squarefree numbers (A005117).      nonn    1..10000        nyi     _N. J. A. Sloane_
+# ?? 4 ?? A121684	union3	1	new A056911()	new SimpleTransformSequence(new A056911(), Z::multiply2)	new SimpleTransformSequence(new A056911(), Z::multiply(4), new FiniteSequence(8, 9, 18)	, S, 2S and 4S, where S = odd squarefree numbers (A056911).  nonn    1..10000        nyi     _N. J. A. Sloane_
+A122493	union2	1	new A000045()	new A000217()		Fibonacci and triangular numbers.      nonn    0..1000 nyi     _Ben Paul Thurston_
+# A124168	union2	1			all n-Fibonacci sequences, that is, all sequences s(0) = s(1) = ... = s(n-2) = 0, s(n-1) = 1 and for k >= n, s(k) = s(k-1) + ... + s(k-n).     nonn    1..1000 nyi     _Carlos Alves_
+# A127208	union2	1			all n-step Lucas sequences, that is, all sequences s(1-n) = s(2-n) = ... = s(-1) = -1, s(0) = n and for k > 0, s(k) = s(k-1) + ... + s(k-n).   nonn    1..1000 nyi     _T. D. Noe_
+A128201	union2	1	new A000290().skip(1)	new A005408()		positive squares and the odd numbers.  nonn,easy       1..10000        nyi     _Reinhard Zumkeller_
+# A133261	union2	1			#?A134196 and #?A134197 : #?A126990 with duplicates removed.   nonn    1..56   nyi     _Artur Jasinski_
+A137606	union2	1	new PrependSequence(new SimpleTransformSequence(new A105874(), t -> t.add(1).divide2()), 1)	new SimpleTransformSequence(new A001122(), t -> t.add(1).divide2())		This sequence as a set is the union of { 1 }, { (A105874(n)+1)/2 } and { (A001122(n)+1)/2 }. - _Max Alekseyev_, May 16 2008
+A141453	union2	1	new PrependSequence(new A000668(), 2)	new A019434()		Sequence consists of 2 and the union of the Mersenne primes (A000668) and the Fermat primes (A019434).
+# A145819	union2	1			A145812 and #?A145818 with double repetition of 1, so that a(1)=1, a(2)=1      nonn    1..32   nyi     _Vladimir Shevelev_
+#?? data > a(9560...) ?? A152259	union2	1	new A147568()	new SimpleTransformSequence(new A147568(), t -> t.multiply2().subtract(1))		values: A147568(n) and 2*A147568(n) - 1        nonn    1..10000        nyi     _Vladimir Shevelev_
+# A160227	union2	1			#?A160216 and squares of odd terms of #?A160215        nonn    1..29   nyi     _Vladimir Shevelev_, May 06 2009
+A161579	union3	1	new A131323()	new SimpleTransformSequence(new A131323(), t -> t.subtract(2))	new SimpleTransformSequence(new A036554(), t -> t.subtract(2))		union of A131323 with the sequence of terms of the form A131323(n)-2, and with the sequence of terms of the form A036554(n)-2.
+# A162966	prepend	1			1 and nonsquarefree numbers (A013929). nonn,less       1..63   nyi     _Jaroslav Krizek_
+A162735	prepend	1	new A024675()	1
+A166081	union2	1	new PrependSequence(new A025584(), 1)	new A109934()
+A166718	union2	1	new A000040()	new A001358(), new A014612(), new A014613()		UNION of A000040, A001358, A014612, and A014613. - _R. J. Mathar_, Aug 08 2012
+A167207	union2	1	new A005117()	new A001248()		The union of A005117 (squarefree numbers) and A001248 (squares of primes).
+A169802	union2	1	new A000040()	new A055233()		Union of primes (A000040) and A055233.
+
+# A171710	union2	1			#?A168234 and #?A171219, sorted.       nonn,tabf       1..10680        nyi     _Paul Curtz_
+A175594	prepend	1	new A033949()	0	
+A176693	union2	1	new A000290()	new A005843()		squares and the even numbers.  nonn,easy       1..68   nyi     _Vincenzo Librandi_
+# A193458	union2	1			#?A071863 and #?A071861.       nonn    1..48   nyi     _J. M. Bergot_
+# A194598	union2	1			#?A080359 and #?A164294.       nonn    1..1000 nyi     _Vladimir Shevelev_
+A196127	union3	1	new A006093()	new A076274()	new SimpleTransformSequence(new A000040(), t -> t.multiply(3).subtract(1))		p-1, 2p-1 and 3p-1 where p is a prime (without repetition).    nonn,easy       1..10000        nyi     _Juri-Stepan Gerasimov_
+# A208574	union2	1			#?A208572 and #?A208573.       nonn    1..41   nyi     _Washington Bomfim_
+A210490	union2	1	new A000290().skip(1)	new A005117()		positive squares (A000290 \ {0}) and squarefree numbers (A005117).     nonn    1..10000        nyi     _Reinhard Zumkeller_
+A213011	union2	1	new A000290().skip(1)	new A007504().skip(1)	positive squares and sums of first k primes.   nonn    1..72   nyi     _N. J. A. Sloane_
+# A214786	union2	1			#?A214784 and #?A214785        nonn    1..47   nyi     _Art DuPre_
+# A214792	union2	1			#?A214790 and #?A214791.       nonn    1..47   nyi     _Art DuPre_
+# A214798	union2	1			#?A214796 and #?A214797        nonn    1..46   nyi     _Art DuPre_
+A216846	union2	1	new A002808()	new A001122()		the composite numbers and the primes for which 2 is a primitive root.  nonn    1..67   nyi     _V. Raman_
+A230709	union2	1	new A128309()	new A001969()	even odious (cf. A128309) and evil numbers (cf. A001969).      nonn,easy       1..10000        nyi     _Reinhard Zumkeller_
+A230771	union2	1	new A000045().skip(1)	new A000079()	Fibonacci numbers and powers of 2.     nonn,easy       1..47   nyi     _Franklin T. Adams-Watters_
+# A235868	union2	1			2 and powers of odd primes.    nonn    1..59   nyi     _Jos√© Mar√≠a Grau Ribas_
+A248652	union2	1	new A000142()	new A001147()		the factorial numbers (A000142) and the double factorials of odd numbers (A001147).    nonn    1..30   nyi     _Olivier G√©rard_
+A254614	union2	1	new A092246()	new A001969()			odd odious (A092246) and evil (A001969) numbers.       nonn,base,changed       1..67   nyi     _Jeremy Gardiner_
+# A260628	union2	1			missing numbers in first 10, 100, 1000, 10000, ... digits after the decimal point in expansion of Pi.  nonn,base       1..59   nyi     _David Consiglio, Jr._
+# A262975	union2	1			all unique coefficients of all powers of the g.f. A(x) of this sequence, starting with A(0)=2 and d/dx(A(0))=3.     nonn    0..1024 nyi     _Paul D. Hanna_
+A268645	union2	1	new A000142()	new A006882()		the factorial numbers (A000142) and the double factorials numbers (A006882).   nonn    1..36   nyi     _Olivier G√©rard_, revised by _N. J. A. Sloane_, Feb 09 2016
+# A277727	union2	1			#?A158919, #?A277722, A277723. nonn    1..76   nyi     _N. J. A. Sloane_
+# A287918	union2	1			nonprime 1 <= t <= m for m in A036913, with gcd(t,m) = 1.      nonn    1..54   nyi     _Jamie Morken_ and _Michael De Vlieger_
+A303554	union2	1	new A000961()	new A120944()		the prime powers (p^k, p prime, k >= 0) and numbers that are the product of 2 or more distinct primes. nonn    1..79   nyi     _Ilya Gutkovskiy_
+A304177	union2	1	new HolonomicRecurrence(1, "[0,-1,62,-1]", "8,488", 0)	new HolonomicRecurrence(1, "[0,-1,482,-1]", "22,10582", 0)		sequences b and c defined by: b(1)=8, b(2)=488, b(n)=62*b(n-1) - b(n-2) and c(1)=22, c(2)=10582, c(n)=482*c(n-1) - c(n-2).     easy,nonn       1..20   nyi     _Pedja Terzic_
+# A330554	union2	1			2, #?A282178, and #?A330339.   nonn    1..25000        nyi     _N. J. A. Sloane_
+A340840	union2	1	new  A002182()	new A004394()		the highly composite and superabundant numbers.        nonn    1..10000        nyi     _Michael De Vlieger_
+# A359772	union2	1	new A063745()	new ??A067019()		even numbers with an even number of prime factors and odd numbers with an odd number of prime factors, when the number of prime factors is counted with multiplicity.  nonn    1..73   nyi       _Antti Karttunen_
+A355580	union3	1	new A151821()	new A000244().skip(2)	new SimpleTransformSequence(new A003586(), t -> t.multiply(36))	
+A359794	union2	1	new A005408()	new A036554()		odd numbers and numbers with an odd 2-adic valuation.  nonn    1..78   nyi     _Antti Karttunen_
+A361102	prepend	1	new A024619()	1
+A362948	union2	1	new A000351()	new A033845()		Union of A000351 = {5^k ; k > 0} and A033845 = {2^j*3^k, j,k > 0}.
+A363292	union2	1	new A000420()	new A033846()		Union of A000420 = {7^k ; k > 0} and A033846 = {2^j*5^k ; j, k > 0}.

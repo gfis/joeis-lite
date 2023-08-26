@@ -1,0 +1,126 @@
+#?A086134 (least prime factor of n').
+#?A086131 (greatest prime factor of n').
+# ok A001787 (derivative of 2^n).
+# ok A027471 (derivative of 3^n).
+# ok A085708 (derivative of 10^n).
+# ok A068327 (derivative of n^n).
+# ok A024451 (derivative of p#).
+#?A068237 (numerator of derivative of 1/n).
+#?A068238 (denominator of derivative of 1/n).
+
+A068311	arderiv	0	new A000142()	(derivative of n!).
+A068312	arderiv	0	new A000217()	(derivative of triangular numbers).
+A068328	arderiv	0	new A005117()	(derivative of squarefree numbers).
+A068329	arderiv	0	new A000045().skip(1)	(derivative of Fibonacci(n)).
+A068346	arderiv	0	new A003415()	(second derivative of n).
+A068719	arderiv	0	new A005843().skip(1)	(derivative of 2n).
+A068720	arderiv	0	new A000290().skip(1)	(derivative of n^2).
+A068721	arderiv	0	new A000578().skip(1)	(derivative of n^3).
+A096371	arderiv	0	new A000041()	(derivative of partition number).
+A099301	arderiv	0	new A000005()	(derivative of d(n)).
+A099306	arderiv	0	new A068346()	(third   derivative of n).
+A099310	arderiv	0	new A000010()	(derivative of phi(n)).
+A165560	simtraf	0	new A003415()	t -> (t.testBit(0) ? Z.ONE : Z.ZERO)	(parity).
+A168386	arderiv	0	new A006882()	(derivative of n!!).
+A190121	partsum	0	new A003415()	(partial sums).
+A258644	arderiv	0	new A099306()	(fourth  derivative of n).
+A258645	arderiv	0	new A258644()	(fifth   derivative of n).
+A258646	arderiv	0	new A258645()	(sixth   derivative of n).
+A258647	arderiv	0	new A258646()	(seventh derivative of n).
+A258648	arderiv	0	new A258647()	(eighth  derivative of n).
+A258649	arderiv	0	new A258648()	(ninth   derivative of n).
+A258650	arderiv	0	new A258649()	(tenth   derivative of n).
+A260619	arderiv	0	new A002109()	(derivative of hyperfactorial(n)).
+A260620	arderiv	0	new A000178()	(derivative of superfactorial(n)).
+A342925	arderiv	0	new A000203()	(derivative of sigma(n)).
+A349905	arderiv	0	new A003961()	(derivative of prime shift).
+
+# A185232 (n-th    derivative of n).
+#?A258651 (A(n,k) = k-th arithmetic derivative of n).
+#?A327860 (derivative of prime product form of primorial base expansion of n, A276086).
+# ok A085731 (gcd(n,n')), 
+# ok A057521 (gcd(n, (n')^k) for all k >= 2).
+# ok A342014 (n' mod n), 
+
+#?A341998 (A003557(n')), 
+# A342001 (n'/A003557(n)).
+#?A098699 (least x such that x' = n, antiderivative of n).
+#?A098700 (n such that x' = n has no integer solution).
+#?A099302 (number of solutions to x' = n).
+#?A099303 (greatest x such that x' = n).
+# A051674 (n such that n' = n).
+#?A083347 (n such that n' < n).
+#?A083348 (n such that n' > n).
+#?A099304 (least k such that (n+k)' = n' + k').
+#?A099305 (number of solutions to (n+k)' = n' + k').
+#?A328235 (least k > 0 such that (n+k)' = u * n' for some natural number u).
+#?A328236 (least m > 1 such that (m*n)' = u * n' for some natural number u).
+#?A099307 (least k such that the k-th arithmetic derivative of n is zero).
+#?A099308 (k-th arithmetic derivative of n is zero for some k).
+#?A099309 (k-th arithmetic derivative of n is nonzero for all k).
+#?A129150 (n-th derivative of 2^3).
+#?A129151 (n-th derivative of 3^4).
+#?A129152 (n-th derivative of 5^6).
+#?A189481 (x' = n has a unique solution).
+# ok A258057 (first differences).
+#?A229501 (n divides the n-th partial sum).
+#?A235991 (n' is odd), #?A235992 (n' is even).
+#?A327863, #?A327864, #?A327865 (n' is a multiple of 3, 4, 5).
+#?A157037 (n' is prime), #?A192192 (n'' is prime), #?A328239 (n''' is prime).
+#?A328393 (n' is squarefree), #?A328234 (squarefree and > 1).
+#?A328244 (n'' is squarefree), #?A328246 (n''' is squarefree).
+#?A328303 (n' is not squarefree), #?A328252 (n' is squarefree, but n is not).
+#?A328248 (least k such that the (k-1)-th derivative of n is squarefree).
+#?A328251 (k-th arithmetic derivative is never squarefree for any k >= 0).
+#?A256750 (least k such that the k-th derivative is either 0 or has a factor p^p).
+#?A327928 (number of distinct primes p such that p^p divides n').
+#?A342003 (max. exponent k for any prime power p^k that divides n').
+#?A327929 (n' has at least one divisor of the form p^p).
+#?A327978 (n' is primorial number > 1).
+#?A328243 (n' is a partial sum of primorial numbers and larger than one).
+#?A328310 (maximal prime exponent of n' minus maximal prime exponent of n).
+#?A328320 (max. prime exponent of n' is less than that of n).
+#?A328321 (max. prime exponent of n' is >= that of n).
+#?A328383 (least k such that the k-th derivative of n is either a multiple or a divisor of
+#?A263111 (the ordinal transform of a).
+#?A300251, #?A319684 (M▒bius and inverse M▒bius transform).
+# ok A305809 (Dirichlet convolution square).
+# A349133, A349173, A349394, A349380, A349618, A349619, A349620, A349621 (for miscellaneous D
+# A069359 (similar formula which agrees on squarefree numbers).
+#?A258851 (the pi-based arithmetic derivative of n).
+#?A328768, #?A328769 (primorial-based arithmetic derivatives of n).
+#?A328845, #?A328846 (Fibonacci-based arithmetic derivatives of n).
+#?A302055, #?A327963, #?A327965, #?A328099 (for other variants and modifications).
+# A038554 (another sequence using "derivative" in its name, but involving binary expansion of
+# A322582, A348507 (lower and upper bounds), also A002620.
+# A001787 1
+# A002620 1
+# A003557 1
+# A024451 1
+# A027471 1
+# A038554 1
+# A051674 1
+# A057521 1
+# A068327 1
+# A068346 1
+# A068719 1
+# A069359 1
+# A085708 1
+# A085731 1
+# A099301 1
+# A099310 1
+# A165560 1
+# A258057 1
+# A305809 1
+# A322582 1
+# A342001 1
+# A342014 1
+# A348507 1
+# A349133 1
+# A349173 1
+# A349380 1
+# A349394 1
+# A349618 1
+# A349619 1
+# A349620 1
+# A349621 1
