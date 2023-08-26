@@ -22,7 +22,7 @@ A099306	arderiv	0	new A068346()	(third   derivative of n).
 A099310	arderiv	0	new A000010()	(derivative of phi(n)).
 A165560	simtraf	0	new A003415()	t -> (t.testBit(0) ? Z.ONE : Z.ZERO)	(parity).
 A168386	arderiv	0	new A006882()	(derivative of n!!).
-A190121	partsum	0	new A003415()	(partial sums).
+A190121	partsum	0	A003415	(partial sums).
 A258644	arderiv	0	new A099306()	(fourth  derivative of n).
 A258645	arderiv	0	new A258644()	(fifth   derivative of n).
 A258646	arderiv	0	new A258645()	(sixth   derivative of n).
@@ -41,6 +41,7 @@ A349905	arderiv	0	new A003961()	(derivative of prime shift).
 # ok A085731 (gcd(n,n')), 
 # ok A057521 (gcd(n, (n')^k) for all k >= 2).
 # ok A342014 (n' mod n), 
+# ok A258057 (first differences).
 
 #?A341998 (A003557(n')), 
 # A342001 (n'/A003557(n)).
@@ -48,9 +49,6 @@ A349905	arderiv	0	new A003961()	(derivative of prime shift).
 #?A098700 (n such that x' = n has no integer solution).
 #?A099302 (number of solutions to x' = n).
 #?A099303 (greatest x such that x' = n).
-# A051674 (n such that n' = n).
-#?A083347 (n such that n' < n).
-#?A083348 (n such that n' > n).
 #?A099304 (least k such that (n+k)' = n' + k').
 #?A099305 (number of solutions to (n+k)' = n' + k').
 #?A328235 (least k > 0 such that (n+k)' = u * n' for some natural number u).
@@ -62,14 +60,29 @@ A349905	arderiv	0	new A003961()	(derivative of prime shift).
 #?A129151 (n-th derivative of 3^4).
 #?A129152 (n-th derivative of 5^6).
 #?A189481 (x' = n has a unique solution).
-# ok A258057 (first differences).
-#?A229501 (n divides the n-th partial sum).
-#?A235991 (n' is odd), #?A235992 (n' is even).
-#?A327863, #?A327864, #?A327865 (n' is a multiple of 3, 4, 5).
-#?A157037 (n' is prime), #?A192192 (n'' is prime), #?A328239 (n''' is prime).
-#?A328393 (n' is squarefree), #?A328234 (squarefree and > 1).
-#?A328244 (n'' is squarefree), #?A328246 (n''' is squarefree).
-#?A328303 (n' is not squarefree), #?A328252 (n' is squarefree, but n is not).
+
+# ok A051674	parmof3	0	A157037	new A003415()	(n, t) -> t.compareTo(Z.valueOf(n)) == 0	(n such that n' = n).
+A083347	parmof3	0	A157037	new A003415()	(n, t) -> t.compareTo(Z.valueOf(n)) < 0	(n such that n' < n).
+A083348	parmof3	0	A157037	new A003415()	(n, t) -> t.compareTo(Z.valueOf(n)) > 0	(n such that n' > n).
+A229501	parmof3	0	A157037	new A190121()	(n, t) -> t.mod(n) == 0	 (n divides the n-th partial sum).
+A157037	parmof3	0	A157037	new A003415()	(n, t) -> t.isProbablePrime()	(n' is prime), 
+A192192	parmof3	0	A157037	new A068346()	(n, t) -> t.isProbablePrime()	(n'' is prime), 
+A235991	parmof3	0	A157037	new A003415()	(n, t) -> t.isOdd()	(n' is odd), 
+A235992	parmof3	0	A157037	new A003415()	(n, t) -> t.isEven()	(n' is even).
+A327863	parmof3	0	A157037	new A003415()	(n, t) -> t.mod(Z.THREE).isZero()	(n' is a multiple of 3).
+A327864	parmof3	0	A157037	new A003415()	(n, t) -> t.mod(Z.FOUR).isZero()	(n' is a multiple of 4).
+A327865	parmof3	0	A157037	new A003415()	(n, t) -> t.mod(Z.FIVE).isZero()	(n' is a multiple of 5).
+A328234	parmof3	0	A157037	new A003415()	(n, t) -> Jaguar.factor(t).isSquareFree() && t.compareTo(Z.ONE) > 0	(squarefree and > 1).
+A328239	parmof3	0	A157037	new A099306()	(n, t) -> t.isProbablePrime()	(n''' is prime).
+#? A328244	parmof3	0	A157037	new A068346()	(n, t) -> t.compareTo(Z.ONE) <= 0 || Jaguar.factor(t).isSquareFree()	(n'' is squarefree), 
+#? A328246	parmof3	0	A157037	new A099306()	(n, t) -> t.compareTo(Z.ONE) <= 0 || Jaguar.factor(t).isSquareFree()	(n''' is squarefree).
+#? A328303	parmof3	0	A157037	new A003415()	(n, t) -> t.compareTo(Z.ONE) <= 0 || !Jaguar.factor(t).isSquareFree()	(n' is not squarefree), 
+#? A328393	parmof3	0	A157037	new A003415()	(n, t) -> t.compareTo(Z.TWO) >= 0 && Jaguar.factor(t).isSquareFree()	(n' is squarefree), 
+A328252	parmof3	0	A157037	new A003415()	(n, t) -> Jaguar.factor(t).isSquareFree() && !Jaguar.factor(n).isSquareFree()	(n' is squarefree, but n is not).
+# result? A328310	parmof3	0	A157037	new A003415()	(n, t) -> Z.valueOf(Jaguar.factor(t).maxExponent() - Jaguar.factor(n).maxExponent())	(maximal prime exponent of n' minus maximal prime exponent of n).
+#? A328320	parmof3	0	A157037	new A003415().skip(1)	(n, t) -> t.compareTo(Z.ONE) <= 0 || Jaguar.factor(t).maxExponent() + 1 == Jaguar.factor(n).maxExponent()	(max. prime exponent of n' is less than that of n).
+#? A328321	parmof3	0	A157037	new A003415().skip(2)	(n, t) -> Jaguar.factor(t).maxExponent() >= Jaguar.factor(n).maxExponent()	(max. prime exponent of n' is >= that of n).
+
 #?A328248 (least k such that the (k-1)-th derivative of n is squarefree).
 #?A328251 (k-th arithmetic derivative is never squarefree for any k >= 0).
 #?A256750 (least k such that the k-th derivative is either 0 or has a factor p^p).
@@ -78,12 +91,10 @@ A349905	arderiv	0	new A003961()	(derivative of prime shift).
 #?A327929 (n' has at least one divisor of the form p^p).
 #?A327978 (n' is primorial number > 1).
 #?A328243 (n' is a partial sum of primorial numbers and larger than one).
-#?A328310 (maximal prime exponent of n' minus maximal prime exponent of n).
-#?A328320 (max. prime exponent of n' is less than that of n).
-#?A328321 (max. prime exponent of n' is >= that of n).
 #?A328383 (least k such that the k-th derivative of n is either a multiple or a divisor of
 #?A263111 (the ordinal transform of a).
-#?A300251, #?A319684 (M▒bius and inverse M▒bius transform).
+#?A300251 (M▒bius transform, 
+#?A319684 (Inverse M▒bius transform).
 # ok A305809 (Dirichlet convolution square).
 # A349133, A349173, A349394, A349380, A349618, A349619, A349620, A349621 (for miscellaneous D
 # A069359 (similar formula which agrees on squarefree numbers).

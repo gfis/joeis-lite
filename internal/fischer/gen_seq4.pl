@@ -374,6 +374,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPrependSequence}              ) { $imports{"irvine.oeis.PrependSequence"   }                = $itype; }
     if ($line =~ m{\WSequence(\d|\$\(OFFSET\))}    ) { $imports{"irvine.oeis.Sequence$1" }                       = $itype; }
     if ($line =~ m{\WSkipSequence}                 ) { $imports{"irvine.oeis.SkipSequence"      }                = $itype; }
+    if ($line =~ m{\WInverse}                      ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
+    if ($line =~ m{\WProduct}                      ) { $imports{"irvine.oeis.triangle.Product"  }                = $itype; }
     if ($line =~ m{\WTranspose}                    ) { $imports{"irvine.oeis.triangle.Transpose"}                = $itype; }
     if ($line =~ m{\WJaguar\.}                     ) { $imports{"irvine.factor.factor.Jaguar"   }                = $itype; }
     if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"      }                = $itype; }

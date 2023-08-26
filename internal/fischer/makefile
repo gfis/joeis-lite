@@ -246,7 +246,7 @@ packpass:
 	ls -al $(CC).*.pass.pack
 packtest:
 	cd reflect ; cat ../$(CC).fail.pack | perl queue.pl -s joeis-lite -uf
-	make dist test log
+	make dist testall log
 #----
 newer: # DIR= ; compare dates of aseqnos in DIR and jOEIS
 	ls --full-time $(DIR) | perl -ne 'my @a = split(/\s+/); if ($$a[8] =~ m{\AA\d+} ) { print substr($$a[8], 0, 7) . "\t$$a[5]\t$(DIR)\n"; }' \
