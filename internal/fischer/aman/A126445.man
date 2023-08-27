@@ -1,0 +1,26 @@
+A126445	trilamb	0	0	0	Binomial.binomial(Binomial.binomial(n+2,3).subtract(Binomial.binomial(k+2,3)), n-k)	Triangle, read by rows, where T(n,k) = C(C(n+2,3) - C(k+2,3)    , n-k) for n>=k>=0.	nonn,tabl	0..50	nyi	_Paul D. Hanna_
+A126449	rowsums	0	A126445	; a(n) = Sum_{k=0..n} C( C(n+2,3) - C(k+2,3), n-k).	nonn	0..13	nyi	_Paul D. Hanna_
+A126450	trilamb	0	0	0	Binomial.binomial(Binomial.binomial(n+2,3).subtract(Binomial.binomial(k+2,3)).add(1), n-k)	Triangle, read by rows, where T(n,k) = C(C(n+2,3) - C(k+2,3) + 1, n-k) for n>=k>=0.	nonn,tabl	0..39	nyi	_Paul D. Hanna_
+A126453	rowsums	0	A126450	: a(n) = Sum_{k=0..n} C( C(n+2,3) - C(k+2,3) + 1, n-k).	nonn	0..13	nyi	_Paul D. Hanna_
+A126454	trilamb	0	0	0	Binomial.binomial(Binomial.binomial(n+2,3).subtract(Binomial.binomial(k+2,3)).add(2), n-k)	Triangle, read by rows, where T(n,k) = C(C(n+2,3) - C(k+2,3) + 2, n-k) for n>=k>=0.	nonn,tabl	0..39	nyi	_Paul D. Hanna_
+A126457	trilamb	0	0	0	Binomial.binomial(Binomial.binomial(n+2,3).subtract(Binomial.binomial(k+2,3)).add(3), n-k)	Triangle, read by rows, where T(n,k) = C(C(n+2,3) - C(k+2,3) + 3, n-k) for n>=k>=0.	nonn,tabl	0..39	nyi	_Paul D. Hanna_
+A126446	btrionk	0	A126445	0	mN	0	Column 0 of triangle A126445; a(n) = binomial( binomial(n+2,3), n).	nonn	0..200	nyi	_Paul D. Hanna_
+A126447	btrionk	0	A126445	1	mN	1	Column 1 of triangle A126445; a(n) = C( C(n+3,3) - 1, n).	nonn	0..13	nyi	_Paul D. Hanna_
+A126448	btrionk	0	A126445	2	mN	2	Column 2 of triangle A126445; a(n) = C( C(n+4,3) - 4, n).	nonn	0..13	nyi	_Paul D. Hanna_
+A126451	btrionk	0	A126450	0	mN	0	Column 0 of triangle A126450; a(n) = C( C(n+2,3) + 1, n).	nonn	0..200	nyi	_Paul D. Hanna_
+A126452	btrionk	0	A126450	1	mN	1	Column 1 of triangle A126450; a(n) = C( C(n+3,3), n).	nonn	0..13	nyi	_Paul D. Hanna_
+A126455	btrionk	0	A126454	0	mN	0	Column 0 of triangle A126454; a(n) = C( C(n+2,3) + 2, n).	nonn	0..13	nyi	_Paul D. Hanna_
+A126456	btrionk	0	A126454	1	mN	1	Column 1 of triangle A126454; a(n) = C( C(n+3,3) + 1, n).	nonn	0..13	nyi	_Paul D. Hanna_
+A126458	btrionk	0	A126457	0	mN	0	Column 0 of triangle A126457; a(n) = C( C(n+2,3) + 3, n).	nonn	0..13	nyi	_Paul D. Hanna_
+A126459	btrionk	0	A126457	1	mN	1	Column 1 of triangle A126457; a(n) = C( C(n+3,3) + 2, n).	nonn	0..13	nyi	_Paul D. Hanna_
+
+# A126460	triprod	0	new Inverse(new A125445())	new A126450()	Triangle T, read by rows, where column k of matrix power T^( k(k+1)/2 ) equals left-shifted column (k-1) of T for k>=1.	nonn,tabl	0..49	nyi	_Paul D. Hanna_
+# A126461	btrionk	0	A126460	0	mN	0	Column 0 of triangle A126460; equals the number of subpartitions of the partition {(k^2 + 3*k - 4)*k/6, k>=0}.	nonn	0..16	nyi	_Paul D. Hanna_
+# A126462	btrionk	0	A126460	2	mN	2	Column 2 of triangle A126460; equals the number of subpartitions of the partition {(k^2 + 9*k + 20)*k/6, k>=0}.	nonn	0..14	nyi	_Paul D. Hanna_
+# A126463	btrionk	0	A126460	3	mN	3	Column 3 of triangle A126460; equals the number of subpartitions of the partition {(k^2 + 9*k + 20)*k/6, k>=0}.	nonn	0..14	nyi	_Paul D. Hanna_
+# A126464	rowsums	0	A126460	.	nonn	0..16	nyi	_Paul D. Hanna_
+# A126465	triprod	0	new A126450()	new Inverse(new A125445())	Triangle T, read by rows, where row n equals row (n-1) of matrix power T^(n(n+1)/2) concatenated with a trailing '1', for n>0, with T(0,0) = 1.	nonn,tabl	0..44	nyi	_Paul D. Hanna_
+# A126466	btrionk	0	A126465	0	mN	0	Column 0 of triangle A126465.	nonn	0..14	nyi	_Paul D. Hanna_
+# A126467	btrionk	0	A126465	1	mN	1	Column 1 of triangle A126465.	nonn	0..14	nyi	_Paul D. Hanna_
+# A126468	btrionk	0	A126465	2	mN	2	Column 2 of triangle A126465.	nonn	0..13	nyi	_Paul D. Hanna_
+# A126469	rowsums	0	A126465	.	nonn	0..14	nyi	_Paul D. Hanna_
