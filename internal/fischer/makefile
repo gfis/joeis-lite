@@ -4905,7 +4905,7 @@ seqop: # ???
 	wc -l     $@.gen
 #-------------------------------
 simgcd: # Hugo's GCD extracts
-	grep -E "^A[0-9]" $(CONTRIB)/hp/gcd_check.man \
+	grep -E "^A[0-9]" $(CONTRIB)/hp/gcd_check.tmp \
 	>         $@.gen
 	head -n2  $@.gen
 	wc -l     $@.gen
