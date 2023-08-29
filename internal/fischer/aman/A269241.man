@@ -1,0 +1,33 @@
+A269250	parmof3	0	A269241	3	0	A269250(n)=!n+#select(t->!t,digits(n^3))
+A269241	parmof3	0	A269241	3	1	A269241(n)=#select(t->t==1,digits(n^3))
+A269242	parmof3	0	A269241	3	2	A269242(n)=#select(t->t==2,digits(n^3))
+A269243	parmof3	0	A269241	3	3	A269243(n)=#select(t->t==3,digits(n^3))
+A269244	parmof3	0	A269241	3	4	A269244(n)=#select(t->t==4,digits(n^3))
+A269245	parmof3	0	A269241	3	5	A269245(n)=#select(t->t==5,digits(n^3))
+A269246	parmof3	0	A269241	3	6	A269246(n)=#select(t->t==6,digits(n^3))
+A269247	parmof3	0	A269241	3	7	A269247(n)=#select(t->t==7,digits(n^3))
+A269248	parmof3	0	A269241	3	8	A269248(n)=#select(t->t==8,digits(n^3))
+A269249	parmof3	0	A269241	3	9	A269249(n)=#select(t->t==9,digits(n^3))
+
+A086008	parmof3	0	A269241	2	0	A269250(n)=!n+#select(t->!t,digits(n^3))
+A086009	parmof3	0	A269241	2	1	A269241(n)=#select(t->t==1,digits(n^3))
+A086010	parmof3	0	A269241	2	2	A269242(n)=#select(t->t==2,digits(n^3))
+A086011	parmof3	0	A269241	2	3	A269243(n)=#select(t->t==3,digits(n^3))
+A086012	parmof3	0	A269241	2	4	A269244(n)=#select(t->t==4,digits(n^3))
+A086013	parmof3	0	A269241	2	5	A269245(n)=#select(t->t==5,digits(n^3))
+A086014	parmof3	0	A269241	2	6	A269246(n)=#select(t->t==6,digits(n^3))
+A086015	parmof3	0	A269241	2	7	A269247(n)=#select(t->t==7,digits(n^3))
+A086016	parmof3	0	A269241	2	8	A269248(n)=#select(t->t==8,digits(n^3))
+A086017	parmof3	0	A269241	2	9	A269249(n)=#select(t->t==9,digits(n^3))
+
+A055641	parmof3	0	A269241	1	0	                0
+A268643	parmof3	0	A269241	1	1	                1
+A316863	parmof3	0	A269241	1	2	Number of times 2 appears in the decimal expansion of n.
+A316864	parmof3	0	A269241	1	3	Number of times 3 appears in decimal expansion of n.
+A316865	parmof3	0	A269241	1	4	Number of times 4 appears in decimal expansion of n.
+A316866	parmof3	0	A269241	1	5	Number of times 5 appears in decimal expansion of n.
+A316867	parmof3	0	A269241	1	6	Number of times 6 appears in decimal expansion of n.
+A316868	parmof3	0	A269241	1	7	Number of times 7 appears in decimal expansion of n.
+A316869	parmof3	0	A269241	1	8	Number of times 8 appears in decimal expansion of n.
+A102683	parmof3	0	A269241	1	9	                9
+
