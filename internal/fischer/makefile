@@ -915,6 +915,12 @@ wraptr2:
 wraptr3:
 	cp -v wraptr2.tmp wraptr3.gen
 #----
+A065720_prepare: # Primes base b reinterpreted as base c; now in aman/A065720.man
+	perl aman/A065720.pl \
+	| grep -vP "(A0[0123]|A23564)" \
+	| sort \
+	>        $@.gen ; head -n2 $@.gen ; wc -l    $@.gen
+#----
 A072921:
 	grep -E "^A" $@.man > $@.gen
 	wc -l    $@.gen

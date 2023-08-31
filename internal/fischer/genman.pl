@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2023-08-30: AbstractSequence, no getOffset
 # 2023-06-01: -t constructor; UP=54
 # 2022-12-30: private long mN;
 # 2022-11-24: Sequence0
@@ -158,21 +159,19 @@ package irvine.oeis.$apack;
 
 import irvine.math.z.Z;
 GFis
-    print TAR "import irvine.oeis.";
     if (0) { # switch for superclass import
     } elsif ($extends   == 1) {
-        print TAR lc(substr($rseqno, 0, 4)) . ".$rseqno";
+        print TAR "import irvine.oeis." . lc(substr($rseqno, 0, 4)) . ".$rseqno";
     } elsif ($holonomic == 1) {
-        print TAR "recur.HolonomicRecurrence";
+        print TAR "import irvine.oeis.recur.HolonomicRecurrence";
     } elsif ($memory    == 1) {
-        print TAR "MemorySequence";
+        print TAR "import irvine.oeis.MemorySequence";
     } elsif ($triangle  == 1) {
-        print TAR "triangle.BaseTriangle";
+        print TAR "import irvine.oeis.triangle.BaseTriangle";
     } elsif ($upperleft == 1) {
-        print TAR "triangle.UpperLeftTriangle";
+        print TAR "import irvine.oeis.triangle.UpperLeftTriangle";
     } else {
-        print TAR "MemorySequence";
-        print TAR ";\nimport irvine.oeis.Sequence0";
+        print TAR "import irvine.oeis.AbstractSequence"
     } # end of superclass import
     print TAR ";\n";
     #--------
@@ -196,14 +195,16 @@ GFis
     } elsif ($upperleft  == 1) {
         print TAR "extends UpperLeftTriangle";
     } else {
-        print TAR "extends Sequence0";
+        print TAR "extends AbstractSequence";
     }
     print TAR " {\n";
     if ($withn) {
         print TAR "\n  private long mN;\n";
     }
     foreach $pname (@pnames) { # member properties
-        print TAR "  private int m" . ucfirst($pname) . ";\n";
+        if ($pname ne "offset") {
+            print TAR "  private int m" . ucfirst($pname) . ";\n";
+        }
     } # foreach member property
     #--------
     print TAR <<"GFis"; # start of empty constructor
@@ -255,7 +256,7 @@ GFis
             print TAR "${sep}final int $pname";
             $sep = ", ";
         }
-        print TAR ") {\n";
+        print TAR ") {\n    super(offset);\n";
     } else { # without generic constructor
     }
     if ($withn) { # retrieve offset
@@ -268,7 +269,9 @@ GFis
         print TAR "    mN = $offset;\n";
     }
     foreach $pname (@pnames) {
-        print TAR "    m" . ucfirst($pname) . " = $pname;\n";
+        if ($pname ne "offset") {
+            print TAR "    m" . ucfirst($pname) . " = $pname;\n";
+        }
     }
     print TAR <<"GFis"; # end of generic constructor
   }
@@ -308,11 +311,6 @@ GFis
     #----
     } else { # default method next()
         print TAR <<"GFis";
-
-  \@Override
-  public int getOffset() {
-    return mOffset;
-  }
 
   \@Override
   public Z next() {
