@@ -1,0 +1,65 @@
+A303092	filter	0	new A006562()	t -> t.mod(10) == 1	Balanced primes of order one ending in 1.
+A303093	filter	0	new A006562()	t -> t.mod(10) == 3	Balanced primes of order one ending in 3.
+A303094	filter	0	new A006562()	t -> t.mod(10) == 7	Balanced primes of order one ending in 7.
+A303095	filter	0	new A006562()	t -> t.mod(10) == 9	Balanced primes of order one ending in 9.
+A352970	filter	0	new A002997()	t -> t.mod(10) == 9	Carmichael numbers ending in 9
+A354609	filter	0	new A002997()	t -> t.mod(10) == 1	Carmichael numbers ending in 1
+A355305	filter	0	new A002997()	t -> t.mod(10) == 5	Carmichael numbers ending in 5
+A355307	filter	0	new A002997()	t -> t.mod(10) == 7	Carmichael numbers ending in 7
+A355309	filter	0	new A002997()	t -> t.mod(10) == 3	Carmichael numbers ending in 3
+# A117282	filter	0	new A066531()	t -> t.mod(10) != 0	Terms of A066531 not ending in 0
+A268858	filter	0	new A000040()	t -> t.mod(100) == 39	Prime numbers ending in 39.
+A268859	filter	0	new A000040()	t -> t.mod(100) == 21	Prime numbers ending in 21.
+A268860	filter	0	new A000040()	t -> t.mod(100) == 27	Prime numbers ending in 27.
+
+A097058	simtraf	0	new A000040()	t -> Z.TWO.pow(t.intValue()).add(t.pow(2))	Numbers of the form p^2 + 2^p for p prime
+A097059	simtraf	0	new A000040()	t -> Z.THREE.pow(t.intValue()).add(t.pow(3))	Numbers of the form p^3 + 3^p for p prime
+A097199	simtraf	0	new A000040()	t -> Z.FOUR.pow(t.intValue()).add(t.pow(4))	(PARI) forprime(p=2,41,print1(p^4+4^p,","))
+A097200	simtraf	0	new A000040()	t -> Z.FIVE.pow(t.intValue()).add(t.pow(5))	(PARI) forprime(p=2,41,print1(p^5+5^p,","))
+A097201	simtraf	0	new A000040()	t -> Z.FOUR.pow(t.intValue()).subtract(t.pow(4))	(PARI) forprime(p=2,41,print1(4^p-p^4,","))
+A097202	simtraf	0	new A000040()	t -> Z.FIVE.pow(t.intValue()).subtract(t.pow(5))	(PARI) forprime(p=2,41,print1(5^p-p^5,","))
+A097205	simtraf	0	new A000040()	t -> Z.THREE.pow(t.intValue()).multiply(t.pow(3))	(PARI) forprime(p=2,41,print1(p^3*3^p,","))
+A097206	simtraf	0	new A000040()	t -> Z.FIVE.pow(t.intValue()).multiply(t.pow(5))	(PARI) forprime(p=2,31,print1(p^5*5^p,","))
+A097317	simtraf	0	new A000040()	t -> Z.SEVEN.pow(t.intValue()).add(t.pow(7))	(PARI) forprime(p=2,37,print1(p^7+7^p,","))
+#N A098096 Numbers of the form p^2 * 2^p for p prime
+#N A098104 Numbers of the form 7^p - p^7 where p is prime.
+
+A129069	simtraf	0	new A000040()	p -> Z.TWO.multiply(p).add(3)	*p+3	(PARI) g(m) = forprime(p=2,m,n=2*p+3;print1(n","))
+A129075	simtraf	0	new A000040()	p -> Z.THREE.multiply(p).add(4)	*p+4	(PARI) g(m) = forprime(p=2,m,n=3*p+4;print1(n","))
+A129070	simtraf	0	new A000040()	p -> Z.FOUR.multiply(p).add(5)	*p+5	(PARI) g(m) = forprime(p=2,m,n=4*p+5;print1(n","))
+# noOEIS A290001	simtraf	0	new A000040()	p -> Z.FIVE .multiply(p).add(6)	*p+4	(PARI) g(m) = forprime(p=2,m,n=5*p+6;print1(n","))
+A129071	simtraf	0	new A000040()	p -> Z.SIX.multiply(p).add(7)	*p+7	(PARI) g(m) = forprime(p=2,m,n=6*p+7;print1(n","))
+A129073	simtraf	0	new A000040()	p -> Z.SEVEN.multiply(p).add(8)	*p+8	(PARI) g(m) = forprime(p=2,m,n=7*p+8;print1(n","))
+A129074	simtraf	0	new A000040()	p -> Z.EIGHT.multiply(p).add(9)	*p+9	(PARI) g(m) = forprime(p=2,m,n=8*p+9;print1(n","))
+# noOEIS A290002	simtraf	0	new A000040()	p -> Z.NINE .multiply(p).add(10)	*p+4	(PARI) g(m) = forprime(p=2,m,n=9*p+10;print1(n","))
+# noOEIS A290003	simtraf	0	new A000040()	p -> Z.TEN.multiply(p).add(11)	*p+4	(PARI) g(m) = forprime(p=2,m,n=10*p+11;print1(n","))
+# noOEIS A290004	simtraf	0	new A000040()	p -> Z.valueOf(11).multiply(p).add(12)	*p+4	(PARI) g(m) = forprime(p=2,m,n=11*p+12;print1(n","))
+A129072	simtraf	0	new A000040()	p -> Z.valueOf(12).multiply(p).add(13)	*p+	(PARI) g(m) = forprime(p=2,m,n=12*p+13;print1(n","))
+
+A155013	lambda	0	Z.valueOf(n).pow(5).sqrt()	nyi to	Integer part of square root of A000584.
+A155014	lambda	0	Z.valueOf(n).pow(7).sqrt()		a(n) = floor(sqrt(n^7)).	non
+A155015	lambda	0	Z.valueOf(n).pow(11).sqrt()	nyi to	Integer part of square root of n^11 = A
+A155016	lambda	0	Z.valueOf(n).pow(13).sqrt()	nyi to	Integer part of square root of A010801.
+A155018	lambda	0	Z.valueOf(n).pow(15).sqrt()	nyi to	Integer part of square root of n^15 = A
+A155019	lambda	0	Z.valueOf(n).pow(17).sqrt()	nyi to	Integer part of square root of n^17 = A
+
+# needs LambdaFilter
+# A171256	filter	0	(PARI) for(k=1,10^6, sigma(k) - 10*eulerphi(k) | print1(k", "));
+# A171257	filter	0	(PARI) for(k=1,2e6, sigma(k) - 11*eulerphi(k) | print1(k", "));
+# A171258	filter	0	(PARI) for(k=1,2e6, sigma(k) - 13*eulerphi(k) | print1(k", "));
+# A171259	filter	0	(PARI) for(k=1,2e6, sigma(k) - 14*eulerphi(k) | print1(k", "));
+# A171260	filter	0	(PARI) for(k=1,3e6, sigma(k) - 15*eulerphi(k) | print1(k", "));
+
+A173945	lambda	1	Rationals.SINGLETON.sum(0, n-2, k -> new Q(Z.FOUR, Z.valueOf(k).multiply(2).add(1).square())).num()	0							1,20, print1(numerator  (   sum(k=0,n-2, 4/(2*k+1)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173947	lambda	0	Rationals.SINGLETON.sum(0, n-1, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(4).add(1).square())).multiply(Z.valueOf(16)).num()	0							0,20, print1(numerator  (   sum(k=0,n-1, 1/(4*k+1)^2)), ", ")) \\ _G. C. Greubel_, Aug 22 2018
+A173948	lambda	0	Rationals.SINGLETON.sum(0, n-1, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(4).add(1).square())).den()	0							0,20, print1(denominator(   sum(k=0,n-1, 1/(4*k+1)^2)), ", ")) \\ _G. C. Greubel_, Aug 22 2018
+A173949	lambda	0	Rationals.SINGLETON.sum(0, n-1, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(4).add(1).square())).num()	0							0,20, print1(numerator  (   sum(k=0,n-1, 1/(4*k+1)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173954	lambda	1	Rationals.SINGLETON.sum(0, n-2, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(4).add(3).square())).den()	0							1,20, print1(denominator(   sum(k=0,n-2, 1/(4*k+3)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173955	lambda	1	Rationals.SINGLETON.sum(0, n-2, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(4).add(3).square())).num()	0							1,20, print1(numerator  (   sum(k=0,n-2, 1/(4*k+3)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173982	lambda	0	Rationals.SINGLETON.sum(0, n-1, k -> new Q(Z.NINE, Z.valueOf(k).multiply(3).add(1).square())).num()	0							0,20, print1(numerator  (   sum(k=0,n-1, 9/(3*k+1)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173983	lambda	0	Rationals.SINGLETON.sum(0, n-1, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(3).add(1).square())).num()	0							0,20, print1(numerator  (   sum(k=0,n-1, 1/(3*k+1)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173984	lambda	0	Rationals.SINGLETON.sum(1, n-1, k -> new Q(Z.NINE, Z.valueOf(k).multiply(3).add(1).square())).den()	0							0,20, print1(denominator(   sum(k=1,n-1, 9/(3*k+1)^2)), ", ")) \\ _G. C. Greubel_, Aug 24 2018
+A173986	lambda	0	Rationals.SINGLETON.sum(0, n-2, k -> new Q(Z.TWO,  Z.valueOf(k).multiply(3).add(2).square())).num()	0							1,20, print1(numerator  (   sum(k=0,n-2, 2/(3*k+2)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173985	lambda	0	Rationals.SINGLETON.sum(0, n-1, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(3).add(2).square())).multiply(Z.NINE).num()	0		0,20, print1(numerator  ( 9*sum(k=0,n-1, 1/(3*k+1)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173987	lambda	0	Rationals.SINGLETON.sum(0, n-1, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(3).add(2).square())).multiply(Z.NINE).den()	0		0,20, print1(denominator( 9*sum(k=0,n-1, 1/(3*k+2)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018
+A173953	lambda	1	Rationals.SINGLETON.sum(0, n-1, k -> new Q(Z.ONE,  Z.valueOf(k).multiply(4).add(3).square())).multiply(Z.valueOf(16)).num()	0	1,20, print1(numerator  (16*sum(k=0,n-2, 1/(4*k+3)^2)), ", ")) \\ _G. C. Greubel_, Aug 23 2018

@@ -1,0 +1,84 @@
+# A223606	filter	0	new A000203()	for(n=1, 10^8, if(sigma(n)-2*n==-22, print1(n ", ")))
+# A223607	filter	0	new A000203()	for(n=1, 10^8, if(sigma(n)-2*n==-20, print1(n ", ")))
+# A223608	filter	0	new A000203()	for(n=1, 10^8, if(sigma(n)-2*n==-18, print1(n ", ")))
+# A223609	filter	0	new A000203()	for(n=1, 10^8, if(sigma(n)-2*n==10, print1(n ", ")))
+# A223610	filter	0	new A000203()	for(n=1, 10^8, if(sigma(n)-2*n==18, print1(n ", ")))
+# A223611	filter	0	new A000203()	for(n=1, 10^8, if(sigma(n)-2*n==20, print1(n ", ")))
+# A223612	filter	0	new A000203()	for(n=1, 10^8, if(sigma(n)-2*n==22, print1(n ", ")))
+# A223613	filter	0	new A000203()	for(n=1, 10^8, if(sigma(n)-2*n==24, print1(n ", ")))
+
+# A224470	filter	1	forstep(n=2,10^4,2,if(ispseudoprime(7^n-n),print1(n,", "))); /* _Joerg Arndt_, Apr 07 2013 */
+# A224471	filter	1	forstep(n=1,10^4,2,if(ispseudoprime(8^n-n),print1(n,", "))); /* _Joerg Arndt_, Apr 07 2013 */
+
+https://docs.google.com/document/d/10IM7fcAbB2tqRGuwfGvuEGUzD_IXbgXPDK0tfxN4M3o/pub = 100; A077nnn also
+%o A235463 (PARI) forprime(p=1,1e3,is(p,6,2)&&print1(vector(#d=digits(p,2),i,6^(#d-i))*d~,",")) \\ To produce the terms, this is much more effi
+%o A235464 (PARI) forprime(p=1,1e3,is(p,7,2)&&print1(vector(#d=digits(p,2),i,7^(#d-i))*d~,",")) \\ To produce the terms, this is much more effi
+%o A235465 (PARI) forprime(p=1,1e3,is(p,8,2)&&print1(vector(#d=digits(p,2),i,8^(#d-i))*d~,",")) \\ To produce the terms, this is much more effi
+%o A235466 (PARI) forprime(p=1,1e3,is(p,9,2)&&print1(vector(#d=digits(p,2),i,9^(#d-i))*d~,",")) \\ To produce the terms, this is much more effi
+%o A235467 (PARI) forprime(p=1,1e3,is(p,4,3)&&print1(vector(#d=digits(p,3),i,4^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235468 (PARI) forprime(p=1,1e3,is(p,5,3)&&print1(vector(#d=digits(p,3),i,5^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235469 (PARI) forprime(p=1,1e3,is(p,6,3)&&print1(vector(#d=digits(p,3),i,6^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235470 (PARI) forprime(p=1,1e3,is(p,7,3)&&print1(vector(#d=digits(p,3),i,7^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235471 (PARI) forprime(p=1,1e3,is(p,8,3)&&print1(vector(#d=digits(p,3),i,8^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235472 (PARI) forprime(p=1,2e3,is(p,9,3)&&print1(vector(#d=digits(p,3),i,9^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235615 (PARI) forprime(p=1,3e3,is(p,5,4)&&print1(vector(#d=digits(p,4),i,5^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235616 (PARI) forprime(p=1,3e3,is(p,6,4)&&print1(vector(#d=digits(p,4),i,6^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235617 (PARI) forprime(p=1,3e3,is(p,7,4)&&print1(vector(#d=digits(p,4),i,7^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235618 (PARI) forprime(p=1,3e3,is(p,8,4)&&print1(vector(#d=digits(p,4),i,8^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235619 (PARI) forprime(p=1,3e3,is(p,9,4)&&print1(vector(#d=digits(p,4),i,9^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235620 (PARI) forprime(p=1,3e3,is(p,9,8)&&print1(vector(#d=digits(p,8),i,9^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235621 (PARI) forprime(p=1,3e3,is(p,9,7)&&print1(vector(#d=digits(p,7),i,9^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235622 (PARI) forprime(p=1,3e3,is(p,8,7)&&print1(vector(#d=digits(p,7),i,8^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235626 (PARI) forprime(p=1,3e3,is(p,6,5)&&print1(vector(#d=digits(p,5),i,6^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235627 (PARI) forprime(p=1,3e3,is(p,7,5)&&print1(vector(#d=digits(p,5),i,7^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235628 (PARI) forprime(p=1,3e3,is(p,8,5)&&print1(vector(#d=digits(p,5),i,8^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235629 (PARI) forprime(p=1,3e3,is(p,9,5)&&print1(vector(#d=digits(p,5),i,9^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235637 (PARI) forprime(p=1,3e3,is(p,7,6)&&print1(vector(#d=digits(p,6),i,7^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235638 (PARI) forprime(p=1,3e3,is(p,8,6)&&print1(vector(#d=digits(p,6),i,8^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+%o A235639 (PARI) forprime(p=1,3e3,is(p,9,6)&&print1(vector(#d=digits(p,6),i,9^(#d-i))*d~,",")) \\ To produce the terms, this is more efficient
+
+A247676	filter	0	new A002808()	t -> t.mod(18) == 11	{forcomposite(n=1, nn, if ((n % 2) && ((n % 9) == 2), print1(n, ", ")); ); } \\ _Michel Marcus_, Sep 22 2014
+A247678	filter	0	new A002808()	t -> t.mod(18) == 13	{forcomposite(n=1, nn, if ((n % 2) && ((n % 9) == 4), print1(n, ", ")); ); } \\ _Michel Marcus_, Sep 22 2014
+A247679	filter	0	new A002808()	t -> t.mod(18) == 17	{forcomposite(n=1, nn, if ((n % 2) && ((n % 9) == 8), print1(n, ", ")); ); } \\ _Michel Marcus_, Sep 22 2014
+A247681	filter	0	new A002808()	t -> t.mod(18) == 1	{forcomposite(n=1, nn, if ((n % 2) && ((n % 9) == 1), print1(n, ", ")); ); } \\ _Michel Marcus_, Sep 22 2014
+A247682	filter	0	new A002808()	t -> t.mod(18) == 5	{forcomposite(n=1, nn, if ((n % 2) && ((n % 9) == 5), print1(n, ", ")); ); } \\ _Michel Marcus_, Sep 22 2014
+A247683	filter	0	new A002808()	t -> t.mod(18) == 7	{forcomposite(n=1, nn, if ((n % 2) && ((n % 9) == 7), print1(n, ", ")); ); } \\ _Michel Marcus_, Sep 22 2014
+# 
+
+# A255203	filter	0	new A000040()	->  pforprime(p=1, , b=2; i=0; while(b < p, if(Mod(b, p^2)^(p-1)==1, i++); b++); if(i==0, print1(p, ", ")))
+# A255204	filter	0	new A000040()	->  pforprime(p=1, , b=2; i=0; while(b < p, if(Mod(b, p^2)^(p-1)==1, i++); b++); if(i==1, print1(p, ", ")))
+# A255205	filter	0	new A000040()	->  pforprime(p=1, , b=2; i=0; while(b < p, if(Mod(b, p^2)^(p-1)==1, i++); b++); if(i==2, print1(p, ", ")))
+# A255206	filter	0	new A000040()	->  pforprime(p=1, , b=2; i=0; while(b < p, if(Mod(b, p^2)^(p-1)==1, i++); b++); if(i==3, print1(p, ", ")))
+# A255207	filter	0	new A000040()	->  pforprime(p=1, , b=2; i=0; while(b < p, if(Mod(b, p^2)^(p-1)==1, i++); b++); if(i==4, print1(p, ", ")))
+# A255208	filter	0	new A000040()	->  pforprime(p=1, , b=2; i=0; while(b < p, if(Mod(b, p^2)^(p-1)==1, i++); b++); if(i==5, print1(p, ", ")))
+# A255209	filter	0	new A000040()	->  pforprime(p=1, , b=2; i=0; while(b < p, if(Mod(b, p^2)^(p-1)==1, i++); b++); if(i==6, print1(p, ", ")))
+# A255210	filter	0	new A000040()	->  pforprime(p=1, , b=2; i=0; while(b < p, if(Mod(b, p^2)^(p-1)==1, i++); b++); if(i==7, print1(p, ", ")))
+
+# 
+A295406	lambda	0	Rationals.SINGLETON.sum(0, n, k -> new Q(Binomial.binomial(3 *   n, n - k).multiply(Z.valueOf(n).pow(k)), MemoryFactorial.SINGLETON.factorial(k))).multiply(MemoryFactorial.SINGLETON.factorial(n)).num()	(PARI) for(n=0,30, print1(n!*sum(k=0, n, binomial(      3*n,n-k)*n^k/k!), ", ")) \\ _G. C. Greubel_, Feb 06 2018     
+A295407	lambda	0	Rationals.SINGLETON.sum(0, n, k -> new Q(Binomial.binomial(4 *   n, n - k).multiply(Z.valueOf(n).pow(k)), MemoryFactorial.SINGLETON.factorial(k))).multiply(MemoryFactorial.SINGLETON.factorial(n)).num()	(PARI) for(n=0,30, print1(n!*sum(k=0, n, binomial(      4*n,n-k)*n^k/k!), ", ")) \\ _G. C. Greubel_, Feb 06 2018     
+A295408	lambda	0	Rationals.SINGLETON.sum(0, n, k -> new Q(Binomial.binomial(5 *   n, n - k).multiply(Z.valueOf(n).pow(k)), MemoryFactorial.SINGLETON.factorial(k))).multiply(MemoryFactorial.SINGLETON.factorial(n)).num()	(PARI) for(n=0,30, print1(n!*sum(k=0, n, binomial(      5*n,n-k)*n^k/k!), ", ")) \\ _G. C. Greubel_, Feb 06 2018     
+A295409	lambda	0	Rationals.SINGLETON.sum(0, n, k -> new Q(Binomial.binomial((n+1)*n, n - k).multiply(Z.valueOf(n).pow(k)), MemoryFactorial.SINGLETON.factorial(k))).multiply(MemoryFactorial.SINGLETON.factorial(n)).num()	(PARI) for(n=0,30, print1(n!*sum(k=0,30, binomial( n*(n+1), n-k)*n^k/k!), ", ")) \\ _G. C. Greubel_, May 11 2018
+A295418	lambda	0	Rationals.SINGLETON.sum(0, n, k -> new Q(Binomial.binomial(n *   n, n - k).multiply(Z.valueOf(n).pow(k)), MemoryFactorial.SINGLETON.factorial(k))).multiply(MemoryFactorial.SINGLETON.factorial(n)).num()	(PARI) for(n=0,25, print1(n!*sum(k=0, n, binomial(n^2,      n-k)*n^k/k!), ", ")) \\ _G. C. Greubel_, May 13 2018     
+
+A307471	filter	0	new A000040()	p -> { long d=  14; return p.add(d).isProbablePrime() && ZUtils.digitSum(p.multiply(p.add(d))) == d; }	isprime(p+d)&&sumdigits(p*(p+d))==d&&!print1(p,",")&&!N--&&break)
+A307472	filter	0	new A000040()	p -> { long d=  32; return p.add(d).isProbablePrime() && ZUtils.digitSum(p.multiply(p.add(d))) == d; }	isprime(p+d)&&sumdigits(p*(p+d))==d&&!print1(p,",")&&!N--&&break)
+A307473	filter	0	new A000040()	p -> { long d=  50; return p.add(d).isProbablePrime() && ZUtils.digitSum(p.multiply(p.add(d))) == d; }	isprime(p+d)&&sumdigits(p*(p+d))==d&&!print1(p,",")&&!N--&&break)
+A307474	filter	0	new A000040()	p -> { long d=  68; return p.add(d).isProbablePrime() && ZUtils.digitSum(p.multiply(p.add(d))) == d; }	isprime(p+d)&&sumdigits(p*(p+d))==d&&!print1(p,",")&&!N--&&break)
+A307475	filter	0	new A000040()	p -> { long d=  86; return p.add(d).isProbablePrime() && ZUtils.digitSum(p.multiply(p.add(d))) == d; }	isprime(p+d)&&sumdigits(p*(p+d))==d&&!print1(p,",")&&!N--&&break)
+A307476	filter	0	new A000040()	p -> { long d= 104; return p.add(d).isProbablePrime() && ZUtils.digitSum(p.multiply(p.add(d))) == d; }	isprime(p+d)&&sumdigits(p*(p+d))==d&&!print1(p,",")&&!N--&&break)
+A307477	filter	0	new A000040()	p -> { long d= 122; return p.add(d).isProbablePrime() && ZUtils.digitSum(p.multiply(p.add(d))) == d; }	isprime(p+d)&&sumdigits(p*(p+d))==d&&!print1(p,",")&&!N--&&break)
+A307478	filter	0	new A000040()	p -> { long d= 140; return p.add(d).isProbablePrime() && ZUtils.digitSum(p.multiply(p.add(d))) == d; }	isprime(p+d)&&sumdigits(p*(p+d))==d&&!print1(p,",")&&!N--&&break)
+       	filter	0	new A000040()	p -> 
+A320866	filter	0	new A000040()	p -> p.add(ZUtils.digitSum(p,  4)).isProbablePrime()	forprime(p=1,1999,isprime(p+sumdigits(p, 4))&&print1(p",")) 
+A320867	filter	0	new A000040()	p -> p.add(ZUtils.digitSum(p,  6)).isProbablePrime()	forprime(p=1,1999,isprime(p+sumdigits(p, 6))&&print1(p",")) 
+A320868	filter	0	new A000040()	p -> p.add(ZUtils.digitSum(p,  8)).isProbablePrime()	forprime(p=1,1999,isprime(p+sumdigits(p, 8))&&print1(p",")) 
+A320869	filter	0	new A000040()	p -> p.add(ZUtils.digitSum(p, 16)).isProbablePrime()	forprime(p=1,1999,isprime(p+sumdigits(p,16))&&print1(p","))
+       	filter	0	new A000040()	p -> 
+A355959	filter	0	new A000040()	p -> p.add( 2).mod(p.square()).pow(p.longValue() - 1).equals(Z.ONE)	forprime(p=1, , if(Mod(p+ 2, p^2)^(p-1)==1, print1(p, ", "))) 
+A355960	filter	0	new A000040()	p -> p.add( 5).mod(p.square()).pow(p.longValue() - 1).equals(Z.ONE)	forprime(p=1, , if(Mod(p+ 5, p^2)^(p-1)==1, print1(p, ", "))) 
+A355961	filter	0	new A000040()	p -> p.add( 6).mod(p.square()).pow(p.longValue() - 1).equals(Z.ONE)	forprime(p=1, , if(Mod(p+ 6, p^2)^(p-1)==1, print1(p, ", "))) 
+A355962	filter	0	new A000040()	p -> p.add( 7).mod(p.square()).pow(p.longValue() - 1).equals(Z.ONE)	forprime(p=1, , if(Mod(p+ 7, p^2)^(p-1)==1, print1(p, ", "))) 
+A355963	filter	0	new A000040()	p -> p.add( 8).mod(p.square()).pow(p.longValue() - 1).equals(Z.ONE)	forprime(p=1, , if(Mod(p+ 8, p^2)^(p-1)==1, print1(p, ", "))) 
+A355964	filter	0	new A000040()	p -> p.add( 9).mod(p.square()).pow(p.longValue() - 1).equals(Z.ONE)	forprime(p=1, , if(Mod(p+ 9, p^2)^(p-1)==1, print1(p, ", "))) 
+A355965	filter	0	new A000040()	p -> p.add(10).mod(p.square()).pow(p.longValue() - 1).equals(Z.ONE)	forprime(p=1, , if(Mod(p+10, p^2)^(p-1)==1, print1(p, ", ")))

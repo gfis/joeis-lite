@@ -1,0 +1,42 @@
+A097677	holos	0	[[0],[0,-2,3,-1],[0],[-3],[1]]	1,3,9,33	0	For n>=3: a(n) = 3*a(n-1) + n!/(n-3)!*a(n-3); for n<3: a(n)=3^n.
+A097678	holos	0	[[0],[0,2,-3,1],[-3,3],[0],[-1]]	1,0,3	0	For n>=3: a(n) = 3*(n-1)*a(n-2) + n!/(n-3)!*a(n-3); a(0)=1, a(1)=0, a(2)=3.
+A097679	holos	0	[[0],[0,6,-11,6,-1],[0],[0],[-4],[1]]	1,4,16,64	0	For n>=4: a(n) = 4*a(n-1) + n!/(n-4)!*a(n-4); for n<4: a(n)=4^n.
+A097680	holos	0	[[0],[0,-24,50,-35,10,-1],[0],[0],[0],[-5],[1]]	1,5,25,125,625	0	For n>=5: a(n) = 5*a(n-1) + n!/(n-5)!*a(n-5); for n<5: a(n)=5^n.
+A097681	holos	0	[[0],[0,120,-274,225,-85,15,-1],[0],[0],[0],[0],[-6],[1]]	1,6,36,216,1296,7776	0	For n>=6: a(n) = 6*a(n-1) + n!/(n-6)!*a(n-6); for n<6: a(n)=6^n.
+A097682	holos	0	[[0],[0,5040,-13068,13132,-6769,1960,-322,28,-1],[0],[0],[0],[0],[0],[0],[-8],[1]]	1,8,64,512,4096,32768,262144	0	For n>=8: a(n) = 8*a(n-1) + n!/(n-8)!*a(n-8); for n<8: a(n)=8^n.
+A365340	holos	0	[[0],[0,24,-176,384,-256],[0,-3,0,27]]	1	0	xxx
+A365341	holos	0	[[0],[0,-120,1250,-4375,6250,-3125],[0,8,-16,-128,256]]	1	0	xxx
+A364161	holos	0	[[0],[-8,1],[0],[-8,1],[7,-2],[0],[9,-6],[1,1],[2,-4],[1,1]]	1,1,2,5,15,47	0
+
+A359327	parm5	0	A359212	6	-5	6	5		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    6,5,6,5
+A361691	parm5	0	A359212	7	-1	7	1		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,1,7,1
+A362845	parm5	0	A359212	7	-2	7	1		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,2,7,1
+A363850	parm5	0	A359212	7	-3	7	1		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,3,7,1
+A363851	parm5	0	A359212	7	-4	7	1		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,4,7,1
+A363852	parm5	0	A359212	7	-5	7	1		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,5,7,1
+A363853	parm5	0	A359212	7	-6	7	1		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,6,7,1
+A363854	parm5	0	A359212	7	-2	7	6		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,2,7,6
+A363855	parm5	0	A359212	7	-3	7	6		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,3,7,6
+A363856	parm5	0	A359212	7	-4	7	6		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,4,7,6
+A363857	parm5	0	A359212	7	-5	7	6		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,5,7,6
+A363858	parm5	0	A359212	7	-6	7	6		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,6,7,6
+A363859	parm5	0	A359212	7	-1	7	2		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,1,7,2
+A363860	parm5	0	A359212	7	-1	7	4		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,1,7,4
+A363877	parm5	0	A359212	7	-2	7	3		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,2,7,3
+A363878	parm5	0	A359212	7	-4	7	2		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,4,7,2
+A363879	parm5	0	A359212	7	-6	7	2		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,6,7,2
+A363880	parm5	0	A359212	7	-6	7	3		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,6,7,3
+A363885	parm5	0	A359212	7	-3	7	2		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,3,7,2
+A363886	parm5	0	A359212	7	-3	7	5		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,3,7,5
+A363887	parm5	0	A359212	7	-5	7	3		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,5,7,3
+A363888	parm5	0	A359212	7	-5	7	4		a(n)=sumdiv((\d+)*n-(\d+),d,d%(\d+)==(\d+));    7,5,7,4
+
+A351647	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(2) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  2
+A352031	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(3) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  3
+A352032	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(4) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  4
+A352033	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(5) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  5
+A352034	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(6) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  6
+A352035	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(7) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  7
+A352036	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(8) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  8
+A352037	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(9) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  9
+A352038	lambda	0	Integers.SINGLETON.sumdiv(n, d -> ((d & 1) > 0 && d < n) ? Z.valueOf(d).pow(10) : Z.ZERO)	a(n)=Sum_{d|n,d<n,dodd}d^(\d+)  10

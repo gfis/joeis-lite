@@ -1,0 +1,9 @@
+# A112467	parmof2	0	A230206	1	
+A182533	parmof2	0	A230206	2
+A230206	parmof2	0	A230206	3	m=3; for(n=1, 10, for(k=0, n+m-1, print1(if(k==0, (-1)^m, sum(j=0, n+m-1, (-1)^(j+m)*binomial(m,j)*binomial(n-1,k-j))), ", "))) \\ _G. C. Greubel_, Nov 29 2018
+A230207	parmof2	0	A230206	4	m=4; for(n=1, 10, for(k=0, n+m-1, print1(if(k==0, (-1)^m, sum(j=0, n+m-1, (-1)^(j+m)*binomial(m,j)*binomial(n-1,k-j))), ", "))) \\ _G. C. Greubel_, Nov 29 2018
+A230208	parmof2	0	A230206	5	m=5; for(n=1, 10, for(k=0, n+m-1, print1(if(k==0, (-1)^m, sum(j=0, n+m-1, (-1)^(j+m)*binomial(m,j)*binomial(n-1,k-j))), ", "))) \\ _G. C. Greubel_, Nov 29 2018
+A230209	parmof2	0	A230206	6	m=6; for(n=1, 10, for(k=0, n+m-1, print1(if(k==0, (-1)^m, sum(j=0, n+m-1, (-1)^(j+m)*binomial(m,j)*binomial(n-1,k-j))), ", "))) \\ _G. C. Greubel_, Nov 28 2018
+A230210	parmof2	0	A230206	7	m=7; for(n=1, 10, for(k=0, n+m-1, print1(if(k==0, (-1)^m, sum(j=0, n+m-1, (-1)^(j+m)*binomial(m,j)*binomial(n-1,k-j))), ", "))) \\ _G. C. Greubel_, Nov 28 2018
+A230211	parmof2	0	A230206	8	m=8; for(n=1, 10, for(k=0, n+m-1, print1(if(k==0, (-1)^m, sum(j=0, n+m-1, (-1)^(j+m)*binomial(m,j)*binomial(n-1,k-j))), ", "))) \\ _G. C. Greubel_, Nov 28 2018
+A230212	parmof2	0	A230206	9	m=9; for(n=1, 10, for(k=0, n+m-1, print1(if(k==0, (-1)^m, sum(j=0, n+m-1, (-1)^(j+m)*binomial(m,j)*binomial(n-1,k-j))), ", "))) \\ _G. C. Greubel_, Nov 28 2018
