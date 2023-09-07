@@ -1,0 +1,54 @@
+#A291913	filter	1	new A020510()	PRIME	Primes of the form Phi(k, -11), where Phi is the cyclotomic polynomial.
+#A160339	recval	1	new A160338()			Records in heights of cyclotomic polynomials (A160338).
+#A259264	lambda	1	Cyclotomic.cyclotomic(5, MemoryFactorial.SINGLETON.factorial(n))		Cyclotomic polynomial value Phi(5,n!). 
+
+# man A230798 The number of distinct coefficients in the n-th cyclotomic polynomial.
+# man A230799 The number of distinct nonzero coefficients in the n-th cyclotomic polynomial.
+
+#!A252502	lambda	1	Z.valueOf(Cyclotomic.cyclotomic(n, 10).toString().length())		Number of digits of Phi_n(10), or number of digits in base b of Phi_n(b), where Phi is the cyclotomic polynomial.
+#!A070526	lambda	1	Cyclotomic.cyclotomic(n, Z.TWO.pow(n))		Value of n-th cyclotomic polynomial at 2^n.
+
+A070518	lambda	1	Cyclotomic.cyclotomic(n, n)		Value of n-th cyclotomic polynomial at n.
+A070519	filtpos	1	1	new A070518()	PRIME	Numbers k such that Cyclotomic(k,k) (i.e., the value of k-th cyclotomic polynomial at k) is a prime number.
+A070537	filtpos	1	1	new A070536()	t -> t.compareTo(Z.ZERO) > 0		Numbers k such that the k-th cyclotomic polynomial has more terms than the largest prime factor of k.
+A070776	filtpos	1	1	new A070536()	t -> t.compareTo(Z.ZERO) == 0		Numbers k such that number of terms in the k-th cyclotomic polynomial is equal to the largest prime factor of k.
+A072226	filtpos	1	1	new A019320().skip(1)	PRIME		Numbers n such that the n-th cyclotomic polynomial evaluated at 2 (=A019320(n)) is prime.
+
+A086765	lambda	1	Cyclotomic.cyclotomic(n).aggregate(Z.ZERO, (aggr, cf) -> cf.compareTo(Z.ZERO) >  0 ? aggr.add(1) : aggr)	Number of positive coefficients in n-th cyclotomic polynomial.
+A086780	lambda	1	Cyclotomic.cyclotomic(n).aggregate(Z.ZERO, (aggr, cf) -> cf.compareTo(Z.ZERO) <  0 ? aggr.add(1) : aggr)	Number of negative terms in n-th cyclotomic polynomial.
+A086798	lambda	1	Cyclotomic.cyclotomic(n).aggregate(Z.ZERO, (aggr, cf) -> cf.compareTo(Z.ZERO) == 0 ? aggr.add(1) : aggr)	Number of coefficients equal to zero in n-th cyclotomic polynomial.
+A085459	filtpos	1	1	new A086765()	t -> t.equals(Z.THREE)	Numbers k such that k-th cyclotomic polynomial has exactly 3 positive coefficients.
+A085900	filtpos	1	1	new A086780()	t -> t.equals(Z.THREE)	Numbers k such that k-th cyclotomic polynomial has exactly 3 negative coefficients.
+A086779	filtpos	1	1	new A051664()	t -> t.equals(Z.SEVEN)	Numbers k such that k-th cyclotomic polynomial has exactly 7 nonzero terms.
+A086794	filtpos	1	1	new A051664()	t -> t.equals(Z.NINE)	Numbers n such that n-th cyclotomic polynomial has exactly 9 nonzero terms.
+
+
+# sort A211874	filter	1	new A019321()	PRIME	Primes of the form Phi_k(3), the k-th cyclotomic polynomial evaluated at 3.
+A246392	filtpos	1	1	new A060884().skip(1)	PRIME	Numbers n such that Phi(10, n) is prime, where Phi is the cyclotomic polynomial.
+
+A066845	lambda	1	Cyclotomic.cyclotomic(2*n, 2)	a(n) = cyclotomic(2*n, 2). - _Vladeta Jovovic_, Apr 05 2004
+A070527	filtpos	1	1	new LambdaSequence(1, n -> Cyclotomic.cyclotomic(n, Z.TWO.pow(n)))	PRIME	Numbers k such that cyclotomic(k, 2^k) is a prime number.
+A070519	filtpos	1	1	new LambdaSequence(1, n -> Cyclotomic.cyclotomic(n, n))	PRIME	Numbers k such that Cyclotomic(k,k) (i.e., the value of k-th cyclotomic polynomial at k) is a prime number.
+# A070523	filtpos	1	1	new LambdaSequence(1, n -> Cyclotomic.cyclotomic(n, Z.TWO.pow(n)))	PRIME	Numbers k such that cyclotomic(k, prime(k)) is a prime number.
+A088817	filtpos	1	1	new LambdaSequence(1, n -> Cyclotomic.cyclotomic(2 * n, n))	PRIME	Numbers k such that Cyclotomic(2k,k) is prime.
+# why? A088856	filtpos	1	1	new SimpleTransformSequence(1, new A000040(), p -> Cyclotomic.cyclotomic(p.intValue(), p.subtract(1)))	PRIME	Primes p such that cyclotomic(p,p-1) is prime.
+A088875	filtpos	1	1	new LambdaSequence(1, n -> Cyclotomic.cyclotomic(n, -n))	PRIME	Cyclotomic(n,-n) is prime.
+A241039	lambda	0	Cyclotomic.cyclotomic(n, Z.valueOf(2048))	Cyclotomic(n,2048).
+
+A309534	filtpos	0	1	new A000027()	k -> Jaguar.factor(k.pow(2).add(+1)).sopfr().mod(k).isZero()	Numbers k such that A001414(k^2+1) is divisible by k.
+A309542	filtpos	0	1	new A000027()	k -> Jaguar.factor(k.pow(3).add(+1)).sopfr().mod(k).isZero()	Numbers k such that A001414(k^3+1) is divisible by k.
+A309544	filtpos	0	1	new A000027()	k -> Jaguar.factor(k.pow(3).add(-1)).sopfr().mod(k).isZero()	Numbers k such that A001414(k^3-1) is divisible by k.
+A309558	filtpos	0	1	new A000027()	k -> Jaguar.factor(k.pow(4).add(+1)).sopfr().mod(k).isZero()	Numbers k such that A001414(k^4+1) is divisible by k.
+# A316312	filtpos2	0	1	new A037123()		Numbers k such that A037123(k - 1) is divisible by k.
+A101680	simtraf	0	new A099902()	t -> new Z(t.toString(2))	 in binary. Bisection of A101623.
+
+A278780	filtpos	0	1	new A000041().skip(1)	t -> t.mod( 16) ==   8	Numbers n such that A000041(n) is of the form 2^3 * k for odd k.
+A278781	filtpos	0	1	new A000041().skip(1)	t -> t.mod( 32) ==  16	Numbers n such that A000041(n) is of the form 2^4 * k for odd k.
+A278782	filtpos	0	1	new A000041().skip(1)	t -> t.mod( 64) ==  32	Numbers n such that A000041(n) is of the form 2^5 * k for odd k.
+A278783	filtpos	0	1	new A000041().skip(1)	t -> t.mod(128) ==  64	Numbers n such that A000041(n) is of the form 2^6 * k for odd k.
+A278784	filtpos	0	1	new A000041().skip(1)	t -> t.mod(256) == 128	Numbers n such that A000041(n) is of the form 2^7 * k for odd k.
+A281382	filtpos	0	1	new A003188().skip(1)	t -> t.isProbablePrime() && ZUtils.isPalindrome(t, 10)	Numbers n such that A003188(n) is both prime and palindromic.
+# why? A319838	filtpos	0	1	new A319100()	t -> { t.root(6); return t.auxiliary() == 1L; }	Numbers k such that A319100(k) is a power of 6.
+A359830	filtpos	0	1	new A048675()	t -> t.mod(3) != 0	not a multiple of 3	
+
+A253388	filtpos	0	1	new A000005()	t -> { final FactorSequence fs = Jaguar.factor(t); return fs.isSemiprime() == FactorSequence.YES && fs.isSquareFree(); }	in A006881			n such that A000005(n) is in A006881.

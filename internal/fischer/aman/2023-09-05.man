@@ -1,0 +1,77 @@
+A291913	filter	1	new A020510()	PRIME	Primes of the form Phi(k, -11), where Phi is the cyclotomic polynomial.
+A291990	filter	1	new A020509()	PRIME	Primes of the form Phi(k, -10), where Phi is the cyclotomic polynomial.
+A291991	filter	1	new A020508()	PRIME	Primes of the form Phi(k, -9), where Phi is the cyclotomic polynomial.
+A291992	filter	1	new A020507()	PRIME	Primes of the form Phi(k, -8), where Phi is the cyclotomic polynomial.
+A291993	filter	1	new A020506()	PRIME	Primes of the form Phi(k, -7), where Phi is the cyclotomic polynomial.
+A291994	filter	1	new A020505()	PRIME	Primes of the form Phi(k, -6), where Phi is the cyclotomic polynomial.
+A291998	filter	1	new A020504()	PRIME	Primes of the form Phi(k, -5), where Phi is the cyclotomic polynomial.
+A292003	filter	1	new A020503()	PRIME	Primes of the form Phi(k, -4), where Phi is the cyclotomic polynomial.
+A292004	filter	1	new A020502()	PRIME	Primes of the form Phi(k, -3), where Phi is the cyclotomic polynomial.
+A292006	filter	1	new A020501()	PRIME	Primes of the form Phi(k, -2), where Phi is the cyclotomic polynomial.
+A292015	filter	1	new A019320()	PRIME	Primes of the form Phi(k, 2), where Phi is the cyclotomic polynomial.
+A292007	filter	1	new A019321()	PRIME	Primes of the form Phi(k, 3), where Phi is the cyclotomic polynomial.
+A292008	filter	1	new A019322()	PRIME	Primes of the form Phi(k, 4), where Phi is the cyclotomic polynomial.
+A292009	filter	1	new A019323()	PRIME	Primes of the form Phi(k, 5), where Phi is the cyclotomic polynomial.
+A292010	filter	1	new A019324()	PRIME	Primes of the form Phi(k, 6), where Phi is the cyclotomic polynomial.
+A292011	filter	1	new A019325()	PRIME	Primes of the form Phi(k, 7), where Phi is the cyclotomic polynomial.
+A292012	filter	1	new A019326()	PRIME	Primes of the form Phi(k, 8), where Phi is the cyclotomic polynomial.
+A292013	filter	1	new A019327()	PRIME	Primes of the form Phi(k, 9), where Phi is the cyclotomic polynomial.
+A292014	filter	1	new A019328()	PRIME	Primes of the form Phi(k, 10), where Phi is the cyclotomic polynomial.
+
+# A093106	filter	1	new A019320()	(n, t) -> t.gcd(Z.valueOf(n)).compareTo(Z.ONE) > 0	Numbers k such that the k-th cyclotomic polynomial evaluated at 2 (=A019320(k)) is not coprime to k.
+
+A138919	primepos	1	1	0	new A020510()		Indices k such that A020510(k)=Phi[k](-11) is prime, where Phi is a cyclotomic polynomial.
+A138920	primepos	1	1	0	new A020509()		Indices k such that A020509(k)=Phi[k](-10) is prime, where Phi is a cyclotomic polynomial.
+A138921	primepos	1	1	0	new A020508()		Indices k such that A020508(k)=Phi[k](-9) is prime, where Phi is a cyclotomic polynomial.
+A138922	primepos	1	1	0	new A020507()		Indices k such that A020507(k)=Phi[k](-8) is prime, where Phi is a cyclotomic polynomial.
+A138923	primepos	1	1	0	new A020506()		Indices k such that A020506(k)=Phi[k](-7) is prime, where Phi is a cyclotomic polynomial.
+A138924	primepos	1	1	0	new A020505()		Indices k such that A020505(k)=Phi[k](-6) is prime, where Phi is a cyclotomic polynomial.
+A138925	primepos	1	1	0	new A020504()		Indices k such that A020504(k)=Phi[k](-5) is prime, where Phi is a cyclotomic polynomial.
+A138926	primepos	1	1	0	new A020503()		Indices k such that A020503(k)=Phi[k](-4) is prime, where Phi is a cyclotomic polynomial.
+A138927	primepos	1	1	0	new A020502()		Indices k such that A020502(k)=Phi[k](-3) is prime, where Phi is a cyclotomic polynomial.
+A138928	primepos	1	1	0	new A020501()		Indices n such that A020501(n) = phi(n)(-2) is prime, where Phi is a cyclotomic polynomial.
+A138933	primepos	1	1	0	new A019321()		Indices k such that A019321(k)=Phi[k](3) is prime, where Phi is a cyclotomic polynomial.
+A138934	primepos	1	1	0	new A019322()		Indices k such that A019322(k) = Phi[k](4) is prime, where Phi is a cyclotomic polynomial.
+A138935	primepos	1	1	0	new A019323()		Indices k such that A019323(k)=Phi[k](5) is prime, where Phi is a cyclotomic polynomial.
+A138936	primepos	1	1	0	new A019324()		Indices n such that A019324(k)=Phi[k](6) is prime, where Phi is a cyclotomic polynomial.
+A138937	primepos	1	1	0	new A019325()		Indices k such that A019325(k)=Phi[k](7) is prime, where Phi is a cyclotomic polynomial.
+A138938	primepos	1	1	0	new A019326()		Indices k such that A019326(k)=Phi[k](8) is prime, where Phi is a cyclotomic polynomial.
+A138939	primepos	1	1	0	new A019327()		Indices k such that A019327(k)=Phi[k](9) is prime, where Phi is a cyclotomic polynomial.
+A138940	primepos	1	1	1	new A019328()		Indices n such that A019328(n) = Phi(n,10) is prime, where Phi is a cyclotomic polynomial.
+
+# A174311 a(n) = C_n(A004124(n)) where A004124(n) is the discriminant of C_n(x) and C_n is the n-th cyclotomic polynomial. - _Robert Israel_, Jul 19 2016
+
+A152940	parmof2	1	A152940	2	Odd squarefree numbers n such that the cyclotomic polynomial Phi(n,x) has height 2.
+A152941	parmof2	1	A152940	3	Odd squarefree numbers n such that the cyclotomic polynomial Phi(n,x) has height 3.
+A152942	parmof2	1	A152940	4	Odd squarefree numbers n such that the cyclotomic polynomial Phi(n,x) has height 4.
+A152943	parmof2	1	A152940	5	Odd squarefree numbers n such that the cyclotomic polynomial Phi(n,x) has height 5.
+A152955	parmof2	1	A152940	1	Odd squarefree numbers n such that the cyclotomic polynomial Phi(n,x) has height 1.
+# A154430	parmof2	1	A152940	Odd squarefree numbers n such that the cyclotomic polynomial Phi(n,x) has height > 1.
+
+# A160338 Height (maximum absolute value of coefficients) of the n-th cyclotomic polynomial.
+A160339	recval	1	new A160338()			Records in heights of cyclotomic polynomials (A160338).
+A160340	recpos	1	new A160338()	,1		Indices of records in heights of cyclotomic polynomials (A160338).
+
+A200906	primepos	1	1	0	new A259264()			Numbers n such that cyclotomic polynomial value Phi(5,n!) is prime.
+A258357	primepos	1	1	0	new A261128()			Numbers n such that cyclotomic polynomial value Phi(7,n!) is prime.
+A258355	primepos	1	1	0	new A260076()			Numbers n such that cyclotomic polynomial value Phi(9,n!) is prime.
+A258356	primepos	1	1	0	new A260077()			Numbers n such that cyclotomic polynomial value Phi(10,n!) is prime.
+
+A259265	filter	1	new A259264()	PRIME		Primes of the form Phi(5,n!), where Phi is the cyclotomic polynomial.
+A261472	filter	1	new A261471()	PRIME		Primes of the form Phi(6,n!), where Phi is the cyclotomic polynomial.
+A261487	filter	1	new A261128()	PRIME		Primes of the form Phi(7,n!), where Phi is the cyclotomic polynomial.
+A261535	filter	1	new A260478()	PRIME		Primes of the form Phi(8,n!), where Phi is the cyclotomic polynomial.
+
+A259264	lambda	1	Cyclotomic.cyclotomic(5, MemoryFactorial.SINGLETON.factorial(n))		Cyclotomic polynomial value Phi(5,n!). 
+A260076	lambda	1	Cyclotomic.cyclotomic(9, MemoryFactorial.SINGLETON.factorial(n))		Cyclotomic polynomial value Phi(9,n!). 
+A260077	lambda	1	Cyclotomic.cyclotomic(10, MemoryFactorial.SINGLETON.factorial(n))		Cyclotomic polynomial value Phi(10,n!).
+A260478	lambda	1	Cyclotomic.cyclotomic(8, MemoryFactorial.SINGLETON.factorial(n))		Cyclotomic polynomial value Phi(8,n!). 
+A261128	lambda	1	Cyclotomic.cyclotomic(7, MemoryFactorial.SINGLETON.factorial(n))		Cyclotomic polynomial value Phi(7,n!). 
+A261471	lambda	1	Cyclotomic.cyclotomic(6, MemoryFactorial.SINGLETON.factorial(n))		Cyclotomic polynomial value Phi(6,n!).  
+
+# A230798 The number of distinct coefficients in the n-th cyclotomic polynomial.
+# A230799 The number of distinct nonzero coefficients in the n-th cyclotomic polynomial.
+# A252502	lambda	1	ZUtils.digitCount(Cyclotomic.cyclotomic(n, 10))		Number of digits of Phi_n(10), or number of digits in base b of Phi_n(b), where Phi is the cyclotomic polynomial.
+
+
+%N A070526 Value of n-th cyclotomic polynomial at 2^n.

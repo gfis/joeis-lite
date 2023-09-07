@@ -1,6 +1,7 @@
 #!perl
 
 # Extract parameters for product formulas 1/(1 - x^k)^(abc) and similiar
+# 2023-09-07: *.jpat in ./pattern
 # 2023-06-15: variable classname and cc_prefix
 # 2020-12-04: copied from prodet.pl, (1 +- ax^k)^(b*k) etc.
 # 2020-10-10, Georg Fischer
@@ -369,7 +370,7 @@ GFis
 GFis
     foreach my $cc ("f","g","h","fg","fh","gh","fgh") {
         my $jpat_name = ($cc eq "fgh") ? "genet.jpat" : "genet$cc.jpat";
-        open (JPAT, ">", $jpat_name) or die "cannot write \"$jpat_name\"";
+        open (JPAT, ">", "./pattern/$jpat_name") or die "cannot write \",/pattern/$jpat_name\"";
         print JPAT $pat_head;
         if ($cc =~ m{f}) { print JPAT $pat_f; }
         if ($cc =~ m{g}) { print JPAT $pat_g; }

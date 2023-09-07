@@ -1,0 +1,14 @@
+A347142	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <  n) ? Z.valueOf(d).pow(4) : Z.ZERO)	Sum of 4th powers of divisors of n that are < sqrt(n).	nonn	1..65	nyi	_Ilya Gutkovskiy_
+A347143	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <= n) ? Z.valueOf(d).pow(4) : Z.ZERO)	Sum of 4th powers of divisors of n that are <= sqrt(n).	nonn	1..65	nyi	_Ilya Gutkovskiy_
+A347156	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <  n && Z.valueOf(d).isProbablePrime()) ? Z.valueOf(d).pow(2) : Z.ZERO)	Sum of squares of distinct prime divisors of n that are < sqrt(n).	nonn	1..80	nyi	_Ilya Gutkovskiy_
+A347157	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <  n && Z.valueOf(d).isProbablePrime()) ? Z.valueOf(d).pow(3) : Z.ZERO)	Sum of cubes of distinct prime divisors of n that are < sqrt(n).	nonn	1..75	nyi	_Ilya Gutkovskiy_
+A347158	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <  n && Z.valueOf(d).isProbablePrime()) ? Z.valueOf(d).pow(4) : Z.ZERO)	Sum of 4th powers of distinct prime divisors of n that are < sqrt(n).	nonn	1..70	nyi	_Ilya Gutkovskiy_
+A347159	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <= n && Z.valueOf(d).isProbablePrime()) ? Z.valueOf(d).pow(3) : Z.ZERO)	Sum of cubes of distinct prime divisors of n that are <= sqrt(n).	nonn	1..75	nyi	_Ilya Gutkovskiy_
+A347160	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <= n && Z.valueOf(d).isProbablePrime()) ? Z.valueOf(d).pow(4) : Z.ZERO)	Sum of 4th powers of distinct prime divisors of n that are <= sqrt(n).	nonn	1..70	nyi	_Ilya Gutkovskiy_
+A347161	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <  n && (d & 1) == 1)  ? Z.valueOf(d).pow(2) : Z.ZERO)	Sum of squares of odd divisors of n that are < sqrt(n).	nonn	1..80	nyi	_Ilya Gutkovskiy_
+A347162	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <  n && (d & 1) == 1)  ? Z.valueOf(d).pow(3) : Z.ZERO)	Sum of cubes of odd divisors of n that are < sqrt(n).	nonn	1..1000	nyi	_Ilya Gutkovskiy_
+A347172	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <  n && (d & 1) == 1)  ? Z.valueOf(d).pow(4) : Z.ZERO)	Sum of 4th powers of odd divisors of n that are < sqrt(n).	nonn	1..75	nyi	_Ilya Gutkovskiy_
+A347173	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <= n && (d & 1) == 1)  ? Z.valueOf(d).pow(2) : Z.ZERO)	Sum of squares of odd divisors of n that are <= sqrt(n).	nonn	1..80	nyi	_Ilya Gutkovskiy_
+A347174	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <= n && (d & 1) == 1)  ? Z.valueOf(d).pow(3) : Z.ZERO)	Sum of cubes of odd divisors of n that are <= sqrt(n).	nonn	1..75	nyi	_Ilya Gutkovskiy_
+A347175	lambda	1	Integers.SINGLETON.sumdiv(n, d -> (d*d <= n && (d & 1) == 1)  ? Z.valueOf(d).pow(4) : Z.ZERO)	Sum of 4th powers of odd divisors of n that are <= sqrt(n).	nonn	1..75	nyi	_Ilya Gutkovskiy_
+

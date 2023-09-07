@@ -1,6 +1,7 @@
 #!perl
 
 # Extract parameters for nested sequences a(n) = A111111(A222222(n))
+# 2023-09-07: *.jpat in ./pattern
 # 2020-12-16, Georg Fischer: copied from genet.pl
 #
 #:# Usage:
@@ -106,7 +107,7 @@ GFis
 #----
     foreach my $cc ("") {
         my $jpat_name = "nest$cc.jpat";
-        open (JPAT, ">", $jpat_name) or die "cannot write \"$jpat_name\"";
+        open (JPAT, ">", "./pattern/$jpat_name") or die "cannot write \",/pattern/$jpat_name\"";
         print JPAT $pat_head;
         print JPAT $pat_tail;
         close(JPAT);

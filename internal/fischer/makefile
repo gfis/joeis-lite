@@ -7503,16 +7503,17 @@ cordrectab:
 	wc -l    $@.gen $@.rest*.tmp
 #----------------
 suchprim:
-	grep Numbers $(COMMON)/joeis_names.txt | grep -E 'ers [a-z] such *that' | grep -E 'is (a )?prime' \
+	grep -E 'ers [a-z] such *that' $(COMMON)/joeis_names.txt | grep -E 'is (a )?prime' \
 	| grep -v "PowerFactorPrimeSequence" \
-	>        $@.tmp
+	| grep -P "\tnyi" \
+	>        $@.tmp || :
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 	perl suchprim.pl $@.tmp \
 	2>       $@.rest.tmp \
 	| grep -E  "suchpr" \
 	| grep -vE "xxsuchprk|xxsuchprik" \
-	>        $@.gen
+	>        $@.gen || :
 	head -n4 $@.gen
 	wc   -l  suchp*.*
 	cut -f2  $@.gen | sort | uniq -c

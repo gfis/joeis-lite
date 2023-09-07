@@ -108,7 +108,7 @@ sub varcount { # count the number of single letters in the formula
         }
         $parms = &parse();
     } else {
-        print STDERR "# $aseqno scalar(hash) >= 2: \"" . join(",", keys(%hash)) . "\", expr=$expr\n";
+    #   print STDERR "# $aseqno scalar(hash) >= 2: \"" . join(",", keys(%hash)) . "\", expr=$expr\n";
     } 
     return $result;
 } # varcount
