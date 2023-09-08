@@ -10,6 +10,6 @@ public class $(ASEQNO) extends RecordPositionSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM1)$(PARM2));
+    super($(OFFSET), $(PARM1=seq)$(PARM2=init_abs));
   }
 }

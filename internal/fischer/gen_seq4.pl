@@ -232,7 +232,7 @@ while (<>) { # read inputfile
             }
             push(@typed_terms, $term)
         } # foreach $term
-        my $parm = join(",", @typed_terms);
+        my $parm = join(", ", @typed_terms);
         if ($parms[$iparm] =~ m{(\, ?)\Z}) { 
             $parm .= $1;
         }
@@ -405,12 +405,12 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
             } elsif ( $class_name =~ m{Transform}) {          # .transform.xxx
                 $imports{"irvine.oeis.transform.$class_name"} = $itype;
             } elsif (($class_name !~ m{\AA\d+})               # A-number
-                and  ($class_name !~ m{\.})                   # contains dot
-                and  ($class_name !~ m{\A[A-Z]+\Z})           # only uppercase = constant
-                and  ($class_name !~ m{\A(String|Integer|Long|Boolean|StringBuilder)\Z}) # common Java types
-                and  ($class_name !~ m{\AComputableReals\Z})
-                and  ($class_name !~ m{\AUnaryCRFunction\Z})
-                and  ($class_name !~ m{\AFunction\Z})
+                &&   ($class_name !~ m{\.})                   # contains dot
+                &&   ($class_name !~ m{\A[A-Z\_]+\d?\Z})      # only uppercase = constant; POWER2
+                &&   ($class_name !~ m{\A(String|Integer|Long|Boolean|StringBuilder)\Z}) # common Java types
+                &&   ($class_name !~ m{\AComputableReals\Z})
+                &&   ($class_name !~ m{\AUnaryCRFunction\Z})
+                &&   ($class_name !~ m{\AFunction\Z})
                ) {
                 $imports{"irvine.oeis.$class_name"} = $itype; 
             }

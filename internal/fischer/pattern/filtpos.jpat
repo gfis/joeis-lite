@@ -12,6 +12,6 @@ public class $(ASEQNO) extends FilterPositionSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM1=start), $(PARM2=seq), $(PARM3=predicat));
+    super($(OFFSET), $(PARM1=start), $(PARM2=seq), $(PARM3=predicate));
   }
 }
