@@ -11,6 +11,6 @@ public class $(ASEQNO) extends ComplementSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), new $(PARM1)()$(PARM2));
+    super($(OFFSET), $(PARM1=seq)$(PARM2=start));
   }
 }

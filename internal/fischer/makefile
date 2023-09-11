@@ -2997,6 +2997,12 @@ noncomp4: # for info only
 noncomp_old:
 	# run (noncomp0 and) noncomp_prep before
 #--------------------------------
+filterm:
+	grep -vP "\tfiltex\t" aman/filter.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+#--------------------------------
 flotest:
 	grep -E "^A[0-9]" $@.man > $@.gen
 #--
