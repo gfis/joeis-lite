@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2023-09-12: V6.1: Puma
 # 2023-09-07: V6.0: *.jpat now in pattern/; optional Java parameter names
 # 2023-08-14: V5.2: HolonomicRecurrence; *CK=67
 # 2023-07-27: V5.1: HolonomicRecurrence
@@ -232,7 +233,7 @@ while (<>) { # read inputfile
             }
             push(@typed_terms, $term)
         } # foreach $term
-        my $parm = join(", ", @typed_terms);
+        my $parm = join(",", @typed_terms);
         if ($parms[$iparm] =~ m{(\, ?)\Z}) { 
             $parm .= $1;
         }
@@ -376,6 +377,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPolynomial}                   ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
     if ($line =~ m{\WPrependSequence}              ) { $imports{"irvine.oeis.PrependSequence"   }                = $itype; }
     if ($line =~ m{\WProduct}                      ) { $imports{"irvine.oeis.triangle.Product"  }                = $itype; }
+    if ($line =~ m{\WPuma}                         ) { $imports{"irvine.factor.prime.Puma"      }                = $itype; }
     if ($line =~ m{\WQ\W}                          ) { $imports{"irvine.math.q.Q"}                               = $itype; }
     if ($line =~ m{\WRationals\.}                  ) { $imports{"irvine.math.q.Rationals"}                       = $itype; }
     if ($line =~ m{\WSequence(\d|\$\(OFFSET\))}    ) { $imports{"irvine.oeis.Sequence$1" }                       = $itype; }
