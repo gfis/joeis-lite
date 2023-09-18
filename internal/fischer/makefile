@@ -3132,7 +3132,7 @@ latest:
 parmholo:
 	perl -e 'print join("\t", $(A), "holos", $(OFF), "$(MATRIX)", "$(INIT)", 0) . "\n";' >> $@.tmp
 runmorf:
-	$(JAVA) irvine.oeis.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D)
+	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D)
 runce:
 	$(JAVA) irvine.oeis.ComplementaryEquationSequence -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
@@ -4293,7 +4293,7 @@ morrest:
 	> x.tmp
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 morfix_test:
-	java -cp ../../dist/joeis-lite.jar irvine.oeis.MorphismSequence $(NT) $(SC)
+	java -cp ../../dist/joeis-lite.jar irvine.oeis.base.MorphismSequence $(NT) $(SC)
 morfix_grep:
 	perl -ne \
 	'if ((m{\-\>}) and (m{^(A\d+)\D+(\d[ 0-9\-\>\,\;\{\}\(\)\[\]]{9,})})) { print; }' \
@@ -4318,6 +4318,10 @@ morfps:
 	CLASS=MorphismFixedPointSequence
 	grep -P "\d\-\>\d" morfps2.tmp > $@.gen
 	cat morfps.man >> $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+morfpsm:
+	grep -E "^A[0-9]" morfps.man > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
@@ -4363,6 +4367,10 @@ morwiki:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+morefl: # re-evaluate reflected morphism sequences
+	cat -v   reflect/morph.tmp \
+	sed -e "s/M/2/g" \
+	>        $@.gen
 #--------------------------------
 mult0: mult1 mult3  # Multiplicative with ...
 mult1: # grep nyi from jcat25

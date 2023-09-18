@@ -74,7 +74,16 @@ dead_joeis: # detect DeadSequence consistency
 dead_robot: dead_joeis # generate DeadSequence's
 	cd .. ; make CC=dead gener
 #----
-
+morphlist: # print a seq4 parameter list of all subclasses of MorphismFixedPointSequence
+	cat morphism.use.tmp \
+	| perl -ne 'm{(A\d{6})}; print "$$1\t0\t\t\n";' \
+	>        $@.1.tmp
+	tail -n2 $@.1.tmp
+	wc -l    $@.1.tmp
+	make absref1 MODE=morph LIST=$@.1.tmp \
+	| tee    $@.tmp
+	tail -n2 $@.tmp
+	wc -l    $@.tmp
 #----
 interfaces:
 	cut -f1-2 $(COMMON)/joeis_names.txt | grep -v nyi | grep -P " " | grep -v Conjectural \

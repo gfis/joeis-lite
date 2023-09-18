@@ -1,0 +1,40 @@
+
+# A128689	recpos	0	new A000118()			record	Numbers k such that A000118(k) is record.
+# A193339	recpos	0	new A001783()			larger than all preceding terms of that sequence	Indices k such that A001783(k) is larger than all preceding term
+A077561	filtpos	0	1	new A025487()	DIVISIBLE_BY_INDEX	Indices of terms of A025487 which divide the terms. Numbers k su
+A103946	filtpos	0	1	new A006564()	SEMIPRIME	n such that A006564(n) is an element of A001358. n such that A10
+A103982	filtpos	0	0	new A005900()	SEMIPRIME	n such that A005900(n) is an element of A001358. n such that A10
+A122183	filtpos	0	1	new A002371()	SEMIPRIME	Numbers n such that A002371(n) is an element of A001358.
+A143986	filtpos	0	1	new A005179()	DIVISIBLE_BY_INDEX	Smallest number d such that A005179(d) is multiple of n. - _Iain
+A145524	filtpos	0	0	new A000041()	(k, v) -> v.mod(Z.TEN.pow(k)).isZero()	divisible by 10^n	Least integer k>0 such that A000041(k) is divisible by 10^n.
+A155034	filtpos	0	0	new A054054()	(k, v) -> Z.valueOf(k).isProbablePrime() && (v.equals(Z.THREE) || v.equals(Z.FIVE) || v.equals(Z.SEVEN))	Primes p such that A054054(p) is in the set {3, 5, 7}. - _Felix 
+A163408	filtpos	0	1	new A008475()	v -> v.compareTo(Z.ONE) > 0 && !v.isProbablePrime()	Positive integers n such that A008475(n) is composite.
+A196445	filtpos	0	2	new A055035()	ODD	Numbers k >= 2 such that A055035(k) is an odd integer.
+A232847	filtpos	0	1	new A000203()	v -> v.isSquare() && ZUtils.isTriangular(v)	Numbers n such that sum of divisors of n is square and triangula
+A246261	filtpos	0	1	new A003961()	v -> v.mod(4) == 1	Numbers n such that A003961(n) is of the form 4k+1.
+A246263	filtpos	0	1	new A003961()	v -> v.mod(4) == 3	Numbers n such that A003961(n) is of the form 4k+3.
+A253388	filtpos	0	1	new A000005()	t -> { final FactorSequence fs = Jaguar.factor(t); return fs.isSemiprime() == FactorSequence.YES && fs.isSquareFree(); }	in A006881			n such that A000005(n) is in A006881.
+A260801	filtpos	0	1	new A008908()	(k, v) -> Z.valueOf(k).isProbablePrime() && v.isProbablePrime()	Primes p such that A008908(p) is also prime.
+A263161	filtpos	0	1	new A000071()	(k, v) -> v.mod(k * (k + 1) / 2) == 0		Positive values of n such that A000071(n+2) is divisible by A000
+A263225	filtpos	0	1	new A027961()	(k, v) -> v.mod(k * (k + 1) / 2) == 0	Positive values of n such that A027961(n) is divisible by A00021
+A263651	filtpos	0	0	new A053186()	v -> v.compareTo(Z.ZERO) > 0 && v.isSquare()	such that A053186(n) is positive square. - _Michel Mar
+A264120	filtpos	0	0	new A001163()	v -> v.compareTo(Z.ZERO) > 0	Values of k such that A001163(k) is positive.
+A268082	filtpos	0	0	new A088218()	(k, v) -> !v.gcd(k).equals(Z.ONE)	Or numbers n such that A088218(n) is coprime to n.
+A270474	filtpos	0	1	new A256832()	(k, v) -> v.mod(k * (k + 1)/2) != 0	Integers k such that A256832(k) is not divisible by k*(k+1)/2.
+A270475	filtpos	0	0	new A003266()	(k, v) -> v.mod(k * (k + 1)/2) != 0	Integers n such that A003266(n) is not divisible by n*(n+1)/2.
+A270617	filtpos	0	1	new A256832()	(k, v) -> Z.valueOf(k).isProbablePrime() && v.isProbablePrime()	Primes p such that A256832(p) is divisible by p.
+A270777	filtpos	0	0	new A003266()	(k, v) -> v.mod(k) != 0L	Integers k such that A003266(k) is not divisible by k.
+A272446	filtpos	0	0	new A054640()	(k, v) -> v.mod(k) != 0	not divisible by n	Numbers n such that A054640(n) is not divisible by n.
+A300790	filtpos	0	1	new A023900()	(k, v) -> v.compareTo(Z.ZERO) < 0 && Z.valueOf(k).isPrime()	negative and k is nonprime	Numbers k the smallest solution of A023900(m) = s, m >= 1, s <> 
+A306724	filtpos	0	1	new A062354()	(k, v) -> { v.root(k.intValue()); return v.auxiliary() == 0L; }	Least number k > 1 such that A062354(k) is an n-th power, where 
+A319838	filtpos	0	1	new A319100()	v -> v.isPower().equals(Z.SIX)	power of 6	Numbers k such that A319100(k) is power of 6.
+A324758	filtpos	0	1	new A003963()	(k, v) -> !v.gcd(k).equals(Z.ONE)	Also numbers n such that A003963(n) is coprime to n.
+A329061	filtpos	0	1	new A002805()	(k, v) -> v.mod(k) != 0L	Greatest k such that A002805(k) is not divisible by n, or a(n) =
+A329293	filtpos	0	1	new A002805()	(k, v) -> v.mod(k) != 0L	not divisible by n	Number of positive integers k such that A002805(k) is not divisi
+A336326	filtpos	0	0	new A000217()	(k, v) -> v.mod(k + 2) != 0L	divisible by k+2 (Proof	a(2) = 0 as there is no k > 0 such that A000217(k) is divisible 
+A336326	filtpos	0	0	new A000217()	(k, v) -> v.mod(k + 9) != 0L	divisible by k+9	a(9) = 15, because A000217(15) (i.e., the 15th triangular number
+A337162	filtpos	0	1	new A079667()	DIVISIBLE_BY_INDEX	Integers m such that A079667(m) is multiple of m.
+A347892	filtpos	0	1	new A003968()	DIVISIBLE_BY_INDEX	Nonsquarefree numbers k such that A003968(k) is multiple of k, w
+A348499	filtpos	0	1	new A003968()	DIVISIBLE_BY_INDEX	Numbers k such that A003968(k) is multiple of k, where A003968 i
+A356164	filtpos	0	1	new A191002()	DIVISIBLE_BY_INDEX	a(n) is the smallest positive k such that A191002(k) is multiple
+A356646	filtpos	0	0	new A025281()	v -> v.isPower() != null	Numbers k such that A025281(k) is perfect power.

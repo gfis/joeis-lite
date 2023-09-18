@@ -1,0 +1,81 @@
+A130653	filter	0	new A002430()	ODD	Odd terms in  A002430 = numerators in Taylor series for tan(x).        
+A175878	filter	0	new A007497()	ODD	Odd terms in  A007497.                                                 
+A347863	filter	0	new A015782()	ODD	Odd terms in  A015782.                                                 
+A163778	filter	0	new A054639()	ODD	Odd terms in  A054639.                                                 
+A100181	filter	0	new A120070()	ODD	Odd terms in  A120070.                                                 
+A142718	filter	0	new A014217()	ODD	Odds terms in A014217.                                                
+A079250	filter	0	new A079000()	EVEN	Even numbers  A079000.                                              
+A356382	filter	0	new A014567()	EVEN	Even terms in A014567.                                                
+A130134	filter	0	new A015922()	EVEN	Even terms in A015922.                                                
+A141616	filter	0	new A120070()	EVEN	Even terms in A120070.                                                
+A101619	filter	0	new A001003()	SEMIPRIME	Semiprimes in A001003.
+A113530	filter	0	new A003215()	SEMIPRIME	Semiprimes in A003215.
+A122499	filter	0	new A006053()	SEMIPRIME	Semiprimes in A006053.
+A122500	filter	0	new A006054()	SEMIPRIME	Semiprimes in A006054.
+A173470	filter	0	new A023037()	SEMIPRIME	Semiprimes in A023037.
+A113519	filter	0	new A056105()	SEMIPRIME	Semiprimes in A056105.
+A113524	filter	0	new A056106()	SEMIPRIME	Semiprimes in A056106.
+A113525	filter	0	new A056107()	SEMIPRIME	Semiprimes in A056107.
+A113527	filter	0	new A056108()	SEMIPRIME	Semiprimes in A056108.
+A113528	filter	0	new A056109()	SEMIPRIME	Semiprimes in A056109.
+A091278	filter	0	new A089632()	SQUARE	Squares in    A089632.
+A114399	filter	0	new A000695()	SQUARE	Squares in    A000695.
+A066905	filter	0	new A006577()	SQUARE	Squares in    A006577.
+A352329	filter	0	new A030299()	SQUARE	Squares in    A030299.
+A263095	filter	0	new A045765()	SQUARE	Squares in    A045765; numbers n^2 such that there is no such k for which k - d(k) = n^2, where d(k) is the number of divisors of k (A000005).
+A199330	filter	0	new A048153()	SQUARE	Squares in    A048153.
+A140483	filter	0	new A064491()	SQUARE	Squares in    A064491.
+A352738	filter	0	new A086849()	SQUARE	Squares in    A086849.
+A145828	filter	0	new A145768()	SQUARE	Squares in    A145768 (XOR of squares of the numbers 1...n).
+A175652	filter	0	new A175649()	SQUARE	Squares in    A175649.
+A352788	filter	0	new A213544()	SQUARE	Squares in    A213544.
+A263094	filter	0	new A236562()	SQUARE	Squares in    A236562; numbers n^2 such that there is at least one such k for which k - d(k) = n^2, where d(k) is the number of divisors of k (A000005).
+A227744	filter	0	new A173318()	SQUARE	Squares that  A173318.
+A329328	filter	0	new A329472()	SQUARE	The squares i A329472.
+A092840	filter	0	new A001003()	PRIME	Primes in     A001003.
+A111015	filter	0	new A002535()	PRIME	Primes in     A002535.
+A096280	filter	0	new A007443()	PRIME	Primes in     A007443 (= binomial transform of primes). Also, first term of iterated successive sums of successive terms, starting with the primes.
+A135316	filter	0	new A023108()	PRIME	Primes in     A023108(n); or Lychrel primes.
+A157183	filter	0	new A028883()	PRIME	Primes in     A028883, p=m^2-7, such that following prime is m^2+1.
+A322749	filter	0	new A032420()	PRIME	Primes in     A032420.
+A086212	filter	0	new A071998()	PRIME	Primes in     A071998.
+A084951	filter	0	new A075893()	PRIME	Primes in     A075893: Primes of the form (p^2+q^2+r^2)/3, where p,q,r are 3 consecutive primes.
+A126557	filter	0	new A126556()	PRIME	Primes in     A126556.
+A338936	filter	0	new A338935()	PRIME	Primes in     A338935.
+A350577	filter	0	new A036991()	PRIME	Prime numbers A036991.
+A174211	filter	0	new A055143()	PRIME	Prime numbers A055143.
+A184417	filter	0	new A063533()	PRIME	Prime numbers A063533 - 1.
+A111013	filter	0	new A084058()	PRIME	Prime numbers A084058.
+A306362	filter	0	new A317298()	PRIME	Prime numbers A317298.
+
+A275814	filtpos	0	1	new A060131()	EVEN	even terms in A060131; indices of permutations of an even order in tables A060117 & A060118.
+A354922	filtpos	0	1	new A182665()	EVEN	even terms in A182665.
+A354818	filtpos	0	1	new A346241()	EVEN	even terms in A346241.
+A175008	filtpos	0	1	new A131389()	v -> v.compareTo(Z.ZERO) < 0	negative s in A131389.
+A354808	filtpos	0	1	new A346241()	v -> v.compareTo(Z.ZERO) < 0	negative   in A346241.
+A175007	filtpos	0	1	new A131389()	v -> v.compareTo(Z.ZERO) >= 0	nonnegative   A131389.
+A354809	filtpos	0	1	new A346241()	v -> v.compareTo(Z.ZERO) >= 0	nonnegative n A346241.
+A289182	filtpos	0	1	new A001358()	ODD	odd semiprimesA001358.
+A353511	filtpos	0	1	new A001001()	ODD	odd terms in  A001001, where A001001(n) = Sum_{d|n} d*sigma(d).
+A275813	filtpos	0	1	new A060131()	ODD	odd terms in  A060131; indices of permutations of an odd order in tables A060117 & A060118.
+A359596	filtpos	0	1	new A358777()	ODD	odd terms in  A358777.
+A359825	filtpos	0	1	new A359823()	ODD	odd terms in  A359823, where A359823 is the Dirichlet inverse of A359820.
+A225648	filtpos	0	1	new A225650()	v -> v.equals(Z.ONE)	ones in       A225650, numbers n such that n and A000793(n) are coprime.
+
+
+# A126790	filter	0	Prime numbers that are not Higgs' primes (numbers in A000040 not in A007459).
+# A307033	filter	0	Even numbers neither in A000010 nor in A001615.                       
+# A125086	filter	0	Even numbers not in A036990.                                          
+# A079252	filter	0	Even numbers not in A079000.                                          
+
+
+
+
+
+
+
+
+
+
+
+

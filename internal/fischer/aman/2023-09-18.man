@@ -1,0 +1,20 @@
+A081710	filtpos	0	1	new LambdaSequence(1, k -> MemoryFactorial.SINGLETON.factorial(k).add(ZUtils.primorial(k)).add(+1))	PRIME		nyi	n!+n#+1isprime,wheren#istheprimorialfunction.	nonn,more,hard	1..19	nyi	_MikeOakes_
+A081711	filtpos	0	1	new LambdaSequence(1, k -> MemoryFactorial.SINGLETON.factorial(k).add(ZUtils.primorial(k)).add(-1))	PRIME		nyi	n!+n#-1isprime,wheren#istheprimorialfunction.	nonn,more,hard	0..21	nyi	_MikeOakes_
+A081712	filtpos	0	1	new LambdaSequence(1, k -> MemoryFactorial.SINGLETON.factorial(k).subtract(ZUtils.primorial(k)).add(+1))	PRIME		nyi	n!-n#+1isprime,wheren#istheprimorialfunction.	nonn,more,hard	0..21	nyi	_MikeOakes_
+A081713	filtpos	0	1	new LambdaSequence(1, k -> MemoryFactorial.SINGLETON.factorial(k).subtract(ZUtils.primorial(k)).add(-1))	PRIME		nyi	n!-n#-1isprime,wheren#istheprimorialfunction.	nonn,more,hard	1..18	nyi	_MikeOakes_
+
+A102903	filter	0	new LambdaSequence(0, n -> Z.THREE.pow(n).add(4))	PRIME
+A102904	filter	0	new LambdaSequence(0, n -> Z.THREE.pow(n).add(20))	PRIME
+A102906	filter	0	new LambdaSequence(0, n -> Z.THREE.pow(n).add(28))	PRIME
+A102908	filter	0	new LambdaSequence(1, n -> Z.THREE.pow(n).add(82))	PRIME
+A104046	filter	0	new LambdaSequence(0, n -> Z.FIVE.pow(n).add(14))	PRIME
+A104049	filter	0	new LambdaSequence(0, n -> Z.FIVE.pow(n).add(26))	PRIME
+A104151	filter	0	new LambdaSequence(0, n -> Z.SIX.pow(n).add(11).subtract(Z.FOUR.pow(n)))	PRIME
+A117012	filter	0	new LambdaSequence(1, n -> Z.valueOf(n*n + 5*n + 3 - 6*(n % 2)))	PRIME
+A117091	filter	0	new LambdaSequence(0, n -> (((((Z.valueOf(n).subtract(48)).multiply(n).add(908)).multiply(n).subtract(8603)).multiply(n).add(42796)).multiply(n).subtract(105410)).multiply(n).add(100823))	PRIME
+A117225	filter	0	new LambdaSequence(0, n -> (((Z.NINE.multiply(n).subtract(444)).multiply(n).add(8059)).multiply(n).subtract(63714)).multiply(n).add(185371))	PRIME
+
+A074822	filter	0	new A000040()	p -> p.mod(Z.TEN) == Z.NINE && p.add(4).isProbablePrime()		 p + 4 is prime and p == 9 (mod 10).	nonn,easy	1..10000	nyi	_Roger L. Bagula_
+A104163	filter	0	new A000040()	p -> { final Z p2 = p.multiply2().add(1); return p2.modZ(3).equals(Z.ZERO) && p2.divide(3).isProbablePrime(); }		 (2p+1)/3 is prime.	nonn,easy	1..1000	nyi	_Roger L. Bagula_
+A158018	filter	0	new A000040()	p -> { final Z p2 = p.add(-1); return p2.modZ(12).equals(Z.ZERO) && p2.divide(12).isProbablePrime(); }		 (p - 1)/12 is also prime.	nonn,easy	1..1000	nyi	_Roger L. Bagula_
+A158708	filter	0	new A000040()	p -> p.add(p.divide2()).isProbablePrime()			Primes p such that p + floor(p/2) is prime.
