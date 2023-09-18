@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2023-09-18: V6.2: Shield/unshield String parameters, do not extract Java classnames from them
 # 2023-09-12: V6.1: Puma
 # 2023-09-07: V6.0: *.jpat now in pattern/; optional Java parameter names
 # 2023-08-14: V5.2: HolonomicRecurrence; *CK=67
@@ -392,6 +393,13 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WZeta\.}                       ) { $imports{"irvine.math.cr.Zeta"}                           = $itype; }
     delete($imports{"irvine.oeis.Sequence"});
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
+        my @shields = ();
+        my $ish = 0;
+        #                   1      1
+        while ($line =~ s{\"([^\"]*)\"}{\#$ish}) { # shield strings
+        	push(@shields, $1);
+        	$ish ++;
+        }
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
             my $class_name = $1; 
             # look it up in the imports accumulated so far
@@ -417,6 +425,11 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
                 $imports{"irvine.oeis.$class_name"} = $itype; 
             }
         } # Java classname
+        $ish = 0;
+        #                   1   1
+        while ($line =~ s{\#(\d+)}{\"$shields[$ish]\"}) { # unshield strings
+        	$ish ++;
+        }
     } # no comment
     if ($debug >= 2) {
         print "# imports: " . join(",", map { "$_\($imports{$_}\)" } sort(keys(%imports))) . "\n";

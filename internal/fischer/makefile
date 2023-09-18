@@ -324,6 +324,10 @@ mangen: # parameter: CC; copy all in CC.gen to fischer/manual
 	ls -al manual
 sumall: # copy all generated in joeis-lite/src to ./manual
 	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
+sumpass: # copy all generated in joeis-lite/src to ./manual
+	cut -b1-7 $(CC).pass.log \
+	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
+	| xargs -innn cp -pv nnn manual 
 copall: # LIST= ; copy all in LIST from joeis/src to ./manual
 	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f $(LIST) | xargs -innn cp -pv nnn manual 
 sumfail: # CC= copy all FAILed to ./manual
@@ -3132,7 +3136,7 @@ latest:
 parmholo:
 	perl -e 'print join("\t", $(A), "holos", $(OFF), "$(MATRIX)", "$(INIT)", 0) . "\n";' >> $@.tmp
 runmorf:
-	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D)
+	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -i $(INIT) -a $(ANCHOR) -m "$(MAP)" -n $(NT) -d $(D) -o $(OFFSET)
 runce:
 	$(JAVA) irvine.oeis.ComplementaryEquationSequence -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
