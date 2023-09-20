@@ -697,10 +697,10 @@ robot1: # make 1 of the robots
 	make select2 select3
 	cat  $(CC).gen >> robot.gen
 robot2: # make an individual robot
-	cd $(ROBOT) ; make $(CC)
+	cd $(ROBOT) ; make $(CC) 
 	cp -v $(ROBOT)/$(CC).gen .
 	make purge 
-	make select2 select3 gener maditel TO=8
+	make select2 select3 gener maditel TO=$(TO) GU=$(GU)
 robot3: # compile and test all
 	#-- postlude
 	# cp -v hold/*.java  manual || :
@@ -4259,7 +4259,12 @@ moebius:
 	| tee    $@.gen
 	wc -l    $@.gen
 #--------------------------------
-morfix:
+morfall: # run robot2 for all anchor modes
+	make CC=morfix robot2 sumpass TO=2 GU=32 ANCHOR=word
+	make CC=morfix robot2 sumpass TO=2 GU=32 ANCHOR=rows
+	make CC=morfix robot2 sumpass TO=2 GU=32 ANCHOR=tria
+	make CC=morfix robot2 sumpass TO=2 GU=32 ANCHOR=anch
+morfix_old:
 	CLASS=MorphismSequence
 	perl -ne \
 	'my $$line = $$_;'\
