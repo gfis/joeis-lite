@@ -784,6 +784,9 @@ A136test:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
+2023-09-21: # replace special abbreviations
+	perl aman/exprep.pl aman/$@.man > $@.gen
+#----
 A004050:
 	grep -E "^A" $@.man \
 	>        $@.gen
@@ -2823,6 +2826,12 @@ egypfr:
 	>        $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen $@.rest.tmp
+#--------------------------------
+expre:
+	cd aman ; perl exprep.pl 0921b.man > ../exprep.tmp
+	make CC=exprep purge select geditel TO=6 GU=64
+exprep:
+	cp -v exprep.tmp exprep.gen
 #--------------------------------
 fiboluca:
 	cp -v $(COMMON)/$@.tmp $@.gen

@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2023-09-21: V6.3: finally keep the spaces in comma-separated parameter terms
 # 2023-09-18: V6.2: Shield/unshield String parameters, do not extract Java classnames from them
 # 2023-09-12: V6.1: Puma
 # 2023-09-07: V6.0: *.jpat now in pattern/; optional Java parameter names
@@ -66,7 +67,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V6.0";
+my $version_id  = "gen_seq4.pl V6.3";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -177,7 +178,8 @@ while (<>) { # read inputfile
                     $max_term_len = length;
                 }
                 $_
-            } split(/\,\s*/, $parms[$iparm]);
+        #   } split(/\,\s*/, $parms[$iparm]); # removes the spaces
+            } split(/\,/, $parms[$iparm]);
         } else {
             @terms = ($parms[$iparm]);
         }
