@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2023-09-23: V6.4: IntegerPartition
 # 2023-09-21: V6.3: finally keep the spaces in comma-separated parameter terms
 # 2023-09-18: V6.2: Shield/unshield String parameters, do not extract Java classnames from them
 # 2023-09-12: V6.1: Puma
@@ -364,7 +365,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WFactorSequence}               ) { $imports{"irvine.factor.util.FactorSequence"}             = $itype; }
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }
     if ($line =~ m{\WHolonomicRecurrence}          ) { $imports{"irvine.oeis.recur.HolonomicRecurrence"}         = $itype; }
-    if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"      }                = $itype; }
+    if ($line =~ m{\WIntegerParttion}              ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }
     if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"}                      = $itype; }
     if ($line =~ m{\WIntegers\.}                   ) { $imports{"irvine.math.z.Integers"}                        = $itype; }
     if ($line =~ m{\WInverse}                      ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }

@@ -5036,7 +5036,7 @@ triselect: # use TriangleSelector
 	wc -l $@.gen
 trisel2:
 	make seq4 LIST=$(TRIREC)/cdrof.tmp
-	$(DBAT) "DELETE FROM seq4 WHERE parm2 <> 'null' OR parm1 NOT IN (SELECT aseqno FROM joeis);"
+	$(DBAT) "DELETE FROM seq4 WHERE parm2 <> 'nyi' OR parm1 NOT IN (SELECT aseqno FROM joeis);"
 	$(DBAT) -x -44444 seq4 > $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

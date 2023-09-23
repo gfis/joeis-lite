@@ -2,6 +2,7 @@
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2023-09-23: "private int mN;" again
 # 2023-08-30: AbstractSequence, no getOffset
 # 2023-06-01: -t constructor; UP=54
 # 2022-12-30: private long mN;
@@ -199,7 +200,7 @@ GFis
     }
     print TAR " {\n";
     if ($withn) {
-        print TAR "\n  private long mN;\n";
+        print TAR "\n  private int mN;\n";
     }
     foreach $pname (@pnames) { # member properties
         if ($pname ne "offset") {
