@@ -786,6 +786,8 @@ A136test:
 #================================================================
 2023-09-21: # replace special abbreviations
 	perl aman/exprep.pl aman/$@.man > $@.gen
+exprs:
+	cp -v ../../../OEIS-mat/robot/expr_gen.gen $@.gen 
 #----
 A004050:
 	grep -E "^A" $@.man \

@@ -368,7 +368,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WIntegerParttion}              ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }
     if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"}                      = $itype; }
     if ($line =~ m{\WIntegers\.}                   ) { $imports{"irvine.math.z.Integers"}                        = $itype; }
-    if ($line =~ m{\WInverse}                      ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
+    if ($line =~ m{\WInverse\b}                    ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
     if ($line =~ m{\WJaguar\.}                     ) { $imports{"irvine.factor.factor.Jaguar"   }                = $itype; }
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"         }                = $itype; }

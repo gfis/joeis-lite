@@ -11,6 +11,6 @@ public class $(ASEQNO) extends InverseSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(PARM1), $(PARM2), $(PARM3));
+    super($(PARM1=seq), $(PARM2=initial), $(PARM3=offset));
   }
 }
