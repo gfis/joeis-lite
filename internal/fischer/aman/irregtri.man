@@ -1,0 +1,74 @@
+# A291878	irrtri	0	T(n,k) = number of fountains of n coins and height k.    nonn,tabf       0..1000 nyi     _Seiichi Manyama_
+# A288267	irrtri	0	T(n,k) = 				T(n  ,k+1) + 				T(n-k,k-1) 	with T(0,0) = 1 and T(n,k) = 0 if k<0 or k > A003056(n).  nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291895	irrtri	0	T(n,k) = 				T(n-k,k-1) + 	T(n-k,k) +	T(n-k,k+1) 	with T(0,0) = 1.     nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291895	irrtri	0	T(n,k) = 				T(n-k,k-1) + 	T(n-k,k) + 	T(n-k,k+1) 	with T(0,0) = 1.     nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291904	irrtri	0	T(n,k) = 				T(n-k,k-1) + 				T(n-k,k+1) 	with T(0,0) = 1 for 0 <= k <= A003056(n).       nonn,tabf,changed       0..481  nyi     _Seiichi Manyama_
+# A291929	irrtri	0	T(n,k) = 				T(n-k,k-1) + 2*	T(n-k,k) +	T(n-k,k+1)	with T(0,0) = 1 for 0 <= k <= A003056(n).  nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291940	irrtri	0	T(n,k) = 				T(n-k,k-1) - 2*	T(n-k,k) +	T(n-k,k+1)	with T(0,0) = 1 for 0 <= k <= A003056(n).  sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A291954	irrtri	0	T(n,k) = 				T(n-k,k-1) - 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n). sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A291955	irrtri	0	T(n,k) = 				T(n-k,k-1) - 				T(n-k,k+1) 	with T(0,0) = 1 for 0 <= k <= A003056(n).       sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A291957	irrtri	0	T(n,k) = 				T(n-k,k-1) - 	T(n-k,k) + 	T(n-k,k+1) 	with T(0,0) = 1 for 0 <= k <= A003056(n).    sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A291960	irrtri	0	T(n,k) = 				T(n-k,k-1) + k*	T(n-k,k)				with T(0,0) = 1 for 0 <= k <= A003056(n).     nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291968	irrtri	0	T(n,k) = (k+1) * 		T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n). nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291969	irrtri	0	T(n,k) = k * 			T(n-k,k-1) + k*	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).   nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291970	irrtri	0	T(n,k) = 2 * 			T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).     nonn,tabf,look  0..481  nyi     _Seiichi Manyama_
+# A291971	irrtri	0	T(n,k) = 3 * 			T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).     nonn,tabf,look  0..481  nyi     _Seiichi Manyama_
+# A292047	irrtri	0	T(n,k) = (-1)^k*		T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).        sign,tabf,look  0..481  nyi     _Seiichi Manyama_
+# A292049	irrtri	0	T(n,k) = (-1)^(k-1)*	T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).    sign,tabf,look  0..481  nyi     _Seiichi Manyama_
+# A292129	irrtri	0	T(n,k) = (-2) * 		T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).  sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A292130	irrtri	0	T(n,k) = (-3) * 		T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).  sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A292142	irrtri	0	T(n,k) = (-4)^(k % 2) * T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).        sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A292143	irrtri	0	T(n,k) = (-4)^(1-k%2) * T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).    sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A292781	irrtri	0	T(n,k) = 				T(n-k,k-1)  with T(0,0) = 1 and T(n,0) = -1/n * Sum_{k=1..A003056(n)} (-1)^k * (2*k+1) * (n+1-A060544(k+1)) * T(n,k).    sign,tabf       0.
+
+
+# A055151 DoubleRowTriangle       Triangular array of Motzkin polynomial coefficients.    nonn,tabf,easy  0..200  unkn    _Michael Somos_
+# A060037 DoubleRowTriangle       Triangular array T read by rows: T(n,k)=k^2 mod n, for k=1,2,...,[n/2], n=2,3,...       nonn,tabf,easy,nice     2..100  unkn    _N. J. A.
+# A099959 DoubleRowTriangle       Triangle read by rows: Each row is constructed by forming the partial sums of the previous row, reading from the right and a
+# A100861 DoubleRowTriangle       Triangle of Bessel numbers read by rows: T(n,k) is the number of k-matchings of the complete graph K(n).        nonn,tabf,nice  0..1
+# A108759 DoubleRowTriangle       Triangle read by rows: T(n,k) = binomial(3k,k)*binomial(n+k,3k)/(2k+1) (0 <= k <= floor(n/2)).  nonn,tabf       0..10200        unkn    _Emer
+# A116599 DoubleRowTriangle       Triangle read by rows: T(n,k) is the number of partitions of n having exactly k parts equal to 2 (n>=0, 0<=k<=floor(n/2)).      n
+# A173238 DoubleRowTriangle       Triangle by columns, A000041 in every column shifted down twice for columns > 0.        nonn,tabf,easy  0..9999 unkn    _Gary W. Adamso
+
+# A083906 nyi pto Table T(n,k) read along rows: the coefficient [q^k] of the Sum_{m=0..n} [n,m]_q over q-Binomial coefficients.   nonn,tabf       0..48   nyi     _Alford Arnold_
+# A109446 nyi pt  Binomial coefficients C(n,k) with n-k even, read by rows.       easy,nonn,tabf  0..200  nyi     _Philippe Del√©ham_                                                    
+# A124755 nyi F   Binomial sum of compositions in standard order. easy,nonn,tabf  0..14   nyi     _Franklin T. Adams-Watters_                                                            
+# A128781 nyi F   Triangle of numbers a(n,k), n>=3, ceiling((n-3)/2)<=k<=n-3: a(n,k)=Sum[ Binomial[x + y + z, x]*Binomial[y + z, y]*Binomial[n - 2 - x - 2*y - 2*z, 2*n - 2*y - 5 - 2*k] 
+# A139815 nyi Ft  A triangle of coefficients of a Moebius-transformed Pascal triangle as a sum: b(x,y,n)=Sum[Binomial[n,i]*x^i*y^(n-i),{i,0,n}]; transforms: x'->(a1*x + b1)/(c1*x + d1  
+# A141024 nyi Ft  A triangular sequence in which the Prime[n]^(2*n) is treated like a variable expansion: (1-Prime[n])^(2*n) with the base Prime[0] is defined as one (in the Goldbach   
+# A154353 nyi Ft  Triangle T(n,m) read by rows: T(n,m) = ( Eulerian(n,m) - Binomial(n,m)^2 )/2, n >= 4, 2 <= m = <= n-1.  nonn,tabf       4..47   nyi     _Roger L. Bagula_              
+# A155951 nyi Ft  Triangle read by rows. Let q(x,n) = -((x - 1)^(2*n + 1)/x^n)*Sum[(k + n)^n*Binomial[k, n]*x^k, {k, 0, Infinity}]; p(x,n)=q(x,n)+x^n*q(1/x,n); then row n gives coeffi  
+# A161161 nyi pt  Irregular triangle of differences T(n,k) = A083906(n,k)-A083906(n-1,k) of q-Binomial coefficients.      easy,nonn,tabf  1..93   nyi     _Alford Arnold_                
+# A164705 nyi t   T(n,k)=Binomial(2n-k,n)*2^(k-1) for n>=1,0<=k<=n        nonn,tabf       1..53   nyi     _Geoffrey Critzer_   
+                                                          
+# A090214 nyi Fpt Generalized Stirling2 array S_{4,4}(n,k).       nonn,easy,tabf  1..10011        nyi     _Wolfdieter Lang_
+# A090216 nyi Ft  Generalized Stirling2 array S_{5,5}(n,k).       nonn,easy,tabf  1..28   nyi     _Wolfdieter Lang_
+# A090438 nyi Fpt Generalized Stirling2 array (4,2).      nonn,easy,tabf  1..36   nyi     _Wolfdieter Lang_
+# A090440 nyi Ft  Generalized Stirling2 array (4,3).      nonn,easy,tabf  1..33   nyi     _Wolfdieter Lang_
+# A091534 nyi Ft  Generalized Stirling2 array (5,2).      nonn,easy,tabf  1..33   nyi     _Wolfdieter Lang_
+# A091746 nyi Ft  Generalized Stirling2 array (6,2).      nonn,easy,tabf  1..31   nyi     _Wolfdieter Lang_
+# A091747 nyi F   Generalized Stirling2 array (7,2).      nonn,easy,tabf  1..30   nyi     _Wolfdieter Lang_
+# A091752 nyi Ft  Generalized Stirling2 array (-1,2)S2. Irregular triangle a(n, m) for n >= 1 and 2 <= m <= 2*n.  sign,easy,tabf  1..41   nyi     _Wolfdieter Lang_
+# A092077 nyi Ft  Generalized Stirling2 array (8,2).      nonn,easy,tabf  1..36   nyi     _Wolfdieter Lang_
+# 
+# A143171 nyi F   Partition number array, called M32(-1), related to A001497(n-1,m-1) = |S2(-1;n,m)| (generalized Stirling2 triangle).    nonn,easy,tabf  1..56   nyi     _Wolfdieter Lang_, Dec 0
+# A143172 nyi F   Partition number array, called M32(-2), related to A004747(n,m) = |S2(-2;n,m)| (generalized Stirling triangle). nonn,easy,tabf  1..50   nyi     _Wolfdieter Lang_
+# A143173 nyi F   Partition number array, called M32(-3), related to A000369(n,m) = |S2(-3;n,m)| (generalized Stirling triangle). nonn,easy,tabf  1..48   nyi     _Wolfdieter Lang_
+# A144267 nyi F   Partition number array, called M32(-4), related to A011801(n,m)= |S2(-4;n,m)| ( generalized Stirling triangle). nonn,easy,tabf  1..46   nyi     _Wolfdieter Lang_
+# A144268 nyi F   Partition number array, called M32(-5), related to A013988(n,m)= |S2(-5;n,m)| ( generalized Stirling triangle). nonn,easy,tabf  1..45   nyi     _Wolfdieter Lang_
+# A144269 nyi F   Partition number array, called M32hat(-1)= 'M32(-1)/M3'= 'A143171/A036040', related to A001497(n-1,m-1)= |S2(-1;n,m)| (generalized Stirling triangle).  nonn,easy,tabf
+# A144274 nyi F   Partition number array, called M32hat(-2)= 'M32(-2)/M3'= 'A143172/A036040', related to A004747(n,m)= |S2(-2;n,m)| (generalized Stirling triangle).      nonn,easy,tabf  1..6
+# A144279 nyi F   Partition number array, called M32hat(-3)= 'M32(-3)/M3'= 'A143173/A036040', related to A000369(n,m)= |S2(-3;n,m)| (generalized Stirling triangle).      nonn,easy,tabf  1..5
+# A144284 nyi F   Partition number array, called M32hat(-4)= 'M32(-4)/M3'= 'A144267/A036040', related to A011801(n,m)= |S2(-4;n,m)| (generalized Stirling triangle).      nonn,easy,tabf  1..5
+# A144341 nyi F   Partition number array, called M32hat(-5)= 'M32(-5)/M3'= 'A144268/A036040', related to A011801(n,m)= |S2(-4;n,m)| (generalized Stirling triangle).      nonn,easy,tabf  1..5
+# A144353 nyi F   Partition number array, called M31(3), related to A046089(n,m)= |S1(3;n,m)| (generalized Stirling triangle).    nonn,easy,tabf  1..51   nyi     _Wolfdieter Lang_ Oct 09 2008
+# A144354 nyi F   Partition number array, called M31(4), related to A049352(n,m)= |S1(4;n,m)| (generalized Stirling triangle).    nonn,easy,tabf  1..50   nyi     _Wolfdieter Lang_ Oct 09 2008
+# A144355 nyi F   Partition number array, called M31(5), related to A049353(n,m)= |S1(5;n,m)| (generalized Stirling triangle).    nonn,easy,tabf  1..47   nyi     _Wolfdieter Lang_ Oct 09 2008
+# A144356 nyi F   Partition number array, called M31(6), related to A049374(n,m)= |S1(6;n,m)| (generalized Stirling triangle).    nonn,easy,tabf  1..46   nyi     _Wolfdieter Lang_ Oct 09 2008
+# A144357 nyi F   Partition number array, called M31(-1), related to A049403(n,m) = S1(-1;n,m) (generalized Stirling triangle).   nonn,easy,tabf  1..95   nyi     _Wolfdieter Lang_, Oct 28 2008
+# A144358 nyi F   Partition number array, called M31(-2), related to A049404(n,m) = S1(-2;n,m) (generalized Stirling triangle).   nonn,easy,tabf  1..80   nyi     _Wolfdieter Lang_ Oct 09 2008
+# A144877 nyi F   Partition number array, called M31(-3), related to A049410(n,m) = S1(-3;n,m) (generalized Stirling triangle).   nonn,easy,tabf  1..62   nyi     _Wolfdieter Lang_ Oct 09 2008
+# A144878 nyi F   Partition number array, called M31(-4), related to A049424(n,m) = S1(-4;n,m) (generalized Stirling triangle).   nonn,easy,tabf  1..56   nyi     _Wolfdieter Lang_ Oct 09 2008
+# A144879 nyi F   Partition number array, called M31(-5), related to A049411(n,m) = S1(-5;n,m) (generalized Stirling triangle).   nonn,easy,tabf  1..52   nyi     _Wolfdieter Lang_ Oct 09 2008
+# A216379 nyi t   Triangle of generalized Stirling numbers S_{n,n}(5,k) read by rows (n>=0, n<=k<=5n) the sum of which is A182924.        nonn,tabf,easy  0..44   nyi     _Jean-Fran?ois Alcover_
+# A271204 nyi Fp  Triangle of generalized Stirling numbers of the second kind S(n,k) associated with the generalized Bell numbers A271049(n); S(n,k) = Sum_{j=0..k} (-1)^(k-j)*binomial

@@ -1,0 +1,185 @@
+# A074938	evenodd	0	Odd numbers in A005836.
+# A074939	evenodd	0	Even numbers in A005836; n such that binomial(2n,n) == 1 (mod 3).
+# A082686	evenodd	0	Odd nonprime integers n which have an odd number of proper divisors.
+# A087718	evenodd	0	Odd composite integers which do not have a representation as the sum of an even number of consecutive integers. For instance, 27 is not in the sequen
+# A137274	evenodd	0	Even terms in the Taylor series for the Fisher Information of a Rice-distributed variable (at amplitude 0, with sigma==1).
+# A137759	evenodd	0	Odd numbers in writing first numerator and then denominator (left to right) of Leibniz's harmonic-like triangle.
+# A153601	evenodd	0	Odd numbers in A019320.
+# A154795	evenodd	0	Odd numbers in A058695.
+# A154796	evenodd	0	Even numbers in A058695.
+# A154797	evenodd	0	Odd numbers in A058696.
+# A154798	evenodd	0	Even numbers in A058696.
+# A162886	evenodd	0	Even numbers in an alternating 1-based sum up to some odd nonprime.
+# A162887	evenodd	0	Odd nonprimes in an alternating 1-based sum up to some odd nonprime.
+# A163170	evenodd	0	Odd composite integers that are palindromes when written in binary.
+# A163777	evenodd	0	Even terms in the sequence of Queneau numbers A054639.
+# A194798	evenodd	0	Odd positive integers with an odd number of partitions and even positive integers with an even number of partitions. - Omar E. Pol, Mar 17 2012
+# A305469	evenodd	0	Odd positive integers that cannot be expressed as the quotient of two binary palindromic numbers (that is, terms of A006995).
+# A308810	evenodd	0	Odd positive integers k such that the repetend of the binary representation of 1/k contains more 1's than 0's.
+# A327756	evenodd	0	Odd composite integers n such that binomial(n-1,(n-1)/2) is coprime to n.
+# A338080	evenodd	0	Odd composite integers such that A005668(m)^2 == 1 (mod m).
+# A338081	evenodd	0	Odd composite integers such that A054413(m)^2 == 1 (mod m).
+# A342949	evenodd	0	Odd terms in A007602.
+# A347908	evenodd	0	Even terms in A130421. Complement of A347906 in A130421.
+# A348417	evenodd	0	Odd terms in A046073.
+# A348649	evenodd	0	Odd numbers in the triangle of Stirling numbers of the second kind (A008277).
+# A348650	evenodd	0	Even numbers in the triangle of Stirling numbers of the second kind (A008277).
+# A349831	evenodd	0	Even numbers in the intersection of A228082 and A349829.
+
+# A068653	filter	0	Composite numbers such that every cyclic shift (other than the number itself) gives a prime.
+# A068821	filter	0	Triangular numbers such that both the number formed by the first floor((k+1)/2) digits and the remaining part (if any) are triangular numbers, where k is the number of digits.
+# A069077	filter	0	Triangular numbers such that the product of digits is also a (positive) triangular number.
+# A071966	filter	0	Composite numbers such that smallest prime factor, largest prime factor and sum of prime factors (with repetition) are all a sum of two squares.
+# A072471	filter	0	Squares such that the sum of two neighboring term is also a square.
+# A085955	filter	0	Composites such that the number of 1's in their binary expansion is equal to the number of 1's in the binary expansion of the sum of their prime factors (counting repetition).
+# A089042	filter	0	Composite numbers such that all divisors >1 have the same number of 1's in binary representation.
+# A093800	filter	0	Triangular numbers such that the least common multiple of a pair of successive terms is triangular.
+# A096598	filter	0	Squares such that some permutation of digits is also a square (in decimal representation).
+# A114027	filter	0	Composite numbers such that the n-th partial concatenation is a multiple of composite(n).
+# A133197	filter	0	Triangular numbers such that moving the first digit to the end produces a square number.
+# A133198	filter	0	Triangular numbers such that moving the last digit to the front produces a square.
+# A133764	filter	0	Composite numbers such that any two terms, plus 1, yields a composite number:.
+# A134344	filter	0	Composite numbers such that the arithmetic mean of their prime factors (counted with multiplicity) is prime.
+# A134600	filter	0	Composite numbers such that the square mean of their prime factors is an integer (where the prime factors are taken with multiplicity and the square mean of c and d is sqrt((c^2+d^2)/2)).
+# A134601	filter	0	Composite numbers such that the square mean of their prime factors is a prime (where the prime factors are taken with multiplicity and the square mean of c and d is sqrt((c^2+d^2)/2)).
+# A134602	filter	0	Composite numbers such that the square mean of their prime factors is a nonprime integer (where the prime factors are taken with multiplicity and the square mean of c and d is sqrt((c^2+d^2)/2)).
+# A134605	filter	0	Composite numbers such that the square root of the sum of squares of their prime factors (with multiplicity) is an integer.
+# A134607	filter	0	Composite numbers such that the square root of the sum of squares of their prime factors is a prime.
+# A134608	filter	0	Composite numbers such that the cube root of the sum of cubes of their prime factors is an integer.
+# A134610	filter	0	Composite numbers such that the cube root of the sum of cubes of their prime factors is a prime.
+# A135780	filter	0	Squares such that another square can be obtained by a cyclic permutation of the digits, excluding leading zeros.
+# A154709	filter	0	Cubes such that cube-+2 are primes.
+# A154710	filter	0	Cubes such that cube-+3 are primes.
+# A154711	filter	0	Squares such that square-+5 are primes.
+# A154713	filter	0	Cubes such that cube-+5 are primes.
+# A163554	filter	0	Composite numbers such that exactly two distinct permutations of digits give primes.
+# A163555	filter	0	Composite numbers such that exactly three distinct permutations of digits give primes.
+# A163556	filter	0	Composite numbers such that exactly four distinct permutations of decimal digits are prime.
+# A163557	filter	0	Composite numbers such that exactly five distinct permutations of digits give primes.
+# A163558	filter	0	Composite numbers such that exactly six distinct permutations of digits give primes.
+# A163559	filter	0	Composite numbers such that exactly seven distinct permutations of digits give primes.
+# A163560	filter	0	Composite numbers such that exactly eight distinct permutations of digits give primes.
+# A163561	filter	0	Composite numbers such that exactly nine distinct permutations of digits give primes.
+# A163562	filter	0	Composite numbers such that exactly ten distinct permutations of digits are prime.
+# A163622	filter	0	Composite numbers such that the sum of its smallest digit and the largest digit is a prime.
+# A171584	filter	0	Squares such that swapping some pair of digits gives a prime.
+# A217263	filter	0	Composite numbers such that every concatenation of their prime factors is prime.
+# A225193	filter	0	Composite numbers such that every non-identity permutation gives a prime.
+# A226365	filter	0	Composite numbers such that Sum_{i=1..k} (1 + 1/p_i) - Product_{i=1..k} (1 + 1/p_i) is an integer, where p_i are the k prime factors of n (with multiplicity).
+# A226736	filter	0	Triangular numbers such that the binary representation is of the form either Tbt or Tt, where T and t are binary representations of triangular numbers with equal binary length, and b is a binary digit: b = 1 or 0.
+# A227034	filter	0	Composite numbers such that product_{i=1..k} (p_i/(p_i-1)) / sum_{i=1..k} (p_i/(p_i-1)) is an integer, where p_i are the k prime factors of n (with multiplicity).
+# A227248	filter	0	Composite numbers such that sum_{i=1..k} (p_i/(p_i+1))/product_{i=1..k} (p_i/(p_i+1)) is an integer, where p_i are the k prime factors of n (with multiplicity).
+# A247145	filter	0	Composite numbers such that the product of the number's proper divisors is divisible by the sum of the number's proper divisors.
+# A254752	filter	0	Composite numbers such that, in base 10, all their proper prefixes and suffixes represent composites.
+# A345329	filter	0	Composite numbers such that m^(2^v(k-1)+1) == m (mod k) has exactly 2^v(k-1) + 1 solutions modulo k, where v(k) = A007814(k) is the 2-adic valuation of k.
+# A345351	filter	0	Triangular numbers such that the sum of cubes of their digits is prime.
+                         
+A075677	lambda	0	Z.valueOf(3*n - 1).makeOdd()			A000265(3*n-1). - _Reinhard Zumkeller_, Jan 08 2014
+A213671	lambda	0	Z.valueOf(n*(n - 1) + 29).makeOdd()			A000265(n^2-n+2). - _R. J. Mathar_, Mar 10 2013
+A163394	simtraf	0	new A163176()	v -> v.makeOdd()		A000265(A163176(n)). - _Michel Marcus_, Jun 17 2019
+A212183	simtraf	0	new A002183()	v -> v.makeOdd()		A000265(A002183(n)) = A212181(A002182(n)).
+A212641	simtraf	0	new A212640()	v -> v.makeOdd()		A000265(A212640(n)) = A212181(A181800(n)).
+A225091	simtraf	0	new A066003()	v -> v.makeOdd()		A000265(A066003(n)). - _R. J. Mathar_, May 05 2013
+A270968	simtraf	0	new A017341()	v -> v.makeOdd()		A000265(A017341(n-1)). - _Michel Marcus_, Mar 27 2016
+A320024	simtraf	0	new A007691()	v -> v.makeOdd()		A000265(A007691(n)).
+A324378	simtraf	0	new A005187()	v -> v.makeOdd()		A000265(A005187(n) + 1).
+A324378	simtraf	0	new A005187()	v -> v.makeOdd()		A000265(A005187(n) + 1).
+A332459	simtraf	0	new A088580()	v -> v.makeOdd()		A000265(A088580(n)) = A000265(1+sigma(n)).
+A339904	simtraf	0	new A003972()	v -> v.makeOdd()		A000265(A003972(n)) = A053575(A003961(n)) = A000265(A000010(A003961(n))).
+A351565	simtraf	0	new A003602()	v -> v.makeOdd()		A000265(A003602(n)).
+A351965	simtraf	0	new A109812()	v -> v.makeOdd()		A000265(A109812(n)).
+A353413	simtraf	0	new A064216()	v -> v.makeOdd()		A000265(A064216(n)).
+       	simtraf	 				
+A322821	simtraf	0	new A048675()	v -> v.makeOdd()		0; for n > 1, a(n) = A000265(A048675(n)).
+A322821	simtraf	0	new A048675()	v -> v.makeOdd()		0; for n > 1, a(n) = A000265(A048675(n)).
+A324377	simtraf	0	new A005187()	v -> v.makeOdd()		0; for n > 0, a(n) = A000265(A005187(n)).
+A324377	simtraf	0	new A005187()	v -> v.makeOdd()		0; for n > 0, a(n) = A000265(A005187(n)) = A005187(n) / 2^A324379(n).
+A302787	simtraf	0	new A052331()	v -> v.makeOdd()		0; for n > 1, a(n) = A000265(A052331(n)).
+A302787	simtraf	0	new A052331()	v -> v.makeOdd()		0; for n > 1, a(n) = A000265(A052331(n)).
+       	simtraf	 				
+A080237	simtraf	0	new A014486()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A014486(n)) (i.e., number of trailing zeros in A063171(n)).
+A086333	simtraf	0	new A086332()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A086332(n)). - _David Wasserman_, Mar 21 2005
+A087230	simtraf	0	new A016957()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A016957(n)). - _Michel Marcus_, Jan 27 2022
+A099312	simtraf	0	new A007416()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A007416(n)).
+A112760	simtraf	0	new A051037()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A051037(n));
+A112779	simtraf	0	new A002182()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A002182(n)). - _David A. Corneth_, Aug 16 2015
+A114912	simtraf	0	new A000009()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A000009(n)) [From _Max Alekseyev_, Apr 27 2010]
+A130077	simtraf	0	new A001623()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A001623(n)). - _Michel Marcus_, Oct 02 2017
+A134665	simtraf	0	new A007691()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A007691(n)). - _Michel Marcus_, Oct 10 2017
+A177424	simtraf	0	new A014062()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A014062(n)).
+A194827	simtraf	0	new A005130()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A005130(n)).
+A195986	simtraf	0	new A005058()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A005058(n)). - _Antti Karttunen_, Nov 06 2018
+A220779	simtraf	0	new A031971()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A031971(n)).
+A253274	simtraf	0	new A007497()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A007497(n)).
+A275342	simtraf	0	new A007501()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A007501(n)). - _Michel Marcus_, Jul 23 2016
+A276133	simtraf	0	new A061214()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A061214(n)).
+A286583	simtraf	0	new A048673()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A048673(n)).
+A286583	simtraf	0	new A048673()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A048673(n)).
+A293275	simtraf	0	new A019278()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A019278(n)).
+A318306	simtraf	0	new A318307()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A318307(n)).
+A318471	simtraf	0	new A318472()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A318472(n)).
+A318473	simtraf	0	new A318474()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A318474(n)).
+A318475	simtraf	0	new A318476()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A318476(n)).
+A318659	simtraf	0	new A318658()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A318658(n)).
+A324466	simtraf	0	new A006480()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A006480(n)).
+A332447	simtraf	0	new A087808()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A087808(n)).
+A332447	simtraf	0	new A087808()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A087808(n)).
+A337195	simtraf	0	new A337194()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A337194(n))
+A337923	simtraf	0	new A000045()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A000045(n)).
+A351964	simtraf	0	new A109812()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A109812(n)).
+A153036	simtraf	0	new A145342()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A145342(n+1)). (End)
+A248174	simtraf	0	new A000073()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A000073(n+1)). - _Michel Marcus_, Oct 03 2014
+A268726	simtraf	0	new A006068()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A006068(n) + 1).
+A324906	simtraf	0	new A318466()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A318466(n) + 1).
+A336842	simtraf	0	new A003961()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A003961(n) + 1).
+A336842	simtraf	0	new A003961()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A003961(n) + 1).
+A352080	simtraf	0	new A052409()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A052409(n)) + 1. - _Amiram Eldar_, Mar 03 2022
+# A158572	simtraf	0				A007814((2n-1)!! - 1).
+# A275019	simtraf	0				A007814(n) + A007814(n+1) + A007814(n+2) - 1.
+# A085058	simtraf	0				A007814(3^(n+1) - (-1)^(n+1)) = A007814(A105723(n+1)). - _Reinhard Zumkeller_, Apr 18 2005
+# A085058	simtraf	0				A007814(5^(n+1) - 1). - _Ivan Neretin_, Jan 15 2016
+       	simtraf	 				
+A068741	simtraf	0	new A000312()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A000312(n)). - _Michel Marcus_, Jan 12 2015
+A102068	simtraf	0	new A006530()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A006530(n)) = A000040(A061395(n))!.
+A130726	simtraf	0	new A007917()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A007917(n)). - _R. J. Mathar_, Aug 22 2007
+A138902	simtraf	0	new A055632()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A055632(n)). - _James Spahlinger_, Oct 09 2012
+A214078	simtraf	0	new A003059()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A003059(n)). - _Michel Marcus_, Jul 28 2022
+A214079	simtraf	0	new A134914()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A134914(n)). - _Michel Marcus_, Aug 15 2022
+A214080	simtraf	0	new A000196()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A000196(n)). - _Michel Marcus_, Aug 15 2022
+A269223	simtraf	0	new A053735()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A053735(n)).
+A269224	simtraf	0	new A053737()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A053737(n)).
+A317888	simtraf	0	new A000051()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A000051(n)). - _Michel Marcus_, Aug 11 2018
+# A345940	simtraf	0	new A006530()	(k,v) -> MemoryFactorial.SINGLETON.factorial(v.intValueExact()).mod(Z(k))		A000142(A006530(n)) modulo n.
+A362187	simtraf	0	new A002378()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A002378(n-1)) for n > 0.
+                 				
+A093659	lambda	0	MemoryFactorial.SINGLETON.factorial(Z.valueOf(n).bitCount())			A000120(n)! = A000142(A000120(n)).
+A295894	simtraf	0	new A005940()	v -> Z.valueOf(v.bitCount())			A000120(A005940(1+n)).
+A362951	simtraf	0	new A169814()	v -> Z.valueOf(v.bitCount())			A000120(A169814(n)).
+
+# A159958 lodumo  0       Lodumo_3 of A053838 .
+# A159959 lodumo  0       Lodumo_2 of A004601 (expansion of Pi in base 2).
+# A159962 lodumo  0       Lodumo_3 of A004602 (expansion of Pi in base 3).
+# A159963 lodumo  0       Lodumo_3 of A102370 (sloping binary numbers).
+# A159970 lodumo  0       Lodumo_5 of A102370 (sloping binary numbers) .
+# A159979 lodumo  0       Lodumo_3 of Catalan numbers .
+# A159980 lodumo  0       Lodumo_2 of Catalan numbers .
+# A160051 lodumo  0       Lodumo_2 of Kolakoski sequence (A000002).
+# A160080 lodumo  0       Lodumo_4 of Fibonacci numbers .
+# A160081 lodumo  0       Lodumo_5 of Fibonacci numbers .
+# A160101 lodumo  0       Lodumo_6 of Fibonacci numbers.
+# A160105 lodumo  0       Lodumo_7 of Fibonacci numbers.
+# A160108 lodumo  0       Lodumo_8 of Fibonacci numbers.
+# A160108 lodumo  0       Lodumo_8 transform of A000045 (for definition see Transforms).
+# A160137 lodumo  0       Lodumo_10 of Fibonacci numbers.
+# A160168 lodumo  0       Lodumo_3 of Lucas numbers .
+# A160169 lodumo  0       Lodumo_4 of Lucas numbers .
+# A160186 lodumo  0       Lodumo_5 of Lucas numbers.
+# A160187 lodumo  0       Lodumo_6 of Lucas numbers.
+# A160188 lodumo  0       Lodumo_7 of Lucas numbers.
+# A160191 lodumo  0       Lodumo_8 of Lucas numbers.
+# A160191 lodumo  0       Lodumo_8 transform of A000032 (for definition see Transforms).
+# A203553 lodumo  0       Lodumo_2 of A118175, which is n 1's followed by n 0's.
+# A203553 lodumo  0       a(n)= Lodumo_2(A118175(n)).
+# A203554 lodumo  0       Lodumo_2 of A079813, which is n 0's followed by n 1's..
+# A160019 lodumo  0       Triangle: Lodumo_2 applied to each row of Pascal's triangle .
+# A160052 lodumo  0       Triangle : Lodumo_2 applied to each row of triangle in A039599 .

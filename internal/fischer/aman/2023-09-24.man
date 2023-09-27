@@ -1,0 +1,81 @@
+# A291878	irrtri	0	T(n,k) = number of fountains of n coins and height k.    nonn,tabf       0..1000 nyi     _Seiichi Manyama_
+# A288267	irrtri	0	T(n,k) = 				T(n  ,k+1) + 				T(n-k,k-1) 	with T(0,0) = 1 and T(n,k) = 0 if k<0 or k > A003056(n).  nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291895	irrtri	0	T(n,k) = 				T(n-k,k-1) + 	T(n-k,k) +	T(n-k,k+1) 	with T(0,0) = 1.     nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291895	irrtri	0	T(n,k) = 				T(n-k,k-1) + 	T(n-k,k) + 	T(n-k,k+1) 	with T(0,0) = 1.     nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291904	irrtri	0	T(n,k) = 				T(n-k,k-1) + 				T(n-k,k+1) 	with T(0,0) = 1 for 0 <= k <= A003056(n).       nonn,tabf,changed       0..481  nyi     _Seiichi Manyama_
+# A291929	irrtri	0	T(n,k) = 				T(n-k,k-1) + 2*	T(n-k,k) +	T(n-k,k+1)	with T(0,0) = 1 for 0 <= k <= A003056(n).  nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291940	irrtri	0	T(n,k) = 				T(n-k,k-1) - 2*	T(n-k,k) +	T(n-k,k+1)	with T(0,0) = 1 for 0 <= k <= A003056(n).  sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A291954	irrtri	0	T(n,k) = 				T(n-k,k-1) - 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n). sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A291955	irrtri	0	T(n,k) = 				T(n-k,k-1) - 				T(n-k,k+1) 	with T(0,0) = 1 for 0 <= k <= A003056(n).       sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A291957	irrtri	0	T(n,k) = 				T(n-k,k-1) - 	T(n-k,k) + 	T(n-k,k+1) 	with T(0,0) = 1 for 0 <= k <= A003056(n).    sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A291960	irrtri	0	T(n,k) = 				T(n-k,k-1) + k*	T(n-k,k)				with T(0,0) = 1 for 0 <= k <= A003056(n).     nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291968	irrtri	0	T(n,k) = (k+1) * 		T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n). nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291969	irrtri	0	T(n,k) = k * 			T(n-k,k-1) + k*	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).   nonn,tabf       0..481  nyi     _Seiichi Manyama_
+# A291970	irrtri	0	T(n,k) = 2 * 			T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).     nonn,tabf,look  0..481  nyi     _Seiichi Manyama_
+# A291971	irrtri	0	T(n,k) = 3 * 			T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).     nonn,tabf,look  0..481  nyi     _Seiichi Manyama_
+# A292047	irrtri	0	T(n,k) = (-1)^k*		T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).        sign,tabf,look  0..481  nyi     _Seiichi Manyama_
+# A292049	irrtri	0	T(n,k) = (-1)^(k-1)*	T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).    sign,tabf,look  0..481  nyi     _Seiichi Manyama_
+# A292129	irrtri	0	T(n,k) = (-2) * 		T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).  sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A292130	irrtri	0	T(n,k) = (-3) * 		T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).  sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A292142	irrtri	0	T(n,k) = (-4)^(k % 2) * T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).        sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A292143	irrtri	0	T(n,k) = (-4)^(1-k%2) * T(n-k,k-1) + 	T(n-k,k) 				with T(0,0) = 1 for 0 <= k <= A003056(n).    sign,tabf       0..481  nyi     _Seiichi Manyama_
+# A292781	irrtri	0	T(n,k) = 				T(n-k,k-1)  with T(0,0) = 1 and T(n,0) = -1/n * Sum_{k=1..A003056(n)} (-1)^k * (2*k+1) * (n+1-A060544(k+1)) * T(n,k).    sign,tabf       0.
+
+%N A289800 p-INVERT of the central binomial coefficients (A000984), where p(S) = 1 - S - S^2.            
+%N A289810 p-INVERT of A081696, where p(S) = 1 - S - S^2.                                                
+%N A289847 p-INVERT of the primes (A000040), where p(S) = 1 - S - S^2.                                   
+%N A289924 p-INVERT of (n!), n >= 1 (A000142, shifted), where p(S) = 1 - S - S^2.                        
+%N A289925 p-INVERT of the lower Wythoff sequence (A000201), where p(S) = 1 - S - S^2.                   
+%N A289926 p-INVERT of the upper Wythoff sequence (A001950), where p(S) = 1 - S - S^2.                   
+%N A289928 p-INVERT of (1,2,3,5,7,11,13,...); i.e., 1 and the primes (A008578), where p(S) = 1 - S - S^2.
+%N A289973 p-INVERT of the lower Wythoff sequence (A000201), where p(S) = 1 - S.                         
+%N A289974 p-INVERT of the upper Wythoff sequence (A001950), where p(S) = 1 - S.                         
+
+A112934	parmof2	0	A112934	2	<- manual
+A112936	parmof2	0	A112934	3
+A112938	parmof2	0	A112934	4
+A112940	parmof2	0	A112934	5
+A112942	parmof2	0	A112934	6
+A112935	parmof3	0	A112935	new A112934()	2	<- manual
+A112937	parmof3	0	A112935	new A112936()	3
+A112939	parmof3	0	A112935	new A112938()	4
+A112941	parmof3	0	A112935	new A112940()	5
+A112943	parmof3	0	A112935	new A112942()	6
+
+A051295	parmof2	0	A051295	1	Row 3 of table A113143; equal to INVERT of triple (or 3-fold) factorials shifted one place right.       nonn    0..19   nyi     _P
+A113144	parmof2	0	A051295	3	Row 3 of table A113143; equal to INVERT of triple (or 3-fold) factorials shifted one place right.       nonn    0..19   nyi     _P
+A113145	parmof2	0	A051295	4	Row 4 of table A113143; equal to INVERT of quartic (or 4-fold) factorials shifted one place right.      nonn    0..18   nyi     _P
+A113146	parmof2	0	A051295	5	Row 5 of table A113143; equal to INVERT of quintic (or 5-fold) factorials shifted one place right.      nonn    0..17   nyi     _P
+A113147	parmof2	0	A051295	6	Row 6 of table A113143; equal to INVERT of 6-fold factorials shifted one place right.   nonn    0..17   nyi     _Philippe Del√©ham
+A113148	parmof2	0	A051295	7	Row 7 of table A113143; equal to INVERT of 7-fold factorials shifted one place right.   nonn    0..16   nyi     _Philippe Del√©ham
+A113149	parmof2	0	A051295	8	Row 8 of table A113143; equal to INVERT of 8-fold factorials shifted one place right.   nonn    0..16   nyi     _Philippe Del√©ham
+
+%N #?A141309 INVERTi transform of #?A141308.
+%N #?A141315 INVERTi transform of #?A141314.
+%F #?A215252 INVERTi transform of #?A216040.
+%F #?A215257 INVERTi transform of #?A182216.
+%Y #?A273396 INVERTi transform of #?A255906.
+# error(@4) A364439	inverti	0	new A005789()	,1	INVERTi transform of A005789.
+
+A108951	mult	0	ZUtils.primorial(p.longValueExact()).pow(e)	with a(p) = p# for prime p, where x# is the primorial A034386(x).
+A235027	mult	0	p.equals(Z.TWO) ? p.pow(e) : ZUtils.reverse(p, 2).pow(e)	with a(0)=0, a(1)=1, a(p) = A056539(p) for primes p (which maps 2 to 2, and reverses the binary representation of odd primes)
+A247503	mult	0	p.pow(Puma.primePi(p) % 2).pow(e)	with a(prime(n)) = prime(n)^(n mod 2).    
+A248101	mult	0	p.pow((Puma.primePi(p) + 1) % 2).pow(e)	with a(prime(n)) = prime(n)^((n+1) mod 2).
+A295665	mult	0	{ Z m = Puma.primePiZ(p); return m.isProbablePrime() ? Puma.primeZ(Puma.primePi(m)).pow(e) : Z.ONE; }	with a(prime(m)) = prime(k) when m = prime(k), and a(prime(m)) = 1 when m is not a prime.
+A297002	mult	0	Puma.primeZ(Puma.primePi(p) * 2).pow(e)	 with a(prime(k)) = prime(2 * k) (where prime(k) denotes the k-th prime).          
+A299406	mult	0	(e % 3 >= 2) ? Z.ZERO : Z.NEG_ONE.pow(e % 3 + e % 6)	 with a(p^e)=(-1)^(e mod 3 + e mod 6) if e mod 3 < 2, otherwise 0, p prime and e >= 0.
+A319984	mult	0	Puma.primeZ(p.mod( 4)).pow(e)	with a(p^e) = prime(p mod 4)^e.
+A319985	mult	0	Puma.primeZ(p.mod(12)).pow(e)	with a(p^e) = prime(p mod 12)^e.
+A319986	mult	0	Puma.primeZ(p.mod( 6)).pow(e)	with a(p^e) = prime(p mod 6)^e.
+A319987	mult	0	Puma.primeZ(p.mod( 8)).pow(e)	with a(p^e) = prime(p mod 8)^e.
+A321898	mult	0	MemoryFactorial.SINGLETON.factorial(Math.toIntExact(Puma.primePi(p))).pow(e)	with a(p) = primepi(p)!
+A324900	mult	0	Fibonacci.lucas(2 * (Puma.primePi(p) + 1)).pow(e)	with a(prime(k)) = Lucas(2*(k+1))
+A325709	mult	0	Puma.primeZ(MemoryFactorial.SINGLETON.factorial(Math.toIntExact(Puma.primePi(p)))).pow(e)	with a(prime(n)) = prime(n!).
+A339905	mult	0	Puma.primeZ(Puma.primePi(p) + 1).subtract(1).pow(e)	with a(prime(k)) = prime(k+1) - 1.
+
+A355741	mult	0	Z.valueOf(Jaguar.factor(Puma.primePi(p)).omega()).pow(e)	with a(prime(k)) = A001221(k). # omega
+A355742	mult	0	Z.valueOf(Jaguar.factor(Puma.primePi(p)).bigOmega()).pow(e)	with a(prime(k)) = A001222(k). # bigOmega
+A357975	mult	0	Puma.primeZ(Puma.primePi(p) / 2).pow(e)	with a(prime(2k)) = prime(k) and a(prime(2k+1)) = prime(k). Cf. A297002.
+A335915	mult	0	(p.equals(Z.TWO) ? Z.ONE : p.square().subtract(1).makeOdd()).pow(e)	with a(2) = 1, and a(p) = A000265(p-1)*A000265(p+1) = A000265(p^2 - 1), for odd primes p.
+A336467	mult	0	(p.equals(Z.TWO) ? Z.ONE : p.add(1).makeOdd()).pow(e)		for odd primes p, with A000265(k) giving the odd part of k.
+A339903	mult	0	Puma.primeZ(Puma.primePi(p) + 1).subtract(1).makeOdd().pow(e)	with a(p) = A000265(q-1), where q = A151800(p), the next prime > p.
