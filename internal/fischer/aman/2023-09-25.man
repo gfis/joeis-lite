@@ -75,7 +75,7 @@
 # A345351	filter	0	Triangular numbers such that the sum of cubes of their digits is prime.
                          
 A075677	lambda	0	Z.valueOf(3*n - 1).makeOdd()			A000265(3*n-1). - _Reinhard Zumkeller_, Jan 08 2014
-A213671	lambda	0	Z.valueOf(n*(n - 1) + 29).makeOdd()			A000265(n^2-n+2). - _R. J. Mathar_, Mar 10 2013
+A213671	lambda	0	Z.valueOf(n*(n - 1) + 2).makeOdd()			A000265(n^2-n+2). - _R. J. Mathar_, Mar 10 2013
 A163394	simtraf	0	new A163176()	v -> v.makeOdd()		A000265(A163176(n)). - _Michel Marcus_, Jun 17 2019
 A212183	simtraf	0	new A002183()	v -> v.makeOdd()		A000265(A002183(n)) = A212181(A002182(n)).
 A212641	simtraf	0	new A212640()	v -> v.makeOdd()		A000265(A212640(n)) = A212181(A181800(n)).
@@ -98,7 +98,7 @@ A302787	simtraf	0	new A052331()	v -> v.makeOdd()		0; for n > 1, a(n) = A000265(A
 A302787	simtraf	0	new A052331()	v -> v.makeOdd()		0; for n > 1, a(n) = A000265(A052331(n)).
        	simtraf	 				
 A080237	simtraf	0	new A014486()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A014486(n)) (i.e., number of trailing zeros in A063171(n)).
-A086333	simtraf	0	new A086332()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A086332(n)). - _David Wasserman_, Mar 21 2005
+# A086333	simtraf	0	new A086332()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A086332(n)). - _David Wasserman_, Mar 21 2005
 A087230	simtraf	0	new A016957()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A016957(n)). - _Michel Marcus_, Jan 27 2022
 A099312	simtraf	0	new A007416()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A007416(n)).
 A112760	simtraf	0	new A051037()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A051037(n));
@@ -129,16 +129,11 @@ A337923	simtraf	0	new A000045()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A00
 A351964	simtraf	0	new A109812()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A109812(n)).
 A153036	simtraf	0	new A145342()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A145342(n+1)). (End)
 A248174	simtraf	0	new A000073()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A000073(n+1)). - _Michel Marcus_, Oct 03 2014
-A268726	simtraf	0	new A006068()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A006068(n) + 1).
+# A268726	simtraf	0	new A006068()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A006068(n) + 1).
 A324906	simtraf	0	new A318466()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A318466(n) + 1).
 A336842	simtraf	0	new A003961()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A003961(n) + 1).
-A336842	simtraf	0	new A003961()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A003961(n) + 1).
 A352080	simtraf	0	new A052409()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))			A007814(A052409(n)) + 1. - _Amiram Eldar_, Mar 03 2022
-# A158572	simtraf	0				A007814((2n-1)!! - 1).
-# A275019	simtraf	0				A007814(n) + A007814(n+1) + A007814(n+2) - 1.
-# A085058	simtraf	0				A007814(3^(n+1) - (-1)^(n+1)) = A007814(A105723(n+1)). - _Reinhard Zumkeller_, Apr 18 2005
-# A085058	simtraf	0				A007814(5^(n+1) - 1). - _Ivan Neretin_, Jan 15 2016
-       	simtraf	 				
+
 A068741	simtraf	0	new A000312()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A000312(n)). - _Michel Marcus_, Jan 12 2015
 A102068	simtraf	0	new A006530()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A006530(n)) = A000040(A061395(n))!.
 A130726	simtraf	0	new A007917()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A007917(n)). - _R. J. Mathar_, Aug 22 2007
@@ -149,12 +144,57 @@ A214080	simtraf	0	new A000196()	v -> MemoryFactorial.SINGLETON.factorial(v.intVa
 A269223	simtraf	0	new A053735()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A053735(n)).
 A269224	simtraf	0	new A053737()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A053737(n)).
 A317888	simtraf	0	new A000051()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A000051(n)). - _Michel Marcus_, Aug 11 2018
-# A345940	simtraf	0	new A006530()	(k,v) -> MemoryFactorial.SINGLETON.factorial(v.intValueExact()).mod(Z(k))		A000142(A006530(n)) modulo n.
+A345940	simtraf	0	new A006530()	(n,v) -> MemoryFactorial.SINGLETON.factorial(v.intValueExact()).modZ(n)	A000142(A006530(n)) modulo n.
 A362187	simtraf	0	new A002378()	v -> MemoryFactorial.SINGLETON.factorial(v.intValueExact())		A000142(A002378(n-1)) for n > 0.
                  				
 A093659	lambda	0	MemoryFactorial.SINGLETON.factorial(Z.valueOf(n).bitCount())			A000120(n)! = A000142(A000120(n)).
 A295894	simtraf	0	new A005940()	v -> Z.valueOf(v.bitCount())			A000120(A005940(1+n)).
 A362951	simtraf	0	new A169814()	v -> Z.valueOf(v.bitCount())			A000120(A169814(n)).
+
+
+A158572	lambda	0	Z.valueOf(ZUtils.valuation(MemoryFactorial.SINGLETON.doubleFactorial(2*n - 1).subtract(1), Z.TWO))		A007814((2n-1)!! - 1).
+A275019	lambda	0	Z.valueOf(Integer.numberOfTrailingZeros(n) + Integer.numberOfTrailingZeros(n + 1) + Integer.numberOfTrailingZeros(n + 2) - 1)		A007814(n) + A007814(n+1) + A007814(n+2) - 1.
+A085058	lambda	0	Z.valueOf(ZUtils.valuation(Z.THREE.pow(n + 1).subtract(Z.NEG_ONE.pow(n + 1)), Z.TWO))		A007814(3^(n+1) - (-1)^(n+1)) = A007814(A105723(n+1)). - _Reinhard Zumkeller_, Apr 18 2005
+A085058	lambda	0	Z.valueOf(ZUtils.valuation(Z.FIVE.pow(n + 1).subtract(1), Z.TWO))		A007814(5^(n+1) - 1). - _Ivan Neretin_, Jan 15 2016
+
+# A067083	lambda	0	Z.valueOf(n).pow(Z.valueOf(n).pow(n-1)).toString().length())	Number of digits in n^{n^(n-1)}.
+# A067084	lambda	0	Z.valueOf(Z.valueOf(n).pow(MemoryFactorial.SINGLETON.factorial(n-1)).toString().length())	Number of digits in n^{(n-1)!}.
+A111393	lambda	0	Z.valueOf(Z.valueOf(n).pow(3).toString().length())	Number of digits in n^3.
+A125059	lambda	0	Z.valueOf(MemoryFactorial.SINGLETON.doubleFactorial(n).toString().length())	Number of digits in n!!.
+# A324220	lambda	0	(n == 0) ? Z.ZERO : Z.valueOf(Z.valueOf(n).pow(Z.valueOf(n).pow(Z.valueOf(n).pow(n))).toString().length())	Number of digits in n^(n^(n^n)).
+A194129	lambda	0	Z.valueOf(Z.valueOf(n).pow(100).toString().length())	Number of digits in n^100.
+A178914	lambda	0	Z.TEN.pow(n.toString().length()).subtract(n)	a(n) = 10^k - n where k is the number of digits in n.
+A316347	lambda	0	Z.valueOf(n*n).mod(Z.TEN.pow(n.toString().length()))	a(n) = n^2 mod(10^m), where m is the number of digits in n (written in base 10).
+
+A077503	lambda	0	{ final int d = n - n.toString().length(); final Z x = Z.TEN.pow(d).multiply(n); Z y = x.sqrt(); return (x.auxiliary() == 0 ? y.add(1) : y).square(); }	a(n) = ceiling(sqrt(n*10^d))^2 where d = n - digit(n), digit(n) = number of digits in n. - _Ray Chandler_, Aug 11 2003
+A078268	lambda	0	new Q(Z.valueOf(n), Z.TEN.pow(n.toString().length())).num()	Numerator of n/10^k, where k is the number of digits in n. - _Dean Hickerson_, Mar 21 2003
+# A077505	simtraf	0	new A077504()	(n,v) -> v.subtract(Z.valueOf(n).multiply(Z.TEN.pow(n - n.toString().length())))	 a(n) = A077504(n) - n*10^d where d = n - number of digits in n. a(n) = n/A068822(n)
+A068822	lambda	0	Z.valueOf(n).gcd(Z.TEN.pow(n.toString().length()))	
+
+A096525	filter	0	new LambdaSequence(0, n -> new Z(n.toString() + "0" + String.valueOf(n + 1)))	PRIME		Primes of form n.0.n+1, where '.' represents concatenation. Or, primes of form 10^(k+1)*n + n + 1, where k is the number of digits in n.
+A068399	simtraf	0	new A000367()	v -> Z.valueOf(v.toString().replaceAll("\\-","").length())	Number of digits in numerator of B(2n) the Bernoulli numbers.
+A092904	simtraf	0	new A002445()	v -> Z.valueOf(v.toString().length())	Number of digits in numerator of B(2n) the Bernoulli numbers.
+
+A109070	simtraf	0	new A108225()	v -> Z.valueOf(v.toString().length())	Number of digits in numbers appearing in A108225.
+A161514	simtraf	0	new A000396()	v -> Z.valueOf(v.toString(8).length())	Number of digits in n-th even perfect number written in base 8.
+A227683	simtraf	0	new A001348()	v -> Z.valueOf(v.toString().length())	Number of digits in n-th Mersenne number.
+A272677	simtraf	0	new A018796()	(n,v) -> Z.valueOf(v.toString().length()).subtract(n.toString().length())	Number of digits in A018796 - number of digits in n.
+A338379	lambda	0	(n == 0 ? Z.ZERO : Z.valueOf(1 + (n+8) % 9)).divide(n.toString().length())	Floor of (digital root of n) divided by (number of digits in n).
+
+%N A073054 Number of applications of DENEAT operator x -> A073053(x) needed to transform n to 123.
+%N A108065 Numbers n such that DENEAT(n!) is prime, where DENEAT(n) = concatenate number of even digits in n, number of odd digits and total number of digits.
+%N A171797 A modified Sisyphus function: a(n) = concatenation of (number of digits in n) (number of even digits) (number of odd digits).
+%N A308002 a(n) = smallest nonnegative number that requires n applications of the modified Sisyphus function x -> A171797(x) to reach 312.
+%N A308003 A modified Sisyphus function: a(n) = concatenation of (number of even digits in n) (number of digits in n) (number of odd digits in n).
+%N A308004 a(n) = smallest nonnegative number that requires n applications of the Sisyphus function x -> A073053(x) to reach 123.
+%N A308005 A modified Sisyphus function: a(n) = concatenation of (number of odd digits in n) (number of digits in n) (number of even digits in n).
+%N A308104 Distinct values taken by the DENEAT operator (A073053) in increasing order.
+%N A308125 Numbers k that are a multiple of the DENEAT operator applied to k (A073053).
+%C A308125 The DENEAT operator is also known as the Sisyphus function.
+%C A308125 On the other hand, the sequence of numbers k such that DENEAT(k) is a multiple of k, is the finite sequence {1, 11, 14, 16, 22, 56, 123}.
+%N A350709 Modified Sisyphus function of order 3: a(n) is the concatenation of (number of digits of n)(number digits of n congruent to 0 modulo 3)(number of digits of n congruent to 1 modulo 3)(number of digits of n congruent to 2 modulo 3).
+%N A352751 Modified Sisyphus function of order 4: a(n) is the concatenation of (number of digits of n)(number digits of n congruent to 0 modulo 4)(number of digits of n congruent to 1 modulo 4)(number of digits of n congruent to 2 modulo 4)(number of digits of n congruent to 3 modulo 4).
+%N A352752 a(n) is the smallest nonnegative number that requires n applications of the modified Sisyphus function of order 3, x -> A350709(x) to reach any number in the cycle {4031, 4112, 4220}.
 
 # A159958 lodumo  0       Lodumo_3 of A053838 .
 # A159959 lodumo  0       Lodumo_2 of A004601 (expansion of Pi in base 2).
@@ -179,7 +219,6 @@ A362951	simtraf	0	new A169814()	v -> Z.valueOf(v.bitCount())			A000120(A169814(n
 # A160191 lodumo  0       Lodumo_8 of Lucas numbers.
 # A160191 lodumo  0       Lodumo_8 transform of A000032 (for definition see Transforms).
 # A203553 lodumo  0       Lodumo_2 of A118175, which is n 1's followed by n 0's.
-# A203553 lodumo  0       a(n)= Lodumo_2(A118175(n)).
-# A203554 lodumo  0       Lodumo_2 of A079813, which is n 0's followed by n 1's..
+# A203554 lodumo  0       Lodumo_2 of A079813, which is n 0's followed by n 1s..
+# A160052 lodumo  0       Triangle: Lodumo_2 applied to each row of triangle in A039599 .
 # A160019 lodumo  0       Triangle: Lodumo_2 applied to each row of Pascal's triangle .
-# A160052 lodumo  0       Triangle : Lodumo_2 applied to each row of triangle in A039599 .
