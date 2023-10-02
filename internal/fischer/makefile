@@ -4446,6 +4446,11 @@ multm:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+multman:
+	grep -E "^A[0-9]" aman/multman.man | grep -P "\t(mult|lambda)\t" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 multkey:
 	$(DBAT) "SELECT COUNT(*) FROM asinfo i WHERE i.keyword LIKE '%mult%';"
 multnyi:
