@@ -231,7 +231,7 @@ pack3: # check for existence
 	wc -l    $@.tmp
 #----
 packfail:
-	cd reflect ; grep FAIL  ../$(CC).fail.log | perl queue.pl -s joeis-lite -p > ../$(CC).fail.pack
+	cd reflect ; grep -P "FAIL|FATAL" ../$(CC).fail.log | perl queue.pl -s joeis-lite -p > ../$(CC).fail.pack
 	uedit64 $(CC).fail.pack
 packfatal:
 	cd reflect ; grep FATAL ../$(CC).fail.log | perl queue.pl -s joeis-lite -p \
@@ -324,7 +324,7 @@ mangen: # parameter: CC; copy all in CC.gen to fischer/manual
 	ls -al manual
 sumall: # copy all generated in joeis-lite/src to ./manual
 	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
-sumpass: # copy all generated in joeis-lite/src to ./manual
+sumpass: # copy all with passed test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log \
 	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
 	| xargs -innn cp -pv nnn manual 
@@ -558,7 +558,9 @@ test2:
 	make evaluate
 	# end of test
 testall: summon test2 # test all existing (generated) sequences in the subdirectories
-summon:
+napp: # CC=; remember the FAILed A-numbers and avoid them in future robot runs
+	grep -P "\t(FAIL)\t" $(CC).fail.log | tee $(ROBOT)/notapp/$(CC).napp
+summon: # list all A-numbers from ../../src to ./manual
 	# ---- $@ MANY=$(MANY)
 	rm -f batch.log
 	find ../../src/irvine/oeis/a* -iname "*.java" -printf "%f\n" | cut -b1-7 \
@@ -8101,8 +8103,6 @@ seq4: # parameter: $(LIST) with aseqno, offset1, parm1, parm2, parm3, parm4, nam
 	$(DBAT) -f sql/seq4.create.sql
 	cat $(LIST) | grep -E "^A" | sort | uniq -w7 > seq4.tmp
 	$(DBAT) -m csv -r seq4 < seq4.tmp
-	# $(DBAT) -4 seq4
-	# $(DBAT) -n seq4
 delseq: seq # parameters: $(TAB) $(LIST)
 	$(DBAT) -v "DELETE FROM $(TAB) WHERE aseqno IN (SELECT aseqno FROM seq)"
 #----
