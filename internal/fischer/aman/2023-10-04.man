@@ -1,0 +1,27 @@
+A080147	filtpos	0	1	new A000040()	k -> k.mod(4) == 1 && k.isProbablePrime()	Positions of primes of the form 4*k+1 (A002144) among all primes (A000040).
+A080148	filtpos	0	1	new A000040()	k -> k.mod(4) == 3 && k.isProbablePrime()	Positions of primes of the form 4*k+3 (A002145) among all primes (A000040).# A138968	filtpos	0	1	new	PRIME	Positions of the primes congruent to 1 mod 3 when all primes except 3 are listed in order.      
+A094058	filtpos	0	1	new DecimalExpansionSequence(1, CR.E.divide(Z.FOUR), 2)	ONE	Positions of ones in binary expansion of e/4.
+A112045	filtpos	0	1	new A000037()	PRIME	Positions of primes (A000040) among nonsquares A000037
+A131391	filtpos	0	0	new A131389()	POSITIVE	Positions of positive integers in A131389, minus 1.
+A131392	filtpos	0	0	new A131389()	NEGATIVE	Positions of negative integers in A131389, minus 1.
+A131397	filtpos	0	0	new A131394()	NEGATIVE	Positions of negative integers in A131394, minus 1.
+A138969	filtpos	0	1	new A000040().skip(1)	k -> k.mod(3) == 2 && k.isProbablePrime()	Positions of the primes congruent to 2 mod 3 when all primes except 3 are listed in order.      
+A138970	filtpos	0	1	new A000040().skip(1)	k -> k.mod(4) == 1 && k.isProbablePrime()	Positions of the primes congruent to 1 mod 4 when all primes except 2 are listed in order.      
+A138971	filtpos	0	1	new A000040().skip(1)	k -> k.mod(4) == 3 && k.isProbablePrime()	Positions of the primes congruent to 3 mod 4 when all primes except 2 are listed in order.      
+A138972	filtpos	0	1	new A000040().skip(2)	k -> k.mod(6) == 1 && k.isProbablePrime()	Positions of the primes congruent to 1 mod 6 when all primes except 2 and 3 are listed in order.
+A140570	filtpos	0	1	new A064413()	SEMIPRIME	Positions of semiprimes in the EKG sequence.
+A169868	filtpos	0	1	new DecimalExpansionSequence(1, CR.PHI, 2).skip(1)	ZERO	Positions of zeros in binary expansion of the reciprocal of the golden ratio (0.618...).
+A228776	filtpos	0	1	new A050376()	EVEN	Positions of even terms of A050376.
+A239976	filtpos	0	1	new DecimalExpansionSequence(1, CR.TWO.log(), 2)	ONE	Positions of ones in binary representation of log(2).
+A256108	filtpos	0	3	new A004601()	NONZERO	Positions of nonzero digits in binary expansion of Pi.
+A279984	filtpos	0	1	new A007916()	PRIME	Positions of the prime numbers in the sequence of numbers that are not perfect powers (A007916).
+A287107	filtpos	0	1	new A287104()	k -> k.equals(Z.TWO)	Positions of 2 in A287104.
+A351575	filtpos	0	1	new A351568()	PRIME	Positions of primes in A351568.
+A354482	filtpos	0	1	new A004601()	ZERO	Positions of 0's in binary expansion of Pi.
+
+
+# A143250 Reverse binary expansion of the Fibonacci numbers.
+# A143257 Reverse binary expansion of the factorial numbers.
+# A098957 Decimal value of the reverse binary expansion of the prime numbers.
+# 
+# A290079	nyi	Characteristic function for A249721

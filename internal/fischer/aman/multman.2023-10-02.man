@@ -1,0 +1,266 @@
+A069733	mult	1	is2(p) ? Z.TWO : Z.valueOf(e + 1)	a(2^e)=2 and a(p^e)=e+1 for e>0 and an odd prime p.
+A069934	mul	1	a(p^e) = Product_{k=2..e+1} Phi_k(p), where Phi_k(x) is k-th cyclotomic polynomial.
+A070920	mul	1	Z.valueOf(e + 1).pow(4).subtract()	a(p^e) = (e+1)^4 - e^4.
+A070921	mul	1	Z.valueOf(e + 1).pow(4).subtract()	a(p^e) = (e+1)^5 - e^5.
+A078430	mult	1	((e & 1) == 0) ? p.pow(3*e/2).add(p.pow(3*e/2 - 1)).subtract(p.pow(e - 1)) : p.pow((3*e - 1)/2).multiply(2).subtract(p.pow(e - 1))	a(p^e) = p^(3*e/2) + p^(3*e/2-1) - p^(e-1) if e is even, and 2*p^((3*e-1)/2) - p^(e-1) if e is odd.
+A078461	mult	1	is2(p) ? Z.TWO : Z.valueOf((e == 1) ? 1 : 0)	a(2^e) = 2, and for an odd prime p a(p^e) = 1 if e = 1 and 0 otherwise.
+A078708	mult	1	is3(p) ? Z.THREE.pow(e) : sigmaP(p, e)	a(3^e) = 3^e and a(p^e) = (p^(e+1)-1)/(p-1) if p != 3.
+A079707	mult	1	(is2(p) && e == 1) ? Z.TWO : Puma.prevPrimeZ(p).pow(e)	2->2 and prime(k)->prime(k-1), k>1.
+A082388	mul	1	a(2^e) = A006012(e), a(p^e) = 1 for odd prime p.
+A087692	mul	1	is3(p) ? :	a(3) = 2, a(3^k) = 2*3^(k-2) a(3) = 2, a(3^k) = 2*3^(k-2) otherwise; a(p^k) = (p-1)*p^(k-1)/3 if prime p == 1 mod 6; a(p^k) = (p-1)*p^(k-1) for all other primes p.
+A087786	mul	1	a(p^e) = p^(2*floor(2*e/3)) + Sum_{i=0..floor((e-1)/3)} k*(p-1)*p^(e+i-1) where k = 3 if (p = 3 and 3*i+1 = e) or (p mod 3 = 1) otherwise k = 1.
+A088842	mult	1	is7(p) ? sigmaP(Z.SEVEN, e) : Z.ONE	a(7^e) = (7^(e+1)-1)/6, and a(p^e) = 1 for p != 7.
+A089242	mulrec	1	is2(p) ? Z.ONE : (e == 2	a(2^e) = 1 + a(e), a(p^e) = 1 for odd prime p.
+A091306	mult	1	(e == 1) ? p.square().add(1) : Z.ONE	a(p)=p^2+1 and a(p^e)=1 for e>1.
+A091379	mult	1	isMod(4, p, 3) ? Z.ZERO : Z.TWO	a(p^e) = 0 if p == 3 (mod 4) and 2 otherwise.
+A095683	mult	1	Puma.primePiZ(e)	a(p^e) = A000720(e).
+A095691	mult	1	Puma.primePiZ(e).add(1)	a(p^e) = A000720(e)+1.
+A097246	mult	1	Puma.nextPrimeZ(p).pow(e/2).multiply(p.pow(e & 1))	p^e -> NextPrime(p)^floor(e/2) * p^(e mod 2), where p prime and NextPrime(p)=A000040(A049084(p)+1).
+A102574	mult	1	(is2(p) || isMod(4, p, 1)) ? sigmaP(p, 2*e) : sigmaP2(p, 2*e + 1)	a(p^e) = sigma(p^(2e)) = (p^(2e+1) - 1)/(p - 1) if p = 2 or p == 1 (mod 4); sigma_2(p^e) = (p^(2e+2) - 1)/(p^2 - 1) if p == 3 (mod 4).
+A105931	mult	1	is2(p) ? (((e & 1) == 1) ? Z.TWO : Z.NEG_ONE) : Z.ONE	a(2^e) = 2 if e is odd and -1 if e is even, and a(p^e) = 1 for p > 2.
+A108548	mul	1	is2(p) ? Z.TWO.pow(e) : 	a(2^e) = 2^e, else if p is the m-th prime then a(p^e) = q^e where q is the m/2-th prime of the form 4*k + 3 (A002145) for even m and a(p^e) = r^e where r is the (m-1)/2-th prime of the form 4*k + 1 (A002144) for odd m.
+A122261	mul	1	(e == 1) ? 	a(p) = A065333(p-1), for p prime.
+A124859	mult	1	ZUtils.primorialCount(e)	p^e -> primorial(e), p prime and e > 0.
+A126246	mult	1	(is2(p) && e == 1) ? Z.TWO : p.multiply(p.subtract(1).pow(e - 1))	a(p^e) = phi(p^e) = p*(p-1)^(e-1), except when p=2, then a(2)=2.	, because F(1)=F(2)=1 and a(2^e) = 3*(2^(e-2)), (e > 1, all smaller Fibonacci numbers are coprime, except ones that are multiples of 3, i.e., every 4th one).
+A143275	mult	1	(e == 1) ? p.multiply2().subtract(3) : p.subtract(1).multiply(e).add(p).add(2).multiply(p.subtract(1).square()).multiply((e >= 3) ? p.pow(e - 3) : Z.ONE).divide((e == 2) ? p : Z.ONE)	
+a(p) = 2*p - 3 and a(p^e) = (e*(p-1) + p + 2) * (p-1)^2 * p^(e-3) for e > 1.
+A152958	mul	1	a(p^e) = p^e * (1 - 1/p^ceiling((e+1)/2)).
+A160102	mul	1	a(A050376(m)) = Prime(m) = A000040(m). If k = 2^{i_1} + ... + 2^{i_j} is the binary representation of k, a(p^k) = a(p^2^{i_1}) * ... * a(p^2^{i_j}). [edited by _Peter Munn_, Jan 07 2020]
+A161946	mult	1	p.pow(e).add(1).makeOdd()	a(p^e) = oddpart(p^e+1), where oddpart(n) = A000265(n) is the largest odd divisor of n.
+A162419	mult	1	is2(p) ? Z.TWO.pow(e + 1).subtract(1).multiply(Z.TWO.pow(e + 1).subtract(3)) : sigmaP(p, e).square()	a(2^e) = (2^(e+1)-1)*(2^(e+1)-3), and a(p^e) = ((p^(e+1)-1)/(p - 1))^2 for p > 2.
+A165743	mult	1	p.compareTo(Z.SEVEN) <= 0 ? p : Z.ONE 	a(p^e) = p if p <= 7, and 1 otherwise.
+A166586	mul	1	Z.valueOf(e + 1).pow(4).subtract()	a(p^e) = (p-2)^e. If n = Product p(k)^e(k) then a(n) = Product (p(k) - 2)^e(k). a(2k) = 0 for k >= 1.
+A170819	mult	1	p.pow((p.mod(4) == 1) ? Z.ONE : Z.ZERO)	a(p^e) = p^A011765(p+1), e > 0.
+A181549	mult	1	(e == 1) ? p.add(1) : p.pow(e).add(p.pow(e - 1)).subtract(p.pow(e - 2))	a(p)= p + 1, and a(p^e) = p^e + p^(e-1) - p^(e-2) if e > 1.
+A204617	mult	1	p.pow(e - 1).multiply(is2(p) ? Z.ONE : (isMod(4, p, 1) ? p.subtract(1) : p.add(1)))	a(p^e) = p^(e-1)*H(p). H(2)=1, H(p) = p-1 if p=1 (mod 4) and H(p) = p+1 if p=3 (mod 4).
+A208895	mult	1	is2(p) ? Z.EIGHT.pow(e) : p.pow(3*e).subtract(p.pow(3*e - 2))	a(p^e) = p^(3*e)*(1-1/p^2) if p > 2, and a(2^e) = 8^e.
+A215947	mult	1	is2(p) ? Z.TWO.pow(e + 2).subtract(3) : sigmaP(p, e)	a(2^e) = 2^(e+2) - 3, and a(p^e) = sigma(p^e) = (p^(e+1) - 1)/(p-1) for p > 2.
+A219009	mult	1	(e % 4 >= 2) ? Z.ZERO : (((e & 1) == 0) ? Z.ONE: Z.NEG_ONE)	a(p^e) = (-1)^e if e == {0, 1} mod 4, and 0 if e == {2, 3} mod 4.
+A224339	mult	1	is2(p) ? Z.TWO.pow(2*e + 1).subtract(3) : sigmaP(p, 2*e)	a(p^e) = 2^(2*e+1)-3 if p=2, and (p^(2*e+1)-1)/(p-1) otherwise.
+A235201	mul	1	is3(p) ? :	a(3^k) = 2^(2k), a(2^(2k)) = 3^k, a(2^(2k+1)) = 2*3^k, a(p_i) = p_{a(i)} for primes with index i > 2, and for composites > 4, a(u * v) = a(u) * a(v) for u, v > 0.
+A235489	mul	1	is3(p) ? :	a(3^(2k)) = 2^3k = 8^k, a(3^(2k+1)) = 3*2^3k, a(2^(3k)) = 3^2k = 9^k, a(2^(3k+1)) = 2*9^k, a(2^(3k+2)) = 4*9^k, a(p_i) = p_{a(i)} for primes with index i, and a(u*v) = a(u) * a(v) for composites other than 8 or 9.
+A237109	mult	1	is2(p) ? ((e == 1) ? Z.ONE : Z.TWO.pow(e)) : (is3(p) ? Z.THREE.pow(e - 1) : p.pow(e))	a(2) = 1, a(2^e) = 2^e for e > 1, a(3^e) = 3^(e-1), and a(p^e) = p^e for p >= 5.
+A248692	mult1	{ final long k = Puma.primePi(p); return Z.TWO.pow(k); }	a(prime(k)) = 2^k.
+A262401	mul	1	p -> A054055(p), p prime.
+A265390	mul	1	a(p^e) = A025529(e+1) = (1/1 + 1/2 + 1/3 + ... + 1/(e+1)) * lcm{1, 2, 3, ..., e+1}.
+A265708	mul	1	a(p^e) = (1/1 + ..., + 1/sigma(p^(e-1)) + 1/sigma(p^(e))) * lcm{1, ..., sigma(p^(e-1)), sigma(p^(e))}.
+A270418	mul	1	a(p^e) = p^A065620(e) for odious e, a(p^e)=1 for evil e, or equally, a(p^e) = p^(A010060(e)*A065620(e)).
+A270419	mul	1	a(p^e) = p^(-A065620(e)) for evil e, a(p^e)=1 for odious e, or equally, a(p^e) = p^(A010059(e) * -A065620(e)).
+A270436	mul	1	a(p^e) = p^A065621(e).
+A277847	mult	1	Jaguar.factor(p.pow(e)).phi().makeOdd().add(1)	a(p^e) = oddpart(phi(p^e))+1, where oddpart = A000265, phi = A000010.
+# A277847	mult	1	is2(p) ? Z.TWO : p.subtract(1).makeOdd().multiply(p.pow(e - 1)).add(1)	a(p^e) = 2 if p = 2; oddpart(p-1)*p^(e-1) + 1 if p > 2.
+A278908	mult	1	Z.TWO.pow(Jaguar.factor(e).omega())	a(p^e) = 2^omega(e), where omega = A001221.
+A279510	mul	1	a(p(i)^j) = p(i+1)^a(j) for i-th prime p(i) and j>0.
+A284413	mult	1	is2(p) ? Z.ZERO : (is3(p) ? Z.valueOf(e + 1) : Z.ONE)	a(2^e) = 0, a(3^e) = e+1, and a(p^e) = 1 if p >= 5.
+A287620	mulrec	1	(e == 1) ? p : (Z.valueOf(e).isPrime() ? Z.valueOf(e) : a(e))	a(p) = p for any prime p, a(p^k) = a(k) for any prime p and k > 1.
+A290106	mult	1	{ final long k = Puma.primePi(p); return Z.valueOf(k).pow(e - 1); }	a(prime(k)^e) = k^(e-1).
+A290641	mult	1	Puma.primeZ(p.subtract(1)).pow(e)	a(p^e) = prime(p-1)^e.
+A293303	mul	1	a(p^e) = Sum_{d|e} A008683(e/d)*p^d.
+A293442	mul	1	a(p^e) = A019565(e).
+A295316	mult	1	Z.valueOf(e & 1)	a(p^e) = A000035(e).
+A295878	mult	1	((e & 1) == 0) ? Z.ONE : Puma.primeZ((e + 1) / 2)	a(p^(2e)) = 1, a(p^(2e-1)) = prime(e).
+A295879	mult	1	(e == 1) ? Z.ONE : Puma.primeZ(e - 1)	a(p) = 1, a(p^e) = prime(e-1) if e > 1.
+A299200	mul	1	deref long? { final int k = Puma.primePi(p).intValueExact(); return IntegerPartition.partitions(k); }	a(prime(k)) = A000041(k).
+A300955	mul	1	a(p^k) = A064614(p)^a(k).
+A301315	mul	1	a(p^e) = prime(p) ^ a(e) (where prime(k) denotes the k-th prime number).
+A304203	mult	1	p.pow(Puma.prime(e))	a(p^e) = p^prime(e).
+A307848	mul	1	a(p^e) = A037445(e).
+A308056	mult	1	Integers.SINGLETON.sum(1, e, i -> (IntegerUtils.gcd(i, e) == 1) ? p.pow(i) : Z.ZERO)	a(p^e) = Sum_{i=1..e, gcd(i,e)=1} p^i.
+A308317	mul	1	{ final long k = Puma.primePi(p); return ; }	a(prime(k)^e) = A005117(e+1)^(2^(k-1)).
+A308993	mul	1	(e == 1) ? Z.ONE : 	a(p) = 1 and a(p^e) = p^a(e) for any e > 1 and prime number p.
+A309002	mul	1	(e == 1) ? 	a(p) = p^2 and a(p^e) = p^a(e) for any e > 1 and prime number p.
+A317797	mult	1	is2(p) ? Z.TWO.pow(2*e + 1).subtract(1) : (isMod(4, p, 1) ? sigmaP(p, e).square() : sigmaP2(p, 2*e + 1))	a(2^e) = sigma(2^(2e)) = 2^(2e+1) - 1, a(p^e) = sigma(p^e)^2 = ((p^(e+1) - 1)/(p - 1))^2 if p == 1 (mod 4) and sigma_2(p^e) = A001157(p^e) = (p^(2e+2) - 1)/(p^2 - 1) if p == 3 (mod 4).
+A317934	mult	1	Z.TWO.pow(e - Integer.bitCount(e))	a(p^n) = 2^A011371(n).
+A318316	mul	1	a(p^e) = 2^A007306(e).
+A318363	mult	1	{ final long i = Puma.primePi(p); return Puma.primeZ(e).pow(Z.TWO.pow(i - 1).intValueExact()); }	a(prime(i)^k) = prime(k)^2^(i-1).
+A318465	mul	1	a(p^e) = 2^A007895(e), where A007895(n) gives the number of terms in the Zeckendorf representation of n.
+A318469	mul	1	a(p^e) = A019565(A003714(e)).
+A319445	mul	1	is3(p) ? :	a(3^e) = 2*3^(2*e-1), a(p^e) = phi(p^e)^2 = (p-1)^2*p^(2*e-2) if p == 1 (mod 3) and J_2(p^e) = A007434(p^e) = (p^2 - 1)*p^(2*e-2) if p == 2 (mod 3).
+A319449	mul	1	is3(p) ? :	a(3^e) = sigma(3^(2e)) = (3^(2e+1) - 1)/2, a(p^e) = sigma(p^e)^2 = ((p^(e+1) - 1)/(p - 1))^2 if p == 1 (mod 3) and sigma_2(p^e) = A001157(p^e) = (p^(2e+2) - 1)/(p^2 - 1) if p == 2 (mod 3).
+A321874	mult	1	Puma.primeZ(p).pow(Puma.prime(e))	a(p^e) = prime(p)^prime(e).
+A322485	mult	1	sigmaP(p, (e + 1)/2 - 1).add(p.pow(e))	a(p^e) = sigma(p^floor((e-1)/2)) + p^e = (p^floor((e+1)/2) - 1)/(p-1) + p^e.
+A323921	mult	1	is2(p) ? Z.FOUR.pow((e + 2) / 2).subtract(1).divide(3) : Z.ONE	a(2^e) = (4^floor((e+2)/2)-1)/3, and a(p^e) = 1 for p != 2.
+A324106	mul	1	a(p^e) = A005940(p^e).
+A324108	mul	1	a(p^e) = A324054((p^e)-1).
+A324391	mul	1	a(p^e) = A070939(p)^e, where A070939(p) gives the length of the binary representation of p.
+A324892	mult	1	sigmaP(p, e).isProbablePrime() ? p.pow(e) : Z.ONE	a(p^e) = p^e if (p^(1+e) - 1)/(p-1) = 1 + p + p^2 + ... + p^e is prime, and 1 otherwise.
+A324894	mult	1	!sigmaP(p, e).isProbablePrime() ? p.pow(e) : Z.ONE	a(p^e) = p^e if (p^(1+e) - 1)/(p-1) = 1 + p + p^2 + ... + p^e is composite, and 1 otherwise.
+A325032	mul	1	{ final long k = Puma.primePi(p); return ; }	a(prime(k)) = A003963(k).
+A325035	mul	1	{ final long k = Puma.primePi(p); return ; }	a(prime(k)) = A056239(k), restricted to odd n.
+A326042	mul	1	a(p^e) = A064989((q^(e+1)-1)/(q-1)), where q = nextPrime(p).
+A326401	mul	1	is3(p) ? Z.THREE.pow(e) : ()	a(3^e) = 3^e, a(p^e) = (p^(e+1) - 1)/(p - 1) if p == 1 (mod 3), and (p^(e+1) + (-1)^e)/(p + 1) if p == 2 (mod 3).
+A327095	mult	1	is2(p) ? Z.TWO.pow(e - 1) : sigmaP(p, e)	a(2^e) = 2^(e-1), and a(p^e) = (p^(e+1)-1)/(p-1) if p > 2.
+A327625	mult	1	is3(p) ? Z.THREE.pow(e + 1).subtract(1).divide2() : p.pow(e)	a(3^e) = (3^(e+1)-1)/2, and a(p^e) = p^e for p != 3.
+A327668	mult	1	p.pow(e).add(p.pow(e).subtract(((e & 1) == 0) ? 1 : -1).divide(p.add(1)))	a(p^e) = p^e + (p^e-(-1)^e)/(p+1).
+A331107	mul	1	a(p^e) = Product_{i} (p^s(i) + 1), where s(i) are the terms in the Zeckendorf representation of e (A014417).
+A331110	mul	1	a(p^e) = Product_{i} (p^s(i) + 1), where s(i) are the terms in the dual Zeckendorf representation of e (A104326).
+A332712	mul	1	a(p^e) = A028242(e).
+A332818	mul	1	a(2) = 3, a(A002145(n)) = A002144(n) and a(A002144(n)) = A002145(1+n), for all n >= 1.
+A332819	mul	1	is2(p) ? ((e == 1) ? Z.valueOf(1) : ) : p.pow(e)	a(2) = 1, a(3) = 2, a(A002144(n)) = A002145(n), and a(A002145(1+n)) = A002144(n) for all n >= 1.
+A332845	mult	1	p.pow(e).add(-2)	a(p^e) = p^e - 2.
+A333926	mul	1	a(p^k) = 1 + Sum_{d recursive divisor of k} p^d.
+A335115	mul	1	a(2^e) = A001045(e+1) and a(p^e) = p^e for e >= 0 and prime p > 2.
+A336455	mul	1	a(p^e) = A335915(1 + p + p^2 + ... + p^e).
+A336457	mul	1	a(p^e) = A065330(1 + p + p^2 + ... + p^e).
+A336468	mul	1	a(p^e) = A336466(p-1) * A336466(p)^(e-1).
+A338224	mul	1	a(A246655(k)) = prime(k) for any k > 0 (where prime(k) denotes the k-th prime number).
+A338548	mult	1	is2(p) ? ((e == 1) ? Z.valueOf( -9) : Z.TWO.pow(3*(e - 1)).multiply( -7)) : p.pow(3).subtract(1).multiply(p.pow(3*(e - 1)))	a(2) = -9, a(2^e) = -7*2^(3*(e-1)) for e > 1, and a(p^e) = (p^3-1)*p^(3*(e-1)) for p > 2.
+A338549	mult	1	is2(p) ? ((e == 1) ? Z.valueOf(-17) : Z.TWO.pow(4*(e - 1)).multiply(-15)) : p.pow(4).subtract(1).multiply(p.pow(4*(e - 1)))	a(2) = -17, a(2^e) = -15*2^(4*(e-1)) for e > 1, and a(p^e) = (p^4-1)*p^(4*(e-1)) for p > 2.
+A338782	mult	1	p.pow(Jaguar.factor(e).squareFreeKernel())	a(p^e) = p^rad(e).	, where rad(k) is the largest squarefree number dividing k (A007947).
+A339747	mult	1	is5(p) ? sigmaP(Z.FIVE, e) : Z.ONE	a(5^e) = (5^(e+1)-1)/4, and a(p^e) = 1 for p != 5.
+A341042	mult	1	is2(p) ? Z.ONE : p.multiply(e)	a(2^e) = 1 and a(p^e) = e*p for p > 2.
+A341343	mul	1	a(p^e) = Sum_{i=0..e} trinomial(2,i) for prime p and e >= 0, where trinomial(n,k) = 0 if 2*n < k.
+A342661	mult	1	{ if (is2(p)) { return p.pow(e); } else { final Z q = Puma.prevPrimeZ(p); return p.pow(e).multiply(sigmaP(q, e)); }}	a(p^e) = (p^e) * (q^(e+1)-1)/(q-1), where q = 1 for p = 2, and for odd primes p, q = A151799(p), i.e., the previous prime.
+A344299	mult	1	Z.valueOf(is2(p) ? 1 - e/2 : 1 + e/2)	a(2^e) = 1 - floor(e/2), and a(p^e) = 1 + floor(e/2) for p > 2.
+A345699	mul	1	(e == 1) ? 	a(p) = a(p-1) and a(p^e) = a(p) + a(e) if e>1.
+A347101	mult	1	{ final long k = Puma.primePi(p); return Puma.primeZ(k + 1).subtract(p); }	a(prime(k)) = A001223(k), where A001223 gives the distance from the k-th prime to the (k+1)-th prime.
+A347123	mult	1	{ final long k = Puma.primePi(p); return Puma.primeZ(Puma.primeZ(k + 1).subtract(p).divide(2).add(1)); }	a(prime(k)) = prime(1+floor(A001223(k)/2)).
+A347379	mult	1	{ final Z pc = ZUtils.primorialCount(p.longValueExact()); return pc.pow(e).subtract(pc.pow(e - 1)); }	a(p^e) = A034386(p)^e - A034386(p)^(e-1).
+A348011	mult	1	p.pow(e - 1).multiply(p.add(1).multiply(p.pow(e)).subtract(2))	a(p^e) = p^(e-1) * ((p + 1) * p^e - 2).
+A348512	mul	1	a(p^e) = A003959(1 + p + ... + p^e).
+A348746	mul	1	is2(p) ? ((e == 1) ? Z.valueOf(1) : ) : p.pow(e)	a(2) = 3, a(3) = 5, a(A002144(n)) = A002144(1+n) and a(A002145(1+n)) = a(A002145(1+n)) for all n >= 1, where A002144 and A002145 give the primes of the form 4k+1 and 4k+3 respectively.
+A348747	mul	1	is2(p) ? ((e == 1) ? Z.valueOf(1) : ) : p.pow(e)	a(2) = 1, a(3) = 2, a(5) = 3, a(A002144(1+n)) = A002144(n) and a(A002145(1+n)) = a(A002145(1+n)) for all n >= 1, where A002144 and A002145 give the primes of the form 4k+1 and 4k+3 respectively.
+A348750	mul	1	a(p^e) = A064989(A064989((q^(e+1)-1)/(q-1))), where q = nextPrime(nextPrime(p)).
+A348930	mul	1	a(p^e) = A038502(1 + p + p^2 + ... + p^e).
+A349122	mult	1	is2(p) ? Z.valueOf(e + 1) : Puma.prevPrimeZ(p).pow(e)	a(2^e) = e + 1 and a(p^e) = prevprime(p)^e for odd primes p. (End)
+A349128	mult	1	{ if (is2(p)) { return Z.ONE; } else { final Z q = Puma.prevPrimeZ(p); return q.subtract(1).multiply(q.pow(e - 1)); }}	a(2^e) = 1, and a(p^e) = (q - 1)*q^(e-1), where q = prevprime(p).
+A350073	mul	1	a(p^e) = A064989(1 + p + p^2 + ... + p^e).
+A350388	mult	1	((e & 1) == 0) ? p.pow(e) : Z.ONE	a(p^e) = p^e if e is even and 1 otherwise.
+A350389	mult	1	((e & 1) == 1) ? p.pow(e) : Z.ONE	a(p^e) = p^e if e is odd and 1 otherwise.
+A351346	mul	1	a(p^e) = Pell(e+1).
+A351347	mul	1	a(p^e) = Jacobsthal(e+1).
+A351348	mult	1	Fibonacci.lucas(e + 1)	a(p^e) = Lucas(e+1).
+A351442	mul	1	a(p^e) = A003958(1 + p + ... + p^e).
+A351449	mul	1	(e == 1) ? Z.ONE : 	a(p) = 1 and for e > 1, a(p^e) = A064989((q^(e+1)-1)/(q-1)), where q = nextPrime(p) = A151800(p).
+A351450	mul	1	a(p^e) = A064989(q+1), where q = nextPrime(p) = A151800(p).
+A351451	mul	1	(e == 1) ? 	a(p) = A064989(q+1) and a(p^e) = 1 for e > 1, where q = nextPrime(p) = A151800(p).
+A351455	mul	1	a(p^e) = A064989((q+1)*q^(e-1)), where q = nextPrime(p) = A151800(p).
+A351456	mul	1	a(p^e) = A003958(1 + q + ... + q^e), where q = nextPrime(p) = A151800(p).
+A351475	mult	1	{ final long k = Puma.primePi(p); return Z.valueOf(k*k + e*e); }	a(prime(k)^e) = k^2 + e^2 for any k, e > 0.
+A351568	mult	1	((e & 1) == 0) ? sigmaP(p, e) : Z.ONE 	a(p^e) = (p^(e+1)-1)/(p-1) if e is even and 1 otherwise.
+A351569	mult	1	((e & 1) == 1) ? sigmaP(p, e) : Z.ONE	a(p^e) = (p^(e+1)-1)/(p-1) if e is odd and 1 otherwise.
+A351655	mul	1	a(p^e) = A000073(e+2).
+A351656	mul	1	a(p^e) = A000078(e+3).
+A353519	mult	1	Z.valueOf(((e % 4) <= 1) ? 1 : 0)	a(p^e) = 1 if e == {0, 1} mod 4, and 0 if e == {2, 3} mod 4.
+A353627	mult	1	(is2(p) || e == 1) ? Z.ONE : Z.ZERO	a(2^e) = 1, and a(p^e) = 1 if e = 1 and 0 if e > 1.
+A353752	mul	1	a(p^e) = A062401(p^e).
+A353752	mult	1	Jaguar.factor(Jaguar.factor(p.pow(e)).sigma()).phi()	a(p^e) = phi(sigma(p^e)).
+A353789	mul	1	a(p^e) = (q - 1) * q^(e-1) * p^e, where q is the least prime greater than p.
+A353789	mul	1	a(p^e) = (q - 1) * q^(e-1) * p^e, where q is the least prime greater than p.
+A353792	mul	1	a(p^e) = A003958(1 + p + ... + p^e) * A064989(1 + p + ... + p^e).
+A353793	mult	1	Puma.nextPrimeZ(p).subtract(1).multiply(p).pow(e)	a(p^e) = ((q-1)*p)^e, where q is the least prime larger than p.
+A353794	mul	1	a(p^e) = A003958(1 + q + ... + q^e) * A064989(1 + q + ... + q^e), where q is the least prime larger than p.
+A353802	mult	1	Jaguar.factor(Jaguar.factor(p.pow(e)).sigma()).sigma()	a(p^e) = sigma(sigma(p^e)).
+A353897	mult	1	p.pow(Z.TWO.pow(IntegerUtils.lg(e)).intValueExact())	a(p^e) = p^(2^floor(log_2(e))).
+A353898	mult	1	Z.valueOf(Integer.highestOneBit(e) + 2)	a(p^e) = floor(log_2(e)) + 2.
+A353900	mul	1	a(p^e) = 1 + Sum_{k=0..floor(log_2(e))} p^(2^k).
+A354091	mul	1	a(A003627(n)) = A003627(1+n), a(A007645(n)) = A007645(n).
+A354092	mul	1	a(2) = 1, a(A003627(1+n)) = A003627(n), a(A007645(n)) = A007645(n).
+A354093	mul	1	a(p^e) = (q^(e+1)-1)/(q-1) where q = A003627(1+n) if p = A003627(n), otherwise q = p.
+A354094	mul	1	a(p^e) = (q-1) * q^(e-1) where q = A003627(1+n) if p = A003627(n), otherwise q = p.
+A354351	mult	1	e > 1 ? Z.ZERO : ZUtils.primorialCount(p.longValueExact()).negate()	a(p^e) = 0 if e > 1, and -A034386(p) otherwise.
+A354355	mul	1	a(p^e) = A065333(1 + p + p^2 + ... + p^e).
+A354358	mult	1	ZUtils.primorial(e).subtract(ZUtils.primorial(e - 1))	a(p^e) = primorial(e) - primorial(e-1).
+A355264	mult	1	p.pow(e + e/2)	a(p^e) = p^(e+floor(e/2)).
+A355582	mult	1	p.compareTo(Z.FIVE) <= 0 ? p.pow(e) : Z.ONE	a(p^e) = p^e if p <= 5 and 1 otherwise.
+A355583	mult	1	p.compareTo(Z.FIVE) <= 0 ? Z.valueOf(e + 1) : Z.ONE 	if p <= 5 and 1 otherwise.
+A355584	mult	1	p.compareTo(Z.FIVE) <= 0 ? sigmaP(p, e) : Z.ONE 	a(p^e) = (p^(e+1)-1)/(p-1) if p <= 5, and 1 otherwise.
+A355823	mul	1	a(p^e) = A209229(e).
+A355825	mul	1	a(p^e) = A010060(e).
+A355936	mult	1	(((e & 1) == 0) ? Z.ONE: Z.NEG_ONE).multiply(Fibonacci.fibonacci(e))	a(p^e) = (-1)^e * Fibonacci(e).
+A356192	mult	1	((e & 1) == 1) ? p.pow(e < 3 ? 3 : e) : p.pow(e + 1)	a(p^e) = p^max(e,3) if e is odd and p^(e+1) otherwise.
+A356193	mult	1	p.pow(e < 3 ? 3 : e)	a(p^e) = p^max(e,3).
+A356194	mul	1	p^(2^ceiling(IntegerUtils.highestOneBit(e)).intValueExact())	a(p^e) = p^(2^ceiling(log_2(e))).
+A357853	mul	1	{ final long k = Puma.primePi(p); return ; }	a(prime(k)) = A000009(k+1).
+A357872	mult	1	(p.compareTo(Z.THREE) > 0 || ((e & 1) == 0)) ? p.pow(e) : (is2(p) ? Z.TWO.pow(e - 1).multiply(3) : Z.THREE.pow(e - 1).multiply2())	a(p^e) = p^e if e is even or p > 3, a(2^e) = 3 * 2^(e-1) and a(3^e) = 2 * 3^(e-1) if e is odd.
+A358216	mult	1	Z.valueOf(e).compareTo(p) < 0 ? Z.valueOf(e + 1) : p.multiply(Z.valueOf(e + 2).subtract(p))	a(p^e) = e + 1 if e < p, and p*(e - p + 2) otherwise.
+A358260	mult	1	Z.TWO.pow(Integer.bitCount(((e & 1) == 0) ? e : e - 1))	a(p^e) = 2^A000120(e) if e is even, and 2^A000120(e-1) if e is odd.
+A358346	mult	1	((e & 1) == 2) ? p.pow(e).add(1) : Z.ONE	a(p^e) = p^e + 1 if e is odd, and 1 otherwise.
+A358347	mult	1	((e & 1) == 0) ? p.pow(e).add(1) : Z.ONE	a(p^e) = p^e + 1 if e is even, and 1 otherwise.
+A358766	lambda	1	Z.valueOf(Jaguar.factor(Jaguar.factor(n).sigma()).bigOmega())	a(p^e) = (-1)^A001222(1 + p + p^2 + ... + p^e).
+A358780	mul	1	a(p^e) = A001400(e).
+A358839	mult	1	(is2(p) && e == 1) ? Z.NEG_ONE : (p.testBit(0) ? (((e & 1) == 0) ? Z.ONE: Z.NEG_ONE) : Z.ZERO)	a(p^e) = (-1)^e for odd primes p, and a(2^e) = -1 if e = 1, otherwise 0.
+A359166	lambda	1	Z.NEG_ONE.pow(Jaguar.factor(n).bigOmega() + Jaguar.factor(Jaguar.factor(n).sigma()).bigOmega())	a(p^e) = (-1)^(e + A001222(1 + p + p^2 + ... + p^e)).
+A359302	mult	1	(e == 1) ? Z.TWO : Z.THREE.subtract(p.square().add(-1).multiply(e - 2))	a(p) = 2, and a(p^e) = 3 - (e-2)*(p^2-1) for e >= 2.
+A359411	mul	1	a(p^e) = A246600(e).
+A359954	mult	1	(e == 1) ? p.multiply2().subtract(3) : p.multiply(e + 2).subtract(e).multiply(p.subtract(1)).multiply(p.pow(e - 2))	a(p) = 2*p - 3 and a(p^e) = (e*p + p - e)*(p - 1)*p^(e - 2) for e > 1.
+A360157	mult	1	is2(p) ? Z.ONE : (((e & 1) == 0 ? Z.TWO : Z.ONE))	a(2^e) = 1, and a(p^e) = 1 if e is odd and 2 if e is even.
+A360158	mult	1	Z.valueOf(is2(p) ? (e&1) : 2 - (e&1)) 	a(2^e) = 1 if e is odd and 0 if e is even, and for p > 2, a(p^e) = 1 if e is odd and 2 if e is even.
+A360159	mult	1	is2(p) ? Z.ONE : (((e & 1) == 0) ? sigmaP2(p, e + 1) : sigmaP2(p, e))	a(2^e) = 1, and a(p^e) = (p^(e+2)-1)/(p^2-1) for even e and a(p^e) = (p^(e+1)-1)/(p^2-1) for odd e.
+A360160	mult	1	is2(p) ? Z.ONE : (((e & 1) == 0) ? p.pow(e).add(1) : Z.ONE)	a(2^e) = 1, and a(p^e) = p^e + 1 if e is even and 1 if e is odd.
+A360161	mult	1	is2(p) ? (((e & 1) == 0) ? Z.ONE.subtract(Z.TWO.pow(e)) : Z.ONE) : (((e & 1) == 0) ? p.pow(e).add(1) : Z.ONE)	a(2^e) = 1 - 2^e if e is even and 1 if e is odd, and for p > 2, a(p^e) = p^e + 1 if e is even and 1 if e is odd.
+A360162	mult	1	((e & 1) == 0) ? p.pow(e/2).add(1) : Z.ONE	a(p^e) = p^(e/2) + 1 if e is even, and 1 if e is odd.
+A360163	mult	1	is2(p) ? Z.ONE : sigmaP(p, e/2)	a(2^e) = 1, and a(p^e) = (p^(floor(e/2)+1)-1)/(p-1) for p > 2.
+A360164	mult	1	is2(p) ? Z.ONE : (((e & 1) == 0) ? p.pow(e/2).add(1) : Z.ONE)	a(2^e) = 1, and a(p^e) = p^(e/2) + 1 if e is even and 1 if e is odd.
+A360165	mult	1	is2(p) ? (((e & 1) == 0) ? Z.ONE.subtract(Z.TWO.pow(e/2)) : Z.ONE) : (((e & 1) == 0) ? p.pow(e/2).add(1) : Z.ONE)	a(2^e) = 1 - 2^(e/2) if e is even and 1 otherwise, and for p > 2, a(p^e) = p^(e/2) + 1 if e is even and 1 if e is odd.
+A360325	mult	1	Puma.isPrimeIndexed(p) ? p.pow(e) : Z.ONE	a(p^e) = p^e if p is a prime-indexed prime (A006450), and 1 otherwise.
+A360326	mult	1	Puma.isPrimeIndexed(p) ? Z.valueOf(e + 1) : Z.ONE 	a(p^e) = e+1 if p is a prime-indexed prime (A006450), and 1 otherwise.
+A360327	mult	1	Puma.isPrimeIndexed(p) ? sigmaP(p, e) : Z.ONE 	a(p^e) = (p^(e+1)-1)/(p-1) if p is a prime-indexed prime (A006450), and 1 otherwise.
+A360329	mult	1	Puma.isPrimeIndexed(p) ? Z.ONE : p.pow(e)	a(p^e) = 1 if p is a prime-indexed prime (A006450), and p^e otherwise (A007821).
+A360330	mult	1	Puma.isPrimeIndexed(p) ? Z.ONE : Z.valueOf(e + 1)	a(p^e) = 1 if p is a prime-indexed prime (A006450), and e+1 otherwise (A007821).
+A360331	mult	1	Puma.isPrimeIndexed(p) ? Z.ONE : sigmaP(p, e)	a(p^e) = 1 if p is a prime-indexed prime (A006450), and (p^(e+1)-1)/(p-1) otherwise (A007821).
+A360522	mult	1	p.pow(e).add(e)	a(p^e) = p^e + e.
+A360523	mult	1	p.pow(e).add(-e)	a(p^e) = p^e - e.
+A360539	mult	1	e <= 2 ? p.pow(e) : Z.ONE	a(p^e) = p^e if e <= 2, and 1 otherwise.
+A360540	mult	1	e >= 3 ? p.pow(e) : Z.ONE	a(p^e) = p^e if e >= 3, and 1 otherwise.
+A360541	mult	1	p.pow(((e >= 3) ? e : 3) - e)	a(p^e) = p^(max(e, 3) - e), i.e., a(p) = p^2, a(p^2) = p, and a(p^e) = 1 for e >= 3.
+A360648	mul	1	a(A027697(k)) = A027699(k) and a(A027699(k)) = A027697(k) for any k > 0.
+A360710	mul	1	a(p^k) = 1 or -1 so as to minimize abs(Sum_{m = 1..p^k} a(m)); in case of a tie, a(p^k) = a(p^k-1).
+A360720	mult	1	(e == 1) ? Z.ONE : p.pow(e).add(1)	a(p) = 1 and a(p^e) = p^e + 1 for e > 1.
+A360721	mult	1	Z.TWO.pow(Integer.bitCount(e)).subtract(e & 1)	a(p^e) = 2^A000120(e) - (e mod 2).
+A360722	mul	1	a(p^e) = f(p, e) if e is even, and f(p, e) - p is e is odd, where f(p, e) = Product{k>=1, e_k=1} (p^(2^k) + 1), where e = Sum_{k} e_k * 2^k is the binary representation of e.	, i.e., e_k is bit k of e.
+A361174	mul	1	a(p^e) = Sum_{d|e, d squarefree} p^d.
+A361175	mul	1	a(p^e) = Sum_{d infinitary divisor of e} p^d.
+A361793	mul	1	Z.valueOf(e + 1).pow(4).subtract()	a(p^e) = (p^(2*(floor(e/3) + 1)) - 1)/(p^2 - 1).
+A361794	mul	1	Z.valueOf(e + 1).pow(4).subtract()	a(p^e) = (p^(3*(floor(e/2) + 1)) - 1)/(p^3 - 1).
+A361810	mult	1	Integers.SINGLETON.sumdiv(e, d-> ((d | e) == e) ? p.pow(d) : Z.ZERO)	a(p^e) = Sum_{d|e, bitor(d, e) == e} p^d.
+A362624	mult	1	p.add(1).multiply(p.pow(e - 1)).add(1)	a(p^e) = 1 + (p+1)*p^(e-1).
+A362632	mult	1	p.add(1).multiply(p.pow(2*e - 1)).add(1)	a(p^e) = 1 + (p+1)*p^(2*e-1).
+A362852	mult	1	Jaguar.factor(e).sigma0().subtract(((e & 1) == 1) ? 0 : 1)	a(p^e) = d(e) if e is odd, and d(e)-1 if e is even, where d(k) is the number of divisors of k (A000005).
+A362854	mult	1	Integers.SINGLETON.sumdiv(e, d-> p.pow(d)).subtract(((e & 1) == 1) ? Z.ZERO : p.pow(e/2))	a(p^e) = Sum_{d|e} p^d if e is odd, and (Sum_{d|e} p^d) - p^(e/2) if e is even.
+A363012	mult	1	(e == 1) ? p.multiply(p.subtract(1).multiply2()).subtract(1) : p.square().add(-1).multiply(e).add(p.square()).multiply(p.add(-1)).multiply(p.pow(2*e - 3))	a(p) = 2*p^2 - 2*p - 1 and a(p^e) = ((p^2 - 1)*e + p^2)*(p - 1)*p^(2*e - 3) for e > 1.
+A363329	mult	1	Z.TWO.pow(Integer.bitCount(e)).subtract(1)	a(p^e) = 2^A000120(e) - 1.
+A363331	mul	1	a(p^e) = (Product_{k>=0} ((p^(2^k*(b(k)+1)) - 1)/(p^(2^k) - 1)) - 1, where e = Sum_{k >= 0} b(k) * 2^k is the binary representation of e.
+A363332	mult	1	Z.valueOf(e - 1 + e%2)	a(p^e) = e - 1 + (e mod 2).
+A363334	mult	1	sigmaP(p, e).subtract(((e & 1) == 1) ? Z.ONE : p.pow(e / 2).add(1)) 	a(p^e) = (p^(e+1)-1)/(p-1)-1, if e is odd, and (p^(e+1) - 1)/(p - 1) - p^(e/2) - 1 if e is even.
+A363553	mult	1	(e > 4) ? Z.ZERO : (((e & 1) == 0) ? Z.ONE: Z.NEG_ONE)	a(p^e) = (-1)^e if e <= 4, and 0 otherwise.
+A364222	mult	1	is3(p) ? Z.THREE.pow(e).multiply(e + 1) : p.pow(e)	a(3^e) = (e+1)*3^e and a(p^e) = p*e if p != 3.
+A364223	mult	1	is5(p) ? Z.FIVE.pow(e).multiply(e + 1) : p.pow(e)	a(5^e) = (e+1)*5^e and a(p^e) = p*e if p != 5.
+A364224	mult	1	is7(p) ? Z.SEVEN.pow(e).multiply(e + 1) : p.pow(e)	a(7^e) = (e+1)*7^e and a(p^e) = p*e if p != 7.
+A364252	mul	1	a(p^e) = [p==2] + A036987(p), where [ ] is the Iverson bracket.
+A364925	mul	1	is2(p) ? ((e == 1) ? Z.valueOf(1) : ) : p.pow(e)	a(2) = 1, a(4) = 2, a(2^e) = 2*prime(e-2) for e >= 3; a(p^e) = prime(v(p-1,2)), where v(,2) is the 2-adic valuation.
+A364988	mult	1	sigmaP(p, e - 1).subtract(1)	a(p^e) = (p^e - 1)/(p-1) - 1.
+A365170	mult	1	(e == 1) ? p.add(1) : ((e == 2) ? p.multiply(p.add(1)).add(1) : p.add(1).multiply(p.pow(e - 1).add(1)))	a(p) = 1 + p, a(p^2) = 1 + p + p^2, and a(p^e) = (1 + p)*(1 + p^(e - 1)) if e >= 3.
+A365171	mult	1	Z.valueOf(IntegerUtils.max(1, (e + 3)/4 + (e + 4)/4))	a(p^e) = floor((e + 3)/4) + floor((e + 4)/4) = A004524(e+3).
+A365172	mul	1	((e & 1) == 0) ? subDiv2(p, e + 1) : Z.ONE.add(p.pow(2*((e+1)/4) + 1)).multiply(subDiv2(p, 2*(e/4)+2))	a(p^e) = (p^(e+2) - 1)/(p^2 - 1) if e is even, and (1 + p^(2*floor((e+1)/4) + 1))*(p^(2*floor(e/4)+2) - 1)/(p^2 - 1) if e is odd.
+A365173	mult	1	Z.valueOf(IntegerUtils.max(1, (e+5)/4) + (e + 6)/4)	a(p^e) = floor((e+5)/4) + floor((e+6)/4) = A004524(e+5).
+A365174	mul	1	1 + p^e + (p^(e + 1) - p)/(p^2 - 1) if e is even, and 1 + p^e + (1 + p^(2*floor(e/4)+1))*(p^(2*floor((e+1)/4)+1) - p)/(p^2 - 1) if e is odd.
+A365207	mult	1	is2(p) ? Z.valueOf(e + 1) : Z.TWO	a(2^e) = e+1 and a(p^e) = 2 for an odd prime p.
+A365208	mult	1	p.compareTo(Z.FIVE) < 0 ? Z.valueOf(e + 1) : Z.TWO 	if p = 2 or 3, and a(p^e) = 2 for a prime p >= 5.
+A365209	mult	1	is2(p) || is3(p) ? sigmaP(p, e) : Z.ONE.add(p.pow(e)) 	a(p^e) = (p^(e+1)-1)/(p-1) for p = 2 or 3, and a(p^e) = 1 + p^e for a prime p >= 5.
+A365210	mult	1	is2(p) || is3(p) ? Z.TWO : Z.valueOf(e + 1)	a(p^e) = 2 for p = 2 and 3, and a(p^e) = e+1 for a prime p >= 5.
+A365211	mul	1	is2(p) || is3(p) ? p.pow(e).add(1) : sigmaP(p, e)	a(p^e) = 1 + p^e for p = 2 and 3, and a(p^e) = (p^(e+1)-1)/(p-1) for a prime p >= 5.
+A365296	mult	1	p.pow(ZUtils.valuation(p, Z.TWO))	a(p^e) = p^A006519(e).
+A365297	mul	1	p^(2^ceiling(Integer.highestOneBit(e).intValueExact()) - e)	a(p^e) = p^(2^ceiling(log_2(e)) - e).
+A365298	mult	1	(e == 1) ? p.square() : (((e & 1) == 0) ? p : Z.ONE)	a(p) = p^2, a(p^e) = p if e is even, and a(p^e) = 1 is e is odd and > 1.
+A365333	mult	1	Z.valueOf(e == 1 ? 1 : e/2)	a(p^e) = max(1, floor(e/2)).
+A365334	mult	1	p.pow(e + 1 - (e & 1)).subtract(1).divide(p.square().subtract(1)).add(1)	a(p^e) = 1 + (p^(e + 1 - (e mod 2)) - 1)/(p^2 - 1).
+A365335	mult	1	Z.valueOf(IntegerUtils.max(1, (e+2)/4))	a(p^e) = floor((e+2)/4).
+A365336	mult	1	Z.valueOf(IntegerUtils.max(1, (e+3)/4))	a(p^e) = floor((e+2)/4).
+A365401	mult	1	Z.valueOf(((e & 1) == 1) ? 1 : e + 1)	a(p^e) = 1 if e is odd, and e+1 if e is even.
+A365402	mult	1	Z.valueOf(((e & 1) == 0) ? 1 : e + 1)	a(p^e) = 1 if e is even, and e+1 if e is odd.
+A365498	mult	1	Z.valueOf(e <= 2 ? 2 : 1)	a(p^e) = 2 if e <= 2, and 1 otherwise.
+A365499	mult	1	Z.valueOf(e <= 3 ? 2 : 1)	a(p^e) = 2 if e <= 3, and 1 otherwise.
+A365549	mult	1	Z.valueOf(2 + (e - 2) / 4 - ((e < 2) ? 1 : 0))	a(p^e) = 2 + floor((e-2)/4).
+A365550	mult	1	Z.valueOf(IntegerUtils.max(1, e/2))	a(p^e) = floor(e/2).
+A365551	mult	1	Z.valueOf(((e&1) == 1) ? (e + 3) / 2 : (e + 3) / 2 + 1)	a(p^e) = ceiling((e+3)/2).
+A365552	mult	1	(e == 1) ? Z.ONE : Z.valueOf((e + 3)/2)	a(p) = 1 and a(p^e) = floor((e+3)/2) for e >= 2.
+A365632	mult	1	Z.valueOf(e).divide(p).add(1)	a(p^e) = 1 + floor(e/p).
+A365633	mult	1	sigmaP(p, e / p.intValueExact())	a(p^e) = (p^(floor(e/p)+1) - 1)/(p - 1).
+A365634	mult	1	Z.valueOf(1 + (p.equals(Z.valueOf(e)) ? 1 : 0))	a(p^e) = 1 + [e == p], where [] is the Iverson bracket.
+A365635	mult	1	Z.valueOf(e).compareTo(p) < 0 ? Z.ONE : p.pow(p.intValueExact())	a(p^e) = 1 if e < p and p^p otherwise.
+A365636	mult	1	{ final int ip = p.intValueExact(); return p.pow(ip + e - e % ip); }	a(p^e) = p^(p + e - e mod p).
+A365637	mult	1	{ final int ip = p.intValueExact(); return p.pow(ip - e % ip); }	a(p^e) = p^(p - e mod p).
+A365649	mul	1	a(p^e) = (2 + ((e+1)*p^2 - 2*p - e - 1)*p^e)/(p-1)^2.
+A365680	mul	1	a(p^e) = A013928(e+1) + 1.
+A365682	mul	1	a(p^e) = 1 + Sum_{k=1..e, k squarefree} p^k.

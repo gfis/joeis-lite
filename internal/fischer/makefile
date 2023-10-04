@@ -379,7 +379,7 @@ select3:
 	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
-		  >  $(CC).gen
+	>        $(CC).gen
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
 antclean: purge # recompile all
@@ -4481,6 +4481,9 @@ num1dig: # A126207 null    Number of 5's in decimal expansion of 5^n.
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#--------------------------------
+pairing:
+	cp -v $(CONTRIB)/ak/pairing.gen .
 #--------------------------------
 # A043001	null	n-th base 3 palindrome that starts with 1.	nonn,base,synth	1..46	nyi
 # A043002	null	n-th base 3 palindrome that starts with 2.	nonn,base,synth	1..44	nyi

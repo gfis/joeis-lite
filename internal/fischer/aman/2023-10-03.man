@@ -1,0 +1,21 @@
+A073890	simtraf	0	new A067815()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A067815(n).
+A075105	simtraf	0	new A075104()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A075104(n).
+A082344	simtraf	0	new A082299()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A082299(n).
+A242947	simtraf	0	new A242926()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A242926(n-1).
+A270313	simtraf	0	new A104714()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A104714(n). - _Robert Israel_, Mar 16 2016
+A304776	lambda	0	{ final FactorSequence fs = Jaguar.factor(n); return Z.valueOf(n).divide(fs.squareFreeKernel().pow(fs.minExponent() - 1)); }	A weakening function. a(n) = n / A007947(n)^(A051904(n) - 1) where A007947 is squarefree kernel and A051904 is minimum prime exponent.
+A319677	simtraf	0	new A323409()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A323409(n) = n / gcd(n, A047994(n)). - _Antti Karttunen_, Jan 11 2020
+A332881	simtraf	0	new A306695()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A306695(n) = n / gcd(n, A001615(n)). - _Antti Karttunen_, Nov 15 2021
+A332883	simtraf	0	new A323166()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A323166(n). - _Antti Karttunen_, Nov 13 2021
+A340079	simtraf	0	new A340078()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A340078(n) = n / gcd(n, 1+A018804(n)).
+A345933	simtraf	0	new A345931()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A345931(n) = n / gcd(n, A002034(n)).
+A346468	simtraf	0	new A346467()	(n, v) -> Z.valueOf(n - 1).divide(v)	a(n) = (n-1) / A346467(n).
+A348037	simtraf	0	new A348036()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A348036(n) = n / gcd(n, A003968(n)).
+A348990	simtraf	0	new A322361()	(n, v) -> Z.valueOf(n).divide(v)	a(n) = n / A322361(n) = n / gcd(n, A003961(n)).
+
+A359775	filtpos	0	1	new A359773()	ODD	Positions of odd terms in A359773,
+A359776	filtpos	0	1	new A359773()	EVEN	Positions of even terms in A359773,
+A359782	filtpos	0	1	new A359780()	EVEN	Positions of even terms in A359780.
+A359783	filtpos	0	1	new A359780()	ODD	Positions of odd terms in A359780.
+
+
