@@ -4999,6 +4999,13 @@ fract22:
 	>        $@.gen
 	tail -n4 $@.gen
 	wc -l    $@.gen
+fract2man:
+	grep -E  "fract2"  $(TRIREC)/fract2man.tmp \
+	| sed -e "s/fract2/trigf/" \
+	| perl -ne 'print if length($$_) <= 2048; ' \
+	>        $@.gen
+	tail -n4 $@.gen
+	wc -l    $@.gen
 #----
 binomialx:
 	cp -v $(TRIREC)/$@.gen $@.gen

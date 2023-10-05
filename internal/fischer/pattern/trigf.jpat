@@ -11,6 +11,6 @@ public class $(ASEQNO) extends GeneratingFunctionTriangle {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), new long[] {$(PARM1)}, new long[] {$(PARM2)});
+    super($(OFFSET), "[$(PARM1)]", "[$(PARM2)]");
   }
 }
