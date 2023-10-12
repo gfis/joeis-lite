@@ -127,6 +127,8 @@ ettest:
 iettest:
 	cat iet.data.txt | $(JAVA) irvine.oeis.transform.InverseEulerTransform 
 #	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
+gfttest:
+	$(JAVA) irvine.oeis.triangle.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
 gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
 cptest:
@@ -4978,7 +4980,7 @@ trigf:
 	wc -l    trigf.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
 trigfm:
-	cp trigfm.man trigfm.gen
+	cp aman/trigfm.man trigfm.gen
 #----
 dhdop:
 	sed -e "s/dhd/trigf/" $(TRIREC)/dhd_gf.tmp \
