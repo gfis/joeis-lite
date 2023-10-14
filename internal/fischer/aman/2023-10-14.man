@@ -1,0 +1,8 @@
+A285935	trigf	0	1	[1,-2,-2,1,3,1,0,-2,-2,0,0,0,1,0,0]	Square array a(n, m) read by antidiagonals whose g.f. is 1 / ((1-x)^2 * (1-y)^2 - x*y)
+A080542	lambdan	0	n -> Z.TWO.pow(IntegerUtils.floorLog2(n)).add(Z.valueOf(n).subtract(Z.TWO.pow(IntegerUtils.floorLog2(n))).divide2()).add(Z.TWO.pow(IntegerUtils.floorLog2(n) - 1).multiply(n & 1))	a(n) = 2^log2(n) + floor((n-2^log2(n))/2) + (n mod 2)*2^(log2(n)-1), where log2(n) is the integer part of base-2 logarithm.
+A112248	lambdan	0	n -> Z.valueOf(n % IntegerUtils.floorLog2(n))	a(n) = n mod floor(log_2(n)).
+A115639	lambdan	0	n -> Z.FOUR.pow(IntegerUtils.floorLog2(n + 2) - 1) 	a(n) = 4^(floor(log_2(n+2)) - 1). - _G. C. Greubel_, Nov 23 2021
+A336913	lambdan	0	n -> ((n & 1) == 0) ? Z.valueOf(IntegerUtils.floorLog2(n)) : Z.THREE.pow(n).add(1)	a(n) = floor(log_2(n)) if n is even, 3^n+1 if n is odd.
+A349481	lambdan	0	n -> Z.valueOf(IntegerUtils.floorLog2(n) + IntegerUtils.ceilingLog2(n))	a(n) = floor(log_2(n)) + ceiling(log_2(n)).
+
+A164976	inverse	1	new A164975()	1	0	Inverse of A164975.

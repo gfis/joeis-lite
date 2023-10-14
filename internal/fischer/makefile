@@ -330,6 +330,9 @@ sumpass: # copy all with passed test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log \
 	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
 	| xargs -innn cp -pv nnn manual 
+catpass: # copy all OEIS definitions for passed tests 
+	perl $(DATA)/catex_select.pl -f $(CC).pass.log $(COMMON)/jcat25.txt > $(CC).catex.tmp
+	uedit64 $(CC).catex.tmp
 copall: # LIST= ; copy all in LIST from joeis/src to ./manual
 	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f $(LIST) | xargs -innn cp -pv nnn manual 
 sumfail: # CC= copy all FAILed to ./manual
@@ -4979,8 +4982,36 @@ trigf:
 	tail -n4 trigf.gen
 	wc -l    trigf.gen
 	perl callcode_wiki.pl -p 1 $@.gen > $@.wiki
-trigfm:
+trigfm: # manual triangles
 	cp aman/trigfm.man trigfm.gen
+trigft.ga: # guessed ga triangles
+	grep -P "\]" $(CONTRIB)/ga/trigft3.gen \
+	| sed -e "s/trigf/trigft/" -e "s/\t1\t/\t0\t/" \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+trigft2: # guessed trirec triangles
+	grep -P "\]" $(TRIREC)/trigft3.gen \
+	| sed -e "s/trigf/trigft/" \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+trigft: # guessed trirec triangles
+	grep -P "]" $(TRIREC)/trigft3.gen \
+	| sed -e "s/\t1\t/\t0\t/" \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+#	grep -P "\,0\,0\,0\,0\]" $(TRIREC)/trigft3.gen \
+#	grep -P "\]" $(TRIREC)/trigft3.gen \
+#
+tridenums: trinums tridens
+trinums: # count the existing numerators
+	cut -f4 trigf*.gen | perl -pe "s/[\[\]]//g; s/(\,0)+?\Z//" | sort | uniq -c | sort -n | tail -n16 | tee    $@.tmp
+tridens: # count the existing denominators
+	cut -f5 trigf*.gen | perl -pe "s/[\[\]]//g; s/(\,0)+?\Z//" | sort | uniq -c | sort -n | tail -n16 | tee    $@.tmp
+trimaybe:
+	grep -P "\t(1[8-9]|[2-9]\d+)\t" batch.log | grep -v pass
 #----
 dhdop:
 	sed -e "s/dhd/trigf/" $(TRIREC)/dhd_gf.tmp \

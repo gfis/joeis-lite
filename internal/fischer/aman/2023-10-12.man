@@ -1,0 +1,109 @@
+# exact? A308710	lambdan	0	n -> { final int pn1 = Puma.prime(n + 1).intValueExact(); return Z.TWO.pow(IntegerUtils.floorLog2(pn1)).multiply(pn1); }	a(n) = 2^floor(log_2(prime(n+1))) * prime(n+1).
+A066612	diffs	0	new A064151()		first differences of A064151.
+A066997	lambdan	0	n -> { final int m = IntegerUtils.floorLog2(n); final int k = n - (1 << m); return Z.valueOf((k < (1 << (m - 1))) ? 1 + k + (1 << (m - 1)) : (1 << m)); } 	a(n) = 1+k+2^(m-1) for k < 2^(m-1) and 2^m otherwise, where m = floor(log_2(n)) and k = n-2^m. Also: write n in binary; drop first bit; "OR" new first bit with each remaining bit; append 1 as new first bit; convert to integer; add 1.
+A067888	simtraf	0	new A062832()	v -> v.add(1)	A062832 + 1. - _Michel Marcus_, Feb 11 2018
+A068780	simtraf	0	new A005381()	v -> v.subtract(1)	A005381(n) - 1.
+A072219	simtraf	0	new A033264()	v -> v.multiply(2).add(1)	2*A033264(n-1) + 1.
+A072376	lambdan	0	n -> Z.valueOf((n <= 1) ? n : Integer.highestOneBit(n)/2)	For n > 1: a(n) = msb(n)/2 = 2^floor(log_2(n)-1) = 2*a(floor(n/2)).
+A073123	simtraf	0	new A072677()	v -> v.subtract(1)	A072677(n) - 1.
+A073649	simtraf	0	new A022005()	v -> v.add(4)	A022005 + 4.
+A074049	simtraf	0	new A048680()	v -> v.add(1)	A048680(n-1) + 1.
+A074373	simtraf	0	new A001414()	v -> v.square()	A001414^2.
+A074473	simtraf	0	new A102419()	v -> v.add(1)	A102419(n)+1.
+A075730	simtraf	0	new A046315()	v -> v.square()	A046315(n)^2.
+A076178	simtraf	0	new A078903()	v -> v.multiply2()	a(n) = 2*n^2 - A077071(n).
+A076720	simtraf	0	new A007955()	(k, v) -> v.add(Jaguar.factor(k).sigma())	 + A000203.
+A076721	simtraf	0	new A007955()	(k, v) -> v.subtract(Jaguar.factor(k).sigma())	 - A000203.
+A076722	simtraf	0	new A007955()	(k, v) -> v.multiply(Jaguar.factor(k).sigma())	*A000203.
+A076895	simtraf	0	new A050292()	(k, v) -> { final int f = IntegerUtils.floorLog2(k); final int c = IntegerUtils.ceilingLog2(k); return v.add(1 + (1 - 2*(c - f))*(((f & 1) == 0) ? 1 : -1)/2); }	a(n) = A050292(n-1) + (1+(1-2*(C(n)-F(n)))*(-1)^F(n))/2 where C(n) = ceiling(log_2(n)); F(n) = floor(log_2(n)) and A050292(n) 
+A077070	trilamb	0	0	0	Z.valueOf(2*n - Integer.bitCount(n - k) - Integer.bitCount(k))	T(n, k) = 2*n - wt(n-k) - wt(k)
+A077071	rowsum	0	new A077070()	
+A077626	simtraf	0	new A017913().skip(1)	(k, v) -> (k == 1) ? Z.ZERO : v.multiply2()	2*A017913(n) for n > 1.
+A079702	simtraf	0	new A053176()	v -> v.multiply2()	2 * A053176.
+A080702	simtraf	0	new A079945().skip(2)	v -> v.subtract(1)	A079945(n+1) - 1.
+A080804	lambdan	0	n -> Z.valueOf(n + IntegerUtils.floorLog2(n))	a(n) = n + floor(log_2(n)).
+A082186	simtraf	0	new A013939()	v -> v.add(1)	1 + A013939.
+A082569	holos	0	[[0],[0,1],[-1]]	[2,3,8]	0	4 * A002301.
+A085118	simtraf	0	new A001751().skip(1)	(k, v) -> (k <= 2) ? Z.valueOf(k + 1) : v	A001751\{4}.
+A088468	simtraf	0	new A061984()	v -> v.add(1)	A061984(n) + 1.
+A090660	simtraf	0	new A002981().skip(2)	v -> v.add(1)	A002981 + 1.
+A095114	simtraf	0	new PrependSequence(new A001463(), 0)	v -> v.add(1)	A001463(n) + 1.
+A096968	simtraf	0	new A090076()	v -> v.pow(4)	A090076(n)^4.
+A100086	simtraf	0	new A144211()	(k, v) -> (k == 1) ? v.add(1) : v	A144211 + 1.
+A107756	simtraf	0	new A074940()	v -> v.subtract(1)	A074940 - 1.
+A109512	simtraf	0	new PrependSequence(new A095114(), 1)	(k, v) -> v.add(k - 1)
+A111412	lambdan	0	n -> (n == 0) ? Z.ONE : Z.valueOf(Integer.bitCount(Integer.bitCount(n + 1)) - Integer.bitCount(Integer.bitCount(n)))	f(f(n+1))-f(f(n)), where f(m) = wt(m) = A000120(m).
+A114564	simtraf	0	new A105876()	v -> v.multiply(3).subtract(2)	3*A105876(n) - 2.
+A117973	lambdan	0	n -> Z.TWO.pow(Integer.bitCount(n) + 1)	(a(n) = 2^(wt(n)+1), where wt() = A000120().
+A121071	simtraf	0	new A044046()	v -> v.multiply2()	twice A044046.
+A129343	lambdan	1	n -> (n == 0) ? Z.ZERO : Z.valueOf(2*n).divide(Z.TWO.pow(ZUtils.valuation(Z.valueOf(n), Z.TWO))).subtract(1)	a(n) = 2n/2^A007814(n) - 1.; 2*A000265(n) - 1.
+A130249	lambdan	0	n -> Z.valueOf(IntegerUtils.floorLog2(3*n + 1))	a(n) = floor(log_2(3n+1)).
+A130250	lambdan	0	n -> (n == 0) ? Z.ZERO : Z.valueOf(IntegerUtils.ceilingLog2(3*n - 1))	a(n) = ceiling(log_2(3n-1)) = 1 + floor(log_2(3n-2)) for n >= 1.
+A130253	lambdan	0	n -> Z.valueOf(IntegerUtils.floorLog2(3*n + 1) + 1)	a(n) = floor(log_2(3n+1)) + 1 = ceiling(log_2(3n+2)).
+A130819	simtraf	0	new A003059()	v -> v.multiply2()	twice A003059. - _Michel Marcus_, Sep 14 2020
+A132468	simtraf	0	new A048669()	v -> v.subtract(1)	A048669(n) - 1.
+A145756	simtraf	0	new A064535().skip(3)	v -> v.divide(3)	A064535/3
+A151677	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> Binomial.binomial(3*Integer.bitCount(n + k), k    ))	(a(n) = sum_{k >= 0} binomial(3*wt(n+k),k)
+A151678	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> Binomial.binomial(  Integer.bitCount(n + k), 2*k  ))	(a(n) = sum_{k >= 0} binomial(wt(n+k),2*k)
+A151679	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> Binomial.binomial(2*Integer.bitCount(n + k), k    ))	(a(n) = sum_{k >= 0} binomial(2*wt(n+k),k)
+A151680	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> Binomial.binomial(  Integer.bitCount(n + k), k + 1))	(a(n) = sum_{k >= 0} binomial(wt(n+k),k+1)
+A151681	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> ((k & 1) == 1) ? Z.ZERO : Binomial.binomial(Integer.bitCount(n + k), k + 1))	(a(n) = sum_{k >= 0, k even} binomial(wt(n+k),k+1)
+A151682	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> ((k & 1) == 0) ? Z.ZERO : Binomial.binomial(Integer.bitCount(n + k), k + 1))	(a(n) = sum_{k >= 0, k odd} binomial(wt(n+k),k+1),
+A151685	lambdan	0	n -> Integers.SINGLETON.sum(1, n, k -> Z.TWO.pow(k).multiply(Binomial.binomial(Integer.bitCount(n + k), k)))	(a(n) = Sum_{k >= 0} 2^wt(k) * binomial(wt(n+k),k).
+A151689	lambdan	0	n -> Integers.SINGLETON.sum(2, n, k -> Z.TWO.pow(k).multiply(Binomial.binomial(Integer.bitCount(n + k), k)))	(a(n) = sum_{k >= 1} 2^wt(k) * binomial(wt(n+k),k).
+A151779	lambdan	0	n -> (n == 1) ? Z.ONE : Z.FIVE.pow(Integer.bitCount(n - 1) - 1).multiply(6)	a(1) = 1; for n > 1, a(n)=6*5^{wt(n-1)-1}.
+A151780	lambdan	0	n -> Z.FIVE.pow(Integer.bitCount(n) - 1)	(a(n) = 5^(wt(n) - 1) where wt(n) = A000120(n).
+A151782	lambdan	0	n -> (n == 1) ? Z.ONE : Z.SEVEN.pow(Integer.bitCount(n - 1) - 1).multiply(8)	a(1) = 1; for n > 1, a(n)=8*7^{wt(n-1)-1}.
+A151783	lambdan	0	n -> Z.FOUR.pow(Integer.bitCount(n) - 1)	(a(n) = 4^(wt(n) - 1) where wt(n) = A000120(n).
+A151784	lambdan	0	n -> Z.SIX.pow(Integer.bitCount(n) - 1)	(a(n) = 6^(wt(n) - 1) where wt(n) = A000120(n).
+A151785	lambdan	0	n -> Z.SEVEN.pow(Integer.bitCount(n) - 1)	(a(n) = 7^(wt(n) - 1) where wt(n) is the binary weight of n (A000120).
+A151787	lambdan	0	n -> (n == 1) ? Z.ONE : Z.TWO.pow(Integer.bitCount(n - 1) - 1).multiply(3)	a(1) = 1; for n > 1, a(n)=3*2^{wt(n-1)-1}.
+A151789	lambdan	0	n -> (n == 1) ? Z.ONE : Z.FOUR.pow(Integer.bitCount(n - 1) - 1).multiply(5)	a(1) = 1; for n > 1, a(n)=5*4^{wt(n-1)-1}.
+A151791	lambdan	0	n -> (n == 1) ? Z.ONE : Z.SIX.pow(Integer.bitCount(n - 1) - 1).multiply(7)	a(1) = 1; for n > 1, a(n)=7*6^(wt(n-1)-1).
+A151902	lambdan	0	n -> Z.valueOf(n)	Z.valueOf(Integer.bitCount(n) + (new int[] {0,0,1,1,1,2})[n % 6])	a(n) = wt(k) + f(j) if n = 6k+j, 0 <= j < 6, where wt() = A000120(), f() = A151899().
+A151904	lambdan	0	n -> Z.THREE.pow(Integer.bitCount(n/6) + (new int[] {0,0,1,1,1,2})[n % 6]).subtract(1).divide2()	(a(n) = (3^(wt(k)+f(j))-1)/2 if n = 6k+j, 0 <= j < 6, where wt = A000120, f = A151899.
+A151917	lambdan	0	n -> (n <= 1) ? Z.valueOf(n) : Integers.SINGLETON.sum(1, n - 1, i -> Z.THREE.pow(Integer.bitCount(i))).multiply2().divide(3).add(1)	a(0) = 0, a(1)=1; for n>=2, a(n) = (2/3)*(Sum_{i=1..n-1} 3^wt(i)) + 1, where wt() = A000120().
+A160173	lambdan	0	n -> (n <= 1) ? Z.valueOf(n) : ((n == 2) ? Z.THREE : Z.THREE.pow(Integer.bitCount(n - 1)).add(Z.THREE.pow(Integer.bitCount(n - 2))).multiply2().divide(3).add(1))	(a(n) = (2/3)*(3^wt(n-1) + 3^wt(n-2))+1 (where wt is A000120), for n >= 3. - _N. J. A. Sloane_, Jan 01 2010
+A161783	simtraf	0	new A018834().skip(1)	v -> v.square()	A018834^2. Cf. A035383.
+A162441	simtraf	0	new A052468()	(k, v) -> v.multiply(2*k - 1)	(2*n-1)*A052468(n-1)
+A162445	simtraf	0	new A046977()	(k, v) -> v.multiply(Z.TWO.pow(2*k))	2^(2*n)*A046977(n)
+A163510	simtraf	0	new A228351()	v -> v.subtract(1)	A228351-1, termwise.
+A164032	lambdan	0	n -> Z.FOUR.pow(Integer.bitCount((n - 1)/2)).multiply(((n & 1) == 0) ? 9 : 1)		(a(n) = c*4^wt(floor((n-1)/2)), where c=1 if n is odd, c=9 if n is even, and wt(i) = A000120(i) is the binary weight function. For example, if n=20, [(n-1)/2]=9 which has weight 2, so a(20) = 9*4^2 = 144. (End)
+A166250	simtraf	0	new A338281()	v -> v.subtract(1)	A338281(n)-1.
+A170804	simtraf	0	new PrependSequence(new A170803(), 0)	v -> v.add(1)	A170803 + 1.
+A173771	simtraf	0	new PrependSequence(new A092480(), 3)	v -> v	3 followed by A092480 (primes of the form 40*R_n + 7). - _Klaus Brockhaus_ and _R. J. Mathar_, Feb 27 2010
+A179567	simtraf	0	new A062868().skip(1)	(k, v) -> MemoryFactorial.SINGLETON.factorial(k).subtract(v).divide2()	(n!-A062868(n))/2.
+A188064	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> MemoryFactorial.SINGLETON.factorial(Integer.bitCount(k)))	(a(n) = sum(k=0,n,wt(k)!) where wt(k) is the Hamming weight of k.
+A193317	simtraf	0	new PrependSequence(new A124104(), 0)	v -> v.divide2()	half A124104.
+A193583	simtraf	0	new A193432().skip(2)	v -> v.subtract(1)	A193432-1.
+A222814	simtraf	0	new A001232()	v -> v.multiply(9)	9*A001232.
+A222815	simtraf	0	new A008918()	v -> v.multiply(4)	4*A008918.
+A229745	lambdan	0	n -> Z.valueOf(Integer.bitCount(Integer.bitCount(n) + n) - Integer.bitCount(n))	(a(n) = wt(n+wt(n))-wt(n), where wt(n) is the binary weight of n, A000120(n).
+A230300	lambdan	0	n -> Z.valueOf(n).add(Integer.bitCount(n - 1))	(a(n) = n + wt(n-1), where wt() = A000120() is the binary weight.
+A231500	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> Z.valueOf(Integer.bitCount(k)).pow(2))	(a(n) = Sum_{i=0..n} wt(i)^2, where wt(i) = A000120(i).
+A231501	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> Z.valueOf(Integer.bitCount(k)).pow(3))	(a(n) = Sum_{i=0..n} wt(i)^3, where wt() = A000120().
+A231502	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> Z.valueOf(Integer.bitCount(k)).pow(4))	(a(n) = Sum_{i=0..n} wt(i)^4, where wt() = A000120().
+A235602	lambdan	0	n -> Z.valueOf((n % Integer.bitCount(n) == 0) ? n/Integer.bitCount(n) : n)	(a(n) = n/wt(n) if wt(n) divides n, otherwise a(n) = n, where wt(n) is the binary weight of n (A000120).
+A263151	simtraf	0	new A103710()	v -> v.multiply2()	twice A103710. Equals A010466 + A244920.
+A274994	union2	0	new A001220()	new A280300()
+A278585	simtraf	0	new A163573()	v -> v.subtract(1)	A163573(n) - 1.
+A291665	lambdan	0	n -> Binomial.binomial(n, 1 << IntegerUtils.floorLog2(n))	a(n) = binomial(n, 2^floor(log_2(n))).
+A297405	lambdan	0	n -> { final int p = IntegerUtils.floorLog2(n) + 1; return Z.valueOf(n).multiply(Z.ONE.add(Z.TWO.pow(p)).add(Z.FOUR.pow(p))); }	a(n) = n*(1 + 2^p + 4^p) with p = 1 + floor(log_2(n)). - _Alois P. Heinz_, Dec 29 2017
+A306714	lambdan	0	n -> MemoryFactorial.SINGLETON.factorial(IntegerUtils.floorLog2(2*n))	a(n) = floor(log_2(2n))! for n in { A126646 }.
+A307485	lambdan	0	n -> Z.valueOf(2*n - (1 << IntegerUtils.floorLog2(4*n + 1))/3)	a(n) = 2*n - floor(2^k/3) where k = floor(log_2(4n+1)), n >= 0. (And 2^k == (-1)^k (mod 3) => floor(2^k/3) = (2^k-m)/3 with m = 1 if k even, m = 2 if k odd.)
+A308546	lambdan	0	n -> Integers.SINGLETON.product(1, (n - 1)/2, k -> Z.TWO.add(IntegerUtils.floorLog2(n / (2*k + 1))))	a(n) = Product_{k < n/2} (2 + floor(log_2(n/(2k+1)))).
+A318937	simtraf	0	new A045823()	v -> v.multiply(16)	16 times A045823.
+A319898	simtraf	0	new A014221()	v -> Z.valueOf(v.toString().length())	number of digits of A014221.
+A324465	lambdan	0	n -> (n == 0) ? Z.ZERO : Z.valueOf(3 * Integer.bitCount(n) - ZUtils.valuation(Z.valueOf(n + 1).multiply(n + 2).multiply(n + 3), Z.TWO))	(a(n) = 3*wt(n) - (2-adic valuation of (n+1)*(n+2)*(n+3))
+A330571	simtraf	0	new A038548()	v -> v.square()	A038548(n)^2.
+A331780	simtraf	0	new A018808()	v -> v.divide2()	A018808/2.
+A340216	simtraf	0	new A145426()	v -> v.multiply(4)	4*A145426.
+A350322	insect2	0	new A060687()	new A051532()	A060687 INTERSECT A051532 = A054395 INTERSECT A051532 = A054395 INTERSECT A060687 = A054395 INTERSECT A013929.
+# tabf A351489	trilambn	0	0	1	(n, k) -> Z.valueOf(2*n + 4*(k - 1) - 2*Integer.bitCount(k - 1))	(T(n,k) = 2*n + 4*(k-1) - 2*wt(k-1), where wt(n) = A000120(n) is the sum of the binary digits of n. [Gruber and Holzer theorem 14]
+A357531	simtraf	0	new A082495()	v -> v.add(1)	{A082495} + 1. - _Hugo Pfoertner_, Nov 30 2022
+# noncomput A359295	simtraf	0	new A254251()	v -> v.divide2()	A254251 / 2.
+A361145	lambdan	0	n -> Z.TWO.pow(Integer.bitCount(n - 1) + 1).subtract(Z.TWO.pow(Integer.bitCount(n) - 1))	(a(n) = 2^(wt(n-1)+1) - 2^(wt(n)-1) where wt(n) = A000120(n).
+A361247	simtraf	0	new A056697()	v -> v.add(1)	{A056697}+1.  - _Hugo Pfoertner_, May 11 2023
+A361257	lambdan	0	n -> Integers.SINGLETON.sum(0, n, k -> Z.valueOf(n).pow(Integer.bitCount(k)))	(a(n) = Sum_{j=0..n} n^wt(j), where wt = A000120.
+A363863	setdiff	0	new A080257()	new A016825()	A080257\A016825.
+A365273	simtraf	0	new A152596().skip(1)	v -> v.multiply2()	twice A152596.

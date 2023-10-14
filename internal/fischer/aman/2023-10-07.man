@@ -1,0 +1,94 @@
+A091700	triprod	1	A063967	A063967
+A157030	triprod	1	A156834	A054521	Triangle read by rows, A156834 * A054521	1..76	nonn,tabl,more	_Gary W. Adamson_ and _Mats Granvik_
+A143153	triprod	1	A054525	A020639
+
+A135091	triprov	1	A007318	A002426	                       A007318 * (A002426 * 0^(n-k), 0<=k<=n.	nonn,tabl	0..54	nyi	_Gary W. Adamson_
+A143102	triprov	1	A000012	A143097	Triangle read by rows, A000012 * (A143097 * 0^(n-k)) * A000012, 1<=k<=n.	nonn,tabl	1..75	nyi	_Gary W. Adamson_
+A143119	triprov0	1	A051731	A026741	Triangle read by rows, A051731 * (A026741 * 0^(n-k), 1<=k<=n.	nonn,tabl	1..104	nyi	Gary W. Adamson & _Mats Granvik_
+A143130	triprov0	1	A000012	A000332	Triangle read by rows, A000012 * (A000332 * 0^(n-k)) * A000012, 0<=k<=n.	nonn,tabl	1..52	nyi	_Gary W. Adamson_
+A143153	triprov	1	A054525	A020639	Triangle read by rows, A054525 * (A020639 * 0^(n-k)), 1<=k<=n.	tabl,sign	1..105	nyi	Gary W. Adamson & _Mats Granvik_
+A143517	triprov	1	A054525	A061397	Triangle read by rows, A054525 * (A061397 * 0^(n-k)), 1<=k<=n.	tabl,sign	1..91	nyi	_Gary W. Adamson_
+A143655	triprov	1	A054521	A061397	Triangle read by rows, A054521 * (A061397 * 0^(n-k)), 1<=k<=n.	nonn,tabl	1..103	nyi	_Gary W. Adamson_
+A143965	triprov0	1	A119502	A051295	Factorial eigentriang  A119502 * (A051295 * 0^(n-k); 0 <= k <= n.	nonn,tabl	0..44	nyi	_Gary W. Adamson_
+A143972	triprov0	1	A143971	A108300	Eigentriangle by rows, A143971 * (A108300 * 0^(n-k)); 1<=k<=1	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A152193	triprov0	1	A034839	A027826	Triangle read by rows, A034839 * (A027826 * 0^(n-k)).	nonn,tabf,more	0..48	nyi	_Gary W. Adamson_
+A152434	triprov0	1	A051731	A003238	Triangle read by rows, A051731 * (A003238 * 0^(n-k))	nonn,tabl	1..79	nyi	_Gary W. Adamson_
+A152538	triprov	1	A027293	A152537	Triangle read by rows, A027293 * (A152537 * 0^(n-k))	nonn,tabl	0..65	nyi	_Gary W. Adamson_
+A152903	triprov0	1	A152901	A152902	Convolution triangle:  A152901 * (A152902 * 0^(n-k))	tabl,sign	1..58	nyi	_Gary W. Adamson_
+A153585	triprov	1	A053121	A001405	Convolution triangle,  A053121 * (A001405 * 0^(n-k))	nonn,tabl	0..54	nyi	_Gary W. Adamson_
+A153868	triprov	1	A135278	A040027	Triangle read by rows, A135278 * (A040027 * 0^(n-k)).	nonn,tabl	0..35	nyi	_Gary W. Adamson_
+A154109	triprov	1	A004736	A154108	Convolution triangle b A004736 * (A154108 * 0^n-k)); row sums = Bell numbers.	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A154558	triprov0	1	A007318	A001006	Triangle read by rows, A007318 * (A001006 * 0^(n-k))	nonn,tabl	1..55	nyi	_Gary W. Adamson_
+A155002	triprov0	1	A104762	A000129	Triangle read by rows, A104762 * (A000129 * 0^(n-k)).	eigen,nonn,easy,tabl	1..55	nyi	_Gary W. Adamson_ & _Roger L. Bagula_
+A156667	triprov0	1	A156663	A001045	Triangle read by rows, A156663 * (A001045 * 0^(n-k)).	nonn,tabl	0..65	nyi	_Gary W. Adamson_
+A157424	triprov0	1	A157423	A052284	Triangle read by rows, A157423 * (A052284 * 0^(n-k))	nonn,tabl	1..79	nyi	_Gary W. Adamson_ & _Mats Granvik_
+A158303	triprov0	1	A007318	A158300	Triangle read by rows, A007318 * (A158300 * 0^(n-k)).	nonn,tabl	0..54	nyi	_Gary W. Adamson_
+A159573	triprov0	1	A055248	A005493	Triangle read by rows, A055248 * (A005493 * 0^(n-k))	eigen,nonn,tabl	0..51	nyi	_Gary W. Adamson_
+
+A115237	triprod	0	A003983	A003983	Matrix square of triangle A003983.
+A211230	triprod	0	A211226	A211226	Matrix square of lower triangular array A211226
+A079621	triprod	1	A105278	A105278	Matrix square of unsigned Lah triangle abs(A008297(n,k)) or A105278(n,k).	1..42	nonn,tabl	_Vladeta Jovovic_
+A128567	triprod	1	A047812	A047812	Matrix square, T(n,k), of Parker''s partition triangle A047812, read by rows (n >= 1 and 0 <= k <= n-1).	1..55	nonn,tabl	_Paul D. Hanna_
+A308440	triprod	1	A008277	A105278	Matrix product of triangle of Stirling numbers of second kind A008277 and square of unsigned Lah triangle A105278.	1..45	nonn,tabl	_Shuhei Tsujie_
+
+A137156	trinv	0	A137153	Matrix inverse of triangle A137153(n,k) = C(2^k+n-k-1, n-k), read by rows.	0..44	sign,tabl	_Paul D. Hanna_
+A338817	trinv	0	A176270	Matrix inverse of triangle A176270, read by rows.	0..65	sign,easy,tabl	_Werner Schulte_
+A123706	trinv	1	A010766	Matrix inverse of triangle A010766, where A010766(n,k) = [n/k], for n>=k>=1.	1..100	sign,tabl	_Paul D. Hanna_
+A103364	trinv	1	A001263	Matrix inverse of the Narayana triangle A001263.	1..51	sign,tabl	_Paul D. Hanna_
+A338291	trinv	0	A077028	Matrix inverse of the rascal triangle (A077028), read across rows..	0..54	sign,easy,tabl	_Werner Schulte_
+A224228	trinv	0	A008292	Matrix inverse of the triangle of Eulerian numbers T(n,k), 0<=k<=n, read by rows.	0..54	nonn,tabl	_Roger L. Bagula_ and _Mats Granvik_
+A166282	trinv	0	A047999	Matrix inverse of Sierpinski''s triangle (A047999, Pascal''s triangle mod 2).	0..90	easy,sign,tabl	_Gerald McGarvey_
+A211229	trinv	0	A211226	Matrix inverse of lower triangular array A211226.	0..77	sign,easy,tabl	_Peter Bala_
+A106180	trinv	0	A046854	Matrix inverse of number triangle A046854.	0..61	easy,sign,tabl	_Paul Barry_
+A216207	trinv	0	A181543	Matrix inverse of A181543 (cubes of entries of Pascal''s triangle).	0..44	sign,tabl	_R. J. Mathar_
+A155077	trinv	1	A155076	Matrix inverse of A155076.	1..104	nonn,tabl	_Mats Granvik_
+A224069	trinv	0	A111636	Matrix inverse of A111636.	0..50	sign,easy,tabl	_Peter Bala_
+A171274	trinv	1	A142458	Matrix inverse of A142458.	1..50	sign,tabl	_Roger L. Bagula_ and _Mats Granvik_
+A106342	trinv	0	A008278	Matrix inverse of A008278, which is a triangle of Stirling numbers of 2nd kind.	0..44	sign,tabl	_Paul D. Hanna_
+# A091264	null	0	Matrix defined by a(n,k) = 2^n + (k-1), read by antidiagonals.	0..73	easy,nonn,tabl	_Ross La Haye_
+# A090888	null	0	Matrix defined by a(n,k) = 3^n*Fibonacci(k) - 2^n*Fibonacci(k-2), read by antidiagonals.	0..10000	nonn,tabl	_Ross La Haye_; revised Sep 24 2004, Sep 10 2005
+# A109754	null	0	Matrix defined by: a(i,0) = 0, a(i,j) = i*Fibonacci(j-1) + Fibonacci(j), for j > 0; read by ascending antidiagonals.	0..77	nonn,tabl	_Ross La Haye_; corrected Apr 14 2006
+# 
+# A119301	null	0	Number triangle binomial(3n-k,n-k).	0..50	easy,nonn,tabl	_Paul Barry_
+# A113045	null	0	Number triangle binomial(n,floor((n-k)/2)) mod 3.	0..104	easy,nonn,tabl	_Paul Barry_
+# A127829	null	0	Number triangle mod(C(floor(k/2),n-k),2).	0..65	easy,nonn,tabl	_Paul Barry_
+# 
+# A119831	null	0	Number triangle (3n)!/(3k)!.	0..27	easy,nonn,tabl	_Paul Barry_
+# A360657	null	0	Number triangle T associated with 2-Stirling numbers and Lehmer-Comtet numbers (see Comments and Formula section).	0..54	nonn,easy,tabl	_Werner Schulte_
+# A187034	null	0	Number triangle T(n,k) = (-1)^(n-k) if binomial(k, n-k) > 0, 0 otherwise, with 0 <= k <= n.	0..86	sign,tabl,easy	_Paul Barry_
+# A122851	null	0	Number triangle T(n,k) = C(k,n-k)*(n-k)!.	0..65	nonn,tabl,easy	_Paul Barry_
+# 120105	null	0	Number triangle T(n,k) = lcm(1,..,2*n+2)/lcm(1,..,2*k+2).	0..100	easy,nonn,tabl	_Paul Barry_
+# A120108	null	0	Number triangle T(n,k) = lcm(1,..,n+1)/lcm(1,..,k+1).	0..100	easy,nonn,tabl	_Paul Barry_
+# A178111	null	0	Number triangle T(n,k) = (-1)^((n-k)/2)*C(floor(n/2),floor(k/2))*(1+(-1)^(n-k))/2.	0..90	easy,sign,tabl	_Paul Barry_
+# A124821	null	0	Number triangle T(n,k) = (-1)^(n-k)*(3k+2)*C(3n+1, n-k)/(2n+k+2).	0..41	easy,sign,tabl	_Paul Barry_
+# A128210	null	0	Number triangle T(n,k) = (-1)^(n-k)*[k<=n]*Product{i=1..n,Sum{j=0..i-1,A078008(j-1)}/Product{i=1..k,Sum{j=0..i-1,A078008(j-1)}}.	0..38	easy,sign,tabl	_Paul Barry_
+# A128207	null	0	Number triangle T(n,k) = (-1)^(n-k)*[k<=n]*Product{i=1..n,Sum{j=0..i-1,F(j-1)}/Product{i=1..k,Sum{j=0..i-1,F(j-1)}}.	0..40	easy,sign,tabl	_Paul Barry_
+# A119828	null	0	Number triangle T(n,k) = (2n)!/(2k)!.	0..35	easy,nonn,tabl	_Paul Barry_
+# A178112	null	0	Number triangle T(n,k) = C(floor(n/2),floor(k/2))*(1+(-1)^(n-k))/2.	0..11475	easy,nonn,tabl	_Paul Barry_
+# A111805	null	0	Number triangle T(n,k) = binomial(2(n+k),4k).	0..49	easy,nonn,tabl	_Paul Barry_
+# A119331	null	0	Number triangle T(n,k) = sum_{i=0..n, (-1)^(n-i)*C(n,i)*sum{j=0..i-k, C(k,2j)*C(i-k,2j)*2^j}}.	0..65	easy,sign,tabl	_Paul Barry_
+# A119328	null	0	Number triangle T(n,k) = sum_{i=0..n, (-1)^(n-i)*C(n,i)*sum{j=0..i-k, C(k,2j)*C(i-k,2j)}}.	0..65	easy,sign,tabl	_Paul Barry_
+# A119337	null	0	Number triangle T(n,k) = sum_{i=0..n, (-1)^(n-i)*C(n,i)*sum{j=0..i-k, C(k,3j)*C(i-k,3j)}}.	0..65	easy,sign,tabl	_Paul Barry_
+# A114118	null	0	Number triangle T(n,k) = sum_{j=0..n, C(floor((n+k+j)/3),k)C(k,floor((n+k+j)/3))}.	0..104	easy,nonn,tabl	_Paul Barry_
+# A119307	null	0	Number triangle T(n,k) = sum_{j=0..n, C(j,k)C(j,n-k)}.	0..60	easy,nonn,tabl	_Paul Barry_
+# A119329	null	0	Number triangle T(n,k) = sum_{j=0..n-k, C(k,2j)C(n-k,2j)*2^j}.	0..65	easy,nonn,tabl	_Paul Barry_
+# A307090	null	0	Number triangle T(n,k) = Sum_{j=0..n-k} (-1)^j * binomial(k,2*j) * binomial(n-k,2*j).	0..139	sign,tabl,look	_Seiichi Manyama_
+# A307156	null	0	Number triangle T(n,k) = Sum_{j=0..n-k} (-1)^j * binomial(k,3*j) * binomial(n-k,3*j).	0..139	sign,look,tabl	_Seiichi Manyama_
+# A119326	null	0	Number triangle T(n,k) = Sum_{j=0..n-k} C(k,2j)*C(n-k,2j).	0..139	easy,nonn,tabl	_Paul Barry_
+# A119335	null	0	Number triangle T(n,k) = Sum_{j=0..n-k} C(k,3j)*C(n-k,3j).	0..139	easy,nonn,tabl	_Paul Barry_
+# A176331	null	0	Number triangle T(n,k) = Sum_{j=0..n} C(j,n-k)*C(j,k)*(-1)^(n-j).	0..100	easy,nonn,tabl	_Paul Barry_
+# A115991	null	0	Number triangle T(n,k) = Sum_{j=0..n} C(n-k,j-k)*C(j,n-j)*2^(n-j).	0..100	easy,nonn,tabl	_Paul Barry_
+# 
+# 
+# A089885 A04689  0       Triangle A046899 read mod 2.
+# A128973 A03862  0       Triangle formed by reading A038622 mod 2 .      0..
+# A128937 A03959  0       Triangle formed by reading A039598 mod 2.       0..
+# A127872 A03959  0       Triangle formed by reading A039599 mod 2.       0..
+# A128810 A06418  0       Triangle formed by reading triangle A064189 mod 2 .
+# 
+# A008288	Memory	0	Square array of Delannoy numbers D(i,j) (i >= 0, j >= 0) read by antidiagonals.	0..5150	nonn,tabl,nice,easy	_N. J. A. Sloane_
+# A211315	null	0	Square array of Delannoy numbers D(i,j) mod 11 (i >= 0, j >= 0) read by antidiagonals.	0..90	nonn,tabl	_N. J. A. Sloane_
+# A211312	null	0	Square array of Delannoy numbers D(i,j) mod 3 (i >= 0, j >= 0) read by antidiagonals.	0..90	nonn,tabl	_N. J. A. Sloane_
+# A211313	null	0	Square array of Delannoy numbers D(i,j) mod 5 (i >= 0, j >= 0) read by antidiagonals.	0..90	nonn,tabl	_N. J. A. Sloane_
+# A211314	null	0	Square array of Delannoy numbers D(i,j) mod 7 (i >= 0, j >= 0) read by antidiagonals.	0..90	nonn,tabl	_N. J. A. Sloane_
+# 
