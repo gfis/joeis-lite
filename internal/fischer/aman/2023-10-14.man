@@ -5,4 +5,3 @@ A115639	lambdan	0	n -> Z.FOUR.pow(IntegerUtils.floorLog2(n + 2) - 1) 	a(n) = 4^(
 A336913	lambdan	0	n -> ((n & 1) == 0) ? Z.valueOf(IntegerUtils.floorLog2(n)) : Z.THREE.pow(n).add(1)	a(n) = floor(log_2(n)) if n is even, 3^n+1 if n is odd.
 A349481	lambdan	0	n -> Z.valueOf(IntegerUtils.floorLog2(n) + IntegerUtils.ceilingLog2(n))	a(n) = floor(log_2(n)) + ceiling(log_2(n)).
 
-A164976	inverse	1	new A164975()	1	0	Inverse of A164975.
