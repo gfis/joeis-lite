@@ -2,6 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2023-10-16: V7.0: FI, FL, SJ, BI, S1, S2, .* .+ .- replacements
 # 2023-09-26: V6.5: GroupFactory
 # 2023-09-23: V6.4: IntegerPartition
 # 2023-09-21: V6.3: finally keep the spaces in comma-separated parameter terms
@@ -174,6 +175,35 @@ while (<>) { # read inputfile
     while ($iparm < scalar(@parms) - 1) { # for all $(PARMi)
         my $max_term_len = 0;
         my @terms;
+        if ($parms[$iparm] =~ m{\-\>}) { # with lambda expression: replace shortcuts
+            my $parm = $parms[$iparm];
+            if ($parm =~ s{(BI|FA|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])}{$1\<--HERE$2}g) {
+                print STDERR "#?? $aseqno $parm\n";
+            }
+            my $test = $parm;
+            my $open = $test =~ s{\(}{\{}g;
+            my $clos = $test =~ s{\)}{\}}g;
+            if ($open != $clos) {
+                print STDERR "#?? $aseqno $parm, open=$open, close=$clos\n";
+            }
+            $parm =~ s{FI\(}{Fibonacci.fibonacci\(}g;
+            $parm =~ s{BI\(}{Binomial.binomial\(}g;
+            $parm =~ s{FA\(}{MemoryFactorial.SINGLETON.factorial\(}g;
+            $parm =~ s{MU\(}{Mobius.mobius\(}g;
+            $parm =~ s{PR\(}{Integers.SINGLETON.product\(}g;
+            $parm =~ s{SU\(}{Integers.SINGLETON.sum\(}g;
+            $parm =~ s{S1\(}{Stirling.firstKind\(}g;
+            $parm =~ s{S2\(}{Stirling.secondKind\(}g;
+            $parm =~ s{ZV\(}{Z.valueOf\(}g;
+            $parm =~ s{Z\_1\(}{Z.NEG_ONE.pow\(}g;
+            $parm =~ s{n\_1\(}{(((n & 1) == 0) ? 1 : -1)}g;
+            $parm =~ s{Z2\(}{Z.TWO.pow\(}g;
+            $parm =~ s{\.\*\(}{.multiply\(}g;
+            $parm =~ s{\.\/\(}{.divide\(}g;
+            $parm =~ s{\.\+\(}{.add\(}g;
+            $parm =~ s{\.\-\(}{.subtract\(}g;
+            $parms[$iparm] = $parm;
+        }
         if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
             @terms = map {
                 if (length > $max_term_len) {
