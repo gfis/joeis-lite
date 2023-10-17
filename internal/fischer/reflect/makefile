@@ -284,6 +284,13 @@ unpack1: # P= ; unpack 1 *.pack, and write ../refl_$(P).gen
 	perl queue.pl -u $(P).pack
 	grep -P "\A\#\!queue" $(P).pack | cut -f2 | grep -v A999 > ../refl_$(P).gen 
 #--------
+# 2023-10-17, introduce interface DirectSequence
+direct17:
+	perl queue.pl -p direct17.man \
+	| perl patch_queue.pl -m $@ \
+	>        $@.pack
+	uedit64  $@.pack
+#--------
 offin23b:
 	$(DBAT) -x "SELECT o1.aseqno, o1.shift, o1.superclass, h.parmno, h.parms \
 	  FROM offin o1 LEFT JOIN hasoc h ON o1.superclass = h.superclass \

@@ -123,10 +123,41 @@ sub patch1 {
                         {\nimport irvine\.oeis\.AbstractSequence\;\n\n\/\*\*}m;
             print $change;
         }
-    } elsif ($mode =~ m{offin23}) {
-        $change =~ s[(class +A\d+ +extends +\w+( +implements +\w+)? *\{\n+)]
-                    [$1  \{\n    setOffset\(\$\(OFFSET\)\)\;\n  \}\n\n]mg;
+    } elsif ($mode =~ m{hasoc22a}) {
+        # public class A000763 extends A052894 {
+        if ($change =~ m{super\.}) {
+            $change =~ s{super\.}{mSeq1\.}mg;
+            if ($change =~ m{(\n *public *A\d+\(\) *\{\n *)}) {
+                $change =~ s{class +(A\d+) +extends +(A\d+) *\{\n+}
+                            {class $1 extends AbstractSequence \{\n\n  private final $2 mSeq1 = new $2()\;\n\n}mg;
+                $change =~ s{(\n *public *A\d+\(\) *\{\n *)}
+                            {$1super\(\$\(OFFSET\)\)\;\n    }m;
+            } else {
+                $change =~ s{class +(A\d+) +extends +(A\d+) *\{\n+}
+                            {class $1 extends AbstractSequence \{\n\n  private final $2 mSeq1 = new $2()\;\n\n  \/\*\* Construct the sequence\. \*\/\n  public \$\(ASEQNO\)\(\) \{\n    super\(\$\(OFFSET\)\)\;\n  \}\n\n}mg;
+            }
+            $change =~ s{(\n\n\/\*\*)}
+                        {\nimport irvine\.oeis\.AbstractSequence\;\n\n\/\*\*}m;
+            print $change;
+        }
+    } elsif ($mode =~ m{direct17}) {
+        my $insert = <<"GFis";
+
+  public static Z a(final int n) {
+    return a(Z.valueOf(n));
+  }
+
+  public static Z a(final Z n) {
+    return a(n.intValueExact());
+  }
+GFis
+        $change =~ s[(extends +(\w+))]
+                    [$1 implements DirectSequence]mg;
         $change =~ s[\n  \}\n *\n  \{][]m;
+        $change =~ s{(\n\n\/\*\*)}
+                    {\nimport irvine\.oeis\.DirectSequence\;\n\n\/\*\*}m;
+        $change =~ s[\n  \}\n}\n]
+                    [\n  \}\n$insert\n}\n]m;
         print $change;
 
     } else {

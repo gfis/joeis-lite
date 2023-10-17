@@ -2,7 +2,7 @@
 
 # Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
-# 2023-10-16: V7.0: FI, FL, SJ, BI, S1, S2, .* .+ .- replacements
+# 2023-10-16: V7.0: FI, FL, SJ, BI, S1, S2, .* .+ .- replacements; %zhash
 # 2023-09-26: V6.5: GroupFactory
 # 2023-09-23: V6.4: IntegerPartition
 # 2023-09-21: V6.3: finally keep the spaces in comma-separated parameter terms
@@ -70,7 +70,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V6.3";
+my $version_id  = "gen_seq4.pl V7.0";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -129,6 +129,7 @@ my $name;
 my @parms;
 my $old_package = "";
 my $gen_count = 0;
+my %zhash = qw(0 ZERO 1 ONE 2 TWO 3 THREE 4 FOUR 5 FIVE 6 SIX 7 SEVEN 8 EIGHT 9 NINE 10 TEN); $zhash{"-1"} = "NEG_ONE";
 
 mkdir $targetdir;
 my $old_callcode = "";
@@ -202,7 +203,11 @@ while (<>) { # read inputfile
             $parm =~ s{\.\/\(}{.divide\(}g;
             $parm =~ s{\.\+\(}{.add\(}g;
             $parm =~ s{\.\-\(}{.subtract\(}g;
+            $parm =~ s{\.multiply\(2\)}{.multiply2\(\)}g;
+            $parm =~   s{\.divide\(2\)}  {.divide2\(\)}g;
             $parms[$iparm] = $parm;
+            #                      1          1
+            $parm =~ s{Z\.valueOf\((\-1|0-9|10)\)}{"Z." . $zhash{$1}}eg;
         }
         if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
             @terms = map {
@@ -397,7 +402,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WFACTORIAL\.}                  ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
     if ($line =~ m{\WFactorSequence}               ) { $imports{"irvine.factor.util.FactorSequence"}             = $itype; }
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }
-    if ($line =~ m{\WGroupFactory}                 ) { $imports{"irvine.math.group.GroupFactory"               } = $itype; }
+    if ($line =~ m{\WFilterPositionSequence}       ) { $imports{"irvine.oeis.FilterPositionSequence"           } = $itype; }
+    if ($line =~ m{\WFilterSequence}               ) { $imports{"irvine.oeis.FilterSequence"                   } = $itype; }
     if ($line =~ m{\WHolonomicRecurrence}          ) { $imports{"irvine.oeis.recur.HolonomicRecurrence"}         = $itype; }
     if ($line =~ m{\WIntegerPartition}             ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }
     if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"}                      = $itype; }
