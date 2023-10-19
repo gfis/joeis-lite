@@ -112,6 +112,9 @@ sub pack1 {
 #----
 sub unpack1 {
     my ($aseqno, $change) = @_;
+    if (length($aseqno) == 0) {
+       return;
+    }
     my $adir = lc(substr($aseqno, 0, 4));
     my $srcname = "$srcroot/$adir/$aseqno.java";
     if ($force == 0 && ! open(SRC, "<", $srcname)) {

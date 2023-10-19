@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: 08b49ddc73ef271c7054bb70acb278bcff247562 $
+    2023-10-18: depends compile,compile-internal
     2022-08-14: compile internal/irvine also; CK=65
     2022-05-08: compile with -Xdiags:verbose
     2022-04-28: remove target="${jdk.version}" in task compile
@@ -231,7 +232,7 @@
                 source="${jdk.version}" target="${jdk.version}"
                 source="${jdk.version}"
     -->
-    <target name="compile"  depends="compile-internal,generate">
+    <target name="compile"  depends="generate">
         <depend srcdir="${src.home}" destdir="${build.classes}" cache="${build.home}" dump="yes" />
         <javac  srcdir="${src.home}" destdir="${build.classes}" listfiles="yes"
                 encoding="utf8"
@@ -301,7 +302,7 @@
         create the binary distributions: jar and war
         target core.jar must be defined somehow (maybe empty) in build.xml
     -->
-    <target name="dist"     depends="prepare,compile"><!-- ,manifest,core.jar" -->
+    <target name="dist"     depends="prepare,compile,compile-internal"><!-- ,manifest,core.jar" -->
     <!--
         <antcall target="manifest">
             <param name="core" value="-core"  />

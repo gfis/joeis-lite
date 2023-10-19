@@ -5,7 +5,7 @@
 # 2020-12-16, Georg Fischer: copied from genet.pl
 #
 #:# Usage:
-#:#   grep ... $(COMMON)/cat25.txt | cut -b4-1 | sed ... \
+#:#   grep ... $(COMMON)/jcat25.txt | cut -b4-1 | sed ... \
 #:#   | perl nest.pl [-d debug] [-f ofter_file] > output
 #:#     -d  debugging level (0=none (default), 1=some, 2=more)
 #:#     -f  file with aseqno, offset1, terms (default $(COMMON)/joeis_ofter.txt)

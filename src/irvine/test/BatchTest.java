@@ -1,6 +1,7 @@
 package irvine.test;
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id$
+ *  2023-10-18: V4.2: optionally try DirectSequence a-methods
  *  2022-06-20: V4.0: use SequenceFactory
  *  2022-06-18: V3.1: CASBridge removed
  *  2022-06-10: V3.0: FATO destroys the subprocess of a CASBridge sequence
@@ -36,6 +37,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 
 import irvine.math.z.Z;
+import irvine.oeis.DirectSequence;
 import irvine.oeis.Sequence;
 import irvine.oeis.SequenceFactory;
 
@@ -47,7 +49,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id$";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V4.1";
+  private static String VERSION = "BatchTest V4.2";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -82,11 +84,23 @@ public class BatchTest {
   /** Give up after so many terms */
   private int     giveUpLimit;
 
+  /** Whether DirectSequence a-methods should be compared */
+  private boolean mDirect;
+  /** Compare a-methods up to this index */
+  private int     mDirectMax;
+  /** seq cast into a DirectSequence, or null */
+  private DirectSequence mDirectSeq; 
+  /** Whether the sequence to be tested is an instance of DirectSequence */
+  private boolean mIsDirect;
+
   /** Allowed number of successive failures */
   private int     maxFailCount;
 
   /** How many milliseconds should a single sequence be allowed to run */
   private long    millisToRun;
+
+  /** Offset1 from OEIS resp. getOffset */
+  private int     mOffset;
 
   /** Indicator for b-file read error */
   private static final int READ_ERROR = -29061947; // different from any b-file index
@@ -128,6 +142,11 @@ public class BatchTest {
     millisToRun    = 4000L;
     sequenceMayRun = true;
     bFilePath      = "../../../OEIS-mat/common/bfile/";
+    mDirect        = false;
+    mDirectMax     = 16; // default
+    mDirectSeq     = null; // default
+    mIsDirect      = false;
+    mOffset        = 0;
     seekPosition   = 0L; // start at beginning of input file
     readFromBFile  = false;
     skipAseqno     = "A000000";
@@ -184,14 +203,23 @@ public class BatchTest {
   
   /** Test the next term computed by the sequence
    *  @param  seq Sequence to be tested
-   *  @param  indexStr index from b-file
+   *  @param  index index from b-file
    *  @param  expected expected term for a(n)
    *  @return 0 = passed, 1 = failed
    */
-  private int testNext(Sequence seq, String indexStr, String expected) {
+  private int testNext(Sequence seq, int index, String expected) {
     int failure = 0; // assume pass
     try {
       Z term = seq.next();
+      if (mDirect && mIsDirect && index <= mDirectMax) {
+        
+        Z terma = mDirectSeq.a(index);
+        if (!terma.equals(term)) {
+          failure = 1;
+          printLog("FATAL", "Difference between next() and a(" + String.valueOf(index) + "): ", 
+              String.valueOf(term) + " != " + String.valueOf(terma));
+        }
+      }
       mCount ++; // one more is computed
       String computed = term == null ? "null" : term.toString();
       if (! computed.equals(expected) || failCount > 0) {
@@ -200,7 +228,7 @@ public class BatchTest {
         diffComputed += "," + abbrev(computed);
         diffExpected += "," + abbrev(expected);
         if (failCount == 0) {
-          mDiff = Integer.parseInt(indexStr);
+          mDiff = index;
         }
         failCount ++; // maybe FAIL
         if (failCount >= maxFailCount) {
@@ -250,7 +278,12 @@ public class BatchTest {
           if (line.length() > 0) { // line not empty
             int spacePos = line.indexOf(' ');
             String expected = line.substring(spacePos + 1);
-            String index = line.substring(0, spacePos);
+            int index = 0;
+            try {
+                index = Integer.parseInt(line.substring(0, spacePos));
+            } catch (Exception exc) {
+                printLog("FATAL", "wrong index in b-file: " + line.substring(0, spacePos), "Stack: " + getShortTrace(exc));
+            }
             failure = testNext(seq, index, expected);
             // mCount is incremented in testNext
           } // line not empty
@@ -300,7 +333,7 @@ public class BatchTest {
         failure = 0; // assume pass
         while (sequenceMayRun && failure == 0 && mCount < termNoLimit
             ) {
-          failure = testNext(seq, String.valueOf(mCount), terms[mCount]);
+          failure = testNext(seq, mCount, terms[mCount]);
           // mCount is incremented in testNext
           timeDiff = System.currentTimeMillis() - startTime;
           if (timeDiff > millisToRun) {
@@ -398,6 +431,9 @@ public class BatchTest {
               }
               // construction failed: irvine.oeis.a332.A332993
               if (seq != null) { // could be constructed
+                mIsDirect  = seq instanceof  DirectSequence;
+                mDirectSeq = mIsDirect    ? (DirectSequence) seq : null;
+                mOffset    = seq.getOffset();
                 if (readFromBFile) {
                   if (parts.length > 0) {
                     testSequence(seq, parts[1].replaceAll("\\,\\Z", "").split("\\,")); // for fallback
@@ -447,11 +483,12 @@ public class BatchTest {
     int iarg = 0;
     if (args.length == 0) {
       System.out.print("Usage: BatchTest [-v[v]] [-d level] [-b bfile-dir] [-t timeout] {- | filename}\n"
-          + "    -b path       check against b-files in this directory (default: off)\n"
-          + "    -d level      debugging level: 0=none, 1=some, 2=more (default: 0)\n"
-          + "    -s seekpos    seek to position (decimal or hex offset printed behind \"# start\" (default: 0x0)\n"
-          + "    -t seconds    interrupt a sequence after this time (default: 4 s)\n"
-          + "    -u limit      give up after limit terms (default: process whole b-file)\n"
+          + "    -b   path       check against b-files in this directory (default: off)\n"
+          + "    -d   level      debugging level: 0=none, 1=some, 2=more (default: 0)\n"
+          + "    -dir max        compare results of a-method in DirectSequences up to this index (default: 16)\n"
+          + "    -s   seekpos    seek to position (decimal or hex offset printed behind \"# start\" (default: 0x0)\n"
+          + "    -t   seconds    interrupt a sequence after this time (default: 4 s)\n"
+          + "    -u   limit      give up after limit terms (default: process whole b-file)\n"
           + "    -v, -vv, -vvv verbosity level\n"
           );
       return;
@@ -468,9 +505,17 @@ public class BatchTest {
         }
         readFromBFile = true;
 
-      } else if (arg.startsWith("-d")) {
+      } else if (arg.equals    ("-d")) {
         try {
           debug = Integer.parseInt(args[iarg ++]);
+        } catch (Throwable exc) {
+          // silently assume default
+        }
+
+      } else if (arg.startsWith("-dir")) {
+        try {
+          mDirectMax = Integer.parseInt(args[iarg ++]);
+          mDirect = true;
         } catch (Throwable exc) {
           // silently assume default
         }
