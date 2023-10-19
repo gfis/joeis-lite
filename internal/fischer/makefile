@@ -6638,6 +6638,11 @@ nest0:
 	wc -l    $@.tmp
 nest:
 	cp -v nest0.tmp nest.gen
+nesta: 
+	grep -P "\tnesta\t" aman/nest2.man \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 #--------
 weylgr0:
 	cat $(COMMON)/joeis_names.txt \
