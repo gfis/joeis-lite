@@ -1,0 +1,64 @@
+# A113427	convprod	0	-1	new A133637()	Convolution inverse of €113427
+A113427	filter	0	new A001223()	v -> !v.equals(Z.TWO) && Jaguar.factor(v).isSquareFree()
+A195849	convprod	0	-1	new A232714()	Convolution inverse of €195849.
+A077335	convprod	0	-1	new A292164()	Convolution inverse of €077335.
+A077365	convprod	0	-1	new A292280()	Convolution inverse of €077365.
+A292318	convprod	0	-1	new A292319()	Convolution inverse of €292318.
+A294607	convprod	0	-1	new A294611()	Convolution inverse of €294607.
+A298993	convprod	0	-1	new A298994()	Convolution inverse of €298993.
+A145519	convprod	0	-1	new A304791()	Convolution inverse of €145519.
+A266942	convprod	0	-1	new A305745()	Convolution inverse of €266942.
+A147655	convprod	0	-1	new A305881()	Convolution inverse of €147655.
+A129373	convprod	0	-1	new A307596()	Convolution inverse of €129373.
+A129374	convprod	0	-1	new A321317()	Convolution inverse of €129374.
+A279784	convprod	0	-1	new A321619()	Convolution inverse of €279784.
+A087188	convprod	0	-1	new A329069()	Convolution inverse of €087188.
+A067592	convprod	0	-1	new A357382()	Convolution inverse of €067592.
+A328745	dirichinv	0	new A329445()	Dirichlet inverse of €328745.
+
+A094531	trinv	0	A102587	 Rows sums are 1,0,-2,0,2,0,-2,... with g.f. (1-x^2)/(1+x^2). Diagonal sums are (-1)^n*C(1,n) with g.f. 1-x. - _Paul Barry_, Jul 14 2005
+A105794	trinv	0	A105793	
+A106346	trinv	0	A106344	
+A109267	trinv	0	A109264	
+A113187	trinv	0	A111125	
+A112477	trinv	0	A112475	
+A112519	trinv	0	A112517	
+A114004	trinv	0	A114002	 Row sums are A114003.
+A114115	trinv	0	A114114	 Product with first difference matrix (1-x,x) is €114117.
+A114189	trinv	0	A114188	 A signed version is A110511.
+A115358	trinv	0	A115356	
+A115513	trinv	0	A115512	
+A115954	trinv	0	A115952	
+A117178	trinv	0	A117179	 Row sums are (-1)^n*A098554(n+1). Diagonal sums are 1,0,-2,0,2,0,-2,... with g.f. (1-x^2)/(1+x^2).
+A117184	trinv	0	A117185	
+A117200	trinv	0	A117198	
+A117375	trinv	0	A117372	
+A117414	trinv	0	A117411	 Row sums of the inverse are the Euler numbers A000364.
+A119275	trinv	0	A119274	
+A121575	trinv	0	A121574	
+A116395	trinv	0	A123876	
+A123880	trinv	0	A123878	
+A124305	trinv	0	A124304	
+A124747	trinv	0	A124744	
+A124752	trinv	0	A124749	
+A127831	trinv	0	A127829	
+A128206	trinv	0	A128207	
+A167432	trinv	0	A167431	
+A186826	trinv	0	A186827	
+A188317	trinv	0	A188316	
+
+A104027	trinv	0	A056241	Forms the even-indexed trinomial coefficients (A027907). Matrix inverse is €104027
+A145905	trilamb	0	0	0	(n == 0) ? Z.ONE : Z.valueOf(2*k + 1).pow(n - k)
+A276967	filter	0	new A015922()	(n,v) -> v.testBit(0)	The odd terms form €276967.
+A276968	filter	0	new A015925()	(n,v) -> v.testBit(0)	The odd terms form €276968.
+A276969	filter	0	new A015927()	(n,v) -> v.testBit(0)	The odd terms form €276969.
+A276970	filter	0	new A015931()	(n,v) -> v.testBit(0)	The odd terms form €276970.
+A276971	filter	0	new A015935()	(n,v) -> v.testBit(0)	The odd terms form €276971.  
+A244673	filter	0	new A115976()	(n,v) -> (n & 1) == 1	The odd terms form €115976.
+A245319	filter	0	new A357125()	(n,v) -> (n & 1) == 1	The odd terms form €357125.
+A093730	rowsum	0	new A093729()	Row sums form €093730.
+# A101901	rowsum	0	new SimpleTransformSequence(0, new A101897(), v -> v.abs())	Absolute row sums form €101901
+A102588	rowsum	0	new SimpleTransformSequence(0, new A102587(), v -> v.abs())	Absolute row sums form €102588
+A103367	rowsum	0	new SimpleTransformSequence(0, new A103364(), v -> v.abs())	Absolute row sums form €103367.
+A104968	rowsum	0	new SimpleTransformSequence(0, new A104967(), v -> v.abs())	Absolute row sums form €104968. 
+A104969	rowsum	0	new SimpleTransformSequence(0, new A104967(), v -> v.square())	Row sums of squared terms gives €104969

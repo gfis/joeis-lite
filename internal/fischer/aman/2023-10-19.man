@@ -1,0 +1,84 @@
+A067072	simtraf	0	new A061912()	v -> v.square()	a(n)=Annn(n)^(\d+)		2	A061912
+A070908	filter	0	new A000110()	(n, v) -> n % 5 == 0	a(n)=Annn((\d+)*n)	5	A000110
+A071555	simtraf	0	new A002110().skip(3)	v -> v.divide( 6).add(1)	a(n)=(\d+)+Annn(n)/(\d+)	1, 6	A002110
+A071556	simtraf	0	new A002110().skip(4)	v -> v.divide(30).add(1)	a(n)=(\d+)+Annn(n)/(\d+)	1,30	A002110
+A071797	simtraf	0	new A053186()	v -> v.add(1)	a(n)=(\d+)+Annn(n-(\d+))	1,1	A053186
+A072203	simtraf	0	new A002819().skip(1)	v -> Z.ONE.subtract(v)	a(n)=(\d+)-Annn(n)	1	A002819
+A073799	simtraf	0	new A033844().skip(1)	(n, v) -> (n == 1) ? Z.TWO : v	a(n)=Annn(n)forn>(\d+)	1	A033844
+A075526	prepend	0	new A001223()	1	a(n)=Annn(n)forn>(\d+)	0	A001223
+A076903	simtraf	0	new A000110()	(n, v) -> v.divide(v.gcd(FA(n)))	a(n)=Annn(n)/gcd(Annn(n),n!)		A000110,A000110
+A076904	simtraf	0	new A000110()	(n, v) -> FA(n).divide(v.gcd(FA(n)))	a(n)=Annn(n)/gcd(Annn(n),n!)		A000142,A000110
+A081827	diffs	0	new A005185()	a(n)=Annn(n+(\d+))-Annn(n)	1	A005185,A005185
+A083459	simtraf	0	new A083458()	v -> v.pow(5).add(1)	a(n)=(\d+)+Annn(n)^(\d+)	1,5	A083458
+A083730	simtraf	0	new A249740()	v -> v.square()	a(n)=Annn(n)^(\d+)		2	A249740
+A086936	prepend	0	new SimpleTransformSequence(1, new A000720(), (n, v) -> ZV(n + 1).subtract(v))	1	a(n)=(\d+)+n-Annn(n)	1	A000720
+A087239	diffs	0	new A038625()	a(n)=Annn(n+(\d+))-Annn(n)	1	A038625,A038625
+A087691	simtraf	0	new A002145()	v -> v.square()	a(n)=Annn(n)^(\d+)		2	A002145
+A091067	simtraf	0	new A060833().skip(1)	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	1,1	A060833
+A092436	simtraf	0	new A010060().skip(1)	v -> Z.ONE.subtract(v)	a(n)=(\d+)-Annn(n)	1	A010060
+A095374	simtraf	0	new A099774().skip(1)	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	1,1	A099774
+A101876	filter	0	new A000688()	(n, v) -> n % 4 == 0	a(n)=Annn((\d+)*n)	4	A000688
+A102552	simtraf	0	new A036263().skip(1)	v -> v.divide(2).negate()	a(n)=Annn(n)/(\d+)		2	A036263
+A104804	simtraf	0	new A063827().skip(1)	(n, v) -> (n <= 2) ? ZV(2*n - 1) : v	a(n)=Annn(n)forn>(\d+)	2	A063827
+A116958	simtraf	0	new A002822()	v -> v.subtract(1).multiply(3)	a(n)=(\d+)*Annn(n-(\d+))	3,1	A002822
+A119693	simtraf	0	new A119692()	v -> v.divide(2)	a(n)=Annn(n)/(\d+)		2	A119692
+A121170	filter	0	new A060385()	(n, v) -> n % 5 == 0	a(n)=Annn((\d+)*n)	5	A060385
+A122028	simtraf	0	new A002233()	(n, v) -> (n == 1) ? Z.THREE : v	a(n)=Annn(n)forn>(\d+)	1	A002233
+A125109	diffs	0	new A006037()	a(n)=Annn(n+(\d+))-Annn(n)	1	A006037,A006037
+A125824	simtraf	0	new A089792()	v -> ZV(3).pow(v.longValueExact())	a(n)=(\d+)^Annn(n)	3	A089792
+A126606	simtraf	0	new A002487()	v -> v.multiply2()	a(n)=(\d+)*Annn(n-(\d+))	2,1	A002487
+A128193	diffs	0	new A005849()	a(n)=Annn(n+(\d+))-Annn(n)	1	A005849,A005849
+A128950	lambdan	0	n -> { final Z z10n = Z.TEN.pow(n); return z10n.subtract(z10n./( 7)).-(z10n./( 30)).+(z10n./(210)); }	a(n)=(\d+)^n-floor((\d+)^n/(\d+))-floor((\d+)^n/(\d+))+floor((\d+)^n/(\d+))	10,10, 7,10, 30,10,210	
+A128951	lambdan	0	n -> { final Z z10n = Z.TEN.pow(n); return z10n.subtract(z10n./( 5)).-(z10n./( 42)).+(z10n./(210)); }	a(n)=(\d+)^n-floor((\d+)^n/(\d+))-floor((\d+)^n/(\d+))+floor((\d+)^n/(\d+))	10,10, 5,10, 42,10,210	
+A128952	lambdan	0	n -> { final Z z10n = Z.TEN.pow(n); return z10n.subtract(z10n./( 3)).-(z10n./( 70)).+(z10n./(210)); }	a(n)=(\d+)^n-floor((\d+)^n/(\d+))-floor((\d+)^n/(\d+))+floor((\d+)^n/(\d+))	10,10, 3,10, 70,10,210	
+A128954	lambdan	0	n -> { final Z z10n = Z.TEN.pow(n); return z10n.subtract(z10n./( 2)).-(z10n./(105)).+(z10n./(210)); }	a(n)=(\d+)^n-floor((\d+)^n/(\d+))-floor((\d+)^n/(\d+))+floor((\d+)^n/(\d+))	10,10, 2,10,105,10,210	
+A128956	lambdan	0	n -> { final Z z10n = Z.TEN.pow(n); return z10n.subtract(z10n./(14)).-(z10n./( 15)).+(z10n./(210)); }	a(n)=(\d+)^n-floor((\d+)^n/(\d+))-floor((\d+)^n/(\d+))+floor((\d+)^n/(\d+))	10,10,14,10, 15,10,210	
+A131377	prepend	0	new SimpleTransformSequence(0, new A071986(), v -> Z.ONE.subtract(v))	1	a(n)=(\d+)-Annn(n)	1	A071986
+A138787	diffs	0	new A007878()	a(n)=Annn(n+(\d+))-Annn(n)	1	A007878,A007878
+A138794	diffs	0	new A138793()	a(n)=Annn(n+(\d+))-Annn(n)	1	A138793,A138793
+A138795	simtraf	0	new DifferenceSequence(new A138793())	(n, v) -> v.divide(Z.TEN.pow(n))	a(n)=Annn(n+(\d+))-Annn(n)	1	A138793,A138793
+A157129	simtraf	0	new A071928()	v -> v.divide(2)	a(n)=Annn(n)/(\d+)		2	A071928
+A162867	simtraf	0	new A007504().skip(1)	(n, v) -> v.*(n + 1)	a(n)=(n+(\d+))*Annn(n)	1	A007504
+A175065	simtraf	0	new A005179().skip(1)	v -> ZV(2).pow(v.longValueExact())	a(n)=(\d+)^Annn(n)	2	A005179
+A175391	simtraf	0	new A063774()	v -> v.square()	a(n)=Annn(n)^(\d+)		2	A063774
+A177680	simtraf	0	new A066388()	v -> v.divide(6)	a(n)=Annn(n)/(\d+)		6	A066388
+A177897	filter	0	new A001317()	(n, v) -> n % 7 == 0	a(n)=Annn((\d+)*n)	7	A001317
+A179694	simtraf	0	new A054753()	v -> v.pow(3)	a(n)=Annn(n)^(\d+)		3	A054753
+A181811	simtraf	0	new A108951()	(n, v) -> v.divide(n)	a(n)=Annn(n)/n				A108951
+A183061	prepend	0	new SimpleTransformSequence(1, new A147582(), v -> v.divide(2).add(1))	0	a(n)=(\d+)+Annn(n)/(\d+)	1, 2	A147582
+A185192	simtraf	0	new A007053().skip(1)	(n, v) -> (n == 1) ? Z.ZERO : v	a(n)=Annn(n)forn>(\d+)	1	A007053
+A189988	simtraf	0	new A054753()	v -> v.square()	a(n)=Annn(n)^(\d+)		2	A054753
+A195189	simtraf	0	new A002207().skip(1)	(n, v) -> v.*(n + 1)	a(n)=(n+(\d+))*Annn(n)	1	A002207
+A214206	filter	0	new A003056()	(n, v) -> n % 14 == 0	a(n)=Annn((\d+)*n)	14	A003056
+A227354	filter	0	new A122859()	(n, v) -> n % 8 == 0	a(n)=Annn((\d+)*n)	8	A122859
+A245747	simtraf	0	new A063895().skip(4)	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	1,1	A063895
+A249743	simtraf	0	new A083141()	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	1,1	A083141
+A263097	diffs	0	new A263096()	a(n)=Annn(n+(\d+))-Annn(n)	1	A263096,A263096
+A263390	simtraf	0	new A163491()	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	1,1	A163491
+A266697	simtraf	0	new A002326()	(n, v) -> v.divide(v.gcd(Z.valueOf(n)))	a(n)=Annn(n)/gcd(n,Annn(n))		A002326,A002326
+A268336	simtraf	0	new A174824()	(n, v) -> v.divide(n)	a(n)=Annn(n)/n				A174824
+A275895	simtraf	0	new A065188()	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	1,1	A065188
+A278041	simtraf	0	new A003146()	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	1,1	A003146
+A296229	simtraf	0	new A257609()	v -> v.multiply2()	a(n)=(\d+)*Annn(n-(\d+))	2,1	A257609
+A305497	simtraf	0	new A305498().skip(1)	v -> v.subtract(2)	a(n)=Annn(n+(\d+))-(\d+)	1,2	A305498
+A308754	simtraf	0	new A099801().skip(1)	v -> v.subtract(2)	a(n)=Annn(n+(\d+))-(\d+)	1,2	A099801
+A309579	simtraf	0	new A056199().skip(1)	v -> v.multiply2()	a(n)=(\d+)*Annn(n-(\d+))	2,1	A056199
+A319627	simtraf	0	new A064989()	(n, v) -> v.divide(v.gcd(Z.valueOf(n)))	a(n)=Annn(n)/gcd(n,Annn(n))		A064989,A064989
+A320667	diffs	0	new A066194()	a(n)=Annn(n+(\d+))-Annn(n)	1	A066194,A066194
+A326443	simtraf	0	new A326444()	(n, v) -> (n == 0) ? Z.ZERO : v.divide(n)	a(n)=Annn(n)/n			0	A326444
+A327496	simtraf	0	new A327492()	v -> ZV(4).pow(v.longValueExact())	a(n)=(\d+)^Annn(n)	4	A327492
+A329178	simtraf	0	new A329227().skip(7)	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	7,1	A329227
+A330503	simtraf	0	new A002088().skip(1)	(n, v) -> v.*(n + 1)	a(n)=(n+(\d+))*Annn(n)	1	A002088
+A343695	simtraf	0	new A343694()	v -> v.square()	a(n)=Annn(n)^(\d+)		2	A343694
+A348327	simtraf	0	new A347950()	v -> Z.ONE.subtract(v)	a(n)=(\d+)-Annn(n)	1	A347950
+A348994	simtraf	0	new A003961()	(n, v) -> v.divide(v.gcd(Z.valueOf(n)))	a(n)=Annn(n)/gcd(n,Annn(n))		A003961,A003961
+A357214	simtraf	0	new A065855()	v -> ZV(2).pow(v.longValueExact())	a(n)=(\d+)^Annn(n)	2	A065855
+A357518	simtraf	0	new A087088()	v -> v.modZ(2)	a(n)=Annn(n)mod(\d+)	2	A087088
+A357580	simtraf	0	new A357502()	(n, v) -> v.divide(n)	a(n)=Annn(n)/n				A357502
+A359774	simtraf	0	new A359773()	v -> v.testBit(0) ? Z.ONE : Z.ZERO	a(n)=Annn(n)mod(\d+)	2	A359773
+A359781	simtraf	0	new A359780()	v -> v.testBit(0) ? Z.ONE : Z.ZERO	a(n)=Annn(n)mod(\d+)	2	A359780
+A360226	simtraf	0	new A172112().skip(1)	v -> v.subtract(3)	a(n)=Annn(n+(\d+))-(\d+)	1,3	A172112
+A360692	simtraf	0	new A101279().skip(1)	v -> v.subtract(1)	a(n)=Annn(n+(\d+))-(\d+)	2,1	A101279
+A360743	simtraf	0	new A001831()	(n, v) -> v.*(n + 1)	a(n)=(n+(\d+))*Annn(n)	1	A001831
+A360966	filter	0	new A046983()	(n, v) -> n % 2 == 0	a(n)=Annn((\d+)*n)	2	A046983
+A364402	filter	0	new A262732()	(n, v) -> n % 2 == 0	a(n)=Annn((\d+)*n)	2	A262732

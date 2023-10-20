@@ -1,0 +1,87 @@
+A101745	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(10))	{m:Annn(m)=(\d+)}	10	A069904
+A108815	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(3))	{m:Annn(m)=(\d+)}	3	A069904
+A114435	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(4))	{m:Annn(m)=(\d+)}	4	A069904
+A114436	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(5))	{m:Annn(m)=(\d+)}	5	A069904
+A114437	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(6))	{m:Annn(m)=(\d+)}	6	A069904
+A164977	filtpos	0	1	new A035470()	v -> v.equals(Z.valueOf(2))	{m:Annn(m)=(\d+)}	2	A035470
+A164977	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(2))	{m:Annn(m)=(\d+)}	2	A069904
+A177029	simtraf	0	new FilterPositionSequence(3, 1, new A177025(), v -> v.equals(Z.valueOf(2)))	v -> v.add(2)	{m:Annn(m)=(\d+)}	2	A177025
+A240527	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(7))	{m:Annn(m)=(\d+)}	7	A069904
+A240528	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(8))	{m:Annn(m)=(\d+)}	8	A069904
+A240529	filtpos	0	1	new A069904()	v -> v.equals(Z.valueOf(9))	{m:Annn(m)=(\d+)}	9	A069904
+A054979	filtpos	0	1	new A051377()	(n,v) -> v.equals(Z.valueOf(2*n))	{n:Annn(n)=(\d+)*n}	2	A051377
+A165558	filtpos	0	1	new A003415()	(n,v) -> v.equals(Z.valueOf(2*n))	{n:Annn(n)=(\d+)*n}	2	A003415
+A114840	filtpos	0	1	new A022307()	v -> v.equals(Z.valueOf(5))	{n:Annn(n)=(\d+)}	5	A022307
+A067051	filtpos	0	1	new A049605()	v -> v.equals(Z.valueOf(3))	{n:Annn(n)=(\d+)}	3	A049605
+A067051	filtpos	0	1	new A084301()	v -> v.equals(Z.valueOf(3))	{n:Annn(n)=(\d+)}	3	A084301
+A072862	filtpos	0	1	new A049605()	v -> v.equals(Z.valueOf(6))	{n:Annn(n)=(\d+)}	6	A049605
+A074384	filtpos	0	1	new A084301()	v -> v.equals(Z.valueOf(5))	{n:Annn(n)=(\d+)}	5	A084301
+A074627	filtpos	0	1	new A084301()	v -> v.equals(Z.valueOf(0))	{n:Annn(n)=(\d+)}	0	A084301
+A074628	filtpos	0	1	new A084301()	v -> v.equals(Z.valueOf(2))	{n:Annn(n)=(\d+)}	2	A084301
+A074630	filtpos	0	1	new A084301()	v -> v.equals(Z.valueOf(4))	{n:Annn(n)=(\d+)}	4	A084301
+A074969	filtpos	0	1	new A001221()	v -> v.equals(Z.valueOf(6))	{n:Annn(n)=(\d+)}	6	A001221
+A093696	filtpos	0	1	new A356018()	v -> v.equals(Z.valueOf(0))	{n:Annn(n)=(\d+)}	0	A356018
+A175989	filtpos	0	1	new A033880()	v -> v.equals(Z.valueOf(32))	{n:Annn(n)=(\d+)}	32	A033880
+A179209	filtpos	0	1	new A178970()	v -> v.equals(Z.valueOf(2))	{n:Annn(n)=(\d+)}	2	A178970
+
+A358751	simtraf	0	new A349905()	v -> (v.mod(4) == 1) ? Z.ONE : Z.ZERO	Annn(n)==(\d+)(mod(\d+))],where[]istheIversonbracket	1,4	A349905
+A358753	simtraf	0	new A349905()	v -> (v.mod(4) == 3) ? Z.ONE : Z.ZERO	Annn(n)==(\d+)(mod(\d+))],where[]istheIversonbracket	3,4	A349905
+A358771	simtraf	0	new A003415()	v -> (v.mod(4) == 1) ? Z.ONE : Z.ZERO	Annn(n)==(\d+)(mod(\d+))],where[]istheIversonbracket	1,4	A003415
+A358773	simtraf	0	new A003415()	v -> (v.mod(4) == 3) ? Z.ONE : Z.ZERO	Annn(n)==(\d+)(mod(\d+))],where[]istheIversonbracket	3,4	A003415
+                                
+A354989	simtraf	0	new A354988()	v -> (v.compareTo(Z.valueOf(0)) <  0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)<(\d+)	0	A354988
+A359158	simtraf	0	new A355689()	v -> (v.compareTo(Z.valueOf(0)) <  0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)<(\d+)	0	A355689
+A359372	simtraf	0	new A358839()	v -> (v.compareTo(Z.valueOf(0)) <  0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)<(\d+)	0	A358839
+                                
+A353681	simtraf	0	new A353636()	v -> (v.compareTo(Z.valueOf(0)) >  0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)>(\d+)	0	A353636
+A353815	simtraf	0	new A074941()	v -> (v.compareTo(Z.valueOf(0)) >  0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)>(\d+)	0	A074941
+A359156	simtraf	0	new A355689()	v -> (v.compareTo(Z.valueOf(0)) >  0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)>(\d+)	0	A355689
+A359370	simtraf	0	new A358839()	v -> (v.compareTo(Z.valueOf(0)) >  0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)>(\d+)	0	A358839
+                                
+A353813	simtraf	0	new A004018().skip(1)	v -> (v.compareTo(Z.valueOf(8)) == 0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)=(\d+)	8	A004018
+A354031	simtraf	0	new A024362()	v -> (v.compareTo(Z.valueOf(1)) == 0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)=(\d+)	1	A024362
+A355940	simtraf	0	new A355934()	v -> (v.compareTo(Z.valueOf(1)) == 0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)=(\d+)	1	A355934
+A359466	simtraf	0	new A056170()	v -> (v.compareTo(Z.valueOf(1)) == 0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)=(\d+)	1	A056170
+A360128	simtraf	0	new A088722()	v -> (v.compareTo(Z.valueOf(0)) == 0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)=(\d+)	0	A088722
+A364252	simtraf	0	new A336467()	v -> (v.compareTo(Z.valueOf(1)) == 0) ? Z.ONE : Z.ZERO	a(n)=[Annn(n)=(\d+)	1	A336467
+
+A133823	simtraf	0	new A004737()	v -> v.pow(3)	A004737
+A133824	simtraf	0	new A124258()	v -> v.square()	A124258
+
+A095277	simtraf	0	new A091236()	v -> v.subtract(3).divide(4)	,4		A091236      
+A096030	simtraf	0	new A079887()	v -> v.subtract(1).divide(2)	,2		A079887      
+A153275	simtraf	0	new A053178()	v -> v.subtract(1).divide(10)	,10		A053178  
+A163625	simtraf	0	new A163573()	v -> v.subtract(1).divide(120)	,120	A163573  
+A182393	simtraf	0	new A022011()	v -> v.subtract(11).divide(210)	,210	A022011  
+A334296	simtraf	0	new A057778()	v -> v.subtract(1).divide(2)	,2		A057778      
+A364926	simtraf	0	new A048184()	v -> v.subtract(1).divide(2)	,2		A048184     
+
+
+A362374	simtraf	0	new A038518()	v -> v.multiply(4)	4	A038518 
+A076504	simtraf	0	new A066388()	v -> v.multiply2()	2	A066388
+A180963	simtraf	0	new A036556()	v -> v.multiply(3)	3	A036556
+A282154	simtraf	0	new A282097()	v -> v.multiply(24)	24	A282097
+A362419	simtraf	0	new A007504().skip(1)	v -> v.multiply2()	2	A007504
+A365076	simtraf	0	new A057661()	v -> v.multiply2()	2	A057661
+
+A066811	simtraf	0	new A046036()	v -> v.multiply(2).subtract(1)	a(n)=(\d+)*Annn(n)-(\d+)	2,1	A046036
+A110873	simtraf	0	new A055469()	v -> v.multiply(8).subtract(7)	a(n)=(\d+)*Annn(n)-(\d+)	8,7	A055469
+A121259	simtraf	0	new A002504()	v -> v.multiply(2).subtract(1)	a(n)=(\d+)*Annn(n)-(\d+)	2,1	A002504
+A145471	simtraf	0	new A063909()	v -> v.multiply(2).subtract(5)	a(n)=(\d+)*Annn(n)-(\d+)	2,5	A063909
+A167874	simtraf	0	new A007508()	v -> v.multiply(2).subtract(1)	a(n)=(\d+)*Annn(n)-(\d+)	2,1	A007508
+A213923	simtraf	0	new A005245()	v -> v.multiply(2).subtract(1)	a(n)=(\d+)*Annn(n)-(\d+)	2,1	A005245
+A228353	simtraf	0	new A258261()	v -> v.multiply(3).subtract(4)	a(n)=(\d+)*Annn(n)-(\d+)	3,4	A258261
+A349766	simtraf	0	new A001110().skip(1)	v -> v.multiply(16).subtract(2)	a(n)=(\d+)*Annn(n)-(\d+)	6,2	A001110
+
+A363773	simtraf	0	new A037481()	v -> v.add(1)		A037481
+A073855	simtraf	0	new PrependSequence(0, new A036430(), -1)	v -> v.add(1)		A036430
+A073933	simtraf	0	new A064097()	v -> v.add(1)		A064097
+A160664	simtraf	0	new PrependSequence(0, new A024916(), 0)	v -> v.add(1)		A024916
+A163468	simtraf	0	new A065897()	v -> v.add(2)		A065897
+A178659	simtraf	0	new A068501()	v -> v.add(1)		A068501
+A274017	simtraf	0	new PrependSequence(0, new A000358(), 0)	v -> v.add(1)		A000358
+A277822	simtraf	0	new PrependSequence(0, new A277808(), -1)	v -> v.add(1)		A277808
+A295988	simtraf	0	new A056712()	v -> v.add(1)		A056712
+A325509	simtraf	0	new PrependSequence(0, new A034876(), 0)	v -> v.add(1)		A034876
+A347420	simtraf	0	new PrependSequence(0, new A005490(), 0)	v -> v.add(1)		A005490
+A348364	simtraf	0	new A347950()	v -> v.add(1)		A347950

@@ -1,0 +1,343 @@
+A066260	mul	1		Completely multiplicative with a(p) = A002808(A049084(p)), p prime.
+A069934	mul	1		Multiplicative with a(p^e) = Product_{k=2..e+1} Phi_k(p), where Phi_k(x) is k-th cyclotomic polynomial.
+A072087	mul	1		Completely multiplicative with a(p) = A061712(p). - _David W. Wilson_, Aug 03 2005
+A074848	mul	1		Multiplicative: If e = sum d_k 4^k, then a(p^e) = prod (d_k+1). - _Christian G. Bower_, May 19 2005
+A081210	mul	1		Multiplicative with p^e -> €070321(p^e), p prime.
+A082388	mul	1		Multiplicative with a(2^e) = A006012(e), a(p^e) = 1 for odd prime p. - _Andrew Howroyd_, Jul 31 2018
+A083346	mul	1		Multiplicative with a(p^e) = 1 iff p|e, p otherwise. For f(n) = €083345(n)/€083346(n), f(p^i*q^j*...) = f(p^i)+f(q^j)+ ... The denominator of each term is 1 or the prime, thus the denominator of the sum is the product of the denominators of the components. - _Christian G. Bower_, May 16 2005
+A086932	mul	1		Multiplicative, with a(2^e) = 2 if e = 1 or 0 if e > 1, a(p^e) = (p-1)p^(e-1) if p == 1 (mod 4), a(p^e) = (p+1)p^(e-1) if p == 3 (mod 4). - _Vladeta Jovovic_, Sep 24 2003
+A087692	mult	1	is3(p) ? ((e == 1) ? Z.TWO : Z.THREE.pow(e - 2).multiply2()) : (isMod(6, p, 1) ? p.subtract(1).multiply(p.pow(e - 1)).divide(3) : p.subtract(1).multiply(p.pow(e - 1)))	Multiplicative with a(3) = 2, a(3^k) = 2*3^(k-2) otherwise; a(p^k) = (p-1)*p^(k-1)/3 if prime p == 1 mod 6; a(p^k) = (p-1)*p^(k-1) for all other primes p.
+A087786	mul	1		Multiplicative with a(p^e) = p^(2*floor(2*e/3)) + Sum_{i=0..floor((e-1)/3)} k*(p-1)*p^(e+i-1) where k = 3 if (p = 3 and 3*i+1 = e) or (p mod 3 = 1) otherwise k = 1. - _Andrew Howroyd_, Jul 17 2018
+A088840	mul	1		Multiplicative with a(2^e) = (((-1)^e+2)*(2^(e+1)-1))/3 = A213243(e+1), and a(p^e) = 1 for an odd prime p.
+A089242	mulr	1		Multiplicative with a(2^e) = 1 + a(e), a(p^e) = 1 for odd prime p. - _Andrew Howroyd_, Jul 27 2018
+A090884	mult	1	{ if (is2(p)) { return Z.ONE; } else { final long i = Puma.primePi(p); return Puma.primeZ(i - 1).pow(e * (i - 1)); }}	multiplicative with a(2) = 1, a(prime(i+1)) = prime(i)^i for i > 0.
+A091400	mult	1	is2(p) ? Z.ONE : (isMod(4, p, 3) ? Z.ZERO : Z.TWO)	a(n) is multiplicative with: a(2^e) = 1 for e >= 0, a(p^e) = 0 if p == 3 (mod 4) for e > 0,  a(p^e) = 2 if p == 1 (mod 4) for e > 0.
+A102440	mul	1		Multiplicative with prime(i) -> (if i<=2 then prime(i) else €102415(i)).
+A103440	mulr	1		a(n) is multiplicative with a(3^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - z * a(p^(e-2)) where z = Kronecker(-3, p) * p^2 and a(p) = z + 1.
+A108548	mul	1		Fully multiplicative with a(prime(j)) = €108546(j), where €108546 is the lexicographically earliest permutation of primes such that after 2 the forms 4*k+1 and 4*k+3 alternate, and prime(j) is the j-th prime in A000040.
+A108548	mul	1		Multiplicative with a(2^e) = 2^e, else if p is the m-th prime then a(p^e) = q^e where q is the m/2-th prime of the form 4*k + 3 (A002145) for even m and a(p^e) = r^e where r is the (m-1)/2-th prime of the form 4*k + 1 (A002144) for odd m. - _David A. Corneth_, Apr 25 2022
+A115075	mul	1		a(n)=n^3-€115077(n). For squarefree n, a(n)=n^2. Multiplicative with a(p^e)=p^(e)*(p^(e)+p^(e-1)-p^(ceiling(e/2)-1))
+A115155	mulr	1		a(n) is multiplicative with a(3^e) = (-3)^e, a(5^e) = 5^e, a(p^e) = p^e if e even else 0 if p == 7, 11, 13, 14 (mod 15), a(p^e) = a(p) * a(p^(e-1)) - p^2 * a(p^(e-2)) if p == 1, 2, 4, 8 (mod 15).
+A115672	mulr	1		a(n) is multiplicative with a(5^e) = (-1)^e, a(7^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) otherwise.
+A120119	mul	1		Totally multiplicative with a(Prime(k)) = A055025(k).
+A122261	mul	1		Multiplicative with a(p) = A065333(p-1), for p prime.
+A126246	mul	1		Multiplicative with a(p^e) = phi(p^e) = p*(p-1)^(e-1), except when p=2, then a(2)=2, because F(1)=F(2)=1 and a(2^e) = 3*(2^(e-2)), (e > 1, all smaller Fibonacci numbers are coprime, except ones that are multiples of 3, i.e., every 4th one).
+A127863	mul	1		a(n) = b(3*n + 1) where b(n) is multiplicative with b(3^e) = 0^e, b(p^e) = (1 + (-1)^e)/2 * (-p)^(e/2) if p == 2 (mod 3), b(p^e) = b(p) * b(p^(e-1)) - p * b(p^(e-2)) if p == 1 (mod 3) where b(p) = -Sum_{x=0..p-1} Kronecker(4*x^3 + 9, p).
+A128263	mulr	1		a(n) is multiplicative with a(17^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) where a(p) = p minus number of points of elliptic curve modulo p.
+A132705	mul	1		If a(1) were 1 rather than 3, the sequence would be completely multiplicative with a(p) = p + 2. - _Charles R Greathouse IV_, Sep 02 2009
+A133079	mul	1		a(n) = b(24*n + 1) where b(n) is multiplicative with b(2^e) = b(3^e) = 0^e, b(p^e) = (1 + (-1)^e)/2 * p^(e/2) if p == 1, 3 (mod 8), b(p^e) = (1 + (-1)^e)/2 * (-p)^(e/2) if p == 5, 7 (mod 8).
+A133827	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(2^e) = 0^e, b(7^e) = 1, b(p^e) = (1 + (-1)^e) / 2 if p == 3, 5, 6 (mod 7), b(p^e) = e + 1 if p == 1, 2, 4 (mod 7).
+A134080	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(2^e) = 0^e, b(5^e) = 5^e, b(p^e) = (p^(e+1) - 1) / (p - 1) if p == 1, 9 (mod 10), b(p^e) = (p^(e+1)  + (-1)^e) / (p + 1) if p == 3, 7 (mod 10).
+A136549	mul	1		a(n) is multiplicative with a(3^e) = 3^e, a(5^e) = (-5)^e, a(p^e) = p^e * (1 + (-1)^e) / 2 if p == 7, 11, 13, 14 (mod 15), a(p^e) = a(p) * a(p^(e-1)) - p^2 * a(p^(e-2)) if p == 1, 2, 4, 8 (mod 15).
+A138661	mul	1		a(n) is multiplicative with a(11^e) = (-1331)^e, a(p^e) = p^(3*e) * (1 + (-1)^e) / 2 if p == 2, 6, 7, 8, 10 (mod 11), a(p^e) = a(p) * a(p^(e-1)) - p^6 * a(p^(e-2)) if p == 1, 3, 4, 5, 9 (mod 11) where a(p) = y^6 - 6*p*y^4 + 9*p^2*y^2 - 2*p^3 and 4 * p = y^2 + 11 * x^2.
+A140686	mul	1		a(n) is multiplicative with a(7^e) = 0^e, a(p^e) = (1 + (-1)^e) / 2 * (-p)^(e/2) if p == 3, 5, 6 (mod 7)
+A143064	mul	1		a(n) = b(3*n + 1) where b() is multiplicative with b(p^(2*e)) = -(-1)^e if p = 2, b(p^(2*e)) = (-1)^e if p = 5 (mod 6), b(p^(2*e)) = 1 if p = 1 (mod 6), and b(p^(2*e-1)) = b(3^e) = 0 if e>0. - _Michael Somos_, Jul 19 2013
+A145388	mult	1	p.pow(e).multiply2().subtract(1)	Multiplicative: a(p^e) = 2*p^e - 1 for every prime power p^e.
+A152244	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(2^e) = 0^e, b(3^e) = -2 * (-3)^e if e>0, b(p^e) = p^e * (1 + (-1)^e) / 2 if p == 5 (mod 6), b(p^e) = b(p) * b(p^(e-1)) - p^2 * b(p^(e-2)) if p == 1 (mod 6).
+A152958	mul	1		Multiplicative with a(p^e) = p^e * (1 - 1/p^ceiling((e+1)/2)).
+A153728	mul	1		a(n) = b(6*n + 1) where b(n) is multiplicative with b(2^e) = b(3^e) = 0^e, b(p^e) = (1 + (-1)^e) / 2 * (-1)^(e/2) * p^(3*e/2) if p == 5 (mod 6), b(p^e) = b(p) * b(p^(e-1)) - b(p^(e-2)) * p^3 if p == 1 (mod 6) where b(p) = (x^2 - 3*p)*x, 4*p = x^2 + 3*y^2, |x| < |y| and x == 2 (mod 3).
+A156061	mul	1		Multiplicative with a(prime(k)^e) = k. Note that in contrast to A003963, this is not fully multiplicative. a(1) = 1 as an empty product. - _Antti Karttunen_, Aug 13 2017
+A160102	mul	1		Multiplicative with a(A050376(m)) = Prime(m) = A000040(m). If k = 2^{i_1} + ... + 2^{i_j} is the binary representation of k, a(p^k) = a(p^2^{i_1}) * ... * a(p^2^{i_j}). [edited by _Peter Munn_, Jan 07 2020]
+A163746	mul	1		a(n) is multiplicative with a(2^e) = 1, a(3^e) = 2-(-1)^e, a(p^e) = e+1 if p == 1 (mod 4), a(p^e) == (1-(-1)^e)/2 if p == 3 (mod 4).
+A166586	mul	1		Multiplicative with a(p^e) = (p-2)^e. If n = Product p(k)^e(k) then a(n) = Product (p(k) - 2)^e(k). a(2k) = 0 for k >= 1.
+A166586	mul	1		Dirichlet g.f.: 1 / Product_{p prime} (1 - p^(1 - s) + 2*p^(-s)). The Dirichlet inverse is multiplicative with b(p) = 2 - p, b(p^e) = 0, for e > 1. - _Álvar Ibeas_, Nov 24 2017 [corrected by _Vaclav Kotesovec_, Feb 10 2023]
+A170819	mult	1	isMod(4, p, 3) ? p.pow(e) : Z.ONE	Multiplicative with a(p^e) = p^A011765(p+1), e > 0. - _R. J. Mathar_, Jun 07 2011
+A173763	mulr	1		a(n) is multiplicative with a(2^e) = 16^e, a(p^e) = a(p) * a(p^(e-1)) - p^9 * a(p^(e-2)) if p>2.
+A182004	mul	1		a(n) = b(4*n + 1) where b(n) is multiplicative with b(2^e) = b(5^e) = 0^e, b(p^e) = (1 + (-1)^e)/2 if p == 3 (mod 4), b(p^e) = (e + 1) * s^e where s = Kronecker(10, p) for other primes p.
+A184160	mulr	1		Completely multiplicative with a(prime(t)) = 1 + a(t). - _Andrew Howroyd_, Aug 01 2018
+A187096	mulr	1		a(n) is multiplicative with a(19^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity.
+A187097	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(2^e) = 0^e, b(19^e) = 1, b(p^e) = (1 + (-1)^e) / 2 if -1 = Kronecker(-19, p), b(p^e) = e + 1 if p = x^2 + 19 * y^2, b(p^e) = Kronecker(-3, e+1) if p = 4*x^2 + 2*x*y + 5*y^2.
+A187846	mulr	1		a(n) is multiplicative with a(3^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity.
+A194959	mul	1		Let B(n,k) be multiplicative with B(n,p^e) = A(n,e+1) for e >= 0 and some fixed n > 0. That yields the Dirichlet g.f.: Sum_{k>0} B(n,k)/k^s = (zeta(s))^3/(zeta(2*s)*zeta(n*s)).
+A198328	mulr	1		Completely multiplicative with a(2) = 1, a(prime(t)) = prime(a(t)) for t > 1. - _Andrew Howroyd_, Aug 01 2018
+A199918	mul	1		a(n) = b(24*n + 1) where b(n) is multiplicative with b(p^(2*e)) = (-1)^e if p == 13, 17, 29, 23 (mod 24), b(p^(2*e)) = +1 if p = 1, 5, 7, 11 (mod 24) and b(p^(2*e - 1)) = b(2^e) = b(3^e) = 0 if e > 0.
+A204342	mul	1		a(n) = b(2*n + 1) where b(n) is multiplicative with b(2^e) = 0^e, b(p^e) = ((p^4)^(e+1) + 1) / (p^4 + 1) if p == 3 (mod 4), b(p^e) = ((p^4)^(e+1) - 1) / (p^4 - 1) if p == 1 (mod 4).
+A204850	mul	1		a(n) = b(8*n + 1) where b() is multiplicative with b(2^e) = 0^e, b(3^e) = - (1 + (-1)^e) * 3^(e/2), b(p^e) = (1 + (-1)^e)/2 * p^(e/2) if p == 1, 3 (mod 8), b(p^e) = (1 + (-1)^e)/2 * (-p)^(e/2) if p == 5, 7 (mod 8). - _Michael Somos_, Jun 19 2015
+A217220	mul	1		a(n) = 4 * b(n) where b() is multiplicative with b(2^e) = (1+(-1)^e)*3/4, b(3^e) = 1, b(p^e) = (1+(-1)^e)/2 if p == 5 (mod 6), b(p^e) = e+1 if p == 1 (mod 6). - _Michael Somos_, Feb 01 2017
+A220470	mul	1		This function is sub-multiplicative: a(m*n) <= a(m)*a(n) because (any) G_m x G_n has an irreducible complex representation of dimension m*n.
+A225395	mulr	1		Multiplicative, with a(prime(i)^j) = i^a(j).
+A225546	mul	1		Multiplicative, with a(prime(i)^j) = A019565(j)^A000079(i-1).
+A226010	mulr	1		a(n) is multiplicative with a(2^n) = (-64)^n, a(p^e) = a(p) * a(p^(e-1)) - p^13 * a(p^(e-2)) if p>2.
+A226075	mulr	1		a(n) is multiplicative with a(11^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) if p != 11.
+A226086	mulr	1		a(n) is multiplicative with a(2^n) = 64^n, a(p^e) = a(p) * a(p^(e-1)) - p^13 * a(p^(e-2)) if p>2.
+A226347	mulr	1		a(n) is multiplicative with a(p^e) = p^(2*e) if p=5, else a(p^e) = a(p) * a(p^(e-1)) - p^6 * a(p^(e-2)).
+A227239	mulr	1		a(n) is multiplicative with a(2) = 8, a(2^e) = 0 if e > 1, a(p^e) = a(p) * a(p^(e-1)) - p^5 * a(p^(e-2)) if p > 2.
+A227354	mul	1		a(n) = 12 * b(n) where b(n) is multiplicative with b(2^e) = (1 + 3*(-1)^e) / 4, b(3^e) = 1, b(p^e) = e+1 if p == 1 (mod 6), b(p^e) = (1 + (-1)^e) / 2 if p == 5 (mod 6).
+A227499	mult	1	is2(p) ? Z.TWO.pow(4*e - 1) : (is3(p) ? Z.THREE.pow(4 * e - 3).multiply(16) : (is5(p) ? Z.FIVE.pow(4*e - 3).multiply(96) : p.pow(e)))	Multiplicative: a(2^s) = 2^(4s-1); a(3^s) = 16*3^(4s-3); a(5^s) = 32*3*5^(4s-3).
+A228072	mul	1		a(n) = b(2*n + 1) where b(n) is multiplicative with b(2^e) = 0^e, b(p^e) = b(p) * b(p^(e-1)) - p^3 * b(p^(e-2)) if p>2.
+A228443	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(2^e) = 0^e, b(p^e) = (p^(e+1) - 1) / (p - 1) if p == 1 (mod 4), b(p^e) = (p^(e+1) + (-1)^e) / (p + 1) if p == 3 (mod 4), with a(0) = 1.
+A228731	mul	1		Completely multiplicative with a(prime(t)) = €228732(t). - _Andrew Howroyd_, Aug 01 2018
+A228732	mul	1		Completely multiplicative with a(prime(t)) = €228731(t) + €228732(t). - _Andrew Howroyd_, Aug 01 2018
+A230277	mul	1		a(n) is multiplicative with a(2^e) = -(-2)^e if e>0,  a(3^e) = 0^e, a(p^e) = p^e * (1 + (-1)^e)/2 if p == 3, 7 (mod 8), a(p^e) = a(p)*a(p^(e-1)) - p^2*a(p^(e-2)) and a(p) = t * (-1)^(t mod 3) if p == 1, 5 (mod 8) where t = 2 * if( p == 5 (mod 6) then 4*x*y else p - 8*y^2 ) and p = x^2 + 4*y^2.
+A234565	mul	1		a(n) = b(4*n + 1) where b() is multiplicative with b(2^e) = b(3^e) = 0^e, b(p^e) = (1 + (-1)^e) / 2 * p^(2*e) if p == 7 or 11 (mod 12), b(p^e) = b(p) * b(p^(e-1)) - p^4 * b(p^(e-2)) if p == 1 or 5 (mod 12).
+A234743	mul	1		It is also multiplicative: a(u*v) = c(b(u*v)) = c(b(u)*b(v)) = c(b(u))*c(b(v)) = a(u)*a(v). For primes p_i with index i, a(p_i) = c(b(p_i)) = c(p_{b(i+1)-1}) = p_{c(b(i+1)-1)} = A000040(€235047(i)), except for cases i=8 and i=18, use 7 and 5, instead of 5 and 7.
+A234744	mul	1		Multiplicative with a(p_i) = p_{€235048(i)} for primes with index i, except for cases i=3 and i=4, use p_18 and p_8 (61 and 19) instead of 19 and 61. For the composites, the value is determined as: a(u*v) = a(u) * a(v).
+A234747	mul	1		Completely multiplicative with p_i = p_{€234751(i)} (where p_i stands for the i-th prime, A000040(i)), and a(x*y) = a(x)*a(y) for x, y > 0.
+A235201	mulr	1		Multiplicative with a(3^k) = 2^(2k), a(2^(2k)) = 3^k, a(2^(2k+1)) = 2*3^k, a(p_i) = p_{a(i)} for primes with index i > 2, and for composites > 4, a(u * v) = a(u) * a(v) for u, v > 0.
+A235384	mulr	1		The sequence is multiplicative: a(k*m) = a(k)*a(m) if m and k are coprime.
+A235487	mulr	1		Multiplicative with a(p_i) = p_{a(i)} for primes with index i <> 4, a(7) = 8, a(2^(3k)) = 7^k, a(2^(3k+1)) = 2*7^k, a(2^(3k+2)) = 4*7^k, and for other composites, a(u * v) = a(u) * a(v).
+A235489	mul	1		Multiplicative with a(3^(2k)) = 2^3k = 8^k, a(3^(2k+1)) = 3*2^3k, a(2^(3k)) = 3^2k = 9^k, a(2^(3k+1)) = 2*9^k, a(2^(3k+2)) = 4*9^k, a(p_i) = p_{a(i)} for primes with index i, and a(u*v) = a(u) * a(v) for composites other than 8 or 9.
+A240547	mult	1	is2(p) ? Z.TWO.pow(2*e + 1) : p.pow(2*e - 1).multiply(p.pow(e + 1).add(p.pow(e)).subtract(1))	Multiplicative, with a(2^e) = 2^(2e+1) for e>=1, a(p^e) = p^(2e-1)*(p^(e+1)+p^e-1) for p > 2, e>=1.
+A247067	mul	1		a(n) is multiplicative with a(2^e) = (-64)^e, a(p^e) = p^(6*e) * (1 + (-1)^e)/2 if p == 3 (mod 4), a(p^e) = a(p) * a(p^(e-1)) - p^12 * a(p^(e-2)) if p == 1 (mod 4) where a(p) = 2 * Re( (x + i*y)^12 ) and p = x^2 + y^2 with even x. - _Michael Somos_, Nov 18 2014
+A247198	mul	1		a(n) is multiplicative with a(2^e) = (-1)^e, a(13^e) = 1, else a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity.
+A247208	mul	1		The characteristic function is multiplicative: if x,y belong to this sequence, then so does x*y. Furthermore, if p^k belongs to this sequence, then so does p. Therefore, the sequence consists of products of powers of primes from €247214.
+A248692	mul	1		Fully multiplicative with a(prime(i)) = 2^i; If n = Product_{k >= 1} (p_k)^(c_k) where p_k is k-th prime A000040(k) and c_k >= 0 then a(n) = Product_{k >= 1} 2^(k*c_k).
+A248692	mult	1	Z.TWO.pow(Puma.primePi(p)).pow(e)	Fully multiplicative with a(prime(i)) = 2^i.
+A249010	mul	1		If n>0 then a(n) = -3 * b(n) where b is multiplicative with b(2^e) = 2 - 2^e, b(5^e) = 1, and b(p^e) = (p^(e+1) - 1) / (p - 1) otherwise.
+A251913	mul	1		a(n) is multiplicative with a(2^e) = 1, a(13^e) = (-1)^e, else a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) where a(p) = p+1 minus number of points of elliptic curve modulo p including point at infinity.
+A252731	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(p^e) = (-1)^e if p = 11, b(p^e) = b(p)*b(p^(e-1)) - p*b(p^(e-2)) if p != 11.
+A255647	mul	1		a(n) is multiplicative with a(p^e) = 1 if p = 2 or 11, a(p^e) = e + 1 if Kronecker(-22, p) = +1, a(p^e) = (1 + (-1)^e)/2 if Kronecker(-22, p) = -1, and with a(0) = 1.
+A256678	mulr	1		a(n) is multiplicative with a(2^e) = 1, a(17^e) = (-1)^e. For p prime, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) and a(p) = p minus number of points of elliptic curve modulo p.
+A257538	mulr	1		Fully multiplicative with a(prime(n)) = prime(prime(a(n))). - _Antti Karttunen_, Mar 09 2017
+A258260	mul	1		a(n) is multiplicative with a(2) = 1, a(2^e) = 0 if e>1, a(3) = -1, a(3^e) = 4 * (-1)^e if e>1, a(p^e) = 1 if p == 1 (mod 4), a(p^e) = (-1)^e if p == 3 (mod 4).
+A258739	mul	1		a(n) = b(4*n + 1) where b(n) is multiplicative with b(2^e) = 0^e, b(p^e) = (1 + (-1)^e)/2 * p^(5*e/2) if p == 3 (mod 4), b(p^e) = b(p) * b(p^(e-1)) - p^4 * b(p^(e-2)) if p == 1 (mod 4).
+A261277	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(2^e) = 0^e, b(3^e) = -2 * (-1)^e if e>0, b(p^e) = b(p) * b(p^(e-1)) - p * b(p^(e-2)) if p>3.
+A261278	mul	1		a(n) is multiplicative with a(2^(2*k)) = (-8)^k, a(2^(2*k+1)) = 4 * (-8)^k, a(3^e) = 0^e, a(p^(2*k)) = (-p)^(3^k) and a(p^(2*k+1)) = 0 if p == 5 (mod 6), a(p^e) = a(p) * a(p^(e-1)) - p^3 * a(p^(e-2)) if p == 1 (mod 6).
+A262401	mul	1		Multiplicative with p -> A054055(p), p prime.
+A262780	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(2^e) = 0^e, b(3^e) = 1, b(p^e) = e+1 if p == 1, 19 (mod 24), b(p^e) = (-1)^e * (e+1) if p == 7, 13 (mod 24), b(p^e) = (1 + (-1)^e) / 2 if p == 5 (mod 6).
+A265390	mul	1		Multiplicative with a(p^e) = A025529(e+1) = (1/1 + 1/2 + 1/3 + ... + 1/(e+1)) * lcm{1, 2, 3, ..., e+1}.
+A265398	mul	1	is2(p) ? Z.TWO : (is3(p) ? Z.THREE : Puma.primeZ(Puma.primePi(p) - 1).multiply(Puma.primeZ(Puma.primePi(p) - 2)))	Completely multiplicative with a(2) = 2, a(3) = 3, a(prime(k)) = prime(k-1) * prime(k-2) for k > 2. - _Andrew Howroyd_ & _Antti Karttunen_, Aug 04 2018
+A265399	mul	1		Completely multiplicative with a(2) = 2, a(3) = 3, a(p) = a(€265398(p)) for p > 3. - _Andrew Howroyd_ & _Antti Karttunen_, Aug 04 2018
+A265708	mul	1		Multiplicative with a(p^e) = (1/1 + ..., + 1/sigma(p^(e-1)) + 1/sigma(p^(e))) * lcm{1, ..., sigma(p^(e-1)), sigma(p^(e))}.
+A267099	mul	1		Fully multiplicative with a(p_n) = p_{€267100(n)} = €267101(n).
+A267326	mul	1		For all pair of relatively prime numbers k, m this sequence is multiplicative with a factor of 8: a(k*m) = 8*a(k)*a(m). - _Christopher Heiling_, Apr 02 2017
+A268385	mul	1		Multiplicative with p^e -> p^€193231(e), p prime and e > 0.
+A270418	mul	1		Multiplicative with a(p^e) = p^A065620(e) for odious e, a(p^e)=1 for evil e, or equally, a(p^e) = p^(A010060(e)*A065620(e)).
+A270419	mul	1		Multiplicative with a(p^e) = p^(-A065620(e)) for evil e, a(p^e)=1 for odious e, or equally, a(p^e) = p^(A010059(e) * -A065620(e)).
+A270436	mul	1		Multiplicative with a(p^e) = p^A065621(e).
+A275966	mul	1		This function is multiplicative with a(p^n) = Re(I^(p^n+1) - I^(p^(n-1)+1)).
+A276833	mult	1	Z.TWO.subtract(p)	Strongly multiplicative: a(p^e) = 2 - p. - _Charles R Greathouse IV_, Oct 01 2019
+A279371	mulr	1		a(n) is multiplicative with a(11^e) = 1, a(p^e) = a(p) * a(p^(e-1)) - p * a(p^(e-2)) for p != 11.
+A279510	mulr	1		Multiplicative with a(p(i)^j) = p(i+1)^a(j) for i-th prime p(i) and j>0.
+A279513	mulr	1		Multiplicative with a(p^k) = p*a(k) for any prime p and k>0.
+A282446	mulr	1		Multiplicative, with a(p^k)=1+a(k) for any prime p and k>0.
+A287620	mulr	1		Multiplicative with: - a(p) = p for any prime p, a(p^k) = a(k) for any prime p and k > 1.
+A289320	mult	1	p.square().add(1).pow(e)	Totally multiplicative, with a(p^k) = (1 + p^2)^k for any prime p and k > 0.
+A293303	mul	1		Multiplicative with a(p^e) = Sum_{d|e} A008683(e/d)*p^d.
+A293442	mul	1		Multiplicative with a(p^e) = A019565(e).
+A293443	mul	1		Multiplicative with a(p^e) = A019565(€193231(e)).
+A293444	mul	1		a(n) = €293442(€293442(n)), where €293442 is multiplicative with a(p^e) = A019565(e).
+A294931	mul	1		Multiplicative with a(p^e) = A019565(€289813(e)).
+A294932	mul	1		Multiplicative with a(p^e) = A019565(€289814(e)).
+A299200	mul	1		Multiplicative with a(prime(n)) = A000041(n).
+A300955	mulr	1		Multiplicative with a(p^k) = A064614(p)^a(k).
+A303809	mulr	1		Multiplicative with a(p^k) = 2^a(k).
+A303822	mulr	1		Multiplicative with a(p^k) = 3^a(k).
+A304906	mul	1		Multiplicative with a(p^e) = (-1)^(p+1) * (p^(3*floor((e+3)/3))-1)/(p^3-1) + if(p = 2 and e == 0 (mod 3), 2^(e + 1) otherwise 0). - _Amiram Eldar_, Oct 03 2023
+A305191	mul	1		T(n,k) is multiplicative with respect to n, that is, if gcd(n,m)=1 then T(n*m,k) = T(n,k mod n)*T(m,k mod m).
+A307848	mul	1		Multiplicative with a(p^e) = A037445(e).
+A308317	mul	1		Multiplicative with a(prime(k)^e) = A005117(e+1)^(2^(k-1)).
+A308993	mulr	1		Multiplicative with a(p) = 1 and a(p^e) = p^a(e) for any e > 1 and prime number p.
+A309002	mulr	1		Multiplicative with a(p) = p^2 and a(p^e) = p^a(e) for any e > 1 and prime number p.
+A309243	mulr	1		Completely multiplicative with a(p) = p * a(p-1) for any prime number p.
+A317690	mul	1		a(n) = b(2*n + 1) where b() is multiplicative with b(3^e) = (-1)^e, b(p^e) = b(p) * b(p^(e-1)) - p * b(p^(e-2)) if p>3, where b(p) = p minus number of points of elliptic curve modulo p.
+A318314	mul	1		a(n) = A006519(n) * A317934(n), thus multiplicative with a(2^e) = 2^A005187(e), a(p^e) = 2^A011371(e) for odd primes p.
+A318314	mul	1		Equally, multiplicative with a(p^e) = 2^(((2-A000035(p))*e)-A000120(e)) for all primes p.
+A318316	mul	1		Multiplicative with a(p^e) = 2^A007306(e).
+A318375	mul	1		a(n) = b(6*n + 1) where b() is multiplicative with b(2^e) = b(3^e) = 0^e, b(p^e) = b(p) * b(p^(e-1)) - p * b(p^(e-2)) if p>5, where b(p) = p minus number of points of elliptic curve modulo p.
+A318465	mul	1		Multiplicative with a(p^e) = 2^A007895(e), where A007895(n) gives the number of terms in the Zeckendorf representation of n.
+A318469	mul	1		Multiplicative with a(p^e) = A019565(A003714(e)).
+A318470	mul	1		Multiplicative with a(p^e) = €260443(e).
+A318509	mul	1		Completely multiplicative with a(p) = A002487(p).
+A318510	mul	1		Completely multiplicative with a(prime(k)) = A002487(prime(k+1)).
+A318657	mul	1		a(2n) = 0, a(2n-1) = €257098(2n-1), thus multiplicative with a(2^e) = 0, a(p^e) = €257098(p^e) for odd primes p.  - _Antti Karttunen_, Sep 01 2018
+A319445	mul	1		Multiplicative with a(3^e) = 2*3^(2*e-1), a(p^e) = phi(p^e)^2 = (p-1)^2*p^(2*e-2) if p == 1 (mod 3) and J_2(p^e) = A007434(p^e) = (p^2 - 1)*p^(2*e-2) if p == 2 (mod 3).
+A319449	mul	1		Multiplicative with a(3^e) = sigma(3^(2e)) = (3^(2e+1) - 1)/2, a(p^e) = sigma(p^e)^2 = ((p^(e+1) - 1)/(p - 1))^2 if p == 1 (mod 3) and sigma_2(p^e) = A001157(p^e) = (p^(2e+2) - 1)/(p^2 - 1) if p == 2 (mod 3).
+A319521	mult	1	{ final long pi = Puma.primePi(p); return ((pi & 1) == 1) ? Puma.primeZ((pi + 1)/ 2).pow(e) : Z.ONE; }	Completely multiplicative with a(prime(2*k-1)) = prime(k) and a(prime(2*k)) = 1 for any k > 0 (where prime(k) denotes the k-th prime number).
+A319522	mult	1	{ final long pi = Puma.primePi(p); return ((pi & 1) == 0) ? Puma.primeZ(pi / 2).pow(e) : Z.ONE; }	Completely multiplicative with a(prime(2*k)) = prime(k) and a(prime(2*k-1)) = 1 for any k > 0 (where prime(k) denotes the k-th prime number).
+A319525	mult	1	Puma.primeZ(Puma.primePi(p) * 2 - 1).pow(e)	Completely multiplicative with a(prime(k)) = prime(2*k - 1) (where prime(k) denotes the k-th prime).
+A324106	mul	1		Multiplicative with a(p^e) = A005940(p^e).
+A324108	mul	1		Multiplicative with a(p^e) = A324054((p^e)-1).
+A324283	mul	1		Multiplicative with a(p^e) = €276086(p^e).
+A324391	mul	1		Fully multiplicative with a(p^e) = A070939(p)^e, where A070939(p) gives the length of the binary representation of p.
+A324911	mul	1		Multiplicative with a(p^e) = €156552(p^e).
+A324922	mulr	1		Completely multiplicative with a(prime(n)) = prime(n) * a(n). - _Rémy Sigrist_, Jul 18 2019
+A325032	mul	1		Fully multiplicative with a(prime(n)) = A003963(n).
+A325035	mul	1		Fully multiplicative with a(prime(n)) = A056239(n), restricted to odd n.
+A326042	mul	1		Multiplicative with a(p^e) = A064989((q^(e+1)-1)/(q-1)), where q = nextPrime(p). - _Antti Karttunen_, Nov 05 2021
+A326304	mul	1		Multiplicative with a(p^k) = a(p-1)^k + 1 for any k > 0 and any prime number p.
+A328617	mul	1		Multiplicative with a(p^e) = p^e, if e = 0 mod p, otherwise a(p^e) = p^((p*floor(e/p)) + €124223(A000720(p),e mod p).
+A331107	mul	1		Multiplicative with a(p^e) = Product_{i} (p^s(i) + 1), where s(i) are the terms in the Zeckendorf representation of e (A014417).
+A331109	mul	1		Multiplicative with a(p^e) = 2^€112310(e).
+A331110	mul	1		Multiplicative with a(p^e) = Product_{i} (p^s(i) + 1), where s(i) are the terms in the dual Zeckendorf representation of e (A104326).
+A331312	mul	1		Multiplicative, with a(prime(i)^j) = A019565(j)^A000225(i-1).
+A331736	mul	1		Multiplicative, with a(prime(i)^j) = A000265(A019565(j))^A000079(i-1).
+A332212	mul	1		Fully multiplicative with a(p) = €332211(A000720(p)).
+A332213	mul	1		Fully multiplicative with a(p) = €332210(A000720(p)).
+A332332	mul	1		a(n) is multiplicative with a(3^n) = (-1)^n, a(11^n) = 1. a(2^n) = A107920(n+1). a(7^n) = A168175(n).
+A332808	mul	1		Fully multiplicative with a(p) = €332806(A000720(p)).
+A332818	mul	1		Fully multiplicative with a(2) = 3, a(A002145(n)) = A002144(n) and a(A002144(n)) = A002145(1+n), for all n >= 1.
+A332819	mul	1		Fully multiplicative with a(2) = 1, a(3) = 2, a(A002144(n)) = A002145(n), and a(A002145(1+n)) = A002144(n) for all n >= 1.
+A333926	mul	1		Multiplicative with a(p^k) = 1 + Sum_{d recursive divisor of k} p^d.
+A333974	mul	1		Multiplicative: If n = p^x*q^y*... for distinct primes p,q,... then a(n) = a(p^x)*a(q^y)*...
+A335115	mul	1		Multiplicative with a(2^e) = A001045(e+1) and a(p^e) = p^e for e >= 0 and prime p > 2. - _Werner Schulte_, Oct 05 2020
+A336455	mul	1		Multiplicative with a(p^e) = A335915(1 + p + p^2 + ... + p^e).
+A336457	mul	1		a(n) = A065330(sigma(n)), where A065330 is fully multiplicative with a(2) = a(3) = 1, and a(p) = p for primes p > 3.
+A336457	mul	1		Multiplicative with a(p^e) = A065330(1 + p + p^2 + ... + p^e).
+A336459	mul	1		a(n) = A065330(sigma(sigma(n))), where A065330 is fully multiplicative with a(2) = a(3) = 1, and a(p) = p for primes p > 3.
+A336468	mul	1		a(n) = A336466(phi(n)), where A336466 is fully multiplicative with a(p) = A000265(p-1) for prime p, with A000265(k) giving the odd part of k.
+A336468	mul	1		Multiplicative with a(p^e) = A336466(p-1) * A336466(p)^(e-1).
+A337471	mul	1		Completely multiplicative with a(prime(i)) = A003961(A002110(i)) = A070826(1+i). - _Antti Karttunen_, Nov 17 2020
+A337868	mul	1		Sequence is submultiplicative: a(m*n) <= a(m) * a(n) for m,n coprime. - _Charles R Greathouse IV_, Dec 19 2022
+A338224	mul	1		Multiplicative with a(A246655(k)) = prime(k) for any k > 0 (where prime(k) denotes the k-th prime number).
+A340362	mul	1		a(n) = A005940(n) - €324106(n), where €324106(n) is multiplicative with a(p^e) = A005940(p^e).
+A340364	mul	1		a(n) = gcd(A005940(n), €324106(n)), where €324106(n) is multiplicative with a(p^e) = A005940(p^e).
+A340365	mul	1		a(n) = A005940(n) / gcd(A005940(n), €324106(n)), where €324106(n) is multiplicative with a(p^e) = A005940(p^e).
+A340366	mul	1		a(n) = €324106(n) / gcd(A005940(n), €324106(n)), where €324106(n) is multiplicative with a(p^e) = A005940(p^e).
+A341090	mul	1		Fully multiplicative: for any prime p, if the reversal of p in base 10, say q, is prime, then a(p) = q, otherwise a(p) = p.
+A341343	mul	1		Multiplicative with a(p^e) = Sum_{i=0..e} trinomial(2,i) for prime p and e >= 0, where trinomial(n,k) = 0 if 2*n < k.
+A341343	mul	1		Let b(n), n > 0, be the Dirichlet inverse of a(n); b(n) is multiplicative with b(p^(3*e)) = 1 for e >= 0, and b(p^(3*e-2)) = -3*e and b(p^(3*e-1)) = 3*e for e > 0 and prime p.
+A342017	mul	1		a(n) = A342007(€327860(n)), where A342007 is multiplicative with a(p^e) = p^floor(e/p), and €327860 is arithmetic derivative of €276086.
+A342466	mul	1		a(n) = A336466(1+A000265(sigma(n))), where A336466 is fully multiplicative with a(p) = A000265(p-1) for p prime, and A000265(k) is the odd part of k.
+A342670	mul	1		a(n) = gcd(n*sigma(A064989(n)), sigma(n)*A064989(n)), where A064989 is multiplicative with a(2^e) = 1 and a(p^e) = prevprime(p)^e for odd primes p, and sigma gives the sum of the divisors of its argument.
+A342672	mul	1		a(n) = lcm(sigma(n), A003961(n)), where A003961 is fully multiplicative with a(prime(k)) = prime(k+1), and sigma is the sum of divisors of n.
+A343068	mulr	1		Multiplicative with a(p^e) = e*a(p-1).
+A344879	mul	1		a(n) = A344875(n) / €344878(n), where A344875(n) is multiplicative with a(2^e) = 2^(1+e) - 1, and a(p^e) = p^e -1 for odd primes p, and €344878(n) gives the least common multiple of the same factors.
+A345045	mul	1		a(n) = A047994(n) / €345044(n), where A047994(n) is multiplicative with a(p^e) = p^e - 1, and €345044(n) gives the least common multiple of the same factors.
+A345047	mul	1		a(n) = A003958(n) / €345046(n), where A003958(n) is multiplicative with a(p^e) = (p-1)^e, and €345046(n) gives the least common multiple of the same factors.
+A345699	mulr	1		Multiplicative with a(p) = a(p-1) and a(p^e) = a(p) + a(e) if e>1.
+A347379	mul	1		Multiplicative with a(p^e) = A034386(p)^e - A034386(p)^(e-1).
+A348512	mul	1		a(n) = A003959(sigma(n)), where A003959 is multiplicative with a(p^e) = (p+1)^e and sigma is the sum of divisors function.
+A348512	mul	1		Multiplicative with a(p^e) = A003959(1 + p + ... + p^e).
+A348746	mul	1		Fully multiplicative with a(2) = 3, a(3) = 5, a(A002144(n)) = A002144(1+n) and a(A002145(1+n)) = a(A002145(1+n)) for all n >= 1, where A002144 and A002145 give the primes of the form 4k+1 and 4k+3 respectively.
+A348746	mul	1		Fully multiplicative with a(p) = €348744(A000720(p)), where €348744 is the lexicographically earliest bijection from primes to odd primes where each prime of the form 4k+1 is mapped to the next larger prime of the same form.
+A348747	mul	1		Fully multiplicative with a(2) = 1, a(3) = 2, a(5) = 3, a(A002144(1+n)) = A002144(n) and a(A002145(1+n)) = a(A002145(1+n)) for all n >= 1, where A002144 and A002145 give the primes of the form 4k+1 and 4k+3 respectively.
+A348747	mul	1		Fully multiplicative with a(p) = €348745(A000720(p)).
+A348750	mul	1		Multiplicative with a(p^e) = A064989(A064989((q^(e+1)-1)/(q-1))), where q = nextPrime(nextPrime(p)).
+A348930	mul	1		a(n) = A038502(sigma(n)), where A038502 is fully multiplicative with a(3) = 1, and a(p) = p for any other prime p.
+A348930	mul	1		Multiplicative with a(p^e) = A038502(1 + p + p^2 + ... + p^e).
+A348944	mul	1		a(n) = (1/2) * (A003959(n)+A034448(n)), where A003959 is multiplicative with a(p^e) = (p+1)^e and A034448 (usigma) is multiplicative with a(p^e) = (p^e)+1.
+A348949	mul	1		a(n) = A003959(€276086(n)), where A003959 is multiplicative with a(p^e) = (p+1)^e, and €276086 gives the prime product form of primorial base expansion of n.
+A348950	mul	1		a(n) = A348507(€276086(n)), where A348507(n) = A003959(n) - n, A003959 is multiplicative with a(p^e) = (p+1)^e, and €276086 gives the prime product form of primorial base expansion of n.
+A348963	mul	1		a(n) is multiplicative with a(p^e) = Sum_{d|e} p^(e-d).
+A348992	mul	1		a(n) = A000265(sigma(n)) / gcd(sigma(n), A003961(n)), where A003961(n) is fully multiplicative with a(prime(k)) = prime(k+1), and sigma is the sum of divisors function.
+A348994	mul	1		a(n) = A003961(n) / gcd(n, A003961(n)), where A003961(n) is fully multiplicative with a(prime(k)) = prime(k+1).
+A348996	mul	1		a(n) = usigma(€276086(n)), where usigma (A034448) is multiplicative with a(p^e) = (p^e)+1, and €276086 gives the prime product form of primorial base expansion of n.
+A348998	mul	1		a(n) = A348928(€276086(n)), where A348928(n) = gcd(n, A003958(n)), and A003958 is multiplicative with a(p^e) = (p-1)^e, and €276086 gives the prime product form of primorial base expansion of n.
+A348999	mul	1		a(n) = A348929(€276086(n)), where A348929(n) = gcd(n, A003959(n)), A003959 is multiplicative with a(p^e) = (p+1)^e, and €276086 gives the prime product form of primorial base expansion of n.
+A349000	mul	1		a(n) = A323166(€276086(n)), where A323166(n) = gcd(n, usigma(n)), usigma (A034448) is multiplicative with a(p^e) = (p^e)+1, and €276086 gives the prime product form of primorial base expansion of n.
+A349025	mul	1		a(n) is multiplicative with a(p^e) = Sum_{d||e} p^(e-d), where d||e are the unitary divisors of e.
+A349144	mul	1		Numbers k for which A342671(k) [= gcd(sigma(k), A003961(k)] and A349161(k) [= A003961(k)/A342671(k)] are relatively prime, where A003961(n) is fully multiplicative with a(prime(k)) = prime(k+1), and sigma is the sum of divisors function.
+A349174	mul	1		Odd numbers k for which gcd(k, A003961(k)) is equal to gcd(sigma(k), A003961(k)), where A003961(n) is fully multiplicative with a(prime(k)) = prime(k+1), and sigma is the sum of divisors function.
+A349175	mul	1		Odd numbers k for which gcd(k, A003961(k)) <> gcd(sigma(k), A003961(k)), where A003961(n) is fully multiplicative with a(prime(k)) = prime(k+1), and sigma is the sum of divisors function.
+A349176	mul	1		Odd numbers k for which gcd(k, A003961(k)) = gcd(sigma(k), A003961(k)) > 1, where A003961(n) is fully multiplicative with a(prime(k)) = prime(k+1), and sigma is the sum of divisors function.
+A349177	mul	1		Odd numbers k for which gcd(k, A003961(k)) = gcd(sigma(k), A003961(k)) = 1, where A003961(n) is fully multiplicative with a(prime(k)) = prime(k+1), and sigma is the sum of divisors function.
+A349593	mul	1		The n-th row is multiplicative with T(n,p^e) = 1 if n = 0, p^(e+floor(log(n)/log(p))) otherwise. In other words, for n > 0, T(n,k) = k * Product_{prime p|k} p^(floor(log(n)/log(p))). See my pdf file for a proof.
+A349756	mul	1		Numbers k such that the odd part of sigma(k) is equal to gcd(sigma(k), A003961(k)), where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A351346	mul	1		Multiplicative with a(p^e) = Pell(e+1).
+A351347	mul	1		Multiplicative with a(p^e) = Jacobsthal(e+1).
+A351442	mul	1		a(n) = A003958(sigma(n)), where A003958 is multiplicative with a(p^e) = (p-1)^e and sigma is the sum of divisors function.
+A351442	mul	1		Multiplicative with a(p^e) = A003958(1 + p + ... + p^e).
+A351443	mul	1		Odd numbers k for which A003958(sigma(k)) = A003958(k), where A003958 is multiplicative with a(p^e) = (p-1)^e and sigma is the sum of divisors function.
+A351444	mul	1		a(n) = n - A003958(n) + A003958(sigma(n)), where A003958 is multiplicative with a(p^e) = (p-1)^e and sigma is the sum of divisors function.
+A351445	mul	1		a(n) = A003958(sigma(n)) - A003958(n), where A003958 is multiplicative with a(p^e) = (p-1)^e and sigma is the sum of divisors function.
+A351446	mul	1		Numbers k for which A003958(sigma(k)) = A003958(k), where A003958 is multiplicative with a(p^e) = (p-1)^e and sigma is the sum of divisors function.
+A351447	mul	1		Numbers k for which A003958(sigma(k)) = 2*A003958(k), where A003958 is multiplicative with a(p^e) = (p-1)^e and sigma is the sum of divisors function.
+A351448	mul	1		Odd numbers k for which A003958(sigma(k)) = 2*A003958(k), where A003958 is multiplicative with a(p^e) = (p-1)^e and sigma is the sum of divisors function.
+A351455	mul	1		Multiplicative with a(p^e) = A064989((q+1)*q^(e-1)), where q = nextPrime(p) = A151800(p).
+A351456	mul	1		a(n) = A003958(sigma(A003961(n))), where A003958 is multiplicative with a(p^e) = (p-1)^e, A003961 multiplicative with a(prime(k)^e) = prime(1+k)^e, and sigma is the sum of divisors function.
+A351456	mul	1		Multiplicative with a(p^e) = A003958(1 + q + ... + q^e), where q = nextPrime(p) = A151800(p).
+A351462	mulr	1		Multiplicative, with a(p^k) = a(p^k-1) + 2 for any k > 0 and p prime.
+A351463	mulr	1		Multiplicative, with a(p^k) = a(p^k-1) - 2 for any k > 0 and p prime.
+A351464	mul	1		Let f be multiplicative with f(prime(k)^e) = k + e*i for any k, e > 0 (where i denotes the imaginary unit); a(n) is the real part of f(n). See €351465 for the imaginary part.
+A351465	mul	1		Let f be multiplicative with f(prime(k)^e) = k + e*i for any k, e > 0 (where i denotes the imaginary unit); a(n) is the imaginary part of f(n). See €351464 for the real part.
+A351541	mul	1		Even numbers k that have an odd prime factor p such that p^(1+valuation(k,p)) divides sigma(k), but p does not divide A003961(k), where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A351542	mul	1		Even numbers k that have an odd prime factor p such that p also divides sigma(k), but valuation(k,p) differs from valuation(sigma(k), p), and p does not divide A003961(k), where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A351543	mul	1		Even numbers k such that there is an odd prime p that divides sigma(k), but valuation(k, p) differs from valuation(sigma(k), p), and p does not divide A003961(k), where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A351544	mul	1		a(n) is the largest unitary divisor of sigma(n) such that its every prime factor also divides A003961(n), where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A351546	mul	1		a(n) is the largest unitary divisor of sigma(n) coprime with A003961(n), where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A351553	mul	1		Even numbers k such that there are no odd prime factors p of k such that p would not divide A003961(k) and the valuation(k, p) would be different from valuation(sigma(k), p), where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A351554	mul	1		Numbers k such that there are no odd prime factors p of k such that p would not divide A003961(k) and the valuation(k, p) would be different from valuation(sigma(k), p), where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A351655	mul	1		Multiplicative with a(p^e) = A000073(e+2).
+A351656	mul	1		Multiplicative with a(p^e) = A000078(e+3).
+A352613	mul	1		Multiplicative, with a(p^k) determined using the same rule as Van Ecks sequence for any prime p and k > 0.
+A353248	mul	1		The number-of-divisors function d = A000005 is multiplicative with d(p^e) = e+1. Therefore, a prime signature (e1, e2, ..., eN) which yields a given number of divisors corresponds to a factorization (e1+1)*...*(eN+1) of that number. Following the usual convention, we only consider prime signatures with decreasing exponents (e1 >= e2 >= ... >= eN). Furthermore, we list them in reverse lexicographic order, i.e., largest e1 first, etc.
+A353433	mul	1		For fixed n, T(n,m) is multiplicative with T(n,p^e) = T(n,p)*p^(n*(e-1)).
+A353435	mul	1		For fixed n, T(n,m) is multiplicative with T(n,p^e) = T(n,p)*p^(n*(e-1)).
+A353789	mul	1		Multiplicative with a(p^e) = (q - 1) * q^(e-1) * p^e, where q is the least prime greater than p.
+A353789	mul	1		Multiplicative with a(p^e) = (q - 1) * q^(e-1) * p^e, where q is the least prime greater than p.
+A353792	mul	1		Multiplicative with a(p^e) = A003958(1 + p + ... + p^e) * A064989(1 + p + ... + p^e).
+A353794	mul	1		Multiplicative with a(p^e) = A003958(1 + q + ... + q^e) * A064989(1 + q + ... + q^e), where q is the least prime larger than p.
+A354088	mul	1		Multiplicative with a(p^e) = €348747((q^(e+1)-1)/(q-1)), where q = €348744(A000720(p)).
+A354089	mul	1		Multiplicative with a(p^e) = (q^(e+1)-1)/(q-1) where q = €348744(A000720(p)).
+A354091	mul	1		Fully multiplicative with a(A003627(n)) = A003627(1+n), a(A007645(n)) = A007645(n).
+A354092	mul	1		Fully multiplicative with a(2) = 1, a(A003627(1+n)) = A003627(n), a(A007645(n)) = A007645(n).
+A354093	mul	1		Multiplicative with a(p^e) = (q^(e+1)-1)/(q-1) where q = A003627(1+n) if p = A003627(n), otherwise q = p.
+A354094	mul	1		Multiplicative with a(p^e) = (q-1) * q^(e-1) where q = A003627(1+n) if p = A003627(n), otherwise q = p.
+A354095	mul	1		Multiplicative with a(p^e) = €354092(1 + p + p^2 + ... + p^e).
+A354096	mul	1		Multiplicative with a(p^e) = €354092((q^(e+1)-1)/(q-1)), where q = A003627(1+n) if p = A003627(n), otherwise q = p.
+A354102	mul	1		Multiplicative with a(p^e) = (q-1) * q^(e-1), where q = €267101(A000720(p)).
+A354104	mul	1		Multiplicative with a(p^e) = (1-q), where q = €267101(A000720(p)).
+A354202	mul	1		Fully multiplicative with a(p^e) = €354200(A000720(p))^e.
+A354203	mul	1		Fully multiplicative with a(p^e) = €354201(A000720(p))^e.
+A354204	mul	1		a(n) = phi(€354202(n)), where €354202 is fully multiplicative with a(p) = €354200(A000720(p)).
+A354204	mul	1		Multiplicative with a(p^e) = (q-1) * q^(e-1), where q = €354200(A000720(p)).
+A354205	mul	1		a(n) = sigma(€354202(n)), where €354202 is fully multiplicative with a(p) = €354200(A000720(p)).
+A354205	mul	1		Multiplicative with a(p^e) = (q^(e+1)-1)/(q-1) where q = €354200(A000720(p)).
+A354206	mul	1		a(n) = €354203(sigma(€354202(n))), where €354202 is fully multiplicative with a(p) = €354200(A000720(p)), and €354203 is its left inverse.
+A354206	mul	1		Multiplicative with a(p^e) = €354203((q^(e+1)-1)/(q-1)) where q = €354200(A000720(p)).
+A354207	mul	1		a(n) = n - €354203(sigma(€354202(n))), where €354202 is fully multiplicative with a(p) = €354200(A000720(p)), and €354203 is its left inverse.
+A354273	mul	1		The columns are totally multiplicative: A(i*j, k) = A(i, k)*A(j, k).
+A354351	mul	1		Multiplicative with a(p^e) = 0 if e > 1, and -A034386(p) otherwise.
+A354355	mul	1		Multiplicative with a(p^e) = A065333(1 + p + p^2 + ... + p^e).
+A354358	mul	1		Multiplicative with a(p^e) = primorial(e) - primorial(e-1). - _Sebastian Karlsson_, Jul 30 2022
+A354825	mul	1		Dirichlet inverse of €293442, where €293442 is multiplicative with a(p^e) = A019565(e).
+A355001	mul	1		Smallest common prime factor of A003961(n) and €276086(n), or 1 if they are coprime, where A003961 is fully multiplicative with a(p) = nextprime(p), and €276086 is primorial base exp-function.
+A355442	mul	1		a(n) = gcd(A003961(n), €276086(n)), where A003961 is fully multiplicative with a(p) = nextprime(p), and €276086 is primorial base exp-function.
+A355692	mul	1		Dirichlet inverse of €355442, gcd(A003961(n), €276086(n)), where A003961 is fully multiplicative with a(p) = nextprime(p), and €276086 is primorial base exp-function.
+A355820	mul	1		a(n) = 1 if A003961(n) and €276086(n) are relatively prime, otherwise 0, where A003961 is fully multiplicative with a(p) = nextprime(p), and €276086 is primorial base exp-function.
+A355821	mul	1		Numbers k for which A003961(k) and €276086(k) are relatively prime, where A003961 is fully multiplicative with a(p) = nextprime(p), and €276086 is primorial base exp-function.
+A355822	mul	1		Numbers k such that A003961(k) and €276086(k) share a prime factor, where A003961 is fully multiplicative with a(p) = nextprime(p), and €276086 is primorial base exp-function.
+A355823	mul	1		Multiplicative with a(p^e) = A209229(e).
+A355825	mul	1		Multiplicative with a(p^e) = A010060(e).
+A355828	mul	1		Dirichlet inverse of A342671, the greatest common divisor of sigma(n) and A003961(n), where A003961 is fully multiplicative with a(p) = nextprime(p).
+A355946	mul	1		a(n) = 1 if the odd part of sigma(k) divides A003961(k), otherwise 0, where A003961 is fully multiplicative with a(p) = nextprime(p), and sigma is the sum of divisors function.
+A356164	mul	1		a(n) is the smallest positive k such that n divides k*A003961(k), where A003961 is fully multiplicative with a(p) = nextprime(p).
+A356165	mul	1		a(n) = n minus the smallest positive k such that n divides k*A003961(k), where A003961 is fully multiplicative with a(p) = nextprime(p).
+A356166	mul	1		Greatest common divisor of n and the smallest positive k such that n divides k*A003961(k), where A003961 is fully multiplicative with a(p) = nextprime(p).
+A356167	mul	1		Greatest common divisor of A003961(n) and the smallest positive k such that n divides k*A003961(k), where A003961 is fully multiplicative with a(p) = nextprime(p).
+A356168	mul	1		Greatest common divisor of n and A003961(€356164(n)), where €356164(n) is the smallest positive k such that n divides k*A003961(k), and A003961 is fully multiplicative with a(p) = nextprime(p).
+A356169	mul	1		a(n) = n - gcd(n, A003961(€356164(n))), where €356164(n) is the smallest positive k such that n divides k*A003961(k), and A003961 is fully multiplicative with a(p) = nextprime(p).
+A356171	mul	1		Numbers k such that k and the smallest positive x such that k divides x*A003961(x) are coprime, where A003961 is fully multiplicative with a(p) = nextprime(p).
+A357853	mul	1		Fully multiplicative with a(prime(k)) = A000009(k+1).
+A358780	mul	1		Multiplicative with a(p^e) = A001400(e).
+A359411	mul	1		Multiplicative with a(p^e) = A246600(e).
+A359484	mult	1	is2(p) ? ((e == 1) ? Z.valueOf(-3) : ((e == 2) ? Z.TWO : Z.ZERO)) : ((e == 1) ? p.negate() : Z.ZERO)	a(n) is multiplicative with a(2)= -3, a(4)= 2, a(2^e)= 0 if e>2. a(p)= -p, a(p^e)= 0 if e>1, p>2.
+A359485	mult	1	is2(p) ? ((e == 1) ? Z.valueOf(-5) : ((e == 2) ? Z.FOUR : Z.ZERO)) : ((e == 1) ? p.square().negate() : Z.ZERO)	a(n) is multiplicative with a(2)= -5, a(4)= 4, a(2^e)= 0 if e>2. a(p)= -p^2, a(p^e)= 0 if e>1, p>2.
+A359531	mult	1	is2(p) ? ((e == 1) ? Z.valueOf(-9) : ((e == 2) ? Z.EIGHT : Z.ZERO)) : ((e == 1) ? p.pow(3).negate() : Z.ZERO)	a(n) is multiplicative with a(2)= -9, a(4)= 8, a(2^e)= 0 if e>2. a(p)= -p^3, a(p^e)= 0 if e>1, p>2.
+A359581	mul	1		Fully multiplicative with a(p) = (-1)^€329697(p). [€329697 is totally additive]
+A359587	mul	1		Fully multiplicative with a(p) = A008578(1+€329697(p)).
+A360130	mul	1		a(n) = 1 if A003961(n) is a triangular number, otherwise 0, where A003961 is fully multiplicative with a(p) = nextprime(p).
+A360648	mul	1		Fully multiplicative with a(A027697(k)) = A027699(k) and a(A027699(k)) = A027697(k) for any k > 0.
+A360710	mulr	1		Multiplicative with a(p^k) = 1 or -1 so as to minimize abs(Sum_{m = 1..p^k} a(m)); in case of a tie, a(p^k) = a(p^k-1).
+A360722	mul	1		Multiplicative with a(p^e) = f(p, e) if e is even, and f(p, e) - p is e is odd, where f(p, e) = Product{k>=1, e_k=1} (p^(2^k) + 1), where e = Sum_{k} e_k * 2^k is the binary representation of e, i.e., e_k is bit k of e.
+A361174	mul	1		Multiplicative with a(p^e) = Sum_{d|e, d squarefree} p^d.
+A361175	mul	1		Multiplicative with a(p^e) = Sum_{d infinitary divisor of e} p^d.
+A361466	mul	1		a(n) = 1 if A017665(A003961(n)) is a power of 2, otherwise 0. Here A017665 is the numerator of the sum of the reciprocals of the divisors of n, and A003961 is fully multiplicative with a(p) = nextprime(p).
+A361782	mul	1		f(n) = a(n)/€361783(n) is multiplicative with f(p^e) = (e+1)*(p-1)/(p^(e+1)-1) if e is odd, and e/((p^(e+1)-1)/(p-1) - p^(e/2)) if e is even.
+A361793	mult	1	p.pow(2*(e/3 + 1)).subtract(1).divide(p.square().subtract(1))	Multiplicative with a(p^e) = (p^(2*(floor(e/3) + 1)) - 1)/(p^2 - 1). - _Amiram Eldar_, Mar 24 2023
+A361794	mult	1	p.pow(3*(e/2 + 1)).subtract(1).divide(p.pow(3).subtract(1))	Multiplicative with a(p^e) = (p^(3*(floor(e/2) + 1)) - 1)/(p^3 - 1). - _Amiram Eldar_, Mar 24 2023
+A361984	mult	1	is2(p) ? ((e == 1) ? Z.ZERO : Z.TWO.pow(e - 2)) : ((e == 1) ? Z.NEG_ONE : Z.ZERO)	a(n) is multiplicative with a(2) = 0, a(2^e) = 2^(e-2) if e>1. a(p) = -1, a(p^e) = 0 if e>1, p>2.
+A361985	mult	1	is2(p) ? ((e == 1) ? Z.ONE : Z.FOUR.pow(e - 2).multiply(6)) : ((e == 1) ? p.negate() : Z.ZERO)	a(n) is multiplicative with a(2) = 1, a(2^e) = 6*4^(e-2) if e>1. a(p) = -p, a(p^e) = 0 if e>1, p>2.
+A361986	mult	1	is2(p) ? ((e == 1) ? Z.THREE : Z.TWO.pow(3*e - 4).multiply(7)) : ((e == 1) ? p.square().negate() : Z.ZERO)	a(n) is multiplicative with a(2) = 3, a(2^e) = 7*2^(3*e-4) if e>1. a(p) = -p^2, a(p^e) = 0 if e>1, p>2.
+A361987	mult	1	is2(p) ? Z.TWO.pow(3*e - 1): ((e == 1) ? p.square().negate() : Z.ZERO)	a(n) is multiplicative with a(2^e) = 2^(3*e-1). a(p) = -p^2, a(p^e) = 0 if e>1, p>2.
+A363331	mul	1		Multiplicative with a(p^e) = (Product_{k>=0} ((p^(2^k*(b(k)+1)) - 1)/(p^(2^k) - 1)) - 1, where e = Sum_{k >= 0} b(k) * 2^k is the binary representation of e.
+A364252	mul	1		Fully multiplicative with a(p^e) = [p==2] + A036987(p), where [ ] is the Iverson bracket.
+A364925	mul	1		Multiplicative with a(2) = 1, a(4) = 2, a(2^e) = 2*prime(e-2) for e >= 3; a(p^e) = prime(v(p-1,2)), where v(,2) is the 2-adic valuation.
+A365172	mul	1		Multiplicative with a(p^e) = (p^(e+2) - 1)/(p^2 - 1) if e is even, and (1 + p^(2*floor((e+1)/4) + 1))*(p^(2*floor(e/4)+2) - 1)/(p^2 - 1) if e is odd.
+A365174	mul	1		Multiplicative with 1 + p^e + (p^(e + 1) - p)/(p^2 - 1) if e is even, and 1 + p^e + (1 + p^(2*floor(e/4)+1))*(p^(2*floor((e+1)/4)+1) - p)/(p^2 - 1) if e is odd.
+A365296	mult	1	p.pow(Integer.lowestOneBit(e))	Multiplicative with a(p^e) = p^A006519(e).
+A365297	mult	1	p.pow(Z.TWO.pow(IntegerUtils.ceilingLog2(e)).subtract(e))	Multiplicative with a(p^e) = p^(2^ceiling(log_2(e)) - e).
+A365336	mult	1	p.pow(2 * ((e + 2) / 4) + 1).subtract(p).divide(p.square().subtract(1)).add(1)	Multiplicative with a(p^e) = floor((e+2)/4). (p^(2*Floor[(e+2)/4] + 1) - p)/(p^2 - 1) + 1
+A365466	mul	1		Lexicographically earliest infinite sequence such that a(i) = a(j) => A336466(i) = A336466(j) and A336466(€163511(i)) = A336466(€163511(j)) for all i, j >= 1, where A336466 is fully multiplicative with a(p) = oddpart(p-1) for any prime p.
+A365467	mul	1		Lexicographically earliest infinite sequence such that a(i) = a(j) => A336467(i) = A336467(j) and A336467(€163511(i)) = A336467(€163511(j)) for all i, j >= 1, where A336467 is fully multiplicative with a(2) = 1 and a(p) = oddpart(p+1) for odd primes p.
+A365680	mul	1		Multiplicative with a(p^e) = A013928(e+1) + 1.
+A365682	mul	1		Multiplicative with a(p^e) = 1 + Sum_{k=1..e, k squarefree} p^k.
+A365683	mul	1		Multiplicative with a(p^e) = p^€070321(e).
+A365684	mul	1		Multiplicative with a(p^e) = p^€067535(e).
+A365685	mul	1		Multiplicative with a(p^e) = p^€081221(e).
+A366126	mult	1	(e % 3 == 0) ? p.pow(e) : Z.ONE	Multiplicative with a(p^e) = p^e if e is divisible by 3 and 1 otherwise.
+A366145	mult	1	(e <= 2) ? Z.ONE : Z.valueOf(e + 1)	Multiplicative with a(p^e) = 1 if e <= 2 and e+1 otherwise.
+A366146	mult	1	(e <= 2) ? Z.ONE : sigmaP(p, e)	Multiplicative with a(p^e) = 1 if e <= 2 and (p^(e+1)-1)/(p-1) otherwise.
+A366147	mult	1	(e <= 2) ? Z.valueOf(e + 1) : Z.ONE	Multiplicative with a(p^e) = e+1 if e <= 2, and 1 otherwise.
+A366148	mult	1	(e > 2) ? Z.ONE : sigmaP(p, e)	Multiplicative with a(p^e) = (p^(e+1)-1)/(p-1) if e <= 2, and 1 otherwise.

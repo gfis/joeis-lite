@@ -1,0 +1,85 @@
+# A115450	trilambn	0	0	0	(n, k) -> (Z2(n - k + 1).-(1)).-(k<=n/2 ? Z2(n - 2*k).-(1) : Z.ZERO)*Z_1(k)
+A105586	trilambn	0	0	0	(n, k) -> (k != 0 || Jaguar.factor(n).isSquareFree()) ? BI(Math.abs(MU(n)), Math.abs(MU(k))) : Z.ZERO		
+A105589	trinv	0	A105586
+A105587	rowsums	0	A105586
+# A105588	diagsums	0	A105586
+A107027	trilambn	0	0	0	(n, k) -> ZV(n - k - 1).*(BI(k*(n - k), k    )).-(ZV(n - k - 2).*(SU(0, k, j -> BI(k*(n - k), j))))	T(n, k)=if(k<=n, (n - k - 1)C((n - k)*k, k) - (n - k - 2)*sum{j=0..k, C((n - k)*k, j)}, 0).
+A107030	trimirror	0	A107027		0	0	(n, k) -> ZV(k - 1)    .*(BI(k*(n - k), n - k)).-(ZV(    k - 2).*(SU(0, n, j -> BI(k*(n - k), j))))	T(n, k)=(k-1)*C(k(n-k), n-k)-(k-2)*sum{j=0..n-k, C(k(n-k), j)}
+A107249	trilambn	0	0	0	(n, k) -> BI((2*n - k - 2)/2, (n - k)/2)	T(n, k)=BI(floor((2*n - k - 2)/2), floor((n - k)/2))
+A107842	trilambn	0	0	0	(n, k) -> ZV(3*k + 2).*(BI(2*n + k + 1, n - k))./(n + 2*k + 2)
+A108358	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(k, j).*(BI(n - j, k)).*((j + 2)/2)).modZ(2)
+A108359	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(k, j).*(BI(n - j, k)).*((j + 2)/2))
+A108477	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(2*(n - k), j).*(BI(2*k, j)).*(Z.TWO.pow(j)))
+A109244	trilambn	0	0	0	(n, k) -> SU(0, n, j -> Z_1(n - j).*(BI(n + j - k, j - k)))
+A109956	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(3*k + 1).*(BI(3*n, n - k))./(2*n + k + 1)	(-1)^(n-k)*((3k+1)/(2n+k+1))*binomial(3n, n-k).
+A109962	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(4*k + 1).*(BI(4*n, n - k))./(3*n + k + 1)	(-1)^(n-k)*((4k+1)/(3n+k+1))*binomial(4n, n-k).
+A110124	trilambn	0	0	0	(n, k) -> SU(0, (n - k)/2, j -> Z_1(j).*(BI(n - k, j)).*(BI(2*n - 2*k - 2*j, n - k)).*(ZV(k).pow(n - k - 2*j)))
+A110135	trilambn	0	0	0	(n, k) -> SU(0, (n - k)/2, j -> BI(n - k, j).*(BI(2*(n - k - j), n - k)).*(ZV(k).pow(j)))
+A110165	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(2*j, j + k)))
+A110171	trilambn	0	0	0	(n, k) -> (n == k) ? Z.ONE : SU(0, n, i -> BI(n, i).*(BI(2*n - k - i - 1, n - k - i)))
+A110180	trilambn	0	0	0	(n, k) -> SU(0, (n - k)/2, j -> BI(n - k, j).*(BI(n - k - j, j)).*(ZV(k).pow(j)))
+A110197	trilambn	0	0	0	(n, k) -> SU(0, n - k, i -> BI(i + k, k).pow(2))
+A110247	trilambn	0	0	0	(n, k) -> (n == 0) ? Z.ONE : ZV(ZV(k).jacobi(ZV(2*n - 2*k + 1)))
+A110510	trilambn	0	0	0	(n, k) -> (n == 0) ? Z.ONE : BI(2*n - k - 1, n - k).*(Z2(n - k)).*(k)./(n)
+A110518	trilambn	0	0	0	(n, k) -> (n == 0) ? Z.ONE : BI(2*n - k - 1, n - k).*(Z.THREE.pow(n - k)).*(k)./(n)
+A110519	trilambn	0	0	0	(n, k) -> (n == 0) ? Z.ONE : SU(0, n, j -> BI(2*n - j - 1, n - j).*(j).*(BI(j, k)).*(Z.THREE.pow(n - j)))./(n)
+A110535	trilambn	0	1	1	(n, k) -> new Q(Z.valueOf(k).pow(n), Z.valueOf(n).pow(k)).ceiling()
+A111805	trilambn	0	0	0	(n, k) -> BI(2*(n + k), 4*k)	T(n, k)=BI(2(n + k), 4*k).
+A112333	trilambn	0	0	0	(n, k) -> PR(1, n, m -> ZV(3*m - 1))./(PR(1, k, j -> ZV(3*j - 1)))
+A112336	trilambn	0	0	0	(n, k) -> BI(2*(n - k), n - k).multiply(Z.TWO.pow(k))
+A113020	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(0, j - k)).*(FI(j - 2*k)))
+A113045	trilambn	0	0	0	(n, k) -> BI(n, (n - k)/2).modZ(3)
+A113125	trilambn	0	1	1	(n, k) -> ZV((n > 2 + k) ? 0 : k)	
+A113126	trilambn	0	1	1	(n, k) -> ZV((n > 3 + k) ? 0 : k)	
+A113128	trilambn	0	1	1	(n, k) -> ZV((n > 3 + k) ? 0 : (new int[]{1, 3, 3, 1})[n - k]*k)
+A113955	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(j, j - k).*(BI(2*n, n - j)))
+A114114	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI((n + j)/2, k).*(BI(k, (n + j)/2)))
+A114118	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI((n + k + j)/3, k).*(BI(k, (n + k + j)/3)))
+A114422	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(n, j - k).*(BI(j, n - j)))
+A115512	trilambn	0	0	0	(n, k) -> ZV(((n == k) ? 1 : 0) | ((n == 3*k + 1) ? 1 : 0))
+A115951	trilambn	0	0	0	(n, k) -> BI(2*k, k).*(BI(k, n - k))
+A115952	trilambn	0	0	0	(n, k) -> ZV(((n == k) ? 1 : 0) | ((n == 2*k + 2) ?  - 1 : 0) | ((n == k + 1) ?  - (1 + (((k & 1) == 0) ? 1 :  - 1))/2 : 0))
+A115990	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(n - k, j - k).*(BI(j, n - j)))
+A115991	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(n - k, j - k).*(BI(j, n - j)).*(Z2(n - j)))
+A116382	trilambn	0	0	0	(n, k) -> SU(0, n, j -> Z_1(n - j).*(BI(n, j)).*(SU(0, j, i -> BI(j, i - k).*(BI(i, j - i)))))
+A117198	trilambn	0	0	0	(n, k) -> ZV(((n == k) ? 1 : 0) | ((n == 2*k + 1) ? 1 : 0) | ((n == 3*k + 2) ? 1 : 0))		T(n, k)=if(n=k, 1, 0) OR if(n=2*k + 1, 1, 0) OR if(n=3*k + 2, 1, 0).
+A117207	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(n + j, j + k).*(BI(n - j, k)))
+# aban. A117375	trilambn	0	0	0	(n, k) -> (n == 0) ? Z.ONE : SU(0, n, j -> BI(2*n - j, n - j).*((k <= j) ? Z.THREE.pow(j - k).*(j)./(n - j) : Z.ZERO))	T(0,0)=1, T(n,k)=[k<=n]*sum{j=0..n, (j/(n-j))*C(2n-j,n-j)[k<=j]*3^(j-k)}
+A117389	trilambn	0	0	0	(n, k) -> SU(0, 2*k - n, j -> BI(2*k - n, j).*(BI(n - k, j)).*(Z2(j)))	T(n, k)=sum{j=0..2*k - n, BI(2*k - n, j)*BI(n - k, n - k - j)2^j};
+A118384	triprod	0	A110171	A007318		0	0	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(j, n - k - j)).*(Z2(n - k - j)).*(Z.THREE.pow(2*j - (n - k))))	Riordan array (1/sqrt(1 - 6*x + x^2), (1 - 3*x - sqrt(1 - 6*x + x^2))/(4*x)); Column k has e.g.f. exp(3*x)Bessel_I(k, 2*sqrt(2)x)/(sqrt(2))^k.
+A119274	trilambn	0	0	0	(n, k) -> BI(n, k).*(FA(2*n - k))./(FA(n))
+A119301	trilambn	0	0	0	(n, k) -> BI(3*n - k, n - k)
+A119307	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(j, k).*(BI(j, n - k)))
+A119326	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(k, 2*j).*(BI(n - k, 2*j)))
+A119328	trilambn	0	0	0	(n, k) -> SU(0, n, i -> Z_1(n - i).*(BI(n, i)).*(SU(0, i - k, j -> BI(k, 2*j).*(BI(i - k, 2*j)))))
+A119329	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(k, 2*j).*(BI(n - k, 2*j)).*(Z2(j)))
+A119331	trilambn	0	0	0	(n, k) -> SU(0, n, i -> Z_1(n - i).*(BI(n, i)).*(SU(0, i - k, j -> BI(k, 2*j).*(BI(i - k, 2*j)).*(Z2(j)))))
+A119335	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(k, 3*j).*(BI(n - k, 3*j)))
+A119337	trilambn	0	0	0	(n, k) -> SU(0, n, i -> Z_1(n - i).*(BI(n, i)).*(SU(0, i - k, j -> BI(k, 3*j).*(BI(i - k, 3*j)))))
+A119828	trilambn	0	0	0	(n, k) -> FA(2*n)./(FA(2*k)) 
+A119831	trilambn	0	0	0	(n, k) -> FA(3*n)./(FA(3*k)) 
+A120258	trilambn	0	0	0	(n, k) -> PR(0, k - 1, j -> BI(2*n - 2*k + j, n - k))./(PR(0, k - 1, j -> BI(n - k + j, j)))	[k<=n]*Product{j=0..k-1, C(2n-2k+j, n-k)/C(n-k+j, j)}
+A122832	trilambn	0	0	0	(n, k) -> Rationals.SINGLETON.sum(0, n - k, i -> new Q(BI(i, n - k - i), FA(i))).*(FA(n))./(FA(k)).num()	(n!/k!)sum{i=0..n-k, C(i,n-k-i)/i!}
+A122833	trilambn	0	0	0	(n, k) -> Rationals.SINGLETON.sum(0, n - k, i -> new Q(Z_1(i).*(BI(i, n - k - i)), FA(i))).*(FA(n))./(FA(k)).num()
+A122851	trilambn	0	0	0	(n, k) -> BI(k, n - k).*(FA(n - k))
+A122851	trilambn	0	0	0	(n, k) -> FA(k)./(FA(2*k - n))
+A122899	trilambn	0	0	0	(n, k) -> SU(0, n, j -> Z_1(n - j).*(BI(n, j)).*(BI(j + 1, k + 1)).*(BI(j, k)))
+A124376	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(k, k - j).*(BI(n - j, k)).*(BI(2, j))).*((k <= n) ? 1 : 0)
+A124392	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(n - j, k).*(BI(2*j, n - k)))
+A124744	trilambn	0	0	0	(n, k) -> BI(k/2, n - k).*(Z_1(n - k))
+A124749	trilambn	0	0	0	(n, k) -> BI(k/3, n - k).*(Z_1(n - k))
+A124788	trilambn	0	0	0	(n, k) -> BI(k/2, n - k)
+A124821	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(3*k + 2).*(BI(3*n + 1, n - k))./(2*n + k + 2)
+A127829	trilambn	0	0	0	(n, k) -> BI(k/2, n - k).modZ(2)	
+A128207	trilambn	0	0	0	(n, k) -> Z_1(n - k).*((k <= n) ? 1 : 0).*(PR(1, n, i -> SU(0, i - 1, j -> FI(j - 1))))./(PR(1, k, i -> SU(0, i - 1, j -> FI(j - 1))))
+A128413	trilambn	0	0	0	(n, k) -> (k == 0) ? Z2(n).*(BI(2*n, n))./(2).+((n == 0) ? 1 : 0) : Z2(n - k).*(BI(2*n, n - k))	; Column k has g.f. if(k=0, 4*x/(sqrt(1 - 8*x)(1 - sqrt(1 - 8*x))), (1/sqrt(1 - 8*x))*((1 - 4*x - sqrt(1 - 8*x))/(8*x))^k);
+A129652	trilambn	0	0	0	(n, k) -> Rationals.SINGLETON.sum(0, n - k, i -> new Q(BI(n - k - 1, i), FA(n - k - i))).*(FA(n))./(FA(k)).num()
+A129684	trilambn	0	0	0	(n, k) -> FA(n).*(Z_1(n - k).+(1))./(FA(k))./(Z2((n - k)/2))./(2)
+A162303	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(j, n - j).*(BI(j + 1, k)).*(BI(j + 1, k + 1))./(j + 1))
+A162747	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(n, j).*(BI(n - j, 2*(k - j))).*((j <= k) ? FA(k - j) : Z.ZERO))
+A166335	trilambn	0	0	0	(n, k) -> BI(n, k).*((n - k) + ((n - k) == 0 ? 1 : 0) / 2).*(((((n - k) & 1) == 0) ? 1 : -1) + 1)./(2)	[k<=n]*C(n,k)*((n-k)+0^((n-k)/2))(1+(-1)^(n-k))/2
+A176230	trilambn	0	0	0	(n, k) -> FA(2*n)./(FA(2*k).*(FA(n - k)).*(Z2(n - k)))
+A176231	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(FA(2*n))./(FA(2*k).*(FA(n - k)).*(Z2(n - k)))
+A176331	trilambn	0	0	0	(n, k) -> SU(0, n, j -> BI(j, n - k).*(BI(j, k)).*(Z_1(n - j)))
+A307090	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> Z_1(j).*(BI(k, 2*j)).*(BI(n - k, 2*j)))
+A307156	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> Z_1(j).*(BI(k, 3*j)).*(BI(n - k, 3*j)))
