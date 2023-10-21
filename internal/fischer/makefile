@@ -518,6 +518,7 @@ dist1:
 deploy:
 	cd ../.. ; ant         deploy 2>&1
 #--
+ditel:   dist test log
 geditel: gener dist test log
 maditel: man dist test    log
 madital: man dist testall log
