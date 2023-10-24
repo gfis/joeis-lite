@@ -1,97 +1,105 @@
-A069877	parmof3	0	A069877	new A054842()	0	(n)). - _Antti Karttunen_, Nov 16 2016
-A083256	parmof3	0	A069877	new A018252()	0	(n)).
-A212173	parmof3	0	A069877	new A057521()	0	(n)) = A057521(A046523(n)).
-A276528	parmof3	0	A069877	new A000203()	0	(n)).
-A277906	parmof3	0	A069877	new A000010()	0	(n)).
-A278158	parmof3	0	A069877	new A051258()	0	(n)), except for n=6, a(6) = 0.
-A278160	parmof3	0	A069877	new A005563()	0	(n)) = A046523(((n+1)^2)-1).
-A278162	parmof3	0	A069877	new A002522()	0	(n)) = A046523((n^2)+1).
-A278165	parmof3	0	A069877	new A001045()	0	(n)).
-A278217	parmof3	0	A069877	new A075157()	0	(n) + 1) = A046523(A075159(1+n)).
-A278218	parmof3	0	A069877	new A007318()	0	(n)). [When viewed as a one-dimensional sequence.]
-A278219	parmof3	0	A069877	new A243353()	0	(n)).
-A278220	parmof3	0	A069877	new A241909()	0	(n)).
-A278221	parmof3	0	A069877	new A122111()	0	(n)).
-A278222	parmof3	0	A069877	new A005940()	0	(1+n)).
-A278224	parmof3	0	A069877	new A048673()	0	(n)).
-A278225	parmof3	0	A069877	new A275725()	0	(n)).
-A278226	parmof3	0	A069877	new A276086()	0	(n)).
-A278227	parmof3	0	A069877	new A006093()	0	A000040(n)-1).
-A278228	parmof3	0	A069877	new A008864()	0	A000040(n)+1).
-A278229	parmof3	0	A069877	new A076274()	0	(n)) = A046523((2*A000040(n))-1).
-A278230	parmof3	0	A069877	new A072055()	0	(n)) = A046523(1 + 2*A000040(n)).
-A278231	parmof3	0	A069877	new A193231()	0	(n)).
-A278232	parmof3	0	A069877	new A259934()	0	(n)).
-A278233	parmof3	0	A069877	new A091203()	0	(n)) = A046523(A091205(n)) = A046523(A235042(n)). [Because of the "sorting" essentially performed by A046523, any map from GF(2)[X] to Z can be used, as long as it is fully (cross-)multiplicative and preserves also the exponents intact.]
-A278234	parmof3	0	A069877	new A275734()	0	(n)).
-A278235	parmof3	0	A069877	new A275735()	0	(n)).
-A278236	parmof3	0	A069877	new A276076()	0	(n)).
-A278237	parmof3	0	A069877	new A263273()	0	(n)).
-A278240	parmof3	0	A069877	new A000225()	0	(n)).
-A278241	parmof3	0	A069877	new A000041()	0	(n)).
-A278242	parmof3	0	A069877	new A000051()	0	(n)).
-A278243	parmof3	0	A069877	new A260443()	0	(n)).
-A278244	parmof3	0	A069877	new A001844()	0	(n)).
-A278245	parmof3	0	A069877	new A000045()	0	(n)).
-A278246	parmof3	0	A069877	new A000096()	0	(n)).
-A278247	parmof3	0	A069877	new A028387()	0	(n)).
-A278248	parmof3	0	A069877	new A001608()	0	(n)). a(1) = 0; for any other n, 
-A278249	parmof3	0	A069877	new A000123()	0	(n)).
-A278250	parmof3	0	A069877	new A001190()	0	(n)).
-A278251	parmof3	0	A069877	new A002061()	0	(n)).
-A278252	parmof3	0	A069877	new A000292()	0	(n)) = A046523(binomial(n+2,3)).
-A278253	parmof3	0	A069877	new A000217()	0	(n)).
-A278255	parmof3	0	A069877	new A000326()	0	(n)).
-A278256	parmof3	0	A069877	new A002378()	0	(n)).
-A278257	parmof3	0	A069877	new A005187()	0	(n)).
-A278258	parmof3	0	A069877	new A000108()	0	(n)).
-A278259	parmof3	0	A069877	new A002620()	0	(n)). a(1) = 0; for n > 1, 
-A278260	parmof3	0	A069877	new A033638()	0	(n)).
-A278261	parmof3	0	A069877	new A273671()	0	(n)).
-A278263	parmof3	0	A069877	new A064413()	0	(n)).
-A278264	parmof3	0	A069877	new A064664()	0	(n)).
-A278266	parmof3	0	A069877	new A026477()	0	(n)).
-A278497	parmof3	0	A069877	new A276573()	0	(n)).
-A278501	parmof3	0	A069877	new A279336()	0	(n)).
-A278502	parmof3	0	A069877	new A279338()	0	(n)).
-A278523	parmof3	0	A069877	new A249818()	0	(n)).
-A278524	parmof3	0	A069877	new A250246()	0	(n)).
-A278525	parmof3	0	A069877	new A241916()	0	(n)).
-A278526	parmof3	0	A069877	new A227413()	0	(n)).
-A278527	parmof3	0	A069877	new A246378()	0	(n)).
-A278531	parmof3	0	A069877	new A163511()	0	(n)).
-A278533	parmof3	0	A069877	new A253563()	0	(n)).
-A278535	parmof3	0	A069877	new A253565()	0	(n)).
-A278540	parmof3	0	A069877	new A235201()	0	(n)).
-A278541	parmof3	0	A069877	new A209636()	0	(n)).
-A278542	parmof3	0	A069877	new A209637()	0	(n)).
-A278543	parmof3	0	A069877	new A277198()	0	(n)).
-A279350	parmof3	0	A069877	new A279352()	0	(n)).
-A279354	parmof3	0	A069877	new A279356()	0	(n)).
-A280705	parmof3	0	A069877	new A280700()	0	(n)) = A046523(A283475(n)).
-A283465	parmof3	0	A069877	new A250469()	0	(n)) = A046523(A266645(n)).
-A283466	parmof3	0	A069877	new A266646()	0	(n)).
-A283990	parmof3	0	A069877	new A243103()	0	(n)).
-A283995	parmof3	0	A069877	new A007955()	0	(n)).
-A284004	parmof3	0	A069877	new A284003()	0	(n)).
-A284573	parmof3	0	A069877	new A277324()	0	(n)).
-A285334	parmof3	0	A069877	new A243505()	0	(n)).
-A285713	parmof3	0	A069877	new A245612()	0	(n)).
-A286250	parmof3	0	A069877	new A245448()	0	(n)) = A278223(A064216(n)) = A046523((2*A064216(n))-1).
-A286361	parmof3	0	A069877	new A170818()	0	(n)).
-A286363	parmof3	0	A069877	new A097706()	0	(n)).
-A286479	parmof3	0	A069877	new A062249()	0	(n)) = A046523(n+A000005(n)).
-A286542	parmof3	0	A069877	new A285332()	0	(n)).
-A286553	parmof3	0	A069877	new A252753()	0	(n)).
-A286557	parmof3	0	A069877	new A286555()	0	(n)).
-A286613	parmof3	0	A069877	new A244154()	0	(n)).
-A290096	parmof3	0	A069877	new A290095()	0	(n)).
-A292589	parmof3	0	A069877	new A003557()	0	(n)) = A003557(A046523(n)); the least representative of the prime signature of {n divided by largest squarefree divisor of n}.
-A296078	parmof3	0	A069877	new A039649()	0	(n)) = A046523(1+A000010(n)).
-A296091	parmof3	0	A069877	new A039653()	0	(n)-1) = A046523(A039653(n)). a(1) = 1; for n > 1, 
-A296092	parmof3	0	A069877	new A088580()	0	(n)) = A046523(1+A000203(n)).
-A324202	parmof3	0	A069877	new A332461()	0	(n)), where A332461(n) = Product_{d|n, d>1} prime(1+A297167(d))).
-A336158	parmof3	0	A069877	new A000265()	0	(n)) = A046523(A064989(n)).
-A339810	parmof3	0	A069877	new A339809()	0	(n) - 1).
-A350062	parmof3	0	A069877	new A156552()	0	(n)).
-A350063	parmof3	0	A069877	new A322993()	0	(n)) = A046523(A000265(A156552(n))).  a(1) = 0; for n > 1, 
+# 2023-10-23
+A069877	simtraf	0	A054842	new A054842()	FactorUtils::leastPrimeSignature	0	(n)). - _Antti Karttunen_, Nov 16 2016
+A083256	simtraf	0	A018252	new A018252()	FactorUtils::leastPrimeSignature	0	(n)).
+A212173	simtraf	0	A057521	new A057521()	FactorUtils::leastPrimeSignature	0	(n)) = A057521(A046523(n)).
+A276086	simtraf	0	A278226	new A278226()	FactorUtils::leastPrimeSignature	€	A046523(a(n)) = €278226(n). [Least number with the same prime signature as a(n)]
+A276528	simtraf	0	A000203	new A000203()	FactorUtils::leastPrimeSignature	0	(n)).
+A277906	simtraf	0	A000010	new A000010()	FactorUtils::leastPrimeSignature	0	(n)).
+A278158	simtraf	0	A051258	new A051258()	FactorUtils::leastPrimeSignature	0	(n)), except for n=6, a(6) = 0.
+A278160	simtraf	0	A005563	new A005563()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(((n+1)^2)-1).
+A278162	simtraf	0	A002522	new A002522()	FactorUtils::leastPrimeSignature	0	(n)) = A046523((n^2)+1).
+A278165	simtraf	0	A001045	new A001045()	FactorUtils::leastPrimeSignature	0	(n)).
+A278217	simtraf	0	A075157	new A075157()	FactorUtils::leastPrimeSignature	0	(n) + 1) = A046523(A075159(1+n)).
+A278218	simtraf	0	A007318	new A007318()	FactorUtils::leastPrimeSignature	0	(n)). [When viewed as a one-dimensional sequence.]
+A278219	simtraf	0	A243353	new A243353()	FactorUtils::leastPrimeSignature	0	(n)).
+A278220	simtraf	0	A241909	new A241909()	FactorUtils::leastPrimeSignature	0	(n)).
+A278221	simtraf	0	A122111	new A122111()	FactorUtils::leastPrimeSignature	0	(n)).
+A278222	simtraf	0	A005940	new A005940()	FactorUtils::leastPrimeSignature	0	(1+n)).
+A278223	simtraf	0	A005408	new A005408()	FactorUtils::leastPrimeSignature	0	Least number with the same prime signature as the n-th odd number: a(n) = A046523(2n-1).
+A278224	simtraf	0	A048673	new A048673()	FactorUtils::leastPrimeSignature	0	(n)).
+A278225	simtraf	0	A275725	new A275725()	FactorUtils::leastPrimeSignature	0	(n)).
+A278226	simtraf	0	A276086	new A276086()	FactorUtils::leastPrimeSignature	0	(n)).
+A278227	simtraf	0	A006093	new A006093()	FactorUtils::leastPrimeSignature	0	A000040(n)-1).
+A278228	simtraf	0	A008864	new A008864()	FactorUtils::leastPrimeSignature	0	A000040(n)+1).
+A278229	simtraf	0	A076274	new A076274()	FactorUtils::leastPrimeSignature	0	(n)) = A046523((2*A000040(n))-1).
+A278230	simtraf	0	A072055	new A072055()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(1 + 2*A000040(n)).
+A278231	simtraf	0	A193231	new A193231()	FactorUtils::leastPrimeSignature	0	(n)).
+A278232	simtraf	0	A259934	new A259934()	FactorUtils::leastPrimeSignature	0	(n)).
+A278233	simtraf	0	A091203	new A091203()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(A091205(n)) = A046523(A235042(n)). [Because of the "sorting" essentially performed by A046523, any map from GF(2)[X] to Z can be used, as long as it is fully (cross-)multiplicative and preserves also the exponents intact.]
+A278234	simtraf	0	A275734	new A275734()	FactorUtils::leastPrimeSignature	0	(n)).
+A278235	simtraf	0	A275735	new A275735()	FactorUtils::leastPrimeSignature	0	(n)).
+A278236	simtraf	0	A276076	new A276076()	FactorUtils::leastPrimeSignature	0	(n)).
+A278237	simtraf	0	A263273	new A263273()	FactorUtils::leastPrimeSignature	0	(n)).
+A278240	simtraf	0	A000225	new A000225()	FactorUtils::leastPrimeSignature	0	(n)).
+A278241	simtraf	0	A000041	new A000041()	FactorUtils::leastPrimeSignature	0	(n)).
+A278242	simtraf	0	A000051	new A000051()	FactorUtils::leastPrimeSignature	0	(n)).
+A278243	simtraf	0	A260443	new A260443()	FactorUtils::leastPrimeSignature	0	(n)).
+A278244	simtraf	0	A001844	new A001844()	FactorUtils::leastPrimeSignature	0	(n)).
+A278245	simtraf	0	A000045	new A000045()	FactorUtils::leastPrimeSignature	0	(n)).
+A278246	simtraf	0	A000096	new A000096()	FactorUtils::leastPrimeSignature	0	(n)).
+A278247	simtraf	0	A028387	new A028387()	FactorUtils::leastPrimeSignature	0	(n)).
+A278248	simtraf	0	A001608	new A001608()	FactorUtils::leastPrimeSignature	0	(n)). a(1) = 0; for any other n, 
+A278249	simtraf	0	A000123	new A000123()	FactorUtils::leastPrimeSignature	0	(n)).
+A278250	simtraf	0	A001190	new A001190()	FactorUtils::leastPrimeSignature	0	(n)).
+A278251	simtraf	0	A002061	new A002061()	FactorUtils::leastPrimeSignature	0	(n)).
+A278252	simtraf	0	A000292	new A000292()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(binomial(n+2,3)).
+A278253	simtraf	0	A000217	new A000217()	FactorUtils::leastPrimeSignature	0	(n)).
+A278255	simtraf	0	A000326	new A000326()	FactorUtils::leastPrimeSignature	0	(n)).
+A278256	simtraf	0	A002378	new A002378()	FactorUtils::leastPrimeSignature	0	(n)).
+A278257	simtraf	0	A005187	new A005187()	FactorUtils::leastPrimeSignature	0	(n)).
+A278258	simtraf	0	A000108	new A000108()	FactorUtils::leastPrimeSignature	0	(n)).
+A278259	simtraf	0	A002620	new A002620()	FactorUtils::leastPrimeSignature	0	(n)). a(1) = 0; for n > 1, 
+A278260	simtraf	0	A033638	new A033638()	FactorUtils::leastPrimeSignature	0	(n)).
+A278261	simtraf	0	A273671	new A273671()	FactorUtils::leastPrimeSignature	0	(n)).
+A278263	simtraf	0	A064413	new A064413()	FactorUtils::leastPrimeSignature	0	(n)).
+A278264	simtraf	0	A064664	new A064664()	FactorUtils::leastPrimeSignature	0	(n)).
+A278266	simtraf	0	A026477	new A026477()	FactorUtils::leastPrimeSignature	0	(n)).
+A278497	simtraf	0	A276573	new A276573()	FactorUtils::leastPrimeSignature	0	(n)).
+A278501	simtraf	0	A279336	new A279336()	FactorUtils::leastPrimeSignature	0	(n)).
+A278502	simtraf	0	A279338	new A279338()	FactorUtils::leastPrimeSignature	0	(n)).
+A278523	simtraf	0	A249818	new A249818()	FactorUtils::leastPrimeSignature	0	(n)).
+A278524	simtraf	0	A250246	new A250246()	FactorUtils::leastPrimeSignature	0	(n)).
+A278525	simtraf	0	A241916	new A241916()	FactorUtils::leastPrimeSignature	0	(n)).
+A278526	simtraf	0	A227413	new A227413()	FactorUtils::leastPrimeSignature	0	(n)).
+A278527	simtraf	0	A246378	new A246378()	FactorUtils::leastPrimeSignature	0	(n)).
+A278531	simtraf	0	A163511	new A163511()	FactorUtils::leastPrimeSignature	0	(n)).
+A278533	simtraf	0	A253563	new A253563()	FactorUtils::leastPrimeSignature	0	(n)).
+A278535	simtraf	0	A253565	new A253565()	FactorUtils::leastPrimeSignature	0	(n)).
+A278540	simtraf	0	A235201	new A235201()	FactorUtils::leastPrimeSignature	0	(n)).
+A278541	simtraf	0	A209636	new A209636()	FactorUtils::leastPrimeSignature	0	(n)).
+A278542	simtraf	0	A209637	new A209637()	FactorUtils::leastPrimeSignature	0	(n)).
+A278543	simtraf	0	A277198	new A277198()	FactorUtils::leastPrimeSignature	0	(n)).
+A279350	simtraf	0	A279352	new A279352()	FactorUtils::leastPrimeSignature	0	(n)).
+A279354	simtraf	0	A279356	new A279356()	FactorUtils::leastPrimeSignature	0	(n)).
+A280705	simtraf	0	A280700	new A280700()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(A283475(n)).
+A283465	simtraf	0	A250469	new A250469()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(A266645(n)).
+A283466	simtraf	0	A266646	new A266646()	FactorUtils::leastPrimeSignature	0	(n)).
+A283990	simtraf	0	A243103	new A243103()	FactorUtils::leastPrimeSignature	0	(n)).
+A283995	simtraf	0	A007955	new A007955()	FactorUtils::leastPrimeSignature	0	(n)).
+A284004	simtraf	0	A284003	new A284003()	FactorUtils::leastPrimeSignature	0	(n)).
+A284573	simtraf	0	A277324	new A277324()	FactorUtils::leastPrimeSignature	0	(n)).
+A285334	simtraf	0	A243505	new A243505()	FactorUtils::leastPrimeSignature	0	(n)).
+A285713	simtraf	0	A245612	new A245612()	FactorUtils::leastPrimeSignature	0	(n)).
+A286250	simtraf	0	A245448	new A245448()	FactorUtils::leastPrimeSignature	0	(n)) = A278223(A064216(n)) = A046523((2*A064216(n))-1).
+A286361	simtraf	0	A170818	new A170818()	FactorUtils::leastPrimeSignature	0	(n)).
+A286363	simtraf	0	A097706	new A097706()	FactorUtils::leastPrimeSignature	0	(n)).
+A286479	simtraf	0	A062249	new A062249()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(n+A000005(n)).
+A286542	simtraf	0	A285332	new A285332()	FactorUtils::leastPrimeSignature	0	(n)).
+A286553	simtraf	0	A252753	new A252753()	FactorUtils::leastPrimeSignature	0	(n)).
+A286557	simtraf	0	A286555	new A286555()	FactorUtils::leastPrimeSignature	0	(n)).
+A286613	simtraf	0	A244154	new A244154()	FactorUtils::leastPrimeSignature	0	(n)).
+A290096	simtraf	0	A290095	new A290095()	FactorUtils::leastPrimeSignature	0	(n)).
+A292589	simtraf	0	A003557	new A003557()	FactorUtils::leastPrimeSignature	0	(n)) = A003557(A046523(n)); the least representative of the prime signature of {n divided by largest squarefree divisor of n}.
+A296076	simtraf	0	A002322	new SimpleTransformSequence(1, new A002322(), v -> v.add(1))	FactorUtils::leastPrimeSignature	Least number with the same prime signature as 1 + A002322(n), where A002322 is Carmichael's lambda.
+A296078	simtraf	0	A039649	new A039649()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(1+A000010(n)).
+A296091	simtraf	0	A039653	new A039653()	FactorUtils::leastPrimeSignature	0	(n)-1) = A046523(A039653(n)). a(1) = 1; for n > 1, 
+A296092	simtraf	0	A088580	new A088580()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(1+A000203(n)).
+A324202	simtraf	0	A332461	new A332461()	FactorUtils::leastPrimeSignature	0	(n)), where A332461(n) = Product_{d|n, d>1} prime(1+A297167(d))).
+A336158	simtraf	0	A000265	new A000265()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(A064989(n)).
+A339810	simtraf	0	A339809	new A339809()	FactorUtils::leastPrimeSignature	0	(n) - 1).
+A350062	simtraf	0	A156552	new A156552()	FactorUtils::leastPrimeSignature	0	(n)).
+A350063	simtraf	0	A322993	new A322993()	FactorUtils::leastPrimeSignature	0	(n)) = A046523(A000265(A156552(n))).  a(1) = 0; for n > 1, 
+A359600	simtraf	0	A005408	new A005408()	FactorUtils::leastPrimeSignature	0	he least odd number with the same prime signature as n.
+A365425	simtraf	0	A163511	new A163511()	FactorUtils::leastPrimeSignature	€	The least number with the prime signature of the odd part of €163511(n): a(n) = A0
+A365719	simtraf	0	A356867	new A356867()	FactorUtils::leastPrimeSignature	€	The least number with the same prime signature as €356867(1+n), where €356867 is Sycamore's Doudna variant D(3).
+A366261	simtraf	0	A366260	new A366260()	FactorUtils::leastPrimeSignature	€	The least number with the same prime signature as €366260, where €366260 is Doudna sequence permuted by May code.

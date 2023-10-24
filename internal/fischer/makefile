@@ -4499,6 +4499,10 @@ pairtr:
 	cd    $(CONTRIB)/ak ; make $@
 	cp -v $(CONTRIB)/ak/$@.gen .
 	cp -v sql/pairtra.sql sql/$@.sql
+rgs:
+	cp -v $(CONTRIB)/ak/rgs.gen .
+rgsman:
+	cp -v $(CONTRIB)/ak/rgs.man $@.gen
 #--------------------------------
 # A043001	null	n-th base 3 palindrome that starts with 1.	nonn,base,synth	1..46	nyi
 # A043002	null	n-th base 3 palindrome that starts with 2.	nonn,base,synth	1..44	nyi

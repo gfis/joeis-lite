@@ -1,7 +1,8 @@
 #!perl
 
-# Read rows from db table 'seq4' and generate corresponding Java sources for jOEIS
+# Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2023-10-16: V7.1: FactorUtils; skip records with "€" in parm[i]
 # 2023-10-16: V7.0: FI, FL, SJ, BI, S1, S2, .* .+ .- replacements; %zhash
 # 2023-09-26: V6.5: GroupFactory
 # 2023-09-23: V6.4: IntegerPartition
@@ -70,7 +71,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V7.0";
+my $version_id  = "gen_seq4.pl V7.1";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -173,9 +174,13 @@ while (<>) { # read inputfile
     if ($debug >= 2) {
         print "# scalar(parms)=" . scalar(@parms) . "\n";
     }
+    my $contains_nyi = 0; # assume that there is no "€"
     while ($iparm < scalar(@parms) - 1) { # for all $(PARMi)
         my $max_term_len = 0;
         my @terms;
+        if ($iparm <= 8 && ($parms[$iparm] =~ m{€}) && $contains_nyi == 0) { # does not work: dbat destroys "€"
+            $contains_nyi = $iparm;
+        }
         if ($parms[$iparm] =~ m{\-\>}) { # with lambda expression: replace shortcuts
             my $parm = $parms[$iparm];
             if ($parm =~ s{(BI|FA|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])}{$1\<--HERE$2}g) {
@@ -285,6 +290,8 @@ while (<>) { # read inputfile
     } # while $iparm
 
     if (0) {
+    } elsif ($contains_nyi > 0) {
+        print "# $aseqno " . join(" ", $callcode, splice(@parms, 0, $contains_nyi)) . " ... skipped\n";
     } elsif ($copy =~ m{\$\((PARM\d)}) {
         print "# $aseqno $1 not replaced - skipped\n";
         if ($debug >= 1) {
@@ -402,6 +409,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WEuler\.}                      ) { $imports{"irvine.math.z.Euler"           }                = $itype; }
     if ($line =~ m{\WFACTORIAL\.}                  ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
     if ($line =~ m{\WFactorSequence}               ) { $imports{"irvine.factor.util.FactorSequence"}             = $itype; }
+    if ($line =~ m{\WFactorUtils}                  ) { $imports{"irvine.factor.util.FactorUtils"               } = $itype; }
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }
     if ($line =~ m{\WFilterPositionSequence}       ) { $imports{"irvine.oeis.FilterPositionSequence"           } = $itype; }
     if ($line =~ m{\WFilterSequence}               ) { $imports{"irvine.oeis.FilterSequence"                   } = $itype; }
