@@ -4494,7 +4494,7 @@ num1dig: # A126207 null    Number of 5's in decimal expansion of 5^n.
 	wc -l    $@.gen
 #--------------------------------
 pairing:
-	cp -v $(CONTRIB)/ak/pairing.gen .
+	cut -f1-7 -d"	" aman/$@.man > $@.gen
 pairtr:
 	cd    $(CONTRIB)/ak ; make $@
 	cp -v $(CONTRIB)/ak/$@.gen .
@@ -4503,6 +4503,11 @@ rgs:
 	cp -v $(CONTRIB)/ak/rgs.gen .
 rgsman:
 	cp -v $(CONTRIB)/ak/rgs.man $@.gen
+tuptraf:
+	grep -v tuptraf $(ROBOT)/tuptraf.man \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 #--------------------------------
 # A043001	null	n-th base 3 palindrome that starts with 1.	nonn,base,synth	1..46	nyi
 # A043002	null	n-th base 3 palindrome that starts with 2.	nonn,base,synth	1..44	nyi

@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2023-10-16: V7.2: .10 -> Z.TEN
 # 2023-10-16: V7.1: FactorUtils; skip records with "€" in parm[i]
 # 2023-10-16: V7.0: FI, FL, SJ, BI, S1, S2, .* .+ .- replacements; %zhash
 # 2023-09-26: V6.5: GroupFactory
@@ -71,7 +72,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V7.1";
+my $version_id  = "gen_seq4.pl V7.2";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -192,24 +193,28 @@ while (<>) { # read inputfile
             if ($open != $clos) {
                 print STDERR "#?? $aseqno $parm, open=$open, close=$clos\n";
             }
-            $parm =~ s{FI\(}{Fibonacci.fibonacci\(}g;
-            $parm =~ s{BI\(}{Binomial.binomial\(}g;
-            $parm =~ s{FA\(}{MemoryFactorial.SINGLETON.factorial\(}g;
-            $parm =~ s{MU\(}{Mobius.mobius\(}g;
-            $parm =~ s{PR\(}{Integers.SINGLETON.product\(}g;
-            $parm =~ s{SU\(}{Integers.SINGLETON.sum\(}g;
-            $parm =~ s{S1\(}{Stirling.firstKind\(}g;
-            $parm =~ s{S2\(}{Stirling.secondKind\(}g;
-            $parm =~ s{ZV\(}{Z.valueOf\(}g;
-            $parm =~ s{Z\_1\(}{Z.NEG_ONE.pow\(}g;
-            $parm =~ s{n\_1\(}{(((n & 1) == 0) ? 1 : -1)}g;
-            $parm =~ s{Z2\(}{Z.TWO.pow\(}g;
-            $parm =~ s{\.\*\(}{.multiply\(}g;
-            $parm =~ s{\.\/\(}{.divide\(}g;
-            $parm =~ s{\.\+\(}{.add\(}g;
-            $parm =~ s{\.\-\(}{.subtract\(}g;
+            $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
+            $parm =~ s{BI\(}           {Binomial.binomial\(}g;
+            $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
+            $parm =~ s{MU\(}           {Mobius.mobius\(}g;
+            $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
+            $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
+            $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
+            $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
+            $parm =~ s{ZV\(}           {Z.valueOf\(}g;
+            $parm =~ s{Z\_1\(}         {Z.NEG_ONE.pow\(}g;
+            $parm =~ s{n\_1\(}         {(((n & 1) == 0) ? 1 : -1)}g;
+            $parm =~ s{Z2\(}           {Z.TWO.pow\(}g;
+            $parm =~ s{\.\*\(}         {.multiply\(}g;
+            $parm =~ s{\.\/\(}         {.divide\(}g;
+            $parm =~ s{\.\+\(}         {.add\(}g;
+            $parm =~ s{\.\-\(}         {.subtract\(}g;
+            $parm =~ s{\.\^\(}         {.pow\(}g;
+            $parm =~ s{\.(\d|10)\b}    {"Z.$zhash{$1}"}eg;
             $parm =~ s{\.multiply\(2\)}{.multiply2\(\)}g;
-            $parm =~   s{\.divide\(2\)}  {.divide2\(\)}g;
+            $parm =~ s{\.divide\(2\)}  {.divide2\(\)}g;
+            $parm =~ s{\.pow\(2\)}     {.square\(\)}g;
+            $parm =~ s{\.pow\(1\)}     {}g;
             $parms[$iparm] = $parm;
             #                      1          1
             $parm =~ s{Z\.valueOf\((\-1|0-9|10)\)}{"Z." . $zhash{$1}}eg;
