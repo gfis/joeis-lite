@@ -30,8 +30,8 @@
 %N A351031 a(n) = Product_{d|n, d<n} A019565(€304759(d)).
 %N A351032 a(n) = Product_{d|n, d<n} A019565(€291759(d)).
 %N A353564 a(n) = Product_{d|n, d<n} €276086(phi(d)), where €276086 is primorial base exp-function, and phi is Euler totient function.
-A083258	tuptraf	0	(n, s) -> s[0].gcd(ZV(n))	"1"	new A046523()	a(n) = gcd(A046523(n), n).
-A083261	tuptraf	0	(n, s) -> s[0].gcd(s[1])	"1"	new A046523(), PREVIOUS	a(n) = gcd(A046523(n+1), A046523(n)).
+A083258	tuptraf	0	(n, s) -> s[0].gcd(ZV(n))	"1"	new A046523().skip(1)	a(n) = gcd(A046523(n), n).
+A083261	tuptraf	0	(n, s) -> s[0].gcd(s[1])	"1"	new A046523().skip(1), PREVIOUS	a(n) = gcd(A046523(n+1), A046523(n)).
 A117694	lambda	0	Z.valueOf(n).pow(n).add(n).divide2()	a(n) = (n^n + n)/2.
 A129739	filter	0	new A006720()	PRIME	Primes in Somos-4 sequence (A006720)
 A167536	lambda	0	{ Z n2 = Z.TWO.pow(n); return Z.THREE.pow(n2).subtract(Z.TWO.pow(n2)); }
