@@ -1,0 +1,36 @@
+A278241	simtraf	0	new A000041()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as the n-th partition number: a(n) = A046523(A000041(n)).
+A278245	simtraf	0	new A000045()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as the n-th Fibonacci number: a(n) = A046523(A000045(n)).
+A278246	simtraf	0	new A000096()	FactorUtils::leastPrimeSignature	a(n) = least number with the same prime signature as n*(n+3)/2.
+A278248	simtraf	0	new A001608()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as the n-th number in Perrin sequence: a(n) = A046523(A001608(n)), a(1) = 0.
+A278256	simtraf	0	new A002378()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as the n-th oblong number (A002378).
+A278223	simtraf	0	new A005408()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as the n-th odd number: a(n) = A046523(2n-1).
+A359600	simtraf	0	new A005408()	FactorUtils::leastPrimeSignature	The least odd number with the same prime signature as n.
+A278222	simtraf	0	new A005940()	FactorUtils::leastPrimeSignature	The least number with the same prime signature as A005940(n+1).
+A278266	simtraf	0	new A026477()	FactorUtils::leastPrimeSignature	Smallest number with the same prime signature as A026477(n). See further comments there.
+A278247	simtraf	0	new A028387()	FactorUtils::leastPrimeSignature	a(n) = least number with the same prime signature as n + (n+1)^2.
+A278260	simtraf	0	new A033638()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as {the n-th quarter-square}+1.
+A278263	simtraf	0	new A064413()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as the n-th term of EKG-sequence: a(n) = A046523(A064413(n)).
+A278264	simtraf	0	new A064664()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as the n-th term in the inverse of EKG-sequence: a(n) = A046523(A064664(n)).
+A278229	simtraf	0	new A076274().skip(1)	FactorUtils::leastPrimeSignature	a(n) = A046523(A076274(n)) = A046523((2*A000040(n))-1).
+A286363	simtraf	0	new A097706()	FactorUtils::leastPrimeSignature	 of the form 4k+3} has: a(n) = A046523(A097706(n)).
+A278221	simtraf	0	new A122111()	FactorUtils::leastPrimeSignature	a(n) = A046523(A122111(n)).
+A286361	simtraf	0	new A170818()	FactorUtils::leastPrimeSignature	 of the form 4k+1} has: a(n) = A046523(A170818(n)).
+A296078	simtraf	0	new SimpleTransformSequence(1, new A000010(), v -> v.add(1))	FactorUtils::leastPrimeSignature	Least number with the same prime signature as 1+phi(n), where phi = A000010, Euler totient function.
+A296091	simtraf	0	new SimpleTransformSequence(1, new A000203(), v -> v.add(-1))	FactorUtils::leastPrimeSignature	a(1) = 1 and for n > 1, the least number with the same prime signature as sigma(n)-1.
+A296092	simtraf	0	new SimpleTransformSequence(1, new A000203(), v -> v.add(1))	FactorUtils::leastPrimeSignature	Least number with the same prime signature as sigma(n)+1.
+A296076	simtraf	0	new SimpleTransformSequence(1, new A002322(), v -> v.add(1))	FactorUtils::leastPrimeSignature	Least number with the same prime signature as 1 + A002322(n), where A002322 is Carmichael's lambda.
+# A278233	simtraf	0	new €091203()	FactorUtils::leastPrimeSignature	a(n) = the least number with the same prime signature as €091203(n).
+# A350062	simtraf	0	new €156552()	FactorUtils::leastPrimeSignature	a(n) is the smallest number with the same prime signature as €156552(n), with a(1) = 0.
+# A365425	simtraf	0	new €163511()	FactorUtils::leastPrimeSignature	The least number with the prime signature of the odd part of €163511(n): a(n) = A0
+# A278231	simtraf	0	new €193231()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as the n-th number in Blue-code: a(n) = A046523(€193231(n)).
+# A278243	simtraf	0	new €260443()	FactorUtils::leastPrimeSignature	Filter-sequence for Stern polynomials: Least number with the same prime signature as €260443(n).
+# A278225	simtraf	0	new €275725()	FactorUtils::leastPrimeSignature	Filter-sequence for factorial base (cycles in A060117/A060118-permutations): Least number with the same prime signature as €275725.
+# A278234	simtraf	0	new €275734()	FactorUtils::leastPrimeSignature	Filter-sequence for factorial base (digit slopes): Least number with the same prime signature as €275734(n).
+# A278235	simtraf	0	new €275735()	FactorUtils::leastPrimeSignature	Filter-sequence for factorial base (digit levels): Least number with the same prime signature as €275735(n).
+# A278236	simtraf	0	new €276076()	FactorUtils::leastPrimeSignature	Filter-sequence for factorial base (digit values): least number with the same prime signature as €276076(n).
+# A278226	simtraf	0	new €276086()	FactorUtils::leastPrimeSignature	Filter-sequence for primorial base: least number with the same prime signature as €276086(n).
+# A276086	simtraf	0	new €278226()	FactorUtils::leastPrimeSignature	A046523(a(n)) = €278226(n). [Least number with the same prime signature as a(n)]
+# A290096	simtraf	0	new €290095()	FactorUtils::leastPrimeSignature	Least number with the same prime signature as €290095.
+# A350063	simtraf	0	new €322993()	FactorUtils::leastPrimeSignature	a(n) is the smallest number with the same prime signature as €322993(n), with a(1) = 0.
+# A365719	simtraf	0	new €356867()	FactorUtils::leastPrimeSignature	The least number with the same prime signature as €356867(1+n), where €356867 is Sycamore's Doudna variant D(3).
+# A366261	simtraf	0	new €366260()	FactorUtils::leastPrimeSignature	The least number with the same prime signature as €366260, where €366260 is Doudna sequence permuted by May code.

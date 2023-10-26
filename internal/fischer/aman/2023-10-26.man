@@ -1,0 +1,62 @@
+# 2023-10-26
+# A066729	parmof4	0	A319356	new A000027()	(d, v) -> (v.isProbablePrime() ? v : n	a(n) = Product_{d|n, d<n} d if n is composite, n otherwise.
+# A293216	parmof3	0	A319356	new A260443()	(d, v) -> v	a(n) = Product_{d|n, d<n} €260443(d).
+# A293221	parmof4	0	A319356	(d, v) -> v	new A019565()	A289813()	a(n) = Product_{d|n, d<n} A019565(A289813(d)); a product obtained from the 1-digits present in ternary expansions of proper divisors of n.
+# A293222	parmof4	0	A319356	(d, v) -> v	new A019565()	A289814()	a(n) = Product_{d|n, d<n} A019565(A289814(d)); a product obtained from the 2-digits present in ternary expansions of proper divisors of n.
+# A300834	parmof4	0	A319356	new A019565()	(d, v) -> v	a(n) = Product_{d|n, d<n} A019565(A003714(d)), where A003714(n) is the n-th Fibbinary number.
+# A318834	parmof3	0	A319356	new A332825()	(d, v) -> v	a(n) = Product_{d|n, d<n} A019565(phi(d)), where phi is the Euler totient function A000010.
+# n? A300831	parmof3	0	A319356	(d, v) -> v.pow(Mobius.mobius()	new A019565()	a(n) = Product_{d|n, d<n} A019565(d)^[moebius(n/d) = +1].
+# non-direct A305792	parmof3	0	A319356	(d, v) -> Puma.primeZ(v.subtract(1))	new A286622()	a(n) = Product_{d|n, d<n} prime(A286622(d)-1).
+# non-direct A319342	parmof3	0	A319356	(d, v) -> Puma.primeZ(v)	new A318881()	a(n) = Product_{d|n, d<n} prime(A318881(d)), where A318881(d) records the prime signature of A000010(d).
+# non-direct A319352	parmof3	0	A319356	(d, v) -> Puma.primeZ(v.add(1))	new A056239()	a(n) = Product_{d|n, d<n} prime(1+A056239(d)), where A056239(d) gives the weight of the partition whose Heinz-number is d.
+%F A097272 a(n) = A006519(n)*A003961(A046523(A000265(n))). - _Antti Karttunen_, Sep 27 2018
+%F A098958 a(n) = A099292(n) + 2*A099293(n)+3*A099294(n)+4*A099295(n)+5*A099296(n)+6*A099297(n)+7*A099298(n)+8*A099299(n)+9*A099300(n)
+%F A296071 a(n) = Product_{d|n, d<n} A019565(A289813(€295882(d))).
+%F A296072 a(n) = Product_{d|n, d<n} A019565(A289814(€295882(d))).
+%F A305812 a(1) = 0; for n > 1, a(n) = Product_{d|n, d<n} A008578(€305788(d)).
+%F A305982 a(n) = Product_{d|n, d<n} A008578(€305793(1+d)).
+%F A317942 a(n) = Product_{d|n, d<n} A008578(€286378(d)).
+%F A319708 a(n) = Product_{d|n, d<n} €276086(d).
+%F A353564 a(n) = Product_{d|n, d<n} €353563(d).
+%N A278531 a(n) = A046523(A163511(n)).
+%N A285713 a(n) = A046523(A245612(n)).
+%N A293231 a(n) = Product_{d|n, d<n} A019565(€193231(d)).
+%N A296071 a(n) = Product_{d|n, d<n} A019565(A289813(€295882(d))); a product obtained from the 1's present in balanced ternary representation of the deficiencies of the p
+%N A296072 a(n) = Product_{d|n, d<n} A019565(A289814(€295882(d))); a product obtained from the -1's present in balanced ternary representation of the deficiencies of the
+%N A304102 a(n) = Product_{d|n, d<n} prime(€304101(d)-1).
+%N A305982 a(n) = Product_{d|n, d<n} prime(€305793(1+d)-1), where €305973(k) records the prime signature of 2k-1.
+%N A317942 a(n) = Product_{d|n, d<n} prime(€286378(d)-1).
+%N A319708 a(n) = Product_{d|n, d<n} €276086(d).
+%N A351031 a(n) = Product_{d|n, d<n} A019565(€304759(d)).
+%N A351032 a(n) = Product_{d|n, d<n} A019565(€291759(d)).
+%N A353564 a(n) = Product_{d|n, d<n} €276086(phi(d)), where €276086 is primorial base exp-function, and phi is Euler totient function.
+A083258	tuptraf	0	(n, s) -> s[0].gcd(ZV(n))	"1"	new A046523()	a(n) = gcd(A046523(n), n).
+A083261	tuptraf	0	(n, s) -> s[0].gcd(s[1])	"1"	new A046523(), PREVIOUS	a(n) = gcd(A046523(n+1), A046523(n)).
+A117694	lambda	0	Z.valueOf(n).pow(n).add(n).divide2()	a(n) = (n^n + n)/2.
+A129739	filter	0	new A006720()	PRIME	Primes in Somos-4 sequence (A006720)
+A167536	lambda	0	{ Z n2 = Z.TWO.pow(n); return Z.THREE.pow(n2).subtract(Z.TWO.pow(n2)); }
+A225525	tuptraf	0	(n, s) -> s[0].-(s[1]).*(s[2])	""	new A062731(), new A000203(), new A000204()	 a(n) = (sigma(2*n) - sigma(n))*Lucas(n) where Lucas(n) = A000204(n) and sigma(n) = A000203(n) is the sum of divisors of n.
+A286365	tuptraf	0	(n, s) -> s[0].*(2).+(s[1].and(Z.ONE))	""	new A286364(), new A007814()	Compound filter: a(n) = 2*A286364(n) + A000035(A007814(n)).
+A286369	tuptraf	0	(n, s) -> s[0].*(2).+(s[1]./(4))	""	new A286364(), new A072400()	Compound filter: a(n) = 2*A286364(n) + floor(A072400(n)/4).
+A286473	tuptraf	0	(n, s) -> s[0].*(4).+(s[1].modZ(4))	"1"	new A032742().skip(1), new A020639().skip(1)	form 4k+1, 4k+2 and 4k+3): a(n) = 4*A032742(n) + (A020639(n) mod 4), a(1) = 1.
+A286475	tuptraf	0	(n, s) -> s[0].*(6).+(s[1].modZ(6))	"1"	new A032742().skip(1), new A020639().skip(1)	form 6k+1, 6k+2, 6k+3 and 6k+5): a(n) = 6*A032742(n) + (A020639(n) mod 6), a(1) = 1
+A289831	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A289813(), new A289814()	a(n) = A289813(n) + A289814(n).
+A293214	parmof3	0	A319356	(d, v) -> v	new A019565()	a(n) = Product_{d|n, d<n} A019565(d).
+A293438	parmof3	0	A319356	(d, v) -> v	new A033879()	a(n) = Product_{d|n, d<n} A033879(d).
+A319356	parmof3	0	A319356	(d, v) -> Puma.primeZ(v.add(1))	new A003415()	a(n) = Product_{d|n, d<n} prime(1+A003415(d)), where A003415(d) gives arithmetic derivative of d.
+A319692	parmof3	0	A319356	(d, v) -> Puma.primeZ(v.add(1))	new A001414()	a(n) = Product_{d|n, d<n} A000040(1+A001414(d)).
+A319990	parmof3	0	A319356	(d, v) -> (d.mod(3) == 0) ? v : Z.ONE	new A019565()	a(n) = Product_{d|n, d<n} A019565(d)^[0 == d mod 3].
+A319991	parmof3	0	A319356	(d, v) -> (d.mod(3) == 1) ? v : Z.ONE	new A019565()	a(n) = Product_{d|n, d<n} A019565(d)^[1 == d mod 3].
+A319992	parmof3	0	A319356	(d, v) -> (d.mod(3) == 2) ? v : Z.ONE	new A019565()	a(n) = Product_{d|n, d<n} A019565(d)^[2 == d mod 3].
+A339642	tuptraf	0	(n, s) -> s[0].-((s[1]).*(2))	""	new A038055(), new A000081().skip(1)	 A038055(n) - 2*A000081(n)
+A352047	tuptraf	0	(n, s) -> s[0].*(s[1]).-(s[2])         	""	new A000593(), new A006519(), new A000035().skip(1)	a(n) = A000593(n) * A006519(n)   - A000035(n).
+A352048	tuptraf	0	(n, s) -> s[0].*(s[1].square()).-(s[2])	""	new A050999(), new A006519(), new A000035().skip(1)	a(n) = A050999(n) * A006519(n)^2 - A000035(n).
+A352049	tuptraf	0	(n, s) -> s[0].*(s[1].pow(3)).-(s[2])	""	new A051000(), new A006519(), new A000035().skip(1)	a(n) = A051000(n) * A006519(n)^3 - A000035(n).
+A352050	tuptraf	0	(n, s) -> s[0].*(s[1].pow(4)).-(s[2])	""	new A051001(), new A006519(), new A000035().skip(1)	a(n) = A051001(n) * A006519(n)^4 - A000035(n).
+A352051	tuptraf	0	(n, s) -> s[0].*(s[1].pow(5)).-(s[2])	""	new A051002(), new A006519(), new A000035().skip(1)	a(n) = A051002(n) * A006519(n)^5 - A000035(n).
+A352052	tuptraf	0	(n, s) -> s[0].*(s[1].pow(6)).-(s[2])	""	new A321810(), new A006519(), new A000035().skip(1)	a(n) = A321810(n) * A006519(n)^6 - A000035(n).
+A352053	tuptraf	0	(n, s) -> s[0].*(s[1].pow(7)).-(s[2])	""	new A321811(), new A006519(), new A000035().skip(1)	a(n) = A321811(n) * A006519(n)^7 - A000035(n).
+A352054	tuptraf	0	(n, s) -> s[0].*(s[1].pow(8)).-(s[2])	""	new A321812(), new A006519(), new A000035().skip(1)	a(n) = A321812(n) * A006519(n)^8 - A000035(n).
+A352055	tuptraf	0	(n, s) -> s[0].*(s[1].pow(9)).-(s[2])	""	new A321813(), new A006519(), new A000035().skip(1)	a(n) = A321813(n) * A006519(n)^9 - A000035(n).
+A352056	tuptraf	0	(n, s) -> s[0].*(s[1].pow(10)).-(s[2])	""	new A321814(), new A006519(), new A000035().skip(1)	a(n) = A321814(n) * A006519(n)^10 - A000035(n).
+A356248	simtraf	0	new A289813()	v -> v.add(1)	a(n) = A289813(n) + 1. - _Rémy Sigrist_, Jul 31 2022

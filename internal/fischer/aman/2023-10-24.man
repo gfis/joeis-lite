@@ -1,0 +1,9 @@
+A278229	simtraf	0	new A076274().skip(1)	FactorUtils::leastPrimeSignature	a(n) = A046523(A076274(n)) = A046523((2*A000040(n))-1).
+A278221	simtraf	0	new A122111()	FactorUtils::leastPrimeSignature	a(n) = A046523(A122111(n)).
+A296076	simtraf	0	new SimpleTransformSequence(1, new A002322(), v -> v.add(1))	FactorUtils::leastPrimeSignature	Least number with the same prime signature as 1 + A002322(n), where A002322 is Carmichael's lambda.
+
+A138825	simtraf	1	new A138815()	v -> new Z(v.toString(2))	Divisors of 16775168 (the 5th perfect number divided by 2), written in base 2
+A155182	parmof2	1	A138815	MemoryFactorial.SINGLETON.factorial(12)			Divisors of 12!.        fini,full,nonn,easy,look        1..792  nyi     _Rein
+A161466	parmof2	1	A138815	MemoryFactorial.SINGLETON.factorial(10)					Divisors of 10!.        fini,full,nonn,easy,look        1..270  nyi     _Rein
+A174228	parmof2	1	A138815	MemoryFactorial.SINGLETON.factorial(24)					Divisors of 24!.        fini,nonn,easy  1..10000        nyi     _Reinhard Zum
+

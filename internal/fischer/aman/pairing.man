@@ -1,0 +1,84 @@
+# 2023-10-26
+# A0285729	tuptraf	1	PAIR	""	new A032742(), new A046523()
+# nest A286541	tuptraf	1	PAIR	""	new A004001(), new A004001()	1	(the left & right summand of Hofstadter-Conway $10000 sequence): a(n) = P(A004001(A004001(n- a(1) = a(2) = 0.			Compound filter (the left & right summand of Hofstadter-Conway $10000 sequence): a(n) = P(A004001(A004001(n-1)), A004001(n-A004001(n-1))), , with a(1) = a(2) = 0.
+# nest A286559 Compound filter (the left & right summand of Hofstadter Q-sequence): a(n) = P(Q(n-Q(n-1)), Q(n-Q(n-2))), where P(n,k) is sequence A00002
+A286034	tuptraf	1	PAIR	""	new A046523(), new A161942()	a(n) = P(A046523(n), A161942(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A046523(n), A161942(n)), 
+A286142	tuptraf	1	PAIR	""	new A257993(), new A046523()	a(n) = T(A257993(n), A046523(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A257993(n), A046523(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286143	tuptraf	1	PAIR	""	new A055881(), new A046523()	a(n) = T(A055881(n), A046523(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A055881(n), A046523(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286144	tuptraf	1	PAIR	""	new A000010(), new A257993()	a(n) = T(A000010(n), A257993(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A000010(n), A257993(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286152	tuptraf	1	PAIR	""	new A051953(), new A046523()	a(n) = T(A051953(n), A046523(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A051953(n), A046523(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286154	tuptraf	1	PAIR	""	new A055396(), new A000010()	a(n) = T(A055396(n), A000010(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A055396(n), A000010(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286160	tuptraf	1	PAIR	""	new A000010(), new A046523()	a(n) = T(A000010(n), A046523(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A000010(n), A046523(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286161	tuptraf	1	PAIR	""	new A001511(), new A046523()	a(n) = T(A001511(n), A046523(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A001511(n), A046523(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286162	tuptraf	1	PAIR	""	new A001511(), new A278222().skip(1)	a(n) = T(A001511(n), A278222(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A001511(n), A278222(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286163	tuptraf	1	PAIR	""	new A046523(), new A278222().skip(1)	a(n) = T(A046523(n), A278222(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A046523(n), A278222(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286164	tuptraf	1	PAIR	""	new A055396(), new A046523()	a(n) = T(A055396(n), A046523(n)), where T(n,k) is sequence A000027.			Compound filter: a(n) = T(A055396(n), A046523(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286240	tuptraf	0	PAIREX	""	new A278222(), PREVIOUS	a(n) = P(A278222(n), A278222(1+n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A278222(n), A278222(1+n)), 
+A286241	tuptraf	0	PAIREX	""	new A278219(), PREVIOUS	Compound filter: a(n) = P(€278219(n), €278219(1+n)), where P(n,k)
+A286242	tuptraf	0	PAIR	""	new A278222(), new A278219()	Compound filter: a(n) = P(A278222(n), €278219(n)), where P(n,k) iA286251	tuptraf	1	PAIR	""	new A001511().skip(1), new A046523()	a(n) = P(A001511(1+n), A046523(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A001511(1+n), A046523(n)), 
+A286252	tuptraf	0	PAIR	""	new A001511(), new A278222()	a(n) = P(A001511(1+n), A278222(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A001511(1+n), A278222(n)), 
+A286253	tuptraf	1	PAIR	""	new A055396(), new A001511().skip(1)	a(n) = P(A055396(n), A001511(1+n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A055396(n), A001511(1+n)), 
+A286254	tuptraf	1	PAIR	""	new A001511(), new A055396().skip(1)	a(n) = P(A001511(n), A055396(1+n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A001511(n), A055396(1+n)), 
+A286255	tuptraf	1	PAIREX	""	new A046523(), PREVIOUS	a(n) = P(A046523(n), A046523(1+n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A046523(n), A046523(1+n)), 
+A286256	tuptraf	1	PAIR	""	new A046523(), new A046523().skip(2)	a(n) = P(A046523(n), A046523(2+n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A046523(n), A046523(2+n)), 
+A286257	tuptraf	1	PAIR	""	new A046523(), new FilterSequence(1, new A046523(), (n,v) -> (n & 1) == 1)	a(n) = P(A046523(n), A046523(2n-1)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A046523(n), A046523(2n-1)), 
+A286258	tuptraf	1	PAIR	""	new A046523(), new FilterSequence(1, new A046523(), (n,v) -> (n & 1) == 1 && n >= 3)	a(n) = P(A046523(n), A046523(2n+1)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A046523(n), A046523(2n+1)), 
+A286259	tuptraf	1	PAIR	""	new A001511(), new A049820()	a(n) = P(A001511(n), A049820(n)), where P(n,k) is sequence A000027t.			Compound filter: a(n) = P(A001511(n), A049820(n)), 
+A286260	tuptraf	1	PAIR	""	new A001511(), new A161942()	a(n) = P(A001511(n), A161942(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A001511(n), A161942(n)), 
+A286356	tuptraf	1	PAIR	""	new A061395(), new A046523()	a(n) = P(A061395(n), A046523(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A061395(n), A046523(n)), 
+A286358	tuptraf	1	PAIR	""	new A286357(), new A161942()	a(n) = P(A286357(n), A161942(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A286357(n), A161942(n)), 
+A286359	tuptraf	1	PAIR	""	new A000203(), new A062731()	sigma(n), sigma(2*n)
+A286360	tuptraf	1	PAIR	""	new A046523(), new A000203()	(prime signature & sum of the divisors): a(n) = P(A046523(n), A000203(n)), where P(n,k) is s			Compound filter (prime signature & sum of the divisors): a(n) = P(A046523(n), A000203(n)), 
+A286362	tuptraf	1	PAIR	""	new A089309().skip(1), new A046523()	a(n) = P(A089309(n), A046523(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A089309(n), A046523(n)), 
+A286364	tuptraf	1	PAIR	""	new A286361(), new A286363()	a(n) = P(A286361(n), A286363(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A286361(n), A286363(n)), 
+A286379	tuptraf	1	PAIR	"1"	new A032742().skip(1), new A278222().skip(2)	0	("discard the smallest prime factor" & "signature for 1-runs in base-2"): a(n) = P(A032742(n			Compound filter ("discard the smallest prime factor" & "signature for 1-runs in base-2"): a(n) = P(A032742(n), A278222(n)), , with a(1) = 1.
+A286388	tuptraf	1	PAIR	"0"	new A032742().skip(1), new A001511().skip(2)	("discard the smallest prime factor" & "number of trailing 1-bits in base-2"): a(n) = P(A0320.			Compound filter ("discard the smallest prime factor" & "number of trailing 1-bits in base-2"): a(n) = P(A032742(n), A001511(1+n)), , with a(1) = 0.
+A286451	tuptraf	1	PAIR	"0"	new A286357().skip(1), new A001511().skip(1)	2-adic valuation of sigma(n) & 2-adic valuation of n): a(n) = P(A286357(n), A001511(n)), whon.			Compound filter (2-adic valuation of sigma(n) & 2-adic valuation of n): a(n) = P(A286357(n), A001511(n)), , with a(1) = 0 by an explicit convention.
+A286452	tuptraf	1	PAIR	""	new A061395(), new FilterSequence(1, new A046523(), (n,v) -> (n & 1) == 1)	(largest prime factor of n & prime signature of 2n-1): a(n) = P(A061395(n), A046523(2n-1)),			Compound filter (largest prime factor of n & prime signature of 2n-1): a(n) = P(A061395(n), A046523(2n-1)), 
+A286460	tuptraf	1	PAIR	""	new A001511(), new A000203()	(2-adic valuation & sum of the divisors): a(n) = P(A001511(n), A000203(n)), where P(n,k) is			Compound filter (2-adic valuation & sum of the divisors): a(n) = P(A001511(n), A000203(n)), 
+A286461	tuptraf	1	PAIR	""	new A001511(), new FilterSequence(1, new A286364(), (n,v) -> (n & 1) == 1)	Compound filter (2-adic valuation of n & 4k+1,4k+3 prime-signature combination of 2n-1): a(n) = P(A001511(n), A286364((2*n)-1)),
+A286462	tuptraf	1	PAIR	""	new A051064(), new A089309().skip(1)	(3-adic valuation & the length of rightmost run of 1's in base-2): a(n) = P(A051064(n), A089			Compound filter (3-adic valuation & the length of rightmost run of 1's in base-2): a(n) = P(A051064(n), A089309(n)), 
+A286463	tuptraf	1	PAIR	""	new A051064(), new A046523()	(3-adic valuation & prime-signature): a(n) = P(A051064(n), A046523(n)), where P(n,k) is sequ			Compound filter (3-adic valuation & prime-signature): a(n) = P(A051064(n), A046523(n)), 
+A286464	tuptraf	1	PAIR	""	new A051064(), new A278222().skip(1)	(3-adic valuation & signature for base-2 1-runs): a(n) = P(A051064(n), A278222(n)), where P(			Compound filter (3-adic valuation & signature for base-2 1-runs): a(n) = P(A051064(n), A278222(n)), 
+A286480	tuptraf	1	PAIR	""	new A046523(), new A286479()	(prime signature of n & prime signature of n+d(n)): a(n) = P(A046523(n), A286479(n)), where 05).			Compound filter (prime signature of n & prime signature of n+d(n)): a(n) = P(A046523(n), A286479(n)),  and d(n) is number of divisors of n (A000005).
+A286568	tuptraf	1	PAIR	""	new A000010(), new A286357()	(phi(n) & 2-adic valuation of sigma(n)): a(n) = P(A000010(n), A286357(n)), where P(n,k) is s			Compound filter (phi(n) & 2-adic valuation of sigma(n)): a(n) = P(A000010(n), A286357(n)), 
+A286570	tuptraf	1	PAIR	""	new A046523(), new A009194()	(prime signature of n & gcd(n, sigma(n))): a(n) = P(A046523(n), A009194(n)), where P(n,k) is			Compound filter (prime signature of n & gcd(n, sigma(n))): a(n) = P(A046523(n), A009194(n)), 
+A286571	tuptraf	1	PAIR	""	new A046523(), new A017666()	(prime signature of n & n/gcd(n, sigma(n))): a(n) = P(A046523(n), A017666(n)), where P(n,k)			Compound filter (prime signature of n & n/gcd(n, sigma(n))): a(n) = P(A046523(n), A017666(n)), 
+A286572	tuptraf	1	PAIR	""	new A053574(), new A000203()	(2-adic valuation of phi(n) & sigma(n)): a(n) = P(A053574(n), A000203(n)), where P(n,k) is s			Compound filter (2-adic valuation of phi(n) & sigma(n)): a(n) = P(A053574(n), A000203(n)), 
+A286573	tuptraf	1	PAIR	""	new A007733(), new A046523()	a(n) = P(A007733(n), A046523(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A007733(n), A046523(n)), 
+A286591	tuptraf	1	PAIR	""	new A009191(), new A009194()	a(n) = P(A009191(n), A009194(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A009191(n), A009194(n)), 
+A289621	tuptraf	1	PAIR	"0"	new A001221().skip(1), new A001222().skip(1)	(omega & bigomega): a(1) = 0, for n > 1, a(n) = P(A001221(n), A001222(n)), where P(n,k) is s			Compound filter (omega & bigomega): a(1) = 0, for n > 1, a(n) = P(A001221(n), A001222(n)), 
+A289622	tuptraf	1	PAIR	""	new A046523(), new A002322()	(prime signature & Carmichael's lambda): a(n) = P(A046523(n), A002322(n)), where P(n,k) is s			Compound filter (prime signature & Carmichael's lambda): a(n) = P(A046523(n), A002322(n)), 
+A291750	tuptraf	1	PAIR	""	new A003557(), new A048250()	a(n) = P(A003557(n), A048250(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A003557(n), A048250(n)), 
+A291752	tuptraf	1	PAIR	""	new A101296(), new A291751()	a(n) = P(A101296(n), A291751(n))
+A291755	tuptraf	0	PAIR	"1"	new A002326().skip(1), new A037225().skip(1)	(multiplicative order of 2 mod 2n+1 & eulerphi(2n+1)): a(n) = P(A002326(n), A037225(n)), whe			Compound filter (multiplicative order of 2 mod 2n+1 & eulerphi(2n+1)): a(n) = P(A002326(n), A037225(n)), 
+A291756	tuptraf	1	PAIR	""	new A003557(), new A000010()	a(n) = P(A003557(n), A000010(n)), where P(n,k) is sequence A000027.			Compound filter: a(n) = P(A003557(n), A000010(n)), 
+A291758	tuptraf	1	PAIR	""	new A046523(), new A048250()	(prime signature of n & sum of squarefree divisors of n): a(n) = P(A046523(n), A048250(n)),			Compound filter (prime signature of n & sum of squarefree divisors of n): a(n) = P(A046523(n), A048250(n)), 
+A291765	tuptraf	1	PAIR	""	new A001065(), new A046523()	(sum of proper divisors & prime signature): a(n) = P(A001065(n), A046523(n)), where P(n,k) i			Compound filter (sum of proper divisors & prime signature): a(n) = P(A001065(n), A046523(n)), 
+A292249	tuptraf	0	PAIR	"1"	new A002326().skip(1), new FilterSequence(1, new A046523(), (n,v) -> (n & 1) == 1 && n >= 3)	(multiplicative order of 2 mod 2n+1 & prime signature of 2n+1): a(n) = P(A002326(n), A046523			Compound filter (multiplicative order of 2 mod 2n+1 & prime signature of 2n+1): a(n) = P(A002326(n), A046523(2n+1)), 
+A292268	tuptraf	0	PAIR	""	new A002326(), new FilterSequence(1, new A007814(), (n,v) -> (n & 1) == 0 && n >= 2)	(multiplicative order of 2 mod 2n+1 & number of trailing 1's in binary expansion of 2n+1): a			Compound filter (multiplicative order of 2 mod 2n+1 & number of trailing 1's in binary expansion of 2n+1): a(n) = P(A002326(n), A007814(2n+2)), 
+A292587	tuptraf	1	PAIR	""	new A001221(), new A292582()	Compound filter: a(n) = P(A001221(n), A292582(n))
+
+%N A286149 Compound filter: a(n) = T(A046523(n), €109395(n)), where T(n,k) is sequence A000027 used as a pairing function.
+%N A286381 Compound filter: a(n) = P(A055881(n), €278236(n)), 
+%N A286382 Compound filter: a(n) = P(A257993(n), €278226(n)), 
+%N A286453 Compound filter: a(n) = P(A061395(n), €286465(n)), 
+%N A286454 Compound filter (prime signature & prime signature of conjugated prime factorization): a(n) = P(A101296(n), €286621(n)), where P(n,k) is sequence A00
+%N A286455 Compound filter (smallest prime dividing n & prime signature of conjugated prime factorization): a(n) = P(A055396(n), €286621(n)), where P(n,k) is se
+%N A286456 Compound filter: a(n) = P(A056239(n), €243503(n)), with a(1) = 0, 
+%N A286457 Compound filter: a(n) = P(A078898(n), €246277(n)), with a(1) = 0, 
+%N A286458 Compound filter: a(n) = P(€286448(n), €286449(n)), 
+%N A286465 Compound filter: a(1) = 1, a(n) = P(€112049(n-1), A278223(n)), 
+%N A286466 Compound filter: a(n) = P(€112049(n), A046523(n)), 
+%N A286467 Compound filter (prime signature of n & prime signature of the n-th Fibonacci number): a(n) = P(A101296(n), €286545(n)), where P(n,k) is sequence A00
+%N A286560 Compound filter (summands of A004001 & summands of A005185): a(n) = P(€286541(n), €286559(n)), where P(n,k) is sequence A000027 used as a pairing fun
+%N A286566 Compound filter (prime signature of n & prime signature of the n-th Jacobsthal number): a(n) = P(A101296(n), €286566(n)), where P(n,k) is sequence A0
+%N A286592 Compound filter (prime signature & deficiency/abundance): a(n) = P(A046523(n), €286449(n)), where P(n,k) is sequence A000027 used as a pairing functi
+%N A286593 Compound filter (the length of rightmost run of 1's in base-2 & deficiency/abundance): a(n) = P(A089309(n), €286449(n)), where P(n,k) is sequence A00
+%N A286595 Compound filter (2-adic valuation & deficiency/abundance): a(n) = P(A001511(n), €286449(n)), where P(n,k) is sequence A000027 used as a pairing funct
+%N A289628 Compound filter (for the structure of the multiplicative group of integers modulo n & prime signature of n): a(n) = P(€289626(n), A101296(n)), 
+%N A290093 Compound filter (for base-3 digit runlengths): a(n) = P(€290091(n), €290092(n)), 
+%N A292584 Compound filter: a(n) = P(€292583(n), €292585(n)), 
+%N A292588 Compound filter: a(n) = P(A292582(n), €292583(n)), 
+%N A293225 Compound filter: a(n) = P(€293224(n), €293223(n)), 
+%N A294933 Compound filter related to base-3 expansion of the exponents in prime factorization of n: a(n) = P(€294932(n), €294931(n)), where P(n,k) is sequence
