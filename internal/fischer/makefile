@@ -4502,7 +4502,7 @@ pairtr:
 rgs:
 	cp -v $(CONTRIB)/ak/rgs.gen .
 rgsman:
-	cp -v $(CONTRIB)/ak/rgs.man $@.gen
+	cp -v rgsman.man $@.gen
 tuptraf:
 	grep -v tuptraf $(ROBOT)/tuptraf.man \
 	>        $@.gen

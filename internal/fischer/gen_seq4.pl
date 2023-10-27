@@ -196,7 +196,9 @@ while (<>) { # read inputfile
             $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
+            $parm =~ s{FA2\(}          {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
             $parm =~ s{MU\(}           {Mobius.mobius\(}g;
+            $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
