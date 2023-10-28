@@ -182,16 +182,17 @@ while (<>) { # read inputfile
         if ($iparm <= 8 && ($parms[$iparm] =~ m{€}) && $contains_nyi == 0) { # does not work: dbat destroys "€"
             $contains_nyi = $iparm;
         }
-        if ($parms[$iparm] =~ m{\-\>}) { # with lambda expression: replace shortcuts
+        if ($parms[$iparm] =~ m{\-\>}) { # with lambda expression: replace shortcuts and check bracketing
             my $parm = $parms[$iparm];
             if ($parm =~ s{(BI|FA|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])}{$1\<--HERE$2}g) {
                 print STDERR "#?? $aseqno $parm\n";
             }
             my $test = $parm;
-            my $open = $test =~ s{\(}{\{}g;
-            my $clos = $test =~ s{\)}{\}}g;
-            if ($open != $clos) {
-                print STDERR "#?? $aseqno $parm, open=$open, close=$clos\n";
+            #                       12      21
+            my $nopen = ($parm =~ s{([\(\[\{])}  {$1}g);
+            my $nclos = ($parm =~ s{([\)\]\}])}  {$1}g);
+            if ($nopen != $nclos) {
+                print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n";
             }
             $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
@@ -296,6 +297,7 @@ while (<>) { # read inputfile
         $iparm ++;
     } # while $iparm
 
+    $copy =~ s{(\, *)+\)}{\)}; # remove trailing commas from parameter lists
     if (0) {
     } elsif ($contains_nyi > 0) {
         print "# $aseqno " . join(" ", $callcode, splice(@parms, 0, $contains_nyi)) . " ... skipped\n";
