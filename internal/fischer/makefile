@@ -68,7 +68,7 @@ else
 endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 JJAVA=java $(JOPT) -cp "$(JOEIS)/build.tmp/joeis.jar"
-BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU) -dir 8 
+BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU) -dir 16 
 INSPECTOR=$(JAVA) irvine.oeis.AbstractInspector
 INIT="1"
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
@@ -232,8 +232,9 @@ pack3: # check for existence
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
+PACKDIR=joeis-lite
 packfail:
-	cd reflect ; grep -P "FAIL|FATAL" ../$(CC).fail.log | perl queue.pl -s joeis-lite -p > ../$(CC).fail.pack
+	cd reflect ; grep -P "FAIL|FATAL" ../$(CC).fail.log | perl queue.pl -s $(PACKDIR) -p > ../$(CC).fail.pack
 	uedit64 $(CC).fail.pack
 packfatal:
 	cd reflect ; grep FATAL ../$(CC).fail.log | perl queue.pl -s joeis-lite -p \
@@ -4474,6 +4475,21 @@ multnyi:
 	  ORDER BY 1;" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+mult0check:
+	make seq2 LIST=mult0.man
+	$(DBAT) "SELECT s.aseqno, SUBSTR(d.data, 1, 64) FROM seq2 s, asdata d where s.aseqno = d.aseqno "
+multcheck: # run a test for methods a() over all MultiplicativeSequences 
+	grep MultiplicativeSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log TO=8 GU=16
+lambdacheck: # run a test for methods a() over all LambdaSequences 
+	grep LambdaSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log TO=8 GU=8
+memocheck: # run a test for methods a() over all MemorySequences 
+	grep MemorySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log TO=8 GU=4
 #--------------------------------
 n2:
 	cat $(COMMON)/jcat25.txt \

@@ -184,8 +184,8 @@ while (<>) { # read inputfile
         }
         if ($parms[$iparm] =~ m{\-\>}) { # with lambda expression: replace shortcuts and check bracketing
             my $parm = $parms[$iparm];
-            if ($parm =~ s{(BI|FA|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])}{$1\<--HERE$2}g) {
-                print STDERR "#?? $aseqno $parm\n";
+            if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
+                print STDERR "# $aseqno, unknown shortcut: $aseqno $parm\n";
             }
             my $test = $parm;
             #                       12      21
@@ -197,7 +197,7 @@ while (<>) { # read inputfile
             $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
-            $parm =~ s{FA2\(}          {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
+            $parm =~ s{FD\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
             $parm =~ s{MU\(}           {Mobius.mobius\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
