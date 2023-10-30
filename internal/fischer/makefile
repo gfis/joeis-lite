@@ -4485,7 +4485,7 @@ multcheck: # run a test for methods a() over all MultiplicativeSequences
 lambdacheck: # run a test for methods a() over all LambdaSequences 
 	grep LambdaSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=8
+	make CC=$@ test2 log TO=8 GU=4
 memocheck: # run a test for methods a() over all MemorySequences 
 	grep MemorySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	rm -f batch.log
