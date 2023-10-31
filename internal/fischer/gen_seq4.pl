@@ -433,6 +433,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"         }                = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
+    if ($line =~ m{\WMultiplicativeSequence}       ) { $imports{"irvine.oeis.MultiplicativeSequence"           } = $itype; }
     if ($line =~ m{\WMobius}                       ) { $imports{"irvine.math.Mobius"}                            = $itype; }
     if ($line =~ m{\WPaddingSequence}              ) { $imports{"irvine.oeis.recur.PaddingSequence" }            = $itype; }
     if ($line =~ m{\WPeriodicSequence}             ) { $imports{"irvine.oeis.recur.PeriodicSequence"}            = $itype; }

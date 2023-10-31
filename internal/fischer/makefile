@@ -2,6 +2,7 @@
 
 # Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing
 # @(#) $Id$
+# 2023-10-31: uptlfail, regen
 # 2023-01-24: extract ./aman, ./sql subdirectories 
 # 2022-07-13: MariaDB 10.6 has 'offset' as keyword
 # 2022-06-21: old poeis -> noeis, new poeis for OEIS-prog
@@ -68,7 +69,8 @@ else
 endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 JJAVA=java $(JOPT) -cp "$(JOEIS)/build.tmp/joeis.jar"
-BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU) -dir 16 
+COMPA=-dir 16
+BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU) $(COMPA) 
 INSPECTOR=$(JAVA) irvine.oeis.AbstractInspector
 INIT="1"
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
@@ -234,8 +236,11 @@ pack3: # check for existence
 #----
 PACKDIR=joeis-lite
 packfail:
-	cd reflect ; grep -P "FAIL|FATAL" ../$(CC).fail.log | perl queue.pl -s $(PACKDIR) -p > ../$(CC).fail.pack
+	cd reflect ; grep -P "FAIL|FATAL" ../$(CC).fail.log | perl queue.pl -s $(DIR) -p > ../$(CC).fail.pack
 	uedit64 $(CC).fail.pack
+uptlfail:
+	cd reflect ;  perl queue.pl -uf ../$(CC).fail.pack
+	make dist testall log
 packfatal:
 	cd reflect ; grep FATAL ../$(CC).fail.log | perl queue.pl -s joeis-lite -p \
 	| perl patch_queue.pl -m ratio \
@@ -250,6 +255,11 @@ packpass:
 packtest:
 	cd reflect ; cat ../$(CC).fail.pack | perl queue.pl -s joeis-lite -uf
 	make dist testall log
+PACK=$(CC).fail.pack
+packex: # PACK= ; extract *.gen from a *.pack file
+	perl reflect/packex.pl $(PACK) | tee $(CC).gen
+	head -n2 $(CC).gen
+	wc -l    $(CC).gen
 #----
 newer: # DIR= ; compare dates of aseqnos in DIR and jOEIS
 	ls --full-time $(DIR) | perl -ne 'my @a = split(/\s+/); if ($$a[8] =~ m{\AA\d+} ) { print substr($$a[8], 0, 7) . "\t$$a[5]\t$(DIR)\n"; }' \
