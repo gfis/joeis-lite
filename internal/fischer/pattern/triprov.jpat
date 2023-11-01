@@ -11,6 +11,6 @@ public class $(ASEQNO) extends VectorProduct {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), new $(PARM1)(), new $(PARM2)());
+    super($(OFFSET), $(PARM1), $(PARM2));
   }
 }
