@@ -212,7 +212,6 @@ public class BatchTest {
     try {
       Z term = seq.next();
       if (mDirect && mIsDirect && index <= mDirectMax) {
-        
         Z terma = mDirectSeq.a(index);
         if (!terma.equals(term)) {
           failure = 1;
