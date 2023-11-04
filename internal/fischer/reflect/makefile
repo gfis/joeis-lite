@@ -74,6 +74,12 @@ dead_joeis: # detect DeadSequence consistency
 dead_robot: dead_joeis # generate DeadSequence's
 	cd .. ; make CC=dead gener
 #----
+direct: # extract all sequences that implement DirectSequence
+	sed -e "s/\t/\t0\t/" $(COMMON)/joeis_list.txt \
+	| $(ABSINSPECT) direct - \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+#----
 morphlist: # print a seq4 parameter list of all subclasses of MorphismFixedPointSequence
 	cat morphism.use.tmp \
 	| perl -ne 'm{(A\d{6})}; print "$$1\t0\t\t\n";' \

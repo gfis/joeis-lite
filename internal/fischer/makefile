@@ -4485,6 +4485,11 @@ multnyi:
 	  ORDER BY 1;" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+#----
+directcheck:
+	cut -f1 reflect/direct.tmp > ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log TO=8 GU=8
 mult0check:
 	make seq2 LIST=mult0.man
 	$(DBAT) "SELECT s.aseqno, SUBSTR(d.data, 1, 64) FROM seq2 s, asdata d where s.aseqno = d.aseqno "
