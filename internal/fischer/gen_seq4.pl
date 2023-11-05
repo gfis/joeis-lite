@@ -201,6 +201,9 @@ while (<>) { # read inputfile
             $parm =~ s{MU\(}           {Mobius.mobius\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
+            $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
+            $parm =~ s{RU\(}           {Rationals.SINGLETON.sum\(}g;
+            $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;

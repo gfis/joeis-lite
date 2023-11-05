@@ -4486,6 +4486,10 @@ multnyi:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
+beattycheck: # run a test for methods a() over all BeattySequences 
+	grep BeattySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log TO=8 GU=4
 directcheck:
 	cut -f1 reflect/direct.tmp > ghead.tmp
 	rm -f batch.log
