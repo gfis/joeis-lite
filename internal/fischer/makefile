@@ -5470,7 +5470,7 @@ knestm:
 	grep -E "^A[0-9]" aman/$@.man > $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
-known4: 
+known: 
 	cp -v $(ROBOT)/$@.gen .
 #--------------------------------
 # A320124 null    Number of integer solutions to a^2 + b^2 + 2*c^2 + 3*d^2 = n

@@ -194,10 +194,10 @@ while (<>) { # read inputfile
             if ($nopen != $nclos) {
                 print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n";
             }
-            $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
             $parm =~ s{FD\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
+            $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
             $parm =~ s{MU\(}           {Mobius.mobius\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
