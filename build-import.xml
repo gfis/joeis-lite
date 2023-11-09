@@ -239,7 +239,7 @@
                 includeantruntime="false"
                 
                 debug="${javac.debug}" debuglevel="${javac.debuglevel}">
-            <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 4096 -Xmaxerrs 4096 -Xdiags:verbose" />
+            <compilerarg line="-Xlint:unchecked -Xlint:deprecation -Xmaxwarns 16384 -Xmaxerrs 32768 -Xdiags:verbose" />
             <classpath>
                 <path refid="compile.classpath"/>
             </classpath>

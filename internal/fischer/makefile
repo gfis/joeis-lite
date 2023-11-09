@@ -4489,11 +4489,15 @@ multnyi:
 beattycheck: # run a test for methods a() over all BeattySequences 
 	grep BeattySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=4
+	make CC=$@ test2 log TO=8 GU=8 
 directcheck:
 	cut -f1 reflect/direct.tmp > ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log TO=8 GU=8
+hypercheck: # run a test for methods a() over all HypergeometricSequences 
+	grep HypergeometricSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log TO=8 GU=8 
 mult0check:
 	make seq2 LIST=mult0.man
 	$(DBAT) "SELECT s.aseqno, SUBSTR(d.data, 1, 64) FROM seq2 s, asdata d where s.aseqno = d.aseqno "
@@ -4504,11 +4508,19 @@ multcheck: # run a test for methods a() over all MultiplicativeSequences
 lambdacheck: # run a test for methods a() over all LambdaSequences 
 	grep LambdaSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=4
+	make CC=$@ test2 log TO=8 GU=8
 memocheck: # run a test for methods a() over all MemorySequences 
 	grep MemorySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log TO=8 GU=4
+morphcheck: # run a test over all MorphismFixedPointSequences 
+	grep MorphismFixedPointSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log TO=8 GU=16
+paddingcheck: # run a test for methods a() over all PaddingSequences 
+	grep PaddingSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	rm -f batch.log
+	make CC=$@ test2 log TO=8 GU=16
 #--------------------------------
 n2:
 	cat $(COMMON)/jcat25.txt \
@@ -4593,7 +4605,11 @@ pisot:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-##--------------------------------
+#--------
+polint: # generate for PolynomialIntegrator results
+	head -n$(MANY) $(COMMON)/../lrindex/polint2.tmp > $@.gen
+	wc -l    $@.gen
+#--------------------------------
 # A191017 null    Primes with Kronecker symbol (p|14) = 1.
 # A191020 null    Primes p with Kronecker symbol (p|2*11) = 1.
 # A191023 null    Primes p which have Kronecker symbol (p|30) = 1.
