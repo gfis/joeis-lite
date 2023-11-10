@@ -217,8 +217,9 @@ while (<>) { # read inputfile
             $parm =~ s{\.\-\(}         {.subtract\(}g;
             $parm =~ s{\.\^\(}         {.pow\(}g;
             $parm =~ s{\.(\d|10)\b}    {"Z.$zhash{$1}"}eg;
-            $parm =~ s{\.multiply\(2\)}{.multiply2\(\)}g;
-            $parm =~ s{\.divide\(2\)}  {.divide2\(\)}g;
+        #   bad for lambdaQ expressions:
+        #   $parm =~ s{\.multiply\(2\)}{.multiply2\(\)}g;
+        #   $parm =~ s{\.divide\(2\)}  {.divide2\(\)}g;
             $parm =~ s{\.pow\(2\)}     {.square\(\)}g;
             $parm =~ s{\.pow\(1\)}     {}g;
             $parms[$iparm] = $parm;

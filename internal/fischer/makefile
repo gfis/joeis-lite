@@ -234,7 +234,7 @@ pack3: # check for existence
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
-PACKDIR=joeis-lite
+DIR=joeis-lite
 packfail:
 	cd reflect ; grep -P "FAIL|FATAL" ../$(CC).fail.log | perl queue.pl -s $(DIR) -p > ../$(CC).fail.pack
 	uedit64 $(CC).fail.pack
@@ -3171,6 +3171,10 @@ runce:
 	$(JAVA) irvine.oeis.ComplementaryEquationSequence -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFFSET) -d $(D) -dist $(DIST) -t $(GFTYPE)
 holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(NT) -f $(GEN)
+P=1
+Q=1
+hgs: # HypergeometricSequence -p -q -h 
+	$(JAVA) irvine.oeis.HypergeometricSequence -n $(NT) -p "$(P)" -q "$(Q)" -i "$(INIT)" -o $(OFFSET) -d $(D) -h "$(MATRIX)"
 #----------------
 runbva:
 	$(BVA) -recur "$(EXPR)"
@@ -4498,6 +4502,11 @@ hypercheck: # run a test for methods a() over all HypergeometricSequences
 	grep HypergeometricSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log TO=8 GU=8 
+hypergeon:
+	perl hypergeon.pl hypercheck.corr.pack \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 mult0check:
 	make seq2 LIST=mult0.man
 	$(DBAT) "SELECT s.aseqno, SUBSTR(d.data, 1, 64) FROM seq2 s, asdata d where s.aseqno = d.aseqno "
