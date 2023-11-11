@@ -9,7 +9,7 @@ import irvine.oeis.Sequence;
 
 /**
  * A sequence comprising the transform of a tuple of other sequences.
- * This program is similar to {@link TupleTransformSequence}, but the terms
+ * This program is similar to {@link SimpleTransformSequence}, but the terms
  * of several underlying sequence can be used in the lambda expression:
  * @author Georg Fischer
  */
