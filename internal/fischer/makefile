@@ -4615,9 +4615,20 @@ pisot:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------
-polint: # generate for PolynomialIntegrator results
-	head -n$(MANY) $(COMMON)/../lrindex/polint2.tmp > $@.gen
+polint: # generate for PolynomialIntegrator results; the excluded ones all have signatures (2,1) at high indexes; A094914 needs abs()
+	head -n$(MANY) $(COMMON)/../lrindex/polint2.tmp \
+	| grep -vE "A004829|A004830|A094914|A102815|A192336|A227006|A227007|A338433|A343079|A343083" \
+	>        $@.gen
 	wc -l    $@.gen
+polint_check:
+	$(DBAT) -x "SELECT s.aseqno, COALESCE(j.superclass, 'nyi'), s.name \
+	  FROM seq4 s LEFT JOIN joeis j ON s.aseqno = j.aseqno \
+	  WHERE COALESCE(j.superclass, 'nyi') NOT IN \
+	  ('LinearRecurrence','GeneratingFunctionSequence','HolonomicRecurrence','CoordinationSequence','LatticeCoordinationSequence') \
+	  ORDER BY 2,1" \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc       $@.tmp
 #--------------------------------
 # A191017 null    Primes with Kronecker symbol (p|14) = 1.
 # A191020 null    Primes p with Kronecker symbol (p|2*11) = 1.

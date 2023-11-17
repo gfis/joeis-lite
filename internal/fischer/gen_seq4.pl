@@ -184,9 +184,9 @@ while (<>) { # read inputfile
         }
         if ($parms[$iparm] =~ m{\-\>}) { # with lambda expression: replace shortcuts and check bracketing
             my $parm = $parms[$iparm];
-            if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
-                print STDERR "# $aseqno, unknown shortcut: $aseqno $parm\n";
-            }
+        #   if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
+        #       print STDERR "# $aseqno, unknown shortcut: $aseqno $parm\n";
+        #   }
             my $test = $parm;
             #                       12      21
             my $nopen = ($parm =~ s{([\(\[\{])}  {$1}g);
@@ -202,6 +202,7 @@ while (<>) { # read inputfile
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
+            $parm =~ s{RR\(}           {ZUtils.reverse\(}g;
             $parm =~ s{RU\(}           {Rationals.SINGLETON.sum\(}g;
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
