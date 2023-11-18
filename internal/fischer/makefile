@@ -5508,6 +5508,14 @@ knestm:
 	wc   -l  $@.gen
 known: 
 	cp -v $(ROBOT)/$@.gen .
+	head -n2 $@.gen
+	wc   -l  $@.gen
+dirtraf:
+	grep -E "^A[0-9]+" $(ROBOT)/nest3b.tmp \
+	| sed -e "s/nest3b/dirtraf/" \
+	>        $@.gen
+	head -n2 $@.gen
+	wc   -l  $@.gen
 #--------------------------------
 # A320124 null    Number of integer solutions to a^2 + b^2 + 2*c^2 + 3*d^2 = n
 nisolut:
