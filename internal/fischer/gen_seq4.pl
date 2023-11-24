@@ -195,6 +195,7 @@ while (<>) { # read inputfile
                 print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n";
             }
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
+            $parm =~ s{CV\(}           {CR.valueOf\(}g;
             $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
             $parm =~ s{FD\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
             $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
@@ -208,6 +209,7 @@ while (<>) { # read inputfile
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
+            $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;
             $parm =~ s{Z\_1\(}         {Z.NEG_ONE.pow\(}g;
             $parm =~ s{n\_1\(}         {(((n & 1) == 0) ? 1 : -1)}g;
@@ -226,6 +228,7 @@ while (<>) { # read inputfile
             $parms[$iparm] = $parm;
             #                      1          1
             $parm =~ s{Z\.valueOf\((\-1|0-9|10)\)}{"Z." . $zhash{$1}}eg;
+            $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
         }
         if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
             @terms = map {
