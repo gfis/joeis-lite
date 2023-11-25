@@ -93,7 +93,7 @@ killmake:
 seqt: # A=$(A) - print data up to 260 characters
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -n $(NT) -o $(OFFSET) --data-length=4096  -D $(A) 2>&1   | tee x.tmp
 seqte: # A=$(A) - test with errors
-	$(JAVA) irvine.test.SequenceTest   -a $(A)             -n $(NT) -o $(OFFSET)                       2>&1   | tee x.tmp
+	$(JAVA) irvine.test.SequenceTest   -a $(A)             -n $(NT) -o $(OFFSET)                       2>&1
 seqtri: # A=$(A) - print data in triangle format
 	$(JAVA) irvine.oeis.SequenceFactory -a "Georg Fischer" -r $(NT) --row-numbers -o $(OFFSET) -T $(A) 2>&1   | tee x.tmp
 seqtris: # A=$(A) - print data in upper left triangle format

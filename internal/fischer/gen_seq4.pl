@@ -210,6 +210,7 @@ while (<>) { # read inputfile
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
+            $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;
             $parm =~ s{Z\_1\(}         {Z.NEG_ONE.pow\(}g;
             $parm =~ s{n\_1\(}         {(((n & 1) == 0) ? 1 : -1)}g;
