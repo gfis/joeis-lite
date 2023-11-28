@@ -1,0 +1,85 @@
+A079252	filter	0	new A079251()	EVEN	Even numbers not in A079000.	nonn	1..55	nyi	_N. J. A. Sloane_
+A074939	filter	0	new A005836()	EVEN	Even numbers in A005836;
+A154796	filter	0	new A058695()	EVEN	Even numbers in A058695.
+A154798	filter	0	new A058696()	EVEN	Even numbers in A058696.
+A348649	filter	0	new A008277()	ODD	Odd numbers in the triangle of Stirling numbers of the second kind (A008277).
+A348650	filter	0	new A008277()	EVEN	Even numbers in the triangle of Stirling numbers of the second kind (A008277).
+A349831	filter	0	new IntersectionSequence(1, new A228082(), new A349829())	EVEN	Even numbers in the intersection of A228082 and A349829.
+A074938	filter	0	new A005836()	ODD	Odd numbers in A005836.
+A153601	filter	0	new A019320()	ODD	Odd numbers in A019320.
+A154795	filter	0	new A058695()	ODD	Odd numbers in A058695.
+A154797	filter	0	new A058696()	ODD	Odd numbers in A058696.
+A275068	filter	0	new A022344()	SQUAREFREE	Squarefree numbers in A022344.
+A112877	filtpos	1	1	new A006509()	ZERO	Zeros in Calds sequence: positions n such that A006509(n) = 0.
+A363980	finite	1	"277699295941594831,315809464967513821,353919633993432811,392029803019351801,430139972045270791,468250141071189781,506360310097108771,544470479123027761,582580648148946751,620690817174865741,658800986200784731,696911155226703721,735021324252622711"
+A125557	filter	1	new LambdaSequence(1, n -> ZV(n).^(2).+(((n & 1) == 0) ? 1 : 2))	PRIME	Primes in the sequence a(n)=n^2+3/2-1/2*(-1)^n.
+A201219	lambdan	1	n -> n == 1 ? Z.ZERO : (Long.bitCount(n) == 1 ? Z.ONE : Z.TWO)	a(1) = 0; for n>1, a(n) = 1 if n is a power of 2, otherwise a(n) = 2.	nonn	1..16384	nyi	_N. J. A. Sloane_
+
+
+A092787	filter	1	new SimpleTransformSequence(1, new A005349(), v -> v.-(1))	PRIME	Primes in the sequence A005349 - 1.
+A110915	filter	1	new A056542()	PRIME	Primes e a(n) = n*a(n-1) + 1, a(1) = 0 (A056542).
+A111014	filter	1	new A015519()	PRIME	Primes in the sequence                  A015519.
+A113866	filter	1	new A064491()	PRIME	Primes in the sequence                  A064491.
+A120847	filter	1	new A005658()	PRIME	Klarner-Rado primes. Primes in          A005658.
+A122210	filter	1	new A122209()	PRIME	Primes in                               A122209[n].
+A127346	filter	1	new A127345()	PRIME	Primes in                               A127345.
+A129739	filter	1	new A006720()	PRIME	Primes in Somos-4 sequence (            A006720).
+A134820	filter	1	new A003294()	PRIME	Primes in the sequence                  A003294 of certain fourth powers bases.
+# A136338	filter	1	new A136431()	PRIME	Primes in the array                     A136431 that are not Fibonacci numbers.
+A143329	filter	1	new A143292()	PRIME	Primes in                               A143292.
+A152058	filter	1	new A152057()	PRIME	Primes in                               A152057.
+A153009	filter	1	new A153006()	PRIME	Primes in toothpick sequence            A153006.
+A185591	filter	1	new A001203()	PRIME	Primes in continued fraction expansi    A001203).
+A192241	filter	1	new A048736()	PRIME	Primes in Dana Scotts sequence (        A048736).
+A201000	filter	1	new A007482()	PRIME	Primes in                               A007482	the Lucas U(3,-2) sequence.
+A201001	filter	1	new A006190()	PRIME	Primes in                               A006190	the Lucas U(3,-1) sequence.
+A201002	filter	1	new A015535()	PRIME	Primes in                               A015535	the Lucas U(5,-2) sequence.
+A201005	filter	1	new A052918()	PRIME	Primes in                               A052918	the Lucas U(5,-1) sequence.
+A214752	filter	1	new A081172()	PRIME	Primes in the sequence of ting 1, 1, 0  A081172).
+A230017	filter	1	new A214825()	PRIME	Prime terms in the tribonacci-like sequ A214825.
+A230607	filter	1	new A214899()	PRIME	Primes in the tribonacci-like sequence  A214899.
+A231574	filter	1	new A001590()	PRIME	Primes in the tribonacci sequence       A001590.
+A232498	filter	1	new A020992()	PRIME	Primes in the tribonacci-like sequence, A020992.
+A232542	filter	1	new A100683()	PRIME	Primes in the tribonacci sequence       A100683.
+A234703	filter	1	new A214727()	PRIME	Primes in the tribonacci-like sequence, A214727.
+A235873	filter	1	new A141523()	PRIME	Primes in the tribonacci-like sequence, A141523.
+A242316	filter	1	new A214826()	PRIME	Prime s in the tribonacci-like sequence A214826.
+A242325	filter	1	new A214827()	PRIME	Prime s in the tribonacci-like sequence A214827.
+A244622	filter	1	new A024451()	PRIME	Primes in the sequence of first arithme A024451 ic derivative of primorials.
+A245650	filter	1	new A245071()	PRIME	Primes in the sequence 12*n - prime(n), A245071).
+A247028	filter	1	new A001631()	PRIME	Primes in tetranacci sequence           A001631.
+A247946	filter	1	new A000288()	PRIME	Primes in the tetranacci sequence       A000288.
+A248921	filter	1	new A000322()	PRIME	Primes in the pentanacci numbers sequee A000322.
+A249413	filter	1	new A000383()	PRIME	Primes in the hexanacci numbers sequ ce A000383.
+A253333	filter	1	new A060455()	PRIME	Primes  the 7th-order Fibonacci numbers A060455.
+A253706	filter	1	new A079262()	PRIME	Primes  the 8th-order Fibonacci numbers A079262.
+A254413	filter	1	new A123526()	PRIME	Primes  the 8th-order Fibonacci numbers A123526.
+A256499	filter	1	new A127193()	PRIME	Primes  the 9th-order Fibonacci numbers A127193.
+A257074	filter	1	new A127194()	PRIME	Primes  he 10th-order Fibonacci numbers A127194.
+A257228	filter	1	new A122265()	PRIME	Primes the 10th-order Fibonacci numbers A122265.
+A257967	filter	1	new A127624()	PRIME	Primes the 11th-order Fibonacci numbers A127624.
+A285992	filter	1	new A002878()	PRIME	Primes   in the bisected Lucas sequence A002878.
+A339957	filter	1	new SimpleTransformSequence(1, new A240860(), v -> v.abs())	PRIME	Primes in                               A240860 (up to sign).
+A342174	filter	1	new A342173()	PRIME	Primes in                               A342173.
+A343532	filter	1	new A343531()	PRIME	Primes in                               A343531.
+
+A099656	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0])	""	new A002276()	a(n) is the least prime following A002276(n) repdigits.	base,nonn	0..999	nyi	_Labos Elemer_
+A099657	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0])	""	new A002277()	a(n) is the least prime following A002277[n] repdigits.	base,nonn	0..18	nyi	_Labos Elemer_
+A099658	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0])	""	new A002278()	a(n) is the smallest prime greate A002278 than 4(10^n - 1)/9.	base,nonn	0..20	nyi	_Labos Elemer_
+A099659	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0])	""	new A002279()	a(n) is the least prime following A002279[n] repdigits.	base,nonn	0..17	nyi	_Labos Elemer_
+A099660	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0])	""	new A002280()	a(n) is the least prime following A002280[n] repdigits.	base,nonn	0..18	nyi	_Labos Elemer_
+A099661	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0])	""	new A002281()	a(n) is the least prime following A002281[n] repdigits.	base,nonn	0..18	nyi	_Labos Elemer_
+A099662	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0])	""	new A002282()	a(n) is the least prime following A002282[n] repdigits.	base,nonn	0..18	nyi	_Labos Elemer_
+A099663	tuptraf	0	(n, s) -> Puma.prevPrimeZ(Puma.nextPrimeZ(s[0]))	""	new A002276().skip(2)	a[n] is the largest prime before  A002276[n] repdigits.	base,nonn	2..18	nyi	_Labos Elemer_
+A099664	tuptraf	0	(n, s) -> Puma.prevPrimeZ(Puma.nextPrimeZ(s[0]))	""	new A002278().skip(1)	a[n] is the largest prime before  A002278[n] repdigits.	base,nonn	1..1000	nyi	_Labos Elemer_
+A099665	tuptraf	0	(n, s) -> Puma.prevPrimeZ(Puma.nextPrimeZ(s[0]))	""	new A002279().skip(1)	a[n] is the largest prime before  A002279[n] repdigits.	base,nonn	1..18	nyi	_Labos Elemer_
+A099666	tuptraf	0	(n, s) -> Puma.prevPrimeZ(Puma.nextPrimeZ(s[0]))	""	new A002280().skip(1)	a[n] is the largest prime before  A002280[n] repdigits.	base,nonn	1..18	nyi	_Labos Elemer_
+A099667	tuptraf	0	(n, s) -> Puma.prevPrimeZ(Puma.nextPrimeZ(s[0]))	""	new A002281().skip(1)	a(n) is the largest prime before  A002281(n) repdigits repeating 7.	base,nonn	1..1000	nyi	_Labos Elemer_
+A099668	tuptraf	0	(n, s) -> Puma.prevPrimeZ(Puma.nextPrimeZ(s[0]))	""	new A002282().skip(1)	a(n) is the largest prime before  A002282(n) repdigits.	base,nonn	1..18	nyi	_Labos Elemer_
+
+# A084403	filter	1	new A084402()	PRIME	Primes arising in A084402. a(n
+A096848	filter	1	new A096847()	PRIME	Primes arising in A096847, tha
+A099677	filter	1	new A032682()	PRIME	Primes arising in A032682.    
+A240724	filter	1	new A062391()	PRIME	Primes arising in A062391.    
+
+A099585	simtraf	1	new A000040()	v -> new Z(v.-(1).toString().replaceAll("3",""))	Remove all 3s from prime(n) - 1.

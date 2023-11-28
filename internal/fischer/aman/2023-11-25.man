@@ -1,0 +1,82 @@
+--- still:
+A123581	tuptraf	1	(n, s) -> s[0].+(Jaguar.factor(s[0]).largestPrimeFactor())	"3"	PREVIOUS	a(1) = 3, a(n) = a(n-1) + greatest prime factor of a(n-1).	nonn,easy	1..10000	nyi	_Ben Paul Thurston_
+A124096	filter	0	new A000040()	p -> FI((p.intValueExact() + 1)/3).mod(p).isZero()	Primes p that divide Fibonacci[(p+1)/3].	nonn	1..1000	nyi	_Alexander Adamchuk_
+A123964	trilambn	0	0	0	(n, k) -> ZV(k).^(6).-(ZV(n).^(6)).-(Z.FIVE.*(ZV(n*k).^(2)).*(n*n - k*k)).+(ZV(n*k).^(4).-(1).*(4*n*k))	  
+  T(n, k) = k^6 - n^6 - 5*(n*k)^2*(n^2 - k^2) + 4*n*k*((n*k)^4 - 1), read by rows.	sign,tabl,easy	0..50	nyi	_Roger L. Bagula_
+A124108	lambdan	0	n -> new Z(Z.valueOf(n).toString(2).replaceAll("1", "10"), 2)	Replace each 1 with 10 in binary representation of n.	nonn	0..10000	nyi	_Reinhard Zumkeller_
+A137716	dirtraf	0	new A055642()	new A050920()	
+A137811	dirtraf	0	new A055642()	new A050918()	
+A238183	decexp	0	() -> ZE(3).^(3)./(CR.THREE).-(CR.FIVE./(CR.TWO).*(ZE(4)).*(ZE(5))).-(CR.SEVEN./(CR.TWO).*(ZE(3)).*(ZE(6))).-(ZE(2).*(ZE(7))).+(CV(55)./(CR.SIX).*(ZE(9)))	Decimal expansion of sum_(n>=1) H(n)^2/n^7 where H(n) is the n-th harmonic number (Quadratic Euler Sum S(2,7)). nonn,cons       1..100  nyi
+  zeta(3)^3/3-5/2*zeta(4)*zeta(5)-7/2*zeta(3)*zeta(6)-zeta(2)*zeta(7)+55/6*zeta(9)
+A200746	simtraf	0	new A064989()	(n, v) -> v.*(n)	a(n) = n * A064989(n).
+
+
+# A103438	arrlambn	0	0	0	(m, n) -> SU(1, n, k -> ZV(k).pow(n))	Square array T(m,n) read by antidiagonals: Sum_{k=1..n} k^m.
+A282824	decexp	0	() -> ZH(2, new Q(3, 4))	, with the Hurwitz Zeta function, this is the value of the series Sum_{k>=0} 1/(k + 3/4)^2 = 16*Sum_{k>=0} 1/(4*k
+A247037	decexp	0	() -> ZH(2, new Q(3, 4))./(16)	 = Psi(1, 3/4)/16, with the Hurwitz zeta function and the Trigamma function Psi(1, z), and the partial sums of the series g in the name are {A173955(n+2) / A173954(n+2)}_{n>=0}. - _Wolfdieter Lang_, Nov 14 2017
+A262178	decexp	0	() -> ZH(2, new Q(1, 6)).-(ZH(2, new Q(2, 3)))./(36)	, where zeta(s,a) is the Hurwitz zeta function.
+A309710	decexp	0	() -> ZH(2, new Q(1, 8)).+(ZH(2, new Q(3, 8))).-(ZH(2, new Q(5, 8))).-(ZH(2, new Q(7, 8)))./(64)	, where zeta(s,a) is the Hurwitz zeta function.
+A328723	decexp	0	() -> ZH(3, new Q(1, 5)).-(ZH(3, new Q(2, 5))).-(ZH(3, new Q(3, 5))).+(ZH(3, new Q(4, 5)))./(25)	, where zeta(s,a) is the Hurwitz ZH function.
+  zeta(3,1/5) - zeta(3,2/5) - zeta(3,3/5) + zeta(3,4/5))/25
+A329715	decexp	0	() -> ZH(3, new Q(1, 8)).-(ZH(3, new Q(3, 8))).-(ZH(3, new Q(5, 8))).+(ZH(3, new Q(7, 8)))./(512)	, where zeta(s,a) is the Hurwitz zeta function.
+A329716	decexp	0	() -> ZH(3, new Q(1, 12)).-(ZH(3, new Q(5, 12))).-(ZH(3, new Q(7, 12))).+(ZH(3, new Q(11, 12)))./(1728)	, where zeta(s,a) is the Hurwitz zeta function.
+
+A085126	filter	0	new A002473()	v -> v.mod(3) == 0	Multiples of 3 which are members of A002473.
+A085129	filter	0	new A002473()	v -> v.mod(6) == 0	Multiples of 6 which are members of A002473.
+A085131	filter	0	new A002473()	v -> v.mod(8) == 0	Multiples of 8 which are members of A002473.
+A085132	filter	0	new A002473()	v -> v.mod(9) == 0	Multiples of 9 which are members of A002473.
+
+A158486	filter	0	new A064413()	v -> v.mod( 5) == 0	Multiples of 5 in the EKG sequence A064413.     nonn    1..59   ny
+A158605	filter	0	new A064413()	v -> v.mod(13) == 0	Multiples of 13 in the EKG sequence A064413 in order of appearance
+A158814	filter	0	new A064413()	v -> v.mod(10) == 0	Multiples of 10 in the EKG sequence A064413.    nonn    1..57   ny
+A166389	filter	0	new LambdaSequence(0, n -> ZV(n).*( 7))	v -> ZUtils.reverse(v).+(1).mod( 7) == 0	Multiples of  7 whose reversal + 1 is also a multiple of 7.      no
+A166390	filter	0	new LambdaSequence(0, n -> ZV(n).*(13))	v -> ZUtils.reverse(v).+(1).mod(13) == 0	Multiples of 13 whose reversal + 1 is also a multiple of 13.    no
+A166391	filter	0	new LambdaSequence(0, n -> ZV(n).*(17))	v -> ZUtils.reverse(v).+(1).mod(17) == 0	Multiples of 17 whose reversal + 1 is also a multiple of 17.    no
+A166392	filter	0	new LambdaSequence(0, n -> ZV(n).*(19))	v -> ZUtils.reverse(v).+(1).mod(19) == 0	Multiples of 19 whose reversal + 1 is also a multiple of 19.    no
+A166393	filter	0	new LambdaSequence(0, n -> ZV(n).*(23))	v -> ZUtils.reverse(v).+(1).mod(23) == 0	Multiples of 23 whose digit reversal + 1 is also a multiple of 23.
+A166394	filter	0	new LambdaSequence(0, n -> ZV(n).*( 7))	v -> ZUtils.reverse(v).-(1).mod( 7) == 0	Multiples of  7 whose reversal - 1 is also a multiple of 7.      no
+A166397	filter	0	new LambdaSequence(0, n -> ZV(n).*(13))	v -> ZUtils.reverse(v).-(1).mod(13) == 0	Multiples of 13 whose reversal - 1 is also a multiple of 13.    no
+A166398	filter	0	new LambdaSequence(0, n -> ZV(n).*(17))	v -> ZUtils.reverse(v).-(1).mod(17) == 0	Multiples of 17 whose reversal - 1 is also a multiple of 17.    no
+A166399	filter	0	new LambdaSequence(0, n -> ZV(n).*(19))	v -> ZUtils.reverse(v).-(1).mod(19) == 0	Multiples of 19 whose digit reversal - 1 is also a multiple of 19.
+A166400	filter	0	new LambdaSequence(0, n -> ZV(n).*(23))	v -> ZUtils.reverse(v).-(1).mod(23) == 0	Multiples of 23 whose digit reversal - 1 is also a multiple of 23.
+                                                          )
+A216994	filter	0	new LambdaSequence(1, n -> ZV(n).*( 7))	v -> ZUtils.digitSum(v) %  7 == 0		Multiples of  7 such that the digit sum is divisible by 7.       nonn,base   
+A216995	filter	0	new LambdaSequence(1, n -> ZV(n).*(11))	v -> ZUtils.digitSum(v) % 11 == 0		Multiples of 11 whose digit sum is a multiple of 11.    nonn,base       1..1
+A216997	filter	0	new LambdaSequence(1, n -> ZV(n).*( 8))	v -> ZUtils.digitSum(v) %  8 == 0		Multiples of  8 that have a digit sum which is a multiple of 8.  nonn,base   
+A218290	filter	0	new LambdaSequence(1, n -> ZV(n).*( 5))	v -> ZUtils.digitSum(v) %  5 == 0		Multiples of  5 such that the sum of their digits is also a multiple of 5.   
+A218291	filter	0	new LambdaSequence(1, n -> ZV(n).*( 6))	v -> ZUtils.digitSum(v) %  6 == 0		Multiples of  6 such that the sum of their digits is also a multiple of 6.   
+A218292	filter	0	new LambdaSequence(1, n -> ZV(n).*(10))	v -> ZUtils.digitSum(v) % 10 == 0		Multiples of 10 such that the sum of their digits is also a multiple of 10. 
+                                                          )
+# A248381	filter	0	new A247665()	v -> v.mod(3) == 0	Multiples of 3 in A247665 in order of appearance.       nonn,mo
+A248423	lambdan	0	n -> ZUtils.reverse(ZV(n).*(4))	Multiples of 4 with digits backwards.   nonn,base       0..50  
+# A355896	simtraf	0	new FilterSequence(1, new A354790(), v -> v.mod(3) == 0)	v -> v./(3)	Multiples of 3 in A354790, divided by 3, in order of appearance 
+
+A115704	filter	0	new A000217()	v -> ZUtils.reverse(v).isProbablePrime()	Triangular numbers whose digit reversal is prime; trailing zeros are permitted. nonn,base       1..1000 n
+A115705	filter	0	new A000040()	v -> ZUtils.isTriangular(ZUtils.reverse(v))	Primes whose digit reversal is a triangular number.     nonn,base       1..400  nyi     _Giovanni Resta_
+A115706	filter	0	new A000040()	v -> ZUtils.isPolygonal(ZUtils.reverse(v), 5)	Primes whose digit reversal is a pentagonal number (A000326).   nonn,base       1..35   nyi     _Giovanni
+A115707	filter	0	new A000326()	v -> ZUtils.reverse(v).isProbablePrime()	Pentagonal numbers (A000326) whose digit reversal is a prime.   nonn,base       1..37   nyi     _Giovanni
+A115708	filter	0	new A001358()	v -> ZUtils.isPolygonal(ZUtils.reverse(v), 5)	Semiprimes (A001358) whose digit reversal is a pentagonal number (A000326).     nonn,base       1..100  n
+A115710	filter	0	new A001358()	v -> ZUtils.reverse(v).isSquare()	Semiprimes (A001358) whose digit reversal is a square.  nonn,base       1..40   nyi     _Giovanni Resta_
+A115712	filter	0	new A001358()	v -> ZUtils.isCube(ZUtils.reverse(v))	Semiprimes (A001358) whose digit reversal is a cube.    nonn,base       1..31   nyi     _Giovanni Resta_
+A115741	filter	0	new A001358()	v -> ZUtils.isTriangular(ZUtils.reverse(v))	Semiprimes (A001358) whose digit reversal is a triangular number.       nonn,base       1..41   nyi     _
+A161902	filter	0	new A000290()	v -> { final Z w = ZUtils.reverse(v); return w.isSquare() && !ZUtils.isPalindrome(v, 10); }	Non-palindromic squares whose digit reversal gives a square (possibly with fewer digits).       nonn,base
+A345346	filter	0	new A000040()	v -> { final Z w = ZUtils.reverse(v); return !w.testBit(0) && w.divide(2).isProbablePrime(); }	Primes whose digit reversal is twice a prime.   nonn,base       1..10000        nyi     _J. M. Bergot_ an
+
+A115709	filter	0	new A000326()	v -> Jaguar.factor(ZUtils.reverse(v)).isSemiprime() == FactorSequence.YES	Pentagonal numbers (A000326) whose digit reversal is a semiprime (A001358).     nonn,base       1..1000 n
+A115711	filter	0	new A000290()	v -> Jaguar.factor(ZUtils.reverse(v)).isSemiprime() == FactorSequence.YES	Squares whose digit reversal is a semiprime (A001358).  nonn,base       1..41   nyi     _Giovanni Resta_
+A115740	filter	0	new A000578()	v -> Jaguar.factor(ZUtils.reverse(v)).isSemiprime() == FactorSequence.YES	Cubes whose digit reversal is a semiprime (A001358).    nonn,base       1..31   nyi     _Giovanni Resta_
+A115742	filter	0	new A000217()	v -> Jaguar.factor(ZUtils.reverse(v)).isSemiprime() == FactorSequence.YES	Triangular numbers whose digit reversal is a semiprime (A001358).       nonn,base       1..1000 nyi     _
+
+A115682	filter	0	new A000217()	v -> ZUtils.isPolygonal(ZUtils.reverse(v), 5)	Triangular numbers whose digit reversal is a pentagonal number (A000326).       nonn,
+A115685	filter	0	new A000040()	v -> { final Z w = ZUtils.reverse(v); return w.equals(Z.ONE) || Jaguar.factor(w).minExponent() > 1; }	Prime numbers whose digit reversal is a powerful(1) number (A001694).   nonn,base
+A115686	filter	0	new A001694()	v -> ZUtils.reverse(v).isProbablePrime()	Powerful(1) numbers (A001694) whose digit reversal is a prime number.   nonn,base
+A115687	filter	0	new A001694()	v -> Jaguar.factor(ZUtils.reverse(v)).isSemiprime() == FactorSequence.YES	Powerful(1) numbers (A001694) whose digit reversal is a semiprime (A001358).    nonn,
+A115688	filter	0	new A001358()	v -> { final Z w = ZUtils.reverse(v); return w.equals(Z.ONE) || Jaguar.factor(w).minExponent() > 1; }	Semiprimes (A001358) whose digit reversal is a powerful(1) number (A001694).    nonn,
+A115689	filter	0	new A001694()	v -> ZUtils.reverse(v).isSquare()	Powerful(1) numbers (A001694) whose digit reversal is a square. nonn,base       1..16
+A115690	filter	0	new A000290()	v -> { final Z w = ZUtils.reverse(v); return w.equals(Z.ONE) || Jaguar.factor(w).minExponent() > 1; }	Squares whose digit reversal is a powerful(1) number (A001694). nonn,base       1..15
+A115691	filter	0	new A001694()	v -> ZUtils.isTriangular(ZUtils.reverse(v))	Powerful(1) numbers (A001694) whose digit reversal is a triangular number.      nonn,
+A115692	filter	0	new A000217()	v -> { final Z w = ZUtils.reverse(v); return w.equals(Z.ONE) || Jaguar.factor(w).minExponent() > 1; }	Triangular numbers whose digit reversal is a powerful(1) number (A001694).      nonn,
+A115693	filter	0	new A001694()	v -> ZUtils.isCube(ZUtils.reverse(v))	Powerful(1) numbers (A001694) whose digit reversal is a cube.   nonn,base       1..27
+A115694	filter	0	new A000578()	v -> { final Z w = ZUtils.reverse(v); return w.equals(Z.ONE) || Jaguar.factor(w).minExponent() > 1; }	Cubes whose digit reversal is a powerful(1) number (A001694).   nonn,base       1..25
+A115695	filter	0	new A001694()	v -> ZUtils.isPolygonal(ZUtils.reverse(v), 5)	Powerful(1) numbers (A001694) whose digit reversal is a pentagonal number (A000326).
+A115696	filter	0	new A000326()	v -> { final Z w = ZUtils.reverse(v); return w.equals(Z.ONE) || Jaguar.factor(w).minExponent() > 1; }	Pentagonal numbers (A000326) whose digit reversal is a powerful(1) number (A001694).

@@ -1,0 +1,17 @@
+A005286	lambdan	0	n -> Z.valueOf(n).add(9).multiply(n).add(20).multiply(n).add(6).divide(6)	
+
+# A194768	16	FAIL	,3125,3126,3157,3158,3368,3369,3...	,-2593048,-36872295,-282194440,-
+# A194769	15	FAIL	,4890,15625,15626,15689,15690,16...	,6035730,79576640,568546057,2911
+# A247486	15	FAIL	,1108,1109,1112,1114,1117,1118,1...	,343001,4538183,32537312,1670442
+# A338433	18	FAIL	,255,317,318,319,320,321,322,399...	,176733,2571015,20287517,1145945
+
+A365800	dirichinv	0	new A010054().skip(1)	1	new A010054()
+A365799	simtraf	0	new A365800()	v -> v.testBit(0) ? Z.ONE : Z.ZERO
+A354866	dirichinv	0	new A122111()
+A354868	simtraf	0	new A354866()	v -> v.testBit(0) ? Z.ONE : Z.ZERO
+# A365803	dirichinv	0	A263273	1	new A263273()	Dirichlet inverse of bijective base-3 reverse of n (A263273)
+# A365711	dirichinv	0	A117966	1	new A117966()	Dirichlet inverse of balanced ternary enumeration of integers (A117966).	sign	1..19683	nyi	_Antti Karttunen_
+
+# A365783	simtraf	0	new A126706()	v -> Jaguar.factor(v).squareFreeKernel()	squarefree kernel of A126706(n).	nonn	1..10000	nyi	_Michael De Vlieger_
+# A365784	simtraf	0	new A126706()	v -> v.divide(Jaguar.factor(v).squareFreeKernel())	A126706(n) divided by its squarefree kernel.	nonn	1..10000	nyi	_Michael De Vlieger_
+A365787	simtraf	0	new A286708()	v -> v.divide(Jaguar.factor(v).squareFreeKernel())		A286708(n) divided by its squarefree kernel.	nonn

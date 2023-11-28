@@ -1,0 +1,58 @@
+A346409	lambdan	0	n -> RU(0, n - 1, k -> new Q(Z_1(k), ZV(n - k).^(2).*(FA(k)))).*(FA(n).^(2)).num()	a(n) = (n!)^2 * Sum_{k=0..n-1} (-1)^k / ((n-k)^2 * k!).	sign	0..18	nyi	_Ilya Gutkovskiy_
+A346410	lambdan	0	n -> RU(0, n - 1, k -> new Q(Z.ONE, ZV(n - k).*(FA(k)).^(2))).*(FA(n).^(2)).num()	a(n) = (n!)^2 * Sum_{k=0..n-1} 1 / ((n-k) * k!)^2.	nonn	0..18	nyi	_Ilya Gutkovskiy_
+A346411	lambdan	0	n -> RU(0, n - 1, k -> new Q(Z_1(k), ZV(n - k).*(FA(k)).^(2))).*(FA(n).^(2)).num()	a(n) = (n!)^2 * Sum_{k=0..n-1} (-1)^k / ((n-k) * k!)^2.	sign	0..19	nyi	_Ilya Gutkovskiy_
+
+A076739	parmof2	0	A076739	new A000045().skip(2)	Number of compositions of n                      into Fibonacci numbers (1 counted as single A000045 Fibonacci number).
+A077608	parmof2	0	A076739	new A001097()	Number of compositions of n                      into twin primes (i.e., primes that are     A001097   members of a twin prime pair, like 3, 5, 7, 11, 13, but not 2 or 23).
+A078932	parmof2	0	A076739	new A000244()	Number of compositions (ordered partitions) of n into powers of 3.                           A000578
+A080888	parmof2	0	A076739	new A000045().skip(1)	Number of compositions                           into Fibonacci numbers (1 counted as two    A000045 tinct Fibonacci numbers).
+A087221	parmof2	0	A076739	new A000302()	Number of compositions (ordered partitions) of n into powers of 4.                           A000583
+A282566	parmof2	0	A076739	new A005100()	Number of compositions (ordered partitions) of n into deficient numbers                     (A005100).
+A282568	parmof2	0	A076739	new A005101()	Number of compositions (ordered partitions) of n into abundant numbers                      (A005101).
+A282569	parmof2	0	A076739	new A007422()	Number of compositions (ordered partitions) of n into multiplicatively perfect numbers      (A007422).
+A282582	parmof2	0	A076739	new A000292().skip(1)	Number of compositions (ordered partitions) of n into tetrahedral (or triangular pyramidal) (A000292).
+A282583	parmof2	0	A076739	new A002620().skip(2)	Number of compositions (ordered partitions) of n into quarter-squares                       (A002620).
+A282584	parmof2	0	A076739	new A002113().skip(1)	Number of compositions (ordered partitions) of n into decimal palindro          mes         (A002113).
+A282971	parmof2	0	A076739	new A002313()	Number of compositions (ordered partitions) of n into primes of form x          ^2 + y^2    (A002313).
+A286970	parmof2	0	A076739	new A002385()	Number of compositions (ordered partitions) of n into decimal palindro          mic primes  (A002385).
+A288039	parmof2	0	A076739	new A000204()	Number of compositions (ordered partitions) of n into Lucas numbers (b          eginnith 1) (A000204).
+A290137	parmof2	0	A076739	new A000469()	Number of compositions (ordered partitions) of n into nonprime squaref          ree parts   (A000469).
+A322340	parmof2	0	A076739	new A000330().skip(1)	Number of compositions (ordered partitions) of n into square pyramidal           numbers    (A000330).
+A322798	parmof2	0	A076739	new A000384().skip(1)	Number of compositions (ordered partitions) of n into hexagonal number          s           (A000384).
+A322799	parmof2	0	A076739	new A000566().skip(1)	Number of compositions (ordered partitions) of n into heptagonal numbe          rs          (A000566).
+A322800	parmof2	0	A076739	new A000567().skip(1)	Number of compositions (ordered partitions) of n into octagonal number          s           (A000567).
+A322801	parmof2	0	A076739	new A005891()	Number of compositions (ordered partitions) of n into centered pentago          nal numbers (A005891).
+A322802	parmof2	0	A076739	new A003215()	Number of compositions (ordered partitions) of n into centered hexagon          al numbers  (A003215).
+A322803	parmof2	0	A076739	new A069099()	Number of compositions (ordered partitions) of n into centered heptago          nal numbers (A069099).
+A322853	parmof2	0	A076739	new A002411().skip(1)	Number of compositions (ordered partitions) of n into pentagonal pyram          idal numbers(A002411).
+A322854	parmof2	0	A076739	new A002412().skip(1)	Number of compositions (ordered partitions) of n into hexagonal pyrami          dal numbers (A002412).
+A322855	parmof2	0	A076739	new A002413().skip(1)	Number of compositions (ordered partitions) of n into heptagonal pyram          idal numbers(A002413).
+A322856	parmof2	0	A076739	new A002414()	Number of compositions (ordered partitions) of n into octagonal pyrami          dal numbers (A002414).
+A322340	parmof2	0	A076739	new A000330().skip(1)	Number of compositions (ordered partitions) of n into square pyramidal           numbers    (A000330).
+A322798	parmof2	0	A076739	new A000384().skip(1)	Number of compositions (ordered partitions) of n into hexagonal numbers                     (A000384).
+A322799	parmof2	0	A076739	new A000566().skip(1)	Number of compositions (ordered partitions) of n into heptagonal numbers                    (A000566).
+A322800	parmof2	0	A076739	new A000567().skip(1)	Number of compositions (ordered partitions) of n into octagonal numbers                     (A000567).
+A322801	parmof2	0	A076739	new A005891().skip(1)	Number of compositions (ordered partitions) of n into centered pentagonal numbers           (A005891).
+A322802	parmof2	0	A076739	new A003215().skip(1)	Number of compositions (ordered partitions) of n into centered hexagonal numbers            (A003215).
+A322803	parmof2	0	A076739	new A069099().skip(1)	Number of compositions (ordered partitions) of n into centered heptagonal numbers           (A069099).
+A322853	parmof2	0	A076739	new A002411().skip(1)	Number of compositions (ordered partitions) of n into pentagonal pyramidal number         s (A002411).
+A322854	parmof2	0	A076739	new A002412().skip(1)	Number of compositions (ordered partitions) of n into hexagonal pyramidal numbers           (A002412).
+A322855	parmof2	0	A076739	new A002413().skip(1)	Number of compositions (ordered partitions) of n into heptagonal pyramidal number         s (A002413).
+A322856	parmof2	0	A076739	new A002414().skip(1)	Number of compositions (ordered partitions) of n into octagonal pyramidal numbers           (A002414).
+A355805	parmof2	0	A076739	new A000129().skip(1)	Number of compositions (ordered partitions) of n into Pell numbers                          (A000129).
+A357451	parmof2	0	A076739	new A000073().skip(3)	Number of compositions (ordered partitions) of n into tribonacci numbers 1,2,4,7,13,24, ... (A000073).
+A357453	parmof2	0	A076739	new A000078().skip(4)	Number of compositions (ordered partitions) of n into tetranacci numbers 1,2,4,8,15,29, ... (A000078).
+A357455	parmof2	0	A076739	new A001591().skip(5)	Number of compositions (ordered partitions) of n into pentanacci numbers 1,2,4,8,16,31, ... (A001591).
+A357519	parmof2	0	A076739	new A001045().skip(2)	Number of compositions (ordered partitions) of n into Jacobsthal numbers 1,3,5,11,21,43, ...(A001045).
+
+# A337764 Number of compositions (ordered partitions) of the n-th n-gonal number into n-gonal numbers. A060354
+# A287148 Number of compositions (ordered partitions) of 2*n-1 into primes of form x^2 + y^2.
+# A298640 Number of compositions (ordered partitions) of n^2 into squares > 1.
+# A333047 Number of compositions                      of 2*n into n powers of 2.
+# A341071 Number of compositions                      of 2*n into n squarefree parts.
+# A341072 Number of compositions                      of 2*n into n Fibonacci parts.
+# A341459 Number of compositions                      of n^2 into n prime parts.
+# A346564 Number of compositions (ordered partitions) of 3^n into powers of 3.
+# A346565 Number of compositions (ordered partitions) of 4^n into powers of 4.
+# A346566 Number of compositions (ordered partitions) of n^4 into fourth powers.
+# 

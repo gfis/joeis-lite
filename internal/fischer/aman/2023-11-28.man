@@ -1,0 +1,132 @@
+# A337764 Number of compositions (ordered partitions) of the n-th n-gonal number into n-gonal numbers. A060354
+# A287148 Number of compositions (ordered partitions) of 2*n-1 into primes of form x^2 + y^2.
+# A298640 Number of compositions (ordered partitions) of n^2 into squares > 1.
+# A333047 Number of compositions                      of 2*n into n powers of 2.
+# A341071 Number of compositions                      of 2*n into n squarefree parts.
+# A341072 Number of compositions                      of 2*n into n Fibonacci parts.
+# A341459 Number of compositions                      of n^2 into n prime parts.
+# A346564 Number of compositions (ordered partitions) of 3^n into powers of 3.
+# A346565 Number of compositions (ordered partitions) of 4^n into powers of 4.
+# A346566 Number of compositions (ordered partitions) of n^4 into fourth powers.
+# 
+
+A071108	tuptraf	1	(n, s) -> s[0].*(Jaguar.factor(n).sigma0()).+(s[1])	"1,3"	PREVIOUS,PREVIOUS	tau(n) *a(n-1) +a(n-2) CONTINUANT transform of {d(n)}, 1, 2, 2, 3, 2, 4, ... (A000005).
+A071138	tuptraf	1	(n, s) -> s[0].*(Jaguar.factor(n).sigma()).+(s[1])	"1,4"	PREVIOUS,PREVIOUS	CONTINUANT transform of {sigma(n)}, 1, 3, 4, 7, 6, 12, ... (A000203).
+A071895	tuptraf	1	(n, s) -> s[0].*(FI(n + 1)).+(s[1])	"1,3"	PREVIOUS,PREVIOUS	CONTINUANT transform of Fibonacci number 1, 2, 3, 5, 8, ...
+A071897	tuptraf	1	(n, s) -> s[0].*(BI(2*n, n)./(n + 1)).+(s[1])	"1,3"	PREVIOUS,PREVIOUS	CONTINUANT transform of Catalan numbers 1, 2, 5, 14, 42, ...
+A071898	tuptraf	1	(n, s) -> s[0].*(Integers.SINGLETON.sum(0, n - 1, k -> Binomial.binomial(k, n - k - 1).testBit(0) ? Z.ONE : Z.ZERO)).+(s[1])	"1,2"	PREVIOUS,PREVIOUS	CONTINUANT transform of A002487: 1, 1, 2, 1, 3, 2, ...
+A071917	tuptraf	1	(n, s) -> s[0].+(Puma.primePi(2*n - 1)).-(Puma.primePi(n))	"0"	PREVIOUS	a(n) = a(n-1) + pi(2*n-1) - pi(n) Number of pairs (x,y) where x is even, y is odd, 1<=x<=n, 1<=y<=n and x+y is prime.
+A072131	holos	1	[[0],[-396900,1455300,-2127825,1587600,-639450,132300,-11025],[399000,-855832,324910,355304,-244094,7796,12916],[-82425,-242990,520015,-17696,-142542,-32388,-1974],[-343035,429858,634756,238440,38958,2940,84],[-518400,-362880,-103824,-15552,-1288,-56,-1]]	1,2,6,24	0
+A072762	tuptraf	1	(n, s) -> s[0].*(2).+(ZV(n).isProbablePrime() ? 1 : 0)	"0"	PREVIOUS	2 * a(n-1) + `if`(isprime(n), 1, 0)
+A073889	tuptraf	1	(n, s) -> s[0].^(n - 1)./(s[1])	"1,3"	PREVIOUS,PREVIOUS	a(n-1)^(n-1)/a(n-2)
+A076042	tuptraf	0	(n, s) -> s[0].compareTo(ZV(n*n)) < 0 ? s[0].+(n*n) : s[0].-(n*n)	"0"	PREVIOUS	a(0) = 0; thereafter a(n) = a(n-1) + n^2 if a(n-1) < n^2, otherwise a(n) = a(n-1) - n^2.
+A078414	tuptraf	1	(n, s) -> { final Z sum = s[0].+(s[1]); return sum./(Z.SEVEN.^(ZUtils.valuation(sum, Z.SEVEN)));}	"1,1"	PREVIOUS,PREVIOUS	tau(n) *a(n-1) +a(n-2)
+A082097	tuptraf	1	(n, s) -> Jaguar.factor(s[0]).sigma0().+(n)	"1"	PREVIOUS	tau(a(n-1)) + n
+A083524	tuptraf	1	(n, s) -> ZV(n).isProbablePrime() ? s[0].*(n) : s[0].+(n)	"1"	PREVIOUS	a(1) = 1, a(n) = a(n-1)*n if n is a prime, a(n) = a(n-1)+ n if n is composite.
+A083525	tuptraf	1	(n, s) -> ZV(n).isProbablePrime() ? s[0].+(n) : s[0].*(n)	"1"	PREVIOUS	a(1) = 1, a(n) = a(n-1)*n if n is a prime, a(n) = a(n-1)+ n if n is composite.
+A083743	tuptraf	1	(n, s) -> s[0].+(n).isProbablePrime() ? s[0].+(n) : s[0]	"1"	PREVIOUS	if isprime(a(n-1)+n) then RETURN(a(n-1)+n) else RETURN(a(n-1)) fi: end: for n from 1 to 100 do printf(`%d,`,a(n)) od: # _James A. Sellers_, May 19 2003
+A083744	tuptraf	1	(n, s) -> s[0].+(n).isProbablePrime() ? s[0] : s[0].+(n)	"1"	PREVIOUS	if isprime(a(n-1)+n) then RETURN(a(n-1)) else RETURN(a(n-1)+n) fi: end: for n from 1 to 100 do printf(`%d,`,a(n)) od: # _James A. Sellers_, May 19 2003
+A083745	tuptraf	1	(n, s) -> s[0].+(n).isProbablePrime() ? s[0].-(n) : s[0].+(n)	"1"	PREVIOUS	if isprime(a(n-1)+n) then RETURN(a(n-1)-n) else RETURN(a(n-1)+n) fi: end: for n from 1 to 100 do printf(`%d,`,a(n)) od: # _James A. Sellers_, May 19 2003
+A084962	tuptraf	1	(n, s) -> FI(s[0].longValueExact())	"6"	PREVIOUS
+A084963	tuptraf	1	(n, s) -> FI(s[0].longValueExact())	"7"	PREVIOUS
+A086851	tuptraf	1	(n, s) -> s[0].^(2).-(n - 1)	"1"	PREVIOUS	if n=0 then RETURN(1) fi: a(n-1)^2-n+1: end:
+A090635	tuptraf	1	(n, s) -> new A003415().a(s[0])	"63"	PREVIOUS	Trajectory of 63 under the map k -> A003415(k) (taking the arithmetic derivative).
+A090636	tuptraf	1	(n, s) -> new A003415().a(s[0])	"15"	PREVIOUS	Trajectory of 15 under the map k -> A003415(k) (taking the arithmetic derivative).
+A090637	tuptraf	1	(n, s) -> new A003415().a(s[0])	"28"	PREVIOUS	Trajectory of 28 under the map k -> A003415(k) (taking the arithmetic derivative).
+
+A093099	tuptraf	1	(n, s) -> new Z(s[0].toString().substring(1) + ZUtils.digitSum(new Z(s[0].toString().substring(0, 2))))	"11"	PREVIOUS		"Fibonacci-digits": start with "11", append sum of first 2 digits to the preceding number, drop first digit.
+A152199	tuptraf	1	(n, s) -> !s[0].testBit(0) ? s[0].divide2() : s[0].shiftLeft(3).divide(5).add(1)	"7"	PREVIOUS	Trajectory of 7 under the map m -> A082010(m).
+
+# A006368	The "amusical permutation" of the nonnegative numbers: a(2n)=3n, a(4n+1)=3n+1, a(4n-1)=3n-1.
+A094332	tuptraf	1	(n, s) -> !s[0].testBit(0) ? s[0].*(3)./(2) : s[0].*(3).+(1)./(4)	"12"	PREVIOUS	Iterate the map in A006368 starting at 12.
+A180864	tuptraf	1	(n, s) -> !s[0].testBit(0) ? s[0].*(3)./(2) : s[0].*(3).+(1)./(4)	"13"	PREVIOUS	Trajectory of 13 under map n->A006368(n).
+A182205	tuptraf	1	(n, s) -> !s[0].testBit(0) ? s[0].*(3)./(2) : s[0].*(3).+(1)./(4)	"46"	PREVIOUS	Iterate the map in A006368 starting at 40.
+A223086	tuptraf	1	(n, s) -> !s[0].testBit(0) ? s[0].*(3)./(2) : s[0].*(3).+(1)./(4)	"64"	PREVIOUS	Trajectory of 64 under the map n-> A006368(n).
+A223087	tuptraf	1	(n, s) -> !s[0].testBit(0) ? s[0].*(3)./(2) : s[0].*(3).+(1)./(4)	"80"	PREVIOUS	Trajectory of 80 under the map n-> A006368(n).
+A223088	tuptraf	1	(n, s) -> !s[0].testBit(0) ? s[0].*(3)./(2) : s[0].*(3).+(1)./(4)	"82"	PREVIOUS	Trajectory of 82 under the map n-> A006368(n).
+# A006369: if n mod 3 = 0 then 2*n/3 elif n mod 3 = 1 then (4*n-1)/3 else (4*n+1)/3. a(3*n-2) = 4*n-3, a(3*n-1) = 4*n-1, a(3*n) = 2*n.
+A094329	tuptraf	1	(n, s) -> { final long res = s[0].mod(3L); return res == 0L ? s[0].*(2)./(3) : s[0].*(4).+(res == 1L ? -1 : 1)./(3); }	"16"	PREVIOUS	Iterate the map in A006369 starting at 16.
+A185589	tuptraf	1	(n, s) -> { final long res = s[0].mod(3L); return res == 0L ? s[0].*(2)./(3) : s[0].*(4).+(res == 1L ? -1 : 1)./(3); }	"144"	PREVIOUS	Iterate the map in A006369 starting at 144.
+A217729	tuptraf	1	(n, s) -> { final long res = s[0].mod(3L); return res == 0L ? s[0].*(2)./(3) : s[0].*(4).+(res == 1L ? -1 : 1)./(3); }	"40"	PREVIOUS	Trajectory of 40 under the map n-> A006369(n).
+A223083	tuptraf	1	(n, s) -> { final long res = s[0].mod(3L); return res == 0L ? s[0].*(2)./(3) : s[0].*(4).+(res == 1L ? -1 : 1)./(3); }	"64"	PREVIOUS	Trajectory of 64 under the map n-> A006369(n).
+A223084	tuptraf	1	(n, s) -> { final long res = s[0].mod(3L); return res == 0L ? s[0].*(2)./(3) : s[0].*(4).+(res == 1L ? -1 : 1)./(3); }	"80"	PREVIOUS	Trajectory of 80 under the map n-> A006369(n).
+A223085	tuptraf	1	(n, s) -> { final long res = s[0].mod(3L); return res == 0L ? s[0].*(2)./(3) : s[0].*(4).+(res == 1L ? -1 : 1)./(3); }	"82"	PREVIOUS	Trajectory of 82 under the map n-> A006369(n).
+A367286	simtraf	1	new A006369().skip(1)	(n, v) -> v.-(1)	a(n) = A006369(n+1) - 1.
+
+A257349	tuptraf	1	(n, s) -> Jaguar.factor(s[0]).sigma()	"16"	PREVIOUS	a(1) = 16, a(n) = sigma(a(n-1)).
+
+# A002487 SU(0, n - 1, k -> BI(k, n - k - 1).testBit(0) ? Z.ONE : Z.ZERO)	Stern''s diatomic series (or Stern-Brocot sequence): a(0) = 0, a(1) = 1; for n > 0: a(2*n) = a(n), a(2*n+1) = a(n) + a(n+1).
+A071884	tuptraf	0	(n, s) -> { final int m = s[0].intValueExact(); return SU(0, m - 1, k -> BI(k, m - k - 1).testBit(0) ? Z.ONE : Z.ZERO).*(SU(0, m, k -> BI(k, m - k).testBit(0) ? Z.ONE : Z.ZERO)); }	"37"	PREVIOUS	Trajectory of 37 under map x -> A002487(x)*A002487(x+1).
+A071885	tuptraf	0	(n, s) -> { final int m = s[0].intValueExact(); return SU(0, m - 1, k -> BI(k, m - k - 1).testBit(0) ? Z.ONE : Z.ZERO).*(SU(0, m, k -> BI(k, m - k).testBit(0) ? Z.ONE : Z.ZERO)); }	"38"	PREVIOUS	Trajectory of 38 under map x -> A002487(x)*A002487(x+1).
+A071886	tuptraf	0	(n, s) -> { final int m = s[0].intValueExact(); return SU(0, m - 1, k -> BI(k, m - k - 1).testBit(0) ? Z.ONE : Z.ZERO).*(SU(0, m, k -> BI(k, m - k).testBit(0) ? Z.ONE : Z.ZERO)); }	"41"	PREVIOUS	Trajectory of 41 under map x -> A002487(x)*A002487(x+1).
+
+%N A094763 Trajectory of 2 under repeated application of the map n -> n + square excess of n.
+%N A094764 Trajectory of 7 under repeated application of the map n -> n + square excess of n.
+%N A113702 Trajectory of 10 under map k -> €111273(k).
+%N A113703 Retrograde trajectory of 10 under map k -> €111273(k).
+%N A117149 Trajectory of 4 under map k -> €094077(k).
+%N A117150 Retrograde trajectory of 4 under map k -> €094077(k).
+%N A129286 a(n) = €129152(n) / 5^5, where €129152 is the trajectory of 5^6 under A003415, the arithmetic derivative.
+%F A129286 a(n) = €090635(n+3) / 4, i.e., the trajectory of 20 under A003415, divided by the common factor 4. - _M. F. Hasler_, Nov 27 2019
+%N A132946 Trajectory of 13 under map n -> €132948(n).
+%N A132947 Retrograde trajectory of 13 under map n -> €132948(n).
+%N A132990 Trajectory of 11 under map n -> €132988(n).
+%N A132991 Retrograde trajectory of 11 under map n -> €132988(n).
+%N A140485 Trajectory of 1 under repeated application of the map: n -> n + second-smallest number that does not divide n.
+%N A140486 Trajectory of 2 under repeated application of the map: n -> n + second-smallest number that does not divide n.
+%N A140487 Trajectory of 3 under repeated application of the map: n -> n + second-smallest number that does not divide n.
+%N A140488 Trajectory of 5 under repeated application of the map: n -> n + second-smallest number that does not divide n.
+%N A140490 Trajectory of 1 under repeated application of the map: n -> n + third-smallest number that does not divide n.
+%N A140491 Trajectory of 2 under repeated application of the map: n -> n + third-smallest number that does not divide n.
+%N A140492 Trajectory of 3 under repeated application of the map: n -> n + third-smallest number that does not divide n.
+%N A140493 Trajectory of 4 under repeated application of the map: n -> n + third-smallest number that does not divide n.
+
+A077960	tuptraf	1	(n, s) -> new A087712().a(s[0])	"18"	PREVIOUS	Trajectory of 18 under iteration of the map k -> €087712(k).
+A144760	tuptraf	1	(n, s) -> new A087712().a(s[0])	 "6"	PREVIOUS	Trajectory of  6 under iteration of the map k -> €087712(k).
+A144813	tuptraf	1	(n, s) -> new A087712().a(s[0])	 "8"	PREVIOUS	Trajectory of  8 under iteration of the map k -> €087712(k).
+A144814	tuptraf	1	(n, s) -> new A087712().a(s[0])	"10"	PREVIOUS	Trajectory of 10 under iteration of the map k -> €087712(k).
+A144914	tuptraf	1	(n, s) -> new A087712().a(s[0])	"40"	PREVIOUS	Trajectory of 40 under iteration of the map k -> €087712(k).
+
+A152199	tuptraf	1	(n, s) -> new A082010().a(s[0])	"7"	PREVIOUS	Trajectory of 7 under the map m -> A082010(m).
+A103192	tuptraf	1	(n, s) -> new A102370().a(s[0])	"1"	PREVIOUS	Trajectory of 1 under repeated application of the function n -> A102370(n).
+A158953	tuptraf	1	(n, s) -> new A102370().a(s[0])	"12"	PREVIOUS	Trajectory of 12 under repeated application of the map n --> A102370(n) .
+A159887	tuptraf	1	(n, s) -> new A102370().a(s[0])	"29"	PREVIOUS	Trajectory of 29 under repeated application of the map n -> A102370(n).
+%N A171825 Trajectory of 1 under repeated application of i -> €171823(i).
+%N A185455 Trajectory of 7 under repeated application of the map in A185452.
+A100709	tuptraf	1	(n, s) -> new A014682().a(s[0])	"1001"	PREVIOUS	Trajectory of 1001 under "3x+1" map.
+A185666	tuptraf	1	(n, s) -> new A014682().a(s[0])	"649"	PREVIOUS	Trajectory of 649 under the 3x+1 map of A014682.
+%N A251412 Trajectory of 11 under the map n -> €098550(n).
+%N A264972 Trajectory of 262 under repeated application of the permutation €264965: a(0) = 262; for n >= 1, a(n) = €264965(a(n-1))
+%N A264973 Trajectory of 262 under permutation €264966: a(0) = 262; for n >= 1, a(n) = €264966(a(n-1)).
+%N A270807 Trajectory of 1 under the map n -> n + n/gpf(n) + 1 (see A269304).
+%N A274941 Trajectory of 2 under the map x -> €274940(x).
+%N A290350 Trajectory of 48 under the map x -> €289667(x).
+%N A293981 Start with 209; if even, divide by 2; if odd, add the next three primes: Trajectory of 209 under iterations of €174221, the "PrimeLatz" map.
+A306943	tuptraf	1	(n, s) -> new A306938().a(s[0])	"5"	PREVIOUS	Trajectory of 5 under repeated application of x -> €306938(x).
+A306960	tuptraf	1	(n, s) -> new A306958().a(s[0])	"1"	PREVIOUS	Trajectory of 1 under repeated application of x -> €306958(x).
+A306961	tuptraf	1	(n, s) -> new A306958().a(s[0])	"3"	PREVIOUS	Trajectory of 3 under repeated application of x -> €306958(x).
+A306962	tuptraf	1	(n, s) -> new A306958().a(s[0])	"4"	PREVIOUS	Trajectory of 4 under repeated application of x -> €306958(x).
+A306964	tuptraf	1	(n, s) -> new A306958().a(s[0])	"2"	PREVIOUS	Trajectory of 2 under repeated application of x -> €306958(x).
+A328974	tuptraf	1	(n, s) -> new A053392().a(s[0])	"1496"	PREVIOUS	Trajectory of 1496 under repeated application of the map defined in A053392.
+%N A338061 Trajectory of 3 under repeated application of the map x -> €338059(x).
+%N A340419 Trajectory of 397 under the map €340008: n -> n/2 if n is even, n-> n^2 - 1 if n is an odd prime, otherwise n -> n - 1.
+%N A343157 Trajectory of 407 under the map x -> €084317(x).
+%N A345115 Trajectory of 49 under the map x -> €345111(x).
+%N? A348785 Trajectory of 2 under repeated application of the map x -> €347113(x).
+%N? A348786 Trajectory of 5 under repeated application of the map x -> €347113(x).
+%N A365993 Trajectory of 34 under the "multiply with zero" rules explained in the Comments section.
+A366067	tuptraf	1	(n, s) -> new A366144().a(s[0])	"578"	PREVIOUS	Trajectory of 578 under the map x -> €366144(x) (divide or multiply tau(x)).
+
+
+# A103863	simtraf	0	new A102370()	v -> ZV(Hamming distance between n and A102370(n) (in binary).  nonn,easy,base  0..104  nyi     _Philippe Del√©ham_
+A104235	filtpos	1	1	new A102370()	(n, v) -> v.equals(ZV(n))	Numbers n such that A102370(n) = n.     nonn,base       1..1000 nyi     _N. J. A. Sloane_
+A159057	simtraf	0	new A102370()	v -> v.modZ(10)	
+A159058	simtraf	0	new A102370()	v -> v.modZ(8)	
+A159059	simtraf	0	new A102370()	v -> v.modZ(5)	
+A159060	simtraf	0	new A102370()	v -> v.modZ(6)	
+A159066	simtraf	0	new A102370()	v -> v.modZ(7)	
+A159067	simtraf	0	new A102370()	v -> v.modZ(9)	
+# A159963 nyi F   Lodumo_3 of A102370 (sloping binary numbers).   nonn,less,base  0..72   nyi     _Philippe Del√©ham_
+# A159966 LinearRecurrence        Lodumo_4 of A102370 (sloping binary numbers).   easy,nonn,less,base     0..10000        unkn    _Philippe Del√©ham_
+# A159970 nyi     Lodumo_5 of A102370 (sloping binary numbers) .  easy,nonn,less,base     0..67   nyi     _Philippe Del√©ham_
+A359567	filtpos	1	1	new A102370()	(n, v) -> v.equals(ZV(n + 2))	Numbers k such that A102370(k) = k + 2. nonn,base       1..60   nyi     _Philippe Del√©ham_

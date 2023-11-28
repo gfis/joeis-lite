@@ -1,0 +1,87 @@
+
+
+
+
+A067362	lambdan	1	n -> { final Z q = FA(n).^(2); return Puma.nextPrimeZ(q.+(1)).-(q); }	a(n) = p - n!^2, where p is the smallest prime > n!^2+1.	nonn	1..3000	nyi	Frank Buss (fb(AT)frank-buss.de)
+A067363	lambdan	1	n -> { final Z q = FA(n).^(3); return Puma.nextPrimeZ(q.+(1)).-(q); }	a(n)=p-n!^3, where p is the smallest prime > n!^3+1.	nonn	1..2278	nyi	Frank Buss (fb(AT)frank-buss.de)
+A067364	lambdan	1	n -> { final Z q = FA(n).^(4); return Puma.nextPrimeZ(q.+(1)).-(q); }	a(n)=p-n!^4, where p is the smallest prime > n!^4+1.	nonn	1..1865	nyi	Frank Buss (fb(AT)frank-buss.de)
+A067365	lambdan	1	n -> { final Z q = FA(n).^(5); return Puma.nextPrimeZ(q.+(1)).-(q); }	a(n) = p-n!^5, where p is the smallest prime > n!^5+1.	nonn	1..1592	nyi	Frank Buss (fb(AT)frank-buss.de)
+A067552	lambdan	0	n -> ZV(ZUtils.digitSum(n)).^(2).-(ZUtils.digitSum(ZV(n).^(2)))	
+A069196	tuptraf	1	(n, s) -> { final Z sum = s[0].+(s[1]); return sum.mod(3) == 0 ? sum./(3) : (!sum.testBit(0) ? sum.divide2() : sum); }	"1,3"	PREVIOUS,PREVIOUS	a(1)=1 a(2)=3 a(n+2)=(a(n+1)+a(n))/3 if (a(n+1)+a(n)==0 (mod 3)); a(n+2)=(a(n+1)+a(n))/2 if (a(n+1)+a(n)==0 (mod 2)); a(n+2)=a(n+1)+a(n) otherwise.	easy,nonn	1..63	nyi	_Benoit Cloitre_
+A069197	tuptraf	1	(n, s) -> { final Z sum = s[0].+(s[1]); return sum.mod(3) == 0 ? sum./(3) : (!sum.testBit(0) ? sum.divide2() : sum); }	"1,4"	PREVIOUS,PREVIOUS	a(1)=1 a(2)=4 a(n+2)=(a(n+1)+a(n))/3 if (a(n+1)+a(n)==0 (mod 3)); a(n+2)=(a(n+1)+a(n))/2 if (a(n+1)+a(n)==0 (mod 2)); a(n+2)=a(n+1)+a(n) otherwise.	easy,nonn	1..58	nyi	_Benoit Cloitre_
+A069198	tuptraf	1	(n, s) -> { final Z sum = s[0].+(s[1]); return sum.mod(3) == 0 ? sum./(3) : (!sum.testBit(0) ? sum.divide2() : sum); }	"1,6"	PREVIOUS,PREVIOUS	a(1)=1 a(2)=6 a(n+2)=(a(n+1)+a(n))/3 if (a(n+1)+a(n)==0 (mod 3)); a(n+2)=(a(n+1)+a(n))/2 if (a(n+1)+a(n)==0 (mod 2)); a(n+2)=a(n+1)+a(n) otherwise.	easy,nonn	1..61	nyi	_Benoit Cloitre_
+A069199	tuptraf	1	(n, s) -> { final Z sum = s[0].+(s[1]); return sum.mod(3) == 0 ? sum./(3) : (!sum.testBit(0) ? sum.divide2() : sum); }	"1,7"	PREVIOUS,PREVIOUS	a(1)=1 a(2)=7 a(n+2)=(a(n+1)+a(n))/3 if (a(n+1)+a(n)==0 (mod 3)); a(n+2)=(a(n+1)+a(n))/2 if (a(n+1)+a(n)==0 (mod 2)); a(n+2)=a(n+1)+a(n) otherwise.	easy,nonn	1..62	nyi	_Benoit Cloitre_
+A069221	tuptraf	1	(n, s) -> new Z(s[0].toString() + s[0].toString()).+(new Z(s[1].toString() + s[1].toString()))	"1,1"	PREVIOUS, PREVIOUS	a(1) = a(2) = 1; a(n) = <>(a(n-1)) + <>(a(n-2)) for n > 2, where <>(k) denotes the concatenation of k with itself.	base,nonn	1..8	nyi	_Joseph L. Pe_
+A069222	tuptraf	1	(n, s) -> new Z(s[0].toString() + ZUtils.reverse(s[0]).toString()).+(new Z(s[1].toString() + ZUtils.reverse(s[1]).toString()))	"1,1"	PREVIOUS, PREVIOUS	a(1) = a(2) = 1; a(n) = <rev>(a(n-1)) + <rev>(a(n-2)) for n > 2, where <rev>(k) denotes the concatenation of k with its reversal.	base,nonn	1..8	nyi	_Joseph L. Pe_
+A069227	tuptraf	1	(n, s) -> { final Z sum = s[0].+(s[1]); final Z b = sum.gcd(Z.FOUR); return sum./(b); }	"1,2"	PREVIOUS,PREVIOUS	a(1)=1, a(2)=2; a(n+2) = (a(n+1) + a(n))/b(n) where b(n) = gcd(a(n+1) + a(n), 4).	nonn	1..10000	nyi	_Benoit Cloitre_
+A069228	tuptraf	1	(n, s) -> { final Z sum = s[0].+(s[1]); final Z b = sum.gcd(Z.FOUR); return sum./(b); }	"1,4"	PREVIOUS,PREVIOUS	a(1)=1, a(2)=4, a(n+2)=(a(n+1)+a(n))/b(n), where b(n)=gcd(a(n+1)+a(n),4).	nonn	1..10000	nyi	_Benoit Cloitre_
+A069255	lambdan	1	n -> Z2(4*n*n - 4*n + 1).+(1)./(Z2(2*n - 1).+(1))	(2^((2*n-1)^2)+1)/(2^(2*n-1)+1)                                                                final Z b = sum.gcd(Z.FOUR); 
+A069598	prepend	1	new A020449()	2,3,5,7
+A069811	lambdan	0	n -> SU(1, n, k -> ZV(Jaguar.factor(k).omega()).square())	nyi Fto	a(n) = Sum_{k=1..n} omega(k)^2
+A069973	lambdan	0	n -> ZV(ZUtils.digitSum(n)).^(3).-(ZUtils.digitSum(ZV(n).^(3)))	(Sum of digits of n)^3 - (sum of digits of n^3).	base,easy,nonn	0..55	nyi	_N. J. A. Sloane_ and _Robert G. Wilson v_
+A069978	lambdan	0	n -> ZV(ZUtils.digitSum(n)).^(4).-(ZUtils.digitSum(ZV(n).^(4)))	(Sum of digits of n)^4 - (sum of digits of n^4).	base,easy,nonn	0..46	nyi	_N. J. A. Sloane_ and _Robert G. Wilson v_
+A069979	lambdan	0	n -> ZV(ZUtils.digitSum(n)).^(5).-(ZUtils.digitSum(ZV(n).^(5)))	(Sum of digits of n)^5 - (sum of digits of n^5).	base,easy,nonn	0..40	nyi	_N. J. A. Sloane_ and _Robert G. Wilson v_
+A069980	lambdan	0	n -> ZV(ZUtils.digitSum(n)).^(6).-(ZUtils.digitSum(ZV(n).^(6)))	(Sum of digits of n)^6 - (sum of digits of n^6).	base,easy,nonn	0..35	nyi	_N. J. A. Sloane_ and _Robert G. Wilson v_
+A070280	tuptraf	1	(n, s) -> s[0].+(ZUtils.digitProduct(n - 1))	"1"	PREVIOUS	a(1) = 1; a(n) = a(n-1) + product of the digits of n-1.	base,nonn	1..1000	nyi	_Joseph L. Pe_
+A070282	tuptraf	1	(n, s) -> ZV(ZUtils.digitSum(s[0])).^(ZUtils.digitSum(s[1]))	"1,2"	PREVIOUS,PREVIOUS	a(1) = 1; a(2) = 2; a(n) = [sum of digits of a(n-1)]^[sum of digits of a(n-2)] for n > 2.	base,nonn	1..10	nyi	_Joseph L. Pe_
+A070283	tuptraf	1	(n, s) -> ZUtils.digitProduct(s[0]).^(ZUtils.digitProduct(s[1]))	"1,2"	PREVIOUS,PREVIOUS	a(1) = 1; a(2) = 2; a(n) = [product of digits of a(n-1)]^[product of digits of a(n-2)] for n > 2.	base,nonn	1..7	nyi	_Joseph L. Pe_
+A070312	tuptraf	1	(n, s) -> s[0].+(new Z(s[1].toString() + s[0].toString()))	"1,1"	PREVIOUS, PREVIOUS	a(n) = a(n-1) + concatenation of a(n-2) and a(n-1).	base,nonn	1..16	nyi	_Joseph L. Pe_
+A071421	tuptraf	1	(n, s) -> s[0].+(ZUtils.digitSum(ZV(n).^(n)))	"1"	PREVIOUS	a(n) = a(n-1) + sum of decimal digits of n^n.	base,easy,nonn	1..1000	nyi	_Labos Elemer_
+A071423	tuptraf	1	(n, s) -> s[0].+(Z2(n).toString().length())	"1"	PREVIOUS	a(n) = a(n-1) + number of decimal digits of 2^n. Number of decimal digits of concatenation of first n powers of 2.	easy,nonn,base	1..58	nyi	_Labos Elemer_
+A071424	tuptraf	1	(n, s) -> s[0].+(FA(n).toString().length())	"1"	PREVIOUS	a(n) = a(n-1) + number of decimal digits of n!. Number of decimal digits of concatenation of first n factorials.	easy,nonn,base	1..53	nyi	_Labos Elemer_
+A072210	tuptraf	1	(n, s) -> ZUtils.reverse(ZUtils.reverse(s[0]).+(ZUtils.reverse(s[1])))	"1,1"	PREVIOUS, PREVIOUS		a(1)=a(2)=1; a(n)=reverse(reverse(a(n-1))+reverse(a(n-2))) for n > 2.	base,nonn	1..1000	nyi	_Joseph L. Pe_
+
+A072222	tuptraf	1	(n, s) -> ZV(n - 1).-(s[1]).abs().modZ(n).+(ZV(n - 1).-(s[0]).abs().modZ(n - 1))	"1,1"	PREVIOUS,PREVIOUS	a(n) = (abs(n-1-a(n-2)) mod n) + (abs(n-1-a(n-1)) mod (n-1)), a(0) = 1, a(1) = 1.	nonn,easy	0..73	nyi	_Roger L. Bagula_
+
+A072388	tuptraf	1	(n, s) -> Puma.primeZ(n + 1).+(Puma.primeZ(n)).+(s[0])./(3)	"1"	PREVIOUS		a(0) = 1; for n > 0, a(n) = floor((prime(n+1) + prime(n) + a(n-1))/3).	nonn	0..59	nyi	_Roger L. Bagula_
+A072452	tuptraf	1	(n, s) -> ZUtils.reverse(s[0].+(n))	"0"	PREVIOUS	a(n) = reversal(a(n-1)+n) for n>0, a(0) = 0.	nonn,base,look	0..10000	nyi	_Reinhard Zumkeller_
+A072486	tuptraf	1	(n, s) -> s[0].*(Jaguar.factor(n).leastPrimeFactor())	"1"	PREVIOUS	a(1) = 1, a(n) = a(n-1) times smallest prime factor of n.	nonn	1..1000	nyi	_Amarnath Murthy_
+A072713	tuptraf	1	(n, s) -> s[0].*(s[1]).*(s[2]).*(s[3]).+(1)./(s[4])	"1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(1)=a(2)=a(3)=a(4)=a(5)=1; for n>5, a(n)*a(n-5) = a(n-1)*a(n-2)*a(n-3)*a(n-4)+1.	nonn	1..19	nyi	_Benoit Cloitre_
+A072876	tuptraf	1	(n, s) -> s[0].*(s[2]).+(s[1].^(3))./(s[3])	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(1) = a(2) = a(3) = a(4) = 1 and a(n) = (a(n-1)*a(n-3) + a(n-2)^3)/a(n-4) for n >= 5.	easy,nonn	1..21	nyi	_Benoit Cloitre_
+A072877	tuptraf	1	(n, s) -> s[0].*(s[2]).+(s[1].^(4))./(s[3])	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(1) = a(2) = a(3) = a(4) = 1; a(n) = (a(n-1)*a(n-3) + a(n-2)^4)/a(n-4).	easy,nonn	1..17	nyi	_Benoit Cloitre_
+A072987	tuptraf	1	(n, s) -> s[0].modZ(n - 1).+(s[1].modZ(n - 2))	"1,1"	PREVIOUS,PREVIOUS	FIBMOD numbers: a(1) = a(2) = 1, a(n) = a(n-1) mod (n-1) + a(n-2) mod (n-2).	easy,nonn	1..10000	nyi	_Benoit Cloitre_
+A073587	tuptraf	1	(n, s) -> s[0].*(Z2(n)).+(1)	"1"	PREVIOUS	a(n) = a(n-1)*2^n + 1 where a(0)=1.	easy,nonn	0..15	nyi	_Felice Russo_
+A073589	tuptraf	1	(n, s) -> s[0].square().*(Z2(n)).-(1)	"1"	PREVIOUS	a(n) = a(n-1)^2*2^n-1 where a(0)=1.	easy,nonn	0..8	nyi	_Felice Russo_
+A074171	tuptraf	1	(n, s) -> s[0].+(s[0].isProbablePrime() ? -n : n)	"1"	PREVIOUS	a(1) = 1. For n >= 2, a(n) is either a(n-1)+n or a(n-1)-n; we only use the minus sign if a(n-1) is prime. E.g. since a(2)=3 is prime, a(3)=a(2)-3=0.	easy,nonn	1..54	nyi	_Amarnath Murthy_
+A074367	simtraf	1	new A000040().skip()	v -> v.^(2).-(5)./(4)	(p^2-5)/4 for odd primes p.	nonn,easy	1..46	nyi	_Roger L. Bagula_
+A074371	tuptraf	1	(n, s) -> s[0].+(Jaguar.factor(s[1]).sigma())	"1,1"	PREVIOUS,PREVIOUS	Sigmabonacci numbers: a(n)=a(n-1)+Sigma(a(n-2)). Sigma(n)=Sum of divisors of n.	easy,nonn	1..35	nyi	_Miklos Kristof_
+A074374	simtraf	1	new PrependSequence(0, new A001414(), 0)	v -> v.*(v.+(1))./(2)	s(s+1)/2 where s is the sum of the prime factors of n (with repetition).	easy,nonn	0..60	nyi	_W. Neville Holmes_
+A074375	simtraf	1	new A001414()	v -> v.*(v.+(3))./(2)	s(s+3)/2 where s is the sum of the prime factors of n (with repetition).	easy,nonn	1..60	nyi	_W. Neville Holmes_
+A074376	simtraf	1	new A001414()	v -> v.*(v.*(3).-(1))./(2)	s(3s-1)/2 where s is the sum of the prime factors of n (with repetition).	easy,nonn	1..1000	nyi	_W. Neville Holmes_
+A074487	tuptraf	1	(n, s) -> s[0].+(1).^(2).*(2).-(s[0])	"1"	PREVIOUS	a(1)=1, a(n) = 2*(a(n-1)+1)^2-a(n-1).	easy,nonn	1..8	nyi	_Zak Seidov_
+A074488	tuptraf	1	(n, s) -> s[0].+(1).^(3).*(2).-(s[0])	"1"	PREVIOUS	a(1)=1, a(n) = 2*(a(n-1)+1)^3-a(n-1).	easy,nonn	1..6	nyi	_Zak Seidov_
+A074693	tuptraf	1	(n, s) -> s[0].+(Jaguar.factor(s[0]).phi())	"1"	PREVIOUS	a(1) = 1, a(n) = a(n-1) + phi(a(n-1)).	easy,nonn	1..500	nyi	_Benoit Cloitre_
+A074702	tuptraf	1	(n, s) -> s[0].*(n - 1).*(n + 1).*(n + 1).+(Z_1(n + 1))./(n)	"1"	PREVIOUS	a(n) = ((n+1)^2*(n-1)*a(n-1)+(-1)^(n+1))/n.	easy,nonn	1..252	nyi	_Vladeta Jovovic_
+A074858	tuptraf	1	(n, s) -> s[0].+(s[1]).+(RR(s[2]))	"1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n) = a(n-1) + a(n-2) + R(a(n-3)) where a(0) = a(1) = a(2) = 1 and R(n) (A004086) means the reverse of n.	easy,nonn,base	0..1000	nyi	_Felice Russo_
+A074860	tuptraf	1	(n, s) -> s[0].+(RR(s[1])).+(RR(s[2]))	"1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n) = a(n-1) + R(a(n-2)) + R(a(n-3)) where a(0)=a(1)=a(2)=1 and R(k) = A004086(k) is the reverse of k.	easy,base,nonn	0..33	nyi	_Felice Russo_
+A074862	tuptraf	1	(n, s) -> RR(s[0]).+(RR(s[1])).+(RR(s[2])).+(RR(s[3]))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = R[a(n-1)]+R[a(n-2)]+R[(a(n-3)]+R[a(n-4)] where a(1)=a(2)=a(3)=a(4)=1 and R(n) (A004086) is the reverse of n.	easy,base,nonn	1..1000	nyi	_Felice Russo_
+A074863	tuptraf	1	(n, s) -> s[0].+(s[1]).+(s[2]).+(RR(s[3]))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = a(n-1) + a(n-2) + a(n-3) + R(a(n-4)) where a(0)=a(1)=a(2)=a(3)=1 and R(n) (A004086) is the reverse of n.	easy,base,nonn	0..1000	nyi	_Felice Russo_
+A074864	tuptraf	1	(n, s) -> s[0].+(s[1]).+(RR(s[2])).+(RR(s[3]))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = a(n-1) + a(n-2) + R(a(n-3)) + R(a(n-4)) where a(1)=a(2)=a(3)=a(4)=1 and R(n) (A004086) is the reverse of n.	easy,base,nonn	1..1000	nyi	_Felice Russo_
+A074865	tuptraf	1	(n, s) -> s[0].+(RR(s[1])).+(RR(s[2])).+(RR(s[3]))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = a(n-1) + R(a(n-2)) + R(a(n-3)) + R(a(n-4)) where a(1) = a(2) = a(3) = a(4) = 1 and R(n) (A004086) is the reverse of n.	easy,base,nonn	1..33	nyi	_Felice Russo_
+A075694	tuptraf	1	(n, s) -> Puma.nextPrimeZ(s[0]).*(2).-(s[0])	"1"	PREVIOUS	a(1)=1, a(n) = 2 nextprime(a(n-1))-a(n-1).	easy,nonn	1..10000	nyi	_Zak Seidov_
+A075695	tuptraf	1	(n, s) -> Puma.nextPrimeZ(Puma.nextPrimeZ(s[0])).*(2).-(s[0])	"1"	PREVIOUS	a(1)=1, a(n) = 2*nextprime(nextprime(a(n-1))) - a(n-1).	easy,nonn	1..10000	nyi	_Zak Seidov_
+A075849	tuptraf	1	(n, s) -> FA(s[0]).+(s[1])	"1,1"	PREVIOUS,PREVIOUS	a(1) = a(2) = 1; a(n) = a(n-1)! + a(n-2) for n > 2.	nonn	1..6	nyi	_Joseph L. Pe_
+A075883	tuptraf	1	(n, s) -> s[0].+(FA(s[1]))	"1,1"	PREVIOUS,PREVIOUS	a(1) = a(2) = 1; a(n) = a(n-1) + a(n-2)! for n > 2.	nonn	1..8	nyi	_Joseph L. Pe_
+A076208	filtpos	1	1	new LambdaSequence(1, n -> FD(n).+(FD(n + 1)).+(1)./(2))	PRIME	Numbers n such that (n!!+(n+1)!!+1)/2 is prime.	nonn	1..17	nyi	_Zak Seidov_
+A076209	filtpos	1	1	new LambdaSequence(1, n -> FD(n).+(FD(n + 1)).-(1)./(2))	PRIME	Numbers n such that (n!!+(n+1)!!-1)/2 is prime.	nonn	1..15	nyi	_Zak Seidov_
+A076210	filtpos	1	1	new LambdaSequence(1, n -> FD(n).negate().+(FD(n + 1)).+(1)./(2))	PRIME	Numbers n such that (-n!!+(n+1)!!+1)/2 is prime.	nonn	1..13	nyi	_Zak Seidov_
+A076211	filtpos	1	1	new LambdaSequence(1, n -> FD(n).negate().+(FD(n + 1)).-(1)./(2))	PRIME	Numbers n such that (-n!!+(n+1)!!-1)/2 is prime.	nonn	1..15	nyi	_Zak Seidov_
+A076217	tuptraf	1	(n, s) -> s[0].+(ZV(n).*(ZV(n).-(s[0]).signum()))	"1"	PREVIOUS	a(1)=1, a(n) = a(n-1) + n * (sign(n-a(n-1)).	nice,nonn,look	1..10000	nyi	_Benoit Cloitre_
+A076466	tuptraf	1	(n, s) -> s[0].+((s[0]).*(s[0].testBit(0) ? s[0].negate() : s[0]).modZ(n))	"1"	PREVIOUS	a(1)=1 a(n) = a(n-1) + ((-1)^a(n-1)*a(n-1)) mod n.	nonn	1..57	nyi	_Benoit Cloitre_
+A076560	tuptraf	1	(n, s) -> Jaguar.factor(s[0].+(n)).largestPrimeFactor()	"1"	PREVIOUS	a(1)=1; a(n>1)= greatest prime divisor of (a(n-1) + n).	easy,nonn	1..1000	nyi	_Zak Seidov_
+A076561	tuptraf	1	(n, s) -> Jaguar.factor(s[0].+(n)).largestPrimeFactor()	"2"	PREVIOUS	a(1)=2; a(n>1)= greatest prime divisor of {a(n-1) + n}.	easy,nonn	1..1000	nyi	_Zak Seidov_
+A076562	tuptraf	1	(n, s) -> Jaguar.factor(s[0].+(n)).largestPrimeFactor()	"3"	PREVIOUS	a(1)=3; a(n>1)= greatest prime divisor of a(n-1) + n.	easy,nonn	1..1000	nyi	_Zak Seidov_
+A076601	tuptraf	1	(n, s) -> s[0].testBit(0) ? s[0].^(2).-(1)./(2) : s[0].+(1)	"3"	PREVIOUS	a(1)=3, a(n_even)=(a(n-1)^2-1)/2; a(n_odd)=a(n-1)+1.	easy,nonn	1..17	nyi	_Zak Seidov_
+A076602	tuptraf	1	(n, s) -> s[0].testBit(0) ? s[0].^(2).-(1)./(2) : s[0].+(1)	"7"	PREVIOUS	a(1)=7, a(n_even)=(a(n-1)^2-1)/2; a(n_odd)=a(n-1)+1.	easy,nonn	1..14	nyi	_Zak Seidov_
+A076603	tuptraf	1	(n, s) -> s[0].testBit(0) ? s[0].^(2).-(1)./(2) : s[0].+(1)	"9"	PREVIOUS	a(1)=9, a(n_even)=(a(n-1)^2-1)/2; a(n_odd)=a(n-1)+1.	easy,nonn	1..13	nyi	_Zak Seidov_
+A076604	tuptraf	1	(n, s) -> s[0].testBit(0) ? s[0].^(2).-(1)./(2) : s[0].+(1)	"11"	PREVIOUS	a(1)=11, a(n_even) = (a(n-1)^2-1)/2; a(n_odd) = a(n-1)+1.	easy,nonn	1..12	nyi	_Zak Seidov_
+A076725	tuptraf	0	(n, s) -> s[0].^(2).+(s[1].^(4))	"1,1"	PREVIOUS,PREVIOUS	a(n) = a(n-1)^2 + a(n-2)^4, a(0) = a(1) = 1.	nonn,nice	0..13	nyi	_Michael Somos_
+A076740	tuptraf	0	(n, s) -> s[0].^(2).*(2).-(s[1].^(2))	"0,1"	PREVIOUS,PREVIOUS	a(n) = 2*a(n-1)^2 - a(n-2)^2 with a(0)=0, a(1)=1.	nonn	0..12	nyi	_Jon Perry_
+A077653	tuptraf	1	(n, s) -> s[0].-(s[1]).-(s[2]).abs()	"1,2,2"	PREVIOUS,PREVIOUS,PREVIOUS	a(1)=1, a(2)=2, a(3)=2, a(n) = abs(a(n-1)-a(n-2)-a(n-3)).	nonn	1..10000	nyi	_Benoit Cloitre_
+A078589	tuptraf	1	(n, s) -> s[0].-(s[1]).-(n - 1).abs()	"0,1"	PREVIOUS,PREVIOUS	a(1)=0, a(2)=1, a(n) = abs(abs(a(n-1)) - a(n-2) - n + 1).	nonn	1..10000	nyi	_Benoit Cloitre_
+A078696	tuptraf	1	(n, s) -> s[1].testBit(0) ? s[0].+(s[1]) : s[0].+(s[1])./(2)	"1,1"	PREVIOUS,PREVIOUS	a(n+1)=a(n)+a(n-1) if a(n-1) odd, a(n+1)=a(n)+a(n-1)/2 if a(n-1) even.	easy,nonn	1..1000	nyi	_Miklos Kristof_
+A078918	tuptraf	1	(n, s) -> s[0].+(s[2]).*(s[1])./(s[3])	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = (a(n-1) + a(n-3)) * a(n-2) / a(n-4). a(1) = a(2) = a(3) = a(4) = 1.	nonn	1..18	nyi	_Benoit Cloitre_
+A160567	tuptraf	1	(n, s) -> s[0].*(s[2]).-(s[1].^(2)).*(4)./(s[3])	"1,1,1,-4"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=4*(a(n-1)a(n-3)-a(n-2)^2)/a(n-4), a(1)=a(2)=a(3)=1, a(4)=-4.
+A160569	tuptraf	1	(n, s) -> s[0].*(s[2]).-(s[1].^(2)).*(9)./(s[3])	"1,1,1,-9"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=9*(a(n-1)a(n-3)-a(n-2)^2)/a(n-4), a(1)=a(2)=a(3)=1, a(4)=-9.
+A259828	tuptraf	1	(n, s) -> Jaguar.factor(s[0].*(s[1]).+(1)).largestPrimeFactor()	"2,2"	PREVIOUS,PREVIOUS	a(1)=a(2)=2; thereafter, a(n)=gpf(1+a(n-1)a(n-2)), where gpf is greatest prime factor.
+

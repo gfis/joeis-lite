@@ -1,0 +1,10 @@
+A072206	lambdan	0	n -> { final long m = Puma.prime(n) - 1; return Z.valueOf(m).pow(3).+(m*5).+(6)./(6); }	a(n) = (n^3+5*n+6)/6, for n+1 prime, so a(n) = A000125(A006093(n))
+A071403	filtpos	1	1	new A005117()	PRIME	Which squarefree number is prime? a(n)-th squarefree number equals n-th prime.
+
+A084052	simtraf	5	new A004093().skip(5)	v -> v.testBit(0) ? Z.ONE : Z.ZERO	A000035(A004093(n)). - _Michel Marcus_, Nov 14 2022						2*n digit-reversed mod 2.
+A091871	simtraf	1	new A091633()	v -> Puma.primePiZ(v)	A049084(A091633(n)). - _Reinhard Zumkeller_, Jul 18 2014						A091633 indexed by A000040.
+A092386	simtraf	0	new A056221()	v -> Jaguar.factor(v).largestPrimeFactor().abs()	A006530(A056221(n)).						Let p(n) = n-th prime; a(n) = largest prime factor of (p(n+1)^2 - p(n)*p(n+2)).
+A113511	lambdan	0	n -> Integers.SINGLETON.product(0, n*(n + 1) / 2, k -> Puma.primeZ(k))	A002110(A000217(n)). - _Franklin T. Adams-Watters_, Mar 17 2007	
+A114469	lambdan	0	n -> ZV(Fibonacci.lucas((long) Math.pow(10L, n)).toString().length())	A055642(A000032(n)). - _Michel Marcus_, Jan 24 2018						
+A117394	lambdan	0	n -> Integers.SINGLETON.product(0, FI(n).intValueExact(), k -> Puma.primeZ(k))	A002110(A000045(n)). - _Alois P. Heinz_, Apr 02 2021
+

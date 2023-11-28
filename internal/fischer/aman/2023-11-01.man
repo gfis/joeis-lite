@@ -1,0 +1,29 @@
+#N A139351	sequence gives e(n).
+#N A139352	sequence gives o(n).
+#N A139353	sequence gives e(n)*o(n).
+#N A139354	sequence gives min{e(n), o(n)}.
+#N A139355	sequence gives max{e(n), o(n)}.
+%N A139370	sequence lists n such that e(n) < o(n).
+%N A139371	sequence lists n such that e(n) <= o(n).
+%N A139372	sequence lists n such that e(n) >= o(n).
+%N A139373	sequence lists n such that e(n) > o(n).
+%N A152810	sequence gives odd n such that e(n) > o(n) and e(n)-o(n) == 1 or 2
+# A090858	convprod	0	1,1	new SimpleTransformSequence(0, new A048272(), v -> Z.ONE.subtract(v)), new A000009()	a(n) = A036469(n) - A015723(n).
+# A117956	convprod	0	1,1	new A001227(), new A183063()
+# A126246	triprov	0	A054523(), new A019590()
+# A134378	triprov	0	new A084938(), new A000027()	
+
+A054586	lambdan	0	n -> Integers.SINGLETON.sumdiv(2*n + 1, d -> { final FactorSequence fs = Jaguar.factor(d); return fs.phi().multiply(fs.mobius()); })	a(n) = Sum_{d|2n+1} phi(d)*mu(d).	
+A099991	lambdan	1	n -> Z.valueOf(Mobius.mobius(2L * n))	"0"	
+A140580	simtraf	0	new A014963()	(n, v) -> v.*(n)	a(n) = (n^2)/A048671(n), = n*A014963(n)
+A144155	trilambn	0	0	0	(n, k) -> BellNumbers.bell(n - k).multiply(BellNumbers.bell(k))	Bell convolution triangle, T(n,k) = A000110(n-k)*A000110(k)
+A147843	simtraf	0	new A010815()	(n, v) -> v.*(-n) 	a(n) = -n*A010815(n).
+A151555	convprod	0	1,-1	new A153006().skip(1), new A151575()
+A153582	convprod	0	1,-1	new A024581(), new A000027()
+A160704	convprod	0	1,1	new A001045().skip(1), new A139251().skip(1)	Jacobsthal sequence A001045 convolved with A139251 (first differences of toothpick numbers).
+A179906	convprod	0	1,1	new A000041(), new PrependSequence(0, new A000041().skip(1), 1, 0)	(1, 1, 2, 3, 5, 7, 11, ...) convolved with (1, 0, 1, 2, 3, 5, 7, 11, ...)
+A218277	lambdan	0	n -> { final int m = 3; return Integers.SINGLETON.sum(1, (n - 1) / m, k -> Jaguar.factor(k).sigma(1).multiply(Jaguar.factor(n - m * k).sigma(1))); }
+A218278	lambdan	0	n -> { final int m = 4; return Integers.SINGLETON.sum(1, (n - 1) / m, k -> Jaguar.factor(k).sigma(1).multiply(Jaguar.factor(n - m * k).sigma(1))); }
+A265844	convprod	0	1,1	new A092484(), new A077335()
+A318767	convprod	0	1,1	new A129373(), new A129374()
+A346193	lambdan	0	n -> { final int m = 5; return Integers.SINGLETON.sum(1, (n - 1) / m, k -> Jaguar.factor(k).sigma(1).multiply(Jaguar.factor(n - m * k).sigma(1))); }

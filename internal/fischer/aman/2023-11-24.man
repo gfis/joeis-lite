@@ -1,0 +1,29 @@
+A122175	trilambn	0	0	0	(n, k) -> BI(k*(k+1)/2 + n-k, n-k)	 T(n,k) = C( k*(k+1)/2 + n-k, n-k) for n>=k>=0.	nonn,tabl	0..68	nyi	_Paul D. Hanna_
+A122176	trilambn	0	0	0	(n, k) -> BI(k*(k+1)/2 + n-k + 1, n-k)	T(n,k) = C( k*(k+1)/2 + n-k + 1, n-k) for n>=k>=0.	nonn,tabl	0..10000	nyi	_Paul D. Hanna_
+A122177	trilambn	0	0	0	(n, k) -> BI(k*(k+1)/2 + n-k + 2, n-k)	T(n,k) = C( k*(k+1)/2 + n-k + 2, n-k) for n>=k>=0.	nonn,tabl	0..60	nyi	_Paul D. Hanna_
+A122178	trilambn	0	0	0	(n, k) -> BI(n*(n+1)/2 + n-k - 1, n-k)	T(n,k) = C( n*(n+1)/2 + n-k - 1, n-k), for n>=k>=0.	nonn,tabl	0..45	nyi	_Paul D. Hanna_
+A123316	trilambn	0	1	1	(n, k) -> FA(n).*(k + 1)./(2)	T(n,k)=(k+1)*n!/2 (1<=k<=n).	nonn,tabl	1..41	nyi	_Roger L. Bagula_
+A123516	trilambn	0	0	0	(n, k) -> { final Z t = BI(n, k).*(BI(2*k, k)).*(FA(n)).*(Z_1(k)); return n >= 2*k ? t.*(Z2(n - 2*k)) : t./(Z2(2*k - n)); }	Triangle read by rows: T(n,k) = (-1)^k * n! * 2^(n-2*k) * binomial(n,k) * binomial(2*k,k) (0<=k<=n).	sign,tabl	0..40	nyi	_Emeric Deutsch_
+A123961	trilambn	0	0	0	(n, k) -> ZV(k*k).*(ZV(n+1).^(2)).-(4*n)	T(n, k) = k^2*(1+n)^2 - 4*n, read by rows.	tabl,sign	0..5150	nyi	_Roger L. Bagula_
+A123963	trilambn	0	0	0	(n, k) -> ZV(k).^(4).-(ZV(n).^(4)).+(Z.ONE.-(ZV(k*k).*(n*n)).*(2*k*n))	T(n, k) = k^4 - n^4 + 2*k*n*(1 - k^2*n^2), read by rows.	sign	0..100	nyi	_Roger L. Bagula_
+
+
+A238181	decexp	0	() -> CR.SEVEN./(CR.TWO).*(ZE(5)).-(ZE(2).*(ZE(3)))	Decimal expansion of sum_(n>=1) H(n)^2/n^3 where H(n) is the n-th harmonic number (Quadratic Euler Sum S(2,3)). nonn,cons       1..100  nyi
+A238182	decexp	0	() -> CV(97)./(CV(24)).*(ZE(6)).-(CR.TWO.*(ZE(3).^(2)))	Decimal expansion of sum_(n>=1) H(n)^2/n^4 where H(n) is the n-th harmonic number (Quadratic Euler Sum S(2,4)). nonn,cons       1..100  nyi
+A241215	decexp	0	() -> CV(37)./(CR.TWO).*(ZE(3)).*(ZE(4)).-(CR.FIVE.*(ZE(2)).*(ZE(5))).-(CV(109)./(CR.EIGHT).*(ZE(7)))	Decimal expansion of sum_(n>=1) H(n)^4/(n+1)^3 where H(n) is the n-th harmonic number.  nonn,cons       1..100  nyi     _Jean-Fran?ois Alcove
+A241753	decexp	0	() -> CV(11).*(CR.PI.pow(4))./(CV(360))	Decimal expansion of sum_(n=1..infinity) (H(n)/(n+1))^2, where H(n) is the n-th harmonic number.        nonn,cons       1..100  nyi     _Jean
+A244664	decexp	0	() -> CR.SEVEN.*(ZE(4))./(CR.FOUR)	Decimal expansion of sum_(n>=1) (H(n,2)/n^2) where H(n,2) = A007406(n)/A007407(n) is the n-th harmonic number of order 2.       nonn,cons
+A244665	decexp	0	() -> CR.HALF.*(ZE(3).^(2)).+(CR.HALF.*(ZE(6)))	Decimal expansion of sum_(n>=1) (H(n,3)/n^3) where H(n,3) = A007408(n)/A007409(n) is the n-th harmonic number of order 3.       nonn,cons
+A260272	decexp	0	() -> CV(37)./(CV(22680)).*(CR.PI.^(6)).-(ZE(3).^(2))	Decimal expansion of Sum_{n>=1} H(n)^2/(n+1)^4, where H(n) is the n-th harmonic number. nonn,cons,easy  0..104  nyi     _Jean-Fran?ois Alcove
+
+A124098	filter	0	new A000040()	p -> p.*(3).+(4).isProbablePrime() && p.*(3).-(4).isProbablePrime()	Primes p such that 3p -+ 4 are primes.	nonn	1..49	nyi	_Zak Seidov_
+A124138	tuptraf	1	(n, s) -> s[0].+(s[1]).*(3)./(2).+(1).makeOdd()	"1,3"	PREVIOUS,PREVIOUS	a(n)= A000265(3*(a(n-1)+a(n-2))/2 +1) starting at a(1)=1, a(2)=3.	nonn	1..42	nyi	_Yasutoshi Kohmoto_
+
+--- still:
+A123581	tuptraf	1	(n, s) -> s[0].+(Jaguar.factor(s[0]).largestPrimeFactor())	"3"	PREVIOUS	a(1) = 3, a(n) = a(n-1) + greatest prime factor of a(n-1).	nonn,easy	1..10000	nyi	_Ben Paul Thurston_
+A124096	filter	0	new A000040()	p -> FI(p.intValueExact() + 1)./(3).isProbablePrime()	Primes p that divide Fibonacci[(p+1)/3].	nonn	1..1000	nyi	_Alexander Adamchuk_
+A124108	lambdan	0	n -> new Z(Z.valueOf(n).toString(2).replaceAll("1", "10"))	Replace each 1 with 10 in binary representation of n.	nonn	0..10000	nyi	_Reinhard Zumkeller_
+A123964	trilambn	0	0	0	(n, k) -> ZV(k).^(6).-(ZV(n).^(6)).-(ZV(n*k).^(2)).*(Z.FIVE.*(ZV(n*k).^(2)).*(n*n - k*k)).+(ZV(n*k).^(4).-(1).*(4*n*k))	T(n, k) = k^6 - n^6 - 5*(n*k)^2*(n^2 - k^2) + 4*n*k*((n*k)^4 - 1), read by rows.	sign,tabl,easy	0..50	nyi	_Roger L. Bagula_
+A137716	dirtraf	0	new A055642()	new A050920()	
+A137811	dirtraf	0	new A055642()	new A050918()	
+A238183	decexp	0	() -> ZE(3).^(3)./(CR.THREE).-(CR.FIVE./(CR.TWO.*(ZE(4)).*(ZE(5)))).-(CR.SEVEN./(CR.TWO).*(ZE(3)).*(ZE(6))).-(ZE(2).*(ZE(7))).+(CV(55)./(CR.SIX).*(ZE(9)))	Decimal expansion of sum_(n>=1) H(n)^2/n^7 where H(n) is the n-th harmonic number (Quadratic Euler Sum S(2,7)). nonn,cons       1..100  nyi

@@ -1,0 +1,49 @@
+  # a(n) = 5*hypergeom([-n, -n, 1 + n, 1 + n], [1, 1, 1], 1) - 2*hypergeom([1 + n, -n, -n], [1, 1], 1).
+# fail-why? A227473	hypergeon	0	2	1	"[[1/2,1],[1],[3,1],[-3]]"	""	(n, v) -> v.num().divide(2)	For denominator/27 of hypergeom([n+1/2,1],[n+3],-3) see €227474
+# fail-why? A227474	hypergeon	0	2	1	"[[1/2,1],[1],[3,1],[-3]]"	""	(n, v) -> v.den().divide(27)	Denominator/27 of hypergeom([n+1/2,1],[n+3],-3).
+# too long A357957	hypergeon	0	4	3	"[[0,-1],[0,-1],[1,1],[1,1],[1],[1],[1],[1]]"	""	(n, v) -> v.pow(5).num()	a := n -> hypergeom([-n, -n, 1 + n, 1 + n], [1, 1, 1], 1)^5 - hypergeom([1 + n, -n, -n], [1, 1], 1)^2: seq(simplify(a(n)), n=0..8); # _Peter Luschny_, Nov 01 2022
+#A287699	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	a(n) = (n!)^3 * [x^n] hypergeom([], [1, 1], x)^4.
+#A287699	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	€287699_list := proc(len) series(hypergeom([], [1, 1], x)^4, x, len);
+#A295871	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	a(n) = numerator(hypergeom([-n, 1/2], [1], 1)*hypergeom([-floor(n/2), (-1)^n/2], [1], 1)).
+#A298608	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	p(n, x) = binomial(2*n,n)*(hypergeom([-n,-n], [-n+1/2], 1/2-x/4) + ((n-1)/(n+1))* hypergeom([-n+1,-n-1], [-n+1/2], 1/2-x/4))) for n >= 1.
+#A298608	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	€298608Poly := n -> `if`(n=0, 1, binomial(2*n, n)*(hypergeom([-n, -n], [-n+1/2], 1/2-x/4) + ((n-1)/(n+1))*hypergeom([-n+1, -n-1], [-n+1/2], 1/2-x/4))):
+#A298609	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	p(n, x) = Catalan(n)*(n-1)*hypergeom([1-n, -n-1], [-n+1/2], 1/2-x/4) for n >= 2.
+#A298609	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	€298609Poly := n -> `if`(n<=1, 0, binomial(2*n, n)*((n-1)/(n+1))*hypergeom([1-n, -n-1], [-n+1/2], 1/2-x/4)):
+#A343580	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	a(n) = ((-1)^floor(n/2)*n!/floor(n/2)!)*hypergeom([n + 1, -floor(n/2)], [1], 1).
+#A344394	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	a(n) = binomial(n, n/2 - 1/4 + (-1)^n/4)*hypergeom([-n/4 - 1/8 + (-1)^n/8, -n/4 + 3/8 + (-1)^n/8], [n/2 + 7/4 + (-1)^n/4], 4).
+#A355722	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	n := 2: seq(coeff(series( hypergeom([n+1/2, 1], [], 2*x)/hypergeom([n-1/2, 1], [], 2*x ), x, 21), x, k), k = 0..20);
+#A355723	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	n := 3: seq(coeff(series( hypergeom([n+1/2, 1], [], 2*x)/hypergeom([n-1/2, 1], [], 2*x ), x, 21), x, k), k = 0..20);
+#A355724	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	n := 4: seq(coeff(series( hypergeom([n+1/2, 1], [], 2*x)/hypergeom([n-1/2, 1], [], 2*x ), x, 21), x, k), k = 0..20);
+#A355725	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	n := 5: seq(coeff(series( hypergeom([n+1/2, 1], [], 2*x)/hypergeom([n-1/2, 1], [], 2*x ), x, 21), x, k), k = 0..20);
+#A355794	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	n := 1: seq(coeff(series( hypergeom([n+2/3, 1], [], 3*x)/hypergeom([n-1/3, 1], [], 3*x ), x, 21), x, k), k = 0..20);
+#A355795	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	n := 2: seq(coeff(series( hypergeom([n+2/3, 1], [], 3*x)/hypergeom([n-1/3, 1], [], 3*x ), x, 21), x, k), k = 0..20);
+#A355796	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	n := 3: seq(coeff(series( hypergeom([n+2/3, 1], [], 3*x)/hypergeom([n-1/3, 1], [], 3*x ), x, 21), x, k), k = 0..20);
+#A355797	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	n := 4: seq(coeff(series( hypergeom([n+2/3, 1], [], 3*x)/hypergeom([n-1/3, 1], [], 3*x ), x, 21), x, k), k = 0..20);
+#A357956	hypergeon	0	1	1	"[[0,-1],[0,-1],[1,1],[1,1],[1],[1],[1],[1]]"	""	(n, v) -> v.*(5).num()	
+#A357957	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	a(n) = hypergeom([-n, -n, 1 + n, 1 + n], [1, 1, 1], 1)^5 - hypergeom([1 + n, -n, -n], [1, 1], 1)^2. - _Peter Luschny_, Nov 01 2022
+#A358502	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	p := (n,x) -> hypergeom([-x, -x, -n], [-x - n, -x - n], 1)*mul((j + x)^2, j=1..n): for n from 0 to 7 do seq(coeff(simplify(p(n,x)), x, k), k = 0..n) od;
+#A359066	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	a := n -> binomial(n-1, floor((n-1)/2))*hypergeom([-n, ceil((1-n)/2)], [1-n], -1);
+#A359067	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	a := n -> if irem(n - 1, 2) = 1 then binomial(n, n/2 - 1)*hypergeom([n/2 + 1, -n/2 + 1], [n/2 + 2], -1) else binomial(n + 1, n/2 + 1/2)*hypergeom([n/2 + 1/2, -n/2 + 1/2], [n/2 + 3/2], -1)/2 - binomial(n - 2, n/2 - 1/2) fi:
+#A359364	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	p := n -> hypergeom([(1 - n)/2, -n/2], [2], (2*x)^2):
+#A361528	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	a(n) = (n + 2)!*hypergeom([1 - n], [3], -3) / 6) for n >= 1. - _Peter Luschny_, Mar 23 2023
+#A363418	hypergeon	0	1	1	"[[1],[1],[1]]"	""	(n, v) -> v.num()	seq(print(seq(simplify(2*k*hypergeom([1 - k, 1 - n*k], [2], 2)), k = 1..10)), n = 1..10);
+
+A178694	hypergeon	0	2	1	"[[0,-1/2],[1/2,-1/2],[1],[5]]"	""	(n, v) -> v.*(new Q(Z.ONE, Z2(n))).num()	a(n) = numerator(1/2^n*hypergeom([-n/2,(1-n)/2],[1],5)). - _Gerry Martens_, Sep 24 2023
+A260832	hypergeon	0	3	2	"[[1/2],[1/2],[0,-1],[1],[1],[1]]"			a(n) = numerator(hypergeom([1/2, 1/2, -n], [1, 1], 1)). - _Peter Luschny_, Dec 08 2022
+A274789	hypergeon	0	4	3	"[[1/2],[1/2],[0,-1],[1,1],[1],[1],[1],[-16]]"			a(n) = hypergeom([1/2, 1/2, -n, n + 1], [1, 1, 1], -16).
+# finite A294688	hypergeon	0	3	2	"[[0,-1/3],[1/3,-1/3],[-1/3,-1/3],[0,-1/2],[-1/2,-1/2],[-27/4]]"			simplify(hypergeom([-n/3, (1-n)/3, (-1-n)/3], [-n/2, (-1-n)/2], -27/4));
+A350468	hypergeon	0	2	1	"[[1/2,-1/2],[0,-1/2],[0,-1],[-56]]"			a(n) = hypergeom([1/2 - n/2, -n/2], [-n], -56).
+A350469	hypergeon	0	2	1	"[[1/2,-1/2],[0,-1/2],[0,-1],[-72]]"			a(n) = hypergeom([1/2 - n/2, -n/2], [-n], -72).
+A352652	hypergeon	0	3	2	"[[0,-1],[0,5],[0,5],[1],[1,6],[1]]"	"1"	(n, v) -> v.*(new Q(5,3)).*(Z_1(n)).*(BI(7*n, n)).num()	a(n) = (5/3)*(-1)^n*binomial(7*n,n)*hypergeom([-n, 5*n, 5*n], [1, 6*n+1], 1) for n >= 1.
+A358108	hypergeon	0	3	2	"[[1/2],[1/2],[0,-1],[1],[1],[-1]]"	""	(n, v) -> v.*(Z2(n*4)).num()	a(n) = 16^n * hypergeom([1/2, 1/2, -n], [1, 1], -1).
+A358109	hypergeon	0	3	2	"[[-1/2],[-1/2],[0,-1],[1],[1],[-1]]"	""	(n, v) -> v.*(Z2(n*4)).num()	a(n) = 16^n * hypergeom([-1/2, -1/2, -n], [1, 1], -1).
+A358113	hypergeon	0	3	2	"[[-1/2],[-1/2],[0,-1],[1],[1],[1]]"	""	(n, v) -> v.*(Z2(n*4)).num()	a(n) = 16^n * hypergeom([-1/2, -1/2, -n], [1, 1], 1).
+A358115	hypergeon	0	4	3	"[[1/2],[1/2],[1/2],[0,-1],[1],[1],[1],[1]]"	""	(n, v) -> v.*(Z2(n * 6)).num()	a := n -> 64^n*hypergeom([1/2, 1/2, 1/2, -n], [1, 1, 1], 1):
+A358116	hypergeon	0	4	3	"[[1/2],[1/2],[1/2],[0,-1],[1],[1],[1],[-1]]"	""	(n, v) -> v.*(Z2(n * 6)).num()	a := n -> 64^n*hypergeom([1/2, 1/2, 1/2, -n], [1, 1, 1], -1):
+A358117	hypergeon	0	4	3	"[[-1/2],[-1/2],[-1/2],[0,-1],[1],[1],[1],[1]]"	""	(n, v) -> v.*(Z2(n * 6)).num()	a := n -> 64^n*hypergeom([-1/2, -1/2, -1/2, -n], [1, 1, 1], 1):
+A358119	hypergeon	0	3	2	"[[5/2],[0,-1],[1,1],[2],[4],[4]]"	""	(n, v) -> v.*(Z_1(n)).*(2).num()	a(n) = 2*(-1)^n*hypergeom([5/2, -n, n + 1], [2, 4], 4).
+# holo A358368	hypergeon	0	3	2	"[[1/2],[-1,-2],[0,-2],[2],[2],[4]]"			a(n) = [x^n] hypergeom([1/2, -2*n - 1, -2*n], [2, 2], 4*x) (see €367023). - _Peter Luschny_, Nov 07 2023
+A358695	hypergeon	0	3	2	"[[-1/2],[-1/2],[0,-1],[1],[1],[1]]"			a := n -> numer(simplify(hypergeom([-1/2, -1/2, -n], [1, 1], 1))):
+A359649	hypergeon	0	2	1	"[[1/2,-1/2],[0,-1/2],[2],[0,0,4]]"	""	(n, v) -> v.num()	a := n -> hypergeom([(1 - n)/2, -n/2], [2], 4*n^2):
+A361528	hypergeon	0	1	1	"[[1,-1],[3],[-3]]"	""	(n, v) -> (n == 0) ? Z.ONE : v.*(FA(n + 2))./(6).num()	a := n -> `if`(n=0, 1, (n + 2)!*hypergeom([1 - n], [3], -3) / 6):
+# holo A361711	hypergeon	0	3	2	"[[1,-1],[-1,-1],[-1,-1],[1],[1],[1]]"			a(n) = hypergeom([1 -n, -1 - n, -1 - n], [1, 1], 1).
