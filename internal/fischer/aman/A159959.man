@@ -1,0 +1,33 @@
+A159958	parmof3	0	A159959	3	new A053838()
+A159959	parmof3	0	A159959	2	new A004601()	(expansion of Pi in base 2).
+A159962	parmof3	0	A159959	3	new A004602()	(expansion of Pi in base 3).
+A159963	parmof3	0	A159959	3	new A102370()	(sloping binary numbers).
+A159966	parmof3	0	A159959	4	new A102370()	(sloping binary numbers).
+A159970	parmof3	0	A159959	5	new A102370()	(sloping binary numbers) .
+A159979	parmof3	0	A159959	3	new A000108()	Catalan numbers .
+A159980	parmof3	0	A159959	2	new A000108()	Catalan numbers .
+A160016	parmof3	0	A159959	2	new A159833()
+A160017	parmof3	0	A159959	2	new A010060()
+A160051	parmof3	0	A159959	2	new A000002()
+A160079	parmof3	0	A159959	3	new A000045()
+A160080	parmof3	0	A159959	4	new A000045()
+A160081	parmof3	0	A159959	5	new A000045()
+A160101	parmof3	0	A159959	6	new A000045()
+A160105	parmof3	0	A159959	7	new A000045()
+A160108	parmof3	0	A159959	8	new A000045()
+A160136	parmof3	0	A159959	9	new A000045()
+A160137	parmof3	0	A159959	10	new A000045()
+A160168	parmof3	0	A159959	3	new A000032()
+A160169	parmof3	0	A159959	4	new A000032()
+A160186	parmof3	0	A159959	5	new A000032()
+A160187	parmof3	0	A159959	6	new A000032()
+A160188	parmof3	0	A159959	7	new A000032()
+A160191	parmof3	0	A159959	8	new A000032()
+A317613	parmof3	0	A159959	4	new A047247()
+
+%N A203553 Lodumo_2 of A118175, which is n 1's followed by n 0's.
+%F A203553 a(n)= Lodumo_2(A118175(n)).
+%N A203554 Lodumo_2 of A079813, which is n 0's followed by n 1's..
+
+%N A160019 Triangle: Lodumo_2 applied to each row of Pascal's triangle .
+%N A160052 Triangle : Lodumo_2 applied to each row of triangle in A039599 .
