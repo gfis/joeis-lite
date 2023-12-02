@@ -3281,6 +3281,11 @@ homegf4:
 homegf:
 	cp -v homegf4.tmp $@.gen
 	wc -l    $@.gen
+2023-12-02:
+	perl aman/$@.man \
+	| $(JPREP) -f - \
+	| sed -e "s/\tbva/\tholos/" \
+	| tee $@.gen
 #----
 holfsig:
 	cp -v $(HOLREC)/$@.gen $@.gen

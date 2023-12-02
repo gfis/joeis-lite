@@ -1,0 +1,127 @@
+A114375	tuptraf	0	(n, s) -> s[0].xor(s[1]).+(1)	"0,0"	PREVIOUS,PREVIOUS	a(n) = (a(n-1) XOR a(n-2)) + 1, a(0) = a(1) = 0.
+A118378	tuptraf	1	(n, s) -> s[0].^(2).-(BI(n + 1, 2).*(Z_1(n - 1)))	"1"	PREVIOUS	a(n+1) = a(n)^2 - (-1)^n * binomial(n+2,2) with a(1) = 1.
+A119688	simtraf	1	new A006882()	(n, v) -> v.modZ(n)
+A121491	tuptraf	0	(n, s) -> s[0].*(23).modZ(100000001L)	"47594118"	PREVIOUS	Lehmer's linear congruential pseudorandom numbers.Lehmer's linear congruential pseudorandom numbers.
+A121879	tuptraf	1	(n, s) -> s[0].*(s[2]).-(s[1])	"0,1,1"	PREVIOUS,PREVIOUS,new A000045()	if n < 3 then n-1 else fibonacci(n-1)*a(n-1) - a(n-2) fi;
+A121880	simtraf	1	new A122536()	(n, v) -> Z2(n).-(v)	a(n) = 2^n - A122536(n).
+A121881	tuptraf	1	(n, s) -> s[0].*(s[2]).*(4).+((s[1]).^(2))./(s[3])	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	if n < 5 then 1 else (4*a(n-1)*a(n-3) + a(n-2)^2)/a(n-4)
+A121882	filter	1	new A000027()	v -> { String s = v.toString(); return new Z(s + s).+(v).+(1).isProbablePrime(); }	Numbers k such that k + D(k) + 1 is prime, where D() are the doublets, A020338
+A121883	tuptraf	1	(n, s) -> s[0].*(s[2]).*(2).+((s[1]).^(2))./(s[3])	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	if n < 5 then 1 else (2*a(n-1)*a(n-3) + a(n-2)^2)/a(n-4)
+A121910	tuptraf	1	(n, s) -> s[0].*(s[1]).*(s[2]).*(s[3]).*(3).-(s[4])	"1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	if n<6 then 1 else 3*a(n-1)*a(n-2)*a(n-3)*a(n-4) - a(n-5) fi;
+A122018	tuptraf	0	(n, s) -> ((n & 1) == 1) ? s[0].-((s[1]).*(n - 1)) : s[0].*(2).+((s[1]).*(n - 1).*(2))	"1,2"	PREVIOUS,PREVIOUS	a(n) = a(n-1) - (n-1)*a(n-2) if n is odd, a(n) = 2*a(n-1) + 2*(n-1)*a(n-2) if n is even
+A122055	tuptraf	1	(n, s) -> s[0].*(s[7]).*(3).-((s[3]).*(s[4]))./(s[8])	"1,1,1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	if n < 9 then 1 else (3*a(n-1)*a(n-8) - a(n-4)*a(n-5))/a(n-9)
+A152231	parm2	1	A072921	2	Similar to A072921 but starting with 2.	nonn,base,easy	1..1000	nyi	_N. J. A. Sloane_
+A152232	parm2	1	A072921	3	Similar to A072921 but starting with 3.	nonn,base,easy	1..1000	nyi	_N. J. A. Sloane_
+A152233	parm2	1	A072921	4	Similar to A072921 but starting with 4.	nonn,base,easy	1..1000	nyi	_N. J. A. Sloane_
+A152234	parm2	1	A072921	5	Similar to A072921 but starting with 5.	nonn,base,easy	1..1000	nyi	_N. J. A. Sloane_
+A175856	tuptraf	1	(n, s) -> { final Z zn = ZV(n); return zn.isProbablePrime() ? zn : s[0].-(1); }	"1"	PREVIOUS	a(n) = n for n = noncomposites, a(n) = previous term - 1 for n = composites.
+A176343	tuptraf	0	(n, s) -> s[0].*(s[1]).+(1)	"0"	PREVIOUS,new A000045()	a(n) = Fibonacci(n)*a(n-1) + 1, a(0) = 0.
+A178664	lambdan	0	n -> { final Z v = Z.TWO.^(n); return new Z(v.toString() + v.toString()); }	a(n) = A020338(2^n). - _Bruno Berselli_, Mar 14 2012  
+A181281	tuptraf	1	(n, s) -> s[0].+(4).modZ(n).+(1)	"1"	PREVIOUS	`if` (n=1, 1, (a(n-1)+4) mod n +1)
+A181717	tuptraf	0	(n, s) -> { final Z f = s[0].+(s[1]); return f.testBit(0) ? f.*(3).+(1) : f./(2); }	"0,1,2"	PREVIOUS	
+A186193	filtpos	1	1	new A119688()	ZERO	Numbers n such that n!! is divisible by (n+1).
+A193232	tuptraf	0	(n, s) -> s[0].xor(ZV(n*(n + 1)/2))	"0"	PREVIOUS	Bits[Xor](a(n-1), n*(n+1)/2))
+A206527	lambdan	0	n -> { final Z v = Z.THREE.^(n); return new Z(v.toString() + v.toString()); }	a(n) = A020338(3^n). - _Bruno Berselli_, Mar 14 2012  
+A206528	lambdan	0	n -> { final Z v = Z.FIVE.^(n); return new Z(v.toString() + v.toString()); }	a(n) = A020338(5^n).                                  
+A206529	lambdan	0	n -> { final Z v = Z.SEVEN.^(n); return new Z(v.toString() + v.toString()); }	a(n) = A020338(7^n).                                  
+A209286	tuptraf	0	(n, s) -> s[0].+(s[1].+(1)).*(s[2])	"0,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	`if`(n=1, 1, a(n-1) +(1+a(n-2))*a(n-3)))
+A209536	tuptraf	0	(n, s) -> s[0].+(s[1].^(2))	"1"	PREVIOUS,new A000041()	combinat[numbpart](n)^2+a(n-1))
+A210852	tuptraf	0	(n, s) -> s[0].^(7).mod(Z.SEVEN.^(n))	"0,3"	PREVIOUS	n=0 then 0 elif n=1 then 3
+A210853	tuptraf	0	(n, s) -> s[0].^(7).mod(Z.SEVEN.^(n))	"0,5"	PREVIOUS	n=0 then 0 elif n=1 then 3
+A214551	tuptraf	0	(n, s) -> s[0].+((s[2])./(s[0].gcd(s[2])))	"1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	`if`(n<3, 1, (a(n-1)+a(n-3))/igcd(a(n-1), a(n-3))) end:
+A215027	tuptraf	0	(n, s) -> new Z(String.valueOf(n - 1) + String.valueOf(n)).-(s[0])	"0"	PREVIOUS	a(n+1) = (concatenation of n and n+1) - a(n), a(0) = 0.
+A215028	tuptraf	1	(n, s) -> new Z(String.valueOf(n) + String.valueOf(n - 1)).-(s[0])	"1"	PREVIOUS	a(1) = 1; for n >= 1, a(n+1) = (concatenation of n+1 and n) - a(n).
+A215151	tuptraf	0	(n, s) -> Jaguar.factor(n - 1).bigOmega() == Jaguar.factor(Z2(s[0].intValueExact()).+(n - 1)).bigOmega() ? Z.ZERO : s[0].+(1)	"1"	PREVIOUS	€215151 := proc(n)
+A221556	tuptraf	1	(n, s) -> s[0].*(48271).mod(ZV(2147483647L))	"48271"	PREVIOUS	
+A235915	tuptraf	0	(n, s) -> s[0].+(ZUtils.digitSum(s[0]) % 5 + 1)	"1"	PREVIOUS	a(1) = 1, a(n) = a(n-1) + (digsum(a(n-1)) mod 5) + 1, digsum = A007953.
+A241593	tuptraf	0	(n, s) -> s[2].*(s[0]).*(144).+(s[1].^(2).*(432))./(s[3])	"-1,0,1,12,-432,93312"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = (144*a(n-3)*a(n-1)+432*a(n-2)^2)/a(n-4)   	
+A241594	tuptraf	0	(n, s) -> s[3].*(-8).*(s[0]).+(s[2].*(s[1]).*(-57))./(s[4])	"1,0,-1,1,8,57,-455"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = -(8*a(n-4)*a(n-1)+57*a(n-3)*a(n-2))/a(n-5)	
+A241595	tuptraf	0	(n, s) -> s[3].*(-8).*(s[0]).+(s[2].*(s[1]).*(+57))./(s[4])	"-1,0,1,-1,-8,57,455"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = -(8*a(n-4)*a(n-1)-57*a(n-3)*a(n-2))/a(n-5)	
+A242645	tuptraf	0	(n, s) -> new Z(ZV(11).^(n).toString() + s[0].toString())	"1"	PREVIOUS	`if`(n=0, 1, parse(cat(11^n, a(n-1))))
+A242646	tuptraf	0	(n, s) -> new Z(s[0].toString() + ZV(11).^(n).toString())	"1"	PREVIOUS	`if`(n=0, 1, parse(cat(a(n-1), 11^n)))
+A246554	simtraf	0	new A000045().skip(1)	v -> new Z(v.toString() + v.toString())
+A248126	lambdan	0	n -> new Z(ZV(n).square().toString().replaceAll("(\\d)", "$1$1"))
+A248365	lambdan	0	n -> { final Z v = ZV(4*n); return new Z(v.toString() + v.toString()); }	a(n) = A020338(n^2). - _Michel Marcus_, Nov 01 2014   
+A248479	tuptraf	0	(n, s) -> ((n & 1) == 1) ? s[0].-(s[1]) : s[0].*(s[1])	"1,3"	PREVIOUS,PREVIOUS	a(1) = 1, a(2) = 3, after which, when n is odd, a(n) = a(n-1) - a(n-2), and when n is even, a(n) = a(n-1) * a(n-2). - Antti Karttunen, Oct 26 2014, after the comment of original author.
+A248479	tuptraf	0	(n, s) -> s[0].*((s[1]).+(1))	"1"	PREVIOUS,new A000041()	(1+combinat[numbpart](n))*a(n-1))
+A252584	tuptraf	0	(n, s) -> s[0].^(3).+(s[1].^(9))	"0,1"	PREVIOUS,PREVIOUS	a(n-1)^3+a(n-2)^9 fi fi end: seq(a(n), n = 0..9);
+A261427	tuptraf	0	(n, s) -> s[0].*(PR(1, 6, i -> Z.SEVEN.*(n).-(i)))	"1"	PREVIOUS	mul(7*n-i, i=1..6)*a(n-1))
+A265204	tuptraf	0	(n, s) -> { FactorSequence fs = Jaguar.factor(n); return fs.isSquareFree() ? s[0].+(fs.phi()) : s[0]; }	"1"	PREVIOUS	a(n-1))+
+A268924	tuptraf	1	(n, s) -> s[0].^(3).+(s[0].*(3)).mod(Z.THREE.pow(n))	"0"	PREVIOUS	irem(a(n-1)^3 + 3*a(n-1), 3^n) end if; end: seq(a(n), n = 1..22); # _Peter Bala_, Nov 15 2022
+A269590	tuptraf	1	(n, s) -> s[0].^(3).+(s[0].^(3).*(5)).+(s[0].*(5)).mod(Z.FIVE.pow(n))	"4"	PREVIOUS	irem(a(n-1)^5 + 5*a(n-1)^3 + 5*a(n-1), 5^n) end if; end: seq(a(n), n = 1..20); # _Peter Bala_, Nov 14 2022
+A277506	tuptraf	0	(n, s) -> s[0].*(n).+(ZV(n).^(n))	"1"	PREVIOUS	a:= proc(n) a(n):= n*a(n-1) + n^n end: a(0):= 1:
+A284230	tuptraf	0	(n, s) -> s[0].*(n + n % 2).+(s[1].*(n - 1))	"1,2"	PREVIOUS,PREVIOUS	(n+irem(n, 2))*a(n-1)+(n-1)*a(n-2))
+A292524	tuptraf	1	(n, s) -> s[0].*(3).+(Mobius.mobius(n))	"0"	PREVIOUS	a(n-1)*3+numtheory[mobius](n))
+A292779	tuptraf	1	(n, s) -> s[0].+(Z.THREE.^(n - 1).*(Mobius.mobius(n)))	"1"	PREVIOUS	a(n-1)+3^(n-1)*numtheory[mobius](n))
+A292918	tuptraf	0	(n, s) -> s[0].+((Puma.primeZ(2*n - 1).-(Puma.primeZ(n))).*(2))	"1"	PREVIOUS	
+A300570	tuptraf	1	(n, s) -> new Z(ZV(n).toString(2) + s[0].toString())	"1"	PREVIOUS	a(n) is the concatenation n in base 2, n-1 in base 2, ..., 1 in base 2.
+A300759	tuptraf	1	(n, s) -> s[1].*(new Z(s[0].toString().substring(0, 1)))	"1,2"	PREVIOUS,PREVIOUS		Multiply a(n) by the first digit of a(n+1) to get a(n+2). The sequence starts with a(1) = 1 and a(2) = 2.
+A300891	filter	1	new A000217().skip(1)	v -> !v.equals(Z.TEN) && ZUtils.isTriangular(new Z("0" + v.toString().substring(1)))	Left-truncatable nonzero triangular numbers.
+A309705	tuptraf	1	(n, s) -> s[0].lcm(ZV(n)).-(s[0].gcd(ZV(n)))	"1"	PREVIOUS	ilcm(a(n-1), n)-igcd(a(n-1), n))
+A325459	tuptraf	0	(n, s) -> s[0].-(2).+(Jaguar.factor(n).sigma0())	"1"	PREVIOUS	numtheory[tau](n)-2+a(n-1)) %Y A325459 Cf. A049988, A093641, €325349, €325351, €325355, €325356, €325357, €325358.
+A327474	tuptraf	0	(n, s) -> s[0].*(2).-(s[1]).+(Jaguar.factor(n - 1).phi())	"1,2,4,6"	PREVIOUS,PREVIOUS	`if`(n<4, [1, 2, 4, 6][n+1], 2*a(n-1)-a(n-2)+numtheory[phi](n-1))
+A332780	tuptraf	0	(n, s) -> s[0].xor(s[2]).+(1)	"0,0,0"	PREVIOUS,PREVIOUS,PREVIOUS	a(n) = (a(n-1) XOR a(n-3)) + 1, a(0) = a(1) = a(2) = 0.
+A332781	tuptraf	0	(n, s) -> s[0].xor(s[3]).+(1)	"0,0,0,0"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = (a(n-1) XOR a(n-4)) + 1, a(0) = a(1) = a(2) = a(3) = 0.
+A332782	tuptraf	0	(n, s) -> s[0].xor(s[4]).+(1)	"0,0,0,0,0"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS		a(n) = (a(n-1) XOR a(n-5)) + 1, a(0) = a(1) = a(2) = a(3) = a(4) = 0.
+A333068	tuptraf	0	(n, s) -> s[0].-(1).modZ(n).+(1).+(n*(n - 1)/2)	"0,1"	PREVIOUS	n*(n-1)/2 + ((a(n-1)-1) mod n) + 1)
+A333453	tuptraf	0	(n, s) -> new Z(s[0].toString(2) + s[1].toString(2)).modZ(n)	"0,1"	PREVIOUS,PREVIOUS	Binary concatenation (ignoring leading zeros) of a(n-1) and a(n-2) mod n, starting with a(n) = n for n <= 1.
+A333596	tuptraf	1	(n, s) -> {final int[] c = ZUtils.digitCounts(s[0], 4); return s[0].+(c[1] + c[3] - c[0] - c[2]); }	"0"	PREVIOUS	`if`(n=0, 0, a(n-1) +add(
+A337521	tuptraf	0	(n, s) -> s[2].*(s[0]).+(s[1])	"1,1,4"	PREVIOUS,PREVIOUS,new A000032()	a(n) = L(n)*a(n-1) + a(n-2) with a(0) = a(1) = 1 and L(n) the Lucas numbers A000032.
+A338467	tuptraf	0	(n, s) -> Puma.primeZ(n - 1).-(s[0]).+(2*n - 2)	"1"	PREVIOUS	ithprime(n-1)-a(n-1)+2*n-2)
+A343376	tuptraf	0	(n, s) -> { final Z quot[] = s[0].divideAndRemainder(ZV(n - 1)); return quot[1].isZero() ? quot[1] : s[0].+(s[1]); }	"0,1"	PREVIOUS,PREVIOUS	if`(irem(a(n-1), n-1, 'q')=0, q, a(n-1)+a(n-2)))
+A344495	tuptraf	0	(n, s) -> s[0].*(n).+(ZV(n).^(1 + n%2))	"1"	PREVIOUS	n*a(n-1) + n^(1+(n mod 2)) end: a(0):= 1:
+A344496	tuptraf	0	(n, s) -> s[0].*(n).+(ZV(n).^(2 - n%2))	"0"	PREVIOUS	n*a(n-1) + n^(2-(n mod 2)) end: a(0):= 0:
+A345143	tuptraf	0	(n, s) -> ZUtils.reverse(new Z(s[1].toString() + s[0].toString()).-(s[0]))	"0,1"	PREVIOUS,PREVIOUS	Reflection of the concatenation of the previous two terms minus the previous term.		0
+A348166	tuptraf	0	(n, s) -> new Z(n.toString() + n.toString()).-(s[0]).abs()	""	new A338754()	a(n) = abs(A020338(n)-A338754(n))               
+A350895	tuptraf	0	(n, s) -> s[0].+(Puma.primeZ(n)).+(1)	"1"	PREVIOUS	1+a(n-1)*ithprime(n))
+A351916	tuptraf	0	(n, s) -> s[0].^(7).+(1)./(s[1])	"1,1"	PREVIOUS,PREVIOUS	a:=proc(n) option remember: if n <= 2 then 1: else (a(n-1)^7+1)/a(n-2): fi: end:
+A358854	tuptraf	1	(n, s) -> {final int[] c = ZUtils.digitCounts(s[0], 4); return s[0].+(c[0] + c[2] + c[4] + c[6] +c[8]); }	"1"	PREVIOUS	Number of even digits necessary to write all the numbers from 0 up to n.
+A363097	tuptraf	0	(n, s) -> Jaguar.factor(s[0]).phi().+(n)	"1"	PREVIOUS	n+numtheory[phi](a(n-1)))
+A365617	tuptraf	0	(n, s) -> PR(0, n - 1, j -> s[0].+(j))	"0"	PREVIOUS	(z-> mul(z+j, j=0..n-1))(a(n-1)))
+A366314	holos	0	[[0],[9[,[3],[1],[-1]]	0,1,4	0	a:= proc(n) option remember; if n < 3 then n^2 else a(n-1)+3*a(n-2)+9*a(n-3) fi end: seq(a(n), n=0..30);
+
+%p A363181 a:= proc(n) option remember; `if`(n<4, [1, 0, 2, 2][n+1],
+%p A363181       3/2*a(n-1)+(n-3/2)*a(n-2)-(n-5/2)*a(n-3)+(n-4)*a(n-4))
+%p A363181     end:
+%p A363181 seq(a(n), n=0..30);
+
+
+%p A329004 a:= proc(n) option remember; uses numtheory; `if`(n=1, 1,
+%p A329004       (t-> `if`(tau(n)<tau(t), t, n))(a(n-1)))
+%p A329004     end:
+%p A329004 seq(a(n), n=1..100);  # _Alois P. Heinz_, Jun 11 2020
+%Y A329004 Cf. A000005, A067128.
+
+%p A330139 a:= proc(n) option remember; `if`(n<2, n, (t->
+%p A330139       `if`(irem(t, n)=0, t/n, t))(a(n-1)+a(n-2)))
+%p A330139     end:
+%p A330139 seq(a(n), n=1..50);  # _Alois P. Heinz_, Mar 28 2020
+
+%p A330725 a:= proc(n) option remember; `if`(n=0, 0, ((s, t)-> s+
+%p A330725       `if`(s<t, t, -t))(a(n-1), numtheory[sigma](n)))
+%p A330725     end:
+%p A330725 seq(a(n), n=0..80);
+
+%p A331165 a:= proc(n) option remember; `if`(n<0, 0, ((s, t)-> s+
+%p A331165      `if`(s<t, t, -t))(a(n-1), combinat[numbpart](n)))
+%p A331165     end:
+%p A331165 seq(a(n), n=0..70);
+
+%p A306562	tuptraf	0	(n, s) -> s[0].+(ZV(n + 1).*(Z_1( ??? s[1].^(9))	"1"	PREVIOUS	a(n-1)+(n+1)*(-1)^floor(sqrt(2*n)-1/2))
+
+%p A271223 # uses properties of the numbers Lucas(3^n) = A006267(n)
+%p A271223 a := proc(n) option remember; if n = 1 then 1 else irem(a(n-1)^3 + 3*a(n-1), 3^n) end if; end proc:
+%p A271223 convert(a(70), base, 3); # _Peter Bala_, Nov 15 2022
+%Y A271223 Cf. A006267, €268924, €268992, €271224, €271225.
+
+%p A270804 a:=proc(n) option remember;
+%p A270804 if n<=2 then n
+%p A270804 elif n=3 then 7
+%p A270804 else if n mod 4 = 0 then a(n-1)+1
+%p A270804      elif n mod 4 = 1 then a(n-2)+2
+%p A270804      elif n mod 4 = 2 then a(n-3)+3
+%p A270804      elif n mod 8 = 3 then a(n-3)+7
+%p A270804      else 4*a((n-1)/2)+3; fi;
+%p A270804 fi;
+%p A270804 end;
+%p A270804 [seq(a(n),n=0..120)];
