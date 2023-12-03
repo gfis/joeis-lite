@@ -80,6 +80,9 @@ A363097	tuptraf	0	(n, s) -> Jaguar.factor(s[0]).phi().+(n)	"1"	PREVIOUS	n+numthe
 A365617	tuptraf	0	(n, s) -> PR(0, n - 1, j -> s[0].+(j))	"0"	PREVIOUS	(z-> mul(z+j, j=0..n-1))(a(n-1)))
 A366314	holos	0	[[0],[9[,[3],[1],[-1]]	0,1,4	0	a:= proc(n) option remember; if n < 3 then n^2 else a(n-1)+3*a(n-2)+9*a(n-3) fi end: seq(a(n), n=0..30);
 
+
+# A102743 a(0) = 1; a(n) = n*a(n-1) + (n+1)^(n-1).
+
 %p A363181 a:= proc(n) option remember; `if`(n<4, [1, 0, 2, 2][n+1],
 %p A363181       3/2*a(n-1)+(n-3/2)*a(n-2)-(n-5/2)*a(n-3)+(n-4)*a(n-4))
 %p A363181     end:

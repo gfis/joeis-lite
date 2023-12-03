@@ -1,3 +1,8 @@
+
+
+            
+# A267193	respect width, leading zeros lambdan	1	n -> new Z(ZUtils.reverse(new A061601().a(n)))	Replace digits of n by their 9.s complements, reverse the order, omit any leading zeros.
+# each digit A098751	tuptraf	0	(n, s) -> s[0].+(new A178914().a(s[0]))	"0"	PREVIOUS	a(n+1) = a(n) + 10.s complement of each of the digits of a(n); a(0) = 0.
 %N A083991 Members of €083989 whose 10.s complement is also a member of €083989.
 %N A084020 Numbers which are either a divisor or a multiple of their 9.s complement.
 %N A084629 Brilliant numbers such that when they are concatenated with their 10.s complement, which also must be brilliant, the result is a prime.
@@ -21,7 +26,6 @@
 %N A185250 Array A(n,k), n > 0, k = 1,2 read by rows such that (A(n,1),  A(n,2)) are the pairs of primes (p, q), p < q, where the decimal digits of q are the 9.s complement of the decimal digits of p.
 %N A216104 10.s complement of €216105.
 %N A226587 Numbers n having at least two complementary pairs of divisors (q, p) and (p., q.) such that n = p*q = p.*q. where the decimal digits of p. are the 9.s complement of the decimal digits of p and the decimal digits of q. are the 9.s complement of the decimal digits of q.
-A228075	filter	1	new A000027()	v -> new A178914().a(v).isProbablePrime()	Numbers n whose 10.s complement is prime, i.e., 10^k-n, where k is the number of digits of n, is prime.
 %N A228359 Numbers n whose 10.s complement is not prime, i.e., 10^k-n, where k is the number of digits of n, is not prime.
 %N A228629 Members p of a pair of primes (p,q) such that the decimal digits of q are the 9.s complement of the decimal digits of p.
 %N A262277 Numbers having in decimal representation the same distinct decimal digits as their 9.s complement.
@@ -45,13 +49,10 @@ A083989	filter	1	new A000040()	v -> new Z(v.toString() + new A178914().a(v).toSt
 A084004	filter	1	new A000027()	v -> new Z(v.toString() + new A178914().a(v).toString()).isSquare()	Squares obtained as a concatenation of k and 10.s complement of k.
 A084006	filter	1	new A000027()	v -> new Z(v.toString() + new A061601().a(v).toString()).isSquare()	Squares arising as a concatenation of k and 9.s complement of k.
 A084019	simtraf	0	new A002113()	v -> new A061601().a(v)	a(n) = 9.s complement of n-th palindrome (A002113).
-
 A084620	filter	1	new A000045()	v -> { final int len = v.toString().length(); return Z.TEN.multiply(v).subtract(v).isProbablePrime(); }	Numbers n such that concatenation of Fibonacci n and its 10.s complement is a prime.
 A084621	filtpos	1	0	new A000045()	v -> { final int len = v.toString().length(); return Z.TEN.multiply(v).subtract(v).isProbablePrime(); }	Numbers n such that Fibonacci(n) concatenated with its 10.s complement is prime.
-
 A088339	filter	1	new A000027()	(n, v) -> new A061601().a(v).*(n).+(1).isProbablePrime()	Numbers n such that n multiplied by (the 9.s complement of n) + 1 is a prime. If n has d digits then 9.s complement of n is 10^d -(n+1).
 A098750	tuptraf	0	(n, s) -> s[0].+('9' + 1 - s[0].toString().charAt(0))	"0"	PREVIOUS	 a(n+1) = a(n) + 10.s complement of first digit of a(n); a(0) = 0.
-# each digit A098751	tuptraf	0	(n, s) -> s[0].+(new A178914().a(s[0]))	"0"	PREVIOUS	a(n+1) = a(n) + 10.s complement of each of the digits of a(n); a(0) = 0.
 A100528	tuptraf	0	(n, s) -> s[0].^(2).+(1).-(s[0].bitLength() - 1)	"1"	PREVIOUS	a(0) = 1, a(n+1) = a(n)^2 + 1 - floor(log_2(a(n))).
 A108158	filter	1	new A000217()	v -> new A178914().a(v).isSquare()	Triangular numbers whose 10.s complements are squares.
 A108537	filter	1	new A002113()	v -> new Z(v.toString() + new A178914().a(v).toString()).isProbablePrime()	 Concatenation of palindrome k and its 10.s complement is prime.
@@ -72,17 +73,16 @@ A110394	tuptraf	1	(n, s) -> new A061601().a(s[0]).*(n)	"1"	PREVIOUS	a(1) = 1; a(
 A110395	tuptraf	1	(n, s) -> new A178914().a(s[0]).*(n)	"1"	PREVIOUS	a(1) = 1. a(n) = n times (10s complement of a(n-1)).
 A110396	lambdan	1	n -> { final A178914 seq = new A178914(); return PR(1, n, k -> seq.a(k)); }	10.s complement factorial of n: a(n) = (10.s complement of n)*(10.s complement of n-1)*...*(10.s complement of 2)*(10.s complement of 1).
 A110728	tuptraf	0	(n, s) -> ZV(ZUtils.digitSum(s[0])).*(n)	"1"	PREVIOUS	Digital factorial: a(0) = 1, a(n) = n * (the sum of the digits of a(n-1)).
+A121491	tuptraf	0	(n, s) -> s[0].*(23).modZ(100000001L)	"47594118"	PREVIOUS	Lehmer's linear congruential pseudorandom numbers.Lehmer's linear congruential pseudorandom numbers.
 A160668	simtraf	1	new A000040()	v -> new A061601().a(v).+(1)
 A192817	filter	0	new A000027()	v -> v.gcd(new A061601().a(v)).equals(Z.ONE)	Numbers that are coprime to their 9.s complement.
 A201462	filter	0	new A000027()	v -> !v.gcd(new A061601().a(v)).equals(Z.ONE)	Numbers that are not coprime to their 9.s complement.
+A228075	filter	1	new A000027()	v -> new A178914().a(v).isProbablePrime()	Numbers n whose 10.s complement is prime, i.e., 10^k-n, where k is the number of digits of n, is prime.
 A228628	simtraf	0	new A000040()	v -> new A061601().a(v)	a(n) = A061601(A000040(n)). - _Charles R Greathouse IV_, Aug 29 2013
 A240696	filter	1	new A000040()	v -> new A061601().a(v).isProbablePrime()	Primes p such that A061601(p) is also prime.
-# A267193	respect width, leading zeros lambdan	1	n -> new Z(ZUtils.reverse(new A061601().a(n)))	Replace digits of n by their 9.s complements, reverse the order, omit any leading zeros.
 A300447	filter	1	new A000027()	x -> { final Z y = new A055120().a(x); return !x.equals(y) && Jaguar.factor(x).sigma().equals(Jaguar.factor(y).sigma()); }	Numbers x such that sigma(x) = sigma(y), with x<>y, where y is the 10.s complement mod 10 of the digits of x.
 A300487	filter	1	new A000027()	v -> Jaguar.factor(v).phi().equals(new A055120().a(v))	Numbers k whose 10.s complement mod 10 of their digits is equal to phi(k), the Euler totient function of k.
 A300796	filter	1	new A000027()	v -> { final Z x = new A055120().a(v); return !x.equals(v) && Jaguar.factor(x).sigma0AsLong() == Jaguar.factor(v).sigma0AsLong(); }	Numbers x whose 10.s complements y have the same sum of divisors of x, with x <> y.
 A318785	filter	1	new A000027()	v -> new A061601().a(v).isProbablePrime()	Numbers which are prime if each digit is replaced by its 9.s complement.
 A327266	simtraf	1	new A325907()	v -> v.*(new A061601().a(v))	Product of A325907(n) and its 9.s complement.
 A345529	filter	1	new A000040()	v -> new A055120().a(v).isProbablePrime()	Primes that yield a prime when any single digit is replaced by its 10.s complement.
-            
-A121491	tuptraf	0	(n, s) -> s[0].*(23).modZ(100000001L)	"47594118"	PREVIOUS	Lehmer's linear congruential pseudorandom numbers.Lehmer's linear congruential pseudorandom numbers.

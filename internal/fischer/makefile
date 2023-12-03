@@ -3282,7 +3282,7 @@ homegf:
 	cp -v homegf4.tmp $@.gen
 	wc -l    $@.gen
 2023-12-02:
-	perl aman/$@.man \
+	perl gen_holo.pl aman/$@.man \
 	| $(JPREP) -f - \
 	| sed -e "s/\tbva/\tholos/" \
 	| tee $@.gen
