@@ -3228,6 +3228,11 @@ recuf7:
 #  (12-4n)*a(n-3) + (-24 + 12n)*a(n-2) + (6-9*n)*a(n-1) + (0+1n)*a(n) = 0
 # make runholo MATRIX="[[0],[12,-4],[-24,12],[6,9],[0,1]]" INIT="[1,3,18]"
 #----
+holon: # with update of inits
+	grep -E "^A[0-9]" $(HOLREC)/recegf.tmp \
+	| tee    $@.gen
+	wc -l    $@.gen
+#----
 holregen:
 	cat $(HOLREC)/holregen.tmp \
 	| grep -E "Linear|Holo" \
