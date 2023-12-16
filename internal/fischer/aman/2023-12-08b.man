@@ -1,0 +1,113 @@
+# A344026	nyi----	Arithmetic derivative applied to the Doudna sequence: a(n) = A003415(A005940(1+n)).	nonn,look	0..8192	nyi	_Antti Karttunen_
+# A278544	nyi----	Arithmetic derivative of the prime-factorization representation of the n-th Stern polynomial: a(n) = A003415(A260443(n)).	nonn	0..1024	nyi	_Antti Karttunen_
+# A366801	nyi----	Arithmetic derivative without its inherited divisor applied to the Doudna sequence: a(n) = A342001(A005940(1+n)).	nonn,look	0..16384	nyi	_Antti Karttunen_
+##A295308	charfun	0	A066694						nyi----	Characteristic function for A066694: a(n) = 1 if n < phi(sigma(n)), 0 otherwise.	nonn	1..65537	nyi	_Antti Karttunen_
+##A290079	charfun	0	A249721						nyi----	Characteristic function for A249721: a(n) = 1 if there are either no 1-digits at all in base-3 representation of n, or if there are exactly two 1's next to each other, a(n) = 0 in any other cases.	nonn,base	0..59049	nyi	_Antti Karttunen_
+##A340090	dirichinv	1	new A219428()	----	Dirichlet inverse of A219428
+### A359609	nyi----	Distinct values of A358777 in the order of their appearance.	sign	1..55	nyi	_Antti Karttunen_
+##
+##A095082	filtpos	1	1	new A014417()	v -> v.mod(100) == 0 && v.isProbablePrime()	Fib00 primes, i.e., primes p whose Zeckendorf-expansion A014417(p) ends with two zeros.	nonn	1..52	nyi	_Antti Karttunen_
+##A095085	filtpos	1	1	new A014417()	v -> v.mod(1000) == 0 && v.isProbablePrime()	Fib000 primes, i.e., primes p whose Zeckendorf-expansion A014417(p) ends with three zeros.	nonn,base	1..48	nyi	_Antti Karttunen_
+##A095098	filtpos	1	1	new A014417()	v -> v.mod(1000) == 1	Fib001 numbers: those k for which the Zeckendorf expansion A014417(k) ends with two zeros and a final one.	nonn,base	1..10000	nyi	_Antti Karttunen_
+##A095086	filtpos	1	1	new A014417()	v -> v.mod(1000) == 1 && v.isProbablePrime()	Fib001 primes, i.e., primes p whose Zeckendorf-expansion A014417(p) ends with two zeros and final 1.	nonn	1..46	nyi	_Antti Karttunen_
+##A095087	filtpos	1	1	new A014417()	v -> v.mod(1000) == 10 && v.isProbablePrime()	Fib010 primes, i.e., primes p whose Zeckendorf-expansion A014417(p) ends with zero, one and zero.	nonn	1..49	nyi	_Antti Karttunen_
+##A095088	filtpos	1	1	new A014417()	v -> v.mod(1000) == 100 && v.isProbablePrime()	Fib100 primes, i.e., primes p whose Zeckendorf-expansion A014417(p) ends with one and two final zeros.	nonn	1..45	nyi	_Antti Karttunen_
+##A095089	filtpos	1	1	new A014417()	v -> v.mod(1000) == 101 && v.isProbablePrime()	Fib101 primes, i.e., primes p whose Zeckendorf-expansion A014417(p) ends as one, zero, one.	nonn	1..45	nyi	_Antti Karttunen_
+##A095080	filtpos	1	1	new A014417()	v -> !v.testBit(0) && v.isProbablePrime()	Fibeven primes, i.e., primes p whose Zeckendorf-expansion A014417(p) ends with zero.	nonn	1..10000	nyi	_Antti Karttunen_
+##A095084	filtpos	1	1	new A014417()	v -> v.mod(1000) == 0 && v.isProbablePrime()	Fibevil primes, i.e., primes p whose Zeckendorf-expansion A014417(p) contains an even number of 1-fibits.	nonn	1..10000	nyi	_Antti Karttunen_
+##A095081	filtpos	1	1	new A014417()	v -> v.testBit(0) && v.isProbablePrime()	Fibodd primes, i.e., primes p whose Zeckendorf-expansion A014417(p) ends with one.	nonn	1..10000	nyi	_Antti Karttunen_
+   
+A068054	diffs	0	new A066425()			First differences of A066425.	nonn	1..20	nyi	
+A277197	diffs	0	new A260443()			First differences of A260443.	sign,look	0..1024	
+A081292	insect2	0	new A014486()	new PrependSequence(new A079946(), 0)		Intersection of A014486 and A079946.	nonn	1..51	nyi	_Antti Karttunen_ Mar 17 2003
+A358223	moebiusix	1	parm1	parm2	new A181819()	Inverse M√∂bius transform of A181819, prime shadow function.	nonn,mult	1..16384	nyi	_Antti Karttunen_
+A349138	moebiusix	1	parm1	parm2	new A349137()	Inverse M√∂bius transform of A349137, where A349137(n) = phi(A003602(n)).	nonn,look	1..16384	nyi	_Antti Karttunen_
+A349371	moebiusix	1	parm1	parm2	new A003602()	Inverse M√∂bius transform of A003602).	nonn	1..20000	nyi	_Antti Karttunen_
+
+A070264	inverse	0	new A026098()	1	1	Inverse permutation to that in A026098.	easy,nonn	1..70	nyi	_Antti Karttunen_
+
+A317839	moebiusx	1	parm1	parm2	new A002487()	M√∂bius transform of A002487, Stern's Diatomic sequence.	sign	1..16384	nyi	_Antti Karttunen_
+A364557	moebiusx	1	parm1	parm2	new A005941()	M√∂bius transform of A005941.	nonn	1..10000	nyi	_Antti Karttunen_
+A353647	moebiusx	1	parm1	parm2	new A062401()	M√∂bius transform of A062401, where A062401(n) = phi(sigma(n)).	sign	1..16384	nyi	_Antti Karttunen_
+A340190	moebiusx	1	parm1	parm2	new A063994()	M√∂bius transform of A063994(x) = Product_{primes p dividing x} gcd(p-1, x-1).	sign	1..8191	nyi	_Antti Karttunen_
+A304526	moebiusx	1	parm1	parm2	new A064664()	M√∂bius transform of A064664, the inverse of EKG-sequence.	sign	1..32768	nyi	_Antti Karttunen_
+A347379	moebiusx	1	parm1	parm2	new A108951()	M√∂bius transform of A108951, the primorial inflation of n.	nonn,easy,mult	1..47	nyi	_Antti Karttunen_
+A329034	moebiusx	1	parm1	parm2	new A122111()	M√∂bius transform of A122111.	sign	1..4096	nyi	_Antti Karttunen_
+A354358	moebiusx	1	parm1	parm2	new A124859()	M√∂bius transform of A124859.	nonn,mult	1..20000	nyi	_Antti Karttunen_
+A348976	moebiusx	1	parm1	parm2	new A129283()	M√∂bius transform of A129283, which is sum of n and its arithmetic derivative.	nonn	1..20000	nyi	_Antti Karttunen_
+A297112	moebiusx	1	parm1	parm2	new A156552()	M√∂bius transform of A156552.	nonn	1..2048	nyi	_Antti Karttunen_
+A297171	moebiusx	1	parm1	parm2	new A243071()	M√∂bius transform of A243071.	nonn	1..4096	nyi	_Antti Karttunen_
+A340146	moebiusx	1	parm1	parm2	new A247074()	M√∂bius transform of A247074(x) = phi(x)/(Product_{primes p dividing x} gcd(p-1, x-1)).	sign	1..8191	nyi	_Antti Karttunen_
+A317841	moebiusx	1	parm1	parm2	new A284013()	M√∂bius transform of A284013 (= n - A002487(n)), where A002487 is Stern's Diatomic sequence.	nonn	1..16384	nyi	_Antti Karttunen_
+A347230	moebiusx	1	parm1	parm2	new A344695()	M√∂bius transform of A344695, gcd(sigma(n), psi(n)).	sign	1..16384	nyi	_Antti Karttunen_
+A347122	moebiusx	1	parm1	parm2	new A347121()	M√∂bius transform of A347121.	sign	1..10000	nyi	_Antti Karttunen_
+A349136	moebiusx	1	parm1	parm2	new A003602()	M√∂bius transform of A003602.	nonn,changed	1..20000	nyi	_Antti Karttunen_
+A300251	moebiusx	1	parm1	parm2	new A003415()	M√∂bius transform of A003415).	nonn	1..65537	nyi	_Antti Karttunen_
+
+A331184	ordtraf	1	new A318310()		Number of values of k, 1 <= k <= n, with A318310(k) = A318310(n).	nonn	1..65537	nyi	_Antti Karttunen_
+A331177	ordtraf	1	new A319677()		Number of values of k, 1 <= k <= n, with A319677(k) = A319677(n), where A319677(n) = n/gcd(n, uphi(n)), and uphi is unitary totient function (A047994).	nonn	1..65537	nyi	_Antti Karttunen_
+A331183	ordtraf	1	new A323898()		Number of values of k, 1 <= k <= n, with A323898(k) = A323898(n).	nonn	1..16384	nyi	_Antti Karttunen_
+
+A366379	filtpos	1	1	new A057889()	(k, v) -> !v.equals(ZV(k % 3))	Numbers k such that A057889(k) != k (mod 3), where A057889 is the bijective bit-reverse.	nonn	1..68	nyi	_Antti Karttunen_
+A366378	filtpos	1	1	new A057889()	(k, v) -> v.equals(ZV(k % 3))	Numbers k such that A057889(k) == k (mod 3), where A057889 is the bijective bit-reverse.	nonn	1..81	nyi	_Antti Karttunen_
+A302040	filtpos	1	1	new A078898()	(k, v) -> v.bitCount() == 1	Numbers k such that A078898(k) is a power of 2; an analog for A000961 based on factorization-kind of process involving the sieve of Eratosthenes (€083221).	nonn	1..6883	nyi	_Antti Karttunen_
+A336119	filtpos	1	1	new A122111()	(k, v) -> v.isSquare() || v./(2).isSquare()	Numbers k such that A122111(k) [the conjugated prime factorization of k] is a square or twice a square.	nonn	1..73	nyi	_Antti Karttunen_
+A329604	filtpos	1	1	new A156552()	(k, v) -> v.mod(3) == 1	Numbers k such that A156552(k) == 1 (mod 3); numbers k for which A156552(2*k) is a multiple of 3.	nonn	1..20000	nyi	_Antti Karttunen_
+A329609	filtpos	1	1	new A156552()	(k, v) -> v.mod(3) == 0	Numbers k such that A156552(k) is a multiple of 3.	nonn	1..20000	nyi	_Antti Karttunen_
+A324812	filtpos	1	1	new A156552()	SQUARE	Numbers k such that A156552(k) is a square.	nonn	1..10000	nyi	_Antti Karttunen_
+A364287	filtpos	1	1	new A163511()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that A163511(k) < k.	nonn	1..66	nyi	_Antti Karttunen_
+A364292	filtpos	1	1	new A163511()	(k, v) -> v.compareTo(ZV(k)) <= 0	Numbers k such that A163511(k) <= k.	nonn	1..68	nyi	_Antti Karttunen_
+A365801	filtpos	1	1	new A163511()	CUBE 	Numbers k such that A163511(k) is a cube.	nonn	1..59	nyi	_Antti Karttunen_
+#A365802	filtpos	1	1	new A163511()	(k, v) -> 	Numbers k such that A163511(k) is a fifth power.	nonn,changed	1..51	nyi	_Antti Karttunen_
+#A366287	filtpos	1	1	new A163511()	(k, v) -> 	Numbers k such that A163511(k) is a seventh power.	nonn	1..45	nyi	_Antti Karttunen_
+A365808	filtpos	1	1	new A163511()	SQUARE 	Numbers k such that A163511(k) is a square.	nonn	1..68	nyi	_Antti Karttunen_
+#A366391	filtpos	1	1	new A163511()	(k, v) -> 	Numbers k such that A163511(k) is an eleventh power.	nonn	1..37	nyi	_Antti Karttunen_
+#A364956	filtpos	1	1	new A163511()	(k, v) -> 	Numbers k such that A163511(k) is either k itself or its descendant in Doudna-tree, A005940 (or equally, in A163511-tree).	nonn,changed	1..49	nyi	_Antti Karttunen_
+#A344994	filtpos	1	1	new A173557()	(k, v) -> 	Numbers k such that A173557(k) divides nonzero A051709(k).	nonn	1..66	nyi	_Antti Karttunen_
+A364290	filtpos	1	1	new A243071()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that A243071(k) < k.	nonn	1..70	nyi	_Antti Karttunen_
+A364291	filtpos	1	1	new A243071()	(k, v) -> v.compareTo(ZV(k)) <= 0	Numbers k such that A243071(k) <= k.	nonn	1..71	nyi	_Antti Karttunen_
+A364289	filtpos	1	1	new A243071()	(k, v) -> v.compareTo(ZV(k)) >= 0	Numbers k such that A243071(k) >= k.	nonn	1..78	nyi	_Antti Karttunen_
+A365806	filtpos	1	1	new A243071()	SQUARE 	Numbers k such that A243071(k) is a square.	nonn	1..56	nyi	_Antti Karttunen_
+A324652	filtpos	1	1	new A318468()	(k, v) -> v.equals(ZV(2*k))	Numbers k such that A318468(k) (bitwise-AND of 2*k and sigma(k)) is equal to 2*k.	nonn	1..20000	nyi	_Antti Karttunen_
+#A342922	filtpos	1	1	new A342925()	(k, v) -> 	Numbers k such that A342925(k) = k + 2*A003415(k).	nonn,more	1..12	nyi	_Antti Karttunen_
+#A342923	filtpos	1	1	new A342925()	(k, v) -> 	Numbers k such that A342925(k) = k + 3*A003415(k).	nonn,more	1..8	nyi	_Antti Karttunen_
+A347880	filtpos	1	1	new A342926()	(k, v) -> v.mod(3) == 0	Numbers k such that A342926(k) is a multiple of 3.	nonn	1..69	nyi	_Antti Karttunen_
+#A354994	filtpos	1	1	new A344005()	(k, v) -> 	Numbers k such that A344005(d) < A344005(k) for all proper divisors d of k.	nonn	1..77	nyi	_Antti Karttunen_
+##A344755	filtpos	1	1	new A344753()	(k, v) -> 	Numbers k such that A344753(k) is a multiple of A048250(k), and k is a multiple of A344753(k)/A048250(k).	nonn	1..50	nyi	_Antti Karttunen_
+##A344754	filtpos	1	1	new A344753()	(k, v) -> 	Numbers k such that A344753(k) is a multiple of A048250(k).	nonn	1..58	nyi	_Antti Karttunen_
+##A345004	filtpos	1	1	new A345001()	(k, v) -> 	Numbers k such that A345001(k)*A048250(k) is equal to A342001(k)*A344753(k) and A345001(n)/A342001(n) is an integer.	nonn,more	1..6	nyi	_Antti Karttunen_
+##A345002	filtpos	1	1	new A345001()	(k, v) -> 	Numbers k such that A345001(k)/A342001(k) is a positive natural number and a divisor of k.	nonn,more	1..8	nyi	_Antti Karttunen_
+##A345051	filtpos	1	1	new A345048()	(k, v) -> 	Numbers k such that A345048(k) is equal to A345049(k).	nonn,more	1..20	nyi	_Antti Karttunen_
+##A353456	filtpos	1	1	new A353627()	(k, v) -> 	Numbers k such that A353627(k) is less than A353628(k).	nonn	1..55	nyi	_Antti Karttunen_
+##A353807	filtpos	1	1	new A353802()	(k, v) -> 	Numbers k such that A353802(k) / sigma(sigma(k)) is an integer > 1, where A353802(n) = Product_{p^e||n} sigma(sigma(p^e)).	nonn	1..46	nyi	_Antti Karttunen_
+##A359777	filtpos	1	1	new A356163()	(k, v) -> 	Numbers k such that A356163(k) = 1 but A359774(k) = 0, where A359774 is the parity of Dirichlet inverse of the former (which is the characteristic function of the numbers with an even sum of prime factors, with repetition).	nonn	1..63	nyi	_Antti Karttunen_
+##A359784	filtpos	1	1	new A358680()	(k, v) -> 	Numbers k such that A358680(k) = 1 but A359781(k) = 0, where A359781 is the parity of Dirichlet inverse of the former (which is the characteristic function of the numbers with even arithmetic derivative).	nonn	1..57	nyi	_Antti Karttunen_
+
+A364544	filtpos	1	1	new A005940()	(k, v) -> v.mod(k) == 0	Numbers k such that k divides A005940(k).	nonn	1..63	nyi	_Antti Karttunen_
+A364548	filtpos	1	1	new A005941()	(k, v) -> v.mod(k) == 0	Numbers k such that k divides A005941(k).	nonn	1..63	nyi	_Antti Karttunen_
+A364494	filtpos	1	1	new A163511()	(k, v) -> v.mod(k) == 0	Numbers k such that k divides A163511(k).	nonn	1..62	nyi	_Antti Karttunen_
+A364497	filtpos	1	1	new A243071()	(k, v) -> v.mod(k) == 0	Numbers k such that k divides A243071(k).	nonn	1..52	nyi	_Antti Karttunen_
+
+A364546	filtpos	1	1	new A005940()	(k, v) -> k.mod(v) == 0	Numbers k such that k is a multiple of A005940(k).	nonn	1..58	nyi	_Antti Karttunen_
+A364550	filtpos	1	1	new A005941()	(k, v) -> k.mod(v) == 0	Numbers k such that k is a multiple of A005941(k).	nonn	1..59	nyi	_Antti Karttunen_
+A364496	filtpos	1	1	new A163511()	(k, v) -> k.mod(v) == 0	Numbers k such that k is a multiple of A163511(k).	nonn	1..53	nyi	_Antti Karttunen_
+A364964	filtpos	1	1	new A243071()	(k, v) -> k.mod(v) == 0	Numbers k such that k is a multiple of A243071(k).	nonn	1..57	nyi	_Antti Karttunen_
+
+A246351	nyi----	Numbers n such that A048673(n) < n.	nonn	1..10000	nyi	_Antti Karttunen_
+A246352	nyi----	Numbers n such that A048673(n) >= n.	nonn	1..10000	nyi	_Antti Karttunen_
+
+A277324	nyi----	Odd bisection of A260443 (the even terms): a(n) = A260443((2*n)+1).	nonn	0..1024	nyi	_Antti Karttunen_
+A284573	nyi----	Odd bisection of A278243: a(n) = A046523(€277324(n)).	nonn	0..1024	nyi	_Antti Karttunen_
+A284566	nyi----	Odd bisection of A284556.	nonn	0..8192	nyi	_Antti Karttunen_
+A291767	nyi----	Odd bisection of A291761.	nonn	1..16385	nyi	_Antti Karttunen_
+
+A322874	nyi----	Ordinal transform of A007431, which is M√∂bius transform of Euler phi.	nonn	1..65537	nyi	_Antti Karttunen_
+A344770	Ordinal	Ordinal transform of A011772.	nonn,look	1..65537	A081373/ordtraf	_Antti Karttunen_
+A286477	Ordinal	Ordinal transform of A032742, starting from its first term a(1) = 1.	nonn	1..10000	A081373/ordtraf	_Antti Karttunen_
+A286478	Ordinal	Ordinal transform of A034968, factorial base digit sum.	nonn,base	0..10080	A081373/ordtraf	_Antti Karttunen_
+A330738	Ordinal	Ordinal transform of A049820, where A049820(n) = n - d(n), with d(n) the number of divisors of n (A000005).	nonn	1..65537	A081373/ordtraf	_Antti Karttunen_
+A322871	Ordinal	Ordinal transform of A060681, where A060681(n) = n - A032742(n).	nonn	1..65537	A081373/ordtraf	_Antti Karttunen_
+A303777	Ordinal	Ordinal transform of A081373; ordinal transform of {the ordinal transform of A000010}.	nonn	1..65537	A081373/ordtraf	_Antti Karttunen_
+A286552	nyi----	Ordinal transform of A286622, or equally, of A278222.	nonn,base	0..65536	nyi	_Antti Karttunen_
+A322873	Ordinal	Ordinal transform of A300721, which is M√∂bius transform of A060681.	nonn	1..65537	A081373/ordtraf	_Antti Karttunen_
+A322025	nyi----	Ordinal transform of A322023.	nonn	1..65537	nyi	_Antti Karttunen_

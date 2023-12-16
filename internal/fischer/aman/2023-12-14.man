@@ -1,0 +1,31 @@
+A123377	holos	0	[[0],[-1],[340],[-5798],[340],[-1]]	0,10,2916,933470	0	OGF	For n >= 4, a(n) = 340*a(n-1) - 5798*a(n-2) + 340*a(n-3) - a(n-4)
+A282182	tuptraf	0	(n, s) -> s[0].*(815806500201L).+(s[1].*(881340705000L)).+(s[2].*(26021050000L))	""	new A282382(), new A282461(), new A282433()	a(n) = 815806500201*A282382(n) + 881340705000*A282461(n) + 26021050000*A282433(n).
+A323988	holos	0	[[0],[16,8],[-8,-4],[-6,-2],[3,1]	1,2,5	3	OGF	 (8*n+16)*a(n) + (-4*n-8)*a(n+1) + (-2*n-6)*a(n+2) + (n+3)*a(n+3) = 0
+A367967	holos	0	[[0],[-3],[10],[-12],[6],[-1]]	0,0,3,27	0	OGF	a(n) = 6*a(n-1) - 12*a(n-2) + 10*a(n-3) - 3*a(n-4)
+A167140	convprod	0	2	new A155200()
+A226706	convprod	0	1/2	new A226705()
+A246572	convprod	0	1/2	new A246570()	Self-convolution equals A246570.
+A246573	convprod	0	1/2	new A246571()	Self-convolution equals A246571.
+# A305104	convprod	0	1,1	new A066898(), new A000009()
+A352383	convprod	0	1/3	new A352384()
+
+
+
+A265955	convprod	0	1,1	new A032309(), new A265951()	(1+2*k*x^k)/(1-2*k*x^k)
+A264685	convprod	0	1,-1	new A000009(), new A070877()	(1+1*x^k)/(1-2*x^k)
+A261584	convprod	0	1,-1	new A032302(), new A070877()	(1+2*x^k)/(1-2*x^k)
+A268498	convprod	0	1,-1	new A032302(), new A000009()	(1+2*x^k)/(1+1*x^k)
+A268499	convprod	0	1,-1	new A032308(), new A000009()	(1+3*x^k)/(1+1*x^k)
+A303390	convprod	0	1,-1	new A032308(), new A292128()	(1+3*x^k)/(1-3*x^k)
+A303391	convprod	0	1,1	new A261568(), new A246936()	(1+4*x^k)/(1-4*x^k)
+A268500	convprod	0	1,-1	new A022629(), new A000009()	(1+k*x^k)/(1+1*x^k)
+A269154	convprod	0	1,-1	new A022629(), new A032302()	(1+k*x^k)/(1+2*x^k)
+A269153	convprod	0	-1,-1	new A006906(), new A070877()	(1-k*x^k)/(1-2*x^k)
+A269155	convprod	0	-1,-1	new A006906(), new A032302()	(1-k*x^k)/(1+2*x^k)
+A269339	convprod	0	-1,-1	new A006906(), new A000009()	(1-k*x^k)/(1+1*x^k)
+A303397	convprod	0	1,-1	new A070877(), new A032302()	(1-2*x^k)/(1+2*x^k)
+A303398	convprod	0	1,-1	new A292128(), new A032308()	(1-3*x^k)/(1+3*x^k)
+A303402	convprod	0	-1,-1	new A246936(), new A261568()	(1-4*x^k)/(1+4*x^k)
+
+A303947	convprod	0	1,-1	new A279484(), new A276516()	Product_{k>=2} (1-x^(k^3))/(1-x^(k^2)).
+A304002	convprod	0	1,-1	new A279485(), new A276516()	Product_{k>=2} (1-x^(k^4))/(1-x^(k^3)).

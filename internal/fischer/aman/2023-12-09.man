@@ -1,0 +1,169 @@
+# A351933
+# Mathar Conjecture:
++4*a(n) -4*a(n-1) -4*(n-1)*(n-2)*a(n-2) -2*(n-1)*(n-2)*a(n-3) +(n-1)*(n-2)*(n-3)*(n-4)*a(n-4)=0
+[[0],[24,-50,35,-10,1],[-4,6,-2],[-8,12,-4],[-4],[4]]
+
+FindRE(exp(x/(1-x^2/2)),x,a(n));
+-4*a(n)+(n-3)*a(n-3)-2*a(n-2)+(-4*n+4)*a(n-1)+(4*n+4)*a(n+1) = 0
+A351933	holose	0	[[0],[-4,1],[-2],[8,-4],[-4],[0,4]]	1	0	1
+
+FindRE(exp(x / (1 - x^3/6)),x,a(n));
+-36*a(n)+(n-5)*a(n-5)-12*a(n-3)+(-12*n+24)*a(n-2)+(36*n+36)*a(n+1) = 0
+A351934	holose	0	[[0],[-6,1],[0],[-12],[36,-12],[0],[-36],[0,36]]	1	0	1
+
+FindRE(exp(x / (1 - x^4/24)),x,a(n));
+-576*a(n)+(n-7)*a(n-7)-72*a(n-4)+(-48*n+144)*a(n-3)+(576*n+576)*a(n+1) = 0
+A351935	holose	0	[[0],[-8,1],[0],[0],[-72],[192,-48],[0],[0],[-576],[0,576]]	1	0	1
+
+FindRE(exp(x / (1 - x^5/5!)),x,a(n));
+-14400*a(n)+(n-9)*a(n-9)-480*a(n-5)+(-240*n+960)*a(n-4)+(14400*n+14400)*a(n+1) = 0
+A351936	holose	0	[[0],[-10,1],[0],[0],[0],[-480],[1200,-240],[0],[0],[0],[-14400],[0,14400]]	1	0	1
+A361547	holose	0	[[0],[4],[-5],[0],[0],[-240,120],[240,-240],[0,120]]	1	0	1
+
+
+%F A143168 E.g.f.: (d^3/dx^3)((1-(1-4*x)^(1/4))^3)/3! = (-1/2)*(20*x - 5 - 21*(1-4*x)^(1/2)+24*(1-4*x)^(3/4))/(1-4*x)^(13/4).
+%F A143169 E.g.f.: d^4/dx^4 ((1-(1-4*x)^(1/4))^4)/4! = (-1/2)*(-45*(1-4*x)^(1/2)+120*(1-4*x)^(1/4)-77)/(1-4*x)^(15/4).
+%F A143170 E.g.f.: d^5/dx^5 ((1-(1-4*x)^(1/4))^5)/5! = (1/4)*(539+154*x+585*(1-4*x)^(1/2)-1120*(1-4*x)^(1/4))/(1-4*x)^(19/4).
+
+A328527	convprod	0	2	new A028930()	Phi^2, where Phi = g.f. for A028930.
+A328528	convprod	0	3	new A028930()	Phi^3, where Phi = g.f. for A028930.
+A328529	convprod	0	4	new A028930()	Phi^4, where Phi = g.f. for A028930.
+A328530	convprod	0	5	new A028930()	Phi^5, where Phi = g.f. for A028930.
+A328531	convprod	0	6	new A028930()	Phi^6, where Phi = g.f. for A028930.
+A328532	convprod	0	5,1	new A028930(), new A028959()	Phi^5*F^1, where Phi = g.f. for A028930, F = g.f. for A028959.
+A328533	convprod	0	4,2	new A028930(), new A028959()	Phi^4*F^2, where Phi = g.f. for A028930, F = g.f. for A028959.
+A328534	convprod	0	3,3	new A028930(), new A028959()	Phi^3*F^3, where Phi = g.f. for A028930, F = g.f. for A028959.
+A328535	convprod	0	2,4	new A028930(), new A028959()	Phi^2*F^4, where Phi = g.f. for A028930, F = g.f. for A028959.
+A328536	convprod	0	1,5	new A028930(), new A028959()	Phi^1*F^5, where Phi = g.f. for A028930, F = g.f. for A028959.
+A089603	convprod	0	1/2	new A081085()	
+A109475	convprod	0	1/2	new A085517()	G.f.: square root of weight enumerator of [16,7,6] DEC extended BCH code (cf. A085517).
+A109475	convprod	0	1/2	new A085517()	G.f.: square root of weight enumerator of [16,7,6] DEC extended BCH code (cf. A085517).
+A109478	convprod	0	1/2	new A109477()	G.f.: square root of weight enumerator of [32,11,10] extended BCH code (cf. A109477).
+A117264	convprod	0	1/2	new A117263()	Self-convolution square-root of A117263
+A114209	prepend	1	new A008731()	0
+
+%F A112502 a(n) = - 81/8 - (11/4)*(n+1) - (1/2)*binomial(n+2, 2) - 16*(n+1)*2^n + (243/8)*3^n, n>=0 (from partial fractions for g.f.).
+%F A112503 a(n) = 7813/324 + (2251/432)*(n+1) + (31/36)*binomial(n+2, 2) +(1/12)*binomial(n+3, 3) +(-1344 -256*(n+1) - 64*binomial(n+2, 2))*2^n + (6561/4 - (6561/16)*(n+1))*3^n + (32768/81)*4^n, n>=0 (from partial fractions for g.f.).
+A147536	holos	0	[[0],[-12],[7],[-1]]	5,16	0	0	a(n)=7*a(n-1)-12*a(n-2) = 4*3^n+4^n. G.f.: (5-19x)/((1-4x)(1-3x)). [From _R. J. Mathar_, Nov 09 2008]
+A151997	holos	0	[[0],[1000],[-1110],[111],[-1]]	9,169,12769	0	0	a(n) = (100^(n+1)+340*10^n+289)/81. a(n)= 111*a(n-1) -1110*a(n-2) +1000*a(n-3). G.f.: (9-830*x+4000*x^2)/((1-x) * (100*x-1) * (10*x-1)). [From _R. J. Mathar_, Sep 15 2009]
+%F A162723 a(n)=7*2^(n-1)+3*2^(2*n-1)-4*3^n. G.f.: -(1-8*x+19*x^2)/((3*x-1)*(2*x-1)*(4*x-1)) [From _R. J. Mathar_, Jul 13 2009]
+
+A367245	holose	0	[[0],[180,-60],[282,-235,47],[72,-132,72,-12],[0,-6,11,-6,1]]	1	0	EGF	(116*exp(5*x)-235*exp(4*x)+120*exp(3*x)-1)/20
+
+%H A174154 Vaclav Kotesovec, <a href="/€174154/a174154.txt">G.f.</a>
+%H A174155 Vaclav Kotesovec, <a href="/€174155/a174155.txt">G.f.</a>
+%H A174249 Vaclav Kotesovec, <a href="/€174249/a174249.txt">G.f. and the recurrence (of order 324)</a>
+%H A174558 Vaclav Kotesovec, <a href="/€174558/a174558.txt">G.f.</a>
+%F A178722 Vaclav Kotesovec, <a href="/€178722/a178722.txt">G.f.</a>
+%H A179340 Vaclav Kotesovec, <a href="/€179340/a179340.txt">G.f. for €179340</a>
+%F A179341 Vaclav Kotesovec, <a href="/€179341/a179341.txt">G.f. for €179341</a>
+%F A179345 Vaclav Kotesovec, <a href="/€179345/a179345.txt">Vaclav Kotesovec, G.f. for €179345</a>
+%H A219990 Vaclav Kotesovec, <a href="/€219990/a219990.txt">G.f. for €219990</a>
+%H A247680 Vaclav Kotesovec, <a href="/€247680/a247680.txt">G.f. and the recurrence (of order 324)</a>
+%H A247767 Vaclav Kotesovec, <a href="/€247767/a247767.txt">Recurrence (of order 118) and g.f.</a>
+%H A249762 Vaclav Kotesovec, <a href="/€249762/a249762.txt">G.f. and the recurrence (of order 315)</a>
+%H A233290 Vaclav Kotesovec, <a href="/€233290/a233290.txt">Recurrence (of order 126) and G.f.</a>
+%H A259778 Vaclav Kotesovec, <a href="/€259778/a259778.txt">Recurrence (of order 142) and g.f.</a>
+%H A259779 Vaclav Kotesovec, <a href="/€259779/a259779.txt">Recurrence (of order 494) and g.f.</a>
+%H A270065 Vaclav Kotesovec, <a href="/€270065/a270065.txt">Recurrence (of order 135) and g.f.</a>
+%H A257866 Vaclav Kotesovec, <a href="/€257866/a257866.txt">G.f. and the recurrence (of order 315)</a>
+%H A323423 Vaclav Kotesovec, <a href="/€323423/a323423.txt">G.f. for €323423</a>
+%F A226374 See link for g.f.
+%F A219990 G.f.: see link above. - _Vaclav Kotesovec_, Dec 03 2012
+%F A220300 G.f.: see link above.
+%F A233294 G.f.: see link above.
+%F A233340 G.f.: see link above.
+%F A276842 G.f.: see link above.
+%F A287279 G.f.: see link above.
+%F A287280 G.f.: see link above.
+%F A287281 G.f.: see link above.
+%F A247443 G.f.: see link.
+## A216039		Number of 6 by 6 magic squares with line sum n. cf. text
+## A293776 cf. text
+%F A219862 G.f.: see Maple program.
+%F A219867 G.f.: see Maple program.
+%F A219925 G.f.: see Maple program.
+%F A219926 G.f.: see Maple program.
+%F A219927 G.f.: see Maple program.
+%F A219947 G.f.: see Maple program.
+%F A219948 G.f.: see Maple program.
+%F A219969 G.f.: see Maple program.
+%F A219988 G.f.: see Maple program.
+%F A219989 G.f.: see Maple program.
+%F A220055 G.f.: see Maple program.
+%F A220056 G.f.  see Maple program.
+%F A220057 G.f.: see Maple program.
+%F A220132 G.f.: see Maple program.
+%F A220133 G.f.: see Maple program.
+%F A220134 G.f.: see Maple program.
+%F A220135 G.f.: see Maple program.
+%F A220298 G.f.: see Maple program.
+%F A220299 G.f.: see Maple program.
+%F A226373 G.f.: see Maple program.
+%F A238916 G.f.: see Maple program.
+%F A238917 G.f.: see Maple program.
+%F A239269 G.f.: see Maple program.
+%F A241877 G.f.: see Maple program.
+%F A241878 G.f.: see Maple program.
+%F A247117 G.f.: see Maple program.
+%F A247124 G.f.: see Maple program.
+%F A247126 G.f.: see Maple program.
+%F A247127 G.f.: see Maple program.
+%F A247268 G.f.: see Maple program.
+%F A250663 G.f.: See Maple program.
+%F A250664 G.f.: See Maple program.
+%F A250665 G.f.: See Maple program.
+%F A250666 G.f.: See Maple program.
+%F A250667 G.f.: See Maple program.
+%F A290733 See Maple program for g.f.
+%F A290734 See Maple program for g.f.
+%F A290735 See Maple code for g.f.
+%F A290736 See Maple code for g.f.
+%F A290737 See Maple code for g.f.
+%C A251073 G.f.: see link above.
+%F A255255 G.f.: see Maple program.
+%F A323352 G.f.: see link above.
+%F A323825 Ekhad-Zeilberger (2019) gives a g.f.
+
+%F A249926 G.f.: 1 + Series_Reversion(x - 3*x^2 - 6*x^3 - 4*x^4 - x^5).
+%F A249928 G.f.: 1 + Series_Reversion(x - 4*x^2 - 10*x^3 - 10*x^4 - 5*x^5 - x^6).
+%F A249929 G.f.: 1 + Series_Reversion(x - 6*x^2 - 15*x^3 - 14*x^4 - 6*x^5 - x^6).
+%F A249930 G.f.: 1 + Series_Reversion(x - 5*x^2 - 15*x^3 - 20*x^4 - 15*x^5 - 6*x^6 - x^7).
+%F A249931 G.f.: 1 + Series_Reversion(x - 8*x^2 - 24*x^3 - 30*x^4 - 20*x^5 - 7*x^6 - x^7).
+%F A249932 G.f.: 1 + Series_Reversion(x - 9*x^2 - 27*x^3 - 33*x^4 - 21*x^5 - 7*x^6 - x^7).
+%F A250885 G.f.: Series_Reversion(x - 4*x^2 + 3*x^3).
+%F A250886 G.f.: Series_Reversion(x - x^2 - 2*x^3).
+%F A250887 G.f.: Series_Reversion(x - 2*x^2 - 3*x^3).
+%F A250888 G.f.: Series_Reversion(x - 3*x^2 - 4*x^3).
+%F A250889 G.f.: Series_Reversion(x - x^2 - 6*x^3).
+%F A250890 G.f.: Series_Reversion(x - 3*x^2 - 10*x^3).
+%o A250918 (PARI) /* G.f.: 1 + Series_Reversion(x*(1+3*x+x^2)/((1+x)^3*(1+2*x))) */
+%C A291376 Reversion of g.f. (with constant term omitted) for A000698.
+%C A291377 Reversion of g.f. (with constant term omitted) for A003823.
+%C A291378 Reversion of g.f. for A006958.
+%C A291418 Reversion of g.f. (with constant term omitted) for A010054.
+%C A291488 Reversion of g.f. (with constant term omitted) for A000219.
+%C A291489 Reversion of g.f. (with constant term omitted) for A026007.
+%C A291645 Reversion of g.f. (with constant term omitted) for A033461.
+%C A291646 Reversion of g.f. (with constant term omitted) for A000700.
+%C A291695 Reversion of g.f. for A006128.
+%C A292363 Reversion of g.f. for A002487.
+%C A292875 Reversion of g.f. for A001615 (Dedekind psi function).
+
+%F A299108 G.f.: 1/(1 - x/theta_4(x)), where theta_4() is the Jacobi theta function.
+%F A299954 G.f.: 432 * (1 + (1 - 1728/j)^(1/2)) / (1 - (1 - 1728/j)^(1/2)).
+%F A299954 G.f.: 432 * (E_4^(3/2) + E_6) / (E_4^(3/2) - E_6).
+%F A289635 G.f.: 1/12 * E_4/E_2 - 1/12 * E_2.
+%F A289636 G.f.: 1/3 * E_6/E_4 - 1/3 * E_2.
+%F A289637 G.f.: 1/2 * E_8/E_6 - 1/2 * E_2.
+%F A289638 G.f.: 2/3 * E_6/E_4 - 2/3 * E_2 = 2/3 * E_10/E_8 - 2/3 * E_2.
+%F A289639 G.f.: 1/3 * E_6/E_4 + 1/2 * E_8/E_6 - 5/6 * E_2.
+%F A289640 G.f.: 2/3 * E_6/E_4 + 1/2 * E_8/E_6 - 7/6 * E_2.
+%F A290009 G.f.: 691*E_4^3*E_12.
+%F A320586 G.f.: (theta_3(x/(1 - x))^4 + theta_2(x/(1 - x))^4 - 1)/(24*(1 - x)), where theta_() is the Jacobi theta function.
+%F A320589 G.f.: (theta_3(x/(1 + x))^4 + theta_2(x/(1 + x))^4 - 1)/(24*(1 + x)), where theta_() is the Jacobi theta function.
+%F A320651 G.f.: 24/(25 - theta_2(x)^4 - theta_3(x)^4), where theta_() is the Jacobi theta function.
+%F A320654 G.f.: 1/(2 - 1/theta_4(x)), where theta_() is the Jacobi theta function.
+
+%H A183326 a(n)=5*a(n-1)-8*a(n-2)+9*a(n-3)-2*a(n-4)+14*a(n-5)+3*a(n-6)-44*a(n-7)+18*a(n-8)+29*a(n-9)-10*a(n-10)-69*a(n-11)+16*a(n-12)+87*a(n-13)+15*a(n-14)-55*a(n-15)-40*a(n-16)+6*a(n-17)+9*a(n-18)+4*a(n-19)-2*a(n-20).
+A192479	simtraf	0	new ConvolutionProduct(0, "-1", new A186997()).skip(1)	v -> v.negate()	G.f.: 1 - 1/A186997(x)

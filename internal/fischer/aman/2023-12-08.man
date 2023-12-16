@@ -1,0 +1,183 @@
+# with broken construction / div. by 0
+#? A093987	tuptraf	0	(n, s) -> s[0].^(2*n)./(s[1])	"1,2"	PREVIOUS,PREVIOUS	a(n+1)=a(n)^(2*n)/a(n-1)
+#? A097565	tuptraf	0	(n, s) -> s[0].mod(s[2]).*(s[0]).+(s[1])	"0,1,0"	PREVIOUS,PREVIOUS,new A000045()	a(n)=mod(a(n-1),fibonacci(n))*a(n-1)+a(n-2)
+#? A178081	tuptraf	0	(n, s) -> s[0].*(s[2]).+(s[1].^(2))./(s[3])	"0,1,1,-1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-3)+a(n-2)^2)/a(n-4)
+#? A247370	tuptraf	0	(n, s) -> s[0].*(s[2]).-(Z_1(n).*(s[1].^(2)))./(s[3])	"1,1,0,1,1,1,2,3,-1,7"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-3)-(-1)^n*a(n-2)^2)/a(n-4)
+#? A256916	tuptraf	0	(n, s) -> s[0].*(s[4]).+(s[2].^(2))./(s[5])	"1,1,0,-1,-3,-3,-2,9,29,83,56,-243,-2351,-7227,-18648"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-5)+a(n-3)^2)/a(n-6)
+#? A292433	tuptraf	0	(n, s) -> Puma.primeZ(s[0]).*(s[0]).+(s[1])	"0,1"	PREVIOUS,PREVIOUS	a(0) = 0, a(1) = 1; a(n) = prime(a(n-1))*a(n-1) + a(n-2).
+
+
+# %F A160384 Recurrence relation: a(0) = 0, a(3m) = a(m), a(3m+1) = a(3m+2) = 1+a(m).
+# %F A160385 Recurrence relation: a(0) = 0, a(4m) = a(m), a(4m+1) = a(4m+2) = a(4m+3) = 1+a(m).
+# A111669	tuptraf	0	F(n,k)=F(n-1,k.-1).+fibonacci(k.+1)F(n-1,k),F(0,k)=kroneckerdelta(k)	""	PREVIOUS	F(n,k)=F(n-1,k-1)+fibonacci(k+1)F(n-1,k),F(0,k)=kroneckerdelta(k)
+# A114641	tuptraf	0	(n, s) -> 2.^(s[1].+log(2,s[0]))	"1,2"	PREVIOUS,PREVIOUS	a(n)=2^(a(n-2)+log(2,a(n-1)))
+# A114954	tuptraf	0	(n, s) -> ceiling(surd(s[0].^3,2).+surd(s[1].^3,2))	"1,1"	PREVIOUS,PREVIOUS	a(n)=ceiling(surd(a(n-1)^3,2)+surd(a(n-2)^3,2))
+# A132027	nyi Ft	Product_{k=0..floor(log_3(n))} floor(n/3^k),  n>=1.	nonn	1..10000	nyi	_Hieronymus Fischer_, Aug 20 2007
+# A132028	nyi F	Product{0<=k<=floor(log_4(n)), floor(n/4^k)}, n>=1.	nonn	1..56	nyi	_Hieronymus Fischer_
+# A132029	nyi Ft	Product{0<=k<=floor(log_5(n)), floor(n/5^k)}, n>=1.	nonn	1..1000	nyi	_Hieronymus Fischer_
+# A132030	nyi   	Product_{k=0..floor(log_6(n))} floor(n/6^k),  n>=1.	nonn	1..10000	nyi	_Hieronymus Fischer_
+# A132031	nyi Ft	Product{0<=k<=floor(log_7(n)), floor(n/7^k)}, n>=1.	nonn	1..61	nyi	_Hieronymus Fischer_
+# A132032	nyi F	Product{0<=k<=floor(log_8(n)), floor(n/8^k)}, n>=1.	nonn	1..62	nyi	_Hieronymus Fischer_
+# A132033	nyi F	Product{0<=k<=floor(log_9(n)), floor(n/9^k)}, n>=1.	nonn,base	1..62	nyi	_Hieronymus Fischer_
+# A185341	tuptraf	0	u(1)=u(2)=u(3)=1,u(n)=(u(n-1).+u(n-2))./u(n-3)	""	PREVIOUS	u(1)=u(2)=u(3)=1,u(n)=(u(n-1)+u(n-2))/u(n-3)
+# A192654	tuptraf	0	(n, s) -> floor(sqrt(catalannumber(n))).-s[0]	"1"	PREVIOUS	a(n)=floor(sqrt(catalannumber(n)))-a(n-1)
+# A258326	tuptraf	0	(n, s) -> s[0].+prime(n+2).-2.*prime(n+1).+2.*prime(n).-prime(n-1)	"3"	PREVIOUS	a(n)=a(n-1)+prime(n+2)-2*prime(n+1)+2*prime(n)-prime(n-1)
+# A258967	tuptraf	0	(n, s) -> ceiling(sqrt(s[0].*(s[1]).*s[2]))	"1,2,3"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=ceiling(sqrt(a(n-1)*a(n-2)*a(n-3)))
+# A271835	tuptraf	0	table(a(i)=1,{i,0,11	""	PREVIOUS	table(a(i)=1,{i,0,11
+# A271838	tuptraf	0	(n, s) -> (s[0].*s[16].+s[8].^(2))./s[17]	"1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-17)+a(n-9)^2)/a(n-18)
+# A271949	tuptraf	0	table(a(d)=1,{d,0,10	""	PREVIOUS	table(a(d)=1,{d,0,10
+# A275695	tuptraf	0	(n, s) -> (s[0].+(s[2]).+s[4]).*(s[1].+s[3].+s[5])./s[6]	"1,1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)+a(n-3)+a(n-5))*(a(n-2)+a(n-4)+a(n-6))/a(n-7)
+# A275771	tuptraf	0	a(n+3)=if(n=0,1,prime(n)).-a(n)	"0,0,0"	PREVIOUS	a(n+3)=if(n=0,1,prime(n))-a(n)
+# A301992	tuptraf	0	b(n+1)=8.*(n-1).*(2.*n-3).*b(n).+(n-1)./9.*product((2.*k.-3).^(2),{k,0,n-1	""	PREVIOUS	b(n+1)=8*(n-1)*(2*n-3)*b(n)+(n-1)/9*product((2*k-3)^2,{k,0,n-1
+# A302113	tuptraf	0	a(m.+1)=(4./(2.*m.-1)).*(2.*m.*(2.*m.+1).*a(m).+(.-1).^(m.+1).*product(2.*k.+1,{k,0,m	""	PREVIOUS	a(m+1)=(4/(2*m-1))*(2*m*(2*m+1)*a(m)+(-1)^(m+1)*product(2*k+1,{k,0,m
+# A302114	tuptraf	0	a(m.+1)=8.*m.*(2.*m.-1).*a(m).+(.-1).^(m.+1).*m.*product((2.*k.+1).^(2),{k,0,m.-2	""	PREVIOUS	a(m+1)=8*m*(2*m-1)*a(m)+(-1)^(m+1)*m*product((2*k+1)^2,{k,0,m-2
+# A302115	tuptraf	0	(n, s) -> 16.*(n-1).*s[0].+(.-1).^n*(4./3).*product((2.*k.-3),{k,0,n-1	""	PREVIOUS	a(n)=16*(n-1)*a(n-1)+(-1)^n*(4/3)*product((2*k-3),{k,0,n-1
+# A302116	tuptraf	0	(n, s) -> 16.*(n-1).*((2.*n-3).*s[0].+(.-1).^n/9.*product((2.*k.-3).^(2),{k,0,n-1	""	PREVIOUS	a(n)=16*(n-1)*((2*n-3)*a(n-1)+(-1)^n/9*product((2*k-3)^2,{k,0,n-1
+# A307131	tuptraf	0	f(n)=(2.+2.*(n-2).*f(n-2).+(n-1).*(n-2).*f(n-1))./(n(n-1)),f(0)=0,f(1)=0	""	PREVIOUS	f(n)=(2+2*(n-2)*f(n-2)+(n-1)*(n-2)*f(n-1))/(n(n-1)),f(0)=0,f(1)=0
+# A307132	tuptraf	0	f(n)=(2.+2.*(n-2).*f(n-2).+(n-1).*(n-2).*f(n-1))./(n(n-1)),f(0)=0,f(1)=0	""	PREVIOUS	f(n)=(2+2*(n-2)*f(n-2)+(n-1)*(n-2)*f(n-1))/(n(n-1)),f(0)=0,f(1)=0
+# A308835	tuptraf	0	dot({(3.*n-5).^(2).*(3.*n-4).^(2).*(9.*n-4),.-18.*(n-1).*(40.-197.*n+351.*n^2.-279.*n^3.+81.*n^4),81.*(n-1).*n^3.*(9.*n-13)	""	PREVIOUS	dot({(3*n-5)^2*(3*n-4)^2*(9*n-4),-18*(n-1)*(40-197*n+351*n^2-279*n^3+81*n^4),81*(n-1)*n^3*(9*n-13)
+# A308837	tuptraf	0	dot({(6.*n-11).^(2).*(6.*n-7).^(2).*(18.*n-5),.-36.*(n-1).*(385.-2426.*n+4968.*n^2.-4248.*n^3.+1296.*n^4),1296.*(n-1).*n^3.*(18.*n-23)	""	PREVIOUS	dot({(6*n-11)^2*(6*n-7)^2*(18*n-5),-36*(n-1)*(385-2426*n+4968*n^2-4248*n^3+1296*n^4),1296*(n-1)*n^3*(18*n-23)
+# A309006	tuptraf	0	x(n+1)=x(n).*x(n-1).-(x(n).+x(n-1)),x(1)=2,x(2)=5	""	PREVIOUS	x(n+1)=x(n)*x(n-1)-(x(n)+x(n-1)),x(1)=2,x(2)=5
+# A318053	tuptraf	0	(n, s) -> ceiling(sqrt(2.*s[0].*s[1]))	"1,1"	PREVIOUS,PREVIOUS	a(n)=ceiling(sqrt(2*a(n-1)*a(n-2)))
+# A333260	tuptraf	0	s(m).*s(m.-5)=x.*s(m.-1).*s(m.-4).+y.*s(m.-2).*s(m.-3),s(0)=s(1)=s(2)=s(3)=s(4)=1	""	PREVIOUS	s(m)*s(m-5)=x*s(m-1)*s(m-4)+y*s(m-2)*s(m-3),s(0)=s(1)=s(2)=s(3)=s(4)=1
+# A338218	tuptraf	0	s(m).*s(m.-4)=x.*y.*z.*(s(m.-1).*s(m.-3).+s(m.-2).^(2)),s(1)=x,s(2)=1,s(3)=1,s(4)=y	""	PREVIOUS	s(m)*s(m-4)=x*y*z*(s(m-1)*s(m-3)+s(m-2)^2),s(1)=x,s(2)=1,s(3)=1,s(4)=y
+# c(n) A352207	tuptraf	0	a(n+2)=a(n+1).^(2)./a(n).*256.*(2.*n+3).^(2).*(4.*n+1).*(4.*n+3).^(2).*(4.*n+5)./(27.*(3.*n+1).*(3.*n+2).^(2).*(3.*n+4).^(2).*(3.*n+5))	"2,48"	PREVIOUS	a(n+2)=a(n+1)^2/a(n)*256*(2*n+3)^2*(4*n+1)*(4*n+3)^2*(4*n+5)/(27*(3*n+1)*(3*n+2)^2*(3*n+4)^2*(3*n+5))
+# denoms A144580	holos	0	[[0],[8],[12],[102,-56,8],[73,-60,12],[-18,22,-4],[0,4,-4]]	1,2,4,48,384,	0	
+# ret conc A084004	filter	1	new A000027()	v -> new Z(v.toString() + new A178914().a(v).toString()).isSquare()	Squares obtained as a concatenation of k and 10.s complement of k.
+# ret conc A084006	filter	1	new A000027()	v -> new Z(v.toString() + new A061601().a(v).toString()).isSquare()	Squares arising as a concatenation of k and 9.s complement of k.
+##
+#?numer A189485	tuptraf	0	(n, s) -> Z.FOUR.+(s[0])./(s[1].+(1))	"1,1"	PREVIOUS,PREVIOUS	a(n)=(4+a(n-1))/(1+a(n-2))
+#c! A185160	tuptraf	0	(n, s) -> (c(n-3).*s[0].*(s[2]).+(s[1]).^(2))./s[3]	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(c(n-3)*a(n-1)*a(n-3)+a(n-2)^2)/a(n-4)
+#fract A267438	tuptraf	0	(n, s) -> Z.FOUR.*(s[0]).-(Z.SEVEN.*(s[1])).+(Z.EIGHT.*(s[2])).-(Z.FOUR.*(s[3]))	"11,23,67,151"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=4*a(n-1)-7*a(n-2)+8*a(n-3)-4*a(n-4)
+#fract A267439	tuptraf	0	(n, s) -> Z.FOUR.*(s[0]).-(Z.SEVEN.*(s[1])).+(Z.EIGHT.*(s[2])).-(Z.FOUR.*(s[3]))	"11,23,67,151"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=4*a(n-1)-7*a(n-2)+8*a(n-3)-4*a(n-4)
+#fract A316911	tuptraf	0	2.*(n-1).*(2.*n-3).*(2.*n-1).*(33.*n-8).*(s[1]).+9.*(2.*n-1).*(693.*n^3.-1554.*n^2.+989.*n-160).*s[0].-3.*n*(3.*n-2).*(3.*n-1).*(33.*n-41).*(n, s) -> 0,,./6	"0,25"	PREVIOUS,PREVIOUS	2*(n-1)*(2*n-3)*(2*n-1)*(33*n-8)*a(n-2)+9*(2*n-1)*(693*n^3-1554*n^2+989*n-160)*a(n-1)-3*n*(3*n-2)*(3*n-1)*(33*n-41)*a(n)=0,,/6
+#fract A316912	tuptraf	0	2.*(n-1).*(2.*n-3).*(2.*n-1).*(33.*n-8).*(s[1]).+9.*(2.*n-1).*(693.*n^3.-1554.*n^2.+989.*n-160).*s[0].-3.*n*(3.*n-2).*(3.*n-1).*(33.*n-41).*(n, s) -> 0,,./6	"0,25"	PREVIOUS,PREVIOUS	2*(n-1)*(2*n-3)*(2*n-1)*(33*n-8)*a(n-2)+9*(2*n-1)*(693*n^3-1554*n^2+989*n-160)*a(n-1)-3*n*(3*n-2)*(3*n-1)*(33*n-41)*a(n)=0,,/6
+#numer  A305997	tuptraf	0	64.*(1.+n).*(2.+n).*(1.+2.*n).*(3.+2.*n).*(5.+2.*n).*(816.+755.*n+165.*n^2).*a(n).-48.*(2.+n).*(3.+2.*n).*(5.+2.*n).*(4.+3.*n).*(2039.+4103.*n+2595.*n^2.+495.*n^3).*a(n+1).+6.*(5.+2.*n).*(4.+3.*n).*(5.+3.*n).*(893628.+2406908.*n+2163923.*n^2.+803750.*n^3.+106095.*n^4).*a(n+2).-9.*(3.+n).*(4.+3.*n).*(5.+3.*n).*(7.+3.*n).*(8.+3.*n).*(226.+425.*n+165.*n^2).*a(n+3)=0,,,./15	"0,44,45616"	PREVIOUS	64*(1+n)*(2+n)*(1+2*n)*(3+2*n)*(5+2*n)*(816+755*n+165*n^2)*a(n)-48*(2+n)*(3+2*n)*(5+2*n)*(4+3*n)*(2039+4103*n+2595*n^2+495*n^3)*a(n+1)+6*(5+2*n)*(4+3*n)*(5+3*n)*(893628+2406908*n+2163923*n^2+803750*n^3+106095*n^4)*a(n+2)-9*(3+n)*(4+3*n)*(5+3*n)*(7+3*n)*(8+3*n)*(226+425*n+165*n^2)*a(n+3)=0,,,/15
+
+
+
+
+%F A093050 Recurrence: a(2n) = a(n) + [(n+1)/2] + 1, a(2n+1) = 2n.
+%F A093051 Recurrence: a(2n) = a(n) + [(n+1)/2] + 1, a(2n+1) = 2n+1.
+%F A093052 Recurrence: a(2n) = a(n) + [(n+1)/2] + 1, a(2n+1) = 2n+2.
+%F A099027 Recurrence: a(0) = 0, a(2n) = 2a(n) + 2a(n+1), a(2n+1) = 4a(n) + n+1.
+%F A110914 a(2n-1)=0 and a(2n)=2^t_1(n) where t_1(n) denotes the number of 1s in the ternary representation of n (A062756). Recurrence: a(3n)=a(n), a(3n+1)=a(n-1), a(3n+2)=2*a(n).
+%F A121753	tuptraf	1	(n, s) -> s[0].*().-(s[1].*())	"1,1"	PREVIOUS,PREVIOUS	Recurrence relation: a(n)=(1+2floor((n-2)/2))a(n-1)-[floor((n-1)/2)floor((n-2)/2)-1]a(n-2) for n>=3, a(1)=1, a(2)=1.
+%F A121754	tuptraf	1	(n, s) -> s[0].*().-(s[1].*())	"0,1"	PREVIOUS,PREVIOUS	Recurrence relation: a(n)=(2n-3)a(n-1)-(n-1)(n-3)a(n-2)+(n-2)![n-2+(1/2)(1+(-1)^(n-1))(n-1)] for n>=3; a(1)=0, a(2)=1.
+%F A173775 Recurrence: a(n) = -3a(n-1) - 5a(n-2) - 5a(n-3) + 2a(n-4) ...
+%F A178721 Recurrence: a(n) = a(n-197) + 11
+%F A188404 Recurrence (for n>9): 12*(3*n
+%F A194478 Recurrence: (n-2)*(14*n^11 + 70*n^10 -
+%F A196812 Recurrence: a(n) = a(n-32) + 4*a(n-31)
+%F A199250 Recurrence of order 4 and degree 10 for odd indices: (5 + n)^3*(3 + 2*n)
+%F A199250 Recurrence of order 4 and degree 8 for even indices: (4 + n)^3*(3 + 2*n)
+%F A212694 Recurrence: 5*n*(n+1)*(n+2)*(1...
+%F A215342 Recurrence: 283*(n-3)*(n-2)*(n-1)*n*(...
+%F A215943 Recurrence: a(n) = ((12*n^5 - 158*n^4 - (6*(-1)
+%F A217421 Recurrence: (n-4)*n^2*a(n) = (4*n^3 - 21*
+%F A219012 Recurrence equation: a(n+1) = a(n)^5 - 5*a(n)^3 + 5*a(n) with initial condition a(0) = 4.
+%F A219015 Recurrence equation: a(n+1) = 5/2*(a(n)^4 - a(n)^2)*sqrt(4*a(n) + 5) + a(n)^5 + 15/2*a(n)^4 - 25/2*a(n)^2 + 5 with initial condition a(0) = 29.
+%F A220398 Recurrence equations: For n >= 3, a(3*n) = 2. For n >= 4 we have a(3*n+2) = 2*a(3*n+1) - 2 and a(3*n+1) = 2*(a(3*n-2) - 1)^2.
+%F A220466 Recurrence: a(2n) = 4a(n) - 2^A007814(n), a(2n+1) = n+1. - _Ralf Stephan_, Dec 17 2013
+%F A228695 Recurrence (for n>9): 12*(3*n^4 - 19*n^3 + 19*n^2
+%F A228696 Recurrence (for n>11): 96*(2*n^5 - 8*n^4 - 3*n^3 +
+%F A228697 Recurrence (for n>11): 96*(72*n^5 - 864*n^4 + 3804
+%F A241877 Recurrence: a(n) + 1834933472251084800000*a(n-42) - 2989048374440755200
+A081706	filtpos	0	0	new A001006()	EVEN
+A099171	filter	0	new HolonomicRecurrence(0, "[[0],[288,-34,1],[0],[-288,34,-1],[0],[-1296,190,-7],[0],[240,-54,3],[0],[2400,-410,17],[0],[864,-154,7],[0],[-1488,382,-25],[0],[-624,146,1],[0],[288,-128,2],[0],[0,36,-18],[0],[0,8,4]]", "1,0,0,0,2,0,3,0,12,0,37,0,132,0,473", 0).skip(2)	(n, v) -> (n & 1) == 0	
+A109965	tuptraf	0	(n, s) -> s[0].+(s[0].sqrt())	"1,1"	PREVIOUS,PREVIOUS	a(n)=a(n-1)+floor(a(n-1)^(1/2))
+A117079	tuptraf	0	(n, s) -> s[0].*(2).+(s[0].toString().length())	"1"	PREVIOUS	a(n)=2*a(n-1)+integerlength(a(n-1))
+A119583	tuptraf	0	(n, s) -> (s[0].-(s[1].*(2)).+(s[2])).abs().-(s[3])	"0,0,0,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=abs(a(n-1)-2*a(n-2)+a(n-3))-a(n-4)
+A124195	tuptraf	0	(n, s) -> ZV(n).-(s[0].gcd(ZV(n)))	"1"	PREVIOUS	a(n)=n-GCD(a(n-1),n)
+A128977	tuptraf	0	(n, s) -> s[0].+(s[1]).lcm(ZV(n))	"1,1"	PREVIOUS,PREVIOUS	a(n)=LCM(a(n-1)+a(n-2),n)
+A129726	tuptraf	0	(n, s) -> s[0].+(2).+(Puma.prime(n)).-(Puma.prime(n-1))	"2"	PREVIOUS	a(n)=a(n-1)+2+prime(n)-prime(n-1)
+A131971	tuptraf	0	(n, s) -> s[0].+(s[1]).+(s[2]).modZ(n)	"1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=mod(a(n-1)+a(n-2)+a(n-3),n)
+A133369	tuptraf	0	(n, s) -> s[0].*(3).+(s[1].*(2)).modZ(37)	"0,1"	PREVIOUS,PREVIOUS	a(n)=mod(3*a(n-1)+2*a(n-2),37)
+A133999	tuptraf	0	(n, s) -> CR.valueOf(s[0]).+(CR.THREE.sqrt().*(s[1])).+(CR.HALF).floor()	"1,1"	PREVIOUS,PREVIOUS	a(n)=floor(a(n-1)+sqrt(3)*a(n-2)+1/2)
+A134717	filter	0	new A001006()	ODD
+A134718	filter	0	new A001006()	EVEN
+A134736	tuptraf	0	(n, s) -> s[0].+(ZV(n).gcd(s[0]))	"5"	PREVIOUS	a(n)=a(n-1)+GCD(n,a(n-1))
+A135250	tuptraf	0	(n, s) -> s[0].^(Puma.prime(n))	"2"	PREVIOUS	a(n)=a(n-1)^prime(n)
+A135268	tuptraf	0	(n, s) -> s[0].+(n).-(ZV(n).gcd(s[0]))	"1"	PREVIOUS	a(n)=a(n-1)+n-GCD(n,a(n-1))
+A135504	tuptraf	0	(n, s) -> s[0].+(ZV(n).lcm(s[0]))	"1"	PREVIOUS	a(1)=1; for n>1, a(n) = a(n-1) + lcm(a(n-1),n).
+A135504	tuptraf	0	(n, s) -> s[0].+(s[0].lcm(ZV(n)))	"1"	PREVIOUS	a(n)=a(n-1)+LCM(a(n-1),n)
+A135506	tuptraf	0	(n, s) -> ZV(n + 1)./(ZV(n + 1).gcd(s[0]))	"2,1"	new A135504(),PREVIOUS	a(n) = A135504(n+1)/A135504(n) - 1. ??
+A135618	simtraf	0	new A134718()	v -> v./(2)	a(n)=(3*(n-1)*a(n-2)+(2*n+1)*a(n-1))/(n+2); A134718(n)/2
+A135686	tuptraf	0	(n, s) -> s[0].+(FI(n + 1).*(s[1]))	"1,1,3"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)+fibonacci(n+1)*a(n-2)
+A135829	tuptraf	0	(n, s) -> FI(n).*(s[0]).+(s[1])	"0,1"	PREVIOUS,PREVIOUS	a(n)=fibonacci(n)*a(n-1)+a(n-2)
+A140829	tuptraf	0	(n, s) -> new Q(FI(n), s[0]).ceiling()	"1"	PREVIOUS	a(n)=ceiling(fibonacci(n)/a(n-1))
+A143363	holos	0	[[0],[-180,76,-8],[936,-460,56],[594,-494,100],[-90,314,-154],[0,40,-50],[0,25,25]]	1,1,1,3,6	0	Recurrence: 25*(n+5)*(n+6)*a(n+5) - 10*(n+5)*(5*n+21)*a(n+4) - 2*(77*n^2+613*n+1185)*a(n+3) + 2*(50*n^2+253*n+312)*a(n+2) + 4*(2*n+1)*(7*n+9)*a(n+1) - 4*n*(2*n+1)*a(n) = 0.
+A143560	holos	0	[[0],[419661272160,-767987062236,311198073822,169322306148,-197608355298,79395956298,-17564041161,2338560018,-187070310,8303148,-157437],[-142495044480,197593573824,-99955573470,25257399822,-3573220248,303388299,-17305749,758583,-19845],[264878053920,-437603846244,186070247376,70989035460,-96459739071,40767846045,-9443782401,1320131181,-111262746,5220558,-104958],[-25907984280,76636512168,-70694572422,33452369850,-9419743017,1647634386,-175699692,10442292,-264453],[81041494680,-108779883744,37933350100,18331373994,-21700482026,9068431947,-2141375514,310424661,-27450577,1362690,-29155],[20453873040,-13849378776,-16374246798,21364206408,-9590024055,2196255978,-274896858,17902962,-474957],[8930250360,-34499731776,32815374482,-1880730912,-13133286592,8635850811,-2657843883,462958323,-46725161,2550450,-58310],[7539783480,-2749380372,-5832053316,5233753098,-1840903833,338627493,-34289229,1805769,-38514],[695233440,73543296,-2163906944,1762061970,-186591101,-305196888,155153931,-34017126,3951143,-237552,5831]]	1,1,3,6,16,38,110,276,818	0	Recurrence: (n-1)*(n+2)*(5831*n^8 ...
+A143760	tuptraf	0	(n, s) -> s[0].^(2).+(ZV(n - 1).^(2))	"1"	PREVIOUS	a(n)=a(n-1)^2+(n-1)^2
+A147594	tuptraf	0	(n, s) -> JF(s[0].+(n)).sigma0()	"1"	PREVIOUS	a(n)=divisorsigma(0,n+a(n-1))
+A161674	filtpos	0	0	new A001006()	ODD
+A174400	tuptraf	0	(n, s) -> s[0].*(s[2]).-(s[1].^(2))./(s[3])	"1,0,-1,-1,-1,-2"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-3)-a(n-2)^2)/a(n-4)
+A178594	holos	0	[[0],[30,-6],[-131,37],[33,-12],[-2,1]]	0,1,2,6,24	0	Recurrence (n-2)*a(n) = 3*(4*n - 11)*a(n-1) - (37*n - 131)*a(n-2) + 6*(n-5)*a(n-3)
+A182053	holos	0	[[0],[-683212320,471546180,960660408,-600019933,-56727240,116989029,-35206080,4877445,-331056,8911],[2684746512,-1267143498,-3225599811,2032589560,146689176,-391612386,124041621,-17951856,1270758,-35644],[-2522003904,830567142,2463079431,-1688725327,-35551263,307618491,-106473036,16363266,-1217292,35644],[-1243151064,415801800,1698086052,-868874108,-87813864,163962759,-51193035,7681743,-581913,17822],[2262882096,-570445344,-2165351598,1370186548,-34386504,-209487744,80375574,-13570608,1110360,-35644],[55404648,-217471338,-245358135,383729654,-61817937,-65161374,32027385,-6031992,528447,-17822],[-583255512,981415602,406794615,-1305320541,455339724,134739966,-107578434,23690334,-2257713,80199],[5383800,-1275968592,502308600,1481741315,-903637509,-117079677,180749091,-45912714,4749810,-178220],[24231312,65428308,131900220,29523545,-67908444,5744844,11783352,-3870267,448248,-17822],[-221397192,589193010,929690583,-459307842,-445471356,143424018,39331995,-19564254,2529090,-106932],[63927360,-663189120,-534907560,505961320,161436870,-106600260,-1487115,6457305,-986955,44555]]	1, 1, 2, 5, 11, 26, 64, 159, 402, 1032	0	 Recurrence: 5*(n+2)*(n+3)....
+A182960	holos	0	[[0],[-14171760,138410856,-336284055,345436650,-162089505,28697814],[66240,-756378,2817180,-4818690,3965760,-1259712],[0,496,560,-8800,-8960,13824]]	1, 5, 95	0	Recurrence: 16*n*(2*n + 1)*(4*n
+A184554	holos	0	[[0],[-16576472045495796680070849024000,289893688337875958410304381356800,-2226957286870853095958681487206400,10095570596503325928411860644330416,-30502814939555579727642073375177368,65600048113802290416925418597605480,-104505737318855222256936652743989778,126472900102397027764353381975465523,-118101435266631658776634052605916706,85817932347078332780164281457167787,-48637532749866775982266165091669814,21420053341215951645928513645001501,-7252986821216719953340394935819854,1851399025911239564522930177462081,-344499007736959726488757653502608,44083684803897620223043502436860,-3467382222056000365115435741472,126335202183292355794290021552],[-853707626555989568760959417856000,15010836206945591170746427376678400,-116074858982969903458710402951143040,530261671557725004522281059204716096,-1616133282533259742027029573633255424,3509467776008001734202405499052651248,-5650401059504930325854129681635284136,6917082635652675307125453265013940112,-6539349948536160990361672723901778160,4814629554935667551012421832371259024,-2766926358196322696083330000722104168,1236539789853569144899911574767996848,-425177858866187774343073787192029568,110283146723151185038742135201869568,-20865366868844405750431657508416256,2716456951432915608593795930822144,-217498333781741716636850999950848,8071138459022202075716180444160],[32124010381897094833187119104000,-595448809034752369006031725977600,4878575323774693181681768242329600,-23712528873960425565237769838456832,77151760684576782702760574582819328,-179301555449643700776628872227455488,309495597929194747728344090004605952,-406611608429322354285099677840311296,412707889213597420950498891498736128,-326170522196067544879294617332249088,201076142217383004227075268433115136,-96289112471278566426814744277501952,35425782729584277851765018418278400,-9814965065117237750455324852531200,1979663577204919595361165814874112,-274180419780893662966601563422720,23301749795517215296398732754944,-915721287784832112723188711424],[0,363489460692277160099237068800,-7251735338976432484897581957120,62038977147662099006518433021952,-306967573767757737724602386743296,994155059285620751020265923313664,-2252855611531208301799450323419136,3718385622439974773636099740139520,-4582672684457736113997206146449408,4279526736418118252850708876263424,-3048727838229847118441347395452928,1656192786350424993700748689342464,-680575826041190792616614271123456,207845291613097392624508136325120,-45692081635922407824495860514816,6830847102779947941705038168064,-621409379553943042644340899840,25950563822359990604232916992]]	1, 3, 35	0	Recurrence: 214990848*(n-1)*n*(2*n - 1)*(3*n - 2)*(3*n - 1)*(6 ...
+A186750	tuptraf	0	(n, s) -> s[0].^(2).-(3)	"3"	PREVIOUS	a(n)=a(n-1)^2-3
+A188818	holos	0	[[0],[-3280896000,8370585600,-9479014400,6272277504,-2685782016,777755648,-154274816,20698112,-1797120,91136,-2048],[1436221440,-3517931520,3825129472,-2427126784,993933824,-274171136,51536128,-6510848,528384,-24832,512],[48687744,-234133184,387581056,-336125184,177262400,-60657216,13789632,-2069440,196928,-10752,256],[-79474176,221615040,-269914336,189312672,-84743712,25310080,-5109376,688528,-59280,2944,-64],[4897152,-9287784,6061100,-607652,-1339772,875300,-271348,49160,-5304,316,-8],[808416,-2769748,4008848,-3255153,1651465,-549324,121728,-17792,1645,-87,2]]	1,2,9,48,256,1360,7056,36000	0	Recurrence: (n-2)*(n+3)^2*(n+4)*
+A191778	tuptraf	0	(n, s) -> Z.TWO.*(ZV(n).lcm(s[0]))	"1"	PREVIOUS	a(n)=2*LCM(n,a(n-1))
+A226302	holos	0	[[0],[160,-72,8],[16,-4],[-100,50,-6],[-8,2],[10,-7,1]]	1, -1, 2, -4	0	Recurrence (for n>5): (n-5)*(n-2)*a(n) = -2*(n-4)*a(n-1) + 2*(n-5)*(3*n-10)*a(n-2) + 4*(n-4)*a(n-3) - 8*(n-5)*(n-4)*a(n-4). - _Vaclav Kotesovec_, Jun 14 2015
+A228694	holos	0	[[0],[-1260,4014,-2584,-2178,3520,-1744,384,-32],[-240,916,-978,10,540,-296,48],[63,-141,-78,276,-120],[3,-15,27,-18],[3]]	1, 5, 186	0	Recurrence (for n>5): 3*a(n) = 3*(2*n - 1)*(3*n^2
+A241497	tuptraf	0	(n, s) -> s[0].*(2).+(s[1].*(Z2(n - 2)))	"0,1"	PREVIOUS,PREVIOUS	Recurrence: a(n) = 2*a(n-1) + 2^(n-2) a(n-2), a(0) = 0, a(1) = 1.
+A241498	tuptraf	0	(n, s) -> s[0].+(s[1].*(Z2(n - 2)))	"2,1"	PREVIOUS,PREVIOUS	Recurrence: a(n) = a(n-1) + 2^(n-2)*a(n-2), starting 2, 1.
+A242054	holos	0	[[0],[-158678714880,1566797674176,-4252224466800,5904662951832,-5088126280384,2977283540168,-1241971254534,379463487061,-86054897080,14526457306,-1812747671,164270152,-10460376,441740,-11075,125],[22912666560,130274238528,-562192060908,888520523028,-798846673299,467691907516,-189676042905,54945153476,-11512573079,1743061635,-188024019,14017412,-682980,19525,-250],[8391116160,4698755568,-61680301620,106947475692,-95126258329,52748669665,-19643219721,5073115533,-917137550,115133497,-9779905,534555,-17075,250],[159660123840,-1554177424368,4131598937880,-5589888433502,4663253253287,-2620395813326,1038919339964,-297666341512,62190020003,-9442742053,1025287474,-77053411,3779365,-108200,1375],[-127081009440,848425119840,-1943620675674,2355611808625,-1771214161295,891974840358,-312914727885,77832109328,-13748969710,1701785295,-142972745,7680625,-235375,3125],[47484061632,-271925267076,556233509382,-601201146808,398028650726,-173096865441,51109969432,-10349546810,1424467574,-129375074,7312925,-230275,3125],[-18548116944,107999226624,-215137237254,221250046545,-136256919050,53501005344,-13587878007,2147090919,-175414789,-1377531,1844901,-179440,7575,-125],[5256191136,-16445473512,18648517428,-8175223780,-1110382294,2907087063,-1481140960,411180662,-70321082,7526552,-485380,17025,-250],[30743664,-2468013306,6940764945,-8085230461,5174164653,-2025708445,507532075,-82192432,8444562,-522530,17525,-250],[0,1433318628,-3823560792,4233949973,-2598873155,985299581,-241441049,38651424,-3972421,249165,-8575,125]]	1, 1, 5, 18, 75, 396, 2052, 11586, 71787	0	Recurrence: n*(125*n^10 - 8575*n^9 + 249165*n^8 - 3972421*n^7 + 3865142
+A242499	holos	1	[[0],[124,-95,-208,312,-128,16],[-530,572,656,-1120,480,-64],[178,-602,640,-528,224,-32],[-160,-96,64],[178,-615,336,88,-96,16]]	1, 0, 1, 3, 1, 9	0	Recurrence (for n>=5): (n+2)*(16*n^4 - 128*n
+A245088	holos	1	[[0],[3900,-26800,88675,-147325,131400,-64000,16000,-1600],[-3920,26226,-84691,134759,-113880,52544,-12544,1216],[-164,2030,-10011,20345,-20456,10880,-2944,320],[0,0,-533,1821,-2440,1600,-512,64]]	5, -5, -9	0	Recurrence (of order 3): (n-1)*n^2*(8*n^2
+A247368	tuptraf	0	(n, s) -> s[0].*(s[2]).-(Z_1(n).*(s[1].^(2)))./(s[3])	"0,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-3)-(-1)^n*a(n-2)^2)/a(n-4)
+A247369	tuptraf	0	(n, s) -> s[0].*(s[7]).+(s[5].*(s[2])).+(s[4].*(s[3]))./(s[8])	"0,-1,1,1,1,0,1,1,1,3"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = a(n-8)*a(n-1) + a(n-6)*a(n-3) + a(n-5)*a(n-4))/(-a(n-9))
+A258161	tuptraf	0	(n, s) -> s[0].^(3)./(s[1])	"1,2"	PREVIOUS,PREVIOUS	a(n)=a(n-1)^3/a(n-2)
+A258875	tuptraf	0	(n, s) -> new Q(s[0].+(s[1]).+(s[2]), Z.TWO).ceiling()	"1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=ceiling((a(n-1)+a(n-2)+a(n-3))/2)
+A296397	tuptraf	0	(n, s) -> s[0].*(s[1]).+(s[0].*(s[2]).*(s[3])).-(s[1].*(s[2].^(2)).*(s[3]))	"1,1,2,3"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = a(n-1) * a(n-2) + a(n-1) * a(n-3) * a(n-4) - a(n-2) * a(n-3)^2 * a(n-4) for all n>=4
+A302733	tuptraf	0	(n, s) -> ZV(4*n).*(2*n - 1).*(s[0]).+(PR(0, n, k -> ZV(2*k - 3).^(2)).*(4*n)./(Z.NINE))	"0"	PREVIOUS	a(n)=4*n*(2*n-1)*a(n-1)+(4/9)*n*product((2*k-3)^2,{k,0,n
+A302769	tuptraf	0	(n, s) -> Z.TWO.*(ZV(2*n-1).*(s[0]).-(FA(n-2)))	"4"	PREVIOUS	a(n)=2*((2*n-1)*a(n-1)-(n-2)!)
+A302770	tuptraf	0	(n, s) -> ZV(4*n - 2).*(ZV(n - 1).*(s[0]).+(FA(n - 2).^(2)))	"0"	PREVIOUS	a(n)=(4*n-2)*((n-1)*a(n-1)+(n-2)!^2)
+A302944	tuptraf	0	(n, s) -> Z.FOUR.*(ZV(2*n - 1).*(s[0]).+(Z_1(n).*(FA(n - 2))))	"8"	PREVIOUS	a(n)=4*((2*n-1)*a(n-1)+(-1)^n*(n-2)!)
+A346973	tuptraf	0	(n, s) -> s[0].mod(s[7]).+(s[1].mod(s[6])).+(s[2].mod(s[5])).+(s[3].mod(s[4]))	"1,2,3,4,5,6,7,8"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=mod(a(n-1),a(n-8))+mod(a(n-2),a(n-7))+mod(a(n-3),a(n-6))+mod(a(n-4),a(n-5))
+A361086	tuptraf	0	(n, s) -> s[0].*(s[0].^(2).-(1))	"2"	PREVIOUS	a(n)=a(n-1)*(a(n-1)^2-1)
+A361470	simtraf	1	new A135504()	(n, v) -> ZV(n + 1).gcd(v)	a(n) = gcd(n+1, A135504(n))
+A363197	tuptraf	0	(n, s) -> BI(Z2(n).-(2), Z2(n - 1).-(1)).*(Z2((n*n - 5*n + 4) / 2)).*(s[0].^(2))	"1,1,10"	PREVIOUS,PREVIOUS,PREVIOUS	a(n+1)=binomial(2^(n+1)-2,2^n-1)*2^((n^2-3*n)/2)*a(n)^2
+binomial(2^n - 2, 2^(n-1) - 1)*2^((4 - 5*n + n^2)/2)*a(n-1)^2.
+
+#? A069000	filter	0	new A000027()	v -> new A055120().a(v).isSquare()	Numbers k such that k * (digit complement of k) is a square.
+#? A110395	tuptraf	1	(n, s) -> { final int len = s[0].toString().length(); return Z.TEN.^(len).-(n).*(n); }	"1"	PREVIOUS	a(1) = 1. a(n) = n times (10s complement of a(n-1)).
+#? A121879	tuptraf	1	(n, s) -> s[0].*(s[2]).-(s[1])	"0,1,1"	PREVIOUS,PREVIOUS,new A000045().skip(1)	if n < 3 then n-1 else fibonacci(n-1)*a(n-1) - a(n-2) fi;
+#? A123742	tuptraf	0	(n, s) -> s[0].*(s[1]).*(Z_1(n - 1))	"1,-1"	PREVIOUS,new A123740()	Recurrence: a(n)= ((-1)^(n-1))* A123740(n-1)*a(n-1), a(2):=-1. a(1):=+1.
+A176343	tuptraf	0	(n, s) -> s[0].*(FI(n)).+(1)	"0,1"	PREVIOUS,PREVIOUS	a(n) = Fibonacci(n)*a(n-1) + 1, a(0) = 0.
+#? A181717	tuptraf	0	(n, s) -> { final Z f = s[0].+(s[1]); return f.testBit(0) ? f.*(3).+(1) : f./(2); }	"0,1"	PREVIOUS	
+#? A209286	tuptraf	0	(n, s) -> s[0].+(s[1].+(1)).*(s[2])	"0,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	`if`(n=1, 1, a(n-1) +(1+a(n-2))*a(n-3)))
+A210852	tuptraf	0	(n, s) -> s[0].^(7).mod(Z.SEVEN.^(n))	"0,3"	PREVIOUS,PREVIOUS	a(n) = a(n-1)^7 (mod 7^n), n >= 2, a(0)=0, a(1)=3.
+A210853	tuptraf	0	(n, s) -> s[0].^(3).+(1)./(Z.SEVEN.^(n))	""	new A210852()	(A210852(n)^3 + 1)/7^n, n >= 0.
+A212153	tuptraf	0	(n, s) -> s[0].^(7).mod(Z.SEVEN.^(n))	"0,5"	PREVIOUS,PREVIOUS	Recurrence: a(n) = a(n-1)^7 (mod 7^n), n>=2, a(0):=0, a(1)=5.
+#? A241593	tuptraf	0	(n, s) -> s[2].*(s[0]).*(144).+(s[1].^(2).*(432))./(s[3])	"-1,0,1,12,-432,93312"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = (144*a(n-3)*a(n-1)+432*a(n-2)^2)/a(n-4)   	
+#? A241594	tuptraf	0	(n, s) -> s[3].*(-8).*(s[0]).+(s[2].*(s[1]).*(-57))./(s[4])	"1,0,-1,1,8,57,-455"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = -(8*a(n-4)*a(n-1)+57*a(n-3)*a(n-2))/a(n-5)	
+#? A241595	tuptraf	0	(n, s) -> s[3].*(-8).*(s[0]).+(s[2].*(s[1]).*(+57))./(s[4])	"-1,0,1,-1,-8,57,455"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = -(8*a(n-4)*a(n-1)-57*a(n-3)*a(n-2))/a(n-5)	
+A269590	tuptraf	1	(n, s) -> s[0].^(5).+(s[0].^(3).*(5)).+(s[0].*(5)).mod(Z.FIVE.pow(n))	"0,4"	PREVIOUS,PREVIOUS	if n = 1 then 4 else irem( a(n-1)^5 + 5*a(n-1)^3 + 5*a(n-1), 5^n) end if;
+#? A270804	prepend	0	new FilterPositionSequence(0, 0, new A270803(), v -> v.equals(Z.ONE))	0
+#? A271222	tuptraf	0	(n, s) -> Z.THREE.^(n).-(s[0])	"0"	new A268924()	a(n) = 3^n - A268924(n), n >= 1.
+#? A271223	tuptraf	1	(n, s) -> s[1].-(s[0])./(Z.THREE.^(n))	"1,1"	new A268924(),PREVIOUS	a(n) = (b(n+1) - b(n))/3^n, n >= 0, with b(n) = A268924(n), n >= 0.
+#? A271224	tuptraf	1	(n, s) -> s[1].-(s[0])./(Z.THREE.^(n))	"2,1"	new A271222(),PREVIOUS	a(n) = (b(n+1) - b(n))/3^n, n >= 0, with b(n) = A271222(n), n >= 0.
+#? A292918	tuptraf	0	(n, s) -> s[0].+(Z.TWO.*(Puma.primeZ(2*n - 1).-(Puma.primeZ(n))))	"1"	PREVIOUS	`if`(n=1, 1, a(n-1)+2*(pi(2*n-1)-pi(n)))
+#? A300796	filter	1	new A000027()	v -> { final Z x = new A055120().a(v); return !x.equals(v) && JF(x).sigma().equals(JF(v).sigma()); }	Numbers x whose 10.s complements y have the same sum of divisors of x, with x <> y.
+#? A325459	tuptraf	0	(n, s) -> s[0].-(2).+(JF(n).tau())	"0,0"	PREVIOUS	`if`(n<2, 0, numtheory[tau](n)-2+a(n-1))
+#? A327474	tuptraf	0	(n, s) -> s[0].*(2).-(s[1]).+(JF(n - 1).phi())	"1,2,4,6"	PREVIOUS,PREVIOUS	`if`(n<4, [1, 2, 4, 6][n+1], 2*a(n-1)-a(n-2)+numtheory[phi](n-1))
+#? A330139	tuptraf	0	(n, s) -> { final Z t = s[0].+(s[1]); return t.mod(n) == 0 ? t./(n) : t; }	"0,1"	PREVIOUS,PREVIOUS	if`(n=0, 0, ((s, t)-> s+ `if`(s<t, t, -t))(a(n-1), numtheory[sigma](n)))
+#? A331165	tuptraf	0	(n, s) -> { final Z u = s[0]; final Z t = PT(n); return u.+(u.compareTo(t) < 0 ? t : t.negate()); }	"0"	PREVIOUS	((s, t)-> s+`if`(s<t, t, -t))(a(n-1), combinat[numbpart](n))
+#? A333068	tuptraf	0	(n, s) -> s[0].-(1).modZ(n).+(1).+(n*(n - 1)/2)	"0,1"	PREVIOUS	n*(n-1)/2 + ((a(n-1)-1) mod n) + 1)
+#? A333453	tuptraf	0	(n, s) -> new Z(s[0].toString(2) + s[1].toString(2)).modZ(n)	"0,1"	PREVIOUS,PREVIOUS	Binary concatenation (ignoring leading zeros) of a(n-1) and a(n-2) mod n, starting with a(n) = n for n <= 1.
+#? A333596	tuptraf	1	(n, s) -> {final int[] c = ZUtils.digitCounts(s[0], 4); return s[0].+(c[1] + c[3] - c[0] - c[2]); }	"0"	PREVIOUS	`if`(n=0, 0, a(n-1) +add(
+#? A337521	tuptraf	0	(n, s) -> s[2].*(s[0]).+(s[1])	"1,1,4"	PREVIOUS,PREVIOUS,new A000032()	a(n) = L(n)*a(n-1) + a(n-2) with a(0) = a(1) = 1 and L(n) the Lucas numbers A000032.
+#? A345143	tuptraf	0	(n, s) -> ZUtils.reverse(new Z(s[1].toString() + s[0].toString()).-(s[0]))	"0,1"	PREVIOUS,PREVIOUS	Reflection of the concatenation of the previous two terms minus the previous term.		0
+#? A345529	filter	1	new A000040()	v -> new A055120().a(v).isProbablePrime()	Primes that yield a prime when any single digit is replaced by its 10.s complement.
+#? A358854	tuptraf	1	(n, s) -> {final int[] c = ZUtils.digitCounts(s[0], 4); return s[0].+(c[0] + c[2] + c[4] + c[6] +c[8]); }	"1"	PREVIOUS	Number of even digits necessary to write all the numbers from 0 up to n.
+#? 
+#? 
+#? A084620	filter	1	new A000045()	v -> { final int len = v.toString().length(); final Z p10 = Z.TEN.^(len); return p10.*(v).+(p10.-(v)).isProbablePrime(); }	Numbers n such that concatenation of Fibonacci n and its 10.s complement is a prime.
+#? A084621	filtpos	1	0	new A000045()	v -> { final int len = v.toString().length(); final Z p10 = Z.TEN.^(len); return p10.*(v).+(p10.-(v)).isProbablePrime(); }	Numbers n such that Fibonacci(n) concatenated with its 10.s complement is prime.
+#? A108158	filter	1	new A000217()	v -> new A178914().a(v).isSquare()	Triangular numbers whose 10.s complements are squares.
+#? A108537	filter	1	new A002113()	v -> new Z(v.toString() + new A178914().a(v).toString()).isProbablePrime()	 Concatenation of palindrome k and its 10.s complement is prime.
+#? A122055	tuptraf	1	(n, s) -> s[0].*(s[7]).*(3).-(s[3]).*(s[4])./(s[8])	"1,1,1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	if n < 9 then 1 else (3*a(n-1)*a(n-8) - a(n-4)*a(n-5))/a(n-9)
+#? A300891	filter	1	new A000217().skip(1)	v -> !v.equals(Z.TEN) && ZUtils.isTriangular(new Z("0" + v.toString().substring(1)))	Left-truncatable nonzero triangular numbers.
+#? 

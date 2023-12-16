@@ -1,0 +1,96 @@
+A067338	tuptraf	0	(n, s) -> s[0].*(Z.TWO.*(s[0]).+(s[1].*(s[0])).+((s[1]).^(2)))./(Z.TWO.*(s[1]))	"2,3"	PREVIOUS,PREVIOUS	a(n)=a(n-1)*(2*a(n-1)+a(n-2)*a(n-1)+a(n-2)^2)/(2*a(n-2))
+A069101	tuptraf	0	(n, s) -> Puma.primeZ(s[0].+(s[1]))	"2,2"	PREVIOUS,PREVIOUS	a(n)=prime(a(n-1)+a(n-2))
+A069143	tuptraf	0	(n, s) -> Jaguar.factor(s[0].+(s[1])).sigma()	"1,1"	PREVIOUS,PREVIOUS	a(n)=divisorsigma(1,a(n-1)+a(n-2))
+A076466	tuptraf	0	(n, s) -> s[0].+((s[0].testBit(0) ? s[0].negate().add(s[0].*(n)) : s[0]).modZ(n))	"1"	PREVIOUS	a(n)=a(n-1)+mod((-1)^a(n-1)*a(n-1),n)
+A076591	tuptraf	0	(n, s) -> s[0].+(s[1].modZ(n))	"1,2"	PREVIOUS,PREVIOUS	a(n)=a(n-1)+mod(a(n-2),n)
+A076677	tuptraf	0	(n, s) -> s[0].+(s[1].sqrt())	"1,1"	PREVIOUS,PREVIOUS	a(n)=a(n-1)+floor(sqrt(a(n-2)))
+A076678	tuptraf	0	(n, s) -> s[0].sqrt().+(s[1])	"1,1"	PREVIOUS,PREVIOUS	a(n)=floor(sqrt(a(n-1)))+a(n-2)
+A079777	tuptraf	0	(n, s) -> s[0].+(s[1]).modZ(n)	"0,1"	PREVIOUS,PREVIOUS	a(n)=mod(a(n-1)+a(n-2),n)
+A079898	tuptraf	0	(n, s) -> Jaguar.factor(n).sigma0().-(Jaguar.factor(n - 1).sigma0().*(s[0]))	"1"	PREVIOUS	a(n)=divisorsigma(0,n)-divisorsigma(0,n-1)*a(n-1)
+A083241	tuptraf	0	(n, s) -> Puma.primeZ(n).-(s[0]).-(s[1]).-(s[2])	"0,0,0"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)+a(n-1)+a(n-2)+a(n-3)=prime(n)
+A084663	tuptraf	0	(n, s) -> s[0].+(s[0].gcd(ZV(n)))	"8"	PREVIOUS	a(n)=a(n-1)+GCD(a(n-1),n)
+A085866	tuptraf	0	(n, s) -> s[0].*(Euler.phi(s[0]))	"3"	PREVIOUS	a(n+1)=a(n)*eulerphi(a(n))
+A086911	tuptraf	0	(n, s) -> { final Z pr = Puma.primeZ(n); return pr.-(s[0]).abs().+(pr.-(s[1]).abs()); }	"1,1"	PREVIOUS,PREVIOUS	a(n)=abs(prime(n)-a(n-1))+abs(prime(n)-a(n-2))
+A088226	tuptraf	0	(n, s) -> s[0].-(s[1]).-(s[2]).abs()	"0,0,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=abs(a(n-1)-a(n-2)-a(n-3))
+A088521	tuptraf	0	(n, s) -> s[0].+(n).mod(Puma.primeZ(n))	"1"	PREVIOUS	a(n)=mod(a(n-1)+n,prime(n))
+A089127	tuptraf	0	(n, s) -> s[3].*(s[0]).+(s[1].*(s[2]))	"1,1"	PREVIOUS,PREVIOUS,new A000045(),PREVIOUS	a(n+2)=fibonacci(n)*a(n+1)+fibonacci(n+1)*a(n)
+A092500	tuptraf	0	(n, s) -> s[0].^(2).+(Z.TEN)	"0"	PREVIOUS	a(n)=a(n-1)^2+10
+A094003	tuptraf	0	(n, s) -> s[0].^(n).-(1)./(s[0].-(1))	"2"	PREVIOUS	a(n)=(a(n-1)^n-1)/(a(n-1)-1)
+A095233	tuptraf	0	(n, s) -> s[0].+(s[1])	"1"	PREVIOUS,new A013939().skip(1)	a(n)=a(n-1)+A013939*(n)
+A096535	tuptraf	0	(n, s) -> s[0].+(s[1]).modZ(n)	"1,1"	PREVIOUS,PREVIOUS	a(n)=mod(a(n-1)+a(n-2),n)
+A098152	tuptraf	0	(n, s) -> s[0].^(2).+(n)	"0"	PREVIOUS	a(n)=a(n-1)^2+n
+A098816	tuptraf	0	(n, s) -> new Q(s[0].-(s[1]).abs().*(3), Z.TWO).ceiling()	"0,1"	PREVIOUS,PREVIOUS	a(n)=ceiling(3/2*abs(a(n-1)-a(n-2)))
+A099941	tuptraf	0	(n, s) -> s[0].^(2).-(10)	"4"	PREVIOUS	a(n)=a(n-1)^2-10
+A105804	tuptraf	0	(n, s) -> s[3].*(s[0]).+(s[2].*(s[1]))	"0,1"	PREVIOUS,PREVIOUS,new A000045().skip(1),PREVIOUS	a(n)=fibonacci(n-1)*a(n-1)+fibonacci(n)*a(n-2)
+A110895	tuptraf	0	(n, s) -> s[0].+(Puma.prime(n - 1)).+(1)	"1"	PREVIOUS	a(n)=a(n-1)+prime(n)+1
+A112958	tuptraf	0	(n, s) -> s[0].^(2).+(s[1].^(2)).+(s[2].^(2)).+(s[3].^(2))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)^2+a(n-2)^2+a(n-3)^2+a(n-4)^2
+A112959	tuptraf	0	(n, s) -> s[0].^(2).+(s[1].^(2)).+(s[2].^(2)).+(s[3].^(2)).+(s[4].^(2))	"1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)^2+a(n-2)^2+a(n-3)^2+a(n-4)^2+a(n-5)^2
+A112960	tuptraf	0	(n, s) -> s[0].^(2).+(s[1].^(2)).+(s[2].^(2)).+(s[3].^(2)).+(s[4].^(2)).+(s[5].^(2))	"1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)^2+a(n-2)^2+a(n-3)^2+a(n-4)^2+a(n-5)^2+a(n-6)^2
+A112980	tuptraf	0	(n, s) -> s[0].^(5).+(s[1].^(5))	"1,1"	PREVIOUS,PREVIOUS	a(n)=a(n-1)^5+a(n-2)^5
+A112981	tuptraf	0	(n, s) -> s[0].^(3).+(s[1].^(3)).+(s[2].^(3))	"1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)^3+a(n-2)^3+a(n-3)^3
+A112982	tuptraf	0	(n, s) -> s[0].^(4).+(s[1].^(4)).+(s[2].^(4)).+(s[3].^(4))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)^4+a(n-2)^4+a(n-3)^4+a(n-4)^4
+A147690	tuptraf	0	(n, s) -> s[1].*(s[0].+(1))	"1"	PREVIOUS,new A000045().skip(3)	a(n+1)=fibonacci(n+3)*(a(n)+1)
+A153059	tuptraf	0	(n, s) -> s[0].^(2).-(n)	"0"	PREVIOUS	a(n)=a(n-1)^2-n
+A153060	tuptraf	0	(n, s) -> s[0].^(2).-(n)	"4"	PREVIOUS	a(n)=a(n-1)^2-n
+A153061	tuptraf	0	(n, s) -> s[0].^(2).+(n)	"4"	PREVIOUS	a(n)=a(n-1)^2+n
+A153062	tuptraf	0	(n, s) -> s[0].^(2).-(n*n)	"1"	PREVIOUS	a(n)=a(n-1)^2-n^2
+A153280	tuptraf	0	(n, s) -> s[0].*(Z.TWO.+(Z.THREE.^(n - 1)))	"1"	PREVIOUS	a(n+1)=a(n)*(2+3^n)
+A155733	tuptraf	0	(n, s) -> s[0].^(n).+(n-1)	"1"	PREVIOUS	a(n)=a(n-1)^n+n-1
+A156747	tuptraf	0	(n, s) -> s[0].+(s[1].*(2)).-(s[2]).abs().-(s[1]).-(1)	"0,0,0"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=abs(a(n-1)+2*a(n-2)-a(n-3))-a(n-2)-1
+A159256	tuptraf	0	(n, s) -> s[0].+(s[0].sqrt())	"131"	PREVIOUS	a(n)=a(n-1)+floor(sqrt(a(n-1)))
+A159258	tuptraf	0	(n, s) -> s[0].+(s[0].sqrt())	"155"	PREVIOUS	a(n)=a(n-1)+floor(sqrt(a(n-1)))
+A159263	tuptraf	0	(n, s) -> s[0].+(s[0].sqrt())	"181"	PREVIOUS	a(n)=a(n-1)+floor(sqrt(a(n-1)))
+A160703	tuptraf	0	(n, s) -> s[0].*(4).*(s[2]).+(s[1].^(2).*(24))./(s[3])	"1,4,20,464"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(4*a(n-1)*a(n-3)+24*a(n-2)^2)/a(n-4)
+A167170	tuptraf	0	(n, s) -> s[0].+(ZV(n).gcd(s[0]))	"14"	PREVIOUS	a(n)=a(n-1)+GCD(n,a(n-1))
+A167195	tuptraf	0	(n, s) -> s[0].+(ZV(n).gcd(s[0]))	"3"	PREVIOUS	a(n)=a(n-1)+GCD(n,a(n-1))
+A168319	tuptraf	0	(n, s) -> s[0].^(2).-(Z2(n))	"-1"	PREVIOUS	a(n)=a(n-1)^2-2^n
+A168320	tuptraf	0	(n, s) -> s[0].^(2).+(Z2(n))	"1"	PREVIOUS	a(n)=a(n-1)^2+2^n
+A168504	tuptraf	0	(n, s) -> ZV(36).*(s[0]).*(s[2])./(s[3])	"1,2,12,432"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=36*a(n-1)*a(n-3)/a(n-4)
+A168558	tuptraf	0	(n, s) -> s[0].^(2).+(n)	"0"	PREVIOUS	a(n)=a(n-1)^2+n
+A175980	tuptraf	0	(n, s) -> s[0].^(n).+(1)	"1"	PREVIOUS	a(n)=a(n-1)^n+1
+A180235	tuptraf	0	(n, s) -> new Q(s[0].+(s[1]).+(s[2]),Z.TWO).ceiling()	"0,0,2"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=ceiling((a(n-1)+a(n-2)+a(n-3))/2)
+# numer A185332	tuptraf	0	(n, s) -> s[0].+(s[1])./(s[2])	"1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)+a(n-2))/a(n-3)
+A193637	tuptraf	0	(n, s) -> s[0].^(2).-(ZV(n).^(n+1))	"0"	PREVIOUS	a(n)=a(n-1)^2-n^(n+1)
+A193925	tuptraf	0	(n, s) -> s[0].^(2).-(ZV(n).^(n-2)).+(n)	"0"	PREVIOUS	a(n)=a(n-1)^2-n^(n-2)+n
+A196870	tuptraf	0	(n, s) -> s[0].*(s[1])	"1"	PREVIOUS,new A001610().skip(1)	a(n+1) = A001610(n)*a(n).
+A198959	tuptraf	0	(n, s) -> s[0].^(2).-(n - 1)	"2"	PREVIOUS	a(n+1)=a(n)^2-n
+A214626	tuptraf	0	(n, s) -> s[0].+(s[2])./(s[0].gcd(s[2]))	"1,1,3"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)+a(n-3))/GCD(a(n-1),a(n-3))
+A214652	tuptraf	0	(n, s) -> s[0].+(s[3])./(s[0].gcd(s[3]))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)+a(n-4))/GCD(a(n-1),a(n-4))
+A215762	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0].+(2*(n-1)))	"2"	PREVIOUS	a(n)=nextprime(a(n-1)+2*(n-1))
+A217662	tuptraf	0	(n, s) -> s[1].+(ZV(n - 1).lcm(s[1]))	"2,2"	PREVIOUS,PREVIOUS	For n > 2 , a(n) = a(n-2) + lcm(a(n-2), n-1) with a(1)=2, a(2)=2.
+A217663	tuptraf	0	(n, s) -> s[0]./(s[2]).-(1)	"1,3,1"	new A217662().skip(3),PREVIOUS,PREVIOUS		a(n) = A217662(n+2)/A217662(n) - 1, n > 0.
+A227999	tuptraf	0	(n, s) -> s[0].*(s[4]).+(s[1].*(s[3])).+(s[2].^(2))./(s[5])	"1,1,1,1,2,2"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-5)+a(n-2)*a(n-4)+a(n-3)^2)/a(n-6)
+A228807	tuptraf	0	(n, s) -> JF(s[0].+(s[1]).+(1)).phi()	"0,1"	PREVIOUS,PREVIOUS	a(n)=eulerphi(a(n-1)+a(n-2)+1)
+A231900	filter	0	new A134744()	v -> !v.equals(Z.ONE)	a(n)=a(n-1)+GCD(a(n-1),n)
+A134744	diffs	0	new A084663()
+A238243	tuptraf	0	(n, s) -> s[1].*(s[0]).+(2)	"1"	PREVIOUS,new A000045().skip(2)	a(n)=fibonacci(n)*a(n-1)+2
+A238244	tuptraf	0	(n, s) -> s[1].*(s[0]).+(3)	"1"	PREVIOUS,new A000045().skip(2)	a(n)=fibonacci(n)*a(n-1)+3
+A242996	tuptraf	0	(n, s) -> s[0].^(2).-(s[1].^(4)).*(s[0])./(s[1].^(2))	"1,2"	PREVIOUS,PREVIOUS	a(n)=(a(n-1)^2-a(n-2)^2)/a(n-2)^2
+A245283	tuptraf	0	(n, s) -> s[0].*(s[0].+(s[1]))./(s[3])	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)*(a(n-1)+a(n-2))/a(n-4)
+A247378	tuptraf	0	(n, s) -> s[0].*(s[2]).-(Z_1(n).*(s[1].^(2)))./(s[3])	"1,-2,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-3)-(-1)^n*a(n-2)^2)/a(n-4)
+A247382	tuptraf	0	(n, s) -> s[0].*(s[2]).-(Z_1(n).*(s[1].^(2)))./(s[3])	"-3,7,1,46"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-3)-(-1)^n*a(n-2)^2)/a(n-4)
+A247525	tuptraf	0	(n, s) -> s[0].*(5).-(Z.TWO.*(s[0].^(2))./(s[1]))	"1,2"	PREVIOUS,PREVIOUS	a(n)=5*a(n-1)-2*a(n-1)^2/a(n-2)
+A247540	tuptraf	0	(n, s) -> s[0].*(2).-(Z.THREE.*(s[0].^(2))./(s[1]))	"1,1"	PREVIOUS,PREVIOUS	a(n)=2*a(n-1)-3*a(n-1)^2/a(n-2)
+A250309	tuptraf	0	(n, s) -> s[0].*(Z.ONE.+(s[0]./(s[2])))	"1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)*(1+a(n-1)/a(n-3))
+A252583	tuptraf	0	(n, s) -> s[0].^(3).+(s[1].^(6))	"0,1"	PREVIOUS,PREVIOUS	a(n)=a(n-1)^3+a(n-2)^6
+A253832	tuptraf	0	(n, s) -> s[0].*(Z.ONE.+(s[1]./(s[3])))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)*(1+a(n-2)/a(n-4))
+# floor A254400	tuptraf	0	(n, s) -> s[0].^(3).sqrt()	"2"	PREVIOUS	a(n)=a(n-1)^(3/2)
+# floor A254401	tuptraf	0	(n, s) -> s[0].^(3).sqrt()	"3"	PREVIOUS	a(n)=a(n-1)^(3/2)
+# floor A254403	tuptraf	0	(n, s) -> s[0].^(3).sqrt()	"4"	PREVIOUS	a(n)=a(n-1)^(3/2)
+# floor A254405	tuptraf	0	(n, s) -> s[0].^(5).sqrt()	"2"	PREVIOUS	a(n)=a(n-1)^(5/2)
+A259048	tuptraf	0	(n, s) -> s[0].^(2).+(s[0]).-(s[0].*(s[1]).*(2)).+(s[1].^(2).*(2))	"1,2"	PREVIOUS,PREVIOUS	a(n) = a(n-1)^2 + a(n-1) - 2*a(n-1)*a(n-2) + 2*a(n-2)^2, a(1) = 1, a(2) = 2.
+A261518	tuptraf	0	(n, s) -> Puma.primeZ(s[0].+(n - 1)).-(Puma.primeZ(n - 1))	"1"	PREVIOUS	a(n+1)=prime(n+a(n))-prime(n)
+
+A275862	tuptraf	0	(n, s) -> { final Q r = new Q(3,2); return r.*(s[0]).floor().+(r.*(s[1]).floor()); }	"1,1"	PREVIOUS,PREVIOUS	floor(r*a(n-1)) + floor(r*a(n-2)), where r = 3/2
+A275863	tuptraf	0	(n, s) -> { final Q r = new Q(5,2); return r.*(s[0]).floor().+(r.*(s[1]).floor()); }	"1,1"	PREVIOUS,PREVIOUS	Floor(r*a(n-1)) + floor(r*a(n-2)), where r = 5/2
+A275864	tuptraf	0	(n, s) -> { final Q r = new Q(5,3); return r.*(s[0]).floor().+(r.*(s[1]).floor()); }	"1,1"	PREVIOUS,PREVIOUS	Floor(r*a(n-1)) + floor(r*a(n-2)), where r = 5/3
+A275865	tuptraf	0	(n, s) -> { final Q r = new Q(3,2); return r.*(s[0]).floor().-(r.*(s[1]).floor()); }	"1,1"	PREVIOUS,PREVIOUS	a(n)=floor((3*a(n-1))/2)-floor((3*a(n-2))/2)
+
+A276267	tuptraf	0	(n, s) -> s[0].^(2).*(s[1].^(2)).*(s[2].^(2)).+(1)./(s[3])	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)^2*a(n-2)^2*a(n-3)^2+1)/a(n-4)
+A276268	tuptraf	0	(n, s) -> s[0].*(s[1]).*(s[2]).+(1).^(2)./(s[3])	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-2)*a(n-3)+1)^2/a(n-4)
+A276284	tuptraf	0	(n, s) -> s[0].+(s[2]).+(1).*(s[1].+(s[3]).+(1))./(s[4])	"1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)+a(n-3)+1)*(a(n-2)+a(n-4)+1)/a(n-5)
+A276416	tuptraf	0	(n, s) -> s[0].*(Z.ONE.+(s[0]./(s[3])))	"1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)*(1+a(n-1)/a(n-4))
+A276453	tuptraf	0	(n, s) -> (s[0].+(1)).*(s[1].+(1)).*(s[2].+(1))./(s[3])	"1,1,2,6"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)+1)*(a(n-2)+1)*(a(n-3)+1)/a(n-4)
+A276530	tuptraf	0	(n, s) -> s[0].*(s[4]).+(s[2].^(3))./(s[5])	"1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(a(n-1)*a(n-5)+a(n-3)^3)/a(n-6)
+A284604	tuptraf	0	(n, s) -> s[1].^(2).+(s[0].^(2)).+(1)	"1,1"	PREVIOUS,PREVIOUS	a(n+2)=a(n+1)^2+a(n)^2+1
+A296654	tuptraf	0	(n, s) -> s[0].^(n-1).+(s[1].^(n-1))	"0,1"	PREVIOUS,PREVIOUS	a(n)=a(n-1)^(n-1)+a(n-2)^(n-1)
