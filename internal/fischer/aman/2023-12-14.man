@@ -9,8 +9,6 @@ A246573	convprod	0	1/2	new A246571()	Self-convolution equals A246571.
 # A305104	convprod	0	1,1	new A066898(), new A000009()
 A352383	convprod	0	1/3	new A352384()
 
-
-
 A265955	convprod	0	1,1	new A032309(), new A265951()	(1+2*k*x^k)/(1-2*k*x^k)
 A264685	convprod	0	1,-1	new A000009(), new A070877()	(1+1*x^k)/(1-2*x^k)
 A261584	convprod	0	1,-1	new A032302(), new A070877()	(1+2*x^k)/(1-2*x^k)
@@ -26,6 +24,4 @@ A269339	convprod	0	-1,-1	new A006906(), new A000009()	(1-k*x^k)/(1+1*x^k)
 A303397	convprod	0	1,-1	new A070877(), new A032302()	(1-2*x^k)/(1+2*x^k)
 A303398	convprod	0	1,-1	new A292128(), new A032308()	(1-3*x^k)/(1+3*x^k)
 A303402	convprod	0	-1,-1	new A246936(), new A261568()	(1-4*x^k)/(1+4*x^k)
-
 A303947	convprod	0	1,-1	new A279484(), new A276516()	Product_{k>=2} (1-x^(k^3))/(1-x^(k^2)).
-A304002	convprod	0	1,-1	new A279485(), new A276516()	Product_{k>=2} (1-x^(k^4))/(1-x^(k^3)).

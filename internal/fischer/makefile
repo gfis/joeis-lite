@@ -3228,8 +3228,23 @@ recuf7:
 #  (12-4n)*a(n-3) + (-24 + 12n)*a(n-2) + (6-9*n)*a(n-1) + (0+1n)*a(n) = 0
 # make runholo MATRIX="[[0],[12,-4],[-24,12],[6,9],[0,1]]" INIT="[1,3,18]"
 #----
+ogf:
+	perl aman/ogf.man \
+	| grep -E "^A[0-9]+" \
+	>        $@.1.tmp
+	wc -l    $@.1.tmp
+	$(JPREP) -cc fract1 -f $@.1.tmp \
+	>        $@.2.tmp
+	wc -l    $@.2.tmp
+	grep -E "fract1" $@.2.tmp \
+	| sed -e "s/fract1/lingf/" \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 holon: # with update of inits
 	grep -E "^A[0-9]" $(HOLREC)/recegf.tmp \
+	| grep -v FAIL \
 	| tee    $@.gen
 	wc -l    $@.gen
 #----
