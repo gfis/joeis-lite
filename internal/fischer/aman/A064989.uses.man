@@ -1,0 +1,24 @@
+./irvine/oeis/a351/A351451.java:    super(1, (p, e) -> (e == 1) ? A064989.a(Puma.nextPrimeZ(p).add(1)) : Z.ONE);
+./irvine/oeis/a351/A351449.java:    super(1, (p, e) -> (e == 1) ? Z.ONE : A064989.a(sigmaP(Puma.nextPrimeZ(p), e)));
+./irvine/oeis/a351/A351450.java:    super(1, (p, e) -> A064989.a(Puma.nextPrimeZ(p).add(1)));
+./irvine/oeis/a350/A350073.java:    super(1, (p, e) -> A064989.a(sigmaP(p, e)));
+./irvine/oeis/a353/A353747.java:    super(1, new A000010(), new A064989(), (n, u, v) -> u.add(v));
+./irvine/oeis/a353/A353748.java:    super(1, new A000010(), new A064989(), (n, u, v) -> u.subtract(v));
+./irvine/oeis/a319/A319627.java:    super(1, new A064989(), (n, v) -> v.divide(v.gcd(Z.valueOf(n))));
+./irvine/oeis/a326/A326041.java:    super(1, new A064989(), v -> Jaguar.factor(v).sigma());
+./irvine/oeis/a349/A349382.java:  private final DirichletConvolutionSequence mSeq = new DirichletConvolutionSequence(new A064989(), 1, new A346234(), 1);
+./irvine/oeis/a349/A349125.java:  private final DirichletInverseSequence mSeq = new DirichletInverseSequence(new A064989());
+./irvine/oeis/a064/A064989.java:  protected A064989(final int offset) {
+./irvine/oeis/a064/A064989.java:  public A064989() {
+
+jom A351451
+jom A351449
+jom A351450
+jom A350073
+jom A353747
+jom A353748
+jom A319627
+jom A326041
+jom A349382
+jom A349125
+jom A064989

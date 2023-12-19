@@ -1,0 +1,29 @@
+#C A000086 Shadow transform of central polygonal numbers A002061. - _Michel Marcus_, Jun 06 2013
+#C A000089 Shadow transform of A002522. - _Michel Marcus_, Jun 06 2013
+#C A000188 Shadow transform of the squares A000290. - _Vladeta Jovovic_, Aug 02 2002
+#C A000189 Shadow transform of the cubes A000578. - _Michel Marcus_, Jun 06 2013
+#C A000190 Shadow transform of fourth powers A000583. - _Michel Marcus_, Jun 06 2013
+#C A034444 Also shadow transform of pronic numbers A002378.
+#C A060594 Shadow transform of A005563. - _Michel Marcus_, Jun 06 2013
+#C A068068 Shadow transform of triangular numbers.
+#C A073103 Shadow transform of A123865. - _Michel Marcus_, Jun 06 2013
+#C A087688 Shadow transform of A007531. - _Michel Marcus_, Jun 06 2013
+#C A087782 Shadow transform of A034262. - _Michel Marcus_, Jun 06 2013
+#C A134451 Shadow transform of even numbers A005843. - _Michel Marcus_, Jun 06 2013
+%N A144871 Square array A(n,k), n>=1, k>=1, read by antidiagonals, where sequence a_k of column k is shadow transform of C(n+k-1,k).
+%N A226443 Number of distinct shadow transforms for sequences of length n.
+
+A346080	parmof3	0	A072453	new A000045()	0	Shadow transform of Fibonacci numbers.
+A072453	parmof3	0	A072453	new A000522()	0	Shadow transform of A000522.
+A072457	parmof3	0	A072453	new A000292()	0	Shadow transform of tetrahedral numbers A000292.
+A072458	parmof3	0	A072453	new A000108()	0	Shadow transform of Catalan numbers A000108.
+A072463	parmof3	0	A072453	new PrependSequence(0, new A000203(), 0)	0	Shadow transform of sigma(n), A000203, starting with 0, sigma(1), sigma(2), ...
+A072480	parmof3	0	A072453	new A000142()	0	Shadow transform of factorials A000142.
+
+# a:= n-> add(`if`(modp(binomial(j+6, 7), n)=0, 1, 0), j=0..n-1):
+A144865	lambdan	0	n -> SU(0, n - 1, j -> (BI(j + 3, 4).mod(n) == 0) ? Z.ONE : Z.ZERO)	Shadow transform of C(n+3,4) = A000332(n+3).
+A144866	lambdan	0	n -> SU(0, n - 1, j -> (BI(j + 4, 5).mod(n) == 0) ? Z.ONE : Z.ZERO)	Shadow transform of C(n+4,5) = A000389(n+4).
+A144867	lambdan	0	n -> SU(0, n - 1, j -> (BI(j + 5, 6).mod(n) == 0) ? Z.ONE : Z.ZERO)	Shadow transform of C(n+5,6) = A000579(n+5).
+A144868	lambdan	0	n -> SU(0, n - 1, j -> (BI(j + 6, 7).mod(n) == 0) ? Z.ONE : Z.ZERO)	Shadow transform of C(n+6,7) = A000580(n+6).
+A144869	lambdan	0	n -> SU(0, n - 1, j -> (BI(j + 7, 8).mod(n) == 0) ? Z.ONE : Z.ZERO)	Shadow transform of C(n+7,8) = A000581(n+7).
+A144870	lambdan	0	n -> SU(0, n - 1, j -> (BI(j + 8, 9).mod(n) == 0) ? Z.ONE : Z.ZERO)	Shadow transform of C(n+8,9) = A000582(n+8).
