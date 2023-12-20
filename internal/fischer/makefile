@@ -3228,6 +3228,32 @@ recuf7:
 #  (12-4n)*a(n-3) + (-24 + 12n)*a(n-2) + (6-9*n)*a(n-1) + (0+1n)*a(n) = 0
 # make runholo MATRIX="[[0],[12,-4],[-24,12],[6,9],[0,1]]" INIT="[1,3,18]"
 #----
+urlprep:
+	$(JPREP) -cc fract1 -f $(LINREC)/long/$@.tmp \
+	>        $@.tmp
+	wc -l    $@.tmp
+urlprep2:
+	grep -E "fract1" urlprep.tmp \
+	| perl -ne 's/\s+\Z//; my @f = split(/\t/); $$f[1] = "ratogf"; '\
+	' $$f[3] = "~~~~\"[$$f[3]]\",~~        \"[$$f[4]]\""; $$f[4] = "";'\
+	' push(@f, "", "", "", "", "", "", "", "", "name");'\
+	' print join("\t", @f) . "\n";'\
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+	
+maprep:
+	$(JPREP) -cc fract1 -f $(LINREC)/long/$@.tmp \
+	>        $@.tmp
+	wc -l    $@.tmp
+	grep -E "fract1" $@.tmp \
+	| sed -e "s/fract1/lingf/" \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+	
 ogf:
 	perl aman/ogf.man \
 	| grep -E "^A[0-9]+" \
