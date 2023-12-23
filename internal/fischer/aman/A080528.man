@@ -1,0 +1,731 @@
+%p A080528 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A080528       b(n, i-1, p)+add(b(n-i*j, i-1, p+j-1)/(j-1)!, j=1..n/i)))
+%p A080528     end:
+%p A080528 a:= n-> b(n$2, 0):
+%p A080528 seq(a(n), n=0..45);  # _Alois P. Heinz_, Jul 07 2014
+%p A088326 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A088326       `if`(min(i, p)<1, 0, add(b(n-i*j, i-1, p-j)*binomial(
+%p A088326        g(i+1)+j-1, j), j=0..min(n/i, p)))))
+%p A088326     end:
+%p A088326 T:= (n, k)-> b(n$2, k):
+%p A088326 seq(seq(T(n, k), k=1..n), n=1..14);  # _Alois P. Heinz_, Sep 11 2017
+%p A097085 b:= proc(n, i, p) option remember; `if`(n=0, p!^2,
+%p A097085       `if`(i<1, 0, add(b(n-i*j, i-1, p+j)/j!^2, j=0..n/i)))
+%p A097085     end:
+%p A097085 a:= proc(n) option remember; b(n$2, 0)+`if`(n>0, a(n-1), 0) end:
+%p A097085 seq(a(n), n=0..30);  # _Alois P. Heinz_, Oct 30 2015
+%p A097147 g:= proc(n, i, p) option remember; `if`(n=0, (i+1)*p!,
+%p A097147       `if`(i<1, 0, add(g(n-i*j, i-1, p+j*i)/j!/i!^j, j=0..n/i)))
+%p A097147     end:
+%p A097147 a:= n-> g(n$2, 0):
+%p A097147 seq(a(n), n=1..30);  # _Alois P. Heinz_, Mar 06 2015
+%p A097910 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0,
+%p A097910      `if`(n=0, p!*p, b(n-i, min(n-i, i-1), p+1)+b(n, i-1, p)))
+%p A097910     end:
+%p A097910 a:= n-> b(n$2, 0):
+%p A097910 seq(a(n), n=0..50);  # _Alois P. Heinz_, Aug 10 2020
+%p A101880 b:= proc(n, i, p) option remember; `if`(n=0, p!,
+%p A101880       `if`(i<1, 0, add(b(n-i*j, i-1, p+j), j=0..n/i)))
+%p A101880     end:
+%p A101880 a:= n-> b(n$2, 0):
+%p A101880 seq(a(n), n=0..25);  # _Alois P. Heinz_, Apr 06 2016
+%p A102462 b:= proc(n,i,p) option remember; `if`(n=0 or i=1, (p+n)!/n!,
+%p A102462        max(seq(b(n-i*j, i-1, p+j)/j!, j=0..n/i)))
+%p A102462     end:
+%p A102462 a:= n-> b(n$2, 0):
+%p A102462 seq(a(n), n=0..50);  # _Alois P. Heinz_, Apr 15 2015
+%p A105200 b:= proc(n, i, p) option remember; `if`(i<1, 0, add(
+%p A105200       `if`(n=i*j, `if`(irem(j, 2)=1, (p+j)!/j!, 0),
+%p A105200        b(n-i*j, i-1, p+j)/j!), j=0..n/i))
+%p A105200     end:
+%p A105200 a:= proc(n) option remember; b(n$2, 0) end:
+%p A105200 seq(a(n), n=1..45);  # _Alois P. Heinz_, May 13 2014
+%p A120774 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A120774       (p+n)!/n!, add(b(n-i*j, i-1, p+j)*combinat
+%p A120774       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i))
+%p A120774     end:
+%p A120774 a:= n-> b(n$2, 0):
+%p A120774 seq(a(n), n=0..25);  # _Alois P. Heinz_, Apr 27 2017
+%p A130219 g:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0, add(
+%p A130219      `if`(irem(j, 2)=0, g(n-i*j, i-1, p+j*i)/j!/i!^j, 0), j=0..n/i)))
+%p A130219     end:
+%p A130219 a:= n-> g(2*n$2, 0):
+%p A130219 seq(a(n), n=0..20);  # _Alois P. Heinz_, Mar 06 2015
+%p A130495 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0, add(
+%p A130495       `if`(irem(j, 2)=0, b(n-i*j, i-1, p+j)/j!, 0), j=0..n/i)))
+%p A130495     end:
+%p A130495 a:= n-> b(2*n$2, 0):
+%p A130495 seq(a(n), n=0..35);  # _Alois P. Heinz_, May 12 2014
+%p A160564 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A160564       add(b(n-i*j, i-1, p+j)*i!^j, j=0..n/i)))
+%p A160564     end:
+%p A160564 a:= n-> b(n$2, 0):
+%p A160564 seq(a(n), n=0..23);  # _Alois P. Heinz_, Oct 02 2017
+%p A174135 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A174135       `if`(p<1 or i<2, 0, add(b(n-i*j, i-1, p-j) *
+%p A174135        binomial(t(i)+j-1, j), j=0..min(n/i, p) ))))
+%p A174135     end:
+%p A174135 T:= (n, k)-> b(n, n, k):
+%p A174135 seq(seq(T(n, k), k=1..iquo(n, 2)), n=2..18);  # _Alois P. Heinz_, May 17 2013
+%p A178887 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A178887       p!/(p-n)!, b(n, i-1, p)+p*b(n-i, min(i, n-i), p-1))
+%p A178887     end:
+%p A178887 a:= n-> b(n$3):
+%p A178887 seq(a(n), n=0..25);  # _Alois P. Heinz_, Jan 21 2019
+%p A179973 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A179973      (p-n)!, b(n, i-1, p)+b(n-i, min(n-i, i), p-1))
+%p A179973     end:
+%p A179973 a:= n-> b(n$3):
+%p A179973 seq(a(n), n=0..24);  # _Alois P. Heinz_, Jul 09 2023
+%p A187784 b:= proc(n, i, p) option remember; `if`(n=0, p!,
+%p A187784       `if`(i<2, 0, add(multinomial(n, n-i*j, i$j)
+%p A187784       *b(n-i*j, i-1, p+j)/j!, j=0..n/i)))
+%p A187784     end:
+%p A187784 T:= (n, k)-> binomial(n, k)*b(n-k$2, k):
+%p A187784 seq(seq(T(n, k), k=0..n), n=0..10);  # _Alois P. Heinz_, Sep 06 2015
+%p A196301 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A196301       (p+n)!/n!, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A196301       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i))
+%p A196301     end:
+%p A196301 a:= n-> b(n$2, 0):
+%p A196301 seq(a(n), n=0..25);  # _Alois P. Heinz_, Apr 27 2017
+%p A209406 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A209406       `if`(min(i, p)<1, 0, add(b(n-i*j, i-1, p-j)*
+%p A209406        binomial(2^i+j-1, j), j=0..min(n/i, p)))))
+%p A209406     end:
+%p A209406 T:= (n, k)-> b(n$2, k):
+%p A209406 seq(seq(T(n, k), k=1..n), n=1..14);  # _Alois P. Heinz_, Apr 13 2017
+%p A215930 g:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A215930       `if`(min(i, p)<1, 0, add(g(n-i*j, i-1, p-j)*
+%p A215930        binomial(t(i)+j-1, j), j=0..min(n/i, p)))))
+%p A215930     end:
+%p A215930 a:= n-> g(2*n, 2*n, n):
+%p A215930 seq(a(n), n=0..40);
+%p A216708 b:= proc(n, i, p) option remember; (m-> `if`(m<n, 0, `if`(n=0,
+%p A216708       `if`(p=0, 0, `if`(p=1, 2, p!*(p+2))), b(n, i-1, p)+
+%p A216708         b(n-i, min(n-i, i-1), p+1))))(i*(i+1)/2)
+%p A216708     end:
+%p A216708 a:= n-> b(n$2, 0):
+%p A216708 seq(a(n), n=0..42);  # _Alois P. Heinz_, Aug 18 2018
+%p A235998 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A235998       expand(add(b(n-i*j, i-1, p+j)/j!*`if`(j=0, 1, x), j=0..n/i))))
+%p A235998     end:
+%p A235998 T:= n-> (p-> seq(coeff(p, x, i), i=1..degree(p)))(b(n$2, 0)):
+%p A235998 seq(T(n), n=1..25); # _Alois P. Heinz_, Jan 20 2014, revised May 25 2014
+%p A236625 b:= proc(n, i, p) option remember; `if`(n=0, [p!, 0],
+%p A236625       `if`(i<1, 0, add((p-> p+[0, p[1]*j])(1/j!*
+%p A236625       `if`(j>0, 2, 1)*b(n-i*j, i-1, p+j)), j=0..n/i)))
+%p A236625     end:
+%p A236625 a:= n-> b(n$2, 0)[2]:
+%p A236625 seq(a(n), n=0..35);  # _Alois P. Heinz_, Apr 28 2016
+%p A242391 b:= proc(n, i, p) option remember; `if`(n=0, p!,
+%p A242391       `if`(i<1, 0, add(`if`(j=0 or irem(j, 2)=1,
+%p A242391          b(n-i*j, i-1, p+j)/j!, 0), j=0..n/i)))
+%p A242391     end:
+%p A242391 a:= n-> b(n$2, 0):
+%p A242391 seq(a(n), n=0..45);
+%p A242434 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A242434        b(n, i-1, p) +`if`(i^2>n, 0, b(n-i^2, i-1, p+i)/i!)))
+%p A242434     end:
+%p A242434 a:= n-> b(n, isqrt(n), 0):
+%p A242434 seq(a(n), n=0..100);
+%p A242498 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0, expand(
+%p A242498       add(x^(j*(2*irem(i, 2)-1))*b(n-i*j, i-1, p+j)/j!, j=0..n/i))))
+%p A242498     end:
+%p A242498 T:= n-> (p-> seq(coeff(p, x, i), i=ldegree(p)..degree(p)))(b(n$2, 0)):
+%p A242498 seq(T(n), n=0..20);
+%p A242626 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A242626       expand(add(`if`(j=0, 1, x^(2*irem(i, 2)-1))*
+%p A242626       b(n-i*j, i-1, p+j)/j!, j=0..n/i))))
+%p A242626     end:
+%p A242626 T:= n->(p->seq(coeff(p, x, i), i=ldegree(p)..degree(p)))(b(n$2, 0)):
+%p A242626 seq(T(n), n=0..20);
+%p A243149 b:= proc(n, i, p) option remember; `if`(n=0, p!,
+%p A243149       `if`(i<1, 0, expand(add(x^`if`(j=0, 0, i-j)*
+%p A243149        b(n-i*j, i-1, p+j)/j!, j=0..n/i))))
+%p A243149     end:
+%p A243149 a:= n-> coeff(b(n$2, 0), x, 0):
+%p A243149 seq(a(n), n=0..50);
+%p A254578 b:= proc(n, i, p) option remember; `if`(n<=i, (p+1)!, 0)+add(
+%p A254578       b(n/d, d-1, p+1), d=select(x->x<=i, divisors(n)minus{1, n}))
+%p A254578     end:
+%p A254578 a:= n-> b(n$2, 0):
+%p A254578 seq(a(n), n=1..100);  # _Alois P. Heinz_, Feb 01 2015
+%p A261774 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A261774       add(b(n-i*j, i-1, p+j)/j!*binomial(n, i*j), j=0..n/i)))
+%p A261774     end:
+%p A261774 a:= n-> b(n$2, 0):
+%p A261774 seq(a(n), n=0..25);
+%p A261777 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0, add(
+%p A261777       b(n-i*j, i-1, p+j)/j!*multinomial(n, n-i*j, j$i), j=0..n/i)))
+%p A261777     end:
+%p A261777 a:= n-> b(n$2, 0):
+%p A261777 seq(a(n), n=0..25);
+%p A261894 b:= proc(n, i, p) option remember; `if`(n=0, p!,
+%p A261894       `if`(i<1, 0, add((t-> binomial(t+j-1, t-1))(
+%p A261894        a(i-1))*b(n-i*j, i-1, p+j)/j!, j=0..n/i)))
+%p A261894     end:
+%p A261894 a:= n-> b(n$2, 0):
+%p A261894 seq(a(n), n=0..30);
+%p A263897 b:= proc(n, i, p) option remember; `if`(n=0, p!^2,
+%p A263897       `if`(i<1, 0, add(b(n-i*j, i-1, p+j)/j!^2, j=0..n/i)))
+%p A263897     end:
+%p A263897 a:= n-> b(n$2, 0):
+%p A263897 seq(a(n), n=0..35);  # _Alois P. Heinz_, Oct 29 2015
+%p A266325 b:= proc(n, i, p) option remember; `if`(n=0, `if`(p=1, 1, 0),
+%p A266325       `if`(i<1, 0, b(n, i-1, p)+add(`if`(irem(p, j)=0,
+%p A266325        b(n-i*j, i-1, p/j), 0), j=1..n/i)))
+%p A266325     end:
+%p A266325 a:= proc(n) option remember; local m;
+%p A266325       if isprime(n) then return n fi;
+%p A266325       for m from 0 do if b(m$2, n)>0 then return m fi od
+%p A266477 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A266477       x^max(p, p*n), add(b(n-i*j, i-1, max(p, p*j)), j=0..n/i))
+%p A266477     end:
+%p A266477 T:= n-> (p-> seq(coeff(p, x, i), i=1..degree(p)))(b(n$2, 1)):
+%p A266477 seq(T(n), n=0..16);
+%p A266499 b:= proc(n, i, p) option remember; `if`(p=1 and i*(i+1)/2<n, 0,
+%p A266499      `if`(n=0, `if`(p=1, 1, 0), `if`(i<1, 0, b(n, i-1, p)+add(
+%p A266499      `if`(irem(p, j)=0, b(n-i*j, i-1, p/j), 0), j=1..min(p, n/i)))))
+%p A266499     end:
+%p A266499 a:= n-> `if`(isprime(n), 1, b(n$3)):
+%p A266499 seq(a(n), n=0..70);
+%p A266687 b:= proc(n, i, p) option remember; `if`(n=0, `if`(p=1, 1, 0),
+%p A266687       `if`(i<1, 0, b(n, i-1, p)+add(`if`(irem(p, j)=0,
+%p A266687        b(n-i*j, i-1, p/j), 0), j=1..n/i)))
+%p A266687     end:
+%p A266687 a:= n-> b(n$2, 4):
+%p A266687 seq(a(n), n=0..70);
+%p A266688 b:= proc(n, i, p) option remember; `if`(i*(p+(i-1)/2)<n, 0, `if`(n=0,
+%p A266688       `if`(p=1, 1, 0), b(n, i-1, p) +add(`if`(irem(p, j)>0, 0, (h->
+%p A266688        b(h, min(h, i-1), p/j))(n-i*j)), j=1..min(p, n/i))))
+%p A266688     end:
+%p A266688 a:= n-> b(n$2, 5):
+%p A266688 seq(a(n), n=0..65);
+%p A266689 b:= proc(n, i, p) option remember; `if`(i*(p+(i-1)/2)<n, 0, `if`(n=0,
+%p A266689       `if`(p=1, 1, 0), b(n, i-1, p) +add(`if`(irem(p, j)>0, 0, (h->
+%p A266689        b(h, min(h, i-1), p/j))(n-i*j)), j=1..min(p, n/i))))
+%p A266689     end:
+%p A266689 a:= n-> b(n$2, 6):
+%p A266689 seq(a(n), n=0..65);
+%p A266690 b:= proc(n, i, p) option remember; `if`(i*(p+(i-1)/2)<n, 0, `if`(n=0,
+%p A266690       `if`(p=1, 1, 0), b(n, i-1, p) +add(`if`(irem(p, j)>0, 0, (h->
+%p A266690        b(h, min(h, i-1), p/j))(n-i*j)), j=1..min(p, n/i))))
+%p A266690     end:
+%p A266690 a:= n-> b(n$2, 7):
+%p A266690 seq(a(n), n=0..65);
+%p A266691 b:= proc(n, i, p) option remember; `if`(i*(p+(i-1)/2)<n, 0, `if`(n=0,
+%p A266691       `if`(p=1, 1, 0), b(n, i-1, p) +add(`if`(irem(p, j)>0, 0, (h->
+%p A266691        b(h, min(h, i-1), p/j))(n-i*j)), j=1..min(p, n/i))))
+%p A266691     end:
+%p A266691 a:= b(n$2, 8):
+%p A266691 seq(a(n), n=0..65);
+%p A266692 b:= proc(n, i, p) option remember; `if`(i*(p+(i-1)/2)<n, 0, `if`(n=0,
+%p A266692       `if`(p=1, 1, 0), b(n, i-1, p) +add(`if`(irem(p, j)>0, 0, (h->
+%p A266692        b(h, min(h, i-1), p/j))(n-i*j)), j=1..min(p, n/i))))
+%p A266692     end:
+%p A266692 a:= b(n$2, 9):
+%p A266692 seq(a(n), n=0..65);
+%p A266693 b:= proc(n, i, p) option remember; `if`(i*(p+(i-1)/2)<n, 0, `if`(n=0,
+%p A266693       `if`(p=1, 1, 0), b(n, i-1, p) +add(`if`(irem(p, j)>0, 0, (h->
+%p A266693        b(h, min(h, i-1), p/j))(n-i*j)), j=1..min(p, n/i))))
+%p A266693     end:
+%p A266693 a:= b(n$2, 10):
+%p A266693 seq(a(n), n=0..65);
+%p A271878 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A271878       `if`(min(i, p)<1, 0, add(b(n-i*j, i-1, p-j)*
+%p A271878        binomial(g(i)+j-1, j), j=0..min(n/i, p)))))
+%p A271878     end:
+%p A271878 T:= (n, k)-> b(n$2, k):
+%p A271878 seq(seq(T(n, k), k=1..n), n=1..14);  # _Alois P. Heinz_, Apr 13 2017
+%p A271879 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A271879       `if`(min(i, p)<1, 0, add(b(n-i*j, i-1, p-j)*
+%p A271879        binomial(g(i)+j-1, j), j=0..min(n/i, p)))))
+%p A271879     end:
+%p A271879 T:= (n, k)-> b(n$2, k):
+%p A271879 seq(seq(T(n, k), k=1..n), n=1..14);  # _Alois P. Heinz_, Apr 13 2017
+%p A274174 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A274174        add(b(n-i*j, i-1, p+`if`(j=0, 0, 1)), j=0..n/i)))
+%p A274174     end:
+%p A274174 a:= n-> b(n$2, 0):
+%p A274174 seq(a(n), n=0..50);  # _Alois P. Heinz_, Jun 12 2016
+%p A275414 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A275414       `if`(min(i, p)<1, 0, add(b(n-i*j, i-1, p-j)*
+%p A275414        binomial(3^i+j-1, j), j=0..min(n/i, p)))))
+%p A275414     end:
+%p A275414 T:= (n, k)-> b(n$2, k):
+%p A275414 seq(seq(T(n, k), k=1..n), n=1..14);  # _Alois P. Heinz_, Apr 13 2017
+%p A275416 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A275416       `if`(min(i, p)<1, 0, add(b(n-i*j, i-1, p-j)*
+%p A275416        binomial(ceil(i/2)+j-1, j), j=0..min(n/i, p)))))
+%p A275416     end:
+%p A275416 T:= (n, k)-> b(n$2, k):
+%p A275416 seq(seq(T(n, k), k=1..n), n=1..16);  # _Alois P. Heinz_, Apr 13 2017
+%p A275431 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A275431       `if`(min(i, p)<1, 0, add(b(n-i*j, i-1, p-j)*
+%p A275431        binomial(C(i)+j-1, j), j=0..min(n/i, p)))))
+%p A275431     end:
+%p A275431 T:= (n, k)-> b(n$2, k):
+%p A275431 seq(seq(T(n, k), k=1..n), n=1..12);  # _Alois P. Heinz_, Apr 13 2017
+%p A275548 b:= proc(n, i, p) option remember; (t-> `if`(n=0, p!,
+%p A275548       `if`(i<1, 0, add(b(n-i*j, i-1, p+`if`(t, j, 0))/
+%p A275548       `if`(t, j, 0)!, j=0..n/i))))(i::odd)
+%p A275548     end:
+%p A275548 a:= n-> b(n$2, 0):
+%p A275548 seq(a(n), n=0..50);  # _Alois P. Heinz_, Aug 03 2016
+%p A275592 b:= proc(n, i, p) option remember; (t-> `if`(n=0, p!,
+%p A275592       `if`(i<1, 0, add(b(n-i*j, i-1, p+`if`(t, j, 0))/
+%p A275592       `if`(t, j, 0)!, j=0..n/i))))(i::even)
+%p A275592     end:
+%p A275592 a:= n-> b(n$2, 0):
+%p A275592 seq(a(n), n=0..50);  # _Alois P. Heinz_, Aug 03 2016
+%p A285824 b:= proc(n, i, p) option remember; expand(`if`(n=0 or i=1,
+%p A285824       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*x^j*combinat
+%p A285824       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)))
+%p A285824     end:
+%p A285824 T:= n-> (p-> seq(coeff(p, x, i), i=0..n))(b(n$2, 0)):
+%p A285824 seq(T(n), n=0..12);
+%p A285849 b:= proc(n, i, p) option remember; expand(`if`(n=0 or i=1,
+%p A285849       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285849       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)))
+%p A285849     end:
+%p A285849 T:= n-> (p-> seq(coeff(p, x, i), i=0..n))(b(n$2, 0)):
+%p A285849 seq(T(n), n=0..12);
+%p A285854 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285854       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285854       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)), x, 4)
+%p A285854     end:
+%p A285854 a:= n-> coeff(b(n$2, 0), x, 3):
+%p A285854 seq(a(n), n=3..25);
+%p A285855 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285855       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285855       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)), x, 5)
+%p A285855     end:
+%p A285855 a:= n-> coeff(b(n$2, 0), x, 4):
+%p A285855 seq(a(n), n=4..25);
+%p A285856 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285856       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285856       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)), x, 6)
+%p A285856     end:
+%p A285856 a:= n-> coeff(b(n$2, 0), x, 5):
+%p A285856 seq(a(n), n=5..25);
+%p A285857 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285857       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285857       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)), x, 7)
+%p A285857     end:
+%p A285857 a:= n-> coeff(b(n$2, 0), x, 6):
+%p A285857 seq(a(n), n=6..25);
+%p A285858 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285858       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285858       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)), x, 8)
+%p A285858     end:
+%p A285858 a:= n-> coeff(b(n$2, 0), x, 7):
+%p A285858 seq(a(n), n=7..25);
+%p A285859 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285859       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285859       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)), x, 9)
+%p A285859     end:
+%p A285859 a:= n-> coeff(b(n$2, 0), x, 8):
+%p A285859 seq(a(n), n=8..25);
+%p A285860 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285860       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285860       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)), x, 10)
+%p A285860     end:
+%p A285860 a:= n-> coeff(b(n$2, 0), x, 9):
+%p A285860 seq(a(n), n=9..25);
+%p A285861 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285861       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285861       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)), x, 11)
+%p A285861     end:
+%p A285861 a:= n-> coeff(b(n$2, 0), x, 10):
+%p A285861 seq(a(n), n=10..25);
+%p A285862 b:= proc(n, i, p) option remember; expand(`if`(n=0 or i=1,
+%p A285862       (p+n)!/n!*x^n, add(b(n-i*j, i-1, p+j)*(i-1)!^j*combinat
+%p A285862       [multinomial](n, n-i*j, i$j)/j!^2*x^j, j=0..n/i)))
+%p A285862     end:
+%p A285862 a:= n-> coeff(b(2*n$2, 0), x, n):
+%p A285862 seq(a(n), n=0..20);
+%p A285918 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285918       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285918       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)), x, 4)
+%p A285918     end:
+%p A285918 a:= n-> coeff(b(n$2, 0), x, 3):
+%p A285918 seq(a(n), n=3..30);
+%p A285919 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285919       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285919       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)), x, 5)
+%p A285919     end:
+%p A285919 a:= n-> coeff(b(n$2, 0), x, 4):
+%p A285919 seq(a(n), n=4..30);
+%p A285920 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285920       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285920       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)), x, 6)
+%p A285920     end:
+%p A285920 a:= n-> coeff(b(n$2, 0), x, 5):
+%p A285920 seq(a(n), n=5..30);
+%p A285921 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285921       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285921       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)), x, 7)
+%p A285921     end:
+%p A285921 a:= n-> coeff(b(n$2, 0), x, 6):
+%p A285921 seq(a(n), n=6..30);
+%p A285922 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285922       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285922       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)), x, 8)
+%p A285922     end:
+%p A285922 a:= n-> coeff(b(n$2, 0), x, 7):
+%p A285922 seq(a(n), n=7..30);
+%p A285923 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285923       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285923       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)), x, 9)
+%p A285923     end:
+%p A285923 a:= n-> coeff(b(n$2, 0), x, 8):
+%p A285923 seq(a(n), n=8..30);
+%p A285924 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285924       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285924       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)), x, 10)
+%p A285924     end:
+%p A285924 a:= n-> coeff(b(n$2, 0), x, 9):
+%p A285924 seq(a(n), n=9..30);
+%p A285925 b:= proc(n, i, p) option remember; series(`if`(n=0 or i=1,
+%p A285925       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285925       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)), x, 11)
+%p A285925     end:
+%p A285925 a:= n-> coeff(b(n$2, 0), x, 10):
+%p A285925 seq(a(n), n=10..30);
+%p A285926 b:= proc(n, i, p) option remember; expand(`if`(n=0 or i=1,
+%p A285926       (p+n)!/n!*x^n, add(x^j*b(n-i*j, i-1, p+j)*combinat
+%p A285926       [multinomial](n, n-i*j, i$j)/j!^2, j=0..n/i)))
+%p A285926     end:
+%p A285926 a:= n-> coeff(b(2*n$2, 0), x, n):
+%p A285926 seq(a(n), n=0..20);
+%p A288005 b:= proc(n, i, p) option remember; `if`(n<0, 0, `if`(n=0,
+%p A288005       `if`(p<0 and i=1, 1, 0), `if`(n=i or n=i+p, 1, 0)+
+%p A288005       `if`(i<1 and p=1, 0, b(n-2*i, i, -p))+b(n-2*(i+p), i+p, -p)))
+%p A288005     end:
+%p A288005 a:= n-> `if`(n=0, 1, b(n, 0, 1)):
+%p A288005 seq(a(n), n=0..60);  # _Alois P. Heinz_, Sep 02 2017
+%p A288006 b:= proc(n, i, p) option remember; `if`(n<0, 0, `if`(n=0,
+%p A288006       `if`(p<0 and i=1, 1, 0), `if`(n=i or n=i+p, 1, 0)+
+%p A288006       `if`(i<1 and p=1, 0, b(n-2*i, i, -p))+b(n-2*(i+p), i+p, -p)))
+%p A288006     end:
+%p A288006 a:= n-> (g(n, 0)+`if`(n=0, 1, b(n, 0, 1)))/2:
+%p A288006 seq(a(n), n=0..60);  # _Alois P. Heinz_, Sep 02 2017
+%p A289842 b:= proc(n, i, p) option remember; `if`(n=0, p,
+%p A289842      `if`(i<1, 0, add(b(n-j*i, i/2, p*i^j), j=0..n/i)))
+%p A289842     end:
+%p A289842 a:= n-> (t-> b(t, 2^ilog2(t), 1))(2*n):
+%p A289842 seq(a(n), n=0..33);  # _Alois P. Heinz_, Oct 27 2017
+%p A289978 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A289978       `if`(min(i, p)<1, 0, add(binomial(g(i)+j-1, j)*
+%p A289978          b(n-i*j, i-1, p-j), j=0..min(n/i, p)))))
+%p A289978     end:
+%p A289978 T:= (n, k)-> b(n$2, k):
+%p A289978 seq(seq(T(n, k), k=0..n), n=0..14);  # _Alois P. Heinz_, Jul 25 2017
+%p A290222 b:= proc(n, i, p) option remember; `if`(p>n, 0, `if`(n=0, 1,
+%p A290222       `if`(min(i, p)<1, 0, add(binomial(2^(i-1)+j-1, j)*
+%p A290222          b(n-i*j, i-1, p-j), j=0..min(n/i, p)))))
+%p A290222     end:
+%p A290222 T:= (n, k)-> b(n$2, k):
+%p A290222 seq(seq(T(n, k), k=0..n), n=0..14);  # _Alois P. Heinz_, Sep 12 2017
+%p A294298 b:= proc(n, i, p) option remember; `if`(n=0, p,
+%p A294298      `if`(i<1, 0, add(b(n-j*i, i/3, p*i^j), j=0..n/i)))
+%p A294298     end:
+%p A294298 a:= n-> (t-> b(t, 3^ilog[3](t), 1))(3*n):
+%p A294298 seq(a(n), n=0..33);  # _Alois P. Heinz_, Oct 27 2017
+%p A297120 b:= proc(n, i, p) option remember; `if`(n=0 or i=1, (p+n)!*
+%p A297120       (1+n)/n!, add(b(n-i*j, i-1, p+j)*(1+j)/j!, j=0..n/i))
+%p A297120     end:
+%p A297120 a:= n-> b(n$2, 0):
+%p A297120 seq(a(n), n=0..35);  # _Alois P. Heinz_, Dec 26 2017
+%p A302300 b:= proc(n, i, p) option remember; `if`(n=0 or i=1, (
+%p A302300       `if`(n=1, 1, 0)+p)^2, add(b(n-i*j, i-1,
+%p A302300       `if`(j=1, 1, 0)+p), j=0..n/i))
+%p A302300     end:
+%p A302300 a:= n-> b(n$2, 0):
+%p A302300 seq(a(n), n=0..60);  # _Alois P. Heinz_, Apr 05 2018
+%p A304825 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A304825       binomial(`if`(n>1, 1, 0)+p, 2), add(
+%p A304825       b(n-i*j, i-1, `if`(j>1, 1, 0)+p), j=0..n/i))
+%p A304825     end:
+%p A304825 a:= n-> b(n$2, 0):
+%p A304825 seq(a(n), n=6..60);  # _Alois P. Heinz_, May 19 2018
+%p A319005 b:= proc(n, i, p) option remember; `if`(n=0 or i=1, `if`(p>1,
+%p A319005       0, 1), b(n, i-1, p) +b(n-i, min(i, n-i), max(p/i, 1)))
+%p A319005     end:
+%p A319005 a:= n-> b(n$3):
+%p A319005 seq(a(n), n=0..50);  # _Alois P. Heinz_, Oct 22 2018
+%p A325828 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A325828       `if`(n=p-1, 1, 0), add(`if`(irem(p, j+1, 'r')=0,
+%p A325828       (w-> b(w, min(w, i-1), r))(n-i*j), 0), j=0..n/i))
+%p A325828     end:
+%p A325828 a:= n-> b(n$2,n+1):
+%p A325828 seq(a(n), n=0..80);  # _Alois P. Heinz_, Aug 17 2019
+%p A325830 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A325830       `if`(n=p-1, 1, 0), add(`if`(irem(p, j+1, 'r')=0,
+%p A325830       (w-> b(w, min(w, i-1), r))(n-i*j), 0), j=0..n/i))
+%p A325830     end:
+%p A325830 a:= n-> `if`(isprime(n), 1, b(2*n$3)):
+%p A325830 seq(a(n), n=0..60);  # _Alois P. Heinz_, Aug 16 2019
+%p A325831 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A325831       `if`(n=p-1, 1, 0), add(`if`(irem(p, j+1, 'r')=0,
+%p A325831       (w-> b(w, min(w, i-1), r))(n-i*j), 0), j=0..n/i))
+%p A325831     end:
+%p A325831 a:= n-> combinat[numbpart](n)-add(b(n$2, k), k=0..n):
+%p A325831 seq(a(n), n=0..55);  # _Alois P. Heinz_, Aug 17 2019
+%p A325832 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A325832       `if`(n=p-1, 1, 0), add(`if`(irem(p, j+1, 'r')=0,
+%p A325832       (w-> b(w, min(w, i-1), r))(n-i*j), 0), j=0..n/i))
+%p A325832     end:
+%p A325832 a:= n-> combinat[numbpart](n)-add(b(n$2, k), k=0..n-1):
+%p A325832 seq(a(n), n=0..55);  # _Alois P. Heinz_, Aug 17 2019
+%p A325833 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A325833       `if`(n=p-1, 1, 0), add(`if`(irem(p, j+1, 'r')=0,
+%p A325833       (w-> b(w, min(w, i-1), r))(n-i*j), 0), j=0..n/i))
+%p A325833     end:
+%p A325833 a:= n-> add(b(n$2, k), k=0..n-1):
+%p A325833 seq(a(n), n=0..55);  # _Alois P. Heinz_, Aug 17 2019
+%p A325834 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A325834       `if`(n=p-1, 1, 0), add(`if`(irem(p, j+1, 'r')=0,
+%p A325834       (w-> b(w, min(w, i-1), r))(n-i*j), 0), j=0..n/i))
+%p A325834     end:
+%p A325834 a:= n-> add(b(n$2, k), k=0..n):
+%p A325834 seq(a(n), n=0..55);  # _Alois P. Heinz_, Aug 17 2019
+%p A325836 b:= proc(n, i, p) option remember; `if`(n=0 or i=1,
+%p A325836       `if`(n=p-1, 1, 0), add(`if`(irem(p, j+1, 'r')=0,
+%p A325836       (w-> b(w, min(w, i-1), r))(n-i*j), 0), j=0..n/i))
+%p A325836     end:
+%p A325836 a:= n-> b(n$2,n-1):
+%p A325836 seq(a(n), n=0..80);  # _Alois P. Heinz_, Aug 17 2019
+%p A326493 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0, `if`(n=0, p!,
+%p A326493       b(n, i-1, p)+b(n-i, min(n-i, i-1), p-1)/(i-1)!))
+%p A326493     end:
+%p A326493 a:= n-> b(n$3):
+%p A326493 seq(a(n), n=0..31);
+%p A327677 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A327677       add(b(n-i*j, i-1, p+j)*binomial(n, i*j), j=0..n/i)))
+%p A327677     end:
+%p A327677 a:= n-> b(n$2, 0):
+%p A327677 seq(a(n), n=0..23);
+%p A327710 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0,
+%p A327710      `if`(n=0, p!, b(n, i-1, p)+b(n-i, min(n-i, i-2), p+1)))
+%p A327710     end:
+%p A327710 a:= n-> b(n$2, 0):
+%p A327710 seq(a(n), n=0..50);
+%p A327710 # second Maple program:
+%p A327710 b:= proc(n, i) option remember; `if`(n=0, 1,
+%p A327711 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<2, 0,
+%p A327711       b(n, i-1, p)) +b(n-i, min(n-i, i), p-1)/(i-1)!)
+%p A327711     end:
+%p A327711 a:= n-> b(n$3):
+%p A327711 seq(a(n), n=0..28);
+%p A331843 b:= proc(n, i, p) option remember; (t->
+%p A331843       `if`(t*(i+2)/3<n, 0, `if`(n=0, p!, b(n, i-1, p)+
+%p A331843       `if`(t>n, 0, b(n-t, i-1, p+1)))))((i*(i+1)/2))
+%p A331843     end:
+%p A331843 a:= n-> b(n, h(n), 0):
+%p A331843 seq(a(n), n=0..73);  # _Alois P. Heinz_, Jan 31 2020
+%p A331844 b:= proc(n, i, p) option remember;
+%p A331844       `if`(i*(i+1)*(2*i+1)/6<n, 0, `if`(n=0, p!,
+%p A331844       `if`(i^2>n, 0, b(n-i^2, i-1, p+1))+b(n, i-1, p)))
+%p A331844     end:
+%p A331844 a:= n-> b(n, isqrt(n), 0):
+%p A331844 seq(a(n), n=0..82);  # _Alois P. Heinz_, Jan 30 2020
+%p A331845 b:= proc(n, i, p) option remember;
+%p A331845       `if`((i*(i+1)/2)^2<n, 0, `if`(n=0, p!,
+%p A331845       `if`(i^3>n, 0, b(n-i^3, i-1, p+1))+b(n, i-1, p)))
+%p A331845     end:
+%p A331845 a:= n-> b(n, iroot(n, 3), 0):
+%p A331845 seq(a(n), n=0..100);  # _Alois P. Heinz_, Jan 30 2020
+%p A331884 b:= proc(n, i, p) option remember;
+%p A331884       `if`(i*(i+1)*(2*i+1)/6<n, 0, `if`(n=0, p!,
+%p A331884       `if`(i^2>n, 0, b(n-i^2, i-1, p+1))+b(n, i-1, p)))
+%p A331884     end:
+%p A331884 a:= n-> b(n^2, n, 0):
+%p A331884 seq(a(n), n=0..35);  # _Alois P. Heinz_, Jan 30 2020
+%p A331899 b:= proc(n, i, p) option remember;
+%p A331899       `if`((i*(i+1)/2)^2<n, 0, `if`(n=0, p!,
+%p A331899       `if`(i^3>n, 0, b(n-i^3, i-1, p+1))+b(n, i-1, p)))
+%p A331899     end:
+%p A331899 a:= n-> b(n^3, n, 0):
+%p A331899 seq(a(n), n=0..33);  # _Alois P. Heinz_, Jan 31 2020
+%p A331900 b:= proc(n, i, p) option remember; (t->
+%p A331900       `if`(t*(i+2)/3<n, 0, `if`(n=0, p!, b(n, i-1, p)+
+%p A331900       `if`(t>n, 0, b(n-t, i-1, p+1)))))((i*(i+1)/2))
+%p A331900     end:
+%p A331900 a:= n-> b(n*(n+1)/2, n, 0):
+%p A331900 seq(a(n), n=0..37);  # _Alois P. Heinz_, Jan 31 2020
+%p A331983 b:= proc(n, i, p) option remember;
+%p A331983       `if`(n=0, p!, `if`(i*(i+1)*(2*i+1)/6-1<n, 0,
+%p A331983       `if`(i^2>n, 0, b(n-i^2, i-1, p+1))+b(n, i-1, p)))
+%p A331983     end:
+%p A331983 a:= n-> b(n, isqrt(n), 0):
+%p A331983 seq(a(n), n=0..87);  # _Alois P. Heinz_, Feb 03 2020
+%p A332304 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0, `if`(n=0,
+%p A332304       irem(p, 2)*p!, add(b(n-i*j, i-1, p+j), j=0..min(1, n/i))))
+%p A332304     end:
+%p A332304 a:= n-> b(n$2, 0):
+%p A332304 seq(a(n), n=0..55);  # _Alois P. Heinz_, Feb 09 2020
+%p A332305 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0, `if`(n=0,
+%p A332305       irem(p+1, 2)*p!, add(b(n-i*j, i-1, p+j), j=0..min(1, n/i))))
+%p A332305     end:
+%p A332305 a:= n-> b(n$2, 0):
+%p A332305 seq(a(n), n=0..55);  # _Alois P. Heinz_, Feb 09 2020
+%p A332309 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0, `if`(n=0,
+%p A332309       p!, add(b(n-i*j, i-1, p+j), j=0..min(irem(i, 3), 1, n/i))))
+%p A332309     end:
+%p A332309 a:= n-> b(n$2, 0):
+%p A332309 seq(a(n), n=0..55);  # _Alois P. Heinz_, Feb 09 2020
+%p A332310 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0, `if`(n=0,
+%p A332310       p!, add(b(n-i*j, i-1, p+j), j=0..min(irem(i, 4), 1, n/i))))
+%p A332310     end:
+%p A332310 a:= n-> b(n$2, 0):
+%p A332310 seq(a(n), n=0..55);  # _Alois P. Heinz_, Feb 09 2020
+%p A332311 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0, `if`(n=0,
+%p A332311       p!, add(b(n-i*j, i-1, p+j), j=0..min(irem(i, 5), 1, n/i))))
+%p A332311     end:
+%p A332311 a:= n-> b(n$2, 0):
+%p A332311 seq(a(n), n=0..55);  # _Alois P. Heinz_, Feb 09 2020
+%p A332721 b:= proc(n, i, p) option remember; `if`(n=0 or i=1, (p+n)!
+%p A332721        /(n+1)!, add(b(n-i*j, i-1, p+j)/(j+1)!, j=0..n/i))
+%p A332721     end:
+%p A332721 a:= n-> b(n*(n-1)/2, n$2):
+%p A332721 seq(a(n), n=0..15);
+%p A335548 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A335548        add(b(n-i*j, i-1, p+`if`(j=0, 0, 1)), j=0..n/i)))
+%p A335548     end:
+%p A335548 a:= n-> ceil(2^(n-1))-b(n$2, 0):
+%p A335548 seq(a(n), n=0..50);  # _Alois P. Heinz_, Jul 09 2020
+%p A336140 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0,
+%p A336140       `if`(n=0, combinat[bell](p)*p!, b(n, i-1, p)+
+%p A336140          b(n-i, min(n-i, i-1), p+1)))
+%p A336140     end:
+%p A336140 a:= n-> b(n$2, 0):
+%p A336140 seq(a(n), n=0..40);  # _Alois P. Heinz_, Jul 30 2020
+%p A336269 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A336269       add(`if`(i=j, 0, b(n-i*j, i-1, p+j)/j!), j=0..n/i)))
+%p A336269     end:
+%p A336269 a:= n-> b(n$2, 0):
+%p A336269 seq(a(n), n=0..40);
+%p A336273 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0,
+%p A336273       add(`if`(i=j, 0, b(n-i*j, i-1, p+j)/j!), j=0..n/i)))
+%p A336273     end:
+%p A336273 a:= n-> ceil(2^(n-1))-b(n$2, 0):
+%p A336273 seq(a(n), n=0..40);
+%p A336516 b:= proc(n, i, p) option remember; `if`(n=0, [p!, 0],
+%p A336516       `if`(i<1, 0, add((p-> [0, `if`(j=0, 0, p[1]*i)]+p)(
+%p A336516          b(n-i*j, i-1, p+j)/j!), j=0..n/i)))
+%p A336516     end:
+%p A336516 a:= n-> b(n$2, 0)[2]:
+%p A336516 seq(a(n), n=0..38);
+%p A336579 b:= proc(n, i, p) option remember; `if`(n=0, [p!, 0],
+%p A336579       `if`(i<1, 0, add((p-> [0, `if`(j>0 and isprime(i),
+%p A336579        p[1]*i, 0)]+p)(b(n-i*j, i-1, p+j)/j!), j=0..n/i)))
+%p A336579     end:
+%p A336579 a:= n-> b(n$2, 0)[2]:
+%p A336579 seq(a(n), n=0..38);
+%p A336632 b:= proc(n, i, p) option remember; `if`(n=0, [p!, 0],
+%p A336632       `if`(i<1, 0, add((h-> [0, `if`(j>0 and isprime(i),
+%p A336632        h[1], 0)]+h)(b(n-i*j, i-1, p+j)/j!), j=0..n/i)))
+%p A336632     end:
+%p A336632 a:= n-> b(n$2, 0)[2]:
+%p A336632 seq(a(n), n=0..38);
+%p A336718 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0,
+%p A336718       `if`(n=0, g(p), b(n, i-1, p)+b(n-i, min(n-i, i-1), p+1)))
+%p A336718     end:
+%p A336718 a:= n-> b(n$2, 0):
+%p A336718 seq(a(n), n=0..50);
+%p A336875 b:= proc(n, i, p) option remember; `if`(n=0, [p!, 0],
+%p A336875       `if`(i<1, 0, add((p-> [0, `if`(j=0, 0, p[1])]+p)(
+%p A336875          b(n-i*j, i-1, p+j)/j!), j=0..n/i)))
+%p A336875     end:
+%p A336875 a:= n-> b(n$2, 0)[2]:
+%p A336875 seq(a(n), n=0..38);
+%p A336902 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n or i<1, 0,
+%p A336902      `if`(i=n, i*p!, b(n-i, min(n-i, i-1), p+1))+b(n, i-1, p))
+%p A336902     end:
+%p A336902 a:= n-> b(n$2, 1):
+%p A336902 seq(a(n), n=0..50);
+%p A336903 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0,
+%p A336903       `if`(n=0, p!, b(n-i, min(n-i, i-1), p+1)*
+%p A336903       `if`(p=0, i, 1)+b(n, i-1, p)))
+%p A336903     end:
+%p A336903 a:= n-> `if`(n=0, 0, b(n$2, 0)):
+%p A336903 seq(a(n), n=0..50);
+%p A339162 b:= proc(n, i, p) option remember;
+%p A339162       `if`(n=0, p!, `if`((i-1)*(i+2)/2<n, 0,
+%p A339162        add(b(n-i*j, i-1, p+j), j=0..min(1, n/i))))
+%p A339162     end:
+%p A339162 a:= n-> `if`(n<1, 0, b(n-1$2, 1)):
+%p A339162 seq(a(n), n=0..55);  # _Alois P. Heinz_, Nov 25 2020
+%p A339163 b:= proc(n, i, p) option remember;
+%p A339163       `if`(n=0, p!, `if`((i-2)*(i+3)/2<n, 0,
+%p A339163        add(b(n-i*j, i-1, p+j), j=0..min(1, n/i))))
+%p A339163     end:
+%p A339163 a:= n-> `if`(n<2, 0, b(n-2$2, 1)):
+%p A339163 seq(a(n), n=0..55);  # _Alois P. Heinz_, Nov 25 2020
+%p A339164 b:= proc(n, i, p) option remember;
+%p A339164       `if`(n=0, p!, `if`((i-3)*(i+4)/2<n, 0,
+%p A339164        add(b(n-i*j, i-1, p+j), j=0..min(1, n/i))))
+%p A339164     end:
+%p A339164 a:= n-> `if`(n<3, 0, b(n-3$2, 1)):
+%p A339164 seq(a(n), n=0..55);  # _Alois P. Heinz_, Nov 25 2020
+%p A339165 b:= proc(n, i, p) option remember;
+%p A339165       `if`(n=0, p!, `if`((i-4)*(i+5)/2<n, 0,
+%p A339165        add(b(n-i*j, i-1, p+j), j=0..min(1, n/i))))
+%p A339165     end:
+%p A339165 a:= n-> `if`(n<4, 0, b(n-4$2, 1)):
+%p A339165 seq(a(n), n=0..55);  # _Alois P. Heinz_, Nov 25 2020
+%p A339166 b:= proc(n, i, p) option remember;
+%p A339166       `if`(n=0, p!, `if`((i-5)*(i+6)/2<n, 0,
+%p A339166        add(b(n-i*j, i-1, p+j), j=0..min(1, n/i))))
+%p A339166     end:
+%p A339166 a:= n-> `if`(n<5, 0, b(n-5$2, 1)):
+%p A339166 seq(a(n), n=0..60);  # _Alois P. Heinz_, Nov 25 2020
+%p A339430 b:= proc(n, i, p) option remember; `if`(n=0, irem(1+p, 2)*p!,
+%p A339430      (s-> `if`(s>n, 0, b(n, i+1, p)+b(n-s, i+1, p+1)))(i^2))
+%p A339430     end:
+%p A339430 a:= n-> b(n, 1, 0):
+%p A339430 seq(a(n), n=0..100);  # _Alois P. Heinz_, Dec 04 2020
+%p A339431 b:= proc(n, i, p) option remember; `if`(n=0, irem(p, 2)*p!,
+%p A339431      (s-> `if`(s>n, 0, b(n, i+1, p)+b(n-s, i+1, p+1)))(i^2))
+%p A339431     end:
+%p A339431 a:= n-> b(n, 1, 0):
+%p A339431 seq(a(n), n=0..100);  # _Alois P. Heinz_, Dec 04 2020
+%p A339432 b:= proc(n, i, p) option remember; `if`(n=0, irem(1+p, 2)*p!, (s->
+%p A339432      `if`(s>n, 0, b(n, i+1, p)+b(n-s, i+1, p+1)))(ithprime(i)))
+%p A339432     end:
+%p A339432 a:= n-> b(n, 1, 0):
+%p A339432 seq(a(n), n=0..70);  # _Alois P. Heinz_, Dec 04 2020
+%p A339433 b:= proc(n, i, p) option remember; `if`(n=0, irem(p, 2)*p!, (s->
+%p A339433      `if`(s>n, 0, b(n, i+1, p)+b(n-s, i+1, p+1)))(ithprime(i)))
+%p A339433     end:
+%p A339433 a:= n-> b(n, 1, 0):
+%p A339433 seq(a(n), n=0..70);  # _Alois P. Heinz_, Dec 04 2020
+%p A339435 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0, `if`(n=0, p!
+%p A339435       *(1-2*irem(p, 2)), add(b(n-i*j, i-1, p+j), j=0..min(1, n/i))))
+%p A339435     end:
+%p A339435 a:= n-> b(n$2, 0):
+%p A339435 seq(a(n), n=0..55);  # _Alois P. Heinz_, Dec 04 2020
+%p A339441 b:= proc(n, i, p) option remember; `if`(n=0, irem(1+p, 2)*p!, (t->
+%p A339441      `if`(t>n, 0, b(n, i+1, p)+b(n-t, i+1, p+1)))(i*(i+1)/2))
+%p A339441     end:
+%p A339441 a:= n-> b(n, 1, 0):
+%p A339441 seq(a(n), n=0..100);  # _Alois P. Heinz_, Dec 05 2020
+%p A339442 b:= proc(n, i, p) option remember; `if`(n=0, irem(p, 2)*p!, (t->
+%p A339442      `if`(t>n, 0, b(n, i+1, p)+b(n-t, i+1, p+1)))(i*(i+1)/2))
+%p A339442     end:
+%p A339442 a:= n-> b(n, 1, 0):
+%p A339442 seq(a(n), n=0..100);  # _Alois P. Heinz_, Dec 05 2020
+
+%p A358907 b:= proc(n, i, p) option remember; `if`(n=0, p!, `if`(i<1, 0, (t->
+%p A358907       add(binomial(t, j)*b(n-i*j, i-1, p+j), j=0..min(t, n/i)))(g(i))))
+%p A358907     end:
+%p A358907 a:= n-> b(n$2, 0):
+%p A358907 seq(a(n), n=0..32);  # _Alois P. Heinz_, Dec 15 2022
+
+%p A362362 b:= proc(n, i, p) option remember; `if`(i*(i+1)/2<n, 0,
+%p A362362      `if`(n=0, p!, b(n, i-1, p)+b(n-i, min(n-i, i-1), p-1)))
+%p A362362     end:
+%p A362362 a:= n-> b(n$3):
+%p A362362 seq(a(n), n=0..24);

@@ -1,0 +1,10 @@
+A258172	parmof2	0	A258172	(x, y) -> ZV(x)	Sum over all Dyck paths of semilength n of products over all peaks p of x_p, where x_p is the x-coordinate of peak p.	nonn	0..300	nyi	_Alois P. Heinz_
+A258173	parmof2	0	A258172	(x, y) -> ZV(y)	Sum over all Dyck paths of semilength n of products over all peaks p of y_p, where y_p is the y-coordinate of peak p.	nonn,changed	0..500	nyi	_Alois P. Heinz_
+A258174	parmof2	0	A258172	(x, y) -> ZV(x).*(y)	Sum over all Dyck paths of semilength n of products over all peaks p of x_p*y_p, where x_p and y_p are the coordinates of peak p.	nonn	0..250	nyi	_Alois P. Heinz_
+A258175	parmof2	0	A258172	(x, y) -> ZV(x).+(y)	Sum over all Dyck paths of semilength n of products over all peaks p of x_p+y_p, where x_p and y_p are the coordinates of peak p.	nonn	0..350	nyi	_Alois P. Heinz_
+A258176	parmof2	0	A258172	(x, y) -> ZV(x).^(y)	Sum over all Dyck paths of semilength n of products over all peaks p of x_p^y_p, where x_p and y_p are the coordinates of peak p.	nonn	0..45	nyi	_Alois P. Heinz_
+A258177	parmof2	0	A258172	(x, y) -> ZV(y).^(x)	Sum over all Dyck paths of semilength n of products over all peaks p of y_p^x_p, where x_p and y_p are the coordinates of peak p.	nonn	0..35	nyi	_Alois P. Heinz_
+A258178	parmof2	0	A258172	(x, y) -> ZV(x).^(2)	Sum over all Dyck paths of semilength n of products over all peaks p of x_p^2, where x_p is the x-coordinate of peak p.	nonn	0..200	nyi	_Alois P. Heinz_
+A258179	parmof2	0	A258172	(x, y) -> ZV(y).^(2)	Sum over all Dyck paths of semilength n of products over all peaks p of y_p^2, where y_p is the y-coordinate of peak p.	nonn	0..300	nyi	_Alois P. Heinz_
+A258180	parmof2	0	A258172	(x, y) -> BI(x, y)	Sum over all Dyck paths of semilength n of products over all peaks p of C(x_p,y_p), where x_p and y_p are the coordinates of peak p.	nonn	0..75	nyi	_Alois P. Heinz_
+A258181	parmof2	0	A258172	(x, y) -> Z2(x - y)	Sum over all Dyck paths of semilength n of products over all peaks p of 2^(x_p-y_p), where x_p and y_p are the coordinates of peak p.	nonn	0..55	nyi	_Alois P. Heinz_

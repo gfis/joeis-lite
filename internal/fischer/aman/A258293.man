@@ -1,0 +1,38 @@
+A236810	parmof3	0	A258293	0	(n) -> FA(n)	number of partitions of n! into parts that are at most n. 
+A237512	parmof3	0	A258293	0	(n) -> FA(n).-(ZV(n*(n + 1)/2))	number of partitions of n! - n*(n+1)/2 into parts that are at most n.
+A237998	parmof3	0	A258293	0	(n) -> ZV(2).^(n)	Number of partitions of 2^n into parts that are at most n.
+A238000	parmof3	0	A258293	0	(n) -> ZV(n).^(n)	Number of partitions of n^n into parts that are at most n.
+A238560	parmof3	0	A258293	0	(n) -> ZV(3).^(n)	Number of partitions of 3^n into parts that are at most n.
+A238561	parmof3	0	A258293	0	(n) -> ZV(4).^(n)	Number of partitions of 4^n into parts that are at most n.
+A238562	parmof3	0	A258293	0	(n) -> ZV(5).^(n)	Number of partitions of 5^n into parts that are at most n.
+A238563	parmof3	0	A258293	0	(n) -> ZV(6).^(n)	Number of partitions of 6^n into parts that are at most n.
+A238564	parmof3	0	A258293	0	(n) -> ZV(7).^(n)	Number of partitions of 7^n into parts that are at most n.
+A238565	parmof3	0	A258293	0	(n) -> ZV(8).^(n)	Number of partitions of 8^n into parts that are at most n.
+A238566	parmof3	0	A258293	0	(n) -> ZV(9).^(n)	Number of partitions of 9^n into parts that are at most n.
+A238567	parmof3	0	A258293	0	(n) -> ZV(10).^(n)	Number of partitions of 10^n into parts that are at most n.
+A238608	parmof3	0	A258293	1	(n) -> ZV(n).^(3)	Number of partitions of n^3 into parts that are at most n.
+A238609	parmof3	0	A258293	1	(n) -> ZV(n).^(4)	Number of partitions of n^4 into parts that are at most n.
+A238610	parmof3	0	A258293	1	(n) -> ZV(n).^(5)	Number of partitions of n^5 into parts that are at most n.
+A238611	parmof3	0	A258293	1	(n) -> ZV(n).^(6)	Number of partitions of n^6 into parts that are at most n.
+A238612	parmof3	0	A258293	1	(n) -> ZV(n).^(7)	Number of partitions of n^7 into parts that are at most n.
+A238613	parmof3	0	A258293	1	(n) -> ZV(n).^(8)	Number of partitions of n^8 into parts that are at most n.
+A238614	parmof3	0	A258293	1	(n) -> ZV(n).^(9)	Number of partitions of n^9 into parts that are at most n.
+A238615	parmof3	0	A258293	1	(n) -> ZV(n).^(10)	Number of partitions of n^10 into parts that are at most n.
+A258293	parmof3	0	A258293	1	(n) -> ZV(n).^(2).*(3)	Number of partitions of 3*n^2 into parts that are at most n.	nonn	0..274	nyi	_Vaclav Kotesovec_
+A258294	parmof3	0	A258293	1	(n) -> ZV(n).^(2).*(4)	Number of partitions of 4*n^2 into parts that are at most n.	nonn	0..247	nyi	_Vaclav Kotesovec_
+A258295	parmof3	0	A258293	1	(n) -> ZV(n).^(2).*(5)	Number of partitions of 5*n^2 into parts that are at most n.	nonn	0..230	nyi	_Vaclav Kotesovec_
+A258296	parmof3	0	A258293	1	(n) -> ZV(n).^(2).*(2)	Number of partitions of 2*n^2 into parts that are at most n.	nonn	0..307	nyi	_Vaclav Kotesovec_
+A258297	parmof3	0	A258293	1	(n) -> ZV(n).*(n + 1).*(n + 2)	Number of partitions of n*(n+1)*(n+2) into parts that are at most n.	nonn	0..134	nyi	_Vaclav Kotesovec_
+A258298	parmof3	0	A258293	1	(n) -> ZV(n).*(n + 1).*(n + 2)./(6)	Number of partitions of n*(n+1)*(n+2)/6 into parts that are at most n.	nonn	0..135	nyi	_Vaclav Kotesovec_
+A258299	parmof3	0	A258293	1	(n) -> ZV(n).*(n - 1).*(n - 2)	Number of partitions of n*(n-1)*(n-2) into parts that are at most n.	nonn	0..89	nyi	_Vaclav Kotesovec_
+A258300	parmof3	0	A258293	1	(n) -> ZV(n).*(n - 1).*(n - 2)./(6)	Number of partitions of n*(n-1)*(n-2)/6 into parts that are at most n.	nonn	0..141	nyi	_Vaclav Kotesovec_
+A258301	parmof3	0	A258293	1	(n) -> ZV(n).*(n + 1).*(2*n + 1)./(6)	Number of partitions of n*(n+1)*(2n+1)/6 into parts that are at most n.	nonn	0..118	nyi	_Vaclav Kotesovec_
+A258302	parmof3	0	A258293	1	(n) -> ZV(n).^(3).*(2)	Number of partitions of 2*n^3 into parts that are at most n.	nonn	0..114	nyi	_Vaclav Kotesovec_
+A258303	parmof3	0	A258293	1	(n) -> ZV(n).^(3).*(3)	Number of partitions of 3*n^3 into parts that are at most n.	nonn	0..100	nyi	_Vaclav Kotesovec_
+A258304	parmof3	0	A258293	1	(n) -> ZV(n).^(3).*(4)	Number of partitions of 4*n^3 into parts that are at most n.	nonn	0..62	nyi	_Vaclav Kotesovec_
+A258305	parmof3	0	A258293	1	(n) -> ZV(n).^(3).*(5)	Number of partitions of 5*n^3 into parts that are at most n.	nonn	0..90	nyi	_Vaclav Kotesovec_
+A258668	parmof3	0	A258293	0	(n) -> FA(n - 1)	Number of partitions of (n-1)! into parts that are at most n.
+A258669	parmof3	0	A258293	0	(n) -> FA(n).*(2)	Number of partitions of 2*n! into parts that are at most n.
+A258670	parmof3	0	A258293	0	(n) -> FA(2*n)	Number of partitions of (2*n)! into parts that are at most n.
+A258671	parmof3	0	A258293	0	(n) -> FA(n).^(2)	Number of partitions of (n!)^2 into parts that are at most n.
+A258672	parmof3	0	A258293	0	(n) -> Z2(n).*(n)	Number of partitions of n*2^n into parts that are at most n.

@@ -1,0 +1,40 @@
+A101198	parmof2	1	A328988	r -> r == 1	Number of partitions of n with rank 1 (the rank of a partition is the largest part minus the number of parts).
+A101199	parmof2	1	A328988	r -> r == 2	Number of partitions of n with rank 2 (the rank of a partition is the largest part minus the number of parts).
+A101200	parmof2	1	A328988	r -> r == 3	Number of partitions of n with rank 3 (the rank of a partition is the largest part minus the number of parts).
+A101707	parmof2	1	A328988	r -> r > 0 && (r & 1) == 1	Number of partitions of n having positive odd rank (the rank of a partition is the largest part minus the number of parts).
+A101708	parmof2	1	A328988	r -> r > 0 && (r & 1) == 0	Number of partitions of n having positive even rank (the rank of a partition is the largest part minus the number of parts).
+A101709	parmof2	1	A328988	r -> r >= 0 && (r & 1) == 0	Number of partitions of n having nonnegative even rank (the rank of a partition is the largest part minus the number of parts).
+A328988	parmof2	1	A328988	r -> r % 3 == 0	Number of partitions of n with rank a multiple of 3  
+# ?? A328989	parmof2	1	A328988	r -> Math.abs(r) % 3 == 1	Number of partitions of n with rank congruent to 1 mod 3.  
+A340601	parmof2	1	A328988	r -> r % 2 == 0	Number of integer partitions of n of even rank
+A363213	parmof2	1	A328988	r -> r == 4	Number of partitions of n with rank 4 (the rank of a partition is the largest part minus the number of parts).
+A363214	parmof2	1	A328988	r -> r == 5	Number of partitions of n with rank 5 (the rank of a partition is the largest part minus the number of parts).
+A363230	parmof2	1	A328988	r -> r >= 3	Number of partitions of n with rank 3 or higher (the rank of a partition is the largest part minus the number of parts).
+A363231	parmof2	1	A328988	r -> r >= 4	Number of partitions of n with rank 4 or higher (the rank of a partition is the largest part minus the number of parts).
+A363233	parmof2	1	A328988	r -> r % 4 == 0	Number of partitions of n with rank a multiple of 4
+A363237	parmof2	1	A328988	r -> r % 5 == 0	Number of partitions of n with rank a multiple of 5
+A363238	parmof2	1	A328988	r -> r % 6 == 0	Number of partitions of n with rank a multiple of 6
+A363239	parmof2	1	A328988	r -> r % 7 == 0	Nuber of partitions of n with rank a multiple of 7
+A363241	parmof2	1	A328988	r -> Z.valueOf(r).isProbablePrime()	Number of partitions of n with prime rank.
+A236634	parmof2	1	A328988	r -> r != 0	Number of partitions of n whose rank is not 0.
+# A047993	parmof2	1	A328988	r -> r == 0	Number of partitions of n whose rank is 0.
+A064173	parmof2	1	A328988	r -> r > 0	positive rank
+
+A124227	tuptraf	0	(n, s) -> s[0].+(s[1])./(2)	""	new A000041(),new A124226()	"1,0"	Number of partitions of n with even crank.
+A124228	tuptraf	0	(n, s) -> s[0].-(s[1])./(2)	""	new A000041(),new A124226()	"0,1"	Number of partitions of n with odd crank.
+
+b:= proc(n, i, c) option remember; `if`(i>n, 0, `if`(i=n,
+     `if`(irem(i-c, 7)=0, 1, 0), b(n-i, i, c+1)+b(n, i+1, c)))
+    end:
+a:= n-> b(n, 1$2): # A363239
+
+b:= proc(n, i, c) option remember; `if`(i>n, 0, `if`(i=n,
+     `if`(irem(i-c, 5)=0, 1, 0), b(n-i, i, c+1)+b(n, i+1, c)))
+    end:
+a:= n-> b(n, 1$2): # A363237
+
+%N A117192 Number of partitions of n into distinct parts with an even rank.
+%N A117193 Number of partitions of n into distinct parts with an odd rank.
+%N A117194 Number of partitions of n into distinct parts with an even rank greater than 0.
+#N A122580 Number of partitions of n with crank congruent to 0 mod 3, minus number of partitions of n with crank congruent to 1 mod 3.
+%N A124226 Number of partitions of n with even crank minus number of partitions of n with odd crank.

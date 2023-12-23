@@ -1,0 +1,35 @@
+A283882	a(n) = max(0, n+   67) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) for n > 0.	nonn	1..10000	nyi	_Nathan Fox_
+A283883	a(n) = max(0, n+  117) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) for n > 0.	nonn,fini	1..10000	nyi	_Nathan Fox_
+A283884	a(n) = max(0, n+  193) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) for n > 0.	nonn,look	1..10000	nyi	_Nathan Fox_
+A283885	a(n) = max(0, n+ 3442) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) for n > 0.	nonn	1..100000	nyi	_Nathan Fox_
+A283886	a(n) = max(0, n+19395) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) for n > 0.	nonn,fini	1..61000	nyi	_Nathan Fox_
+A283887	a(n) = max(0, n+20830) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) for n > 0.	nonn,fini	1..68000	nyi	_Nathan Fox_
+A283888	a(n) = max(0, n+27298) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) for n > 0.	nonn,fini	1..90000	nyi	_Nathan Fox_
+A283889	a(n) = max(0, n+10000) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) + a(n-a(n-4)) for n > 0.	nonn,look	1..50000	nyi	_Nathan Fox_
+A283890	a(n) = max(0, n+10001) for n <= 0; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3)) + a(n-a(n-4)) for n > 0.	nonn,look	1..50000	nyi	_Nathan Fox_
+A283891	nonn,look	1..50000	nyi	_Nathan Fox_
+A283892	nonn	1..50000	nyi	_Nathan Fox_
+A283893	a(1) =  3, a(2) = 2; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn	1..10000	nyi	_Nathan Fox_
+A283894	a(1) = 17, a(2) = 2; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn	1..10000	nyi	_Nathan Fox_
+A283895	a(1) = 41, a(2) = 2; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn	1..50000	nyi	_Nathan Fox_
+A283896	a( -88) =  89, a( -87) = 2; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn,fini,full	1..2467	nyi	_Nathan Fox_
+A283897	a( -90) =  91, a( -89) = 2; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn,fini,full	1..375	nyi	_Nathan Fox_
+A283898	a(-311) = 312, a(-310) = 4, a(-309) = 312, a(-308) = 4; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn,fini,full	1..6632	nyi	_Nathan Fox_
+A283899	a(-399) = 400, a(-398) = 4, a(-397) = 400, a(-396) = 4; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn,fini,full	1..465	nyi	_Nathan Fox_
+A283900	a(-769) = 770, a(-768) = 4, a(-767) = 770, a(-766) = 4; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn,fini,full	1..8520	nyi	_Nathan Fox_
+A283901	a(-310) = 4, a(-309) = 311, a(-308) = 4, a(-307) = 311; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn,fini,full	1..658	nyi	_Nathan Fox_
+A283902	a(-701) = 4, a(-700) = 702, a(-699) = 4, a(-698) = 702; thereafter a(n) = a(n-a(n-1)) + a(n-a(n-2)).	nonn,fini,full	1..11969	nyi	_Nathan Fox_
+A283903		nonn,fini,full	1..2179	nyi	_Nathan Fox_
+
+A285757	nyi p	a(n) = a(n - a(n - 2)) + a(n - a(n - 8)), with a(i) = i for 1 <= i <= 9.	nonn	1..10000	nyi	_Nathan Fox_
+A285758	nyi p	A slow relative of Hofstadter's Q sequence.	nonn	1..10000	nyi	_Nathan Fox_
+A285759	nyi p	a(n) = a(n - 1 - a(n - 1)) + a(n - 1 - a(n - 4)), with a(1) = 1, a(2) = 1, a(3) = 1, a(4) = 2.	nonn	1..10000	nyi	_Nathan Fox_
+A285760	nyi p	a(n) = a(n - 2 - a(n - 1)) + a(n - 2 - a(n - 4)), with a(1) = 1, a(2) = 1, a(3) = 2, a(4) = 2.	nonn	1..10000	nyi	_Nathan Fox_
+A285761	nyi p	A slow relative of Hofstadter's Q sequence.	nonn	1..10000	nyi	_Nathan Fox_
+A285762	nyi p	A slow relative of Hofstadter's Q sequence.	nonn	1..10000	nyi	_Nathan Fox_
+A285763	nyi pt	a(n) = a(a(n - 2)) + a(n - a(n - 2)), with a(1) = 1, a(2) = a(3) = a(4) = 2, a(5) = 3.	nonn	1..10000	nyi	_Nathan Fox_
+A285764	nyi p	A relative of the Hofstadter-Conway sequence A004001.	nonn	1..10000	nyi	_Nathan Fox_
+
+A316626	nyi Fpo	a(1)=a(2)=a(3)=1; a(n) = a(n-2*a(n-1))+a(n-1-2*a(n-2)) for n > 3.	nonn	1..10000	nyi	_Nathan Fox_ and _Altug Alkan_
+A316627	nyi Fpo	a(1)=2, a(2)=3; a(n) = a(n+1-a(n-1))+a(n-a(n-2)) for n > 2.	nonn	1..10000	nyi	_Nathan Fox_
+A316628	nyi Fpo	a(1)=1, a(2)=2, a(3)=2, a(4)=3; a(n) = a(n-a(n-1))+a(n-1-a(n-2)-a(n-2-a(n-2))) for n > 4.	nonn	1..10000	nyi	_Nathan Fox_

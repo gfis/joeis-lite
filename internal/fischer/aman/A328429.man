@@ -1,0 +1,84 @@
+A328429	parmof4	0	A328429	-1	(x, i) -> (i != x) ? 1 : 0	(x, i) -> (i <  x) ? 1 : 0	012, 101, 102, and 201.
+A328430	parmof4	0	A328429	-1	(x, i) -> (i <= x) ? 1 : 0	(x, i) -> (i <  x) ? 1 : 0	001 and 012.
+A328431	parmof4	0	A328429	 0	(x, i) -> (i != x) ? 1 : 0	(x, i) -> (x <  i) ? 1 : 0	010, 021, 120, and 210.
+A328432	parmof4	0	A328429	 0	(x, i) -> (i <  x) ? 1 : 0	(x, i) -> (i >  x) ? 1 : 0	010, 021, and 120.
+A328433	parmof4	0	A328429	-1	(x, i) -> (i <  x) ? 1 : 0	(x, i) -> (i <= x) ? 1 : 0	011 and 012.
+A328435	parmof4	0	A328429	-1	(x, i) -> (x <  i) ? 1 : 0	(x, i) -> (i <  x) ? 1 : 0	101, 102, and 201.
+A328436	parmof4	0	A328429	-1	(x, i) -> (i == x) ? 1 : 0	(x, i) -> (i <= x) ? 1 : 0	000 and 001.
+A328437	parmof4	0	A328429	-1	(x, i) -> (i == x) ? 1 : 0	(x, i) -> (i <  x) ? 1 : 0	001.
+A328438	parmof4	0	A328429	-1	(x, i) -> (i <= x) ? 1 : 0	(x, i) -> (i == x) ? 1 : 0	000 and 011.
+A328439	parmof4	0	A328429	-1	(x, i) -> (i <  x) ? 1 : 0	(x, i) -> (i == x) ? 1 : 0	011.
+A328440	parmof4	0	A328429	-1	(x, i) -> (x <= i) ? 1 : 0	(x, i) -> (i == x) ? 1 : 0	000 and 100.
+A328441	parmof4	0	A328429	-1	(x, i) -> (x <  i) ? 1 : 0	(x, i) -> (i == x) ? 1 : 0	100.
+A328442	parmof4	0	A328429	 0	(x, i) -> (x <  i) ? 1 : 0	(x, i) -> (x <  i) ? 1 : 0	210.
+
+# A328434	parmof4	0	A328357				101, 102, 201, and 210.
+# A328357	parmof4	0	A328357				000, 001, 011, 012.
+# A328358	parmof4	0	A328357				012, 021, 010, 120.
+# A328500	parmof4	0	A328357				102.
+# A328501	parmof4	0	A328357				201.
+# A328504	parmof4	0	A328357				010.
+# A328507	parmof4	0	A328357				101.
+
+
+%p A328429        `if`(t and i != x, 0, b(n - 1, i, i <  x)), i = 0 .. n - 1))
+%p A328430        `if`(t and i <= x, 0, b(n - 1, i, i <  x)), i = 0 .. n - 1))
+%p A328431        `if`(t and i != x, 0, b(n - 1, i, x <  i)), i = 0 .. n - 1))
+%p A328432        `if`(t and i <  x, 0, b(n - 1, i, i >  x)), i = 0 .. n - 1))
+%p A328433        `if`(t and i <  x, 0, b(n - 1, i, i <= x)), i = 0 .. n - 1))
+%p A328435        `if`(t and x <  i, 0, b(n - 1, i, i <  x)), i = 0 .. n - 1))
+%p A328436        `if`(t and i =  x, 0, b(n - 1, i, i <= x)), i = 0 .. n - 1))
+%p A328437        `if`(t and i =  x, 0, b(n - 1, i, i <  x)), i = 0 .. n - 1))
+%p A328438        `if`(t and i <= x, 0, b(n - 1, i, i =  x)), i = 0 .. n - 1))
+%p A328439        `if`(t and i <  x, 0, b(n - 1, i, i =  x)), i = 0 .. n - 1))
+%p A328440        `if`(t and x <= i, 0, b(n - 1, i, i =  x)), i = 0 .. n - 1))
+%p A328441        `if`(t and x <  i, 0, b(n - 1, i, i =  x)), i = 0 .. n - 1))
+%p A328442        `if`(t and x <  i, 0, b(n - 1, i, x <  i)), i = 0 .. n - 1))
+
+%p A328429 a := n -> b(n, -1, false):
+%p A328430 a := n -> b(n, -1, false):
+%p A328431 a := n -> b(n,  n, false):
+%p A328432 a := n -> b(n,  n, false):
+%p A328433 a := n -> b(n, -1, false):
+%p A328435 a := n -> b(n, -1, false):
+%p A328436 a := n -> b(n, -1, false):
+%p A328437 a := n -> b(n, -1, false):
+%p A328438 a := n -> b(n, -1, false):
+%p A328439 a := n -> b(n, -1, false):
+%p A328440 a := n -> b(n, -1, false):
+%p A328441 a := n -> b(n, -1, false);
+%p A328442 a := n -> b(n,  n, false):
+
+
+
+
+%p A328357        `if`(t and i <= x, 0, b(n - 1, i, i <= x)), i = 1 .. n    ))
+%p A328434        `if`(t and i >  x, 0, b(n - 1, i, i != x and x > -1)), i=0..n-1))
+%p A328507        `if`(i<=j or i!=t  , b(n-1, i, j), 0), i=1 .. n))
+%p A328500        `if`(i<=j or i>=t  , b(n-1, i, j), 0), i=1 .. n))
+%p A328504        `if`(i>=j or i!=t  , b(n-1, i, j), 0), i=1 .. n))
+%p A328358        `if`(i<x and t and c=0, 0, b(n-1, i, i!=x, max(0, c-1))), i=1..n))
+%p A328500 a := n -> b(n,  0, 0):
+%p A328504 a := n -> b(n,  0, 0):
+%p A328507 a := n -> b(n,  0, 0):
+%p A328357 a := n -> b(n,  0, false):
+%p A328358 a := n -> b(n,  0, false, 2):
+%p A328429 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328430 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328431 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328432 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328433 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328435 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328436 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328437 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328438 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328439 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328440 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328441 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328442 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328434 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328500 b := proc(n, j, t) option remember; `if`(n = 0, 1, add(
+%p A328504 b := proc(n, j, t) option remember; `if`(n = 0, 1, add(
+%p A328507 b := proc(n, j, t) option remember; `if`(n = 0, 1, add(
+%p A328357 b := proc(n, x, t) option remember; `if`(n = 0, 1, add(
+%p A328358 b := proc(n, x, t, c) option remember; `if`(n=0, 1, add(
