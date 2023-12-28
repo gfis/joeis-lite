@@ -3269,7 +3269,7 @@ ogf:
 	head -n2 $@.gen
 	wc -l    $@.gen
 holon: # with update of inits
-	grep -E "^A[0-9]" $(HOLREC)/recegf.tmp \
+	grep -E "^A[0-9]" $(HOLREC)/recogf2.tmp \
 	| grep -v FAIL \
 	| tee    $@.gen
 	wc -l    $@.gen

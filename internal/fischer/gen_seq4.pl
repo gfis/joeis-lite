@@ -194,6 +194,8 @@ while (<>) { # read inputfile
             if ($nopen != $nclos) {
                 print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n";
             }
+            $parm =~ s{ZV\(}           {Z.valueOf\(}g;
+            $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." . $zhash{$1}}eg;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{CV\(}           {CR.valueOf\(}g;
             $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
@@ -213,7 +215,10 @@ while (<>) { # read inputfile
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
-            $parm =~ s{ZV\(}           {Z.valueOf\(}g;
+            #               1      1    2      2  3    3  with "))" 
+            $parm =~ s{ZNO\(([^\,]+)\, *([^\)]+)\)([\)])}   {new IntegersModMul\($2\)\)\.order\($1\)}g; # PARI's znorder(Mod(b,s)) -> new IntegersModMul(s).order(b)
+            #               1      1    2      2  3     3 with ")."
+            $parm =~ s{ZNO\(([^\,]+)\, *([^\)]+)\)([^\)])}  {new IntegersModMul\($2\)\.order\($1\)$3}g; # PARI's znorder(Mod(b,s)) -> new IntegersModMul(s).order(b)
             $parm =~ s{Z\_1\(}         {Z.NEG_ONE.pow\(}g;
             $parm =~ s{n\_1\(}         {(((n & 1) == 0) ? 1 : -1)}g;
             $parm =~ s{Z2\(}           {Z.TWO.pow\(}g;
@@ -229,8 +234,7 @@ while (<>) { # read inputfile
             $parm =~ s{\.pow\(2\)}     {.square\(\)}g;
             $parm =~ s{\.pow\(1\)}     {}g;
             $parms[$iparm] = $parm;
-            #                      1          1
-            $parm =~ s{Z\.valueOf\((\-1|0-9|10)\)}{"Z." . $zhash{$1}}eg;
+            #                      1            1
             $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
         }
         if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
@@ -439,7 +443,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WIntegerPartition}             ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }
     if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"}                      = $itype; }
     if ($line =~ m{\WIntegers\.}                   ) { $imports{"irvine.math.z.Integers"}                        = $itype; }
-    if ($line =~ m{\WIntegersMod\.}                ) { $imports{"iirvine.math.group.IntegersMod"               } = $itype; }
+    if ($line =~ m{\WIntegersMod\(}                ) { $imports{"irvine.math.group.IntegersMod"                } = $itype; }
+    if ($line =~ m{\WIntegersModMul\(}             ) { $imports{"irvine.math.group.IntegersModMul"             } = $itype; }
     if ($line =~ m{\WInverse\b}                    ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
     if ($line =~ m{\WJaguar\.}                     ) { $imports{"irvine.factor.factor.Jaguar"   }                = $itype; }
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }

@@ -1,0 +1,60 @@
+# A128611	findre	0	(-960+384*n)*a(n)+(1760-992*n)*a(n+1)+(-924+984*n)*a(2+n)+(64-490*n)*a(n+3)+(82+131*n)*a(n+4)+(-24-18*n)*a(n+5)+(2+n)*a(n+6), a(0) = 0
+# A273019	findre	0	(n+1)*(2*n + 1)*(12*n^2 - 19*n + 9)*a(n) = (240*n^4 - 140*n^3 - 42*n^2 - 7*n + 9)*a(n-1) - 9*(n-1)*(2*n - 1)*(12*n^2 + 5*n + 2)*a(n-2)
+# A348063	findre	0	(n+1)^3*a(n)+(n+1)*(n^2+5*n+5)*a(n+1)-n*(n+1)*(n+2)*a(n+2)-(n+1)*(n+2)*(n+3)*a(n+3) = 0	E.g.f.: (log(1 + x))^2/(2 * (1 - x)).
+# A348064	findre	0	(n+1)^4*a(n)+(n+1)*(2*n^3+12*n^2+22*n+13)*a(n+1)+(n+1)*(n+2)*(6*n+11)*a(n+2)-2*(n+1)^2*(n+2)*(n+3)*a(n+3)-(n+1)*(n+2)*(n+3)*(n+4)*a(n+4) = 0	 E.g.f.: (log(1 + x))^3/(6 * (1 - x)).                                                       
+# A348065	findre	0	(n+1)^5*a(n)+(n+1)*(3*n^4+22*n^3+58*n^2+67*n+29)*a(n+1)+(n+1)*(n+2)*(2*n^3+24*n^2+69*n+60)*a(n+2)-(n+1)*(n+2)*(n+3)*(2*n^2-2*n-15)*a(n+3)-(n+1)*(n+2)*(n+3)*(n+4)*(3*n+5)*a(n+4)-(n+1)*(n+2)*(n+3)*(n+4)*(n+5)*a(n+5) = 0	E.g.f.: (log(1 + x))^4/(24 * (1 - x)).                                                      
+# A348068	findre	0	(n+1)^6*a(n)+(n+1)*(4*n^5+35*n^4+120*n^3+205*n^2+176*n+61)*a(n+1)+(n+1)*(n+2)*(5*n^4+60*n^3+235*n^2+390*n+239)*a(n+2)+10*(n+1)*(n+2)*(n+3)*(3*n^2+14*n+17)*a(n+3)-5*(n+1)*(n+2)*(n+3)*(n+4)*(n^2+2*n-2)*a(n+4)-(n+1)*(n+2)*(n+3)*(n+4)*(n+5)*(9+4*n)*a(n+5)-(n+1)*(n+2)*(n+3)*(n+4)*(n+5)*(n+6)*a(n+6) = 0	E.g.f.: (log(1 + x))^5/(120 * (1 - x)).                                                     
+# A348208	findre	0	n*(3*n^2-15*n+17)*a(n)-a(n-5)+(3*n-12)*a(n-4)-3*(n-3)^2*a(n-3)+(n-2)*(n^2-n-9)*a(n-2)-(n-1)*(3*n^2-15*n+17)*a(n-1)-(n-1)*(n-3)*(n+1)*a(n+1) = 0	E.g.f.: (-1 + 2*x - 2*x^2 + x^3 + (1 - x)*(log((1 - x)^(1 - 2*x)) - (log(1 - x))^2))*exp(x).
+# A349959	findre	0	n*(3*n^2-15*n+17)*a(n)+a(n-5)+(3*n-12)*a(n-4)+3*(n-3)*(n-5)*a(n-3)+(n-2)*(n^2-13*n+33)*a(n-2)-(n-1)*(3*n^2-21*n+35)*a(n-1)-(n-1)*(n-3)*(n+1)*a(n+1) = 0	E.g.f.: (-2 - x + (3 + log((1 - x)^(1 + 2*x)) + (log(1 - x))^2) / (1 - x)) / exp(x).        
+# A358446	findre	0	(6*n^2+8)*a(n)+3*(n-2)^2*a(n-5)+(12*n-18)*a(n-4)-2*(4*n-3)*(n-4)*a(n-3)+(-5*n^2-9*n+16)*a(n-2)+(5*n^2-22*n+28)*a(n-1)+(-4*n-4)*a(n+1)-(n+1)*(n+2)*a(n+2) = 0	 E.g.f.: (2*x+1)/((x-1)*(x+1)*(x^2-x-1))-(x*log((1-x)^2*(x+1)))/(-x^2+x+1)^2.                
+# A358491	findre	0	(n+1)*(n-5)*a(n)+3*(n-1)^2*a(n-3)-(2*n-1)*(n-3)*a(n-2)-n*(7*n-5)*a(n-1)+(n+1)*(4*n-1)*a(n+1)+(n+1)*(n+2)*a(n+2)	E.g.f.: log((x-1)^2*(x+1))/(x^2-x-1).                                                       
+A072638	tuptraf	0	(n, s) -> s[0].*(s[0].+(3))./(2).+(1)	"0"	PREVIOUS	a(n+1) = 1 + (a(n)*(a(n)+3))/2.
+A073591	holos	0	[[2,-1],[0,1],[-1]]	2	0	OGF
+A074216	filter	0	new A000290()	(n, v) -> JF(v).sigma().mod(3) == 0	Squares satisfying sigma(n)==0 (mod 3).
+A075519	filter	1	new A000040()	p -> p./(4).isProbablePrime()	Primes p such that floor(p/4) is prime.	nonn	1..1000	nyi	_Reinhard Zumkeller_
+A075521	filter	1	new A000040()	p -> p.*(4).+(p.mod(4)).isProbablePrime()	Primes p such that 4*p + (p mod 4) is also a prime.	nonn	1..10000	nyi	_Reinhard Zumkeller_
+A075524	filter	1	new SimpleTransformSequence(1, new A000040(), p -> (p.*(4).+(p.mod(4))))	v -> !v.isProbablePrime()	Nonprimes of form 4*p + (p mod 4), p prime.	nonn	1..10000	nyi	_Reinhard Zumkeller_
+A075527	prepend	1	new A031131()	2	a(n) = A008578(n+3) - A008578(n+1).	nonn	0..80	nyi	_Reinhard Zumkeller_
+A076167	filter	0	new A036301()	PRIME
+A079429	tuptraf	0	(n, s) -> s[0].+(s[0].-(s[1]).*(s[1].-(s[2])))	"2,3,5"	PREVIOUS,PREVIOUS,PREVIOUS	a(0) = 2, a(1) = 3, a(2) = 5; a(n) = a(n-1) + [a(n-1)-a(n-2)] * [a(n-2)-a(n-3)].
+A092067	simtraf	0	new A020639().skip(1)	v -> v	Theorem: a(n) = A020639(n+1).
+A092404	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A000010(),PREVIOUS	a(n) = phi(n) + phi(n+1).
+A094047	simtraf	0	new A059375().skip(1)	(n, v) -> v./(2*n)	 a(n) = A059375(n) / (2*n) = A000179(n) * (n-1)!.
+A097967	lambdan	0	n -> SU(1, n, k -> FA(n).*(FA(k).+(1))./(FA(k).*(FA(n - k))))	a(n) = Sum_{k=1..n} n!(k!+1) / k!(n-k)! = Sum_{k=1..n} P(n, k)+2^n-1 = A007526(n) - A000225(n) - 1 = A097656(n) - 2.
+A111403	lambdan	0	n -> { final Z p = Z.TWO.pow(Z2(n)); return p.*(p.-(1)); }	a(n) = 2^(2*2^n) - 2^(2^n).
+A113547	trilambn	1	1	1	(n, m) -> SU(1,m, k -> S2(m - 1, k - 1).*(ZV(k).^(n - m)))	T(n, m) = Sum_{k=1..m} S2(m-1, k-1)*k^(n-m), where S2 is the Stirling numbers of the second kind (A008277). T(n, n)=T(n, n-1)=B(n-1), where B is the Bell numbers (A000110). T(n, n-2)=B(n-1)-B(n-3).
+A121553	tuptraf	0	(n, s) -> s[0].*(n).+(FA(n - 1).*(ZV(1 + n*(n - 1)/2)))	"1"	PREVIOUS	a(1)=1; a(n)=n*a(n-1)+(n-1)!*[1+n(n-1)/2] for n>=2 (see Barcucci et al. reference, p. 34).
+A121555	tuptraf	0	(n, s) -> s[0].*(n).+(FA(n - 2).*(ZV(n - 2)))	"1"	PREVIOUS	a(1)=1, a(n) = n*a(n-1)+(n-2)!*(n-2) for n>=2.
+A121580	tuptraf	0	(n, s) -> s[0].+(FA(n - 1).*(ZV(1 + n*(n - 1)/2)))	"1"	PREVIOUS	a(1)=1, a(n)=  a(n-1)+(n-1)!*([1+n(n-1)/2] for n>=2.
+A121584	tuptraf	0	(n, s) -> s[0].*(2*n - 3).-(s[1].*(n - 1))./(n - 2).+(ZV(n*(2*n*n - 9*n + 17) - 16).*(FA(n - 1))./(2*n - 4))	"1,4"	PREVIOUS,PREVIOUS	a(1)=1, a(2)=4, a(n)=[(2n-3)a(n-1)-(n-1)a(n-2)]/(n-2) + (1/2)(2n^3-9n^2+17n-16)(n-1)!/(n-2) for n>=3.
+A121636	tuptraf	0	(n, s) -> s[0].*(n - 1).+(FA(n - 2).*(n))	"0,1"	PREVIOUS,PREVIOUS	a(1)=0, a(2)=1, a(n) = n(n-2)! + (n-1)*a(n-1) for n >= 3.
+A121639	tuptraf	0	(n, s) -> s[2].*(n - 1).+(FA(n - 1)).-(FA(n - 3))	"0,1,5"	PREVIOUS,PREVIOUS,PREVIOUS	a(1)=0, a(2)=1, a(3)=5, a(n) = n*a(n-1)+(n-1)!-(n-3)! for n>=4.
+A121695	tuptraf	0	(n, s) -> s[1].+(FA(n - 2).*(ZV(n).*(n/2).-(1)))	"1,1"	PREVIOUS,PREVIOUS	a(n)=a(n-2)+ (n-2)!(n*floor(n/2)-1) for n>=3; a(1)=a(2)=1.
+A121696	tuptraf	0	(n, s) -> (n == 0) ? Z.ONE : s[1].+(FA(n - 2).*(n).*((n - 1)/2))	"0,1"	PREVIOUS,PREVIOUS	a(n)=a(n-2)+n(n-2)!*floor((n-1)/2) for n>=3; a(1)=0, a(2)=1.
+A122122	lambdan	0	(n) -> (n <= 1) ? Z.ONE : Z.FOUR.^(n - 2).*(2*n + 4).-(BI(2*n, n).*(n*(3 - 4*n))./(4*(1 - 2*n)))	a(0) = 1; for n>0, a(n) = 2*(n+2)*4^(n-2)-(n/4)*((3-4*n)/(1-2*n))*binomial(2*n,n).
+A127769	lambdan	0	n -> (n == 0) ? Z.ONE : BI(4*n - 2, 2*n).*(3)./(2*n + 1)	a(n)=3*C(4n-2,2n)/(2n+1)-2*0^n.
+A139262	simtraf	0	new A000984()	(n, v) -> v.*(n + 1).-(Z.FOUR.^(n))./(2)	2*a(n) = (n+1)*A000984(n) - 4^n. - _J. M. Bergot_, Feb 02 2013
+A156828	prepend	1	new A025584().skip(2)	2,7	a(1) = 2. a(n) = the smallest prime >= a(n-1) + 4.
+A162723	lambdan	0	n -> (n == 0) ? Z.ONE : Z2(n - 1).*(7).+(Z2(2*n - 1).*(3)).-(Z.THREE.^(n).*(4))	 a(n)=7*2^(n-1)+3*2^(2*n-1)-4*3^n. G.f.: -(1-8*x+19*x^2)/((3*x-1)*(2*x-1)*(4*x-1)) [From _R. J. Mathar_, Jul 13 2009]
+A173693	simtraf	0	new A107293()	v -> new Q(v, Z.TWO).ceiling()	a(n) = A107293(n) - floor(A107293(n)/2) = ceiling(A107293(n)/2).
+A175784	lambdan	0	n -> { final int k = 2*n - 1; return new Q(k, 10 + k).add(1).num(); }	Numerators of k/(10+k)+1 for k = 2*n-1.
+A182062	trilamb	0	0	0	() -> BI(n + 1 - k, k).*(FA(k)).*(FA(n-k))
+A192826	lambdan	0	n -> (n == 2) ? Z.FOUR : Z2(n - 2).*(n*n).*(Z2(n - 1).+(2).-(BI(n - 1, (n - 1)/2)))	a(n) = 2^(n-2)*n^2*(2 + 2^(n-1) - binomial(n-1,floor((n-1)/2))), for n>2. - _Andrew Howroyd_, May 11 2017
+A193138	simtraf	3	new A157228().skip(2)	v -> v	 a(n) = A157228(n) for all entries known. - _R. J. Mathar_, Aug 10 2011
+A195095	simtraf	0	new A000048().skip(1)	(n, v) -> v.*(n)	a(n) = n*A000048(n)
+A195334	filter	1	new A000027()	(n, v) -> new A146076().a(v)./(2).isProbablePrime()	Numbers the sum of whose even divisors is 2 times a prime.
+A207318	lambdan	0	n -> { final A000172 mSeq = new A000172(); return SU(0, n - 1, k -> mSeq.next().*(Z_1(k))); }	a(n) = Sum_{k=0..n-1} (-1)^k*A000172(k).
+A207319	lambdan	0	n -> { final A000172 mSeq = new A000172(); return SU(0, n - 1, k -> mSeq.next().*(Z_1(k).*(k))); }	a(n) = Sum_{k=0..n-1} (-1)^k*k*A000172(k).
+A207323	lambdan	0	n -> { final A002893 mSeq = new A002893(); return SU(0, n, k -> mSeq.next().*(k)); }	a(n) = Sum_{k=0..n} k*A002893(k).
+A213203	lambdan	0	n -> { final Z fa = FA(n - 1); return fa.*(n).*(fa.*(n - 2).-(1))./(2); }	 a(n) = n * (n-1)! * ((n-2)*(n-1)! - 1)/2.
+A217539	tuptraf	1	(n, s) -> s[1].-(s[2])	"0,0,0"	new A000108(), PREVIOUS, new A189912()	a(n) = A000108(n) - A189912(n-1) for n > 0.
+A241193	lambdan	0	n -> RU(1, n, k -> new Q(FA(3*n - k - 2).*(3*n - k - 1), FA(n - 1).^(2).*(FA(n - k)).*(2*n - k))).num()	a(n) = Sum_{k=1..n} ((3*n-k-1)/(2*n-k))*(3*n-k-2)!/((n-1)!*(n-1)!*(n-k)!).
+A242191	lambdan	0	n -> SU(2, 6, k -> SU(1,n, j -> BI(n, j).*(k).*(ZV(k - 1).^(n - j)))).+(1)	a(n) = 1 + Sum_{k=2..6, j=1..n} k*binomial(n,j)*(k-1)^(n-j).
+A247374	tuptraf	0	(n, s) -> s[0].+(s[1]).+(s[2])	""	new A000079().skip(1), new A014495().skip(1), new A014314().skip(1)	a(n) = A000079(n) + A014495(n) + A014314(n). A000079 is how many times the 'try' button (or knob) is pressed. A014495 is how many times the C (clear) button is pressed. A014314 is how many times the number buttons are pressed.
+A261682	lambdan	0	n -> Z2(n).+(BI(n + 1, (n + n%2)/2)./(((n & 1) == 0 ? 1 : 2))).-(1)	a(n) = 2^n+(1+(n mod 2)/2)*C(n+1,floor((n+(n mod 2))/2))-1.
+A268149	lambdan	0	n -> SU(-n, n, k -> SU(-n, n, l -> BI(2*n, n + k).*(BI(2*n, n + l)).*(ZV(k - l).abs().^(3))))	a(n) = Sum_{k=-n..n} (Sum_{l=-n..n} binomial(2*n, n+k)*binomial(2*n, n+l)*abs(k-l)^3).
+A268150	lambdan	0	n -> SU(-n, n, k -> SU(-n, n, l -> BI(2*n, n + k).*(BI(2*n, n + l)).*(ZV(k*k - l*l).abs().^(3))))	a(n) = Sum_{k=-n..n} (Sum_{l=-n..n} binomial(2*n, n+k)*binomial(2*n, n+l)*abs(k^2 - l^2)^3).
+A282627	holose	0	[[0],[-40,66,-30,4],[0],[0],[0,-2,3,-1]]	1,2,2,-4	0	EGF	E.g.f.: 2*x + ((1 + sqrt(1-4*x^3))/2)^(2/3) + ((1 - sqrt(1-4*x^3))/2)^(2/3)
+A290443	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A000108().skip(1), new A001006()	a(n) = Catalan(n)*Motzkin(n-1).
+A308815	lambdan	0	n -> ZV(16).^(n).*(SU(0, n, i -> ZV(-2).^(i).*(BI(n, i)).*(BI(2*(2*n - i), 2*n - i))./(2*n - i + 1)))	a(n) = 16^n*Sum_{k=0..n} 2^k*binomial(n, k)*Catalan(2*n-k). 
+
