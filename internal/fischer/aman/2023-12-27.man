@@ -1,0 +1,35 @@
+%A252424	filter	0	new A001477()	(n, v) -> new A000593().a(v).equals(JF(	Numbers k such that sum of odd divisors of k equals sum of squares of primes dividing k.
+%A259310 Primes of the form: 1 + sigma(n)^4.
+%A259371 Primes of the form 1 + sigma(n)^3 + sigma(n)^6.          
+%A324118 a(1) = 0; for n > 1, a(n) = A000593(A156552(n)) = A000203(€322993(n)) = €323243(2*€246277(n)).
+%A324542 Möbius transform of €324118, where €324118(n) = A000593(A156552(n)).
+%A336699 a(n) = A000265(1+A000265(A000593(n))) = A000265(1+A161942(A000265(n))).
+%A336699 a(n) = A351565(A000593(n)).
+%A336699 a(n) = €171435(A000593(n)+A082903(n)).
+A091570	simtraf	0	new A000593()	(n, v) -> ((n & 1) == 0) ? v : v.-(n)	If n is odd, a(n) = A000593(n) - n; if n is even, a(n) = A000593(n).
+A193294	dirtraf	0	new A146076()	new A000045()	Sum of even divisors of Fibonacci(n).
+A193322	dirtraf	0	new A146076()	new A002322()	a(n) = A146076(A002322(n)). - _Michel Marcus_, Mar 18 2016
+A193350	dirtraf	0	new A146076()	new A000005()	a(n) = A146076(A000005(n)). - _Antti Karttunen_, May 28 2017
+A193511	dirtraf	0	new A146076()	new A001222()	a(1) = 0, for n > 1, a(n) = A146076(A001222(n)).
+A193512	dirtraf	0	new A000593()	new A001222()	a(1) = 0, for n > 1, a(n) = A000593(A001222(n)).
+A193526	dirtraf	0	new A146076()	new A008472()	a(1) = 0; for n > 1, a(n) = A146076(A008472(n))). - _Antti Karttunen_, Dec 23 2018
+A193529	dirtraf	0	new A000593()	new A008472()	Sum of odd divisors of sopf(n).
+A195209	dirtraf	0	new A146076()	new A000166()	Sum of even divisors of !n.
+A195210	dirtraf	0	new A000593()	new A000166()	Sum of odd divisors of !n.
+A195268	filter	0	new A001477()	v -> new A000593().a(v).isProbablePrime()	Numbers whose sum of odd divisors is prime.
+A248881	filter	0	new A000027()	(n, v) -> { final Z n2 = ZV(2*n); return new A002322().a(new A000593().a(n2)).equals(new A002322().a(new A146076().a(n2))); }	Numbers n such that lambda(sum of even divisors of 2n) = lambda(sum of odd divisors of 2n) where lambda is the Carmichael function (A002322).
+A252540	filter	0	new A001477()	(k, v) -> new A000593().a(new A146076().a(v)).equals(v)	Numbers k such that A000593(A146076(k)) = k.
+A252541	filter	0	new A001477()	(k, v) -> new A146076().a(new A000593().a(v)).equals(v)	Numbers k such that A146076(A000593(k)) = k.
+A255686	filter	0	new A000027().skip(2)	(n, v) -> { final Z fib = FI(n); return new A002322().a(new A000593().a(fib)).equals(new A002322().a(new A146076().a(fib))); }	Numbers n such that lambda(sum of odd divisors of Fibonacci(n)) = lambda(sum of even divisors of Fibonacci(n)) where lambda is the Carmichael function (A002322).
+A259309	filter	0	new A000027()	(k, v) -> JF(k).sigma().^(4).+(1).isProbablePrime()	Numbers n such that 1 + sigma(n)^4 is prime.
+A259370	filter	0	new A001477()	(k, v) -> { final Z sig = JF(v).sigma(); return sig.^(3).+(sig.^(6)).isProbablePrime(); }	Numbers n such that 1 + sigma(n)^3 + sigma(n)^6 is prime.
+A281707	filter	0	new A005843()	(k, v) -> JF(new A146076().a(v)).phi().equals(new A000593().a(v))	Even integers k such that phi(sum of even divisors of k) = sum of odd divisors of k.
+A293356	filter	0	new A005843().skip(1)	(k, v) -> new A002322().a(new A146076().a(v)).equals(new A000593().a(v))	Even integers k such that lambda(sum of even divisors of k) = sum of odd divisors of k.
+A324056	dirtraf	0	new A000593()	new A005940()	a(n) = A000593(A005940(1+n)).
+A330387	lambdan	0	n -> { final A000593 mSeq = new A000593(); return SU(1, n, k -> S2(n, k).*(FA(k - 1)).*(mSeq.a(k))); }	a(n) = Sum_{k=1..n} Stirling2(n,k) * (k - 1)! * A000593(k).
+A336696	dirtraf	0	new A000593()	new A088580()	Sum of odd divisors of 1+sigma(n).
+A338787	lambdan	0	n -> { final A000593 mSeq = new A000593(); return FA(n - 1).*(SU(1, n, k -> mSeq.a(k).*(mSeq.a(n - k))./(k))); }	a(n) = (n-1)! * Sum_{k=1..n-1} A000593(k)*A000593(n-k)/k.
+A347246	lambdan	0	n -> JF(new A000593().a(n)).largestPrimeFactor().compareTo(JF(n).largestPrimeFactor()) >= 0 ? Z.ONE : Z.ZERO	a(n) = [A006530(A000593(n)) >= A006530(n)], where [ ] is the Iverson bracket.
+A347247	filter	0	new A000593()	(k, v) -> JF(v).largestPrimeFactor().compareTo(JF(k).largestPrimeFactor()) >= 0	Numbers k such that the greatest prime factor of A000593(k) [the sum of their odd divisors] is at least as large as the greatest prime factor of k itself.	nonn	1..67	nyi	_Antti Karttunen_
+A347248	filter	0	new A000593()	(k, v) -> JF(v).largestPrimeFactor().compareTo(JF(k).largestPrimeFactor()) < 0	Numbers k such that the greatest prime factor of A000593(k) [the sum of odd divisors of k] is less than the greatest prime factor of k itself.	nonn	1..81	nyi	_Antti Karttunen_
+A364351	lambdan	0	n -> SD(n, d -> Z_1(n/d + 1).*(d + n))	a(n) = (n/2) * Sum_{d|n} (-1)^(n/d+1) * (d+n) = (n/2) * (A000593(n) + n * A048272(n)).

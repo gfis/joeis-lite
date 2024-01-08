@@ -1,0 +1,55 @@
+ A131443	numerator(r(n)), with r(n):=sum(b(k)/k!,n=1..n) with b(k):=A068451(k )
+ A131444	denom    (r(n)), with r(n):=sum(b(k)/k!,n=1..n) with b(k):=A068451(k )
+ A131445	numerator(r(n)), with r(n) = Sum_{k=1..n} b(k)/k! with b(k) = A075874(k)
+ A131446	denomator(r(n)), with r(n) = Sum_{k=1..n} b(k)/k! with b(k) = A075874(k)
+ A131447	numerator(r(n)), with r(n):=sum(b(k)/k!,n=1..n) with b(k):= A096622(k)
+ A131448	denom tor(r(n)), with r(n):=sum(b(k)/k!,n=1..n) with b(k):= A096622(k)
+ A214390	lambdan	0	RU(1, n, k -> Numerators of Sum_{n>=1} 1/A045542(n).
+ A214391	lambdan	0	RU(1, n, k -> xxxerators of Sum_{n>=1} 1/A045542(n).
+%A102647% A165657	tuptraf	0	(n, s) -> new Q(s[0], s[1]).num()	""	new A002110().skip(1), new A102647().skip(1)	Numerators of A002110 divided by A102647, starting from the second term of both.
+%A102647% A165658	tuptraf	0	(n, s) -> new Q(s[0], s[1]).den()	""	new A002110().skip(1), new A102647().skip(1)	xxxerators of A002110 divided by A102647, starting from the second term of both.
+%N A110114 Numerators in expansion of 1/sqrt(1-2x-3x^2)^(1/4).
+%N A110115 Numerators in expansion of 1/((1-4x^2)^(1/4)*sqrt(1+x)).
+%N A110120 Numerators in expansion of 1/sqrt(1-x-x^2*c(x^2)), c(x) the g.f. of A000108.
+A130037	lambdan	0	(n) -> RU(0, n, j -> new Q(FA(2*j), FA(j).^(2)).^(2).*(Q.HALF.^(6*j))).num()
+A130039	lambdan	0	(n) -> RU(0, n, j -> new Q(FA(2*j).^(2), FA(j).^(4).*(80).^(j))).num()	numer(sum((((2*j)!/(j!^2))^2)*((1/(5*2^4))^j),j=0..n)), n>=0.
+A130040	lambdan	0	(n) -> RU(0, n, j -> new Q(FA(2*j).^(2), FA(j).^(4).*(80).^(j))).den()	denom(sum((((2*j)!/(j!^2))^2)*((1/(5*2^4))^j),j=0..n)), n>=0.
+A130413	lambdan	0	(n) -> RU(1, n, j -> new Q(Z_1(j + 1), ZV(2*j + 1).*(ZV(2*j + 1).^(2).-(1)))).num()	er(1+ (4/3)*add(((-1)^(j+1))/((2*j+1)*((2*j+1)^2-1)), j=1..n)):
+A130414	lambdan	0	(n) -> RU(1, n, j -> new Q(Z_1(j + 1), ZV(2*j + 1).*(ZV(2*j + 1).^(2).-(1)))).den()	om(1+ (4/3)*add(((-1)^(j+1))/((2*j+1)*((2*j+1)^2-1)), j=1..n)):
+A141056	prepend	0	new A027760()	1
+A141459	tuptraf	0	(n, s) -> new Q(s[0], s[1]).*(Z.FOUR.^(n)).den()	Numerators of scaled Bernoulli numbers 4^n*B(n), with B(n) = A027641(n)/A027642(n).
+A164655	lambdan	0	(n) -> RU(1, n, j -> new Q(Z.ONE, ZV(2*j - 1).^(3))).num()	numer(Theta(3,n))= numerator(sum(1/(2*j-1)^3,j=1..n)), n>=1.
+A164656	lambdan	0	(n) -> RU(1, n, j -> new Q(Z.ONE, ZV(2*j - 1).^(5))).num()	numer(Theta(5,n))= numerator(sum(1/(2*j-1)^5,j=1..n)), n>=1.
+A164657	lambdan	0	(n) -> RU(1, n, j -> new Q(Z.ONE, ZV(2*j - 1).^(5))).den()	denom(Theta(5,n))= numerator(sum(1/(2*j-1)^5,j=1..n)), n>=1.
+A224445	lambdan	0	(n) -> Z.ONE.-(RU(1, n, k -> new Q(BI(2*k - 2, k - 1), Z.FOUR.^(2*k).*(k))).*(Z.TWO).num())	a(n) = numerator r(n) = 2(1 - 2*sum(C(k-1)/4^(2*k),k=1..n)
+A224446	lambdan	0	(n) -> Z.ONE.-(RU(1, n, k -> new Q(BI(2*k - 2, k - 1), Z.FOUR.^(2*k).*(k))).*(Z.TWO).den())	
+A225679	simtraf	0	new A005117()	v -> new Q(JF(v).phi(), v).num()	Numerators of phi(k)/k, as k runs through the squarefree numbers (A005117).
+A225680	simtraf	0	new A005117()	v -> new Q(JF(v).phi(), v).den()	xxxerators of phi(k)/k, as k runs through the squarefree numbers (A005117).
+A241590	lambdan	0	(n) -> new Q(Z2(n).*(ZV(n + 1).^(n - 1)), FA(n)).num()	Numerators of Postnikov's hook-length formula 2^n*(n+1)^(n-1)/n!.
+A241591	lambdan	0	(n) -> new Q(Z2(n).*(ZV(n + 1).^(n - 1)), FA(n)).den()	xxxerators of Postnikov's hook-length formula 2^n*(n+1)^(n-1)/n!.
+A250550	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, ZV(k*(4*k - 3)))).num()	
+A254522	lambdan	0	(n) -> new Q(Z2(n).-(1).+(Z_1(n)), ZV(2*n)).num()	(2^n - 1 + (-1)^n)/(2*n),
+A264388	lambdan	0	(n) -> new Q(BI(n - 1, 2), ZV(6*n)).num()	Numerators of binomial(n-1, 2)/(6*n), for n >= 1.
+A288873	tuptraf	0	(n, s) -> new Q(s[0], s[1]).*(Z.FOUR.^(n)).num()	Numerators of scaled Bernoulli numbers 4^n*B(n), with B(n) = A027641(n)/A027642(n).
+A292227	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(k).^(4).*(4).+(1))).*(2).+(1).num()	Numerators of partial sums of the series 1 + 2*Sum_{k >= 1} 1/(4*k^4 + 1).
+A292228	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(k).^(4).*(4).+(1))).*(2).+(1).den()	xxxerators of partial sums of the series 1 + 2*Sum_{k >= 1} 1/(4*k^4 + 1).
+A250401	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV((k + 1)*(3*k + 1)))).num()	partial sums of the reciprocals of octagonal numbers.
+A294512	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV((k + 1)*(3*k + 1)))).den()	partial sums of the reciprocals of octagonal numbers.
+A250328	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV((k + 1)*(3*k + 2)))).num()	partial sums of the reciprocals of twice the pentagonal numbers.
+A294513	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV((k + 1)*(3*k + 2)))).den()	partial sums of the reciprocals of twice the pentagonal numbers.
+A294515	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(k*(4*k - 3)))).num()	partial sums of the reciprocals of the decagonal numbers.
+A250551	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(k*(4*k - 3)))).den()	partial sums of the reciprocals of the decagonal numbers.
+A294970	lambdan	0	(n) -> RU(0, n, k -> new Q(Z_1(k), ZV(2*k + 1).^(2))).num()	Numerators of the partial sums for the Catalan constant A006752: Sum_{k=0..n} ((-1)^k)/(2*k+1)^2, n >= 0.
+A294971	lambdan	0	(n) -> RU(0, n, k -> new Q(Z_1(k), ZV(2*k + 1).^(2))).den()	xxxerators of the partial sums for the Catalan constant A006752: Sum_{k=0..n} ((-1)^k)/(2*k+1)^2, n >= 0.
+A300296	lambdan	0	(n) -> new Q(ZV(n).*(5 + 3*n), Z.EIGHT.*(1 + 3*n).*(4 + 3*n)).num()	Numerators of n*(5 + 3*n)/(8*(1 + 3*n)*(4 + 3*n)), n >= 0.
+A300297	lambdan	0	(n) -> new Q(ZV(n).*(5 + 3*n), Z.EIGHT.*(1 + 3*n).*(4 + 3*n)).den()	xxxerators of n*(5 + 3*n)/(8*(1 + 3*n)*(4 + 3*n)), n >= 0.
+A357818	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, A001615.dedekindPsi(k))).num()	Numerators of the partial sums of the reciprocals of the Dedekind psi function (A001615).
+A357819	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, A001615.dedekindPsi(k))).den()	xxxerators of the partial sums of the reciprocals of the Dedekind psi function (A001615).
+A357820	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), A001615.dedekindPsi(k))).num()	Numerators of the partial alternating sums of the reciprocals of the Dedekind psi function (A001615).
+A357821	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), A001615.dedekindPsi(k))).den()	xxxerators of the partial alternating sums of the reciprocals of the Dedekind psi function (A001615).
+A357843	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), JF(k).sigma0())).num()	Numerators of the partial alternating sums of the reciprocals of the number of divisors function (A000005).
+A357844	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), JF(k).sigma0())).den()	xxxerators of the partial alternating sums of the reciprocals of the number of divisors function (A000005).
+A357845	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), JF(k).sigma())).num()	Numerators of the partial alternating sums of the reciprocals of the sum of divisors function (A000203).
+A357846	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), JF(k).sigma())).den()	xxxerators of the partial alternating sums of the reciprocals of the sum of divisors function (A000203).
+A359071	lambdan	0	(n) -> RU(2, n, k -> new Q(Z.ONE, ZV(JF(k).maxExponent()))).num()	Numerators of the partial sums of the reciprocals of the maximal exponent in prime factorization of the positive integers (A051903).
+A359072	lambdan	0	(n) -> RU(2, n, k -> new Q(Z.ONE, ZV(JF(k).maxExponent()))).den()	xxxerators of the partial sums of the reciprocals of the maximal exponent in prime factorization of the positive integers (A051903).

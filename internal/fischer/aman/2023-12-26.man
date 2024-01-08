@@ -1,0 +1,27 @@
+A073567	filter	0	new A000027()	(n, v) -> { FactorSequence fs = Jaguar.factor(n); return fs.sigma().equals(fs.phi().*(fs.omega())); }	Numbers n such that sigma(n) = phi(n)*omega(n).
+A077150	simtraf	0	new A000010()	(n, v) -> v.+(Puma.primePiZ(n)).-(Puma.primePiZ(2*n))	a(n) = phi(n) + Pi(n) - Pi(2n). - _Charles R Greathouse IV_, May 18 2011
+A079530	lambdan	0	n -> { Z r = ZV(n  ).root(2); r = r.+(1 - r.auxiliary()); return JF(n).phi().-(r); }	a(n) = phi(n) - ceiling(sqrt(n)).
+A079531	lambdan	0	n -> { Z r = ZV(n*n).root(3); r = r.+(1 - r.auxiliary()); return JF(n).phi().-(r); }	a(n) = phi(n) - ceiling(n^(2/3)).
+A079895	tuptraf	1	(n, s) -> s[1].-(s[2].*(s[0]))	"1"	PREVIOUS, new A000010(), PREVIOUS	a(1) = 1; a(n) = phi(n) - phi(n-1)* a(n-1) if n > 1.
+A083239	tuptraf	0	(n, s) -> s[1].-(s[0])	"1"	PREVIOUS, new A000010()	First order recursion: a(0)=1; a(n)=phi(n)-a(n-1)=A000010(n)-a(n-1).
+A092404	tuptraf	0	(n, s) -> s[0].+(s[1])	"2"	new A000010().skip(1), PREVIOUS	a(n) = phi(n) + phi(n+1).
+A181830	tuptraf	0	(n, s) -> s[0].-(s[1])	"0,0"	new A000010().skip(), new A000005()	a(n) = phi(n) - tau(n-1) for n > 1, where phi(n) = A000010(n) and tau(n) = A000005(n).
+A244342	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A000010(), new A092089()	a(n) = phi(n)*h(n) where phi() is the Euler totient function, A000010, and h() is A092089.
+A362334	tuptraf	1	(n, s) -> s[2].+(s[0])	""	new A000010(), PREVIOUS, PREVIOUS	a(n) = phi(n) + phi(n+2).
+
+
+A305331	simtraf	1	new A000040()	p -> p.equals(ZV(5)) ? Z.ZERO : ZNO(ZV(5), p.square())	a(n) = my(p=prime(n)); if(p==5, return(0), return(znorder(Mod(5, p^2))))
+A319248	filter	1	new A000040().skip(1)	p -> ZNO(ZV(2), p).equals(p.-(1)) && ZNO(ZV(2), p.+(2)).equals(p.+(1))	if(znorder(Mod(2,p))==p-1 && znorder(Mod(2,p+2))==p+1, print1(p, ", ")))            
+A319249	simtraf	1	new A319248()	p -> p.+(2)	if(znorder(Mod(2,p))==p-1 && znorder(Mod(2,p+2))==p+1, print1(p+2, ", ")))          
+A319250	filter	1	new A001477()	v -> { final Z k24 = v.*(24); return v.isZero() || ZNO(ZV(2), k24.+(11)).equals(k24.+(10)) && ZNO(ZV(2), k24.+(13)).equals(k24.+(12)); }	if(znorder(Mod(2,24*k+11))==24*k+10 && znorder(Mod(2,24*k+13))==24*k+12, print1(k, ", ")))
+A323576	filter	1	new A000040().skip(1)	p -> ZNO(ZV(2), p).equals(p.-(1)) && p.mod(7) == 1	forprime(p=3, 7000,  if(znorder(Mod(2, p))==(p-1) && p%7==1, print1(p, ", ")))
+A323577	filter	1	new A000040().skip(1)	p -> ZNO(ZV(2), p).equals(p.-(1)) && p.mod(11) == 1	forprime(p=3, 12000, if(znorder(Mod(2, p))==(p-1) && p%11==1, print1(p, ", ")))
+A323590	filter	1	new A000040().skip(1)	p -> ZNO(ZV(2), p).equals(p.-(1)) && p.mod(13) == 1	forprime(p=3, 13000, if(znorder(Mod(2, p))==(p-1) && p%13==1, print1(p, ", ")))
+A323594	filter	1	new A000040().skip(1)	p -> ZNO(ZV(3), p).equals(p.-(1)) && p.mod(3) == 1	forprime(p=5, 2000,  if(znorder(Mod(3, p))==(p-1) && p%3==1, print1(p, ", ")))
+A323617	filter	1	new A000040().skip(1)	p -> ZNO(ZV(3), p).equals(p.-(1)) && p.mod(5) == 1	forprime(p=5, 4000,  if(znorder(Mod(3, p))==(p-1) && p%5==1, print1(p, ", ")))
+A323628	filter	1	new A000040().skip(1)	p -> ZNO(ZV(3), p).equals(p.-(1)) && p.mod(7) == 1	forprime(p=5, 5500,  if(znorder(Mod(3, p))==(p-1) && p%7==1, print1(p, ", ")))
+A327836	lambdan	0	n -> { final Z np1 = ZV(n).+(1); return ZNO(ZV(n), np1.^(n + 1)); }	(PARI) a(n) = znorder(Mod(n, (n+1)^(n+1))); \\ _Daniel Suteu_, Sep 27 2019
+A336655	filter	0	new A005408()	v -> JF(ZNO(ZV(2), v) ).isSquareFree()	(PARI) isok(k) = (k % 2) && issquarefree(znorder(Mod(2,k))); \\ _Michel Marcus_, Jul 29 2020
+A336656	filter	0	new A001651()	v -> JF(ZNO(ZV(3), v) ).isSquareFree()	(PARI) isok(k) = (k % 3) && issquarefree(znorder(Mod(3,k))); \\ _Michel Marcus_, Jul 29 2020
+A339049	lambdan	0	n -> JF(2*n + 1).phi()./(ZNO(ZV(4), ZV(2*n + 1)))	 (PARI) a(n) = eulerphi(2*n+1)/znorder(Mod(4, 2*n+1)); \\ _Michel Marcus_, Dec 15 2020
+A344202	filter	1	new A000040().skip(2)	p -> ZNO(ZV(2), p).gcd(ZNO(ZV(3), p) ).equals(Z.ONE)	(PARI) isok(p) = isprime(p) && (gcd(znorder(Mod(2, p)), znorder(Mod(3, p))) == 1);

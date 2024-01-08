@@ -1,0 +1,140 @@
+A082687	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(n + k))).num()	Numerator of Sum_{k=0..n-1} 1/((k+1)(2k+1))
+A100512	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(2*n, 2*k))).num()	Numerator of Sum_{k=0..n} 1/C(2*n, 2*k).
+A100513	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(2*n, 2*k))).den()	Denominator of Sum_{k=0..n} 1/C(2*n,2*k).
+A100514	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(3*n, 3*k))).num()	Numerator of Sum_{k=0..n} 1/C(3*n, 3*k).
+A100515	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(3*n, 3*k))).den()	Denominator of Sum_{k=0..n} 1/C(3*n, 3*k).
+A100516	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(n, k).^(2))).num()	Numerator of Sum_{k=0..n} 1/binomial(n,k)^2.
+A100517	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(n, k).^(2))).den()	Denominator of Sum_{k=0..n} 1/binomial(n,k)^2.
+A100518	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(n, k).^(3))).num()	Numerator of Sum_{k=0..n} 1/binomial(n,k)^3.
+A100519	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(n, k).^(3))).den()	Denominator of Sum_{k=0..n} 1/binomial(n,k)^3.
+A100520	lambdan	0	(n) -> RU(0, 2*n, k -> new Q(Z_1(k), BI(2*n, k).^(2))).num()	Numerator of Sum_{k=0..2*n} (-1)^k/binomial(2*n, k)^2.
+A100521	lambdan	0	(n) -> RU(0, 2*n, k -> new Q(Z_1(k), BI(2*n, k).^(2))).den()	Denominator of Sum_{k=0..2*n} (-1)^k/binomial(2*n, k)^2.
+A100560	lambdan	0	(n) -> RU(0, n/2, k -> new Q(Z.ONE, BI(n, k))).num()	Numerator of Sum_{k=0..[n/2]} 1/binomial(n,k).
+A100561	lambdan	0	(n) -> RU(0, n/2, k -> new Q(Z.ONE, BI(n, k))).den()	Denominator of Sum_{k=0..[n/2]} 1/binomial(n,k).
+A111876	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, ZV(k + 1).*(2*k + 1))).den()	Denominator of Sum_{k = 0..n} 1/((k+1)*(2*k+1)).
+A111877	lambdan	0	(n) -> RU(0, n + 1, k -> new Q(Z.THREE, ZV(2*k + 1))).den()	a(n) = denominator of 3*Sum_{j=0..n+1} 1/(2*j+1).
+A111918	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(k).makeOdd(), ZV(k).^(3))).num()	Numerator of x(n) = Sum_{k=1..n} ((odd part of k)/(k^3)).
+A111919	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(k).makeOdd(), ZV(k).^(3))).den()	nominator of x(n) = Sum_{k=1..n} ((odd part of k)/(k^3)).
+A111920	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(k).makeOdd(), ZV(k).^(4))).num()	Numerator of x(n) = Sum_{k=1..n} ((odd part of k)/(k^4)).
+A111921	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(k).makeOdd(), ZV(k).^(4))).den()	nominator of x(n) = Sum_{k=1..n} ((odd part of k)/(k^4)).
+A111922	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(k).makeOdd(), ZV(k).^(5))).num()	Numerator of x(n) = Sum_{k=1..n} ((odd part of k)/(k^5)).
+A111923	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(k).makeOdd(), ZV(k).^(5))).den()	nominator of x(n) = Sum_{k=1..n} ((odd part of k)/(k^5)).
+A111928	lambdan	0	(n) -> Rationals.SINGLETON.product(1, n, k -> new Q(JF(k).sigma(), ZV(k))).num()	Numerator of f(n) := Product_{i=1..n} sigma(i)/i.
+A111929	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(k).makeOdd(), ZV(k).^(2))).num()	Numerator of x(n) = Sum_{k=1..n} ((odd part of k)/(k^2)).
+A111930	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(k).makeOdd(), ZV(k).^(2))).den()	nominator of x(n) = Sum_{k=1..n} ((odd part of k)/(k^2)).
+A111934	lambdan	0	(n) -> Rationals.SINGLETON.product(1, n, k -> new Q(JF(k).sigma(), ZV(k))).den()	nominator of f(n) := Product_{i=1..n} sigma(i)/i.
+A112093	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.THREE, ZV(k*k).*(BI(2*k, k)))).num()	Numerator of 3*Sum_{i=1..n} 1/(i^2*C(2*i,i)).
+A112094	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.THREE, ZV(k*k).*(BI(2*k, k)))).den()	nominator of 3*Sum_{i=1..n} 1/(i^2*C(2*i,i)).
+A112097	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, BI(2*k, k))).num()	Numerator of Sum_{i=1..n} 1/C(2*i,i).
+A112098	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, BI(2*k, k))).den()	nominator of Sum_{i=1..n} 1/C(2*i,i).
+A112099	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, BI(2*k, k).*(k))).num()	Numerator of Sum_{i=1..n} 1/(i*C(2*i,i)).
+A112100	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, BI(2*k, k).*(k))).den()	nominator of Sum_{i=1..n} 1/(i*C(2*i,i)).
+A112102	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, BI(2*k, k).*(ZV(k).^(3)))).num()	Numerator of Sum_{i=1..n} 1/(i^3*C(2*i,i)).
+A112103	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, BI(2*k, k).*(ZV(k).^(3)))).den()	nominator of Sum_{i=1..n} 1/(i^3*C(2*i,i)).
+A112288	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, S1(n, k).abs())).num()	Numerator of sum{k=1 to n} 1/s(n,k), where s(n,k) is an unsigned Stirling number of the first kind.
+A112289	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, S1(n, k).abs())).den()	Denominator of sum{k=1 to n} 1/s(n,k), where s(n,k) is an unsigned Stirling number of the first kind.
+A112290	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, S2(n, k))).num()	Numerator of sum{k=1 to n} 1/S(n,k), where S(n,k) is a Stirling number of the second kind.
+A112291	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, S2(n, k))).den()	Denominator of sum{k=1 to n} 1/S(n,k), where S(n,k) is a Stirling number of the second kind.
+A116419	lambdan	0	(n) -> new Q(Z2(1 + n).-(Z.ONE).*(Z.TWO), ZV(1 + n).*(2 + n)).num()	numerators of 2*(2^(1+n)-1)/(1+n)/(2+n).
+A116420	lambdan	0	(n) -> new Q(Z2(1 + n).-(Z.ONE).*(Z.TWO), ZV(1 + n).*(2 + n)).den()	xxxinators of 2*(2^(1+n)-1)/(1+n)/(2+n).
+A120264	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), ZV(k).^(k))).num()	Numerator of Sum[ (-1)^(k+1)/k^k, {k,1,n} ].
+A120266	lambdan	0	(n) -> RU(0, n, k -> new Q(ZV(n).^(k), FA(k))).num()	Numerator of Sum_{k=0..n} n^k/k!.
+A120267	lambdan	0	(n) -> RU(1, n, k -> new Q(ZV(n).^(k), FA(k))).num()	Numerator of Sum_{k=1..n} n^k/k!.
+A120268	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(2*k - 1).^(2))).num()	Numerator of Sum_{k=1..n} 1/(2*k-1)^2.
+A120269	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(2*k - 1).^(4))).num()	Numerator of Sum_{k=1..n} 1/(2k-1)^4.
+A120777	lambdan	0	(n) -> RU(0, n, k -> new Q(-1,  4).^(k).*(BI(2*k, k)./(k + 1))).den()	Numerators of partial sums of Catalan numbers scaled by powers of 1/4.  nonn,easy,frac  0..100  nyi     _Wolfdieter Lang_
+A120778	lambdan	0	(n) -> RU(0, n, k -> new Q(+1,  4).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/4.  nonn,easy,frac  0..100  nyi     _Wolfdieter Lang_
+A120780	lambdan	0	(n) -> RU(0, n, k -> new Q(+1,  8).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/8.  nonn,easy,frac  0..19   nyi     _Wolfdieter Lang_
+A120781	lambdan	0	(n) -> RU(0, n, k -> new Q(+1,  8).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of 1/8.        nonn,easy,frac  0..19   nyi     _Wolfdieter Lang_
+A120782	lambdan	0	(n) -> RU(0, n, k -> new Q(1,  12).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/12. nonn,frac,easy  0..17   nyi     _Wolfdieter Lang_
+A120783	lambdan	0	(n) -> RU(0, n, k -> new Q(1,  12).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of 1/12.       nonn,frac,easy  0..925  nyi     _Wolfdieter Lang_
+A120784	lambdan	0	(n) -> RU(0, n, k -> new Q(1,  16).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/16. nonn,easy,frac  0..15   nyi     _Wolfdieter Lang_
+A120785	lambdan	0	(n) -> RU(0, n, k -> new Q(1,  16).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of 1/16.       nonn,easy,frac  0..15   nyi     _Wolfdieter Lang_
+A120786	lambdan	0	(n) -> RU(0, n, k -> new Q(1,  20).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/20. nonn,easy,frac  0..15   nyi     _Wolfdieter Lang_
+A120787	lambdan	0	(n) -> RU(0, n, k -> new Q(1,  20).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of 1/20.       nonn,easy,frac  0..15   nyi     _Wolfdieter Lang_
+A120788	lambdan	0	(n) -> RU(0, n, k -> new Q(-1,  4).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of -1/4. nonn,easy,frac  0..1000 nyi     _Wolfdieter Lang_
+A120789	lambdan	0	(n) -> RU(0, n, k -> new Q(-1,  8).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of -1/8. nonn,easy,frac  0..19   nyi     _Wolfdieter Lang_
+A120791	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 20).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of -1/20.        nonn,easy,frac  0..15   nyi     _Wolfdieter Lang_
+A120792	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 12).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of -1/12.        nonn,easy,frac  0..17   nyi     _Wolfdieter Lang_
+A120793	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 12).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of -1/12.      nonn,easy,frac  0..17   nyi     _Wolfdieter Lang_
+A120794	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 16).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of -1/16.        nonn,easy,frac  0..15   nyi     _Wolfdieter Lang_
+A120796	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 20).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of -1/20.      nonn,easy,frac  0..15   nyi     _Wolfdieter Lang_
+A120996	lambdan	0	(n) -> RU(0, n, k -> new Q(+1,  9).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/9.  nonn,frac,easy  0..18   nyi     _Wolfdieter Lang_
+A120997	lambdan	0	(n) -> RU(0, n, k -> new Q(+1,  9).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of 1/9.        nonn,frac,easy  0..18   nyi     _Wolfdieter Lang_
+A120998	lambdan	0	(n) -> RU(0, n, k -> new Q(1,  49).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/49. nonn,frac,easy  0..14   nyi     _Wolfdieter Lang_
+A120999	lambdan	0	(n) -> RU(0, n, k -> new Q(1,  49).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of 1/49.       nonn,frac,easy  0..14   nyi     _Wolfdieter Lang_
+A121000	lambdan	0	(n) -> RU(0, n, k -> new Q(1, 324).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/324.       nonn,frac,easy  0..11   nyi     _Wolfdieter Lang_
+A121001	lambdan	0	(n) -> RU(0, n, k -> new Q(1, 324).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of 1/324.     nonn,frac,easy  0..11   nyi     _Wolfdieter Lang_
+A121002	lambdan	0	(n) -> RU(0, n, k -> new Q(+1,  5).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/5.  nonn,frac,easy  0..20   nyi     _Wolfdieter Lang_
+A121003	lambdan	0	(n) -> RU(0, n, k -> new Q(+1,  5).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial sums of Catalan numbers scaled by powers of 1/5.        nonn,frac,easy  0..20   nyi     _Wolfdieter Lang_
+A121004	lambdan	0	(n) -> RU(0, n, k -> new Q(1, 125).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial sums of Catalan numbers scaled by powers of 1/125.      nonn,frac,easy  0..12   nyi     _Wolfdieter Lang_
+A121005	lambdan	0	(n) -> RU(0, n, k -> new Q(1, 125).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial alternating sums of Catalan numbers scaled by powers of 1/125.  nonn,frac,easy  0..12
+A121006	lambdan	0	(n) -> RU(0, n, k -> new Q(-1,   5).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial alternating sums of Catalan numbers scaled by powers of 1/5.      nonn,frac,easy  0..20
+A121007	lambdan	0	(n) -> RU(0, n, k -> new Q(-1,   5).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial alternating sums of Catalan numbers scaled by powers of 1/5.    nonn,frac,easy  0..20
+A121008	lambdan	0	(n) -> RU(0, n, k -> new Q(-1,  45).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial alternating sums of Catalan numbers scaled by powers of 1/45. nonn,frac,easy
+A121009	lambdan	0	(n) -> RU(0, n, k -> new Q(-1,  45).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial alternating sums of Catalan numbers scaled by powers of 1/45.       nonn,f
+A121010	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 320).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial alternating sums of Catalan numbers scaled by powers of 1/320.        nonn,f
+A121011	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 320).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial alternating sums of Catalan numbers scaled by powers of 1/320.      nonn,f
+A121012	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 121).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial alternating sums of Catalan numbers scaled by powers of 1/121. nonn,frac,easy
+A121013	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 121).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial alternating sums of Catalan numbers scaled by powers of 1/121.       nonn,f
+A121498	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 841).^(k).*(BI(2*k, k)./(k + 1))).num()	Numerators of partial alternating sums of Catalan numbers scaled by powers of 1/841. nonn,frac,easy
+A121499	lambdan	0	(n) -> RU(0, n, k -> new Q(-1, 841).^(k).*(BI(2*k, k)./(k + 1))).den()	xxxinators of partial alternating sums of Catalan numbers scaled by powers of 1/841.       nonn,f
+A121563	lambdan	0	(n) -> RU(1, n, i -> new Q(FA(i), ZV(i).^(i))).num()	Numerator of Sum[i=1..n] i!/(i^i).
+A121564	lambdan	0	(n) -> RU(1, n, i -> new Q(FA(i), ZV(i).^(i))).den()	xxxinator of Sum[i=1..n] i!/(i^i).
+A121565	lambdan	0	(n) -> RU(1, n, i -> new Q(FA(i), ZV(i).^(2))).num()	a(n) is the numerator of Sum_{i=1..n} i!/(i^2).
+A121566	lambdan	0	(n) -> RU(1, n, i -> new Q(FA(i), ZV(i).^(2))).den()	a(n) is the xxxinator of Sum_{i=1..n} i!/(i^2).
+A123746	lambdan	0	(n) -> RU(0, n, k -> new Q(BI(2*k, k), ZV(-4).^(k))).num()	numer(add(binomial(2*k, k)/(-4)^k, k=0..n));
+A123747	lambdan	0	(n) -> RU(0, n, k -> new Q(BI(2*k,k), Z.FIVE.^(k))).num()	numer(sum(binomial(2*k, k)/5^k, k=0..n))
+A123748	lambdan	0	(n) -> RU(0, n, k -> new Q(BI(2*k,k), Z.FIVE.^(k))).den()	denom(sum(binomial(2*k, k)/5^k, k=0..n));
+A123749	lambdan	0	(n) -> RU(0, n, k -> new Q(BI(2*k,k), Z.NINE.^(k))).num()	numer(sum(binomial(2*k, k)/9^k, k=0..n));
+A124396	lambdan	0	(n) -> RU(0, n, k -> new Q(BI(2*k,k), Z.NINE.^(k))).den()	denom(add(binomial(2*k, k)/9^k, k=0..n))
+A124397	lambdan	0	(n) -> RU(0, n, k -> new Q(Z_1(k).*(BI(2*k, k)), Z.FIVE.^(k))).num()
+A124398	lambdan	0	(n) -> RU(0, n, k -> new Q(Z_1(k).*(BI(2*k, k)), Z.FIVE.^(k))).den()
+A129934	lambdan	0	(n) -> RU(0, n, j -> new Q(FA(2*j), FA(j).^(2)).^(2).*(Q.HALF.^(5*j))).num()
+A130035	lambdan	0	(n) -> RU(0, n, j -> new Q(FA(2*j), FA(j).^(2)).^(2).*(Q.HALF.^(6*j))).num()
+A130036	lambdan	0	(n) -> RU(0, n, j -> new Q(FA(2*j), FA(j).^(2)).^(2).*(Q.HALF.^(6*j))).den()
+A130189	lambdan	0	(n) -> RU(0, n, k -> new Q(S2(n, k), ZV(k+1))).*(Z_1(n)).num()
+A130190	lambdan	0	(n) -> RU(0, n, k -> new Q(S2(n, k), ZV(k+1))).*(Z_1(n)).den()
+A130545	lambdan	1	(n) -> RU(1, n, k -> new Q(Z.TWO, BI(2*k, k))).num()
+A130546	lambdan	1	(n) -> RU(1, n, k -> new Q(Z.TWO, BI(2*k, k))).den()
+A130547	lambdan	1	(n) -> RU(1, n, k -> new Q(Z.ONE, BI(2*k, k))).-(new Q(1, 3)).*(Z.SIX).num()	Numerators of 6*((Sum_{k=1..n} 1/binomial(2*k,k)) - 1/3), n >= 1.
+A130548	lambdan	1	(n) -> RU(1, n, k -> new Q(Z.ONE, BI(2*k, k))).-(new Q(1, 3)).*(Z.SIX).den()
+A130549	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.TWO, BI(2*k, k).*(k*k))).num()
+A130550	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.TWO, BI(2*k, k).*(k*k))).den()
+A130551	lambdan	0	(n) -> RU(1, n, j -> new Q(Z_1(j - 1), ZV(j).^(3).*(BI(2*j, j)))).*(Z.TWO).num()	r(n):=2*sum(((-1)^(j-1))/((j^3)*binomial(2*j,j)),j=1..n)
+A130552	lambdan	0	(n) -> RU(1, n, j -> new Q(Z_1(j - 1), ZV(j).^(3).*(BI(2*j, j)))).*(Z.TWO).den()
+A130553	lambdan	0	(n) -> RU(1, n, j -> new Q(Z.ONE, BI(2*j, j).*(j))).*(Z.TWO).num()
+A130554	lambdan	0	(n) -> RU(1, n, j -> new Q(Z.ONE, BI(2*j, j).*(j))).*(Z.TWO).den()
+A130557	lambdan	0	(n) -> RU(2, n, j -> new Q(Z.ONE, ZV(j).^(3).*(j*j - 1))).*(ZV(24)).num()
+A130558	lambdan	0	(n) -> RU(2, n, j -> new Q(Z.ONE, ZV(j).^(3).*(j*j - 1))).*(ZV(24)).den()
+A144186	lambdan	0	(n) -> new Q(BI(2*n, n), FA(n + 1)).num()
+A144187	lambdan	0	(n) -> new Q(BI(2*n, n), FA(n + 1)).den()
+A145375	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), BI(2*k, k))).num()
+A145556	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), BI(2*k, k))).den()
+A145559	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), BI(2*k, k).*(k*k))).num()	sum(((-1)^(k+1))/(binomial(2*k,k)*k^2),k=1..n).
+A145560	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), BI(2*k, k).*(k*k))).*(Z.TWO).den()	sum(((-1)^(k+1))/(binomial(2*k,k)*k^2),k=1..n).
+A145564	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(2*k, k).*(k + 1))).num()
+A145565	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, BI(2*k, k).*(k + 1))).den()	sum(1/(binomial(2*k,k)*(k+1)),k=0..n).
+A145566	lambdan	0	(n) -> RU(2, n, k -> new Q(Z.ONE, BI(2*k, k).*(k - 1))).*(Z.SIX).num()	6*add(1/(binomial(2*k, k)*(k-1)), k=2..n)):
+A145567	lambdan	0	(n) -> RU(2, n, k -> new Q(Z.ONE, BI(2*k, k).*(k - 1))).*(Z.SIX).den()	6*add(1/(binomial(2*k, k)*(k-1)), k=2..n)):
+A145571	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, Z.TEN.^(FA(k)))).num()	numerator(c(n)), with c(n):= Sum_{k=1..n} 1/10^(k!).
+A145572	simtraf	0	new A145571()	(n, v) -> new Z(v.toString(), 2)	is A145571(n) (a decimal number with digits only from {0,1}) read as base 2 number converted back into decimal notation.
+A165659	tuptraf	0	(n, s) -> new Q(s[0], s[1]).num()	""	new A007504().skip(1), new A033955().skip(1)	Numerators of A007504 divided by A033955, starting from the second term of A033955.
+A165660	tuptraf	0	(n, s) -> new Q(s[0], s[1]).den()	""	new A007504().skip(1), new A033955().skip(1)	xxxerators of A007504 divided by A033955, starting from the second term of A033955.
+A178185	lambdan	0	(n) -> RU(1, n, k -> new Q(1, 2).^(k*(k + 3)/2)).num()	Numerators of sum (1/2)^((k^2+3*k)/2) from k=1 to n.
+A178187	lambdan	0	(n) -> RU(1, n, k -> new Q(1, 3).^(k*(k + 3)/2)).num()	Numerators of sum (1/3)^((k^2+3*k)/2) from k=1 to n.
+A178189	lambdan	0	(n) -> RU(1, n, k -> new Q(1, 5).^(k*(k + 3)/2)).num()	Numerators of sum (1/5)^((k^2+3*k)/2) from k=1 to n.
+A178191	lambdan	0	(n) -> RU(1, n, k -> new Q(1, 7).^(k*(k + 3)/2)).num()	Numerators of sum (1/7)^((k^2+3*k)/2) from k=1 to n.
+A195618	prepend	0	new SimpleTransformSequence(0, new A001208(), v -> v.+(1))	1	a(0) = 1; a(n) = A001208(n) + 1
+A215753	cofrden	0	new A114490()		xxxerators of the continued fraction convergents of log_10(3).
+A215754	cofrden	0	new A153496()	skip();	xxxerators of the continued fraction convergents of log_10(6).
+A215755	cofrden	0	new A153620()	skip();	xxxerators of the continued fraction convergents of log_10(7).
+A215756	cofrden	0	new A154182()		xxxerators of the continued fraction convergents of log_10(11)
+A215757	cofrnum	0	new A114490()	skip(1);	Numerators of the continued fraction convergents of log_10(3).
+A215758	cofrnum	0	new A153496()	skip(1);	Numerators of the continued fraction convergents of log_10(6).
+A215759	cofrnum	0	new A153620()	skip(1);	Numerators of the continued fraction convergents of log_10(7).
+A215760	cofrnum	0	new A154182()		Numerators of the continued fraction convergents of log_10(11)
+A240533	lambdan	0	(n) -> new Q(FA(n), Z.TEN.^(n)).num()	numerators of n!/10^n
+A240534	lambdan	0	(n) -> new Q(FA(n), Z.TEN.^(n)).den()	xxxerators of n!/10^n
+A300298	lambdan	0	(n) -> RU(0, n - 1, k -> new Q(Z.ONE, PR(0, 4, j -> ZV(k + j + 1)))).num()	Sum_{k=0..n-1} 1/Product_{j=0..4} (k + j + 1), for n >= 0, with r(0) = 0.
+A300299	lambdan	0	(n) -> RU(0, n - 1, k -> new Q(Z.ONE, PR(0, 4, j -> ZV(k + j + 1)))).den()	Sum_{k=0..n-1} 1/Product_{j=0..4} (k + j + 1), for n >= 0, with r(0) = 0.
