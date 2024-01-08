@@ -30,7 +30,7 @@ A241591	lambdan	0	(n) -> new Q(Z2(n).*(ZV(n + 1).^(n - 1)), FA(n)).den()	xxxerat
 A250550	lambdan	0	(n) -> RU(0, n, k -> new Q(Z.ONE, ZV(k*(4*k - 3)))).num()	
 A254522	lambdan	0	(n) -> new Q(Z2(n).-(1).+(Z_1(n)), ZV(2*n)).num()	(2^n - 1 + (-1)^n)/(2*n),
 A264388	lambdan	0	(n) -> new Q(BI(n - 1, 2), ZV(6*n)).num()	Numerators of binomial(n-1, 2)/(6*n), for n >= 1.
-A288873	tuptraf	0	(n, s) -> new Q(s[0], s[1]).*(Z.FOUR.^(n)).num()	Numerators of scaled Bernoulli numbers 4^n*B(n), with B(n) = A027641(n)/A027642(n).
+# A288873	tuptraf	0	(n, s) -> new Q(s[0], s[1]).*(Z.FOUR.^(n)).num()	Numerators of scaled Bernoulli numbers 4^n*B(n), with B(n) = A027641(n)/A027642(n).
 A292227	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(k).^(4).*(4).+(1))).*(2).+(1).num()	Numerators of partial sums of the series 1 + 2*Sum_{k >= 1} 1/(4*k^4 + 1).
 A292228	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV(k).^(4).*(4).+(1))).*(2).+(1).den()	xxxerators of partial sums of the series 1 + 2*Sum_{k >= 1} 1/(4*k^4 + 1).
 A250401	lambdan	0	(n) -> RU(1, n, k -> new Q(Z.ONE, ZV((k + 1)*(3*k + 1)))).num()	partial sums of the reciprocals of octagonal numbers.
