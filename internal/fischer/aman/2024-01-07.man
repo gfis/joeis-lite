@@ -7,12 +7,12 @@ A276003	filtpos	0	0	new A060502()	v -> v.equals(Z.THREE)	Numbers n for which A06
 A072081	filamb	0	1	v -> v.mod(ZV(ZUtils.digitSum(v, 10)).^(2)).isZero()	Numbers divisible by the square of the sum of their digits in base 10.
 A072082	filamb	0	1	v -> v.mod(ZV(ZUtils.digitSum(v, 10)).^(3)).isZero()	Numbers divisible by the cube of the sum of their digits in base 10.
 A072083	filamb	0	1	v -> v.mod(ZV(ZUtils.digitSum(v, 10)).^(4)).isZero()	Numbers divisible by the 4th power of the sum of their digits in base 10.
- A072585 Numbers k such that k and phi(k) end with the same digit in base 10.
+A072585	filamb	0	1	v -> v.mod(10) == JF(v).phi().mod(10)	Numbers k such that k and phi(k) end with the same digit in base 10.
 A072600	filamb	0	1	v -> { final int[] c = ZUtils.digitCounts(v, 2); return c[0] <  c[1];}	Numbers which in base 2 have fewer 0's than 1's.
 A072601	filamb	0	1	v -> { final int[] c = ZUtils.digitCounts(v, 2); return c[0] <= c[1];}	Numbers which in base 2 have at least as many 1's as 0's.
 A072602	filamb	0	1	v -> { final int[] c = ZUtils.digitCounts(v, 2); return c[0] >= c[1];}	Numbers such that in base 2 the number of 0's is >= the number of 1's.
 A072603	filamb	0	1	v -> { final int[] c = ZUtils.digitCounts(v, 2); return c[0] >  c[1];}	Numbers which in base 2 have more 0's than 1's.
- A072604 Last digit of n, phi(n) and sigma(n) is 0 in base 10.
+A072604	filamb	0	1	v -> v.mod(10) == 0 && JF(v).phi().mod(10) == 0 && JF(v).sigma().mod(10) == 0 	Last digit of n, phi(n) and sigma(n) is 0 in base 10.
 
 A073849	tuptraf	0	(n, s) -> s[0].+(Integer.toString(n, 3).charAt(0) - '0')	"0"	PREVIOUS	Cumulative sum of initial digits of (n base 3).
 A073850	tuptraf	0	(n, s) -> s[0].+(Integer.toString(n, 4).charAt(0) - '0')	"0"	PREVIOUS	Cumulative sum of initial digits of (n base 4).
@@ -97,13 +97,13 @@ A110605	parmof2	0	A108873	7	Numbers n whose base 7 representations, interpreted 
 A110606	parmof2	0	A108873	8	Numbers n whose base 8 representations, interpreted as base 10 integers, are semiprimes.
 A110607	parmof2	0	A108873	9	Numbers n whose base 9 representations, interpreted as base 10 integers, are semiprimes.
 
-A114915	tuptraf	0	(n, s) -> s[0].xor(s[1])	""	new A004601(), new A004593()	Bitwise XOR of Pi base 2 (A004601) and e base 2 (A004593).
+A114915	tuptraf	0	(n, s) -> s[0].xor(s[1])	""	new A004601().skip(1), new A004593().skip(1)	Bitwise XOR of Pi base 2 (A004601) and e base 2 (A004593).
 %N A114916	tuptraf	0	s[0].xor(s[1])	""	new A004601(), A004593()	Bitwise XOR of Pi base 2 and e base 2 (€114915) converted to decimal.
 
-%N A117482 Numbers with no 1's in their base-3, base-4, and base-5 expansions. Intersection of A005823, A023709, and A023725.
-%N A117496 Numbers with no 1's in base 3 & 4 expansions.
-%N A117509 Numbers whose base-3, base-4, base-5, and base-6 expansions contain no 1's.
-%N A117564 Numbers with no 1's in base 3, 4 & 10 expansions.
+A117482	filamb	0	0	n -> n.toString(3).indexOf('1') < 0 && n.toString(4).indexOf('1') < 0 && n.toString(5).indexOf('1') < 0	Numbers with no 1s in their base-3, base-4, and base-5 expansions. Intersection of A005823, A023709, and A023725.
+A117496	filamb	0	0	n -> n.toString(3).indexOf('1') < 0 && n.toString(4).indexOf('1') < 0	Numbers with no 1s in base 3 & 4 expansions.
+A117509	filamb	0	0	n -> n.toString(3).indexOf('1') < 0 && n.toString(4).indexOf('1') < 0 && n.toString(5).indexOf('1') < 0 && n.toString(6).indexOf('1') < 0	Numbers whose base-3, base-4, base-5, and base-6 expansions contain no 1s.
+A117564	filamb	0	0	n -> n.toString(3).indexOf('1') < 0 && n.toString(4).indexOf('1') < 0 && n.toString(10).indexOf('1') < 0	Numbers with no 1s in base 3, 4 & 10 expansions.
 
 
 A117697	simtraf	0	new A016041()	v -> new Z(v.toString(2))	Palindromic primes in base 2 (written in base 2).
@@ -139,14 +139,14 @@ A118598	simtraf	0	new A029954()	v -> new Z(v.toString(7))	Palindromes in base 7 
 A118599	simtraf	0	new A029803()	v -> new Z(v.toString(8))	Palindromes in base 8 (written in base 8).
 A118600	simtraf	0	new A029955()	v -> new Z(v.toString(9))	Palindromes in base 9 (written in base 9).
 
-%N A135110 Positive numbers such that the digital sum base 2 and the digital sum base 10 are in a ratio of 2:10.
-%N A135111 Numbers such that the digital sum base 2 and the digital sum base 3 are in a ratio of 2:3.
-%N A135120 Numbers such that the digital sum base 2 and the digital sum base 3 and the digital sum base 10 all are equal.
-%N A135121 Numbers such that the digital sum base 2 and the digital sum base 3 and the digital sum base 5 all are equal.
-%N A135122 Numbers such that the digital sum base 2 and the digital sum base 3 and the digital sum base 4 all are equal.
-%N A135123 Numbers such that the digital sum base 2 and the digital sum base 3 and the digital sum base 6 all are equal.
-%N A135124 Numbers such that the digital sums in base 2, base 4 and base 8 are all equal.
-%N A135125 Numbers such that the digital sum base 2 and the digital sum base 5 and the digital sum base 10 all are equal.
+A135110	filamb	0	1	n -> ZUtils.digitSum(n, 2) * 10 == ZUtils.digitSum(n, 10) * 2	Positive numbers such that the digital sum base 2 and the digital sum base 10 are in a ratio of 2:10.
+A135111	filamb	0	1	n -> ZUtils.digitSum(n, 2) * 3 == ZUtils.digitSum(n, 3) * 2	Numbers such that the digital sum base 2 and the digital sum base 3 are in a ratio of 2:3.
+A135120	filamb	0	1	n -> { final long s2 = ZUtils.digitSum(n, 2); final long s3 = ZUtils.digitSum(n, 3); return s2 == s3 && s3 == ZUtils.digitSum(n, 10); }	2 and the digital sum base 3 and the digital sum base 10 all are equal.
+A135121	filamb	0	0	n -> { final long s2 = ZUtils.digitSum(n, 2); final long s3 = ZUtils.digitSum(n, 3); return s2 == s3 && s3 == ZUtils.digitSum(n, 5); }	2 and the digital sum base 3 and the digital sum base 5 all are equal.
+A135122	filamb	0	1	n -> { final long s2 = ZUtils.digitSum(n, 2); final long s3 = ZUtils.digitSum(n, 3); return s2 == s3 && s3 == ZUtils.digitSum(n, 4); }	2 and the digital sum base 3 and the digital sum base 4 all are equal.
+A135123	filamb	0	1	n -> { final long s2 = ZUtils.digitSum(n, 2); final long s3 = ZUtils.digitSum(n, 3); return s2 == s3 && s3 == ZUtils.digitSum(n, 6); }	2 and the digital sum base 3 and the digital sum base 6 all are equal.
+A135124	filamb	0	1	n -> { final long s2 = ZUtils.digitSum(n, 2); final long s4 = ZUtils.digitSum(n, 4); return s2 == s4 && s4 == ZUtils.digitSum(n, 8); }	2, base 4 and base 8 are all equal.
+A135125	filamb	0	1	n -> { final long s2 = ZUtils.digitSum(n, 2); final long s5 = ZUtils.digitSum(n, 5); return s2 == s5 && s5 == ZUtils.digitSum(n, 10); }	2 and the digital sum base 5 and the digital sum base 10 all are equal.
 A135772	filamb	0	1	v -> JF(v).sigma0().equals(ZV(v.toString(2).length()))	Numbers having number of divisors equal to number of binary digits
 A135773	filamb	0	1	v -> JF(v).sigma0().equals(ZV(v.toString(3).length()))	Numbers having number of divisors equal to number of digits in base 3.
 A135774	filamb	0	1	v -> JF(v).sigma0().equals(ZV(v.toString(4).length()))	Numbers having number of divisors equal to number of digits in base 4.
@@ -164,76 +164,60 @@ A135778	filamb	0	1	v -> JF(v).sigma0().equals(ZV(v.toString(8).length()))	Number
 %N A136773 n! never ends in this many 0's in base 13.
 %N A136774 n! never ends in this many 0's in base 16.
 
-%N A140316 Write n in base 3, delete 0's. keep base 3
+A140316	lambdan	0	n -> new Z(Integer.toString(n, 3).replaceAll("0", ""), 10)	n Write n in base 3, delete 0s. keep base 3
 
-%N A160384 Number of nonzero digits in the base-3 representation of n.
-%N A160385 Number of nonzero digits in base-4 representation of n.
-%N A160962 Perfect numbers written in base 4.
-%N A161322 a(n)=A000043(n) written in base 4.
-%N A161323 Perfect numbers written in base 8.
+A160384	lambdan	0	n -> { final int[] c = ZUtils.digitCounts(n, 3); return ZV(c[1] + c[2]); }	Number of nonzero digits in the base-3 representation of n.
+A160385	lambdan	0	n -> { final int[] c = ZUtils.digitCounts(n, 4); return ZV(c[1] + c[2] + c[3]); }	Number of nonzero digits in base-4 representation of n.
+A160962	simtraf	0	new A000396()	v -> new Z(v.toString(4))	Perfect numbers written in base 4.
+A161322	simtraf	0	new A000043()	v -> new Z(v.toString(4))	a(n)=A000043(n) written in base 4.
+A161323	simtraf	0	new A000396()	v -> new Z(v.toString(8))	Perfect numbers written in base 8.
 
-%N A164699 Base 10 integers n such that n base 16 is a substring of n base 7.
-%N A164700 Base 10 integers n such that n base 7 is a substring of n base 3.
-%N A164891 Base 10 representation of the string formed by prepending primes in base 2.
-%N A164893 Base 10 representation of the string formed by appending primes in base 2.
+A164699	filamb	0	1	n -> n.toString(7).indexOf(n.toString(16)) >= 0	Base 10 integers n such that n base 16 is a substring of n base 7.
+A164700	filamb	0	0	n -> n.toString(3).indexOf(n.toString(7)) >= 0	Base 10 integers n such that n base 7 is a substring of n base 3.
+%N A164891	filamb	0	0	n -> n.toString(16).indexof(n.toString(7)) >= 0	Base 10 representation of the string formed by prepending primes in base 2.
+%N A164893	filamb	0	0	n -> n.toString(16).indexof(n.toString(7)) >= 0	Base 10 representation of the string formed by appending primes in base 2.
 
- A164993		a(n) = image of n under the base-3 Kaprekar map n -> (n with digits sorted into descending order) - (n with digits sorted into ascending order)		28
-0, 0, 0, 2, 0, 2, 4, 2, 0, 8, 8, 16, 8, 0, 8, 16, 8, 8, 16, 16, 16, 16, 8, 8, 16, 8, 0, 26, 32, 58, 32, 26, 52, 58, 52, 58, 32, 26, 52, 26, 0, 26, 52, 26, 32, 58, 52, 58, 52, 26, 32, 58, 32, 26, 52, 58, 64, 58, 52, 58, 64, 58, 52, 58, 52, 58, 52, 26, 32, 58, 32, 26, 64, 58, 52, 58, 32 (list; graph; refs; listen; history; edit; text; internal format)
-OFFSET
-0,4
-LINKS
-Indranil Ghosh, Table of n, a(n) for n = 0..19683 (terms 0..2187 from Joseph Myers)
-Index entries for the Kaprekar map
-EXAMPLE
-For n = 10, 10_10 = 101_3. So, a(10) = 110_3 - 11_3 = 12 - 4 = 8. - Indranil Ghosh, Feb 02 2017
-MATHEMATICA
-a[n_] := With[{dd = IntegerDigits[n, 3]}, FromDigits[ReverseSort[dd], 3] - FromDigits[Sort[dd], 3]];
-a /@ Range[0, 100] (* Jean-François Alcover, Jan 08 2020 *)
-CROSSREFS
-Cf. A164994.
-In other bases: A164884 (base 2), A165012 (base 4), A165032 (base 5), A165051 (base 6), A165071 (base 7), A165090 (base 8), A165110 (base 9), A151949 (base 10).
-https://oeis.org/A151949/a151949.c.txt C program
+A173523	lambdan	0	n -> Z.ONE.+(ZUtils.digitSum(n - 1, 3))	1+A053735(n-1), where A053735 is the sum-of-digits function in base 3.
+A173525	lambdan	0	n -> Z.ONE.+(ZUtils.digitSum(n - 1, 5))	a(n) = 1 + A053824(n-1), where A053824 = sum of digits in base 5.
+A173526	lambdan	0	n -> Z.ONE.+(ZUtils.digitSum(n - 1, 6))	a(n) = 1 + A053827(n-1), where A053827 is the sum-of-digits function in base 6.
+A173527	lambdan	0	n -> Z.ONE.+(ZUtils.digitSum(n - 1, 7))	a(n) = 1 + A053828(n-1), where A053828 is the sum of digits in base 7.
+A173528	lambdan	0	n -> Z.ONE.+(ZUtils.digitSum(n - 1, 8))	a(n) = 1 + A053830(n-1), where A053830 is the sum of the digits of its argument in base 9.
+A173529	lambdan	0	n -> Z.ONE.+(ZUtils.digitSum(n - 1, 9))	a(n) = 1 + A053830(n-1), where A053830 is the sum of the digits of its argument in base 9.
 
-%N A173523 1+A053735(n-1), where A053735 is the sum-of-digits function in base 3.
-%N A173525 a(n) = 1 + A053824(n-1), where A053824 = sum of digits in base 5.
-%N A173526 a(n) = 1 + A053827(n-1), where A053827 is the sum-of-digits function in base 6.
-%N A173527 a(n) = 1 + A053828(n-1), where A053828 is the sum of digits in base 7.
-%N A173529 a(n) = 1 + A053830(n-1), where A053830 is the sum of the digits of its argument in base 9.
-
-%N A174931 Half of the digital sum of base 3 representations of 2^n.
+A174931	lambdan	0	n -> ZV(ZUtils.digitSum(Z2(n), 3))./(2)	Half of the digital sum of base 3 representations of 2^n.
 %N A174970 The base 6 expansion of the number of trailing zeros of the base 6 expansion of (6^n)!.
-%N A176189 Natural numbers whose squares have only 0's and 1's in base 3.
+A176189	filamb	0	1	n -> n.^(2).toString(3).matches("[01]+")	Natural numbers whose squares have only 0's and 1's in base 3.
 %N A176330 The largest Armstrong number 115132219018763992565095597973971522401 written in base 2.
 
-%N A178679 Numbers n such that the binary expansion of n starts with the base 3 expansion of n.
-%N A178680 Numbers n such that the binary expansion of n contains the base 3 expansion of n as a substring.
-%N A175514 Numbers n such that the base-2 expansion of n ends with the base-5 expansion of n.
+A178679	filamb	0	0	n -> n.toString(2).startsWith(n.toString(3))	Numbers n such that the binary expansion of n starts with the base 3 expansion of n.
+A178680	filamb	0	0	n -> n.toString(2).indexOf(n.toString(3)) >= 0	Numbers n such that the binary expansion of n contains the base 3 expansion of n as a substring.
+A175514	filamb	0	0	n -> n.toString(2).endsWith(n.toString(5))	Numbers n such that the base-2 expansion of n ends with the base-5 expansion of n.
 
-%N A179336 Primes containing at least one prime digit in base 10.
-%N A179463 Semiprimes A001358 containing at least one semiprime digit in base 10.
-%N A183227 a(n) is the base-5 digit sum of 10^n-1.
-%N A183228 a(n) is the base-5 digit sum of 10^n+1.
-%N A187829 Numbers that when converted to hexadecimal and the letters are replaced by base 10 equivalents, result in the same number.
+A179336	filter	0	new A000040()	v -> v.toString(10).matches("\\d*[2357]\\d*")	Primes containing at least one prime digit in base 10.
+A179463	filter	0	new A001358()	v -> v.toString(10).matches("\\d*[469]\\d*")	Semiprimes A001358 containing at least one semiprime digit in base 10.
+A183227	lambdan	0	n -> ZV(ZUtils.digitSum(Z.TEN.^(n).-(1), 5))	a(n) is the base-5 digit sum of 10^n-1.
+A183228	lambdan	0	n -> ZV(ZUtils.digitSum(Z.TEN.^(n).+(1), 5))	a(n) is the base-5 digit sum of 10^n+1.
+# A187829	Numbers that when converted to hexadecimal and the letters are replaced by base 10 equivalents, result in the same number.
 
-%N A188341 Numbers having no 0's and not more than one 1 in their representation in base 3.
-%N A190642 Numbers 3n+2 written in base 3.
-%N A195375 Numbers whose cube expanded in base 14 uses only prime digits.
-%N A198681 Nonnegative multiples of 3 whose sum of base-3 digits are of the form 3k+1.
-%N A198682 Nonnegative multiples of 3 whose sum of base-3 digits are of the form 3*k+2.
+A188341	filamb	0	0	n -> { final int[] c = ZUtils.digitCounts(n, 3); return c[0] == 0 && c[1] <= 1; }	Numbers having no 0s and not more than one 1 in their representation in base 3.
+A190642	simtraf	0	new A016789()	v -> new Z(v.toString(3))
+A195375	filamb	0	0	n -> n.^(3).toString(14).matches("[2357bd]+")	Numbers whose cube expanded in base 14 uses only prime digits.
+A198681	filter	0	new A008585()	v -> ZUtils.digitSum(v, 3) % 3 == 1	Nonnegative multiples of 3 whose sum of base-3 digits are of the form 3k+1.
+A198682	filter	0	new A008585()	v -> ZUtils.digitSum(v, 3) % 3 == 2	Nonnegative multiples of 3 whose sum of base-3 digits are of the form 3*k+2.
 
-%N A201821 Automorphic numbers: n^2 ends with n in base 6 (written in base 6).
+%N A201821 Automorphic numbers: n^2 ends with n in base  6 (written in base  6).
 %N A201918 Automorphic numbers: n^2 ends with n in base 12 (written in base 10).
-%N A201919 Automorphic numbers n^2 ends with n in base 14 (written in base 10).
+%N A201919 Automorphic numbers  n^2 ends with n in base 14 (written in base 10).
 %N A201921 Automorphic numbers: n^2 ends with n in base 15 (written in base 10).
 %N A201948 Automorphic numbers: n^2 ends with n in base 18 (written in base 10).
 
-%N A204324 Numbers n such that A007953(n) >= A007953(n^3), where A007953 = digital sum in base 10.
-%N A210582 Numbers whose first digit is the remainder of their division by the last digit (in base 10).
+A204324	filamb	0	0	n -> ZUtils.digitSum(n) >= ZUtils.digitSum(n.^(3))	Numbers n such that A007953(n) >= A007953(n^3), where A007953 = digital sum in base 10.
+A210582	filamb	0	0	n -> { final long x = n.mod(10); return x != 0L && ZV(n.toString(10).charAt(0) - '0').equals(n.mod(x)); }	Numbers whose first digit is the remainder of their division by the last digit (in base 10).
 
-A211864	simtraf	0	new A000578()	v -> new Z(v.toString(2))	Powers of three read in base 2.
-%N A212495 Numbers all of whose base 11 digits are even.
-%N A213517 Numbers n such that the triangular number n*(n+1)/2 has only 1 or 2 different digits in base 10.
-%N A213518 Numbers n such that the triangular number n*(n+1)/2 has 2 different digits in base 10.
+# A211864	simtraf	0	new A000578()	v -> new Z(v.toString(2))	Powers of three read in base 2. Strange carries!!
+A212495	filamb	0	0	n -> n.toString(11).matches("[02468a]+")	Numbers all of whose base 11 digits are even.
+A213517	filamb	0	0	n -> ZUtils.distinctDigitCount(n.*(n.+(1))./(2), 10) <= 2	Numbers n such that the triangular number n*(n+1)/2 has only 1 or 2 different digits in base 10.
+A213518	filamb	0	0	n -> ZUtils.distinctDigitCount(n.*(n.+(1))./(2), 10) == 2	Numbers n such that the triangular number n*(n+1)/2 has 2 different digits in base 10.
 
 A215879	lambdan	0	n -> { final String s = Integer.toString(n, 3); return Z.valueOf(s.length() - s.lastIndexOf('0') - 1); }	Written in base 3, n ends in a(n) consecutive nonzero digits.
 A215883	lambdan	0	n -> { final String s = Integer.toString(n, 4); return Z.valueOf(s.length() - s.lastIndexOf('0') - 1); }	When written in base 4, n ends in a(n) consecutive nonzero digits.
@@ -248,17 +232,17 @@ A218311	lambdan	0	n -> ZUtils.digitNZProduct(ZV(n).^(5), 10)	Product of the nonz
 
 A219743	filamb	0	0	v -> ZUtils.distinctDigitCount(v, 10) == 8	Number for which the number of distinct base 10 digits is 8.
 A220076	filamb	0	0	v -> ZUtils.distinctDigitCount(v, 10) == 6	Numbers with exactly six distinct base-10 digits.
-A221714	lambdan	0	n -> ZUtils.sortDigitsDescending(new Z(Integer.toString(n), 2))	Numbers written in base 2 with digits rearranged to be in decreasing order.
-A222816	filamb	0	0	v -> ZUtils.reverse(v, 5).mod(v).isZero()	Numbers k that divide the base-5 reversal of k.
+A221714	lambdan	0	n -> new Z(ZUtils.sortDigitsDescending(ZV(n), 2).toString(2))	Numbers written in base 2 with digits rearranged to be in decreasing order.
+A222816	filamb	0	1	v -> ZUtils.reverse(v, 5).mod(v).isZero()	Numbers k that divide the base-5 reversal of k.
 
 A223077	filter	0	new A007089()	v -> { final Z r = new Z(ZUtils.reverse(v).toString()); return r.equals(new Z(v.toString(), 3).*(2)); }	Positive integers, written in base 3, with the property that if the base-3 representation is reversed the result is twice the original number.
 A223078	filamb	0	1	v -> ZUtils.reverse(v, 4).equals(v.*(3))	Positive integers with the property that if the base-4 representation is reversed the result is three times the original number.
 A223079	simtraf	0	new A223078()	v -> new Z(v.toString(4))	Positive integers, written in base 4, with the property that if the base-4 representation is reversed the result is three times the original number.
-A223089	filamb	0	1	v -> ZUtils.reverse(v, 8).equals(v.*(5))	Numbers n, written in base 8, with the property that if the base-8 representation of n is read backwards, the result is 5*n.
-A223090	filamb	0	1	v -> ZUtils.reverse(v, 8).mod(v).isZero()	Numbers n with the property that if the base-8 representation of n is read backwards, the result is an integral multiple of n.
+A223089	filamb	0	1	v -> new Z(ZUtils.reverse(v, 8).toString(8)).equals(v.*(5))	Numbers n, written in base 8, with the property that if the base-8 representation of n is read backwards, the result is 5*n.
+A223090	filamb	0	1	v -> new Z(ZUtils.reverse(v, 8).toString(8)).mod(v).isZero()	Numbers n with the property that if the base-8 representation of n is read backwards, the result is an integral multiple of n.
 
 A224920	simtraf	0	new A000584().skip(1)	v -> new Z(v.toString(3))	Fifth powers expressed in base 3.
-A225300	filter	0	new A025475()	v -> ZUtils.isPalindrome(v, 3)	Terms in A025475 that are palindromes in base 2.
+A225300	filter	0	new A025475()	v -> ZUtils.isPalindrome(v, 2)	Terms in A025475 that are palindromes in base 2.
 
 A226636	filamb	0	0	v -> ZUtils.digitSum(v, 3) == 3	Numbers whose base-3 sum of digits is 3.
 A226969	filamb	0	0	v -> ZUtils.digitSum(v, 4) == 4	Numbers whose base-4 sum of digits is 4.
@@ -268,12 +252,12 @@ A227092	filamb	0	0	v -> ZUtils.digitSum(v, 7) == 7	Numbers whose base-7 sum of d
 A227095	filamb	0	0	v -> ZUtils.digitSum(v, 8) == 8	Numbers whose base-8 sum of digits is 8.
 A227238	filamb	0	0	v -> ZUtils.digitSum(v, 9) == 9
 
-A227549	filamb	0	0	v -> v.toString(10).indexOf(v.toString(16)) >= 0	Numbers that contain their base-16 representation in their decimal representation.
-A228050	filamb	0	0	v -> v.toString(10).indexOf(v.toString(7)) >= 0	The decimal representation of n is a substring of its base 7 representation.
-A228051	filamb	0	0	v -> v.toString(10).indexOf(v.toString(8)) >= 0	The decimal representation of n is a substring of its base 8 representation.
-A228052	filamb	0	0	v -> v.toString(10).indexOf(v.toString(9)) >= 0	The decimal representation of n is a substring of its base 9 representation.
+A227549	filamb	0	0	v -> v.toString(16).indexOf(v.toString(10)) >= 0	Numbers that contain their base-16 representation in their decimal representation.
+A228050	filamb	0	0	v -> v.toString( 7).indexOf(v.toString(10)) >= 0	The decimal representation of n is a substring of its base 7 representation.
+A228051	filamb	0	0	v -> v.toString( 8).indexOf(v.toString(10)) >= 0	The decimal representation of n is a substring of its base 8 representation.
+A228052	filamb	0	0	v -> v.toString( 9).indexOf(v.toString(10)) >= 0	The decimal representation of n is a substring of its base 9 representation.
 %N A229975	filamb	0	1	v -> v.toString(10).indexOf(v.toString(16)) >= 0	The base 8 expansion of the number of trailing zeros of the base 8 expansion of (8^n)!.
-A230030	filamb	0	0	v -> v.mod(5) != 0 && v.^(2).toString(5).matches("[01]+")	Numbers k not divisible by 5 such that k^2 written in base 5 has no digit > 1.
+A230030	filamb	0	0	v -> v.mod(5L) != 0L && v.^(2).toString(5).matches("[01]+")	Numbers k not divisible by 5 such that k^2 written in base 5 has no digit > 1.
 
 %N A234577 Let S_n = 0 followed by base-2 expansion of n, reversed; sequence is concatenation of S_0, S_1, S_2, ...
 %N A234578 Let S_n = 0 followed by base-3 expansion of n, reversed; sequence is concatenation of S_0, S_1, S_2, ...
