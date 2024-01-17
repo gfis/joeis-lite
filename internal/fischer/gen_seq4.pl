@@ -149,6 +149,7 @@ while (<>) { # read inputfile
     next if scalar(@parms) == 0; # only aseqno => came from CC=man
     $callcode = shift(@parms);
     next if length($callcode) == 0; # skip over empty callcodes
+    next if $callcode =~ m{\#};     # skip over commented callcodes
     # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
