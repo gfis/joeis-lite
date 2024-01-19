@@ -393,6 +393,7 @@ select3:
 	                LEFT JOIN asname n ON i.aseqno = n.aseqno \
 	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
 	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
+	      AND s.callcode NOT LIKE '#%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 	>        $(CC).gen

@@ -440,6 +440,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }
     if ($line =~ m{\WFilterPositionSequence}       ) { $imports{"irvine.oeis.FilterPositionSequence"           } = $itype; }
     if ($line =~ m{\WFilterSequence}               ) { $imports{"irvine.oeis.FilterSequence"                   } = $itype; }
+    if ($line =~ m{\WHankelTransformSequence}      ) { $imports{"irvine.oeis.transform.HankelTransformSequence"} = $itype; }
     if ($line =~ m{\WHolonomicRecurrence}          ) { $imports{"irvine.oeis.recur.HolonomicRecurrence"}         = $itype; }
     if ($line =~ m{\WIntegerPartition}             ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }
     if ($line =~ m{\WIntegerUtils\.}               ) { $imports{"irvine.math.IntegerUtils"}                      = $itype; }
@@ -449,7 +450,6 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WInverse\b}                    ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
     if ($line =~ m{\WJaguar\.}                     ) { $imports{"irvine.factor.factor.Jaguar"   }                = $itype; }
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
-    if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"         }                = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
     if ($line =~ m{\WMultiplicativeSequence}       ) { $imports{"irvine.oeis.MultiplicativeSequence"           } = $itype; }

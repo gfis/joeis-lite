@@ -1,33 +1,11 @@
-%% A323908 nyi Fo  Reversing binary representation of A004718, Per N?rg?rd
-%% A323909 nyi Fo  Balanced ternary representation of A004718, Per N?rg?rd
-%C A178738 Start from 1, 1, -2, -2, -4, -4, 8, 8, 16, 16, -32, -32, -64, -64, 128, ... which is A016116(n-1) with negative signs in blocks of 4, assuming offset 1. The Moebius transform of that sequence is b(n) = 1, 0, -3, -3, -5, -2, 7, 10, 18, 20, -33, -25, -65, -72, 135, 120, ... for n >= 1, and the current sequence is a(n) = b(2n-1)/(2n-1). - _R. J. Mathar_, Oct 29 2011
-%C A257098 The sequence of rationals a(n)/A046644(n) is the Moebius transform of A046643/A046644 which is multiplicative. This sequence is then also multiplicative. - _Andrew Howroyd_, Aug 08 2018
-%C A295901 The transform x_f described above could be called "Xor-Moebius transform of f" because of its analogous construction to Moebius transform with A008683 replaced by A008966 and the summation replaced by cumulative XOR.
-%N A180403 Numerator in Moebius transform of A001790/A046161.
-%N A296203 Xor-Moebius transform of A000203, the sum of divisors.
-%N A296208 Xor-Moebius transform of A005187.
-%N A297106 Xor-Moebius transform of A156552.
-%N A297110 Xor-Moebius transform of A006068, inverse of the binary Gray code.
-%N A318503 Xor-Moebius transform of A001065, the sum of proper divisors.
-%N A318836 Product_{d|n, d<n, A007431(d) > 0} prime(A007431(d)), where A007431 is the Moebius transform of Eulers totient function.
-%N A318838 Product_{d|n, A007431(d) > 0} prime(A007431(d)), where A007431 is the Moebius transform of Eulers totient function.
-%N A324182 a(n) = A083254(A163511(n)), where A083254(n) = 2*phi(n) - n, the Moebius transform of the deficiency of n.
-%N A334313 Denominators of the partial sums of the Moebius transform of the harmonic numbers.
-%N A334314 Numerators of the partial sums of the Moebius transform of the harmonic numbers.
-%N A349627 Numerators of the Moebius transform of ratio A003961(n)/sigma(n).
-%N A349628 Denominators of the Moebius transform of ratio A003961(n)/sigma(n).
-%N A349633 Numerators of the Moebius transform of ratio A003961(n)/n.
-%N A349634 Denominators of the Moebius transform of ratio A003961(n)/n.
-%N A364565 Numbers k at which point A364557 (the Moebius transform of A005941) is equal to A000010 (Euler phi function).
-%N A364566 Numbers k such that A364557(k) < A000010(k), where A364557 is the Moebius transform of A005941, and A000010 is Euler totient function phi.
-%N A364567 a(n) = A297112(A005940(1+n)), where A297112 is the Moebius transform of A156552 [the inverse of map n -> A005940(1+n)].
-%N A364571 a(n) = A297171(A163511(n)), where A297171 is the Moebius transform of the inverse permutation of A163511.
-%N A364953 a(n) = A364952(A005940(1+n)), where A364952 is Dirichlet inverse of A364557, which is Moebius transform of A005941 [the inverse permutation of A005940].
 A069264	moetrafi	1	new A001222()	, 0		bigomega(n).
 A071017	moetraf	1	new A002487()	, 1	#
 A071018	moetrafi	1	new A002487()	, 1	#
 A071324	moetraf	1	new A134871()	, 1	; i.e., Moebius transform of [1, 2, 3, 5, 5, 8, 7, 10, 10, 12, 11, ...]. - _Gary W. Adamson_, Nov 14 2007
+A072641	simtraf	0	new A072638()	v -> ZV(v.bitLength())	Binary widths of the terms of A072638.	nonn	0..10	nyi	_Antti Karttunen_
 A079248	moetrafi	1	new A001318()	, 1	#
+A081165	simtraf	0	new A060114()	v -> JF(v).largestPrimeFactor()	Largest prime factor of A060114.        nonn
+A081166	simtraf	0	new A060114()	v -> ZV(JF(v).omega())	Number of distinct primes dividing A060114(n).
 A085411	moetraf	1	new A007318()	, 1	* [1,2,3,...]. - _Gary W. Adamson_, Jun 11 2007
 A086597	moetrafi	1	new A022307()	, 1	Inverse Moebius transform of A022307.
 A092509	moetraf	1	new A008475()	, 0	#
@@ -50,22 +28,52 @@ A143444	moetraf	1	new A182986()	, 0	the primes prefaced by 0.
 A143444	moetraf	1	new A182986()	, 0	the primes prefaced by 0.
 A154402	moetrafi	1	new A036987()	, 0	Fredholm-Rueppel sequence, cf. A036987.
 A159876	moetrafi	1	new A005614()	, 0	 the rabbit sequence, A051731 * A005614
+A178738	#nyi	0	Start from 1, 1, -2, -2, -4, -4, 8, 8, 16, 16, -32, -32, -64, -64, 128, ... which is A016116(n-1) with negative signs in blocks of 4, assuming offset 1. The Moebius transform of that sequence is b(n) = 1, 0, -3, -3, -5, -2, 7, 10, 18, 20, -33, -25, -65, -72, 135, 120, ... for n >= 1, and the current sequence is a(n) = b(2n-1)/(2n-1). - _R. J. Mathar_, Oct 29 2011
 A178749	simtraf	1	new MobiusTransformSequence(1, new A001405(), 0)	(n, v) -> v./(n)	n * a(n) provides the Moebius transform of A001405 signed central binomial coefficients.
 A179115	lambdan	1	n -> JF(ZV(n).^(JF(n).sigma0AsLong())).phi()	phi(n^tau(n)). - _Wesley Ivan Hurt_, Jun 09 2023
+A180403	#nyi	0	Numerator in Moebius transform of A001790/A046161.
 A181801	moetrafi	1	new A322586()	, 0	#
 A225202	moetraf	1	new A000045().skip(1)	, 0	Fibonacci(n+1). skip
 A253568	filter	0	new A122111()	(n, v) -> (n & 1) == 0	Even bisection of A122111: a(n) = A122111(2*n).	nonn	1..1024	nyi	_Antti Karttunen_
 A256281	moetrafi	1	new A000129()	, 0		Pell numbers. skip1
+A257079	simtraf	0	new A007623()	v -> { int[] c = ZUtils.digitCounts(v, 10); int i = 0; while (++i <= 9) { if (c[i] == 0) { return ZV(i); }} return Z.NEG_ONE; }	The least nonzero digit missing from the factorial representation (A007623) of n.
+A257098	#nyi	0	The sequence of rationals a(n)/A046644(n) is the Moebius transform of A046643/A046644 which is multiplicative. This sequence is then also multiplicative. - _Andrew Howroyd_, Aug 08 2018
 A277323	filter	0	new A260443()	(n, v) -> (n & 1) == 0	Even bisection of A260443 (the odd terms): a(n) = A260443(2*n).	nonn	0..1024	nyi	_Antti Karttunen_
+A278544	dirtraf	0	new A003415()	new A260443()	Arithmetic derivative of the prime-factorization representation of the n-th Stern polynomial: a(n) = A003415(A260443(n)).
 A279495	moetrafi	1	new A023533()	, 0		
 A285768	moetraf	1	new A002275()	, 0	
+A286365	tuptraf	0	(n, s) -> s[0].*(2).+(s[1].testBit(0) ? Z.ONE : Z.ZERO)	""	new A286364(), new A007814()		Compound filter: a(n) = 2*A286364(n) + A000035(A007814(n)).	nonn	1..10000	nyi	_Antti Karttunen_
+A286369	tuptraf	0	(n, s) -> s[0].*(2).+(s[1].shiftRight(2))	""	new A286364(), new A072400()		Compound filter: a(n) = 2*A286364(n) + floor(A072400(n)/4).	nonn	1..10000	nyi	_Antti Karttunen_
+A290079	charfunc	0	new A249721()	Characteristic function for A249721: a(n) = 1 if there are either no 1-digits at all in base-3 representation of n, or if there are exactly two 1s next to each other, a(n) = 0 in any other cases.	nonn,base	0..59049	nyi	_Antti Karttunen_
 A290529	moetraf	1	new A000041().skip(1)	, 0	the shifted partition numbers (A000041), p(n-k).
 A291768	filter	0	new A291761()	(n, v) -> (n & 1) == 0	Even bisection of A291761.	nonn	1..16385	nyi	_Antti Karttunen_
+A292240	simtraf	0	new A254103()	(n, v) -> (n == 0) ? Z.ZERO : new Z(v.toString(3).replaceAll("[12]","x").replaceAll("0", "1").replaceAll("x", "0"), 2)	Binary encoding of 0-digits in ternary representation of A254103(n)
+A292370	lambdan	0	n -> (n == 0) ? Z.ZERO : new Z(Integer.toString(n, 4).replaceAll("[123]","x").replaceAll("0", "1").replaceAll("x", "0"), 2)	A binary encoding of the zeros in base-4 representation of n.	nonn,base	0..65536	nyi	_Antti Karttunen_
+A292371	lambdan	0	n -> new Z(Integer.toString(n, 4).replaceAll("[23]", "0"), 2)	
+A292372	lambdan	0	n -> new Z(Integer.toString(n, 4).replaceAll("[13]", "0").replaceAll("[2]", "1"), 2)	A binary encoding of 2-digits in base-4 representation of n.	nonn,base	0..65536	nyi	_Antti Karttunen_
+A292373	lambdan	0	n -> new Z(Integer.toString(n, 4).replaceAll("[12]", "0").replaceAll("[3]", "1"), 2)	A binary encoding of 3-digits in base-4 representation of n.	nonn,base	0..65536	nyi	_Antti Karttunen_
+A295308	charfunc	0	new A066694()	Characteristic function for A066694: a(n) = 1 if n < phi(sigma(n)), 0 otherwise.	nonn	1..65537	nyi	_Antti Karttunen_
+A295901	#nyi	0	The transform x_f described above could be called "Xor-Moebius transform of f" because of its analogous construction to Moebius transform with A008683 replaced by A008966 and the summation replaced by cumulative XOR.
+A296203	#nyi	0	Xor-Moebius transform of A000203, the sum of divisors.
+A296208	#nyi	0	Xor-Moebius transform of A005187.
+A297106	#nyi	0	Xor-Moebius transform of A156552.
+A297110	#nyi	0	Xor-Moebius transform of A006068, inverse of the binary Gray code.
+A297168	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A156552(), new A297112()	Difference between A156552 and its Moebius transform: a(n) = A156552(n) - A297112(n).	nonn	1..8192	nyi	_Antti Karttunen_
+A300252	tuptraf	0	(n, s) -> s[0].-(s[2])	""	new A003415(), PREVIOUS, new A300251()	Difference between arithmetic derivative (A003415) and its M√∂bius transform (A300251).	nonn	1..65537	nyi	_Antti Karttunen_
+A300722	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A060681(), new A300721()	Difference between A060681 (largest difference between consecutive divisors of n as ordered by size) and its M√∂bius transform.	nonn	1..65537	anopan	_Antti Karttunen_
+A300726	tuptraf	0	(n, s) -> s[0].-(s[2])	""	new A053644(), PREVIOUS, new A300724()	Difference between A053644 (the largest power of 2 less than or equal to n) and its M√∂bius transform.	nonn,look	1..65537	nyi	_Antti Karttunen_
 A302549	moetrafi	1	new A000219()	, 0	#
 A302550	moetrafi	1	new A026007()	, 0	#
+A304527	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A064664(), new A304526()	Difference between A064664 (the inverse of EKG-sequence) and its M√∂bius-transform.	nonn	1..32768	nyi	_Antti Karttunen_
+A305295	simtraf	0	new A245612()	(n, v) -> new Z(v.toString(3).replaceAll("[02]","0"), 2)	Binary encoding of 1-digits in ternary representation of A245612(n) 
 A317838	moetrafi	1	new A002487()	, 0	, Sterns Diatomic sequence.
+A317840	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A002487().skip(), new A317839()	Difference between Sterns Diatomic sequence (A002487) and its M√∂bius transform (A317839).	nonn	1..16384	nyi	_Antti Karttunen_
+A317844	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A294898(), new A297114()	Difference between A294898 and its M√∂bius transform (A297114).	sign	1..65537	unkn	_Antti Karttunen_
 A318025	moetrafi	1	new A006906()	, 0	#
 A318290	moetrafi	1	new A022629()	, 0	#
+A318503	#nyi	0	Xor-Moebius transform of A001065, the sum of proper divisors.
+A318836	#nyi	0	Product_{d|n, d<n, A007431(d) > 0} prime(A007431(d)), where A007431 is the Moebius transform of Eulers totient function.
+A318838	#nyi	0	Product_{d|n, A007431(d) > 0} prime(A007431(d)), where A007431 is the Moebius transform of Eulers totient function.
 A319684	moetrafi	1	new A003415()	, 0	#
 A319712	moetrafi	1	new A034968()	, 0	#
 A320802	moetraf	1	new A303546()	, 0	, where the Meobius transform of a sequence b is a(n) = Sum_{d|n} mu(d) * b(n/d).
@@ -76,6 +84,9 @@ A322913	simtraf	1	new A032173().skip(2)	(n, v) -> v.*(n)	the sequence (n*A032173
 A322994	simtraf	1	new A156552()	v -> v.makeOdd()
 A323584	moetra	1	new A300275()	, 0	Second Moebius transform of A000219. Number of plane partitions of n whose multiset of rows is aperiodic and whose multiset of columns is also aperiodic.
 A323585	moetra	1	new A323584()	, 0	Third Moebius transform of A000219. Number of plane partitions of n whose multiset of rows is aperiodic and whose multiset of columns is also aperiodic and whose parts are relatively prime.
+A323908	#nyi	0	nyi Fo  Reversing binary representation of A004718, Per N?rg?rd
+A323909	#nyi	0	nyi Fo  Balanced ternary representation of A004718, Per N?rg?rd
+A324182	#nyi	0	a(n) = A083254(A163511(n)), where A083254(n) = 2*phi(n) - n, the Moebius transform of the deficiency of n.
 A327867	filter	0	new A304526()	(n, v) -> (n & 1) == 0	a(n) =            A304526(2*n)	Even bisection of M√∂bius transform of A064664, the inverse of EKG-sequence.	sign	1..16384	nyi	_Antti Karttunen_
 A327867	filter	0	new MobiusTransformSequence(1, new A064664(), 0)	(n, v) -> (n & 1) == 0	Even bisection of Moebius transform of A064664, the inverse of EKG-sequence.
 A329372	dirichcon2	0	new A000203()	1	new A297112()	1	Equally, Dirichlet convolution of sigma (A000203) with A297112 (Moebius transform of A156552).
@@ -90,33 +101,52 @@ A329462	moetrafi	1	new A033461()	, 0	#
 A329465	moetrafi	1	new A007294()	, 0	#
 A329466	moetrafi	1	new A024940()	, 0	#
 A332004	moetraf	1	new A032020()	, 0	#
+A334313	#nyi	0	Denominators of the partial sums of the Moebius transform of the harmonic numbers.
+A334314	#nyi	0	Numerators of the partial sums of the Moebius transform of the harmonic numbers.
 A340090	dirichinv	1	new A219428()	, 0	Dirichlet inverse of A219428, n - phi(n) - 1.	sign	1..16384	nyi	_Antti Karttunen_
+A340191	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A063994(), new A340190()	Difference between A063994 and its M√∂bius transform.	sign	1..8191	nyi	_Antti Karttunen_
 A340192	moetrafi	1	new A063994()	, 0	#
 A340193	moetrafi	1	new A318840()	, 0	#
 A340195	moetrafi	1	new A049559()	, 0	#
 A340196	moetrafi	1	new A318830()	, 0	#
 A340367	dirichinv	1	new SimpleTransformSequence(1, new A318833(), v -> Z.ONE.-(v))	, 0	Dirichlet inverse of sequence b(n) = 1-A318833(n).	sign	1..16384	nyi	_Antti Karttunen_
+A342664	tuptraf	0	(n, s) -> new Q(s[0], s[1]).den()	""	new A342661(), new A342662()	Denominator of ratio A342661(n)/A342662(n).	nonn,frac	1..73	nyi	_Antti Karttunen_
 A343228	lambdan	0	n -> new Z(Integer.toString(n, 3).replaceAll("2", "0"), 2)	digits "+1" in balanced ternary representation of n.
 A343229	lambdan	0	n -> new Z(Integer.toString(n, 3).replaceAll("1", "0").replaceAll("2", "1"), 2)	digits "-1" in balanced ternary representation of n.
 A343230	lambdan	0	n -> new Z(Integer.toString(n, 3).replaceAll("0", "x").replaceAll("\\d", "0").replaceAll("x", "1"), 2)	digits "0" in balanced ternary representation of n.
 A343231	lambdan	0	n -> new Z(Integer.toString(n, 3).replaceAll("[12]", "1"), 2)	nonzero digits in balanced ternary representation of n.
+A344026	dirtraf	0	new A003415()	new A005940()	Arithmetic derivative applied to the Doudna sequence: a(n) = A003415(A005940(1+n))
 A344584	moetrafi	1	new A344178()	, 0	#
 A344587	moetrafi	1	new A337544()	, 0	#
+A346240	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A341512(), new A346239()	Difference between A341512 and its M√∂bius transform.	nonn,look	1..16384	anopan	_Antti Karttunen_
 A346758	moetraf	1	new A002620()	, 0	#
 A347104	moetraf	1	new A328260()	, 0	#
+A347231	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A344695(), new A347230()	Difference between A344695 [gcd(psi(n),sigma(n))] and its M√∂bius transform.	sign	1..16384	nyi	_Antti Karttunen_
 A348279	moetrafi	1	new A190116()	, 0	#
 A348304	moetrafi	1	new A068346()	, 0	 (2nd arithmetic derivative).
+A348986	tuptraf	0	(n, s) -> new Q(s[0], s[1]).den()	""	new A000203(), new A325973()	Denominator of ratio sigma(n) / A325973(n), where A325973 is the arithmetic mean of {sum of squarefree divisors} and {sum of unitary divisors}.	nonn,frac	1..20000	nyi	_Antti Karttunen_
 A349339	filter	0	new MobiusTransformSequence(1, new A126760(), 0)	(n, v) -> (n & 1) == 1	Odd bisection of the Moebius transform of A126760.
+A349627	#nyi	0	Numerators of the Moebius transform of ratio A003961(n)/sigma(n).
+A349628	#nyi	0	Denominators of the Moebius transform of ratio A003961(n)/sigma(n).
+A349633	#nyi	0	Numerators of the Moebius transform of ratio A003961(n)/n.
+A349634	#nyi	0	Denominators of the Moebius transform of ratio A003961(n)/n.
 A352915	moetraf	1	new A000040().skip(1)	, 0	odd primes.
 A353233	moetraf	1	new A023887()	, 0	sigma_n(n).
 A354870	moetrafi	1	new A354819()	, 0	#
 A357238	moetrafi	1	new A000073()	, 0	).
 A357239	moetrafi	1	new A000078()	, 0	).
 A358679	dirichinv	1	new A174275()	, 0	Dirichlet inverse of the characteristic function of A061345, odd prime powers.	A174275 sign	1..100000	nyi	_Antti Karttunen_
+A359164	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A003602(), new A349136()	Difference between Kimberlings paraphrases and its M√∂bius transform.	nonn	1..16384	nyi	_Antti Karttunen_
+A359165	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A126760(), new A347233()	Difference between A126760 and its M√∂bius transform.	nonn	1..12000	anopan	_Antti Karttunen_
 A361016	simtraf	0	new A004718()	v -> v.isZero() ? Z.ONE : Z.ZERO	CharacteristicFunction  a(n) = 1 if A004718(n) = 0, otherwise 0, where A004718 is the Danish composer Per N?rg?rd
 A361708	moetrafi	1	new A018252()	, 0	nonprimes.
 A364558	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A364557(), new A000010()	a(n) = A364557(n) - A000010(n), where A364557 is the Moebius transform of A005941, and A000010 (Euler phi) is the Moebius transform of A000027.
+A364565	#nyi	0	Numbers k at which point A364557 (the Moebius transform of A005941) is equal to A000010 (Euler phi function).
+A364566	#nyi	0	Numbers k such that A364557(k) < A000010(k), where A364557 is the Moebius transform of A005941, and A000010 is Euler totient function phi.
+A364567	#nyi	0	a(n) = A297112(A005940(1+n)), where A297112 is the Moebius transform of A156552 [the inverse of map n -> A005940(1+n)].
+A364571	#nyi	0	a(n) = A297171(A163511(n)), where A297171 is the Moebius transform of the inverse permutation of A163511.
 A364767	moetrafi	1	new A322860()	, 0	#
+A364953	#nyi	0	a(n) = A364952(A005940(1+n)), where A364952 is Dirichlet inverse of A364557, which is Moebius transform of A005941 [the inverse permutation of A005940].
 A366793	simtraf	0	new A004718()	v -> new Z(v.toString(3).replaceAll("2", "0"), 2)	ones in the balanced ternary representation of Per Nørgårds "infinity sequence" A004718
 A366794	simtraf	0	new A004718()	v -> new Z(v.toString(3).replaceAll("1", "0").replaceAll("[2]", "1"), 2)	twos (-1's) in the balanced ternary representation of Per Nørgård's "infinity sequence" A004718
 A367865	lambdan	1	n -> { final FactorSequence fs = JF(n); return fs.phi().*(n).*(ZV(fs.mobius()).square()); }		 n * phi(n) * mu(n)^2.

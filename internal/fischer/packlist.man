@@ -341,7 +341,14 @@
 # src/irvine/oeis/recur/HolonomicRecurrence.java
 #----------------
 # 2024-01-10
-src/irvine/oeis/FilterLambdaSequence.java
+# src/irvine/oeis/FilterLambdaSequence.java
 # src/irvine/math/z/ZUtils.java
 #~src/irvine/oeis/cons/DecimalExpansionSequence.java
 # src/irvine/oeis/DirichletSquareRootSequence.java
+#~src/irvine/oeis/base/RunsBaseSequence.java
+
+# 2024-01-19
+src/irvine/oeis/transform/HankelTransformSequence.java
+src/irvine/oeis/transform/RunLengthTransformSequence.java
+src/irvine/oeis/transform/CachedSequence.java
+
