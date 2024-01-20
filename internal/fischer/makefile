@@ -4965,6 +4965,9 @@ quotm:
 	head -n4 $@.gen
 	wc -l    $@.*
 #----
+regypt:
+	cp -v $(CONTRIB)/ck/$@.man $@.gen
+#----
 sumsi2: # A323545 a(n) = Sum_{k=0..n} (k^7 + (n-k)^7). nonn 0..79
 	grep -Pi "a\(n\) *\= *Sum_\{" $(COMMON)/joeis_names.txt \
 	| perl prodsi.pl \
