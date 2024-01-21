@@ -1,42 +1,3 @@
-# A176678		Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here a(0)=1, a(1)=2, k=0 and l=-1.		1
-1, 2, 3, 9, 29, 102, 373, 1408, 5441, 21428, 85697, 347133, 1421315, 5872986, 24459731, 102570877, 432725309, 1835333352, 7821313273, 33472882591, 143804772471, 619960227498, 2681200476223, 11629248891246, 50574022963079 (list; graph; refs; listen; history; edit; text; internal format)
-OFFSET	
-0,2
-LINKS	
-Table of n, a(n) for n=0..24.
-FORMULA	
-a0:=1; a1:=2; k:=0; l:=-1;
-G.f f: f(z)=(1-sqrt(1-4*z*(a(0)-z*a(0)^2+z*a(1)+(k+l)*z^2/(1-z)+k*z^2/(1-z)^2)))/(2*z) (k=0, l=-1).
-
-(1-sqrt(1-4*z*(1-z*1^2+z*2+(-1)*z^2/(1-z))))/(2*z) (k=0, l=-1).
-A176678	#holos	0	[[0],[1344,-416,32],[-2400,880,-80],[576,-256,28],[840,-466,62],[-384,288,-48],[24,-25,1],[0,-2,6],[0,-1,-1]]	1,2	0	0
-
-# A176675		Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here a(0)=1, a(1)=0, k=0 and l=-1.		2
-1, 0, -1, -3, -7, -14, -23, -24, 21, 220, 821, 2261, 4935, 7814, 3615, -34251, -179511, -593420, -1521779, -3001089, -3500101, 4410846, 44902907, 179440150, 526896835, 1212055740, 1976482795, 697522595, -10858119895, -56563343774 (list; graph; refs; listen; history; edit; text; internal format)
-OFFSET	
-0,4
-LINKS	
-Table of n, a(n) for n=0..29.
-FORMULA	
-G.f.: f(z) = (1-sqrt(1-4*z*(a-z*a^2+z*b+(k+j)*z^2/(1-z)+k*z^2/(1-z)^2)))/(2*z) (k=0, j=-1).
-
-10*n*(n+1)*a(n)+8*(n-3)*(2*n-7)*a(n-4)-2*(n-2)*(29*n-71)*a(n-3)+24*(n-1)*(3*n-5)*a(n-2)-3*n*(13*n-11)*a(n-1)-(n+1)*(n+2)*a(n+1) = 0
-A176675	#holos	0	[[0],[288,-136,16],[-600,374,-58],[384,-336,72],[-72,111,-39],[0,-10,10],[0,-1,-1]]	1,0	0	0
-
-# A176677		Sequence defined by the recurrence formula a(n+1)=sum(a(p)*a(n-p)+k,p=0..n)+l for n>=1, with here a(0)=1, a(1)=1, k=0 and l=-1.		2
-1, 1, 1, 2, 5, 14, 41, 123, 375, 1158, 3615, 11393, 36209, 115940, 373709, 1211740, 3949969, 12937612, 42558745, 140547051, 465799527, 1548766044, 5164917003, 17271369744, 57900615135, 194558333460, 655168354935, 2210681734671 (list; graph; refs; listen; history; edit; text; internal format)
-OFFSET	
-0,4
-COMMENTS	
-a(n) is the number of Motzkin paths of length n-1 in which the (1,0)-steps at odd levels come in 2 colors. Example: a(5)=14 because, denoting  U=(1,1), H=(1,0), and D=(1,-1), we have 2 paths of shape HUHD, 2 paths of shape UHDH, 4 paths of shape UHHD,  and 1 path of each of the shapes HHHH, HHUD, HUDH, UDHH, UDUD, and UUDD. - Emeric Deutsch, May 02 2011
-LINKS	
-Table of n, a(n) for n=0..27.
-Petr Gregor, Torsten Mütze, and Namrata, Combinatorial generation via permutation languages. VI. Binary trees, arXiv:2306.08420 [cs.DM], 2023.
-FORMULA	
-G.f.: (1-sqrt(1-4*z*(a(0)-z*a(0)^2+z*a(1)+(k+j)*z^2/(1-z)+k*z^2/(1-z)^2)))/(2*z) (k=0, j=-1).
-
-2*(n+1)*(4*n+1)*a(n)+8*(n-6)*(n-5)*a(n-6)-8*(n-5)*(n-4)*a(n-5)-2*(n-3)*(13*n-53)*a(n-4)+2*(n-2)*(17*n-67)*a(n-3)+4*(n+7)*(n-1)*a(n-2)-n*(19*n-5)*a(n-1)-(n+1)*(n+2)*a(n+1) = 0
-A176677	#holos	0	[[0],[336,-104,8],[-240,88,-8],[-528,236,-26],[504,-270,34],[-48,16,4],[-24,43,-19],[0,-6,8],[0,-1,-1]]	1,1	0	0
 
 A200740	#findre	0	9*n*(3*n+2)*(9637049385113*n -13150529182719) *(3*n+1)*a(n) +3*(-1867245272511941*n^4 +3938815702450522*n^3 -1829703422934531*n^2 -40908425929938*n +80119802734368)*a(n-1) +3*(1493812832168185*n^4 -11081290962331766*n^3 +30368478809400583*n^2 -37445753408742482*n +17518049080170408)*a(n-2) +2*(-3598515629532857*n^4 +51918859363655934*n^3 -272767116207263419*n^2 +607523860755165342*n -484618766805936168)*a(n-3) +2*(2236067158786314*n^4 -43895348429968415*n^3 +313117370004358791*n^2 -968797762596343960*n +1100409843957627312)*a(n-4) +4*(-320929802901755*n^4 +7262334358284366*n^3 -58466924652690997*n^2 +201695420809801662*n -253987363669614120)*a(n-5) +2*(n-6) *(56449675289272*n^3 -1539119961654835*n^2 +11344967150541329*n -25343984173596980)*a(n-6) +2*(n-6) *(n-7) *(88750351258118*n^2 -884530270439421*n +2059300905886804)*a(n-7) +4*-(6920632454763*n -35058029508284)*(n-7)*(n-8)*(2*n-15)*a(n-8)=0. - _R. J. Mathar_, Jan 11 2024
 A361229	#findre	0	(n+4)*a(n) +(-3*n-7)*a(n-1) +(3*n+2)*a(n-2) +(-n+1)*a(n-3) +4*(-n+2)*a(n-4) +4*(n-4)*a(n-5)=0
@@ -49,3 +10,175 @@ A367640	#findre	0	2*n*(14*n+71)*(2*n+1)*a(n) +3*(-150*n^3-209*n^2-379*n+228)*a(n
 A367641	#findre	0	3*n*(5589*n-14914)*(3*n-1)*(3*n+1)*a(n) +(150903*n^4 -5939762*n^3 +21653157*n^2 -22049842*n +6856944)*a(n-1) +6*(-2312427*n^4 +15333754*n^3 -28367401*n^2 +6040114*n +14892656)*a(n-2) +24*(-3942141*n^4 +46541449*n^3 -199851671*n^2 +367766019*n -243569600)*a(n-3) -32*(n-5)*(8043984*n^3 -85808428*n^2 +305023231*n -361082892)*a(n-4) -384*(n-5)*(n-6)*(885234*n^2 -6808468*n +12951185)*a(n-5) -1536*(n-6)*(n-7)*(144699*n^2 -1203919*n +2337211)*a(n-6) -2048*(n-6)*(n-7)*(n-8)*(27819*n-74186)*a(n-7)=0
 A367778	#findre	0	-(n+2)*(37012171*n -222599339)*a(n) +3*(n+1)*(108071243*n -631482704)*a(n-1) +(-512534971*n^2 +2421530181*n +1780794712)*a(n-2) +3*(-641100693*n^2 +4745437175*n -5322233482)*a(n-3) +(4162359143*n^2 -33175360881*n +59296953526)*a(n-4) +3*(1437180249*n^2 -9681487559*n +8357806732)*a(n-5) +9*(-754462425*n^2 +6932112703*n -14939114852)*a(n-6) -27*(218140823*n -693079002)*(n-5)*a(n-7)=0
 A367780	#findre	0	-(n+1)*(133*n-262)*a(n) +4*(564*n^2-1229*n+262)*a(n-1) +4*(-2916*n^2+7294*n-2765)*a(n-2) +16*(596*n-553)*(2*n-3)*a(n-3)=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A073575	#lambdan	0	a(n) = A007489(A055881(n)). - _Antti Karttunen_, Dec 19 2018
+A073837	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A034387(2*n) - A034387(n-1); a(n) <= €179213(n). [_Reinhard Zumkeller_, Jul 05 2010]
+A073838	#tuptraf	0	(n, s) -> s[0]./(s[1])	a(n) = A034386(2*n) / A034386(n-1)
+A076249	diffs	0	new A065385()	First differences of A065385, indices of records in A051953. - _Michael D
+A076934	simtraf	0	new A055881()	(n, v) -> ZV(n)./(FA(v.intValueExact()))
+A079944	#simtraf	0	a(n) = A000035(A004526(A030101(n+2))). - _Reinhard Zumkeller_, Mar 04 2010
+A085611	simtraf	0	new FilterSequence(0, new A007678(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(2*n).-((n - 1)*(n - 1))	a(n) = A007678(2*n) / (2*n) - (n-1)^2. - _M. F. Hasler_, Aug 06 2021
+A086257	prepend	0	new FilterSequence(0, new A086251(), (n, v) -> n > 0 && (n & 1) == 0)	1	For n > 0, a(n) = A086251(2*n). - _Max Alekseyev_, Sep 06 2022
+A091785	filter	0	new A003159()	(n, v) -> (n & 1) == 0
+A097471	diffs	0	new A076678()	First differences of A076678.
+A098913	simtraf	0	new FilterSequence(0, new A008965(), (k, v) -> (k & 1) == 0)	(n, v) -> v.-(Z2(n))	a(n) = A008965(2*n) - 2^n.
+A101909	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A099802(2*n) - A099802(n). - _R. J. Mathar_, Oct 02 2019
+A105224	lambdan	0	n -> ZV(2*n).sqrt().-(ZV(n).sqrt())	a(n) = A000196(2*n) - A000196(n-1).
+A106836	diffs	0	new A060833()	First differences of A060833 and (from a(2) onward) also of A091067 and €
+A108954	lambdan	0	n -> Puma.primePiZ(2*n).-(Puma.primePiZ(n))	a(n) = A000720(2*n) - A000720(n).
+A117930	filter	0	new A064986()	(n, v) -> (n & 1) == 0
+A118083	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A000700(2*n) + A000009(n), n>0. - _Vladeta Jovovic_, Jul 03 2007
+A120307	simtraf	0	new FilterSequence(0, new A163085(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(FA(2*n))	a(n) = A163085(2*n) / (2*n)!. - _Peter Luschny_, Sep 18 2012
+A125144	diffs	0	new A210434().skip(1)	First differences of A210434.
+A129344	diffs	0	new A067497()	First differences of A067497.
+A131842	diffs	0	new A007097()	First differences of A007097.
+A134080	filter	0	new A053723()	(n, v) -> (n & 1) == 0
+A134460	diffs	0	new A067186()	First differences of A067186.
+A134743	diffs	0	new A134736()	First differences of A134736.
+A136428	diffs	0	new A064770()	First differences of A064770.
+A139710	#simtraf	0	{k: A000035(A033676(k) + A033677(k)) = 1}. - _R. J. Mathar_, May 11 2008
+A139711	#simtraf	0	{k: A000035(A033676(k) + A033677(k)) = 0}. - _R. J. Mathar_, May 11 2008
+A140554	diffs	0	new A066841()	First differences of A066841.
+A147877	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A000041(2*n) - A000041(2*n-1) - A000070(n) + A000041(n) + A000041(n-1). - _Vaclav Kotesovec_, Nov 05 2016
+A147878	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A000041(2*n) - 2*A000070(n) + 2*A000041(n) + A000041(n-1). - _Vaclav Kotesovec_, Nov 05 2016
+A153728	filter	0	new A000731()	(n, v) -> (n & 1) == 0
+A157696	holos	0	[0,1,-27,-904,-1660,1660,904,27,-1]	31,2521,97921,4974481,226965751,10783342081,504420084871	0	0	a(n) = A110391(5*n) /A110391(n) = 27*a(n-1) +904*a(n-2) +1660*a(n-3) -1660*a(n-4) -904*a(n-5) -27*a(n-6) +a(n-7). [From _R. J. Mathar_, Oct 18 2010]
+A162349	diffs	0	new A160412()	First differences of A160412.
+A164510	diffs	0	new A071904()	First differences of A071904 (Odd composite numbers).
+A165990	lambdan	0	n -> Fibonacci.lucas(2*n).xor(Fibonacci.lucas(2*n + 1))	a(n) = A000032(2*n) XOR A000032(2*n+1). - _Andrew Howroyd_, Apr 13 2021
+A171080	simtraf	0	new FilterSequence(0, new A091137(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(Z2(2*n))	a(n) = A091137(2*n) / 2^(2*n).  (End)
+A173922	#simtraf	0	a(n) = A000035(A002265(A030101(n+4))).
+A173923	#simtraf	0	a(n) = A000035(A132292(A030101(n+8)+1)).
+A179081	parity	0	new A007953()	a(n) = A000035(A007953(n));
+A179213	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A066779(2*n) - A066779(n-1).
+A182241	simtraf	0	new FilterSequence(0, new A161151(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(2)	a(n) = A161151(2*n) / 2
+A182616	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A000041(2*n) - A000041(n).
+A186976	diffs	0	new A015698().skip(5)	First differences of A015698.
+A189357	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A000009(2*n) + A000700(n) for n>=1, a(0)=1.
+A208474	diffs	0	new A115995()	First differences of A115995.
+A209816	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A000041(2*n) - A000070(n-1). - _Matthew Vandermast_, Jul 16 2012
+A218171	filter	0	new A010815()	(n, v) -> (n & 1) == 0
+A220294	filter	0	new A002716()	(n, v) -> (n & 1) == 0
+A229181	diffs	0	new A053013()	First differences of A053013. See these two sequenc
+A230404	filter	0	new A230403()	(n, v) -> (n & 1) == 0	a(n) = A230403(2n) = A055881(2n) - 1.
+A232096	dirtraf	0	new A055881()	new A000217()	a(n) = A055881(A000217(n)).
+A232098	dirtraf	0	new A055881()	new A000290()	a(n) is the largest m such that m! divides n^2; a(n) = A055881(n^2).
+A232618	lambdan	0	n -> FD(2*n).mod(FD(2*n - 1))	a(n) = A006882(2*n) mod A006882(2*n-1).
+A232744	#lambdan	0	a(1)=1, and for n>1, a(n) = a(n-1) + (2 - A000035(A055881(a(n-1)+1))).
+A232744	#tuptraf	1	(n, s) -> (n == 1) ? Z.ONE : s[0].+(Z.TWO.-(???	a(1)=1, and for n>1, a(n) = a(n-1) + (2 - A000035(A055881(a(n-1)+1))).
+A233267	dirtraf	0	new A055881()	new A001110()	a(n) = A055881(A001110(n)); the largest m such that m! divides the n-th positive number which is both triangular and square.
+A233269	dirtraf	0	new A055881()	new A001109()	a(n) = A055881(A001109(n)).
+A233285	dirtraf	0	new A055881()	new A000045()	a(n) = largest m such that m! divides n-th Fibonacci number; a(n) = A055881(A000045(n)).
+A240388	simtraf	0	new FilterSequence(0, new A002487(), (k, v) -> (k % 3) == 0)	(n, v) -> v./(2)	a(n) = A002487(3*n) / 2. - _Joerg Arndt_, Jun 20 2022
+A241772	diffs	0	new A065094()	First differences of A065094 and also arithmetic means of initial terms o
+A245543	diffs	0	new A160239()	First differences of A160239.
+A247795	parity	0	new A027750()	v -> v.and(Z.ONE())	a(j) = A000035(A027750(j)), j >= 1. - _Omar E. Pol_, Feb 20 2022
+A247897	diffs	0	new A247676()	First differences of A247676
+A247898	diffs	0	new A247678()	First differences of A247678
+A247899	diffs	0	new A247679()	First differences of A247679
+A247900	diffs	0	new A247681()	First differences of A247681.
+A247901	diffs	0	new A247682()	First differences of A247682
+A247902	diffs	0	new A247683()	First differences of A247683
+A249071	simtraf	0	new FilterSequence(0, new A004001(), (k, v) -> (k & 1) == 0)	(n, v) -> v.-(n)	a(n) = A004001(2*n) - n.
+A249071	simtraf	0	new FilterSequence(0, new A004074(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(2)	a(n) = A004074(2*n) / 2. [Also the even bisection of A004074 halved.]
+A249151	dirtraf	0	new A055881()	new A001142()	Largest m such that m! divides the product of elements on row n of Pascals triangle: a(n) = A055881(A001142(n)).
+A249679	filter	0	new A007504()	v -> v.mod(Z.THREE).isZero()	Terms of A007504 divisible by 3.
+A256209	filter	0	new TupleTransformSequence(0, (n, s) -> s[0].-(s[1])./(2)	""	new A053270(), new A257640())	(n, v) -> (n % 3) == 0	a(n) = (A053270(3*n) - A257640(3*n))/2. - _Michael Somos_, Nov 04 2015
+A256916	filter	0	new A256858()	(n, v) -> (n & 1) == 0
+A257644	diffs	0	new A264100()	First differences of A264100.
+A263272	simtraf	0	new FilterSequence(0, new A263273(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(2)	a(n) = A263273(2*n) / 2.
+A264974	simtraf	0	new FilterSequence(0, new A263273(), (k, v) -> (k % 4) == 0)	(n, v) -> v./(4)	a(n) = A263273(4*n) / 4
+A264978	simtraf	0	new FilterSequence(0, new A263273(), (k, v) -> (k % 8) == 0)	(n, v) -> v./(8)	a(n) = A263273(8*n) / 8
+A264984	filter	0	new A263273()	(n, v) -> (n & 1) == 0
+A264986	simtraf	0	new FilterSequence(0, new A263273(), (k, v) -> (k % 4) == 0)	(n, v) -> v./(2)	a(n) = A263273(4*n) / 2
+A264993	simtraf	0	new FilterSequence(0, new A264994(), (k, v) -> (k % 3) == 0)	(n, v) -> v./(3)	a(n) = A264994(3*n) / 3
+A265335	simtraf	0	new FilterSequence(0, new A264994(), (k, v) -> (k % 5) == 0)	(n, v) -> v./(5)	a(n) = A264994(5*n) / 5
+A265338	simtraf	0	new FilterSequence(0, new A264979(), (k, v) -> (k % 8) == 0)	(n, v) -> v./(8)	a(n) = A264979(8*n) / 8
+A269027	#simtraf	0	a(n) = A268643(A039724(n)) mod 2 = A000035(A268643(A039724(n))). - _Robert Israel_, Feb 28 2016
+A270813	diffs	0	new A003022()	First differences of A003022.
+A272692	diffs	0	new A057699()	First differences of A057699.
+A274918	#simtraf	0	Numbers n such that A000035(A024816(n)) = 1 or A000035(A000217(n)-A000203(n)) = 1.
+A275973	#simtraf	0	a(1) = 1, a(2) = 0, for n > 2, a(n) = A030301(n-1) = A000035(A000523(n-1)). - _Antti Karttunen_, Sep 04 2016
+A277191	#simtraf	0	a(n) = Sum_{i=n^2 .. ((n+1)^2)-1} A000035(A002828(i)).
+A277192	#simtraf	0	a(n) = Sum_{i=n^2 .. ((n+1)^2)-1} (1-A000035(A002828(i))).
+A279064	filtpos	0	0	new A024815()	(k, v) -> v.and(Z.ONE).equals(Z.ZERO) || ZV(k*(k + 1)/2).-(JF(k).sigma()).and(Z.ONE).equals(Z.ZERO)	A000035(A024816(n)) = 0 or A000035(A000217(n)-A000203(n)) = 0.
+A280289	#filtpos	0	0	new A000041()	(k, v) -> v.and(Z.ONE).equals(Z.ONE) && (ZV(n*(n + 1)/2).- JF(k).sigma()).and(Z.ONE).equals(Z.ZERO)	A000035(A000041(n)) = 1 and A000035(A000009(n)) = 0.
+A280290	#filtpos	0	0	new A000041()	(k, v) -> v.and(Z.ONE).equals(Z.ZERO) && (ZV(n*(n + 1)/2).- JF(k).sigma()).and(Z.ONE).equals(Z.ZERO)	A000035(A000041(n)) = 0 and A000035(A000009(n)) = 0.
+A283844	simtraf	0	new FilterSequence(0, new A063776(), (k, v) -> (k & 1) == 0)	(n, v) -> v.+(1)	a(n) = A063776(2*n) + 1.
+A286381	#lambdan	0	Compound filter: a(n) = P(A055881(n), €278236(n)), where P(n,k) is sequence A000027 used as a pairing function.
+A286381	#lambdan	0	a(n) = (1/2)*(2 + ((A055881(n)+€278236(n))^2) - A055881(n) - 3*€278236(n)).
+A288493	diffs	0	new A006878()	First differences of A006878 (record new trajectory lengths of Collatz fu
+A295297	#simtraf	0	a(n) = A000035(A000120(n) + A000203(n)).
+A295893	#simtraf	0	a(n) = A000035(A295894(n) + A295894(2n)) 
+A295895	#simtraf	0	a(n) = A000035(A295894(n)) = A010060(A005940(1+n)).
+A295896	#simtraf	0	a(n) = A053866(A005940(1+n)) = A000035(A000203(A005940(1+n))).
+A316330	simtraf	0	new FilterSequence(0, new A000085(), (k, v) -> (k % 4) == 0)	(n, v) -> v./(Z2(n))	a(n) = A000085(4*n) / 2^n.
+A319988	#simtraf	0	For n > 1, a(n) = A000035(A336124(n)) = A122111(n) mod 2. - _Antti Karttunen_, Jul 18 2020
+A320283	simtraf	0	new FilterSequence(0, new A073791(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(2)	a(n) = A073791(2*n) / 2.
+A324903	tuptraf	0	(n, s) -> s[0].-(s[1]).and(Z.ONE)	""	new A249679(), new A017666()	a(n) = A000035(A249670(n)-A017666(n)) = A000035(A249670(n)+A017666(n)).
+A327980	diffs	0	new A327985()	First differences of A327985, which gives indices of zeros in A051023.
+A327981	diffs	0	new A327984()	First differences of A327984, which gives indices of ones in A051023.
+A331304	#simtraf	0	new A000720()	(n, v) -> (n <= 4) ? ZV(n) : (Z.THREE.+(ZV(n).isProbablePrime() ? v.and(Z.ONE).*(2) : ZV(n).-(v)))	For n <= 4, a(n) = n, for n > 4, if n is prime, a(n) = 3 + 2*A000035(A000720(n)), otherwise a(n) = 3 + n - A000720(n).
+A332217	filamb	0	0	n -> { final Z v = JF(n).sigma(); return (v.testBit(0) ? Z.ONE : Z.ZERO).*(Z.valueOf(ZUtils.valuation(v, Z.THREE))).equals(Z.ONE); }	{n: A000035(A000203(n))*A007949(A000203(n))==1}.
+A332823	#simtraf	0	a(1) = 0; for n > 1, a(n) = A102283[(A067029(n) * (2-(A000035(A055396(n))))) + a(A028234(n))].
+A333183	lambdan	0	n -> SU(1, n, i -> Z.ONE.+(Integer.toString(i).length()))	Sum_{i=1..n} (1+floor(log_10(2*i))) a(n) = A058183(n) - Sum_{1..A058183(n)} A000035(A058183(n)).
+A333216	prepend	0	new DifferenceSequence(0, new A064113())	1	First differences of A064113.
+A335909	parity	0	new A323173()	: a(n) = A000035(A323173(n)).
+A335909	parity	0	new A323173()	Parity of A323173: a(n) = A000035(A323173(n)).
+A339061	diffs	0	new A004080()	First differences of A004080.
+A341700	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A034387(2*n) - A034387(n).
+A341712	simtraf	0	new FilterSequence(0, new A120963(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(2)	a(n) = A120963(2*n) / 2.
+A341734	simtraf	0	new FilterSequence(0, new A007678(), (k, v) -> (k & 1) == 0)	(n, v) -> v./(2*n)	a(n) = A007678(2*n) / (2*n).
+A347870	parity	0	new A342925()	a(n) = A000035(A342925(n)) = A165560(A000203(n)).
+A352063	filter	0	new A002033()	(n, v) -> (n & 1) == 0
+A353527	filter	0	new A353526()	(n, v) -> (n & 1) == 0
+A356839	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A005132(2*n) + A005132(2*n+1).
+A358173	diffs	0	new A286708()	First differences of A286708.
+A358770	parity	0	new A007913()	a(n) = A000035(A007913(n)) * A010051(A007913(n)).
+A359123	simtraf	0	new DifferenceSequence(0, new A068811())	v -> v./(2)	First differences of A068811, halved.
+A359583	parity	0	new A329697()	.
+A359583	parity	0	new A329697()	a(n) = A000035(A329697(n)).
+A362354	lambdan	0	n -> (n == 0) ? Z.ONE : ZV(n + 3).^(n - 1).*(3)	a(n) = 3*(n+3)^(n-1).	nonn,easy	0..19	nyi	_Wolfdieter Lang_
+A362355	lambdan	0	n -> (n == 0) ? Z.ONE : ZV(n + 4).^(n - 1).*(4)	a(n) = 4*(n+4)^(n-1).	nonn,easy	0..18	nyi	_Wolfdieter Lang_
+A362356	lambdan	0	n -> (n == 0) ? Z.ONE : ZV(n + 5).^(n - 1).*(5)	a(n) = 5*(n + 5)^(n-1).	nonn,easy	0..18	nyi	_Wolfdieter Lang_
+A362456	recval	0	new A362451()		Records in A362451.	nonn,more	1..12	nyi	_N. J. A. Sloane_
+A362457	recpos	0	new A362451()	, 1, false	Indices of records in A362451.	nonn,more	1..12	nyi	_N. J. A. Sloane_
+A362458	recval	0	new A362452()		Records in A362452.	nonn,more	1..9	nyi	_N. J. A. Sloane_
+A362459	recpos	0	new A362452()	, 1, false	Indices of records in A362452.	nonn,more	1..9	nyi	_N. J. A. Sloane_
+A362460	simtraf	0	new A054978().skip(1)	v -> { v = v./(2); return v.compareTo(Z.ONE) <= 0 ? v : Z.NEG_ONE; }	a(n) = A054978(n)/2 if that number is 0 or 1, otherwise -1.	nonn	1..20000	nyi	_N. J. A. Sloane_
+A362461	filtpos	0	0	new A362460()	v -> v.equals(Z.ZERO)	Indices of 0s in A362460.	nonn	1..10000	nyi	_N. J. A. Sloane_
+A362462	filtpos	0	0	new A362460()	v -> v.equals(Z.ONE)	Indices of 1s in A362460.	nonn	1..10000	nyi	_N. J. A. Sloane_
+A362469	lambdan	0	n -> SU(1, n, k -> ZV(n).mod(JF(k).phi()).isZero() ? ZV(k) : Z.ZERO)	Sum of the numbers k, 1 <= k <= n, such that phi(k) | n.	nonn,easy	1..77	nyi	_Wesley Ivan Hurt_
+A362470	#nyi o	0	Number of divisors d of n such that phi(d) | n.	nonn,easy	1..94	nyi	_Wesley Ivan Hurt_
+A362522	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k + 1).^(k - 1), FA(k).*(FA(n - 2*k)))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..floor(n/2)} (k+1)^(k-1) / (      k! * (n-2*k)!).	nonn,easy	0..416	nyi	_Seiichi Manyama_
+A362523	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k + 1).^(k - 1), FA(k).*(FA(n - 3*k)))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..floor(n/3)} (k+1)^(k-1) / (      k! * (n-3*k)!).	nonn,easy	0..427	nyi	_Seiichi Manyama_
+A362524	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k + 1).^(k - 1), FA(k).*(FA(n - 2*k)).*(Z2(k)))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..floor(n/2)} (k+1)^(k-1) / (2^k * k! * (n-2*k)!).	nonn,easy	0..22	nyi	_Seiichi Manyama_
+A362587	simtraf	0	new A094088()	(n, v) -> v.*(Z2(n))	a(n) = 2^n * A094088(n). Row sums of A362586.	nonn	0..15	nyi	_Peter Luschny_
+A362695	decexp	0	() -> CR.THREE.-(CR.THREE.sqrt())./(CR.FOUR)	Decimal expansion of (3 - sqrt(3))/4.	nonn,cons	0..86	nyi	_Jodi Spitz_
+A362707	#nyi o	0	a(n) = Sum_{d|n, phi(d)|sigma(d)} (n-d).	nonn,easy	1..68	nyi	_Wesley Ivan Hurt_
+A362778	trilambn	0	1	1	(n, k) -> JF(FA(n).*(k).+(1)).leastPrimeFactor()	Triangular array read by rows: T(n,k) is the least prime factor of n!*k + 1, n >= 1, 1 <= k <= n.	tabl,nonn	1..55	nyi	_Joe B. Stephen_
+A362779	trilambn	0	1	1	(n, k) -> JF(FA(n).*(k).+(1)).largestPrimeFactor()	Triangular array read by rows: T(n,k) is the greatest prime factor of n!*k + 1, n >= 1, 1 <= k <= n.	tabl,nonn	1..55	nyi	_Joe B. Stephen_
+A362791	trilambn	0	1	1	(n, k) -> S2(k, 3).*(n).*(n - 1).*(n - 2)	Triangle of numbers read by rows, T(n, k) = (n*(n-1)*(n-2))*Stirling2(k, 3), for n >= 1 and 1 <= k <= n.	nonn,tabl	1..55	nyi	_Statsenko Igor Victorovich_
+A364250	#parity	0	new €349348()	a(n) = A000035(€349348(n)) = A000035(A364249(n)).
+A365070	prepend	0	new DifferenceSequence(0, new A093971())	0,0	First differences of A093971.
+A365456	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A156552(2*n) / gcd(sigma(n), A156552(2*n)).
+A365767	diffs	0	new A086688()	First differences of A086688.
+A367626	diffs	0	new A036991()	First differences of A036991.
+A368942	filter	0	new A204166()	(n, v) -> (n & 1) == 0
+A369273	#diff1	0	nyi p	Nonnegative numbers k satisfying sin(k) < sin(k+1) < sin(k+2).	nonn,easy,new	1..66	nyi	_R. J. Mathar_
+A369274	#diff1	0	nyi	Nonnegative numbers k satisfying sin(k) < sin(k+1) < sin(k+2) < sin(k+3).	nonn,easy,new	1..63	nyi	_R. J. Mathar_
+A369275	#diff1	0	nyi	Nonnegative numbers k satisfying sin(k) < sin(k+1) < sin(k+2) < sin(k+3) < sin(k+4).	nonn,easy,new	1..52	nyi	_R. J. Mathar_
