@@ -7682,6 +7682,15 @@ proprep:
 	head -n4   $@.sort.tmp
 	cut -f5    $@.gen | sort | uniq -c | sort -r | grep -v " 1 " | tee $@.code.tmp
 #----
+serrev:
+	cp -v $(CONTRIB)/sm/$@.txt $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+serexp:
+	cp -v $(CONTRIB)/sm/$@.txt $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+#----
 somos0:
 	grep -E "^%[NF]" $(COMMON)/jcat25.txt | grep -P "\ba\(\w[^\)]*\) *([\*\/] *a\(|\^[\d\*\/\^\+\-\(\) ]+a\()" \
 	| grep -viP "(sum|prime|that|smallest|least|digit|lim|Expansion|Conjecture|triangle|concatenate|sqrt|a\((m\+)?n\) *\>\=)" \
