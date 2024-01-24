@@ -182,7 +182,14 @@ while (<>) { # read inputfile
         my @terms;
         if ($iparm <= 8 && ($parms[$iparm] =~ m{€}) && $contains_nyi == 0) { # does not work: dbat destroys "€"
             $contains_nyi = $iparm;
-        }
+        } 
+        # normalizations:
+        $parms[$iparm] =~ s{\) +}{\) }g; # multiple spaces after ")"
+        $parms[$iparm] =~ s{\( +}{\(}g;  # spaces after  "("
+        $parms[$iparm] =~ s{ +\)}{\)}g;  # spaces before ")"
+        $parms[$iparm] =~ s{\. +}{\.}g;  # spaces after  "."
+        $parms[$iparm] =~ s{ +\.}{\.}g;  # spaces before "."
+        $parms[$iparm] =~ s{ *\, *}{\, }g;  # spaces around ","
         if ($parms[$iparm] =~ m{\-\>}) { # with lambda expression: replace shortcuts and check bracketing
             my $parm = $parms[$iparm];
         #   if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
@@ -201,11 +208,13 @@ while (<>) { # read inputfile
             $parm =~ s{CV\(}           {CR.valueOf\(}g;
             $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
             $parm =~ s{FD\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
+            $parm =~ s{FM\(}           {MemoryFactorial.SINGLETON.multiFactorial\(}g;
             $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
             $parm =~ s{LU\(}           {Fibonacci.lucas\(}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
             $parm =~ s{MU\(}           {Mobius.mobius\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
+            $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {IntegerPartition.partitions\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
