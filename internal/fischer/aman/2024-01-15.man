@@ -1,14 +1,14 @@
 A068055	partsum	0	A066425		Partial sums of A066425.	nonn	1..21	nyi	_Antti Karttunen_
 A073775	lambdan	0	n -> ZV(n).^(3).*(2).+(ZV(n).^(2).*(27)).+(ZV(n).*(85))./(6).-(2)	Polynomial (1/3)*n^3 + (9/2)*n^2 + (85/6)*n - 2.	sign	0..48	nyi	_Antti Karttunen_
 A095070	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	One-bit dominant primes, i.e., primes whose binary expansion contains more 1's than 0's.	nonn,easy,base	1..20000	nyi	_Antti Karttunen_
-A095743	filter	0	new A000040()	v -> new A037888().a(v).equals(Z.valueOf(1))	Primes p for which A037888(p) == 1, i.e., primes whose binary expansion is almost symmetric, needing just a one-bit flip to become palindrome.	nonn,base	1..10000	nyi	_Antti Karttunen_
-A095744	filter	0	new A000040()	v -> new A037888().a(v).equals(Z.valueOf(2))	Primes p for which A037888(p) == 2, i.e., primes whose binary expansion needs flips of just two bits to become palindrome.	nonn,base	1..10000	nyi	_Antti Karttunen_
-A095745	filter	0	new A000040()	v -> new A037888().a(v).equals(Z.valueOf(3))	Primes p for which A037888(p) == 3, i.e., primes whose binary expansion needs flips of just three bits to become palindrome.	nonn,base	1..44	nyi	_Antti Karttunen_
-A095746	filter	0	new A000040()	v -> new A037888().a(v).equals(Z.valueOf(4))	Primes p for which A037888(p) == 4, i.e., primes whose binary expansion needs flips of just four bits to become palindrome.	nonn,base	1..41	nyi	_Antti Karttunen_
+A095743	filnum	0	1	n -> new A037888().a(n).equals(ZV(1)) && ZV(n).isProbablePrime()	Primes p for which A037888(p) == 1, i.e., primes whose binary expansion is almost symmetric, needing just a one-bit flip to become palindrome.	nonn,base	1..10000	nyi	_Antti Karttunen_
+A095744	filnum	0	1	n -> new A037888().a(n).equals(ZV(2)) && ZV(n).isProbablePrime()	Primes p for which A037888(p) == 2, i.e., primes whose binary expansion needs flips of just two bits to become palindrome.	nonn,base	1..10000	nyi	_Antti Karttunen_
+A095745	filnum	0	1	n -> new A037888().a(n).equals(ZV(3)) && ZV(n).isProbablePrime()	Primes p for which A037888(p) == 3, i.e., primes whose binary expansion needs flips of just three bits to become palindrome.	nonn,base	1..44	nyi	_Antti Karttunen_
+A095746	filnum	0	1	n -> new A037888().a(n).equals(ZV(4)) && ZV(n).isProbablePrime()	Primes p for which A037888(p) == 4, i.e., primes whose binary expansion needs flips of just four bits to become palindrome.	nonn,base	1..41	nyi	_Antti Karttunen_
 A114398	filtpos	0	0	new A000695()	SQUARE	Positions where A000695 is a square.	nonn	0..48	nyi	_Antti Karttunen_
 A115845	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers n such that there is no bit position where the binary expansions of n and 8n are both 1.	nonn	1..10000	nyi	_Antti Karttunen_
 A218785	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Partial sums of absolute values of €218618.	nonn	0..8727	nyi	_Antti Karttunen_
-A225651	filtpos	0	1	new A000793()	(k, v) -> v.mod(ZV(k)).isZero()	Numbers k that divide A000793(k).	nonn	1..10000	nyi	_Antti Karttunen_
+A225651	filtpos	0	1	new A000793().skip(1)	(k, v) -> v.mod(ZV(k)).isZero()	Numbers k that divide A000793(k).	nonn	1..10000	nyi	_Antti Karttunen_
 A227132	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers n for which there are an odd number of nonzero digits when n is written in the factorial base (A007623).	nonn	1..2520	nyi	_Antti Karttunen_
 A227148	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers n for which the sum of digits is even when n is written in the factorial base (A007623).	nonn	1..2520	nyi	_Antti Karttunen_
 A227149	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers n for which the sum of digits is odd when n is written in the factorial base (A007623).	nonn	1..2520	nyi	_Antti Karttunen_
@@ -97,7 +97,7 @@ A324718	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers n for w
 A324719	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers n for which bitor(2n,sigma(n)) = 2*bitor(n,sigma(n)-n), where bitor is bitwise-OR, A003986.	nonn	1..20000	nyi	_Antti Karttunen_
 A324726	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers such that 2n is equal to A318466(n), bitor(2*n,sigma(n)), where bitor is A003986.	nonn	1..20000	nyi	_Antti Karttunen_
 A324727	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers such that 2n is equal to A318466(n), bitor(2*n,sigma(n)), where bitor is A003986.	nonn	1..20000	nyi	_Antti Karttunen_
-A324813	filtpos	0	1	new A156552()	(k, v) -> v.isSquare() || v./(2).isSquare()	Numbers n for which A156552(n) is a square or a twice a square.	nonn,base	1..10000	nyi	_Antti Karttunen_
+A324813	filtpos	0	1	new SimpleTransformSequence(1, new A156552(), (k, v) -> (v.isSquare() || v./(2).isSquare()) ? Z.ONE : Z.ZERO)	ODD	Numbers n for which A156552(n) is a square or a twice a square.	nonn,base	1..10000	nyi	_Antti Karttunen_
 A324814	filtpos	0	0	new A156552()	(k, v) -> JF(v).sigma().and(Z.THREE).equals(Z.TWO)	Numbers n > 1 for which sigma(A156552(n)) == 2 (mod 4).	nonn	1..68	nyi	_Antti Karttunen_
 A324898	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers k such that sigma(k) is congruent to 2 modulo 4 and k = €318458(k), where €318458(k) is bitwise-AND of k and sigma(k)-k.	nonn	1..29	nyi	_Antti Karttunen_
 A324899	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers n for which sigma(n) == 3 (mod 4).	nonn	1..10000	nyi	_Antti Karttunen_
@@ -138,7 +138,7 @@ A336353	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that
 A336354	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that p^2 divides k, where p = A006530(k), the largest prime factor of k, and sigma(k) does not have any prime factor larger than p.	nonn	1..41	nyi	_Antti Karttunen_
 A336357	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that sigma(k) has fewer distinct prime factors than k.	nonn	1..64	nyi	_Antti Karttunen_
 A336359	filtpos	0	0	new A001222()	(k, v) -> v.compareTo(JF(k).sigma()) > 0	Numbers k for which bigomega(sigma(k)) < bigomega(k), where bigomega (A001222) gives the number of prime factors with multiplicity, and sigma (A000203) gives the sum of divisors.	nonn	1..20000	nyi	_Antti Karttunen_
-A336360	filtpos	0	0	new A001222()	(k, v) -> v.compareTo(JF(k).sigma()) <= 0	Numbers k for which bigomega(sigma(k)) >= bigomega(k), where bigomega (A001222) gives the number of prime factors with multiplicity, and sigma (A000203) gives the sum of divisors.	nonn	1..82	nyi	_Antti Karttunen_
+A336360	filtpos	0	1	new A001222()	(k, v) -> v.compareTo(ZV(JF(JF(k).sigma()).bigOmega())) <= 0	Numbers k for which bigomega(sigma(k)) >= bigomega(k), where bigomega (A001222) gives the number of prime factors with multiplicity, and sigma (A000203) gives the sum of divisors.	nonn	1..82	nyi	_Antti Karttunen_
 A336458	filtpos	0	1	new A065330()	(k, v) -> v.equals(new A065330().a(JF(k).sigma()))	Numbers k for which A065330(k) = A065330(sigma(k)).	nonn	1..43	nyi	_Antti Karttunen_
 A336461	filamb	0	1	k -> { final A335915 seq = new A335915(); final Z sig = JF(k).sigma(); return seq.a(k).equals(seq.a(sig)); }	Numbers k for which A335915(k) = A335915(sigma(k)).	nonn	1..62	nyi	_Antti Karttunen_
 A336462	filamb	0	1	k -> { final A335915 seq = new A335915(); final Z sig = JF(k).sigma(); final Z sig2 = JF(sig).sigma(); return seq.a(sig).equals(seq.a(sig2)); }	Numbers k for which A335915(sigma(k)) = A335915(sigma(sigma(k))).	nonn	1..68	nyi	_Antti Karttunen_
@@ -176,7 +176,7 @@ A340379	simtraf	0	new A048673()	(k, v) -> ZV(ZUtils.digitCounts(v, 3)[2])	Number
 A341349	filtpos	0	1	new A254049()	(k, v) -> v.mod(3) != 0	Numbers k for which A254049(k) is not a multiple of 3.	nonn	1..16369	nyi	_Antti Karttunen_
 A341350	filtpos	0	1	new A254049()	(k, v) -> v.mod(3) == 0	Numbers k for which A254049(k) [= A048673(2k-1)] is a multiple of 3.	nonn	1..16399	nyi	_Antti Karttunen_
 A341614	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that sigma(k) <= 2k < A003961(k).	nonn	1..74	nyi	_Antti Karttunen_
-A341615	filtpos	0	0	new A003961()	(k, v) -> JF(k).sigma().compareTo(ZV(2*k)) < 0 && ZV(2*k).compareTo(v) < 0	Numbers k for which sigma(k) < 2k < A003961(k).	nonn	1..72	nyi	_Antti Karttunen_
+A341615	filtpos	0	1	new A003961()	(k, v) -> JF(k).sigma().compareTo(ZV(2*k)) < 0 && ZV(2*k).compareTo(v) < 0	Numbers k for which sigma(k) < 2k < A003961(k).	nonn	1..72	nyi	_Antti Karttunen_
 A341623	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that sigma(3*k) = 8*k.	nonn,more	1..10	nyi	_Antti Karttunen_
 A342008	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that Euler totient phi(k) is a multiple of the arithmetic derivative of k.	nonn	1..71	nyi	_Antti Karttunen_
 A342009	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that the arithmetic derivative of k is a multiple of phi(k).	nonn	1..1001	nyi	_Antti Karttunen_
@@ -295,7 +295,7 @@ A359163	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers of the form
 A359777	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that A356163(k) = 1 but A359774(k) = 0, where A359774 is the parity of Dirichlet inverse of the former (which is the characteristic function of the numbers with an even sum of prime factors, with repetition).	nonn	1..63	nyi	_Antti Karttunen_
 A359784	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that A358680(k) = 1 but A359781(k) = 0, where A359781 is the parity of Dirichlet inverse of the former (which is the characteristic function of the numbers with even arithmetic derivative).	nonn	1..57	nyi	_Antti Karttunen_
 A359821	filamb	0	1	k -> !JF(k).arithmeticDerivative().and(Z.ONE).equals(k.and(Z.ONE))	Numbers k whose arithmetic derivative, A003415(k), has the opposite parity to k.	nonn,easy	1..71	nyi	_Antti Karttunen_
-A359822	filamb	0	1	k -> JF(k).arithmeticDerivative().and(Z.ONE).equals(k.and(Z.ONE))	Numbers k whose arithmetic derivative, A003415(k), has the same parity as k.	nonn,easy	1..73	nyi	_Antti Karttunen_
+A359822	filamb	0	0	k -> JF(k).arithmeticDerivative().and(Z.ONE).equals(k.and(Z.ONE))	Numbers k whose arithmetic derivative, A003415(k), has the same parity as k.	nonn,easy	1..73	nyi	_Antti Karttunen_
 A364293	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers k for which A163511(k) <= k.	nonn	1..15157	nyi	_Antti Karttunen_
 A364494	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that k divides A163511(k).	nonn	1..62	nyi	_Antti Karttunen_
 A364495	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers k such that k divides A163511(k).	nonn	1..801	nyi	_Antti Karttunen_
@@ -327,4 +327,4 @@ A365809	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers k such 
 A366287	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that A163511(k) is a seventh power.	nonn	1..45	nyi	_Antti Karttunen_
 A366391	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that A163511(k) is an eleventh power.	nonn	1..37	nyi	_Antti Karttunen_
 A368696	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers whose arithmetic derivative (A003415) is a squarefree number of the form 4k+2.	nonn,new ()	1..65	nyi	_Antti Karttunen_
-A368902	filtpos	0	2	new A342001()	SQUAREFREE	Numbers k for which A342001(k) is squarefree, where A342001(n) is the arithmetic derivative of n divided by its greatest common divisor with n.	nonn,new ()	1..79	nyi	_Antti Karttunen_
+A368902	filtpos	0	1	new A342001().skip(1)	SQUAREFREE	Numbers k for which A342001(k) is squarefree, where A342001(n) is the arithmetic derivative of n divided by its greatest common divisor with n.	nonn,new ()	1..79	nyi	_Antti Karttunen_

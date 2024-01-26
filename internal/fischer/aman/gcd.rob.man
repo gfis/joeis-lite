@@ -1,0 +1,9 @@
+A091772	tuptraf	0	(n, s) -> s[0].gcd(s[1])	""	new A000108().skip(1), new A000110().skip(1)
+A103159	lambdan	0	n -> ZUtils.reverse(ZV(n)).gcd(ZUtils.reverse(ZV(n + 1)))	a(n) = GCD(reverse(n), reversed(n+1)).
+A103161	lambdan	0	n -> ZUtils.reverse(Z2(n)).gcd(ZUtils.reverse(Z2(n + 1)))	GCD of reverse(2^n) and reverse(2^(n+1))
+A103162	lambdan	0	n -> ZUtils.reverse(ZV(3).^(n)).gcd(ZUtils.reverse(ZV(3).^(n + 1)))	
+A300253	tuptraf	0	(n, s) -> s[0].gcd(s[1])	""	new A003415().skip(1), new A300251()
+A309036	tuptraf	0	(n, s) -> s[0].gcd(s[1])	""	new A007504().skip(1), new A014285()
+A343223	tuptraf	0	(n, s) -> s[0].gcd(s[1])	""	new A003415().skip(1), new A342926()
+A208448	tuptraf	1	(n, s) -> s[0].gcd(s[1])	""	new A010786().skip(1), PREVIOUS						Greatest common divisors of consecutive floor-factorial numbers (A010786).
+

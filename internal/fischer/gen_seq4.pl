@@ -153,7 +153,7 @@ while (<>) { # read inputfile
     # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
-    $name  = $parms[9]; # by convention, in target makefile.select3
+    $name = $parms[9]; # by convention, in target makefile.select3
     $name =~ s{\&}{\&amp\;}g;
     $name =~ s{\'}{\&apos\;}g;
     $name =~ s{\"}{\&quot\;}g;

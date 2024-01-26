@@ -228,8 +228,8 @@ A358767	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k with an e
 A358768	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k with an odd number of prime factors (when counted with multiplicity) in sigma(k), the sum of divisors of k.	nonn	1..72	nyi	_Antti Karttunen_
 A358772	filamb	0	1	k -> JF(k).arithmeticDerivative().and(Z.THREE).equals(Z.ONE)	Numbers whose arithmetic derivative is of the form 4k+1, cf. A003415.	nonn	1..69	nyi	_Antti Karttunen_
 A358774	filamb	0	1	k -> JF(k).arithmeticDerivative().and(Z.THREE).equals(Z.THREE)	Numbers whose arithmetic derivative is of the form 4k+3, cf. A003415.	nonn	1..64	nyi	_Antti Karttunen_
-A358848	filamb	0	1	k -> new A053669().a(k.*(6)).mod(6) == 1	Numbers k for which A053669(6*k) [the smallest prime not dividing 6k] is of the form 6m+1.	nonn	1..67	nyi	_Antti Karttunen_
-A358849	filamb	0	1	k -> new A053669().a(k.*(6)).mod(6) == 5	Numbers k for which A053669(6*k) [the smallest prime not dividing 6k] is of the form 6m-1.	nonn	1..78	nyi	_Antti Karttunen_
+# A358848	filamb	0	1	k -> new A053669().a(k.*(6)).mod(6) == 1	Numbers k for which A053669(6*k) [the smallest prime not dividing 6k] is of the form 6m+1.	nonn	1..67	nyi	_Antti Karttunen_
+# A358849	filamb	0	1	k -> new A053669().a(k.*(6)).mod(6) == 5	Numbers k for which A053669(6*k) [the smallest prime not dividing 6k] is of the form 6m-1.	nonn	1..78	nyi	_Antti Karttunen_
 A359151	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers of the form 4u+1 with an odd number of prime factors (counted with multiplicity).	nonn	1..63	nyi	_Antti Karttunen_
 A359153	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers of the form 4u+3 with an odd number of prime factors (counted with multiplicity).	nonn	1..64	nyi	_Antti Karttunen_
 A359157	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers whose odd part is squarefree and the number of prime factors (with multiplicity) is even.	nonn	1..10000	nyi	_Antti Karttunen_

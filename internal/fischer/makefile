@@ -734,6 +734,17 @@ robot3: # compile and test all
 robot4: # keep the clean ones only
 	make CC=robots cleanto gener maditel TO=8
 #--------
+ropl: # CC= standalone Perl robot
+	cd $(ROBOT) ; perl $(CC).rob.pl \
+	| uniq -w7 \
+	| tee          $(CC).rob.gen
+	echo "^A000000"               > roplv.tmp
+	cut -b1-7 aman/$(CC).rob.man | grep -E "^A[0-9]" | sed -e "s/^/\^/" >> roplv.tmp
+	grep -vf roplv.tmp $(ROBOT)/$(CC).rob.gen > $(CC).rob.gen
+	cat aman/$(CC).rob.man                   >> $(CC).rob.gen || :
+	wc -l                                       $(CC).rob.gen
+	make CC=$(CC).rob select2 select3 geditel 
+#--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
 similar:

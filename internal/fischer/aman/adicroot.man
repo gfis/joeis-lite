@@ -1,0 +1,42 @@
+# A286838	tuptraf	0	(n, s) -> s[0].+(s[0].^(2).+(4).*( 2)).mod(ZV( 5).^(n))	"0,1"	PREVIOUS,PREVIOUS	 13-adic integers sqrt(-1) (digits 0, 1, ... , 9, 10, 11, 12 are used instead of 0, 1, ... , 9
+# A286839	tuptraf	0	(n, s) -> s[0].+(s[0].^(2).+(4).*( 3)).mod(ZV( 5).^(n))	"0,4"	PREVIOUS,PREVIOUS	 13-adic integers sqrt(-1) (digits 0, 1, ... , 9, 10, 11, 12 are used instead of 0, 1, ... , 9
+# A290563 (5-adic, 3^(1/3)); 2, 2
+# A309445 (7-adic, 2^(1/5));
+# A309447 (7-adic, 4^(1/5));
+# A309448 (7-adic, 5^(1/5));
+# A309449 (7-adic, 6^(1/5)).
+# A309474	tuptraf	0	(n, s) -> s[0].+(s[0].^(2).+(4).*( 2)).mod(ZV( 5).^(n))	"0,1"	PREVIOUS,PREVIOUS	 3-adic integers sqrt(-1/2). nonn,base 0..10000                                               
+# A309475	tuptraf	0	(n, s) -> s[0].+(s[0].^(2).+(4).*( 3)).mod(ZV( 5).^(n))	"0,4"	PREVIOUS,PREVIOUS	 3-adic integers sqrt(-1/2). Here the sequence with first digit 2. nonn,base 0..10000         
+# A309476	tuptraf	0	(n, s) -> s[0].+(s[0].^(2).+(5).*( 6)).mod(ZV( 7).^(n))	"0,4"	PREVIOUS,PREVIOUS	 up to 3^n for the 3-adic integer sqrt(-1/2). nonn 0..2093
+# A309477	tuptraf	0	(n, s) -> s[0].+(s[0].^(2).+(5).*( 6)).mod(ZV( 7).^(n))	"0,4"	PREVIOUS,PREVIOUS	 up to 3^n for the 3-adic integer sqrt(-1/2). nonn 0..1000
+%N A210851 Digits of one of the two 5-adic integers sqrt(-1).    
+%N A212152 Digits of one of the three 7-adic integers (-1)^(1/3).
+%N A212155 Digits of one of the three 7-adic integers (-1)^(1/3).
+%N A322926 The successive approximations up to 2^n for 2-adic integer 5^(1/3).
+%N A322934 The successive approximations up to 2^n for 2-adic integer 7^(1/3).
+%N A322999 The successive approximations up to 2^n for 2-adic integer 9^(1/3).
+A268922	parmof6	0	A286840	2	+4	 2	 5	"0,1"	    a(n) = modp( a(n-1) + 2*(a(n-1)^2 + 4), 5^n), n >= 2
+A269590	parmof6	0	A286840	2	+4	 3	 5	"0,4"	    a(n) = modp( a(n-1) + 3*(a(n-1)^2 + 4), 5^n), n >= 2,
+A286840	parmof6	0	A286840	2	+1	 9	13	"0,5"	5,  a(n) = a(n-1) + 9  * (a(n-1)^2 + 1) mod 13^n for n > 1.
+A286841	parmof6	0	A286840	2	+1	 4	13	"0,8"	8,  a(n) = a(n-1) + 4  * (a(n-1)^2 + 1) mod 13^n for n > 1.
+A286877	parmof6	0	A286840	2	+1	 2	17	"0,4"	4,  a(n) = a(n-1) + 2  * (a(n-1)^2 + 1) mod 17^n for n > 1.
+A286877	parmof6	0	A286840	2	+1	 2	17	"0,4"	4,  a(n) = a(n-1) + 2  * (a(n-1)^2 + 1) mod 17^n for n > 1.
+A286878	parmof6	0	A286840	2	+1	15	17	"0,13"	13, a(n) = a(n-1) + 15 * (a(n-1)^2 + 1) mod 17^n for n > 1.
+A290557	parmof6	0	A286840	2	-2	 1	 7	"0,3"	3,  a(n) = a(n-1) + 1  * (a(n-1)^2 - 2) mod 7^n for n > 1.
+A290557	parmof6	0	A286840	2	-2	 1	 7	"0,3"	3,  a(n) = a(n-1) + 1  * (a(n-1)^2 - 2) mod 7^n for n > 1.
+A290558	parmof6	0	A286840	3	-3	 1	 5	"0,2"	2,  a(n) = a(n-1) + 2  * (a(n-1)^3 - 3) mod 5^n for n > 1.
+A290559	parmof6	0	A286840	2	-2	 6	 7	"0,4"	4,  a(n) = a(n-1) + 6  * (a(n-1)^2 - 2) mod 7^n for n > 1.
+A290567	parmof6	0	A286840	3	-2	 2	 5	"0,3"	3,  a(n) = a(n-1) + 2  * (a(n-1)^3 - 2) mod 5^n for n > 1.
+A290568	parmof6	0	A286840	3	-3	 2	 5	"0,2"	2,  a(n) = a(n-1) + 2  * (a(n-1)^3 - 3) mod 5^n for n > 1.
+A290800	parmof6	0	A286840	2	+6	 3	 7	"0,1"	1,  a(n) = a(n-1) + 3  * (a(n-1)^2 + 6) mod 7^n for n > 1.
+A290802	parmof6	0	A286840	2	+6	 4	 7	"0,6"	6,  a(n) = a(n-1) + 4  * (a(n-1)^2 + 6) mod 7^n for n > 1.
+A290803	parmof6	0	A286840	2	+3	 5	 7	"0,2"	2,  a(n) = a(n-1) + 5  * (a(n-1)^2 + 3) mod 7^n for n > 1.
+A290804	parmof6	0	A286840	2	+3	 2	 7	"0,5"	5,  a(n) = a(n-1) + 2  * (a(n-1)^2 + 3) mod 7^n for n > 1.
+A290806	parmof6	0	A286840	2	+5	 1	 7	"0,3"	3,  a(n) = a(n-1) + 1  * (a(n-1)^2 + 5) mod 7^n for n > 1.
+A290809	parmof6	0	A286840	2	+5	 6	 7	"0,4"	4,  a(n) = a(n-1) + 6  * (a(n-1)^2 + 5) mod 7^n for n > 1.
+A309444	parmof6	0	A286840	3	-4	 3	 5	"0,4"	4,  a(n) = a(n-1) + 3  * (a(n-1)^3 - 4) mod 5^n for n > 1. 
+A309450	parmof6	0	A286840	5	-2	 1	 7	"0,4"	4,  a(n) = a(n-1) + 1  * (a(n-1)^5 - 2) mod 7^n for n > 1. 
+A309451	parmof6	0	A286840	5	-3	 2	 7	"0,5"	5,  a(n) = a(n-1) + 2  * (a(n-1)^5 - 3) mod 7^n for n > 1. 
+A309452	parmof6	0	A286840	5	-4	 2	 7	"0,2"	2,  a(n) = a(n-1) + 2  * (a(n-1)^5 - 4) mod 7^n for n > 1. 
+A309453	parmof6	0	A286840	5	-5	 1	 7	"0,3"	3,  a(n) = a(n-1) + 1  * (a(n-1)^5 - 5) mod 7^n for n > 1. 
+A309454	parmof6	0	A286840	5	-6	 4	 7	"0,6"	6,  a(n) = a(n-1) + 4  * (a(n-1)^5 - 6) mod 7^n for n > 1. 

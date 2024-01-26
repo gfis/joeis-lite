@@ -1,0 +1,64 @@
+%N A293460 a(n) = Sum_{k=1..n} sign(omega(n+1) - omega(n)) (where omega(m) = A001221(m), the number of distinct primes dividing m).
+%N A329717 a(n) is n (plus or minus) the number of distinct primes dividing n according to parity (even or odd).
+%N A369096 Numbers k >= 2 such that omega(k) divides the sum of the triangular numbers T(k) and T(k+1), where omega(k) is the number of distinct primes dividing k (A001221).
+# A073713	filtpos	0	0	new A066272()	(n, v) -> ZV(JF(n).omega()).equals(v)	Numbers n such that the number of distinct primes dividing n = number of anti-divisors of n.
+A075897	lambdan	0	n -> (n == 0) ? Z.ZERO : ZV(n).bitCount() <= 2 ? Z.ONE : Z.ZERO	1 if binary weight of n is 1 or 2, otherwise 0.
+A081166	simtraf	0	new A060114()	v -> ZV(JF(v).omega())	 Number of distinct primes dividing A060114(n).
+A084438	filnum	0	0	n -> FM(n, 3).-(1).isProbablePrime()	Positive integers n such that n!!! - 1 is prime.
+A085147	filnum	0	0	n -> FM(n, 4).-(1).isProbablePrime()	n!!!!-1 is prime.
+A085149	filnum	0	0	n -> FM(n, 5).-(1).isProbablePrime()	n!!!!!-1 is prime.
+A091535	lambdan	0	n -> FM(3*n - 2, 3).*(FM(3*n - 1, 3))./(2)	The scaled sequence (2/(3n-1)!!!)*a(n) = (3*n-2)!!! = A007559(n), n>=1.
+A099812	lambdan	0	n -> ZV(JF(2*n).omega())	Number of distinct primes dividing 2n (i.e., omega(2n)).
+A100307	lambdan	0	n -> SU(0, n, k -> BI(n, k).and(Z.ONE).*(ZV(3).^(k)))	a(n) = Sum_{k=0..n} (binomial(n, k) mod 2)*3^k.
+A100308	lambdan	0	n -> SU(0, n, k -> BI(n, k).and(Z.ONE).*(ZV(5).^(k)))	a(n) = Sum_{k=0..n} (binomial(n, k) mod 2)*5^k.
+A100309	lambdan	0	n -> SU(0, n, k -> BI(n, k).and(Z.ONE).*(ZV(6).^(k)))	a(n) = Sum_{k=0..n} (binomial(n, k) mod 2)*6^k.
+A100310	lambdan	0	n -> SU(0, n, k -> BI(n, k).and(Z.ONE).*(ZV(7).^(k)))	a(n) = Sum_{k=0..n} (binomial(n, k) mod 2)*7^k.
+A100311	lambdan	0	n -> SU(0, n, k -> BI(n, k).and(Z.ONE).*(ZV(8).^(k)))	a(n) = Sum_{k=0..n} (binomial(n, k) mod 2)*8^k.
+A114778	lambdan	0	n -> PR(0, n, j -> FM(j, 3))	a(n) = Prod[i=0 to n] n!!!
+A114779	lambdan	0	n -> PR(0, n, j -> FM(j, 4))	a(n) = Prod[i=0 to n] n!!!!
+A114790	lambdan	0	n -> PR(0, n, j -> FM(j, 5))	a(n) = Product_{j=0..n} j!!!!!.
+A114790	tuptraf	0	(n, s) -> s[0].*(FM(n -5, 5)).*(n)	"1,1"	PREVIOUS	a(n) = n*(n-5)!!!!! * a(n-1) where a(0) = 1, a(1) = 1, a(2) = 2.
+A114790	tuptraf	0	(n, s) -> s[0].*(FM(n, 5))	"1,1"	PREVIOUS	a(n) = n!!!!! * a(n-1) where a(0) = 1, a(1) = 1 and n >= 2.
+A114796	lambdan	0	n -> PR(0, n, j -> FM(j, 6))	a(n) = Product_{j=0..n} j!!!!!!.
+A114796	lambdan	0	n -> PR(1, n, j -> FM(j, 5))	 a(n) = Product_{j=0..n} j!6.
+A114796	tuptraf	0	(n, s) -> s[0].*(FM(n, 5))	"1,1"	PREVIOUS	a(n) = n!!!!!! * a(n-1) where a(0) = 1, a(1) = 1 and n >= 2.
+A114796	tuptraf	0	(n, s) -> s[0].*(FM(n- 6, 5)).*(n)	"1,1"	PREVIOUS	a(n) = n*(n-6)!!!!!! * a(n-1) where a(0) = 1, a(1) = 1, a(2) = 2.
+A135726	filter	0	new LambdaSequence(0, n -> FM(n, 3).-(1))	PRIME	Primes of the form n!!!-1	n>0.
+A189313	filter	0	new A000040()	p -> 2*JF(p.*(4)).omega() == JF(p.*(4).+(2)).omega()	 Primes p such that 2*omega(4p) = omega(4p+2), where omega(k) is the number of distinct primes dividing k, A001221.
+A189314	filter	0	new A018252()	p -> 2*JF(p.*(4)).omega() == JF(p.*(4).+(2)).omega()	 Nonprimes k such that 2*omega(4k) = omega(4k+2), where omega(j) is the number of distinct primes dividing j, A001221.
+A207005	filnum	0	1	k -> { final int omk = JF(k).omega(); return ZV(omk).equals(ZV(JF(k - omk).omega())); }	Numbers k such that omega(k) = omega(k - omega(k)) where omega(k) is the number of distinct primes dividing k.
+A207006	filnum	0	1	k -> { final int omk = JF(k).omega(); return ZV(omk).equals(ZV(JF(k + omk).omega())); }	Numbers n such that omega(n) = omega(n + omega(n)) where omega(n) is the number of distinct primes dividing n.
+A217649	lambdan	0	n -> FD(n).mod(FM(n, 3))	a(n) = n!! mod n!!!
+A261316	filnum	0	0	n -> FM(n, 3).-(Z.THREE.^(n)).isProbablePrime()	Numbers n such that n!!! - 3^n is prime.
+A261617	filnum	0	0	n -> FM(n, 3).+(Z.THREE.^(n)).isProbablePrime()	Numbers n such that n!!! + 3^n is prime.
+A265738	filnum	0	1	k -> FM(k, 3).mod(ZV(k).^(3)).isZero()	Integers k such that k!3 is divisible by k^3, where k!3 = k!!! is a triple factorial number (A007661)
+A271392	filnum	0	0	n -> FM(n, 3).*(3).+(1).isProbablePrime()	Integers k such that 3*k!!! + 1 is
+A271396	filnum	0	0	n -> FM(n, 3).*(3).-(1).isProbablePrime()	Integers k such that 3*k!!! - 1 is
+A274117	lambdan	0	n -> FM(6*n - 5, 3).+(FM(6*n - 4, 3))./(6*n-3)
+A276532	tuptraf	0	(n, s) -> s[0].*(s[5]).+(s[1].*(s[2]).*(s[3]).*(s[4]))./(s[6])	"1,1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	(a(n-1) * a(n-6) + a(n-2) * a(n-3) * a(n-4) * a(n-5)) / a(n-7), with a(0) = a(1) = a(2) = a(3) = a(4) = a(5) = a(6) = 1
+A276534	tuptraf	0	(n, s) -> s[0].*(s[3]).*(s[1].*(s[2]).+(1))./(s[4])	"1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n-1) * a(n-4) * (a(n-2) * a(n-3) + 1) / a(n-5), with a(0) = a(1) = a(2) = a(3) = a(4) = 1
+A276535	tuptraf	0	(n, s) -> s[0].*(s[5]).*(s[1].*(s[4]).*(s[2].*(s[3]).+(1)).+(1))./(s[6])	"1,1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n-1) * a(n-6) * (a(n-2) * a(n-5) * (a(n-3) * a(n-4) + 1) + 1) / a(n-7), with a(0) = a(1) = a(2) = a(3) = a(4) = a(5) = a(6) = 1
+A277327	tuptraf	0	(n, s) -> ZV(JF(s[0].gcd(s[1])).omega())	""	new A260443(), PREVIOUS	Number of distinct primes dividing gcd(A260443(n), A260443(n+1))	a(n) = A001221(€277198(n)).
+A294277	filnum	0	1	k -> JF(k).omega() < JF(k + 1).omega()	Numbers k such that omega(k) < omega(k+1) (where omega(m) = A001221(m), the number of distinct primes dividing m).
+A294278	filnum	0	1	k -> JF(k).omega() > JF(k + 1).omega()	Numbers n such that omega(n) > omega(n+1) (where omega(m) = A001221(m), the number of distinct primes dividing m).
+A308500	triuple	0	0, 0, -1	SU(0, n, j -> BI(k*n, k*j))	A(n,k), n >= 0, k >= 0, : A(n,k) = Sum_{j=0..n} binomial(k*n,k*j). nonn,tabl 0..115
+A308502	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(n/d + k))			A(n,k), n >= 1, k >= 0, : A(n,k) = Sum_{d|n} d^(n/d + k)		. nonn,tabl 1..140
+A308504	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(n+k))				A(n,k), n >= 1, k >= 0, : A(n,k) = Sum_{d|n} d^(n+k)			. nonn,tabl 1..140
+A308509	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(k*n/d))				A(n,k), n >= 1, k >= 0, , A(n,k)   Sum_{d|n} d^(k*n/d)			. nonn,tabl 1..140
+A308569	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(k*n))				A(n,k), n >= 1, k >= 0, , A(n,k)   Sum_{d|n} d^(k*n)			. nonn,tabl 1..52
+A308674	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(ZV(d).^(k)))				A(n,k), n >= 1, k >= 0, , A(n,k)   Sum_{d|n} d^(d^k)			. nonn,tabl 1..9
+A308676	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(ZV(d).^(k).*(n/d)))			A(n,k), n >= 1, k >= 0, , A(n,k)   Sum_{d|n} d^(d^k * n/d)		. nonn,tabl 1..9
+A308690	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(k*n/d - k + 1))		A(n,k), n >= 1, k >= 0,   A(n,k)   Sum_{d|n} d^(k*n/d - k + 1)	, . nonn,tabl 1..140
+A308694	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(k*(n/d - 1)))		A(n,k), n >= 1, k >= 0,   A(n,k)   Sum_{d|n} d^(k*(n/d - 1))	, . nonn,tabl 1..140
+A308698	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(k*d))	A(n,k), n >= 1, k >= 0, , A(n,k)   Sum_{d|n} d^(k*d)			 nonn,tabl 1..52
+A308701	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(k*(d-1)))	A(n,k), n >= 1, k >= 0, , A(n,k)   Sum_{d|n} d^(k*(d-1))		 nonn,tabl 1..53
+A308704	triuple	0	1, 0, -1	SD(n, d -> ZV(d).^(k*d+1))	A(n,k), n >= 1, k >= 0, , A(n,k)   Sum_{d|n} d^(k*d+1)			 nonn,tabl 1..52
+A308813	triuple	0	1, 0, -1	SD(n, d -> ZV(k).^(d-1))	A(n,k), n >= 1, k >= 0, , A(n,k)   Sum_{d|n} k^(d-1)			 nonn,tabl 1..140
+A309010	triuple	0	0, 0, -1	SU(0, n, j -> BI(n, j).^(k))	A(n,k) = Sum_{j=0..n} binomial(n,j)^k, n >= 0, k >= 0, . nonn,tabl 0..100
+A309386	triuple	0	0, 0, -1	SU(0, n, j -> S2(n, j).*(ZV(-k).^(n - j)))	A(n,k), n>=0, k>=0, , A(n,k) = Sum_{j=0..n} (-k)^(n-j)*Stirling2(n,j). sign,tabl 0..139
+A322701	tuptraf	0	(n, s) -> s[0].^(3).-(3).mod(Z2(n)).isZero() ? s[0] : s[0].+(Z2(n - 1))	"0"	PREVIOUS	For n > 0, a(n) = a(n-1) if a(n-1)^3 - 3 is divisible by 2^n, otherwise a(n-1) + 2^(n-1).
+A342259	filnum	0	1	k -> JF(k - 1).omega() == JF(k).omega() - 1 && JF(k + 1).omega() == JF(k).omega() + 1	Numbers k such that omega(k-1) = omega(k)-1 and omega(k+1) = omega(k)+1, where omega(m) is the number of distinct primes dividing m, A001221(m).
+# A364488	lambdan	0	n -> RU(1, n, k -> new Q(ZV(JF(k).omega()), ZV(k*k))).num()	Equals Sum_{k>=1} omega(k) / k^2, where omega(k) is the number of distinct primes dividing k (A001221).
+# A365618	triuple	0	0	0	-1	ZV(ZV(n).bitCount() + ZV(k).bitCount())
+A368790	holos	0	[[1],[-2,3],[-1]]	1	0	0	a(n) = (3*n-2)!!! * Sum_{k=0..n} 1/(3*k-2)!!!.
+A368793	holos	0	[[0,1],[-2,3],[-1]]	0	0	0	n -> RU(0, n, k -> new Q(ZV(k), FM(3*n - 2, 3))).*(FM(3*n - 2, 3)).num()	a(n) = (3*n-2)!!! * Sum_{k=0..n} k/(3*k-2)!!!.
