@@ -84,9 +84,7 @@ direct_load:
 	grep -E "^A[0-9]+" direct.tmp \
 	| perl -ne 'my ($$aseqno, $$offset, $$superclass) = split(/\t/); print join("\t", $$aseqno, "direct", $$offset, "", "") . "\n";'\
 	| $(DBAT) -r direct
-	$(DBAT) "INSERT INTO direct values('A055642', 0, 'direct', '', '');"
-	$(DBAT) "INSERT INTO direct values('A064989', 1, 'direct', '', '');"
-	$(DBAT) "INSERT INTO direct values('A078008', 0, 'direct', '', '');"
+	$(DBAT) "INSERT INTO direct values('A003188', 0, 'direct', '', '');"
 	$(DBAT) -n   direct
 #----
 morphlist: # print a seq4 parameter list of all subclasses of MorphismFixedPointSequence
