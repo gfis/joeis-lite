@@ -10,6 +10,7 @@ LITE=$(GITS)/joeis-lite
 JOEIS=$(GITS)/joeis
 COHERE=../../joeis-lite/internal/fischer/reflect
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
+ROBOT=$(GITS)/OEIS-mat/robot
 SRC=src/irvine/oeis
 # JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
 JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
@@ -79,13 +80,16 @@ direct: # extract all sequences that implement DirectSequence
 	| $(ABSINSPECT) direct - \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+	make direct_load direct_dump
 direct_load:
 	$(DBAT) -f $(COMMON)/direct.create.sql
 	grep -E "^A[0-9]+" direct.tmp \
-	| perl -ne 'my ($$aseqno, $$offset, $$superclass) = split(/\t/); print join("\t", $$aseqno, "direct", $$offset, "", "") . "\n";'\
+	| perl -ne 'my ($$aseqno, $$offset1, $$superclass) = split(/\t/); print join("\t", $$aseqno, "direct", $$offset1, "", "") . "\n";'\
 	| $(DBAT) -r direct
-	$(DBAT) "INSERT INTO direct values('A003188', 0, 'direct', '', '');"
+	$(DBAT) "INSERT INTO direct values('A006942', 0, 'direct', '', '');"
 	$(DBAT) -n   direct
+direct_dump:
+	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
 #----
 morphlist: # print a seq4 parameter list of all subclasses of MorphismFixedPointSequence
 	cat morphism.use.tmp \
