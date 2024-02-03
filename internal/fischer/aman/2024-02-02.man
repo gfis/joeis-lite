@@ -1,0 +1,27 @@
+%F A143210 T(n,m) = A003188(A008292(n,m)). - _R. J. Mathar_, Mar 10 2015
+%F A143213 T(n,m) = A003188(A060187(n,m)). - _R. J. Mathar_, Nov 11 2011
+%F A163234 a(n) = A001477bi(A006068(A059905(n)),A006068(A059906(n))), where A001477bi(x,y) = (((x+y)^2)+x+(3y))/2.
+%F A268719 T(n,k) = A003188(A006068(n) + A006068(k)).
+%F A302781	dirtraf	0	new A052330()	new €302846()	 where €302846(n) = A000695(A003188(A059253(n))) + 2*A000695(A003188(A059252(n))).
+%N A268718 a(0) = 0, a(n) = 1 + A003188(A006068(n)-1), where A003188 is binary Gray code and A006068 is its inverse.
+%N A268720 a(n) = Sum_{k=0..n} A003188(A006068(n)+A006068(k)).
+%N A268837 a(n) = Sum_{k=0..n} A003188(A006068(n)+A006068(n-k)).
+%N A302846	dirtraf	0	new A000695(A003188(A059253(n))) + 2*A000695(A003188(A059252(n))).
+%f A286574	dirtraf	0	new A000523()	new A286575()	 [Log_2 of run-length transform of A001316.]
+%f A339894	dirtraf	0	new A000523()	new A122111()	
+%f A342657	dirtraf	0	new A339893()	new A156552()	= A339893(€322993(n)) = A000523(A156552(n)) - A001222(A156552(n)).
+A180200	dirtraf	0	new A006068()	new PrependSequence(0, new A054429(), 0)	= A006068(A054429(n)), n > 0. - _Yosu Yurramendi_, Jun 05 2021
+A227351	dirtraf	0	new A006068()	new A048679()	= A006068(€106151(2*A003714(n))).
+A233280	dirtraf	0	new A003188()	new PrependSequence(0, new A054429(), 0)	
+A243354	dirtraf	0	new A006068()	new A156552()	
+A268717	dirtraf	0	new A003188()	new PrependSequence(0, new A066194(), 0)	= A003188(1+A006068(n-1)).
+A268723	dirtraf	0	new A003188()	new SimpleTransformSequence(0, new A006068(), v -> v.square())	, where A003188 is binary Gray code and A006068 is its inverse.
+A302030	dirtral	0	new A006068()	new A052331()	(n, v) -> v.add(1)
+A341916	dirtraf	0	new A006068()	new PrependSequence(0, new A059893(), 0)	
+
+
+A357970	parmof2	0	A357970	new A006942()	a(n) = A006942(A055643(n)) + 6*(4 - ceiling(log10(A055643(n) + 1))) for n > 0.
+A357971	parmof2	0	A357970	new A010371()	a(n) = A010371(A055643(n)) + 6*(4 - ceiling(log10(A055643(n) + 1))) for n > 0.
+A357972	parmof2	0	A357970	new A063720()	a(n) = A063720(A055643(n)) + 6*(4 - ceiling(log10(A055643(n) + 1))) for n > 0.
+A357973	parmof2	0	A357970	new A074458()	a(n) = A074458(A055643(n)) + 6*(4 - ceiling(log10(A055643(n) + 1))) for n > 0.
+A357974	parmof2	0	A357970	new A277116()	a(n) = A277116(A055643(n)) + 6*(4 - ceiling(log10(A055643(n) + 1))) for n > 0.

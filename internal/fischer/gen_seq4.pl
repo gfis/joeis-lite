@@ -182,7 +182,10 @@ while (<>) { # read inputfile
         my @terms;
         if ($iparm <= 8 && ($parms[$iparm] =~ m{€}) && $contains_nyi == 0) { # does not work: dbat destroys "€"
             $contains_nyi = $iparm;
-        } 
+        }
+        if ($parms[$iparm] eq "\"null\"") {
+            $parms[$iparm] =    "null";
+        }
         # normalizations:
         $parms[$iparm] =~ s{\) +}{\) }g; # multiple spaces after ")"
         $parms[$iparm] =~ s{\( +}{\(}g;  # spaces after  "("
