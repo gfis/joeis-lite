@@ -23,7 +23,7 @@ JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis
 ABSINSPECT=$(JAVA) irvine.oeis.AbstractInspector
 D=0
 #--------
-all: absref_stat
+all: absref_stat direct
 	# grep -P "^\w" makefile
 help:
 	grep -E "^[a-z]" makefile | sort
@@ -75,18 +75,18 @@ dead_joeis: # detect DeadSequence consistency
 dead_robot: dead_joeis # generate DeadSequence's
 	cd .. ; make CC=dead gener
 #----
-direct: # extract all sequences that implement DirectSequence
+direct: direct_reflect direct_load direct_dump # build a table of all DirectSequences
+direct_reflect: # extract all sequences that implement DirectSequence
 	sed -e "s/\t/\t0\t/" $(COMMON)/joeis_list.txt \
 	| $(ABSINSPECT) direct - \
-	| tee    $@.tmp
-	wc -l    $@.tmp
-	make direct_load direct_dump
+	| tee    direct.tmp
+	wc -l    direct.tmp
 direct_load:
 	$(DBAT) -f $(COMMON)/direct.create.sql
 	grep -E "^A[0-9]+" direct.tmp \
 	| perl -ne 'my ($$aseqno, $$offset1, $$superclass) = split(/\t/); print join("\t", $$aseqno, "direct", $$offset1, "", "") . "\n";'\
 	| $(DBAT) -r direct
-	$(DBAT) "INSERT INTO direct values('A006942', 0, 'direct', '', '');"
+	# $(DBAT) "INSERT INTO direct values('A006942', 0, 'direct', '', '');"
 	$(DBAT) -n   direct
 direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
