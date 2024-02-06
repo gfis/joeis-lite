@@ -1,10 +1,19 @@
-# A070319	dirtral	0	new A002183()	new A261100()	(n, v) -> (n >= 4) ? v.+(1) : v		A002183(A261100(n))
+%F A163234 a(n) = A001477bi(A006068(A059905(n)),A006068(A059906(n))), where A001477bi(x,y) = (((x+y)^2)+x+(3y))/2.
+%F A268719 T(n,k) = A003188(A006068(n) + A006068(k)).
+%F A302781	dirtraf	0	new A052330()	new €302846()	 where €302846(n) = A000695(A003188(A059253(n))) + 2*A000695(A003188(A059252(n))).
+%F? A143210	dirtraf	0	new A003188()	new A008292()			. - _R. J. Mathar_, Mar 10 2015
+%F? A143213	dirtraf	0	new A003188()	new A060187()			. - _R. J. Mathar_, Nov 11 2011
+%N A268718 a(0) = 0, a(n) = 1 + A003188(A006068(n)-1), where A003188 is binary Gray code and A006068 is its inverse.
+%N A268720 a(n) = Sum_{k=0..n} A003188(A006068(n)+A006068(k)).
+%N A268837 a(n) = Sum_{k=0..n} A003188(A006068(n)+A006068(n-k)).
+%N A302846	dirtraf	0	new A000695(A003188(A059253(n))) + 2*A000695(A003188(A059252(n))).
+A070319	dirtral	0	new A002183()	new A261100()	(n, v) -> (n >= 4) ? v.+(1) : v		A002183(A261100(n))
 A070827	dirtrali	0	new A001414()	new A000032().skip(2)	"null"	2,1	A001414(A000032(n)) for n != 1
 A074924	simtraf	0	new A062703()	v -> v.sqrt()	a(n) = sqrt(A062703(n))
 A076359	lambdan	0	n -> {Z fa = FA(n); return new Q(fa, JF(fa).phi()).den(); }	a(n) = denominator(n!/phi(n!)).
 A076787	simtraf	1	new A046974()	v -> Puma.primeZ(v)					Pisumprimes: prime(k), where k is the sum of the first n digits of Pi.
 A077644	dirtraf	0	new A055642()	new A070177()			0	Number of digits in the decimal expansion of the number of partitions of 2^n.
-# A081387	dirtraf	1	new A001221()	new A000984().skip(1)	null		0				Number of non-unitary prime divisors of central binomial coefficient, C(2n,n) = A000984(n), i.e., number of prime factors in C(2n,n) whose exponent is greater than one.
+A081387	dirtraf	1	new A001221()	new A000984().skip(1)	null		0				Number of non-unitary prime divisors of central binomial coefficient, C(2n,n) = A000984(n), i.e., number of prime factors in C(2n,n) whose exponent is greater than one.
 A101597	simtraf	0	new A006562()	v -> v.-(Puma.prevPrimeZ(v)).-(1)
 A109791	dirtrali	0	new A000040()	new A000583().skip(1)	"null"	2	A000040(A000583(n)) for n > 0
 A141129	lambdan	1	n -> Puma.primeZ(n*n).-(n*n)	a(n) = prime(n^2) - n^2.

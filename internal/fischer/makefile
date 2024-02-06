@@ -719,11 +719,11 @@ robot1: # make 1 of the robots
 	cat  $(CC).gen >> robot.gen
 robot2: # make an individual robot
 	cd $(ROBOT) ; make $(CC)
-	echo A000000                                > $@.v.tmp
-	cat $(ROBOT)/notapp/$(CC).napp | cut -b1-7 >> $@.v.tmp || :
-	cat aman/$(CC).man             | cut -b1-7 >> $@.v.tmp || :
+	echo A000000                                              > $@.v.tmp
+	grep -E "^A[0-9]" $(ROBOT)/notapp/$(CC).napp | cut -b1-7 >> $@.v.tmp || :
+	grep -E "^A[0-9]" aman/$(CC).man             | cut -b1-7 >> $@.v.tmp || :
 	grep -vf $@.v.tmp $(ROBOT)/$(CC).gen > $(CC).gen || :
-	cat aman/$(CC).man                  >> $(CC).gen || :
+	grep -E "^A[0-9]" aman/$(CC).man    >> $(CC).gen || :
 	wc -l                                  $(CC).gen
 	make purge 
 	make select2 select3 gener maditel TO=$(TO) GU=$(GU)
