@@ -79,7 +79,8 @@ direct: direct_reflect direct_load direct_dump # build a table of all DirectSequ
 direct_reflect: # extract all sequences that implement DirectSequence
 	sed -e "s/\t/\t0\t/" $(COMMON)/joeis_list.txt \
 	| $(ABSINSPECT) direct - \
-	| tee    direct.tmp
+	>        direct.tmp
+	head -n4 direct.tmp
 	wc -l    direct.tmp
 direct_load:
 	$(DBAT) -f $(COMMON)/direct.create.sql
