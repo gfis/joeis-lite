@@ -222,13 +222,11 @@ while (<>) { # read inputfile
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {IntegerPartition.partitions\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
-            $parm =~ s{RP\(}           {Rationals.SINGLETON.sumpf\(}g;
-            $parm =~ s{RPZ\(}          {Rationals.SINGLETON.sumpfZ\(}g;
+            $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
             $parm =~ s{RR\(}           {ZUtils.reverse\(}g;
             $parm =~ s{RU\(}           {Rationals.SINGLETON.sum\(}g;
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
-            $parm =~ s{SP\(}           {Integers.SINGLETON.sumpf\(}g;
-            $parm =~ s{SPZ\(}          {Integers.SINGLETON.sumpfZ\(}g;
+            $parm =~ s{SP\(}           {Integers.SINGLETON.sopf\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
