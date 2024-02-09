@@ -5,12 +5,13 @@ import irvine.oeis.recur.HolonomicRecurrence;
 
 /**
  * $(ASEQNO) $(NAME)
+ * A(x) satisfies $(PARM5=name)
  * @author $(AUTHOR)
  */
 public class $(ASEQNO) extends HolonomicRecurrence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), "$(PARM1)", "$(PARM2)", $(PARM3));
+    super($(OFFSET), "$(PARM1=matrix)", "$(PARM2=inits)", $(PARM3), $(PARM4));
   }
 }
