@@ -1,0 +1,126 @@
+# DR=114; KFF=0
+%N A112400	lambdan	0	n -> SP(n, p -> )	a(n) = Sum_{p|n, p prime} mu(b(p,n)), where mu(k) = A008683(k) (the Moebius function) and p^b(p,n) is the highest power of the prime p dividing n
+%N A322080	lambdan	0	n -> SP(n, p -> )	Square array A(n,k), n >= 1, k >= 0, read by antidiagonals: A(n,k) = Sum_{p|n, p prime} p^k
+# bad? A334621	lambdan	0	n -> SP(n, p -> (IU.gcd(p, n/p) == 1 && JF(n - p).isSquareFree()) ? Z.ONE : Z.ZERO)		a(n) = Sum_{p|n, p prime, gcd(p,n/p) = 1} mu(n-p)^2, where mu is the Moebius function (A008683)
+A070319	dirtral	0	new A002183()	new A261100()	(n, v) -> (n >= 4) ? v.+(1) : v		A002183(A261100(n))
+A005064	parmof2	1	A005063	3	a(n) = Sum_{p|n, p prime} p^3 - _Wesley Ivan Hurt_, Feb 04 2022
+A005065	parmof2	1	A005063	4	a(n) = Sum_{p|n, p prime} p^4 - _Wesley Ivan Hurt_, Feb 04 2022A351193 a(n) = Sum_{p|n, p prime} p^5
+A102550	lambdan	0	n -> SP(n, p -> BI(n, p).and(Z.ONE))	a(n) = Sum_{p|n} (binomial(n,p) mod 2), where p is a prime - _Ridouane Oudra_, May 03 2019
+A113178	lambdan	0	n -> SP(n, p -> FI(p))	a(n) = Sum_{p|n} F(p), where F(p) is the p-th Fibonacci number and where the sum is over the distinct prime divisors of n
+A122411	lambdan	0	n -> RP(n, p -> new Q(p, p - 1)).*(JF(n).phi()).num()	a(n) = phi(n) * Sum_{p|n} p/(p-1), where p is prime
+A156542	lambdan	0	n -> SP(n, p -> ZV(Puma.primePi(2*p + 1) - Puma.primePi(2*p)))	a(n) = Sum_{p|n} (pi(2p+1) - pi(2p)), where p is a prime and pi(k) = A000720(k) - _Ridouane Oudra_, Aug 25 2019
+A200768	lambdan	0	n -> SP(n, p -> ZV(p).^(n))	a(n) = Sum_{p|n} p^n - _Wesley Ivan Hurt_, Jun 14 2021
+A276651	lambdan	0	n -> RP(n, p -> new Q(ZV(p), Z.TEN.pow(String.valueOf(p).length()))).num()	a(n) = numerator   of Sum_{p|n} 0.d where p runs through the prime divisors of n
+A276652	lambdan	0	n -> RP(n, p -> new Q(ZV(p), Z.TEN.pow(String.valueOf(p).length()))).den()	a(n) = denominator of Sum_{p|n} 0.d where p runs through the prime divisors of n
+A276653	lambdan	0	n -> RP(n, p -> new Q(ZV(p), Z.TEN.pow(String.valueOf(p).length()))).floor()	a(n) = floor(Sum_{p|n} 0.p) where p runs through the prime divisors of n>1
+A284258	lambdan	0	n -> SP(n, p -> ZV(p).compareTo(JF(n).leastPrimeFactor().^(2)) > 0 ? Z.ONE : Z.ZERO)	a(n) = Sum_{p|n, p prime and > spf(n)^2} sign(p), where spf(n) (A020639) gives the smallest prime factor of n, and sign(p) = A057427(p) = 1 for all p
+A284259	lambdan	0	n -> SP(n, p -> ZV(p).compareTo(JF(n).leastPrimeFactor().^(2)) < 0 ? Z.ONE : Z.ZERO)	a(n) = Sum_{p|n, p prime and < spf(n)^2} sign(p), where spf(n) (A020639) gives the smallest prime factor of n, and sign(p) = A057427(p) = 1 for all p
+A300852	lambdan	0	n -> SP(n, p -> ZV(p).*(Z_1(n/p + 1)           ))	a(n) = Sum_{p|n, p prime} p * (-1)^(n/p + 1) [See Mmca prog]
+A305614	lambdan	0	n -> SP(n, p -> Z_1(n/p)).negate()	a(n) = -Sum_{p|n prime} (-1)^(n/p)
+A322078	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(2))).*(ZV(n).^(2)).num()	a(n) = n^2  * Sum_{p|n} 1/p^2, where p are primes dividing n
+A334341	lambdan	0	n -> SP(n, p -> ZV(n - p))	a(n) = Sum_{p|n, p prime} (n - p)
+A338490	lambdan	0	n -> SP(n, p -> (p != 2) ? Puma.primePiZ(p) : Z.ZERO)	a(n) = Sum_{p|n, p odd prime} A000720(p)
+A344478	lambdan	0	n -> SP(n, p -> (IU.gcd(p, n/p) == 1 && JF(n/p).isSquareFree()) ? Z.ONE : Z.ZERO)	a(n) = Sum_{p|n, gcd(p,n/p) = 1} mu(n/p)^2, where mu is the Möbius function (A008683)
+A344908	lambdan	0	n -> SP(n, p -> ZV(p).*(Puma.primePi(p) & 1))	a(n) = Sum_{p|n} p * (pi(p) mod 2)
+A344931	lambdan	0	n -> SP(n, p -> ZV(p).*((Puma.primePi(p) + 1) & 1))	a(n) = Sum_{p|n} p * ((pi(p)+1) mod 2 )
+A345278	lambdan	0	n -> SP(n, p -> ZV(p).^(Puma.primePi(p) & 1))	a(n) = Sum_{p|n} p^(pi(p) mod 2)
+A345279	lambdan	0	n -> SP(n, p -> ZV(p).^((Puma.primePi(p) + 1) & 1))	a(n) = Sum_{p|n} p^((pi(p)+1) mod 2)
+A345280	lambdan	0	n -> SP(n, p -> Puma.nextPrimeZ(ZV(p)))	a(n) = Sum_{p|n} nextprime(p), where nextprime(n) is the smallest prime > n
+A345281	lambdan	0	n -> SP(n, p -> Puma.nextPrimeZ(ZV(n/p)))	a(n) = Sum_{p|n} nextprime(n/p), where nextprime(m) is the smallest prime > m
+A345282	lambdan	0	n -> SP(n, p -> ZV(p).*(Puma.nextPrime(n/p)    ))	a(n) = Sum_{p|n, p prime} p * nextprime(n/p)
+A345283	lambdan	0	n -> SP(n, p -> ZV(p).^(Puma.nextPrime(n/p)    ))	a(n) = Sum_{p|n, p prime} p^nextprime(n/p), where nextprime(n) is the smallest prime > n
+A345284	lambdan	0	n -> SP(n, p -> ZUtils.primorial(p))	a(n) = Sum_{p|n} (p #)
+A345298	lambdan	0	n -> SP(n, p -> JF(ZUtils.primorial(p)).tau())	a(n) = Sum_{p|n, p prime} tau(p #)
+A345299	lambdan	0	n -> SP(n, p -> ZV(p).^(Puma.primePi(p)))	a(n) = Sum_{p|n} p^pi(p)
+A345301	lambdan	0	n -> SP(n, p -> ZV(p).^(Puma.primePi(n/p)      ))	a(n) = Sum_{p|n, p prime} p^pi(n/p)
+A345302	lambdan	0	n -> SP(n, p -> ZV(IU.lcm(p, n/p)))	a(n) = Sum_{p|n, p prime} lcm(p,n/p)
+A345303	lambdan	0	n -> SP(n, p -> ZV(p).*(IU.gcd(p,n/p)          ))	a(n) = Sum_{p|n, p prime} p * gcd(p,n/p)
+A345304	lambdan	0	n -> SP(n, p -> ZV(p).*(IU.lcm(p,n/p)          ))	a(n) = Sum_{p|n, p prime} p * lcm(p,n/p)
+A345305	lambdan	0	n -> RP(n, p -> new Q(ZV(IU.gcd(p, n/p)), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} gcd(p,n/p) / p
+A345306	lambdan	0	n -> RP(n, p -> new Q(ZV(IU.lcm(p, n/p)), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} lcm(p,n/p) / p
+A345310	lambdan	0	n -> SP(n, p -> ZV(p).^(IU.gcd(p,n/p)          ))	a(n) = Sum_{p|n, p prime} p^gcd(p,n/p)
+A345311	lambdan	0	n -> SP(n, p -> ZV(p).^(IU.lcm(p,n/p)          ))	a(n) = Sum_{p|n, p prime} p^lcm(p,n/p)
+A345312	lambdan	0	n -> SP(n, p -> ZV(n/p).^(IU.gcd(p, n/p)))	a(n) = Sum_{p|n} (n/p)^gcd(p,n/p)
+A345313	lambdan	0	n -> SP(n, p -> ZV(n/p).^(IU.lcm(p, n/p)))	a(n) = Sum_{p|n, p prime} (n/p)^lcm(p,n/p)
+A345354	lambdan	0	n -> SP(n, p -> ZV(JF(n/p).omega()         ))	a(n) = Sum_{p|n, p prime} omega(n/p)
+A345355	lambdan	0	n -> SP(n, p -> ZV(p).^(JF(n/p).omega()        ))	a(n) = Sum_{p|n, p prime} p^omega(n/p)
+A345373	lambdan	0	n -> RP(n, p -> new Q(ZV(1/(IU.gcd(p, n/p))), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} floor(1/gcd(p,n/p)) / p
+A345374	lambdan	0	n -> SP(n, p -> Puma.primePiZ(p).and(Z.ONE).*(1 / IU.gcd(p, n/p)))	a(n) = Sum_{p|n, p prime} (pi(p) mod 2) * floor(1/gcd(p,n/p))
+A345375	lambdan	0	n -> SP(n, p -> Puma.primePiZ(p).add(1).and(Z.ONE).*(1 / IU.gcd(p, n/p)))	a(n) = Sum_{p|n, p prime} ((pi(p)+1) mod 2) * floor(1/gcd(p,n/p))
+A347103	lambdan	0	n -> SP(n, p -> Z_1(n/p).*(Puma.primePi(p))).negate()	a(n) = -Sum_{p|n, p prime} (-1)^(n/p) * pi(p), where pi = A000720
+A348203	lambdan	0	n -> ZV(n - JF(n).omega()).+(RP(n, p -> new Q(Z.ONE, ZV(p))).*(n).num())	a(n) = n - omega(n) + n * Sum_{p|n} 1/p
+A351194	parmof2	1	A005063	6	a(n) = Sum_{p|n, p prime} p^6
+A351195	parmof2	1	A005063	7	a(n) = Sum_{p|n, p prime} p^7
+A351196	parmof2	1	A005063	8	a(n) = Sum_{p|n, p prime} p^8
+A351197	parmof2	1	A005063	9	a(n) = Sum_{p|n, p prime} p^9
+A351198	parmof2	1	A005063	10	a(n) = Sum_{p|n, p prime} p^10
+A351242	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(3))).*(ZV(n).^(3)).num()	a(n) = n^3  * Sum_{p|n, p prime} 1/p^3
+A351244	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(4))).*(ZV(n).^(4)).num()	a(n) = n^4  * Sum_{p|n, p prime} 1/p^4
+A351245	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(5))).*(ZV(n).^(5)).num()	a(n) = n^5  * Sum_{p|n, p prime} 1/p^5
+A351246	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(6))).*(ZV(n).^(6)).num()	a(n) = n^6  * Sum_{p|n, p prime} 1/p^6
+A351247	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(7))).*(ZV(n).^(7)).num()	a(n) = n^7  * Sum_{p|n, p prime} 1/p^7
+A351248	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(8))).*(ZV(n).^(8)).num()	a(n) = n^8  * Sum_{p|n, p prime} 1/p^8
+A351249	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(9))).*(ZV(n).^(9)).num()	a(n) = n^9  * Sum_{p|n, p prime} 1/p^9
+A351262	lambdan	0	n -> RP(n, p -> new Q(Z.ONE, ZV(p).pow(10))).*(ZV(n).^(10)).num()	a(n) = n^10  * Sum_{p|n, p prime} 1/p^10  	a(n) = n^10 * Sum_{p|n, p prime} 1/p^10
+A351365	lambdan	0	n -> SP(n, p -> ZV(n).^(p                  ))	a(n) = Sum_{p|n, p prime} n^p
+A351366	lambdan	0	n -> SP(n, p -> ZV(p).^(p                      ))	a(n) = Sum_{p|n, p prime} p^p
+A351367	lambdan	0	n -> SP(n, p -> ZV(p).^(Puma.nextPrime(p)      ))	a(n) = Sum_{p|n, p prime} p^nextprime(p), where nextprime(n) is the smallest prime > n
+A351368	lambdan	0	n -> SP(n, p -> Puma.primeZ(p))	a(n) = Sum_{p|n, p prime} prime(p)
+A351369	lambdan	0	n -> SP(n, p -> ZV(p).*(Puma.prime(p)          ))	a(n) = Sum_{p|n, p prime} p * prime(p)
+A351370	lambdan	0	n -> SP(n, p -> ZV(p).^(Puma.prime(p)          ))	a(n) = Sum_{p|n, p prime} p^prime(p)
+A351371	lambdan	0	n -> SP(n, p -> ZV(p + n/p))	a(n) = Sum_{p|n, p prime} (p + n/p)
+A351619	lambdan	0	n -> SP(n, p -> Z_1(p))	a(n) = Sum_{p|n, p prime} (-1)^p
+A351708	lambdan	0	n -> SP(n, p -> FA(n/p))	a(n) = Sum_{p|n, p prime} (n/p)!
+A351709	lambdan	0	n -> SP(n, p -> FA(p))	a(n) = Sum_{p|n, p prime} p!
+A351710	lambdan	0	n -> SP(n, p -> FA(n - p))	a(n) = Sum_{p|n, p prime} (n-p)!
+A351711	lambdan	0	n -> SP(n, p -> SD(n, d -> ZV(IU.gcd(d, p))))	a(n) = Sum_{p|n, p prime} Sum_{d|n} gcd(d,p)
+A351711	lambdan	0	n -> { final FactorSequence fs = JF(n); return SP(n, p -> JF(n/p).tau().*(p - 1)).+(fs.tau().*(fs.omega())); }	a(n) = tau(n)*omega(n) + Sum_{p|n, p prime} (p-1)*tau(n/p)
+A351746	lambdan	0	n -> SP(n, p -> ZV(p - 1).*(JF(n/p).tau()))	a(n) = Sum_{p|n, p prime} (p-1) * tau(n/p)
+A351747	lambdan	0	n -> SP(n, p -> ZV(n).^(IU.lcm(p,n/p)      ))	a(n) = Sum_{p|n, p prime} n^lcm(p,n/p)
+A351748	lambdan	0	n -> SP(n, p -> ZV(n).^(IU.gcd(p,n/p)      ))	a(n) = Sum_{p|n, p prime} n^gcd(p,n/p)
+A351749	lambdan	0	n -> SP(n, p -> JF(p).sigma(p))	a(n) = Sum_{p|n, p prime} sigma_p(p)
+A351750	lambdan	0	n -> SP(n, p -> ZV(p).*(JF(p).sigma(p)         ))	a(n) = Sum_{p|n, p prime} p * sigma_p(p)
+A351751	lambdan	0	n -> SP(n, p -> ZV(p).^(JF(p).sigma(p).intValueExact()))	a(n) = Sum_{p|n, p prime} p^sigma_p(p)
+A351758	lambdan	0	n -> SP(n, p -> SD(n, d -> ZV(IU.lcm(d, p))))	a(n) = Sum_{p|n, p prime} Sum_{d|n} lcm(d,p)
+A351773	lambdan	0	n -> SD(n, d -> SP(n, p -> ZV(p).^(d)))	a(n) = Sum_{d|n} Sum_{p|n, p prime} p^d
+A351774	lambdan	0	n -> SD(n, d -> SP(n, p -> ZV(d).^(p)))	a(n) = Sum_{d|n} Sum_{p|n, p prime} d^p
+A351844	lambdan	0	n -> SD(n, d -> SP(n, p -> ZV(n).^(IU.gcd(d, p))))	a(n) = Sum_{d|n} Sum_{p|n, p prime} n^gcd(d,p)
+A351845	lambdan	0	n -> SD(n, d -> SP(n, p -> ZV(n).^(IU.lcm(d, p))))	a(n) = Sum_{d|n} Sum_{p|n, p prime} n^lcm(d,p)
+A352012	lambdan	0	n -> RP(n, p -> new Q(FA(n - 1), FA(p - 1))).num()	a(n) = Sum_{p|n, p prime} (n-1)!/(p-1)!
+A352014	lambdan	0	n -> RP(n, p -> new Q(Z_1(n/p + 1).*(FA(n - 1)), FA(p - 1))).num()	a(n) = Sum_{p|n, p prime} (-1)^(n/p+1) * (n-1)!/(p-1)!
+A352058	lambdan	0	n -> RP(n, p -> new Q(FA(n), FA(p).*(FA(n/p)))).num()	a(n) = Sum_{p|n, p prime} n!/(p!*(n/p)!)
+A352059	lambdan	0	n -> RP(n, p -> new Q(FA(n - 1), FA(n/p - 1))).num()	a(n) = Sum_{p|n, p prime} (n-1)!/(n/p-1)!
+A367476	lambdan	0	n -> SP(n, p -> ZV(p % 10))	a(n) = Sum_{p|n, p prime} (p mod 10)
+A369687	lambdan	0	n -> SP(n, p -> ZV(p).^(JF(n/p).phi()  .intValueExact()))	a(n) = Sum_{p|n, p prime} p^phi(n/p)
+A369739	lambdan	0	n -> SP(n, p -> ZV(p).^(JF(n/p).tau()  .intValueExact()))	a(n) = Sum_{p|n, p prime} p^tau(n/p)
+A369740	lambdan	0	n -> SP(n, p -> ZV(p).^(JF(n/p).sigma().intValueExact()))	a(n) = Sum_{p|n, p prime} p^sigma(n/p)
+A369741	lambdan	0	n -> SP(n, p -> ZV(p).^(JF(n/p).bigOmega()     ))	a(n) = Sum_{p|n, p prime} p^Omega(n/p)
+A369742	lambdan	0	n -> SP(n, p -> ZV(p).^(JF(n/p).isSquareFree() ? 1 : 0))	a(n) = Sum_{p|n, p prime} p^(mu(n/p)^2)
+A369743	lambdan	0	n -> SP(n, p -> ZV(p).*(JF(n/p).bigOmega()     ))	a(n) = Sum_{p|n, p prime} p * Omega(n/p)
+A369744	lambdan	0	n -> SP(n, p -> ZV(p).*(JF(n/p).omega()        ))	a(n) = Sum_{p|n, p prime} p * omega(n/p)
+A369745	lambdan	0	n -> SP(n, p -> ZV(p).*(Puma.primePi(n/p)      ))	a(n) = Sum_{p|n, p prime} p * pi(n/p)
+A369747	lambdan	0	n -> SP(n, p -> Puma.primePiZ(n/p))	a(n) = Sum_{p|n, p prime} pi(n/p)
+A369748	lambdan	0	n -> SP(n, p -> Puma.primeZ(n/p))	a(n) = Sum_{p|n, p prime} prime(n/p)
+A369749	lambdan	0	n -> SP(n, p -> ZV(p).*(Puma.prime(n/p)        ))	a(n) = Sum_{p|n, p prime} p * prime(n/p)
+A369750	lambdan	0	n -> SP(n, p -> ZV(p).^(Puma.prime(n/p)        ))	a(n) = Sum_{p|n, p prime} p^prime(n/p)
+A369779	lambdan	0	n -> RP(n, p -> new Q(JF(n/p).phi  (), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} phi  (n/p) / p
+A369782	lambdan	0	n -> SP(n, p -> ZV(n).^(JF(n/p).phi()  .intValueExact()))	a(n) = Sum_{p|n, p prime} n^phi(n/p)
+A369864	lambdan	0	n -> SP(n, p -> ZV(n).^(JF(n/p).isSquareFree() ? 1 : 0))	a(n) = Sum_{p|n, p prime} n^(mu(n/p)^2)
+A369865	lambdan	0	n -> RP(n, p -> new Q(ZV(JF(n/p).isSquareFree() ? 1 : 0), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} mu(n/p)^2 / p
+A369866	lambdan	0	n -> SP(n, p -> ZV(n).^(Puma.prime(n/p)    ))	a(n) = Sum_{p|n, p prime} n^prime(n/p)
+A369867	lambdan	0	n -> RP(n, p -> new Q(Puma.primeZ(n/p), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} prime(n/p) / p
+A369868	lambdan	0	n -> SP(n, p -> ZV(n).^(Puma.primePi(n/p)  ))	a(n) = Sum_{p|n, p prime} n^pi(n/p)
+A369869	lambdan	0	n -> RP(n, p -> new Q(Puma.primePiZ(n/p), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} pi(n/p) / p
+A369893	lambdan	0	n -> SP(n, p -> ZV(n).^(JF(n/p).tau()  .intValueExact()))	a(n) = Sum_{p|n, p prime} n^tau(n/p)
+A369894	lambdan	0	n -> RP(n, p -> new Q(JF(n/p).tau  (), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} tau  (n/p) / p
+A369903	lambdan	0	n -> SP(n, p -> ZV(n).^(JF(n/p).sigma().intValueExact()))	a(n) = Sum_{p|n, p prime} n^sigma(n/p)
+A369904	lambdan	0	n -> RP(n, p -> new Q(JF(n/p).sigma(), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} sigma(n/p) / p
+A369905	lambdan	0	n -> SP(n, p -> ZV(n).^(JF(n/p).omega()    ))	a(n) = Sum_{p|n, p prime} n^omega(n/p)
+A369907	lambdan	0	n -> RP(n, p -> new Q(ZV(JF(n/p).   omega()), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} omega(n/p) / p
+A369908	lambdan	0	n -> SP(n, p -> ZV(n).^(JF(n/p).bigOmega() ))	a(n) = Sum_{p|n, p prime} n^Omega(n/p)
+A369909	lambdan	0	n -> RP(n, p -> new Q(ZV(JF(n/p).bigOmega()), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} Omega(n/p) / p
+A369911	lambdan	0	n -> SP(n, p -> ZV(p).*(JF(n/p).sopf()         ))	a(n) = Sum_{p|n, p prime} p * sopf(n/p)
+A369912	lambdan	0	n -> SP(n, p -> ZV(p).^(JF(n/p).sopf().intValueExact()))	a(n) = Sum_{p|n, p prime} p^sopf(n/p)
+A369913	lambdan	0	n -> SP(n, p -> ZV(n).^(JF(n/p).sopf() .intValueExact()))	a(n) = Sum_{p|n, p prime} n^sopf(n/p)
+A369914	lambdan	0	n -> RP(n, p -> new Q(JF(n/p).sopf (), ZV(p))).*(ZV(n)).num()	a(n) = n * Sum_{p|n, p prime} sopf (n/p) / p
+A369915	lambdan	0	n -> RP(n, p -> new Q(ZV(IU.lcm(p, n/p)), ZV(p))).num()	a(n) = Sum_{p|n, p prime} lcm(p, n/p) / p

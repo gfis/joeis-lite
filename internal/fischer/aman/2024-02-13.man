@@ -1,0 +1,95 @@
+♦
+
+
+
+
+
+
+
+%F A069487 a(n) = A000040(n) * A127917(n+1) - A127917(n)*A000040(n+1). - _César Aguilera_, Sep 18 2019
+%F A126287 a(n) = A032742(n) * A020639(n-1), for n>2. - _Michel Marcus_, May 20 2015
+%F A181121 a(n) = A051451(n) * A025473(n+1)/(A025473(n+1)-1).
+%F A206771 a(n) = A000265(n) * A001790(n-1).
+%F A241025 a(n) = A050376(n) * A050376(n+1) * A050376(n+3).
+%F A246292 a(n) = A022915(n) * A000178(n-1) for n>0.
+%F A273935 a(n) = A000142(n) * A000142(n-1)*A000225(n), n >= 1. - _Omar E. Pol_, Jun 16 2016
+%F A277324 a(0) = 2; for n >= 1, a(n) = A260443(n) * A260443(n+1).
+%F A286630 For n >= 1, a(n) = A001248(n) * A002110(n-1) = A002110(n) + A286629(n).
+%F A301631 a(n) = A000108(n) * A000265(n+1)^2 - A075101(n+1)^2/4.
+%F A340493 a(n) = A000041(n) * A000070(n-1) - A000041(n-1)*A000070(n-2), n >= 2.
+%F A341109 a(n) = A341108(n)*A007947(n+1)/€144845(n).
+%N A101799 a(n) = A055209(n) * A002720(n+1);.
+A070871	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A002487().skip(1), PREVIOUS	a(n) = A002487(n) * A002487(n+1)
+A081088	tuptraf	0	(n, s) -> s[0].*(s[1])	"2,2"	new A081090().skip(1), PREVIOUS	a(n) = A081090(n) * A081090(n-1) for n>2, where A081090(n)^2 + 1 = a(n+1)/a(n).
+A094941	holose	0	[[0],[-2],[0],[0,1]]	1,2	0	1	E.g.f. A(x) satisfies Ad(x) = 2+2*x*A(x), A(0)=1.
+A099553	holos	0	[[0],[-2016840,2559466,-1205302,249704,-19208],[-439530,522977,-205016,26215,98],[31260,-84195,77973,-29493,3879],[0,324,-1566,1944,-486]]	1,2,10,42	0	0	diffeqtorec(0 = x^3*(2*x + 1)*(49*x - 18)*(196*x - 27)*diff(y(x),x$4) + x^2*(96040*x^3 - 27587*x^2 - 9297*x + 972)*diff(y(x),x$3) + (72030*x^4 - 36309*x^3 + 2010*x^2 - 864*x)*diff(y(x),x$2) - 6*(8*x + 3)*(49*x + 12)*diff(y(x),x$1) + (2352*x + 576)*y(x),y(x),a(n));
+A192446	holos	0	[[0],[44614800,-18633240,2566080,-116640],[57445200,-26030160,3907440,-194400],[-6179328,-308448,598752,-62208],[-38137932,18250812,-3094632,188352],[-16093728,11097252,-2710584,230760],[-13541040,6676272,-1064664,57312],[39600,-824850,523602,-81738],[-512760,452972,-88632,-3824],[609660,-780238,318160,-40228],[-46360,64610,-15785,-2465],[0,3658,-5487,1829]]	1, 2, 6, 30	0	0	0 = (4*x^3 + 8*x^2 + 4*x - 1)*(108*x^3 - 108*x^2 + 36*x - 31)*(270*x^4 + 180*x^3 + 144*x^2 - 225*x - 59)*y''' + (1283040*x^9 + 1924560*x^8 + 1080864*x^7 - 1425816*x^6 - 2135376*x^5 + 33048*x^4 + 702468*x^3 + 134520*x^2 + 43892*x + 30575)*y'' + 30*(111780*x^8 + 149040*x^7 + 120960*x^6 - 122094*x^5 - 172206*x^4 - 6012*x^3 + 36615*x^2 + 10298*x - 1541)*y' + 60*(29160*x^7 + 34020*x^6 + 36288*x^5 - 43092*x^4 - 45882*x^3 - 6462*x^2 + 1890*x + 913)*y.
+A196265	holose	0	[[0],[-7,2],[-4,2],[-3,4,-1],[0,1,-1]]	1,2,4,8	0	1	E.g.f. A(x) =: y  satisfies 0 = -(1 + x)^2 + y * x - y' * (1 + 2*x + 2*x^2) + y'' * (1 + x) = (1 - x) + y' * (1 - x) - y'' * (1 + 2*x^2) + y''' * x. - _Michael Somos_, Jan 16 2014
+A214892	parmof3	0	A214674	4	1	Conway's subprime Fibonacci sequence starting with (4,1).	nonn	1..144	nyi	_Wouter Meeussen_
+A214893	parmof3	0	A214674	18	5	Conway's subprime Fibonacci sequence starting with (18, 5).	nonn	1..82	nyi	_Wouter Meeussen_
+A214894	parmof3	0	A214674	10	18	Conway's subprime Fibonacci sequence starting with (10, 18).	nonn	1..27	nyi	_Wouter Meeussen_
+A214895	parmof3	0	A214674	23	162	Conway's subprime Fibonacci sequence starting with (23, 162).	nonn	1..15	nyi	_Wouter Meeussen_
+A214896	parmof3	0	A214674	382	127	Conway's subprime Fibonacci sequence starting with (382, 127).	nonn	1..12	nyi	_Wouter Meeussen_
+A240521	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A050376(), PREVIOUS	a(n) = A050376(n) * A050376(n+1) where A050376(n) is the n-th number of the form p^(2^k) with p is prime and k >= 0.
+A329374	dirtraf	0	new A000265()	new A329372()	(n, v) -> v	0
+A359066	lambdan	0	n -> SU(0, (n-1)/2, k -> BI(n,k).*(BI(n-1-k, (n-1)/2 - k)))	
+A367228	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A000215(), PREVIOUS	a(n) = A000215(n) * A000215(n+1).
+A368178	lambdan	0	n -> (n == 0) ? Z.ONE : SU(1, n, k -> BI(n+k, k).*(BI(n, k - 1)).*(BI(n, k))./(n))	
+A368467	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(2*n, k)).*(BI(4*n, n-k)))	
+A370054	lambdan	0	n -> FA(3*n + 1).*(2)./(FA(2*n + 2))	a(n) = 2*(3*n+1)!/(2*n+2)!.	nonn,new	0..17	nyi	_Seiichi Manyama_
+A370055	lambdan	0	n -> FA(3*n + 2).*(3)./(FA(2*n + 3))	a(n) = 3*(3*n+2)!/(2*n+3)!.	nonn,new	0..17	nyi	_Seiichi Manyama_
+A370056	lambdan	0	n -> FA(4*n + 1).*(2)./(FA(3*n + 2))	a(n) = 2*(4*n+1)!/(3*n+2)!.	nonn,new	0..16	nyi	_Seiichi Manyama_
+A370057	lambdan	0	n -> FA(4*n + 2).*(3)./(FA(3*n + 3))	a(n) = 3*(4*n+2)!/(3*n+3)!.	nonn,new	0..16	nyi	_Seiichi Manyama_
+A370058	lambdan	0	n -> FA(4*n + 3).*(4)./(FA(3*n + 4))	a(n) = 4*(4*n+3)!/(3*n+4)!.	nonn,new	0..16	nyi	_Seiichi Manyama_
+A370097	lambdan	0	n -> SU(0, n, k -> BI(3*n, k).*(BI(3*n -k- 1, n - k)))	a(n) = Sum_{k=0..n} binomial(3*n, k) * binomial(3*n -k- 1, n - k).	nonn,new	0..19	nyi	_Seiichi Manyama_
+A370097	lambdan	0	n -> SU(0, n, k -> BI(3*n, k).*(BI(3*n-k-1, n-k)))	
+A370097	lambdan	0	n -> SU(0, n, k -> BI(3*n, k).*(BI(3*n-k-1, n-k)))	
+A370098	lambdan	0	n -> SU(0, n, k -> BI(3*n, k).*(BI(4*n -k- 1, n - k)))	a(n) = Sum_{k=0..n} binomial(3*n, k) * binomial(4*n -k- 1, n - k).	nonn,new	0..18	nyi	_Seiichi Manyama_
+A370098	lambdan	0	n -> SU(0, n, k -> BI(3*n, k).*(BI(4*n-k-1, n-k)))	
+A370098	lambdan	0	n -> SU(0, n, k -> BI(3*n, k).*(BI(4*n-k-1, n-k)))	
+A370099	lambdan	0	n -> SU(0, n, k -> BI(2*n, k).*(BI(3*n -k- 1, n - k)))	a(n) = Sum_{k=0..n} binomial(2*n, k) * binomial(3*n -k- 1, n - k).	nonn,new	0..20	nyi	_Seiichi Manyama_
+A370099	lambdan	0	n -> SU(0, n, k -> BI(2*n, k).*(BI(3*n-k-1, n-k)))	
+A370099	lambdan	0	n -> SU(0, n, k -> BI(2*n, k).*(BI(3*n-k-1, n-k)))	
+A370100	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(2*n -k- 1, n - k)))	a(n) = Sum_{k=0..n} binomial(4*n, k) * binomial(2*n -k- 1, n - k).	nonn,new	0..19	nyi	_Seiichi Manyama_
+A370100	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(2*n-k-1, n-k)))	
+A370100	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(2*n-k-1, n-k)))	
+A370101	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(4*n -k- 1, n - k)))	a(n) = Sum_{k=0..n} binomial(4*n, k) * binomial(4*n -k- 1, n - k).	nonn,new	0..18	nyi	_Seiichi Manyama_
+A370101	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(4*n-k-1, n-k)))	
+A370101	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(4*n-k-1, n-k)))	
+A370102	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(5*n -k- 1, n - k)))	a(n) = Sum_{k=0..n} binomial(4*n, k) * binomial(5*n -k- 1, n - k).	nonn,new	0..17	nyi	_Seiichi Manyama_
+A370102	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(5*n-k-1, n-k)))	
+A370102	lambdan	0	n -> SU(0, n, k -> BI(4*n, k).*(BI(5*n-k-1, n-k)))	
+A370103	lambdan	0	n -> SU(0, n, k -> BI(2*n + k - 1, k).*(BI(4*n - k - 1, n - k)).*(Z_1(k)))	a(n) = Sum_{k=0..n} (-1)^k * binomial(2*n + k - 1, k) * binomial(4*n - k - 1, n - k).	nonn,new	0..23	nyi	_Seiichi Manyama_
+A370103	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(2*n+k-1, k).*(BI(4*n-k-1, n-k))))	
+A370104	lambdan	0	n -> SU(0, n, k -> BI(2*n + k - 1, k).*(BI(6*n - k - 1, n - k)).*(Z_1(k)))	a(n) = Sum_{k=0..n} (-1)^k * binomial(2*n + k - 1, k) * binomial(6*n - k - 1, n - k).	nonn,new	0..20	nyi	_Seiichi Manyama_
+A370104	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(2*n+k-1, k).*(BI(6*n-k-1, n-k))))	
+A370105	lambdan	0	n -> SU(0, n, k -> BI(n + k - 1, k  ).*(BI(5*n - k - 1, n - k)).*(Z_1(k)))	a(n) = Sum_{k=0..n} (-1)^k * binomial(n + k - 1, k  ) * binomial(5*n - k - 1, n - k).	nonn,new	0..20	nyi	_Seiichi Manyama_
+A370105	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(n+k-1, k).*(BI(5*n-k-1, n-k))))	
+A370106	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(2*n, k).*(BI(3*n, n-k))))	
+A370106	lambdan	0	n -> SU(0, n, k -> BI(2*n, k        ).*(BI(3*n        , n - k)).*(Z_1(k)))	a(n) = Sum_{k=0..n} (-1)^k * binomial(2*n, k        ) * binomial(3*n        , n - k).	sign,new	0..25	nyi	_Seiichi Manyama_
+A370159	lambdan	0	n -> { final int s = 2; final int t = 2; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370159	lambdan	0	n -> { final int s = 2; final int t = 2; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370160	lambdan	0	n -> { final int s = 2; final int t = 2; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370160	lambdan	0	n -> { final int s = 2; final int t = 2; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370170	lambdan	0	n -> { final int s = 2; final int t = 3; final int u = 0;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370170	lambdan	0	n -> { final int s = 2; final int t = 3; final int u = 0;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370171	lambdan	0	n -> { final int s = 2; final int t = 3; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370171	lambdan	0	n -> { final int s = 2; final int t = 3; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370172	lambdan	0	n -> { final int s = 2; final int t = 3; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370172	lambdan	0	n -> { final int s = 2; final int t = 3; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370183	lambdan	0	n -> { final int s = 3; final int t = 1; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370183	lambdan	0	n -> { final int s = 3; final int t = 1; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370184	lambdan	0	n -> { final int s = 3; final int t = 1; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370184	lambdan	0	n -> { final int s = 3; final int t = 1; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370185	lambdan	0	n -> { final int s = 3; final int t = 2; final int u = 0;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370185	lambdan	0	n -> { final int s = 3; final int t = 2; final int u = 0;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370186	lambdan	0	n -> { final int s = 3; final int t = 2; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370186	lambdan	0	n -> { final int s = 3; final int t = 2; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370187	lambdan	0	n -> { final int s = 3; final int t = 2; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370187	lambdan	0	n -> { final int s = 3; final int t = 2; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI((t+u)*n-k, n-s*k))); }	
+A370194	lambdan	0	n -> { final int s = 2; final int t = 2; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI(u*n, n-s*k))); }	
+A370194	lambdan	0	n -> { final int s = 2; final int t = 2; final int u = 1;  return SU(0, n/s, k -> BI(t*n, k).*(BI(u*n, n-s*k))); }	
+A370195	lambdan	0	n -> { final int s = 2; final int t = 2; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI(u*n, n-s*k))); }	
+A370195	lambdan	0	n -> { final int s = 2; final int t = 2; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI(u*n, n-s*k))); }	
+A370196	lambdan	0	n -> { final int s = 3; final int t = 1; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI(u*n, n-s*k))); }	
+A370196	lambdan	0	n -> { final int s = 3; final int t = 1; final int u = 2;  return SU(0, n/s, k -> BI(t*n, k).*(BI(u*n, n-s*k))); }	
