@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2024-02-26: V7.3: GaussianINtegers, GP, GD, GU, Zi; cannot read pattern with output of $aseqno
 # 2023-10-16: V7.2: .10 -> Z.TEN
 # 2023-10-16: V7.1: FactorUtils; skip records with "€" in parm[i]
 # 2023-10-16: V7.0: FI, FL, SJ, BI, S1, S2, .* .+ .- replacements; %zhash
@@ -72,7 +73,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V7.2";
+my $version_id  = "gen_seq4.pl V7.3";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -150,6 +151,7 @@ while (<>) { # read inputfile
     $callcode = shift(@parms);
     next if length($callcode) == 0; # skip over empty callcodes
     next if $callcode =~ m{\#};     # skip over commented callcodes
+    next if $callcode =~ m{\Anyi};     # skip over callcodes starting with "nyi"
     # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
@@ -213,6 +215,9 @@ while (<>) { # read inputfile
             $parm =~ s{FD\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
             $parm =~ s{FM\(}           {MemoryFactorial.SINGLETON.multiFactorial\(}g;
             $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
+            $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;
+            $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
+            $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
             $parm =~ s{LU\(}           {Fibonacci.lucas\(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
@@ -395,7 +400,7 @@ sub write_output {
 sub read_pattern { # read the pattern and return it
     my ($patfile) = @_;
     %imports = (); # start with no imports
-    open(PAT, "<", $patfile) or die "cannot read \"$patfile\"\n";
+    open(PAT, "<", $patfile) or die "cannot read \"$patfile\" for $aseqno\n";
     my $state = "init";
     my $result = "";
     while (<PAT>) {
@@ -442,6 +447,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WBellNumbers\.}                ) { $imports{"irvine.math.z.BellNumbers"     }                = $itype; }
     if ($line =~ m{\WBinomial\.}                   ) { $imports{"irvine.math.z.Binomial"}                        = $itype; }
     if ($line =~ m{\WCarmichael}                   ) { $imports{"irvine.math.z.Carmichael"                     } = $itype; }
+    if ($line =~ m{\WCC\W}                         ) { $imports{"irvine.math.cc.CC"}                             = $itype; }
+    if ($line =~ m{\WComputableComplexField}       ) { $imports{"irvine.math.cr.ComputableComplexField"}         = $itype; }
     if ($line =~ m{\WCR\W}                         ) { $imports{"irvine.math.cr.CR"}                             = $itype; }
     if ($line =~ m{\WComputableReals}              ) { $imports{"irvine.math.cr.ComputableReals"}                = $itype; }
     if ($line =~ m{\WConvolutionProduct}           ) { $imports{"irvine.oeis.transform.ConvolutionProduct"}      = $itype; }
@@ -456,6 +463,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }
     if ($line =~ m{\WFilterPositionSequence}       ) { $imports{"irvine.oeis.FilterPositionSequence"           } = $itype; }
     if ($line =~ m{\WFilterSequence}               ) { $imports{"irvine.oeis.FilterSequence"                   } = $itype; }
+    if ($line =~ m{\WGaussianIntegers\.}           ) { $imports{"irvine.math.group.GaussianIntegers"}            = $itype; }
     if ($line =~ m{\WHankelTransformSequence}      ) { $imports{"irvine.oeis.transform.HankelTransformSequence"} = $itype; }
     if ($line =~ m{\WHolonomicRecurrence}          ) { $imports{"irvine.oeis.recur.HolonomicRecurrence"}         = $itype; }
     if ($line =~ m{\WIntegerPartition}             ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }
@@ -487,6 +495,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WTranspose}                    ) { $imports{"irvine.oeis.triangle.Transpose"}                = $itype; }
     if ($line =~ m{\WUnaryCRFunction}              ) { $imports{"irvine.math.cr.UnaryCRFunction"}                = $itype; }
     if ($line =~ m{\WZUtils\.}                     ) { $imports{"irvine.math.z.ZUtils"}                          = $itype; }
+    if ($line =~ m{\WZi\W}                         ) { $imports{"irvine.math.zi.Zi"}                             = $itype; }
     if ($line =~ m{\WZ\W}                          ) { $imports{"irvine.math.z.Z"}                               = $itype; }
     if ($line =~ m{\WZeta\.}                       ) { $imports{"irvine.math.cr.Zeta"}                           = $itype; }
     delete($imports{"irvine.oeis.Sequence"});
