@@ -1,0 +1,114 @@
+# A305983	#nyi----	0	Filter sequence combining from all proper divisors d of n, the prime signature of 2d+1.	nonn	1..65537	nyi	_Antti Karttunen_
+# A305985	#nyi----	0	Filter sequence combining from all divisors d > 1 of n, the prime signature of 2d+1.	nonn	1..65537	nyi	_Antti Karttunen_
+#? A351563	dirtraf	0	new A067029()	new A067029()	a(n) = A067029(A067029(n))
+#? A353277	rgs2	1	new DirectTransformSequence(1, new A007814(), new A156552(), (n, v) -> (n == 1) ? Z.ONE : v)	new DirectTransformSequence(1, new A007949(), new A156552(), (n, v) -> (n == 1) ? Z.ONE : v)	Restricted growth sequence transform of function f(1) = 1, and for n > 1, f(n) = [A007814(u), A007949(u)], where u = A156552(n).
+#?@16 A340090	dirichinv	0	new A219428()		Dirichlet inverse of A219428
+#?@16 A340367	dirichinv	0	new SimpleTransformSequence(1, new A318833(), v -> Z.ONE.-(v))	Dirichlet inverse of sequence b(n) = 1-A318833(n)     
+%C A319350	rgs1	1	function f defined as f(n) = A006694((n-1)/2) when n is an odd prime, otherwise -n.
+%C A319351	rgs1	1	function f defined as f(n) = A006694((n-1)/2) when n is an odd prime power > 1, otherwise -n.
+%C A319704	rgs1	1	function f defined as f(n) = A010873(n) when n is a prime, otherwise -n.
+%C A319706	rgs1	1	function f defined as f(n) = A046523(2n+1) when n is a prime, otherwise -n.
+%C A319707	rgs1	1	function f defined as f(n) = A010875(n) when n is a prime, otherwise -n.
+%F A295885	rgs1	1	a(n) = (1/2)*(2 + ((A051953(n) + A001065(n))^2) - A051953(n) - 3*A001065(n)).
+%N A302779	rgs1	1	ordered pair [Q(n-Q(n-1)), Q(n-Q(n-2))], the left & right summand of Hofstadter Q-sequence A005185.
+%N A302780	rgs1	1	4-tuple [H(H(n-1)), H(n-H(n-1)), Q(n-Q(n-1)), Q(n-Q(n-2))] where H = A004001 and Q = A005185.
+%N A304751	rgs1	1	function that gives the least natural number with the same prime signature that (0,1)-polynomial encoded in the binary expansion of n has when it is factored over Q.
+A069157	tuptraf	0	(n, s) -> s[0].*(s[1])./(s[1].+(1))	""	new A000005(), new A067029()	a(n) = A000005(n) * A067029(n)/(1+A067029(n))
+A252372	charfunc	0	new A251726()	Characteristic function for A251726: a(n) = 1 if n > 1 and gpf(n) < spf(n)^2, otherwise 0; here spf(n) and gpf(n) (smallest and greatest prime factor of n) are sequences A020639(n) and A006530(n).	nonn	1..10000	nyi	_Antti Karttunen_. A new simpler definition found Jan 04 2015 an
+A252742	charfunc	0	new A246282()	Characteristic function of A246282: if A003961(n) > 2*n, then a(n) = 1, otherwise 0 (when A003961(n) < 2*n) [where A003961(n) shifts the prime factorization of n one step towards larger primes].	nonn	1..10000	nyi	_Antti Karttunen_
+A286569	rgs1	1	new A284019()	 (= A004001(n) - A005185(n)).
+A286589	rgs1	1	new A286588()	.
+A293215	rgs1	1	new A293214()	, where A293214(n) = Product_{d|n, d<n} A019565(d).
+A293442	#muldir	1	new A019565()	mSeq.a(e)	a(p^e) = A019565(e).	nonn,mult	1..65537	nyi	_Antti Karttunen_
+A293442	mult	1	new A019565().a(e)	a(p^e) = A019565(e).	nonn,mult	1..65537	nyi	_Antti Karttunen_
+A293443	#muldir	1	new ()	a(p^e) = A019565(€193231(e)).	nonn,mult	1..65537	nyi	_Antti Karttunen_
+A294931	#muldir	1	new ()	a(p^e) = A019565(A289813(e)).	nonn,mult	1..65537	nyi	_Antti Karttunen_
+A294932	#muldir	1	new ()	a(p^e) = A019565(A289814(e)).	nonn,mult	1..65537	nyi	_Antti Karttunen_
+A295300	rgs1	1	new A291752()	.
+A295876	rgs1	1	new A023900()	, Product_{p|n} (1-p).
+A295877	rgs1	1	new A173557()	, Product_{p|n} (p-1).
+A297156	moetra	1	new A243354()	, 0		M√∂bius transform of A243354.	nonn	1..4096	nyi	_Antti Karttunen_
+A297169	rgs1	1	new SimpleTransformSequence(1, new A297168(), (n, v) -> (n == 1) ? Z.NEG_ONE : v)	a(1) = -1, a(n) = A297168(n) for n > 1.
+A297172	moetra	1	new A253564()	, 0		M√∂bius transform of A253564.	nonn	1..4096	nyi	_Antti Karttunen_
+A300723	moetra	1	new DirectTransformSequence(1, new A005187(), new A053645())	, 0		M√∂bius-transform of A005187(A053645(n)).	sign	1..16384	nyi	_Antti Karttunen_
+A304101	rgs1	1	new DirectTransformSequence(0, new A278222(), new A048679())	.
+A304736	rgs1	1	new DirectTransformSequence(1, new A048675(), new A064413())	.
+A304737	rgs1	1	new DirectTransformSequence(1, new A278222(), new A064413())	.
+A304738	rgs1	1	new DirectTransformSequence(1, new A278222(), new A048673())	.
+A304744	rgs1	1	new DirectTransformSequence(0, new A046523(), new A052330())	.
+A304750	rgs1	1	new A292240()	(n), formed from 0-digits in ternary representation of A254103(n).
+A305296	rgs1	1	new A305295()	(n), formed from 1-digits in ternary representation of A245612(n).
+A305301	rgs1	1	new DirectTransformSequence(0, new A278222(), new A304760())	, constructed from runlengths of 1-digits in base-3 representation of A254103(n).
+A305302	rgs1	1	new DirectTransformSequence(0, new A278222(), new A291760())	, constructed from runlengths of 2-digits in base-3 representation of A254103(n).
+A305303	rgs2	1	new DirectTransformSequence(0, new A278222(), new A304760())	new DirectTransformSequence(1, new A278222(), new A291760())	ordered pair [A278222(A304760(n)), A278222(A291760(n))], constructed from runlengths of 1-digits and 2-digits in base-3 representation of A254103(n).
+A305431	rgs1	1	new DirectTransformSequence(0, new A278222(), new A305295())	, constructed from runlengths of 1-digits in base-3 representation of A245612(n).
+A305432	rgs1	1	new DirectTransformSequence(0, new A278222(), new A291763())	, constructed from runlengths of 2-digits in base-3 representation of A245612(n).
+A305433	rgs2	1	new DirectTransformSequence(0, new A278222(), new A305295())	new DirectTransformSequence(1, new A278222(), new A291763())	ordered pair [A278222(A305295(n)), A278222(A291763(n))], constructed from runlengths of 1-digits and 2-digits in base-3 representation of A245612(n).
+A305800	rgs1	1	new A239968()	.
+A305804	moetra	1	new A078898()	, 0		M√∂bius-transform of A078898.	nonn	1..65537	nyi	_Antti Karttunen_
+A305973	rgs1	1	new A278223()	, the least number with the same prime signature as the n-th odd number.
+A305977	rgs1	1	new A286257()	.
+A305977	rgs1	1	new A286257()	Filter sequence combining prime signatures of n and 2n-1.	nonn	1..65537	nyi	_Antti Karttunen_
+A305978	rgs1	1	new A286258()	.
+A305978	rgs1	1	new A286258()	Filter sequence combining prime signatures of n and 2n+1.	nonn	1..65537	nyi	_Antti Karttunen_
+A317050	dirtraf	0	new A053985()	new A003188()	a(n) = A053985(A003188(n)).
+A318308	rgs1	1	new A294898()	.
+A318469	#muldir	1	new ()	a(p^e) = A019565(A003714(e)).	nonn,mult	1..65537	nyi	_Antti Karttunen_
+A318470	#muldir	1	new ()	a(p^e) = A260443(e).	nonn,mult	1..65537	nyi	_Antti Karttunen_
+A318702	dirtraf	0	new A053985()	new A059905()	a(n) = A053985(A059905(n)).
+A318703	dirtraf	0	new A053985()	new A059906()	a(n) = A053985(A059906(n)).
+A318831	rgs1	1	new DirectTransformSequence(1, new A278222(), new A000010())	.
+A318832	rgs1	1	new DirectTransformSequence(1, new A278222(), new A000203())	.
+A319353	rgs1	1	new A319352()	.
+A319710	simtraf	1	new A067029()	v -> (v.compareTo(Z.ONE) > 0) ? Z.ONE : Z.ZERO	a(n) = 1 iff A067029(n) > 1.
+A320013	rgs2	1	new A319991()	new A319992()	ordered pair [A319991(n), A319992(n)].
+A322868	rgs1	1	new DirectTransformSequence(1, new A278222(), new A048675())	, or equivalently, of A278222(A322821(n)).
+A324106	#muldir	1	new A005940()	mSeq.a(p.pow(e).intValueEaxct())	a(p^e) = A005940(p^e).	nonn,mult	1..16384	nyi	_Antti Karttunen_
+A324106	mult	1	new A005940().a(p.pow(e).intValueEaxct())	a(p^e) = A005940(p^e).	nonn,mult	1..16384	nyi	_Antti Karttunen_
+A324108	#muldir	1	new A005940()	Jaguar.factor(mSeq.a(p.pow(e).intValueEaxct())).sigma()	 = A324054((p^e)-1).	A000203(A005940(1+n))
+A324108	mult	1	Jaguar.factor(new A005940().a(p.pow(e).intValueEaxct())).sigma()	 = A324054((p^e)-1).	A000203(A005940(1+n))
+A324911	#muldir	1	new A156552()	mSeq.a(p.pow(e).intValueEaxct())	a(p^e) = A156552(p^e).	nonn,mult	1..4096	nyi	_Antti Karttunen_
+A324911	mult	1	new A156552().a(p.pow(e).intValueEaxct())	a(p^e) = A156552(p^e).	nonn,mult	1..4096	nyi	_Antti Karttunen_
+A326136	simtraf	0	new A028234()	(n, v) -> JF(n).sigma().-(JF(v).sigma())	a(n) = sigma(n) - sigma(A028234(n))
+A326200	rgs1	1	new LambdaSequence(1, n -> JF(n).sigma()./(n))
+A331206	filtpos	0	1	new A053985().skip(1)	(k, v) -> ZV(k).mod(v).isZero()	Numbers k such that A053985(k) divides k.
+A331304	rgs1	1	new SimpleTransformSequence(1, new A000720(), (n, v) -> (n <= 4) ? ZV(n) : (ZV(n).isProbablePrime() ? v.and(Z.ONE).shiftLeft(1).+(3) : ZV(n + 3).-(v)))	For n <= 4, a(n) = n, for n > 4, if n is prime, a(n) = 3 + 2*A000035(A000720(n)), otherwise a(n) = 3 + n - A000720(n).
+A336395	#rgs2	1	new ()	new ()	Restricted growth sequence transform of the function f(n) = A278221(A000265(n)), the prime signature of the conjugated prime factorization of the
+A336460	rgs3	1	new A278222().skip(1)	new A336158()	new A336466()	Restricted growth sequence transform of the ordered triple [A278222(n), A336158(n), A336466(n)].
+A336855	rgs1	1	new LambdaSequence(1, n -> ZV(n).isProbablePrime() ? ZV(n).-(Puma.nextPrime(n + 1)) : ZV(n))	Restricted growth sequence transform of function f defined as: f(n) = -{distance to the next larger prime} when n is a prime, otherwise f(n) = -n
+A336925	#rgs2	1	new ()	new ()	Restricted growth sequence transform of the function f(n) = A336147(A088580(n)).
+A337201	#rgs2	1	new ()	new ()	Restricted growth sequence transform of f(n) = A278221(A337194(n)).
+A340684	rgs2	1	new A291759()	new DirectTransformSequence(1, new A278222(), new A304759())	Restricted growth sequence transform of the ordered pair [A291759(n), A278222(A304759(n))].
+A341612	charfunc	0	new A341614()					Characteristic function of A341614: a(n) = 1 if sigma(n) <= 2n < A003961(n), 0 otherwise.	nonn	1..65537	nyi	_Antti Karttunen_
+A341613	charfunc	0	new A341615()					Characteristic function for A341615: 
+A346488	rgs1	1	new SimpleTransformSequence(1, new A008683(), (n, v) -> v.equals(Z.NEG_ONE) ? Z.ZERO : ZV(n))	Restricted growth sequence transform of the sequence f(n) = 0 if mu(n) = -1, and f(n) = n for mu(n) >= 0.
+A349626	moetra	1	new A326042()	, 0		M√∂bius transform of A326042, where A326042(n) = A064989(sigma(A003961(n))).	sign,mult	1..20000	nyi	_Antti Karttunen_
+A350067	#rgs2	1	new ()	new ()	Restricted growth sequence transform of the function f(1) = 0, f(n) = A336470(A156552(n)) for n > 1.
+A351578	#rgs2	1	new ()	new ()	Restricted growth sequence transform of the ordered pair [A007814(A109812(n)), A046523(A005940(1+A109812(n)))].
+A352888	rgs1	1	new DirectTransformSequence(1, new A278219(), new A109812())	Restricted growth sequence transform of A278219(A109812(n)).
+A359171	filter	0	new A010872()	v -> !v.isZero() && Jaguar.factor(v).lambda() == 1	Nonmultiples of 3 that have an even number of prime factors (with multiplicity).	nonn	1..67	nyi	_Antti Karttunen_
+A359371	filter	0	new A010873()	v -> !v.isZero() && Jaguar.factor(v).lambda() == 1	Nonmultiples of 4 that have an even number of prime factors (with multiplicity).	nonn	1..68	nyi	_Antti Karttunen_
+A359373	filter	0	new A010873()	v -> !v.isZero() && Jaguar.factor(v).lambda() == -1	Nonmultiples of 4 that have an odd number of prime factors (with multiplicity).	nonn	1..69	nyi	_Antti Karttunen_
+A359381	filter	0	new A010872()	v -> !v.isZero() && Jaguar.factor(v).lambda() == -1	Nonmultiples of 3 that have an odd number of prime factors (with multiplicity).	nonn	1..69	nyi	_Antti Karttunen_
+A360110	filter	0	new A010873()	v -> !v.isZero() && new A003415().a(v).mod(Z.FOUR).isZero()	Nonmultiples of 4 whose arithmetic derivative is a multiple of 4.	nonn	1..20000	nyi	_Antti Karttunen_
+A365394	#rgs2	1	new ()	new ()	Restricted growth sequence transform of the function f(n) = A336470(A163511(n)).
+A365395	#rgs2	1	new ()	new ()	Restricted growth sequence transform of the function f(n) = A336390(A163511(n)).
+A366792	#rgs2	1	new ()	new ()	Restricted growth sequence transform of the function f(n) = A366790(A163511(n)).
+A366881	#rgs2	1	new ()	new ()	Restricted growth sequence transform of sequence b(n) = A351461(A163511(n)).
+A366881	#rgs2	1	new ()	new ()	Restricted growth sequence transform of the ordered pair [A206787(A163511(n)), A336651(A163511(n))].
+A366889	simtraf	0	new DirichletInverseSequence(1, new A082903())	(n, v) -> (n == 1) ? Z.ONE : v	Dirichlet inverse of the highest power of two that divides the sum of divisors of n.	sign,mult	1..16384	nyi	_Antti Karttunen_
+A369259	rgs3	1	new A003557()	new A048250()	new A342671()	Restricted growth sequence transform of the triplet [A003557(j), A048250(i), A342671(n)].
+A370492	filtpos	1	1	new A071178()	(k, v) -> v.equals(JF(k).largestPrimeFactor())	Numbers k such that A006530(k) = A071178(k).	nonn,new	1..10000	nyi	_Amiram Eldar_
+A370493	filtpos	1	1	new A051903()	(k, v) -> v.equals(JF(k).largestPrimeFactor())	Numbers k such that A006530(k) = A051903(k).	nonn,new	1..3000	nyi	_Amiram Eldar_
+#----
+A292252	simtraf	0	new A048673()	v -> Z.valueOf(v.toString(3).replaceAll("[01]*\\Z", "9").replaceAll("[012]", "").length())	Number of trailing 2-digits in ternary representation of A048673(n).	nonn,base	1..16384	nyi	_Antti Karttunen_
+A292262	simtraf	0	new A245612()	v -> Z.valueOf(v.toString(3).replaceAll("[01]*\\Z", "9").replaceAll("[012]", "").length())	Number of trailing 2-digits in ternary representation of A245612(n).	nonn,base	0..16384	nyi	_Antti Karttunen_
+A292242	simtraf	0	new A254103()	v -> Z.valueOf(v.toString(3).replaceAll("[01]*\\Z", "9").replaceAll("[012]", "").length())	Number of trailing 2-digits in ternary representation of A254103(n).	nonn,base	0..16384	nyi	_Antti Karttunen_
+A369007	filtpos	1	1	new A003415()	(k, v) -> v./v.gcd(ZV(k)).mod(27) == 0	Numbers k for which k' / gcd(k,k') is a multiple of 27, where k' stands for the arithmetic derivative of k, A003415(k).	nonn	1..57	nyi	_Antti Karttunen_
+A369005	filtpos	1	1	new A003415()	(k, v) -> v./v.gcd(ZV(k)).mod( 4) == 0	Numbers k for which k' / gcd(k,k') is a multiple of four, where k' stands for the arithmetic derivative of k, A003415(k).	nonn	1..67	nyi	_Antti Karttunen_
+A369002	filtpos	1	1	new A003415()	(k, v) -> !v./v.gcd(ZV(k)).testBit(0)	Numbers k for which k' / gcd(k,k') is even, where k' stands for the arithmetic derivative of k, A003415.	nonn,changed	1..70	nyi	_Antti Karttunen_
+A369003	filtpos	1	1	new A003415()	(k, v) -> v./v.gcd(ZV(k)).testBit(0)	Numbers k for which k' / gcd(k,k') is odd, where k' stands for the arithmetic derivative of k, A003415.	nonn	1..78	nyi	_Antti Karttunen_
+A343216	filtpos	1	1	new A000203()	(k, v) -> new A003415().a(v).compareTo(ZV(k)) <  0	that A003415(sigma(k)) < k.	nonn	1..68	nyi	_Antti Karttunen_
+A342021	filtpos	1	1	new A000203()	(k, v) -> new A003415().a(v).compareTo(ZV(k)) == 0	that A003415(sigma(k)) = k, where A003415 is the arithmetic derivative, and sigma is the sum of divisors of n.	nonn,more,hard	1..4	nyi	_Antti Karttunen_
+A343218	filtpos	1	1	new A000203()	(k, v) -> new A003415().a(v).compareTo(ZV(k)) >  0	that A003415(sigma(k)) > k.	nonn	1..81	nyi	_Antti Karttunen_
+A343217	filtpos	1	1	new A000203()	(k, v) -> new A003415().a(v).compareTo(ZV(k)) >= 0	that A003415(sigma(k)) >= k.	nonn	1..82	nyi	_Antti Karttunen_

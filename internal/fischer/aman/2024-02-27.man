@@ -1,0 +1,94 @@
+%N A124869 Numerator of real part of (2*omega)^(-n) where omega = (-1 + i*3)/ 2.
+%N A124870 Denominator of real part of (2*omega)^(-n) where omega = (-1 + i*3)/ 2.
+%N A124871 Numerator of imaginary part of (2*omega)^(-n) where omega = (-1 + i*3)/ 2.
+%N A124872 Denominator of imaginary part of (2*omega)^(-n) where omega = (-1 + i*3)/ 2.
+
+A116566	simtraf	0	new GeneratingFunctionSequence(0, "[1, -59]", "[1, -60, -930, -899]")	v -> v.mod(ZV(37))	(-59*x + 1)/(-899*x^3 - 930*x^2 - 60*x + 1), modulo 37
+wrong OEIS? # A055911	lingf	5	0,0,0,0,0,1,4,8,22,37,56,88,98,137,118,145,113,104,79,50,40,17,10,6,0,1	1,-6,16,-26,27,-8,-34,84,-118,112,-54,-44,151,-222,220,-138,0,138,-220,222,-151,44,54,-112,118,-84,34,8,-27,26,-16,6,-1	0
+#? A267176	lingf	0	0,2	0,1	0
+#? A318104	lingf	9	0,-505869,12119667,-123440708,743861364,-3042178593,9095676287,-20813586162,37575714390,-54652436586,64986102294,-63818586384,52105462560,-35502824346,20210891046,-9599365020,3788388852,-1233345993,327531063,-69773436,11638044,-1465861,130203,-7074,262	524288,2359296,786432,-10485760,-10616832,23003136,30670848,-34504704,-50319360,41293824,55351296,-41932800,-42631680,35562240,22325760,-23872896,-6686712,11908836,-46020,-4063176,1029600,794508,-450684,-28080,83304,-21060,-3132,2936,-720,84,-4	0
+#? A321705	lingf	11	0,120590634,-4551482487,70450109181,-636222521835,3884772311755,-17381999057732,59921964749596,-164631904634034,369248653495224,-688132255732089,1079777704066211,-1441049713713697,1648244824141541,-1624946594021442,1386473022603702,-1026634198100076,660664718881890,-369584821901289,179554787561667,-75588918269757,27473252089077,-8575216999488,2281778780336,-512476789954,95848716764,-14652693639,1783568061,-166443735,11142715,-460250,13150	16777216,100663296,113246208,-448790528,-1028653056,792723456,3462660096,-441188352,-7279607808,-833355776,11158388736,2150793216,-13393436672,-2316238848,12997822464,1140885504,-10261506816,401905152,6500142528,-1259020224,-3192246288,1207580352,1131464916,-718502076,-236070432,286577568,-3547152,-73378256,20478336,9532512,-6455240,336600,807840,-285600,5040,22896,-7664,1248,-108,4	0
+A352177	lingf	1	0,1,1,-1,1,-1,2,-2,0,1,-1	1,-1	0
+
+%F A267176	bva	0	((1+x)*(1+x+x^2+x^3+x^4+x^5+x^6+x^7) *(1+x+x^2+x^3+x^4+x^5+x^6+x^7+x^8+x^9+x^10+x^11)*(1+x+x^2+x^3+x^4+x^5+x^6+x^7+x^8+x^9+x^10+x^11+x^12+x^13)*(1+x+x^2+x^3+x^4+x^5+x^6+x^7+x^8+x^9+x^10+x^11+x^1+x^13+x^14+x^15+x^16+x^17)*(1+x+x^2+x^3+x^4+x^5+x^6+x^7+x^8+x^9+x^10+x^11+x^12+x^13+x^14+x^15+x^16+x^17+x^18+x^19)*(1+x+x^2+x^3+x^4+x^5+x^6+x^7+x^8+x^9+x^10+x^11+x^12+x^13+x^14+x^15+x^16+x^17+^18+x^19+x^20+x^21+x^22+x^23)*(1+x^20+x^21+x^22+x^23+x^18+x^19+x^2+x^3+x^4+x^5+x^6+x^12+x^13+x^7+x^8+x^9+x^10+x^11+x^14+x^15+x^16+x^17+x+x^24+x^25+x^26+x^27+x^28+x^29))/((1-x)*(1-x^7)*(1-^11)*(1-x^13)*(1-x^17)*(1-x^19)*(1-x^23)*(1-x^29))
+
+A115752	lambdan	0	n -> SU(0, (n - 2)/3, i -> BI(n + 1, i).*(SU(i + 1, (n - i)/2, j -> BI(n + 1 - i, j))))	seq(add(binomial(n+1, i)*add(binomial(n+1-i, j), j=i+1..floor((n-i)/2)), i=0..floor((n-2)/3)), n=0..30);
+
+A116637	lambdan	0	m -> { if (m == 0) return Z.valueOf(m + 1); final int n = m/2; return ((m & 1) == 1) ? BI(3*n + 1, n)./(n + 1).*(2) : BI(3*n, n)./(2*n + 1).*(2); }	a(2*n+1) = 2*(3*n+1)!/((n+1)!*(2*n+1)!) = 2*A006013(n), with a(0)=1 and a(2*n+2) = 2*(3*n+3)!/((n+1)!*(2*n+3)!) 
+
+A288659	filnum	0	0	n -> (ZV(n).^(3).toString().length() & 1) == 1	Numbers whose cubes have an odd number of digits.	nonn,base,easy	1..10000	nyi	_Lars Blomberg_
+
+A288995	simtraf	0	new A288968()	v -> v.-(2).*(12)	a(n) = 12 * (A288968(n) - 2).	nonn	1..701	nyi	_Seiichi Manyama_
+A289412	lambdan	0	n -> { final FactorSequence fs = JF(n); return new Q(fs.sigma(), fs.phi()).den(); }	a(n) = denominator of (sigma(n) / phi(n)).	nonn,frac	1..10000	nyi	_Jaroslav Krizek_
+A289488	lambdan	0	n -> RU(1, n, k -> new Q(Z.ONE, FD(2*k - 1))).den()	a(n) = denominator of Sum_{k=1..n} 1/(2*k-1)!!.	nonn,frac	1..404	nyi	_Seiichi Manyama_
+A289556	filter	0	new A000040()	p -> p.*(5).-(4).isProbablePrime() && p.*(4).-(5).isProbablePrime()	Primes p such that both 5*p - 4 and 4*p - 5 are prime.	nonn	1..51	nyi	_David James Sycamore_
+
+A370671	lambdan	0	n -> SU(2, n - 1, i -> ZV(n).^(i - 2).*(i))	a(n) = Sum_{i=2..n-1} i*n^(i-2).	nonn,new	0..21	nyi	_Chai Wah Wu_
+
+y:= proc(x)      (1 - sqrt(1 - 4*x)) / (2*x) end;
+
+# A288271	holos	8	[[0],[-32746,9356],[-77522,71173],[247914,36378],[152640,-7389],[12600,-1575]]	225225	0	0	
+FindRE(-143*y(x)*(y(x)-1)^8*(1575*y(x)^6 + 13689*y(x)^5 + 4689*y(x)^4 - 34417*y(x)^3 + 11361*y(x)^2 + 7017*y(x) - 2339)/(y(x)-2)^23,x,a(n));
+# (-1575*n+12600)*a(n)+(9356*n-32746)*a(n-4)+(71173*n-77522)*a(n-3)+(36378*n+247914)*a(n-2)+(-7389*n+152640)*a(n-1) = 0,
+
+# A288272
+FindRE(y(x)*(y(x)-1)^9*(225225*y(x)^8 + 25467156*y(x)^7 + 207300366*y(x)^6 + 77853486*y(x)^5 - 660073489*y(x)^4 + 222312257*y(x)^3 + 269246651*y(x)^2 - 140048085*y(x) + 10034310)/(y(x)-2)^26,x,a(n));
+
+# A288273
+FindRE(-2*y(x)*(y(x)-1)^10*(12317877*y(x)^9 + 793781118*y(x)^8 + 6094043038*y(x)^7 + 2216299748*y(x)^6 - 23375789497*y(x)^5 + 7963356801*y(x)^4 + 15368481377*y(x)^3 - 10027219339*y(x)^2 + 877859200*y(x) + 252711200)/(y(x)-2)^29,x,a(n));
+
+# A288274
+FindRE(y(x)*(y(x)-1)^11*(1495900107*y(x)^10 + 72057286944*y(x)^9 + 525358145917*y(x)^8 + 168001652997*y(x)^7 - 2349735380723*y(x)^6 + 817302422933*y(x)^5 + 2199510551627*y(x)^4 - 1660311974101*y(x)^3 + 109057768182*y(x)^2 + 147825658668*y(x) - 23527494040)/(y(x)-2)^32,x,a(n));
+
+# A288275
+FindRE(-2*y(x)*(y(x)-1)^12*(33259798737*y(x)^11 + 1329990099093*y(x)^10 + 9262655718313*y(x)^9 + 2336641955449*y(x)^8 - 47227883527259*y(x)^7 + 17056753299711*y(x)^6 + 58186472373731*y(x)^5 - 48817840576153*y(x)^4 + 819511081872*y(x)^3 + 9462230411332*y(x)^2 - 2475017890416*y(x) + 88807125936)/(y(x)-2)^35,x,a(n));
+
+# A288276
+FindRE(2*y(x)*(y(x)-1)^13*(1208305403982*y(x)^12 + 42344287039512*y(x)^11 + 283047148578040*y(x)^10 + 47183718440672*y(x)^9 - 1618438221531593*y(x)^8 + 617910272368381*y(x)^7 + 2488374601412831*y(x)^6 - 2268379207704481*y(x)^5 - 116197489174642*y(x)^4 + 764144804102008*y(x)^3 - 252877960850800*y(x)^2 + 8651012216320*y(x) + 3769026206720)/(y(x)-2)^38,x,a(n));
+
+# A288277
+FindRE(-4*y(x)*(y(x)-1)^14*(18995313191166*y(x)^13 + 602583747147072*y(x)^12 + 3880832501643076*y(x)^11 + 259447266126966*y(x)^10 - 24577880734142257*y(x)^9 + 10075843752456953*y(x)^8 + 45406701745704921*y(x)^7 - 44360505974166179*y(x)^6 - 5860774604042624*y(x)^5 + 22759971294835512*y(x)^4 - 8598423383057104*y(x)^3 - 18688742922288*y(x)^2 + 464831946526080*y(x) - 48608581644864)/(y(x)-2)^41,x,a(n));
+
+# A288278
+FindRE(y(x)*(y(x)-1)^15*(2141204115631518*y(x)^14 + 62802256981978404*y(x)^13 + 390904315702808387*y(x)^12 - 17469926941849537*y(x)^11 - 2715522908192830943*y(x)^10 + 1209526054185992549*y(x)^9 + 5862111891800632315*y(x)^8 - 6084780630540788053*y(x)^7 - 1344178041537337418*y(x)^6 + 4359417524034703460*y(x)^5 - 1779344954166712472*y(x)^4 - 128701285301543888*y(x)^3 + 220665627694548576*y(x)^2 - 38233669153240512*y(x) + 844773167217024)/(y(x)-2)^44,x,a(n));
+
+# A288279
+FindRE(-6*y(x)*(y(x)-1)^16*(9225445001552610*y(x)^15 + 253889174613116085*y(x)^14 + 1531144661703557241*y(x)^13 - 254390452688914375*y(x)^12 - 11576322921612113581*y(x)^11 + 5646113444605154169*y(x)^10 + 28587502564009313669*y(x)^9 - 31350769849259642447*y(x)^8 - 9832935993984430480*y(x)^7 + 29500732589692418132*y(x)^6 - 12567984363713561312*y(x)^5 - 2218978200544343392*y(x)^4 + 2888444088307833216*y(x)^3 - 630076702195212352*y(x)^2 + 8436883230156800*y(x) + 6263496930404352)/(y(x)-2)^47,x,a(n));
+
+# A288280
+FindRE(2*y(x)*(y(x)-1)^17*(667113335854505289*y(x)^16 + 17412039201241985652*y(x)^15 + 101949739105950626070*y(x)^14 - 30202970169901595562*y(x)^13 - 833532476362240891879*y(x)^12 + 447114036864981439647*y(x)^11 + 2316066844919602997013*y(x)^10 - 2673632819222127570107*y(x)^9 - 1088786810085394834566*y(x)^8 + 3157924186313124711792*y(x)^7 - 1371258409341666011952*y(x)^6 - 433458368694714259536*y(x)^5 + 515333809963509426144*y(x)^4 - 126279314363368987008*y(x)^3 - 3637814234318456832*y(x)^2 + 4694513255143047936*y(x) - 365353090019990016)/(y(x)-2)^50,x,a(n));
+
+A069879	partsun	0	new SimpleTransformSequence(0, new A060715(), v -> v.*(2))			Partial sums of 2*A060715(n).
+A074789	partsun	0	new SimpleTransformSequence(1, new A034448(), v -> v.^(2))			Partial sums of usigma(n)^2: square of the sum of unitary divisors of n.
+A092280	partsun	0	new A051626().skip(1)			Partial sums of periods of reciprocals.
+A092756	partsun	0	new A000227().skip(1)			Partial sums of round(exp(n)).
+A111043	partsun	0	new SimpleTransformSequence(0, new A001622(), v -> v.^(2))			Partial sums of squares of digits of golden ratio phi (A001622).
+A117962	partsun	0	new A117961()			Partial sums of hexagonal numbers with prime indices.
+A118482	partsun	0	new PrependSequence(0, new A109611(), 1)			Partial sums of Chen primes (starting with 1).
+A137377	partsun	0	new SimpleTransformSequence(1, new A051950(), v -> v.abs())			Partial sums of |A051950|, i.e., a(n) = Sum_{i=2..n} |d(i)-d(i-1)| = Sum_{i=2..n} |A051950(i)|. - _M. F. Hasler_, Apr 21 2008
+A152477	partsun	0	new A072214().skip(1)			Partial sums of PartitionsP of Fibonacci numbers.
+# A152478	partsun	0	new A072241()			Partial sums of PartitionsQ of Fibonacci numbers.
+A154569	partsun	0	new LambdaSequence(0, n -> ZV(2*n - 1).^(2*n + 1).+(ZV(2*n + 1).^(2*n-1)))	A00____()			Partial sums of (2n-1)^(2n+1)+(2n+1)^(2n-1).
+A168472	partsun	0	new A006881()			Partial sums of products of two distinct primes (A006881).
+A172034	partsun	0	new A063980()			Partial sums of Pillai primes (A063980).
+A172113	partsun	0	new A007645()			Partial sums of the generalized Cuban primes A007645.
+A172114	partsun	0	new A088054()			Partial sums of factorial primes A088054.
+A172239	partsun	0	new A018239()			Partial sums of primorial primes A018239.
+A172523	partsun	0	new A061372()			Partial sums of primes in which no digit is a prime A061372.
+A173107	partsun	0	new A005101()			Partial sums of abundant numbers (A005101).
+A173143	partsun	0	new A005117()			Partial sums of the squarefree numbers, A005117.
+A182101	partsun	0	new SimpleTransformSequence(1, new A121967(), v -> v.*(2).-(1))			Partial sums of the sequence 2*A121967(n)-1.
+A217487	partsun	0	new SimpleTransformSequence(0, new A080253(), v -> v.^(2))				Partial sums of the squares of the numbers in sequence A080253.
+A217512	partsun	0	new A005925()			Partial sums of nonzero terms in A005925.
+A231864	partsun	0	new SimpleTransformSequence(1, new A003415(), v -> v.^(2)).skip(1)	Partial sums of the second power of arithmetic derivative function A003415.
+A231946	partsun	0	new SimpleTransformSequence(1, new A003415(), v -> v.^(3)).skip(1)	Partial sums of the third power of the arithmetic derivative function A003415.
+A232172	partsun	0	new A068346().skip(1)			Partial sums of second arithmetic derivative of natural numbers.
+# A307612	partsun	0	new A186158()			Partial sums of the permutation A307485: one odd, two even, four odd, eight even, etc.
+A319744	partsun	0	new A152054()			Partial sums of bouncy numbers (A152054).
+A324470	partsun	0	new A092782()			Partial sums of ternary tribonacci word A092782.
+A358038	partsun	0	new A004709()			Partial sums of the cubefree numbers.
+A363497	partsun	0	new SimpleTransformSequence(0, new A000196(), v -> v.^(3))		Partial sums of the third powers of the terms of A000196.
+A363498	partsun	0	new SimpleTransformSequence(0, new A000196(), v -> v.^(4))		Partial sums of the fourth powers of the terms of A000196.
+A363499	partsun	0	new SimpleTransformSequence(0, new A000196(), v -> v.^(5))		Partial sums of the fifth powers of the terms of A000196.
+A369115	partsun	0	new A186537().skip(1)			Partial sums of A186537 starting at n = 1.					Expansion of (1 - x)^(-2) * Sum_{j>=0} (x^j / (1 - Sum_{k=1..j} x^k)).
+

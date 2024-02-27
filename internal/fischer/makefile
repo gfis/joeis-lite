@@ -3285,6 +3285,16 @@ ogf:
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
+fract1:
+	$(JPREP) -cc fract1 -f $(LIST) \
+	>        $@.tmp
+	wc -l    $@.tmp
+	grep -E "fract1" $@.tmp \
+	| sed -e "s/fract1/lingf/" \
+	| sort | uniq -w7 \
+	>        $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
 holon: # with update of inits
 	grep -E "^A[0-9]" $(HOLREC)/recogf2.tmp \
 	| grep -v FAIL \

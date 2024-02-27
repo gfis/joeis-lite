@@ -1,0 +1,57 @@
+A370357	holos	0	[[0],[18,-27,9],[18,-36,18],[0,-9,9],[-2]]	1,0,9	0	0
+A180564	holos	0	[[0],[-4,1],[3,-1],[-3,1],[3],[-2]]	1,0,1,1	0	0
+A277359	holos	0	[[0],[-72,132,-80,16],[-56,58,-4,-8],[1,-10,10,1],[0,-1,-1]]	1,2,7	0	0	-a(n)*(n*(n+1)) +   ((n^3+10*n^2-10*n+1)*a(n-1)-(2*(4*n^3+2*n^2-29*n+28))*a(n-2)+(4*(n-2))*(2*n-3)^2*a(n-3))
+A317985	holos	0	[[0],[5,-2],[2,-1],[0,2],[-1]]	1,2,7,38	0	0	-a(n)+ 2*n*a(n-1) -(n-2)*a(n-2) -(2*n-5)*a(n-3)
+A369906	holos	0	[[0],[-288,64],[600,-160],[-420,148],[120,-64],[-12,13],[0,-1]]	0,0,1,9,50	0	0	-n*a(n)+   ((13*n-12)*a(n-1)-8*(8*n-15)*a(n-2)+4*(37*n-105)*a(n-3)-40*(4*n-15)*a(n-4)+32*(2*n-9)*a(n-5))
+A370358	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A025035(), new A370357()	a(n) = A025035(n) - A370357(n).
+A135342	tuptraf	0	(n, s) -> s[0].*(2).-(s[1]).+(JF(n - 1).phi())	"1,3,5"	PREVIOUS,PREVIOUS,PREVIOUS	a:= proc(n) option remember; `if`(n<4, [0, 1, 3, 5][n+1],2*a(n-1)-a(n-2)+numtheory[phi](n-1))
+A327474	tuptraf	0	(n, s) -> s[0].*(2).-(s[1]).+(JF(n - 1).phi())	"1,2,4,6"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a:= proc(n) option remember; `if`(n<4, [1, 2, 4, 6][n+1],2*a(n-1)-a(n-2)+numtheory[phi](n-1))
+A370458	partprod	0	new A051179()	Partial products of A051179
+
+A333298	lingf	0	1,6,9	1,-12,-18	0						Number of canonical sequences of moves of length n for the Rubik cube puzzle using the half-turn metric.
+A366295	rgs1	1	new A349623()	1	Lexicographically earliest infinite sequence such that a(i) = a(j) => A349623(i) = A349623(j) for all i, j >= 1, where A349623 is the Dirichlet inverse of A064989(sigma(A003961(n))).						Lexicographically earliest infinite sequence such that a(i) = a(j) => A349623(i) = A349623(j) for all i, j >= 1, where A349623 is the Dirichlet inverse of A064989(sigma(A003961(n))).
+A366815	lingf	1	0,448,1304,1054,-90,-12	1,-5,10,-10,5,-1	0						Hyper-Wiener index in diamond nanowires obtained by connecting n unit cells in a sequence.
+A369405	lingf	1	0,100	1,-1100,100000	0						Context-free language 1^n.0^(2n).
+A370110	lingf	1	0,0,0,0,0,24,132,12,-44,72,112,-284,168,192,-152,-120,80	1,-5,10,-10,5,-1	0						Number of chordless cycles in the complement of the n X n antelope graph.
+A370192	lingf	0	0,-2	1,-8,20	0						a(n) is the numerator of the imaginary part of 1/(1+i/2)^n, where i is the imaginary unit.
+A370296	dirichcon2	1	new A000005()	1	new A323308()	1	Dirichlet convolution of A000005 and A323308.				Inverse Moebius transform of A322327.
+A370297	dirichcon2	1	new A034444()	1	new A048691()	1	Dirichlet convolution of A034444 and A048691.				Inverse Moebius transform of A322328.
+A370299	lingf	1	0,0,0,171,405	1,-13,39,-27	0						Number of chordless cycles in the complement of the n-Sierpinski gasket graph.
+A370304	lingf	0	1,-1,1,1	1,-3,0,5,0,-3,-1	0						Number of multiplex juggling cards with n balls and capacity 2.
+A370306	lingf	0	1,-2,1,4,3,0,-3,-2,-1	1,-4,2,4,7,-8,-12,-8,7,12,10,4,1	0						Number of multiplex juggling cards with n balls and capacity 3.
+A370377	lingf	0	1,3,0,0,0,-1	1,0,-2,0,-1,0,1	0						a(n) is the number of symmetrical linear hydrocarbon chains with n C-C bonds.
+
+A331297	rgs2	1	new A001222()	new A061395()	Restricted growth sequence transform of the unordered pair [A001222(n), A061395(n)].
+A331300	rgs1	1	new A331166()	Restricted growth sequence transform of A331166. See comments in that sequence.
+A334867	rgs2	1	new A329697()	new A334204().skip(1)	Restricted growth sequence transform of the ordered pair [A329697(n), A334204(n)].
+A337200	rgs1	1	new DirectTransformSequence(1, new A278222(), new A337194())	Restricted growth sequence transform of f(n) = A278222(A337194(n)).
+A351963	rgs1	1	new DirectTransformSequence(1, new A278222(), new A109812())	Restricted growth sequence transform of A278222(A109812(n)), or equally of, A278222(A351965(n)).
+A365466	rgs2	1	new A336466()	new A365426().skip(1)	Restricted growth sequence transform of the ordered pair [A336466(n), A365426(n)].
+A365467	rgs2	1	new A336467()	new A365427().skip(1)	Restricted growth sequence transform of the ordered pair [A336467(n), A365427(n)].
+A366294	rgs1	1	new A326042()	Restricted growth sequence transform of A326042.
+A366295	rgs1	1	new A349623()	Restricted growth sequence transform of A349623.
+A369040	rgs2	1	new A003415().skip(1)	new A342014()	Restricted growth sequence transform of the ordered pair [A003415(n), A342014(n)].
+A369046	rgs2	1	new A003415().skip(1)	new A069359()	Restricted growth sequence transform of the ordered pair [A003415(n), A069359(n)].
+A369065	rgs1	1	new A344026()	Restricted growth sequence transform of A344026, i.e., of the arithmetic derivative (A003415) as reordered by the Doudna sequence (A005940).
+A369260	rgs2	1	new A342671()	new A349162()	Restricted growth sequence transform of the ordered pair [A342671(n), A349162(n)], or equally, of the pair [A000203(n), A342671(n)], or equally,
+A369447	rgs2	1	new A001065()	new A342671()	Restricted growth sequence transform of the ordered pair [A001065(n), A342671(n)].
+A369466	rgs1	1	new A369465()	Restricted growth sequence transform of A369465.
+
+A352888	#rgs2	1	new (), new ()	Restricted growth sequence transform of A278219(A109812(n)).
+A366881	#rgs2	1	new (), new ()	Restricted growth sequence transform of sequence b(n) = A351461(A163511(n)).
+A337201	#rgs2	1	new (), new ()	Restricted growth sequence transform of f(n) = A278221(A337194(n)).
+A351578	#rgs2	1	new (), new ()	Restricted growth sequence transform of the ordered pair [A007814(A109812(n)), A046523(A005940(1+A109812(n)))].
+A366881	#rgs2	1	new (), new ()	Restricted growth sequence transform of the ordered pair [A206787(A163511(n)), A336651(A163511(n))].
+A340684	#rgs2	1	new (), new ()	Restricted growth sequence transform of the ordered pair [A291759(n), A278222(A304759(n))].
+A336460	#rgs2	1	new (), new ()	Restricted growth sequence transform of the ordered triple [A278222(n), A336158(n), A336466(n)].
+A369259	#rgs2	1	new (), new ()	Restricted growth sequence transform of the triplet [A003557(j), A048250(i), A342671(n)].
+A350067	#rgs2	1	new (), new ()	Restricted growth sequence transform of the function f(1) = 0, f(n) = A336470(A156552(n)) for n > 1.
+A336395	#rgs2	1	new (), new ()	Restricted growth sequence transform of the function f(n) = A278221(A000265(n)), the prime signature of the conjugated prime factorization of the
+A336925	#rgs2	1	new (), new ()	Restricted growth sequence transform of the function f(n) = A336147(A088580(n)).
+A365395	#rgs2	1	new (), new ()	Restricted growth sequence transform of the function f(n) = A336390(A163511(n)).
+A365394	#rgs2	1	new (), new ()	Restricted growth sequence transform of the function f(n) = A336470(A163511(n)).
+A366792	#rgs2	1	new (), new ()	Restricted growth sequence transform of the function f(n) = A366790(A163511(n)).
+A336855	#rgs2	1	new (), new ()	Restricted growth sequence transform of function f defined as: f(n) = -{distance to the next larger prime} when n is a prime, otherwise f(n) = -n
+A331304	#rgs2	1	new (), new ()	Restricted growth sequence transform of function f defined as: f(n) = A071986(n) when n is an odd prime, otherwise f(n) = -n.
+A353277	#rgs2	1	new (), new ()	Restricted growth sequence transform of function f(1) = 1, and for n > 1, f(n) = [A007814(u), A007949(u)], where u = A156552(n).
+A346488	#rgs2	1	new (), new ()	Restricted growth sequence transform of the sequence f(n) = 0 if mu(n) = -1, and f(n) = n for mu(n) >= 0.
