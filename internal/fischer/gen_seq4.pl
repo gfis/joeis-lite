@@ -234,6 +234,7 @@ while (<>) { # read inputfile
             $parm =~ s{SP\(}           {Integers.SINGLETON.sopf\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
+            $parm =~ s{SA\(([^\)]+)\)} {Stirling.firstKind\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
