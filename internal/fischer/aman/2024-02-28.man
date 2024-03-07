@@ -1,0 +1,119 @@
+A069536	simtraf	0	new A077495()	v -> v.*(8)	a(n) = 8 * A077495(n).
+A074452	filnum	0	1	n -> { final FactorSequence fs = JF(n); return fs.phi().toString(10).indexOf(fs.sigma().toString(10)) >= 0; }	Treated as strings, phi(n) is a substring of sigma(n).
+A078603	simtraf	0	new A002816()	(n, v) -> (n == 1) ? Z.ONE : v.*(2)	For n>1, a(n) = 2 * A002816(n).
+A088806	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A066060(), new A000688()	a(n) = A066060(n) -   A000688(n).
+A089389	tuptraf	0	(n, s) -> ZV(n).isProbablePrime() ? Z.ZERO : s[0].+(s[1])	"0"	new A020639(), new A032742()	a(1) = 0, for n > 1, if n is prime, a(n) = 0, otherwise a(n) = A020639(n) + A032742(n). - _Antti Karttunen_, Feb 25 2018
+# bad formula? A090858	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A036469(), new A015723()	a(n) = A036469(n) - A015723(n).
+A091020	filnum	0	1	n -> Puma.primeZ(n).toString(2).indexOf(ZV(n).toString(2)) >= 0	Numbers n such that in binary representation n is a substring of the n-th prime.
+A091021	filter	0	new A000040()	(k, p) -> p.toString(2).indexOf(k.toString(2)) >= 0	Primes p=prime(k) such that in binary representation k is a substring of p.
+A092316	tuptraf	0	(n, s) -> s[0].*(2).-(s[1])	""	new A067619().skip(1), new A000700().skip(1)	a(n) = 2* A067619(n) -    A000700(n). - _Seiichi Manyama_, Jan 19 2022
+A103839	simtraf	0	new A051239()	(n, v) -> (n == 1) ? Z.ONE : v.*(2)	For n>1, a(n) = 2 * A051239(n).
+A107323	tuptraf	0	(n, s) -> s[0].+(s[1].*(2))	""	new A000040().skip(2), new A173950().skip(2)	a(n) = A000040(n) + 2*A173950(n). - _R. J. Mathar_, Dec 17 2017
+A108605	simtraf	0	new A001359()	v -> v.*(2)	a(n) = 2 * A001359(n).
+A114089	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A006128().skip(1), new A115995().skip(1)	a(n) = A006128(n) -   A115995(n). - _Vladeta Jovovic_, Feb 18 2006
+A115090	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A115074(), new A117183()	a(n) = A115074(n) -   A117183(n).
+A115155	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A030220(), new PrependSequence(1, new A136599(), 0)	a(n) = A030220(n) +   A136599(n). - _Michael Somos_, Oct 13 2015
+A118255	tuptraf	1	(n, s) -> (n > 1 && ZV(n).isProbablePrime()) ? s[0].*(2) : s[0].*(2).+(1)	"1"	PREVIOUS	a(1)=1, then a(n)=2*a(n-1) if n is prime, a(n)=2*a(n-1)+1 if n not prime.
+A123975	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A064173(), new A101198()	a(n) = A064173(n) -   A101198(n).
+A125271	tuptraf	0	(n, s) -> s[0].*(2).-(s[1])	""	new A062327(), new A000005()	a(n) = 2* A062327(n) -    A000005(n). - _T. D. Noe_, Feb 21 2007
+A130911	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A200247(), new A200246()	a(n) = A200247(n) -   A200246(n).
+A131802	tuptraf	0	(n, s) -> s[0].-(s[1].*(2))	"1"	new A057567(), new A001055()	a(1) = 1; for n > 1, a(n) = A057567(n) - 2*A001055(n).
+A143818	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A143816(), new A143817()	a(n) = A143816(n) -   A143817(n). a(n) = sum {k = 0..floor((n-1)/3)} (Stirling2(n,3k+1) - Stirling2(n,3k+2)). Let R(n) = sum {k = 0..inf} (3k)^n/(3k)! for n = 0,1,2,... . Then R(n) = €143815(n)*R(0) + €143818(n)*R(1) + A143817(n)*R(2). Some examples are given below. This generalizes the Dobinski relation for the Bell numbers: sum {k = 0..inf} k^n/k! = A000110(n)*exp(1). See €143815 for more details. Compare with A024429, A024430 and A143628--A143631
+A154413	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A006551(), new A018224()	a(n) = A006551(n) -   A018224(n).
+A167687	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A167683(), new A167686()	a(n) = A167683(n) -   A167686(n).
+A168313	tuptraf	0	(n, s) -> s[0].*(2).-(s[1])	""	new A101688(), new A023531()	a(n) = 2* A101688(n)-     A023531(n).
+A171453	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A008475(), new A067240()	a(n) = A008475(n) -   A067240(n).
+A175342	tuptraf	0	(n, s) -> s[0].*(2).-(s[1])	""	new A049988(), new A000005()	a(n) = 2* A049988(n) -    A000005(n).
+A178610	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A001358(), new A176506()	a(n) = A001358(n) -   A176506(n).
+A178611	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A001358(), new A176504()	a(n) = A001358(n) -   A176504(n).
+A183012	tuptraf	0	(n, s) -> s[0].*(24).-(s[1])	""	new A138879(), new A187219()	a(n) = 24*A138879(n) -    A187219(n).
+A200213	tuptraf	0	(n, s) -> s[0].-(s[1]).-(2)	"0"	new A000005(), new A010052()	a(1) = 0; for n > 1, a(n) = A000005(n) -   A010052(n) - 2.
+A215513	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A092269(), new A000041()	a(n) = A092269(n) -   A000041(n).
+A216982	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A066417(), new A066481()	a(n) = A066417(n) -   A066481(n).
+A220907	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A066186(), new A092269()	a(n) = A066186(n) -   A092269(n). - _Omar E. Pol_, Jan 08 2013
+A229836	lambdan	1	n -> (n == 2) ? Z.TWO : Puma.primePiZ(ZV(n).^(n)).-(Puma.primePiZ(FA(n)))	a(n) = A064151(n) -   A003604(n). Add 1 for n=2 since 2! is prime. - _Jens Kruse Andersen_, Jul 29 2014
+A239051	tuptraf	0	(n, s) -> s[0].-(s[1].*(3))	""	new A227216(), new PrependSequence(0, new A229802(), 0)	a(n) = A227216(n) - 3*A229802(n).
+A246590	simtraf	0	new A091067()	v -> v.*(2)	a(n) = 2 * A091067(n). - _Antti Karttunen_, Feb 20 2015
+A250477	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A250474(), new A256447()	a(n) = A250474(n) +   A256447(n).
+A256251	simtraf	0	new A006257()	(n, v) -> (n == 0) ? Z.ONE : v.*(4)	a(0) = 1. For n >= 1; a(n) = 4 * A006257(n).
+A256449	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A256447(), new A256448()	a(n) = A256447(n) -   A256448(n).
+A256449	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A256447(), new A256448()	a(n) = A256447(n) -   A256448(n).
+A259472	tuptraf	0	(n, s) -> s[0].-(s[1].*(2))	"1"	new A059439().skip(1), new A003319().skip(1)	a(0) = 1  For n > 0, a(n) = A059439(n) - 2*A003319(n).
+A260657	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000142(), new A005394()	a(n) = A000142(n) -   A005394(n). - _Alois P. Heinz_, Jan 24 2024
+A262354	simtraf	0	new A127917()	(n, v) -> (n == 1) ? Z.SIX : v.*(2)	For n>1, a(n) = 2*A127917(n).
+A263995	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A027424(), new A108954()	a(n) = A027424(n) +   A108954(n). - _Jon Maiga_, Jan 03 2022
+A265258	tuptraf	0	(n, s) -> s[0].+(s[1].*(2))	""	new A000070().skip(1), new A000041().skip(1)	a(n) = A000070(n) + 2*A000041(n). - _Vaclav Kotesovec_, Jan 11 2016
+A265342	simtraf	0	new A265351()	v -> v.*(2)	a(n) = 2 * A265351(n).
+A265342	simtraf	0	new A265351()	v -> v.*(2)	a(n) = 2 * A265351(n).
+A267830	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A008908(), new A078350()	a(n) = A008908(n) -   A078350(n).
+A279893	tuptraf	0	(n, s) -> s[0].*(57183).+(s[1].*(20500))	""	new A282047(), new A282328()	a(n) = 57183* A282047(n) + 20500 *A282328(n). - _Seiichi Manyama_, Feb 12 2017
+A281009	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A001227(), new A067742()	a(n) = A001227(n) -   A067742(n).
+A282356	tuptraf	0	(n, s) -> s[0].*(392931).+(s[1].*(265000))	""	new A282048(), new A282357()	a(n) = 392931*A282048(n) + 265000*A282357(n).
+A284379	tuptraf	0	(n, s) -> s[0].*(2).+(s[1])	""	new A007931(), new A002275().skip(1)	a(n) = 2* A007931(n) +    A002275(n).
+A288003	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A002487(), new A288002()	a(n) = A002487(n) -   A288002(n). [r-fusc(n) = fusc(n) - l-fusc(n).]
+A294056	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A287279().skip(8), new A287278().skip(8)	a(n) = A287279(n) -   A287278(n).
+A294057	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A287280().skip(9), new A287279().skip(9)	a(n) = A287280(n) -   A287279(n).
+A294058	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A287281().skip(10), new A287280().skip(10)	a(n) = A287281(n) -   A287280(n).
+A296050	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000166(), new A001883()	a(n) = A000166(n) -   A001883(n).
+A297155	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A252464(), new A297113()	a(n) = A252464(n) -   A297113(n).
+A297167	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A252464(), new A001221()	a(n) = A252464(n) -   A001221(n).
+A300723	tuptraf	0	(n, s) -> s[0].-(s[1].*(2))	"0"	new A297111(), new A300724()	a(1) = 0; for n > 1, a(n) = A297111(n) - 2*A300724(n).
+A318652	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A046645(), new A318513()	a(n) = A046645(n) -   A318513(n).
+A319377	tuptraf	0	(n, s) -> s[0].+(s[1].*(2))	""	new A050381().skip(1), new A000669().skip(1)	a(n) = A050381(n) - 2*A000669(n).
+A320015	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A320001(), new A320005()	a(n) = A320001(n) +   A320005(n).
+A320558	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A276724().skip(8), new A276723().skip(8)	a(n) = A276724(n) -   A276723(n).
+A321051	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A259778().skip(5), new A259777().skip(5)	a(n) = A259778(n) -   A259777(n).
+A321052	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A259779().skip(6), new A259778().skip(6)	a(n) = A259779(n) -   A259778(n).
+A323167	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A323174(), new A322867()	a(n) = A323174(n) -   A322867(n).
+A323884	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A322026(), new A323883()	a(n) = A322026(n) +   A323883(n).
+A323905	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A156552(), new A048675()	a(n) = A156552(n) -   A048675(n).
+A323905	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A156552(), new A048675()	a(n) = A156552(n) -   A048675(n).
+A324575	tuptraf	0	(n, s) -> s[0].*(2).-(s[1])	""	new A048675(), new A324573()	a(n) = 2* A048675(n) -    A324573(n).
+A325974	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000203(), new A325973()	a(n) = A000203(n) -   A325973(n).
+A326044	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A033879(), new A326045()	a(n) = A033879(n) +   A326045(n).
+A330645	simtraf	0	new A067142()	v -> v.*(2)	a(n) = 2 * A067142(n).
+A330645	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000085(), new A067136()	a(n) = A000085(n) -   A067136(n).
+A335508	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000670(), new A080599()	a(n) = A000670(n) -   A080599(n). - _Andrew Howroyd_, Jan 28 2024
+A335515	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000670(), new A226316()	a(n) = A000670(n) -   A226316(n). - _Andrew Howroyd_, Jan 28 2024
+A339895	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A339894(), new A061395()	a(n) = A339894(n) -   A061395(n).
+A339895	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A339894(), new A061395()	a(n) = A339894(n) -   A061395(n).
+A339896	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A056239(), new A339894()	a(n) = A056239(n) -   A339894(n).
+A339896	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A056239(), new A339894()	a(n) = A056239(n) -   A339894(n).
+A341620	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A294927(), new A294936()	a(n) = A294927(n) +   A294936(n).
+A346236	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A341530(), new A346235()	a(n) = A341530(n) +   A346235(n).
+A346247	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A344587(), new A346246()	a(n) = A344587(n) +   A346246(n).
+A346255	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A336849(), new A346254()	a(n) = A336849(n) +   A346254(n).
+A347229	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A344695(), new A347228()	a(n) = A344695(n) +   A347228(n).
+A347876	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A332221(), new A331750()	a(n) = A332221(n) -   A331750(n).
+A349401	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000112(), new A000608()	a(n) = A000112(n) -   A000608(n).
+A349555	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A001221(), new A066911()	a(n) = A001221(n) +   A066911(n).
+A349916	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A113415(), new A349915()	a(n) = A113415(n) +   A349915(n).
+A351394	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A048105(), new A046660()	a(n) = A048105(n) +   A046660(n). - _Amiram Eldar_, Oct 06 2023
+A351457	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A351456(), new A339905()	a(n) = A351456(n) -   A339905(n).
+A353757	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A353750(), new A353749()	a(n) = A353750(n) -   A353749(n).
+A353812	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A347870(), new A353811()	a(n) = A347870(n) -   A353811(n).
+A354352	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A108951(), new A354351()	a(n) = A108951(n) +   A354351(n).
+A354867	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A122111(), new A354866()	a(n) = A122111(n) +   A354866(n).
+A357259	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A038548(), new A079667()	a(n) = A038548(n) +   A079667(n). (End)
+A357508	tuptraf	0	(n, s) -> s[0].+(s[1].*(2))	""	new A001448(), new A005810()	a(n) = A001448(n) - 2*A005810(n).
+A357509	tuptraf	0	(n, s) -> s[0].*(2).-(s[1].*(9))	""	new A005809(), new A000984()	a(n) = 2* A005809(n) - 9* A000984(n).
+A357567	tuptraf	0	(n, s) -> s[0].*(5).-(s[1].*(14))	""	new A005259(), new A005258()	a(n) = 5* A005259(n) - 14*A005258(n).
+A357956	tuptraf	0	(n, s) -> s[0].*(5).-(s[1].*(2))	""	new A005259(), new A005258()	a(n) = 5* A005259(n) - 2* A005258(n).
+A358638	tuptraf	0	(n, s) -> s[0].+(s[1])	"1"	new A005171(), new A302479()	a(0) = 1  For n > 0, a(n) = A005171(n) +   A302479(n).
+A359431	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A325973(), new A326043()	a(n) = A325973(n) -   A326043(n).
+A365804	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A263273(), new A365803()	a(n) = A263273(n) +   A365803(n).
+A366839	simtraf	0	new A001511()	v -> v.*(2)	a(n) = 2 * A001511(n).
+A367175	simtraf	0	new A008472()	(n, v) -> JF(n).sigma().-(v.*(2))	a(n) = sigma(n) - 2 * A008472(n).
+A367504	tuptraf	0	(n, s) -> s[0].+(JF(s[0]).largestPrimeFactor())	"2"	PREVIOUS	a(1) = 2; for n > 1, a(n) = a(n-1) + 2*gpf(a(n-1)), where gpf(k) = A006530(k) = greatest prime dividing k.
+A367870	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A245579(), new A000593()	a(n) = A245579(n) -   A000593(n).
+A368616	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A046992(), new A062774()	a(n) = A046992(n) -   A062774(n).
+A368647	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A005090(), new A005088()	a(n) = A005090(n) -   A005088(n).
+A368921	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A003415(), new A068346()	a(n) = A003415(n) -   A068346(n).
+A368922	tuptraf	0	(n, s) -> s[0].+(s[1].*(2))	""	new A003415(), new A068346()	a(n) = A003415(n) - 2*A068346(n).
+A369404	tuptraf	0	(n, s) -> s[0].*(3).+(s[1].*(5))	""	new A000079(), new A033999()	a(n) = 3* A000079(n) + 5* A033999(n).
+A369404	tuptraf	0	(n, s) -> s[0].*(4).-(s[1].*(3))	""	new A014551(), new A001045()	a(n) = 4* A014551(n) - 3* A001045(n).
+A369610	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A014689(), new A079952()	a(n) = A014689(n) -   A079952(n). - _Jinyuan Wang_, Feb 09 2024
+A369966	simtraf	0	new A067019()	v -> v.*(2)	a(n) = 2 * A067019(n).
+A370253	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A001147(), new A053871()	a(n) = A001147(n) -   A053871(n).
+A370485	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A095816(), new A002464()	a(n) = A095816(n) -   A002464(n).
+
