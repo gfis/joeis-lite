@@ -210,6 +210,7 @@ while (<>) { # read inputfile
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;
             $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." . $zhash{$1}}eg;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
+            $parm =~ s{BS}             {BernoulliSequence}g;
             $parm =~ s{CV\(}           {CR.valueOf\(}g;
             $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
             $parm =~ s{FD\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
@@ -446,6 +447,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     } # foreach                                                                                     
     if ($line =~ m{\WAbsoluteSequence}             ) { $imports{"irvine.oeis.AbsoluteSequence"  }                = $itype; }
     if ($line =~ m{\WBellNumbers\.}                ) { $imports{"irvine.math.z.BellNumbers"     }                = $itype; }
+    if ($line =~ m{\WBernoulliSequence}            ) { $imports{"irvine.math.q.BernoulliSequence" }              = $itype; }
     if ($line =~ m{\WBinomial\.}                   ) { $imports{"irvine.math.z.Binomial"}                        = $itype; }
     if ($line =~ m{\WCarmichael}                   ) { $imports{"irvine.math.z.Carmichael"                     } = $itype; }
     if ($line =~ m{\WCC\W}                         ) { $imports{"irvine.math.cc.CC"}                             = $itype; }
