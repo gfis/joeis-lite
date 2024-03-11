@@ -1,0 +1,91 @@
+A370291	tablamb	0	0	0	n -> BI(2*n, n)./(n + 1).intValueExact()	(n, k) -> ZV(n).*(n + 1)./(2)	T:= n-> n*(n+1)/2$binomial(2*n,n)/(n+1):
+A070553	tablamb	1	1	0	n -> 7	(n, k) -> Z.TEN.pow(n).*(k).mod(Z.SEVEN)	Rectangular array read by rows: n-th row gives the 7 numbers k*10^n mod 7 for 0 <= k < 7.
+%F A070829	tablamb	2	2	1	n -> JF(n).largestPrimeDivisor().intValueEaact()	(n, k) -> ...	 a(n, m)=1 if p(m), m>=1, divides n>=2, with the prime p(m) := A000040(m), else 0.
+A073187	tablamb	0	0	0	n -> n/3	(n, k) -> BI(n + 1, k).*(BI(2*n - 3*k, n - 3*k)).//(n + 1)	Triangle of C(n+1,k)*C(2*n-3*k,n-3*k)/(n+1) by rows.
+A073189	tablamb	0	0	0	n -> n/3	(n, k) -> k	Integers 0..k three times, then 0..k+1 three times, etc.
+A076126	tablamb	0	2	1	n -> n/2	(n, k) -> BI(n - k - 1, k - 1).*(FA(n))./(FA(k))	T(n, k) = n!/k!*binomial(n-k-1, k-1), n>=2, k=1..floor(n/2). 
+A077385	tablamb	1	1	0	n -> 2*n - 2	(n, k) -> (k < n) ? ZV(n).^(k) : ZV(n).^(2*n - k - 2)	T(n, k) = n^k for k < n, otherwise n^(2*n-k-2), for n >= 1, 0 <= k <= 2*n-2.
+A082375	tablamb	0	0	0	n -> n/2	(n, k) -> ZV(n).-(2*m)	T(n, m) = n - 2*m, m = 0, 1, ..., floor(n/2), n >= 0 
+A082693	tablamb	1	1	1	n -> 2*n - 1	(n, k) -> Z2((k <= n) ? ZV(n - k) : ZV(k - n))	Pyramidal sequence built with powers of 2.
+
+%N A084608 tablamb	0	T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*2^(k-2*j)*3^j.
+% A084610 T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-1)^j.
+% A084612 T(n, k) = Sum_{j=0..k} binomial(n,k-j)*binomial(k-j,j)*(-2)^j, for 0 <= k <= 2*n.
+% A084614 T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-3)^j, for 0 <= k <= 2*n.
+A084950	tablamb	0	0	0	n -> n/2 + 1	(n, m) -> FA(n - m).*(BI(n - m, m))./(FA(m))	_Wouter Meeussen_, Aug 08 2010
+A091453	tablamb	0	0	1	n -> n*2 - 1	ZV(n/k).*(2)	T(n, k) = 2*n\k;
+A091478	tablamb	0	0	0	n -> n*(n + 1)/2 + 1	(n, k) -> BI(n*(n + 1)/2, k)	a(n, k) = k!*binomial(binomial(n, 2), k).
+% A091913	tablamb	0	 Triangle read by rows: a(n,k) = C(n,k)*(2^(n-k) - 1) for k<n, a(n,k) = 0 for k >= n, where k=0..max(n-1,0).
+%F A091958	rablamb	0	 T(n,k) = binomial((n+1), k)*sum((-1)^j*binomial(n+1-k,j)*binomial(2n-3k-3j, n), j=0..floor(n/3)-k)/(n+1).
+%F A093127	tablamb	0	0	0	n -> n/2	(n, k) -> T := proc (n, k) if (1/2)*n+1/2 < k then 0 else binomial(n-k+2, k+1)*binomial(n-k+2, k)/(n-k+2)-binomial(n-k+1, k)*binomial(n-k+1, k-1)/(n-k+1) end if end proc: for n from 0 to 15 do seq(T(n, k), k = 0 .. floor((1/2)*n)) 
+%p A094046 T:=proc(n,k) if n=1 and k=0 then 1 elif n=1 and k>0 then 0 else binomial(n+k-2,k)*sum(binomial(n+k+i-2,i)*binomial(4*n-4-k-i,n-2*k-2-3*i),i=0..floor((n-2*k-2)/3))/(n-1) fi end: seq(seq(T(n,k),k=0..floor(n/2)-1),n=2..15);
+A094102	tablamb	1	1	1	n -> 2*n - 1	(n, k) -> (k <= n) ? FI(k) : FI(2*n - k)	 Triangle read by rows in which row n contains Fib(1), ..., Fib(n-1), Fib(n), Fib(n-1), ..., Fib(1)
+%t A095421 T[n_, m_] := Sum[(-1)^(n - i)*Binomial[n, i]*Binomial[2^i - 1, m], {i, 1, n}] - Binomial[2^n - 2, m - 1]; Table[T[n, m], {n, 2, 10}, {m, 2, 2^n - 2}] 
+%N A095422 Triangle read by rows: T(n,m) = number of m-block proper T_0-covers (without empty blocks and without multiple blocks) of a labeled n-set (n>=2, 2<=m<=2^n-2).
+%F A095422 T(n, m) = Sum(Stirling1(n+1, i+1)*binomial(2^i-1, m)-Stirling1(n, i)*binomial(2^i-2, m-1), 
+%N A097462	tablamb	0	0	0	n -> 10	(n, k) -> ZV(n).*(k)	Multiplication table for numbers 0 through 10 read by rows.
+%F A098978 T(n,k) = Sum_{j=0..floor(n/2)-k} (-1)^j * binomial(n-(j+k), j+k) * binomial(2n-3(j+k), n-(j+k)-1) * binomial(j+k, k)/(n-(j+k)). - I. Tasoulas (jtas(AT)unipi.gr), Feb 19 2006
+%e A098978 Table begins
+%e A098978 \ k  0,   1,   2, ...
+%e A098978 n
+%e A098978 0 |  1;
+%e A098978 1 |  1;
+%e A098978 2 |  1,   1;
+%e A098978 3 |  2,   3;
+%e A098978 4 |  5,   8,   1;
+%e A098978 5 | 13,  23,   6;
+
+%N A100948	2 Irregular triangle with T(n,1) = floor(n!/3), T(n,2) = n!/2, T(n,3) = n!, read by rows.
+%t A100948 Flatten[Table[{If[n < 3, 1, n!/3], If[n < 2, 1, n!/2], n!}, {n, 1, 10}]]
+%F A101431 T(n, k) = (1/n)binomial(n, k)*Sum_{i=0..min(k, n-1-2k)} 3^(n-1-k-2i)*binomial(k, i)binomial(n-k, k+i+1), 0 <= k <= ceiling(n/2)-1.
+%F A102426 T(n, k) = binomial(floor(n/2)+k, floor((n-1)/2-k) ).
+%e A102426 0:  0
+%e A102426 1:  1
+%e A102426 2:  1
+%e A102426 3:  1  1
+%e A102426 4:  2  1
+%e A102426 5:  1  3  1
+%e A102426 6:  3  4  1
+
+%F A102547 T(n,k) = binomial(n-2k,k) (0 <= k <= n/3).
+%F A108429 T(n,k) = binomial(n,2n-k)*binomial(n+k, n-1)/n.
+%e A108429 1;
+%e A108429 0,1,1;
+%e A108429 0,0,2,5,3;
+
+%F A109439 T(n,k) = (9*n-3*n^2+6*k*n-6*k-2*k^2-4)/2 if n-3 < k < 2*n,%F A109439 T(n,k) = A000217(3n-k-2) = (3*n-k-1)!/((3*(n-1)-k)!*2) if 2*n-3 < k < 3*n-2.
+%F A109439 T(n,k) = Sum_{i=k-n+1..k} A004737(T(n,i)),
+%F A109439 T(n,k) = Sum_{i=k-n+1..k} (n-|n-i-1|) if n <= k <= 2*n+1. (End)
+%e A109439 Triangle starts:
+%e A109439 1;
+%e A109439 1, 3, 3, 1;
+%e A109439 1, 3, 6, 7, 6, 3, 1;
+%e A109439 1, 3, 6,10,12,12,10, 6, 3, 1;
+%e A109439 1, 3, 6,10,15,18,19,18,15,10, 6, 3, 1;
+%e A109439 1, 3, 6,10,15,21,25,27,27,25,21,15,10, 6, 3, 1;
+%e A109439 1, 3, 6,10,15,21,28,33,36,37,36,33,28,21,15,10, 6, 3, 1.
+
+%p A109446 T:= (n, k)-> binomial(n, 2*k+irem(n, 2)):
+%F A109646 for k=0, a(n, k)=1 for k>0 and n!=k, a(n, k)=(n-k)k+(n-k)+k+1 for k>0 and n=k, a(n, k)=(1/2)(k^2+3k+2)
+%F A109647 if k=0|n a(n, k)=1 if k=n/2 a(n, k)=(1/2)(k^2+3k+2) else a(n, k)=(n-k)k+(n-k)+k+1
+%F A109983 T(n, k) = binomial(n, 2*n-k) binomial(k, n).
+%C A109983 Row n has 2*n+1 terms, the first n of which are 0.
+
+%F A110237 T(n,m) = (m+1)*Sum_{i=0..(n-1)/2-m}((binomial(2*m+2*i+2,i)*Sum_{k=0..n-2*m-2*i-1}(binomial(k,n-2*m-k-2*i-1)*binomial(2*m+k+2*i+1,k)*(-1)^(n-k-1)))/(m+i+1)). - _Vladimir Kruchinin_, Mar 07 2016
+%C A110237 Row n has ceiling(n/2) terms. Row sums yield A110236.
+
+%o A113453 (PARI) for(n=2,25, for(k=n,2*n, print1(2^(floor((k-n)/2)),
+
+%F A114320 T(n,k) = n!/(2^k*k!) * Sum_{j=0..floor(n/2)-k} (-1/2)^j/j!. - _Alois P. Heinz_, Nov 30 2011
+%e A114320 T(3,1) = 3 because we have (1)(23), (12)(3) and (13)(2).
+%e A114320 Triangle begins:
+%e A114320     1;
+%e A114320     1;
+%e A114320     1,   1;
+%e A114320     3,   3;
+%e A114320    15,   6,   3;
+%e A114320    75,  30,  15;
+
+%F A114593 T(n, k) = 2^(n-2k)*binomial(n+1, k)*binomial(n-k-1, k-1)/(n+1) (1 <= k <= floor(n/2)). G.f. = 
+A157000	tablamb	0	2	1	n -> n/2	(n, k) -> BI(n - k - 1,k - 1).*(n)./(k)
+

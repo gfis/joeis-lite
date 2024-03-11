@@ -1,0 +1,42 @@
+A070914	arrlamb0	0	(n, k) -> BI(n*(k + 1), n)./(n*k + 1)
+A120986	trilamb0	0	(n, k) -> BI(n + 1, k).*(BI(2*(n + 1), n - k))./(n + 1)
+A130684	trilambn	0	1	1	(n, k) -> BI(k + 2, 3).*(2*n - k + 1)./(2)	T(n, k) = binomial(k+2, 3)*(2*n - k + 1)/2
+A144484	trilamb0	0	(n, k) -> BI(3 * n + 1 - k, n - k)
+# A156789	irrlamb0	0	(n, k) -> BI(2*n, k).*(BI(2*k, k))
+A157108	trilamb0	0	(n, k) -> BI(BI(n, k).*(n), k)
+A157109	trilamb0	0	(n, k) -> BI(BI(n, (n - k)/2).*(n), k)
+A235706	trilamb0	0	(n, k) -> BI(3, n - k ).*(FA(n))./(FA(k))
+A243660	trilambn	0	1	1	-1	(n, k) -> BI(3*n + 1 - k, n - k).*(BI(2*n, k - 1))./(n)
+A292930	trilambn	0	1	3	-1	(n, k) -> BI(k, 3).*(FA(n))./(FA(n + 2 - k))
+
+
+# A068555	parmof2	0	A068555	2	(n, k) -> Z_1(k).*(ZV( 4).^(n + k)).*(BI(new Q(n).-(new Q(1, 2), n + k)))	a(n,k) = (-1)^k* 4^(n+k)*binomial(n-1/2,n+k)
+# A084052	lambdan	0	n -> ZUtils.reverse(ZV(2*n)).modZ(2)	2,2	(\d+)*n digit-reversed mod (\d+)	m	i     
+# A096921	trilamb	0	(n,k) -> BI((n + k)/2, k/2)
+# A119963	trilamb	0	(n,k) -> BI((n - k%2)/2, k/2)
+# A152810	nyi t	Let the binary expansion of n be n = Sum_{k} 2^{r_k}, let e(n) be the number of r_ks that are even, o(n) the number that are odd sequence gives odd n such that e(n) > o(n) and e(n)-o(n) == 1 or 2 (mod 6).	nonn	1..10000	nyi	_Vladimir Shevelev_
+# A156789	irrlamb0	0	(n, k) -> BI(2*n, k).*(BI(2*k, k))
+# A302205	nyi	Let the binary expansion of n be [b_d, b_{d-1}, ..., b_3, b_2, b_1, b_0]_2, where (if n>0) b_d = 1, b_i = 0 or 1 for i<d. To get a(n) concatenate the decimal numbers 2^(b_i) (if b_i = 1) or 0 (if b_i = 0).	nonn,base	0..48	nyi	_N. J. A. Sloane_
+# C(x)=(1-sqrt(1-4*x))/(2*x)
+%F A370686 G.f.: c(x^3)/(sqrt(c(x^3)*(4-3*c(x^3)))-x*c(x^3))
+A070914	arrlamb0	0	(n, k) -> BI(n*(k + 1), n)./(n*k + 1)
+A072285	arrlamb0	0	(n, m) -> BI(new Q(n + 1).-(new Q(m, 2)), n - m + 1).-(BI(new Q(n).-(new Q(m, 2)), n - m + 1)).num()	a(n, m) = binomial(n-m/2, n-m);
+A072286	arrlamb0	0	(n, m) -> BI(new Q(n + 1).-(new Q(m, 2)), n - m + 1).-(BI(new Q(n).-(new Q(m, 2)), n - m + 1)).den()	a(n, m) = binomial(n-m/2+1, n-m+1) - binomial(n-m/2, n-m+1)
+A093905	arrlamb0	0	(n, k) -> RQ(n - k, n, i -> new Q(i)).*(RU(n - k, n, i -> new Q(1, i))).num()
+A209274	arrlambn	1	1	1	-1	(n, k) -> ZV(n).*(Z2(k).+(n - 1))./(2)	
+A248324	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 3)), n + k).*(Z_1(k)).*(ZV( 9).^(n + k)).num()	a(n,k) = (-1)^k* 9^(n+k)*binomial(n-1/3,n+k)
+A248325	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 4)), n + k).*(Z_1(k)).*(ZV(16).^(n + k)).num()	a(n,k) = (-1)^k*16^(n+k)*binomial(n-1/4,n+k)
+A248326	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 5)), n + k).*(Z_1(k)).*(ZV(25).^(n + k)).num()	a(n,k) = (-1)^k*25^(n+k)*binomial(n-1/5,n+k)
+A248328	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 6)), n + k).*(Z_1(k)).*(ZV(36).^(n + k)).num()	a(n,k) = (-1)^k*36^(n+k)*binomial(n-1/6,n+k)
+A248329	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 7)), n + k).*(Z_1(k)).*(ZV(49).^(n + k)).num()	a(n,k) = (-1)^k*49^(n+k)*binomial(n-1/7,n+k)
+A248332	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 8)), n + k).*(Z_1(k)).*(ZV(64).^(n + k)).num()	a(n,k) = (-1)^k*64^(n+k)*binomial(n-1/8,n+k)
+A261494	arrlamb0	0	(n, k) -> (n < 1) ? Z.ONE : SD(n, d -> BI((k + 1)*(n/d), n/d).*(JF(d).phi())./((k + 1)*n))
+A271825	arrlambn	1	1	1	-1	(n, k) -> (n == k) ? Z.ONE : Z_1(n - k - 1).*(k).*(BI(2*n - 3*k - 1, n - k - 1))./(n - k)
+A282011	arrlamb0	0	(n, k) -> SU(0, (n + 1)/4, j -> BI(((n & 1) == 0) ? n/2 : n/2 + 1, 2*j).*(BI(n/2, k - 2*j)))	a(n, k)=sum(j=0, floor((n+1)/4), binomial(ceil(n/2), 2*j)*binomial(floor(n/2), k-2*j));
+A325006	arrlambn	1	1	1	-1	(n, k) -> BI(BI(k, 2), n)
+A325007	arrlambn	1	1	1	-1	(n, k) -> BI(BI(k + 1, 2).+(n - 1), n).-(BI(BI(k, 2), n))
+A345647	arrlambn	1	1	1	-1	(n, k) -> Puma.primePiZ(n + k).-(Puma.primePiZ(n + 1))
+A362078	arrlamb0	0	(n, k) -> SU(0, n, j -> BI(n + j - 1, j).*(BI(k*j, n - j)))	T(n,k) = Sum_{j=0..n} (-1)^j * binomial(-n,j) * binomial(k*j,n-j) = Sum_{j=0..n} binomial(n+j-1,j) * binomial(k*j,n-j)
+A362079	arrlamb0	0	(n, k) -> SU(0, n, j -> BI(j + k - 1, j).*(BI(n*j, n - j)))
+A362125	arrlamb0	0	(n, k) -> SU(0, n, j -> BI(j + k - 1, j).*(BI(k*j, n - j)))
+A101413	arrlamb0	0	(n, k) -> BI(2*n + 1, k).*(2*(n - k + 1))./(2*n - k + 2)
