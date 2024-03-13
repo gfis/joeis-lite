@@ -16,16 +16,20 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
 my $debug = 0;
 my $min_stretch = 2;
+
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
-    } elsif ($opt  =~ m{d}) {
-        $debug     = shift(@ARGV);
-    } elsif ($opt  =~ m{m}) {
+    } elsif ($opt   =~ m{\-d}) {
+        $debug      = shift(@ARGV);
+    } elsif ($opt   =~ m{\-m}) {
         $min_stretch = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
+} # while options
+
+while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 } # while $opt
 
 my ($old_aseqno, $old_code, $old_name, $old_num) = ("", "", "", "");

@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2024-03-12: V7.4: failure tolerance: ignore unknown patterns and wrong bracketing
 # 2024-02-26: V7.3: GaussianINtegers, GP, GD, GU, Zi; cannot read pattern with output of $aseqno
 # 2023-10-16: V7.2: .10 -> Z.TEN
 # 2023-10-16: V7.1: FactorUtils; skip records with "€" in parm[i]
@@ -73,7 +74,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V7.3";
+my $version_id  = "gen_seq4.pl V7.4";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -133,6 +134,7 @@ my @parms;
 my $old_package = "";
 my $gen_count = 0;
 my %zhash = qw(0 ZERO 1 ONE 2 TWO 3 THREE 4 FOUR 5 FIVE 6 SIX 7 SEVEN 8 EIGHT 9 NINE 10 TEN); $zhash{"-1"} = "NEG_ONE";
+my $do_generate = 1;
 
 mkdir $targetdir;
 my $old_callcode = "";
@@ -150,8 +152,8 @@ while (<>) { # read inputfile
     next if scalar(@parms) == 0; # only aseqno => came from CC=man
     $callcode = shift(@parms);
     next if length($callcode) == 0; # skip over empty callcodes
-    next if $callcode =~ m{\#};     # skip over commented callcodes
-    next if $callcode =~ m{\Anyi};     # skip over callcodes starting with "nyi"
+    next if $callcode =~ m{\#}; # skip over commented callcodes
+    next if $callcode =~ m{\A(nyi|\-\d)};  # skip over callcodes starting with "nyi" or "-2"
     # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
@@ -174,7 +176,7 @@ while (<>) { # read inputfile
     my $copy = $pattern;
     #          1           12     2 3        3
     $copy =~ s{(\$\(PARM\d+)(\=\w+)?([^\)]*\))}{$1$3}g; # remove Java parameter names $2, e.g. $(PARM1=start.L) -> $(PARM1.L)
-    my $do_generate = 1;
+    $do_generate = 1;
     if ($debug >= 2) {
         print "# scalar(parms)=" . scalar(@parms) . "\n";
     }
@@ -205,7 +207,8 @@ while (<>) { # read inputfile
             my $nopen = ($parm =~ s{([\(\[\{])}  {$1}g);
             my $nclos = ($parm =~ s{([\)\]\}])}  {$1}g);
             if ($nopen != $nclos) {
-                print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n";
+                print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n"; 
+                $do_generate = 0;
             }
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;
             $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." . $zhash{$1}}eg;
@@ -220,11 +223,13 @@ while (<>) { # read inputfile
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
             $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
             $parm =~ s{LU\(}           {Fibonacci.lucas\(}g;
+            $parm =~ s{KS\(}           {LongUtils.kronecker(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
             $parm =~ s{MU\(}           {Mobius.mobius\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
+            $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {IntegerPartition.partitions\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
@@ -403,31 +408,35 @@ sub write_output {
 sub read_pattern { # read the pattern and return it
     my ($patfile) = @_;
     %imports = (); # start with no imports
-    open(PAT, "<", $patfile) or die "cannot read \"$patfile\" for $aseqno\n";
     my $state = "init";
     my $result = "";
-    while (<PAT>) {
-        my $patline = $_; # no chompr!
-        if ($debug >= 2) {
-          print "# patline=$patline";
+    if (open(PAT, "<", "$patfile") != 0) {
+        while (<PAT>) {
+            my $patline = $_; # no chompr!
+            if ($debug >= 2) {
+              print "# patline=$patline";
+            }
+            if ($state eq "init" and ($patline =~ m{\A\s*\Z})) {
+                $state =  "next";
+                $result .= "\n\$(IMPORT)\n";
+                $patline = "";
+            }
+            if ($patline =~ m{\A\s*import +([\w\.]+)\;}) {
+                my $class = $1;
+                $imports{$class} = $TYPE_PERM; # permanent for this pattern
+                $patline = "";
+            } else {
+                &extract_imports($patline, $TYPE_PERM);
+            }
+            $result .= $patline;
+        } # while <PAT>
+        close(PAT);
+        if ($debug >= 1) {
+            print "# pattern: \n$result";
         }
-        if ($state eq "init" and ($patline =~ m{\A\s*\Z})) {
-            $state =  "next";
-            $result .= "\n\$(IMPORT)\n";
-            $patline = "";
-        }
-        if ($patline =~ m{\A\s*import +([\w\.]+)\;}) {
-            my $class = $1;
-            $imports{$class} = $TYPE_PERM; # permanent for this pattern
-            $patline = "";
-        } else {
-            &extract_imports($patline, $TYPE_PERM);
-        }
-        $result .= $patline;
-    } # while <PAT>
-    close(PAT);
-    if ($debug >= 1) {
-        print "# pattern: \n$result";
+    } else {
+        print STDERR "#* cannot read \"$patfile\" for $aseqno\n";
+        $do_generate = 0;
     }
     return $result;
 } # read_pattern
@@ -484,6 +493,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WMultiplicativeSequence}       ) { $imports{"irvine.oeis.MultiplicativeSequence"           } = $itype; }
     if ($line =~ m{\WMobius}                       ) { $imports{"irvine.math.Mobius"}                            = $itype; }
     if ($line =~ m{\WPaddingSequence}              ) { $imports{"irvine.oeis.recur.PaddingSequence" }            = $itype; }
+    if ($line =~ m{\WPair}                         ) { $imports{"irvine.util.Pair" }                             = $itype; }
     if ($line =~ m{\WPeriodicSequence}             ) { $imports{"irvine.oeis.recur.PeriodicSequence"}            = $itype; }
     if ($line =~ m{\WPolynomialUtils}              ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
     if ($line =~ m{\WPolynomial}                   ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
@@ -492,6 +502,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPuma}                         ) { $imports{"irvine.factor.prime.Puma"      }                = $itype; }
     if ($line =~ m{\WQ\W}                          ) { $imports{"irvine.math.q.Q"}                               = $itype; }
     if ($line =~ m{\WRationals\.}                  ) { $imports{"irvine.math.q.Rationals"}                       = $itype; }
+    if ($line =~ m{\WRecordPositionSequence}       ) { $imports{"irvine.oeis.RecordPositionSequence"}            = $itype; }
     if ($line =~ m{\WSequence(\d|\$\(OFFSET\))}    ) { $imports{"irvine.oeis.Sequence$1" }                       = $itype; }
     if ($line =~ m{\WSimpleTransformSequence}      ) { $imports{"irvine.oeis.transform.SimpleTransformSequence"} = $itype; }
     if ($line =~ m{\WSkipSequence}                 ) { $imports{"irvine.oeis.SkipSequence"      }                = $itype; }

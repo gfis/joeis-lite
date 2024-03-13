@@ -15,22 +15,46 @@ use warnings;
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min, $sec);
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
+
+my $COMMON = "../../../OEIS-mat/common";
+my $ofter_file = "$COMMON/joeis_ofter.txt";
 my $debug = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
-    } elsif ($opt  =~ m{d}) {
-        $debug     = shift(@ARGV);
+    } elsif ($opt   =~ m{\-d}) {
+        $debug      = shift(@ARGV);
+    } elsif ($opt   =~ m{\-f}  ) {
+        $ofter_file = shift(@ARGV);
     } else {
         die "invalid option \"$opt\"\n";
     }
 } # while $opt
 
+#----------------
+my $aseqno;
+my $offset = 1;
+my $terms;
+my %ofters = ();
+open (OFT, "<", $ofter_file) || die "cannot read $ofter_file\n";
+while (<OFT>) {
+    s{\s+\Z}{};
+    ($aseqno, $offset, $terms) = split(/\t/);
+    $terms = $terms || "";
+    if ($offset < -1) { # offsets -2, -3: strange, skip these
+    } else {
+        $ofters{$aseqno} = $offset; # "$offset\t$terms";
+    }
+} # while <OFT>
+close(OFT);
+print STDERR "# $0: " . scalar(%ofters) . " jOEIS offsets and some terms read from $ofter_file\n";
+#----------------
+my ($superclass, $name, $keyword, $range);
 while (<>) { # read inputfile
     next if m{\A\s*\#}; # skip comment lines
     next if m{\A\s*\Z}; # skip empty lines
     s/\s+\Z//; # chompr
-    my ($aseqno, $superclass, $name, $keyword, $range) = split(/\t/);
+    ($aseqno, $superclass, $name, $keyword, $range) = split(/\t/);
     $superclass =~ s{\Anull\Z}{zzzz};
     $superclass = substr($superclass . "                ", 0, 12);
     $name =~ s/\s*\Z//; # remove trailing spaces
@@ -75,12 +99,23 @@ while (<>) { # read inputfile
         $name =~ s{ twelve?(s|th|) } { 12$1 }g;
     } # number words 0-12
     my (@numbers) = ();
-    while ($name =~ s{(\d+)}{\(\\d+\)}) { # generalize numbers
-        push(@numbers, $1);
-    }
+    while ($name =~ m{([^A]\d+|A\d+)}) { # A-number or natural number
+        my $anum = $1;
+        if (substr($anum, 0, 1) eq "A") { # A-number
+            $name =~ s{$anum}{Annnnnn};
+            if (! defined($ofters{$anum})) {
+                $anum =~ s{A}{€};
+            }
+            push(@numbers, $anum);
+        } else { # natural number
+            $anum = substr($anum, 1);
+            $name =~ s{$anum}{\(\\d+\)};
+            push(@numbers, $anum);
+        }
+    } # replace A-numbers
     $name =~ s{([^a-zA-Z])\s+([^a-zA-Z])}{$1$2}g;  # remove space around operators
     $name =~ s{(\W)k(\W)}  {$1n$2}g; # single k -> n
-    $name =~ s{A\(\\d\+\)}{Annnnnn}g;
+
     # if ($name !~ m{A\(\\d\+\)}) 
     {
         if (0) {

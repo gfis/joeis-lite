@@ -341,6 +341,13 @@ sumpass: # copy all with passed test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log \
 	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
 	| xargs -innn cp -pv nnn manual 
+sumfato: # copy all with PASSed or FATO test in joeis-lite/src to ./manual
+	cut -b1-7 $(CC).pass.log   >  $@.tmp 
+	grep -P "\tFATO\t" $(CC).fail.log \
+	| cut -b1-7                >> $@.tmp 
+	cat                           $@.tmp \
+	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
+	| xargs -innn cp -pv nnn manual 
 catpass: # copy all OEIS definitions for passed tests 
 	perl $(DATA)/catex_select.pl -f $(CC).pass.log $(COMMON)/jcat25.txt > $(CC).catex.tmp
 	uedit64 $(CC).catex.tmp
@@ -823,6 +830,7 @@ A136test:
 #================================================================
 2023-09-21: # replace special abbreviations
 	perl aman/exprep.pl aman/$@.man > $@.gen
+
 exprs:
 	cp -v ../../../OEIS-mat/robot/expr_gen.gen $@.gen 
 #----
@@ -8407,6 +8415,33 @@ mangf_retest:
 	cut -f1 mangf_check.txt | grep -E "^A[0-9][0-9]" \
 	| xargs -l -innn cp -v mangf/nnn.java manual
 	make CC=man purge man distel
+manch: manch1 manch2 manch3 # check all *.man files for nyi in jOEIS
+manch1: # get the A-number from the *.man files
+	grep -P  "^A\d+\t\w+\t\d+\t" aman/*.man \
+	>        $@.tmp
+manch2: # load into table e
+	cat manch1.tmp \
+	| perl -ne 'm{\:(A\d+)}; print "$$1\n"' \
+	| sort | uniq > $@.tmp
+	wc -l    $@.tmp
+	make seq LIST=$@.tmp
+manch3: # filter for nyi
+	$(DBAT) -x "SELECT 'man:' || aseqno FROM seq WHERE aseqno NOT IN (SELECT aseqno FROM joeis) \
+	  AND aseqno IN (SELECT aseqno FROM asinfo) \
+	  ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        $@.tmp
+	tail -n4 $@.tmp
+	wc -l $@.tmp
+manch4: # grep the seq4 records
+	grep -f manch3.tmp manch1.tmp \
+	| perl -ne 'm{\:(A\d+.*)}; print "$$1\n"' \
+	| sort | uniq -w7 \
+	| grep -vP "\t(filtex|null|nthprime|parm1|mul|parmof7|nest2|morfim|holalg|pairtra)\t" \
+	| grep -vP "A122523|A122533|A36900" \
+	>        $@.gen
+	tail -n4 $@.gen
+	wc -l    $@.gen
 #----
 packlist_check:
 	rm -f $@.tmp
