@@ -8458,6 +8458,7 @@ packlist_check1:
 analog: analog1 anasort anaprep anaload anastret anastren
 analog1:
 	perl normalize_name.pl $(COMMON)/joeis_names.txt \
+	| grep -v "€" \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp

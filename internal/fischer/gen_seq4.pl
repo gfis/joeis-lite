@@ -238,6 +238,8 @@ while (<>) { # read inputfile
             $parm =~ s{RR\(}           {ZUtils.reverse\(}g;
             $parm =~ s{RU\(}           {Rationals.SINGLETON.sum\(}g;
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
+            $parm =~ s{SDA\(}          {ZUtils.sortDigitsAscending\(}g;
+            $parm =~ s{SDD\(}          {ZUtils.sortDigitsDescending\(}g;
             $parm =~ s{SP\(}           {Integers.SINGLETON.sopf\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
