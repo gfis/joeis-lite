@@ -121,6 +121,8 @@ ebtest:
 Q="-1/1"
 INIT="1"
 #--
+cptest:
+	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)"
 eps: epstest # 
 epstest:
 	$(JAVA) irvine.oeis.transform.EtaProductSequence  -d $(D) -n $(NT) -p "$(P)" -q $(Q) 
@@ -133,8 +135,8 @@ gfttest:
 	$(JAVA) irvine.oeis.triangle.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
 gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
-cptest:
-	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)"
+mortest:
+	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -n $(NT) -i "$(INIT)" -a "$(ANCH)" -m "$(MAP)" -o $(OFFSET)
 rstest:
 	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
 sstest:

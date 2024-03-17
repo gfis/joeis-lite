@@ -511,6 +511,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WStirling\.}                   ) { $imports{"irvine.math.z.Stirling"}                        = $itype; }
     if ($line =~ m{\WStringUtils\.}                ) { $imports{"irvine.util.string.StringUtils"}                = $itype; }
     if ($line =~ m{\WTranspose}                    ) { $imports{"irvine.oeis.triangle.Transpose"}                = $itype; }
+    if ($line =~ m{\WTupleTransformSequence}       ) { $imports{"irvine.oeis.transform.TupleTransformSequence"}  = $itype; }
     if ($line =~ m{\WUnaryCRFunction}              ) { $imports{"irvine.math.cr.UnaryCRFunction"}                = $itype; }
     if ($line =~ m{\WZUtils\.}                     ) { $imports{"irvine.math.z.ZUtils"}                          = $itype; }
     if ($line =~ m{\WZi\W}                         ) { $imports{"irvine.math.zi.Zi"}                             = $itype; }

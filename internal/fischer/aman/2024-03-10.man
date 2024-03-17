@@ -6,31 +6,23 @@ A076126	tablamb	2	2	n -> new Integer[] { 1, n/2 }	(n, k) -> BI(n - k - 1, k - 1)
 A077385	tablamb	1	1	n -> new Integer[] { 0, 2*n - 2 }	(n, k) -> (k < n) ? ZV(n).^(k) : ZV(n).^(2*n - k - 2)	T(n, k) = n^k for k < n, otherwise n^(2*n-k-2), for n >= 1, 0 <= k <= 2*n-2.
 A082375	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> ZV(n).-(2*k)	T(n, m) = n - 2*m, m = 0, 1, ..., floor(n/2), n >= 0 
 A082693	tablamb	1	1	n -> new Integer[] { 1, 2*n - 1 }	(n, k) -> Z2((k <= n) ? ZV(n - k) : ZV(k - n))	Pyramidal sequence built with powers of 2.
+A084608	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> SU(0, k, j -> BI(n, k - j).*(BI(k - j, j)).*(Z2(k - 2*j)).*(ZV(3).^(j)))
+A084610	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> SU(0, k, j -> BI(n, k - j).*(BI(k - j, j)).*(ZV(-1).^(j)))	T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-1)^j.
+A084612	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> SU(0, k, j -> BI(n, k - j).*(BI(k - j, j)).*(ZV(-2).^(j)))	T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-2)^j, for 0 <= k <= 2*n.
+A084614	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> SU(0, k, j -> BI(n, k - j).*(BI(k - j, j)).*(ZV(-3).^(j)))	T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-3)^j, for 0 <= k <= 2*n.
 A084950	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> n <= 1 ? ZV(1) : FA(n - k).*(BI(n - k, k))./(FA(k))	_Wouter Meeussen_, Aug 08 2010
 #? A091453	tablamb	0	0	n -> new Integer[] { 1, n*2 + 1 }	(n, k) -> ZV(2*n/k)	T(n, k) = 2*n\k;
-A091478	tablamb	0	0	n -> new Integer[] { 0, n == 0 ? 0 : n*(n + 1)/2 }	(n, k) -> BI(n*(n + 1)/2, k).*(FA(k))	a(n, k) = k!*binomial(binomial(n, 2), k).
+A091478	tablamb	0	0	n -> new Integer[] { 0, n == 0 ? 0 : n*(n - 1)/2 }	(n, k) -> BI(n*(n - 1)/2, k).*(FA(k))	a(n, k) = k!*binomial(binomial(n, 2), k).
 A094102	tablamb	1	1	n -> new Integer[] { 1, 2*n - 1 }	(n, k) -> (k <= n) ? FI(k) : FI(2*n - k)	 Triangle read by rows in which row n contains Fib(1), ..., Fib(n-1), Fib(n), Fib(n-1), ..., 
-A100948	tablamb	2	2	n -> new Integer[] { 1, 3 }	(n, k) -> k == 1 ? (n <= 2 ? ZV(1) : FA(n)./(3)) : (k == 2 ? (n <= 2 ? ZV(1) : FA(n)./(2)) : (FA(n)))	Flatten[Table[{If[n < 3, 1, n!/3], If[n < 2, 1, n!/2], n!}, {n, 1, 10}]]
-A102547	tablamb	0	0	n -> new Integer[] { 0, n/3 }	(n, k) -> BI(n - 2*k, k)
-A104978	tablamb	0	0	n -> new Integer[] { n, 2*n }	(n, k) -> BI(2*n, k).*(BI(2*k, k))	T(n,k) = binomial(n,2n-k)*binomial(n+k, n-1)/n.
-A108429	tablamb	0	0	n -> new Integer[] { 0, 2*n }	(n, k) -> BI(2*n, k).*(BI(2*k, k))	T(n,k) = binomial(n,2n-k)*binomial(n+k, n-1)/n.
-A156789	tablamb	0	0	n -> new Integer[] { 0, 2*n }	(n, k) -> BI(2*n, k).*(BI(2*k, k))
-A157000	tablamb	0	2	n -> new Integer[] { 1, n/2 }	(n, k) -> BI(n - k - 1,k - 1).*(n)./(k)
-#? A370291	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : BI(2*n, n)./(n + 1).intValueExact() }	(n, k) -> ZV(n).*(n + 1)./(2)	T:= n-> n*(n+1)/2$binomial(2*n,n)/(n+1):
-
-%N A084608 tablamb	0	T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*2^(k-2*j)*3^j.
-% A084610 T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-1)^j.
-% A084612 T(n, k) = Sum_{j=0..k} binomial(n,k-j)*binomial(k-j,j)*(-2)^j, for 0 <= k <= 2*n.
-% A084614 T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-3)^j, for 0 <= k <= 2*n.
-% A091913	tablamb	0	 Triangle read by rows: a(n,k) = C(n,k)*(2^(n-k) - 1) for k<n, a(n,k) = 0 for k >= n, where k=0..max(n-1,0).
-%F A091958	rablamb	0	 T(n,k) = binomial((n+1), k)*sum((-1)^j*binomial(n+1-k,j)*binomial(2n-3k-3j, n), j=0..floor(n/3)-k)/(n+1).
+A091913	tablamb	0	0	n -> new Integer[] { 0, (n == 0) ? 0 : n - 1 }	(n, k) -> BI(n, k).*(Z2(n - k).-(1))	Triangle read by rows: a(n,k) = C(n,k)*(2^(n-k) - 1) for k<n, a(n,k) = 0 for k >= n, where k=0..max(n-1,0).
+%F A091958	tablamb	0	 T(n,k) = binomial((n+1), k)*sum((-1)^j*binomial(n+1-k,j)*binomial(2n-3k-3j, n), j=0..floor(n/3)-k)/(n+1).
 %F A093127	tablamb	0	0	0	n -> n/2	(n, k) -> T := proc (n, k) if (1/2)*n+1/2 < k then 0 else binomial(n-k+2, k+1)*binomial(n-k+2, k)/(n-k+2)-binomial(n-k+1, k)*binomial(n-k+1, k-1)/(n-k+1) end if end proc: for n from 0 to 15 do seq(T(n, k), k = 0 .. floor((1/2)*n)) 
 %p A094046 T:=proc(n,k) if n=1 and k=0 then 1 elif n=1 and k>0 then 0 else binomial(n+k-2,k)*sum(binomial(n+k+i-2,i)*binomial(4*n-4-k-i,n-2*k-2-3*i),i=0..floor((n-2*k-2)/3))/(n-1) fi end: seq(seq(T(n,k),k=0..floor(n/2)-1),n=2..15);
 Fib(1)
 %t A095421 T[n_, m_] := Sum[(-1)^(n - i)*Binomial[n, i]*Binomial[2^i - 1, m], {i, 1, n}] - Binomial[2^n - 2, m - 1]; Table[T[n, m], {n, 2, 10}, {m, 2, 2^n - 2}] 
 %N A095422 Triangle read by rows: T(n,m) = number of m-block proper T_0-covers (without empty blocks and without multiple blocks) of a labeled n-set (n>=2, 2<=m<=2^n-2).
 %F A095422 T(n, m) = Sum(Stirling1(n+1, i+1)*binomial(2^i-1, m)-Stirling1(n, i)*binomial(2^i-2, m-1), 
-%N A097462	tablamb	0	0	0	n -> 10	(n, k) -> ZV(n).*(k)	Multiplication table for numbers 0 through 10 read by rows.
+A097462	tablamb	0	0	n -> new Integer[] { 0, 10 }	(n, k) -> ZV(n).*(k)	Multiplication table for numbers 0 through 10 read by rows.
 %F A098978 T(n,k) = Sum_{j=0..floor(n/2)-k} (-1)^j * binomial(n-(j+k), j+k) * binomial(2n-3(j+k), n-(j+k)-1) * binomial(j+k, k)/(n-(j+k)). - I. Tasoulas (jtas(AT)unipi.gr), Feb 19 2006
 %e A098978 Table begins
 %e A098978 \ k  0,   1,   2, ...
@@ -41,25 +33,18 @@ Fib(1)
 %e A098978 3 |  2,   3;
 %e A098978 4 |  5,   8,   1;
 %e A098978 5 | 13,  23,   6;
-
-
 %F A101431 T(n, k) = (1/n)*binomial(n, k)*Sum_{i=0..min(k, n-1-2k)} 3^(n-1-k-2i)*binomial(k, i)binomial(n-k, k+i+1), 0 <= k <= ceiling(n/2)-1.
-%F A102426 T(n, k) = binomial(floor(n/2)+k, floor((n-1)/2-k) ).
-%e A102426 0:  0
-%e A102426 1:  1
-%e A102426 2:  1
-%e A102426 3:  1  1
-%e A102426 4:  2  1
-%e A102426 5:  1  3  1
-%e A102426 6:  3  4  1
 
-%e A108429 1;
-%e A108429 0,1,1;
-%e A108429 0,0,2,5,3;
+A100948	tablamb	2	2	n -> new Integer[] { 1, 3 }	(n, k) -> k == 1 ? (n <= 2 ? ZV(1) : FA(n)./(3)) : (k == 2 ? (n <= 2 ? ZV(1) : FA(n)./(2)) : (FA(n)))	Flatten[Table[{If[n < 3, 1, n!/3], If[n < 2, 1, n!/2], n!}, {n, 1, 10}]]
+A102426	tablamb	0	0	n -> new Integer[] { 0, (n == 0) ? 0 : (n - 1)/2 }	(n, k) -> (n == 0) ? Z.ZERO : BI(n/2 + k, (n - 1)/2 - k)	T(n, k) = binomial(floor(n/2)+k, floor((n-1)/2-k) 
+A102547	tablamb	0	0	n -> new Integer[] { 0, n/3 }	(n, k) -> BI(n - 2*k, k)
+A104978	trilamb0	0	(n, k) -> BI(2*n + k, n + 2*k).*(BI(n + 2*k, k))./(n + k + 1)	[Binomial(2*n+k, n+2*k)*Binomial(n+2*k, k)/(n+k+1): k in [0..n], n in [0..12]]
+A108429	tablamb	0	0	n -> new Integer[] { 0, 2*n }	(n, k) -> (n == 0) ? Z.ZERO : BI(n, 2*n - k).*(BI(n + k, n - 1))./(n)	T(n,k) = binomial(n,2n-k)*binomial(n+k, n-1)/n.
+A108429	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> BI(n, 2*n - k).*(BI(n + k, n - 1))./(ZV(n))
 
 %F A109439 T(n,k) = (9*n-3*n^2+6*k*n-6*k-2*k^2-4)/2 if n-3 < k < 2*n,%F A109439 T(n,k) = A000217(3n-k-2) = (3*n-k-1)!/((3*(n-1)-k)!*2) if 2*n-3 < k < 3*n-2.
 %F A109439 T(n,k) = Sum_{i=k-n+1..k} A004737(T(n,i)),
-%F A109439 T(n,k) = Sum_{i=k-n+1..k} (n-|n-i-1|) if n <= k <= 2*n+1. (End)
+%F??? A109439	tablamb	0	0	n -> new Integer[] { 1, n*2 + 1 }	(n, k) -> (k < n) ? ZV((n + 1)*(n + 2)/2) : SU(k - n + 1, k, i -> ZV(n - Math.abs(n - i - 1)) if n <= k <= 2*n+1. (End)
 %e A109439 Triangle starts:
 %e A109439 1;
 %e A109439 1, 3, 3, 1;
@@ -69,41 +54,46 @@ Fib(1)
 %e A109439 1, 3, 6,10,15,21,25,27,27,25,21,15,10, 6, 3, 1;
 %e A109439 1, 3, 6,10,15,21,28,33,36,37,36,33,28,21,15,10, 6, 3, 1.
 
-%p A109446 T:= (n, k)-> binomial(n, 2*k+irem(n, 2)):
+A109446	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> BI(n, 2*k + (n & 1))	
 
-%F A109646 for k=0, a(n, k)=1 for k>0 and n!=k, a(n, k)=(n-k)k+(n-k)+k+1 for k>0 and n=k, a(n, k)=(1/2)(k^2+3k+2)
+%F ?? A109646	tablamb	0	0	n -> new Integer[] { 0, (n == 0) ? 0 : n - 1) }	(n, k) -> (k == 0) ? Z.ONE : (k ==  k=0, a(n, k)=1 for k>0 and n!=k, a(n, k)=(n-k)k+(n-k)+k+1 for k>0 and n=k, a(n, k)=(1/2)(k^2+3k+2)
 
 %F A109647 if k=0|n a(n, k)=1 if k=n/2 a(n, k)=(1/2)(k^2+3k+2) else a(n, k)=(n-k)k+(n-k)+k+1
 
-%F A109983 T(n, k) = binomial(n, 2*n-k) binomial(k, n).
-%C A109983 Row n has 2*n+1 terms, the first n of which are 0.
+A109983	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> (k < n) ? Z.ZERO : BI(n, 2*n - k).*(BI(k, n))	T(n, k) (0<=k<=2n); Row n has 2*n+1 terms, the first n of which are 0.
 
 %F A110237 T(n,m) = (m+1)*Sum_{i=0..(n-1)/2-m}((binomial(2*m+2*i+2,i)*Sum_{k=0..n-2*m-2*i-1}(binomial(k,n-2*m-k-2*i-1)*binomial(2*m+k+2*i+1,k)*(-1)^(n-k-1)))/(m+i+1)). - _Vladimir Kruchinin_, Mar 07 2016
 %C A110237 Row n has ceiling(n/2) terms. Row sums yield A110236.
 
-%o A113453 (PARI) for(n=2,25, for(k=n,2*n, print1(2^(floor((k-n)/2)),
+A113453	tablamb	2	2	n -> new Integer[] { n, n*2 }	(n, k) -> Z2((k - n)/2)	for(n=2,25, for(k=n,2*n, print1(2^(floor((k-n)/2)),
+A114320	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> RU(0, n/2 - k, j -> new Q(-1, 2).^(j)./(FA(j))).*(FA(n))./(Z2(k).*(FA(k))).num()	T(n,k) = n!/(2^k*k!) * Sum_{j=0..floor(n/2)-k} (-1/2)^j/j!. - _Alois P. Heinz_, Nov 30 2011
+A114593	tablamb	2	2	n -> new Integer[] { 1, n/2 }	(n, k) -> Z2(n - 2*k).*(BI(n + 1, k)).*(BI(n - k - 1, k - 1))./(n + 1)	 (1 <= k <= floor(n/2)). Triangle read by rows: T(n,k) is the number of hill-free Dyck paths of semilength n, having k ascents of length at least 2 (1 <= k <= floor(n/2), n >= 2).G.f. = 
+A128100	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> SU(k, n/2, i -> BI(n - i, i).*(BI(i, k)))
+A129710	tablamb	1	1	n -> new Integer[] { 0, n/2 }	(n, k) -> BI(n - k, k).+(BI(n - k - 1, k))	 for n >= 1 and 0 <= k <= floor(n/2).
+A115139	tablamb	1	1	n -> new Integer[] { 0, ((n & 1) == 1) ? n/2 : n/2 - 1 }	(n, m) -> Z_1(m).*(BI(n - 1 - m, m))
+A115218	tablamb	0	0	n -> new Integer[] { 0, (1 << (n + 1)) - 2 }	(n, k) -> ZV(k)	Cf. A126646 (length of n-th row). 2^(n+1) - 1.
+A117811	interleave	0	A007913	A000188
+A118394	tablamb	0	0	n -> new Integer[] { 0, n/3 }	(n, k) -> FA(n)./(FA(k).*(FA(n - 3*k)))	Triangle T(n,k) = n!/(k!*(n-3*k)!), for n >= 3*k >= 0, read by rows.
+A118851	dirtraf	0	new A005361()	new A036035()		T(n,k) = A005361(A036035(n,k)). - _Andrew Howroyd_, Oct 19 2020 A005361=DirectSequence
+A118919	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> BI(2*n + 2, n - 2*k).*(2*k + 1)./(n + 1)	
+A119245	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> BI(2*n + 1, n - 2*k).*(4*k + 1)./(2*n + 1)	T(n,k) = (4*k+1)*binomial(2*n+1, n-2*k)/(2*n+1) for n >= 2*k >= 0.
+A119272	tuptraf	1	(n, s) -> s[0].*(s[1])	""	new A007305(), new PrependSequence(0, new A047679(), 0, 0)	 Also, a(n) = A007305(n-1)*A047679(n-3) for n>=3
+A120385	tablamb	1	1	n -> new Integer[] { 1, IU.log2(n) }	(n, k) -> (n == 1) ? Z.ONE : ZV(n)./(Z2(k - 1))	T(n,k) = floor(n/2^(k-1)).  
+A120983	tablamb	0	0	n -> new Integer[] { 0, n/3 }	(n, k) -> BI(n + 1, k).*(SU(0, n + 1 - k, j -> Z.THREE.^(j).*(BI(n + 1 - k, j)).*(BI(j, n - 3*k - j))))./(n + 1)	
+A121463	tablamb	1	1	n -> new Integer[] { 0, n/2 }	(n, k) -> SU(0, n - 2*k, j -> BI(n, 2*k + j).*(BI(k - 1 + j, k - 1)))
+A122193	tablamb	1	1	n -> new Integer[] { 2, n*2 }	(n, k) -> SU(0, k, i -> Z_1(k - i).*(BI(k, i).*(ZV(i*(i - 1)/2).^(n))))	
+A122196	tablamb	1	1	n -> new Integer[] { 1, (n + 1)/2 }	(n, k) -> ZV(n - 2*k + 2)	T(n, k) = n - 2*k + 2, for n >= 1 and 1 <= k <= floor((n+1)/2)
+A122197	tablamb	1	1	n -> new Integer[] { 1, (n + 1)/2 }	(n, k) -> ZV(k)	T(n, k) = k for n >= 1 and 1 <= k <= (n+1)/2; T(n, k) = 0 elsewhere.
+A123539	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, m) -> BI(ZV(n - m), ZV(n).-(BI(m, m/2)))	T(n,m) = binomial(n-m, n-binomial(m, floor(m/2))), read by rows, 0 <= m <= n/2.
+A123554	tablamb	1	1	n -> new Integer[] { 0, (n - 1)*n }	(n, k) -> BI(n*(n - 1), k)	
+A123736	tablamb	1	1	n -> new Integer[] { 0, n*2 - 1 }	(n, k) -> SU(0, k/2, j -> BI(n - j - 1, k - 2*j))	seq(seq(sum(binomial(n-j-1, k-2*j), j=0..floor(k/2)), k=0..2*n-1), n=1..10)
+A124326	filter	0	new TupleTransformSequence(0, (n, s) -> s[0].-(s[1]), "", new A007318(), new A077028())	NONZERO
+A124428	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> BI(n/2, k).*(BI((n + 1)/2, k))
 
-%F A114320 T(n,k) = n!/(2^k*k!) * Sum_{j=0..floor(n/2)-k} (-1/2)^j/j!. - _Alois P. Heinz_, Nov 30 2011
-%e A114320 T(3,1) = 3 because we have (1)(23), (12)(3) and (13)(2).
-%e A114320 Triangle begins:
-%e A114320     1;
-%e A114320     1;
-%e A114320     1,   1;
-%e A114320     3,   3;
-%e A114320    15,   6,   3;
-%e A114320    75,  30,  15;
+# A125080 (PARI) T(n,k)=(2*n-2*k)!*n!/k!/(n-k)!/(n-k+1)!/(n-2*k)!/2^k  for k=0..[n/2], n>=0, 
+A125959	tablamb	1	1	j -> new Integer[] { 1, 9 }	(j, k) -> ZV(ZUtils.digitSumRoot(j*k))	Infinite array of nine columns, read by rows: A(j,k) = digital root of j*k for j >= 1, 1 <= k <= 9
+A126177	tablamb	1	1	n -> new Integer[] { 1, n/2 + 1 }	(n, k) -> ZV(3).^(n - 2*k + 2).*(BI(2*k - 2, k - 1)).*(BI(n, 2*k - 2))./(k)	 T:=(n,k)->3^(n-2*k+2)*binomial(2*k-2,k-1)*binomial(n,2*k-2)/k: for n from 1 to 13 do seq(T(n,k),k=1..1+floor(n/2)) od;
+A156789	tablamb	0	0	n -> new Integer[] { 0, 2*n }	(n, k) -> BI(2*n, k).*(BI(2*k, k))
+A157000	tablamb	0	2	n -> new Integer[] { 1, n/2 }	(n, k) -> BI(n - k - 1,k - 1).*(n)./(k)
+#? A370291	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : BI(2*n, n)./(n + 1).intValueExact() }	(n, k) -> ZV(n).*(n + 1)./(2)	T:= n-> n*(n+1)/2$binomial(2*n,n)/(n+1):
 
-%F A114593 T(n, k) = 2^(n-2k)*binomial(n+1, k)*binomial(n-k-1, k-1)/(n+1) (1 <= k <= floor(n/2)). G.f. = 
-
-%F A128100 T(n,k) = Sum_{i=k..floor(n/2)} binomial(n-i,i)*binomial(i,k). See Corollary 3.3 in the Klavzar et al. link. - _Emeric Deutsch_, Aug 12 2014
-%e Triangle starts: offset 0
-%e 1;
-%e 1;
-%e 2, 1;
-%e 3, 2;
-%e 5, 5, 1;
-%e 8, 10, 3;
-%e 13, 20, 9, 1;
-%e 21, 38, 22, 4;
-
-%F A129710 T(n,k) = binomial(n-k,k) + binomial(n-k-1,k) for n >= 1 and 0 <= k <= floor(n/2).
