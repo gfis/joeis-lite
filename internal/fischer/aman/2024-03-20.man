@@ -1,0 +1,20 @@
+A106125	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  0	Numbers k such that k divides the k-th semiprime.	nonn,hard,more	1..17	nyi	_Shyam Sunder Gupta_
+A106126	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  1	k-th semiprime ==  1 (mod k).	hard,nonn	1..44	nyi	_Shyam Sunder Gupta_
+A106127	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  2	k-th semiprime ==  2 (mod k).	hard,nonn	1..33	nyi	_Shyam Sunder Gupta_
+A106128	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  3	k-th semiprime ==  3 (mod k).	hard,nonn	1..47	nyi	_Shyam Sunder Gupta_
+A106129	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  4	k-th semiprime ==  4 (mod k).	hard,more,nonn	1..27	nyi	_Shyam Sunder Gupta_
+A106130	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  5	k-th semiprime ==  5 (mod k).	nonn,hard	1..31	nyi	_Shyam Sunder Gupta_
+A106131	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  6	k-th semiprime ==  6 (mod k).	hard,nonn	1..41	nyi	_Shyam Sunder Gupta_
+A106132	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  7	k-th semiprime ==  7 (mod k).	hard,nonn	1..29	nyi	_Shyam Sunder Gupta_
+A106133	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  8	k-th semiprime ==  8 (mod k).	nonn,hard,more	1..20	unkn	_Shyam Sunder Gupta_
+A106134	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) ==  9	k-th semiprime ==  9 (mod k).	nonn,hard	1..42	nyi	_Shyam Sunder Gupta_
+A106135	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) == 10	k-th semiprime == 10 (mod k).	nonn,hard,more	1..28	nyi	_Shyam Sunder Gupta_
+A106136	filtpos	0	1	new A001358()	(k, v) -> v.mod(k) == 11	k-th semiprime == 11 (mod k).	nonn,hard	1..38	nyi	_Shyam Sunder Gupta_
+A356135	filter	0	new A001358()	(k, v) -> v.mod(k) == 6	Semiprimes k such that k is congruent to 6 modulo k s index in the sequence of semiprimes.      nonn,hard       1.
+A356357	filter	0	new A001358()	(k, v) -> v.mod(k) == 7	Semiprimes k such that k is congruent to 7 modulo k s index in the sequence of semiprimes       nonn,hard       1.
+A356755	filter	0	new A001358()	(k, v) -> v.mod(k) == 2	Semiprimes k such that k is congruent to 2 modulo k s index in the sequence of semiprimes.      nonn,hard       1.
+A357023	filter	0	new A001358()	(k, v) -> v.mod(k) == 5	Semiprimes k such that k is congruent to 5 modulo k s index in the sequence of semiprimes.      nonn,hard       1.
+A357781	filter	0	new A001358()	(k, v) -> v.mod(k) == 1	Semiprimes k such that k is congruent to 1 modulo k s index in the sequence of semiprimes.      nonn,hard       1.
+A357807	filter	0	new A001358()	(k, v) -> v.mod(k) == 3	Semiprimes k such that k is congruent to 3 modulo k s index in the sequence of semiprimes.      nonn,hard       1.
+A357808	filter	0	new A001358()	(k, v) -> v.mod(k) == 4	Semiprimes k such that k is congruent to 4 modulo k s index in the sequence of semiprimes.      nonn,hard,more  1.
+A357741	filter	0	new A001358()	(k, v) -> v.mod(k) == 0	Semiprimes k such that k is divisible by its index in the sequence of semiprimes.       nonn,hard,more  1..17   ny

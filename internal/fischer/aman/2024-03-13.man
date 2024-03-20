@@ -1,0 +1,173 @@
+A367625	simtraf	0	new A036991().skip(1)	v -> v.-(1)./(2)	,1,2	(Annnnnn(n)-(\d+))/(\d+)
+A227836	simtraf	0	new A214551()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))	(\d+)^a(n) is the highest power of (\d+) dividing Annnnnn(n)
+A227837	simtraf	0	new A214551()	v -> Z.valueOf(ZUtils.valuation(v, Z.THREE))	(\d+)^a(n) is the highest power of (\d+) dividing Annnnnn(n)
+A141421	filter	0	new A091137()	(n, v) -> (n & 1) == 0	1st bisection of Annnnnn
+A220117	inverse	0	new A220115()	0	0	1st occurrence of n in Annnnnn
+A213407	inverse	0	new A213381()	0	0	1st occurrence of n in Annnnnn
+A213861	inverse	0	new A213859()	0	0	1st occurrence of n in Annnnnn
+A213085	inverse	0	new A212844()	0	1	1st occurrence of n in Annnnnn
+
+A129560	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A054523(), new A128174()	Annnnnn * Annnnnn
+A131052	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A131047(), new A000012()	Annnnnn * Annnnnn
+A132775	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A007818(), new A132774()	Annnnnn * Annnnnn
+A157029	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A007318(), new A157019()	Annnnnn * Annnnnn
+A143356	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A051731(), new A006218()	Annnnnn * Annnnnn
+A127332	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A126988(), new A002321()	Annnnnn * Annnnnn
+A230849	interleave	0	A075526	A000012		Annnnnn and Annnnnn interleaved AlternatingSequence A230850
+
+A088781	simtraf	0	new A068164()	v -> Puma.primePiZ(v)	A000040	Annnnnn indexed by Annnnnn
+A089532	simtraf	0	new A089531()	v -> Puma.primePiZ(v)	A000040	Annnnnn indexed by Annnnnn
+A089538	simtraf	0	new A085747()	v -> Puma.primePiZ(v)	A000040	Annnnnn indexed by Annnnnn
+A096677	simtraf	0	new A060254()	v -> Puma.primePiZ(v)	A000040	Annnnnn indexed by Annnnnn
+A091179	simtraf	0	new A088878()	v -> Puma.primePiZ(v)	A000040	Annnnnn indexed by Annnnnn
+A091880	simtraf	0	new A049232()	v -> Puma.primePiZ(v)	A000040	Annnnnn indexed by Annnnnn
+A089530	simtraf	0	new A023204()	v -> Puma.primePiZ(v)	A000040	Annnnnn indexed by Annnnnn
+
+A246597	filter	0	new A070952()	(n, v) -> Long.bitCount(n + 1) == 1	Annnnnn((\d+)^n-(\d+))
+A228952	filter	0	new A010062()	(n, v) -> Long.bitCount(n + 1) == 1	Annnnnn((\d+)^n-(\d+))
+A140215	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A140213(), new A140214()	Annnnnn(n)*Annnnnn(n)
+A114699	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000799(), new A064355()	Annnnnn(n)- Annnnnn(n)
+A086738	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000041().skip(1), new A000203()	Annnnnn(n)- Annnnnn(n)
+A104481	filter	0	new A104477()	(n, v) -> (n & 1) == 1		Bisection of Annnnnn
+# A151768	-2	nyi po      	A071786	Complement of Annnnnn
+# A145060	-2	nyi         	A031443	Cumulative sums of Annnnnn
+# 
+# A013705	-2	DecimalExpan	4,1,500000,1,1,2,1	Decimal expansion of (\d+)*Sum_{n=(\d+)..(\d+)}(-(\d+))^(n-(\d+))/((\d+)n-(\d+))
+# A013706	-2	DecimalExpan	2,1,50000,1,1,2,1	Decimal expansion of (\d+)*Sum_{n=(\d+)..(\d+)}(-(\d+))^(n-(\d+))/((\d+)n-(\d+))
+# A216543	-2	nyi         	4,1,50000,1,1,2,1	Decimal expansion of (\d+)*Sum_{n=(\d+)..(\d+)}(-(\d+))^(n-(\d+))/((\d+)n-(\d+))
+# A216545	-2	nyi         	2,1,500000,1,1,2,1	Decimal expansion of (\d+)*Sum_{n=(\d+)..(\d+)}(-(\d+))^(n-(\d+))/((\d+)n-(\d+))
+# A216547	-2	nyi         	2,1,5000000,1,1,2,1	Decimal expansion of (\d+)*Sum_{n=(\d+)..(\d+)}(-(\d+))^(n-(\d+))/((\d+)n-(\d+))
+# A216548	-2	nyi         	4,1,5000000,1,1,2,1	Decimal expansion of (\d+)*Sum_{n=(\d+)..(\d+)}(-(\d+))^(n-(\d+))/((\d+)n-(\d+))
+
+# cf. A292864
+# A259148	nyi	0	phi(exp(-Pi))
+# A259149	nyi	0	phi(exp(-2*Pi))
+# A259150	nyi	0	phi(exp(-4*Pi))
+# A259151	nyi	0	phi(exp(-8*Pi))
+# A292864	-2	0	1,1,16	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A292864	nyi	0	phi(exp(-16*Pi))
+# A292888	-2	0	1,1,3	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A292888	nyi	0	phi(exp(-3*Pi))
+# A292905	-2	0	1,1,5	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A292905	nyi	0	phi(exp(-5*Pi))
+# A363018	-2	0	1,1,6	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363018	nyi	0	phi(exp(-6*Pi))
+# A363019	-2	0	1,1,10	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363019	nyi	0	phi(exp(-10*Pi))
+# A363020	-2	0	1,1,12	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363020	nyi	0	phi(exp(-12*Pi))
+# A363021	-2	0	1,1,20	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363021	nyi	0	phi(exp(-20*Pi)).
+# A363081	-2	0	1,1,11	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363081	nyi	0	phi(exp(-11*Pi))
+# A363117	-2	0	1,1,7	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363117	nyi	0	phi(exp(-7*Pi))
+# A363118	-2	0	1,1,9	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363119	-2	0	1,1,14	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363119	nyi	0	phi(exp(-14*Pi))
+# A363120	-2	0	1,1,18	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363120	nyi	0	phi(exp(-18*Pi))
+# A363178	-2	0	1,1,13	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363178	nyi	0	phi(exp(-13*Pi))
+# A363179	-2	0	1,1,15	Decimal expansion of Product_{n>=(\d+)}((\d+)- exp(-(\d+)*Pi*n))
+# A363179	nyi	0	phi(exp(-15*Pi))
+
+A325498	diffs	0	new A036668()	Difference sequence of Annnnnn
+A325499	diffs	0	new A325424()	Difference sequence of Annnnnn
+A218249	diffs	0	new A219096()	Difference sequence of Annnnnn
+A284881	diffs	0	new A284878()	Difference sequence of Annnnnn
+A297827	diffs	0	new A297826()	Difference sequence of Annnnnn
+A297828	diffs	0	new A297997()	Difference sequence of Annnnnn
+
+A173856	padding	0	1	0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0	10,9	Expansion of (\d+)/(\d+) in base phi	m
+A173859	padding	0	1	0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0	6,5	Expansion of (\d+)/(\d+) in base phi
+A173860	padding	0	1	0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0 	7,6	Expansion of (\d+)/(\d+) in base phi
+A173861	padding	0	1	0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0	8,7	Expansion of (\d+)/(\d+) in base phi
+A173864	padding	0	1	0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0	9,8	Expansion of (\d+)/(\d+) in base phi
+
+A121835	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A000178(), new A057863()
+
+A324790	filtpos	0	0	new A022837()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m	i 
+A132678	filtpos	0	0	new A096535()	v -> v.equals(ZV(1))	Indices of (\d+)s in Annnnnn	m	i 
+# A362453	filtpos	0	0	new A361897()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m	i 
+# A362454	filtpos	0	0	new A361897()	v -> v.equals(ZV(1))	Indices of (\d+)s in Annnnnn	m	i 
+A073853	filtpos	0	0	new A079777()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m	i 
+A096274	filtpos	0	0	new A096535()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m	i 
+A362461	filtpos	0	1	new A362460()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m	i 
+A362462	filtpos	0	1	new A362460()	v -> v.equals(ZV(1))	Indices of (\d+)s in Annnnnn	m	i  
+
+A117550	parm2	0	A114823	16	Indices of Fibonacci numbers with (\d+) distinct prime factors
+A117551	parm2	0	A114823	15	Indices of Fibonacci numbers with (\d+) distinct prime factors
+A117529	parm2	0	A114823	14	Indices of Fibonacci numbers with (\d+) distinct prime factors
+
+A307470	insect2	0	new A013917()	new A013918()	Intersection
+A356087	insect2	0	new A001952()	new A054406()	Intersection
+A356101	insect2	0	new A000201()	new A022839()	Intersection
+A356102	insect2	0	new A001950()	new A022839()	Intersection
+A356219	insect2	0	new A001952()	new A003151()	Intersection
+A188499	insect2	0	new A089633()	new A188341()	Intersection
+A287609	insect2	0	new A034961()	new A127345()	Intersection
+A356086	insect2	0	new A001952()	new A022838()	Intersection 
+
+A112334	trilamb0	0	(n, k) -> (n == k) ? Z.ONE : (n - 1 == k ? ZV(- n*3 + 1) : Z.ZERO)	Inverse of number triangle
+A115526	trinvn	0	new A115524()	Inverse of number triangle
+A105522	trinvn	0	new A105438()	Inverse of number triangle
+A111967	trinvn	0	new A101688()	Inverse of number triangle
+                                                                 
+A269503	simtraf	0	new A138148().skip(1)	v -> JF(v).largestPrimeFactor()	Largest prime factor
+A176195	simtraf	0	new A174562()	v -> JF(v).largestPrimeFactor()	Largest prime factor
+A359125	simtraf	0	new A359124()	v -> JF(v).largestPrimeFactor()	Largest prime factor
+
+A338252	simtraf	0	new FilterSequence(0, new A317050(), v -> v.compareTo(Z.ZERO) <= 0)	v -> v.negate()	Nonpositive values in Annnnnn
+A263959	simtraf	0	new A069151()	v -> ZV(v.toString().length())	Number of decimal digits in Annnnnn(n)
+
+# A248729	lambdan	0	n -> ZV(PT(3^n)).toString().length())	Number of digits in the decimal expansion of the number of partitions of (\d+)^n	m	i
+# A248733	lambdan	0	n -> ZV(PT(6^n)).toString().length())	Number of digits in the decimal expansion of the number of partitions of (\d+)^n	m	i
+# A248735	lambdan	0	n -> ZV(PT(7^n)).toString().length())	Number of digits in the decimal expansion of the number of partitions of (\d+)^n	m	i
+# A248731	lambdan	0	n -> ZV(PT(5^n)).toString().length())	Number of digits in the decimal expansion of the number of partitions of (\d+)^n
+
+A105080	lambdan	0	n -> Z.valueOf(Jaguar.factor(ZV(10000).^(n).-(3)).omega())	10000,3	Number of distinct prime divisors of (\d+)^n -(\d+)	m	i 
+A133801	lambdan	0	n -> Z.valueOf(Jaguar.factor(Z.THREE.^(n).-(1)).omega())	3,1	Number of distinct prime divisors of (\d+)^n -(\d+)	m	i     
+
+A113825	simtraf	0	new A008351()	v -> ZV(JF(v).omega())	Number of distinct prime factors of Annnnnn(n)
+A255770	simtraf	0	new A220161()	v -> ZV(JF(v).omega())	Number of distinct prime factors of Annnnnn(n)
+A255771	simtraf	0	new A220294()	v -> ZV(JF(v).omega())	Number of distinct prime factors of Annnnnn(n) 
+
+# Integers.SINGLETON.sumdiv(mN, d -> (d % 10 == 2) ? Z.ONE : Z.ZERO)
+A083910	lambdan	0	n -> SD(n, d -> (d % 10 == 0) ? Z.ONE : Z.ZERO)	0,10	Number of divisors of n that are congruent to (\d+) modulo (\d+)
+A083911	lambdan	0	n -> SD(n, d -> (d % 10 == 1) ? Z.ONE : Z.ZERO)	1,10	Number of divisors of n that are congruent to (\d+) modulo (\d+)
+A083913	lambdan	0	n -> SD(n, d -> (d % 10 == 3) ? Z.ONE : Z.ZERO)	3,10	Number of divisors of n that are congruent to (\d+) modulo (\d+)
+A083915	lambdan	0	n -> SD(n, d -> (d % 10 == 5) ? Z.ONE : Z.ZERO)	5,10	Number of divisors of n that are congruent to (\d+) modulo (\d+)
+A083916	lambdan	0	n -> SD(n, d -> (d % 10 == 6) ? Z.ONE : Z.ZERO)	6,10	Number of divisors of n that are congruent to (\d+) modulo (\d+)
+A083917	lambdan	0	n -> SD(n, d -> (d % 10 == 7) ? Z.ONE : Z.ZERO)	7,10	Number of divisors of n that are congruent to (\d+) modulo (\d+)
+A083918	lambdan	0	n -> SD(n, d -> (d % 10 == 8) ? Z.ONE : Z.ZERO)	8,10	Number of divisors of n that are congruent to (\d+) modulo (\d+)
+A083919	lambdan	0	n -> SD(n, d -> (d % 10 == 9) ? Z.ONE : Z.ZERO)	9,10	Number of divisors of n that are congruent to (\d+) modulo (\d+)
+    
+#  A038821	-2	A000720     	10,12	Number of primes less than n*(\d+)^(\d+)
+#  A116356	-2	nyi         	10,21	Number of primes less than n*(\d+)^(\d+)
+#  A252504	-2	nyi         	10,22	Number of primes less than n*(\d+)^(\d+)
+#  A080123	-2	nyi o       	10,14	Number of primes less than n*(\d+)^(\d+)
+#  A080124	-2	nyi o       	10,15	Number of primes less than n*(\d+)^(\d+)
+#  A080125	-2	nyi o       	10,16	Number of primes less than n*(\d+)^(\d+)
+#  A080126	-2	nyi o       	10,17	Number of primes less than n*(\d+)^(\d+)
+#  A080127	-2	nyi o       	10,18	Number of primes less than n*(\d+)^(\d+)
+#  A080128	-2	nyi o       	10,19	Number of primes less than n*(\d+)^(\d+)
+#  A080129	-2	nyi o       	10,20	Number of primes less than n*(\d+)^(\d+)
+#  A080122	-2	nyi to      	10,13	Number of primes less than n*(\d+)^(\d+)
+
+A193854	filtpos	0	0	 new A062039()	v -> v.equals(ZV(1))	Numbers m such that Annnnnn(m)= (\d+)	
+A196276	filtpos	0	1	 new A196274()	v -> v.equals(ZV(1))	Numbers m such that Annnnnn(m)= (\d+)	
+A214866	filtpos	0	0	 new A059175()	v -> v.equals(ZV(0))	Numbers m such that Annnnnn(m)= (\d+)	
+A216183	filtpos	0	1	 new A059514()	v -> v.equals(ZV(0))	Numbers m such that Annnnnn(m)= (\d+)	
+A246438	filtpos	0	0	 new A164349()	v -> v.equals(ZV(0))	Numbers m such that Annnnnn(m)= (\d+)	
+A246439	filtpos	0	0	 new A164349()	v -> v.equals(ZV(1))	Numbers m such that Annnnnn(m)= (\d+)	
+    
+    A133897 Numbers m such that binomial(m+7,m) mod 7 = 0
+    "[0,-1,1,0,0,0,0,0,1,-1]", "42,43,44,45,46,47,48,91", 0
+A133893	filnum	1	1	m -> BI(m + 3, m).mod(3) == 0	3,3,0	Numbers m such that binomial(m+(\d+),m) mod (\d+)= (\d+)
+A133899	filnum	1	1	m -> BI(m + 9, m).mod(9) == 0	9,9,0	Numbers m such that binomial(m+(\d+),m) mod (\d+)= (\d+)
+A133896	filnum	1	1	m -> BI(m + 6, m).mod(6) == 0	6,6,0	Numbers m such that binomial(m+(\d+),m) mod (\d+)= (\d+)     
+
+A133902	tuptraf	0	(n, s) -> (n == 0) ? Z.ONE : s[0].gcd(ZV(n)).equals(Z.ONE) ? s[0].*(JF(n).sigma0()) : s[0]./(s[0].gcd(ZV(n)))	"1"	PREVIOUS	a(n) = a(n-1)* d(n) if gcd(n,a(n-1))=1, otherwise a(n) = a(n-1)/gcd(n,a(n-1)). Here gcd(n,a(n-1)) is greatest common divisor, 
+A133903	tuptraf	0	(n, s) -> (n == 0) ? Z.ONE : (s[0].mod(3) != 0 ? s[0].+(JF(n).sigma0()) : s[0]./(3))	"1"	PREVIOUS	a(n) = a(n-1) + A000005(n-1) if a(n-1) is not divisible by 3, otherwise a(n) = a(n-1)/3.	easy,nonn	1..10000	nyi	_Ctibo
+A133904	tuptraf	0	(n, s) -> (n == 0) ? Z.ONE : (s[0].testBit(0) ? s[0].gcd(ZV(n - 1)).*(s[0]).+(JF(n).sigma0()) : s[0]./(2))	"1"	PREVIOUS	a(n) = gcd(a(n-1),n-1)*a(n-1) + d(n-1) if a(n-1) is not divisible by 2, otherwise a(n) = a(n-1)/2, where gcd denotes common di

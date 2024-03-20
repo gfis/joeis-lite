@@ -1,0 +1,23 @@
+A080919	complem	1	new A080900()	, Z.ONE	Numbers that do not appear in A080900.						Numbers that do not appear in A080900.
+A084116	union2	1	new A000040()	new A007422().skip(1)		Union of primes and multiplicatively perfect numbers (A000040, A007422).					Numbers m such that A084115(m) = 1.
+A099659	tuptraf	0	(n, s) -> Puma.nextPrimeZ(s[0])	""	new A002279().skip(1)	a(n) is the least prime following A002279[n] repdigits.	base,nonn	0..17	nyi	_Labos Elemer_	a(n) is the least prime following A002279[n] repdigits.
+A099665	tuptraf	1	(n, s) -> Puma.prevPrimeZ(s[0])	""	new A002279().skip(1)	a[n] is the largest prime before  A002279[n] repdigits.	base,nonn	1..18	nyi	_Labos Elemer_	a[n] is the largest prime before A002279[n] repdigits.
+A099667	tuptraf	1	(n, s) -> Puma.prevPrimeZ(s[0])	""	new A002281().skip(1)	a(n) is the largest prime before  A002281(n) repdigits repeating 7.	base,nonn	1..1000	nyi	_Labos Elemer_	a(n) is the largest prime before A002281(n); repdigits repeating 7.
+A099677	simtraf	0	new A032682()	v -> new Z("1" + (v.isZero() ? "" : v.toString()) + "1")	Primes arising in A032682.						Primes arising in A032682.
+A100953	moetraf	0	new A000837()	, 0, Z.ONE	Number of partitions of n into relatively prime parts such that multiplicities of parts are also relatively prime.
+A113705	simtraf	0	new A055895()	v -> new Z(v.toString(2))	Inverse Moebius transform of powers of 10.
+A130272	simtraf	1	new RecordPositionSequence(1, new A054269(), 1)	v -> Puma.primeZ(v)	Where records occur in A054269.						Primes p for which the period of the continued fraction of sqrt(p) increases.
+A137377	partsun	1	new SimpleTransformSequence(1, new PrependSequence(0, new A051950(), 0), v -> v.abs())			Partial sums of |A051950|, i.e., a(n) = Sum_{i=2..n} |d(i)-d(i-1)| = Sum_{i=2..n} |A051950(i)|. - _M. F. Hasler_, Apr 21 2008					a(1)=0; for n >= 2, a(n) = a(n-1) + |d(n)-d(n-1)|, where d(n) is the number of positive divisors of n.
+A152477	prepend	1	new PartialSumSequence(0, new A072214().skip(1))	0	Partial sums of PartitionsP of Fibonacci numbers.					Partial sums of PartitionsP of Fibonacci numbers.
+A154789	simtraf1	new A085544()	(n, v) -> (n == 1) ? Z.ONE : v	Where records occurs in A085543 for positive values of n.						Where records occurs in A085543 for positive values of n.
+A166718	complem	1	new A046304()	, Z.ONE	
+A273045	filter	0	new A000045()	v -> ZUtils.isNondecreasingDigits(v)	
+A281707	filter	1	new A005843().skip(2)	(k, v) -> JF(new A146076().a(v)).phi().equals(new A000593().a(v))	Even integers k such that phi(sum of even divisors of k) = sum of odd divisors of k.						Even integers k such that phi(sum of even divisors of k) = sum of odd divisors of k.
+A297156	moetra	1	new A243354()	, 0		Moebius transform of A243354.	nonn	1..4096	nyi	_Antti Karttunen_	M√∂bius transform of A243354.
+A297172	moetra	1	new A253564()	, 0		Moebius transform of A253564.	nonn	1..4096	nyi	_Antti Karttunen_	M√∂bius transform of A253564.
+A341712	simtraf	1	new FilterSequence(1, new A120963().skip(2), (k, v) -> (k & 1) == 0)	(n, v) -> v./(2)	a(n) = A120963(2*n) / 2.						a(n) = A120963(2*n)/2.
+A354482	filtpos	1	-1	new A004601()	ZERO	Positions of 0's in binary expansion of Pi.					Positions of 0's in binary expansion of Pi.
+A320300	simtraf	1	new A354482()	v -> v.+(2)	a(n) = A320300(n) - 2
+A362948	union2	1	new A000351().skip(1)	new A033845()		Union of A000351 = {5^k ; k > 0} and A033845 = {2^j*3^k, j,k > 0}.					Numbers whose sum of (distinct) prime divisors (A008472) equals 5.
+A363292	union2	1	new A000420().skip(1)	new A033846()		Union of A000420 = {7^k ; k > 0} and A033846 = {2^j*5^k ; j, k > 0}.					Numbers whose sum of (distinct) prime divisors (A008472) equals 7.
+A368902	filtpos	1	2	new A342001().skip(1)	SQUAREFREE	Numbers k for which A342001(k) is squarefree, where A342001(n) is the arithmetic derivative of n divided by its greatest common divisor with n.	nonn,new ()	1..79	nyi	_Antti Karttunen_	Numbers k for which A342001(k) is squarefree.

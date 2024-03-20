@@ -1,0 +1,79 @@
+A083910	lambdan	0	n -> SD(n, d -> (d % 10 == 0) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 0 modulo 10.	1..10000
+A083911	lambdan	0	n -> SD(n, d -> (d % 10 == 1) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 1 modulo 10.	1..10000
+A083912	lambdan	0	n -> SD(n, d -> (d % 10 == 2) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 2 modulo 10.	1..65537_
+A083913	lambdan	0	n -> SD(n, d -> (d % 10 == 3) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 3 modulo 10.	1..10000
+A083914	lambdan	0	n -> SD(n, d -> (d % 10 == 4) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 4 modulo 10.	1..10000_
+A083915	lambdan	0	n -> SD(n, d -> (d % 10 == 5) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 5 modulo 10.	1..10000
+A083916	lambdan	0	n -> SD(n, d -> (d % 10 == 6) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 6 modulo 10.	1..10000
+A083917	lambdan	0	n -> SD(n, d -> (d % 10 == 7) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 7 modulo 10.	1..10000
+A083918	lambdan	0	n -> SD(n, d -> (d % 10 == 8) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 8 modulo 10.	1..10000
+A083919	lambdan	0	n -> SD(n, d -> (d % 10 == 9) ? Z.ONE : Z.ZERO)	Number of divisors of n that are congruent to 9 modulo 10.	1..10000
+A320857	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS( -2, i))).negate()
+A320858	lambdan	0	n -> SU(1, n, i -> ZV(KS( -2, Puma.prime(i)))).negate()
+A320895	lambdan	0	n -> SU(1, n, k -> ZV(k).^(3).*(JF(k).sigma0()))	a(n) = sum(k=1, n, k^3*numdiv(k))
+A320916	lambdan	0	n -> SU(0, n - 1, i -> Z2(i).*(Integer.bitCount(i) & 1))	a(n) = sum(i=0, n-1, 2^i*(hammingweight(i)%2))
+A320962	lambdan	0	n -> (n <= 0) ? Z.ZERO : Z_1(n - 1).*(FA(n - 1)).*(SU(0, n, i -> S2(n, i)))	if (n>0, (-1)^(n-1)*(n-1)!*sum(i=0, n, stirling(n, i, 2)), 0)
+A321297	lambdan	0	n -> SD(n, d -> (d > 1 && d < n) ? ZV(d >= n/d ? d : -d) : Z.ZERO)	a(n) = sumdiv(n, d, if(d>1&&d<n, if(d>=n/d, d, -d)))
+A321856	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS( -3, i))).negate()
+A321857	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS(  5, i))).negate()
+A321858	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS( 12, i))).negate()
+A321859	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS( -7, i))).negate()
+A321860	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS(-11, i))).negate()
+A321861	lambdan	0	n -> SU(1, n, i -> ZV(KS(  2, Puma.prime(i)))).negate()
+A321862	lambdan	0	n -> SU(1, n, i -> ZV(KS(  5, Puma.prime(i)))).negate()
+A321863	lambdan	0	n -> SU(1, n, i -> ZV(KS( 12, Puma.prime(i)))).negate()
+A321864	lambdan	0	n -> SU(1, n, i -> ZV(KS( -7, Puma.prime(i)))).negate()
+A321865	lambdan	0	n -> SU(1, n, i -> ZV(KS(-11, Puma.prime(i)))).negate()
+A336247	lambdan	0	n -> RU(0, n, k -> new Q(Z.ONE     , FA(k).^(n)              )).*(FA(n).^(n)).num()	a(n) = (n!)^n * sum(k=0, n, 1          / (k!)^n)           	 \\ _Michel Marcus_, Jul 14 2020
+A336248	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(k)    , FA(k).^(n)              )).*(FA(n).^(n)).num()	a(n) = (n!)^n * sum(k=0, n, (-1)^(k)   / (k!)^n)           	 \\ _Michel Marcus_, Jul 14 2020
+A336249	lambdan	0	n -> RU(0, n, k -> new Q(Z.ONE     , FA(k).^(n).*(FA(n - k)) )).*(FA(n).^(n)).num()	a(n) = (n!)^n * sum(k=0, n, 1          / ((k!)^n * (n-k)!))	 \\ _Michel Marcus_, Jul 14 2020
+A336250	lambdan	0	n -> RU(1, n, k -> new Q(Z_1(k + 1), ZV(k).^(n)              )).*(FA(n).^(n)).num()	a(n) = (n!)^n * sum(k=1, n, (-1)^(k+1) / (k)^n)            	 \\ _Michel Marcus_, Jul 14 2020
+A336291	lambdan	0	n -> RU(1, n, k -> new Q(Z.ONE     , FA(n - k).^(2).*(k)     )).*(FA(n).^(2)).num()	a(n) = (n!)^2 * sum(k=1, n, 1          / (k * ((n-k)!)^2)) 	 \\ _Michel Marcus_, Jul 17 2020
+A336292	lambdan	0	n -> RU(1, n, k -> new Q(Z_1(n - k), FA(n - k).^(2).*(k)     )).*(FA(n).^(2)).num()	a(n) = (n!)^2 * sum(k=1, n, (-1)^(n-k) / (k * ((n-k)!)^2)) 	 \\ _Michel Marcus_, Jul 17 2020
+A353880	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/4, k -> new Q(S1(n-2*k, 2*k).abs().*(FA(2*k)), Z.FOUR.^(k).*(FA(n-2*k))).*(FA(n))).num()
+A353881	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/6, k -> new Q(S1(n-3*k, 3*k).abs().*(FA(3*k)), ZV( 36).^(k).*(FA(n-3*k))).*(FA(n))).num()
+A353882	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/8, k -> new Q(S1(n-4*k, 4*k).abs().*(FA(4*k)), ZV(576).^(k).*(FA(n-4*k))).*(FA(n))).num()
+A353883	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/4, k -> new Q(S2(n-2*k, 2*k).*(FA(2*k)), Z.FOUR.^(k).*(FA(n-2*k))).*(FA(n))).num()
+A353884	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/6, k -> new Q(S2(n-3*k, 3*k).*(FA(3*k)), ZV( 36).^(k).*(FA(n-3*k))).*(FA(n))).num()
+A353885	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/8, k -> new Q(S2(n-4*k, 4*k).*(FA(4*k)), ZV(576).^(k).*(FA(n-4*k))).*(FA(n))).num()
+A353891	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/4, k -> new Q(S1(n-2*k, 2*k).abs().*(FA(2*k)), Z.FOUR.^(k).*(FA(k)).*(FA(n-2*k))).*(FA(n))).num()
+A353892	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/6, k -> new Q(S1(n-3*k, 3*k).abs().*(FA(3*k)), ZV( 36).^(k).*(FA(k)).*(FA(n-3*k))).*(FA(n))).num()
+A353893	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/8, k -> new Q(S1(n-4*k, 4*k).abs().*(FA(4*k)), ZV(576).^(k).*(FA(k)).*(FA(n-4*k))).*(FA(n))).num()
+A353894	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/4, k -> new Q(S2(n-2*k, 2*k).*(FA(2*k)), Z.FOUR.^(k).*(FA(k)).*(FA(n-2*k))).*(FA(n))).num()
+A353895	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/6, k -> new Q(S2(n-3*k, 3*k).*(FA(3*k)), ZV( 36).^(k).*(FA(k)).*(FA(n-3*k))).*(FA(n))).num()
+A353896	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/8, k -> new Q(S2(n-4*k, 4*k).*(FA(4*k)), ZV(576).^(k).*(FA(k)).*(FA(n-4*k))).*(FA(n))).num()
+A362292	lambdan	0	n -> new Q(3*n + 1, 3).^(n).*(FA(3*n))./(FA(n)).num()	a(n) = (n+1/3)^n*(3*n)!/n!
+A364011	lambdan	0	n -> SD(n, d -> ZV(d   % 3 == 1 ? 1 : 0).*(Z_1(d        ))).negate()	a(n) = -sumdiv(n, d, ZV(d%3   == 1 ? 1 : 0)*(-1)^d        )
+
+A364012	lambdan	0	n -> SD(n, d -> ZV(n/d % 3 == 1 ? 1 : 0).*(Z_1(n/d)).*(d  )).negate()	a(n) = -sumdiv(n, d, (n/d%3==1)*(-1)^(n/d)*d);
+A364013	lambdan	0	n -> SD(n, d -> ZV(n/d % 3 == 1 ? 1 : 0).*(Z_1(n/d)).*(d*d)).negate()	a(n) = -sumdiv(n, d, ZV(n/d%3 == 1 ? 1 : 0)*(-1)^(n/d)*d^2)
+A364019	lambdan	0	n -> SD(n, d -> ZV(n/d % 5 == 1 ? 1 : 0).*(Z_1(n/d)).*(d  )).negate()	a(n) = -sumdiv(n, d, ZV(n/d%5 == 1 ? 1 : 0)*(-1)^(n/d)*d  )
+A364021	lambdan	0	n -> SD(n, d -> ZV(n/d % 5 == 3 ? 1 : 0).*(Z_1(n/d)).*(d  )).negate()	a(n) = -sumdiv(n, d, ZV(n/d%5 == 3 ? 1 : 0)*(-1)^(n/d)*d  )
+
+A364043	lambdan	0	n -> SD(n, d -> ZV(d   % 5 == 1 ? 1 : 0).*(Z_1(d))).negate()	a(n) = -sumdiv(n, d, ZV(d%5   == 1 ? 1 : 0)*(-1)^d        )
+A364045	lambdan	0	n -> SD(n, d -> ZV(d   % 5 == 3 ? 1 : 0).*(Z_1(d))).negate()	a(n) = -sumdiv(n, d, ZV(d%5   == 3 ? 1 : 0)*(-1)^d        )
+A369523	lambdan	0	n -> FA(n*n -1).*(n)	a(n) = n*(n^2-1)!
+A369569	lambdan	0	n -> FA(n - 1).*(ZV(n).^(n))	a(n) = (n-1)!*n^n
+A370674	lambdan	0	n -> SD(n, d -> Z_1(d - 1).*(FA(d + n/d - 1))./(FA(d - 1)))
+A371005	lambdan	0	n -> SU(0, n + 1, k -> ZV(2).^(k).*(Z_1(n + 1 - k)).*(ZV(k).^(n)).*(BI(n + 1, k)))./(n + 1)
+A371006	lambdan	0	n -> SU(0, n + 1, k -> ZV(3).^(k).*(ZV(-2).^(n + 1 - k)).*(ZV(k).^(n)).*(BI(n + 1, k)))./(n + 1)
+A371007	lambdan	0	n -> SU(0, n + 1, k -> ZV(3).^(k).*(Z_1(n + 1 - k)).*(ZV(k).^(n)).*(BI(n + 1, k)))./(2*(n + 1))
+A371008	lambdan	0	n -> SU(0, n + 1, k -> ZV(-2).^(k).*(ZV(3).^(n + 1 - k)).*(ZV(k).^(n)).*(BI(n + 1, k)))./(n + 1)
+A371009	lambdan	0	n -> SU(0, n + 1, k -> Z_1(k).*(ZV(3).^(n + 1 - k)).*(ZV(k).^(n)).*(BI(n + 1, k)))./(2*(n + 1))
+A371018	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k).^(n - 2*k).*(BI(n + 1, k)), FA(n - 2*k))).*(FA(n))./(ZV(n + 1)).num()
+A371019	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k).^(n - 3*k).*(BI(n + 1, k)), FA(n - 3*k))).*(FA(n))./(ZV(n + 1)).num()
+A371020	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k).^(n - 2*k).*(BI(n + 1, k)), ZV(2).^(k).*(FA(n - 2*k)))).*(FA(n))./(ZV(n + 1)).num()
+A371021	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k).^(n - 3*k).*(BI(n + 1, k)), ZV(6).^(k).*(FA(n - 3*k)))).*(FA(n))./(ZV(n + 1)).num()
+A371038	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k + 1).^(k - 1).*(BI(n - k,   n - 2*k)), (FA(k)))).*(FA(n)).num()
+A371039	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k + 1).^(k - 1).*(BI(n - 2*k, n - 3*k)), (FA(k)))).*(FA(n)).num()
+A371040	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(2*k + 1).^(k - 1).*(BI(n - k, n - 3*k)), (FA(k)))).*(FA(n)).num()
+A371041	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(3*k + 1).^(k - 1).*(BI(n + k, n - 2*k)), (FA(k)))).*(FA(n)).num()
+A371042	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k).^(n - 2*k).*(BI(n - 2*k + 1, k)), ZV(n - 2*k + 1).*(FA(n - 2*k)))).*(FA(n)).num()
+A371043	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k).^(n - 2*k).*(BI(n - k + 1  , k)), ZV(n - k + 1).*(FA(n - 2*k)))).*(FA(n)).num()
+A371044	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k).^(n - 3*k).*(BI(n - 3*k + 1, k)), ZV(n - 3*k + 1).*(FA(n - 3*k)))).*(FA(n)).num()
+A371045	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k).^(n - 3*k).*(BI(n - 2*k + 1, k)), ZV(n - 2*k + 1).*(FA(n - 3*k)))).*(FA(n)).num()
+A371046	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k).^(n - 3*k).*(BI(n - k + 1  , k)), ZV(n - k + 1).*(FA(n - 3*k)))).*(FA(n)).num()
+A371063	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k).^(n - 2*k).*(BI(n - 2*k + 1, k)), ZV(2).^(k).*(n - 2*k + 1).*(FA(n - 2*k)))).*(FA(n)).num()
+A371066	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k).^(n - 3*k).*(BI(n - 3*k + 1, k)), ZV(6).^(k).*(n - 3*k + 1).*(FA(n - 3*k)))).*(FA(n)).num()
+A371067	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n - 2*k).^(k).*(BI(2*k + 1, n - 2*k)), ZV(2*k + 1).*(FA(k)))).*(FA(n)).num()
+A371068	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n - 3*k).^(k).*(BI(3*k + 1, n - 3*k)), ZV(3*k + 1).*(FA(k)))).*(FA(n)).num()

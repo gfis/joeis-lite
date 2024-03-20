@@ -1,0 +1,82 @@
+A217512	partsun	0	new FilterSequence(0, new A005925(), FilterSequence.NONZERO)		
+A252540	filter	1	new A001477().skip(2)	(k, v) -> new A000593().a(new A146076().a(v)).equals(v)	Numbers k such that A000593(A146076(k)) = k.						Numbers k such that A000593(A146076(k)) = k. (A000593(n) is the sum of the odd divisors of n; A146076(n) is the sum of the even divisors of n.)
+A252541	filter	1	new A001477().skip(1)	(k, v) -> new A146076().a(new A000593().a(v)).equals(v)	Numbers k such that A146076(A000593(k)) = k.						Numbers k such that A146076(A000593(k)) = k.
+A256108	filtpos	1	-1	new A004601()	NONZERO	Positions of nonzero digits in binary expansion of Pi.					Positions of nonzero digits in binary expansion of Pi.
+
+A084052	lambdan	0	n -> ZUtils.reverse(ZV(2*n)).modZ(2)	2,2	(\d+)*n digit-reversed mod (\d+)	m	i     
+# A096921	trilamb	0	(n,k) -> BI((n + k)/2, k/2)
+# A119963	trilamb	0	(n,k) -> BI((n - k%2)/2, k/2)
+# A152810	nyi t	Let the binary expansion of n be n = Sum_{k} 2^{r_k}, let e(n) be the number of r_ks that are even, o(n) the number that are odd sequence gives odd n such that e(n) > o(n) and e(n)-o(n) == 1 or 2 (mod 6).	nonn	1..10000	nyi	_Vladimir Shevelev_
+# A302205	nyi	Let the binary expansion of n be [b_d, b_{d-1}, ..., b_3, b_2, b_1, b_0]_2, where (if n>0) b_d = 1, b_i = 0 or 1 for i<d. To get a(n) concatenate the decimal numbers 2^(b_i) (if b_i = 1) or 0 (if b_i = 0).	nonn,base	0..48	nyi	_N. J. A. Sloane_
+#?? A370686	holos	0	holos	0	[[0],[1109665045440,-140684569024,6688921216,-141353984,1120256],[0],[0],[0],[32389929598080,-4875216140160,275079388416,-6895951872,64806912],[0],[0],[0],[-52742747532000,9907093206928,-693409667856,21450973856,-247642560],[0],[0],[0],[0],[0],[0],[0],[0],[5577959426160,-1556828447460,164042192950,-7732569300,137543690],[914620742880,-279536807128,32138425380,-1646794064,31720788],[0],[0],[-102484602720,38275347030,-5419720059,344697618,-8302773],[0],[0],[0],[0],[0],[0],[0],[0],[573480,-775332,395280,-93636,9072],[0],[0,15552,-27216,13608,-1944]]	1,1,1,3,5,7	0	0	 G.f.: c(x^3)/(sqrt(c(x^3)*(4-3*c(x^3)))-x*c(x^3)) C(x)=(1-sqrt(1-4*x))/(2*x)
+#?? make runholo MATRIX="[[0],[1109665045440,-140684569024,6688921216,-141353984,1120256],[0],[0],[0],[32389929598080,-4875216140160,275079388416,-6895951872,64806912],[0],[0],[0],[-52742747532000,9907093206928,-693409667856,21450973856,-247642560],[0],[0],[0],[0],[0],[0],[0],[0],[5577959426160,-1556828447460,164042192950,-7732569300,137543690],[914620742880,-279536807128,32138425380,-1646794064,31720788],[0],[0],[-102484602720,38275347030,-5419720059,344697618,-8302773],[0],[0],[0],[0],[0],[0],[0],[0],[573480,-775332,395280,-93636,9072],[0],[0,15552,-27216,13608,-1944]]" INIT="1, 1, 1, 3, 5, 7, 17, 31, 49, 107, 201, 339, 699, 1327, 2327, 4643, 8843, 15895, 31099, 59251, 108239, 209239, 398355, 735619, 1411351, 2684147, 4993111, 9533775, 18112735, 33863375, 64457715, 122348279, 229537011, 436029791, 827012339, 1555314327" DIST=0
+A304100	dirtraf	0	new A003602()	new A048679()		a(n)= Annnnnn(Annnnnn(n))	
+A286586	dirtraf	0	new A006047()	new A048673()		a(n)= Annnnnn(Annnnnn(n))	
+A353360	dirtraf	0	new A006047()	new A048675()		a(n)= Annnnnn(Annnnnn(n))	
+A353330	dirtraf	0	new A006047()	new A156552()		a(n)= Annnnnn(Annnnnn(n))	
+
+A070914	arrlamb0	0	(n, k) -> BI(n*(k + 1), n)./(n*k + 1)
+A070914	arrlamb0	0	(n, k) -> BI(n*(k + 1), n)./(n*k + 1)								Array read by antidiagonals giving number of paths up and left from (0,0) to (n,kn) where x/y <= k for all intermediate points.
+A072285	arrlamb0	0	(n, m) -> BI(new Q(n + 1).-(new Q(m, 2)), n - m + 1).-(BI(new Q(n).-(new Q(m, 2)), n - m + 1)).num()	a(n, m) = binomial(n-m/2, n-m);
+A072286	arrlamb0	0	(n, m) -> BI(new Q(n + 1).-(new Q(m, 2)), n - m + 1).-(BI(new Q(n).-(new Q(m, 2)), n - m + 1)).den()	a(n, m) = binomial(n-m/2+1, n-m+1) - binomial(n-m/2, n-m+1)
+A073187	tablamb	1	0	n -> new Integer[] { 0, n/3 }	(n, k) -> BI(n + 1, k).*(BI(2*n - 3*k, n - 3*k))./(n + 1)	Triangle of C(n+1,k)*C(2*n-3*k,n-3*k)/(n+1) by rows.					Triangle of C(n+1,k)*C(2*n-3*k,n-3*k)/(n+1) by rows.
+A073189	tablamb	0	0	n -> new Integer[] { 0, n/3 }	(n, k) -> ZV(k)	Integers 0..k three times, then 0..k+1 three times, etc.					Integers 0..k three times, then 0..k+1 three times, etc.
+A076126	tablamb	2	2	n -> new Integer[] { 1, n/2 }	(n, k) -> BI(n - k - 1, k - 1).*(FA(n))./(FA(k))	T(n, k) = n!/k!*binomial(n-k-1, k-1), n>=2, k=1..floor(n/2).					Triangle T(n,k) of associated Lah numbers, n>=2, k=1..floor(n/2).
+A077385	tablamb	1	1	n -> new Integer[] { 0, 2*n - 2 }	(n, k) -> (k < n) ? ZV(n).^(k) : ZV(n).^(2*n - k - 2)	T(n, k) = n^k for k < n, otherwise n^(2*n-k-2), for n >= 1, 0 <= k <= 2*n-2.					Triangle read by rows in which n-th row contains 2n-1 terms starting from n^0 to n^(n-1) in increasing order and then in decreasing order to n^0.
+A082375	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> ZV(n).-(2*k)	T(n, m) = n - 2*m, m = 0, 1, ..., floor(n/2), n >= 0					Irregular triangle read by rows: row n begins with n and decreases by 2 until 0 or 1 is reached, for n >= 0.
+A082693	tablamb	1	1	n -> new Integer[] { 1, 2*n - 1 }	(n, k) -> Z2((k <= n) ? ZV(n - k) : ZV(k - n))	Pyramidal sequence built with powers of 2.					Pyramidal sequence built with powers of 2.
+A084950	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> n <= 1 ? ZV(1) : FA(n - k).*(BI(n - k, k))./(FA(k))	_Wouter Meeussen_, Aug 08 2010					Array of coefficients of denominator polynomials of the n-th approximation of the continued fraction x/(1+x/(2+x/(3+..., related to Laguerre polynomial coefficients.
+A091478	tablamb	0	0	n -> new Integer[] { 0, n*(n - 1)/2 }	(n, k) -> n == 0 ? Z.ONE : BI(n*(n - 1)/2, k).*(FA(k))	a(n, k) = k!*binomial(binomial(n, 2), k).					Table of graphs with n (>=0) nodes and k (>=0) edges. Each type of object labeled from its own label set.
+A094102	tablamb	1	1	n -> new Integer[] { 1, 2*n - 1 }	(n, k) -> (k <= n) ? FI(k) : FI(2*n - k)	Triangle read by rows in which row n contains Fib(1), ..., Fib(n-1), Fib(n), Fib(n-1), ...,					Triangle read by rows in which row n contains Fib(1), ..., Fib(n-1), Fib(n), Fib(n-1), ..., Fib(1).
+A100948	tablamb	2	2	n -> new Integer[] { 1, 3 }	(n, k) -> k == 1 ? (n <= 2 ? ZV(1) : FA(n)./(3)) : (k == 2 ? (n <= 2 ? ZV(1) : FA(n)./(2)) : (FA(n)))	Flatten[Table[{If[n < 3, 1, n!/3], If[n < 2, 1, n!/2], n!}, {n, 1, 10}]]					Irregular triangle with T(n,1) = floor(n!/3), T(n,2) = n!/2, T(n,3) = n!, read by rows.
+A102547	tablamb	0	0	n -> new Integer[] { 0, n/3 }	(n, k) -> BI(n - 2*k, k)						Triangle read by rows, formed from antidiagonals of the antidiagonals (A011973) of Pascals triangle (A007318).
+A104978	trilamb0	0	(n, k) -> BI(2*n + k, n + 2*k).*(BI(n + 2*k, k))./(n + k + 1)	binomial(2*n+k, n+2*k)*binomial(n+2*k, k)/(n+k+1)
+A120258	trilambn	0	0	0	(n, k) -> PR(0, k - 1, j -> BI(2*n - 2*k + j, n - k))./(PR(0, k - 1, j -> BI(n - k + j, j)))	[k<=n]*Product{j=0..k-1, C(2n-2k+j, n-k)/C(n-k+j, j)}					Triangle of central coefficients of generalized Pascal-Narayana triangles.
+A120986	trilamb0	0	(n, k) -> BI(n + 1, k).*(BI(2*(n + 1), n - k))./(n + 1)
+A122832	trilambn	0	0	0	(n, k) -> Rationals.SINGLETON.sum(0, n - k, i -> new Q(BI(i, n - k - i), FA(i))).*(FA(n))./(FA(k)).num()	(n!/k!)sum{i=0..n-k, C(i,n-k-i)/i!}					Exponential Riordan array (e^(x(1+x)),x).
+A128413	trilambn	0	0	0	(n, k) -> (k == 0) ? Z2(n).*(BI(2*n, n))./(2).+((n == 0) ? 1 : 0) : Z2(n - k).*(BI(2*n, n - k))	; Column k has g.f. if(k=0, 4*x/(sqrt(1 - 8*x)(1 - sqrt(1 - 8*x))), (1/sqrt(1 - 8*x))*((1 - 4*x - sqrt(1 - 8*x))/(8*x))^k);					Inverse of number triangle A128412.
+A129652	trilambn	0	0	0	(n, k) -> Rationals.SINGLETON.sum(0, n - k, i -> new Q(BI(n - k - 1, i), FA(n - k - i))).*(FA(n))./(FA(k)).num()						Exponential Riordan array [e^(x/(1-x)),x].
+A129684	trilambn	0	0	0	(n, k) -> FA(n).*(Z_1(n - k).+(1))./(FA(k))./(Z2((n - k)/2))./(2)						Exponential Riordan array [1/(1-x^2/2), x].
+A130684	trilambn	0	1	1	(n, k) -> BI(k + 2, 3).*(2*n - k + 1)./(2)	T(n, k) = binomial(k+2, 3)*(2*n - k + 1)/2
+A144484	trilamb0	0	(n, k) -> BI(3 * n + 1 - k, n - k)
+A156789	tablamb	0	0	n -> new Integer[] { 0, 2*n }	(n, k) -> BI(2*n, k).*(BI(2*k, k))						Irregular triangle, read by rows, T(n, k) = binomial(2*n, k)*binomial(2*k, k).
+A157000	tablamb	2	2	n -> new Integer[] { 1, n/2 }	(n, k) -> BI(n - k - 1,k - 1).*(n)./(k)						Triangle T(n,k) = (n/k)*binomial(n-k-1, k-1) read by rows.
+A157108	trilamb0	0	(n, k) -> BI(BI(n, k).*(n), k)
+A157109	trilamb0	0	(n, k) -> BI(BI(n, (n - k)/2).*(n), k)
+A166335	trilambn	0	0	0	(n, k) -> BI(n, k).*((n - k) + ((n - k) == 0 ? 1 : 0)).*(Z_1(n - k).+(1))./(2)	[k<=n]*C(n,k)*((n-k)+0^((n-k)/2))(1+(-1)^(n-k))/2					Exponential Riordan array [1+x*sinh(x), x].
+A209274	arrlamb	1	1	1	-1	(n, k) -> ZV(n).*(Z2(k).+(n - 1))./(2)	
+A235706	trilamb0	0	(n, k) -> BI(3, n - k ).*(FA(n))./(FA(k))
+A243660	trilambn	0	1	1	(n, k) -> BI(3*n + 1 - k, n - k).*(BI(2*n, k - 1))./(n)
+A248324	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 3)), n + k).*(Z_1(k)).*(ZV( 9).^(n + k)).num()	a(n,k) = (-1)^k* 9^(n+k)*binomial(n-1/3,n+k)
+A248325	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 4)), n + k).*(Z_1(k)).*(ZV(16).^(n + k)).num()	a(n,k) = (-1)^k*16^(n+k)*binomial(n-1/4,n+k)
+A248326	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 5)), n + k).*(Z_1(k)).*(ZV(25).^(n + k)).num()	a(n,k) = (-1)^k*25^(n+k)*binomial(n-1/5,n+k)
+A248328	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 6)), n + k).*(Z_1(k)).*(ZV(36).^(n + k)).num()	a(n,k) = (-1)^k*36^(n+k)*binomial(n-1/6,n+k)
+A248329	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 7)), n + k).*(Z_1(k)).*(ZV(49).^(n + k)).num()	a(n,k) = (-1)^k*49^(n+k)*binomial(n-1/7,n+k)
+A248332	arrlamb0	0	(n, k) -> BI(new Q(n).-(new Q(1, 8)), n + k).*(Z_1(k)).*(ZV(64).^(n + k)).num()	a(n,k) = (-1)^k*64^(n+k)*binomial(n-1/8,n+k)
+A261494	arrlamb0	0	(n, k) -> (n < 1) ? Z.ONE : RD(n, d -> new Q(BI((k + 1)*(n/d), n/d).*(JF(d).phi()), ZV((k + 1)*n))).num()	add(binomial((k+1)*n/d, n/d)*phi(d), d=divisors(n))/((k+1)*n)):
+A271825	arrlamb	1	1	1	-1	(n, k) -> (n == k) ? Z.ONE : Z_1(n - k - 1).*(k).*(BI(2*n - 3*k - 1, n - k - 1))./(n - k)
+A282011	arrlamb0	0	(n, k) -> SU(0, (n + 1)/4, j -> BI(((n & 1) == 0) ? n/2 : n/2 + 1, 2*j).*(BI(n/2, k - 2*j)))	a(n, k)=sum(j=0, floor((n+1)/4), binomial(ceil(n/2), 2*j)*binomial(floor(n/2), k-2*j));
+A325006	arrlamb	1	1	1	-1	(n, k) -> BI(BI(k, 2), n)
+A325007	arrlamb	1	1	1	-1	(n, k) -> BI(BI(k + 1, 2).+(n - 1), n).-(BI(BI(k, 2), n))
+A362078	arrlamb0	0	(n, k) -> SU(0, n, j -> BI(n + j - 1, j).*(BI(k*j, n - j)))	T(n,k) = Sum_{j=0..n} (-1)^j * binomial(-n,j) * binomial(k*j,n-j) = Sum_{j=0..n} binomial(n+j-1,j) * binomial(k*j,n-j)
+A362079	arrlamb0	0	(n, k) -> SU(0, n, j -> BI(j + k - 1, j).*(BI(n*j, n - j)))
+A362125	arrlamb0	0	(n, k) -> SU(0, n, j -> BI(j + k - 1, j).*(BI(k*j, n - j)))
+
+A089538	simtraf	0	new A085747()	v -> v.IPP() ? Puma.primePiZ(v) : Z.ZERO	A000040	Annnnnn indexed by Annnnnn
+# A179146	filtpos	1	1	new A081119()	v -> v.equals(ZV(2))	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179147	filtpos	1	1	new A081119()	v -> v.equals(ZV(3))	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179148	filtpos	1	1	new A081119()	v -> v.equals(ZV(4))	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179150	filtpos	1	1	new A081119()	v -> v.equals(ZV(6))	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179151	filtpos	1	1	new A081119()	v -> v.equals(ZV(7))	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179152	filtpos	1	1	new A081119()	v -> v.equals(ZV(8))	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179153	filtpos	1	1	new A081119()	v -> v.equals(ZV(10))		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179154	filtpos	1	1	new A081119()	v -> v.equals(ZV(12))		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179155	filtpos	1	1	new A081119()	v -> v.equals(ZV(14))		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179157	filtpos	1	1	new A081119()	v -> v.equals(ZV(16))		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179158	filtpos	1	1	new A081119()	v -> v.equals(ZV(18))		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179159	filtpos	1	1	new A081119()	v -> v.equals(ZV(20))		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179160	filtpos	1	1	new A081119()	v -> v.equals(ZV(22))		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+# A179149	filtpos	1	1	new A081119()	v -> v.equals(ZV(5))	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+
+A142242	rowsum	0	new A143200().skip(1)
+

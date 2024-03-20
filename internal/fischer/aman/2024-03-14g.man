@@ -1,0 +1,482 @@
+A291353	lambdan	0	n -> ZV(10).^(44*n).-(1).*(9)./(89)	a(n) = 9*(10^(44*n) - 1)/89
+
+A367294	parmof2	0	A067497	4	,1,2	Numbers n such that (\d+) is the (\d+)st digit of (\d+)^k
+A367295	parmof2	0	A067497	6	,1,2	Numbers n such that (\d+) is the (\d+)st digit of (\d+)^k
+A363060	parmof2	0	A067497	5	,1,2	Numbers n such that (\d+) is the (\d+)st digit of (\d+)^k
+A367296	parmof2	0	A067497	8	,1,2	Numbers n such that (\d+) is the (\d+)st digit of (\d+)^k
+
+A153170	filnum	0	0	n -> !ZV(n).*( 3).+( 2).IPP()		3,2	Numbers n such that (\d+)*n +(\d+) is not prime
+A153309	filnum	0	0	n -> !ZV(n).*( 3).+( 1).IPP()		3,1	Numbers n such that (\d+)*n +(\d+) is not prime
+A153329	filnum	0	0	n -> !ZV(n).*( 5).+( 1).IPP()		5,1	Numbers n such that (\d+)*n +(\d+) is not prime
+A153343	filnum	0	0	n -> !ZV(n).*( 5).+( 4).IPP()		5,4	Numbers n such that (\d+)*n +(\d+) is not prime
+A153082	filnum	0	0	n -> !ZV(n).*( 2).+(13).IPP()		2,13	Numbers n such that (\d+)*n +(\d+) is not prime
+A153085	filnum	0	0	n -> !ZV(n).*( 4).+( 5).IPP()		4,5	Numbers n such that (\d+)*n +(\d+) is not prime
+A153129	filnum	0	0	n -> !ZV(n).*( 8).+( 5).IPP()		8,5	Numbers n such that (\d+)*n +(\d+) is not prime
+A153219	filnum	0	0	n -> !ZV(n).*( 6).+( 7).IPP()		6,7	Numbers n such that (\d+)*n +(\d+) is not prime
+A153236	filnum	0	0	n -> !ZV(n).*( 8).+( 3).IPP()		8,3	Numbers n such that (\d+)*n +(\d+) is not prime
+A155723	filnum	0	0	n -> !ZV(n).*( 2).+( 9).IPP()		2,9	Numbers n such that (\d+)*n +(\d+) is not prime
+A155854	filnum	0	0	n -> !ZV(n).*(13).+( 3).IPP()		13,3	Numbers n such that (\d+)*n +(\d+) is not prime
+A155935	filnum	0	0	n -> !ZV(n).*(13).+( 5).IPP()		13,5	Numbers n such that (\d+)*n +(\d+) is not prime
+A155945	filnum	0	0	n -> !ZV(n).*(24).+(13).IPP()		24,13	Numbers n such that (\d+)*n +(\d+) is not prime
+A181766	filnum	0	0	n -> !ZV(n).*( 3).+( 7).IPP()		3,7	Numbers n such that (\d+)*n +(\d+) is not prime
+A240531	filnum	0	0	n -> !ZV(n).*(24).+(19).IPP()		24,19	Numbers n such that (\d+)*n +(\d+) is not prime
+                0	0
+A153086	filnum	0	0	n -> !ZV(n).*( 4).+( 7).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153235	filnum	0	0	n -> !ZV(n).*( 8).+( 7).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153264	filnum	0	0	n -> !ZV(n).*(16).+(15).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153307	filnum	0	0	n -> !ZV(n).*(14).+( 3).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153308	filnum	0	0	n -> !ZV(n).*(10).+( 7).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153327	filnum	0	0	n -> !ZV(n).*(16).+( 5).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153348	filnum	0	0	n -> !ZV(n).*(16).+( 3).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153351	filnum	0	0	n -> !ZV(n).*( 7).+( 2).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153380	filnum	0	0	n -> !ZV(n).*(10).+( 9).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153381	filnum	0	0	n -> !ZV(n).*(11).+( 5).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153383	filnum	0	0	n -> !ZV(n).*(12).+( 1).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153384	filnum	0	0	n -> !ZV(n).*(24).+( 1).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153400	filnum	0	0	n -> !ZV(n).*(18).+( 1).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153403	filnum	0	0	n -> !ZV(n).*(10).+( 3).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A153464	filnum	0	0	n -> !ZV(n).*( 4).+( 9).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A154611	filnum	0	0	n -> !ZV(n).*( 7).+( 3).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A155941	filnum	0	0	n -> !ZV(n).*(16).+( 1).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A166563	filnum	0	0	n -> !ZV(n).*(12).+( 5).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A166569	filnum	0	0	n -> !ZV(n).*(12).+( 7).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A166570	filnum	0	0	n -> !ZV(n).*(12).+(11).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+A189242	filnum	0	0	n -> !ZV(n).*(24).+(17).IPP()	Numbers n such that (\d+)*n+(\d+) is not prime
+
+A243362	filtpos	0	1	new A243361()	v -> v.equals(ZV(123456789))	Numbers n such that Annnnnn(n)= (\d+)	m
+A140398	filtpos	0	1	new A140397()	v -> v.equals(ZV(0))	Numbers n such that Annnnnn(n)= (\d+)
+A140399	filtpos	0	1	new A140397()	v -> v.equals(ZV(1))	Numbers n such that Annnnnn(n)= (\d+)
+A140400	filtpos	0	1	new A140397()	v -> v.equals(ZV(2))	Numbers n such that Annnnnn(n)= (\d+)
+A368406	filtpos	0	1	new A368405()	v -> v.equals(ZV(0))	Numbers n such that Annnnnn(n)= (\d+)
+A341015	filtpos	0	1	new A124446()	v -> v.equals(ZV(1))	Numbers n such that Annnnnn(n)= (\d+)
+A363690	filtpos	0	1	new A246600()	v -> v.equals(ZV(2))	Numbers n such that Annnnnn(n)= (\d+)
+A171126	filtpos	0	1	new A169611()	v -> v.equals(ZV(1))	Numbers n such that Annnnnn(n)= (\d+)
+A171127	filtpos	0	1	new A169611()	v -> v.equals(ZV(2))	Numbers n such that Annnnnn(n)= (\d+)
+A171241	filtpos	0	1	new A169611()	v -> v.equals(ZV(3))	Numbers n such that Annnnnn(n)= (\d+)
+A364903	filtpos	0	1	new A060778()	v -> v.equals(ZV(7))	Numbers n such that Annnnnn(n)= (\d+)
+
+A122408	filtpos	0	1	new A067824()	(n, v) -> v.equals(ZV(n))	Numbers n such that Annnnnn(n)= n
+A104235	filtpos	0	1	new A102370()	(n, v) -> v.equals(ZV(n))	Numbers n such that Annnnnn(n)= n
+A070872	filtpos	0	1	new A070871()	(n, v) -> v.equals(ZV(n))	Numbers n such that Annnnnn(n)= n
+
+A362966	filtpos	1	1	new A007908()	(k, v) -> v.mod(k) == 1	Numbers k such that Annnnnn(k)==(\d+)(mod k)
+A277187	filtpos	1	1	new A001158()	(k, v) -> v.mod(k) == 1	Numbers k such that Annnnnn(k)==(\d+)(mod k)
+
+A295594	filtpos	1	1	new A027760()	v -> v.equals(ZV(   272118))	Numbers
+A295587	filtpos	1	1	new A027760()	v -> v.equals(ZV(    13530))	Numbers
+A295588	filtpos	1	1	new A027760()	v -> v.equals(ZV(    14322))	Numbers
+A295592	filtpos	1	1	new A027760()	v -> v.equals(ZV(    64722))	Numbers
+A295593	filtpos	1	1	new A027760()	v -> v.equals(ZV(   230010))	Numbers
+A295595	filtpos	1	1	new A027760()	v -> v.equals(ZV(  1919190L))	Numbers
+A295596	filtpos	1	1	new A027760()	v -> v.equals(ZV(  3404310L))	Numbers
+A295598	filtpos	1	1	new A027760()	v -> v.equals(ZV( 56786730L))	Numb
+A295599	filtpos	1	1	new A027760()	v -> v.equals(ZV(140100870L))	Numb
+A272186	filtpos	1	1	new A027760()	v -> v.equals(ZV(      690))	Numbers n su
+A295591	filtpos	1	1	new A027760()	v -> v.equals(ZV(    61410))	Numbers
+A282773	filtpos	1	1	new A027760()	v -> v.equals(ZV(      498))	Numbers n su
+A295589	filtpos	1	1	new A027760()	v -> v.equals(ZV(    33330))	Numbers
+A295590	filtpos	1	1	new A027760()	v -> v.equals(ZV(    46410))	Numbers
+A295597	filtpos	1	1	new A027760()	v -> v.equals(ZV(  4501770))	Numbers
+A271634	filtpos	1	1	new A027760()	v -> v.equals(ZV(      510))	Numbers n su
+A271635	filtpos	1	1	new A027760()	v -> v.equals(ZV(      138))	Numbers n su
+A272138	filtpos	1	1	new A027760()	v -> v.equals(ZV(      798))	Numbers n su
+A272139	filtpos	1	1	new A027760()	v -> v.equals(ZV(     1806))	Numbers
+A272140	filtpos	1	1	new A027760()	v -> v.equals(ZV(     1590))	Numbers
+A272183	filtpos	1	1	new A027760()	v -> v.equals(ZV(      330))	Numbers n su
+A272184	filtpos	1	1	new A027760()	v -> v.equals(ZV(      282))	Numbers n su
+A272185	filtpos	1	1	new A027760()	v -> v.equals(ZV(      870))	Numbers n su
+A272369	filtpos	1	1	new A027760()	v -> v.equals(ZV(     1410))	Numbers
+A272383	filtpos	1	1	new A027760()	v -> v.equals(ZV(     3318))	Numbers
+A295770	filtpos	1	1	new A027760()	v -> v.equals(ZV(     4686))	Numbers
+
+A179146	filtpos	1	1	new A081119()	v -> v.equals(2)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179147	filtpos	1	1	new A081119()	v -> v.equals(3)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179148	filtpos	1	1	new A081119()	v -> v.equals(4)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179150	filtpos	1	1	new A081119()	v -> v.equals(6)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179151	filtpos	1	1	new A081119()	v -> v.equals(7)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179152	filtpos	1	1	new A081119()	v -> v.equals(8)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179153	filtpos	1	1	new A081119()	v -> v.equals(10)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179154	filtpos	1	1	new A081119()	v -> v.equals(12)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179155	filtpos	1	1	new A081119()	v -> v.equals(14)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179157	filtpos	1	1	new A081119()	v -> v.equals(16)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179158	filtpos	1	1	new A081119()	v -> v.equals(18)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179159	filtpos	1	1	new A081119()	v -> v.equals(20)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179160	filtpos	1	1	new A081119()	v -> v.equals(22)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A179149	filtpos	1	1	new A081119()	v -> v.equals(5)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+
+# A179172	filtpos	1	1	new A081120()	v -> v.equals(16)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179173	filtpos	1	1	new A081120()	v -> v.equals(18)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179174	filtpos	1	1	new A081120()	v -> v.equals(22)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179164	filtpos	1	1	new A081120()	v -> v.equals(2)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179165	filtpos	1	1	new A081120()	v -> v.equals(4)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179166	filtpos	1	1	new A081120()	v -> v.equals(6)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179168	filtpos	1	1	new A081120()	v -> v.equals(8)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179169	filtpos	1	1	new A081120()	v -> v.equals(10)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179170	filtpos	1	1	new A081120()	v -> v.equals(12)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+# A179171	filtpos	1	1	new A081120()	v -> v.equals(14)		Numbers n such that Mordells equation y^(\d+)= x^(\d+)- n has exactly (\d+) integral solutions
+
+A087697	filnum	1	7	n -> ZV(n).+(7).IPP() && ZV(n).-(7).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
+A087678	filnum	1	9	n -> ZV(n).+(9).IPP() && ZV(n).-(9).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
+A087681	filnum	1	6	n -> ZV(n).+(6).IPP() && ZV(n).-(6).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
+A087682	filnum	1	8	n -> ZV(n).+(8).IPP() && ZV(n).-(8).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
+A087683	filnum	1	10	n -> ZV(n).+(10).IPP() && ZV(n).-(10).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
+A087696	filnum	1	5	n -> ZV(n).+(5).IPP() && ZV(n).-(5).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
+
+A364494	filtpos	1	1	new A163511()	(n, v) -> v.mod(n) == 0	Numbers n such that n divides Annnnnn(n)
+A344731	filtpos	1	1	new A306069()	(n, v) -> v.mod(n) == 0	Numbers n such that n divides Annnnnn(n)
+A344733	filtpos	1	1	new A327573()	(n, v) -> v.mod(n) == 0	Numbers n such that n divides Annnnnn(n)
+
+A355942	filtpos	1	1	new A326042()	(n, v) -> ZV(n).mod(v).isZero()	Numbers n such that n is a multiple of Annnnnn(n)
+A364964	filtpos	1	2	new A243071().skip()	(n, v) -> ZV(n).mod(v).isZero()	Numbers n such that n is a multiple of Annnnnn(n)
+
+A242176	filnum	1	1	n -> ZV( 6).^(n).+(1).IPP()	Numbers n such that n*(\d+)^n +(\d+) is prime
+A242178	filnum	1	1	n -> ZV( 8).^(n).+(1).IPP()	Numbers n such that n*(\d+)^n +(\d+) is prime
+A242196	filnum	1	1	n -> ZV(12).^(n).+(1).IPP()	Numbers n such that n*(\d+)^n +(\d+) is prime
+A242197	filnum	1	1	n -> ZV(14).^(n).+(1).IPP()	Numbers n such that n*(\d+)^n +(\d+) is prime
+A242198	filnum	1	1	n -> ZV(15).^(n).+(1).IPP()	Numbers n such that n*(\d+)^n +(\d+) is prime
+A265013	filnum	1	1	n -> ZV( 9).^(n).+(1).IPP()	Numbers n such that n*(\d+)^n +(\d+) is prime
+
+A128734	holos	0	[[0],[420,-245,35],[-1296,888,-152],[984,-959,219],[-120,342,-118],[-48,-32,16]]	0, 0, 0, 1, 8	0	0
+A128737	holos	0	[[0],[240,-140,20],[-807,536,-89],[734,-641,132],[-140,273,-73],[-40,-30,10]]	0, 0, 0, 0, 1, 10	0	0
+
+A128740	holos	0	[[0],[15,-50,30,-5],[-40,126,-88,16],[15,-52,60,-13],[10,0,-8,2]]	0,0,1	0	0	Number of DDs in all skew Dyck paths of semilength n.
+g:=(1-z-sqrt(1-6*z+5*z^2))/2/z: ser:=series((2*z*g-g-z+1)/(3*z*g-z-1),z=0,30): seq(coeff(ser,z,n),n=0..27);
+A129155	holos	0	[[0],[14593500000,-2512162500,162137500,-4650000,50000],[-1273909050000,231522155000,-15772147500,477332500,-5415000],[5330563605000,-986374907500,68396061875,-2106342500,24308125],[697842720000,-385708263900,46594180175,-2115849600,33159325],[-89884354111500,19438271456050,-1573714436625,56525868050,-760014375],[405208567335900,-90208877810990,7530956814955,-279378168610,3885313145],[-1002487038482820,236402550816144,-20882518488568,818969235576,-12031750772],[1644988687628580,-417529421717768,39571467479910,-1660576550476,26044584666],[-1759661023713948,491430358398844,-50832581681654,2313058412972,-39129734782],[791133982760772,-275855660139060,33752025384768,-1757499735612,33266812980],[911955944502348,-201426166614072,15874804296861,-519558296220,5782886211],[-1974094282568172,573787299616560,-63158907757455,3133155001368,-59340679197],[1579132881833184,-524116181975742,66091322401693,-3759183033762,81453107027],[-473478518386680,189355586363882,-28905256749663,1988862161530,-51845715021],[-233344019487432,74067166663700,-7678668317440,244718587408,1578635500],[320443399984656,-130280780357628,19364119843978,-1235643057780,28106737766],[-168342512522688,78997299292772,-13683689503146,1033293650044,-28550745654],[53243495872128,-28857366144640,5787091438424,-507897272936,16411883104],[-10921183901280,6940740521904,-1631722083136,167958400032,-6374541680],[1450145225280,-1108766421968,312766529352,-38551683712,1749807048],[-118585501440,113684574784,-39935097680,6094966448,-340938208],[5298585984,-6860902944,3197834736,-638340864,46162992],[-94870656,198844704,-140496624,40649184,-4126608],[0,-1275264,2350080,-1293408,218592],[0,-10368,5184,10368,-5184]]	1, 0, 1, 4	0	0	Number of skew Dyck paths of semilength n that have no primitive Dyck factors.
+G:=(3-3*z-sqrt(1-6*z+5*z^2))/(2+z-sqrt(1-4*z)+sqrt(1-6*z+5*z^2)): Gser:=series(G,z=0,32): seq(coeff(Gser,z,n),n=0..28);
+# A143951	holos	0	[[0,-7],[-72,1],[0],[-72,1],[138,-2],[-72,1],[200,-3],[-138,2],[388,-6],[-200,3],[568,-9],[-434,7],[668,-11],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[58,-5],[0],[24,-3],[-30,4],[14,-2],[-16,3],[10,-2],[-6,1],[6,-2],[0],[0,-1],[0,1]]	1, 1, 1, 1, 2, 3, 4, 6	0	0	 Number of Dyck paths such that the area between the x-axis and the path is n.
+# g:=1/(1-x/(1-x^3/(1-x^5/(1-x^7/(1-x^9/(1-x^11/(1-x^13/(1-x^15)))))))): gser:= series(g,x=0,45): seq(coeff(gser,x,n),n=0..44);
+# -> limited, cf. recursive Maple
+A166294	holos	0	[[0],[12,-8,1],[-16,7,-1],[-40,32,-5],[8,4],[-24,-6,4],[16,-18,4],[8,6,-1],[4,1,-3],[-4,0,1]]	0, 1, 4	0	0	Number of peaks at even level in all Dyck paths of semilength n with no UUU's and no DDD's, (U=(1,1), D=(1,-1)). These Dyck paths are counted by the secondary structure numbers (A004148).
+g := ((1-z-z^2-sqrt(1-2*z-z^2-2*z^3+z^4))*1/2)/z^3: G := z*(z-1+(1-z+z^2)*g)/((1-z-z^2)*(1-z-z^2-2*z^3*g)): Gser := series(G, z = 0, 35): seq(coeff(Gser, z, n), n = 1 .. 30);
+
+A131613	filnum	0	0	n -> ZV(3).^(n).toString().indexOf('9') < 0	Numbers n such that the decimal expansion of (\d+)^n contains no (\d+)
+A131614	filnum	0	0	n -> ZV(3).^(n).toString().indexOf('8') < 0	Numbers n such that the decimal expansion of (\d+)^n contains no (\d+)
+A131615	filnum	0	0	n -> ZV(3).^(n).toString().indexOf('7') < 0	Numbers n such that the decimal expansion of (\d+)^n contains no (\d+)
+A131616	filnum	0	0	n -> ZV(3).^(n).toString().indexOf('6') < 0	Numbers n such that the decimal expansion of (\d+)^n contains no (\d+)
+A131617	filnum	0	0	n -> ZV(3).^(n).toString().indexOf('5') < 0	Numbers n such that the decimal expansion of (\d+)^n contains no (\d+)
+A131618	filnum	0	0	n -> ZV(3).^(n).toString().indexOf('4') < 0	Numbers n such that the decimal expansion of (\d+)^n contains no (\d+)
+A131627	filnum	0	0	n -> ZV(3).^(n).toString().indexOf('1') < 0	Numbers n such that the decimal expansion of (\d+)^n contains no (\d+)
+A131629	filnum	0	0	n -> ZV(3).^(n).toString().indexOf('3') < 0	Numbers n such that the decimal expansion of (\d+)^n contains no (\d+)
+
+A257310	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 2 && sn.toString().charAt(0) == '5' && sn2.mod(10) == 2 && sn2.toString().charAt(0) == '5'; }	2,2,5	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A257123	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 2 && sn.toString().charAt(0) == '7' && sn2.mod(10) == 2 && sn2.toString().charAt(0) == '7'; }	2,2,7	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A249915	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 2 && sn.toString().charAt(0) == '6' && sn2.mod(10) == 2 && sn2.toString().charAt(0) == '6'; }	2,2,6	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A256601	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 1 && sn.toString().charAt(0) == '9' && sn2.mod(10) == 1 && sn2.toString().charAt(0) == '9'; }	2,1,9	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A256630	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 0 && sn.toString().charAt(0) == '4' && sn2.mod(10) == 0 && sn2.toString().charAt(0) == '4'; }	2,0,4	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A256631	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 0 && sn.toString().charAt(0) == '5' && sn2.mod(10) == 0 && sn2.toString().charAt(0) == '5'; }	2,0,5	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A256633	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 0 && sn.toString().charAt(0) == '6' && sn2.mod(10) == 0 && sn2.toString().charAt(0) == '6'; }	2,0,6	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A256634	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 0 && sn.toString().charAt(0) == '7' && sn2.mod(10) == 0 && sn2.toString().charAt(0) == '7'; }	2,0,7	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A256708	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 0 && sn.toString().charAt(0) == '8' && sn2.mod(10) == 0 && sn2.toString().charAt(0) == '8'; }	2,0,8	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A256709	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 0 && sn.toString().charAt(0) == '9' && sn2.mod(10) == 0 && sn2.toString().charAt(0) == '9'; }	2,0,9	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A256889	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 1 && sn.toString().charAt(0) == '5' && sn2.mod(10) == 1 && sn2.toString().charAt(0) == '5'; }	2,1,5	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A257197	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 1 && sn.toString().charAt(0) == '6' && sn2.mod(10) == 1 && sn2.toString().charAt(0) == '6'; }	2,1,6	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A257210	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 1 && sn.toString().charAt(0) == '7' && sn2.mod(10) == 1 && sn2.toString().charAt(0) == '7'; }	2,1,7	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A257211	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 1 && sn.toString().charAt(0) == '8' && sn2.mod(10) == 1 && sn2.toString().charAt(0) == '8'; }	2,1,8	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A257368	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 2 && sn.toString().charAt(0) == '8' && sn2.mod(10) == 2 && sn2.toString().charAt(0) == '8'; }	2,2,8	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A257485	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 2 && sn.toString().charAt(0) == '9' && sn2.mod(10) == 2 && sn2.toString().charAt(0) == '9'; }	2,2,9	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A257486	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 3 && sn.toString().charAt(0) == '7' && sn2.mod(10) == 3 && sn2.toString().charAt(0) == '7'; }	2,3,7	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as smallest digit and (\d+) as largest digit
+A257534	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 4 && sn.toString().charAt(0) == '7' && sn2.mod(10) == 4 && sn2.toString().charAt(0) == '7'; }	2,4,7	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
+A238553	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 3 && sn.toString().charAt(0) == '9' && sn2.mod(10) == 3 && sn2.toString().charAt(0) == '9'; }	2,3,9	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
+A254071	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 4 && sn.toString().charAt(0) == '8' && sn2.mod(10) == 4 && sn2.toString().charAt(0) == '8'; }	2,4,8	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
+A254072	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 4 && sn.toString().charAt(0) == '9' && sn2.mod(10) == 4 && sn2.toString().charAt(0) == '9'; }	2,4,9	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
+A254074	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 5 && sn.toString().charAt(0) == '9' && sn2.mod(10) == 5 && sn2.toString().charAt(0) == '9'; }	2,5,9	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
+A257498	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 3 && sn.toString().charAt(0) == '8' && sn2.mod(10) == 3 && sn2.toString().charAt(0) == '8'; }	2,3,8	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
+
+
+A109370	filnum	0	0	n -> new Z("22"+String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A103602	filnum	0	0	n -> new Z("10100" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A107074	filnum	0	0	n -> new Z("53" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A107645	filnum	0	0	n -> new Z("1311" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A103630	filnum	0	0	n -> new Z("235" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A108107	filnum	0	0	n -> new Z("1123" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A103629	filnum	0	0	n -> new Z("2357" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A103758	filnum	0	0	n -> new Z("100" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A103862	filnum	0	0	n -> new Z("10000" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A108106	filnum	0	0	n -> new Z("1119" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A108114	filnum	0	0	n -> new Z("3731" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A109369	filnum	0	0	n -> new Z("33" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A110053	filnum	0	0	n -> new Z("111" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A110054	filnum	0	0	n -> new Z("222" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A103601	filnum	0	0	n -> new Z("10" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A103853	filnum	0	0	n -> new Z("1000" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A107644	filnum	0	0	n -> new Z("1113" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A108101	filnum	0	0	n -> new Z("1131" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A110055	filnum	0	0	n -> new Z("333" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+A110675	filnum	0	0	n -> new Z("2222" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
+
+A239877	filtpos	0	1	new A239876()	(n, v) -> v.mod(n) == 0	Numbers n that divide Annnnnn(n)
+A276488	filtpos	0	1	new A003714().skip()	(n, v) -> v.mod(n) == 0	Numbers n that divide Annnnnn(n)
+
+A275996	filnum	0	0	n -> JF(n).sigma().-(2*n).equals(ZV(64))	,2,64	Numbers n whose abundance is (\d+): sigma(n)- (\d+)n =(\d+)
+A275701	filnum	0	0	n -> JF(n).sigma().-(2*n).equals(ZV(26))	,2,26	Numbers n whose abundance is (\d+): sigma(n)- (\d+)n =(\d+)
+A292626	filnum	0	0	n -> JF(n).sigma().-(2*n).equals(ZV(128))	8,2,128	Numbers n whose abundance is (\d+): sigma(n)- (\d+)n =(\d+)
+
+A284265	bisect	0	A284264	Odd bisection of Annnnnn
+A291767	bisect	0	A291761	Odd bisection of Annnnnn
+A284566	bisect	0	A284556	Odd bisection of Annnnnn
+
+A215610	filnum	0	0	n -> ((n & 1) == 1) && Z2(n).equals(Z2(6).modZ(n))	2,2,6	Odd integers n such that (\d+)^n ==(\d+)^(\d+)(mod n)
+A215611	filnum	0	0	n -> ((n & 1) == 1) && Z2(n).equals(Z2(8).modZ(n))	2,2,8	Odd integers n such that (\d+)^n ==(\d+)^(\d+)(mod n)
+A215612	filnum	0	0	n -> ((n & 1) == 1) && Z2(n).equals(Z2(10).modZ(n))	2,2,10	Odd integers n such that (\d+)^n ==(\d+)^(\d+)(mod n)
+A215613	filnum	0	0	n -> ((n & 1) == 1) && Z2(n).equals(Z2(12).modZ(n))	2,2,12	Odd integers n such that (\d+)^n ==(\d+)^(\d+)(mod n)
+
+A246930	lambdan	1	n -> Puma.primeZ(n*12)	Prime((\d+)*n)
+A102350	lambdan	1	n -> Puma.primeZ(n*144)	Prime((\d+)*n)
+A246929	lambdan	1	n -> Puma.primeZ(n*11)	Prime((\d+)*n)
+A246931	lambdan	1	n -> Puma.primeZ(n*14)	Prime((\d+)*n)
+
+A368880	filter	0	new A024528()	PRIME	Primes in Annnnnn
+A140719	filter	0	new A153257()	PRIME	Primes in Annnnnn
+A168473	filter	0	new A168472()	PRIME	Primes in Annnnnn
+A152058	filter	0	new A152057()	PRIME	Primes in Annnnnn
+
+A208272	filter	0	new A000040()	v -> v.toString().indexOf('2') >= 0	Primes containing a digit (\d+)
+A212525	filter	0	new A000040()	v -> v.toString().indexOf('3') >= 0	Primes containing a digit (\d+)
+A208270	filter	0	new A000040()	v -> v.toString().indexOf('1') >= 0	Primes containing a digit (\d+)
+A284292	filter	0	new A000040()	v -> v.toString().indexOf('8') >= 0	Primes containing a digit (\d+)
+A284290	filter	0	new A000040()	v -> v.toString().indexOf('4') >= 0	Primes containing a digit (\d+)
+A284291	filter	0	new A000040()	v -> v.toString().indexOf('6') >= 0	Primes containing a digit (\d+)
+
+A124595	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(28))	Primes p such that q-p =(\d+), where q is the next prime after
+A134116	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(34))	Primes p such that q-p =(\d+), where q is the next prime after
+A134124	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(50))	Primes p such that q-p =(\d+), where q is the next prime after
+A134117	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(36))	Primes p such that q-p =(\d+), where q is the next prime after
+A204665	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(52))	Primes p such that q-p =(\d+), where q is the next prime after
+A126784	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(32))	Primes p such that q-p =(\d+), where q is the next prime after
+A134121	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(44))	Primes p such that q-p =(\d+), where q is the next prime after
+A134122	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(46))	Primes p such that q-p =(\d+), where q is the next prime after
+A204668	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(58))	Primes p such that q-p =(\d+), where q is the next prime after
+A126721	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(40))	Primes p such that q-p =(\d+), where q is the next prime after
+A204669	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(62))	Primes p such that q-p =(\d+), where q is the next prime after
+A098974	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(24))	Primes p such that q-p =(\d+), where q is the next prime after
+A124594	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(26))	Primes p such that q-p =(\d+), where q is the next prime after
+A124596	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(30))	Primes p such that q-p =(\d+), where q is the next prime after
+A126722	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(80))	Primes p such that q-p =(\d+), where q is the next prime after
+A134120	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(42))	Primes p such that q-p =(\d+), where q is the next prime after
+A126724	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(150))	Primes p such that q-p =(\d+), where q is the next prime after
+A126771	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(60))	Primes p such that q-p =(\d+), where q is the next prime after
+A134123	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(48))	Primes p such that q-p =(\d+), where q is the next prime after
+A204666	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(54))	Primes p such that q-p =(\d+), where q is the next prime after
+A204667	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(56))	Primes p such that q-p =(\d+), where q is the next prime after
+A204670	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(64))	Primes p such that q-p =(\d+), where q is the next prime after
+A204673	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(180))	Primes p such that q-p =(\d+), where q is the next prime after
+
+A165493	filter	1	new A000040()	v -> ZUtils.digitSum(v.^(2)) == 19	Primes p where the digital sum of p^(\d+) is equal to (\d+)
+A165502	filter	1	new A000040()	v -> ZUtils.digitSum(v.^(2)) == 31	Primes p where the digital sum of p^(\d+) is equal to (\d+)
+A165492	filter	1	new A000040()	v -> ZUtils.digitSum(v.^(2)) == 13	Primes p where the digital sum of p^(\d+) is equal to (\d+)
+A226802	filter	1	new A000040()	v -> ZUtils.digitSum(v.^(2)) == 10	Primes p where the digital sum of p^(\d+) is equal to (\d+)
+A229058	filter	1	new A000040()	v -> ZUtils.digitSum(v.^(2)) == 25	Primes p where the digital sum of p^(\d+) is equal to (\d+)
+
+A267481	prisqua	1	31	Primes which are squares (mod (\d+))
+A267601	prisqua	1	47	Primes which are squares (mod (\d+))
+A268155	prisqua	1	229	Primes which are squares (mod (\d+))
+
+A126833	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ( 25) : v.modZ( 25).+( 25)	Ramanujan numbers (Annnnnn) read mod (\d+)
+A126835	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ(625) : v.modZ(625).+(625)	Ramanujan numbers (Annnnnn) read mod (\d+)
+A126839	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ( 11) : v.modZ( 11).+( 11)	Ramanujan numbers (Annnnnn) read mod (\d+)
+A126834	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ(125) : v.modZ(125).+(125)	Ramanujan numbers (Annnnnn) read mod (\d+)
+A126836	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ(  7) : v.modZ(  7).+(  7)	Ramanujan numbers (Annnnnn) read mod (\d+)
+A126832	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ(  5) : v.modZ(  5).+(  5)	Ramanujan numbers (Annnnnn) read mod (\d+)
+
+A354710	recval	0	new A009101()		Records in Annnnnn
+A093647	recval	0	new A093101()		Records in Annnnnn
+A117342	recval	0	new A113436()		Records in Annnnnn
+
+A305301	rgs1	1	new DirectTransformSequence(0, new A278222(), new A304760())	, constructed from runlengths of 1-digits in base-3 representation of A254103(n).
+A305431	rgs1	1	new DirectTransformSequence(0, new A278222(), new A305295())	A278222,A305295,1,3,A245612
+A305432	rgs1	1	new DirectTransformSequence(0, new A278222(), new A291763())	A278222,A291763,2,3,A245612
+
+A320903	rowsum	0	new A320902()
+A344558	rowsum	0	new A344557()
+A327563	rowsum	0	new A119687()
+A160904	rowsum	0	new A159881()
+#tabf A160999	rowsum	0	new A027052() 
+A104976	rowsum	0	new A104975()
+A131236	rowsum	0	new A131235()
+A269938	rowsum	0	new A268434()
+
+A117201	-2	nyi         	A117200	Row sums of number triangle Annnnnn
+A107028	-2	nyi F       	A107027	Row sums of number triangle Annnnnn
+A110181	-2	nyi F       	A110180	Row sums of number triangle Annnnnn
+A143420	-2	nyi F       	A143419	Row sums of triangle Annnnnn
+A128602	-2	nyi Fo      	A128567	Row sums of triangle Annnnnn
+
+
+
+# A271950	-2	ConstantOrde	5,A078495,0,1,12,1, 13,1,12, 6, 7,13	Somoss sequence {b((\d+),n)} defined in comment in Annnnnn: a((\d+))=a((\d+))=...=a((\d+))=(\d+); for n>=(\d+), a(n)=(a(n-(\d+))*a(n-(\d+))+a(n-(\d+))*a(n-(\d+)))/a(n-(\d+))
+A268199	cordrec	0	 8	0	1,1,1,1,1,1,1,1	() -> a(n - 1).*(a(n -  8)).+(a(n - 4).*(a(n - 5))).*(a(n -  9))	0,1, 8,1,  9,1, 8, 4, 5, 9	a(n)=(a(n-(\d+))*a(n-(\d+))+a(n-(\d+))*a(n-(\d+)))/a(n-(\d+))
+A271949	cordrec	0	10	0	1,1,1,1,1,1,1,1,1,1	() -> a(n - 1).*(a(n - 10)).+(a(n - 5).*(a(n - 6))).*(a(n - 11))	0,1,10,1, 11,1,10, 5, 6,11	a(n)=(a(n-(\d+))*a(n-(\d+))+a(n-(\d+))*a(n-(\d+)))/a(n-(\d+))
+A271952	cordrec	0	14	0	1,1,1,1,1,1,1,1,1,1,1,1,1,1	() -> a(n - 1).*(a(n - 14)).+(a(n - 7).*(a(n - 8))).*(a(n - 15))	0,1,14,1, 15,1,14, 7, 8,15	a(n)=(a(n-(\d+))*a(n-(\d+))+a(n-(\d+))*a(n-(\d+)))/a(n-(\d+))
+A271954	cordrec	0	16	0	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	() -> a(n - 1).*(a(n - 16)).+(a(n - 8).*(a(n - 9))).*(a(n - 17))	0,1,16,1, 17,1,16, 8, 9,17	a(n)=(a(n-(\d+))*a(n-(\d+))+a(n-(\d+))*a(n-(\d+)))/a(n-(\d+))
+A271955	cordrec	0	18	0	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	() -> a(n - 1).*(a(n - 18)).+(a(n - 9).*(a(n -10))).*(a(n - 19))	0,1,18,1, 19,1,18, 9,10,19	a(n)=(a(n-(\d+))*a(n-(\d+))+a(n-(\d+))*a(n-(\d+)))/a(n-(\d+))
+A272038	cordrec	0	20	0	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	() -> a(n - 1).*(a(n - 20)).+(a(n -10).*(a(n -11))).*(a(n - 21))	0,1,20,1, 21,1,20,10,11,21	a(n)=(a(n-(\d+))*a(n-(\d+))+a(n-(\d+))*a(n-(\d+)))/a(n-(\d+))
+
+A091279	simtraf	0	new A091278()	v -> v.sqrt()	Square roots of Annnnnn
+A091877	simtraf	0	new A068178()	v -> v.sqrt()	Square roots of Annnnnn
+A114400	simtraf	0	new A114399()	v -> v.sqrt()	Square roots of Annnnnn
+A131696	simtraf	0	new A134537()	v -> v.sqrt()	Square roots of Annnnnn
+A091873	simtraf	0	new A068165()	v -> v.sqrt()	Square roots of Annnnnn
+
+A191682	simtraf	0	new A113473()	v -> v.*(2)	Twice Annnnnn
+A352182	simtraf	0	new A200994()	v -> v.*(2)	Twice Annnnnn
+
+A243569	lambdan	0	n -> SA(n, 8)	1,8	Unsigned Stirling numbers of the (\d+)st kind s(n,(\d+))
+A243570	lambdan	0	n -> SA(n, 9)	1,9	Unsigned Stirling numbers of the (\d+)st kind s(n,(\d+))
+
+A096868	recpos	0	new A068189()	,1	Where records occur in Annnnnn
+A277649	recpos	0	new A066400()	,1	Where records occur in Annnnnn
+A093651	recpos	0	new A093101()	,0	Where records occur in Annnnnn
+
+A165422	tuptraf	1	(n, s) -> s[0].*(s[1])	"1,4"	PREVIOUS,PREVIOUS	1,1,2,4,3	a((\d+))= (\d+), a((\d+))= (\d+), a(n)= product of the previous terms for n >=(\d+)
+A165423	tuptraf	1	(n, s) -> s[0].*(s[1])	"1,5"	PREVIOUS,PREVIOUS	1,1,2,5,3	a((\d+))= (\d+), a((\d+))= (\d+), a(n)= product of the previous terms for n >=(\d+)
+A165424	tuptraf	1	(n, s) -> s[0].*(s[1])	"1,6"	PREVIOUS,PREVIOUS	1,1,2,6,3	a((\d+))= (\d+), a((\d+))= (\d+), a(n)= product of the previous terms for n >=(\d+)
+A165425	tuptraf	1	(n, s) -> s[0].*(s[1])	"1,7"	PREVIOUS,PREVIOUS	1,1,2,7,3	a((\d+))= (\d+), a((\d+))= (\d+), a(n)= product of the previous terms for n >=(\d+)
+A165427	tuptraf	1	(n, s) -> s[0].*(s[1])	"1,9"	PREVIOUS,PREVIOUS	1,1,2,9,3	a((\d+))= (\d+), a((\d+))= (\d+), a(n)= product of the previous terms for n >=(\d+)
+
+# A322993	dirtraf	1	new A000265()	new A156552()	(n, v) -> v	0	,0,1,A000265,A156552	a((\d+))= (\d+); for n >(\d+), a(n)= Annnnnn(Annnnnn(n))
+# A324397	dirtraf	1	new A297114()	new A156552()	(n, v) -> v	0	,0,1,A297114,A156552	a((\d+))= (\d+); for n >(\d+), a(n)= Annnnnn(Annnnnn(n))
+
+# 	a(n) = (3*n+1)! * Sum_{k=0..n} 1 / (3*k+1)!.
+A337728	lambdan	0	n -> RU(0, n, k -> new Q(Z.ONE, FA(4*k + 1))).*(FA(n*4 + 1)).num()	4,1,0,1,4,1	a(n)= ((\d+)*n+(\d+))!* Sum_{n=(\d+)..n}(\d+)/ ((\d+)*n+(\d+))!	a(n) = (4*n+1)! * Sum_{k=0..n} 1 / (4*k+1)!.
+A337729	lambdan	0	n -> RU(0, n, k -> new Q(Z.ONE, FA(4*k + 2))).*(FA(n*4 + 2)).num()	4,2,0,1,4,2	a(n)= ((\d+)*n+(\d+))!* Sum_{n=(\d+)..n}(\d+)/ ((\d+)*n+(\d+))!	
+A337730	lambdan	0	n -> RU(0, n, k -> new Q(Z.ONE, FA(4*k + 3))).*(FA(n*4 + 3)).num()	4,3,0,1,4,3	a(n)= ((\d+)*n+(\d+))!* Sum_{n=(\d+)..n}(\d+)/ ((\d+)*n+(\d+))!	
+A337725	lambdan	0	n -> RU(0, n, k -> new Q(Z.ONE, FA(3*k + 1))).*(FA(n*3 + 1)).num()	3,1,0,1,3,1	a(n)= ((\d+)*n+(\d+))!* Sum_{n=(\d+)..n}(\d+)/ ((\d+)*n+(\d+))!	
+A337726	lambdan	0	n -> RU(0, n, k -> new Q(Z.ONE, FA(3*k + 2))).*(FA(n*3 + 2)).num()	3,2,0,1,3,2	a(n)= ((\d+)*n+(\d+))!* Sum_{n=(\d+)..n}(\d+)/ ((\d+)*n+(\d+))!	
+
+A283311	simtraf	0	new A054377().skip(1)	v -> v.-(  6)./( 36)	a(n)= (Annnnnn(n)- (\d+))/(\d+)	
+A357889	simtraf	0	new A022010()	v -> v.-(179)./(210)	a(n)= (Annnnnn(n)- (\d+))/(\d+)	
+A357890	simtraf	0	new A022013()	v -> v.-(173)./(210)	a(n)= (Annnnnn(n)- (\d+))/(\d+)	
+A361152	simtraf	0	new A051894()	v -> v.-(  1)./(  2)	a(n)= (Annnnnn(n)- (\d+))/(\d+)	
+A097702	simtraf	0	new A063880()	v -> v.-(108)./(216)	a(n)= (Annnnnn(n)- (\d+))/(\d+)	
+
+A350960	simtraf	0	new A006285()	v -> v.-(1)./(2)	a(n)= (Annnnnn(n)-(\d+))/(\d+)	
+A350968	simtraf	0	new A350967()	v -> v.-(1)./(2)	a(n)= (Annnnnn(n)-(\d+))/(\d+)	
+
+
+A278559	lambdan	0	n -> PT(n*25 +24)	a(n)= Annnnnn((\d+)*n +(\d+))	
+A282919	lambdan	0	n -> PT(n*49 +47)	a(n)= Annnnnn((\d+)*n +(\d+))	
+
+# A324288	-2	nyi Fo      	A002487,1,A005187	a(n)= Annnnnn((\d+)+Annnnnn(n))	
+# A324338	-2	nyi Fo      	A002487,1,A006068	a(n)= Annnnnn((\d+)+Annnnnn(n))	
+# A335422	-2	nyi Fo      	A005940,1,A163511	a(n)= Annnnnn((\d+)+Annnnnn(n))	
+# A335423	-2	nyi Fo      	A005940,1,A248663	a(n)= Annnnnn((\d+)+Annnnnn(n))	
+
+# A252743	dirtraf	0	new A252742()	new A005940()	,1	a(n)= Annnnnn(Annnnnn((\d+)+n))	
+# A323915	dirtraf	0	new A023900()	new A005940()	,1	a(n)= Annnnnn(Annnnnn((\d+)+n))	
+A324052	dirtraf	0	new A083254()	new A005940()	,1	a(n)= Annnnnn(Annnnnn((\d+)+n))	
+# A324336	dirtraf	0	new A323893()	new A005940()	,1	a(n)= Annnnnn(Annnnnn((\d+)+n))	
+# A337375	dirtraf	0	new A330749()	new A005940()	,1	a(n)= Annnnnn(Annnnnn((\d+)+n))	
+# A344028	dirtraf	0	new A069359()	new A005940()	,1	a(n)= Annnnnn(Annnnnn((\d+)+n))	
+# A368699	dirtraf	0	new A354989()	new A005940()	,1	a(n)= Annnnnn(Annnnnn((\d+)+n))	
+A290077	dirtraf	0	new A000010()	new A005940()	,1	a(n)= Annnnnn(Annnnnn((\d+)+n))	
+
+# A080067	-2	nyi         	A057163,A057548,A057164	a(n)= Annnnnn(Annnnnn(Annnnnn(n)))	
+# A097623	-2	nyi         	A097621,A097621,A097621	a(n)= Annnnnn(Annnnnn(Annnnnn(n)))	
+# A265339	-2	nyi Fo      	A263273,A004526,A263273	a(n)= Annnnnn(Annnnnn(Annnnnn(n)))	
+# A270198	-2	nyi Fto     	A054429,A055938,A054429	a(n)= Annnnnn(Annnnnn(Annnnnn(n)))	
+
+A356106	-2	nyi         	A000201,A108598	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A369162	-2	nyi         	A000688,A000688	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A324285	-2	nyi         	A002487,A297168	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A109181	-2	nyi         	A003132,A052034	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A304100	-2	nyi         	A003602,A048679	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A286586	-2	nyi         	A006047,A048673	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A353360	-2	nyi         	A006047,A048675	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A353330	-2	nyi         	A006047,A156552	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A366417	-2	nyi         	A006571,A005117	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A324905	-2	nyi         	A007895,A003965	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A324907	-2	nyi         	A007895,A113175	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A324901	-2	nyi         	A007895,A324900	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A301892	-2	nyi         	A010846,A002182	a(n)= Annnnnn(Annnnnn(n))	m	i 
+A332462	-2	nyi         	A019565,A156552	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A277823	-2	nyi         	A048724,A065621	a(n)= Annnnnn(Annnnnn(n))	m	i 
+A280062	-2	nyi         	A049502,A000142	a(n)= Annnnnn(Annnnnn(n))	m	i 
+A279519	-2	nyi         	A049502,A003418	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A078172	-2	nyi         	A051201,A000040	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A078171	-2	nyi         	A055086,A000040	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A289623	-2	nyi         	A055396,A048673	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A122227	-2	nyi         	A057548,A057117	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A333847	-2	nyi         	A063514,A028982	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A334863	-2	nyi         	A064097,A003961	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A334203	-2	nyi         	A064097,A032742	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A261293	-2	nyi         	A065649,A065649	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A261294	-2	nyi         	A065650,A065650	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A351943	-2	nyi         	A069359,A181819	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A323512	-2	nyi         	A079559,A156552	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A337468	-2	nyi         	A080224,A337386	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A285716	-2	nyi         	A080791,A245611	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A338215	-2	nyi         	A095117,A062298	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A100279	-2	nyi         	A100107,A000032	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A331279	-2	nyi         	A122111,A006047	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A353420	-2	nyi         	A126760,A003961	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A180198	-2	nyi         	A180200,A180200	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A252370	-2	nyi         	A243055,A251726	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A252371	-2	nyi         	A243055,A251727	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A340147	-2	nyi         	A247074,A003961	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A361468	-2	nyi         	A249670,A003961	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A252744	-2	nyi         	A252742,A163511	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A330681	-2	nyi         	A283980,A025487	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A286371	-2	nyi         	A286369,A003961	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A286370	-2	nyi         	A286369,A139391	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A322375	-2	nyi         	A318366,A025487	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A324189	-2	nyi         	A324122,A163511	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A366892	-2	nyi         	A336652,A163511	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A340194	-2	nyi         	A337544,A003961	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A351945	-2	nyi         	A342001,A181819	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A344698	-2	nyi         	A344696,A108951	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A344699	-2	nyi         	A344697,A108951	a(n)= Annnnnn(Annnnnn(n))	m	i 
+# A366787	-2	nyi         	A366789,A163511	a(n)= Annnnnn(Annnnnn(n))	m	i 
+
+A214330	simtraf	0	new A214551()	v -> v.modZ(2)	,2	a(n)= Annnnnn(n) mod (\d+)	m	i
+
+A158511	simtraf	0	new A158504()	(n, v) -> v.-(n)	a(n)= Annnnnn(n)- n	m	i    
+A249431	simtraf	0	new A249151()	(n, v) -> v.-(n)	a(n)= Annnnnn(n)- n	m	i       
+
+A353762	tuptraf	0	(n, s) -> s[0]./(s[0].gcd(s[1]))	""	new A353749(),new A353749(), new A353750()	a(n)= Annnnnn(n)/ gcd(Annnnnn(n), Annnnnn(n))
+
+A088417	simtraf	0	new A088339()	v -> v./(3)	a(n)= Annnnnn(n)/(\d+)
+A139013	simtraf	0	new A074924()	v -> v./(2)	a(n)= Annnnnn(n)/(\d+)
+A163286	simtraf	0	new A154796()	v -> v./(2)	a(n)= Annnnnn(n)/(\d+)
+A163288	simtraf	0	new A154798()	v -> v./(2)	a(n)= Annnnnn(n)/(\d+)
+
+# a(n) = Product_{k=0..n} (2^k + 2^(n-k)).
+A369673	lambdan	0	n -> PR(0, n, k -> ZV(2).^(k).+(ZV(2).^(n - k)))	0..14	nyi	_Paul D. Hanna_
+A369674	lambdan	0	n -> PR(0, n, k -> ZV(3).^(k).+(ZV(3).^(n - k)))	0..11	nyi	_Paul D. Hanna_
+A369675	lambdan	0	n -> PR(0, n, k -> ZV(4).^(k).+(ZV(4).^(n - k)))	0..11	nyi	_Paul D. Hanna_
+A369676	lambdan	0	n -> PR(0, n, k -> ZV(5).^(k).+(ZV(5).^(n - k)))	0..10	nyi	_Paul D. Hanna_
+A369677	lambdan	0	n -> PR(0, n, k -> ZV(2).^(k).+(ZV(5).^(n - k)))	0..11	nyi	_Paul D. Hanna_
+A369678	lambdan	0	n -> PR(0, n, k -> ZV(3).^(k).+(ZV(5).^(n - k)))	0..10	nyi	_Paul D. Hanna_
+A369679	lambdan	0	n -> PR(0, n, k -> ZV(3).^(k).+(ZV(4).^(n - k)))	0..11	nyi	_Paul D. Hanna_
+A369680	lambdan	0	n -> PR(0, n, k -> ZV(2).^(k).+(ZV(3).^(n - k)))	0..12	nyi	_Paul D. Hanna_
+A369681	lambdan	0	n -> PR(0, n, k -> ZV(4).^(k).+(ZV(5).^(n - k)))	0..10	nyi	_Paul D. Hanna_
+
+A344372	lambdan	0	n -> SU(1, n, k -> ZV(2*k).gcd(ZV(n)))	a(n)= Sum_{n =(\d+)..n} gcd((\d+)*n, n)
+A368739	lambdan	0	n -> SU(1, n, k -> ZV(4*k).gcd(ZV(n)))	a(n)= Sum_{n =(\d+)..n} gcd((\d+)*n, n)
+A368740	lambdan	0	n -> SU(1, n, k -> ZV(5*k).gcd(ZV(n)))	a(n)= Sum_{n =(\d+)..n} gcd((\d+)*n, n)
+A368742	lambdan	0	n -> SU(1, n, k -> ZV(6*k).gcd(ZV(n)))	a(n)= Sum_{n =(\d+)..n} gcd((\d+)*n, n)
+A368737	lambdan	0	n -> SU(1, n, k -> ZV(3*k).gcd(ZV(n)))	a(n)= Sum_{n =(\d+)..n} gcd((\d+)*n, n)
+
+A173513	simtraf	0	new A173510()	v -> new Q(v, Z.TWO).ceiling()	,2	a(n)= ceiling(Annnnnn(n)/(\d+))
+A173696	simtraf	0	new A117791()	v -> new Q(v, Z.TWO).ceiling()	,2	a(n)= ceiling(Annnnnn(n)/(\d+))
+A173697	simtraf	0	new A013984()	v -> new Q(v, Z.TWO).ceiling()	,2	a(n)= ceiling(Annnnnn(n)/(\d+))
+A173508	simtraf	0	new A173497()	v -> new Q(v, Z.TWO).ceiling()	,2	a(n)= ceiling(Annnnnn(n)/(\d+))
+A107325	simtraf	0	new A063655()	v -> new Q(v, Z.TWO).ceiling()	,2	a(n)= ceiling(Annnnnn(n)/(\d+))   
+
+A340189	simtraf	0	new A340187()	(n, v) -> ZV(n).+(v)		a(n)= n + Annnnnn(n)	
+A354350	simtraf	0	new A354365()	(n, v) -> ZV(n).+(v)		a(n)= n + Annnnnn(n)	
+A244988	simtraf	0	new A244989()	(n, v) -> ZV(n).-(v)		a(n)= n - Annnnnn(n)	
+A265397	simtraf	0	new A264977()	(n, v) -> ZV(n).-(v)		a(n)= n - Annnnnn(n)	
+A336645	simtraf	0	new A326129()	(n, v) -> ZV(n).-(v)		a(n)= n - Annnnnn(n)	
+A336647	simtraf	0	new A336566()	(n, v) -> ZV(n).-(v)		a(n)= n - Annnnnn(n)	
+A364288	simtraf	0	new A243071()	(n, v) -> ZV(n).-(v)		a(n)= n - Annnnnn(n)	
+A336646	simtraf	0	new A326144()	(n, v) -> ZV(n).-(v)		a(n)= n - Annnnnn(n)	
+A369183	simtraf	0	new A329004()	(n, v) -> ZV(n).-(v)		a(n)= n - Annnnnn(n)	      
+A144422	simtraf	0	new A144416()	(n, v) -> v.*(FA(n))	a(n)= n!*Annnnnn(n)	m	i    
+A292751	simtraf	0	new A063019()	(n, v) -> v.*(FA(n))	a(n)= n!*Annnnnn(n)	m	i    
+
+A126588	lambdan	0	n -> Puma.primeZ(13*n)	a(n)= prime((\d+)*n)	
+A246932	lambdan	0	n -> Puma.primeZ(15*n)	a(n)= prime((\d+)*n)	
+A246933	lambdan	0	n -> Puma.primeZ(16*n)	a(n)= prime((\d+)*n)
+
+A175653	simtraf	0	new A175652()	v -> v.sqrt()	a(n)= sqrt(Annnnnn(n))	m	i  
+A367419	simtraf	0	new A367418()	v -> v.sqrt()	a(n)= sqrt(Annnnnn(n))	m	i  	
