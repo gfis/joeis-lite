@@ -96,4 +96,6 @@ A126177	tablamb	1	1	n -> new Integer[] { 1, n/2 + 1 }	(n, k) -> ZV(3).^(n - 2*k 
 A156789	tablamb	0	0	n -> new Integer[] { 0, 2*n }	(n, k) -> BI(2*n, k).*(BI(2*k, k))
 A157000	tablamb	0	2	n -> new Integer[] { 1, n/2 }	(n, k) -> BI(n - k - 1,k - 1).*(n)./(k)
 #? A370291	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : BI(2*n, n)./(n + 1).intValueExact() }	(n, k) -> ZV(n).*(n + 1)./(2)	T:= n-> n*(n+1)/2$binomial(2*n,n)/(n+1):
+A127537	tablamb	2	2	n -> new Integer[] { 0, 2*n - 3 }	(n, k) -> BI(3*n - 3, n + k).*(BI(k - 1, k . n + 1)./(n - 1 )	T(n,k) = C(3n-3,n+k)C(k-1,k-n+1)/(n-1) (n >= 2, 0 <= k <= 2n-3).
+A128100	tablamb	0	2	n -> new Integer[] { 1, (n + 1)/2 }	(n, k) -> SU(k, n/2, i -> BI(n - i, i).*(BI(i, k)))	T(n,k) = Sum_{i=k..floor(n/2)} binomial(n-i,i)*binomial(i,k)
 

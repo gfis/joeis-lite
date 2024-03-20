@@ -206,7 +206,7 @@ while (<>) { # read inputfile
             #                       12      21
             my $nopen = ($parm =~ s{([\(\[\{])}  {$1}g);
             my $nclos = ($parm =~ s{([\)\]\}])}  {$1}g);
-            if ($nopen != $nclos) {
+            if ($nopen != $nclos && $iparm <= 8) {
                 print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n"; 
                 $do_generate = 0;
             }
@@ -492,10 +492,13 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
+    if ($line =~ m{\WMobiusTransformSequence}      ) { $imports{"irvine.oeis.transform.MobiusTransformSequence"} = $itype; }
+    if ($line =~ m{\WMobius\(}                     ) { $imports{"irvine.math.Mobius("}                           = $itype; }
+    if ($line =~ m{\WMorphismFixedPointSequence}   ) { $imports{"irvine.oeis.base.MorphismFixedPointSequence"  } = $itype; }
     if ($line =~ m{\WMultiplicativeSequence}       ) { $imports{"irvine.oeis.MultiplicativeSequence"           } = $itype; }
-    if ($line =~ m{\WMobius}                       ) { $imports{"irvine.math.Mobius"}                            = $itype; }
     if ($line =~ m{\WPaddingSequence}              ) { $imports{"irvine.oeis.recur.PaddingSequence" }            = $itype; }
     if ($line =~ m{\WPair}                         ) { $imports{"irvine.util.Pair" }                             = $itype; }
+    if ($line =~ m{\WPartialSumSequence}           ) { $imports{"irvine.oeis.PartialSumSequence"}                = $itype; }
     if ($line =~ m{\WPeriodicSequence}             ) { $imports{"irvine.oeis.recur.PeriodicSequence"}            = $itype; }
     if ($line =~ m{\WPolynomialUtils}              ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
     if ($line =~ m{\WPolynomial}                   ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
@@ -523,8 +526,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
         my $ish = 0;
         #                   1      1
         while ($line =~ s{\"([^\"]*)\"}{\#$ish}) { # shield strings
-        	push(@shields, $1);
-        	$ish ++;
+            push(@shields, $1);
+            $ish ++;
         }
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
             my $class_name = $1; 

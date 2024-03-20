@@ -346,6 +346,7 @@ sumpass: # copy all with passed test in joeis-lite/src to ./manual
 sumfato: # copy all with PASSed or FATO test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log   >  $@.tmp 
 	grep -P "\tFATO\t" $(CC).fail.log \
+	| tee \
 	| cut -b1-7                >> $@.tmp 
 	cat                           $@.tmp \
 	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
@@ -8413,6 +8414,20 @@ mangf_check: # DIR=
 	wc -l    $@.txt
 	grep -P "\tnyi\t" $@.txt || :
 	grep -P "\tnyi\t" $@.txt | wc
+DIR=mangf
+prunedir: # DIR= move *ari to ./marchive
+	find $(DIR) -iname "A??????.java" -printf "%f\t%T+\n" | perl -pe 's{\.java}{}; s{\+.*}{}; '\
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+	make seq LIST=$@.tmp
+	$(DBAT) -x "SELECT s.aseqno FROM seq s, joeis j \
+	  WHERE s.aseqno = j.aseqno \
+	  ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        check/$(DIR).prunedir.tmp
+	wc -l    check/$(DIR).prunedir.tmp
+	grep -P "^A\d+" check/$(DIR).prunedir.tmp | xargs -innn mv -v $(DIR)/nnn.java marchive
 mangf_retest:
 	cut -f1 mangf_check.txt | grep -E "^A[0-9][0-9]" \
 	| xargs -l -innn cp -v mangf/nnn.java manual
