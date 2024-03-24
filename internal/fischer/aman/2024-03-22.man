@@ -1,21 +1,89 @@
-A371372	lambdan	0	n -> (n == 0) ? Z.ZERO : SD(2*n, d -> BI(4*n/d - 1, 2*n/d).*(JF(d).phi()))./(4*n)
+
+
+A071011	filter	0	new A001481()	v -> JF(v).sigma().and(Z.THREE).isZero()	
+A078739	tablamb	1	1	n -> new Integer[] { 2, n*2 }	(n, k) -> SU(0, k, i -> Z_1(k - i).*(BI(k, i).*(ZV(i*(i - 1)/2).^(n)))).*(Z2(n))./(FA(k))
+A081066	simtraf	0	new A055882()	(n, v) -> RQ(0, n - 1, j -> new Q(2*j + 1, 2)).*(v).num()	*Pochhammer(1/2, n)
+A082694	partsun	1	new A082693()			Partial sums of A082693.					Partial sums of A082693.
+A084109	filter	0	new A022544()	v -> v.and(Z.THREE).equals(Z.ONE)	n is congruent to 1 (mod 4) and is not the sum of two squares.
+A085625	filtpos	0	0	new A000161()	v -> v.equals(Z.TWO)	Numbers that are the sum of 2 squares in exactly 2 ways.
+A091539	lambdan	0	n -> new Q(3).^(2*n    ).*(RQ(0, n - 1, j -> new Q(3*j + 2, 3))).*(new Q(FA(n)).-(RQ(0, n - 1, j -> new Q(3*j + 1, 3)).*(ZV(3))))./(FA(3).*(10)).num()	(3^(2*n))*risefac(2/3, n)*(n!-3*risefac(1/3, n))/(3!*10) with risefac(x, n)=Pochhammer(x, n).
+A091544	lambdan	0	n -> new Q(2).^(4*n - 1).*(RQ(0, n - 1, j -> new Q(4*j + 1, 4))).*(RQ(0, n - 1, j -> new Q(2*j + 1, 2)))         .num()   	, n>=1, with risefac(x, n) = Pochhammer(x, n).
+A091546	lambdan	0	n -> new Q(6).^(2*n    ).*(RQ(0, n - 1, j -> new Q(6*j + 1, 6))).*(RQ(0, n - 1, j -> new Q(3*j + 1, 3)))./(Z.TWO).num()   	, n>=1, with risefac(x, n) = Pochhammer(x, n).
+A091550	lambdan	0	n -> new Q(2).^(4*n    ).*(RQ(0, n - 1, j -> new Q(2*j + 1, 2))).*((RQ(0, n - 1, j -> new Q(4*j + 1, 4))).*(ZV(-3)).+(RQ(0, n - 1, j -> new Q(4*j + 3, 4))))./(ZV(6*12)).num()	(2^(4*n))*risefac(1/2, n)*(-3*risefac(1/4, n) + risefac(3/4, n))/(3!*12), n>=2
+A091552	lambdan	0	n -> (PR(0, n - 1, j -> ZV(6*j + 1)).*(-3).+(PR(0, n - 1, j -> ZV(6*j + 3)))).*(PR(0, n - 1, j -> ZV(3*j + 1))).*(Z2(n))./(96)	
+A091627	lambdan	1	n -> SU(1, n, i -> SU(i, n - i, j -> ZV(i*j <= n ? 1 : 0)))	a(n) = sum(i=1, n, sum(j=i, n-i, i*j<=n));
+A098365	filter	0	new A000404()	v -> v.mod(17) == 0
+A098474	trilambn	0	0	0	(n, k) -> Z_1(k).*(Binomial.catalan(k)).*(PR(0, k - 1, j -> ZV(j - n)))./(FA(k))
+A100829	filter	0	new A000404()	v -> v.mod(17) != 0
+A113025	trilambn	0	0	0	(n, k) -> BI(n + k, 2*k).*(FA(2*k))./(FA(k))	binomial(n+k, 2*k)*(2*k)!/k!
+A117663	lingf	1	0,0,1,6,27,21,178,39,63,24,46	1,-1,0,0,-2,2,0,0,1,-1	0						Heptagonal numbers for which the digital root is also a heptagonal number.
+A124636	lingf	0	1,0,-1,0,1	1,0,-4,-4,6,16,2,-24,-23,12,36,12,-23,-24,2,16,6,-4,-4,0,1	0						Poincar√© series [or Poincare series] P(C_{3,2}(0); t).
+A124637	lingf	0	1,-1,-1,0,2,2,0,-4,0,2,2,0,-1,-1,1	1,-1,-4,-1,6,19,6,-31,-54,-31,80,145,75,-120,-300,-176,146,434,356,-126,-500,-490,0,490,500,126,-356,-434,-146,176,300,120,-75,-145,-80,31,54,31,-6,-19,-6,1,4,1,-1	0						Poincar√© series [or Poincare series] P(C_{4,2}(0); t).
+A124644	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(Binomial.catalan(n - k)).*(PR(0, n - k - 1, j -> ZV(j - n)))./(FA(n - k))
+A124981	filter	0	new A022544()	ODD
+A128503	tablamb	0	0	n -> new Integer[] { 0, n/2 }	 (n, m) -> BI(n - m + 2, 2).*(BI(n - m, m)).*(Z_1(m))
+A128505	tablamb	0	0	n -> new Integer[] { 0, n/2 }	 (n, m) -> BI(n - m + 3, 3).*(BI(n - m, m)).*(Z_1(m))	
+A133111	lingf	1	0,0,0,0,1,5,5,1	1,-11,55,-165,330,-462,462,-330,165,-55,11,-1	0						a(n) = 1/(1!*2!*3!*4!)*sum {1 <= x_1, x_2, x_3, x_4 <= n} |det V(x_1,x_2,x_3,x_4)|, where V(x_1,x_2,x_3,x_4) is the Vandermonde matrix of order 4.
+A143395	trilamb0	0	(n, k) -> SU(k, n, t -> BI(n, t).*(S2(t, k)).*(ZV(k).^(n-t)))	
+A153187	trilamb0	0	(n, k) -> PR(0, k + 1, j -> ZV(j *(n + 1) - 1)).negate()	 T(n, k) = -Product_{j=0..k+1} (j*(n+1) - 1).
+A153189	trilamb0	0	(n, k) -> PR(0, k, j -> ZV(n*j + 1))	T(n, k) = n^(k+1)*Pochhammer(1/n, k+1).
+A161826	lingf	1	0,1,1,2,1,3,-1,0,0,-1,0,-1	1,0,-1	0						Number of maximal vertex-independent sets in the hypergraph with nodes V = {1, 2, ..., n} and "edges" consisting of the triples (X,Y,Z) with X<Y<Z and X+Y=Z.
+A165987	lingf	1	2,1099258818694,4395755907442,1098619230674	1,-4,6,-4,1	0						a(n) is the trace of the matrix f(X + n*f(X))/f(X), where X is the 2 X 2 matrix [-13, 17; 31, 97] and f(x) = x^3 - 5*x + 67.
+A173112	partsun	1	new A106116()			Partial sums of A106116.					Partial sums of A106116.
+A183977	lingf	1	0,4,-4,-10,8	1,-3,0,6,-4	0						1/4 the number of (n+1) X (n+1) binary arrays with all 2 X 2 subblock sums the same.
+A184030	lingf	1	0,16,-8,-38,16	1,-3,0,6,-4	0						1/16 the number of (n+1) X (n+1) 0..3 arrays with all 2 X 2 subblocks having the same four values.
+A184040	lingf	1	0,9,-6,-22,12	1,-3,0,6,-4	0						1/9 the number of (n+1) X (n+1) 0..2 arrays with all 2 X 2 subblocks having the same four values.
+A201271	lingf	0	1,3,5,1,3,1	1,0,0,-3,0,0,3,0,0,-1	0						Number of n X 2 0..2 arrays with every row and column nondecreasing rightwards and downwards, and the number of instances of each value within one of each other.
+A201272	lingf	0	1,1,2,3,5,4,7,5,2,1,1	1,0,-2,-2,1,4,0,-2,0,2,0,-4,-1,2,2,0,-1	0						Number of n X 3 0..2 arrays with every row and column nondecreasing rightwards and downwards, and the number of instances of each value within one of each other.
+A253082	partsun	0	new A246595()			Partial sums of A246595.					Partial sums of A246595.
+A265649	trilamb0	0	(n, k) -> RU(0, k, j -> RQ(0, n - 1, m -> new Q(2*m + j + 1, 2)).*(Z_1(k-j)).*(BI(k, j))).*(Z2(n))./(FA(k)).num()  
+A284947	tablamb	0	3	n -> new Integer[] { 0, n }	(n, k) -> k < 3 ? Z.ZERO : BI(n, k).*(PR(0, k - 3 - 1, j -> ZV(j + 3)))	
+A293979	parmof2	0	A174221	83
+A303986	trilamb0	0	(n, k) -> BI(n, n - k).*(FA(n + k)).*(Z_1(k))./(FA(n))	T(n, k) = (-1)^k*binomial(n, n-k)*((n+k)!/n!).
+A303986	trilamb0	0	(n, k) -> Z_1(k).*(PR(0, k - 1, j -> ZV(j + n + 1))).*(BI(n, k))
+A335262	trilambn	0	0	0	(n, k) -> ZV(2*k - 1 - n).*(2*k - n)./(2)
+A347912	partsun	1	new A122197()			Partial sums of A122197.					a(n) = Sum_{k=1..n} k - floor(sqrt(k)+1/2) * floor(sqrt(k-1)).
+A349971	arrlamb	1	1	1	1	(n, k) -> RQ(0, k - 2, j -> new Q(j*n + n - 1, n)).*(ZV(n).^(k - 1)).num()	n^(k-1)*Pochhammer((n-1)/n, k-1) (array).
+A362588	trilamb0	0	(n, k) -> Z_1(k).*(PR(0, k - 1, j -> ZV(j + n - k))).*(PR(0, k - 1, j -> ZV(j - n)))
+A362787	trilamb0	0	(n, k) -> PR(0, k - 1, j -> ZV(j + n)).*(PR(0, k - 1, j -> ZV(j + n - k)))
+A368956	lingf	1	0,-2,12,-12	1,-6,11,-6	0						a(n) = 3^n - 2^(n+1) - 1.
+A369304	lingf	1	0,3,3,2,-1,-1	1,-1,-2,2,1,-1	0						Numbers k for which the polynomial (x-1)^3*(x+1)^k has more than one zero coefficient.
+A370419	arrlamb	0	0	0	1	(n, k) -> RQ(0, n - 1, j -> new Q(2*j + k, 2)).*(Z2(n)).num()	
+A370532	lingf	1	0,1,3,1,5	1,-2,1	0						Integers m > 0 such that m^m and m^(m^m) have the same rightmost m digits.
+A370704	rowsum	0	new A370707()	 a(n) = Sum_{k=0..n} k!*binomial(n, k)*Pochhammer(n, k). Row sums of €370707.
+A370706	trilamb0	0	(n, k) -> BI(n, k).*(PR(0, k - 1, j -> ZV(j + n)))
+A370707	trilamb0	0	(n, k) -> Z_1(k).*(PR(0, k - 1, j -> ZV(j - n).*(j + n)))
+A370846	lingf	1	0,0,24,48,-192	1,-2,-7,-8,16	0						a(n) = 5 + 4^n + 3*((-i*sqrt(7) - 3)^n + (i*sqrt(7) - 3)^n)/2^n.
+A370890	arrlamb	0	0	0	1	(n, k) -> RQ(0, (n + 1)/2 - 1, j -> new Q(2*j + k, 2)).*(Z2(n)).num()	Square array read by ascending antidiagonals.
+A370912	holos	0	[[0],[-2,1],[5,-5],[-2,9],[5,-5]]	0,15	0	0
+A370914	holos	0	[0,-1,4,-6,4,-1]	0,45,120,231	0	0	a(n) = 64*Pochhammer(n/4, 3).
+A370915	arrlamb	0	0	0	1	(n, k) -> RQ(0, n - 1, j -> new Q(4*j + k, 4)).*(ZV(4).^(n)).num()	4^n*Product_{j=0..n-1} (j + k/4)
+A371157	lambdan	0	n -> RU(0, n  , j -> RU(0, j/2, k -> new Q(BI(j - k, n - j - k)  .*(SA(j - k, k)  )         , FA(j -   k)))   .*(FA(n))).num()
+A371158	lambdan	0	n -> RU(0, n  , j -> RU(0, j/3, k -> new Q(BI(j - 2*k, n - j - k).*(SA(j - 2*k, k))         , FA(j - 2*k)))   .*(FA(n))).num()
+A371159	lambdan	0	n -> RU(0, n/2, j -> RU(0, j  , k -> new Q(BI(j, n - 2*j - k)    .*(SA(j, k)      )         , FA(j)))         .*(FA(n))).num()
+A371160	lambdan	0	n -> RU(0, n/3, j -> RU(0, j  , k -> new Q(BI(j, n - 3*j - k)    .*(SA(j, k)      )         , FA(j)))         .*(FA(n))).num()
+A371174	lambdan	0	n -> RU(0, n  , j -> RU(0, j/3, k -> new Q(BI(j - 2*k, n - j - k).*(S1(j - 2*k, k))         , FA(j - 2*k)))   .*(FA(n))).num()
+A371175	lambdan	0	n -> RU(0, n/2, j -> RU(0, j  , k -> new Q(BI(j, n - 2*j - k)    .*(S1(j, k)      )         , FA(j)))         .*(FA(n))).num()
+A371184	lambdan	0	n -> RU(0, n/3, j -> RU(0, j  , k -> new Q(BI(j, n - 3*j - k)    .*(S1(j, k)      )         , FA(j)))         .*(FA(n))).num()
+A371196	lambdan	0	n -> RU(0, n  , j -> RU(0, j  , k -> new Q(BI(j, n - j - k)      .*(SA(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
+A371197	lambdan	0	n -> RU(0, n  , j -> RU(0, j/2, k -> new Q(BI(j - k, n - j - k)  .*(SA(j - k, k)  ).*(FA(k)), FA(j -   k)))   .*(FA(n))).num()
+A371198	lambdan	0	n -> RU(0, n  , j -> RU(0, j/3, k -> new Q(BI(j - 2*k, n - j - k).*(SA(j - 2*k, k)).*(FA(k)), FA(j - 2*k)))   .*(FA(n))).num()
+A371199	lambdan	0	n -> RU(0, n/2, j -> RU(0, j  , k -> new Q(BI(j, n - 2*j - k)    .*(SA(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
+A371200	lambdan	0	n -> RU(0, n/3, j -> RU(0, j  , k -> new Q(BI(j, n - 3*j - k)    .*(SA(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
+A371225	lambdan	0	n -> RU(0, n  , j -> RU(0, j  , k -> new Q(BI(j, n - j - k)      .*(S1(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
+A371226	lambdan	0	n -> RU(0, n  , j -> RU(0, j  , k -> new Q(BI(j, n - j - k)      .*(S2(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
 A371302	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(n - k).*(SA(n - 2*k, k)), FA(n - 2*k).*(FA(n - 2*k + 1)))).*(FA(n)).num()
-A371318	lambdan	0	n -> RU(0, n  , k -> new Q(ZV(2*k + 1).^(n - k - 1)  .*(BI(3*k, k)), FA(n - k  ))).*(FA(n)).num()
-A371319	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k + 1).^(n - 2*k - 1)  .*(BI(2*k, k)), FA(n - 2*k))).*(FA(n)).num()
-A371320	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(2*k + 1).^(n - 2*k - 1).*(BI(3*k, k)), FA(n - 2*k))).*(FA(n)).num()
 A371304	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(n - k).*(S2(n - 2*k, k)), FA(n - 2*k).*(FA(n - 2*k + 1)))) .*(FA(n)).num()
-A371316	lambdan	0	n -> RU(1, n, k -> new Q(FA(3*k - 2  ) , FA(2*k - 1  )).*(S2(n, k))).num()
-A371317	lambdan	0	n -> RU(1, n, k -> new Q(FA(4*k - 2  ) , FA(3*k - 1  )).*(S2(n, k))).num()                    
-A371342	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + k - 2  ) , FA(n - 1    )).*(S1(n, k))).num()                  
 A371314	lambdan	0	n -> RU(1, n, k -> new Q(FA(3*k - 2  ) , FA(2*k - 1  )).*(SA(n, k))).num()
 A371315	lambdan	0	n -> RU(1, n, k -> new Q(FA(4*k - 2  ) , FA(3*k - 1  )).*(SA(n, k))).num()
-A371371	lambdan	0	n -> RU(1, n, k -> new Q(FA(2*n + k - 2) , FA(2*n - 1  )).*(S2(n, k))).num()
+A371316	lambdan	0	n -> RU(1, n, k -> new Q(FA(3*k - 2  ) , FA(2*k - 1  )).*(S2(n, k))).num()
+A371317	lambdan	0	n -> RU(1, n, k -> new Q(FA(4*k - 2  ) , FA(3*k - 1  )).*(S2(n, k))).num()                    
 A371326	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + 3*k - 2) , FA(n + 2*k - 1)).*(S1(n, k))).num()
-A371329	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + 2*k - 2) , FA(n + k - 1  )).*(S2(n, k))).num()
-A371330	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + 3*k - 2) , FA(n + 2*k - 1)).*(S2(n, k))).num()
-A371370	lambdan	0	n -> RU(1, n, k -> new Q(FA(2*n + k - 2) , FA(2*n - 1  )).*(SA(n, k))).num()
 A371327	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + 2*k - 2) , FA(n + k - 1  )).*(SA(n, k))).num()
 A371328	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + 3*k - 2) , FA(n + 2*k - 1)).*(SA(n, k))).num()
+A371329	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + 2*k - 2) , FA(n + k - 1  )).*(S2(n, k))).num()
+A371330	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + 3*k - 2) , FA(n + 2*k - 1)).*(S2(n, k))).num()
+A371342	lambdan	0	n -> RU(1, n, k -> new Q(FA(n + k - 2  ) , FA(n - 1    )).*(S1(n, k))).num()                  
 A371362	lambdan	0	n -> SU(0, n, k -> ZV(2).^(n - k).*(BI(2*n + k + 1, k)).*(BI(2*n  , n - k)))./(n + 1)
 A371363	lambdan	0	n -> SU(0, n, k -> ZV(2).^(n - k).*(BI(3*n + k + 2, k)).*(BI(3*n + 1, n - k)))./(n + 1)
 A371364	lambdan	0	n -> SU(0, n, k -> ZV(3).^(n - k).*(BI(2*n + k + 1, k)).*(BI(2*n  , n - k)))./(n + 1)
@@ -24,6 +92,9 @@ A371366	lambdan	0	n -> SU(0, n, k -> ZV(4).^(n - k).*(BI(2*n + k + 1, k)).*(BI(2
 A371367	lambdan	0	n -> SU(0, n, k -> ZV(5).^(n - k).*(BI(2*n + k + 1, k)).*(BI(2*n  , n - k)))./(n + 1)
 A371368	lambdan	0	n -> SU(0, n, k -> ZV(6).^(n - k).*(BI(2*n + k + 1, k)).*(BI(2*n  , n - k)))./(n + 1)
 A371369	lambdan	0	n -> SU(0, n, k -> ZV(7).^(n - k).*(BI(2*n + k + 1, k)).*(BI(2*n  , n - k)))./(n + 1)
+A371370	lambdan	0	n -> RU(1, n, k -> new Q(FA(2*n + k - 2) , FA(2*n - 1  )).*(SA(n, k))).num()
+A371371	lambdan	0	n -> RU(1, n, k -> new Q(FA(2*n + k - 2) , FA(2*n - 1  )).*(S2(n, k))).num()
+A371372	lambdan	0	n -> (n == 0) ? Z.ZERO : SD(2*n, d -> BI(4*n/d - 1, 2*n/d).*(JF(d).phi()))./(4*n)
 A371380	lambdan	0	n -> SU(0, n, k -> ZV(2).^(k)  .*(BI(2*n + k + 1, k)).*(BI(2*n  , n - k)))./(n + 1)
 A371385	lambdan	0	n -> SU(0, n, k -> ZV(2).^(k)  .*(BI(3*n + k + 2, k)).*(BI(3*n + 1, n - k)))./(n + 1)
 A371386	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k)  .*(BI(2*n + k + 1, k)).*(BI(2*n  , n - k)))./(n + 1)

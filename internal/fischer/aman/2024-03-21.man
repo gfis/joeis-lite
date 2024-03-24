@@ -1,4 +1,4 @@
-% A094645 is Generalized Stirling number triangle of first kind, e.g.f.: (1-y)^(1-x).) (End)
+# (product(6*j+1, j=0..n-1)*(-3) + product(6*j+3, j=0..n-1))*product(3*j+1, j=0..n-1)*(2^n)/(96), n>=2
 % A075497	Triangle	Stirling2 triangle with scaled diagonals (powers of 2).	nonn,easy,tabl,changed	1..141	unkn	_Wolfdieter Lang_
 % A075498	A075497	Stirling2 triangle with scaled diagonals (powers of 3).	nonn,easy,tabl	1..1275	A075497/parm2	_Wolfdieter Lang_
 % A075499	A075497	Stirling2 triangle with scaled diagonals (powers of 4).	nonn,easy,tabl	1..1275	A075497/parm2	_Wolfdieter Lang_
@@ -8,6 +8,7 @@
 % A075503	A075497	Stirling2 triangle with scaled diagonals (powers of 8).	nonn,easy,tabl	1..1275	A075497/parm2	_Wolfdieter Lang_
 % A075504	A075497	Stirling2 triangle with scaled diagonals (powers of 9).	nonn,easy,tabl	1..1275	A075497/parm2	_Wolfdieter Lang_
 % A075505	A075497	Stirling2 triangle with scaled diagonals (powers of 10).	nonn,easy,tabl,changed	1..1275	A075497/parm2	_Wolfdieter Lang_
+% A094645 is Generalized Stirling number triangle of first kind, e.g.f.: (1-y)^(1-x).) (End)
 % A111577  T(n, k) = 1/(3^k*k!)*Sum_{j=0..k}((-1)^(k-j)*binomial(k,j)*(3*j+1)^n).
 % A111577 sum {i = 0..n-1} 3^(i-k+1)*binomial(n-1,i)*Stirling2(i,k-1). S(3,0,1)
 % A111578  1/(4^k*k!)*sum {j = 0..k} (-1)^(k-j)*binomial(k,j)*(4*j + 1)^n.
@@ -30,8 +31,7 @@
 %C A223533 These are generalized Stirling numbers.
 %C A223534 These are generalized Stirling numbers.
 %C A223535 These are generalized Stirling numbers.
-%C A223536 These are generalized Stirling numbers.
-%C A370518 Generalized Stirling numbers of the first kind of the second order.
+%C A223536 These are generalized Stirling numbers.%C A370518 Generalized Stirling numbers of the first kind of the second order.
 %F A343254 T(n,k) = Sum_{j=1..n-k} C(n,k,j). C(n,k,j) is defined for n>=2k, j<=n-k, and obtained by the recursion: C(n,k,j) = C(n-1,k,j-1) + j*C(n-1,k,j), with initial conditions C(2k,k,j) = triangle A061691(k,j) of generalized Stirling numbers.
 %N A078739 Triangle of generalized Stirling numbers S_{2,2}(n,k) read by rows (n>=1, 2<=k<=2n).
 %N A078740 Triangle of generalized Stirling numbers S_{3,2}(n,k) read by rows (n>=1, 2<=k<=2n).
@@ -40,62 +40,22 @@
 %N A185422 Forests of k increasing plane unary-binary trees on n nodes. Generalized Stirling numbers of the second kind associated with €185415.
 %N A216379 Triangle of generalized Stirling numbers S_{n,n}(5,k) read by rows (n>=0, n<=k<=5n) the sum of which is €182924.
 %N A271204 Triangle of generalized Stirling numbers of the second kind S(n,k) associated with the generalized Bell numbers €271049(n); S(n,k) = Sum_{j=0..k} (-1)^(k-j)*binomial(k,j)*Gamma((j+2)/3)*Gamma(3*n+j-1)/(Gamma(j)*Gamma(n+(j-1)/3))/(3^(n-1)*k!).
-A071011	filter	0	new A001481()	v -> JF(v).sigma().and(Z.THREE).isZero()	
-A078739	tablamb	1	1	n -> new Integer[] { 2, n*2 }	(n, k) -> SU(0, k, i -> Z_1(k - i).*(BI(k, i).*(ZV(i*(i - 1)/2).^(n)))).*(Z2(n))./(FA(k))
-A081066	simtraf	0	new A055882()	(n, v) -> RQ(0, n - 1, j -> new Q(2*j + 1, 2)).*(v).num()	*Pochhammer(1/2, n)
-A084109	filter	0	new A022544()	v -> v.and(Z.THREE).equals(Z.ONE)	n is congruent to 1 (mod 4) and is not the sum of two squares.
-A085625	filter	0	new A000161()	v -> v.equals(Z.TWO)	Numbers that are the sum of 2 squares in exactly 2 ways.
-A091539	lambdan	0	n -> new Q(3).^(2*n    ).*(RQ(0, n - 1, j -> new Q(3*j + 2, 3))).*(new Q(FA(n)).-(RQ(0, n - 1, j -> new Q(3*j + 1, 3)).*(ZV(3))))./(FA(3).*(10)).num()	(3^(2*n))*risefac(2/3, n)*(n!-3*risefac(1/3, n))/(3!*10) with risefac(x, n)=Pochhammer(x, n).
-A091544	lambdan	0	n -> new Q(2).^(4*n - 1).*(RQ(0, n - 1, j -> new Q(4*j + 1, 4))).*(RQ(0, n - 1, j -> new Q(2*j + 1, 2)))         .num()   	, n>=1, with risefac(x, n) = Pochhammer(x, n).
-A091546	lambdan	0	n -> new Q(6).^(2*n    ).*(RQ(0, n - 1, j -> new Q(6*j + 1, 6))).*(RQ(0, n - 1, j -> new Q(3*j + 1, 3)))./(Z.TWO).num()   	, n>=1, with risefac(x, n) = Pochhammer(x, n).
-A091550	lambdan	0	n -> new Q(2).^(4*n    ).*(RQ(0, n - 1, j -> new Q(2*j + 1, 2))).*(RQ(0, n - 1, j -> new Q(4*j + 1, 4))).*(ZV(-3)).+(RQ(0, n - 1, j -> new Q(4*j + 3, 4)))./(FA(3).*(12)).num()   	, n>=2, with risefac(x, n)=Pochhammer(x, n).
-A091551	lambdan	0	n -> new Q(5).^(2*n    ).*(RQ(0, n - 1, j -> new Q(5*j + 2, 5))).*(RQ(0, n - 1, j -> new Q(5*j + 1, 5))).*(ZV(-3)).+(RQ(0, n - 1, j -> new Q(5*j + 3, 5)))./(FA(3).*(14)).num()   	, n>=2, with risefac(x, n)=Pochhammer(x, n).
-A091552	lambdan	0	n -> new Q(2).^(2*n - 5).*(RQ(0, n - 1, j -> new Q(3*j + 1, 3))).*(RQ(0, n - 1, j -> new Q(6*j + 1, 6))).*(ZV(-3)).*(ZV(3).^(2*n - 1)).+(RQ(0, n - 1, j -> new Q(2+j + 1, 2))).num()   	, n>=2, with risefac(x, n)=Pochhammer(x, n).
+A091551	lambdan	0	n -> (PR(0, n - 1, j -> ZV(5*j + 1)).*(-3).+(PR(0, n - 1, j -> ZV(5*j + 3)))).*(PR(0, n - 1, j -> ZV(5*j + 1))).*(Z2(n))./(84)	a(n)= product(5*j+2, j=0..n-1)*(-3*product(5*j+1, j=0..n-1) + product(5*j+3, j=0..n-1))/(3!*14), n>=2
 A091740	lambdan	0	n -> new Q(3).^(2*n    ).*(RQ(0, n - 1, j -> new Q(3*j + 2, 3))).*(RQ(0, n - 1, j -> new Q(3*j + 1, 3))).*(ZV(6)).-(RQ(0, n - 1, j -> new Q(3*j + 2, 3)).*(FA(n)).*(4)).+(RQ(0, n - 1, j -> new Q(3*j + 4, 3)).*(FA(n)))./(FA(4)).num()	, with risefac(x, n)=Pochhammer(x, n).
-A098474	trilambn	0	0	0	(n, k) -> Z_1(k).*(Binomial.catalan(k)).*(PR(0, k - 1, j -> ZV(j - n)))./(FA(k))
-A098961	filter	0	new A001481()	v -> v.mod(13) != 0
-A100829	filter	0	new A001481()	v -> v.mod(17) != 0
-A113025	trilambn	0	0	0	(n, k) -> BI(n + k, 2*k).*(FA(2*k))./(FA(k))	binomial(n+k, 2*k)*(2*k)!/k!
-A124644	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(Binomial.catalan(n - k)).*(PR(0, n - k - 1, j -> ZV(j - n)))./(FA(n - k))
-A124981	filter	0	new A022544()	ODD
-A143395	trilamb0	0	(n, k) -> SU(k, n, t -> BI(n, t).*(S2(t, k)).*(ZV(k).^(n-t)))	
-A153187	trilamb0	0	(n, k) -> RQ(0, k + 1, j -> new Q(-1, n + 1)).*(ZV(n+1).^(k+2).negate()).num()	 * Pochhammer(-1/(n+1), k+2).
-A153189	trilamb0	0	(n, k) -> PR(0, k, j -> ZV(n*j + 1))	T(n, k) = n^(k+1)*Pochhammer(1/n, k+1).
-A265649	trilamb0	0	(n, k) -> RU(0, k, j -> RQ(0, n - 1, m -> new Q(2*m + j + 1, 2)).*(Z_1(k-j)).*(BI(k, j))).*(Z2(n))./(FA(k)).num()  
-A284947	tablamb	0	3	n -> new Integer[] { 0, n }	(n, k) -> k < 3 ? Z.ZERO : BI(n, k).*(PR(0, k - 3 - 1, j -> ZV(j + 3)))	
+A098961	filter	0	new A001481()	v -> v.mod(13) == 0
+A128727	tablamb	1	0	n -> new Integer[] { 0, (n-1)/2 }	(n, k) -> new Q(BI(n, k).*(BI(n - k, k + 1))).*(new Q(ZV(3)).^(n - 1 - 2*k))./(ZV(n)).num()	(1/n)*3^(n-1-2k)*binomial(n,k)*binomial(n-k,k+1).
+
+A193230	parmof2	0	A174221	1
+A275257	arrlamb	1	1	1	-1	(x, n) -> SU(1, x, k -> ZV(IntegerUtils.gcd(x, k) == 1 ? 1 : 0))	phi(x,n) = Sum_{k=1..x} A054431(k,n).
 A294716	filter	0	new A000161()	v -> v.equals(Z.FIVE)	Numbers that are the sum of 2 squares in exactly 5 ways.
-A303986	trilamb0	0	(n, k) -> Z_1(k).*(PR(0, k - 1, j -> ZV(j + n + 1))).*(BI(n, k))
 A306358	filter	0	new A000161()	(k, v) -> ((k & 1) == 1) && v.compareTo(Z.TWO) >= 0	Odd numbers k such that A000161(k) >= 2
-A335262	trilambn	0	0	0	(n, k) -> ZV(2*k - 1 - n).*(2*k - n)./(2)
 A337127	trilambn	1	1	1	(n, k) -> PR(0, k - 2, j -> ZV(j + 11 - k)).*(9).*(S2(n, k))	 where S2(n, k) = A048993(n, k) are the Stirling numbers of the 2nd kind.
-A349971	arrlamb	1	1	1	1	(n, k) -> RQ(0, k - 2, j -> new Q(j*n + n - 1, n)).*(ZV(n).^(k - 1)).num()	n^(k-1)*Pochhammer((n-1)/n, k-1) (array).
-A362588	trilamb0	0	(n, k) -> Z_1(k).*(PR(0, k - 1, j -> ZV(j + n - k))).*(PR(0, k - 1, j -> ZV(j - n)))
-A362787	trilamb0	0	(n, k) -> PR(0, k - 1, j -> ZV(j + n)).*(PR(0, k - 1, j -> ZV(j + n - k)))
-A370419	arrlamb	0	0	0	1	(n, k) -> RQ(0, n - 1, j -> new Q(2*j + k, 2)).*(Z2(n)).num()	
-A370704	rowsum	0	new A370707()	 a(n) = Sum_{k=0..n} k!*binomial(n, k)*Pochhammer(n, k). Row sums of €370707.
-A370706	trilamb0	0	(n, k) -> BI(n, k).*(PR(0, k - 1, j -> ZV(j + n)))
-A370707	trilamb0	0	(n, k) -> Z_1(k).*(PR(0, k - 1, j -> ZV(j - n).*(j + n)))
-A370890	arrlamb	0	0	0	1	(n, k) -> RQ(0, (n + 1)/2 - 1, j -> new Q(2*j + k, 2)).*(Z2(n)).num()	Square array read by ascending antidiagonals.
-A370912	holos	0	[[0],[-2,1],[5,-5],[-2,9],[5,-5]]	0,15	0	0
+A353690	convprod	1	1,1	new A000203(), new A000027()	The alternating sum of the n-th row equals A175254(n), the volume of the stepped pyramid with n levels described in A245092, als						Irregular triangle read by rows: T(n,k), n>=1, k>=1, in which column k lists the numbers of A353689 multiplied by A000330(k), and the first element of column k is in row A000217(k).
+A359503	partsun	1	new A066839()			Partial sums of A066839.					Partial sums of A066839.
 A370913	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(4*k + k, 4)).*(ZV(4).^(n - k))).num()	 Row sums of €370915(n - k, k).
-A370914	holos	0	[0,-1,4,-6,4,-1]	0,45,120,231	0	0	a(n) = 64*Pochhammer(n/4, 3).
-A370915	arrlamb	0	0	0	1	(n, k) -> RQ(0, n - 1, j -> new Q(4*j + k, 4)).*(ZV(4).^(n)).num()	4^n*Product_{j=0..n-1} (j + k/4)
-A370915	arrlamb	0	0	1	(n, k) -> RQ(0, n - 1, j -> new Q(4*j + k, 4)).*(ZV(4).^(n)).num()	= 4^n*Pochhammer(k/4, n)
 A370982	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(2*k + k, 2)).*(ZV(2).^(n - k))).num()	 Row sums of €370419(n - k, k).
 A370983	trilambn	0	0	0	(n, k) -> BI(n, k).*(PR(0, k - 1, j -> ZV(j + n)))./(n)	 * Pochhammer(n, k) / n.
 A371079	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(3*k + k, 3)).*(ZV(3).^(n - k))).num()	 Row sums of €371077.
-A371157	lambdan	0	n -> RU(0, n  , j -> RU(0, j/2, k -> new Q(BI(j - k, n - j - k)  .*(SA(j - k, k)  )         , FA(j -   k)))   .*(FA(n))).num()
-A371158	lambdan	0	n -> RU(0, n  , j -> RU(0, j/3, k -> new Q(BI(j - 2*k, n - j - k).*(SA(j - 2*k, k))         , FA(j - 2*k)))   .*(FA(n))).num()
-A371159	lambdan	0	n -> RU(0, n/2, j -> RU(0, j  , k -> new Q(BI(j, n - 2*j - k)    .*(SA(j, k)      )         , FA(j)))         .*(FA(n))).num()
-A371160	lambdan	0	n -> RU(0, n/3, j -> RU(0, j  , k -> new Q(BI(j, n - 3*j - k)    .*(SA(j, k)      )         , FA(j)))         .*(FA(n))).num()
-A371174	lambdan	0	n -> RU(0, n  , j -> RU(0, j/3, k -> new Q(BI(j - 2*k, n - j - k).*(S1(j - 2*k, k))         , FA(j - 2*k)))   .*(FA(n))).num()
-A371175	lambdan	0	n -> RU(0, n/2, j -> RU(0, j  , k -> new Q(BI(j, n - 2*j - k)    .*(S1(j, k)      )         , FA(j)))         .*(FA(n))).num()
-A371184	lambdan	0	n -> RU(0, n/3, j -> RU(0, j  , k -> new Q(BI(j, n - 3*j - k)    .*(S1(j, k)      )         , FA(j)))         .*(FA(n))).num()
-A371196	lambdan	0	n -> RU(0, n  , j -> RU(0, j  , k -> new Q(BI(j, n - j - k)      .*(SA(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
-A371197	lambdan	0	n -> RU(0, n  , j -> RU(0, j/2, k -> new Q(BI(j - k, n - j - k)  .*(SA(j - k, k)  ).*(FA(k)), FA(j -   k)))   .*(FA(n))).num()
-A371198	lambdan	0	n -> RU(0, n  , j -> RU(0, j/3, k -> new Q(BI(j - 2*k, n - j - k).*(SA(j - 2*k, k)).*(FA(k)), FA(j - 2*k)))   .*(FA(n))).num()
-A371199	lambdan	0	n -> RU(0, n/2, j -> RU(0, j  , k -> new Q(BI(j, n - 2*j - k)    .*(SA(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
-A371200	lambdan	0	n -> RU(0, n/3, j -> RU(0, j  , k -> new Q(BI(j, n - 3*j - k)    .*(SA(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
-A371225	lambdan	0	n -> RU(0, n  , j -> RU(0, j  , k -> new Q(BI(j, n - j - k)      .*(S1(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
-A371226	lambdan	0	n -> RU(0, n  , j -> RU(0, j  , k -> new Q(BI(j, n - j - k)      .*(S2(j, k)      ).*(FA(k)), FA(j)))         .*(FA(n))).num()
-~
+A371318	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n  , k -> new Q(ZV(2*k + 1).^(n - k - 1)  .*(BI(3*k, k)), FA(n - k  ))).*(FA(n)).num()	n!*sum(k=0, n, (2*k+1)^(n-k-1)*binomial(3*k, k)/(n-k)!);
+A371319	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(ZV(k + 1).^(n - 2*k - 1)  .*(BI(2*k, k)), FA(n - 2*k))).*(FA(n)).num()
+A371320	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(ZV(2*k + 1).^(n - 2*k - 1).*(BI(3*k, k)), FA(n - 2*k))).*(FA(n)).num()
