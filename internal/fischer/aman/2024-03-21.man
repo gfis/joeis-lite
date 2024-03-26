@@ -42,11 +42,9 @@
 %N A271204 Triangle of generalized Stirling numbers of the second kind S(n,k) associated with the generalized Bell numbers €271049(n); S(n,k) = Sum_{j=0..k} (-1)^(k-j)*binomial(k,j)*Gamma((j+2)/3)*Gamma(3*n+j-1)/(Gamma(j)*Gamma(n+(j-1)/3))/(3^(n-1)*k!).
 A091551	lambdan	0	n -> (PR(0, n - 1, j -> ZV(5*j + 1)).*(-3).+(PR(0, n - 1, j -> ZV(5*j + 3)))).*(PR(0, n - 1, j -> ZV(5*j + 1))).*(Z2(n))./(84)	a(n)= product(5*j+2, j=0..n-1)*(-3*product(5*j+1, j=0..n-1) + product(5*j+3, j=0..n-1))/(3!*14), n>=2
 A091740	lambdan	0	n -> new Q(3).^(2*n    ).*(RQ(0, n - 1, j -> new Q(3*j + 2, 3))).*(RQ(0, n - 1, j -> new Q(3*j + 1, 3))).*(ZV(6)).-(RQ(0, n - 1, j -> new Q(3*j + 2, 3)).*(FA(n)).*(4)).+(RQ(0, n - 1, j -> new Q(3*j + 4, 3)).*(FA(n)))./(FA(4)).num()	, with risefac(x, n)=Pochhammer(x, n).
-A098961	filter	0	new A001481()	v -> v.mod(13) == 0
+A098961	filter	0	new A001481()	(k, v) -> k > 1 && v.mod(13) == 0
 A128727	tablamb	1	0	n -> new Integer[] { 0, (n-1)/2 }	(n, k) -> new Q(BI(n, k).*(BI(n - k, k + 1))).*(new Q(ZV(3)).^(n - 1 - 2*k))./(ZV(n)).num()	(1/n)*3^(n-1-2k)*binomial(n,k)*binomial(n-k,k+1).
-A293979	parmof2	0	A174221	83
-
-A193230	parmof2	0	A174221	1
+A152230	triprov	0	new A007318()	new A122196()	Triangle read by rows, A007318 * A122196
 A275257	arrlamb	1	1	1	-1	(x, n) -> SU(1, x, k -> ZV(IntegerUtils.gcd(x, k) == 1 ? 1 : 0))	phi(x,n) = Sum_{k=1..x} A054431(k,n).
 A294716	filter	0	new A000161()	v -> v.equals(Z.FIVE)	Numbers that are the sum of 2 squares in exactly 5 ways.
 A306358	filter	0	new A000161()	(k, v) -> ((k & 1) == 1) && v.compareTo(Z.TWO) >= 0	Odd numbers k such that A000161(k) >= 2
@@ -60,3 +58,4 @@ A371079	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(3*k + k, 3)).*(
 A371318	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n  , k -> new Q(ZV(2*k + 1).^(n - k - 1)  .*(BI(3*k, k)), FA(n - k  ))).*(FA(n)).num()	n!*sum(k=0, n, (2*k+1)^(n-k-1)*binomial(3*k, k)/(n-k)!);
 A371319	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(ZV(k + 1).^(n - 2*k - 1)  .*(BI(2*k, k)), FA(n - 2*k))).*(FA(n)).num()
 A371320	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(ZV(2*k + 1).^(n - 2*k - 1).*(BI(3*k, k)), FA(n - 2*k))).*(FA(n)).num()
+A371357	lambdan	0	n -> Z2(n - Integer.bitCount(n)).*(BI(2*n, n))	a(n) = 2^(n - HammingWeight(n)) * binomial(2*n, n)

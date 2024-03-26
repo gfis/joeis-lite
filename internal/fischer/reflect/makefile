@@ -76,8 +76,8 @@ dead_robot: dead_joeis # generate DeadSequence's
 	cd .. ; make CC=dead gener
 #----
 dirarr: dirarr_reflect dirarr_load dirarr_dump # build a table of all DirectSequences
-dirarr_reflect: # extract all sequences that implement DirectSequence
-	sed -e "s/\t/\t0\t/" $(COMMON)/joeis_list.txt \
+dirarr_reflect: # extract all sequences with keywords "tabl|tabf" that implement DirectArray
+	perl dirarr.pl $(COMMON)/joeis_names.txt \
 	| $(ABSINSPECT) dirarr - \
 	>        dirarr.tmp
 	head -n4 dirarr.tmp
