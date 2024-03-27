@@ -354,7 +354,7 @@ addpass: # append seq4 records with passed tests to TODAY=file
 	grep -E -f  $@.grep.tmp $(CC).gen | grep -P "[a-z]" | cut -f1-8 | perl -pe 's/[ \t]+\Z//;' \
 	>> aman/$(TODAY).man
 	grep -vE -f $@.grep.tmp aman/$(CC).man > $@.tmp
-	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(CC).man
+	echo ---- `date +%Y-%m-%d%t%T`  > aman/$(CC).man
 	grep -vP "^\-\-\-\-" $@.tmp    >> aman/$(CC).man
 sumfato: # copy all with PASSed or FATO test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log   >  $@.tmp 
