@@ -1,0 +1,142 @@
+---- 2024-03-26 17:09:33
+---- 2024-03-26 19:03:37
+---- 2024-03-26 19:27:55
+---- 2024-03-26 21:41:10
+---- 2024-03-26 23:04:13
+A069853	filter	0	new A007418()	(k, v) -> (k & 1) == 0	1
+A070554	filter	0	new A058026()	(k, v) -> (k & 1) == 1
+A075680	filter	1	new A006667()	(k, v) -> (k & 1) == 1
+A076100	filter	1	new A003418()	(k, v) -> (k & 1) == 1
+A078315	dirtraf	1	new A051904()	new A078310()	"null"		1				Minimal exponent in prime factorization of n*rad(n)+1, where rad=A007947 (the radical or squarefree kernel).
+A078379	dirtraf	1	new A051904()	new A055394()	"null"		1				Minimal exponent in prime factorization of numbers which can be written as sum of a positive square and a positive cube.
+A078406	filter	0	new A035294()	(k, v) -> (k & 1) == 0
+A078407	filter	0	new A035294()	(k, v) -> (k & 1) == 1
+A078409	filter	0	new A078408()	(k, v) -> (k & 1) == 0
+A078410	filter	0	new A078408()	(k, v) -> (k & 1) == 1
+A078572	dirtraf	1	new A051904()	new A014574()	"null"		1				Minimal exponent in prime factorization of the average of n-th twin prime pair.
+A079092	dirtraf	1	new A000010()	new A079079()	"null"		1				Euler s totient of (prime(n)+1)*(prime(n+1)+1)/4.
+A085602	filter	1	new A014566()	(k, v) -> (k & 1) == 1
+A086290	dirtraf	1	new A051904()	new A002473()	"null"		1				Minimal exponent in prime factorization of 7-smooth numbers.
+A086414	dirtraf	1	new A051904()	new A003586()	"null"		1				Minimal exponent in prime factorization of 3-smooth numbers.
+A090368	filter	1	new A020639()	(k, v) -> (k & 1) == 1
+A091021	filter	1	new A000040()	(k, v) -> v.toString(2).indexOf(Long.toString(k, 2)) >= 0	Primes p=prime(k) such that in binary representation k is a substring of p.
+A099137	tuptraf	0	(n, s) -> s[0].*(3).-(1).*(s[0])./(2)	"2"	PREVIOUS	n*(3*n-1)/2	Iterated pentagonal numbers starting with 2.
+A099147	prepend	1	new TupleTransformSequence(1, (n, s) -> s[0].*(2).-(1).*(s[0]), "6", TupleTransformSequence.PREVIOUS)	1	n*(2*n-1)	Iterated hexagonal numbers, starting at 1. 1,6,66
+A099153	prepend	0	new TupleTransformSequence(0, (n, s) -> s[0].*(5).-(3).*(s[0])./(2), "7", TupleTransformSequence.PREVIOUS)	1	n*(5*n-3)/2	Iterated heptagonal numbers (A000566), starting at 7.
+A099179	tuptraf	1	(n, s) -> s[0].*(s[0].+(1)).*(s[0].+(2))./(6)	"2"	PREVIOUS	Iterated tetrahedral numbers. n*(n+1)*(n+2)/6
+A100006	filter	1	new A001414()	(k, v) -> (k & 1) == 0	1
+A101871	filter	0	new A000688()	(k, v) -> (k & 1) == 1
+A102108	filter	1	new A000607().skip(2)	(k, v) -> (k & 1) == 0	1
+A102847	filter	0	new A065653()	(k, v) -> (k & 1) == 1
+A106484	tuptraf	0	(n, s) -> s[0].*(s[0].^(2).*(2).-(1))	"2"	PREVIOUS	Iterated Stella Octangula numbers A007588. a(n+1) = a(n)*(2*a(n)^2 - 1)
+A108767	trilambn	1	1	1	(n, k) -> BI(n, k).*(BI(2*n, k - 1))./(n)	T(n, k) = R(n,k,3) with R(n,k,m)= binomial(n,k)*binomial(m*n,k-1)/n, 1<=k<=n.
+A109339	filter	0	new A011762()	(k, v) -> (k & 1) == 0	1
+A113207	serrev	1	1	[0,1,-2]	[1,3,3,1]	G.f.: series reversion of -(2*t^2-t)/(1+t)^3.
+A117283	filtpos	1	1	new A051953()	v -> ZUtils.isCube(v)	Numbers k for which the cototient k-phi(k) is a cube.
+A117284	filtpos	1	1	new A051953()	v -> ZUtils.isPolygonal(v, 3)	Numbers k for which the cototient k-phi(k) is a triangular number.
+A117285	filtpos	1	1	new A051953()	v -> v.isZero() || ZUtils.isPolygonal(v, 5)	Numbers k for which the cototient k-phi(k) is a pentagonal number.
+A117286	filtpos	1	1	new A051953()	v -> v.isZero() || ZUtils.isPolygonal(v, 6)	Numbers k for which the cototient k-phi(k) is a hexagonal number.
+A117287	filtpos	1	1	new A051953()	v -> v.isZero() || ZUtils.isPolygonal(v, 7)	Numbers k for which the cototient k-phi(k) is a heptagonal number.
+A117288	filtpos	1	1	new A051953()	v -> v.isZero() || ZUtils.isPolygonal(v, 8)	Numbers k for which the cototient k-phi(k) is an octagonal number.
+A117289	filtpos	1	1	new A051953()	v -> v.isZero() || ZUtils.isPolygonal(v, 9)	Numbers k for which the cototient k-phi(k) is an enneagonal number (A001106).
+A119432	filnum	1	1	k -> Euler.phiAsLong(k)*2 <= k	Numbers k such that 2*phi(k) <= k.
+A119735	filnum	1	1	k -> ZUtils.distinctDigitCount(ZV(k).pow(3), 10) == 10	Numbers n such that every digit occurs at least once in n^3.
+A120891	filter	1	new A024361()	(k, v) -> (k & 1) == 1
+A121321	filnum	1	1	k -> ZUtils.distinctDigitCount(ZV(k).pow(4), 10) == 10	Numbers k such that every digit occurs at least once in k^4.
+A131453	filter	0	new A005981()	(k, v) -> (k & 1) == 0
+A131454	filter	0	new A005981()	(k, v) -> (k & 1) == 1
+A137148	filter	1	new A002618()	(k, v) -> !ZV(k).IPP()	a(n) = n*phi(n) for nonprime n.
+A162793	filter	1	new A139251()	(k, v) -> (k & 1) == 1
+A170819	dirtraf	1	new A007947()	new A097706()	"null"		1				a(n) = product of distinct primes of the form 4k-1 that divide n.
+A173020	trilambn	1	1	1	(n, k) -> BI(n, k).*(BI(3*n, k - 1))./(n)	T(n, k) = R(n,k,3) with R(n,k,m)= binomial(n,k)*binomial(m*n,k-1)/n, 1<=k<=n.
+A173621	trilambn	1	1	1	(n, k) -> BI(n, k).*(BI(4*n, k - 1))./(n)	Generalized Runyon numbers R_{n,k}^(4) read by rows
+A179802	dirtraf	1	new A010888()	new A179545()	"null"		1				Digital root of A179545.
+A182716	filter	0	new A182712()	(k, v) -> (k & 1) == 0
+A182717	filter	0	new A182712()	(k, v) -> (k & 1) == 1
+A193230	parmof2	1	A293979	1
+A193334	dirtraf	1	new A183063()	new A000203()	"null"		1				Number of even divisors of sigma(n).
+A195295	filter	0	new A006307()	(k, v) -> (k & 1) == 0
+A205770	filter	0	new A018142()	(k, v) -> (k & 1) == 0
+A210997	filter	1	new A000105()	(k, v) -> (k & 1) == 1
+A225043	trilamb0	0	(n, k) -> BI(n, k).modZ(n + 1)	Pascal s triangle with row n reduced modulo n+1.	nonn,tabl	0..120	nyi	_Roger L. Bagula_
+A238684	dirtraf	1	new A007947()	new A000045()	"null"		0	, Mar 03 2014			a(1) = a(2) = 1; for n > 2, a(n) is the product of prime factors of the n-th Fibonacci number.
+A268227	filter	0	new A004159()	(k, v) -> (k & 1) == 0
+A273019	filter	0	new A273020()	(k, v) -> (k & 1) == 1
+A281856	dirtral	1	new A000010()	new A033949()	(n, v) -> v.shiftRight(2)		A000010(A033949(n))/4	, n >= 1
+A286633	dirtraf	0	new A006047()	new A254103()	"null"		0				Base-3 {digit+1} product of A254103: a(n) = A006047(A254103(n)).
+A287148	filter	1	new A282971()	(k, v) -> (k & 1) == 1
+A289585	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new DirectTransformSequence(1, new A000010(), new A020491()), new DirectTransformSequence(1, new A000005(), new A020491())	"null"		1
+A293978	parmof2	0	A293979	443
+A293981	parmof2	0	A293979	209
+A295310	simtraf	1	new A062401()	(n, v) -> v.gcd(ZV(n))	a(n) = gcd(n, A062401(n)), where A062401(n) = phi(sigma(n)).
+A300357	filter	1	new A061707()	(k, v) -> (k & 1) == 1
+A307826	simtraf	1	new A005867().skip(1)	(n, v) -> (n == 1) ? Z.ONE : v./(2)
+A324182	dirtraf	0	new A083254()	new A163511()	"null"		0				a(n) = A083254(A163511(n)), where A083254(n) = 2*phi(n) - n, the M√∂bius transform of the deficiency of n.
+A329036	dirtraf	1	new A000005()	new A280491()	"null"		1				Number of common divisors of n and A122111(n).
+A332382	filter	0	new A019565()	(k, v) -> (k & 1) == 0
+A339821	filter	0	new A339820()	(k, v) -> (k & 1) == 1
+A340071	dirtraf	1	new A049559()	new A003961()	"null"
+A343912	lambdan	1	n -> ZV(n - Euler.phiAsLong(n - Euler.phiAsLong(n)))	a(n) = n - phi(n - phi(n)), where phi is the Euler totient function.
+A353790	dirtraf	1	new A353749()	new SimpleTransformSequence(1, new A003961(), (n, v) -> JF(v).sigma())	"null"
+A354097	lambdan	1	n -> ((n - Euler.phiAsLong(n)) & 3) == 0 ? Z.ONE : Z.ZERO	a(n) = 1 iff A010873(A051953(n)) == 0.
+A354098	filtpos	1	1	new A051953()	v -> v.and(Z.THREE).isZero()	Numbers k such that the cototient of k (= k-phi(k)) is a multiple of 4.
+A354451	filter	1	new A067742()	(k, v) -> (k & 1) == 1
+A354452	filter	1	new A067742()	(k, v) -> (k & 1) == 0
+A362008	filtpos	1	2	new A051953().skip(1)	v -> v.mod(9) == 0	Numbers whose Euler s cototient is divisible by 9.
+A368925	dirtraf	1	new A051904()	new A001694()	"null"		1				The minimal exponent in the prime factorization of the powerful numbers.
+A369180	lambdan	1	n -> SU(2, n, k -> Z_1(k).*(ZUtils.valuation(ZV(n), ZV(k))))	Sum_{k=2..n} (-1)^k * valuation(n,k).Alternating sum of the k-adic valuations (ruler functions) of n.
+A369190	serrev	0	1	[0,1]	[1,2,-1,-4,-1,2,1]	Expansion of (1/x) * Series_Reversion( x / ((1-x)^2 * (1+x)^4) ). 2x - 1x? - 2?x? - 1x? + 2x? + 1x? + 1      #
+A370107	serrev	0	1	[0,1]	[1,1,-2,-2,1,1]	Expansion of (1/x) * Series_Reversion( x / ((1-x)^2 * (1+x)^3) ). x^5+x^4-2*x^3-2*x^2+x+1
+A370418	trilamb0	0	(n, k) -> FA(n - k).*(FA(n + k))	T(n, k) = (n - k)! * (n + k)!
+A370845	lambdan	1	n -> ZV(n - 2).^(n).*(FA(n))	a(n) = (n-2)^n*n!.	sign,easy	1..14	nyi	_Eric W. Weisstein_
+A370847	lambdan	1	n -> ZV(n - 1).*(FA(n)).*(FA(n - 1))	a(n) = (n-1)*n!*(n-1)!.	nonn,easy	1..17	nyi	_Eric W. Weisstein_
+A370853	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] <  c[1] && c[1] <  c[2]; }
+A370854	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] <= c[1] && c[1] <  c[2]; }
+A370855	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] <  c[1] && c[1] <= c[2]; }
+A370856	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] <= c[1] && c[1] <= c[2]; }
+A370859	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] <  c[1] && c[1] >  c[2]; }
+A370860	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] <= c[1] && c[1] >  c[2]; }
+A370861	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] <  c[1] && c[1] >= c[2]; }
+A370862	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] <= c[1] && c[1] >= c[2]; }
+A370863	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] >  c[1] && c[1] <  c[2]; }
+A370864	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] >= c[1] && c[1] <  c[2]; }
+A370865	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] >  c[1] && c[1] <= c[2]; }
+A370866	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] >= c[1] && c[1] <= c[2]; }
+A370870	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] >  c[1] && c[1] >  c[2]; }
+A370871	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] >= c[1] && c[1] >  c[2]; }
+A370872	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] >  c[1] && c[1] >= c[2]; }
+A370873	filnum	1	1	k -> { final int[] c = ZUtils.digitCounts(k, 3); return c[0] >= c[1] && c[1] >= c[2]; }
+A370895	altsum	1	new A018804()	"+-"	Partial alternating sums of Pillai.s arithmetical function (A018804).
+A370896	altsum	1	new A007947()	"+-"	Partial alternating sums of the squarefree kernel function (A007947).
+A370897	altsum	1	new A000688()	"+-"	Partial alternating sums of the number of abelian groups sequence (A000688).
+A370898	altsum	1	new A034448()	"+-"	Partial alternating sums of the sum of unitary divisors function (A034448).
+A370899	altsum	1	new A047994()	"+-"	Partial alternating sums of the unitary totient function (A047994).
+A370901	altsum	1	new A055231()	"+-"	Partial alternating sums of the powerfree part function (A055231).
+A370903	altsum	1	new A057521()	"+-"	Partial alternating sums of the powerful part function (A057521).
+A370904	altsum	1	new A188999()	"+-"	Partial alternating sums of the sum of the bi-unitary divisors function (A188999).
+A370905	partsun	1	new A206369()
+A370906	altsum	1	new A206369()	"+-"	Partial alternating sums of the alternating sum of divisors function (A206369).
+A370916	filnum	1	1	k -> { final String s = Integer.toString(k, 3).replaceAll("01", "xx"); return s.indexOf('0') < 0 && s.indexOf('x') >= 0; }	includes at least one 0, and every 0 is followed by 1.
+A370917	filnum	1	1	k -> { final String s = Integer.toString(k, 3).replaceAll("02", "xx"); return s.indexOf('0') < 0 && s.indexOf('x') >= 0; }	includes at least one 0, and every 0 is followed by 2.
+A370918	filnum	1	1	k -> { final String s = Integer.toString(k, 3).replaceAll("10", "xx"); return s.indexOf('1') < 0 && s.indexOf('x') >= 0; }	includes at least one 1, and every 1 is followed by 0.
+A370919	filnum	1	1	k -> { final String s = Integer.toString(k, 3).replaceAll("12", "xx"); return s.indexOf('1') < 0 && s.indexOf('x') >= 0; }	includes at least one 1, and every 1 is followed by 2.
+A370920	filnum	1	1	k -> { final String s = Integer.toString(k, 3).replaceAll("20", "xx"); return s.indexOf('2') < 0 && s.indexOf('x') >= 0; }	2 occurs at least once,  and every 2 is followed by 0.
+A370921	filnum	1	1	k -> { final String s = Integer.toString(k, 3).replaceAll("21", "xx"); return s.indexOf('2') < 0 && s.indexOf('x') >= 0; }	2 occurs at least once,  and every 2 is followed by 1.
+A370980	lambdan	0	n -> ZV((n & 1) == 0 ? (n*n - 2*n + 2)/2 : (n*n - n + 2)/2)	If n is even, (n^2-2*n+2)/2, otherwise (n^2-n+2)/2
+A371238	dirtraf	1	new A000010()	new A048701()	"null"		0				Euler totient function applied to the binary palindromes of even length.
+A371240	dirtraf	1	new A000203()	new A032924()	"null"		1				The sum of divisors of the zeroless numbers in base 3 (A032924).
+A371241	dirtraf	1	new A000010()	new A032924()	"null"		1				Euler totient function applied to the zeroless numbers in base 3 (A032924).
+A371281	dirtraf	0	new A010879()	new A007954()	"null"		0				Last digit of the product of decimal digits of n.
+A371382	simtraf	1	new A000201()	(n, v) -> v.*(v.add(1)).+(n*n)	a(n) = n^2 + q*(q + 1), where q = floor(n*(1 + sqrt(5))/2) = A000201(n).
+A371398	serrev	0	1	[0,1]	[1,7,18,20,8]	Expansion of (1/x) * Series_Reversion( x / ( (1+x) * (1+2*x)^3 ) ).  7*x + 18*x^2 + 20*x^3 + 8*x^4 + 1
+A371400	trilamb0	0	(n, k) -> BI(n + k, n).*(BI(2*n - k, n))	Triangle read by rows: T(n, k) = binomial(k + n, k)*binomial(2*n - k, n)
+A371404	serrev	0	1	[0,1]	[1,7,15,9]	Expansion of (1/x) * Series_Reversion( x / ( (1+x) * (1+3*x)^2 ) ).  7*x + 15*x^2 + 9*x^3 + 1
+A371405	serrev	0	1	[0,1]	[1,10,36,54,27]	Expansion of (1/x) * Series_Reversion( x / ( (1+x) * (1+3*x)^3 ) ).  10*x + 36*x^2 + 54*x^3 + 27*x^4 + 1
+A371406	serrev	0	1	[0,1]	[1,6,13,12,4]	Expansion of (1/x) * Series_Reversion( x / ( (1+x)^2 * (1+2*x)^2 ) ).  6*x + 13*x^2 + 12*x^3 + 4*x^4 + 1
+A371407	serrev	0	1	[0,1]	[1,8,22,24,9]	Expansion of (1/x) * Series_Reversion( x / ( (1+x)^2 * (1+3*x)^2 ) ). 8*x + 22*x^2 + 24*x^3 + 9*x^4 + 1
+A371412	dirtraf	1	new A000010()	new A036966()	"null"		1				Euler totient function applied to the cubefull numbers (A036966).
+A371426	serrev	0	1	[0,1]	[1,2,1,-1]
+A371427	serrev	0	1	[0,1]	[1,2,1,0,-1]	(1/x) * Series_Reversion( x / ((1+x)^2 - x^4) ).
+A371428	serrev	0	1	[0,1]	[1,3,2,1]	(1/x) * Series_Reversion( x / ((1+x)^3 - x^2) ).
+A371429	serrev	0	1	[0,1]	[1,3,3,1,-1]	(1/x) * Series_Reversion( x / ((1+x)^3 - x^4) ).
+A371430	serrev	0	1	[0,1]	[1,4,5,4,1]	(1/x) * Series_Reversion( x / ((1+x)^4 - x^2) ).

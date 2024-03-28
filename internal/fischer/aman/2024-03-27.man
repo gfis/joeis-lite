@@ -1,0 +1,121 @@
+---- 2024-03-27 10:18:08
+A074272	altsum	1	new A000002()	"+-"	Partial alternating sums of the Kolakoski sequence A000002.
+A270439	altsum	1	new A000037()	"+-"	Alternating sum of nonsquares (A000037)
+A368595	altsum	1	new A006519()	"-+"	Alternating sum of A006519.
+A370898	altsum	1	new A034448()	"+-"
+A370904	altsum	1	new A188999()	"+-"	Partial alternating sums of the sum of the bi-unitary divisors function (A188999).
+A370905	partsun	1	new A206369()		Partial sums of the alternating sum of divisors function (A206369).
+A370906	altsum	1	new A206369()	"+-"	Partial alternating sums of the alternating sum of divisors function (A206369).
+A371431	lambdan	0	n -> SU(0, n/3, k -> Z_1(k  ).*(BI(n+k, k)).*(BI(3*n-k+1, n-3*k))   )./(n+1)
+A371432	lambdan	0	n -> SU(0, n/4, k -> Z_1(k  ).*(BI(n+k, k)).*(BI(3*n-2*k+1, n-4*k)) )./(n+1)
+A371433	lambdan	0	n -> SU(0, n  , k -> Z_1(k  ).*(BI(n+k, k)).*(BI(4*n+2*k+2, n-k))   )./(n+1)
+A371434	lambdan	0	n -> SU(0, n/2, k -> Z_1(k  ).*(BI(n+k, k)).*(BI(4*n+k+2, n-2*k))   )./(n+1)
+A371435	lambdan	0	n -> SU(0, n/4, k -> Z_1(k  ).*(BI(n+k, k)).*(BI(4*n-k+2, n-4*k))   )./(n+1)
+A371436	lambdan	0	n -> SU(0, n  , k -> Z_1(k  ).*(BI(n+k, k)).*(BI(5*n+3*k+3, n-k))   )./(n+1)
+A371471	lambdan	1	n -> BI(n*n, n).mod(ZV(n).^(5))
+A371483	lambdan	0	n -> RU(0, n  , k -> new Q(            BI(n-1, n-k).*(BI(4*k+2, k))   , ZV(k+1))).num()
+A371486	lambdan	0	n -> RU(0, n  , k -> new Q(            BI(n-1, n-k).*(BI(5*k+3, k))   , ZV(k+1))).num()
+A371494	lambdan	0	n -> RU(0, n  , k -> new Q(Z_1(n-k).*(BI(n-1, n-k)).*(BI(3*k+1, k))   , ZV(k+1))).num()
+A371495	lambdan	0	n -> RU(0, n  , k -> new Q(Z_1(n-k).*(BI(n-1, n-k)).*(BI(4*k+2, k))   , ZV(k+1))).num()
+A371496	lambdan	0	n -> RU(0, n  , k -> new Q(Z_1(n-k).*(BI(n-1, n-k)).*(BI(5*k+3, k))   , ZV(k+1))).num()
+---- 2024-03-27 10:57:35
+A114439	filtpos	1	0	new A000326()	v -> JF(v).bigOmega() == 2	Indices of semiprime pentagonal numbers.
+A114441	filtpos	1	0	new A000326()	v -> JF(v).bigOmega() == 3	Indices of 3-almost prime pentagonal numbers.
+A114443	filtpos	1	0	new A000326()	v -> JF(v).bigOmega() == 4	Indices of 4-almost prime pentagonal numbers.
+A114445	filtpos	1	0	new A000326()	v -> JF(v).bigOmega() == 5	Indices of 5-almost prime pentagonal numbers.
+A114446	filtpos	1	0	new A000326()	v -> JF(v).bigOmega() == 7	Indices of 7-almost prime pentagonal numbers.
+A114447	filtpos	1	0	new A000326()	v -> JF(v).bigOmega() == 6	Indices of 6-almost prime pentagonal numbers.
+A114454	filtpos	1	0	new A000384()	v -> JF(v).bigOmega() == 3	Numbers n such that the n-th hexagonal number is a 3-almost prime.
+A114455	filtpos	1	0	new A000384()	v -> JF(v).bigOmega() == 4	Numbers n such that the n-th hexagonal number is a 4-almost prime.
+A114456	filtpos	1	0	new A000384()	v -> JF(v).bigOmega() == 5	Numbers n such that the n-th hexagonal number is a 5-almost prime.
+A114504	filtpos	1	0	new A000384()	v -> JF(v).bigOmega() == 6	Numbers n such that the n-th hexagonal number is a 6-almost prime.
+A114505	filtpos	1	0	new A000384()	v -> JF(v).bigOmega() == 7	Numbers n such that the n-th hexagonal number is a 7-almost prime.
+A114517	filtpos	1	0	new A000566()	v -> JF(v).bigOmega() == 2	Numbers n such that n-th heptagonal    number is   2 emiprime.
+A114548	filtpos	1	0	new A000566()	v -> JF(v).bigOmega() == 3	Numbers n such that n-th heptagonal    number is   3-almost prime.
+A114554	filtpos	1	0	new A000566()	v -> JF(v).bigOmega() == 4	Numbers n such that n-th heptagonal    number is   4-almost prime.
+A114556	filtpos	1	0	new A000566()	v -> JF(v).bigOmega() == 5	Numbers n such that n-th heptagonal    number is   5-almost prime.
+A114558	filtpos	1	0	new A000566()	v -> JF(v).bigOmega() == 6	Numbers n such that n-th heptagonal    number is   6-almost prime.
+A114559	filtpos	1	0	new A000566()	v -> JF(v).bigOmega() == 7	Numbers n such that n-th heptagonal    number is   7-almost prime.
+A114606	filtpos	1	0	new A000567()	v -> JF(v).bigOmega() == 3	Numbers n such that n-th octagonal     number is   3-almost prime.
+A114618	filtpos	1	0	new A000567()	v -> JF(v).bigOmega() == 4	Numbers n such that n-th octagonal     number is   4-almost prime.
+A114621	filtpos	1	0	new A000567()	v -> JF(v).bigOmega() == 5	Numbers n such that n-th octagonal     number is   5-almost prime.
+A114634	filtpos	1	0	new A000567()	v -> JF(v).bigOmega() == 6	Numbers n such that n-th octagonal     number is   6-almost prime.
+A114635	filtpos	1	0	new A000567()	v -> JF(v).bigOmega() == 7	Numbers n such that n-th octagonal     number is   7-almost prime.
+A114636	filtpos	1	0	new A000567()	v -> JF(v).bigOmega() == 8	Numbers n such that n-th octagonal     number is   8-almost prime.
+A114828	filtpos	1	0	new A000567()	v -> JF(v).bigOmega() == 9	Numbers n such that n-th octagonal     number is   9-almost prime.
+---- 2024-03-27 14:48:33
+A117305	filter	1	new A000217()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 5)	Triangular numbers for which the sum of the digits is a pentagonal number.
+A117309	filter	0	new A000217()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 6)	Triangular numbers for which the sum of the digits is a hexagonal number.
+A117310	filter	0	new A000217()	v -> ZUtils.isPolygonal(ZUtils.digitProduct(v), 6)	Triangular numbers for which the product of the digits is a hexagonal number.
+A117312	filter	0	new A000217()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 7)	Triangular numbers for which the sum of the digits is a heptagonal number.
+A117327	filter	0	new A000217()	v -> ZUtils.isPolygonal(ZUtils.digitProduct(v), 7)	Triangular numbers for which the product of the digits is a heptagonal number.
+A117523	filter	1	new A000217()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 8)	Triangular numbers for which the sum of the digits is an octagonal number.
+A117650	filter	0	new A000566()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 7)	Heptagonal numbers for which the sum of the digits is also a heptagonal number.
+A117709	filter	0	new A000326()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 5)	Pentagonal numbers for which the sum of the digits is also a pentagonal number.
+A117710	filter	0	new A000326()	v -> ZUtils.isPolygonal(ZUtils.digitProduct(v), 5)	Pentagonal numbers for which the product of the digits is also a pentagonal number.
+A117711	filter	1	new A000326()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 5) && ZUtils.isPolygonal(ZUtils.digitProduct(v), 5)	Pentagonal numbers for which both the sum of the digits and the product of the digits are pentagonal numbers.
+A117799	filter	1	new A051872()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 20)	Icosagonal numbers for which the sum of the digits is also an icosagonal number. 20 A051872
+A117832	filter	1	new A000217()	v -> ZUtils.isPolygonal(ZUtils.digitProduct(v), 8)	Triangular numbers for which the product of the digits is an octagonal number.
+A117948	simtraf	1	new A000326().skip(1)	v -> JF(v).sigma()	Sum of the divisors of pentagonal numbers.
+A117949	filtpos	1	1	new A000326().skip(1)	v -> JF(v).sigma().isSquare()	Index of pentagonal numbers whose sum of divisors is square.
+A117985	filter	1	new A000326()	v -> v.toString().matches("[13579]+")	Pentagonal numbers with only odd digits.
+A117990	filter	1	new A000326()	v -> v.toString().matches("[02468]+")	Pentagonal numbers with only even digits.
+A117993	filter	1	new A000566()	v -> v.toString().matches("[13579]+")	Heptagonal numbers with only odd digits.
+A117994	filter	1	new A000566()	v -> v.toString().matches("[02468]+")	Heptagonal numbers with only even digits.
+A119547	filter	1	new A001107()	v -> ZUtils.isPolygonal(ZV(ZUtils.digitSum(v)), 10)	10-gonal   numbers for which the sum of the digits is also a 10-gonal number.
+A119548	filter	1	new A001107()	v -> !v.isZero() && v.mod(ZUtils.digitSum(v)) == 0	10-gonal numbers which are divisible by the sum of their digits.
+A367406	tuptraf	1	(n, s) -> s[0].^(2)./(s[1])	""	new A268335(), new A367418()	new A367407()	v -> v.^(2)
+A367407	simtraf	1	new A367406()	v -> v.sqrt()	dirtraf	1	new A064549()
+A367417	dirtraf	1	new A007947()	new A268335()	The squarefree kernels of the exponentially odd numbers: a(n) = A007947(A268335(n)).
+
+---- 2024-03-27 19:51:56
+
+A129927	filter	1	new A000567()	v -> JF(v).bigOmega() == 3	3-almost prime octagonal numbers.
+A140810	filtpos	1	1	new A064413()	v -> ZUtils.isPolygonal(v, 7)	Positions of heptagonal numbers in the EKG sequence.
+A140897	filtpos	1	1	new A064413()	v -> ZUtils.isPolygonal(v, 6)	Positions of hexagonal numbers in the EKG sequence.
+A176686	filtpos	1	1	new A005563()	v -> isPDP(3)	Numbers n such that n^2-1 are products of 3 distinct primes.
+A179782	filnum	1	0	n -> Long.toString(n*(3*n - 1)/2).indexOf(Integer.toString(n)) >= 0	Numbers n such that the decimal representation of n is contained as substring in that of the n-th pentagonal number.
+A180929	filtpos	1	1	new A000203()	v -> ZUtils.isPolygonal(v, 5)	Numbers n such that the sum of divisors of n is a pentagonal number.
+A180930	filtpos	1	1	new A000203()	v -> ZUtils.isPolygonal(v, 6)	Numbers n such that the sum of divisors of n is a hexagonal number.
+A212918	filtpos	1	1	new A001414()	v -> ZUtils.isPolygonal(v, 5)	Numbers whose sum of prime factors (counted with multiplicity) is a pentagonal number (A000326).
+A232537	filter	1	new A000040()	v -> ZUtils.isPolygonal(v.+(3), 5)	Primes p of the form penta(n)-3, where penta(n) is the n-th pentagonal number.
+A247115	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(5*k - 3)/2)))).den()	Denominator of the harmonic mean of the first n heptagonal numbers.
+A250327	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(3*k - 1)/2)))).num()	Numerator   of the harmonic mean of the first n pentagonal numbers.
+A250328	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(3*k - 1)/2)))).den()	Denominator of the harmonic mean of the first n pentagonal numbers.
+A250344	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(2*k - 1)  )))).num()	Numerator   of the harmonic mean of the first n hexagonal numbers.
+A250345	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(5*k - 3)/2)))).num()	Numerator   of the harmonic mean of the first n heptagonal numbers.
+A250400	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(3*k - 2)  )))).num()	Numerator   of the harmonic mean of the first n octagonal numbers.
+A250401	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(3*k - 2)  )))).den()	Denominator of the harmonic mean of the first n nonzero octagonal numbers.
+A250548	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(7*k - 5)/2)))).num()	Numerator   of the harmonic mean of the first n 9-gonal numbers.
+A250549	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(7*k - 5)/2)))).den()	Denominator of the harmonic mean of the first n 9-gonal numbers.
+A250550	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(4*k - 3)  )))).num()	Numerator   of the harmonic mean of the first n 10-gonal numbers.
+A250551	lambdan	1	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(4*k - 3)  )))).den()	Denominator of the harmonic mean of the first n positive 10-gonal numbers.
+A259676	filter	1	new A000566()	v -> JF(v).isSemiprime()	Heptagonal numbers (A000566) that are semiprimes (A001358).
+A259677	filter	1	new A000567()	v -> JF(v).isSemiprime()	Octagonal numbers (A000567) that are semiprimes (A001358).
+A279497	lambdan	1	n -> SD(n, d -> ZV(ZUtils.isPolygonal(ZV(d), 5) ? 1 : 0))	Number of pentagonal numbers dividing n.
+A285789	filter	1	new A000040()	v -> ZUtils.isPolygonal(v.-(1), 5)	Primes equal to a pentagonal number plus 1.
+A285791	filter	1	new A000040()	v -> ZUtils.isPolygonal(v.-(1), 7)	Primes equal to a heptagonal number plus 1.
+A307827	filter	1	new A001107()	v -> ZUtils.isPalindrome(v, 10)	Palindromic decagonal (or 10-gonal) numbers.
+A307829	filtpos	1	0	new A001107()	v -> ZUtils.isPalindrome(v, 10)	Base numbers of decagonal (10-gonal) palindromic numbers.
+A346652	filter	1	new A171102()	v -> ZUtils.isPolygonal(v, 6)	Hexagonal pandigitals.
+A346959	filter	1	new A171102()	v -> ZUtils.isPolygonal(v, 5)	Pentagonal pandigitals.
+A347114	filter	1	new A171102()	v -> ZUtils.isPolygonal(v, 7)	Heptagonal pandigitals.
+A351867	filter	1	new A000566()	v -> isPDP(4)	Heptagonal numbers (or 7-gonal numbers) which are products of four distinct primes.
+A353019	filter	1	new A000566()	v -> isPDP(5)	Heptagonal numbers (or 7-gonal numbers): n*(5*n-3)/2 which are products of five distinct primes.
+A354086	filter	1	new A051682()	v -> isPDP(4)	11-gonal (or hendecagonal) numbers which are products of four distinct primes.
+A354446	filter	1	new A051682()	v -> isPDP(3)	11-gonal numbers (numbers of the form k*(9*k-7)/2), which are products of three distinct primes.
+A354448	filter	1	new A051682()	v -> isPDP(2)	11-gonal (or hendecagonal) numbers which are products of two distinct primes.
+A354976	filter	1	new A000292()	v -> isPDP(5)	Tetrahedral numbers which are products of five distinct primes.
+A356422	filter	1	new A000566()	v -> isPDP(3)	Heptagonal numbers (or 7-gonal numbers, i.e., numbers of the form k*(5*k - 3)/2) which are products of three distinct primes (or sphenic numbers).
+A357590	filter	1	new A000217()	v -> isPDP(5)	Triangular numbers which are products of five distinct primes (or pentaprimes).
+A358988	filter	1	new A002378()	v -> isPDP(4)	Oblong numbers which are products of four distinct primes.
+A359624	filter	1	new A005448()	v -> isPDP(3)	Centered triangular numbers which are products of three distinct primes.
+A359845	filter	1	new A005448()	v -> isPDP(4)	Centered triangular numbers which are products of four distinct primes.
+A360183	filter	1	new A069099()	v -> isPDP(3)	Centered heptagonal numbers which are sphenic numbers.
+A361628	filter	1	new A007304()	v -> v.toString(10).matches("[2357]+")	Sphenic numbers (products of 3 distinct primes) whose digits are primes.
+A362758	filter	1	new A000217()	v -> isPDP(6)	Triangular numbers which are products of six distinct primes.
+A364610	filter	1	new A005891()	v -> isPDP(3)	Centered pentagonal numbers which are products of three distinct primes (or sphenic numbers).
+A367792	filter	1	new A062786()	v -> JF(v).isSemiprime()	Centered 10-gonal numbers which are products of two primes.
+A370795	filter	1	new A001844()	v -> isPDP(4)	Centered square numbers which are products of four distinct primes (or tetraprimes).
+
+A345019	lingf	1	0,1,1,6,1,1	1,-1,0,0,-1,1	0						Numbers whose last digit is refactorable.

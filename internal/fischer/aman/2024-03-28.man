@@ -1,0 +1,13 @@
+---- 2024-03-28 16:57:20
+A078937	triprodn	0	new A056857()	new A056857()
+A078938	triprodn	0	new A078937()	new A056857()
+A090632	filter	0	new A064986()	(k, v) -> (k & 1) == 0	1
+A172534	parmof2	1	A058528	12
+A172535	parmof2	1	A058528	11
+A172536	parmof2	1	A058528	8
+A172537	parmof2	1	A058528	14
+A172538	parmof2	1	A058528	13
+A172540	parmof2	1	A058528	9
+A356095	filter	1	new A000292()	v -> isPDP(3)	Tetrahedral (or triangular pyramidal) numbers which are products of three distinct primes (or sphenic numbers).
+A356355	filter	1	new A001106()	v -> isPDP(5)	9-gonal numbers which are products of five distinct primes.
+A356424	filter	1	new A001106()	v -> JF(v).isSemiprime()	9-gonal numbers that are semiprimes.

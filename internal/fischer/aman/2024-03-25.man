@@ -1,0 +1,56 @@
+---- 2024-03-28 16:57:21
+# A069360	filter	0	new A002375()	(k, v) -> (k & 1) == 0	1
+# A082687	lambdan	0	n -> RU(1, n, k -> new Q(Z.ONE, ZV(n + k))).num()
+# A082687	lambdan	0	n -> new Q(n)./(RU(1, n, k -> new Q(Z.ONE, ZV(k*(2*k - 1)  )))).den()	Den
+# A117290	filter	1	new A051953()	v -> ZUtils.isFibonacci(v, 3)	Numbers k for which the cototient k - phi(k) is a Fibonacci number.
+# A217713	nyi Ft	Integer part of log(n)^2.	nonn,easy	0..70	nyi	_Roger L. Bagula_
+# A224228	nyi Ft	Matrix inverse of the triangle of Eulerian numbers T(n,k), 0<=k<=n, read by rows.	nonn,tabl	0..54	nyi	_Roger L. Bagula_ and _Mats Granvik_
+# A225076	nyi Fto	Triangle read by rows: absolute values of odd-numbered rows of €225356.	nonn,tabf	1..50	nyi	_Roger L. Bagula_
+# A225356	nyi Fto	Triangle T(n, k) = T(n, k-1) + (-1)^k*A060187(n+2,k+1) if k <= floor(n/2), otherwise T(n, n-k), with T(n, 0) = T(n, n) = 1, read by rows.	sign,tabl	0..50	nyi	_Roger L. Bagula_
+# A225372	nyi Fpto	Triangle read by rows: T(n,k) (1 <= k <= n) given by T(n, 1) = T(n,n) = 1, otherwise T(n, k) = (m*n-m*k+1)*T(n-1,k-1) + (m*k-m+1)*T(n-1,k), where m = -2.	sign,tabl	1..50	nyi	_N. J. A. Sloane_ and _Roger L. Bagula_
+# A307959	dirtraf	1	new A064549()	new A000396()	"null"		1
+# A329229	filter	0	new A062373()	(k, v) -> (k & 1) == 0	1
+# A370078	dirtraf	1	new A007814()	new A005361()	"null"		1				a(n) = log_2(A370077(n)).
+# A370303	tuptraf	0	(n, s) -> s[0].-(s[1]).-(3)	""	new A370302(), new A000523()
+# A370681	tuptraf	0	(n, s) -> (n == 0) ? s[1] : ((n & 1) == 0) ? s[0].+(s[1]) : s[0].-(s[1])	""	PREVIOUS, new A()	a(n) is the alternating sum of the unitary divisors of n, when these divisors are starting with n and decreasing.
+# A370797	serrev	0	1	[0,-1,+1,0,1]	[-1,-1,+1,0,1]	Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x-x^3)) ).	(x-x^2-x^4)/(1+x-x^2-x^4)		Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x-x^3)) ).
+# A370798	serrev	0	1	[0,-1,+1,0,0,1]	[-1,-1,+1,0,0,1]	Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x-x^4)) ).	x*(x^4+x-1)/(x^5+x^2-x-1)				Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x-x^4)) ).
+# A370799	serrev	0	1	[0,+1,-1,1]	[+1,+1,-1,1]	Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x+x^2)) ).	x*(x^2-x+1)/(x^3-x^2+x+1)				Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x+x^2)) ).
+# A370800	serrev	0	1	[0,+1,-1,0,1]	[+1,+1,-1,0,1]	Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x+x^3)) ).	x*(x^3-x+1)/(x^4-x^2+x+1)				Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x+x^3)) ).
+# A370801	serrev	0	1	[0,+1,-1,0,0,1]	[+1,+1,-1,0,0,1]	Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x+x^4)) ).	x*(x^4-x+1)/(x^5-x^2+x+1)				Expansion of (1/x) * Series_Reversion( x/(x+1/(1-x+x^4)) ).
+# A371416	serrev	0	1	[0,1,-3,0,-1]	[1]	(1/x) * Series_Reversion( x * (1 - 3*x - x^3) ).
+# A371431	serrev	0	0	[0,1,-2,1,-1]	[1]	(1/x) * Series_Reversion( x * ((1-x)^2 + x^3) ).
+# A371432	serrev	0	0	[0,1,-2,1,-0,1]	[1]	(1/x) * Series_Reversion( x * ((1-x)^2 + x^4) ).
+# A371433	serrev	0	0	[0,1,-2,3,-1]	[1]	(1/x) * Series_Reversion( x * ((1-x)^3 + x) ).
+# A371434	serrev	0	0	[0,1,-3,4,-1]	[1]	(1/x) * Series_Reversion( x * ((1-x)^3 + x^2) ).
+# A371435	serrev	0	0	[0,1,-3,3,-1,1]	[1]	(1/x) * Series_Reversion( x * ((1-x)^3 + x^4) ).
+# A371436	serrev	0	0	[0,1,-3,6,-4,1]	[1]	(1/x) * Series_Reversion( x * ((1-x)^4 + x) ).
+%N A117712 Number of pentagonal numbers with n digits.
+%N A117718 Number of heptagonal numbers with n digits.
+%N A118367 Largest number that is not the sum of five n-gonal numbers.
+%N A118368 Largest number that is not the sum of four (2n+1)-gonal numbers.
+%N A356423	filter	0	new A000000()	v -> isPDP(3)	Leyland numbers which are products of two distinct primes.
+%N A357651	filter	0	new A000000()	v -> isPDP(3)	Sliding numbers which are products of two distinct primes.
+%N A357670	filter	0	new A000000()	v -> isPDP(3)	Sliding numbers which are products of three distinct primes.
+A073411	dirtral	1	new A051953()	new A046315()	(n, v) -> v.-(1)	A051953(A046315(n)) - 1
+A129831	altsum	0	new A006882()	"-+"	 Alternating sum of double factorials: n!! - (n-1)!! + (n-2)!! - ... 1!!.
+A175133	filter	1	new A007504()	v -> ZUtils.isPolygonal(v, 3)	Sum of first a(n) consecutive primes gives a triangular number.
+A225054	trilambn	0	0	0	(n, k) -> new A008292().a(n + 1, k).modZ(n + 1)	Triangle read by rows: Eulerian numbers T(n,k) = A008292(n,k) reduced mod n+1.	nonn,tabl	0..72	nyi	_Roger L. Bagula_			Triangle read by rows: Eulerian numbers T(n,k) = A008292(n,k) reduced mod n+1.
+A354447	filter	0	new A011541()	v -> isPDP(4)	Taxicab numbers (sums of 2 cubes in more than 1 way) which are products of four distinct primes.
+A355095	filter	0	new A011541()	v -> isPDP(5)	Taxicab numbers (sums of 2 cubes in more than 1 way) which are products of five distinct primes.
+A364691	filter	0	new A007504()	v -> ZUtils.isPolygonal(v, 5)	Pentagonal numbers which are the sum of the first k primes A007504, for some k >= 0.
+A366269	filter	0	new A007504()	v -> ZUtils.isPolygonal(v, 6)	Hexagonal numbers which are the sum of the first k primes, for some k >= 0.
+A366270	filtpos	0	1	new A007504()	v -> ZUtils.isPolygonal(v, 6)	Nonnegative integers k such that the sum of the first k primes is a hexagonal number.
+A366270	filtpos	0	1	new A007504()	v -> ZUtils.isPolygonal(v, 6)	Nonnegative integers k such that the sum of the first k primes is a hexagonal number.
+A368426	filter	0	new A062785()	v -> isPDP(3)	Centered 10-gonal numbers which are sphenic numbers.
+A180937	prepend	0	new FilterPositionSequence(1, 1, new A000203(), v -> ZUtils.isPolygonal(v, 10))	 0	Sigma-decagonal numbers: numbers n such that sigma(n) is a decagonal number
+A210988	filtpos	1	1	new A000988()	(k, v) -> (k & 1) == 0							Number of one-sided polyominoes with 2n cells.
+A210989	filter	1	new A000988()	(k, v) -> (k & 1) == 1
+A353027	filter	1	new A000292()	v -> isPDP(4)	Tetrahedral (or triangular pyramidal) numbers which are products of four distinct primes.
+
+A276038	filnum	0	0	n -> { final Z base = ZV(ZUtils.digitProduct(n)).isPower(); return base != null && base.equals(Z.SIX); }	Numbers n such that product of digits of n is a power of 6.	nonn,base	1..11690	nyi	_Vincenzo Librandi_
+
+A075754	parmof2	0	A058528	5
+A172544	parmof2	0	A058528	6
+A172541	parmof2	0	A058528	7
+A091873	simtraf	0	new A068165()	v -> v.sqrt()	Square roots of Annnnnn

@@ -5920,6 +5920,14 @@ tricolk:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+tricolar:
+	cd $(TRIREC) ; make tricolk
+	make CC=tricolk select 
+	$(DBAT) -x "SELECT * FROM seq4 s WHERE s.parm1 IN (SELECT aseqno FROM dirarr)\
+	  ORDER BY 1" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
 triman:
 	grep -E "^A[0-9]" $(TRIREC)/triman.man \
 	>        $@.gen
