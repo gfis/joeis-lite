@@ -1,0 +1,4 @@
+# corrections fail18
+A325655	tablamb	1	1	n -> new Integer[] { 0, n - 1 }	(n, k) -> (ZV(2).*(Z.NEG_ONE.+(Z_1(n))).*(k).-(ZV(k).^(2).*(2*n)).+(ZV(n).*(ZV(2).-(Z_1(k)).-(Z_1(n)).+(ZV(n).^(2).*(2)))))./(4)	
+A118384	trilamb0	0	(n, k) -> SU(0, n - k, i -> BI(n, i).*(BI(n, n - k - i)).*(Z2(i)))	[Sum[Binomial[n, i]Binomial[n, n-k-i]2^i, {i, 0, n-k}], {n,
+
