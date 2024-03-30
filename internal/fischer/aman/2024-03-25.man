@@ -1,4 +1,4 @@
----- 2024-03-30 14:34:25
+---- 2024-03-30 19:35:47
 
 
 
@@ -51,53 +51,56 @@ A175133	filtpos	1	1	new A007504()	v -> ZUtils.isPolygonal(v, 3)	Sum of first a(n
 A206035	simtraf	1	new A064413()	(n, v) -> { final Z w = v.-(n).*(10); return w.compareTo(Z.ZERO) >= 0 ? w./(n) : w./(n).-(1); }	a(n) = floor(10*(A064413(n) - n)/n)
 A210988	filter	1	new A000988().skip(2)	(k, v) -> (k & 1) == 1	Number of one-sided polyominoes with 2n cells.
 A225054	trilambn	0	0	0	(n, k) -> new A008292().a(n + 1, k).modZ(n + 1)	Triangle read by rows: Eulerian numbers T(n,k) = A008292(n,k) reduced mod n+1.	nonn,tabl	0..72	nyi	_Roger L. Bagula_			Triangle read by rows: Eulerian numbers T(n,k) = A008292(n,k) reduced mod n+1.
-A248109	lambdan	0	n -> ZV(n).pow(23).sqrt()	a(n)=floor(sqrt(n^(\d+)))	23
 A277267	simtraf	0	new A279521()	(n, v) -> ZV(n).-(1).*(v)
 A283972	simtraf	0	new A227349()	(n, v) -> ZV(n).-(v)
-A330343	simtraf	0	new A003400()	(n, v) -> FA(n).*(v)
 A335129	simtraf	0	new A079978()	(n, v) -> ZV(n).-(3).*(v)
 A344693	simtraf	0	new A002860()	(n, v) -> FA(n).*(v)
-A353027	filter	1	new A000292()	v -> isPDP(4)	Tetrahedral (or triangular pyramidal) numbers which are products of four distinct primes.
 A354447	filter	0	new A011541()	v -> isPDP(4)	Taxicab numbers (sums of 2 cubes in more than 1 way) which are products of four distinct primes.
 A355095	filter	0	new A011541()	v -> isPDP(5)	Taxicab numbers (sums of 2 cubes in more than 1 way) which are products of five distinct primes.
 A366269	filter	0	new A007504()	v -> ZUtils.isPolygonal(v, 6)	Hexagonal numbers which are the sum of the first k primes, for some k >= 0.
 A366270	filtpos	0	1	new A007504()	v -> ZUtils.isPolygonal(v, 6)	Nonnegative integers k such that the sum of the first k primes is a hexagonal number.
 A366270	filtpos	0	1	new A007504()	v -> ZUtils.isPolygonal(v, 6)	Nonnegative integers k such that the sum of the first k primes is a hexagonal number.
 A369052	simtraf	0	new A003415()	(n, v) -> ZV(n).-(2).*(v)
-
-
-A285550	simtraf	0	new A019544()	v -> v.sqrt()	a(n)=sqrt(Annn(n))		A019544
-
+ 
 A232733	simtraf	0	new A125828()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A125828
 A232822	simtraf	0	new A125828()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A125828
 A232865	simtraf	0	new A125826()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A125826
 A232869	simtraf	0	new A125907()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A125907
 A233192	simtraf	0	new A125827()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A125827
 
-
-A247816	simtraf	0	new A057620()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
-A247967	simtraf	0	new A057622()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
 A363017	simtraf	0	new A057632()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
 
 A107349	simtraf	0	new A106807()	v -> Puma.primePiZ(v)	A106807
 A107799	simtraf	0	new A030284()	v -> Puma.primePiZ(v)	A030284
 
+A130080	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(6).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,6
+A130081	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(7).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,7
+A130082	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(8).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,8
+A130083	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(9).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,9
+A130084	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(10).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,10
+# A011983	parmof3	0	A011975	5	4	Covering numbers C(n,5,4)
+# A011984	parmof3	0	A011975	6	4	Covering numbers C(n,6,4)
+# A011985	parmof3	0	A011975	7	4	Covering numbers C(n,7,4)
+# A011986	parmof3	0	A011975	7	4	Covering numbers C(n,7,4)
+# A011987	parmof3	0	A011975	6	5	Covering numbers C(n,6,5)
+# A011988	parmof3	0	A011975	7	5	Covering numbers C(n,7,5)
+# A011989	parmof3	0	A011975	8	5	Covering numbers C(n,8,5)
+# A011990	parmof3	0	A011975	9	5	Covering numbers C(n,9,5)
 
+# A135103	lambdan	0	n -> Z.valueOf(n).^(3).subtract(Puma.primeZ(n).subtract(Z.ONE).multiply(Z.valueOf(n).^(3).divide(Puma.primeZ(n))))	a(n)=ds_prime(n)(n^(\d+)),whereds_prime(n)=digitalsumbasethen-thprime	3
+# A135104	lambdan	0	n -> Z.valueOf(n).^(4).subtract(Puma.primeZ(n).subtract(Z.ONE).multiply(Z.valueOf(n).^(4).divide(Puma.primeZ(n))))	a(n)=ds_prime(n)(n^(\d+)),whereds_prime(n)=digitalsumbasethen-thprime	4
+# A135105	lambdan	0	n -> Z.valueOf(n).^(5).subtract(Puma.primeZ(n).subtract(Z.ONE).multiply(Z.valueOf(n).^(5).divide(Puma.primeZ(n))))	a(n)=ds_prime(n)(n^(\d+)),whereds_prime(n)=digitalsumbasethen-thprime	5
+# 
+A240117	parmof3	0	A011975	6	2	Schoenheim lower bound L(n,6,2).
+A240118	parmof3	0	A011975	5	3	Schoenheim lower bound L(n,5,3).
+A240119	parmof3	0	A011975	6	3	Schoenheim lower bound L(n,6,3).
 
-A130080	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(6).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,6	    
-A130081	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(7).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,7	    
-A130082	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(8).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,8	    
-A130083	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(9).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,9	    
-A130084	lambdan	0	n -> { final Z nz = ZV(n); return nz.root(10).add(nz.auxiliary() == 1 ? 0 : 1); }	a(n)=ceiling((\d+)^((n-(\d+))/(\d+)))	10,1,10	    
-A011983	parmof3	0	A011975	5	4	Covering numbers C(n,5,4)
-A011984	parmof3	0	A011975	6	4	Covering numbers C(n,6,4)
-A011985	parmof3	0	A011975	7	4	Covering numbers C(n,7,4)
-A011986	parmof3	0	A011975	7	4	Covering numbers C(n,7,4)
-A011987	parmof3	0	A011975	6	5	Covering numbers C(n,6,5)
-A011988	parmof3	0	A011975	7	5	Covering numbers C(n,7,5)
-A011989	parmof3	0	A011975	8	5	Covering numbers C(n,8,5)
-A011990	parmof3	0	A011975	9	5	Covering numbers C(n,9,5)
+A152724	tuptraf	0	(n, s) -> s[0].max(s[1])	""	new A000120(), new A023416()	a(n)=max(Annn(n),Annn(n))		A000120,A023416
+A110089	tuptraf	0	(n, s) -> s[0].min(s[1])	""	new A005602(), new A005603()	a(n)=min(Annn(n),Annn(n))		A005602,A005603
+A185642	tuptraf	0	(n, s) -> new Q(s[0], s[1]).round()	""	new A008472().skip(1), new A001221().skip(1)	v -> a(n)=round(Annn(n)/Annn(n))
+# A259193	NestList[If[EvenQ[#],#/(\d+),(\d+)#+(\d+)]&,(\d+),(\d+)]	2,5,1,5,100
+# A271623	NestList[If[EvenQ[#],#/(\d+),(\d+)#+(\d+)]&,(\d+),(\d+)]	2,7,1,7,60
 
-A135103	lambdan	0	n -> Z.valueOf(n).^(3).subtract(Puma.primeZ(n).subtract(Z.ONE).multiply(Z.valueOf(n).^(3).divide(Puma.primeZ(n))))	a(n)=ds_prime(n)(n^(\d+)),whereds_prime(n)=digitalsumbasethen-thprime	3	 
-A135104	lambdan	0	n -> Z.valueOf(n).^(4).subtract(Puma.primeZ(n).subtract(Z.ONE).multiply(Z.valueOf(n).^(4).divide(Puma.primeZ(n))))	a(n)=ds_prime(n)(n^(\d+)),whereds_prime(n)=digitalsumbasethen-thprime	4	 
-A135105	lambdan	0	n -> Z.valueOf(n).^(5).subtract(Puma.primeZ(n).subtract(Z.ONE).multiply(Z.valueOf(n).^(5).divide(Puma.primeZ(n))))	a(n)=ds_prime(n)(n^(\d+)),whereds_prime(n)=digitalsumbasethen-thprime	5	 
+%N A293355 Infinitary aliquot sequence starting at 6216.
+%N A361421 Infinitary aliquot sequence starting at 840: a(1) = 840, a(n) = A126168(a(n-1)), for n >= 2
+
