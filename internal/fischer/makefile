@@ -7577,7 +7577,7 @@ partralr_eval:
 	wc -l    $@.tmp
 #--------------------------
 polyn0:
-	cat $(COMMON)/jcat25.txt \
+	grep -P "^%[NFCo]" $(COMMON)/jcat25.txt \
 	| perl -ne \
 	'if (! m{\.\.\.} and m{\A\%[NF] (A\d{6}\s+\w\(([a-z])\)\s*\=\s*[ \d\+\-\*\/\!ank\[\]\{\}\(\)\^]+)\.})'\
 	'{ print "$$1\n"; }' \
