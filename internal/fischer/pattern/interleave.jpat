@@ -11,7 +11,7 @@ public class $(ASEQNO) extends AlternatingSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), new $(PARM1)(), new $(PARM2)());
+    super($(OFFSET), $(PARM1), $(PARM2)());
 $(PARM3)
   }
 }

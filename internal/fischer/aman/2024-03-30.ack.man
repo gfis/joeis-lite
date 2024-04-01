@@ -1,0 +1,276 @@
+---- 2024-03-30 20:20:52
+A052291	filter	1	new A000040()	p -> p.^(2).*( 4).+(1).IPP()	[(\d+)#^(\d+)+(\d+)]&]	300, 4,2,1
+A057736	filter	1	new A000040()	p -> ZV(  2).^(p).+( 3).IPP()	[(\d+)^#+(\d+)]&]		2,  2, 3
+A071220	simtraf	1	new A061308()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
+A071974	simtraf	1	new A350388()	v -> v.sqrt()	a(n)=sqrt(Annn(n))		A350388
+A073342	tuptraf	1	(n, s) -> new Q(s[0], s[1]).round()	""	new A007605(), new A097944()	v -> a(n)=round(Annn(n)/Annn(n))
+A074389	simtraf	1	new A009223()	(n, v) -> v.gcd(n)	a(n)=gcd(n,Annn(n))
+A075704	filter	0	new A000040()	p -> p.*(12).+( 1).IPP()	[(\d+)#+(\d+)]&]		300,12, 1
+A076367	simtraf	1	new A060646()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A060646
+A078937	triprodn	0	new A056857()	new A056857()
+A078938	triprodn	0	new A078937()	new A056857()
+A079780	simtraf	1	new A057855()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A057855
+A082551	simtraf	1	new A033880()	v -> ZV(v.signum())	a(n)=sign(Annn(n))		A033880
+A085269	lambdan	0	n -> ZV(n).*(100)./(254)	f(n) = n/2.54.
+A088311	simtraf	0	new A000009()	(n, v) -> FA(n).*(v)
+A089344	simtraf	1	new A066496()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A066496
+A089439	filter	2	new A000040()	p -> p.*( 6).+(13).IPP()	[(\d+)#+(\d+)]&]		200, 6,13
+A089440	filter	1	new A000040()	p -> p.*(14).+(13).IPP()	[(\d+)#+(\d+)]&]		250,14,13
+A089443	filter	1	new A000040()	p -> p.*(12).+(13).IPP()	[(\d+)#+(\d+)]&]		200,12,13
+A089482	simtraf	0	new A003024()	(n, v) -> FA(n).*(v)
+A089539	simtraf	1	new A085747()	(n, v) -> FA(n).+(v)
+A089890	simtraf	1	new A089887()	(n, v) -> { final Z x = ZV(n).sqrt().-(1); return v.*(x.*(x.+(1))./(2)); }	A000217(A000196(n)-1)*A089887(n);
+A090632	filter	0	new A064986()	(k, v) -> (k & 1) == 0	1
+A090633	lambdan	1	n -> new Q(2).-(new Q(2).^(1 - n))./(ZV(n)).num()
+A091735	simtraf	1	new A007310()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A007310
+A091738	simtraf	1	new A047235()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A047235
+A091873	simtraf	0	new A068165()	v -> v.sqrt()	Square roots of Annnnnn
+A094946	tuptraf	0	(n, s) -> s[0].*(Z.TEN.^(n + 2)).+(Z.TEN.^(n + 1).-(1)./(9))	"1"	PREVIOUS	a(n) = a(n-1)*10^(n+1) + (10^n-1)/9
+A096209	filter	1	new A198700()	PRIME
+A097011	simtraf	1	new A000203()	(n, v) -> v.modZ(30)	a(n)=mod(Annn(n),(\d+))	30
+A098204	simtraf	1	new A007691()	(n, v) -> v.gcd(JF(v).phi())	a(n)=gcd(Annn(n),Annn(Annn(n)))	A007691,A000010,A007691
+A098735	simtraf	1	new A098077()	(n, v) -> new Q(v, FA(n)).num()	a(n)=numerator(Annn(n)/n!)
+A103564	filter	1	new A000040()	p -> p.^(2).*( 3).+(2).IPP()	[(\d+)#^(\d+)+(\d+)]&]	600, 3,2,2
+A103806	prepend	1	new FilterSequence(0, new A000040(), p -> { final Z pp = p.*( 2); return pp.+(33).IPP() && pp.-(33).IPP(); })	2,5,7,13		400, 2,33,33
+A104163	filter	1	new A000040()	p -> { final Z pp = p.*( 2).+(1); return pp.mod( 3) == 0 && pp./( 3).IPP(); }	[((\d+)#+(\d+))/(\d+)]&]	400, 2,1,3
+A105961	filter	1	new A000040()	p -> p.*(20).+( 3).IPP()	[(\d+)#+(\d+)]&]		120,20, 3
+A106015	filter	1	new A000040()	p -> { final Z pp = p.*( 4); return pp.+( 3).IPP() && pp.-( 3).IPP(); }		600, 4, 3, 3
+A106019	filter	1	new A000040()	p -> { final Z pp = p.*(26); return pp.+( 3).IPP() && pp.-( 3).IPP(); }		800,26, 3, 3
+A106091	filter	1	new A000040()	p -> p.*(12).+( 7).IPP() && p.*(7).+(12).IPP()	[(\d+)#+(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	220,12, 7,7,12
+A107289	simtraf	1	new A065408()	v -> v.sqrt()	a(n)=sqrt(Annn(n))		A065408
+A107365	simtraf	1	new A030284()	v -> Puma.primePiZ(v)	A030284
+A114317	tuptraf	1	(n, s) -> s[0].^(2).+(2*(n - 1))	"1"	PREVIOUS	a(n)=a(n-1)^2+2*(n-1)
+A115058	filter	1	new A000040()	v -> !v.*(3).+(2).IPP()
+A118918	filter	1	new A000040()	p -> p.^( 2).+(11)./(12).IPP()	[(#^(\d+)+(\d+))/(\d+)]&]	400, 2,11,12
+A118939	filter	1	new A000040()	p -> p.^( 2).+( 3)./( 4).IPP()	[(#^(\d+)+(\d+))/(\d+)]&]	200, 2, 3, 4
+A118940	filter	1	new A000040()	p -> p.^( 2).+( 7)./( 8).IPP()	[(#^(\d+)+(\d+))/(\d+)]&]	200, 2, 7, 8
+A118965	simtraf	1	new A066853()	(n, v) -> ZV(n).-(v)
+A120068	simtraf	1	new A049097()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
+A122412	simtraf	1	new A031133()	v -> Puma.primePiZ(v)	A031133
+A122413	simtraf	1	new A031134()	v -> Puma.primePiZ(v)	A031134
+A124882	tuptraf	1	(n, s) -> s[0].max(s[1])	""	new A048280(), new A002308()	a(n)=max(Annn(n),Annn(n))
+A125272	filter	1	new A000040()	p -> { final Z pp = p.*( 3); return pp.+( 2).IPP() && pp.-( 2).IPP(); }		600, 3, 2, 2
+A126107	filter	1	new A000040()	p -> p.*( 2).+( 1).IPP() && p.*(2).+( 3).IPP()	[(\d+)#+(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	100, 2, 1,2, 3
+A127331	filter	1	new A000040()	p -> p.*( 6).-( 7).IPP() && p.*(6).+( 7).IPP()	[(\d+)#-(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	300, 6, 7,6, 7
+A127443	filter	1	new A000040()	p -> { final Z pp = p.*( 6); return pp.+(11).IPP() && pp.-(11).IPP(); }		500, 6,11,11
+A127464	filter	1	new A000040()	p -> { final Z pp = p.*(12); return pp.+(11).IPP() && pp.-(11).IPP(); }		600,12,11,11
+A133383	lambdan	0	n -> ZV(11).*(Z.TEN.^(2*n)).-(1)
+A133498	simtraf	0	new A007053()	v -> v.sqrt()	a(n)=floor(sqrt(Annn(n)))
+A135048	simtraf	1	new A107689()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
+A138242	filter	1	new A000040()	p -> { final Z pp = p.*(12); return pp.+( 1).IPP() && pp.-( 1).IPP(); }		700,12, 1, 1
+A138644	filter	1	new A000040()	v -> !v.*(5).+(2).IPP()
+A138645	filter	1	new A000040()	v -> !v.*(7).+(2).IPP()
+A138658	filter	1	new A000040()	p -> { final Z pp = p.*(54); return pp.+( 1).IPP() && pp.-( 1).IPP(); }		120,54, 1, 1
+A144589	simtraf	1	new A144570()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A144570
+A145471	filter	1	new A000040().skip(1)	p -> { final Z pp = p.+( 5)     ; return pp.mod( 2) == 0 && pp./( 2).IPP(); }	[((\d+)+#)/(\d+)]&]
+A145475	filter	1	new A000040()	p -> p.+(17)./(2).IPP()	[((\d+)+#)/(\d+)]&]
+A145477	filter	1	new A000040()	p -> p.+(23)./(2).IPP()	[((\d+)+#)/(\d+)]&]
+A145479	filter	1	new A000040()	p -> p.+(31)./(2).IPP()	[((\d+)+#)/(\d+)]&]
+A145480	filter	1	new A000040().skip(1)	p -> { final Z pp = p.+(37)     ; return pp.mod( 2) == 0 && pp./( 2).IPP(); }	[((\d+)+#)/(\d+)]&]
+A153116	filter	1	new A000040()	p -> { final Z pp = p.^(2); return pp.+(12).IPP() && pp.-(12).IPP(); }	[#^(\d+)+{(\d+),-(\d+)},PrimeQ]&]	1000,2,12,12
+A153119	filter	1	new A000040()	p -> { final Z pp = p.^(2); return pp.+(30).IPP() && pp.-(30).IPP(); }	[#^(\d+)+{(\d+),-(\d+)},PrimeQ]&]	1500,2,30,30
+A153322	filter	1	new A000040()	p -> { final Z pp = p.^(3); return pp.+(12).IPP() && pp.-(12).IPP(); }	[#^(\d+)+{(\d+),-(\d+)},PrimeQ]&]	5000,3,12,12
+A153507	filter	1	new A000040()	p -> p.^(3).*( 2).+(3).IPP()	[(\d+)#^(\d+)+(\d+)]&]	500, 2,3,3
+A153768	filter	1	new A000040().skip(2)	p -> p.*( 8).-( 9).IPP() && p.*(8).+( 9).IPP()	[(\d+)#-(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	600, 8, 9,8, 9
+A154408	filter	1	new A000040().skip(1)	p -> { final Z pp = p.^( 2).+(1); return pp.mod(10) == 0 && pp./(10).IPP(); }	[(#^(\d+)+(\d+))/(\d+)]&]	200, 2, 1,10
+A154418	filter	1	new A000040().skip(2)	p -> { final Z pp = p.^( 2).+(4); return pp.mod( 5) == 0 && pp./( 5).IPP(); }	[(#^(\d+)+(\d+))/(\d+)]&]	200, 2, 4, 5
+A154613	filter	1	new A000040()	p -> p.*(23).+(10).IPP()	[(\d+)#+(\d+)]&]		250,23,10
+A154620	filter	1	new A000040()	p -> p.*(31).+(14).IPP()	[(\d+)#+(\d+)]&]		900,31,14
+A155731	tuptraf	1	(n, s) -> s[0].^(n).+(n)	"1"	PREVIOUS	a(n)=a(n-1)^n+n
+A156004	filter	1	new A000040()	p -> p.*( 8).+(21).IPP()	[(\d+)#+(\d+)]&]		100, 8,21
+A156005	filter	1	new A000040()	p -> p.*(16).+(45).IPP()	[(\d+)#+(\d+)]&]		100,16,45
+A156109	filter	1	new A000040()	v -> v.+(18).IPP() && v.+( 36).IPP()	3000,18, 36
+A156110	filter	1	new A000040()	v -> v.+(18).IPP() && v.+( 72).IPP()	3000,18, 72
+A156111	filter	1	new A000040()	v -> v.+(18).IPP() && v.+(144).IPP()	2000,18,144
+A156112	filter	1	new A000040()	v -> v.+(36).IPP() && v.+( 72).IPP()	3000,36, 72
+A156123	filter	1	new A000040()	v -> v.+(36).IPP() && v.+(144).IPP()	3000,36,144
+A156124	filter	1	new A000040()	v -> v.+(72).IPP() && v.+(144).IPP()	3000,72,144
+A157256	filter	1	new A000040()	p -> { final Z pp = p.^(5); return pp.+( 6).IPP() && pp.-( 6).IPP(); }	[#^(\d+)+{(\d+),-(\d+)},PrimeQ]&]	1200,5, 6, 6
+A157764	filter	1	new A000040()	p -> p.^(16).+(65536).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	800,16,65536
+A158318	filter	1	new A000040()	p -> p.*( 5).-( 2).IPP()	[(\d+)#-(\d+)]&]		300, 5, 2
+A158361	filter	1	new A000040()	p -> p.^( 4).+(   16).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	200, 4,   16
+A159021	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"19"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	19,60
+A159022	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"29"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	29,60
+A159023	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"41"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	41,60
+A159024	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"55"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	55,60
+A159026	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"89"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	89,60
+A159027	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"109"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	109,60
+A159274	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"209"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	209,50
+A160023	filter	1	new A000040()	p -> p.^( 4).+( 2482).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	500, 4, 2482
+A160024	filter	1	new A000040()	p -> p.^( 4).+(14722).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	200, 4,14722
+A160025	filter	1	new A000040()	p -> p.^( 4).+(28642).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	400, 4,28642
+A160031	filter	1	new A000040()	p -> p.^( 4).+(  162).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	300, 4,  162
+A161021	parmof2	0	A008873	703	Collatz (or 3x+1) trajectory starting at 703.
+A161022	parmof2	0	A008873	10087	Collatz (or 3x+1) trajectory starting at 10087.
+A161023	parmof2	0	A008873	35655	Collatz trajectory starting at 35655.
+A163769	filter	1	new A000040()	v -> !v.*(2).+(3).IPP()
+A164514	prepend	1	new A000037()	1	1 followed by numbers that are not squares.
+A164567	filter	1	new A000040()	p -> { final Z pp = p.*( 5); return pp.+( 6).IPP() && pp.-( 6).IPP(); }		300, 5, 6, 6
+A164568	filter	1	new A000040()	p -> { final Z pp = p.*( 9); return pp.+(10).IPP() && pp.-(10).IPP(); }		400, 9,10,10
+A164568	filter	1	new A000040().skip(1)	p -> p.*( 9).-(10).IPP() && p.*(9).+(10).IPP()	[(\d+)#-(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	400, 9,10,9,10
+A164569	filter	1	new A000040()	p -> p.*(11).+( 8).IPP()	[(\d+)#+(\d+)]&]		500,11, 8
+A164570	filter	1	new A000040()	p -> { final Z pp = p.*( 8); return pp.+( 3).IPP() && pp.-( 3).IPP(); }		100, 8, 3, 3
+A165672	filter	1	new A000040().skip(2)	p -> { final Z pp = p.^( 2).+(2); return pp.mod(33) == 0 && pp./(33).IPP(); }	[(#^(\d+)+(\d+))/(\d+)]&]	100, 2, 2,33
+A167464	filter	1	new A000040()	v -> !v.*(20).+(19).IPP()
+A171709	lambdan	-3	n -> (n == 0) ? Z.NEG_ONE : new Q(1, 9).-(new Q(Z.ONE, ZV(n).^(2))).num()	Numerator of 1/9 - 1/n^2.
+A172534	parmof2	1	A058528	12
+A172535	parmof2	1	A058528	11
+A172536	parmof2	1	A058528	8
+A172537	parmof2	1	A058528	14
+A172538	parmof2	1	A058528	13
+A172540	parmof2	1	A058528	9
+A174409	filter	1	new A000040()	p -> p.^(3).*(10000).+(1331).IPP()	[(\d+)#^(\d+)+(\d+)]&]	500, 10000,3,1331
+A174932	simtraf	1	new A322671()	(n, v) -> ZV(n).*(v)
+A175158	filter	1	new A000040()	v -> v.+(18).IPP() && v.+( 36).IPP() && v.+(72).IPP()	#+{(\d+),(\d+),(\d+)},PrimeQ]&]	4000,18, 36,72
+A175172	filter	0	new A000040()	p -> ZV(2).^(p).*( 3).+( 1).IPP()	[(\d+)^#+(\d+)]&]		100, 32, 1
+A175234	filter	1	new A000040()	p -> ZV(  2).^(p).+(15).IPP()	[(\d+)^#+(\d+)]&]		100,  2,15
+A175236	filter	1	new A000040()	p -> ZV(  2).^(p).+(23).IPP()	[(\d+)^#+(\d+)]&]		100,  2,23
+A175701	simtraf	1	new A062981()	(n, v) -> ZV(n).*(v)
+A176116	filter	1	new A000040()	p -> p.^( 4).+( 1)./( 2).IPP()	[(#^(\d+)+(\d+))/(\d+)]&]	250, 4, 1, 2
+A177092	filter	1	new A000040()	p -> p.*(11).+( 2).IPP()	[(\d+)#+(\d+)]&]		300,11, 2
+A177247	filter	0	new A000045().skip(1)	v -> ZUtils.digitCounts(v)[6] == 0
+A177372	filter	0	new A000045().skip(1)	v -> ZUtils.digitCounts(v)[7] == 0
+A177374	filter	0	new A000045().skip(1)	v -> ZUtils.digitCounts(v)[8] == 0
+A177376	filter	0	new A000045().skip(1)	v -> ZUtils.digitCounts(v)[9] == 0
+A178426	prepend	0	new A152585()	11	followed by the Fermat numbers A152585.	nonn	0..7
+A178427	prepend	0	new A152581()	7	followed by the Fermat numbers A152581.	nonn	0..8
+A178428	prepend	0	new A078303()	5	followed by the generalized Fermat numbers 6^(2^n)+1 (A078303).	nonn	0..7
+A179623	parmof2	1	A008873	3711	Collatz trajectory starting at 3711.
+A179624	parmof2	1	A008873	230631	Collatz trajectory starting at 230631.
+A180937	prepend	0	new FilterPositionSequence(1, 1, new A000203(), v -> ZUtils.isPolygonal(v, 10))	0	Sigma-decagonal numbers: numbers n such that sigma(n) is a decagonal number
+A181044	tuptraf	1	(n, s) -> s[0].^(n).*(2*n)	"1"	PREVIOUS	a(n)=2*n*(a(n-1))^n
+A181860	tuptraf	0	(n, s) -> s[0].lcm(s[1])	""	new A000290(), new A056040()	a(n)=lcm(Annn(n),Annn(n))
+A181966	simtraf	1	new A013939()	(n, v) -> FA(n).*(v)
+A182161	simtraf	0	new A001192()	(n, v) -> FA(n).*(v)
+A182324	simtraf	0	new A000030()	(n, v) -> ZV(n).+(v)
+A185679	lambdan	0	n -> ZV(ZUtils.decimalLength(ZV(n).^(2)))
+A188583	filter	1	new A000040()	p -> p.^(3).*( 6).+(1).IPP()	[(\d+)#^(\d+)+(\d+)]&]	500, 6,3,1
+A190906	simtraf	0	new A056040()	(n, v) -> v.gcd(ZV(3).^(n))	a(n)=gcd(Annn(n),(\d+)^n)	3
+A192681	simtraf	0	new A000262()	v -> v.sqrt()	a(n)=floor(sqrt(Annn(n)))
+A193742	filter	1	new A000040()	p -> p.mod(10000) == 1729	Mod[#,(\d+)]==(\d+)&]	120000,10000,1729
+A194129	lambdan	0	n -> ZV(ZUtils.decimalLength(ZV(n).^(100)))
+A199325	parmof4	1	A214703	0	1	5
+A199326	parmof4	1	A214703	0	1	6
+A199329	parmof4	1	A214703	0	1	9
+A199340	parmof4	1	A214703	0	3	4
+A206807	simtraf	1	new A056576().skip(1)	(n, v) -> ZV(n).+(v)
+A210247	simtraf	0	new A210246()	v -> ZV(v.signum())	a(n)=sign(Annn(n))		A210246
+A210989	filter	1	new A000988()	(k, v) -> (k & 1) == 1
+A217587	filter	1	new A000040()	p -> p.mod(  420) ==    1	Mod[#,(\d+)]==(\d+)&]	5000,    420,   1
+A217656	filter	1	new A000040()	p -> p.mod(  420) ==  361	Mod[#,(\d+)]==(\d+)&]	50000,   420, 361
+A217713	lambdan	0	n -> CR.valueOf(n + 1).log().square().floor()	Integer part of log(n)^2.
+A217862	filter	1	new A000040()	p -> p.mod(  840) ==    1	Mod[#,(\d+)]==(\d+)&]	5000,    840,   1
+A226216	simtraf	1	new A152597()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A152597
+A227745	simtraf	1	new A227744()	v -> v.sqrt()	a(n)=sqrt(Annn(n))		A227744
+A230227	filter	1	new A000040()	p -> p.*( 3).-(10).IPP()	[(\d+)#-(\d+)]&]		100, 3,10
+A232102	simtraf	1	new A067838()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A067838
+A232104	simtraf	1	new A067841()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A067841
+A233540	filter	1	new A000040()	v -> v.+( 2).IPP() && v.+(  8).IPP() && v.+(12).IPP()	#+{(\d+),(\d+),(\d+)},PrimeQ]&]	4000, 2,  8,12
+A235331	simtraf	1	new A235001()	v -> v.sqrt()	a(n)=sqrt(Annn(n))		A235001
+A235705	filter	1	new A000040().skip(2)	p -> { final Z pp = p.^( 3).+(6); return pp.mod( 5) == 0 && pp./( 5).IPP(); }	[(#^(\d+)+(\d+))/(\d+)]&]	500, 3, 6, 5
+A236478	filter	1	new A000040()	p -> p.^(3).-(p).+(1).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)-#+(\d+)]&]	300,3,1
+A236940	filter	1	new A000040()	p -> p.^(4).-(p).+(1).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)-#+(\d+)]&]	10000,4,1
+A237810	filter	1	new A000040()	p -> p.*( 2).+( 1).IPP() && p.*(2).+( 7).IPP()	[(\d+)#+(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	100, 2, 1,2, 7
+A237811	filter	1	new A000040()	p -> p.*( 2).+( 1).IPP() && p.*(2).+( 9).IPP()	[(\d+)#+(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	100, 2, 1,2, 9
+A237812	filter	1	new A000040()	p -> p.*( 2).+( 1).IPP() && p.*(2).+(13).IPP()	[(\d+)#+(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	100, 2, 1,2,13
+A237813	filter	1	new A000040()	p -> p.*( 2).+( 1).IPP() && p.*(2).+(15).IPP()	[(\d+)#+(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	500, 2, 1,2,15
+A237814	filter	1	new A000040()	p -> p.*( 2).+( 1).IPP() && p.*(2).+(19).IPP()	[(\d+)#+(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	800, 2, 1,2,19
+A239504	lambdan	0	n -> ZV(ZUtils.decimalLength(ZV(n).^(10)))
+A239684	lambdan	0	n -> ZV(ZUtils.decimalLength(ZV(n).^(4)))
+A240115	parmof3	4	A011975	4	3
+A240116	parmof3	5	A011975	5	4
+A241099	filter	1	new A000040().skip(2)	p -> { final Z pp = p.^( 3).+(4); return pp.mod( 3) == 0 && pp./( 3).IPP(); }	[(#^(\d+)+(\d+))/(\d+)]&]	500, 3, 4, 3
+A241120	filter	1	new A000040().skip(1)	p -> { final Z pp = p.^( 3).+(2); return pp.mod( 3) == 0 && pp./( 3).IPP(); }	[(#^(\d+)+(\d+))/(\d+)]&]	500, 3, 2, 3
+A241488	filter	1	new A000040()	v -> v.+( 8).IPP() && v.+(888).IPP() && v.+(8888).IPP()	#+{(\d+),(\d+),(\d+)},PrimeQ]&]	2500, 8,888,8888
+A242493	simtraf	1	new A064775()	(n, v) -> ZV(n).-(v)
+A243868	prepend	0	new SimpleTransformSequence(0, new A226158(), (n, v) -> v.*(n + 1).negate())	0	0 followed by -(n+1)*A226158(n).
+A245048	filter	1	new A000040()	p -> p.^( 2).+(   28).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	200, 2,   28
+A245671	parmof2	0	A008873	1729	Numbers n such that the Collatz trajectory of n (
+A245832	lambdan	1	n -> ZV(12).*(n).+(72).*(n).+(137).*(n).+(92).*(n).+(13).*(n).-(2).*(n)./(6)	a(n)=(12*n^6+72*n^5+137*n^92*n^3+13*n^2-2*n)/6
+A247816	simtraf	1	new A057620()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
+A247894	lambdan	0	n -> ZV(n).pow(19).sqrt()	a(n)=floor(sqrt(n^(\d+)))	19
+A247967	simtraf	1	new A057622()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
+A248085	filter	1	new A000040()	v -> v.+(12).IPP() && v.+( 24).IPP() && v.+(36).IPP()	#+{(\d+),(\d+),(\d+)},PrimeQ]&]	3000,12, 24,36
+A248109	lambdan	0	n -> ZV(n).pow(23).sqrt()	a(n)=floor(sqrt(n^(\d+)))	23
+A248132	lambdan	0	n -> ZV(n).pow(25).sqrt()	a(n)=floor(sqrt(n^(\d+)))	25
+A248367	filter	1	new A000040()	v -> v.+( 2).IPP() && v.+( 36).IPP() && v.+(38).IPP()	#+{(\d+),(\d+),(\d+)},PrimeQ]&]	8000, 2, 36,38
+A248368	filter	1	new A000040()	p -> p.*(52).+( 1).IPP()	[(\d+)#+(\d+)]&]		500,52, 1
+A249346	tuptraf	0	(n, s) -> s[0].min(s[1])	""	new A187059(), new A249343()	a(n)=min(Annn(n),Annn(n))
+A250293	simtraf	1	new A085725()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A085725
+A253971	simtraf	1	new A064711()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A064711
+A254529	simtraf	0	new A001372()	(n, v) -> FA(n).*(v)
+A254866	lambdan	0	n -> FD(n).^(n)	a(n)=(n!!)^n
+A257080	simtraf	0	new A257079()	(n, v) -> ZV(n).*(v)
+A257295	tuptraf	0	(n, s) -> new Q(s[0], s[1]).round()	""	new A007953(), new A055642()	v -> a(n)=round(Annn(n)/Annn(n))
+A257687	simtraf	0	new A257686()	(n, v) -> ZV(n).-(v)
+A258261	filter	1	new A000040()	p -> p.*( 3).-( 4).IPP()	[(\d+)#-(\d+)]&]		200, 3, 4
+A261536	filter	1	new A000040()	p -> p.^( 5).+(    2).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	100, 5,    2
+A261537	filter	1	new A000040()	p -> p.^( 7).+(    2).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	250, 7,    2
+A261538	filter	1	new A000040()	p -> p.^( 9).+(    2).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	200, 9,    2
+A262098	filter	1	new A000040()	p -> ZV(  2).^(p).+( 9).IPP()	[(\d+)^#+(\d+)]&]		100,  2, 9
+A262099	filter	0	new A000040()	p -> ZV(2).^(p)      .+(17).IPP()	[(\d+)^#+(\d+)]&]		100,  2,17
+A262100	filter	1	new A000040()	p -> ZV(  2).^(p).+(29).IPP()	[(\d+)^#+(\d+)]&]		100,  2,29
+A263297	tuptraf	1	(n, s) -> s[0].max(s[1])	""	new A001222(), new A061395()	a(n)=max(Annn(n),Annn(n))
+A263323	tuptraf	1	(n, s) -> s[0].max(s[1])	""	new A051903(), new A061395()	a(n)=max(Annn(n),Annn(n))
+A264441	simtraf	1	new A045763()	(n, v) -> v.max(ZV(1))	a(n)=max((\d+),Annn(n))	1
+A268383	simtraf	0	new A268382()	(n, v) -> ZV(n).-(v)
+A270804	prepend	0	new FilterPositionSequence(0, 0, new A270803(), Z.ONE)	0	for positions of 1s
+A274505	filter	1	new A000040().skip(2)	p -> p.*( 3).-(10).IPP() && p.*(3).+(10).IPP()	[(\d+)#-(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	400, 3,10,3,10
+A275475	filter	1	new A000040()	v -> v.+( 8).IPP() && v.+( 32).IPP() && v.+(128).IPP()	#+{(\d+),(\d+),(\d+)},PrimeQ]&]	4000, 8, 32,128
+A276038	filnum	1	0	n -> { final long prod = ZUtils.digitProduct(n); if (prod == 1 || prod == 6) { return true; } else { final Z base = ZV(prod).isPower(); return base != null && base.equals(Z.SIX); }}	Numbers n such that product of digits of n is a power of 6.	nonn,base	1..11690
+A280226	simtraf	1	new A302391()	(n, v) -> ZV(n).-(v)
+A285550	simtraf	1	new A019544()	v -> v.sqrt()	a(n)=sqrt(Annn(n))		A019544
+A287459	filter	1	new A000040()	p -> p.*(15).+(1)./(2).IPP()	[((\d+)#+(\d+))/(\d+)]&]	300,15,1,2
+A293140	simtraf	0	new A010815()	(n, v) -> FA(n).*(v)
+A293300	simtraf	0	new A081362()	(n, v) -> FA(n).*(v)
+A293487	simtraf	0	new A000700()	(n, v) -> FA(n).*(v)
+A294041	tuptraf	0	(n, s) -> s[0].lcm(s[1])	""	new A000312(), new A056040()	a(n)=lcm(Annn(n),Annn(n))
+A297122	simtraf	0	new A259825()	(n, v) -> ZV(n).^(5).*(v)./(12)	a(n)=n^(\d+)*Annn(n)/(\d+)	5,12
+A317187	simtraf	1	new A317186()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A317186
+A318680	simtraf	1	new A318653()	(n, v) -> ZV(n).*(v)
+A318828	simtraf	1	new A063994()	(n, v) -> ZV(n).-(v)
+A321582	filter	1	new A000040()	p -> { final Z pp = p.*( 4).+(1); return pp.mod( 5) == 0 && pp./( 5).IPP(); }	[((\d+)#+(\d+))/(\d+)]&]	100, 4,1,5
+A321633	simtraf	0	new A190830()	(n, v) -> FA(n).*(v)
+A322126	simtraf	0	new A190833()	(n, v) -> FA(n).*(v)
+A322301	filter	0	new A000040()	p -> ZV(2).^(p).*( 5).+( 1).IPP()	[(\d+)^#+(\d+)]&]		400, 52, 1
+A322302	filter	0	new A000040()	p -> ZV(2).^(p).*(11).+( 1).IPP()	[(\d+)^#+(\d+)]&]		100,112, 1
+A322351	tuptraf	1	(n, s) -> s[0].min(s[1])	""	new A003557(), new A173557()	a(n)=min(Annn(n),Annn(n))
+A322352	tuptraf	1	(n, s) -> s[0].max(s[1])	""	new A003557(), new A173557()	a(n)=max(Annn(n),Annn(n))
+A323071	simtraf	1	new A060681()	(n, v) -> v.+(1).gcd(n)	a(n)=gcd(n,(\d+)+Annn(n))	1
+A323160	simtraf	1	new A323159()	(n, v) -> v.gcd(n)	a(n)=gcd(n,Annn(n))
+A323339	simtraf	0	new A007840()	(n, v) -> new Q(v, FA(n)).num()	a(n)=numerator(Annn(n)/n!)
+A323340	simtraf	0	new A007840()	(n, v) -> new Q(v, FA(n)).den()	a(n)=denominor(Annn(n)/n!)
+A325225	tuptraf	1	(n, s) -> s[0].min(s[1])	""	new A001222(), new A061395()	a(n)=min(Annn(n),Annn(n))
+A330343	simtraf	1	new A003400()	(n, v) -> FA(n).*(v)
+A333695	simtraf	1	new A057660()	(n, v) -> new Q(v, ZV(n)).num()	a(n)=numerator(Annn(n)/n)
+A334897	simtraf	1	new A064047()	(n, v) -> ZV(n).-(v)
+A341210	filter	1	new A000040()	p -> p.^(16).+( 1)./( 2).IPP()	[(#^(\d+)+(\d+))/(\d+)]&]	750,16, 1, 2
+A343754	simtraf	0	new A174574()	(n, v) -> ZV(n).-(v)
+A348615	simtraf	0	new A001250()	(n, v) -> FA(n).-(v)
+A350229	simtraf	0	new A065363()	(n, v) -> ZV(n).+(v)
+A352491	simtraf	1	new A122111()	(n, v) -> ZV(n).-(v)
+A353027	filter	1	new A000292()	v -> isPDP(4)	Tetrahedral (or triangular pyramidal) numbers which are products of four distinct primes.
+A353761	tuptraf	1	(n, s) -> s[0].gcd(s[1])	""	new A353749(), new A353750()	a(n)=gcd(Annn(n),Annn(n))
+A354090	simtraf	1	new A304776()	(n, v) -> ZV(n)./(v)
+A356095	filter	1	new A000292()	v -> isPDP(3)	Tetrahedral (or triangular pyramidal) numbers which are products of three distinct primes (or sphenic numbers).
+A356291	simtraf	0	new A003319()	(n, v) -> FA(n).-(v)
+A356355	filter	1	new A001106()	v -> isPDP(5)	9-gonal numbers which are products of five distinct primes.
+A356424	filter	1	new A001106()	v -> JF(v).isSemiprime()	9-gonal numbers that are semiprimes.
+A356472	simtraf	1	new A018804()	(n, v) -> new Q(v, ZV(n)).num()	a(n)=numerator(Annn(n)/n)
+A358416	simtraf	1	new A036449()	v -> v.sqrt()	a(n)=sqrt(Annn(n))		A036449
+A362565	lambdan	0	n -> FA(6*n)./(ZV(30).^(n))	a(n)=(6n)!/30^n
+A362751	holos	1	[[0],[-32],[72],[128],[-264],[-63],[270],[-84],[-66],[50],[-12],[1]]	4,36,121,484,1764,6561,24336,91204,344569,1313316	0	0
+A364691	filter	1	new A007504()	v -> ZUtils.isPolygonal(v, 5)	Pentagonal numbers which are the sum of the first k primes A007504, for some k >= 0.
+A366151	lambdan	0	n -> ZV(n).*(n).*(n + 3)	a(n)=n^2*(n+3)
+A368205	holos	0	[0,-1,-2,3,-1]	1	0	0
+A368426	filter	1	new A062786()	v -> isPDP(3)	Centered 10-gonal numbers which are sphenic numbers.
+A368791	holos	0	[[1],[-1,3],[-1]]	1	0	0
+A369181	lambdan	1	n -> FA(ZV(n).^(3).-(1))
+A369416	holos	0	[[0],[216],[-540],[558],[-305],[93],[-15],[1]]	0,0,0,0,1,15	0	0
+A369418	holos	0	[0,108,-216,171,-67,13,-1]	0,0,0,1	0	0
+A369421	holos	0	[0,72,-156,134,-57,12,-1]	0,0,0,1	0	0
+A369491	holos	0	[0,-2,3,-1]	1,2,4,10	0	0
+A369669	tuptraf	0	(n, s) -> s[0].gcd(s[1])	""	new A003415(), new A068346()	a(n)=gcd(Annn(n),Annn(n))
+A369810	simtraf	1	new A284816()	(n, v) -> ZV(n).*(v)
+A370252	simtraf	1	new A005729()	(n, v) -> ZV(n).*(v)
+A371015	simtraf	1	new A363340()	(n, v) -> ZV(n)./(v)

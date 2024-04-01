@@ -1,1 +1,16 @@
 empty
+---- 2024-03-31 21:20:44
+A098961	filter	1	new A001481()	(k, v) -> k > 1 && v.mod(13) == 0
+A128727	tablamb	0	0	n -> new Integer[] { 0, (n-1)/2 }	(n, k) -> (n == 0) ? Z.ONE : new Q(BI(n, k).*(BI(n - k, k + 1))).*(new Q(ZV(3)).^(n - 1 - 2*k))./(ZV(n)).num()	T:=(n, k)->3^(n-1-2*k)*binomial(n, k)*binomial(n-k, k+1)/n: 1;
+A176991	trilambn	1	1	1	(n, m) -> BI(n + m, m).-(BI(n - m, m))	Triangle t(n,m) = binomial(n+m,m) - binomial(n-m,m), 1<=m<=n, read by rows.	nonn,tabl
+A177939	arrlamb	1	1	1	-1	(n, m) -> FA(n*m)./(FA(n + m - 1))	Array t(n,m)=(n*m)!/(n + m - 1)! read by antidiagonals.
+A177974	trilamb0	0	(n, k) -> FA(n)./(FA(n - k)).+(FA(n)./(FA(k))).-(FA(n))	Triangle T(n,k) = n!/(n - k)! + n!/k! - n! read by rows, 0 <= k <= n.	sign,tabl	0..139	nyi
+A275257	arrlamb	1	1	1	1	(x, n) -> SU(1, x, k -> ZV(IntegerUtils.gcd(n, k) == 1 ? 1 : 0))	phi(x,n) = Sum_{k=1..x} A054431(k,n).
+A337127	tablamb	1	1	n -> new Integer[] { 1, 10 }	(n, k) -> PR(0, k - 2, j -> ZV(j + 11 - k)).*(9).*(S2(n, k))	9*Pochhammer(11-k, k-1)*S2(n, k)
+A359503	partsun	1	new A066839()			Partial sums of A066839.
+A370913	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(4*j + k, 4)).*(ZV(4).^(n - k))).num()	Row sums of ?370915(n - k, k).
+A370982	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(2*j + k, 2)).*(ZV(2).^(n - k))).num()	Row sums of ?370419(n - k, k).
+A371318	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n  , k -> new Q(ZV(2*k + 1)).^(n - k - 1)  .*(BI(3*k, k))./(FA(n - k  )).*(FA(n))).num()	n!*sum(k=0, n, (2*k+1)^(n-k-1)*binomial(3*k, k)/(n-k)!);
+A371319	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(ZV(k + 1)).^(n - 2*k - 1)  .*(BI(2*k, k))./(FA(n - 2*k)).*(FA(n))).num()
+A371320	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(ZV(2*k + 1)).^(n - 2*k - 1).*(BI(3*k, k))./(FA(n - 2*k)).*(FA(n))).num()
+A371357	lambdan	0	n -> Z2(n - Integer.bitCount(n)).*(BI(2*n, n))	a(n) = 2^(n - HammingWeight(n)) * binomial(2*n, n)

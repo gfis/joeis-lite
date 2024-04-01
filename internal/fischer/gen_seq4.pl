@@ -230,6 +230,7 @@ while (<>) { # read inputfile
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
+            $parm =~ s{PHI\(}          {Euler.phiAsLong\(}g;
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {IntegerPartition.partitions\(}g;
@@ -491,11 +492,12 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WIntegersModMul\(}             ) { $imports{"irvine.math.group.IntegersModMul"             } = $itype; }
     if ($line =~ m{\WInverse\b}                    ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
     if ($line =~ m{\WJaguar\.}                     ) { $imports{"irvine.factor.factor.Jaguar"   }                = $itype; }
+    if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"        }            = $itype; }
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
     if ($line =~ m{\WMobiusTransformSequence}      ) { $imports{"irvine.oeis.transform.MobiusTransformSequence"} = $itype; }
-    if ($line =~ m{\WMobius\(}                     ) { $imports{"irvine.math.Mobius("}                           = $itype; }
+    if ($line =~ m{\WMobius[\.\(]}                 ) { $imports{"irvine.math.Mobius"}                            = $itype; }
     if ($line =~ m{\WMorphismFixedPointSequence}   ) { $imports{"irvine.oeis.base.MorphismFixedPointSequence"  } = $itype; }
     if ($line =~ m{\WMultiplicativeSequence}       ) { $imports{"irvine.oeis.MultiplicativeSequence"           } = $itype; }
     if ($line =~ m{\WPaddingSequence}              ) { $imports{"irvine.oeis.recur.PaddingSequence" }            = $itype; }
