@@ -1,0 +1,33 @@
+---- 2024-04-01 22:39:13
+A113425	lambdan	1	n -> Puma.prevPrimeZ(ZV(n).*(n).+(1))	Smallest prime closest to n^2.	nonn	1..10000	nyi	_Reinhard Zumkeller_ 
+A113426	lambdan	1	n -> Puma.nextPrimeZ(ZV(n).*(n).-(1))	Greatest prime closest to n^2.	nonn	1..1000	nyi	_Reinhard Zumkeller_     
+A118669	filnum	1	1	k -> { final FactorSequence fs = JF(k); return !fs.isSquareFree() && k.toString().indexOf(fs.core().toString()) >= 0; }	Numbers that are not squarefree, but contain their squarefree kernel in decimal representation.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A119791	tuptraf	1	(n, s) -> s[0].*(JF(s[0]).sigma0())	"1"	PREVIOUS	a(1) = 1, a(n) = number of divisors of n*a(n-1).	nonn	1..10000	nyi	_Reinhard Zumkeller_   
+A143203	filnum	1	1	k -> { final Z[] pq = JF(k).toZArray(); return pq.length == 2 && pq[0].+(2).equals(pq[1]); }	Numbers having exactly two distinct prime factors p, q with q=p+4.      nonn    1..250  nyi     _Reinhard Zumkeller_
+A143205	filnum	1	1	k -> { final Z[] pq = JF(k).toZArray(); return pq.length == 2 && pq[0].+(2).equals(pq[1]); }	Numbers having exactly two distinct prime factors p, q with q=p+6.      nonn    1..250  nyi     _Reinhard Zumkeller_
+A104740	ileave	0	new A073941().skip(3)	new A081848().skip(3)	Interleaving of A073941 and A081848 from a(3) onward.
+A259775	ileave	0	new A129869().skip(3)	new A220101().skip(3)	Interleaving of terms of the sequences A220101 and A129869. - _Michel Marcus_, Jul 05 2015
+%N A165333 Numbers that eventually reach the fixed point 370 under "x -> sum of cubes of digits of x" (see A055012).
+%N A165334 Numbers that eventually reach the fixed point 371 under "x -> sum of cubes of digits of x" (see A055012).
+%N A165335 Numbers that eventually reach the fixed point 407 under "x -> sum of cubes of digits of x" (see A055012).
+%N A336890 Numbers that eventually reach the fixed point 8208 under "x --> sum of the fourth powers of digits of x".
+
+# A180201	nyi Fo	Inverse permutation to A180200
+# A190136	nyi Fto	Largest prime factor of n*(n+1)*(n+2)*(n+3).
+%N A074050 Inverse permutation to A074049.         
+%N A119629 Inverse permutation to sequence A014631.
+%N A180201 Inverse permutation to A180200.         
+%N A209268 Inverse permutation  A054582.           
+%N A338254 Inverse permutation to A338252.         
+%N A361808 Inverse permutation to A181820.  
+ A219117	nyi po	Numbers n such that n^1+n+1, n^2+n+1, n^3+n+1 and n^4+n+1 are all prime.   
+%N A135951 Central terms of triangle A135950, the matrix inverse of triangle A022166.      
+%F A136126 Central terms of triangle equals A092552. - _Paul D. Hanna_, Feb 01 2013        
+%N A224729 Central terms of the triangle in A059283.                                       
+%N A225621 Central terms of the triangle in A074911.                                       
+%N A227791 Central terms of the triangle in A227550.                                       
+%N A232246 Central terms of triangle A110440.                                              
+%N A233734 Central terms of triangles A019538 and A090582.                                 
+%N A234324 Central terms of the triangle of central factorial numbers (A008955).           
+%N A247365 Central terms of triangles A102472 and A102473.                                 
+%N A254969 Central terms of the triangle of iterated absolute differences of lucky numbers.

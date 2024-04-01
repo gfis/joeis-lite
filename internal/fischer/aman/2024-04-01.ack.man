@@ -1,0 +1,117 @@
+---- 2024-04-01 14:21:25
+A070751	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) < 0
+A070752	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) > 0
+A070753	filter	1	new A000040()	p -> CV(p).sin().compareTo(CR.ZERO) < 0
+A070754	filter	1	new A000040()	p -> CV(p).sin().compareTo(CR.ZERO) > 0
+A070781	lambdan	0	n -> BI(n*n + 2*n + 1, n*n)	binomial((n+1)^2, n^2)
+A070870	tuptraf	1	(n, s) -> s[0].testBit(0) ? s[0].+(1)./(2) : s[0]./(2).*(5)	"6"	PREVIOUS	a(1) = 6; a(n+1) = (a(n)+1)/2 if a(n) odd, or 5*a(n)/2 if a(n) even.	nonn,easy,nice
+A091551	lambdan	0	n -> PR(0, n + 1, j -> ZV(5*j + 2)).*(PR(0, n + 1 , j -> ZV(5*j + 1)).*(-3).+(PR(0, n + 1, j -> ZV(5*j + 3))))./(84)
+A246293	filnum	1	1	k -> CV(k).sin().compareTo(CV(k + 1).sin()) > 0
+A246294	filnum	1	1	k -> { final CR k1 = CV(k + 1).sin(); return CV(k).sin().compareTo(k1) < 0 && k1.compareTo(CV(k + 2).sin()) > 0; }
+A246296	filnum	1	1	k -> { final CR k1 = CV(k + 1).sin(); final CR k2 = CV(k + 2).sin(); final CR k3 = CV(k + 3).sin(); final CR k4 = CV(k + 4).sin(); return CV(k).sin().compareTo(k1) < 0 && k1.compareTo(k2) < 0 && k2.compareTo(k3) < 0 && k3.compareTo(k4) > 0; }
+A246297	filnum	1	1	k -> { final CR k1 = CV(k + 1).sin(); return CV(k).sin().compareTo(k1) > 0 && k1.compareTo(CV(k + 2).sin()) < 0; }
+A246298	filnum	1	1	k -> { final CR k1 = CV(k + 1).sin(); final CR k2 = CV(k + 2).sin(); final CR k3 = CV(k + 3).sin(); return CV(k).sin().compareTo(k1) > 0 && k1.compareTo(k2) > 0 && k2.compareTo(k3) < 0; }
+A246299	filnum	1	1	k -> { final CR k1 = CV(k + 1).sin(); final CR k2 = CV(k + 2).sin(); final CR k3 = CV(k + 3).sin(); final CR k4 = CV(k + 4).sin(); return CV(k).sin().compareTo(k1) > 0 && k1.compareTo(k2) > 0 && k2.compareTo(k3) > 0 && k3.compareTo(k4) < 0; }
+A246300	filnum	1	1	k -> { final CR k1 = CV(k + 1).cos(); return CV(k).cos().compareTo(k1) < 0 && k1.compareTo(CV(k + 2).cos()) > 0; }
+A246303	filnum	1	1	k -> CV(k).cos().compareTo(CV(k + 1).cos()) < 0
+A246304	filnum	1	1	k -> { final CR k1 = CV(k + 1).cos(); return CV(k).cos().compareTo(k1) > 0 && k1.compareTo(CV(k + 2).cos()) < 0; }
+A277093	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) > 0 && CV(k + 2).sin().compareTo(CR.ZERO) > 0
+A277094	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) > 0 && CV(k + 2).sin().compareTo(CR.ZERO) < 0
+A277095	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) < 0 && CV(k + 2).sin().compareTo(CR.ZERO) > 0
+A277096	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) < 0 && CV(k + 2).sin().compareTo(CR.ZERO) < 0
+A277136	filnum	1	1	k -> CV(k).cos().compareTo(CR.ZERO) > 0 && CV(k + 2).cos().compareTo(CR.ZERO) > 0
+A277137	filnum	1	1	k -> CV(k).cos().compareTo(CR.ZERO) > 0 && CV(k + 2).cos().compareTo(CR.ZERO) < 0
+A277138	filnum	1	1	k -> CV(k).cos().compareTo(CR.ZERO) < 0 && CV(k + 2).cos().compareTo(CR.ZERO) > 0
+A277139	filnum	1	1	k -> CV(k).cos().compareTo(CR.ZERO) < 0 && CV(k + 2).cos().compareTo(CR.ZERO) < 0
+A327136	filnum	1	1	k -> { final CR c2k[] = new CR[] {CV(2*k).sin(), CV(2*k + 2).sin(), CV(2*k + 4).sin()}; return c2k[0].compareTo(c2k[1]) > 0 && c2k[1].compareTo(c2k[2]) < 0 ; }	CV(k).sin(2*k) > sin(2*k + 2) < sin(2*k + 4)
+A327137	filnum	1	1	k -> { final CR c2k[] = new CR[] {CV(2*k).sin(), CV(2*k + 2).sin(), CV(2*k + 4).sin(), CV(2*k + 6).sin()}; return c2k[0].compareTo(c2k[1]) > 0 && c2k[1].compareTo(c2k[2]) > 0 && c2k[2].compareTo(c2k[3]) < 0; }	CV(k).sin(2*k) > sin(2*k + 2) > sin(2*k + 4) < sin(2*k + 6)
+A327138	filnum	1	1	k -> { final CR c2k[] = new CR[] {CV(2*k).cos(), CV(2*k + 2).cos()}; return c2k[0].compareTo(c2k[1]) < 0; }	cos(2*k) < cos(2*k + 2)
+A327139	filnum	1	1	k -> { final CR c2k[] = new CR[] {CV(2*k).cos(), CV(2*k + 2).cos(), CV(2*k + 4).cos()}; return c2k[0].compareTo(c2k[1]) > 0 && c2k[1].compareTo(c2k[2]) < 0 ; }	CV(k).cos(2*k) > cos(2*k + 2) < cos(2*k + 4)
+A327140	filnum	1	1	k -> { final CR c2k[] = new CR[] {CV(2*k).cos(), CV(2*k + 2).cos(), CV(2*k + 4).cos(), CV(2*k + 6).cos()}; return c2k[0].compareTo(c2k[1]) > 0 && c2k[1].compareTo(c2k[2]) > 0 && c2k[2].compareTo(c2k[3]) < 0; }	CV(k).cos(2*k) > cos(2*k + 2) > cos(2*k + 4) < cos(2*k + 6)
+A332480	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) > 0 && CV(k    ).cos().compareTo(CR.ZERO) > 0
+A332481	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) > 0 && CV(k    ).cos().compareTo(CR.ZERO) < 0
+A332482	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) < 0 && CV(k    ).cos().compareTo(CR.ZERO) > 0
+A332483	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) < 0 && CV(k    ).cos().compareTo(CR.ZERO) < 0
+A332484	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) > 0 || CV(k    ).cos().compareTo(CR.ZERO) > 0
+A332485	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) > 0 || CV(k    ).cos().compareTo(CR.ZERO) < 0
+A332486	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) < 0 || CV(k    ).cos().compareTo(CR.ZERO) > 0
+A332487	filnum	1	1	k -> CV(k).sin().compareTo(CR.ZERO) < 0 || CV(k    ).cos().compareTo(CR.ZERO) < 0
+---- 2024-04-01 15:16:23
+A070325	filnum	1	1	k -> { final Z b = ZV(k); return b.+(1).IPP() && b.^(2).+(1).IPP() && b.^(4).+(1).IPP(); }	Numbers n such that n+1, n^2+1, n^4+1 are primes.	nonn	1..29
+A070552	filnum	1	1	k -> JF(k).isSemiprime() && JF(k + 1).isSemiprime()	Semiprimes k such that k+1 is also a semiprime.	nonn	1..10000
+A070639	lambdan	1	n -> SU(1, n, k -> ZV(PHI(n * k)))./(PHI(n))	a(n) = (1/phi(n))*Sum_{k=1..n} phi(n*k).	easy,nonn,look	1..2000	nyi
+A070689	filnum	1	1	k -> { final Z b = ZV(k); return b.+(1).IPP() && b.^(2).+(1).IPP(); }	Numbers k such that k+1 and k^2+1 are primes.	nonn	1..10000
+A246295	filnum	1	0	k -> { final CR k1 = CV(k + 1).sin(); final CR k2 = CV(k + 2).sin(); final CR k3 = CV(k + 3).sin(); return CV(k).sin().compareTo(k1) < 0 && k1.compareTo(k2) < 0 && k2.compareTo(k3) > 0; }
+A246301	filnum	1	1	k -> { final CR k1 = CV(k + 1).cos(); final CR k2 = CV(k + 2).cos(); final CR k3 = CV(k + 3).cos(); return CV(k).cos().compareTo(k1) < 0 && k1.compareTo(k2) < 0 && k2.compareTo(k3) > 0; }
+A246302	filnum	1	1	k -> { final CR k1 = CV(k + 1).cos(); final CR k2 = CV(k + 2).cos(); final CR k3 = CV(k + 3).cos(); final CR k4 = CV(k + 4).cos(); return CV(k).cos().compareTo(k1) < 0 && k1.compareTo(k2) < 0 && k2.compareTo(k3) < 0 && k3.compareTo(k4) > 0; }
+A246305	filnum	1	1	k -> { final CR k1 = CV(k + 1).cos(); final CR k2 = CV(k + 2).cos(); final CR k3 = CV(k + 3).cos(); return CV(k).cos().compareTo(k1) > 0 && k1.compareTo(k2) > 0 && k2.compareTo(k3) < 0; }
+A246306	filnum	1	0	k -> { final CR k1 = CV(k + 1).cos(); final CR k2 = CV(k + 2).cos(); final CR k3 = CV(k + 3).cos(); final CR k4 = CV(k + 4).cos(); return CV(k).cos().compareTo(k1) > 0 && k1.compareTo(k2) > 0 && k2.compareTo(k3) > 0 && k3.compareTo(k4) < 0; }
+A370983	trilambn	0	0	0	(n, k) -> (k == 0) ? (n == 0 ? Z.ONE : Z.ZERO) : BI(n, k).*(PR(0, k - 1, j -> ZV(j + n)))./(n)	* Pochhammer(n, k) / n.
+A371079	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(3*j + k, 3)).*(ZV(3).^(n - k))).num()	Row sums of ?371077.
+---- 2024-04-01 21:24:55
+A083888	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 1 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083889	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 2 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083890	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 3 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083891	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 4 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083892	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 5 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083893	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 6 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083894	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 7 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083895	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 8 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083896	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) == 9 ? Z.ONE : Z.ZERO)	1..10000	nyi	_Reinhard Zumkeller_
+A083897	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) <= 2 ? Z.ONE : Z.ZERO)	1..105	nyi	_Reinhard Zumkeller_
+A083898	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) <= 3 ? Z.ONE : Z.ZERO)	1..1000	nyi	_Reinhard Zumkeller_
+A083899	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) <= 4 ? Z.ONE : Z.ZERO)	1..105	nyi	_Reinhard Zumkeller_
+A083900	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) <= 5 ? Z.ONE : Z.ZERO)	1..105	nyi	_Reinhard Zumkeller_
+A083901	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) <= 6 ? Z.ONE : Z.ZERO)	1..105	nyi	_Reinhard Zumkeller_
+A083902	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) <= 7 ? Z.ONE : Z.ZERO)	1..105	nyi	_Reinhard Zumkeller_
+A083903	lambdan	1	n -> SD(n, d -> ZUtils.sortDigitsAscending(ZV(d)).mod(10) <= 8 ? Z.ONE : Z.ZERO)	1..1000	nyi	_Reinhard Zumkeller_
+A090077	lambdan	0	n -> new Z(ZV(n).toString(2).replaceAll("1+", "1"), 2)	nyi Fto	In binary expansion of n: reduce contiguous blocks of 1s to 1.	nonn,base	0..10000
+A090078	lambdan	0	n -> new Z(ZV(n).toString(2).replaceAll("0+", "0"), 2)	nyi Fo	In binary expansion of n, reduce contiguous blocks of 0s to 0.	nonn,base,easy	0..73
+A090079	lambdan	0	n -> new Z(ZV(n).toString(2).replaceAll("0+", "0").replaceAll("1+", "1"), 2)	nyi Fto	In binary expansion of n: reduce contiguous blocks of 0's to 0 and contiguous blocks of 1's to 1.	nonn,base	0..10000
+A090080	simtraf	1	new A000040()	v -> new Z(v.toString(2).replaceAll("0+", "0").replaceAll("1+", "1"), 2)	nyi	In binary expansion of n-th prime: reduce contiguous blocks of 0's to 0 and contiguous blocks of 1's to 1.	nonn,base
+A103673	lambdan	0	n -> FA(n).toString(2).indexOf("1111000") >= 0 ? Z.ONE : Z.ZERO	If in binary representation n! contains 5! then 1 else 0.	nonn,base	0..104	nyi
+A103674	lambdan	0	n -> FA(n).toString(2).indexOf("1011010000") >= 0 ? Z.ONE : Z.ZERO	If in binary representation n! contains 6! then 1 else 0.	nonn,base	0..104	nyi
+A103675	lambdan	0	n -> FA(n).toString(2).indexOf("1001110110000") >= 0 ? Z.ONE : Z.ZERO	a(n) = 1 if the binary representation of n! contains 7! (bit string "1001110110000"), otherwise a(n) = 0.	base,nonn	0..10080	nyi
+A110085	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma().-(fs.phi()).compareTo(fs.tau().^(fs.omega())) < 0; }	Numbers n such that sigma(n) - phi(n) < tau(n)^omega(n),
+A110086	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma().-(fs.phi()).compareTo(fs.tau().^(fs.omega())) <= 0; }	Numbers n such that sigma(n) - phi(n) <= tau(n)^omega(n),
+A110087	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma().-(fs.phi()).compareTo(fs.tau().^(fs.omega())) > 0; }	Numbers n such that sigma(n) - phi(n) > tau(n)^omega(n),
+A117530	trilambn	1	1	1	(n, k) -> ZV(k).*(k).-(k).+(Puma.prime(n))	Triangle read by rows: T(n,k) = k^2 - k + prime(n), 1<=k<=n.	nonn,tabl
+A117812	lambdan	0	n -> ZV(n).^(2*n).-(1)	a(n) = n^(2*n) - 1.	nonn	0..14	nyi
+A118013	trilambn	1	1	1	(n, k) -> ZV(n*n)./(k)	Triangle read by rows: T(n,k) = floor(n^2/k), 1<=k<=n.	nonn,easy,tabl
+A118014	lambdan	0	n -> SU(1, n, k -> ZV(n*n)./(k))	Sum_{k=1..n} floor(n^2/k).	nonn	0..47	nyi
+A118366	tuptraf	1	(n, s) -> s[0].^(2).+(Z2(Mobius.mobius(s[0]) + 1)	"1"	PREVIOUS	a(1) = 1, a(n+1) = a(n)^2 + 2^(1+mu(a(n))), where mu is the Moebius function (A008683).	nonn
+A118623	tuptraf	0	(n, s) -> s[0].^(2).+(JF(s[0]).sigma0())	"1"	PREVIOUS	a(0) = 1, a(n+1) = a(n)^2 + number of divisors of a(n).	nonn
+A118668	lambdan	0	n -> ZV(ZUtils.distinctDigitCount(ZV(n).*(n + 1)./(2), 10))	nyi to	Number of distinct digits needed to write the n-th triangular number in decimal representation.	nonn,base	0..10000
+A119799	filnum	1	1	k -> { final int k1 = ZUtils.distinctDigitCount(ZV(k + 1), 10); return ZUtils.distinctDigitCount(ZV(k), 10) == k1 && k1 == ZUtils.distinctDigitCount(ZV(k + 2), 10)	Numbers m such that m, m+1 and 2*m have the same number of distinct digits in decimal representation.	nonn,base	1..10000
+A119823	tuptraf	0	(n, s) -> s[0].+(ZUtils.distinctDigitCount(s[0], 10))	"0"	PREVIOUS	a(n) = a(n-1) + number of distinct digits of a(n-1) in decimal representation, a(0)=0.	nonn,base
+---- 2024-04-01 22:39:12
+A099960	ileave	0	new A005439()	new A110501()	An interleaving of the Genocchi numbers of the first and second kind, A110501 and A005439.
+A103676	filnum	1	1	k -> FA(k).toString(2).indexOf("1111000") >= 0	m! contains 5!.	nonn,base	1..70
+A103677	filnum	1	0	k -> FA(k).toString(2).indexOf("1111000") < 0	m! doesnot contain 5!.	nonn,base	1..30
+A103678	filnum	1	1	k -> FA(k).toString(2).indexOf("1011010000") >= 0	m! contains 6!.	nonn,base	1..10000
+A103679	filnum	1	0	k -> FA(k).toString(2).indexOf("1011010000") < 0	m! doesnot contain 6!.	nonn,base	1..72
+A103680	filnum	1	1	k -> FA(k).toString(2).indexOf("1001110110000") >= 0	m! contains 7!.	base,nonn	1..52
+A103681	filnum	1	0	k -> FA(k).toString(2).indexOf("1001110110000") < 0	m! doesnot contain 7!.	base,nonn	1..72
+A119797	filnum	1	0	k -> ZUtils.distinctDigitCount(ZV(k), 10) == ZUtils.distinctDigitCount(ZV(k + 1), 10)	Numbers m such that m and m+1 have the same number of distinct digits in decimal representation.	nonn,base	1..10000
+A119798	filnum	1	0	k -> ZUtils.distinctDigitCount(ZV(k), 10) == ZUtils.distinctDigitCount(ZV(2*k), 10)	Numbers m such that m and 2*m have the same number of distinct digits in decimal representation.	nonn,base	1..10000
+A132140	filnum	1	1	k -> Integer.toString(k, 3).matches("1[12]*")	Numbers containing no zeros in ternary representation and with an initial 1.	nonn,b
+A132141	filnum	1	1	k -> Integer.toString(k, 3).matches("1[012]*")	Numbers whose ternary representation begins with 1.	nonn,base,easy	1..10000
+A136400	lambdan	0	n -> new Z(n.toString().replaceAll("[2-9]", "1"))	Replace all digits greater than 1 with 1 (in decimal representation).	nonn,base,easy	0..9999	nyi
+A136419	lambdan	0	n -> BI((n + 2)*(n + 1), (n + 1)*n)	a(n) = binomial((n+2)*(n+1),(n+1)*n).	nonn	0..200	nyi
+A138037	tuptraf	0	(n, s) -> s[0]./(2 - s[0].mod(2)).+(n)	"0"	PREVIOUS	a(0) = 0, a(n+1) = n + a(n)/(2 - a(n) mod 2).	nonn
+A138038	recval	0	new A138037()		0..52	nyi	_Reinhard Zumkeller_
+A138039	recpos	0	new A138037()	, 0	Where record values occur in ?138037.	nonn	0..60
+A138166	filnum	1	1	n -> { final String sn = Integer.toString(n, 10); return sn.indexOf(Integer.toString(sn.length(), 10)) >= 0; }	Numbers containing their length in their decimal representation.	nonn,base	1..10000
+A138167	filnum	1	1	n -> { final String sn = Integer.toString(n,  3); return sn.indexOf(Integer.toString(sn.length(),  3)) >= 0; }	Numbers containing their length in ternary representation.	nonn,base	1..10000
+A138168	filnum	1	1	n -> { final String sn = Integer.toString(n,  2); return sn.indexOf(Integer.toString(sn.length(),  2)) >= 0; }	Numbers containing their length in binary representation.	nonn,base	1..10000
+A143202	filnum	1	1	k -> { final Z[] pq = JF(k).toZArray(); return pq.length == 2 && pq[0].+(2).equals(pq[1]); }	Numbers having exactly two distinct prime factors p, q with q=p+2.      nonn    1..250  nyi     _Reinhard Zumkeller_
+A160588	ileave	0	new A053645()	new A000027()
+A162644	filtpos	1	1	new A162511()	v -> v.equals(Z.ONE)	Numbers m such that A162511(m) = +1.	nonn
+A162645	filtpos	1	1	new A162511()	v -> v.equals(Z.NEG_ONE)	Numbers m such that A162511(m) = -1.	nonn
+A164306	trilambn	1	1	1	(n, k) -> ZV(k)./(ZV(k).gcd(ZV(n)))	nyi Fpto	Triangle read by rows: T(n, k) = k / gcd(k, n), 1 <= k <= n.
+A164898	diffs	1	new A014261()		First differences of numbers having only odd digits in their decimal representation.	nonn,base	1..10000
+A171970	lambdan	1	n -> CR.THREE.sqrt().*(ZV(n))./(ZV(2)).floor()	floor(n*sqrt(3)/2)	Integer part of the height of an equilateral triangle with side length n.	nonn,easy	1..73
+A171971	lambdan	1	n -> CR.THREE.sqrt().*(ZV(n).^(2))./(ZV(4)).floor()	floor(n^2 * sqrt(3) / 4)	Integer part of the area of an equilateral triangle with side length n.	nonn	1..1000
+A171973	lambdan	1	n -> CR.TWO.sqrt().*(ZV(n).^(3))./(ZV(12)).floor()	floor(n^3 * sqrt(2) / 12).
+A171974	lambdan	1	n -> CR.SIX.sqrt().*(ZV(n))./(ZV(3)).floor()	floor(n*sqrt(6)/3).
+A171975	lambdan	1	n -> CR.SIX.sqrt().*(ZV(n))./(ZV(4)).floor()	floor(n*sqrt(6)/4).
