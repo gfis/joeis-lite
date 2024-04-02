@@ -1,13 +1,4 @@
-
-
-
-
-
-
-
-
-
-
+---- 2024-04-02 14:03:17
 # A353690	convprod	1	1,1	new A000203(), new A000027()	The alternating sum of the n-th row equals A175254(n), the volume of the stepped pyramid with n levels described in A245092, als						Irregular triangle read by rows: T(n,k), n>=1, k>=1, in which column k lists the numbers of A353689 multiplied by A000330(k), and the first element of column k is in row A000217(k).
 % A075497	Triangle	Stirling2 triangle with scaled diagonals (powers of 2).	nonn,easy,tabl,changed	1..141	unkn	_Wolfdieter Lang_
 % A075498	A075497	Stirling2 triangle with scaled diagonals (powers of 3).	nonn,easy,tabl	1..1275	A075497/parm2	_Wolfdieter Lang_
@@ -50,60 +41,25 @@
 %N A216379 Triangle of generalized Stirling numbers S_{n,n}(5,k) read by rows (n>=0, n<=k<=5n) the sum of which is €182924.
 %N A271204 Triangle of generalized Stirling numbers of the second kind S(n,k) associated with the generalized Bell numbers €271049(n); S(n,k) = Sum_{j=0..k} (-1)^(k-j)*binomial(k,j)*Gamma((j+2)/3)*Gamma(3*n+j-1)/(Gamma(j)*Gamma(n+(j-1)/3))/(3^(n-1)*k!).
 %N A337789 Numbers k such that trajectory of k under repeated calculation of fecundity (x -> €070562(x))  eventually reaches 0.
----- 2024-04-01 15:16:25
-A070179	insect2	0	new A040028( 2, 2, true)	new A040028(  4, 2, false)	 x^ 2 = 2 has a solution mod p, but x^( 2^2) = 2 has no solution mod p.
-A070180	insect2	0	new A040028( 3, 2, true)	new A040028(  9, 2, false)	 x^ 3 = 2 has a solution mod p, but x^( 3^2) = 2 has no solution mod p.
-A070181	insect2	0	new A040028( 4, 2, true)	new A040028( 16, 2, false)	 x^ 4 = 2 has a solution mod p, but x^( 4^2) = 2 has no solution mod p.
-A070182	insect2	0	new A040028( 5, 2, true)	new A040028( 25, 2, false)	 x^ 5 = 2 has a solution mod p, but x^( 5^2) = 2 has no solution mod p.
-A070183	insect2	0	new A040028( 6, 2, true)	new A040028( 36, 2, false)	 x^ 6 = 2 has a solution mod p, but x^( 6^2) = 2 has no solution mod p.
-A070184	insect2	0	new A040028( 8, 2, true)	new A040028( 64, 2, false)	 x^ 8 = 2 has a solution mod p, but x^( 8^2) = 2 has no solution mod p.
-A070185	insect2	0	new A040028( 9, 2, true)	new A040028( 81, 2, false)	 x^ 9 = 2 has a solution mod p, but x^( 9^2) = 2 has no solution mod p.
-A070186	insect2	0	new A040028(10, 2, true)	new A040028(100, 2, false)	 x^10 = 2 has a solution mod p, but x^(10^2) = 2 has no solution mod p.
-A070187	insect2	0	new A040028(11, 2, true)	new A040028(121, 2, false)	 x^11 = 2 has a solution mod p, but x^(11^2) = 2 has no solution mod p.
-A070188	insect2	0	new A040028(12, 2, true)	new A040028(144, 2, false)	 x^12 = 2 has a solution mod p, but x^(12^2) = 2 has no solution mod p.
-A070191	filnum	1	1	k -> ZV(3*k).gcd(ZV(Z.EIGHT.^(k).+(1)).equals(ZV(3))	Numbers k such that gcd(3*k, 8^k+1) = 3.	nonn	1..10000	nyi	_Benoit Cloitre_ and _Dean Hickerson_
-A070220	filter	1	new LambdaSequence(1, k -> { final Z p10 = Z.TEN.^(k); return ZV(k).*(p10).+(p10.-(1)./(9)); })	PRIME	Primes of the form n (written in base 10) followed by n 1s.	base,nonn	1..8	nyi	_Amarnath Murthy_
-A070221	lambdan	0	n -> JF(n + 1).largestPrimeFactor().-(JF(n).largestPrimeFactor())	a(n)=LPF(n+1)-LPF(n), where LPF(n) denotes the largest prime factor of n.	sign	2..83	nyi	_Joseph L. Pe_
-A070222	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma().mod(fs.sopf()).isZero(); }	Numbers k such that the sum of prime divisors of k divides the sum of divisors of k.	easy,nonn	1..10000	nyi	_Benoit Cloitre_
-A070224	filtpos	1	1	new A005063().skip(1)	(k, v) -> JF(k).sigma(2).mod(v).isZero()	Numbers k such that the sum of p^2, where p are the prime divisors of k, divides the sum of d^2, where d are the divisors of k.	easy,nonn	1..10000	nyi	_Benoit Cloitre_
-A070225	filnum	1	1	k -> JF(k).sigma().-(k).-(SD(k, d -> ZV(d).IPP() ? ZV(d).^(2) : Z.ZERO)).equals(Z.NEG_ONE)	Numbers k such that (sigma(k)-k) - Sum_{p|k} p^2 = -1.	easy,nonn	1..30	nyi	_Benoit Cloitre_
-A070226	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma0().equals(fs.squareFreeKernel()); }	Numbers n such that the squarefree kernel of n is equal to the number of divisors of n.	nonn	1..150	nyi	_Jason Earls_
-A070237	filnum	1	k -> { final FactorSequence fs = JF(k); final int mb = fs.mobius(); return fs.core().-(fs.phi()).signum() != 2*mb*mb - 1); }	Numbers n such that the sign of core(n)-phi(n) is not equal to 2*mu(n)^2-1
-A070238	lambdan	1	n -> { final FactorSequence fs = JF(n); return ZV(fs.core().-(fs.phi()).signum()); }	Sign of core(n)-phi(n)
-A070247	filter	1	new A002385()	v -> ZUtils.digitSum(v) == 5	Palindromic primes with digit sum 5.	base,nonn	1..238	nyi	_Amarnath Murthy_
-A070248	filter	1	new A002385()	v -> ZUtils.digitSum(v) == 7	Palindromic primes with digit sum 7.	base,nonn	1..1111	nyi	_Amarnath Murthy_
-A070249	filter	1	new A002385()	v -> ZUtils.digitSum(v) == 8	Palindromic primes with digit sum 8.	base,nonn	1..1757	nyi	_Amarnath Murthy_
-A070250	filter	1	new A002385()	v -> ZUtils.digitSum(v) == 10	Palindromic primes with digit sum 10.	base,nonn	1..1777	nyi	_Amarnath Murthy_
-A070257	recval	0	new A070562()		Fecundity of n sets a new record.
-A070268	filnum	1	0	k -> MU(k) + MU(k + 1) + MU(k + 2) == -3	Numbers n such that mu(n) + mu(n+1) + mu(n+2) = -3.	nonn	1..10000	nyi	Sharon Sela (sharonsela(AT)hotmail.com)
-A070271	lambdan	0	n -> ZV(n).^(ZUtils.reverse(ZV(n)))	a(n) = n^reverse(n) (ignore leading 0s).	base,nonn	1..100	nyi	_Joseph L. Pe_
-A070272	filnum	1	0	k -> { final FactorSequence fs = JF(k); return fs.phi().+(fs.sigma()).equals(ZUtils.reverse(ZV(k))); }	Numbers n such that reverse(n) = phi(n) + sigma(n).	base,nonn	1..8	nyi	_Joseph L. Pe_
-A070274	filnum	1	0	k -> ZV(ZUtils.digitSum(k)).equals(JF(k).squareFreeKernel())	Numbers n such that sum of digits of n equals the squarefree part of n.	nonn,base	1..10000	nyi	_Benoit Cloitre_
-A070275	filnum	1	1	k -> ZV(ZUtils.digitSum(k)).equals(JF(k).sopf())	Numbers k such that the sum of the digits of k equals the sum of the prime divisors of k.	easy,nonn,base	1..10000	nyi	_Benoit Cloitre_
-A070276	filnum	1	0	k -> ZUtils.digitSum(k) == ZUtils.digitSum(ZV(k).^(3))	Numbers n such that sum of digits of n equals the sum of digits of n^3.	easy,nonn,base	1..100	nyi	_Benoit Cloitre_
-A070279	filnum	1	1	n -> ZUtils.digitSum(n) == ZUtils.digitSum(2*n)	Sum of digits of n equals the sum of digits of 2n.	easy,nonn,base	1..10000	nyi	_Benoit Cloitre_
-A070288	lambdan	0	n -> SD(n, d -> ZV(JF(d).omega()).*(JF(n/d).omega()))	a(n) = Sum_{d|n} omega(d)*omega(n/d).	easy,nonn	1..10000	nyi	_Benoit Cloitre_
-A070293	lambdan	0	n -> ZV(n).lcm(ZV(30))./(ZV(n).gcd(ZV(30)))	a(n) = lcm(30,n)/gcd(30,n).	easy,nonn	1..50	nyi	_Amarnath Murthy_
-A070306	lambdan	0	n -> ZV(PHI(n)).*(2)./(Z2(JF(n).omega()))	2*phi(n)/2^omega(n).	easy,nonn	1..10000	nyi	_Benoit Cloitre_
-A070314	lambdan	0	n -> JF(FA(n).add(1)).largestPrimeFactor().-(JF(Z2(n).+(1)).largestPrimeFactor())	P(n!+1)-P(2^n+1) where P(x) is the largest prime factor in x.	easy,sign	1..25	nyi	_Benoit Cloitre_
-A070418	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma0().equals(JF(fs.phi()).sigma0()); }	Numbers k such that k and phi(k) have the same number of divisors.	easy,nonn,changed	1..8407	nyi	_Benoit Cloitre_
-A070560	simtraf	0	new A070562()	(n, v) -> n == 0 ? Z.ONE : v.+(2)	a(0) = 1; for n > 0, a(n) = (fecundity of n) + 2.
-A070561	simtraf	0	new A070562()	(n, v) -> n == 0 ? Z.ZERO : v.+(1)	a(0) = 1; for n > 0, a(n) = (fecundity of n) + 1.
-A070655	filnum	1	1	k -> { final Z b = ZV(k); return b.+(1).IPP() && b.^(2).+(1).IPP() && b.^(4).+(1).IPP() && b.^(8).+(1).IPP(); }	Numbers n such that n+1, n^2+1, n^4+1 and n^8+1 are primes.	nonn	1..29	nyi	_Robert G. Wilson v_
-A070694	filnum	1	1	k -> { final Z b = ZV(k); return b.+(1).IPP() && b.^(2).+(1).IPP() && b.^(4).+(1).IPP() && b.^(8).+(1).IPP() && b.^(16).+(1).IPP(); }	Numbers b such that b+1, b^2+1, b^4+1, b^8+1 and b^16+1 are primes.	nonn	
-A070869	tuptraf	1	(n, s) -> s[0].+(ZUtils.reverse(new Z(s[0].toString(2))))	"16"	PREVIOUS	a(1) = 16; a(n+1) = sum of a(n) and (a(n) written in base 2 and reversed).	nonn,easy,base	1..32	nyi	_N. J. A. Sloane_
-A070873	filter	0	new A070871()	(k, v) -> v.compareTo(ZV(k)) > 0	nonn	1..62	nyi	_N. J. A. Sloane_ 
-A070874	filter	0	new A070871()	(k, v) -> v.compareTo(ZV(k)) < 0	nonn	1..58	nyi	_N. J. A. Sloane_ 
-A091740	lambdan	0	n -> new Q(3).^(2*n    ).*(RQ(0, n - 1, j -> new Q(3*j + 2, 3))).*(RQ(0, n - 1, j -> new Q(3*j + 1, 3))).*(ZV(6)).-(RQ(0, n - 1, j -> new Q(3*j + 2, 3)).*(FA(n)).*(4)).+(RQ(0, n - 1, j -> new Q(3*j + 4, 3)).*(FA(n)))./(FA(4)).num()	, with risefac(x, n)=Pochhammer(x, n).
-A111577	trilamb0	0	(n, k) -> SU(0, k, j -> BI(k, j).*(ZV(3*j + 1).^(n)).*(Z_1(k - j)))./(ZV(3).^(k).*(FA(k)))	T(n, k) = 1/(3^k*k!)*Sum_{j=0..k}((-1)^(k-j)*binomial(k,j)*(3*j+1)^n).
-A111578	lambdan	0	n -> SU(0, n - 1, i -> Z.FOUR.^(i - k + 1).*(BI(n - 1, i)).*(S2(i, k - 1)))	S(4,0,1)
-A145279	dirtraf	0	new A070562()	new A000045()	Fecundity of n-th Fibonacci number.
-A145280	dirtraf	0	new A070562()	new A000040()	Fecundity of n-th prime.
-A152230	triprov	0	A007318	A122196	Triangle read by rows, A007318 * A122196
-A177809	trilambn	0	1	1	(n, m) -> BI(5*n, 5*m)	Symmetrical sequence:Binomial(n,5*m)	nonn,tabl	0..39	nyi	_Roger L. Bagula_
-A190758	filter	0	new A040028(41, 2, true)	v -> v.mod(41) == 1	x^41 = 2 has a solution mod p, and p is congruent to 1 mod 41.
-A216363	filter	0	new A040028(59, 2, true)	v -> v.mod(59) == 1	Primes p congruent to 1 mod 59 such that x^59 = 2 has solution mod p.
-A252279	filter	0	new A040028( 8, 2, true)	v -> v.mod(16) == 1	Primes p congruent to 1 mod 16 such that x^8 = 2 has a solution mod p.
-A294716	filter	0	new A000161()	v -> v.equals(Z.FIVE)	Numbers that are the sum of 2 squares in exactly 5 ways.
-A306358	filter	0	new A000161()	(k, v) -> ((k & 1) == 1) && v.compareTo(Z.TWO) >= 0	Odd numbers k such that A000161(k) >= 2
-
+A070185	insect2	1	new A040028( 9, 2, true)	new A040028( 81, 2, false)	x^ 9 = 2 has a solution mod p, but x^( 9^2) = 2 has no solution mod p.						Primes p such that x^9 = 2 has a solution mod p, but x^(9^2) = 2 has no solution mod p.
+A070187	insect2	1	new A040028(11, 2, true)	new A040028(121, 2, false)	x^11 = 2 has a solution mod p, but x^(11^2) = 2 has no solution mod p.						Primes p such that x^11 = 2 has a solution mod p, but x^(11^2) = 2 has no solution mod p.
+A070222	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma().mod(fs.sopf()).isZero(); }	Numbers k such that the sum of prime divisors of k divides the sum of divisors of k.	easy,nonn	1..10000	nyi	_Benoit Cloitre_		Numbers k such that the sum of prime divisors of k divides the sum of divisors of k.
+A070224	filtpos	1	1	new A005063().skip(1)	(k, v) -> JF(k).sigma(2).mod(v).isZero()	Numbers k such that the sum of p^2, where p are the prime divisors of k, divides the sum of d^2, where d are the divisors of k.	easy,nonn	1..10000	nyi	_Benoit Cloitre_	Numbers k such that the sum of p^2, where p are the prime divisors of k, divides the sum of d^2, where d are the divisors of k.
+A070225	filnum	1	1	k -> JF(k).sigma().-(k).-(SD(k, d -> ZV(d).IPP() ? ZV(d).^(2) : Z.ZERO)).equals(Z.NEG_ONE)	Numbers k such that (sigma(k)-k) - Sum_{p|k} p^2 = -1.	easy,nonn	1..30	nyi	_Benoit Cloitre_		Numbers k such that (sigma(k)-k) - Sum_{p|k} p^2 = -1.
+A070247	filter	1	new A002385()	v -> ZUtils.digitSum(v) == 5	Palindromic primes with digit sum 5.	base,nonn	1..238	nyi	_Amarnath Murthy_		Palindromic primes with digit sum 5.
+A070250	filter	1	new A002385()	v -> ZUtils.digitSum(v) == 10	Palindromic primes with digit sum 10.	base,nonn	1..1777	nyi	_Amarnath Murthy_		Palindromic primes with digit sum 10.
+A070257	recval	1	new A070562()		Fecundity of n sets a new record.						Fecundity of n sets a new record.
+A070272	filnum	1	0	k -> { final FactorSequence fs = JF(k); return fs.phi().+(fs.sigma()).equals(ZUtils.reverse(ZV(k))); }	Numbers n such that reverse(n) = phi(n) + sigma(n).	base,nonn	1..8	nyi	_Joseph L. Pe_		Numbers n such that reverse(n) = phi(n) + sigma(n).
+A070274	filnum	1	0	k -> ZV(ZUtils.digitSum(k)).equals(JF(k).squareFreeKernel())	Numbers n such that sum of digits of n equals the squarefree part of n.	nonn,base	1..10000	nyi	_Benoit Cloitre_		Numbers n such that sum of digits of n equals the squarefree part of n.
+A070306	lambdan	1	n -> ZV(PHI(n)).*(2)./(Z2(JF(n).omega()))	2*phi(n)/2^omega(n).	easy,nonn	1..10000	nyi	_Benoit Cloitre_			a(n) = 2*phi(n)/2^omega(n).
+A070694	filnum	1	1	k -> { final Z b = ZV(k); return b.+(1).IPP() && b.^(2).+(1).IPP() && b.^(4).+(1).IPP() && b.^(8).+(1).IPP() && b.^(16).+(1).IPP(); }	Numbers b such that b+1, b^2+1, b^4+1, b^8+1 and b^16+1 are primes.	nonn					Numbers b such that b+1, b^2+1, b^4+1, b^8+1 and b^16+1 are primes.
+A070869	tuptraf	1	(n, s) -> s[0].+(ZUtils.reverse(new Z(s[0].toString(2))))	"16"	PREVIOUS	a(1) = 16; a(n+1) = sum of a(n) and (a(n) written in base 2 and reversed).	nonn,easy,base	1..32	nyi	_N. J. A. Sloane_	a(1) = 16; a(n+1) = sum of a(n) and (a(n) written in base 2 and reversed).
+A070873	filter	1	new A070871()	(k, v) -> v.compareTo(ZV(k)) > 0	nonn	1..62	nyi	_N. J. A. Sloane_			A070871(n) > n.
+A070874	filter	1	new A070871()	(k, v) -> v.compareTo(ZV(k)) < 0	nonn	1..58	nyi	_N. J. A. Sloane_			A070871(n) < n.
+A091740	lambdan	2	n -> new Q(3).^(2*n    ).*(RQ(0, n - 1, j -> new Q(3*j + 2, 3))).*(RQ(0, n - 1, j -> new Q(3*j + 1, 3))).*(ZV(6)).-(RQ(0, n - 1, j -> new Q(3*j + 2, 3)).*(FA(n)).*(4)).+(RQ(0, n - 1, j -> new Q(3*j + 4, 3)).*(FA(n)))./(FA(4)).num()	, with risefac(x, n)=Pochhammer(x, n).							Third column (k=4) sequence of array A091534 ((5,2)-Stirling2).
+A152230	triprov	0	A007318	A122196	Triangle read by rows, A007318 * A122196						Triangle read by rows, binomial transform of A122196
+A177809	trilambn	0	1	1	(n, m) -> BI(5*n, 5*m)	Symmetrical sequence:Binomial(n,5*m)	nonn,tabl	0..39	nyi	_Roger L. Bagula_	Symmetrical sequence:Binomial(n,5*m)
+A190758	filter	1	new A040028(41, 2, true)	v -> v.mod(41) == 1	x^41 = 2 has a solution mod p, and p is congruent to 1 mod 41.						Primes p such that x^41 = 2 has a solution mod p, and p is congruent to 1 mod 41.
+A216363	filter	1	new A040028(59, 2, true)	v -> v.mod(59) == 1	Primes p congruent to 1 mod 59 such that x^59 = 2 has solution mod p.						Primes p congruent to 1 mod 59 such that x^59 = 2 has solution mod p.
+A294716	filter	1	new A000161()	v -> v.equals(Z.FIVE)	Numbers that are the sum of 2 squares in exactly 5 ways.						Numbers that are the sum of 2 squares in exactly 5 ways.
+A306358	filter	1	new A000161()	(k, v) -> ((k & 1) == 1) && v.compareTo(Z.TWO) >= 0	Odd numbers k such that A000161(k) >= 2						Odd numbers which are the sum of two squares in two or more different ways.
