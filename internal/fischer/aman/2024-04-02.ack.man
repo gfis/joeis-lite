@@ -1,0 +1,112 @@
+---- 2024-04-02 14:03:16
+A070179	insect2	1	new A040028( 2, 2, true)	new A040028(  4, 2, false)	x^ 2 = 2 has a solution mod p, but x^( 2^2) = 2 has no solution mod p.
+A070180	insect2	1	new A040028( 3, 2, true)	new A040028(  9, 2, false)	x^ 3 = 2 has a solution mod p, but x^( 3^2) = 2 has no solution mod p.
+A070181	insect2	1	new A040028( 4, 2, true)	new A040028( 16, 2, false)	x^ 4 = 2 has a solution mod p, but x^( 4^2) = 2 has no solution mod p.
+A070182	insect2	1	new A040028( 5, 2, true)	new A040028( 25, 2, false)	x^ 5 = 2 has a solution mod p, but x^( 5^2) = 2 has no solution mod p.
+A070183	insect2	1	new A040028( 6, 2, true)	new A040028( 36, 2, false)	x^ 6 = 2 has a solution mod p, but x^( 6^2) = 2 has no solution mod p.
+A070184	insect2	1	new A040028( 8, 2, true)	new A040028( 64, 2, false)	x^ 8 = 2 has a solution mod p, but x^( 8^2) = 2 has no solution mod p.
+A070186	insect2	1	new A040028(10, 2, true)	new A040028(100, 2, false)	x^10 = 2 has a solution mod p, but x^(10^2) = 2 has no solution mod p.
+A070188	insect2	1	new A040028(12, 2, true)	new A040028(144, 2, false)	x^12 = 2 has a solution mod p, but x^(12^2) = 2 has no solution mod p.
+A070191	filnum	1	1	k -> ZV(3*k).gcd(ZV(Z.EIGHT.^(k).+(1)).equals(ZV(3))	Numbers k such that gcd(3*k, 8^k+1) = 3.	nonn	1..10000
+A070220	filter	1	new LambdaSequence(1, k -> { final Z p10 = Z.TEN.^(k); return ZV(k).*(p10).+(p10.-(1)./(9)); })	PRIME	Primes of the form n (written in base 10) followed by n 1s.	base,nonn	1..8
+A070221	lambdan	2	n -> JF(n + 1).largestPrimeFactor().-(JF(n).largestPrimeFactor())	a(n)=LPF(n+1)-LPF(n), where LPF(n) denotes the largest prime factor of n.	sign	2..83	nyi
+A070226	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma0().equals(fs.squareFreeKernel()); }	Numbers n such that the squarefree kernel of n is equal to the number of divisors of n.	nonn	1..150
+A070237	filnum	1	k -> { final FactorSequence fs = JF(k); final int mb = fs.mobius(); return fs.core().-(fs.phi()).signum() != 2*mb*mb - 1); }	Numbers n such that the sign of core(n)-phi(n) is not equal to 2*mu(n)^2-1
+A070238	lambdan	1	n -> { final FactorSequence fs = JF(n); return ZV(fs.core().-(fs.phi()).signum()); }	Sign of core(n)-phi(n)
+A070248	filter	1	new A002385()	v -> ZUtils.digitSum(v) == 7	Palindromic primes with digit sum 7.	base,nonn	1..1111
+A070249	filter	1	new A002385()	v -> ZUtils.digitSum(v) == 8	Palindromic primes with digit sum 8.	base,nonn	1..1757
+A070268	filnum	1	0	k -> MU(k) + MU(k + 1) + MU(k + 2) == -3	Numbers n such that mu(n) + mu(n+1) + mu(n+2) = -3.	nonn	1..10000
+A070271	lambdan	1	n -> ZV(n).^(ZUtils.reverse(ZV(n)))	a(n) = n^reverse(n) (ignore leading 0s).	base,nonn	1..100	nyi
+A070275	filnum	1	1	k -> ZV(ZUtils.digitSum(k)).equals(JF(k).sopf())	Numbers k such that the sum of the digits of k equals the sum of the prime divisors of k.	easy,nonn,base	1..10000
+A070276	filnum	1	0	k -> ZUtils.digitSum(k) == ZUtils.digitSum(ZV(k).^(3))	Numbers n such that sum of digits of n equals the sum of digits of n^3.	easy,nonn,base	1..100
+A070279	filnum	1	1	n -> ZUtils.digitSum(n) == ZUtils.digitSum(2*n)	Sum of digits of n equals the sum of digits of 2n.	easy,nonn,base	1..10000
+A070288	lambdan	1	n -> SD(n, d -> ZV(JF(d).omega()).*(JF(n/d).omega()))	a(n) = Sum_{d|n} omega(d)*omega(n/d).	easy,nonn	1..10000	nyi
+A070293	lambdan	1	n -> ZV(n).lcm(ZV(30))./(ZV(n).gcd(ZV(30)))	a(n) = lcm(30,n)/gcd(30,n).	easy,nonn	1..50	nyi
+A070314	lambdan	1	n -> JF(FA(n).add(1)).largestPrimeFactor().-(JF(Z2(n).+(1)).largestPrimeFactor())	P(n!+1)-P(2^n+1) where P(x) is the largest prime factor in x.	easy,sign	1..25	nyi
+A070418	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma0().equals(JF(fs.phi()).sigma0()); }	Numbers k such that k and phi(k) have the same number of divisors.	easy,nonn,changed	1..8407
+A070560	simtraf	0	new A070562()	(n, v) -> n == 0 ? Z.ONE : v.+(2)	a(0) = 1; for n > 0, a(n) = (fecundity of n) + 2.
+A070561	simtraf	0	new A070562()	(n, v) -> n == 0 ? Z.ZERO : v.+(1)	a(0) = 1; for n > 0, a(n) = (fecundity of n) + 1.
+A070655	filnum	1	1	k -> { final Z b = ZV(k); return b.+(1).IPP() && b.^(2).+(1).IPP() && b.^(4).+(1).IPP() && b.^(8).+(1).IPP(); }	Numbers n such that n+1, n^2+1, n^4+1 and n^8+1 are primes.	nonn	1..29
+A145279	dirtraf	0	new A070562()	new A000045()	Fecundity of n-th Fibonacci number.
+A145280	dirtraf	1	new A070562()	new A000040()	Fecundity of n-th prime.
+A252279	filter	1	new A040028( 8, 2, true)	v -> v.mod(16) == 1	Primes p congruent to 1 mod 16 such that x^8 = 2 has a solution mod p.
+---- 2024-04-02 19:19:37
+A070071	simtraf	0	new A000110()	(n, v) -> v.*(n)	a(n) = n*B(n), where B(n) are the Bell numbers, A000110
+A071648	lambdan	1	n -> { final int[] c = ZUtils.digitCounts(n); return ZV(c[2]*2 + c[4]*4 + c[6]*6 + c[8]*8); }
+A071649	lambdan	1	n -> { final int[] c = ZUtils.digitCounts(n); return ZV(c[1] + c[3]*3 + c[5]*5 + c[7]*7 + c[9]*9); }	Sum of odd decimal digits of n.	nonn,base,easy	1..92	nyi
+A119629	inverse	1	new A014631()	1	1
+A143203	filnum	1	1	k -> { final Z[] pq = JF(k).toZArray(); return pq.length == 2 && pq[0].+(4).equals(pq[1]); }	Numbers having exactly two distinct prime factors p, q with q=p+4.      nonn    1..250  nyi     _Reinhard Zumkeller_
+A143205	filnum	1	1	k -> { final Z[] pq = JF(k).toZArray(); return pq.length == 2 && pq[0].+(6).equals(pq[1]); }	Numbers having exactly two distinct prime factors p, q with q=p+6.      nonn    1..250  nyi     _Reinhard Zumkeller_
+A209268	inverse	1	new A054582()	1	1
+A241671	filtpos	1	1	new A065806()	ZERO
+A242408	filnum	1	1	n -> { final String s = Integer.toString(n, 3); return s.indexOf("12") >= 0 || s.indexOf("21") >= 0 || s.indexOf("22") >= 0; }	Numbers such that in ternary representation at least one pair of adjacent digits has a sum greater than 2.	nonn,base	1..10000
+A244747	filtpos	1	0	new A051145()	v -> v.bitCount() == 1	Positions at which powers of 2 occur in A051145.
+A356419	inverse	1	new A067576()	1	1	considered as a permutation of the positive integers.
+A361808	inverse	1	new A181820()	1	1
+---- 2024-04-02 21:43:16
+A180201	inverse	0	new A180200()	0	0
+A190136	lambdan	1	n -> JF(ZV(n).*(n + 1).*(n + 2).*(n + 3)).largestPrimeFactor()	Largest prime factor of n*(n+1)*(n+2)*(n+3).
+A242407	filnum	1	0	n -> { final String s = Integer.toString(n, 3); return s.indexOf("12") <  0 && s.indexOf("21") <  0 && s.indexOf("22") <  0; }	Numbers such that in ternary representation all pairs of adjacent digits have sums not greater than 2.	nonn,base	1..10000
+A307613	inverse	0	new A307485()	0	0	one odd, two even, four odd, eight even, etc; extended with a(0) = 0.
+A338254	inverse	0	new A338252()	0	0
+---- 2024-04-02 22:04:12
+A098961	filter	1	new A001481()	(k, v) -> k > 1 && v.mod(13) == 0
+A128727	tablamb	0	0	n -> new Integer[] { 0, (n-1)/2 }	(n, k) -> (n == 0) ? Z.ONE : new Q(BI(n, k).*(BI(n - k, k + 1))).*(new Q(ZV(3)).^(n - 1 - 2*k))./(ZV(n)).num()	T:=(n, k)->3^(n-1-2*k)*binomial(n, k)*binomial(n-k, k+1)/n: 1;
+A176991	trilambn	1	1	1	(n, m) -> BI(n + m, m).-(BI(n - m, m))	Triangle t(n,m) = binomial(n+m,m) - binomial(n-m,m), 1<=m<=n, read by rows.	nonn,tabl
+A177939	arrlamb	1	1	1	-1	(n, m) -> FA(n*m)./(FA(n + m - 1))	Array t(n,m)=(n*m)!/(n + m - 1)! read by antidiagonals.
+A177974	trilamb0	0	(n, k) -> FA(n)./(FA(n - k)).+(FA(n)./(FA(k))).-(FA(n))	Triangle T(n,k) = n!/(n - k)! + n!/k! - n! read by rows, 0 <= k <= n.	sign,tabl	0..139	nyi
+A275257	arrlamb	1	1	1	1	(x, n) -> SU(1, x, k -> ZV(IntegerUtils.gcd(n, k) == 1 ? 1 : 0))	phi(x,n) = Sum_{k=1..x} A054431(k,n).
+A337127	tablamb	1	1	n -> new Integer[] { 1, 10 }	(n, k) -> PR(0, k - 2, j -> ZV(j + 11 - k)).*(9).*(S2(n, k))	9*Pochhammer(11-k, k-1)*S2(n, k)
+A370913	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(4*j + k, 4)).*(ZV(4).^(n - k))).num()	Row sums of ?370915(n - k, k).
+A370982	lambdan	0	n -> RU(0, n, k -> RQ(0, n - k - 1, j -> new Q(2*j + k, 2)).*(ZV(2).^(n - k))).num()	Row sums of ?370419(n - k, k).
+A371318	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n  , k -> new Q(ZV(2*k + 1)).^(n - k - 1)  .*(BI(3*k, k))./(FA(n - k  )).*(FA(n))).num()	n!*sum(k=0, n, (2*k+1)^(n-k-1)*binomial(3*k, k)/(n-k)!);
+A371319	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(ZV(k + 1)).^(n - 2*k - 1)  .*(BI(2*k, k))./(FA(n - 2*k)).*(FA(n))).num()
+A371320	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(ZV(2*k + 1)).^(n - 2*k - 1).*(BI(3*k, k))./(FA(n - 2*k)).*(FA(n))).num()
+A371357	lambdan	0	n -> Z2(n - Integer.bitCount(n)).*(BI(2*n, n))	a(n) = 2^(n - HammingWeight(n)) * binomial(2*n, n)
+A359503	partsun	1	new A066839()			Partial sums of A066839.---- 2024-04-02 22:58:22
+A371193	lambdan	0	n -> Z2(4*n - 4).*(Z2(n).-(1))
+A371516	lambdan	0	n -> RU(0, n, k -> new Q(            BI(n - 1, n - k).*(BI(3*k + 2, k)), ZV(2*k + 3))).*(3).num()
+A371517	lambdan	0	n -> RU(0, n, k -> new Q(            BI(n - 1, n - k).*(BI(4*k + 3, k)), ZV(3*k + 4))).*(4).num()
+A371518	lambdan	0	n -> RU(0, n, k -> new Q(            BI(n - 1, n - k).*(BI(4*k + 1, k)), ZV(3*k + 2))).*(2).num()
+A371519	lambdan	0	n -> RU(0, n, k -> new Q(            BI(n - 1, n - k).*(BI(6*k + 4, k)), ZV(  k + 1))).num()
+A371520	lambdan	0	n -> RU(0, n, k -> new Q(            BI(n - 1, n - k).*(BI(5*k + 4, k)), ZV(4*k + 5))).*(5).num()
+A371521	lambdan	0	n -> RU(0, n, k -> new Q(            BI(n - 1, n - k).*(BI(6*k + 5, k)), ZV(5*k + 6))).*(6).num()
+A371522	lambdan	0	n -> RU(0, n, k -> new Q(            BI(n - 1, n - k).*(BI(6*k + 2, k)), ZV(5*k + 3))).*(3).num()
+A371523	lambdan	0	n -> RU(0, n, k -> new Q(            BI(n - 1, n - k).*(BI(6*k + 1, k)), ZV(5*k + 2))).*(2).num()
+A371537	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(6*k + 2, k)), ZV(6*k + 2))).*(2).num()
+A371538	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(6*k + 3, k)), ZV(6*k + 3))).*(3).num()
+A371539	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(6*k + 4, k)), ZV(6*k + 4))).*(4).num()
+A371540	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(6*k + 4, k)), ZV(  k + 1))).num()
+A371541	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(6*k + 6, k)), ZV(  k + 1))).num()
+A371542	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(3*k + 3, k)), ZV(  k + 1))).num()
+A371543	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(4*k + 4, k)), ZV(  k + 1))).num()
+A371544	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(5*k + 5, k)), ZV(  k + 1))).num()
+A371545	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(BI(n - 1, n - k)).*(BI(4*k + 2, k)), ZV(4*k + 2))).*(2).num()
+A371574	lambdan	0	n -> { final int r=2; final int s=1; final int t=5; final int u=2; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(   s*k     , n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371575	lambdan	0	n -> { final int r=2; final int s=1; final int t=6; final int u=2; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(   s*k     , n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371576	lambdan	0	n -> { final int r=2; final int s=1; final int t=3; final int u=0; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(   s*k     , n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371577	lambdan	0	n -> { final int r=2; final int s=1; final int t=4; final int u=0; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(   s*k     , n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371578	lambdan	0	n -> { final int r=2; final int s=1; final int t=5; final int u=0; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(   s*k     , n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371579	lambdan	0	n -> { final int r=2; final int s=2; final int t=5; final int u=2; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(   s*k     , n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371580	lambdan	0	n -> { final int r=2; final int s=2; final int t=5; final int u=0; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(   s*k     , n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371581	lambdan	0	n -> { final int r=2; final int s=1; final int t=5; final int u=2; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371582	lambdan	0	n -> { final int r=2; final int s=1; final int t=6; final int u=2; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371583	lambdan	0	n -> { final int r=2; final int s=1; final int t=5; final int u=0; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371584	lambdan	0	n -> { final int r=2; final int s=2; final int t=5; final int u=2; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371585	lambdan	0	n -> { final int r=2; final int s=2; final int t=5; final int u=0; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371586	lambdan	0	n -> { final int r=2; final int s=2; final int t=4; final int u=4; return RU(0, n, k -> new Q(BI(t*k + u*(n - k) + r, k).*(BI(   s*k           , n - k)), ZV(t*k + u*(n - k) + r))).*(r).num(); }
+A371607	lambdan	0	n -> { final int r=2; final int s=1; final int t=0; final int u=4; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(   s*k           , n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371608	lambdan	0	n -> { final int r=2; final int s=1; final int t=0; final int u=6; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(   s*k           , n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371609	lambdan	0	n -> { final int r=2; final int s=2; final int t=0; final int u=4; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(   s*k           , n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371610	lambdan	0	n -> { final int r=2; final int s=2; final int t=0; final int u=6; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(   s*k           , n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371612	lambdan	0	n -> { final int r=2; final int s=1; final int t=0; final int u=4; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371613	lambdan	0	n -> { final int r=2; final int s=1; final int t=0; final int u=6; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371614	lambdan	0	n -> { final int r=2; final int s=2; final int t=0; final int u=4; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371615	lambdan	0	n -> { final int r=2; final int s=2; final int t=0; final int u=6; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371616	lambdan	0	n -> { final int r=1; final int s=3; final int t=0; final int u=3; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371617	lambdan	0	n -> { final int r=2; final int s=3; final int t=0; final int u=6; return RU(0, n, k -> new Q(BI(      u*(n - k) + r, k).*(BI(n + (s - 1)*k - 1, n - k)), ZV(      u*(n - k) + r))).*(r).num(); }
+A371642	lambdan	0	n -> RQ(0, n, k -> new Q(FA(n*n + k*k), FA(n*n - k*k))).num()
+A371643	lambdan	0	n -> PR(0, n, k -> FA(n*n + k*k))
+A371644	lambdan	0	n -> PR(0, n, k -> BI(n*n + k*k, n*n - k*k))
+A371645	lambdan	0	n -> PR(0, n, k -> FA(2*k*k))
+A371646	lambdan	0	n -> PR(0, n, k -> BI(ZV(n).*(n).*(n), ZV(k).*(k).*(k)))
