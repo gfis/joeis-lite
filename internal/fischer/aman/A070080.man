@@ -1,11 +1,11 @@
-# A070080	nyi Ft	Smallest side of integer triangles [a(n) <= A070081(n) <= A070082(n)], sorted by perimeter, lexicographically ordered.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070081	nyi Ft	Middle side of integer triangles [A070080(n) <= a(n) <= A070082(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..89	nyi	_Reinhard Zumkeller_
-# A070082	nyi Ft	Largest side of integer triangles [A070080(n) <= A070081(n) <= a(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..86	nyi	_Reinhard Zumkeller_
-# A070083	nyi Ft	Perimeters of integer triangles, sorted by perimeter, sides lexicographically ordered.	nonn	1..63	nyi	_Reinhard Zumkeller_
-# A070084	nyi Ft	Greatest common divisor of sides of integer triangles [A070080(n), A070081(n), A070082(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070085	nyi t	a(n) = A070080(n)^2 + A070081(n)^2 - A070082(n)^2.	sign	1..66	nyi	_Reinhard Zumkeller_
-# A070086	nyi Ft	Areas of integer triangles [A070080(n), A070081(n), A070082(n)], rounded values.	nonn	1..972	nyi	_Reinhard Zumkeller_
-# A070088	nyi Ft	Number of integer-sided triangles with perimeter n and prime sides.	nonn	1..90	nyi	_Reinhard Zumkeller_
+A070080	parmof2	0	A070080	SIDE_A	0	nyi Ft	Smallest side of integer triangles [a(n) <= A070081(n) <= A070082(n)], sorted by perimeter, lexicographically ordered.	nonn	1..90	nyi	_Reinhard Zumkeller_
+A070081	parmof2	0	A070080	SIDE_B	0	nyi Ft	Middle side of integer triangles [A070080(n) <= a(n) <= A070082(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..89	nyi	_Reinhard Zumkeller_
+A070082	parmof2	0	A070080	SIDE_C	0	nyi Ft	Largest side of integer triangles [A070080(n) <= A070081(n) <= a(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..86	nyi	_Reinhard Zumkeller_
+A070083	parmof2	0	A070080	PERIMETER	0	Perimeters of integer triangles, sorted by perimeter, sides lexicographically ordered.	nonn	1..63	nyi	_Reinhard Zumkeller_
+A070084	parmof2	0	A070080	GCD	0	Greatest common divisor of sides of integer triangles [A070080(n), A070081(n), A070082(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..90	nyi	_Reinhard Zumkeller_
+A070085	parmof2	0	A070080	SHAPE	0	a(n) = A070080(n)^2 + A070081(n)^2 - A070082(n)^2.	sign	1..66	nyi	_Reinhard Zumkeller_
+A070086	parmof2	0	A070080	AREA	0	Areas of integer triangles [A070080(n), A070081(n), A070082(n)], rounded values.	nonn	1..972	nyi	_Reinhard Zumkeller_
+A070088	parmof3	0	A070080	COND_N	s -> hasPrimeSides(s)	Number of integer-sided triangles with perimeter n and prime sides.	nonn	1..90	nyi	_Reinhard Zumkeller_
 # A070090	Lambnce	Number of scalene integer triangles with perimeter n and prime side lengths.	nonn	1..90	expr_gen/lambda	_Reinhard Zumkeller_
 # A070091	nyi t	Number of isosceles integer triangles with perimeter n and relatively prime side lengths.	nonn	1..81	nyi	_Reinhard Zumkeller_
 # A070092	nyi Ft	Number of isosceles integer triangles with perimeter n and prime side lengths.	nonn	1..90	nyi	_Reinhard Zumkeller_

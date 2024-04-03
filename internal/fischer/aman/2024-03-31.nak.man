@@ -1,17 +1,26 @@
----- 2024-04-03 13:48:09
 # A144792	stir2	0	new €143463()	, 0	Stirling transform of €143463
 # A307772	stir2	0	new ()	, 0	Inverse Stirling transform of primes. A010051
+# A327430, A080384, A080385, A080386, A327431 
 # A345750	stir2	0	new €168243()	, 0	Stirling transform of €168243
 # A345752	stir2	0	new €292359()	, 0	Stirling transform of €292359
 # A345756	stir2	0	new €209902()	, 0	Stirling transform of €209902
 # A345757	stir2	0	new €298906()	, 0	Stirling transform of €298906
 # A345758	stir2	0	new €345762()	, 0	Stirling transform of €345762
 # A345759	stir2	0	new €185895()	, 0	
-Stirling transform of €185895
 # A354002	stir2	0	new ()	, 0	Inverse Stirling transform of odd primes.
 # A354003	stir2	0	new ()	, 0	Inverse Stirling transform of A008578 (1 together with the primes).
+---- 2024-04-03 13:48:09
 A070075	stir2	0	new A021009()	, 0	Stirling transform of A021009
+A071388	filnum	1	0	n -> ZV(Euler.inversePhi(ZV(n)).size()).IPP()	Card[InvPhi(n)] is a prime number
 A071650	tuptraf	0	(n, s) -> s[1].-(s[0])	""	new A071650(), new A071649()	Difference between sums of odd and even digits of n.	sign,look,base	1..10000	nyi	_Reinhard Zumkeller_
+A078550	filter	0	new A015773()	v -> { final FactorSequence fs = JF(v); return !fs.sigma().mod(fs.phi()).isZero(); }	Non-balanced numbers in A015773.	nonn	1..52	nyi	_Labos Elemer_     
+A080386	filtpos	1	0	new A080383()	v -> v.equals(ZV(8))	Numbers k such that there are exactly 8 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., €080383(k) = 8.	nonn	1..260	nyi	_Labos Elemer_
+A094490	filter	1	new A000040()	p -> Z.FOUR.+(p.^(2)).IPP() && Z2(4).+(p.^(4)).IPP() && Z2( 64).+(p.^( 64)).IPP()	2^j+p^j are primes for j=2,4, 64	1..26	nyi	_Labos Elemer_ 
+A094491	filter	1	new A000040()	p -> Z2(4).+(p.^(4)).IPP() && Z2(8).+(p.^(8)).IPP() && Z2(128).+(p.^(128)).IPP()	2^j+p^j are primes for j=4,8,128	1..22	nyi	_Labos Elemer_ 
+A096848	filter	1	new A096847()	PRIME
+A102326	filter	1	new A000040()	p -> JF(p.^(4).+(1)).largestPrimeFactor().compareTo(p) < 0	Primes p such that the largest prime divisor of p^4+1 is less than p.	
+A102327	filter	1	new A000040()	p -> JF(p.^(5).+(1)).largestPrimeFactor().compareTo(p) < 0	Primes p such that the largest prime factor of p^5 + 1 is less than p.	
+A102328	filter	1	new A000040()	p -> JF(p.^(6).+(1)).largestPrimeFactor().compareTo(p) < 0	Primes p such that the largest prime divisor of 1+p^6 is less than p.	
 A119791	tuptraf	1	(n, s) -> s[0].*(JF(s[0].*(n)).sigma0())	"1"	PREVIOUS	a(1) = 1, a(n) = number of divisors of n*a(n-1).	nonn	1..10000	nyi	_Reinhard Zumkeller_
 A134678	recpos	0	new A069360()	, 1	Where records occur in A069360.
 A135960	recpos	0	new A134852()	, 0	Indices where records occur in A134852.
@@ -19,26 +28,8 @@ A238324	tuptraf	1	(n, s) -> s[0].compareTo(ZV(2*n + 1)) > 0 ? s[0].-(2*n + 1) : 
 A277649	recpos	0	new A066400()	, 0
 A308554	stir2	0	new A000005()	, 0	Stirling transform of A000005
 A308555	stir2	0	new A000203()	, 0	Stirling transform of A000203
+A327430	filtpos	1	01	new A080383()	v -> v.equals(ZV(5))	Numbers k such that there are exactly 5 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., €080383(k) = 10.	nonn	1..5113	nyi	_Labos Elemer_
+A327431	filtpos	1	0	new A080383()	v -> v.equals(ZV(9))	Numbers k such that there are exactly 9 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., €080383(k) = 10.	nonn	1..5113	nyi	_Labos Elemer_
 A347041	stir2	0	new A000720()	, 0	Stirling transform of A000720
 A351681	stir2	0	new A008578()	, 0	Stirling transform of A008578
-
-A071388	filnum	1	0	n -> ZV(Euler.inversePhi(ZV(n)).size()).IPP()	Card[InvPhi(n)] is a prime number
-
-A078550	filter	0	new A015773()	v -> { final FactorSequence fs = JF(v); return !fs.sigma().mod(fs.phi()).isZero(); }	Non-balanced numbers in A015773.	nonn	1..52	nyi	_Labos Elemer_     
-
- 
-# A327430, A080384, A080385, A080386, A327431 
-A327430	filtpos	1	01	new A080383()	v -> v.equals(ZV(5))	Numbers k such that there are exactly 5 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., €080383(k) = 10.	nonn	1..5113	nyi	_Labos Elemer_
-A080386	filtpos	1	0	new A080383()	v -> v.equals(ZV(8))	Numbers k such that there are exactly 8 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., €080383(k) = 8.	nonn	1..260	nyi	_Labos Elemer_
-A327431	filtpos	1	0	new A080383()	v -> v.equals(ZV(9))	Numbers k such that there are exactly 9 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., €080383(k) = 10.	nonn	1..5113	nyi	_Labos Elemer_
-
-A096848	filter	1	new A096847()	PRIME
-
-A094490	filter	1	new A000040()	p -> Z.FOUR.+(p.^(2)).IPP() && Z2(4).+(p.^(4)).IPP() && Z2( 64).+(p.^( 64)).IPP()	2^j+p^j are primes for j=2,4, 64	1..26	nyi	_Labos Elemer_ 
-A094491	filter	1	new A000040()	p -> Z2(4).+(p.^(4)).IPP() && Z2(8).+(p.^(8)).IPP() && Z2(128).+(p.^(128)).IPP()	2^j+p^j are primes for j=4,8,128	1..22	nyi	_Labos Elemer_ 
-
-A102328	filter	1	new A000040()	p -> JF(p.^(6).+(1)).largestPrimeFactor().compareTo(p) < 0	Primes p such that the largest prime divisor of 1+p^6 is less than p.	
-A102326	filter	1	new A000040()	p -> JF(p.^(4).+(1)).largestPrimeFactor().compareTo(p) < 0	Primes p such that the largest prime divisor of p^4+1 is less than p.	
-A102327	filter	1	new A000040()	p -> JF(p.^(5).+(1)).largestPrimeFactor().compareTo(p) < 0	Primes p such that the largest prime factor of p^5 + 1 is less than p.	
-
 
