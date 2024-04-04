@@ -1,73 +1,81 @@
-A070080	parmof2	0	A070080	SIDE_A	0	nyi Ft	Smallest side of integer triangles [a(n) <= A070081(n) <= A070082(n)], sorted by perimeter, lexicographically ordered.	nonn	1..90	nyi	_Reinhard Zumkeller_
-A070081	parmof2	0	A070080	SIDE_B	0	nyi Ft	Middle side of integer triangles [A070080(n) <= a(n) <= A070082(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..89	nyi	_Reinhard Zumkeller_
-A070082	parmof2	0	A070080	SIDE_C	0	nyi Ft	Largest side of integer triangles [A070080(n) <= A070081(n) <= a(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..86	nyi	_Reinhard Zumkeller_
-A070083	parmof2	0	A070080	PERIMETER	0	Perimeters of integer triangles, sorted by perimeter, sides lexicographically ordered.	nonn	1..63	nyi	_Reinhard Zumkeller_
-A070084	parmof2	0	A070080	GCD	0	Greatest common divisor of sides of integer triangles [A070080(n), A070081(n), A070082(n)], sorted by perimeter, sides lexicographically ordered.	nonn	1..90	nyi	_Reinhard Zumkeller_
-A070085	parmof2	0	A070080	SHAPE	0	a(n) = A070080(n)^2 + A070081(n)^2 - A070082(n)^2.	sign	1..66	nyi	_Reinhard Zumkeller_
-A070086	parmof2	0	A070080	AREA	0	Areas of integer triangles [A070080(n), A070081(n), A070082(n)], rounded values.	nonn	1..972	nyi	_Reinhard Zumkeller_
-A070088	parmof3	0	A070080	COND_N	s -> hasPrimeSides(s)	Number of integer-sided triangles with perimeter n and prime sides.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070090	Lambnce	Number of scalene integer triangles with perimeter n and prime side lengths.	nonn	1..90	expr_gen/lambda	_Reinhard Zumkeller_
-# A070091	nyi t	Number of isosceles integer triangles with perimeter n and relatively prime side lengths.	nonn	1..81	nyi	_Reinhard Zumkeller_
-# A070092	nyi Ft	Number of isosceles integer triangles with perimeter n and prime side lengths.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070093	Lambnce	Number of acute integer triangles with perimeter n.	nonn	1..1000	expr_gen/lambda	_Reinhard Zumkeller_
-# A070094	nyi 	Number of acute integer triangles with perimeter n and relatively prime side lengths.	nonn	1..72	nyi	_Reinhard Zumkeller_
-# A070095	Lambnce	Number of acute integer triangles with perimeter n and prime side lengths.	nonn	1..90	expr_gen/lambda	_Reinhard Zumkeller_
-# A070096	nyi 	Number of integer triangles with perimeter n and relatively prime side lengths which are both acute and scalene.	nonn	1..75	nyi	_Reinhard Zumkeller_
-# A070097	nyi 	Number of integer triangles with perimeter n and prime side lengths which are both acute and scalene.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070098	Seque1	Number of integer triangles with perimeter n which are acute and isosceles.	nonn	1..10000	deriv	_Reinhard Zumkeller_
-# A070099	nyi 	Number of integer triangles with perimeter n and relatively prime side lengths which are acute and isosceles.	nonn	1..85	nyi	_Reinhard Zumkeller_
-# A070100	nyi 	Number of integer triangles with perimeter n and prime side lengths which are acute and isosceles.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070101	Abstnce	Number of obtuse integer triangles with perimeter n.	nonn	1..1000	unkn	_Reinhard Zumkeller_
-# A070102	nyi 	Number of obtuse integer triangles with perimeter n and relatively prime side lengths.	nonn	1..71	nyi	_Reinhard Zumkeller_
-# A070103	Lambnce	Number of obtuse integer triangles with perimeter n and prime side lengths.	nonn	1..90	expr_gen/lambda	_Reinhard Zumkeller_
-# A070104	nyi 	Number of integer triangles with perimeter n and relatively prime side lengths which are obtuse and scalene.	nonn	1..71	nyi	_Reinhard Zumkeller_
-# A070105	nyi 	Number of integer triangles with perimeter n and prime side lengths which are obtuse and scalene.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070106	Abstnce	Number of integer triangles with perimeter n which are obtuse and isosceles.	nonn	1..90	unkn	_Reinhard Zumkeller_
-# A070107	nyi 	Number of integer triangles with perimeter n and relatively prime side lengths which are obtuse and isosceles.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070108	nyi 	Number of integer triangles with perimeter n and prime side lengths which are obtuse and isosceles.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070109	nyi Ft	Number of right integer triangles with perimeter n and relatively prime side lengths.	nonn	1..20000	nyi	_Reinhard Zumkeller_
-# A070110	nyi t	Numbers k such that [A070080(k), A070081(k), A070082(k)] is an integer triangle with relatively prime side lengths.	nonn	1..789	nyi	_Reinhard Zumkeller_
-# A070111	nyi t	Numbers k such that [A070080(k), A070081(k), A070082(k)] is an integer triangle with prime sides.	nonn	1..65	nyi	_Reinhard Zumkeller_
-# A070112	nyi t	Numbers n such that [A070080(n), A070081(n), A070082(n)] is a scalene integer triangle.	nonn	1..920	nyi	_Reinhard Zumkeller_
-# A070113	nyi t	Numbers k such that [A070080(k), A070081(k), A070082(k)] is a scalene integer triangle with relatively prime side lengths.	nonn	1..596	nyi	_Reinhard Zumkeller_
-# A070114	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is a scalene integer triangle with prime side lengths.	nonn	1..40	nyi	_Reinhard Zumkeller_
-# A070115	nyi t	Numbers m such that [A070080(m), A070081(m), A070082(m)] is an isosceles integer triangle.	nonn	1..365	nyi	_Reinhard Zumkeller_
-# A070116	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an isosceles integer triangle with relatively prime side lengths.	nonn	1..56	nyi	_Reinhard Zumkeller_
-# A070117	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an isosceles integer triangle with prime side lengths.	nonn	1..48	nyi	_Reinhard Zumkeller_
-# A070118	nyi t	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an acute integer triangle.	nonn	1..431	nyi	_Reinhard Zumkeller_
-# A070119	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an acute integer triangle with relatively prime side lengths.	nonn	1..57	nyi	_Reinhard Zumkeller_
-# A070120	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an acute integer triangle with prime side lengths.	nonn	1..47	nyi	_Reinhard Zumkeller_
-# A070121	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an acute scalene integer triangle.	nonn	1..47	nyi	_Reinhard Zumkeller_
-# A070122	nyi t	Numbers m such that [A070080(m), A070081(m), A070082(m)] is an acute scalene integer triangle with relatively prime side lengths.	nonn	1..229	nyi	_Reinhard Zumkeller_
-# A070123	nyi t	Numbers m such that [A070080(m), A070081(m), A070082(m)] is an acute scalene integer triangle with prime side lengths.	nonn	1..1778	nyi	_Reinhard Zumkeller_
-# A070124	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an acute isosceles integer triangle.	nonn	1..59	nyi	_Reinhard Zumkeller_
-# A070125	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an acute isosceles integer triangle with relatively prime side lengths.	nonn	1..55	nyi	_Reinhard Zumkeller_
-# A070126	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an acute isosceles integer triangle with prime side lengths.	nonn	1..46	nyi	_Reinhard Zumkeller_
-# A070127	nyi t	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse integer triangle.	nonn	1..724	nyi	_Reinhard Zumkeller_
-# A070128	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse integer triangle with relatively prime side lengths.	nonn	1..55	nyi	_Reinhard Zumkeller_
-# A070129	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse integer triangle with prime side lengths.	nonn	1..41	nyi	_Reinhard Zumkeller_
-# A070130	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse scalene integer triangle.	nonn	1..53	nyi	_Reinhard Zumkeller_
-# A070131	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse scalene integer triangle with relatively prime side lengths.	nonn	1..53	nyi	_Reinhard Zumkeller_
-# A070132	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse scalene integer triangle with prime side lengths.	nonn	1..39	nyi	_Reinhard Zumkeller_
-# A070133	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse isosceles integer triangle.	nonn	1..47	nyi	_Reinhard Zumkeller_
-# A070134	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse isosceles integer triangle with relatively prime side lengths.	nonn	1..43	nyi	_Reinhard Zumkeller_
-# A070135	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse isosceles integer triangle with prime side lengths.	nonn	1..35	nyi	_Reinhard Zumkeller_
-# A070136	nyi t	Numbers m such that [A070080(m), A070081(m), A070082(m)] is a right integer triangle.	nonn	1..137	nyi	_Reinhard Zumkeller_
-# A070137	nyi t	Numbers k such that [A070080(k), A070081(k), A070082(k)] is a right integer triangle with relatively prime side lengths.	nonn	1..35	nyi	_Reinhard Zumkeller_
-# 
-# A070138	nyi 	Number of integer triangles with an integer area having relatively prime sides a, b and c such that a + b + c = n.	nonn	1..10000	nyi	_Reinhard Zumkeller_
-# A070139	Abst	Number of isosceles integer triangles with perimeter n having integral area.	nonn	1..1000	anopan	_Reinhard Zumkeller_
-# A070140	nyi 	Number of acute integer triangles with perimeter n having integral area.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# A070141	nyi 	Number of obtuse integer triangles with perimeter n having integral area.	nonn	1..90	nyi	_Reinhard Zumkeller_
-# 
-# A070142	nyi t	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an integer triangle with integer area.	nonn	1..41	nyi	_Reinhard Zumkeller_
-# A070143	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an integer triangle with integer area, having relatively prime side lengths.	nonn	1..39	nyi	_Reinhard Zumkeller_
-# A070144	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is a scalene integer triangle with integer area.	nonn	1..38	nyi	_Reinhard Zumkeller_
-# A070145	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an isosceles integer triangle with integer area.	nonn	1..36	nyi	_Reinhard Zumkeller_
-# A070146	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an acute integer triangle with integer area.	nonn	1..35	nyi	_Reinhard Zumkeller_
-# A070147	nyi 	Numbers n such that [A070080(n), A070081(n), A070082(n)] is an obtuse integer triangle with integer area.	nonn	1..38	nyi	_Reinhard Zumkeller_
-# A070148	nyi t	Numbers k such that [A070080(k), A070081(k), A070082(k)] is an integer Heronian triangle having triangular area.	nonn	1..89	nyi	_Reinhard Zumkeller_
-# A070149	nyi Ft	Areas of integer Heronian triangles [A070080(A070142(n)), A070081(A070142(n)), A070082(A070142(n))].	nonn	1..1265	nyi	_Reinhard Zumkeller_
+---- 2024-04-04 11:36:22
+A051493	parmof3	0	A070080	COND_N	s -> hasCoPrimeSides(s)	
+A070081	parmof2	1	A070080	SIDE_B	0	nyi Ft	Middle side of integer triangles [A070080(n) <= a(n) <= A070082(n)], sorted by perimeter, sides lexicographically ordered.
+A070082	parmof2	1	A070080	SIDE_C	0	nyi Ft	Largest side of integer triangles [A070080(n) <= A070081(n) <= a(n)], sorted by perimeter, sides lexicographically ordered.
+A070083	parmof2	1	A070080	PERIMETER	0	Perimeters of integer triangles, sorted by perimeter, sides lexicographically ordered.	nonn
+A070084	parmof2	1	A070080	GCD	0	Greatest common divisor of sides of integer triangles [A070080(n), A070081(n), A070082(n)], sorted by perimeter, sides lexicographically ordered.	nonn
+A070085	parmof2	1	A070080	SHAPE	0	a(n) = A070080(n)^2 + A070081(n)^2 - A070082(n)^2.	sign
+A070086	parmof2	1	A070080	AREA	0	Areas of integer triangles [A070080(n), A070081(n), A070082(n)], rounded values.	nonn
+A070088	parmof3	1	A070080	COND_N	s -> hasPrimeSides(s)	Number of integer-sided triangles with perimeter n and prime sides.	nonn
+A070090	parmof3	1	A070080	COND_N	s -> isScalene(s) && hasPrimeSides(s)	Number of xx s  n and xx .
+A070091	parmof3	0	A070080	COND_N	s -> isIsosceles(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
+A070092	parmof3	1	A070080	COND_N	s -> isIsosceles(s) && hasPrimeSides(s)	Number of xx s  n and xx .
+A070093	parmof3	0	A070080	COND_N	s -> isAcute(s)	Number of xx s  n.
+A070094	parmof3	0	A070080	COND_N	s -> isAcute(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
+A070095	parmof3	1	A070080	COND_N	s -> isAcute(s) && hasPrimeSides(s)	Number of xx s  n and xx .
+A070096	parmof3	1	A070080	COND_N	s -> isAcute(s) && isScalene(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are both xx and xx.
+A070097	parmof3	1	A070080	COND_N	s -> isAcute(s) && isScalene(s) && hasPrimeSides(s)	Number of s  n and xx  which are both xx and xx.
+A070098	parmof3	0	A070080	COND_N	s -> isAcute(s) && isIsosceles(s)	Number of s  n which are xx and xx.
+A070099	parmof3	0	A070080	COND_N	s -> isAcute(s) && isIsosceles(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070100	parmof3	1	A070080	COND_N	s -> isAcute(s) && isIsosceles(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070101	parmof3	0	A070080	COND_N	s -> isObtuse(s)	Number of xx s  n.
+A070102	parmof3	0	A070080	COND_N	s -> isObtuse(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
+A070103	parmof3	1	A070080	COND_N	s -> isObtuse(s) && hasPrimeSides(s)	Number of xx s  n and xx .
+A070104	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isScalene(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070105	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isScalene(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070106	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isIsosceles(s)	Number of s  n which are xx and xx.
+A070107	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isIsosceles(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070108	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isIsosceles(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070109	parmof3	1	A070080	COND_N	s -> isRight(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
+A070110	parmof3	1	A070080	FILTER	s -> hasCoPrimeSides(s)	an  with xx .
+A070111	parmof3	1	A070080	FILTER	s -> hasPrimeSides(s)	an  with xx sides.
+A070112	parmof3	1	A070080	FILTER	s -> isScalene(s)	a xx .
+A070113	parmof3	1	A070080	FILTER	s -> isScalene(s) && hasCoPrimeSides(s)	a xx  with xx .
+A070114	parmof3	1	A070080	FILTER	s -> isScalene(s) && hasPrimeSides(s)	a xx  with xx .
+A070115	parmof3	1	A070080	FILTER	s -> isIsosceles(s)	an xx .
+A070116	parmof3	1	A070080	FILTER	s -> isIsosceles(s) && hasCoPrimeSides(s)	an xx  with xx .
+A070117	parmof3	1	A070080	FILTER	s -> isIsosceles(s) && hasPrimeSides(s)	an xx  with xx .
+A070118	parmof3	1	A070080	FILTER	s -> isAcute(s)	an xx .
+A070119	parmof3	1	A070080	FILTER	s -> isAcute(s) && hasCoPrimeSides(s)	an xx  with xx .
+A070120	parmof3	1	A070080	FILTER	s -> isAcute(s) && hasPrimeSides(s)	an xx  with xx .
+A070121	parmof3	1	A070080	FILTER	s -> isAcute(s) && isScalene(s)	an xx xx .
+A070122	parmof3	1	A070080	FILTER	s -> isAcute(s) && isScalene(s) && hasCoPrimeSides(s)	an xx xx  with xx .
+A070123	parmof3	1	A070080	FILTER	s -> isAcute(s) && isScalene(s) && hasPrimeSides(s)	an xx xx  with xx .
+A070124	parmof3	1	A070080	FILTER	s -> isAcute(s) && isIsosceles(s)	an xx xx .
+A070125	parmof3	1	A070080	FILTER	s -> isAcute(s) && isIsosceles(s) && hasCoPrimeSides(s)	an xx xx  with xx .
+A070126	parmof3	1	A070080	FILTER	s -> isAcute(s) && isIsosceles(s) && hasPrimeSides(s)	an xx xx  with xx .
+A070127	parmof3	1	A070080	FILTER	s -> isObtuse(s)	an xx .
+A070128	parmof3	1	A070080	FILTER	s -> isObtuse(s) && hasCoPrimeSides(s)	an xx  with xx .
+A070129	parmof3	1	A070080	FILTER	s -> isObtuse(s) && hasPrimeSides(s)	an xx  with xx .
+A070130	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isScalene(s)	an xx xx .
+A070131	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isScalene(s) && hasCoPrimeSides(s)	an xx xx  with xx .
+A070132	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isScalene(s) && hasPrimeSides(s)	an xx xx  with xx .
+A070133	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isIsosceles(s)	an xx xx .
+A070134	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isIsosceles(s) && hasCoPrimeSides(s)	an xx xx  with xx .
+A070135	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isIsosceles(s) && hasPrimeSides(s)	an xx xx  with xx .
+A070136	parmof3	1	A070080	FILTER	s -> isRight(s)	a xx .
+A070137	parmof3	1	A070080	FILTER	s -> isRight(s) && hasCoPrimeSides(s)	a xx  with xx .
+A070138	parmof3	1	A070080	COND_N	s -> hasCoPrimeSides(s) && hasIntArea(s)	Number of s with an xx having xx sides a, b and c such that a + b + c = n.
+A070139	parmof3	0	A070080	COND_N	s -> isIsosceles(s) && hasIntArea(s)	Number of xx s  n having xx.
+A070140	parmof3	1	A070080	COND_N	s -> isAcute(s) && hasIntArea(s)	Number of xx s  n having xx.
+A070141	parmof3	1	A070080	COND_N	s -> isObtuse(s) && hasIntArea(s)	Number of xx s  n having xx.
+A070142	parmof3	1	A070080	FILTER	s -> hasIntArea(s)	an  with xx.
+A070143	parmof3	1	A070080	FILTER	s -> hasCoPrimeSides(s) && hasIntArea(s)	an  with xx, having xx .
+A070144	parmof3	1	A070080	FILTER	s -> isScalene(s) && hasIntArea(s)	a xx  with xx.
+A070145	parmof3	1	A070080	FILTER	s -> isIsosceles(s) && hasIntArea(s)	an xx  with xx.
+A070146	parmof3	1	A070080	FILTER	s -> isAcute(s) && hasIntArea(s)	an xx  with xx.
+A070147	parmof3	1	A070080	FILTER	s -> isObtuse(s) && hasIntArea(s)	an xx  with xx.
+A070148	parmof3	0	A070080	FILTER	s -> hasTrigonalArea(s)	an integer Heronian triangle having triangular area.
+# A070149	parmof3	0	A070080	FILTER	Areas of integer Heronian triangles [A070080(A070142(n)), A070081(A070142(n)), A070082(A070142(n))].	nonn	1..1265	nyi	_Reinhard Zumkeller_
 # A070150	filter	1	new A070149()	TRIANGULAR	Triangular areas of integer Heronian triangles.	nonn,nice	1..43	nyi	_Reinhard Zumkeller_
 # A070151	nce1	a(n) is one fourth of the even leg of the unique primitive Pythagorean triangle with hypotenuse A002144(n).	easy,nonn	1..1000	deriv	_Lekraj Beedassy_
-# 
+A070200	parmof2	0	A070080	INRAD	Inradii of s [A070080(n), A070081(n), A070082(n)], rounded values.
+A070201	parmof3	0	A070080	COND_N	s -> hasIntInRadius(s)	  Number of s  n having xx.
+A070202	parmof3	0	A070080	COND_N	s -> !hasCoPrimeSides(s) && hasIntInRadius(s)	    Number of s with xx, perimeter n and xx .
+A070203	parmof3	0	A070080	COND_N	s -> isScalene(s) && hasIntInRadius(s)	  Number of xx s  n having xx.
+A070204	parmof3	0	A070080	COND_N	s -> isIsosceles(s) && hasIntInRadius(s)	        Number of xx s  n having xx.
+A070205	parmof3	0	A070080	COND_N	s -> isAcute(s) && hasIntInRadius(s)	    Number of xx s  n having xx.
+A070206	parmof3	0	A070080	COND_N	s -> isObtuse(s) && hasIntInRadius(s)	   Number of xx s  n having xx.
+A070208	parmof3	0	A070080	COND_N	s -> hasIntArea(s) && !hasIntInRadius(s)	 Number of s  n having xx but not xx.
+A070209	parmof3	0	A070080	FILTER	s -> hasIntInRadius(s)	  Numbers n such that [A070080(n), A070081(n), A070082(n)] is an  with xx.
+A070210	parmof3	0	A070080	INRAD	0	  xx of s [A070080(A070209(n)), A070081(A070209(n)), A070082(A070209(n))].
