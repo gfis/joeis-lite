@@ -549,7 +549,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
                 $imports{"irvine.oeis.transform.$class_name"} = $itype;
             } elsif (($class_name !~ m{\AA\d+})               # A-number
                 &&   ($class_name !~ m{\.})                   # contains dot
-                &&   ($class_name !~ m{\A[A-Z\_]+\d?\Z})      # only uppercase = constant; POWER2
+                &&   ($class_name !~ m{\A[A-Z\_]+\d*\Z})      # only uppercase = constant; POWER2
                 &&   ($class_name !~ m{\A(String|Integer|Long|Boolean|StringBuilder)\Z}) # common Java types
                 &&   ($class_name !~ m{\AComputableReals\Z})
                 &&   ($class_name !~ m{\AUnaryCRFunction\Z})

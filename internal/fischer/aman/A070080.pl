@@ -102,7 +102,7 @@ A070209	parmof3	0	A070080	COND_N	cccc	Numbers n such that [A070080(n), A070081(n
 A070210	parmof3	0	A070080	FILTER	cccc	integral inradii of integer triangles [A070080(A070209(n)), A070081(A070209(n)), A070082(A070209(n))].	nonn	1..84	nyi	_Reinhard Zumkeller_
 A070200	parmof3	0	A070080	FILTER	cccc	Inradii of integer triangles [A070080(n), A070081(n), A070082(n)], rounded values.	nonn	1..90	nyi	_Reinhard Zumkeller_
 
-# A084820		Numbers n such that n, sigma(n) and phi(n) form an integer triangle, where sigma=A000203 is the divisor sum and phi=A000010 the totient.
+# A084820	Numbers n such that n, sigma(n) and phi(n) form an integer triangle, where sigma=A000203 is the divisor sum and phi=A000010 the totient.
 # A107572	nyi	List of triples a,b,c that are sidelengths of a scalene triangle; a<b<c, lexically by perimeter.	nonn,tabf	1..103	nyi	_Clark Kimberling_
 # A107573	nyi	a(n)=least sidelength of n-th triangle listed at A107572.	nonn	1..105	nyi	_Clark Kimberling_
 # A107574	nyi	a(n)=middle sidelength of n-th triangle listed at A107572.	nonn	1..95	nyi	_Clark Kimberling_
@@ -111,7 +111,6 @@ A070200	parmof3	0	A070080	FILTER	cccc	Inradii of integer triangles [A070080(n), 
 # A107577	nyi	a(n)=greatest integer p such that a^p + b^p > c^p, where (a,b,c) is the n-th integer-sided triangle listed at A107572.	nonn	1..105	nyi	_Clark Kimberling_
 %N A135622 16*Area^2 of integer triangles [€070080(n),€070081(n),€070082(n)].
 %F A135622 a(n)=(u+v+w)*(-u+v+w)*(u-v+w)*(u+v-w), where u=€070080(n), v=€070081(n), w=€070082(n).
-%e A135622 €070080(4)=1, €070081(4)=3, €070082(4)=3, so a(4)=(1+3+3)*(-1+3+3)*(1-3+3)*(1+3-3)=35.
 %C A307894 Replacing the shorter legs with the sum and absolute difference of the shorter legs may result in an
 %Y A307894 Cf. €070081, €070112.
 %Y A316841 Other related sequences: A051493, €070080, €070081, €070082, €070110.

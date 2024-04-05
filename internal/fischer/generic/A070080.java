@@ -52,8 +52,6 @@ public class A070080 extends AbstractSequence {
   protected long mPeri; // perimeter = a + b+ c
   protected Function<Long[], Boolean> mCond; // condition for all triangle(s)
   
-  private final static boolean USE_DOUBLE = true;
-
   /** Construct the sequence. */
   public A070080() {
     this(1, SIDE_A, null);
@@ -141,22 +139,10 @@ public class A070080 extends AbstractSequence {
         return Z.valueOf(mA*mA + mB*mB - mC*mC);
       case AREA:
         advance();
-        if (USE_DOUBLE) {
-          return Z.valueOf(Math.round(getArea(new Long[] { mA, mB, mC })));
-        } else {
-          final CR s = CR.valueOf(mPeri).divide(2);
-          return s.subtract(mA).multiply(s.subtract(mB)).multiply(s.subtract(mC)).multiply(s).sqrt().round();
-          // return new Q(sqArea16(new Long[] { mA, mB, mC }).sqrt(), Z.FOUR).round();
-        }
+        return Z.valueOf(Math.round(getArea(new Long[] { mA, mB, mC })));
       case INRAD:
         advance();
-        if (USE_DOUBLE) {
-          return Z.valueOf(Math.round(getInRadius(new Long[] { mA, mB, mC })));
-        } else {
-          final CR s = CR.valueOf(mPeri).divide(2);
-          return s.subtract(mA).multiply(s.subtract(mB)).multiply(s.subtract(mC)).divide(s).sqrt().round();
-          // return CR.valueOf(sqArea16(new Long[] { mA, mB, mC })).multiply(Z.FOUR).divide(CR.valueOf(mPeri*mPeri)).sqrt().round();
-        }
+        return Z.valueOf(Math.round(getInRadius(new Long[] { mA, mB, mC })));
       case COND:
         ++mN;
         if(mN < 3) { // 1,1,1 with mPeri=3 is the minimal triangle
@@ -191,22 +177,6 @@ public class A070080 extends AbstractSequence {
           }
         }
     }
-  }
-
-  /**
-   * Compute the square of the area, times 16.
-   * Heron&apos;s theorem: <code>area = sqrt(p/2*(p/2 - a)*(p/2 - b)*(p/2 - c)) with p = a + b + c;</code> or
-   * <code>area = sqrt(sqArea16 / 16)</code> and 
-   * radius of incircle = <code>area / (p/2)</code>.
-   * @return <code>p*(p - 2*a)*(p - 2*b)*(p - 2*c)</code>
-   */
-  protected static Z sqArea16(final Long[] s) {
-    final Z p = Z.valueOf(s[0] + s[1] + s[2]);
-    final Z h16 = p
-        .multiply(p.subtract(2 * s[0]))
-        .multiply(p.subtract(2 * s[1]))
-        .multiply(p.subtract(2 * s[2]));
-    return h16.compareTo(Z.ZERO) < 0 ? Z.ZERO : h16;
   }
 
   /**
@@ -262,22 +232,22 @@ public class A070080 extends AbstractSequence {
         && Z.valueOf(s[1]).isProbablePrime()
         && Z.valueOf(s[2]).isProbablePrime();
   }
+
   protected static boolean isAcute(final Long[] s) {
     return s[0]*s[0] + s[1]*s[1] > s[2]*s[2];
   }
 
   protected static boolean isHeronian(final Long[] s) {
-    final Z h16 = sqArea16(s);
-    if (h16.compareTo(Z.ZERO) >= 0) {
-      final Z h4 = h16.sqrt();
-      return h16.auxiliary() == 1; // perfect square
-    } else {
-      return false;
-    }
+    final long a = s[0].longValue();
+    final long b = s[1].longValue();
+    final long c = s[2].longValue();
+    final long p = a + b + c; 
+    final long heron16 = (p - 2*a)*(p - 2*b)*(p - 2*c)*p*2;
+    return heron16 > 0 && Z.valueOf(heron16).isSquare();
   }
 
   protected static boolean isIsosceles(final Long[] s) {
-    return s[0] == s[1] || s[1] == s[2];
+    return s[0].longValue() == s[1].longValue() || s[1].longValue() == s[2].longValue();
   }
 
   protected static boolean isObtuse(final Long[] s) {
@@ -372,38 +342,39 @@ public class A070080 extends AbstractSequence {
         oldPeri = mPeri;
       }
       if (mPeri <= periEnd) {
-        System.out.print(String.format("| %5d | %5d |%4d%4d%4d |", n, mPeri, mA, mB, mC));
-        System.out.print(String.format("%6d |%6d |", LongUtils.gcd(mA, mB, mC), mA*mA + mB*mB - mC*mC));
+        final StringBuilder sb = new StringBuilder(128);
         final Long[] s = new Long[] { mA, mB, mC};
+        sb.append(String.format("| %5d | %5d |%4d%4d%4d |", n, mPeri, mA, mB, mC));
+        sb.append(String.format("%6d |%6d |", LongUtils.gcd(mA, mB, mC), mA*mA + mB*mB - mC*mC));
         String H = String.format("%12.6f", getArea    (s)).replace(',', '.');
         String I = String.format( "%8.6f", getInRadius(s)).replace(',', '.');
         if (isScalene(s)) {
-          System.out.print(" s");
+          sb.append(" s");
         }
         if (isIsosceles(s)) {
-          System.out.print(" i");
+          sb.append(" i");
         }
         if (hasPrimeSides(s)) {
-          System.out.print(" p");
+          sb.append(" p");
         }  else if (hasCoPrimeSides(s)) {
-          System.out.print(" r");
+          sb.append(" r");
         } else {
-          System.out.print("  ");
+          sb.append("  ");
         }
         
         if (isAcute(s)) {
-          System.out.print(" A");
+          sb.append(" A");
         }  else if (isRight(s)) {
-          System.out.print(" R");
+          sb.append(" R");
         }  else if (isObtuse(s)) {
-          System.out.print(" O");
+          sb.append(" O");
         } else {
-          System.out.print("  ");
+          sb.append("  ");
         }
-        System.out.print(hasIntArea(s) ? " H" : "  ");
-        System.out.print(hasIntInRadius(s) ? " I" : "  ");
-        System.out.print(" | " + H + " " + I);
-        System.out.println();
+        sb.append(hasIntArea(s) ? " H" : "  ");
+        sb.append(hasIntInRadius(s) ? " I" : "  ");
+        sb.append(" | " + H + " " + I);
+        System.out.println(sb);
       }
     }
   }
