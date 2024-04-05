@@ -137,6 +137,13 @@ gfttest:
 	$(JAVA) irvine.oeis.triangle.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
 gramtest:
 	$(JAVA) irvine.test.GramMatrixTest -n $(NT) -gm$(DIAG) "$(GM)" $(BF) $(EIT)
+PS=1
+PE=50
+intritest:
+	$(JAVA) irvine.oeis.a070.A070080 -s $(PS) -e $(PE)
+intridiff:
+	$(JAVA) irvine.oeis.a070.A070080 -s 1 -e 50 > $@.tmp
+	diff -y -w --width=160 --suppress-common-lines $@.tmp $(CONTRIB)/intripl50.tmp
 mortest:
 	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -n $(NT) -i "$(INIT)" -a "$(ANCH)" -m "$(MAP)" -o $(OFFSET)
 rstest:

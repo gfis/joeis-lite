@@ -296,19 +296,6 @@ public class A070080 extends AbstractSequence {
     return s[0] <= s[1] && s[1] <= s[2] && s[0] + s[1] > s[2];
   }
 
-  private void printHeader() {
-    System.out.println("+-------+-------+-------------+-------+-------+-----------+\n");
-  }
-
-  private void printLine(final long n) {
-    mA = 1;
-    mB = 0;
-    advance();
-    System.out.print(String.format("| %5d | %5d |%4d%4d%4d |", n, mPeri, mA, mB, mC));
-    
-    System.out.println();
-  }
-
   /**
    * Test method: print Zumkeller&apos; list for a range of perimeters
    * @param args command line arguments:
@@ -340,17 +327,13 @@ public class A070080 extends AbstractSequence {
         // ignored
       }
     }
-
-    final A070080 seq = new A070080();
-    long n = 0;
-    seq.printHeader();
-    seq.mPeri = periStart; 
-    while (seq.mPeri <= periEnd) {
-      ++n;
-      seq.printLine(n);
-    }
-    seq.printHeader();
+    new A070080().printList(periStart, periEnd);
   }
+
+  private void printSeparator() {
+    System.out.println("+-------+-------+-------------+-------+-------+-----------+");
+  }
+
 /*
         print sprintf("| %5d | %5d |%4d%4d%4d |", n, mPeri, mA, mB, mC);
         print sprintf("%6d |%6d |", &gcd(mA, &gcd(mB, mC)), mA*mA + mB*mB - mC*mC);
@@ -375,4 +358,53 @@ public class A070080 extends AbstractSequence {
         print " | $H $I";
         print "\n";
 */
+  private void printList(final long periStart, final long periEnd) {
+    mPeri = periStart;
+    long oldPeri = mPeri; 
+    mA = 1;
+    mB = 0;
+    int n = 0;
+    while (mPeri <= periEnd) {
+      ++n;
+      advance();
+      if (mPeri != oldPeri) {
+        printSeparator();
+        oldPeri = mPeri;
+      }
+      if (mPeri <= periEnd) {
+        System.out.print(String.format("| %5d | %5d |%4d%4d%4d |", n, mPeri, mA, mB, mC));
+        System.out.print(String.format("%6d |%6d |", LongUtils.gcd(mA, mB, mC), mA*mA + mB*mB - mC*mC));
+        final Long[] s = new Long[] { mA, mB, mC};
+        String H = String.format("%12.6f", getArea    (s)).replace(',', '.');
+        String I = String.format( "%8.6f", getInRadius(s)).replace(',', '.');
+        if (isScalene(s)) {
+          System.out.print(" s");
+        }
+        if (isIsosceles(s)) {
+          System.out.print(" i");
+        }
+        if (hasPrimeSides(s)) {
+          System.out.print(" p");
+        }  else if (hasCoPrimeSides(s)) {
+          System.out.print(" r");
+        } else {
+          System.out.print("  ");
+        }
+        
+        if (isAcute(s)) {
+          System.out.print(" A");
+        }  else if (isRight(s)) {
+          System.out.print(" R");
+        }  else if (isObtuse(s)) {
+          System.out.print(" O");
+        } else {
+          System.out.print("  ");
+        }
+        System.out.print(hasIntArea(s) ? " H" : "  ");
+        System.out.print(hasIntInRadius(s) ? " I" : "  ");
+        System.out.print(" | " + H + " " + I);
+        System.out.println();
+      }
+    }
+  }
 }
