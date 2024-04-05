@@ -1,81 +1,84 @@
 ---- 2024-04-04 11:36:22
-A051493	parmof3	0	A070080	COND_N	s -> hasCoPrimeSides(s)	
+# A024153 Number of integer-sided triangles with sides a,b,c, a&lt;b&lt;c, a+b+c=n that have integer area.
+# A051516 Number of triangles with perimeter n having integer sides and area.
+# A059169 Number of partitions of n into 3 parts which form the sides of a nondegenerate isosceles triangle.
+A051493	parmof3	0	A070080	COND	s -> hasCoPrimeSides(s)	
 A070081	parmof2	1	A070080	SIDE_B	0	nyi Ft	Middle side of integer triangles [A070080(n) <= a(n) <= A070082(n)], sorted by perimeter, sides lexicographically ordered.
 A070082	parmof2	1	A070080	SIDE_C	0	nyi Ft	Largest side of integer triangles [A070080(n) <= A070081(n) <= a(n)], sorted by perimeter, sides lexicographically ordered.
 A070083	parmof2	1	A070080	PERIMETER	0	Perimeters of integer triangles, sorted by perimeter, sides lexicographically ordered.	nonn
 A070084	parmof2	1	A070080	GCD	0	Greatest common divisor of sides of integer triangles [A070080(n), A070081(n), A070082(n)], sorted by perimeter, sides lexicographically ordered.	nonn
 A070085	parmof2	1	A070080	SHAPE	0	a(n) = A070080(n)^2 + A070081(n)^2 - A070082(n)^2.	sign
 A070086	parmof2	1	A070080	AREA	0	Areas of integer triangles [A070080(n), A070081(n), A070082(n)], rounded values.	nonn
-A070088	parmof3	1	A070080	COND_N	s -> hasPrimeSides(s)	Number of integer-sided triangles with perimeter n and prime sides.	nonn
-A070090	parmof3	1	A070080	COND_N	s -> isScalene(s) && hasPrimeSides(s)	Number of xx s  n and xx .
-A070091	parmof3	0	A070080	COND_N	s -> isIsosceles(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
-A070092	parmof3	1	A070080	COND_N	s -> isIsosceles(s) && hasPrimeSides(s)	Number of xx s  n and xx .
-A070093	parmof3	0	A070080	COND_N	s -> isAcute(s)	Number of xx s  n.
-A070094	parmof3	0	A070080	COND_N	s -> isAcute(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
-A070095	parmof3	1	A070080	COND_N	s -> isAcute(s) && hasPrimeSides(s)	Number of xx s  n and xx .
-A070096	parmof3	1	A070080	COND_N	s -> isAcute(s) && isScalene(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are both xx and xx.
-A070097	parmof3	1	A070080	COND_N	s -> isAcute(s) && isScalene(s) && hasPrimeSides(s)	Number of s  n and xx  which are both xx and xx.
-A070098	parmof3	0	A070080	COND_N	s -> isAcute(s) && isIsosceles(s)	Number of s  n which are xx and xx.
-A070099	parmof3	0	A070080	COND_N	s -> isAcute(s) && isIsosceles(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
-A070100	parmof3	1	A070080	COND_N	s -> isAcute(s) && isIsosceles(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
-A070101	parmof3	0	A070080	COND_N	s -> isObtuse(s)	Number of xx s  n.
-A070102	parmof3	0	A070080	COND_N	s -> isObtuse(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
-A070103	parmof3	1	A070080	COND_N	s -> isObtuse(s) && hasPrimeSides(s)	Number of xx s  n and xx .
-A070104	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isScalene(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
-A070105	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isScalene(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
-A070106	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isIsosceles(s)	Number of s  n which are xx and xx.
-A070107	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isIsosceles(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
-A070108	parmof3	1	A070080	COND_N	s -> isObtuse(s) && isIsosceles(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
-A070109	parmof3	1	A070080	COND_N	s -> isRight(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
-A070110	parmof3	1	A070080	FILTER	s -> hasCoPrimeSides(s)	an  with xx .
-A070111	parmof3	1	A070080	FILTER	s -> hasPrimeSides(s)	an  with xx sides.
-A070112	parmof3	1	A070080	FILTER	s -> isScalene(s)	a xx .
-A070113	parmof3	1	A070080	FILTER	s -> isScalene(s) && hasCoPrimeSides(s)	a xx  with xx .
-A070114	parmof3	1	A070080	FILTER	s -> isScalene(s) && hasPrimeSides(s)	a xx  with xx .
-A070115	parmof3	1	A070080	FILTER	s -> isIsosceles(s)	an xx .
-A070116	parmof3	1	A070080	FILTER	s -> isIsosceles(s) && hasCoPrimeSides(s)	an xx  with xx .
-A070117	parmof3	1	A070080	FILTER	s -> isIsosceles(s) && hasPrimeSides(s)	an xx  with xx .
-A070118	parmof3	1	A070080	FILTER	s -> isAcute(s)	an xx .
-A070119	parmof3	1	A070080	FILTER	s -> isAcute(s) && hasCoPrimeSides(s)	an xx  with xx .
-A070120	parmof3	1	A070080	FILTER	s -> isAcute(s) && hasPrimeSides(s)	an xx  with xx .
-A070121	parmof3	1	A070080	FILTER	s -> isAcute(s) && isScalene(s)	an xx xx .
-A070122	parmof3	1	A070080	FILTER	s -> isAcute(s) && isScalene(s) && hasCoPrimeSides(s)	an xx xx  with xx .
-A070123	parmof3	1	A070080	FILTER	s -> isAcute(s) && isScalene(s) && hasPrimeSides(s)	an xx xx  with xx .
-A070124	parmof3	1	A070080	FILTER	s -> isAcute(s) && isIsosceles(s)	an xx xx .
-A070125	parmof3	1	A070080	FILTER	s -> isAcute(s) && isIsosceles(s) && hasCoPrimeSides(s)	an xx xx  with xx .
-A070126	parmof3	1	A070080	FILTER	s -> isAcute(s) && isIsosceles(s) && hasPrimeSides(s)	an xx xx  with xx .
-A070127	parmof3	1	A070080	FILTER	s -> isObtuse(s)	an xx .
-A070128	parmof3	1	A070080	FILTER	s -> isObtuse(s) && hasCoPrimeSides(s)	an xx  with xx .
-A070129	parmof3	1	A070080	FILTER	s -> isObtuse(s) && hasPrimeSides(s)	an xx  with xx .
-A070130	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isScalene(s)	an xx xx .
-A070131	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isScalene(s) && hasCoPrimeSides(s)	an xx xx  with xx .
-A070132	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isScalene(s) && hasPrimeSides(s)	an xx xx  with xx .
-A070133	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isIsosceles(s)	an xx xx .
-A070134	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isIsosceles(s) && hasCoPrimeSides(s)	an xx xx  with xx .
-A070135	parmof3	1	A070080	FILTER	s -> isObtuse(s) && isIsosceles(s) && hasPrimeSides(s)	an xx xx  with xx .
-A070136	parmof3	1	A070080	FILTER	s -> isRight(s)	a xx .
-A070137	parmof3	1	A070080	FILTER	s -> isRight(s) && hasCoPrimeSides(s)	a xx  with xx .
-A070138	parmof3	1	A070080	COND_N	s -> hasCoPrimeSides(s) && hasIntArea(s)	Number of s with an xx having xx sides a, b and c such that a + b + c = n.
-A070139	parmof3	0	A070080	COND_N	s -> isIsosceles(s) && hasIntArea(s)	Number of xx s  n having xx.
-A070140	parmof3	1	A070080	COND_N	s -> isAcute(s) && hasIntArea(s)	Number of xx s  n having xx.
-A070141	parmof3	1	A070080	COND_N	s -> isObtuse(s) && hasIntArea(s)	Number of xx s  n having xx.
-A070142	parmof3	1	A070080	FILTER	s -> hasIntArea(s)	an  with xx.
-A070143	parmof3	1	A070080	FILTER	s -> hasCoPrimeSides(s) && hasIntArea(s)	an  with xx, having xx .
-A070144	parmof3	1	A070080	FILTER	s -> isScalene(s) && hasIntArea(s)	a xx  with xx.
-A070145	parmof3	1	A070080	FILTER	s -> isIsosceles(s) && hasIntArea(s)	an xx  with xx.
-A070146	parmof3	1	A070080	FILTER	s -> isAcute(s) && hasIntArea(s)	an xx  with xx.
-A070147	parmof3	1	A070080	FILTER	s -> isObtuse(s) && hasIntArea(s)	an xx  with xx.
-A070148	parmof3	0	A070080	FILTER	s -> hasTrigonalArea(s)	an integer Heronian triangle having triangular area.
-# A070149	parmof3	0	A070080	FILTER	Areas of integer Heronian triangles [A070080(A070142(n)), A070081(A070142(n)), A070082(A070142(n))].	nonn	1..1265	nyi	_Reinhard Zumkeller_
+A070088	parmof3	1	A070080	COND	s -> hasPrimeSides(s)	Number of integer-sided triangles with perimeter n and prime sides.	nonn
+A070090	parmof3	1	A070080	COND	s -> isScalene(s) && hasPrimeSides(s)	Number of xx s  n and xx .
+A070091	parmof3	0	A070080	COND	s -> isIsosceles(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
+A070092	parmof3	1	A070080	COND	s -> isIsosceles(s) && hasPrimeSides(s)	Number of xx s  n and xx .
+A070093	parmof3	0	A070080	COND	s -> isAcute(s)	Number of xx s  n.
+A070094	parmof3	0	A070080	COND	s -> isAcute(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
+A070095	parmof3	1	A070080	COND	s -> isAcute(s) && hasPrimeSides(s)	Number of xx s  n and xx .
+A070096	parmof3	1	A070080	COND	s -> isAcute(s) && isScalene(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are both xx and xx.
+A070097	parmof3	1	A070080	COND	s -> isAcute(s) && isScalene(s) && hasPrimeSides(s)	Number of s  n and xx  which are both xx and xx.
+A070098	parmof3	0	A070080	COND	s -> isAcute(s) && isIsosceles(s)	Number of s  n which are xx and xx.
+A070099	parmof3	0	A070080	COND	s -> isAcute(s) && isIsosceles(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070100	parmof3	1	A070080	COND	s -> isAcute(s) && isIsosceles(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070101	parmof3	0	A070080	COND	s -> isObtuse(s)	Number of xx s  n.
+A070102	parmof3	0	A070080	COND	s -> isObtuse(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
+A070103	parmof3	1	A070080	COND	s -> isObtuse(s) && hasPrimeSides(s)	Number of xx s  n and xx .
+A070104	parmof3	1	A070080	COND	s -> isObtuse(s) && isScalene(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070105	parmof3	1	A070080	COND	s -> isObtuse(s) && isScalene(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070106	parmof3	1	A070080	COND	s -> isObtuse(s) && isIsosceles(s)	Number of s  n which are xx and xx.
+A070107	parmof3	1	A070080	COND	s -> isObtuse(s) && isIsosceles(s) && hasCoPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070108	parmof3	1	A070080	COND	s -> isObtuse(s) && isIsosceles(s) && hasPrimeSides(s)	Number of s  n and xx  which are xx and xx.
+A070109	parmof3	1	A070080	COND	s -> isRight(s) && hasCoPrimeSides(s)	Number of xx s  n and xx .
+A070110	parmof3	1	A070080	INDEX	s -> hasCoPrimeSides(s)	an  with xx .
+A070111	parmof3	1	A070080	INDEX	s -> hasPrimeSides(s)	an  with xx sides.
+A070112	parmof3	1	A070080	INDEX	s -> isScalene(s)	a xx .
+A070113	parmof3	1	A070080	INDEX	s -> isScalene(s) && hasCoPrimeSides(s)	a xx  with xx .
+A070114	parmof3	1	A070080	INDEX	s -> isScalene(s) && hasPrimeSides(s)	a xx  with xx .
+A070115	parmof3	1	A070080	INDEX	s -> isIsosceles(s)	an xx .
+A070116	parmof3	1	A070080	INDEX	s -> isIsosceles(s) && hasCoPrimeSides(s)	an xx  with xx .
+A070117	parmof3	1	A070080	INDEX	s -> isIsosceles(s) && hasPrimeSides(s)	an xx  with xx .
+A070118	parmof3	1	A070080	INDEX	s -> isAcute(s)	an xx .
+A070119	parmof3	1	A070080	INDEX	s -> isAcute(s) && hasCoPrimeSides(s)	an xx  with xx .
+A070120	parmof3	1	A070080	INDEX	s -> isAcute(s) && hasPrimeSides(s)	an xx  with xx .
+A070121	parmof3	1	A070080	INDEX	s -> isAcute(s) && isScalene(s)	an xx xx .
+A070122	parmof3	1	A070080	INDEX	s -> isAcute(s) && isScalene(s) && hasCoPrimeSides(s)	an xx xx  with xx .
+A070123	parmof3	1	A070080	INDEX	s -> isAcute(s) && isScalene(s) && hasPrimeSides(s)	an xx xx  with xx .
+A070124	parmof3	1	A070080	INDEX	s -> isAcute(s) && isIsosceles(s)	an xx xx .
+A070125	parmof3	1	A070080	INDEX	s -> isAcute(s) && isIsosceles(s) && hasCoPrimeSides(s)	an xx xx  with xx .
+A070126	parmof3	1	A070080	INDEX	s -> isAcute(s) && isIsosceles(s) && hasPrimeSides(s)	an xx xx  with xx .
+A070127	parmof3	1	A070080	INDEX	s -> isObtuse(s)	an xx .
+A070128	parmof3	1	A070080	INDEX	s -> isObtuse(s) && hasCoPrimeSides(s)	an xx  with xx .
+A070129	parmof3	1	A070080	INDEX	s -> isObtuse(s) && hasPrimeSides(s)	an xx  with xx .
+A070130	parmof3	1	A070080	INDEX	s -> isObtuse(s) && isScalene(s)	an xx xx .
+A070131	parmof3	1	A070080	INDEX	s -> isObtuse(s) && isScalene(s) && hasCoPrimeSides(s)	an xx xx  with xx .
+A070132	parmof3	1	A070080	INDEX	s -> isObtuse(s) && isScalene(s) && hasPrimeSides(s)	an xx xx  with xx .
+A070133	parmof3	1	A070080	INDEX	s -> isObtuse(s) && isIsosceles(s)	an xx xx .
+A070134	parmof3	1	A070080	INDEX	s -> isObtuse(s) && isIsosceles(s) && hasCoPrimeSides(s)	an xx xx  with xx .
+A070135	parmof3	1	A070080	INDEX	s -> isObtuse(s) && isIsosceles(s) && hasPrimeSides(s)	an xx xx  with xx .
+A070136	parmof3	1	A070080	INDEX	s -> isRight(s)	a xx .
+A070137	parmof3	1	A070080	INDEX	s -> isRight(s) && hasCoPrimeSides(s)	a xx  with xx .
+A070138	parmof3	1	A070080	COND	s -> hasCoPrimeSides(s) && hasIntArea(s)	Number of s with an xx having xx sides a, b and c such that a + b + c = n.
+A070139	parmof3	0	A070080	COND	s -> isIsosceles(s) && hasIntArea(s)	Number of xx s  n having xx.
+A070140	parmof3	1	A070080	COND	s -> isAcute(s) && hasIntArea(s)	Number of xx s  n having xx.
+A070141	parmof3	1	A070080	COND	s -> isObtuse(s) && hasIntArea(s)	Number of xx s  n having xx.
+A070142	parmof3	1	A070080	INDEX	s -> hasIntArea(s)	an  with xx.
+A070143	parmof3	1	A070080	INDEX	s -> hasCoPrimeSides(s) && hasIntArea(s)	an  with xx, having xx .
+A070144	parmof3	1	A070080	INDEX	s -> isScalene(s) && hasIntArea(s)	a xx  with xx.
+A070145	parmof3	1	A070080	INDEX	s -> isIsosceles(s) && hasIntArea(s)	an xx  with xx.
+A070146	parmof3	1	A070080	INDEX	s -> isAcute(s) && hasIntArea(s)	an xx  with xx.
+A070147	parmof3	1	A070080	INDEX	s -> isObtuse(s) && hasIntArea(s)	an xx  with xx.
+A070148	parmof3	0	A070080	INDEX	s -> hasTrigonalArea(s)	an integer Heronian triangle having triangular area.
+# A070149	parmof3	0	A070080	INDEX	Areas of integer Heronian triangles [A070080(A070142(n)), A070081(A070142(n)), A070082(A070142(n))].	nonn	1..1265	nyi	_Reinhard Zumkeller_
 # A070150	filter	1	new A070149()	TRIANGULAR	Triangular areas of integer Heronian triangles.	nonn,nice	1..43	nyi	_Reinhard Zumkeller_
 # A070151	nce1	a(n) is one fourth of the even leg of the unique primitive Pythagorean triangle with hypotenuse A002144(n).	easy,nonn	1..1000	deriv	_Lekraj Beedassy_
 A070200	parmof2	0	A070080	INRAD	Inradii of s [A070080(n), A070081(n), A070082(n)], rounded values.
-A070201	parmof3	0	A070080	COND_N	s -> hasIntInRadius(s)	  Number of s  n having xx.
-A070202	parmof3	0	A070080	COND_N	s -> !hasCoPrimeSides(s) && hasIntInRadius(s)	    Number of s with xx, perimeter n and xx .
-A070203	parmof3	0	A070080	COND_N	s -> isScalene(s) && hasIntInRadius(s)	  Number of xx s  n having xx.
-A070204	parmof3	0	A070080	COND_N	s -> isIsosceles(s) && hasIntInRadius(s)	        Number of xx s  n having xx.
-A070205	parmof3	0	A070080	COND_N	s -> isAcute(s) && hasIntInRadius(s)	    Number of xx s  n having xx.
-A070206	parmof3	0	A070080	COND_N	s -> isObtuse(s) && hasIntInRadius(s)	   Number of xx s  n having xx.
-A070208	parmof3	0	A070080	COND_N	s -> hasIntArea(s) && !hasIntInRadius(s)	 Number of s  n having xx but not xx.
-A070209	parmof3	0	A070080	FILTER	s -> hasIntInRadius(s)	  Numbers n such that [A070080(n), A070081(n), A070082(n)] is an  with xx.
-A070210	parmof3	0	A070080	INRAD	0	  xx of s [A070080(A070209(n)), A070081(A070209(n)), A070082(A070209(n))].
+A070201	parmof3	0	A070080	COND	s -> hasIntInRadius(s)	  Number of s  n having xx.
+A070202	parmof3	0	A070080	COND	s -> !hasCoPrimeSides(s) && hasIntInRadius(s)	    Number of s with xx, perimeter n and xx .
+A070203	parmof3	0	A070080	COND	s -> isScalene(s) && hasIntInRadius(s)	  Number of xx s  n having xx.
+A070204	parmof3	0	A070080	COND	s -> isIsosceles(s) && hasIntInRadius(s)	        Number of xx s  n having xx.
+A070205	parmof3	0	A070080	COND	s -> isAcute(s) && hasIntInRadius(s)	    Number of xx s  n having xx.
+A070206	parmof3	0	A070080	COND	s -> isObtuse(s) && hasIntInRadius(s)	   Number of xx s  n having xx.
+A070208	parmof3	0	A070080	COND	s -> hasIntArea(s) && !hasIntInRadius(s)	 Number of s  n having xx but not xx.
+A070209	parmof3	0	A070080	INDEX	s -> hasIntInRadius(s)	  Numbers n such that [A070080(n), A070081(n), A070082(n)] is an  with xx.
+A070210	parmof2	0	A070080	INRAD	0	  xx of s [A070080(A070209(n)), A070081(A070209(n)), A070082(A070209(n))].
