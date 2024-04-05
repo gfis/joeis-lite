@@ -51,6 +51,8 @@ public class A070080 extends AbstractSequence {
   protected long mC; // length of side c
   protected long mPeri; // perimeter = a + b+ c
   protected Function<Long[], Boolean> mCond; // condition for all triangle(s)
+  
+  private final static boolean USE_DOUBLE = true;
 
   /** Construct the sequence. */
   public A070080() {
@@ -130,23 +132,34 @@ public class A070080 extends AbstractSequence {
         return Z.valueOf(mC);
       case PERIMETER:
         advance();
-        return Z.valueOf(mA + mB + mC);
+        return Z.valueOf(mPeri);
       case GCD:
         advance();
-        return Z.valueOf(mA).gcd(Z.valueOf(mB)).gcd(Z.valueOf(mC));
+        return Z.valueOf(LongUtils.gcd(mA, mB, mC));
       case SHAPE:
         advance();
-        return Z.valueOf(mA).square().add(Z.valueOf(mB).square()).subtract(Z.valueOf(mC).square());
+        return Z.valueOf(mA*mA + mB*mB - mC*mC);
       case AREA:
         advance();
-        return new Q(sqArea16(new Long[] { mA, mB, mC }).sqrt(), Z.FOUR).round();
+        if (USE_DOUBLE) {
+          return Z.valueOf(Math.round(getArea(new Long[] { mA, mB, mC })));
+        } else {
+          final CR s = CR.valueOf(mPeri).divide(2);
+          return s.subtract(mA).multiply(s.subtract(mB)).multiply(s.subtract(mC)).multiply(s).sqrt().round();
+          // return new Q(sqArea16(new Long[] { mA, mB, mC }).sqrt(), Z.FOUR).round();
+        }
       case INRAD:
         advance();
-        return CR.valueOf(sqArea16(new Long[] { mA, mB, mC })).multiply(Z.FOUR).divide(CR.valueOf(mPeri*mPeri)).sqrt().round();
-
+        if (USE_DOUBLE) {
+          return Z.valueOf(Math.round(getInRadius(new Long[] { mA, mB, mC })));
+        } else {
+          final CR s = CR.valueOf(mPeri).divide(2);
+          return s.subtract(mA).multiply(s.subtract(mB)).multiply(s.subtract(mC)).divide(s).sqrt().round();
+          // return CR.valueOf(sqArea16(new Long[] { mA, mB, mC })).multiply(Z.FOUR).divide(CR.valueOf(mPeri*mPeri)).sqrt().round();
+        }
       case COND:
         ++mN;
-        if(mN < 3) { // 1,1,1 with mP=3 is the minimal triangle
+        if(mN < 3) { // 1,1,1 with mPeri=3 is the minimal triangle
           return Z.ZERO;
         }
         mPeri = mN;
@@ -197,6 +210,24 @@ public class A070080 extends AbstractSequence {
   }
 
   /**
+   * Compute the area as a double.
+   * @return <code>p*(p - 2*a)*(p - 2*b)*(p - 2*c)</code>
+   */
+  protected static double getArea(final Long[] s) {
+    final double p2 = (s[0] + s[1] + s[2]) / 2.0;
+    return Math.sqrt((p2 - s[0])*(p2 - s[1])*(p2 - s[2])*p2);
+  }
+
+  /**
+   * Compute the inradius as a double.
+   * @return <code>p*(p - 2*a)*(p - 2*b)*(p - 2*c)</code>
+   */
+  protected static double getInRadius(final Long[] s) {
+    final double p2 = (s[0] + s[1] + s[2]) / 2.0;
+    return Math.sqrt((p2 - s[0])*(p2 - s[1])*(p2 - s[2])/p2);
+  }
+
+  /**
    * Evaluate the condition.
    * @param s array for sides a, b, c
    * @return true if the conditions are all fulfilled.
@@ -210,22 +241,17 @@ public class A070080 extends AbstractSequence {
   }
 
   protected static boolean hasIntArea(final Long[] s) {
-    final Z h16 = sqArea16(s);
-    return h16.mod(16) == 0 && h16.isSquare();
+    return getArea(s) % 1 == 0;
   }
 
   protected static boolean hasIntInRadius(final Long[] s) {
-    // inrad = sqrt((p2-a)*(p2-b)*(p2-c)/p2) where p2=(a+b+c)/2
-    final Z h16 = sqArea16(s);
-    final long p = s[0] + s[1] + s[2];
-    return h16.mod(p*p*4) == 0 && h16.isSquare();
+    return getInRadius(s) % 1 == 0;
   }
 
   protected static boolean hasTrigonalArea(final Long[] s) {
-    final Z h16 = sqArea16(s);
-    if (h16.mod(16) == 0 && h16.isSquare()) {
-      final Z h4 = h16.sqrt().divide(4);
-      return ZUtils.isTriangular(h4);
+    final double area = getArea(s);
+    if (area % 1 == 0) {
+       return ZUtils.isTriangular(Z.valueOf((long) area));
     } else {
       return false;
     }
@@ -270,4 +296,83 @@ public class A070080 extends AbstractSequence {
     return s[0] <= s[1] && s[1] <= s[2] && s[0] + s[1] > s[2];
   }
 
+  private void printHeader() {
+    System.out.println("+-------+-------+-------------+-------+-------+-----------+\n");
+  }
+
+  private void printLine(final long n) {
+    mA = 1;
+    mB = 0;
+    advance();
+    System.out.print(String.format("| %5d | %5d |%4d%4d%4d |", n, mPeri, mA, mB, mC));
+    
+    System.out.println();
+  }
+
+  /**
+   * Test method: print Zumkeller&apos; list for a range of perimeters
+   * @param args command line arguments:
+   * <ul>
+   * <li>-d debugging mode: 0=none (default), 1=some, 2=more</li>
+   * <li>-s first perimeter</li>
+   * <li>-e last perimeter</li>
+   * </ul>
+   */
+  public static void main(final String[] args) {
+    int debug = 0;
+    int periStart = 1;
+    int periEnd = 50;
+    int iarg = 0;
+    while (iarg < args.length) {
+      final String opt = args[iarg++];
+      try {
+        if (false) {
+        } else if ("-d".equals(opt)) {
+          debug = Integer.parseInt(args[iarg++]);
+        } else if ("-s".equals(opt)) {
+          periStart = Integer.parseInt(args[iarg++]);
+        } else if ("-e".equals(opt)) {
+          periEnd   = Integer.parseInt(args[iarg++]);
+        } else {
+          System.err.println("invalid option " + opt);
+        }
+      } catch (final NumberFormatException exc) {
+        // ignored
+      }
+    }
+
+    final A070080 seq = new A070080();
+    long n = 0;
+    seq.printHeader();
+    seq.mPeri = periStart; 
+    while (seq.mPeri <= periEnd) {
+      ++n;
+      seq.printLine(n);
+    }
+    seq.printHeader();
+  }
+/*
+        print sprintf("| %5d | %5d |%4d%4d%4d |", n, mPeri, mA, mB, mC);
+        print sprintf("%6d |%6d |", &gcd(mA, &gcd(mB, mC)), mA*mA + mB*mB - mC*mC);
+        my $s = mPeri/2;
+        my $H = sprintf("%12.6f", sqrt($s*($s - mA)*($s - mB)*($s - mC)));
+        my $I = sprintf("%10.6f", sqrt(   ($s - mA)*($s - mB)*($s - mC)/$s));
+        print " s" if mA <  mB && mB <  mC;
+        print " i" if mA == mB || mB == mC;
+        if (0) {
+        } elsif (&isPrime(mA) && &isPrime(mB) && &isPrime(mC)) {
+            print " p";
+        } elsif (&gcd(mA, &gcd(mB, mC)) == 1) {
+            print " r";
+        } else {
+            print "  ";
+        }
+        print " A" if mA*mA + mB*mB >  mC*mC;
+        print " R" if mA*mA + mB*mB == mC*mC;
+        print " O" if mA*mA + mB*mB <  mC*mC;
+        print "" . (($H =~ m{\.000000}) ? " H" : "  ");
+        print "" . (($I =~ m{\.000000}) ? " I" : "  ");
+        print " | $H $I";
+        print "\n";
+*/
 }
