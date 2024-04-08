@@ -33,28 +33,27 @@ public class A070080 extends AbstractSequence {
 
   private long mN;
   private int mMode; // mode of operation, type of the target terms, one of the following:
-  public final static int SIDE_A = 0;
-  public final static int SIDE_B = 1;
-  public final static int SIDE_C = 2;
-  public final static int PERIMETER = 3; // a + b + c
-  public final static int GCD = 4;
-  public final static int SHAPE = 5; // a^2 + b^2 - c^2
-  public final static int AREA = 6;
-  public final static int INRAD = 7;
-
-  public final static int COND = 8; // count occurrences of condition for the triangles with perimeter n
-  public final static int FILTER = 9; // select indexes by using a condition 
-  public final static int INDEX = 10; // select values by using a condition 
+  public final static int COUNT = 0; // count occurrences of condition for the triangles with perimeter n
+  public final static int INDEX = 1; // select indexes in arrays [A070080,A070081,A070082]
+  public final static int SIDE_A = 2;
+  public final static int SIDE_B = 3;
+  public final static int SIDE_C = 4;
+  public final static int PERIMETER = 5; // a + b + c
+  public final static int GCD = 6;
+  public final static int SHAPE = 7; // a^2 + b^2 - c^2
+  public final static int AREA = 8;
+  public final static int INRAD = 9;
+  public final static int SQUARE16 = 10;
 
   protected long mA; // length of side a
   protected long mB; // length of side b
   protected long mC; // length of side c
-  protected long mPeri; // perimeter = a + b+ c
+  protected long mPeri; // perimeter = a + b + c
   protected Function<Long[], Boolean> mCond; // condition for all triangle(s)
   
   /** Construct the sequence. */
   public A070080() {
-    this(1, SIDE_A, null);
+    this(1, SIDE_A, s -> isTriangle(s));
   }
 
   /**
@@ -64,7 +63,7 @@ public class A070080 extends AbstractSequence {
    * @param mode of operation, type of the target terms
    */
   public A070080(final int offset, final int mode) {
-    this(offset, mode, null);
+    this(offset, mode, s -> isTriangle(s));
   }
 
   /**
@@ -117,66 +116,71 @@ public class A070080 extends AbstractSequence {
 
   @Override
   public Z next() {
-    switch (mMode) {
-      default:
-      case SIDE_A:
+    if (mMode == COUNT) {
+      ++mN;
+      if(mN < 3) { // 1,1,1 with mPeri=3 is the minimal triangle
+        return Z.ZERO;
+      }
+      mPeri = mN;
+      mA = 1;
+      mB = 0;
+      advance();
+      long sum = 0;
+      while (mPeri == mN) {
+        if (evaluate(new Long[] { mA, mB, mC })) {
+          ++sum;
+        }
         advance();
-        return Z.valueOf(mA);
-      case SIDE_B:
-        advance();
-        return Z.valueOf(mB);
-      case SIDE_C:
-        advance();
-        return Z.valueOf(mC);
-      case PERIMETER:
-        advance();
-        return Z.valueOf(mPeri);
-      case GCD:
-        advance();
-        return Z.valueOf(LongUtils.gcd(mA, mB, mC));
-      case SHAPE:
-        advance();
-        return Z.valueOf(mA*mA + mB*mB - mC*mC);
-      case AREA:
-        advance();
-        return Z.valueOf(Math.round(getArea(new Long[] { mA, mB, mC })));
-      case INRAD:
-        advance();
-        return Z.valueOf(Math.round(getInRadius(new Long[] { mA, mB, mC })));
-      case COND:
+      }
+      return Z.valueOf(sum);
+    } else if (mMode == INDEX) {
+      while (true) {
         ++mN;
-        if(mN < 3) { // 1,1,1 with mPeri=3 is the minimal triangle
-          return Z.ZERO;
-        }
-        mPeri = mN;
-        mA = 1;
-        mB = 0;
         advance();
-        long sum = 0;
-        while (mPeri == mN) {
-          if (evaluate(new Long[] { mA, mB, mC })) {
-            ++sum;
-          }
-          advance();
+        if (evaluate(new Long[] { mA, mB, mC })) {
+          return Z.valueOf(mN);
         }
-        return Z.valueOf(sum);
-      case FILTER:
-        while (true) {
-          ++mN;
-          advance();
-          if (evaluate(new Long[] { mA, mB, mC })) {
-            return Z.valueOf(mN);
+      }
+    } else {
+      while (true) {
+        ++mN;
+        advance();
+        if (evaluate(new Long[] { mA, mB, mC })) {
+          switch (mMode) {
+            default:
+            case SIDE_A:
+              return Z.valueOf(mA);
+            case SIDE_B:
+              return Z.valueOf(mB);
+            case SIDE_C:
+              return Z.valueOf(mC);
+            case PERIMETER:
+              return Z.valueOf(mPeri);
+            case GCD:
+              return Z.valueOf(LongUtils.gcd(mA, mB, mC));
+            case SHAPE:
+              return Z.valueOf(mA*mA + mB*mB - mC*mC);
+            case AREA:
+              return Z.valueOf(Math.round(getArea(new Long[] { mA, mB, mC })));
+            case INRAD:
+              return Z.valueOf(Math.round(getInRadius(new Long[] { mA, mB, mC })));
+            case SQUARE16:
+              return getSquare16(new Long[] { mA, mB, mC });
           }
         }
-      case INDEX:
-        while (true) {
-          ++mN;
-          advance();
-          if (evaluate(new Long[] { mA, mB, mC })) {
-            return Z.valueOf(mN);
-          }
-        }
-    }
+      }
+    }  
+  }
+
+  /**
+   * Compute 16*area^2
+   * @return <code>p*(p - 2*a)*(p - 2*b)*(p - 2*c)</code>
+   */
+  protected static Z getSquare16(final Long[] s) {
+    final long a = s[0].longValue();
+    final long b = s[1].longValue();
+    final long c = s[2].longValue();
+    return Z.valueOf(a + b + c).multiply(-a + b + c).multiply(a - b + c).multiply(a + b - c); // (u+v+w)*(-u+v+w)*(u-v+w)*(u+v-w)
   }
 
   /**
@@ -263,7 +267,7 @@ public class A070080 extends AbstractSequence {
   }
 
   protected static boolean isTriangle(final Long[] s) {
-    return s[0] <= s[1] && s[1] <= s[2] && s[0] + s[1] > s[2];
+    return true; // default condition, always true when advance() has been called
   }
 
   /**
@@ -304,30 +308,6 @@ public class A070080 extends AbstractSequence {
     System.out.println("+-------+-------+-------------+-------+-------+-----------+");
   }
 
-/*
-        print sprintf("| %5d | %5d |%4d%4d%4d |", n, mPeri, mA, mB, mC);
-        print sprintf("%6d |%6d |", &gcd(mA, &gcd(mB, mC)), mA*mA + mB*mB - mC*mC);
-        my $s = mPeri/2;
-        my $H = sprintf("%12.6f", sqrt($s*($s - mA)*($s - mB)*($s - mC)));
-        my $I = sprintf("%10.6f", sqrt(   ($s - mA)*($s - mB)*($s - mC)/$s));
-        print " s" if mA <  mB && mB <  mC;
-        print " i" if mA == mB || mB == mC;
-        if (0) {
-        } elsif (&isPrime(mA) && &isPrime(mB) && &isPrime(mC)) {
-            print " p";
-        } elsif (&gcd(mA, &gcd(mB, mC)) == 1) {
-            print " r";
-        } else {
-            print "  ";
-        }
-        print " A" if mA*mA + mB*mB >  mC*mC;
-        print " R" if mA*mA + mB*mB == mC*mC;
-        print " O" if mA*mA + mB*mB <  mC*mC;
-        print "" . (($H =~ m{\.000000}) ? " H" : "  ");
-        print "" . (($I =~ m{\.000000}) ? " I" : "  ");
-        print " | $H $I";
-        print "\n";
-*/
   private void printList(final long periStart, final long periEnd) {
     mPeri = periStart;
     long oldPeri = mPeri; 
