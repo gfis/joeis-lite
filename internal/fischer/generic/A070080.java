@@ -211,7 +211,10 @@ public class A070080 extends AbstractSequence {
   }
 
   protected static boolean hasCoPrimeSides(final Long[] s) {
-    return LongUtils.gcd(s[0], s[1], s[2]) == 1;
+    final long a = s[0].longValue();
+    final long b = s[1].longValue();
+    final long c = s[2].longValue();
+    return LongUtils.gcd(a, b, c) == 1;
   }
 
   protected static boolean hasIntArea(final Long[] s) {
@@ -251,7 +254,10 @@ public class A070080 extends AbstractSequence {
   }
 
   protected static boolean isIsosceles(final Long[] s) {
-    return s[0].longValue() == s[1].longValue() || s[1].longValue() == s[2].longValue();
+    final long a = s[0].longValue();
+    final long b = s[1].longValue();
+    final long c = s[2].longValue();
+    return a == b || b == c;
   }
 
   protected static boolean isObtuse(final Long[] s) {
@@ -263,7 +269,10 @@ public class A070080 extends AbstractSequence {
   }
 
   protected static boolean isScalene(final Long[] s) {
-    return s[0] < s[1] && s[1] < s[2];
+    final long a = s[0].longValue();
+    final long b = s[1].longValue();
+    final long c = s[2].longValue();
+    return a < b && b < c;
   }
 
   protected static boolean isTriangle(final Long[] s) {

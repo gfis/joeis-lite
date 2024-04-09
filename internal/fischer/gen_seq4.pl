@@ -197,7 +197,7 @@ while (<>) { # read inputfile
         $parms[$iparm] =~ s{\. +}{\.}g;  # spaces after  "."
         $parms[$iparm] =~ s{ +\.}{\.}g;  # spaces before "."
         $parms[$iparm] =~ s{ *\, *}{\, }g;  # spaces around ","
-        if ($parms[$iparm] =~ m{\-\>}) { # with lambda expression: replace shortcuts and check bracketing
+        if (($parms[$iparm] =~ m{\-\>}) || ($callcode =~ m{\A(lpf|spf)\Z})) { # with lambda expression: replace shortcuts and check bracketing
             my $parm = $parms[$iparm];
         #   if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
         #       print STDERR "# $aseqno, unknown shortcut: $aseqno $parm\n";
@@ -226,6 +226,8 @@ while (<>) { # read inputfile
             $parm =~ s{KS\(}           {LongUtils.kronecker(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
+            $parm =~ s{LPF\(([^\)]+)\)}{Jaguar.factor($1).largestPrimeFactor()}g;
+            $parm =~ s{SPF\(([^\)]+)\)}{Jaguar.factor($1).leastPrimeFactor()}g;
             $parm =~ s{MU\(}           {Mobius.mobius\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
@@ -319,7 +321,7 @@ while (<>) { # read inputfile
                 }
             } elsif ($type =~ m{I}i)     { # normal int
                 # term is unchanged
-            } elsif ($type =~ m{L}i)     { # make 'long' constant
+            } elsif ($type =~ m{L})     { # make 'long' constant
                 if (length($term) > 16) {
                     print "# $aseqno length($term) > 16\n";
                     $do_generate = 0;
