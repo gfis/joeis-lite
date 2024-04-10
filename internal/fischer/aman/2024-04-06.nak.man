@@ -1,0 +1,10 @@
+---- 2024-04-10 21:21:09
+
+
+A222639	simtraf	0	new A000522()	v -> v.sqrt()./(JF(v).core())
+A317990	simtraf	0	new A005117()	v -> Z2(JF(v).omega() - 1)	
+A317992	simtraf	0	new A005117()	v -> ZV(JF(v).omega() - 1)	
+A319662	simtraf	0	new A005117()	v -> ZV(JF(v).omega() - 1)	
+A112678	simtraf	0	new A000322()	v -> ZV(ZUtils.digitSum(v))	a(0)=a(1)=a(2)=a(3)=a(4)=1. a(n) = SumDigits(a(n-1)+a(n-2)+a(n-3)+a(n-4)+a(n-5)). a(n) = SumDigits(A000322(n)).
+# A228127	simtraf	0	new A091724()	v -> new Z(v.toString().substring(0, n)).IPP()	Numbers n such that first n digits of A091724 (Decimal expansion of E^(2*EulerGamma)) gives a prime number.                                                                          
+# A228512	simtraf	0	new A091725()	v -> new Z(v.toString().substring(0, n)).IPP()	Numbers n such that first n digits of A091725 (decimal expansion of second exponential integral at 1, ExpIntegralEi[1]) gives a prime number.
