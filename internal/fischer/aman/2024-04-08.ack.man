@@ -1,0 +1,124 @@
+---- 2024-04-08 13:26:22
+A087298	lambdan	1	n -> Z.valueOf(ZUtils.valuation(FA(3*n), Z.TWO))	Exponent of 2 in factorization of (3n)!.
+A092779	simtraf	0	new A003267()	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))	Exponent of 2 in central fibonomial coefficient A003267.
+A093052	lambdan	0	n -> Z.valueOf(ZUtils.valuation(ZV(6).^(n).-(Z2(n)), Z.TWO))	Exponent of 2 in 6^n - 2^n.
+A167037	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(3)).isSquare()	Squares that remain squares when prefixed with a 3
+A167038	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(4)).isSquare()	Squares that remain squares when prefixed with a 4
+A167039	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(5)).isSquare()	Squares that remain squares when prefixed with a 5
+A167041	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(6)).isSquare()	Squares that remain squares when prefixed with a 6
+A167042	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(7)).isSquare()	Squares that remain squares when prefixed with a 7
+A167043	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(8)).isSquare()	Squares that remain squares when prefixed with a 8
+A167044	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(9)).isSquare()	Squares that remain squares when prefixed with a 9
+A167716	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(1)).IPP()	Squares that become a prime number when prefixed with a 1.	base,nonn	1..10000
+A167717	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(2)).IPP()	Squares that become a prime number when prefixed with a 2.	base,nonn	1..10000
+A167718	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(3)).IPP()	Squares that become a prime        when prefixed with a 3.	base,nonn	1..10000
+A167719	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(4)).IPP()	Squares that become a prime number when prefixed with a 4	base,nonn	1..1000
+A167720	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(5)).IPP()	Squares that become a prime number when prefixed with a 5.	base,nonn	1..10000
+A167721	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(6)).IPP()	Squares that become a prime number when prefixed with a 6.	base,nonn	1..10000
+A167722	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(7)).IPP()	Squares that become a prime number when prefixed with a 7.	base,nonn	1..10000
+A167723	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(8)).IPP()	Squares that become a prime number when prefixed with a 8.	base,nonn	1..10000
+A167724	filter	1	new A000290()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(9)).IPP()	Squares that become a prime number when prefixed with a 9.	base,nonn	1..10000
+A167725	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(1)).IPP()	Cubes   that become a prime number when prefixed with a 1	nonn,base	1..1000
+A167726	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(2)).IPP()	Cubes   that become a prime number when prefixed with a 2.	base,nonn	1..10000
+A167727	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(3)).IPP()	Cubes   that become a prime number when prefixed with a 3.	base,nonn	1..10000
+A167728	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(4)).IPP()	Cubes   that become a prime number when prefixed with a 4.	base,nonn	1..10000
+A167729	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(5)).IPP()	Cubes   that become a prime number when prefixed with a 5	base,nonn	1..1000
+A167730	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(6)).IPP()	Cubes   that become a prime number when prefixed with a 6.	base,nonn	1..10000
+A167731	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(7)).IPP()	Cubes   that become a prime number when prefixed with a 7.	base,nonn	1..10000
+A167732	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(8)).IPP()	Cubes   that become a prime number when prefixed with a 8.	base,nonn	1..10000
+A167733	filter	1	new A000578()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(9)).IPP()	Cubes   that become a prime number when prefixed with a 9.	nonn,base	1..1000
+A167734	filter	1	new A000040()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(1)).isSquare()	Primes  that become a square       when prefixed with a 1.	base,nonn	1..59
+A167735	filter	1	new A000040()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(2)).isSquare()	Primes  that become a square       when prefixed with a 2.	base,nonn	1..10488
+A167736	filter	1	new A000040()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(3)).isSquare()	Primes  that become a square       when prefixed with a 3.	base,nonn	1..107
+A167737	filter	1	new A000040()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(4)).isSquare()	Primes  that become a square       when prefixed with a 4.	base,nonn	1..10000
+A167738	filter	1	new A000040()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(5)).isSquare()	Primes  that become a square       when prefixed with a 5.	base,nonn	1..156
+A167739	filter	1	new A000040()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(6)).isSquare()	Primes  that become a square       when prefixed with a 6.	base,nonn	1..105
+A167740	filter	1	new A000040()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(7)).isSquare()	Primes  that become a square       when prefixed with a 7.	base,nonn	1..17124
+A167741	filter	1	new A000040()	v -> v.+(Z.TEN.^(ZUtils.decimalLength(v)).*(8)).isSquare()	Primes  that become   squares      when prefixed with a 8.	base,nonn	1..131
+A167791	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  2) == 1 && imm.order(ZV(  2)).equals(imm.size()) && k > 1; }	n with primitive root 2	nonn	1..10000
+A167792	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  3) == 1 && imm.order(ZV(  3)).equals(imm.size()) && k > 1; }	n with primitive root 3	nonn	1..1000
+A167793	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  5) == 1 && imm.order(ZV(  5)).equals(imm.size()) && k > 1; }	n with primitive root 5	nonn	1..1000
+A167794	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  6) == 1 && imm.order(ZV(  6)).equals(imm.size()) && k > 1; }	n with primitive root 6	nonn	1..1000
+A167795	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  7) == 1 && imm.order(ZV(  7)).equals(imm.size()) && k > 1; }	n with primitive root 7	nonn	1..1000
+A167796	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  8) == 1 && imm.order(ZV(  8)).equals(imm.size()) && k > 1; }	n with primitive root 8	nonn	1..1000
+A167797	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 10) == 1 && imm.order(ZV( 10)).equals(imm.size()) && k > 1; }	n with primitive root 10	nonn	1..1000
+A167798	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  2) == 1 && imm.order(ZV( -2)).equals(imm.size()) && k > 1; }	n with primitive root -2	nonn	1..1000
+A167799	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  3) == 1 && imm.order(ZV( -3)).equals(imm.size()) && k > 1; }	n with primitive root -3	nonn	1..1000
+A167800	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  4) == 1 && imm.order(ZV( -4)).equals(imm.size()) && k > 1; }	n with primitive root -4	nonn	1..1000
+A167801	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  5) == 1 && imm.order(ZV( -5)).equals(imm.size()) && k > 1; }	n with primitive root -5	nonn	1..1000
+A167802	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  6) == 1 && imm.order(ZV( -6)).equals(imm.size()) && k > 1; }	n with primitive root -6	is(n)=gcd(n, 6)==1 && znorder(Mod(-6, n))==eulerphi(n) && n>1
+A167803	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  7) == 1 && imm.order(ZV( -7)).equals(imm.size()) && k > 1; }	n with primitive root -7	nonn	1..1000
+A167804	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  8) == 1 && imm.order(ZV( -8)).equals(imm.size()) && k > 1; }	n with primitive root -8	nonn	1..1000
+A167805	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k,  9) == 1 && imm.order(ZV( -9)).equals(imm.size()) && k > 1; }	n with primitive root -9	nonn	1..1000
+A167806	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 10) == 1 && imm.order(ZV(-10)).equals(imm.size()) && k > 1; }	n with primitive root -10.	nonn	1..1000
+A167994	filnum	1	1	k -> String.valueOf(k*2).charAt(0) - '0' == k % 10	Numbers k with property that first digit of 2*k is the last digit of k.
+A167996	filnum	1	1	k -> String.valueOf(k*3).charAt(0) - '0' == k % 10	Numbers n with property that first digit of 3*n = last digit of n.
+A167997	filnum	1	1	k -> String.valueOf(k*4).charAt(0) - '0' == k % 10	Numbers n with property that first digit of 4*n = last digit of n.
+A167998	filnum	1	1	k -> String.valueOf(k*5).charAt(0) - '0' == k % 10	Numbers n with property that first digit of 5*n = last digit of n.
+A168000	filnum	1	1	k -> String.valueOf(k*6).charAt(0) - '0' == k % 10	Numbers n with property that first digit of 6*n = last digit of n.
+A168001	filnum	1	1	k -> String.valueOf(k*7).charAt(0) - '0' == k % 10	Numbers n with property that first digit of 7*n = last digit of n.
+A168004	filnum	1	1	k -> String.valueOf(k*8).charAt(0) - '0' == k % 10	Numbers n with property that first digit of 8*n = last digit of n.
+A168005	filnum	1	1	k -> String.valueOf(k*9).charAt(0) - '0' == k % 10	Numbers n with property that first digit of 9*n = last digit of n.
+A168006	filter	1	new A000040()	p -> p.*(2).toString().charAt(0) - '0' == p.mod(10)	Primes  n with property that first digit of 2*n = last digit of n.
+A168570	lambdan	1	n -> Z.valueOf(ZUtils.valuation(Z2(n).-(1), Z.THREE))	Exponent of 3 in 2^n - 1.
+A186190	simtraf	1	new A000213()	v ->  ZV(v.toString().charAt(0) - '0')	First digit of tribonacci sequenc A000213.
+A186191	simtraf	1	new A000288()	v ->  ZV(v.toString().charAt(0) - '0')	First digit of tetranacci numbers A000288.
+A186192	simtraf	1	new A000322()	v ->  ZV(v.toString().charAt(0) - '0')	First digit of pentanacci numbers A000322.
+A213050	filter	1	new A001122()	p -> p.mod(4) == 1	Primes of the form 4*k+1 with primitive root +2.
+A213051	filter	1	new A001122()	p -> p.mod(4) == 3	Primes of the form 4*k+3 with primitive root +2.
+A239114	simtraf	1	new A014076()	v -> Z.valueOf(ZUtils.valuation(v.+(1), Z.TWO))	Exponent of 2 in prime factorization (i.e., 2-adic valuation) of odd nonprimes A014076(n) + 1.
+A240028	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 11) == 1 && imm.order(ZV( 11)).equals(imm.size()) && k > 1; }	n with primitive root  11
+A240029	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 11) == 1 && imm.order(ZV(-11)).equals(imm.size()) && k > 1; }	n with primitive root -11
+A240030	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 12) == 1 && imm.order(ZV( 12)).equals(imm.size()) && k > 1; }	n with primitive root  12
+A240031	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 12) == 1 && imm.order(ZV(-12)).equals(imm.size()) && k > 1; }	n with primitive root -12
+A240032	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 13) == 1 && imm.order(ZV( 13)).equals(imm.size()) && k > 1; }	n with primitive root  13
+A240093	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 13) == 1 && imm.order(ZV(-13)).equals(imm.size()) && k > 1; }	n with primitive root -13
+A240094	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 14) == 1 && imm.order(ZV( 14)).equals(imm.size()) && k > 1; }	n with primitive root  14
+A240095	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 14) == 1 && imm.order(ZV(-14)).equals(imm.size()) && k > 1; }	n with primitive root -14
+A240096	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 15) == 1 && imm.order(ZV( 15)).equals(imm.size()) && k > 1; }	n with primitive root  15
+A240097	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 15) == 1 && imm.order(ZV(-15)).equals(imm.size()) && k > 1; }	n with primitive root -15
+A240100	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 17) == 1 && imm.order(ZV(-17)).equals(imm.size()) && k > 1; }	n with primitive root -17
+A240101	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 17) == 1 && imm.order(ZV( 17)).equals(imm.size()) && k > 1; }	n with primitive root  17
+A240102	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 18) == 1 && imm.order(ZV(-18)).equals(imm.size()) && k > 1; }	n with primitive root -18
+A240103	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 18) == 1 && imm.order(ZV( 18)).equals(imm.size()) && k > 1; }	n with primitive root  18
+A240104	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 19) == 1 && imm.order(ZV(-19)).equals(imm.size()) && k > 1; }	n with primitive root -19
+A240106	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 19) == 1 && imm.order(ZV( 19)).equals(imm.size()) && k > 1; }	n with primitive root  19
+A240107	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 20) == 1 && imm.order(ZV(-20)).equals(imm.size()) && k > 1; }	n with primitive root -20
+A240108	filnum	1	1	k -> { final IntegersModMul imm = new IntegersModMul(k); return IntegerUtils.gcd(k, 20) == 1 && imm.order(ZV( 20)).equals(imm.size()) && k > 1; }	n with primitive root  20
+A319678	filnum	1	1	k -> String.valueOf(k).charAt(0) - '0' == k.toString().length()	Numbers with property that the first digit is the length of the number (written in base 10).
+A371742	lambdan	0	n -> SU(0, n/2, k -> BI(3*n - k, n - 2*k))
+A371743	lambdan	0	n -> SU(0, n/2, k -> BI(4*n - k, n - 2*k))
+A371744	lambdan	0	n -> SU(0, n/2, k -> BI(5*n - k, n - 2*k))
+A371753	lambdan	0	n -> SU(0, n/2, k -> BI(5*n - 2*k - 1, n - 2*k))
+A371754	lambdan	0	n -> SU(0, n/2, k -> BI(3*n - 2*k,n - 3*k))
+A371755	lambdan	0	n -> SU(0, n/2, k -> BI(4*n - 2*k,n - 3*k))
+A371756	lambdan	0	n -> SU(0, n/2, k -> BI(5*n - 2*k,n - 3*k))
+---- 2024-04-08 17:34:44
+A096393	simtraf	1	new A000668()	v -> ZUtils.leastPrimitiveRoot(v)	Least primitive root of n-th Mersenne prime.
+A186278	filnum	1	0	k -> ZV(ZUtils.digitSum(ZV(k)) + ZUtils.digitSum(ZV(k).*(k))).IPP()	Numbers n such that the sum of the digits of n plus the sum of the digits of n^2 is prime.	nonn,easy,base	1..1000
+A186279	filnum	1	0	k -> ZV(ZUtils.digitSum(ZV(k)) + ZUtils.digitSum(ZV(k).*(k)) + ZUtils.digitSum(ZV(k).^(3))).IPP()	Numbers n such that the sum of the digits of n plus the sum of the digits of n^2 plus the sum of the digits of n^3 is prime.	nonn,easy,base	1..10000
+A186280	filter	1	new A186279()	PRIME	Primes within A186279.	nonn,easy,base	1..10000
+A186281	filter	1	new A186278()	PRIME	Primes within A186278.	nonn,easy,base	1..49
+A241541	lambdan	0	n -> Z.valueOf(ZUtils.valuation(Z2(n).+(ZV(3).^(n)).+(ZV(5).^(n)).+(ZV(7).^(n)), ZV(11)))	Exponent of 11 in prime factorization of (2^n + 3^n + 5^n + 7^n).
+---- 2024-04-08 18:16:40
+A093018	lambdan	0	n -> new Z(Integer.toString(n) + A093017.check(ZV(n)))	Natural numbers with appended Luhn mod 10 check digit.	easy,nonn,base	0..10000	nyi
+A093019	simtraf	0	new A093018()	v -> v.modZ(10)	a(n) = A093018(n) mod 10.0..10000	_Ray Chandler_
+A093020	filtpos	1	0	new A093019()	v -> v.equals(ZV(0))	Indices of terms in A093019 with value 0.	easy,nonn,base
+A093021	filtpos	1	0	new A093019()	v -> v.equals(ZV(1))	Indices of terms in A093019 with value 1.	easy,nonn,base
+A093022	filtpos	1	0	new A093019()	v -> v.equals(ZV(2))	Indices of terms in A093019 with value 2.	easy,nonn,base
+A093023	filtpos	1	0	new A093019()	v -> v.equals(ZV(3))	Indices of terms in A093019 with value 3.	easy,nonn,base
+A093024	filtpos	1	0	new A093019()	v -> v.equals(ZV(4))	Indices of terms in A093019 with value 4.	easy,nonn,base
+A093025	filtpos	1	0	new A093019()	v -> v.equals(ZV(5))	Indices of terms in A093019 with value 5.	easy,nonn,base
+A093026	filtpos	1	0	new A093019()	v -> v.equals(ZV(6))	Indices of terms in A093019 with value 6.	easy,nonn,base
+A093027	filtpos	1	0	new A093019()	v -> v.equals(ZV(7))	Indices of terms in A093019 with value 7.	easy,nonn,base
+A093028	filtpos	1	0	new A093019()	v -> v.equals(ZV(8))	Indices of terms in A093019 with value 8.	easy,nonn,base
+A093029	filtpos	1	0	new A093019()	v -> v.equals(ZV(9))	Indices of terms in A093019 with value 9.	easy,nonn,base
+A249830	filnum	1	0	k -> !A093017.isOk(ZV(k))	Natural numbers having no valid Luhn mod 10 check digit.
+A249832	lambdan	0	n -> A093017.isOk(ZV(n)) ? Z.ONE : Z.ZERO	Characteristic function of numbers having a valid Luhn mod 10 check digit.
+---- 2024-04-08 19:11:28
+A106844	simtraf	1	new A093641().skip(2)	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))	Exponent of 2 in A093641(n).
+A127807	simtraf	1	new A000040()	p -> p == Z.TWO ? Z.THREE : ZUtils.leastPrimitiveRoot(p.^(2))	Least positive primitive root of (n-th prime)^2.
+A127808	simtraf	2	new A000040().skip(1)	p -> ZUtils.leastPrimitiveRoot(p.^(3))	Least positive primitive root of (n-th prime)^3.
+A127809	simtraf	2	new A000040().skip(1)	p -> ZUtils.leastPrimitiveRoot(p.^(4))	Least positive primitive root of (n-th prime)^4.
+A127810	simtraf	2	new A000040().skip(1)	p -> ZUtils.leastPrimitiveRoot(p.^(5))	Least positive primitive root of (n-th prime)^5.
+A214179	filter	1	new A000040()	p -> ZUtils.leastPrimitiveRoot(p).equals(ZV(p.bitCount()))	Primes p such that least positive primitive root of p is equal to number of 1s in binary representation of p.

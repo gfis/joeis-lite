@@ -1,0 +1,108 @@
+---- 2024-04-09 09:19:11
+A106844	simtraf	1	new A093641().skip(2)	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))	Exponent of 2 in A093641(n).
+A127807	simtraf	1	new A000040()	p -> p == Z.TWO ? Z.THREE : ZUtils.leastPrimitiveRoot(p.^(2))	Least positive primitive root of (n-th prime)^2.
+A127808	simtraf	2	new A000040().skip(1)	p -> ZUtils.leastPrimitiveRoot(p.^(3))	Least positive primitive root of (n-th prime)^3.
+A127809	simtraf	2	new A000040().skip(1)	p -> ZUtils.leastPrimitiveRoot(p.^(4))	Least positive primitive root of (n-th prime)^4.
+A127810	simtraf	2	new A000040().skip(1)	p -> ZUtils.leastPrimitiveRoot(p.^(5))	Least positive primitive root of (n-th prime)^5.
+A214179	filter	1	new A000040()	p -> ZUtils.leastPrimitiveRoot(p).equals(ZV(p.bitCount()))	Primes p such that least positive primitive root of p is equal to number of 1s in binary representation of p.
+---- 2024-04-09 22:59:31
+A070087	filnum	1	1	k -> LPF(k).compareTo(LPF(k + 1) > 0	P(n) > P(n + 1) where P(n) (A006530) is the largest prime factor of n
+A070089	filnum	1	1	k -> LPF(k).compareTo(LPF(k + 1) < 0	P(n) < P(n + 1) where P(n) (A006530) is the largest prime factor of n
+A070647	simtraf	1	new A006881()	v -> LPF(v)	a(n)=P(A006881(n)) where P(x) is the largest prime factor of x
+A071182	lambdan	2	n -> SPF(n + 1).-(SPF(n))	where SPF(n) denotes the Least prime factor of n
+A072848	lpf	1	Z.TEN.^(6*n).+(1)
+A073409	simtraf	1	new A002445().skip(1)	v -> LPF(v)	the denominator of the Bernoulli number B(2*n) (A002445)
+A076606	lambdan	3	n -> LPF(n - 1).min(LPF(n + 1))	Min { largest prime factor of n - 1, largest prime factor of n + 1 }
+A079084	lpf	1	Puma.primeZ(n).+(1).*(Puma.primeZ(n + 1).+(1))./(4)
+A080214	lambdan	1	n -> BI(LPF(n), SPF(n))	Binomial(Largest prime factor of n, Least prime factor of n)
+A081303	lambdan	1	m -> LPF(m).-(SPF(m).*(2))	gpf(m)  -  2*spf(m), where gpf(m) is the Largest and spf(m) is the Least prime factor of m (A006530, A020639)
+A083218	lambdan	1	n -> ZV(n).mod(SPF(n + 1).+(1))	a(n) = n mod (spf(n + 1) + 1), where spf(n) is the Least prime factor of n (A020639)
+A083557	tuptraf	1	(n, s) -> JF(s[0].*(3).+(2)).largestPrimeFactor()	"3"	PREVIOUS	a(n) is the Largest prime factor of 3*a(n - 1) + 2
+A083715	lambdan	1	n -> Puma.prevPrimeZ(ZV(n + 1)).mod(JF(n).largestPrimeFactor())	(Largest prime <= n) mod (Largest prime factor of n)
+A083716	lambdan	1	n -> (n == 1) ? Z.ONE : Puma.prevPrimeZ(ZV(n + 1))./(JF(n).largestPrimeFactor())	a(n) = integer part of (Largest prime <= n)/(Largest prime factor of n); a(1) = 1
+A087273	simtraf	1	new A000040()	v -> JF(v.*(3).+(1)).largestPrimeFactor()	3*prime(n).+(1)
+A089082	spf	2	ZV(3).^(n).-(Z2(n))
+A089120	spf	1	ZV(n).^(2).+(1)
+A089123	spf	1	ZV(n).^(2).+(3)	numbers of the form A^2  +  3
+A089124	lpf	1	ZV(n).^(2).+(3)	numbers of the form A^2  +  3
+A089948	simtraf	1	new A089933()	v -> SPF(v)	the concatenation of the first n odd primes
+A094498	spf	1	Z2(4*n).+(Z.THREE.^(4*n))	= 16^n  +  81^n
+A096006	simtraf	1	new FilterSequence(0, new A007318(), v -> !v.equals(Z.ONE))	v -> LPF(v)	Scan Pascals triangle (A007318) from left to right, record largest prime factor of each entry
+A096007	simtraf	1	new FilterSequence(0, new A007318(), v -> !v.equals(Z.ONE))	v -> SPF(v)	Scan Pascals triangle (A007318) from left to right, record Least prime factor of each entry
+A096172	lpf	1	ZV(n).^(4).+(1)
+A100755	simtraf	1	new A003590().skip(1)	v -> SPF(v)	the concatenation of terms in the n - th row of Pascal's Triangle
+A100756	simtraf	1	new A003590().skip(1)	v -> LPF(v)	the concatenation of terms in the n - th row of Pascal's Triangle
+A104132	simtraf	1	new A006450()	v -> JF(v.^(v).-(1)).largestPrimeFactor()	pip(n)^pip(n) - 1 where pip(n) is the n - th prime - indexed prime
+A107744	spf	1	6*n + 1
+A107745	spf	1	6*n - 1
+A109840	simtraf	1	new A038395().skip(1)	v -> LPF(v)	the reverse concatenation of the first n consecutive odd numbers
+A113972	lpf	0	Z2(n).*(29).-(1)	Define b(0)=28, b(n + 1)=2*b(n) + 1; sequence gives largest prime factor of b(n)
+A116895	spf	2	ZV(n).^(n).-(1)
+A117818	lambdan	1	n -> (n <= 3 || ZV(n).IPP()) ? ZV(n) : ZV(n)./(SPF(n))	a(n) = n if n is 1 or a prime, otherwise a(n) = n divided by the least prime factor of n (A032742(n))
+A118333	lpf	0	FD(n).+(FD(n + 1))	!!  +  (n + 1)!!
+A119416	lambdan	1	n -> Puma.nextPrimeZ(LPF(n)).*(n)	n * (Least prime greater than largest prime factor of n)
+A122967	tuptraf	1	(n, s) -> LPF(s[0]).max(LPF(s[1]))	""	new A002025(), new A002046()	max(A006530(A002025(n)), A006530(A002046(n)))the pair of amicable numbers. Amicable numbers are sorted by the smaller number in the pair
+A125571	spf	2	SU(0, n - 1, k -> ZV(n).^(k))	Sum_{k=0..n - 1} n^k
+A129597	lambdan	1	n -> n == 1 ? Z.ONE : ZV(n).^(2).*(2)./(LPF(n))	a(n) = 2*n^2/g
+A138859	lambdan	2	n -> JF(FI(3*n).-(1)).leastPrimeFactor()	A020639(A000071(3n))
+A138965	simtraf	1	new A019519()	v -> SPF(v)	concatenation of first n odd numbers
+A139023	spf	1	FA(n).+(Z2(n)).-(1)	!  +  2^n  -  1
+A140538	lpf	1	ZV(n).^(4).*(2).+(1)
+A141710	simtraf	1	new A002997()	v -> SPF(v)	0	n - th Carmichael number A002997(n)
+A144293	simtraf	0	new A000110()	v -> v.equals(Z.ONE) ? Z.ONE : LPF(v)	n - th Bell number A000110(n) (or 1 if A000110(n) = 1)
+A158725	filnum	1	1	n -> LongUtils.gcd(n, 330) == 1 && !ZV(n).IPP() && !ZV(n).mod(PR(1, n.toString().length(), k -> Z.TEN)./(9)).isZero()	10	gcd(n,330)==1&&!isprime(n)&&n%(10^#Str(n)\9)
+A158812	simtraf	1	new A158725()	v -> SPF(v)	entries in ?158725(n)
+A158813	simtraf	1	new A158725()	v -> LPF(v)	entries in ?158725(n)
+A165768	simtraf	1	new A165767()	v -> JF(Z2(v.intValueExact()).-(v)).leastPrimeFactor()	0	the semiprime 2^A165767(n) - A165767(n)
+A165769	simtraf	1	new A165767()	v -> JF(Z2(v.intValueExact()).-(v)).largestPrimeFactor()	0	the semiprime 2^A165767(n) - A165767(n)
+A174379	lpf	4	ZV(n - 1).^(n).-(ZV(n).^(n - 1))	a(n) is the largest prime factor of (n - 1)^n  -  n^(n - 1)
+A192885	simtraf	0	new A071963()	(n, v) -> v.-(n)	A071963(n) is the largest prime factor of p(n), the n - th partition number A000041(n)
+A209188	spf	2	ZV(n).^(2).+(n - 1)
+A209189	spf	2	ZV(n).^(2).+(n + 1)
+A209195	simtraf	1	new A097942()	v -> JF(v.+(1)).leastPrimeFactor()	A020639(A097942(n) + 1)the n - th highly totient number (A097942(n)) plus 1
+A216146	spf	0	ZV(2*n + 1).^(2*n + 1).*(3).+(2)
+A219586	lpf	1	PR(1, n, x -> ZV(x).*(x).+(1))	Product_{x=1..n} (x^2  +  1)
+A228000	spf	1	144396166620968L*n + 1
+A228613	spf	0	ZV(2*n + 1).^(2*n + 1).+(2)
+A229767	lpf	1	Z2(2*n + 1).-(Z2(n + 1)).+(1)
+A229768	lpf	1	Z2(2*n + 1).+(Z2(n + 1)).+(1)
+A231233	trilambn	1	1	1	(n, k) -> LPF(n*k  +  1)	Triangle T(n,k) = Largest prime factor of n*k + 1
+A232450	simtraf	0	new A232449()	v -> LPF(v)	the Belphegor number B(n) = (10^(n + 3)  +  666)*10^(n + 1)  +  1
+A237579	spf	1	FA(2*n).-(FA(n)).+(1)
+A238642	lambdan	1	n -> ZV(n + 1).IPP() ? ZV(n) : SPF(n + 1).*(n)	a(n) = n if n + 1 is prime; otherwise, a(n) = n * (Least prime factor of n + 1)
+A240548	lpf	1	ZV(n).^(5).+(1)
+A240549	lpf	1	ZV(n).^(6).+(1)
+A240550	lpf	1	ZV(n).^(7).+(1)
+A240551	lpf	1	ZV(n).^(8).+(1)
+A240552	lpf	1	ZV(n).^(9).+(1)
+A240553	lpf	1	ZV(n).^(10).+(1)
+A242017	simtraf	1	new FilterSequence(0, new A000051(), v -> !v.IPP())	v -> SPF(v)	composites in the sequence A000051(n) = 2^n + 1
+A242488	filnum	1	0	n -> LPF(n*n - 2).equals(ZV(17))	Numbers n such that the largest prime factor of n^2  -  2 is 17
+A247827	simtraf	1	new A247676()	v -> SPF(v)
+A247870	simtraf	1	new A247678()	v -> SPF(v)	odd numbers congruent to 4 modulo 9
+A247871	simtraf	1	new A247679()	v -> SPF(v)
+A247872	simtraf	2	new A247681().skip(1)	v -> SPF(v)	(n)
+A247876	simtraf	1	new A247682()	v -> SPF(v)
+A247877	simtraf	1	new A247683()	v -> SPF(v)
+A254269	simtraf	0	new A000009()	v -> LPF(v)	the strict partition numbers Q(n) (partitions into distinct parts, A000009)
+A258091	simtraf	1	new A258073()	v -> SPF(v)	1 + 78557*2^n, cf. A258073
+A259788	lambdan	2	n -> JF(JF(BI(2*n, n)).phi()).largestPrimeFactor()
+A262375	spf	0	FA(n).*(4).-(1)
+A271314	simtraf	3	new A001045().skip(3)	v -> LPF(v)	the n - th Jacobsthal number, A001045(n)
+A280894	tuptraf	1	(n, s) -> JF(new Z(s[1].toString() + s[0].toString())).largestPrimeFactor()	"1,2"	PREVIOUS,PREVIOUS	a(n) is the largest prime factor of the concatenation of a(n - 2) and a(n - 1), with a(1)=1 and a(2)=2
+A281331	simtraf	1	new A001067()	v -> v.abs().equals(Z.ONE) ? Z.ONE : JF(v.abs()).leastPrimeFactor()	enspf	0	|A001067(n)|, or 1 if |A001067(n)| = 1
+A281332	simtraf	1	new A001067()	v -> v.abs().equals(Z.ONE) ? Z.ONE : JF(v.abs()).largestPrimeFactor()	enlpf	0	|A001067(n)|, or 1 if |A001067(n)| = 1
+A282706	simtraf	0	new A020549()	v -> SPF(v)	(n) = (n!)^2  +  1
+A285639	simtraf	1	new A117366()	(n, v) -> v.*(n)./(SPF(n))	a(n) = n*A117366(n)/spf(n), where A117366(n) is the Least prime larger than all prime factors of n, and spf is the Least prime factor of n (or 1 if n = 1)
+A308970	simtraf	1	new A001008()	v -> SPF(v)	(n), numerator of n - th harmonic number; a(1) = 1
+A321069	lpf	1	ZV(n).^(3).+(2)
+A336347	spf	0	ZV(44745755).^(4).*(Z2(4*n + 2)).+(1)
+A336943	spf	0	ZV(44745755).^(4).+(Z2(4*n + 2))
+A342768	simtraf	1	new A006530()	(n, v) -> ZV(n).^(2)./(v)	is the Largest prime factor of n, then a(n) = n^2/g
+A358440	lpf	1	4*n + 1	a(n) is the largest prime factor of 4n + 1.  -  _Charles R Greathouse IV_, Nov 16 2022
+A359950	lpf	2	ZV(n).^(n).-(FA(n))	a(n) is the Largest prime factor of n^n  -  n!
+A361520	tuptraf	1	(n, s) -> JF(s[0].^(2).+(s[1].^(2))).largestPrimeFactor()	"2,3"	PREVIOUS,PREVIOUS	a(n) is the Largest prime factor of a(n - 2)^2  +  a(n - 1)^2 where a(1)=2 and a(2)=3
+A365928	spf	1	ZV(10).^(2*n    ).+((ZV(10).^(n).-(1))./(9))
+A365966	spf	0	ZV(10).^(2*n + 1).+((ZV(10).^(n).-(1))./(9))
+A369871	simtraf	1	new A024411()	v -> SPF(v)	a(n) = least prime factor of A024411(n)
+A371224	simtraf	1	new A011545()	v -> v.IPP() ? Z.ZERO : SPF(v)	the integer formed by the first n decimal digits of Pi, or 0 if that number is prime

@@ -217,6 +217,7 @@ while (<>) { # read inputfile
             $parm =~ s{CV\(}           {CR.valueOf\(}g;
             $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
             $parm =~ s{FD\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
+            $parm =~ s{DF\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
             $parm =~ s{FM\(}           {MemoryFactorial.SINGLETON.multiFactorial\(}g;
             $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
             $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;

@@ -1,0 +1,48 @@
+---- 2024-04-09 09:19:13
+%N A093017	nyi Fo	Luhn algorithm double-and-add sum of digits of n.	easy,nonn,base	0..10000	nyi	_Ray Chandler_
+%N A129404	nyi Ft	Decimal expansion of L(3, chi3), where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.	nonn,cons,easy	0..99	nyi	_Stuart Clary_
+%N A129405	nyi Ft	Expansion of L(3, chi3) in base 2, where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.	nonn,base,cons,easy	0..103	nyi	_Stuart Clary_
+%N A129406	nyi Ft	Expansion of L(3, chi3) in base 3, where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.	nonn,base,cons,easy	0..99	nyi	_Stuart Clary_
+%N A129407	nyi Ft	Balanced ternary expansion of L(3, chi3), where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.	sign,easy	0..105	nyi	_Stuart Clary_
+%N A129408	nyi Ft	Continued fraction for L(3, chi3), where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.	nonn,cofr,easy	0..97	nyi	_Stuart Clary_
+%N A129409	nyi Ft	Engel expansion of L(3, chi3), where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.	nonn,easy	1..30	nyi	_Stuart Clary_
+%N A129410	nyi Ft	Pierce expansion of L(3, chi3), where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.	nonn,easy	1..23	nyi	_Stuart Clary_
+%N A129411	nyi Ft	Greedy Egyptian expansion of L(3, chi3), where L(s, chi3) is the Dirichlet L-function for the non-principal character modulo 3.	nonn,easy	1..9	nyi	_Stuart Clary_
+%N A186253	nyi Fto	Indices of zeros of the sequence u(n)=abs(u(n-1)-gcd(u(n-1),n-1)), u(1)=1.	nonn	1..315	nyi	_Benoit Cloitre_
+%N A186254	nyi Fo	a(n) = 2*b(n)+1, where b(n) lists the zeros of the sequence u(n)=abs(u(n-1)-gcd(u(n-1),2*n-1)), u(1)=1.	nonn	1..27	nyi	_Benoit Cloitre_
+%N A186255	nyi Fo	a(n) = 3*b_3(n)+2, where b_3 lists the zeros of the sequence A261303: u(n+1)=abs(u(n)-gcd(u(n),3*n+2)), u(1)=1.	nonn	1..25	nyi	_Benoit Cloitre_
+%N A186256	nyi Fo	a(n) = 4*b_4(n)+3, where b_4 lists the indices of zeros of the sequence A261304: u(n) = abs(u(n-1)-gcd(u(n-1),4*n-1)), u(1) = 1.	nonn	1..23	nyi	_Benoit Cloitre_
+%N A186257	nyi Fo	a(n) = 5*b_5(n)+4, where b_5 lists the indices of zeros of the sequence A261305: u(n) = abs(u(n-1)-gcd(u(n-1),5*n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+%N A186258	nyi Fo	a(n) = 6*b_6(n)+5, where b_6 lists the indices of zeros of the sequence A261306: u(n) = abs(u(n-1)-gcd(u(n-1),6*n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+%N A186259	nyi Fo	a(n) = 7*b_7(n) + 6, where b_7 lists the indices of zeros of the sequence u(n) = abs(u(n-1) - gcd(u(n-1), 7n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+%N A186260	nyi Fo	a(n) = 8*b_8(n)+7, where b_8 lists the zeros of the sequence A261308: u(n+1)=|u(n)-gcd(u(n), 8n+7)|, u(1)=1.	nonn	1..20	nyi	_Benoit Cloitre_
+%N A186261	nyi Fo	a(n) = 9*b_9(n) + 8, where b_9 lists the indices of zeros of the sequence A261309: u(n) = abs(u(n-1) - gcd(u(n-1), 9n-1)), u(1) = 1.	nonn	1..20	nyi	_Benoit Cloitre_
+%N A186263	nyi Fo	a(n) = 10*b_10(n) + 9, where b_10 lists the indices of zeros of the sequence A261310: u(n) = abs(u(n-1) - gcd(u(n-1), 10n-1)), u(1) = 1.	nonn	1..19	nyi	_Benoit Cloitre_
+%N A186265	nyi Fo	a(n) = b_f(n) where f is the 2-periodic sequence f(k) = (-1)^k (see comments).	nonn	1..34	nyi	_Benoit Cloitre_
+%N A186267	nyi Fo	a(n) = b_f(n) where f is the 3-periodic sequence [-1,1,5] (see comments).	nonn	1..35	nyi	_Benoit Cloitre_
+%N A204208 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements differing by no more than 3.                  
+%N A204209 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements differing by no more than 4.                  
+%N A204210 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements differing by no more than 5                   
+%N A204211 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements differing by no more than 6                   
+%N A204212 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements differing by no more than 7                   
+%N A204213 T(n,k) = Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements differing by no more than k.         
+%N A205336 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements unequal but differing by no more than 3.      
+%N A205337 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements unequal but differing by no more than 4.      
+%N A205338 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements unequal but differing by no more than 5.      
+%N A205339 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements unequal but differing by no more than 6       
+%N A205340 Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements unequal but differing by no more than 7       
+%N A205341 T(n,k)=Number of length n+1 nonnegative integer arrays starting and ending with 0 with adjacent elements unequal but differing by no more than k
+%N A234606	tuptraf	0	(n, s) -> s[a(n+1) is next smallest cube ending with a(n), initial term is 2.
+%N A234607	tuptraf	0	(n, s) -> s[a(n+1) is next smallest cube ending with a(n), initial term is 3.
+%N A234608	tuptraf	0	(n, s) -> s[a(n+1) is next smallest cube ending with a(n), initial term is 4.
+%N A234609	tuptraf	0	(n, s) -> s[a(n+1) is next smallest cube ending with a(n), initial term is 5.
+%N A234610	tuptraf	0	(n, s) -> s[a(n+1) is next smallest cube ending with a(n), initial term is 6.
+%N A234611	tuptraf	0	(n, s) -> s[a(n+1) is next smallest cube ending with a(n), initial term is 9.
+# A093050	lambdan	0	n -> Z.valueOf(ZUtils.valuation(ZV(3).^(n).-(3).*(Z2(n - 1)), Z.TWO))	Exponent of 2 in (3^n-3)*2^(n-1).
+# A093051	lambdan	0	n -> Z.valueOf(ZUtils.valuation(ZV(3).^(n).-(3).*(Z2(n)), Z.TWO))	Exponent of 2 in (3^n-3)*2^n.
+# A243296	simtraf	0	new A002110()	v -> Z.valueOf(ZUtils.valuation(v./(2).^(2).-(1), Z.TWO))	Exponent of 2 in (A002110(n)/2)^2-1
+%X A247261	filter	1	new A000290()	v -> v.mod(100) != 0 && v.+(Z.TEN.^(ZUtils.decimalLength(v) + 1)).isSquare()	Positive squares not ending in 00 that remain squares when prefixed with 10                        
+%X A247262	filter	1	new A000290()	v -> v.mod(100) != 0 && v.+(Z.TEN.^(ZUtils.decimalLength(v) + 2)).isSquare()	Positive squares not ending in 00 that remain squares when prefixed with 100.                      
+%X A247263	filnum	1	1	k -> { final Z k2 = ZV(k).^(2); return k % 10 != 0 && k2.+(Z.TEN.^(ZUtils.decimalLength(k2) + 3)).isSquare(); }	Positive numbers not divisible by 10 whose squares remain squares when prefixed with 1000.         
+%X A247312	filnum	1	1	k -> { final Z k2 = ZV(k).^(2); return k % 10 != 0 && k2.+(Z.TEN.^(ZUtils.decimalLength(k2) + 2)).isSquare(); }	Positive numbers not divisible by 10 whose squares remain squares when prefixed with 100.          
+

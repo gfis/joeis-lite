@@ -1,0 +1,397 @@
+---- 2024-04-09 22:59:32
+A007117	#nyi	0		a(0) = a(1) = 0; for n >= 2, a(n)*2^(n + 2)  +  1 is the Least prime factor of the n - th Fermat number F(n) = 2^(2^n)  +  1
+A070002	filnum	0	1	k -> JF(LPF(k)).phi().-(JF(JF(k).phi()).largestPrimeFactor()).equals(1)	Numbers k such that phi(P(k))  -  P(phi(k)) = 1, where P(k) is the largest prime factor of k
+A070818	#nyi	0		Least argument m such that commutator[phi(n), gpf(n)] = 2*n - 1, where phi(n) = A000010(n) and gpf(n) = A006530(n), the largest prime factor of n
+A070819	#nyi	0		a(n) = phi(gpf(prime(n))  -  gpf(phi(prime(n))) = A070812(A000040(n)) where phi(w) = Euler totient of w and gpf(w) is the largest prime factor of w. So a(n) = prime(n)  -  1  -  q. See also A070813 when q = 2
+A071166	simtraf	0	new A000203()	(n, v) -> ZV(n).-(LPF(v))	a(n) = n  -  A006530(A000203(n)), difference between n and largest prime factor of the sum of its divisors
+A071217	#nyi	0		Numbers k such that the largest prime factor of the sum of successive primes p(k)  +  p(k + 1) is greater than k
+A071218	#nyi	0		Numbers k such that the largest prime factor of the sum of the two consecutive primes prime(k)  +  prime(k + 1) is at most k
+A071312	#nyi	0		Squarefree numbers k such that the largest prime factor of k is equal to the sum of the other prime factors of k
+A071392	#nyi	0		Reverse of Least prime factor of n = largest prime factor of n + 1; a(1)=1
+A071393	#nyi	0		Reverse of largest prime factor of n = Least prime factor of n + 1; a(1)=1
+A071394	#nyi	0		Numbers n divisible by pi(n) [A057809] with prime pi(n); i.e., largest prime factor of n equals pi(n)
+A071823	#nyi	0		Number of numbers x <= n with largest prime factor of the form 4k + 3
+A071824	#nyi	0		Number of x with largest prime factor of the form 4k + 1 less than or equal to n
+A071825	#nyi	0		(Number of x with largest prime factor of the form 4k + 3 less than or equal to n) minus (Number of x with largest prime factor of the form 4k + 1 less than or equal to n)
+A071835	#nyi	0		Numbers k such that the largest prime factor of k is equal to floor(sqrt(k))
+A071836	#lpf	0	n = prime(tau(n))
+A071861	#nyi	0		Numbers k such that the largest prime factor of k is equal to the sum of primes dividing k + 1 (with repetition)
+A071863	#nyi	0		Numbers n such that sum of primes dividing n (with repetition) is equal to the largest prime factor of n + 1
+A071869	#nyi	0		Numbers k such that gpf(k) < gpf(k + 1) < gpf(k + 2) where gpf(k) denotes the largest prime factor of k
+A071870	#nyi	0		Numbers k such that gpf(k) > gpf(k + 1) > gpf(k + 2) where gpf(k) denotes the largest prime factor of k
+A071929	#nyi	0		Numbers k such that the sum of exponents of k is equal to the Largest prime factor of k; a(1)=1
+A071964	#nyi	0		Numbers n such that n = Lpf(n)*Lpf(phi(n)) where Lpf(x) = A006530(x) is the largest prime factor of x
+A071965	#nyi	0		Numbers k such that k = Gpf(k) * Gpf(sigma(k)) where Gpf(k) = A006530(k) is the Largest prime factor of k
+A072268	#nyi	0		a(0) = 1; a(n + 1) = 1  +  f(a(n))^2, where f(x) is the largest prime factor of x (A006530)
+A073753	#nyi	0		a(n) = A073752(A073752(n)), where A073752(n) = gcd(n/spf(n), n/gpf(n)), with spf(n) as the Least and gpf(n) as the Largest prime factor of n (see A020639, A006530)
+A074037	#nyi	0		Sum of the composites between the Least prime factor of n and the largest prime factor of n
+A074053	#nyi	0		Numbers n such that A001414(n) = sum of composites from the Least prime factor of n to the largest prime factor of n
+A074054	#nyi	0		Numbers n such that sum of composites from Least prime factor of n to largest prime factor of n is prime
+A074196	#nyi	0		Sum of palindromes from the Least prime factor of n to the largest prime factor of n
+A074210	#nyi	0		Numbers k such that the number of primes <= k is equal to the sum of primes from the Least prime factor of k to the largest prime factor of k
+A074251	#nyi	0		Sum of the squarefree numbers from the Least prime factor of n to the largest prime factor of n
+A074252	#nyi	0		Number of primes <= n is equal to the sum of squarefree numbers from the Least prime factor of n to the largest prime factor of n
+A074253	#nyi	0		Numbers n such that the sum of squarefree numbers from the Least prime factor of n to the largest prime factor of n is a square
+A074255	#nyi	0		Numbers n such that the sum of composites from the Least prime factor of n to the largest prime factor of n is equal to the sum of squarefree numbers from the Least prime factor of n to the largest prime factor of n
+A074256	#nyi	0		Sum of factorials of digits of n equals sum of the primes from the Least prime factor of n to the largest prime factor of n
+A074257	#nyi	0		Sum of factorials of digits of n equals the largest prime factor of n
+A074301	#nyi	0		Numbers n such that (i) the largest prime factor of n is not a palindrome and (ii) the sum of the factorials of the digits of n is equal to the largest prime factor of n reversed
+A074302	#nyi	0		Sum of squares of digits of n is equal to the largest prime factor of n
+A074303	#nyi	0		Sum of squares of digits of n is equal to the largest prime factor of n reversed, where the largest prime factor is not a palindrome
+A074310	#nyi	0		Digital sum of n = sum of palindromes from the Least prime factor of n to the largest prime factor of n
+A074347	#nyi	0		Least number requiring n steps to reach 0 when iterating the function: f(n)=abs(lpd(n) - Lpf(n)), where lpd(n) is the largest proper divisor of n and Lpf(n) is the largest prime factor of n
+A074348	#nyi	0		Least number requiring n steps to reach 0 or  - 1 when iterating the function: f(n)=lcd(n) - lpf(n), where lcd(n) is the largest common difference between consecutive divisors of n (ordered by size) and lpf(n) is the largest prime factor of n
+A074767	#nyi	0		Least m > n with spf(m) = gpf(n), where gpf(n) is the Largest prime factor of n and spf(m) is the Least prime factor of m
+A074810	#nyi	0		Number of primes between n and 2*n (inclusive) = largest prime factor of n
+A075660	#nyi	0		Let f(n) = abs(lpd(n) - gpf(n)), where lpd(n) is the largest proper divisor of n and gpf(n) is the Largest prime factor of n. Sequence gives number of iterations for f(n) to reach zero
+A075661	#nyi	0		Let f(n) = lcd(n) - lpf(n), where lcd(n) is the largest common difference between consecutive divisors of n (ordered by size) and lpf(n) is the largest prime factor of n. Sequence gives number of iterations for f(n) to reach 0 or  - 1
+A075753	simtraf	0	new A014493()	v -> SPF(v)	n - th odd triangular number
+A076423	#nyi	0		Number of iterations of the mapping k -> abs(reverse(lpd(k)) - reverse(gpf(k))) to reach zero, or  - 1 if zero is never reached. lpd(k) is the largest proper divisor and gpf(k) is the Largest prime factor of k
+A076424	#nyi	0		Least number that requires n steps to reach 0 when iterating the mapping k -> abs(reverse(lpd(k)) - reverse(Lpf(k))). lpd(k) is the largest proper divisor and Lpf(k) is the largest prime factor of k
+A076425	#nyi	0		Numbers n such that zero is never reached by iterating the mapping k -> abs(reverse(lpd(k)) - reverse(gpf(k))). lpd(k) is the largest proper divisor and gpf(k) is the largest prime factor of k
+A076426	#nyi	0		Fixed points of the mapping k -> abs(reverse(lpd(k)) - reverse(Lpf(k))). lpd(k) is the largest proper divisor and Lpf(k) is the largest prime factor of k
+A077073	#nyi	0		a(1) = 2, a(n + 1) is Least prime factor of (2 * Product_{k=1..n} a(k))  +  1
+A078834	#lpf	0	n also contained as binary substring in binary representation of n; a(n)=1, if no such factor exists
+A078896	#nyi	0		Number of times the Least prime factor of n is a factor in all numbers <=n; a(1)=1
+A078897	#nyi	0		Number of times the Largest prime factor of n is a factor in all numbers <=n; a(1)=1
+A079068	#nyi	0		Largest prime less than Largest prime factor of n but not dividing n, or 1 if no such prime exists
+A079747	#nyi	0		Numbers k such that gpf(k - 1) < gpf(k) < gpf(k + 1), where gpf(k) is the Largest prime factor of k (A006530)
+A080210	#nyi	0		a(n) = floor(Lpf(n)*phi(n)/n)  +  1 where Lpf(n) is the largest prime factor of n and phi is the Euler totient function
+A080785	#nyi	0		Least p - smooth number not less n, where p is the Least prime factor of n
+A081173	#nyi	0		a(1) = 2, then a(n) = Largest prime factor of (a(n - 1)^2 + 2)
+A081304	#nyi	0		Number of numbers m <= n with prime factors less than 2*spf(m), where spf(m) is the Least prime factor of m (A020639)
+A081305	#nyi	0		Number of numbers m <= n with at least one prime factor greater than 2*spf(m), where spf(m) is the Least prime factor of m (A020639)
+A081306	#nyi	0		Numbers n with prime factors less than 2*spf(n), where spf(m) is the Least prime factor of m (A020639)
+A081318	#nyi	0		Integers n such that the reciprocal of the largest prime factor of 10^n - 1 is not a repeating decimal fraction with a period of n
+A082021	#nyi	0		a(0) = 7; for n > 0, a(n) is the Largest prime factor of PP(PP(a(n - 1)))*a(n - 1) + 2 where PP(n) is an abbreviation for PreviousPrime(n)
+A082132	#nyi	0		a(0) = 5; for n > 0, a(n) is the Largest prime factor of PP(a(n - 1))*a(n - 1) - 2 where PP(n) is an abbreviation for PreviousPrime(n)
+A082417	#nyi	0		Numbers k such that P(k) < P(k + 1) > P(k + 2), where P(k) is the largest prime factor of k (A006530)
+A082418	#nyi	0		Numbers n such that P(n) > P(n + 1) < P(n + 2), where P(n) = largest prime factor of n (A006530)
+A082419	#nyi	0		Numbers n such that P(n + 2) < P(n) < P(n + 1), where P(n) = largest prime factor of n (A006530)
+A082420	#nyi	0		Numbers n such that P(n) < P(n + 2) < P(n + 1), where P(n) = largest prime factor of n (A006530)
+A082421	#nyi	0		Numbers n such that P(n + 1) < P(n) < P(n + 2), where P(n) = largest prime factor of n (A006530)
+A082422	#nyi	0		Numbers n such that P(n) > P(n + 2) > P(n + 1), where P(n) = largest prime factor of n (A006530)
+A082650	#nyi	0		Number of primes < n of form 1 + k*spf(n), where spf(n) is the Least prime factor of n (A020639)
+A083397	#lpf	0	n!  +  k where k is the least positive integer such that n!  +  k is a square
+A083714	lambdan	0	n -> Puma.prevPrimeZ(ZV(n + 1)).-(JF(n).largestPrimeFactor())	(Largest prime <= n)  -  (Largest prime factor of n)
+A083717	lambdan	0	n -> Puma.prevPrimeZ(ZV(n + 1)).*(JF(n).largestPrimeFactor())	(Largest prime <= n) * (Largest prime factor of n)
+A083718	lambdan	0	n -> Puma.prevPrimeZ(ZV(n + 1)).+(JF(n).largestPrimeFactor())	(Largest prime <= n)  +  (Largest prime factor of n)
+A083720	#nyi	0		Product of primes less than Largest prime factor of n but not dividing n
+A083721	#nyi	0		Number of primes greater than the Largest prime factor of n but not greater than n
+A083722	#nyi	0		Product of primes greater than the Largest prime factor of n but not greater than n
+A084598	#nyi	0		a(1) = 2, a(2) = 3; for n >= 2, a(n + 1) is Least prime factor of (Product_{k = 1..n} a(k))  -  1
+A084599	#nyi	0		a(1) = 2, a(2) = 3; for n >= 2, a(n + 1) is largest prime factor of (Product_{k=1..n} a(k))  -  1
+A085233	filnum	0	1	n -> { final FactorSequence fs = JF(n); final Z pf  = fs.leastPrimeFactor(); return fs.getExponent(pf) > LongUtils.sqrt(n); }	SPF(n); (Largest power of Least prime factor of n)   > square root(n)
+A085234	filnum	0	1	n -> { final FactorSequence fs = JF(n); final Z pf  = fs.leastPrimeFactor(); return fs.getExponent(pf) < LongUtils.sqrt(n); }	SPF(n); (Largest power of Least prime factor of n)   < square root(n)
+A085235	filnum	0	1	n -> { final FactorSequence fs = JF(n); final Z pf  = fs.largestPrimeFactor(); return fs.getExponent(pf) > LongUtils.sqrt(n); }	LPF(n); (Largest power of Largest prime factor of n) > square root(n)
+A085236	filnum	0	1	n -> { final FactorSequence fs = JF(n); final Z pf  = fs.largestPrimeFactor(); return fs.getExponent(pf) < LongUtils.sqrt(n); }	LPF(n); (Largest power of Largest prime factor of n) < square root(n)
+A086131	#lpf	0	arithmetic derivative of n if it exists, or a(n)=0 for n=1 and n=prime
+A086133	#spf	0	arithmetic derivative of n equals that of n
+A086134	#spf	0	arithmetic derivative of n or a(n)=0 if no such prime exists
+A087040	#nyi	0		2*nd largest prime factor of n - th composite number
+A087274	#nyi	0		Prime index of largest prime factor of 3*prime(n) + 1
+A088450	#nyi	0		Numbers k such that €088444(k) = Least prime factor of k
+A088451	#nyi	0		Numbers k such that €088444(k) = Largest prime factor of k
+A089619	lpf	0	ZV(n).^(2).+((n + 1)*(n + 1))
+A089730	#lpf	0	all differences prime(n) - q, q prime and q<prime(n); a(1)=0
+A090947	simtraf	0	new A000367()	v -> v.equals(Z.ONE) ? Z.ONE : LPF(v)	numerator of Bernoulli(2*n) (or 1 if the numerator is 1)
+A091375	#nyi	0		Numbers k with property that the number of prime factors of k (counted with repetition) exceeds the Least prime factor of k
+A091376	#nyi	0		Numbers k with property that the number of prime factors of k (counted with repetition) equals the Least prime factor of k
+A092524	#nyi	0		Binary representation of n interpreted in base p, where p is the Least prime factor of n: p = A020639(n)
+A092975	#nyi	0		When n=3m then a(n)=3^m; otherwise, a(n)=q^(n/q), q being the Least prime factor of n.  -  _Stanislav Sykora_, Jun 04 2014
+A093179	#simtraf	0	new A007117()	(n, v) -> (n < 2) ? ZV(3 + 2*n) : JF(v.*(Z2(n + 2)).+(1)).leastPrimeFactor()	A007117(n)*2^(n+2) + 1 for n >= 2
+A094499	spf	0	Z2(Z2(n)).+(ZV(3).^(Z2(n)))	, i.e., exponents are powers of 2
+A096068	#nyi	0		Concatenated in binary representation: largest proper divisor of n and Least prime factor of n
+A096317	#nyi	0		a(n) is the minimal product of the Least prime factor of each composite number in a prime gap of 2*n
+A096318	#nyi	0		a(n) is the prime the precedes the first occurrence of a prime gap of 2*n where the product of the Least prime factor of each composite number in the gap is minimal
+A097360	#nyi	0		Number of partitions of n into parts not less than the Least prime factor of n
+A099634	#nyi	0		a(n) = gcd(P + p, P*p) where P is the largest and p the Least prime factor of n
+A100383	#nyi	0		Numbers k such that gpf(k) < gpf(k + 1) < ... < gpf(k + 9), where gpf(x) = A006530(x), the Largest prime factor of x. Numbers initiating an uphill gpf run of length 10
+A101445	#nyi	0		Numbers n such that n is the largest prime factor of 1  +  prime(n)
+A101550	#nyi	0		Lopsided (or biased) numbers: numbers n such that the largest prime factor of n is > 2*sqrt(n)
+A102048	#nyi	0		a(n) = 1  +  Sum_{k=1..floor(log(n - 1)/log(P))} floor((n - 1)/P^k) for n > 1, where P = A006530(n) is the Largest prime factor of n
+A102050	#nyi	0		a(n) = 1 if 10^(2^n) + 1 is prime, otherwise Least prime factor of 10^(2^n) + 1
+A102067	#nyi	0		Numbers k such that k does not divide P(k)! even though P(k)^2 is not a factor of k, where P(k) is the largest prime factor of k
+A102327	#nyi	0		Primes p such that the largest prime factor of p^5  +  1 is less than p
+A102926	#nyi	0		a(n) = least prime factor of b(n)^2 - 1, where b(n) = product a(k), 0<k<n, = €102927
+A103855	tuptraf	0	(n, s) -> s[0].-(s[1]).+(1)	""	new A039716(), new A002110()
+A103856	simtraf	0	new A103855()	v -> SPF(v)	prime(n)!  -  prime(n)	  +  1
+A103857	simtraf	0	new A103855()	v -> LPF(v)	prime(n)!  -  prime(n)	  +  1
+A105651	#nyi	0		Numbers n such that n  +  Least prime factor of n  +  largest prime factor of n = next prime after n
+A107746	#nyi	0		Numbers n such that the least prime factor of 6*n + 1 > the least prime factor of 6*n - 1, €107744(n) > €107745(n)
+A107747	#nyi	0		Numbers n such that the least prime factor of 6*n + 1 < the least prime factor of 6*n - 1, €107744(n) < €107745(n)
+A108144	#nyi	0		Numbers n such that (n - 1)/P(n - 1) is a power of two > 1, where P(n) is the largest prime factor of n
+A109273	#nyi	0		Numbers k such that k + 1 is the Least prime factor of k^3  +  3^k
+A111185	#nyi	0		Let f(k) denote the largest prime factor of k which is not a palindrome. Sequence gives numbers k such that the sum of the factorials of the digits of k is equal to f(k) reversed
+A111426	#nyi	0		Difference between largest and Least prime factor of the n - th composite number
+A111565	#lpf	0	prime power > 1 that divides the n - th composite number; or a(n) = 0 iff n - th composite number is equal to the product of distinct primes
+A111743	#nyi	0		Numbers n such that the largest prime factor p of n is also the largest prime factor of n.p, where the dot means concatenation
+A111863	#nyi	0		a(n) is the Least prime factor of 6*n - 1 that is congruent to 5 modulo 6
+A117631	#nyi	0		a(1) = 433640083; a(n + 1)= the largest prime factor of a(n) + b(n) + c(n), where a(n)<b(n)<c(n) and a(n),b(n) and c(n) are three consecutive primes
+A119761	#nyi	0		Values n such that the largest prime factor of repunit R_n=(10^n  - 1)/9 is a unique prime,i.e.,whose reciprocal has unique decimal period length
+A120274	simtraf	0	new A038003().skip(2)	v -> LPF(v)	the odd Catalan number A038003(n)
+A120275	simtraf	0	new A038003().skip(2)	v -> SPF(v)	the odd Catalan number A038003(n)
+A120314	#nyi	0		First occurrence of consecutive refactorable numbers a(n) - 1, a(n) where the Least prime factor of a(n) is the n - th prime prime(n)
+A120684	#nyi	0		Integers m such that the sequence defined by f(0)=m and f(n + 1)=1 + gpf(f(n)), with gpf(n) being the Largest prime factor of n (A006530), ends up in the repetitive cycle 3 -> 4 -> 3 -> ..
+A120685	#nyi	0		Integers m such that the sequence defined by f(0)=m and f(n + 1)=1 + gpf(f(n)), with gpf(n) being the Largest prime factor of n (A006530), ends up in the repetitive cycle 4 -> 3 -> 4 -> ..
+A120686	#nyi	0		Let f(0)=m; f(n + 1)= c  +  d lpf(f(n)), where lpf(n) is the largest prime factor of n (A006530). For any m, for sufficiently large n the sequence f(n) oscillates. In €120684,€120685 the values d=c=1 were considered. Here we consider d=1, c=2 and this allows us to divide integers in 4 classes: C4 (m such that f(n)=4, which is a fixed point); C5 (m such that f(n)=5, then oscillates between 5,7,9); C7 (m such that f(n)=7, then oscillates between 7,9,5); C9 (m such that f(n)=9, then oscillates between 9,5,7); In €120686 (here) we present C5 as the one that includes 5. In €120687 we present C7 as the one that includes 7. In €120688 we present C9 as the one that includes 9
+A120687	#nyi	0		Let f(0)=m; f(n + 1)= c  +  d lpf(f(n)), where lpf(n) is the largest prime factor of n (A006530). For any m, for sufficiently large n the sequence f(n) oscillates. In €120684,€120685 the values d=c=1 were considered. Here we consider d=1, c=2 and this allows us to divide integers in 4 classes: C4 (m such that f(n)=4, which is a fixed point); C5 (m such that f(n)=5, then oscillates between 5,7,9); C7 (m such that f(n)=7, then oscillates between 7,9,5); C9 (m such that f(n)=9, then oscillates between 9,5,7); In €120686 we present C5 as the one that includes 5. In €120687 (here) we present C7 as the one that includes 7. In €120688 we present C9 as the one that includes 9
+A120688	#nyi	0		Let f(0)=m; f(n + 1)= c  +  d lpf(f(n)), where lpf(n) is the largest prime factor of n (A006530). For any m, for sufficiently large n the sequence f(n) oscillates. In €120684,€120685 the values d=c=1 were considered. Here we consider d=1, c=2 and this allows us to divide integers in 4 classes: C4 (m such that f(n)=4, which is a fixed point); C5 (m such that f(n)=5, then oscillates between 5,7,9); C7 (m such that f(n)=7, then oscillates between 7,9,5); C9 (m such that f(n)=9, then oscillates between 9,5,7); In €120686 we present C5 as the one that includes 5. In €120687 we present C7 as the one that includes 7. In €120688 (here) we present C9 as the one that includes 9
+A122037	#lpf	0	number equal to the arithmetic mean of four successive primes
+A122119	spf	0	Z2(Z2(n)).+(ZV(5).^(Z2(n)))
+A122379	#nyi	0		Numbers n such that S(n)! > n^2 > P(n)!, where S(n)! is the Least factorial divisible by n and P(n) is the Largest prime factor of n
+A122380	#nyi	0		Numbers n such that n^2 > P(n)!, where P(n) is the Largest prime factor of n
+A122428	#nyi	0		Numbers m such that in decimal representation the lexicographically Largest divisor of m equals the Largest prime factor of m
+A122443	#nyi	0		a(n) = A020639(€085155(n)) = least prime factor of €085155 powers of semiprimes
+A122443	simtraf	0	new A085155()	v -> SPF(v)	powers of semiprimes
+A122444	#nyi	0		a(n) = A006530(€085155(n)) = Largest prime factor of €085155 powers of semiprimes
+A122444	simtraf	0	new A085155()	v -> LPF(v)	powers of semiprimes
+A122464	#nyi	0		Smooth Power Trios: a(n) is the largest of three successive numbers a(n) - j, j=0..2, such that the largest prime factor of a(n) - j is <= the n - th root of a(n) - j
+A122465	#nyi	0		Smooth Power Quartets: The m - th number in the sequence, n, is part of the minimum quartet of numbers n through n - 3 such that the highest prime factor of each number x <= floor(x^(1/m))
+A122691	spf	0	Z.TEN.^(6*n - 4).*(9).-(11)./(7)	a(n)=least prime factor of (9*10^m - 11)/7, m=6n - 4
+A124833	#nyi	0		A055932(n) divided by product of all primes less than the Largest prime factor of A055932(n)
+A126607	#nyi	0		a(1) = 2, a(2) = 3; for n>2, a(n) = least prime such that a(n - 2) is the largest prime factor of a(n) + a(n - 1)
+A128456	#nyi	0		a(n) = A020639(((p + 1)^p  -  1)/p^2), i.e., the Least prime factor of ((p + 1)^p  -  1)/p^2, where p = A000040(n)
+A128630	#nyi	0		Let gpf(1)=1 and gpf(n)=Largest prime factor of n, n>1. Then a(n)=minimum sum of gpf of the parts of a partition of n
+A129470	#nyi	0		Primes p such that the largest prime factor of p + 1 has Erdős - Selfridge class +  < N - 1 if p is of class N + 
+A129471	#nyi	0		Primes p of Erdos - Selfridge class 3 +  with largest prime factor of p + 1 not of class 2 + 
+A129472	#nyi	0		Primes p of Erdos - Selfridge class 4 +  with largest prime factor of p + 1 not of class 3 + 
+A129473	#nyi	0		Primes p of Erdos - Selfridge class 5 +  with largest prime factor of p + 1 not of class 4 + 
+A129477	#nyi	0		Primes p of Erdos - Selfridge class 6 +  with largest prime factor of p + 1 not of class 5 + 
+A129478	#nyi	0		Primes p of Erdos - Selfridge class 7 +  with largest prime factor of p + 1 not of class 6 + 
+A130904	#nyi	0		Numbers n such that the trajectory of the map n -> (n  +  lpf(n)) / 2 reaches 3, where lpf(n) is the least prime factor of n (A020639)
+A136024	#lpf	0	odd composites less than 10^n
+A136030	#spf	0	composite Mersenne numbers
+A136031	#lpf	0	composite Mersenne numbers
+A136801	#lpf	0	the composites in the n - th prime gap larger than 2
+A137613	#nyi	0		Denote by Lpf(n) the least prime factor of n. Then a(n) = Lpf( 6 - n + Sum_{i=1..n - 1} a(i) ).  -  _Vladimir Shevelev_, Mar 03 2010
+A137666	#simtraf	0	new A137664()	v -> SPF(v)	(n) = (p  +  1)^p  -  1 for p = prime(n)
+A141327	#nyi	0		If gcd(m,n) = 1 then a(m,n) = Least prime factor of m times Least prime factor of n, if gcd(m,n) > 1 then a(m,n) = min { Least prime factor of m times Least prime factor of n, Least prime factor of gcd(m,n) }
+A143201	#nyi	0		a(n) = f(n,1,1) where f(n,q,y) = if n=1 then y else if q=1 then f(n/p,p,1)) else f(n/p,p,y*(p - q + 1)) with p = A020639(n) = Least prime factor of n
+A144531	#nyi	0		If gcd(m,n) = 1 then T(m,n) = Least prime factor of m times Least prime factor of n, if gcd(m,n) > 1 then T(m,n) = min { Least prime factor of m times Least prime factor of n, Least prime factor of gcd(m,n) }
+A144567	#nyi	0		Primes of the form: Least prime factor of n  +  largest prime factor of n, n > 1
+A144568	#nyi	0		Composites with prime sum of prime factors of n and nonprime difference largest prime factor of n  -  Least prime factor of n
+A146077	#nyi	0		Numbers n such that gcd(n, 2^n - 2) does not equal the least prime factor of n
+A147555	simtraf	0	new A004022()	v -> SPF(v)	prime(n) - th repunit number
+A147556	simtraf	0	new A004022()	v -> LPF(v)	prime(n) - th repunit number
+A154365	#nyi	0		Numbers n such that the Least prime factor of composite(n)  +  the largest prime factor of composite(n) is prime and the sum of prime factors (with multiplicity) of composite(n) is prime
+A154366	#nyi	0		Numbers n such that the Least prime factor of composite(n) plus the largest prime factor of composite(n) is composite and the sum of prime factors of composite(n) (with multiplicity) is composite
+A155047	#nyi	0		a(1) = 1, a(2) = 2, then a(n) = largest prime factor of the partial sum up to a(n - 1)
+A156759	#nyi	0		a(1) = 2, a(n + 1) is the Least composite number > a(n) with Least prime factor >= Least prime factor of a(n)
+A157102	#nyi	0		a(n) = (n - 1)*(Least prime factor of n)  +  1
+A160245	#nyi	0		a(n) = index of the n - th prime in A051301 (least prime factor of m! + 1)
+A161643	#nyi	0		Sum of all numbers from the Least up to the largest prime factor of the n - th composite
+A161670	#nyi	0		Sum of largest prime factor of composite(k) for k from Least prime factor of composite(n) to largest prime factor of composite(n)
+A161678	#nyi	0		Sum of c mod k for k from (Least prime factor of c) to (largest prime factor of c) where c is composite(n)
+A161925	#nyi	0		Numbers n such that largest prime factor of n is also largest prime factor of n - th composite number
+A166732	#nyi	0		Numbers k such that the largest prime factor of the k - th composite is equal to the sum of all the other prime factors of the k - th composite, with multiplicity
+A173978	#nyi	0		Numbers n such that the least prime factor of 2*n  -  3 is less than that of 2*n  -  1, unless 2*n  -  3 and 2*n  -  1 are (twin) primes
+A175607	#nyi	0		Largest number k such that the Largest prime factor of k^2 - 1 is prime(n)
+A177004	#nyi	0		Numbers n such that 2 nearest neighbors had largest prime factor equals to 1, next 2 neighbors had largest prime factor of 2 and next 2 neighbors had largest prime factor of 3
+A179938	#nyi	0		Third largest prime factor of numbers that are divisible by at least three different primes (A000977)
+A179953	#nyi	0		a(n) is the least exponent k such that q^k >= n, where q is the Largest prime factor of n (= A006530(n)); a(1) = 1 by convention
+A180101	#nyi	0		a(0) = 0, a(1)=1; thereafter a(n) = largest prime factor of sum of all previous terms
+A180342	#nyi	0		a(n) = the Least number k such that the Least prime factor of k^2  +  1 equals A002144(n)
+A180640	#nyi	0		Primes P such that P < (largest prime factor of (P - 1)) * (largest prime factor of (P + 1))
+A180641	#nyi	0		Primes P such that P > (largest prime factor of (P - 1)) * (largest prime factor of (P + 1))
+A181469	#nyi	0		Numbers n such that 89 is the largest prime factor of n^2 - 1
+A181470	#nyi	0		Numbers n such that 97 is the largest prime factor of n^2  -  1
+A182782	#nyi	0		a(n) is one less than the length of the sequence b(n) defined by: b(1) = n; for k > 1, b(k + 1) is the Least prime factor of 1 + b(k)^2 not already in the b - sequence
+A185002	#nyi	0		Numbers k such that P(k^2 + 1) > P((k + 1)^2 + 1) where P(n) (A006530) is the largest prime factor of n
+A185011	#nyi	0		Numbers k such that P(k^2 + 1) < P((k + 1)^2 + 1) where P(n) (A006530) is the largest prime factor of n
+A185112	#nyi	0		a(1) = 0; for n > 1, a(n) = a(n - 1)  -  P(n) if that number is zero or positive, otherwise a(n)= a(n - 1) +  P(n), where P(n) is the largest prime factor of n (A006530)
+A185121	spf	0	Z.TEN.^(Z2(n)).+(1)
+A185389	#nyi	0		Largest number k such that the Largest prime factor of k^2 + 1 is A002313(n), the n - th prime not congruent to 3 mod 4
+A185396	#nyi	0		Largest number x such that the Largest prime factor of x^2 - 2 is A038873(n), the n - th prime not congruent to 3 or 5 mod 8
+A185397	#nyi	0		Largest number x such that the Largest prime factor of x^2 + 2 is A033203(n), the n - th prime not congruent to 5 or 7 mod 8
+A187022	#nyi	0		a(n) is the Least prime factor of n^n + 1 having the form k*n + 1
+A187023	#nyi	0		a(n) is the Least prime factor of n^n - 1 having the form k*n + 1
+A187737	#nyi	0		a(n) = floor(sum_{1 < k <= n} p(k)/P(k)), where p(k) is the Least prime factor of k and P(k) is the largest prime factor of k
+A190148	#lpf	0	the least number having exactly two odd prime factors that differ by 2*n^2
+A190359	#lpf	0	the least number having exactly two odd prime factors that differ by 2^n
+A190663	#lpf	0	the least semiprime whose prime factors differ by 2*n!
+A190894	#nyi	0		Auxiliary c(n) sequence used to prove some properties about Rowlands sequence. c(n) has the following recursive definition: c(1) = 5, c_(n + 1) = c(n)  +  lfp(c(n))  -  1, where lpf(.) denotes the lowest prime factor of a number
+A191546	#spf	0	prime(n)^n  +  1 having the form 2*k*n + 1
+A191548	#spf	0	prime(n)^n  -  1 having the form k*n  +  1
+A192397	#nyi	0		Record holders for Largest prime factor of n^n  +  (n + 1)^(n + 1)
+A193615	#nyi	0		Second - largest prime factor of the n - th Fibonacci number, if composite, or 1 otherwise
+A193943	#nyi	0		Integers n such that for all i > n the largest prime factor of i*(i + 1) exceeds the largest prime factor of n*(n + 1)
+A193944	#nyi	0		Integers k such that for all j > k the largest prime factor of j*(j + 1)*(j + 2) exceeds the largest prime factor of k*(k + 1)*(k + 2)
+A193945	#nyi	0		Integers n such that for all i > n the largest prime factor of i(i + 1)(i + 2)(i + 3) exceeds the largest prime factor of n(n + 1)(n + 2)(n + 3)
+A193946	#nyi	0		Integers n such that for all i > n the largest prime factor of i(i + 1)(i + 2)(i + 3)(i + 4) exceeds the largest prime factor of n(n + 1)(n + 2)(n + 3)(n + 4)
+A193947	#nyi	0		Integers n such that for all i > n the largest prime factor of i(i + 1)(i + 2)(i + 3)(i + 4)(i + 5) exceeds the largest prime factor of n(n + 1)(n + 2)(n + 3)(n + 4)(n + 5)
+A193948	#nyi	0		Integers n such that for all i > n the largest prime factor of i(i + 1)(i + 2)(i + 3)(i + 4)(i + 5)(i + 6) exceeds the largest prime factor of n(n + 1)(n + 2)(n + 3)(n + 4)(n + 5)(n + 6)
+A194086	#nyi	0		Second - Least prime factor of the n - th Lucas number (beginning with 2), if composite, or 1 otherwise
+A194345	#nyi	0		Numbers k for which the largest prime factor of p(k) divides p(1)*p(2)*...*p(k - 1), where p(k) is the number of partitions of k
+A195212	#nyi	0		Numbers n for which the exponent of the largest prime factor of n is even
+A199295	spf	0	ZV(n).^(ZV(n).^(n)).+(1)
+A199407	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,7}) exceeds the largest prime factor of product(n + k, {k,0,7})
+A200566	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,8}) exceeds the largest prime factor of product(n + k, {k,0,8})
+A200567	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,9}) exceeds the largest prime factor of product(n + k, {k,0,9})
+A200568	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,10}) exceeds the largest prime factor of product(n + k, {k,0,10})
+A200569	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,11}) exceeds the largest prime factor of product(n + k, {k,0,11})
+A200570	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,12}) exceeds the largest prime factor of product(n + k, {k,0,12})
+A209191	#nyi	0		Numbers n such that digital root of n equals Least prime factor of n
+A209192	#nyi	0		Numbers n such that digital root of n equals largest prime factor of n
+A209837	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,13}) exceeds the largest prime factor of product(n + k, {k,0,13})
+A209838	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,14}) exceeds the largest prime factor of product(n + k, {k,0,14})
+A209839	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,15}) exceeds the largest prime factor of product(n + k, {k,0,15})
+A210487	#nyi	0		a(n) is the Least possible Largest prime factor of prime(n)^2  -  prime(k)^2 for 0 < k < n
+A212332	#nyi	0		The difference between the largest and Least prime factor of n as n runs through the numbers with at least two distinct prime factors
+A212552	#spf	0	p^p  -  1 that is congruent to 1 modulo p where p = prime(n)
+A213253	#nyi	0		a(n) = Least k such that highest prime factor of m(m + 1)...(m + k - 1) is > n if m > n
+A213259	#nyi	0		Let x be the largest prime factor of the n - th CA number m, then:
+A214093	#nyi	0		Largest prime p such that the Largest prime factor of p^2 - 1 is prime(n)
+A215405	#lpf	0	the n - th n - almost prime
+A215776	#nyi	0		Second - largest prime factor of the n - th number that is a product of exactly n primes
+A216487	#filter	0	2	new LambdaSequence(0, n -> JF(ZV(n).^(2*n).-(1)).largestPrimeFactor())		having the form k*n + 1
+A216651	#nyi	0		Lengths of decreasing blocks of A006530, the Largest prime factor of n, starting from the second term
+A216826	simtraf	0	new A054377()	v -> LPF(v)	the n - th primary pseudoperfect number A054377(n)
+A216921	#nyi	0		a(n) = 2*n + 1  -  gpf(denominator(B°(2*n))) where B°(n) are Zagiers modification of the Bernoulli numbers and gpf(n) is the Largest prime factor of n
+A217403	#nyi	0		a(n) is the Least possible largest prime factor of the difference of two prime numbers q > p such that p  +  q = 2*n
+A217895	#nyi	0		Sum of d/Gpf(d) for all divisors d of n, with Gpf(d) the Largest prime factor of d
+A218833	#nyi	0		Primes p such that 2*p is greater than  the Largest prime factor of  p^2  -  1 and p^2  +  1
+A218834	#nyi	0		Primes p such that 3*p is greater than  the Largest prime factor of  p^3  -  1 and of  p^3  +  1
+A218849	#nyi	0		Primes p such that 4*p is greater than  the Largest prime factor of  p^4  - 1 and p^4  +  1
+A218908	#nyi	0		Primes p such that k*p is greater than the Largest prime factor of p^k  -  1 and p^k  +  1 for k = 1 to k = 4
+A219547	#nyi	0		Numbers k such that 2 times the least prime factor of 2^k  +  1 is not the least m > 1 that divides sigma_k(m)
+A219549	#nyi	0		a(2^(k - 3)) = A020639(A000215(k)) is the Least prime factor of the k - th Fermat number 2^(2^k)  +  1
+A219549	spf	0	Z2(8*n).+(1)
+A222007	#nyi	0		a(n + 1) is the Least prime factor of any (Product_{k=1..j} a(k))  +  (Product_{k=j + 1..n} a(k)) for j=0..n
+A223701	#nyi	0		Irregular triangle of numbers k such that prime(n) is the largest prime factor of k^2  -  1
+A223702	#nyi	0		Irregular triangle of numbers k such that prime(n) is the largest prime factor of k^2  +  1
+A224693	#nyi	0		Least prime p such that p > gpf(p + 1) > gpf(p + 2) > ... > gpf(p + n) where gpf(m) is the Largest prime factor of m
+A226442	#nyi	0		a(n) = Least index m such that Least prime factor of m - th triangular number is prime(n)
+A227244	spf	0	Z2(1 << n).+(1).*(Z2(1 << (1 <<n))).-(1)	(2^(2^n) + 1)*2^(2^(2^n)) - 1.
+A232168	#nyi	0		Numbers n such that n is a deficient number and there exists a prime number p greater than the largest prime factor of n such that p*n is abundant
+A235425	#nyi	0		Numbers k such that between k and the next prime there are gpf(k) numbers, where gpf(k) denotes the largest prime factor of k
+A238689	#nyi	0		Table read by rows: first row is {1}; for n >1, T(n, k) is the k - th largest prime factor of n (repeated prime factors are counted repeatedly)
+A240554	arrlamb	0	1	1	-1	(n, k) -> LPF(n*k + 1)	Square array of the Largest prime factor of n^k  +  1, read by antidiagonals
+A241916	#nyi	0		a(2^k) = 2^k, and for other numbers, if n = 2^e1 * 3^e2 * 5^e3 * ... p_k^e_k, then a(n) = 2^(e_k  -  1) * 3^(e_{k - 1}) * ... * p_{k - 1}^e2 * p_k^(e1 + 1). Here p_k is the Largest prime factor of n (A006530), and e_k is its exponent (A071178), and the exponents e1, ..., e_{k - 1} >= 0
+A241920	#nyi	0		After a(1)=1, each n appears A061395(n) times, where A061395 gives the index of the largest prime factor of n
+A242747	#nyi	0		a(n) = max(gpf(n!*(n - 1)!  +  ( - 1)^n), n!)  -  n (for n >= 3), where gpf(x) is the Largest prime factor of x.  -  _Hiroaki Yamanouchi_, Sep 26 2014
+A244321	#nyi	0		a(1) = 1, and for n > 1, if A244992(n) = 1 [i.e. the Largest prime factor of n has an odd index], a(n) = 2 * €244321(A244989(n)), otherwise, a(n) = 1  +  (2 * €244321(A244988(n) - 1))
+A245075	lambdan	0	n -> LPF(n).-(new A010888().a(n))	Difference between least prime factor of n and the digital root of n
+A246066	#nyi	0		Least k such that Lppf(k) > Gpf(k)  +  n, where Lppf(k) is the largest prime power factor of k and Gpf(k) is the Largest prime factor of k
+A247228	#nyi	0		Prime numbers p where 2^p - 1 is composite that set records for Least prime factor of 2^p - 1: the Least prime factor of 2^p - 1 is larger than the Least prime factor of 2^q - 1 for all primes q > p
+A248511	#nyi	0		Difference between k and the least prime factor of k^2 + 1 where k is the n - th number with k^2 + 1 composite
+A248802	spf	0	Z2(Z2(n).+(2)).+(3)
+A249132	#nyi	0		Least noncomposite k such that prime(n) is the largest prime factor of k^2 + 1, or 0 if no such k exists
+A249808	#nyi	0		Triangular table read by rows, a lower right triangular region of square array A(n,k) is the number of times prime p_k has occurred as the Least prime factor of numbers 1..n
+A249809	#nyi	0		Irregular table read by rows: T(n, k) is the number of times prime p_k has occurred as the Least prime factor of numbers 1 .. n. (T(1,1) = 0, and for each n > 1, k = 1 .. A000720(n))
+A251725	#nyi	0		a(n) = a(A066048(n)). [The result depends only on the Least and the largest prime factor of n.]
+A252370	#nyi	0		a(n) = A243055(A066048(A251726(n))). [Result depends only on the Least and the largest prime factor of A251726(n).]
+A252371	#nyi	0		a(n) = A243055(A066048(A251727(n))). [Result depends only on the Least and the largest prime factor of A251727(n).]
+A252374	#nyi	0		a(n) = a(A066048(n)). [The result depends only on the Least and the largest prime factor of n.]
+A252374	#nyi	0		a(n) = exponent k for the Least r such that r^k <= spf(n) and gpf(n) < r^(k + 1), for some k >= 0, where spf and gpf (Least and Largest prime factor of n) are given by A020639(n) and A006530(n)
+A252375	#nyi	0		a(n) = Least r such that r^k <= spf(n) and gpf(n) < r^(k + 1), for some k >= 0, where spf and gpf (Least and Largest prime factor of n) are given by A020639(n) and A006530(n)
+A252375	#nyi	0		a(n) = a(A066048(n)). [The result depends only on the Least and the largest prime factor of n.]
+A252459	#nyi	0		a(n) = a(A066048(n)). [The result depends only on the Least and the largest prime factor of n.]
+A252757	#nyi	0		a(1) = 1, and for n>1: if A252372(n) = 1 [i.e. the largest prime factor of n is less than the square of its Least prime factor], a(n) = 2*a(A252373(k)), otherwise, a(n) = 1  +  2*a(n - A252373(n) - 1)
+A252890	#nyi	0		Number of times the Largest prime factor of n^2  +  1 is a factor in all numbers <= n
+A254032	#nyi	0		a(0) = 0, a(1)=1; for n > 2, a(n) is the Least prime factor of a(n - 1)  +  a(n - 2) not already in the sequence or, if there is no such prime, a(n) = a(n - 1)  +  a(n - 2)
+A256011	#nyi	0		Integers n with the property that the largest prime factor of n^2  +  1 is less than n
+A256368	#nyi	0		Primes arising from €098550(n), n >= 2, as Least prime factor of gcd(€098550(n), €098550(n + 2))
+A257245	#nyi	0		a(n) = A006530(€256393(2*n  -  1)). [Equally, the largest prime factor of €256393(2*n - 1).]
+A257246	#nyi	0		a(n) = A020639(€256393(2*n)). [Equally, the Least prime factor of €256393(2*n).]
+A257541	#nyi	0		a(n) = q(largest prime factor of n)  -  bigomega(n), where q(p) is defined by q - th prime = p while bigomega(n) is the number of prime factors of n, including multiplicities
+A258095	#nyi	0		Numbers m, such that the Least prime factor of 1 + 78557*2^m does not belong to the covering set {3, 5, 7, 13, 19, 37, 73}
+A258840	#nyi	0		a(n) is the least integer k such that there are n values of i <= k for which gpf(i^2  +  1) = gpf(k^2  +  1), where gpf(x) is the Largest prime factor of x
+A259534	#nyi	0		a(n) =  - 1  +  2 * product_{i=0..n} €093179(i), where €093179(i) is the Least prime factor of 2^(2^i)  +  1
+A260868	#nyi	0		Numbers for which the least k > 1 which divides n  +  2^k  -  2 is different from the Least prime factor of n
+A261411	#nyi	0		a(1) = 1; thereafter a(n) = Least prime factor of A261570(n)
+A262225	#nyi	0		Euclid - Mullin sequence: a(1) = 5, a(n + 1) is largest prime factor of Product_{k=1..n} a(k)  +  1
+A263686	simtraf	0	new A077586()	v -> SPF(v)	double Mersenne numbers
+A267422	#lpf	0	the largest squarefree practical number comprising n prime factors
+A271441	#nyi	0		a(1) = 2; if gpf(a(n - 1)) <= n - 1 then a(n) = a(n - 1)  +  a(gpf(a(n - 1))), else a(n) = a(n - 1)  +  1, where gpf(m) is the Largest prime factor of m
+A272605	#nyi	0		a(1) = 1, for n>=1 a(n) is the largest prime factor of A002182(n)
+A276827	#nyi	0		Primes p such that the Largest prime factor of 3*p + 1 is at most 5
+A279237	#nyi	0		a(n) = 1*k_1 + 10*k_2 + 100*k_3 + ... + 10^N*k_N, where k_i is the exponent of prime(i) in the factorization of the n - th composite number C_n, k_i=0 if prime(i) is not a factor in C_n. Also, N is the index of the largest prime factor of C_n, so that C_n = Product_{i=1..N} prime(i)^k_i
+A280363	#nyi	0		a(n) = floor(log_p(n)) where p = A020639(n), i.e., the least prime factor of n
+A282538	#nyi	0		Odd integers n with the property that the largest prime factor of n^2 + 4 is less than n
+A283148	#nyi	0		Irregular triangle read by rows where the n - th row list the integers x such that the quotient x/(least prime factor of x)^2 is equal to n, for n>=2
+A283461	#nyi	0		Second - largest prime factor of 2^n  -  1, if composite, or 1 otherwise
+A284254	#nyi	0		Largest divisor of n such that all its prime factors are greater than the square of Least prime factor of n, a(1) = 1
+A284255	#nyi	0		Largest divisor of n such that all its prime factors are less than the square of the Least prime factor of n, a(1) = 1
+A284256	#nyi	0		a(n) = number of prime factors of n that are > the square of Least prime factor of n (counted with multiplicity), a(1) = 0
+A284257	#nyi	0		a(n) = number of prime factors of n that are < the square of Least prime factor of n (counted with multiplicity), a(1) = 0
+A285283	#nyi	0		Number of integers x such that the Largest prime factor of x^2  +  1 is at most A002313(n), the n - th prime not congruent to 3 mod 4
+A285993	#nyi	0		a(n) >= a(n - 1)*p where p = A117366(a(n - 1)) = A151800(A006530(a(n - 1))) = nextprime(gpf(a(n - 1))), an odd abundant number equal to the product of n consecutive primes. We have strict inequality for n = 9, 18, 31, 46, 67, ..., in which case a(n) = a(n - 1)*p*p'/q, where p' = nextprime(p), q = least prime factor of a(n - 1). This is the case if a(n) is in A007741
+A286981	#nyi	0		Binomial coefficients binomial(n,k) = UV such that n>=2k and U > V, where gpf(U) <= k, gpf(V) > k (gpf(n)= is the Largest prime factor of n)
+A291577	#nyi	0		a(n) = largest prime factor of a(n - 1), or Least multiple of that factor not yet in the sequence; a(0)=1, a(1)=2
+A292834	#nyi	0		Numbers m, not powers of 2, such that the least prime factor of 2^m  +  1 is congruent to 1 (mod m)
+A299441	#nyi	0		Lexicographically earliest sequence of distinct positive terms such that, for any n > 1, if prime(k) is the least prime factor of a(n) then k divides a(n + 1) (where prime(k) denotes the k - th prime)
+A299442	#nyi	0		Lexicographically earliest sequence of distinct positive terms such that, for any n > 1, if prime(k) is the Largest prime factor of a(n) then k divides a(n + 1) (where prime(k) denotes the k - th prime)
+A299963	#nyi	0		a(n) = Largest prime factor of the terms in the Collatz sequence starting at n; a(1) = 1
+A303747	#nyi	0		Totients t for which gcd({x: phi(x)=t}) equals the largest prime factor of each member of {x: phi(x)=t}
+A304734	#nyi	0		Ordinal transform of the largest prime factor of the n - th term of EKG - sequence
+A306289	simtraf	1	new A007310().skip(1)	v -> SPF(v)	The Least prime factor of numbers greater than 1 and coprime to 6
+A308439	#nyi	0		a(n) is the Least prime factor of 1  +  the product of primes indexed by the binary digits of n
+A308899	#nyi	0		a(n) = largest prime factor of the number with decimal expansion 20305070...0p_n where p_n = n - th prime
+A309892	#nyi	0		a(0) = 0, a(1) = 1, and for any n > 1, a(n) is the number of iterations of the map x -> x  -  gpf(x) (where gpf(x) denotes the Largest prime factor of x) required to reach 0 starting from n
+A318886	#nyi	0		The sum of absolute values of the coefficients in the n - th cyclotomic polynomial minus the largest prime factor of n; a(1)=1 by convention
+A319044	#nyi	0		a(n) is the least prime factor of all sufficiently large numbers of the form n  +  Sum_{j=1..k} j!
+A319875	#nyi	0		a(c) = a(c - 1)  +  pi(c)  -  pi(gpf(c)), for c a composite number, where gpf = A006530 denotes the "Largest prime factor of" function
+A319994	#nyi	0		Let g = A006530(n), the largest prime factor of n. This filter sequence combines (g mod 4), n/g (A052126), and a single bit €319988(n) telling whether the largest prime factor is unitary
+A319996	#nyi	0		Let g = A006530(n), the largest prime factor of n. This filter sequence combines (g mod 6), n/g (A052126), and a single bit €319988(n) telling whether the largest prime factor is unitary
+A320454	#nyi	0		Lexicographically earliest sequence of distinct positive terms such that a(1) = 1, a(2) = 2, and for any n > 2, the Largest prime factor of a(n) does not exceed the prime next to the Largest prime factor of a(n - 1)
+A320503	#nyi	0		Lexicographically earliest sequence of distinct positive terms such that a(1) = 1, a(2) = 2, and for any n > 2, the least prime factor of a(n) does not exceed the prime next to the least prime factor of a(n - 1)
+A322292	#nyi	0		a(n) = Max_{c composite, c < n} (c  +  least prime factor of c)
+A322371	#nyi	0		Proof: By Stewarts theorem (see link), since a(n) is practical, each prime factor of a(n) is at most 1 plus the sum of divisors of the product of the smaller primes in a(n). In particular, dividing a(n) by its largest prime factor will leave a practical number, since the criterion applies inductively on the product of smaller primes, so if the largest prime factor of a(n) is greater than p or the exponent of p is greater than 1, then a(n) can be reduced to a smaller multiple of p and is thus not minimal
+A322568	#nyi	0		Integers k such that the least prime factor of 2^k  -  1 is not in €122094
+A323129	#nyi	0		a(1) = 1, and for any n > 1, let p be the Largest prime factor of n, and e be its exponent, then a(n) = p^a(e)
+A323130	#nyi	0		a(1) = 1, and for any n > 1, let p be the least prime factor of n, and e be its exponent, then a(n) = p^a(e)
+A324545	#nyi	0		a(1) = 1; for n > 1, let p = A020639(n) [the Least prime factor of n], then a(n) = (((p^(1 + €302045(n))) - 1) / (p - 1)) * a(€302044(n))
+A326073	#nyi	0		a(n) = gcd(1 + n - A020639(n), 1 + sigma(n) - A020639(n) - n), where A020639 gives the Least prime factor of n (and 1 for 1), and sigma is the sum of divisors of n
+A326935	#nyi	0		a(1) = 1; a(n) = the largest prime factor of a(n - 1) if a(n - 1) is a composite number, otherwise a(n)=a(n - 1) + n
+A327935	#nyi	0		Numbers for which the Least prime factor of their arithmetic derivative is 5
+A328503	#nyi	0		a(1) = 1; a(n) = the least prime factor of a(n - 1) if a(n - 1) is a composite number, otherwise a(n) = a(n - 1)  +  n
+A328638	#nyi	0		a(n) is the sum of m such that 2 <= m <= n and gpf(m) = gpf(n), where gpf(i) is the Largest prime factor of i (A006530), with a(1) = 1
+A330437	#nyi	0		Length of trajectory of n under the map n -> n  -  1  +  n/gpf(n) or 0 if no fixed point is reached, where gpf(n) is the Largest prime factor of n
+A330492	#nyi	0		a(n) = (n/p - 1)*(p - 1), where p is the least prime factor of n.  -  _Nathaniel Gregg_, Apr 04 2021
+A331032	#nyi	0		Number of iterations of n -> n  +  gpf(n) needed for the trajectory of n to join the trajectory of A076271, where gpf(n) is the Largest prime factor of n
+A331410	#nyi	0		a(n) is the number of iterations needed to reach a power of 2 starting at n and using the map k -> k  +  k/p, where p is the largest prime factor of k
+A332300	#nyi	0		The least prime factor of the numerator of Bernoulli(2*n), or 1 if the numerator is 1
+A333646	#nyi	0		Numbers k divisible by the largest prime factor of the sum of divisors of k; a(1) = 1
+A333961	#nyi	0		Numbers k with property that k is the least logarithmically smooth numbers (meaning largest prime factor of k is less than log(k)) having squarefree kernel equal to squarefree kernel of k
+A336352	#nyi	0		Number of prime divisors of sigma(n) that are larger than the largest prime factor of n; a(1) = 0
+A336353	#nyi	0		Numbers k such that sigma(k) does not have any prime factor larger than the largest prime factor of k
+A336354	#nyi	0		Numbers k such that p^2 divides k, where p = A006530(k), the largest prime factor of k, and sigma(k) does not have any prime factor larger than p
+A336363	#nyi	0		Number of iterations of map k -> k*sigma(p^e)/p^e needed to reach a power of 2, where p is the largest prime factor of k and e is its exponent, when starting from k = n. a(n) =  - 1 if number of the form 2^k is never reached
+A336519	#nyi	0		Primes in Pi (variant of €336520): a(n) is the Least prime factor of €090897(n) that does not appear in earlier terms of a, or 1, if no such factor exists
+A336520	#nyi	0		Primes in Pi: a(n) is the Least prime factor of €090897(n) that does not appear in earlier terms of €090897, or 1, if no such factor exists
+A337430	#nyi	0		Numbers k such that the largest prime factor of 2^k  -  1 is less than the largest prime factor of 2^k  +  1
+A337431	#nyi	0		Numbers k such that the largest prime factor of 2^k  -  1 is greater than the largest prime factor of 2^k  +  1
+A337903	#nyi	0		a(0) = 0, a(1) = 1; for n>1, if a(n - 1) is composite then a(n) = a(n - 1)/€107286(n - 1), where €107286(n) = the Least prime factor of n, otherwise a(n) = a(n - 1)  +  n
+A339347	#nyi	0		Primes p such that p < (gpf((p  -  1)/gpf(p  -  1)))^4, where gpf(k) is the Largest prime factor of k, A006530
+A339463	#nyi	0		Primes p such that (p - 1)/gpf(p - 1) = 2^q * 5^r with q, r >= 1, where gpf(m) is the Largest prime factor of m, A006530
+A339465	#nyi	0		Primes p such that (p - 1)/gpf(p - 1) = 2^q * 3^r with q, r >= 1, where gpf(m) is the Largest prime factor of m, A006530
+A339466	#nyi	0		Primes p such that gpf((p  -  1)/gpf(p  -  1)) > 3, where gpf(m) is the Largest prime factor of m, A006530
+A339767	#nyi	0		a(n) = 2*gpf(n)  -  Sum_{p | n, p prime} p*m(p), where gpf(n) = A006530(n) is the Largest prime factor of n and m(p) is the multiplicity of p in the prime factorization of n
+A340269	#nyi	0		Numbers k > 1 such that lpf(k) - 1 does not divide d - 1 for at least one divisor d of k, where lpf(k) is the least prime factor of k (A020639)
+A340273	#nyi	0		a(n) is the number of divisors d of n such that phi(n)/phi(lpf(n)) mod phi(n)/phi(d) = 0, where phi is Eulers totient function (A000010), and lpf(n) is the least prime factor of n (A020639)
+A341866	#nyi	0		a(n) = A341865(n)  -  A341865(n/p)  +  1, where p is the Least prime factor of n
+A342255	#nyi	0		For k > 1, let p be the largest prime factor of k, then T(n,k) = p if p does not divide n and k = p^e*ord(p,n) for some e > 0, where ord(p,n) is the multiplicative order of n modulo p. See my link above for the proof
+A342255	#nyi	0		T(n,k) = T(n,k*p^a) for all a, where p is the largest prime factor of k
+A342323	#nyi	0		For k > 1, let p be the largest prime factor of k, then T(n,k) = p if p does not divide n and k = p^e*ord(p,n) for some e > 0, where ord(p,n) is the multiplicative order of n modulo p
+A342609	#nyi	0		Positive integers that cannot be written in the form k  -  gpf(k)  +  -  1 for some integer k, where gpf(k) is the Largest prime factor of k
+A347141	#nyi	0		a(1) = 11; for n > 1, a(n) is the Least prime factor of 2^a(n - 1)  -  1
+A347247	#nyi	0		Numbers k such that the Largest prime factor of A000593(k) [the sum of their odd divisors] is at least as large as the Largest prime factor of k itself
+A347248	#nyi	0		Numbers k such that the Largest prime factor of A000593(k) [the sum of odd divisors of k] is less than the Largest prime factor of k itself
+A352290	#nyi	0		Numbers m such that the Largest prime factor of m^2  +  1 is a Fibonacci number
+A354183	#nyi	0		Primes p such that p divides 2^((p - 1)/x)  -  1, where x is the Largest prime factor of p  -  1
+A355893	#nyi	0		Let €090252(n) = Product_{i >= 1} prime(i)^e(i); then a(n) is the concatenation, in reverse order, of e_1, e_2, ..., ending at the exponent of the largest prime factor of €090252(n); a(1)=0 by convention
+A355894	#nyi	0		Let €354790(n) = Product_{i >= 1} prime(i)^e(i); then a(n) is the concatenation, in reverse order, of e_1, e_2, ..., ending at the exponent of the largest prime factor of €354790(n); a(1)=0 by convention
+A357188	#nyi	0		Numbers with (WLOG adjacent) prime indices x <= y such that the Largest prime factor of x is greater than the least prime factor of y
+A358684	#nyi	0		a(n) is the minimum integer k such that the Least prime factor of the n - th Fermat number exceeds 2^(2^n  -  k)
+A359063	#nyi	0		Integers k such that A005420(k) = A005420(2*k) = A005420(4*k) where A005420(k) is the largest prime factor of 2^k - 1
+A359088	#nyi	0		Odd integers k that are not equal to A002326((A005420(k) - 1)/2) where A005420(n) is the largest prime factor of 2^n  -  1 and A002326(n) is the multiplicative order of 2 mod 2*n + 1
+A359387	#nyi	0		Primes p such that the Least prime factor of (2^(p - 1) - 1)/(3*p) is greater than p
+A359808	#nyi	0		a(n) is the least prime factor of the alternating factorial n!  -  (n - 1)!  +  (n - 2)!  -  ... 1! for n > 2; a(1) = a(2) = 1
+A362071	#nyi	0		a(1) = 1, and thereafter a(n) is the number of terms with index m < n such that gpf(a(m)) = gpf(a(n - 1)), where gpf(k) = A006530(k) is the Largest prime factor of k (or 1 if k=1)
+A362333	#nyi	0		Least nonnegative integer k such that (gpf(n)!)^k is divisible by n, where gpf(n) is the Largest prime factor of n
+A363347	#nyi	0		a(n) = gpf(n^2  +  2*n  -  4) if gpf(n^2  +  2*n  -  4) > n, otherwise a(n) = 1 (where gpf(n) denotes the Largest prime factor of n)
+A364154	#nyi	0		Lexicographically earliest sequence of distinct positive integers such that a(n) is least novel multiple m of the product of all primes less than the Largest prime factor of a(n - 1) which do not divide a(n - 1); a(1) = 1
+A364165	spf	0	new Z(Z2(n).toString() + Z.THREE.^(n).toString())	a(n) is the least prime factor of the concatenation of 2^n and 3^n
+A371148	#nyi	0		Let n = Product_{j=1..k} p_j^e_j and gpf(n)! = Product_{j=1..k} p_j^f_j, where p_j = A000040(j) is the j - th prime and p_k = gpf(n) = A006530(n) is the Largest prime factor of n. a(n) is the numerator of the maximum of e_j/f_j
+A371149	#nyi	0		Let n = Product_{j=1..k} p_j^e_j and gpf(n)! = Product_{j=1..k} p_j^f_j, where p_j = A000040(j) is the j - th prime and p_k = gpf(n) = A006530(n) is the Largest prime factor of n. a(n) is the denominator of the maximum of e_j/f_j

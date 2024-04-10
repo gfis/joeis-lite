@@ -1,0 +1,107 @@
+---- 2024-04-10 10:43:02
+A143392	tuptraf	1	(n, s) -> s[0].^(2).-(s[0].*(2)).-(s[1].^(2)).+(s[1].*(2))	"1,2,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)^2-2*a(n-1)-a(n-2)^2+2*a(n-2). 1, 2, 1
+A275695	tuptraf	0	(n, s) -> s[0].+(s[2]).+(s[4]).*(s[1].+(s[3]).+(s[5]))./(s[6])	"1,1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = ( a(n-1)+a(n-3)+a(n-5) )*( a(n-2)+a(n-4)+a(n-6) ) / a(n-7).
+A276130	tuptraf	0	(n, s) -> s[0].+(s[2]).*(s[1].+(s[3]))./(s[4])	"1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = ( a(n-1) +a(n-3) )*( a(n-2)+a(n-4) ) / a(n-5)	a(n)=(9-3*(-1)^n)/2*a(n-1)*a(n-3)-a(n-2)-a(n-4)
+A371468	lambdan	0	n -> PR(0, n, k -> FA(n*n*n + k*k*k))	a(n) = Product_{k=0..n} (n^3 + k^3)!
+A371533	filnum	1	1	k -> new A001227().a(2*k).equals(ZV(JF(2*k).bigOmega()))	Numbers k such that A001227(2*k) = A001222(2*k)
+A371603	lambdan	0	n -> PR(0, n, k -> BI(n*n, k*k))	a(n) = Product_{k=0..n} binomial(n^2, k^2)
+A371624	lambdan	0	n -> PR(0, n, k -> FA(n*n - k*k))	a(n) = Product_{k=0..n} (n^2 - k^2)!.
+A371638	lambdan	1	n -> ZV(2*n + ZUtils.valuation(ZV(n), ZV(3)))	a(n) = 2*n    + valuation(n, 3) with valuation(n, 3) = A
+A371640	lambdan	1	n -> Z.THREE.^(2*n + ZUtils.valuation(ZV(n), ZV(3)))	a(n) = 3^(2*n + valuation(n, 3)) = 3^A371638(n)
+A371770	lambdan	0	n -> SU(0, n/3, k -> BI(3*n - 3*k - 1,n - 3*k))
+A371771	lambdan	0	n -> SU(0, n/3, k -> BI(4*n - 3*k - 1,n - 3*k))
+A371772	lambdan	0	n -> SU(0, n/3, k -> BI(5*n - 3*k - 1,n - 3*k))
+A371773	lambdan	0	n -> SU(0, n/3, k -> BI(2*n - k + 1,n - 3*k))
+A371774	lambdan	0	n -> SU(0, n/3, k -> BI(3*n - k + 1,n - 3*k))
+A371775	lambdan	0	n -> SU(0, n/3, k -> BI(4*n - k + 1,n - 3*k))
+A371776	lambdan	0	n -> SU(0, n/3, k -> BI(5*n - k + 1,n - 3*k))
+A371777	lambdan	0	n -> SU(0, n/3, k -> BI(2*n + 2,n - 3*k))
+A371778	lambdan	0	n -> SU(0, n/3, k -> BI(3*n + 2,n - 3*k))
+A371779	lambdan	0	n -> SU(0, n/3, k -> BI(4*n + 2,n - 3*k))
+A371780	lambdan	0	n -> SU(0, n/3, k -> BI(5*n + 2,n - 3*k))
+A371785	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(3*n - k,n - 2*k)))
+A371786	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(4*n - k,n - 2*k)))
+A371787	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(5*n - k,n - 2*k)))
+A371798	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(2*n - 2*k - 1,n - 2*k)))
+A371813	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(3*n - k - 1,n - k)))
+A371814	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(4*n - k - 1,n - k)))
+A371815	lambdan	0	n -> SU(0, n/2, k -> Z_1(k).*(BI(4*n - 2*k - 1,n - 2*k)))
+A371816	lambdan	0	n -> SU(0, n/3, k -> Z_1(k).*(BI(3*n - 3*k - 1,n - 3*k)))
+A371817	lambdan	0	n -> SU(0, n/3, k -> Z_1(k).*(BI(4*n - 3*k - 1,n - 3*k)))
+A371818	lambdan	0	n -> SU(0, n/3, k -> Z_1(k).*(BI(2*n - 2*k,n - 3*k)))
+A371819	lambdan	0	n -> SU(0, n/3, k -> Z_1(k).*(BI(2*n - k + 1,n - 3*k)))
+A371820	lambdan	0	n -> SU(0, n/3, k -> Z_1(k).*(BI(2*n + 2,n - 3*k)))
+A371825	lambdan	0	n -> SU(0, n, k -> ZV(n).^(k).*(BI(2*n,n - k)))
+A371826	lambdan	0	n -> SU(0, n/2, k -> ZV(n).^(k).*(BI(2*n - k,n - 2*k)))
+A371827	lambdan	0	n -> SU(0, n/3, k -> ZV(n).^(k).*(BI(2*n - 2*k,n - 3*k)))
+A371831	lambdan	0	n -> RU(1, n, k -> new Q(ZV(k).^(2), FA(k))).num()
+A371832	lambdan	0	n -> RU(1, n, k -> new Q(ZV(k).^(2), FA(k))).den()
+A371836	lambdan	0	n -> SU(0, n/2, k -> ZV(n).^(k).*(BI(2*n - 2*k - 1,n - 2*k)))
+A371837	lambdan	0	n -> SU(0, n/3, k -> ZV(n).^(k).*(BI(2*n - 3*k - 1,n - 3*k)))
+A371842	lambdan	0	n -> SU(0, n/3, k -> BI(2*n - 2*k + 1,n - 3*k))
+---- 2024-04-10 11:45:04
+A122055	tuptraf	0	(n, s) -> s[0].*(3).*(s[7]).-(s[3].*(s[4]))./(s[8])	"1,1,1,1,1,1,1,1,1"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n)=(3*a(n-1)*a(n-8)-a(n-4)*a(n-5))/a(n-9)
+A122590	tuptraf	1	(n, s) -> s[0].*(2).-(s[1]).-(s[0].^(2)).-(s[1].^(2))	"1,1"	PREVIOUS,PREVIOUS	a(n)=2*a(n-1)-a(n-2)-(a(n-1)^2+a(n-2)^2)
+A122591	tuptraf	1	(n, s) -> s[0].*(2).-(s[1]).+(s[0].^(2)).+(s[1].^(2))	"1,1"	PREVIOUS,PREVIOUS	a(n)=2*a(n-1)-a(n-2)+(a(n-1)^2+a(n-2)^2)
+A173514	tuptraf	0	(n, s) -> s[0].*(2).+(s[1]).-(s[1]./(2)).-(s[3]./(2)).-(s[4]./(2))	"1,1,3,7,16"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS
+A173534	tuptraf	0	(n, s) -> s[0].+(s[1].*(2)).-(s[0]./(2)).-(s[3]./(2)).-(s[4]./(2))	"1,1,3,4,8"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS
+A173538	tuptraf	0	(n, s) -> s[0].+(s[1]).-(s[1]./(4)).-(s[2]./(2)).-(s[3]./(4))	"1,1,2,3"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS
+A173597	tuptraf	0	(n, s) -> s[0].+(s[1]).-(s[3]./(4)).-(s[4]./(2)).-(s[5]./(4))	"1,1,2,3,5,8"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS
+A173599	tuptraf	0	(n, s) -> s[0].+(s[1]).-(s[1]./(4)).-(s[3]./(2)).-(s[5]./(4))	"1,1,2,3,5,8"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS
+A173633	tuptraf	0	(n, s) -> s[1].+(s[2]).-(s[2]./(4)).-(s[3]./(2)).-(s[4]./(4))	"1,1,1,2,2"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS
+---- 2024-04-10 12:03:15
+A173254	tuptraf	0	(n, s) -> s[0].+(s[1]).-(s[1]./(2)).-(s[3]./(2))	"1,1,2,3"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = a(n-1) + a(n-2) - [a(n-2)/2] - [a(n-4)/2].
+A201273	holos	0	[[0],[-1],[0],[0],[1],[0],[0],[2],[0],[0],[1],[0],[0],[-4],[0],[0],[-5],[0],[0],[4],[0],[0],[5],[0],[0],[1],[0],[0],[-6],[0],[0],[0],[0],[0],[6],[0],[0],[-1],[0],[0],[-5],[0],[0],[-4],[0],[0],[5],[0],[0],[4],[0],[0],[-1],[0],[0],[-2],[0],[0],[-1],[0],[0],[1]]	[1,3,12,14,85,199,143,740,1274,759,3416,5312,2746,11628,16676,7946,32164,43438,19713,76321,99347,43137,162566,205231,86351,318364,391600,161089,581578,702330,282904,1006014,1195239,473473,1662549,1947164,761467,2641053,3058967,1181605,4059412,4654793,1779661,6063652,6889819,2612220,8829019,9957994,3745214,12575534,14086935,5261295,17563969,19551486,7259623,24097583,26682634,9851260,32544345,35858033,13172445]	0	0
+A357332	simtraf	0	new A000793().skip(1)	v -> ZV(ZUtils.valuation(v, ZV(2)))	2-adic valuation of A000793(n).
+A371474	filnum	0	1	k -> BI(k*k, k).mod(k*k*k) == 0	Numbers k such that binomial(k^2,k) == 0 (mod k^3).   
+---- 2024-04-10 13:05:11
+A076688	lambdan	2	n -> Z2(Z2(n).-(n+2))
+A076728	lambdan	1	n -> ZV(n-1).^(2).*(ZV(n).^(n-2))
+A079597	lambdan	0	n -> ZV(2).^(ZV(n-1).*(Z2(n).-(1)))
+A083727	lambdan	0	n -> ZV(n).*(Z2(n).-(8))
+A083813	lambdan	1	n -> ZV(3).*(Z.TEN.^(n).-(1))
+A089205	lambdan	1	n -> ZV(n).^(n).*(n-1)
+A090603	lambdan	1	n -> ZV(n).^((n-1)*(n-1))
+A094647	lambdan	1	n -> ZV(n).^(2*n).-(ZV(2*n).^(n))
+A098713	lambdan	0	n -> ZV(2*n+1).*(Z2(2*n+1)).-(1)
+A098809	lambdan	0	n -> Z2(n+23).-(23)
+A100680	lambdan	0	n -> ZV(2).^(ZV(n).^(n))
+A101407	lambdan	0	n -> ZV(4).^(FA(n))
+A120800	lambdan	0	n -> ZV(3).^(n*n).+(Z2(n*n))
+A127233	lambdan	0	n -> FA(n).*(FA(n*(n+1)/2))
+A127859	lambdan	1	n -> ZV(12).^n-1).*(6)./(11).+(1)
+A137840	lambdan	0	n -> ZV(4).^(ZV(4).^(n))
+A137841	lambdan	0	n -> ZV(5).^(ZV(5).^(n))
+A153217	lambdan	0	n -> ZV(n).^(n+3).-(ZV(n+3).^(n))
+A155539	lambdan	0	n -> ZV(n).^(n+3).+(ZV(n+3).^(n))
+A165327	lambdan	0	n -> (Z2(n-1).+(1)).^(n)
+A169687	lambdan	2	n -> ZV(3).^(n).-(Z2(n-2).*(3))
+A174841	lambdan	1	n -> ZV(1-n*n).^(n-1)
+A176043	lambdan	0	n -> ZV(2*n-1).*(ZV(n-1).^(n-1))
+A185055	lambdan	0	n -> (ZV(5).^(n).-(4*n+1))./(8)
+A187879	lambdan	0	n -> ZV(3).^(n*n*n)
+A202989	lambdan	0	n -> (ZV(3).^(n).+(1)).^(n)
+A202991	lambdan	0	n -> (ZV(3).^(n).-(2)).^(n)
+A209248	lambdan	3	n -> Z2(Z2(n).-(2*n+1))
+A217652	lambdan	0	n -> Z2(n*n-3*n+2).*(n)
+A240091	lambdan	0	n -> (Z.TEN.^(n).-(1)).^(n)
+A241095	lambdan	0	n -> (ZV(5).^(n).-(1)).^(n)
+A253604	lambdan	1	n -> (ZV(n).^(n-1).+(1)).^(n)
+A256511	lambdan	1	n -> FA(n*n-1)
+A258387	lambdan	1	n -> ZV(n+1).^(n).+(ZV(n).^(n-1))
+A276274	lambdan	0	n -> ZV(2*n+1).^(2*(2*n+1)*(2*n+1))
+A307031	lambdan	1	n -> ZV(n).^(DF(n))
+A308606	lambdan	1	n -> ZV(1).+(ZV(n*n-n+4).*(FA(n))./(4))
+A321284	lambdan	0	n -> (Z2(ZV(3).^(n).*(35)).+(1)).*(2)
+A322556	lambdan	0	n -> (Z2(n).-(1)).*(Z2(n*n-n))
+A332203	lambdan	0	n -> Z2((1 << n)-1).+(1)
+A337025	lambdan	0	n -> ZV((4*n)*(4*n)).^(n)
+A344113	lambdan	1	n -> Z2(n*n).-(ZV(n).^(n))
+A344114	lambdan	1	n -> Z2(n*n).-(FA(n))
+A369922	lambdan	0	n -> ZV(8*n*n*n-6*n-1)
+A370888	lambdan	2	n -> ZV(n-1).*(FA(n-2).*(2).+(1))
+---- 2024-04-10 14:16:13
+A086459	lambdan	1	n -> Z.ONE.-(Z2(n)).^(n-1)	a(n) = (-2^n + 1)^(n-1).
+A093460	lambdan	1	n -> ZV(n).^(n-1).*(2).-(1)	a(n) = 2n^(n-1) - 1.
+A123903	lambdan	0	n -> ZV(n).*(Z2((n-1)*(n-2)/2))	a(n) = n*2^((n-1)*(n-2)/2).
+A127688	lambdan	0	n -> ZV(n+1).^(n).-(DF(n))		a(n) = (n+1)^n - (2n)!!.
