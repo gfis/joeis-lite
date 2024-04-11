@@ -51,3 +51,5 @@ A368131	simtraf	0	new A325913()	(n, v) -> v.-(n)	.
 A368922	simtraf	0	new A003415()	v -> v.-(2)	*A068346(n).
 A368983	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A000081(), new A001429()
 A371397	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000162(), new A038119()
+
+A369667	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A358773(), new A065043()
