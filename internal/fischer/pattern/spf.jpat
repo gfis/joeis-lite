@@ -11,6 +11,6 @@ public class $(ASEQNO) extends LambdaSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), n -> Jaguar.factor($(PARM1)).leastPrimeFactor());
+    super($(OFFSET), n -> LeastPrimeFactorizer.lpf($(PARM1)));
   }
 }

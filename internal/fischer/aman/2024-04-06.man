@@ -1,99 +1,53 @@
-A358678	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A000035(), new A353812()
+---- 2024-04-11 20:56:36
+
+
+#old A284379	tuptraf	0	(n, s) -> s[0].*(2).+(s[1])	""	new A007931(), new A002275()	a(n) = 2*A007931(n)+A002275(n)
+#old A352655	tuptraf	0	(n, s) -> s[0].+(s[1])./(2)	""	new A005258(), PREVIOUS	(1/2)*(2*A103882(n) - A352654(n))
+#tabf A182779	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A049019(), new A118851()
+A073224	tuptraf	0	(n, s) -> Z.TEN.^(n).+(1).*(s[0]).-(s[1])	""	new A006880(), new A046731()
+A082604	tuptraf	0	(n, s) -> s[0].-(s[1]).*(6).-(8)	""	new A004194(), new A066761()
+A121280	simtraf	0	new A068987()	v -> v.-(1)	.
+A121835	hantraf	0	new A014307()	1	
+A130911	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A200247(), new A200246()
+A135736	tuptraf	0	(n, s) -> new Q(s[0].*(n), s[1]).round()	""	new A001008(), new A002805()	a(n) = round(n*A001008(n)/A002805(n)) 
+A151816	tuptraf	0	(n, s) -> s[0].-((s[1].^(2)))	""	new A000142(), new A001147()
+A182779	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A049019(), new A118851()
+A182984	tuptraf	0	(n, s) -> s[0].-(s[1])	"0,0"	new A006128(), new A092269()
+A185246	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A185346(), new A058348()
+A216982	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A066417(), new A066481()
+A224851	simtraf	0	new A054781()	v -> v.+(1)	.
+A224852	simtraf	0	new A054870()	v -> v.-(1)	.
+A227790	tuptraf	0	(n, s) -> s[0].min(s[1].^(2))	""	new A033428(), new A022838()	
+A230773	tuptraf	0	(n, s) -> s[0].-(s[1].*(ZV(n*n).mod(3)))	"0"	new A055399(), new A010051()
+A231545	simtraf	0	new A067816()	v -> v.+(1)	.
+A245908	simtras	0	new A000045()	v -> ZV(JF(v).omega())
+A256623	tuptraf	0	(n, s) -> s[0].+(s[1])./(2)	""	new A048054(), new A016115()	)/2
+A272760	simtraf	0	new A065880()	(n, v) -> v./(n)	.  
+A293363	simtraf	0	new A068462()	v -> v.+(1)	.
+A293899	tuptraf	0	(n, s) -> s[0].-((s[1].modZ(3)))	""	new A002324(), new A010872()
+A295890	tuptraf	0	(n, s) -> s[0].+((s[1].modZ(2)))	""	new A010060(), new A293162()
+A304124	tuptraf	0	(n, s) -> s[0].-(s[1]).+(1)	""	new A052450(), new A052451()
+A304980	tuptraf	0	(n, s) -> Z_1(n).*(s[0].-(s[1]))	""	new A000182(), new A000364()
+A305542	tuptraf	0	(n, s) -> s[0].-(s[1])./(2)	""	new A052823(), new A056489()	)/2
+A305543	tuptraf	0	(n, s) -> s[0].-(s[1])./(2)	""	new A052824(), new A056490()	)/2
+A305544	tuptraf	0	(n, s) -> s[0].-(s[1])./(2)	""	new A052825(), new A056491()	)/2
+A305545	tuptraf	0	(n, s) -> s[0].-(s[1])./(2)	""	new A052826(), new A056492()	)/2
+A319377	simtraf	0	new A050381()	v -> v.-(2)	*A000669(n).
+A320420	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A058129(), new A000001()
+A327114	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A001187(), new A013922()
+A328989	tuptraf	0	(n, s) -> s[0].-(s[1])./(2)	""	new A000041(), new A053274()	)/3
+A328989	tuptraf	0	(n, s) -> s[0].-(s[1])./(2)	""	new A000041(), new A328988()	)/2
+A330641	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A330640(), new A117485()
+A332834	tuptraf	0	(n, s) -> Z2(n - 1).*(s[0]).-(s[1])	""	new A000041(), new A000005()
+A334360	simtraf	0	new A001661()	v -> v.+(1)	. - _Ilya Gutkovskiy_, Mar 24 2022
+A337482	tuptraf	0	(n, s) -> Z2(n - 1).*(s[0]).-(s[1]).+(1)	""	new A000009(), new A000041()
+A338086	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A037314(), new A208665()
+A351394	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A048105(), new A046660()
+A357508	simtraf	0	new A001448()	v -> v.-(2)	*A005810(n).
+A358530	simtraf	0	new A051634()	v -> v.+(2)	.
+A366451	simtraf	0	new A060644()	(n, v) -> v.-(n)	.  
+A368131	simtraf	0	new A117630()	(n, v) -> v.-(2*n)	*n.
+A368131	simtraf	0	new A325913()	(n, v) -> v.-(n)	.  
+A368922	simtraf	0	new A003415()	v -> v.-(2)	*A068346(n).
 A368983	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A000081(), new A001429()
 A371397	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000162(), new A038119()
-A121835	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A000178(), new A057863()
-A326066	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000203(), new A326065()
-A371418	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A000203(), new A071189()
-A348948	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A000203(), new A348946()
-A348985	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A000203(), new A348984()
-A326222	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000273(), new A326225()
-A348841	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000720(), new A055460()
-A327114	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A001187(), new A013922()
-A325226	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A001222(), new A071178()
-A178467	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A001477(), new A026858()
-A288003	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A002487(), new A288002()
-A083345	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A003415(), new A085731()
-A366368	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A003418(), new A139550()
-A366369	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A003418(), new A139550()
-A073862	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A003618(), new A003617()
-A156061	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A003963(), new A290106()
-A340072	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A003972(), new A340071()
-A369315	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A005034(), new A005036()
-A369471	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A005038(), new A005040()
-A182984	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A006128(), new A092269()
-A371350	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A007173(), new A027610()
-A125911	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A007955(), new A136655()
-A120672	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A028399(), new A126869()
-A069930	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A032741(), new A069283()
-A366387	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A032742(), new A055396()
-A338086	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A037314(), new A208665()
-A182629	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A046746(), new A000203()
-A351394	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A048105(), new A046660()
-A182779	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A049019(), new A118851()
-A182779	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A049019(), new A118851()
-A366385	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A052126(), new A061395()
-A355930	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A056239(), new A356159()
-A320420	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A058129(), new A000001()
-A295312	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A062401(), new A295310()
-A353755	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A062401(), new A353754()
-A220907	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A066186(), new A092269()
-A216982	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A066417(), new A066481()
-A209423	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A066897(), new A066898()
-A069250	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A069192(), new A004086()
-A071650	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A071649(), new A071648()
-A215513	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A092269(), new A000041()
-A366840	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A100006(), new A366839()
-A203925	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A100731(), new A050923()
-A114401	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A114398(), new A114400()
-A330378	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A115995(), new A000041()
-A364492	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A163511(), new A364255()
-A181858	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A181857(), new A181860()
-A185246	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A185346(), new A058348()
-A130911	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A200247(), new A200246()
-A214283	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A214282(), new A001405()
-A365804	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A263273(), new A365803()
-A351444	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A322582(), new A351442()
-A331749	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A323901(), new A002487()
-A324189	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A324184(), new A324188()
-A353794	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A326042(), new A351456()
-A348942	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A326042(), new A348940()
-A336469	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A329697(), new A005087()
-A330641	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A330640(), new A117485()
-A336316	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A336315(), new A034444()
-A342663	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A342661(), new A342670()
-A353792	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A351442(), new A350073()
-A351445	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A351442(), new A003958()
-A353762	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A353749(), new A353761()
-A353763	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A353750(), new A353761()
-A353756	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A353752(), new A353754()
-A353806	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A353802(), new A353804()
-A369667	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A358773(), new A065043()
-A324903	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A361023(), new A361024()
-A368641	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A368616(), new A048865()
-A368922	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A368921(), new A068346()
-A293899	tuptraf	0	(n, s) -> s[0].-(s[1]).modZ(3)	""	new A002324(), new A010872()(mod3)
-A230773	tuptraf	0	(n, s) -> s[0].-(s[1]).modZ(n*n)	""	new A055399(), new A010051()*mod(n^2
-A105221	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A008472(), new A010051()*n
-A101041	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A000720(), new A072000()+1
-A097378	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A007947(), new A007948()+1
-A103855	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A039716(), new A002110()+1
-A120633	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A062234(), new A070046()+1
-A153011	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A152770(), new A051953()+1
-A299475	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A299474(), new A000041()+1
-A351408	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A048105(), new A046951()+2
-
-A101256	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000217(), new A034387()-1
-A245908	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A008334(), new A008335()-1
-A309507	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A092517(), new A063440()-1
-A088922	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A000005(), new A110654()-2
-A359300	tuptraf	0	(n, s) -> s[0].+(s[1])	""	new A007917(), new A007918()-2*n
-A298612	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000031(), new A004526()-3
-A256465	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A057655(), new A004018()/2
-A151816	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000142(), new A001147()^2
-A163121	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A030078(), new A141468()^3
-A367569	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A268506(), new A000178()^5
-A367570	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A271946(), new A000178()^6
-A367571	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A271947(), new A000178()^7
-A295890	tuptraf	0	(n, s) -> s[0].+(s[1]).modZ(2)	""	new A010060(), new A293162()mod2
-A136035	tuptraf	0	(n, s) -> s[0].mod(s[1])	""	new A001348(), A001348()
-A329348	tuptraf	0	(n, s) -> s[0].mod(s[1])	""	new A331188(), A117366()

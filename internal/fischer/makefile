@@ -2,6 +2,7 @@
 
 # Makefile in gits/joeis-lite/internal/fischer: sequence generation and testing
 # @(#) $Id$
+# 2024-04-11: select2, SQL=
 # 2023-10-31: uptlfail, regen
 # 2023-01-24: extract ./aman, ./sql subdirectories 
 # 2022-07-13: MariaDB 10.6 has 'offset' as keyword
@@ -411,10 +412,11 @@ select1:
 	wc   -l  $(CC).gen
 EX=
 PO=1
+SQL=$(CC)
 select2: # require not in joeis: JO= (default) / require not in noeis: PO=1 (default)
 	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO)
 	make seq4 LIST=$(CC).gen
-	$(DBAT) -v -f sql/$(CC).sql > $(CC).sql.tmp || :
+	$(DBAT) -v -f sql/$(SQL).sql > $(CC).sql.tmp || :
 select3:
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(i.offset1, s.offset1) \
 	    , s.parm1, s.parm2, s.parm3, s.parm4, s.parm5, s.parm6, s.parm7, s.parm8, \

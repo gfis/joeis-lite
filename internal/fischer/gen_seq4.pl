@@ -228,7 +228,7 @@ while (<>) { # read inputfile
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
             $parm =~ s{LPF\(([^\)]+)\)}{Jaguar.factor($1).largestPrimeFactor()}g;
-            $parm =~ s{SPF\(([^\)]+)\)}{Jaguar.factor($1).leastPrimeFactor()}g;
+            $parm =~ s{SPF\(}          {LeastPrimeFactorizer.lpf\(}g;
             $parm =~ s{MU\(}           {Mobius.mobius\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
@@ -495,6 +495,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WIntegersModMul\(}             ) { $imports{"irvine.math.group.IntegersModMul"             } = $itype; }
     if ($line =~ m{\WInverse\b}                    ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
     if ($line =~ m{\WJaguar\.}                     ) { $imports{"irvine.factor.factor.Jaguar"   }                = $itype; }
+    if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"        }            = $itype; }
+    if ($line =~ m{\WLeastPrimeFactorizer}         ) { $imports{"irvine.factor.factor.LeastPrimeFactorizer"}     = $itype; }
     if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"        }            = $itype; }
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
