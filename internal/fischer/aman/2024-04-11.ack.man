@@ -1,0 +1,215 @@
+
+---- 2024-04-11 10:26:13
+---- 2024-04-11 11:44:02
+---- 2024-04-11 15:09:44
+---- 2024-04-11 15:55:32
+---- 2024-04-11 19:15:22
+---- 2024-04-11 20:56:35
+A069250	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A069192(), new A004086().skip(1)
+A069897	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A006530(), new A020639()
+A069930	tuptraf	1	(n, s) -> s[0].+(s[1])	""	new A032741().skip(1), new A069283().skip(1)
+A070821	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A032742(), new A006530()
+A071224	tuptraf	1	(n, s) -> ZV(n).*(s[0])./(s[1])	""	new A002808(), new A064814()
+A071650	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A071649(), new A071648()
+A073458	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A000040(), new A002808()
+A073719	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A033844().skip(1), new A065856().skip(1)
+A073862	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A003618(), new A003617()
+A076050	simtraf	1	new A007001()	v -> v.+(1)	.
+A076358	tuptraf	1	(n, s) -> new Q(s[0], s[1]).num()	""	new A000142().skip(1), new A048855().skip(1)
+A079617	simtraf	2	new A101296().skip(1)	v -> v.-(1)	. - _David Wasserman_, Dec 27 2004
+A081221	simtraf	1	new A067535()	(n, v) -> v.-(n)	. -
+A082938	tuptraf	0	(n, s) -> s[0].+(s[1])./(2)	""	new A047749(), new A054423()	)/2
+A083345	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A003415().skip(1), new A085731()
+A083482	tuptraf	1	(n, s) -> s[0].*(s[1]).sqrt()	""	new A002378().skip(1), new A083481()
+A088765	simtraf	1	new A087696()	v -> v./(2)	.
+A088767	simtraf	1	new A087697()	v -> v./(2)	.
+A088769	simtraf	1	new A087678()	v -> v./(2)	.
+A088841	tuptraf	1	(n, s) -> new Q(s[0], s[1]).num()	""	new A283078(), new A000203()
+A088922	tuptraf	1	(n, s) -> s[0].+(s[1]).-(2)	""	new A000005(), new A110654().skip(1)
+A089535	tuptraf	1	(n, s) -> ZV(2).^(s[0]).+(s[1])	""	new A085745(), new A085745()
+A091233	tuptraf	1	(n, s) -> s[0].-(s[1]).+(1)	""	new A005518(), new A005517()	)+1
+A092053	tuptraf	1	(n, s) -> ZV(2).^(s[0]).-(s[1])	""	new A092054(), new A001902().skip(1)
+A093708	tuptraf	1	(n, s) -> Z.TEN.^(n)./(2).-(s[0].*(2)).+(s[1]).+(1)	""	new A006880().skip(1), new A007508()	a(n) = 10^n/2 - 2*A006880(n) + A007508(n) + 1
+A097378	tuptraf	1	(n, s) -> s[0].*(s[1]).+(1)	""	new A007947(), new A007948()
+A100993	simtraf	1	new A069104()	v -> v.+(1)	. - _T. D. Noe_, Dec 13 2004
+A101041	tuptraf	1	(n, s) -> s[0].+(s[1]).+(1)	""	new A000720(), new A072000()
+A101256	tuptraf	1	(n, s) -> s[0].-(s[1]).-(1)	""	new A000217().skip(1), new A034387()
+A102478	simtraf	1	new A068700()	v -> v./(2)	. - _Reinhard Zumkeller_, Jun 27 2015
+A103855	tuptraf	1	(n, s) -> s[0].-(s[1]).+(1)	""	new A039716(), new A002110().skip(1)
+A104149	simtraf	1	new A065900()	v -> v.-(2)	. - _R. J. Mathar_, Aug 19 2010
+A105221	tuptraf	1	(n, s) -> s[0].-((s[1]).*(n))	""	new A008472(), new A010051()	a(n) = A008472(n) - A010051(n) * n
+A108604	simtraf	1	new A006512()	v -> v.^(2)	.
+A109373	simtraf	1	new A070552()	v -> v.+(1)	.
+A109395	tuptraf	1	(n, s) -> new Q(s[0], s[1]).den()	""	new A173557(), new A007947()
+A110872	simtraf	1	new A067186()	v -> v.*(2).+(1)	= Sqrt(A110873(n)).
+A114401	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A114398(), new A114400()
+A117590	tuptras	1	(n, s) -> new Q(s[0], s[1]).ceiling()	""	new A008776(), new A000079()
+A119029	simtraf	1	new A120267()	(n, v) -> v./(n)	.
+A120454	tuptraf	1	(n, s) -> new Q(s[0], s[1]).ceiling()	""	new A006530(), new A020639()
+A120633	tuptraf	1	(n, s) -> s[0].-(s[1]).+(1)	""	new A062234(), new A070046()
+A120672	prepend	0	new SimpleTransformSequence(2, new A285917(), v -> v.multiply2())	0, 0	for n >=2, a(0) = a(1) = 0.
+A125291	tuptraf	1	(n, s) -> ZV(1).+(ZV(n/2).*(ZV(1).-(s[0].*(s[1]).isZero() ? Z.ONE : Z.ZERO)))	""	new A062756().skip(1), new A081603().skip(1)	a(n) = 1 + floor(n/2) * (1 - 0^(A062756(n)*A081603(n)))
+A125911	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A007955(), new A136655()
+A126594	tuptraf	2	(n, s) -> s[0]./(s[1])	""	new A001414().skip(1), new A001222().skip(1)
+A126720	simtraf	1	new A098974()	v -> v.+(24)	4. - _Amiram Eldar_, Mar 13 2020
+A127861	simtraf	1	new A127859()	v -> v.^(2)	.
+A127948	tuptraf	0	(n, s) -> s[0].*(2).-(s[1].^(2))	""	new A000027(), new A002024()
+A129753	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A000040(), new A018252()
+A129971	simtraf	1	new A129968()	v -> v.^(2)	.
+A130064	tuptraf	1	(n, s) -> ZV(n).*(s[0])./(s[1])	""	new A006530(), new A020639()
+A130065	tuptraf	1	(n, s) -> ZV(n).*(s[0])./(s[1])	""	new A020639(), new A006530()
+A136035	tuptraf	1	(n, s) -> s[0].mod(s[1])	""	new A001348(), new A008864()
+A140892	simtraf	0	new A000045().skip(1)	(n, v) -> n <= 1 ? Z.ZERO : ZV(n - 1).^(v).-(v.^(n - 1))	a(n) = (n-1)^F(n) - F(n)^(n-1), where F(n) = A000045(n).
+A145481	filter	1	new A000040().skip(4)	v -> v.*(2).-(17).IPP()	A145475()	v -> v.*(2).-(17)	.
+A145483	filter	1	new A000040().skip(5)	v -> v.*(2).-(23).IPP()	A145477()	v -> v.*(2).-(23)	.
+A145485	filter	1	new A000040().skip(6)	v -> v.*(2).-(31).IPP()	A145479()	v -> v.*(2).-(31)	.
+A153011	tuptraf	1	(n, s) -> s[0].-(s[1]).+(1)	""	new A152770(), new A051953()
+A153088	simtraf	1	new A153343()	v -> v.+(1)	. - _Peter Bala_, Jan 25 2017
+A156061	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A003963(), new A290106()
+A161351	tuptraf	1	(n, s) -> ZV(n).+(s[0]).+(s[1])	""	new A007953().skip(1), new A007954().skip(1)
+A163121	tuptraf	1	(n, s) -> s[0].-((s[1].^(3)))	""	new A030078(), new A141468()
+A168157	tuptraf	1	(n, s) -> ZV(n).*(s[0]).-(s[1])	""	new A035100(), new A095375()
+A171870	simtras	1	new A075680()	(n, v) -> n <= 1 ? Z.ZERO : v.-(1)	.
+A175342	tuptraf	1	(n, s) -> s[0].*(2).-(s[1])	""	new A049988().skip(1), new A000005()
+A178244	tuptraf	0	(n, s) -> BI(s[0], s[1])	""	new A070939(), new A000120()	a(n) = binomial(A070939(n), A000120(n))
+A178421	simtraf	1	new A069175()	v -> v.-(1)	. - _R. J. Mathar_, Nov 02 2023
+A178467	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A001477(), new A026858()
+A180783	tuptras	1	(n, s) -> s[0].+(s[1])./(2)	"0"	new A000010().skip(1), new A060594().skip(1)
+A181858	tuptraf	0	(n, s) -> n == 0 ? Z.ONE : s[0]./(s[1])	""	new A181857(), new A181860()
+A182629	tuptras	0	(n, s) -> s[0].-(s[1])	"0"	new A046746().skip(1), new A000203()	a(n) = A046746(n) - A000203(n), for n >= 1
+A185642	tuptraf	2	(n, s) -> new Q(s[0], s[1]).round()	""	new A008472().skip(1), new A001221().skip(1)
+A192074	simtraf	1	new A066158()	(n, v) -> n <= 1 ? Z.ZERO : v.-(2)	with a(0)=1.
+A194029	simtras	1	new A066628().skip(1)	v -> v.+(1)	. - _Alan Michael G√≥mez Calder√≥n_, Oct 30 2023
+A197112	simtraf	1	new A066232()	v -> v.-(2)	. - _Donovan Johnson_, Oct 14 2011
+A198192	tuptraf	0	(n, s) -> ZV(n).*(s[0]).-(s[1])	""	new A000120(), new A073642()
+A203925	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A100731(), new A050923()
+A209423	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A066897(), new A066898()
+A211026	simtras	1	new A000041().skip(1)	v -> v.*(2).+(2)	= 2*A052810(n) = A139582(n) + 2.
+A212396	tuptraf	0	(n, s) -> new Q(s[0], s[1]).num()	""	new A212395(), new A000142()
+A212397	tuptraf	0	(n, s) -> new Q(s[0], s[1]).den()	""	new A212395(), new A000142()
+A214283	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A214282(), new A001405().skip(1)
+A215513	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A092269(), new A000041().skip(1)
+A218461	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A006450(), new A000040()
+A220907	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A066186().skip(1), new A092269()
+A220908	tuptraf	1	(n, s) -> s[0].-(s[1]).*(2)	""	new A066186().skip(1), new A092269()
+A226757	simtraf	1	new A000224()	v -> v.^(4)	. - _Andrew Howroyd_, Aug 06 2018
+A233437	tuptraf	12	(n, s) -> s[0]./(s[1])	""	new A002110().skip(12), new A036691().skip(12)
+A233447	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A036691().skip(1), new A000142().skip(1)
+A237684	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A033286(), new A007504().skip(1)
+A239275	tuptraf	0	(n, s) -> new Q(s[0], s[1]).*(Z2(n)).num()	""	new A164555(), new A027642()
+A252735	simtraf	1	new A061395()	(n, v) -> n <= 1 ? Z.ZERO : v.-(1)	.
+A252736	simtraf	1	new A001222()	(n, v) -> n <= 1 ? Z.ZERO : v.-(1)	.
+A256465	tuptraf	1	(n, s) -> s[0].-((s[1]./(2)))	""	new A057655().skip(1), new A004018().skip(1)
+A257935	tuptraf	0	(n, s) -> new Q(s[0], s[1]).-(new Q(Z_1(n).*(n), ZV(2))).num()	""	new A027641(), new A027642()
+A262185	tuptraf	0	(n, s) -> ZV(n).^(s[0]).-(s[1].^(n))	""	new A062439(), new A062439()
+A263768	simtras	3	new A007147().skip(2)	v -> v.-(1)	. - _Bernd Mulansky_, Mar 08 2023
+A266268	simtraf	1	new A067143()	v -> v.+(1)	.
+A281979	tuptraf	1	(n, s) -> s[0].-(s[1])./(657931)	""	new A281959(), new A037947()	)/657931
+A284379	lambdan	1	n -> new Z(Long.toBinaryString(n + 1).substring(1).replace('1', '5').replace('0', '3'))
+A286386	tuptraf	1	(n, s) -> s[0].*(2).+(s[1])	""	new A286473(), new A010052().skip(1)
+A288003	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A002487().skip(1), new A288002()
+A289336	tuptraf	1	(n, s) -> new Q(s[0], s[1]).num()	""	new A000203(), new A000010()
+A291186	tuptraf	1	(n, s) -> new Q(s[0], s[1]).num()	""	new A007955(), new A000005()
+A292773	simtras	1	new A090245().skip(1)	v -> v.*(2).+(1)	, (follows from Harborth, Hilfssatz 3). - _C. Elsholtz_, Oct 04 2021
+A294612	tuptraf	1	(n, s) -> new Q(s[0], s[1]).den()	""	new A024450(), new A007504().skip(1)
+A295243	simtraf	1	new A007674()	v -> v.*(2).+(1)	. - _Amiram Eldar_, Feb 26 2024
+A295312	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A062401(), new A295310()
+A296199	tuptraf	1	(n, s) -> new Q(s[0], s[1]).num()	""	new A024450(), new A007504().skip(1)
+A298366	simtraf	1	new A061673()	v -> v.+(4)	= A269345(n) + 5. - _M. F. Hasler_, Nov 19 2018
+A298612	tuptraf	3	(n, s) -> s[0].-(s[1]).-(3)	""	new A000031().skip(3), new A004526().skip(3)
+A299149	tuptraf	1	(n, s) -> new Q(s[0].*(n), s[1]).num()	""	new A317848(), new A165825()
+A299475	tuptras	0	(n, s) -> s[0].-(s[1]).+(1)	"1"	new A299474().skip(1), new A000041().skip(1)
+A300571	tuptras	0	(n, s) -> new Z(Z.valueOf(n).toString(2) + s[0].toString())	"0"	PREVIOUS
+A301748	tuptraf	4	(n, s) -> ZV(2).-(s[0]).+(s[1])	""	new A007569().skip(3), new A135565().skip(3)
+A304990	simtraf	0	new A000009()	v -> v.^(2)	.
+A306496	simtraf	1	new A094047()	v -> v./(2)	.
+A306834	tuptraf	1	(n, s) -> new Q(s[0], s[1]).num()	""	new A014285(), new A007504().skip(1)
+A307716	tuptraf	1	(n, s) -> new Q(s[0], s[1]).den()	""	new A014285(), new A007504().skip(1)
+A308248	simtraf	1	new A237583()	v -> v.^(2)	. - _Michel Marcus_, May 17 2019
+A309507	tuptraf	1	(n, s) -> s[0].-(s[1]).-(1)	""	new A092517(), new A063440()
+A321015	tuptraf	1	(n, s) -> s[0].+(s[1]).+(s[2])	""	new A000005(), new A321013(), new A321014()
+A324103	tuptraf	1	(n, s) -> s[0].*(2).-(s[1])	""	new A324104(), new A156552()
+A324189	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A324184(), new A324188()
+A324903	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A361023(), new A361024()
+A325226	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A001222(), new A071178()
+A325311	simtraf	1	new A325312()	v -> v.^(2)	. - _Amiram Eldar_, Apr 05 2024
+A326066	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A000203(), new A326065()
+A326222	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000273(), new A326225()
+A329348	tuptraf	1	(n, s) -> s[0].mod(s[1])	""	new A331188(), new A117366()
+A330378	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A115995().skip(1), new A000041().skip(1)
+A331749	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A323901(), new A002487()
+A334655	simtraf	1	new A067003()	v -> v.-(1)	.
+A336316	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A336315(), new A034444()
+A336469	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A329697(), new A005087()
+A336839	tuptraf	1	(n, s) -> new Q(s[0], s[1]).den()	""	new A003973(), new A000005()
+A339531	lambdan	1	n -> ZV(((9*n)/2)*4 + 1)	for n>=2, a(n) = 4*floor((9*n)/2) + 1 for all n. - _Hugo Pfoertner_, Dec 08 2020
+A340072	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A003972(), new A340071()
+A340520	simtras	1	new A006463().skip(1)	v -> v.*(2).+(1)	.
+A340562	simtraf	1	new A212800()	(n, v) -> v./(n*n)	^2.
+A342663	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A342661(), new A342670()
+A344972	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A344875(), new A011772()
+A348841	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A000720(), new A055460()
+A348942	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A326042(), new A348940()
+A348944	tuptraf	1	(n, s) -> s[0].+(s[1])./(2)	""	new A003959(), new A034448()
+A348948	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A000203(), new A348946()
+A348985	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A000203(), new A348984()
+A351408	tuptraf	1	(n, s) -> s[0].-(s[1]).+(2)	""	new A048105(), new A046951()
+A351444	tuptraf	1	(n, s) -> s[0].+(s[1])	""	new A322582(), new A351442()
+A351445	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A351442(), new A003958()
+A352655	tuptraf	1	(n, s) -> s[0].*(2).-(s[1])./(2)	""	new A103882().skip(1), new A352654().skip(1)
+A353755	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A062401(), new A353754()
+A353756	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A353752(), new A353754()
+A353762	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A353749(), new A353761()
+A353763	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A353750(), new A353761()
+A353792	tuptraf	1	(n, s) -> s[0].*(s[1])	""	new A351442(), new A350073()
+A353794	tuptraf	1	(n, s) -> s[0].*(s[1])	""	new A326042(), new A351456()
+A353806	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A353802(), new A353804()
+A355481	tuptraf	0	(n, s) -> s[0].-(s[1])./(2)	""	new A001246(), new A129123()	)/2
+A355930	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A056239(), new A356159()
+A357652	tuptraf	0	(n, s) -> s[0].+(s[1])./(2)	""	new A001246(), new A129123()	)/2
+A358565	simtras	2	new A358548().skip(1)	v -> v./(6)	.
+A358678	tuptraf	1	(n, s) -> s[0].*(s[1])	""	new A000035().skip(1), new A353812()
+A359300	tuptraf	2	(n, s) -> s[0].+(s[1]).-(2*n)	""	new A007917(), new A007918().skip(2)
+A359467	tuptraf	1	(n, s) -> s[0].+(s[1]).modZ(2)	""	new A166486().skip(1), new A353627()	)mod2
+A361316	tuptraf	1	(n, s) -> new Q(s[0].*(n), s[1]).num()	""	new A037445(), new A049417()
+A361317	tuptraf	1	(n, s) -> new Q(s[0].*(n), s[1]).den()	""	new A037445(), new A049417()
+A361565	tuptraf	1	(n, s) -> new Q(s[0].+(s[1]), ZV(2)).num()	""	new A033676(), new A033677()
+A361566	tuptraf	1	(n, s) -> new Q(s[0].+(s[1]), ZV(2)).den()	""	new A033676(), new A033677()
+A361782	tuptraf	1	(n, s) -> new Q(s[0].*(n), s[1]).num()	""	new A286324(), new A188999()
+A361783	tuptraf	1	(n, s) -> new Q(s[0].*(n), s[1]).den()	""	new A286324(), new A188999()
+A362707	tuptraf	1	(n, s) -> ZV(n).*(s[0]).-(s[1])	""	new A351112(), new A351113()
+A363895	tuptraf	2	(n, s) -> s[0]./(s[1])	""	new A008472().skip(1), new A001221().skip(1)
+A363923	tuptraf	1	(n, s) -> ZV(n).^(s[0])./(s[1])	""	new A001222(), new A007947()
+A364042	tuptraf	1	(n, s) -> ZV(2).^(s[0]).-(s[1])	""	new A329697(), new A000120().skip(1)
+A364492	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A163511(), new A364255()
+A364850	tuptraf	1	(n, s) -> new Q(s[0].*(s[1]), ZV(2)).num().negate()	""	new A014963(), new A023900()
+A365804	tuptraf	1	(n, s) -> s[0].+(s[1])	""	new A263273().skip(1), new A365803()
+A366368	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A003418(), new A139550()
+A366369	tuptraf	0	(n, s) -> s[0]./(s[1])	""	new A003418(), new A139550()
+A366385	tuptraf	1	(n, s) -> s[0].*(s[1])	""	new A052126(), new A061395()
+A366387	tuptraf	1	(n, s) -> s[0].*(s[1])	""	new A032742(), new A055396()
+A366672	simtraf	0	new A002720()	(n, v) -> v.^(n)	.
+A366840	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A100006(), new A366839()
+A366922	simtraf	1	new A007949()	v -> v.+(2)	= A051064(n) + 1.
+A366924	simtras	1	new A054474().skip(1)	v -> v./(4)	.
+A367559	tuptraf	0	(n, s) -> ZV(2).^(s[0]).-(s[1])	""	new A002262(), new A025581()
+A367569	tuptraf	0	(n, s) -> s[0]./((s[1].^(5)))	""	new A268506(), new A000178()
+A367570	tuptraf	0	(n, s) -> s[0]./((s[1].^(6)))	""	new A271946(), new A000178()
+A367571	tuptraf	0	(n, s) -> s[0]./((s[1].^(7)))	""	new A271947(), new A000178()
+A367807	simtraf	1	new A029951()	v -> v./(2)	.
+A368058	tuptraf	1	(n, s) -> ZV(n).*(s[0]).-(s[1])	""	new A294602(), new A294487()
+A368068	simtraf	0	new A324402()	v -> v.^(2)	.
+A368641	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A368616(), new A048865()
+A368922	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A368921(), new A068346()
+A368941	simtraf	0	new A000194()	v -> v.+(1)	. - _Andrew Howroyd_, Jan 10 2024
+A369052	simtraf	0	new A003415()	(n, v) -> ZV(n).-(v.*(2))
+A369257	tuptraf	1	(n, s) -> s[0].+(s[1])./(2)	""	new A001227(), new A053866()	)/2
+A369315	tuptraf	4	(n, s) -> s[0].-(s[1])	""	new A005034().skip(4), new A005036().skip(3)
+A369471	tuptraf	4	(n, s) -> s[0].-(s[1])	""	new A005038().skip(3), new A005040().skip(3)
+A369472	tuptraf	1	(n, s) -> s[0].*(2).-(s[1])	""	new A005040(), new A005038()
+A369567	simtraf	1	new A138302()	v -> v.^(2)	.
+A370082	simtraf	1	new A004613()	v -> v.*(7).-(3)	.
+A370487	lambdan	0	n -> n == 0 ? ZV(1) : BI(2*n - 1, n).*(3).-(2)
+A371350	tuptraf	1	(n, s) -> s[0].-(s[1])	""	new A007173(), new A027610()
+A371351	tuptraf	1	(n, s) -> s[0].*(2).-(s[1])	""	new A027610(), new A007173()
+A371418	tuptraf	1	(n, s) -> s[0]./(s[1])	""	new A000203(), new A071189()
