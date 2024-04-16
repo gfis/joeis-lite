@@ -18,9 +18,6 @@ import irvine.oeis.AbstractSequence;
  * a sufficient number of initial terms must be specified.
  * The offsets are handled automatically, that means the indexes n of all involved
  * sequences are aligned.
- * <p />
- * 
- * 
  * @author Georg Fischer
  */
 public class MultiTransformSequence extends AbstractSequence {
@@ -118,8 +115,19 @@ public class MultiTransformSequence extends AbstractSequence {
     mInitNo = mInits.length;
     int ix = 0;
     while (ix < mSeqNo) {
-      ix = alignSourceSequence(ix, mN + 1 + mInitNo);
+      ix = alignSourceSequence(ix, mOffset + mInitNo);
     }
+  }
+
+  /**
+   * Constructor without source sequences.
+   * @param offset offset of the new sequence
+   * @param lambda function mapping (self, n) to the terms of the target sequence
+   * @param initTerms initial terms for a(n)
+   */
+  public MultiTransformSequence(final int offset, final MultiFunction<MultiTransformSequence, Integer, Z> lambda, 
+      final String initTerms) {
+    this (offset, lambda, initTerms, new AbstractSequence[] {});
   }
 
   /**
@@ -128,6 +136,9 @@ public class MultiTransformSequence extends AbstractSequence {
    * @return a(n)
    */
   public Z a(final int n) {
+//  if (VERBOSE) {
+//    System.out.println("# a(" + n + ") -> " + mA.get(n));
+//  }
     return mA.get(n);
   }
 
@@ -137,6 +148,9 @@ public class MultiTransformSequence extends AbstractSequence {
    * @return <code>seqs[ix].a(n)</code>
    */
   public Z s(final int ix) {
+//  if (VERBOSE) {
+//    System.out.println("# s(" + ix + ") -> " + mTerms[ix]);
+//  }
     return mTerms[ix];
   }
 
@@ -155,17 +169,19 @@ public class MultiTransformSequence extends AbstractSequence {
       ++hi;
     }
     int soff = mOffsets[ix];
-    while (soff < targetN) {
+    while (soff <= targetN) {
       for (int i = hi - 1; i > lo; --i) {
         mTerms[i] = mTerms[i - 1];
       }
       mTerms[lo] = mSeqs[ix].next();
       ++soff;
     }
-    if (VERBOSE) {
-      System.out.println("# alignSourceSequence(" + ix + ", " + targetN + ") -> mN=" + mN + ", hi=" + hi + ", mOffsets[ix]=" + mOffsets[ix]
-          + ", mTerms[ix]=" + mTerms[ix]);
-    }
+//  if (VERBOSE) {
+//    System.out.println("# alignSourceSequence(" + ix + ", " + targetN 
+//        + ") -> lo=" + lo + ", hi=" + hi 
+//        + ", mOffsets[" + ix + "]=" + mOffsets[ix]
+//        + ", mTerms[" + ix   + "]=" +   mTerms[ix]);
+//  }
     return hi;
   }
 
@@ -178,9 +194,9 @@ public class MultiTransformSequence extends AbstractSequence {
       result = mInits[mIn];
     } else {
       result = mLambda.apply(this, mN);
-      if (VERBOSE) {
-        System.out.println("# next() -> mN=" + mN + ", result=" + result);
-      }
+//    if (VERBOSE) {
+//      System.out.println("# next() -> mN=" + mN + ", result=" + result);
+//    }
       for (int ix = mSeqNo - 1; ix >= 0; --ix) { // shift into previous source elements
         if (mSeqs[ix] == PREVIOUS) {
           mTerms[ix] = mTerms[ix - 1];

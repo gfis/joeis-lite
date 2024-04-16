@@ -1,0 +1,282 @@
+---- 2024-04-13 12:07:39
+A162795	partsun	1	new A162793()			Partial sums of A162793.
+A194082	partsun	1	new A171970()			Partial sums of A171970.
+A345019	lingf	1	0,1,1,6,1,1	1,-1,0,0,-1,1	0
+A369066	dirichcon2	0	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouville's lambda (A008836) with A083345, as reordered by the Doudna sequence.
+A369069	dirichcon2	1	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouville's lambda (A008836) with A083345, where A083345(n) = n' / gcd(n,n'), and n' stands for the arithmetic derivative of n, A003415.
+A369454	dirichinv	1	new A369257()	1	Dirichlet inverse of A369257, where A369257 is the number of divisors of n that are odd numbers with an even number of prime factors with multiplicity.
+A369455	dirichcon2	1	new A083345()	1	new A055615()	1	Dirichlet convolution of A083345 with A055615 (Dirichlet inverse of n), where A083345(n) = (n'/gcd(n,n')) and n' is the arithmetic derivative of n.
+A369801	lingf	2	0,0,1,2,2,2,2,0,0,-1	1,-1,-1,1	0
+A370176	lingf	0	1,-1,-1	1,-7,0,6	0
+A371154	lingf	0	1,1,0,0,-1,2,-1	1,-2,1,-1,2,-1	0
+A371515	lingf	0	1,53,119,19	1,-4,6,-4,1	0
+A371532	lingf	0	1,15,23,1	1,-4,6,-4,1	0
+---- 2024-04-13 12:12:31
+A069354	simtraf	1	new A059958()	v -> v.+(1)	for 0 < n < 19. - _Robert G. Wilson v_, Feb 18 2014
+A094918	lambdan	1	n -> ZV(3).^(n).-(1)./(2).modZ(n)
+A094919	lambdan	1	n -> ZV(4).^(n).-(1)./(3).modZ(n)
+A094920	lambdan	1	n -> ZV(5).^(n).-(1)./(4).modZ(n)
+A094922	lambdan	1	n -> ZV(7).^(n).-(1)./(6).modZ(n)
+A094924	lambdan	1	n -> ZV(9).^(n).-(1)./(8).modZ(n)
+A097684	simtraf	1	new A056655()	v -> v.+(1)	for all n >= 0.
+A292918	simtraf	1	new A069879()	v -> v.+(1)	= 2*A071917(n) + 1. (End)
+A369854	simtraf	0	new A037031()	v -> v.-(1)	= binomial(n,pi(n)) - 1. - _Alois P. Heinz_, Feb 03 2024
+A371847	zbasex	25962	Z.ONE.shiftLeft(86243).subtract(Z.ONE)	Decimal expansion of 2^ 86243 - 1, the 28th Mersenne prime.      nonn,cons,fini,new      25962..26051    nyi     _Paolo Xausa_
+A371848	zbasex	33265	Z.ONE.shiftLeft(110503).subtract(Z.ONE)	Decimal expansion of 2^110503 - 1, the 29th Mersenne prime.     nonn,cons,fini,new      33265..33354    nyi     _Paolo Xausa_
+A371849	zbasex	39751	Z.ONE.shiftLeft(132049).subtract(Z.ONE)	Decimal expansion of 2^132049 - 1, the 30th Mersenne prime.     nonn,cons,fini,new      39751..39840    nyi     _Paolo Xausa_
+A371870	lambdan	0	n -> SU(0, n/2, k -> BI(2*n - k -1, n - 2*k)    )
+A371871	lambdan	0	n -> SU(0, n/3, k -> BI(2*n - 3*k - 2, n - 3*k) )
+A371872	lambdan	0	n -> SU(0, n/3, k -> BI(2*n - 2*k - 1, n - 3*k) )
+A371873	lambdan	0	n -> SU(0, n/3, k -> BI(2*n + 1, n - 3*k)       )
+---- 2024-04-14 21:50:41
+A070323	multraf	1	(self, n) -> self.s(0).*(2)./(self.s(1))	""	new A037169() , new A000040()	2*A037169(n) /prime(n) for n > 1
+A086555	multrar	1	(self, n) -> SU(1, n - 1, k -> SA(n, k).*(self.a(k)))	"1"
+A137731	multrar	1	(self, n) -> SU(1, n - 1, k -> S2(n - 1, k).*(self.a(k)).*(self.a(n - k)))	"1"
+A160094	multraf	1	(self, n) -> self.s(0).-(self.s(1)).+(1)	""	new A054899() , PREVIOUS	1 + A054899(n) -A054899(n-1)
+A246040	multrar	1	(self, n) -> SU(1, n - 1, k -> S1(n, k).*(self.a(k)))	"1"
+A281230	multraf	1	(self, n) -> self.s(0)./(2)	"1, 3"	new A001175()	for n >= 3 (half the Pisano period for the Fibonacci sequence)
+A307874	multrar	1	(self, n) -> SU(1, n - 1, k -> S1(n - 1, k).*(self.a(k)))	"1, 1"
+A308444	multrar	0	(self, n) -> SU(1, n, k -> S2(n, k).*(self.a(n - k)))	"1"
+A308476	multrar	1	(self, n) -> SU(1, n - 1, k -> LongUtils.gcd(n, k) == 1 ? S2(n, k).*(self.a(k)) :Z.ZERO)	"1"
+A308555	multrar	1	(self, n) -> SU(1, n, k -> S2(n, k).*(Sigma(k)))	"1"
+A317275	multrar	1	(self, n) -> SU(1, n - 1, k -> SA(n - 1, k).*(self.a(k)).*(self.a(n - k)))	"1"
+A329967	multrar	0	(self, n) -> SU(1, n, k -> S1(n, k).*(self.a(n - k)))	"1"
+A329968	multrar	0	(self, n) -> SU(1, n, k -> SA(n, k).*(self.a(n - k)))	"1"
+A330353	multrar	1	(self, n) -> SU(1, n, k -> S2(n, k).*(FA(k - 1)).*(Sigma(k)))	"1"
+A330354	multrar	1	(self, n) -> SU(1, n, k -> S1(n, k).*(FA(k - 1)).*(Sigma(k)))	"1"
+A330494	multrar	1	(self, n) -> SU(1, n, k -> Z_1(n - k).*(S1(n, k)).*(FA(k - 1)).*(Sigma(k)))	"1"
+A335986	multrar	1	(self, n) -> SU(1, n - 1, k -> Z_1(k).*(S2(n - 1, k)).*(self.a(k)))	"1"
+A336020	multrar	0	(self, n) -> SU(0, n - 3, k -> S2(n - 3, k).*(self.a(k)))	"1, 1, 1"
+A336021	multrar	0	(self, n) -> SU(0, n - 4, k -> S2(n - 4, k).*(self.a(k)))	"1, 1, 1, 1"
+A336022	multrar	0	(self, n) -> SU(0, n - 5, k -> S2(n - 5, k).*(self.a(k)))	"1, 1, 1, 1, 1"
+A345177	multrar	0	(self, n) -> SU(0, n - 2, k -> S2(n - 2, k).*(self.a(k)))	"1, 0"
+A345178	multrar	0	(self, n) -> SU(0, n - 2, k -> S2(n - 2, k).*(self.a(k)))	"0, 1"
+A354729	multrar	0	(self, n) -> SU(0, n - 1, k -> S1(n - 1, k).*(self.a(k))).*(n)	"1"
+A354730	multrar	0	(self, n) -> SU(0, n - 1, k -> SA(n - 1, k).*(self.a(k))).*(n)	"1"
+A355100	multrar	0	(self, n) -> SU(0, n - 1, k -> S2(n - 1, k).*(self.a(k))).*(2*n)	"1"
+A355101	multrar	0	(self, n) -> SU(0, n - 1, k -> S2(n - 1, k).*(self.a(k))).*(3*n)	"1"
+A355102	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(S2(n - 1, k)).*(self.a(k))).*(2*n)	"1"
+A355103	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(S2(n - 1, k)).*(self.a(k))).*(3*n)	"1"
+A355104	multrar	0	(self, n) -> SU(0, n - 1, k -> S1(n - 1, k).*(self.a(k))).*(2*n)	"1"
+A355105	multrar	0	(self, n) -> SU(0, n - 1, k -> S1(n - 1, k).*(self.a(k))).*(3*n)	"1"
+A355106	multrar	0	(self, n) -> SU(0, n - 1, k -> SA(n - 1, k).*(self.a(k))).*(2*n)	"1"
+A355107	multrar	0	(self, n) -> SU(0, n - 1, k -> SA(n - 1, k).*(self.a(k))).*(3*n)	"1"
+A355124	multrar	0	(self, n) -> SU(0, n - 1, k -> Z2(k).*(S1(n - 1, k)).*(self.a(k))).*(n)	"1"
+A355126	multrar	0	(self, n) -> SU(0, n - 1, k -> Z2(k).*(SA(n - 1, k)).*(self.a(k))).*(n)	"1"
+A355128	multrar	0	(self, n) -> SU(0, n - 1, k -> Z2(k).*(S2(n - 1, k)).*(self.a(k))).*(n)	"1"
+A355130	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(Z2(k)).*(S2(n - 1, k)).*(self.a(k))).*(n)	"1"
+A355205	multrar	1	(self, n) -> SU(1, n - 1, k -> SA(n - 1, k).*(self.a(k))).*(2)	"1"
+A355206	multrar	1	(self, n) -> SU(1, n - 1, k -> S2(n - 1, k).*(self.a(k))).*(2)	"1"
+A355207	multrar	1	(self, n) -> SU(1, n - 1, k -> Z_1(n - 1-k).*(S2(n - 1, k)).*(self.a(k))).*(2)	"1"
+A355209	multrar	1	(self, n) -> SU(1, n - 1, k -> Z2(k).*(SA(n - 1, k)).*(self.a(k)))	"1"
+A355210	multrar	1	(self, n) -> SU(1, n - 1, k -> Z2(k).*(S2(n - 1, k)).*(self.a(k)))	"1"
+A355211	multrar	1	(self, n) -> SU(1, n - 1, k -> Z_1(n - 1-k).*(Z2(k)).*(S2(n - 1, k)).*(self.a(k)))	"1"
+A355214	multrar	1	(self, n) -> SU(1, n - 1, k -> Z2(k - 1).*(S1(n - 1, k)).*(self.a(k)))	"1"
+A355215	multrar	1	(self, n) -> SU(1, n - 1, k -> Z2(k - 1).*(SA(n - 1, k)).*(self.a(k)))	"1"
+A355216	multrar	1	(self, n) -> SU(1, n - 1, k -> Z2(k - 1).*(S2(n - 1, k)).*(self.a(k)))	"1"
+A355217	multrar	1	(self, n) -> SU(1, n - 1, k -> Z_1(n - 1-k).*(Z2(k - 1)).*(S2(n - 1, k)).*(self.a(k)))	"1"
+---- 2024-04-14 22:35:17
+A143805	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(S1(n, k + 1)).*(self.a(k)))	"1"
+---- 2024-04-15 07:20:38
+A072490	multraf	1	(self, n) -> self.s(0).-(1)	"0"	new A013928()	v -> v.-(1)	, n > 1.
+A078591	multraf	0	(self, n) -> self.s(0)./(2)	"1,1"	new A005315()	v -> v./(2)	for n >= 2. - _Andrew Howroyd_, Nov 23 2015
+A088953	multraf	0	(self, n) -> self.s(0).*(2)./(3)	"1,3"	new A006156()	v -> v.*(2)./(3)	for n>1 [Corrected by _R‚ąö¬©my Sigrist_, Aug 19 2020].
+A112695	multraf	1	(self, n) -> self.s(0).-(2)	"1,2"	new A006577()	v -> v.-(2)	, n >= 3, a(1)=1, a(2)=2.
+A143823	multraf	0	(self, n) -> self.s(0).+(1)	"1"	new A054578()	v -> v.+(1)	for n>0. - _Alois P. Heinz_, Jan 17 2013
+A160357	multraf	0	(self, n) -> ZV(self.s(0).signum())	"1"	new A160356()	v ->
+A213214	multraf	1	(self, n) -> self.s(0).-(2*n)	"1"	new A193688()	(n, v) -> v.-(2*n)	*n for n > 1.
+A218147	multraf	3	(self, n) -> self.s(0)./(4)	"2,2"	new A079458()	v -> v./(4)	, for n > 2. - _Jason Kimberley_, Nov 14 2015
+A228729	multraf	1	(self, n) -> self.s(0).^(2)	"1"	new A214080()	v -> v.^(2)	, n > 0.
+A260318	multraf	1	(self, n) -> self.s(0)./(2)	"1"	new A033148()	v -> v./(2)	for n >= 2. - _Don Knuth_, Jun 20 2017
+A270383	multraf	0	(self, n) -> self.s(0).+(2)	"1"	new A067274()	v -> v.+(2)	for n >= 1.
+A291108	multraf	1	(self, n) -> self.s(0).-(1)	"0"	new A067558()	v -> v.-(1)	for n > 1.
+A293407	multraf	0	(self, n) -> self.s(0).+(1)	"0"	new A152738()	v -> v.+(1)	for n > 0.
+A318029	multraf	0	(self, n) -> self.s(0).-(1)	"0,0"	new A025147()	v -> v.-(1)	for n > 1.
+A332558	multraf	1	(self, n) -> self.s(0).-(1)	"4"	new A061836()	v -> v.-(1)	for n >= 1.
+A337485	multraf	0	(self, n) -> self.s(0).-(1)	"0,0"	new A007359()	v -> v.-(1)	for n > 1.
+A340161	multraf	0	(self, n) -> self.s(0).+(1)	"1"	new A018900()	v -> v.+(1)	for n >= 1 (see A340068). (End)
+A353177	multrar	0	(self, n) -> SU(1, n, k -> Z_1(n - k).*(k).*(S2(n, k)).*(self.a(k - 1)))	"1"		a(0) = 1; a(n) = Sum_{k=1..n} (-1)^(n-k) * k * Stirling2(n,k) * a(k-1).
+A354574	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(S2(n - 1, k)).*(self.a(k))).*(n)	"1"		a(0) = 1; a(n) = n * Sum_{k=0..n-1} (-1)^(n-k-1) * Stirling2(n-1,k) * a(k).
+A357112	multraf	1	(self, n) -> self.s(0)./(6)	"1"	new A035019()	v -> v./(6)	for n > 0.
+A366925	multraf	1	(self, n) -> self.s(0)./(8)	"1"	new A010575()	v -> v./(8)	for n>0.
+A368131	multraf	0	(self, n) -> self.s(0).-(2*n)	""	new A117630()	(n, v) -> v.-(2*n)	*n.
+---- 2024-04-15 18:51:20
+A072490	multraf	1	(self, n) -> self.s(0).-(1)	"0"	new A013928()	v -> v.-(1)	, n > 1.
+A078591	multraf	0	(self, n) -> self.s(0)./(2)	"1,1"	new A005315()	v -> v./(2)	for n >= 2. - _Andrew Howroyd_, Nov 23 2015
+A088953	multraf	0	(self, n) -> self.s(0).*(2)./(3)	"1,3"	new A006156()	v -> v.*(2)./(3)	for n>1 [Corrected by _R‚ąö¬©my Sigrist_, Aug 19 2020].
+A112695	multraf	1	(self, n) -> self.s(0).-(2)	"1,2"	new A006577()	v -> v.-(2)	, n >= 3, a(1)=1, a(2)=2.
+A143823	multraf	0	(self, n) -> self.s(0).+(1)	"1"	new A054578()	v -> v.+(1)	for n>0. - _Alois P. Heinz_, Jan 17 2013
+A145037	lambdan	0	n -> { int[] dc = ZUtils.digitCounts(n, 2); return ZV(n == 0 ? 0 : dc[1] - dc[0]); }
+A160357	multraf	0	(self, n) -> ZV(self.s(0).signum())	"1"	new A160356()	v ->
+A213214	multraf	1	(self, n) -> self.s(0).-(2*n)	"1"	new A193688()	(n, v) -> v.-(2*n)	*n for n > 1.
+A218147	multraf	3	(self, n) -> self.s(0)./(4)	"2,2"	new A079458()	v -> v./(4)	, for n > 2. - _Jason Kimberley_, Nov 14 2015
+A228729	multraf	1	(self, n) -> self.s(0).^(2)	"1"	new A214080()	v -> v.^(2)	, n > 0.
+A260318	multraf	1	(self, n) -> self.s(0)./(2)	"1"	new A033148()	v -> v./(2)	for n >= 2. - _Don Knuth_, Jun 20 2017
+A282942	multrar	0	(self, n) -> SU(1, n, k -> Sigma(7*k).*(self.a(n - k)))./(-n)	"1"		a(n) = -(1/n) *Sum_{k=1..n} sigma(7*k).*(self.a(n - k)).
+A283163	multrar	0	(self, n) -> SU(1, n, k -> Sigma(4*k).*(self.a(n - k)))./(-n)	"1"		a(n) = -(1/n) *Sum_{k=1..n} sigma(4*k).*(self.a(n - k)).
+A283164	multrar	0	(self, n) -> SU(1, n, k -> Sigma(6*k).*(self.a(n - k)))./(-n)	"1"		a(n) = -(1/n) *Sum_{k=1..n} sigma(6*k).*(self.a(n - k)).
+A283168	multrar	0	(self, n) -> SU(1, n, k -> Sigma(8*k).*(self.a(n - k)))./(-n)	"1"		a(n) = -(1/n) *Sum_{k=1..n} sigma(8*k).*(self.a(n - k)).
+A283169	multrar	0	(self, n) -> SU(1, n, k -> Sigma(9*k).*(self.a(n - k)))./(-n)	"1"		a(n) = -(1/n) *Sum_{k=1..n} sigma(9*k).*(self.a(n - k)).
+A291108	multraf	1	(self, n) -> self.s(0).-(1)	"0"	new A067558()	v -> v.-(1)	for n > 1.
+A291874	multraf	0	(self, n) -> self.s(0).negate()	"1"	new A227310()	-A0	for
+A293407	multraf	0	(self, n) -> self.s(0).+(1)	"0"	new A152738()	v -> v.+(1)	for n > 0.
+A318029	multraf	0	(self, n) -> self.s(0).-(1)	"0,0"	new A025147()	v -> v.-(1)	for n > 1.
+A328989	multraf	1	(self, n) -> self.s(0).-(self.s(1))./(3)	""	new A000041(), new A053274()	(A000041(n) - A053274(n))/3
+A332558	multraf	1	(self, n) -> self.s(0).-(1)	"4"	new A061836()	v -> v.-(1)	for n >= 1.
+A337485	multraf	0	(self, n) -> self.s(0).-(1)	"0,0"	new A007359()	v -> v.-(1)	for n > 1.
+A340161	multraf	0	(self, n) -> self.s(0).+(1)	"1"	new A018900()	v -> v.+(1)	for n >= 1 (see A340068). (End)
+A353177	multrar	0	(self, n) -> SU(1, n, k -> Z_1(n - k).*(k).*(S2(n, k)).*(self.a(k - 1)))	"1"		a(0) = 1; a(n) = Sum_{k=1..n} (-1)^(n-k) * k * Stirling2(n,k) * a(k-1).
+A354574	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(S2(n - 1, k)).*(self.a(k))).*(n)	"1"		a(0) = 1; a(n) = n * Sum_{k=0..n-1} (-1)^(n-k-1) * Stirling2(n-1,k) * a(k).
+A357112	multraf	1	(self, n) -> self.s(0)./(6)	"1"	new A035019()	v -> v./(6)	for n > 0.
+A366925	multraf	1	(self, n) -> self.s(0)./(8)	"1"	new A010575()	v -> v./(8)	for n>0.
+A368131	multraf	0	(self, n) -> self.s(0).-(2*n)	""	new A117630()	(n, v) -> v.-(2*n)	*n.
+---- 2024-04-16 17:14:36
+A111111	multraf	1	(self, n) -> self.s(0).negate().+(Z_1(n + 1).*(2))	"1,2"	new A059372()	-A059372(n) +2Z_1(n+1)
+A200815	multraf	3	(self, n) -> self.s(0).-(1)	"0,1"	new A036459()	v -> v.-(1)	= A060937(n)-2, for n >= 3. - _Antti Karttunen_, Oct 06 2017
+A270383	multraf	0	(self, n) -> self.s(0).+(2)	"1"	new A067274()	v -> v.+(2)	for n >= 1.
+A293363	lambdan	0	n -> CR.TWO.log().*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = log 2.
+A355204	multrar	1	(self, n) -> SU(1, n - 1, k -> S1(n - 1, k).*(self.a(k))).*(2)	"1"
+A364849	multraf	1	(self, n) -> self.s(1)./(2)	"1,1,1,1"	new A010551(), PREVIOUS	Number of even parity alternating permutations of [1..n] starting with an odd integer.
+---- 2024-04-16 21:11:21
+A305540	trilamb	1	1	1	(n, k) -> S2((n + 1)/2, k).+(S2(n/2 + 1, k))).*(FA(k))./(2)
+A305541	trilamb	1	1	1	RD(n, d -> new Q(S2(n/d, k).*(PHI(d)), ZV(2*n))).-(new Q(S2((n + 1)/2, k).+(S2(n/2 + 1, k)), ZV(4))).*(FA(k)).num()
+# T(n, k) = {k!*(sumdiv(n, d, stirling(n/d, k, 2)*eulerphi(d))/(2*n) - (stirling((n+1)\2, k, 2) + stirling(n\2+1, k, 2))/4 )}
+A326895	rowsum	0	new A305541()
+A305542	treonk	1	A305541	1	mN	3
+A305543	treonk	1	A305541	1	mN	4
+A305544	treonk	1	A305541	1	mN	5
+A305545	treonk	1	A305541	1	mN	6
+---- 2024-04-16 21:53:12
+A104803	multrar	1	(self, n) -> CV(self.a(n - 1).^(2).+(self.a(n - 2).^(2))).sqrt().floor()	"1,3"	a(n) = floor(sqrt(a(n-1)^2 + a(n-2)^2)), a(1)=1, a(2)=3.
+A104805	multrar	1	(self, n) -> CV(self.a(n - 1).^(2).+(self.a(n - 2).^(2))).sqrt().ceil()	"1,3"	a(n) = ceil (sqrt(a(n-1)^2 + a(n-2)^2)), a(1)=1, a(2)=3.
+A104863	multrar	1	(self, n) -> CV(self.a(n - 1).^(2).+(self.a(n - 2).^(2))).sqrt().floor()	"10,30"	a(n) = floor(sqrt(a(n-1)^2 + a(n-2)^2)), a(1)=10, a(2)=30.
+A104908	multrar	1	(self, n) -> CV(self.a(n - 1).^(2).+(self.a(n - 2).^(2))).sqrt().floor()	"100,300"	a(n) = floor(sqrt(a(n-1)^2 + a(n-2)^2)), a(1)=100, a(2)=300.
+A114378	lambdan	1	n -> CR.PI.*(ZV(n).^(3)).floor()	a(n) = floor(Pi*n^3). - _Robert Israel_, Nov 24 2014
+A114458	lambdan	1	n -> CV( 9*n +  8).sqrt().floor()
+A114459	lambdan	1	n -> CV(16*n + 20).sqrt().floor()
+A114460	lambdan	1	n -> CV(25*n + 49).sqrt().floor()
+A116579	simtraf	1	new A000040()	(n, v) -> (n <= 2) ? Z.ONE : v./(6)	a(1) = a(2) = 1; a(n) = floor(prime(n)/6) for n > 2.
+---- 2024-04-16 22:07:33
+A114322	lambdan	1	n -> CV(Z.TEN.^(n)).^(new Q(1, 4)).ceil().-(1)	a(n) = ceiling((10^n)^(1/4)) - 1.
+A114954	multrar	0	(self, n) -> CV(self.a(n-1)).^(new Q(3, 2)).+(CV(self.a(n - 2)).^(new Q(3, 2))).ceil()	"1,1"	a(n) = ceiling(a(n-1)^(3/2) + a(n-2)^(3/2)).
+A114957	multrar	0	(self, n) -> CV(self.a(n-1)).^(new Q(4, 3)).+(CV(self.a(n - 2)).^(new Q(4, 3))).ceil()	"1,1"	a(n) = ceiling(a(n-1)^(4/3) + a(n-2)^(4/3)) for n > 1 with a(0) = a(1) = 1.
+A115788	lambdan	1	n -> CR.PI.*(n).floor().and(Z.ONE)	a(n) = floor(n*Pi) mod 2.
+A127032	lambdan	1	n -> CV(FA(n)).log()./(CV( 5).log()).floor()	5^m <= n! : a(n) = floor( log(n!) / log(5) ).
+A127033	lambdan	1	n -> CV(FA(n)).log()./(CV( 7).log()).floor()	7^m <= n! : a(n) = floor( log(n!) / log(7) ).
+A127034	lambdan	1	n -> CV(FA(n)).log()./(CV(11).log()).floor()	11^m <= n! : a(n) = floor( log(n!) / log(11) ).
+A127035	lambdan	1	n -> CV(FA(n)).log()./(CV(13).log()).floor()	13^m <= n! : a(n) = floor( log(n!) / log(13) ).
+A127037	lambdan	1	n -> CV(FA(n)).log()./(CV(19).log()).floor()	19^m <= n! : a(n) = floor( log(n!) / log(19) ).
+A127038	lambdan	1	n -> CV(FA(n)).log()./(CV(23).log()).floor()	23^m <= n! : a(n) = floor( log(n!) / log(23) ).
+A127039	lambdan	1	n -> CV(FA(n)).log()./(CV(29).log()).floor()	29^m <= n! : a(n) = floor( log(n!) / log(29) ).
+A127041	lambdan	1	n -> CV(FA(n)).log()./(CV(31).log()).floor()	31^m <= n! : a(n) = floor( log(n!) / log(31) ).
+---- 2024-04-16 22:52:44
+A293313	lambdan	0	n -> CR.PHI.*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = (1+sqrt(5))/2.
+A293314	lambdan	0	n -> CR.PHI.*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = (1+sqrt(5))/2.
+A293315	lambdan	0	n -> CR.PHI     .*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + r*2^n), where r = (1+sqrt(5))/2.
+A293320	lambdan	0	n -> CR.PHI.+(1).*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = (3+sqrt(5))/2.
+A293321	lambdan	0	n -> CR.PHI.+(1).*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + r*2^n), where r = (3+sqrt(5))/2.
+A293323	lambdan	0	n -> CR.PHI.-(1).*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = (-1+sqrt(5))/2.
+A293324	lambdan	0	n -> CR.PHI.-(1).*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + r*2^n), where r = (-1+sqrt(5))/2.
+A293326	lambdan	0	n -> CR.THREE.sqrt()       .*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + r*2^n), where r = sqrt(3).
+A293327	lambdan	0	n -> CV(new Q(1, 3)).sqrt().*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = sqrt(1/3).
+A293328	lambdan	0	n -> CV(new Q(1, 3)).sqrt().*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = sqrt(1/3).
+A293329	lambdan	0	n -> CV(new Q(1, 3)).sqrt().*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + r*2^n), where r = sqrt(1/3).
+A293332	lambdan	0	n -> CR.FIVE.sqrt().*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = sqrt(5).
+A293334	lambdan	0	n -> CV(new Q(1, 5)).sqrt().*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = sqrt(1/5).
+A293335	lambdan	0	n -> CV(new Q(1, 5)).sqrt().*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = sqrt(1/5).
+A293336	lambdan	0	n -> CV(new Q(1, 5)).sqrt().*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + r*2^n), where r = sqrt(1/5).
+A293338	lambdan	0	n -> CR.E.*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + e*2^n).
+A293339	lambdan	0	n -> CR.E.inverse().*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = 1/e.
+A293340	lambdan	0	n -> CR.E.inverse().*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = 1/e.
+A293341	lambdan	0	n -> CR.E.inverse().*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + (1/e)*2^n).
+A293352	lambdan	0	n -> CR.GAMMA.*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = Eulers constant (0.577216...).
+A293353	lambdan	0	n -> CR.GAMMA.*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = Eulers constant (0.577216...).
+A293354	lambdan	0	n -> CR.GAMMA   .*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + r*2^n), where r = Eulers constant (0.577216...).
+A293359	lambdan	0	n -> CR.E.square().*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = e^2.
+A293360	lambdan	0	n -> CR.E.^(2).*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = e^2.
+A293361	lambdan	0	n -> CR.E.square().*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + (e^2)*2^n).
+A293362	lambdan	0	n -> CR.TWO.log().*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = log 2.
+A293363	lambdan	0	n -> CR.TWO.log().*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where r = log 2.
+A293364	lambdan	0	n -> CR.TWO.log().*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + (log 2)*2^n).
+A293400	lambdan	0	n -> CR.PHI.*(ZV(n*n)).floor()	a(n) = floor(r*n^2), where r = (1 + sqrt(5))/2.
+A293401	lambdan	0	n -> CR.PHI.*(ZV(n*n)).ceil()	a(n) = ceiling(r*n^2), where r = (1 + sqrt(5))/2.
+A293403	lambdan	0	n -> CR.PHI.+(1).*(ZV(n*n)).floor()	a(n) = floor(r*n^2), where r = (3 + sqrt(5))/2.
+A293404	lambdan	0	n -> CR.PHI.+(1).*(ZV(n*n)).ceil()	a(n) = ceiling(r*n^2), where r = (3 + sqrt(5))/2.
+A293407	lambdan	0	n -> CR.PHI.-(1).*(ZV(n*n)).ceil()	a(n) = ceiling(r*n^2), where r = (-1 + sqrt(5))/2.
+A293410	lambdan	0	n -> CR.THREE.sqrt().*(ZV(n*n)).ceil()	a(n) = ceiling(r*n^2), where r = sqrt(3).
+A293412	lambdan	0	n -> CR.E.*(ZV(n*n)).floor()	a(n) = floor(e*n^2).
+A301560	lambdan	1	n -> BI(2*n - 1, n - 1)./(2)	a(n) = floor(binomial(2*n - 1, n - 1)/2)
+--- 2024-04-16 23:00:08
+A130080	lambdan	1	n -> CR.TEN.^(new Q(n - 1,  6)).ceil()	a(n) = ceiling(10^((n-1)/6)).
+A130081	lambdan	1	n -> CR.TEN.^(new Q(n - 1,  7)).ceil()	a(n) = ceiling(10^((n-1)/7)).
+A130082	lambdan	1	n -> CR.TEN.^(new Q(n - 1,  8)).ceil()	a(n) = ceiling(10^((n-1)/8)).
+A130083	lambdan	1	n -> CR.TEN.^(new Q(n - 1,  9)).ceil()	a(n) = ceiling(10^((n-1)/9)).
+A130084	lambdan	1	n -> CR.TEN.^(new Q(n - 1, 10)).ceil()	a(n) = ceiling(10^((n-1)/10))
+A293319	lambdan	0	n -> CR.PHI.+(1).*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = (3+sqrt(5))/2.
+A293322	lambdan	0	n -> CR.PHI.-(1).*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = (-1+sqrt(5))/2.
+A293331	lambdan	0	n -> CR.FIVE.sqrt().*(Z2(n)).floor()	a(n) = floor(r*2^n), where r = sqrt(5).
+A293333	lambdan	0	n -> CR.FIVE.sqrt().*(Z2(n)).+(CR.HALF).floor()	a(n) = floor(1/2 + r*2^n), where r = sqrt(5).
+A293413	lambdan	0	n -> CR.E.*(n*n).ceil()	a(n) = ceiling(e*n^2).
+---- 2024-04-16 23:29:36
+A070923	lambdan	0	n -> CV(n).^(new Q(2, 3)).ceil().^(3).-(ZV(n).^(2))	a(n) = ceiling(n^(2/3))^3 - n^2 = ?077107(n)-n^2.
+A070928	lambdan	1	n -> CV(n).^(new Q(3, 4)).ceil().^(4).-(ZV(n).^(3))	a(n) = ceiling(n^(3/4))^4 - n^3.
+A070929	lambdan	0	n -> CV(n).^(new Q(3, 2)).ceil().^(2).-(ZV(n).^(3))	a(n) = ceiling(n^(3/2))^2 - n^3 = ?077115(n) - n^3.
+A070930	lambdan	1	n -> CV(n).^(new Q(4, 3)).ceil().^(3).-(ZV(n).^(4))	a(n) = ceiling(n^(4/3))^3 - n^4.
+A077115	lambdan	0	n -> CV(n).^(new Q(3, 2)).ceil().^(2)	a(n) = ceiling(n^(3/2))^2. - _Benoit Cloitre_, Nov 01 2002
+A090973	simtraf	1	new A000040()	(n, v) -> new Q(v, ZV(n)).ceiling()	a(n) = ceiling(prime(n)/n).                                                                  -
+A114322	lambdan	1	n -> Z.TEN.pow(n).subtract(1).root(4)
+A162738	multraf	1	(self, n) -> new Q(self.s(0), self.s(1)).ceiling().*(self.s(1))	""	new A000040(), new A002808()	a(n) = ceiling(p(n)/c(n))*c(n), where c(n) is the n-th composite, and p(n) is the n-th prime.
+A185322	simtraf	1	new A000040()	(n, v) -> new Q(v, ZV(10)).ceiling()	a(n) = ceiling(prime(n)/10).
+A293402	lambdan	0	n -> CR.PHI.*(ZV(n*n)).+(CR.HALF).floor()	a(n) = floor(1/2 + tau*n^2).
+A293408	lambdan	0	n -> CV(n*n)./(CR.PHI).+(CR.HALF).floor()	a(n) = floor(1/2 + (n^2)/tau).
+A318279	simtraf	2	new A000005().skip(1)	(n, v) -> CV(n).^(new Q(Z.ONE, v.-(1))).*(n).ceil()	a(n) = ceiling(n^(1 + 1/(tau(n)-1))). - _Jon E. Schoenfield_, Nov 22 2018
+---- 2024-04-16 23:37:27
+A293405	lambdan	0	n -> CR.PHI.+(1).*(ZV(n*n)).round()	a(n) = round(tau*n^2).
+A114323	lambdan	0	n -> Z.TEN.pow(n).subtract(1).root(5)
+
+---- 2024-04-17 00:58:04
+---- 2024-04-17 01:00:54
+---- 2024-04-17 01:16:30
+A074182	multraf	1	(self, n) -> ZV(n).^(self.s(0))	""	new A039960()	n^new A039960()
+A086501	multraf	1	(self, n) -> FA(n).^(2).-(self.s(0))	""	new A053529()	n!^2 - new A053529()
+A087057	multraf	1	(self, n) -> self.s(0).+(1)	""	new A001951()	1 + new A001951()
+A087177	multraf	0	(self, n) -> ZV(n + 1).-(self.s(0))	""	new A071754()	n + 1 - new A071754()
+A088860	multraf	1	(self, n) -> self.s(0).*(2)	""	new A002110()	2*new A002110()
+A088988	multraf	1	(self, n) -> Puma.primeZ(self.s(0).+(1))	""	new A000230()	prime(1 + new A000230())
+A091138	multraf	1	(self, n) -> FA(n).*(self.s(0))./(self.s(1))	""	new A030274(),new A030275()	n!* new A030274()/new A030275()
+A092293	multraf	0	(self, n) -> ZV(3*n).+(self.s(0))	""	new A090239()	3*n + new A090239()
+A092296	multraf	0	(self, n) -> ZV(3*n).+(self.s(0))	""	new A090193()	3*n + new A090193()
+A095996	multraf	1	(self, n) -> FA(n)./(self.s(0))	""	new A051696()	n!/new A051696()
+A107636	multraf	1	(self, n) -> Puma.primeZ(self.s(0)).-(self.s(1))	""	new A064403(),new A064403()	prime(new A064403()) - new A064403()
+A107637	multraf	1	(self, n) -> Puma.primeZ(self.s(0)).+(self.s(1))	""	new A064403(),new A064403()	prime(new A064403()) + new A064403()
+A109652	multraf	1	(self, n) -> Puma.primeZ(self.s(0))	""	new A000201()	prime(new A000201())
+A127974	multraf	0	(self, n) -> new Q(FA(n), self.s(0)).den()	""	new A008544()	denominator(n!/new A008544())
+A158333	multraf	0	(self, n) -> self.s(0).+(1)	""	new A054965()	1 + new A054965()
+A160094	multraf	1	(self, n) -> self.s(0).+(1)	""	new A122840()	1 + new A122840()
+A174992	multraf	0	(self, n) -> FA(n).-(self.s(0))	""	new A000800()	n! - new A000800()
+A182922	multraf	0	(self, n) -> FA(n)./(self.s(0))	""	new A055773()	n! / new A055773()
+A211982	multraf	1	(self, n) -> self.s(0).*(2)	""	new A092269()	2*new A092269()
+A217219	multraf	0	(self, n) -> self.s(0).*(6)	""	new A045833()	6*new A045833()
+A238525	multraf	2	(self, n) -> ZV(n).mod(self.s(0))	""	new A001414()	n mod new A001414()
+A238737	multraf	0	(self, n) -> ZV(2*n + 2).-(self.s(0))	""	new A224911()	2*n+2 - new A224911()
+A243892	multraf	1	(self, n) -> Puma.primeZ(self.s(0))	""	new A106587()	prime(new A106587())
+A243893	multraf	1	(self, n) -> Puma.primeZ(self.s(0).-(1))	""	new A106587()	prime(new A106587() - 1)
+A243895	multraf	2	(self, n) -> Puma.primeZ(self.s(0).-(1))	""	new A000290()	prime(new A000290() - 1)
+A256288	multraf	0	(self, n) -> self.s(0).*(7*n)	""	new A256287()	7*n*new A256287()
+A266349	multraf	1	(self, n) -> self.s(0).-(self.s(1)).+(1)	""	new A053644(), new A004001().skip(1)	1 + new A053644() - A004001(n+1)
+A276151	multraf	1	(self, n) -> ZV(n).-(self.s(0))	""	new A053589()	n - new A053589()
+A280252	multraf	1	(self, n) -> self.s(0).*(2*n)	""	new A280226()	2*n * new A280226()
+A283972	multraf	1	(self, n) -> ZV(n).-(self.s(0))	""	new A227349()	n - new A227349()
+A286604	multraf	1	(self, n) -> ZV(n).mod(self.s(0))	""	new A034968()	n mod new A034968()
+A286606	multraf	1	(self, n) -> ZV(n).mod(self.s(0))	""	new A227153()	n mod new A227153()
+A290701	multraf	2	(self, n) -> self.s(1).*(2*n).+(self.s(0).*(2*(n - 1)))	""	new A036968(), PREVIOUS	2*n*A036968(n-1) + 2*(n-1)*new A036968()
+A294650	multraf	1	(self, n) -> new Q(self.s(0), ZV(n)).den()	""	new A206369()	denominator(new A206369())/n
+A304440	multraf	0	(self, n) -> ZV(n).-(self.s(0))	""	new A071650()	n - new A071650()
+A305006	multraf	1	(self, n) -> new Q(self.s(0), ZV(n)).num()	""	new A002129()	numerator of new A002129()/n
+A305007	multraf	1	(self, n) -> new Q(self.s(0), ZV(n)).den()	""	new A002129()	denominator of new A002129()/n
+A334276	multraf	1	(self, n) -> Puma.primeZ(self.s(0))	""	new A003593()	prime(new A003593())
+A338086	multraf	0	(self, n) -> self.s(0).*(4)	""	new A037314()	4*new A037314()
+A342123	multraf	1	(self, n) -> ZV(n).mod(self.s(0))	""	new A030101()	n mod new A030101()
+A342656	multraf	2	(self, n) -> self.s(0).-(self.s(1)).+(1)	""	new A342655(), new A055396()	1 + new A342655() - new A055396()
+A348406	multraf	1	(self, n) -> self.s(0).+(1)	""	new A067742()	1 + new A067742()
+A363919	multraf	1	(self, n) -> ZV(n).^(self.s(0))	""	new A046660()	n^new A046660()

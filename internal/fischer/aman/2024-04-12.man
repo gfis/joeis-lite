@@ -1,0 +1,18 @@
+---- 2024-04-16 17:14:38
+# A122060	multraf	1	(self, n) -> self.s(0).+(2)	""	new A121341()	v -> v.+(2)	if 1/n terminates, else a(n)=A121341(n)+1. - _R. J. Mathar_, Sep 20 2006						Position in decimal expansion of 1/n where repetition begins.
+# A144460	multraf	1	(self, n) -> self.s(0).+(1)	""	new A000045()	v -> v.+(1)	;b(n)=A000045(n+1)-1; t(n,m)=a(m)*b(n) - b(m)*a(n).						A triangle sequence of determinants: a(n)=A000045(n)+1;b(n)=A000045(n+1)-1; t(n,m)=a(m)*b(n) - b(m)*a(n).
+# A144461	multraf	1	(self, n) -> self.s(0).+(1)	""	new A000045()	v -> v.+(1)	;b(n)=A000045(n+1)-1; t(n,m)=a(m)*(a(n) + 1) - If[ m < n, Round[(a(m) - 1)/a(n) + 1], a(n) + 1]*a(n).						A triangle sequence of determinants: a(n)=A000045(n); t(n,m)=a(m)*(a(n) + 1) - If[ m < n, Round[(a(m) - 1)/a(n) + 1], a(n) + 1]*a(n).
+A121280	multraf	1	(self, n) -> self.s(0).-(1)	""	new A068987()	v -> v.-(1)	.						Position where concatenate(1,...,n) occurs for the first time in the decimals of Pi (where 3, 1, 4,... are at position 0, 1, 2,...).
+A224851	multraf	1	(self, n) -> self.s(0).+(1)	""	new A054781()	v -> v.+(1)	.						First position of n in continued fraction for Khinchins constant.
+A224852	multraf	0	(self, n) -> self.s(0).-(1)	""	new A054870()	v -> v.-(1)	.						Positions of the incrementally largest terms in the continued fraction for Khinchins constant.
+A231545	multraf	1	(self, n) -> self.s(0).+(1)	""	new A067816()	v -> v.+(1)	.						Numbers n such that n = sigma(n) - sigma(n-1).
+A305542	multraf	0	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new A052823(), new A056489()	(A052823(n) - A056489(n)) / 2.
+A305543	multraf	0	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new A052824(), new A056490()	(A052824(n) - A056490(n)) / 2
+A305544	multraf	0	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new A052825(), new A056491()	(A052825(n) - A056491(n)) / 2
+A305545	multraf	0	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new A052826(), new A056492()	(A052826(n) - A056492(n)) / 2
+A334360	multraf	2	(self, n) -> self.s(0).+(1)	""	new A001661()	v -> v.+(1)	. - _Ilya Gutkovskiy_, Mar 24 2022						Anti-Waring numbers: least number k such that k and all larger numbers can be expressed as the sum of one or more distinct n-th powers.
+A339580	multraf	1	(self, n) -> self.s(0).+(1)	"1"	new A339581()	v -> v.+(1)	for n >= 2. - _David A. Corneth_, Dec 24 2020						Indices of records in A339579.
+A346635	multraf	1	(self, n) -> self.s(0)./(2)	"1"	new A129597()	v -> v./(2)	for n > 1.						Numbers whose division (or multiplication) by their greatest prime factor yields a perfect square. Numbers k such that k*A006530(k) is a perfect square.
+A355203	multrar	0	(self, n) -> SU(1, n - 1, k -> Z_1(n - 1 - k).*(S1(n - 1, k)).*(self.a(k))).*(2)	"1"		a(1) = 1; a(n+1) = Sum_{k=1..n} (-1)^(n-k) * Stirling2(n,k) * a(k).
+A358530	filter	1	new A000040()	p -> { final Z p1 = Puma.prevPrimeZ(p); return p.-(p1).compareTo(Puma.prevPrimeZ(p1)) < 0; }	n-th prime p(k) such that p(k) - p(k-1) < p(k-1) - p(k-2).
+A371397	multraf	0	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new A000162(), new A007743()	(A000162(n) - A007743(n))/2

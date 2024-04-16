@@ -250,6 +250,8 @@ while (<>) { # read inputfile
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
             $parm =~ s{SA\(([^\)]+)\)} {Stirling.firstKind\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
+#           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
+            $parm =~ s{Sigma\(}        {Functions.SIGMA.z(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
             #               1      1    2      2  3    3  with "))" 
@@ -484,6 +486,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }
     if ($line =~ m{\WFilterPositionSequence}       ) { $imports{"irvine.oeis.FilterPositionSequence"           } = $itype; }
     if ($line =~ m{\WFilterSequence}               ) { $imports{"irvine.oeis.FilterSequence"                   } = $itype; }
+    if ($line =~ m{\WFunctions}                    ) { $imports{"irvine.math.function.Functions"               } = $itype; }
     if ($line =~ m{\WGaussianIntegers\.}           ) { $imports{"irvine.math.group.GaussianIntegers"}            = $itype; }
     if ($line =~ m{\WGeneratingFunctionSequence}   ) { $imports{"irvine.oeis.recur.GeneratingFunctionSequence" } = $itype; }
     if ($line =~ m{\WHankelTransformSequence}      ) { $imports{"irvine.oeis.transform.HankelTransformSequence"} = $itype; }

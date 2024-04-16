@@ -1,0 +1,58 @@
+---- 2024-04-17 01:16:31
+A074181	multraf	0	(self, n) -> ZV(n).^(self.s(0).+(1))	""	new A039960()	n^(1 + new A039960())
+A101322	multraf	0	(self, n) -> ZV(n).+(self.s(0)).-(self.s(1))	""	new A033676(),new A033677()	n + new A033676() - new A033677()
+A143869	multraf	0	(self, n) -> ZV(n).*(self.s(0).+(1))./(2)	""	new A055653()	n*(new A055653()+1)/2
+A147966	multraf	0	(self, n) -> ZV(n).+(self.s(0))	""	new A046933()	n+new A046933()
+A147966	multraf	0	(self, n) -> ZV(n - 1).+(self.s(0)-I0)	""	new A001223()	n+(new A001223()-1)
+# A206805	multraf	0	(self, n) -> ZV(n).+floor(n*log_2(I0))*(whileA0		3	new A206807()	n + floor(n*log_2(3)) (while new A206807()
+# A207380	multraf	0	(self, n) -> ZV(n).*self.s(0)+self.s(1)+A2			new A000041(),new A000217(),new A006128()	n * new A000041() + new A000217() + new A006128()
+# A219706	multraf	0	(self, n) -> ZV(n).^(n+I0)-self.s(0)		1	new A063169()	n^(n+1) - new A063169()
+# A220483	multraf	0	(self, n) -> ZV(n).+(self.s(0)).+self.s(1)+A2-A3-A4-I0		1	new A000005(),A000041(n-1),new A092269(),new A000070(),new A000203()	n + new A000005() + A000041(n-1) + new A092269() - new A000070() - new A000203() - 1
+# A232324	multraf	0	(self, n) -> FA(n*(n + 1)/2).mod(self.s(0))	""	new A000203()	n(n+1)/2 mod new A000203()
+# A240568	multraf	0	(self, n) -> ZV(n).*self.s(0)-I0*self.s(1)		2	new A000040(),new A007504()	n * new A000040() - 2 * new A007504()
+A304439	multraf	0	(self, n) -> ZV(n).+(self.s(0))	""	new A071650()	n + new A071650()
+A318681	multraf	0	(self, n) -> ZV(n).*self.s(0)	""	new A299149()	n * new A299149()
+# A329717	multraf	0	(self, n) -> ZV(n).+(self.s(0)).*(-I0)^self.s(1)		1	new A001221(),new A001221()	n + new A001221()*(-1)^new A001221()
+# A348094	multraf	0	(self, n) -> ZV(n).+I0^self.s(0)	when new A006666() >	2	new A006666()	n + 2^new A006666() when new A006666() >
+# A351168	multraf	0	(self, n) -> ZV(n).*(I0-I1/self.s(0))^self.s(1)		1,1	new A006530(),new A071178()	n*(1 - 1/new A006530())^new A071178()
+# A351436	multraf	0	(self, n) -> ZV(n).*(I0-((self.s(0)-I1)/self.s(1))^A071178)		1,1	new A006530(),new A006530()	n * (1 - ((new A006530() - 1)/new A006530())^A071178)
+# A360825	multraf	0	(self, n) -> FA(n).mod(self.s(0))	"1,1,1"	new A151800()	n! mod new A151800() for n > 3
+A074115	multraf	0	(self, n) -> FA(n)./(self.s(0))	""	new A000793()	n!/new A000793()
+A074181	multraf	0	(self, n) -> ZV(n).^(self.s(0))	""	new A060151()	n^new A060151()
+A074184	multraf	0	(self, n) -> self.s(0).+(1)	""	new A039960()	1 + new A039960()
+A082914	multraf	0	(self, n) -> FA(n)./(self.s(0))	""	new A003040()	n! / new A003040()
+A084293	multraf	0	(self, n) -> ZV(2*n).+(self.s(0))	""	new A054905()	2*n + new A054905()
+A087893	multraf	0	(self, n) -> self.s(0).*(2)	""	new A079275()	2*new A079275()
+A107349	multraf	1	(self, n) -> Puma.primePiZ(self.s(0))	""	new A106807()	pi(new A106807())					Indices of primes with digit sum = 67.
+A107799	multraf	0	(self, n) -> Puma.primePiZ(self.s(0))	""	new A030284()	pi(new A030284())
+A112594	multraf	0	(self, n) -> ZV(n + 2).*(self.s(0))	""	new A000196()	n+2*new A000196()
+A117129	multraf	0	(self, n) -> Puma.primeZ(self.s(0).-(1))	""	new A112877()	prime(new A112877() - 1)
+A119383	multraf	0	(self, n) -> FA(n).-(self.s(0))	""	new A088921()	n!- new A088921()
+A126137	multraf	0	(self, n) -> Puma.primePiZ(self.s(0))	""	new A037028()	pi(new A037028())
+A127974	multraf	0	(self, n) -> new Q(FA(n), self.s(0)).den()	""	new A008544()	denominator(n!/new A008544())					Numerators in expansion of (1-x)^(-2/3).
+A145203	multraf	0	(self, n) -> Puma.primePiZ(self.s(0))	""	new A002407()	pi(new A002407())
+A151816	multraf	0	(self, n) -> FA(n).-(self.s(0).^(2))	""	new A001147()	n! - new A001147()^2
+A181964	multraf	0	(self, n) -> FA(n)./(2).*(self.s(0))	""	new A046682()	n!/2 * new A046682()
+A183008	multraf	0	(self, n) -> self.s(0).*(24)	""	new A000041()	24*new A000041()
+A211982	multraf	1	(self, n) -> self.s(0).*(2)	""	new A092269()	2*new A092269()					Second crank moment minus second rank moment: M_2(n) - N_2(n) = 2*spt(n).
+A229740	multraf	0	(self, n) -> ZV(n).-(self.s(0))	""	new A000961()	n-th prime power new A000961()
+A232733	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125828()	prime(new A125828())
+A232865	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125826()	prime(new A125826())
+A232869	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125907()	prime(new A125907())
+A233192	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125827()	prime(new A125827())
+A285336	multraf	0	(self, n) -> new Q(self.s(0), ZV(n)).num()	""	new A065642()	numerator of new A065642()/n
+A285337	multraf	0	(self, n) -> new Q(self.s(0), ZV(n)).den()	""	new A065642()	denominator of new A065642()/n
+A290701	multraf	2	(self, n) -> self.s(1).*(2*n).+(self.s(0).*(2*(n - 1)))	""	new A036968(), PREVIOUS	2*n*A036968(n-1) + 2*(n-1)*new A036968()					a(n) = Sum_{k=1..n-1} binomial(n, k)*G_n*G_{n-k} where G_n is the n-th Genocchi number (of the first kind).
+A304124	multraf	0	(self, n) -> self.s(0).+(self.s(1)).+(1)	""	new A052450(), new A052451()	1+new A052450()+new A052451()
+A304125	multraf	0	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2)).+(1)	""	new A052450(), new A052451(), new A052452()	1+new A052450()+new A052451()+new A052452()
+A332584	multraf	0	(self, n) -> ZV(n).+(self.s(0))	""	new A332580()	n + new A332580() (trivially from the definitions)
+A335129	multraf	0	(self, n) -> ZV(n - 3).-(self.s(0))	""	new A079978()	n - 3 - new A079978()
+A343696	multraf	0	(self, n) -> FA(n).^(n).*(self.s(0))	""	new A002860()	n!^n * new A002860()
+A344693	multraf	0	(self, n) -> FA(n).*(self.s(0))	""	new A002860()	n!*new A002860()
+A348406	multraf	1	(self, n) -> self.s(0).+(1)	""	new A067742()	1 + new A067742()					Number of vertices on the axis of symmetry of the symmetric representation of sigma(n) with subparts.
+A356473	multraf	0	(self, n) -> new Q(self.s(0), ZV(n)).den()	""	new A018804()	denominator of new A018804()/n
+A359554	multraf	0	(self, n) -> new Q(self.s(0), ZV(2*n + 1)).den()	""	new A003712()	denominator of new A003712()/(2n+1)!
+A360392	multraf	0	(self, n) -> self.s(0).+(2)	""	new A026430()	2 + new A026430()
+A363919	multraf	1	(self, n) -> ZV(n).^(self.s(0))	""	new A046660()	n^new A046660()					a(n) = n^excess(n), where excess(n) = A046660(n).
+A369049	multraf	0	(self, n) -> ZV(n).mod(self.s(0))	""	new A003415()	n mod new A003415()
+A371388	multraf	0	(self, n) -> self.s(0).*(2*n - n*n)	""	new A000201()	2*n*new A000201() - n^2

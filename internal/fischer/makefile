@@ -626,18 +626,22 @@ remlog: # CC=
 	cp -v x.log $(CC).`date +%Y-%m-%d.%H.%M`.log
 	grep -vP "\tFATO\t" x.log > batch.log
 	make evaluate log
-log: # CC=; generate an HTML page for the failed tests
+log:  # CC=; generate an HTML page for the failed tests
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
+	perl -i.bak fail_substr.pl $(COMMON)/joeis_check.html
 logf: # CC=; generate an HTML page for the failed tests (but no "FATO")
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_fail LOG=$(CC)
+	perl -i.bak fail_substr.pl $(COMMON)/joeis_check.html
 loga: # CC=; generate an HTML page for the failed tests (but no "FATO")
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_all LOG=$(CC)
+	perl -i.bak fail_substr.pl $(COMMON)/joeis_check.html
 logp: # CC=; generate an HTML page for the PASSed tests
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_pass LOG=$(CC)
+	perl -i.bak fail_substr.pl $(COMMON)/joeis_check.html
 casstat:
 	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp
 	grep -P "\tFATO\t" $(CC).fail.log > FATO.tmp
@@ -5929,11 +5933,18 @@ tricolk:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-tricolar:
+tricolar: # extract those implementing DirectArray
 	cd $(TRIREC) ; make tricolk
 	make CC=tricolk select 
 	$(DBAT) -x "SELECT * FROM seq4 s WHERE s.parm1 IN (SELECT aseqno FROM dirarr)\
 	  ORDER BY 1" \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+tricoljo: # extract the supperclasses of the triangles
+	$(DBAT) -x "SELECT s.aseqno, s.callcode, s.offset1, s.parm1, s.parm2, s.parm3, j.superclass \
+	  FROM seq4 s, joeis j WHERE s.parm1 = j.aseqno \
+	  ORDER BY 4" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen

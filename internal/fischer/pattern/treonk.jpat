@@ -11,15 +11,14 @@ public class $(ASEQNO) extends $(PARM1) {
 
   private int mN = $(PARM2) - 1;
 
-  @Override
-  public int getOffset() {
-    return $(PARM2);
+  {
+    setOffset($(PARM2=offset));
   }
 
   @Override
   public Z next() {
     ++mN;
-    return super.triangleElement($(PARM3), $(PARM4));
+    return super.triangleElement($(PARM3=row), $(PARM4=col));
   }
 }
 
