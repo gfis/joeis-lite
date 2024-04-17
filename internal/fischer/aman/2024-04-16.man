@@ -1,0 +1,13 @@
+---- 2024-04-17 18:50:48
+
+A087893	multraf	1	(self, n) -> self.s(0).*(2)	""	new A079275()	2*new A079275()	diff@210
+A107799	multraf	1	(self, n) -> Puma.primePiZ(self.s(0))	""	new A030284()	pi(new A030284())
+A369066	dirichcon2	0	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouvilles lambda (A008836) with A083345, as reordered by the Doudna sequence.
+A305540	trilamb	1	1	1	(n, k) -> S2((n + 1)/2, k).+(S2(n/2 + 1, k)).*(FA(k))./(2)
+A305541	trilamb	1	1	1	new Q(RD(n, d -> S2(n/d, k).*(PHI(d))), ZV(2*n)).-(new Q(S2((n + 1)/2, k).+(S2(n/2 + 1, k)), ZV(4))).*(FA(k)).num()
+# T(n, k) = {k!*(sumdiv(n, d, stirling(n/d, k, 2)*eulerphi(d))/(2*n) - (stirling((n+1)\2, k, 2) + stirling(n\2+1, k, 2))/4 )}
+A305542	treonk	1	A305541	1	mN	3
+A305543	treonk	1	A305541	1	mN	4
+A305544	treonk	1	A305541	1	mN	5
+A305545	treonk	1	A305541	1	mN	6
+A326895	rowsum	0	new A305541()

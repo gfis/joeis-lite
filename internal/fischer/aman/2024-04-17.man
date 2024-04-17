@@ -2,8 +2,8 @@
 A162795	partsun	1	new A162793()			Partial sums of A162793.
 A194082	partsun	1	new A171970()			Partial sums of A171970.
 A345019	lingf	1	0,1,1,6,1,1	1,-1,0,0,-1,1	0
-A369066	dirichcon2	0	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouville's lambda (A008836) with A083345, as reordered by the Doudna sequence.
-A369069	dirichcon2	1	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouville's lambda (A008836) with A083345, where A083345(n) = n' / gcd(n,n'), and n' stands for the arithmetic derivative of n, A003415.
+
+A369069	dirichcon2	1	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouvilles lambda (A008836) with A083345, where A083345(n) = n' / gcd(n,n'), and n' stands for the arithmetic derivative of n, A003415.
 A369454	dirichinv	1	new A369257()	1	Dirichlet inverse of A369257, where A369257 is the number of divisors of n that are odd numbers with an even number of prime factors with multiplicity.
 A369455	dirichcon2	1	new A083345()	1	new A055615()	1	Dirichlet convolution of A083345 with A055615 (Dirichlet inverse of n), where A083345(n) = (n'/gcd(n,n')) and n' is the arithmetic derivative of n.
 A369801	lingf	2	0,0,1,2,2,2,2,0,0,-1	1,-1,-1,1	0
@@ -138,14 +138,8 @@ A293363	lambdan	0	n -> CR.TWO.log().*(Z2(n)).ceil()	a(n) = ceiling(r*2^n), where
 A355204	multrar	1	(self, n) -> SU(1, n - 1, k -> S1(n - 1, k).*(self.a(k))).*(2)	"1"
 A364849	multraf	1	(self, n) -> self.s(1)./(2)	"1,1,1,1"	new A010551(), PREVIOUS	Number of even parity alternating permutations of [1..n] starting with an odd integer.
 ---- 2024-04-16 21:11:21
-A305540	trilamb	1	1	1	(n, k) -> S2((n + 1)/2, k).+(S2(n/2 + 1, k))).*(FA(k))./(2)
-A305541	trilamb	1	1	1	RD(n, d -> new Q(S2(n/d, k).*(PHI(d)), ZV(2*n))).-(new Q(S2((n + 1)/2, k).+(S2(n/2 + 1, k)), ZV(4))).*(FA(k)).num()
-# T(n, k) = {k!*(sumdiv(n, d, stirling(n/d, k, 2)*eulerphi(d))/(2*n) - (stirling((n+1)\2, k, 2) + stirling(n\2+1, k, 2))/4 )}
-A326895	rowsum	0	new A305541()
-A305542	treonk	1	A305541	1	mN	3
-A305543	treonk	1	A305541	1	mN	4
-A305544	treonk	1	A305541	1	mN	5
-A305545	treonk	1	A305541	1	mN	6
+
+
 ---- 2024-04-16 21:53:12
 A104803	multrar	1	(self, n) -> CV(self.a(n - 1).^(2).+(self.a(n - 2).^(2))).sqrt().floor()	"1,3"	a(n) = floor(sqrt(a(n-1)^2 + a(n-2)^2)), a(1)=1, a(2)=3.
 A104805	multrar	1	(self, n) -> CV(self.a(n - 1).^(2).+(self.a(n - 2).^(2))).sqrt().ceil()	"1,3"	a(n) = ceil (sqrt(a(n-1)^2 + a(n-2)^2)), a(1)=1, a(2)=3.
@@ -280,3 +274,55 @@ A342123	multraf	1	(self, n) -> ZV(n).mod(self.s(0))	""	new A030101()	n mod new A
 A342656	multraf	2	(self, n) -> self.s(0).-(self.s(1)).+(1)	""	new A342655(), new A055396()	1 + new A342655() - new A055396()
 A348406	multraf	1	(self, n) -> self.s(0).+(1)	""	new A067742()	1 + new A067742()
 A363919	multraf	1	(self, n) -> ZV(n).^(self.s(0))	""	new A046660()	n^new A046660()
+---- 2024-04-17 09:27:51
+A074115	multraf	0	(self, n) -> FA(n)./(self.s(0))	""	new A000793()	n!/new A000793()
+A074181	multraf	1	(self, n) -> ZV(n).^(self.s(0))	"1,2"	new A060151()	n^new A060151()
+A082914	multraf	1	(self, n) -> FA(n)./(self.s(0))	""	new A003040()	n! / new A003040()
+A101322	multraf	1	(self, n) -> ZV(n).+(self.s(0)).-(self.s(1))	""	new A033676(),new A033677()	n + new A033676() - new A033677()
+A117129	multraf	1	(self, n) -> Puma.primeZ(self.s(0).-(1))	""	new A112877()	prime(new A112877() - 1)
+A119383	multraf	0	(self, n) -> FA(n).-(self.s(0))	"0"	new A088921()	n!- new A088921()
+A127974	multraf	0	(self, n) -> new Q(FA(n), self.s(0)).den()	""	new A008544()	denominator(n!/new A008544())
+A143869	multraf	1	(self, n) -> ZV(n).*(self.s(0).+(1))./(2)	""	new A055653()	n*(new A055653()+1)/2
+A145203	multraf	1	(self, n) -> Puma.primePiZ(self.s(0))	""	new A002407()	pi(new A002407())
+A181964	multraf	1	(self, n) -> FA(n)./(2).*(self.s(0))	"1"	new A046682()	n!/2 * new A046682()
+A183008	multraf	0	(self, n) -> self.s(0).*(24)	""	new A000041()	24*new A000041()
+A211982	multraf	1	(self, n) -> self.s(0).*(2)	""	new A092269()	2*new A092269()
+A285336	multraf	1	(self, n) -> new Q(self.s(0), ZV(n)).num()	""	new A065642()	numerator of new A065642()/n
+A285337	multraf	1	(self, n) -> new Q(self.s(0), ZV(n)).den()	""	new A065642()	denominator of new A065642()/n
+A290701	multraf	2	(self, n) -> self.s(1).*(2*n).+(self.s(0).*(2*(n - 1)))	""	new A036968(), PREVIOUS	2*n*A036968(n-1) + 2*(n-1)*new A036968()
+A304124	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(1)	""	new A052450(), new A052451()	1+new A052450()+new A052451()
+A304125	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2)).+(1)	""	new A052450(), new A052451(), new A052452()	1+new A052450()+new A052451()+new A052452()
+A304439	multraf	0	(self, n) -> ZV(n).+(self.s(0))	""	new A071650()	n + new A071650()
+A318681	multraf	1	(self, n) -> ZV(n).*(self.s(0))	""	new A299149()	n * new A299149()
+A332584	multraf	1	(self, n) -> ZV(n).+(self.s(0))	""	new A332580()	n + new A332580() (trivially from the definitions)
+A348406	multraf	1	(self, n) -> self.s(0).+(1)	""	new A067742()	1 + new A067742()
+A363919	multraf	1	(self, n) -> ZV(n).^(self.s(0))	""	new A046660()	n^new A046660()
+---- 2024-04-17 09:59:53
+A233192	multraf	1	(self, n) -> Puma.primeZ(self.s(0))	""	new A125827()	prime(new A125827())
+A335129	multraf	3	(self, n) -> ZV(n - 3).-(self.s(0))	"0"	new A079978()	n - 3 - new A079978()
+A343696	multraf	1	(self, n) -> FA(n).^(n).*(self.s(0))	""	new A002860()	n!^n * new A002860()
+A344693	multraf	1	(self, n) -> FA(n).*(self.s(0))	""	new A002860()	n!*new A002860()
+A356473	multraf	1	(self, n) -> new Q(self.s(0), ZV(n)).den()	""	new A018804()	denominator of new A018804()/n
+A359553	multraf	0	(self, n) -> new Q(self.s(0), FA(2*n + 1)).num()	""	new A003712()	numerator of new A003712()/(2n+1)!
+A359554	multraf	0	(self, n) -> new Q(self.s(0), FA(2*n + 1)).den()	""	new A003712()	denominator of new A003712()/(2n+1)!
+A360392	multraf	1	(self, n) -> self.s(0).+(2)	""	new A026430()	2 + new A026430()
+A369049	multraf	2	(self, n) -> ZV(n).mod(self.s(0))	""	new A003415()	n mod new A003415()
+---- 2024-04-17 11:27:17
+A110129	central	0	new A110124()	Central coefficients of a scaled Legendre triangle.
+A135951	central	0	new A135950()	Central terms of triangle A135950, the matrix inverse of triangle A022166.
+A185965	central	0	new A185962()	Central coefficients of number triangle A185962.
+A224729	central	0	new A059283()	Central terms of the triangle in A059283.
+A225621	central	1	new A074911()	Central terms of the triangle in A074911.
+A227791	central	0	new A227550()	Central terms of the triangle in A227550.
+A232246	central	0	new A110440()	Central terms of triangle        A110440.
+A233734	central	1	new A019538()	Central terms of triangles       A019538 and A090582.
+A234324	central	0	new A008955()	Central terms of the triangle of A008955).
+A247365	central	1	new A102472()	Central terms of triangles       A102472 and A102473.
+A367369	central	0	new A340556()	a(n) = A340556(2*n, n), the central terms of the second order Eulerian numbers.
+---- 2024-04-17 14:49:55
+A116366	simtraf	1	new A065305()	v -> v.*(2)
+A123610	trilamb0	0	(n, k) -> k == 0 ? Z.ONE : SD(n, d -> k % d != 0 ? Z.ZERO : BI(n/d, k/d).^(2).*(PHI(d)))./(n)	Triangle read by rows, where T(n,k) = (1/n)*Sum_{d|(n,k)} phi(d) * binomial(n/d,k/d)^2 for n >= k > 0, with T(n,0) = 1 for n >= 0.
+A123617	central	0	new A123610()
+A189713	central	0	new A035312()	Central terms of Zorach additive triangle (cf. A035312).
+---- 2024-04-17 18:50:47
+A119364	lambdan	0	n -> n == 0 ? Z.ZERO : SU(0, n, k -> BI(n + 1, 3*k).*(BI(n - 1, 3*k)))	Central coefficients of number triangle A119335.
