@@ -1,7 +1,8 @@
-#!perl
+#!perl*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 
 # Generate source in internal/fischer/manual
 # @(#) $Id$
+# 2024-04-20: -dir
 # 2023-09-23: "private int mN;" again
 # 2023-08-30: AbstractSequence, no getOffset
 # 2023-06-01: -t constructor; UP=54
@@ -14,16 +15,17 @@
 # 2021-06-26, Georg Fischer: copied from gen_linrec.pl
 #
 #:# Usage:
-#:#   perl genman.pl [-d debug] [-e] [-n] [-p v1,v2...] [-cp aseqno] [-s] [-t] [-u] [A]seqno
+#:#   perl genman.pl [-d debug] [-dir] [-e] [-n] [-p v1,v2...] [-cp aseqno] [-s] [-t] [-u] [A]seqno
 #:#   -cp copy from - to
-#:#   -e generate "extends ..."
-#:#   -h generate a subclass of HolonomicRecurrence
-#:#   -m generate a subclass of MemorySequence
-#:#   -n generate ++mN
-#:#   -p v1,v2... names of parameters
-#:#   -s generate while loop for a subsequence
-#:#   -t generate a subclass of Triangle
-#:#   -u generate a subclass of UpperLeftTriangle
+#:#   -dir implements DirectSequence
+#:#   -e   generate "extends ..."
+#:#   -h   generate a subclass of HolonomicRecurrence
+#:#   -m   generate a subclass of MemorySequence
+#:#   -n   generate ++mN
+#:#   -p   v1,v2... names of parameters
+#:#   -s   generate while loop for a subsequence
+#:#   -t   generate a subclass of Triangle
+#:#   -u   generate a subclass of UpperLeftTriangle
 #:#   Writes ./manual/aseqno.java and starts uedit64 with it.
 #--------------------------------------------------------
 use strict;
@@ -34,13 +36,14 @@ my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
 my $max_term = 16;
 my $max_size = 16;
-my $debug = 0;
 if (scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
-my $copy      = "";
 my $basedir   = "../../../OEIS-mat/common";
+my $copy      = "";
+my $debug     = 0;
+my $direct    = 0; # whether "implements DirectSequence"
 my $joeisdir  = "../../../joeis/src/irvine/oeis";
 my $namesfile = "$basedir/names";
 my @pnames    = ();
@@ -54,9 +57,11 @@ my $upperleft = 0; # whether to generate a subclass of UpperLeftTriangle
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
-    } elsif ($opt  =~ m{d}) {
+    } elsif ($opt  =~ m{\-d\Z}) {
         $debug      = shift(@ARGV);
-    } elsif ($opt  =~ m{cp}) {
+    } elsif ($opt  =~ m{\-dir}) {
+        $direct     = shift(@ARGV);
+    } elsif ($opt  =~ m{\-cp}) {
         $copy       = shift(@ARGV);
     } else {
         if ($opt   =~ m{n}) {
@@ -175,6 +180,9 @@ GFis
         print TAR "import irvine.oeis.AbstractSequence"
     } # end of superclass import
     print TAR ";\n";
+    if ($direct) {
+        print TAR "import irvine.oeis.DirectSequence;\n"
+    }
     #--------
     print TAR <<"GFis"; # start of class
 
@@ -197,6 +205,9 @@ GFis
         print TAR "extends UpperLeftTriangle";
     } else {
         print TAR "extends AbstractSequence";
+        if ($direct) {
+            print TAR " implements DirectSequence";
+        }
     }
     print TAR " {\n";
     if ($withn) {
@@ -242,6 +253,9 @@ GFis
         }
         print TAR ");\n";
         print TAR <<"GFis";
+    } else {
+        print TAR "    super($off);\n";
+    }
   }
 
   /**
@@ -316,7 +330,8 @@ GFis
   \@Override
   public Z next() {
 GFis
-        if ($subseq) {
+        if (0) {
+        } elsif ($subseq) {
             print TAR <<"GFis";
     while (true) {
       ++mN;
@@ -325,6 +340,8 @@ GFis
       }
     }
 GFis
+        } elsif ($direct) {
+            print TAR "    return a(++mN);\n";
         } else {
             print TAR "    ++mN;\n" if $withn;
             print TAR "    return super.next().mod(Z.TWO);\n" if $extends;
@@ -332,6 +349,20 @@ GFis
         print TAR <<"GFis"; # end of next()
   }
 GFis
+        if ($direct) {
+            print TAR <<"GFis";
+
+  \@Override
+  public Z a(final Z n) {
+    return n.isZero() ? Z.ONE : Z.ZERO;
+  }
+
+  \@Override
+  public Z a(final int n) {
+    return a(Z.valueOf(n));
+  }
+GFis
+        }
     } # switch for methods
     #--------
     print TAR <<"GFis"; # end of class

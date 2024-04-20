@@ -12,15 +12,3 @@
 # A360825	multraf	0	(self, n) -> FA(n).mod(self.s(0))	"1,1,1"	new A151800()	n! mod new A151800() for n > 3
 # A074181	multraf	0	(self, n) -> ZV(n).^(self.s(0).+(1))	""	new A039960()	n^(1 + new A039960())
 # A074184	multraf	0	(self, n) -> self.s(0).+(1)	"1,1"	new A039960()	1 + new A039960()
-A084293	multraf	0	(self, n) -> ZV(2*n).+(self.s(0))	""	new A054905()	2*n + new A054905()
-A107349	multraf	1	(self, n) -> Puma.primePiZ(self.s(0))	""	new A106807()	pi(new A106807())					Indices of primes with digit sum = 67.
-A112594	multraf	0	(self, n) -> ZV(n + 2).*(self.s(0))	""	new A000196()	n+2*new A000196()
-A126137	multraf	0	(self, n) -> Puma.primePiZ(self.s(0))	""	new A037028()	pi(new A037028())
-A147966	multraf	0	(self, n) -> ZV(n - 1).+(self.s(0)-I0)	""	new A001223()	n+(new A001223()-1)
-A147966	multraf	1	(self, n) -> ZV(n).+(self.s(0))	""	new A046933()	n+new A046933()
-A151816	multraf	0	(self, n) -> FA(n).-(self.s(0).^(2))	""	new A001147()	n! - new A001147()^2
-A229740	multraf	0	(self, n) -> ZV(n).-(self.s(0))	""	new A000961()	n-th prime power new A000961()
-A232733	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125828()	prime(new A125828())
-A232865	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125826()	prime(new A125826())
-A232869	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125907()	prime(new A125907())
-A371388	multraf	0	(self, n) -> self.s(0).*(2*n - n*n)	""	new A000201()	2*n*new A000201() - n^2

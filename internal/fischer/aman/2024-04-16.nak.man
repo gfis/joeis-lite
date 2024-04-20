@@ -1,0 +1,18 @@
+---- 2024-04-19 00:36:00
+A084293	multraf	0	(self, n) -> ZV(2*n).+(self.s(0))	""	new A054905()	2*n + new A054905()
+A092552	central	0	new A136126()	%F A136126 Central terms of triangle equals A092552. - _Paul D. Hanna_, Feb 01 2013
+A107349	multraf	1	(self, n) -> Puma.primePiZ(self.s(0))	""	new A106807()	pi(new A106807())					Indices of primes with digit sum = 67.
+A121280	multraf	1	(self, n) -> self.s(0).-(1)	""	new A068987()	v -> v.-(1)	.						Position where concatenate(1,...,n) occurs for the first time in the decimals of Pi (where 3, 1, 4,... are at position 0, 1, 2,...).
+A140892	simtraf	0	new A000045().skip(1)	(n, v) -> Z.valueOf(n - 1).pow(v).subtract(v.pow(n - 1))
+A224851	multraf	1	(self, n) -> self.s(0).+(1)	""	new A054781()	v -> v.+(1)	.						First position of n in continued fraction for Khinchins constant.
+A224852	multraf	0	(self, n) -> self.s(0).-(1)	""	new A054870()	v -> v.-(1)	.						Positions of the incrementally largest terms in the continued fraction for Khinchins constant.
+A231545	multraf	1	(self, n) -> self.s(0).+(1)	""	new A067816()	v -> v.+(1)	.						Numbers n such that n = sigma(n) - sigma(n-1).
+A232733	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125828()	prime(new A125828())
+A232865	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125826()	prime(new A125826())
+A232869	multraf	0	(self, n) -> Puma.primeZ(self.s(0))	""	new A125907()	prime(new A125907())
+A281478	central	0	new A241171()	%N A281478 Central coefficients of Joffes central differences of zero (assuming offset 0 and T(n,k) extended to 0 <= k <= n in A241171).
+A334360	multraf	2	(self, n) -> self.s(0).+(1)	""	new A001661()	v -> v.+(1)	. - _Ilya Gutkovskiy_, Mar 24 2022						Anti-Waring numbers: least number k such that k and all larger numbers can be expressed as the sum of one or more distinct n-th powers.
+A339580	multraf	1	(self, n) -> self.s(0).+(1)	"1"	new A339581()	v -> v.+(1)	for n >= 2. - _David A. Corneth_, Dec 24 2020						Indices of records in A339579.
+A346635	multraf	1	(self, n) -> self.s(0)./(2)	"1"	new A129597()	v -> v./(2)	for n > 1.						Numbers whose division (or multiplication) by their greatest prime factor yields a perfect square. Numbers k such that k*A006530(k) is a perfect square.
+A355203	multrar	0	(self, n) -> SU(1, n - 1, k -> Z_1(n - 1 - k).*(S2(n - 1, k)).*(self.a(k))).*(2)	"1"		a(1) = 1; a(n+1) = Sum_{k=1..n} (-1)^(n-k) * Stirling2(n,k) * a(k).
+A358530	simtraf	1	new A051634()	v -> v.+(2)	n-th prime 

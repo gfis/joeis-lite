@@ -211,14 +211,14 @@ while (<>) { # read inputfile
                 $do_generate = 0;
             }
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;
-            $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." . $zhash{$1}}eg;
+            $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." . $zhash{$1}}eg; # after the previous line!
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BS}             {BernoulliSequence}g;
             $parm =~ s{CV\(}           {CR.valueOf\(}g;
-            $parm =~ s{FA\(}           {MemoryFactorial.SINGLETON.factorial\(}g;
-            $parm =~ s{FD\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
-            $parm =~ s{DF\(}           {MemoryFactorial.SINGLETON.doubleFactorial\(}g;
-            $parm =~ s{FM\(}           {MemoryFactorial.SINGLETON.multiFactorial\(}g;
+            $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
+            $parm =~ s{FD\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\($1, 2}g;
+            $parm =~ s{DF\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\($1, 2}g;
+            $parm =~ s{FM\(}           {Functions.MULTIFACTORIAL.z\(}g;
             $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
             $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
@@ -229,11 +229,11 @@ while (<>) { # read inputfile
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
             $parm =~ s{LPF\(([^\)]+)\)}{Jaguar.factor($1).largestPrimeFactor()}g;
             $parm =~ s{SPF\(}          {LeastPrimeFactorizer.lpf\(}g;
-            $parm =~ s{MU\(}           {Mobius.mobius\(}g;
+            $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
-            $parm =~ s{PHI\(}          {Euler.phiAsLong\(}g;
+            $parm =~ s{PHI\(}          {Functions.PHI.z(}g;
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {IntegerPartition.partitions\(}g;
@@ -251,7 +251,7 @@ while (<>) { # read inputfile
             $parm =~ s{SA\(([^\)]+)\)} {Stirling.firstKind\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
 #           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
-            $parm =~ s{Sigma\(}        {Functions.SIGMA.z(}g;
+            $parm =~ s{Sigma\(}        {Functions.SIGMA.z(}ig;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
             #               1      1    2      2  3    3  with "))" 
@@ -261,6 +261,7 @@ while (<>) { # read inputfile
             $parm =~ s{Z\_1\(}         {Z.NEG_ONE.pow\(}g;
             $parm =~ s{n\_1\(}         {(((n & 1) == 0) ? 1 : -1)}g;
             $parm =~ s{Z2\(}           {Z.TWO.pow\(}g;
+            
             $parm =~ s{\.\*\(}         {.multiply\(}g;
             $parm =~ s{\.\/\(}         {.divide\(}g;
             $parm =~ s{\.\+\(}         {.add\(}g;
@@ -480,7 +481,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WDirectSequence}               ) { $imports{"irvine.oeis.DirectSequence"                   } = $itype; }
     if ($line =~ m{\WDirectTransformSequence}      ) { $imports{"irvine.oeis.transform.DirectTransformSequence"} = $itype; }
     if ($line =~ m{\WEuler\.}                      ) { $imports{"irvine.math.z.Euler"           }                = $itype; }
-    if ($line =~ m{\WFACTORIAL\.}                  ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
+#   if ($line =~ m{\WFACTORIAL\.}                  ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
     if ($line =~ m{\WFactorSequence}               ) { $imports{"irvine.factor.util.FactorSequence"}             = $itype; }
     if ($line =~ m{\WFactorUtils}                  ) { $imports{"irvine.factor.util.FactorUtils"               } = $itype; }
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }

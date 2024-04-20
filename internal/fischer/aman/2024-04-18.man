@@ -1,0 +1,130 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  a(2k)  = (3^k + (-1)^(k+1)) * Product_{i=1..k-1} (3^(2*k) - 3^(2*i))
+#  the middle. Then (a(n)) is the sequence of minimal nested base-3 palindromic primes with seed s.
+# A069521	nyi Fp	Smallest multiple of n with digit sum = 2, or 0 if no such number exists, e.g., a(3k)=0.	base,nonn	1..2016	nyi	_Amarnath Murthy_
+# A069522	nyi F	Smallest multiple of n with digit sum = 3, or 0 if no such number exists, e.g. a(9k)= 0 = a(11k).	base,nonn	1..51	nyi	_Amarnath Murthy_
+# A069523	nyi F	Smallest multiple of n with digit sum = 4, or 0 if no such number exists, e.g. a(3k)= 0.	base,nonn	1..60	nyi	_Amarnath Murthy_
+# A069524	nyi Fp	Smallest multiple of n with digit sum = 5, or 0 if no such number exists, e.g. a(3k) = a(11k) = 0.	base,nonn	1..3000	nyi	_Amarnath Murthy_
+# A069525	nyi Fpt	Smallest multiple of n with digit sum = 6, or 0 if no such number exists, e.g. a(9k)= 0.	base,nonn	1..2500	nyi	_Amarnath Murthy_
+# A069526	nyi Fp	Smallest multiple of n with digit sum = 7, or 0 if no such number exists, e.g. a(3k)= a(11k) = 0.	nonn,look,base	1..10000	nyi	_Amarnath Murthy_
+# A069527	nyi Fp	Smallest multiple of n with digit sum = 8, or 0 if no such number exists, e.g. a(3k)= 0.	base,nonn	1..10000	nyi	_Amarnath Murthy_
+# A069528	nyi p	Smallest multiple of n with digit sum = 9, or 0 if no such number exists (e.g., a(11k) = 0).	base,nonn	1..10000	nyi	_Amarnath Murthy_
+# A069529	nyi p	Smallest multiple of n with digit sum = 10, or 0 if no such number exists, e.g. a(3k)= 0.	base,nonn	1..10000	nyi	_Amarnath Murthy_
+# A069530	nyi Fpo	Smallest multiple of n with digit sum = 11, or 0 if no such number exists.	base,nonn	1..10000	nyi	_Amarnath Murthy_
+# A069531	nyi o	Smallest positive k such that 10^k + 1 is divisible by n, or 0 if no such number exists.	nonn	1..10001	nyi	_Amarnath Murthy_
+# A069533	nyi	sum(p,floor(n^2/p^2)) where the sum is over all the primes.	easy,nonn	1..54	nyi	_Benoit Cloitre_
+# A084836	filter	0	new A002385()	v -> v.toString().indexOf('0') > 0	 Palindromic primes with nondecreasing digits up to the middle and then nonincreasing.
+# A084837	filter	0	new A002385()	v -> v.toString().indexOf('0') > 0	 Palindromic primes with nonincreasing digits up to the middle and then nondecreasing.
+# A085112	filter	0	new A002385()	v -> v.toString().indexOf('0') > 0	 Palindromic primes with at least 3 digits in which the absolute difference of successive digits is identical.
+# A130870 Palindromic primes with squareful neighbors.
+# A157868 Palindromic primes with prime digital roots.
+# A159613 Palindromic primes with multiplicative persistence value 1.
+# A168168 Palindromic primes with d digits which have more than 3*d/2 distinct primes as substrings, for any d > 0.
+# A227894 Smallest of five consecutive palindromic primes with equal digital sum.
+# A230042 Palindromic primes with strictly increasing product of digits.
+# A230045 Palindromic primes with strictly increasing sum of digits.
+# A230046 Palindromic primes with nondecreasing sum of digits.
+# A230047 Palindromic primes with nondecreasing product of digits.
+# A230220 Smaller of two consecutive palindromic primes with equal digital sum.
+# A230221 Smallest of three consecutive palindromic primes with equal digital sum.
+# A230222 Smallest of four consecutive palindromic primes with equal digital sum.
+# A230229 a(n) is the smallest palindromic prime that is the first of n consecutive palindromic primes with equal digit sum.
+# A262627 Minimal nested base-2 palindromic primes with seed 0.
+# A262627 Using only base-2 digits 0 and 1, let s be a palindrome and put a(1) = s. Let a(2) be the least palindromic prime having s in the middle. Then (a(n)) is the sequence of minimal nested base-2 palindromic primes with seed s -- a(1) being not prime, of course.
+# A262629 Minimal nested base-2 palindromic primes with seed 1.
+# A262629 Using only base-2 digits 0 and 1, let s be a palindrome and put a(1) = s. Let a(2) be the least palindromic prime having s in the middle. Then (a(n)) is the sequence of minimal nested base-2 palindromic primes with seed s.
+# A262631 Minimal nested base-3 palindromic primes with seed 1.
+# A262631 Using only base-3 digits 0,1,2, let s be a palindrome and put a(1) = s. Let a(2) be the least palindromic prime having s in the middl
+# A262633 Minimal nested base-4 palindromic primes with seed 0.
+# A262633 Using only base-4 digits 0,1,2,3, let s be a palindrome and put a(1) = s. Let a(2) be the least palindromic prime having s in the mid
+# A262635 Minimal nested base-4 palindromic primes with seed 1.
+# A262635 Using only base-4 digits 0,1,2,3, let s be a palindrome and put a(1) = s. Let a(2) be the least palindromic prime having s in the mid
+# a(2k+1) =  3^k               * Product_{i=0..k-1} (3^(2*k) - 3^(2*i));
+---- 2024-04-20 18:39:35
+A070247	filter	0	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 5
+A070248	filter	0	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 7
+A070249	filter	0	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 8
+A071302	parmof2	1	A071302	3
+A071303	parmof2	1	A071302	4
+A071304	parmof2	1	A071302	5
+A071305	parmof2	1	A071302	6
+A071306	parmof2	1	A071302	7
+A071900	parmof2	1	A071302	8
+A071307	parmof2	1	A071302	9
+A071308	parmof2	1	A071302	10
+A071309	parmof2	1	A071302	11
+A071310	parmof2	1	A071302	12
+
+# A071302	3 	1,4,24,576,51840,13063680,9170703360,19808719257600,131569513308979200,2600339861038664908800,152915585868239728626892800,2705137
+# A071303	4 	1,8,192,12288,1966080,1509949440
+# A071304	5 	1,4,120,14400,9360000,29016000000,457002000000000,35646156000000000000,13946558535000000000000000,2723065553958750000000000000000
+# A071305	6 	1,8,144,27648,37324800,300987187200,13311459341107200,3680352278629318656000,6233449457837263300853760000,63077322283364184001573
+# A071306	7 	1,8,336,112896,276595200,4662288691200,546914437209907200,450219964711195607040000,2596509480922336727312302080000,10478475738417
+# A071900	8 	1,16,1536,786432,2013265920
+# A071307	9 	1,12,648,419904,3061100160
+# A071308	10	1,8,720,691200,6739200000,668528640000000,663347543040000000000,6622861869711360000000000000,660754650163765248000000000000000000
+# A071309	11	1,12,1320,1742400,25721308800,4145554781913600,7338585441586912128000,142998501741091915820267520000,3065509245896100612011826724
+# A071310	12	1,32,4608,7077888,101921587200,19725496300339200
+
+m7 := proc(n, b) local i,k,pm1,i0; k   := floor(n/2);  i0  := `if`(n mod 2 = 1, 0, 1);
+  pm1 := `if`(n mod 2 = 1, 0, `if`(n mod 4 = 2, 1, -1)); 
+  (b^k + pm1)*mul(b^(2*k) - b^(2*i),i=i0..k-1) end;
+seq(m7(n, 7), n=1..10); # ok for 3,7,11
+
+m5 := proc (n, bas) local i, k; 
+  k := floor(1/2*n); 
+  (bas^k+`if`(n mod 2 = 0,-1,0))*mul(bas^(2*k)-bas^(2*i),i = `if`(n mod 2 = 1,0,1) .. k-1) 
+end proc;
+seq(m5(n, 5),n=1..10); # ok for 5
+
+mt := proc(n, b) local i,k,pm1,i0, pmul; k   := floor(n/2);  i0  := `if`(n mod 2 = 1, 0, 1);
+  for i0 from 0 to 1 do 
+    pmul := mul(b^(2*k) - b^(2*i),i=i0..k-1);
+    for m from -1 to 1 do
+      print(n, b^k, m, i0, pmul, (b^k+m)*pmul);
+    od;
+  od;
+  print("----");
+end;
+seq(mt(n, 4), n=1..10);
+
+m3053 := proc(n, b, m) local i,k,pm1,i0, pmul; k   := floor(n/2);  i0  := `if`(n mod 2 = 1, 0, 1);
+  i0 := 1-irem(n,2);
+  pmul := mul(b^(2*k) - b^(2*i),i=i0..k-1);
+  # m:= 0;
+  (b^k+m)*pmul
+end;
+seq(m3053(n, 2, 0), n=1..10); # ok for 2
+
+
+   * <code>
+   * a(2k+1) = (7^k + 0         ) * Product_{i=0..k-1} (7^(2*k) - 7^(2*i)); 
+   * a(2k)   = (7^k + (-1)^(k+1)) * Product_{i=1..k-1} (7^(2*k) - 7^(2*i))   
+   * a(2k+1) =  5^k               * Product_{i=0..k-1} (5^(2*k) - 5^(2*i)); 
+   *   a(2k) = (5^k - 1)          * Product_{i=1..k-1} (5^(2*k) - 5^(2*i))
+   * </code>
+
+
+A071418	multrar	0	(self,n) -> { final Z an1 = self.a(n - 1).+(n - 1); return an1.testBit(0) ? an1./(2) : an1.*(3).+(1)./(2); }	"0"		a(1)=0, a(n+1)=(a(n)+n)/2 if a(n)+n is even, a(n+1)=(3*(a(n)+n)+1)/2 otherwise.	easy,nonn	1..1000	nyi	_Benoit Cloitre_
+A071419	multrar	0	(self,n) -> { final Z an1 = self.a(n - 1).+(n - 1); return an1.testBit(0) ? an1./(2) : an1.*(3).+(1)./(2); }	"1"		a(1)=1, a(n+1)=(a(n)+n)/2 if a(n)+n is even, a(n+1)=(3*(a(n)+n)+1)/2 otherwise.	easy,nonn	1..58	nyi	_Benoit Cloitre_
+A109207	filter	0	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 50	 Palindromic primes with digit sum = 50.
+A273049	filter	0	new A002385()	v -> v.toString().matches("[^0]+0[^0]*0[^0]*0[^0]*")	Palindromic primes with exactly three nonzero digits.

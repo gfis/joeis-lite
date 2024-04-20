@@ -732,6 +732,7 @@ robots:
 	make   CC=convol     robot1
 	make   CC=diffseq    robot1
 	make   CC=dirichcon  robot1
+	make   CC=gcd        robot1
 	cd $(HOLREC) ; make holdfin
 	make   CC=holdfin
 	make   CC=holsig2
