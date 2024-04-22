@@ -1,111 +1,12 @@
----- 2024-04-18 23:37:44
-A087893	multraf	1	(self, n) -> self.s(0).*(2)	""	new A079275()	2*new A079275()	diff@210
-A107799	multraf	1	(self, n) -> Puma.primePiZ(self.s(0))	""	new A030284()	pi(new A030284())
-A112594	lambdan	0	n -> ZV(n).sqrt().*(2).+(n)
-A116368	central	1	new A116366()	%N A116368 Central terms of the triangle in A116366.
-A147966	multraf	1	(self, n) -> ZV(n - 1).+(self.s(0))	""	new A001223()	n+(new A001223()-1)
-A305540	tablamb	1	1	n -> new Integer[] {1, n/2 + 1}	(n, k) -> S2((n + 1)/2, k).+(S2(n/2 + 1, k)).*(FA(k))./(2)
-A305541	trilambn	1	1	1	(n, k) -> new Q(SD(n, d -> S2(n/d, k).*(PHI(d))), 2*n).-(new Q(S2((n + 1)/2, k).+(S2(n/2 + 1, k)), 4)).*(FA(k)).num()
-A326895	rowsum	1	new A305541()
-A369066	dirichcon2	0	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouvilles lambda (A008836) with A083345, as reordered by the Doudna sequence.
-A371397	multraf	1	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new A000162(), new A007743()	(A000162(n) - A007743(n))/2
----- 2024-04-18 23:50:32
-A126137	simtraf	1	new A037028()	v -> Puma.primePiZ(v)	pi(new A037028())
-A136126	trilambn	1	1	0	(n, k) -> SU(1, k + 1, i -> Z_1(k + 1 - i).*(FA(i)).*(ZV(i).^(n - 1 - k)).*(S2(k + 1, i)))	T(n,k) = Sum_{i=1..k+1} (-1)^(k+1-i)*i!*i^(n-1-k)*Stirling2(k+1,i) (0 <= k <= n-1).
-A305542	treonk	1	A305541	1	mN	3
-A305543	treonk	1	A305541	1	mN	4
-A305544	treonk	1	A305541	1	mN	5
-A305545	treonk	1	A305541	1	mN	6
----- 2024-04-19 00:35:58
-A151816	lambdan	0	n -> n == 0 ? Z.ZERO : FA(2*n).-(DF(2*n - 1).^(2))	A001147()^2
-A229740	simtraf	1	new A000961()	q -> new Q(q.^(9), 6).+(new Q(q.^(8), 6).*(5)).+(new Q(q.^(7), 3).*(2)).-(new Q(q.^(6), 6)).-(new Q(q.^(5), 6).*(5)).+(new Q(q.^(4), 3)).num()	a(n) = q^9/6+5*q^8/6+2*q^7/3-q^6/6-5*q^5/6+q^4/3 where q = n-th prime power A000961(n).
-A371388	lambdan	1	n -> CR.PHI.*(n).floor().*(2*n).-(n*n)	a(n) = 2*n*floor(n*(1 + sqrt(5))/2) - n^2
----- 2024-04-19 09:05:00
-A084236	lambdan	0	n -> Functions.MERTENS.z(Z2(n))	a(n) = M(2^n), where M(n) is Mertens's function, A002321.
-A171096	filnum	1	1	n -> Functions.MERTENS.l(n) == -1		(M = Mertens's function A002321).
-A171097	filnum	1	1	n -> Functions.MERTENS.l(n) == -2		(M = Mertens's function A002321).
-A171098	filnum	1	1	n -> Functions.MERTENS.l(n) == -3		(M = Mertens's function A002321).
-A171235	filnum	1	1	n -> Functions.MERTENS.l(n) == -4		(M = Mertens's function A002321).
-A171236	filnum	1	1	n -> Functions.MERTENS.l(n) == -5		(M = Mertens's function A002321).
-A171374	filnum	1	1	n -> Functions.MERTENS.l(n) == -6		(M = Mertens's function A002321).
-A171383	filnum	1	1	n -> Functions.MERTENS.l(n) == -7		(M = Mertens's function A002321).
-A171391	filnum	1	1	n -> Functions.MERTENS.l(n) == -8		(M = Mertens's function A002321).
-A171392	filnum	1	1	n -> Functions.MERTENS.l(n) == -9		(M = Mertens's function A002321).
-A171393	filnum	1	1	n -> Functions.MERTENS.l(n) == -10	(M = Mertens's function A002321).
-A171394	filnum	1	1	n -> Functions.MERTENS.l(n) == -11	(M = Mertens's function A002321).
-A171395	filnum	1	1	n -> Functions.MERTENS.l(n) == -12	(M = Mertens's function A002321).
-A171403	filnum	1	1	n -> Functions.MERTENS.l(n) == 2	(	M = Mertens's function A002321).
-A171404	filnum	1	1	n -> Functions.MERTENS.l(n) == 3	(	M = Mertens's function A002321).
-A171406	filnum	1	1	n -> Functions.MERTENS.l(n) == 4	(	M = Mertens's function A002321).
-A171427	filnum	1	1	n -> Functions.MERTENS.l(n) == 5	(	M = Mertens's function A002321).
-A171428	filnum	1	1	n -> Functions.MERTENS.l(n) == 6	(	M = Mertens's function A002321).
-A171436	filnum	1	1	n -> Functions.MERTENS.l(n) == 7	(	M = Mertens's function A002321).
----- 2024-04-19 09:21:31
-A077100	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	""	new A051612(), new A065387()
-A088835	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	""	new A020639(), new A006530()
-A093868	multraf	1	(self, n) -> self.s(0).min(self.s(1))	""	new A034694(), new A038700()
-A124447	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	""	new A066840(), new A124440()
-A244417	multraf	1	(self, n) -> self.s(0).max(self.s(1))	""	new A007814(), new A007949()
-A346087	multraf	1	(self, n) -> self.s(0).min(self.s(1))	""	new A071178(), new A329348()
-A353157	multraf	0	(self, n) -> self.s(0).min(self.s(1))	""	new A006257(), new A080079()
-A369529	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A007953(), new A007954()
-A369690	multraf	1	(self, n) -> self.s(0).max(self.s(1))	""	new A119288(), new A053669()
-A371573	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	""	new A020639(), new A032742()
----- 2024-04-19 09:44:57
-A083551	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	"2"	new A001223().skip(1), PREVIOUS
-A083552	multraf	1	(self, n) -> self.s(0)./(self.s(1))	"2"	new A083551(), new A057467()	a(n) = A083551(n)/A057467(n).
-A083554	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	"2"	new A006093().skip(1), PREVIOUS
-A252489	multraf	1	(self, n) -> self.s(0).max(self.s(1))	""	new A061395().skip(1), PREVIOUS
-A309772	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	"12"	new A008864().skip(1), PREVIOUS
-A331290	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A001222(), new A329348()
-A084237	lambdan	0	n -> Functions.MERTENS.z(Z.TEN.^(n))	a(n) = M(10^n), where M(n) is Mertens's function. 
-A201740	lambdan	0	n -> Functions.MERTENS.z(ZV(n).^(n))	The value of the Mertens function at n^n   
-A364091	multraf	0	(self, n) -> self.s(0).min(self.s(1))	"13,7,11,5,3,2"	new A005602(), new A005603()
----- 2024-04-19 10:41:58
-A229344	multraf	1	(self, n) -> Functions.MERTENS.z(self.s(0))	"0"	new A003415()	Mertens's function of the arithmetic derivative of n: a(n) = M(n'), a(1) = 0
-A305099	multraf	1	(self, n) -> self.s(0).min(self.s(1))	"3,3"	new A005235(), new A055211()
----- 2024-04-19 14:23:46
-A083548	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	""	new A051953().skip(), PREVIOUS
-A083554	multraf	1	(self, n) -> self.s(0).lcm(self.s(1))	"2"	new A006093().skip(1), PREVIOUS
-A083555	multraf	1	(self, n) -> self.s(0)./(self.s(1))	"2,2,6"	new A083554(), new A058263()	a(n) = A083554(n)/A058263(n).
----- 2024-04-20 16:01:00
-A069535	filnum	1	1	n -> { final String fas = FA(n).toString(); return fas.indexOf(Integer.toString(n)) >= 0 && fas.indexOf(String.valueOf(Functions.REVERSE.l(n))) >= 0; }	Treated as strings, n and its reversal are substrings of n!.	base,nonn	1..10000
-A070246	multraf	1	(self, n) -> self.s(0).lcm(ZV(n))./(self.s(0).gcd(ZV(n)))	""	new A004086()	nyi t	a(n) = lcm(n, R(n)) / gcd(n, R(n)), where R(n) (A004086) is the digit reversal of n.
-A070553	tablamb	1	0	n -> new Integer[] { 0, 6 }	(n, k) -> Z.TEN.pow(n).*(k).mod(Z.SEVEN)	Rectangular array read by rows: n-th row gives the 7 numbers k*10^n mod 7 for 0 <= k < 7.
-A070565	lambdan	0	n -> ZV(n).-(Functions.DIGIT_PRODUCT.z(n))	n - product of digits of n.
-A070600	multraf	1	(self, n) -> self.s(0).^(n)	"0"	new A007917()	a(n) = A007917(n)^n for n>1
-A070810	filtpos	1	1	new A054571()	(n, v) -> v.bitCount() == 1 && !ZV(n).IPP()	Numbers n such that phi(n-phi(n))=A054571(n) is a power of 2 and n is not a prime number.	nonn
-A070823	multrar	1	(self, n) -> { final String s1 = self.a(n-1).toString(); final String s2 = self.a(n-2).toString(); return new Z(s1 + s2).-(new Z(s2 + s1)).abs(); }	"0,1"	a(1)=0, a(1)=1, a(n+2)=abs(concatenate(a(n+1)a(n))-concatenate(a(n)a(n+1)))
-A070828	multraf	0	(self, n) -> Functions.SOPFR.z(self.s(0))	"1,1"	new A000108()	Sum of prime factors of Catalan numbers A000108(n), n>=2, with n=0 and n=1 terms added.	nonn,easy
-A071783	filter	1	new A002385()	v -> { final String s = v.toString(); return s.indexOf('0') >= 0; }	Palindromic primes with at least one zero digit.
-A076611	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '2' || md == '3' || md == '5' || md == '7'; }	Palindromic primes with prime middle digit.
-A082435	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '0'; }	Palindromic primes with middle digit 0.
-A082438	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '2'; }	Palindromic primes with middle digit 2.
-A082439	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '3'; }	Palindromic primes with middle digit 3.
-A082440	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '4'; }	Palindromic primes with middle digit 4.
-A082441	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '5'; }	Palindromic primes with middle digit 5.
-A082442	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '6'; }	Palindromic primes with middle digit 6.
-A082444	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '8'; }	Palindromic primes with middle digit 8.
-A082445	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '9'; }	Palindromic primes with middle digit 9.
-A093808	filter	1	new A002385()	v -> { final int[] dc = ZUtils.digitCounts(v); return Functions.DIGIT_SUM.z(v).IPP() && ZV(dc[2] + dc[3] + dc[5] + dc[7]).IPP(); }	Palindromic primes with property that sum of digits is prime and number of prime digits is prime.
-A109184	filter	1	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 20	Palindromic primes with digit sum 20.
-A109830	filter	1	new A002385()	v -> { final Z nd = ZV(v.toString().length()); final Z sd = Functions.DIGIT_SUM.z(v); return ZUtils.isPalindrome(nd, 10) && ZUtils.isPalindrome(sd, 10) && nd.IPP() && sd.IPP(); }	Palindromic primes with both the number of digits and the digit sum also palindromic primes.
----- 2024-04-20 17:36:59
-A070610	lambdan	1	n -> { final Z s = SIGMA(n); return SU(1, s.intValueExact(), k -> s.mod(SIGMA(k)).isZero() ? Z.ONE : Z.ZERO)	Number of positive integers k such that sigma(k) divides sigma(n)
-A070811	filtpos	1	1	new A054571()	(n, v) -> n == 1 || v.bitCount() >  1 && !ZV(n).IPP()	Numbers n such that phi(n-phi(n))=A054571(n) is not a power of 2 and n is not a prime number.	nonn
-A074754	lambdan	1	n -> { final int s = Functions.SIGMA.i(n); return SU(1, s, k -> ZV(n).mod(SIGMA(k)).isZero() ? Z.ONE : Z.ZERO); }		Number of integers k such that sigma(k) divides n.
-A076613	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return s.length() >= 3 && md != '2' && md != '3' && md != '5' && md != '7'; }	Palindromic primes with nonprime middle digit.
-A082436	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return s.length() >= 3 && md == '1'; }	Palindromic primes with middle digit 1.
-A082443	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '7'; }	Palindromic primes with middle digit 7.
-A109185	filter	1	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 40	Palindromic primes with digit sum = 40.
----- 2024-04-20 18:09:41
-A071122	multrar	1	(self, n) -> self.a(n - 1).+(Functions.DIGIT_SUM.z(Z2(n)))	""	a(n) = a(n-1) + sum of decimal digits of 2^n.	base,easy,nonn	1..51
-A071123	multrar	1	(self, n) -> self.a(n - 1).+(Functions.DIGIT_SUM.z(FA(n)))	""	a(n) = a(n-1) + sum of decimal digits of n!.	base,easy,nonn	1..49
-A071306	lambdan	1	n -> { final Z p = ZV( 7); final int k = n/2; return p.^(k).+((n & 1) == 1 ? Z.ZERO : Z_1(k + 1)).*(PR(((n & 1) == 1 ? 0 : 1), k - 1, i -> p.^(2*k).-(p.^(2*i)))); }	a(n) = (1/2) * (number of n X n 0..6 matrices M with MM' mod 7 = I, where M' is the transpose of M and I is the n X n identity matrix).	nonn	1..11	nyi
-A071309	lambdan	1	n -> { final Z p = ZV(11); final int k = n/2; return p.^(k).+((n & 1) == 1 ? Z.ZERO : Z_1(k + 1)).*(PR(((n & 1) == 1 ? 0 : 1), k - 1, i -> p.^(2*k).-(p.^(2*i)))); }	a(n) = (1/2) * (number of n X n 0..10 matrices with MM' mod 11 = I).	nonn	1..10	nyi
----- 2024-04-20 18:39:33
-A070250	filter	1	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 10	Palindromic primes with digit sum 10.
-A070831	filter	1	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 11
-A071413	multrar	0	(self,n) -> self.a(n/2).+(Z_1(n & 1).*(n))	"0"		a(n) = if n=0 then 0 else a(floor(n/2))+n*(-1)^(n mod 2).	sign
-A090529	multraf	0	(self, n) -> self.s(0).+(1)	"1,1,2"	new A084558()
-A128376	filter	1	new A002385()	v -> v.toString().matches("[4689]+")	Palindromic primes with only composite digits (i.e.,4,6,8,9).
+---- 2024-04-21 10:08:00
+
+# A228334
+# A228334	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }
+In[1]:= Table[c[n+k+i-1, 2k+j-1], {i, 1, 2}, {j, 1, 2}] // Det
+Out[1]=
+-(c[1 + k + n, 2 + 2*k]*c[2 + k + n, 1 + 2*k]) + c[1 + k + n, 1 + 2*k]*c[2 + k + n, 2 + 2*k]
+-(c[k + n, 1 + 2*k]*c[1 + k + n, 2*k]) + c[k + n, 2*k]*c[1 + k + n, 1 + 2*k]
+# A228335	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }
+# A228335: Table[c[n+k+i, 2k+j], {i, 2}, {j, 2}] // Det
+# A228336	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }
+# A228337	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }

@@ -32,7 +32,7 @@
 # 2022-05-05: V3.6: LongUtils
 # 2022-04-08: V3.5: Stirling, Fibonacci
 # 2022-04-08: V3.4: z.Euler.phi(n)
-# 2022-04-03: V3.3: FACTORIAL.factorial 
+# 2022-04-03: V3.3: FACTORIAL.factorial
 # 2022-03-26: V3.2: import Z, Integers, Cheetah.factor if necessary
 # 2022-02-02: V3.1: no #import Long|Boolean
 # 2022-01-14: V3.0: skip over empty callcodes
@@ -43,7 +43,7 @@
 # 2021-10-29, V2.5: -cc concatenated with callcode in infile
 # 2021-10-28, V2.4: -cc overwrites callcodes in infile
 # 2021-10-10, V2.3: for subpackages irvine.oeis.cons|triangle
-# 2020-09-02, V2.2: do not import @OVerride 
+# 2020-09-02, V2.2: do not import @OVerride
 # 2020-06-21, V2.1: imports not from comments
 # 2020-06-16, V2.0: hash for imports automatically compiled
 # 2020-06-09, V1.8: leading "~~;  private final CR ~~parm2~~parm2~~...
@@ -207,28 +207,32 @@ while (<>) { # read inputfile
             my $nopen = ($parm =~ s{([\(\[\{])}  {$1}g);
             my $nclos = ($parm =~ s{([\)\]\}])}  {$1}g);
             if ($nopen != $nclos && $iparm <= 8) {
-                print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n"; 
+                print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n";
                 $do_generate = 0;
             }
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;
             $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." . $zhash{$1}}eg; # after the previous line!
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BS}             {BernoulliSequence}g;
+            $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
+            $parm =~ s{CESQ\(}         {Functions.CEIL_SQRT.z\(}g;
             $parm =~ s{CV\(}           {CR.valueOf\(}g;
+            $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
             $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
             $parm =~ s{FD\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\($1, 2}g;
             $parm =~ s{DF\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\($1, 2}g;
             $parm =~ s{FM\(}           {Functions.MULTIFACTORIAL.z\(}g;
-            $parm =~ s{FI\(}           {Fibonacci.fibonacci\(}g;
+            $parm =~ s{FI\(}           {Functions.FIBONACCI.z\(}g;
             $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
             $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
-            $parm =~ s{LU\(}           {Fibonacci.lucas\(}g;
+            $parm =~ s{LU\(}           {Functions.LUCAS.z\(}g;
             $parm =~ s{KS\(}           {LongUtils.kronecker(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
-            $parm =~ s{LPF\(([^\)]+)\)}{Jaguar.factor($1).largestPrimeFactor()}g;
-            $parm =~ s{SPF\(}          {LeastPrimeFactorizer.lpf\(}g;
+            $parm =~ s{LPF\(}          {Functions.LPF.z\(}g;
+            $parm =~ s{GPF\(}          {Functions.GPF.z\(}g;
+            $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{PM\(}           {Puma.primeZ\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
@@ -254,14 +258,14 @@ while (<>) { # read inputfile
             $parm =~ s{Sigma\(}        {Functions.SIGMA.z(}ig;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
-            #               1      1    2      2  3    3  with "))" 
+            #               1      1    2      2  3    3  with "))"
             $parm =~ s{ZNO\(([^\,]+)\, *([^\)]+)\)([\)])}   {new IntegersModMul\($2\)\)\.order\($1\)}g; # PARI's znorder(Mod(b,s)) -> new IntegersModMul(s).order(b)
             #               1      1    2      2  3     3 with ")."
             $parm =~ s{ZNO\(([^\,]+)\, *([^\)]+)\)([^\)])}  {new IntegersModMul\($2\)\.order\($1\)$3}g; # PARI's znorder(Mod(b,s)) -> new IntegersModMul(s).order(b)
             $parm =~ s{Z\_1\(}         {Z.NEG_ONE.pow\(}g;
             $parm =~ s{n\_1\(}         {(((n & 1) == 0) ? 1 : -1)}g;
             $parm =~ s{Z2\(}           {Z.TWO.pow\(}g;
-            
+
             $parm =~ s{\.\*\(}         {.multiply\(}g;
             $parm =~ s{\.\/\(}         {.divide\(}g;
             $parm =~ s{\.\+\(}         {.add\(}g;
@@ -342,7 +346,7 @@ while (<>) { # read inputfile
             push(@typed_terms, $term)
         } # foreach $term
         my $parm = join(",", @typed_terms);
-        if ($parms[$iparm] =~ m{(\, ?)\Z}) { 
+        if ($parms[$iparm] =~ m{(\, ?)\Z}) {
             $parm .= $1;
         }
         if ($parm eq "") { # remove empty line
@@ -372,7 +376,7 @@ print STDERR "# $gen_count sequences generated\n";
 #-----------------
 sub write_output {
     my ($copy, $aseqno) = @_; # global $old_package, $gen_count, $debug
-    my $call1 = ($cc eq $callcode) ? $cc : "$cc/$callcode"; 
+    my $call1 = ($cc eq $callcode) ? $cc : "$cc/$callcode";
     map {
         my $line = $_;
         if ($line !~ m{\A\s*\*\s+}) {
@@ -464,7 +468,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     my @aseqnos = ($line =~ m{(A\d{6})}g);
     foreach my $aseqno (@aseqnos) {
         $imports{"irvine.oeis." . lc(substr($aseqno, 0, 4)) . ".$aseqno"}                               = $itype;
-    } # foreach                                                                                     
+    } # foreach
     if ($line =~ m{\WAbsoluteSequence}             ) { $imports{"irvine.oeis.AbsoluteSequence"  }                = $itype; }
     if ($line =~ m{\WBellNumbers\.}                ) { $imports{"irvine.math.z.BellNumbers"     }                = $itype; }
     if ($line =~ m{\WBernoulliSequence}            ) { $imports{"irvine.math.q.BernoulliSequence" }              = $itype; }
@@ -543,7 +547,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
             $ish ++;
         }
         while (($line =~ s{[^\(\.\@\w]([A-Z][\.\w\_]+)}{}) > 0)  { # non-name followed by Java classname starting with uppercase
-            my $class_name = $1; 
+            my $class_name = $1;
             # look it up in the imports accumulated so far
             $class_name =~ m{\.(\w+)\Z};
             my $last_name = $1;
@@ -564,7 +568,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
                 &&   ($class_name !~ m{\AUnaryCRFunction\Z})
                 &&   ($class_name !~ m{\AFunction\Z})
                ) {
-                $imports{"irvine.oeis.$class_name"} = $itype; 
+                $imports{"irvine.oeis.$class_name"} = $itype;
             }
         } # Java classname
         $ish = 0;
