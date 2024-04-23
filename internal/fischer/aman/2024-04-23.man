@@ -1,0 +1,36 @@
+---- 2024-04-23 22:38:38
+A072156	lambdan	1	n -> RU(1, n, k -> new Q(PHI(k), ZV(k).^(2))).num()
+A072157	lambdan	1	n -> RU(1, n, k -> new Q(PHI(k), ZV(k).^(2))).den()
+A072158	lambdan	1	n -> RU(1, n, k -> new Q(PHI(k), ZV(k).^(3))).num()
+A072159	lambdan	1	n -> RU(1, n, k -> new Q(PHI(k), ZV(k).^(3))).den()
+A072160	lambdan	1	n -> RU(1, n, k -> new Q(PHI(k), ZV(k).^(4))).num()
+A072161	lambdan	1	n -> RU(1, n, k -> new Q(PHI(k), ZV(k).^(4))).den()
+A118397	multarr	0	(self, n) -> SU(0, n/2, k -> Z2(k).*(BI(n+1,2*k+1)).*(self.a(k)))	"1"
+A118398	multarr	0	(self, n) -> SU(0, n/2, k -> Z2(k).*(BI(n  ,2*k  )).*(self.a(k)))	"1"
+A141209	lambdan	0	n -> RU(0, n, k -> new Q(n - k + 1  ).^(k-1).*(Z_1(n-k)).*(S1(n ,k))).num()
+A147822	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) !=  2*n) { ++k; } return ZV(k); }
+A147823	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) !=  3*n) { ++k; } return ZV(k); }
+A147824	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) !=  4*n) { ++k; } return ZV(k); }
+A147825	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) !=  5*n) { ++k; } return ZV(k); }
+A147826	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) !=  6*n) { ++k; } return ZV(k); }
+A147827	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) !=  7*n) { ++k; } return ZV(k); }
+A216135	lambdan	0	n -> RU(0, n, k -> new Q(2*n - k + 1).^(k-1).*(Z_1(n-k)).*(S1(n, k))).num()
+A216136	lambdan	0	n -> RU(0, n, k -> new Q(3*n - k + 1).^(k-1).*(Z_1(n-k)).*(S1(n, k))).num()
+A336998	lambdan	1	n -> RD(n, d -> new Q(ZV(3).^(d-1), FA(d))).*(FA(n)).num()
+A336999	lambdan	1	n -> RD(n, d -> new Q(ZV(n).^(d)  , FA(d))).*(FA(n)).num()
+A349857	lambdan	0	n -> SU(0, n, k -> ZV(k).^(3).negate().^(n-k)     )
+A349858	lambdan	0	n -> SU(0, n, k -> ZV(k).^(4).negate().^(n-k)     )
+A349860	lambdan	0	n -> SU(0, n, k -> ZV(k).^(3).negate().^(n-k).*(k))
+A349861	lambdan	0	n -> SU(0, n, k -> ZV(k).^(4).negate().^(n-k).*(k))
+A364582	lambdan	1	n -> { int k = 1; while (!SD(k, d -> ZV(d % 3 ==1 ? 1 : 0)).equals(ZV(n))) { ++k; } return ZV(k); }
+A364583	lambdan	0	n -> { int k = 1; while (!SD(k, d -> ZV(d % 3 ==2 ? 1 : 0)).equals(ZV(n))) { ++k; } return ZV(k); }
+A364586	lambdan	1	n -> { int k = 1; while (!SD(k, d -> ZV(d % 5 ==1 ? 1 : 0)).equals(ZV(n))) { ++k; } return ZV(k); }
+A370479	lambdan	0	n -> { final int r=2; final int s=2; final int t=2; final int u=0; return RU(0, n, k -> new Q(BI(t*k+u*(n-k)+r, k)    .*(BI(n+(s-1)*k-1, n-k)), ZV(t*k+u*(n-k)+r)) ).*(r).num()  ; }
+A370480	lambdan	0	n -> { final int r=3; final int s=2; final int t=2; final int u=0; return RU(0, n, k -> new Q(BI(t*k+u*(n-k)+r, k)    .*(BI(n+(s-1)*k-1, n-k)), ZV(t*k+u*(n-k)+r)) ).*(r).num()  ; }
+A370524	lambdan	0	n -> { final int k=1; final int q=2; return RU(0, n/q - k, j -> new Q(Z_1(j).*(FA(n - (q - 1)*(j + k))), FA(j).*(FA(k)))).num(); }
+A370525	lambdan	0	n -> { final int k=1; final int q=3; return RU(0, n/q - k, j -> new Q(Z_1(j).*(FA(n - (q - 1)*(j + k))), FA(j).*(FA(k)))).num(); }
+A370528	lambdan	0	n -> { final int k=2; final int q=3; return RU(0, n/q - k, j -> new Q(Z_1(j).*(FA(n - (q - 1)*(j + k))), FA(j).*(FA(k)))).num(); }
+A370529	lambdan	0	n -> { final int k=3; final int q=2; return RU(0, n/q - k, j -> new Q(Z_1(j).*(FA(n - (q - 1)*(j + k))), FA(j).*(FA(k)))).num(); }
+A370530	lambdan	0	n -> { final int k=3; final int q=3; return RU(0, n/q - k, j -> new Q(Z_1(j).*(FA(n - (q - 1)*(j + k))), FA(j).*(FA(k)))).num(); }
+A370652	lambdan	0	n -> { final int k=2; final int q=4; return RU(0, n/q - k, j -> new Q(Z_1(j).*(FA(n - (q - 1)*(j + k))), FA(j).*(FA(k)))).num(); }
+A370653	lambdan	0	n -> { final int k=3; final int q=4; return RU(0, n/q - k, j -> new Q(Z_1(j).*(FA(n - (q - 1)*(j + k))), FA(j).*(FA(k)))).num(); }

@@ -234,7 +234,10 @@ while (<>) { # read inputfile
             $parm =~ s{GPF\(}          {Functions.GPF.z\(}g;
             $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
-            $parm =~ s{PM\(}           {Puma.primeZ\(}g;
+            $parm =~ s{PM\(}           {Functions.PRIME.z\(}g;
+            $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
+            $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
+            $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z(}g;
@@ -255,7 +258,7 @@ while (<>) { # read inputfile
             $parm =~ s{SA\(([^\)]+)\)} {Stirling.firstKind\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
 #           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
-            $parm =~ s{Sigma\(}        {Functions.SIGMA.z(}ig;
+            $parm =~ s{SIGMA\(}        {Functions.SIGMA.z(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
             #               1      1    2      2  3    3  with "))"

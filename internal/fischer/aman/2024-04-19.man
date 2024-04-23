@@ -1,0 +1,295 @@
+---- 2024-04-23 22:38:39
+# A071708	lambdan	0	n -> num(SU(k=1,n, PHI(k)/k))
+# A071778	lambdan	0	n -> SU(k=1,n,MU(k)*(n/k)^3).*
+# A071838	lambdan	0	n -> -SU(i=1, n, isprime(i)*kronecker(2, i))
+# A071906	lambdan	0	n -> Functions.DIGIT_SUM.Z(Z2(n)).modZ(2)
+A072155	lambdan	0	n -> RU(1, n, k -> new Q(PHI(k), ZV(k))).den()
+# A072255	lambdan	0	n -> SU(d = 1, n/2, FI(n/d)^(n % d) * FI(n/d -1)^(d - n%d))
+# A072379	lambdan	0	n -> SU(k=1, n, SIGMA(k)^2)
+# A074638	lambdan	0	n -> den(SU(i=1, n, 1/(4*i-1)))
+# A074707	lambdan	0	n -> if(n<2,1,(n-1)!^2+FA(n)^2/n*SU(k=1,n-1,a(k)/FA(k)^2/(n-k)))
+# A074793	lambdan	0	n -> SU(k=1,n,k*if(OMEGA(k)-1,0,1))
+# A074794	lambdan	0	n -> SU(k=1,n,if(SIGMA0(k)%3-1,0,1))
+# A074795	lambdan	0	n -> SU(k=1,n,if(SIGMA0(k)%3,0,1))
+# A074796	lambdan	0	n -> SU(k=1,n,if(SIGMA0(k)%3-2,0,1))
+# A074830	lambdan	0	n -> SU(b=2, n-1, isprime(fromdigits(Vecrev(digits(n, b)), b)))
+# A074919	lambdan	0	n -> SU(k=1,PHI(n),1==gcd(k,n))
+# A074944	lambdan	0	n -> SU(k=1,n,if(gcd(n,k)-SIGMA0(k),0,1))
+# A074945	lambdan	0	n -> SU(k=1,n,if(gcd(n,k)-floor(n/k),0,1))
+# A074947	lambdan	0	n -> num(SU(i=1,n,1/lcm(n,i)))
+# A074949	lambdan	0	n -> den(SU(i=1,n,1/lcm(n,i)))
+# A074988	lambdan	0	n -> SU(i=1,n,MU(i)^2*2^(n-i))
+# A075254	lambdan	0	n -> my(f = factor(n)); n += SU(k=1, #f~, f[k,1]*f[k,2])
+# A080225	lambdan	0	n -> SD(n, d, SIGMA(d, -1) == 2)
+# A080306	lambdan	0	n -> num(SU(k = 1, n, k^MU(k)))
+# A080326	lambdan	0	n -> den(SU(k = 1, n, k^MU(k)))
+# A082540	lambdan	0	n -> SU(k=1,n,MU(k)*floor(n/k)^4)
+# A082544	lambdan	0	n -> SU(k=1,n,MU(k)*floor(n/k)^5)
+# A082588	lambdan	0	n -> if (n==1, 1, SD(n, d, if (d<n, a(d)^2)))
+# A082647	lambdan	0	n -> my(q = sqrt(2*n)); SD(n, d, (d%2) && (d < q))
+# A082681	lambdan	0	n -> den(SU(i = n*(n-1)/2+1, n*(n+1)/2, 1/i))
+# A082688	lambdan	0	n -> den(SU(k=1, n, 1/(n+k)))
+# A082876	lambdan	0	n -> if(n<2, 0, BIG_OMEGA(SU(i=1, matsize(f=factor(n))[1], f[i, 1]^n*f[i, 2])))
+# A082926	lambdan	0	n -> abs(SU(k=1, n, !issquarefree(k)) + 1 - primepi(n))
+# A082934	lambdan	0	n -> {SU(k=1,n,if(isprime(k),k+1,if(k%2,k,k/2)))}
+# A082968	lambdan	0	n -> SU(k=1,n,k%SU(i=0,k-1,1-subst(Pol(binary(i)),x,1)%2))
+# A082998	lambdan	0	n -> SU(i=1,n,if(OMEGA(i)-3,0,1))
+# A085831	lambdan	0	n -> SU(k=1, 2^n, SIGMA0(k))
+# A090410	lambdan	0	n -> SU(i=1, 10^n, (-1)^BIG_OMEGA(i))
+# A090498	lambdan	0	n -> SU(k=n*(n-1)/2+1, n*(n+1)/2, SIGMA0(k))
+# A090541	lambdan	0	n -> floor((n*(n+1)/2)*SU(k=1, n, 1/k))
+# A092466	lambdan	0	n -> SU(i=0,n,SU(j=0,i,SU(k=0,j,if(i+j+k-n,0,(n+k)!  /i!    /FA(j)    /(2*k)!))))
+# A092468	lambdan	0	n -> SU(i=0,n,SU(j=0,i,SU(k=0,j,if(i+j+k-n,0,(n+2*k)!/i!    /FA(j)    /(3*k)!))))
+# A092469	lambdan	0	n -> SU(i=0,n,SU(j=0,i,SU(k=0,j,if(i+j+k-n,0,(n+2*j)!/i!    /(2*j)!/FA(k)))))
+# A092470	lambdan	0	n -> SU(i=0,n,SU(j=0,i,SU(k=0,j,if(i+j+k-n,0,(n+2*i)!/(2*i)!/FA(j)    /FA(k)))))
+# A092473	lambdan	0	n -> SU(i=0,n,SU(j=0,i,SU(k=0,j,if(i+j+k-n,0,(2*n)!  /(i+j)!/(j+k)!/(k+i)!))))
+# A093349	lambdan	0	n -> SU(i=1,n-1,(-1)^i*7^valuation(i,7))
+# A094114	lambdan	0	n -> SU(i=1,n-1,(-1)^i*2^valuation(i,3))
+# A094115	lambdan	0	n -> SU(k=1,n,-SU(i=1,k-1,(-1)^i*3^valuation(i,3)))
+# A094116	lambdan	0	n -> SU(k=1,n,-SU(i=1,k-1,(-1)^i*5^valuation(i,5)))
+# A094117	lambdan	0	n -> SU(k=1,n,-SU(i=1,k-1,(-1)^i*7^valuation(i,7)))
+# A094120	lambdan	0	n -> SU(k=1,n,SU(i=1,k,(-2)^valuation(i,2)))
+# A096396	lambdan	0	n -> SU(i=1,n,if(kronecker(n,i)-1,0,1))
+# A096397	lambdan	0	n -> SU(i=1,n,if(kronecker(n,i)+1,0,1))
+# A098991	lambdan	0	n -> SD(n, k, MU(k + 1))
+# A099027	lambdan	0	n -> SU(k=0, n, bitand(n-k, bitneg(k)))
+# A099033	lambdan	0	n -> SU(k=1, n, (-1)^hammingweight(3*k))
+# A099034	lambdan	0	n -> SU(k=1, n, (-1)^hammingweight(5*k))
+# A099377	lambdan	0	n -> my(d=divisors(n)); num(#d/SU(k=1, #d, 1/d[k]))
+# A099378	lambdan	0	n -> my(d=divisors(n)); den(#d/SU(k=1, #d, 1/d[k]))
+# A099556	lambdan	0	n -> SU(k=0,2*n,(n-k/2)^k)
+# A099726	lambdan	0	n -> my(p=prime(n)); SU(k=1, n, p%k)
+# A099739	lambdan	0	n -> SU(k=1, n, MU(k)*FA(k))
+# A099779	lambdan	0	n -> ceil(1/2 + SU(j=0,n-1, BI(n,j)*BI(n,j+1) )/2^(n+1))
+# A099811	lambdan	0	n -> if(n==1,1,if(n==2,3,bitxor(a(n-1),SU(k=1,n-1,a(k)))))
+# A101627	lambdan	0	n -> num(24*SU(k=1, n, 1/((3*k-1)*(3*k)*(3*k+1))))
+# A101628	lambdan	0	n -> den(24*SU(k=1, n, 1/((3*k-1)*(3*k)*(3*k+1))))
+# A106365	lambdan	0	n -> if(n==1, 3, SD(n, d, PHI(n/d)*(2*(-1)^d + 2^d))/n)
+# A106366	lambdan	0	n -> if(n==1, 4, SD(n, d, PHI(n/d)*(3*(-1)^d + 3^d))/n)
+# A106367	lambdan	0	n -> if(n==1, 5, SD(n, d, PHI(n/d)*(4*(-1)^d + 4^d))/n)
+# A106368	lambdan	0	n -> if(n==1, 6, SD(n, d, PHI(n/d)*(5*(-1)^d + 5^d))/n)
+# A106464	lambdan	0	n -> SU(k=0, n/2, gcd(n-2*k+1, k+1))
+# A106519	lambdan	0	n -> (2*BI(2*n-2, n-1) - SD(n, d, MU(d)*BI(2*n/d, n/d))/2)/n
+# A108274	lambdan	0	n -> SU(m=1, 10^n, SD(m, d, d*isprime(d)*(d<=sqrt(m))))
+# A108289	lambdan	0	n -> SU(k=0,n,BI(n+(n-k)*k,(n-k)*k+k))
+# A109779	lambdan	0	n -> FA(n)*SU(k=1, n, SU(j=1, k, 1/j)*(n+1-k)!)
+# A109780	lambdan	0	n -> FA(n)*SU(k=1, n, SU(j=1, k, 1/j)*(n-k)!)
+# A109789	lambdan	0	n -> SU(k=1, n, prime(k^3))
+# A110530	lambdan	0	n -> if(n==0,1,SU(k=0,n-1,BI(2*n-2,n-k-1)*a(k)))
+# A110531	lambdan	0	n -> if(n==0,1,SU(k=0,n-1,BI(2*n-1,n-k-1)*a(k)))
+# A110618	lambdan	0	n -> numbpart(n) - SU(i=0, if (n%2, n/2, n/2-1), numbpart(i))
+# A110625	lambdan	0	n -> num(-SU(k=1, n, (#binary(k) - 2*hammingweight(k))/(2*k*(2*k+1))))
+# A110626	lambdan	0	n -> den(-SU(k=1, n, (#binary(k) - 2*hammingweight(k))/(2*k*(2*k+1))))
+# A110805	lambdan	0	n -> sumdigits(n) * #digits(n)
+# A119262	lambdan	0	n -> if(n==0,0,if(n==1,1,SU(k=1,n/2,a(k)*BI(n-k-1,n-2*k))))
+# A121773	lambdan	0	n -> if(n==0,1,(1/n)*SD(n,d,PHI(n/d)*(n+1)^d))
+# A121774	lambdan	0	n -> if(n==0,1,(1/n)*SD(n,d,PHI(n/d)*(n+1)^(d-1)))
+# A128437	lambdan	0	n -> num(SU(k=1, n, 1/k))/n
+# A128492	lambdan	0	n -> den(SU(k=1, n, 1/(2*k-1)^2)); /
+# A132958	lambdan	0	n -> FA(n)*SD(n, d, (-1)^(d+1)/FA(d))
+# A132960	lambdan	0	n -> FA(n)*SD(n, d, (-1)^(d+1)/(FA(d)*(n/d)^d))
+# A132962	lambdan	0	n -> FA(n)*SD(n, d, (-1)^(d+1)/(FA(d)*(n/d)!^d))
+# A136483	lambdan	0	n -> SU(k=1, n/2, sqrtint((n/2)^2 - k^2))
+# A136513	lambdan	0	n -> 2*SU(k=1, n/2, sqrtint((n/2)^2-k^2))
+# A136515	lambdan	0	n -> 2*SU(k=1, n, sqrtint((n+1/2)^2-k^2))
+# A165460	lambdan	0	n -> SU(i=0, 4*n + 2, kronecker(i, 12*n + 7))
+# A165601	lambdan	0	n -> SU(i=0, 2*n + 1, kronecker(i, 4*n + 3)); /
+# A197117	lambdan	0	n -> SU(k=1, n, isprime((2^k-1)*2^n+1))
+# A197118	lambdan	0	n -> SU(k=1, n, isprime((2^k+1)*2^n-1))
+# A197119	lambdan	0	n -> SU(k=1, n, isprime((2^k+1)*2^n+1))
+# A205800	lambdan	0	n -> if(n==0, 1, (n-1)!*SU(k=1, sqrtint(n), k^2*a(n-k^2)/(n-k^2)!))
+# A205801	lambdan	0	n -> if(n==0, 1, (n-1)!*SU(k=1, sqrtint(n), a(n-k^2)/(n-k^2)!))
+# A211177	lambdan	0	n -> num(SU(k=1,n,(-1)^k/PHI(k)))
+# A211178	lambdan	0	n -> den(SU(k=1, n, (-1)^k/PHI(k)))
+# A215475	lambdan	0	n -> SU(j=1, n, SD(j, d, MU(j/d)*n^d)/j)
+# A221490	lambdan	0	n -> SU(k=1, n, isprime(k*n + k - n))
+# A221491	lambdan	0	n -> SU(k=1, n, isprime(k*n - k + n))
+# A228426	lambdan	0	n -> num(SU(i=1,n-1,1/i^(2*n-1)))
+# A228427	lambdan	0	n -> den(SU(i=1,n-1,1/i^(2*n-1)))
+# A228432	lambdan	0	n -> p = prime(n); SU(i=1, p/4, sqrtint(i*p))
+A230263	lambdan	0	n -> SD(n, d -> d*d <= n && (n - d*d) % (4*d) == 0 ? Z.ONE : Z.ZERO)
+A230264	lambdan	0	n -> SD(n, d -> d*d <= n && (n - d*d) % (6*d) == 0 ? Z.ONE : Z.ZERO)
+A230279	lambdan	0	n -> SD(n, d -> d*d <= n && (n - d*d) % (8*d) == 0 ? Z.ONE : Z.ZERO)
+# A255765	lambdan	0	n -> SU(1, n  , k -> if (k==1, 1, 10*9^(hammingweight(k-1)-1)))
+# A255766	lambdan	0	n -> SU(1, n  , k -> if (k==1, 1, 11*10^(hammingweight(k-1)-1)))
+A259692	lambdan	0	n -> SU(1, n-1, k -> ZV(k).^(4).*(SIGMA(k)).*(SIGMA(n-k)))
+A259693	lambdan	0	n -> SU(1, n-1, k -> ZV(k).^(5).*(SIGMA(k)).*(SIGMA(n-k)))
+A259694	lambdan	0	n -> SU(1, n-1, k -> ZV(k).^(6).*(SIGMA(k)).*(SIGMA(n-k)))
+A259696	lambdan	0	n -> SU(1, n-1, k -> ZV(k).^(8).*(SIGMA(k)).*(SIGMA(n-k)))
+A268218	lambdan	0	n -> RU(1, n-3, k -> new Q(Z.ONE, FA(k))).*(FA(n))./(6)  .num()
+A268219	lambdan	0	n -> RU(1, n-4, k -> new Q(Z.ONE, FA(k))).*(FA(n))./(24) .num()
+A268220	lambdan	0	n -> RU(1, n-5, k -> new Q(Z.ONE, FA(k))).*(FA(n))./(120).num()
+A215047	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(    2).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215048	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(    4).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215049	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(    8).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215050	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(   16).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215051	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(   32).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215057	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(   64).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215058	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(  128).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215698	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(  256).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215699	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(  512).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215700	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^( 1024).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215701	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^( 2048).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215702	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^( 4096).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215961	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^( 8192).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215962	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(16384).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215969	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(32768).+(1).IPP() ? Z.ONE : Z.ZERO)
+A215970	lambdan	0	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(65536).+(1).IPP() ? Z.ONE : Z.ZERO)
+# A215990	lambdan	0	n -> num(SU(k=1,n,FA(k)/2^k))
+# A216279	lambdan	0	n -> SU(k=1,sqrtint((n-1)/5), issquare(n-5*k^2))
+# A194161	lambdan	0	n -> floor(SU(k=1, n, frac(k*sqrt(2))))
+# A194165	lambdan	0	n -> floor(SU(k=1, n, frac((1+sqrt(5))*k/2)))
+# A194169	lambdan	0	n -> floor(SU(k=1, n, frac(sqrt(5)*k)))
+# A194173	lambdan	0	n -> floor(SU(k=1, n, frac(sqrt(6)*k)))
+# A194202	lambdan	0	n -> floor(SU(k=1, n, frac(2*exp(1)*k)))
+# A194204	lambdan	0	n -> floor(SU(k=1, n, frac(exp(1)*k/2)))
+# A194206	lambdan	0	n -> floor(SU(k=1, n, frac(Pi*k)))
+# A194208	lambdan	0	n -> floor(SU(k=1, n, frac(k*Pi/2)))
+# A216388	lambdan	0	n -> SU(k=1, 10^n, vecsort(digits(k)) == vecsort(digits(SIGMA(k)-k)))
+# A216389	lambdan	0	n -> SU(k=1, 10^n, vecsort(digits(k)) == vecsort(digits(SIGMA(k))))
+# A216390	lambdan	0	n -> SU(k=10^(n-1), 10^n, vecsort(digits(k)) == vecsort(digits(SIGMA(k))))
+# A216391	lambdan	0	n -> SU(k=1, 2^n, vecsort(digits(k)) == vecsort(digits(PHI(k))))
+# A216392	lambdan	0	n -> SU(k=1, 2^n, vecsort(digits(k)) == vecsort(digits(SIGMA(k))))
+# A216393	lambdan	0	n -> SU(k=1, 2^n, vecsort(digits(k)) == vecsort(digits(SIGMA(k)-k)))
+# A216394	lambdan	0	n -> SU(k=2^(n-1), 2^n, vecsort(digits(k)) == vecsort(digits(PHI(k))))
+# A216395	lambdan	0	n -> SU(k=2^(n-1), 2^n, vecsort(digits(k)) == vecsort(digits(SIGMA(k))))
+# A216396	lambdan	0	n -> SU(k=2^(n-1), 2^n, vecsort(digits(k)) == vecsort(digits(SIGMA(k)-k)))
+# A276485	lambdan	0	n -> num(SU(k=1, n, 1/k^n))
+# A276487	lambdan	0	n -> den(SU(k=1, n, 1/k^n))
+# A276736	lambdan	0	n -> num(SD(n, d, SIGMA0(d)/d))
+# A276737	lambdan	0	n -> den(SD(n, d, SIGMA0(d)/d))
+# A283819	lambdan	0	n -> if(n< 6, 1, (1 + SU(j=1, 3, a(n - j) * a(n - j - 1)))/a(n - 5))
+# A283820	lambdan	0	n -> if(n< 8, 1, (1 + SU(j=1, 5, a(n - j) * a(n - j - 1)))/a(n - 7))
+# A283821	lambdan	0	n -> if(n<10, 1, (1 + SU(j=1, 7, a(n - j) * a(n - j - 1)))/a(n - 9))
+# A283918	lambdan	0	n -> if(n< 7, 1, (1 + SU(j=1, 4, a(n - j) * a(n - j - 1)))/a(n - 6))
+# A283920	lambdan	0	n -> if(n< 9, 1, (1 + SU(j=1, 6, a(n - j) * a(n - j - 1)))/a(n - 8))
+# A303205	lambdan	0	n -> SU(i=1, (n-1)/2, MU(i*(n-2*i))^2)
+# A303336	lambdan	0	n -> SU(i=1, n/2, BIG_OMEGA(i*(n-i)) == 2)
+# A303337	lambdan	0	n -> SU(i=1, (n-1)/2, BIG_OMEGA(n*i) == 2)
+# A306093	lambdan	0	n -> SU(k=1,n,€091298(n,k)*3^k,!n)
+# A306094	lambdan	0	n -> !n+SU(k=1,n,€091298(n,k)*4^k)
+# A306095	lambdan	0	n -> !n+SU(k=1,n,€091298(n,k)*5^k)
+# A306096	lambdan	0	n -> SU(k=1,n,€091298(n,k)*6^k,!n)
+# A306099	lambdan	0	n -> !n+SU(k=1,n,€091298(n,k)<<k)
+# A306649	lambdan	0	n -> num(SD(n, d, d/SIGMA(d)))
+# A306650	lambdan	0	n -> den(SD(n, d, d/SIGMA(d)))
+# A306669	lambdan	0	n -> (1/n)*SD(n, d, MU(n/d)*(n/d)^d*FA(d))
+# A307642	lambdan	0	n -> FA(n)*SU(i=1, n, SU(j=1, i, i/j))
+# A307793	lambdan	0	n -> if (n==1, 1, SD(n-1, d, SIGMA0(d)*a(d))); /
+# A307794	lambdan	0	n -> if (n==1, 1, SD(n-1, d, SIGMA(d)*a(d)))
+# A309262	lambdan	0	n -> if (n<=1, n, SU(k=2, sqrtint(n), a(n/k^2)))
+# A309286	lambdan	0	n -> if (n<=1, n, SU(k=2, sqrtint(n), (-1)^k * a(n/k^2)))
+# A309288	lambdan	0	n -> if (n<=1, n, SU(k=2, n, (-1)^k * a(n/k)))
+# A332466	lambdan	0	n -> {SD(n, d, MU(d)*FA(n)/FA(d))}
+# A332467	lambdan	0	n -> {SD(n, d, MU(d)*FA(n)/(FA(d))^(n/d))}
+# A334721	lambdan	0	n -> den(n*SU(k=1, n, (-1)^(k+1)/k))
+# A334724	lambdan	0	n -> den(SU(j=1, n, SU(i=1, n, (-1)^(i+j)*i/j)))
+# A334734	lambdan	0	n -> den(SU(k=1, n, k^4)/prod(k=1, n, k^4))
+# A334735	lambdan	0	n -> den(SU(k=1, n, k^2)/prod(k=1, n, k^2))
+# A334746	lambdan	0	n -> den(SU(k=1, n, 1/(prime(k) - 1)^2))
+# A334874	lambdan	0	n -> SU(k=1, n, (-1)^(k+1)*SIGMA(k, k % 2))
+# A336113	lambdan	0	n -> num(SD(n, d, if (d%2, 1/d)))
+# A336241	lambdan	0	n -> FA(n)^2*SD(n, d, 1/FA(d)^2)
+# A336242	lambdan	0	n -> FA(n)^2*SD(n, d, (-1)^(d+1)/FA(d)^2)
+A147828	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) !=  8*n) { ++k; } return ZV(k); }
+A147829	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) !=  9*n) { ++k; } return ZV(k); }
+A147830	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) != 10*n) { ++k; } return ZV(k); }
+A147831	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) != 11*n) { ++k; } return ZV(k); }
+A346037	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z.ONE, FA(d).*(FA(k/d)   )  ).*(self.a(n - k))./(FA(n - k))).*(k)).*(FA(n - 1)).num()	"1"		
+A346055	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z.ONE, FA(d).*(ZV(k/d).^(d))).*(self.a(n - k))./(FA(n - k))).*(k)).*(FA(n - 1)).num()	"1"		
+A346056	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z.ONE, FA(d).*(FA(k/d).^(d))).*(self.a(n - k))./(FA(n - k))).*(k)).*(FA(n - 1)).num()	"1"		
+A346057	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z.ONE, FA(d).*(ZV(k/d).^(d))).*(self.a(n - k))./(FA(n - k))).*(k)).*(FA(n - 1)).negate().num()	"1"		
+A346058	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z.ONE, FA(d).*(FA(k/d).^(d))).*(self.a(n - k))./(FA(n - k))).*(k)).*(FA(n - 1)).negate().num()	"1"		
+A346039	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z.ONE, FA(d).*(FA(k/d)   )  ).*(self.a(n - k))./(FA(n - k))).*(k)).*(FA(n - 1)).negate().num()	"1"		
+A125273	multrar	0	(self, n) -> SU(0, n-1, k -> self.a(k).*(BI(n+k-1, n-k-1)))                       	"1"		
+A125274	multrar	0	(self, n) -> SU(0, n-1, k -> self.a(k).*(BI(n+k, n-k-1)))                         	"1"		
+A126443	multrar	0	(self, n) -> SU(0, n-1, k -> BI(n-1, k).*(self.a(k)).*(Z2(k)))                    	"1"		
+A126444	multrar	0	(self, n) -> SU(0, n-1, k -> BI(n-1, k).*(self.a(k)).*(self.a(n-1-k)).*(Z2(k)))   	"1"		
+A118935	multrar	0	(self, n) -> RU(0, n/4, k -> new Q(FA(n), FA(k)).*(FA(n-4*k)).*(ZV(4).^(k)).*(self.a(k))).num()	"1"		
+A125275	multrar	0	(self, n) -> RU(0, n-1, k -> new Q(self.a(k).*(BI(2*n-1, n-k-1)).*(2*k+1), (2*n-1))).num()	"1"		
+A125276	multrar	0	(self, n) -> RU(0, n-1, k -> new Q(self.a(k).*(BI(2*n, n-k-1)).*(k+1), n)).num()	"1"		
+A336588	lambdan	0	n -> RU(0, n, k -> new Q(S2(n+1, k+1), FA(k))            ).*(FA(n)).num()
+A336589	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(k).*(S2(n+1, k+1)), FA(k))  ).*(FA(n)).num()
+A336997	lambdan	0	n -> RD(n, d -> new Q(ZV(2).^(d-1), FA(d))).*(FA(n)).num()
+# A338713	lambdan	0	n -> SU(i=1, n, SIGMA0(i*n)==4)
+# A340763	lambdan	0	n -> SU(i=1, n, isprime(i) && (i%3==1))
+# A340764	lambdan	0	n -> SU(i=1, n, isprime(i) && (i%3==2))
+# A340767	lambdan	0	n -> SU(i=1, 6*n+5, isprime(i) && (i%3==2))
+# A346758	lambdan	0	n -> SD(n, d, MU(n/d)*(d^2/4))
+# A347042	lambdan	0	n -> my(bn=BIG_OMEGA(n)); SD(n, d, if (d>1, !(bn % BIG_OMEGA(d))))
+# A347108	lambdan	0	n -> SU(k=1, n, SIGMA(k)*SIGMA(2*k))
+# A347252	lambdan	0	n -> SU(a=0, n, SU(b=0, n-a, SU(c=0, n-a-b, a*b*c <= n)))
+# A347399	lambdan	0	n -> SU(k=1, n, (n^n%k^k==0)*k^k)
+# A347516	lambdan	0	n -> SD(n, d -> ZV(d).^(3).compareTo(n) <= 0 ? ZV(1) : ZV(0))
+# A347526	lambdan	0	n -> SD(n, d -> ZV(d).^(4).compareTo(n) <= 0 ? ZV(1) : ZV(0))
+# A347614	lambdan	0	n -> SU(k=1, n, n^BIG_OMEGA(k))
+# A347989	lambdan	0	n -> (2*n)!*SU(k=n, 2*n, (2*n+1-k)*abs(stirling(k, n, 1))/FA(k))
+# A347991	lambdan	0	n -> SD(n, d, 2^(SIGMA(d)-1))
+# A347993	lambdan	0	n -> FA(n) * SU(k=1, n, (-1)^(k+1)*n^(n-k)/(n-k)!)
+# A348195	lambdan	0	n -> SU(2, n*n - 1, k -> isprime(k) && k%4==3)
+# A348196	lambdan	0	n -> SU(2, n*n - 1, k -> isprime(k) && k%4==1)
+# A348223	lambdan	0	n -> SD(n, d, (-1)^(SIGMA(d)-1))
+# A348295	lambdan	0	n -> SU(k=1, n, (-1)^(sqrtint(2*k^2)-k))
+# A348317	lambdan	0	n -> my(r=(10^n-1)/9); for(k=r, 10^n-1, if (vecmin(digits(k)) && !(k % sumdigits(k)), return (k-r)))
+# A348350	lambdan	0	n -> SD(n, d, d^(SIGMA(d)-1))
+# A359944	lambdan	0	n -> SD(n, d, ispower(d-1, 3))
+A359955	lambdan	0	n -> { int k=1; while (!SD(k, d -> (d >= 4) ? Z.ONE : Z.ZERO).equals(n)) { ++k; } return ZV(k); }
+A359956	lambdan	0	n -> { int k=1; while (!SD(k, d -> (d >= 5) ? Z.ONE : Z.ZERO).equals(n)) { ++k; } return ZV(k); }
+A359957	lambdan	0	n -> { int k=1; while (!SD(k, d -> (d >= 6) ? Z.ONE : Z.ZERO).equals(n)) { ++k; } return ZV(k); }
+A359958	lambdan	0	n -> { int k=1; while (!SD(k, d -> (d >= n) ? Z.ONE : Z.ZERO).equals(n)) { ++k; } return ZV(k); }
+A359960	lambdan	0	n -> { int k=1; while (k % Functions.DIGIT_SUM.i(k) != 0 || Functions.OMEGA.i(k) != n) { ++k; } return ZV(k); }
+# A360072	lambdan	0	n -> if(n < 1, 0, SIGMA0(n) + SU(k=2, (sqrtint(8*n+1)-1)/2, n-BI(k+1,2)+1))
+# A360091	lambdan	0	n -> num((n-2)!*SU(k=1, n, (-1)^(k+1)/((n-k)!*k^k)))
+# A360092	lambdan	0	n -> den((n-2)!*SU(k=1, n, (-1)^(k+1)/((n-k)!*k^k)))
+# A352476	lambdan	0	n -> if(n==-2, 1, -SU(k=1, n+2, isprime(k+2)*self.a(n-k)))
+# A352479	lambdan	0	n -> if(n==-2, 1, -SU(k=1, n+2, isprime(2*k+3)*self.a(n-k)))
+# A352529	lambdan	0	n -> if(n== 0, 1, -SU(k=1, n, ispower(k, 4)*self.a(n-k)))
+# A352530	lambdan	0	n -> if(n== 0, 1, -SU(k=1, n, ispower(k, 5)*self.a(n-k)))
+A092684	multrar	0	(self, n) -> SU(0, n/2, k -> BI(n-k,k).*(self.a(k)))                                            	"1"		
+A352357	multrar	0	(self, n) -> SU(1, n  , k -> BI(k+2, 3).*(BI(n, k)).*(self.a(n-k)))                                	"1"		
+A352358	multrar	0	(self, n) -> SU(1, n  , k -> BI(k+3, 4).*(BI(n, k)).*(self.a(n-k)))                                	"1"		
+A352693	multrar	0	(self, n) -> SU(1, n  , k -> JF(k).sigma(2).*(BI(n, k)).*(self.a(n-k)))                               	"1"		
+A352694	multrar	0	(self, n) -> SU(1, n  , k -> JF(k).sigma(2).*(BI(n-1, k-1)).*(self.a(n-k)))                           	"1"		
+A352839	multrar	0	(self, n) -> SU(1, n  , k -> JF(k).sigma(k).*(self.a(n-k)))                                        	"1"		
+A352841	multrar	0	(self, n) -> SU(1, n  , k -> JF(k).sigma(k).*(BI(n, k)).*(self.a(n-k)))                               	"1"		
+A352843	multrar	0	(self, n) -> SU(1, n  , k -> JF(k).sigma(k).*(BI(n-1, k-1).*(self.a(n-k))))                           	"1"		
+A352869	multrar	0	(self, n) -> SU(1, n  , k -> MU(k).*(BI(n, k)).*(self.a(n-k)))                                     	"1"		
+A352887	multrar	0	(self, n) -> SU(1, n  , k -> PHI(k).*(BI(n, k)).*(self.a(n-k)))                                    	"1"		
+A353163	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(BI(n-1, k-1).*(self.a(n-k))).*(k))                        	"1"		
+A353164	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(self.a(n-k)).*(k))                       	"1"		
+A353165	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(BI(n, k)*self.a(n-k)).*(k))                       	"1"		
+A353166	multrar	0	(self, n) -> RU(1, n  , k -> new Q(Functions.PRIME.z(k).*(self.a(n-k))           , FA(n-k))).*(FA(n-1)).num()	"1"		
+A352914	multrar	0	(self, n) -> RU(1, n  , k -> new Q(Functions.PRIME.z(k).*(k).*(self.a(n-k))      , FA(n-k))).*(FA(n-1)).num()	"1"		
+A353162	multrar	0	(self, n) -> RU(1, n  , k -> new Q((ZV(k).IPP() ? Z.ONE : Z.ZERO).*(k*k).*(self.a(n-k))     , FA(n-k))).*(FA(n-1)       ).num()	"1"		
+A352842	multrar	0	(self, n) -> RU(1, n  , k -> new Q(ZV(k).*(JF(k).sigma(k)).*(self.a(n-k)), FA(n-k))).*( FA(n-1)      ).num()	"1"		
+A352868	multrar	0	(self, n) -> RU(1, n  , k -> new Q(ZV(k).*(MU(k)).*(self.a(n-k))  , FA(n-k))).*(FA(n-1)).num()	"1"		
+A366459	lambdan	0	n -> RU(1, n/2, k -> new Q(ZV(k).^(n-2*k-1), FA(n-2*k))).*(FA(n)).num()
+A366546	lambdan	0	n -> RU(1, n/3, k -> new Q(ZV(k).^(n-3*k-1), FA(n-3*k))).*(FA(n)).num()
+A372162	lambdan	0	n -> RU(0, n  , k -> new Q(ZV(k+1).^(k-1)).*(ZV(2).^(n-k)).*(BI(new Q(k, 2), n-k))./(FA(k))).*(FA(n)).num()
+A372163	lambdan	0	n -> RU(0, n  , k -> new Q(ZV(k+1).^(k-1)).*(ZV(3).^(n-k)).*(BI(new Q(k, 3), n-k))./(FA(k))).*(FA(n)).num()
+A370462	lambdan	0	n -> RU(1, n  , k -> new Q(FA(3*k-2), FA(2*k-1)).*(S1(n, k))).num()
+A370463	lambdan	0	n -> RU(1, n  , k -> new Q(FA(4*k-2), FA(3*k-1)).*(S1(n, k))).num()
+# A370471	lambdan	0	n -> RU(0, n  , k -> BI(n, k).*(BI(n/2+5*k/2+1, n)    /(n/2+5*k/2+1))              .num()
+# A370472	lambdan	0	n -> RU(0, n  , k -> BI(n, k).*(BI(n/2+5*k/2+1/2, n)  /(n+5*k+1))                  .num()
+# A370473	lambdan	0	n -> RU(0, n  , k -> BI(n, k).*(BI(n+5*k/2+1/2, n)    /(2*n+5*k+1))                .num()
+# A370474	lambdan	0	n -> RU(0, n  , k -> BI(n, k).*(BI(3*n/2+3*k/2+1, n)  /(3*n/2+3*k/2+1))            .num()
+# A370475	lambdan	0	n -> RU(0, n  , k -> BI(n, k).*(BI(3*n/2+5*k/2+1, n)  /(3*n/2+5*k/2+1))            .num()
+# A370476	lambdan	0	n -> RU(0, n  , k -> BI(n, k).*(BI(3*n/2+5*k/2+1/2, n)/(3*n+5*k+1))                .num()
+#
+# A370477	lambdan	0	n -> { final int r=2; final int t=3/2; final int u=0; return RU(k=0, n, k -> new Q(BI(t*k+u*(n-k)+r, k)    .*(BI(n+k/2-1, n-k)), ZV(t*k+u*(n-k)+r)) ).*(r).num(); }
+# A370478	lambdan	0	n -> { final int r=3; final int t=3/2; final int u=0; return RU(k=0, n, k -> new Q(BI(t*k+u*(n-k)+r, k)    .*(BI(n+k/2-1, n-k)), ZV(t*k+u*(n-k)+r)) ).*(r).num(); } 
+A372154	lambdan	0	n -> { final int r=2; final int s=1; final int t=1; final int u=0; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372155	lambdan	0	n -> { final int r=3; final int s=1; final int t=1; final int u=0; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372156	lambdan	0	n -> { final int r=2; final int s=1; final int t=0; final int u=1; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372157	lambdan	0	n -> { final int r=3; final int s=1; final int t=0; final int u=1; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372158	lambdan	0	n -> { final int r=2; final int s=1; final int t=1; final int u=0; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372159	lambdan	0	n -> { final int r=3; final int s=1; final int t=1; final int u=0; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372160	lambdan	0	n -> { final int r=2; final int s=1; final int t=0; final int u=1; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372161	lambdan	0	n -> { final int r=3; final int s=1; final int t=0; final int u=1; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372164	lambdan	0	n -> { final int r=2; final int s=1; final int t=5; final int u=2; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372165	lambdan	0	n -> { final int r=2; final int s=1; final int t=5; final int u=2; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372178	lambdan	0	n -> { final int r=2; final int s=1; final int t=1; final int u=2; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372179	lambdan	0	n -> { final int r=2; final int s=1; final int t=1; final int u=2; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372182	lambdan	0	n -> { final int r=1; final int s=1; final int t=5; final int u=2; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(r).*(FA(n)).num()      ; }
+A372183	lambdan	0	n -> { final int r=1; final int s=1; final int t=5; final int u=2; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(r).*(FA(n)).num()      ; }
+

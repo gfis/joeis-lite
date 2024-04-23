@@ -1,0 +1,69 @@
+---- 2024-04-22 22:12:31
+A070247	filter	0	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 5
+A070248	filter	0	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 7
+A070249	filter	0	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 8
+A070250	filter	1	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 10	Palindromic primes with digit sum 10.
+A084237	lambdan	0	n -> Functions.MERTENS.z(Z.TEN.^(n))	a(n) = M(10^n), where M(n) is Mertenss function. 
+A087893	multraf	1	(self, n) -> self.s(0).*(2)	""	new A079275()	2*new A079275()	diff@210
+A090529	multraf	0	(self, n) -> self.s(0).+(1)	"1,1,2"	new A084558()
+A107799	multraf	1	(self, n) -> Puma.primePiZ(self.s(0))	""	new A030284()	pi(new A030284())
+A111019	filtpos	0	0	new A000108()	v -> v.mod(3) == 1	Indices of Catalan numbers that are == 1 mod 3 (cf. A000108
+A128376	filter	1	new A002385()	v -> v.toString().matches("[4689]+")	Palindromic primes with only composite digits (i.e.,4,6,8,9).
+A147966	multraf	1	(self, n) -> ZV(n - 1).+(self.s(0))	""	new A001223()	n+(new A001223()-1)
+A151816	lambdan	0	n -> n == 0 ? Z.ZERO : FA(2*n).-(DF(2*n - 1).^(2))	A001147()^2
+A160030	parmof3	1	A274022	385	389	nyi to	Primes of the form 2^(2^n)+385.	nonn	1..6	nyi	_Cino Hilliard_
+A201740	lambdan	0	n -> Functions.MERTENS.z(ZV(n).^(n))	The value of the Mertens function at n^n   
+A364091	multraf	0	(self, n) -> self.s(0).min(self.s(1))	"13,7,11,5,3,2"	new A005602(), new A005603()
+A371146	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n/2, k -> new Q(FA(2*n + 1)).^(k - 1).*(SA(n - k,   k))./(FA(n - k  ))).*(FA(n)).num()
+A371269	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n - k).*(S2(n-k, k)), FA(n - k)).*(FA(2*n - 2*k + 1))).*(FA(n)).num()
+A371348	lambdan	0	n -> CV(new Q(4, 7)).exp().-(1).*(7)./(4).sqrt().floor()	sqrt(7*(exp(4/7)-1)/4)
+A371397	multraf	1	(self, n) -> self.s(0).-(self.s(1))./(2)	""	new A000162(), new A007743()	(A000162(n) - A007743(n))/2
+A371723	lambdan	0	n -> RU(0, n, k -> BI(new Q(n+5*k+2*2, 2), n).*(BI(n, k))./(new Q(n+5*k+4, 2))).num().*(2)	2 * Sum_{k=0..n} binomial(n,k)* binomial(n/2+5*k/2+2,n)/(n/2+5*k/2+2).
+A371889	lambdan	0	n -> n == 0 ? Z.ONE : SU(0, n, k -> BI(n, k).*(BI(n - 3*k, n - k - 1)))./(n)	sum(k=0, n, binomial(n, k)*binomial(n-3*k, n-k-1))/n);
+A371890	lambdan	0	n -> n == 0 ? Z.ONE : SU(0, n, k -> BI(n, k).*(BI(n - 4*k, n - k - 1)))./(n)
+A371913	lambdan	0	n -> n == 0 ? Z.ONE : SU(0, n, k -> BI(n, k).*(BI(n - 5*k, n - k - 1)))./(n)
+A352544	lambdan	0	n -> (n & 1) == 0 ? ZV(n/2) : Functions.DITI_SORT_DESCENDING.z(n).+(n)	a(n) = n/2 if n is even, otherwise n + A004186(n), where A004186 = arrange digits in decreasing order.
+A369066	dirichcon2	0	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouvilles lambda (A008836) with A083345, as reordered by the Doudna sequence.
+
+%F A077512	lambdan	0	n -> CESQ()	(ceiling(sqrt((n+1)*10^(n-floor(log_10(10*n))))) - 1)^2 = (ceiling(sqrt((n+1)*10^(n-A055642(n)))) - 1)^2. - Antonio G. Astudillo (afg_astudillo(AT)hotmail.com), Nov 16 2002
+%F A080817	lambdan	0	n -> CESQ()	(ceiling(sqrt(n(n+1)/2)))^2 - n(n-1)/2.
+%F A080819	lambdan	0	n -> CESQ()	(ceiling(sqrt(n*(n+1)/2)))^2. - C. Ronaldo (aga_new_ac(AT)hotmail.com), Dec 19 2004
+%F A080820	lambdan	0	n -> CESQ()	ceiling(sqrt(n*(n+1)/2)) - C. Ronaldo (aga_new_ac(AT)hotmail.com), Dec 19 2004
+%F A083479	lambdan	0	n -> CESQ()	(n+2) - ceiling(sqrt(4*n)), for n > 0. - _Gregory R. Bryant_, Apr 01 2013
+%F A083515	lambdan	0	n -> CESQ()	ceiling(sqrt(R(n)))^2 - R(n).
+%F A087095	lambdan	0	n -> CESQ()	ceiling(sqrt(n*10^d))^2 - n*10^d, where d = n-digit(n), digit(n) = number of digits in n.
+%F A092137	lambdan	0	n -> CESQ()	ceiling(sqrt(Sum_{k=1..n} k^2)).
+%F A101776	lambdan	0	n -> CESQ()	ceiling(sqrt(2*n+1)). - _Mohammad K. Azarian_, Jun 15 2016 [Proof: for any k > 1 and 1 <= m <= 2*k, a(2*k^2-2*k+m) = 2*k because (2*k-1)^2 < 2*(2*k^2-2*k+m) + 1 and (2*k)^2 = 2*(2*k^2-6*k+3*m+1) + 3*(4*k-2*m-1) + 1; a(2*k^2+m) = 2*k + 1 because (2*k)^2 < 2*(2*k^2+m) + 1 and (2*k+1)^2 = 2*(2*k^2-4*k+3*m) + 3*(4*k-2*m) + 1. Therefore, a(n) = ceiling(sqrt(2*n+1)) for n >= 5. Note that the formula is also correct for n < 5, hence a(n) = ceiling(sqrt(2*n+1)). - _Jinyuan Wang_, Jan 28 2020]
+%N A103416	lambdan	0	n -> CESQ()	n - ceiling(sqrt(prime(n))).
+%N A104103	lambdan	0	n -> CESQ()	ceiling(sqrt(prime(n))).
+%F A104103	lambdan	0	n -> CESQ()	A000196(A000040(n)) + 1. (Although ceiling(sqrt(n)) = A000196(n-1) + 1 in general, the -1 is not needed here since no prime is a square.) - _M. F. Hasler_, Aug 23 2012
+%F A123559	lambdan	0	n -> CESQ()	ceiling(sqrt(Pi - Sum_{i=1..n-1} 1/a(i)^2)).
+%F A123560	lambdan	0	n -> CESQ()	ceiling(sqrt(e - Sum_{i=1..n-1} 1/a(i)^2))
+%F A135708	lambdan	0	n -> CESQ()	3*n + ceiling(sqrt(12*n - 3)). - H. Harborth
+%F A140074	lambdan	0	n -> CESQ()	floor(sqrt((n+1)^3-1)) - ceiling(sqrt(n^3)) + 1 - floor(1.5 sqrt(n))
+%F A160393	lambdan	0	n -> CESQ()	ceiling(sqrt((3^n-1)/2)).
+%N A173631	lambdan	0	n -> CESQ()	ceiling(sqrt(4*P_n)), where P_n is product of first n primes
+%F A173631	lambdan	0	n -> CESQ()	ceiling(sqrt(4*A002110(n))). - _Michel Marcus_, Feb 22 2016
+%F A175032	lambdan	0	n -> CESQ()	(ceiling(sqrt(n*(n+1)/2)))^2 - n*(n+1)/2. - _Ctibor O. Zizka_, Nov 09 2009
+%F A175539	lambdan	0	n -> CESQ()	ceiling(sqrt(2)*a(n-1)) with a(1)=1. - _Benoit Cloitre_, Oct 16 2012
+%F A175627	lambdan	0	n -> CESQ()	(ceiling(sqrt(2*a(n-1))))^2.
+%F A199474	lambdan	0	n -> CESQ()	(s(n)^2 - n) * [s(n)^2 - s(n) >= n] + (s(n)^2 - n + s(n)) * [s(n)^2 - s(n) < n] where s(n) = ceiling(sqrt(n)). - _Iliya Trub_, Mar 17 2019
+%F A199474	lambdan	0	n -> CESQ()	floor(ceiling(sqrt(4n))^2/4)+floor(sqrt(4n-2))-floor(sqrt(n)+1/2)-n+1. - _Wesley Ivan Hurt_, Jan 09 2022
+%F A216256	lambdan	0	n -> CESQ()	ceiling(sqrt(3*n - 3/4) - 1/2).
+%F A216607	lambdan	0	n -> CESQ()	floor((1/4)*ceiling(sqrt(4*n))^2) - n.
+%F A232091	lambdan	0	n -> CESQ()	ceiling(n/ceiling(sqrt(n)))*ceiling(sqrt(n)).
+%F A235204	lambdan	0	n -> CESQ()	(2*z^2 + 1 - (-1)^z)/4, where z = ceiling(sqrt(2)*n). - _Giovanni Resta_, Jan 10 2014
+%F A238454	lambdan	0	n -> CESQ()	ceiling(sqrt(2^(2*n-1)))^2 - 2^(2*n-1).
+%F A242118	lambdan	0	n -> CESQ()	4*Sum{k=1..n} ceiling(sqrt(n^2 - (k-1)^2)) - floor(sqrt(n^2 - k^2)). - _Orson R. L. Peters_, Jan 30 2017
+%F A257213	lambdan	0	n -> CESQ()	A259361(n) + 1 + floor(sqrt((€232091(n+1) - 1 - n) + A079813(n+1)) + A079813(n+1)/2) = floor((sqrt(4*n+1)+1)/2) + floor(sqrt(ceiling((n+1) / ceiling(sqrt(n+1)) + 1) * ceiling(sqrt(n+1)) - round(sqrt(n+1)) - n - 1) + (ceiling(sqrt(n+1)) - round(sqrt(n+1)))/2). - _Haofen Liang_, Aug 25 2021
+%N A277425	lambdan	0	n -> CESQ()	sqrt(16*t^2 - 32*t + k^2 + 8*k - 8*k*t + 16), where t = ceiling(sqrt(n)) and k = t^2 - n.
+%F A277425	lambdan	0	n -> CESQ()	n - ceiling(sqrt(n) - 2)^2. - _Vincenzo Librandi_, Nov 06 2016
+%F A278818	lambdan	0	n -> CESQ()	ceiling(sqrt(2n+1))^2 - n. - _Jon E. Schoenfield_, Nov 28 2016
+%F A281795	lambdan	0	n -> CESQ()	Sum_{k=0..n-1} 4*ceiling(sqrt(n^2-k^2)). - _Luis Mendo_, Aug 09 2021
+%F A292144	lambdan	0	n -> CESQ()	A007913(n)*(ceiling(sqrt(n/A007913(n))-1)^2). - _Robert Israel_ and _Michel Marcus_, Sep 11 2017
+%N A318053	lambdan	0	n -> CESQ()	ceiling(sqrt(2*a(n-1)*a(n-2))), a(1) = a(2) = 1.
+%F A346232	lambdan	0	n -> CESQ()	i+j-1 with i = ceiling(n/sqrt(2))+1, j = ceiling(sqrt(n^2-(i-2)^2))+1.
+%F A346232	lambdan	0	n -> CESQ()	i+j-1 with i = ceiling((sqrt(2*n^2-1)+1)/2)+1, j = ceiling(sqrt(n^2-(i-2)^2))+1.
+%F A346693	lambdan	0	n -> CESQ()	1 for n <= 3; a(n) = ceiling(sqrt((n-3)^2/2+1)) for n >= 4.
+%F A357714	lambdan	0	n -> CESQ()	ceiling(sqrt(n) - 3/2) + A000005(n).
+%F A366727	lambdan	0	n -> CESQ()	ceiling(sqrt(2*n + 1/4) + 5/2) for n > 6.
