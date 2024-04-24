@@ -253,14 +253,13 @@ GFis
         }
         print TAR ");\n";
         print TAR <<"GFis";
-    } else {
-        print TAR "    super($off);\n";
     }
   }
 
   /**
    * Generic constructor with parameters
 GFis
+        # print TAR "    super($off);\n";
         foreach $pname (@pnames) {
             print TAR "   * \@param $pname \n";
         }
