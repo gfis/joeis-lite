@@ -1,3 +1,11 @@
+A074707	multrar	0	(self, n) -> RU(1, n - 1, k -> new Q(self.a(k), FA(k).^(2))./(n - k)).*(FA(n).^(2))./(n))num()	"1,1"		a(n)=n!^2/n*sum(k=0, n-1, a(k)/k!^2/(n-k))
+A074793	lambdan	1	n -> SU(1, n, k -> Functions.OMEGA .i(k)     == 1, Z.ZERO, ZV(k)))
+A074794	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 1, Z.ZERO, Z.ONE))
+A074795	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 0, Z.ZERO, Z.ONE))
+A074796	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 2, Z.ZERO, Z.ONE))
+A094115	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(3).^(ZUtils.valuation(ZV(i), ZV(3)))))).negate())
+A094116	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(5).^(ZUtils.valuation(ZV(i), ZV(5)))))).negate())
+A094117	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(7).^(ZUtils.valuation(ZV(i), ZV(7)))))).negate())
 ---- 2024-04-24 17:09:09
 # A082647	lambdan	0	n -> my(q = sqrt(2*n)); SD(n, d, (d%2) && (d < q))
 # A082926	lambdan	0	n -> SU(1, n, k -> !issquarefree(k)) + 1 - primepi(n)).abs()
@@ -62,4 +70,8 @@ A359944	lambdan	0	n -> SD(n, d -> { final Z d1 = ZV(d - 1); return d1.isPower() 
 # A352530	multrar	0	(self, n) -> if(n== 0, 1, -SU(k=1, n, ispower(k, 5)*self.a(n-k)))     .negate()	"1"		
 # A370477	lambdan	0	n -> { final int r=2; final int t=3/2; final int u=0; return RU(k=0, n, k -> new Q(BI(t*k+u*(n-k)+r, k)    .*(BI(n+k/2-1, n-k)), ZV(t*k+u*(n-k)+r)) ).*(r).num(); }
 # A370478	lambdan	0	n -> { final int r=3; final int t=3/2; final int u=0; return RU(k=0, n, k -> new Q(BI(t*k+u*(n-k)+r, k)    .*(BI(n+k/2-1, n-k)), ZV(t*k+u*(n-k)+r)) ).*(r).num(); } 
-
+A118397	multrar	0	(self, n) -> SU(0, n/2, k -> Z2(k).*(BI(n+1,2*k+1)).*(self.a(k)))	"1"
+A118398	multrar	0	(self, n) -> SU(0, n/2, k -> Z2(k).*(BI(n  ,2*k  )).*(self.a(k)))	"1"
+A255740	arrlamb	1	1	1	1	(n, k) -> n == 1 ? Z.ONE : ZV(n - 2).^(Integer.bitCount(k - 1) - 1).*(n - 1)
+A353164	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(self.a(n-k))).*(k)	"1"	
+A353165	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(BI(n, k)).*(self.a(n-k))).*(k)	"1"	
