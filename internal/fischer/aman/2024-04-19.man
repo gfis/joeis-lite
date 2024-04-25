@@ -1,12 +1,9 @@
-A074707	multrar	0	(self, n) -> RU(1, n - 1, k -> new Q(self.a(k), FA(k).^(2))./(n - k)).*(FA(n).^(2))./(n))num()	"1,1"		a(n)=n!^2/n*sum(k=0, n-1, a(k)/k!^2/(n-k))
-A074793	lambdan	1	n -> SU(1, n, k -> Functions.OMEGA .i(k)     == 1, Z.ZERO, ZV(k)))
-A074794	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 1, Z.ZERO, Z.ONE))
-A074795	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 0, Z.ZERO, Z.ONE))
-A074796	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 2, Z.ZERO, Z.ONE))
-A094115	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(3).^(ZUtils.valuation(ZV(i), ZV(3)))))).negate())
-A094116	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(5).^(ZUtils.valuation(ZV(i), ZV(5)))))).negate())
-A094117	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(7).^(ZUtils.valuation(ZV(i), ZV(7)))))).negate())
----- 2024-04-24 17:09:09
+---- 2024-04-25 22:25:13
+A074707	multrar	0	(self, n) -> RU(1, n - 1, k -> new Q(self.a(k), FA(k).^(2))./(n - k)).*(FA(n).^(2))./(n).num()	"1,1"		a(n)=n!^2/n*sum(k=0, n-1, a(k)/k!^2/(n-k))
+A074793	lambdan	1	n -> SU(1, n, k -> Functions.OMEGA .i(k)     == 1 ? Z.ZERO : ZV(k))	a(n)=sum(k=1, n, k*if(omega(k)-1, 0, 1))
+A074794	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 1 ? Z.ZERO : Z.ONE)
+A074795	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 0 ? Z.ZERO : Z.ONE)
+A074796	lambdan	1	n -> n == 0 ? Z.ZERO : SU(1, n, k -> Functions.SIGMA0.i(k) % 3 == 2 ? Z.ZERO : Z.ONE)
 # A082647	lambdan	0	n -> my(q = sqrt(2*n)); SD(n, d, (d%2) && (d < q))
 # A082926	lambdan	0	n -> SU(1, n, k -> !issquarefree(k)) + 1 - primepi(n)).abs()
 A090410	lambdan	0	n -> SU(1, Z.TEN.^(n).intValueExact(), i -> Z_1(Functions.BIG_OMEGA.i(i)))
@@ -14,17 +11,8 @@ A090410	lambdan	0	n -> SU(1, Z.TEN.^(n).intValueExact(), i -> Z_1(Functions.BIG_
 # A099378	lambdan	0	n -> my(d=divisors(n)); den(#d/SU(k=1, #d, 1/d[k]))
 A099555	tablamb	0	0	n -> new Integer[] { 0, n == 0 ? 0 : 2*n }	(n, k) -> ZV(n - k/2).^(k)	Triangle, read by rows, where T(n,k) = (n-floor(k/2))^k for k = 0..2*n.
 A099556	lambdan	0	n -> SU(0, 2*(n + 1), k -> ZV(n +  1 - k/2).^(k))  	a(n)=sum(k=0, 2*n, (n-k/2)^k)
-A106365	lambdan	0	n -> n == 1 ? ZV(3) : SD(n, d -> PHI(n/d).*(ZV(2).^(d)).+(2*((d & 1) == 1 ? -1 : 1)))./(n)	a(n) = if(n==1, 3, sumdiv(n, d, eulerphi(n/d)*(2*(-1)^d + 2^d))/n)
-A106366	lambdan	0	n -> n == 1 ? ZV(4) : SD(n, d -> PHI(n/d).*(ZV(3).^(d)).+(3*((d & 1) == 1 ? -1 : 1)))./(n)
-A106367	lambdan	0	n -> n == 1 ? ZV(5) : SD(n, d -> PHI(n/d).*(ZV(4).^(d)).+(4*((d & 1) == 1 ? -1 : 1)))./(n)
-A106368	lambdan	0	n -> n == 1 ? ZV(6) : SD(n, d -> PHI(n/d).*(ZV(5).^(d)).+(5*((d & 1) == 1 ? -1 : 1)))./(n)
-# A106464	lambdan	0	n -> SU(k=0, n/2, gcd(n-2*k+1, k+1))
-# A106519	lambdan	0	n -> (2*BI(2*n-2, n-1) - SD(n, d, MU(d)*BI(2*n/d, n/d))/2)/n
 # A108274	lambdan	0	n -> SU(m=1, 10^n, SD(m, d, d*isprime(d)*(d<=sqrt(m))))
-# A108289	lambdan	0	n -> SU(k=0,n,BI(n+(n-k)*k,(n-k)*k+k))
-# A110618	lambdan	0	n -> numbpart(n) - SU(i=0, if (n%2, n/2, n/2-1), numbpart(i))
-# A110625	lambdan	0	n -> num(-SU(k=1, n, (#binary(k) - 2*hammingweight(k))/(2*k*(2*k+1))))
-# A110626	lambdan	0	n -> den(-SU(k=1, n, (#binary(k) - 2*hammingweight(k))/(2*k*(2*k+1))))
+A110618	lambdan	0	n -> Functions.PARTITIONS.z(n).-(SU(0, (n & 1) == 0 ? n/2 : n/2 - 1, i -> Functions.PARTITIONS.z(i)))
 A136483	lambdan	0	n -> RU(1, n/2, k -> new Q(n, 2).^(2)     .-(k*k))     .num().sqrt()	Sum_{k=1..floor(n/2)} floor(sqrt((n/2)^2 - k^2)).
 A136485	simtraf	0	new A136483()	v -> v.*(4)
 A136513	lambdan	0	n -> RU(1, n/2, k -> new Q(n, 2).^(2).-(k*k)).*(2).num().sqrt()
@@ -42,36 +30,67 @@ A136515	lambdan	0	n -> RU(1, n,   k -> new Q(2*n + 1, 2).^(2).-(k*k)).*(2).num()
 # A216388	lambdan	0	n -> SU(1, 10^n,        k -> vecsort(digits(k)) == vecsort(digits(SIGMA(k)-k)))
 # A216389	lambdan	0	n -> SU(1, 10^n,        k -> vecsort(digits(k)) == vecsort(digits(SIGMA(k))))
 # A216390	lambdan	0	n -> SU(10^(n-1), 10^n, k -> vecsort(digits(k)) == vecsort(digits(SIGMA(k))))
-# A216391	lambdan	0	n -> SU(1, 2^n,         k -> vecsort(digits(k)) == vecsort(digits(PHI(k))))
-# A216392	lambdan	0	n -> SU(1, 2^n,         k -> vecsort(digits(k)) == vecsort(digits(SIGMA(k))))
-# A216393	lambdan	0	n -> SU(1, 2^n,         k -> vecsort(digits(k)) == vecsort(digits(SIGMA(k)-k)))
-# A216394	lambdan	0	n -> SU(2^(n-1), 2^n,   k -> vecsort(digits(k)) == vecsort(digits(PHI(k))))
-# A216395	lambdan	0	n -> SU(2^(n-1), 2^n,   k -> vecsort(digits(k)) == vecsort(digits(SIGMA(k))))
-# A216396	lambdan	0	n -> SU(2^(n-1), 2^n,   k -> vecsort(digits(k)) == vecsort(digits(SIGMA(k)-k)))
-# A306093	lambdan	0	n -> SU(k=1,n,€091298(n,k)*3^k,!n)
-# A306094	lambdan	0	n -> !n+SU(k=1,n,€091298(n,k)*4^k)
-# A306095	lambdan	0	n -> !n+SU(k=1,n,€091298(n,k)*5^k)
-# A306096	lambdan	0	n -> SU(k=1,n,€091298(n,k)*6^k,!n)
-# A306099	lambdan	0	n -> !n+SU(k=1,n,€091298(n,k)<<k)
-# A306669	lambdan	0	n -> (1/n)*SD(n, d, MU(n/d)*(n/d)^d*FA(d))
-# A307642	lambdan	0	n -> FA(n)*SU(i=1, n, SU(j=1, i, i/j))
-# A332466	lambdan	0	n -> {SD(n, d, MU(d)*FA(n)/FA(d))}
-# A332467	lambdan	0	n -> {SD(n, d, MU(d)*FA(n)/(FA(d))^(n/d))}
-# A334721	lambdan	0	n -> den(n*SU(k=1, n, (-1)^(k+1)/k))
-# A334724	lambdan	0	n -> den(SU(j=1, n, SU(i=1, n, (-1)^(i+j)*i/j)))              .den()
 A147831	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) != 11*n) { ++k; } return ZV(k); }
 A359944	lambdan	0	n -> SD(n, d -> { final Z d1 = ZV(d - 1); return d1.isPower() != null && d1.auxiliary() == 3 ? Z.ONE : Z.ZERO; })
 # A360072	lambdan	0	n -> if(n < 1, 0, Functions.SIGMA0.z(n) + SU(k=2, (sqrtint(8*n+1)-1)/2, n-BI(k+1,2)+1))
-# A360091	lambdan	0	n -> num((n-2)!*SU(k=1, n, (-1)^(k+1)/((n-k)!*k^k)))
-# A360092	lambdan	0	n -> den((n-2)!*SU(k=1, n, (-1)^(k+1)/((n-k)!*k^k)))
+A360091	lambdan	0	n -> RU(1, n, k -> new Q(Z_1(k + 1).*(ZV(k).^(k)), FA(n - k))).*(FA(n - 2)).num()
+A360092	lambdan	0	n -> RU(1, n, k -> new Q(Z_1(k + 1).*(ZV(k).^(k)), FA(n - k))).*(FA(n - 2)).den()
 # A352476	multrar	0	(self, n) -> if(n==-2, 1, -SU(k=1, n+2, isprime(k+2)*self.a(n-k)))    .negate()	"1"		
 # A352479	multrar	0	(self, n) -> if(n==-2, 1, -SU(k=1, n+2, isprime(2*k+3)*self.a(n-k)))  .negate()	"1"		
 # A352529	multrar	0	(self, n) -> if(n== 0, 1, -SU(k=1, n, ispower(k, 4)*self.a(n-k)))     .negate()	"1"		
 # A352530	multrar	0	(self, n) -> if(n== 0, 1, -SU(k=1, n, ispower(k, 5)*self.a(n-k)))     .negate()	"1"		
 # A370477	lambdan	0	n -> { final int r=2; final int t=3/2; final int u=0; return RU(k=0, n, k -> new Q(BI(t*k+u*(n-k)+r, k)    .*(BI(n+k/2-1, n-k)), ZV(t*k+u*(n-k)+r)) ).*(r).num(); }
 # A370478	lambdan	0	n -> { final int r=3; final int t=3/2; final int u=0; return RU(k=0, n, k -> new Q(BI(t*k+u*(n-k)+r, k)    .*(BI(n+k/2-1, n-k)), ZV(t*k+u*(n-k)+r)) ).*(r).num(); } 
-A118397	multrar	0	(self, n) -> SU(0, n/2, k -> Z2(k).*(BI(n+1,2*k+1)).*(self.a(k)))	"1"
-A118398	multrar	0	(self, n) -> SU(0, n/2, k -> Z2(k).*(BI(n  ,2*k  )).*(self.a(k)))	"1"
 A255740	arrlamb	1	1	1	1	(n, k) -> n == 1 ? Z.ONE : ZV(n - 2).^(Integer.bitCount(k - 1) - 1).*(n - 1)
-A353164	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(self.a(n-k))).*(k)	"1"	
-A353165	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(BI(n, k)).*(self.a(n-k))).*(k)	"1"	
+
+# A228334
+# A228334	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }
+In[1]:= Table[c[n+k+i-1, 2k+j-1], {i, 1, 2}, {j, 1, 2}] // Det
+Out[1]=
+-(c[1 + k + n, 2 + 2*k]*c[2 + k + n, 1 + 2*k]) + c[1 + k + n, 1 + 2*k]*c[2 + k + n, 2 + 2*k]
+-(c[k + n, 1 + 2*k]*c[1 + k + n, 2*k]) + c[k + n, 2*k]*c[1 + k + n, 1 + 2*k]
+# A228335	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  } Table[c[n+k+i, 2k+j], {i, 2}, {j, 2}] // Det
+# A228336	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }
+# A228337	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }
+
+%F A071585 Sum_{m=0..2^(k-1)-1} a(2^k + m) = 3^k (k>0).
+%F A089401 Thus a(2^m) = 2^m - m for all m>=0; for 0<=k<=m: a(2^m + k) = a(k) + 2^m + k - m; for m<k<=2^m: a(2^m + k) = a(k) + 2^m - 1. - _Paul D. Hanna_, Mar 28 2005
+%F A093873 a(2^(m+1)+k) - a(2^m+k) = a(k) , m >=0, 0 <= k < 2^m. For k=0 a(0)=0 is needed. - _Yosu Yurramendi_, Jul 22 2016
+%F A093875 a(2^(m+1) + k) - a(2^m + k) = a(k),   m > 0, 0 <= k < 2^m. For k=0, a(0) = 1 is needed.
+%F A104895 a(0) = 0 and for k>=0, 0<= j <2^k, a(2^k + j) = a(j) + 2^k if a(j)<0, a(2^k + j) = a(j) - 2^k if a(j)>=0.
+%F A105081 a(1) = 1, a(2^k + j) = 2^k + a(2^k - j + 1) for 1 <= j <= 2^k.
+%F A108918 a(2^(m+1)-1) = 2^m; a(2^m+k) = a(k+1) + 2^m for 0 <= k < 2^m-1. - _Andrey Zabolotskiy_, Oct 10 2019
+%F A118319 a(2^m) = 2^(m+1) - 1; a(2^m+k) = a(k) + 2^m - 1 for 0 < k < 2^m. - _Andrey Zabolotskiy_, Oct 10 2019
+%N A118577 a(1) = 1. For m >= 0 and 1 <= k <= 2^m, a(2^m +k) = number of earlier terms of the sequence which are coprime to a(k).
+%N
+%N A118982 a(1)=1. For m>=0 and 1<=k<=2^m, a(2^m +k) = number of earlier terms of the sequence that are coprime to k.
+%N A119474 a(2^m + k) = a(k)-th integer among those positive integers not occurring earlier in the sequence, where m >= 0, 1 <= k<= 2^m. a(1) = 1.
+%N A119614 a(1)=1. a(2^m +k) = a(2^m + 1 - k)*a(k) + 1, where 1 <= k <= 2^m, m>=0.
+%N A119671 a(0)=1. a(2^m +k) = a(m) + k, where 0 <= k <= 2^m -1, m >= 0.
+%N A119802 a(1) = 1. For m >= 0 and 1 <= k <= 2^m, a(2^m +k) = number of earlier terms of the sequence which equal a(k).
+%N A119803 a(0) = 0. For m >= 0 and 0 <= k <= 2^m -1, a(2^m +k) = number of earlier terms of the sequence which equal a(k).
+%N A119804 a(0) = 0. For m >= 0 and 0 <= k <= 2^m -1, a(2^m +k) = number of earlier terms of the sequence which equal k.
+%N A119805 a(1) = 1. For m >= 0 and 1 <= k <= 2^m, a(2^m +k) = number of earlier terms of the sequence which equal k.
+%F A120405 a(2^k+m) = m*a(m), 1 <= m < 2^k, k=0,1,2,3,... - _R. J. Mathar_, Aug 17 2006
+%F A120769 a(2^j + k) = (2^j - k) * a(2^j - k - 1) for 0 <= k < 2^j. _Robert Israel_, Apr 20 2014
+%N A139485 a(1)=1. For m >= 0 and 1 <= k <= 2^m, a(2^m +k) = a(k) + Sum_{j=1..2^m} a(j).
+%F A139708 a(2^m + k) = f(2^m + f(k)) for m >= 0, 0 <= k < 2^m where f(n) = A059893(n) for n > 0 with f(0) = 0.
+%F A151548 a(2^k-1) = 2^(k+1)-1 for k >= 0; otherwise a(2^k) = 5 for k >= 1; otherwise a(2^i+j) = 2a(j)+a(j+1) for i >= 2, 1 <= j <= 2^i-2. - _N. J. A. Sloane_, May 22 2009
+%F A151550 a(0)=0; a(2^i)=1; a(2^i-1)=2^(i-1) for i >= 1; otherwise write n = 2^i+j with 1 <= j <= 2^i-2, then a(n) = a(2^i+j) = 2*a(j) + a(j+1).
+%N A151747 Except for boundary cases (n <= 3, j = 0, 1, 2^i-1), satisfies a(n) = a(2^i+j) = 2 a(j) + a(j+1), where n = 2^i + j, 0 <= j < 2^i .
+%F A153141 a(2^m + k) = f(2^m + f(k)) for m >= 0, 0 <= k < 2^m with a(0) = 0.
+%F A156140 a(2^n + k) = -n*a(k) + (n^2 + n + 1)*b(k) for 0 <= k <= 2^n.
+%F A156140 a(2^m + k) = b(2^m+k)*m + b(k), m >= 0, 0 <= k < 2^m. - _Yosu Yurramendi_, Mar 09 2018
+%F A160018 a(n) = a(1) = 0; for k >= 1, a(2^k) = 2^(k-1)-1, a(2^k+i) = 2*a(i) for 1 <= i < 2^k.
+%N A160552 a(0)=0, a(1)=1; a(2^i+j) = 2*a(j) + a(j+1) for 0 <= j < 2^i.
+%F A162909 a(2^m+k) = a(2^m-k-1), a(2^m+2^(m-1)+k) = a(2^m+k) + a(2^(m-1)+k), a(1) = 1, m=0,1,2,3,..., k=0,1,...,2^(m-1)-1. - _Yosu Yurramendi_, Jul 11 2014
+%F A162910 a(2^m+k) = a(2^m-k-1) + a(2^(m-1)+k), a(2^m+2^(m-1)+k) = a(2^m-k-1), a(1) = 1, m=0,1,2,3,..., k=0,1,...,2^(m-1)-1. - _Yosu Yurramendi_, Jul 11 2014
+%F A301977 a(2^n + k) = a(2^(n+1)-1 - k) for any n >= 0 and k=0..2^n-1.
+%F A306556 a(2^n+k) = 2*3^(n-1) + a(k) for 1 <= k <= 2^n.
+%F A324338 a(2^m+k) = A324337(2^m+2^(m-1)+k), m > 0, 0 <= k < 2^(m-1). (End)
+%F A324338 a(2^(m+1)+k) - a(2^m+k) = A324337(k), m >= 0,  0 <= k < 2^m.
+%F A329320 a(2^m+k) = a(k mod 2^(m-1)) + 1 for 0<=k<2^m, m>0 with a(0)=0, a(1)=1.
+%F A334227 a(0) = 0, a(1) = 2, a(2) = 2, and a(2^i + j) = 7*2^i + j-1 for i >= 0 and 2 <= j <= 2^i + 1.
+%F A356120 a(2^m + k) = 2^(m-1) + a(2^(m-1) + k - 1), for k = 0, 1, ..., 2^(m-1) - 1, and
+
+
