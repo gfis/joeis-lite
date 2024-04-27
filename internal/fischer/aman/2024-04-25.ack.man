@@ -1,0 +1,102 @@
+# A216391	partsun	1	new A216394()
+# A216392	partsun	1	new A216395()
+# A216393	partsun	1	new A216396()
+---- 2024-04-25 21:59:15
+---- 2024-04-25 22:25:12
+A071883	lambdir	0	n -> SEQ.a(n).*(SEQ.a(n + 2))	new A002487()	A002487(n)*A002487(n+2).
+A071908	lambdir	0	n -> SEQ.a(n).*(SEQ.a(n + 1)).*(SEQ.a(n + 2))	new A002487()	A002487(n)*A002487(n+1)*A002487(n+2).
+A071909	simtraf	0	new A071908()	v -> v./(2)	A002487(n)*A002487(n+1)*A002487(n+2)/2.
+A071911	filtpos	0	0	new A002487()	v -> v.mod(3) == 0	Numbers m such that Sterns diatomic A002487(m) is divisible by 3.
+A080087	simtraf	1	new A000040()	p -> ZV(ZUtils.valuation(FA(p), ZV(5)))
+A094115	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(3).^(ZUtils.valuation(ZV(i), ZV(3)))))).negate()
+A094116	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(5).^(ZUtils.valuation(ZV(i), ZV(5)))))).negate()
+A094117	lambdan	1	n -> SU(1, n  , k -> SU(1, k-1, i -> Z_1(i).*(ZV(7).^(ZUtils.valuation(ZV(i), ZV(7)))))).negate()
+A098219	simtraf	1	new A051027()	(n, v) -> v./(n)	a(n) = floor(sigma(sigma(n))/n) = floor(A051027(n)/n).
+A101650	simtraf	0	new A002487().skip(1)	v -> v.-(1).mod(ZV(3))	a(n)=mod(-1+A002487(n+1), 3).
+A106365	lambdan	1	n -> n == 1 ? ZV(3) : SD(n, d -> PHI(n/d).*(Z_1(d).*(2).+(Z2(d))))./(n)	a(n) = if(n==1, 3, sumdiv(n, d, eulerphi(n/d)*(2*(-1)^d + 2^d))/n)
+A106366	lambdan	1	n -> n == 1 ? ZV(4) : SD(n, d -> PHI(n/d).*(Z_1(d).*(3).+(ZV(3).^(d))))./(n)
+A106367	lambdan	1	n -> n == 1 ? ZV(5) : SD(n, d -> PHI(n/d).*(Z_1(d).*(4).+(ZV(4).^(d))))./(n)
+A106368	lambdan	1	n -> n == 1 ? ZV(6) : SD(n, d -> PHI(n/d).*(Z_1(d).*(5).+(ZV(5).^(d))))./(n)
+A106464	lambdan	0	n -> SU(0, n/2, k -> ZV(n - 2*k + 1).gcd(ZV(k + 1)))
+A106519	lambdan	1	n -> (BI(2*n - 2, n - 1).*(2).-(SD(n, d -> BI(2*n/d, n/d).*(MU(d)))./(2)))./(n)
+A108289	lambdan	0	n -> SU(0, n, k -> BI(n + (n - k)*k,(n - k)*k + k))
+A110625	lambdan	1	n -> RU(1, n, k -> new Q(2*Integer.bitCount(k) - IntegerUtils.floorLog2(k) - 1, 2*k*(2*k + 1))).num()
+A110626	lambdan	1	n -> RU(1, n, k -> new Q(2*Integer.bitCount(k) - IntegerUtils.floorLog2(k) - 1, 2*k*(2*k + 1))).den()
+A118397	multrar	0	(self, n) -> SU(0, n/2, k -> Z2(k).*(BI(n+1,2*k+1)).*(self.a(k)))	"1"
+A118398	multrar	0	(self, n) -> SU(0, n/2, k -> Z2(k).*(BI(n  ,2*k  )).*(self.a(k)))	"1"
+A118977	parmof4	0	A151568	1	1	"0,1"	a(0)=0, a(1)=1; a(2^i+j) = a(j) + a(j+1) for 0 <= j < 2^i.
+A122155	lambdan	0	n -> { final int m = Integer.highestOneBit(n); final int j = n - m; return (j == 0) ? ZV(n) : ZV(2*m - j); }
+A138775	tablamb	0	0	n -> new Integer[] { 0, (n)/5 }	(n, k) -> BI(n - 2*k, 3*k)	T(n,k)=binomial(n-2k,3k) (n>=0, 0<=k<=n/5).	nonn,tabf
+A138776	tablamb	1	1	n -> new Integer[] { 0, (n - 1)/5 }	(n, k) -> BI(n - 2*k, 3*k + 1)	T(n,k)=binomial(n-2k,3k+1) (n>=1, 0<=k<=(n-1)/5).	nonn,tabf
+A138777	tablamb	2	2	n -> new Integer[] { 0, (n - 2)/5 }	(n, k) -> BI(n - 2*k, 3*k + 2)	T(n,k)=binomial(n-2k,3k+2) (n>=2, 0<=k<=(n-2)/5).	nonn,tabf
+A138778	tablamb	5	5	n -> new Integer[] { 1, n/5 }	(n, k) -> BI(n - 2*k, 3*k).*(k)	T(n,k)=k*binomial(n-2k,3k) (n>=5, 1<=k<=n/5).	nonn,tabf
+A138779	tablamb	6	6	n -> new Integer[] { 1, (n - 1)/5 }	(n, k) -> BI(n - 2*k, 3*k + 1).*(k)	T(n,k)=k*binomial(n-2k,3k+1) (n>=6, 0<=k<=(n-1)/5).	nonn,tabf
+A138780	tablamb	7	7	n -> new Integer[] { 1, (n - 2)/5 }	(n, k) -> BI(n - 2*k, 3*k + 2).*(k)	T(n,k)=k*binomial(n-2k,3k+2) (n>=7, 1<=k<=(n-2)/5).	nonn,tabf
+A151569	parmof4	0	A151568	2	1	"1,2"
+A151570	parmof4	0	A151568	1	1	"1,1"
+A151571	parmof4	0	A151568	1	1	"1,2"
+A151572	parmof4	0	A151568	1	2	"0,1"
+A151573	parmof4	0	A151568	1	2	"1,1"
+A151574	parmof4	0	A151568	1	2	"1,2"
+A151702	parmof4	0	A151568	1	1	"1,0"
+A151703	parmof4	0	A151568	1	2	"1,0"
+A151704	parmof4	0	A151568	2	1	"1,0"
+A151705	parmof4	0	A151568	2	2	"0,1"
+A151706	parmof4	0	A151568	2	2	"1,0"
+A151707	parmof4	0	A151568	2	2	"1,1"
+A151708	parmof4	0	A151568	2	2	"1,2"
+A162956	parmof4	0	A151568	3	1	"0,1"
+A170854	parmof4	0	A151568	3	2	"0,1"
+A170855	parmof4	0	A151568	1	3	"0,1"
+A170856	parmof4	0	A151568	2	3	"0,1"
+A170857	parmof4	0	A151568	3	3	"0,1"
+A170858	parmof4	0	A151568	3	1	"1,0"
+A170859	parmof4	0	A151568	3	2	"1,0"
+A170860	parmof4	0	A151568	1	3	"1,0"
+A170861	parmof4	0	A151568	2	3	"1,0"
+A170862	parmof4	0	A151568	3	3	"1,0"
+A170863	parmof4	0	A151568	3	1	"1,1"
+A170864	parmof4	0	A151568	3	2	"1,1"
+A170865	parmof4	0	A151568	1	3	"1,1"
+A170866	parmof4	0	A151568	2	3	"1,1"
+A170867	parmof4	0	A151568	3	3	"1,1"
+A170868	parmof4	0	A151568	3	1	"1,2"
+A170869	parmof4	0	A151568	3	2	"1,2"
+A170870	parmof4	0	A151568	1	3	"1,2"
+A170871	parmof4	0	A151568	2	3	"1,2"
+A170872	parmof4	0	A151568	3	3	"1,2"
+A178304	trilamb0	0	(n, m) -> { final DirectSequence f = new A002487(); return Z.ONE.+(f.a(n + 1).*(f.a(m + 1).+(f.a(n - m + 1)).-(Z.ONE).-(f.a(n + 1)))); }	Triangle T(n,m) = 1 + f(n+1)*(f(m+1) + f(n-m+1) - 1 - f(n+1)), read by rows, where f(.)=A002487(.).
+A247821	filnum	1	1	k -> SIGMA(SIGMA(2*k - 1)).IPP()
+A247822	filter	1	new A051027()	PRIME
+A274515	dirtraf	0	new A002487()	new SimpleTransformSequence(1, new A065361(), (n, v) -> v.+(1))	A002487(A065361(n) + 1).
+A283474	multraf	0	(self, n) -> self.a(n - 1).+(self.a(n - self.s(0).intValueExact()))	"0,1"	new A002487()	a(0) = 0, a(1) = 1, for n > 1, a(n) = a(n-1) + a(n-A002487(n)).
+A283986	multraf	1	(self, n) -> self.s(1).or(self.s(0))	""	new A002487(), PREVIOUS	a(n) = A002487(n-1) OR A002487(n), where OR is bitwise-or (A003986).
+A283987	multraf	1	(self, n) -> self.s(1).xor(self.s(0))	""	new A002487(), PREVIOUS	a(n) = A002487(n-1) XOR A002487(n), where XOR is bitwise-xor (A003987).
+A283988	multraf	1	(self, n) -> self.s(1).and(self.s(0))	""	new A002487(), PREVIOUS	a(n) = A002487(n-1) AND A002487(n), where AND is bitwise-and (A004198).
+A284272	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A002487(), new A284271()
+A286387	dirtraf	0	new A002487()	new A000290()	a(n) = A002487(n^2).
+A286387	lambdir	0	n -> SEQ.a(n*n)	new A002487()
+A287729	lambdir	1	n -> { final int b = Integer.highestOneBit(n); final int k = n - b; final int m =IntegerUtils.floorLog2(n); return (m & 1) == 0 ? SEQ.a(b - k) : SEQ.a(k); }	new A002487()	For m >= 0, m even, 0 <= k < 2^m, a(2^m+k) = A002487(2^m-k).
+A287823	lambdir	1	n -> { final int b = Integer.highestOneBit(n); final int k = n - b; final int m =IntegerUtils.floorLog2(n); return (m & 1) == 0 ? SEQ.a(b - k) : SEQ.a(k); }	new A287896()	For m >= 0, m even, 0 <= k < 2^m, a(2^m+k) = A287896(2^m-k).  A002487(n)*A001511(n).
+A287824	lambdir	1	n -> { final int b = Integer.highestOneBit(n); final int k = n - b; final int m =IntegerUtils.floorLog2(n); return (m & 1) == 0 ? SEQ.a(k) : SEQ.a(b - k); }	new A287896()	For m >= 0, m even, 0 <= k < 2^m, a(2^m+k) = A287896(k).  A287896[0] = 0 is needed.
+A306669	lambdan	1	n -> SD(n, d -> ZV(n/d).^(d).*(MU(n/d)).*(FA(d)))./(n)
+A307642	lambdan	1	n -> RU(1, n, i -> RU(1, i, j -> new Q(i, j))).*(FA(n)).num()
+A309043	lambdir	0	n -> SU(0, n, k -> SEQ.a(k + 1).*(SEQ.a(n - k + 1)))	new A002487()	a(n) = Sum_{k=0..n} A002487(k+1)*A002487(n-k+1).
+A317837	lambdir	1	n -> SD(n, d -> d < n ? SEQ.a(d) : Z.ZERO)	new A002487()	a(n) = Sum_{d|n, d<n} A002487(d).
+A317838	lambdir	1	n -> SD(n, d -> SEQ.a(d))	new A002487()	new A002487()	a(n) = Sum_{d|n} A002487(d).
+A318509	muldirs	1	(p, e) -> SEQ.a(p).^(e)	new A002487()	Completely multiplicative with a(p) = A002487(p) new A002487().
+A318510	muldirs	1	(p, e) -> SEQ.a(Puma.nextPrimeZ(p)).^(e)	new A002487()	Completely multiplicative with a(prime(k)) = A002487(prime(k+1)).
+A321154	lambdir	0	n -> { final int r = IntegerUtils.floorLog2(n) + 1; return SEQ.a(n).*(r).-(SEQ.a(Z2(r).+(n))); }	new A002487()	a(n) = s(n)*r - s(2^r + n), where s(n) = A002487(n) starting at n = 0 and r = 1 + floor(log_2(n)).
+A324116	dirtraf	1	new A002487()	new SimpleTransformSequence(1, new A323247(), (n, v) -> v.+(1))
+A324285	dirtraf	1	new A002487()	new A297168()
+A324288	dirtraf	0	new A002487()	new SimpleTransformSequence(1, new A005187(), (n, v) -> v.+(1))
+A324294	dirtraf	1	new A002487()	new SimpleTransformSequence(1, new A000203(), (n, v) -> v.+(1))
+A324338	dirtral	0	new A002487()	new A233279()	(n, v) -> n == 0 ? Z.ONE : v
+A331748	multraf	0	(self, n) -> self.s(0).xor(self.s(1))	""	new A002487(), new A323901()	a(n) = A002487(n) XOR A323901(n) = A002487(n) XOR A002487(A163511(n)).
+A332466	lambdan	1	n -> RD(n, d -> new Q(FA(n).*(MU(d)), FA(d))       ).num()
+A332467	lambdan	1	n -> RD(n, d -> new Q(FA(n).*(MU(d)), FA(d).^(n/d))).num()
+A334721	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k+1), ZV(k))).*(n).den()
+A334724	lambdan	1	n -> RU(1, n, j -> RU(1, n, i -> new Q(Z_1(i + j).*(i), ZV(j)))).den()
+A336546	multraf	1	(self, n) -> self.s(0).equals(self.s(1)) ? Z.ONE : Z.ZERO	""	new A051027(), new A353802()
+A353164	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(self.a(n-k)).*(k))	"1"
+A353165	multrar	0	(self, n) -> SU(1, n  , k -> (ZV(k).IPP() ? Z.ONE : Z.ZERO).*(BI(n, k)).*(self.a(n-k)).*(k))	"1"

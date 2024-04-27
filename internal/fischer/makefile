@@ -8620,3 +8620,26 @@ s3:
 	scp ../../src/irvine/test/HolonomicRecurrenceTest.java 	gf:~/work/gits/joeis/src/irvine/test
 s4:
 	scp ../../internal/irvine/oeis/RecurrenceReflector.java	gf:~/work/gits/joeis/internal/irvine/oeis/
+#----
+chf1:
+	grep CharacteristicFunction $(COMMON)/joeis_names.txt |cut -f1 \
+	| tee $@.tmp
+	wc -l $@.tmp
+chf2:
+	cat chf1.tmp | xargs -i{} make chf3 AS={}
+chf3:
+	make rstest A=$(AS) Q="2" | tee -a $@.tmp
+	make rstest A=$(AS) Q="3" | tee -a $@.tmp
+	make rstest A=$(AS) Q="4" | tee -a $@.tmp
+	make rstest A=$(AS) Q="5" | tee -a $@.tmp
+	make rstest A=$(AS) Q="6" | tee -a $@.tmp
+	make rstest A=$(AS) Q="7" | tee -a $@.tmp
+	make rstest A=$(AS) Q="8" | tee -a $@.tmp
+	make rstest A=$(AS) Q="9" | tee -a $@.tmp
+	make rstest A=$(AS) Q="10"| tee -a $@.tmp
+chf4:
+	grep -P "^\-?\d+\,|^java" chf3.tmp \
+	| perl -ne 'if (m{^java}) { my $$pos = index($$_, "-a"); $$_ = substr($$_, $$pos + 3); s{ \-s \"\"\s*}{\t}; '\
+	' s/ *-q */\trstest\t/; s/\"//g;'\
+	' } print;'  \
+	| tee $@.tmp

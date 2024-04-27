@@ -53,6 +53,34 @@ Out[1]=
 # A228336	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }
 # A228337	trilamb0	0	(n, k) -> { BI(2*n - k, n).*(k + 1)./(n + 1) return  }
 
+% A071766 a(n) = A002487(A059893(A233279(n))) = A002487(1+A059893(A006068(n))), n > 0. - _Yosu Yurramendi_, Sep 29 2021
+% A071884 Trajectory of 37 under map x -> A002487(x)*A002487(x+1).
+% A071885 Trajectory of 38 under map x -> A002487(x)*A002487(x+1).
+% A071886 Trajectory of 41 under map x -> A002487(x)*A002487(x+1).
+% A089595 T(n, 2*k) = T(n-1, k) = T(n, k) - A002487(k).
+% A089595 The k-th column is an arithmetic progression with : T(n, k) = T(0, k) + n* A002487(k).
+% A098221 a(n) = Min{x;floor(A051027(x)/x)=n)
+% A156140 Let b(n) = A002487(n), Sterns diatomic series.
+% A178568 For the r-th row, a(2^k+n) = r*a(n)+a(2^k-n). - _Andrey Zabolotskiy_, Oct 21 2021
+% A229742 a(n) = A002487(A059893(A006068(n))) = A002487(1+A059893(A233279(n))), n > 0. - _Yosu Yurramendi_, Sep 29 2021
+% A245325 a(n) = A002487(A059893(A180200(n))) = A002487(1+A059893(€154435(n))). - _Yosu Yurramendi_, Sep 20 2021
+% A245326 a(n) = A002487(1+A059893(A180200(n))) = A002487(A059893(€154435(n))). - _Yosu Yurramendi_, Sep 20 2021
+% A245327 a(n) = A002487(€284459(n)). - _Yosu Yurramendi_, Aug 23 2021
+% A245328 a(n) = A002487(1+€284459(n)). - _Yosu Yurramendi_, Aug 23 2021
+% A270362 a(n) = max_{0 <= i <= n} A002487(i).
+% A280545 Numbers k such that A051027(k) is in A000045. - _Wesley Ivan Hurt_, Apr 05 2023
+% A283974 Numbers n for which A002487(n-1) AND A002487(n) > 0 where AND is bitwise-and (A004198).
+% A284007 a(n) = a(a(n-A002487(n))) + a(n-a(n-A002487(n))) with a(1) = a(2) = 1, where A002487 = Stern-Brocot sequence.
+% A295079 a(n) = least k > n such that A002487(k) = A002487(n).
+% A295149 Numbers n such that gcd(A002487(n), A002487(n+2)) > 1.
+% A331748 a(n) = A002487(n) XOR A002487(A163511(n)).
+% A336549 Numbers k, not powers of primes, such that A051027(k) = Product_{p^e|k} A051027(p^e). Here each p^e is the maximal power of prime p that divides k, and % % A336560 Numbers k at which points A336456(k) appears multiplicative, but A051027(k) does not.%
+% A336561 Numbers k at which point A336459(k) appears multiplicative, but A051027(k) does not.
+% A354195 a(n) = A064989(A051027(A003961(n))).
+% A354196 a(n) = A064989(€354195(A003961(n))) = A064989(A064989(A051027(A003961(A003961(n))))).
+% A357144 Square array, A(n, k), n, k >= 0, read by antidiagonals; A(n, k) = g(f(n) * f(k)) where f(m) = A002487(m)/A002487(m+1) and g is the inverse of f.
+% A360413 Irregular table T(n, k), n >= 0, k = 1..A002487(n+1), read by rows; the n-th row lists the numbers k such that A065361(k) = n.
+
 %F A071585 Sum_{m=0..2^(k-1)-1} a(2^k + m) = 3^k (k>0).
 %F A089401 Thus a(2^m) = 2^m - m for all m>=0; for 0<=k<=m: a(2^m + k) = a(k) + 2^m + k - m; for m<k<=2^m: a(2^m + k) = a(k) + 2^m - 1. - _Paul D. Hanna_, Mar 28 2005
 %F A093873 a(2^(m+1)+k) - a(2^m+k) = a(k) , m >=0, 0 <= k < 2^m. For k=0 a(0)=0 is needed. - _Yosu Yurramendi_, Jul 22 2016

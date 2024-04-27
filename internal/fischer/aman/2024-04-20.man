@@ -1,35 +1,109 @@
 ---- 2024-04-25 21:19:41
-
-% A071766 a(n) = A002487(A059893(A233279(n))) = A002487(1+A059893(A006068(n))), n > 0. - _Yosu Yurramendi_, Sep 29 2021
-% A071884 Trajectory of 37 under map x -> A002487(x)*A002487(x+1).
-% A071885 Trajectory of 38 under map x -> A002487(x)*A002487(x+1).
-% A071886 Trajectory of 41 under map x -> A002487(x)*A002487(x+1).
-% A089595 T(n, 2*k) = T(n-1, k) = T(n, k) - A002487(k).
-% A089595 The k-th column is an arithmetic progression with : T(n, k) = T(0, k) + n* A002487(k).
-% A098221 a(n) = Min{x;floor(A051027(x)/x)=n)
-% A156140 Let b(n) = A002487(n), Sterns diatomic series.
-% A178568 For the r-th row, a(2^k+n) = r*a(n)+a(2^k-n). - _Andrey Zabolotskiy_, Oct 21 2021
-% A229742 a(n) = A002487(A059893(A006068(n))) = A002487(1+A059893(A233279(n))), n > 0. - _Yosu Yurramendi_, Sep 29 2021
-% A245325 a(n) = A002487(A059893(A180200(n))) = A002487(1+A059893(€154435(n))). - _Yosu Yurramendi_, Sep 20 2021
-% A245326 a(n) = A002487(1+A059893(A180200(n))) = A002487(A059893(€154435(n))). - _Yosu Yurramendi_, Sep 20 2021
-% A245327 a(n) = A002487(€284459(n)). - _Yosu Yurramendi_, Aug 23 2021
-% A245328 a(n) = A002487(1+€284459(n)). - _Yosu Yurramendi_, Aug 23 2021
-% A270362 a(n) = max_{0 <= i <= n} A002487(i).
-% A280545 Numbers k such that A051027(k) is in A000045. - _Wesley Ivan Hurt_, Apr 05 2023
-% A283974 Numbers n for which A002487(n-1) AND A002487(n) > 0 where AND is bitwise-and (A004198).
-% A284007 a(n) = a(a(n-A002487(n))) + a(n-a(n-A002487(n))) with a(1) = a(2) = 1, where A002487 = Stern-Brocot sequence.
-% A295079 a(n) = least k > n such that A002487(k) = A002487(n).
-% A295149 Numbers n such that gcd(A002487(n), A002487(n+2)) > 1.
-% A331748 a(n) = A002487(n) XOR A002487(A163511(n)).
-% A336549 Numbers k, not powers of primes, such that A051027(k) = Product_{p^e|k} A051027(p^e). Here each p^e is the maximal power of prime p that divides k, and A051027(k) = sigma(sigma(k)).
-% A336560 Numbers k at which points A336456(k) appears multiplicative, but A051027(k) does not.
-% A336561 Numbers k at which point A336459(k) appears multiplicative, but A051027(k) does not.
-% A354195 a(n) = A064989(A051027(A003961(n))).
-% A354196 a(n) = A064989(€354195(A003961(n))) = A064989(A064989(A051027(A003961(A003961(n))))).
-% A357144 Square array, A(n, k), n, k >= 0, read by antidiagonals; A(n, k) = g(f(n) * f(k)) where f(m) = A002487(m)/A002487(m+1) and g is the inverse of f.
-% A360413 Irregular table T(n, k), n >= 0, k = 1..A002487(n+1), read by rows; the n-th row lists the numbers k such that A065361(k) = n.
 A071881	lambdir	0	n -> SEQ.a(n).*(SEQ.a(n + 1))	new A002487()
 A244642	multrar	0	(self, n) -> { final int j = n - Integer.highestOneBit(n); return self.a(j).*(4).add(self.a(n - j - 1)); }	"1"	a(0) = 1, a(2^k + j) = 4*a(j) + a(2^k - j - 1).
 A244643	multrar	0	(self, n) -> { final int j = n - Integer.highestOneBit(n); return self.a(j).*(4).add(self.a(n - j - 2)); }	"0,1"	a(-1) = 0, a(0) = 1, a(2^k + j) = 4*a(j) + a(2^k - j - 2).
 A309530	lambdan	0	n -> Z.valueOf(ZUtils.valuation(Functions.SIGMA.z(Functions.SIGMA.z(Z2(n))), Z.TWO))	a(n) = valuation(2*sigma(sigma(2^n)), 2);
 A333922	lambdir	0	n -> Z.ONE.-(Z2(n).*(SEQ.a(n)./(SEQ.a(n + 1)).mod(ZV(2))))	new A002487()	a(n) = 1 - (floor(2^n*A002487(n)/A002487(n+1)) mod 2).
+# A216394	lambdan	1	n -> SU(1 << (n - 1), 1 << n, k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k)).equals(Functions.DIGIT_SORT_ASCENDING.z(PHI(k)))        ? Z.ONE : Z.ZERO)
+# A216395	lambdan	1	n -> SU(1 << (n - 1), 1 << n, k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k)).equals(Functions.DIGIT_SORT_ASCENDING.z(SIGMA(k)))      ? Z.ONE : Z.ZERO)
+# A216396	lambdan	1	n -> SU(1 << (n - 1), 1 << n, k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k)).equals(Functions.DIGIT_SORT_ASCENDING.z(SIGMA(k).-(k))) ? Z.ONE : Z.ZERO)
+# A283976	lambdir	0	n -> { final int nh = n/2; return (n & 0) == 0 ? SEQ.a(nh) : SEQ.a(nh).or(SEQ.a(nh + 1)) ; }	new A002487()	a(2n) = A002487(2n) = A002487(n), a(2n+1) = A002487(n) OR A002487(n+1), where OR is bitwise-or (A003986).
+# A283977	lambdir	0	n -> { final int nh = n/2; return (n & 0) == 0 ? SEQ.a(nh) : SEQ.a(nh).xor(SEQ.a(nh + 1)); }	new A002487()	a(2n) = A002487(2n) = A002487(n), a(2n+1) = A002487(n) XOR A002487(n+1), where XOR is bitwise-xor (A003987).
+# A283978	lambdir	0	n -> { final int nh = n/2; return (n & 0) == 0 ? Z.ZERO : SEQ.a(nh).and(SEQ.a(nh + 1)); }	new A002487()	a(2n) = 0, a(2n+1) = A002487(n) AND A002487(n+1), where AND is bitwise-and (A004198).
+
+A367488	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A367490()
+A323664	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A002426() 	Sum_{k=1..n} A002426(k)*binomial(n-1,k-1)*a(n-k).
+A323666	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A000984()
+A323667	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A001405()
+A323668	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A001700()
+A323672	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A001006()
+A347915	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354507()
+A353993	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A353992()
+A354288	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A088501()
+A354289	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A335531()
+A354291	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A032033()
+A354503	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354506()
+A354504	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354508()
+A354505	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354509()
+A354610	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A007114()
+A354612	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A007113()
+A356025	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356009()
+A356335	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356010()
+A356336	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356297()
+A356337	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356298()
+A356392	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356389()
+A356393	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356390()
+A356394	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356391()
+A356402	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356401()
+A356408	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356406()
+A356409	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356407()
+A356439	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356436()
+A356440	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356437()
+A356458	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A355886()
+A356460	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354863()
+A356461	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356459()
+A356487	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356486()
+A356494	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354843()
+A356495	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354892()
+A356524	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354849()
+A356530	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356529()
+A356590	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356589()
+A356595	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356600()
+A356596	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354338()
+A356597	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354339()
+A356598	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354340()
+A356599	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354341()
+
+A308417	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(FA(k)).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"0,1"	new A026741()
+A318580	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(FA(k)).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"0,1"	new A000219()
+A320898	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(FA(k)).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"0,1"	new A000122()
+A320899	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(FA(k)).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"0,1"	new A015128()
+
+A299166	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A000219()	a(0) = 1; a(n) = Sum_{k=1..n} A000219(k-1)*a(n-k).
+A299106	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A000009()
+A299108	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A015128()
+A299162	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A006906()
+A299164	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A022629()
+A299167	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A026007()
+A299208	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A081362()
+A299209	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A022661()
+A299210	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A022693()
+A299211	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A073592()
+A299212	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A255528()
+A302015	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A007325()
+A302016	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A003823()
+A302017	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A000700()
+A302018	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A010052()
+A302019	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A010057()
+A302020	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k - 1).*(self.a(n - k)))	"0,1"	new A001935()
+
+A346968	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n, k)).*(self.a(n - k)))	"0,1"	new A000085()	Sum_{k=1..n} binomial(n,k) * A000085(k) * a(n-k).
+A328004	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n, k)).*(self.a(n - k)))	"0,1"	new A000984()
+A328006	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n, k)).*(self.a(n - k)))	"0,1"	new A000108()
+A330019	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n, k)).*(self.a(n - k)))	"0,1"	new A001405()
+A346430	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n, k)).*(self.a(n - k)))	"0,1"	new A008578()
+A347948	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n, k)).*(self.a(n - k)))	"0,1"	new A010051()
+
+%F A275069 A(n,k) = Product_{i=0..k-1} A000110(floor((n+i)/k)
+%F A275070 a(n) = Product_{i=0..2} A000110(floor((n+i)/3)).
+%F A275071 a(n) = Product_{i=0..3} A000110(floor((n+i)/4)).
+%F A275072 a(n) = Product_{i=0..4} A000110(floor((n+i)/5)).
+%F A275073 a(n) = Product_{i=0..5} A000110(floor((n+i)/6)).
+%F A275074 a(n) = Product_{i=0..6} A000110(floor((n+i)/7)).
+%F A275075 a(n) = Product_{i=0..7} A000110(floor((n+i)/8)).
+%F A275076 a(n) = Product_{i=0..8} A000110(floor((n+i)/9)).
+%F A275077 a(n) = Product_{i=0..9} A000110(floor((n+i)/10)).
+
+%N A135084 a(n) = A000110(2^n-1).
+%N A135085 a(n) = A000110(2^n).
+%F A137736 a(n) = Bell(n(n-1)/2) = A000110(n(n-1)/2)
+
+A283762	rstest	0	new A010051()	3	"0,0,0"
+A341982	rstest	0	new A010051()	2	""
+A341983	rstest	0	new A010051()	4	""
+A341984	rstest	0	new A010051()	5	""
+A341985	rstest	0	new A010051()	6	""
+A341986	rstest	0	new A010051()	7	""
+A341987	rstest	0	new A010051()	8	""
+A341988	rstest	0	new A010051()	9	""
+A341989	rstest	0	new A010051()	10	""
