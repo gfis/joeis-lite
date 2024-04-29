@@ -1,0 +1,14 @@
+---- 2024-04-29 15:07:46
+A173677	ordsum	0	new A010057().skip(2)	2
+A051343	ordsum	0	new A010057().skip(2)	3	0,0
+
+
+
+
+
+A051296	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(self.a(n - k)))	"1"	new A000142()	
+
+
+# A280683	nyi Ft	Number of ways to write n as an ordered sum of two positive squarefree semiprimes (A006881).	nonn,easy	1..106	nyi	_Ilya Gutkovskiy_
+
+# A285796	ordsum	0	new A280710().skip(1)	2		Number of ways to write n as an ordered sum of two numbers that are the product of an even number of distinct primes (including 1).

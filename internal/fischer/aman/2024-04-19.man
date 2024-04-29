@@ -89,16 +89,10 @@ Out[1]=
 %F A105081 a(1) = 1, a(2^k + j) = 2^k + a(2^k - j + 1) for 1 <= j <= 2^k.
 %F A108918 a(2^(m+1)-1) = 2^m; a(2^m+k) = a(k+1) + 2^m for 0 <= k < 2^m-1. - _Andrey Zabolotskiy_, Oct 10 2019
 %F A118319 a(2^m) = 2^(m+1) - 1; a(2^m+k) = a(k) + 2^m - 1 for 0 < k < 2^m. - _Andrey Zabolotskiy_, Oct 10 2019
-%N A118577 a(1) = 1. For m >= 0 and 1 <= k <= 2^m, a(2^m +k) = number of earlier terms of the sequence which are coprime to a(k).
-%N
-%N A118982 a(1)=1. For m>=0 and 1<=k<=2^m, a(2^m +k) = number of earlier terms of the sequence that are coprime to k.
+%
 %N A119474 a(2^m + k) = a(k)-th integer among those positive integers not occurring earlier in the sequence, where m >= 0, 1 <= k<= 2^m. a(1) = 1.
 %N A119614 a(1)=1. a(2^m +k) = a(2^m + 1 - k)*a(k) + 1, where 1 <= k <= 2^m, m>=0.
 %N A119671 a(0)=1. a(2^m +k) = a(m) + k, where 0 <= k <= 2^m -1, m >= 0.
-%N A119802 a(1) = 1. For m >= 0 and 1 <= k <= 2^m, a(2^m +k) = number of earlier terms of the sequence which equal a(k).
-%N A119803 a(0) = 0. For m >= 0 and 0 <= k <= 2^m -1, a(2^m +k) = number of earlier terms of the sequence which equal a(k).
-%N A119804 a(0) = 0. For m >= 0 and 0 <= k <= 2^m -1, a(2^m +k) = number of earlier terms of the sequence which equal k.
-%N A119805 a(1) = 1. For m >= 0 and 1 <= k <= 2^m, a(2^m +k) = number of earlier terms of the sequence which equal k.
 %F A120405 a(2^k+m) = m*a(m), 1 <= m < 2^k, k=0,1,2,3,... - _R. J. Mathar_, Aug 17 2006
 %F A120769 a(2^j + k) = (2^j - k) * a(2^j - k - 1) for 0 <= k < 2^j. _Robert Israel_, Apr 20 2014
 %N A139485 a(1)=1. For m >= 0 and 1 <= k <= 2^m, a(2^m +k) = a(k) + Sum_{j=1..2^m} a(j).
@@ -115,8 +109,6 @@ Out[1]=
 %F A162910 a(2^m+k) = a(2^m-k-1) + a(2^(m-1)+k), a(2^m+2^(m-1)+k) = a(2^m-k-1), a(1) = 1, m=0,1,2,3,..., k=0,1,...,2^(m-1)-1. - _Yosu Yurramendi_, Jul 11 2014
 %F A301977 a(2^n + k) = a(2^(n+1)-1 - k) for any n >= 0 and k=0..2^n-1.
 %F A306556 a(2^n+k) = 2*3^(n-1) + a(k) for 1 <= k <= 2^n.
-%F A324338 a(2^m+k) = A324337(2^m+2^(m-1)+k), m > 0, 0 <= k < 2^(m-1). (End)
-%F A324338 a(2^(m+1)+k) - a(2^m+k) = A324337(k), m >= 0,  0 <= k < 2^m.
 %F A329320 a(2^m+k) = a(k mod 2^(m-1)) + 1 for 0<=k<2^m, m>0 with a(0)=0, a(1)=1.
 %F A334227 a(0) = 0, a(1) = 2, a(2) = 2, and a(2^i + j) = 7*2^i + j-1 for i >= 0 and 2 <= j <= 2^i + 1.
 %F A356120 a(2^m + k) = 2^(m-1) + a(2^(m-1) + k - 1), for k = 0, 1, ..., 2^(m-1) - 1, and

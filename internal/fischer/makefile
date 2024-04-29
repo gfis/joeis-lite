@@ -145,6 +145,8 @@ intritest:
 intridiff:
 	$(JAVA) irvine.oeis.a070.A070080 -s 1 -e 50 > $@.tmp
 	diff -y -w --width=160 --suppress-common-lines $@.tmp $(CONTRIB)/intripl50.tmp
+invtest:
+	$(JAVA) irvine.oeis.transform.InvertTransformSequence -n $(NT) -a "$(A)" -o $(OFFSET) -d $(D) -s "$(S)"
 mortest:
 	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -n $(NT) -i "$(INIT)" -a "$(ANCH)" -m "$(MAP)" -o $(OFFSET)
 rstest:
@@ -8621,25 +8623,43 @@ s3:
 s4:
 	scp ../../internal/irvine/oeis/RecurrenceReflector.java	gf:~/work/gits/joeis/internal/irvine/oeis/
 #----
-chf1:
-	grep CharacteristicFunction $(COMMON)/joeis_names.txt |cut -f1 \
+# A342254 nyi Ft  Number of ways to write n as an ordered sum of ten powers of 2.
+ordsum0:
+	grep -P "as an ordered sum of" $(COMMON)/joeis_names.txt \
+	| tee $@.tmp
+ordsum1:
+	grep CharacteristicFunction $(COMMON)/joeis_names.txt | cut -f1 \
 	| tee $@.tmp
 	wc -l $@.tmp
-chf2:
-	cat chf1.tmp | xargs -i{} make chf3 AS={}
-chf3:
-	make rstest A=$(AS) Q="2" | tee -a $@.tmp
-	make rstest A=$(AS) Q="3" | tee -a $@.tmp
-	make rstest A=$(AS) Q="4" | tee -a $@.tmp
-	make rstest A=$(AS) Q="5" | tee -a $@.tmp
-	make rstest A=$(AS) Q="6" | tee -a $@.tmp
-	make rstest A=$(AS) Q="7" | tee -a $@.tmp
-	make rstest A=$(AS) Q="8" | tee -a $@.tmp
-	make rstest A=$(AS) Q="9" | tee -a $@.tmp
-	make rstest A=$(AS) Q="10"| tee -a $@.tmp
-chf4:
-	grep -P "^\-?\d+\,|^java" chf3.tmp \
+ordsum2:
+	cat ordsum1.txt | xargs -i{} make ordsum3 AS={}
+ordsum3:
+	make rstest A=$(AS) Q="2" | tee -a $@.txt
+	make rstest A=$(AS) Q="3" | tee -a $@.txt
+	make rstest A=$(AS) Q="4" | tee -a $@.txt
+	make rstest A=$(AS) Q="5" | tee -a $@.txt
+	make rstest A=$(AS) Q="6" | tee -a $@.txt
+	make rstest A=$(AS) Q="7" | tee -a $@.txt
+	make rstest A=$(AS) Q="8" | tee -a $@.txt
+	make rstest A=$(AS) Q="9" | tee -a $@.txt
+	make rstest A=$(AS) Q="10"| tee -a $@.txt
+ordsum4:
+	grep -P "^\-?\d+\,|^java" ordsum3.txt \
 	| perl -ne 'if (m{^java}) { my $$pos = index($$_, "-a"); $$_ = substr($$_, $$pos + 3); s{ \-s \"\"\s*}{\t}; '\
 	' s/ *-q */\trstest\t/; s/\"//g;'\
 	' } print;'  \
 	| tee $@.tmp
+ordsum5:
+	perl ordsum.pl ordsum4.tmp \
+	| tee $@.txt
+	wc -l $@.txt
+ordsum6:
+	grep -E "^A" ordsum5.txt | grep -v "A353625" \
+	| perl -ne 's/\)/\)\.skip\(\)/; print;' \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen 
+ordsum7:
+	grep -E "^A[0-9]" aman/2024-04-29.man | cut -f1 > $@.tmp
+	grep -vf $@.tmp ordsum0.tmp > ordsum0.man
+#----

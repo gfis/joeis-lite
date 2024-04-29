@@ -1,0 +1,141 @@
+A063691	ordsup	0	new A010052().skip(2)	3	0,0,0
+A063725	ordsup	0	new A010052().skip(2)	2	0,0
+A063730	ordsup	0	new A010052().skip(2)	4	0,0,0,0
+A073267	ordsup	0	new A036987().skip()	2	0,0
+A076608	ordsup	1	new A066247().skip()	2	0
+A085359	ordsum	0	new A085357().skip()	3
+A098235	ordsup	1	new A008966().skip(1)	2	0
+A151759	ordsup	0	new A036987().skip()	3	0,0,0
+A151760	ordsup	0	new A036987().skip()	4	0,0,0,0
+A151761	ordsup	0	new A036987().skip()	5	0,0,0,0,0
+A151762	ordsup	0	new A036987().skip()	6	0,0,0,0,0,0
+A159981	ordsup	0	new A036987().skip()	2	1
+A245575	ordsum	0	new A240025().skip()	2
+A261422	ordsum	0	new A136522().skip()	3
+A261679	ordsum	0	new A178225().skip()	2
+A261680	ordsum	0	new A178225().skip()	4
+A280210	ordsup	0	new A008966().skip(1)	3	0,0,0
+A280718	ordsum	0	new A255849().skip()	5
+A282349	ordsum	0	new A256432().skip()	7
+A282499	ordsup	0	new A075802().skip()	3	0,0,0
+A282570	ordsup	0	new A354927().skip()	2	0,0
+A283762	ordsup	0	new A080339().skip()	3	0,0,0
+A285796	ordsup	0	new A280710().skip()	2	0,0
+A302290	ordsum	0	new A079559().skip()	2
+A339625	ordsup	1	new A100923().skip()	2	0
+A340481	ordsum	5	new A010052().skip(2)	5
+A340905	ordsum	6	new A010052().skip(2)	6
+A340906	ordsum	7	new A010052().skip(2)	7
+A340915	ordsum	8	new A010052().skip(2)	8
+A340946	ordsum	9	new A010052().skip(2)	9
+A340947	ordsum	10	new A010052().skip(2)	10
+A341064	ordsum	4	new A008966().skip(1)	4
+A341065	ordsum	5	new A008966().skip(1)	5
+A341066	ordsum	6	new A008966().skip(1)	6
+A341067	ordsum	7	new A008966().skip(1)	7
+A341068	ordsum	8	new A008966().skip(1)	8
+A341069	ordsum	9	new A008966().skip(1)	9
+A341070	ordsum	10	new A008966().skip(1)	10
+A341480	ordsum	3	new A005171().skip(1)	3
+A341481	ordsum	4	new A005171().skip(1)	4
+A341482	ordsum	5	new A005171().skip(1)	5
+A341483	ordsum	6	new A005171().skip(1)	6
+A341484	ordsum	7	new A005171().skip(1)	7
+A341485	ordsum	8	new A005171().skip(1)	8
+A341486	ordsum	9	new A005171().skip(1)	9
+A341504	ordsum	10	new A005171().skip(1)	10
+A341982	ordsum	2	new A080339().skip()	2
+A341983	ordsum	4	new A080339().skip()	4
+A341984	ordsum	5	new A080339().skip()	5
+A341985	ordsum	6	new A080339().skip()	6
+A341986	ordsum	7	new A080339().skip()	7
+A341987	ordsum	8	new A080339().skip()	8
+A341988	ordsum	9	new A080339().skip()	9
+A341989	ordsum	10	new A080339().skip()	10
+A342250	ordsum	7	new A036987().skip()	7
+A342251	ordsum	8	new A036987().skip()	8
+A342252	ordsum	9	new A036987().skip()	9
+A342254	ordsum	10	new A036987().skip()	10
+A362426	ordsup	0	new A075802().skip()	2	0,0
+A368821	ordsup	1	new A336040().skip()	2	0
+---- 2024-04-29 11:21:45
+A340960	ordsum	8	new A010051().skip(2)	4	Number of ways to write n as an ordered sum of 4 primes.	nonn	8..10000
+A340961	ordsum	10	new A010051().skip(2)	5	Number of ways to write n as an ordered sum of 5 primes.	nonn	10..10000
+A340962	ordsum	12	new A010051().skip(2)	6	Number of ways to write n as an ordered sum of 6 primes.	nonn	12..10000
+A340963	ordsum	14	new A010051().skip(2)	7	Number of ways to write n as an ordered sum of 7 primes.	nonn	14..10000
+A340964	ordsum	16	new A010051().skip(2)	8	Number of ways to write n as an ordered sum of 8 primes.	nonn	16..10000
+A340965	ordsum	18	new A010051().skip(2)	9	Number of ways to write n as an ordered sum of 9 primes.	nonn	18..10000
+A340966	ordsum	20	new A010051().skip(2)	10	Number of ways to write n as an ordered sum of 10 primes.	nonn	20..10000
+A340977	ordsum	4	new A010057().skip(2)	4	Number of ways to write n as an ordered sum of 4 positive cubes.	nonn	4..10000
+A340978	ordsum	5	new A010057().skip(2)	5	Number of ways to write n as an ordered sum of 5 positive cubes.	nonn	5..10000
+A340979	ordsum	6	new A010057().skip(2)	6	Number of ways to write n as an ordered sum of 6 positive cubes.	nonn	6..10000
+A340980	ordsum	7	new A010057().skip(2)	7	Number of ways to write n as an ordered sum of 7 positive cubes.	nonn	7..10000
+A340981	ordsum	8	new A010057().skip(2)	8	Number of ways to write n as an ordered sum of 8 positive cubes.	nonn,look	8..10000
+A340982	ordsum	9	new A010057().skip(2)	9	Number of ways to write n as an ordered sum of 9 positive cubes.	nonn	9..10000
+A340983	ordsum	10	new A010057().skip(2)	10	Number of ways to write n as an ordered sum of 10 positive cubes.	nonn,look	10..10000
+A341184	ordsum	5	new A136522().skip(2)	5	Number of ways to write n as an ordered sum of 5 nonzero decimal palindromes.	nonn,base	5..10000
+A341191	ordsum	2	new A136522().skip(2)	2	Number of ways to write n as an ordered sum of 2 nonzero decimal palindromes.	nonn,base	2..20000
+A341192	ordsum	3	new A136522().skip(2)	3	Number of ways to write n as an ordered sum of 3 nonzero decimal palindromes.	nonn,base	3..20000
+A341193	ordsum	4	new A136522().skip(2)	4	Number of ways to write n as an ordered sum of 4 nonzero decimal palindromes.	nonn,base	4..20000
+A341203	ordsum	6	new A136522().skip(2)	6	Number of ways to write n as an ordered sum of 6 nonzero decimal palindromes.	nonn,base	6..10000
+A341204	ordsum	7	new A136522().skip(2)	7	Number of ways to write n as an ordered sum of 7 nonzero decimal palindromes.	nonn,base	7..10000
+A341205	ordsum	8	new A136522().skip(2)	8	Number of ways to write n as an ordered sum of 8 nonzero decimal palindromes.	nonn,base	8..10000
+A341206	ordsum	9	new A136522().skip(2)	9	Number of ways to write n as an ordered sum of 9 nonzero decimal palindromes.	nonn,base	9..10000
+A341207	ordsum	10	new A136522().skip(2)	10	Number of ways to write n as an ordered sum of 10 nonzero decimal palindromes.	nonn,base	10..10000
+A341794	ordsum	3	new A023533().skip(2)	3	Number of ways to write n as an ordered sum of 3 nonzero tetrahedral numbers.	nonn	3..95
+A341795	ordsum	4	new A023533().skip(2)	4	Number of ways to write n as an ordered sum of 4 nonzero tetrahedral numbers.	nonn	4..85
+A341796	ordsum	5	new A023533().skip(2)	5	Number of ways to write n as an ordered sum of 5 nonzero tetrahedral numbers.	nonn	5..1000
+A341797	ordsum	6	new A023533().skip(2)	6	Number of ways to write n as an ordered sum of 6 nonzero tetrahedral numbers.	nonn	6..1000
+A341806	ordsum	7	new A023533().skip(2)	7	Number of ways to write n as an ordered sum of 7 nonzero tetrahedral numbers.	nonn	7..1000
+A341807	ordsum	8	new A023533().skip(2)	8	Number of ways to write n as an ordered sum of 8 nonzero tetrahedral numbers.	nonn	8..1000
+A341808	ordsum	9	new A023533().skip(2)	9	Number of ways to write n as an ordered sum of 9 nonzero tetrahedral numbers.	nonn	9..1000
+A341809	ordsum	10	new A023533().skip(2)	10	Number of ways to write n as an ordered sum of 10 nonzero tetrahedral numbers.	nonn	10..1000
+---- 2024-04-29 11:31:40
+A023670	ordsum	1	new A023533().skip(2)	2
+A053603	ordsup	0	new A010054().skip(2)	2	0,0	Number of ways to write n as an ordered sum of two nonzero triangular numbers.	nonn
+A053604	ordsup	0	new A010054().skip(2)	3	0,0,0	Number of ways to write n as an ordered sum of 3 nonzero triangular numbers.	nonn
+A073610	ordsup	1	new A010051().skip(2)	2	0,0,0
+A076608	ordsup	1	new A005171().skip()	2	0
+A098238	ordsup	0	new A010051().skip(2)	3	0,0,0,0,0,0
+A121549	ordsup	1	new A010056().skip(2)	2	0
+A121550	ordsup	1	new A010056().skip(2)	3	0,0
+A159981	ordsup	0	new A036987().skip()	2	1
+A340949	ordsum	4	new A010054().skip(2)	4		Number of ways to write n as an ordered sum of 4 nonzero triangular numbers.	nonn
+A340950	ordsum	5	new A010054().skip(2)	5		Number of ways to write n as an ordered sum of 5 nonzero triangular numbers.	nonn
+A340951	ordsum	6	new A010054().skip(2)	6		Number of ways to write n as an ordered sum of 6 nonzero triangular numbers.	nonn
+A340952	ordsum	7	new A010054().skip(2)	7		Number of ways to write n as an ordered sum of 7 nonzero triangular numbers.	nonn
+A340953	ordsum	8	new A010054().skip(2)	8		Number of ways to write n as an ordered sum of 8 nonzero triangular numbers.	nonn
+A340954	ordsum	9	new A010054().skip(2)	9		Number of ways to write n as an ordered sum of 9 nonzero triangular numbers.	nonn
+A340955	ordsum	10	new A010054().skip(2)	10		Number of ways to write n as an ordered sum of 10 nonzero triangular numbers.	nonn
+A357688	ordsum	4	new A010056().skip(2)	4	Number of ways to write n as an ordered sum of four positive Fibonacci numbers (with a single type of 1).	nonn	4..10000
+A357690	ordsum	5	new A010056().skip(2)	5	Number of ways to write n as an ordered sum of five positive Fibonacci numbers (with a single type of 1).	nonn	5..10000
+A357691	ordsum	6	new A010056().skip(2)	6	Number of ways to write n as an ordered sum of six positive Fibonacci numbers (with a single type of 1).	nonn	6..17711
+A357694	ordsum	7	new A010056().skip(2)	7	Number of ways to write n as an ordered sum of seven positive Fibonacci numbers (with a single type of 1).	nonn	7..49
+A357716	ordsum	8	new A010056().skip(2)	8	Number of ways to write n as an ordered sum of eight positive Fibonacci numbers (with a single type of 1).	nonn	8..48
+A357717	ordsum	9	new A010056().skip(2)	9	Number of ways to write n as an ordered sum of nine positive Fibonacci numbers (with a single type of 1).	nonn	9..47
+A357730	ordsum	10	new A010056().skip(2)	10	Number of ways to write n as an ordered sum of ten positive Fibonacci numbers (with a single type of 1).	nonn	10..45
+---- 2024-04-29 14:36:30
+A000925	ordsum	0	new A010052().skip(1)	2
+A002102	ordsum	0	new A010052().skip(1)	3
+A014110	ordsum	0	new A010052().skip(1)	4
+A038671	ordsum	0	new A010052().skip(1)	5
+A045848	ordsum	0	new A010052().skip(1)	6
+A045849	ordsum	0	new A010052().skip(1)	7
+A045850	ordsum	0	new A010052().skip(1)	8
+A045851	ordsum	0	new A010052().skip(1)	9
+A045852	ordsum	0	new A010052().skip(1)	10
+A045853	ordsum	0	new A010052().skip(1)	12
+A045854	ordsum	0	new A010052().skip(1)	24
+A282062	ordsup	0	new A010055().skip(1)	2	0,0	Number of ways to write n as an ordered sum of 4 prime powers (including 1).	nonn
+A282064	ordsup	0	new A010055().skip(1)	3	0,0,0	Number of ways to write n as an ordered sum of 4 prime powers (including 1).	nonn
+A341133	ordsum	4	new A010055().skip(1)	4		Number of ways to write n as an ordered sum of 4 prime powers (including 1).	nonn
+A341134	ordsum	5	new A010055().skip(1)	5		Number of ways to write n as an ordered sum of 5 prime powers (including 1).	nonn
+A341135	ordsum	6	new A010055().skip(1)	6		Number of ways to write n as an ordered sum of 6 prime powers (including 1).	nonn
+A341136	ordsum	7	new A010055().skip(1)	7		Number of ways to write n as an ordered sum of 7 prime powers (including 1).	nonn
+A341137	ordsum	8	new A010055().skip(1)	8		Number of ways to write n as an ordered sum of 8 prime powers (including 1).	nonn
+A341138	ordsum	9	new A010055().skip(1)	9		Number of ways to write n as an ordered sum of 9 prime powers (including 1).	nonn
+A341139	ordsum	10	new A010055().skip(1)	10		Number of ways to write n as an ordered sum of 10 prime powers (including 1).	nonn
+---- 2024-04-29 15:07:44
+A002175	ordsum	0	new A080995().skip(1)	2
+A059160	ordsum	0	new A080995().skip(1)	5
+A290943	ordsum	0	new A080995().skip(1)	3	Number of ways to write n as an ordered sum of 3 generalized pentagonal numbers (A001318).	nonn	0..10000
