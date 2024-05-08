@@ -1,14 +1,16 @@
 ---- 2024-04-29 15:07:46
 A173677	ordsum	0	new A010057().skip(2)	2
 A051343	ordsum	0	new A010057().skip(2)	3	0,0
-
-
-
-
-
 A051296	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(self.a(n - k)))	"1"	new A000142()	
-
-
 # A280683	nyi Ft	Number of ways to write n as an ordered sum of two positive squarefree semiprimes (A006881).	nonn,easy	1..106	nyi	_Ilya Gutkovskiy_
-
 # A285796	ordsum	0	new A280710().skip(1)	2		Number of ways to write n as an ordered sum of two numbers that are the product of an even number of distinct primes (including 1).
+A125812	multraf	0	(self, n) -> 	q-Bell numbers for q=2; eigensequence of A022166, which is the triangle of Gaussian binomial coefficients [n,k] for q=2.		6
+1, 1, 2, 6, 28, 204, 2344, 43160, 1291952, 63647664, 5218320672, 719221578080, 168115994031040, 67159892835119296, 46166133463916209792, 54941957091151982047616, 113826217192695041078973184 (list; graph; refs; listen; history; text; internal format)
+OFFSET	
+0,3
+LINKS	
+Table of n, a(n) for n=0..16.
+FORMULA	
+a(n) = Sum_{k=0..n-1} A022166(n-1,k) * a(k) for n>0, with a(0)=1.
+
+A275001	parmof2	0	A076739	new A001248()	

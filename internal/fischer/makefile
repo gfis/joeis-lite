@@ -145,8 +145,11 @@ intritest:
 intridiff:
 	$(JAVA) irvine.oeis.a070.A070080 -s 1 -e 50 > $@.tmp
 	diff -y -w --width=160 --suppress-common-lines $@.tmp $(CONTRIB)/intripl50.tmp
+KS=1
 invtest:
-	$(JAVA) irvine.oeis.transform.InvertTransformSequence -n $(NT) -a "$(A)" -o $(OFFSET) -d $(D) -s "$(S)"
+	$(JAVA) irvine.oeis.transform.InvertTransform        -n $(NT) -a "$(A)" -o $(OFFSET) -d $(D) -s $(S) -k $(KS)
+invitest:
+	$(JAVA) irvine.oeis.transform.InverseInvertTransform -n $(NT) -a "$(A)" -o $(OFFSET) -d $(D) -s $(S)
 mortest:
 	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -n $(NT) -i "$(INIT)" -a "$(ANCH)" -m "$(MAP)" -o $(OFFSET)
 rstest:

@@ -1,0 +1,82 @@
+---- 2024-05-08 21:26:29
+# A051296	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(self.a(n - k)))	"1"	new A000142().skip(1)	
+# A051343	ordsum	0	new A010057().skip(2)	3	0,0
+A089836	invtrac	0	new A089835()	1	
+A137682	invtrac	0	new A160096()	1	. - _Gary W. Adamson_, May 01 2009
+A144031	invtrac	0	new A002321()	1	, Mertenss function.
+A157904	invtrac	0	new A000055()	1	.
+
+A337764	invtraf	0	new A060354()	0	0	Number of compositions (ordered partitions) of the n-th n-gonal number into n-gonal numbers. A060354
+# A287148 Number of compositions (ordered partitions) of 2*n-1 into primes of form x^2 + y^2.
+# A298640 Number of compositions (ordered partitions) of n^2 into squares > 1.
+# A333047 Number of compositions                      of 2*n into n powers of 2.
+# A341071 Number of compositions                      of 2*n into n squarefree parts.
+# A341072 Number of compositions                      of 2*n into n Fibonacci parts.
+# A341459 Number of compositions                      of n^2 into n prime parts.
+# A346564 Number of compositions (ordered partitions) of 3^n into powers of 3.
+# A346565 Number of compositions (ordered partitions) of 4^n into powers of 4.
+# A346566 Number of compositions (ordered partitions) of n^4 into fourth powers.
+
+A285796	ordsum	0	new A280710().skip(1)	2		Number of ways to write n as an ordered sum of two numbers that are the product of an even number of distinct primes (including 1).
+
+# A144338	simtraf	0	new A005117().skip(1) 	v -> v
+# A306489 Square array A(n,k), n >= 0, k >= 1, read by antidiagonals, where column k is the expansion of 1/(1 - Sum_{d|k} x^d).
+# A320251 Square array A(n,k), n>=0, k>=0, read by antidiagonals, where column k is the expansion of 1/(1 - Sum_{j>=1} j^k*x^j).
+# 
+# A100346	invtraf	0	new ().skip(1)	Coefficient of x^n in expansion of 1/(1-Sum_{d divides n} x^d ).
+# A100347	invtraf	0	new ().skip(1)	Coefficient of x^n in expansion of 1/(1-Sum_{d : gcd(d, n)=1} x^d ).
+# A305049	invtraf	0	new A163767().skip(1)	Expansion of 1/(1 - Sum_{k>=1} tau_k(k)*x^k), where tau_k(k) = number of ordered k-factorizations of k (€163767).
+
+   
+A369934	simtraf	0	new A369933()	v -> ZV(v.bitLength() - 1)
+A372505	simtraf	0	new A368473()	v -> ZV(v.bitLength() - 1)
+A372467	dirtraf	0	new A051903()	new A036537()	v -> v.+(1)
+A372505	dirtraf	0	new A005361()	new A138302()
+
+A161344	filtpos	1	1	new A033676()	v -> v.equals(ZV(2 ))
+A162529	filtpos	1	1	new A033676()	v -> v.equals(ZV(9 ))
+
+A331109	muldirs	0	(p, e) -> Z2(SEQ.a(e))	new A112310()	Multiplicativewitha(p^e)=(\d+)^Annn(e)	2	A112310
+A366308	muldirs	0	(p, e) -> Z2(SEQ.a(e))	new A139351()	Multiplicativewitha(p^e)=(\d+)^Annn(e)	2	A139351
+A366309	muldirs	0	(p, e) -> Z2(SEQ.a(e))	new A139352()	Multiplicativewitha(p^e)=(\d+)^Annn(e)	2	A139352
+
+A270436	muldirs	0	(p, e) -> p.^(SEQ.a(e))	"1"	new A065621()	Multiplicative with a(p^e) = p^A065621(e).
+
+A365499	mulr	0	(p, e) -> e <= 3 ? ZV(2) : ZV(1)	Multiplicativewitha(p^e)=(\d+)ife<=(\d+),and(\d+)otherwise	2,3,1	
+A166589	mulr	0	(p, e) -> p.-(3).^(e)	Multiplicativewitha(p^e)=(p-(\d+))^e	3	
+A281959	mulr	0	(p, e) -> p.^(25*e + 25).-(1)./(p.^(25).-(1))	a(p^e)=(p^((\d+)*e+(\d+))-(\d+))/(p^(\d+)-(\d+))	25,25,1,25,1	
+A362870	mulr	0	(p, e) -> p.^(25*e + 29).-(1)./(p.^(29).-(1))	a(p^e)=(p^((\d+)*e+(\d+))-(\d+))/(p^(\d+)-(\d+))	29,29,1,29,1	
+
+A366744	muldirs	0	(p, e) -> p.^(SEQ.a(e).+(1)).-(1)./(p.-(1))	new A006519()	Multiplicativewitha(p^e)=(p^(Annn(e)+(\d+))-(\d+))/(p-(\d+))	1,1,1	A006519
+
+A332732	muldirs	0	(p, e) -> SEQ.a(e)	new A163810()	Multiplicativewitha(p^e)=Annn(e)		A163810
+A355823	muldirs	0	(p, e) -> SEQ.a(e)	new A209229()	Multiplicativewitha(p^e)=Annn(e)		A209229
+A355825	muldirs	0	(p, e) -> SEQ.a(e)	new A010060()	Multiplicativewitha(p^e)=Annn(e)		A010060
+A358780	muldirs	0	(p, e) -> SEQ.a(e)	new A001400()	Multiplicativewitha(p^e)=Annn(e)		A001400
+A359411	muldirs	0	(p, e) -> SEQ.a(e)	new A246600()	Multiplicativewitha(p^e)=Annn(e)		A246600
+A366902	muldirs	0	(p, e) -> SEQ.a(e)	new A159481()	Multiplicativewitha(p^e)=Annn(e)		A159481
+A370256	muldirs	0	(p, e) -> SEQ.a(e)	new A103221()	Multiplicativewitha(p^e)=Annn(e)		A103221
+
+A369890	muldirs	0	(p, e) -> SEQ.a(e).+(1)	new A053644()	Multiplicativewitha(p^e)=Annn(e)+(\d+)	1	A053644
+A366901	muldirs	0	(p, e) -> SEQ.a(e).+(1)	new A115384()	Multiplicativewitha(p^e)=Annn(e)+(\d+)	1	A115384
+
+A365296	muldirs	0	(p, e) -> p.^(SEQ.a(e))	new A006519()	Multiplicativewitha(p^e)=p^Annn(e)		A006519
+A270436	muldirs	0	(p, e) -> p.^(SEQ.a(e))	new A065621()	Multiplicativewitha(p^e)=p^Annn(e)		A065621
+A365684	muldirs	0	(p, e) -> p.^(SEQ.a(e))	new A067535()	Multiplicativewitha(p^e)=p^Annn(e)		A067535
+A365685	muldirs	0	(p, e) -> p.^(SEQ.a(e))	new A081221()	Multiplicativewitha(p^e)=p^Annn(e)		A081221
+A366244	muldirs	0	(p, e) -> p.^(SEQ.a(e))	new A063694()	Multiplicativewitha(p^e)=p^Annn(e)		A063694
+A366245	muldirs	0	(p, e) -> p.^(SEQ.a(e))	new A063695()	Multiplicativewitha(p^e)=p^Annn(e)		A063695
+
+A245471	multrad	0	(self, n) -> (n & 1) == 0 ? SEQ.a(n + 1) : ZV(n / 2)	"2,1"	new A065621()	 If n is odd, then a(n) = A065621(n+1). If n is even, then a(n) = n/2.
+%N A277320 Square array A(r,c) = A048720(A065621(r), c), read by descending antidiagonals as A(1,1), A(1,2), A(2,1), A(1,3), A(2,2), A(3,1), etc.
+%F A277320 A(r,c) = A048720(A065621(r), c).
+%N A277823 a(n) = A048724(A065621(n)).
+%N A277825 a(n) = A048725(A065621(n)) = A048720(A065621(n),5).
+%F A277825 a(n) = A048720(A065621(n),5).
+%N A284270 Square array A(r,c) = A048720(A065621(r), c) mod r, read by descending antidiagonals as A(1,1), A(1,2), A(2,1), A(1,3), A(2,2), A(3,1), etc.
+%F A284270 A(r,c) = €277320(r,c) mod r = A048720(A065621(r), c) mod r.
+%F A284273 a(n) = €277699(n) mod n = A048720(n, A065621(n)) mod n.
+%N A284552 a(n) = A065621(n) modulo n.
+%F A295881	multrad	0	(self, n) ->  If A033879(n) <= 0, a(n) = A048724(-A033879(n)), otherwise a(n) = A065621(A033879(n)).
+%F A297153 If A083254(n) > 0, then a(n) = A065621(A083254(n)), otherwise a(n) = A048724(-A083254(n)).
+%F A323908 If A004718(n) <= 0, a(n) = A048724(-A004718(n)), otherwise a(n) = A065621(A004718(n)).
