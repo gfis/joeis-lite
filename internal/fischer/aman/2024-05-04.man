@@ -80,3 +80,39 @@ A245471	multrad	0	(self, n) -> (n & 1) == 0 ? SEQ.a(n + 1) : ZV(n / 2)	"2,1"	new
 %F A295881	multrad	0	(self, n) ->  If A033879(n) <= 0, a(n) = A048724(-A033879(n)), otherwise a(n) = A065621(A033879(n)).
 %F A297153 If A083254(n) > 0, then a(n) = A065621(A083254(n)), otherwise a(n) = A048724(-A083254(n)).
 %F A323908 If A004718(n) <= 0, a(n) = A048724(-A004718(n)), otherwise a(n) = A065621(A004718(n)).
+
+%F A372267 Equals sqrt((3-2*sqrt(6/5))/7).
+%F A372268 Equals sqrt((3+2*sqrt(6/5))/7).
+%F A372269 Equals sqrt(5-2*sqrt(10/7))/3.
+%F A372270 Equals sqrt(5+2*sqrt(10/7))/3.
+
+%  A370397 a(n) = floor((Product_{k=1..n} (4*k + 1))/4^n).
+%  A370483 a(n) = Product_{k=0..n} binomial(n^2 + k^2, n^2).
+%  A371339 a(n) = Product_{k=1..n} A000178(k)^k.
+%F A371339 a(n) = Product_{k=1..n} BarnesG(k+2)^k.
+%N A372116 a(n) = Product_{k=0..n} (n+k)!^k.
+%N A372117 a(n) = Product_{k=0..n} binomial(n+k, k)^k.
+%F A372117 a(n) = Product_{k=0..n} binomial(n + k, n)^k.
+%N A372140 a(n) = Product_{k=1..n} BarnesG(k)^k.
+%N A372150 a(n) = Product_{k=1..n} k!^(k^2).
+%F A169657 a(n) = sqrt(BarnesG(2*n)*Gamma(n)) / 2^((n-1)/2).
+%N A296607 a(n) = BarnesG(2*n).
+%N A296608 a(n) = BarnesG(3*n).
+%N A296627 a(n) = BarnesG(4*n).
+%N A306635 a(n) = Product_{k=1..n} BarnesG(2*k).
+%N A306651 a(n) = Product_{k=1..n} BarnesG(3*k).
+%N A368209 a(n) = Sum_{k=0..n} BarnesG(k)*BarnesG(n-k).
+%F A371339 a(n) = Product_{k=1..n} BarnesG(k+2)^k.
+%N A372140 a(n) = Product_{k=1..n} BarnesG(k)^k.
+%F A169657 a(n) = sqrt(BarnesG(2*n)*Gamma(n)) / 2^((n-1)/2).
+%N A296607 a(n) = BarnesG(2*n).
+%N A296608 a(n) = BarnesG(3*n).
+%N A296627 a(n) = BarnesG(4*n).
+%N A306635 a(n) = Product_{k=1..n} BarnesG(2*k).
+%N A306651 a(n) = Product_{k=1..n} BarnesG(3*k).
+
+%N A368209 a(n) = Sum_{k=0..n} BarnesG(k)*BarnesG(n-k).
+%F A371339 a(n) = Product_{k=1..n} BarnesG(k+2)^k.
+%N A372140 a(n) = Product_{k=1..n} BarnesG(k)^k.
+
+
