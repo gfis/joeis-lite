@@ -1,0 +1,143 @@
+---- 2024-05-06 13:55:51
+A280194	parmof2	0	A076739	new A005117()	Expansion of 1/(1 - Sum_{k>=1} mu(k)^2*x^k), where mu(k) is the Moebius function (A008683).
+A280197	parmof2	0	A076739	new A005117().skip(1)	Expansion of 1/(1 - Sum_{k>=2} mu(k)^2*x^k), where mu(k) is the Moebius function (A008683).
+A280198	parmof2	0	A076739	new A056911()	Expansion of 1/(1 - Sum_{k>=1} mu(2*k-1)^2*x^(2*k-1)), where mu() is the Moebius function (A008683).
+A280238	parmof2	0	A076739	new A001358()	Expansion of 1/(1 - Sum_{k>=2} floor(bigomega(k)/2)*floor(2/bigomega(k))*x^k), where bigomega(k) is the number of prime divisors of k counted with multiplicity (A001222).
+A280240	parmof2	0	A076739	new A000037()	Expansion of 1/(1 - Sum_{k>=1} x^(k+floor(1/2+sqrt(k)))).
+A280544	parmof2	0	A076739	new A002808()	Expansion of 1/(1 - Sum_{k>=2} (1 - floor(2/d(k)))*x^k), where d(k) is the number of divisors (A000005).
+A280863	parmof2	0	A076739	new A016754()	Expansion of 1/(1 - Sum_{k>=0} x^((2*k+1)^2)).
+A280865	parmof2	0	A076739	new A016755()	Expansion of 1/(1 - Sum_{k>=0} x^((2*k+1)^3)).
+A282500	parmof2	0	A076739	new A001597()	Expansion of 1/(1 - Sum_{k = i^j, i>=1, j>=2} x^k).
+A282502	parmof2	0	A076739	new A005448()	Expansion of 1/(1 - Sum_{k>=0} x^(3*k*(k+1)/2+1)).
+A282504	parmof2	0	A076739	new A001844()	Expansion of 1/(1 - Sum_{k>=0} x^(2*k*(k+1)+1)).
+---- 2024-05-06 21:17:09
+A173677	ordsum	0	new A010057().skip(1)	2
+---- 2024-05-06 23:09:54
+A144028	invtras	0	new A055615()	0	, n*mu(n).
+A295553	invtras	0	new A001147()	0	Expansion of 1/(1 - Sum_{k>=1} (2*k-1)!!*x^k).
+A300662	invtras	0	new A008578()	0	.
+A300663	invtras	0	new A008683()	0	Expansion of 1/(1 - Sum_{k>=1} mu(k)*x^k), where mu() is the Moebius function (A008683).
+A304963	invtras	0	new A007425()	0	Expansion of 1/(1 - Sum_{i>=1, j>=1, k>=1} x^(i*j*k)).
+A304964	invtras	0	new A007426()	0	Expansion of 1/(1 - Sum_{i>=1, j>=1, k>=1, l>=1} x^(i*j*k*l)).
+A307058	invtras	0	new A000700()	0	.
+A307073	invtras	0	new A001615()	0	Expansion of 1/(1 - Sum_{k>=1} mu(k)^2*x^k/(1 - x^k)^2).
+A307075	invtras	0	new A007434()	0	Expansion of 1/(1 - Sum_{k>=1} mu(k)*x^k*(1 + x^k)/(1 - x^k)^3).
+A317535	invtras	0	new A000065()	0	.
+A318493	invtras	0	new A038040()	0	Expansion of 1/(1 - Sum_{i>=1, j>=1} i*j*x^(i*j)).
+A320649	invtras	0	new A001157()	0	Expansion of 1/(1 - Sum_{k>=1} k^2*x^k/(1 - x^k)).
+A321262	invtras	0	new A001065()	0	Expansion of 1/(1 - Sum_{k>=1} k*x^(2*k)/(1 - x^k)).
+A327738	invtras	0	new A046951()	0	.
+A327739	invtras	0	new A038548()	0	.
+A327764	invtras	0	new A007862()	0	.
+---- 2024-05-06 23:13:21
+A159929	invtras	0	new A000010()	0	.
+A300671	invtras	0	new A001221()	0	Expansion of 1/(1 - Sum_{k>=1} x^prime(k)/(1 - x^prime(k))).
+A300672	invtras	0	new A001222()	0	Expansion of 1/(1 - Sum_{p prime, k>=1} x^(p^k)/(1 - x^(p^k))).
+A302557	invtras	0	new A000166()	0	.
+A307057	invtras	0	new A002865()	0	.
+A307059	invtras	0	new A010815()	0	.
+A307060	invtras	0	new A081362()	0	.
+A307062	invtras	0	new A026007()	0	.
+A307063	invtras	0	new A022629()	0	.
+A307067	invtras	0	new A025147()	0	.
+A307068	invtras	0	new A032020()	0	.
+A307076	invtras	0	new A008836()	0	Expansion of 1/(1 - Sum_{k>=1} lambda(k)*x^k), where lambda() is the Liouville function (A008836).
+A307364	invtras	0	new A002110()	0	Expansion of 1/(1 - Sum_{k>=1} prime(k)#*x^k), where prime(k)# is the product of first k primes (A002110).
+A317536	invtras	0	new A111133()	0	.
+A320650	invtras	0	new A001227()	0	Expansion of 1/(1 - Sum_{k>=1} x^k/(1 - x^(2*k))).
+A320651	invtras	0	new A000593()	0	Expansion of 1/(1 - Sum_{k>=1} k*x^k/(1 + x^k)).
+A320652	invtras	0	new A006906()	0	.
+A320654	invtras	0	new A015128()	0	.
+A327736	invtras	0	new A001511()	0	.
+A327798	invtras	0	new A032741()	0	.
+A329274	invtras	0	new A000031()	0	.
+A329275	invtras	0	new A001037()	0	.
+A329276	invtras	0	new A000048()	0	.
+---- 2024-05-08 09:01:23
+A275001	invtrac	0	new A001248()	0	Expansion of 1/(1 - Sum_{k>=1} x^(prime(k)^2)).
+A278929	invtrac	0	new A030078()	0	Expansion of 1/(1 - Sum_{k>=1} x^(prime(k)^3)).
+A280195	invtrac	0	new A246655()	0	Expansion of 1/(1 - Sum_{k>=2} floor(1/omega(k))*x^k), where omega(k) is the number of distinct prime factors (A001221).
+A280254	invtrac	0	new A000041()	0	Expansion of 1/(1 - Sum_{k>=1} x^p(k)), where p(k) is the number of partitions of k (A000041).
+A280605	invtrac	0	new A246547()	0	Expansion of 1/(1 - Sum_{p prime, k>=2} x^(p^k)).
+A281422	invtrac	0	new A006450()	0	Expansion of 1/(1 - Sum_{k>=1} x^prime(prime(k))).
+A282906	invtrac	0	new A007504()	0	Expansion of 1/(1 - Sum_{j>=1} x^(Sum_{i=1..j} prime(i))).
+A280542	invtrac	0	new A000290().skip(2)	0	Expansion of 1/(1 - Sum_{k>=2} x^(k^2)).
+A280200	invtrac	0	new A061345().skip(1)	0	Expansion of 1/(1 - Sum_{k>=2} floor(1/omega(2*k-1))*x^(2*k-1)), where omega() is the number of distinct prime factors (A001221).
+---- 2024-05-08 11:35:30
+A372200	lambdan	0	n -> { final int r=2; final int s=2; final int t=0, u=1; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(FA(n)).*(r).num(); }
+A372201	lambdan	0	n -> { final int r=3; final int s=3; final int t=0, u=1; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(n+(s-1)*k-1, n-k))./(FA(k))).*(FA(n)).*(r).num(); }
+A372202	lambdan	0	n -> { final int r=2; final int s=2; final int t=0, u=1; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(FA(n)).*(r).num(); }
+A372203	lambdan	0	n -> { final int r=3; final int s=3; final int t=0, u=1; return RU(0, n, k -> new Q(t*k+u*(n-k)+r).^(k-1).*(BI(s*k, n-k)        )./(FA(k))).*(FA(n)).*(r).num(); }
+A372233	lambdan	0	n -> { final int s=2; final int t=1; final int u= 1; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372235	lambdan	0	n -> RU(0, n, k -> new Q(3*k+2, 2).^(n-1).*(BI(n, k))).num()
+A372236	lambdan	0	n -> RU(0, n, k -> new Q(1*k+2, 2).^(n-1).*(BI(n, k))).num()
+A372251	lambdan	0	n -> RU(0, n, k -> new Q(2*n+k+1, 2).^(n-1).*(BI(n, k)))./(2).num()
+A372278	lambdan	0	n -> RU(0, n, k -> new Q(5*k+2, 2).^(n-1).*(BI(n, k))).num()
+A372279	lambdan	0	n -> RU(0, n, k -> new Q(5*k, 2).^(n-k).*(new Q(5*k+2, 2).^(k-1).*(BI(n, k)))).num()
+A372315	lambdan	0	n -> SU(0, n, k -> ZV(2*k+1).^(k-1).*(BI(n, k)))
+A372316	lambdan	0	n -> SU(0, n, k -> ZV(3*k+1).^(k-1).*(BI(n, k)))
+A372320	lambdan	0	n -> SU(0, n, k -> ZV(2*k-1).^(k-1).*(BI(n, k)))
+A372321	lambdan	0	n -> SU(0, n, k -> ZV(3*k-1).^(k-1).*(BI(n, k)))
+A372333	lambdan	0	n -> SU(1, n, k -> ZV(2*k)  .^(k-1).*(BI(n, k)))
+A372334	lambdan	0	n -> SU(1, n, k -> ZV(3*k)  .^(k-1).*(BI(n, k)))
+A372369	lambdan	0	n -> { final int s=2; final int t=3; final int u=-1; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((t+u)*n-k, n-s*k))                     )  ; }
+A372370	lambdan	0	n -> { final int s=2; final int t=2; final int u=-1; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((t+u)*n-k, n-s*k))                     )  ; }
+A372371	lambdan	0	n -> { final int s=3; final int t=2; final int u=-1; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((t+u)*n-k, n-s*k))                     )  ; }
+A372372	lambdan	0	n -> { final int s=3; final int t=3; final int u=-1; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((t+u)*n-k, n-s*k))                     )  ; }
+A372373	lambdan	0	n -> { final int s=3; final int t=3; final int u=-2; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((t+u)*n-k, n-s*k))                     )  ; }
+A372374	lambdan	0	n -> { final int s=3; final int t=3; final int u= 0; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((t+u)*n-k, n-s*k))                     )  ; }
+A372375	lambdan	0	n -> { final int s=3; final int t=2; final int u=-1; return SU(0, n/s, k -> BI(t*(n+1), k).*(BI((t+u)*(n+1)-k, n-s*k)))./(n+1)            ; }
+A372376	lambdan	0	n -> { final int s=3; final int t=3; final int u=-1; return SU(0, n/s, k -> BI(t*(n+1), k).*(BI((t+u)*(n+1)-k, n-s*k)))./(n+1)            ; }
+A372377	lambdan	0	n -> { final int s=3; final int t=3; final int u=-2; return SU(0, n/s, k -> BI(t*(n+1), k).*(BI((t+u)*(n+1)-k, n-s*k)))./(n+1)            ; }
+A372378	lambdan	0	n -> { final int s=3; final int t=3; final int u= 0; return SU(0, n/s, k -> BI(t*(n+1), k).*(BI((t+u)*(n+1)-k, n-s*k)))./(n+1)            ; }
+A372382	lambdan	0	n -> { final int s=2; final int t=4; final int u=-3; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((t+u)*n-k, n-s*k))                     )  ; }
+A372383	lambdan	0	n -> { final int s=2; final int t=4; final int u=-3; return SU(0, n/s, k -> BI(t*(n+1), k).*(BI((t+u)*(n+1)-k, n-s*k)))./(n+1)            ; }
+A372410	lambdan	0	n -> { final int s=2; final int t=1; final int u= 3; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372411	lambdan	0	n -> { final int s=2; final int t=2; final int u= 3; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372412	lambdan	0	n -> { final int s=2; final int t=3; final int u= 3; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372413	lambdan	0	n -> { final int s=3; final int t=1; final int u= 1; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372414	lambdan	0	n -> { final int s=3; final int t=1; final int u= 2; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372415	lambdan	0	n -> { final int s=3; final int t=1; final int u= 3; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372416	lambdan	0	n -> { final int s=3; final int t=2; final int u= 2; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372417	lambdan	0	n -> { final int s=3; final int t=2; final int u= 3; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372418	lambdan	0	n -> { final int s=3; final int t=2; final int u= 2; return SU(0, n/s, k -> BI(t*(n+1), k).*(BI((u-t+1)*(n+1)-(s-1)*k-2, n-s*k)))./(n+1)  ; }
+A372458	lambdan	0	n -> { final int s=2; final int t=2; final int u= 1; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372459	lambdan	0	n -> { final int s=3; final int t=2; final int u= 1; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372460	lambdan	0	n -> { final int s=2; final int t=2; final int u= 2; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372461	lambdan	0	n -> { final int s=3; final int t=2; final int u= 2; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372462	lambdan	0	n -> { final int s=2; final int t=2; final int u= 1; return SU(0, n/s, k -> Z_1(k).*(BI(t*n+k-1, k)).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k)))   ; }
+A372463	lambdan	0	n -> { final int s=3; final int t=2; final int u= 1; return SU(0, n/s, k -> Z_1(k).*(BI(t*n+k-1, k)).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k)))   ; }
+A372464	lambdan	0	n -> { final int s=2; final int t=2; final int u= 2; return SU(0, n/s, k -> Z_1(k).*(BI(t*n+k-1, k)).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k)))   ; }
+A372465	lambdan	0	n -> { final int s=3; final int t=2; final int u= 2; return SU(0, n/s, k -> Z_1(k).*(BI(t*n+k-1, k)).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k)))   ; }
+A372476	lambdan	0	n -> { final int s=3; final int t=1; final int u= 1; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+A372506	lambdan	0	n -> { final int s=1; final int t=1; final int u= 1; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
+---- 2024-05-08 13:34:35
+A161345	filtpos	1	1	new A033676()	v -> v.equals(ZV(3 ))
+A161424	filtpos	1	1	new A033676()	v -> v.equals(ZV(4 ))
+A161835	filtpos	1	1	new A033676()	v -> v.equals(ZV(5 ))
+A162526	filtpos	1	1	new A033676()	v -> v.equals(ZV(6 ))
+A162528	filtpos	1	1	new A033676()	v -> v.equals(ZV(8 ))
+A162531	filtpos	1	1	new A033676()	v -> v.equals(ZV(11))
+A162532	filtpos	1	1	new A033676()	v -> v.equals(ZV(12))
+A280683	multrad	1	(self, n) -> SU(1, n - 1, k -> SEQ.a(k).*(SEQ.a(n - k))	"0"	new A280710()	ordsum	0
+A319662	simtraf	1	new A003643()	v -> ZV(v.bitLength() - 1)
+A319821	simtraf	1	new A094269()	v -> ZV(v.bitLength() - 1)
+A357906	simtraf	1	new A073103()	v -> ZV(v.bitLength() - 1)
+A367627	simtraf	1	new A367626()	v -> ZV(v.bitLength() - 1)
+A372177	lambdan	0	n -> RU(0, n, k -> new Q(n + k + 2, 2).^(n-1).*(BI(n, k))).num()	a(n, r=1, t=1/2, u=1/2) = r*sum(k=0, n, (t*n+u*k+r)^(n-1)*binomial(n, k));
+A372232	simtraf	0	new A372177()	(n, v) -> Z2(n).*(v)
+A372246	lambdan	0	n -> RU(0, n, k -> new Q(2*n + k + 2, 2).^(n-1).*(BI(n, k))).num()
+---- 2024-05-08 14:17:30
+A162527	filtpos	1	1	new A033676()	v -> v.equals(ZV(7 ))
+A162530	filtpos	1	1	new A033676()	v -> v.equals(ZV(10))
+A166586	mulr	1	(p, e) -> p.-(2).^(e)	Multiplicativewitha(p^e)=(p-(\d+))^e	2
+A366991	muldirs	1	(p, e) -> SEQ.a(e).+(2)	new A000720()	Multiplicativewitha(p^e)=Annn(e)+(\d+)	2	A000720
+A368247	mulr	1	(p, e) -> e <= 2 ? ZV(1) : ZV(3)	Multiplicativewitha(p^e)=(\d+)ife<=(\d+),and(\d+)otherwise	1,2,3
+A368979	muldirs	1	(p, e) -> SEQ.a(e)	new A001227()	Multiplicativewitha(p^e)=Annn(e)		A001227
+---- 2024-05-08 21:26:28
+A114390	multrad	1	(self, n) -> SEQ.a(n * n)	"1"	new A065621()	""	a(n) = A065621(n^2).
+A307848	muldirs	1	(p, e) -> SEQ.a(e)	new A037445()	Multiplicativewitha(p^e)=Annn(e)		A037445
+A367168	muldirs	1	(p, e) -> p.^(SEQ.a(e))	new A048298()	Multiplicativewitha(p^e)=p^Annn(e)		A048298
+A367170	muldirs	1	(p, e) -> SEQ.a(e).+(1)	new A048298()	Multiplicativewitha(p^e)=Annn(e)+(\d+)	1	A048298
+A367171	muldirs	1	(p, e) -> p.^(SEQ.a(e).+(1)).-(1)./(p.-(1))	new A048298()	Multiplicativewitha(p^e)=(p^(Annn(e)+(\d+))-(\d+))/(p-(\d+))	1,1,1	A048298
+A367515	muldirs	1	(p, e) -> SEQ.a(e)	new A001285()	Multiplicativewitha(p^e)=Annn(e)		A001285

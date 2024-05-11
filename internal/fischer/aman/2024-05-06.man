@@ -1,0 +1,57 @@
+---- 2024-05-09 22:35:24
+A051236	multraf	1	(self, n) -> self.s(0).-(1)	""	new A013588()	a(n)=Annn(n)-(\d+)	1	A013588			Largest integer a(n) for which the integer interval [ 0,a(n) ] is a subset of the set of determinants of all n X n 0-1 matrices.
+A071607	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A007705()	a(n)=Annn(n)/((\d+)*n+(\d+))	2,1	A007705			Number of strong complete mappings of the cyclic group Z_{2n+1}.
+A073826	insect2	1	new A001923()	new A000040()							Primes of the form Sum_{k=1..n} k^k, i.e., primes in A001923.
+A083025	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	""	new A001222(), new A007814(), new A065339()	a(n)=Annn(n)-Annn(n)-Annn(n)		A001222,A007814,A065339			Number of primes congruent to 1 modulo 4 dividing n (with multiplicity).
+A083402	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A002884()	a(n)=Annn(n)/(\d+)^(n-(\d+))	2,1	A002884			Let A_n be the upper triangular matrix in the group GL(n,2) that has zero entries below the main diagonal and 1 elsewhere; a(n) is the size of the conjugacy class of this matrix in GL(n,2).
+A088133	lambdan	0	n -> { final String s = String.valueOf(n); return ZV(n % 10 + s.charAt(0) - '0'); }	a(n)=Annn(n)+Annn(n)		A000030,A010879                   A172481	a(n)=Annn(n)+(\d+)^(n-(\d+))	2,1	Sum of first and last digits of n. Different from A115299.
+A091796	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A061431()	a(n)=Annn(n)-n*(n+(\d+))/(\d+)	1,2	A061431			Smallest k such that for 0 <= i < n, n*(n+1)/2-i divides k+i.
+A097934	filter	1	new A000040()	v -> { final long m = v.mod(24); return m == 1 || m == 5 || m == 9 || m == 23; }	Primes p that divide 3^((p-1)/2) - 2^((p-1)/2).
+A112419	insect2	1	new A036057()	new A000040()							Prime Friedman numbers.
+A117921	insect2	1	new A098878()	new A000040()							Primes of the form (2^k - 1)^3 - 2.
+A121280	multraf	1	(self, n) -> self.s(0).-(1)	""	new A068987()	a(n)=Annn(n)-(\d+)	1	A068987			Position where concatenate(1,...,n) occurs for the first time in the decimals of Pi (where 3, 1, 4,... are at position 0, 1, 2,...).
+A124134	insect2	1	new A000045()	new A001481()							Positive integers n such that Fibonacci(n) = a^2 + b^2, where a, b are integers.
+A129150	simtraf	0	new A090636().skip(1)	v -> v	a(n)=Annn(n+(\d+))	2	A090636				The n-th arithmetic derivative of 2^3.
+A129438	simtraf	0	new A125096()	v -> v	a(n)=Annn(n)unlessn=(\d+)	0	A125096				Expansion of (phi(q) * phi(q^2) + phi(-q^2) * phi(q^4)) / 2 in powers of q where phi() is a Ramanujan theta function.
+A130704	insect2	1	new SimpleTransformSequence(1, new A002385(), v -> v.^(2))	new A034961()		???					Palindromic primes whose squares are the sum of three consecutive primes.
+A133447	insect2	1	new A100959()	new A007592()							Nonsemiprime hyperperfect numbers.
+A159292	insect2	1	new A006567()	new A050288()							Pandigital emirps.
+A173053	simtraf	1	new A061422()	v -> v./(2)	a(n)=floor(Annn(n)/(\d+))	2		A061422			Numbers n such that 2^(2*n)+2*n+1 is a prime.
+# A178646	multraf	1	(self, n) -> self.s(0)./(self.s(1))	"1,1"	new A007955(), new A157986()	a(n)=Annn(n)/Annn(n)		A007955,A157068			a(n) = product of divisors d of n such that d^k is not equal to n for any k >= 1.
+A180112	multraf	2	(self, n) -> self.s(0)./(self.s(1))	""	new A000142(), new A056876()	a(n)=Annn(n)/(\d+)-Annn(n)/(\d+)	2,2	A000142,A056876			Number of permutations of 1..n with the Sum_{i=1..n} of (i-p(i))^2 < (n-1)*n*(n+1)/6.
+A182811	insect2	1	new A000032()	new A134808()							Cyclops-Lucas numbers.
+A182984	multraf	0	(self, n) -> self.s(0).-(self.s(1))	"1"	new A006128(), new A092269()	new        ()	a(n)=Annn(n)-Annn(n),forn>=(\d+)	1	A006128,A092269		Total number of parts that are not the smallest part in all partitions of n.
+A183056	insect2	1	new A000041()	new A134808()							Cyclops partition numbers.
+A183150	insect2	1	new A001358()	new A050801()							Semiprimes s such that s^2 is expressible as the sum of two positive cubes.
+A185633	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A053657().skip(1), new A053657()	a(n)=Annn(n+(\d+))/Annn(n)			1	A053657,A053657	For odd n, a(n) = 2; for even n, a(n) = denominator of Bernoulli(n)/n; The number 2 alternating with the elements of A006953.
+A195441	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A064538()	a(n)=Annn(n)/(n+(\d+))	1	A064538			a(n) = denominator(Bernoulli_{n+1}(x) - Bernoulli_{n+1}).
+A197072	multraf	0	(self, n) -> self.s(0).-(self.s(1).*(2))	""	new A033844().skip(1), new A033844()	a(n)=Annn(n+(\d+))-(\d+)*Annn(n)	1,2	A033844,A033844			a(n) = prime(2^(n+1)) - 2*prime(2^n).
+A208449	multraf	1	(self, n) -> new Q(self.s(0), self.s(1)).num()	""	new A010786().skip(2), new A208448()	a(n)=Annn(n+(\d+))/Annn(n)			1	A010786,A208448	Numerator of A010786(n+1) / A010786(n).
+A212276	insect2	1	new A004148()	new A000040()							Prime generalized Catalan numbers.
+A216982	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A066417(), new A066481()	a(n)=Annn(n)-Annn(n)		A066417,A066481			Anti-Chowlas function: sum of anti-divisors of n except the largest.
+A224851	simtraf	1	new A054781()	v -> v.+(1)	a(n)=Annn(n)+(\d+)	1	A054781				First position of n in continued fraction for Khinchins constant.
+A224852	multraf	0	(self, n) -> self.s(0).-(1)	""	new A054870()	a(n)=Annn(n)-(\d+)	1	A054870			Positions of the incrementally largest terms in the continued fraction for Khinchins constant.
+A225295	insect2	1	new A014613()	new A171102()							Pandigital numbers with exactly 4 prime factors (with multiplicity).
+A243096	filter	1	new A001359()	v -> ZUtils.isPrimitiveRoot(Z.TEN, v) && ZUtils.isPrimitiveRoot(Z.TEN, v.+(2))	Lesser of twin primes (A001359) such that both are full reptend primes (A001913).
+A259376	insect2	1	new A014192()	new A029953()	???						Palindromic numbers in bases 4 and 6 written in base 10.
+A261043	multraf	0	(self, n) -> self.s(0).-(self.s(1).*(2))	""	new A034899(), new A000041()	???"+1" weg	a(n)=Annn(n)-(\d+)*Annn(n)+(\d+)	2,1	A034899,A000041			Number of multisets of nonempty words with a total of n letters over binary alphabet such that all letters occur at least once in the multiset.
+A280797	lambdan	1	n -> { final Z nn = ZV(n).^(n); return nn.-(1).*(nn.+(1))./(n + 1); }	a(n) = (n^n - 1)(n^n + 1)/(n + 1).
+A321676	simtraf	1	new A139282().skip(1)	(n, v) -> n == 1 ? Z.ONE : v	a(n)=Annn(n)forn>=(\d+)	2	A139282				a(1)=1; for n > 1, a(n) is a(n-1) plus the number of vowels in the name of a(n-1) in US English.
+A334360	simtraf	2	new A001661()	v -> v.+(1)	a(n)=Annn(n)+(\d+)	1	A001661				Anti-Waring numbers: least number k such that k and all larger numbers can be expressed as the sum of one or more distinct n-th powers.
+A335023	multraf	1	(self, n) -> self.s(0)./(self.s(1))	"1,1"	new A334958(), PREVIOUS	a(n)=Annn(n+(\d+))/Annn(n)			1	A334958,A334958	Ratios of consecutive terms of A334958.
+A335024	multraf	1	(self, n) -> self.s(0)./(self.s(1))	"1,1"	new A056612(), PREVIOUS	a(n)=Annn(n+(\d+))/Annn(n)			1	A056612,A056612	Ratios of consecutive terms of A056612.
+A337022	multraf	1	(self, n) -> self.s(0)./(2).-(self.s(1))	""	new A002110(), new A005867()	a(n)=Annn(n)/(\d+)-Annn(n)	2	A002110,A005867			a(n) is the number of positive integers <= A070826(n) with at least one odd prime divisor <= prime(n).
+A346635	multraf	1	(self, n) -> self.s(0)./(2)	"1"	new A129597()	a(n)=Annn(n)/(\d+)forn>(\d+)	2,1	A129597			Numbers whose division (or multiplication) by their greatest prime factor yields a perfect square. Numbers k such that k*A006530(k) is a perfect square.
+A347548	multraf	6	(self, n) -> self.s(0).-((n + 1)/2)	""	new A000009()	a(n)=Annn(n)-floor((n+(\d+))/(\d+))	1,2	A000009			Number of partitions of n into 3 or more distinct parts.
+
+A347871	simtraf	1	new A342926()	v -> v.modZ(2)	a(n)=Annn(n)mod(\d+)	2	A342926				a(n) = (n+A003415(sigma(n))) mod 2, where A003415 gives the arithmetic derivative of its argument.
+A347883	simtraf	1	new A342926()	v -> v.modZ(3)	a(n)=Annn(n)mod(\d+)	3	A342926				a(n) = A342926(n) mod 3.
+A348947	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A008336(), new A055773()	a(n)=Annn(n)/Annn(n)=Annn(n)/gcd(Annn(n),Annn(n))		A348944,A348946,A348944,A000203,A348944			a(n) = A348944(n) / gcd(sigma(n), A348944(n)), where A348944 is the arithmetic mean of A003959 and A034448, and sigma is the sum of divisors function.
+A351394	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A048105(), new A046660()	a(n)=Annn(n)+Annn(n)		A048105,A046660			Number of divisors of n that are either squarefree, prime powers, or both.
+A355591	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A070826().skip(1), new A071148()	a(n)=Annn(n+(\d+))-Annn(n)			1	A070826,A071148	a(n) = (product of the first n odd primes) - (sum of the first n odd primes).
+A357731	simtraf	3	new A121549()	v -> v./(2)	a(n)=floor(Annn(n)/(\d+))	2		A121549			Number of partitions of n into 2 distinct positive Fibonacci numbers (with a single type of 1).
+A358530	simtraf	1	new A051634()	v -> v.+(2)	a(n)=Annn(n)+(\d+)	2	A051634				a(n) = n-th prime p(k) such that p(k) - p(k-1) < p(k-1) - p(k-2).
+A360612	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A008793().skip(1), new A071095()	a(n)=Annn(n+(\d+))-Annn(n)			1	A008793,A071095	Number of binary operators defined on the finite chain L_n={0,1,...n}, C:L_n^2-> L_n, which are increasing in each argument, and satisfy the boundary conditions C(0,n)=C(n,0)=0 and C(n,n)=n.
+A366451	multraf	2	(self, n) -> self.s(0)./(self.s(1))	""	new A060644()	a(n)=Annn(n)-n		A060644			The sum s > n which has the greatest probability of occurring when summing rolls of an n-sided die.
+A372199	multraf	1	(self, n) -> self.s(0).*(self.s(1))./(self.s(2))	""	new A000045(), new A000254(), new A002805()	a(n)=Annn(n)*Annn(n)/Annn(n)		A000045,A000254,A002805			a(n) = n! * F(n) * H(n), where F(n) is the n-th Fibonacci number and H(n) the n-th harmonic number.
+A372437	multraf	2	(self, n) -> self.s(0).-(self.s(1))	""	new A001511(), new A055396()	a(n)=Annn(n)-Annn(n)		A001511,A055396			(Least binary index of n) minus (least prime index of n).

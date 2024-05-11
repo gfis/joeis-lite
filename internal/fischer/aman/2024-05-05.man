@@ -1,0 +1,68 @@
+A121835	hantraf	0	new A014307()	1	Hankel transform of A014307.
+# A191461	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A000178(), new A057863()	Hankel transform of A014307.
+A369627	holos	0	[[0],[-70421400,28467450,-3772575,164025],[24850800,-12156480,1920915,-98415],[-3128544,1939356,-378999,23571],[163296,-139392,35721,-2817],[-2880,4170,-1566,168],[-633792600,256207018,-33953151,1476221],[294078600,-137875770,21060810,-1049760],[-53007696,29610684,-5331906,310554],[4598208,-3193884,700488,-48924],[-189216,176922,-49815,4329],[2880,-4458,1782,-204],[0,32,-24,4]]	1,0,1,3,19, 132,991,7740,62020,505857,4180132,34889514,293518072,2485191753	0	0
+FindRE(1/(1 - x^2/(1-9*x)^(1/3)),x,a(n));
+-6*n*(34*n^2-195*n+251)*a(n)+18225*(3*n-25)*(3*n-20)*(n-5)*a(n-10)+(-98415*n^3+1625670*n^2-8609895*n+14516820)*a(n-9)+(23571*n^3-308286*n^2+1252071*n-1544616)*a(n-8)+(-2817*n^3+27270*n^2-76401*n+56808)*a(n-7)+(168*n^3-1062*n^2+1542*n-108)*a(n-6)+(1476221*n^3-29524488*n^2+192729379*n-410062512)*a(n-5)-7290*(n-4)*(144*n^2-1881*n+6043)*a(n-4)+162*(n-3)*(1917*n^2-21411*n+58474)*a(n-3)-108*(n-2)*(453*n^2-4221*n+9518)*a(n-2)+9*(n-1)*(37*n-107)*(13*n-60)*a(n-1)+4*(n-1)*(n-3)*(n+1)*a(n+1) = 0
+
+A119641	filter	0	new A000055()	PRIME	
+A178899	filter	0	new A003068()	PRIME	
+A122728	filter	0	new A003327()	PRIME	
+A122729	filter	0	new A003328()	PRIME	
+A122730	filter	0	new A003329()	PRIME	
+A122731	filter	0	new A003330()	PRIME	
+A123033	filter	0	new A003349()	PRIME	
+A123034	filter	0	new A003350()	PRIME	
+A123035	filter	0	new A003351()	PRIME	
+A123036	filter	0	new A003352()	PRIME	
+A123037	filter	0	new A003353()	PRIME	
+A123038	filter	0	new A003354()	PRIME	
+A123043	filter	0	new A003355()	PRIME	
+A123039	filter	0	new A003356()	PRIME	
+A123040	filter	0	new A003357()	PRIME	
+A140834	filter	0	new A004833()	PRIME	
+A117112	filter	0	new A020756()	PRIME	
+A133783	filter	0	new A057436()	PRIME	
+A161471	filter	0	new A066279()	PRIME	
+A123300	filter	0	new A123295()	PRIME	
+A217039	filter	0	new A214584()	PRIME	
+A227531	filter	0	new A227391()	PRIME	
+A221285	filter	0	new A002202()	SQUARE	
+A144938	filter	0	new A087679()	SQUARE	
+A181564	filter	0	new A000926()	SEMIPRIME	
+A139787	filter	0	new A000959()	SEMIPRIME	
+A130593	filter	0	new A001969()	SEMIPRIME	
+A173684	filter	0	new A002062()	SEMIPRIME	
+A182277	filter	0	new A003336()	SEMIPRIME	
+A184481	filter	0	new A005448()	SEMIPRIME	
+A180082	filter	0	new A005898()	SEMIPRIME	
+A178423	filter	0	new A034895()	SEMIPRIME	
+A189045	filter	0	new A045542()	SEMIPRIME	
+A123048	filter	0	new A055394()	SEMIPRIME	
+A212707	filter	0	new A212656()	SEMIPRIME	
+A217124	filter	0	new A214584()	SEMIPRIME	
+
+
+#	F	A339341		a(p^k)=Annn(k)forprimep		A022574
+#ndir A339318	muldirs	0	(p, k) -> SEQ.a(k)	new A000716()	a(p^k)=Annn(k)forprimep		A000716
+#ndir A339319	muldirs	0	(p, k) -> SEQ.a(k)	new A023003()	a(p^k)=Annn(k)forprimep		A023003
+#ndir A339320	muldirs	0	(p, k) -> SEQ.a(k)	new A023004()	a(p^k)=Annn(k)forprimep		A023004
+#ndir A339321	muldirs	0	(p, k) -> SEQ.a(k)	new A023005()	a(p^k)=Annn(k)forprimep		A023005
+#ndir A339322	muldirs	0	(p, k) -> SEQ.a(k)	new A023006()	a(p^k)=Annn(k)forprimep		A023006
+#ndir A339323	muldirs	0	(p, k) -> SEQ.a(k)	new A023007()	a(p^k)=Annn(k)forprimep		A023007
+#ndir A339324	muldirs	0	(p, k) -> SEQ.a(k)	new A023008()	a(p^k)=Annn(k)forprimep		A023008
+#ndir A339701	muldirs	0	(p, k) -> SEQ.a(k)	new A002107()	a(p^k)=Annn(k)forprimep		A002107
+#ndir A339702	muldirs	0	(p, k) -> SEQ.a(k)	new A010816()	a(p^k)=Annn(k)forprimep		A010816
+#ndir A339703	muldirs	0	(p, k) -> SEQ.a(k)	new A000727()	a(p^k)=Annn(k)forprimep		A000727
+#ndir A339704	muldirs	0	(p, k) -> SEQ.a(k)	new A000728()	a(p^k)=Annn(k)forprimep		A000728
+#ndir A339705	muldirs	0	(p, k) -> SEQ.a(k)	new A000729()	a(p^k)=Annn(k)forprimep		A000729
+#ndir A339706	muldirs	0	(p, k) -> SEQ.a(k)	new A000730()	a(p^k)=Annn(k)forprimep		A000730
+#ndir A339707	muldirs	0	(p, k) -> SEQ.a(k)	new A000731()	a(p^k)=Annn(k)forprimep		A000731
+#ndir A339716	muldirs	0	(p, k) -> SEQ.a(k)	new A010817()	a(p^k)=Annn(k)forprimep		A010817
+#ndir A339717	muldirs	0	(p, k) -> SEQ.a(k)	new A022597()	a(p^k)=Annn(k)forprimep		A022597
+#ndir A339718	muldirs	0	(p, k) -> SEQ.a(k)	new A022598()	a(p^k)=Annn(k)forprimep		A022598
+#ndir A339719	muldirs	0	(p, k) -> SEQ.a(k)	new A022599()	a(p^k)=Annn(k)forprimep		A022599
+#ndir A339720	muldirs	0	(p, k) -> SEQ.a(k)	new A022600()	a(p^k)=Annn(k)forprimep		A022600
+#ndir A339721	muldirs	0	(p, k) -> SEQ.a(k)	new A022601()	a(p^k)=Annn(k)forprimep		A022601
+#ndir A339722	muldirs	0	(p, k) -> SEQ.a(k)	new A022602()	a(p^k)=Annn(k)forprimep		A022602
+#ndir A339734	muldirs	0	(p, k) -> SEQ.a(k)	new A007259()	a(p^k)=Annn(k)forprimep		A007259
+#ndir A339735	muldirs	0	(p, k) -> SEQ.a(k)	new A022604()	a(p^k)=Annn(k)forprimep		A022604

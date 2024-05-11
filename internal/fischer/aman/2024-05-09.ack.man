@@ -1,0 +1,194 @@
+---- 2024-05-09 14:28:52
+A070770	multraf	0	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2))	""	new A056556(), new A056557(), new A056558()	a(n)=Annn(n)+Annn(n)+Annn(n)
+A071305	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A003053(), new A071302()	a(n)=Annn(n)*Annn(n)
+A072815	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A363031(), new A016921()	a(n)=Annn(n)-Annn(n)=Annn(Annn(n))
+A073882	multraf	1	(self, n) -> self.s(0).-(self.s(1)).+(self.s(2))	""	new A038107(), new A000720(), new A010051()	a(n)=Annn(n)-Annn(n)+Annn(n)
+A112762	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	""	new A112759(), new A112760(), new A112761()	a(n)=Annn(n)-Annn(n)-Annn(n)
+A119434	setdiff	1	new A119432()	new A299174()
+A122732	insect2	1	new A003325()	new A014612()
+A123048	insect2	1	new A001358()	new A055394()
+A124401	setdiff	1	new A127936()	new A006093()
+A129864	insect2	1	new A000959()	new A006567()
+A130593	insect2	1	new A001358()	new A001969()
+A131850	insect2	1	new A014612()	new A000069()
+A133514	insect2	1	new A002113()	new A046101()
+A137324	multraf	3	(self, n) -> self.s(0).+(self.s(1))	""	new A048865(), new A105221()	a(n)=Annn(n)+Annn(n)
+A151816	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A010050(), new A001818()	a(n)=Annn(n)-Annn(n)
+A155953	insect2	1	new A005846()	new A006567()
+A158072	setdiff	1	new A000040()	new A158069()
+A159064	insect2	1	new A048890()	new A006567()
+A161580	setdiff	1	new A001477()	new A161579()
+A162592	setdiff	1	new A009003()	new A004431()
+A163975	multraf	1	(self, n) -> self.s(0).-(self.s(1).testBit(0) ? Z.NEG_ONE : Z.ONE)	""	new A141468(), new A141468()	a(n)=Annn(n)-(-(\d+))^Annn(n)	1
+A164276	setdiff	1	new A141468()	new A014574()
+A164515	setdiff	1	new A000027()	new A059100()
+A168110	insect2	1	new A029976()	new A006567()
+A168146	setdiff	1	new A000027()	new A037229()
+A173664	setdiff	1	new A014091()	new A001358()
+A173672	setdiff	1	new A030173()	new A001358()
+A176629	multraf	1	(self, n) -> self.s(0).-(self.s(1).testBit(0) ? Z.NEG_ONE : Z.ONE)	""	new A001358(), new A001358()	a(n)=Annn(n)-(-(\d+))^Annn(n)	1
+A194041	insect2	1	new A000959()	new A031177()
+A195462	multraf	1	(self, n) -> self.s(0).*(self.s(1))./(self.s(2))	""	new A000178(), new A001008(), new A002805()	a(n)=Annn(n)*Annn(n)/Annn(n)
+A197594	simtraf	2	new A138576()	v -> ZV(2).^(v).-(1)	a(n)=(\d+)^Annn(n)-(\d+)	2,1	A138576
+A206773	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001065(), new A105221()	a(n)=Annn(n)-Annn(n)
+A221285	insect2	1	new A002202()	new A000290()
+A224859	insect2	1	new A201734()	new A201818()
+A227030	setdiff	1	new A007921()	new A001358()
+A227854	insect2	1	new A003136()	new A014612()
+A229040	insect2	1	new A000045()	new A030141()
+A240848	multraf	0	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2))	""	new A000027(), new A007953(), new A055642()	a(n)=Annn(n)+Annn(n)+Annn(n)
+A248742	union2	1	new A002496()	new A144255()
+A252096	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A014442(), new A089120()	a(n)=Annn(n)-Annn(n)
+A255263	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A169707(), new A162795()	a(n)=Annn(n)-Annn(n)
+A257510	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A084558(), new A060130()	a(n)=Annn(n)-Annn(n)
+A265893	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A084558(), new A230403()	a(n)=Annn(n)-Annn(n)
+A288775	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A162795(), new A147562()	a(n)=Annn(n)-Annn(n)
+A289716	simtraf	1	new A219039()	v -> ZV(3).^(v).-(16)	a(n)=(\d+)^Annn(n)-(\d+)	3,16	A219039
+A289723	simtraf	1	new A219041()	v -> ZV(3).^(v).-(20)	a(n)=(\d+)^Annn(n)-(\d+)	3,20	A219041
+A289724	simtraf	1	new A219043()	v -> ZV(3).^(v).-(22)	a(n)=(\d+)^Annn(n)-(\d+)	3,22	A219043
+A289808	simtraf	1	new A219047()	v -> ZV(3).^(v).-(28)	a(n)=(\d+)^Annn(n)-(\d+)	3,28	A219047
+A289983	simtraf	1	new A219049()	v -> ZV(3).^(v).-(32)	a(n)=(\d+)^Annn(n)-(\d+)	3,32	A219049
+A289984	simtraf	1	new A219051()	v -> ZV(3).^(v).-(34)	a(n)=(\d+)^Annn(n)-(\d+)	3,34	A219051
+A290241	simtraf	1	new A217135()	v -> ZV(3).^(v).-(8)	a(n)=(\d+)^Annn(n)-(\d+)	3,8	A217135
+A290243	simtraf	1	new A217347()	v -> ZV(3).^(v).-(10)	a(n)=(\d+)^Annn(n)-(\d+)	3,10	A217347
+A290244	simtraf	1	new A219038()	v -> ZV(3).^(v).-(14)	a(n)=(\d+)^Annn(n)-(\d+)	3,14	A219038
+A293235	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(n))	""	new A035316(), new A010052()	a(n)=Annn(n)-(Annn(n)*n)
+A293436	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(n))	""	new A005092(), new A010056()	a(n)=Annn(n)-(Annn(n)*n)
+A294886	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(n))	""	new A187793(), new A294934()	a(n)=Annn(n)-(Annn(n)*n)
+A294889	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(n))	""	new A187795(), new A294937()	a(n)=Annn(n)-(Annn(n)*n)
+A304117	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A005361(), new A156061()	a(n)=Annn(n)*Annn(n)
+A307629	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A110805(), new A007953()	a(n)=Annn(n)-Annn(n)
+A308759	multraf	0	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2)).-(self.s(3))	""	new A308775(), new A308733(), new A308758(), new A308760()	a(n)=Annn(n)-Annn(n)-Annn(n)-Annn(n)
+A319377	multraf	2	(self, n) -> self.s(0).-(self.s(1).*(2))	""	new A050381(), new A000669()	a(n)=Annn(n)-(\d+)*Annn(n)	2
+A319687	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A318509(), new A002487()	a(n)=Annn(n)-Annn(n)
+A324902	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A324904(), new A324903()	a(n)=Annn(n)-Annn(n)
+A326844	multraf	1	(self, n) -> self.s(0).*(self.s(1)).-(self.s(2))	""	new A001222(), new A061395(), new A056239()	a(n)=Annn(n)*Annn(n)-Annn(n)
+A331289	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A329348(), new A001222()	a(n)=Annn(n)-Annn(n)
+A338969	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2))	""	new A066186(), new A000041(), new A225596()	a(n)=Annn(n)+Annn(n)+Annn(n)
+A339643	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(3)).+(self.s(2).*(3))	""	new A038059(), new A038055(), new A000081()	a(n)=Annn(n)-(\d+)*Annn(n)+(\d+)*Annn(n)	3,3
+A345463	multraf	1	(self, n) -> self.s(0).*(self.s(1))./(self.s(2))	""	new A001037(), new A002884(), new A000225()	a(n)=Annn(n)*Annn(n)/Annn(n)
+A346019	multraf	1	(self, n) -> self.s(0).*(self.s(1))./(self.s(2))	""	new A011260(), new A002884(), new A000225()	a(n)=Annn(n)*Annn(n)/Annn(n)
+A347226	insect2	1	new A005385()	new A097443()
+A348193	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A348195(), new A348196()	a(n)=Annn(n)-Annn(n)
+A351418	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(2)).+(self.s(2))	""	new A034444(), new A001221(), new A001222()	a(n)=Annn(n)-(\d+)*Annn(n)+Annn(n)	2
+A351519	multraf	1	(self, n) -> self.s(0).+(self.s(1)).-(self.s(2))	""	new A000005(), new A000720(), new A001221()	a(n)=Annn(n)+Annn(n)-Annn(n)
+A357508	multraf	0	(self, n) -> self.s(0).-(self.s(1).*(2))	""	new A001448(), new A005810()	a(n)=Annn(n)-(\d+)*Annn(n)	2
+A357698	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(n))	""	new A073185(), new A212793()	a(n)=Annn(n)-(Annn(n)*n)
+A360793	setdiff	1	new A048109()	new A030078()
+A362941	multraf	1	(self, n) -> self.s(0).-(1)	""	new A108604()	a(n)=Annn(n)-(\d+)	1
+A363917	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A363923(), new A005361()	a(n)=Annn(n)*Annn(n)
+A364930	insect2	1	new A025487()	new A286708()
+A369258	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001227(), new A369257()	a(n)=Annn(n)-Annn(n)
+A369374	insect2	1	new A286708()	new A055932()
+A369420	insect2	1	new A056808()	new A286708()
+A369667	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A358773(), new A065043()	a(n)=Annn(n)*Annn(n)
+A370238	multraf	0	(self, n) -> self.s(0).+(self.s(1))	""	new A000326(), new A008594()	a(n)=Annn(n)+Annn(n)
+A370482	multraf	0	(self, n) -> self.s(0).+(self.s(1))	""	new A010051(), new A059841()	a(n)=Annn(n)+Annn(n)
+A370662	filtpos	1	0	new A000108()	(k, v) -> v.mod(3) != 0	Numbers m such that 3 does not divide the m-th Catalan number A000108(m); m such that A067397(m) = 0.	nonn,easy
+A371843	multraf	0	(self, n) -> self.s(0).+(self.s(1))	""	new A022088(), new A033999()	a(n)=Annn(n)+Annn(n)
+A372470	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A359473(), new A000005()	a(n)=Annn(n)*Annn(n)
+A372608	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A000010(), new A070639()	a(n)=Annn(n)*Annn(n)
+---- 2024-05-09 15:06:15
+A370657	filnum	1	1	k -> ZV(7).^(k).+(k).IPP()	Numbers k such that 7^k + k is prime.	nonn,hard,more	1..4
+A370658	filnum	1	1	k -> ZV(3).^(k).+(3*k)./(3).IPP()	Numbers k such that (3^k + 3*k)/3 is prime.	nonn,hard,more	1..12
+A370659	filnum	1	1	k -> ZV(4).^(k).+(4*k)./(4).IPP()	Numbers k such that (4^k + 4*k)/4 is prime.	nonn,hard,more	1..8
+A370660	filnum	1	1	k -> ZV(7).^(k).+(7*k)./(7).IPP()	Numbers k such that (7^k + 7*k)/7 is prime.	nonn,hard,more	1..8
+A370661	filnum	1	1	k -> ZV(8).^(k).+(8*k)./(8).IPP()	Numbers k such that (8^k + 8*k)/8 is prime.	nonn,hard,more	1..5
+A370663	filnum	1	1	k -> ZV(9).^(k).+(9*k)./(9).IPP()	Numbers k such that (9^k + 9*k)/9 is prime.	nonn,hard,more	1..9
+A370664	filnum	1	0	k -> ZV(7).^(k).+(7*k + 1).IPP()	Numbers k such that  7^k + 7*k + 1 is prime.	nonn,more,hard	1..7
+---- 2024-05-09 15:57:52
+A069958	multraf	0	(self, n) -> self.s(0).^(3).-(self.s(1))	""	new A007953(), new A055012()	a(n)=Annn(n)^(\d+)-Annn(n)
+A081703	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A002997(), new A141710()	a(n)=Annn(n)/Annn(n)
+A090585	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A000217(), new A069268()	a(n)=Annn(n)/Annn(n)
+A092282	multraf	1	(self, n) -> self.s(0).^(2).-(self.s(1).^(3))	""	new A000196(), new A048766()	a(n)=Annn(n)^(\d+)-Annn(n)^(\d+)	2,3
+A098622	lambdan	0	n -> SU(0, n, k -> S2(n, k).*(Functions.BELL.z(2*k)))	a(n)=Sum_{k=(\d+),n}Stirling(\d+)(n,k)*Bell((\d+)*k)	0,2,2
+A098837	insect2	1	new A006753()	new A004709()
+A104106	simtraf	1	new A089242()	v -> v.modZ(2)	a(n)=Annn(n)mod(\d+)	2	A089242
+A106320	union2	1	new A106318()	new A106322()
+A112634	setdiff	1	new A000043()	new A112633()
+A114382	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2))	""	new A000040(), new A001358(), new A014612()	a(n)=Annn(n)+Annn(n)+Annn(n)
+A120079	multraf	1	(self, n) -> self.s(0).*(self.s(1))./(self.s(2))	""	new A056220(), new A051418(), new A000290()	a(n)=Annn(n)*Annn(n)/Annn(n)
+A121835	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A000178(), new A057863()	a(n)=Annn(n)*Annn(n)
+A121870	multraf	0	(self, n) -> self.s(0).^(2).+(self.s(1).^(2))	""	new A121867(), new A121868()	a(n)=Annn(n)^(\d+)+Annn(n)^(\d+)	2,2
+A129542	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(2)).+(1)	""	new A006880(), new A007508()	a(n)=Annn(n)-(\d+)*Annn(n)+(\d+)	2,1
+A130611	insect2	1	new A000073()	new A009000()
+A140638	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	""	new A001187(), new A000272(), new A057500()	a(n)=Annn(n)-Annn(n)-Annn(n)
+A144553	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	""	new A030228(), new A006747(), new A006749()	a(n)=Annn(n)-Annn(n)-Annn(n)
+A144554	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2)).-(self.s(3))	""	new A000105(), new A006749(), new A006746(), new A006748()	a(n)=Annn(n)-Annn(n)-Annn(n)-Annn(n)
+A145781	multraf	1	(self, n) -> self.s(0).^(2).-(self.s(1))	""	new A216144(), new A002110()	a(n)=Annn(n)^(\d+)-Annn(n)
+A211161	arrlamb	1	1	1	-1	(n, k) -> (k & 1) == 1 ? ZV(n) : ZV(k/2)
+A211250	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(Functions.BELL.z(3*k)))	a(n)=Sum_{k=(\d+),n}Stirling(\d+)(n,k)*Bell((\d+)*k)	0,1,3
+A211251	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(Functions.BELL.z(4*k)))	a(n)=Sum_{k=(\d+),n}Stirling(\d+)(n,k)*Bell((\d+)*k)	0,1,4
+A211252	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(Functions.BELL.z(5*k)))	a(n)=Sum_{k=(\d+),n}Stirling(\d+)(n,k)*Bell((\d+)*k)	0,1,5
+A216670	insect2	1	new A000073()	new A001481()
+A231545	simtraf	1	new A067816()	v -> v.+(1)	a(n)=Annn(n)+(\d+)	1	A067816
+A256446	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A256447().skip(1), new A256448()	a(n)=Annn(n+(\d+))+Annn(n)	1
+A263170	multraf	1	(self, n) -> self.s(0).^(3).-(self.s(1))	""	new A007504(), new A098999()	a(n)=Annn(n)^(\d+)-Annn(n)
+A272617	multraf	1	(self, n) -> new Z(self.s(0).toString() + self.s(1).toString())	""	new A000422(), new A007908()	=Annn(n)concatenatedwithAnnn(n)
+A274887	multraf	0	(self, n) -> self.s(0)	"1"	new A008302()	=Annn(n)foralln>(\d+)	0
+A276577	simtraf	1	new A255415()	v -> v.modZ(11)	a(n)=Annn(n)mod(\d+)	11	A255415
+A284552	simtraf	1	new A065621()	(n, v) -> v.modZ(n)	a(n)=Annn(n)modn		A065621
+A307772	lambdan	1	n -> SU(1, n, k -> S1(n, k).*(Functions.PRIME.z(k)))	a(n)=Sum_{k=(\d+),n}Stirling(\d+)(n,k)*prime(k)	1,1
+A318704	multraf	0	(self, n) -> self.s(0).^(2).+(self.s(1).^(2))	""	new A318702(), new A318703()	a(n)=Annn(n)^(\d+)+Annn(n)^(\d+)	2,2
+A320420	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A058129(), new A000001()	a(n)=Annn(n)-Annn(n)
+A321995	insect2	1	new A306587()	new A306588()
+A330037	simtraf	0	new A055778()	v -> v.modZ(2)	a(n)=Annn(n)mod(\d+)	2	A055778
+A330841	multraf	1	(self, n) -> self.s(0).*(9).*(self.s(1))	""	new A152922().skip(1), new A133049().skip(1)	a(n)=Annn(n+(\d+))*(\d+)*Annn(n+(\d+))	1,9,1
+A343562	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2))	""	new A056877(), new A142886(), new A006746()	a(n)=Annn(n)+Annn(n)+Annn(n)
+A350493	simtraf	1	new A065730()	(n, v) -> v.modZ(n)	a(n)=Annn(n)modn		A065730
+A354002	lambdan	1	n -> SU(1, n, k -> S1(n, k).*(Functions.PRIME.z(k + 1)))	a(n)=Sum_{k=(\d+),n}Stirling(\d+)(n,k)*prime(k+(\d+))	1,1,1
+A357448	simtraf	0	new A244040()	v -> v.modZ(2)	a(n)=Annn(n)mod(\d+)	2	A244040
+A364411	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A000040().skip(1), new A001043()	a(n)=Annn(n+(\d+))+Annn(n)	1
+A365511	multraf	0	(self, n) -> self.s(0).^(3).*(self.s(1))	""	new A088218(), new A110706()	a(n)=Annn(n)^(\d+)*Annn(n)
+A367516	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A034444(), new A367515()	a(n)=Annn(n)/Annn(n)
+A370971	multraf	1	(self, n) -> self.s(0)./(self.s(2))	""	new A008336(), new A055773(), PREVIOUS	a(n)=Annn(n)/Annn(n-(\d+))	1
+A371222	simtraf	0	new A309953()	v -> v.modZ(3)	a(n)=Annn(n)mod(\d+)	3	A309953
+A371397	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A000162(), new A038119()	a(n)=Annn(n)-Annn(n)=(Annn(n)-Annn(n))/(\d+)=Annn(n)-Annn(n)	2
+A371598	multraf	1	(self, n) -> self.s(0).mod(self.s(1))	""	new A003266(), new A000045().skip(1)	a(n)=Annn(n)modAnnn(n+(\d+))	1
+---- 2024-05-09 21:50:49
+A077146	multraf	1	(self, n) -> self.s(0)./(self.s(1))	"23"	new A053067().skip(1), PREVIOUS	a(n)=floor(Annn(n+(\d+))/Annn(n))	1
+A084320	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A067850().skip(1), new A067850()	a(n)=Annn(n+(\d+))-Annn(n)
+A087262	simtraf	1	new A025586()	(n, v) -> v./(n)	a(n)=floor(Annn(n)/n)
+A093433	multraf	0	(self, n) -> self.s(0).+(self.s(1))	""	new A002110(), new A107712()	a(n)=Annn(n)+Annn(n)
+A104635	simtraf	1	new A002145()	v -> v./(2)	a(n)=floor(Annn(n)/(\d+))	2
+A110934	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A014612().skip(2), new A014612()	a(n)=Annn(n+(\d+))-Annn(n)
+A110958	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A248873(), new A000045()	a(n)=Annn(n)-Annn(n)
+A113784	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001358().skip(2), new A001358()	a(n)=Annn(n+(\d+))-Annn(n)
+A115402	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A014612().skip(3), new A014612()	a(n)=Annn(n+(\d+))-Annn(n)
+A116590	multraf	0	(self, n) -> self.s(0).+(self.s(2))	"1,3,4"	new A005185().skip(2), PREVIOUS, PREVIOUS	a(n)=Annn(n+(\d+))+Annn(n)forn>=(\d+)	2,1
+A116591	multraf	0	(self, n) -> self.s(0).+(self.s(2))	"1,3,4"	new A005229().skip(2), PREVIOUS, PREVIOUS	a(n)=Annn(n+(\d+))+Annn(n)forn>=(\d+)	2,1
+A116592	multraf	0	(self, n) -> self.s(0).+(self.s(2))	"1,3,3"	new A004001().skip(2), PREVIOUS, PREVIOUS	a(n)=Annn(n+(\d+))+Annn(n)forn>=(\d+)	2,1
+A116593	multraf	0	(self, n) -> self.s(0).+(self.s(2))	"3,6,12"	new A006046().skip(2), PREVIOUS, PREVIOUS	a(n)=Annn(n+(\d+))+Annn(n)forn>=(\d+)	2,1
+A117989	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(2))	""	new A056823().skip(1), new A056823()	a(n)=Annn(n+(\d+))-(\d+)*Annn(n)	1,2
+A122739	simtraf	3	new A038380().skip(3)	v -> v	Numbers of perifusenes with one internal vertex (see Cyvin et al. for precise definition).
+A125055	multraf	0	(self, n) -> self.s(0).-(self.s(1).*(2))	""	new A125054().skip(1), new A125054()	a(n)=Annn(n+(\d+))-(\d+)*Annn(n)	1,2
+A130911	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A200247(), new A200245()	???
+A131607	simtraf	4	new A001333().skip(4)	v -> v./(10)	a(n)=floor(Annn(n)/(\d+))	10
+A140814	simtraf	0	new A002445()	(n, v) -> n < 1 ? ZV(3) : v		a(0)=3, a(n)=A002445(n) for n >= 1.
+A144964	simtraf	1	new A000108().skip(1)	v -> ZV(2).^(v).-(1)	a(n)=(\d+)^Annn(n)-(\d+)	2,1	A000108
+A161811	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A141468().skip(2), new A141468()	a(n)=Annn(n+(\d+))-Annn(n)
+A163746	simtraf	1	new A125061().skip(1)	v -> v	Expansion of (theta_3(q)^2 + 3 * theta_3(q^3)^2) / 4 - 1 in powers of q.
+A172988	filter	1	new A000040()	v -> v.-(3).IPP() || v.-(6).IPP()	Primes p such that either p-3 or p-6 is prime.
+A174727	simtraf	0	new A091137().skip(1)	(n, v) -> v./(n + 1)	a(n)=Annn(n+(\d+))/(n+(\d+))	1,1	A091137
+A261470	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001223().skip(2), new A001223()	a(n)=Annn(n+(\d+))-Annn(n)
+A270541	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A053319().skip(2), new A053319()	a(n)=Annn(n+(\d+))-Annn(n)
+---- 2024-05-09 22:35:23
+A182779	multraf	0	(self, n) -> self.s(0).*(self.s(1))	"1"	new A049019(), new A118851()	a(n)=Annn(n)*Annn(n)
+A199968	simtraf	1	new A007978()	(n, v) -> n < 3 ? Z.ZERO : v	a(n)=Annn(n)forn>=(\d+)	3	A007978
+A201627	simtraf	0	new A214222()	(n, v) -> v./(n + 1)	a(n)=Annn(n+(\d+))/(n+(\d+))	1,1	A214222
+A201628	simtraf	0	new A214223()	(n, v) -> v./(n + 1)	a(n)=Annn(n+(\d+))/(n+(\d+))	1,1	A214223
+A213641	simtraf	0	new A213640()	(n, v) -> v./(n + 1)	a(n)=Annn(n+(\d+))/(n+(\d+))	1,1	A213640
+A215639	simtraf	0	new A215638()	(n, v) -> v./(n + 1)	a(n)=Annn(n+(\d+))/(n+(\d+))forn>=(\d+)	1,1,0	A215638
+A226175	simtraf	1	new A068336().skip(1)	v -> v.-(1)	a(n)=Annn(n+(\d+))-(\d+)		1,1
+A227934	lambdan	0	n -> SU(0, n, k -> BI(ZV(k).^(4).+(n - k - 1), ZV(n - k)))	a(n)=Sum_{k=(\d+),n}binomial(k^(\d+)+n-k-(\d+),n-k)	0,4,1
+A255068	simtraf	0	new A091067()	v -> v.-(1)	a(n)=Annn(n+(\d+))-(\d+)		1,1
+A255647	prepend	0	new A035168()	1	a(n)=Annn(n)unlessn=(\d+)	0	A035168
+A258872	simtraf	0	new A259062()	(n, v) -> v./(n + 1)	a(n)=Annn(n+(\d+))/(n+(\d+))	1,1	A259062
+A274089	simtraf	1	new A057716().skip(1)	v -> v./(2)	a(n)=floor(Annn(n)/(\d+))	2
+A274263	multraf	1	(self, n) -> self.s(0)./(self.s(1))	"2,1"	new A001223().skip(1), PREVIOUS	a(n)=floor(Annn(n+(\d+))/Annn(n))	1
+A295521	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	"0"	new A027377(), new A027376(), new A001037()	a(n)=Annn(n)-Annn(n)-Annn(n)forn>(\d+)	1
+A295819	prepend	0	new A000089().skip(1)	0,2	a(n)=Annn(n)forn>=(\d+)	2	A000089
+A296769	simtraf	0	new A000531()	v -> v	a(n)=Annn(n+(\d+))	1	A000531
+A304250	insect2	1	new A001597().skip(1)	new A055932().skip(1)
+A305634	setdiff	1	new A005843().skip(1)	new A001597()
+A316328	simtraf	0	new A316667()	v -> v.-(1)	a(n)=Annn(n+(\d+))-(\d+)		1,1
