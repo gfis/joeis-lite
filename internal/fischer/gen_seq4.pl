@@ -225,25 +225,25 @@ while (<>) { # read inputfile
             $parm =~ s{FI\(}           {Functions.FIBONACCI.z\(}g;
             $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
+            $parm =~ s{GPF\(}          {Functions.GPF.z\(}g;
             $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
-            $parm =~ s{LU\(}           {Functions.LUCAS.z\(}g;
-            $parm =~ s{KS\(}           {LongUtils.kronecker(}g;
+            $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
+            $parm =~ s{KS\(}           {LongUtils.kronecker(}g;
             $parm =~ s{LPF\(}          {Functions.LPF.z\(}g;
-            $parm =~ s{GPF\(}          {Functions.GPF.z\(}g;
-            $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;
+            $parm =~ s{LU\(}           {Functions.LUCAS.z\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
+            $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
+            $parm =~ s{PHI\(}          {Functions.PHI.z\(}g;
             $parm =~ s{PM\(}           {Functions.PRIME.z\(}g;
             $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
-            $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
-            $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z(}g;
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
-            $parm =~ s{PT\(}           {IntegerPartition.partitions\(}g;
+            $parm =~ s{PT\(}           {Functions.PARTITIONS.z\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
             $parm =~ s{RQ\(}           {Rationals.SINGLETON.product\(}g;
@@ -252,7 +252,8 @@ while (<>) { # read inputfile
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
             $parm =~ s{SDA\(}          {ZUtils.sortDigitsAscending\(}g;
             $parm =~ s{SDD\(}          {ZUtils.sortDigitsDescending\(}g;
-            $parm =~ s{SP\(}           {Integers.SINGLETON.sopf\(}g;
+            $parm =~ s{SP\(}           {Functions.SOPF.z\(}g;
+            $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
             $parm =~ s{SA\(([^\)]+)\)} {Stirling.firstKind\($1\)\.abs\(\)}g;
@@ -522,6 +523,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPeriodicSequence}             ) { $imports{"irvine.oeis.recur.PeriodicSequence"}            = $itype; }
     if ($line =~ m{\WPolynomialUtils}              ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
     if ($line =~ m{\WPolynomial}                   ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
+    if ($line =~ m{\WPredicates}                   ) { $imports{"irvine.math.predicate.Predicates"             } = $itype; }
     if ($line =~ m{\WPrependSequence}              ) { $imports{"irvine.oeis.PrependSequence"   }                = $itype; }
     if ($line =~ m{\WProduct}                      ) { $imports{"irvine.oeis.triangle.Product"  }                = $itype; }
     if ($line =~ m{\WPuma}                         ) { $imports{"irvine.factor.prime.Puma"      }                = $itype; }

@@ -8666,3 +8666,11 @@ ordsum7:
 	grep -E "^A[0-9]" aman/2024-04-29.man | cut -f1 > $@.tmp
 	grep -vf $@.tmp ordsum0.tmp > ordsum0.man
 #----
+recan: # search for a(n-i)
+	grep -P "a\(n *\- *\d+\)" $(COMMON)/jcat25.txt | grep -P "^%[NF]" | grep -vP "small|large|least|great|previous|not in|a\(a\(" \
+	| grep -vP "^\%F +A\d+ +[nk] *\= *\d+\:" \
+	| tee $@.tmp
+	wc -l $@.tmp
+recan_somos:
+	grep -P "^%[NF] A\d+ +a\(n\) *\= *[ an0-9\+\-\*\(\)\/\^]+ *([\.\,\;]|for)" recan.tmp
+
