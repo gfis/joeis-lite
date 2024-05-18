@@ -1,0 +1,22 @@
+---- 2024-05-11 21:18:08
+A089379	filnum	1	0	n -> ZV(10).^(n).+(n).IPP()		isprime(10^n+n)
+A096655	multraf	0	(self, n) -> self.s(1).*(self.a(n - 1)).+(self.s(0).*(self.a(n - 2)))	"1,1"	new A000045().skip(1), PREVIOUS	a(n) = F(n+1)*a(n-1) + F(n)*a(n-2), where F = A000045 (Fibonacci numbers), a(0)=1, a(1)=1.	nonn
+A096656	multraf	0	(self, n) -> self.s(1).*(self.a(n - 1)).+(self.s(0).*(self.a(n - 2)))	"1,2"	new A000045().skip(2), PREVIOUS	a(n) = F(n+2)*a(n-1) + F(n+1)*a(n-2), where F = A000045 (Fibonacci numbers), a(0)=1, a(1)=2.	nonn
+A100407	filnum	1	1	n -> ZV(n).^(n).+(2).IPP()		isprime(n^n+2)
+A138578	filnum	1	0	n -> Z2(2*n - 7).-(7).IPP()		isprime(2^(2*n-7)-7)
+A141547	filnum	1	0	n -> Functions.SIGMA.z(n).equals(Z.TWO.*(n).+(16))	== sigma(n)==(\d+)*n+(\d+)	2	16
+A172413	filnum	1	1	n -> ZV(11).^(n).+(n + 1).IPP()		isprime(11^n+n+1)
+A179511	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).+(self.a(n - 1).*(2))	"1"		, a(n) = prime(a(n-1)) + 2a(n-1).
+A179513	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).+(self.a(n - 1).*(3))	"1"		, a(n) = prime(a(n-1)) + 3a(n-1).
+A188051	filnum	1	0	n -> ZV(18).^(n).-(ZV(17).^(n)).IPP()		isprime(18^n-17^n)
+A216375	filnum	1	0	n -> ZV(11).^(n).+(ZV(n).^(11)).+(1).IPP()		isprime(11^n+n^11+1)
+A216421	filnum	1	0	n -> ZV(13).^(n).+(ZV(n).^(13)).+(1).IPP()		isprime(13^n+n^13+1)
+A216423	filnum	1	0	n -> ZV(4 ).^(n).+(ZV(n).^(4 )).+(1).IPP()		isprime(4^n+n^4+1)
+A224506	filnum	1	0	n -> ZV(9 ).^(n).-(n).IPP()		isprime(9^n-n)
+A242178	filnum	1	0	n -> ZV(n).*(ZV(8 ).^(n)).+(1).IPP()		isprime(n*8^n+1)
+A242196	filnum	1	0	n -> ZV(n).*(ZV(12).^(n)).+(1).IPP()		isprime(n*12^n+1)
+A253471	filnum	1	0	n -> ZV(3 ).^(n).+(ZV(n).^(3)).IPP()		isprime(3^n+n^3)
+A254066	filnum	1	1	n -> n % 10 != 0 && Functions.DIGIT_SUM.l(n) == Functions.DIGIT_SUM.l(n*n)	(n)==sumdigits(n^(\d+))	2
+A329470	multrar	0	(self, n) -> self.a(n - 1).square().+(1)	"1,1"	a(n) = 2 a(n-1)^2 + 1 for n >=2 , where a(0) = 1, a(1) = 1.	nonn	0..9
+A348072	filnum	1	0	n -> Functions.OMEGA.l(n) == 8	omega(n)==(\d+)	8
+A350036	filnum	1	0	n -> ZV( 81).^(n).+(1)./(82).IPP()		isprime((81^n+1)/82)

@@ -1,0 +1,234 @@
+---- 2024-05-11 20:34:28
+A096657	multrar	0	(self, n) -> self.a(n - 1).*(Z2(n)).+(self.a(n - 2).*(Z2(n - 1)))	"1,3"	a(n) = (2^n)*a(n-1) + (2^(n-1))*a(n-2), a(0)=1, a(1)=3.	nonn	0..14
+A101472	filnum	1	0	n -> ZV(100*n + 33).IPP()		isprime(100*n+33)
+A102339	filnum	1	0	n -> ZV(1000).*(n).+(333).IPP()		isprime(1000*n+333)
+A102343	filnum	1	0	n -> ZV(n).*(1000).+(777).IPP()		isprime(n*10^3+777)
+A102611	filnum	1	0	n -> ZV(100*n + 77).IPP()		isprime(100*n+77)
+A102624	filnum	1	0	n -> ZV(100*n + 23).IPP()		isprime(100*n+23)
+A107306	filnum	1	0	n -> ZV(( 17*n - 19)).IPP()		isprime((17*n-19))
+A107308	filnum	1	0	n -> ZV(( 29*n - 31)).IPP()		isprime((29*n-31))
+A110016	filnum	1	0	n -> { final Z v = ZV(n).^(2).-(7)      ; return v.mod(6 ) == 0 && v./(6 ).IPP(); }		isprime((n^2-7)/6)
+A110480	filnum	1	0	n -> { final Z v = ZV(n).^(2).+(6)      ; return v.mod(5 ) == 0 && v./(5 ).IPP(); }		isprime((n^2+6)/5)
+A111517	filnum	1	1	n -> { final Z v = ZV(n).*(7).+(1); return v.mod(2) == 0 && v./(2).IPP(); }	ZV((7*n + 1)/2).IPP()		isprime((7*n+1)/2)
+A111851	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 1 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=1 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111852	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 2 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=2 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111853	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 3 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=3 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111854	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 4 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=4 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111855	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 5 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=5 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111856	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 6 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=6 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111857	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 7 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=7 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111858	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 8 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=8 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111859	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 9 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=9 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111878	simtraf	0	new A111877().skip(1)	v -> v./(5)	a(n) = A111877(n+1)/5.	easy,nonn	0..1000
+A111891	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 1 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if ?111862(n)=1 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111892	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 2 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if ?111862(n)=2 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111893	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 3 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if ?111862(n)=3 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111895	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 5 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if ?111862(n)=5 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111896	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 6 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if ?111862(n)=6 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111897	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 7 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if ?111862(n)=7 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111898	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 8 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if ?111862(n)=8 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111899	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 9 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if ?111862(n)=9 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A113542	filnum	1	1	n -> { final Z v = ZV(n).^(2).*(18).+(1); return v.mod(19) == 0 && v./(19).IPP(); }	ZV(( 18*n*n + 1)/19).IPP()		isprime((18*n^2+1)/19)
+A128958	filnum	1	0	n -> ZV(n).^(2).+(ZV(n + 1).^(3)).IPP()		isprime(n^2+(n+1)^3)
+A129229	multrar	0	(self, n) -> CR.PHI.*(n).floor().-(self.a(n - 1))	"0"	a(n) = floor(n*r)-a(n-1), where r is the golden mean, (1+sqrt(5))/2.	nonn	0..73
+A138632	filnum	1	0	n -> ZV(17*n + 9).IPP()		isprime(17*n+9)
+A139220	filnum	1	0	n -> ZV(n*(n + 1)/2 + 41).IPP()		isprime(n*(n+1)/2+41)
+A160022	filnum	1	0	n -> ZV(n).IPP() && ZV(n).^(4).+(706).IPP()		isprime(n)&&isprime(n^4+706)
+A165422	multrar	1	(self, n) -> self.a(n - 1).^(2)	"1,4,4"		a(1) = 1, a(2) = 4, a(3) = 4, a(n) = (a(n-1))^2, n >= 4.
+A165423	multrar	1	(self, n) -> self.a(n - 1).^(2)	"1,5,5"		a(1) = 1, a(2) = 5, a(3) = 5, a(n) = (a(n-1))^2, n >= 4.
+A165424	multrar	1	(self, n) -> self.a(n - 1).^(2)	"1,6,6"		a(1) = 1, a(2) = 6, a(3) = 6, a(n) = (a(n-1))^2, n >= 4.
+A165425	multrar	1	(self, n) -> self.a(n - 1).^(2)	"1,7,7"		a(1) = 1, a(2) = 7, a(3) = 7, a(n) = (a(n-1))^2, n >= 4.
+A165427	multrar	1	(self, n) -> self.a(n - 1).^(2)	"1,9,9"		a(1) = 1, a(2) = 9, a(3) = 9, a(n) = (a(n-1))^2, n >= 4.
+A165428	multrar	1	(self, n) -> self.a(n - 1).^(2)	"1,10,10"		a(1) = 1, a(2) = 10, a(3) = 10, and for n > 3 a(n) = (a(n-1))^2.
+A175977	multrar	1	(self, n) -> ZV(n - 1).^(self.a(n - 1)).+(1)	"1"		a(1) = 1, for n >= 2: a(n) = (n-1)^a(n-1) + 1.
+A175978	multrar	1	(self, n) -> self.a(n - 1).^(n - 1).+(1)	"1"		a(1) = 1, for n >= 2: a(n) = a(n-1)^(n-1) + 1.
+A175979	multrar	1	(self, n) -> ZV(n).^(self.a(n - 1)).+(1)	"1"		a(1) = 1, for n >= 2: a(n) = n^a(n-1) + 1.
+A175981	multrar	1	(self, n) -> self.a(n - 1).^(n - 1).-(1)	"1"		a(1) = 1, for n >= 2: a(n) = a(n-1)^(n-1) - 1.
+A175982	multrar	1	(self, n) -> ZV(n).^(self.a(n - 1)).-(1)	"1"		a(1) = 1, for n >= 2: a(n) = n^(a(n-1)) - 1.
+A175984	multrar	1	(self, n) -> self.a(n - 1).+(1).^(n - 1).+(1)	"1"		a(1) = 1, for n >= 2: a(n) = (a(n-1)+1)^(n-1) + 1.
+A175986	multrar	1	(self, n) -> self.a(n - 1).-(1).^(n - 1).-(1)	"1"		a(1) = 1, for n >= 2: a(n) = (a(n-1)-1)^(n-1) - 1.
+A175987	multrar	1	(self, n) -> self.a(n - 1).-(1).^(n).-(1)	"1"		a(1) = 1, for n >= 2: a(n) = (a(n-1)-1)^n - 1.
+A178177	filnum	1	0	n -> ZV(n).^(4).+(706).IPP()		isprime(n^4+706)
+A182640	multrar	0	(self, n) -> CR.PHI.*(self.a(n - 1)).floor().+(n)	"0,1"	a(n)=n+floor(r*a(n-1)), where r = golden ratio = (1+sqrt(5))/2, a(0)=0, a(1)=1.	nonn	0..37
+A185657	filnum	1	0	n -> { final Z v = ZV(n).^(2).+(n).+(41); return v.mod(43) == 0 && v./(43).IPP(); }		isprime((n^2+n+41)/43)
+A194167	parmof2	1	A194161	CR.PHI.add(CR.HALF)
+A194168	partsun	1	new A194167()
+A194171	parmof2	1	A194161	CR.HALF.add(CR.FIVE.sqrt())
+A194172	partsun	1	new A194171()
+A194175	parmof2	1	A194161	CR.valueOf(7).sqrt()
+A194176	partsun	1	new A194175()
+A194177	parmof2	1	A194161	CR.valueOf(8).sqrt()
+A194178	partsun	1	new A194177()
+A194179	parmof2	1	A194161	CR.HALF.add(CR.EIGHT.sqrt())
+A194180	partsun	1	new A194179()
+A194199	partsun	1	new A194198()
+A194208	parmof2	1	A194161	CR.HALF_PI
+A194209	partsun	1	new A194208()
+A194210	parmof2	1	A194161	CR.PI.divide(3)
+A194211	partsun	1	new A194210()
+A194212	parmof2	1	A194161	CR.PI.multiply(2)
+A194213	partsun	1	new A194212()
+A194214	parmof2	1	A194161	CR.PI.multiply(2).divide(3)
+A194215	partsun	1	new A194214()
+A194225	parmof2	1	A194161	CR.ONE.divide(7)
+A194226	partsun	1	new A194225()
+A194227	parmof2	1	A194161	CR.TWO.divide(7)
+A194228	partsun	1	new A194227()
+A194242	partsun	1	new A194241()
+A194243	parmof2	1	A194161	CR.valueOf(2).subtract(CR.valueOf(2).sqrt())
+A194244	partsun	1	new A194243()
+A194245	parmof2	1	A194161	CR.valueOf(2).subtract(CR.valueOf(3).sqrt())
+A194246	partsun	1	new A194245()
+A194247	parmof2	1	A194161	CR.valueOf(3).subtract(CR.valueOf(5).sqrt())
+A194248	partsun	1	new A194247()
+A194249	parmof2	1	A194161	CR.valueOf(3).subtract(CR.valueOf(6).sqrt())
+A194250	partsun	1	new A194249()
+A194251	parmof2	1	A194161	CR.valueOf(3).subtract(CR.valueOf(8).sqrt())
+A194252	partsun	1	new A194251()
+A194253	parmof2	1	A194161	CR.valueOf(12).sqrt()
+A194254	partsun	1	new A194253()
+A194255	parmof2	1	A194161	CR.valueOf(4).subtract(CR.valueOf(12).sqrt())
+A194256	partsun	1	new A194255()
+A239344	filnum	1	0	n -> ZV(n).^(7).+(7).IPP()		isprime(n^7+7)
+A239345	filnum	1	0	n -> ZV(n).^(8).+(8).IPP()		isprime(n^8+8)
+A239346	filnum	1	0	n -> ZV(n).^(9).+(9).IPP()		isprime(n^9+9)
+A239416	filnum	1	0	n -> ZV(n).^(8).-(8).IPP()		isprime(n^8-8)
+A239417	filnum	1	0	n -> ZV(n).^(9).-(9).IPP()		isprime(n^9-9)
+A239418	filnum	1	0	n -> ZV(n).^(10).-(10).IPP()		isprime(n^10-10)
+A254402	multrar	1	(self, n) -> self.a(n - 1).^(3).sqrt()	"3"		a(n) = floor(a(n-1)^(3/2)), a(1) = 3.
+A254404	multrar	1	(self, n) -> self.a(n - 1).^(3).sqrt()	"4"		a(n) = floor(a(n-1)^(3/2)), a(1) = 4.
+A254406	multrar	1	(self, n) -> self.a(n - 1).^(5).sqrt()	"2"		a(n) = floor(a(n-1)^(5/2)), a(1) = 2.
+A271831	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-13)).+(self.a(n- 7).^(2))./(self.a(n-14))	"1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1"	a(13) = 1; for n>=14, a(n) = (a(n-1)*a(n-13)+a(n- 7)^2)/a(n-14)
+A271835	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-11)).+(self.a(n- 6).^(2))./(self.a(n-12))	"1, 1,1,1,1,1, 1,1,1,1,1, 1"	a(11) = 1; for n>=12, a(n) = (a(n-1)*a(n-11)+a(n- 6)^2)/a(n-12)
+A271837	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-15)).+(self.a(n- 8).^(2))./(self.a(n-16))	"1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1"	a(15) = 1; for n>=16, a(n) = (a(n-1)*a(n-15)+a(n- 8)^2)/a(n-16)
+A271838	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-17)).+(self.a(n- 9).^(2))./(self.a(n-18))	"1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1"	a(17) = 1; for n>=18, a(n) = (a(n-1)*a(n-17)+a(n- 9)^2)/a(n-18)
+A271839	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-19)).+(self.a(n-10).^(2))./(self.a(n-20))	"1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1"	a(19) = 1; for n>=20, a(n) = (a(n-1)*a(n-19)+a(n-10)^2)/a(n-20)
+A271949	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-10)).+(self.a(n- 5).*(self.a(n- 6)))./(self.a(n-11))	"1, 1,1,1,1,1, 1,1,1,1,1"	a(10) = 1; for n>=11, a(n) = (a(n-1)*a(n-10)+a(n- 5)*a(n- 6))/a(n-11)
+A271952	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-14)).+(self.a(n- 7).*(self.a(n- 8)))./(self.a(n-15))	"1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1"	a(14) = 1; for n>=15, a(n) = (a(n-1)*a(n-14)+a(n- 7)*a(n- 8))/a(n-15)
+A271954	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-16)).+(self.a(n- 8).*(self.a(n- 9)))./(self.a(n-17))	"1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1"	a(16) = 1; for n>=17, a(n) = (a(n-1)*a(n-16)+a(n- 8)*a(n- 9))/a(n-17)
+A271955	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-18)).+(self.a(n- 9).*(self.a(n-10)))./(self.a(n-19))	"1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1"	a(18) = 1; for n>=19, a(n) = (a(n-1)*a(n-18)+a(n- 9)*a(n-10))/a(n-19)
+A272038	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-20)).+(self.a(n-10).*(self.a(n-11)))./(self.a(n-21))	"1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1, 1,1,1,1,1"	a(20) = 1; for n>=21, a(n) = (a(n-1)*a(n-20)+a(n-10)*a(n-11))/a(n-21)
+A275873	multrar	0	(self, n) -> { final CR c32 = CR.valueOf(new Q(3, 2)); return c32.*(self.a(n - 1)).floor().+(c32.*(self.a(n - 2)).floor()).+(c32.*(self.a(n - 3)).floor()); }	"1,1,1"	a(n) = floor(r*a(n-1)) + floor(r*a(n-2)) + floor(r*a(n-3)), where r = 3/2, a(0) = a(1) = a(2) = 1.	easy,nonn	0..1000
+A283968	multrar	0	(self, n) -> CR.THREE.+(CR.FIVE.sqrt())./(2)).+(self.a(n - 1))	"1"	a(n) = a(n-1) + 1 + floor(n*(3 + sqrt(5))/2), a(0) = 1.	nonn,easy	0..1000
+A322926	multrar	0	(self, n) -> { final Z v = self.a(n - 1).^(3).-(5).makeOdd(); return (v.auxiliary() >= n) ? self.a(n - 1) : self.a(n - 1).+(Z2(n - 1)); }	"0"		a(n) = a(n-1) if a(n-1)^3 - 5 is divisible by 2^n, otherwise a(n-1) + 2^(n-1).
+A322934	multrar	0	(self, n) -> { final Z v = self.a(n - 1).^(3).-(7).makeOdd(); return (v.auxiliary() >= n) ? self.a(n - 1) : self.a(n - 1).+(Z2(n - 1)); }	"0"		a(n) = a(n-1) if a(n-1)^3 - 7 is divisible by 2^n, otherwise a(n-1) + 2^(n-1).
+A322999	multrar	0	(self, n) -> { final Z v = self.a(n - 1).^(3).-(9).makeOdd(); return (v.auxiliary() >= n) ? self.a(n - 1) : self.a(n - 1).+(Z2(n - 1)); }	"0"		a(n) = a(n-1) if a(n-1)^3 - 9 is divisible by 2^n, otherwise a(n-1) + 2^(n-1).
+A325892	multrar	0	(self, n) -> { final Z v = self.a(n - 1).^(5).-(3).makeOdd(); return (v.auxiliary() >= n) ? self.a(n - 1) : self.a(n - 1).+(Z2(n - 1)); }	"0"		a(n) = a(n-1) if a(n-1)^5 - 3 is divisible by 2^n, otherwise a(n-1) + 2^(n-1).
+A325893	multrar	0	(self, n) -> { final Z v = self.a(n - 1).^(5).-(5).makeOdd(); return (v.auxiliary() >= n) ? self.a(n - 1) : self.a(n - 1).+(Z2(n - 1)); }	"0"		a(n) = a(n-1) if a(n-1)^5 - 5 is divisible by 2^n, otherwise a(n-1) + 2^(n-1).
+A325894	multrar	0	(self, n) -> { final Z v = self.a(n - 1).^(5).-(7).makeOdd(); return (v.auxiliary() >= n) ? self.a(n - 1) : self.a(n - 1).+(Z2(n - 1)); }	"0"		a(n) = a(n-1) if a(n-1)^5 - 7 is divisible by 2^n, otherwise a(n-1) + 2^(n-1).
+A325895	multrar	0	(self, n) -> { final Z v = self.a(n - 1).^(5).-(9).makeOdd(); return (v.auxiliary() >= n) ? self.a(n - 1) : self.a(n - 1).+(Z2(n - 1)); }	"0"		a(n) = a(n-1) if a(n-1)^5 - 9 is divisible by 2^n, otherwise a(n-1) + 2^(n-1).
+A329471	multrar	0	(self, n) -> self.a(n - 1).square().+(3)	"1,3"	a(n) = a(n-1)^2 + 3 for n >=2 , where a(0) = 1, a(1) = 3.	nonn	0..8
+A341255	multrar	1	(self, n) -> { final CR r = CR.TWO.+(CR.FIVE.sqrt())./(2); return r.*(r.*(self.a(n - 1)).floor()).floor(); }	"1"	Let f(n) = floor(r*floor(r*n)) = A341254(n), where r = (2 + sqrt(5))/2.  Let a(1) = 1. Then a(n) = f(a(n-1)) for n >= 2.	nonn,easy	1..25
+A348875	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> ZV(2 ).^(k).*(self.a(k)).*(self.a(n-k-1))))	"1"
+A348876	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> ZV(3 ).^(k).*(self.a(k)).*(self.a(n-k-1))))	"1"
+A348877	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> ZV(4 ).^(k).*(self.a(k)).*(self.a(n-k-1))))	"1"
+A348878	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-2, k -> ZV(2 ).^(k).*(self.a(k)).*(self.a(n-k-2))))	"1"
+A348879	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-2, k -> ZV(3 ).^(k).*(self.a(k)).*(self.a(n-k-2))))	"1"
+A348880	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-2, k -> ZV(4 ).^(k).*(self.a(k)).*(self.a(n-k-2))))	"1"
+A348901	multrar	0	(self, n) -> self.a(n-1).negate().+(SU(0, n-1, k -> ZV(2 ).^(k+1)  .*(self.a(k)).*(self.a(n-k-1)))        )	"1"
+A348902	multrar	0	(self, n) -> self.a(n-1).negate().+(SU(0, n-1, k -> ZV(2 ).^(2*k+1).*(self.a(k)).*(self.a(n-k-1)))        )	"1"
+A348903	multrar	0	(self, n) -> self.a(n-1).*(2).+(SU(0, n-1, k -> Z2(k).*(self.a(k)).*(self.a(n-k-1))))	"1"
+A348904	multrar	0	(self, n) -> self.a(n-1).*(3).+(SU(0, n-1, k -> Z2(k).*(self.a(k)).*(self.a(n-k-1))))	"1"
+A348957	multrar	0	(self, n) -> Z_1(n+1).*(self.a(n-1)).+(SU(0, n-1, k -> self.a(k).*(self.a(n-k-1))))	"1"
+A349011	multrar	0	(self, n) -> Z_1(n  ).*(self.a(n-1)).+(SU(0, n-1, k -> self.a(k).*(self.a(n-k-1))).*(2)  )	"1"
+A349012	multrar	0	(self, n) -> Z2(n-1).*(self.a(n-1)).+(SU(0, n-1, k -> self.a(k).*(self.a(n-k-1))))	"1"
+A349013	multrar	0	(self, n) -> Z2(n-1).*(self.a(n-1)).+(SU(0, n-2, k -> self.a(k).*(self.a(n-k-2))))	"1"
+A349032	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> ZV(-2).^(k).*(self.a(k)).*(self.a(n-k-1))))	"1"
+A349033	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> ZV(-3).^(k).*(self.a(k)).*(self.a(n-k-1))))	"1"
+A349034	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> ZV(-4).^(k).*(self.a(k)).*(self.a(n-k-1))))	"1"
+A349035	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-2, k -> ZV(-2).^(k).*(self.a(k)).*(self.a(n-k-2))))	"1"
+A349036	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-2, k -> ZV(-3).^(k).*(self.a(k)).*(self.a(n-k-2))))	"1"
+A349037	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-2, k -> ZV(-4).^(k).*(self.a(k)).*(self.a(n-k-2))))	"1"
+A349038	multrar	0	(self, n) -> self.a(n-1).negate().-(SU(0, n-1, k -> ZV(-2).^(k+1)  .*(self.a(k)).*(self.a(n-k-1)))        )	"1"
+A349045	multrar	0	(self, n) -> self.a(n-1).negate().+(SU(0, n-1, k -> ZV(-3).^(k)    .*(self.a(k)).*(self.a(n-k-1))).*(2)   )	"1"
+A349046	multrar	0	(self, n) -> self.a(n-1).negate().+(SU(0, n-1, k -> ZV(-4).^(k)    .*(self.a(k)).*(self.a(n-k-1))).*(2)   )	"1"
+A367655	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> self.a(k/2).*(self.a(n-1-k))))	"1"
+A367656	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> self.a(k/3).*(self.a(n-1-k))))	"1"
+A367657	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> self.a(k/4).*(self.a(n-1-k))))	"1"
+A367658	multrar	0	(self, n) -> self.a(n-1).+(SU(0, n-1, k -> self.a(k/5).*(self.a(n-1-k))))	"1"
+A367659	multrar	0	(self, n) -> self.a(n-1).+(SU(0, (n-1)/3, k -> self.a(k).*(self.a(n-1-3*k))))	"1"
+A367660	multrar	0	(self, n) -> self.a(n-1).+(SU(0, (n-1)/4, k -> self.a(k).*(self.a(n-1-4*k))))	"1"
+A367661	multrar	0	(self, n) -> self.a(n-1).+(SU(0, (n-1)/5, k -> self.a(k).*(self.a(n-1-5*k))))	"1"
+---- 2024-05-11 20:51:18
+A101471	filnum	1	0	n -> ZV(100*n + 11).IPP()		isprime(100*n+11)
+A112405	filnum	1	0	n -> ZV(n).^(9).-(3).IPP()		isprime(n^9-3)
+A114452	filnum	1	0	n -> ZV(n).^(9).-(7).IPP()		isprime(n^9-7)
+A125262	filnum	1	0	n -> ZV(n).^(7).+(6).IPP()		isprime(n^7+6)
+A125263	filnum	1	0	n -> ZV(n).^(8).+(7).IPP()		isprime(n^8+7)
+A125264	filnum	1	0	n -> ZV(n).^(10).+(9).IPP()		isprime(n^10+9)
+A125265	filnum	1	0	n -> ZV(n).^(11).+(10).IPP()		isprime(n^11+10)
+A154935	filnum	1	0	n -> ZV(n).^(7).-(2).IPP()		isprime(n^7-2)
+A194162	partsun	1	new A194161()
+A194163	parmof2	1	A194161	CR.valueOf(3).sqrt()
+A194164	partsun	1	new A194163()
+A194165	parmof2	1	A194161	CR.PHI
+A194166	partsun	1	new A194165()
+A194169	parmof2	1	A194161	CR.FIVE.sqrt()
+A194170	partsun	1	new A194169()
+A194173	parmof2	1	A194161	CR.SIX.sqrt()
+A194174	partsun	1	new A194173()
+A194198	parmof2	1	A194161	CR.valueOf(10).sqrt()
+A194200	parmof2	1	A194161	CR.E
+A194201	partsun	1	new A194200()
+A194202	parmof2	1	A194161	CR.E.multiply(2)
+A194203	partsun	1	new A194202()
+A194204	parmof2	1	A194161	CR.E.divide(2)
+A194205	partsun	1	new A194204()
+A194206	parmof2	1	A194161	CR.PI
+A194207	partsun	1	new A194206()
+A194239	parmof2	1	A194161	CR.ONE.add(CR.SQRT2).divide(2)
+A194240	partsun	1	new A194239()
+A194241	parmof2	1	A194161	CR.THREE.sqrt().add(1).divide(2)
+A208293	filnum	1	0	n -> { final Z v = ZV(n).^(2).+(1)      ; return v.mod(26) == 0 && v./(26).IPP(); }		isprime((n^2+1)/26)
+A217001	filnum	1	0	n -> { final Z v = ZV(n).^(2).+(n).+(2) ; return v.mod(4 ) == 0 && v./(4 ).IPP(); }		isprime((n^2+n+2)/4)
+A240878	filnum	1	0	n -> { final Z v = ZV(n).^(2).+(2)      ; return v.mod(3 ) == 0 && v./(3 ).IPP(); }		isprime((n^2+2)/3)
+A283867	filnum	1	0	n -> ZV(30*n*n - 1).IPP() && ZV(30*n*n + 1).IPP()
+A372186	filnum	1	0	n -> ZV(20*n + 1).IPP() && ZV(80*n + 1).IPP() && ZV(100*n + 1).IPP() && ZV(200*n + 1).IPP()	80).*(n).+(1)&&isprime(100).*(n).+(1)&&isprime(200).*(n).+(1).IPP()		isprime(20*n+1)&&isprime(80*n+1)&&isprime(100*n+1)&&isprime(200*n+1)
+A372188	filnum	1	0	n -> ZV(18*n + 1).IPP() && ZV(36*n + 1).IPP() && ZV(108*n + 1).IPP() && ZV(162*n + 1).IPP()	36).*(n).+(1)&&isprime(108).*(n).+(1)&&isprime(162).*(n).+(1).IPP()		isprime(18*n+1)&&isprime(36*n+1)&&isprime(108*n+1)&&isprime(162*n+1)
+---- 2024-05-11 21:10:50
+A095906	filnum	1	0	n -> ZV(3 ).^(n).-(Z2(n -1)).IPP()		isprime(3^n-2^(n-1))
+A141545	filnum	1	0	n -> Functions.SIGMA.z(n).equals(Z.TWO.*(n).+(12))	== sigma(n)==(\d+)*n+(\d+)	2	12
+A173975	filnum	1	0	n -> ZV(n).^(n).+(115).IPP()		isprime(n^n+115)
+A174456	filnum	1	0	n -> Functions.SIGMA0.l(n) == 12 && Functions.SIGMA0.l(n + 1) == 12	numdiv(n)==(\d+)&&numdiv(n+(\d+))==(\d+)	12	1
+A177070	filnum	0	0	n -> ZV(2 ).^(n).+(ZV(n).^(2 )).+(2).IPP()		isprime(2^n+n^2+2)
+A179512	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).-(self.a(n - 1).*(2))	"12"		, a(n) = prime(a(n-1)) - 2a(n-1).
+A179514	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).-(self.a(n - 1).*(3))	"31"		, a(n) = prime(a(n-1)) - 3a(n-1).
+A179516	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).-(self.a(n - 1).*(4))	"73"		, a(n) = prime(a(n-1)) - 4a(n-1).
+A179518	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).-(self.a(n - 1).*(5))	"190"		, a(n) = prime(a(n-1)) - 5a(n-1).
+A181112	filnum	1	0	n -> { final Z v = ZV(n).^(6).+(1091)   ; return v.mod(4 ) == 0 && v./(4 ).IPP(); }		isprime((n^6+1091)/4)
+A214195	filnum	1	1	n -> Functions.OMEGA.l(n) %3 == 0	omega(n)%(\d+)==(\d+)	3	0
+A215197	filnum	1	0	n -> Functions.SIGMA0.l(n) == 10 && Functions.SIGMA0.l(n + 1) == 10	numdiv(n)==(\d+)&&numdiv(n+(\d+))==(\d+)	10	1
+A219616	filnum	1	0	n -> ZV(5 ).^(n).+(ZV(n).^(4)).IPP()		isprime(5^n+n^4)
+A220364	filnum	1	1	n -> Functions.DIGIT_SUM.l(ZV(36).^(n)) % n == 0	((\d+)^n)%n==(\d+)	36	0
+A239347	filnum	1	0	n -> ZV(n).^(10).+(10).IPP()		isprime(n^10+10)
+A274045	filnum	1	0	n -> ZV(n).IPP() && Functions.NEXT_PRIME.z(n).-(n).equals(ZV(72))			isprime(n)&&nextprime(n+1)-n==72
+A339921	filnum	1	0	n -> ZV(20).^(n).+(3).IPP()		isprime(20^n+3)
+A339922	filnum	1	0	n -> ZV(20).^(n).-(3).IPP()		isprime(20^n-3)
+A339924	filnum	1	0	n -> ZV(14).^(n).-(3).IPP()		isprime(14^n-3)
+A372621	lambdan	1	n -> SU(1, n, k -> Functions.PHI.z(k*3))./(2)
+A372622	lambdan	1	n -> SU(1, n, k -> Functions.PHI.z(k*5,))./(4 )
+A372637	lambdan	1	n -> SU(1, n, k -> Functions.PHI.z(k*6,))./(2 )
+A372638	lambdan	1	n -> SU(1, n, k -> Functions.PHI.z(k*7,))./(6 )
+A372639	lambdan	1	n -> SU(1, n, k -> Functions.PHI.z(k*10))./(4 )
+A372671	lambdan	1	n -> Functions.PHI.z(n*12)./(4 )
+A372672	lambdan	1	n -> Functions.PHI.z(n*10)./(4 )
+A372673	arrlamb	1	1	1	-1	(n, k) -> Functions.PHI.z(k*n)./(Functions.PHI.z(k))
+A372676	lambdan	1	n -> Functions.PHI.z(n*11)./(10)
+A372677	lambdan	1	n -> Functions.PHI.z(n*13)./(12)
+A372678	lambdan	1	n -> Functions.PHI.z(n*14)./(6 )
+A372679	lambdan	1	n -> Functions.PHI.z(n*15)./(8 )
+A372681	lambdan	1	n -> Functions.PHI.z(n*17)./(16)
+---- 2024-05-11 21:18:06
+A075898	filnum	1	0	n -> ZV(3 ).^(n).+(ZV(n).^(2)).IPP()		isprime(3^n+n^2)
+A173974	filnum	1	0	n -> ZV(n).^(n).+(43).IPP()		isprime(n^n+43)
+A179515	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).+(self.a(n - 1).*(4))	"1"		, a(n) = prime(a(n-1)) + 4a(n-1).
+A179517	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).+(self.a(n - 1).*(5))	"1"		, a(n) = prime(a(n-1)) + 5a(n-1).
+A215441	filnum	1	0	n -> ZV(3 ).^(n).+(ZV(n).^(3 )).+(1).IPP()		isprime(3^n+n^3+1)
+A215442	filnum	1	0	n -> ZV(5 ).^(n).+(ZV(n).^(5 )).+(1).IPP()		isprime(5^n+n^5+1)
+A215444	filnum	1	0	n -> ZV(7 ).^(n).+(ZV(n).^(7 )).+(1).IPP()		isprime(7^n+n^7+1)
+A242176	filnum	1	0	n -> ZV(n).*(ZV(6 ).^(n)).+(1).IPP()		isprime(n*6^n+1)
+A242197	filnum	1	0	n -> ZV(n).*(ZV(14).^(n)).+(1).IPP()		isprime(n*14^n+1)
+A242198	filnum	1	0	n -> ZV(n).*(ZV(15).^(n)).+(1).IPP()		isprime(n*15^n+1)
+A242199	filnum	1	0	n -> ZV(n).*(ZV(16).^(n)).+(1).IPP()		isprime(n*16^n+1)
+A243934	filnum	1	0	n -> ZV(6 ).^(n).+(ZV(n).^(6 )).+(1).IPP()		isprime(6^n+n^6+1)
+A339923	filnum	1	0	n -> ZV(14).^(n).+(3).IPP()		isprime(14^n+3)

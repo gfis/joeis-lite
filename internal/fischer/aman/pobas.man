@@ -1,0 +1,120 @@
+# x        Lower POBA       Upper POBA       POBA
+# 1        A001359/A006512  A006512/A001359  A265759/A265760
+# 3/2      A104163/A158708  A162336/A158709  A265761/A222565
+# 2        A005383/A005382  A005385/A005384  A079149/A120628
+# 3        A091180/A088878  A094525/A023208  A265763/A265764
+# 4        A162857/A062737  A090866/A023212  A265765/A120639
+# 5        A265766/A158318  A265767/A023217  A265768/A265769
+# 6        A227756/A158015  A051644/A007693  A265770/A265771
+# sqrt(2)  A265772/A265773  A265774/A265775  A265776/A265777
+# sqrt(3)  A265778/A265779  A265780/A265781  A265782/A265783
+# sqrt(5)  A265784/A265785  A265786/A265787  A265788/A265789
+# sqrt(8)  A265790/A265791  A265792/A265793  A265794/A265795
+# tau      A265796/A265797  A265798/A265799  A265800/A265801
+# 1/tau    A265799/A265798  A265797/A265796  A265806/A265807
+# pi       A265808/A265809  A265810/A265811  A265812/A265813
+# e        A265814/A265815  A265816/A265817  A265818/A265819
+
+A265759	parmof3	1	A265759	NUM_BA	CR.ONE	primes-only best approximates (POBAs) to 1; see Comments.	nonn,frac	1..55	nyi	_Clark Kimberling_
+A265760	parmof3	1	A265759	DEN_BA	CR.ONE	primes-only best approximates (POBAs) to 1; see Comments.	nonn,frac	1..55	???patch_prepend	_Clark Kimberling_
+
+A079149	parmof3	1	A265759	NUM_BA	CR.TWO	primes-only best approximates (POBAs) to 2; see Comments.	nonn,frac	1..55	nyi	_Clark Kimberling_
+A120628	parmof3	1	A265759	DEN_BA	CR.TWO	primes-only best approximates (POBAs) to 2; see Comments.	nonn,frac	1..55	???patch_prepend	_Clark Kimberling_
+
+A104163	parmof3	1	A265759	NUM_LO	CR.THREE.multiply(CR.HALF)	
+A158708	parmof3	1	A265759	DEN_LO	CR.THREE.multiply(CR.HALF)	
+A162336	parmof3	1	A265759	NUM_UP	CR.THREE.multiply(CR.HALF)	
+A158709	parmof3	1	A265759	DEN_UP	CR.THREE.multiply(CR.HALF)	
+A265761	parmof3	1	A265759	NUM_BA	CR.THREE.multiply(CR.HALF)	primes-only best approximates (POBAs) to 3/2; see Comments.	nonn,frac	1..55	nyi	_Clark Kimberling_
+A222565	parmof3	1	A265759	DEN_BA	CR.THREE.multiply(CR.HALF)	
+
+A091180	parmof3	1	A265759	NUM_LO	CR.THREE	
+A088878	parmof3	1	A265759	DEN_LO	CR.THREE	
+A094525	parmof3	1	A265759	NUM_UP	CR.THREE	
+A023208	parmof3	1	A265759	DEN_UP	CR.THREE	
+A265763	parmof3	1	A265759	NUM_BA	CR.THREE	primes-only best approximates (POBAs) to 3; see Comments.	nonn,frac	1..55	nyi	_Clark Kimberling_
+A265764	parmof3	1	A265759	DEN_BA	CR.THREE	primes-only best approximates (POBAs) to 3; see Comments.	nonn,frac	1..58	nyi	_Clark Kimberling_
+
+A162857	parmof3	1	A265759	NUM_LO	CR.FOUR	
+A062737	parmof3	1	A265759	DEN_LO	CR.FOUR	
+A090866	parmof3	1	A265759	NUM_UP	CR.FOUR	
+A023212	parmof3	1	A265759	DEN_UP	CR.FOUR	
+A265765	parmof3	1	A265759	NUM_BA	CR.FOUR	primes-only best approximates (POBAs) to 4; see Comments.	nonn,frac	1..49	nyi	_Clark Kimberling_
+A120639	parmof3	1	A265759	DEN_BA	CR.FOUR	
+
+A265766	parmof3	1	A265759	NUM_LO	CR.FIVE
+A158318	parmof3	1	A265759	DEN_LO	CR.FIVE
+A265767	parmof3	1	A265759	NUM_UP	CR.FIVE
+A023217	parmof3	1	A265759	DEN_UP	CR.FIVE
+A265768	parmof3	1	A265759	NUM_BA	CR.FIVE
+A265769	parmof3	1	A265759	DEN_BA	CR.FIVE
+
+A227756	parmof3	1	A265759	NUM_LO	CR.SIX	
+A158015	parmof3	1	A265759	DEN_LO	CR.SIX	
+A051644	parmof3	1	A265759	NUM_UP	CR.SIX	
+A007693	parmof3	1	A265759	DEN_UP	CR.SIX	
+A265770	parmof3	1	A265759	NUM_BA	CR.SIX	
+A265771	parmof3	1	A265759	DEN_BA	CR.SIX	
+
+A265766	parmof3	1	A265759	NUM_LO	CR.FIVE	primes-only best approximates (POBAs) to 5; see Comments.	nonn,frac	1..47	nyi	_Clark Kimberling_
+A265767	parmof3	1	A265759	NUM_UP	CR.FIVE	primes-only best approximates (POBAs) to 5; see Comments.	nonn,frac	1..46	nyi	_Clark Kimberling_
+A265768	parmof3	1	A265759	NUM_BA	CR.FIVE	primes-only best approximates (POBAs) to 5; see Comments.	nonn,frac	1..50	nyi	_Clark Kimberling_
+A265769	parmof3	1	A265759	DEN_BA	CR.FIVE	primes-only best approximates (POBAs) to 5; see Comments.	nonn,frac	1..56	nyi	_Clark Kimberling_
+A265770	parmof3	1	A265759	NUM_BA	CR.SIX	primes-only best approximates (POBAs) to 6; see Comments.	nonn,frac	1..51	nyi	_Clark Kimberling_
+A265771	parmof3	1	A265759	DEN_BA	CR.SIX	primes-only best approximates (POBAs) to 6; see Comments.	nonn,frac	1..58	nyi	_Clark Kimberling_
+
+A265772	parmof3	1	A265759	NUM_LO	CR.TWO.sqrt()	primes-only best approximates (POBAs) to sqrt(2); see Comments.	nonn,frac,more	1..17	nyi	_Clark Kimberling_
+A265773	parmof3	1	A265759	DEN_LO	CR.TWO.sqrt()	primes-only best approximates (POBAs) to sqrt(2); see Comments.	nonn,frac,more	1..17	nyi	_Clark Kimberling_
+A265774	parmof3	1	A265759	NUM_UP	CR.TWO.sqrt()	primes-only best approximates (POBAs) to sqrt(2); see Comments.	nonn,frac,more	1..18	nyi	_Clark Kimberling_
+A265775	parmof3	1	A265759	DEN_UP	CR.TWO.sqrt()	primes-only best approximates (POBAs) to sqrt(2); see Comments.	nonn,frac,more	1..18	nyi	_Clark Kimberling_
+A265776	parmof3	1	A265759	NUM_BA	CR.TWO.sqrt()	primes-only best approximates (POBAs) to sqrt(2); see Comments.	nonn,frac,more	1..15	nyi	_Clark Kimberling_
+A265777	parmof3	1	A265759	DEN_BA	CR.TWO.sqrt()	primes-only best approximates (POBAs) to sqrt(2); see Comments.	nonn,frac,more	1..15	nyi	_Clark Kimberling_
+
+A265778	parmof3	1	A265759	NUM_LO	CR.THREE.sqrt()	primes-only best approximates (POBAs) to sqrt(3); see Comments.	nonn,frac,more	1..11	nyi	_Clark Kimberling_
+A265779	parmof3	1	A265759	DEN_LO	CR.THREE.sqrt()	primes-only best approximates (POBAs) to sqrt(3); see Comments.	nonn,frac,more	1..11	nyi	_Clark Kimberling_
+A265780	parmof3	1	A265759	NUM_UP	CR.THREE.sqrt()	primes-only best approximates (POBAs) to sqrt(3); see Comments.	nonn,frac,more	1..20	nyi	_Clark Kimberling_
+A265781	parmof3	1	A265759	DEN_UP	CR.THREE.sqrt()	primes-only best approximates (POBAs) to sqrt(3); see Comments.	nonn,frac,more	1..20	nyi	_Clark Kimberling_
+A265782	parmof3	1	A265759	NUM_BA	CR.THREE.sqrt()	primes-only best approximates (POBAs) to sqrt(3); see Comments.	nonn,frac,more	1..11	nyi	_Clark Kimberling_
+A265783	parmof3	1	A265759	DEN_BA	CR.THREE.sqrt()	primes-only best approximates (POBAs) to sqrt(3); see Comments.	nonn,frac,more	1..11	nyi	_Clark Kimberling_
+
+A265784	parmof3	1	A265759	NUM_LO	CR.FIVE.sqrt()	primes-only best approximates (POBAs) to sqrt(5); see Comments.	nonn,frac,more	1..10	nyi	_Clark Kimberling_
+A265785	parmof3	1	A265759	DEN_LO	CR.FIVE.sqrt()	primes-only best approximates (POBAs) to sqrt(5); see Comments.	nonn,frac,more	1..10	nyi	_Clark Kimberling_
+A265786	parmof3	1	A265759	NUM_UP	CR.FIVE.sqrt()	primes-only best approximates (POBAs) to sqrt(5); see Comments.	nonn,frac,more	1..15	nyi	_Clark Kimberling_
+A265787	parmof3	1	A265759	DEN_UP	CR.FIVE.sqrt()	primes-only best approximates (POBAs) to sqrt(5); see Comments.	nonn,frac,more	1..15	nyi	_Clark Kimberling_
+A265788	parmof3	1	A265759	NUM_BA	CR.FIVE.sqrt()	primes-only best approximates (POBAs) to sqrt(5); see Comments.	nonn,frac,more	1..13	nyi	_Clark Kimberling_
+A265789	parmof3	1	A265759	DEN_BA	CR.FIVE.sqrt()	primes-only best approximates (POBAs) to sqrt(5); see Comments.	nonn,frac,more	1..13	nyi	_Clark Kimberling_
+
+A265790	parmof3	1	A265759	NUM_LO	CR.EIGHT.sqrt()	primes-only best approximates (POBAs) to sqrt(8); see Comments.	nonn,frac,more	1..14	nyi	_Clark Kimberling_
+A265791	parmof3	1	A265759	DEN_LO	CR.EIGHT.sqrt()	primes-only best approximates (POBAs) to sqrt(8); see Comments.	nonn,frac,more	1..14	nyi	_Clark Kimberling_
+A265792	parmof3	1	A265759	NUM_UP	CR.EIGHT.sqrt()	primes-only best approximates (POBAs) to sqrt(8); see Comments.	nonn,frac,more	1..18	nyi	_Clark Kimberling_
+A265793	parmof3	1	A265759	DEN_UP	CR.EIGHT.sqrt()	primes-only best approximates (POBAs) to sqrt(8); see Comments.	nonn,frac,more	1..18	nyi	_Clark Kimberling_
+A265794	parmof3	1	A265759	NUM_BA	CR.EIGHT.sqrt()	primes-only best approximates (POBAs) to sqrt(8); see Comments.	nonn,frac,more	1..15	nyi	_Clark Kimberling_
+A265795	parmof3	1	A265759	DEN_BA	CR.EIGHT.sqrt()	primes-only best approximates (POBAs) to sqrt(8); see Comments.	nonn,frac,more	1..15	nyi	_Clark Kimberling_
+
+A265796	parmof3	1	A265759	NUM_LO	CR.PHI	primes-only best approximates (POBAs) to the golden ratio, tau (A001622); see Comments.	nonn,frac,more	1..13	nyi	_Clark Kimberling_
+A265797	parmof3	1	A265759	DEN_LO	CR.PHI	primes-only best approximates (POBAs) to the golden ratio, tau (A001622); see Comments.	nonn,frac,more	1..13	nyi	_Clark Kimberling_
+A265798	parmof3	1	A265759	NUM_UP	CR.PHI	primes-only best approximates (POBAs) to the golden ratio, tau (A001622); see Comments.	nonn,frac,more	1..18	nyi	_Clark Kimberling_
+A265799	parmof3	1	A265759	DEN_UP	CR.PHI	primes-only best approximates (POBAs) to the golden ratio, tau (A001622); see Comments.	nonn,frac,more	1..18	nyi	_Clark Kimberling_
+A265800	parmof3	1	A265759	NUM_BA	CR.PHI	primes-only best approximates (POBAs) to the golden ratio, tau; see Comments.	nonn,frac,more	1..18	nyi	_Clark Kimberling_
+A265801	parmof3	1	A265759	DEN_BA	CR.PHI	primes-only best approximates (POBAs) to the golden ratio, tau; see Comments.	nonn,frac,more	1..18	nyi	_Clark Kimberling_
+
+A265799	parmof3	1	A265759	NUM_LO	CR.PHI.inverse()	
+A265798	parmof3	1	A265759	DEN_LO	CR.PHI.inverse()	
+A265797	parmof3	1	A265759	NUM_UP	CR.PHI.inverse()	
+A265796	parmof3	1	A265759	DEN_UP	CR.PHI.inverse()	
+A265806	parmof3	1	A265759	NUM_BA	CR.PHI.inverse()	primes-only best approximates (POBAs) to 1/(golden ratio) = 1/tau; see Comments.	nonn,frac,more	1..17	nyi	_Clark Kimberling_
+A265807	parmof3	1	A265759	DEN_BA	CR.PHI.inverse()	primes-only best approximates (POBAs) to 1/(golden ratio) = 1/tau; see Comments.	nonn,frac,more	1..17	nyi	_Clark Kimberling_
+
+A265808	parmof3	1	A265759	NUM_LO	CR.PI	primes-only best approximates (POBAs) to Pi; see Comments.	nonn,frac	1..38	nyi	_Clark Kimberling_
+A265809	parmof3	1	A265759	DEN_LO	CR.PI	primes-only best approximates (POBAs) to Pi; see Comments.	nonn,frac	1..39	nyi	_Clark Kimberling_
+A265810	parmof3	1	A265759	NUM_UP	CR.PI	primes-only best approximates (POBAs) to Pi; see Comments.	nonn,frac	1..38	nyi	_Clark Kimberling_
+A265811	parmof3	1	A265759	DEN_UP	CR.PI	primes-only best approximates (POBAs) to Pi; see Comments.	nonn,frac	1..40	nyi	_Clark Kimberling_
+A265812	parmof3	1	A265759	NUM_BA	CR.PI	primes-only best approximates (POBAs) to Pi; see Comments.	nonn,frac,more	1..39	nyi	_Clark Kimberling_
+A265813	parmof3	1	A265759	DEN_BA	CR.PI	primes-only best approximates (POBAs) to Pi; see Comments.	nonn,frac,more	1..39	nyi	_Clark Kimberling_
+
+A265814	parmof3	1	A265759	NUM_LO	CR.E	primes-only best approximates (POBAs) to e; see Comments.	nonn,frac	1..37	nyi	_Clark Kimberling_
+A265815	parmof3	1	A265759	DEN_LO	CR.E	primes-only best approximates (POBAs) to e; see Comments.	nonn,frac	1..39	nyi	_Clark Kimberling_
+A265816	parmof3	1	A265759	NUM_UP	CR.E	primes-only best approximates (POBAs) to e; see Comments.	nonn,frac	1..33	nyi	_Clark Kimberling_
+A265817	parmof3	1	A265759	DEN_UP	CR.E	primes-only best approximates (POBAs) to e; see Comments.	nonn,frac	1..34	nyi	_Clark Kimberling_
+A265818	parmof3	1	A265759	NUM_BA	CR.E	primes-only best approximates (POBAs) to e; see Comments.	nonn,frac	1..33	nyi	_Clark Kimberling_
+A265819	parmof3	1	A265759	DEN_BA	CR.E	primes-only best approximates (POBAs) to e; see Comments.	nonn,frac,more	1..33	nyi	_Clark Kimberling_

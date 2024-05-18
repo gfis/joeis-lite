@@ -1,0 +1,51 @@
+---- 2024-05-14 21:51:08
+A073118	multrad2	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(SEQ.a(n - k)))	""	new A008472()	new A000041()	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D008472,D000041   
+A073119	multrad2	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(SEQ.a(n - k)))	""	new A007814()	new A000041()	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D007814,D000041   
+A075484	lambdir	0	n -> SEQ.a(ZV(n).^(5))	new A008908()	a(n)=Annn((\d+)^n)	5	D008908
+A076716	lambdir	0	n -> SEQ.a(FA(n))	new A001055()	a(n)=Annn(n!)		D001055
+A084237	lambdir	0	n -> SEQ.a(ZV(n).^(10))	new A002321()	a(n)=Annn((\d+)^n)	10	D002321
+A087987	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A002110()	new A002321()	a(n)=Annn(Annn(n))		D002321,D002110
+A093046	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A058328()	new A000040()	a(n)=Annn(Annn(n))		D000040,D058328
+A094207	lambdir	0	n -> SEQ.a(4*n - 4)	new A034963()	a(n)=Annn((\d+)*n-(\d+)) 	4,4 	D034963                           
+A095124	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A001146()	new A000040()	a(n)=Annn(Annn(n))		D000040,A001146
+A107482	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A007539()	new A001222()	a(n)=Annn(Annn(n))		D001222,A007539
+A108504	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A025487()	new A038548()	a(n)=Annn(Annn(n))		D038548,A025487
+A111353	lambdir	0	n -> SEQ.a(6*n + 1)	new A087175()	a(n)=Annn((\d+)*n+(\d+)) 	6,1 	D087175                           
+A113634	lambdir	0	n -> SEQ.a(ZV(n).^(6))	new A007504()	a(n)=Annn((\d+)^n)	6	D007504
+A120355	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A007677()	new A002034()	a(n)=Annn(Annn(n))		D002034,A007677
+A134129	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A134126().skip(1)	new A007504()	a(n)=Annn(Annn(n+(\d+)))	1	D007504,A134126
+A139770	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A000005()	new A061799()	a(n)=Annn(Annn(n))		D061799,D000005
+A143039	lambdir	0	n -> SEQ.a(ZV(10).^(n).+(1))	new A000961()	a(n)=Annn((\d+)^n+(\d+))	10,1	D000961                   
+A154790	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A085544()	new A000041()	a(n)=Annn(Annn(n))		D000041,A085544
+# A175561	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A000045()	new A007732()	a(n)=Annn(Annn(n))		D007732,A000045
+A187043	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A007357()	new A064547()	a(n)=Annn(Annn(n))		D064547,A007357
+A215609	lambdir	0	n -> SEQ.a(ZV(n).^(10))	new A035095()	a(n)=Annn((\d+)^n)	10	D035095
+A225017	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A055566()	new A132740()	a(n)=Annn(Annn(n))		D132740,A055566
+A225906	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A050299().skip(1)	new A000720()	a(n)=Annn(Annn(n+(\d+)))	1	D000720,A050299
+A232094	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A000217()	new A060130()	a(n)=Annn(Annn(n))		D060130,D000217
+A248728	lambdir	0	n -> SEQ.a(ZV(n).^(3))	new A000041()	a(n)=Annn((\d+)^n)	3	D000041
+A248734	lambdir	0	n -> SEQ.a(ZV(n).^(7))	new A000041()	a(n)=Annn((\d+)^n)	7	D000041
+A253473	multrafd	0	(self, n) -> SEQ.a(self.s(0)).-(2)	""	new A073256()	new A049820()	a(n)=Annn(Annn(n))		D049820,A073256 "-2" ???
+A262902	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A045765()	new A049820()	a(n)=Annn(Annn(n))		D049820,A045765
+A264968	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A263272()	new A246200()	a(n)=Annn(Annn(n))		D246200,D263272
+A277802	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A004709()	new A048798()	a(n)=Annn(Annn(n))		D048798,A004709
+A279904	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A058781()	new A000040()	a(n)=Annn(Annn(n))		D000040,A058781
+A281489	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A000290()	new A000700()	a(n)=Annn(Annn(n))		D000700,D000290
+# error 4111???	A292262	multrafd	0	(self, n) -> SEQ.a(self.s(0).+(1))	""	new A245612()	new A007949()	a(n)=Annn((\d+)+Annn(n))	1	D007949,A245612
+A301630	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A000040()	new A061670()	a(n)=Annn(Annn(n))		D061670,D000040
+A324201	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A000043()	new A062457()	a(n)=Annn(Annn(n))		D062457,A000043
+A324201	multrafd	0	(self, n) -> SEQ.a(self.s(0).+(1))	""	new A000396()	new A005940()	a(n)=Annn((\d+)+Annn(n))	1	D005940,A000396
+A329434	multrad	0	(self, n) -> SD(n, d -> SEQ.a(d))	""	new A000700()	a(n)=Sum_{d|n}Annn(d)    		D000700     
+A342228	multrad2	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(SEQ.a(n - k)))	""	new A035316()	new A000041()	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D035316,D000041   
+A342229	multrad2	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(SEQ.a(n - k)))	""	new A113061()	new A000041()	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D113061,D000041   
+A342230	multrad2	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(SEQ.a(n - k)))	""	new A001511()	new A000041()	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D001511,D000041   
+A342841	lambdir	0	n -> SEQ.a(ZV(10).^(n))	new A071778()	a(n)=Annn((\d+)^n)	10	D071778
+A343193	lambdir	0	n -> SEQ.a(ZV(10).^(n))	new A082540()	a(n)=Annn((\d+)^n)	10	D082540
+A343282	lambdir	0	n -> SEQ.a(ZV(10).^(n))	new A082544()	a(n)=Annn((\d+)^n)	10	D082544
+A347064	lambdir	0	n -> SEQ.a(ZV( 2).^(n))	new A061799()	a(n)=Annn((\d+)^n)	2	D061799
+A347654	lambdir	0	n -> SEQ.a(ZV(10).^(n))	new A000700()	a(n)=Annn((\d+)^n)	10	D000700
+A365161	multrafd	0	(self, n) -> SEQ.a(self.s(0).-(1))	""	new A059305()	new A001223()	a(n)=Annn(Annn(n)-(\d+))	1	D001223,D059305
+# ??? A370077	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A005361()	new A006519()	a(n)=Annn(Annn(n))		D006519,D005361
+# ??? A370077	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A367168()	new A005361()	a(n)=Annn(Annn(n))		D005361,D367168
+# ??? error at 64 A370078	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A005361()	new A007814()	a(n)=Annn(Annn(n))		D007814,D005361
+A372507	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A067381()	new A000720()	a(n)=Annn(Annn(n))		D000720,A067381

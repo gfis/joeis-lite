@@ -1,0 +1,9 @@
+---- 2024-05-11 19:58:30
+A111850	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.TEN).floor().mod(10) == 0 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if A023961(n)=0 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+A111890	multrar	1	(self, n) -> CR.valueOf(n).sqrt().multiply(CR.valueOf(100)).floor().mod(10) == 4 ? self.a(n - 1).+(1) : self.a(n - 1)	"0"	For n > 1: if €111862(n)=4 then a(n) = a(n-1) + 1, otherwise a(n) = a(n-1)
+# A271330 a(n) = (1+a(n-1)^3)/a(n-2), n>=2,  a(0)=2, a(1)=3.
+# A271938 a(1) = 1, a(2) = 3, a(n) = a(n-1)^a(n-2).
+# A271552 a(0) = 1, a(n)= a(n-1)[n-1]a(n-1).
+# A271623 a(0) = 7; a(n) = 7*a(n-1) + 1 if a(n-1) is odd, a(n) = a(n-1)/2 otherwise.
+A367666	multrar	0	(self, n) -> self.a(n-1).+(SU(0, (n-2)/3, k -> self.a(k).*(self.a(n-2-3*k))))	"1"
+A367667	multrar	0	(self, n) -> self.a(n-1).+(SU(0, (n-3)/3, k -> self.a(k).*(self.a(n-3-3*k))))	"1"
