@@ -31,3 +31,60 @@ A372216	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A000125(), new A000
 
 A372881	lambdan	0	n -> SU(1, n, j -> SU(1, n, k -> ZV(j*k).gcd(ZV(n))))	a(n) = Sum_{j=1..n} Sum_{k=1..n} gcd(j*k,n).	nonn,mult,new	1..48	nyi	_Seiichi Manyama_
 A372882	lambdan	0	n -> SU(1, n, k -> ZV(k).^(3).gcd(ZV(n)))	a(n) = Sum_{k=1..n} gcd(k^3,n).	nonn,mult,new	
+
+# A318456 a(n) = n OR A001065(n), where OR is bitwise-or (A003986) and A001065 = sum of proper divisors.
+# A318456 a(n) = A003986(n, A001065(n)).
+# A318457 a(n) = n XOR A001065(n), where XOR is bitwise-xor (A003987) and A001065 = sum of proper divisors.
+# A318457 a(n) = A003987(n, A001065(n)).
+# A318458 a(n) = n AND A001065(n), where AND is bitwise-and (A004198) & A001065 = sum of proper divisors.
+# A318458 a(n) = A004198(n, A001065(n)).
+# 
+# A283996 a(n) = n OR A005187(fl
+# A267116 a(1) = 0; for n > 1: a(n) = A067029(n) OR a(A028234(n))oor(n/2)), where OR is bitwise-or (A003986).
+# A325316 a(n) = A003986(A048250(n), A162296(n)).
+
+A318466	lambdan	0	n -> Functions.SIGMA.z(n).or(ZV(2*n))	a(n) = 2*n OR A000203(n)
+A324727	filnum	1	1	n -> 2*n == (2*n | Functions.SIGMA.i(2*n))	 Odd numbers such that 2n is equal to A318466(n), bitor(2*n,sigma(n)), where bitor is A003986.
+
+A231569	filnum	1	1	n -> (2*n - 2) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 2n-2, where lambda is the Carmichael lambda function (A002322).
+A231570	filnum	1	1	n -> (3*n - 3) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 3n-3, where lambda is the Carmichael lambda function (A002322).
+A231571	filnum	1	1	n -> (4*n - 4) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 4n-4, where lambda is the Carmichael lambda function (A002322).
+A231572	filnum	1	1	n -> (5*n - 5) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 5n-5, where lambda is the Carmichael lambda function (A002322).
+A231573	filnum	1	1	n -> (6*n - 6) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 6n-6, where lambda is the Carmichael lambda function (A002322).
+# A077197	lambdan	0	n -> Functions.CARMICHAEL_LAMBDA.z(n)	a(n) = lambda(phi(n)) where lambda(n) (A002322) is the Carmichael lambda function which gives the sma
+# A096226	lambdan	0	n -> Functions.CARMICHAEL_LAMBDA.z(n)	If n is squarefree, a(n) = 1+A002322(n) = 1+A011773(n). Otherwise a(n) = 1. a(n) = n iff n is prime. 
+# A174435	lambdan	0	n -> Functions.CARMICHAEL_LAMBDA.z(n)	a(n) = A002322(A046388(n))/A002326((A046388(n)+1)/2). -
+# A197658	lambdan	0	n -> Functions.CARMICHAEL_LAMBDA.z(n)	a(n) = A002322(n) + 1 if n squarefree, otherwise a(n) = 0. - _Joerg Arndt_, Jan 22 2013
+A206941	lambdan	0	n -> Functions.PHI.z(Functions.CARMICHAEL_LAMBDA.z(n))	a(n) = phi(lambda(n)), where phi = A000010, lambda = A002322.
+A219175	lambdan	0	n -> ZV(n).mod(Functions.CARMICHAEL_LAMBDA.z(n))	a(n) = n mod lambda(n) where lambda is the Carmichael function (A002322).
+A277127	lambdan	0	n -> ZV(n).-(Functions.CARMICHAEL_LAMBDA.z(n))	a(n) = n - lambda(n), where lambda(n) = A002322(n).
+# A340374	lambdan	0	n -> Functions.CARMICHAEL_LAMBDA.z(n*n).	a(n) = [A002322(A000265(n)) divides A000265(n)-1], where [ ] is the Iverson bracket.
+A341857	lambdan	0	n -> Functions.CARMICHAEL_LAMBDA.z(n*n)./(n)	a(n) = psi(n^2)/n, psi = A002322.
+# A365647	lambdan	0	n -> SD(n, d -> Functions.CARMICHAEL_LAMBDA.z(n/d).*())	 a(n) = Sum{d|n} A001615(d) * A002322(n/d).
+# A365648	lambdan	0	n -> SD(n, d -> Functions.CARMICHAEL_LAMBDA.z(n/d).*())	 a(n) = Sum{d|n} A000203(d) * A002322(n/d).
+A366779	lambdan	0	n -> Functions.CARMICHAEL_LAMBDA.z(Functions.CARMICHAEL_LAMBDA.z(Functions.CARMICHAEL_LAMBDA.z(n)))	 a(n) = lambda(lambda(lambda(n))), where lambda(
+A369601	lambdan	0	n -> SD(n, d -> Functions.PHI.z(d).*(Functions.CARMICHAEL_LAMBDA.z(n/d))	 a(n) = Sum_{d|n} A000010(d) * A002322(n/d).
+A369700	lambdan	0	n -> SD(n, d -> Functions.MOEBIUS.z(d).*(Functions.CARMICHAEL_LAMBDA.z(n/d))	 a(n) = Sum_{d|n} A008683(d) * A002322(n/d).
+# 
+# A173694	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	Arguments n for which the Carmichael lambda function A002322(n) is a perfect square.
+# A073539	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	Numbers k for which phi(k)*lambda(k) == 0 (mod k), where lambda(k) = A002322(k) is the Carmichael fun
+# A131492	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	n such that (sum_{d|n} A002322(d)) | n.
+# A123101	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	A000010(A002322(n))=A002322(A000010(n))
+# A173941	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	Numbers k such that A000005(A002322(k)) = A002322(A000005(k)).
+# A173942	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	Numbers n such that A000203(A002322(n))=A002322(A000203(n)).
+# A173944	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	A001222(A002322(n))=A002322(A001222(n)).
+# A173946	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	Numbers n such that A001221 (A002322(n))=A002322(A001221 (n)).
+# A199105	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	A002322(k) divides A011773(k) and A011773(k) divides A000010(k).
+# A216090	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	Squarefree numbers n such that A002322(n) divides n-2. Contains all double
+# A290184	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k)	Numbers k such that A068494(k) = A002322(k).
+A290281	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(ZV(k - 1).mod(Functions.PHI.z(k)))	Numbers k such that (k-1) mod phi(k) = lambda(k),
+A291175	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(Functions.CARMICHAEL_LAMBDA.z(k - 1).+(Functions.CARMICHAEL_LAMBDA.z(k - 2)))	Numbers k such that lambda(k) = lambda(k-1) + lambda(k-2),
+A291961	filnum	1	2	k -> Z.TWO.pow(Functions.CARMICHAEL_LAMBDA.i(k)).modZ(k * k).equals(Z.ONE)	Numbers n > 1 such that 2^lambda(n) == 1 (mod n^2), where l
+A297360	filnum	1	1	k -> Z.TWO.pow(Functions.CARMICHAEL_LAMBDA.i(k)).-(1).IPP()	Numbers k such that (2^lambda(k) - 1)/k is prime,
+A297361	filnum	1	1	k -> Z.THREE.pow(Functions.CARMICHAEL_LAMBDA.i(k)).-(1).IPP()	Numbers k such that (3^lambda(k) - 1)/k is prime,
+A324050	filnum	1	1	k -> (k - 1) % Functions.CARMICHAEL_LAMBDA.i(k) == 0	Numbers n such that A002322(n) divides n-1.
+A333742	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(Functions.CARMICHAEL_LAMBDA.z(k + 2))	Numbers k such that lambda(k) = lambda(k+2),
+A336654	filnum	1	1	k -> Predicates.SQUARE_FREE.is(Functions.CARMICHAEL_LAMBDA.z(k))	Numbers k such that lambda(k) is squarefree,
+A341858	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k*k).equals(ZV(k))	Numbers k such that psi(k^2) = k, psi = A002322; indices of 1 in €341857.
+A353868	filter	1	new A001615()	(k, v) -> v.mod(Functions.CARMICHAEL_LAMBDA.z(k)).isZero()	Numbers k such that the Carmichael function A002322(k) divides Dedekind psi A001615(k).
+A359875	filter	1	new A023900()	(k, v) -> Functions.CARMICHAEL_LAMBDA.z(k).equals(v)	Numbers k such that A002322(k) = A023900(k).

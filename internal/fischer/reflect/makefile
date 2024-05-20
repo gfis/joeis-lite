@@ -109,20 +109,48 @@ direct_load:
 direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
 #----
-morphlist: # print a seq4 parameter list of all subclasses of MorphismFixedPointSequence
-	cat morphism.use.tmp \
-	| perl -ne 'm{(A\d{6})}; print "$$1\t0\t\t\n";' \
-	>        $@.1.tmp
-	tail -n2 $@.1.tmp
-	wc -l    $@.1.tmp
-	make absref1 MODE=morph LIST=$@.1.tmp \
-	| tee    $@.tmp
-	tail -n2 $@.tmp
+finite1:     # select the eligable programs
+	$(DBAT) -x "SELECT i.aseqno, i.termno,  j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno \
+	  AND superclass IN ('FiniteSequence', 'NoncomputableSequence', 'BriefSequence') ORDER BY 1" \
+	>        $@.tmp
+	head -n2 $@.tmp
 	wc -l    $@.tmp
 #----
+genall: genall1 genall2 # assemble all *.gen *.man aman/*.man
+	grep -f genall2.tmp genall1.tmp > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen
+genall1:
+	cat ../*.gen ../*.man ../aman/*.man \
+	| perl -ne 's{\A[^A][^A]?[^A]?[^A]?}{}; print if m{\AA};'\
+	| sort | uniq -w32 > $@.tmp
+	wc -l $@.tmp
+genall2:
+	cut -f1 offin.tmp > $@.tmp
+genall3: # count the callcodes
+	cut -f2 genall.gen | sort | uniq -c | sort | tee $@.tmp
+#----
+hasoc_prep: # DIR= grep all that have a constructor with an isolated offset parameter
+	find src/irvine/oeis -iname "*.java" | xargs -l grep -P "(public|protected) \w+\(final *int *offset" \
+	| tee    $@.tmp
+hasoc: # create table 'hasoc'
+	perl $@.pl hasoc_prep.tmp \
+	| sort | uniq -w7 \
+	>        $@.tmp
+	tail -n8 $@.tmp
+	wc -l    $@.tmp
+	$(DBAT) -f hasoc.create.sql
+	$(DBAT) -r hasoc < $@.tmp
+	$(DBAT) -n hasoc#----
 interfaces:
 	cut -f1-2 $(COMMON)/joeis_names.txt | grep -v nyi | grep -P " " | grep -v Conjectural \
 	| grep -P "SequenceWithOffset"
+	| tee    $@.tmp
+	wc -l    $@.tmp
+#----
+known: # prepare for and create database table 'known'
+	perl read_functions.pl $(JOEIS)/src/irvine/math/function/Functions.java \
+	| sort | uniq -w7 \
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
@@ -139,25 +167,17 @@ liseq: # list those with "implements Sequence"
 	head -n2 $@.txt
 	wc -l    $@.txt
 #----
-finite1:     # select the eligable programs
-	$(DBAT) -x "SELECT i.aseqno, i.termno,  j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno \
-	  AND superclass IN ('FiniteSequence', 'NoncomputableSequence', 'BriefSequence') ORDER BY 1" \
-	>        $@.tmp
-	head -n2 $@.tmp
-	wc -l    $@.tmp
-#----
-hasoc_prep: # DIR= grep all that have a constructor with an isolated offset parameter
-	find src/irvine/oeis -iname "*.java" | xargs -l grep -P "(public|protected) \w+\(final *int *offset" \
+morphlist: # print a seq4 parameter list of all subclasses of MorphismFixedPointSequence
+	cat morphism.use.tmp \
+	| perl -ne 'm{(A\d{6})}; print "$$1\t0\t\t\n";' \
+	>        $@.1.tmp
+	tail -n2 $@.1.tmp
+	wc -l    $@.1.tmp
+	make absref1 MODE=morph LIST=$@.1.tmp \
 	| tee    $@.tmp
-hasoc: # create table 'hasoc'
-	perl $@.pl hasoc_prep.tmp \
-	| sort | uniq -w7 \
-	>        $@.tmp
-	tail -n8 $@.tmp
+	tail -n2 $@.tmp
 	wc -l    $@.tmp
-	$(DBAT) -f hasoc.create.sql
-	$(DBAT) -r hasoc < $@.tmp
-	$(DBAT) -n hasoc
+
 #----
 offcount: # SUP=superclass ; count the different offsets for some jOEIS superclass
 	grep $(SUP) offinspect1.tmp | cut -f2-3 | sort | uniq -c
@@ -235,20 +255,6 @@ offpack: # pack all jOEIS sources that have wrong offsets - edit them
 	uedit64 $@.pack
 offunpack: # unpack the edited sources into joeis-lite/src
 	perl queue.pl -uf offpack.pack
-#----
-genall: genall1 genall2 # assemble all *.gen *.man aman/*.man
-	grep -f genall2.tmp genall1.tmp > $@.gen
-	head -n2 $@.gen
-	wc -l    $@.gen
-genall1:
-	cat ../*.gen ../*.man ../aman/*.man \
-	| perl -ne 's{\A[^A][^A]?[^A]?[^A]?}{}; print if m{\AA};'\
-	| sort | uniq -w32 > $@.tmp
-	wc -l $@.tmp
-genall2:
-	cut -f1 offin.tmp > $@.tmp
-genall3: # count the callcodes
-	cut -f2 genall.gen | sort | uniq -c | sort | tee $@.tmp
 #----
 pack: # GREP=A018940 pack all sources that extend $(A)
 	grep -P "$(GREP)" offin.tmp \

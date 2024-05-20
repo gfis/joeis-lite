@@ -35,6 +35,7 @@ public class ContinuedFractionOfSqrtSequence extends AbstractSequence {
   //protected Z mPerCenter; // central element(s) in period
   protected Z[] mPeriod;
   protected int mSize; // necessary size of mPeriod
+  private int mPeriodLimit; // give up filling when this period length is reached
 
   /**
    * Construct an instance which selects all numbers k
@@ -47,6 +48,7 @@ public class ContinuedFractionOfSqrtSequence extends AbstractSequence {
     mN = offset - 1;
     mK = Z.valueOf(offset - 1); // will be increased in first call of getNext(With)Property()
     mPeriod = new Z[16];
+    mPeriodLimit = 0x7fffffff; // very high
   } // Constructor for all k with a property
 
   /**
@@ -102,7 +104,7 @@ public class ContinuedFractionOfSqrtSequence extends AbstractSequence {
     initialize();
     mPerCount1 = 0;
     if (!mIsPow2) { // no square number
-      while (mPerLen < 0 || mPerInd < mPerLen) { // fill
+      while ((mPerLen < 0 || mPerInd < mPerLen) && mPerInd < mPeriodLimit) { // fill
         mP1 = mB0.multiply(mQ0 ).subtract(mP0);
         mQ1 = mK.subtract(mP1.multiply(mP1)).divide(mQ0);
         mB1 = mRoot.add(mP1).divide(mQ1);
@@ -137,6 +139,14 @@ public class ContinuedFractionOfSqrtSequence extends AbstractSequence {
       mPerLeast = Z.ZERO;
     }
   } // fillPeriod
+
+  /**
+   * Set a limit for the period length where to give up filling.
+   * @param limit maximum length of period to be computed
+   */
+  public void setPeriodLimit(int limit) {
+    mPeriodLimit = limit;
+  }
 
   /**
    * Compute the elements for the next partial fraction, without the convergents.
