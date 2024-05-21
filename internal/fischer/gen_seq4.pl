@@ -163,6 +163,7 @@ while (<>) { # read inputfile
     $name =~ s{\"}{\&quot\;}g;
     $name =~ s{\<}{\&lt\;}g;
     $name =~ s{\>}{\&gt\;}g;
+    $name =~ s{\*\/}{\* \/}g;
     $pattern  = $patterncache{$callcode};
     if ($old_callcode ne $callcode) { # pattern changes - read again because of imports
         $old_callcode = $callcode;
