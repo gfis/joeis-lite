@@ -1,0 +1,52 @@
+---- 2024-05-20 13:48:58
+A083717	multraf	1	(self, n) -> self.s(0).*(self.s(1))	"1"	new A007917(), new A006530()	a(n) = A007917(n)*D006530(n);
+A206941	lambdan	1	n -> Functions.PHI.z(Functions.CARMICHAEL_LAMBDA.z(n))	a(n) = phi(lambda(n)), where phi = A000010, lambda = A002322.
+A219175	lambdan	1	n -> ZV(n).mod(Functions.CARMICHAEL_LAMBDA.z(n))	a(n) = n mod lambda(n) where lambda is the Carmichael function (A002322).
+A228593	lambdan	1	n -> n == 1 ? Z.TWO : Functions.PRIMORIAL_COUNT.z(n).*(Functions.PRIMORIAL_COUNT.z(n - 1))
+A277324	multraf	0	(self, n) -> self.s(0).*(self.s(1))	"2"	new A260443().skip(1), PREVIOUS	a(0) = 2; for n >= 1, a(n) = A260443(n) * A260443(n+1).
+A302115	multrar	0	(self, n) -> self.a(n - 1).*(16*(n - 1)).+(Z_1(n).*(PR(0, n - 1, k -> ZV(2*k - 3))).*(4)./(3))	"0"	[{a[n] == 16*(n - 1) *a[n - 1] + (-1)^n*(4/3) * Product[(2*k - 3)  , {k, 0, n - 1}],  a[0] == 0}, a, {n, 0, 15}] (* _Vaclav Kotesovec_, Apr 11 2018 *)
+A324050	filnum	1	1	k -> (k - 1) % Functions.CARMICHAEL_LAMBDA.i(k) == 0	Numbers n such that A002322(n) divides n-1.
+A336654	filnum	1	1	k -> Predicates.SQUARE_FREE.is(Functions.CARMICHAEL_LAMBDA.z(k))	Numbers k such that lambda(k) is squarefree,
+A341857	lambdan	1	n -> Functions.CARMICHAEL_LAMBDA.z(n*n)./(n)	a(n) = psi(n^2)/n, psi = A002322.
+A353292	multraf	0	(self, n) -> self.s(0).+(self.s(1).*(self.s(2)))	""	new A062050(), new A088512(), new A080100()	a(n) = A062050(n) + A088512(n) * A080100(n) for any n > 0.
+---- 2024-05-20 14:52:40
+A077197	lambdan	1	n -> Functions.CARMICHAEL_LAMBDA.z(Functions.PHI.z(n))	a(n) = lambda(phi(n)) where lambda(n) (A002322) is the Carmichael lambda function which gives the sma
+A096226	lambdan	1	n -> { final Z nz = ZV(n); return nz.IPP() ? nz : (Predicates.SQUARE_FREE.is(nz) ? Functions.CARMICHAEL_LAMBDA.z(n).+(1) : Z.ONE); }	If n is squarefree, a(n) = 1+A002322(n) = 1+A011773(n). Otherwise a(n) = 1. a(n) = n iff n is prime.
+A123101	filnum	1	1	k -> Functions.PHI.z(Functions.CARMICHAEL_LAMBDA.z(k)).equals(Functions.CARMICHAEL_LAMBDA.z(Functions.PHI.z(k)))	A000010(A002322(n))=A002322(A000010(n))
+A173694	filnum	1	1	k -> Predicates.SQUARE.is(Functions.CARMICHAEL_LAMBDA.z(k))	Arguments n for which the Carmichael lambda function A002322(n) is a perfect square.
+A197658	lambdan	2	n -> Predicates.SQUARE_FREE.is(n) ? Functions.CARMICHAEL_LAMBDA.z(n).+(1) : Z.ZERO	a(n) = A002322(n) + 1 if n squarefree, otherwise a(n) = 0. - _Joerg Arndt_, Jan 22 2013
+A216090	filnum	1	1	k -> Predicates.SQUARE_FREE.is(k) && ZV(k - 2).mod(Functions.CARMICHAEL_LAMBDA.z(k)).isZero()	Squarefree numbers n such that A002322(n) divides n-2
+A277127	lambdan	1	n -> ZV(n).-(Functions.CARMICHAEL_LAMBDA.z(n))	a(n) = n - lambda(n), where lambda(n) = A002322(n).
+A318456	simtraf	1	new A001065()	(n, v) -> ZV(n).or(v)	a(n) = n OR A001065(n), where OR is bitwise-or (A003986) and A001065 = sum of proper divisors.
+A318457	simtraf	1	new A001065()	(n, v) -> ZV(n).xor(v)	a(n) = n XOR A001065(n), where XOR is bitwise-xor (A003987) and A001065 = sum of proper divisors.
+A318458	simtraf	1	new A001065()	(n, v) -> ZV(n).and(v)	a(n) = n AND A001065(n), where AND is bitwise-and (A004198) & A001065 = sum of proper divisors.
+A365647	lambdan	1	n -> SD(n, d -> Functions.CARMICHAEL_LAMBDA.z(n/d).*(A001615.dedekindPsi(d)))	a(n) = Sum{d|n} A001615(d) * A002322(n/d).
+A365648	lambdan	1	n -> SD(n, d -> Functions.CARMICHAEL_LAMBDA.z(n/d).*(Functions.SIGMA.z(d)))	a(n) = Sum{d|n} A000203(d) * A002322(n/d).
+A366779	lambdan	1	n -> Functions.CARMICHAEL_LAMBDA.z(Functions.CARMICHAEL_LAMBDA.z(Functions.CARMICHAEL_LAMBDA.z(n)))	a(n) = lambda(lambda(lambda(n))), where lambda(
+A369601	lambdan	1	n -> SD(n, d -> Functions.PHI.z(d).*(Functions.CARMICHAEL_LAMBDA.z(n/d)))	a(n) = Sum_{d|n} A000010(d) * A002322(n/d).
+A369700	lambdan	1	n -> SD(n, d -> Functions.MOEBIUS.z(d).*(Functions.CARMICHAEL_LAMBDA.z(n/d)))	a(n) = Sum_{d|n} A008683(d) * A002322(n/d).
+
+A331291	multraf	0	(self, n) -> self.s(0).*(self.s(1))	"1,1,1"	new A001222(), new A329348()	a(n) = D001222(n) * A329348(n).
+A173941	filnum	1	1	k -> Functions.TAU.z(Functions.CARMICHAEL_LAMBDA.z(k)).equals(Functions.CARMICHAEL_LAMBDA.z(Functions.TAU.z(k)))	A000005(A002322(k))=A002322(A000005(k)).
+A173942	filnum	1	1	k -> Functions.SIGMA.z(Functions.CARMICHAEL_LAMBDA.z(k)).equals(Functions.CARMICHAEL_LAMBDA.z(Functions.SIGMA.z(k)))	A000203(A002322(n))=A002322(A000203(n)).
+A242424	multrafd	0	(self, n) -> self.s(0).*(SEQ.a(n))	""	new A105560()	new A064989()	a(1) = 1, a(n) = D000040(D001222(n)) * D064989(n) = A105560(n) * D064989(n).
+A073539	filnum	1	1	k -> Functions.PHI.z(k).*(Functions.CARMICHAEL_LAMBDA.z(k)).mod(k) == 0	Numbers k for which phi(k)*lambda(k) == 0 (mod k), where lambda(k) = A002322(k) is the Carmichael fun
+A290184	filtpos	1	1	new A068494()	(k, v) -> v.equals(Functions.CARMICHAEL_LAMBDA.z(k))	Numbers k such that A068494(k) = A002322(k).
+A333742	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(Functions.CARMICHAEL_LAMBDA.z(k + 2))	Numbers k such that lambda(k) = lambda(k+2),
+A372881	lambdan	0	n -> SU(1, n, j -> SU(1, n, k -> ZV(j*k).gcd(ZV(n))))	a(n) = Sum_{j=1..n} Sum_{k=1..n} gcd(j*k,n).	nonn,mult,new	1..48	nyi	_Seiichi Manyama_
+A372882	lambdan	0	n -> SU(1, n, k -> ZV(k).^(3).gcd(ZV(n)))	a(n) = Sum_{k=1..n} gcd(k^3,n).	nonn,mult,new	
+A305296	rgs1	0	new A305295()	(n), formed from 1-digits in ternary representation of A245612(n).							Restricted growth sequence transform of A305295(n), formed from 1-digits in ternary representation of A245612(n).
+A305431	rgs1	0	new DirectTransformSequence(0, new A278222(), new A305295())	, constructed from runlengths of 1-digits in base-3 representation of A245612(n).							Restricted growth sequence transform of A278222(A305295(n)), constructed from runlengths of 1-digits in base-3 representation of A245612(n).
+A305432	rgs1	0	new DirectTransformSequence(0, new A278222(), new A291763())	, constructed from runlengths of 2-digits in base-3 representation of A245612(n).							Restricted growth sequence transform of A278222(A291763(n)), constructed from runlengths of 2-digits in base-3 representation of A245612(n).
+---- 2024-05-20 22:11:33
+A325316	multraf	1	(self, n) -> self.s(0).or(self.s(1))	""	new A048250(), new A162296()
+---- 2024-05-20 22:37:20
+A372829	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(k), FA(2*k))).*(FA(n)).num()	nonn,new	0..22	nyi	_Ilya Gutkovskiy_
+A372832	lambdan	1	n -> { final int sn = IntegerUtils.sqrt(n); return RD(n, d -> d <= sn ? new Q(1, d) : Q.ZERO).num(); }	is the numerator of Sum_{d|n, d <= sqrt(n)} 1/d.	nonn,frac,new	1..80	nyi
+A372833	lambdan	1	n -> { final int sn = IntegerUtils.sqrt(n); return RD(n, d -> d <= sn ? new Q(1, d) : Q.ZERO).den(); }	is the denominator of Sum_{d|n, d <= sqrt(n)} 1/d.	nonn,frac,new	1..80	nyi
+A372970	multrar	1	(self, n) -> ZV(n)./(self.a(n - 1).max(self.a(n/2)))	"1"		a(1)=1, then a(n) = floor(n/max(a(n-1),a(floor(n/2)))).	nonn,new
+A372971	multrar	1	(self, n) -> ZV(n)./(self.a(n - 1).min(self.a(n/2)))	"1"		a(1)=1, then a(n) = floor(n/min(a(n-1),a(floor(n/2)))).	nonn,look,new
+A372997	lambdan	1	n -> SU(1, n, k -> Functions.TAU.z(ZV(n/IntegerUtils.gcd(k, n)).^(3)))	a(n) = Sum_{k=1..n} tau( (n/gcd(k,n))^3 ).
+A373002	lambdan	1	n -> SU(1, n, k -> Functions.TAU.z(ZV(n/IntegerUtils.gcd(k, n)).^(n)))	nonn,new	1..45	nyi	_Seiichi Manyama_
+A373003	lambdan	1	n -> SU(1, n, k -> Functions.TAU.z(ZV(n/IntegerUtils.gcd(k, n)).^(n)))./(n)	nonn,new	1..57	nyi	_Seiichi Manyama_
+A373004	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA.z(ZV(n/IntegerUtils.gcd(k, n)).^(n)))	nonn,new	1..18	nyi	_Seiichi Manyama_

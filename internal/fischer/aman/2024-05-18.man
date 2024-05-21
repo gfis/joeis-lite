@@ -1,0 +1,40 @@
+---- 2024-05-20 22:11:35
+A096657	multrar	0	(self, n) -> self.a(n - 1).*(Z2(n)).+(self.a(n - 2).*(Z2(n - 1))	"1,3"	a(n) = (2^n)*a(n-1) + (2^(n-1))*a(n-2), a(0)=1, a(1)=3.
+A106319	union2	1	new A106318()	new A106321()	Cf. A106320, A106322. Non-sorted union of A106318 and A106321.		Values a of a Bhaskara pair (a,b), a<=b, sorted by value of b. A Bhaskara pair (a,b) is such that a^2 + b^2 = X^3 and a^3 + b^3 = Y^2.
+A118601	partsun	1	new A058129().skip(1)			Partial sums of A058129.					Partial sums of A058129.
+A120079	multraf	0	(self, n) -> self.s(0).*(self.s(1))./(n)./(n)	""	new A056220(), new A051418()	a(n) = A056220(n)*A051418(n)/D000290(n). (End)
+A153876	lambdan	0	n -> SU(1 << (n - 1), (1 << n) - 1, i -> Functions.SIGMA0.z(i))	a(n) = Sum_{i=2^(n-1)..2^n-1} sigma_0(i)
+A158012	multraf	0	(self, n) -> self.s(0).*(self.s(1)).mod(Z.NINE)	"3"	new A000796().skip(1), PREVIOUS	A000796(n)*A000796(n+1) mod 9.
+A159046	multraf	0	(self, n) -> self.s(0).-(SD(n, d -> (d == 1 || d == n) ? Z.ZERO : self.a(d).*(Functions.TAU.z(n/d))))	""	new A029937()	a(n) = A029937(n) - sum a(m)*d(n/m), where the summation is over all divisors 1 < m < n of n
+A258967	multrar	1	(self, n) -> Functions.CEIL_SQRT.z(self.a(n - 1).*(self.a(n - 2)).*(self.a(n - 3)))	"1,2,3"		RecurrenceTable[{a[n] == Ceiling[Sqrt[a[n - 1] a[n - 2] a[n - 3]]], a[1] == 1, a[2] == 2, a[3] == 3}, a, {n, 1, 23}]
+A259622	multrar	0	(self, n) -> Functions.PRIME.z(self.a(n - 1).+(self.a(n - 2)))	"0,1"	RecurrenceTable[{a[n] == Prime[a[n - 1] + a[n - 2]], a[0] == 0,
+A291216	filter	0	new A000931().skip(5)	v -> Predicates.SQUARE.is(v)	Common terms of A000931 and A000290.
+A291673	filter	0	new A000931().skip(5)	v -> Predicates.FIBONACCI.is(v)	Common terms of A000931 and A000045.
+A316142	convprod	0	2	new A305550()
+A333588	multrar	1	(self, n) -> self.a(n - 1).*(3)./(2).negate()	"-2"	a(n) = floor(-(3/2)*a(n-1)), a(1)=-2.
+A364091	multraf	1	(self, n) -> self.s(0).min(self.s(1))	"13,7,11,5,3,2,16651"	new A005602(), new A005603()	a(n) is the first prime p such that the longest sequence of primes p = p_1, p_2, ... with |p_{k+1} - 2*p_k| = 1 has length n.
+A372216	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A000125(), new A000108()	Product of n-th Pell number and n-th Catalan number: a(n) = A000129(n)*D000108(n).
+
+A131492	filnum	1	1	k -> ZV(k).mod(SD(k, d -> Functions.CARMICHAEL_LAMBDA.z(d))).isZero()	n such that (sum_{d|n} A002322(d)) | n.
+A173944	filnum	1	1	k -> Functions.BIG_OMEGA.z(Functions.CARMICHAEL_LAMBDA.z(k)).equals(Functions.CARMICHAEL_LAMBDA.z(Functions.BIG_OMEGA.z(k)))	A001222(A002322(n))=A002322(A001222(n)).
+A173946	filnum	1	1	k -> Functions.OMEGA.z(Functions.CARMICHAEL_LAMBDA.z(k)).equals(Functions.CARMICHAEL_LAMBDA.z(Functions.OMEGA.z(k)))	A001221(A002322(n))=A002322(A001221 (n)).
+A174435	simtraf	0	new A046388()	(n, v) -> Functions.CARMICHAEL_LAMBDA.z(v)./(Functions.CARMICHAEL_LAMBDA.z(v.+(1)./(2)))	a(n) = A002322(A046388(n))/A002326((A046388(n)+1)/2). -
+A199105	filter	1	new A011773()	(k, v) -> v.mod(Functions.CARMICHAEL_LAMBDA.z(k)).isZero() && Functions.PHI.z(k).mod(v).isZero()	A002322(k) divides A011773(k) and A011773(k) divides A000010(k).
+A231569	filnum	1	1	n -> (2*n - 2) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 2n-2, where lambda is the Carmichael lambda function (A002322).
+A231570	filnum	1	1	n -> (3*n - 3) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 3n-3, where lambda is the Carmichael lambda function (A002322).
+A231571	filnum	1	1	n -> (4*n - 4) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 4n-4, where lambda is the Carmichael lambda function (A002322).
+A231572	filnum	1	1	n -> (5*n - 5) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 5n-5, where lambda is the Carmichael lambda function (A002322).
+A231573	filnum	1	1	n -> (6*n - 6) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 6n-6, where lambda is the Carmichael lambda function (A002322).
+A283996	simtraf	0	new A005187()	(n, v) -> ZV(n).or(v)	a(n) = n OR A005187(fl
+A290281	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(ZV(k - 1).mod(Functions.PHI.z(k)))	Numbers k such that (k-1) mod phi(k) = lambda(k),
+A291175	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(Functions.CARMICHAEL_LAMBDA.z(k - 1).+(Functions.CARMICHAEL_LAMBDA.z(k - 2)))	Numbers k such that lambda(k) = lambda(k-1) + lambda(k-2),
+A291961	filnum	1	2	k -> Z.TWO.pow(Functions.CARMICHAEL_LAMBDA.i(k)).modZ(k * k).equals(Z.ONE)	Numbers n > 1 such that 2^lambda(n) == 1 (mod n^2), where l
+A297360	filnum	1	1	k -> Z.TWO.pow(Functions.CARMICHAEL_LAMBDA.i(k)).-(1).IPP()	Numbers k such that (2^lambda(k) - 1)/k is prime,
+A297361	filnum	1	1	k -> Z.THREE.pow(Functions.CARMICHAEL_LAMBDA.i(k)).-(1).IPP()	Numbers k such that (3^lambda(k) - 1)/k is prime,
+
+A318466	lambdan	0	n -> Functions.SIGMA.z(n).or(ZV(2*n))	a(n) = 2*n OR A000203(n)
+A324727	filnum	1	1	n -> 2*n == (2*n | Functions.SIGMA.i(2*n))	 Odd numbers such that 2n is equal to A318466(n), bitor(2*n,sigma(n)), where bitor is A003986.
+A340374	lambdan	0	n -> { final Z nodd = ZV(n).makeOdd(); return nodd.mod(Functions.CARMICHAEL_LAMBDA.z(nodd)).isZero() ? Z.ONE : Z.ZERO; }	a(n) = [A002322(A000265(n)) divides A000265(n)-1], where [ ] is the Iverson bracket.
+A341858	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k*k).equals(ZV(k))	Numbers k such that psi(k^2) = k, psi = A002322; indices of 1 in €341857.
+A353868	filter	1	new A001615()	(k, v) -> v.mod(Functions.CARMICHAEL_LAMBDA.z(k)).isZero()	Numbers k such that the Carmichael function A002322(k) divides Dedekind psi A001615(k).
+A359875	filter	1	new A023900()	(k, v) -> Functions.CARMICHAEL_LAMBDA.z(k).equals(v)	Numbers k such that A002322(k) = A023900(k).

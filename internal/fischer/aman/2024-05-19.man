@@ -1,0 +1,5 @@
+---- 2024-05-21 15:24:20
+A368033	lambdan	0	n -> RU(1, n, k -> new Q(FA(2*n + k - 2), FA(2*n - 1)).*(S1(n, k))).num()
+A372184	lambdan	0	n -> PR(1, n - 1, k -> ZV(k*(k + 1)/2).*(ZV(2*k + 1).^(2)))	(1/2)*(n+1)*n*(2*n+1)^2)
+A372808	lambdan	0	n -> Functions.DIGIT_SUM.z(new Z(Z.FIVE.^(n).toString().replace('9','4').replace('8','3').replace('7','2').replace('6','1').replace('5','0')))	a(n) = sum of the digits (mod 5) of 5^n.
+A372977	trilambn	0	0	0	(n, k) -> BI(n - 4*k, n - k - 1)
