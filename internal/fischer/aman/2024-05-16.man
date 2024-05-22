@@ -1,0 +1,21 @@
+---- 2024-05-22 14:49:09
+
+%F A079638 T(n, k) = Sum_{i=k..n} |A008297(n, i)| * |A008275(i, k)|.
+%N A079639 Matrix product of Stirling1-triangle A008275(n,k) and unsigned Lah-triangle |A008297(n,k)|.
+%F A079639 T(n, k) = Sum_{i=k..n} A008275(n, i) * |A008297(i, k)|.
+%N A079640 Matrix product of unsigned Stirling1-triangle |A008275(n,k)| and unsigned Lah-triangle |A008297(n,k)|.
+%F A079640 T(n, k) = Sum_{i=k..n} |A008275(n, i)| * |A008297(i, k)|.
+%N A079642 Matrix product of unsigned Stirling1-triangle |A008275(n,k)| and Stirling1-triangle A008275(n,k).
+%F A079642 T(n, k) = Sum_{i=k..n} |A008275(n, i)| * A008275(i, k).
+%F A080417 abs(T(n,k)) = A008277(n,k). - _Joerg Arndt_, May 02 2021
+A086915	trilambn	1	1	1	(n, k) -> BI(n - 1, k - 1).*(Z2(k)).*(FA(n))./(FA(k))	T(n, k) = (-2)^k * A008297(n, k) = 2^k * A105278(n, k).
+%F A087903 G.f.: 1-1/(1+add(add(q^n t^k S2(n, k), k=1..n), n >= 1)) where S2(n, k) are the Stirling numbers of the 2nd kind A008277. - _Mike Zabr
+%N A088729 Matrix product of Stirling2-triangle A008277(n,k) and unsigned Lah-triangle |A008297(n,k)|.
+%N A088814 Matrix product of unsigned Lah-triangle |A008297(n,k)| and Stirling2-triangle A008277(n,k).
+%N A371081 Triangle read by rows, (2, 2)-Lah numbers.      nonn,tabl       2..37   nyi     _Aleks Zigon Tankosic_
+%N A371259 Triangle read by rows, (2, 3)-Lah numbers.      nonn,tabl       3..31   nyi     _Aleks Zigon Tankosic_
+%N A371277 Triangle read by rows, (3, 2)-Lah numbers.      nonn,tabl       2..37   nyi     _Aleks Zigon Tankosic_
+%N A371488 Row sums of A371081.    nonn,new        2..18   nyi     _Aleks Zigon Tankosic_
+%N A371489 Row sums of A371259.    nonn,new        3..18   nyi     _Aleks Zigon Tankosic_
+%N A372208 Triangle read by rows, (3, 3)-Lah numbers.      nonn,tabl,new   3..38   nyi     _Aleks Zigon Tankosic_
+A095791	dirtraf	0	new A070939()	new A104326()	a(n)=Annn(Annn(n))		D070939,A104326
