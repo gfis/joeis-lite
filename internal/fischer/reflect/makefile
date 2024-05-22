@@ -130,6 +130,23 @@ genall2:
 genall3: # count the callcodes
 	cut -f2 genall.gen | sort | uniq -c | sort | tee $@.tmp
 #----
+GREP=NestedSequence
+pack_nest: # GREP= pack all extending $(GREP)
+	grep -P "\t$(GREP)\t" $(COMMON)/joeis_names.txt \
+	| tee    $@.tmp
+	perl queue.pl -p $@.tmp > $@.pack
+	grep -P " class |super\(" $@.pack \
+	| perl -pe 's/\{ *\r?\n/\t/; s/ extends \w+ *//; s/public class //;' \
+	| perl $(COMMON)/../arti/endirect.pl -f ./direct.tmp \
+	| tee    $@.super.tmp
+	grep -P "\d\,\s*new D" $@.super.tmp \
+	| sort -k4,4 \
+	| tee    $@.direct.tmp
+	grep -P "\d\,\s*new A" $@.super.tmp \
+	| sort -k4,4 \
+	| tee    $@.nondir.tmp
+	wc -l    $@.*tmp
+#----
 hasoc_prep: # DIR= grep all that have a constructor with an isolated offset parameter
 	find src/irvine/oeis -iname "*.java" | xargs -l grep -P "(public|protected) \w+\(final *int *offset" \
 	| tee    $@.tmp

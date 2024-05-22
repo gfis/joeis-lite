@@ -6193,7 +6193,7 @@ tilepack:
 	| xargs -l -i{} perl tilepack.pl -t -p org.teherba.tile $(COORS)/{} $(TARGET)/{}
 #--------------------------------
 trecpas: # received from $(TRIREC)/trecpas.tmp
-	grep -E "^A[0-9]" $@.tmp \
+	grep -E "^A[0-9]" $(TRIREC)/$@.tmp \
 	| grep -vE "A090971|A127156|A128134" \
 	| sort | uniq -w7 > $@.gen
 	head -n4 $@.gen
@@ -6879,6 +6879,14 @@ nesta:
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
+nest_grep1: # grep *.gen for nest.jpat
+	grep -P "\tnest\t" nest.gen simple.gen | perl ../../../OEIS-mat/arti/endirect.pl -f reflect/direct.tmp | grep -P "\tnest\t\d\tD" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+nest_grep2:
+	grep -P "NestedSequence" $(COMMON)/joeis_names.txt \
+	| tee    $@.tmp
+	wc -l    $@.tmp
 #--------
 weylgr0:
 	cat $(COMMON)/joeis_names.txt \
@@ -8674,3 +8682,8 @@ recan: # search for a(n-i)
 recan_somos:
 	grep -P "^%[NF] A\d+ +a\(n\) *\= *[ an0-9\+\-\*\(\)\/\^]+ *([\.\,\;]|for)" recan.tmp
 
+check2024:
+	# grep -H -P "^A" aman/2024*.man | sed -e "s/\: */\t/" | sort -k2,2 -k1,1r \
+	# | cut -f2- | uniq -w7 | sort \
+	# > aman/c2024.man
+	make CC=c2024 select gener dist
