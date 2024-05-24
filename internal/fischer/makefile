@@ -429,13 +429,14 @@ select3:
 	    FROM seq4 s LEFT JOIN asinfo i ON s.aseqno = i.aseqno \
 	                LEFT JOIN asname n ON i.aseqno = n.aseqno \
 	    WHERE (s.aseqno NOT IN (SELECT CONCAT('$(EX)', aseqno) FROM joeis) OR s.callcode = 'pseudo') \
-	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 	      AND s.callcode NOT LIKE '#%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
 	>        $(CC).gen
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
+#	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
+#
 antclean: purge # recompile all
 	cd ../.. ; ant clean dist
 clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep from $(CC).gen

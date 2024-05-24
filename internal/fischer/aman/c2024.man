@@ -1,3 +1,4 @@
+---- 2024-05-23 11:20:08
 A000925	ordsum	0	new A010052().skip(1)	2
 A002102	ordsum	0	new A010052().skip(1)	3
 A002175	ordsum	0	new A080995().skip(1)	2
@@ -177,7 +178,6 @@ A070222	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma().mod
 A070224	filtpos	1	1	new A005063().skip(1)	(k, v) -> JF(k).sigma(2).mod(v).isZero()	Numbers k such that the sum of p^2, where p are the prime divisors of k, divides the sum of d^2, where d are the divisors of k.	easy,nonn	1..10000	nyi	_Benoit Cloitre_	Numbers k such that the sum of p^2, where p are the prime divisors of k, divides the sum of d^2, where d are the divisors of k.
 A070225	filnum	1	1	k -> JF(k).sigma().-(k).-(SD(k, d -> ZV(d).IPP() ? ZV(d).^(2) : Z.ZERO)).equals(Z.NEG_ONE)	Numbers k such that (sigma(k)-k) - Sum_{p|k} p^2 = -1.	easy,nonn	1..30	nyi	_Benoit Cloitre_		Numbers k such that (sigma(k)-k) - Sum_{p|k} p^2 = -1.
 A070226	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma0().equals(fs.squareFreeKernel()); }	Numbers n such that the squarefree kernel of n is equal to the number of divisors of n.	nonn	1..150
-A070237	filnum	1	1	k -> { final FactorSequence fs = JF(k); final int mb = fs.mobius(); return fs.core().-(fs.phi()).signum() != 2*mb*mb - 1; }	Numbers n such that the sign of core(n)-phi(n) is not equal to 2*mu(n)^2-1
 A070238	lambdan	1	n -> { final FactorSequence fs = JF(n); return ZV(fs.core().-(fs.phi()).signum()); }	Sign of core(n)-phi(n)
 A070246	multraf	1	(self, n)-> self.s(0).lcm(ZV(n))./(self.s(0).gcd(ZV(n)))	""	new A004086()	nyi t	a(n)= lcm(n, R(n))/ gcd(n, R(n)), where R(n)(A004086)is the digit reversal of n.
 A070247	filter	0	new A002385()	v -> Functions.DIGIT_SUM.l(v) == 5
@@ -360,7 +360,6 @@ A073838	#tuptraf	0	(n, s) -> s[0]./(s[1])	a(n) = A034386(2*n) / A034386(n-1)
 A073849	tuptraf	0	(n, s) -> s[0].+(Integer.toString(n, 3).charAt(0) - '0')	"0"	PREVIOUS	Cumulative sum of initial digits of (n base 3).
 A073850	tuptraf	0	(n, s) -> s[0].+(Integer.toString(n, 4).charAt(0) - '0')	"0"	PREVIOUS	Cumulative sum of initial digits of (n base 4).
 A073851	tuptraf	0	(n, s) -> s[0].+(Integer.toString(n, 5).charAt(0) - '0')	"0"	PREVIOUS	Cumulative sum of initial digits of (n base 5).  a(n+1) = a(n) + first-digit-of((n+1) (base 5))
-A073853	filtpos	0	0	new A079777()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m	i 
 A073862	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A003618(), new A003617()
 A073882	multraf	1	(self, n) -> self.s(0).-(self.s(1)).+(self.s(2))	""	new A038107(), new A000720(), new A010051()	a(n)=Annn(n)-Annn(n)+Annn(n)
 A074037	#nyi	0		Sum of the composites between the Least prime factor of n and the largest prime factor of n
@@ -458,7 +457,6 @@ A076608	ordsup	1	new A005171().skip()	2	0
 A076611	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return md == '2' || md == '3' || md == '5' || md == '7'; }	Palindromic primes with prime middle digit.
 A076613	filter	1	new A002385()	v -> { final String s = v.toString(); final char md = s.charAt(s.length()/2); return s.length()>= 3 && md != '2' && md != '3' && md != '5' && md != '7'; }	Palindromic primes with nonprime middle digit.
 A076688	lambdan	2	n -> Z2(Z2(n).-(n+2))
-A076716	lambdir	0	n -> SEQ.a(FA(n))	new A001055()	a(n)=Annn(n!)		D001055
 A076728	lambdan	1	n -> ZV(n-1).^(2).*(ZV(n).^(n-2))
 A076787	simtraf	1	new A046974()	v -> Puma.primeZ(v)					Pisumprimes: prime(k), where k is the sum of the first n digits of Pi.
 A076934	simtraf	0	new A055881()	(n, v) -> ZV(n)./(FA(v.intValueExact()))
@@ -531,7 +529,6 @@ A080385	filtpos	1	0	new A080383()	v -> v.equals(ZV(7))	Numbers k such that there
 A080386	filtpos	1	0	new A080383()	v -> v.equals(ZV(8))	Numbers k such that there are exactly 8 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., €080383(k) = 8.	nonn	1..260	nyi	_Labos Elemer_
 A080387	filtpos	1	0	new A080383()	v -> v.equals(ZV(10))	Numbers k such that there are exactly 10 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., ?080383(k) = 10.	nonn
 A080785	#nyi	0		Least p - smooth number not less n, where p is the Least prime factor of n
-A080919	complem	1	new A080900()	, Z.ONE	Numbers that do not appear in A080900.						Numbers that do not appear in A080900.
 A081066	simtraf	0	new A055882()	(n, v) -> RQ(0, n - 1, j -> new Q(2*j + 1, 2)).*(v).num()	*Pochhammer(1/2, n)
 A081088	tuptraf	0	(n, s) -> s[0].*(s[1])	"2,2"	new A081090().skip(1), PREVIOUS	a(n) = A081090(n) * A081090(n-1) for n>2, where A081090(n)^2 + 1 = a(n+1)/a(n).
 A081165	simtraf	0	new A060114()	v -> JF(v).largestPrimeFactor()	Largest prime factor of A060114.        nonn
@@ -606,7 +603,6 @@ A083011	lambdan	0	n -> { final BS bs = new BS(0); return RU(0, n - 1, k -> new Q
 A083012	lambdan	0	n -> { final BS bs = new BS(0); return RU(0, n - 1, k -> new Q( 8).^(k).*(BI(n, k)).*(bs.nextQ())).num(); }
 A083013	lambdan	0	n -> { final BS bs = new BS(0); return RU(0, n - 1, k -> new Q( 9).^(k).*(BI(n, k)).*(bs.nextQ())).num(); }
 A083014	lambdan	0	n -> { final BS bs = new BS(0); return RU(0, n - 1, k -> new Q(10).^(k).*(BI(n, k)).*(bs.nextQ())).num(); }
-A083025	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	""	new A001222(), new A007814(), new A065339()	a(n)=Annn(n)-Annn(n)-Annn(n)		A001222,A007814,A065339			Number of primes congruent to 1 modulo 4 dividing n (with multiplicity).
 A083218	lambdan	1	n -> ZV(n).mod(SPF(n + 1).+(1))	a(n) = n mod (spf(n + 1) + 1), where spf(n) is the Least prime factor of n (A020639)
 A083228	lambdan	0	n -> Z.TWO.pow(BI(n + 2, 2))./(3)
 A083345	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A003415().skip(1), new A085731()
@@ -711,7 +707,6 @@ A086501	multraf	1	(self, n) -> FA(n).^(2).-(self.s(0))	""	new A053529()	n!^2 - n
 A086555	multrar	1	(self, n) -> SU(1, n - 1, k -> SA(n, k).*(self.a(k)))	"1"
 A086597	moetrafi	1	new A022307()	, 1	Inverse Moebius transform of A022307.
 A086738	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A000041().skip(1), new A000203()	Annnnnn(n)- Annnnnn(n)
-A086915	trilambn	1	1	1	(n, k) -> BI(n - 1, k - 1).*(Z2(k)).*(FA(n))./(FA(k))	T(n, k) = (-2)^k * A008297(n, k) = 2^k * A105278(n, k).
 A087023	multrafd	1	(self, n) -> SEQ.a(self.s(0))	""	new A004042().skip(1)	new A051903()	a(n)=Annn(Annn(n+(\d+)))
 A087040	#nyi	0		2*nd largest prime factor of n - th composite number
 A087057	multraf	1	(self, n) -> self.s(0).+(1)	""	new A001951()	1 + new A001951()
@@ -733,9 +728,7 @@ A087683	filnum	1	10	n -> ZV(n).+(10).IPP() && ZV(n).-(10).IPP()	Numbers n such t
 A087696	filnum	1	5	n -> ZV(n).+(5).IPP() && ZV(n).-(5).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
 A087697	filnum	1	7	n -> ZV(n).+(7).IPP() && ZV(n).-(7).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
 A087794	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A338912(), new A338913()	a(n) = A003963(A001358(n)) = A338912(n) * A338913(n). - _Gus Wiseman_, Dec 04 2020
-A087893	multraf	1	(self, n) -> self.s(0).*(2)	""	new A079275()	2*new A079275()	diff@210
 A087987	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A002110()	new A002321()	a(n)=Annn(Annn(n))		D002321,D002110
-A088133	lambdan	0	n -> { final String s = String.valueOf(n); return ZV(n % 10 + s.charAt(0) - '0'); }	a(n)=Annn(n)+Annn(n)		A000030,A010879                   A172481	a(n)=Annn(n)+(\d+)^(n-(\d+))	2,1	Sum of first and last digits of n. Different from A115299.
 A088308	prepend	0	new SimpleTransformSequence(1, new A002808(), v -> v.modZ(10))	2	2 followed by list of composite numbers mod 10
 A088311	simtraf	0	new A000009()	(n, v) -> FA(n).*(v)
 A088417	simtraf	0	new A088339()	v -> v./(3)	a(n)= Annnnnn(n)/(\d+)
@@ -802,7 +795,6 @@ A090529	multraf	0	(self, n) -> self.s(0).+(1)	"1,1,2"	new A084558()
 A090541	lambdan	1	n -> RU(1, n, k -> new Q(1, k)).*(n*(n + 1)/2).floor()	a(n) = floor((Sum_{r=1..n} r)*(Sum_{r=1..n} 1/r)).
 A090585	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A000217(), new A069268()	a(n)=Annn(n)/Annn(n)
 A090603	lambdan	1	n -> ZV(n).^((n-1)*(n-1))
-A090632	filter	0	new A064986()	(k, v) -> (k & 1) == 0	1
 A090633	lambdan	1	n -> new Q(2).-(new Q(2).^(1 - n))./(ZV(n)).num()
 A090947	simtraf	0	new A000367()	v -> v.equals(Z.ONE) ? Z.ONE : LPF(v)	numerator of Bernoulli(2*n) (or 1 if the numerator is 1)
 A090973	simtraf	1	new A000040()	(n, v) -> new Q(v, ZV(n)).ceiling()	a(n) = ceiling(prime(n)/n).                                                                  -
@@ -921,7 +913,6 @@ A096172	lpf	1	ZV(n).^(4).+(1)
 A096196	lambdan	1	n -> Z2(n).+(1).modZ(n)	a(n) = (1 + 2^n) mod n.	nonn,easy	1..10000	nyi
 A096209	filter	1	new A198700()	PRIME
 A096226	lambdan	1	n -> { final Z nz = ZV(n); return nz.IPP() ? nz : (Predicates.SQUARE_FREE.is(nz) ? Functions.CARMICHAEL_LAMBDA.z(n).+(1) : Z.ONE); }	If n is squarefree, a(n) = 1+A002322(n) = 1+A011773(n). Otherwise a(n) = 1. a(n) = n iff n is prime.
-A096274	filtpos	0	0	new A096535()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m	i 
 A096313	lambdan	0	n -> n <= 1 ? ZV(n + 1) : FA(n + 1).*(PR(1, n - 1, k -> FA(k)))	a(0)=1, a(1)=2; for n > 1, a(n) = (n+1)!*Product_{k=1..n-1} k!; for n > 1, a(n) = D000142(n+1)*D000178(n-1).
 A096317	#nyi	0		a(n) is the minimal product of the Least prime factor of each composite number in a prime gap of 2*n
 A096318	#nyi	0		a(n) is the prime the precedes the first occurrence of a prime gap of 2*n where the product of the Least prime factor of each composite number in the gap is minimal
@@ -954,7 +945,6 @@ A098622	lambdan	0	n -> SU(0, n, k -> S2(n, k).*(Functions.BELL.z(2*k)))	a(n)=Sum
 A098713	lambdan	0	n -> ZV(2*n+1).*(Z2(2*n+1)).-(1)
 A098735	simtraf	1	new A098077()	(n, v) -> new Q(v, FA(n)).num()	a(n)=numerator(Annn(n)/n!)
 A098809	lambdan	0	n -> Z2(n+23).-(23)
-A098837	insect2	1	new A006753()	new A004709()
 A098913	simtraf	0	new FilterSequence(0, new A008965(), (k, v) -> (k & 1) == 0)	(n, v) -> v.-(Z2(n))	a(n) = A008965(2*n) - 2^n.
 A098961	filter	1	new A001481()	(k, v) -> k > 1 && v.mod(13) == 0
 A098974	filter	1	new A000040()	v -> Puma.nextPrimeZ(v).-(v).equals(ZV(24))	Primes p such that q-p =(\d+), where q is the next prime after
@@ -1205,7 +1195,6 @@ A106519	lambdan	1	n -> (BI(2*n - 2, n - 1).*(2).-(SD(n, d -> BI(2*n/d, n/d).*(MU
 A106564	filter	1	new A269345()	SQUARE	; see also the Mathematica code. - _Waldemar
 A106836	diffs	0	new A060833()	First differences of A060833 and (from a(2) onward) also of A091067 and €
 A106844	simtraf	1	new A093641().skip(2)	v -> Z.valueOf(ZUtils.valuation(v, Z.TWO))	Exponent of 2 in A093641(n).
-A107028	-2	nyi F       	A107027	Row sums of number triangle Annnnnn
 A107074	filnum	0	0	n -> new Z("53" + String.valueOf(n)).IPP()	Numbers n such that the string (\d+)n is the decimal expansion of a prime number
 A107251	lambdan	0	n -> PR(n + 2, 2*n, k -> FA(k))./(PR(2, n, k -> FA(k)))	a(n) = (n+2)!*(n+3)!*...*(2n)!/(2!*3!*...*n!) = D000178(2n)/(D000178(n)*D000178(n+1)) = D079478(n)/D000142(n+1).
 A107254	lambdan	0	n -> PR(n, 2*n - 1, k -> FA(k))./(PR(0, n - 1, k -> FA(k)))	a(n) = n!*(n+1)!*(n+2)!*...*(2n-1)!/(0!*1!*2!*3!*...*(n-1)!) = D000178(2n-1)/D000178(n-1)^2 = D079478(n)/A000984(n) = D079478(n-1)*A009445(n-1) = A107252(n)*D000142(n) = A088020(n)/A039622(n).
@@ -1272,7 +1261,6 @@ A110087	filnum	1	1	k -> { final FactorSequence fs = JF(k); return fs.sigma().-(f
 A110089	tuptraf	0	(n, s) -> s[0].min(s[1])	""	new A005602(), new A005603()	a(n)=min(Annn(n),Annn(n))		A005602,A005603
 A110102	trilambd	1	0	0	(n, m) -> mSeq.a(m + 6).*(mSeq.a(n + 6 - m))	new A000931()	a(n) = a(n - 2) + a(n - 3); t(n,m) := a(n - m + 1)*a(m + 1).
 A110129	central	0	new A110124()	Central coefficients of a scaled Legendre triangle.
-A110181	-2	nyi F       	A110180	Row sums of number triangle Annnnnn
 A110201	lambdan	0	n -> BI(n - 2, n/2).+((Z2(n).-(1)).^(2)).*(BI(n - 2, n/2 - 1)).*(Z.FOUR.^(n).-(1))./(3)
 A110361	trilambd	1	0	0	(n, m) -> mSeq.a(m + 6).*(mSeq.a(n + 6 - m)).*(Functions.FIBONACCI.z(m + 6)).*(Functions.FIBONACCI.z(n + 6 - m))	new A000931()	a(n) = a(n - 2) + a(n - 3); t(n,m) := a(n - m + 1)*a(m + 1)*Fibonacci[(n - m + 1)]*Fibonacci[(m + 1)].
 A110480	filnum	1	0	n -> { final Z v = ZV(n).^(2).+(6)      ; return v.mod(5 ) == 0 && v./(5 ).IPP(); }		isprime((n^2+6)/5)
@@ -1378,7 +1366,6 @@ A113634	lambdir	0	n -> SEQ.a(ZV(n).^(6))	new A007504()	a(n)=Annn((\d+)^n)	6	D007
 A113705	moetrafi	0	new A011557()	, 0	powers of 10.						Inverse Moebius transform of powers of 10.
 A113784	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001358().skip(2), new A001358()	a(n)=Annn(n+(\d+))-Annn(n)
 A113788	simtraf	1	new MobiusTransformSequence(1, new A001608(), 0)	(n, v) -> v./(n)	n * a(n) is the Moebius transform of A001608.
-A113825	simtraf	0	new A008351()	v -> ZV(JF(v).omega())	Number of distinct prime factors of Annnnnn(n)
 A113972	lpf	0	Z2(n).*(29).-(1)	Define b(0)=28, b(n + 1)=2*b(n) + 1; sequence gives largest prime factor of b(n)
 A114089	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A006128().skip(1), new A115995().skip(1)	a(n) = A006128(n) -   A115995(n). - _Vladeta Jovovic_, Feb 18 2006
 A114317	tuptraf	1	(n, s) -> s[0].^(2).+(2*(n - 1))	"1"	PREVIOUS	a(n)=a(n-1)^2+2*(n-1)
@@ -1458,7 +1445,6 @@ A116963	moetrafi	1	new A000292().skip(1)	, 0	the shifted tetrahedral numbers.
 A116989	moetrafi	1	new A000579()	, 0	#
 A117112	filter	0	new A020756()	PRIME	
 A117129	multraf	1	(self, n) -> Puma.primeZ(self.s(0).-(1))	""	new A112877()	prime(new A112877() - 1)
-A117201	-2	nyi         	A117200	Row sums of number triangle Annnnnn
 A117283	filtpos	1	1	new A051953()	v -> ZUtils.isCube(v)	Numbers k for which the cototient k-phi(k) is a cube.
 A117284	filtpos	1	1	new A051953()	v -> ZUtils.isPolygonal(v, 3)	Numbers k for which the cototient k-phi(k) is a triangular number.
 A117285	filtpos	1	1	new A051953()	v -> v.isZero() || ZUtils.isPolygonal(v, 5)	Numbers k for which the cototient k-phi(k) is a pentagonal number.
@@ -1573,7 +1559,6 @@ A119798	filnum	1	0	k -> ZUtils.distinctDigitCount(ZV(k), 10) == ZUtils.distinctD
 A119799	filnum	1	1	k -> { final int k1 = ZUtils.distinctDigitCount(ZV(k + 1), 10); return ZUtils.distinctDigitCount(ZV(k), 10) == k1 && k1 == ZUtils.distinctDigitCount(ZV(k + 2), 10); }	Numbers m such that m, m+1 and 2*m have the same number of distinct digits in decimal representation.	nonn,base	1..10000
 A119823	tuptraf	0	(n, s) -> s[0].+(ZUtils.distinctDigitCount(s[0], 10))	"0"	PREVIOUS	a(n) = a(n-1) + number of distinct digits of a(n-1) in decimal representation, a(0)=0.	nonn,base
 A120068	simtraf	1	new A049097()	v -> Puma.primePiZ(v)	a(n)=primepi(Annn(n))
-A120079	multraf	0	(self, n) -> self.s(0).*(self.s(1))./(n)./(n)	""	new A056220(), new A051418()	a(n) = A056220(n)*A051418(n)/D000290(n). (End)
 A120258	trilambn	0	0	0	(n, k) -> PR(0, k - 1, j -> BI(2*n - 2*k + j, n - k))./(PR(0, k - 1, j -> BI(n - k + j, j)))	[k<=n]*Product{j=0..k-1, C(2n-2k+j, n-k)/C(n-k+j, j)}					Triangle of central coefficients of generalized Pascal-Narayana triangles.
 A120264	lambdan	0	(n) -> RU(1, n, k -> new Q(Z_1(k + 1), ZV(k).^(k))).num()	Numerator of Sum[ (-1)^(k+1)/k^k, {k,1,n} ].
 A120266	lambdan	0	(n) -> RU(0, n, k -> new Q(ZV(n).^(k), FA(k))).num()	Numerator of Sum_{k=0..n} n^k/k!.
@@ -1679,7 +1664,6 @@ A122465	#nyi	0		Smooth Power Quartets: The m - th number in the sequence, n, is 
 A122590	tuptraf	1	(n, s) -> s[0].*(2).-(s[1]).-(s[0].^(2)).-(s[1].^(2))	"1,1"	PREVIOUS,PREVIOUS	a(n)=2*a(n-1)-a(n-2)-(a(n-1)^2+a(n-2)^2)
 A122591	tuptraf	1	(n, s) -> s[0].*(2).-(s[1]).+(s[0].^(2)).+(s[1].^(2))	"1,1"	PREVIOUS,PREVIOUS	a(n)=2*a(n-1)-a(n-2)+(a(n-1)^2+a(n-2)^2)
 A122593	tuptraf	0	(n, s) -> s[0].negate().+(s[2]).-(s[0].-(s[1]).^(2)).+(s[1].-(s[2]).^(2))	"1,1,1,0,0,2"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a(n) = -a(n-1) - a(n-3) - (a(n-1) - a(n-2))^2 + (a(n-2) - a(n-3))^2.
-A122691	spf	0	Z.TEN.^(6*n - 4).*(9).-(11)./(7)	a(n)=least prime factor of (9*10^m - 11)/7, m=6n - 4
 A122728	filter	0	new A003327()	PRIME	
 A122729	filter	0	new A003328()	PRIME	
 A122730	filter	0	new A003329()	PRIME	
@@ -1774,7 +1758,6 @@ A126833	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ( 25) : v.
 A126834	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ(125) : v.modZ(125).+(125)	Ramanujan numbers (Annnnnn) read mod (\d+)
 A126835	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ(625) : v.modZ(625).+(625)	Ramanujan numbers (Annnnnn) read mod (\d+)
 A126836	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ(  7) : v.modZ(  7).+(  7)	Ramanujan numbers (Annnnnn) read mod (\d+)
-A126839	simtraf	0	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ( 11) : v.modZ( 11).+( 11)	Ramanujan numbers (Annnnnn) read mod (\d+)
 A126894	filnum	0	0	n -> ZV(n).^(12).+(4094).IPP()		isprime(n^12+4094)
 A127032	lambdan	1	n -> CV(FA(n)).log()./(CV( 5).log()).floor()	5^m <= n! : a(n) = floor( log(n!) / log(5) ).
 A127033	lambdan	1	n -> CV(FA(n)).log()./(CV( 7).log()).floor()	7^m <= n! : a(n) = floor( log(n!) / log(7) ).
@@ -1811,14 +1794,12 @@ A128456	#nyi	0		a(n) = A020639(((p + 1)^p  -  1)/p^2), i.e., the Least prime fac
 A128492	lambdan	1	n -> RU(1, n, k -> new Q(1, (2*k - 1)*(2*k - 1))).den()
 A128503	tablamb	0	0	n -> new Integer[] { 0, n/2 }	 (n, m) -> BI(n - m + 2, 2).*(BI(n - m, m)).*(Z_1(m))
 A128505	tablamb	0	0	n -> new Integer[] { 0, n/2 }	 (n, m) -> BI(n - m + 3, 3).*(BI(n - m, m)).*(Z_1(m))	
-A128602	-2	nyi Fo      	A128567	Row sums of triangle Annnnnn
 A128630	#nyi	0		Let gpf(1)=1 and gpf(n)=Largest prime factor of n, n>1. Then a(n)=minimum sum of gpf of the parts of a partition of n
 A128727	tablamb	0	0	n -> new Integer[] { 0, (n-1)/2 }	(n, k) -> (n == 0) ? Z.ONE : new Q(BI(n, k).*(BI(n - k, k + 1))).*(new Q(ZV(3)).^(n - 1 - 2*k))./(ZV(n)).num()	T:=(n, k)->3^(n-1-2*k)*binomial(n, k)*binomial(n-k, k+1)/n: 1;
 A128734	holos	0	[[0],[420,-245,35],[-1296,888,-152],[984,-959,219],[-120,342,-118],[-48,-32,16]]	0, 0, 0, 1, 8	0	0
 A128737	holos	0	[[0],[240,-140,20],[-807,536,-89],[734,-641,132],[-140,273,-73],[-40,-30,10]]	0, 0, 0, 0, 1, 10	0	0
 A128740	holos	0	[[0],[15,-50,30,-5],[-40,126,-88,16],[15,-52,60,-13],[10,0,-8,2]]	0,0,1	0	0	Number of DDs in all skew Dyck paths of semilength n.
 A128958	filnum	1	0	n -> ZV(n).^(2).+(ZV(n + 1).^(3)).IPP()		isprime(n^2+(n+1)^3)
-A129150	simtraf	0	new A090636().skip(1)	v -> v	a(n)=Annn(n+(\d+))	2	A090636				The n-th arithmetic derivative of 2^3.
 A129155	holos	0	[[0],[14593500000,-2512162500,162137500,-4650000,50000],[-1273909050000,231522155000,-15772147500,477332500,-5415000],[5330563605000,-986374907500,68396061875,-2106342500,24308125],[697842720000,-385708263900,46594180175,-2115849600,33159325],[-89884354111500,19438271456050,-1573714436625,56525868050,-760014375],[405208567335900,-90208877810990,7530956814955,-279378168610,3885313145],[-1002487038482820,236402550816144,-20882518488568,818969235576,-12031750772],[1644988687628580,-417529421717768,39571467479910,-1660576550476,26044584666],[-1759661023713948,491430358398844,-50832581681654,2313058412972,-39129734782],[791133982760772,-275855660139060,33752025384768,-1757499735612,33266812980],[911955944502348,-201426166614072,15874804296861,-519558296220,5782886211],[-1974094282568172,573787299616560,-63158907757455,3133155001368,-59340679197],[1579132881833184,-524116181975742,66091322401693,-3759183033762,81453107027],[-473478518386680,189355586363882,-28905256749663,1988862161530,-51845715021],[-233344019487432,74067166663700,-7678668317440,244718587408,1578635500],[320443399984656,-130280780357628,19364119843978,-1235643057780,28106737766],[-168342512522688,78997299292772,-13683689503146,1033293650044,-28550745654],[53243495872128,-28857366144640,5787091438424,-507897272936,16411883104],[-10921183901280,6940740521904,-1631722083136,167958400032,-6374541680],[1450145225280,-1108766421968,312766529352,-38551683712,1749807048],[-118585501440,113684574784,-39935097680,6094966448,-340938208],[5298585984,-6860902944,3197834736,-638340864,46162992],[-94870656,198844704,-140496624,40649184,-4126608],[0,-1275264,2350080,-1293408,218592],[0,-10368,5184,10368,-5184]]	1, 0, 1, 4	0	0	Number of skew Dyck paths of semilength n that have no primitive Dyck factors.
 A129229	multrar	0	(self, n) -> CR.PHI.*(n).floor().-(self.a(n - 1))	"0"	a(n) = floor(n*r)-a(n-1), where r is the golden mean, (1+sqrt(5))/2.	nonn	0..73
 A129344	diffs	0	new A067497()	First differences of A067497.
@@ -2089,7 +2070,6 @@ A143205	filnum	1	1	k -> { final Z[] pq = JF(k).toZArray(); return pq.length == 2
 A143356	tuptraf	0	(n, s) -> s[0].*(s[1])	""	new A051731(), new A006218()	Annnnnn * Annnnnn
 A143392	tuptraf	1	(n, s) -> s[0].^(2).-(s[0].*(2)).-(s[1].^(2)).+(s[1].*(2))	"1,2,1"	PREVIOUS,PREVIOUS,PREVIOUS	a(n)=a(n-1)^2-2*a(n-1)-a(n-2)^2+2*a(n-2). 1, 2, 1
 A143395	trilamb0	0	(n, k) -> SU(k, n, t -> BI(n, t).*(S2(t, k)).*(ZV(k).^(n-t)))	
-A143420	-2	nyi F       	A143419	Row sums of triangle Annnnnn
 A143444	moetraf	1	new A182986()	, 0	the primes prefaced by 0.
 A143805	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(S1(n, k + 1)).*(self.a(k)))	"1"
 A143818	tuptraf	0	(n, s) -> s[0].-(s[1])	""	new A143816(), new A143817()	a(n) = A143816(n) -   A143817(n). a(n) = sum {k = 0..floor((n-1)/3)} (Stirling2(n,3k+1) - Stirling2(n,3k+2)). Let R(n) = sum {k = 0..inf} (3k)^n/(3k)! for n = 0,1,2,... . Then R(n) = €143815(n)*R(0) + €143818(n)*R(1) + A143817(n)*R(2). Some examples are given below. This generalizes the Dobinski relation for the Bell numbers: sum {k = 0..inf} k^n/k! = A000110(n)*exp(1). See €143815 for more details. Compare with A024429, A024430 and A143628--A143631
@@ -2158,7 +2138,6 @@ A147830	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) != 10*n) {
 A147831	lambdan	0	n -> { int k = 0; while (Functions.DIGIT_SUM.i(k*n) != 11*n) { ++k; } return ZV(k); }
 A147877	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A000041(2*n) - A000041(2*n-1) - A000070(n) + A000041(n) + A000041(n-1). - _Vaclav Kotesovec_, Nov 05 2016
 A147878	#tuptraf	0	(n, s) -> s[0].-(s[1])	a(n) = A000041(2*n) - 2*A000070(n) + 2*A000041(n) + A000041(n-1). - _Vaclav Kotesovec_, Nov 05 2016
-A147966	multraf	1	(self, n) -> ZV(n - 1).+(self.s(0))	""	new A001223()	n+(new A001223()-1)
 A151569	parmof4	0	A151568	2	1	"1,2"
 A151570	parmof4	0	A151568	1	1	"1,1"
 A151571	parmof4	0	A151568	1	1	"1,2"
@@ -2220,7 +2199,6 @@ A153464	filnum	0	0	n -> !ZV(n).*( 4).+( 9).IPP()	Numbers n such that (\d+)*n+(\d
 A153507	filter	1	new A000040()	p -> p.^(3).*( 2).+(3).IPP()	[(\d+)#^(\d+)+(\d+)]&]	500, 2,3,3
 A153728	filter	0	new A000731()	(n, v) -> (n & 1) == 0
 A153768	filter	1	new A000040().skip(2)	p -> p.*( 8).-( 9).IPP() && p.*(8).+( 9).IPP()	[(\d+)#-(\d+)]&&PrimeQ[(\d+)#+(\d+)]&]	600, 8, 9,8, 9
-A153876	lambdan	0	n -> SU(1 << (n - 1), (1 << n) - 1, i -> Functions.SIGMA0.z(i))	a(n) = Sum_{i=2^(n-1)..2^n-1} sigma_0(i)
 A154365	#nyi	0		Numbers n such that the Least prime factor of composite(n)  +  the largest prime factor of composite(n) is prime and the sum of prime factors (with multiplicity) of composite(n) is prime
 A154366	#nyi	0		Numbers n such that the Least prime factor of composite(n) plus the largest prime factor of composite(n) is composite and the sum of prime factors of composite(n) (with multiplicity) is composite
 A154402	moetrafi	1	new A036987()	, 0	Fredholm-Rueppel sequence, cf. A036987.
@@ -2265,7 +2243,6 @@ A157256	filter	1	new A000040()	p -> { final Z pp = p.^(5); return pp.+( 6).IPP()
 A157696	holos	0	[0,1,-27,-904,-1660,1660,904,27,-1]	31,2521,97921,4974481,226965751,10783342081,504420084871	0	0	a(n) = A110391(5*n) /A110391(n) = 27*a(n-1) +904*a(n-2) +1660*a(n-3) -1660*a(n-4) -904*a(n-5) -27*a(n-6) +a(n-7). [From _R. J. Mathar_, Oct 18 2010]
 A157764	filter	1	new A000040()	p -> p.^(16).+(65536).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	800,16,65536
 A157904	invtrac	0	new A000055()	1	.
-A158012	multraf	0	(self, n) -> self.s(0).*(self.s(1)).mod(Z.NINE)	"3"	new A000796().skip(1), PREVIOUS	A000796(n)*A000796(n+1) mod 9.
 A158072	setdiff	1	new A000040()	new A158069()
 A158093	lambdan	0	n -> BI(new Q(Z.ONE, Z.THREE.^(n)), n).*(ZV(3).^(n+n + n)).num()
 A158318	filter	1	new A000040()	p -> p.*( 5).-( 2).IPP()	[(\d+)#-(\d+)]&]		300, 5, 2
@@ -2284,8 +2261,6 @@ A159023	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"41"	PREVIOUS	NestList[#+Floor
 A159024	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"55"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	55,60
 A159026	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"89"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	89,60
 A159027	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"109"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	109,60
-A159046	multraf	0	(self, n) -> self.s(0).-(SD(n, d -> (d == 1 || d == n) ? Z.ZERO : self.a(d).*(Functions.TAU.z(n/d))))	""	new A029937()	a(n) = A029937(n) - sum a(m)*d(n/m), where the summation is over all divisors 1 < m < n of n
-A159064	insect2	1	new A048890()	new A006567()
 A159237	simtraf	1	new A046346()	v -> v./(JF(v).sopfr())	a(n) = A046346(n)/sopfr(A046346(n)) = A069324
 A159274	tuptraf	0	(n, s) -> s[0].add(s[0].sqrt())	"209"	PREVIOUS	NestList[#+Floor[Sqrt[#]]&,(\d+),(\d+)]	209,50
 A159292	insect2	1	new A006567()	new A050288()							Pandigital emirps.
@@ -2379,7 +2354,6 @@ A164655	lambdan	0	n -> RU(1, n, j -> new Q(Z.ONE, ZV(2*j - 1).^(3))).num()	numer
 A164656	lambdan	0	n -> RU(1, n, j -> new Q(Z.ONE, ZV(2*j - 1).^(5))).num()	numer(Theta(5,n))= numerator(sum(1/(2*j-1)^5,j=1..n)), n>=1.
 A164657	lambdan	0	n -> RU(1, n, j -> new Q(Z.ONE, ZV(2*j - 1).^(5))).den()	denom(Theta(5,n))= numerator(sum(1/(2*j-1)^5,j=1..n)), n>=1.
 A164699	filamb	0	1	n -> n.toString(7).indexOf(n.toString(16)) >= 0	Base 10 integers n such that n base 16 is a substring of n base 7.
-A164700	filamb	0	0	n -> n.toString(3).indexOf(n.toString(7)) >= 0	Base 10 integers n such that n base 7 is a substring of n base 3.
 A164733	lingf	1	0,1,0,0,1,-1,1,-1,0,2,-1,0,1,-1,2,-3,2,1,-1,2,0,1,1,-1,2,-1,0,1,-1,1,-1,0,1,-1	1,0,-1,0,0,0,-1,0,1,-1,0,1,0,0,-1,1,1,-1,0,0,1,0,-1,1,0,-1,0,0,0,-1,0,1	0
 A164734	lingf	1	0,0,0,0,0,1,0,0,0,0,0,0,-1,1,-1,1,1,1,0,0,-1,2,-2,1,-2,1,-1,0,-1,1,-2,1,-2,1,-1,0,0,1,0,1,0,1	1,0,0,0,0,0,0,-1,0,-1,0,0,0,0,-1,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,-1	0
 A164735	lingf	1	0,0,0,0,0,0,0,0,1,0,0,0,0,0,-1,0,1,-1,0,1,0,0,0,1,0,-1	1,0,-4,0,6,0,-5,0,5,-1,-6,4,4,-6,-1,5,0,-5,0,6,0,-4,0,1	0
@@ -2673,7 +2647,6 @@ A178834	holos	0	[[0],[0,-9,9],[0,-9,12],[12,1,-2],[8,1,-4],[-4,0,1]]	0,0,1	0	0
 A178899	filter	0	new A003068()	PRIME	
 A179081	parity	0	new A007953()	a(n) = A000035(A007953(n));
 A179115	lambdan	1	n -> JF(ZV(n).^(JF(n).sigma0AsLong())).phi()	phi(n^tau(n)). - _Wesley Ivan Hurt_, Jun 09 2023
-A179146	filtpos	1	1	new A081119()	v -> v.equals(2)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
 A179147	filtpos	1	1	new A081119()	v -> v.equals(3)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
 A179148	filtpos	1	1	new A081119()	v -> v.equals(4)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
 A179149	filtpos	1	1	new A081119()	v -> v.equals(5)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
@@ -2911,7 +2884,6 @@ A195462	multraf	1	(self, n) -> self.s(0).*(self.s(1))./(self.s(2))	""	new A00017
 A195618	prepend	0	new SimpleTransformSequence(0, new A001208(), v -> v.+(1))	1	a(0) = 1; a(n) = A001208(n) + 1
 A196265	holose	0	[[0],[-7,2],[-4,2],[-3,4,-1],[0,1,-1]]	1,2,4,8	0	1	E.g.f. A(x) =: y  satisfies 0 = -(1 + x)^2 + y * x - y' * (1 + 2*x + 2*x^2) + y'' * (1 + x) = (1 - x) + y' * (1 - x) - y'' * (1 + 2*x^2) + y''' * x. - _Michael Somos_, Jan 16 2014
 A196276	filtpos	0	1	 new A196274()	v -> v.equals(ZV(1))	Numbers m such that Annnnnn(m)= (\d+)	
-A197072	multraf	0	(self, n) -> self.s(0).-(self.s(1).*(2))	""	new A033844().skip(1), new A033844()	a(n)=Annn(n+(\d+))-(\d+)*Annn(n)	1,2	A033844,A033844			a(n) = prime(2^(n+1)) - 2*prime(2^n).
 A197112	simtraf	1	new A066232()	v -> v.-(2)	. - _Donovan Johnson_, Oct 14 2011
 A197117	lambdan	1	n -> SU(1, n, k -> Z2(k).-(1).*(Z2(n)).+(1).IPP() ? Z.ONE : Z.ZERO)
 A197118	lambdan	1	n -> SU(1, n, k -> Z2(k).+(1).*(Z2(n)).-(1).IPP() ? Z.ONE : Z.ZERO)
@@ -2987,7 +2959,6 @@ A209838	#nyi	0		Integers n such that for all i > n the largest prime factor of p
 A209839	#nyi	0		Integers n such that for all i > n the largest prime factor of product(i + k, {k,0,15}) exceeds the largest prime factor of product(n + k, {k,0,15})
 A210247	simtraf	0	new A210246()	v -> ZV(v.signum())	a(n)=sign(Annn(n))		A210246
 A210487	#nyi	0		a(n) is the Least possible Largest prime factor of prime(n)^2  -  prime(k)^2 for 0 < k < n
-A210582	filamb	0	0	n -> { final long x = n.mod(10); return x != 0L && ZV(n.toString(10).charAt(0) - '0').equals(n.mod(x)); }	Numbers whose first digit is the remainder of their division by the last digit (in base 10).
 A210988	filter	1	new A000988().skip(2)	(k, v) -> (k & 1) == 1	Number of one-sided polyominoes with 2n cells.
 A210989	filter	1	new A000988()	(k, v) -> (k & 1) == 1
 A210997	filter	1	new A000105()	(k, v) -> (k & 1) == 1
@@ -3010,16 +2981,13 @@ A212707	filter	0	new A212656()	SEMIPRIME
 A212918	filtpos	1	1	new A001414()	v -> ZUtils.isPolygonal(v, 5)	Numbers whose sum of prime factors (counted with multiplicity) is a pentagonal number (A000326).
 A213050	filter	1	new A001122()	p -> p.mod(4) == 1	Primes of the form 4*k+1 with primitive root +2.
 A213051	filter	1	new A001122()	p -> p.mod(4) == 3	Primes of the form 4*k+3 with primitive root +2.
-A213085	inverse	0	new A212844()	0	1	1st occurrence of n in Annnnnn
 A213214	multraf	1	(self, n) -> self.s(0).-(2*n)	"1"	new A193688()	(n, v) -> v.-(2*n)	*n for n > 1.
 A213253	#nyi	0		a(n) = Least k such that highest prime factor of m(m + 1)...(m + k - 1) is > n if m > n
 A213259	#nyi	0		Let x be the largest prime factor of the n - th CA number m, then:
-A213407	inverse	0	new A213381()	0	0	1st occurrence of n in Annnnnn
 A213517	filamb	0	0	n -> ZUtils.distinctDigitCount(n.*(n.+(1))./(2), 10) <= 2	Numbers n such that the triangular number n*(n+1)/2 has only 1 or 2 different digits in base 10.
 A213518	filamb	0	0	n -> ZUtils.distinctDigitCount(n.*(n.+(1))./(2), 10) == 2	Numbers n such that the triangular number n*(n+1)/2 has 2 different digits in base 10.
 A213641	simtraf	0	new A213640()	(n, v) -> v./(n + 1)	a(n)=Annn(n+(\d+))/(n+(\d+))	1,1	A213640
 A213714	inverse	0	new A005187()	0	0
-A213861	inverse	0	new A213859()	0	0	1st occurrence of n in Annnnnn
 A214093	#nyi	0		Largest prime p such that the Largest prime factor of p^2 - 1 is prime(n)
 A214179	filter	1	new A000040()	p -> ZUtils.leastPrimitiveRoot(p).equals(ZV(p.bitCount()))	Primes p such that least positive primitive root of p is equal to number of 1s in binary representation of p.
 A214195	filnum	1	1	n -> Functions.OMEGA.l(n) %3 == 0	omega(n)%(\d+)==(\d+)	3	0
@@ -3041,7 +3009,6 @@ A215051	parmof2	0	A215047	5	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b 
 A215057	parmof2	0	A215047	6	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(   64).+(1).IPP() ? Z.ONE : Z.ZERO)
 A215058	parmof2	0	A215047	7	n -> SU(1, ZV(10).^(n)./(2).-(1).intValueExact(), b -> ZV(2*b).^(  128).+(1).IPP() ? Z.ONE : Z.ZERO)
 A215197	filnum	1	0	n -> Functions.SIGMA0.l(n) == 10 && Functions.SIGMA0.l(n + 1) == 10	numdiv(n)==(\d+)&&numdiv(n+(\d+))==(\d+)	10	1
-A215200	trilambn	1	1	1	(n, k)-> ZV(KS(n - k, k))
 A215405	#lpf	0	the n - th n - almost prime
 A215441	filnum	1	0	n -> ZV(3 ).^(n).+(ZV(n).^(3 )).+(1).IPP()		isprime(3^n+n^3+1)
 A215442	filnum	1	0	n -> ZV(5 ).^(n).+(ZV(n).^(5 )).+(1).IPP()		isprime(5^n+n^5+1)
@@ -3134,7 +3101,6 @@ A219616	filnum	1	0	n -> ZV(5 ).^(n).+(ZV(n).^(4)).IPP()		isprime(5^n+n^4)
 A219743	filamb	0	0	v -> ZUtils.distinctDigitCount(v, 10) == 8	Number for which the number of distinct base 10 digits is 8.
 A220076	filamb	0	0	v -> ZUtils.distinctDigitCount(v, 10) == 6	Numbers with exactly six distinct base-10 digits.
 A220078	lambdan	0	n -> ZV(5).^(FA(n))	(\d+)^(n!)
-A220117	inverse	0	new A220115()	0	0	1st occurrence of n in Annnnnn
 A220294	filter	0	new A002716()	(n, v) -> (n & 1) == 0
 A220364	filnum	1	1	n -> Functions.DIGIT_SUM.l(ZV(36).^(n)) % n == 0	((\d+)^n)%n==(\d+)	36	0
 A220657	prepend	0	new PartialSumSequence(0, new SimpleTransformSequence(0, new A084558(), v -> v.+(1)))	0	Partial sums of A084558+1.
@@ -3442,7 +3408,6 @@ A244960	parmof2	0	A244954	9	Smallest positive multiple of n whose base 9 represe
 A244988	simtraf	0	new A244989()	(n, v) -> ZV(n).-(v)		a(n)= n - Annnnnn(n)	
 A244989	partsum	0	A244992		Partial sums of A244992: a(1) = 0, and for n >= 1, a(n) = A244992(n) + a(n-1); Inverse function for €244991.	nonn	1..10001	nyi	_Antti Karttunen_
 A245048	filter	1	new A000040()	p -> p.^( 2).+(   28).IPP()	Select[Prime[Range[(\d+)]],PrimeQ[#^(\d+)+(\d+)]&]	200, 2,   28
-A245075	lambdan	0	n -> LPF(n).-(new A010888().a(n))	Difference between least prime factor of n and the digital root of n
 A245232	filter	1	new A005900()	SEMIPRIME	.
 A245268	lambdan	0	n -> SU(1, n, k -> JF(k).isSquareFree() ? BI(n, k) : Z.ZERO)
 A245337	simtraf	0	new A024643()	v -> ZV(ZUtils.digitSum(v))	Sum of digits of n in fractional base 7/6.	nonn,base	0..67	nyi	_James Van Alstine_
@@ -3485,7 +3450,6 @@ A246418	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(Z2((1 << k)-1)))
 A246438	filtpos	0	0	 new A164349()	v -> v.equals(ZV(0))	Numbers m such that Annnnnn(m)= (\d+)	
 A246439	filtpos	0	0	 new A164349()	v -> v.equals(ZV(1))	Numbers m such that Annnnnn(m)= (\d+)	
 A246590	simtraf	0	new A091067()	v -> v.*(2)	a(n) = 2 * A091067(n). - _Antti Karttunen_, Feb 20 2015
-A246597	filter	0	new A070952()	(n, v) -> Long.bitCount(n + 1) == 1	Annnnnn((\d+)^n-(\d+))
 A246622	filter	1	new A063114()	PRIME	.
 A246675	#dirtraf	0	new A000079()	new A055396()	Permutation of natural numbers: a(n) = A000079(A055396(n+1)-1) * ((2*€246277(n+1))-1).	nonn	1..2048	nyi	_Antti Karttunen_
 A246929	lambdan	1	n -> Puma.primeZ(n*11)	Prime((\d+)*n)
@@ -3533,7 +3497,6 @@ A248734	lambdir	0	n -> SEQ.a(ZV(n).^(7))	new A000041()	a(n)=Annn((\d+)^n)	7	D000
 A248742	union2	1	new A002496()	new A144255()
 A248753	filter	0	new A002113()	(n, p) -> n.toString().indexOf(p.toString()) >= 0	Palindromes p = A002113(n) whose index n is a substring of p.
 A248793	dirtral	0	new A000203()	new A248792()	(n, v) -> v.-(1)	A000203(A248792(n)) - 1
-A248802	spf	0	Z2(Z2(n).+(2)).+(3)
 A249071	simtraf	0	new FilterSequence(0, new A004001(), (k, v) -> (k & 1) == 0)	(n, v) -> v.-(n)	a(n) = A004001(2*n) - n.
 A249132	#nyi	0		Least noncomposite k such that prime(n) is the largest prime factor of k^2 + 1, or 0 if no such k exists
 A249150	simtraf	0	new A249151()	v -> v.-(1)		Number of trailing zeros in the factorial base representation of products of binomial coefficients: a(n) = A230403(A001142(n)).
@@ -3587,7 +3550,6 @@ A253568	filter	0	new A122111()	(n, v) -> (n & 1) == 0	Even bisection of A122111:
 A253604	lambdan	1	n -> (ZV(n).^(n-1).+(1)).^(n)
 A253971	simtraf	1	new A064711()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A064711
 A254032	#nyi	0		a(0) = 0, a(1)=1; for n > 2, a(n) is the Least prime factor of a(n - 1)  +  a(n - 2) not already in the sequence or, if there is no such prime, a(n) = a(n - 1)  +  a(n - 2)
-A254066	filnum	1	1	n -> n % 10 != 0 && Functions.DIGIT_SUM.l(n) == Functions.DIGIT_SUM.l(n*n)	(n)==sumdigits(n^(\d+))	2
 A254071	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 4 && sn.toString().charAt(0) == '8' && sn2.mod(10) == 4 && sn2.toString().charAt(0) == '8'; }	2,4,8	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
 A254072	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 4 && sn.toString().charAt(0) == '9' && sn2.mod(10) == 4 && sn2.toString().charAt(0) == '9'; }	2,4,9	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
 A254074	filnum	0	0	n -> { final Z sn = SDD(ZV(n)); final Z sn2 = SDD(ZV(n).*(n)); return sn.mod(10) == 5 && sn.toString().charAt(0) == '9' && sn2.mod(10) == 5 && sn2.toString().charAt(0) == '9'; }	2,5,9	Numbers n such that the decimal expansions of both n and n^(\d+) have (\d+) as the digit with the smallest value and (\d+) as the digit with the largest value
@@ -3671,11 +3633,8 @@ A258387	lambdan	1	n -> ZV(n+1).^(n).+(ZV(n).^(n-1))
 A258547	lambdan	1	n -> ZV(16).*(Z2(n)).-(4*n + 12)	a(n) = 16*2^n - 4*n - 12.
 A258840	#nyi	0		a(n) is the least integer k such that there are n values of i <= k for which gpf(i^2  +  1) = gpf(k^2  +  1), where gpf(x) is the Largest prime factor of x
 A258872	simtraf	0	new A259062()	(n, v) -> v./(n + 1)	a(n)=Annn(n+(\d+))/(n+(\d+))	1,1	A259062
-A258967	multrar	1	(self, n) -> Functions.CEIL_SQRT.z(self.a(n - 1).*(self.a(n - 2)).*(self.a(n - 3)))	"1,2,3"		RecurrenceTable[{a[n] == Ceiling[Sqrt[a[n - 1] a[n - 2] a[n - 3]]], a[1] == 1, a[2] == 2, a[3] == 3}, a, {n, 1, 23}]
-A259376	insect2	1	new A014192()	new A029953()	???						Palindromic numbers in bases 4 and 6 written in base 10.
 A259472	tuptraf	0	(n, s) -> s[0].-(s[1].*(2))	"1"	new A059439().skip(1), new A003319().skip(1)	a(0) = 1  For n > 0, a(n) = A059439(n) - 2*A003319(n).
 A259534	#nyi	0		a(n) =  - 1  +  2 * product_{i=0..n} €093179(i), where €093179(i) is the Least prime factor of 2^(2^i)  +  1
-A259622	multrar	0	(self, n) -> Functions.PRIME.z(self.a(n - 1).+(self.a(n - 2)))	"0,1"	RecurrenceTable[{a[n] == Prime[a[n - 1] + a[n - 2]], a[0] == 0,
 A259676	filter	1	new A000566()	v -> JF(v).isSemiprime()	Heptagonal numbers (A000566) that are semiprimes (A001358).
 A259677	filter	1	new A000567()	v -> JF(v).isSemiprime()	Octagonal numbers (A000567) that are semiprimes (A001358).
 A259692	lambdan	1	n -> SU(1, n-1, k -> ZV(k).^(4).*(SIGMA(k)).*(SIGMA(n-k)))
@@ -3914,12 +3873,10 @@ A279064	filtpos	0	0	new A024815()	(k, v) -> v.and(Z.ONE).equals(Z.ZERO) || ZV(k*
 A279237	#nyi	0		a(n) = 1*k_1 + 10*k_2 + 100*k_3 + ... + 10^N*k_N, where k_i is the exponent of prime(i) in the factorization of the n - th composite number C_n, k_i=0 if prime(i) is not a factor in C_n. Also, N is the index of the largest prime factor of C_n, so that C_n = Product_{i=1..N} prime(i)^k_i
 A279495	moetrafi	1	new A023533()	, 0		
 A279497	lambdan	1	n -> SD(n, d -> ZV(ZUtils.isPolygonal(ZV(d), 5) ? 1 : 0))	Number of pentagonal numbers dividing n.
-A279519	-2	nyi         	A049502,A003418	a(n)= Annnnnn(Annnnnn(n))	m	i 
 A279888	lambdan	0	n -> SU(1,n-1, k -> JF(k).sigma(3).*(JF(n - k).sigma(5)))
 A279893	tuptraf	0	(n, s) -> s[0].*(57183).+(s[1].*(20500))	""	new A282047(), new A282328()	a(n) = 57183* A282047(n) + 20500 *A282328(n). - _Seiichi Manyama_, Feb 12 2017
 A279904	multrafd	0	(self, n) -> SEQ.a(self.s(0))	""	new A058781()	new A000040()	a(n)=Annn(Annn(n))		D000040,A058781
 A279917	lambdan	0	n -> SU(1,n-1, k -> JF(k).sigma(5).*(JF(n - k).sigma(7)))
-A280062	-2	nyi         	A049502,A000142	a(n)= Annnnnn(Annnnnn(n))	m	i 
 A280194	parmof2	0	A076739	new A005117()	Expansion of 1/(1 - Sum_{k>=1} mu(k)^2*x^k), where mu(k) is the Moebius function (A008683).
 A280195	invtrac	0	new A246655()	0	Expansion of 1/(1 - Sum_{k>=2} floor(1/omega(k))*x^k), where omega(k) is the number of distinct prime factors (A001221).
 A280197	parmof2	0	A076739	new A005117().skip(1)	Expansion of 1/(1 - Sum_{k>=2} mu(k)^2*x^k), where mu(k) is the Moebius function (A008683).
@@ -3938,7 +3895,6 @@ A280363	#nyi	0		a(n) = floor(log_p(n)) where p = A020639(n), i.e., the least pri
 A280542	invtrac	0	new A000290().skip(2)	0	Expansion of 1/(1 - Sum_{k>=2} x^(k^2)).
 A280544	parmof2	0	A076739	new A002808()	Expansion of 1/(1 - Sum_{k>=2} (1 - floor(2/d(k)))*x^k), where d(k) is the number of divisors (A000005).
 A280605	invtrac	0	new A246547()	0	Expansion of 1/(1 - Sum_{p prime, k>=2} x^(p^k)).
-A280683	multrad	1	(self, n) -> SU(1, n - 1, k -> SEQ.a(k).*(SEQ.a(n - k)))	"0"	new A280710()	ordsum	0
 A280718	ordsum	0	new A255849().skip()	5
 A280797	lambdan	1	n -> { final Z nn = ZV(n).^(n); return nn.-(1).*(nn.+(1))./(n + 1); }	a(n) = (n^n - 1)(n^n + 1)/(n + 1).
 A280863	parmof2	0	A076739	new A016754()	Expansion of 1/(1 - Sum_{k>=0} x^((2*k+1)^2)).
@@ -4086,7 +4042,6 @@ A290529	moetraf	1	new A000041().skip(1)	, 0	the shifted partition numbers (A0000
 A290701	multraf	2	(self, n) -> self.s(1).*(2*n).+(self.s(0).*(2*(n - 1)))	""	new A036968(), PREVIOUS	2*n*A036968(n-1) + 2*(n-1)*new A036968()
 A290943	ordsum	0	new A080995().skip(1)	3	Number of ways to write n as an ordered sum of 3 generalized pentagonal numbers (A001318).	nonn	0..10000
 A291108	multraf	1	(self, n) -> self.s(0).-(1)	"0"	new A067558()	v -> v.-(1)	for n > 1.
-A291175	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(Functions.CARMICHAEL_LAMBDA.z(k - 1).+(Functions.CARMICHAEL_LAMBDA.z(k - 2)))	Numbers k such that lambda(k) = lambda(k-1) + lambda(k-2),
 A291186	multraf	1	(self, n) -> new Q(self.s(0), self.s(1)).num()	""	new A007955(), new A000005()
 A291216	filter	0	new A000931().skip(5)	v -> Predicates.SQUARE.is(v)	Common terms of A000931 and A000290.
 A291353	lambdan	0	n -> ZV(10).^(44*n).-(1).*(9)./(89)	a(n) = 9*(10^(44*n) - 1)/89
@@ -4098,7 +4053,6 @@ A291673	filter	0	new A000931().skip(5)	v -> Predicates.FIBONACCI.is(v)	Common te
 A291767	bisect	0	A291761	Odd bisection of Annnnnn
 A291768	filter	0	new A291761()	(n, v) -> (n & 1) == 0	Even bisection of A291761.	nonn	1..16385	nyi	_Antti Karttunen_
 A291874	multraf	0	(self, n) -> self.s(0).negate()	"1"	new A227310()	-A0	for
-A291961	filnum	1	2	k -> Z.TWO.pow(Functions.CARMICHAEL_LAMBDA.i(k)).modZ(k * k).equals(Z.ONE)	Numbers n > 1 such that 2^lambda(n) == 1 (mod n^2), where l
 A292227	lambdan	0	n -> RU(1, n, k -> new Q(Z.ONE, ZV(k).^(4).*(4).+(1))).*(2).+(1).num()	Numerators of partial sums of the series 1 + 2*Sum_{k >= 1} 1/(4*k^4 + 1).
 A292228	lambdan	0	n -> RU(1, n, k -> new Q(Z.ONE, ZV(k).^(4).*(4).+(1))).*(2).+(1).den()	xxxerators of partial sums of the series 1 + 2*Sum_{k >= 1} 1/(4*k^4 + 1).
 A292240	simtraf	0	new A254103()	(n, v) -> (n == 0) ? Z.ZERO : new Z(v.toString(3).replaceAll("[12]","x").replaceAll("0", "1").replaceAll("x", "0"), 2)	Binary encoding of 0-digits in ternary representation of A254103(n)
@@ -4598,7 +4552,6 @@ A321539	simtraf	0	new A000244()	v -> Functions.DIGIT_SORT_DESCENDING.z(v)	a(n) =
 A321540	lambdan	0	n -> Functions.DIGIT_SORT_ASCENDING.z(ZV(3).^(n))	a(n) = A004185(A000244(n)). - _Michel Marcus_, Nov 10 2022
 A321582	filter	1	new A000040()	p -> { final Z pp = p.*( 4).+(1); return pp.mod( 5) == 0 && pp./( 5).IPP(); }	[((\d+)#+(\d+))/(\d+)]&]	100, 4,1,5
 A321633	simtraf	0	new A190830()	(n, v) -> FA(n).*(v)
-A321676	simtraf	1	new A139282().skip(1)	(n, v) -> n == 1 ? Z.ONE : v	a(n)=Annn(n)forn>=(\d+)	2	A139282				a(1)=1; for n > 1, a(n) is a(n-1) plus the number of vowels in the name of a(n-1) in US English.
 A321856	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS( -3, i))).negate()
 A321857	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS(  5, i))).negate()
 A321858	lambdan	0	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS( 12, i))).negate()
@@ -4748,7 +4701,6 @@ A327430	filtpos	1	01	new A080383()	v -> v.equals(ZV(5))	Numbers k such that ther
 A327431	filtpos	1	0	new A080383()	v -> v.equals(ZV(9))	Numbers k such that there are exactly 9 numbers j for which binomial(k, floor(k/2)) / binomial(k,j) is an integer, i.e., €080383(k) = 10.	nonn	1..5113	nyi	_Labos Elemer_
 A327474	tuptraf	0	(n, s) -> s[0].*(2).-(s[1]).+(JF(n - 1).phi())	"1,2,4,6"	PREVIOUS,PREVIOUS,PREVIOUS,PREVIOUS	a:= proc(n) option remember; `if`(n<4, [1, 2, 4, 6][n+1],2*a(n-1)-a(n-2)+numtheory[phi](n-1))
 A327563	rowsum	0	new A119687()
-A327736	invtras	0	new A001511()	0	.
 A327738	invtras	0	new A046951()	0	.
 A327739	invtras	0	new A038548()	0	.
 A327764	invtras	0	new A007862()	0	.
@@ -4838,7 +4790,6 @@ A332382	filter	0	new A019565()	(k, v) -> (k & 1) == 0
 A332446	#filtpos	0	0	new A087808()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k for which A087808(sigma(k)) is equal to A087808(2*k).	nonn	1..20751	nyi	_Antti Karttunen_
 A332456	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that sigma(sigma(k)) is congruent to 6 modulo 8.	nonn	1..10000	nyi	_Antti Karttunen_
 A332457	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that sigma(k) == 2 modulo 8 and sigma(sigma(k)) == 6 modulo 8.	nonn	1..10000	nyi	_Antti Karttunen_
-A332462	-2	nyi         	A019565,A156552	a(n)= Annnnnn(Annnnnn(n))	m	i 
 A332466	lambdan	1	n -> RD(n, d -> new Q(FA(n).*(MU(d)), FA(d))       ).num()
 A332467	lambdan	1	n -> RD(n, d -> new Q(FA(n).*(MU(d)), FA(d).^(n/d))).num()
 A332470	lambdan	0	n -> SD(n, d -> BI(n + d - 2, n - 1).*(MU(n/d)))
@@ -4962,7 +4913,6 @@ A336943	spf	0	ZV(44745755).^(4).+(Z2(4*n + 2))
 A336997	lambdan	1	n -> RD(n, d -> new Q(ZV(2).^(d-1), FA(d))).*(FA(n)).num()
 A336998	lambdan	1	n -> RD(n, d -> new Q(ZV(3).^(d-1), FA(d))).*(FA(n)).num()
 A336999	lambdan	1	n -> RD(n, d -> new Q(ZV(n).^(d)  , FA(d))).*(FA(n)).num()
-A337022	multraf	1	(self, n) -> self.s(0)./(2).-(self.s(1))	""	new A002110(), new A005867()	a(n)=Annn(n)/(\d+)-Annn(n)	2	A002110,A005867			a(n) is the number of positive integers <= A070826(n) with at least one odd prime divisor <= prime(n).
 A337025	lambdan	0	n -> ZV((4*n)*(4*n)).^(n)
 A337127	tablamb	1	1	n -> new Integer[] { 1, 10 }	(n, k) -> PR(0, k - 2, j -> ZV(j + 11 - k)).*(9).*(S2(n, k))	9*Pochhammer(11-k, k-1)*S2(n, k)
 A337200	rgs1	1	new DirectTransformSequence(1, new A278222(), new A337194())	Restricted growth sequence transform of f(n) = A278222(A337194(n)).
@@ -5154,7 +5104,6 @@ A341807	ordsum	8	new A023533().skip(2)	8	Number of ways to write n as an ordered
 A341808	ordsum	9	new A023533().skip(2)	9	Number of ways to write n as an ordered sum of 9 nonzero tetrahedral numbers.	nonn	9..1000
 A341809	ordsum	10	new A023533().skip(2)	10	Number of ways to write n as an ordered sum of 10 nonzero tetrahedral numbers.	nonn	10..1000
 A341857	lambdan	1	n -> Functions.CARMICHAEL_LAMBDA.z(n*n)./(n)	a(n) = psi(n^2)/n, psi = A002322.
-A341858	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k*k).equals(ZV(k))	Numbers k such that psi(k^2) = k, psi = A002322; indices of 1 in €341857.
 A341866	#nyi	0		a(n) = A341865(n)  -  A341865(n/p)  +  1, where p is the Least prime factor of n
 A341916	dirtraf	0	new A006068()	new PrependSequence(0, new A059893(), 0)	
 A341982	ordsum	2	new A080339().skip()	2
@@ -5323,7 +5272,6 @@ A347391	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that
 A347399	lambdan	1	n -> SU(1, n, k -> (ZV(n).^(n).mod(ZV(k).^(k)).isZero() ? Z.ONE : Z.ZERO).*(ZV(k).^(k)))
 A347516	lambdan	1	n -> SD(n, d -> ZV(d).^(3).compareTo(n) <= 0 ? ZV(1) : ZV(0))
 A347526	lambdan	1	n -> SD(n, d -> ZV(d).^(4).compareTo(n) <= 0 ? ZV(1) : ZV(0))
-A347548	multraf	6	(self, n) -> self.s(0).-((n + 1)/2)	""	new A000009()	a(n)=Annn(n)-floor((n+(\d+))/(\d+))	1,2	A000009			Number of partitions of n into 3 or more distinct parts.
 A347614	lambdan	1	n -> SU(1, n, k -> ZV(n).^(Functions.BIG_OMEGA.i(k)))
 A347654	lambdir	0	n -> SEQ.a(ZV(10).^(n))	new A000700()	a(n)=Annn((\d+)^n)	10	D000700
 A347870	parity	0	new A342925()	a(n) = A000035(A342925(n)) = A165560(A000203(n)).
@@ -5342,7 +5290,6 @@ A347889	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that
 A347890	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers k such that sigma(k) > 2*k and A003415(sigma(k)) < k, where A003415 is the arithmetic derivative, and sigma is the sum of divisors function.	nonn	1..32	nyi	_Antti Karttunen_
 A347891	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers k such that sigma(k^2) > 2*k^2 and A003415(sigma(k^2)) < k^2.	nonn	1..50	nyi	_Antti Karttunen_
 A347912	partsun	1	new A122197()			Partial sums of A122197.					a(n) = Sum_{k=1..n} k - floor(sqrt(k)+1/2) * floor(sqrt(k-1)).
-A347915	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354507()
 A347948	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n, k)).*(self.a(n - k)))	"0,1"	new A010051()
 A347960	#filtpos	0	0	new A348036()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k for which A348036(k) > A007947(k).	nonn	1..62	nyi	_Antti Karttunen_
 A347989	lambdan	0	n -> RU(n, 2*n, k -> new Q(SA(k, n).*(2*n + 1 - k), FA(k))).*(FA(2*n)).num()
@@ -5594,7 +5541,6 @@ A353893	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/8, k -> new Q(S1(n-4*k, 4*k).a
 A353894	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/4, k -> new Q(S2(n-2*k, 2*k).*(FA(2*k)), Z.FOUR.^(k).*(FA(k)).*(FA(n-2*k))).*(FA(n))).num()
 A353895	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/6, k -> new Q(S2(n-3*k, 3*k).*(FA(3*k)), ZV( 36).^(k).*(FA(k)).*(FA(n-3*k))).*(FA(n))).num()
 A353896	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n/8, k -> new Q(S2(n-4*k, 4*k).*(FA(4*k)), ZV(576).^(k).*(FA(k)).*(FA(n-4*k))).*(FA(n))).num()
-A353993	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A353992()
 A354002	lambdan	1	n -> SU(1, n, k -> S1(n, k).*(Functions.PRIME.z(k + 1)))	a(n)=Sum_{k=(\d+),n}Stirling(\d+)(n,k)*prime(k+(\d+))	1,1,1
 A354038	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that sum of the proper divisors of k is a multiple of 4.	nonn	1..68	nyi	_Antti Karttunen_
 A354039	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Odd numbers k for which sigma(k^2) == 1 (mod 4).	nonn	1..70	nyi	_Antti Karttunen_
@@ -5621,9 +5567,6 @@ A354448	filter	1	new A051682()	v -> isPDP(2)	11-gonal (or hendecagonal) numbers 
 A354451	filter	1	new A067742()	(k, v) -> (k & 1) == 1
 A354452	filter	1	new A067742()	(k, v) -> (k & 1) == 0
 A354482	filtpos	1	-1	new A004601()	ZERO	Positions of 0's in binary expansion of Pi.					Positions of 0's in binary expansion of Pi.
-A354503	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354506()
-A354504	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354508()
-A354505	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354509()
 A354574	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(n - k - 1).*(S2(n - 1, k)).*(self.a(k))).*(n)	"1"		a(0) = 1; a(n) = n * Sum_{k=0..n-1} (-1)^(n-k-1) * Stirling2(n-1,k) * a(k).
 A354610	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A007114()
 A354612	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A007113()
@@ -5688,13 +5631,8 @@ A355893	#nyi	0		Let €090252(n) = Product_{i >= 1} prime(i)^e(i); then a(n) is 
 A355894	#nyi	0		Let €354790(n) = Product_{i >= 1} prime(i)^e(i); then a(n) is the concatenation, in reverse order, of e_1, e_2, ..., ending at the exponent of the largest prime factor of €354790(n); a(1)=0 by convention
 A355930	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A056239(), new A356159()
 A355942	filtpos	1	1	new A326042()	(n, v) -> ZV(n).mod(v).isZero()	Numbers n such that n is a multiple of Annnnnn(n)
-A356025	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356009()
-A356086	insect2	0	new A001952()	new A022838()	Intersection 
-A356087	insect2	0	new A001952()	new A054406()	Intersection
 A356095	filter	1	new A000292()	v -> isPDP(3)	Tetrahedral (or triangular pyramidal) numbers which are products of three distinct primes (or sphenic numbers).
 A356101	insect2	0	new A000201()	new A022839()	Intersection
-A356102	insect2	0	new A001950()	new A022839()	Intersection
-A356106	-2	nyi         	A000201,A108598	a(n)= Annnnnn(Annnnnn(n))	m	i 
 A356131	lambdan	0	n -> SU(1, n, k -> ZV(k - 1).^(n).*(BI(n/k + 1,2)))
 A356135	filter	0	new A001358()	(k, v) -> v.mod(k) == 6	Semiprimes k such that k is congruent to 6 modulo k s index in the sequence of semiprimes.      nonn,hard       1.
 A356219	insect2	0	new A001952()	new A003151()	Intersection
@@ -5707,41 +5645,16 @@ A356297	lambdan	0	n -> RU(1,n, k -> new Q(JF(k).sigma0(), ZV(k)                 
 A356298	lambdan	0	n -> RU(1,n, k -> new Q(JF(k).sigma(2), ZV(k)                                 )).*(FA(n)).num()
 A356312	#filtpos	0	0	new ()	(k, v) -> v.compareTo(ZV(k)) < 0	Numbers k such that A003415(k) and €276086(k) are not relatively prime, where A003415 is the arithmetic derivative, and €276086 is the primorial base exp-function.	nonn	1..74	nyi	_Antti Karttunen_
 A356323	lambdan	0	n -> RU(1,n, k -> new Q(JF(k).sigma(3), ZV(k)                                 )).*(FA(n)).num()
-A356335	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356010()
-A356336	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356297()
-A356337	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356298()
 A356355	filter	1	new A001106()	v -> isPDP(5)	9-gonal numbers which are products of five distinct primes.
 A356357	filter	0	new A001358()	(k, v) -> v.mod(k) == 7	Semiprimes k such that k is congruent to 7 modulo k s index in the sequence of semiprimes       nonn,hard       1.
-A356392	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356389()
-A356393	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356390()
-A356394	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356391()
-A356402	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356401()
-A356408	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356406()
-A356409	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356407()
 A356419	inverse	1	new A067576()	1	1	considered as a permutation of the positive integers.
 A356422	filter	1	new A000566()	v -> isPDP(3)	Heptagonal numbers (or 7-gonal numbers, i.e., numbers of the form k*(5*k - 3)/2) which are products of three distinct primes (or sphenic numbers).
 A356424	filter	1	new A001106()	v -> JF(v).isSemiprime()	9-gonal numbers that are semiprimes.
 A356437	lambdan	0	n -> RU(1,n, k -> new Q(JF(k).sigma(k), ZV(k)                                 )).*(FA(n)).num()
-A356439	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356436()
-A356440	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356437()
-A356458	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A355886()
-A356460	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354863()
-A356461	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356459()
 A356472	simtraf	1	new A018804()	(n, v) -> new Q(v, ZV(n)).num()	a(n)=numerator(Annn(n)/n)
 A356473	multraf	1	(self, n) -> new Q(self.s(0), ZV(n)).den()	""	new A018804()	denominator of new A018804()/n
 A356486	lambdan	0	n -> RD(n, d -> new Q(ZV(d).^(n)   , FA(d-1))).*(FA(n-1)).num()
-A356487	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356486()
-A356494	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354843()
-A356495	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354892()
-A356524	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354849()
-A356530	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356529()
 A356589	lambdan	0	n -> RU(1,n, k -> new Q(JF(k).sigma(k), ZV(k).*(FA(n-k))                      )).*(FA(n)).num()
-A356590	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356589()
-A356595	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356600()
-A356596	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354338()
-A356597	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354339()
-A356598	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354340()
-A356599	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354341()
 A356600	lambdan	0	n -> RU(1,n, k -> new Q(JF(k).sigma(2), ZV(k).*(FA(n-k))                      )).*(FA(n)).num()
 A356661	lambdan	0	n -> RD(n, d -> new Q(Z.ONE, ZV(d).^(n/d - 1)                       )          ).*(FA(n)).num()
 A356662	lambdan	0	n -> RD(n, d -> new Q(Z.ONE, FA(d).^(n/d - 1)                       )          ).*(FA(n)).num()
@@ -6048,7 +5961,6 @@ A364080	filnum	0	1	k -> ZV(20).^(k).-(1).^(2).-(2).IPP()
 A364081	filnum	0	1	k -> ZV(20).^(k).+(1).^(2).-(2).IPP()
 A364091	multraf	1	(self, n) -> self.s(0).min(self.s(1))	"13,7,11,5,3,2,16651"	new A005602(), new A005603()	a(n) is the first prime p such that the longest sequence of primes p = p_1, p_2, ... with |p_{k+1} - 2*p_k| = 1 has length n.
 A364154	#nyi	0		Lexicographically earliest sequence of distinct positive integers such that a(n) is least novel multiple m of the product of all primes less than the Largest prime factor of a(n - 1) which do not divide a(n - 1); a(1) = 1
-A364165	spf	0	new Z(Z2(n).toString() + Z.THREE.^(n).toString())	a(n) is the least prime factor of the concatenation of 2^n and 3^n
 A364194	lambdan	0	n -> SU(1, n, k -> ZV(k).^(3).*(JF(k).sigma()))
 A364250	simtraf	0	new A364249()	v -> v.modZ(2)	,2	a(n)= Annnnnn(n) mod (\d+)	m	i
 A364268	lambdan	0	n -> SU(1, n, k -> ZV(k).^(2).*(JF(k).sigma(2)))
@@ -6507,7 +6419,6 @@ A369049	multraf	2	(self, n) -> ZV(n).mod(self.s(0))	""	new A003415()	n mod new A
 A369052	simtraf	0	new A003415()	(n, v) -> ZV(n).-(v.*(2))
 A369058	lambdan	0	n -> (((n & 1) == 1) && JF(n).bigOmega() == 3) ? Z.ONE : Z.ZERO	A369058(n) = ((n%2)&&(3==bigomega(n)));
 A369065	rgs1	1	new A344026()	Restricted growth sequence transform of A344026, i.e., of the arithmetic derivative (A003415) as reordered by the Doudna sequence (A005940).
-A369066	dirichcon2	0	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouvilles lambda (A008836) with A083345, as reordered by the Doudna sequence.
 A369069	dirichcon2	1	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouvilles lambda (A008836) with A083345, where A083345(n) = n' / gcd(n,n'), and n' stands for the arithmetic derivative of n, A003415.
 A369115	partsun	0	new A186537().skip(1)			Partial sums of A186537 starting at n = 1.					Expansion of (1 - x)^(-2) * Sum_{j>=0} (x^j / (1 - Sum_{k=1..j} x^k)).
 A369180	lambdan	1	n -> SU(2, n, k -> Z_1(k).*(ZUtils.valuation(ZV(n), ZV(k))))	Sum_{k=2..n} (-1)^k * valuation(n,k).Alternating sum of the k-adic valuations (ruler functions) of n.
@@ -7332,7 +7243,6 @@ A372416	lambdan	0	n -> { final int s=3; final int t=2; final int u= 2; return SU
 A372417	lambdan	0	n -> { final int s=3; final int t=2; final int u= 3; return SU(0, n/s, k -> BI(t*n, k)    .*(BI((u-t+1)*n-(s-1)*k-1, n-s*k))           )  ; }
 A372418	lambdan	0	n -> { final int s=3; final int t=2; final int u= 2; return SU(0, n/s, k -> BI(t*(n+1), k).*(BI((u-t+1)*(n+1)-(s-1)*k-2, n-s*k)))./(n+1)  ; }
 A372433	multrafd	1	(self, n) -> SEQ.a(self.s(0))	""	new A005117()	new A000120()	a(n)=Annn(Annn(n))
-A372437	multraf	2	(self, n) -> self.s(0).-(self.s(1))	""	new A001511(), new A055396()	a(n)=Annn(n)-Annn(n)		A001511,A055396			(Least binary index of n) minus (least prime index of n).
 A372458	lambdan	0	n -> { final int s=2; final int t=2; final int u= 1; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
 A372459	lambdan	0	n -> { final int s=3; final int t=2; final int u= 1; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }
 A372460	lambdan	0	n -> { final int s=2; final int t=2; final int u= 2; return SU(0, n/s, k -> BI(t*n+k-1, k).*(BI((t+u+1)*n-(s-1)*k-1, n-s*k))           )  ; }

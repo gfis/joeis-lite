@@ -138,6 +138,7 @@ my $do_generate = 1;
 
 mkdir $targetdir;
 my $old_callcode = "";
+my $static_dirs; # list of "private final static DirectSequence Annnnn = new Annnnnn();"
 while (<>) { # read inputfile
     s{\A\#.*}{}; # remove comments
     next if m{\A\s*\Z}; # skip empty lines
@@ -177,6 +178,7 @@ while (<>) { # read inputfile
     my $copy = $pattern;
     #          1           12     2 3        3
     $copy =~ s{(\$\(PARM\d+)(\=\w+)?([^\)]*\))}{$1$3}g; # remove Java parameter names $2, e.g. $(PARM1=start.L) -> $(PARM1.L)
+    $static_dirs = "";
     $do_generate = 1;
     if ($debug >= 2) {
         print "# scalar(parms)=" . scalar(@parms) . "\n";
@@ -198,7 +200,7 @@ while (<>) { # read inputfile
         $parms[$iparm] =~ s{\. +}{\.}g;  # spaces after  "."
         $parms[$iparm] =~ s{ +\.}{\.}g;  # spaces before "."
         $parms[$iparm] =~ s{ *\, *}{\, }g;  # spaces around ","
-        if (($parms[$iparm] =~ m{\-\>}) || ($callcode =~ m{\A(lpf|spf)\Z})) { # with lambda expression: replace shortcuts and check bracketing
+        if (($parms[$iparm] =~ m{\-\>}) || ($callcode =~ m{\A(lpf|spf)\Z})) { # with lambda expression: replace shortcuts and check bracketing, accumulate $static_dirs
             my $parm = $parms[$iparm];
         #   if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
         #       print STDERR "# $aseqno, unknown shortcut: $aseqno $parm\n";
@@ -286,7 +288,21 @@ while (<>) { # read inputfile
             $parms[$iparm] = $parm;
             #                      1            1
             $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
-        }
+
+            # extract any DirectSequences
+            my %statics = ();
+            foreach my $xno ($parms[$iparm] =~ m{([ADF]\d{6})\.a\(}g) { # collect the DirectSequences
+              $statics{$xno} = "A" . substr($xno, 1); # D012345 -> A012345
+            }
+            foreach my $xno (sort(keys(%statics))) { # evaluate the DirectSequences
+              my $ano = $statics{$xno};
+              $static_dirs .= "\n  private final static DirectSequence $ano = new $ano();";
+              if (0) {
+              } elsif(substr($xno, 0, 1) eq "D") {
+                $parms[$iparm] =~ s{$xno\.a\(}{$ano\.a\(}g;
+              }
+            }
+        } # lambda parameter 
         if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
             @terms = map {
                 if (length > $max_term_len) {
@@ -383,6 +399,10 @@ print STDERR "# $gen_count sequences generated\n";
 sub write_output {
     my ($copy, $aseqno) = @_; # global $old_package, $gen_count, $debug
     my $call1 = ($cc eq $callcode) ? $cc : "$cc/$callcode";
+    if ($static_dirs ne "") {
+      $copy =~ s[public +class([^\{]+)\{]
+                [public class$1\{\n$static_dirs];
+    }
     map {
         my $line = $_;
         if ($line !~ m{\A\s*\*\s+}) {

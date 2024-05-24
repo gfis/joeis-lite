@@ -8,9 +8,6 @@ A075185	lambdan	0	n -> S1(n + 5, n + 1).*(FA(n + 1))./(4 )	a(n)=  (n+1)!*S1(n+5,
 A075186	lambdan	0	n -> S1(n + 6, n + 1).*(FA(n + 1))./(-24)	a(n)= -(n+1)!*S1(n+6, n+1)/24 with S1(n, m) := A008275(n, m) (Stirling1).
 A075187	lambdan	0	n -> S1(n + 7, n + 1).*(FA(n + 1))./(24)	a(n)=  (n+1)!*S1(n+7, n+1)/24 with S1(n, m) := A008275(n, m) (Stirling1).
 A075543	multrar	0	(self, n) -> self.a(n - 1).+(Functions.DIGIT_SUM.z(ZV(n + 2)))	"2"		a[n] = a[n-1] + digit sum(n + 2)
-A082946	dead	1	dead								Duplicate of A082945.
-A105734	dead	1	dead								Duplicate of A076839.
-A232212	dead	1	dead								Duplicate of A232219.
 A362029	lambdan	1	n -> SU(1, n, k -> Z_1(n - k).*(k).*(Functions.MOEBIUS.z(k).^(2)))
 A362072	lambdan	0	n -> SU(1, n, k -> Functions.DIGIT_SUM.z(k*(n - k)))
 A362377	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/2, j -> new Q( k, 2).^(j).*(new Q(  j + 1).^(n -   j - 1))./(FA(j).*(FA(n - 2*j)))).*(FA(n)).num()	T(n,k)=n!*sum(j=0,n\2,(k/2)^j*(j+1)^(n-j-1)/(j!*(n-2*j)!));
