@@ -1,0 +1,25 @@
+---- 2024-05-24 21:42:57
+A095124	simtraf	0	new A001146()	v -> Functions.PRIME.z(v)
+A279904	simtraf	0	new A058781()	v -> Functions.PRIME.z(v)
+A093046	simtraf	0	new A058328()	v -> Functions.PRIME.z(v)
+A177357	simtraf	0	new A086801()	v -> v.sqrt()
+A372507	simtraf	0	new A067381()	v -> Functions.PRIME_PI.z(v)
+A107482	simtraf	0	new A007539()	v -> Functions.BIG_OMEGA.z(v)	D001222,
+A112884	simtraf	0	new A037293()	v -> Functions.DIGIT_LENGTH.z(2, v)	D070939,
+A095791	simtraf	0	new A104326()	v -> Functions.DIGIT_LENGTH.z(2, v)	D070939,
+
+A120355	dirtraf	0	new A002034()	new A007677()
+A108504	dirtraf	0	new A038548()	new A025487()
+A277802	dirtraf	0	new A048798()	new A004709()
+A262902	dirtraf	0	new A049820()	new A045765()
+A253473	dirtraf	0	new A049820()	new A073256()
+A324201	dirtraf	0	new A062457()	new A000043()
+A187043	dirtraf	0	new A064547()	new A007357()
+A293958	dirtraf	0	new A078701()	new A069894()
+A225017	dirtraf	0	new A132740()	new A055566()
+A264968	dirtraf	0	new A246200()	new A263272()
+A139770	lambdan	0	n -> D061799.a(Functions.SIGMA0.z(n))
+A301630	lambdan	0	n -> D061670.a(Functions.PRIME.z(n))
+A232094	lambdan	0	n -> D060130.a(Functions.TRIANGULAR.z(n))
+A281489	lambdan	0	n -> D000700.a(ZV(n).square())
+A087987	lambdan	0	n -> Functions.MERTENS.z(Functions.PRIMORIAL_COUNT.z(n))   

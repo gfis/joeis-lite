@@ -1,0 +1,60 @@
+---- 2024-05-15 10:40:52
+A082426	simtraf	1	new A074143()	(n, v) -> n == 1 ? Z.ONE : v.+(1)
+A082427	multrar	1	(self, n) -> SU(1, n - 1, k -> self.a(k)).*(n).-(2)	"1,0,1,6"	a(1)=1, a(n)=n*(a(n-1)+a(n-2)+...+a(2)+a(1)) - 2.
+A082455	multrar	0	(self, n) -> PM(n).+(PM(n - 1)).-(self.a(n - 1))	"0,4"	a(n) = prime(n) + prime(n-1) + a(n-1), a(0) = 0, a(1) = 4.
+A100938	convprod	0	2	new A092684()
+A275698	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 1).-(3)).+(3)	"2,5"		a(n) = 3 + a(n-1)*(a(n-1)-3)
+A372668	lambdan	0	n -> SU(1, n, j -> SU(1, n, k -> Functions.PHI.z(n*j*k)))./(Functions.PHI.z(n))	a(n) = (1/phi(n)) * Sum_{j=1..n} Sum_{k=1..n} phi(n*j*k).	nonn,new	1..40	nyi	_Seiichi Manyama_              
+A372669	lambdan	1	n -> RU(1, n, j -> RU(1, n, k -> new Q(Functions.PHI.z(n*j*k), Functions.PHI.z(n*k)))).num()	a(n) = Sum_{j=1..n} Sum_{k=1..n} phi(n*j*k) / phi(n*k).	nonn,new	1..44	nyi
+A372784	lambdan	1	n -> Functions.TAU.z(4*n)	a(n) = tau( 4*n) = A000005(4*n).	nonn,new	1..76	nyi
+A372785	lambdan	1	n -> Functions.TAU.z(5*n)	a(n) = tau( 5*n) = A000005(5*n).	nonn,new	1..80	nyi
+A372786	lambdan	1	n -> Functions.TAU.z(6*n)	a(n) = tau( 6*n) = A000005(6*n).	nonn,new	1..72	nyi
+A372787	lambdan	1	n -> Functions.TAU.z(7*n)	a(n) = tau( 7*n) = A000005(7*n).	nonn,new	1..79	nyi
+A372788	lambdan	1	n -> Functions.TAU.z(8*n)	a(n) = tau( 8*n) = A000005(8*n).	nonn,new	1..72	nyi
+A372789	lambdan	1	n -> Functions.TAU.z(9*n)	a(n) = tau( 9*n) = A000005(9*n).	nonn,new	1..75	nyi
+A372790	lambdan	1	n -> Functions.TAU.z(10*n)	a(n) = tau(10*n) = A000005(10*n).	nonn,new	1..72	nyi
+A372791	lambdan	1	n -> Functions.TAU.z(11*n)	a(n) = tau(11*n) = A000005(11*n).	nonn,new	1..78	nyi
+A372792	lambdan	1	n -> Functions.TAU.z(12*n)	a(n) = tau(12*n) = A000005(12*n).	nonn,new	1..66	nyi
+---- 2024-05-16 10:10:11
+A135133	lambdan	0	n -> ZV((Integer.bitCount(n)/3) & 1)	a(n) = floor(S2(n)/3) mod 2, where S2(n) denotes the binary weight of n.	no
+A135136	lambdan	0	n -> ZV((Integer.bitCount(n)/2) & 1)	a(n) = floor(S2(n)/2) mod 2, where S2(n) is the binary weight of n.	nonn	0.
+A135585	lambdan	0	n -> SU(1, n, i -> ZV((Integer.bitCount(i)/3) & 1))	a(n) = Sum_{i=1..n} (floor(S2(i)/3) mod 2), where S2(i) = A000120(i).
+A158568	lambdan	1	n -> SU(1, Functions.FIBONACCI.i(n), i -> Functions.SIGMA0.z(i))	a(n) = Sum_{i=1..Fibonacci(n)} sigma_0(i) where sigma_0(n) is A00
+A158569	lambdan	1	n -> SU(1, Functions.FIBONACCI.i(n), i -> Functions.FIBONACCI.z(i))	a(n) = Sum_{i=1..F(n)} F(i), n >= 1, where F(k) is A000045, Fibon
+A276175	multrar	0	(self, n) -> self.a(n - 1).+(1).*(self.a(n - 2).+(1)).*(self.a(n - 3).+(1))./(self.a(n - 4))	"1,1,1,1,8"	RecurrenceTable[{a[n] == (a[n - 1] + 1) (a[n - 2] + 1) (a[n - 3] + 1)/a[n - 4]
+A302116	multrar	0	(self, n) -> ZV(16*(n - 1)).*(self.a(n - 1).*(2*n - 3).+(Z_1(n).*(PR(0, n - 1, k -> ZV(2*k - 3)).^(2))./(9)))	"0"	RecurrenceTable[{a[n] == 16*(n - 1)*((2*n-3)*a[n - 1] + (-1)^n / 9   * Product[(2*k - 3)^2, {k, 0, n - 1}]), a[0] == 0}, a, {n, 0, 15}] (* _Vaclav Kotesovec_, Apr 10 2018 *)
+A318053	multrar	1	(self, n) -> Functions.CEIL_SQRT.z(self.a(n - 1).*(2).*(self.a(n - 2)))	"1,1"	RecurrenceTable[{a[1]==a[2]==1,a[n]==Ceiling[Sqrt[2a[n-1]a[n-2]]]}
+A334840	multrar	1	(self, n) -> { final Z g = self.a(n - 1).gcd(ZV(n)); return g.compareTo(Z.ONE) > 0 ? self.a(n - 1)./(g) : self.a(n - 1).*(4); }	"1"	a(n-1) / gcd(a(n-1),n) if this gcd is > 1, else a(n) = 4*a(n-1).	nonn	1..65
+A334852	multrar	1	(self, n) -> { final Z g = self.a(n - 1).gcd(ZV(n)); return g.compareTo(Z.ONE) > 0 ? self.a(n - 1)./(g) : self.a(n - 1).+(2); }	"1"	a(n-1) / gcd(a(n-1),n) if this gcd is > 1, else a(n) = a(n-1) + 2.	nonn	1..75
+A334942	multrar	1	(self, n) -> { final Z g = self.a(n - 1).gcd(ZV(n)); return g.compareTo(Z.ONE) > 0 ? self.a(n - 1)./(g) : self.a(n - 1).*(2).+(4); }	"1"	a(n-1) / gcd(a(n-1),n) if this gcd is > 1, else a(n) = 2*a(n-1) + 4.	nonn	1..81
+A334943	multrar	1	(self, n) -> { final Z g = self.a(n - 1).gcd(ZV(n)); return g.compareTo(Z.ONE) > 0 ? self.a(n - 1)./(g) : self.a(n - 1).*(3).+(n + 1); }	"1"	a(n-1) / gcd(a(n-1),n) if this gcd is > 1, else a(n) = 3*a(n-1) + n + 1.	nonn	1..10000
+A353612	trilambn	1	1	1	(n, k) -> ZV(n + k).IPP() ? ZV(n + k) : Z.ZERO	T(n,k) = (n + k) if (n + k) is a prime number, otherwise T(n,k) = 0; n >= 1, k >= 1.
+A353663	trilambn	1	1	1	(n, k) ->ZV(n + k).IPP() ? Z.ONE : Z.ZERO	T(n,k) = 1 if n+k is a prime, otherwise T(n,k) = 0; n >= 1, k >= 1.	nonn,tabl
+A355860	trilambn	1	1	1	(n, k) -> (n*k) % (n + k) == 0 ? ZV(n*k / (n + k)) : Z.ZERO	T(n,k) = n*k/(n + k) if n+k divides n*k, otherwise T(n,k) = 0; n >= 1, k >= 1.
+A371943	holos	0	[[0],[-6,5,-1],[4,-2],[-4,2],[2],[-1]]	0,0,0,1	0	0	RecurrenceTable[{a[n] == 2*a[n-1] + 2*(n-2)*(a[n-2] - a[n-3]) - (n-2)*(n-3)*a[n-4], a[0] == 0, a[1] == 0, a[2] == 0, a[3] == 1},
+---- 2024-05-16 12:09:54
+A110023	trilambd	1	0	0	(n, m) -> mSeq.a(m + 6).*(mSeq.a(n + 6 - m)).*(BI(n, m))	new A000931()	a(n)=a(n-2)+a(n-3); t(n,m)=a(n - m + 1)*a(m + 1)*Binomial[n, m].
+A110102	trilambd	1	0	0	(n, m) -> mSeq.a(m + 6).*(mSeq.a(n + 6 - m))	new A000931()	a(n) = a(n - 2) + a(n - 3); t(n,m) := a(n - m + 1)*a(m + 1).
+A139038	trilambd	1	0	0	(n, m) -> m <= n/2 ? mSeq.a(m + 6) : mSeq.a(n + 6 - m)	new A000931()
+A176505	trilambd	0	0	0	(n, m) -> mSeq.a(n + 4).-(mSeq.a(4 + m)).-(mSeq.a(n + 4 - m)).+(1)	new A000931()	Triangle T(n,m) read by rows: T(n,m) = a(n) - a(m) - a(n-m) + 1, where a(n) = A000931(n+4)
+A243005	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 1).-(self.a(n - 2)))./(self.a(n - 3))	"2,1,-1"	RecurrenceTable[{a[n] == a[n - 1]*(a[n - 1] - a[n - 2])/a[n - 3],
+A355859	trilambn	1	1	1	(n, k) -> ((n + k) & 1) == 0 ? ZV(n + k)./(2) : Z.ZERO	T(n,k) = (n + k)/2 if (n + k) is congruent to 0 (mod 2), otherwise T(n,k) = 0; n >=
+---- 2024-05-17 07:47:03
+A074288	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A000002(), new A054353()
+A087794	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A338912(), new A338913()	a(n) = A003963(A001358(n)) = A338912(n) * A338913(n). - _Gus Wiseman_, Dec 04 2020
+A089384	multraf	1	(self, n) -> self.s(0).*(self.s(1)).+(Z.ONE.-(self.s(0)).*(self.s(2)))	""	new A008966(), new A032742(), new A007947()	a(n) = D008966(n)*A032742(n) + (1-D008966(n))*D007947(n).
+A096313	lambdan	0	n -> n <= 1 ? ZV(n + 1) : FA(n + 1).*(PR(1, n - 1, k -> FA(k)))	a(0)=1, a(1)=2; for n > 1, a(n) = (n+1)!*Product_{k=1..n-1} k!; for n > 1, a(n) = D000142(n+1)*D000178(n-1).
+A107251	lambdan	0	n -> PR(n + 2, 2*n, k -> FA(k))./(PR(2, n, k -> FA(k)))	a(n) = (n+2)!*(n+3)!*...*(2n)!/(2!*3!*...*n!) = D000178(2n)/(D000178(n)*D000178(n+1)) = D079478(n)/D000142(n+1).
+A107254	lambdan	0	n -> PR(n, 2*n - 1, k -> FA(k))./(PR(0, n - 1, k -> FA(k)))	a(n) = n!*(n+1)!*(n+2)!*...*(2n-1)!/(0!*1!*2!*3!*...*(n-1)!) = D000178(2n-1)/D000178(n-1)^2 = D079478(n)/A000984(n) = D079478(n-1)*A009445(n-1) = A107252(n)*D000142(n) = A088020(n)/A039622(n).
+A138890	complem	1	new A000931().skip(4)	, Z.ZERO	Non-Padovan numbers.
+A141668	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A000005(), new A000065()	a(n) = D000005(n)*(D000041(n) - 1) = D000005(n)*D000065(n).
+A174881	lambdan	1	n -> ZV(n).*(n + 1).^(n)	a(n) = (n^n)*((n+1)^n) = (n*(n+1))^n. = A000312(n)*A000169(n+1).
+A192015	multraf	1	(self, n) -> self.s(0).*(self.s(1).^(self.s(0).-(1)))	""	new A025474(), new A025473()	a(n) = D025474(n) * D025473(n)^(D025474(n) - 1).
+A243054	multraf	0	(self, n) -> self.s(0).*(self.s(1))./(2)	"1"	new A000040(), new A002110()	a(0)=1, and for n >= 1, a(n) = D000040(n)*D002110(n)/2.
+A246292	multrafd	0	(self, n) -> self.s(0).*(SEQ.a(n - 1))	"1,1,3"	new A022915()	new A000178()	a(n) = A022915(n) * D000178(n-1) for n>0.
+A335587	multraf	0	(self, n) -> self.s(0).*(self.s(1))./(2)	""	new A035327(), new A080100()	a(n) = A035327(n) * A080100(n) / 2 for any n > 0.
+A338848	multraf	0	(self, n) -> self.s(0).*(FA(self.s(1).intValueExact()))	""	new A039966(), new A062756()	a(n) = A039966(n) * A062756(n)!. - _Kevin Ryde_, Nov 14 2020
+A365771	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A000108(), new A165817()	a(n) = D000108(n) * A165817(n) for n >= 0.
+A367100	lambdan	0	n -> SU(0, n, k -> Functions.CATALAN.z(k).*(Functions.PARTITIONS.z(k)))	a(n) = Sum_{k=0..n} D000108(k) * D000041(k).
+A369701	multraf	1	(self, n) -> self.s(0).^(n).-(self.s(1).*(self.s(2)))	""	new A026905(), new A000312(), new A058694()	a(n) = A026905(n)^n - A000312(n)*A058694(n).
+A371986	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A000032(), new A000108()	Product of Lucas and Catalan numbers: a(n) = A000032(n)*D000108(n).

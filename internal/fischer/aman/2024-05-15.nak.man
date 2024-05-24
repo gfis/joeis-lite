@@ -1,0 +1,26 @@
+# A098837	insect2	1	new A006753()	new A004709()
+# A159064	insect2	1	new A048890()	new A006567()
+# A210582	filnum	1	0	n -> { final long x = n.mod(10); return x != 0L && ZV(n.toString(10).charAt(0) - '0').equals(n.mod(x)); }	Numbers whose first digit is the remainder of their division by the last digit (in base 10).
+# A259376	insect2	1	new A014192()	new A029953()	???
+# A356086	insect2	1	new A001952()	new A022838()	Intersection
+# A356087	insect2	1	new A001952()	new A054406()	Intersection
+# A356102	insect2	1	new A001950()	new A022839()	Intersection
+---- 2024-05-23 20:45:15
+A076716	lambdir	1	n -> SEQ.a(FA(n))	new A001055()	a(n)=Annn(n!)		D001055
+A080919	complem	1	new A080900()	, Z.ONE	Numbers that do not appear in A080900.
+# wrong A087893	multraf	1	(self, n) -> self.s(0).*(2)	""	new A079275()	2*new A079275()	diff@210
+A090632	filter	0	new A064986()	(k, v) -> (k & 1) == 0	1
+A096274	filtpos	1	0	new A096535()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m
+A129150	simtraf	0	new A090636().skip(1)	v -> v	a(n)=Annn(n+(\d+))	2	A090636
+A147966	multraf	1	(self, n) -> ZV(n - 1).+(self.s(0))	""	new A001223()	n+(new A001223()-1)
+A159046	multraf	1	(self, n) -> self.s(0).-(SD(n, d -> (d == 1 || d == n) ? Z.ZERO : self.a(d).*(Functions.TAU.z(n/d))))	""	new A029937()	a(n) = A029937(n) - sum a(m)*d(n/m), where the summation is over all divisors 1 < m < n of n
+A164700	filnum	1	0	n -> n.toString(3).indexOf(n.toString(7)) >= 0	Base 10 integers n such that n base 7 is a substring of n base 3.
+A197072	multraf	0	(self, n) -> self.s(0).-(self.s(1).*(2))	""	new A033844().skip(1), new A033844()	a(n)=Annn(n+(\d+))-(\d+)*Annn(n)	1,2
+A213407	inverse	0	new A213381()	0	0	1st occurrence of n in Annnnnn
+A213861	inverse	0	new A213859()	0	0	1st occurrence of n in Annnnnn
+A220117	inverse	0	new A220115()	0	0	1st occurrence of n in Annnnnn
+A259622	multrar	0	(self, n) -> Functions.PRIME.z(self.a(n - 1).+(self.a(n - 2)))	"0,1"	RecurrenceTable[{a[n] == Prime[a[n - 1] + a[n - 2]], a[0] == 0,
+A291961	filnum	1	1090	k -> Z.TWO.modPow(Functions.CARMICHAEL_LAMBDA.z(k), ZV(k).*(k)).equals(Z.ONE)	Numbers n > 1 such that 2^lambda(n) == 1 (mod n^2)
+A321676	simtraf	1	new A139282().skip(1)	(n, v) -> n == 1 ? Z.ONE : v	a(n)=Annn(n)forn>=(\d+)	2	A139282
+A364165	lambdan	0	n -> Functions.LPF.z(new Z(Z2(n).toString() + Z.THREE.^(n).toString()))	a(n) is the least prime factor of the concatenation of 2^n and 3^n
+A369066	dirichcon2	0	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouvilles lambda (A008836) with A083345, as reordered by the Doudna sequence.
