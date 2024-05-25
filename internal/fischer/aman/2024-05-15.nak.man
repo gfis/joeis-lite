@@ -24,3 +24,11 @@ A291961	filnum	1	1090	k -> Z.TWO.modPow(Functions.CARMICHAEL_LAMBDA.z(k), ZV(k).
 A321676	simtraf	1	new A139282().skip(1)	(n, v) -> n == 1 ? Z.ONE : v	a(n)=Annn(n)forn>=(\d+)	2	A139282
 A364165	lambdan	0	n -> Functions.LPF.z(new Z(Z2(n).toString() + Z.THREE.^(n).toString()))	a(n) is the least prime factor of the concatenation of 2^n and 3^n
 A369066	dirichcon2	0	new A008836()	1	new A083345()	1	Dirichlet convolution of Liouvilles lambda (A008836) with A083345, as reordered by the Doudna sequence.
+
+A110361	trilambn	1	0	0	(n, m) -> A000931.a(n - m + 1).*(A000931.a(m + 1)).*(Functions.FIBONACCI.z(n - m + 1)).*(Functions.FIBONACCI.z(m + 1))	new A000931()	a(n) = a(n - 2) + a(n - 3); t(n,m) := a(n - m + 1)*a(m + 1)*Fibonacci[(n - m + 1)]*Fibonacci[(m + 1)].
+# bad formula?A095791	dirtraf	0	new A070939()	new A104326()	a(n)=Annn(Annn(n))		D070939,A104326
+# tabtraf?	A366450	simtraf	0	new A366362 a(n) = Sum_{k=1..n} €366362(n,k)*A023900(k)/n.
+# tabtraf?	A366562	simtraf	0	new A366362 a(n) = Sum_{k=1..n} €366561(n,k)*A023900(k)/n.
+A332462	dirtraf	1	new A019565()	new A156552()
+# sqrt()? formula? A308360	simtraf	0	new A064549()	(n, v) -> v.^(D005361.a(n)./(2))	. - _Charlie Neder_, Jun 03 2019
+A147966	simtraf	0	new A001223()	(n, v) -> v.+(n - 1)	a(n) = n+(A001223(n)-1) = n+A046933(n).

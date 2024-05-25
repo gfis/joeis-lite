@@ -248,6 +248,7 @@ while (<>) { # read inputfile
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {Functions.PARTITIONS.z\(}g;
+            $parm =~ s{RAD\(([^\)]+)\)}{Jaguar.factor\($1\)\.squareFreeKernel\(\)}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
             $parm =~ s{RQ\(}           {Rationals.SINGLETON.product\(}g;
@@ -296,7 +297,7 @@ while (<>) { # read inputfile
             }
             foreach my $xno (sort(keys(%statics))) { # evaluate the DirectSequences
               my $ano = $statics{$xno};
-              $static_dirs .= "\n  private final static DirectSequence $ano = new $ano();";
+              $static_dirs .= "\n  private static final DirectSequence $ano = new $ano();";
               if (0) {
               } elsif(substr($xno, 0, 1) eq "D") {
                 $parms[$iparm] =~ s{$xno\.a\(}{$ano\.a\(}g;
