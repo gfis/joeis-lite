@@ -1,0 +1,123 @@
+# ari A000194	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : 2*n }	(n, k) -> ZV(n)		n appears 2n times, for n >= 1; also nearest integer to square root of n.
+# ari A001650	tablamb	1	1	n -> new Integer[] { 1, 2*n - 1 }	(n, k) -> ZV(2*n - 1)		k appears k times (k odd).
+# ari A001670	tablamb	1	1	n -> new Integer[] { 1, 2*n }	(n, k) -> ZV(2*n)		k appears k times (k even).
+# ari A002024	tablamb	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		k appears k times; a(n) = floor(sqrt(2n) + 1/2).
+# ari A003056	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : n + 1 }	(n, k) -> ZV(n)		n appears n+1 times. Also the array A(n,k) = n+k (n >= 0, k >= 0) read by antidiagonals. Also inverse of triangular numbers.
+# ari A003057	tablamb	2	1	n -> new Integer[] { 1, n - 1 }	(n, k) -> ZV(n)		n appears n - 1 times.
+# ari A003059	tablamb	1	1	n -> new Integer[] { 1, 2*n - 1 }	(n, k) -> ZV(n)		k appears 2k-1 times. Also, square root of n, rounded up.
+# ari A030530	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : Functions.DIGIT_LENGTH.i(2, n) }	(n, k) -> ZV(n)		n appears A070939(n) times.
+# ari A036042	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : Functions.PARTITIONS.i(n) }	(n, k) -> ZV(n)		k appears partition(k) times.
+# ari A055086	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : 1 + n/2 }	(n, k) -> ZV(n)		n appears 1+[n/2] times.
+# ari A065033	tablamb	0	1	n -> new Integer[] { 1, n == 1 ? 3 : 2 }	(n, k) -> ZV(n)		1 appears three times, other numbers twice.
+A072649	tablamb	1	1	n -> new Integer[] { 1, Functions.FIBONACCI.i(n) }	(n, k) -> ZV(n)		n occurs Fibonacci(n) times (cf. A000045).
+A073080	tablamb	1	1	n -> new Integer[] { 1, Z2(n - 1).*(3).intValueExact() }	(n, k) -> Z2(n - 1).*(3)		3 appears three times, 2*3=6 appears six times, 2*6=12 appears twelve times etc.
+A073188	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : n/3 + 1 }	(n, k) -> ZV(n)		n appears 1+[n/3] times.
+A074279	tablamb	1	1	n -> new Integer[] { 1, n*n }	(n, k) -> ZV(n)		n appears n^2 times.
+A076520	tablamb	1	1	n -> new Integer[] { 1, DirectSequence.create(new A063725()).a(n).intValueExact() }	(n, k) -> ZV(n)		n appears once if n is the sum of 2 nonzero squares in 1 way, twice if n is the sum of 2 squares in 2 ways, 3 times if n is the sum of 2 squares 3 ways etc.
+A077431	lambdan	1	n -> Z.TEN.^(Functions.DIGIT_LENGTH.i(2*n*n)).+(1).*(n)	a(n) = n*(1+10^(floor(log_10(2*n^2))+1)).
+A077433	lambdan	1	n -> ZV(Functions.DIGIT_LENGTH.i(2*n*n)/2)	a(n) =   floor((floor(log_10(2*n^2))+1)/2).
+A082287	tablamb	1	1	n -> new Integer[] { 1, n == 1 ? 1 : Functions.OMEGA.i(n) }	(n, k) -> ZV(n)		a(1) = 1; for n > 1, n appears omega(n) times, whe
+A082288	tablamb	1	1	n -> new Integer[] { 1, n == 1 ? 1 : Functions.BIG_OMEGA.i(n) }	(n, k) -> ZV(n)		n>1 appears bigomega(n) times, where bigomega(n)=A
+A083277	tablamb	1	1	n -> new Integer[] { 1, 3*n - 2 }	(n, k) -> ZV(n)		k appears 3k-2 times.
+A083375	tablamb	1	1	n -> new Integer[] { 1, Functions.PRIME.i(n) }	(n, k) -> ZV(n)		n appears prime(n) times.
+A084556	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : Functions.FACTORIAL.i(n) }	(n, k) -> ZV(n)		n occurs n! times.
+A084557	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : DirectSequence.create(new A084556()).a(n).intValueExact() }	(n, k) -> ZV(n)		a(0)=0, after which each n occurs ?084556(n) times.
+A085182	tablamb	1	1	n -> new Integer[] { 1, DirectSequence.create(new A076050()).a(n).intValueExact() }	(n, k) -> ZV(n)		n occurs A076050(n) (= A007001(n)+1) times.
+A088673	lambdan	0	n -> ZV(n + 1).mod(CR.valueOf(2*n + 2).sqrt().+(CR.HALF).floor())	n mod A002024(n), where A002024 is "n appears n times": 1, 2, 2, 3, 3, 3, ...
+A093995	tablamb	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n*n)		n^2 repeated n times, triangle read by rows.
+A100470	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : n.toString().length() }	(n, k) -> ZV(n)		n appears A055642(n) times (appearances equal number of decimal digits).
+A100921	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : D023416.a(n).intValueExact() }	(n, k) -> ZV(n)		n appears A023416(n) times (appearances equal number of 0-bits).
+A100922	tablamb	0	1	n -> new Integer[] { 1, D000120.a(n).intValueExact() }	(n, k) -> ZV(n)		n appears A000120(n) times (appearances equal number of 1-bits).
+A108229	tablamb	1	1	n -> new Integer[] { 1, Functions.LUCAS.i(n) }	(n, k) -> ZV(n)		n occurs Lucas number L(n) times (A000204).
+A108581	tablamb	1	1	n -> new Integer[] { 1, Functions.TRIANGULAR.i(n) }	(n, k) -> Functions.TRIANGULAR.z(n)		Positive triangular numbers repeated their own number of times.
+A108582	tablamb	1	1	n -> new Integer[] { 1, n*n*n }	(n, k) -> ZV(n)		n appears n^3 times.
+A111650	tablamb	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(2*n)		2n appears n times (n>0).
+A111651	tablamb	1	1	n -> new Integer[] { 1, 3*n }	(n, k) -> ZV(n)		n appears 3n times.
+A111652	tablamb	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(3*n)		3n appears n times.
+A111653	tablamb	1	1	n -> new Integer[] { 1, n }	(n, k) -> DirectSequence.create(new A002808()).a(n)		n-th composite number appears n times.
+A111654	tablamb	1	1	n -> new Integer[] { 1, DirectSequence.create(new A002808()).a(n).intValueExact() }	(n, k) -> ZV(n)		n appears n-th composite number times.
+A111655	tablamb	1	1	n -> new Integer[] { 1, DirectSequence.create(new A002808()).a(n).intValueExact() }	(n, k) -> DirectSequence.create(new A002808()).a(n)		n-th composite number appears n-th composite number times.
+A111656	tablamb	1	1	n -> new Integer[] { 1, DirectSequence.create(new A002808()).a(n).intValueExact() }	(n, k) -> Functions.PRIME.z(n)		n-th prime appears n-th composite number times.
+A111657	tablamb	1	1	n -> new Integer[] { 1, Functions.PRIME.i(n) }	(n, k) -> DirectSequence.create(new A002808()).a(n)		n-th composite number appears n-th prime times.
+A113473	tablamb	1	1	n -> new Integer[] { 1, Z2(n -1).intValueExact() }	(n, k) -> ZV(n)		n repeated 2^(n-1) times.           #
+A115732	tablamb	1	1	n -> new Integer[] { 1, Functions.PRIME.i(n) - n }	(n, k) -> Functions.PRIME.z(n)		n-th prime p(n) repeated (p(n)-n) times.
+A115733	tablamb	1	1	n -> new Integer[] { 1, Functions.PRIME.i(n) - n }	(n, k) -> Functions.PRIME.z(n).-(n)		prime(n)-n, repeated (prime(n)-n) times.
+A130146	tablamb	1	1	n -> new Integer[] { 1, n % 10 }	(n, k) -> ZV(n)		n appears k times, where k = last digit of n.
+A130175	tablamb	1	1	n -> new Integer[] { 1, (2*n - 1) % 10 }	(n, k) -> ZV(2*n - 1)		2n+1 appears (last digit of 2n+1) times .
+A130312	tablamb	1	1	n -> new Integer[] { 1, Functions.FIBONACCI.i(n) }	(n, k) -> Functions.FIBONACCI.z(n)		Each Fibonacci number F(n) appears F(n) times.
+A130821	tablamb	1	1	n -> new Integer[] { 1, 2*n }	(n, k) -> ZV(2*n - 1)		2n-1 appears 2n times.                          #
+A130829	tablamb	1	1	n -> new Integer[] { 1, 2*n }	(n, k) -> ZV(2*n + 1)		2n+1 appears 2n times.                          #
+A130855	tablamb	0	0	n -> new Integer[] { 1, (n & 1) == 0 ? n + 1 : n - 1 }	(n, k) -> ZV(n)		2n appears 2n+1 times, 2n+1 appears 2n times.
+A131506	tablamb	1	1	n -> new Integer[] { 1, 2*n - 1 }	(n, k) -> ZV(2*n + 1)		2n+1 appears 2n-1 times.
+A131507	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : n + 1 }	(n, k) -> ZV(2*n + 1)		2n+1 appears n+1 times.                         #
+A131664	tablamb	1	1	n -> new Integer[] { 1, n }	(n, k) -> Z.TEN.^(n).-(1)./(9)		A string of n 1's repeated n times.
+A132171	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : ZV(3).^(n).intValueExact() }	(n, k) -> ZV(3).^(n)		3^n repeated 3^n times. #
+A133196	tablamb	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n + 2)		n+2 repeated n times.                                   #
+A143502	tablamb	1	2	n -> new Integer[] { 1, Functions.SIGMA0.i(n - 1) }	(n, k) -> ZV(n)		n occurs d(n-1) times.
+A152905	tablamb	0	0	n -> new Integer[] { 0, 2*n + 1 }	(n, k) -> BI(n, k / 2)		Irregular triangle read by rows, numbers in A007318 repeated two times .
+A152906	tablamb	0	0	n -> new Integer[] { 0, 3*n + 2 }	(n, k) -> BI(n, k / 3)		Irregular triangle read by rows, numbers in A007318 repeated three times .
+A152907	tablamb	0	0	n -> new Integer[] { 0, 4*n + 3 }	(n, k) -> BI(n, k / 4)		Irregular triangle read by rows, numbers in A007318 repeated four times .
+A152924	trilamb0	0	(n, k) -> S2(n, k + 1).+(SA(n, k))	nyi to	Triangle read by rows: T(n,k) = Stirling2(n, k+1) + abs(Stirling1(n,k)), 0 <= k <= n.	nonn,tabl	0..58
+A162550	tablamb	0	0	n -> new Integer[] { 1, Functions.CATALAN.i(n) }	(n, k) -> ZV(2*n)		2n repeated C_n times, where C_n = A000108(n) is a Catalan number.
+A162988	tablamb	1	1	n -> new Integer[] { 1, n == 1 ? 1 : Functions.PRIME.i(n - 1) }	(n, k) -> ZV(n)		n appears A008578(n) times.
+A168255	tablamb	1	1	n -> new Integer[] { 1, DirectSequence.create(new A018252()).a(n).intValueExact() }	(n, k) -> ZV(n)		n appears n-th nonprime number times.
+A172414	tablamb	0	0	n -> new Integer[] { 1, 2*n + 1 }	(n, k) -> Functions.CATALAN.z(n)		Triangle read by rows: Catalan number C(n) repeated 2*n+1 times.
+A175944	tablamb	1	1	n -> new Integer[] { 1, n == 1 ? 1 : Functions.PRIME.i(n - 1) }	(n, k) -> n == 1 ? Z.ONE : Functions.PRIME.z(n - 1)		1 appears once, n-th prime p appears p times.
+A177716	tablamb	1	1	n -> new Integer[] { 1, D073124.a(n).intValueExact() }	(n, k) -> Functions.PRIME.z(n)		The k-th prime repeated A073124(k) times, k = 1,2,3...
+A179526	tablamb	0	1	n -> new Integer[] { 1, n == 0 ? 1 : Z.THREE.^(n - 1).intValueExact() }	(n, k) -> n == 0 ? Z.ONE : Z.THREE.^(n).-(1)./(2)		(3^k - 1)/2 appears 3^(k-1) times, k>0.
+A180447	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : 3*n + 1 }	(n, k) -> ZV(n)		n appears 3n+1 times.
+A196872	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : DirectSequence.create(new A007018()).a(n).intValueExact() }	(n, k) -> DirectSequence.create(new A007018()).a(n)		A007018(n) repeated A007018(n) times.
+A213083	tablamb	1	1	n -> new Integer[] { 1, n*n }	(n, k) -> ZV(n).*(n)		Each square n^2 appears n^2 number of times.
+A220104	tablamb	1	1	n -> new Integer[] { 1, n*(n + 1) }	(n, k) -> ZV(n)		k appears k*(k+1) times.
+A227177	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : n*n - n + 1 }	(n, k) -> ZV(n)		n occurs n^2 - n + 1 times.
+A227737	tablamb	1	1	n -> new Integer[] { 1, D005811.a(n).intValueExact() }	(n, k) -> ZV(n)		n occurs as many times as there are runs in binary representation of n.
+A232746	tablamb	1	1	n -> new Integer[] { 1, DirectSequence.create(new A030124()).a(n).intValueExact() }	(n, k) -> ZV(n)		n occurs A030124(n) times; a(n) = one less than the least k such that A005228(k) > n.
+A235963	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : (n + 1)/((n & 1) + 1) }	(n, k) -> ZV(n)		n appears (n+1)/(1 + (n mod 2)) times.
+A236857	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : DirectSequence.create(new A003418()).a(n).intValueExact() }	(n, k) -> ZV(n)		Each n occurs the least common multiple (LCM) of {1, 2, ..., n} (= A003418(n)) times.
+A241920	tablamb	1	1	n -> new Integer[] { 1, n == 1 ? 1 : Functions.PRIME_PI.i(Functions.GPF.i(n)) }	(n, k) -> ZV(n)		After a(1)=1, each n appears A061395(n) times, where A061395 gives the index of the largest prime factor of n.
+A244317	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : DirectSequence.create(new A014138()).a(n).intValueExact() }	(n, k) -> ZV(n)		n occurs A014138(n) times.
+A249728	tablamb	1	1	n -> new Integer[] { 1, n == 1 ? 1 : Functions.PRIME_PI.i(n)}	(n, k) -> ZV(n)		After a(1) = 1 each n appears A000720(n) times.
+A259361	tablamb	0	0	n -> new Integer[] { 1, 2*n + 2 }	(n, k) -> ZV(n)		n occurs 2n+2 times.                                #
+A274093	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : n }	(n, k) -> Z_1(n).*(n)		a(0)=0; thereafter (-1)^n*n appears n times.
+A340619	tablamb	1	1	n -> new Integer[] { 1, D006519.a(n).intValueExact() }	(n, k) -> ZV(n)		n appears A006519(n) times.
+A351846	tablamb	0	0	n -> new Integer[] { 1, 4*n + 1 }	(n, k) -> ZV(n)		Irregular triangle read by rows: T(n,k), n >= 0, k >= 0, in which n appears 4*n + 1 times in row n.
+A370291	tablamb	0	0	n -> new Integer[] { 1, n == 0 ? 1 : Functions.CATALAN.i(n) }	(n, k) -> Functions.TRIANGULAR.z(n)		Triangular number T(n) = A000217(n) occurs C(n) = A000108(n) times.
+---- 2024-05-27 00:21:06
+A083537	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(1) : self.a(n - 1); }	"0,0"		a(0) = a(1) = 0, a(2*n) = a(n)+1, a(2*n+1) = a(n-1).
+A085144	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(1) : self.a(n).negate(); }	"0"		a(0) = 0, a(2*n) = a(n)+1, a(2*n+1) = -a(n).
+A090639	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).*(3) : self.a(n).+(1); }	"0"		a(0) = 0; a(2*n) = 3*a(n), a(2*n+1) = a(n) + 1.
+A090640	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).*(4) : self.a(n).+(1); }	"0"		a(0) = 0; a(2*n) = 4*a(n), a(2*n+1) = a(n) + 1.
+A091829	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(1) : self.a(n).and(Z.ONE); }	"1"		a(1) = 1; a(2*n) = a(n)+1, a(2*n+1) = a(n) mod 2.
+A091830	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(1).and(Z.ONE) : self.a(n*2).+(1); }	"1"		a(1) = 1; a(2*n) = (a(n)+1) mod 2, a(2*n+1) = a(2*n)+1.
+A135586	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(Z2(Integer.bitCount(n))).-(1) : self.a(2*n).*(2); }	"0"		a(2*n) = a(n)+2^A000120(n)-1, a(2*n+1) = 2a(2*n).
+A145865	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n).-(self.a(n + 1)); }	"0,1"		a(2*n) = a(n), a(2*n+1) = a(n) - a(n+1).
+A215673	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(1) : self.a(n).+(self.a(n + 1)).+(1); }	"1"		a(2*n) = a(n)+1, a(2*n+1) = a(n)+a(n+1)+1.
+A228451	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n).+(2*n + 1); }	"0,1"		a(2*n) = a(n), a(2*n+1) = a(n) + 2n + 1, with a(0) = 0, a(1) = 1.
+A233904	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).-(n) : self.a(n).+(n); }	"0"		a(2*n) = a(n) - n, a(2*n+1) = a(n) + n
+A233905	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n).+(n); }	"0"		a(2*n) = a(n), a(2*n+1) = a(n) + n
+A233931	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(n) : self.a(n); }	"0"		a(2*n) = a(n) + n, a(2*n+1) = a(n)
+A274593	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? ZV(n2) : self.a(n).+(2*n + 1); }	"0"		a(2*n+1) = a(n)+2*n+1, otherwise a(n) = n.
+A281185	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(self.a(n + 1)) : self.a(n); }	"0,1,0"		a(2*n) = a(n) + a(n+1) for n > = 2, a(2*n+1) = a(n) for n > = 1.
+A285741	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n).+(Functions.REVERSE.z(10, self.a(n))); }	"1"		a(2*n) = a(n), a(2*n+1) = a(n) + R(a(n)), where R() is the digit reversal.
+A287051	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? Functions.GPF.z(self.a(n)) : self.a(n).+(self.a(n + 1)); }	"0,1"		a(2*n) = gpf(a(n)), a(2*n+1) = a(n) + a(n+1), where gpf(a(n)) is the greatest prime dividing a(n) for a(n) > = 2 and 1 if a(n) = 1 (A006530).
+A287093	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? Functions.SOPF.z(self.a(n)) : self.a(n).+(self.a(n + 1)); }	"0,2"		a(2*n) = sopf(a(n)), a(2*n+1) = a(n) + a(n+1), where sopf() is the sum of the distinct prime factors (A008472).
+A288310	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).-(self.a(n - 1)) : SU(0, n, k -> self.a(n - k)); }	"1,1"		a(2*n) = a(n) - a(n-1), a(2*n+1) = Sum	{k = 0..n} a(n-k).
+A292575	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(self.a(n + 1)) : self.a(n + 1).+(self.a(n - 1)); }	"1,2,3"		a(2*n) = a(n) + a(n+1), a(2*n-1) = a(n) + a(n-2).
+A293976	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1).+(self.a(n)) : self.a(2*n).+(1); }	"0"		a(2*n) = a(2*n-1) + a(n) for n > = 1, a(2*n+1) = a(2*n) + 1
+A294044	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n + 1).+(self.a(n).*(2)) : self.a(n + 1).+(self.a(n)); }	"0,1,1"		a(2*n) = 2*a(n) + a(n+1), a(2*n+1) = a(n) + a(n+1).
+A303404	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1).-(self.a(n).*(2)) : ZV(n).-(self.a(n).*(2)); }	"0,1"		a(2*n) = a(2*n-1) - 2*a(n), a(2*n+1) = n - 2*a(n).
+A309057	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).*(3) : self.a(n); }	"1"		a(2*n) = 3*a(n), a(2*n+1) = a(n).
+A309074	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).*(4) : self.a(n); }	"1"		a(2*n) = 4*a(n), a(2*n+1) = a(n).
+A318190	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1).-(self.a(n).*(2)) : ZV(2*n).-(self.a(2*n)); }	"0,1"		a(2*n) = a(2*n-1) - 2*a(n), a(2*n+1) = 2*n - a(2*n).
+A319010	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : ZV(n).-(self.a(n)).*(2); }	"0,1"		a(2*n) = a(2*n-1), a(2*n+1) = 2*(n - a(n)).
+A319863	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(self.a(n + 1)).+(n) : self.a(n).+(self.a(n - 1)).+(1); }	"1,1,2"		a(2*n) = a(n) + a(n+1) + n (n > 1), a(2*n+1) = a(n) + a(n-1) + 1 (n > = 1) with a(0) = a(1) = 1 and a(2) = 2.
+A322305	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(self.a(n - 1)) : (!self.a(n).testBit(0) ? self.a(n)./(2) : self.a(n).*(3).-(1)./(2)); }	"1,0"		a(2*n) = a(n) + a(n-1); if a(n) is even then a(2*n+1) = a(n)/2, but if a(n) is odd then a(2*n+1) = (3a(n)-1)/2
+A325055	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n - 1).+(self.a(n)) : self.a(n + 1).-(self.a(n)); }	"0,1"		a(2*n) = a(n-1) + a(n), a(2*n+1) = a(n+1) - a(n).
+A335393	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(5) : self.a(n).*(3); }	"1"		a(2*n) = a(n) + 5, a(2*n+1) = a(n) * 3.
+A347205	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(self.a(n - (1 << ZUtils.valuation(ZV(n), Z.TWO)))) : self.a(n); }	"1"		a(2*n+1) = a(n), a(2*n) = a(n) + a(n - 2^A007814(n))
+A354158	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n + 1).+(n); }	"-1"		a(2*n) = a(n), a(2*n+1) = a(n+1) + n.
+A359312	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? Functions.SIGMA0.z(self.a(n)) : Functions.SIGMA0.z(self.a(n)).+(1); }	"1"		a(2*n) = A000005(a(n)), a(2*n + 1) = A000005(a(n)) + 1.
+A360724	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n).+(self.a(n - 1).*(3)) : self.a(n).*(3).+(self.a(n - 1)); }	"0,1"		a(2*n) = a(n) + 3*a(n-1); a(2*n+1) = 3*a(n) + a(n-1)
+A361734	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n*2 - 1).+(self.a(n*2 - 2)); }	"1,0"		a(2*n) = a(n) and a(2*n+1) = a(2*n-1) + a(2*n-2)
+A361735	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n*2 - 1).+(self.a(n*2 - 2)); }	"0,1"		a(2*n) = a(n) and a(2*n+1) = a(2*n-1) + a(2*n-2)
+A361736	multrar	1	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n*2).+(self.a(n*2 - 1)); }	"2,1"		a(2*n) = a(n) and a(2*n+1) = a(2*n) + a(2*n-1)

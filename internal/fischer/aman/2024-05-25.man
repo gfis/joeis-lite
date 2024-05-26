@@ -1,0 +1,114 @@
+---- 2024-05-25 13:15:17
+---- 2024-05-25 13:27:22
+---- 2024-05-25 14:21:03
+A082508	filter	1	new A001223()	(n, v) -> v.bitCount() == 1	Differences between consecutive primes that are powers of 2 in order of their appearance. Differences not powers of 2 are deleted from A001223.
+A082509	filter	1	new A001223()	(n, v) -> v.bitCount() != 1	Differences between consecutive primes being not powers of 2 in order of their appearance. Differences which are powers of 2 are omitted from A001223.
+A084290	filter	1	new A001223()	(n, v) -> D001223.a(n + 1).equals(Z.TWO)	Difference between consecutive primes arising before difference (d=2) between twin primes. In A001223, terms before those ones which equal to two.
+A084291	filter	1	new A001223()	(n, v) -> D001223.a(n - 1).equals(Z.TWO)	Difference between consecutive primes arising after difference (d=2) between twin primes. In A001223, terms following those which are equal to two.
+A091631	simtraf	1	new A091628()	v -> Functions.NEXT_PRIME.z(v.+(1))	a(n) = A007918(A091628(n)+1).
+A117838	filter	1	new A000040()	(i, v) -> D001223.a(i).mod(18) == 0	{A000040(i): 18 | A001223(i), any i}. - _R. J. Mathar_, Apr 14 2008
+A161913	filnum	1	1	k -> D001223.a(k.compareTo(Functions.SIGMA0.z(k)) != 0	Numbers k such that A001223(k) <> A000005(k).
+A162188	filnum	1	1	k -> D001223.a(k.compareTo(Functions.SIGMA0.z(k)) > 0	Numbers k such that A001223(k) > A000005(k).
+A162189	filnum	1	1	k -> D001223.a(k.compareTo(Functions.SIGMA0.z(k)) < 0	Numbers k such that A001223(k) < A000005(k).
+A163111	filter	1	new A000040()	(i, p) -> D001223.a(i).compareTo(ZV(18)) > 0 && D001223.a(i - 1).compareTo(ZV(18)) > 0	{A000040(i) : A001223(i) > 18 and A001223(i-1) > 18}. - R. J. Mathar, Jul 27 2009
+A163112	filter	1	new A000040()	(i, p) -> D001223.a(i).compareTo(ZV(20)) > 0 && D001223.a(i - 1).compareTo(ZV(20)) > 0	{A000040(i) : A001223(i) > 20 and A001223(i-1) > 20}. - _R. J. Mathar_, Jul 27 2009
+A185382	lambdan	0	n -> SU(1, n - 1, j -> D001223.a(j + 1).*(j))	a(n) = Sum_{j=1..n-1} j*A001223(j+1). - _Robert Israel_, Mar 26 2015
+A227064	filter	1	new A000040()	(k, p) -> k >= 3 && D001223.a(k - 2).equals(D001223.a(k + 1))	Prime(k) such that A001223(k-2) = A001223(k+1).
+A274826	lambdan	0	n -> RU(1, n, i -> new Q(Z.ONE, D001223.a(i))).den()	a(n) = Denominator(Sum_{i=1..n} 1/A001223(i)).
+A274827	lambdan	0	n -> RU(1, n, i -> new Q(Z.ONE, D001223.a(i))).num()	a(n) = Numerator  (Sum_{i=1..n} 1/A001223(i)).
+A274980	lambdan	1	n -> RU(1, n, i -> new Q(Z_1(i - 1), D001223.a(i))).den()	a(n) = Denominator(Sum_{i=1..n} ((-1)^(i - 1))/A001223(i)).
+A275056	lambdan	1	n -> RU(1, n, i -> new Q(Z_1(i - 1), D001223.a(i))).num()	a(n) = Numerator  (Sum_{i=1..n} ((-1)^(i - 1))/A001223(i)).
+A303278	lambdan	1	n -> { final Z rad = Jaguar.factor(n).squareFreeKernel(); return Functions.TAU.z(ZV(n)./(rad)).^(rad); }	a(n) = tau(n/rad(n))^rad(n) = A005361(n)^A007947(n).
+A333697	lambdan	1	n ->  SD(n, d -> A023900.a(n/d).*(Functions.PARTITIONS.z(d)))	a(n) = Sum_{d|n} A023900(n/d) * D000041(d).
+A353507	dirtral	1	new A005361()	new A181819()	(n, v) -> (n == 1) ? Z.ZERO : v	= A003963(A181819(A181819(n))).
+---- 2024-05-25 15:08:44
+A134735	lambdan	1	n -> (n & 1) == 1 ? Functions.PRIME.z((n + 1)/2) : D001223.a(n/2)	If n is odd then a(n) = A000040((n+1)/2) else a(n) = A001223(n/2).
+A139141	multraf	0	(self, n) -> self.s(0)./(self.s(1))	"1"	new A139140(), new A001223()	For n>= 1, a(n) = floor(A139140(n)/A001223(n)).
+A140299	lambdan	0	n -> Z.FOUR.^(D001223.a(n + 1))	a(n) = 4^A001223(n+1). - _R. J. Mathar_, Oct 07 2009
+A161782	multraf	1	(self, n) -> SU(self.s(0).intValueExact(), self.s(1).intValueExact(), x -> ZV(x))	""	new A001223(), new A031131()	a(n) = Sum_{x=prime(n+1)-prime(n)..prime(n+2)-prime(n)} x = Sum_{x=A001223(n)..A031131(n)} x.
+A193523	lambdan	1	n -> n == 1 ? Z.ZERO : D001227.a(Functions.SOPF.z(n))	a(1) = 0; for n > 1, a(n) = A001227(A008472(n)). - _Antti Karttunen_, Dec 23 2018
+A243223	simtraf	1	new A243224()	(n, v) -> D001227.a(n).-(1).-(v)	a(n) = d1(n) - 1 - f(n) with d1(n) = number of odd divisors of n (A001227) and f(n) = the number of those odd divisors d of n such that d > 1 and d(1+d/3)/2 <= n <= 3d(d-1)/2. f(n) is in A243224.
+A302707	lambdan	0	n -> D001227.a(n + 1).+(Functions.TAU.z(2*(n + 1))).-(2)		a(n) = tau_{odd}(n+1) + tau(2*(n+1)) - 2, n >= 0, with tau_{odd} = A001227 and tau = A000005.
+A308480	multraf	2	(self, n) -> ZV(n).IPP() ? self.s(0) : self.s(1)	""	new A000225(), new A020639()
+A348623	multrar	1	(self, n) -> D001227.a(self.a(n - 1)).+(self.a(n - 1))	"1"		a(1) = 1; for n > 1 a(n) = a(n-1) + A001227(a(n-1)).
+A294392	multrar	0	(self, n) -> RU(1, n, k -> new Q(D001227.a(k).*(self.a(n - k)).*(k), FA(n - k))).*(FA(n - 1)).num()	"1"	a(0) = 1 and a(n) = (n-1)! * Sum_{k=1..n} k*A001227(k)*a(n-k)/(n-k)! for n > 0.       
+A294458	multrar	0	(self, n) -> RU(1, n, k -> new Q(D001227.a(k).*(self.a(n - k)), FA(n - k))).*(FA(n - 1)).num().negate()	"1"	a(0) = 1 and a(n) = (-1) * (n-1)! * Sum_{k=1..n} A001227(k)*a(n-k)/(n-k)! for n > 0.  
+A294459	multrar	0	(self, n) -> RU(1, n, k -> new Q(D001227.a(k).*(self.a(n - k)).*(k), FA(n - k))).*(FA(n - 1)).num().negate()	"1"	a(0) = 1 and a(n) = (-1) * (n-1)! * Sum_{k=1..n} k*A001227(k)*a(n-k)/(n-k)! for n > 0.
+A188130	filter	0	new A000040()	p -> Z.TWO.pow(p).-(1).mod(p.*(6).+(1)).isZero()	Primes p such that 6p+1 divides the Mersenne number M(p)=A000225(p).
+A128039	filnum	1	1	n -> Z.ONE.-(SU(1, n - 1, k -> D001223.a(k).*(Z_1(k)))).isZero()    	Numbers n such that 1 - Sum{k=1..n-1} A001223(   k)*(-1)^k = 0.
+A324117	simtraf	0	new A156552()	(n, v) -> n == 1 ? Z.ZERO : D001227.a(v)	 Number of odd divisors in A156552(n): a(1) = 0, for n > 1, a(n) = A001227(A156552(n)) = A000005(€322993(n)).
+---- 2024-05-25 16:00:22
+A085542	multrar	1	(self, n) -> D023900.a(n).*(self.a(n - 1))	"1"	a(n+1)/a(n) = A023900(n+1) the reciprocity balance of n+1.
+A111775	simtraf	1	new A001227()	(n, v) -> (n == 1) ? Z.ZERO : v.-((n & 1) == 0 ? Z.ONE : Z.TWO)	If n is even then a(n) = A001227(n)-1 = A069283(n) otherwise a(n) = A001227(n)-2, for n > 1.
+A173743	filnum	1	1	k -> Functions.PHI.z(Functions.TAU.z(k)).equals(Functions.TAU.z(RAD(k)))	Numbers k such that phi(tau(k)) = tau(rad(k)).
+A187731	filnum	1	1	k -> Z.valueOf(k - 1).mod(Jaguar.factor(Functions.PHI.z(k)).squareFreeKernel()).isZero()	Numbers n such that rad(phi(n)) divides n-1.
+A366797	simtraf	0	new A163511()	v -> D001227.a(v)	Number of odd divisors permuted by A163511: a(n) = A001227(A163511(n)).
+A173581	filnum	1	1	k -> Functions.TAU.z(Functions.SIGMA1.z(k)).equals(RAD(k))	Numbers k such that tau(sigma(k)) = rad(k).
+A173582	filnum	1	1	k -> Functions.SIGMA1.z(Functions.TAU.z(k)).equals(RAD(k))	Numbers k such that sigma(tau(k)) = rad(k).
+A173618	filnum	1	1	k -> Functions.TAU.z(Functions.PHI.z(k)).equals(RAD(k))	Numbers k such that tau(phi(k))   = rad(k).
+A173744	filnum	1	1	k -> Functions.TAU.z(Functions.PHI.z(k)).equals(Functions.PHI.z(RAD(k)))	Numbers n such that tau(phi(n))= phi(rad(n))
+A173748	filnum	1	1	k -> Functions.PHI.z(Functions.PHI.z(k)).equals(Functions.SIGMA1.z(RAD(k)))	Numbers k such that phi(phi(k)) = sigma(rad(k)).
+A175200	filnum	1	1	k -> Functions.SIGMA1.z(k).mod(RAD(k)).isZero()	Numbers k such that rad(k) divides sigma(k).
+---- 2024-05-25 18:07:40
+A118380	parmof3	1	A118359	15	14	Primes for which the weight as defined in ?117078 is 15 and the gap as defined in A001223 is 14.
+A118922	parmof3	1	A118359	9	8	Primes for which the weight as defined in ?117078 is  9 and the gap as defined in A001223 is  8.
+A119593	parmof3	1	A118359	7	4	Primes for which the weight as defined in ?117078 is  7 and the gap as defined in A001223 is  4.
+A119594	parmof3	1	A118359	9	4	Primes for which the weight as defined in ?117078 is  9 and the gap as defined in A001223 is  4.
+A119595	parmof3	1	A118359	15	8	Primes for which the weight as defined in ?117078 is 15 and the gap as defined in A001223 is  8.
+A119596	parmof3	1	A118359	11	10	Primes for which the weight as defined in ?117078 is 11 and the gap as defined in A001223 is 10.
+A119597	parmof3	1	A118359	11	6	Primes for which the weight as defined in ?117078 is 11 and the gap as defined in A001223 is  6.
+A127596	filnum	1	1	k -> Z.ONE.+(SU(1, k - 1, i -> D001223.a(i).*(Z_1(i)))).isZero()	Numbers k such that 1 + Sum{i=1..k-1} A001223(   i)*(-1)^i = 0.
+A173746	filnum	1	1	k -> Functions.TAU.z(Functions.TAU.z(k)).equals(RAD(k))	Numbers k such that tau(tau(k))   = rad(k).
+A118924	parmof3	0	A118359	53	52	Primes for which the weight as defined in €117078 is 53 and the gap as defined in A001223 is 52.
+---- 2024-05-25 18:40:51
+A205959	lambdan	1	n -> Functions.OMEGA.i(n^omega(n)/rad(n).
+A226384	filnum	1	1	k -> RAD(Functions.PHI.z(k).compareTo(Functions.PHI.z(RAD(k))) == 0	Numbers k such that rad(phi(k)) = phi(rad(k)).
+A226385	filnum	1	1	k -> RAD(Functions.PHI.z(k).compareTo(Functions.PHI.z(RAD(k))) > 0	Numbers n such that rad(phi(n)) > phi(rad(n)), where rad(n) is the squarefree kernel of n, and phi is Euler's totient function.
+A226386	filnum	1	1	k -> RAD(Functions.PHI.z(k).compareTo(Functions.PHI.z(RAD(k))) < 0	Numbers n such that rad(phi(n)) < phi(rad(n)), where rad(n) is the squarefree kernel of n, and phi is Euler's totient function.
+A229022	lambdan	1	n -> Functions.OMEGA.i(sopf(n) + n/rad(n).
+A238330	filnum	1	1	k -> RAD(Functions.SIGMA1.z(k).equals(RAD(k).*(2))Numbers n such that rad(sigma(n)) = 2*rad(n), where the "radical" of n, rad(n), is A007947 and sigma(n) is the sum of the divisor
+A240502	lambdan	0	n -> Functions.OMEGA.i(rad(n!)/core(n!) = A336643(n!). - _Benoit Cloitre_, Mar 12 2022
+A322965	lambdan	1	n -> RD(n, d -> new Q(Z.ONE, RAD(d))).num()	Numerator of Sum_{d | n} 1/rad(d).
+A322966	lambdan	1	n -> RD(n, d -> new Q(Z.ONE, RAD(d))).den()	Denominat of Sum_{d | n} 1/rad(d) where rad = A007947.
+A351047	lambdan	1	n -> SU(1, n, k -> ZV(n).^(RAD(k)))	a(n) = Sum_{k=1..n} n^rad(k).
+A351411	lambdan	1	n -> Functions.TAU.z(n).-(SD(n, d -> RAD(d).equals(Functions.BIG_OMEGA.z(d).*(Functions.OMEGA.i(d) == 1 ? Z.ONE : Z.ZERO)) ? Z.ONE : Z.ZERO))	a(n) = tau(n) - Sum_{d|n} [rad(d) = Omega(d)*[omega(d) = 1]], where [ ] is the Iverson bracket.
+A359213	filnum	1	1	k -> RAD(k).-(1).IPP()	Numbers k such that rad(k) - 1 is prime.
+A173615	filnum	1	1	k -> Functions.SIGMA1.z(k).mod(RAD(k).square()).isZero()	Numbers n such that rad(n)^2 divides sigma(n).
+A228957	filnum	0	1	k -> ZV(k)./(RAD(k)).compareTo(Functions.GPF.z(k)) > 0	Numbers n such that n/rad(n) is greater than the greatest prime dividing n.
+A336554	filnum	1	1	k -> (k & 1) == 1 && Functions.SIGMA1.z(k).mod(RAD(k)).isZero()	Odd numbers k such that rad(k) divides sigma(k).
+---- 2024-05-25 19:11:16
+A229027	filnum	1	2	k -> ZV(k)./(RAD(k)).compareTo(Functions.GPF.z(k)) == 0	Numbers n such that n/rad(n) equals the greatest prime dividing n.
+A303278	lambdan	1	n -> Functions.TAU.z(ZV(n)./(RAD(n))).^(RAD(n))	a(n) = tau(n/rad(n))^rad(n)
+A345264	lambdan	1	n -> SD(n, d -> Functions.MOEBIUS.z(n/d).^(2).*(RAD(d)))	a(n) = Sum_{d|n} rad(d) * mu(n/d)^2.
+A345265	lambdan	1	n -> SD(n, d -> ZV(n).^(RAD(d)))	a(n) = Sum_{d|n} n^rad(d).rad(n))^rad(n) = A005361(n)^A007947(n).
+A359059	filnum	1	1	k -> RAD(k).+(Functions.PHI.z(k)).+(Functions.DEDEKIND_PSI.z(k)).mod(3) == 0	Numbers k such that phi(k) + rad(k) + psi(k) is a multiple of 3.
+---- 2024-05-25 19:20:51
+A073118	lambdan	1	n -> SU(1, n, k -> Functions.SOPF.z(k).*(Functions.PARTITIONS.z(n - k)))	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D008472,D000041
+A073119	lambdan	1	n -> SU(1, n, k -> D007814.a(k).*(Functions.PARTITIONS.z(n - k)))	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D007814,D000041
+A165559	lambdan	2	n -> PR(2, n, k -> D003415.a(k))	a(n)=Product_{k=(\d+),n}Annn(k)	2	D003415
+A248734	lambdan	0	n -> Functions.PARTITIONS.z(ZV( 7).^(n))	a(n)=Annn((\d+)^n)	7	D000041
+A321514	lambdan	1	n -> PR(1, n, k -> D001055.a(k))	a(n)=Product_{k=(\d+),n}Annn(k)	1	D001055
+A342228	lambdan	0	n -> SU(1, n, k -> D035316.a(k).*(Functions.PARTITIONS.z(n - k)))	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D035316,D000041
+A342229	lambdan	0	n -> SU(1, n, k -> D113061.a(k).*(Functions.PARTITIONS.z(n - k)))	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D113061,D000041
+A342230	lambdan	0	n -> SU(1, n, k -> D001511.a(k).*(Functions.PARTITIONS.z(n - k)))	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D001511,D000041
+A073119	lambdan	0	n -> SU(1, n, k -> D007814.a(k).*(Functions.PARTITIONS.z(n - k)))	a(n)=Sum_{k=(\d+),n}Annn(k)*Annn(n-k)	1	D007814,D000041
+---- 2024-05-25 21:56:09
+---- 2024-05-25 22:34:22
+A115591	filter	1	new A000040().skip(1)	p -> { final Z pm1 = p.-(1); return pm1.mod().isZero() && Functions.ORDER.z(2, p).equals(pm1./( 2))
+A152307	filter	1	new A000040().skip(1)	p -> { final Z pm1 = p.-(1); return pm1.mod().isZero() && Functions.ORDER.z(2, p).equals(pm1./( 7))
+A152308	filter	1	new A000040().skip(1)	p -> { final Z pm1 = p.-(1); return pm1.mod().isZero() && Functions.ORDER.z(2, p).equals(pm1./( 8))
+A152309	filter	1	new A000040().skip(1)	p -> { final Z pm1 = p.-(1); return pm1.mod().isZero() && Functions.ORDER.z(2, p).equals(pm1./( 9))
+A152310	filter	1	new A000040().skip(1)	p -> { final Z pm1 = p.-(1); return pm1.mod().isZero() && Functions.ORDER.z(2, p).equals(pm1./(10))
+A152311	filter	1	new A000040().skip(1)	p -> { final Z pm1 = p.-(1); return pm1.mod().isZero() && Functions.ORDER.z(2, p).equals(pm1./(11))
+A163780	filnum	1	1	n -> n % 4 == 3 && ZV(2*n + 1).IPP() && Functions.ORDER.z(2, ZV(2*n + 1)).equals(ZV(n)
+---- 2024-05-25 23:18:41
+A104298	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1).+(1)./(2))	"15"	a(n) = prime((a(n-1) + 1)/2), a(1)=15.
+A107327	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1).+(self.a(n - 2)))	"2,3"	a(n) = prime(a(n-1) + a(n-2)); a(1) = 2; a(2) = 3.
+A115658	multrar	1	(self, n) -> Functions.PRIMORIAL_COUNT.z(self.a(n - 1))	"1"	a(n) = prime(a(n-1))# = prod(k=1, a(n-1), prime(k)) = A002110(a(n-1)) for n >= 2; a(1) = 1.
+A225504	multrar	0	(self, n) -> Functions.PRIME.z(self.a(n - 1).+(self.a(n - 2))./(2))	"3,5"	a(n) = prime((a(n-1) + a(n-2)) / 2) for n>1, with a(0) = 3, a(1) = 5.
+A336236	multrar	1	(self, n) -> Functions.PRIME.z(n - 2).-(self.a(n - 2))	"1,1"	a(n) = prime(n-2) - a(n-2) for n > 2, starting with a(1)=1, a(2)=1.
+A336554	filnum	1	1	k -> (k & 1) == 1 && Functions.SIGMA1.z(k).mod(RAD(k)).isZero()	Odd numbers k such that rad(k) divides sigma(k).
+A337723	multrar	1	(self, n) -> Functions.PRIME.z(n - 2).-(new Q(self.a(n - 2), Z.TWO).ceiling())	"0,1"	a(n) = prime(n-2) - ceiling(a(n-2)/2); a(1)=0, a(2)=1.
+A337724	multrar	1	(self, n) -> Functions.PRIME.z(n - 2).-(new Q(self.a(n - 2), Z.TWO).floor())	"0,1"	a(n) = prime(n-2) - floor(a(n-2)/2); a(1)=0, a(2)=1.
+A337823	multrar	1	(self, n) -> Functions.PRIME.z(n - 1).-(self.a(n - 1)./(2))	"1"	a(n) = prime(n-1) - floor(a(n-1)/2); a(1)=1.
+A356084	multrar	1	(self, n) -> Functions.PRIME.z(self.a(n - 1)).^(4)	"1"	a(n) = prime(a(n-1))^4, for n>=2.

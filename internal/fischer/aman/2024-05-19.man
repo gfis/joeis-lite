@@ -1,0 +1,58 @@
+---- 2024-05-25 23:18:43
+
+
+
+#
+#
+#
+#A070866	multrar	0	(self, n) ->  Functions.NEXT_PRIME.z(self.a(n - 1).*(2).-(self.a(n - 2)))	"2,3"	a(n) = A007918(2*a(n-1) - a(n-2))
+#A130642	filnum	1	1	n -> (n & 1) == 0 && Z.ONE.+(SU(1, n/2, k -> D001223.a(2*k - 1).*(Z_1(k)))).isZero()	Numbers n such that 1 + Sum{k=1..n/2} A001223(2k-1)*(-1)^k = 0.
+#A130643	filnum	1	1	n -> (n & 1) == 0 && Z.ONE.-(SU(1, n/2, k -> D001223.a(2*k - 1).*(Z_1(k)))).isZero()	Numbers n such that 1 - Sum{k=1..n/2} A001223(2k-1)*(-1)^k = 0.
+#A143420	rowsum	2	new A373101()	Row sums of triangle Annnnnn
+#A157968	simtraf	0	new A141468()	v -> Z.TWO.pow(v).-(1)	2^n - 1 (A000225) where n is nonprime number (A141468).
+#A173615	filnum	1	1	k -> Functions.SIGMA1.z(k).mod(RAD(k).square()).isZero()	Numbers n such that rad(n)^2 divides sigma(n).
+#A173617	filnum	1	1	k -> Functions.PHI.z(Functions.TAU.z(k)).equals(RAD(k))	Numbers n such that phi(tau(n))   = rad(n)
+#A228957	filnum	0	1	k -> ZV(k)./(RAD(k)).compareTo(Functions.GPF.z(k)) > 0	Numbers n such that n/rad(n) is greater than the greatest prime dividing n.
+#A229027	filnum	0	1	k -> ZV(k)./(RAD(k)).compareTo(Functions.GPF.z(k)) == 0	Numbers n such that n/rad(n) equals the greatest prime dividing n.
+#A291216	filter	0	new RecordSequence(0, new A000931())	v -> Predicates.SQUARE.is(v)	Common terms of A000931 and A000290.
+#A291673	filter	0	new RecordSequence(0, new A000931())	v -> Predicates.FIBONACCI.is(v)	Common terms of A000931 and A000045.
+#A303278	lambdan	0	n -> SD(n, d -> ZV(d).^(RAD(d)))	a(n) = tau(n%N A345263 a(n) = Sum_{d|n} d^rad(d).
+#A345264	lambdan	0	n -> SD(n, d -> Functions.MOEBIUS.z(n/d).*(RAD(d)))	a(n) = Sum_{d|n} rad(d) * mu(n/d)^2.
+#A345265	lambdan	0	n -> SD(n, d -> ZV(n).^(RAD(d)).*(RAD(n))).^(RAD(n))	a(n) = Sum_{d|n} n^rad(d).rad(n))^rad(n) = A005361(n)^A007947(n).
+#A365161	simtraf	0	new A059305()	v -> D001223.a(v.-(1))	a(n) = A001223(A059305(n)-1). - _Michel Marcus_, Aug 25 2023
+#A373101	tablamb	2	2	n -> new Integer[] {1, n - 1}	(n, k) -> BI(n, k).^(3).-(BI(n, k))./(6)
+%F A078691 n such that A001223(n)=A007913(n)
+%F A079638 T(n, k) = Sum_{i=k..n} |A008297(n, i)| * |A008275(i, k)|.
+%F A079639 T(n, k) = Sum_{i=k..n} A008275(n, i) * |A008297(i, k)|.
+%F A079640 T(n, k) = Sum_{i=k..n} |A008275(n, i)| * |A008297(i, k)|.
+%F A079642 T(n, k) = Sum_{i=k..n} |A008275(n, i)| * A008275(i, k).
+%F A080417 abs(T(n,k)) = A008277(n,k). - _Joerg Arndt_, May 02 2021
+%F A081414 a(n)=A006530[A001223(A000079(n)]=A081412(2^n)=A006530[A074325(n)]
+%F A096501 For n > 2, a(n) = A010051(n) * A001223(A000720(n)-1) = A136548(1+n)-A136548(n). - _Antti Karttunen_, Jan 03 2019
+%F A100375 a(n) = A001223(n) / A006519(A001223(n)).
+%F A109578 a(n) = (A010051(1+n) * A001223(n)). - _Antti Karttunen_, Jan 03 2019
+%N A079639 Matrix product of Stirling1-triangle A008275(n,k) and unsigned Lah-triangle |A008297(n,k)|.
+%N A079640 Matrix product of unsigned Stirling1-triangle |A008275(n,k)| and unsigned Lah-triangle |A008297(n,k)|.
+%N A079642 Matrix product of unsigned Stirling1-triangle |A008275(n,k)| and Stirling1-triangle A008275(n,k).
+%N A088729 Matrix product of Stirling2-triangle A008277(n,k) and unsigned Lah-triangle |A008297(n,k)|.
+%N A088814 Matrix product of unsigned Lah-triangle |A008297(n,k)| and Stirling2-triangle A008277(n,k).
+%N A094900 a(n) = floor( prime(n-1)*A036263(n-2)/ A001223(n-1)).
+%N A227843 Numbers n such that the binary XOR of the divisors of n (€178910(n)) is a binary repunit (A000225).
+%N A235490 Numbers such that none of their prime factors share common 1-bits in the same bit-position and when added (or "ored" or "xored") together, yield a term of A000225 (a binary "repunit").
+%N A320875 Least d > 0 such that both Q = M + 2d and R = M + (M^2-1)/(Q-M) are prime, where M = 2^n - 1 = A000225(n), or 0 if there is no such d.
+%N A371081 Triangle read by rows, (2, 2)-Lah numbers.      nonn,tabl       2..37   nyi     _Aleks Zigon Tankosic_
+%N A371259 Triangle read by rows, (2, 3)-Lah numbers.      nonn,tabl       3..31   nyi     _Aleks Zigon Tankosic_
+%N A371277 Triangle read by rows, (3, 2)-Lah numbers.      nonn,tabl       2..37   nyi     _Aleks Zigon Tankosic_
+%N A371488	rowsum	0	new A371081()	2..18   nyi     _Aleks Zigon Tankosic_
+%N A371489	rowsum	0	new A371259()	3..18   nyi     _Aleks Zigon Tankosic_
+%N A372208 Triangle read by rows, (3, 3)-Lah numbers.      nonn,tabl,new   3..38   nyi     _Aleks Zigon Tankosic_
+A082454	multrar	0	(self, n) -> Functions.PRIME.z(n)	"1,1"	a(n) = prime(n) + prime(n-1) - a(n-1) with a(0) = a(1) = 0.
+A082455	multrar	0	(self, n) -> Functions.PRIME.z(n)	"1,1"	a(n) = prime(n) + prime(n-1) + a(n-1), a(0) = 0, a(1) = 4.
+A082456	multrar	0	(self, n) -> Functions.PRIME.z(n)	"1,1"	a(n) = prime(n) + prime(n-1) - a(n-1), with a(0)=0, a(1)=127, and prime(i) is the i-th prime.
+A086912	multrar	0	(self, n) -> Functions.PRIME.z(self.a(n - 1)).+(Functions.PRIME.z(n).-(self.a(n - 1)).abs())	"1,1"	a(n) = prime(a(n-1)) + abs(prime(n)-a(n-1)).
+A104297	multrar	0	(self, n) -> Functions.PRIME.z(self.a(n - 1).+(1)./(2))	"24"	a(n) = prime((a(n-1) + 1)/2), a(1)=21.
+A146887	multrar	0	(self, n) -> Functions.PRIME.z(n)	"1,1"	a(n) = prime(n)*a(n-1) - a(n-2).
+A291933	multrar	0	(self, n) -> Functions.PRIME.z(n)	"1,1"	a(n) = prime(n) + a(n-1) mod 10, where a(0) = 0.
+A356082	multrar	0	(self, n) -> Functions.PRIME.z(self.a(n - 1)).^(2)	"1"	a(n) = prime(a(n-1))^2, for n>=2.
+A356083	multrar	0	(self, n) -> Functions.PRIME.z(self.a(n - 1)).^(3)	"1"	a(n) = prime(a(n-1))^3, for n>=2.
+A359059	filnum	1	1	k -> RAD(k).+(Functions.GPF.z(k)).+(Functions.GPF.z(k)).mod(3) == 0	Numbers k such that phi(k) + rad(k) + psi(k) is a multiple of 3.

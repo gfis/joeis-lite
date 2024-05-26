@@ -1,0 +1,8 @@
+---- 2024-05-25 22:34:24
+A163777	filnum	1	1	n -> n % 2 == 0 && ZV(2*n + 1).IPP() && Functions.ORDER.z(2, ZV(2*n + 1)).equals(ZV(2*n))
+A163779	filnum	1	1	n -> n % 4 == 1 && ZV(2*n + 1).IPP() && Functions.ORDER.z(2, ZV(2*n + 1)).equals(ZV(2*n))
+A163781	filnum	1	1	n -> n % 4 >= 2 && ZV(2*n + 1).IPP() && Functions.ORDER.z(2, ZV(2*n + 1)).equals(ZV((n % 1) == 1 ? n : 2*n))
+A277049	filnum	1	1	n -> n != 5 && ZV(n).IPP() && Functions.ORDER.z(5, n).IPP()	is(n) = n!=5 && ispseudoprime(n) && ispseudoprime(znorder(Mod(5, n))) \\ _Felix Fröhlich_, Nov 01 2016
+A282902	arrlamb	1	1	1	1	(n, k) -> Functions.ORDER.z(2, Functions.PRIME.z(n).^(k))	a(n, k) = znorder(Mod(2, prime(n)^k))
+A298827	lambdan	1	n -> Functions.ORDER.z( 3, Z.THREE.^(n).+(2))
+A302141	lambdan	1	n -> Functions.ORDER.z(16, ZV(2*n + 1))

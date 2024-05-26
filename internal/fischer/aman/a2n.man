@@ -1,0 +1,57 @@
+---- 2024-05-27 00:21:08
+
+
+
+%N A073891	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"1"    		a(2*n) = a(2*n-1) + c(n) and a(2*n+1) = a(2*n) - p(n), where c(n) = A002808(n) and p(n) = A000040(n) are the n-th composite and n-th prime numbers, respectively.
+%N A073892	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"1"    		a(2*n) = a(2*n-1) + p(n) and a(2*n+1) = a(2*n) - c(n), where p(n) = A000040(n) and c(n) = A002808(n) are the n-th composite and n-th prime numbers, respectively.
+%N A099735	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"1"    		a(2*n) = a(2*n-1) / a(2*n-2); a(2*n+1) = a(2*n) + a(2*n-1); a(0) = 1; a(1) = 1.
+%N A077753	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"2"    		a(2*n) = a(2*n-1)*a(2*n-2), a(2*n+1) = a(2*n-1) + a(2*n).
+%N A091960	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"1"    		a(2*n) = a(2*n-1)+(a(n)mod 2), a(2*n+1) = a(2*n)+1.
+%N A109671	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = a(n), a(2*n+1) is the smallest positive number such that |a(2*n+1)-a(2*n-1)| = a(n).
+%N A075825	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"2"    		a(2*n) = |a(n)-a(n-1)|, a(2*n+1) = a(n)+a(n-1).
+%N A086449	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n+1) = a(n), a(2*n) = a(n) + a(n-1) + ... + a(n-2^m) + ... where a(n) = 0 for n < 0.
+%N A086450	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n+1) = a(n), a(2*n) = a(n) + a(n-1) + ... + a(n-m) + ... where a(n<0) = 0.
+%N A101261	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n-1) = 1; a(2*n) = a(n)th smallest positive integer not among the earlier terms of the sequence.
+%N A108712	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n-1) = A007376(n) (the almost-natural numbers), a(2*n) = a(n).
+%N A110809	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"3"    		a(2*n) = a(2*n-1)*(a(2*n-1)+1)/2, a(2*n+1) = a(2*n)*(a(2*n)-1)/2.
+%N A116529	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n + 1) = a(n), a(2*n + 2) = 2*a(n) + a(n-1).
+%N A116623	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = a(n)+A000079(A000523(2n)), a(2*n+1) = 3*a(n) + A000079(A000523(2n+1)+1).
+%N A127973	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A060632(n); a(2*n+1) = A048896(n)/2.
+%N A135564	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1,3,-1,-2,-3,4,2"   		a(2*n) = a(2*n-2) - (a(n) - 2*a(n-1) + a(n-2)) for n > 2, a(2*n+1) = a(2*n) - (a(n-2) - 2*a(n-3) + a(n-4)), for n > 3
+%N A139145	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = a(n)^2, a(2*n+1) = a(n)*(a(n)+1).
+%N A178774	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = 3*a(n), a(2*n+1) = a(n) + a(n-1), with a(0) = a(1) = 1.
+%N A214126	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = a(n-1)+a(n) and a(2*n+1) = a(n+1) for n> = 1, with a(0) = a(1) = 1.
+%N A214127	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = a(n-1) + a(n) and a(2*n+1) = a(n+1) for n> = 1, with a(0) = 1, a(1) = 2.
+%N A215675	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"2,2"  		a(2*n+1) = a(n)+1, a(2*n+2) = a(n)+a(n+1)+1
+%N A225825	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A001896(n). a(2*n+1) = (-1)^n*A110501(n+1).
+%N A233276	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1"  		a(2*n) = A005187(1+a(n)), a(2*n+1) = A055938(a(n)).
+%N A233278	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1"  		a(2*n) = A055938(a(n)), a(2*n+1) = A005187(1+a(n)).
+%N A243344	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A013929(a(n)), a(2*n+1) = A005117(1+a(n)).
+%N A243346	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A005117(1+a(n)), a(2*n+1) = A013929(a(n)), where A005117 are squarefree and A013929 are nonsquarefree numbers.
+%N A243500	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A003961(A048673(n)), a(2*n-1) = 2 * A245448(n).
+%N A244319	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A003961(1+a(A064989(2n-1))), a(2*n+1) = 1+A003961(a(A064989(2n+1)-1)).
+%N A252463	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = n, a(2*n+1) = A064989(2n+1); shift the even numbers one bit right, shift the prime factorization of odd numbers one step towards smaller primes.
+%N A269848	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A065090(1+a(n)), a(2*n+1) = A000040(a(A064989(2n+1))).
+%N A274576	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0"    		a(2*n) = floor(n/2), a(2*n+1) = a(n), a(0) = 0.
+%N A274716	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n+1) = a(2*floor(n/2)+1) + n, a(2*n) = a(n), for n> = 1 with a(1) = 0.
+%N A276147	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n+1) = 2n+1, a(2*n) = A053669(2n) * a(A111701(2n)).
+%N A279342	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1,2"  		a(2*n) = A055938(a(n)), a(2*n+1) = A005187(a(n)).
+%N A279344	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A005187(a(n)), a(2*n+1) = A055938(a(n)).
+%N A283187	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1"  		a(2*n) = 2*a(n), a(2*n+1) = a(n) + (-1)^a(n+1).
+%N A283976	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A002487(n), a(2*n+1) = A002487(n) OR A002487(n+1), where OR is bitwise-or (A003986).
+%N A283977	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n) = A002487(n), a(2*n+1) = A002487(n) XOR A002487(n+1), where XOR is bitwise-xor (A003987).
+A283978	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? Z.ZERO : D002487.a(n).and(D002487.a(n + 1)); }	"0"    		a(2*n) = 0, a(2*n+1) = A002487(n) AND A002487(n+1), where AND is bitwise-and (A004198).
+%N A285332	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1,2"  		a(2*n) = A019565(a(n)), a(2*n+1) = A065642(a(n)).
+%N A286298	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1"  		a(2*n) = a(n) + 1 + (n mod 2), a(2*n+1) = a(n) + 2 - (n mod 2).
+%N A287475	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1"  		a(2*n) = a(n), a(2*n+1) = a(n-a(n)) + a(n-a(n+1)).
+%N A287476	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1,1"  		a(2*n) = a(n-a(n)), a(2*n+1) = a(n-a(n)) + a(n-a(n+1)).
+%N A287477	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1"  		a(2*n) = n - a(a(n)), a(2*n+1) = a(n-a(n)) + a(n-a(n+1)).
+%N A287597	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1"  		a(2*n) = n - a(a(n)), a(2*n+1) = a(a(n)) + a(a(n+1)).
+%N A287601	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1,1"  		a(2*n) = n - a(a(n)), a(2*n+1) = a(a(n)) + a(n-a(n)).
+%N A287730	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0"    		a(2*n) = A287729(n), a(2*n+1) = A287729(n) + A287729(n+1).
+%N A305299	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0,1,2"		a(2*n-1) = n - 2*a(n-1) - 1, a(2*n) = a(2*n-1) - a(n).
+A332657	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1).*(Functions.PRIME.z(2*n + 1)) : self.a(2*n + 2).*(Functions.PRIME.z(2*n)); }	"5,25"    		a(2*n) = a(2*n-1) * prime(2n+1) and a(2*n-1) = a(2*n) + prime(2n-2) for n > = 1.
+A332659	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1).+(Functions.PRIME.z(2*n + 1)) : self.a(2*n + 2).+(Functions.PRIME.z(2*n)); }	"6,11"    		a(2*n) = a(2*n-1) + prime(2n+1) and a(2*n-1) = a(2*n) * prime(2n-2) for n > = 1.
+%N A332660	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"1"    		a(2*n+1) = a(2*n) * F(2n+2), a(2*n+2) = a(2*n+1) + F(2n+3).
+%N A333591	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n); }	"0"    		a(2*n+1) = a(2*n) + F(2n+2), a(2*n+2) = a(2*n+1) * F(2n+3).
+A342682	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(n + 1).negate() : self.a(n + 1).+(self.a(n)); }	"1"    		a(2*n) = -a(n+1), a(2*n+1) = a(n) + a(n+1).

@@ -1,0 +1,127 @@
+---- 2024-05-24 20:32:49
+A070237	filnum	1	1	k -> { final FactorSequence fs = JF(k); final int mb = fs.mobius(); return fs.core().-(fs.phi()).signum() != 2*mb*mb - 1; }	Numbers n such that the sign of core(n)-phi(n) is not equal to 2*mu(n)^2-1
+A082946	dead	1	dead								Duplicate of A082945.
+A083025	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	""	new A001222(), new A007814(), new A065339()	a(n)=Annn(n)-Annn(n)-Annn(n)
+A085366	filter	1	new A003325()	v -> v.testBit(0) && JF(v).isSemiprime()	Semiprimes that are the sum of two positive cubes. Common terms of A003325 and A046315.
+A086915	trilambn	1	1	1	(n, k) -> BI(n - 1, k - 1).*(Z2(k)).*(FA(n))./(FA(k))	T(n, k) = (-2)^k * A008297(n, k) = 2^k * A105278(n, k).
+A087893	lambdan	1	n -> (n <= 1) ? Z.ZERO : Z2(Functions.OMEGA.i(n)).-(2)
+A088133	lambdan	0	n -> { final String s = String.valueOf(n); return ZV(n % 10 + s.charAt(0) - '0'); }	a(n)=Annn(n)+Annn(n)		A000030,A010879                   A172481	a(n)=Annn(n)+(\d+)^(n-(\d+))
+A105734	dead	1	dead								Duplicate of A076839.
+A107028	rowsum	0	new A107027()	Row sums of number triangle Annnnnn
+A110181	rowsum	0	new A110180()	Row sums of number triangle Annnnnn
+A113825	simtraf	1	new A008351()	v -> ZV(JF(v).omega())	Number of distinct prime factors of Annnnnn(n)
+A117201	rowsum	0	new A117200()	Row sums of number triangle Annnnnn
+A120079	multraf	1	(self, n) -> self.s(0).*(self.s(1))./(n)./(n)	""	new A056220(), new A051418()	a(n) = A056220(n)*A051418(n)/D000290(n). (End)
+A120079	multraf	1	(self, n) -> self.s(0).*(self.s(1))./(n)./(n)	""	new A056220(), new A051418()	a(n) = A056220(n)*A051418(n)/D000290(n). (End)
+A122691	spf	1	Z.TEN.^(6*n - 4).*(9).-(11)./(7)	a(n)=least prime factor of (9*10^m - 11)/7, m=6n - 4
+A126839	simtraf	1	new A000594()	v -> v.compareTo(Z.ZERO) >= 0 ? v.modZ(11) : v.+(ZV(11).^(Functions.DIGIT_LENGTH.i(11, v))).modZ(11)	Ramanujan numbers (Annnnnn) read mod (\d+)
+A128602	rowsum	1	new A128567()	Row sums of triangle Annnnnn
+A130030	lambdan	1	n -> SD(n, d -> A023900.a(n/d).*(Functions.PRIME.z(d)))
+A131492	filnum	1	1	k -> { final Z sum = SD(k, d -> Functions.CARMICHAEL_LAMBDA.z(d)); final Z zk = ZV(k); return !zk.equals(sum) && !sum.equals(Z.ONE) && zk.mod(sum).isZero(); }	n such that (sum_{d|n} A002322(d)) | n.
+A153876	lambdan	0	n -> SU(1 << (n - 1), (1 << n) - 1, i -> Functions.SIGMA0.z(i))	a(n) = Sum_{i=2^(n-1)..2^n-1} sigma_0(i)
+A153876	lambdan	1	n -> SU(1 << (n - 1), (1 << n) - 1, i -> Functions.SIGMA0.z(i))	a(n) = Sum_{i=2^(n-1)..2^n-1} sigma_0(i)
+A158012	multraf	1	(self, n) -> self.s(0).*(self.s(1)).mod(Z.NINE)	"3"	new A000796().skip(1), PREVIOUS	A000796(n)*A000796(n+1) mod 9.
+A158012	multraf	1	(self, n) -> self.s(0).*(self.s(1)).mod(Z.NINE)	"3"	new A000796().skip(1), PREVIOUS	A000796(n)*A000796(n+1) mod 9.
+A179146	filtpos	1	1	new A081119()	v -> v.equals(2)	Numbers n such that Mordells equation y^(\d+)= x^(\d+)+ n has exactly (\d+) integral solutions
+A191898	arrlamb	1	1	1	1	(n, k) -> (n == 1 || k == 1) ? Z.ONE : (n == k ? A023900.a(n) : A023900.a(IntegerUtils.gcd(n, k)))	Symmetric square array read by antidiagonals: T(n,1)=1, T(1,k)=1, T(n,k) = -Sum_{i=1..k-1} T(n-i,k) for n >= k, -Sum_{i=1..n-1} T(k-i,n) for n < k.
+A215200	trilambn	1	1	1	(n, k) -> ZV(KS(n - k, k))
+A231425	trilambn	1	1	1	(n, k) -> A023900.a(IntegerUtils.gcd(n, k))	T(n, k) = A023900(gcd(n,k)) for n >= k.
+A231569	filnum	1	2	n -> (2*n - 2) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && !ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 2n-2, where lambda is the Carmichael lambda function (A002322).
+A231570	filnum	1	2	n -> (3*n - 3) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && !ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 3n-3, where lambda is the Carmichael lambda function (A002322).
+A231571	filnum	1	2	n -> (4*n - 4) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && !ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 4n-4, where lambda is the Carmichael lambda function (A002322).
+A231572	filnum	1	2	n -> (5*n - 5) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && !ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 5n-5, where lambda is the Carmichael lambda function (A002322).
+A231573	filnum	1	2	n -> (6*n - 6) % Functions.CARMICHAEL_LAMBDA.i(n) == 0 && !ZV(n).IPP() 	Composite numbers n such that lambda(n) divides 6n-6, where lambda is the Carmichael lambda function (A002322).
+A232212	dead	1	dead								Duplicate of A232219.
+A245075	lambdan	2	n -> LPF(n).-(new A010888().a(n))	Difference between least prime factor of n and the digital root of n
+A248802	lambdan	0	n -> Functions.LPF.z(Z.TWO.^(Z2(n).+(2)).+(3))
+A254066	filnum	1	1	n -> n % 10 != 0 && Functions.DIGIT_SUM.l(n) == Functions.DIGIT_SUM.l(ZV(n).*(n))	(n)==sumdigits(n^(\d+))	2
+A258967	multrar	1	(self, n) -> Functions.CEIL_SQRT.z(self.a(n - 1).*(self.a(n - 2)).*(self.a(n - 3)))	"1,2,3"		RecurrenceTable[{a[n] == Ceiling[Sqrt[a[n - 1] a[n - 2] a[n - 3]]], a[1] == 1, a[2] == 2, a[3] == 3}, a, {n, 1, 23}]
+A258967	multrar	1	(self, n) -> Functions.CEIL_SQRT.z(self.a(n - 1).*(self.a(n - 2)).*(self.a(n - 3)))	"1,2,3"		RecurrenceTable[{a[n] == Ceiling[Sqrt[a[n - 1] a[n - 2] a[n - 3]]], a[1] == 1, a[2] == 2, a[3] == 3}, a, {n, 1, 23}]
+A279519	dirtraf	0	new A049502()	new A003418()	a(n)= Annnnnn(Annnnnn(n))	m	i
+A280062	dirtraf	0	new A049502()	new A000142()	a(n)= Annnnnn(Annnnnn(n))	m	i
+A280683	multrad	1	(self, n) -> SU(1, n - 1, k -> SEQ.a(k).*(SEQ.a(n - k)))	"0"	new A280710()	ordsum	0
+A283996	lambdir	0	n -> ZV(n).or(SEQ.a(n/2))	new A005187()	a(n) = n OR A005187(floor(n/2))
+A290002	filnum	0	1	k -> Functions.DEDEKIND_PSI.z(Functions.PHI.z(k)).equals(Functions.PHI.z(Functions.DEDEKIND_PSI.z(k)))	Numbers k such that psi(phi(k)) = phi(psi(k)).
+A291175	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(Functions.CARMICHAEL_LAMBDA.z(k - 1).+(Functions.CARMICHAEL_LAMBDA.z(k - 2)))	Numbers k such that lambda(k) = lambda(k-1) + lambda(k-2),
+A291175	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(Functions.CARMICHAEL_LAMBDA.z(k - 1).+(Functions.CARMICHAEL_LAMBDA.z(k - 2)))	Numbers k such that lambda(k) = lambda(k-1) + lambda(k-2),
+A297360	filnum	1	1	k -> { final Z klz = Z.TWO.pow(Functions.CARMICHAEL_LAMBDA.i(k)).-(1); return klz.mod(k) == 0 && klz./(k).IPP(); }	Numbers k such that (2^lambda(k) - 1)/k is prime,
+A305729	filnum	1	1	k -> Functions.PHI.z(k).equals(A023900.a(k)) &&Functions.PHI.z(A023900.a(k)).equals(A023900.a(Functions.PHI.z(k)))
+A306146	filnum	1	1	k -> A023900.a(k).compareTo(Z.ZERO) >= 0 && Functions.PHI.z(A023900.a(k)).equals(A023900.a(Functions.PHI.z(k)))
+A323915	lambdan	0	n ->  A023900.a(D005940.a(n + 1))	a(n) = A023900(D005940(1+n)).
+A327736	invtras	0	new A001511()	0	.
+A333588	multrar	1	(self, n) -> new Q(self.a(n - 1).*(-3), Z.TWO).floor()	"-2"	a(n) = floor(-(3/2)*a(n-1)), a(1)=-2.
+A337022	multraf	1	(self, n) -> self.s(0)./(2).-(self.s(1))	""	new A002110(), new A005867()	a(n)=Annn(n)/(\d+)-Annn(n)	2
+A340374	lambdan	0	n -> { final Z nodd = ZV(n).makeOdd(); return (nodd.-(1)).mod(Functions.CARMICHAEL_LAMBDA.z(nodd)).isZero() ? Z.ONE : Z.ZERO; }	a(n) = [A002322(A000265(n)) divides A000265(n)-1], where [ ] is the Iverson bracket.
+A341858	filnum	1	1	k -> { final Z zk = ZV(k); return Functions.CARMICHAEL_LAMBDA.z(zk.*(k)).equals(zk); }	Numbers k such that psi(k^2) = k, psi = A002322; indices of 1 in €341857.
+A347548	multraf	6	(self, n) -> self.s(0).-((n + 1)/2)	""	new A000009()	a(n)=Annn(n)-floor((n+(\d+))/(\d+))	1,2
+A347915	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354507()
+A351434	lambdan	1	n ->  D003958.a(n).*(A023900.a(n).abs())	a(n) = D003958(n) * |A023900(n)|.
+A353868	filnum	1	1	k -> Functions.DEDEKIND_PSI.z(k).mod(Functions.CARMICHAEL_LAMBDA.z(k)).isZero()	Numbers k such that the Carmichael function A002322(k) divides Dedekind psi A001615(k).
+A353993	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A353992()
+A354503	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354506()
+A354504	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354508()
+A354505	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354509()
+A356025	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356009()
+A356335	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356010()
+A356336	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356297()
+A356337	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356298()
+A356392	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356389()
+A356393	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356390()
+A356394	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356391()
+A356402	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356401()
+A356408	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356406()
+A356409	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356407()
+A356439	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356436()
+A356440	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356437()
+A356458	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A355886()
+A356460	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354863()
+A356461	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356459()
+A356487	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356486()
+A356494	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354843()
+A356495	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354892()
+A356524	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354849()
+A356530	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356529()
+A356590	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356589()
+A356595	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A356600()
+A356596	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354338()
+A356597	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354339()
+A356598	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354340()
+A356599	multrad	0	(self, n) -> SU(1, n, k -> SEQ.a(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"	new A354341()
+A359875	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k).equals(A023900.a(k))	Numbers k such that D002322(k) = A023900(k).
+A359875	filtpos	1	1	new A023900()	(k, v) -> Functions.CARMICHAEL_LAMBDA.z(k).equals(v)	Numbers k such that A002322(k) = A023900(k).
+A366362	trilambn	1	1	1	(n, k) -> SU(1, n, y -> SU(1, n, x -> ZV(x).^(3).-(ZV(x).^(2)).-(ZV(y).^(2)).-(y).gcd(ZV(n)).equals(ZV(k)) ? Z.ONE : Z.ZERO))	T(n,k) = Sum_{y=1..n} Sum_{x=1..n} [GCD(f(x,y), n) = k], where f(x,y) = x^3 - x^2 - y^2 - y.
+A366444	trilambn	1	1	1	(n, k) -> (n % k == 0) ? Functions.PHI.z(n/k).*(A023900.a(k)) : Z.ZERO	T(n,k) = phi(n/k)*A023900(k) if k divides n, T(n,k) = 0 otherwise (n >= 1, 1 <= k <= n).
+A366445	trilambn	1	1	1	(n, k) -> (n % k == 0) ? A023900.a(n/k).*(Functions.PHI.z(k)) : Z.ZERO	T(n,k) = A023900(n/k)*phi(k) if k divides n, T(n,k) = 0 otherwise (n >= 1, 1 <= k <= n).
+A366561	trilambn	1	1	1	(n, k) -> SU(1, n, y -> SU(1, n, x -> ZV(x).^(2).-(ZV(y).^(2)).gcd(ZV(n)).equals(ZV(k)) ? Z.ONE : Z.ZERO))	Triangle read by rows: T(n,k) = Sum_{y=1..n} Sum_{x=1..n} [GCD(f(x,y), n) = k], where f(x,y) = x^2 - y^2.
+A372437	multraf	2	(self, n) -> self.s(0).-(self.s(1))	""	new A001511(), new A055396()	a(n)=Annn(n)-Annn(n)
+A073853	filtpos	1	0	new A079777()	v -> v.equals(ZV(0))	Indices of (\d+)s in Annnnnn	m
+A213085	inverse	0	new A212844()	0	1	1st occurrence of n in Annnnnn
+A246597	filter	0	new A070952()	(n, v) -> Long.bitCount(n + 1) == 1	Annnnnn((\d+)^n-(\d+))
+A341858	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(k*k).equals(ZV(k))	Numbers k such that psi(k^2) = k, psi = A002322; indices of 1 in ?341857.
+A356106	simtraf	1	new A022839()	v -> A001950.a(v)	a(n)= Annnnnn(Annnnnn(n))	m	i
+---- 2024-05-24 21:42:55
+A154790	simtraf	1	new A085544()	v -> Functions.PARTITIONS.z(v)	D000041,
+A175561	dirtraf	3	new A007732()	new A000045()
+A181091	dirtraf	1	new A002997()	new A000045()
+A227183	dirtraf	0	new A056239()	new A243353()
+A253792	dirtraf	0	new A156552()	new A244154()
+A277189	dirtraf	0	new A156552()	new A277324()
+A283484	simtraf	0	new A277324()	v -> D000188.a(v)
+A284267	dirtraf	0	new A056169()	new A277324()
+A284563	dirtraf	0	new A247503()	new A277324()
+A284564	dirtraf	0	new A248101()	new A277324()
+A284573	dirtraf	0	new A046523()	new A277324()
+A286587	dirtraf	0	new A006047()	new A244154()
+A286613	dirtraf	0	new A046523()	new A244154()
+A302790	simtraf	1	new A302024()	v -> Functions.OMEGA.z(v)	D001221,
+A340074	simtraf	1	new A340071()	v -> Functions.MAKE_ODD.z(v)
+A340075	simtraf	1	new A340072()	v -> Functions.MAKE_ODD.z(v)
+A342653	dirtraf	2	new A008683()	new A156552()
+A362376	dirtraf	1	new A363533()	new A000045()
+A369053	dirtraf	0	new A014963()	new A243353()
+A370077	dirtraf	1	new A005361()	new A367168()
+A370078	dirtraf	1	new A007814()	new A005361()
+A371413	simtraf	1	new A036966()	v -> Functions.DEDEKIND_PSI.z(v)	D001615,
+A372474	simtraf	0	new A066195()	v -> Functions.PRIME_PI.z(v)
+A372475	simtraf	1	new A005117()	v -> Functions.DIGIT_LENGTH.z(2, v)	D070939,
+A372516	lambdan	1	n -> D145037.a(Functions.PRIME.z(n))
