@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2024-05-25: V8.0: various macros RAD ...
 # 2024-03-12: V7.4: failure tolerance: ignore unknown patterns and wrong bracketing
 # 2024-02-26: V7.3: GaussianINtegers, GP, GD, GU, Zi; cannot read pattern with output of $aseqno
 # 2023-10-16: V7.2: .10 -> Z.TEN
@@ -74,7 +75,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V7.4";
+my $version_id  = "gen_seq4.pl V8.0";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -154,7 +155,7 @@ while (<>) { # read inputfile
     $callcode = shift(@parms);
     next if length($callcode) == 0; # skip over empty callcodes
     next if $callcode =~ m{\#}; # skip over commented callcodes
-    next if $callcode =~ m{\A(nyi|\-\d)};  # skip over callcodes starting with "nyi" or "-2"
+    next if $callcode =~ m{\A(nyi|\-\d|\Avoid)};  # skip over callcodes starting with "nyi", "void" or "-2"
     # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
@@ -248,7 +249,7 @@ while (<>) { # read inputfile
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {Functions.PARTITIONS.z\(}g;
-            $parm =~ s{RAD\(([^\)]+)\)}{Jaguar.factor\($1\)\.squareFreeKernel\(\)}g;
+            $parm =~ s{RAD\(}          {Functions.RAD.z\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
             $parm =~ s{RQ\(}           {Rationals.SINGLETON.product\(}g;
