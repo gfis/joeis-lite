@@ -177,6 +177,10 @@ regtest: # CLASS= rerun all these classes
 	grep -P "\AA\d+\t$(CLASS)" $(COMMON)/joeis_names.txt | cut -f1 > $(CLASS).gen
 	wc -l $(CLASS).gen
 	make CC=$(CLASS) test log
+dirtest:
+	cut -f1 ./reflect/direct.tmp > $@.gen
+	wc -l $@.gen
+	make CC=$@ test log
 runpari:
 	$(JAVA) org.teherba.extcas.RunPARI  $(CMD)
 #----
@@ -8681,8 +8685,9 @@ recan: # search for a(n-i)
 	| tee $@.tmp
 	wc -l $@.tmp
 recan_somos:
-	grep -P "^%[NF] A\d+ +a\(n\) *\= *[ an0-9\+\-\*\(\)\/\^]+ *([\.\,\;]|for)" recan.tmp
-
+	grep -P "^%[NF] A\d+ +a\(n\) *\= *[ an0-9\+\-\*\(\)\/\^]+ *([\.\,\;]|for)" recan.tmp \
+	| tee  recan_somos.tmp
+	wc -l  recan_somos.tmp
 check2024:
 	# grep -H -P "^A" aman/2024*.man | sed -e "s/\: */\t/" | sort -k2,2 -k1,1r \
 	# | cut -f2- | uniq -w7 | sort \

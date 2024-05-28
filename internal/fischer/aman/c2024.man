@@ -284,14 +284,12 @@ A071783	filter	1	new A002385()	v -> { final String s = v.toString(); return s.in
 A071823	#nyi	0		Number of numbers x <= n with largest prime factor of the form 4k + 3
 A071824	#nyi	0		Number of x with largest prime factor of the form 4k + 1 less than or equal to n
 A071825	#nyi	0		(Number of x with largest prime factor of the form 4k + 3 less than or equal to n) minus (Number of x with largest prime factor of the form 4k + 1 less than or equal to n)
-A071835	#nyi	0		Numbers k such that the largest prime factor of k is equal to floor(sqrt(k))
-A071836	#lpf	0	n = prime(tau(n))
+
 A071838	lambdan	1	n -> SU(1, n, i -> (ZV(i).IPP() ? Z.ONE : Z.ZERO).*(KS(2, i))).negate()
 A071856	factexp	0	CR.TWO.log().multiply(Z.TWO).sqrt()	Factorial expansion of sqrt(2ln(2)) : sqrt(2ln(2)) = sum( n>=1, a(n)/n! ).
 A071861	#nyi	0		Numbers k such that the largest prime factor of k is equal to the sum of primes dividing k + 1 (with repetition)
 A071863	#nyi	0		Numbers n such that sum of primes dividing n (with repetition) is equal to the largest prime factor of n + 1
-A071869	#nyi	0		Numbers k such that gpf(k) < gpf(k + 1) < gpf(k + 2) where gpf(k) denotes the largest prime factor of k
-A071870	#nyi	0		Numbers k such that gpf(k) > gpf(k + 1) > gpf(k + 2) where gpf(k) denotes the largest prime factor of k
+
 A071881	lambdir	0	n -> SEQ.a(n).*(SEQ.a(n + 1))	new A002487()
 A071883	lambdir	0	n -> SEQ.a(n).*(SEQ.a(n + 2))	new A002487()	A002487(n)*A002487(n+2).
 A071900	parmof2	1	A071302	8
@@ -300,8 +298,7 @@ A071908	lambdir	0	n -> SEQ.a(n).*(SEQ.a(n + 1)).*(SEQ.a(n + 2))	new A002487()	A0
 A071909	simtraf	0	new A071908()	v -> v./(2)	A002487(n)*A002487(n+1)*A002487(n+2)/2.
 A071911	filtpos	0	0	new A002487()	v -> v.mod(3) == 0	Numbers m such that Sterns diatomic A002487(m) is divisible by 3.
 A071929	#nyi	0		Numbers k such that the sum of exponents of k is equal to the Largest prime factor of k; a(1)=1
-A071964	#nyi	0		Numbers n such that n = Lpf(n)*Lpf(phi(n)) where Lpf(x) = A006530(x) is the largest prime factor of x
-A071965	#nyi	0		Numbers k such that k = Gpf(k) * Gpf(sigma(k)) where Gpf(k) = A006530(k) is the Largest prime factor of k
+
 A071974	simtraf	1	new A350388()	v -> v.sqrt()	a(n)=sqrt(Annn(n))		A350388
 A072006	simtraf	1	new A000040()	p -> ZV(Euler.inversePhi(p.*(p.-(1))).size())	Number of terms in InversePhi set of p(n)*(p(n)-1) = phi(p(n)^2), where p(n) is the n-th prime and phi=A000010.	nonn	1..98
 A072057	multrafd	1	(self, n) -> SEQ.a(self.s(0))	""	new A072055()	new A000203()	a(n)=Annn(Annn(n))
@@ -318,7 +315,7 @@ A072161	lambdan	1	n -> RU(1, n, k -> new Q(PHI(k), ZV(k).^(4))).den()
 A072196	lambdan	1	n -> ZV(64).^(n-1).*(10).-(1)./(3)	a(n) = (10*64^(n-3)-1)/3.
 A072213	lambdir	0	n -> SEQ.a(n*n)	new A000041()	a(n)=Annn(n^(\d+))	2	D000041
 A072255	lambdan	0	n -> n <= 1 ? Z.ONE.-(n) : SU(1, n/2, d -> FI(n/d).^(n % d).*(FI(n/d - 1).^(d - n%d)))
-A072268	#nyi	0		a(0) = 1; a(n + 1) = 1  +  f(a(n))^2, where f(x) is the largest prime factor of x (A006530)
+
 A072285	arrlamb0	0	(n, m) -> BI(new Q(n + 1).-(new Q(m, 2)), n - m + 1).-(BI(new Q(n).-(new Q(m, 2)), n - m + 1)).num()	a(n, m) = binomial(n-m/2, n-m);
 A072286	arrlamb0	0	(n, m) -> BI(new Q(n + 1).-(new Q(m, 2)), n - m + 1).-(BI(new Q(n).-(new Q(m, 2)), n - m + 1)).den()	a(n, m) = binomial(n-m/2+1, n-m+1) - binomial(n-m/2, n-m+1)
 A072379	lambdan	1	n -> SU(1, n, k -> SIGMA(k).^(2))
@@ -510,7 +507,7 @@ A079623	multrar	1	(self, n) -> self.a(n - 1).-(self.a(n - 2)).-(self.a(n - 3)).a
 A079624	multrar	1	(self, n) -> self.a(n - 1).-(self.a(n - 2)).-(self.a(n - 3)).abs()	"1,1,6"	a(1)=a(2)=1, a(3)=6, a(n)=abs(a(n-1)-a(n-2)-a(n-3)).
 A079697	simtraf	1	new A005277()	v -> v.makeOdd()	Odd part of A005277(n)
 A079728	lambdan	0	n -> SU(0, Puma.primeZ(n).intValueExact(), k -> BI(2*k, k)).mod(Puma.primeZ(n))
-A079747	#nyi	0		Numbers k such that gpf(k - 1) < gpf(k) < gpf(k + 1), where gpf(k) is the Largest prime factor of k (A006530)
+
 A079750	multrar	3	(self, n) -> self.a(n - 1).*(n).+(n)	"0"	a(3)=0, a(n) = n * a(n-1) + n for n >= 4.
 A079752	multrar	3	(self, n) -> self.a(n - 1).*(n).+(n - 2)	"0"	a(3)=0, a(n) = n * a(n-1) + n - 2 for n>=4
 A079753	multrar	3	(self, n) -> self.a(n - 1).*(n).+((n - 1)*(n - 2)/2)	"0"	a(3)=0, a(n)= n*a(n-1) + (n-1)*(n-2)/2 for n>=4 a(n) = ?079752(n) + ?079754(n)
@@ -518,7 +515,7 @@ A079754	multrar	3	(self, n) -> self.a(n - 1).*(n).+((n - 2)*(n - 3)/2)	"0"	a(3)=
 A079780	simtraf	1	new A057855()	v -> Puma.primeZ(v)	a(n)=prime(Annn(n))		A057855
 A079944	#simtraf	0	a(n) = A000035(A004526(A030101(n+2))). - _Reinhard Zumkeller_, Mar 04 2010
 A080087	simtraf	1	new A000040()	p -> ZV(ZUtils.valuation(FA(p), ZV(5)))
-A080210	#nyi	0		a(n) = floor(Lpf(n)*phi(n)/n)  +  1 where Lpf(n) is the largest prime factor of n and phi is the Euler totient function
+
 A080214	lambdan	1	n -> BI(LPF(n), SPF(n))	Binomial(Largest prime factor of n, Least prime factor of n)
 A080225	lambdan	1	n -> SD(n, d -> Functions.SIGMA.i(d) == 2*d ? Z.ONE : Z.ZERO)
 A080306	lambdan	1	n -> RU(1, n, k -> new Q(k).^(Functions.MOEBIUS.i(k))).num()
@@ -533,7 +530,6 @@ A081066	simtraf	0	new A055882()	(n, v) -> RQ(0, n - 1, j -> new Q(2*j + 1, 2)).*
 A081088	tuptraf	0	(n, s) -> s[0].*(s[1])	"2,2"	new A081090().skip(1), PREVIOUS	a(n) = A081090(n) * A081090(n-1) for n>2, where A081090(n)^2 + 1 = a(n+1)/a(n).
 A081165	simtraf	0	new A060114()	v -> JF(v).largestPrimeFactor()	Largest prime factor of A060114.        nonn
 A081166	simtraf	0	new A060114()	v -> ZV(JF(v).omega())	 Number of distinct primes dividing A060114(n).
-A081173	#nyi	0		a(1) = 2, then a(n) = Largest prime factor of (a(n - 1)^2 + 2)
 A081221	simtraf	1	new A067535()	(n, v) -> v.-(n)	. -
 A081238	tuptraf	0	(n, s) -> s[0].*(s[1]).*(2)	""	new A070548(), new A070549()	a(n) = 2*A070548(n)*A070549(n). - _Robert Israel_, Jan 08 2018
 A081303	lambdan	1	m -> LPF(m).-(SPF(m).*(2))	gpf(m)  -  2*spf(m), where gpf(m) is the Largest and spf(m) is the Least prime factor of m (A006530, A020639)
@@ -546,15 +542,13 @@ A081402	dirtraf	1	new A008475()	new A000142()	nonn	1.
 A081403	dirtraf	1	new A008475()	new A000290()	n^2).	nonn
 A081404	dirtraf	1	new A008475()	new A006093()	prime(n)-1).	no
 A081703	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A002997(), new A141710()	a(n)=Annn(n)/Annn(n)
-A082021	#nyi	0		a(0) = 7; for n > 0, a(n) is the Largest prime factor of PP(PP(a(n - 1)))*a(n - 1) + 2 where PP(n) is an abbreviation for PreviousPrime(n)
-A082132	#nyi	0		a(0) = 5; for n > 0, a(n) is the Largest prime factor of PP(a(n - 1))*a(n - 1) - 2 where PP(n) is an abbreviation for PreviousPrime(n)
 A082375	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> ZV(n).-(2*k)	T(n, m) = n - 2*m, m = 0, 1, ..., floor(n/2), n >= 0					Irregular triangle read by rows: row n begins with n and decreases by 2 until 0 or 1 is reached, for n >= 0.
-A082417	#nyi	0		Numbers k such that P(k) < P(k + 1) > P(k + 2), where P(k) is the largest prime factor of k (A006530)
-A082418	#nyi	0		Numbers n such that P(n) > P(n + 1) < P(n + 2), where P(n) = largest prime factor of n (A006530)
-A082419	#nyi	0		Numbers n such that P(n + 2) < P(n) < P(n + 1), where P(n) = largest prime factor of n (A006530)
-A082420	#nyi	0		Numbers n such that P(n) < P(n + 2) < P(n + 1), where P(n) = largest prime factor of n (A006530)
-A082421	#nyi	0		Numbers n such that P(n + 1) < P(n) < P(n + 2), where P(n) = largest prime factor of n (A006530)
-A082422	#nyi	0		Numbers n such that P(n) > P(n + 2) > P(n + 1), where P(n) = largest prime factor of n (A006530)
+
+
+
+
+
+
 A082426	simtraf	1	new A074143()	(n, v) -> n == 1 ? Z.ONE : v.+(1)
 A082427	multrar	1	(self, n) -> SU(1, n - 1, k -> self.a(k)).*(n).-(2)	"1,0,1,6"	a(1)=1, a(n)=n*(a(n-1)+a(n-2)+...+a(2)+a(1)) - 2.
 A082428	multrar	1	(self, n) -> SU(1, n - 1, k -> self.a(k)).*(n).+(3)	"1"	a(1)=1, a(n)=n*(a(n-1)+a(n-2)+...+a(2)+a(1)) + 3.
@@ -671,8 +665,8 @@ A084339	lambdan	0	n -> ZUtils.reverse(ZV(7*n)).modZ(7)	7,7	(\d+)*n digit-reverse
 A084340	lambdan	0	n -> ZUtils.reverse(ZV(8*n)).modZ(8)	8,8	(\d+)*n digit-reversed mod (\d+)	m	i   
 A084438	filnum	0	0	n -> FM(n, 3).-(1).isProbablePrime()	Positive integers n such that n!!! - 1 is prime.
 A084595	lambdan	0	n -> (n==0) ? ZV(1) : SU(0, (1 << (n - 1)) - 1, r ->  BI(Z2(n), 2*r + 1).*(ZV(3).^(r)))
-A084598	#nyi	0		a(1) = 2, a(2) = 3; for n >= 2, a(n + 1) is Least prime factor of (Product_{k = 1..n} a(k))  -  1
-A084599	#nyi	0		a(1) = 2, a(2) = 3; for n >= 2, a(n + 1) is largest prime factor of (Product_{k=1..n} a(k))  -  1
+
+
 A084608	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> SU(0, k, j -> BI(n, k - j).*(BI(k - j, j)).*(Z2(k - 2*j)).*(ZV(3).^(j)))
 A084610	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> SU(0, k, j -> BI(n, k - j).*(BI(k - j, j)).*(ZV(-1).^(j)))	T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-1)^j.
 A084612	tablamb	0	0	n -> new Integer[] { 0, n*2 }	(n, k) -> SU(0, k, j -> BI(n, k - j).*(BI(k - j, j)).*(ZV(-2).^(j)))	T(n, k) = Sum_{j=0..k} binomial(n, k-j)*binomial(k-j, j)*(-2)^j, for 0 <= k <= 2*n.
@@ -719,7 +713,7 @@ A087223	lambdir	0	n -> SEQ.a(3*n + 1)	new A087221()	a(n)=Annn((\d+)*n+(\d+))	3,1
 A087224	lambdir	0	n -> SEQ.a(3*n + 2)	new A087221()	a(n)=Annn((\d+)*n+(\d+))	3,2	D087221
 A087262	simtraf	1	new A025586()	(n, v) -> v./(n)	a(n)=floor(Annn(n)/n)
 A087273	simtraf	1	new A000040()	v -> JF(v.*(3).+(1)).largestPrimeFactor()	3*prime(n).+(1)
-A087274	#nyi	0		Prime index of largest prime factor of 3*prime(n) + 1
+
 A087298	lambdan	1	n -> Z.valueOf(ZUtils.valuation(FA(3*n), Z.TWO))	Exponent of 2 in factorization of (3n)!.
 A087678	filnum	1	9	n -> ZV(n).+(9).IPP() && ZV(n).-(9).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
 A087681	filnum	1	6	n -> ZV(n).+(6).IPP() && ZV(n).-(6).IPP()	Numbers n such that n +(\d+) and n -(\d+) are both prime
@@ -805,8 +799,8 @@ A091179	simtraf	0	new A088878()	v -> Puma.primePiZ(v)	A000040	Annnnnn indexed by
 A091233	multraf	1	(self, n) -> self.s(0).-(self.s(1)).+(1)	""	new A005518(), new A005517()	)+1
 A091248	multrad	1	(self, n) -> SD(n, d -> SEQ.a(d))	""	new A318622()	a(n)=Sum_{d|n}Annn(d)
 A091279	simtraf	0	new A091278()	v -> v.sqrt()	Square roots of Annnnnn
-A091375	#nyi	0		Numbers k with property that the number of prime factors of k (counted with repetition) exceeds the Least prime factor of k
-A091376	#nyi	0		Numbers k with property that the number of prime factors of k (counted with repetition) equals the Least prime factor of k
+
+
 A091478	tablamb	0	0	n -> new Integer[] { 0, n*(n - 1)/2 }	(n, k) -> n == 0 ? Z.ONE : BI(n*(n - 1)/2, k).*(FA(k))	a(n, k) = k!*binomial(binomial(n, 2), k).					Table of graphs with n (>=0) nodes and k (>=0) edges. Each type of object labeled from its own label set.
 A091535	lambdan	0	n -> FM(3*n - 2, 3).*(FM(3*n - 1, 3))./(2)	The scaled sequence (2/(3n-1)!!!)*a(n) = (3*n-2)!!! = A007559(n), n>=1.
 A091539	lambdan	0	n -> new Q(3).^(2*n    ).*(RQ(0, n - 1, j -> new Q(3*j + 2, 3))).*(new Q(FA(n)).-(RQ(0, n - 1, j -> new Q(3*j + 1, 3)).*(ZV(3))))./(FA(3).*(10)).num()	(3^(2*n))*risefac(2/3, n)*(n!-3*risefac(1/3, n))/(3!*10) with risefac(x, n)=Pochhammer(x, n).
@@ -1010,7 +1004,7 @@ A101413	arrlamb0	0	(n, k) -> BI(2*n + 1, k).*(2*(n - k + 1))./(2*n - k + 2)
 A101445	#nyi	0		Numbers n such that n is the largest prime factor of 1  +  prime(n)
 A101471	filnum	1	0	n -> ZV(100*n + 11).IPP()		isprime(100*n+11)
 A101472	filnum	1	0	n -> ZV(100*n + 33).IPP()		isprime(100*n+33)
-A101550	#nyi	0		Lopsided (or biased) numbers: numbers n such that the largest prime factor of n is > 2*sqrt(n)
+
 A101597	simtraf	0	new A006562()	v -> v.-(Puma.prevPrimeZ(v)).-(1)
 A101627	lambdan	1	n -> RU(1, n, k -> new Q(1, (3*k - 1)*(3*k)*(3*k + 1))).*(24).num()
 A101628	lambdan	1	n -> RU(1, n, k -> new Q(1, (3*k - 1)*(3*k)*(3*k + 1))).*(24).den()

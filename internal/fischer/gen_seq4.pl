@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2024-05-27, V8.1: suppress comments starting with "#" in the pattern
 # 2024-05-25: V8.0: various macros RAD ...
 # 2024-03-12: V7.4: failure tolerance: ignore unknown patterns and wrong bracketing
 # 2024-02-26: V7.3: GaussianINtegers, GP, GD, GU, Zi; cannot read pattern with output of $aseqno
@@ -455,6 +456,8 @@ sub read_pattern { # read the pattern and return it
     if (open(PAT, "<", "$patfile") != 0) {
         while (<PAT>) {
             my $patline = $_; # no chompr!
+            next if $patline =~ m{^\s*\#};
+            $patline =~ s{([^\"])#.*}{$1};
             if ($debug >= 2) {
               print "# patline=$patline";
             }

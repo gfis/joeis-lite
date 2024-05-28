@@ -1,0 +1,103 @@
+A071835	filnum	1	2	k -> Functions.GPF.z(k).equals(ZV(k).sqrt())	Numbers k such that the largest prime factor of k is equal to floor(sqrt(k))
+A071836	filnum	1	1	k -> ZV(k).equals(Functions.PRIME.z(Functions.SIGMA0.z(k)))	n = prime(tau(n))
+A071861	filnum	1	1	k -> Functions.GPF.z(k).equals(Functions.SOPFR.z(k + 1))	Numbers k such that the largest prime factor of k is equal to the sum of primes dividing k + 1 (with repetition)
+A071863	filnum	1	1	k -> Functions.SOPFR.z(k).equals(Functions.GPF.z(k + 1))	Numbers n such that sum of primes dividing n (with repetition) is equal to the largest prime factor of n + 1
+A071869	filnum	1	2	k -> { final Z mid = Functions.GPF.z(k + 1); return Functions.GPF.z(k    ).compareTo(mid) < 0 && mid.compareTo(Functions.GPF.z(k + 2)) < 0; }	Numbers k such that gpf(k) < gpf(k + 1) < gpf(k + 2) where gpf(k) denotes the largest prime factor of k
+A071870	filnum	1	1	k -> { final Z mid = Functions.GPF.z(k + 1); return Functions.GPF.z(k    ).compareTo(mid) > 0 && mid.compareTo(Functions.GPF.z(k + 2)) > 0; }	Numbers k such that gpf(k) > gpf(k + 1) > gpf(k + 2) where gpf(k) denotes the largest prime factor of k
+A071964	filnum	1	3	k -> Functions.GPF.z(k).*(Functions.GPF.z(Functions.PHI.z(k))).equals(ZV(k))	Numbers n such that n = Lpf(n)*Lpf(phi(n)) where Lpf(x) = A006530(x) is the largest prime factor of x
+A071965	filnum	1	2	k -> Functions.GPF.z(k).*(Functions.GPF.z(Functions.SIGMA.z(k))).equals(ZV(k))	Numbers k such that k = Gpf(k) * Gpf(sigma(k)) where Gpf(k) = A006530(k) is the Largest prime factor of k
+A072268	multrar	0	(self, n) -> Functions.GPF.z(self.a(n - 1)).^(2).+(1)	"1"		a(0) = 1; a(n + 1) = 1  +  f(a(n))^2, where f(x) is the largest prime factor of x (A006530)
+A075753	simtraf	1	new A014493().skip(1)	v ->Functions.LPF.z(v)	n-th odd triangular number.
+A079747	filnum	1	1	k -> { final Z mid = Functions.GPF.z(k    ); return Functions.GPF.z(k - 1).compareTo(mid) < 0 && mid.compareTo(Functions.GPF.z(k + 1)) < 0; }	gpf(k - 1) < gpf(k) < gpf(k + 1), where gpf(k) is the Largest prime factor of k (A006530)
+A080210	lambdan	1	n -> n == 1 ? Z.ONE : Functions.GPF.z(n).*(Functions.PHI.z(n))./(n).+(1)	a(n) = floor(Lpf(n)*phi(n)/n)  +  1 where Lpf(n) is the largest prime factor of n and phi is the Euler totient function
+A081173	multrar	1	(self, n) -> Functions.GPF.z(self.a(n - 1).^(2).+(2))	"2"		a(0) = 1; a(1) = 2, then a(n) = Largest prime factor of (a(n - 1)^2 + 2)
+A082021	multrar	0	(self, n) -> Functions.GPF.z(Functions.PREV_PRIME.z(Functions.PREV_PRIME.z(self.a(n - 1))).*(self.a(n - 1)).+(2))	"7"	a(n) is the Largest prime factor of PP(PP(a(n - 1)))*a(n - 1) + 2 where PP(n) is an abbreviation for PreviousPrime(n)
+A082132	multrar	0	(self, n) -> Functions.GPF.z(Functions.PREV_PRIME.z(self.a(n - 1)).*(self.a(n - 1)).-(2))	"5"	a(n) is the Largest prime factor of PP(a(n - 1))*a(n - 1) - 2 where PP(n) is an abbreviation for PreviousPrime(n)
+A082417	filnum	1	1	k -> { final Z mid = Functions.GPF.z(k + 1); return Functions.GPF.z(k    ).compareTo(mid) < 0 && mid.compareTo(Functions.GPF.z(k + 2)) > 0; }	Numbers k such that P(k    ) < P(k + 1) > P(k + 2), where P(k) is the largest prime factor of k (A006530)
+A082418	filnum	1	1	k -> { final Z mid = Functions.GPF.z(k + 1); return Functions.GPF.z(k    ).compareTo(mid) > 0 && mid.compareTo(Functions.GPF.z(k + 2)) < 0; }	Numbers n such that P(n    ) > P(n + 1) < P(n + 2), where P(n) = largest prime factor of n (A006530)
+A082419	filnum	1	1	k -> { final Z mid = Functions.GPF.z(k    ); return Functions.GPF.z(k + 2).compareTo(mid) < 0 && mid.compareTo(Functions.GPF.z(k + 1)) < 0; }	Numbers n such that P(n + 2) < P(n    ) < P(n + 1), where P(n) = largest prime factor of n (A006530)
+A082420	filnum	1	1	k -> { final Z mid = Functions.GPF.z(k + 2); return Functions.GPF.z(k    ).compareTo(mid) < 0 && mid.compareTo(Functions.GPF.z(k + 1)) < 0; }	Numbers n such that P(n    ) < P(n + 2) < P(n + 1), where P(n) = largest prime factor of n (A006530)
+A082421	filnum	1	1	k -> { final Z mid = Functions.GPF.z(k    ); return Functions.GPF.z(k + 1).compareTo(mid) < 0 && mid.compareTo(Functions.GPF.z(k + 2)) < 0; }	Numbers n such that P(n + 1) < P(n    ) < P(n + 2), where P(n) = largest prime factor of n (A006530)
+A082422	filnum	1	1	k -> { final Z mid = Functions.GPF.z(k + 2); return Functions.GPF.z(k    ).compareTo(mid) > 0 && mid.compareTo(Functions.GPF.z(k + 1)) > 0; }	Numbers n such that P(n    ) > P(n + 2) > P(n + 1), where P(n) = largest prime factor of n (A006530)
+A084598	multrar	0	(self, n) -> Functions.LPF.z(PR(1, n - 1, k -> self.a(k)).-(1))	"2,3"		a(1) = 2, a(2) = 3; for n >= 2, a(n + 1) is Least prime factor of (Product_{k = 1..n} a(k))  -  1   
+A084599	multrar	1	(self, n) -> Functions.GPF.z(PR(1, n - 1, k -> self.a(k)).-(1))	"2,3"		a(1) = 2, a(2) = 3; for n >= 2, a(n + 1) is largest prime factor of (Product_{k=1..n} a(k))  -  1
+A087274	lambdan	1	n -> Functions.PRIME_PI.z(Functions.GPF.z(Functions.PRIME.z(n).*(3).+(1)))	Prime index of largest prime factor of 3*prime(n) + 1
+A089619	lambdan	0	n -> Functions.GPF.z(ZV(n).^(2).+(ZV(n + 1).^(2)))	Greatest prime factor of n^2 + (n+1)^2.
+A090947	simtraf	0	new A000367()	v -> Functions.GPF.z(v.abs())	numerator of Bernoulli(2n) (or 1 if the numerator is 1).
+A091375	filnum	1	1	k -> Functions.BIG_OMEGA.z(k).compareTo(Functions.LPF.z(k)) > 0	Numbers k with property that the number of prime factors of k (counted with repetition) exceeds the Least prime factor of k
+A091376	filnum	1	1	k -> Functions.BIG_OMEGA.z(k).equals(Functions.LPF.z(k))	Numbers k with property that the number of prime factors of k (counted with repetition) equals the Least prime factor of k
+A092975	lambdan	1	k -> { if (k%3 == 0) { return Z.THREE.^(k/3); } else { final Z q = Functions.LPF.z(k); return q.^(ZV(k)./(q)); }}	When n=3m then a(n)=3^m; otherwise, a(n)=q^(n/q), q being the Least prime factor of n.  -  _Stanislav Sykora_, Jun 04 2014
+A093179	simtraf	0	new A000215()	v -> Functions.LPF.z(v)	nth Fermat number
+A094499	lambdan	0	n -> { final Z pow2 = Z2(n); return Functions.LPF.z(Z.TWO.^(pow2).+(Z.THREE.^(pow2))); }	(2^(2^n)+3^(2^n), i.e., exponents are powers of 2. unfactored
+A099634	lambdan	2	n -> Functions.GPF.z(n).+(Functions.LPF.z(n)).gcd(Functions.GPF.z(n).*(Functions.LPF.z(n)))	a(n) = gcd(P + p, P*p) where P is the largest and p the Least prime factor of n
+A100231	holos	0	[[0],[60,-20],[6,-4],[0,-1]]	1,3,4	0	0	a(n)=-((4*n-6)*a(n-1)+20*(n-3)*a(n-2))/n
+A101550	filnum	1	1	k -> CR.valueOf(Functions.GPF.z(k)).compareTo(CR.valueOf(k).sqrt().*(2)) > 0	Lopsided (or biased) numbers: numbers n such that the largest prime factor of n is > 2*sqrt(n)
+A103410	multrar	0	(self, n) -> self.a(n-1).*(SU(0, n - 2, k -> self.a(k))).+(BI(self.a(n-1), 2))	"2,1,2"
+A105183	multrar	0	(self, n) -> self.a(n-1).*(self.a(n-1).+(1)).+(1)	"2"
+A105651	filnum	1	1	k -> Functions.LPF.z(k).+(Functions.GPF.z(k)).+(k).equals(Functions.NEXT_PRIME.z(k))	Numbers n such that n  +  Least prime factor of n  +  largest prime factor of n = next prime after n
+A107746	filnum	1	1	k -> Functions.LPF.z(6*k + 1).compareTo(Functions.LPF.z(6*k - 1)) > 0	Numbers n such that the least prime factor of 6*n + 1 > the least prime factor of 6*n - 1, ?107744(n) > ?107745(n)
+A107747	filnum	1	1	k -> Functions.LPF.z(6*k + 1).compareTo(Functions.LPF.z(6*k - 1)) < 0	Numbers n such that the least prime factor of 6*n + 1 < the least prime factor of 6*n - 1, ?107744(n) < ?107745(n)
+A108144	filnum	1	1	k -> { final Z quot = ZV(k - 1)./(Functions.GPF.z(k - 1)); return !quot.equals(1) && quot.bitCount() == 1; }	Numbers n such that (n - 1)/P(n - 1) is a power of two > 1, where P(n) is the largest prime factor of n
+A110387	multrar	1	(self, n) -> self.a(n-1).+(self.a(n-1).^(n-1))	"1"
+A111121	multrar	1	(self, n) -> self.a(n-3).^(3).+(self.a(n-2).^(2)).+(self.a(n-1))	"-1,0,1"
+A111743	filnum	1	1	k -> { final Z p = Functions.GPF.z(k); return p.equals(Functions.GPF.z(new Z(String.valueOf(k) + p.toString()))); }	Numbers n such that the largest prime factor p of n is also the largest prime factor of n.p, where the dot means concatenation
+A114641	multrar	1	(self, n) -> self.a(n-1).*(Z2(self.a(n-2)))	"1,2,4"
+A120274	simtraf	0	new A038003().skip(2)	v -> Functions.GPF.z(v)
+A122119	lambdan	0	n -> { final Z pow2 = Z2(n); return Functions.LPF.z(Z.TWO.^(pow2).+(Z.FIVE.^(pow2))); }	ZV(n).^(ZV(n).^(n)).+(1))	Least prime factor of 2^(2^n) + 5^(2^n).
+A122443	simtraf	1	new A085155()	v -> Functions.LPF.z(v)
+A122444	simtraf	1	new A085155()	v -> Functions.GPF.z(v)
+A123025	holos	0	[[0],[1,1,-1],[0],[-1]]	1,1	0	0	,(1 + n - n^2)*a(n-2)
+A123150	holos	0	[[0],[-1,0,1,-1,-1,1],[0],[0],[0],[0],[-1]]	1,1,2,6,24	0	0	,(n^5 - n^4 - n^3 + n^2 - 1)*a(n-5)
+A128195	multrar	0	(self, n) -> ZV(2*n + 1).*(self.a(n - 1).+(Z2(n)))	"1,9"
+A128196	multrar	0	(self, n) -> ZV(2*n - 1).*(self.a(n - 1)).+(Z2(n))	"1"
+A128200	simtraf	1	new A085155()	v -> Functions.SIGMA0.z(v)	Numbers of divisors of semiprime powers: A000005(?085155(n)).
+A129379	multrar	1	(self, n) -> n <= 4 ? BI(n, n/2) : self.a(n-1).*(n-2).*(ZV(n).^(2).+(-7*n+14))./(2*(n-4))	"1,2,3"		(n-2)*(n^2-7*n+14)/(2*(n-4))*a(n-1)
+A129380	holos	1	[[0],[8,-5,1],[-2]]	1,3,6	0	0	,(1/2)*(n^2 - 5*n + 8)*a(n-1)
+A136030	simtraf	1	new FilterSequence(1, new A001348(), v -> !v.IPP())	v -> LPF(v)		LPF.z(composite Mersenne numbers.
+A136031	simtraf	1	new FilterSequence(1, new A001348(), v -> !v.IPP())	v -> GPF(v)		GPF.z(composite Mersenne numbers.
+A137181	multrar	1	(self, n) -> Z2(self.a(n-3)).+(self.a(n-3).*(2)).+(1)	"1,2,4,8,16,32"
+A137666	simtraf	1	new A137664()	v -> Functions.GPF.z(v)	= (p + 1)^p - 1 for p = prime(n).
+A147555	lambdan	0	n -> Functions.LPF.z(Z.TEN.^(Functions.PRIME.i(n)).-(1)./(9))	prime(n)-th repunit number.
+A147556	lambdan	1	n -> Functions.GPF.z(Z.TEN.^(Functions.PRIME.i(n)).-(1)./(9))	prime(n)-th repunit number.
+A176304	multrar	0	(self, n) -> Z_1(n).*(n).*(self.a(n-1)).-(1)	"0"
+A185121	lambdan	0	n -> Functions.LPF.z(Z.TEN.^(Z2(n)).+(1)) 	Smallest prime factor of 10^(2^n) + 1.
+A188555	holos	0	[[0],[1],[-5],[10],[-10],[5],[-1]]	1,5,9,16,28,48	0	0
+A192439	multrar	1	(self, n) -> !ZV(n).IPP() ? self.a(n-1).+(self.a(n-2)) : self.a(n-1).-(self.a(n-2))	"1"
+A198864	multrar	0	(self, n) -> PR(0, n - 1, k -> self.a(k)).+(n)	"1,2,4"
+A203778	multraf	1	(self, n) -> self.a(n - 1).*(self.s(2)).*(-24)	"2,-48,40320"	new A015219(),PREVIOUS,PREVIOUS	a(n) = -24*A015219(n-2)*a(n-1), with a(1) = 2.
+A204820	multraf	1	(self, n) -> self.a(n - 1).*(self.s(2)).*(-4)	"8,-192,161280"	new A001505(),PREVIOUS,PREVIOUS	a(n) = -4*a(n-1)*A001505(n-2), with a(1)=8.
+A214691	multrar	0	(self, n) -> ZV(4).^(n-1).-(1).*(2).*(self.a(n-1)).-(Z_1(n))	"1"
+A217728	multrar	1	(self, n) -> self.a(n-1).^(3).+(self.a(n-2).^(3)).-(self.a(n-1).-(self.a(n-2)).^(3))	"1,1"
+A219549	lambdan	0	n -> Functions.LPF.z(Z2(8*n).+(1))
+A229580	multrar	1	(self, n) -> self.a(n-1).*(4).+(ZV(4).^(n-1))	"1,6"
+A238834	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(n - 2).+(self.a(n/2)) : self.a(n - 2).*(2).-(self.a((n - 3)/2)).+(self.a(n - 1))	"0,1,1,2,2"
+A239899	multrar	0	(self, n) -> PR(0, n - 1, k -> self.a(k)).-(1)	"2,5"
+A239967	multrar	1	(self, n) -> self.a(n-1).*(self.a(n-2)).-(self.a(n-3).*(self.a(n-4)))	"1,1,2,2"
+A263043	multrar	1	(self, n) -> self.a(n-5).*(self.a(n-3)).*(self.a(n-1)).-(self.a(n-4).*(self.a(n-2)))	"1,2,3,4,5"
+A269939	trecpab	0	0	0	.multiply(n + k - 1)	.multiply(k)		k*V+(n+k-1)*U	for:n > 0, T(0,0) = 1, T(n,0) = 0 for n > 0
+A271330	multrar	0	(self, n) -> self.a(n-1).^(3).+(1)./(self.a(n-2))	"2,3"
+A273400	lambdan	0	n -> Functions.CATALAN.z(Functions.CATALAN.z(Functions.CATALAN.z(n)))	a(n)=Annn(Annn(Annn(n)))		D000108,D000108,D000108
+A309006	multrar	1	(self, n) -> self.a(n-1).*(self.a(n-2)).-(self.a(n-1).+(self.a(n-2)))	"2,5"
+A309025	multrar	0	(self, n2) -> {final int n = n2/2; return (n2 & 1) == 0 ? self.a(n) : self.a(n-3).+(self.a(n+1)); }	"0, 1, 1, 1, 1, 1, 1"
+A329470	multrar	0	(self, n) -> self.a(n-1).^(2).*(2).+(1)	"1,1"
+A332757	multrar	0	(self, n) -> self.a(n-1).^(2).+(ZV(2).^(Z2(n - 1).-(1)))	"1"
+A332758	multrar	0	(self, n) -> self.a(n-1).^(2).+(ZV(2).^(Z2(n - 1).-(1)))	"0"
+A333132	multrar	1	(self, n) -> Z2(self.a(n-1).-(1)).+(self.a(n-1))	"1,2,3"
+A335026	holos	1	[[0],[1,2,1],[1],[-1]]	0,9	0	0	,(n + 1).^(2)*a(n - 2) + a(n - 1)
+A352526	multrar	0	(self, n) -> self.a(n-1).*(2).*(Z_1(n).+(n))	"2,2"
+A356213	lingf	3	0,4,16,-21,10,-2	1,-22,142,-321,242,-74,8	0
+A356684	holos	1	[[0],[0,-1],[-1,1],[-1]]	-1,-1	0	0	,(n-1)*a(n-1) - n*a(n-2)
+A359502	multrar	0	(self, n) -> self.a(n-2).^(2).+(self.a(n-1)).+(1)	"0,1"
+A370179	holos	0	[[0],[-9],[0],[10],[-1]]	1,9,89	0	0	,10*a(n-1) - 9*a(n-3)
+A370179	lingf	0	1,-1,-1	1,-10,0,9	0
+A370576	holos	0	[[0],[0,-1,2],[-1]]	1,1,5,70	0	0	,(2*n-1)*n*a(n-1)
+A370766	holos	0	[[0],[-6,2],[9,-2],[1,-2],[1,2],[-1]]	1, 2, 4, 20	0	0	1+2*n)*self.a(n-1) + (1-2*n)*self.a(n-2) + (9-2*n)*self.a(n-3) + (-6+2*n)*self.a(n-4) for n >= 4
+A370767	holos	0	[[0],[-4,2],[5,-2],[3,-2],[1,2],[-1]]	1, 1, 3, 17	0	0	1+2*n)*self.a(n-1) + (3-2*n)*self.a(n-2) + (5-2*n)*self.a(n-3) + (-4+2*n)*self.a(n-4) for n >= 4
+A371080	trecpab	0	0	0		.multiply(3 * (n - 1) + k)		U+(3*(n-1)+k)*V	for:0 < k < n for initial values T(n, 0) = 0 for n > 0 and T(n, n) = 1 for n >= 0
+A372225	lingf	1	0,1,3	1,-3,-6,3,1	0
+A372242	lingf	0	1,9,9	1,0,-2,-1	0
+A372865	lingf	1	0,1,2,1,2,1,2,4,4,1	1,1,0,-1,-1,0,-1,-1,0,1,1	0
+A372872	lingf	1	0,1,-6,12,-8	1,-8,22,-24,9	0
+A372874	lingf	1	0,1,-4,4,2	1,-8,22,-24,9	0
+A372878	lingf	4	0,0,0,0,1,-2	1,-9,30,-46,33,-9	0
+A372884	lingf	3	0,0,0,1,-4,4	1,-9,30,-46,33,-9	0

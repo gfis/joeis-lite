@@ -1,7 +1,4 @@
 ---- 2024-05-27 00:21:08
-
-
-
 %N A073891	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"1"    		a(2*n) = a(2*n-1) + c(n) and a(2*n+1) = a(2*n) - p(n), where c(n) = A002808(n) and p(n) = A000040(n) are the n-th composite and n-th prime numbers, respectively.
 %N A073892	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"1"    		a(2*n) = a(2*n-1) + p(n) and a(2*n+1) = a(2*n) - c(n), where p(n) = A000040(n) and c(n) = A002808(n) are the n-th composite and n-th prime numbers, respectively.
 %N A099735	multrar	0	(self, n2) -> { final int n = n2/2; return (n2 & 1) == 0 ? self.a(2*n - 1) : self.a(n); }	"1"    		a(2*n) = a(2*n-1) / a(2*n-2); a(2*n+1) = a(2*n) + a(2*n-1); a(0) = 1; a(1) = 1.
