@@ -234,11 +234,13 @@ while (<>) { # read inputfile
             $parm =~ s{GPF\(}          {Functions.GPF.z\(}g;
             $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
+            $parm =~ s{IVE\(}          {intValueExact\(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
             $parm =~ s{KS\(}           {LongUtils.kronecker(}g;
             $parm =~ s{LPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{LU\(}           {Functions.LUCAS.z\(}g;
+            $parm =~ s{LVE\(}          {longValueExact\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z\(}g;
@@ -255,7 +257,7 @@ while (<>) { # read inputfile
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
             $parm =~ s{RQ\(}           {Rationals.SINGLETON.product\(}g;
-            $parm =~ s{RR\(}           {ZUtils.reverse\(}g;
+            $parm =~ s{RR\(}           {Functions.REVERSE.z\(}g;
             $parm =~ s{RU\(}           {Rationals.SINGLETON.sum\(}g;
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
             $parm =~ s{SDA\(}          {ZUtils.sortDigitsAscending\(}g;
