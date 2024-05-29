@@ -873,7 +873,12 @@ A136test:
 	perl aman/exprep.pl aman/$@.man > $@.gen
 
 exprs:
-	cp -v ../../../OEIS-mat/robot/expr_gen.gen $@.gen 
+	grep -v "€" $(COMMON)/../robot/expr_gen.gen | cut -f1-4 \
+	| sed -e "s/lambda\t0\t/lambdan\t0\tn \-\> /" \
+	| grep -vP "[^A]\d{6}" \
+	>        $@.gen 
+	tail -n2 $@.gen
+	wc -l    $@.gen
 #----
 A004050:
 	grep -E "^A" $@.man \

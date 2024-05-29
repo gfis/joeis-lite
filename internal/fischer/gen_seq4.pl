@@ -247,6 +247,7 @@ while (<>) { # read inputfile
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z(}g;
+            $parm =~ s{POD\(([^\)]+)\)}{Jaguar.factor($1).pod()}g;
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {Functions.PARTITIONS.z\(}g;

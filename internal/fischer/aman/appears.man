@@ -1,4 +1,4 @@
----- 2024-05-26 21:43:24
+---- 2024-05-28 18:07:18
 A084500	#nyi	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		a(0)=0, after which each n occurs €084506(n) times.
 A084510	#nyi	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		a(0)=0, after which each n occurs €084516(n) times.
 A084520	#nyi	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		a(0)=0, after which each n occurs €084526(n) times.
@@ -11,17 +11,6 @@ A130149	#nyi R	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		a(0) = a(1) = 1.
 A130805	#nyi R	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		a(1)=1. The n-th run (after the initial 1) consists of (a(n)+n) repeated a(n) times.
 A130865	#nyi R	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		a(1)=1. The n-th run (after the initial 1) consists of (a(n)*n) repeated a(n) times.
 A007318	parmof2	0	A152828	1		A007318 rows 
-A152198	parmof2	0	A152828	2		A007318 rows repeated
-A152828	parmof2	0	A152828	3		A007318 rows repeated three times .
-A152830	parmof2	0	A152828	4		A007318 rows repeated four times .
-A152831	parmof2	0	A152828	5		A007318 repeated five times . 
-A152844	parmof2	0	A152828	6		A007318 rows repeated six times .
-A152845	parmof2	0	A152828	7		A007318 rows repeated seven times .
-A152846	parmof2	0	A152828	8		A007318 rows repeated eight times .
-A152847	parmof2	0	A152828	9		A007318 rows repeated nine times .
-A152848	parmof2	0	A152828	10		A007318 rows repeated ten times .
-A152849	parmof2	0	A152828	11		A007318 rows repeated eleven times .
-A152851	parmof2	0	A152828	12		A007318 rows repeated twelve times .
 A161759	#nyi	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		n occurs n times, as early as possible subject to the constraint that two successive occurrences of n are separated by exactly n terms.
 A163563	#nyi R	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		n occurs 1+a(n) times starting with a(1)=1.
 A213718	#nyi	1	1	n -> new Integer[] { 1, n }	(n, k) -> ZV(n)		n occurs €213712(n) times.
