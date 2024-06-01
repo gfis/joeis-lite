@@ -217,6 +217,7 @@ while (<>) { # read inputfile
             }
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;
             $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." . $zhash{$1}}eg; # after the previous line!
+            $parm =~ s{ARD\(([^\)]+)\)}{Jaguar.factor($1).arithmeticDerivative()}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BS}             {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
@@ -248,11 +249,13 @@ while (<>) { # read inputfile
             $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
-            $parm =~ s{PHI\(}          {Functions.PHI.z(}g;
-            $parm =~ s{POD\(([^\)]+)\)}{Jaguar.factor($1).pod()}g;
+            $parm =~ s{PHI\(}          {Functions.PHI.z(}g;   
+            $parm =~ s{PI\(}           {Functions.PRIME_PI.z(}g;
+            $parm =~ s{POD\(}          {Functions.POD.z\(}g;
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {Functions.PARTITIONS.z\(}g;
+            $parm =~ s{QV\(}           {Q.valueOf\(}g;
             $parm =~ s{RAD\(}          {Functions.RAD.z\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
@@ -260,16 +263,17 @@ while (<>) { # read inputfile
             $parm =~ s{RR\(}           {Functions.REVERSE.z\(}g;
             $parm =~ s{RU\(}           {Rationals.SINGLETON.sum\(}g;
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
-            $parm =~ s{SDA\(}          {ZUtils.sortDigitsAscending\(}g;
-            $parm =~ s{SDD\(}          {ZUtils.sortDigitsDescending\(}g;
+            $parm =~ s{SDA\(}          {Functions.DIGIT_SORT_ASCENDING\(}g;
+            $parm =~ s{SDD\(}          {Functions.DIGIT_SORT_DESCENDING\(}g;
             $parm =~ s{SP\(}           {Functions.SOPF.z\(}g;
             $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
-            $parm =~ s{S1\(}           {Stirling.firstKind\(}g;
-            $parm =~ s{SA\(([^\)]+)\)} {Stirling.firstKind\($1\)\.abs\(\)}g;
-            $parm =~ s{S2\(}           {Stirling.secondKind\(}g;
+            $parm =~ s{S1\(}           {Functions.STIRLING1.z\(}g;
+            $parm =~ s{SA\(([^\)]+)\)} {Functions.STIRLING1.z\(\($1\)\.abs\(\)}g;
+            $parm =~ s{S2\(}           {Functions.STIRLING2.z\(}g;
 #           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
             $parm =~ s{SIGMA\(}        {Functions.SIGMA.z(}g;
+            $parm =~ s{TAU\(}          {Functions.TAU.z(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
             #               1      1    2      2  3    3  with "))"
