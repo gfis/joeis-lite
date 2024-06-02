@@ -300,8 +300,8 @@ while (<>) { # read inputfile
             $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
 
             # extract any DirectSequences
-            my %statics = ();
-            foreach my $xno ($parms[$iparm] =~ m{([ADF]\d{6})\.a\(}g) { # collect the DirectSequences
+            my %statics = (); # maps [ADFM]<number> to A<number>
+            foreach my $xno ($parms[$iparm] =~ m{([ADFM]\d{6})\.a\(}g) { # collect the DirectSequences
               $statics{$xno} = "A" . substr($xno, 1); # D012345 -> A012345
             }
             foreach my $xno (sort(keys(%statics))) { # evaluate the DirectSequences

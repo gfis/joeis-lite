@@ -41,16 +41,18 @@ while (<>) { # read inputfile
     if ($line =~ m{\/\/ *\= *(A\d+.*)}) {
         my $list = $1;
         $list =~ s{ |\;.*}{}g;
-        if ($line =~ m{Function(\d) +([A-Z0-9_]+)}) {
+        if ($line =~ m{Function(\d\w?) +([A-Z0-9_]+)}) {
             my ($ifunc, $static) = ($1, $2);
-            if ($ifunc == 1) {
+            if (0) {
+            } elsif ($ifunc eq "1") {
                 $aseqno = $list;
                     print join("\t", $aseqno, "func$ifunc", "Functions.$static.z($varph1)", "Functions.$static.i($varph1)") . "\n";
-            } else {
+            } elsif ($ifunc eq "2D") {
                 foreach my $seq (split(/\=/, $list)) {
                     ($aseqno, $parm) = split(/\(/, $seq);
                     print join("\t", $aseqno, "func$ifunc", "Functions.$static.z(${parm} $varph1)", "Functions.$static.i(${parm} $varph1)") . "\n";
                 }
+            } else { # "2"
             }
         } else {
             print "2: $line\n" if $debug >= 1;
