@@ -1,0 +1,61 @@
+---- 2024-05-25 21:56:11
+A078691	filtpos	0	1	new A007913()	(n, v) -> D001223.a(n).equals(v)	 n such that A001223(n)=A007913(n)
+%F A079638 T(n, k) = Sum_{i=k..n} |A008297(n, i)| * |A008275(i, k)|.
+%F A079639 T(n, k) = Sum_{i=k..n} A008275(n, i) * |A008297(i, k)|.
+%F A079640 T(n, k) = Sum_{i=k..n} |A008275(n, i)| * |A008297(i, k)|.
+%F A079642 T(n, k) = Sum_{i=k..n} |A008275(n, i)| * A008275(i, k).
+%F A080417 abs(T(n,k)) = A008277(n,k). - _Joerg Arndt_, May 02 2021
+%F A081414 a(n)=A006530[A001223(A000079(n)]=A081412(2^n)=A006530[A074325(n)]
+%F A096501 For n > 2, a(n) = A010051(n) * A001223(A000720(n)-1) = A136548(1+n)-A136548(n). - _Antti Karttunen_, Jan 03 2019
+%F A100375 a(n) = A001223(n) / A006519(A001223(n)).
+%F A109578 a(n) = (A010051(1+n) * A001223(n)). - _Antti Karttunen_, Jan 03 2019
+%N A079639 Matrix product of Stirling1-triangle A008275(n,k) and unsigned Lah-triangle |A008297(n,k)|.
+%N A079640 Matrix product of unsigned Stirling1-triangle |A008275(n,k)| and unsigned Lah-triangle |A008297(n,k)|.
+%N A079642 Matrix product of unsigned Stirling1-triangle |A008275(n,k)| and Stirling1-triangle A008275(n,k).
+%N A088729 Matrix product of Stirling2-triangle A008277(n,k) and unsigned Lah-triangle |A008297(n,k)|.
+%N A088814 Matrix product of unsigned Lah-triangle |A008297(n,k)| and Stirling2-triangle A008277(n,k).
+A094900	multraf	0	(self, n) -> Functions.PRIME.z(n - 1).*(self.s(2).-(self.s(1))./(self.s(1))	"1,0,3"	new A001223(), PREVIOUS, PREVIOUS	a(n) = floor( prime(n-1)*A036263(n-2)/ A001223(n-1)).
+%N A227843 Numbers n such that the binary XOR of the divisors of n (€178910(n)) is a binary repunit (A000225).
+%N A235490 Numbers such that none of their prime factors share common 1-bits in the same bit-position and when added (or "ored" or "xored") together, yield a term of A000225 (a binary "repunit").
+%N A320875 Least d > 0 such that both Q = M + 2d and R = M + (M^2-1)/(Q-M) are prime, where M = 2^n - 1 = A000225(n), or 0 if there is no such d.
+%N A371081 Triangle read by rows, (2, 2)-Lah numbers.      nonn,tabl       2..37   nyi     _Aleks Zigon Tankosic_
+%N A371259 Triangle read by rows, (2, 3)-Lah numbers.      nonn,tabl       3..31   nyi     _Aleks Zigon Tankosic_
+%N A371277 Triangle read by rows, (3, 2)-Lah numbers.      nonn,tabl       2..37   nyi     _Aleks Zigon Tankosic_
+%N A371488	rowsum	0	new A371081()	2..18   nyi     _Aleks Zigon Tankosic_
+%N A371489	rowsum	0	new A371259()	3..18   nyi     _Aleks Zigon Tankosic_
+%N A372208 Triangle read by rows, (3, 3)-Lah numbers.      nonn,tabl,new   3..38   nyi     _Aleks Zigon Tankosic_
+A070866	multrar	0	(self, n) ->  Functions.NEXT_PRIME.z(self.a(n - 1).*(2).-(self.a(n - 2)))	"2,3"	a(n) = A007918(2*a(n-1) - a(n-2))
+A075484	lambdan	0	n -> D008908.a(ZV( 5).^(n)).+(1)	a(n)=Annn((\d+)^n)	 5	D008908
+A084237	lambdan	0	n -> D002321.a(ZV(10).^(n))	a(n)=Annn((\d+)^n)	10	D002321
+A096853	simtraf	0	new A000225()	v -> D000010.a(D000203.a(v))
+A108518	lambdan	0	n -> D033932.a(ZV(10).^(n))	a(n)=Annn((\d+)^n)	10	D033932
+A113634	lambdan	0	n -> D007504.a(ZV( 6).^(n))	a(n)=Annn((\d+)^n)	 6	D007504
+A116087	simtraf	0	new A000045()	v -> D001221.a(D000041.a(v))
+A130642	filnum	1	1	n -> (n & 1) == 0 && Z.ONE.+(SU(1, n/2, k -> D001223.a(2*k - 1).*(Z_1(k)))).isZero()	Numbers n such that 1 + Sum{k=1..n/2} A001223(2k-1)*(-1)^k = 0.
+A130643	filnum	1	1	n -> (n & 1) == 0 && Z.ONE.-(SU(1, n/2, k -> D001223.a(2*k - 1).*(Z_1(k)))).isZero()	Numbers n such that 1 - Sum{k=1..n/2} A001223(2k-1)*(-1)^k = 0.
+A143420	rowsum	2	new A373101()	Row sums of triangle Annnnnn
+A157968	simtraf	0	new A141468()	v -> Z.TWO.pow(v).-(1)	2^n - 1 (A000225) where n is nonprime number (A141468).
+A167446	simtraf	0	new A000045()	v -> D000142.a(D006882.a(v))
+A173617	filnum	1	1	k -> Functions.PHI.z(Functions.TAU.z(k)).equals(RAD(k))	Numbers n such that phi(tau(n))   = rad(n)
+A215609	lambdan	0	n -> D035095.a(ZV(10).^(n))	a(n)=Annn((\d+)^n)	10	D035095
+A248728	lambdan	0	n -> D000041.a(ZV( 3).^(n))	a(n)=Annn((\d+)^n)	 3	D000041
+A259897	simtraf	0	new A000984()	v -> D007814.a(D000010.a(v))
+A266401	lambdan	0	n -> D064989.a(D263273.a(D003961(n)))	a(n)=Annn(Annn(Annn(n)))		D064989,D263273,D003961
+A273400	lambdan	0	n -> D000108.a(D000108.a(D000108(n)))	a(n)=Annn(Annn(Annn(n)))		D000108,D000108,D000108
+A279495	lambdan	0	n -> SD(n, d -> D023533.a(d))	a(n)=Sum_{d|n}Annn(d)		D023533
+A291216	filter	0	new RecordSequence(0, new A000931())	v -> Predicates.SQUARE.is(v)	Common terms of A000931 and A000290.
+A291673	filter	0	new RecordSequence(0, new A000931())	v -> Predicates.FIBONACCI.is(v)	Common terms of A000931 and A000045.
+A309530	lambdan	0	n -> D001511.a(D051027.a(D000079(n)))	a(n)=Annn(Annn(Annn(n)))		D001511,D051027,D000079
+A327522	lambdan	0	n -> D000041.a(D001222.a(D000961(n)))	a(n)=Annn(Annn(Annn(n)))		D000041,D001222,D000961
+A329434	lambdan	0	n -> SD(n, d -> D000700.a(d))	a(n)=Sum_{d|n}Annn(d)		D000700
+A334988	lambdan	0	n -> SD(n, d -> D023533.a(d))	a(n)=Sum_{d|n}Annn(d)*d		D023533
+A342841	lambdan	0	n -> D071778.a(ZV(10).^(n))	a(n)=Annn((\d+)^n)	10	D071778
+A343193	lambdan	0	n -> D082540.a(ZV(10).^(n))	a(n)=Annn((\d+)^n)	10	D082540
+A343282	lambdan	0	n -> D082544.a(ZV(10).^(n))	a(n)=Annn((\d+)^n)	10	D082544
+A347064	lambdan	0	n -> D061799.a(ZV( 2).^(n))	a(n)=Annn((\d+)^n)	 2	D061799
+A347654	lambdan	0	n -> D000700.a(ZV(10).^(n))	a(n)=Annn((\d+)^n)	10	D000700
+A354195	lambdan	0	n -> D064989.a(D051027.a(D003961(n)))	a(n)=Annn(Annn(Annn(n)))		D064989,D051027,D003961
+A354197	lambdan	0	n -> D064989.a(D066971.a(D003961(n)))	a(n)=Annn(Annn(Annn(n)))		D064989,D066971,D003961
+A365161	simtraf	0	new A059305()	v -> D001223.a(v.-(1))	a(n) = A001223(A059305(n)-1). - _Michel Marcus_, Aug 25 2023
+A373101	tablamb	2	2	n -> new Integer[] {1, n - 1}	(n, k) -> BI(n, k).^(3).-(BI(n, k))./(6)
+

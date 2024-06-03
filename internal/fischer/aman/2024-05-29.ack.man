@@ -1,0 +1,123 @@
+---- 2024-05-28 01:21:55
+---- 2024-05-28 02:04:52
+---- 2024-05-29 02:13:14
+A075877	multrar	1	(self, n) -> (n < 10) ? ZV(n) : self.a(n/10).^(n%10)	""
+A087138	lambdan	0	n -> SU(1, n, k -> S1(n, k).*(FA(k  )).*(Functions.CATALAN.z(k - 1)) )
+A088152	lambdan	0	n -> new Q(n).^(n)./(ZV( 8).^(n)).floor().modZ( 8)
+A088157	lambdan	0	n -> new Q(n).^(n)./(ZV(60).^(n)).floor().modZ(60)
+A088150	lambdan	0	n -> new Q(n).^(n)./(ZV( 2).^(n)).floor().modZ( 2)
+A088151	lambdan	0	n -> new Q(n).^(n)./(ZV( 3).^(n)).floor().modZ( 3)
+A088153	lambdan	0	n -> new Q(n).^(n)./(ZV(10).^(n)).floor().modZ(10)
+A088154	lambdan	0	n -> new Q(n).^(n)./(ZV(12).^(n)).floor().modZ(12)
+A088155	lambdan	0	n -> new Q(n).^(n)./(ZV(16).^(n)).floor().modZ(16)
+A088156	lambdan	0	n -> new Q(n).^(n)./(ZV(20).^(n)).floor().modZ(20)
+A105662	lambdan	0	n -> CR.valueOf(n).sin().*(n).floor().abs()
+A105663	lambdan	0	n -> CR.valueOf(n).cos().*(n).floor().abs()
+A115304	multrar	1	(self, n) -> (n < 4) ? ZV(n) : self.a(n/4).*(4).+(3).-(n%4)	""
+A115305	multrar	1	(self, n) -> (n < 5) ? ZV(n) : self.a(n/5).*(5).+(4).-(n%5)	""
+A115306	multrar	1	(self, n) -> (n < 6) ? ZV(n) : self.a(n/6).*(6).+(5).-(n%6)	""
+A115307	multrar	1	(self, n) -> (n < 7) ? ZV(n) : self.a(n/7).*(7).+(6).-(n%7)	""
+A115308	multrar	1	(self, n) -> (n < 8) ? ZV(n) : self.a(n/8).*(8).+(7).-(n%8)	""
+A115309	multrar	1	(self, n) -> (n < 9) ? ZV(n) : self.a(n/9).*(9).+(8).-(n%9)	""
+A115311	lambdan	1	n -> Functions.LUCAS.z(n).-(1).gcd(Functions.FIBONACCI.z(n).-(1))
+A115312	lambdan	1	n -> Functions.LUCAS.z(n).-(1).gcd(Functions.FIBONACCI.z(n).+(1))
+A115313	lambdan	1	n -> Functions.LUCAS.z(n).+(1).gcd(Functions.FIBONACCI.z(n).+(1))
+A115314	lambdan	1	n -> Functions.LUCAS.z(n).+(1).gcd(Functions.FIBONACCI.z(n).-(1))
+A122481	multrar	0	(self, n) -> (n < 10) ? ZV(n) : self.a(Functions.DIGIT_SUM.i(n)).+(Functions.DIGIT_SUM.i(n))	""
+A171960	multrar	0	(self, n) -> (n < 3) ? ZV(2-n) : self.a(n/3).*(3).+(2).-(n%3)	""
+A192548	lambdan	0	n -> SU(0, n, k -> SA(n,k).*(S2(n+1, k+1)))
+A192549	lambdan	0	n -> SU(0, n, k -> SA(n+1,k+1).*(S2(n, k)))
+A192551	lambdan	0	n -> SU(0, n, k -> SA(n+1,k+1).*(FA(k).^(2)))
+A192556	lambdan	0	n -> SU(0, n, k -> SA(n+1,k+1).*(Z_1(n-k)).*(FA(k).^(2)))
+A192562	lambdan	0	n -> SU(0, n, k -> SA(n,k).*(S2(n+1, k+1)).*(FA(k)))
+A192564	lambdan	0	n -> SU(0, n, k -> SA(n,k).*(S2(n, k)).*(FA(k).^(2)))
+A192565	lambdan	0	n -> SU(0, n, k -> SA(n+1,k+1).*(S2(n, k)).*(FA(k).^(2)))
+A192567	lambdan	0	n -> SU(0, n, k -> SA(n+1,k+1).*(S2(n+1, k+1)).*(FA(k).^(2)))
+A192569	lambdan	0	n -> SU(0, n, k -> SA(n,k).*(S1(n+1, k+1)).*(S1(n+2, k+2)))
+A218303	lambdan	0	n -> (n == 0) ? Z.ONE : SU(0, n, k -> ZV(2*k + 1).^(n-1).*(BI(n,k)))./(2)
+A218305	lambdan	0	n -> (n == 0) ? Z.ONE : SU(0, n, k -> ZV(3*k + 1).^(n-1).*(BI(n,k)))./(2)
+A218307	lambdan	0	n -> (n == 0) ? Z.ONE : SU(0, n, k -> ZV(4*k + 1).^(n-1).*(BI(n,k)))./(2)
+A218310	lambdan	0	n -> (n == 0) ? Z.ONE : SU(0, n, k -> ZV(5*k + 1).^(n-1).*(BI(n,k)))./(2)
+A226515	lambdan	0	n -> SU(0, n, i -> S2(n, i).*(FA(i)).*(BI(2 + i, i)))
+A226739	lambdan	0	n -> SU(0, n, i -> S2(n, i).*(FA(i)).*(BI(4 + i, i)))
+A226740	lambdan	0	n -> SU(0, n, i -> S2(n, i).*(FA(i)).*(BI(5 + i, i)))
+A247083	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 3, k -> Functions.DIGIT_SUM.z(self.a(k))))	"0"
+A247084	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 4, k -> Functions.DIGIT_SUM.z(self.a(k))))	"0"
+A259043	multrar	0	(self, n) -> (n < 10) ? ZV(n) : self.a(n/10 +n%10).+(n%10)	""
+A265391	lambdan	1	n -> RD(n, d -> new Q(Z.ONE, Functions.TAU.z(d))).num()
+A265709	lambdan	1	n -> RD(n, d -> new Q(Z.ONE, Functions.SIGMA1.z(d))).num()
+A291979	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> BI(n, k).*(FA(n - k - 1)).*(self.a(k))))	""
+A308554	lambdan	1	n -> SU(1, n, k -> S2(n, k).*(Functions.TAU.z(k)))
+A318491	lambdan	1	n -> RD(n, d -> new Q(Functions.SIGMA1.z(d), ZV(d))).num()
+A323706	lambdan	1	n -> RD(n, d -> new Q(Functions.TAU.z(d), POD(d))).num()
+A323779	lambdan	1	n -> RD(n, d -> new Q(Functions.TAU.z(d), Functions.SIGMA1.z(d))).num()
+A324363	lambdan	1	n -> RD(n, d -> new Q(Functions.SIGMA1.z(d), POD(d))).num()
+A324499	lambdan	1	n -> RD(n, d -> new Q(Functions.SIGMA1.z(d), Functions.TAU.z(d))).num()
+A324501	lambdan	1	n -> RD(n, d -> new Q(ZV(1), POD(d))).num()
+A324503	lambdan	1	n -> RD(n, d -> new Q(ZV(d), Functions.TAU.z(d))).num()
+A324505	lambdan	1	n -> RD(n, d -> new Q(ZV(d), POD(d))).num()
+A324982	lambdan	1	n -> RD(n, d -> new Q(POD(d), Functions.TAU.z(d))).num()
+A324984	lambdan	1	n -> RD(n, d -> new Q(POD(d), Functions.SIGMA1.z(d))).num()
+A330351	lambdan	1	n -> SU(1, n, k -> S2(n, k).*(FA(k-1)).*(Functions.TAU.z(k)))
+A330352	lambdan	1	n -> SU(1, n, k -> S1(n, k).*(FA(k-1)).*(Functions.TAU.z(k))         )
+A330449	lambdan	1	n -> SU(1, n, k -> S2(n, k).*(FA(k-1)).*(Functions.SIGMA.z(2, k))    )
+A330450	lambdan	1	n -> SU(1, n, k -> S1(n, k).*(FA(k-1)).*(Functions.SIGMA.z(2, k))    )
+A335946	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> BI(n, k).^(2).*(self.a(k))))	""
+A336009	multrar	0	(self, n) -> SU(0, n - 4, k -> BI(n - 4, k    ).*(self.a(k)).*(self.a(n -k - 4)))	"1,1,1,1,1"
+A336010	multrar	0	(self, n) -> SU(0, n - 5, k -> BI(n - 5, k    ).*(self.a(k)).*(self.a(n -k - 5)))	"1,1,1,1,1"
+A337186	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 2, k -> BI(n - 2, k    ).*(self.a(k))))	""
+A337187	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 2, k -> BI(n - 2, k    ).*(self.a(k)).*(self.a(n - k - 2))))	""
+A344489	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 2, k -> BI(n - 1, k    ).*(self.a(k))))	""
+A344490	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 3, k -> BI(n - 2, k    ).*(self.a(k))))	""
+A344491	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 4, k -> BI(n - 3, k    ).*(self.a(k))))	""
+A344492	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 5, k -> BI(n - 4, k    ).*(self.a(k))))	""
+A344493	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 6, k -> BI(n - 5, k    ).*(self.a(k))))	""
+A347854	lambdan	0	n -> new Q(BI(6*n, 2*n).*(BI(4*n,   n)))./(BI(new Q(3*n, 2), ZV(n  ))).num()
+A347856	lambdan	0	n -> new Q(BI(6*n, 4*n).*(BI(2*n,   n)))./(BI(new Q(3*n, 2), ZV(n  ))).num()
+A347857	lambdan	0	n -> new Q(BI(6*n, 3*n).*(BI(3*n, 2*n)))./(BI(new Q(5*n, 2), ZV(n  ))).num()
+A347858	lambdan	0	n -> new Q(BI(9*n, 3*n).*(BI(6*n, 2*n)))./(BI(new Q(9*n, 2), ZV(4*n))).num()
+A348857	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> ZV(2).^(k).*(self.a(k)).*(self.a(n -k - 1))))	""
+A348858	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> ZV(3).^(k).*(self.a(k)).*(self.a(n -k - 1))))	""
+A348859	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> ZV(4).^(k).*(self.a(k)).*(self.a(n -k - 1))))	""
+A351028	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n - 2, k).*(ZV(2).^(k)).*(self.a(n - k - 2)))	"0,1"
+A351053	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n - 2, k).*(ZV(3).^(k)).*(self.a(n - k - 2)))	"0,1"
+A351128	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n - 2, k).*(ZV(4).^(k)).*(self.a(n - k - 2)))	"0,1"
+A351132	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n - 2, k).*(ZV(5).^(k)).*(self.a(n - k - 2)))	"0,1"
+A351161	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n - 2, k).*(ZV(6).^(k)).*(self.a(n - k - 2)))	"0,1"
+A351343	multrar	0	(self, n) -> SU(0, n - 4, k -> BI(n - 4, k    ).*(self.a(n-k-4)).*(Z2(k)))	"1,1,1,1,1"
+A351344	multrar	0	(self, n) -> SU(0, n - 5, k -> BI(n - 5, k    ).*(self.a(n-k-5)).*(Z2(k)))	"1,1,1,1,1"
+A351707	multrar	0	(self, n) -> SU(0, n - 4, k -> BI(n - 3, k + 1).*(self.a(k)))	"1,1,1,1,1"
+A351754	multrar	0	(self, n) -> SU(0, n - 5, k -> BI(n - 4, k + 1).*(self.a(k)))	"1,1,1,1,1"
+A352861	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> BI(n + 2, k + 3).*(self.a(k))))	""
+A352862	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> BI(n + 3, k + 4).*(self.a(k))))	""
+A367713	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k/2).*(self.a(n - 1 - k))))	""
+A367714	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k/3).*(self.a(n - 1 - k))))	""
+A367715	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k/4).*(self.a(n - 1 - k))))	""
+A368545	lambdan	0	n -> FA(6*n  ).*(FA(9*n  ))./(FA(2*n).*(FA(3*n)).*(FA(5*n  ).^(2)))
+A368650	lambdan	0	n -> FA(6*n+1).*(FA(9*n+1))./(FA(2*n).*(FA(3*n)).*(FA(5*n+1).^(2)))
+---- 2024-05-28 18:07:17
+A152198	parmof2	0	A152828	2		A007318 rows repeated
+A152830	parmof2	0	A152828	4		A007318 rows repeated four times .
+A152831	parmof2	0	A152828	5		A007318 repeated five times .
+A152844	parmof2	0	A152828	6		A007318 rows repeated six times .
+A152845	parmof2	0	A152828	7		A007318 rows repeated seven times .
+A152846	parmof2	0	A152828	8		A007318 rows repeated eight times .
+A152847	parmof2	0	A152828	9		A007318 rows repeated nine times .
+A152848	parmof2	0	A152828	10		A007318 rows repeated ten times .
+A152849	parmof2	0	A152828	11		A007318 rows repeated eleven times .
+A152851	parmof2	0	A152828	12		A007318 rows repeated twelve times .
+---- 2024-05-28 22:45:07
+A135020	lambdan	1	n -> (n & 1) == 1 ? ZV((n + 1)/2) : Functions.REVERSE.z(10, n/2)	a(n) = (n+1)/2 for n = odd, a(n) = A004086(n/2) for n = even
+A196995	lambdan	1	n -> (n == 1) ? Z.ZERO : Z.NEG_ONE.pow(BI(n, 2)).multiply(Z2(n*n - 1)).multiply(Z.valueOf(n).pow(n*n))
+A209295	lambdan	0	n -> (n == 0) ? Z.ZERO : SD(n, d -> Functions.PHI.z(d).multiply(n/d+1))
+A217920	lambdan	1	n -> (n == 1) ? Z.TWO : Functions.PRIME.z(n*(n - 1)/2 + 1).subtract(Functions.PRIME.z(n*(n - 1)/2))	a(n) = prime(n*(n-1)/2 + 1) - prime(n*(n-1)/2) for n>1 with a(1)=2
+A218306	lambdan	0	n -> (n == 0) ? Z.ONE : SU(0, n, k -> Z.valueOf(3*k+2).pow(n-1).multiply(BI(n, k)))
+A228640	lambdan	0	n -> (n == 0) ? Z.ZERO : SD(n, d -> Functions.PHI.z(d).multiply(Z.valueOf(n).pow(n/d)))
+A243942	lambdan	0	n -> (n == 0) ? Z.ONE : SU(1, n, k -> BI(n-1, k-1).multiply(Stirling.secondKind(n+k, k)))
+A266926	lambdan	0	n -> (n <= 2) ? new Z(Integer.toString(n, 2)) : Z.valueOf(110).multiply(Z.TEN.pow(Z.THREE.multiply(Z2(n-3))).subtract(Z.ONE)).divide(Z.valueOf(999))
+A340288	lambdan	1	n -> SU(1, n, k -> CR.valueOf(n - k).pow(new Q(1, k)).floor().divide(k))
+A344689	lambdan	1	n -> (n == 2) ? Z.valueOf(14) : Z.valueOf(n).pow(4).multiply(FA(n-1).pow(Z.valueOf(2*n)))
+A351165	lambdan	1	n -> RD(n, d -> new Q(d).pow(d-n/d)).*(FA(n)).num()	a(n) = n!*sumdiv(n, d, d^(d-n/d));
+A361871	lambdan	1	n -> (n <= 2) ? Z.SIX : Z.TWO.multiply(n)
+A363705	padding	3	0,4,2,6	8		The minimum irregularity of all maximal 2-degenerate graphs with n vertices.
+A373101	trilambn	2	2	1	(n, k) -> BI(n, k).^(3).-(BI(n, k))./(6)	Triangle read by rows, T(n,k) = (binomial(n,k)^3 - binomial(n,k))/6 for k=1..n-1 and n >= 2.	nonn,easy,tabl,new

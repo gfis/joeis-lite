@@ -1,0 +1,127 @@
+---- 2024-06-03 15:34:15
+ * A225401 10-adic integer x such that x^3 = -7/9.
+    super(offset);
+ * A225402 10-adic cube root of -1/3.
+    super(0, 7, 9, 3, 3, +1, 10);
+ * A225405 10-adic integer x such that x^3 = 7.
+    super(0, 3, 7, 1, 3, -7, 10);
+ * A225406 Digits of the 10-adic integer 9^(1/3).
+    super(0, 9, 3, 1, 3, -9, 10);
+ * A225407 10-adic integer x such that x^3 = -3.
+    super(0, 3, 7, 1, 3, +3, 10);
+ * A225408 10-adic integer x=.....8457 satisfying x^3 = -7.
+    super(0, 7, 7, 1, 3, +7, 10);
+ * A225409 Digits of the 10-adic integers (-9)^(1/3).
+    super(0, 1, 3, 1, 3, +9, 10);
+ * A225410 10-adic integer x such that x^3 = 7/9.
+    super(0, 7, 3, 9, 3, -7, 10);
+ * A225411 10-adic integer x such that x^3 == (6*(10^(n+1)-1)/9)+1 mod 10^(n+1) for all n.
+    super(0, 3, 9, 3, 3, -1, 10);
+ * A225412 Digits of the 10-adic integer (1/9)^(1/3).
+    super(0, 9, 7, 9, 3, -1, 10);
+ * A225458 10-adic integer x such that x^9 = 9.
+    super(0, 9, 1, 1, 9, -9, 10);
+ * A225464 10-adic integer x such that x^9 = 1/9.
+    super(0, 9, 9, 9, 9, -1, 10);
+ * A309569 Digits of the 10-adic integer (11/3)^(1/3).
+    super(0, 3, 9, 3, 3, -11, 10);
+ * A309570 Digits of the 10-adic integer (17/3)^(1/3).
+    super(0, 9, 1, 3, 3, -17, 10);
+ * A309595 Digits of the 10-adic integer (-31/9)^(1/3).
+    super(0, 1, 7, 9, 3, +31, 10);
+ * A309600 Digits of the 10-adic integer (17/9)^(1/3).
+    super(0, 7, 3, 9, 3, -17, 10);
+ * A309601 Digits of the 10-adic integer (53/9)^(1/3).
+    super(0, 3, 3, 9, 3, -53, 10);
+ * A309602 Digits of the 10-adic integer (71/9)^(1/3).
+    super(0, 9, 7, 9, 3, -71, 10);
+ * A309603 Digits of the 10-adic integer (-11/9)^(1/3).
+    super(0, 1, 7, 9, 3, +11, 10);
+ * A309604 Digits of the 10-adic integer (43/9)^(1/3).
+    super(0, 3, 3, 9, 3, -43, 10);
+ * A309605 Digits of the 10-adic integer (61/9)^(1/3).
+    super(0, 9, 7, 9, 3, -61, 10);
+ * A309606 Digits of the 10-adic integer (-7/3)^(1/3).
+    super(0, 1, 1, 3, 3, +7, 10);
+ * A309608 Digits of the 10-adic integer (-13/9)^(1/3).
+    super(0, 7, 3, 9, 3, +13, 10);
+ * A309609 Digits of the 10-adic integer (23/9)^(1/3).
+    super(0, 3, 3, 9, 3, -23, 10);
+ * A309610 Digits of the 10-adic integer (41/9)^(1/3).
+    super(0, 9, 7, 9, 3, -41, 10);
+ * A309611 Digits of the 10-adic integer (-41/9)^(1/3).
+    super(0, 1, 7, 9, 3, +41, 10);
+ * A309612 Digits of the 10-adic integer (-23/9)^(1/3).
+    super(0, 7, 3, 9, 3, +23, 10);
+ * A309613 Digits of the 10-adic integer (13/9)^(1/3).
+    super(0, 3, 3, 9, 3, -13, 10);
+ * A309614 Digits of the 10-adic integer (31/9)^(1/3).
+    super(0, 9, 7, 9, 3, -31, 10);
+ * A309642 Digits of the 10-adic integer (7/3)^(1/3).
+    super(0, 9, 1, 3, 3, -7, 10);
+ * A309643 Digits of the 10-adic integer (-61/9)^(1/3).
+    super(0, 1, 7, 9, 3, +61, 10);
+ * A309644 Digits of the 10-adic integer (-43/9)^(1/3).
+    super(0, 7, 3, 9, 3, +43, 10);
+ * A309645 Digits of the 10-adic integer (11/9)^(1/3).
+    super(0, 9, 7, 9, 3, -11, 10);
+ * A309646 Digits of the 10-adic integer (-71/9)^(1/3).
+    super(0, 1, 7, 9, 3, +71, 10);
+ * A309647 Digits of the 10-adic integer (-53/9)^(1/3).
+    super(0, 7, 3, 9, 3, +53, 10);
+ * A309648 Digits of the 10-adic integer (-17/9)^(1/3).
+    super(0, 3, 3, 9, 3, +17, 10);
+ * A309698 Digits of the 4-adic integer 3^(1/3).
+    super(0, 3, 1, 1, 3, -3, 4);
+ * A309699 Digits of the 6-adic integer 5^(1/5).
+    super(0, 5, 1, 1, 5, -5, 6);
+ * A309700 Digits of the 8-adic integer 7^(1/7).
+    super(0, 7, 1, 1, 7, -7, 8);
+ * A309722 Digits of the 4-adic integer (1/3)^(1/3).
+    super(0, 3, 3, 3, 3, -1, 4);
+ * A309723 Digits of the 6-adic integer (1/5)^(1/5).
+    super(0, 5, 5, 5, 5, -1, 6);
+ * A309724 Digits of the 8-adic integer (1/7)^(1/7).
+    super(0, 7, 7, 7, 7, -1, 8);
+ * A322931 Digits of the 8-adic integer 3^(1/3).
+    super(0, 3, 5, 1, 3, -3, 8);
+ * A322932 Digits of the 8-adic integer 5^(1/3).
+    super(0, 5, 5, 1, 3, -5, 8);
+ * A322933 Digits of the 8-adic integer 7^(1/3).
+    super(0, 7, 5, 1, 3, -7, 8);
+ cf. A225401 main        
+                                          -num           den
+ * A309648 Digits of the 10-adic integer (-17       /      9)^(         1/         3).
+        parm2=init       parm7            -parm6       parm4
+    
+      offset  init	   	   den 	   	-num	base
+    super(0,     3,	 3,	     9,	 3,	 +17,	 10);
+      offset    p2 	 p3	    p4,	p5	  p6  	 p7
+    
+       	cc     	off	rseqno	ini		den              		-num              	ba	base             	 num              	 den
+
+---- 2024-06-03 15:34:13
+#A225443	parmof7	0	A225401	1	3	9                		+1                	10	10-adic integer (	-1                	/9                )^(1/7)
+A225446	parmof7	0	A225401	9	7	1	7	-9	10	10-adic integer (
+A225449	parmof7	0	A225401	1	7	1	7	+9	10	10-adic integer (
+#A225452	parmof7	0	A225401	9	3	9                		-1                	10	10-adic integer (	 1                	/9                )^(1/7)
+#309640	parmof7	0	A225401	1	1	3                	3	+17               	10	10-adic integer (	-17               	/3                )^(1/3)
+A309641	parmof7	0	A225401	7	9	3	3	+11	10	10-adic integer (
+A309818	parmof7	0	A225401	1	7	999999999L	3	+987654321L	10	10-adic integer (
+#A309819	parmof7	0	A225401	1	3	999999999L       		+987654321L       	10	10-adic integer (	-987654321L       	/999999999L       )^(1/7)
+A309820	parmof7	0	A225401	1	9	999999999L	9	+987654321L	10	10-adic integer (
+A309821	parmof7	0	A225401	9	7	999999999L	3	+123456789L	10	10-adic integer (
+#A309822	parmof7	0	A225401	9	3	999999999L       		+123456789L       	10	10-adic integer (	-123456789L       	/999999999L       )^(1/7)
+A309823	parmof7	0	A225401	9	9	999999999L	9	+123456789L	10	10-adic integer (
+A309824	parmof7	0	A225401	1	7	9999999999999999L	3	+2345678987654321L	10	10-adic integer (
+#A309825	parmof7	0	A225401	1	3	9999999999999999L		+2345678987654321L	10	10-adic integer (	-2345678987654321L	/9999999999999999L)^(1/7)
+A309826	parmof7	0	A225401	1	9	9999999999999999L	9	+2345678987654321L	10	10-adic integer (
+A322169	#parmof7	0	A225401	2	5	1                	5	-7                	 5	 5-adic integer (	 7                	/1                )^(1/5) 	does not work
+A323000	parmof7	0	A225401	1	3	1	3	-3	2	2-adic integer (
+A323045	parmof7	0	A225401	1	3	1	3	-5	2	2-adic integer (
+A323095	parmof7	0	A225401	1	3	1	3	-7	2	2-adic integer (
+A323096	parmof7	0	A225401	1	3	1	3	-9	2	2-adic integer (
+A325896	parmof7	0	A225401	1	3	1	5	-3	2	2-adic integer (
+A325897	parmof7	0	A225401	1	3	1	5	-5	2	2-adic integer (
+A325898	parmof7	0	A225401	1	3	1	5	-7	2	2-adic integer (
+A325899	parmof7	0	A225401	1	3	1	5	-9	2	2-adic integer (

@@ -1,0 +1,74 @@
+---- 2024-06-03 21:32:46
+# A373297	eultraf	0	new A373216()
+# A373298	eultraf	0	new A373217()
+%F A134964 eultraf	0	new A001429 + A000055. - _Geoffrey Critzer_, Oct 13 2012
+%N A076865 eultraf	0	new Inverse Euler transform of 1, 1, 3, 8, 23, ... (A050535).
+%N A085686 eultraf	0	new Inverse Euler transform of Bell numbers.
+%N A131764 eultraf	0	new Inverse Euler transform of central binomial coefficients A000984.
+
+%N A309436 Number of prime parts in the partitions of n into 7 parts.
+%N A309437 Number of prime parts in the partitions of n into 8 parts.
+%N A309438 Number of prime parts in the partitions of n into 9 parts.
+%N A309439 Number of prime parts in the partitions of n into 10 parts.
+%N A309463 Number of squarefree parts in the partitions of n into 9 parts.
+%N A309464 Number of squarefree parts in the partitions of n into 10 parts.
+%N A309511 Number of odd parts in the partitions of n into 3 parts.
+%N A309513 Number of even parts in the partitions of n into 3 parts.
+%N A309516 Number of odd parts in the partitions of n into 4 parts.
+%N A309518 Number of even parts in the partitions of n into 4 parts.
+%N A309546 Number of even parts in the partitions of n into 5 parts.
+%N A309549 Number of odd parts in the partitions of n into 6 parts.
+%N A309551 Number of even parts in the partitions of n into 6 parts.
+%N A309622 Number of odd parts in the partitions of n into 7 parts.
+%N A309625 Number of even parts in the partitions of n into 7 parts.
+%N A309628 Number of odd parts in the partitions of n into 8 parts.
+%N A309630 Number of even parts in the partitions of n into 8 parts.
+%N A309656 Number of odd parts in the partitions of n into 9 parts.
+%N A309658 Number of even parts in the partitions of n into 9 parts.
+%N A309660 Number of odd parts in the partitions of n into 10 parts.
+%N A309662 Number of even parts in the partitions of n into 10 parts.
+%N A320784 eultraf	0	new Negated inverse Euler transform of {-1 if n is a triangular number else 0, n > 0} = -A010054.
+%N A349903 eultraf	0	new Array read by ascending antidiagonals. Inverse Euler transform of the right-shifted k-bonacci numbers.
+%N A358451 eultraf	0	new Inverse Euler transform of the Riordan numbers, (A005043).
+%N A358452 eultraf	0	new The inverse Euler transform of p(n) = n if n is prime, otherwise 1.
+%N A364842 eultraf	0	new Table read by antidiagonals: row n gives the Euler transform of the sequence (2,...,2,0,0,...) that contains n 2s followed by 0s.
+A088327	eultraf	0	new A000108()	. - _Franklin T. Adams-Watters_, Mar 01 2006
+A137917	eultraf	0	new A001429()
+A157016	eultraf	0	new A157051()
+A158098	eultraf	0	new LambdaSequence(1, n -> Z2(Functions.TRIANGULAR.i(n)))	Euler transform of triangular powers of 2: [2,2^3,2^6,...,2^(n(n+1)/2),...].
+A158099	eultraf	0	new LambdaSequence(1, n -> Z2(n*n))	Functions.TRIANGULAR.i(n)))	Euler transform of square powers of 2: [2,2^4,2^9,...,2^(n^2),...].
+A179397	simtraf	0	new A000040()	(n, v) -> v.^(2).mod(Functions.PRIME.z(n - 2))		a(n) = prime(n)^2 mod prime(n-2).
+A179398	simtraf	0	new A000040()	(n, v) -> v.^(2).mod(Functions.PRIME.z(n - 3))		a(n) = prime(n)^2 mod prime(n-3).
+A195255	lambdan	0	n -> RU(1, n, k -> new Q(ZV(3).^(k), FA(k -1))).*(FA(n - 1)).num()		a(n) = (n-1)!*Sum_{k=1..n} 3^k/(k-1)! for n>0, with a(0)=1.
+A195256	lambdan	0	n -> RU(1, n, k -> new Q(ZV(4).^(k), FA(k -1))).*(FA(n - 1)).num()		a(n) = (n-1)!*Sum_{k=1..n} 4^k/(k-1)! for n>0, with a(0)=1.
+A195257	lambdan	0	n -> RU(1, n, k -> new Q(ZV(5).^(k), FA(k -1))).*(FA(n - 1)).num()		a(n) = (n-1)!*Sum_{k=1..n} 5^k/(k-1)! for n>0, with a(0)=1.
+A197132	eultraf	0	new A002808()	Euler transform of composite numbers.
+A204270	simtraf	0	new A000129()	(n, v) -> Functions.SIGMA0.z(n).*(v)	tau(n)*Pell(n)
+A204271	simtraf	0	new A000129()	(n, v) -> Functions.SIGMA1.z(n).*(v)	sigma(n)*Pell(n)
+A204272	simtraf	0	new A000129()	(n, v) -> Functions.SIGMA.z(2, n).*(v)	sigma2(n)*Pell(n)
+A204273	simtraf	0	new A000129()	(n, v) -> Functions.SIGMA.z(3, n).*(v)	sigma3(n)*Pell(n)
+A217201	eultraf	0	new A000029()
+A271929	eultraf	0	new A046211()	, where A046211(n) is the number of ternary Lyndon words whose digits sum to 1 (or 2) mod 3.
+A345220	lambdan	0	n -> SD(n, d -> Functions.PRIME_PI.z(d).+(1)).modZ(2)		a(n) = Sum_{d|n} ((pi(d)+1) mod 2).
+A348378	multrar	0	(self, n) -> SU(1, n, k -> self.a(k)).+(SD(n, d -> (d < n) ? self.a(d) : Z.ZERO)).+(1)	"1"	a(n) = 1 + (Sum_{k=1..n-1} a(k)) + (Sum_{d|n, d<n} a(d)). - _Andrew Howroyd_, Jan 25 2022
+A353976	lambdan	0	n -> PD(n, d -> ZV(d).^(ARD(1).+(1).and(Z.ONE)))	(1+d') % 2)		a(n) = Product_{d|n} d^((1+d') mod 2), where d' is the arithmetic derivative of d.'
+A358369	eultraf	0	new A016116()
+A358449	eultraf	0	new PrependSequence(0, new A122803(), 0)	Euler transform of (0, 1, -2, 4, -8, 16, ...), (cf. A122803).
+A362627	eultraf	0	new LambdaSequence(0, n -> Functions.SIGMA.z(n, n))	sigma_n(n) (sum of n-th powers of divisors of n).
+A368834	eultraf	0	new PrependSequence(0, new A005703().skip(2), 1, 0)	 with A005703(1) = 0.
+A373280	lambdan	0	m -> SD(m, n -> ZV(n).*(SD(n, d -> Functions.GCD.i(d, 4) != 1 ? Z.ZERO : Functions.MOEBIUS.z(d).*(ZV(4).^(n/d)))./(4*n)))
+A373282	lambdan	0	m -> SD(m, n -> ZV(n).*(SD(n, d -> Functions.GCD.i(d, 6) != 1 ? Z.ZERO : Functions.MOEBIUS.z(d).*(ZV(6).^(n/d)))./(6*n)))
+A373296	eultraf	0	new A055457()
+A373296	eultraf	0	new A055457()
+
+  A105736	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)= 3	nonn	1..102	nyi	_Zak Seidov_
+  A105737	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)= 4	nonn	1..102	nyi	_Zak Seidov_
+  A105738	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)= 5	nonn	1..102	nyi	_Zak Seidov_
+  A105739	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)= 6	nonn	1..102	nyi	_Zak Seidov_
+  A105740	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)= 7	nonn	1..102	nyi	_Zak Seidov_
+  A105741	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)= 8	nonn	1..102	nyi	_Zak Seidov_
+  A105742	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)= 9	nonn	1..102	nyi	_Zak Seidov_
+  A105743	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)=10	nonn	1..102	nyi	_Zak Seidov_
+  A105744	nyi	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)=11	nonn	1..102	nyi	_Zak Seidov_
+  A105745	Hol	For n>2, a(n) > 0 is such that a(n-1)^2+4*a(n-2)*a(n) is a minimal square, a(1)=1,a(2)=12	nonn,easy	1..99	holos	_Zak Seidov_
+A

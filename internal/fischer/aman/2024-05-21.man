@@ -1,0 +1,68 @@
+---- 2024-05-29 02:13:16
+
+
+   A079116	multrar	0	(self, n) -> floor((1/n)*sum(k=1,n,self.a(k)^(n/k))	"1,2,3"             	""
+   A079117	multrar	0	(self, n) -> floor((1/n)*sum(k=1,n,self.a(k)^(n/k))	"1,2,5"             	""
+   A079118	multrar	0	(self, n) -> floor((1/n)*sum(k=1,n,self.a(k)^(n/k))	"1,2,6"             	""
+   A079119	multrar	0	(self, n) -> floor((1/n)*sum(k=1,n,self.a(k)^(n/k))	"1,2,7"             	""
+# A105664	lambdan	0	n -> CR.valueOf(n).tan().*(n).floor().abs()
+# FATOK A208399	filter	0	new LambdaSequence(0, n -> Functions.LPF.z(ZV(n).^(n).^(2).+(1)))	(n, v) -> n == 0 || v.-(1).mod(n) == 0	(n^n)^2 + 1 having the form k*n+1.
+# FATOK A216826	simtraf	0	new A054377()	v -> Functions.GPF.z(v)	the n-th primary pseudoperfect number A054377(n).
+# FATOK A227244	lambdan	0	n -> { final Z pow2 = Z2(n); return Functions.LPF.z(Z.TWO.^(pow2).+(1).*(Z.TWO.^(Z.TWO.^(pow2))).-(1)); }	(2^(2^n) + 1)*2^(2^(2^n)) - 1.
+# a(1) fail A109273	filnum	1	1	k -> ZV(k - 1).equals(Functions.LPF.z(ZV(k).^(3).+(Z.THREE.^(k))))	Numbers k such that k + 1 is the Least prime factor of k^3  +  3^k
+# a(5)=47 fail A263686	simtraf	0	new A000040()	p -> Functions.LPF.z(Z.TWO.pow(Z.TWO.pow(p).-(1)).-(1))	2^(2^p - 1) - 1	double Mersenne numbers.
+# a(9)? A120275	simtraf	0	new A038003().skip(2)	v -> Functions.LPF.z(v)
+#?FATOK A191546	filter	0	new SimpleTransformSequence(0, new A000040(), (n, v) -> Functions.LPF.z(v.^(n).+(1)))	(n, v) -> n == 0 || v.-(1).mod(2*n) == 0	  having the form 2*k*n+1.
+#?FATOK A191548	filter	0	new SimpleTransformSequence(0, new A000040(), (n, v) -> Functions.LPF.z(v.^(n).-(1)))	(n, v) -> n == 0 || v.-(1).mod(n) == 0	  having the form k*n + 1.
+#?FATOK A199295	lambdan	0	n -> Functions.LPF.z(ZV(n).^(ZV(n).^(n)).+(1))
+%N A076848 Functions.LPF.z(Googol + n which exceeds 16.
+%N A078813 Functions.LPF.z(Googol - n which exceeds 16.
+%N A078814 Functions.LPF.z(Googolplex - n which exceeds 16.
+%N A078834 Functions.GPF.z(n also contained as binary substring in binary representation of n; a(n)=1, if no such factor exists.
+%N A083397 Functions.GPF.z(n! + k where k is the least positive integer such that n! + k is a square.
+%N A086131 Functions.GPF.z(arithmetic derivative of n if it exists, or a(n)=0 for n=1 and n=prime.
+%N A086133 Functions.LPF.z(arithmetic derivative of n equals that of n.
+%N A086134 Functions.LPF.z(arithmetic derivative of n or a(n)=0 if no such prime exists.
+%N A089730 Functions.GPF.z(all differences prime(n)-q, q prime and q<prime(n); a(1)=0.
+%N A111565 Functions.GPF.z(prime power > 1 that divides the n-th composite number; or a(n) = 0 iff n-th composite number is equal to the product of distinct primes.
+%N A186522	lambdan	0	n -> Functions.LPF.z(2^n - 1 having the form k*n + 1.
+%N A189241	lambdan	0	n -> Functions.LPF.z(3^n+1 having the form 2*k*n+1.
+%N A215405	lambdan	0	n -> Functions.GPF.z(the n-th n-almost prime.
+%N A216487	lambdan	0	n -> Functions.LPF.z(n^(2n) - 1 having the form k*n+1.
+%N A267422	lambdan	0	n -> Functions.GPF.z(the largest squarefree practical number comprising n prime factors.
+%N bad A21255	filter	0	new SimpleTransformSequence(0, new A000040(), p -> Functions.LPF.z(p.^(p).-(1)))	v.) -> v.-(1).mod(2*n) == 0(p^p - 1 that is congruent to 1 modulo p where p = prime(n).
+A105665	lambdan	0	n -> CR.valueOf(n).cos().*(n).inverse().floor().abs()
+A105666	lambdan	0	n -> CR.valueOf(n).sin().*(n).inverse().floor().abs()
+A107744	lambdan	1	n -> Functions.LPF.z(6*n + 1)	Numbers n such that the least prime factor of 6*n + 1 > the least prime factor of 6*n - 1, €107744(n) > €107745(n)
+A107745	lambdan	1	n -> Functions.LPF.z(6*n - 1)	Numbers n such that the least prime factor of 6*n + 1 < the least prime factor of 6*n - 1, €107744(n) < €107745(n)
+A121018	multrar	0	(self, n) -> self.a(n/10).*(64).+(self.a(n % 10))	""
+A121019	multrar	0	(self, n) -> self.a(n/10).*(64).+(self.a(n % 10))	""
+A133316	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k).*(Z_1(n-k)).*(BI( k*k         +n-k-1, n-k))))	""
+A134055	lambdan	0	n -> SU(1, n, k -> BI(n - 1, k - 1).*(S2(n,k)))
+A141761	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k).*(Z_1(n-k)).*(BI( k   *(k-1)/2+n-k-1, n-k))))	""
+A141762	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k).*(Z_1(n-k)).*(BI((k+1)*(k+2)/2+n-k-2, n-k))))	""
+A141763	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k).*(Z_1(n-k)).*(BI((k+2)*(k+3)/2+n-k-4, n-k))))	""
+A141764	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k).*(Z_1(n-k)).*(BI((k+3)*(k+4)/2+n-k-7, n-k))))	""
+A142719	multrar	0	(self, n) -> (n < 41) ? ZV(n*n - n + 41) : ZV(n*n - 81 * n + 1681)               	""
+A174845	lambdan	0	n -> SU(1, n, k -> BI(n - 1, k - 1).*(S2(2*n,k)))
+A182951	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k).*(Z_1(n-k)).*(BI( k*k+k       +n-k-1, n-k))))	""
+A182952	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k).*(Z_1(n-k)).*(BI( k *(3*k-1)/2+n-k-1, n-k))))	""
+A182956	multrar	0	(self, n) -> Z.ONE.+(SU(0, n - 1, k -> self.a(k).*(Z_1(n-k)).*(BI( k *(3*k+1)/2+n-k-1, n-k))))	""
+A193238	multrar	0	(self, n) -> self.a(n/10).+(self.a(n%10))	"0"
+A196563	multrar	0	(self, n) -> self.a(n/10).+(self.a(n%10))	"0"
+A196564	multrar	0	(self, n) -> self.a(n/10).+(self.a(n%10))	"0"
+A243942	lambdan	0	n -> SU(1, n, k -> BI(n - 1, k - 1).*(S2(n + k, k)))
+A245059	lambdan	0	n -> SU(1, n, k -> BI(n - 1, k - 1).*(S2(n,k).*(ZV(2).^(n - k))))
+A245060	lambdan	0	n -> SU(1, n, k -> BI(n - 1, k - 1).*(S2(n,k).*(ZV(3).^(n - k))))
+A309721	multrar	0	(self, n) -> self.a(n/10).+(self.a(n%10))	""
+A351345	multrar	0	(self, n) -> SU(0, n - 6, k -> BI(n - 6, k    ).*(self.a(n-k-6)).*(Z2(k)))	"1,1,1,1,1"
+A351755	multrar	0	(self, n) -> SU(0, n - 6, k -> BI(n - 5, k + 1).*(self.a(k)))	"1,1,1,1,1"
+A352683	multrar	0	(self, n) -> SU(1, n, k -> BI(n - 1, k - 1).*(self.a(n-k)))	""
+A362029	multraf	0	(self, n) -> self.s(0).abs()).-(self.a(n - 1))	"1,1,2"	new A055615()	a(n) = -a(n-1) + |A055615(n)| for n > 1.
+
+---- 2024-05-29 22:06:16
+# cond A242719	lambdan	0	n -> Functions.PRIME.z(n).^(2).+(1)
+# formula wrong A081103	lambdan	0	n -> S1(n, 1).-(S1(n1, 2)).+(S1(n, 3))	a(n)=s(n,1)-s(n,2)+s(n,3)
+# no primes found? A070163	filter	1	new A070162()	PRIME
+#? sigma^n=funct. iteration A090896	lambdan	0	n -> Functions.SIGMA.z(n, n)
+A067080	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, Functions.DIGIT_LENGTH.i(10, n) - 1, k -> new Q(ZV(n), ZV(10).^(k)).floor())

@@ -249,6 +249,7 @@ while (<>) { # read inputfile
             $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
+            $parm =~ s{PD\(}           {Integers.SINGLETON.productdiv\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z(}g;   
             $parm =~ s{PI\(}           {Functions.PRIME_PI.z(}g;
             $parm =~ s{POD\(}          {Functions.POD.z\(}g;
@@ -265,6 +266,7 @@ while (<>) { # read inputfile
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
             $parm =~ s{SDA\(}          {Functions.DIGIT_SORT_ASCENDING\(}g;
             $parm =~ s{SDD\(}          {Functions.DIGIT_SORT_DESCENDING\(}g;
+            $parm =~ s{SOPF\(}         {Integers.SINGLETON.sopf\(}g;
             $parm =~ s{SP\(}           {Functions.SOPF.z\(}g;
             $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
@@ -272,7 +274,7 @@ while (<>) { # read inputfile
             $parm =~ s{SA\(([^\)]+)\)} {Functions.STIRLING1.z\(\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Functions.STIRLING2.z\(}g;
 #           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
-            $parm =~ s{SIGMA\(}        {Functions.SIGMA.z(}g;
+#           $parm =~ s{SIGMA\(}        {Functions.SIGMA.z(}g;
             $parm =~ s{TAU\(}          {Functions.TAU.z(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;

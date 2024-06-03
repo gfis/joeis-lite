@@ -1,0 +1,110 @@
+A070087	filnum	1	1	k -> Functions.GPF.z(k).compareTo(Functions.GPF.z(k + 1)) > 0	P(n) > P(n+1) where P(n) (A006530) is the largest prime factor of n.	nonn	1..1000
+A070089	filnum	1	1	k -> Functions.GPF.z(k).compareTo(Functions.GPF.z(k + 1)) < 0	P(n) < P(n+1) where P(n) (A006530) is the largest prime factor of n.	nonn	1..1000
+A070155	filnum	1	1	k -> { final Z zk = ZV(k); return zk.-(1).IPP() && zk.+(1).IPP() && zk.^(2).+(1).IPP(); }	Numbers k such that k-1, k+1 and k^2+1 are prime numbers.	easy,nonn	1..10000	nyi	_Labos Elemer_
+A070156	filnum	0	1	k -> { final Z zk = ZV(k); return zk.-(1).IPP() && zk.+(1).IPP() && zk.^(2).+(1).IPP() && zk.^(4).+(1).IPP(); }	n-1,n+1,1+n^2 and 1+n^4 are all prime numbers.	easy,nonn	0..32
+A070157	filnum	1	1	k -> { final Z zk = ZV(k); return zk.-(1).IPP() && zk.+(1).IPP() && zk.^(2).+(1).IPP() && zk.^(4).+(1).IPP() && zk.^(8).+(1).IPP(); }	n-1, n+1, 1+n^2, 1+n^4 and 1+n^8 are all prime numbers.	nonn	1..23	nyi	_Labos Elemer_
+A070159	filnum	1	2	k -> Functions.PHI.z(k).mod(Functions.SIGMA1.z(k).-(k)).isZero()	Numbers k such that phi(k)/(sigma(k)-k) is an integer.	nonn	1..10000	nyi	_Labos Elemer_
+A070160	filter	1	new A018252().skip(1)	v -> Functions.PHI.z(v).mod(Functions.SIGMA1.z(v).-(v).-(1)).isZero()	Nonprime numbers n such that q = phi(n)/(sigma(n) - n - 1) is an integer.	nonn	1..10000	nyi	_Labos Eleme
+A070161	setdiff	1	new A070160()	new A001248()	Nonprime numbers n such that q = phi(n)/(sigma(n)-n-1) is an integer and n is not a prime square.	nonn	1..10000
+A070162	filnum	1	1	k -> (ZV(k).-(Functions.PHI.z(k)).-(1)).IPP()	Numbers k such that k - phi(k) - 1 is a prime.	nonn	1..61
+A073121	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(2).+(self.a(n/2).*(2))	"1"
+A078722	lambdan	0	n -> Functions.PRIME.z(Functions.TRIANGULAR.z(n).+(2))
+A079528	lambdan	1	n -> Functions.SIGMA1.z(ZV(n)).-(Functions.CEIL_SQRT.z(n).+(n))
+A081050	lambdan	0	n -> S1(n + 1, 1).-(Z_1(n + 2).*(S1(n + 1, 2)))	a(n)=s(n,1)-(-1)^(n+1)*s(n,2),s(n,m)=signed*Stirling*numbers*of*first*kind*a(n)=abs(n!*(1+Sum{k=1..n,(-1)^n*1/k}))
+A093502	multrar	1	(self, n) -> Functions.PRIME.z(Functions.PRIME_PI.z(self.a(n - 1)).+(self.a(n - 1)))	"2"	a(n) = prime(pi(a(n-1)) + a(n-1))
+#? A095708	multrar	-2	(self, n) -> (Z2(n-2).*(self.a(n-1)).*(self.a(n-3)).+(self.a(n-2).^(2)))./(self.a(n-4))	"1,1,1,1"	a(n) = (2^(n-2)*a(n-1)*a(n-3) + a(n-2)^2)/a(n-4); a(-2)=a(-1)=a(0)=a(1)=1.
+A098844	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 2, n) - 1, k -> ZV(n)./(ZV( 2).^(k)))
+A105161	lambdan	0	n -> Functions.PRIME.z(Functions.PRIME_PI.z(n).+(2)).-(n)	a(n) = prime(primepi(n)+2) - n;
+A108719	lambdan	1	n -> (n <= 2) ? ZV(n*2 + 3) : Functions.PRIME.z(n + 3)
+A118873	lambdan	1	n -> Functions.PRIME.z(n).^(2).*(Functions.PRIME.z(n+3).^(2)).-(Functions.PRIME.z(n+1).^(2).*(Functions.PRIME.z(n+2).^(2)))	a(n) = prime(n)^2*prime(n+3)^2 - prime(n+1)^2*prime(n+2)^2.
+A121841	lambdan	0	n -> Functions.PRIME.z(Z.TEN.^(9).+(n))
+A122566	lambdan	0	n -> Functions.PRIME.z(ZV(n).^(2).+(n).+(1))
+A132027	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 3, n) - 1, k -> ZV(n)./(ZV( 3).^(k)))
+A132028	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 4, n) - 1, k -> ZV(n)./(ZV( 4).^(k)))
+A132029	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 5, n) - 1, k -> ZV(n)./(ZV( 5).^(k)))
+A132030	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 6, n) - 1, k -> ZV(n)./(ZV( 6).^(k)))
+A132031	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 7, n) - 1, k -> ZV(n)./(ZV( 7).^(k)))
+A132032	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 8, n) - 1, k -> ZV(n)./(ZV( 8).^(k)))
+A132033	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 9, n) - 1, k -> ZV(n)./(ZV( 9).^(k)))
+A132263	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i(11, n) - 1, k -> ZV(n)./(ZV(11).^(k)))
+A132264	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i(12, n) - 1, k -> ZV(n)./(ZV(12).^(k)))
+A132271	lambdan	0	n -> PR(0, n, k -> Z.ONE.+(ZV(n)./(Z.TEN.^(k))))	Table[Product[1+Floor[n/10^k], {k, 0, n}], {n, 0, 60}]
+A141103	lambdan	1	n -> Functions.PRIME.z(ZV(n).^(n)).-(ZV(n).^(n))
+A167770	lambdan	1	n -> Functions.PRIME.z(n).^(2).mod(Functions.PRIME.z(n + 1))
+A173501	multrar	1	(self, n) -> PR(1, n - 1, i -> self.a(i))	"2,3"
+A174230	multrar	1	(self, n) -> PR(1, n - 1, i -> self.a(i))	"3,7"
+A175138	multrar	1	(self, n) -> PR(1, n - 1, i -> self.a(i))	"3,5"
+A176004	simtraf	1	new A001358()	(n, v) -> Functions.PRIME.z(n + 2).-(v)
+A179394	lambdan	1	n -> Functions.PRIME.z(n).^(2).mod(Functions.PRIME.z(n + 2))
+A179397	lambdan	3	n -> Functions.PRIME.z(n).^(2).mod(Functions.PRIME.z(n - 2))
+A179398	lambdan	4	n -> Functions.PRIME.z(n).^(2).mod(Functions.PRIME.z(n - 3))
+A180707	multrar	1	(self, n) -> Functions.SIGMA.z(self.a(n-1).*(2))	"1"
+A180708	multrar	1	(self, n) -> Functions.SIGMA.z(self.a(n-1).*(3))	"1"
+A180709	multrar	1	(self, n) -> Functions.SIGMA.z(self.a(n-1).*(n))	"1"
+A180710	multrar	1	(self, n) -> Functions.SIGMA.z(self.a(n-1).*(Z2(n-1)))	"1"
+A181428	lambdan	1	n -> Functions.PRIME.z(n + 2).+(Functions.PRIME.z(n + 1)).-(Functions.PRIME.z(n))
+A191161	multrar	1	(self, n) -> Functions.SIGMA1.z(ZV(n)).+(SD(n, d -> (d >= n) ? Z.ZERO : self.a(d)))	"1"
+A204271	simtraf	1	new A000129().skip(1)	(n, v) -> Functions.SIGMA1.z(ZV(n)).*(v)
+A204272	simtraf	1	new A000129().skip(1)	(n, v) -> Functions.SIGMA.z(2, n).*(v)	_2(n)*Pell(n)
+A204273	simtraf	1	new A000129().skip(1)	(n, v) -> Functions.SIGMA.z(3, n).*(v)	#   Pell
+A230290	lambdan	0	n -> SU(1, n, i -> Functions.TAU.z(24*i+ 1)).-(SU(1, n, i -> Functions.TAU.z( 6*i + 1)))
+A230291	lambdan	0	n -> SU(1, n, i -> Functions.TAU.z(24*i+17)).-(SU(1, n, i -> Functions.TAU.z( 6*i + 5)))
+A230292	lambdan	1	n -> SU(1, n, i -> Functions.TAU.z(24*i+ 9)).-(SU(1, n, i -> Functions.TAU.z( 6*i + 3)))
+A230293	lambdan	1	n -> SU(1, n, i -> Functions.TAU.z( 8*i+ 1)).-(SU(1, n, i -> Functions.TAU.z( 4*i + 1)))
+A230294	lambdan	1	n -> SU(1, n, i -> Functions.TAU.z( 4*i+ 1)).-(SU(1, n, i -> Functions.TAU.z( 2*i + 1)))
+A230295	lambdan	1	n -> SU(1, n, i -> Functions.TAU.z( 8*i+ 5)).-(SU(1, n, i -> Functions.TAU.z( 4*i + 3)))
+A230296	lambdan	1	n -> SU(1, n, i -> Functions.TAU.z(72*i+ 1)).-(SU(1, n, i -> Functions.TAU.z(18*i + 1)))
+A259673	lambdan	1	n -> Functions.SIGMA.z(Functions.PRIME.l(n), n)
+A261468	lambdan	1	n -> Functions.PRIME.z(n + 2).mod(Functions.PRIME.z(n))
+A261469	lambdan	1	n -> Functions.PRIME.z(n+3).mod(Functions.PRIME.z(n))
+A263325	simtraf	1	new A000129()	(n, v) -> Functions.SIGMA1.z(ZV(n)).*(Functions.PRIME_PI.z(ZV(n).^(2)))
+A268524	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(3).+(self.a(n/2).*(1))	"1"
+A268525	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(2).+(self.a(n/2).*(3))	"1"
+A268526	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(3).+(self.a(n/2).*(2))	"1"
+A268527	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(4).+(self.a(n/2).*(1))	"1"
+A271440	lambdan	1	n -> Functions.SIGMA1.z(Functions.PRIME.z(n).^(n)).-(Functions.PHI.z(Functions.PRIME.z(n).^(n)))
+A276963	lambdan	1	n -> Functions.PRIME.z(n + 1).^(4).-(Functions.PRIME.z(n).^(4))
+A304276	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d + 2)))	Numbers equal to the sum of their aliquot parts, each of them increased by  2.
+A304277	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d + 4)))	Numbers equal to the sum of their aliquot parts, each of them increased by  4.
+A304278	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d + 6)))	Numbers equal to the sum of their aliquot parts, each of them increased by  6.
+A304279	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d + 8)))	Numbers equal to the sum of their aliquot parts, each of them increased by  8.
+A304280	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d +10)))	Numbers equal to the sum of their aliquot parts, each of them increased by 10.
+A304281	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d - 2)))	Numbers equal to the sum of their aliquot parts, each of them decreased by  2.
+A304282	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d - 4)))	Numbers equal to the sum of their aliquot parts, each of them decreased by  4.
+A304283	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d - 6)))	Numbers equal to the sum of their aliquot parts, each of them decreased by  6.
+A304284	filnum	1	1	n -> ZV(n).equals(SD(n, d-> (d >= n) ? Z.ZERO : ZV(d - 8)))	Numbers equal to the sum of their aliquot parts, each of them decreased by  8.
+#? A308729	lambdan	1	n -> S1(n + 1, 3).+(S1(n + 1, 2)).-(FA(n))	a(n)=s(n+1,3)+s(n+1,2)-n!
+A321663	lambdan	1	n -> Functions.PRIME.z(n).^(Functions.PRIME.z(n+2))
+A324529	lambdan	1	n -> Functions.SIGMA1.z(ZV(n)).lcm(POD(n))
+A324549	lambdan	0	n -> (n == 1) ? Z.THREE : Functions.SIGMA1.z(Z2(n).+(1)).-(Z2(n))
+A324552	lambdan	0	n -> (n == 1) ? Z.THREE : Functions.SIGMA1.z(Z2(n).+(1)).-(2)
+A337360	lambdan	1	n -> Functions.SIGMA1.z(ZV(n)).*(Functions.TAU.z(n).+(1))
+A338529	lambdan	1	n -> Functions.PRIME.z(n + 2).*(Functions.PRIME.z(n + 3)).-(Functions.PRIME.z(n).*(Functions.PRIME.z(n + 1)))
+A350309	multraf	0	(self, n) -> self.a(n - 1).*(n + 2).+(self.s(0).-(4).*(n + 1)./(6))	"1"	new A003422()	S1(n, 2)	a(n)=s(n,2)
+#? A360734	lambdan	1	n -> Functions.PRIME.z(n+1).*(Functions.PRIME.z(n + 1)).-(Functions.PRIME.z(n).-(1)).+(2)
+A362870	lambdan	1	n -> Functions.SIGMA.z(29, n)
+A366305	lambdan	1	n -> PR(1, n, k -> ZV(k).^(n).+(ZV(k - 1).^(n)))
+A366306	lambdan	1	n -> PR(1, n, k -> ZV(k).^(n).-(ZV(k - 1).^(n)))
+A367542	lambdan	1	n -> PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(i).*(ZV(j)).+(ZV(j).^(2)))))	PR(i=1,n,j=1..n,(i^2+i*j+j^2))
+A367550	lambdan	1	n -> PR(1, n, i -> PR(1, n, j -> { final Z iz2 = ZV(i).^(2); final Z jz2 = ZV(j).^(2); return iz2.^(2).+(iz2.*(jz2)).+(jz2.^(2)); }))	PR(i=1,n,j=1..n,(i^4+i^2*j^2+j^4))
+A367668	lambdan	1	n -> PR(1, n, i -> PR(1, n, j -> { final Z iz2 = ZV(i).^(2); final Z jz2 = ZV(j).^(2); return iz2.^(2).-(iz2.*(jz2)).+(jz2.^(2)); }))	PR(i=1,n,j=1..n,(i^4-i^2*j^2+j^4))
+A367670	lambdan	1	n -> PR(1, n, i -> PR(1, n, j -> { final Z iz4 = ZV(i).^(4); final Z jz4 = ZV(j).^(4); return iz4.^(2).+(iz4.*(jz4)).+(jz4.^(2)); }))	PR(i=1,n,j=1..n,(i^8+i^4*j^4+j^8))
+A367834	lambdan	0	n -> PR(1, n, i -> PR(1, n, j -> ZV(i).^(8).+(ZV(j).^(8))))	PR(i=1,n,j=1..n,(i^8+j^8))
+A367927	lambdan	0	n -> PR(1, n, k -> ZV(n).^(2).+(ZV(k).^(2)).^(k))
+A368064	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(4*i).*(ZV(j))).+(ZV(j).^(2))))	PR(i=1,n,j=1..n,(i^2+4*i*j+j^2))
+A368065	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(5*i).*(ZV(j))).+(ZV(j).^(2))))	PR(i=1,n,j=1..n,(i^2+5*i*j+j^2))
+A368066	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(6*i).*(ZV(j))).+(ZV(j).^(2))))	PR(i=1,n,j=1..n,(i^2+6*i*j+j^2))
+A368067	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(3*i).*(ZV(j))).+(ZV(j).^(2))))	PR(i=1,n,j=1..n,(i^2+3*i*j+j^2))
+A368132	lambdan	0	n -> PR(1, n, k -> ZV(n + k).^(k))
+A368622	lambdan	0	n -> PR(1, n, j -> PR(1, n, k -> ZV(j).^(2).+(ZV(k).^(2)).+(ZV(n).^(2))))
+A368623	lambdan	0	n -> PR(1, n, k -> ZV(k).^(2).+(ZV(n).^(2).*(2)))
+A368720	lambdan	0	n -> PR(1, n, j -> PR(1, n, k -> ZV(j).^(3).+(ZV(k).^(3)).+(ZV(n).^(3))))
+A368721	lambdan	0	n -> PR(1, n, j -> PR(1, n, k -> ZV(j).^(4).+(ZV(k).^(4)).+(ZV(n).^(4))))
+A368722	lambdan	0	n -> PR(1, n, i -> PR(1, n, j -> PR(1, n, k -> ZV(i).^(3).+(ZV(j).^(3)).+(ZV(k).^(3)))))	PR(i=1,n,j=1..n,k=1..n,(i^3+j^3+k^3))
+A368723	lambdan	0	n -> PR(1, n, i -> PR(1, n, j -> PR(1, n, k -> ZV(i).^(4).+(ZV(j).^(4)).+(ZV(k).^(4)))))	PR(i=1,n,j=1..n,k=1..n,(i^4+j^4+k^4))
+A373105	lambdan	1	n -> Functions.SIGMA.z(10, ZV(n).^(2))./(Functions.SIGMA.z(5, ZV(n).^(2)))
+A373186	multrar	1	(self, n) -> { final int n3 = n/3; final int m = n % 3; return Functions.TRIANGULAR.z( 3*n3 + m).+((m != 0) ? Z.ZERO : self.a(n3)); }	"1"	a(3*n+1) = A000217(3*n+1), a(3*n+2) = A000217(3*n+2), a(3*n+3) = A000217(3*n+3)                            + a(n+1) for n >= 0.
+A373187	multrar	1	(self, n) -> { final int n4 = n/4; final int m = n % 4; return Functions.TETRAHEDRAL.z(4*n4 + m).+((m != 0) ? Z.ZERO : self.a(n4)); }	"1"	a(4*n+1) = A000292(4*n+1), a(4*n+2) = A000292(4*n+2), a(4*n+3) = A000292(4*n+3), a(4*n+4) = A000292(4*n+4) + a(n+1) for n >= 0.
+A373188	multrar	1	(self, n) -> { final int n4 = n/4; final int m = n % 4; return ZV(                     4*n4 + m).+((m != 0) ? Z.ZERO : self.a(n4)); }	"1"	a(4*n+1) = 4*n+1,          a(4*n+2) = 4*n+2,          a(4*n+3) = 4*n+3,          a(4*n+4) = 4*n+4          + a(n+1) for n >= 0.
+A373189	multrar	1	(self, n) -> { final int n4 = n/4; final int m = n % 4; return Functions.TRIANGULAR.z( 4*n4 + m).+((m != 0) ? Z.ZERO : self.a(n4)); }	"1"	a(4*n+1) = A000217(4*n+1), a(4*n+2) = A000217(4*n+2), a(4*n+3) = A000217(4*n+3), a(4*n+4) = A000217(4*n+4) + a(n+1) for n >= 0.
+A343276	holos	0	[[0],[1,0,-1],[2,2,1],[1,-1] 0,1	0	0	

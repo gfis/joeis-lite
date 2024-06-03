@@ -1,0 +1,164 @@
+---- 2024-05-31 20:48:57
+A050441	pyramidal	0	14	11	8
+A051624	polygonal	0	12	10	8
+A051682	polygonal	0	11	9	7
+A051865	polygonal	0	13	11	9
+A051866	polygonal	0	14	12	10
+A051867	polygonal	0	15	13	11
+A051868	polygonal	0	16	14	12
+A051869	polygonal	0	17	15	13
+A051870	polygonal	0	18	16	14
+A051871	polygonal	0	19	17	15
+A051872	polygonal	0	20	18	16
+A051873	polygonal	0	21	19	17
+A051874	polygonal	0	22	20	18
+A051875	polygonal	0	23	21	19
+A051876	polygonal	0	24	22	20
+A095311	polygonal	1	47	45	43	~~    ~~next();
+A098140	polygonal	0	63	61	59
+A098230	polygonal	0	75	73	71
+A098923	polygonal	0	33	31	29
+A098924	polygonal	1	45	43	41	~~    ~~next();
+A161935	polygonal	0	28	26	24
+A172073	pyramidal	0	15	12	9
+A172076	pyramidal	0	17	14	11
+A172078	pyramidal	0	19	16	13
+A172082	pyramidal	0	21	18	15
+A172117	pyramidal	0	23	20	17
+A177890	pyramidal	0	16	13	10
+A195163	polygonal	0	1000	998	996
+A237616	pyramidal	0	18	15	12
+A237617	pyramidal	0	20	17	14
+A237618	pyramidal	0	22	19	16
+A249911	polygonal	0	60	58	56
+A254474	polygonal	0	30	28	26
+A255184	polygonal	0	25	23	21
+A255185	polygonal	0	26	24	22
+A255186	polygonal	0	27	25	23
+A255187	polygonal	0	29	27	25
+A256645	pyramidal	0	26	23	20
+A256646	pyramidal	0	27	24	21
+A256647	pyramidal	0	28	25	22
+A256648	pyramidal	0	29	26	23
+A256649	pyramidal	0	30	27	24
+A256650	pyramidal	0	31	28	25
+A256716	pyramidal	0	25	22	19
+A256718	pyramidal	0	24	21	18
+A261191	polygonal	0	40	38	36
+A261276	polygonal	0	100	98	96
+A261343	polygonal	0	50	48	46
+A282850	polygonal	0	38	36	34
+A282851	polygonal	0	35	33	31
+A282852	polygonal	0	37	35	33
+A282853	polygonal	0	36	34	32
+A282854	polygonal	0	34	32	30
+---- 2024-05-31 21:21:32
+A227868	filter	1	new A002808()	v -> { final long m30 = v.mod(30); return m30 == 7 || m30 == 23; }	Composite numbers congruent to 7 or 23 (mod 30).	nonn	1..43
+A227869	filter	1	new A002808()	v -> v.mod(30) == 7	Composite numbers congruent to 7 (mod 30)
+A305559	prepend	0	new A000290()	0,-1,-1	# 0,1,4,9,16,25,36
+A353350	lambdan	1	n -> D048675.a(n  ).mod(3) == 0 ? Z.ONE : Z.ZERO
+A354037	lambdan	1	n -> Functions.SIGMA1.z(n).-(n).mod(4) == 0 ? Z.ONE : Z.ZERO
+A369004	lambdan	1	n -> { final Z ardn = ARD(n); return ardn./(ZV(n).gcd(ardn)).mod(4) == 0 ? Z.ONE : Z.ZERO; }	n' / gcd(n,n') is a multiple of 4, otherwise 0, where n' stands for the arithmetic derivative of n, A003415(n).
+
+A076544	lambdan	0	n -> { final int mu = Functions.MOEBIUS.i(n); return ZV(mu + ((1 + Math.abs(mu) & 1) == 0 ? 1 : -1)); }
+A353269	lambdan	0	n -> D156552.a(n  ).mod(3) == 0 ? Z.ONE : Z.ZERO
+A353307	lambdan	0	n -> D156552.a(2*n).mod(3) == 0 ? Z.ONE : Z.ZERO
+A361460	multraf	0	(self, n) -> self.s(0).mod(n + 1) == 0 ? Z.ONE : Z.ZERO	""	new A135504()	 is a multiple of n+1, otherwise 0.
+---- 2024-05-31 21:26:34
+A105332	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(8)
+A105333	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(16)
+A105334	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(32)
+A105335	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(64)
+A105336	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(128)
+A105337	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(256)
+A105338	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(512)
+A105339	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(1024)
+A105340	lambdan	0	n -> Functions.TRIANGULAR.z(n).modZ(2048)
+---- 2024-06-01 09:53:43
+A077211	multrar	1	(self, n) -> (Functions.SQRT.z(self.a(n-1).*(n-1)).+(1)).^(2)	"1"	a(n+1)=(floor(sqrt(n*a(n)))+1)^2
+A078157	multrar	1	(self, n) -> Functions.SQRT.z(Z2(n+2)).-(n + 2)	"0"
+A097043	multrar	1	(self, n) -> ZV(n).-(self.a(Functions.SQRT.i(n)))	"1"
+A097044	multrar	1	(self, n) -> ZV(n).+(self.a(Functions.SQRT.i(n)))	"1"
+A097045	multrar	1	(self, n) -> self.a(n-1).-(self.a(Functions.SQRT.i(n)))	"1"
+A097046	multrar	1	(self, n) -> self.a(n-1).+(self.a(Functions.SQRT.i(n)))	"1"
+A097482	multrar	1	(self, n) -> Functions.SQRT.z(self.a(n-2).*(self.a(n-1))).+(3)	"1,1"
+A116601	multrar	0	(self, n) -> Functions.SQRT.z(Z2(n-2).-(1))	"0,0"	a(n) = floor(sqrt(2^(n-2)-1)).
+A125028	multrar	1	(self, n) -> self.a(n-1).*(2).-(Functions.SQRT.z(self.a(n - 1)))	"2"
+A126794	multrar	1	(self, n) -> self.a(n-1).+(self.a(Functions.SQRT.i(n-1)))	"1"
+A129144	multrar	1	(self, n) -> { final Z s = SU(1, n - 1, i -> self.a(i)); return s.-(Functions.SQRT.z(s).^(2)); }	"1,1"
+A131704	multrar	1	(self, n) -> SU(1, Functions.SQRT.i(n-1), k -> self.a(Functions.SQRT.i(k*k*(n - 1))))	"1"
+A133438	multrar	1	(self, n) -> SD(n, d -> self.a(Functions.SQRT.i(d)))	"1"
+A133439	multrar	1	(self, n) -> SU(1, n, k-> Functions.GCD.i(k, n) != 1 ? Z.ZERO : self.a(Functions.SQRT.i(k)))	"1"
+A133440	multrar	1	(self, n) -> SU(1, n, k-> Functions.GCD.i(k, n) != 1 ? Z.ZERO : Functions.SQRT.z(k))	"1"
+A159018	multrar	0	(self, n) -> self.a(n-1).+(Functions.SQRT.z(self.a(n - 1)))	"5"
+A159025	multrar	0	(self, n) -> self.a(n-1).+(Functions.SQRT.z(self.a(n - 1)))	"71"
+A175214	multrar	1	(self, n) -> self.a(Functions.SQRT.i(n)).+(self.a(Functions.SQRT.i(n-1)))	"1"
+A181359	multrar	1	(self, n) -> self.a(n-1).xor(self.a(Functions.SQRT.i(n)))	"1"
+A190650	multrar	1	(self, n) -> self.a(Functions.SQRT.i(n)).*(n)	"1"
+---- 2024-06-01 10:43:18
+A159020	multrar	0	(self, n) -> self.a(n - 1).+(Functions.SQRT.z(self.a(n - 1)))	"11"	a(n) = a(n-1) + floor(sqrt(a(n-1))), n > 0.
+A161983	lambdan	0	n -> Functions.SQRT.z(n).*(Functions.SQRT.z(n).+(1)).+(n)	a(n) = n + A000196(n)*(A000196(n)+1). - _Dennis P. Walsh_, Aug 09 2013
+A180877	filnum	1	1	n -> { final Z sqn = Functions.SQRT.z(n); return Functions.SOPFR.z(n).-(sqn.*(Functions.BIG_OMEGA.z(n))).equals(sqn); }
+A192574	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(Functions.SQRT.z(Functions.BELL.z(k))).*(Functions.SQRT.z(Functions.BELL.z(n - k))))	,k=0..n).
+A192653	lambdan	0	n -> SU(0, n, k -> Functions.SQRT.z(Functions.CATALAN.z(k)).*(Functions.SQRT.z(Functions.CATALAN.z(n - k))).*(BI(n, k)))	,k=0..n).
+A192654	multrar	0	(self, n) -> Functions.SQRT.z(Functions.CATALAN.z(n)).-(self.a(n - 1))	"1"
+A192658	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(Functions.SQRT.z(BI(2*k, k))).*(Functions.SQRT.z(BI(2*n - 2*k, n - k))))	,k=0..n).
+A195458	multrar	1	(self, n) -> Functions.SQRT.z(n).*(self.a(n - 1))	"1"
+A194102	lambdan	0	n -> SU(1, n, j -> Functions.SQRT.z(j*j*2))		a(n) = Sum_{j=1..n} floor(j*sqrt(2));
+---- 2024-06-01 10:58:27
+A076644	multrar	1	(self, n) -> self.a(n - Functions.SQRT.i((n))).+(n)	"1"
+A127366	lambdan	0	n -> { final int m = Functions.SQRT.i(n); return (n & 1) == (m & 1) ? ZV(n + m) : ZV(n - m); }	n and m have the same parity, a(n) = n + m, otherwise a(n) = n - m.
+A373275	lambdan	1	n -> SD(n, d -> Z_1(d - 1).*(ZV(2).^(n / d - 1)))
+A373276	lambdan	1	n -> SD(n, d -> Z_1(d - 1).*(ZV(3).^(n / d - 1)))
+---- 2024-06-01 21:04:27
+A078503	lambdan	1	n -> BI(PHI(n + 1), PHI(n))		a(n) = binomial(phi(n+1),phi(n)).
+A078504	lambdan	1	n -> BI(Functions.SIGMA1.z(n+1), Functions.SIGMA1.z(n))		a(n) = binomial(sigma(n+1), sigma(n)).
+A080304	lambdan	1	n -> Functions.MOEBIUS.i(n) > 0 ? ZV(n) : Z.ONE	if mu(n)>0 then n else 1
+A080305	lambdan	1	n -> Functions.MOEBIUS.i(n) < 0 ? ZV(n) : Z.ONE	if mu(n)<0 then n else 1
+A086687	lambdan	0	n -> BI(FA(n), n)
+A088391	simtraf	1	new A069521()	(n, v) -> v./(n)
+A088392	simtraf	1	new A069522()	(n, v) -> v./(n)
+A088393	simtraf	1	new A069523()	(n, v) -> v./(n)
+A088394	simtraf	1	new A069524()	(n, v) -> v./(n)
+A088396	simtraf	1	new A069526()	(n, v) -> v./(n)
+A088397	simtraf	1	new A069527()	(n, v) -> v./(n)
+A088398	simtraf	1	new A069528()	(n, v) -> v./(n)
+A088399	simtraf	1	new A069529()	(n, v) -> v./(n)
+A088400	simtraf	1	new A069530()	(n, v) -> v./(n)
+A100736	parmof2	0	A100735	3	Sum(k=0..n) (-1)^A010060(n-k)*(binomial(n, k) % 2)*3^k
+A100737	parmof2	0	A100735	4	sum(k=0..n, (-1)^A010060(n-k)*%(binomial(n, k), 2)4^k)
+A100738	parmof2	0	A100735	5	sum(k=0..n, (-1)^A010060(n-k)*%(binomial(n, k), 2)5^k)
+A100739	parmof2	0	A100735	6	sum(k=0..n, (-1)^A010060(n-k)*%(binomial(n, k), 2)6^k)
+A100740	parmof2	0	A100735	7	sum(k=0..n, (-1)^A010060(n-k)*%(binomial(n, k), 2)7^k)
+A100741	parmof2	0	A100735	8	sum(k=0..n, (-1)^A010060(n-k)*%(binomial(n, k), 2)8^k)
+A100744	parmof2	0	A100735	-2	sum(k=0..n, (-1)^A010060(n-k)*%(binomial(n, k), 2)*(-2)^k)
+A216223	lambdan	0	n -> { final Z fibn = Functions.FIBONACCI.z(n); return Functions.CEIL_SQRT.z(fibn).^(2).-(fibn); }	Table[k = Ceiling[Sqrt[Fibonacci[n]]]; k^2 - Fibonacci[n]
+A332510	lambdan	1	n -> Functions.SQRT.z(n).-(SU(1, n, k -> SD(k, d -> ((d <= 1) ? Z.ZERO : ZVJF(d - 1).lambda())))))
+A349662	lambdan	0	n -> n <= 1 ? Z.ZERO : Functions.SQRT.z(ZV(n).^(3).-(1)).-(n)
+A353180	multrar	0	(self, n) -> n == 0 ? Z.ONE : SU(1, Functions.SQRT.i(n), k -> BI(n, k*k).*(self.a(n - k*k)))	"1"	a(n) = Sum_{k=1..floor(sqrt(n))} (k^2-1)! * BI(n,k^2) * a(n-k^2).
+---- 2024-06-01 22:42:25
+A090112	lambdan	1	n -> PI(n).*(PI(n).-(PI(n - 2)))
+A090113	lambdan	1	n -> PI(n).*(PI(n).-(PI(n - 3)))
+A090405	lambdan	1	n -> PI(n + 2).-(PI(n))
+A090406	lambdan	1	n -> PI(n + 3).-(PI(n))
+A090976	lambdan	1	n -> ZV(100).-(ZV(n).*(ZV(100)./(n)))
+A091796	simtraf	1	new A061431()	(n, v) -> v.-(Functions.TRIANGULAR.z(n))
+A092137	lambdan	1	n -> Functions.CEIL_SQRT.z(SU(1, n, k -> ZV(k).^(2)))
+A092144	simtraf	1	new A092143()	(n, v) -> v./(FA(n))		a(n) = A092143(n)/n!.
+A092338	lambdan	1	n -> TAU(n).+(n > 1 ? TAU(n - 1).-(1) : Z.ZERO)	A000005(n) + if(n > 1,1,0)*(A000005(n-1) - 1)
+A092502	lambdan	1	n -> n <= 1 ? Z.ONE : PHI(n)./(2).*(PD(n, d -> ZV(d).^(Functions.MOEBIUS.i(n/d))
+A098386	lambdan	1	n -> Functions.PRIME.z(n).-(ZV(n).bitLength() - 1)	a(n) = prime(n)-Log2(n), where Log2 = A000523.
+A101405	lambdan	1	n -> ZV(n).^(Functions.PRIME_PI.i(n - 1))		a(n) = n^(pi(n-1)).
+A101791	simtraf	1	new A101790()	v ->v.*(4).-(1)
+A102395	lambdan	0	n -> SU(0, n, k -> (n + k) % 3 == 0 ? BI(n, k).and(Z.ONE) : Z.ZERO)		a(n) = Sum_{k=0..n} if(n+k == 0 (mod 3), C(n, k) mod 2, 0).
+A102396	lambdan	0	n -> SU(0, n, k -> (n + k) % 3 == 1 ? BI(n, k).and(Z.ONE) : Z.ZERO)		a(n) = Sum_{k=0..n} if(n+k == 1 (mod 3), C(n, k) mod 2, 0).
+A103185	simtraf	0	new A102370()	(n, v) -> v.-(n)./2)	a(n) = (A102370(n) - n)/2.
+A103719	lambdan	0	n -> S1(n + 3,  3).abs().+(S1(n + 3,  4).abs())
+A103720	lambdan	0	n -> S1(n + 4,  4).abs().+(S1(n + 4,  5).abs())
+A103721	lambdan	0	n -> S1(n + 5,  5).abs().+(S1(n + 5,  6).abs())
+A103722	lambdan	0	n -> S1(n + 6,  6).abs().+(S1(n + 6,  7).abs())
+A103723	lambdan	0	n -> S1(n + 7,  7).abs().+(S1(n + 7,  8).abs())
+A103724	lambdan	0	n -> S1(n + 8,  8).abs().+(S1(n + 8,  9).abs())
+A103725	lambdan	0	n -> S1(n + 9,  9).abs().+(S1(n + 9, 10).abs())
+A103726	lambdan	0	n -> S1(n +10, 10).abs().+(S1(n +10, 11).abs())
+A103727	lambdan	0	n -> S1(n +11, 11).abs().+(S1(n +11, 12).abs())

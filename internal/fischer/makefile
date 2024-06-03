@@ -122,6 +122,9 @@ ebtest:
 Q="-1/1"
 INIT="1"
 #--
+adictest:
+	$(JAVA) irvine.oeis.a225.A225401 $(P)
+#	$(JAVA) irvine.oeis.a225.A225401 $(P2) $(P4) $(P5) $(P6) $(P7)
 asutest:
 	$(JAVA) irvine.oeis.AlternatingSumSequence -d $(D) -n $(NT) -a "$(A)" -p "$(P)"
 cptest:
@@ -368,7 +371,7 @@ techo: # append timestamp
 addpass: # append seq4 records with passed tests to TODAY=file
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).man
 	grep -P  "\tpass\t" $(CC).pass.log | cut -b1-7 | sed -e "s/^/\^/" > $@.grep.tmp
-	grep -E -f  $@.grep.tmp $(CC).gen | grep -P "[a-z]" | cut -f1-8 | perl -pe 's/[ \t]+\Z//;' \
+	grep -E -f  $@.grep.tmp $(CC).gen | grep -P "[a-z]" | cut -f1-11 | perl -pe 's/[ \t]+\Z//;' \
 	>> aman/$(TODAY).man
 	grep -vE -f $@.grep.tmp aman/$(CC).man > $@.tmp
 	echo ---- `date +%Y-%m-%d%t%T`  > aman/$(CC).man
