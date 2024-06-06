@@ -1,0 +1,228 @@
+---- 2024-06-04 13:43:33
+A105736	holos	1	[0,1,0,0,0,0,-1]	1,3,4,4,3,1,2,3,2,1	0	0
+A105737	holos	1	[0,1,0,0,0,0,-1]	1,4,5,6,8,8,6,2,4,6,4,2,2	0	0
+A105738	holos	1	[0,1,0,0,0,0,-1]	1,5,6,8,8,6,2,4,6,4,2	0	0
+A105739	holos	1	[0,1,0,0,0,0,-1]	1,6,7,3,4,4,3,1,2,3,2,1	0	0
+A105740	holos	1	[0,1,0,0,0,0,-1]	1,7,8,12,8,4,4,3,1,2,3,2,1	0	0
+A105741	holos	1	[0,1,0,0,0,0,-1]	1,8,9,14,8,6,2,4,6,4,2	0	0
+A105742	holos	1	[0,1,0,0,0,0,-1]	1,9,10,16,8,3,5,2,3,2,1,1,2,3,2,1	0	0
+A105743	holos	1	[0,1,0,0,0,0,-1]	1,10,11,6,5,1,4,5,6,8,8,6,2,4,6,4,2	0	0
+A105744	holos	1	[0,1,0,0,0,0,-1]	1,11,12,20,8,1,7,8,12,8,4,4,3,1,2,3,2,1	0	0
+---- 2024-06-04 14:46:32
+A365679	holos	2	[0,-4,0,4,0,-1]	4,10,14,32	0	0
+A366940	holos	1	[0,1,-1]	3,6,13,36,66,96,123,97,83,87,0	0	0
+A368049	holos	1	[0,100,0,0,-1]	16,25,36,49,64,81,100,121,144,225,400,441,484,676,900,1444,10000,40000,44944,90000,1000000,4000000,9000000	0	0
+A368114	holos	0	[0,1,0,0,0,-1]	11,122,61,672,336,168,84,42,21,7,1,12,6,3,1,12	0	0
+A368115	holos	0	[0,1,0,0,0,-1]	17,290,145,29,494,247,19,324,162,81,27,9,3,1,18	0	0
+---- 2024-06-05 11:34:09
+A094538	simtraf	0	new A019308()	(n, v) -> ZV(3).^(n).-(v)	3^n - A019308(n).
+A116609	lambdan	1	n -> ZV(13).modPow(ZV(n), ZV(n))	a(n) = 13^n modulo n.	nonn	1..10000	nyi	_Zak Seidov_
+A164376	prepend	1	new A025583()	0,1
+A194847	simtraf	0	new A056556()	v -> v.+(2)	A056556(n) + 2.
+A194848	simtraf	0	new A056557()	(n, v) -> v.+(1)	A056557(n) + 1.
+A221145	simtraf	1	new A038205()	(n, v) -> v.*(n)	n*A038205(n-1)
+A298207	filter	1	new A037144()	v -> !JF(v).isSemiprime()
+A356476	decexp	26	CR.TEN.pow(35).multiply(CR.TWO).divide(CR.valueOf(7542485487L))
+---- 2024-06-05 12:09:59
+A094559	simtraf	0	new A019309()	(n, v) -> ZV(4).^(n).-(v)	4^n - A019309(n).
+A116612	simtraf	1	new FilterPositionSequence(1, 1, new A000040(), (n, v) -> (n&1) == 1 && v.mod(12) == 1)	v -> v./(2)	(2n+1) mod 12 = 1
+A116613	simtraf	1	new FilterPositionSequence(1, 1, new A000040(), (n, v) -> (n&1) == 1 && v.mod(12) == 5)	v -> v./(2)	(2n+1) mod 12 = 5
+A116614	simtraf	1	new FilterPositionSequence(1, 1, new A000040(), (n, v) -> (n&1) == 0 && v.mod(12) == 1)	v -> v./(2)	(2n+0) mod 12 = 1
+A116615	simtraf	1	new FilterPositionSequence(1, 1, new A000040(), (n, v) -> (n&1) == 0 && v.mod(12) == 7)	v -> v./(2)	(2n+0) mod 12 = 7
+A116616	simtraf	1	new FilterPositionSequence(1, 1, new A000040(), (n, v) -> (n&1) == 1 && v.mod(12) == 7)	v -> v./(2)	(2n+1) mod 12 = 7
+A134958	simtraf	0	new A030019()	(n, v) -> Z2(n).*(v)	2^n*A030019(n).
+---- 2024-06-05 13:14:32
+A072169	simtraf	0	new A061256()	(n, v) -> v.*(FA(n))	A061256(n)*n!.
+A116610	simtraf	1	new FilterPositionSequence(1, 1, new A000040(), (n, v) -> (n&1) == 0 && v.mod(12) == 11)	v -> v./(2)	Values of n such that prime(2*n) mod 12 = 11.	nonn	1..5000	nyi	_Roger L. Bagula_
+A116617	simtraf	1	new FilterPositionSequence(1, 1, new A000040(), (n, v) -> (n&1) == 1 && v.mod(12) == 11)	v -> v./(2)	Values of n such that prime(2n+1) mod 12 = 11.	nonn	1..1000	nyi	_Roger L. Bagula_
+A259106	simtraf	0	new A002638()	(n, v) -> v.+(Functions.MOEBIUS.z(n))	A002328(n)+Moebius(n).
+---- 2024-06-06 14:43:58
+A093341	decexp	1	() -> CR.PI.divide(CR.ONE.agm(CR.TWO.sqrt()))./(CR.SQRT2)			X062539/sqrt(2)
+A098459	decexp	0	() -> CR.HALF.*(A006752.CATALAN_CONSTANT).+(CR.PI.multiply(CR.TWO.log()).divide(CR.EIGHT))			(1/2)*X006752+X102886
+A099935	decexpr	0	() -> CR.TWO.divide(CR.FIVE.sqrt()).multiply(CR.ONE.divide(CR.TWO).exp()).multiply(REALS.sinh(CR.FIVE.sqrt().divide(CR.TWO)))./(CR.E)			X098689/CR.E
+A130818	decexp	1	() -> CR.TWO.besselI0().-(1)			X070910-1
+A130834	decexp	1	() -> A006752.CATALAN_CONSTANT.*(2)./(CR.PI).exp()			exp(2*X006752/X000796)
+A131265	decexp	1	() -> CR.GAMMA.add(CR.TWO.log().multiply(CR.TWO)).*(CR.SQRT_PI)			X020759*X002161
+A145433	decexp	0	() -> CR.FIVE.sqrt().*(CR.PHI.log()).*(2).+(15).*(2)./(125)			2*(15+2*X002163*X002390)/125
+A145434	decexp	0	() -> CV(5).-(CR.FIVE.sqrt().*(CR.PHI.log())).*(4)./(125)			4*(5-X002163*X002390)/125
+A145436	decexp	0	() -> CR.PI.multiply(CR.PI).divide(CR.SIX).-(CR.PHI.log().^(2).*(3))			X013661-3*X002390^2
+A145439	decexp	1	() -> CR.SIX.sqrt().inverse().+(CR.SQRT2.inverse())			X020763+X010503
+A166531	decexp	88	() -> CR.THREE.multiply(CR.PI).multiply(CR.valueOf(163).sqrt()).exp().*(CR.TWO.multiply(CR.PI).multiply(CR.valueOf(163).sqrt()).exp())			X166529*X166528
+A166532	decexp	105	() -> CR.THREE.multiply(CR.PI).multiply(CR.valueOf(163).sqrt()).exp().^(2)			X166529^2
+A204067	decexp	0	() -> CR.PI.divide(CR.THREE)./(A073006.GAMMA_TWO_THIRDS)			X019670/X073006
+A204068	decexp	0	() -> A073005.GAMMA_THIRD./(6)			X073005/6
+A205885	decexp	0	() -> A073006.GAMMA_TWO_THIRDS./(6)			X073006/6
+A206161	decexp	0	() -> CR.PI.divide(CR.TWO.multiply(CR.SQRT2)).*(CR.PI.divide(CR.EIGHT).cos())./(A068465.GAMMA_THREE_QUARTERS)			X093954*X144981/X068465
+A206769	decexp	0	() -> CR.PI.divide(CR.TWO.multiply(CR.SQRT2)).*(CR.PI.divide(CR.EIGHT).sin())./(A068465.GAMMA_THREE_QUARTERS)			X093954*X182168/X068465
+A216542	decexp	0	() -> A013706.build5()./(2)			X013706/2
+A221209	decexp	1	() -> CV(2).*(A006752.CATALAN_CONSTANT)			2*X006752
+A222183	decexp	1	() -> A006752.CATALAN_CONSTANT./(2).+(CR.PI.multiply(CR.PI).divide(CR.valueOf(16)))			X006752/2+X222068
+A229728	decexp	1	() -> A006752.CATALAN_CONSTANT.*(4)./(CR.PI).exp()			exp(4*X006752/X000796)
+A237841	decexp	0	() -> CV(4).*(CR.PI.divide(CR.TWO).subtract(CR.ONE.add(CR.TWO.sqrt()).log()).divide(CR.TWO.multiply(CR.TWO.sqrt())))			4*X181049
+A246726	decexp	0	() -> CR.TWO.multiply(CR.TWO.add(CR.THREE.sqrt()).sqrt()).-(1).inverse()			1/(X214726-1)
+A256922	decexp	0	() -> CR.GAMMA./(2).+(CR.HALF.*(CR.PI.log())).-(CV(2).log())			X001620/2+(1/2)*log(CR.PI)-log(2)
+A257535	decexp	0	() -> CR.HALF_PI.-(CR.ONE.si())			(CR.PI/2)-X099281
+A268813	decexp	1	() -> CR.ONE .+(CR.ONE.add(CR.FOUR.multiply(CR.THREE.sqrt()).multiply(CR.PI).divide(CR.valueOf(27))))			1+X121839
+A272055	decexp	0	() -> CR.E.*(CR.ONE.negate().ei().negate().multiply(CR.E)).inverse()			1/(CR.E*X073003)
+A275486	decexp	1	() -> CR.ONE .+(CR.FOUR.multiply(CR.PI).divide(CR.THREE.pow(CR.THREE.divide(CR.TWO))).subtract(CR.ONE))			1+X263498
+A276627	decexp	1	() -> CR.ONE.add(CR.SQRT2).divide(CR.TWO).*(CR.PI.divide(CR.ONE.agm(CR.TWO.sqrt())))./(2)			X174968*X062539/2
+A289502	decexpr	0	() -> CR.PI.subtract(REALS.acos(CR.ONE.divide(CR.THREE))).*(CR.THREE.divide(CR.TAU))			X156546*X093582
+A299613	decexp	1	() -> CV(2).*(A030178.N)			2*X030178
+A303617	decexp	1	() -> CR.TWO.exp().*(CR.PI.divide(CR.TWO).sqrt()).*(CR.TWO.sqrt().erf())			X072334*X069998*X110894
+A327996	decexp	0	() -> CR.PI.pow(CR.ONE.divide(CR.FOUR)).divide(CR.TWO.multiply(CR.THREE.divide(CR.FOUR).gamma())).*(CR.PI.sqrt())			X319332*sqrt(CR.PI)
+A332915	decexp	1	() -> A030178.N.+(A030178.N.inverse())			X030178+X030797
+A341901	decexp	0	() -> Zeta.zeta(9).inverse()			1/X013667
+A344041	decexp	0	() -> CR.PHI.log().*(4)./(CR.FIVE.sqrt())			4*X002390/X002163
+A346205	decexpr	0	() -> REALS.coth(CR.ONE).negate().exp()./(REALS.sinh(CR.ONE))			exp(-X073747)/X073742
+A346589	decexp	0	() -> CR.GAMMA.sqrt()			sqrt(X001620)
+A346640	decexp	1	() -> CV(2).-(CR.TWO.log().divide(CR.THREE.log()))			2-X102525
+A346713	decexp	0	() -> CR.TWO.log().sqrt()			sqrt(X002162)
+A346839	decexpr	0	() -> CR.ONE.cos().inverse().-(REALS.tan(CR.ONE))			X073448-X049471
+A347341	decexp	0	() -> CR.PI.multiply(CR.PI).divide(CR.valueOf(12)).-(CV(1)./(4))			X072691-1/4
+A347407	decexp	0	() -> CR.PI.add(CR.ONE.divide(CR.PI)).-(2).inverse()			1/(X098801-2)
+A348374	decexp	1	() -> CR.E.+(CR.ONE.sin())			X001113+X049469
+A348757	decexp	1	() -> CR.FIVE.subtract(CR.FIVE.sqrt()).divide(CR.TWO).*(10)./(CR.FOUR.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt()))			10*X094874/X344172
+A349004	decexpr	0	() -> REALS.coth(CR.ONE).-(1)			X073747-1
+A350763	decexp	1	() -> CR.GAMMA.+(CR.TWO.log())			X001620+X002162
+A350885	decexpr	1	() -> REALS.tan(CR.ONE).^(2).+(REALS.tan(CR.ONE)).-(1)./(REALS.tan(CR.ONE))			X049471
+A351055	decexp	0	() -> CR.TWO.subtract(CR.PI.divide(CR.TWO)).sqrt()			sqrt(X180434)
+A351400	decexp	1	() -> CR.E.*(CR.ONE.erf())			X001113*X099286
+A352324	decexpr	1	() -> CR.HALF.*(CR.TWO.multiply(CR.PI).divide(CR.FIVE)).*(REALS.csc(CR.PI.divide(CR.FIVE)))			(1/2)*X019694*X121570
+A353049	decexp	1	() -> CV(8).*(CR.SQRT2.divide(CR.THREE))			8*X131594
+A353127	decexpr	1	() -> REALS.pow(CR.PI, CR.TWO).divide(CR.FOUR).-(CR.TWO.log())			X091476-X002162
+A353908	decexp	0	() -> CR.PI.divide(CR.SIX).^(2)			X019673^2
+A354222	decexp	0	() -> CR.ONE .-(CR.PI.divide(CR.TWO.add(CR.PI)))			1-X197686
+A354238	decexp	0	() -> CR.ONE .-(CR.PI.multiply(CR.PI).divide(CR.SIX)./(2))			1-X013661/2
+A354619	decexp	1	() -> CR.PI.+(CR.E).+(CR.GAMMA)			X000796+X001113+X001620
+A355186	decexp	0	() -> CR.ONE.divide(CR.TWO).multiply(CR.THREE.add(CR.TWO.multiply(CR.TWO.sqrt())).log())./(CR.PI.divide(CR.TWO))			X091648/X019669
+A356869	decexp	1	() -> CR.FIVE.sqrt().divide(CR.FOUR).inverse()			1/X204188
+A358186	decexp	0	() -> ComputableReals.SINGLETON.pow(CR.valueOf(27), CR.FOUR.inverse())./(3)			X011022/3
+A359057	decexp	1	() -> CR.ONE.-(CR.E.^(CR.GAMMA.negate())).inverse()			1/(1-X001113^(-X001620))
+A359106	decexp	1	() -> CR.PI.multiply(CR.PI).divide(CR.SIX).-(CR.GAMMA)			X013661-X001620
+A359532	decexp	0	() -> CR.FOUR.log()./(CR.PI)			X016627/X000796
+A360166	decexp	-1	() -> CV(2)./(CR.PI.exp().add(CR.PI.negate().exp()))			2/X175314
+A360167	decexp	-1	() -> CV(2)./(CR.PI.exp().subtract(CR.PI.negate().exp()))			2/X175315
+A360750	decexp	16	() -> PhysicsConstants.ELEMENTARY_CHARGE_CR.multiply(Z.TEN.pow(18))./(PhysicsConstants.HBAR_CR.multiply(Z.TEN.pow(33)))			X081823/X254181
+A360895	decexp	1	() -> CR.GAMMA.negate().exp().exp()			exp(X080130)
+A362922	decexp	0	() -> CR.TWO.multiply(CR.PI.divide(CR.SEVEN).cos()).*(2).-(2).inverse()			1/(2*X160389-2)
+A363018	decexp	0	() -> CR.FIVE.subtract(CR.THREE.sqrt()).add(CR.SQRT2.multiply(CR.THREE.pow(CR.THREE.divide(CR.FOUR)))).pow(CR.ONE.divide(CR.SIX)).multiply(CR.PI.divide(CR.EIGHT).exp()).multiply(CR.ONE.divide(CR.FOUR).gamma()).divide(CR.TWO.pow(CR.valueOf(25).divide(CR.valueOf(24))).multiply(CR.THREE.pow(CR.THREE.divide(CR.EIGHT))).multiply(CR.PI.pow(CR.THREE.divide(CR.FOUR)))).*(CR.NINE.add(CR.SIX.multiply(CR.THREE.sqrt())).sqrt().subtract(CR.TWO).subtract(CR.THREE.sqrt()).pow(CR.ONE.divide(CR.THREE)).multiply(CR.PI.divide(CR.EIGHT).exp()).divide(CR.TWO.pow(CR.THREE.divide(CR.EIGHT))))			X292888*X292887
+A363437	decexp	0	() -> CR.valueOf(72).sqrt().inverse()./(CR.THREE.divide(CR.EIGHT).sqrt().^(3))			X020829/X187110^3
+A363438	decexp	1	() -> CR.valueOf(15).add(CR.SEVEN.multiply(CR.FIVE.sqrt())).divide(CR.FOUR)./(CR.PHI.divide(CR.TWO).multiply(CR.THREE.sqrt()).^(3))			X102769/X179296^3
+A364806	decexp	45	() -> A359187.build().-(1).inverse()			1/(X359187-1)
+A365163	decexp	1	() -> CV(7).*(CR.TWO.multiply(CR.PI.divide(CR.SEVEN).sin()))			7*X272487
+A365164	decexp	1	() -> CV(8).*(CR.TWO.subtract(CR.SQRT2).sqrt())			8*X101464
+A365165	decexp	1	() -> CV(9).*(CR.TWO.multiply(CR.PI.divide(CR.NINE).sin()))			9*X272488
+A365251	decexp	2	() -> Zeta.zeta(5).*(24)			24*X013663
+A365319	decexpr	0	() -> REALS.cosh(CR.THREE.sqrt().multiply(CR.PI).divide(CR.TWO)).divide(CR.THREE.multiply(CR.PI)).*(3).sqrt().inverse()			1/sqrt(3*X109219)
+A365823	decexp	1	() -> CR.ONE .+(CR.THREE.add(CR.EIGHT.sqrt()))			1+X156035
+A365927	decexpr	1	() -> CR.E.add(REALS.pow(CR.E, CR.TWO).subtract(CR.ONE).sqrt()).log()			log(X188739)
+A366599	decexp	1	() -> CR.E.add(CR.ONE.add(CR.E.multiply(CR.E)).sqrt()).log()			log(X188640)
+A367480	decexpr	1	() -> REALS.csc(CR.PI.divide(CR.SEVEN)).-(1)			X121598-1
+A367959	decexpr	1	() -> CR.HALF_PI.*(CR.TWO.multiply(REALS.sinh(CR.PI.divide(CR.TWO))).divide(CR.PI))			(CR.PI/2)*X308716
+A369522	decexp	0	() -> CR.FOUR.divide(CR.THREE).log()./(CR.valueOf(new Q(3, 2)).log())			X083679/X016578
+A369881	decexpr	0	() -> REALS.pow(CR.E, CR.HALF.negate())./(2)			X092605/2
+A370000	decexp	0	() -> CR.TEN.multiply(CR.THREE.sqrt()).multiply(CR.PI.pow(CR.THREE)).add(CR.valueOf(351).multiply(Zeta.zeta(3))).divide(CR.valueOf(972)).-(CV(13).*(Zeta.zeta(3))./(18))			X226735-13*zeta(3)/18
+A370325	decexp	0	() -> CR.E.*(CR.ONE.divide(CR.E.add(CR.ONE)))			X001113*X201776
+A370393	decexp	2	() -> CR.PI.divide(CR.valueOf(17)).cos().*(17)./(CR.PI.divide(CR.valueOf(17)).sin().*(4))			17*X210649/(4*X241243)
+A370562	decexp	0	() -> CR.PI.-(CR.THREE.multiply(CR.THREE.sqrt()).divide(CR.TWO))			X000796-X104956
+A370944	decexp	1	() -> CV(2).*(CR.PHI.divide(CR.TWO).multiply(CR.THREE.sqrt()))			2*X179296
+A371466	decexp	0	() -> CR.ONE.divide(CR.THREE).multiply(CR.ONE.divide(CR.THREE).gamma().square()).divide(CR.TWO.divide(CR.THREE).gamma())./(2)			X290570/2
+A371467	decexp	0	() -> CR.THREE.multiply(CR.ONE.divide(CR.THREE).gamma().pow(CR.THREE)).divide(CR.FOUR.multiply(CR.PI.pow(CR.TWO))).inverse()			1/X224273
+A371604	decexp	0	() -> CR.FIVE.divide(CR.TWO).multiply(CR.FIVE.subtract(CR.FIVE.sqrt()).divide(CR.TWO).sqrt())./(CR.PI)			X258403/CR.PI
+A371855	decexp	1	() -> A068466.GAMMA_QUARTER./(2)			X068466/2
+A371856	decexp	0	() -> CR.ONE.divide(CR.FIVE).gamma()./(5)			X175380/5
+A371857	decexp	0	() -> CR.ONE.divide(CR.SEVEN).gamma()./(7)			X220086/7
+A371858	decexpr	1	() -> CR.PI.divide(CR.SEVEN).*(REALS.csc(CR.PI.divide(CR.SEVEN)))			X019674*X121598
+A371860	decexp	1	() -> CR.ONE.divide(CR.SIX).gamma().multiply(CR.ONE.divide(CR.THREE).gamma()).divide(CR.THREE.multiply(CR.PI.sqrt()))./(2)			X118292/2
+A371861	decexp	0	() -> CR.ONE.divide(CR.SIX).gamma().multiply(CR.ONE.divide(CR.THREE).gamma()).divide(CR.THREE.multiply(CR.PI.sqrt())).*(3)./(10)			3*X118292/10
+A371934	decexp	0	() -> CR.ONE.add(CR.TWO.sin()).sqrt().-(1).*(2)			2*(X143623-1)
+A371935	decexp	0	() -> CR.TWO.multiply(CR.HALF.sin()).^(2)			X272795^2
+A371936	decexp	0	() -> CR.ONE.divide(CR.ONE.subtract(CR.ONE.cos())).inverse()			1/X206533
+A372605	decexp	1	() -> CR.PI.divide(CR.LOG10).sqrt()			sqrt(X197071)
+A372609	decexp	0	() -> CV(new Q(10,3)).*(CR.TWO.log().divide(CR.THREE))			(10/3)*X193535
+A373363	simtraf	1	new A083345()	(n, v) -> Functions.GCD.z(Functions.SOPFR.z(n), v)	n)), where A001414 is the sum of prime factors with repetition, and A083345 is the numerator of the sum of the inverses of prime factors with repetition.	nonn,new	1..65537	nyi	_Antti Karttunen_
+A373365	simtraf	1	new A064097()	(n, v) -> Functions.GCD.z(Functions.SOPFR.z(n), v)	n)), where A001414 is the sum of prime factors with repetition, and A064097 is a quasi-logarithm defined inductively by a(1) = 0 and a(p) = 1 + a(p-1) if p is prime and a(n*m) = a(n) + a(m) if m,n > 1.	nonn,new	1..100000	nyi	_Antti Karttunen_
+A373366	multraf	1	(self, n) -> Functions.GCD.z(self.s(0), self.s(1))	""	new A064097(), new A083345()	nonn,new	1..100000	nyi	_Antti Karttunen_
+A373371	lambdan	1	n -> Functions.SOPFR.z(n).mod(3) == 0 ? Z.ONE : Z.ZERO	a(n) = 1 if the sum of prime factors with repetition is a multiple of 3, otherwise 0.	nonn,new	1..100000	nyi	_Antti Karttunen_
+A373374	lambdan	1	n -> Functions.SOPFR.z(n).and(Z.ONE).isZero() && ARD(n).and(Z.ONE).isZero() ? Z.ONE : Z.ZERO	a(n) = 1 if both A001414(n) and A003415(n) are even, otherwise 0, where A001414 is the sum of prime factors with repetition, and A003415 is the arithmetic derivative.	nonn,new	1..100000	nyi	_Antti Karttunen_
+A373375	filnum	1	1	n -> Functions.SOPFR.z(n).and(Z.ONE).isZero() && ARD(n).and(Z.ONE).isZero()	Numbers whose sum of prime factors (with repetition, A001414) and arithmetic derivative (A003415) are both even.	nonn,new	1..10000	nyi	_Antti Karttunen_
+A373376	filnum	1	1	n -> !Functions.GCD.z(Functions.SOPFR.z(n), ARD(n)).and(Z.ONE).isZero()	k such that gcd(A001414(k), A003415(k)) is odd, where A001414 is the sum of prime factors with repetition, and A003415 is the arithmetic derivative.	nonn,new	1..10000	nyi	_Antti Karttunen_
+
+A254794	decexp	0	() -> CR.ONE.divide(CR.FOUR).gamma().pow(CR.FOUR).divide(CR.EIGHT.multiply(CR.PI))./(CR.PI)			X133748/CR.PI
+---- 2024-06-06 15:41:43
+A178959	decexp	0	() -> CR.ONE .-(CR.TWO.multiply(CR.PI.divide(CR.valueOf(18)).sin()))			1-X130880
+A289487	decexp	34	() -> CV(4)./(PhysicsConstants.PLANCK_CONSTANT_CR)	4/X003676
+A339083	decexpr	0	() -> CV(new Q(3, 4)).-(CV(new Q(7, 8)).subtract(CR.PI.divide(CR.FOUR).multiply(REALS.coth(CR.PI))))			3/4-X256919
+---- 2024-06-06 15:43:36
+A178959	decexp	0	() -> CR.ONE .-(CR.TWO.multiply(CR.PI.divide(CR.valueOf(18)).sin()))			1-X130880
+A289487	decexp	34	() -> CV(4)./(PhysicsConstants.PLANCK_CONSTANT_CR)	4/X003676
+A339083	decexpr	0	() -> CV(new Q(3, 4)).-(CV(new Q(7, 8)).subtract(CR.PI.divide(CR.FOUR).multiply(REALS.coth(CR.PI))))			3/4-X256919
+---- 2024-06-06 15:53:12
+A086231	decexp	1	() -> CR.ONE.-(CR.ONE.subtract(CR.valueOf(16).multiply(CR.TWO.divide(CR.THREE).sqrt()).multiply(CR.PI.pow(3)).divide(CR.ONE.divide(CR.valueOf(24)).gamma().multiply(CR.FIVE.divide(CR.valueOf(24)).gamma()).multiply(CR.SEVEN.divide(CR.valueOf(24)).gamma()).multiply(CR.valueOf(11).divide(CR.valueOf(24)).gamma())))).inverse()			1/(1-X086230)
+A178959	decexp	0	() -> CR.ONE .-(CR.TWO.multiply(CR.PI.divide(CR.valueOf(18)).sin()))			1-X130880
+A254794	decexp	1	() -> CR.ONE.divide(CR.FOUR).gamma().pow(CR.FOUR).divide(CR.EIGHT.multiply(CR.PI))./(CR.PI)			X133748/CR.PI
+A289487	decexp	34	() -> CV(4)./(PhysicsConstants.PLANCK_CONSTANT_CR)	4/X003676
+A339083	decexpr	0	() -> CV(new Q(3, 4)).-(CV(new Q(7, 8)).subtract(CR.PI.divide(CR.FOUR).multiply(REALS.coth(CR.PI))))			3/4-X256919
+A214550	decexp	0	() -> CR.PI.^(2).*(4)./(27).-(Zeta.zetaHurwitz(2, new Q(2, 3)).divide(CR.NINE))			4*CR.PI^2/27-X294967
+---- 2024-06-06 15:57:27
+A131653	decexp	0	() -> Zeta.zetap(2).^(3)./(6).+(Zeta.zetap(6)./(3)).+(Zeta.zetap(2).*(Zeta.zetap(4)./(2)))			X085548^3/6+X085966/3+X085548*X085964/2
+A163243	decexp	0	() -> A002210.SCALED_KHINTCHINE.divide(A002210.LN2).exp().log()			log(X002210)
+A275647	decexp	1	() -> CR.PI.multiply(CR.PI).divide(CR.SIX).-(Zeta.zetap(2))			X013661-X085548
+A282469	decexp	1	() -> Zeta.zeta(4).-(Zeta.zetap(4))			X013662-X085964
+---- 2024-06-06 16:16:17
+A116618	simtraf	1	new FilterPositionSequence(1, 1, new A000040(), (n, v) -> (n&1) == 0 && v.mod(12) == 1)	v -> Functions.FIBONACCI.z(v./(2))	Values of Fibonacci(n) for n such that prime(2n) mod 12 = 1.	nonn	1..1000	nyi	_Roger L. Bagula_
+A243262	decexp	1	() -> Zeta.zeta(3).divide(CR.FOUR).divide(CR.PI.square()).exp()	exp(zeta(3)/(4*Pi^2))
+A373330	lambdan	0	n -> {final Z t = Functions.TRIANGULAR.z(ZV(n).*(n)); return t.-(t.sqrt().^(2)); }	a(n) is the difference between T = A000217(n^2) and the greatest square not exceeding T
+A373335	lambdan	1	n -> SD(n, d -> ZV((d%5 == 1 ? 1 : 0) - (d%5 == 2 ? 1 : 0)))
+A373336	lambdan	1	n -> SD(n, d -> ZV((d%7 == 1 ? 1 : 0) - (d%7 == 2 ? 1 : 0)))
+---- 2024-06-06 17:42:46
+A092495	simtraf	1	new A002034()	v -> FA(v)	a(n) = A002034(n)!.
+A093308	lambdan	1	n -> FI(Functions.PRIME.z(Functions.PRIME.z(n)))	a(n) = Fibonacci(prim
+A094252	lambdan	1	n -> Functions.PARTITIONS.z(n).mod(Functions.PRIME.z(n))	partition(n) % prime(n)
+A094264	lambdan	1	n -> SU(1, n, j -> ZV(n).^(j).modZ(j))	Sum(r = 1..n) (n^r % r)
+A097051	multrar	1	(self, n) -> ZV(n)./(self.a(n/2))	"1"		a(1) = 1		a(n) = floor(n/a(floor(n/2))); a(1) = 1.
+A101652	parmof2	0	A101651	2	n -> PR(0, n, k -> Z.ONE.+(ZV(2).^(M010060 .a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+2^A010060(k)}/2.
+A101653	parmof2	0	A101651	3	n -> PR(0, n, k -> Z.ONE.+(ZV(3).^(M010060 .a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+3^A010060(k)}/2.
+A101654	parmof2	0	A101651	4	n -> PR(0, n, k -> Z.ONE.+(ZV(4).^(M010060 .a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+4^A010060(k)}/2.
+A101655	parmof2	0	A101651	9	n -> PR(0, n, k -> Z.ONE.+(ZV(9).^(M010060 .a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+9^A010060(k)}/2.
+A102389	lambdan	0	n -> ZV(1 + n/2).*(ZV(1).+(M010060.a(n).testBit(0) ? Z.NEG_ONE : Z.ONE))./(2)		a(n) = (1+floor(n/2))*(1+(-1)^A010060(n))/2.
+A102390	lambdan	0	n -> ZV(1 + n/2).*(ZV(1).-(M010060.a(n).testBit(0) ? Z.NEG_ONE : Z.ONE))./(2)	a(n) = (1+floor(n/2))*(1-(-1)^A010060(n))/2.
+A102391	lambdan	0	n -> ZV((1 + n/2) * (1 +(M010060.a(n).testBit(0) ? -1 : 1))/2 == 0 ? 0 : n)	a(n) = if((1+floor(n/2)) (1+(-1)^A010060(n))/2 = 0, 0, n).
+A102392	lambdan	0	n -> ZV((1 + n/2) * (1 +(M010060.a(n).testBit(0) ? -1 : 1))/2 == 0 ? n : 0)	a(n) = if((1+floor(n/2))*(1+(-1)^A010060(n))/2=0, n, 0)		a(n)=if((1+floor(n/2))(1+(-1)^A000120(n))/2=0, n, 0); a(n)=if((1+floor(n/2))(1+(-1)^A010060(n))/2=0, n, 0).
+---- 2024-06-06 17:57:34
+A092495	simtraf	1	new A002034()	v -> FA(v)	a(n) = A002034(n)!.
+A093308	lambdan	1	n -> FI(Functions.PRIME.z(Functions.PRIME.z(n)))	a(n) = Fibonacci(prim
+A094252	lambdan	1	n -> Functions.PARTITIONS.z(n).mod(Functions.PRIME.z(n))	partition(n) % prime(n)
+A094264	lambdan	1	n -> SU(1, n, j -> ZV(n).^(j).modZ(j))	Sum(r = 1..n) (n^r % r)
+A097051	multrar	1	(self, n) -> ZV(n)./(self.a(n/2))	"1"		a(1) = 1		a(n) = floor(n/a(floor(n/2))); a(1) = 1.
+A101652	parmof2	0	A101651	2	n -> PR(0, n, k -> Z.ONE.+(ZV(2).^(M010060 .a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+2^A010060(k)}/2.
+A101653	parmof2	0	A101651	3	n -> PR(0, n, k -> Z.ONE.+(ZV(3).^(M010060 .a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+3^A010060(k)}/2.
+A101654	parmof2	0	A101651	4	n -> PR(0, n, k -> Z.ONE.+(ZV(4).^(M010060 .a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+4^A010060(k)}/2.
+A101655	parmof2	0	A101651	9	n -> PR(0, n, k -> Z.ONE.+(ZV(9).^(M010060 .a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+9^A010060(k)}/2.
+A102389	lambdan	0	n -> ZV(1 + n/2).*(ZV(1).+(M010060.a(n).testBit(0) ? Z.NEG_ONE : Z.ONE))./(2)		a(n) = (1+floor(n/2))*(1+(-1)^A010060(n))/2.
+A102390	lambdan	0	n -> ZV(1 + n/2).*(ZV(1).-(M010060.a(n).testBit(0) ? Z.NEG_ONE : Z.ONE))./(2)	a(n) = (1+floor(n/2))*(1-(-1)^A010060(n))/2.
+A102391	lambdan	0	n -> ZV((1 + n/2) * (1 +(M010060.a(n).testBit(0) ? -1 : 1))/2 == 0 ? 0 : n)	a(n) = if((1+floor(n/2)) (1+(-1)^A010060(n))/2 = 0, 0, n).
+A102392	lambdan	0	n -> ZV((1 + n/2) * (1 +(M010060.a(n).testBit(0) ? -1 : 1))/2 == 0 ? n : 0)	a(n) = if((1+floor(n/2))*(1+(-1)^A010060(n))/2=0, n, 0)		a(n)=if((1+floor(n/2))(1+(-1)^A000120(n))/2=0, n, 0); a(n)=if((1+floor(n/2))(1+(-1)^A010060(n))/2=0, n, 0).
+---- 2024-06-06 18:32:51
+A158098	eultra1	0	new LambdaSequence(1, n -> Z2(Functions.TRIANGULAR.i(n)))	Euler transform of triangular powers of 2: [2,2^3,2^6,...,2^(n(n+1)/2),...].
+A158099	eultra1	0	new LambdaSequence(1, n -> Z2(n*n))	Functions.TRIANGULAR.i(n)))	Euler transform of square powers of 2: [2,2^4,2^9,...,2^(n^2),...].
+A195255	lambdan	0	n -> n == 0 ? Z.ONE : RU(1, n, k -> new Q(ZV(3).^(k), FA(k - 1))).*(FA(n - 1)).num()		a(n) = (n-1)!*Sum_{k=1..n} 3^k/(k-1)! for n>0, with a(0)=1.
+A195256	lambdan	0	n -> n == 0 ? Z.ONE : RU(1, n, k -> new Q(ZV(4).^(k), FA(k - 1))).*(FA(n - 1)).num()		a(n) = (n-1)!*Sum_{k=1..n} 4^k/(k-1)! for n>0, with a(0)=1.
+A195257	lambdan	0	n -> n == 0 ? Z.ONE : RU(1, n, k -> new Q(ZV(5).^(k), FA(k - 1))).*(FA(n - 1)).num()		a(n) = (n-1)!*Sum_{k=1..n} 5^k/(k-1)! for n>0, with a(0)=1.
+A271929	eultra1	1	new A046211()	, where A046211(n) is the number of ternary Lyndon words whose digits sum to 1 (or 2) mod 3.
+A373296	eultra1	0	new A055457()
+A197132	eultra1	0	new A002808()	Euler transform of composite numbers.
+---- 2024-06-06 20:06:54
+A079116	multrar	0	(self, n) -> ComputableReals.SINGLETON.sum(1, n - 1, k -> CV(self.a(k)).^(new Q(n, k)))./(n - 1).floor()	"1,2,3"	floor[(1/n) sum_{k=1..n} a(k)^(n/k)], given a(0)=1, a(1)=2, a(2)=3.
+A079117	multrar	0	(self, n) -> ComputableReals.SINGLETON.sum(1, n - 1, k -> CV(self.a(k)).^(new Q(n, k)))./(n - 1).floor()	"1,2,5"	floor[(1/n) sum_{k=1..n} a(k)^(n/k)], given a(0)=1, a(1)=2, a(2)=5.
+A079118	multrar	0	(self, n) -> ComputableReals.SINGLETON.sum(1, n - 1, k -> CV(self.a(k)).^(new Q(n, k)))./(n - 1).floor()	"1,2,6"	floor[(1/n) sum_{k=1..n} a(k)^(n/k)], given a(0)=1, a(1)=2, a(2)=6.
+A079119	multrar	0	(self, n) -> ComputableReals.SINGLETON.sum(1, n - 1, k -> CV(self.a(k)).^(new Q(n, k)))./(n - 1).floor()	"1,2,7"	floor[(1/n) sum_{k=1..n} a(k)^(n/k)], given a(0)=1, a(1)=2, a(2)=7.
+A079120	multrar	0	(self, n) -> ComputableReals.SINGLETON.sum(1, n - 1, k -> CV(self.a(k)).^(new Q(n, k)))./(n - 1).floor()	"1,3,7"	floor[(1/n) sum_{k=1..n} a(k)^(n/k)], given a(0)=1, a(1)=3, a(2)=7.
+A092507	multraf	0	(self, n) -> self.s(0).+(self.s(1))	"2,4"	new A014210(), new A014234()	a(n) = A014210(n)
+A093062	lambdan	1	n -> FI(Functions.PRIME.z(n)).-(Functions.PRIME.z(FI(n)))		a(n)
+A102397	multraf	0	(self, n) -> self.a(n - 1).*(10).+(self.s(0))	"1"	new A010059()	a(n)=sum{k=0..n, (1+(-1)^A010060(n-k))10^k/2}.
+A130741	simtraf	0	new A137840()	v -> v.+(3)	a(n) = 3+A137840(n)
+A141761	multrar	0	(self, n) -> Z.ONE.-(SU(0, n - 1, j -> self.a(j).*(Z_1(n - j)).*(BI(Functions.TRIANGULAR.i(j - 1) + n - j - 1, n - j))))	"1,1"	a(n) = 1 - Sum_{j=0..n-1} a(j) * (-1)^(n-j) * C(j(j-1)/2 + n-j-1, n-j) for n>0, with a(0)=1.
+A353184	multrar	0	(self, n) -> n == 0 ? Z.ONE : SU(1, Functions.SQRT.i(n), k -> BI(n, k*k).*(self.a(n - k*k)).*(FA(k*k - 1)))	"1"	a(0) = 1; a(n) = Sum_{k=1..floor(sqrt(n))} (k^2-1)! * binomial(n,k^2) * a(n-k^2)
+A369643	lambdan	1	n -> { final Z ardn = ARD(n); return ardn./(Functions.GCD.z(n, ardn)).mod(3) == 0 ? Z.ONE : Z.ZERO; }	n' / gcd(n,n') 'is a multiple of 3, otherwise 0. Here n' stands for the arithmetic derivative of n, A003415.
+A076530	simtraf	0	new A065900()	v -> v.-(1)

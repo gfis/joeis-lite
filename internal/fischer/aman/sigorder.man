@@ -1,0 +1,10 @@
+---- 2024-06-04 14:46:33
+A104519	#empir	3	[0,1,-2,1,0,0,-1,2,-1]	1,2,3,4,7,10,12	0	0					Sufficientnumber of monominoes to exclude X-pentominoes from an n X n board.
+A193764	#empir	2	[0,1,-2,1,0,0,-1,2,-1]	2,6,12,18,26,37,48	0	0					The number of dominoes in a largest saturated domino covering of the n X n board (n>=2).
+A193765	#empir	2	[0,1,-2,1,0,0,-1,2,-1]	3,7,13,19,27,38,49	0	0					The number of dominoes in the largest saturated domino covering of the n X n board plus one (n >= 2).
+A197049	#empir	0	[0,-1,-1,3,1,1,-1]	1,2,4,10,18	0	0					Number of n X 3 0..4 arrays with each element equal to the number its horizontal and vertical zero neighbors.
+A249668	#high	0	[0,-1,1,0,0,0,0,1,-1]	3,4,7,10,15,20,25	0	0					Population of the n-th generation of the pattern 101//010 in the Life Without Death cellular automaton.
+A364835	#high	1	[0,-1,0,0,2,0,0,-1]	1,-1,-1,-2,1,-2	0	0					a(1) = 1; a(n+1) = (number of times a(n)+1 has appeared) - (number of times a(n) has appeared).
+A366829	#high	1	[0,1,-3,3,-1]	0,0,784	0	0					Number of 9-step self-avoiding king's tours on an n X n board summed over all starting positions.
+A366834	#tabl	0	[0,-1,4,-6,4,-1]	1,1,0,1	0	0					Square array read by descending diagonals: (-1)^n*T(n,k)/n! is the coefficient of x^(2*n+1) in the Taylor expansion of the k-th iteration of sin(x).
+A369543	#high	0	[0,-1,0,0,0,0,0,2,0,0,0,0,0,-1]	1,-1,2,4,6,9,-4,7,0,12,19,-9	0	0					a(0) = 1; for n >= 0, a(n+1) = n - a(n) if a(n) odd, else a(n+1) = floor((3*n + a(n))/2).
