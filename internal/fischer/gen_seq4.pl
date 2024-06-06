@@ -215,15 +215,14 @@ while (<>) { # read inputfile
                 print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n";
                 $do_generate = 0;
             }
-            $parm =~ s{ZV\(}           {Z.valueOf\(}g;
-            $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." . $zhash{$1}}eg; # after the previous line!
+            $parm =~ s{ZV\(}           {Z.valueOf\(}g;  $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .   $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{ARD\(([^\)]+)\)}{Jaguar.factor($1).arithmeticDerivative()}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BS}             {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
             $parm =~ s{CESQ\(}         {Functions.CEIL_SQRT.z\(}g;
             $parm =~ s{CML\(}          {Functions.CARMICHAEL_LAMBDA.z\(}g;
-            $parm =~ s{CV\(}           {CR.valueOf\(}g;
+            $parm =~ s{CV\(}           {CR.valueOf\(}g; $parm =~ s{CR\.valueOf\((\-1|[0-9]|10)\)}{"CR." . $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
             $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
             $parm =~ s{FD\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\($1, 2}g;
@@ -304,15 +303,18 @@ while (<>) { # read inputfile
             # extract any DirectSequences
             my %statics = (); # maps [ADFM]<number> to A<number>
             foreach my $xno ($parms[$iparm] =~ m{([ADFM]\d{6})\.a\(}g) { # collect the DirectSequences
-              $statics{$xno} = "A" . substr($xno, 1); # D012345 -> A012345
+                $statics{$xno} = "A" . substr($xno, 1); # D012345 -> A012345
             }
             foreach my $xno (sort(keys(%statics))) { # evaluate the DirectSequences
-              my $ano = $statics{$xno};
-              $static_dirs .= "\n  private static final DirectSequence $ano = new $ano();";
-              if (0) {
-              } elsif(substr($xno, 0, 1) eq "D") {
-                $parms[$iparm] =~ s{$xno\.a\(}{$ano\.a\(}g;
-              }
+                my $ano = $statics{$xno};
+                if (0) {
+                } elsif(substr($xno, 0, 1) eq "D") {
+                    $static_dirs .= "\n  private static final DirectSequence $ano = new $ano();";
+                    $parms[$iparm] =~ s{$xno\.a\(}{$ano\.a\(}g;
+                } elsif(substr($xno, 0, 1) eq "M") {
+                    $static_dirs .= "\n  private static final MemorySequence $ano = new $ano();";
+                    $parms[$iparm] =~ s{$xno\.a\(}{$ano\.a\(}g;
+                }
             }
         } # lambda parameter 
         if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
@@ -549,6 +551,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
+    if ($line =~ m{\WMemorySequence}               ) { $imports{"irvine.oeis.memory.MemorySequence"            } = $itype; }
     if ($line =~ m{\WMobiusTransformSequence}      ) { $imports{"irvine.oeis.transform.MobiusTransformSequence"} = $itype; }
     if ($line =~ m{\WMobius[\.\(]}                 ) { $imports{"irvine.math.Mobius"}                            = $itype; }
     if ($line =~ m{\WMorphismFixedPointSequence}   ) { $imports{"irvine.oeis.base.MorphismFixedPointSequence"  } = $itype; }
@@ -557,6 +560,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPair}                         ) { $imports{"irvine.util.Pair" }                             = $itype; }
     if ($line =~ m{\WPartialSumSequence}           ) { $imports{"irvine.oeis.PartialSumSequence"}                = $itype; }
     if ($line =~ m{\WPeriodicSequence}             ) { $imports{"irvine.oeis.recur.PeriodicSequence"}            = $itype; }
+    if ($line =~ m{\WPhysicsConstants}             ) { $imports{"irvine.math.r.PhysicsConstants"}                = $itype; }
     if ($line =~ m{\WPolynomialUtils}              ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
     if ($line =~ m{\WPolynomial}                   ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
     if ($line =~ m{\WPredicates}                   ) { $imports{"irvine.math.predicate.Predicates"             } = $itype; }
