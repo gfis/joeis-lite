@@ -1,0 +1,79 @@
+---- 2024-06-13 11:37:15
+A121452	multrar	0	(self, n) -> RU(1, (n + 1)/2, k -> new Q(ZV(2*k - 1).*(self.a(n - 2*k + 1)), ZV(k).*(FA(n - 2*k + 1)))).*(FA(n - 1)).num()	"1"
+A193287	multrar	0	(self, n) -> RU(1, n, k -> new Q(ZV(k).*(Z2(k/2)).*(self.a(n - k)), FA(n - k))./((k + 1)/2)).*(FA(n - 1)).num()	"1"
+A193288	multrar	0	(self, n) -> RU(1, n, k -> new Q(ZV(k).*(ZV(3).^(k/2)).*(self.a(n - k)), FA(n - k))./((k + 1)/2)).*(FA(n - 1)).num()	"1"
+A318811	multrar	0	(self, n) -> RU(1, n, k -> new Q(PHI(k).*(k).*(self.a(n - k)), FA(n - k))).*(FA(n - 1)).num()	"1"
+A335501	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(n - k).*(self.a(k))).*(2)./(n)	"1"
+A336209	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(n - k).*(self.a(k)))./(-n)	"1"
+A336210	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(3).*(n - k).*(self.a(k)))./(-n)	"1"
+A337166	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n, k).^(2).*(n - k).*(self.a(k)))./(-n)	"1"
+A351798	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).*(k + 2).*(self.a(k)).*(self.a(n - k - 1)))./(2)	"1"
+A353189	multrar	0	(self, n) -> RU(1, n, k -> new Q(MU(k).*(self.a(n - k)), FA(n - k))).*(FA(n - 1)).num()	"1"
+A318917	multrar	0	(self, n) -> RU(1, n, k -> new Q(PHI(k).*(self.a(n - k)), FA(n - k))).*(FA(n - 1)).num()	"1"
+A353222	multrar	0	(self, n) -> RU(1, (n + 1)/3, k -> new Q(ZV(3*k - 1).*(self.a(n - 3*k + 1)), ZV(k).*(FA(n - 3*k + 1)))).*(FA(n - 1)).num()	"1"
+A353224	multrar	0	(self, n) -> RU(1, (n + 1)/4, k -> new Q(ZV(4*k - 1).*(self.a(n - 4*k + 1)), ZV(k).*(FA(n - 4*k + 1)))).*(FA(n - 1)).num()	"1"
+---- 2024-06-13 11:58:09
+A346314	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z.ONE, ZV(d).*(FA(k/d).^(2*d)))).*(k).*(self.a(n - k)).*(BI(n, k).*(FA(k)).^(2)))./(-n).num()	"1"	-(1/n) * Sum_{k=1..n} (binomial(n,k) * k!)^2 * k * ( Sum_{d|k} 1 / (d * ((k/d)!)^(2*d)) ) * a(n-k)
+A363441	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(-2).^(k/d).*(d).*(self.a(d - 1)).*(self.a(n - k))))./(-n)	"1"	(-1/n) * Sum_{k=1..n} ( Sum_{d|k} d * (-2)^(k/d) * a(d-1) ) * a(n-k)
+A363442	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(-3).^(k/d).*(d).*(self.a(d - 1)).*(self.a(n - k))))./(-n)	"1"
+A363443	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(-4).^(k/d).*(d).*(self.a(d - 1)).*(self.a(n - k))))./(-n)	"1"
+A363599	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> Z_1(k/d).*(d).*(ZV(d).^(2).-(1)).*(self.a(n - k))))./(-n)	"1"
+A363600	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> Z_1(k/d).*(d).*(ZV(d).^(2).+(1)).*(self.a(n - k))))./(-n)	"1"
+---- 2024-06-13 12:14:31
+A336289	multrar	0	(self, n) -> RU(1, n, k -> RU(1, k, i -> new Q(1, i)).*(BI(n - 1, k - 1)).*(FA(k - 1)).*(self.a(n - k))./(FA(n - k))).*(FA(n)).num()	"1"
+A336290	multrar	0	(self, n) -> RU(1, n, k -> RU(1, k, i -> new Q(1, i)).*(BI(n - 1, k - 1)).*(self.a(n - k))./(FA(n - k))).*(FA(n)).num()	"1"
+A346312	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z.ONE, ZV(k/d).^(2*d - 1))).*(BI(n, k).*(FA(k)).^(2)).*(self.a(n - k)))./(-n).num()	"1"
+A363542	multrar	0	(self, n) -> SU(1, n, k -> ZV(-2).^(k).+(SD(k, d -> Z_1(k/d).*(d).*(self.a(d - 1)))).*(self.a(n - k)))./(-n)	"1"										(-1/n) * Sum_{k=1..n} ( (-2)^k + Sum_{d|k} (-1)^(k/d) * d * a(d-1) ) * a(n-k)
+A363543	multrar	0	(self, n) -> SU(1, n, k -> ZV(-3).^(k).+(SD(k, d -> Z_1(k/d).*(d).*(self.a(d - 1)))).*(self.a(n - k)))./(-n)	"1"										(-1/n) * Sum_{k=1..n} ( (-3)^k + Sum_{d|k} (-1)^(k/d) * d * a(d-1) ) * a(n-k).
+---- 2024-06-13 16:00:24
+A346313	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z_1(d), ZV(k/d).^(2*d - 1))).*(Z_1(k)).*(BI(n, k).*(FA(k)).^(2)).*(self.a(n - k)))./(n).num()	"1"	(1/n) * Sum_{k=1..n} (-1)^k * (binomial(n,k) * k!)^2 * ( Sum_{d|k} (-1)^d / (k/d)^(2*d-1) ) * a(n-k)
+A346315	multrar	0	(self, n) -> RU(1, n, k -> RD(k, d -> new Q(Z_1(d), ZV(d).*(FA(k/d).^(2*d)))).*(Z_1(k).*(BI(n, k).*(FA(k)).^(2))).*(k).*(self.a(n - k)))./(n).num()	"1"	(1/n) * Sum_{k=1..n} (-1)^k * (binomial(n,k) * k!)^2 * k * ( Sum_{d|k} (-1)^d / (d * ((k/d)!)^(2*d)) ) * a(n-k)
+A363510	multrar	0	(self, n) -> SU(1, n, k -> ZV(4).*(Z_1(k)).+(SD(k, d -> Z_1(k/d).*(d).*(self.a(d - 1)))).*(self.a(n - k)))./(-n)	"1"
+A366958	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 1	largest and smallest digits is equal to 1.	nonn,base,easy	1..59	nyi	_Stefano Spezia_
+A366959	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 2	largest and smallest digits is equal to 2.	nonn,base,easy	1..10000	nyi	_Stefano Spezia_
+A366960	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 3	largest and smallest digits is equal to 3.	nonn,base,easy	1..10000	nyi	_Stefano Spezia_
+A366961	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 4	largest and smallest digits is equal to 4.	nonn,base,easy	1..56	nyi	_Stefano Spezia_
+A366962	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 5	largest and smallest digits is equal to 5.	nonn,base,easy	1..54	nyi	_Stefano Spezia_
+A366963	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 6	largest and smallest digits is equal to 6.	nonn,base,easy	1..58	nyi	_Stefano Spezia_
+A366964	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 7	largest and smallest digits is equal to 7.	nonn,base,easy	1..53	nyi	_Stefano Spezia_
+A366965	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 8	largest and smallest digits is equal to 8.	nonn,base,easy	1..56	nyi	_Stefano Spezia_
+A366966	filnum	1	1	n -> Functions.DIGIT_SORT_ASCENDING.i(10, n) % 10 - Functions.DIGIT_SORT_DESCENDING.i(10, n) % 10 == 9	largest and smallest digits is equal to 9.	nonn,base,easy	1..51	nyi	_Stefano Spezia_
+A367055	trilambn	0	0	0	(n, k) -> ZV(Integer.bitCount(n) + Integer.bitCount(k))	Triangle read by rows: T(n, k) = A000120(n) + A000120(k), 0 <= k <= n.
+A367308	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).*(self.a(k))).*(n)	"1"	n*Sum_{k=0..n-1} binomial(n,k) * a(k).
+A367330	lambdan	0	n -> RU(0, n, k -> BI(new Q(-1, 3), k).^(2).*(Z_1(k)).*(ZV(27).^(n))).num()
+A367331	lambdan	0	n -> RU(0, n, k -> BI(new Q( 1, 3), k).^(2).*(Z_1(k)).*(ZV(27).^(n))).num()
+A367332	lambdan	0	n -> RU(0, n, k -> BI(new Q( 1, 3), k).^(2).*(ZV(27).^(n))).num()
+A367333	lambdan	0	n -> RU(0, n, k -> BI(new Q(-1, 3), k).^(2).*(ZV(27).^(n))).num()
+A373550	simtraf	1	new A005117()	v -> v.and(Z.ONE)	parity of the n-th squarefree number.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A373620	holos	0	[[0],[-6,1],[0],[12,-3],[3],[-6,3],[1],[0,-1]]	1	0	1	e.g.f. exp(x / (1 - x^2)^2).	nonn,new	0..20	nyi
+A363509	multrar	0	(self, n) -> SU(1, n, k -> ZV(3).*(Z_1(k)).+(SD(k, d -> Z_1(k/d).*(d).*(self.a(d - 1)))).*(self.a(n - k)))./(-n)	"1"										(-1/n) * Sum_{k=1..n} ( 3 * (-1)^k + Sum_{d|k} (-1)^(k/d) * d * a(d-1) ) * a(n-k)
+A373549	simtraf	0	new A001694()	v -> v.and(Z.ONE)	parity of the n-th powerful number.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A373619	holos	0	[[0],[240,-44,2],[0],[-840,174,-9],[0],[1088,-255,15],[0],[-588,160,-10],[0],[126,-30],[0],[1,-6,3],[0],[0,1,-1]]	1,1,1,10	0	1	e.g.f. exp(x / (1 - x^2)^(3/2)).	nonn,new	0..21	nyi	_Seiichi Manyama_                       
+A373621	holos	0	[[0],[0,152343750000,-63476562500,8886718750,-507812500,10156250],[0],[0],[0],[0],[0,-18046875000,8128906250,-1276171875,84531250,-2015625],[0],[0],[0],[0],[0,761250000,-379625000,68600000,-5425000,160000],[0],[0],[0],[0],[0,-13200000,7617500,-1659250,164500,-6350],[0],[0],[0],[0],[0,75624,-56300,16410,-2260,126],[0],[0],[0],[0],[0,-24,50,-35,10,-1]]	1, 1, 1, 1, 1, 26	0	0	1 / ( (1 - 25*x^5) * (1 - x/(1 - 25*x^5)^(1/5)) ).	nonn,new	0..35	nyi	_Seiichi Manyama_       
+A373627	holos	0	[[0],[0,-1769472,811008,-110592,4608],[0],[0],[0],[0,528384,-269824,43392,-2240],[0],[0],[0],[0,-51552,30552,-6048,408],[0],[0],[0],[0,1686,-1275,342,-33],[0],[0],[0],[0,-6,11,-6,1]]	1, 1, 1, 1, 9	0	0	1 / ( (1 - 8*x^4) * (1 - x/(1 - 8*x^4)^(1/4)) ).	nonn,new	0..37	nyi	_Seiichi Manyama_       
+---- 2024-06-13 16:45:46
+A373433	simtraf	0	new A000111()	(n, v) -> v.*(FA(n))	a(n) = A000111(n) * A000142(n). Row sums of A373434.	nonn,new	0..18	nyi	_Peter Luschny_
+A373465	filter	1	new A002113()	v -> Functions.OMEGA.i(v) == 5	Palindromes with exactly 5 distinct prime divisors.	nonn,base,new	1..37	nyi	_M. F. Hasler_
+A373466	filter	1	new A002113()	v -> Functions.OMEGA.i(v) == 6	Palindromes with exactly 6 distinct prime divisors.	nonn,base,new	1..29	nyi	_M. F. Hasler_
+A373467	filter	1	new A002113()	v -> Functions.OMEGA.i(v) == 7	Palindromes with exactly 7 (distinct) prime divisors.	nonn,base,new	1..29	nyi	_M. F. Hasler_
+A373472	multraf	1	(self, n) -> self.s(0).mod(3) == 0 && self.s(1).mod(3) == 0 ? Z.ONE : Z.ZERO	""	new A001414(), new A059975()	a(n) = 1 if A001414(n) and A059975(n) are both multiples of 3, otherwise 0, where A001414 and A059975 are fully additive with a(p) = p and a(p) = p-1, respectively.
+A373473	filtpos	1	1	new A373472()	v -> v.equals(Z.ONE)	Numbers k such that A001414(k) and A059975(k) are both multiples of 3, where A001414 and A059975 are fully additive with a(p) = p and a(p) = p-1, respectively.
+A373474	multraf	1	(self, n) -> self.s(0).mod(3) == 0 && self.s(1).mod(3) == 0 ? Z.ONE : Z.ZERO	""	new A001414(), new A083345()	a(n) = 1 if A001414(n) and A083345(n) are both multiples of 3, otherwise 0, where A001414 is fully additive with a(p) = p, and A083345 is the numerator of the fully additive function with a(p) = 1/p.
+A373475	filtpos	1	1	new A373474()	v -> v.equals(Z.ONE)	Numbers k such that A001414(k) and A083345(k) are both multiples of 3, where A001414 is fully additive with a(p) = p, and A083345 is the numerator of the fully additive function with a(p) = 1/p.
+A373477	multraf	1	(self, n) -> self.s(0).mod(3) == 0 && self.s(1).mod(3) == 0 ? Z.ONE : Z.ZERO	""	new A001414(), new A003415()	a(n) = 1 if A001414(n) and A003415(n) are both multiples of 3, otherwise 0, where A001414 is the sum of prime factors with repetition, and A003415 is the arithmetic derivative.
+A373480	multraf	2	(self, n) -> self.s(1).mod(self.s(0))	""	new A001414(), new A003415()	a(n) = A003415(n) mod A001414(n), where A003415 is the arithmetic derivative, and A001414 is the sum of prime factors with multiplicity.
+A373476	filtpos	1	1	new A373474()	(k, v) -> v.equals(Z.ONE) && k % 3 == 0	Numbers k such that k, A001414(k) and A083345(k) are all multiples of 3, where A001414 is fully additive with a(p) = p, and A083345 is the numerator of the fully additive function with a(p) = 1/p.
+A373481	multraf	0	(self, n) -> self.s(1).mod(self.s(0)).isZero() ? Z.ONE : Z.ZERO	"1,0,0,1"	new A001414(), new A003415()	a(n) = 1 if A003415(n) is a multiple of A001414(n), otherwise 0, where A003415 is the arithmetic derivative, and A001414 is the sum of prime factors with multiplicity.
+---- 2024-06-13 17:12:34
+A344964	decexp	1	() -> CR.PI.^(2)./(2).+(CR.GAMMA.^(2))
+A344968	decexp	1	() -> CR.PI.^(2)./(CR.GAMMA.*(6)).+(CR.GAMMA)
+A351789	decexp	1	() -> CV(new Q(5, 4)).log().+(CR.PHI.log().*(6)./(CR.FIVE.sqrt()))	log(5/4)+6*log(phi)/sqrt(5)
+A351794	decexp	1	() -> CV(new Q(5, 4)).log().*(3).+(CR.PHI.log().*(10)./(CR.FIVE.sqrt()))	3*log(5/4)+10*log(phi)/sqrt(5)
+A370743	decexp	1	() -> CR.TWO.log().^(2).+(CR.PHI.log().^(2).*(4))	log(2)^2+4*log(phi)^2
+---- 2024-06-13 17:13:11
+A344964	decexp	1	() -> CR.PI.^(2)./(2).+(CR.GAMMA.^(2))
+A344968	decexp	1	() -> CR.PI.^(2)./(CR.GAMMA.*(6)).+(CR.GAMMA)
+A351789	decexp	1	() -> CV(new Q(5, 4)).log().+(CR.PHI.log().*(6)./(CR.FIVE.sqrt()))	log(5/4)+6*log(phi)/sqrt(5)
+A351794	decexp	1	() -> CV(new Q(5, 4)).log().*(3).+(CR.PHI.log().*(10)./(CR.FIVE.sqrt()))	3*log(5/4)+10*log(phi)/sqrt(5)
+A370743	decexp	1	() -> CR.TWO.log().^(2).+(CR.PHI.log().^(2).*(4))	log(2)^2+4*log(phi)^2
+A352485	decexp	0	() -> CR.FIVE.sqrt().*(24).*(CR.PHI.log())./(25).-(CR.FOUR./(CR.FIVE))	24*sqrt(5)*log(phi)/25-4/5
