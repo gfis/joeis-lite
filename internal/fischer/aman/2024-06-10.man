@@ -1,0 +1,33 @@
+---- 2024-06-12 23:11:09
+%F A363542	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} ((-2)^k + Sum_{d|k} (-1)^(k/d)* d.*(self.a(d-1)).*(self.a(n - k)	"1"
+%F A363543	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} ((-3)^k + Sum_{d|k} (-1)^(k/d)* d.*(self.a(d-1)).*(self.a(n - k)	"1"
+%F A363509	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} (3 * (-1)^k + Sum_{d|k} (-1)^(k/d)* d.*(self.a(d-1)).*(self.a(n - k)	"1"
+%F A363510	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} (4 * (-1)^k + Sum_{d|k} (-1)^(k/d)* d.*(self.a(d-1)).*(self.a(n - k)	"1"
+%F A363600	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} (Sum_{d|k} (-1)^(k/d)* d * (d^2+1)).*(self.a(n - k)	"1"
+%F A363599	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} (Sum_{d|k} (-1)^(k/d)* d * (d^2-1)).*(self.a(n - k)	"1"
+%F A363441	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} (Sum_{d|k} d * (-2)^(k/d).*(self.a(d-1)).*(self.a(n - k)	"1"
+%F A363442	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} (Sum_{d|k} d * (-3)^(k/d).*(self.a(d-1)).*(self.a(n - k)	"1"
+%F A363443	multrar	0	(self, n) -> (-1/n)* Sum_{k=1..n} (Sum_{d|k} d * (-4)^(k/d).*(self.a(d-1)).*(self.a(n - k)	"1"
+%N A351798	multrar	0	(self, n) -> (1/2)* Sum_{k=0..n - 1} (k+1)* (k+2).*(self.a(k).*(self.a(n - k - 1)	"1"
+%N A335501	multrar	0	(self, n) -> (2/n)* Sum_{k=0..n - 1} binomial(n, k)^2 * (n - k).*(self.a(k)	"1"
+%F A121452	multrar	0	(self, n) -> (n - 1)! * RU(1, floor((n+1)/2)} (2*k - 1)/k.*(self.a(n-2*k+1)/(n-2*k+1)!	"1"	N%F A353222	multrar	0	(self, n) -> (n - 1)! * RU(1, floor((n+1)/3)} (3*k - 1)/k.*(self.a(n-3*k+1)/(n-3*k+1)!N%F A353224	multrar	0	(self, n) -> (n - 1)! * RU(1, floor((n+1)/4)} (4*k - 1)/k.*(self.a(n-4*k+1)/(n-4*k+1)!N%F A370084	multrar	0	(self, n) -> (n - 1)! * RU(1, n} (2*k)!.*(self.a(n - k)/ (2^k * (n - k)!)	"1"
+%F A370085	multrar	0	(self, n) -> (n - 1)! * RU(1, n} (3*k)!.*(self.a(n - k)/ (6^k * (n - k)!)	"1"
+%e A193287	multrar	0	(self, n) -> (n - 1)! * RU(1, n} k * 2^floor(k/2)/floor((k+1)/2).*(self.a(n - k)/(n - k)!	"1"
+%e A193288	multrar	0	(self, n) -> (n - 1)! * RU(1, n} k * 3^floor(k/2)/floor((k+1)/2).*(self.a(n - k)/(n - k)!	"1"
+%F A318811	multrar	0	(self, n) -> (n - 1)! * RU(1, n} k * phi(k).*(self.a(n - k)/(n - k)!	"1"
+%F A353189	multrar	0	(self, n) -> (n - 1)! * RU(1, n} mu(k).*(self.a(n - k)/(n - k)!	"1"
+%F A318917	multrar	0	(self, n) -> (n - 1)! * RU(1, n} phi(k).*(self.a(n - k)/(n - k)!	"1"
+A336209	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(n - k).*(self.a(k)))./(-n)	"1"
+A336210	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(3).*(n - k).*(self.a(k)))./(-n)	"1"
+A337166	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n, k).^(2).*(n - k).*(self.a(k)))./(-n)	"1"
+%F A346312	multrar	0	(self, n) -> -(1/n)* RU(1, n, k -> (BI(n, k).*(FA(k)).^(2).*(RD(k, d -> new Q(Z.ONE, ZV(k/d).^(2*d - 1)            ).*(self.a(n - k)	"1"
+A346314	multrar	0	(self, n) -> RU(1, n, k -> (BI(n, k).*(FA(k)).^(2).*(RD(k, d -> new Q(Z.ONE, ZV(d).*((FA(k/d)).^(2*d)).*(k).*(self.a(n - k)))))))./(-n).num()	"1"
+%N A336289	multrar	0	(self, n) -> n!  * RU(1, n, k -> BI(n - 1, k - 1)* FA(k - 1) * (RU(1, k, i -> new Q(1, i))).*(self.a(n - k)/ FA(n - k)	"1"
+%N A336290	multrar	0	(self, n) -> n!  * RU(1, n, k -> BI(n - 1, k - 1)*             (RU(1, k, i -> new Q(1, i))).*(self.a(n - k)/ FA(n - k)	"1"
+
+---- 2024-06-12 22:39:41                [[0],[1],[0],[4,-2],[0],[0,-1,1]]
+%N does not work A362718	holos	0	[[0],[1],[0],[4,-2],[0],[0,-1,1]]	1,0,-2	Expansion of e.g.f. cos(x)*exp(x^2/2)	(n+1)*(n+2)*a(n+2)+a(n-2)-2*n*a(n) = 0
+A365969	multrar	0	(self, n) -> RU(0, (n - 1)/5, k -> new Q(self.a(n - 5*k - 1), FA(n - 5*k - 1)))./(FA(n - 1)).num()	"1,1,1,1,1,1"	(n-1)! * Sum_{k=0..floor((n-1)/5)} a(n-5*k-1)/(n-5*k-1)!
+
+A346313	multrar	0	(self, n) -> SU(1, n, k -> Z_1(k).*(BI(n, k)).*(FA(k)).^(2)).*(RD(k, d -> Z_1(d)./(ZV(k/d).^(2*d - 1))).num()).*(self.a(n - k)))./(n)	"1"	(1/n) * Sum_{k=1..n} (-1)^k * (binomial(n,k) * k!)^2 * ( Sum_{d|k} (-1)^d / (k/d)^(2*d-1) ) * a(n-k)
+A346315	multrar	0	(self, n) -> SU(1, n, k -> Z_1(k).*(BI(n, k)).*(FA(k)).^(2)).*(RD(k, d -> Z_1(d)./(ZV(d).*(FA(k/d).^(2*d)))).num()).*(k).*(self.a(n - k)))./(n)	"1"

@@ -1,0 +1,138 @@
+---- 2024-06-11 14:01:40
+A179469	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(2).^(k / d)).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A179470	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(2).^(d - 1)).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A195865	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> (d&1) != 1 ? Z.ZERO : ZV(d).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A304768	lambdan	1	n -> Functions.SQUARE_FREE_KERNEL.z(n).^(JF(n).maxExponent() + 1)./(n)	Augmented integer conjugate of n. a(n) = (1/n) * A007947(n)^(1 + A051903(n)) where A007947 is squarefree kernel and A051903 is maximum prime exponent./(n)	"1"
+A325240	filnum	1	2	n -> JF(n).minExponent() == 2	Numbers whose minimum prime exponent is 2
+A325241	filnum	1	2	n -> {final FactorSequence fs = JF(n); return fs.minExponent() + 1 == fs.maxExponent(); }	Numbers > 1 whose maximum prime exponent is one greater than their minimum
+A336635	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(BI(2*k,   k)).*(k).*(self.a(n -k)))./(n)	"1"
+A337591	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(ZV(k).^(3)) .*(self.a(n - k)))./(n)	"1"
+A337592	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(k).*(ZV(2).^(k - 1)).*(self.a(n - k)))./(n)	"1"
+A337593	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(k).*(ZV(3).^(k - 1)).*(self.a(n - k)))./(n)	"1"
+A337594	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(k).*(ZV(4).^(k - 1)).*(self.a(n - k)))./(n)	"1"
+A337595	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(k).*(ZV(5).^(k - 1)).*(self.a(n - k)))./(n)	"1"
+A337597	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(k).*(ZV(6).^(k - 1)).*(self.a(n - k)))./(n)	"1"
+A337826	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(ZV(k).^(4)) .*(self.a(n - k)))./(n)	"1"
+A346220	multrar	0	(self, n) -> SU(0, (n - 1)/2, k -> BI(n, 2*k + 1).^(2).*(2*k + 1).*(self.a(n - 2*k - 1)))./(n)	"1"
+A346291	multrar	0	(self, n) -> RU(2, n, k -> new Q(BI(n, k).*(FA(k)).^(2).*(self.a(n - k)), ZV(k)))./(n).num()	"1"		a(0) = 1; a(n) = (1/n) * Sum_{k=2..n} (binomial(n,k) * k!)^2 * a(n-k) / k.
+A346292	multrar	0	(self, n) -> RU(3, n, k -> new Q(BI(n, k).*(FA(k)).^(2).*(self.a(n - k)), ZV(k)))./(n).num()	"1"		a(0) = 1; a(n) = (1/n) * Sum_{k=3..n} (binomial(n,k) * k!)^2 * a(n-k) / k.
+A352465	multrar	0	(self, n) -> SU(1, n, k -> BI(2*n, 2*k).^(2).*(k).*(self.a(n - k)))./(n)	"1"
+A352466	multrar	0	(self, n) -> SU(1, n, k -> BI(2*n, 2*k).^(3).*(k).*(self.a(n - k)))./(n)	"1"
+A352469	multrar	0	(self, n) -> SU(0, (n - 1)/2, k -> BI(n, 2*k + 1).^(3).*(2*k + 1).*(self.a(n - 2*k - 1)))./(n)	"1"
+A352658	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(BI(k + 1, 2)).*(k).*(self.a(n -k)))./(n)	"1"
+A362389	multrar	0	(self, n) -> SU(1, n, k -> ZV(2).^(k).+(SD(k, d -> ZV(d).*(self.a(d - 1)))).*(self.a(n - k)))./(n)	"1"
+A363336	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> (d%3 != 1) ? Z.ZERO : ZV(d).*(self.a(d/3))).*(self.a(n - k)))./(n)	"1"
+A363337	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> (d%4 != 1) ? Z.ZERO : ZV(d).*(self.a(d/4))).*(self.a(n - k)))./(n)	"1"
+A363338	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> (d%3 != 1) ? Z.ZERO : Z_1(k/d + 1).*(d).*(self.a(d/3))).*(self.a(n - k)))./(n)	"1"
+A363339	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> (d%4 != 1) ? Z.ZERO : Z_1(k/d + 1).*(d).*(self.a(d/4))).*(self.a(n - k)))./(n)	"1"
+A363404	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> (d%3 != 1) ? Z.ZERO : ZV(d).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A363405	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> (d%4 != 1) ? Z.ZERO : ZV(d).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A363423	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(3).^(d - 1)).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A363424	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(4).^(d - 1)).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A363425	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(2).^(d - 1)).*(self.a(d - 1)).*(Z_1(k/d + 1))).*(self.a(n - k)))./(n)	"1"
+A363426	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(3).^(d - 1)).*(self.a(d - 1)).*(Z_1(k/d + 1))).*(self.a(n - k)))./(n)	"1"
+A363427	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(4).^(d - 1)).*(self.a(d - 1)).*(Z_1(k/d + 1))).*(self.a(n - k)))./(n)	"1"
+A363439	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(3).^(k / d)).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A363440	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(4).^(k / d)).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A363481	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(ZV(2).^(d    )).*(self.a(d - 1))).*(self.a(n - k)))./(n)	"1"
+A363507	multrar	0	(self, n) -> SU(1, n, k -> ZV(3).+(SD(k, d -> ZV(d).*(self.a(d - 1)))).*(self.a(n - k)))./(n)	"1"
+A363508	multrar	0	(self, n) -> SU(1, n, k -> ZV(4).+(SD(k, d -> ZV(d).*(self.a(d - 1)))).*(self.a(n - k)))./(n)	"1"
+A363541	multrar	0	(self, n) -> SU(1, n, k -> ZV(3).^(k).+(SD(k, d -> ZV(d).*(self.a(d - 1)))).*(self.a(n - k)))./(n)	"1"
+A363565	multrar	0	(self, n) -> SU(1, n, k -> ZV(2).*(Z_1(k)).+(SD(k, d -> ZV(d).*(self.a(d - 1)))).*(self.a(n - k)))./(n)	"1"
+A363566	multrar	0	(self, n) -> SU(1, n, k -> ZV(3).*(Z_1(k)).+(SD(k, d -> ZV(d).*(self.a(d - 1)))).*(self.a(n - k)))./(n)	"1"
+A363578	multrar	0	(self, n) -> SU(1, n, k -> ZV(-2).^(k).+(SD(k, d -> ZV(d).*(self.a(d - 1)))).*(self.a(n - k)))./(n)	"1"
+A363579	multrar	0	(self, n) -> SU(1, n, k -> ZV(-3).^(k).+(SD(k, d -> ZV(d).*(self.a(d - 1)))).*(self.a(n - k)))./(n)	"1"
+A365106	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).^(2).*(k).*(Functions.PRIME.z(k)).*(self.a(n - k)))./(n)	"1"
+A370086	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).*(self.a(n - k)).*(FA(2*k))./(ZV(2).^(k)))./(n)	"1"
+A370087	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).*(self.a(n - k)).*(FA(3*k))./(ZV(6).^(k)))./(n)	"1"
+---- 2024-06-12 07:28:14
+A138292	multrar	0	(self, n) -> RU(0, (n - 1)/2, k -> new Q(ZV(2*k + 1).*(self.a(k)).*(self.a(n - 1 - 2*k)),                    FA(k).*(FA(n - 1 - 2*k)))).*(FA(n - 1)).num()	"1"
+A143567	multrar	0	(self, n) -> RU(0, (n - 1)/3, k -> new Q(ZV(3*k + 1).*(self.a(k)).*(self.a(n - 1 - 3*k)), ZV(     6).^(k).*(FA(k)).*(FA(n - 1 - 3*k)))).*(FA(n - 1)).num()	"1"
+A143569	multrar	0	(self, n) -> RU(0, (n - 1)/5, k -> new Q(ZV(5*k + 1).*(self.a(k)).*(self.a(n - 1 - 5*k)), ZV(   120).^(k).*(FA(k)).*(FA(n - 1 - 5*k)))).*(FA(n - 1)).num()	"1"
+A143570	multrar	0	(self, n) -> RU(0, (n - 1)/6, k -> new Q(ZV(6*k + 1).*(self.a(k)).*(self.a(n - 1 - 6*k)), ZV(   720).^(k).*(FA(k)).*(FA(n - 1 - 6*k)))).*(FA(n - 1)).num()	"1"
+A143572	multrar	0	(self, n) -> RU(0, (n - 1)/8, k -> new Q(ZV(8*k + 1).*(self.a(k)).*(self.a(n - 1 - 8*k)), ZV( 40320).^(k).*(FA(k)).*(FA(n - 1 - 8*k)))).*(FA(n - 1)).num()	"1"
+A143573	multrar	0	(self, n) -> RU(0, (n - 1)/9, k -> new Q(ZV(9*k + 1).*(self.a(k)).*(self.a(n - 1 - 9*k)), ZV(362880).^(k).*(FA(k)).*(FA(n - 1 - 9*k)))).*(FA(n - 1)).num()	"1"
+A337677	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(self.a(k), FA(k).*(n - k).^(4))).*(FA(n).^(4).negate()).num()	"1"
+A337678	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(self.a(k), FA(k).*(n - k).^(5))).*(FA(n).^(5).negate()).num()	"1"
+A346371	multrar	0	(self, n) -> RU(0, (n - 1)/2, k -> new Q(BI(n, 2*k + 1).*(FA(2*k + 1)).^(2).*(self.a(n - 2*k - 1)), ZV(2*k + 1)))./(n).num()	"1"
+A355083	multrar	0	(self, n) -> SU(1, n, k -> S2(n, k).*(self.a(k - 1)).*(k)).*(2)	"1"
+A355092	multrar	0	(self, n) -> SU(1, n, k -> S2(n, k).*(self.a(k - 1)).*(k)).*(3)	"1"
+A355093	multrar	0	(self, n) -> SU(1, n, k -> Z_1(n - k).*(k).*(S2(n, k)).*(self.a(k - 1))).*(2)	"1"
+A355094	multrar	0	(self, n) -> SU(1, n, k -> Z_1(n - k).*(k).*(S2(n, k)).*(self.a(k - 1))).*(3)	"1"
+A355096	multrar	0	(self, n) -> SU(1, n, k -> S1(n, k).*(self.a(k - 1)).*(k)).*(2)	"1"
+A355097	multrar	0	(self, n) -> SU(1, n, k -> S1(n, k).*(self.a(k - 1)).*(k)).*(3)	"1"
+A355098	multrar	0	(self, n) -> SU(1, n, k -> S1(n, k).abs().*(self.a(k - 1)).*(k)).*(2)	"1"
+A355099	multrar	0	(self, n) -> SU(1, n, k -> S1(n, k).abs().*(self.a(k - 1)).*(k)).*(3)	"1"
+A365969	multrar	0	(self, n) -> RU(0, (n - 1)/5, k -> new Q(self.a(n - 5*k - 1), FA(n - 5*k - 1))).*(FA(n - 1)).num()	"1"
+A367719	multrar	0	(self, n) -> RU(0, (n - 1)/3, k -> new Q(ZV(3*k + 1).*(self.a(k)).*(self.a(n - 1 - 3*k)),                    FA(k).*(FA(n - 1 - 3*k)))).*(FA(n - 1)).num()	"1"
+A367720	multrar	0	(self, n) -> RU(0, (n - 1)/4, k -> new Q(ZV(4*k + 1).*(self.a(k)).*(self.a(n - 1 - 4*k)),                    FA(k).*(FA(n - 1 - 4*k)))).*(FA(n - 1)).num()	"1"
+A367721	multrar	0	(self, n) -> RU(0, (n - 1)/2, k -> new Q(Z_1(k).*(2*k + 1).*(self.a(k)).*(self.a(n - 1 - 2*k)),              FA(k).*(FA(n - 1 - 2*k)))).*(FA(n - 1)).num()	"1"
+A367722	multrar	0	(self, n) -> RU(0, (n - 1)/3, k -> new Q(Z_1(k).*(3*k + 1).*(self.a(k)).*(self.a(n - 1 - 3*k)),              FA(k).*(FA(n - 1 - 3*k)))).*(FA(n - 1)).num()	"1"
+A367723	multrar	0	(self, n) -> RU(0, (n - 1)/4, k -> new Q(Z_1(k).*(4*k + 1).*(self.a(k)).*(self.a(n - 1 - 4*k)),              FA(k).*(FA(n - 1 - 4*k)))).*(FA(n - 1)).num()	"1"
+A367747	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(ZV(k + 1).*(self.a(k/2)).*(self.a(n - 1 - k)),  FA(k/2).*(FA(n - 1 - k)))).*(FA(n - 1)).num()	"1"
+A367748	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(ZV(k + 1).*(self.a(k/3)).*(self.a(n - 1 - k)),  FA(k/3).*(FA(n - 1 - k)))).*(FA(n - 1)).num()	"1"
+A367749	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(ZV(k + 1).*(self.a(k/4)).*(self.a(n - 1 - k)),  FA(k/4).*(FA(n - 1 - k)))).*(FA(n - 1)).num()	"1"
+A367751	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(ZV(k + 1).*(self.a(k/5)).*(self.a(n - 1 - k)),  FA(k/5).*(FA(n - 1 - k)))).*(FA(n - 1)).num()	"1"
+A143566	multrar	0	(self, n) -> RU(0, (n - 1)/2, k -> new Q(ZV(2*k + 1).*(self.a(k)).*(self.a(n - 1 - 2*k)), ZV(2).^(k).*(FA(k)).*(FA(n - 1 - 2*k)))).*(FA(n - 1)).num()	"1"
+A143568	multrar	0	(self, n) -> RU(0, (n - 1)/4, k -> new Q(ZV(4*k + 1).*(self.a(k)).*(self.a(n - 1 - 4*k)), ZV(24).^(k).*(FA(k)).*(FA(n - 1 - 4*k)))).*(FA(n - 1)).num()	"1"
+A143571	multrar	0	(self, n) -> RU(0, (n - 1)/7, k -> new Q(ZV(7*k + 1).*(self.a(k)).*(self.a(n - 1 - 7*k)), ZV(5040).^(k).*(FA(k)).*(FA(n - 1 - 7*k)))).*(FA(n - 1)).num()	"1"
+---- 2024-06-12 20:10:38
+A306623	holos	0	[[0],[-8],[-7],[-6],[-5],[-4],[-3],[-2],[-1],[0,1]]	1	0	1	Expansion of e.g.f. exp(Sum_{k=1..8} x^k).
+A306624	holos	0	[[0],[-9],[-8],[-7],[-6],[-5],[-4],[-3],[-2],[-1],[0,1]]	1	0	1	Expansion of e.g.f. exp(Sum_{k=1..9} x^k).
+A365338	multrar	0	(self, n) -> SU(0, (n - 2)/3, k -> BI(n - 1, 3*k + 1).*(self.a(n - 3*k - 2)))	"1,0,1,0,3,1"	exp( Sum_{k>=0} x^(3*k+2) / (3*k+2)! ).
+A365419	multrar	0	(self, n) -> SU(0, (n - 2)/5, k -> BI(n - 1, 5*k + 1).*(self.a(n - 5*k - 2)))	"1,0,1"	exp( Sum_{k>=0} x^(5*k+2) / (5*k+2)! ).
+A365894	multrar	0	(self, n) -> SU(0, (n - 4)/3, k -> BI(n - 1, 3*k + 3).*(self.a(n - 3*k - 4)))	"1,0,0,0,1,0,0,1"	Sum_{k=0..floor((n-4)/3)} binomial(n-1,3*k+3) * a(n-3*k-4).
+A365895	multrar	0	(self, n) -> SU(0, (n - 4)/5, k -> BI(n - 1, 5*k + 3).*(self.a(n - 5*k - 4)))	"1,0,0,0,1"	exp( Sum_{k>=0} x^(5*k+4) / (5*k+4)! ).	Sum_{k=0..floor((n-4)/5)} binomial(n-1,5*k+3) * a(n-5*k-4)
+A365971	multrar	0	(self, n) -> RU(0, (n - 2)/3, k -> new Q(self.a(n - 3*k - 2), FA(n - 3*k - 2))).*(FA(n - 1)).num()	"1,0,1,0,3,24"
+A365972	multrar	0	(self, n) -> RU(0, (n - 2)/5, k -> new Q(self.a(n - 5*k - 2), FA(n - 5*k - 2))).*(FA(n - 1)).num()	"1,0,1,0,3,0,15"
+A365973	multrar	0	(self, n) -> RU(0, (n - 3)/4, k -> new Q(self.a(n - 4*k - 3), FA(n - 4*k - 3))).*(FA(n - 1)).num()	"1,0,0,2,0,0,40"
+A365974	multrar	0	(self, n) -> RU(0, (n - 3)/5, k -> new Q(self.a(n - 5*k - 3), FA(n - 5*k - 3))).*(FA(n - 1)).num()	"1,0,0,2,0,0,40,0"
+A365989	multrar	0	(self, n) -> RU(0, (n - 4)/5, k -> new Q(self.a(n - 5*k - 4), FA(n - 5*k - 4))).*(FA(n - 1)).num()	"1,0,0,0,6,0,0,0"
+A369941	holos	0	[[0],[27],[-54],[36],[2104,-912,96],[-2832,1568,-208],[1224,-948,168],[-168,228,-60],[0,-16,8]]	1,0,1	0	1	Expansion of e.g.f. exp(x^2/(2 * sqrt(1-2*x))).
+A373538	holos	0	[[0],[-4,1],[1],[-4,2],[-1],[0,1]]	1,1,1	0	1
+A373539	holos	0	[[0],[-648,234,-27,1],[0],[0],[-1296,576,-84,4],[0],[0],[-768,452,-90,6],[0],[0],[-121,112,-36,4],[0],[0],[0,2,-3,1]]	1,1,1	0	1
+A373541	holos	0	[[0],[-8,1],[0],[0],[3],[-8,2],[0],[0],[-1],[0,1]]	1,1,1	0	1
+A373542	holos	0	[[0],[8],[0],[-12],[0],[54,-20,2],[0],[-25,18,-3],[0],[0,-1,1]]	1,1,1	0	1
+A373543	holos	0	[[0],[-1355765040,297725058,-21789081,531441],[16737840,-3675618,269001,-6561],[148803480,-15943230,-413343,59049],[1882440,-619974,64881,-2187],[41028120,-16765542,1987983,-72171],[-294840,114588,-13446,486],[-6927120,2353050,-215055,3645],[-3240,4068,-1134,90],[207360,-2970,-22275,2835],[360,-474,189,-21],[9720,-12762,4779,-549],[0,2,-3,1],[-360,510,-243,39],[0],[0,-2,3,-1]]	1,1,1,7,13	0	0
+A373544	holos	0	[[0],[-38168092620,5734779831,-286978140,4782969],[0],[0],[12332974140,-1906396965,97607997,-1653372],[0],[0],[-1168382880,164412099,-6751269,65610],[0],[0],[10628820,5390226,-933849,34263],[0],[0],[3256200,-1277613,136080,-3807],[0],[0],[-117180,44361,-3591,-90],[0],[0],[540,-97,-111,28],[0],[0],[0,-2,3,-1]]	1,1,1,1,7,13	0	0
+A365893	multrar	0	(self, n) -> SU(0, (n - 3)/5, k -> BI(n - 1, 5*k + 2).*(self.a(n - 5*k - 3)))	"1,0,0,1"	Sum_{k=0..floor((n-3)/5)} binomial(n-1,5*k+2) * a(n-5*k-3).
+A365896	multrar	0	(self, n) -> SU(0, (n - 5)/2, k -> BI(n - 1, 2*k + 4).*(self.a(n - 2*k - 5)))	"1,0,0,0,0,1,0,1,0,1"	Sum_{k=0..floor((n-5)/2)} binomial(n-1,2*k+4) * a(n-2*k-5).
+A365897	multrar	0	(self, n) -> SU(0, (n - 5)/3, k -> BI(n - 1, 3*k + 4).*(self.a(n - 3*k - 5)))	"1,0,0,0,0,1,0,0,1,0"	exp( Sum_{k>=0} x^(3*k+5) / (3*k+5)! ).
+---- 2024-06-12 22:39:40 
+A105217	holos	0	[[0],[6,-5,1],[-14,15,-4],[10,-16,6],[-3,7,-4],[0,-1,1]]	2,3	0	1	E.g.f. = 2*exp(x/(1-x)/2)*cosh(sqrt(5)*x/(1-x)/2)/(1-x)	2*(n+1)*(3*n+1)*a(n)+(n-1)*n*a(n-2)-n*(4*n+1)*a(n-1)-(4*n+5)*(n+1)*a(n+1)+(n+1)*(n+2)*a(n+2) = 0
+A141003	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(4 , d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A141004	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(6 , d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A141005	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(8 , d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A141006	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(9 , d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A141007	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(10, d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A141008	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(12, d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A141009	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(13, d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A141010	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(14, d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A141011	multrar	0	(self, n) -> SU(1, n, j -> self.a(n - j).*(SD(15, d -> ZV(d).^(j - 1))).*(BI(n - 1, j - 1)))	"1"
+A370084	multrar	0	(self, n) -> RU(1, n, k -> new Q(FA(2*k).*(self.a(n - k)), FA(n - k).*(ZV(2).^(k)))).*(FA(n - 1)).num()	"1,1,7"	(n-1)! * Sum_{k=1..n} (2*k)! * a(n-k) / (2^k * (n-k)!).
+A370085	multrar	0	(self, n) -> RU(1, n, k -> new Q(FA(3*k).*(self.a(n - k)), FA(n - k).*(ZV(6).^(k)))).*(FA(n - 1)).num()	"1"	(n-1)! * Sum_{k=1..n} (3*k)! * a(n-k) / (6^k * (n-k)!).
+A370086	multrar	0	(self, n) -> RU(1, n, k -> new Q(FA(2*k).*(BI(n, k)).*(self.a(n - k)), ZV(2).^(k)))./(n).num()	"1"	(1/n) * Sum_{k=1..n} (2*k)!/2^k * binomial(n,k) * a(n-k).
+A370087	multrar	0	(self, n) -> RU(1, n, k -> new Q(FA(3*k).*(BI(n, k)).*(self.a(n - k)), ZV(6).^(k)))./(n).num()	"1"	(1/n) * Sum_{k=1..n} (3*k)!/6^k * binomial(n,k) * a(n-k).
+A371605	holos	0	[[0],[0,2],[0,-3],[0,6],[0,-6]]	1	0	1	(6*n+6)*a(n)+(2*n+2)*a(n-2)+(-3*n-3)*a(n-1)+(-6*n-6)*a(n+1) = 0
+A371621	holos	0	[[0],[0,3],[0,-4],[0,6],[0,-12],[0,12]]	1	0	1
+A373175	holos	0	[[0],[-4],[76,-36,8],[-171,96,-36],[59,-81,22],[0,-21,21]]	1,3	0	1	Expansion of e.g.f. exp(sqrt(2*x+1)-1)/(2-sqrt(2*x+1))^2.
+A373176	holos	0	[[0],[-4],[72,-28,8],[-225,76,-44],[99,-129,30],[0,-27,27]]	2,8	0	1	Expansion of e.g.f. 2*exp(sqrt(2*x+1)-1)/(2-sqrt(2*x+1))^3.
+A373540	holos	0	[[0],[30720,-9856,1136,-56,1],[0],[0],[0],[76800,-28480,3880,-230,5],[0],[0],[0],[64800,-28860,4835,-360,10],[0],[0],[0],[20400,-11710,2585,-260,10],[0],[0],[0],[1679,-1480,505,-80,5],[0],[0],[0],[0,-6,11,-6,1]]	1,1,1,1,1	0	1
+---- 2024-06-12 23:11:08
+A336217	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(self.a(k))).*(2)	"1"
+A336227	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n - 1, k).^(2).*(self.a(k))).*(n)	"1"
+A336258	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(self.a(k), (FA(k).*(n - k)).^(2))).*(FA(n).^(2)).num()	"1"
+A336259	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(self.a(k), (FA(k).*(n - k)).^(3))).*(FA(n).^(3)).num()	"1"
+A336260	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(self.a(k), (FA(k).*(n - k)).^(4))).*(FA(n).^(4)).num()	"1"
+A336261	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(self.a(k), (FA(k).*(n - k)).^(5))).*(FA(n).^(5)).num()	"1"
+A336610	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n - 1, k).^(2).*(self.a(k))).*(-n)	"1"
+A337676	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(self.a(k), FA(k).*(n - k).^(3))).*(FA(n).^(3).negate()).num()	"1"	-(n!)^3 * Sum_{k=0..n-1} a(k) / (k! * (n-k))^3.
+A367754	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(ZV(k + 1).*(self.a(k/2)).*(self.a(n - 1 - k)), ZV(2).^(k/2).*(FA(k/2)).*(FA(n - 1 - k)))).*(FA(n - 1)).num()	"1"
+A367755	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(ZV(k + 1).*(self.a(k/3)).*(self.a(n - 1 - k)), ZV(6).^(k/3).*(FA(k/3)).*(FA(n - 1 - k)))).*(FA(n - 1)).num()	"1"
+A367756	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(ZV(k + 1).*(self.a(k/4)).*(self.a(n - 1 - k)), ZV(24).^(k/4).*(FA(k/4)).*(FA(n - 1 - k)))).*(FA(n - 1)).num()	"1"
+A367757	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(ZV(k + 1).*(self.a(k/5)).*(self.a(n - 1 - k)), ZV(120).^(k/5).*(FA(k/5)).*(FA(n - 1 - k)))).*(FA(n - 1)).num()	"1"
+A370376	multrar	0	(self, n) -> SU(1, n    , k -> BI(3*k, k).*(self.a(n - k)))./(3)	"1"
+A363474	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(Z_1(d+k/d)).*(self.a(d - 1)).*(self.a(n - k)))).*(2)./(n)	"1"
+A363470	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(Z_1(d - 1)).*(self.a(d - 1)).*(self.a(n - k)))).*(2)./(n)	"1"
+A363475	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(Z_1(d+k/d)).*(self.a(d - 1)).*(self.a(n - k)))).*(3)./(n)	"1"
+A363471	multrar	0	(self, n) -> SU(1, n, k -> SD(k, d -> ZV(d).*(Z_1(d - 1)).*(self.a(d - 1)).*(self.a(n - k)))).*(3)./(n)	"1"
