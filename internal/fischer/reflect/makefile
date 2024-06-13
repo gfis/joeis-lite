@@ -165,11 +165,14 @@ interfaces:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
-known: # prepare for and create database table 'known'
+known: known1 known2 # prepare for and create database table 'known'
+known1: # extract from jOEIS source
 	perl read_functions.pl $(JOEIS)/src/irvine/math/function/Functions.java \
 	| sort | uniq -w7 \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+known2:
+	
 #----
 liseq: # list those with "implements Sequence"
 	grep -P "\tSequence\t" $(COMMON)/joeis_names.txt \

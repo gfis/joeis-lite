@@ -1,4 +1,4 @@
----- 2024-06-13 16:45:48
+---- 2024-06-13 23:57:24
 %N does not work A362718	holos	0	[[0],[1],[0],[4,-2],[0],[0,-1,1]]	1,0,-2	Expansion of e.g.f. cos(x)*exp(x^2/2)	(n+1)*(n+2)*a(n+2)+a(n-2)-2*n*a(n) = 0
 
 %N A373489	multraf	0	(self, n) -> self.s(1).mod(self.s(0)).isZero() ? Z.ONE : Z.ZERO	""	new A276085(), new A003415()	a(n) = 1 if A003415(n) is a multiple of €276085(n), otherwise 0, where A003415 is the arithmetic derivative and €276085 is the primorial base log-function.
@@ -6,8 +6,38 @@
 %N A373486	multraf	0	(self, n) -> self.s(0).mod(self.s(1)).isZero() ? Z.ONE : Z.ZERO	""	new A276085(), new A003415()	a(n) = 1 if €276085(n) is a multiple of A003415(n), otherwise 0, where A003415 is the arithmetic derivative and €276085 is the primorial base log-function.
 %N A373485	multraf	0	(self, n) -> self.s(0).gcd(self.s(1))	""	new A083345(), new A276085()	a(n) = gcd(A083345(n), €276085(n)), where €276085 is fully additive with a(p) = p#/p, and A083345 is the numerator of the fully additive function with a(p) = 1/p.
 %N A373479	filtpos	1	1	new A373477()	v -> v.equals(Z.ONE)	Numbers k such that A001414(k) and A003415(k) are both multiples of 3, but A083345(k) is not, where A001414 is the sum of prime factors with repetition, A003415 is the arithmetic derivative, and A083345(n) = A003415(n)/gcd(n,A003415(n)).
-A373478	filtpos	1	1	new A373477()	v -> v.equals(Z.ONE)	Numbers k such that A001414(k) and A003415(k) are both multiples of 3, where A001414 is the sum of prime factors with repetition, and A003415 is the arithmetic derivative.
 %N A373482	filtpos	1	1	new A373481()	v -> v.equals(Z.ONE)	Numbers k for which A003415(k) is a multiple of A001414(k), where A003415 is the arithmetic derivative, and A001414 is the sum of prime factors with multiplicity.
 %N A373484	filtpos	1	1	new A373483()	v -> v.equals(Z.ONE)	Numbers k such that A083345(k) and €276085(k) are both multiples of 3, where €276085 is fully additive with a(p) = p#/p, and A083345 is the numerator of the fully additive function with a(p) = 1/p.
 %N A373488	filtpos	1	1	new A373486()	v -> v.equals(Z.ONE)	Nonprime natural numbers k such that €276085(k) is a multiple of A003415(k), where A003415 is the arithmetic derivative and €276085 is the primorial base log-function.
 %N A373487	filtpos	1	1	new A373486()	v -> v.equals(Z.ONE)	Numbers k such that €276085(k) is a multiple of A003415(k), where A003415 is the arithmetic derivative and €276085 is the primorial base log-function.
+
+#A106828	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(j, n - 2*k).*(Functions.EULERIAN2.z(n - k, j)))	T(n, k) = Sum_{j=0..n-k} binomial(j, n-2*k)*E2(n-k, j), where E2 are the second-order Eulerian numbers (A008517). - _Peter Luschny_, Jan 13 2016
+#A112008	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 3, n)	Fourth diagonal of second-order Eulerian triangle A008517. Fourth column (m=3) of triangle A112007.
+#A112485	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 4, n)	Fifth diagonal of second-order Eulerian triangle A008517. Fifth column (m=4) of triangle A112007.
+#A112499	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n, 4)	Fourth column of second-order Eulerian triangle A008517 divided by 4.
+#A156141	trilambn	0	1	1	(n, k) -> n == 0 ? Z.TWO : ((k == 0 || k == n) ? Z.ONE : Functions.EULERIAN2.z(n, k + 1).+(Functions.EULERIAN2.z(n, n - k + 1)))	T(n,k)= A008517(n,k+1)+A008517(n,n+1-k), n>1, 0<k<n.
+#A156529	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 1, k + 1).*(Functions.EULERIAN2.z(n + 1, n - k + 1))	Triangle, T(n, k) = A008517(n+1, k+1)*A008517(n+1, n-k+1), read by rows.
+
+A093046	simtraf	0	new A058328()	v -> Functions.PRIME.z(v)
+A095124	simtraf	0	new A001146()	v -> Functions.PRIME.z(v)
+A107482	simtraf	0	new A007539()	v -> Functions.BIG_OMEGA.z(v)
+A108504	dirtraf	0	new A038548()	new A025487()
+A112884	simtraf	0	new A037293().skip(1)	v -> Functions.DIGIT_LENGTH.z(10, v)
+A120355	dirtraf	0	new A002034()	new A007677()
+A139770	dirtraf	0	new A061799()	new A000005()
+A177357	simtraf	0	new A086801()	v -> Functions.DIGIT_LENGTH.z(10, v)
+A187043	dirtraf	0	new A064547()	new A007357()
+A225017	dirtraf	0	new A132740()	new A055566()
+A232094	dirtraf	0	new A060130()	new A000217()
+A248735	simtraf	0	new A248734()	v -> Functions.DIGIT_LENGTH.z(10, v)
+A253473	simtraf	0	new A073256()	(n, v) -> ZV(n).-(Functions.SIGMA0.z(v))
+A262902	simtraf	0	new A045765()	(n, v) -> ZV(n).-(Functions.SIGMA0.z(v))
+A264968	dirtraf	0	new A246200()	new A263272()
+A277802	dirtraf	0	new A048798()	new A004709()
+A279904	simtraf	0	new A058781()	v -> Functions.PRIME.z(v)
+A281489	dirtraf	0	new A000700()	new A000290()
+A293958	dirtraf	0	new A078701()	new A069894()
+A301630	dirtraf	0	new A061670()	new A000040()
+A324201	dirtraf	0	new A062457()	new A000043()
+A372507	simtraf	0	new A067381()	v -> Functions.PRIME_PI.z(v)
+A373112	simtraf	0	new A000149().skip(1)	v -> Functions.DIGIT_LENGTH.z(10, v)

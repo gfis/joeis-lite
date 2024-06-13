@@ -77,3 +77,26 @@ A351789	decexp	1	() -> CV(new Q(5, 4)).log().+(CR.PHI.log().*(6)./(CR.FIVE.sqrt(
 A351794	decexp	1	() -> CV(new Q(5, 4)).log().*(3).+(CR.PHI.log().*(10)./(CR.FIVE.sqrt()))	3*log(5/4)+10*log(phi)/sqrt(5)
 A370743	decexp	1	() -> CR.TWO.log().^(2).+(CR.PHI.log().^(2).*(4))	log(2)^2+4*log(phi)^2
 A352485	decexp	0	() -> CR.FIVE.sqrt().*(24).*(CR.PHI.log())./(25).-(CR.FOUR./(CR.FIVE))	24*sqrt(5)*log(phi)/25-4/5
+A373478	filtpos	1	1	new A373477()	v -> v.equals(Z.ONE)	Numbers k such that A001414(k) and A003415(k) are both multiples of 3, where A001414 is the sum of prime factors with repetition, and A003415 is the arithmetic derivative.
+---- 2024-06-13 23:43:04
+A072241	dirtraf	0	new A000009()	new A000045()
+A072243	dirtraf	0	new A000009()	new A000290()
+A104383	dirtraf	0	new A000009()	new A000217()
+A254528	simtraf	0	new A000149()	v -> Functions.DIGIT_LENGTH.z(10, v)
+A257533	dirtraf	1	new A048050()	new A001358()
+A284265	simtraf	0	new A283484()	v -> Functions.BIG_OMEGA.z(v)
+A284566	simtraf	0	new A284564()	v -> Functions.BIG_OMEGA.z(v)
+A343147	dirtraf	0	new A000009()	new A002110()
+A352889	dirtraf	1	new A005811()	new A109812()
+A372472	dirtraf	1	new A023416()	new A005117()
+A087987	dirtraf	0	new A002321()	new A002110()
+A096853	simtraf	0	new A075708()	v -> Functions.PHI.z(v)
+A096854	simtraf	0	new A053287()	v -> Functions.SIGMA1.z(v)
+A372645	dirtraf	0	new A007814()	new A008892()
+A096856	simtraf	0	new A053285().skip(1)	v -> Functions.SIGMA1.z(v)
+---- 2024-06-13 23:57:22
+A095791	simtraf	0	new A104326()	v -> Functions.DIGIT_LENGTH.z(10, v)
+A277062	simtraf	0	new A000032()	v -> Functions.PRIME_PI.z(v)
+A281501	dirtraf	0	new A000009()	new A000578()
+A372730	simtraf	0	new A005867()	v -> Functions.PRIME_PI.z(v)
+A096855	simtraf	0	new A069061()	v -> Functions.PHI.z(v)
