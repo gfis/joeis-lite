@@ -229,15 +229,18 @@ while (<>) { # read inputfile
             $parm =~ s{DF\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\($1, 2}g;
             $parm =~ s{FM\(}           {Functions.MULTIFACTORIAL.z\(}g;
             $parm =~ s{FI\(}           {Functions.FIBONACCI.z\(}g;
+            $parm =~ s{GCD\(}          {Functions.GCD.z\(}g;
             $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
             $parm =~ s{GPF\(}          {Functions.GPF.z\(}g;
             $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
+            $parm =~ s{IV\[([^\]]+)\]} {\($1 \? Z\.ONE \: Z\.ZERO\)}g;
             $parm =~ s{IVE\(}          {intValueExact\(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
             $parm =~ s{KS\(}           {LongUtils.kronecker(}g;
+            $parm =~ s{LCM\(}          {Functions.LCM.z\(}g;
             $parm =~ s{LPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{LU\(}           {Functions.LUCAS.z\(}g;
             $parm =~ s{LVE\(}          {longValueExact\(}g;
@@ -296,6 +299,8 @@ while (<>) { # read inputfile
         #   $parm =~ s{\.divide\(2\)}  {.divide2\(\)}g;
             $parm =~ s{\.pow\(2\)}     {.square\(\)}g;
             $parm =~ s{\.pow\(1\)}     {}g;
+            $parm =~ s{ *\( *}         {\(}g;
+            $parm =~ s{ *\, +}         {\, }g;
             $parms[$iparm] = $parm;
             #                      1            1
             $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
