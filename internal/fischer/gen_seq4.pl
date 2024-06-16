@@ -138,6 +138,21 @@ my $gen_count = 0;
 my %zhash = qw(0 ZERO 1 ONE 2 TWO 3 THREE 4 FOUR 5 FIVE 6 SIX 7 SEVEN 8 EIGHT 9 NINE 10 TEN); $zhash{"-1"} = "NEG_ONE";
 my $do_generate = 1;
 
+# read the Functions
+my %functs = (); # maps seqnos (without "A") -> function call
+open(FUN, "<", "reflect/funct.txt") || die "# cannot read reflect/funct.txt";
+while (<FUN>) {
+    s/\s+\Z//; # chompr
+    if (m{\AA\d+}) { # starts with A-number
+        my ($aseqno, $code, $prefix) = split(/\t/);
+        if ($prefix =~ m{\,\Z}) { # trailing ","
+            $prefix .= " ";
+        }
+        $functs{$aseqno} = $prefix;
+    } # with A-number
+} # while FUN
+close(FUN);
+
 mkdir $targetdir;
 my $old_callcode = "";
 my $static_dirs; # list of "private final static DirectSequence Annnnn = new Annnnnn();"
@@ -306,21 +321,32 @@ while (<>) { # read inputfile
             $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
 
             # extract any DirectSequences
-            my %statics = (); # maps [ADFM]<number> to A<number>
-            foreach my $xno ($parms[$iparm] =~ m{([ADFM]\d{6})\.a\(}g) { # collect the DirectSequences
-                $statics{$xno} = "A" . substr($xno, 1); # D012345 -> A012345
-            }
-            foreach my $xno (sort(keys(%statics))) { # evaluate the DirectSequences
-                my $ano = $statics{$xno};
+            my %statics = (); # maps [ADEFKMX]<number> to A<number>
+            my $parmi = $parms[$iparm];
+            foreach my $xseqno ($parmi =~ m{([DEFKMX]\d{6})\(}g) { # collect the DirectSequences
+                my $ano = "A" . substr($xseqno, 1);
                 if (0) {
-                } elsif(substr($xno, 0, 1) eq "D") {
-                    $static_dirs .= "\n  private static final DirectSequence $ano = new $ano();";
-                    $parms[$iparm] =~ s{$xno\.a\(}{$ano\.a\(}g;
-                } elsif(substr($xno, 0, 1) eq "M") {
-                    $static_dirs .= "\n  private static final MemorySequence $ano = new $ano();";
-                    $parms[$iparm] =~ s{$xno\.a\(}{$ano\.a\(}g;
+                } elsif($xseqno =~ m{\A[DE]}) { # DirectSequence
+                    $statics{$xseqno} = $ano;
+                    $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
+                } elsif($xseqno =~ m{\A[F]} ) { # Functions.*
+                    my $funct = $functs{$ano};
+                    $parmi =~ s{$xseqno\(}{$funct}g;
+                } elsif($xseqno =~ m{\A[M]} ) { # MemorySequence
+                    $statics{$xseqno} = $ano;
+                    $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
                 }
             }
+            foreach my $xseqno (sort(keys(%statics))) { # evaluate the {Direct|Memory}Sequences
+                my $ano = $statics{$xseqno};
+                if (0) {
+                } elsif($xseqno =~ m{\A[DE]}) {
+                    $static_dirs .= "\n  private static final DirectSequence $ano = new $ano();";
+                } elsif($xseqno =~ m{\A[M]} ) {
+                    $static_dirs .= "\n  private static final MemorySequence $ano = new $ano();";
+                }
+            }
+            $parms[$iparm] = $parmi;
         } # lambda parameter 
         if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
             @terms = map {
