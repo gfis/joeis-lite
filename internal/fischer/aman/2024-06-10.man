@@ -41,3 +41,6 @@ A301630	dirtraf	0	new A061670()	new A000040()
 A324201	dirtraf	0	new A062457()	new A000043()
 A372507	simtraf	0	new A067381()	v -> Functions.PRIME_PI.z(v)
 A373112	simtraf	0	new A000149().skip(1)	v -> Functions.DIGIT_LENGTH.z(10, v)
+
+A373614	multraf	0	(self, n) -> self.s(0).^(2).*(self.s(1))	""	new A000045(), new A000108()	nyi Fpt	a(n) = Fibonacci(n)^2 * Catalan(n).	nonn,new	0..24	nyi	_Vladimir Kruchinin_
+ 

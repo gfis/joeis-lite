@@ -108,7 +108,47 @@ direct_load:
 	$(DBAT) -n   direct
 direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
-#----
+#========
+vector: dirseq dirimp funct # prepare for and create file vector.txt for the classification of all A-numbers
+	perl build_vector.pl
+	cut -b1-1024 vector.txt
+	ls -al       vector.txt
+dirseq: # DirectSequences 'D', explicit "implementing D.S.", not inherited
+	grep DirectSequence $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
+	| sed -e "s/\t/\tD\t/" -e "s/DirectSequence//" \
+	>        $@.txt
+	head -n2 $@.txt
+	wc -l    $@.txt
+dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X', otherwise 'A'
+	$(DBAT) -x "SELECT aseqno, CASE \
+	    WHEN superclass IN \
+	        ( 'BeattySequence' \
+	        , 'CachedSequence' \
+	        , 'HypergeometricSequence' \
+	        , 'LambdaSequence' \
+	        , 'MultiplicativeSequence' \
+	        , 'PaddingSequence' \
+	        , 'PeriodicSequence' \
+	        )                        THEN 'E' \
+	    WHEN superclass IN \
+	        ( 'MemorySequence' \
+	        )                        THEN 'M' \
+	    WHEN superclass IN \
+	        ( 'DecimalExpansionSequence' \
+	        , 'PolynomialRootExpansionSequence' \
+	        )                        THEN 'X' \
+	    ELSE                              'J' \
+	    END FROM joeis j  ORDER BY 1" \
+	| sed -e "s/\r//" \
+	>        $@.txt
+	head -n2 $@.txt
+	wc -l    $@.txt
+funct: # extract from jOEIS source
+	perl read_functions.pl $(JOEIS)/src/irvine/math/function/Functions.java \
+	| sort | uniq -w7 \
+	| tee    funct.txt
+	wc -l    funct.txt
+#========
 finite1:     # select the eligable programs
 	$(DBAT) -x "SELECT i.aseqno, i.termno,  j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno \
 	  AND superclass IN ('FiniteSequence', 'NoncomputableSequence', 'BriefSequence') ORDER BY 1" \
@@ -165,19 +205,6 @@ interfaces:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
-known: known1 known2 # prepare for and create database table 'known'
-known1: # extract from jOEIS source
-	perl read_functions.pl $(JOEIS)/src/irvine/math/function/Functions.java \
-	| sort | uniq -w7 \
-	| tee    funct.txt
-	wc -l    funct.txt
-known2:
-funct: # extract from jOEIS source
-	perl read_functions.pl $(JOEIS)/src/irvine/math/function/Functions.java \
-	| sort | uniq -w7 \
-	| tee    funct.txt
-	wc -l    funct.txt
-#----
 liseq: # list those with "implements Sequence"
 	grep -P "\tSequence\t" $(COMMON)/joeis_names.txt \
 	| perl -ne 's/\t.*/\t0/; print;' \
@@ -205,7 +232,7 @@ morphlist: # print a seq4 parameter list of all subclasses of MorphismFixedPoint
 #----
 offcount: # SUP=superclass ; count the different offsets for some jOEIS superclass
 	grep $(SUP) offinspect1.tmp | cut -f2-3 | sort | uniq -c
-	# grep $(SUP) noabs.tmp | grep -vP "\t1\t" | sort 
+	# grep $(SUP) noabs.tmp | grep -vP "\t1\t" | sort
 #--
 offinspect1: # select the eligible programs
 	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno ORDER BY 1" \
@@ -237,7 +264,7 @@ offindep3: # superclasses that do not occur in offin 627
 	wc -l    $@.tmp
 offsort: # sort offin.tmp with superclasses ASC
 	sort -k5.1 -k1.1 offin.tmp | sed -e "s/\r//" > offin.srt
-offin: # create table 'offin' 
+offin: # create table 'offin'
 	$(DBAT) -f offin.create.sql
 	grep -E "^A[0-9]" offin.tmp | sed -e "s/ //g" \
 	| $(DBAT) -r offin
@@ -339,11 +366,11 @@ unpackall:
 #	make unpack1 P=hasoc21b
 #	make unpack1 P=hasoc21c
 #	cd .. ; cp -pv hold/*.java manual
-#	cd .. ; make CC=refl_hasoc21c man dist testall log TO=4 
+#	cd .. ; make CC=refl_hasoc21c man dist testall log TO=4
 # 2023-07-22:
 #	make unpack1 P=hasoc22a
 #	cd .. ; cp -pv hold/*.java manual
-#	cd .. ; make CC=refl_hasoc22a man dist testall log TO=4 
+#	cd .. ; make CC=refl_hasoc22a man dist testall log TO=4
 # 2023-07-22:
 	make unpack1 P=offin23a
 	make unpack1 P=offin23b
@@ -353,7 +380,7 @@ unpackall:
 #--
 unpack1: # P= ; unpack 1 *.pack, and write ../refl_$(P).gen
 	perl queue.pl -u $(P).pack
-	grep -P "\A\#\!queue" $(P).pack | cut -f2 | grep -v A999 > ../refl_$(P).gen 
+	grep -P "\A\#\!queue" $(P).pack | cut -f2 | grep -v A999 > ../refl_$(P).gen
 #--------
 # 2023-10-17, introduce interface DirectSequence
 direct17:
@@ -613,12 +640,12 @@ patch_toff:
 	grep -iP "\bSequence[01]\b" offin.tmp\
 	| perl patch_offset.pl -m toff
 	cd .. ; make count dist testall GU=4
-patch_noabs: # SUP= prefix offset in super(...) when "Annnnnn extends $(SUP)" 
+patch_noabs: # SUP= prefix offset in super(...) when "Annnnnn extends $(SUP)"
 	cd .. ; make purge
 	grep -iP "$(SUP)" noabs.tmp \
 	| perl patch_offset.pl -m pref
 	cd .. ; make count dist testall GU=4 sumall
-patch_offin: # SUP= prefix offset in super(...) when "Annnnnn extends $(SUP)" 
+patch_offin: # SUP= prefix offset in super(...) when "Annnnnn extends $(SUP)"
 	cd .. ; make purge
 	grep -iP "$(SUP)" offin.tmp \
 	| perl patch_offset.pl -m pref
@@ -821,7 +848,7 @@ poffloor:
 	| tee $@.tmp
 	make dist testall log TO=8 GU=8
 poffgf2:
-	grep -P "\tGenera" offinspect2.txt | cut -b1-7 | xargs -l perl genman.pl -h 
+	grep -P "\tGenera" offinspect2.txt | cut -b1-7 | xargs -l perl genman.pl -h
 poffmix1:
 	# grep -E "PolynomialRoot|BinaryToDecimalExpansion|GeneratingFunctionSequence" offinspect2.txt
 	grep -E "GeneratingFunctionSequence" offinspect2.txt \
@@ -947,7 +974,7 @@ difflist:
 special_super: # grep the constructors different from "super(0, 1)"
 	grep -iH super oldsrc/*.java | grep -vP "super\(0\, 1\)" \
 	| tee $@.tmp
-comments: # get the leading comments 
+comments: # get the leading comments
 	grep -iH -P "manually|generated" oldsrc/*.java \
 	| tee    $@.tmp
 	wc -l    $@.tmp
@@ -973,7 +1000,7 @@ genold:
 	wc -l    $@.gen
 #----
 check: genold list2 additional missing
-additional: 
+additional:
 	$(DBAT) -x "SELECT * FROM seq4 s4 WHERE s4.aseqno NOT IN (SELECT aseqno FROM seq2) ORDER BY 1" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
@@ -1007,10 +1034,10 @@ jpats:
 	  perl -i.bak -e 'undef $$/; my $$buffer = <>; $$buffer =~ s/GeneralizedEulerTransform/InfiniteProductTransform/g; print $$buffer;' nnn
 	cp -v iprot*.jpat ..
 rest:
-#	
-	
+#
+
 	sed -e "s/GeneralizedEulerTransform/InfiniteProductTransform/g" nnn > nnn.jpat
-	
+
 #----
 ratpow:
 	cd $(COMMON) ; grep -iP "(Expansion of( the)?|G\.f\.\:?) *prod(uct)?\_\{\w\>" jcat25.txt | grep -E "^%[NFCY]" \

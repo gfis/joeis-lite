@@ -68,19 +68,23 @@ while (<>) { # read inputfile
         print "1: $line\n" if $debug >= 1;
     }
 } # while <>
+
+# append some additional ones
+while(<DATA>) {
+    print;
+} # while DATA
 __DATA__
-  /** Primorial base log representation. */
-  public static final Function1 PRIMORIAL_BASE_LOG = new PrimorialBaseLog(); // =A276085
-  /** Primorial base exp representation. */
-  public static final Function1 PRIMORIAL_BASE_EXP = new PrimorialBaseExp(); // =A276086
-
-  /** Reverse the digits of a number. */
-  public static final Function2 REVERSE = new Reverse(); // =A004086(10, =A305989(2,
-  /** Number of digits in a number. */
-
-->
-
-A004086	Func2D	Functions.REVERSE.z(10,
-A276085	Func1	Functions.PRIMORIAL_BASE_LOG.z(
-A276086	Func1	Functions.PRIMORIAL_BASE_EXP.z(
-A305989	Func2D	Functions.REVERSE.z(2,
+A000720	Func1	Functions.PRIME_PI.z(
+A001157	Func2	Functions.SIGMA.z(2,
+A001158	Func2	Functions.SIGMA.z(3,
+A002326	Func2	Functions.ORDER.z(Z.TWO,
+A004185	Func2D	Functions.DIGIT_SORT_ASCENDING.z(10,
+A004186	Func2D	Functions.DIGIT_SORT_DESCENDING.z(10,
+A007955	Func1	Functions.POD.z(
+A053735	Func2D	Functions.DIGIT_SUM.z(3,
+A007917	Func1	Functions.PREV_PRIME.z(
+A007918	Func1	Functions.NEXT_PRIME.z(
+A002024	Func1	Functions.TRINV.z(	??? also A123578
+A007954	Func2D	Functions.DIGIT_PRODUCT.z(10,
+A055012	Func2D	Functions.DIGIT_SUM_CUBES.z(10,
+A003132	Func2D	Functions.DIGIT_SUM_SQUARES.z(10,
