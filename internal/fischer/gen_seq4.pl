@@ -99,6 +99,7 @@ my $targetdir = "../../src/irvine/oeis";
 my %dirs      = (); # hash for the directories to be created
 my $maindir   = "../../../joeis/src/irvine/oeis";
 my $clobber   = 1; # overwrite even if already present in $maindir
+my $fatal     = 0; # no fatal error so far
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
     if (0) {
@@ -229,6 +230,7 @@ while (<>) { # read inputfile
             if ($nopen != $nclos && $iparm <= 8) {
                 print STDERR "#?? wrong bracketing in $aseqno $parm, open=$nopen, close=$nclos\n";
                 $do_generate = 0;
+                $fatal = 1;
             }
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;  $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .   $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
@@ -438,10 +440,14 @@ while (<>) { # read inputfile
         &write_output($copy, $aseqno);
     } else {
         print "# $aseqno has too big parameter values - skipped\n";
+        $fatal = 1;
     }
     &clean_imports();
 } # while <>
 print STDERR "# $gen_count sequences generated\n";
+if ($fatal > ) {
+    exit(1); # brake the make
+}
 #-----------------
 sub write_output {
     my ($copy, $aseqno) = @_; # global $old_package, $gen_count, $debug

@@ -1,0 +1,204 @@
+---- 2024-06-17 10:01:56
+A084737	lambdan	1	n -> F276085(F002110(n - 1).*(2))	For n >= 1,
+A278226	lambdan	0	n -> D046523(F276086(n))	[Least number with the same prime signature as a(n)]
+A283985	simtraf	0	new A283477()	v -> F276085(v)
+A327858	lambdan	0	n -> GCD(F003415(n), F276086(n))
+A328112	lambdan	1	n -> n == 1 ? Z.ZERO : (ZV(n).IPP() ? Z.ONE : MAX(F003415(n), F276086(n)))
+A328114	lambdan	0	n -> D051903(F276086(n))	[Largest digit]
+A328118	filnum	1	0	k -> F276086(k).compareTo(ZV(k).^(2)./(4)) <= 0	,  and J002620(k) = floor(k^2/4)
+A328119	filnum	1	0	k -> F276086(k).compareTo(ZV(k).^(2)./(4)) > 0
+A328391	lambdan	1	n -> D051903(F003415(F276086(n)))
+A328632	filnum	1	0	k -> F276086(k).mod(6) == 1	(mod 6)
+A328633	filnum	1	0	k -> D257993(F276086(F276086(k))).equals(ZV(3))		, where , and D257993 returns the index of the least prime not present in its argument
+A350074	lambdan	1	n -> D051903(F276086(n)).-(D051903(n))
+A351226	filnum	1	0	k -> F276086(k).compareTo(ZV(k)) < 0
+A351227	filnum	1	0	k -> F276086(k).compareTo(ZV(k)) > 0
+A353465	filnum	1	0	k -> F276086(k).mod(4) == 1	is of the form 4k+1
+A353466	filnum	1	0	k -> F276086(k).mod(4) == 3	is of the form 4k+3
+A353486	lambdan	0	n -> D010873(F276086(n))
+A353564	lambdan	1	n -> PD(n, d -> d >= n ? Z.ONE : F276086(PHI(d)))		, where F276086 is primorial base exp-function, and phi is Euler totient function
+A356162	lambdan	0	n -> IV[GCD(n, F276086(n)).equals(ZV(1))]
+A356310	lambdan	0	n -> IV[GCD(F003415(n), F276086(n)).equals(ZV(1))]
+A356311	filnum	1	0	k -> GCD(F003415(k), F276086(k)).equals(ZV(1))
+A356312	filnum	1	0	k -> !GCD(F003415(k), F276086(k)).equals(ZV(1))
+A358224	lambdan	1	n -> D328386(n).and(ZV(1))		, where ?328386(n) = F276086(n) mod n,
+A358227	lambdan	2	n -> D328382(n).and(ZV(1))		, where ?328382(n) = F276086(n) mod F003415(n), with ARD the arithmetic derivative
+A358843	filnum	1	0	k -> F276086(k).mod(6) == 5	(mod 6)
+A358844	filnum	1	0	k -> F276086(6*k).mod(6) == 5
+A358845	filnum	1	0	k -> F276086(6*k).mod(6) == 1
+A369962	filnum	1	0	k -> GCD(k, F003415(k)).equals(GCD(k, F276086(k)))
+A369963	filnum	1	0	k -> { final Z x = GCD(k, F003415(k)); return !x.equals(ZV(1)) && x.equals(GCD(k, F276086(k))); }
+A369970	filnum	1	0	k -> F003415(k).mod(F276086(k)).isZero()
+A371087	lambdan	1	n -> IV[F276086(n).mod(D003557(n)).isZero()]
+A373142	filnum	1	0	k -> F276085(k).mod(4) == 2	is of the form 4m+2
+A373258	lambdan	1	n -> IV[F003415(n)./(GCD(n, F003415(n))).mod(4) == 0 && F276085(n).mod(8) == 0]
+A373261	filnum	1	0	k -> F276085(k).mod(3) == +1
+A373266	lambdan	1	n -> IV[D007814(F276085(n)).equals(ZV(2))]
+A373267	filnum	1	0	k -> F276085(k).mod(8) == 4	is of the form 8m+4
+A373372	lambdan	1	n -> IV[F001414(n).mod(3) == 0 && F276085(n).mod(3) == 0]
+A373483	simtraf	1	new A083345()	(n, v) -> IV[v.mod(3) == 0 && F276085(n).mod(3) == 0]
+A324341	simtraf	0	new A283477()	v -> F001221(F276086(v))
+A324342	simtraf	0	new A283477()	v -> F001222(F276086(v))
+A328240	filnum	0	0	k -> ARD(ARD(F276086(k))).IPP()
+A328634	filnum	0	0	k -> D257993(F276086(F276086(k))).equals(ZV(4))
+A328635	filnum	0	0	k -> D257993(F276086(F276086(k))).equals(ZV(5))
+A328636	filnum	0	0	k -> D257993(F276086(F276086(k))).equals(ZV(6))
+---- 2024-06-17 11:18:25
+A324583	filnum	1	1	k -> GCD(k, F276086(k)).equals(ZV(1))
+A351229	filnum	1	0	k -> F003415(k).compareTo(F276086(k)) >= 0 && F276086(k).compareTo(k) > 0
+A355821	filnum	1	1	k -> GCD(D003961(k), F276086(k)).equals(ZV(1))
+A358225	filnum	1	1	k -> (F276086(k).mod(k) & 1) == 1	is an odd number,
+A358226	filnum	1	1	k -> (F276086(k).mod(k) & 1) == 0	is an even number,
+A368998	filnum	1	1	k -> !F003415(k).testBit(0) && !F276085(k).testBit(0)
+A371088	filnum	1	1	k -> F276086(k).mod(D003557(k)).isZero()
+A371089	filnum	1	1	k -> !F276086(k).mod(D003557(k)).isZero()
+A373138	filnum	1	1	k -> F276085(k).mod(8) == 0	is a multiple of 8
+A373140	filnum	1	1	k -> F276085(k).mod(5) == 0	is a multiple of 5
+A373144	filnum	1	1	k -> F003415(k).mod(3) == 0 && F276085(k).mod(3) == 0
+A373262	filnum	1	0	k -> F276085(k).mod(3) == 2
+A373373	filnum	1	1	k -> F001414(k).mod(3) == 0 && F276085(k).mod(3) == 0
+A373489	lambdan	1	n -> IV[n == 1 || F003415(n).mod(F276085(n)).isZero()]
+---- 2024-06-17 12:08:49
+A324583	filnum	1	1	k -> GCD(k, F276086(k)).equals(ZV(1))
+A351228	filnum	1	0	k -> F003415(k).compareTo(F276086(k)) >= 0
+A351229	filnum	1	0	k -> F003415(k).compareTo(F276086(k)) >= 0 && F276086(k).compareTo(k) > 0
+A355821	filnum	1	1	k -> GCD(D003961(k), F276086(k)).equals(ZV(1))
+A358225	filnum	1	1	k -> (F276086(k).mod(k) & 1) == 1	is an odd number,
+A358226	filnum	1	1	k -> (F276086(k).mod(k) & 1) == 0	is an even number,
+A368998	filnum	1	1	k -> !F003415(k).testBit(0) && !F276085(k).testBit(0)
+A371088	filnum	1	1	k -> F276086(k).mod(D003557(k)).isZero()
+A371089	filnum	1	1	k -> !F276086(k).mod(D003557(k)).isZero()
+A373138	filnum	1	1	k -> F276085(k).mod(8) == 0	is a multiple of 8
+A373140	filnum	1	1	k -> F276085(k).mod(5) == 0	is a multiple of 5
+A373144	filnum	1	1	k -> F003415(k).mod(3) == 0 && F276085(k).mod(3) == 0
+A373262	filnum	1	0	k -> F276085(k).mod(3) == 2
+A373373	filnum	1	1	k -> F001414(k).mod(3) == 0 && F276085(k).mod(3) == 0
+A373489	lambdan	1	n -> IV[n == 1 || F003415(n).mod(F276085(n)).isZero()]
+A082863	lambdan	0	n -> F001221(ZV(n - 1).*(n + 1))
+A179212	lambdan	0	n -> D008966(2*n+2).+(D008966(2*n+1)).-(D008966(n))
+A254706	lambdan	0	n -> F000108(2*n).mod(F000040(n))
+A254746	lambdan	0	n -> F000108(ZV(n).^(2)).mod(F000040(n))
+A373258	lambdan	0	n -> E369004(n).*(E373137(n))
+A373372	lambdan	0	n -> E373371(n).*(E372573(n))
+A373483	lambdan	0	n -> E369643(n).*(E372573(n))
+A270828	lambdan	0	n -> D007504(2*n-1).mod(F000040(n))
+---- 2024-06-17 14:14:21
+A078225	lambdan	1	n -> E078221(n+1)./(E078221(n))
+A100375	lambdan	1	n -> D001223(n)./(D006519(D001223(n)))
+A121081	lambdan	1	n -> F000041(n).-(F000041(n-2)).-(F000041(n - 4)).+(F000041(n - 6))	,n>
+A127698	lambdan	0	n -> F000217(n).+(F004086(F000217(n)))
+A139817	lambdan	0	n -> D000079(n).-(F055642(D000079(n)))
+A145193	lambdan	1	n -> F001222(6*n - 1).+(F001222(6*n + 1))
+A179212	lambdan	1	n -> D008966(2*n+2).+(D008966(2*n+1)).-(D008966(n))
+A182616	lambdan	0	n -> F000041(2*n).-(F000041(n))
+A182723	lambdan	1	n -> F000040(n).*(F000041(F000040(n)))
+A191402	lambdan	0	n -> D000201(n).+(D000201(n + 1))
+A191403	lambdan	0	n -> D000201(n).+(D000201(n + 2))
+A191404	lambdan	0	n -> D000201(n).+(D000201(n + 3))
+A227415	lambdan	0	n -> F006882(n + 1).mod(F006882(n))
+A272899	lambdan	1	n -> F002110(ZV(n).+(F000720(n)))./(F034386(n))
+A283999	lambdan	0	n -> D005187(n).xor(F006068(n))
+A284261	lambdan	1	n -> E284258(n).-(E284258(D003961(n)))
+A300902	lambdan	0	n -> n == 0 ? Z.ONE : F000142(n)./(F034386(n - 1))
+A306184	lambdan	1	n -> F006882(2*n + 1).mod(F006882(2*n))
+A306185	lambdan	1	n -> F006882(2*n + 1).+(F006882(2*n))
+A324368	lambdan	0	n -> F000041(n-2).+(F000041(n - 1)).-(F000041(n))
+A328461	lambdan	1	n -> E276156(n)./(F002110(D007814(n)))
+A328839	lambdan	1	n -> D053669(n).*(E328579(n))
+A329531	lambdan	1	n -> F000720(ZV(n).^(2).*(4)).-(F000720(ZV(n - 1).^(2).*(4)))
+A337319	lambdan	1	n -> E145037(F000265(n))
+A338489	lambdan	0	n -> F000142(n).-(F000217(E129960(n)))
+A338521	lambdan	1	n -> F000720(n - 1).-(F000720(ZV(n).-(F000720(n))))
+A351253	lambdan	0	n -> F276085(E351251(n))
+A351520	lambdan	1	n -> F000005(n).+(D013928(n + 1)).-(F034444(n))
+A353577	lambdan	0	n -> E353576(n)./(E353524(n))
+A363071	lambdan	0	n -> E171367(n).+(E171367(n-1))
+A365722	lambdan	0	n -> F053735(n).-(D007949(1 + n))
+A365828	lambdan	0	n -> E000009(2*n).-(E000009(n)).+(1)
+A366527	lambdan	0	n -> F000041(2*n).-(E000009(2*n))
+A372231	lambdan	1	n -> F000217(n).-(M005206(n - 1))
+A372441	lambdan	1	n -> F000120(n).-(F001222(n))
+A373614	multraf	0	(self, n) -> self.s(0).^(2).*(self.s(1))	""	new A000045(), new A000108()	nyi Fpt	a(n) = Fibonacci(n)^2 * Catalan(n).	nonn,new	0..24	nyi
+---- 2024-06-17 15:16:47
+A074990	lambdan	1	n -> (n == 1) ? ZV(2) : F000720(3*n).-(F000720(n))
+A083690	lambdan	1	n -> F000041(n).-(F000041((n - 1)/2))
+A086784	lambdan	0	n -> (n == 0) ? ZV(0) : D023416(n).-(D007814(n))	forn>0
+A089848	lambdan	0	n -> (n == 0) ? ZV(1) : (n % 3 < 2) ? F000108(n - 1) : F000108(n - 1).+(F000108((n-2)/3))
+A097272	lambdan	1	n -> D006519(n).*(D003961(D046523(F000265(n))))
+A098145	lambdan	1	n -> F000040(n).+(F000041(F000040(n)))
+A100101	lambdan	0	n -> F000110(2*n).*(FA(2*n))./(Z2(n).*(FA(n)))
+A117735	lambdan	0	n -> (n == 0) ? ZV(0) : FA(n).-(F034386(n))
+A153330	lambdan	1	n -> D006577(n + 1).-(D006577(n))	forn>0
+A289493	lambdan	1	n -> (n == 1) ? ZV(2) : F000720(3*n).-(F000720(2*n))
+A289624	lambdan	1	n -> F002322(n)./(F007947(F000010(n)./(F002322(n))))
+A301600	lambdan	0	n -> (n == 0) ? ZV(1) : F002110(n)./(F034386(n - 1))
+A332233	lambdan	0	n -> (n == 0) ? ZV(1) : E131385(n + 1).-(E131385(n))
+A339891	lambdan	1	n -> E339916(n).+(F000005(n + 1)).-(Z2(n - 1)).-(1).-(2*((n == 1) ? 1 : 0))	-2^(n-1)-1-2*[n=1]
+A343416	lambdan	1	n -> (n == 1) ? ZV(1) : F001414(n).+(F000203(n)).+(F001414(F000203(n))).+(F000203(F001414(n)))
+A358765	lambdan	0	n -> F003415(n).*(F276086(n)).modZ(60)
+A373622	lambdan	0	n -> F000032(n).*(F000045(n)).*(F000108(n))
+A179211	lambdan	0	n -> D013928(2*n+1).-(D013928(n))
+---- 2024-06-17 18:33:16
+A075145	lambdan	1	n -> M061373(F000040(n))		a(n)=M061373(F000040(n)), where p(n)=F000040(n) lists the primes. If p(n)-1 is written as product p(i)^e_i, then a(n) = 1 + sum a(i)*e_i.
+A136507	lambdan	0	n -> SU(0, n, k -> BI(Z2(n - k).+(k), ZV(n - k)))		a(n) = Sum_{k=0..n} BI(2^(n-k) + k, n-k).
+A137214	lambdan	0	n -> F043537(Z2(n))		a(n) = F043537(2^n). - _R. J. Mathar_, Mar 16 2008
+A137580	lambdan	0	n -> F043537(F000142(n))		a(n) = F043537(F000142(n)).
+A167137	lambdan	0	n -> SU(0, n, k -> F000041(k).*(S2(n, k)).*(FA(k)))		a(n) = Sum_{k=0..n} F000041(k)*S2(n,k)*k! where F000041 is the partition numbers.
+A167446	lambdan	0	n -> F000142(F006882(F000045(n)))	.		a(n) = F000142(F006882(F000045(n))) . [R. J. Mathar, Nov 12 2009]
+A181357	lambdan	1	n -> F003132(F000045(n))		a(n) = F003132(F000045(n)). - _Jonathan Vos Post_, Oct 14 2010
+A181361	lambdan	1	n -> F055012(F000045(n))		a(n) = F055012(F000045(n)). - _Michel Marcus_, Jul 18 2013
+A184391	lambdan	1	n -> FA(F007955(n))
+A207901	lambdan	0	n -> M052330(F003188(n))		a(n) = M052330(F003188(n)). - _Peter Munn_, Apr 11 2018
+A268722	lambdan	0	n -> F003188(F006068(n).*(3))		a(n) = F003188(3*F006068(n)), where F003188 is binary Gray code and F006068 is its inverse.
+A284695	lambdan	1	n -> F006530(E279513(n))		a(n) = F006530(E279513(n)) for any n>0.
+A300902	lambdan	0	n -> F000142(n)./(F034386(n-1))		a(n) = F000142(n)/F034386(n-1) for n>0, a(0) = 1.
+A302783	lambdan	0	n -> M052330(F006068(n))		a(n) = M052330(F006068(n)).
+A309044	lambdan	0	n -> SU(0, n, k -> M005590(k + 1).*(M005590(n - k + 1)))		a(n) = Sum_{k=0..n} M005590(k+1)*M005590(n-k+1).
+A324550	lambdan	1	n -> F049345(F000040(n))		a(n) = F049345(F000040(n)).
+A332224	lambdan	1	n -> M087808(F000203(n))		a(n) = M087808(F000203(n)).
+A339899	lambdan	0	n -> F000265(D049559(D019565(2*n)))		a(n) = F000265(D049559(D019565(2*n))).
+A350104	lambdan	0	n -> SU(0, n, k -> E350102(k))		a(n) = Sum_{k=0..n} E350102(k).
+A356267	lambdan	0	n -> SU(0, n, k -> BI(2*n, k)  .*(F000041(k)))		a(n) = Sum_{k=0..n} BI(2*n, k) * p(k), where p(k) is the partition function F000041.
+A356268	lambdan	0	n -> SU(0, n, k -> BI(2*n, k)  .*(E000009(k)))		a(n) = Sum_{k=0..n} BI(2*n, k) * q(k), where q(k) is the number of partitions into distinct parts (E000009).
+A356269	lambdan	0	n -> SU(0, n, k -> BI(2*k, k)  .*(F000041(k)))		a(n) = Sum_{k=0..n} BI(2*k, k) * p(k), where p(k) is the partition function F000041.
+A356270	lambdan	0	n -> SU(0, n, k -> BI(2*k, k)  .*(E000009(k)))		a(n) = Sum_{k=0..n} BI(2*k, k) * q(k), where q(k) is the number of partitions into distinct parts (E000009).
+A356280	lambdan	0	n -> SU(0, n, k -> BI(2*n, n-k).*(F000041(k)))		a(n) = Sum_{k=0..n} BI(2*n, n-k) * p(k), where p(k) is the partition function F000041.
+A356281	lambdan	0	n -> SU(0, n, k -> BI(2*n, n-k).*(E000009(k)))		a(n) = Sum_{k=0..n} BI(2*n, n-k) * q(k), where q(k) is the number of partitions into distinct parts (E000009).
+A356283	lambdan	0	n -> SU(0, n, k -> BI(3*n, n-k).*(E000009(k)))		a(n) = Sum_{k=0..n} BI(3*n, n-k) * q(k), where q(k) is the number of partitions into distinct parts (E000009).
+A356285	lambdan	0	n -> SU(0, n, k -> BI(3*n, k)  .*(E000009(k)))		a(n) = Sum_{k=0..n} BI(3*n, k) * q(k), where q(k) is the number of partitions into distinct parts (E000009).
+A356287	lambdan	0	n -> SU(0, n, k -> BI(3*k, k)  .*(E000009(k)))		a(n) = Sum_{k=0..n} BI(3*k, k) * q(k), where q(k) is the number of partitions into distinct parts (E000009).
+A358700	lambdan	0	n -> F070939(ZV(n).*(n))		a(n) = F070939(n^2) for n > 0; a(0) = 0 by convention.
+A365722	lambdan	0	n -> F053735(n).-(D007949(1+n))		a(n) = F053735(n) - D007949(1+n).
+A080345	lambdan	0	n -> F001221(F000045(F000040(n)))		a(n) = F001221(F000045(F000040(n))). - _Michel Marcus_, Oct 22 2015
+A082071	lambdan	0	n -> F020639(GCD(F000010(n), F001157(n)))		a(n) = F020639(GCD(F000010(n), F001157(n))). - _Antti Karttunen_, Nov 03 2017
+A116087	lambdan	0	n -> F001221(F000041(F000045(n)))		a(n) = F001221(F000041(F000045(n))). - _Michel Marcus_, Jul 31 2015
+A197880	lambdan	0	n -> F007913(E134367(2*n - 1))		a(n) = F007913(E134367(2*n-1)). - _R. J. Mathar_, Oct 25 2011
+A246269	lambdan	0	n -> M065338(D003961(n))	a(n) = M065338(D003961(n)).
+A265093	lambdan	0	n -> SU(0, n, k -> E000009(k).^(2))		a(n) = Sum_{k=0..n} E000009(k)^2.
+A268720	lambdan	0	n -> SU(0, n, k -> F003188(F006068(n).+(F006068(k))))		a(n) = Sum_{k=0..n} F003188(F006068(n)+F006068(k)).
+A302023	lambdan	0	n -> M052330(D156552(n))	a(n) = M052330(D156552(n)).
+A350087	lambdan	0	n -> F000032(n).^(F000032(n + 1)).mod(F000032(n + 2))
+---- 2024-06-17 20:43:47
+A080801	lambdan	1	n -> D023416(n + 1).+(1)		a(n) = M008687(n+2) = D023416(n+1) + 1.
+A083228	lambdan	0	n -> F001045(BI(n + 2, 2))
+A096772	lambdan	1	n -> M051912(n - 1).+(1)	a(n) = M051912(n-1) + 1. - _Peter Kagey_, Oct 20 2021
+A101220	lambdan	0	n -> SU(0, n, k -> F000045(n - k).*(ZV(n).^(k)))		a(n) = Sum_{k=0..n} Fibonacci(n-k)*n^k.
+A127239	lambdan	0	n -> M010060(BI(2*n, n))		a(n) = M010060(BI(2n,n)).
+A129092	lambdan	1	n -> M030067(Z2(n).-(1))		a(n) = M030067(2^n - 1) for n >= 1, where M030067 is the semi-Fibonacci numbers.
+A129093	lambdan	1	n -> M030067(Z2(n + 1).-(3))		a(n) = M030067(2^(n+1) - 3) for n>=1, where M030067 is the semi-Fibonacci numbers.
+A129094	lambdan	1	n -> M030067(Z2(n).+(Z2(n - 1)).-(1))		a(n) = M030067(2^n + 2^(n-1) - 1) for n>=1, where M030067 gives the semi-Fibonacci numbers.
+A224366	lambdan	0	n -> M006456(ZV(n).^(2))		a(n) = M006456(n^2).
+A224677	lambdan	0	n -> M023361(n*(n + 1)/2)		a(n) = M023361(n*(n+1)/2), where M023361(n) is the number of compositions of n into positive triangular numbers.
+A224679	lambdan	0	n -> M023361(ZV(n).^(2))		a(n) = M023361(n^2), where M023361(n) = number of compositions of n into positive triangular numbers.
+A248377	lambdan	0	n -> M023359(Z2(n))		a(n) = M023359(2^n).
+A283467	lambdan	1	n -> M005185(ZV(n + 1).-(M005185(n)))		a(n) = M005185(n + 1 - M005185(n)).
+A367101	lambdan	0	n -> SU(0, n, k -> F000108(k).*(E000009(k)))		a(n) = Sum_{k=0..n} F000108(k) * E000009(k).
+A228039	lambdan	0	n -> M010060(ZV(n).^(2))
+---- 2024-06-17 23:03:11
+A103586	lambdan	0	n -> (n == 0) ? Z.ONE : F070939(F070939(n).+(n))
+A111104	diffs	1	new A051484()
+A273935	lambdan	0	n -> (n == 0) ? Z.ONE : F000142(n).*(F000142(n - 1)).*(Z2(n).-(1))	J000225(n),n>=
+A286298	lambdan	0	n -> (n <= 1) ? ZV(n) : D005811(n).+(D000523(n))
+A290289	lambdan	1	n -> n <= 2 ? ZV(2) : F001221(n - 1).+(F008472(n)).+(1)
+A365089	lambdan	0	n -> M010060(ZV(n).^(3))		a(n) = M010060(n^3).
+A215422	lambdan	0	n -> F070939(F000045(D000079(n)))		a(n) = F070939(F000045(D000079(n))).

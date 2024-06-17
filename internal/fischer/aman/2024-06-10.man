@@ -1,4 +1,9 @@
 ---- 2024-06-17 23:03:13
+bad:
+A140479	lambdan	0	n -> D000290(n).-(F055642(D000290(n)))
+A261531	lambdan	0	n -> SD(n, d -> PHI(n/d).*(M007837(d)))./(n)		a(n) = (1/n) * Sum_{d | n} phi(n/d) * M007837(d) for n>0. - _Andrew Howroyd_, Apr 02 2017
+A123612	lambdan	0	n -> SD(n, d -> PHI(n/d).*(E167539(d))./(n))		a(n) = (1/n) * Sum_{d | n} phi(n/d) * E167539(d) for n>0. - _Andrew Howroyd_, Apr 02 2017
+
 
 A082879	lambdan	0	n -> F000720(F000142(F000040(n)))		a(n)=F000720[F000142[F000040(n)]]
 A084237	lambdan	0	n -> F002321(ZV(10).^(n))		a(n) = F002321(10^n).
