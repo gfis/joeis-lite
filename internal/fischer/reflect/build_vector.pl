@@ -5,7 +5,8 @@
 # 2024-05-16, Georg Fischer: copied from scripts/endirect.pl; *HA=67
 #
 #:# Usage:
-#:#   perl build_vector.pl [-f directfile] infile > outfile
+#:#   perl build_vector.pl [-f directfile] [-k] infile > outfile
+#:#        -k use known.txt
 #
 # Read codes for the vector from files in this order (records contain "Annnnnn\tcode..."): 
 # (default)  'A' for unimplemented sequences
@@ -34,6 +35,7 @@ my $gits = $`. "/gits"; # prematch
 my $debug   = 0;
 my $clip    = 0; # whether to read from clipboard instead from <>
 my $reflect = "$gits/joeis-lite/internal/fischer/reflect";
+my $known   = 0; # ignore known.txt 
 my $max_anumber = 400000; # > 373700 at 2024-06-16
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
@@ -42,6 +44,8 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
         $clip      = 1;
     } elsif ($opt  =~ m{d}) {
         $debug     = shift(@ARGV);
+    } elsif ($opt  =~ m{k}) {
+        $known     = 1; # use known.txt
     } elsif ($opt  =~ m{f}) {
         $reflect   = shift(@ARGV);
     } else {
@@ -59,7 +63,7 @@ for (my $sno = 0; $sno <= $max_anumber; $sno ++) {
 }
 &read_file("$reflect/dirimp.txt");
 &read_file("$reflect/dirseq.txt");
-&read_file("$reflect/known.txt");
+&read_file("$reflect/known.txt") if $known > 0;
 &read_file("$reflect/funct.txt");
 
 open (OUT, ">", "$reflect/vector.txt") || die "cannot write vector.txt";

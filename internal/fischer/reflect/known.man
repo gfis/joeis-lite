@@ -13,7 +13,6 @@ A000290	Know1	_V1.square()	(_V1)*(_V1)		The squares: a(n) = n^2.
 A000593	#nydd		Sum of odd divisors of n.
 A000688	#nyd		Number of Abelian groups of order n; number of factorizations of n into prime powers.
 A000796	#nyd		Decimal expansion of Pi (or digits of Pi).
-A001045	#nyd		new Q(Z.TWO.pow(v.intValueExact()), Z.THREE).round()
 A001055	#nyd		The multiplicative partition function: number of ways of factoring n with all factors greater than 1 (a(1) = 1 by convention).
 A001065	Know1	Functions.SIGMA1(_V1).subtract(_V1)			Sum of proper divisors (or aliquot parts) of n: sum of divisors of n that are less than n.
 A001177	#nyd			Fibonacci entry points: a(n) = least k >= 1 such that n divides Fibonacci number F_k (=A000045(k)).
@@ -37,7 +36,6 @@ A003958	#nyd		If n = Product p(k)^e(k) then a(n) = Product (p(k)-1)^e(k).
 A003961	#nydd		Completely multiplicative with a(prime(k)) = prime(k+1).
 A003963	#nyd		Fully multiplicative with a(p) = k if p is the k-th prime.
 A003986	Know2	_V1.or(_V2)
-A003987	#nyd		Table of n XOR m (or Nim-sum of n and m) read by antidiagonals with m>=0, n>=0.
 A003987	Know2	_V1.xor(_V2)
 A004198	Know2	_V1.and(_V2)
 A005117	#nyd	Squarefree numbers: numbers that are not divisible by a square greater than 1.
@@ -58,7 +56,6 @@ A007095	Know1	new Z(_V1.toString(9))	new Z(Integer.toString(_V1, 9))			Numbers i
 A007318	Know2	Binomial.binomial(_V1, _V2)	Binomial.binomial(_V1, _V2)
 A007504	#nydd		Sum of the first n primes.
 A007539	#nyd		a(n) = first n-fold perfect (or n-multiperfect) number.
-A007623	#nydd		factorial base representation
 A007814	Know1	Functions.VALUATION.z(_V1, 2)		Exponent of highest power of 2 dividing n, a.k.a. the binary carry sequence, the ruler sequence, or the 2-adic valuation of n.
 A007895	#nyd		Number of terms in the Zeckendorf representation of n (write n as a sum of non-consecutive distinct Fibonacci numbers).
 A007918	#nyd	v.isProbablePrime() ? v : Puma.primeZ(Puma.primePi(v) + 1)	Least prime >= n (version 1 of the "next prime" function).
@@ -89,8 +86,6 @@ A020338	#nyd	{ String s = v.toString(); return new Z(s + s); }	Doublets: base-10
 A032742	#nyd	{ final Z[] divisors = Jaguar.factor(v).divisorsSorted(); return divisors[divisors.length - 2]; }	a(1) = 1; for n > 1, a(n) = largest proper divisor of n (that is, for n>1, maximum divisor d of n in range 1 <= d < n).
 A033879	#nydd		x
 A033999	#nydd	(((n & 1) == 1) ? Z.NEG_ONE : Z.ONE	(-1)^n
-A034444	Know1	Jaguar.factor(_V1).unitarySigma0()	usigma(n) = sum of unitary divisors of n (divisors d such that gcd(d, n/d)=1); also called UnitarySigma(n).
-A034448	Know1	Jaguar.factor(_V1).unitarySigma()	usigma(n) = sum of unitary divisors of n (divisors d such that gcd(d, n/d)=1); also called UnitarySigma(n).
 A046523	Know1	FactorUtils.leastPrimeSignature(_V1)
 A048385	#nydd		In base-10 notation replace digits of n with their squared values (Version 1).
 A048673	#nyd		Permutation of natural numbers: a(n) = (A003961(n)+1) / 2 [where A003961(n) shifts the prime factorization of n one step towards larger primes].

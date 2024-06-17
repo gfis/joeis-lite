@@ -1,0 +1,43 @@
+---- 2024-06-15 09:25:48
+A073356	lambdan	1	n -> RAD(n).gcd(SU(1, n, k -> RAD(k)))	Greatest common divisor of squarefree kernel of n and sum of squarefree kernels of numbers <= n.
+A075423	lambdan	1	n -> RAD(n).-(1)
+A076480	lambdan	1	n -> MU(RAD(n)).+(n)	mu is the Moebius-function (A008683) and rad is the squarefree kernel (A007947).
+A079709	filnum	1	1	k -> Functions.RAD.z(k).compareTo(Functions.RAD.z(k + 1)) < 0	Numbers m such that the squarefree kernel of m is less than the squarefree kernel of m+1.
+A079710	filnum	1	1	k -> Functions.RAD.z(k).compareTo(Functions.RAD.z(k + 1)) > 0	Numbers m such that the squarefree kernel of m is larger than the squarefree kernel of m+1.
+A081083	filnum	1	1	k -> Functions.RAD.z(k + 1).equals(Functions.RAD.z(k).+(1))	Numbers n such that rad(n+1)=rad(n)+1, where rad(m)=A007947(m) is the squarefree kernel of m.
+A095960	lambdan	1	n -> { final Z rad = RAD(n); return SD(n, d -> ZV(d).compareTo(rad) <  0 ? Z.ONE : Z.ZERO); }	Number of divisors of n that are less than the squarefree kernel of n.
+A226385	filnum	1	1	k -> RAD(Functions.PHI.z(k)).compareTo(Functions.PHI.z(RAD(k))) > 0	Numbers n such that rad(phi(n)) > phi(rad(n))
+A226386	filnum	1	1	k -> RAD(Functions.PHI.z(k)).compareTo(Functions.PHI.z(RAD(k))) < 0	Numbers n such that rad(phi(n)) < phi(rad(n))
+A339744	filnum	0	1	k -> Functions.RAD.z(k).^(2).compareTo(Functions.SIGMA1.z(k)) < 0		Numbers k such that rad(k)^2 < sigma(k), where rad(k) is the squarefree kernel of k (A007947) and sigma(k) is the sum of divisors of k (A000203).
+A365517	filnum	0	1	k -> Predicates.SQUARE.is(Functions.RAD.z(k).+(Functions.CORE.z(k))) 	Numbers k such that the sum of the squarefree part of k and the squarefree kernel of k is a perfect square.
+---- 2024-06-15 17:39:58
+A089655	lambdan	1	n -> (n <= 1) ? Z.ONE : ZV(n).^(2).-(1)./(RAD(ZV(n).^(2).-(1)))	For n>1 a(n)=(n^2-1)/rad(n^2-1) where rad(k) is the squarefree kernel of k; a(n)=A003557(n^2-1) - _Benoit Cloitre_, Oct 26 2004
+A110157	multrar	0	(self, n) -> self.a(Functions.RAD.i(n) - 1).+(1)	"0,1,2,3"	a(n) = a(rad(n) - 1) + 1, where rad(n) is the squarefree kernel of n, rad=A007947.
+A172253	filnum	1	1	k -> { final Z k9 = ZV(9).^(k); return Functions.RAD.z(k9.*(k9.-(1))).equals(k9.-(1).*(3)./(4)); }	Numbers k such that the squarefree kernel of 9^k*(9^k - 1) is 3*(9^k - 1)/4.
+A189918	lambdan	1	n -> ZV(n).*(n + 2).+(MU(RAD(n)).*(RAD(n))).*(PHI(n)).*(n + 2)./(24)	"0,1,5"		n>=2, with rad(n) = A007947(n) the squarefree kernel of n, mu(n)=A008683(n), and phi(n)= A000010(n).
+A276087	lambdan	0	n -> Functions.PRIMORIAL_BASE_EXP.z(Functions.PRIMORIAL_BASE_EXP.z(n))
+A324283	mulr	1	(p, e) -> Functions.PRIMORIAL_BASE_EXP.z(p.^(e))	a(p^e) = A276086(p^e)
+A165911	multrar	0	(self, n) -> Functions.RAD.z(self.a(n - 1).+(self.a(n - 2)))	"0,1,1"		radical) of a(n-1) + a(n-2), with a(0)=0 and a(1)=1.
+A280935	filnum	0	1	k -> Functions.RAD.z(k).*(Functions.SOPFR.z(k)).equals(ZV(k))	Numbers k such that k = rad(k) * sopfr(k), where rad(k) is the squarefree kernel of k and sopfr(k) the integer log of k.
+A306458	multraf	0	(self, n) -> self.s(0)./(Functions.RAD.z(self.s(0))) 	""	new A001694()	= A001694(n)/A007947(A001694(n)), the powerful numbers divided by their squarefree kernel.
+---- 2024-06-15 19:12:57
+A073180	lambdan	1	n -> { final Z rad = RAD(n); return SD(n, d -> ZV(d).compareTo(rad) <= 0 ? Z.ONE : Z.ZERO); }	Number of divisors of n which are not greater than the squarefree kernel of n.
+A073181	lambdan	1	n -> { final Z rad = RAD(n); return SD(n, d -> ZV(d).compareTo(rad) <= 0 ? ZV(d) : Z.ZERO); }	Sum of divisors of n which are not greater than the squarefree kernel of n.
+A371473	multrar	1	(self, n) -> Predicates.SQUARE_FREE.is(self.a(n - 1)) ? self.a(n - 1).+(n) : RAD(self.a(n - 1))	""	^	a(1) = 1; for n>1, if a(n-1) is squarefree, a(n) = a(n-1) + n, otherwise a(n) = squarefree kernel of a(n-1).
+A373668	holos	0	[[0],[-8,1],[0],[24,-4],[0],[-24,6],[-5],[8,-4],[-1],[0,1]]	1	0	1	exp(x / (1 - x^2)^3)
+A373680	holos	0	[[0],[-9,1],[0],[0],[18,-3],[0],[5],[-9,3],[0],[1],[0,-1]]	1	0	1	exp(x / (1 - x^3)^2)
+A373681	holos	0	[[0],[-4,1],[0],[8,-3],[3],[-4,3],[1],[0,-1]]	1	0	1	exp(x / (1 - x^2)^2) / (1 - x^2)
+A373682	holos	0	[[0],[-6,1],[0],[18,-4],[0],[-18,6],[-5],[6,-4],[-1],[0,1]]	1	0	1	exp(x / (1 - x^2)^3) / (1 - x^2)
+A373683	holos	0	[[0],[-2,1],[-1],[2,-2],[-1],[0,1]]	1	0	1	exp(x / (1 - x^2)) / (1 - x^2)
+A373684	holos	0	[[0],[-3,1],[0],[-2],[3,-2],[0],[-1],[0,1]]	1	0	1	exp(x / (1 - x^3)) / (1 - x^3)
+A373685	holos	0	[[0],[-6,1],[0],[0],[12,-3],[0],[5],[-6,3],[0],[1],[0,-1]]	1	0	1	exp(x / (1 - x^3)^2) / (1 - x^3)
+A373667	holos	0	[[0],[768,-112,4],[0],[-4200,678,-27],[0],[9492,-1715,77],[0],[-11340,2324,-119],[0],[7624,-1785,105],[0],[-2640,742,-49],[0],[432,-133,7],[0],[-11,0,3],[0],[0,1,-1]]	1,1,1,16	0	1	exp(x / (1 - x^2)^(5/2))
+A279935	filnum	0	1	k -> { final Z m = Functions.RAD.z(k).+(Functions.SOPF.z(k)).+(k); return ZV(k).equals(m.-(Functions.SOPF.z(m)).-(Functions.RAD.z(m))); }	Numbers n such that n + sopf(n) + rad(n) = m and m - sopf(m) - rad(m) = n, where sopf(n) is the sum of the distinct primes dividing n and rad(n) is the squarefree kernel of n.
+A328316	multrar	0	(self, n) -> Functions.PRIMORIAL_BASE_EXP.z(self.a(n - 1))	"0"		a(0) = 0; and for n > 0, a(n) = A276086(a(n-1)).
+A137917	eultra1	0	new PrependSequence(0, new A001429(), 0, 0)
+A368834	eultra1	0	new PrependSequence(0, new A005703().skip(2), 0)	 with A005703(1) = 0.
+A165628	eultra1	1	new A014377().skip(1)		Euler transform of A014377.
+A165647	eultra1	1	new A005177().skip(1)		Euler transform of A005177.
+A280936	filnum	0	1	k -> Functions.RAD.z(k).*(Functions.SOPFR.z(k)).equals(PHI(k))	Numbers k such that phi(k) = rad(k) * sopfr(k), where phi(k) is the Euler totient function of k, rad(k) the squarefree kernel of k and sopfr(k) the integer log of k.
+A081084	filnum	0	1	k -> !Predicates.SQUARE_FREE.is(k) && Functions.RAD.z(k + 1).equals(Functions.RAD.z(k).+(1))	Nonsquarefree numbers m such that rad(m+1)=rad(m)+1, where rad(m)=A007947(m) is the squarefree kernel of m.
+A369284	multraf	0	(self, n) -> self.s(0).-(self.a(n - 1))	"1,0,1,1,4"	new A004110()	Euler transform of A004108 except with a(1) = 0 and a(2) = 1.

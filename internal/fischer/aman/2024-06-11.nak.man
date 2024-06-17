@@ -1,0 +1,11 @@
+---- 2024-06-15 19:12:58
+A084538	lambdan	0	n -> Functions.LEAST_PRIMITIVE_ROOT.z(Functions.PRIME.z(n).^(2).*(2))	Least primitive root mod 2*prime(n)^2.
+A127415	lambdan	0	n -> ZV(n).+(MU(RAD(n)).*(RAD(n))).*(PHI(n)).*(2*n + 3)./(12)	"1,1,4"		n >= 2, with rad(n) the squarefree kernel of n (the largest squarefree number dividing n, see A007947), the Moebius function mu(n)=A008683(n), and the Euler totient function phi(n)= A000010(n).
+A185354	eultra1	1	new A058275().skip(1)		Euler transform of A058275.
+A306252	simtraf	0	new A033948()	(n, v) -> Functions.LEAST_PRIMITIVE_ROOT.z(n).mod(v)	Least primitive root mod A033948(n).
+A317649	filnum	0	1	n -> { final Z lpr = Functions.LEAST_PRIMITIVE_ROOT.z(n); return lpr.IPP() && !lpr.equals(Z.TWO); }	Numbers whose least primitive root is an odd prime.
+A328275	filnum	0	1	k -> Functions.RAD.z(k).^(4).equals(PHI(k))	Numbers m such that phi(m) = rad(m)^4, where phi is the Euler totient function (A000010) and rad is the squarefree kernel function (A007947).
+A358449	eultraf	0	new A122803()	Euler transform of (0, 1, -2, 4, -8, 16, ...), (cf. A122803).
+A358452	ieultra	1	new LambdaSequence(0, n -> ZV(n).IPP() ? ZV(n) : Z.ZERO)	0	1	The inverse Euler transform of p(n) = n if n is prime, otherwise 1. A089026
+A371090	mulr	0	(self, p, e) -> e == 1 ? Z.ONE : self.a(Functions.PRIMORIAL_BASE_EXP.z(e))	 Additive with a(p^1) = 1, a(p^e) = a(F276086(e)) for e > 1, .
+

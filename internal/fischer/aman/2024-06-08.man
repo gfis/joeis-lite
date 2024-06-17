@@ -1,0 +1,124 @@
+---- 2024-06-17 12:08:50
+
+
+
+
+
+
+
+ A235224	lambdan	0	n -> J061395(F276086(n))	[Number of significant digits]
+ A324350 Square array read by antidiagonals: A(x,y) = GCD(F276086(x),F276086(y))	, for x, y >= 0
+ A324889 a(1) = 1, and for n > 1, a(n) = F276086(n) * a(D064989(n))
+ A327167	lambdan	0	n -> Product_{d|F276086(n), d>1} J008578(1+J286561(n,d))		, where J286561(n,d) gives the highest exponent of d dividing n
+ A327168 Number of common divisors of n and F276086(n), with a(0) = 1
+ A328389 Maximal digit value in primorial base expansion of F276086(n): a(n) = €328114(F276086(n))
+ A328398 Maximal digit value in primorial base expansion of F276086(F276086(F276086(n)))
+ A328475	lambdan	0	n -> J111701(F276086(n))	
+ A328476	lambdan	0	n -> J276151(F276086(n))	[... and that primorial subtracted from a(n)]
+ A328569 Exponent of least prime factor in F276086(F276086(n))		, where 
+ A328578 Index of the least prime not dividing F276086(F276086(n)): a(n) = D257993(€276087(n))
+ A328580	lambdan	0	n -> J053589(F276086(n))	[Greatest primorial number which divides a(n)]
+ A328586 Even numbers n such that D257993(n) is equal to D257993(F276086(F276086(n)))		, where , and D257993 returns the index of the least prime not present in its argument
+ A328615	lambdan	0	n -> J056170(F276086(n))	[Number of digits larger than 1]
+ A328620	lambdan	0	n -> J079067(F276086(n))	[Number of nonleading zeros]
+ A328766 Number of nonleading zeros in primorial base expansion of F276086(n)
+ A328829 Index of the least significant digit > 1 in the primorial base expansion of F276086(n), 0 if no such digit exists
+ A328834 Square root of the prime factor form (F276086) of the primorial base expansion, computed for such numbers such that it is a square
+ A329029	lambdan	0	n -> J069359(F276086(n))		, where J069359(n) = n * Sum_{p|n} 1/p where p are primes dividing n
+ A329030 The least missing nonzero digit in the primorial base expansion of F276086(n)
+ A329037	lambdan	0	n -> PD(n, d -> d > 1 ? J008578(1+J286561(F276086(n),d))		, where J286561(x,d) gives the exponent of the highest power of d dividing x
+ A329041 Square array read by antidiagonals: A(n, k) = E327936(F276086(n).*(F276086(k)))
+ A329350	lambdan	0	n -> PD(n, d -> F276086(d).^(J010051(n/d)))
+ A342006	filnum	0	0	k -> the maximal prime exponent in the arithmetic derivative of F276086(k) attains the maximal exponent in F276086(k)		, where F276086 gives the prime product form of primorial base expansion of its argument
+ A342016	lambdan	0	n -> J168036(F276086(n))
+ A342016 Difference between the arithmetic derivative of F276086(n) and F276086(n) itself, which is the prime product form of primorial base expansion of n
+ A342018	filnum	0	0	k -> the arithmetic derivative of F276086(k) is divisible by at least one prime power divisor of the form p^p		, where F276086 gives the prime product form of primorial base expansion of its argument
+ A342019 Number of prime power divisors of the form p^p in the arithmetic derivative of F276086(n), the prime product form of primorial base expansion of n
+ A342026 Difference in the maximal prime exponents between the arithmetic derivative of F276086(n) and F276086(n) itself, which is the prime product form of primorial base expansion of n
+ A342456 F276086 applied to the primorial inflation of Doudna-tree
+ A345930	lambdan	0	n -> J344756(F276086(n))
+ A346469	lambdan	0	n -> J340070(F276086(n))
+ A346471	lambdan	0	n -> J344695(F276086(n))		, where J344695(x) = GCD(psi(x), sigma(x))
+ A346472	lambdan	0	n -> J011772(F276086(n))
+ A346474	lambdan	0	n -> J342414(F276086(n))
+ A346475	lambdan	0	n -> J342919(F276086(n))
+ A347126	lambdan	0	n -> J347129(F276086(n))
+ A347232	lambdan	0	n -> J346485(F276086(n))		, where J346485 is Möbius transform of J342001
+ A347389 Dirichlet convolution of F003415(n) and F003415(F276086(n))		, where F003415(n) is the arithmetic derivative of n, and F276086(n) gives the prime product form of primorial base expansion of n
+ A347396	lambdan	0	n -> J347395(F276086(n))		, where J347395 is Dirichlet convolution of Liouvilles lambda with J342001
+ A347962	lambdan	0	n -> J347961(F276086(n))		, where J347961 is Dirichlet convolution of J342001 with itself
+ A348500	lambdan	0	n -> J348494(F276086(n))		, where J348494(n) = J348492(n) / D003557(n)
+ A348501	lambdan	0	n -> J348496(F276086(n))		, where J348496(n) = J348495(n) / D003557(n)
+ A348502	lambdan	0	n -> J348498(F276086(n))
+ A348950	lambdan	0	n -> J348507(F276086(n))		, where J348507(n) = E003959(n) - n, E003959 is multiplicative with a(p^e) = (p+1)^e, and F276086 gives the prime product form of primorial base expansion of n
+ A348997	lambdan	0	n -> J348733(F276086(n))		, where J348733(n) = GCD(E003959(n), F034448(n)), and F276086 gives the prime product form of primorial base expansion of n
+ A348998	lambdan	0	n -> J348928(F276086(n))		, where J348928(n) = GCD(n, E003958(n)), and E003958 is multiplicative with a(p^e) = (p-1)^e, and F276086 gives the prime product form of primorial base expansion of n
+ A348999	lambdan	0	n -> J348929(F276086(n))		, where J348929(n) = GCD(n, E003959(n)), E003959 is multiplicative with a(p^e) = (p+1)^e, and F276086 gives the prime product form of primorial base expansion of n
+ A349000	lambdan	0	n -> J323166(F276086(n))		, where J323166(n) = GCD(n, usigma(n)), usigma (F034448) is multiplicative with a(p^e) = (p^e)+1, and F276086 gives the prime product form of primorial base expansion of n
+ A351566	lambdan	0	n -> J119288(F276086(n))
+ A351567	lambdan	0	n -> J351563(F276086(n))
+ A353516	lambdan	0	n -> J353490(F276086(n))
+ A353517	lambdan	0	n ->  The largest proper divisor of F276086(2*n) reduced modulo 4
+ A353575 Primepi based arithmetic derivative applied to the prime shadow of the primorial base exp-function: a(n) = €258851(D181819(F276086(n)))
+ A353577	lambdan	0	n -> J342001(D181819(F276086(n)))
+ A353630	lambdan	0	n -> J353493(F276086(n))
+ A354348 Dirichlet inverse of function f(1) = 1, f(n) = GCD(F003415(n), F276086(n)) for n > 1
+ A355822	filnum	0	0	k -> D003961(k) and F276086(k) share a prime factor		, where D003961 is fully multiplicative with a(p) = nextprime(p), and F276086 is primorial base exp-function
+ A358222 Composite numbers k such that F003415(k) divides F276086(k), 
+ A358764	lambdan	0	n -> J060681(F276086(n))
+ A359589 Dirichlet inverse of function f(n) = (-1 + GCD(F003415(n), F276086(n))) 
+ A359603 Dirichlet inverse of function f(n) = 1+(F003415(n)*F276086(n)) 
+ A369653	lambdan	0	n -> J359430(F276086(n))
+ A370130	lambdan	0	n -> J369669(F276086(n))		, where J369669 is the greatest common divisor of the first and second arithmetic derivative of n, 
+ A370131	lambdan	0	n -> J068346(F276086(n))		, where J068346 is the second arithmetic derivative, 
+ A371085 Nonsquarefree numbers k such that F003415(k) divides F276086(k), 
+ A371086 Nonsquarefree numbers k such that D003557(k) divides F276086(k)		, where D003557(k) is k divided by its largest squarefree divisor, 
+ A373488 Nonprime natural numbers k such that F276085(k) is a multiple of F003415(k)
+#A360123	lambdan	0	n -> D347389(n).and(ZV(1))		, where €347389 is Dirichlet convolution of F003415(n) with F003415(F276086(n))
+A319708	lambdan	0	n -> PD(n, d -> d < n ? F276086(d) : ZV(0))
+A323878	lambdan	0	n -> SD(n, d -> IV[F276086(d).mod(n) == 0])
+A324581	simtraf	0	new A002182()	v -> F276086(v)
+A324582	simtraf	0	new A002182()	v -> v.*(F276086(v))
+A324895	lambdan	0	n -> F276086(n)./(D053669(n))
+A328233	filnum	0	0	k -> F003415(F276086(k)).IPP()
+A328241	filnum	0	0	k -> !Predicates.SQUARE_FREE.is(F003415(F276086(k)))	 is not a squarefree number
+A328242	filnum	0	0	k -> Predicates.SQUARE_FREE.is(F003415(F276086(k)))	 is a squarefree number, 
+A328249	filnum	0	0	k -> ARD(ARD(ARD(F276086(k)))).IPP()
+A328387	filnum	0	0	k -> F276086(k).mod(k) == 0
+A328404	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(n))
+A328405	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(F276086(n)))
+A328406	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(F276086(F276086(n))))
+A328575	simtraf	0	new A276151()	(n, v) -> (n == 0) ? ZV(1) : D003557(F276086(v))	For n >= 1, 
+A328585	filnum	0	0	k -> D257993(F276086(F276086(k))).compareTo(D257993(k)) == 0
+A328587	filnum	0	0	k -> D257993(F276086(F276086(k))).compareTo(D257993(k)) < 0
+A328588	filnum	0	0	k -> D257993(F276086(F276086(k))).compareTo(D257993(k)) >= 0
+A328589	filnum	0	0	k -> k % 6 == 0 && D257993(F276086(F276086(k))).compareTo(D257993(k)) > 0
+A328762	filnum	0	0	k -> { final Z x = D257993(F276086(F276086(k))); return ZV(2).compareTo(x) < 0 && x.compareTo(D257993(k)) < 0; }
+A328835	lambdan	0	n -> D181819(F276086(n))
+A328837	filnum	0	0	k -> Predicates.SQUARE_FREE.is(F276086(F276086(F276086(k))))
+A351458	filnum	0	0	k -> GCD(Functions.SIGMA1.z(k), F276086(k)).*(k).equals(Functions.SIGMA1.z(k).*(GCD(k, F276086(k))))
+A358221	filnum	0	1	k -> F276086(k).mod(F003415(k)).isZero()
+A358228	filnum	0	1	k -> F276086(k).mod(F003415(k)).testBit(0)	 is an odd number 
+A358229	filnum	0	1	k -> !F276086(k).mod(F003415(k)).testBit(0)	 is an even number 
+A358231	filnum	0	1	k -> F276086(k).mod(k) == 1	 (mod k) 
+A358232	filnum	0	0	k -> GCD(F276086(k), F003415(k)).equals(ZV(1))
+A358765	lambdan	0	n -> F003415(n).*(F276086(n).modZ(60))
+A369034	lambdan	0	n -> E369004(F276086(n))
+A369640	simtraf	0	new A010051()	(n, v) -> n <= 1 ? ZV(1) : (ZV(1).-(v)).*(D008966(F276086(F003415(n))))
+A369650	filnum	0	0	k -> F003415(k).compareTo(F276085(k)) == 0
+A369665	lambdan	0	n -> IV[n > 1 && F276085(F003415(n)).equals(ZV(n % 4))]
+A369666	filnum	0	0	k -> k > 1 && F276085(F003415(k)).mod(4) == k
+A369958	filnum	0	1	k -> F003415(k)./(GCD(k, F003415(k))).compareTo(F276086(k)./(GCD(k, F276086(k)))) >= 0
+A369959	filnum	0	1	k -> F003415(k).compareTo(F276086(k)) >= 0 && GCD(k, F003415(k)).equals(GCD(k, F276086(k))) 
+A369960	filnum	0	0	k -> F003415(k).compareTo(F276086(k)) >= 0 && GCD(k, F003415(k)).compareTo(GCD(k, F276086(k))) > 0 && GCD(k, F276086(k)).compareTo(ZV(1)) > 1 
+A370114	filnum	0	0	k -> F276086(F003415(k)).mod(k) == 0
+A370115	filnum	0	0	k -> ZV(k).mod(F276086(F003415(k))).isZero()
+A370124	lambdan	0	n -> IV[F020639(F003415(n)).equals(F020639(F276086(n)))]	 For n > 1, 
+A370127	filnum	0	0	k -> { final int s = Functions.BIG_OMEGA.i(k); return(F276086(k)./(s)).^(s).compareTo(ZV(k).^(s - 1)) <  0; }
+A370128	filnum	0	0	k -> { final int s = Functions.BIG_OMEGA.i(k); return(F276086(k)./(s)).^(s).compareTo(ZV(k).^(s - 1)) >= 0; }
+A373259	filnum	0	0	k -> F003415(k)./(GCD(k,F003415(k))).mod(4) == 0 && F276085(k).mod(4) == 0
+A373263	lambdan	0	n -> n == 1 ? ZV(0) : IV[F276085(n).mod(3) == 2]
+A373484	filter	0	new A083345()	(k, v) -> v.mod(3) == 0 && F276085(k).mod(3) == 0
+A373486	lambdan	0	n -> IV[F276085(n).mod(F003415(n)).isZero()]	
+A373487	filnum	0	1	k -> F276085(k).mod(F003415(k)).isZero()
+A373490	filnum	0	1	k -> F003415(k).mod(F276085(k)).isZero()

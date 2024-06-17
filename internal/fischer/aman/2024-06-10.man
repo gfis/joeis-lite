@@ -1,46 +1,480 @@
----- 2024-06-13 23:57:24
-%N does not work A362718	holos	0	[[0],[1],[0],[4,-2],[0],[0,-1,1]]	1,0,-2	Expansion of e.g.f. cos(x)*exp(x^2/2)	(n+1)*(n+2)*a(n+2)+a(n-2)-2*n*a(n) = 0
+---- 2024-06-17 23:03:13
 
-%N A373489	multraf	0	(self, n) -> self.s(1).mod(self.s(0)).isZero() ? Z.ONE : Z.ZERO	""	new A276085(), new A003415()	a(n) = 1 if A003415(n) is a multiple of €276085(n), otherwise 0, where A003415 is the arithmetic derivative and €276085 is the primorial base log-function.
-%N A373483	multraf	0	(self, n) -> self.s(0).mod(3) == 0 && self.s(1).mod(3) == 0 ? Z.ONE : Z.ZERO	""	new A276085(), new A083345()	a(n) = 1 if A083345(n) and €276085(n) are both multiples of 3, otherwise 0, where €276085 is fully additive with a(p) = p#/p, and A083345 is the numerator of the fully additive function with a(p) = 1/p.
-%N A373486	multraf	0	(self, n) -> self.s(0).mod(self.s(1)).isZero() ? Z.ONE : Z.ZERO	""	new A276085(), new A003415()	a(n) = 1 if €276085(n) is a multiple of A003415(n), otherwise 0, where A003415 is the arithmetic derivative and €276085 is the primorial base log-function.
-%N A373485	multraf	0	(self, n) -> self.s(0).gcd(self.s(1))	""	new A083345(), new A276085()	a(n) = gcd(A083345(n), €276085(n)), where €276085 is fully additive with a(p) = p#/p, and A083345 is the numerator of the fully additive function with a(p) = 1/p.
-%N A373479	filtpos	1	1	new A373477()	v -> v.equals(Z.ONE)	Numbers k such that A001414(k) and A003415(k) are both multiples of 3, but A083345(k) is not, where A001414 is the sum of prime factors with repetition, A003415 is the arithmetic derivative, and A083345(n) = A003415(n)/gcd(n,A003415(n)).
-%N A373482	filtpos	1	1	new A373481()	v -> v.equals(Z.ONE)	Numbers k for which A003415(k) is a multiple of A001414(k), where A003415 is the arithmetic derivative, and A001414 is the sum of prime factors with multiplicity.
-%N A373484	filtpos	1	1	new A373483()	v -> v.equals(Z.ONE)	Numbers k such that A083345(k) and €276085(k) are both multiples of 3, where €276085 is fully additive with a(p) = p#/p, and A083345 is the numerator of the fully additive function with a(p) = 1/p.
-%N A373488	filtpos	1	1	new A373486()	v -> v.equals(Z.ONE)	Nonprime natural numbers k such that €276085(k) is a multiple of A003415(k), where A003415 is the arithmetic derivative and €276085 is the primorial base log-function.
-%N A373487	filtpos	1	1	new A373486()	v -> v.equals(Z.ONE)	Numbers k such that €276085(k) is a multiple of A003415(k), where A003415 is the arithmetic derivative and €276085 is the primorial base log-function.
-
-#A106828	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(j, n - 2*k).*(Functions.EULERIAN2.z(n - k, j)))	T(n, k) = Sum_{j=0..n-k} binomial(j, n-2*k)*E2(n-k, j), where E2 are the second-order Eulerian numbers (A008517). - _Peter Luschny_, Jan 13 2016
-#A112008	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 3, n)	Fourth diagonal of second-order Eulerian triangle A008517. Fourth column (m=3) of triangle A112007.
-#A112485	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 4, n)	Fifth diagonal of second-order Eulerian triangle A008517. Fifth column (m=4) of triangle A112007.
-#A112499	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n, 4)	Fourth column of second-order Eulerian triangle A008517 divided by 4.
-#A156141	trilambn	0	1	1	(n, k) -> n == 0 ? Z.TWO : ((k == 0 || k == n) ? Z.ONE : Functions.EULERIAN2.z(n, k + 1).+(Functions.EULERIAN2.z(n, n - k + 1)))	T(n,k)= A008517(n,k+1)+A008517(n,n+1-k), n>1, 0<k<n.
-#A156529	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 1, k + 1).*(Functions.EULERIAN2.z(n + 1, n - k + 1))	Triangle, T(n, k) = A008517(n+1, k+1)*A008517(n+1, n-k+1), read by rows.
-
+A082879	lambdan	0	n -> F000720(F000142(F000040(n)))		a(n)=F000720[F000142[F000040(n)]]
+A084237	lambdan	0	n -> F002321(ZV(10).^(n))		a(n) = F002321(10^n).
+A089670	lambdan	0	n -> SU(0, n, k -> ZV(k).^(2).*(SU(0, k, j -> BI(n, j).^(3))))	Sum_{k=0..n} k^t *(Sum_{j=0..k} BI(n,j))^3.
+A089671	lambdan	0	n -> SU(0, n, k -> ZV(k).^(3).*(SU(0, k, j -> BI(n, j).^(3))))	Sum_{k=0..n} k^t *(Sum_{j=0..k} BI(n,j))^3.
+A089672	lambdan	0	n -> SU(0, n, k -> ZV(k).^(4).*(SU(0, k, j -> BI(n, j).^(3))))	Sum_{k=0..n} k^t *(Sum_{j=0..k} BI(n,j))^3.
 A093046	simtraf	0	new A058328()	v -> Functions.PRIME.z(v)
+A093429	lambdan	0	n -> F001221(F002110(n)).+(F002110(2*n)./(F002110(n)))
 A095124	simtraf	0	new A001146()	v -> Functions.PRIME.z(v)
+A095900	lambdan	0	n -> M004001(ZV(10).^(n))		a(n) = M004001(10^n).
 A107482	simtraf	0	new A007539()	v -> Functions.BIG_OMEGA.z(v)
 A108504	dirtraf	0	new A038548()	new A025487()
 A112884	simtraf	0	new A037293().skip(1)	v -> Functions.DIGIT_LENGTH.z(10, v)
 A120355	dirtraf	0	new A002034()	new A007677()
+A121886	lambdan	0	n -> SU(0, n, k -> S1(n, k).abs().*(E122399(k)))./(FA(n - 1))		a(n) = (1/n!)* Sum_{k=0..n} |S1(n,k)|*E122399(k).
+A122400	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(E122399(k)))./(FA(n - 1))		a(n) = (1/n!)* Sum_{k=0..n} S1(n,k)*E122399(k).
+A122419	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(E122418(k)))./(FA(n - 1))		a(n) = (1/n!)*Sum_{k=0..n} S1(n,k)*E122418(k).
+A122420	lambdan	0	n -> SU(0, n, k -> S1(n, k).abs().*(E122418(k)))./(FA(n - 1))	. G.f.: A(x/(1-x)) 		a(n) = (1/n!)*Sum_{k=0..n} |S1(n,k)|*E122418(k). G.f.: A(x/(1-x)) where A(x) is g.f. for €122419.
 A139770	dirtraf	0	new A061799()	new A000005()
+A175387	lambdan	0	n -> M004001(n).-(M004001(n)./(2))		a(n) = M004001(n)-floor(M004001(n)/2).
 A177357	simtraf	0	new A086801()	v -> Functions.DIGIT_LENGTH.z(10, v)
 A187043	dirtraf	0	new A064547()	new A007357()
+A192935	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(E108459(k)))./(FA(n - 1))		a(n) = (1/n!)* Sum_{k=0..n} S1(n,k)*E108459(k)
+A201740	lambdan	0	n -> F002321(ZV(n).^(n))		a(n) = F002321(n^n).
 A225017	dirtraf	0	new A132740()	new A055566()
 A232094	dirtraf	0	new A060130()	new A000217()
+A233468	lambdan	0	n -> D010888(F000040(n + 1).-(D010888(F000040(n))))
+A239668	lambdan	0	n -> F000203(ZV(n).^(2)).-(F008472(ZV(n).^(2)).-(1))
+A248735	lambdan	0	n -> F055642(E248734(n))		a(n) = F055642(E248734(n)). - _R. J. Mathar_, Nov 17 2014
 A248735	simtraf	0	new A248734()	v -> Functions.DIGIT_LENGTH.z(10, v)
 A253473	simtraf	0	new A073256()	(n, v) -> ZV(n).-(Functions.SIGMA0.z(v))
 A262902	simtraf	0	new A045765()	(n, v) -> ZV(n).-(Functions.SIGMA0.z(v))
 A264968	dirtraf	0	new A246200()	new A263272()
+A268837	lambdan	0	n -> SU(0, n, k -> F003188(F006068(n).+(F006068(n - k))))		a(n) = Sum_{k=0..n} F003188(F006068(n)+F006068(n-k)).
+A275380	lambdan	0	n -> F001222(E078304(n))		a(n) = F001222(E078304(n)) for n > 0. - _Felix Fröhlich_, Jul 25 2016
 A277802	dirtraf	0	new A048798()	new A004709()
 A279904	simtraf	0	new A058781()	v -> Functions.PRIME.z(v)
 A281489	dirtraf	0	new A000700()	new A000290()
-A293958	dirtraf	0	new A078701()	new A069894()
+A283425	lambdan	0	n -> F002110(n).-(F000040(n+1)).*(Functions.PREV_PRIME.z(F002110(n))./(F000040(n + 1)))	forn>=
+A283468	lambdan	0	n -> (n <= 2) ? ZV(1) : M004001(M004001(n - 1)).-(M004001(ZV(n).-(M004001(n - 1))))	, a(1) = a(2) = 1		a(n) = M004001(M004001(n-1)) - M004001(n-M004001(n-1)), a(1) = a(2) = 1.
+A283469	lambdan	0	n -> (n <= 2) ? ZV(1) : M004001(M004001(n - 1)).or(M004001(ZV(n).-(M004001(n - 1))))	, a(1) = a(2) = 1		a(n) = M004001(M004001(n-1)) OR M004001(n-M004001(n-1)), a(1) = a(2) = 1.
+A283470	lambdan	0	n -> (n <= 2) ? ZV(1) : M004001(M004001(n - 1)).xor(M004001(ZV(n).-(M004001(n - 1))))	, a(1) = a(2) = 1		a(n) = M004001(M004001(n-1)) XOR M004001(n-M004001(n-1)), a(1) = a(2) = 1.
+A283472	lambdan	0	n -> (n <= 2) ? ZV(0) : M004001(M004001(n - 1)).and(M004001(ZV(n).-(M004001(n - 1))))	, a(1) = a(2) = 0		a(n) = M004001(M004001(n-1)) AND M004001(n-M004001(n-1)), a(1) = a(2) = 0.
+A293221	lambdan	0	n -> PD(n, d -> (d == n) ? ZV(1) : D019565(D289813(d)))		a(n) = Product_{d|n, d<n} D019565(D289813(d)).
+A293222	lambdan	0	n -> PD(n, d -> (d == n) ? ZV(1) : D019565(D289814(d)))		a(n) = Product_{d|n, d<n} D019565(D289814(d)).
+A293958	dirtraf	0	new A078701()	new A069894().skip(1)
 A301630	dirtraf	0	new A061670()	new A000040()
+A308949	lambdan	0	n -> (n == 2) ? ZV(1) : M008555(n)./(GCD(M008555(n), n))
+A318834	lambdan	0	n -> PD(n, d -> (d == n) ? ZV(1) : D019565(F000010(d)))		a(n) = Product_{d|n, d<n} D019565(F000010(d)).
 A324201	dirtraf	0	new A062457()	new A000043()
+A329776	lambdan	0	n -> RU(0, n - 2, k -> new Q(FA(2*n + 1).*(FA(2*n - k - 4)).*(4), FA(k).*(FA(n - k  -2)).*(2*n - k + 1)))./(FA(n - 1)).num()		a(n) = (1/n!)*Sum_{i=0..n-2} 4*(2*n+1)!*(2*n-i-4)!/(i!*(n-i-2)!*(2*n-i+1)).
+A342959	lambdan	0	n -> M005206(ZV(10).^(n))		a(n) = M005206(10^n). - _Rémy Sigrist_, Apr 05 2021
+A345876	lambdan	0	n -> SU(0, n, k -> BI(2*n, n-k).*(ZV(k).^(n)))		a(n) = Sum_{k=0..n} BI(2*n, n-k) * k^n.
+A367330	lambdan	0	n -> QV(27).^(n).*(RU(0, n, k -> BI(new Q(-1, 3), k).^(2).*(Z_1(k)))).num()	a(n) = 27^n * Sum_{k=0..n} (-1)^k*BI(-1/3, k)^2.
+A367331	lambdan	0	n -> QV(27).^(n).*(RU(0, n, k -> BI(new Q(-1, 3), k).^(2).*(Z_1(k)))).num()	a(n) = 27^n * Sum_{k=0..n} (-1)^k*BI(1/3, k)^2.
+A367332	lambdan	0	n -> QV(27).^(n).*(RU(0, n, k -> BI(1/3, k)^2		a(n) = 27^n * Sum_{k=0..n} BI(1/3, k)^2.
+A367333	lambdan	0	n -> QV(27).^(n).*(RU(0, n, k -> BI(-1/3, k)^2		a(n) = 27^n * Sum_{k=0..n} BI(-1/3, k)^2.
 A372507	simtraf	0	new A067381()	v -> Functions.PRIME_PI.z(v)
 A373112	simtraf	0	new A000149().skip(1)	v -> Functions.DIGIT_LENGTH.z(10, v)
+#A123070	lambdan	0	n -> M005206(n) + e(n)		a(n) = M005206(n) + e(n), where e(n) is 0 or 1 depending of the shape of the decomposition of n as sums of Fibonacci numbers via Zeckendorf's theorem. (End)
+#A082401	lambdan	0	n -> M005374(n)-floor(r*n) 		a(n)=M005374(n)-floor(r*n) where r is the positive root of x^3+x-1=0.
+#A133987	lambdan	0	n -> M005704( (3^n + (-1)^n - 2)/4 )		a(n) = M005704( (3^n + (-1)^n - 2)/4 ), where M005704(n) = number of partitions of 3n into powers of 3.
+#A132843	lambdan	0	n -> M005704( (5*3^n + (-1)^n - 6)/8 )		a(n) = M005704( (5*3^n + (-1)^n - 6)/8 ).
+#A076895	lambdan	0	n -> M050292(n-1) + (1+(1-2*(BI(n)-F(n)))*(-1)^F(n))/2 		a(n) = M050292(n-1) + (1+(1-2*(C(n)-F(n)))*(-1)^F(n))/2 where C(n) = ceiling(log_2(n)); F(n) = floor(log_2(n)) and M050292(n) (with M050292(0)=0) is the maximum cardinality of a double-free subset of {1, 2, ..., n}. So using Wang's asymptotic formula for M050292, a(n) = (2/3)*n + O(log_4(n)). Series expansion: (1/(x-1)) * ( 1/(x-1) + Sum_{i>=1} (-1)^i*( x^(2^i)/(x^(2^i)-1) - x^(2^(i-1)) ). - Antonio G. Astudillo (afg_astudillo(AT)hotmail.com), Feb 17 2003
+#A307756	lambdan	0	n -> SU(0, n, k -> BI(n,k)*E000009(k)*E000009(n-k)		a(n) = Sum_{k=0..n} BI(n,k)*E000009(k)*E000009(n-k).
+#A307754	lambdan	0	n -> SU(0, n, k -> BI(n,k)*F000041(k)*E000009(n-k)		a(n) = Sum_{k=0..n} BI(n,k)*F000041(k)*E000009(n-k).
+#A307755	lambdan	0	n -> SU(0, n, k -> BI(n,k)*F000041(k)*F000041(n-k)		a(n) = Sum_{k=0..n} BI(n,k)*F000041(k)*F000041(n-k).
+#A087152	lambdan	0	n -> SU(0, n, k -> S1(n, k)*k!*Catalan(k)		a(n) = Sum_{k=0..n} S1(n, k)*k!*Catalan(k).
+#A298905	lambdan	0	n -> SU(0, n, k -> S1(n,k)*E000009(k)*k!		a(n) = Sum_{k=0..n} S1(n,k)*E000009(k)*k!.
+#A306042	lambdan	0	n -> SU(0, n, k -> S1(n,k)*F000041(k)*k!		a(n) = Sum_{k=0..n} S1(n,k)*F000041(k)*k!.
+#A134980	lambdan	0	n -> SU(0, n, k -> S1(n,k)*F000110(n+k)		a(n) = Sum_{k=0..n} S1(n,k)*F000110(n+k). - _Vladeta Jovovic_, Nov 08 2009
+#A306040	lambdan	0	n -> SU(0, n, k -> S1(n,k)*M007837(k)		a(n) = Sum_{k=0..n} S1(n,k)*M007837(k).
+#A307363	lambdan	0	n -> SU(0, n, k -> S1(n,k)*k!*Bell(k)		a(n) = Sum_{k=0..n} S1(n,k)*k!*Bell(k).
+#A192558	lambdan	0	n -> SU(0, n, k -> S1(n,k)*S1(n+1,k+1)*k!		a(n) = Sum_{k=0..n} S1(n,k)*S1(n+1,k+1)*k!.
+#A316146	lambdan	0	n -> SU(0, n, k -> S2(n,k) * E000009(k) * k^k		a(n) = Sum_{k=0..n} S2(n,k) * E000009(k) * k^k.
+#A316145	lambdan	0	n -> SU(0, n, k -> S2(n,k) * F000041(k) * k^k		a(n) = Sum_{k=0..n} S2(n,k) * F000041(k) * k^k.
+#A307362	lambdan	0	n -> SU(0, n, k -> S2(n,k)*k!*Bell(k)		a(n) = Sum_{k=0..n} S2(n,k)*k!*Bell(k).
+#A347041	lambdan	0	n -> SU(0, n, k -> S2(n,k)*pi(k)		a(n) = Sum_{k=0..n} S2(n,k)*pi(k).
+#A137736	lambdan	0	n -> Bell(n(n-1)/2) = F000110(n(n-1)/2)		a(n) = Bell(n(n-1)/2) = F000110(n(n-1)/2)
+#A198481	lambdan	0	n -> D000188(E134367(2*n-1))		a(n) = D000188(E134367(2*n-1)). - _R. J. Mathar_, Oct 25 2011
+#A191402	lambdan	0	n -> D000201(n) + D000201(n+1)		a(n) = D000201(n) + D000201(n+1).
+#A191403	lambdan	0	n -> D000201(n) + D000201(n+2)		a(n) = D000201(n) + D000201(n+2).
+#A191404	lambdan	0	n -> D000201(n) + D000201(n+3)		a(n) = D000201(n) + D000201(n+3).
+#A076716	lambdan	0	n -> D001055(n!)		a(n) = D001055(n!).
+#A100375	lambdan	0	n -> D001223(n) / D006519(D001223(n))		a(n) = D001223(n) / D006519(D001223(n)).
+#A309530	lambdan	0	n -> D001511(E051027(D000079(n)))		a(n) = D001511(E051027(D000079(n))).
+#A183037	lambdan	0	n -> D001511(n)*2^D001511(n) 		a(n) = D001511(n)*2^D001511(n) where D001511(n) equals the 2-adic valuation of 2n.
+#A252750	lambdan	0	n -> D003961(D005940(n+1)) - 2 * D005940(n+1)		a(n) = D003961(D005940(n+1)) - 2 * D005940(n+1).
+#A252750	lambdan	0	n -> D003961(D005940(n+1)) - 2 * D005940(n+1)		a(n) = D003961(D005940(n+1)) - 2 * D005940(n+1).
+#A333267	lambdan	0	n -> D005361(n) * Product(p|n, p prime) a(pi(p))		a(n) = D005361(n) * Product_{p|n, p prime} a(pi(p)).
+#A286298	lambdan	0	n -> D005811(n) + D000523(n)		a(n) = D005811(n) + D000523(n) for n >= 1. - _Karyn McLellan_, Aug 16 2018
+#A332448	lambdan	0	n -> D007814(M087808(sigma(n)))		a(n) = D007814(M087808(sigma(n))).
+#A324394	lambdan	0	n -> D009194(D005940(1+n))		a(n) = D009194(D005940(1+n)), where D005940 is the Doudna sequence and D009194(n) = GCD(n,sigma(n)).
+#A265574	lambdan	0	n -> D014963(n+1)		a(n) = D014963(n+1) for n>1. (End)
+#A109163	lambdan	0	n -> D019565(n-th prime)		a(n) = D019565(n-th prime).
+#A332462	lambdan	0	n -> D019565(D156552(n))		a(n) = D019565(D156552(n)).
+#A086784	lambdan	0	n -> D023416(n) - D007814(n) 	n>= 1	a(n) = D023416(n) - D007814(n) for n>0.
+#A080799	lambdan	0	n -> D023416(n+1) + floor(log2(n+1)) + 4		a(n) = D023416(n+1) + floor(log_2(n+1)) + 4. - _Ralf Stephan_, Mar 03 2004
+#A324055	lambdan	0	n -> D033879(D005940(1+n))		a(n) = D033879(D005940(1+n)).
+#A348750	lambdan	0	n -> D064989(D064989(sigma(D003961(D003961(n)))))		a(n) = D064989(D064989(sigma(D003961(D003961(n))))), where D003961 shifts the prime factorization of n one step towards larger primes, and D064989 shifts it back towards smaller primes.
+#A354196	lambdan	0	n -> D064989(D064989(sigma(sigma(D003961(D003961(n))))))		a(n) = D064989(D064989(sigma(sigma(D003961(D003961(n)))))), where D003961 shifts the prime factorization of n one step towards larger primes, and D064989 shifts it back towards smaller primes.
+#A354198	lambdan	0	n -> D064989(D064989(sigma(sigma(sigma(D003961(D003961(n)))))))		a(n) = D064989(D064989(sigma(sigma(sigma(D003961(D003961(n))))))), where D003961 shifts the prime factorization of n one step towards larger primes, and D064989 shifts it back towards smaller primes.
+#A266407	lambdan	0	n -> D064989(D263273((2*n)-1))		a(n) = D064989(D263273((2*n)-1)).
+#A266401	lambdan	0	n -> D064989(D263273(D003961(n)))		a(n) = D064989(D263273(D003961(n))).
+#A354195	lambdan	0	n -> D064989(E051027(D003961(n)))		a(n) = D064989(E051027(D003961(n))).
+#A354195	lambdan	0	n -> D064989(sigma(sigma(D003961(n))))		a(n) = D064989(sigma(sigma(D003961(n)))), where D003961 shifts the prime factorization one step towards larger primes, and D064989 shifts it back towards smaller primes.
+#A354197	lambdan	0	n -> D064989(sigma(sigma(sigma(D003961(n)))))		a(n) = D064989(sigma(sigma(sigma(D003961(n))))), where D003961 shifts the prime factorization one step towards larger primes, and D064989 shifts it back towards smaller primes.
+#A365456	lambdan	0	n -> D156552(2*n) / GCD(sigma(n), D156552(2*n))		a(n) = D156552(2*n) / GCD(sigma(n), D156552(2*n)).
+#A341522	lambdan	0	n -> D156552(3*D005940(1+n))		a(n) = D156552(3*D005940(1+n)).
+#A341522	lambdan	0	n -> D156552(3*D005940(1+n))		a(n) = D156552(3*D005940(1+n)).
+#A297164	lambdan	0	n -> D156552(D005940(1+n)-1)		a(n) = D156552(D005940(1+n)-1).
+#A341509	lambdan	0	n -> D156552(D014963(D005940(1+n)))		a(n) = D156552(D014963(D005940(1+n))).
+#A134193	lambdan	0	n -> D257993(D181819(n))		a(n) = D257993(D181819(n)). - _Antti Karttunen_, Jul 28 2017
+#A264987	lambdan	0	n -> D263272((2*n)+1)		a(n) = D263272((2*n)+1).
+#A339970	lambdan	0	n -> D329697(D019565((2*n))		a(n) = D329697(D019565(2n)).
+#A339970	lambdan	0	n -> D329697(D019565(2*n)) = D329697(D003961(D019565(n)))		a(n) = D329697(D019565(2*n)) = D329697(D003961(D019565(n))).
+#A143250	lambdan	0	n -> Decimal(reverse(Binary(F000045(n))))		a(n) = Decimal(reverse(Binary(F000045(n)))).
+#A365828	lambdan	0	n -> E000009((2*n) - E000009(n) + 1		a(n) = E000009(2n) - E000009(n) + 1.
+#A153253	lambdan	0	n -> E000009(n!!)		a(n)=E000009(n!!).
+#A117409	lambdan	0	n -> E000009(n-2), n>2		a(n) = E000009(n-2), n>2. - _Michael Somos_, May 28 2006
+#A340082	lambdan	0	n -> E003958(n) / GCD(n-1, E003958(n))		a(n) = E003958(n) / GCD(n-1, E003958(n)).
+#A328819	lambdan	0	n -> E010879(F000196(1000000*n))		a(n) = E010879(F000196(1000000*n)).
+#A328820	lambdan	0	n -> E010879(F000196(100000000*n))		a(n) = E010879(F000196(100000000*n)).
+#A171972	lambdan	0	n -> E022838(n^2);		a(n) = E022838(n^2);
+#A342841	lambdan	0	n -> E071778(10^n)		a(n) = E071778(10^n).
+#A182095	lambdan	0	n -> E075084(2^n) - 2,		a(n) = E075084(2^n) - 2, for n>0. - _Michel Marcus_, Sep 05 2013
+#A212653	lambdan	0	n -> E075487(n) - 1		a(n) = E075487(n) - 1.
+#A087095	lambdan	0	n -> E077503(n) - n*10^d		a(n) = E077503(n) - n*10^d, where d = n-F055642(n), F055642(n) = number of digits in n.
+#A078225	lambdan	0	n -> E078221(n+1)/E078221(n)		a(n) = E078221(n+1)/E078221(n).
+#A343193	lambdan	0	n -> E082540(10^n)		a(n) = E082540(10^n).
+#A343282	lambdan	0	n -> E082544(10^n)		a(n) = E082544(10^n). - _Chai Wah Wu_, Apr 11 2021
+#A372346	lambdan	0	n -> E094422(n - 1) + 1		a(n) = E094422(n - 1) + 1.
+#A126850	lambdan	0	n -> E107749(a(n-1))		a(n)= E107749(a(n-1)). - _R. J. Mathar_, Jun 15 2008
+#A329886	lambdan	0	n -> E108951(D005940(1+n))		a(n) = E108951(D005940(1+n)).
+#A354973	lambdan	0	n -> E110299(k) - 2^k + n + 1		a(n) = E110299(k) - 2^k + n + 1, where k = primepi(n-1) and taking E110299(0) = 0. - _Kevin Ryde_, Jun 22 2022
+#A117664	lambdan	0	n -> E111876(n-1)/n		a(n) = E111876(n-1)/n.
+#A350700	lambdan	0	n -> E145037(F000045(n)) 	n>= 1	a(n) = E145037(F000045(n)) for n >= 1.
+#A337319	lambdan	0	n -> E145037(F000265(n)) = E145037(n) + D007814(n)		a(n) = E145037(F000265(n)) = E145037(n) + D007814(n). - _Kevin Ryde_, Aug 31 2020
+#A195587	lambdan	0	n -> E163659(n^2)		a(n) = E163659(n^2), where E163659 is the logarithmic derivative of Stern's diatomic series (D002487).
+#A237649	lambdan	0	n -> E163659(n^3)		a(n) = E163659(n^3), where E163659 is the logarithmic derivative of Stern's diatomic series (D002487).
+#A363071	lambdan	0	n -> E171367(n) + E171367(n-1)		a(n) = E171367(n) + E171367(n-1).
+#A136277	lambdan	0	n -> E181591(D005940(1+n))		a(n) = E181591(D005940(1+n)). - _Antti Karttunen_, May 29 2017
+#A318316	lambdan	0	n -> E318307(D003557(n^2)) = E318307(D003557(n))*E318307(n)		a(n) = E318307(D003557(n^2)) = E318307(D003557(n))*E318307(n).
+#A366799	lambdan	0	n -> E320111(D005940(1+n))		a(n) = E320111(D005940(1+n)).
+#A339891	lambdan	0	n -> E339916(n) + F000005(n+1) - 2^(n-1) - 1 - 2*if(n = 1,1,0)		a(n) = E339916(n) + F000005(n+1) - 2^(n-1) - 1 - 2*[n=1].
+#A366872	lambdan	0	n -> F000005(8+(4*n)		a(n) = F000005(8+4n).
+#A354713	lambdan	0	n -> F000005(D000188(n^2-1))		a(n) = F000005(D000188(n^2-1)).
+#A073808	lambdan	0	n -> F000005(GCD(F000203(n), F001157(n)))		a(n) = F000005(GCD(F000203(n), F001157(n))). - _Antti Karttunen_, Nov 23 2017
+#A135085	lambdan	0	n -> F000110(2^n)		a(n) = F000110(2^n).
+#A135084	lambdan	0	n -> F000110(2^n-1)		a(n) = F000110(2^n-1).
 
-A373614	multraf	0	(self, n) -> self.s(0).^(2).*(self.s(1))	""	new A000045(), new A000108()	nyi Fpt	a(n) = Fibonacci(n)^2 * Catalan(n).	nonn,new	0..24	nyi	_Vladimir Kruchinin_
- 
+
+f3 = floor((n+1)/2), f4 = floor(n/2);
+ A215294	lambdan	0	n -> J060854(1,f3)*J060854(2,f4)*BI(1*f3+2*f4,1*f3)
+ A215288	lambdan	0	n -> J060854(2,f3)*J060854(2,f4)*BI(2*f3+2*f4,2*f3)
+ A215295	lambdan	0	n -> J060854(2,f3)*J060854(3,f4)*BI(2*f3+3*f4,2*f3
+ A215289	lambdan	0	n -> J060854(3,f3)*J060854(2,f4)*BI(3*f3+2*f4,3*f3
+ A215290	lambdan	0	n -> J060854(3,f3)*J060854(3,f4)*BI(3*f3+3*f4,3*f3
+ A215296	lambdan	0	n -> J060854(3,f3)*J060854(4,f4)*BI(3*f3+4*f4,3*f3
+ A215291	lambdan	0	n -> J060854(4,f3)*J060854(3,f4)*BI(4*f3+3*f4,4*f3
+ A072628	lambdan	0	n -> F000005(n)-J072627(n)<F000005(n)
+ A097946	lambdan	0	n -> F008683(n).*(J014197(n))	whereA008683istheMoebius(orMobius)functionmu(n)andA014197isthenumberofnumbersmwithEulerphi(m)=n
+ A101119	lambdan	0	n -> D006519(16*n)-J003484(16*n)forn>=1.a(2*n-1)=7forn>=1
+ A126289	lambdan	0	n -> F006530(n-1)*J052126(n)forn>
+ A128474	lambdan	0	n -> D007814(n)+J011371(n-3)
+ A132336	lambdan	0	n -> F000217(n)-J000539(r)wherer=floor(n^(1/5))
+ A147877	lambdan	0	n -> F000041(2*n).-(F000041(2*n-1)-J000070(n)+F000041(n)+F000041(n-1
+ A163540	lambdan	0	n -> E010873(J163538(n)+J163539(n)+abs(J163539(n))+3)
+ A163541	lambdan	0	n -> E010873(J163538(n)+J163539(n)+abs(J163538(n))+3)
+ A163900	lambdan	0	n -> D000290(abs(J059906(n)-J059252(n)))+D000290(abs(J059905(n)-J059253(n)))
+ A165783	lambdan	0	n -> F002326(n-1)+F000120(J165781(n-1))
+ A166549	lambdan	0	n -> D006577(2n-1)-J075680(n)
+ A189357	lambdan	0	n -> E000009(2*n)+J000700(n)	forn>=1,a(0)=1
+ A206771	lambdan	0	n -> F000265(n)*J001790(n-1)
+ A208449	lambdan	0	n -> D010786(n+1)/J208448(n)
+ A209816	lambdan	0	n -> F000041(2*n).-(J000070(n-1
+ A211392	lambdan	0	n -> F000005(n!)-J009490(n)
+ A213679	lambdan	0	n -> F000217(n)*F000041(n)-J014153(n-1)
+ A238488	lambdan	0	n -> F000041(n).-(J008483(n-2),n>2.[Correctedby_EricM.Schmidt_,Nov022017
+ A241139	lambdan	0	n -> E177329(n).-(J055460(n)  )
+ A245525	lambdan	0	n -> E094252(n)orA094252(n)-F000040(n),dependingonwhetherA094252(n)<=F000040(n)/2
+ A247191	lambdan	0	n -> F001222(J002025(n)*J002046(n))
+ A276107	lambdan	0	n -> F000041(n).-(J046663(n,floor(n/2)
+ A283461	lambdan	0	n -> F006530(J000225(n)/J005420(n))
+ A289249	lambdan	0	n -> F000041(n)+J275388(n-2),thesumofthen-thpartitionnumberandthe(n-2)thconvolutionofpartitionnumberswithFibonaccinumbers.E.g.,a(8)=59=F000041(8)+J275388(6)=22+37=59
+ A309574	lambdan	0	n -> F000040(n)-J030102(F000040(n))
+ A309897	lambdan	0	n -> F000041(n).-(J070289(n))
+ A323511	lambdan	0	n -> D008966(n)*J079559(D048675(n))
+ A324057	lambdan	0	n -> D005940(1+n)*J106737(n)modA324054(n)
+ A325223	lambdan	0	n -> D056239(n)-J263297(n)
+ A325224	lambdan	0	n -> D056239(n)-J325225(n)
+ A325317	lambdan	0	n -> E048250(n).xor(A162296(n))	
+ A326958	lambdan	0	n -> E073118(n)+J000070(n-1) ,n>=1
+ A328615	lambdan	0	n -> E267263(n).-(J328614(n)  )
+ A335940	lambdan	0	n -> F006530(n)-F020639(n)forncomposit
+ A340493	lambdan	0	n -> F000041(n)*J000070(n-1)-F000041(n-1)*J000070(n-2),n>=2
+ A345941	lambdan	0	n -> F006530(n)^J346087(n)=F006530(n)^min(D071178(n),J329348(n))
+ A348950	lambdan	0	n -> E348949(n).-(F276086(n))
+ A351394	lambdan	0	n -> D048105(n)+J046660(n
+ A358758	lambdan	0	n -> E353488(n).*(J358771(n)+E353489(n)*J358773(n)
+ A358759	lambdan	0	n -> E353488(n).*(J358773(n)+E353489(n)*J358771(n)
+ A365827	lambdan	0	n -> E000009(n)-J004526(n-1)	forn>0
+ A368642	lambdan	0	n -> D013928(n)+D008966(n)+J064608(n)-F034444(n)
+ A369658	lambdan	0	n -> E011655(n)*J359430(n)
+ A372442	lambdan	0	n -> F070939(n).-(J061395(n))
+ A372720	lambdan	0	n -> F000005(n)-J008479(n)
+ A373154	lambdan	0	n -> D008966(J008588(n))
+ A373155	lambdan	0	n -> E011655(n)*J035263(n)
+# A264024	lambdan	0	n -> D049559(k)./(F002322(k))	,where k=J002997(n)
+ A074292	lambdan	0	n -> J000002(3n-2)+J000002(3n-1)+J000002(3n)-
+ A333229	lambdan	0	n -> J000002(n)+J000002(n+1)
+ A210530	lambdan	0	n -> J000027(n)-J204164(n)*(2*J204164(n)-3)-1
+ A295889	lambdan	0	n -> D000035(1+F000120(n)+F000120(3*n))
+ A295892	lambdan	0	n -> D000035(1+F000120(n)+F000120(D003961(n)))
+ A295893	lambdan	0	n -> D000035(J295894(n)+J295894(2n))=J295895(n)XORA295895(2n)
+ A354035	lambdan	0	n -> D000035(n)*D000035(J083025(n))
+ A347871	lambdan	0	n -> D000035(n)XORJ347870(n)=1-[A347870(n)=D000035(n)],whereXORisthebitwise-XORand[]istheIversonbracket
+ A234011	lambdan	0	n -> J000069(n)+J000069(n+1)
+ A225751	lambdan	0	n -> J000070(n)-J000070(ceiling(n/2)-1
+ A122932	lambdan	0	n -> J000085(n)-D000079(n)forn>0
+ A157015	lambdan	0	n -> J000088(n)-J157016(n)
+ A072630	lambdan	0	n -> J000149(n)orA000149(n)-1	whicheverisodd.[From_MaxAlekseyev_,Feb062010
+ A368951	lambdan	0	n -> J000169(n)+J057500(n)forn>0
+ A199298	lambdan	0	n -> J000171(n)-J000171(n-4)forn>=4
+ A324623	lambdan	0	n -> J000183(n+3)-J004307(n+3)
+ A178537	lambdan	0	n -> J000312(2n+1)modA000079(2n+1)
+ A306363	lambdan	0	n -> J000522(k-1)*J066504(n);k=omega(n)=F001221(n)
+ A332873	lambdan	0	n -> J000670(n)+J000225(n)-2*J007052(n-1)forn>
+ A328509	lambdan	0	n -> J000670(n)-J007052(n-1)forn>
+ A118083	lambdan	0	n -> J000700(2*n)+E000009(n),n>
+ A163824	lambdan	0	n -> J000984(n)-J027649(n-1)
+ A290265	lambdan	0	n -> J001006(n)-J005773(1+floor(n/2))
+ A266579	lambdan	0	n -> J001040(n+1)*F000217(n)+J001053(n+1)
+ A333505	lambdan	0	n -> J001057(n)-J024919(n-1)
+ A111123	lambdan	0	n -> J001083(n+4)-J001083(n+3
+ A334375	lambdan	0	n -> J001101(n)/F007953(J001101(n))
+ A114160	lambdan	0	n -> J001147(n)+J004041(n-1)=2^n*GAMMA(n+1/2)/Pi^(1/2)*(1/2*Psi(n+1/2)+1/2*gamma+log(2)+
+ A283110	lambdan	0	n -> J001168(n+1)-J001168(n);thisholdsforn=0ifA001168(0)issetconventionallyto1,likeitisdoneforfreepolyominoesinA000105.Wesaythereareexactly1fixedpolyominoesoforder0
+ A114212	lambdan	0	n -> J001316(n)+J001316((n-2)/2)*(1+(-1)^n)/2
+ A367142	lambdan	0	n -> J001349(n)-J000088(n-1)forn>0
+ A131610	lambdan	0	n -> J001358(m)=J001358(i)+J001358(i+1)+J001358(i+2),forsomem,i
+ A118780	lambdan	0	n -> J001358(n)*J001358(n+3)-J001358(n+1)*J001358(n+2)
+ A206011	lambdan	0	n -> J001358(n)-F007953(J001358(n))
+ A213290	lambdan	0	n -> J001405(n)+J001405(n-2)+J057427(n)
+ A369201	lambdan	0	n -> J001434(n)-J137917(n)
+ A182600	lambdan	0	n -> J001605(n+3)-J001605(n+2)-1
+ A369314	lambdan	0	n -> J001683(n+2)-J000207(n)=(J001683(n+2)-J208355(n-1))/2=J000207(n)-J208355(n-1)
+ A229935	lambdan	0	n -> J001792(n-1)-J006128(n),n>=1
+ A139400	lambdan	0	n -> J001906(n)*J001353(n)*J004254(n)*J161498(n).(End
+ A234431	lambdan	0	n -> J001969(n)+J001969(n+1)
+ A324385	lambdan	0	n -> J002182(n)-F007917(J002182(n))
+ A301413	lambdan	0	n -> J002182(n)/F002110(J108602(n))
+ A274398	lambdan	0	n -> J002306(n)-J002770(n)*J047817(n)forn>1
+ A293899	lambdan	0	n -> J002324(n)-E010872(n)(mod3)
+ A369202	lambdan	0	n -> J002494(n)-J368834(n)
+ A370390	lambdan	0	n -> J002628(n)-J000255(n-1)
+ A118877	lambdan	0	n -> J002808(n)*J002808(n+3)-J002808(n+1)*J002808(n+2)
+ A163830	lambdan	0	n -> J002808(n)-J003963(J002808(n))
+ A344665	lambdan	0	n -> J002860(n)^2*Sum_{i=0..n}(-1)^i/i!=J344664(n)*J000166(n)
+ A182845	lambdan	0	n -> J002865(2*n-1)+J002865(2*n)
+ A093880	lambdan	0	n -> J003418(2n)/J003418(n)=J099996(n)/J003418(n)
+ A076960	lambdan	0	n -> J003604(2*n)-J003604(n),forn>=
+ A217511	lambdan	0	n -> J004012(n/8)+J005873(n),wherethe1sttermis0unless8|
+ A162706	lambdan	0	n -> J004087(j)+J004087(k)foranypair(j,k
+ A103297	lambdan	0	n -> J004137(n+1)-J004137(n)forn>=1
+ A305056	lambdan	0	n -> J004394(n)/F002110(F001221(J004394(n)))
+ A178358	lambdan	0	n -> J004427(n)*J011557(F055642(n))+n
+ A085756	lambdan	0	n -> J004526(n-1)+J001399(n-6)+J001401(n-15)+J008636(n-28)+..
+ A098006	lambdan	0	n -> J005097(n-1)-F000010(J006093(n));a(J159611(n))=
+ A243349	lambdan	0	n -> J005117(n)-J061395(J005117(n))
+ A356839	lambdan	0	n -> J005132(2*n)+J005132(2*n+1)
+ A356551	lambdan	0	n -> J005132(n+2)-J005132(n)
+ A113315	lambdan	0	n -> J005349(n)/F007953(J005349(n)
+ A182737	lambdan	0	n -> J005408(n)*E182747(n)
+ A106633	lambdan	0	n -> J005408(n)+J006218(n).(End
+ A163637	lambdan	0	n -> J005408(n-1)+J005408(n)+...+F000040(n)
+ A163636	lambdan	0	n -> J005408(n-1)+J005408(n)+...+J014076(n)
+ A184726	lambdan	0	n -> J005408(n-1)/J090368(n-1)forn>2anda(n)=0forn<=2
+ A363378	lambdan	0	n -> J005581(n-4)+J054000(n-1)+J028347(n-2)+J000027(n)forn>=6
+ A185133	lambdan	0	n -> J005638(n)-J185334(n)
+ A337564	lambdan	0	n -> J005649(n-1)*BI(2*n-1,n-1)=J005649(n-1)*J001700(n-1)forn>
+ A260417	lambdan	0	n -> J005732(2n)-J006600(2n)
+ A182984	lambdan	0	n -> J006128(n)-J092269(n),forn>=1
+ A174425	lambdan	0	n -> J006218(10^n-1)-J006218(10^(n-1)-1)
+ A129870	lambdan	0	n -> J006988(n)-J151799(J006988(n)
+ A176894	lambdan	0	n -> J007088(n)+J002276(F070939(n))
+ A138637	lambdan	0	n -> J007530(n)*J007530(n+2)*J007530(n+6)*J007530(n+8)
+ A227769	lambdan	0	n -> J007539(n+1)/J007539(n)ifn<5
+ A373614	lambdan	0	n -> J007598(n)*F000108(n)
+ A085368	lambdan	0	n -> J007676(n)+J007677(n-1)whereA007676=2,3,8,11,19,87...(numeratorstoconvergentstoe);andA007677=1,1,3,4,7,32,39,71...(denominatorsofconvergentstoe)
+ A286510	lambdan	0	n -> J008330(n)-J174407(n)forn>=2
+ A245908	lambdan	0	n -> J008334(n)+J008335(n)-1,ifn>1
+ A323300	lambdan	0	n -> J008480(n)*F000005(F001222(n))
+ A360612	lambdan	0	n -> J008793(n+1)-E071095(n
+ A344057	lambdan	0	n -> J010050(n)/F000108(n-1)forn>=
+ A117499	lambdan	0	n -> J010051(n-1)+J010051(n)+J010051(n+1)+J010051(2*n-1)+J010051(2*n)+J010051(2*n+1)
+ A237447	lambdan	0	n -> J010054(n)*F002024(n)+(1-J010054(n))*(J004736(n)-[J002260(n)>=J004736(n)]).[Thisgivestheformulaforthisentryrepresentedasaone-dimensionalsequence.HeretheexpressioninsideIversonbracketsresults1onlywhentherowindex(J002260)isgreaterthanorequaltothecolumnindex(J004736),otherwisezero.J010054isthecharacteristicfunctionforthetriangularnumbers,F000217.
+ A143223	lambdan	0	n -> J014085(n)-J060715(n)(forn>0)=[pi((n+1)^2)-pi(n^2)]-[pi(2n)-pi(n)](forn>1)
+ A364270	lambdan	0	n -> J014221(n)+J014222(n+1)
+ A361150	lambdan	0	n -> J014284(n^2)+J014284(n^2-1)
+ A157890	lambdan	0	n -> J016027(n+1)-J016027(n)-
+ A303644	lambdan	0	n -> J016754(n-1)-J000328(n)-4
+ A303743	lambdan	0	n -> J016755(n-1)-J000605(n)-6
+ A250208	lambdan	0	n -> J019320(n)/J064078(n)whilePhi_n(2)issquarefree
+ A356771	lambdan	0	n -> J022290(J003714(n)ANDA003754(n+1))(whereANDdenotesthebitwiseANDoperator)
+ A075827	lambdan	0	n -> J024167(n)/GCD(J024167(n),J024167(n-1))=J024167(n)/J334958(n-1)forn>=2.(Cf._MichaelSomos_''sresultford=J075829usingA024168.
+ A075828	lambdan	0	n -> J024168(n)/GCD(J024168(n),J024168(n-1))=J024168(n)/J334958(n)forn>=2.(Cf.MichaelSomos''sclaimford=J075829usingA024168.
+ A132666	lambdan	0	n -> J027383(m)+J027383(m+1)+1-n,wherem:=max{k|J027383(k)<n}
+ A257106	lambdan	0	n -> J027641(n)/J027642(n)-(-1)^n*n/6
+ A339843	lambdan	0	n -> J029889(n)-J029889(n-1)forn>
+ A372428	lambdan	0	n -> J029931(n)-D056239(n)
+ A258865	lambdan	0	n -> J030078(i)+J030078(j)+J030078(k)forsometriple(i,j,k)
+ A129077	lambdan	0	n -> J030430(1)+J030430(2)+...+J030430(x);aisaprimenumber
+ A129078	lambdan	0	n -> J030431(1)+J030431(2)+...+J030431(x);aisaprimenumber
+ A129079	lambdan	0	n -> J030432(1)+J030432(2)+...+J030432(x);aisaprimenumber
+ A129081	lambdan	0	n -> J030433(1)+J030433(2)+...+J030433(x);aisaprimenumber
+ A193428	lambdan	0	n -> J031287(n)+J031288(n)+J031289(n)+J031290(n)+J031291(n)+J031292(n)+J031293(n)+J031294(n)+J031295(n)+J031296(n)
+ A126287	lambdan	0	n -> J032742(n)*F020639(n-1),forn>
+ A318508	lambdan	0	n -> J032742(n)ANDA001065(n)-J032742(n),whereANDisbitwise-and(J004198)andA001065=sumofproperdivisorsandA032742=thelargestproperdivisorofn
+ A318506	lambdan	0	n -> J032742(n)ORA001065(n)-J032742(n),whereORisbitwise-or(J003986)andA001065=sumofproperdivisorsandA032742=thelargestproperdivisorofn
+ A318507	lambdan	0	n -> J032742(n)XORA001065(n)-J032742(n),whereXORisbitwise-or(J003987)andA001065=sumofproperdivisorsandA032742=thelargestproperdivisorofn
+ A304484	lambdan	0	n -> J033270(n)*J033270(2n),whereA033270countstheoddprimes
+ A185143	lambdan	0	n -> J033301(n)-J185344(n)
+ A341700	lambdan	0	n -> J034387(2*n)-J034387(n)
+ A139083	lambdan	0	n -> J034684(n)+J034684(n+1)[From_FranklinT.Adams-Watters_,Apr092009
+ A356758	lambdan	0	n -> J034886(n!)-J027869(n!)
+ A368997	lambdan	0	n -> J035263(n)*J358680(n)=J059841(E373145(n)).[Foraproof,considerA001787
+ A329384	lambdan	0	n -> J036469(n)+J036469(n-3)-J036469(n-4)-J036469(n-7)
+ A326957	lambdan	0	n -> J037032(n)+J000070(n-1),n>=1
+ A092667	lambdan	0	n -> J038034(n)-J038034(n-1
+ A244038	lambdan	0	n -> J045741(n+1)+E244039(n)[Gessel]
+ A231234	lambdan	0	n -> J046161(n-1)/D006519(n)
+ A226325	lambdan	0	n -> J046754(n)/F000005(J046754(n))^2
+ A196222	lambdan	0	n -> J047726(n)^J047726(n),whereA047726(n)isthenumberofnumberswhichcanbewrittenwithn''sdigits
+ A270708	lambdan	0	n -> J048739(n-1)modA000129(floor(n/2))
+ A246458	lambdan	0	n -> J048804(2n,n)/F007947(n+1)
+ A073840	lambdan	0	n -> J049614(2n)/J049614(n-1
+ A241025	lambdan	0	n -> J050376(n)*J050376(n+1)*J050376(n+3)
+ A241024	lambdan	0	n -> J050376(n)*J050376(n+2)*J050376(n+3)
+ A277780	lambdan	0	n -> J050985(n)*J000578(1+J048766(E008834(n))).[FormulagivenincommentsexpressedwithA-numbers]-_AnttiKarttunen_,Nov022016
+ A181121	lambdan	0	n -> J051451(n)*J025473(n+1)/(J025473(n+1)-1)
+ A140812	lambdan	0	n -> J051717(2n)+J051717(2n+1)
+ A153087	lambdan	0	n -> J051717(3n)+J051717(3n+1)+J051717(3n+2)
+ A322820	lambdan	0	n -> J052126(n)*F006530(J052126(n))
+ A095222	lambdan	0	n -> J053067(n+1)modA053067(n
+ A230773	lambdan	0	n -> J055399(n)-J010051(n)*mod(n^2,3)
+ A279353	lambdan	0	n -> J055938(n+1)XORA055938(n)
+ A081387	lambdan	0	n -> J056170(J000984(n))=F001221(J000984(n))-J081386(n)=J067434(n)-J081386(n)
+ A088737	lambdan	0	n -> J056170(n)+F001221(n)*(F001221(n)-1)/2
+ A335024	lambdan	0	n -> J056612(n+1)/J056612(n)
+ A239005	lambdan	0	n -> J057077(n)*J008280(n)byrows
+ A176559	lambdan	0	n -> J059305(n+1)-J059305(n)-
+ A286682	lambdan	0	n -> J059784(n+1)-J059784(n)^
+ A373585	lambdan	0	n -> J059841(F001222(n)-D007949(n))
+ A132431	lambdan	0	n -> J060226(n)-J062119(n)+J002378(n-1
+ A215294	lambdan	0	n -> J060854(1,f3)*J060854(2,f4)*BI(1*f3+2*f4,1*f3)
+ A215288	lambdan	0	n -> J060854(2,f3)*J060854(2,f4)*BI(2*f3+2*f4,2*f3)
+ A215295	lambdan	0	n -> J060854(2,f3)*J060854(3,f4)*BI(2*f3+3*f4,2*f3
+ A215289	lambdan	0	n -> J060854(3,f3)*J060854(2,f4)*BI(3*f3+2*f4,3*f3
+ A215290	lambdan	0	n -> J060854(3,f3)*J060854(3,f4)*BI(3*f3+3*f4,3*f3
+ A215296	lambdan	0	n -> J060854(3,f3)*J060854(4,f4)*BI(3*f3+4*f4,3*f3
+ A215291	lambdan	0	n -> J060854(4,f3)*J060854(3,f4)*BI(4*f3+3*f4,4*f3
+ A357582	lambdan	0	n -> J061300(n+1)/J061300(n)
+ A243503	lambdan	0	n -> J061395(n)*F001222(n)+J061395(n)-D056239(n)+F001222(n)-
+ A240724	lambdan	0	n -> J062391(n)+J062391(n+1)+J062391(n+2)
+ A333995	lambdan	0	n -> J062854(n)-J010051(n)forn>
+ A294194	lambdan	0	n -> J063959(n+1)-J063959(n
+ A180163	lambdan	0	n -> J063990(2*n-1)*J063990(2*n)
+ A213801	lambdan	0	n -> J064412(n+1)-J077043((2*n+1-(-1)^n)/4
+ A307959	lambdan	0	n -> J064549(J000396(n))=J000396(n)*F007947(J000396(n))
+ A358752	lambdan	0	n -> J065043(n)-E358750(n)
+ A262806	lambdan	0	n -> J065447(n)/J002275(floor((n+1)/2))
+ A194545	lambdan	0	n -> J066186(n)-E073118(n)
+ A242134	lambdan	0	n -> J066265(n)-J066265(n-1
+ A216982	lambdan	0	n -> J066417(n)-J066481(n)
+ A076277	lambdan	0	n -> J066637(n)-D001055(n)forn>
+ A179213	lambdan	0	n -> J066779(2*n)-J066779(n-1)
+ A330407	lambdan	0	n -> J067274(n)-J001650(n+1)forn>1
+ A095864	lambdan	0	n -> J068093(n+1)-J068092(n+1)
+ A076902	lambdan	0	n -> J068639(n)-J065359(n)+(-1)^floor(log_2(n))=M050292(n)-J068639(n)+(-1)^floor(log_2(n)
+ A334471	lambdan	0	n -> J069934(n)^F000005(n)/J206032(n)
+ A216650	lambdan	0	n -> J070087(n)-J070087(n-1)forn>=
+ A216651	lambdan	0	n -> J070089(n+1)-J070089(n
+ A368599	lambdan	0	n -> J070166(n,n)-J070166(n-1,n)forn>
+ A071939	lambdan	0	n -> J070324(n)-J070320(n)
+ A075308	lambdan	0	n -> J070428(n)-J070428(n-1)forn>=3
+ A355591	lambdan	0	n -> J070826(n+1)-J071148(n)
+ A333034	lambdan	0	n -> J071317(10^n)-J071317(10^(n-1))
+ A081063	lambdan	0	n -> J071521(n)+J065515(n)-D000523(n)-J062153(n)+1
+ A146167	lambdan	0	n -> J072000(n)-F000720(floor(sqrt(n)))-F000720(floor(n/2))+1
+ A217710	lambdan	0	n -> J072649(n)-J029837(n)
+ A145834	lambdan	0	n -> J075255(J002808(n))=J002808(n)-F001414(J002808(n))
+ A309321	lambdan	0	n -> J075807(n+1)-J075807(n)-
+ A078155	lambdan	0	n -> J078152(n!)=J055086(n!)-F000005(n!)
+ A309099	lambdan	0	n -> J078567(n+1)-J002378(n-1)forn>0witha(0)=
+ A079635	lambdan	0	n -> J083025(n)-J065339(n)
+ A132667	lambdan	0	n -> J087503(m)+J087503(m+1)+1-n,wherem:=max{k|J087503(k)<n}
+ A091632	lambdan	0	n -> J091630(n)-J091631(n)
+ A220479	lambdan	0	n -> J092269(n)-F000041(n)-J000070(n-2),n>=2
+ A195820	lambdan	0	n -> J092269(n)-J000070(n-1)
+ A101909	lambdan	0	n -> J099802(2*n)-J099802(n
+ A367293	lambdan	0	n -> J099920(n-1)+F000045(n)*D000201(n+1)forn>0
+ A120114	lambdan	0	n -> J099996(n+2)/J099996(n+1
+ A273190	lambdan	0	n -> J103128(n)-F000196(n-1);afterpreviousformul
+ A352772	lambdan	0	n -> J109812(n)ANDA109812(n+2)(whereANDdenotesthebitwiseANDoperator)
+ A119365	lambdan	0	n -> J119335(2n,n)-J119335(2n,n+1)
+ A158233	lambdan	0	n -> J120070(n+1)*J120070(n+2)mod9
+ A120632	lambdan	0	n -> J120633(n)+J040976(n+1)=J076274(n)-J070046(n)
+ A361989	lambdan	0	n -> J130312(n)-J194029(n)forn>0
+ A132668	lambdan	0	n -> J133628(m)+J133628(m+1)+1-n,wherem:=max{k|J133628(k)<n}
+ A132669	lambdan	0	n -> J133629(m)+J133629(m+1)+1-n,wherem:=max{k|J133629(k)<n}
+ A135506	lambdan	0	n -> J135504(n+1)/J135504(n)-1
+ A182993	lambdan	0	n -> J138135(2n+1)-J138135(2n-1)
+ A182995	lambdan	0	n -> J138880(2n+1)-J138880(2n-1)
+ A242480	lambdan	0	n -> J142150(n)+J054024(n)+J229110(n)=(F000217(n)modn)+(F000203(n)modn)+(J024816(n)modn)
+ A353473	lambdan	0	n -> J143731(n)*J302048(J032742(n))
+ A353474	lambdan	0	n -> J143731(n)*J302048(J052126(n))
+ A326981	lambdan	0	n -> J144119(n)-J000070(n-1),n>=1
+ A351191	lambdan	0	n -> J144553(n)+J056877(n)+2*J006747(n)+2*J006746(n)+4*J006749(n)+J006748(n)
+ A308022	lambdan	0	n -> J151799(2*n-1)-J151800(n-1)
+ A211892	lambdan	0	n -> J155200(n)+J155200(n-1)
+ A333763	lambdan	0	n -> J161604(n)/J030101(J161604(n))
+ A369655	lambdan	0	n -> J165560(n)*J165560(F003415(n))
+ A185163	lambdan	0	n -> J165627(n)-J185364(n)
+ A165648	lambdan	0	n -> J165647(n)-J005177(n
+ A342016	lambdan	0	n -> J168036(F276086(n))=E327860(n)-F276086(n)
+ A176493	lambdan	0	n -> J174727(n)/J027760(n+1)
+ A279105	lambdan	0	n -> J174973(n)*F007918(2*J174973(n)+1)
+ A185134	lambdan	0	n -> J185334(n)-J185335(n)
+ A185135	lambdan	0	n -> J185335(n)-J185336(n)
+ A185244	lambdan	0	n -> J185344(n)-J033886(n)=Euler_transformation(J033886)(n)-J033886(n)
+ A185246	lambdan	0	n -> J185346(n)-J058348(n)=Euler_transformation(J058348)(n)-J058348(n)
+ A214322	lambdan	0	n -> J214551(n-1)+J214551(n-3),witha(0)=a(1)=a(2)=1
+ A279172	lambdan	0	n -> J226158(n+2)-J226158(n+1)
+ A361468	lambdan	0	n -> J249670(D003961(n))=J336849(n)*J341525(n)
+ A347382	lambdan	0	n -> J252464(n)-J252464(D000593(n))
+ A340073	lambdan	0	n -> J253885(n-1)/J340071(n)=(D003961(n)-1)/J340071(n)
+ A180202	lambdan	0	n -> J259180(2n-1)*J259180(2n
+ A352477	lambdan	0	n -> J261724(n)-J350286(n-11),n>11
+ A328473	lambdan	0	n -> J276151(E276156(n))=E276156(n)-F002110(D007814(n))
+ A284008	lambdan	0	n -> J277324(n)/J277198(n)
+ A283479	lambdan	0	n -> J283474(n)-J283474(n-1)
+ A341392	lambdan	0	n -> J284005(n)/(1+F000120(n))!=J284005(n)/F000142(1+F000120(n))
+ A284437	lambdan	0	n -> J284275(n)+J080339(n)forn>=
+ A324348	lambdan	0	n -> J294898(D005940(1+n)),whereA294898(k)=D005187(k)-F000203(k)
+ A295875	lambdan	0	n -> J295894(n)+F000203(D005940(1+n))mod2
+ A316346	lambdan	0	n -> J316297(n+1)/J316297(n)
+ A320301	lambdan	0	n -> J320300(n+1)-J320300(n)(thisisaboutPi/4,buttheyareessentiallythesame)
+ A330641	lambdan	0	n -> J330640(n)+J117485(n),n>=9
+ A335023	lambdan	0	n -> J334958(n+1)/J334958(n)
+ A341866	lambdan	0	n -> J341865(n)-J341865(n/p)+1,wherepisthesmallestprimefactorofn
+ A351945	lambdan	0	n -> J342001(D181819(n))=J351942(n)/J351944(n)
+ A369009	lambdan	0	n -> J342001(n)-J083345(n)
+ A348194	lambdan	0	n -> J348193(n+1)-J348193(n)
+ A348500	lambdan	0	n -> J348494(F276086(n)),whereA348494(n)=J348492(n)/D003557(n)
+ A348501	lambdan	0	n -> J348496(F276086(n)),whereA348496(n)=J348495(n)/D003557(n)
+ A348947	lambdan	0	n -> J348944(n)/J348946(n)=J348944(n)/GCD(F000203(n),J348944(n))
+ A369116	lambdan	0	n -> J368279(n)-J368279(n-1)whereA368279(-1)=0
+ A368983	lambdan	0	n -> M000081(n)+J001429(n)=J068051(n)-J027852(n)forn>0
+ A327114	lambdan	0	n -> M001187(n)-J013922(n),ifweassumeA001187(1)=0
+ A111104	lambdan	0	n -> M051484(n+1)-M051484(n),n>=1
+ A320299	lambdan	0	n -> X004711(n+1)-X004711(n)-1=J320298(n)-1(thisisaboutPi/4,buttheyareessentiallythesame)
+%N does not work A362718	holos	0	[[0],[1],[0],[4,-2],[0],[0,-1,1]]	1,0,-2	Expansion of e.g.f. cos(x)*exp(x^2/2)	(n+1)*(n+2)*a(n+2)+a(n-2)-2*n*a(n) = 
+
+%N A373489	multraf	0	(self, n) -> self.s(1).mod(self.s(0)).isZero() ? Z.ONE : Z.ZERO	""	new A276085(), new A003415()	a(n) = 1 if A003415(n) is a multiple of €276085(n), otherwise 0, where A003415 is the arithmetic derivative and €276085 is the primorial base log-function
+%N A373483	multraf	0	(self, n) -> self.s(0).mod(3) == 0 && self.s(1).mod(3) == 0 ? Z.ONE : Z.ZERO	""	new A276085(), new A083345()	a(n) = 1 if A083345(n) and €276085(n) are both multiples of 3, otherwise 0, where €276085 is fully additive with a(p) = p#/p, and A083345 is the numerator of the fully additive function with a(p) = 1/p
+%N A373486	multraf	0	(self, n) -> self.s(0).mod(self.s(1)).isZero() ? Z.ONE : Z.ZERO	""	new A276085(), new A003415()	a(n) = 1 if €276085(n) is a multiple of A003415(n), otherwise 0, where A003415 is the arithmetic derivative and €276085 is the primorial base log-function
+%N A373485	multraf	0	(self, n) -> self.s(0).GCD(self.s(1))	""	new A083345(), new A276085()	a(n) = GCD(A083345(n), €276085(n)), where €276085 is fully additive with a(p) = p#/p, and A083345 is the numerator of the fully additive function with a(p) = 1/p
+%N A373479	filtpos	1	1	new A373477()	v -> v.equals(Z.ONE)	Numbers k such that A001414(k) and A003415(k) are both multiples of 3, but A083345(k) is not, where A001414 is the sum of prime factors with repetition, A003415 is the arithmetic derivative, and A083345(n) = A003415(n)/GCD(n,A003415(n))
+%N A373482	filtpos	1	1	new A373481()	v -> v.equals(Z.ONE)	Numbers k for which A003415(k) is a multiple of A001414(k), where A003415 is the arithmetic derivative, and A001414 is the sum of prime factors with multiplicity
+%N A373484	filtpos	1	1	new A373483()	v -> v.equals(Z.ONE)	Numbers k such that A083345(k) and €276085(k) are both multiples of 3, where €276085 is fully additive with a(p) = p#/p, and A083345 is the numerator of the fully additive function with a(p) = 1/p
+%N A373488	filtpos	1	1	new A373486()	v -> v.equals(Z.ONE)	Nonprime natural numbers k such that €276085(k) is a multiple of A003415(k), where A003415 is the arithmetic derivative and €276085 is the primorial base log-function
+%N A373487	filtpos	1	1	new A373486()	v -> v.equals(Z.ONE)	Numbers k such that €276085(k) is a multiple of A003415(k), where A003415 is the arithmetic derivative and €276085 is the primorial base log-function
+#A106828	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(j, n - 2*k).*(Functions.EULERIAN2.z(n - k, j)))	T(n, k) = Sum_{j=0..n-k} BI(j, n-2*k)*E2(n-k, j), where E2 are the second-order Eulerian numbers (A008517). - _Peter Luschny_, Jan 13 201
+#A112008	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 3, n)	Fourth diagonal of second-order Eulerian triangle A008517. Fourth column (m=3) of triangle A112007
+#A112485	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 4, n)	Fifth diagonal of second-order Eulerian triangle A008517. Fifth column (m=4) of triangle A112007
+#A112499	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n, 4)	Fourth column of second-order Eulerian triangle A008517 divided by 4
+#A156141	trilambn	0	1	1	(n, k) -> n == 0 ? Z.TWO : ((k == 0 || k == n) ? Z.ONE : Functions.EULERIAN2.z(n, k + 1).+(Functions.EULERIAN2.z(n, n - k + 1)))	T(n,k)= A008517(n,k+1)+A008517(n,n+1-k), n>1, 0<k<n
+#A156529	trilambn	0	0	0	(n, k) -> Functions.EULERIAN2.z(n + 1, k + 1).*(Functions.EULERIAN2.z(n + 1, n - k + 1))	Triangle, T(n, k) = A008517(n+1, k+1)*A008517(n+1, n-k+1), read by rows

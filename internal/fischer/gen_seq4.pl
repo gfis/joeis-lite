@@ -231,7 +231,7 @@ while (<>) { # read inputfile
                 $do_generate = 0;
             }
             $parm =~ s{ZV\(}           {Z.valueOf\(}g;  $parm =~ s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .   $zhash{$1}}eg; # after the previous statement!
-            $parm =~ s{ARD\(([^\)]+)\)}{Jaguar.factor($1).arithmeticDerivative()}g;
+            $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BS}             {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
@@ -259,6 +259,8 @@ while (<>) { # read inputfile
             $parm =~ s{LPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{LU\(}           {Functions.LUCAS.z\(}g;
             $parm =~ s{LVE\(}          {longValueExact\(}g;
+            $parm =~ s{MAX\(}          {Functions.MAX.z\(}g;
+            $parm =~ s{MIN\(}          {Functions.MIN.z\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z\(}g;

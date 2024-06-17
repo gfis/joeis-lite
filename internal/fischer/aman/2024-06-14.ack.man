@@ -1,0 +1,78 @@
+A076243	simtraf	1	new A038580()	(n, v) -> v.modZ(n)
+A076865	eulerix	0			new A050535()		x
+A077116	simtraf	0	new A065733()	(n, v) -> ZV(n).^(3).-(v)	n^3 - A065733(n).
+A083479	lambdan	0	n -> n == 0 ? Z.ZERO : ZV(n + 2) .-(Functions.CEIL_SQRT.z(4*n))	a(n) = (n+2) - ceiling(sqrt(4*n)),
+A085686	eulerix	1			new A000110().skip(1)		x
+A086898	lambdan	1	n -> SD(n, d -> d == 1 ? Z.ZERO : Functions.TAU.z(d - 1))
+A088327	eultra1	0	new A000108().skip(1)	. - _Franklin T. Adams-Watters_, Mar 01 2006
+A091522	multrar	1	(self, n) -> CR.SQRT2.*(CR.HALF.+(self.a(n - 1))).floor()	"5"	floor(sqrt(2) * (a(n-1) + 1/2))
+A091523	multrar	1	(self, n) -> CR.SQRT2.*(CR.HALF.+(self.a(n - 1))).floor()	"8"	floor(sqrt(2) * (a(n-1) + 1/2))
+A091795	simtraf	0	new A061431()	(n, v) -> v.+(Functions.TRIANGULAR.z(n + 1))
+A092406	multrar	1	(self, n) -> { final Z sg = Functions.SIGMA1.z(n); return sg.compareTo(self.a(n - 1)) >= 0 ? sg : sg.+(self.a(n - 1)); }	"1"	sigma(n) if sigma(n) >= a(n-1), otherwise a(n) = a(n-1) + sigma(n).
+A092483	multrar	1	(self, n) -> SU(1, n - 1, j -> self.a(j).*(j))./(n - 1)	"1,1,1,2,3,5"	a(n)=floor(sum(j=1, n-1, j*a(j))/(n-1))
+A093197	lambdan	2	n -> FA(n).*(Functions.CATALAN.z(n).*(4).-(Functions.CATALAN.z(n + 1)))./(6)
+A094164	simtraf	0	new A001420()	(n, v) -> v.*(n)./(2)
+A096796	multrar	0	(self, n) -> self.a(n - 1).*(2).-(self.a(n - CR.HALF.+(CV(2*n).sqrt()).floor().IVE()))	"0,1"	a(n) = n for n <= 2; for n > 2, a(n) = 2a(n-1) - a(n - floor( 1/2 + sqrt(2n) )).
+A096824	multrar	0	(self, n) -> self.a(n - 1).*(2).-(self.a(n - CV(2*n - 2).sqrt().+(CR.HALF).floor().IVE()))	"0,1,2"	a(n) = n for n <= 2; for n > 2, a(n) = 2a(n-1) - a(n - floor(1/2 + sqrt(2(n-1)))).
+A101656	lambdan	0	n -> PR(0, n, k -> Z.ONE.+(ZV(0).^(D101650.a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+0^A101650(k)}/2.
+A101657	lambdan	0	n -> PR(0, n, k -> Z.ONE.+(ZV(2).^(D101650.a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+2^A101650(k)}/2.
+A101658	lambdan	0	n -> PR(0, n, k -> Z.ONE.+(ZV(3).^(D101650.a(k).IVE())))./(2)		a(n)=Product{k=0..n, 1+3^A101650(k)}/2.
+A101867	lambdan	1	n -> CR.PHI.*(n).ceil().^(2).+(ZV(n).^(2))	n*(1 + sqrt(5))/2)^2	n^2 +
+A126246	mulr	1	(p, e) -> p.equals(Z.TWO) ? (e == 1 ? Z.TWO : Z2(e - 2).*(3)) : p.^(e - 1).*(p.-(1))		a(p^e) = phi(p^e) = p^(e-1)*(p - 1), except when p = 2, then a(2) = 2 and a(2^e) = 3*(2^(e-2))
+A129438	multraf	0	(self, n) -> self.s(0)	"1,1"	new A125096()	v	0	D125096
+A131764	ieultra	0	new A000984()	1	1
+A132295	lambdan	1	n -> { final int r = Functions.SQRT.i(n); return Functions.TRIANGULAR.z(n).-(ZV(r).*(ZV(r + 1)).*(ZV(2*r + 1))./(6)); }	n(n+1)/2 - r(r+1)(2r+1)/6.
+A135686	multraf	1	(self, n) -> self.a(n - 1).+(self.s(0).*(self.a(n - 2)))	"1,1"	new A000045()		a(n) = a(n-1) + A000045(n)*a(n-2), a(1) = 1, a(2) = 1.
+A135687	multraf	1	(self, n) -> self.a(n - 1).-(self.s(0).*(self.a(n - 2)))	"1,1"	new A004001()		a(n) = a(n-1) - A004001(n)*a(n-2), a(1) = 1, a(2) = 1.
+A141762	multrar	0	(self, n) -> Z.ONE.-(SU(0, n - 1, j -> self.a(j).*(Z_1(n - j)).*(BI(Functions.TRIANGULAR.i(j + 1) + n - j - 2, n - j))))	"1,1"	a(n) = 1 - Sum_{j=0..n-1} a(j) * (-1)^(n-j) * C((j+1)(j+2)/2 + n-j-2, n-j) for n>0, with a(0)=1.
+A141763	multrar	0	(self, n) -> Z.ONE.-(SU(0, n - 1, j -> self.a(j).*(Z_1(n - j)).*(BI(Functions.TRIANGULAR.i(j + 2) + n - j - 4, n - j))))	"1,1"	a(n) = 1 - Sum_{j=0..n-1} a(j) * (-1)^(n-j) * C((j+2)(j+3)/2 + n-j-4, n-j) for n>0, with a(0)=1.
+A141764	multrar	0	(self, n) -> Z.ONE.-(SU(0, n - 1, j -> self.a(j).*(Z_1(n - j)).*(BI(Functions.TRIANGULAR.i(j + 3) + n - j - 7, n - j))))	"1,1"	a(n) = 1 - Sum_{j=0..n-1} a(j) * (-1)^(n-j) * C((j+3)(j+4)/2 + n-j-7, n-j) for n>0, with a(0)=1.
+A157016	eultra1	0	new A157051().skip(1)
+A174344	multrar	1	(self, n) -> CR.HALF_PI.*(CR.valueOf(4*n-7).sqrt().floor()).sin().floor().+(self.a(n - 1))	"0"	a(n) = a(n-1) + sin(floor(sqrt(4n-7))*Pi/2)
+A179397	lambdan	3	n -> Functions.PRIME.z(n).^(2).mod(Functions.PRIME.z(n - 2))		a(n) = prime(n)^2 mod prime(n-2).
+A179398	lambdan	4	n -> Functions.PRIME.z(n).^(2).mod(Functions.PRIME.z(n - 3))		a(n) = prime(n)^2 mod prime(n-3).
+A192652	lambdan	0	n -> SU(0, n, k -> Functions.SQRT.z(Functions.CATALAN.z(k)).*(Functions.SQRT.z(Functions.CATALAN.z(n - k))))
+A204270	simtraf	0	new A000129().skip(1)	(n, v) -> Functions.SIGMA0.z(n).*(v)	tau(n)*Pell(n)
+A204271	simtraf	1	new A000129().skip(1)	(n, v) -> Functions.SIGMA1.z(n).*(v)	sigma(n)*Pell(n)
+A204272	simtraf	1	new A000129().skip(1)	(n, v) -> Functions.SIGMA.z(2, n).*(v)	sigma2(n)*Pell(n)
+A204273	simtraf	1	new A000129().skip(1)	(n, v) -> Functions.SIGMA.z(3, n).*(v)	sigma3(n)*Pell(n)
+A216445	simtraf	0	new A000166()	(n, v) -> v.mod(DF(n)		a(n) = !n mod n!!.
+A217201	eultra1	0	new PrependSequence(0, new A000029().skip(3), 0, 0)
+A345220	lambdan	1	n -> SD(n, d -> Functions.PRIME_PI.z(d).+(1).modZ(2))		a(n) = Sum_{d|n} ((pi(d)+1) mod 2).
+A348378	multrar	0	(self, n) -> SU(1, n - 1, k -> self.a(k)).+(SD(n, d -> (d < n) ? self.a(d) : Z.ZERO)).+(1)	"1,3"	a(n) = 1 + (Sum_{k=1..n-1} a(k)) + (Sum_{d|n, d<n} a(d)). - _Andrew Howroyd_, Jan 25 2022
+A353976	lambdan	1	n -> PD(n, d -> ARD(d).testBit(0) ? Z.ONE : ZV(d))	(1+d') % 2)		a(n) = Product_{d|n} d^((1+d') mod 2), where d' is the arithmetic derivative of d.'
+A358369	eultra1	0	new A016116().skip(1)
+A358451	ieultra	0	new A005043()	1	1
+A362627	eultra1	0	new LambdaSequence(1, n -> Functions.SIGMA.z(n, n))	sigma_n(n) (sum of n-th powers of divisors of n).
+A373297	eultra1	0	new A373216()
+A373298	eultra1	0	new A373217()
+A373364	lambdan	1	n -> Functions.GCD.z(Functions.SOPFR.z(n), ARD(n))	where A001414 is the sum of prime factors with repetition, and A003415 is the arithmetic derivative.	nonn,new	1..65537	nyi	_Antti Karttunen_
+A373547	trilambn	0	0	0	(n, k) -> ZV(4).^(k).*(BI(n + k, n - k))	Triangle read by rows: T(n,k) = 4^k*binomial(n+k, n-k) with 0 <= k <= n
+A373561	lambdan	0	n -> ZV(n).^(3).*(ZV(n).^(2).*(2).+(n*3 + 1))./(6)	(1/3)*n^5 + (1/2)*n^4 + (1/6)*n^3.	2*
+A373565	padding	0	1,2	1	Expansion of x + 1/(1 - x).	nonn,easy,new	0..84	nyi	_Peter Luschny_
+A373566	holos	0	[[0],[1],[1],[-1]]	1,3,3,5	0	0	Expansion of x - 1/(x - 1/(x + 1)).	nonn,easy,new	0..38	nyi
+A373567	holos	0	[[0],[-1],[1],[2],[-1]]	1,4,6,14,31,70,157	0	0	Expansion of x + 1/(-x - 1/(-x - 1/(-x + 1))).	nonn,easy,new	0..31	nyi
+A373568	holos	0	[[0],[-1],[-1],[3],[2],[-1]]	1,5,10,30,85,246,707	0	0	Expansion of x - 1/(x - 1/(x - 1/(x - 1/(x + 1)))).	nonn,easy,new	0..28	nyi
+A373569	holos	0	[[0],[1],[-1],[-4],[3],[3],[-1]]	1,6,15,55,190,671,2353	0	0	Expansion of x + 1/(-x - 1/(-x - 1/(-x - 1/(-x - 1/(-x + 1))))).	nonn,easy,new	0..26	nyi
+A373577	holos	0	[[0],[-64],[0],[-176],[0],[-172],[0],[-73],[0],[114,-48,4],[0],[47,-34,5],[0],[0,-1,1]]	1,1,1,10	0	1	Expansion of e.g.f. exp(x * (1 + x^2)^(3/2)).	nonn,new	0..22	nyi
+A373578	holos	0	[[0],[-5],[0],[-6],[0],[-1],[0,1]]	1	0	1	Expansion of e.g.f. exp(x * (1 + x^2)^2).	nonn,new	0..500	nyi
+A373583	holos	0	[[0],[0,-26738688,12255232,-1671168,69632],[0],[0],[0],[0,4079616,-2078720,333312,-17152],[0],[0],[0],[0,-202944,119856,-23616,1584],[0],[0],[0],[0,3366,-2539,678,-65],[0],[0],[0],[0,-6,11,-6,1]]	1,1,1,1,17,21,25,29,289,397	0	0	-(n+4)*(65*n^3+102*n^2+235*n+102)*a(n)+69632*n*(n+4)*(n-8)*(n-4)*a(n-12)-256*n*(67*n-230)*(n+4)*(n-4)*a(n-8)+48*n*(n+4)*(33*n^2-96*n+145)*a(n-4)+(n+1)*(n+2)*(n+3)*(n+4)*a(n+4) = 0
+A373638	lambdan	0	n -> SU(0, n/2, k -> BI(3*n -5*k, k))
+A373639	lambdan	0	n -> SU(0, n/3, k -> BI(2*n -5*k, k))
+A373640	lambdan	0	n -> SU(0, n/3, k -> BI(3*n -8*k, k))
+A373644	lambdan	0	n -> SU(0, n/4, k -> BI(2*n -7*k, k))
+A373653	lambdan	0	n -> SU(0, n/2, k -> BI(3*n -5*k - 1, k))
+A373654	lambdan	0	n -> SU(0, n/3, k -> BI(2*n -5*k - 1, k))
+A373655	lambdan	0	n -> SU(0, n/3, k -> BI(3*n -8*k - 1, k))
+---- 2024-06-14 20:42:00
+A219224	eultra1	0	new A061397()		Euler transform of A061397.
+A358449	eultra1	0	new A122803()		Euler transform of A122803 (0, 1, -2, 4, -8, 16, ...), (cf. ).
+A372535	eultra1	1	new A054662()		EULER transform of A054662, where A054662 is the number of certain monic irreducible polynomials over GF(5).
+---- 2024-06-14 20:53:05
+A165627	eultra1	0	new A006822().skip(1)		Euler transform of A006822.
+A180260	eultra1	0	new A014378().skip(1)		Euler transform of A014378.
+A185334	eultra1	0	new A014371().skip(1)		Euler transform of A014371.
+A185335	eultra1	0	new A014372().skip(1)		Euler transform of A014372.
+A185336	eultra1	0	new A014374().skip(1)		Euler transform of A014374.
+A185344	eultra1	0	new A033886().skip(1)		Euler transform of A033886.
+A185364	eultra1	0	new A058276().skip(1)		Euler transform of A058276.

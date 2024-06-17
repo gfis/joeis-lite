@@ -1,0 +1,120 @@
+---- 2024-06-16 23:53:50
+A276088	lambdan	0	n -> D067029(F276086(n))	[The least significant nonzero digit]
+A276156	lambdan	0	n -> F276085(D019565(n))
+A277021	lambdan	0	n -> F276085(D005940(1+n))
+A324289	simtraf	0	new A283477()	v -> F276086(v)
+A324534	lambdan	1	n -> F020639(GCD(F000203(n),F276086(n)))
+A324576	simtraf	1	new A025487()	v -> F276086(v)
+A324580	lambdan	0	n -> F276086(n).*(n)
+A324644	lambdan	1	n -> GCD(F000203(n), F276086(n))
+A324645	lambdan	1	n -> GCD(F000005(n), F276086(n))
+A324646	lambdan	1	n -> GCD(n, F276086(n-1))
+A324650	lambdan	0	n -> F000010(F276086(n))	[Euler phi applied to a(n)]
+A324651	lambdan	0	n -> F000010(F276086(2*n))
+A324886	lambdan	1	n -> F276086(E108951(n))
+A324887	lambdan	1	n -> E108951(n).*(F276086(E108951(n)))
+A326810	lambdan	0	n -> D053669(F276086(n))
+A327859	lambdan	0	n -> F276086(F003415(n))
+A327860	lambdan	0	n -> F003415(F276086(n))
+A328099	lambdan	1	n -> Functions.MIN.z(F003415(n), F276086(n))
+A328382	lambdan	2	n -> F276086(n).mod(F003415(n))
+A328386	lambdan	1	n -> F276086(n).mod(ZV(n))
+A328403	lambdan	0	n -> F276086(F276086(F276086(n)))
+A328570	lambdan	0	n -> D257993(F276086(n))
+A328571	lambdan	0	n -> F007947(F276086(n))
+A328572	lambdan	0	n -> E085731(F276086(n))
+A328579	lambdan	0	n -> D053669(F276086(F276086(n)))
+A328581	lambdan	0	n -> D005361(F276086(n))	[Product of nonzero digits]
+A328584	lambdan	0	n -> LCM(n, F276086(n))
+A328835	lambdan	0	n -> D181819(F276086(n))
+A328841	lambdan	0	n -> F276085(F007947(F276086(n)))
+A328842	lambdan	0	n -> F276085(D003557(F276086(n)))
+A329047	lambdan	1	n -> F003415(F276086(E108951(n)))
+A329380	lambdan	1	n -> PD(n, d -> F276086(d).^(F001221(n/d)))
+A342002	lambdan	0	n -> F003415(F276086(n))./(D003557(F276086(n)))
+A342015	lambdan	0	n -> F003415(F276086(n)).mod(F276086(n))
+A344592	lambdan	1	n -> D003557(F276086(E108951(n)))
+A346091	lambdan	1	n -> F007947(F276086(E108951(n)))
+A346105	lambdan	1	n -> F276085(E108951(n))
+A346470	lambdan	0	n -> F001615(F276086(n))
+A348949	lambdan	0	n -> E003959(F276086(n))		, where E003959 is multiplicative with a(p^e) = (p+1)^e, and F276086 gives the prime product form of primorial base expansion of n
+A348996	lambdan	0	n -> F034448(F276086(n))	, where usigma (F034448) is multiplicative with a(p^e) = (p^e)+1, and F276086 gives the prime product form of primorial base expansion of n
+A351225	lambdan	0	n -> F276086(n).-(n)
+A351230	lambdan	0	n -> new Q(F003415(n), F276086(n)).num()
+A351231	lambdan	0	n -> F276086(n)./(GCD(F003415(n), F276086(n)))
+A351232	lambdan	2	n -> F276086(n)./(F003415(n))
+A351234	lambdan	0	n -> F276085(GCD(F003415(n), F276086(n)))
+A351250	lambdan	0	n -> new Q(ZV(n), F276086(n)).num()
+A351251	lambdan	0	n -> F276086(n)./(GCD(n,F276086(n)))
+A351252	lambdan	1	n -> F000203(n).*(F276086(n))
+A351254	lambdan	0	n -> F276085(GCD(n, F276086(n)))
+A353487	lambdan	0	n -> F276086(2*n).modZ(4)
+A353488	lambdan	0	n -> IV[F276086(n).mod(4) == 1]
+A353489	lambdan	0	n -> IV[F276086(n).mod(4) == 3]
+A353524	lambdan	0	n -> D003557(D181819(F276086(n)))
+A353563	lambdan	1	n -> F276086(F000010(n))
+A353576	lambdan	0	n -> F003415(D181819(F276086(n)))
+A355442	lambdan	1	n -> GCD(D003961(n), F276086(n))		, where D003961 is fully multiplicative with a(p) = nextprime(p), and F276086 is primorial base exp-function
+A355815	simtraf	1	new A277791()	(n, v) -> GCD(F276086(n), v)		, where F276086 is primorial base exp-function and J277791 is the atorden of sum of reciprocals of proper divisors of n
+A355818	lambdan	1	n -> GCD(ZV(n), Functions.SIGMA1.z(n), F276086(n))
+A356299	simtraf	1	new A342001()	(n, v) -> GCD(F276086(n), v)	J342001 is the arithmetic derivative without its inherited divisor
+A358220	lambdan	0	n -> n <= 1 ? ZV(0) : IV[F276086(n).mod(F003415(n)).isZero()]	, with a(0) = a(1) = 0. Here ARD is the arithmetic derivative,
+A358669	lambdan	0	n -> F003415(n).*(F276086(n))
+A358841	lambdan	0	n -> IV[1 == F276086(n).mod(6)]
+A358842	lambdan	0	n -> IV[5 == F276086(n).mod(6)]
+A358846	lambdan	0	n -> IV[F276086(6*n).mod(6) == 5]
+A359423	lambdan	0	n -> LCM(F003415(n), F276086(n))
+A359425	lambdan	1	n -> SD(n, d -> F003415(n/d).*(F276086(d)))
+A369010	lambdan	0	n -> D014963(F276086(n))
+A369038	lambdan	1	n -> new Q(F003415(n), F003415(F276086(n))).num()
+A369039	lambdan	1	n -> new Q(F003415(n), F003415(F276086(n))).den()
+A369445	lambdan	1	n -> new Q(Functions.SIGMA1.z(n), F276086(n)).num()
+A369446	lambdan	1	n -> new Q(Functions.SIGMA1.z(n), F276086(n)).den()
+A369449	lambdan	0	n -> F003415(GCD(F003415(n), F276086(n)))
+A369660	lambdan	0	n -> IV[F003415(n).mod(4) == 2 && F276085(F003415(n)).mod(4) == 3]
+A369964	lambdan	0	n -> GCD(n, F276086(F003415(n)))
+A369971	lambdan	0	n -> F003415(n).mod(F276086(n))
+A370116	lambdan	0	n -> ZV(n)./(GCD(n, F276086(F003415(n))))
+A370117	lambdan	0	n -> new Q(ZV(n), F276086(F003415(n))).den()
+A371098	lambdan	0	n -> GCD(2*n + 1, F276086(2*n + 1))
+A371099	lambdan	0	n -> GCD(36*n + 9, F276086(36*n + 9))
+A372576	lambdan	1	n -> F276085(n).modZ(360)
+A373143	lambdan	1	n -> IV[F003415(n).mod(3) == 0 && F276085(n).mod(3) == 0]
+A373146	lambdan	1	n -> F276085(n).-(F003415(n))
+A373147	lambdan	2	n -> F003415(n).mod(F276085(n))
+A373148	lambdan	2	n -> F276085(n).mod(F003415(n))
+---- 2024-06-16 23:56:01
+A267263	lambdan	0	n -> F001221(F276086(n))	[Number of nonzero digits]
+A276150	lambdan	0	n -> F001222(F276086(n))	[Sum of digits]
+A276153	lambdan	0	n -> D071178(F276086(n))	[The most significant digit]
+A276154	lambdan	0	n -> F276085(D003961(F276086(n)))
+A277022	lambdan	0	n -> D156552(F276086(n))
+A317836	lambdan	0	n -> D001055(F276086(n))	[Number of carry-free partitions of n in primorial base]
+A324198	lambdan	0	n -> GCD(n, F276086(n))
+A324539	lambdan	1	n -> SD(n, d -> IV[ZV(d).equals(F276086(n/d))])
+A324577	simtraf	1	new A025487()	v  -> v.*(F276086(v))
+A324653	lambdan	0	n -> F000203(F276086(n))	[Sum of divisors of a(n)]
+A324654	lambdan	0	n -> D033879(F276086(n))
+A324655	lambdan	0	n -> F000005(F276086(n))	[Number of divisors of a(n)]
+A328583	lambdan	0	n -> D023900(F276086(n))	[Dirichlet inverse of Euler phi applied to a(n)]
+A329046	lambdan	1	n -> F000005(F276086(E108951(n)))
+A341517	lambdan	0	n -> F008683(F276086(F003415(n)))
+A342017	lambdan	1	n -> E342007(F003415(F276086(n)))
+A345000	lambdan	0	n -> GCD(F003415(n), F003415(F276086(n)))		, where F003415(n) is the arithmetic derivative of n, and F276086(n) gives the prime product form of primorial base expansion of n
+A351083	lambdan	0	n -> GCD(n, F003415(F276086(n)))
+A351084	lambdan	0	n -> GCD(n, E085731(F276086(n)))
+A351233	lambdan	0	n -> F276085(F276086(n)./(GCD(F003415(n), F276086(n))))
+A355001	lambdan	1	n -> F020639(GCD(D003961(n), F276086(n)))
+A355456	lambdan	1	n -> GCD(Functions.SIGMA1.z(n), D003961(n), F276086(n))
+A355820	lambdan	1	n -> IV[ZV(1).equals(GCD(D003961(n), F276086(n)))]
+A369961	lambdan	0	n -> IV[GCD(n, F003415(n)).equals(GCD(n, F276086(n)))]
+A372573	lambdan	1	n -> IV[F276085(n).mod(3) == 0]
+A373137	lambdan	1	n -> IV[F276085(n).mod(8) == 0]
+A373139	lambdan	1	n -> IV[F276085(n).mod(5) == 0]
+A373141	lambdan	1	n -> IV[F276085(n).mod(4) == 2]
+A373145	lambdan	1	n -> GCD(F003415(n), F276085(n))
+A373260	lambdan	1	n -> IV[F276085(n).mod(3) == +1]
+A373361	lambdan	1	n -> GCD(n, F276085(n))
+A373362	lambdan	1	n -> GCD(F001414(n), F276085(n))
+A373367	lambdan	1	n -> GCD(F001414(n), F003415(n), F276085(n))
+A373485	simtraf	1	new A083345()	(n, v) -> GCD(F276085(n), v)

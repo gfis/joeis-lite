@@ -1,0 +1,322 @@
+%N A358222 Composite numbers k such that A003415(k) divides F276086(k), 
+%N A342016 Difference between the arithmetic derivative of F276086(n) and F276086(n) itself, which is the prime product form of primorial base expansion of n
+%N A342026 Difference in the maximal prime exponents between the arithmetic derivative of F276086(n) and F276086(n) itself, which is the prime product form of primorial base expansion of n
+%N A347389 Dirichlet convolution of A003415(n) and A003415(F276086(n))		, where A003415(n) is the arithmetic derivative of n, and F276086(n) gives the prime product form of primorial base expansion of n
+%N A354348 Dirichlet inverse of function f(1) = 1, f(n) = gcd(A003415(n), F276086(n)) for n > 1
+%N A359589 Dirichlet inverse of function f(n) = (-1 + gcd(A003415(n), F276086(n))) 
+%N A359603 Dirichlet inverse of function f(n) = 1+(A003415(n)*F276086(n)) 
+%N A328586 Even numbers n such that A257993(n) is equal to A257993(F276086(F276086(n)))		, where , and A257993 returns the index of the least prime not present in its argument
+%N A328569 Exponent of least prime factor in F276086(F276086(n))		, where 
+%N A342456 F276086 applied to the primorial inflation of Doudna-tree
+%N A328578 Index of the least prime not dividing F276086(F276086(n)): a(n) = A257993(€276087(n))
+%N A328829 Index of the least significant digit > 1 in the primorial base expansion of F276086(n), 0 if no such digit exists
+%N A328398 Maximal digit value in primorial base expansion of F276086(F276086(F276086(n)))
+%N A328389 Maximal digit value in primorial base expansion of F276086(n): a(n) = €328114(F276086(n))
+%N A373488 Nonprime natural numbers k such that F276085(k) is a multiple of A003415(k)
+%N A371085 Nonsquarefree numbers k such that A003415(k) divides F276086(k), 
+%N A371086 Nonsquarefree numbers k such that A003557(k) divides F276086(k)		, where A003557(k) is k divided by its largest squarefree divisor, 
+%N A327168 Number of common divisors of n and F276086(n), with a(0) = 1
+%N A351089 Number of iterations of map x -> A003415(x) needed to reach a number >= F276086(n), when starting from x = n, or -1 if such number is never reached
+%N A328766 Number of nonleading zeros in primorial base expansion of F276086(n)
+%N A342019 Number of prime power divisors of the form p^p in the arithmetic derivative of F276086(n), the prime product form of primorial base expansion of n
+%N A368919 Number of terms of €368917 less than 10^n		, where €368917 lists the numbers k such that there is no prime p such that p^p divides the arithmetic derivative of F276086(k), 
+%N A369666 Numbers k > 1 such that F276085(A003415(k)) == k (mod 4), and 
+%N A370127 Numbers k such that (F276086(k)/s)^s <  k^(s-1), , and s = bigomega(k)
+%N A370128 Numbers k such that (F276086(k)/s)^s >= k^(s-1) and F276086(k) <= A003415(k), F276086 is the primorial base exp-function, and s = bigomega(k)
+%N A328762 Numbers k such that 2 < A257993(F276086(F276086(k))) < A257993(k)		, where , and A257993 returns the index of the least prime not present in its argument
+%N A328242 Numbers k such that A003415(F276086(k)) is a squarefree number, 
+%N A328241 Numbers k such that A003415(F276086(k)) is not a squarefree number
+%N A328233 Numbers k such that A003415(F276086(k)).IPP()
+%N A373259 Numbers k such that A003415(k) / gcd(k,A003415(k)) is a multiple of 4 and F276085(k) is a multiple of 8		, where A003415(k) stands for the arithmetic derivative of k, ARD, and 
+%N A369650 Numbers k such that A003415(k) = F276085(k), and 
+%N A351228 Numbers k such that A003415(k) >= F276086(k) 
+%N A351229 Numbers k such that A003415(k) >= F276086(k) > k 
+%N A369960 Numbers k such that A003415(k) >= F276086(k) and gcd(k, A003415(k)) = gcd(k, F276086(k)) > 1, 
+%N A369959 Numbers k such that A003415(k) >= F276086(k) and gcd(k, A003415(k)) = gcd(k, F276086(k)), 
+%N A368998 Numbers k such that A003415(k) and F276085(k) are both even and ; Numbers k such that A342001(k) is even
+%N A356312 Numbers k such that A003415(k) and F276086(k) are not relatively prime, 
+%N A356311 Numbers k such that A003415(k) and F276086(k) are relatively prime, 
+%N A358221 Numbers k such that A003415(k) divides F276086(k), 
+%N A373490 Numbers k such that A003415(k) is a multiple of F276085(k) and 
+%N A369970 Numbers k such that A003415(k) is a multiple of F276086(k), 
+%N A369958 Numbers k such that A003415(k)/gcd(k, A003415(k)) >= F276086(k)/gcd(k, F276086(k)), 
+%N A371088 Numbers k such that A003557(k) divides F276086(k)		, where A003557(k) is k divided by its largest squarefree divisor, 
+%N A371089 Numbers k such that A003557(k) does not divide F276086(k)		, where A003557(k) is k divided by its largest squarefree divisor, 
+%N A355821 Numbers k such that A003961(k) and F276086(k) are relatively prime		, where A003961 is fully multiplicative with a(p) = nextprime(p), and F276086 is primorial base exp-function
+%N A355822 Numbers k such that A003961(k) and F276086(k) share a prime factor		, where A003961 is fully multiplicative with a(p) = nextprime(p), and F276086 is primorial base exp-function
+%N A373484 Numbers k such that A083345(k) and F276085(k) are both multiples of 3		, where F276085 is fully additive with a(p) = p#/p, and A083345 is the atornum of the fully additive function with a(p) = 1/p
+%N A328633 Numbers k such that A257993(F276086(F276086(k))) = 3		, where , and A257993 returns the index of the least prime not present in its argument
+%N A328634 Numbers k such that A257993(F276086(F276086(k))) = 4
+%N A328635 Numbers k such that A257993(F276086(F276086(k))) = 5
+%N A328636 Numbers k such that A257993(F276086(F276086(k))) = 6
+%N A328588 Numbers k such that A257993(F276086(F276086(k))) is larger than A257993(k)		, where , and A257993 returns the index of the least prime not present in its argument
+%N A328587 Numbers k such that A257993(F276086(F276086(k))) is less than A257993(k)		, where , and A257993 returns the index of the least prime not present in its argument
+%N A328585 Numbers k such that A257993(k) is equal to A257993(F276086(F276086(k)))		, where , and A257993 returns the index of the least prime not present in its argument
+%N A373261 Numbers k such that F276085(k) == +1 (mod 3)
+%N A373262 Numbers k such that F276085(k) == -1 (mod 3)
+%N A373140 Numbers k such that F276085(k) is a multiple of 5
+%N A373138 Numbers k such that F276085(k) is a multiple of 8
+%N A373487 Numbers k such that F276085(k) is a multiple of A003415(k) and 
+%N A373142 Numbers k such that F276085(k) is of the form 4m+2
+%N A373267 Numbers k such that F276085(k) is of the form 8m+4
+%N A358845 Numbers k such that F276086(6*k) == 1 (mod 6), 
+%N A358844 Numbers k such that F276086(6*k) == 5 (mod 6), 
+%N A370114 Numbers k such that F276086(A003415(k)) is a multiple of k, 
+%N A351226 Numbers k such that F276086(k) < k, 
+%N A328118 Numbers k such that F276086(k) <= A002620(k),  and A002620(k) = floor(k^2/4)
+%N A328632 Numbers k such that F276086(k) == 1 (mod 6), 
+%N A358231 Numbers k such that F276086(k) == 1 (mod k), 
+%N A358232 Numbers k such that F276086(k) == 1 mod A003415(k), , and ARD is the arithmetic derivative
+%N A358843 Numbers k such that F276086(k) == 5 (mod 6), 
+%N A328119 Numbers k such that F276086(k) > A002620(k)
+%N A351227 Numbers k such that F276086(k) > k, 
+%N A328387 Numbers k such that F276086(k) is a multiple of k
+%N A328836 Numbers k such that F276086(k) is a sum of distinct primorial numbers
+%N A353465 Numbers k such that F276086(k) is of the form 4k+1
+%N A353466 Numbers k such that F276086(k) is of the form 4k+3
+%N A358229 Numbers k such that F276086(k) mod A003415(k) is an even number 
+%N A358228 Numbers k such that F276086(k) mod A003415(k) is an odd number 
+%N A358226 Numbers k such that F276086(k) mod k is an even number, 
+%N A358225 Numbers k such that F276086(k) mod k is an odd number, 
+%N A328589 Numbers k such that are multiples of 6 and such that A257993(F276086(F276086(k))) is larger than A257993(k)		, where , and A257993 returns the index of the least prime not present in its argument
+%N A373373 Numbers k such that both A001414(k) and F276085(k) are multiples of 3		, where A001414 is the sum of prime factors with repetition and 
+%N A373144 Numbers k such that both A003415(k) and F276085(k) are multiples of 3 and 
+%N A369962 Numbers k such that gcd(k, A003415(k)) is equal to gcd(k, F276086(k)), 
+%N A351458 Numbers k such that k * gcd(Functions.SIGMA1.z(k), F276086(k)) is equal to sigma(k) * gcd(k, F276086(k)), , and sigma gives the sum of divisors of its argument
+%N A324583 Numbers k such that k and F276086(k) are coprime, 
+%N A356316 Numbers k such that k divides the least j >= k such that k and F276086(j) are coprime, 
+%N A356317 Numbers k such that k does not divide the least j >= k such that k and F276086(j) are coprime, 
+%N A370115 Numbers k such that k is a multiple of F276086(A003415(k)), 
+%N A324579 Numbers k such that k*F276086(k) is a product of primorial numbers (is a term of A025487)
+%N A324578 Numbers k such that k*F276086(k) is a term of A055932
+%N A342018 Numbers k such that the arithmetic derivative of F276086(k) is divisible by at least one prime power divisor of the form p^p		, where F276086 gives the prime product form of primorial base expansion of its argument
+%N A356318 Numbers k such that the least j >= k such that k and F276086(j) are coprime is a nontrivial multiple of k, 
+%N A342006 Numbers k such that the maximal prime exponent in the arithmetic derivative of F276086(k) attains the maximal exponent in F276086(k)		, where F276086 gives the prime product form of primorial base expansion of its argument
+%N A328240 Numbers k such that the second arithmetic derivative of F276086(k) is prime
+%N A328249 Numbers k such that the third arithmetic derivative of F276086(k) is prime
+%N A368917 Numbers k such that there is no prime p such that p^p divides the arithmetic derivative of F276086(k), 
+%N A369963 Numbers k such that x = gcd(k, A003415(k)) = gcd(k, F276086(k)) and x > 1, 
+%N A328837 Numbers k such that €328403(k) = F276086(F276086(F276086(k))) is squarefree
+%N A358227 Parity of €328382(n)		, where €328382(n) = F276086(n) mod A003415(n), with ARD the arithmetic derivative 
+%N A358224 Parity of €328386(n)		, where €328386(n) = F276086(n) mod n, 
+%N A360123 Parity of €347389		, where €347389 is Dirichlet convolution of A003415(n) with A003415(F276086(n))
+%N A328835 a(n) = A181819(F276086(n))
+%N A353575 Primepi based arithmetic derivative applied to the prime shadow of the primorial base exp-function: a(n) = €258851(A181819(F276086(n)))
+%N A353564 Product_{d|n, d<n} F276086(phi(d))		, where F276086 is primorial base exp-function, and phi is Euler totient function
+%N A329041 Square array read by antidiagonals: A(n, k) = A327936(F276086(n) * F276086(k))
+%N A324350 Square array read by antidiagonals: A(x,y) = gcd(F276086(x),F276086(y)), for x, y >= 0
+%N A328834 Square root of the prime factor form (F276086) of the primorial base expansion, computed for such numbers such that it is a square
+%N A353517 The largest proper divisor of F276086(2*n) reduced modulo 4
+%N A328761 The least integer k >= 0 such that €328578(k) = A257993(F276086(F276086(k))) = n
+%N A329030 The least missing nonzero digit in the primorial base expansion of F276086(n)
+%N A328406 The length of primorial base expansion (number of significant digits) of F276086(F276086(F276086(n)))
+%N A328405 The length of primorial base expansion (number of significant digits) of F276086(F276086(n))
+%N A328404 The length of primorial base expansion (number of significant digits) of F276086(n)
+%F A328316 a(0) = 0; and for n > 0, a(n) = F276086(a(n-1))
+%F A276086 a(0) = 1; for n >= 1, a(n) = A053669(n) * a(A276151(n)) = A053669(n) * a(n-A002110(A276084(n)))
+%F A369640 a(0) = a(1) = 1, a(n) = (1-A010051(n)) * A008966(F276086(A003415(n)))
+%N A328112 a(1) = 0, for primes p, a(p) = 1, and for any other number n, a(n) = max(A003415(n), F276086(n))
+%N A324889 a(1) = 1, and for n > 1, a(n) = F276086(n) * a(A064989(n))
+%N A373372 a(n) = 1 if A001414(n) and F276085(n) are both multiples of 3, otherwise 0		, where A001414 is the sum of prime factors with repetition and 
+%N A373258 a(n) = 1 if A003415(n) / gcd(n,A003415(n)) is a multiple of 4 and F276085(n) is a multiple of 8, otherwise 0		, where A003415(n) stands for the arithmetic derivative of n, ARD, and 
+%N A356310 a(n) = 1 if A003415(n) and F276086(n) are relatively prime, otherwise 0. Here ARD is the arithmetic derivative, 
+%N A373489 a(n) = 1 if A003415(n) is a multiple of F276085(n), otherwise 0 and 
+%F A369660 a(n) = 1 if A003415(n) is congruent to 2 modulo 4 and F276085(A003415(n)) is congruent to 3 modulo 4, otherwise a(n) = 0
+%N A371087 a(n) = 1 if A003557(n) divides F276086(n), otherwise a(n) = 0		, where A003557(k) is k divided by its largest squarefree divisor, 
+%N A373483 a(n) = 1 if A083345(n) and F276085(n) are both multiples of 3, otherwise 0		, where F276085 is fully additive with a(p) = p#/p, and A083345 is the atornum of the fully additive function with a(p) = 1/p
+%N A373260 a(n) = 1 if F276085(n) == +1 (mod 3), otherwise 0
+%N A373263 a(n) = 1 if F276085(n) == -1 (mod 3), otherwise 0
+%N A373486 a(n) = 1 if F276085(n) is a multiple of A003415(n), otherwise 0 and 
+%N A358220 a(n) = 1 if F276086(n) is a multiple of A003415(n), with a(0) = a(1) = 0. Here ARD is the arithmetic derivative, 
+%N A373143 a(n) = 1 if both A003415(n) and F276085(n) are multiples of 3, otherwise 0 and 
+%N A369961 a(n) = 1 if gcd(n, A003415(n)) is equal to gcd(n, F276086(n)), otherwise 0, 
+%N A328306 a(n) = 1 if k-th arithmetic derivative of F276086(n) is zero for some k, otherwise 0
+%N A369665 a(n) = 1 if n > 1 and F276085(A003415(n)) == n (mod 4), otherwise 0, and 
+%N A356162 a(n) = 1 if n and F276086(n) are coprime, otherwise 0		, where F276086 is primorial base exp-function
+%N A356315 a(n) = 1 if n divides the least j >= n such that n and F276086(j) are coprime, otherwise 0. Here F276086 is the primorial base exp-function
+%N A356161 a(n) = 1 if the smallest positive k such that n divides k*F276086(k) is equal to n, otherwise 0		, where F276086 is primorial base exp-function
+%N A368916 a(n) = 1 if there is no prime p such that p^p divides the arithmetic derivative of F276086(n), and 0 otherwise, 
+%N A356313 a(n) = 1 if {the least k >= n such that n and F276086(k) are coprime} is one of the primorial numbers (A002110), otherwise 0
+%F A329046 a(n) = A000005(F276086(A108951(n)))
+%F A324655 a(n) = A000005(F276086(n))	[Number of divisors of a(n)]
+%F A324651 a(n) = A000010(F276086(2*n))
+%F A324650 a(n) = A000010(F276086(n))	[Euler phi applied to a(n)]
+%F A324653 a(n) = A000203(F276086(n))	[Sum of divisors of a(n)]
+%F A351252 a(n) = A000203(n) * F276086(n)
+%F A328570 a(n) = A000720(€326810(n)) = A257993(F276086(n)) = A055396(€276087(n))
+%F A317836 a(n) = A001055(F276086(n))	[Number of carry-free partitions of n in primorial base]
+%F A324341 a(n) = A001221(F276086(A283477(n)))
+%F A267263 a(n) = A001221(F276086(n))	[Number of nonzero digits]
+%F A324342 a(n) = A001222(F276086(A283477(n)))
+%F A276150 a(n) = A001222(F276086(n))	[Sum of digits]
+%F A346470 a(n) = A001615(F276086(n))
+%N A324582 a(n) = A002182(n) * F276086(A002182(n))
+%N A353576 a(n) = A003415(A181819(F276086(n)))
+%F A329047 a(n) = A003415(F276086(A108951(n)))
+%F A327860 a(n) = A003415(F276086(n))
+%F A342002 a(n) = A003415(F276086(n)) / A003557(F276086(n)) = A342001(F276086(n)) = A083345(F276086(n))
+%N A342015 a(n) = A003415(F276086(n)) mod F276086(n)
+%N A369449 a(n) = A003415(GCD(A003415(n), F276086(n)))
+%F A358669 a(n) = A003415(n) * F276086(n)
+%N A373147 a(n) = A003415(n) mod F276085(n) and 
+%N A369971 a(n) = A003415(n) mod F276086(n)
+%N A358765 a(n) = A003415(n)*F276086(n) mod 60
+%N A353524 a(n) = A003557(A181819(F276086(n)))
+%F A344592 a(n) = A003557(F276086(A108951(n)))
+%F A328575 a(n) = A003557(F276086(A276151(n)))	For n >= 1, 
+%N A348949 a(n) = A003959(F276086(n))		, where A003959 is multiplicative with a(p^e) = (p+1)^e, and F276086 gives the prime product form of primorial base expansion of n
+%F A328581 a(n) = A005361(F276086(n))	[Product of nonzero digits]
+%F A346091 a(n) = A007947(F276086(A108951(n)))
+%F A328571 a(n) = A007947(F276086(n))
+%F A341517 a(n) = A008683(F276086(A003415(n)))
+%F A353486 a(n) = A010873(F276086(n))
+%N A346472 a(n) = A011772(F276086(n))
+%N A369010 a(n) = A014963(F276086(n))
+%F A324534 a(n) = A020639(GCD(A000203(n),F276086(n)))
+%F A355001 a(n) = A020639(GCD(A003961(n), F276086(n)))
+%F A328583 a(n) = A023900(F276086(n))	[Dirichlet inverse of Euler phi applied to a(n)]
+%N A324577 a(n) = A025487(n) * F276086(A025487(n))
+%N A324654 a(n) = A033879(F276086(n))
+%F A278226 a(n) = A046523(F276086(n))	[Least number with the same prime signature as a(n)]
+%F A328391 a(n) = A051903(A003415(F276086(n)))
+%F A328114 a(n) = A051903(F276086(n))	[Largest digit]
+%F A350074 a(n) = A051903(F276086(n)) - A051903(n)
+%F A328580 a(n) = A053589(F276086(n))	[Greatest primorial number which divides a(n)]
+%N A328579 a(n) = A053669(F276086(F276086(n)))
+%F A326810 a(n) = A053669(F276086(n))
+%F A328615 a(n) = A056170(F276086(n))	[Number of digits larger than 1]
+%F A358764 a(n) = A060681(F276086(n))
+%F A235224 a(n) = A061395(F276086(n))	[Number of significant digits]
+%F A276088 a(n) = A067029(F276086(n))	[The least significant nonzero digit]
+%N A370131 a(n) = A068346(F276086(n))		, where A068346 is the second arithmetic derivative, 
+%N A329029 a(n) = A069359(F276086(n))		, where A069359(n) = n * Sum_{p|n} 1/p where p are primes dividing n
+%F A276153 a(n) = A071178(F276086(n))	[The most significant digit]
+%F A328620 a(n) = A079067(F276086(n))	[Number of nonleading zeros]
+%F A328572 a(n) = A085731(F276086(n))
+%N A324887 a(n) = A108951(n) * F276086(A108951(n))
+%F A328475 a(n) = A111701(F276086(n))	
+%F A351566 a(n) = A119288(F276086(n))
+%F A277022 a(n) = A156552(F276086(n))
+%F A342016 a(n) = A168036(F276086(n))
+%F A328835 a(n) = A181819(F276086(n))	
+%F A328476 a(n) = A276151(F276086(n))	[... and that primorial subtracted from a(n)]
+%N A349000 a(n) = A323166(F276086(n))		, where A323166(n) = gcd(n, usigma(n)), usigma (A034448) is multiplicative with a(p^e) = (p^e)+1, and F276086 gives the prime product form of primorial base expansion of n
+%N A346469 a(n) = A340070(F276086(n))
+%N A353577 a(n) = A342001(A181819(F276086(n)))
+%F A342017 a(n) = A342007(A003415(F276086(n)))
+%N A342017 a(n) = A342007(A003415(F276086(n)))			, where A342007 is multiplicative with a(p^e) = p^floor(e/p), and A327860 is arithmetic derivative of F276086
+%N A346474 a(n) = A342414(F276086(n))
+%N A346475 a(n) = A342919(F276086(n))
+%N A346471 a(n) = A344695(F276086(n))		, where A344695(x) = gcd(psi(x), sigma(x))
+%N A345930 a(n) = A344756(F276086(n))
+%N A347232 a(n) = A346485(F276086(n))		, where A346485 is Möbius transform of A342001
+%N A347126 a(n) = A347129(F276086(n))
+%N A347396 a(n) = A347395(F276086(n))		, where A347395 is Dirichlet convolution of Liouville's lambda with A342001
+%N A347962 a(n) = A347961(F276086(n))		, where A347961 is Dirichlet convolution of A342001 with itself
+%F A348500 a(n) = A348494(F276086(n))		, where A348494(n) = A348492(n) / A003557(n)
+%N A348501 a(n) = A348496(F276086(n))		, where A348496(n) = A348495(n) / A003557(n)
+%N A348502 a(n) = A348498(F276086(n))
+%N A348950 a(n) = A348507(F276086(n))		, where A348507(n) = A003959(n) - n, A003959 is multiplicative with a(p^e) = (p+1)^e, and F276086 gives the prime product form of primorial base expansion of n
+%N A348997 a(n) = A348733(F276086(n))		, where A348733(n) = gcd(A003959(n), A034448(n)), and F276086 gives the prime product form of primorial base expansion of n
+%N A348998 a(n) = A348928(F276086(n))		, where A348928(n) = gcd(n, A003958(n)), and A003958 is multiplicative with a(p^e) = (p-1)^e, and F276086 gives the prime product form of primorial base expansion of n
+%N A348999 a(n) = A348929(F276086(n))		, where A348929(n) = gcd(n, A003959(n)), A003959 is multiplicative with a(p^e) = (p+1)^e, and F276086 gives the prime product form of primorial base expansion of n
+%F A351567 a(n) = A351563(F276086(n))
+%F A353516 a(n) = A353490(F276086(n))
+%F A353630 a(n) = A353493(F276086(n))
+%F A369034 a(n) = A353494(F276086(n)) = A369004(F276086(n))
+%F A369653 a(n) = A359430(F276086(n))
+%N A370130 a(n) = A369669(F276086(n))		, where A369669 is the greatest common divisor of the first and second arithmetic derivative of n, 
+%F A084737 a(n) = F276085(2*A002110(n-1)) For n >= 1, 
+%F A328842 a(n) = F276085(A003557(F276086(n)))
+%F A276154 a(n) = F276085(A003961(F276086(n)))
+%F A277021 a(n) = F276085(A005940(1+n))
+%F A328841 a(n) = F276085(A007947(F276086(n)))
+%F A276156 a(n) = F276085(A019565(n))
+%N A346105 a(n) = F276085(A108951(n))
+%F A283985 a(n) = F276085(A283477(n))
+%F A351233 a(n) = F276085(F276086(n) / gcd(A003415(n), F276086(n)))
+%F A351253 a(n) = F276085(F276086(n) / €324198(n))
+%F A351234 a(n) = F276085(GCD(A003415(n), F276086(n)))
+%F A351254 a(n) = F276085(GCD(n, F276086(n)))
+%N A373146 a(n) = F276085(n) - A003415(n)
+%N A372576 a(n) = F276085(n) mod 360
+%N A373148 a(n) = F276085(n) mod A003415(n)
+%N A370120 a(n) = F276085(€370117(n))		, where €370117(n) is the atorden of n/F276086(A003415(n)), ARD is the arithmetic derivative, F276086 is the primorial base exp-function, and F276085 is its inverse, the primorial base log-function
+%N A353487 a(n) = F276086(2*n) mod 4
+%F A353563 a(n) = F276086(A000010(n))
+%N A324581 a(n) = F276086(A002182(n))
+%F A327859 a(n) = F276086(A003415(n))
+%N A324576 a(n) = F276086(A025487(n))
+%N A324886 a(n) = F276086(A108951(n))
+%N A324289 a(n) = F276086(A283477(n))
+%N A328403 a(n) = F276086(F276086(F276086(n)))
+%N A276087 a(n) = F276086(F276086(n))
+%N A351225 a(n) = F276086(n) - n
+%F A324895 a(n) = F276086(n) / A053669(n) = F276086(A276151(n))	For n >= 1, 
+%F A351231 a(n) = F276086(n) / GCD(A003415(n), F276086(n))
+%F A351251 a(n) = F276086(n) / GCD(n,F276086(n))
+%F A328382 a(n) = F276086(n) mod A003415(n)
+%N A328382 a(n) = F276086(n) mod A003415(n),  and ARD is the arithmetic derivative
+%N A328386 a(n) = F276086(n) mod n
+%N A371098 a(n) = GCD(2n+1, F276086(2n+1)), 
+%N A371099 a(n) = GCD(36*n+9, F276086(36*n+9))
+%F A324645 a(n) = GCD(A000005(n), F276086(n))
+%F A324644 a(n) = GCD(A000203(n), F276086(n))
+%N A373367 a(n) = GCD(A001414(n), A003415(n), F276085(n))
+%N A373362 a(n) = GCD(A001414(n), F276085(n))
+%N A345000 a(n) = GCD(A003415(n), A003415(F276086(n)))		, where A003415(n) is the arithmetic derivative of n, and F276086(n) gives the prime product form of primorial base expansion of n
+%N A373145 a(n) = GCD(A003415(n), F276085(n))
+%F A327858 a(n) = GCD(A003415(n), F276086(n))
+%N A355442 a(n) = GCD(A003961(n), F276086(n))		, where A003961 is fully multiplicative with a(p) = nextprime(p), and F276086 is primorial base exp-function
+%N A373485 a(n) = GCD(A083345(n), F276085(n))
+%N A355815 a(n) = GCD(F276086(n), A277791(n))		, where F276086 is primorial base exp-function and A277791 is the atorden of sum of reciprocals of proper divisors of n
+%N A356299 a(n) = GCD(F276086(n), A342001(n))	A342001 is the arithmetic derivative without its inherited divisor
+%N A351083 a(n) = GCD(n, A003415(F276086(n))) 
+%F A351084 a(n) = GCD(n, A085731(F276086(n)))
+%N A373361 a(n) = GCD(n, F276085(n))
+%F A369964 a(n) = GCD(n, F276086(A003415(n)))
+%N A369964 a(n) = GCD(n, F276086(A003415(n))), 
+%F A324198 a(n) = GCD(n, F276086(n))
+%N A324646 a(n) = GCD(n, F276086(n-1))
+%N A355818 a(n) = GCD(n, Functions.SIGMA1.z(n), F276086(n))
+%N A355456 a(n) = GCD(Functions.SIGMA1.z(n), A003961(n), F276086(n))
+%F A359423 a(n) = LCM(A003415(n), F276086(n))
+%N A328584 a(n) = LCM(n, F276086(n))
+%N A328099 a(n) = Functions.MIN.z(A003415(n), F276086(n))
+%N A327167 a(n) = Product_{d|F276086(n), d>1} A008578(1+A286561(n,d))		, where A286561(n,d) gives the highest exponent of d dividing n
+%N A319708 a(n) = Product_{d|n, d<n} F276086(d)
+%N A329037 a(n) = Product_{d|n, d>1} A008578(1+A286561(F276086(n),d))		, where A286561(x,d) gives the exponent of the highest power of d dividing x
+%N A329380 a(n) = Product_{d|n} F276086(d)^A001221(n/d)
+%N A329350 a(n) = Product_{d|n} F276086(d)^A010051(n/d)
+%F A359425 a(n) = Sum_{d|n} A003415(n/d) * F276086(d)
+%F A323878 a(n) = Sum_{d|n} [F276086(d)|n]
+%F A324539 a(n) = Sum_{d|n} [d == F276086(n/d)]
+%F A358841 a(n) = IV[1 == F276086(n) mod 6]
+%F A355820 a(n) = IV[1 == gcd(A003961(n), F276086(n))]
+%F A358842 a(n) = IV[5 == F276086(n) mod 6]
+%F A373266 a(n) = IV[A007814(F276085(n)) = 2]
+%F A370124 a(n) = IV[A020639(A003415(n)) == A020639(F276086(n))]	 For n > 1, 
+%F A372573 a(n) = IV[F276085(n).mod(3) == 0]
+%F A373139 a(n) = IV[F276085(n).mod(5) == 0]
+%F A373137 a(n) = IV[F276085(n).mod(8) == 0]
+%F A373141 a(n) = IV[F276085(n).mod(4) == 2]
+%F A358846 a(n) = IV[F276086(6*n) == 5 (mod 6)]
+%N A353488 a(n) = IV[F276086(n) mod 4 == 1]	
+%N A353489 a(n) = IV[F276086(n) mod 4 == 3]	
+%N A351232 a(n) = floor(F276086(n) / A003415(n)) 
+%N A324580 a(n) = n * F276086(n)
+%F A370116 a(n) = n / gcd(n, F276086(A003415(n)))
+%N A348996 a(n) = usigma(F276086(n))		, where usigma (A034448) is multiplicative with a(p^e) = (p^e)+1, and F276086 gives the prime product form of primorial base expansion of n
+%N A369039 atorden of A003415(n) / A003415(F276086(n)) 
+%N A351231 atorden of A003415(n) / F276086(n) 
+%N A351251 atorden of n / F276086(n)
+%N A356153 atorden of n / the smallest positive k such that n divides k*F276086(k)		, where F276086 is primorial base exp-function
+%N A370117 atorden of n/F276086(A003415(n)), 
+%N A369446 atorden of Functions.SIGMA1.z(n) / F276086(n), 
+%N A346097 atorden of the primorial deflation of F276086(A108951(n)): a(n) = A319627(€324886(n))
+%N A369038 atornum of A003415(n) / A003415(F276086(n)) 
+%N A351230 atornum of A003415(n) / F276086(n) 
+%N A351250 atornum of n / F276086(n)
+%N A370116 atornum of n/F276086(A003415(n)), 
+%N A369445 atornum of Functions.SIGMA1.z(n) / F276086(n), 
+%N A346096 atornum of the primorial deflation of F276086(A108951(n)): a(n) = €319626(€324886(n))

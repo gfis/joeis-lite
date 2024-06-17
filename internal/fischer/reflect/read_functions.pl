@@ -73,6 +73,7 @@ while (<>) { # read inputfile
 while(<DATA>) {
     print;
 } # while DATA
+#   public static final Function2D DIGIT_SUM =  new DigitSum(); // =A001370(10, = A000120(2, -> A007953(10,
 __DATA__
 A000720	Func1	Functions.PRIME_PI.z(
 A001157	Func2	Functions.SIGMA.z(2,
@@ -84,6 +85,7 @@ A004185	Func2D	Functions.DIGIT_SORT_ASCENDING.z(10,
 A004186	Func2D	Functions.DIGIT_SORT_DESCENDING.z(10,
 A007917	Func1	Functions.PREV_PRIME.z(
 A007918	Func1	Functions.NEXT_PRIME.z(
+A007953	Func2D	Functions.DIGIT_SUM.z(10,
 A007954	Func2D	Functions.DIGIT_PRODUCT.z(10,
 A007955	Func1	Functions.POD.z(
 A053735	Func2D	Functions.DIGIT_SUM.z(3,

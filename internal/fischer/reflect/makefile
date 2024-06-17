@@ -109,7 +109,7 @@ direct_load:
 direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
 #========
-vector: dirseq dirimp funct # prepare for and create file vector.txt for the classification of all A-numbers
+vector: dirseq dirimp known funct # prepare for and create file vector.txt for the classification of all A-numbers
 	perl build_vector.pl
 	cut -b1-1024 vector.txt
 	ls -al       vector.txt
@@ -148,6 +148,10 @@ funct: # extract from jOEIS source
 	| sort | uniq -w7 \
 	| tee    funct.txt
 	wc -l    funct.txt
+known: # extract known functions
+	grep -P "^[A-Z]\d+\tK" $@.man \
+	| tee $@.txt
+	wc -l $@.txt 
 #========
 finite1:     # select the eligable programs
 	$(DBAT) -x "SELECT i.aseqno, i.termno,  j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno \
