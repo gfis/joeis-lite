@@ -109,8 +109,9 @@ direct_load:
 direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
 #========
+K=
 vector: dirseq dirimp known funct # prepare for and create file vector.txt for the classification of all A-numbers
-	perl build_vector.pl
+	perl build_vector.pl $(K)
 	cut -b1-1024 vector.txt
 	ls -al       vector.txt
 dirseq: # DirectSequences 'D', explicit "implementing D.S.", not inherited

@@ -331,8 +331,9 @@ while (<>) { # read inputfile
                 my $ano = "A" . substr($xseqno, 1);
                 if (0) {
                 } elsif($xseqno =~ m{\A[DE]}) { # DirectSequence
-                    $statics{$xseqno} = $ano;
                     $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
+                    $xseqno = "D" . substr($xseqno, 1); # unify to "Dnnnnnn"
+                    $statics{$xseqno} = $ano;
                 } elsif($xseqno =~ m{\A[F]} ) { # Functions.*
                     my $funct = $functs{$ano};
                     $parmi =~ s{$xseqno\(}{$funct}g;
@@ -445,7 +446,7 @@ while (<>) { # read inputfile
     &clean_imports();
 } # while <>
 print STDERR "# $gen_count sequences generated\n";
-if ($fatal > ) {
+if ($fatal > 0) {
     exit(1); # brake the make
 }
 #-----------------
@@ -559,6 +560,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WComputableComplexField}       ) { $imports{"irvine.math.cr.ComputableComplexField"}         = $itype; }
     if ($line =~ m{\WCR\W}                         ) { $imports{"irvine.math.cr.CR"}                             = $itype; }
     if ($line =~ m{\WComputableReals}              ) { $imports{"irvine.math.cr.ComputableReals"}                = $itype; }
+    if ($line =~ m{\WContinuedFractionSequence}    ) { $imports{"irvine.oeis.cons.ContinuedFractionSequence"   } = $itype; }
     if ($line =~ m{\WConvolutionProduct}           ) { $imports{"irvine.oeis.transform.ConvolutionProduct"}      = $itype; }
     if ($line =~ m{\WCyclotomic}                   ) { $imports{"irvine.nt.cyclotomic.Cyclotomic"}               = $itype; }
     if ($line =~ m{\WDecimalExpansionSequence}     ) { $imports{"irvine.oeis.cons.DecimalExpansionSequence"    } = $itype; }

@@ -1,14 +1,11 @@
 A000001	#nyd		/* A000001 */ Z.valueOf(GroupFactory.smallGroups(v.intValueExact()).size())	Number of groups of order n.
 A000002	#nyd		Kolakoski sequence: a(n) is length of n-th run; a(1) = 1; sequence consists just of 1''s and 2''s.
-A000009	#nyd		Expansion of Product_{m >= 1} (1 + x^m); number of partitions of n into distinct parts; number of partitions of n into odd parts.
 A000030	Know1	Z.valueOf(_V1.toString().charAt(0) - '0')	String.valueOf(_V1).charAt(0) - '0'	Initial digit of n.
-A000035	Know1	(_V1).testBit(0) ? Z.ONE : Z.ZERO	(_V1) & 1	Period 2: repeat [0, 1]; a(n) = n mod 2; parity of n.
 A000085	Know1	IntegerPartition.numStandardYoungTableaux(_V1.intValueExact())	Number of self-inverse permutations on n letters, also known as involutions; number of standard Young tableaux with n cells.
 A000120	Know1	Z.valueOf(v.bitCount())	1''s-counting sequence: number of 1''s in binary expansion of n (or the binary weight of n).
 A000188	#nydd		(1) Number of solutions to x^2 == 0 (mod n). (2) Also square root of largest square dividing n. (3) Also max_{ d divides n } gcd(d, n/d).
 A000201	#nyd		Lower Wythoff sequence (a Beatty sequence): a(n) = floor(n*phi), where phi = (1+sqrt(5))/2 = A001622.
 A000225	Know1	Z.TWO.pow(_V1.intValueExact()).subtract(1)	(1 << (_V1)) - 1	a(n) = 2^n - 1. (Sometimes called Mersenne numbers, although that name is usually reserved for A001348.)
-A000265	#nyd		v.makeOdd()	Remove all factors of 2 from n; or largest odd divisor of n; or odd part of n.
 A000290	Know1	_V1.square()	(_V1)*(_V1)		The squares: a(n) = n^2.
 A000593	#nydd		Sum of odd divisors of n.
 A000688	#nyd		Number of Abelian groups of order n; number of factorizations of n into prime powers.
