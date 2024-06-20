@@ -110,10 +110,15 @@ direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
 #========
 K=
-vector: dirseq dirimp known funct # prepare for and create file vector.txt for the classification of all A-numbers
+vector: dirseq dirman dirimp known funct # prepare for and create file vector.txt for the classification of all A-numbers
 	perl build_vector.pl $(K)
 	cut -b1-1024 vector.txt
 	ls -al       vector.txt
+dirman: # DirectSequences in ../manual
+	grep -iH "oeis.DirectSequence" ../manual/*.java \
+	| perl -ne 'm{(A\d+)}; print "$$1\tD\n";' \
+	| sort | uniq \
+	| tee dirseq.man
 dirseq: # DirectSequences 'D', explicit "implementing D.S.", not inherited
 	grep DirectSequence $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
 	| sed -e "s/\t/\tD\t/" -e "s/DirectSequence//" \

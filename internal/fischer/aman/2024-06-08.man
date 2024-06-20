@@ -1,33 +1,33 @@
----- 2024-06-19 19:40:05
+---- 2024-06-20 23:42:37
 # A286382	lambdan	0	n -> (ZV(2).+(((D257993(n).+(E278226(n))).^(2)).-(D257993(n)).-(D278226(n).*(3))))./(2)
-A078423	lambdan	0	n -> FA(D007504(n))./(FA(D007504(n - 1)))
-A078885	dexcf	0	new ContinuedFractionSequence(new A004200())
-A113634	lambdan	0	n -> D007504(ZV(6).^(n))		a(n) = D007504(6^n).
-A115082	lambdan	0	n -> E115081(n).+(E115081(n - 1).*(n))		a(n) = E115081(n) + n*E115081(n-1). - _Paul D. Hanna_, Feb 18 2007
-A128552	lambdan	0	n -> F000041(2*n + 4).-(SU(0, n - 1, k -> F000041(k)).*(2))		a(n) = F000041(2*n+4) - 2*Sum_{k=0..n+1} F000041(k), where F000041(n) = number of partitions of n, due to a formula given in the Fu and Sellers paper. - _Paul D. Hanna_, Feb 06 2013
-A156296	lambdan	0	n -> (n == 1) ? Z.ONE : M015502(n+1).*(2)
-A183205	lambdan	0	n -> E183204(n)./(n + 1)		a(n) = E183204(n)/(n+1), where E183204 equals the central terms of triangle €181544.
-A228926	lambdan	0	n -> E121706(n).modZ(n - 1)		a(n) = E121706(n) mod (n-1). - _T. D. Noe_, Sep 16 2013
-A248728	lambdan	0	n -> F000041(ZV(3).^(n))		a(n) = F000041(3^n). - _Michel Marcus_, Oct 18 2014
-A265825	cofract	0	new A085964()	Continued fraction expansion of the prime zeta function at 4
-A280797	lambdan	0	n -> E117812(n)./(n + 1)		a(n) = E117812(n)/(n + 1).
-A308741	dexcf	0	new ContinuedFractionSequence(1, new A016813())
-A308742	dexcf	0	new ContinuedFractionSequence(1, new A004767())
-A308743	dexcf	0	new ContinuedFractionSequence(1, new A016861())
-A308744	dexcf	0	new ContinuedFractionSequence(1, new A016897())
-A328404	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(n))
-A328405	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(F276086(n)))
-A328406	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(F276086(F276086(n))))
-A328591	filnumo	0	n -> E328578(2*n).equals(D257993(2*n))
-A328633	filnumo	0	n -> E328578(n).equals(ZV(3))
-A328634	filnumo	0	n -> E328578(n).equals(ZV(4))
-A328635	filnumo	0	n -> E328578(n).equals(ZV(5))
-A328636	filnumo	0	n -> E328578(n).equals(ZV(6))
-A335529	lambdan	0	n -> E317172(n)./(n)
-A339815	lambdan	0	n -> D007814(F000010(D019565(2*n))).-(D007814(D019565((2*n -1))))		a(n) = D007814(F000010(D019565(2n))) - D007814(D019565(2n)-1).
-A340683	lambdan	0	n -> D007949(D003961(D003961(n).+(1))./(2))		a(n) = D007949((D003961(D003961(n))+1)/2), where D003961 shifts the prime factorization of n one step towards larger primes, and D007949(x) gives the exponent of largest power of 3 dividing x.
-A346635	lambdan	0	n -> (n <= 1) ? ZV(1) : E129597(n)./(2) 	n>= 2	a(n) = E129597(n)/2 for n > 1.
-A365237	dexcf	0	new ContinuedFractionSequence(new A030167())
+#?A078423	lambdan	0	n -> FA(D007504(n))./(FA(D007504(n - 1)))
+#?A078885	dexcf	0	new ContinuedFractionSequence(new A004200())
+#?A113634	lambdan	0	n -> D007504(ZV(6).^(n))		a(n) = D007504(6^n).
+#?A115082	lambdan	0	n -> E115081(n).+(E115081(n - 1).*(n))		a(n) = E115081(n) + n*E115081(n-1). - _Paul D. Hanna_, Feb 18 2007
+#?A128552	lambdan	0	n -> F000041(2*n + 4).-(SU(0, n - 1, k -> F000041(k)).*(2))		a(n) = F000041(2*n+4) - 2*Sum_{k=0..n+1} F000041(k), where F000041(n) = number of partitions of n, due to a formula given in the Fu and Sellers paper. - _Paul D. Hanna_, Feb 06 2013
+#?A156296	lambdan	0	n -> (n == 1) ? Z.ONE : M015502(n+1).*(2)
+#?A183205	lambdan	0	n -> E183204(n)./(n + 1)		a(n) = E183204(n)/(n+1), where E183204 equals the central terms of triangle €181544.
+#?A228926	lambdan	0	n -> E121706(n).modZ(n - 1)		a(n) = E121706(n) mod (n-1). - _T. D. Noe_, Sep 16 2013
+#?A248728	lambdan	0	n -> F000041(ZV(3).^(n))		a(n) = F000041(3^n). - _Michel Marcus_, Oct 18 2014
+#?A265825	cofract	0	new A085964()	Continued fraction expansion of the prime zeta function at 4
+#?A280797	lambdan	0	n -> E117812(n)./(n + 1)		a(n) = E117812(n)/(n + 1).
+#?A308741	dexcf	0	new ContinuedFractionSequence(1, new A016813())
+#?A308742	dexcf	0	new ContinuedFractionSequence(1, new A004767())
+#?A308743	dexcf	0	new ContinuedFractionSequence(1, new A016861())
+#?A308744	dexcf	0	new ContinuedFractionSequence(1, new A016897())
+#?A328404	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(n))
+#?A328405	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(F276086(n)))
+#?A328406	lambdan	0	n -> Functions.DIGIT_LENGTH.z(10, F276086(F276086(F276086(n))))
+#?A328591	filnumo	0	n -> E328578(2*n).equals(D257993(2*n))
+#?A328633	filnumo	0	n -> E328578(n).equals(ZV(3))
+#?A328634	filnumo	0	n -> E328578(n).equals(ZV(4))
+#?A328635	filnumo	0	n -> E328578(n).equals(ZV(5))
+#?A328636	filnumo	0	n -> E328578(n).equals(ZV(6))
+#?A335529	lambdan	0	n -> E317172(n)./(n)
+#?A339815	lambdan	0	n -> D007814(F000010(D019565(2*n))).-(D007814(D019565((2*n -1))))		a(n) = D007814(F000010(D019565(2n))) - D007814(D019565(2n)-1).
+#?A340683	lambdan	0	n -> D007949(D003961(D003961(n).+(1))./(2))		a(n) = D007949((D003961(D003961(n))+1)/2), where D003961 shifts the prime factorization of n one step towards larger primes, and D007949(x) gives the exponent of largest power of 3 dividing x.
+#?A346635	lambdan	0	n -> (n <= 1) ? ZV(1) : E129597(n)./(2) 	n>= 2	a(n) = E129597(n)/2 for n > 1.
+#?A365237	dexcf	0	new ContinuedFractionSequence(new A030167())
 
 %N A329239 Numbers k such that the sum of unitary divisors of k is a cube.
 %N A329730 Numbers k such that usigma(uphi(k)) = uphi(usigma(k)), where usigma is the sum of unitary divisors function (A034448) and uphi is the unitary totient function (A047994).
@@ -41,3 +41,43 @@ A365237	dexcf	0	new ContinuedFractionSequence(new A030167())
 %N A329882 Nonunitary superabundant numbers: numbers m such that nusigma(m)/m > nusigma(k)/k for all k < m, where nusigma(m) is the sum of nonunitary divisors of m (A048146).
 %N A329883 Nonunitary highly abundant numbers: numbers m such that nusigma(m) > nusigma(k) for all k < m, where s(n) is the sum of nonunitary divisors of n (A048146).
 %N A329884 Nonunitary superperfect numbers: numbers k such that nusigma(nusigma(k)) = k, where nusigma(k) = sigma(k) - usigma(k) is the sum of nonunitary divisors of k (A048146).
+
+
+#A133578	lambdan	0	n -> F001414(F000040(n)+1)+F001414(F000040(n)-1), n>1
+#A133685	lambdan	0	n -> F001414(F000040(n)+1)-F001414(F000040(n)-1), n>1
+#A275380	lambdan	0	n -> F001222(E078304(n)) for n > 0
+#A283468	lambdan	0	n -> (n <= 2) ? ZV(1) : M004001(M004001(n - 1)).-(M004001(ZV(n).-(M004001(n - 1))))
+#A283469	lambdan	0	n -> (n <= 2) ? ZV(1) : M004001(M004001(n - 1)).or(M004001(ZV(n).-(M004001(n - 1))))
+#A283470	lambdan	0	n -> (n <= 2) ? ZV(1) : M004001(M004001(n - 1)).xor(M004001(ZV(n).-(M004001(n - 1))))
+#A283472	lambdan	0	n -> (n <= 2) ? ZV(0) : M004001(M004001(n - 1)).and(M004001(ZV(n).-(M004001(n - 1))))
+#A350700	lambdan	0	n -> E145037(F000045(n)) for n >= 1
+A078558	lambdan	0	n -> GCD(F000203(F002110(n)), F000005(F002110(n)))
+A081431	lambdan	0	n -> D030101(F004086(n))
+A082879	lambdan	0	n -> F000720(F000142(F000040(n)))
+A083722	lambdan	0	n -> F002110(F049084(F007917(n)))./(F002110(F049084(F006530(n))))
+A086609	lambdan	0	n -> F000720(F000041(n + 1)).-(F000720(F000041(n)))
+A093429	lambdan	0	n -> F001221(F002110(n).+(F002110(2*n))./(F002110(n)))
+A098957	lambdan	0	n -> D030101(F000040(n))
+A105554	lambdan	0	n -> F000040(F000045(n + 3).+(1))
+A109796	lambdan	0	n -> SU(1, n,  k -> F000040(D000583(k)))
+A248735	lambdan	0	n -> F055642(E248734(n))
+A252750	lambdan	0	n -> D003961(D005940(n + 1)).-(D005940(n + 1).*(2))
+A266402	lambdan	0	n -> D064989(D030101(D003961(n)))
+A268837	lambdan	0	n -> SU(0, n,  k -> F003188(F006068(n).+(F006068(n - k))))
+A295891	lambdan	0	n -> F000120(n).+(F000120(D003961(n)).and(Z.ONE))
+A324394	lambdan	0	n -> D009194(D005940(1+n))
+A324822	lambdan	0	n -> D010052(D156552(n))
+A324888	lambdan	0	n -> F001222(E324886(n))
+A328569	lambdan	0	n -> E276088(F276086(n))
+A328843	lambdan	0	n -> E328841(F276086(n))
+A328844	lambdan	0	n -> E328842(F276086(n))
+A329030	lambdan	0	n -> E329028(F276086(n))
+A329040	lambdan	0	n -> F001221(E324886(n))
+A329344	lambdan	0	n -> E328114(E108951(n))
+A329349	lambdan	0	n -> E276153(E108951(n))
+A329619	lambdan	0	n -> E328114(E108951(n)).-(D007814(E108951(n)))
+A332462	lambdan	0	n -> D019565(D156552(n))
+A337532	lambdan	0	n -> F000217(F000005(F000265(n)).+(F000217(F000005(F000265(n)).*(D007814(n)))))
+A342920	lambdan	0	n -> E342002(E108951(n))
+A373598	lambdan	0	n -> E373143(F276086(n))
+A373601	lambdan	0	n -> E373371(F276086(n))

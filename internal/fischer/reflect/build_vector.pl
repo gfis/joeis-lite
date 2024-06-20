@@ -60,6 +60,7 @@ for (my $sno = 0; $sno <= $max_anumber; $sno ++) {
 }
 &read_file("$reflect/dirimp.txt");
 &read_file("$reflect/dirseq.txt");
+&read_file("$reflect/dirseq.man");
 &read_file("$reflect/known.txt") if $known > 0;
 &read_file("$reflect/funct.txt");
 
