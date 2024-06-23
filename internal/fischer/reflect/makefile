@@ -110,15 +110,19 @@ direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
 #========
 K=
-vector: dirseq dirman dirimp known funct # prepare for and create file vector.txt for the classification of all A-numbers
+vector: dirseq dirman dirdate dirimp known funct # prepare for and create file vector.txt for the classification of all A-numbers
 	perl build_vector.pl $(K)
 	cut -b1-1024 vector.txt
 	ls -al       vector.txt
 dirman: # DirectSequences in ../manual
-	grep -iH "oeis.DirectSequence" ../manual/*.java \
+	grep -iHP "oeis\.(DirectSequence|LambdaSequence)" ../manual/*.java \
 	| perl -ne 'm{(A\d+)}; print "$$1\tD\n";' \
 	| sort | uniq \
 	| tee dirseq.man
+dirdate: # grep LambdaSequences from aman/date.man
+	grep -P "^A\d{6}\s+lambdan" ../aman/`date +%Y-%m-%d`.man | cut -b1-9 | sed -e "s/l/E/" \
+	| tee -a dirseq.man 
+	wc -l    dirseq.man
 dirseq: # DirectSequences 'D', explicit "implementing D.S.", not inherited
 	grep DirectSequence $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
 	| sed -e "s/\t/\tD\t/" -e "s/DirectSequence//" \
@@ -187,7 +191,7 @@ pack_nest: # GREP= pack all extending $(GREP)
 	perl queue.pl -p $@.tmp > $@.pack
 	grep -P " class |super\(" $@.pack \
 	| perl -pe 's/\{ *\r?\n/\t/; s/ extends \w+ *//; s/public class //;' \
-	| perl $(COMMON)/../arti/endirect.pl -f ./direct.tmp \
+	| endirect \
 	| tee    $@.super.tmp
 	grep -P "\d\,\s*new D" $@.super.tmp \
 	| sort -k4,4 \

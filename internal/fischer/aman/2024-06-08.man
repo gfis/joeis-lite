@@ -1,8 +1,8 @@
----- 2024-06-22 00:00:05
+---- 2024-06-22 16:47:00
 # A286382	lambdan	0	n -> (ZV(2).+(((D257993(n).+(E278226(n))).^(2)).-(D257993(n)).-(D278226(n).*(3))))./(2)
 #?A078423	lambdan	0	n -> FA(D007504(n))./(FA(D007504(n - 1)))
 #?A078885	dexcf	0	new ContinuedFractionSequence(new A004200())
-#?A113634	lambdan	0	n -> D007504(ZV(6).^(n))		a(n) = D007504(6^n).
+A113634	lambdan	0	n -> D007504(ZV(6).^(n))		a(n) = D007504(6^n).
 #?A115082	lambdan	0	n -> E115081(n).+(E115081(n - 1).*(n))		a(n) = E115081(n) + n*E115081(n-1). - _Paul D. Hanna_, Feb 18 2007
 #?A128552	lambdan	0	n -> F000041(2*n + 4).-(SU(0, n - 1, k -> F000041(k)).*(2))		a(n) = F000041(2*n+4) - 2*Sum_{k=0..n+1} F000041(k), where F000041(n) = number of partitions of n, due to a formula given in the Fu and Sellers paper. - _Paul D. Hanna_, Feb 06 2013
 #?A156296	lambdan	0	n -> (n == 1) ? Z.ONE : M015502(n+1).*(2)
@@ -81,36 +81,34 @@
 #fail A342920	lambdan	0	n -> E342002(E108951(n))
 #fail A373598	lambdan	0	n -> E373143(F276086(n))
 #fail A373601	lambdan	0	n -> E373371(F276086(n))
-#order? A174435	simtraf	0	new A046388()	(n, v) -> F002322(v)./(F002326(v.+(1)./(2)))	F002322(J046388(n))/F002326((J046388(n)+1)/2)
-# A361989	simtraf	0	new A072649()	(n, v) -> F000045(v).-(J194029(n))	 for n > 0	F000045(J072649(n)) - J194029(n) for n > 0
-#A073483	simtraf	0	new A073482()	(n, v) -> F002110(v)./(J005117(n)*F002110(J073481(n)))	F002110(J073482(n))/(J005117(n)*F002110(J073481(n)))
-#A078266	simtraf	0	new A007908()	(n, v) -> F007953(v).*(10^F055642(v).-(1))./(9*F055642(J007908(n)))	F007953(J007908(n))*(10^F055642(J007908(n))-1)/(9*F055642(J007908(n)))
-#A097935	simtraf	0	new A014688()	(n, v) -> F000720(v).-(F000720(J014689(n)-1)	F000720(J014688(n)) - F000720(J014689(n)-1)
-#A161643	simtraf	0	new A052369()	(n, v) -> F000217(v).-(F000217(J056608(n)-1). [_R. J. Mathar_, Jun 16 2009]	F000217(J052369(n))-F000217(J056608(n)-1). [_R. J. Mathar_, Jun 16 2009]
-#A163356	simtraf	0	new A059253()	(n, v) -> D000695(v).+(D000695(J059252(n)).*(2))	D000695(J059253(n)) + 2*D000695(J059252(n))
-#A163540	simtraf	0	new A163538()	v -> E010873(v+J163539(n)+abs(J163539(n))+3)	E010873(J163538(n)+J163539(n)+abs(J163539(n))+3)
-#A163541	simtraf	0	new A163538()	(n, v) -> E010873(v .+(J163539(n) + abs(J163538(n)) + 3)	E010873(J163538(n) + J163539(n) + abs(J163538(n)) + 3)
-#A163547	simtraf	0	new A059252()	(n, v) -> D000290(v).+(D000290(J059253(n))	D000290(J059252(n))+D000290(J059253(n))
-#A166173	simtraf	0	new A001359()	(n, v) -> F007953(v).+(F007953(J006512))	F007953(J001359(n)) + F007953(J006512)
-#A175144	simtraf	0	new A006093()	(n, v) -> F000005(v).+(F000005(J008864(n))	F000005(J006093(n)) + F000005(J008864(n))
-#A247191	simtraf	0	new A002025()	(n, v) -> F001222(v .*(J002046(n))	F001222(J002025(n) * J002046(n))
-#A283461	simtraf	0	new A000225()	v -> F006530(v/J005420(n))	F006530(J000225(n)/J005420(n))
-#A305558	simtraf	0	new A029707()	(n, v) -> F000040(v.-(1)).+(F000040(J107770(n)+1).-(J001359(n) + J006512(n))	F000040(J029707(n)-1) + F000040(J107770(n)+1) - (J001359(n) + J006512(n))
-#A328108	simtraf	0	new A110240()	v -> F000120(v XOR 2*D030101(J110240(n-1)))	F000120(J110240(n) XOR 2*D030101(J110240(n-1)))
-#A328108	simtraf	0	new A110240()	v -> F000120(v XOR 2*J265281(n-1))	F000120(J110240(n) XOR 2*J265281(n-1))
-#A345290	simtraf	0	new A063695()	(n, v) -> D022290(v).-(D022290(J063694(n)))	D022290(J063695(n)) - D022290(J063694(n))
-#A356771	simtraf	0	new A003714()	v -> D022290(v AND J003754(n+1)) (where AND denotes the bitwise AND operator)	D022290(J003714(n) AND J003754(n+1)) (where AND denotes the bitwise AND operator)
+#order? A174435	sintraf	0	new A046388()	(term, n) -> F002322(term)./(F002326(term.+(1)./(2)))	F002322(J046388(n))/F002326((J046388(n)+1)/2)
+# A361989	sintraf	0	new A072649()	(term, n) -> F000045(term).-(J194029(n))	 for n > 0	F000045(J072649(n)) - J194029(n) for n > 0
+#A073483	sintraf	0	new A073482()	(term, n) -> F002110(term)./(J005117(n)*F002110(J073481(n)))	F002110(J073482(n))/(J005117(n)*F002110(J073481(n)))
+#A078266	sintraf	0	new A007908()	(term, n) -> F007953(term).*(10^F055642(term).-(1))./(9*F055642(J007908(n)))	F007953(J007908(n))*(10^F055642(J007908(n))-1)/(9*F055642(J007908(n)))
+#A097935	sintraf	0	new A014688()	(term, n) -> F000720(term).-(F000720(J014689(n)-1)	F000720(J014688(n)) - F000720(J014689(n)-1)
+#A161643	sintraf	0	new A052369()	(term, n) -> F000217(term).-(F000217(J056608(n)-1). [_R. J. Mathar_, Jun 16 2009]	F000217(J052369(n))-F000217(J056608(n)-1). [_R. J. Mathar_, Jun 16 2009]
+#A163356	sintraf	0	new A059253()	(term, n) -> D000695(term).+(D000695(J059252(n)).*(2))	D000695(J059253(n)) + 2*D000695(J059252(n))
+#A163540	sintraf	0	new A163538()	(term, n) -> E010873(term+J163539(n)+abs(J163539(n))+3)	E010873(J163538(n)+J163539(n)+abs(J163539(n))+3)
+#A163541	sintraf	0	new A163538()	(term, n) -> E010873(term .+(J163539(n) + abs(J163538(n)) + 3)	E010873(J163538(n) + J163539(n) + abs(J163538(n)) + 3)
+#A163547	sintraf	0	new A059252()	(term, n) -> D000290(term).+(D000290(J059253(n))	D000290(J059252(n))+D000290(J059253(n))
+#A166173	sintraf	0	new A001359()	(term, n) -> F007953(term).+(F007953(J006512))	F007953(J001359(n)) + F007953(J006512)
+#A175144	sintraf	0	new A006093()	(term, n) -> F000005(term).+(F000005(J008864(n))	F000005(J006093(n)) + F000005(J008864(n))
+#A247191	sintraf	0	new A002025()	(term, n) -> F001222(term .*(J002046(n))	F001222(J002025(n) * J002046(n))
+#A283461	sintraf	0	new A000225()	(term, n) -> F006530(term/J005420(n))	F006530(J000225(n)/J005420(n))
+#A305558	sintraf	0	new A029707()	(term, n) -> F000040(term.-(1)).+(F000040(J107770(n)+1).-(J001359(n) + J006512(n))	F000040(J029707(n)-1) + F000040(J107770(n)+1) - (J001359(n) + J006512(n))
+#A328108	sintraf	0	new A110240()	(term, n) -> F000120(term XOR 2*D030101(J110240(n-1)))	F000120(J110240(n) XOR 2*D030101(J110240(n-1)))
+#A328108	sintraf	0	new A110240()	(term, n) -> F000120(term XOR 2*J265281(n-1))	F000120(J110240(n) XOR 2*J265281(n-1))
+#A345290	sintraf	0	new A063695()	(term, n) -> D022290(term).-(D022290(J063694(n)))	D022290(J063695(n)) - D022290(J063694(n))
+#A356771	sintraf	0	new A003714()	(term, n) -> D022290(term AND J003754(n+1)) (where AND denotes the bitwise AND operator)	D022290(J003714(n) AND J003754(n+1)) (where AND denotes the bitwise AND operator)
 
 
-
+# A373868	nyi o	Integers that are not perfect fifth powers.	nonn,easy,new	1..68	nyi	_Chai Wah Wu_
 #A082969	Numbers n such that (n/4)^2-n/8=sum(k=1,n, k mod sum(i=0,k-1,1-t(i))) where t(i)=F010060(i) is the Thue-Morse sequence
 #A087917	lambdan	0	n -> SUi+j+k=n, F010060(i)*F010060(j)*F010060(k)) - _Benoit Cloitre_, Mar 19 2004	sum(i+j+k=n, F010060(i)*F010060(j)*F010060(k)) - _Benoit Cloitre_, Mar 19 2004
 #A091822	lambdan	0	n -> 2*sum(k=0,n,sum(i=0,k,sum(j=0,i, F010060(j)))).-(1/6).*(n^3+6*n^2+11*n-6)	2*sum(k=0,n,sum(i=0,k,sum(j=0,i, F010060(j))))-(1/6)*(n^3+6*n^2+11*n-6)
 #A094541	Numerator of Product_{k=0..n} ((2*k+1)/(2*k+2))^((-1)^t(k)) where t(k)=F010060(k) (Thue-Morse sequence)
 #A100472	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k)).*(BI(n, k).and(ZV(1))) * 9^k	Sum_{k=0..n} (-1)^F010060(n-k) * (BI(n, k) mod 2) * 9^k
-A100681	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k).*(BI(n, k).and(ZV(1))).*(ZV(10).^(k))))	sum{k=0..n, (-1)^F010060(n-k)*mod(BI(n, k), 2)10^k}
 #A100746	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k).*(BI(n, k).and(ZV(1))).*(J(n)}	sum{k=0..n, (-1)^F010060(n-k)*mod(BI(n, k), 2)J(n)}
-A101554	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k).*(BI(n, k).and(ZV(1))).*(E100735(k))))	sum{k=0..n, (-1)^F010060(n-k)*mod(BI(n, k), 2)E100735(k)}
 #A114225	As a number triangle, T(n, k) = if(k<=n, sum{j=0..n, C(k, j)*C(n-k, n-j)*F010060(k-j+1)}, 0)
 #A114225	As a number triangle, T(n, k) = sum{j=0..n, C(n-k, n-j)*C(k, j-k)*F010060(j-k+1)}
 #A114225	As a number triangle, T(n, k) = sum{j=0..n-k, C(n-k, j)*C(k, j)*F010060(j+1)}
@@ -130,44 +128,74 @@ A101554	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k).*(BI(n, k).and(ZV(1))).*
 #A285779	Parity index: number of integers z with 1 <= z <= n for which F010060(z) = F010060(n), negated if F010060(n) = 1
 #A290637	f(n) = Product_{k=0..2^(n-1)-1} ((2k+1)/(2k+2))^((-1)^tm(k)), where tm(k) is the Thue-Morse sequence F010060
 #A293439	Additive with a(p^e) = F010060(e)
-A331520	multrar	0	(self, n) -> SU(0, n, k -> Z_1(F010060(n - k)).*(BI(n, k).and(ZV(1))).*(self.a(k + 2)))	""	Sum_{k=0..n} (-1)^F010060(n-k) * (BI(n, k) mod 2) * a(k+2)
 #A363769	Numbers of the form 2^(2k+1)*(8r+2t_{r}+3): k, r positive integers} and t_{r} is r-th term of the Prouhet-Thue-Morse sequence on the alphabet {-1, +1}, i.e., t_{r} = (-1)^{s_{2}(r)}, where s_{2}(r) is the sum of binary digits of r. We have t_{r}=(-1)^F010060(n)
 #A372530	(7) x = Sum_{n>=1} (-1)^F010060(n-1) * A(x)^n, where F010060 is the Thue-Morse sequence
-A093046	simtraf	0	new A058328()	v -> F000040(v)	F000040(J058328(n))
-A095124	simtraf	0	new A001146()	v -> F000040(v)	F000040(J001146(n))
+
+A093046	sintraf	0	(term, n) -> F000040(term)	new A058328()	F000040(J058328(n))
+A095124	sintraf	0	(term, n) -> F000040(term)	new A001146()	F000040(J001146(n))
+A100681	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k).*(BI(n, k).and(ZV(1))).*(ZV(10).^(k))))	sum{k=0..n, (-1)^F010060(n-k)*mod(BI(n, k), 2)10^k}
+A101554	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k).*(BI(n, k).and(ZV(1))).*(E100735(k))))	sum{k=0..n, (-1)^F010060(n-k)*mod(BI(n, k), 2)E100735(k)}
 A101679	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(2*n - 2*k).*(BI(2*n - k, k).and(ZV(1))).*(Z.TEN.^(k))))	sum{k=0..n, (-1)^F010060(2n-2k)*mod(BI(2n-k, k), 2)10^k}
 A104894	arrlamb	0	0	0	1	(n, k) -> F010060(ZV(k).mod(Z2(n + 1)))
-A107482	simtraf	0	new A007539()	v -> F001222(v)	F001222(J007539(n))
-A120355	simtraf	0	new A007677()	v -> D002034(v)	D002034(J007677(n))
-A145343	simtraf	0	new A005179().skip(1)	v -> F007917(v)
+A107482	sintraf	0	(term, n) -> F001222(term)	new A007539()	F001222(J007539(n))
+A120355	sintraf	0	(term, n) -> D002034(term)	new A007677()	D002034(J007677(n))
+A145343	sintraf	0	(term, n) -> F007917(term)	new A005179()	
 A161641	filnumo	0	n -> F010060(n).+(F010060(n + 4)).equals(ZV(1))
 A161673	filnumo	0	n -> F010060(n).+(F010060(n + 8)).equals(ZV(1))
-A161763	simtraf	0	new A001359()	(n, v) -> F000040(v).*(F000040(D006519(n)))	F000040(J001359(n))*F000040(D006519(n))
+A161763	sintraf	0	(term, n) -> F000040(term).*(F000040(D006519(n)))	new A001359()	F000040(J001359(n))*F000040(D006519(n))
 A161817	filnumo	0	n -> F010060(n).equals(F010060(n + 5))
 A161824	filnumo	0	n -> F010060(n).equals(F010060(n + 6))
-A166281	simtraf	0	new A018252()	v -> M002033(v.-(1))	M002033(J018252(n)-1)
-A177357	simtraf	0	new A086801()	v -> F000196(v)	F000196(J086801(n))
-A225017	simtraf	0	new A055566()	v -> E132740(v)	E132740(J055566(n))
-A244983	simtraf	0	new A070003()	(n, v) -> (n == 1) ? Z.ONE : D122111(v).+(1)./(2)	a(1) = 1, a(n) = (1 + A122111(A070003(n-1))) / 2.
-A248056	filnum	0	0	n -> F010060(n).isZero() && F010060(n + 1).isZero()	 Positions of 0,0 in the Thue-Morse sequence (F010060)
-A248057	filnum	0	0	n -> F010060(n).equals(ZV(1)) && F010060(n + 1).equals(ZV(1))	Positions of 1,1 in the Thue-Morse sequence (F010060)
+A166281	sintraf	0	(term, n) -> M002033(term.-(1))	new A018252()	M002033(J018252(n)-1)
+A225017	sintraf	0	(term, n) -> E132740(term)	new A055566()	E132740(J055566(n))
+A248056	filnum	0	1	n -> F010060(n).isZero() && F010060(n + 1).isZero()	 Positions of 0,0 in the Thue-Morse sequence (F010060)
+A248057	filnum	0	1	n -> F010060(n).equals(ZV(1)) && F010060(n + 1).equals(ZV(1))	Positions of 1,1 in the Thue-Morse sequence (F010060)
 A248104	filnum	0	0	n -> F010060(n).isZero() && F010060(n + 1).equals(ZV(1)) && F010060(n + 2).isZero()	Positions of 0,1,0 in the Thue-Morse sequence (F010060)
 A248105	filnum	0	0	n -> F010060(n).equals(ZV(1)) && F010060(n + 1).isZero() && F010060(n + 2).equals(ZV(1))	Positions of 1,0,1 in the Thue-Morse sequence (F010060)
 A267263	lambdan	0	n -> ZV(Functions.PRIMORIAL_BASE_EXP.z(n).toString().replaceAll("0","").length())
-A277195	simtraf	0	new A277010()	v -> D022290(v)
-A279904	simtraf	0	new A058781()	v -> F000040(v)	F000040(J058781(n))
-A302045	simtraf	0	new A078898()	(n, v) -> (n == 1) ? Z.ZERO : D001511(v)
-A328318	simtraf	0	new A328316()	v -> E267263(v)
-A328319	simtraf	0	new A328316()	v -> E276150(v)	E276150(J328316(n))
-A328322	simtraf	0	new A328316()	v -> E328114(v)	E328114(J328316(n))
-A328323	simtraf	0	new A328316()	v -> E324198(v)
-A334031	simtraf	0	new A059893()	v -> M057335(v)	M057335(J059893(n))
-A334173	simtraf	0	new A089309()	(n, v) -> F010060(n).equals(ZV(1)) ? Z.ZERO : (v.testBit(0) ? D006519(n) : D006519(n).*(2))	 according as J089309(n) odd or even respectively; where D006519 takes the lowest 1-bit of n, and J089309 is the length of the lowest run of 1-bits of n	0 if F010060(n)=1, otherwise a(n) = D006519(n) or 2*D006519(n) according as J089309(n) odd or even respectively; where D006519 takes the lowest 1-bit of n, and J089309 is the length of the lowest run of 1-bits of n
-A339970	simtraf	0	new A339971()	(n, v) -> D329697(v).+(F000120(n))	D329697(J339971(n)) + F000120(n)
-A357253	simtraf	0	new A008588().skip(1)	v -> F007917(v)	F007917(J008588(n))
-A365161	simtraf	0	new A059305()	v -> D001223(v.-(1))	D001223(J059305(n)-1)
-A365460	simtraf	0	new A181821()	v -> E267263(v)	E267263(J181821(n))
-A365461	simtraf	0	new A181821()	v -> E276150(v)	E276150(J181821(n))
-A372507	simtraf	0	new A067381()	v -> F000720(v)	F000720(J067381(n))
-A373112	simtraf	0	new A000149().skip(1)	v -> F070939(v)	F070939(J000149(n))
-A373154	simtraf	0	new A008588().skip(1)	v -> D008966(v)
+A277195	sintraf	0	(term, n) -> D022290(term)	new A277010()	
+A279904	sintraf	0	(term, n) -> F000040(term)	new A058781()	F000040(J058781(n))
+A302045	sintrif	0	(term, n) -> D001511(term)	"0"	new A078898()	
+A328318	sintraf	0	(term, n) -> E267263(term)	new A328316()	
+A328319	sintraf	0	(term, n) -> E276150(term)	new A328316()	E276150(J328316(n))
+A328322	sintraf	0	(term, n) -> E328114(term)	new A328316()	E328114(J328316(n))
+A328323	sintraf	0	(term, n) -> E324198(term)	new A328316()	
+A331520	multrar	0	(self, n) -> SU(0, n, k -> Z_1(F010060(n - k)).*(BI(n, k).and(ZV(1))).*(self.a(k + 2)))	""	Sum_{k=0..n} (-1)^F010060(n-k) * (BI(n, k) mod 2) * a(k+2)
+A334031	sintraf	0	(term, n) -> M057335(term)	new A059893()	M057335(J059893(n))
+A339970	sintraf	0	(term, n) -> D329697(term).+(F000120(n))	new A339971()	D329697(J339971(n)) + F000120(n)
+A365161	sintraf	0	(term, n) -> D001223(term.-(1))	new A059305()	D001223(J059305(n)-1)
+A365460	sintraf	0	(term, n) -> E267263(term)	new A181821()	E267263(J181821(n))
+A365461	sintraf	0	(term, n) -> E276150(term)	new A181821()	E276150(J181821(n))
+A372507	sintraf	0	(term, n) -> F000720(term)	new A067381()	F000720(J067381(n))
+A164266	multraf	0	(self, n) -> F000720(self.s(0)).-(F000720(self.s(1)))	"9"	new A000396().skip(), PREVIOUS
+A333725	multraf	0	(self, n) -> F000720(self.s(0)).-(F000720(self.s(1)))	"0"	new A002182().skip(), PREVIOUS
+A371981	multraf	0	(self, n) -> F000720(self.s(0)).-(F000720(self.s(1)))	""	new A005384().skip(), PREVIOUS
+A127171	multraf	0	(self, n) -> F006530(self.s(0)).-(F006530(self.s(1)))	""	new A014612()	F006530(J014612(n+1)) - F006530(J014612(n))
+
+A352217	multraf	0	(self, n) -> self.s(1).*(2*n - 1).+(1)	"2"	new A165781(), PREVIOUS	a(n) = 1 + A165781(n-1)*(2*n-1)
+A193434	sintraf	0	(term, n) -> term.*(45)	""	new A057148().skip()
+A161346	sintraf	0	(term, n) -> term./(3)	new A161345()
+A161425	sintraf	0	(term, n) -> term./(2)	new A161424()
+A161428	sintraf	0	(term, n) -> term./(4)	new A161424()
+A161839	sintraf	0	(term, n) -> term./(5)	new A161835()
+A162903	sintraf	0	(term, n) -> term./(11)	new A162531()
+
+A255133	sintraf	0	(term, n) -> F034444(term)	new J038003()
+
+
+T(n,1) = J054429(n); # A115310
+T(n,2) = A115303(n-1) for n>1;
+T(n,3) = J115304(n-2) for n>2;
+T(n,4) = J115305(n-3) for n>3;
+T(n,5) = J115306(n-4) for n>4;
+T(n,6) = J115307(n-5) for n>5;
+T(n,7) = J115308(n-6) for n>6;
+T(n,8) = J115309(n-7) for n>7;
+T(n,9) = A106649(n-8) for n>8;
+
+
+---- 2024-06-23 23:13:57
+all bad
+A113332	lambdan	0	n -> M000699(n + 1).*(ZV(2*n + 3)).*(ZV(n + 2))./(ZV(3*n + 3))	""			M000699(n+1)*(2*n+3)*(n+2)/(3*(n+1))
+A166281	sintrif	0	(term, n) -> M002033(term.-(1))	""	new A018252()		M002033(J018252(n)-1)
+A235224	lambdan	0	n -> E061395(F276086(n))	""			E061395(F276086(n))
+A330681	sintrif	0	(term, n) -> E283980(term)	""	new A025487()		E283980(J025487(n))

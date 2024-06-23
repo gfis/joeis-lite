@@ -8701,3 +8701,8 @@ check2024:
 	# | cut -f2- | uniq -w7 | sort \
 	# > aman/c2024.man
 	make CC=c2024 select gener dist
+#----
+ntraf:
+	sed -e "s/sintraf/sintrif/" -e "s/J/A/g"  $(ROBOT)/$@.gen > $@.gen
+	head -n2 $@.gen
+	wc -l    $@.gen

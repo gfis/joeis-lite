@@ -1,6 +1,6 @@
 package irvine.test;
 
-import irvine.math.IntegerUtils;
+import irvine.math.function.Functions;
 import irvine.math.z.Z;
 import irvine.oeis.GramMatrixThetaSeries;
 import irvine.oeis.transform.InverseEulerTransform;
@@ -65,7 +65,7 @@ public class GramMatrixTest extends GramMatrixThetaSeries {
     } // while args
 
     final String[] elems = matrix.split("\\,");
-    final int dim = diag ? elems.length : IntegerUtils.sqrt(elems.length);
+    final int dim = diag ? elems.length : Functions.SQRT.i(elems.length);
     final long[][] gMatrix = new long[dim][dim];
     int iElem = 0;
     if (diag) {

@@ -1,0 +1,50 @@
+                                    ^
+                                ^
+            ^
+         ^
+       ^
+  found: no arguments
+  private final MemorySequence mB = new A000081();
+  private final Sequence mA55 = new A000081();
+  protected A007200(final int m) {
+  protected A054681(final int gap) {
+  protected A176772(final int start) {
+  public A005754(final int leaves) {
+  public A008952(final int offset) {
+  public A035143(final int m) {
+  public A054055(final int base) {
+  public A055235(final int base) {
+  public A067480(final int digit) {
+  public A067499(final int base) {
+  public A067508(final int base) {
+  public A069588(final int digit) {
+  public A105471(final int parm) {
+  public A143491(final int stir) {
+  public A143494(final int stir) {
+  public A143497(final int lah) {
+  public A169964() {
+  public A215861() {
+  reason: actual and formal argument lists differ in length
+  required: int
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a000\A000055.java:25: error: constructor A000081 in class A000081 cannot be applied to given types;
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a005\A005754.java:32: error: constructor A005754(int) is already defined in class A005754
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a007\A007200.java:48: error: constructor A007200(int) is already defined in class A007200
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a008\A008952.java:28: error: constructor A008952(int) is already defined in class A008952
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a033\A033185.java:32: error: constructor A000081 in class A000081 cannot be applied to given types;
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a035\A035143.java:32: error: constructor A035143(int) is already defined in class A035143
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a054\A054055.java:31: error: constructor A054055(int) is already defined in class A054055
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a054\A054681.java:25: error: constructor A054681(int) is already defined in class A054681
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a055\A055235.java:31: error: constructor A055235(int) is already defined in class A055235
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a063\A063904.java:9: error: constructor A063884 in class A063884 cannot be applied to given types;
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a067\A067480.java:31: error: constructor A067480(int) is already defined in class A067480
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a067\A067499.java:32: error: constructor A067499(int) is already defined in class A067499
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a067\A067508.java:32: error: constructor A067508(int) is already defined in class A067508
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a069\A069588.java:32: error: constructor A069588(int) is already defined in class A069588
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a105\A105471.java:34: error: constructor A105471(int) is already defined in class A105471
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a143\A143491.java:31: error: constructor A143491(int) is already defined in class A143491
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a143\A143494.java:31: error: constructor A143494(int) is already defined in class A143494
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a143\A143497.java:31: error: constructor A143497(int) is already defined in class A143497
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a169\A169964.java:23: error: constructor A169964() is already defined in class A169964
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a176\A176772.java:21: error: constructor A176772(int) is already defined in class A176772
+C:\Users\User\work\gits\joeis-lite\src\irvine\oeis\a215\A215861.java:21: error: constructor A215861() is already defined in class A215861
+public class A063904 extends A063884 {
