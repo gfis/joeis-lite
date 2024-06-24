@@ -155,6 +155,7 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	wc -l    $@.txt
 funct: # extract from jOEIS source
 	perl read_functions.pl $(JOEIS)/src/irvine/math/function/Functions.java \
+	|grep -v F002322 \
 	| sort | uniq -w7 \
 	| tee    funct.txt
 	wc -l    funct.txt
@@ -185,21 +186,26 @@ genall3: # count the callcodes
 	cut -f2 genall.gen | sort | uniq -c | sort | tee $@.tmp
 #----
 GREP=NestedSequence
-pack_nest: # GREP= pack all extending $(GREP)
+pack_nest: pack_nest1 pack_nest2 pack_nest3 pack_nest4 # GREP= pack all extending $(GREP)
+pack_nest1: # pack the relevant *.java
 	grep -P "\t$(GREP)\t" $(COMMON)/joeis_names.txt \
 	| tee    $@.tmp
 	perl queue.pl -p $@.tmp > $@.pack
-	grep -P " class |super\(" $@.pack \
+pack_nest2: # grep super calls and encode them
+	grep -P " class |super\(" pack_nest1.pack \
 	| perl -pe 's/\{ *\r?\n/\t/; s/ extends \w+ *//; s/public class //;' \
 	| endirect \
 	| tee    $@.super.tmp
-	grep -P "\d\,\s*new D" $@.super.tmp \
+pack_nest3: # extract the underlying DirectSequences [DEFK] 
+	grep -P "\d\,\s*new [DEFK]\d{6}" pack_nest2.super.tmp \
 	| sort -k4,4 \
 	| tee    $@.direct.tmp
-	grep -P "\d\,\s*new A" $@.super.tmp \
+	grep -P "\d\,\s*new A"           pack_nest2.super.tmp \
 	| sort -k4,4 \
 	| tee    $@.nondir.tmp
-	wc -l    $@.*tmp
+	wc -l    pack_nest*.tmp
+pack_nest4: # grep the broken ones
+	grep -P "v \-\> *\t" pack_nest3.direct.tmp
 #----
 hasoc_prep: # DIR= grep all that have a constructor with an isolated offset parameter
 	find src/irvine/oeis -iname "*.java" | xargs -l grep -P "(public|protected) \w+\(final *int *offset" \

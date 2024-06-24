@@ -199,3 +199,9 @@ A113332	lambdan	0	n -> M000699(n + 1).*(ZV(2*n + 3)).*(ZV(n + 2))./(ZV(3*n + 3))
 A166281	sintrif	0	(term, n) -> M002033(term.-(1))	""	new A018252()		M002033(J018252(n)-1)
 A235224	lambdan	0	n -> E061395(F276086(n))	""			E061395(F276086(n))
 A330681	sintrif	0	(term, n) -> E283980(term)	""	new A025487()		E283980(J025487(n))
+---- 2024-06-23 23:24:34
+bad
+A067792	lambdan	0	n -> F007918(F000203(n))
+A072800	sintrif	0	(term, n) -> D030101(term)	""	new A014486()
+A096215	sintrif	0	(term, n) -> F007917(term)	"5"	new A001043()
+A118749	sintrif	0	(term, n) -> F007917(term)	"3"	new A008585()
