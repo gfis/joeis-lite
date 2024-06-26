@@ -44,23 +44,19 @@ while (<>) { # read inputfile
     s{\s+\Z}{}; # chompr
     my $line = $_;
     if ($line =~ m{\/\/ *\= *(A\d+.*)}) {
-        my $list = $1;
-        $list =~ s{ |\;.*}{}g;
-        if ($line =~ m{Function(\d\w?) +([A-Z0-9_]+)}) {
-            my ($ifunc, $static) = ($1, $2);
-            if (0) {
-            } elsif ($ifunc eq "1") {
-                $aseqno = $list;
-                #   print join("\t", $aseqno, "Funct$ifunc", "Functions.$static.z($varph1)", "Functions.$static.i($varph1)") . "\n";
-                    print join("\t", $aseqno, "Funct$ifunc", "Functions.$static.z(") . "\n";
-            } elsif ($ifunc eq "2D") {
-                foreach my $seq (split(/\=/, $list)) {
-                    ($aseqno, $parm) = split(/\(/, $seq);
-                #   print join("\t", $aseqno, "Funct$ifunc", "Functions.$static.z(${parm} $varph1)", "Functions.$static.i(${parm} $varph1)") . "\n";
-                    print join("\t", $aseqno, "Func$ifunc", "Functions.$static.z(${parm}") . "\n";
+        my $list = $1; # rest behind "// = "
+        $list =~ s{ |\;.*}{}g; # remove all whitespace and comments
+        if ($line =~ m{Function(\d?\w?) +([A-Z0-9_]+)}) {
+            my ($ifunc, $funame) = ($1, $2);
+            foreach my $seq (split(/\, *\= */, $list)) {
+                #           1    12    2
+                $seq =~ m{\A(A\d+)(\(.*)?};
+                ($aseqno, my $parm) = ($1, $2 || "(");
+                if ($parm =~ m{\d\Z}) {
+                   $parm .= ",";
                 }
-            } else { # "2"
-            }
+                print join("\t", $aseqno, "Funct$ifunc", "Functions.$funame.z$parm") . "\n";
+            } # foreach seq
         } else {
             print "2: $line\n" if $debug >= 1;
         }
@@ -71,30 +67,32 @@ while (<>) { # read inputfile
 
 # append some additional ones
 while(<DATA>) {
-    print;
+    if (m{^A\d+}) {
+        print;
+    }
 } # while DATA
 #   public static final Function2D DIGIT_SUM =  new DigitSum(); // =A001370(10, = A000120(2, -> A007953(10,
 __DATA__
-A000720	Func1	Functions.PRIME_PI.z(
-A001157	Func2	Functions.SIGMA.z(2,
-A001158	Func2	Functions.SIGMA.z(3,
-A002024	Func1	Functions.TRINV.z(	??? also A123578
-A002326	Func2	Functions.ORDER.z(Z.TWO,
-A003132	Func2D	Functions.DIGIT_SUM_SQUARES.z(10,
-A004185	Func2D	Functions.DIGIT_SORT_ASCENDING.z(10,
-A004186	Func2D	Functions.DIGIT_SORT_DESCENDING.z(10,
-A007917	Func1	Functions.PREV_PRIME.z(
-A007918	Func1	Functions.NEXT_PRIME.z(
-A007953	Func2D	Functions.DIGIT_SUM.z(10,
-A007954	Func2D	Functions.DIGIT_PRODUCT.z(10,
-A007955	Func1	Functions.POD.z(
-A053735	Func2D	Functions.DIGIT_SUM.z(3,
-A055012	Func2D	Functions.DIGIT_SUM_CUBES.z(10,
-A151799	Func1	Functions.PREV_PRIME.z(
-A151800	Func1	Functions.NEXT_PRIME.z(
-
-A007318	Func2	BI(
-A008275	Func2	S1(
-A008277	Func2	S2(
-A008306	Func2	Functions.ASSOCIATED_STIRLING1.z(
-A008297	Func2	Functions.LAH.z(
+# A000720	Funct1	Functions.PRIME_PI.z(
+# A001157	Funct2	Functions.SIGMA.z(2,
+# A001158	Funct2	Functions.SIGMA.z(3,
+A002024	Funct1	Functions.TRINV.z(	??? also A123578
+# A002326	Funct2	Functions.ORDER.z(Z.TWO,
+# A003132	Funct2D	Functions.DIGIT_SUM_SQUARES.z(10,
+# A004185	Funct2D	Functions.DIGIT_SORT_ASCENDING.z(10,
+# A004186	Funct2D	Functions.DIGIT_SORT_DESCENDING.z(10,
+# A007917	Funct1	Functions.PREV_PRIME.z(
+# A007918	Funct1	Functions.NEXT_PRIME.z(
+# A007953	Funct2D	Functions.DIGIT_SUM.z(10,
+# A007954	Funct2D	Functions.DIGIT_PRODUCT.z(10,
+# A007955	Funct1	Functions.POD.z(
+# A053735	Funct2D	Functions.DIGIT_SUM.z(3,
+# A055012	Funct2D	Functions.DIGIT_SUM_CUBES.z(10,
+# A151799	Funct1	Functions.PREV_PRIME.z(
+# A151800	Funct1	Functions.NEXT_PRIME.z(
+              
+A007318	Funct2	BI(
+# A008275	Funct2	S1(
+# A008277	Funct2	S2(
+# A008306	Funct2	Functions.ASSOCIATED_STIRLING1.z(
+# A008297	Funct2	Functions.LAH.z(

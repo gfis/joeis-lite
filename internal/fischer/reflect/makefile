@@ -154,8 +154,10 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	head -n2 $@.txt
 	wc -l    $@.txt
 funct: # extract from jOEIS source
-	perl read_functions.pl $(JOEIS)/src/irvine/math/function/Functions.java \
-	|grep -v F002322 \
+	cp $(JOEIS)/src/irvine/math/function/Functions.java $@.tmp 
+	cat $(LITE)/src/irvine/math/function/Functions.java >> $@.tmp || :
+	perl read_functions.pl $@.tmp \
+	| grep -v F002322 \
 	| sort | uniq -w7 \
 	| tee    funct.txt
 	wc -l    funct.txt

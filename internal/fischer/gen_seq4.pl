@@ -145,7 +145,10 @@ open(FUN, "<", "reflect/funct.txt") || die "# cannot read reflect/funct.txt";
 while (<FUN>) {
     s/\s+\Z//; # chompr
     if (m{\AA\d+}) { # starts with A-number
-        my ($aseqno, $code, $prefix) = split(/\t/);
+        my ($aseqno, $code, $prefix) = split(/\t/);  
+        if ($prefix =~ m{\(\d+\Z}) {
+            $prefix .= ",";
+        }
         if ($prefix =~ m{\,\Z}) { # trailing ","
             $prefix .= " ";
         }

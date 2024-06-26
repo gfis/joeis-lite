@@ -32,9 +32,9 @@ A003557	#nydd		n divided by largest squarefree divisor of n; if n = Product p(k)
 A003958	#nyd		If n = Product p(k)^e(k) then a(n) = Product (p(k)-1)^e(k).
 A003961	#nydd		Completely multiplicative with a(prime(k)) = prime(k+1).
 A003963	#nyd		Fully multiplicative with a(p) = k if p is the k-th prime.
-A003986	Know2	_V1.or(_V2)
-A003987	Know2	_V1.xor(_V2)
-A004198	Know2	_V1.and(_V2)
+A003986	K2	Z::or
+A003987	K2	Z::xor
+A004198	K2	Z::and
 A005117	#nyd	Squarefree numbers: numbers that are not divisible by a square greater than 1.
 A005179	#nyd	Smallest number with exactly n divisors.
 A005259	#nyd	{ final int n = v.intValueExact(); return Integers.SINGLETON.sum(0, n, k -> Binomial.binomial(n, k).multiply(Binomial.binomial(n + k, k)).square()); }	Apery (Ap√©ry) numbers: Sum_{k=0..n} (binomial(n,k)*binomial(n+k,k))^2.
