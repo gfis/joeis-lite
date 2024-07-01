@@ -176,6 +176,7 @@ while (<>) { # read inputfile
     next if length($callcode) == 0; # skip over empty callcodes
     next if $callcode =~ m{\#}; # skip over commented callcodes
     next if $callcode =~ m{\A(nyi|\-\d|\Avoid)};  # skip over callcodes starting with "nyi", "void" or "-2"
+    $callcode =~ s{\..*}{}; # remove numbering with ".num"
     # my $im = 0; print STDERR "# " . join("; ", map { "[" . ($im ++) ."]=$_" } @parms) . "\n";
     my $iparm = 0;
     $offset   = $parms[$iparm ++]; # PARM1, PARM2, ... PARM8, NAME follow
@@ -328,12 +329,12 @@ while (<>) { # read inputfile
             $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
 
             # extract any DirectSequences
-            my %statics = (); # maps [ADEFKMX]<number> to A<number>
+            my %statics = (); # maps [ABDEFKMX]<number> to A<number>
             my $parmi = $parms[$iparm];
-            foreach my $xseqno ($parmi =~ m{([DEFKMX]\d{6})\(}g) { # collect the DirectSequences
+            foreach my $xseqno ($parmi =~ m{([BDEFKMX]\d{6})\(}g) { # collect the DirectSequences
                 my $ano = "A" . substr($xseqno, 1);
                 if (0) {
-                } elsif($xseqno =~ m{\A[DE]}) { # DirectSequence
+                } elsif($xseqno =~ m{\A[BDE]}) { # DirectSequence
                     $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
                     $xseqno = "D" . substr($xseqno, 1); # unify to "Dnnnnnn"
                     $statics{$xseqno} = $ano;
@@ -348,7 +349,7 @@ while (<>) { # read inputfile
             foreach my $xseqno (sort(keys(%statics))) { # evaluate the {Direct|Memory}Sequences
                 my $ano = $statics{$xseqno};
                 if (0) {
-                } elsif($xseqno =~ m{\A[DE]}) {
+                } elsif($xseqno =~ m{\A[BDE]}) {
                     $static_dirs .= "\n  private static final DirectSequence $ano = new $ano();";
                 } elsif($xseqno =~ m{\A[M]} ) {
                     $static_dirs .= "\n  private static final MemorySequence $ano = new $ano();";

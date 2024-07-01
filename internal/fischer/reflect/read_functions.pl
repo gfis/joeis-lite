@@ -81,11 +81,12 @@ A002024	Funct1	Functions.TRINV.z(	??? also A123578
 # A003132	Funct2D	Functions.DIGIT_SUM_SQUARES.z(10,
 # A004185	Funct2D	Functions.DIGIT_SORT_ASCENDING.z(10,
 # A004186	Funct2D	Functions.DIGIT_SORT_DESCENDING.z(10,
-# A007917	Funct1	Functions.PREV_PRIME.z(
+A007917	Funct1	Functions.PREV_PRIME.z(
 # A007918	Funct1	Functions.NEXT_PRIME.z(
 # A007953	Funct2D	Functions.DIGIT_SUM.z(10,
 # A007954	Funct2D	Functions.DIGIT_PRODUCT.z(10,
 # A007955	Funct1	Functions.POD.z(
+# A008517	Funct2	Functions.EULERIAN2.z(
 # A053735	Funct2D	Functions.DIGIT_SUM.z(3,
 # A055012	Funct2D	Functions.DIGIT_SUM_CUBES.z(10,
 # A151799	Funct1	Functions.PREV_PRIME.z(

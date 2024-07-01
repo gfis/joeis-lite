@@ -565,9 +565,9 @@ dist:
 	make dist1 2>&1 | tee dist.log
 	wc -l dist.log | perl -ne 'm{(\d+)}; exit(1) if $$1 > 8;'
 	unzip -v ../../dist/joeis-lite.jar | grep -vP "\/\Z" \
-	| perl -ne 'use strict; if (m{irvine\/oeis\/(.*)} && ! m{\$$} '\
+	| perl -ne 'use strict; if (m{irvine\/(.*)} && ! m{\$$} '\
 	' && ! m{\/a\d\d\d\/|ector\b|\b(Explorer|Names|Report)\b}) { '\
-	' my $$class = $$1; $$class =~ s{\.class}{}; print "src/irvine/oeis/$$class.java\n"; }'
+	' my $$class = $$1; $$class =~ s{\.class}{}; print "src/irvine/$$class.java\n"; }'
 	#################################################################
 dist1:
 	cd ../.. ; ant -silent dist 2>&1

@@ -141,6 +141,11 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	        , 'PeriodicSequence' \
 	        )                        THEN 'E' \
 	    WHEN superclass IN \
+	        ( 'FiniteSequence' \
+	        , 'BriefSequence' \
+	        , 'NoncomputableSequence' \
+	        )                        THEN 'B' \
+	    WHEN superclass IN \
 	        ( 'MemorySequence' \
 	        )                        THEN 'M' \
 	    WHEN superclass IN \
@@ -157,7 +162,7 @@ funct: # extract from jOEIS source
 	cp $(JOEIS)/src/irvine/math/function/Functions.java $@.tmp 
 	cat $(LITE)/src/irvine/math/function/Functions.java >> $@.tmp || :
 	perl read_functions.pl $@.tmp \
-	| grep -v F002322 \
+	| grep -vP "A007919" \
 	| sort | uniq -w7 \
 	| tee    funct.txt
 	wc -l    funct.txt
