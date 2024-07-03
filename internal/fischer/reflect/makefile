@@ -1,6 +1,6 @@
 #!make
 
-# makefile for transition of Sequence -> AbstractSequence
+# makefile for reflections about jOEIS programs
 # @(#) $Id$
 # 2023-06-17, Georg Fischer
 #
@@ -204,10 +204,10 @@ pack_nest2: # grep super calls and encode them
 	| endirect \
 	| tee    $@.super.tmp
 pack_nest3: # extract the underlying DirectSequences [DEFK] 
-	grep -P "\d\,\s*new [DEFK]\d{6}" pack_nest2.super.tmp \
+	grep -P "\d\,\s*new [BDEFK]\d{6}" pack_nest2.super.tmp \
 	| sort -k4,4 \
 	| tee    $@.direct.tmp
-	grep -P "\d\,\s*new A"           pack_nest2.super.tmp \
+	grep -P "\d\,\s*new A"            pack_nest2.super.tmp \
 	| sort -k4,4 \
 	| tee    $@.nondir.tmp
 	wc -l    pack_nest*.tmp
@@ -244,6 +244,12 @@ liseq: # list those with "implements Sequence"
 	$(DBAT) -x "SELECT * FROM seq2 ORDER BY 1;" > $@.txt
 	head -n2 $@.txt
 	wc -l    $@.txt
+#----
+memoff1: # MemorySequencd with offset != 0
+	grep -P "\tMemorySequence\t" $(COMMON)/joeis_names.txt \
+	| cut -f1,5 | cut -b1-9 | grep -vP "\s0" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
 #----
 morphlist: # print a seq4 parameter list of all subclasses of MorphismFixedPointSequence
 	cat morphism.use.tmp \

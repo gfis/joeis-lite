@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2024-07-02, V8.2: fails if pattern not found
 # 2024-05-27, V8.1: suppress comments starting with "#" in the pattern
 # 2024-05-25: V8.0: various macros RAD ...
 # 2024-03-12: V7.4: failure tolerance: ignore unknown patterns and wrong bracketing
@@ -76,7 +77,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V8.0";
+my $version_id  = "gen_seq4.pl V8.2";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -260,7 +261,7 @@ while (<>) { # read inputfile
             $parm =~ s{IVE\(}          {intValueExact\(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
-            $parm =~ s{KS\(}           {LongUtils.kronecker(}g;
+            $parm =~ s{KS\(}           {Functions.KRONECKER.i(}g;
             $parm =~ s{LCM\(}          {Functions.LCM.z\(}g;
             $parm =~ s{LPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{LU\(}           {Functions.LUCAS.z\(}g;
@@ -537,6 +538,7 @@ sub read_pattern { # read the pattern and return it
     } else {
         print STDERR "#* cannot read \"$patfile\" for $aseqno\n";
         $do_generate = 0;
+        $fatal = 1;
     }
     return $result;
 } # read_pattern

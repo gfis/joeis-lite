@@ -32,6 +32,7 @@ HOLREC=$(GITS)/OEIS-mat/holrec
 LINREC=$(GITS)/OEIS-mat/linrec
 PL=$(CONTRIB)/pl
 SDB=$(GITS)/OEIS-mat/sequencedb
+TODAY=`date +%Y-%m-%d`
 TRIREC=$(GITS)/OEIS-mat/trirec
 WEIDIS=$(GITS)/OEIS-mat/weidis
 DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
@@ -365,9 +366,9 @@ sumpass: # copy all with passed test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log \
 	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
 	| xargs -innn cp -pv nnn manual 
-TODAY=`date +%Y-%m-%d`
 techo: # append timestamp
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).man
+#-----
 addpass: # append seq4 records with passed tests to TODAY=file
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).man
 	grep -P  "\tpass\t" $(CC).pass.log | cut -b1-7 | sed -e "s/^/\^/" > $@.grep.tmp
@@ -376,6 +377,8 @@ addpass: # append seq4 records with passed tests to TODAY=file
 	grep -vE -f $@.grep.tmp aman/$(CC).man > $@.tmp
 	echo ---- `date +%Y-%m-%d%t%T`  > aman/$(CC).man
 	grep -vP "^\-\-\-\-" $@.tmp    >> aman/$(CC).man
+	make today
+#----
 sumfato: # copy all with PASSed or FATO test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log   >  $@.tmp 
 	grep -P "\tFATO\t" $(CC).fail.log \
@@ -439,11 +442,17 @@ select3:
 	      AND s.callcode NOT LIKE '#%' \
 	    ORDER BY 1" \
 	| perl -pe "s{\'\'}{\'}g" \
+	| grep -vf today.txt \
 	>        $(CC).gen
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
 #	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
-#
+#--
+today: # build a file with today's (passing) A-numbers
+	grep -P "^A\d+" aman/$(TODAY).man | cut -b1-7 | sed -e "s/\r//" | sort \
+	>        $@.txt
+	wc -l    $@.txt
+#----
 antclean: purge # recompile all
 	cd ../.. ; ant clean dist
 clean: purge # parameter: CC; $(CC).pass.log from previous test used to grep from $(CC).gen
@@ -575,7 +584,9 @@ dist1:
 deploy:
 	cd ../.. ; ant         deploy 2>&1
 #--
+pegel:   purge select gener dist test log
 segel:   select gener dist test log
+distel:
 ditel:   dist test log
 geditel: gener dist test log
 maditel: man dist test    log
