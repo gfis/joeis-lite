@@ -204,7 +204,7 @@ pack_nest2: # grep super calls and encode them
 	| endirect \
 	| tee    $@.super.tmp
 pack_nest3: # extract the underlying DirectSequences [DEFK] 
-	grep -P "\d\,\s*new [BDEFK]\d{6}" pack_nest2.super.tmp \
+	grep -P "\d\,\s*new [B-FKM]\d{6}" pack_nest2.super.tmp \
 	| sort -k4,4 \
 	| tee    $@.direct.tmp
 	grep -P "\d\,\s*new A"            pack_nest2.super.tmp \

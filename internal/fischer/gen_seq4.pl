@@ -595,6 +595,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"        }            = $itype; }
     if ($line =~ m{\WLeastPrimeFactorizer}         ) { $imports{"irvine.factor.factor.LeastPrimeFactorizer"}     = $itype; }
     if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"        }            = $itype; }
+    if ($line =~ m{\WLambdaArray}                  ) { $imports{"irvine.oeis.triangle.LambdaArray"             } = $itype; }
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
@@ -603,6 +604,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WMobius[\.\(]}                 ) { $imports{"irvine.math.Mobius"}                            = $itype; }
     if ($line =~ m{\WMorphismFixedPointSequence}   ) { $imports{"irvine.oeis.base.MorphismFixedPointSequence"  } = $itype; }
     if ($line =~ m{\WMultiplicativeSequence}       ) { $imports{"irvine.oeis.MultiplicativeSequence"           } = $itype; }
+    if ($line =~ m{\WMultiTransformSequence\(}     ) { $imports{"irvine.oeis.transform.MultiTransformSequence"}  = $itype; }
     if ($line =~ m{\WPaddingSequence}              ) { $imports{"irvine.oeis.recur.PaddingSequence" }            = $itype; }
     if ($line =~ m{\WPair}                         ) { $imports{"irvine.util.Pair" }                             = $itype; }
     if ($line =~ m{\WPartialSumSequence}           ) { $imports{"irvine.oeis.PartialSumSequence"}                = $itype; }
