@@ -75,7 +75,7 @@ dead_joeis: # detect DeadSequence consistency
 dead_robot: dead_joeis # generate DeadSequence's
 	cd .. ; make CC=dead gener
 #----
-dirarr: dirarr_reflect dirarr_load dirarr_dump # build a table of all DirectSequences
+dirarr_db: dirarr_reflect dirarr_load dirarr_dump # build a table of all DirectSequences
 dirarr_reflect: # extract all sequences with keywords "tabl|tabf" that implement DirectArray
 	perl dirarr.pl $(COMMON)/joeis_names.txt \
 	| $(ABSINSPECT) dirarr - \
@@ -92,7 +92,7 @@ dirarr_load:
 dirarr_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM dirarr ORDER BY 1" > $(ROBOT)/dirarr.txt
 #----
-direct: direct_reflect direct_load direct_dump # build a table of all DirectSequences
+direct_db: direct_reflect direct_load direct_dump # build a table of all DirectSequences
 direct_reflect: # extract all sequences that implement DirectSequence
 	sed -e "s/\t/\t0\t/" $(COMMON)/joeis_list.txt \
 	| $(ABSINSPECT) direct - \
@@ -109,16 +109,30 @@ direct_load:
 direct_dump:
 	$(DBAT) -x "SELECT aseqno, offset1 FROM direct ORDER BY 1" > $(ROBOT)/direct.txt
 #========
+hasram: # extract all that extend Triangle with hasRAM()=true
+	$(DBAT) -x "SELECT i.aseqno, i.offset1, j.superclass FROM asinfo i, joeis j\
+	    WHERE i.aseqno = j.aseqno \
+	      AND i.keyword LIKE '%tabl%' \
+	      AND j.superclass NOT IN ('LambdaTriangle','LambdaArray','PartitionTransformTriangle') \
+	    ORDER BY 1" \
+	| $(ABSINSPECT) hasram - \
+	| grep -vP "\bget\(\t" | sed -e "s/\t/\tH\t/" \
+	>        $@.txt
+	head -n4 $@.txt
+	wc -l    $@.txt
+#========
 K=
-vector: dirseq dirman dirdate dirimp known funct # prepare for and create file vector.txt for the classification of all A-numbers
+vector: dirseq dirman dirdate dirimp hasram known funct # prepare for and create file vector.txt for the classification of all A-numbers
 	perl build_vector.pl $(K)
 	cut -b1-1024 vector.txt
 	ls -al       vector.txt
 dirman: # DirectSequences in ../manual
 	grep -iHP "oeis\.(DirectSequence|LambdaSequence)" ../manual/*.java \
 	| perl -ne 'm{(A\d+)}; print "$$1\tD\n";' \
-	| sort | uniq \
+	>    $@.tmp
+	sort $@.tmp dirseq.man | uniq \
 	| tee dirseq.man
+	wc -l dirseq.man
 dirdate: # grep LambdaSequences from aman/date.man
 	grep -P "^A\d{6}\s+lambdan" ../aman/`date +%Y-%m-%d`.man | cut -b1-9 | sed -e "s/l/E/" \
 	| tee -a dirseq.man 
@@ -126,6 +140,12 @@ dirdate: # grep LambdaSequences from aman/date.man
 dirseq: # DirectSequences 'D', explicit "implementing D.S.", not inherited
 	grep DirectSequence $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
 	| sed -e "s/\t/\tD\t/" -e "s/DirectSequence//" \
+	>        $@.txt
+	head -n2 $@.txt
+	wc -l    $@.txt
+dirarr: # DirectArray 'T', explicit "implementing DirectArray", not inherited
+	grep DirectArray $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
+	| sed -e "s/\t/\tT\t/" -e "s/DirectArray//" \
 	>        $@.txt
 	head -n2 $@.txt
 	wc -l    $@.txt
@@ -152,6 +172,15 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	        ( 'DecimalExpansionSequence' \
 	        , 'PolynomialRootExpansionSequence' \
 	        )                        THEN 'X' \
+	    WHEN superclass IN \
+	        ( 'LambdaTriangle' \
+	        )                        THEN 'T' \
+	    WHEN superclass IN \
+	        ( 'LambdaArray' \
+	        )                        THEN 'U' \
+	    WHEN superclass IN \
+	        ( 'LambdaTable' \
+	        )                        THEN 'S' \
 	    ELSE                              'J' \
 	    END FROM joeis j  ORDER BY 1" \
 	| sed -e "s/\r//" \

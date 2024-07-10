@@ -1,7 +1,8 @@
 #!perl
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
-# @(#) $Id$
+# @(#) $Id$    
+# 2024-07-10, V8.3: read hasram.txt
 # 2024-07-02, V8.2: fails if pattern not found
 # 2024-05-27, V8.1: suppress comments starting with "#" in the pattern
 # 2024-05-25: V8.0: various macros RAD ...
@@ -141,7 +142,7 @@ my %zhash = qw(0 ZERO 1 ONE 2 TWO 3 THREE 4 FOUR 5 FIVE 6 SIX 7 SEVEN 8 EIGHT 9 
 my $do_generate = 1;
 
 # read the Functions
-my %functs = (); # maps seqnos (without "A") -> function call
+my %functs = (); # maps Aseqnos -> function call
 open(FUN, "<", "reflect/funct.txt") || die "# cannot read reflect/funct.txt";
 while (<FUN>) {
     s/\s+\Z//; # chompr
@@ -157,6 +158,19 @@ while (<FUN>) {
     } # with A-number
 } # while FUN
 close(FUN);
+
+# read the triangles with hasRAM()
+my %hasram = (); # maps Aseqnos -> function call
+open(RAM, "<", "reflect/hasram.txt") || die "# cannot read reflect/hasram.txt";
+while (<RAM>) {
+    s/\s+\Z//; # chompr
+    if (m{\AA\d+}) { # starts with A-number
+        my ($aseqno, $code, $method) = split(/\t/); 
+        $method =~ s{trianglelement}{triangleElement}ig;
+        $hasram{$aseqno} = $method;
+    } # with A-number
+} # while RAM
+close(RAM);
 
 mkdir $targetdir;
 my $old_callcode = "";
@@ -330,14 +344,17 @@ while (<>) { # read inputfile
             $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
 
             # extract any DirectSequences
-            my %statics = (); # maps [ABDEFKMX]<number> to A<number>
+            my %statics = (); # maps [ABDEFKMSTUX]<number> to A<number>
             my $parmi = $parms[$iparm];
-            foreach my $xseqno ($parmi =~ m{([BDEFKMX]\d{6})\(}g) { # collect the DirectSequences
+            foreach my $xseqno ($parmi =~ m{([BDEFHKMSTUX]\d{6})\(}g) { # collect the DirectSequences
                 my $ano = "A" . substr($xseqno, 1);
                 if (0) {
-                } elsif($xseqno =~ m{\A[BDE]}) { # DirectSequence
+                } elsif($xseqno =~ m{\A[BDESTU]}) { # DirectSequence, DirectArray, Triangles
                     $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
                     $xseqno = "D" . substr($xseqno, 1); # unify to "Dnnnnnn"
+                    $statics{$xseqno} = $ano;
+                } elsif($xseqno =~ m{\A[H]}) { # Triangles with hasRAM()=true
+                    $parmi =~ s{$xseqno\(}{$ano\.$hasram{$ano}}g;
                     $statics{$xseqno} = $ano;
                 } elsif($xseqno =~ m{\A[F]} ) { # Functions.*
                     my $funct = $functs{$ano};
@@ -352,6 +369,11 @@ while (<>) { # read inputfile
                 if (0) {
                 } elsif($xseqno =~ m{\A[BDE]}) {
                     $static_dirs .= "\n  private static final DirectSequence $ano = new $ano();";
+                } elsif($xseqno =~ m{\A[H]}) {
+                    my $base_class = ($hasram{$ano} =~ m{^triangle}) ? "BaseTriangle" : "UpperLeftTriangle";
+                    $static_dirs .= "\n  private static final $base_class $ano = new $ano();";
+                } elsif($xseqno =~ m{\A[STU]}) {
+                    $static_dirs .= "\n  private static final DirectArray $ano = new $ano();";
                 } elsif($xseqno =~ m{\A[M]} ) {
                     $static_dirs .= "\n  private static final MemorySequence $ano = new $ano();";
                 }
@@ -558,6 +580,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
         $imports{"irvine.oeis." . lc(substr($aseqno, 0, 4)) . ".$aseqno"}                               = $itype;
     } # foreach
     if ($line =~ m{\WAbsoluteSequence}             ) { $imports{"irvine.oeis.AbsoluteSequence"  }                = $itype; }
+    if ($line =~ m{\WBaseTriangle}                 ) { $imports{"irvine.oeis.triangle.BaseTriangle"            } = $itype; }
     if ($line =~ m{\WBellNumbers\.}                ) { $imports{"irvine.math.z.BellNumbers"     }                = $itype; }
     if ($line =~ m{\WBernoulliSequence}            ) { $imports{"irvine.math.q.BernoulliSequence" }              = $itype; }
     if ($line =~ m{\WBinomial\.}                   ) { $imports{"irvine.math.z.Binomial"}                        = $itype; }
@@ -625,8 +648,9 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WStirling\.}                   ) { $imports{"irvine.math.z.Stirling"}                        = $itype; }
     if ($line =~ m{\WStringUtils\.}                ) { $imports{"irvine.util.string.StringUtils"}                = $itype; }
     if ($line =~ m{\WTranspose}                    ) { $imports{"irvine.oeis.triangle.Transpose"}                = $itype; }
-    if ($line =~ m{\WTupleTransformSequence\(}     ) { $imports{"irvine.oeis.transform.TupleTransformSequence"}  = $itype; }
+    if ($line =~ m{\WTupleTransformSequence\(}     ) { $imports{"irvine.oeis.transform.TupleTransformSequence" } = $itype; }
     if ($line =~ m{\WUnaryCRFunction}              ) { $imports{"irvine.math.cr.UnaryCRFunction"}                = $itype; }
+    if ($line =~ m{\WUpperLeftTriangle}            ) { $imports{"irvine.oeis.triangle.UpperLeftTriangle"       } = $itype; }
     if ($line =~ m{\WZUtils\.}                     ) { $imports{"irvine.math.z.ZUtils"}                          = $itype; }
     if ($line =~ m{\WZi\W}                         ) { $imports{"irvine.math.zi.Zi"}                             = $itype; }
     if ($line =~ m{\WZ\W}                          ) { $imports{"irvine.math.z.Z"}                               = $itype; }

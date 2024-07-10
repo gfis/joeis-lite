@@ -79,6 +79,8 @@ __DATA__
 A002024	Funct1	Functions.TRINV.z(	??? also A123578
 # A002326	Funct2	Functions.ORDER.z(Z.TWO,
 # A003132	Funct2D	Functions.DIGIT_SUM_SQUARES.z(10,
+A003989	Funct2	Functions.GCD.z(
+A003990	Funct2	Functions.LCM.z(
 # A004185	Funct2D	Functions.DIGIT_SORT_ASCENDING.z(10,
 # A004186	Funct2D	Functions.DIGIT_SORT_DESCENDING.z(10,
 A007917	Funct1	Functions.PREV_PRIME.z(
@@ -91,7 +93,7 @@ A007917	Funct1	Functions.PREV_PRIME.z(
 # A055012	Funct2D	Functions.DIGIT_SUM_CUBES.z(10,
 # A151799	Funct1	Functions.PREV_PRIME.z(
 # A151800	Funct1	Functions.NEXT_PRIME.z(
-              
+
 A007318	Funct2	BI(
 # A008275	Funct2	S1(
 # A008277	Funct2	S2(
