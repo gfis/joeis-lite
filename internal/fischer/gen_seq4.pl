@@ -349,9 +349,12 @@ while (<>) { # read inputfile
             foreach my $xseqno ($parmi =~ m{([BDEFHKMSTUX]\d{6})\(}g) { # collect the DirectSequences
                 my $ano = "A" . substr($xseqno, 1);
                 if (0) {
-                } elsif($xseqno =~ m{\A[BDESTU]}) { # DirectSequence, DirectArray, Triangles
+                } elsif($xseqno =~ m{\A[BDE]}) { # DirectSequence
                     $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
                     $xseqno = "D" . substr($xseqno, 1); # unify to "Dnnnnnn"
+                    $statics{$xseqno} = $ano;
+                } elsif($xseqno =~ m{\A[STU]}) { # DirectArray
+                    $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
                     $statics{$xseqno} = $ano;
                 } elsif($xseqno =~ m{\A[H]}) { # Triangles with hasRAM()=true
                     $parmi =~ s{$xseqno\(}{$ano\.$hasram{$ano}}g;
@@ -594,6 +597,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WCyclotomic}                   ) { $imports{"irvine.nt.cyclotomic.Cyclotomic"}               = $itype; }
     if ($line =~ m{\WDecimalExpansionSequence}     ) { $imports{"irvine.oeis.cons.DecimalExpansionSequence"    } = $itype; }
     if ($line =~ m{\WDifferenceSequence}           ) { $imports{"irvine.oeis.DifferenceSequence"               } = $itype; }
+    if ($line =~ m{\WDirectArray}                  ) { $imports{"irvine.oeis.triangle.DirectArray"             } = $itype; }
     if ($line =~ m{\WDirectSequence}               ) { $imports{"irvine.oeis.DirectSequence"                   } = $itype; }
     if ($line =~ m{\WDirectTransformSequence}      ) { $imports{"irvine.oeis.transform.DirectTransformSequence"} = $itype; }
     if ($line =~ m{\WEuler\.}                      ) { $imports{"irvine.math.z.Euler"           }                = $itype; }

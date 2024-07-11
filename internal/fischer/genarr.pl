@@ -1,13 +1,13 @@
 #!perl
 
-# turn a sequence into a DirectSequence
+# turn a sequence into a DirectArray
 # @(#) $Id$
-# 2024-04-26, Georg Fischer: copied from genman.pl
+# 2024-07-11, Georg Fischer: copied from gendir.pl
 #
 #:# Usage:
-#:#   perl gendir.pl [-d debug] [-cp aseqno] [[A]seqno]
+#:#   perl genarr.pl [-d debug] [-cp aseqno] [[A]seqno]
 #:#   -cp  copy from joeis/src/irvine/eis/a*/aseqno.java
-#:#   -d   debug mode: 0=non, 1=some, 2=more
+#:#   -d   debug mode: 0=none, 1=some, 2=more
 #:# Writes ./manual/aseqno.java and starts uedit64 with it.
 #--------------------------------------------------------
 use strict;
@@ -69,6 +69,7 @@ sub copyseq {
     $tarname =~ s{\'}{\&apos;}g;
     $tarname =~ s{\"}{\&quot;}g;
     # substr($tarname, 8) =~ m{(A\d\d+)};
+    my $imported = 0;
     my $srcfile = "$joeisdir/$cpack/$cseqno.java";
     open(SRC, "<", $srcfile) || die "cannot read \"$srcfile\"\n";
     my $state = 0;
@@ -78,10 +79,11 @@ sub copyseq {
         if (0) {
         } elsif ($line =~ m{\Apackage}) {
             $line = "package irvine.oeis.$apack;";
-        } elsif ($line =~ m{import *irvine\.oeis\.(Abstract)?Sequence}) {
-            $line .= "\nimport irvine.oeis.DirectSequence;";
+        } elsif ($imported == 0 && ($line =~ m{import *irvine\.oeis\.})) {
+            $imported = 1;
+            $line .= "\nimport irvine.oeis.triangle.DirectArray;";
         } elsif ($line =~ m{ extends }) {
-            $line =~ s{\{}  {implements DirectSequence \{};
+            $line =~ s{\{}  {implements DirectArray \{};
             $state = 1;
         } elsif ($state == 1 && ($line =~ m{\A( *\* )$cseqno })) {
             $line = "$1$tarname";
@@ -90,13 +92,8 @@ sub copyseq {
             print TAR <<"GFis";
 
   \@Override
-  public Z a(final Z n) {
-    return a(n.intValueExact());
-  }
-
-  \@Override
-  public Z a(final int n) {
-    return a(Z.valueOf(n));
+  public Z a(final int n, final int k) {
+    return Z.valueOf(n);
   }
 
 GFis
@@ -133,13 +130,13 @@ package irvine.oeis.$apack;
 
 import irvine.math.z.Z;
 import irvine.oeis.AbstractSequence;
-import irvine.oeis.DirectSequence;
+import irvine.oeis.triangle.DirectArray;
 
 /**
  * $tarname
  * \@author Georg Fischer
  */
-public class $aseqno extends AbstractSequence implements DirectSequence {
+public class $aseqno extends AbstractSequence implements DirectArray {
   
   private int mN;
 
@@ -156,13 +153,8 @@ public class $aseqno extends AbstractSequence implements DirectSequence {
   }
 
   \@Override
-  public Z a(final int n) {
-    return a(Z.valueOf(n));
-  }
-
-  \@Override
-  public Z next() {
-    return a(++mN);
+  public Z a(final int n, final int k) {
+    return Z.valueOf(n);
   }
 }
 
