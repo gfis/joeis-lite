@@ -378,6 +378,9 @@ addpass: # append seq4 records with passed tests to TODAY=file
 	echo ---- `date +%Y-%m-%d%t%T`  > aman/$(CC).man
 	grep -vP "^\-\-\-\-" $@.tmp    >> aman/$(CC).man
 	make today
+todaz: # zero today.txt
+	rm -vf today.txt
+	touch today.txt
 #----
 sumfato: # copy all with PASSed or FATO test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log   >  $@.tmp 
@@ -654,7 +657,7 @@ log:  # CC=; generate an HTML page for the failed tests
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_check LOG=$(CC)
 	perl -i.bak fail_substr.pl $(COMMON)/joeis_check.html
-	grep "read" $(CC).fail.log | cut -b1-24 | tee ../../../OEIS-mat/contrib/refresh.list.man
+	grep -P "read" $(CC).fail.log | cut -b1-24 | tee ../../../OEIS-mat/contrib/refresh.list.man
 logf: # CC=; generate an HTML page for the failed tests (but no "FATO")
 	# ---- $@ CC=$(CC)
 	cd $(COMMON); make -f checks.make joeis_fail LOG=$(CC)
