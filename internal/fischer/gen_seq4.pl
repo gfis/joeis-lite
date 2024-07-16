@@ -648,6 +648,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WRecordPositionSequence}       ) { $imports{"irvine.oeis.RecordPositionSequence"}            = $itype; }
     if ($line =~ m{\WSequence(\d|\$\(OFFSET\))}    ) { $imports{"irvine.oeis.Sequence$1" }                       = $itype; }
     if ($line =~ m{\WSimpleTransformSequence}      ) { $imports{"irvine.oeis.transform.SimpleTransformSequence"} = $itype; }
+    if ($line =~ m{\WSingleTransformSequence}      ) { $imports{"irvine.oeis.transform.SingleTransformSequence"} = $itype; }
     if ($line =~ m{\WSkipSequence}                 ) { $imports{"irvine.oeis.SkipSequence"      }                = $itype; }
     if ($line =~ m{\WStirling\.}                   ) { $imports{"irvine.math.z.Stirling"}                        = $itype; }
     if ($line =~ m{\WStringUtils\.}                ) { $imports{"irvine.util.string.StringUtils"}                = $itype; }
