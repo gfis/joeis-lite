@@ -452,7 +452,7 @@ select3:
 #	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
 #--
 today: # build a file with today's (passing) A-numbers
-	grep -P "^A\d+" aman/$(TODAY).man | cut -b1-7 | sed -e "s/\r//" | sort \
+	grep -P "^A\d+" aman/$(TODAY).man | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" | sort \
 	>        $@.txt
 	wc -l    $@.txt
 #----
