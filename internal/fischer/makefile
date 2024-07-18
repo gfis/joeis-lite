@@ -156,6 +156,8 @@ invitest:
 	$(JAVA) irvine.oeis.transform.InverseInvertTransform -n $(NT) -a "$(A)" -o $(OFFSET) -d $(D) -s $(S)
 mortest:
 	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -n $(NT) -i "$(INIT)" -a "$(ANCH)" -m "$(MAP)" -o $(OFFSET)
+ristest:
+	$(JAVA) irvine.oeis.triangle.RowIndexSequence -d $(D) -n $(NT) -o $(OFFSET) -a $(A)
 rstest:
 	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
 sstest:
@@ -8720,3 +8722,8 @@ ntraf:
 	sed -e "s/sintraf/sintrif/" -e "s/J/A/g"  $(ROBOT)/$@.gen > $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
+#----
+fractal: # evaluate DispersionArrays and generate fractal sequences
+	# grep disper aman/2024-07-18.man | cut -f4 | grep -P "new A\d{6}"  | sed -e "s/new //" -e "s/(.*//" | xargs -innn echo make ristest NT=32 OFFSET=1 A=nnn
+	grep disper aman/2024-07-18.man | cut -f1 | xargs -innn make ristest NT=16 OFFSET=1 A=nnn
+	

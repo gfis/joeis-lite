@@ -17,14 +17,11 @@ import irvine.oeis.LambdaSequence;
  */
 public class DispersionArray extends Triangle {
 
-  private static final int DEFOFF = 0;
-  // protected int mRow; // current row index n
-  // protected int mCol; // current column index k
-  protected int mRow0; // first row index
-  protected int mCol0; // first columns index 
-  protected int mDir; // direction: +1 = ascending, -1 = descending
+  private final int mRow0; // first row index
+  private final int mCol0; // first columns index 
+  private final int mDir; // direction: +1 = ascending, -1 = descending
   private final Sequence mSeq; // the underlying sequence s
-  private final ArrayList<Z> mS; // cahe for the underlying sequence s, starting at offset 1, with terms <= 1 skipped
+  private final ArrayList<Z> mS; // cache for the underlying sequence s, starting at offset 1, with terms <= 1 skipped
   private Z mT; // last computed term of the complementary sequence t
   private int mSix; // index of the least element in s that is > mT
   private static final boolean sDebug = "true".equals(System.getProperty("oeis.verbose"));
