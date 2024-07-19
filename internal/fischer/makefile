@@ -156,8 +156,9 @@ invitest:
 	$(JAVA) irvine.oeis.transform.InverseInvertTransform -n $(NT) -a "$(A)" -o $(OFFSET) -d $(D) -s $(S)
 mortest:
 	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -n $(NT) -i "$(INIT)" -a "$(ANCH)" -m "$(MAP)" -o $(OFFSET)
+LOOP=64
 ristest:
-	$(JAVA) irvine.oeis.triangle.RowIndexSequence -d $(D) -n $(NT) -o $(OFFSET) -a $(A)
+	$(JAVA) irvine.oeis.triangle.RowIndexSequence -d $(D) -n $(NT) -l $(LOOP) -o $(OFFSET) -a $(A)
 rstest:
 	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
 sstest:
@@ -8723,7 +8724,31 @@ ntraf:
 	head -n2 $@.gen
 	wc -l    $@.gen
 #----
-fractal: # evaluate DispersionArrays and generate fractal sequences
-	# grep disper aman/2024-07-18.man | cut -f4 | grep -P "new A\d{6}"  | sed -e "s/new //" -e "s/(.*//" | xargs -innn echo make ristest NT=32 OFFSET=1 A=nnn
-	grep disper aman/2024-07-18.man | cut -f1 | xargs -innn make ristest NT=16 OFFSET=1 A=nnn
-	
+fractal: fractal0 fractal1 fractal2 fractal3 fractal4 # evaluate DispersionArrays and generate fractal sequences
+fractal0:
+	grep disper aman/2024-07-18.ack.man | cut -f1 \
+	>     $@.tmp
+	wc -l $@.tmp
+	sed -e "s/$$/\tpseudo\t0/" $@.tmp > $@.gen
+	make CC=$@ select gener dist
+fractal1:
+	rm -f $@.tmp
+	cat fractal0.tmp | xargs -innn make ristest NT=$(NT) OFFSET=1 A=nnn | tee -a $@.tmp
+fractal2:
+	perl fractal_grep.pl fractal1.tmp \
+	| tee $@.tmp
+fractal3:
+	grep -v "^#" fractal2.tmp \
+	| sort | uniq -w7 \
+	> $@.1.tmp
+	make seq2 LIST=$@.1.tmp
+	$(DBAT) -x "SELECT s.aseqno, SUBSTR(n1.name || '                                             ', 1, 64) || ' | ', s.info, SUBSTR(n2.name, 1, 64) \
+	    FROM seq2 s, asname n1, asname n2 \
+	    WHERE s.aseqno = n1.aseqno AND s.info = n2.aseqno \
+	    ORDER BY 1" \
+	| endirect \
+	| tee $@.tmp
+	wc -l $@.tmp
+fractal4:
+	echo
+#----
