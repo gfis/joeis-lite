@@ -314,7 +314,7 @@ while (<>) { # read inputfile
             $parm =~ s{SA\(([^\)]+)\)} {Functions.STIRLING1.z\(\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Functions.STIRLING2.z\(}g;
 #           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
-#           $parm =~ s{SIGMA\(}        {Functions.SIGMA.z(}g;
+            $parm =~ s{\bSIGMA\(}      {Functions.SIGMA1.z(}g;
             $parm =~ s{TAU\(}          {Functions.TAU.z(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
             $parm =~ s{ZH\(}           {Zeta.zetaHurwitz\(}g;
@@ -359,8 +359,11 @@ while (<>) { # read inputfile
                 } elsif($xseqno =~ m{\A[H]}) { # Triangles with hasRAM()=true
                     $parmi =~ s{$xseqno\(}{$ano\.$hasram{$ano}}g;
                     $statics{$xseqno} = $ano;
-                } elsif($xseqno =~ m{\A[F]} ) { # Functions.*
+                } elsif($xseqno =~ m{\A[F]} ) { # Functions.*.z
                     my $funct = $functs{$ano};
+                    $parmi =~ s{$xseqno\(}{$funct}g;
+                } elsif($xseqno =~ m{\A[I]} ) { # Functions.*.i
+                    my $funct = $functs{"F" . substr($xseqno, 1)};
                     $parmi =~ s{$xseqno\(}{$funct}g;
                 } elsif($xseqno =~ m{\A[M]} ) { # MemorySequence
                     $statics{$xseqno} = $ano;
