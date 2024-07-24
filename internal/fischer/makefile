@@ -373,14 +373,19 @@ techo: # append timestamp
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).man
 #-----
 addpass: # append seq4 records with passed tests to TODAY=file
-	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).man
-	grep -P  "\tpass\t" $(CC).pass.log | cut -b1-7 | sed -e "s/^/\^/" > $@.grep.tmp
-	grep -E -f  $@.grep.tmp $(CC).gen | grep -P "[a-z]" | cut -f1-11 | perl -pe 's/[ \t]+\Z//;' \
-	>> aman/$(TODAY).man
+	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).ack.man
+	grep -P  "\tpass\t" $(CC).pass.log                | cut -b1-7 | sed -e "s/^/\^/" >  $@.grep.tmp
+	grep -P  "\AA\d+\t([5-9]|\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/^/\^/" >> $@.grep.tmp
+	grep -E  -f $@.grep.tmp $(CC).gen | grep -P "[a-z]" | cut -f1-11 | perl -pe 's/[ \t]+\Z//;' >> aman/$(TODAY).ack.man
 	grep -vE -f $@.grep.tmp aman/$(CC).man > $@.tmp
 	echo ---- `date +%Y-%m-%d%t%T`  > aman/$(CC).man
 	grep -vP "^\-\-\-\-" $@.tmp    >> aman/$(CC).man
 	make today
+#--
+today: # build a file with today's (passing) A-numbers
+	grep -P "^A\d+" aman/$(TODAY).ack.man | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" | sort \
+	>        $@.txt
+	wc -l    $@.txt
 todaz: # zero today.txt
 	rm -vf today.txt
 	touch today.txt
@@ -453,11 +458,6 @@ select3:
 	head -n4 $(CC).gen
 	wc -l    $(CC).gen
 #	      AND COALESCE(i.keyword, 'future') NOT LIKE '%dead%' \
-#--
-today: # build a file with today's (passing) A-numbers
-	grep -P "^A\d+" aman/$(TODAY).man | cut -b1-7 | sed -e "s/\r//" -e "s/^/\^/" | sort \
-	>        $@.txt
-	wc -l    $@.txt
 #----
 antclean: purge # recompile all
 	cd ../.. ; ant clean dist

@@ -260,11 +260,13 @@ while (<>) { # read inputfile
             $parm =~ s{CESQ\(}         {Functions.CEIL_SQRT.z\(}g;
             $parm =~ s{CML\(}          {Functions.CARMICHAEL_LAMBDA.z\(}g;
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
+            $parm =~ s{\bF\.}          {Functions.}g;
             $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
             $parm =~ s{FD\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\($1, 2}g;
             $parm =~ s{DF\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\($1, 2}g;
             $parm =~ s{FM\(}           {Functions.MULTIFACTORIAL.z\(}g;
             $parm =~ s{FI\(}           {Functions.FIBONACCI.z\(}g;
+            $parm =~ s{GCDi\(}         {Functions.GCD.i\(}g;
             $parm =~ s{GCD\(}          {Functions.GCD.z\(}g;
             $parm =~ s{GD\(}           {GaussianIntegers.SINGLETON.sumdiv\(}g;
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
