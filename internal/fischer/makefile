@@ -783,7 +783,7 @@ robot1: # make 1 of the robots
 	echo ======== $(CC) ========
 	cd $(ROBOT) ; make $(CC)
 	cp -v $(ROBOT)/$(CC).gen .
-	make select2 select3
+	make -i select2 select3
 	cat  $(CC).gen >> robot.gen
 robot2: # make an individual robot
 	cd $(ROBOT) ; make $(CC)
