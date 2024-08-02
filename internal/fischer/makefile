@@ -777,7 +777,7 @@ robots:
 	# make   CC=seqsum     robot1
 	make   CC=triprod    robot1
 	make   CC=trisum     robot1
-	make   CC=union      robot1
+	# make   CC=union      robot1
 	make   robot3
 robot1: # make 1 of the robots
 	echo ======== $(CC) ========

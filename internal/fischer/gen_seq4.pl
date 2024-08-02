@@ -349,7 +349,7 @@ while (<>) { # read inputfile
             # extract any DirectSequences
             my %statics = (); # maps [ABDEFKMSTUX]<number> to A<number>
             my $parmi = $parms[$iparm];
-            foreach my $xseqno ($parmi =~ m{([BDEFHKMSTUX]\d{6})\(}g) { # collect the DirectSequences
+            foreach my $xseqno ($parmi =~ m{([BDEFHKMSTUX]\d{6})}g) { # collect the DirectSequences
                 my $ano = "A" . substr($xseqno, 1);
                 if (0) {
                 } elsif($xseqno =~ m{\A[BDE]}) { # DirectSequence
@@ -359,18 +359,21 @@ while (<>) { # read inputfile
                 } elsif($xseqno =~ m{\A[STU]}) { # DirectArray
                     $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
                     $statics{$xseqno} = $ano;
-                } elsif($xseqno =~ m{\A[H]}) { # Triangles with hasRAM()=true
+                } elsif($xseqno =~ m{\A[H]})   { # Triangles with hasRAM()=true
                     $parmi =~ s{$xseqno\(}{$ano\.$hasram{$ano}}g;
                     $statics{$xseqno} = $ano;
-                } elsif($xseqno =~ m{\A[F]} ) { # Functions.*.z
+                } elsif($xseqno =~ m{\A[F]} )  { # Functions.*.z
                     my $funct = $functs{$ano};
                     $parmi =~ s{$xseqno\(}{$funct}g;
-                } elsif($xseqno =~ m{\A[I]} ) { # Functions.*.i
+                } elsif($xseqno =~ m{\A[I]} )  { # Functions.*.i
                     my $funct = $functs{"F" . substr($xseqno, 1)};
                     $parmi =~ s{$xseqno\(}{$funct}g;
-                } elsif($xseqno =~ m{\A[M]} ) { # MemorySequence
+                } elsif($xseqno =~ m{\A[M]} )  { # MemorySequence
                     $statics{$xseqno} = $ano;
                     $parmi =~ s{$xseqno\(}{$ano\.a\(}g;
+                } elsif($xseqno =~ m{\A[X]} )  { # DecimalExpansionSequence
+                    $statics{$xseqno} = $ano;
+                    $parmi =~ s{$xseqno}{$ano\.getCR\(\)}g;
                 }
             }
             foreach my $xseqno (sort(keys(%statics))) { # evaluate the {Direct|Memory}Sequences
@@ -385,6 +388,8 @@ while (<>) { # read inputfile
                     $static_dirs .= "\n  private static final DirectArray $ano = new $ano();";
                 } elsif($xseqno =~ m{\A[M]} ) {
                     $static_dirs .= "\n  private static final MemorySequence $ano = new $ano();";
+                } elsif($xseqno =~ m{\A[X]} ) {
+                    $static_dirs .= "\n  private static final DecimalExpansionSequence $ano = new $ano();";
                 }
             }
             $parms[$iparm] = $parmi;
