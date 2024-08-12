@@ -1,0 +1,53 @@
+---- 2024-06-19 19:40:03
+A070975	lambdan	1	n -> D006577(Functions.PRIME.z(n))		a(n) = D006577(prime(n)). - _Michel Marcus_, Sep 07 2014
+A072867	lambdan	1	n -> F000041(121*n - 5)./(121)		a(n) = F000041(121*n - 5)/121.
+A075491	lambdan	1	n -> F007953(n).-(F000005(n))		a(n)=F007953[n]-F000005[n]
+A082548	lambdan	0	n -> (n <= 4) ? ZV(new int[] {1,2,4,7}[n - 1]) : D007504(n - 1).-(5)		a(n) = D007504(n-1) - 5 for n > 4. - _Seiichi Manyama_, Oct 02 2019
+A100817	lambdan	0	n -> F007954(n).*(Z.TWO.pow(F055642(n)))		a(n) = F007954(n) *2^F055642(n). - _R. J. Mathar_, Oct 02 2019
+A109726	lambdan	0	n -> D007504(ZV(n).*(n+1)).-(D007504(ZV(n).*(n - 1)))
+A114550	dexcf	1	new A114551()
+A127855	lambdan	1	n -> E120492(Functions.PRIME.z(n))./(Functions.PRIME.z(n))	. a(n) = (1 + Sum[ Prime[k]^(Prime[n]-1), {k,1,Prime[n]} ])/Prime[n]		a(n) = E120492(Prime(n))/Prime(n). a(n) = (1 + Sum[ Prime[k]^(Prime[n]-1), {k,1,Prime[n]} ])/Prime[n].
+A130681	lambdan	3	n -> E228426(F000040(n))./(F000040(n).^(3))		a(n) = E228426(F000040(n))/F000040(n)^3.
+A134193	lambdan	1	n -> D257993(D181819(n))
+A171972	lambdan	0	n -> (n == 0) ? ZV(0) : E293410(n).-(1)	n>= 1	a(n) = E293410(n) - 1 for n > 0.
+A212857	multrar	0	(self, n) -> Z_1(n-1).+(SU(1, n - 1, s -> self.a(s).*(Z_1(n - s - 1)).*(BI(n, s).^(4))))	"1"		a(n) = (-1)^(n-1) + Sum_{s = 1..n-1} a(s) * (-1)^(n-s-1) * binomial(n,s)^m for n >= 2 with a(1) = 1. Here m = 4. - _Petros Hadjicostas_, Sep 08 2019
+A212858	multrar	0	(self, n) -> Z_1(n-1).+(SU(1, n - 1, s -> self.a(s).*(Z_1(n - s - 1)).*(BI(n, s).^(5))))	"1"		a(n) = (-1)^(n-1) + Sum_{s = 1..n-1} a(s) * (-1)^(n-s-1) * binomial(n,s)^m for n >= 2 with a(1) = 1. Here m = 5. - _Petros Hadjicostas_, Sep 08 2019
+A212859	multrar	0	(self, n) -> Z_1(n-1).+(SU(1, n - 1, s -> self.a(s).*(Z_1(n - s - 1)).*(BI(n, s).^(6))))	"1"		a(n) = (-1)^(n-1) + Sum_{s = 1..n-1} a(s) * (-1)^(n-s-1) * binomial(n,s)^m for n >= 2 with a(1) = 1. Here m = 6. - _Petros Hadjicostas_, Sep 08 2019
+A212860	multrar	0	(self, n) -> Z_1(n-1).+(SU(1, n - 1, s -> self.a(s).*(Z_1(n - s - 1)).*(BI(n, s).^(7))))	"1"		a(n) = (-1)^(n-1) + Sum_{s = 1..n-1} a(s) * (-1)^(n-s-1) * binomial(n,s)^m for n >= 2 with a(1) = 1. Here m = 7. - _Petros Hadjicostas_, Sep 08 2019
+A233468	lambdan	1	n -> ZV(Functions.PRIME.z(n + 1).mod(9) - Functions.PRIME.z(n).mod(9))
+A244110	cofract	0	new A085965()	Continued fraction expansion of the prime zeta function at 5
+A248828	lambdan	0	n -> (n == 0) ? ZV(1) : E294491(n)./(n)		a(n) = E294491(n) / n for n>0, a(0) = 1. - _Alois P. Heinz_, Oct 31 2017
+A249224	lambdan	1	n -> F020639(ZV(n).*(n + 11)./(2))		a(n) = F020639(n(n+11)/2).
+A258399	lambdan	0	n -> (n == 0) ? ZV(1) : E210029(n).*(FA(4*n))./(FA(2*n + 1).*(FA(2*n)).*(FA(n)))	/ (n! * (2*n)! * (2*n + 1)!),		a(n) = E210029(n) * (4*n)! / (n! * (2*n)! * (2*n + 1)!), for n>0. - _Vaclav Kotesovec_, Sep 27 2023
+A260611	lambdan	0	n -> D000178(F000040(n).-(1)).mod(F000040(n))
+A265823	cofract	0	new A085548()	Continued fraction expansion of the prime zeta function at 2
+A265824	cofract	0	new A085541()	Continued fraction expansion of the prime zeta function at 3
+A276094	lambdan	0	n -> (n == 0) ? Z.ZERO : ZV(n).mod(F002110(D257993(n)))
+A277407	lambdan	0	n -> E277406(n)./(n + 1)		a(n) = E277406(n)/(n+1).
+A279046	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(k), (FA(k))).*(D000178(n))).num()
+A284694	lambdan	1	n -> F020639(E279513(n))		a(n) = F020639(E279513(n)) for any n>0.
+A287731	lambdan	0	n -> E287729(2*n - 1)	n>= 1	a(n) = E287729(2*n-1), n > 0.
+A292262	lambdan	0	n -> D007949(E245612(n).+(1))		a(n) = D007949(1+E245612(n)).
+A324514	lambdan	1	n -> E306669(n).*(n)	a(n) = E306669(n) * n.
+A327771	lambdan	0	n -> F000041(49*n + 47)./(49)		a(n) = F000041(49*n + 47)/49.
+A328578	lambdan	0	n -> D257993(E276087(n))
+A328578	lambdan	0	n -> D257993(E276087(n))
+A328585	filnumo	1	n -> D257993(n).equals(D257993(F276086(F276086(n))))
+A328586	filnumo	1	n -> (n & 1) == 0 && D257993(n).equals(D257993(F276086(F276086(n))))
+A328587	filnumo	1	n -> D257993(F276086(F276086(n))).compareTo(D257993(n)) < 0
+A328588	filnumo	1	n -> D257993(F276086(F276086(n))).compareTo(D257993(n)) > 0
+A328589	filnumo	1	n -> n % 6 == 0 && D257993(F276086(F276086(n))).compareTo(D257993(n)) > 0
+A328590	lambdan	1	n -> E328578(n).-(D257993(n))
+A328762	filnumo	0	n -> { final Z x = D257993(F276086(F276086(n))); return Z.TWO.compareTo(x) < 0 && x.compareTo(D257993(n)) < 0; }
+A329028	lambdan	0	n -> D257993(E328835(n))
+A329603	lambdan	0	n -> D005940(D156552(n).*(3).+(2))
+A332449	lambdan	0	n -> D005940(D156552(n).*(3).+(1))		a(n) = D005940(1+(3*D156552(n))).
+A332451	lambdan	0	n -> D005940(D048724(D156552(n)).+(1))
+A332460	lambdan	0	n -> (n == 1) ? Z.ONE : D005940(D065621(D156552(n)).+(1))
+A338562	lambdan	0	n -> E123565(2*n + 1).*(FA(2*n+1))		a(n) = E123565(2*n+1) * (2*n+1)!.
+A341515	lambdan	0	n -> D005940(D006370(D156552(n)).+(1))
+A341516	lambdan	0	n -> D005940(D014682(D156552(n)).+(1))
+A347102	lambdan	1	n -> D007814(n).+(D056239(D064989(E347123(n))).*(2))		a(n) = D007814(n) + 2*D056239(D064989(E347123(n))).
+A364502	lambdan	1	n -> D005940(n)./(GCD(n, D005940(n)))		a(n) = D005940(n) / gcd(n, D005940(n)).
+A370672	lambdan	0	n -> E123565(2*n + 1).*(2*n + 1)		a(n) = E123565(2*n+1) * (2*n+1).
+A371061	multrar	1	(self, n) -> E117818(self.a(n - 1)).+(E117818(self.a(n - 2)))	"1,2"	n>= 3	a(n) = E117818(a(n-1)) + E117818(a(n-2)) for n > 2.

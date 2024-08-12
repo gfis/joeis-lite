@@ -1,0 +1,116 @@
+A077212	sintrif	1	(term, n) -> term.root(2)	""	new A077211()		J077211(n)^(1/2)
+A080468	sintrif	2	(term, n) -> term.-(2*n)	""	new A080578()		J080578(n)-2*n
+A088766	sintrif	0	(term, n) -> (term.-(1))./(2)	""	new A087681()		(J087681(n)-1)/2
+A088768	sintrif	0	(term, n) -> (term.-(1))./(2)	""	new A087682()		(J087682(n)-1)/2
+A088770	sintrif	0	(term, n) -> (term.-(1))./(2)	""	new A087683()		(J087683(n)-1)/2
+A094539	sintrif	0	(term, n) -> term./(3)	""	new A094538()		J094538(n)/3
+A103578	sintrif	0	(term, n) -> F000005(term.^(2))	""	new A061799()		F000005((J061799(n))^2)
+A113315	sintrif	0	(term, n) -> term./(F007953(term))	""	new A005349()		J005349(n)/F007953(J005349(n))
+A114402	sintrif	0	(term, n) -> term./(2)	""	new A114401()		J114401(n)/2
+A121241	sintrif	0	(term, n) -> Z_1(term.+(1))	""	new A088567()		(-1)^(1+J088567(n))
+A141264	sintrif	0	(term, n) -> F000005(term.^(2))	""	new A005179()		F000005((J005179(n))^2)
+A195441	sintrif	0	(term, n) -> term./(n + 1)	""	new A064538()		J064538(n)/(n+1)
+A237525	sintrif	0	(term, n) -> term.root(3)	""	new A053058()		J053058(n)^(1/3)
+A246265	sintrif	0	(term, n) -> (D048673(term).+(1))./(2)	""	new A246261()		(1+D048673(J246261(n)))/2
+A272799	sintrif	0	(term, n) -> (term.+(1))./(2)	""	new A069977()		(J069977(n)+1)/2
+A324201	sintrif	0	(term, n) -> D005940(term.+(1))	""	new A000396()		D005940(1+J000396(n)). [Provided no odd perfect numbers exist]
+A345467	sintrif	0	(term, n) -> D002275(term)./(term)	""	new A014950()		D002275(J014950(n))/J014950(n)
+---- 2024-06-24 14:04:56
+A075062	sintrif	1	(term, n) -> term.*(n).+(F000217(n - 1))	""	new A075059()		n*J075059(n)+F000217(n-1)
+A075484	lambdan	0	n -> D008908(ZV(5).^(n))	""			D008908(5^n)
+A081459	lambdan	1	n -> F000032(Z2(n - 1).*(3))./(2)	""			F000032(3*2^(n-1))/2
+A084011	lambdan	1	n -> F004086(11*n)./(11)	""			F004086(11*n)/11
+A087032	lambdan	1	n -> D010051(F151800(n).*(2).-(n))	""			D010051((2*F151800(n))-n)
+A094593	sintrif	3	(term, n) -> F000040(n).-(1)./(term)	""	new A062117()		(F000040(n)-1)/J062117(n)
+A095350	lambdan	1	n -> M000081(n).*(n - 1)	""			(n-1)*M000081(n)
+A103565	sintrif	1	(term, n) -> term.^(2).*(3).+(2)	""	new A103564()		2+3*(J103564(n))^2
+A121172	sintrif	1	(term, n) -> (term.-(1))./(ZV(10).^(n))	""	new A070854()		(J070854(n)-1)/10^n
+A127991	sintrif	1	(term, n) -> term./(F006530(term).*(3))	""	new A127989()		J127989(n)/(3*F006530(J127989(n)))
+A128428	lambdan	1	n -> F001221(ZV(n).*(n).+(1))	""			F001221(n^2+1)
+A133825	sintrif	0	(term, n) -> term.*(term.+(1))./(2)	""	new A004737()		J004737(n)*(J004737(n)+1)/2
+A135295	lambdan	0	n -> ZV(n).^(F055642(n))	""			n^F055642(n)
+A135983	sintrif	1	(term, n) -> ZV(2).^(term).-(1)	""	new A107006()		2^J107006(n)-1
+A136596	lambdan	2	n -> Z_1(n).*(M048287(n)).+(1)./(2)	""			(1+(-1)^n*M048287(n))/2
+A139223	sintrif	1	(term, n) -> term.*(term.-(1))	""	new A000668()		J000668(n)*(J000668(n)-1)
+A139225	sintrif	1	(term, n) -> term.*(term.-(1))./(3)	""	new A000668()		J000668(n)*(J000668(n)-1)/3
+A139400	multraf	1	(self, n) -> self.s(1).*(self.s(0)).*(self.s(2)).*(self.s(3))	""	new A004254(), new A161498(), new A001353(), new A001906()		J001906(n)*J001353(n)*J004254(n)*J161498(n)
+A140647	lambdan	2	n -> ZV(n + 2).^(n - 1).*(2).-(ZV(3*n + 1).*(ZV(n + 1).^(n - 2)))	""			2*(n+2)^(n-1)-(3*n+1)*(n+1)^(n-2)
+A145445	lambdan	1	n -> E104103(n).^(2)	""			E104103(n)^2
+A145487	sintrif	1	(term, n) -> (term.-(5))./(12)	""	new A145471()		(J145471(n)-5)/12
+A147761	lambdan	1	n -> ZV(2).^(ZV(n).-(D023416(n))).*(n)	""			n*2^(n-D023416(n))
+A163547	multraf	0	(self, n) -> D000290(self.s(0)).+(D000290(self.s(1)))	""	new A059252(), new A059253()		D000290(J059252(n))+D000290(J059253(n))
+A172996	sintrif	1	(term, n) -> (ZV(3).^(term).+(7))./(2)	""	new A172995()		(3^J172995(n)+7)/2
+A173216	sintrif	1	(term, n) -> term.*(n)	""	new A011762()		n*J011762(n)
+A173484	lambdan	1	n -> ZV(10).^(n + 1).*(E132740(n))	""			10^(n+1)*E132740(n)
+A182736	lambdan	0	n -> E182746(n).*(2*n)	""			2*n*E182746(n)
+A182737	sintrif	0	(term, n) -> term.*(E182747(n))	""	new A005408()		J005408(n)*E182747(n)
+A185826	sintrif	1	(term, n) -> term.^(n)	""	new A006003()		J006003(n)^n
+A206802	lambdan	2	n -> E185382(n)./(2)	""			(1/2)*E185382(n)
+A210477	sintrif	1	(term, n) -> term.*(term.+(6))	""	new A031924()		J031924(n)*(J031924(n)+6)
+A234307	lambdan	1	n -> (D018804(2*n).-(n))./(2)	""			(D018804(2*n)-n)/2
+A264987	lambdan	0	n -> D263272(2*n + 1)	""			D263272((2*n)+1)
+A272760	sintrif	1	(term, n) -> term./(n)	""	new A065880()		J065880(n)/n
+A284723	lambdan	1	n -> E355001(2*n)	""			E355001(2*n)
+A296009	sintrif	1	(term, n) -> term./(2*n - 1)	""	new A061808()		J061808(n)/(2*n-1)
+A324908	lambdan	1	n -> F000035(n).*(ZV(1).-(D010052(n)))	""			F000035(n)*(1-D010052(n))
+A328819	lambdan	1	n -> E010879(F000196(ZV(1000000).*(n)))	""			E010879(F000196(1000000*n))
+A328820	lambdan	1	n -> E010879(F000196(ZV(100000000).*(n)))	""			E010879(F000196(100000000*n))
+A329712	lambdan	0	n -> D000629(ZV(n).^(2))	""			D000629(n^2)
+A334176	lambdan	1	n -> F007913(3*(2*n + 7)*(2*n - 1))	""			F007913(3*(2*n+7)*(2*n-1))
+A345927	sintrif	0	(term, n) -> Z_1(F070939(n).-(1)).*(term)	""	new A065359()		(-1)^(F070939(n)-1)*J065359(n)
+A354713	lambdan	2	n -> F000005(D000188(ZV(n).*(n).-(1)))	""			F000005(D000188(n^2-1))
+A370600	sintrif	1	(term, n) -> (term.-(1))./(4)	""	new A007675()		(J007675(n)-1)/4
+A373559	sintrif	1	(term, n) -> term.^(2)	""	new A055932()		J055932(n)^2
+A373703	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A066636(), new A062760()		J062760(n)*J066636(n)
+A079612	sintrif	0	(term, n) -> term.*(ZV(2).-(F000035(n)))	""	new A185633()		J185633(n)*(2-F000035(n))
+A283461	sintrif	0	(term, n) -> F006530(D000225(n)./(term))	""	new A005420()		F006530(D000225(n)/J005420(n))
+A305125	lambdan	0	n -> D002375(ZV(n).^(2))	""			D002375(n^2)
+A305126	lambdan	0	n -> D002375(ZV(n).^(3))	""			D002375(n^3)
+A309735	sintrif	0	(term, n) -> term.root(n)	""	new A067443()		J067443(n)^(1/n)
+A321427	sintrif	0	(term, n) -> ZV(2*n + 1).*(term)	""	new A321426()		(2*n+1)*J321426(n). [Wormald eq. (2.2)]
+A335423	sintrif	0	(term, n) -> D005940(term.+(1))	""	new A248663()		D005940(1+J248663(n))
+---- 2024-06-24 21:51:59
+A104658	lambdan	1	n -> F001221(ZV(100).^(n).*(23).-(23)./(99))	""			F001221((23*100^n-23)/99)
+A111196	sintrif	0	(term, n) -> term./(Z2(n))	""	new A002084()		2^(-n)*J002084(n)
+A117664	lambdan	1	n -> RU(1, n, j -> RU(1, n, i -> new Q(1, i + j - 1))).den()	denominator( Sum_{j=1..n} Sum_{i=1..n} 1/(i+j-1) )
+A366872	lambdan	0	n -> F000005(8 + 4*n)	""			F000005(8+4n)
+A367513	lambdan	1	n -> ZV(n)./(E367514(n))	""			n/E367514(n)
+A098853	sintrif	0	(term, n) -> (term.-(1))./(n)	""	new A048860()		(J048860(n)-1)/n
+A104543	lambdan	0	n -> F001221(ZV(10).^(n).*(50).+(31)./(9))	""			F001221((31+50*10^n)/9)
+A188890	lambdan	0	n -> ZV(2).^(ZV(n).*(2*n)).*(M004003(n))	""			2^(n^2*2)*M004003(n)
+A296519	lambdan	0	n -> E117664(n).*(2)	""	2*E111876(n-1)/n
+A305056	sintrif	0	(term, n) -> term./(F002110(F001221(term)))	""	new A004394()		J004394(n)/F002110(F001221(J004394(n)))
+A342841	lambdan	0	n -> E071778(ZV(10).^(n))	""			E071778(10^n)
+A347607	lambdan	0	n -> F000041(ZV(n).^(n))	""			F000041(n^n)
+---- 2024-06-24 22:35:50
+A092846	lambdan	0	n -> ZV(10).^(Functions.DIGIT_LENGTH.i(10, BI(n, n/2))).+(1).^(n)		100...001^n,wheretherearejustenoughzerosfortheresulttodisplaythetermsinthen-throwofPascal'striangle	""			100...001^n, where there are just enough zeros for the result to display the terms in the n-th row of Pascal's triangle
+A110257	lambdan	1	n -> ZV(4*n - 3).*(BI(2*n - 2, n - 1).^(2))./(ZV(4).^(Functions.DIGIT_SUM.i(2, n - 1)))	""	new A002894()		(4*n+1)*J002894(n)/4^F000120(n)
+A163636	sintrif	1	(term, n) -> term.+(2*n - 1).*(term.-(2*n - 3))./(4)	""	new A014076()	a(n) = ( A014076(n)+2*n-1 ) *( A014076(n)-2*n+3 )/4.
+A216651	diffs	1	new A070089()
+A323667	multraf	0	(self, n) -> SU(1, n, k -> D001405(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))	"1"
+A330019	multraf	0	(self, n) -> SU(1, n, k -> D001405(k).*(BI(n, k)).*(self.a(n - k)))	"1"
+A373299	sintrif	1	(term, n) -> F151800(term)	""	new A022885()		F151800(J022885(n))
+A373904	lambdan	0	n -> SU(0, n/2, k -> BI(n + 4*k, n - 2*k))
+A373905	lambdan	0	n -> SU(0, n/3, k -> BI(n + 3*k, n - 3*k))
+A373906	lambdan	0	n -> SU(0, n/4, k -> BI(n + 2*k, n - 4*k))
+A186074	multraf	0	(self, n) -> new Z(self.s(0).toString() + self.s(1).toString())	""	new A070152(), new A070153()		J070152(n).J070153(n) where "." means concatenation
+A085961	sintrif	0	(term, n) -> F000203(term)	""	new A070982()		F000203(J070982(n))
+---- 2024-06-24 23:37:47
+A101810	lambdan	1	n -> BI(Functions.PRIME.i(n) + n - 1, n - 1)
+A102428	lambdan	0	n -> BI((5*n + 2)/2, (n + 1)/2)
+A104181	lambdan	1	n -> BI(Functions.PRIME.i(12), Functions.PRIME.i(n) % 12)
+A104861	lambdan	1	n -> BI(Functions.PRIME.i(n) - 1, n - 1)
+A107447	lambdan	1	n -> BI(FA(n), ZV(n).^(2))
+A178842	lambdan	1	n -> BI((n - 1)*(n - 1), n)
+A201050	lambdan	1	n -> BI(Functions.PRIMORIAL.z(n), Functions.PRIMORIAL.z(n - 1))
+A250092	lambdan	1	n -> BI(Functions.PRIME.i(n + 4), Functions.PRIME.i(n))
+A290059	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return BI(2*p - 1, p - 1); }	where prime(n) is the n-th prime
+A306893	lambdan	1	n -> BI(F000045(n + 1), F000045(n)).*(F000045(n - 2).+(1))./(F000045(n).+(1))	, where F = F000045 are Fibonacci numbers. - _Max Alekseyev_, Feb 12 2024
+A331505	lambdan	1	n -> BI(BI(n, 2), n/2)
+A361489	multrar	0	(self, n) -> BI(n - 1, 2).*(self.a(n - 3)).+(SU(1, n, k -> BI(n - 1, k - 1).*(self.a(n - k))))	"1,1,2"
+A361531	multrar	0	(self, n) -> BI(n - 1, 2).*(self.a(n - 3)).-(SU(1, n, k -> BI(n - 1, k - 1).*(self.a(n - k))))	"1,-1,0"
+A367776	lambdan	0	n -> BI(2*n, n - 1).*(FA(2*n + 1))./(FA(n))
+A099905	lambdan	0	n -> BI(2*n - 1, n - 1).modZ(n)
+A282410	lambdan	0	n -> { final int p = Functions.PRIME.i(n); return BI(2*p - 1, p - 1).mod(ZV(p).^(5)); }	 modulo p^5, where p = prime(n)
+A297926	lambdan	0	n -> BI(2*n - 1, n - 1).*(Functions.BELL.z(n))
+

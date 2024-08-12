@@ -1,0 +1,322 @@
+•---- 2024-07-24 19:04:35
+A071939	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A070324(), new A070320()	J070324(n)-J070320(n)	_	_	_
+A072209	sintrif	1	(term, n) -> F000010(F000010(term))	""	new A033948()	F000010(F000010(J033948(n)))	_	_	_
+A073065	lambdan	1	n -> F000040(n).*(F000040(F000040(n)))	""	F000040(n)*F000040(F000040(n))	_
+A073136	lambdan	1	n -> F000040(n).+(F000040(F000040(n)))	""	F000040(n)+F000040(F000040(n))	_
+A073808	lambdan	1	n -> F000005(GCD(F000203(n), F001157(n)))	""		F000005(GCD(F000203(n),F001157(n)))	_	_	_
+A074184	sintrif	1	(term, n) -> term	"1,1,2"	new A060151()	J060151(n)	_	_	_
+A074398	lambdan	1	n -> F000720(n).-(F000720(F000010(n))).-(D010051(n))	""	F000720(n)-F000720(F000010(n))-D010051(n)	_
+A074930	lambdan	1	n -> FA(n-1).*(F000010(n))	""	FA(n-1)*F000010(n)	_
+A075743	lambdan	1	n -> F000720(3*n+3).-(F000720(3*n))	""	F000720(3*n+3)-F000720(3*n)	_
+A076090	sintrif	1	(term, n) -> term.^(n)	"1,81"	new A046017()	J046017(n)^n	_	_	_
+A076153	filnum	1	2	n -> Functions.BIG_OMEGA.z(n).equals(Functions.BIG_OMEGA.z(n - 1).^(2))	Numbers n such that Omega(n) = Omega(n-1)^2
+A076567	lambdan	1	n -> F006530(4*n+6)	""	F006530(4*n+6)	_
+A079635	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A083025(), new A065339()	J083025(n)-J065339(n)	_	_	_
+A081243	lambdan	1	n -> ZV(((PM(n).mod(3) - 1) + n) % 10)	a(n) = Mod[n+(Mod[Prime[n],3]-1),10]
+A083260	sintrif	1	(term, n) -> GCD(D046523(n), term)	""	new A071364()	GCD(D046523(n),J071364(n))	_	_	_
+A084245	lambdan	1	n -> ZV(((PM(n).mod(7) - 3) + n) % 10)
+A085342	lambdan	1	n -> F000720(n).-(F000720(F000010(n)))	""	F000720(n)-F000720(F000010(n))	_
+A085608	sintrif	1	(term, n) -> F000720(term)	""	new A018800()	F000720(J018800(n))	_	_	_
+A085655	lambdan	1	n -> F000720(F004086(n)).-(F000720(n))	""	F000720(F004086(n))-F000720(n)	_
+A086685	lambdan	1	n -> SU(1, n, k -> F000720(1 + n*(k - 1)).-(F000720(n*(k - 1))))
+A088683	lambdan	1	n -> F000040(3*n+2).-(F000040(3*n))	""	F000040(3*n+2)-F000040(3*n)	_
+A089103	lambdan	1	n -> PM(n).+(n).modZ(10)
+A090340	lambdan	1	n -> F001414(n).-(F001414(n+1))	""	F001414(n)-F001414(n+1)	_
+A090982	lambdan	0	n -> F000041(n).*(F000041(n+1))	""	F000041(n)*F000041(n+1)	_
+A091632	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A091630(), new A091631()	J091630(n)-J091631(n)	_	_	_
+A091663	sintrif	0	(term, n) -> term	"5"	new A018248()	J018248(n)	_	_	_
+A091664	sintrif	0	(term, n) -> term	"4"	new A018247()	J018247(n)	_	_	_
+A092590	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A008332(), new A008331()	J008332(n)-J008331(n)	_	_	_
+A092843	lambdan	1	n -> SD(n, k -> (k <= 1) ? Z.ZERO : F000010(k-1))
+A094207	lambdan	1	n -> F000040(4*n-3).+(F000040(4*n-2)).+(F000040(4*n-1)).+(F000040(4*n))	""	F000040(4*n-3)+F000040(4*n-2)+F000040(4*n-1)+F000040(4*n)	_
+A097499	sintrif	1	(term, n) -> term.+(E078422(n))	""	new A053089()	J053089(n)+E078422(n)	_	_	_
+A097946	sintrif	1	(term, n) -> F008683(n).*(term)	""	new A014197()	F008683(n)*J014197(n)	_	_	_
+A098018	lambdan	1	n -> SD(n, k -> (k < 2) ? Z.ZERO : F008683(k-1))
+A098357	sintrif	1	(term, n) -> term.-(F000720(n+1))	""	new A061017()	J061017(n)-F000720(n+1)	_	_	_
+A104897	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A104860(), new A014688()	J104860(n)-J014688(n)	_	_	_
+A105348	lambdin	0	n -> E130253(n).-(E130250(n))	"1"	E130253(n)-E130250(n)	_	_
+A107759	lambdan	1	n -> SD(n, d -> GCDi(d, n/d) != 1 ? Z.ZERO : F034448(d))
+A110089	multraf	1	(self, n) -> MIN(self.s(0), self.s(1))	""	new A005602(), new A005603()	MIN(J005602(n),J005603(n))	_	_	_
+A113486	lambdan	1	n -> E113166(n).-(F000045(n-1))	""	E113166(n)-F000045(n-1)	_
+A113498	lambdan	2	n -> SU(1, n, k -> F001221(k).^(Functions.OMEGA.i(n - k + 2)))
+A113523	sintrif	1	(term, n) -> term	"0,0,0"	new A014684()	J014684(n)	_	_	_
+A113646	sintrif	1	(term, n) -> term	"4,4"	new A014683()	J014683(n)	_	_	_
+A115014	lambdan	1	n -> SU(1, n, i -> (Functions.GCD.i(6, i) == 1) ? ZV(i) : Z.ZERO)
+A116963	lambdan	1	n -> SD(n, d -> ZV(d+1).*(d+2).*(d+3)./(6))
+A117027	lambdan	1	n -> F000040(4*n-3).*(F000040(4*n)).-(F000040(4*n-2).*(F000040(4*n-1)))	""	F000040(4*n-3)*F000040(4*n)-F000040(4*n-2)*F000040(4*n-1)	_
+A122534	sintrif	1	(term, n) -> F000720(F000720(term))	""	new A277284()	F000720(F000720(J277284(n)))	_	_	_
+A126287	lambdin	1	n -> D032742(n).*(F020639(n-1))	"1,1,2"	D032742(n)*F020639(n-1)	_	_
+A126289	sintrif	1	(term, n) -> F006530(n-1).*(term)	"1,1,2"	new A052126()	F006530(n-1)*J052126(n)	_	_	_
+A128508	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A117143(), new A117142()	J117143(n)-J117142(n)	_	_	_
+A129271	multraf	0	(self, n) -> self.s(0).+(self.s(1))	"1"	new A000272(), new A057500()	J000272(n)+J057500(n)	_	_	_
+A132431	multraf	1	(self, n) -> self.s(0).-(self.s(1)).+(D002378(n-1))	""	new A060226(), new A062119()	J060226(n)-J062119(n)+D002378(n-1)	_	_	_
+A135179	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	""	new A050997(), new A030078(), new A001248()	J050997(n)-J030078(n)-J001248(n)	_	_	_
+A135182	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2))	""	new A001248(), new A030078(), new A050997()	J001248(n)+J030078(n)+J050997(n)	_	_	_
+A135274	lambdan	1	n -> F000040(2*n).-(F000040(2*n-1)).+(F000040(2*n+1))	""	F000040(2*n)-F000040(2*n-1)+F000040(2*n+1)	_
+A141515	sintrif	1	(term, n) -> F000010(term)	""	new A067774()	F000010(J067774(n))	_	_	_
+A147877	sintrif	1	(term, n) -> F000041(2*n).-(F000041(2*n-1)).-(term).+(F000041(n)).+(F000041(n-1))	""	new A000070()	F000041(2*n)-F000041(2*n-1)-J000070(n)+F000041(n)+F000041(n-1)	_	_	_
+A153211	lambdan	1	n -> F007953(n).*(F004086(F007953(n)))	""	F007953(n)*F004086(F007953(n))	_
+A157015	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A000088(), new A157016()	J000088(n)-J157016(n)	_	_	_
+A163900	multraf	0	(self, n) -> D000290((self.s(0).-(self.s(1))).abs()).+(D000290((self.s(2).-(self.s(3))).abs()))	""	new A059906(), new A059252(), new A059905(), new A059253()	D000290(ABS(J059906(n)-J059252(n)))+D000290(ABS(J059905(n)-J059253(n)))	_	_	_
+A174235	multraf	1	(self, n) -> (self.s(0).-(self.s(1))).abs()	""	new A045753(), new A123986()	ABS(J045753(n)-J123986(n))	_	_	_
+A175766	filnum	1	2	n -> Functions.BIG_OMEGA.z(n).equals(Functions.BIG_OMEGA.z(ZV(n).-(Z2(Functions.BIG_OMEGA.i(n)))))	Omega(n) = Omega(n - 2^Omega(n))
+A177852	lambdan	1	n -> F000040(n).-(E177687(n))	""	F000040(n)-E177687(n)	_
+A179278	sintrif	1	(term, n) -> term	"1,1,1,4"	new A014684()	J014684(n)	_	_	_
+A181135	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A180322(), new A179781()	J180322(n)-J179781(n)	_	_	_
+A181428	lambdan	1	n -> F000040(n+2).+(F000040(n+1)).-(F000040(n))	""	F000040(n+2)+F000040(n+1)-F000040(n)	_
+A182984	multraf	0	(self, n) -> self.s(0).-(self.s(1))	"0"	new A006128(), new A092269()	J006128(n)-J092269(n)	_	_	_
+A185134	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A185334(), new A185335()	J185334(n)-J185335(n)	_	_	_
+A185135	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A185335(), new A185336()	J185335(n)-J185336(n)	_	_	_
+A185157	lambdan	1	n -> FA(n-1).*(S2(2*n-1, n))	""		FA(n-1)*S2(2*n-1,n)	_	_	_
+A185163	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A165627(), new A185364()	J165627(n)-J185364(n)	_	_	_
+A207380	multraf	0	(self, n) -> self.s(0).+(F000217(n)).+(self.s(1))	""	new A066186(), new A006128()	J066186(n)+F000217(n)+J006128(n)	_	_	_
+A229067	lambdan	1	n -> F000040(n).+(E145445(n))	""	F000040(n)+E145445(n)	_
+A229497	lambdan	1	n -> F000040(n).*(E145445(n))	""	F000040(n)*E145445(n)	_
+A234011	lambdan	1	n -> D000069(n).+(D000069(n+1))	""	D000069(n)+D000069(n+1)	_
+A235398	sintrif	1	(term, n) -> F007953(term)	""	new A030078()	F007953(J030078(n))	_	_	_
+A238496	lambdan	0	n -> SU(1, n, i -> Z2(n - i).*(F001222(i)))
+A242480	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2))	""	new A142150(), new A054024(), new A229110()	J142150(n)+J054024(n)+J229110(n)	_	_	_
+A245141	lambdan	0	n -> SU(0, n, i -> BI(n,i).^(2).*(FA(i)).*(D000085(n - i)).*(ZV(2*n).^(n - i)))
+A249058	sintrif	0	(term, n) -> F000720(F000196(term))	""	new A033844()	F000720(F000196(J033844(n)))	_	_	_
+A253888	sintrif	0	(term, n) -> D254049(term.+(1))	"1"	new PrependSequence(0, new A064216(), 0)	_	_
+A260374	sintrif	0	(term, n) -> (FA(n).-(term)).abs()	""	new A260373()	ABS(FA(n)-J260373(n))	_	_	_
+A264782	lambdan	1	n -> SD(n, d -> MU(d).^(n/d))
+A265326	lambdan	1	n -> F000040(n).-(E098957(n))	""	F000040(n)-E098957(n)	_
+A265332	sintrif	1	(term, n) -> term	"1"	new A051135()	J051135(n)	_	_	_
+A273494	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A245325(), new A245326()	J245325(n)+J245326(n)	_	_	_
+A274398	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(self.s(2)))	"1,13"	new A002306(), new A002770(), new A047817()	J002306(n)-J002770(n)*J047817(n)	_	_	_
+A275768	lambdan	0	n -> SU(1, n, i -> D010051(n - i).*(D010051(2*n - i)).*(D010051(i)))
+A275973	lambdin	1	n -> F000035(D000523(n-1))	"1,0"	F000035(D000523(n-1))	_	_
+A277575	sintrif	1	(term, n) -> F000720(term)	""	new A277284()	F000720(J277284(n))	_	_	_
+A285768	lambdan	1	n -> SD(n, d -> MU(n/d).*(ZV(10).^(d).-(1))./(9))
+A286510	multraf	1	(self, n) -> self.s(0).-(self.s(1))	"1,1"	new A008330(), new A174407()	J008330(n)-J174407(n)	_	_	_
+A293206	lambdan	1	n -> F000040(n).+(F000040(n+1).*(F000040(n+2)))	""	F000040(n)+F000040(n+1)*F000040(n+2)	_
+A302781	sintrif	0	(term, n) -> M052330(E064706(term))	""	new A163356()	M052330(E064706(J163356(n)))	_	_	_
+A302844	sintrif	0	(term, n) -> F003188(term)	""	new A163356()	F003188(J163356(n))	_	_	_
+A304483	lambdan	1	n -> F000720(n).*(F000720(2*n))	""	F000720(n)*F000720(2*n)	_
+A305435	lambdan	1	n -> E305436(n).-(D209229(n-1))	""	E305436(n)-D209229(n-1)	_
+A307101	sintrif	1	(term, n) -> term.*(E266265(n))	""	new A211776()	J211776(n)*E266265(n)	_	_	_
+A308022	lambdan	2	n -> F007917(2*n-1).-(F007918(n-1))	""	F007917(2*n-1)-F007918(n-1)	_
+A308481	lambdan	1	n -> SU(1, n, k -> GCDi(n, k) !=1 ? Z.ZERO : ZV(k).^(n))
+A319680	lambdan	1	n -> D019565(n).*(E300831(n))	""	D019565(n)*E300831(n)	_
+A323307	sintrif	1	(term, n) -> term.*(F000005(D056239(n)))	""	new A318762()	J318762(n)*F000005(D056239(n))	_	_	_
+A324870	sintrif	1	(term, n) -> E324863(n).-(term)	""	new A252464()	E324863(n)-J252464(n)	_	_	_
+A325636	lambdan	1	n -> GCD(2*n, D033879(n))	""		GCD(2*n,D033879(n))	_	_	_
+A325887	lambdan	1	n -> SU(1, n, k -> GCDi(k, n) !=1 ? Z.ZERO : Z_1(k + 1).*(k))
+A326399	lambdan	1	n -> SD(n, d -> (n/d % 3 != 1) ? Z.ZERO : ZV(d))
+A326400	lambdan	1	n -> SD(n, d -> (n/d % 3 != 2) ? Z.ZERO : ZV(d))
+A329373	lambdan	1	n -> SD(n, d -> ZV(d).*(E322993(n/d)))
+A332616	multraf	0	(self, n) -> self.s(0).^(3).+(self.s(1).^(3)).+(self.s(2).^(3)).-(self.s(0).*(self.s(1)).*(self.s(2)).*(3))	""	new A056556(), new A056557(), new A056558()	^3+J056557(n)^3+J056558(n)^3-3*J056556(n)*J056557(n)*J056558(n)
+A332731	lambdan	2	n -> FA(n).*(F000040(n)).-(F007917(FA(n).*(F000040(n))))	""	FA(n)*F000040(n)-F007917(FA(n)*F000040(n))	_
+A333178	lambdan	1	n -> SD(n, d -> GCDi(d, n/d) != 1 ? Z.ZERO : F000040(d))
+A334572	lambdan	2	n -> MAX(D051903(n-1), D051903(n))	""		MAX(D051903(n-1),D051903(n))	_	_	_
+A337505	sintrif	0	(term, n) -> term.*(BI(2*n-1, n))	""	new A005649()	J005649(n)*BI(2*n-1,n)	_	_	_
+A338814	sintrif	1	(term, n) -> FA(n-1).*(term)	""	new A048272()	FA(n-1)*J048272(n)	_	_	_
+A342915	lambdan	1	n -> GCD(1+n, F001615(n))	""		GCD(1+n,F001615(n))	_	_	_
+A342990	sintrif	0	(term, n) -> term.*(FA(2*n))	""	new A007705()	J007705(n)*FA(2*n)	_	_	_
+A343525	lambdan	1	n -> SD(n, d -> GCDi(d, n/d) != 1 ? Z.ZERO : ZV(d).*(F034448(n/d)))
+A343569	lambdan	1	n -> SD(n, d -> GCDi(d, n/d) != 1 ? Z.ZERO : F034448(d).*(F034448(n/d)))
+A343570	lambdan	1	n -> SD(n, d -> GCDi(d, n/d) != 1 ? Z.ZERO : F.USIGMA1.z(d).*(Z2(Functions.OMEGA.i(n/d))))
+A343657	lambdan	0	n -> SU(1, n, k -> F000005(ZV(k).^(n - k)))
+A344465	lambdan	1	n -> SD(n, d -> ZV(d).^(MU(d).abs()))
+A344575	lambdan	1	n -> SD(n, d -> ZV(d).^(MU(n/d).abs()))
+A345290	multraf	0	(self, n) -> D022290(self.s(0)).-(D022290(self.s(1)))	""	new A063695(), new A063694()	D022290(J063695(n))-D022290(J063694(n))	_	_	_
+A349328	sintrif	1	(term, n) -> term	""	new A006746()	J006746(n)	_	_	_
+A350134	multraf	0	(self, n) -> self.s(0).-((self.s(1)).abs())	""	new A000312(), new A069856()	J000312(n)-ABS(J069856(n))	_	_	_
+A351159	sintrif	1	(term, n) -> term	""	new A056878()	J056878(n);forevenn,a(n)	_	_	_
+A351193	lambdan	1	n -> SD(n, p -> ZV(p).IPP() ? ZV(p).^(5) : Z.ZERO)
+A353235	lambdan	1	n -> SD(n, d -> ARD(d).and(ZV(1)))
+A353236	lambdan	1	n -> SD(n, d -> ARD(d).add(1).and(ZV(1)))
+A353331	lambdan	1	n -> ((F.BIG_OMEGA.i(n) & 1) == 0 && (!D056239(n).testBit(0))) ? ZV(1) : ZV(0)		a(n) = 1 if A001222(n) [bigomega(n)] and A056239(n) are both even, otherwise a(n) = 0.
+A353349	sintrif	1	(term, n) -> term.+(E353350(n))	""	new A353348()	J353348(n)+E353350(n)	_	_	_
+A353367	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A110963(), new A353366()	J110963(n)+J353366(n)	_	_	_
+A361706	lambdan	1	n -> SD(n, d -> F000005(n/d).*(F000040(d)))
+A362470	lambdan	1	n -> SD(n, d -> !ZV(n).mod(PHI(d)).isZero() ? Z.ZERO : ZV(1))
+A362628	lambdan	1	n -> SD(n, d -> !ZV(n).mod(PHI(d)).isZero() ? Z.ZERO : ZV(d))
+A362636	lambdan	1	n -> SD(n, d -> GCDi(d, n/d) != 1 ? Z.ZERO : ZV(d).^(d))
+A363017	sintrif	1	(term, n) -> F000720(term)	""	new A057632()	F000720(J057632(n))	_	_	_
+A364204	lambdan	1	n -> SD(n, d -> (n/d % 3 != 1) ? Z.ZERO : Z_1(d + 1))
+A364205	lambdan	1	n -> SD(n, d -> (n/d % 3 != 2) ? Z.ZERO : Z_1(d + 1))
+A364232	lambdan	1	n -> SD(n, d -> (n/d % 3 != 1) ? Z.ZERO : Z_1(d + 1).*(d))
+A364235	lambdan	1	n -> SD(n, d -> (n/d % 3 != 2) ? Z.ZERO : Z_1(d + 1).*(d))
+A364493	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A364491(), new A364492()	J364491(n)*J364492(n)	_	_	_
+A365045	sintrif	0	(term, n) -> term.+(1)	"0"	new PrependSequence(0, new A070880(), 0)
+A365827	lambdin	0	n -> F000009(n).-(D004526(n-1))	"1"	F000009(n)-D004526(n-1)	_	_
+A367392	lambdan	0	n -> FA(n).*(S2(2*n+1, n))	""		FA(n)*S2(2*n+1,n)	_	_	_
+A368951	multraf	0	(self, n) -> self.s(0).+(self.s(1))	"1"	new A000169(), new A057500()	J000169(n)+J057500(n)	_	_	_
+A368983	multraf	0	(self, n) -> self.s(0).-(self.s(1))	"1"	new A068051(), new A027852()	J068051(n)-J027852(n)	_	_	_
+A368997	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A035263(), new A358680()	J035263(n)*J358680(n)	_	_	_
+A369201	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A001434(), new A137917()	J001434(n)-J137917(n)	_	_	_
+A369202	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A002494(), new A368834()	J002494(n)-J368834(n)	_	_	_
+A369640	lambdin	0	n -> (E341517(n)).abs().-(D010051(n))	"0,0"		ABS(E341517(n))-D010051(n)	_		
+A373264	lambdan	1	n -> E369001(n).-(E369004(n))	""	E369001(n)-E369004(n)	_
+A373536	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A000262(), new A053601()	J000262(n)*J053601(n)	_	_	_
+A373730	sintrif	0	(term, n) -> F000265(term)	""	new A017185()	F000265(J017185(n))	_	_	_
+A373849	lambdan	0	n -> F276086(n).-(F003415(n))	""	F276086(n)-F003415(n)	_
+A373864	sintrif	0	(term, n) -> F000265(term)	""	new A017257()	F000265(J017257(n))	_	_	_
+A374043	lambdan	1	n -> E011655(n).*(E373157(n))	""	E011655(n)*E373157(n)	_
+A374466	sintrif	1	(term, n) -> F000035(F001222(n)).*(F000035(term))	""	new A064547()	F000035(F001222(n))*F000035(J064547(n))	_	_	_
+A374470	sintrif	1	(term, n) -> GCD(F001222(n), term)	""	new A064547()	GCD(F001222(n),J064547(n))	_	_	_
+A374471	multraf	1	(self, n) -> self.s(0).*(self.s(1))	""	new A065043(), new A359464()	J065043(n)*J359464(n)	_	_	_
+A374844	sintrif	0	(term, n) -> term.-(FA(n))	""	new A277506()	J277506(n)-FA(n)	_	_	_
+---- 2024-07-24 21:40:40
+A005924	sintrif	1	(term, n) -> term.-(1)	""	new A000557()	J000557(n)-1	_	_	_
+A073334	lambdin	0	n -> F000045(D005811(n).+(4))	"3"		F000045(D005811(n)+4)	_	_	_
+A076716	lambdan	1	n -> D001055(FA(n))	""		D001055(FA(n))	_	_	_
+A076941	multraf	0	(self, n) -> ZV(2).^(self.s(0)).*(ZV(3).^(self.s(1)))	""	new A066657(), new A066658()	2^J066657(n)*3^J066658(n)	_	_	_
+A078458	multraf	1	(self, n) -> ZV(2).*(D007814(n)).+(ZV(2).*(self.s(0))).+(self.s(1))	""	new A083025(), new A065339()	2*D007814(n)+2*J083025(n)+J065339(n)	_	_	_
+A079295	lambdan	1	n -> F000720(ZV(2).*(F000040(n)).+(1)).-(F000720(ZV(2).*(F000040(n))))	""		F000720(2*F000040(n)+1)-F000720(2*F000040(n))	_	_	_
+A079884	multraf	3	(self, n) -> ZV(2).*(FA(n)).-(1).+(self.s(0)).+(self.s(1))	""	new A079750(), new A079753()	2*FA(n)-1+J079750(n)+J079753(n)	_	_	_
+A080109	sintrif	1	(term, n) -> term.^(2)	"25"	new A002144()	J002144(n)^2	_	_	_
+A080175	sintrif	1	(term, n) -> term.^(4)	""	new A002144()	J002144(n)^4	_	_	_
+A082434	lambdan	1	n -> F007918(ZV(2).*(FA(n)).+(1)).-(ZV(2).*(FA(n)))	""		F007918(2*FA(n)+1)-2*FA(n)	_	_	_
+A083266	sintrif	1	(term, n) -> F000203(n).+(term).-(1)	""	new A023896()	F000203(n)+J023896(n)-1;related	_	_	_
+A083728	lambdin	0	n -> ZV(480).*(F000203(n))	"1"		480*F000203(n)	_	_	_
+A084237	lambdan	0	n -> F002321(ZV(10).^(n))	""		F002321(10^n)	_	_	_
+A086275	multraf	1	(self, n) -> self.s(0).+(ZV(2).*(self.s(1))).+(self.s(2))	""	new A059841(), new A005089(), new A005091()	J059841(n)+2*J005089(n)+J005091(n)	_	_	_
+A086354	lambdan	1	n -> F051802(ZV(2).^(n))	""		F051802(2^n)	_	_	_
+A086609	lambdan	0	n -> F000720(F000041(n+1)).-(F000720(F000041(n)))	""		F000720(F000041(n+1))-F000720(F000041(n))	_	_	_
+A088526	sintrif	1	(term, n) -> term.-(F000720(n)).-(1)	""	new A061017()	J061017(n)-F000720(n)-1	_	_	_
+A089495	lambdan	1	n -> F008683(F000040(n).+(1))	""		F008683(F000040(n)+1)	_	_	_
+A089496	lambdan	1	n -> F008683(F000040(n).+(1)).+(F008683(F000040(n).-(1)))	""		F008683(F000040(n)+1)+F008683(F000040(n)-1)	_	_	_
+A089579	sintrif	1	(term, n) -> term.-(2)	"3,11"	new A070428()	J070428(n)-2	_	_	_
+A095900	lambdan	0	n -> M004001(ZV(10).^(n))	""		M004001(10^n)	_	_	_
+A097935	multraf	1	(self, n) -> F000720(self.s(0)).-(F000720(self.s(1).-(1)))	""	new A014688(), new A014689()	F000720(J014688(n))-F000720(J014689(n)-1)	_	_	_
+A100449	sintrif	0	(term, n) -> ZV(1).+(ZV(4).*(term))	""	new A002088()	1+4*J002088(n)	_	_	_
+A101792	sintrif	1	(term, n) -> ZV(2).*(term).+(1)	""	new A101791()	2*J101791(n)+1	_	_	_
+A101793	sintrif	1	(term, n) -> ZV(16).*(term).-(1)	""	new A101790()	16*J101790(n)-1	_	_	_
+A101796	sintrif	1	(term, n) -> ZV(2).*(term).+(1)	""	new A101795()	2*J101795(n)+1	_	_	_
+A101797	sintrif	1	(term, n) -> ZV(16).*(term).-(1)	""	new A101794()	16*J101794(n)-1	_	_	_
+A101798	sintrif	1	(term, n) -> ZV(32).*(term).-(1)	""	new A101794()	32*J101794(n)-1	_	_	_
+A101995	sintrif	1	(term, n) -> ZV(4).*(term).-(1)	""	new A101994()	4*J101994(n)-1	_	_	_
+A101996	sintrif	1	(term, n) -> ZV(8).*(term).-(1)	""	new A101994()	8*J101994(n)-1	_	_	_
+A101997	sintrif	1	(term, n) -> ZV(16).*(term).-(1)	""	new A101994()	16*J101994(n)-1	_	_	_
+A101998	sintrif	1	(term, n) -> ZV(32).*(term).-(1)	""	new A101994()	32*J101994(n)-1	_	_	_
+A101999	sintrif	1	(term, n) -> ZV(64).*(term).-(1)	""	new A101994()	64*J101994(n)-1	_	_	_
+A104909	multraf	1	(self, n) -> self.s(0).-(ZV(10).*(self.s(1)))	""	new A104908(), new A104863()	J104908(n)-10*J104863(n)	_	_	_
+A104910	multraf	1	(self, n) -> self.s(0).-(ZV(100).*(self.s(1)))	""	new A104908(), new A104803()	J104908(n)-100*J104803(n)	_	_	_
+A105223	lambdan	1	n -> F000196(ZV(2).*(F000040(n))).-(F000196(F000040(n).-(1)))	""		F000196(2*F000040(n))-F000196(F000040(n)-1)	_	_	_
+A108197	multraf	1	(self, n) -> self.s(0).-(1).-(self.s(1))	""	new A065516(), new A088700()	J065516(n)-1-J088700(n)	_	_	_
+A110015	sintrif	1	(term, n) -> term.^(2)	""	new A110016()	J110016(n)^2	_	_	_
+A117002	sintrif	1	(term, n) -> F000203(n).+(ZV(3).*(term))	""	new A079667()	F000203(n)+3*J079667(n)	_	_	_
+A119281	sintrif	0	(term, n) -> F007953(n).-(ZV(4).*(term))	""	new A102677()	F007953(n)-4*J102677(n)	_	_	_
+A122249	sintrif	0	(term, n) -> ZV(4).^(term)	""	new A122247()	4^J122247(n);a(n)	_	_	_
+A122251	sintrif	0	(term, n) -> ZV(9).^(term)	""	new A122250()	9^J122250(n);a(n)	_	_	_
+A124115	lambdan	1	n -> ZV(2).*(F000040(n)).-(F000040(n+1)).+(2)	""		2*F000040(n)-F000040(n+1)+2	_	_	_
+A129195	sintrif	0	(term, n) -> ZV(2).^(term)	""	new A092391()	2^J092391(n)	_	_	_
+A129951	sintrif	1	(term, n) -> ZV(4).*(term).-(D006880(n)).-(2)	""	new A007508()	4*J007508(n)-D006880(n)-2	_	_	_
+A131802	sintrif	1	(term, n) -> term.-(ZV(2).*(D001055(n)))	"1"	new A057567()	J057567(n)-2*D001055(n)	_	_	_
+A132350	sintrif	1	(term, n) -> ZV(1).-(term)	"1,1"	new A075802()	1-J075802(n)	_	_	_
+A133992	lambdan	1	n -> F000005(F000040(n).*(F000040(F000040(n))).-(1))	""		F000005(F000040(n)*F000040(F000040(n))-1)	_	_	_
+A136793	sintrif	1	(term, n) -> term.*(4)	""	new A052763()	J052763(n)*4	_	_	_
+A136794	sintrif	1	(term, n) -> term.*(2)	""	new A052763()	J052763(n)*2	_	_	_
+A139096	multraf	1	(self, n) -> self.s(0).-(ZV(2).*(self.s(1)))	""	new A139306(), new A061652()	J139306(n)-2*J061652(n)	_	_	_
+A142074	lambdan	1	n -> ZV(10).*(D008578(2*n-1)).+(D008578(2*n))	""		10*D008578(2*n-1)+D008578(2*n)	_	_	_
+A144943	sintrif	1	(term, n) -> term.-(2)	"0,2"	new A048785()	J048785(n)-2	_	_	_
+A147878	sintrif	1	(term, n) -> F000041(2*n).-(ZV(2).*(term)).+(ZV(2).*(F000041(n))).+(F000041(n-1))	""	new A000070()	F000041(2*n)-2*J000070(n)+2*F000041(n)+F000041(n-1)	_	_	_
+A151522	multraf	1	(self, n) -> ZV(4).*(self.s(0)).+(ZV(2).*(self.s(1))).+(ZV(2).*(self.s(2))).+(ZV(4).*(self.s(3))).+(ZV(2).*(self.s(4))).+(ZV(2).*(self.s(5))).+(ZV(2).*(self.s(6))).+(self.s(7))	""	new A006749(), new A006746(), new A006748(), new A006747(), new A056877(), new A056878(), new A144553(), new A142886()	4*J006749(n)+2*J006746(n)+2*J006748(n)+4*J006747(n)+2*J056877(n)+2*J056878(n)+2*J144553(n)+J142886(n)	_	_	_
+A151525	multraf	1	(self, n) -> ZV(4).*(self.s(0)).+(ZV(3).*(self.s(1))).+(ZV(2).*(self.s(2))).+(ZV(2).*(self.s(3))).+(ZV(2).*(self.s(4))).+(self.s(5)).+(self.s(6)).+(self.s(7))	""	new A006749(), new A006746(), new A006748(), new A006747(), new A056877(), new A056878(), new A144553(), new A142886()	4*J006749(n)+3*J006746(n)+2*J006748(n)+2*J006747(n)+2*J056877(n)+J056878(n)+J144553(n)+J142886(n)	_	_	_
+A158880	multraf	1	(self, n) -> ZV(6).*(self.s(0).^(2)).*(self.s(1).^(2)).*(self.s(2))	""	new A001906(), new A004254(), new A001109()	6*J001906(n)^2*J004254(n)^2*J001109(n)	_	_	_
+A160429	lambdin	1	n -> ZV(8).*(ZV(7).^(F000120(n-1)))	"8"		8*7^F000120(n-1)	_	_	_
+A166499	sintrif	1	(term, n) -> ZV(10).*(term).+(E077648(n+1))	""	new A007652()	10*J007652(n)+E077648(n+1)	_	_	_
+A167436	sintrif	1	(term, n) -> ZV(1).+(term)	""	new A062206()	1+J062206(n)	_	_	_
+A175217	lambdan	1	n -> F000040(n).+(2).+(D010051(F000040(n).+(1))).+(D010051(F000040(n).+(2))).+(D010051(F000040(n).+(3)))	""		F000040(n)+2+D010051(F000040(n)+1)+D010051(F000040(n)+2)+D010051(F000040(n)+3)	_	_	_
+A175549	multraf	0	(self, n) -> ZV(8).*(self.s(0)).-(ZV(12).*(self.s(1))).-(18)	"0"	new A090025(), new A018805()	8*J090025(n)-12*J018805(n)-18	_	_	_
+A177141	sintrif	1	(term, n) -> ZV(6).*(ZV(10).^(term)).-(7)	""	new A103025()	6*10^J103025(n)-7	_	_	_
+A182645	multraf	1	(self, n) -> ZV(4).*(self.s(0)).+(ZV(2).*(self.s(1))).+(ZV(3).*(self.s(2))).+(ZV(2).*(self.s(3))).+(self.s(4)).+(ZV(2).*(self.s(5))).+(self.s(6)).+(self.s(7))	""	new A006749(), new A006746(), new A006748(), new A006747(), new A056877(), new A056878(), new A144553(), new A142886()	4*J006749(n)+2*J006746(n)+3*J006748(n)+2*J006747(n)+J056877(n)+2*J056878(n)+J144553(n)+J142886(n)	_	_	_
+A185143	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A033301(), new A185344()	J033301(n)-J185344(n)	_	_	_
+A186100	multraf	0	(self, n) -> self.s(0).-(ZV(8).*(self.s(1)))	""	new A131946(), new A111932()	J131946(n)-8*J111932(n)	_	_	_
+A188951	sintrif	0	(term, n) -> term.-(1)	"0,1"	new A070228()	J070228(n)-1	_	_	_
+A191472	lambdan	1	n -> ZV(2).*(F000040(n+2)).-(F000040(n+1)).-(F000040(n))	""		2*F000040(n+2)-F000040(n+1)-F000040(n)	_	_	_
+A194810	sintrif	1	(term, n) -> ZV(2).^(term)	""	new A127936()	2^J127936(n)	_	_	_
+A197816	sintrif	1	(term, n) -> ZV(10).*(term)	"102,203,36,410,50,603,70,801,970"	new A018800()	10*J018800(n)	_	_	_
+A201684	sintrif	0	(term, n) -> ZV(2).*(term).-(FA(n))	""	new A052186()	2*J052186(n)-FA(n)	_	_	_
+A204243	multraf	1	(self, n) -> ZV(2).*(self.s(0)).-(self.s(1))	""	new A005329(), new A203011()	2*J005329(n)-J203011(n)	_	_	_
+A210813	multraf	1	(self, n) -> ZV(10).*(self.s(0)).*(self.s(1).^(2)).*(self.s(2).^(2))	""	new A001109(), new A241606(), new A143699()	10*J001109(n)*J241606(n)^2*J143699(n)^2	_	_	_
+A220348	sintrif	1	(term, n) -> ZV(1).+(D029837(term))	""	new A220347()	1+D029837(J220347(n))	_	_	_
+A220481	multraf	0	(self, n) -> ZV(12).*(self.s(0)).+(self.s(1))	""	new A092269(), new A183011()	12*J092269(n)+J183011(n)	_	_	_
+A229357	lambdan	0	n -> ZV(19).+(ZV(8).*(ZV(2).^(n+4*3).^(n+2*4).^(n+5).^(n+6).^(n)))	""		19+8*2^n+4*3^n+2*4^n+5^n+6^n	_	_	_
+A229625	sintrif	1	(term, n) -> term.^(2)	"-1"	new A144621()	J144621(n)^2	_	_	_
+A234633	sintrif	1	(term, n) -> FA(n).^(3).*(term)	""	new A110706()	FA(n)^3*J110706(n)	_	_	_
+A236369	lambdan	0	n -> ZV(4).^(FA(n)).-(ZV(3).^(FA(n))).+(ZV(2).^(FA(n))).-(1)	""		4^FA(n)-3^FA(n)+2^FA(n)-1	_	_	_
+A237040	sintrif	1	(term, n) -> ZV(8).*(term.^(3)).+(1)	""	new A237037()	8*J237037(n)^3+1	_	_	_
+A238713	sintrif	1	(term, n) -> F007918(ZV(10).*(term))	""	new A008470()	F007918(10*J008470(n))	_	_	_
+A244796	lambdan	1	n -> F000005(F000040(n).-(1)).-(1)	""		F000005(F000040(n)-1)-1	_	_	_
+A248056	sintrif	1	(term, n) -> ZV(2).*(term)	"6"	new A091785()	2*J091785(n)	_	_	_
+A252462	multraf	1	(self, n) -> D008578(ZV(1).+(self.s(0))).*(self.s(1))	""	new A252735(), new A052126()	D008578(1+J252735(n))*J052126(n)	_	_	_
+A253639	sintrif	1	(term, n) -> term.^(2).+(2)	""	new A086381()	J086381(n)^2+2	_	_	_
+A262585	sintrif	0	(term, n) -> term.-(2)	"0"	new A002705()	J002705(n)-2	_	_	_
+A263017	sintrif	1	(term, n) -> ZV(1).+(term)	""	new A068076()	1+J068076(n)	_	_	_
+A264996	lambdan	1	n -> ZV(1).+(E264985(n-1))	""		1+E264985(n-1)	_	_	_
+A268718	lambdin	0	n -> ZV(1).+(F003188(F006068(n).-(1)))	"0"		1+F003188(F006068(n)-1)	_	_	_
+A268823	lambdin	0	n -> F003188(ZV(3).+(F006068(n-3)))	"0,1,3"		F003188(3+F006068(n-3))	_	_	_
+A272630	lambdan	1	n -> BI(ZV(3).*(F000040(n)), F000040(n)).-(ZV(3).*(BI(ZV(2).*(F000040(n)), F000040(n)))).+(3)	""		BI(3*F000040(n),F000040(n))-3*BI(2*F000040(n),F000040(n))+3	_	_	_
+A274273	lambdan	0	n -> E343583(n).+(1)	""		E343583(n)+1	_	_	_
+A275851	sintrif	0	(term, n) -> ZV(1).+(D084558(n)).-(term)	""	new A060129()	1+D084558(n)-J060129(n)	_	_	_
+A276273	lambdan	1	n -> F000120(E064706(n-1)).+(1)	""		F000120(E064706(n-1))+1	_	_	_
+A283265	sintrif	1	(term, n) -> ZV(1).-(term)	"1,0,0"	new A164292()	1-J164292(n)	_	_	_
+A284718	sintrif	0	(term, n) -> term.+(ZV(3).*(F000108(n))).-(F000108(n+1)).-(ZV(2).*(F000108(n-1)))	"1,1"	new A061552()	J061552(n)+3*F000108(n)-F000108(n+1)-2*F000108(n-1)	_	_	_
+A286368	multraf	1	(self, n) -> ZV(4).*(self.s(0)).+(ZV(2).*(self.s(1))).+(D010052(n))	""	new A072401(), new A229062()	4*J072401(n)+2*J229062(n)+D010052(n)	_	_	_
+A295889	lambdan	0	n -> F000035(ZV(1).+(F000120(n)).+(F000120(3*n)))	""		F000035(1+F000120(n)+F000120(3*n))	_	_	_
+A295896	lambdan	0	n -> F000035(F000203(D005940(n+1)))	""		F000035(F000203(D005940(n+1)))	_	_	_
+A297165	lambdin	0	n -> D005940(ZV(2).+(D156552(n)))	"1"		D005940(2+D156552(n))	_	_	_
+A297925	sintrif	1	(term, n) -> term.+(5)	"12"	new A049591()	J049591(n)+5	_	_	_
+A298252	lambdan	1	n -> F000040(n+1).+(3)	""		F000040(n+1)+3	_	_	_
+A302028	lambdin	0	n -> ZV(1).+(D057889(D057889(n).-(1)))	"0"		1+D057889(D057889(n)-1)	_	_	_
+A305801	sintrif	1	(term, n) -> ZV(1).+(term)	"1,2,3"	new A305800()	1+J305800(n)	_	_	_
+A309980	multraf	1	(self, n) -> self.s(0).-(ZV(2).*(self.s(1)))	"0"	new A000595(), new A000273()	J000595(n)-2*J000273(n)	_	_	_
+A322562	sintrif	0	(term, n) -> ZV(16).-(term)	"11"	new A322561()	16-J322561(n)	_	_	_
+A324348	lambdan	0	n -> E324055(n).-(F000120(D005940(n+1)))	""		E324055(n)-F000120(D005940(n+1))	_	_	_
+A326660	multraf	1	(self, n) -> self.s(0).-(ZV(3).*(self.s(1)))	"0,0,1"	new A032240(), new A032239()	J032240(n)-3*J032239(n)	_	_	_
+A326789	multraf	1	(self, n) -> self.s(0).-(ZV(4).*(self.s(1))).+(ZV(6).*(self.s(2)))	"0,0,0"	new A032241(), new A032240(), new A032239()	J032241(n)-4*J032240(n)+6*J032239(n)	_	_	_
+A329622	lambdan	1	n -> D056239(n).-(E324888(n))	""		D056239(n)-E324888(n)	_	_	_
+A329639	lambdan	1	n -> E329638(n).-(E323244(n))	""		E329638(n)-E323244(n)	_	_	_
+A330824	sintrif	1	(term, n) -> ZV(4).^(term)	""	new A000043()	4^J000043(n)	_	_	_
+A332733	lambdan	1	n -> F151800(FA(n).*(F000040(n))).-(FA(n).*(F000040(n)))	""		F151800(FA(n)*F000040(n))-FA(n)*F000040(n)	_	_	_
+A336513	lambdan	1	n -> FA(n).*(E096131(n))	""		FA(n)*E096131(n)	_	_	_
+A337335	sintrif	1	(term, n) -> GCD(D048673(n), ZV(1).+(term))	""	new A003973()	GCD(D048673(n),1+J003973(n))	_	_	_
+A338463	multraf	2	(self, n) -> self.s(0).-(ZV(2).*(self.s(1)))	"1"	new A073252(), new A000700()	J073252(n)-2*J000700(n)	_	_	_
+A338553	sintrif	0	(term, n) -> F000005(n).+(term).-(1)	"1"	new A000837()	F000005(n)+J000837(n)-1	_	_	_
+A338554	sintrif	0	(term, n) -> term.-(F000005(n)).+(1)	"0"	new A018783()	J018783(n)-F000005(n)+1	_	_	_
+A339874	sintrif	1	(term, n) -> ZV(1).+(term)	"1"	new A322826()	1+J322826(n)	_	_	_
+A340692	sintrif	0	(term, n) -> ZV(2).*(term)	"0"	new A101707()	2*J101707(n)	_	_	_
+A341880	multraf	16	(self, n) -> ZV(6).*(F000005(n)).-(ZV(4).*(self.s(0))).+(self.s(1)).-(4)	"1,0"	new A007425(), new A007426()	6*F000005(n)-4*J007425(n)+J007426(n)-4	_	_	_
+A341882	multraf	64	(self, n) -> ZV(15).*(F000005(n)).-(ZV(20).*(self.s(0))).+(ZV(15).*(self.s(1))).-(ZV(6).*(self.s(2))).+(self.s(3)).-(6)	"1,0"	new A007425(), new A007426(), new A061200(), new A034695()	15*F000005(n)-20*J007425(n)+15*J007426(n)-6*J061200(n)+J034695(n)-6	_	_	_
+A346800	multraf	1	(self, n) -> ZV(2).*(self.s(0)).+(ZV(2).*(self.s(1))).+(self.s(2))	""	new A006748(), new A056878(), new A142886()	2*J006748(n)+2*J056878(n)+J142886(n)	_	_	_
+A349480	lambdan	0	n -> FA(n).*(E349470(n))	""		FA(n)*E349470(n)	_	_	_
+A351191	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(ZV(2).*(self.s(2))).+(ZV(2).*(self.s(3))).+(ZV(4).*(self.s(4))).+(self.s(5))	""	new A144553(), new A056877(), new A006747(), new A006746(), new A006749(), new A006748()	J144553(n)+J056877(n)+2*J006747(n)+2*J006746(n)+4*J006749(n)+J006748(n)	_	_	_
+A351864	sintrif	0	(term, n) -> ZV(2).^(term)	""	new A240883()	2^J240883(n)	_	_	_
+A354108	sintrif	1	(term, n) -> ZV(1).-(term)	"1,1,0,1,0"	new A211487()	1-J211487(n)	_	_	_
+A357568	sintrif	0	(term, n) -> ZV(9).*(D000984(n).^(2)).-(ZV(8).*(term))	""	new A005809()	9*D000984(n)^2-8*J005809(n)	_	_	_
+A357955	lambdan	0	n -> ZV(3).*(BI(4*n, n)).-(ZV(20).*(BI(3*n, n))).+(ZV(54).*(BI(2*n, n)))	""		3*BI(4*n,n)-20*BI(3*n,n)+54*BI(2*n,n)	_	_	_
+A357957	multraf	0	(self, n) -> self.s(0).^(5).-(self.s(1).^(2))	""	new A005259(), new A005258()	J005259(n)^5-J005258(n)^2	_	_	_
+A358764	lambdan	0	n -> F276086(n).-(E324895(n))	""		F276086(n)-E324895(n)	_	_	_
+A360999	sintrif	1	(term, n) -> term.+(F000035(n)).-(1)	"2,2"	new A114003()	J114003(n)+F000035(n)-1	_	_	_
+A361000	sintrif	1	(term, n) -> ZV(2).*(F000005(n)).-(term)	"2,3,2"	new A083039()	2*F000005(n)-J083039(n)	_	_	_
+A361205	lambdan	1	n -> ZV(2).*(F001221(n)).-(F001222(n))	""		2*F001221(n)-F001222(n)	_	_	_
+A364949	sintrif	1	(term, n) -> GCD(E348717(n), E348717(term))	""	new A163511()	GCD(E348717(n),E348717(J163511(n)))	_	_	_
+A373584	sintrif	1	(term, n) -> ZV(6).*(term).+(1)	""	new A054925()	6*J054925(n)+1	_	_	_
+A373836	lambdan	1	n -> E079978(E373835(n))	""		E079978(E373835(n))	_	_	_
+A374577	sintrif	1	(term, n) -> D007814(term.-(1))	""	new A005109()	D007814(J005109(n)-1)	_	_	_
+A374578	sintrif	1	(term, n) -> D007949(term.-(1))	""	new A005109()	D007949(J005109(n)-1)	_	_	_
+---- 2024-07-24 22:24:54
+A072032	lambdan	1	n -> GCD(ZV(2).^(n), F004086(ZV(2).^(n)))	""		GCD(2^n,F004086(2^n))	_	_	_
+A090226	lambdin	1	n -> D006880(n-1).+(1)	"1"		D006880(n-1)+1	_	_	_
+A113634	lambdan	0	n -> D007504(ZV(6).^(n))	""		D007504(6^n)	_	_	_
+A119677	sintrif	0	(term, n) -> ZV(4).*(term)	""	new PrependSequence(0, new A001182(), 0)	4*J001182(n)
+A120112	lambdin	0	n -> ZV(1).-(D014963(n+1))	"1"		1-D014963(n+1)	_	_	_
+A182095	lambdin	0	n -> E075084(ZV(2).^(n)).-(2)	"0,0"		E075084(2^n)-2	_	_	_
+A211280	lambdan	1	n -> new Q(PM(n + 1).*(2).-(PM(n)), Z.TWO).num()	""		A211280		Numerator of prime(n+1) - prime(n)/2.
+A324881	lambdan	1	n -> E324874(n).-(E324868(n))	""		E324874(n)-E324868(n)	_	_	_
+A324883	lambdan	1	n -> E324884(n).-(E324882(n))	""		E324884(n)-E324882(n)	_	_	_
+A341996	lambdin	0	n -> ZV(1).-(E368915(n))	"0,0"		1-E368915(n)	_	_	_
+A350135	multraf	0	(self, n) -> self.s(0).^(2).*(self.s(1))	"1"	new A001865(), new A088218()	J001865(n)^2*J088218(n)	_	_	_
+A363827	sintrif	1	(term, n) -> ZV(2).^(MIN(D007814(n), term))	""	new A102572()	2^MIN(D007814(n),J102572(n))	_	_	_
+A367362	lambdan	0	n -> ZV(10).*(E010879(n)).+(F000030(n+1))	""		10*E010879(n)+F000030(n+1)	_	_	_
+A370627	sintrif	0	(term, n) -> term.+(ZV(4).^(n))	""	new A003683()	J003683(n)+4^n	_	_	_
+A370819	lambdin	0	n -> BI(n-1, D029837(n+1).-(1))	"0"		BI(n-1,D029837(n+1)-1)	_	_	_
+A371560	lambdan	0	n -> FA(n).*(FA(n+1).^(3))	""		FA(n)*FA(n+1)^3	_	_	_
+A372113	sintrif	1	(term, n) -> ZV(2).*(term).+(1)	""	new A023213()	2*J023213(n)+1	_	_	_
+A372611	multraf	0	(self, n) -> ZV(2).*(self.s(0)).-(self.s(1))	""	new A372239(), new A372420()	2*J372239(n)-J372420(n)	_	_	_
+A374098	sintrif	0	(term, n) -> term.^(2)	""	new A112387()	J112387(n)^2	_	_	_
+A374259	lambdan	0	n -> F000045(2*n+2).+(ZV(3).*(F000045(n+1)).*(F000045(n+1)))	""		F000045(2*n+2)+3*F000045(n+1)*F000045(n+1)	_	_	_

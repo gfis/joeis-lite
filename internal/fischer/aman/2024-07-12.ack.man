@@ -1,0 +1,80 @@
+---- 2024-07-12 19:09:57
+---- 2024-07-12 20:31:45
+A001062	dead	1	A187876	1-,	NoncomputableSequence	1-, 2-, 3- ... digit numbers in alphabetical order in French (in					1-, 2-, 3- ... digit numbers in alphabetical order in French (incorrect version, see A187876 for the correct version).
+A071766	sintrif	0	(term, n) -> D002487(D059893(term))	"1"	new A233279()
+A085183	sintrif	1	(term, n) -> D053645(term)	""	new A057520()	_					a(n) = A053645(A057520(n)), i.e., the terms of A014486 without their most significant bit (1) and the least significant bit (0).
+A089923	dead	5	A100003	dupl	NotYetImplemented	Duplicate of A100003.					Duplicate of A100003.
+A104645	sintrif	2	(term, n) -> F151800(term).-(F151799(term))	""	new A019518()
+A111864	sintrif	0	(term, n) -> D002275(term)	""	new A000213()	_					Define the first three terms to be 1, 1 and 1. All the other terms are obtained by concatenating the three previous terms.
+A117679	sintrif	1	(term, n) -> Functions.MAX.z(ZV(0), F000005(term.^(2)).-(2))	""	new A126098()						Records in A117677.
+A118183	multrar	0	(self, n) -> SU(0, n - 1, j -> ZV(3).^(j*(n - j)).*(self.a(j))).negate()	"1,-1"							Column 0 of the matrix inverse of triangle A118180.
+A118188	multrar	0	(self, n) -> SU(0, n - 1, j -> ZV(4).^(j*(n - j)).*(self.a(j))).negate()	"1,-1"							Column 0 of the matrix inverse of triangle A118185(n,k) = (4^k)^(n-k).
+A118196	multrar	0	(self, n) -> SU(0, n - 1, j -> ZV(2).^(j*(n - j)).*(self.a(j))).negate()	"1,-1"							Column 0 of the matrix inverse of triangle A117401(n,k) = (2^k)^(n-k).
+A121886	lambdan	0	n -> SU(0, n, k -> S1(n, k).abs().*(E122399(k)))./(FA(n))								a(n) = (1/n!)* Sum_{k=0..n} |Stirling1(n,k)|*A122399(k).
+A122612	dead	1	A078131	dupl	NotYetImplemented	Duplicate of A078131.					Duplicate of A078131.
+A127475	trilambn	1	1	1	(n, k) -> (n % k == 0) ? MU(n).*(PHI(k)) : Z.ZERO	 mu(n)*phi(k) if k|n, else T(n,k)=0.
+A134583	dead	1	A191476	dupl	A022329	Duplicate of A191476.					Duplicate of A191476.
+A146746	dead	1	A073541	dupl	NotYetImplemented	Duplicate of A073541.					Duplicate of A073541.
+A158456	dead	1	A191475	dupl	A022328	Duplicate of A191475.					Duplicate of A191475.
+A160670	dead	1	A145985	dupl	FilterSequence	Duplicate of A145985.					Duplicate of A145985.
+A206424	lambdan	0	n -> SU(0, n, k -> BI(n, k).+(BI(n, k).^(2)).modZ(3))./(2)								The number of 1's in row n of Pascal's Triangle (mod 3)
+A226325	sintrif	0	(term, n) -> term./(F000005(term).^(2))	""	new A046754()
+A233771	dead	1	A210249	dupl	AbstractSequence	Duplicate of A210249.					Duplicate of A210249.
+A285716	sintrif	1	(term, n) -> F000120(term).-(1)	"0"	new A244153()						a(n) = A080791(A245611(n)).
+A294402	multrar	0	(self, n) -> RU(1, n, k -> QV(k).*(F000005(k)).*(self.a(n - k))./(FA(n - k))).*(FA(n - 1).negate()).num()	"1"							E.g.f.: exp(-Sum_{n>=1} d(n) * x^n), where d(n) is the number of divisors of n.
+A294403	multrar	0	(self, n) -> RU(1, n, k -> QV(k).*(F000203(k)).*(self.a(n - k))./(FA(n - k))).*(FA(n - 1).negate()).num()	"1"							E.g.f.: exp(-Sum_{n>=1} sigma(n) * x^n).
+A294404	multrar	0	(self, n) -> RU(1, n, k -> QV(k).*(F001157(k)).*(self.a(n - k))./(FA(n - k))).*(FA(n - 1).negate()).num()	"1"							E.g.f.: exp(-Sum_{n>=1} sigma_2(n) * x^n).
+A294460	multrar	0	(self, n) -> RU(1, n, k -> QV(k).*(D000593(k)).*(self.a(n - k))./(FA(n - k))).*(FA(n - 1).negate()).num()	"1"							E.g.f.: exp(-Sum_{n>=1} A000593(n) * x^n).
+A300389	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(13*n -13*k, 2*n - 2*k).*(self.a(k))./(13))./(n)	"1"							The number of paths of length 13*n from the origin to the line y = 2*x/11 with unit East and North steps that stay below the line or touch it.
+A303280	lambdan	1	n -> SD(n, d -> (d <= 1) ? ZV(0) : MU(d).*(F000009(n/d))).negate()								Number of strict integer partitions of n whose parts have a common divisor other than 1.
+A309906	sintrif	1	(term, n) -> F000005(term).*(Z2(Functions.SIGMA0.i(n)))	""	new A079612()	_					a(n) is the smallest number of divisors of p^n - 1 that may possibly occur for arbitrarily large primes p.
+A318456	lambdan	1	n -> Functions.SIGMA1.z(n).-(n).or(ZV(n))
+A318457	lambdan	1	n -> Functions.SIGMA1.z(n).-(n).xor(ZV(n))
+A318458	lambdan	1	n -> Functions.SIGMA1.z(n).-(n).and(ZV(n))
+A318462	lambdan	1	n -> SD(n, d -> (d >= n/d) ? Z.ZERO : ZV(d ^ (n/d))).+(Predicates.SQUARE.is(n) ? Functions.SQRT.z(n) : Z.ZERO)	a(n) = Sum_{d|n, d < n/d} (d XOR n/d) + {square root of n when n is a square}.	nonn,base	1..16384	nyi	_Antti Karttunen_
+A318466	lambdan	1	n -> Functions.SIGMA1.z(n).or(ZV(2*n))
+A318467	lambdan	1	n -> Functions.SIGMA1.z(n).xor(ZV(2*n))
+A318468	lambdan	1	n -> Functions.SIGMA1.z(n).and(ZV(2*n))
+A318581	multrar	0	(self, n) -> SU(1, n, k -> F000041(k - 1).*(self.a(n - k))).negate()	"1"							Expansion of 1/(1 + x*Product_{k>=1} 1/(1 - x^k)).
+A318582	multrar	0	(self, n) -> SU(1, n, k -> F000009(k - 1).*(self.a(n - k))).negate()	"1"							Expansion of 1/(1 + x*Product_{k>=1} (1 + x^k)).
+A319988	sintrif	0	(term, n) -> F000035(term)	"0"	new A336124()
+A324639	filnum	1	1	k -> { final Z sk = Functions.SIGMA1.z(k); return sk.and(ZV(2*k)).equals(sk.-(k).and(ZV(k)).*(2)); }	Numbers k such that bitand(2k,sigma(k)) = 2*bitand(k,sigma(k)-k), where bitand is bitwise-AND, A004198.	nonn	1..20000	nyi	_Antti Karttunen_
+A324643	filnum	1	1	k -> { final Z sk = Functions.SIGMA1.z(k); return sk.and(ZV(2*k))./(2).equals(ZV(k)) && ZV(k).equals(sk.-(k).and(ZV(k))); }	Numbers k such that bitand(2k,sigma(k))/2 = k = bitand(k,sigma(k)-k), where bitand is bitwise-AND, A004198.	nonn,look	1..17020	nyi	_Antti Karttunen_
+A324647	filnum	1	1	k -> ((k & 1) == 1) && Functions.SIGMA1.z(k).and(ZV(2*k)).equals(ZV(2*k))	Odd numbers k such that 2k is equal to A318468(k) (bitwise-AND of 2*k and sigma(k)).	nonn	1..500	nyi	_Antti Karttunen_
+A324648	lambdan	1	n -> ZV(n).-(Functions.SIGMA1.z(n).-(n).and(ZV(n)))	a(n) = n - A318458(n), where A318458(n) is bitwise-AND of n and the sum of proper divisors of n (sigma(n)-n).	nonn,look	1..16384	2024-07-05/sintr	_Antti Karttunen_
+A324649	filnum	1	1	k -> Functions.SIGMA1.z(k).-(k).and(ZV(k)).equals(ZV(k))	Numbers k such that A318458(k) (bitwise-AND of k and sigma(k)-k) is equal to k.	nonn	1..20000	nyi	_Antti Karttunen_
+A324897	filnum	1	1	k -> ((k & 1) == 1) && Functions.SIGMA1.z(k).-(k).and(ZV(k)).equals(ZV(k))	Odd numbers k such that J318458(k) (bitwise-AND of k and sigma(k)-k) is equal to k                                                                    
+A324898	filnum	1	1	k -> { final Z sk = Functions.SIGMA1.z(k); return ((k & 1) == 1) && sk.mod(4) == 2 && ZV(k).equals(sk.-(k).and(ZV(k))); }	 Odd numbers k such that sigma(k) is congruent to 2 modulo 4 and k = J318458(k), where J318458(k) is bitwise-AND of k and sigma(k)-k                   
+A325310	sintrif	1	(term, n) -> D001511(term)	"1"	new A325315()						a(n) = A001511(A325315(n)), except when A325315(n) = 0, then a(n) = 0.
+A329900	multraf	1	(self, n) -> ((n & 1) == 1) ? Z.ONE : F000040(self.s(0)).*(self.a(n/Functions.PRIMORIAL_COUNT.i(self.s(0))))	""	new A276084()	a(n) = A000040(A276084(n)) * a(n/A002110(A276084(n)))					Primorial deflation of n: starting from x = n, repeatedly divide x by the largest primorial A002110(k) that divides it, until x is an odd number. Then a(n) = Product prime(k_i), for primorial indices k_1 >= k_2 >= ..., encountered in the process.
+A334743	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : Functions.OMEGA.z(n/d).*(self.a(d))).negate()	"1"							a(1) = 1; a(n) = -Sum_{d|n, d < n} omega(n/d) * a(d), where omega = A001221.
+A334744	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : Functions.BIG_OMEGA.z(n/d).*(self.a(d))).negate()	"1"							a(1) = 1; a(n) = -Sum_{d|n, d < n} bigomega(n/d) * a(d), where bigomega = A001222.
+A334890	multrar	1	(self, n) -> SD(n, d -> (d <= 1) ? ZV(0) : (Functions.SIGMA1.z(d).-(d)).*(self.a(n/d))).negate()	"1"							a(1) = 1; a(n) = -Sum_{d|n, d > 1} (sigma(d) - d) * a(n/d).
+A336970	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n-2,k).*(self.a(k))).negate()	"1,0"							G.f. A(x) satisfies: A(x) = 1 - x^2 * A(x/(1 - x)) / (1 - x).
+A336971	multrar	0	(self, n) -> SU(0, n - 3, k -> BI(n-3,k).*(self.a(k))).negate()	"1,0,0"							G.f. A(x) satisfies: A(x) = 1 - x^3 * A(x/(1 - x)) / (1 - x).
+A338639	multrar	0	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : self.a(d - 1)).negate()	"1"							a(0) = 1; for n > 0, a(n) = -Sum_{d|n, d < n} a(d - 1).
+A342403	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : self.a(d).*(d)).negate()	"1"							a(1) = 1; a(n) = -Sum_{d|n, d < n} d * a(d).
+A343761	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : PHI(d).*(self.a(d))).negate()	"1"							a(1) = 1; a(n) = -Sum_{k=1..n, gcd(n,k) > 1} a(n/gcd(n,k)).
+A354035	sintrif	1	(term, n) -> F000035(n).*(F000035(term))	""	new A083025()
+A354036	sintrif	1	(term, n) -> F000035(n).*(IV[E010873(term).equals(ZV(1))])	""	new A065764()
+A354348	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : E327858(n/d).*(self.a(d))).negate()	"1"							Dirichlet inverse of function f(1) = 1, f(n) = gcd(A003415(n), A276086(n)) for n > 1.
+A359589	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : E327858(n/d).-(1).*(self.a(d))).negate()	"1"							Dirichlet inverse of function f(n) = (-1 + gcd(A003415(n), A276086(n))), where A003415 is the arithmetic derivative and A276086 is the primorial base exp-function.
+A359603	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : E358669(n/d).+(1).*(self.a(d))).negate()	"1"							Dirichlet inverse of function f(n) = 1+(A003415(n)*A276086(n)), where A003415 is the arithmetic derivative and A276086 is the primorial base exp-function.
+A359840	sintrif	1	(term, n) -> D007090(term)	""	new A235474()						Numbers k that are the representation of primes in base 4 and in base 5.
+A359942	multrar	0	(self, n) -> SU(1, n, k -> E359943(k).*(self.a(n - k)))./(-n)	"1"
+A361468	multraf	1	(self, n) -> self.s(0)./(D000290(self.s(1)))	""	new A361467(), new A336850()
+A365421	sintrif	1	(term, n) -> IV[D046523(term).equals(D046523(n))]	""	new A163511()						a(n) = 1 if n and A163511(n) have the same prime signature, otherwise 0.
+A366265	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(0) : (D095112(n/d).+(1)).*(self.a(d))).negate()	"1"
+A374291	sintrif	1	(term, n) -> D000290(term)	""	new A001694()						Squares of powerful numbers.
+A374522	lambdan	0	n ->BI(4*n, n).-(1).*(n)
+A374529	decexp	0	CR.PI.sqrt().divide(CR.E)	sqrt(Pi)/e.	nonn,cons,new	0..98	nyi	_R. J. Mathar_
+---- 2024-07-12 22:11:18
+A071396	lambdan	0	n -> CV(n).^(2).*(2).*(CV(3).sqrt()).round()	round(2*n^2*sqrt(3)),","))
+A071397	lambdan	0	n -> CV(n).^(2).*(3).*(CV(5).sqrt().*(10).+(25).sqrt()).round()	round(3*n^2*sqrt(25+10*sqrt(5))),","))
+A071398	lambdan	0	n -> CV(n).^(2).*(5).*(CV(3).sqrt()).round()	round(5*n^2*sqrt(3)),","))
+A071399	lambdan	0	n -> CV(n).^(3).*(CV(2).sqrt())./(12).round()	round(n^3*sqrt(2)/12),","))
+A071400	lambdan	0	n -> CV(n).^(3).*(CV(2).sqrt())./(3).round()	round(n^3*sqrt(2)/3),","))
+A071401	lambdan	0	n -> CV(n).^(3).*(CV(5).sqrt().*(7).+(15)./(4)).round()	round(n^3*(15+7*sqrt(5))/4),","))
+A071402	lambdan	0	n -> CV(n).^(3).*(CV(5).sqrt().+(3).*(5)./(12)).round()	round(n^3*(3+sqrt(5))*5/12),","))
+A071418	multrar	1	(self, n) -> { final Z ann = self.a(n - 1).+(n - 1); return !ann.testBit(0) ? ann./(2) : ann.*(3).+(2)./(2); }	"0"	a(n+1)=(a(n)+n)/2 if a(n)+n is even, a(n+1)=(3*(a(n)+n)+1)/2 otherwise.	easy,nonn	1..1000	nyi	_Benoit Cloitre_
+A071419	multrar	1	(self, n) -> { final Z ann = self.a(n - 1).+(n - 1); return !ann.testBit(0) ? ann./(2) : ann.*(3).+(2)./(2); }	"1"	a(n+1)=(a(n)+n)/2 if a(n)+n is even, a(n+1)=(3*(a(n)+n)+1)/2 otherwise.	easy,nonn	1..58	nyi	_Benoit Cloitre_

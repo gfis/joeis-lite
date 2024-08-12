@@ -1,0 +1,94 @@
+---- 2024-07-20 00:04:34
+A076276	sintrif	0	(term, n) -> term.-(F000041(n))	"0"	new A006128()	_
+A078349	sintrif	1	(term, n) -> F000120(term)	""	new A292599()	_
+A079286	sintrif	0	(term, n) -> E079288(n).-(term)	""	new A000722()	_
+A079715	sintrif	1	(term, n) -> term.+(1)	""	new A056812()	_
+A083259	sintrif	1	(term, n) -> GCD(n,term)	""	new A071364()	_
+A084368	filtpos	1	1	new A000040()	v -> ZUtils.digitCounts(v)[1] == 0	Numbers k such that prime(k) does not contain the digit 1.
+A085184	sintrif	1	(term, n) -> D007090(term)	""	new A085183()	_
+A086355	lambdan	1	n -> F051802(F000040(n))	""		_
+A086847	sintrif	1	(term, n) -> GCD(term, n)	""	new A001608()	_
+A088571	sintrif	0	(term, n) -> term.-(F000009(n))	""	new A088314()	_
+A095150	sintrif	0	(term, n) -> F000040(term)	""	new A000215()	_
+A100390	sintrif	1	(term, n) -> term.+(1)	""	new A082418()	_
+A100392	sintrif	1	(term, n) -> term.+(1)	""	new A082417()	_
+A106633	sintrif	0	(term, n) -> D005408(n).+(term)	""	new A006218()	_
+A107986	sintrif	1	(term, n) -> term.+(2)	""	new A067774()	_
+A115378	sintrif	1	(term, n) -> term.-(1)	""	new A080100()	_
+A123640	sintrif	0	(term, n) -> term.modZ(2)	""	new A065120()	_
+A127284	sintrif	0	(term, n) -> term.-(1)	"0"	new A057514()	_	_
+A132589	sintrif	1	(term, n) -> GCD(term, n)	""	new A038566()	_
+A137259	trilambn	1	1	1	(n, k) -> FA(n - 1).-(FA(k - 1)).*(n)	Triangle T(n, k) = n*( (n-1)! - (k-1)! ), read by rows.	nonn,tabl,easy	1..50	nyi	_Roger L. Bagula_
+A137260	trilambn	1	1	1	(n, k) -> FA(n - 1).*(k).-(FA(k))	Triangle T(n, k) = k*(n-1)! - k!, read by rows.	nonn,tabl,easy	1..50	nyi	_Roger L. Bagula_
+A166549	sintrif	1	(term, n) -> D006577(2*n-1).-(term)	""	new A075680()	_
+A177194	filter	1	new A000045()	v -> ZUtils.digitCounts(v)[0] == 0	Fibonacci numbers whose decimal expansion does not contain any digit 0.	nonn,base	1..35	nyi	_Carmine Suriano_
+A177195	filter	1	new A000045()	v -> ZUtils.digitCounts(v)[1] == 0	Fibonacci numbers whose decimal expansion does not contain the digit 1.	nonn,base	1..28	nyi	_Carmine Suriano_
+A177246	filter	1	new A000045().skip(1)	v -> ZUtils.digitCounts(v)[4] == 0	Fibonacci numbers whose decimal expansion does not contain any digit 4.	nonn,base	1..41	nyi	_Carmine Suriano_
+A181814	lambdan	1	n -> E108951(D003418(n))	""		_
+A181817	sintrif	1	(term, n) -> E108951(term)	""	new A025487()	_
+A194545	sintrif	0	(term, n) -> term.-(E073118(n))	""	new A066186()	_
+A217675	sintrif	8	(term, n) -> F000142(n).-(term)	""	new A072131()	_
+A230099	lambdan	0	n -> Functions.DIGIT_PRODUCT.z(n).+(n)	a(n) = n + (product of digits of n).
+A235578	sintrif	1	(term, n) -> term.+(1)	""	new A070258()	_
+A240053	sintrif	1	(term, n) -> F003415(term)	""	new A240052()	_
+A240883	sintrif	0	(term, n) -> term.-(1)	""	new A046818()	_
+A244621	sintrif	1	(term, n) -> term.modZ(12)	""	new A024451()	_
+A265336	sintrif	0	(term, n) -> E265340(n).-(term)	""	new A265337()	_
+A268374	sintrif	1	(term, n) -> F001222(n).-(term)	""	new A267116()	_
+A277698	sintrif	1	(term, n) -> D008578(term.+(1))	""	new A277697()	_
+A281233	sintrif	1	(term, n) -> term.+(1)	""	new A069860()	_
+A284173	sintrif	1	(term, n) -> term.modZ(n)	""	new A280706()	_
+A285725	sintrif	1	(term, n) -> term.-(F000035(n))	"0"	new A252735()	_	_
+A292936	sintrif	1	(term, n) -> D007814(term.+(1))	""	new A292599()	_
+A295881	lambdan	1	n -> D065621(D033879(n))	""		_
+A302846	sintrif	0	(term, n) -> E064706(term)	""	new A163356()	_
+A309897	sintrif	0	(term, n) -> F000041(n).-(term)	""	new A070289()	_
+A318322	lambdan	1	n -> D007814(E318316(n))	""		_
+A323908	sintrif	0	(term, n) -> D065621(term)	""	new A004718()	_
+A331563	sintrif	1	(term, n) -> E331505(2*n).-(term)	""	new A302112()	_
+A340085	lambdan	1	n -> F000265(E340082(n))	""		_
+A340086	lambdin	1	n -> F000265(E340083(n))	"0"		_	_
+A340673	sintrif	1	(term, n) -> D008578(term.+(1))	""	new A340676()	_
+A342419	sintrif	1	(term, n) -> E342002(n).+(term)	""	new A342417()	_
+A345060	sintrif	1	(term, n) -> term.-(E206369(n))	""	new A071324()	_
+A345061	sintrif	1	(term, n) -> GCD(term, E206369(n))	""	new A071324()	_
+A346098	lambdan	1	n -> D064989(E346096(n))	""		_
+A346106	lambdan	1	n -> E108951(E346096(n))	""		_
+A346107	lambdan	1	n -> E108951(E346097(n))	""		_
+A346108	lambdan	1	n -> E346105(E346096(n))	""		_
+A346109	lambdan	1	n -> E346105(E346097(n))	""		_
+A346243	sintrif	1	(term, n) -> E324198(n).+(term)	""	new A346242()	_
+A347871	sintrif	1	(term, n) -> term.and(Z.ONE)	""	new A342926()	_
+A353267	lambdan	1	n -> E332449(E348717(n))	""		_
+A353268	lambdan	1	n -> E348717(E329603(n))	""		_
+A360411	filnum	1	1	k -> ZUtils.digitCounts(ZV(k).*(k + 1))[2] == 0	Numbers k such that k*(k+1) does not contain the digit 2
+A361469	sintrif	1	(term, n) -> F001222(term)	""	new A361468()	_
+A368905	lambdin	0	n -> D359550(E366801(n))	"0"		_	_
+A370131	lambdan	0	n -> F003415(E327860(n))	""		_
+A372544	lambdan	1	n -> F000035(E022843(n))	""		_
+A372720	sintrif	1	(term, n) -> F000005(n).-(term)	""	new A008479()	_
+A373198	sintrif	1	(term, n) -> term.+(1)	""	new A061398()	_
+A373368	sintrif	1	(term, n) -> GCD(n,term)	""	new A059975()	_
+A373733	lambdan	0	n -> F000217(F000292(n))	""		_
+A374127	sintrif	1	(term, n) -> F000203(n).-(term)	""	new A075254()	_
+A374625	lambdan	0	n -> new Z(Integer.toString(n, 2).replaceAll("1", "x1").replaceAll("0", "10").replaceAll("x", "0"), 2)	In the binary expansion of n, expand bits 1 -> 01 and 0 -> 10.	nonn,base,easy,new	0..10000	nyi	_Dar‚ÄöńÖ√∂‚ÄöńĆ‚Ä†o Clavijo_
+A374675	lambdan	0	n -> SU(0, n, k -> BI(n + k - 1, n).*(BI(n + k, n)))
+A374676	lambdan	0	n -> SU(0, n, k -> BI(n + k - 1, n).*(BI(n + k, n).^(2)))
+A079294	sintrif	0	(term, n) -> F001221(term.abs())	""	new A000367()	_
+A081387	sintrif	1	(term, n) -> F001221(D000984(n)).-(term)	""	new A081386()	_
+A093818	sintrif	1	(term, n) -> GCD(term, FA(n))	""	new A001008()	_
+A110841	sintrif	0	(term, n) -> F001222(term.abs())	""	new A014509()	_
+A113868	sintrif	1	(term, n) -> term.-(1)	""	new A112405()	_
+A117371	lambdan	1	n -> F001221(E137795(n))	""		_
+A118591	sintrif	1	(term, n) -> F151800(term)	""	new A061275()	_
+A118593	sintrif	1	(term, n) -> term.+(2)	""	new A069496()	_
+A120873	rowix	1	new A080164()
+A211392	sintrif	1	(term, n) -> F000005(FA(n)).-(term)	""	new A009490()	_
+A254112	rowix	1	new A254105()	: If A234017(n) = 0, then a(n) = A21371
+A265250	sintrif	1	(term, n) -> F000005(n).+(term)	""	new A002133()	_
+A277813	rowix	1	new A277880()
+A299165	sintrif	1	(term, n) -> term.mod(ZV(n).*(n + 1))	""	new A000594()	_
+A329344	lambdan	1	n -> D051903(E324886(n))	""		_
+A334292	sintrif	1	(term, n) -> term.-(1)	""	new A070215()	_
+A352892	lambdan	1	n -> E348717(E341515(n))	""		_
+A354946	sintrif	1	(term, n) -> GCD(term, ZV(n).^(n))	""	new A001923()	_

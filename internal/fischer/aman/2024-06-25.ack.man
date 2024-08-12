@@ -1,0 +1,79 @@
+---- 2024-06-25 15:08:05
+A073121	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(2).+(self.a(n/2).*(2))	"1"
+A079528	lambdan	1	n -> Functions.SIGMA1.z(ZV(n)).-(Functions.CEIL_SQRT.z(n).+(n))
+A081050	lambdan	0	n -> S1(n + 1, 1).-(Z_1(n + 2).*(S1(n + 1, 2)))	a(n)=s(n,1)-(-1)^(n+1)*s(n,2),s(n,m)=signed*Stirling*numbers*of*first*kind*a(n)=abs(n!*(1+Sum{k=1..n,(-1)^n*1/k}))
+A098512	lambdan	0	n -> Functions.CATALAN.z(n)./(GCD(n, Functions.CATALAN.z(n)))
+A105161	lambdan	0	n -> Functions.PRIME.z(Functions.PRIME_PI.z(n).+(2)).-(n)	a(n) = prime(primepi(n)+2) - n;
+A105234	lambdan	0	n -> BI(Math.abs(Functions.MOEBIUS.i(2*n)), Math.abs(Functions.MOEBIUS.i(n)))
+A105589	trinv	0	A105586
+A105597	lambdan	0	n -> BI(Math.abs(Functions.MOEBIUS.i(n)), Math.abs(Functions.MOEBIUS.i(n/2)))	BI(abs(mu(n)), abs(mu(floor(n/2))))
+A108719	lambdan	1	n -> (n <= 2) ? ZV(n*2 + 3) : Functions.PRIME.z(n + 3)
+A122566	lambdan	0	n -> Functions.PRIME.z(ZV(n).^(2).+(n).+(1))
+A125550	lambdan	1	n -> BI(Functions.PRIME.l(n + 2), Functions.PRIME.l(n))
+A132030	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 6, n) - 1, k -> ZV(n)./(ZV( 6).^(k)))
+A132031	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 7, n) - 1, k -> ZV(n)./(ZV( 7).^(k)))
+A132032	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 8, n) - 1, k -> ZV(n)./(ZV( 8).^(k)))
+A132033	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 9, n) - 1, k -> ZV(n)./(ZV( 9).^(k)))
+A132263	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i(11, n) - 1, k -> ZV(n)./(ZV(11).^(k)))
+A132264	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i(12, n) - 1, k -> ZV(n)./(ZV(12).^(k)))
+A132271	lambdan	0	n -> PR(0, n, k -> Z.ONE.+(ZV(n)./(Z.TEN.^(k))))	Table[Product[1+Floor[n/10^k], {k, 0, n}], {n, 0, 60}]
+A134991	trecpab	1	0	0	.multiply(n + k + 1)	.multiply(k + 1)
+A135759	lambdan	0	n -> BI(Z2(n + 2).-(4), Z2(n + 1).-(2))./(Z2(n + 1).-(1))
+A136551	lambdan	0	n -> { final Z n2n1 = Z2(n).+(2*n + 1); return BI(n2n1, ZV(n)).*(Z2(n).+(1))./(n2n1); }	a(n) = coefficient of x^n in Catalan(x)^(2^n+1)
+A158363	lambdan	0	n -> BI(ZV(n + 2).^(3), ZV(n + 1))	,n=0,1...
+A167770	lambdan	1	n -> Functions.PRIME.z(n).^(2).mod(Functions.PRIME.z(n + 1))
+A173501	multrar	1	(self, n) -> PR(1, n - 1, i -> self.a(i))	"2,3"
+A174230	multrar	1	(self, n) -> PR(1, n - 1, i -> self.a(i))	"3,7"
+A175138	multrar	1	(self, n) -> PR(1, n - 1, i -> self.a(i))	"3,5"
+A176004	sintrif	1	(term, n) -> Functions.PRIME.z(n + 2).-(term)	""	new A001358()
+A177687	lambdan	1	n -> { final long p = Functions.PRIME.l(n); return BI(Functions.DIGIT_LENGTH.l(2, p), Long.bitCount(p)); }	(F000120(term).+(D023416(term)), F000120(term))	a(n) = binomial((A000120(p) + A023416(p), A000120(p)), where p=prime(n).
+A178427	prepend	0	new A152581()	7	followed by the Fermat numbers A152581.	nonn	0..8
+A181469	parm2	1	A181447	89	is the largest prime factor of n^2-1.	fini,nonn,	1..2370
+A182166	lambdan	2	n -> BI(n, 2).*(ZV(2).^(BI(n - 2, 2)))
+A195686	lambdan	0	n -> BI(2*n,n)./(GCD(n, BI(2*n, n)))
+A209286	multrar	0	(self, n) -> self.a(n-1).+(self.a(n-2).+(1).*(self.a(n-3)))	"0,1,1,1"
+A210582	filamb	1	0	n -> { final long x = n.mod(10); return x != 0L && ZV(n.toString(10).charAt(0) - '0').equals(n.mod(x)); }	Numbers whose first digit is the remainder of their division by the last digit (in base 10).
+A215557	lambdan	0	n -> BI(ZV(n + 1).*(n), ZV(n)).*(ZV(n - 1).*(n).+(1))./(ZV(n).*(n).+(1))
+A245059	lambdan	0	n -> (n == 0) ? ZV(1) : SU(1, n, k -> BI(n - 1, k - 1).*(S2(n,k).*(ZV(2).^(n - k))))	1	a(n) = Sum_{k=1..n} C(n-1,k-1) * S2(n,k) * 2^(n-k)
+A245060	lambdan	0	n -> (n == 0) ? ZV(1) : SU(1, n, k -> BI(n - 1, k - 1).*(S2(n,k).*(ZV(3).^(n - k))))	1	a(n) = Sum_{k=1..n} C(n-1,k-1) * S2(n,k) * 3^(n-k)
+A255886	lambdan	1	n -> (n <= 2) ? Z.ONE : FA(BI(n, 2)).*(Z2(n - 2))./(Functions.CATALAN.z(n - 1))	"1"
+A259673	lambdan	1	n -> Functions.SIGMA.z(Functions.PRIME.l(n), n)
+A261043	multraf	0	(self, n) -> self.s(0).-(self.s(1).*(2))	"0,0"	new A034899(), new A000041()	???"+1" weg	a(n)=Annn(n)-(\d+)*Annn(n)+(\d+)
+A261468	lambdan	1	n -> Functions.PRIME.z(n + 2).mod(Functions.PRIME.z(n))
+A261469	lambdan	1	n -> Functions.PRIME.z(n+3).mod(Functions.PRIME.z(n))
+A263325	lambdan	1	n -> Functions.SIGMA1.z(ZV(n)).*(Functions.PRIME_PI.z(ZV(n).^(2)))	""	new A000129()	a(n) = sigma(n)*pi(n^2), where sigma(n) is the sum of all (positive) divisors of n, and pi(x) is the number of primes not exceeding x.
+A268524	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(3).+(self.a(n/2).*(1))	"1"
+A268525	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(2).+(self.a(n/2).*(3))	"1"
+A268526	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(3).+(self.a(n/2).*(2))	"1"
+A268527	multrar	1	(self, n) -> self.a(((n&1) == 0 ? 0 : 1) + n/2).*(4).+(self.a(n/2).*(1))	"1"
+A293442	mult	1	new A019565().a(e)	a(p^e) = A019565(e).	nonn,mult	1..65537	nyi				Multiplicative with a(p^e) = A019565(e).
+A308949	lambdan	1	n -> (n == 2) ? ZV(2) : M008555(n)./(GCD(M008555(n), n))
+A327563	rowsum	1	new A119687()
+A338529	lambdan	1	n -> Functions.PRIME.z(n + 2).*(Functions.PRIME.z(n + 3)).-(Functions.PRIME.z(n).*(Functions.PRIME.z(n + 1)))
+A350309	multraf	0	(self, n) -> self.a(n - 1).*(n + 2).+(self.s(0).-(4).*(n + 1)./(6))	"1"	new A003422()	S1(n, 2)	a(n)=s(n,2)
+A355591	multraf	0	(self, n) -> self.s(0).-(self.s(1))	"1"	new A070826().skip(1), new A071148()	a(n)=Annn(n+(\d+))-Annn(n)
+A366305	lambdan	1	n -> PR(1, n, k -> ZV(k).^(n).+(ZV(k - 1).^(n)))
+A366306	lambdan	1	n -> PR(1, n, k -> ZV(k).^(n).-(ZV(k - 1).^(n)))
+A367542	lambdan	1	n -> PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(i).*(ZV(j)).+(ZV(j).^(2)))))	PR(i=1,n,j=1..n,(i^2+i*j+j^2))
+A367550	lambdan	1	n -> PR(1, n, i -> PR(1, n, j -> { final Z iz2 = ZV(i).^(2); final Z jz2 = ZV(j).^(2); return iz2.^(2).+(iz2.*(jz2)).+(jz2.^(2)); }))	PR(i=1,n,j=1..n,(i^4+i^2*j^2+j^4))
+A367668	lambdan	1	n -> PR(1, n, i -> PR(1, n, j -> { final Z iz2 = ZV(i).^(2); final Z jz2 = ZV(j).^(2); return iz2.^(2).-(iz2.*(jz2)).+(jz2.^(2)); }))	PR(i=1,n,j=1..n,(i^4-i^2*j^2+j^4))
+A367670	lambdan	1	n -> PR(1, n, i -> PR(1, n, j -> { final Z iz4 = ZV(i).^(4); final Z jz4 = ZV(j).^(4); return iz4.^(2).+(iz4.*(jz4)).+(jz4.^(2)); }))	PR(i=1,n,j=1..n,(i^8+i^4*j^4+j^8))
+A367834	lambdan	0	n -> PR(1, n, i -> PR(1, n, j -> ZV(i).^(8).+(ZV(j).^(8))))	PR(i=1,n,j=1..n,(i^8+j^8))
+A367927	lambdan	0	n -> PR(1, n, k -> ZV(n).^(2).+(ZV(k).^(2)).^(k))
+A368064	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(4*i).*(ZV(j))).+(ZV(j).^(2))))	PR(i=1,n,j=1..n,(i^2+4*i*j+j^2))
+A368065	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(5*i).*(ZV(j))).+(ZV(j).^(2))))	PR(i=1,n,j=1..n,(i^2+5*i*j+j^2))
+A368066	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(6*i).*(ZV(j))).+(ZV(j).^(2))))	PR(i=1,n,j=1..n,(i^2+6*i*j+j^2))
+A368067	lambdan	0	n -> (n == 0) ? Z.ONE : PR(1, n, i -> PR(1, n, j -> ZV(i).^(2).+(ZV(3*i).*(ZV(j))).+(ZV(j).^(2))))	PR(i=1,n,j=1..n,(i^2+3*i*j+j^2))
+A368132	lambdan	0	n -> PR(1, n, k -> ZV(n + k).^(k))
+A368622	lambdan	0	n -> PR(1, n, j -> PR(1, n, k -> ZV(j).^(2).+(ZV(k).^(2)).+(ZV(n).^(2))))
+A368623	lambdan	0	n -> PR(1, n, k -> ZV(k).^(2).+(ZV(n).^(2).*(2)))
+A368720	lambdan	0	n -> PR(1, n, j -> PR(1, n, k -> ZV(j).^(3).+(ZV(k).^(3)).+(ZV(n).^(3))))
+A368721	lambdan	0	n -> PR(1, n, j -> PR(1, n, k -> ZV(j).^(4).+(ZV(k).^(4)).+(ZV(n).^(4))))
+A368722	lambdan	0	n -> PR(1, n, i -> PR(1, n, j -> PR(1, n, k -> ZV(i).^(3).+(ZV(j).^(3)).+(ZV(k).^(3)))))	PR(i=1,n,j=1..n,k=1..n,(i^3+j^3+k^3))
+A368723	lambdan	0	n -> PR(1, n, i -> PR(1, n, j -> PR(1, n, k -> ZV(i).^(4).+(ZV(j).^(4)).+(ZV(k).^(4)))))	PR(i=1,n,j=1..n,k=1..n,(i^4+j^4+k^4))
+A371003	lambdan	1	n -> BI(2*n - 1, n).-(BI(n, 2).*(BI(n -1, 2).+(2))).-(1)
+A371036	lambdan	1	n -> (n == 1) ? ZV(0) : BI(2*n - 1, n).-(n + 1)
+A373187	multrar	1	(self, n) -> { final int n4 = n/4; final int m = n % 4; return Functions.TETRAHEDRAL.z(4*n4 + m).+((m != 0) ? Z.ZERO : self.a(n4)); }	"1"	a(4*n+1) = A000292(4*n+1), a(4*n+2) = A000292(4*n+2), a(4*n+3) = A000292(4*n+3), a(4*n+4) = A000292(4*n+4) + a(n+1) for n >= 0.
+A373188	multrar	1	(self, n) -> { final int n4 = n/4; final int m = n % 4; return ZV(                     4*n4 + m).+((m != 0) ? Z.ZERO : self.a(n4)); }	"1"	a(4*n+1) = 4*n+1,          a(4*n+2) = 4*n+2,          a(4*n+3) = 4*n+3,          a(4*n+4) = 4*n+4          + a(n+1) for n >= 0.
+A373189	multrar	1	(self, n) -> { final int n4 = n/4; final int m = n % 4; return Functions.TRIANGULAR.z( 4*n4 + m).+((m != 0) ? Z.ZERO : self.a(n4)); }	"1"	a(4*n+1) = A000217(4*n+1), a(4*n+2) = A000217(4*n+2), a(4*n+3) = A000217(4*n+3), a(4*n+4) = A000217(4*n+4) + a(n+1) for n >= 0.
+A373263	lambdan	1	n -> n == 1 ? ZV(0) : IV[F276085(n).mod(3) == 2]								a(n) = 1 if A276085(n) == -1 (mod 3), otherwise 0, where A276085 is the primorial base log-function.

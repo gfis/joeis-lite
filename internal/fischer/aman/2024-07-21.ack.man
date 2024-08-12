@@ -1,0 +1,150 @@
+---- 2024-07-21 22:00:50
+---- 2024-07-21 22:50:00
+A073578	lambdan	1	n -> SU(1, n, k -> F008683(2*k))
+A074882	lambdan	1	n -> SD(n, d -> F008683(d).*(F000203(n)./(d)))
+A076277	sintrif	1	(term, n) -> term.-(D001055(n))	"0"	new A066637()	_	_
+A090668	lambdan	1	n -> F000040(n).*(ZV(n).-(F000720(n)))./(F000720(n).+(1))
+A105209	lambdan	1	n -> CV(n).pow(new Q(1, 3)).round()	Nearest integer to the cube root of n.
+A106473	lambdan	0	n -> SU(0, n, k -> GCD(n - k + 1, k + 1).*(ZV(10).^(k)))
+A112751	lambdan	1	n -> SU(1, n, k -> F008683(15*k).*(n/k))
+A113166	lambdan	1	n -> SD(n, d -> F000010(n/d).*(F000045(d-1)))
+A116963	lambdan	1	n -> SD(n, d -> F000292(d+1))
+A119365	lambdan	0	n -> T119335(2*n, n).-(T119335(2*n, n + 1))	""		_
+A119737	lambdan	1	n -> SU(1, n, k -> F000045(n/k))
+A121945	lambdan	1	n -> SU(1, n, k -> FA(k).^(n - k + 1))
+A123618	lambdan	0	n -> T123610(2*n + 2, n)	""		_
+A123619	lambdan	0	n -> T123610(2*n + 2, n)./(n+1)	""		_
+A131674	lambdan	0	n -> SU(1, n, k -> MIN(ZV(k), Z2(n + 2 - k).-(2)))
+A132090	lambdan	1	n -> F000720(F000720(n))	""		_
+A133725	lambdan	1	n -> SD(n, d -> F008683(n/d).*(d).*(3*d - 1)./(2))
+A134586	multrar	1	(self, n) -> self.a(n - 1).testBit(0) ? self.a(n - 1).+(Functions.DIGIT_PRODUCT.z(n-1)) : self.a(n - 1)./(2)	"1"	if a(n-1) is odd, otherwise a(n) = a(n-1) / 2.
+A135967	lambdan	0	n -> SU(0, n, k -> F000045(k*(n - k) + 1))
+A165163	lambdan	0	n -> D061602(F000108(n))	""		_
+A168407	lambdan	0	n -> SU(0, n, k -> S2(n,k).*(ZV(2).^(n*k)))	""		_
+A168408	lambdan	0	n -> SU(0, n, k -> S2(n,k).*(ZV(3).^(n*k)))	""		_
+A174340	lambdan	0	n -> F008683(F000045(n))	""		_
+A174933	lambdan	1	n -> SD(n, d -> F007955(d).*(d))
+A174936	lambdan	1	n -> SD(n, d -> F007955(d).*(F007955(n/d)))
+A174941	lambdan	1	n -> SD(n, d -> F007955(d).*(F008683(d)))
+A179117	lambdan	1	n -> SD(n, d -> PHI(ZV(d).^(PHI(d))))
+A179307	lambdan	1	n -> SD(n, d -> BI(n,d).*(F000203(d)).*(F000203(n/d)))
+A192745	lambdan	0	n -> SU(0, n, k -> FA(k).*(F000045(n - k)))
+A229253	lambdan	1	n -> TAU(n).*(Z2(Functions.TAU.i(n) - 1))	""		_
+A246670	lambdan	0	n -> F000040(F000108(n))	""		_
+A254083	lambdan	0	n -> T254040(2*n, n)	""		_
+A268286	lambdan	1	n -> F000110(F000040(n))	""		_
+A278644	lambdan	0	n -> SU(0, n, k -> T255970(n, k))	""		_
+A284841	lambdan	1	n -> SD(n, d -> F008683(n/d).*(F000110(((d & 1) == 1) ? (d + 1)/2 : d/2)))
+A290278	lambdan	0	n -> SU(0, n, k -> F007953(5*k).-(F007953(k)))
+A297424	lambdan	0	n -> TAU(PM(ZV(10).^(n)))
+A305436	lambdan	1	n -> SD(n, d -> D209229(d - 1))
+A317625	lambdan	1	n -> SU(1, n, k -> F000010(n/k))
+A318755	lambdan	1	n -> SU(1, n, k -> TAU(k).^(3))	""		_
+A320974	lambdan	1	n -> SD(n, d -> MU(n/d).^(2).*(ZV(d).^(n)))
+A322976	lambdan	1	n -> SD(n, d -> D010051(d + 2))
+A324349	sintrif	0	(term, n) -> term.-(E324058(n))	""	new A324054()	_
+A324385	sintrif	0	(term, n) -> term.-(F007917(term))	"0"	new A002182()
+A324863	lambdin	0	n -> F070939(E324866(n))	"0"		_	_
+A324868	lambdan	1	n -> F000120(E324398(n))	""		_					Binary weight of A324398(n).
+A324874	lambdan	1	n -> F070939(E324398(n))	""		_					a(n) is the binary length of A324398(n), where A324398(n) = A156552(n) AND (A323243(n) - A156552(n)).
+A324882	lambdin	0	n -> D001511(E324866(n))	"0"		_	_
+A324888	lambdan	0	n -> F001222(E324886(n))	""		_
+A329040	lambdan	0	n -> F001221(E324886(n))	""		_
+A329373	lambdan	1	n -> SD(n, d -> F000203(n/d).*(E322994(d)))
+A332509	lambdan	1	n -> SU(1, n, k -> F008683(n/k))
+A333699	lambdan	1	n -> SD(n, d -> F000010(n/d).*(F000720(d)))
+A333839	lambdan	4	n -> SU(4, n, k -> D013632(k).-(D049711(k))./(2))
+A335131	lambdan	1	n -> SU(1, n, k -> F000010(k).*(F000010(k + 1)).*(F000010(k + 2)))
+A342004	lambdan	1	n -> IV[E328311(n).isZero()]	""		_
+A342463	lambdan	0	n -> D342001(E342456(n))	""		_					a(n) = A342001(A342456(n)); "wild part" of the arithmetic derivative of A342456(n).
+A342607	lambdan	1	n -> SD(n, d -> PHI(d).^(n-d))
+A343442	lambdan	1	n -> SD(n, d -> MU(d).^(2).*(Functions.SIGMA1.z(d)))
+A343978	lambdan	1	n -> SU(1, n, k -> MU(k).*(ZV(n/k).^(6)))	""		_
+A344351	lambdan	1	n -> SU(1, n, k -> MU(n*k - n + k).^(2))
+A344374	lambdan	1	n -> SU(1, n, k -> MU(1 + n*(k - 1)).^(2))
+A344573	lambdan	1	n -> SD(n, d -> F000010(FA(d)))
+A344711	lambdan	1	n -> SU(1, n, k -> F000330(n).mod(ZV(k).^(2)))
+A350895	lambdan	0	n -> SU(0, n, k -> F002110(n)./(F002110(k)))
+A353235	lambdan	1	n -> TAU(n).-(SD(n, d -> ARD(d).testBit(0) ? Z.NEG_ONE : Z.ONE))./(2)
+A353236	lambdan	1	n -> TAU(n).+(SD(n, d -> ARD(d).testBit(0) ? Z.NEG_ONE : Z.ONE))./(2)
+A353477	lambdan	1	n -> IV[F001222(n).equals(ZV(2)) && n % 4 == 1]	""		_((2==bigomega(n)) && (1==(n%4)))
+A353479	lambdan	1	n -> IV[F001222(n).equals(ZV(2)) && n % 4 == 3]	""		_((2==bigomega(n)) && (3==(n%4)))
+A358754	lambdan	1	n -> IV[D053669(n).mod(6) == 1]	""		_
+A359836	sintrif	0	(term, n) -> term.and(Z.ONE)	""	new A353418()	_
+A365457	lambdan	1	n -> E365456(D005940(n))	""		_					a(n) = A365456(A005940(n)), where A365456(n) = A156552(2*n) / gcd(sigma(n), A156552(2*n)), and A156552 is the inverse of offset-0 version of Doudna-sequence, A005940.
+A367820	lambdan	0	n -> T113547(2*n + 1, n + 1)	""		_
+A369034	lambdan	0	n -> IV[E353630(n).isZero()]	""		_
+A369036	lambdan	0	n -> IV[E353630(n).equals(ZV(2))]	""		_
+A371878	lambdan	1	n -> SD(n, d -> F008683(n/d).*(n/d).*(Functions.SIGMA.z(6, d)))
+A373156	lambdan	1	n -> IV[D007814(n).equals(D007949(n))]	""		_
+A373252	lambdan	1	n -> IV[D007814(n).equals(D051903(n))]	""		_
+A373254	lambdan	0	n -> IV[F003415(n).mod(3) == 1]	""		_
+A373975	lambdan	1	n -> IV[F001222(n).mod(3) == 0]	""		_
+A374134	lambdan	1	n -> IV[D083254(n).compareTo(Z.ZERO) > 0]	""		_
+A324810	lambdan	0	n -> SD(n, d -> E324828(d))
+A324825	lambdan	0	n -> SD(n, d -> E324823(d))
+A332463	lambdan	0	n -> SD(n, d -> F008683(n/d).*(E332223(d)))
+A344774	lambdan	0	n -> SD(n, d -> IV[D049559(d).compareTo(D049559(n)) == 0])
+A344992	lambdan	0	n -> SU(1, n, k -> SD(k, d -> F000010(k/d).*(d).*(d + 1).*(d + 2)./(6)))
+---- 2024-07-21 23:03:41
+A145393	lambdan	1	n -> SD(n, d -> ZV(1 + d/4))
+A307100	lambdan	1	n -> SD(n, d -> F000005(d).*(F007955(d)))
+A318952	lambdan	1	n -> SD(n, d -> F000203(n).mod(F000203(d)))
+A318996	lambdan	1	n -> SD(n, d -> F000203(n).modZ(d))
+A323878	lambdan	1	n -> SD(n, d -> IV[ZV(n).mod(F276086(d)).isZero()])
+A323879	lambdan	1	n -> SD(n, d -> IV[ZV(n).mod(E276154(d)).isZero()])
+A327170	lambdan	1	n -> SD(n, d -> IV[F000010(d).*(F007913(d)).equals(ZV(n))])
+A347146	lambdan	1	n -> SD(n, d -> ARD(ZV(d).^(d)))
+A348027	lambdan	1	n -> SD(n, d -> F000010(n/d).*(E324198(d)))
+A367503	lambdan	1	n -> SD(n, d -> MU(d).^(2).*(d % 10))
+A368738	lambdan	1	n -> SU(1, n, k -> GCD(3*k + 1, n))
+A368741	lambdan	1	n -> SU(1, n, k -> GCD(5*k + 1, n))
+A368990	lambdan	0	n -> IV[E324055(n).compareTo(ZV(0)) <= 0]
+A369637	lambdan	1	n -> IV[E328390(n).compareTo(D051903(n)) < 0]
+A373136	lambdan	1	n -> IV[!D007814(n).+(D007949(n)).testBit(0)]
+A373157	lambdan	1	n -> IV[D007814(n).mod(3) == 0]
+A373990	lambdan	1	n -> IV[F000120(n).compareTo(D001511(n)) <= 0]
+A329638	lambdan	0	n -> SD(n, d -> IV[E329644(d).compareTo(ZV(0)) >0].*(E329644(d)))
+A345935	lambdan	0	n -> SD(n, d -> IV[D002034(d).compareTo(D002034(n)) == 0])
+A345936	lambdan	0	n -> SD(n, d -> IV[D002034(d).compareTo(D002034(n)) < 0])
+A353351	lambdan	0	n -> SD(n, d -> ZV(1).-(E353350(d)))
+A354185	lambdan	0	n -> SD(n, d -> F008683(n/d).*(E348717(d)))
+---- 2024-07-21 23:10:48
+A209397	lambdan	1	n -> SD(n, d -> ZV(d).*(M000081(d)))
+A342694	lambdan	1	n -> SD(n, d -> ZV(d).*(MU(d).*(n/(d*d))))
+A344578	lambdan	1	n -> SD(n, d -> ZV(d).*(F008472(d)))
+A367865	lambdan	1	n -> SD(n, d -> ZV(d).*(PHI(d).*(MU(d).^(2))))
+---- 2024-07-21 23:51:22
+A074399	lambdan	1	n -> MAX(F006530(2*n), F006530(2*n + 2))
+A077086	lambdan	1	n -> F000203(n+1).mod(F000203(n))
+A089129	lambdan	0	n -> GCD(n + 7, 14)
+A160620	lambdan	0	n -> SD(n, d -> PHI(n/d).^(2).*(Z2(d)))
+A161217	lambdan	0	n -> SD(n, d -> PHI(n/d).^(2).*(Z2((d+1))))
+A179214	lambdan	1	n -> PR(n, 2*n, k -> ZV(k).^(D008966(k)))
+A184513	lambdan	1	n -> SD(n, d -> Z2((d - 1)*(n/d - 1)).*(D000984(d-1)).*(d))
+A185302	lambdan	1	n -> SD(n, d -> ZV(d).*(SIGMA(n/d).^(d)))
+A322354	lambdan	1	n -> GCD(F007947(n), E166590(F007947(n)))
+A337323	lambdan	1	n -> GCD(ZV(n), F000005(n), F000203(n), F007955(n))
+A338563	lambdan	1	n -> LCM(ZV(n), F000005(n), F000203(n))
+A344460	lambdan	1	n -> SD(n, d -> ZV(d).*(Functions.SQRT.z(d)))
+A344704	lambdan	1	n -> GCD(F001615(n).-(n), F000203(n).-(F001615(n).+(n)))
+A346099	lambdan	1	n -> GCD(ZV(n), E346098(n))
+A351394	lambdan	1	n -> SD(n, d -> MU(d).^(2).+(IV[Functions.OMEGA.i(d) == 1].*(ZV(1).-(MU(d).^(2)))))
+A353237	lambdan	1	n -> SD(n, d -> ARD(d).testBit(0) ? Z.NEG_ONE : Z.ONE)
+A362414	lambdan	1	n -> GCD(ZV(n), PHI(n).^(2))./(GCD(n,PHI(n)))
+A367493	lambdan	1	n -> SD(n, d -> ZV(n - d).^(n))
+A367866	lambdan	1	n -> SD(n, d -> ZV(d).*(SIGMA(d)).*(MU(d).^(2)))
+A368744	lambdan	1	n -> SD(n, d -> Z_1(d + 1).*(PHI(d)))
+A247193	lambdan	0	n -> GCD(FA(n), F000045(n))
+A329618	lambdan	0	n -> GCD(F001222(n), F001222(E324886(n)))
+A329642	lambdan	0	n -> SD(n, d -> IV[F008683(n/d).equals(ZV(1))].*(D156552(d).*(2).-(E323243(d))))	a(n) = Sum_{d|n} [1 == A008683(n/d)] * A323244(d)
+A329643	lambdan	0	n -> SD(n, d -> IV[F008683(n/d).equals(Z.NEG_ONE)].*(D156552(d).*(2).-(E323243(d))))
+A353361	lambdan	0	n -> SD(n, d -> ZV(1).-(E353269(d)))
+A095900	lambdan	0	n -> M004001(ZV(10).^(n))
+A329643	lambdan	0	n -> SD(n, d -> IV[F008683(n/d).equals(Z.NEG_ONE)].*(E323244(d)))
+A353274	lambdan	0	n -> GCD(E353272(n), E353273(n))
+A373835	lambdan	0	n -> GCD(F001222(n), F276085(n))
+A074797	lambdan	4	n -> M000081(n + 1).-(M000081(n).*(2))
+A366981	lambdan	1	n -> SD(n, d -> (IV[d == 3].+(IV[d == 4]).+(IV[d == 5])))
+A367466	lambdan	1	n -> SD(n, d -> ZV(d % 10))
+A373370	lambdan	1	n -> GCD(F001222(n), E064097(n))

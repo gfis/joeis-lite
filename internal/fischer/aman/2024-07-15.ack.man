@@ -1,0 +1,131 @@
+#A324866	lambdan	0	n -> D156552(n).or(E323243(n).-(D156552(n)))
+---- 2024-07-15 17:36:40
+---- 2024-07-15 19:02:24
+---- 2024-07-15 19:06:31
+A071378	lambdan	2	n -> D032742(ZV(n).^(3))
+A078423	lambdan	1	n -> FA(D007504(n))./(FA(D007504(n - 1)))
+A097248	lambdan	1	n -> D019565(D048675(n))
+A099825	lambdan	0	n -> D007504(D000079(n))
+A100639	sintrif	0	(term, n) -> E010879(term)	""	new A000928()	_
+A104404	lambdan	1	n -> D000688(n).+(E104488(n))
+A109599	lambdan	1	n -> E070864(n+7).-(4)
+A109725	lambdan	0	n -> D007504(ZV(n + 1).^(2)).-(D007504(ZV(n).^(2)))
+A120016	lambdan	1	n -> E120014(n)./(n)	"1"		n>=1
+A120022	lambdan	1	n -> E120020(n)./(n)	"1"		n>=1
+A122932	lambdan	1	n -> D000085(n).-(D000079(n - 1))
+A123387	lambdan	1	n -> D003056(F000040(n)).+(1)
+A133827	lambdan	0	n -> E110399(2*n + 1)
+A135993	lambdin	0	n -> E135941(n).and(ZV(1))	"0"	n>=1
+A137795	lambdan	1	n -> E083720(n)./(F034386(Functions.LPF.i(n) - 1))
+A143257	lambdan	0	n -> D030101(FA(n))
+A158619	sintrif	1	(term, n) -> new Z(D007088(term).toString() + D007088(term.+(2)).toString())	""	new A001359()
+A183037	lambdan	1	n -> D001511(n).*(Z2(Functions.VALUATION.i(2L * n, 2)))
+A195587	lambdan	1	n -> E163659(n*n)
+A202709	lambdan	11	n -> E120390(n)./(9)	"1"		n>=11
+A212653	lambdan	0	n -> E075487(n).-(1)
+A213290	lambdin	0	n -> D001405(n).+(D001405(n - 2)).+(F057427(n))	"1,2"
+A227428	lambdan	0	n -> D006047(n).-(E206424(n))
+A229742	lambdan	0	n -> D002487(D059893(F006068(n)))
+A241139	sintrif	0	(term, n) -> E177329(n).-(term)	""	new A055460()	_
+A253890	lambdan	1	n -> D122111(D122111(n).*(2).-(1))
+A265353	lambdan	0	n -> E264985(D263273(n))
+A265354	lambdan	0	n -> D263273(E264985(n))
+A265355	lambdan	0	n -> D263272(E264985(n))
+A265356	lambdan	0	n -> E264985(D263272(n))
+A266189	lambdan	0	n -> D263273(E264985(D263273(n)))
+A266190	lambdan	0	n -> E264985(D263273(E264985(n)))
+A280797	lambdan	0	n -> (n == 0) ? ZV(0) : ZV(n).^(2*n)./(n + 1)
+A281640	lambdan	1	n -> E260649(3*n + 2)
+A288841	lambdan	1	n -> D000085(n).^(2).+(D000085(n - 1).^(2))
+A292596	multrar	1	(self, n) -> D010051(n).+(self.a(n/2).*(2))	"0,0"
+A292598	multrar	1	(self, n) -> D010051(n).+(self.a(n/2))	"0,0"
+A292599	multrar	1	(self, n) -> D010051(n).+(self.a(n/2).*(2))	"0"
+A297163	lambdan	0	n -> D156552(D005940(1+n).+(1))
+A302027	lambdin	0	n -> D057889(D057889(n - 1).+(1))	"0"
+A307035	lambdan	0	n -> D122111(E325508(n))
+A309307	lambdan	1	n -> D000225(F001221(n))
+A316331	lambdan	0	n -> D000085(4*n+1)./(Z2(n))
+A316332	lambdan	0	n -> D000085(4*n+2)./(Z2(n + 1))
+A316333	lambdan	0	n -> D000085(4*n+3)./(Z2(n + 2))
+A318316	lambdan	1	n -> E318307(D003557(n)).*(E318307(n))
+A319713	lambdan	0	n -> E319715(n).-(E276150(n))
+A319953	lambdan	0	n -> D007088(n+1).+(ZV(10).^(D000523(n + 1)))
+A321647	lambdan	0	n -> D008480(n).*(D008480(D122111(n)))
+A322863	lambdin	0	n -> D005940(D122111(n).+(1))	"1"
+A323248	lambdan	0	n -> E323244(n).-(F001222(n))	""		_
+A324394	lambdan	0	n -> D009194(D005940(1+n))
+A324398	lambdan	0	n -> D156552(n).and(E323243(n).-(D156552(n)))
+A324549	lambdan	0	n -> E324543(F000040(n).*(2))
+A324823	lambdan	0	n -> E323243(n).and(ZV(1))
+A324828	lambdan	0	n -> E324543(n).and(ZV(1)) 
+A324865	lambdan	0	n -> E323243(n).-(D156552(n))
+A324896	lambdan	0	n -> D032742(E324886(n))
+A325223	lambdan	1	n -> D056239(n).-(MAX(F001222(n), E061395(n)))
+A325224	lambdan	1	n -> D056239(n).-(MIN(F001222(n), E061395(n)))
+A325403	lambdan	1	n -> D008480(2*n).-(D008480(n))
+A328394	lambdan	0	n -> D051903(E328403(n))
+A328465	lambdan	1	n -> E276156(4*n - 2)  ./(2  )
+A328466	lambdan	1	n -> E276156(8*n - 4)  ./(6  )
+A328467	lambdan	1	n -> E276156(16*n - 8) ./(30 )
+A328468	lambdan	1	n -> E276156(32*n - 16)./(210)
+A328569	lambdan	0	n -> D067029(E276087(n))
+A328591	lambdan	1	n -> E328578(2*n).-(D257993(2*n))
+A328828	lambdan	0	n -> D055396(E328572(n))
+A329349	lambdan	0	n -> D071178(E324886(n))
+A329480	lambdan	1	n -> { final Z n75 = E075677(n); return (n75.mod(6) == 1) ? ZV(1).-(n75)./(6) : ZV(1).+(n75)./(6); }	(1 - A075677(n))/6 if 6|(A075677(n)-1) or a(n) = (A075677(n) + 1)/6 if 6|(A075677(n)+1)
+A329911	lambdan	0	n -> D000629(n*(n - 1))
+A330032	lambdan	0	n -> D000629(n*(n + 1)/2)
+A332223	lambdan	0	n -> D005940(E323243(n).+(1))	n>=2
+A334864	lambdan	0	n -> D064097(D003961(n)).-(D064097(n))
+A336105	lambdan	1	n -> D008480(Z2(n).-(1))
+A337339	lambdan	0	n -> D048673(n*n)./(GCD(D048673(n*n), E336844(n*n)))
+A339597	lambdan	0	n -> E129760(n + 1).+(n + 1)
+A339898	lambdan	0	n -> D019565(2*n).-(1).mod(F000265(PHI(D019565(2*n))))
+A340082	lambdan	1	n -> E003958(n)./(E340081(n))
+A340194	lambdan	1	n -> D083254(D003961(D003961(n)))
+A340683	lambdan	1	n -> D007949((D003961(D003961(n)).+(1))./(2))
+A341354	lambdan	0	n -> D007949(D156552(2*n))
+A342016	lambdan	0	n -> E327860(n).-(F276086(n))
+A342456	lambdan	0	n -> E324886(D005940(1+n))
+A343583	lambdan	0	n -> D000629(n + 1)./(2).-(D000629(n))
+A345943	lambdan	1	n -> E329044(n)./(E345941(n))
+A346096	lambdan	1	n -> E324886(n)./(E346095(n))
+A346097	lambdan	1	n -> E329044(n)./(E346095(n))
+A346474	lambdan	0	n -> E327860(n)./(GCD(E327860(n), E324650(n)))
+A346475	lambdan	0	n -> E327860(n)./(GCD(E327860(n), E346470(n)))
+A348717	lambdan	0	n -> D005940(E322993(n).+(1))
+A348950	lambdan	0	n -> E348949(n).-(F276086(n))
+A351097	lambdan	0	n -> D051903(E327859(n)).-(D051903(n))
+A353272	lambdan	0	n -> E332449(n)./(E353270(n))
+A353419	sintrif	0	(term, n) -> E353269(n).+(term)	""	new A353418()	_
+A353496	lambdan	1	n -> E010873(F003415(D032742(n)))
+A353571	lambdan	1	n -> D342001(D003961(n))
+A354197	lambdan	1	n -> D064989(F000203(F000203(F000203(D003961(n)))))
+A354838	lambdin	1	n -> D007088(n)./(GCD(ZV(n), D007088(n)))	"1"		n>=1
+A354973	multrar	0	(self, n) -> ZV(n - 1).IPP() ? self.a(n - 1).*(2) : self.a(n - 1).+(1)	"0"	n -> E110299(k)- 2^k + n + 1	A354973		a(0)=0; for n > 0, a(n) = 2*a(n-1) if n-1 is prime, a(n-1) + 1 otherwise.
+A355687	sintrif	1	(term, n) -> E276150(n).+(term)	""	new A355686()	_
+A358758	multraf	0	(self, n) -> E353488(n).*(self.s(0)).+(E353489(n).*(self.s(1)))	""	new A358771(), new A358773()	_
+A358759	multraf	0	(self, n) -> E353488(n).*(self.s(0)).+(E353489(n).*(self.s(1)))	""	new A358773(), new A358771()	_
+A365456	lambdan	0	n -> D156552(2*n)./(E365454(n))
+A366801	lambdan	0	n -> D342001(D005940(1+n))
+A368164	lambdan	0	n -> D000244(2*n).-(SU(n + 1, 2*n, k -> BI(2*n, k).*(Z2(2*n - k + 1))))
+A368642	sintrif	1	(term, n) -> D013928(n).+(D008966(n)).+(term).-(F034444(n))	""	new A064608()	_
+A368913	lambdan	1	n -> E368914(n).-(E368915(n))
+A369001	lambdan	0	n -> E373137(n).+(E373266(n))
+A369009	sintrif	1	(term, n) -> D342001(n).-(term)	""	new A083345()	_
+A369653	lambdan	0	n -> E079978(E327860(n))
+A369658	lambdan	0	n -> E011655(n).*(E079978(F003415(n)))
+A370427	lambdan	0	n -> D030101(n).-(ZV(n).and(D030101(n)))
+A372346	lambdan	0	n -> E094422(n - 1).+(1)
+A373155	lambdan	1	n -> D084091(n).and(ZV(1))
+A373249	lambdan	1	n -> D181819(n)./(E373246(n))
+A373601	lambdan	0	n -> E079978(E373600(n))
+A373984	lambdan	1	n -> E108951(n).-(E373158(n))
+A373986	lambdan	1	n -> E373158(n)./(GCD(E108951(n), E373158(n)))
+A373987	lambdan	1	n -> E108951(n)./(GCD(E108951(n), E373158(n)))
+A374039	lambdan	1	n -> E011655(n).+(E267142(n))
+A374041	lambdan	1	n -> E372573(n).*(IV[!D007949(n).equals(Z.ONE)])
+A374216	lambdan	2	n -> D007814(F001414(n))
+A374217	lambdan	2	n -> D007949(F001414(n))
+A374222	sintrif	1	(term, n) -> E079978(term)	""	new A374126()	_
+A374538	lambdan	1	n -> E034676(E350389(n))

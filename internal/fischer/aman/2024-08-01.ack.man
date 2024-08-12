@@ -1,0 +1,140 @@
+
+---- 2024-08-01 10:34:58
+A073816	lambdan	1	n -> Z2(Functions.SIGMA1.i(n)).modZ(n)
+A074480	mulclose	1	new A037074()
+A076610	mulclose	1	new A006450()
+A089670	lambdan	0	n -> SU(0, n, k -> ZV(k).^(2).*(SU(0, k, j -> BI(n, j)).^(3)))	S3(n, 2)	Sum_{k=0..n} k^t *(Sum_{j=0..k} binomial(n,j))^3.
+A089671	lambdan	0	n -> SU(0, n, k -> ZV(k).^(3).*(SU(0, k, j -> BI(n, j)).^(3)))	S3(n, 3)	Sum_{k=0..n} k^t *(Sum_{j=0..k} binomial(n,j))^3.
+A089672	lambdan	0	n -> SU(0, n, k -> ZV(k).^(4).*(SU(0, k, j -> BI(n, j)).^(3)))	S3(n, 4)	Sum_{k=0..n} k^t *(Sum_{j=0..k} binomial(n,j))^3.
+A099104	charfunc	1	new A066680()	Characteristic function of badly sieved numbers (A066680).
+A109724	partsun	0	new PrependSequence(0, new A109725(), 0)		Partial sums of A109725.					Sum of the first n^2 primes.
+A114180	filnum	1	1	n -> MU(n).equals(MU(n + 1)) && MU(n + 1).equals(MU(n+2))
+A122260	mulclose	1	new A005109()	Pierpont primes.
+A122261	charfunc	1	new A122260()	Characteristic function of numbers having only factors that are Pierpont primes.
+A127266	decexprb	0	CR.PI.inverse()		2	a(n) = J024810(n) mod 2
+A153587	lambdan	0	n -> ZV(n).mod(F062383(n).-(n))
+A156541	mulclose	1	new A005384()	Sophie Germain primes (A005384).
+A156543	mulclose	1	new A053176()	primes that are not Sophie Germain primes (A053176).
+A174620	sintrif	1	(term, n) -> Z.TWO.^(term).mod(PM(n))	""	new A141468()
+A202022	charfunc	0	new A010785()	Characteristic functions of repdigit numbers in decimal representation.
+A206803	partsun	2	new A185382().skip(1)			Partial sums of A185382.
+A214128	lambdan	1	n -> Z.SIX.^(Z.SIX.^(6)).modZ(n)
+A225493	mulclose	1	new A051634()	.
+A225494	mulclose	1	new A006562()	.
+A225495	mulclose	1	new A051635()	.
+A231563	lambdan	1	n -> E308481(n).modZ(n)
+A286149	pairtr	1	1	1	new A046523()	new A109395()			1	x	Compound filter: a(n) = T(A046523(n), A109395(n)), where T(n,k) is sequence A000027 used as a pairing function.
+A286533	rgs1	0	new A278533()	# Restrict sequence of A278533 (prime-s
+A286535	rgs1	0	new A278535()	# Restrict sequence of A278535 (prime-s
+A290093	pairtr	0	0	0	new A290091()	new A290092()			0	x	Compound filter (for base-3 digit runlengths): a(n) = P(A290091(n), A290092(n)), where P(n,k) is sequence A000027 used as a pairing function.
+A293223	rgs1	1	new A293221()	# Restrict sequence transform of A293221, a product formed from the 1-digits present in the ternary expansion of proper div
+A293224	rgs1	1	new A293222()	# Restrict sequence transform of A293222, a product formed from the 2-digits present in the ternary expansions of proper div
+A294930	charfunc	1	new A091191()	Characteristic function for A091191, primitive abundant numbers: abundant numbers (A005101) having no abundant proper divisor.
+A294933	pairtr	1	1	1	new A294932()	new A294931()			1	x	Compound filter related to base-3 expansion of the exponents in prime factorization of n: a(n) = P(A294932(n), A294931(n)), where P(n,k) is sequence A000027 used as a pairing function.
+A297157	rgs1	1	new A297156()	# Restrict sequence transform of A297156, which is M‚ąö‚ąāb
+A297162	rgs1	1	new A297172()	# Restrict sequence transform of A297172, which is M‚ÄöńÖ√∂‚ÄöńÖńĀb
+A302047	charfunc	1	new A090076()	Characteristic function for prime(n)*prime(n+2) (A090076).
+A302049	charfunc	1	new A006094()	Characteristic function for products of 2 successive primes (A006094).
+A305897	rgs1	1	new A348717()	# Lexicogr A348717(i) = A348717(j), for all i, j >= 1.
+A318623	lambdan	1	n -> Z2(Functions.PHI.i(n)).modZ(n)
+A322313	rgs1	1	new A322312()	# Lexicogr A322312(i) = A322312(j) for all i, j.
+A322314	rgs2	1	new A046523()	new A322312()	# Lexicogr A046523(i) = A046523(j) and A322312(i) = A322312(j), for all i, j.
+A322315	rgs1	1	new A185633()	# Lexicogr A185633(i) = A185633(j) for all i, j.
+A322316	rgs2	1	new A122841()	new A244417()	# Lexicogr A122841(i) = A122841(j) and A244417(i) = A244417(j), for all i, j,
+A322355	rgs2	1	new A322351()	new A322352()	# Lexicogr A322351(i) = A322351(j) and A322352(i) = A322352(j), for all i, j.
+A323906	rgs1	1	new A323905()	# Lexicogr A323905(i) = A323905(j), for all i, j >= 1.
+A323914	rgs1	1	new A322994()	# Lexicogr A322994(i) = A322994(j), for all i, j >= 1.
+A324343	rgs2	0	new A278222()	new A324342()	# Lexicogr A278222(i) = A278222(j) and A324342(i) = A324342(j), for all i, j >= 0.
+A324344	rgs2	0	new A000120()	new A324342()	# Lexicogr A000120(i) = A000120(j) and A324342(i) = A324342(j), for all i, j >= 0.
+A324346	rgs2	0	new A005811()	new A324055()	# Lexicogr A005811(i) = A005811(j) and A324055(i) = A324055(j), for all i, j >= 0.
+A324347	rgs2	0	new A069010()	new A324055()	# Lexicogr A069010(i) = A069010(j) and A324055(i) = A324055(j), for all i, j >= 0.
+A324818	rgs2	1	new A009194()	new A324396()	# Lexicogr A009194(i) = A009194(j) and A324396(i) = A324396(j) for all i, j.
+A326775	sintrif	0	(term, n) -> ZV(n).mod(term)	""	new A059711()
+A327931	rgs1	1	new A327930()	# Lexicogr A327930(i) = A327930(j).
+A328315	rgs1	1	new A328099()	# Lexicogr A328099(i) = A328099(j) for all i, j.
+A329381	rgs1	1	new A329380()	# Lexicogr A329380(i) = A329380(j) for all i, j.
+A330750	rgs1	1	new A319626()	# Lexicogr A319626(i) = A319626(j) for all i, j.
+A331297	rgs2	1	new A263297()	new A325225()	# Lexicogr A263297(i) = A263297(j) and A325225(i) = A325225(j) for all i, j.
+A331305	rgs1	1	new A286153()	# Lexicogr A286153(i) = A286153(j) for all i, j.
+A331306	rgs1	1	new A285732()	# Lexicogr A285732(i) = A285732(j) for all i, j.
+A336157	rgs2	1	new A318458()	new A336158()	# Lexicogr A318458(i) = A318458(j) and A336158(i) = A336158(j), for all i, j >= 1.
+A336320	rgs1	0	new A324058()	# Lexicogr A324058(i) = A324058(j) for all i, j >= 0.
+A336403	mulclose	1	new A045468()	: numbers which are the product of zero or more primes which are 1 or 4 mod 5.
+A342022	rgs1	0	new A342002()	# Lexicogr A342002(i) = A342002(j) for all i, j >= 0.
+A344593	rgs1	1	new A344592()	# Lexicogr A344592(i) = A344592(j), for all i, j >= 1.
+A347883	sintrif	1	(term, n) -> term.mod(Z.THREE)	""	new A342926()
+A350064	rgs1	1	new A350062()	# Lexicogr A350062(i) = A350062(j), for all i, j >= 1.
+A351080	rgs2	0	new A324198()	new A351083()	# Lexicogr A324198(i) = A324198(j) and A351083(i) = A351083(j) for all i, j >= 0.
+A351085	rgs2	0	new A327858()	new A345000()	# Lexicogr A327858(i) = A327858(j) and A345000(i) = A345000(j) for all i, j >= 0.
+A351090	rgs2	1	new A351091()	new A351092()	# Lexicogr A351091(i) = A351091(j) and A351092(i) = A351092(j), for all i, j >= 1.
+A351093	rgs1	1	new A351091()	# Lexicogr A351091(i) = A351091(j), for all i, j >= 1.
+A351094	rgs1	1	new A351092()	# Lexicogr A351092(i) = A351092(j), for all i, j >= 1.
+A351235	rgs3	1	new A046523()	new A327858().skip(1)	new A345000().skip(1)	# Lexicogr A046523(i) = A046523(j), A327858(i) = A327858(j) and A345000(i) = A345000(j) for all i, j >= 1.
+A353565	rgs1	1	new A353564()	# Lexicogr A353564(i) = A353564(j), where A353564(n) = Product_{d|n, d<n} A276086(phi(d)).
+A355000	rgs2	1	new A046523()	new A327858().skip(1)	# Lexicogr A046523(i) = A046523(j) and A327858(i) = A327858(j) for all i, j >= 1.
+A355830	rgs2	1	new A046523()	new A345000().skip(1)	# Lexicogr A046523(i) = A046523(j) and A345000(i) = A345000(j) for all i, j >= 1.
+A355831	rgs2	1	new A046523()	new A354347()	# Lexicogr A046523(i) = A046523(j) and A354347(i) = A354347(j) for all i, j >= 1.
+A355832	rgs1	1	new A354347()	# Lexicogr A354347(i) = A354347(j) for all i, j >= 1.
+A355833	rgs2	1	new A342671()	new A348717()	# Lexicogr A342671(i) = A342671(j) and A348717(i) = A348717(j) for all i, j >= 1.
+A355834	rgs2	1	new A348717()	new A355931()	# Lexicogr A348717(i) = A348717(j) and A355931(i) = A355931(j) for all i, j >= 1.
+A355835	rgs2	1	new A348717()	new A355442()	# Lexicogr A348717(i) = A348717(j) and A355442(i) = A355442(j) for all i, j >= 1.
+A355836	rgs2	1	new A046523()	new A355442()	# Lexicogr A046523(i) = A046523(j) and A355442(i) = A355442(j) for all i, j >= 1.
+A359604	sintrif	1	(term, n) -> term.mod(ZV(60))	""	new A359603()
+A359826	parity	1	new A353348()	1	Parity of A353348, where A353348 is Dirichlet inverse of the characteristic function for numbers k such that A048675(k) is a multiple of 3.
+A359826	sintrif	1	(term, n) -> term.and(Z.ONE)	""	new A353348()
+A359827	filtpos	1	1	new A353348()	v -> v.testBit(0)	Positions of odd terms in A353348, where A353348 is Dirichlet inverse of the characteristic function for numbers k where A048675(k) is a multiple of 3.
+A359835	sintrif	1	(term, n) -> term.isZero() ? term : Z.ONE	""	new A353418()
+A360126	filtpos	1	1	new A359425()	term -> !term.testBit(0)
+A360127	filtpos	1	1	new A359425()	term -> term.testBit(0)
+A360496	lambdan	1	n -> ZV(n).mod(F006530(n).+(1))
+A364693	charfunc	0	new A090466()	Characteristic function of polygonal numbers of order greater than 2 (A090466): a(n) = 1 if n is in A090466, 0 otherwise.
+A364950	rgs2	1	new A025480().skip(1)	new A348717()	# Lexicogr A025480(i) = A025480(j) and A348717(i) = A348717(j) for all i, j >= 1.
+A365384	rgs1	0	new A351251()	# Lexicogr A351251(i) = A351251(j) for all i, j >= 0, where A351251(n) is the denominator of n / A276086(n).
+A365391	rgs2	1	new A336158()	new A365425().skip(1)	# Lexicogr A336158(i) = A336158(j) and A365425(i) = A365425(j) for all i, j >= 1.
+A365393	rgs1	0	new A364492()	# Lexicogr A364492(i) = A364492(j) for all i, j >= 0, where A364492(n) is the denominator of n / A163511(n).
+A365394	rgs2	0	new A365425()	new A365426()	# Lexicogr A365425(i) = A365425(j) and A365426(i) = A365426(j) for all i, j >= 0.
+A365395	rgs2	0	new A365425()	new A365427()	# Lexicogr A365425(i) = A365425(j) and A365427(i) = A365427(j) for all i, j >= 0.
+A365431	rgs1	1	new A364502()	# Lexicogr A364502(i) = A364502(j) for all i, j >= 1, where A364502(n) is the denominator of n / A005940(n).
+A366296	rgs1	1	new A346242()	# Lexicogr A346242(i) = A346242(j) for all i, j >= 1, where A346242 is Dirichlet inverse of gcd(n, A276086(n)).
+A366297	rgs1	1	new A359589()	# Lexicogr A359589(i) = A359589(j) for all i, j >= 1, where A359589 is Dirichlet inverse of function f(n) = (-1 + gcd(A003415(n), A276086(n))).
+A366798	rgs1	0	new A366797()	# Lexicogr A366797(i) = A366797(j) for all i, j >= 0, where A366797 is the number of odd divisors permuted by A163511.
+A366800	rgs1	0	new A366799()	# Lexicogr A366799(i) = A366799(j) for all i, j >= 0, where A366799 is the number of divisors d of n that are not of the form 4k+2, as permuted by the Doudna sequence.
+A366802	rgs1	0	new A366801()	# Lexicogr A366801(i) = A366801(j) for all i, j >= 0, where A366801 is arithmetic derivative without its inherited divisor applied to the Doudna sequence.
+A366804	rgs1	0	new A324182()	# Lexicogr A324182(i) = A324182(j) for all i, j >= 0.
+A366886	rgs1	0	new A366885()	# Lexicogr A366885(i) = A366885(j) for all i, j >= 0.
+A366895	rgs1	0	new A366894()	# Lexicogr A366894(i) = A366894(j) for all i, j >= 0.
+A369047	rgs2	1	new A003415().skip(1)	new A345000().skip(1)	# Lexicogr A003415(i) = A003415(j) and A345000(i) = A345000(j), for all i, j >= 1.
+A369062	rgs2	1	new A344005()	new A345992()	# Lexicogr A344005(i) = A344005(j) and A345992(i) = A345992(j), for all i, j >= 1.
+A369261	rgs2	1	new A324644()	new A369445()	# Lexicogr A324644(i) = A324644(j) and A369445(i) = A369445(j), for all i, j >= 1.
+A369448	rgs3	1	new A003415().skip(1)	new A327858().skip(1)	new A359589()	# Lexicogr A003415(i) = A003415(j), A327858(i) = A327858(j) and A359589(i) = A359589(j), for all i, j >= 1.
+A372569	rgs3	1	new A009194()	new A009195()	new A009223()	# Lexicogr A009194(i) = A009194(j), A009195(i) = A009195(j) and A009223(i) = A009223(j), for all i, j >= 1.
+A372571	rgs2	1	new A324198().skip(1)	new A342671()	# Lexicogr A324198(i) = A324198(j) and A342671(i) = A342671(j), for all i, j >= 1.
+A372572	rgs3	1	new A009194()	new A322361()	new A342671()	# Lexicogr A009194(i) = A009194(j), A322361(i) = A322361(j) and A342671(i) = A342671(j), for all i, j >= 1.
+A372575	rgs1	1	new A276085()	# Lexicogr A276085(i) = A276085(j), for all i, j >= 1, where A276085 is the primorial base log-function.
+A373151	rgs2	1	new A083345()	new A373145()	# Lexicogr A083345(i) = A083345(j) and A373145(i) = A373145(j), for all i, j >= 1.
+A373152	rgs2	1	new A085731()	new A373145()	# Lexicogr A085731(i) = A085731(j) and A373145(i) = A373145(j), for all i, j >= 1.
+A373247	lambdan	1	n -> ZV(n).mod(D181819(n))
+A373268	rgs3	1	new A003415().skip(1)	new A085731()	new A373145()	# Lexicogr A003415(i) = A003415(j), A085731(i) = A085731(j) and A373145(i) = A373145(j), for all i, j >= 1.
+A373338	sintrif	1	(term, n) -> term.and(Z.ONE)	""	new A078442()
+A373380	rgs3	1	new A373145()	new A373362()	new A373364()	# Lexicogr A373145(i) = A373145(j), A373362(i) = A373362(j), and A373364(i) = A373364(j), for all i, j >= 1.
+A373832	lambdan	1	n -> ZV(n).mod(D276150(n))
+A373850	lambdan	2	n -> F276085(n).mod(Functions.BIG_OMEGA.z(n))
+A373988	rgs1	1	new A373986()	# Lexicogr A373986(i) = A373986(j), for all i, j >= 1.
+A374299	lingf	5	0,0,0,0,0,-3,4,7,3,-21,-19,10,45,22,-17,-55,-17,28,-21,5,-74,143,57,98,-150,-208,72,91,246,-144,-181,-66,-11,242,-38,-49,3,-38,107,-12,-45,-18,-20,14,12	-1,2,4,-5,-9,-5,20,17,-9,-41,-11,66,41,-53,-103,10,102,91,-54,-130,-51,134,73,-104,-90,67,177,-17,-165,-72,44,129,38,-69,-34,-24,28,32,-8,-8	0
+A374534	partsun	0	new PrependSequence(0, new A111938(), 0)			Partial sums of A111938.
+A374535	partsun	0	new PrependSequence(0, new A185152(), 0)			Partial sums of A185152.
+A374624	padding	1	1, -1, 3, 5, 3, 4, 4, 4, 3	3
+A375012	parmof2	0	A375012	"339026688000000"	377975808000000,424639621324800,483184764518400
+A375013	parmof2	0	A375012	"1800"	2880,3024,3840,3456,2560,
+A375014	parmof2	0	A375012	"27648"	30976,54432,48384,55296,34560,
+A375016	parmof2	0	A375012	"113218560"	124895232,163296000,181149696,170698752,125798400,116
+A375017	parmof2	0	A375012	"5033164800"	6808043520,6291456000,6220800000,5761082880,52254720
+A375018	parmof2	0	A375012	"150493593600"	152374763520,202491394560,167215104000,21984779980
+A375019	parmof2	0	A375012	"52575215616000"	65953585152000,72425041920000,67421129932800,105
+A375020	parmof2	0	A375012	"12227604480"	14265538560,12541132800,12582912000,12878611200,141
+A375021	parmof2	0	A375012	"1316603904000"	1433272320000,1593188352000,1937738880000,2360519
+A375022	parmof2	0	A375012	"40255488"	48384000,43130880,41912640,47029248,70253568,91998720,
+---- 2024-08-01 22:18:48
+A100566	lambdan	2	n -> F000040(F000040(n)).+(F000040(F000040(2*n)))./(2)	""		2*a(n) = prime(prime(n)) + prime(prime(2n))	_	_	_
+A117060	sintrif	1	(term, n) -> Z2(term).-(ZV(1))	""	new A007377().skip(1)	a(n) = 2^(J007377(n)) - 1	_	_	_
+A291757	lambdan	1	n -> Functions.ONE_BASED_PAIRING.z(D003557(n), D046523(n))	""		(1/2)*(2+((D003557(n)+D046523(n))^2)-D003557(n)-3*D046523(n))

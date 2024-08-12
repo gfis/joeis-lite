@@ -1,0 +1,197 @@
+---- 2024-07-12 07:05:46
+---- 2024-07-12 07:05:55
+A079164	partprod	1	new A077800()			Partial products of A077800.
+A082936	lambdin	0	n -> U261494(n, 2)	"1,1"
+A083816	lingf	0	1,-100,808,-690,8000	1,-111,1110,-1000	0
+A084555	partsun	0	new A084556()			Partial sums of A084556.
+A085156	union2	1	new A000961()	new A085155()	Union of A000961 and A085155;
+A101912	multrar	0	(self, n) -> SU(0, (n - 1)/2, k -> self.a(k).*(self.a(n - 2*k - 1))).negate()	"1"
+A101913	multrar	0	(self, n) -> SU(0, (n - 1)/3, k -> self.a(k).*(self.a(n - 3*k - 1))).negate()	"1"
+A101914	multrar	0	(self, n) -> SU(0, (n - 1)/4, k -> self.a(k).*(self.a(n - 4*k - 1))).negate()	"1"
+A101915	multrar	0	(self, n) -> SU(0, (n - 1)/5, k -> self.a(k).*(self.a(n - 5*k - 1))).negate()	"1"
+A101916	multrar	0	(self, n) -> SU(0, (n - 1)/6, k -> self.a(k).*(self.a(n - 6*k - 1))).negate()	"1"
+A101917	multrar	0	(self, n) -> SU(0, (n - 1)/7, k -> self.a(k).*(self.a(n - 7*k - 1))).negate()	"1"
+A101918	multrar	0	(self, n) -> SU(0, (n - 1)/8, k -> self.a(k).*(self.a(n - 8*k - 1))).negate()	"1"
+A104407	partsun	1	new A104488()			Partial sums of A104488.
+A105235	partsun	0	new A105234()			Partial sums of A105234.
+A105598	partsun	0	new A105597()			Partial sums of A105597.
+A110125	rowsum	0	new A110124()
+A110136	rowsum	0	new A110135()
+A115193	trilambn	0	0	0	(n, k) -> SU(k, n, i -> T110510(n, i))
+A118140	sintrif	1	(term, n) -> F000720(term)	""	new A005846()	_
+A124833	sintrif	1	(term, n) -> term./(F034386(F006530(term).-(1)))	""	new A055932()
+A125093	trilambn	1	1	1	(n, k) -> T054525(n, k).*(n)
+A125500	lambdin	0	n -> U362377(n, 2)	"1,1"
+A127465	trilambn	1	1	1	(n, k) -> T054523(n, k).*(k)
+A127476	trilambn	1	1	1	(n, k) -> SU(k, n, j -> T054521(n, j).*(T054522(j, k)))
+A127505	trilambn	1	1	1	(n, k) -> SU(k, n, j -> T054525(n, j).*(H130207(j, k)))
+A127527	trilambn	1	1	1	(n, k) -> F000005(k).*(T054523(n, k))
+A127528	trilambn	1	1	1	(n, k) -> F000005(n).*(T054523(n, k))
+A127571	trilambn	1	1	1	(n, k) -> SU(k, n, j -> T054523(n, j).*(H130208(j, k)))
+A127627	trilambn	1	1	1	(n, k) -> T054525(n, k).*(D018804(k))
+A129232	partsun	0	new A129231()			Partial sums of A129231.
+A129309	sintrif	1	(term, n) -> F000720(term).-(F001221(term))	""	new A002808()
+A130473	partsun	1	new A087172()			Partial sums of A087172.
+A136127	rowsum	0	new A136126()
+A138099	tablamb	1	1	n -> new Integer[] { 1, ((n & 1) == 1) ? (n + 1)/2 : n/2 }	(n, k) -> ZV(k + n/2)
+A140656	sintrif	0	(term, n) -> F000142(term).+(n)	""	new A001105()	_
+A141686	trilambn	1	1	1	(n, m) -> T008292(n, m).*(BI(n - 1, m - 1))
+A143740	lambdin	0	n -> U362377(n, 1)	"1"
+A143768	lambdin	0	n -> U362483(n, 2)	"1,1"
+A145834	sintrif	1	(term, n) -> term.-(F001414(term))	""	new A002808()
+A153362	lambdan	1	n -> H220062(n,  9)
+A154693	trilambn	0	0	0	(n, m) -> Z2(n - m).+(Z2(m)).*(T008292(n + 1, m + 1))
+A155467	trilambn	0	0	0	(n, k) -> BI(n + 1, k).*(T008292(n + 1, k + 1))./(k + 1)
+A177428	trilambn	1	1	1	(n, m) -> T008292(n, m).*(FA(n - 1))./(FA(n - m))
+A178059	trilambn	1	1	1	(n, m) -> D005811(T008292(n, m))
+A180052	partsun	1	new A180039()			Partial sums of A180039.
+A206011	sintrif	1	(term, n) -> term.-(F007953(term))	""	new A001358()
+A210616	sintrif	1	(term, n) -> F004086(term)	""	new A001358()	_
+A243349	sintrif	1	(term, n) -> term.-(E061395(term))	""	new A005117()
+A245325	sintrif	1	(term, n) -> D002487(D059893(term))	""	new A180200()	_
+A248827	rowsum	0	new A187783()
+A255906	rowsum	0	new A255903()	
+A255907	lambdan	0	n -> T255903(2*n, n)
+A255942	lambdan	0	n -> T255903(n, 2)
+A255943	lambdan	3	n -> T255903(n,  3)
+A255944	lambdan	4	n -> T255903(n,  4)
+A255945	lambdan	5	n -> T255903(n,  5)
+A255946	lambdan	6	n -> T255903(n,  6)
+A255947	lambdan	7	n -> T255903(n,  7)
+A255948	lambdan	8	n -> T255903(n,  8)
+A255949	lambdan	9	n -> T255903(n,  9)
+A255950	lambdan	10	n -> T255903(n, 10)
+A255951	lambdan	0	n -> T255903(n + 1, n)	 
+A255952	lambdan	0	n -> T255903(n + 2, n)	 
+A255953	lambdan	0	n -> T255903(n + 3, n)	 
+A255954	lambdan	0	n -> T255903(n + 4, n)	 
+A255955	lambdan	0	n -> T255903(n + 5, n)	 
+A255956	lambdan	0	n -> T255903(n + 6, n)	 
+A255957	lambdan	0	n -> T255903(n + 7, n)	 
+A255958	lambdan	0	n -> T255903(n + 8, n)	 
+A255959	lambdan	0	n -> T255903(n + 9, n)	 
+A255960	lambdan	0	n -> T255903(n + 10, n)	
+A256966	partsun	1	new A072649()			Partial sums of A072649.
+A271440	sintrif	1	(term, n) -> F000203(term).-(F000010(term))	""	new A062457()
+A274703	multrar	0	(self, n) -> SU(0, n - 1, k -> self.a(k).*(BI(3*n + 1, 3*k + 1))).negate()	"1"
+A276379	sintrif	1	(term, n) -> D007088(term)	""	new A087207()	_
+A280116	partsun	1	new A266265()			Partial sums of A266265 (Product_{d|n} pod(d)).
+A280117	partprod	1	new A266265()			Partial products of A266265 (Product_{d|n} pod(d)), where pod(n) is the product of the divisors of n (A007955).
+A280706	partsun	1	new A283467()			Partial sums of A283467.
+A283334	multrar	0	(self, n) -> SU(0, n - 1, k -> Functions.SIGMA1.z(n - k).*(self.a(k))).negate()	"1"
+A284009	sintrif	0	(term, n) -> F001222(term)	""	new A284008()	_
+A285113	rowsum	0	new A285116()
+A285114	rowsum	0	new A285117()
+A300386	multrar	0	(self, n) -> SU(0, n - 1, k -> BI( 7*n - 7*k, 2*n - 2*k).*(self.a(k))./( 7))./(n)	"1"
+A300387	multrar	0	(self, n) -> SU(0, n - 1, k -> BI( 9*n - 9*k, 2*n - 2*k).*(self.a(k))./( 9))./(n)	"1"
+A300388	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(11*n -11*k, 2*n - 2*k).*(self.a(k))./(11))./(n)	"1"
+A300390	multrar	0	(self, n) -> SU(0, n - 1, k -> BI( 7*n - 7*k, 3*n - 3*k).*(self.a(k))./( 7))./(n)	"1"
+A300391	multrar	0	(self, n) -> SU(0, n - 1, k -> BI( 8*n - 8*k, 3*n - 3*k).*(self.a(k))./( 8))./(n)	"1"
+A307959	sintrif	1	(term, n) -> term.*(F007947(term))	""	new A000396()
+A323077	sintrif	1	(term, n) -> D064097(term)	""	new A052126()	_
+A323936	lingf	1	0,1,-3,1,4,-3	1,-4,2,8,-8	0
+A327521	sintrif	1	(term, n) -> F000110(term)	""	new A072047()	_
+A327800	multrar	0	(self, n) -> SU(1, n, k -> F001221(k    ).*(self.a(n - k))).negate()	"1"
+A328109	sintrif	0	(term, n) -> F000120(term)	""	new A328103()	_
+A330618	trilambn	1	1	1	(n, k) -> (n == 1) ? ZV(0) : SU(1, k, j -> Z_1(k-j).*(BI(k, j)).*(U208535(n, j)))	n>=2
+A330682	sintrif	1	(term, n) -> F000035(term)	""	new A181815()	_
+A331185	sintrif	1	(term, n) -> ZV(n).-(F000040(term))	""	new A067004()	_
+A331592	multraf	1	(self, n) -> self.s(0).min(self.s(1))	""	new A001221(), new A331591()
+A333688	partsun	1	new A070748()			Partial sums of A070748.
+A334375	sintrif	1	(term, n) -> term./(F007953(term))	""	new A001101()
+A335227	multrar	0	(self, n) -> SU(1, n, k -> D000593(k + 1).*(self.a(n - k))).negate()	"1"
+A339422	multrar	0	(self, n) -> SU(1, n, k -> D209229(k    ).*(self.a(n - k))).negate()	"1"
+A339638	partsun	1	new A076078()			Partial sums of A076078.
+A340083	lambdan	1	n -> ZV(n-1)./(GCD(n - 1, E003958(n)))
+A342417	dirichinv0	1	new A342002()	0	Dirichlet inverse of ŇĄńÜiurlionis sequence, A342002.
+A343465	lambdan	1	n -> SD(n, d -> PHI(n/d).*(ZV(-3).^(d)))./(-n)
+A343466	lambdan	1	n -> SD(n, d -> PHI(n/d).*(ZV(-4).^(d)))./(-n)
+A343467	lambdan	1	n -> SD(n, d -> PHI(n/d).*(ZV(-5).^(d)))./(-n)
+A345201	sintrif	0	(term, n) -> D022290(D057889(term))	""	new A003714()	_
+A345939	lambdan	1	n -> ZV(n-1)./(GCD(n - 1, F047994(n)))
+A346078	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n-2,k).*(self.a(k))).negate()	"1,1"
+A346079	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n-2,k).*(self.a(k))).negate()	"0,1"
+A346242	dirichinv0	1	new A324198()	0	Dirichlet inverse of A324198, where A324198(n) = gcd(n, A276086(n)).
+A346792	multrar	0	(self, n) -> SU(1, n, k -> D008578(k    ).*(self.a(n - k))).negate()	"1"
+A348470	sintrif	0	(term, n) -> F020639(term)	""	new A064413()	_
+A348999	multraf	0	(self, n) -> self.s(0).gcd(self.s(1))	""	new A276086(), new A348949()
+A351658	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n+k-1,n-k-1).*(self.a(k))).negate()	"1"
+A351659	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n+k,n-k-1).*(self.a(k))).negate()	"1"
+A351941	multrar	0	(self, n) -> SU(0, (n - 1)/2, k -> self.a(k).*(self.a(n - 2*k - 1)).*(BI(n-1,2*k))).negate()	"1"
+A353150	partsun	0	new A088314()			Partial sums of A088314.					a(n) is the number of distinct pairs that can be made in exactly n iterations of either of the two maps (x, y) -> (x OR (2^y), 0) or (x, y) -> (x, y+1), starting from (0,0).
+A353348	dirichinv	1	new A353350()	1	Dirichlet inverse of A353350, where A353350 is the characteristic function for numbers k such that A048675(k) is a multiple of 3.
+A353366	dirichinv	1	new A110963()	1	Dirichlet inverse of A110963, which is a fractalization of Kimberling's paraphrases sequence (A003602).
+A353418	dirichinv	1	new A353269()	1	Dirichlet inverse of A353269.						Dirichlet inverse of A353269.
+A354347	dirichinv0	1	new A345000()	0	Dirichlet inverse of A345000, where A345000(n) = gcd(A003415(n), A003415(A276086(n))), with A003415 the arithmetic derivative, and A276086 the primorial base exp-function.
+A354823	dirichinv0	1	new A351083()	0	Dirichlet inverse of A351083, where A351083(n) = gcd(n, A327860(n)), and A327860 is the arithmetic derivative of the primorial base exp-function.
+A354824	dirichinv0	1	new A351084()	0	Dirichlet inverse of A351084, where A351084(n) = gcd(n, A328572(n)), and A328572 converts the primorial base expansion of n into its prime product form, but with 1 subtracted from all nonzero digits.
+A354825	dirichinv	1	new A293442()	1	Dirichlet inverse of A293442, where A293442 is multiplicative with a(p^e) = A019565(e).
+A355686	dirichinv0	1	new A276150()	0	Dirichlet inverse of A276150, where A276150(n) is the sum of digits when n is written in primorial base.
+A355692	dirichinv	1	new A355442()	1	Dirichlet inverse of A355442, gcd(A003961(n), A276086(n)), where A003961 is fully multiplicative with a(p) = nextprime(p), and A276086 is primorial base exp-function.
+A355826	dirichinv	1	new A355825()	1	Dirichlet inverse of A355825, characteristic function of exponentially odious numbers.
+A356005	partsun	1	new A327166()			Partial sums of A327166. - _R‚ąö¬©my Sigrist_, Jul 23 2022
+A356907	multrar	0	(self, n) -> SU(1, n, k -> F008836(k    ).*(self.a(n - k))).negate()	"1"
+A362380	lambdin	0	n -> U362377(n, 3)	"1,1,4"
+A362381	lambdin	0	n -> U362378(n, 1)	"1"
+A362390	lambdin	0	n -> U362378(n, 2)	"1,1"
+A362391	lambdin	0	n -> U362378(n, 3)	"1,1,1"
+A362392	lambdin	0	n -> U362378(n, 6)	"1,1,1,7,49,241"
+A362395	lambdin	0	n -> U362394(n, 1)	"1"
+A362396	lambdin	0	n -> U362394(n, 2)	"1,1"
+A362397	lambdin	0	n -> U362394(n, 3)	"1,1,-2"
+A362472	lambdin	0	n -> U362490(n, 6)	"1,1,1,7,97,961"
+A362474	lambdin	0	n -> U362483(n, 1)	"1"
+A362475	lambdin	0	n -> U362483(n, 3)	"1,1,4"
+A362477	lambdin	0	n -> U362490(n, 1)	"1"
+A362478	lambdin	0	n -> U362490(n, 2)	"1,1"
+A362479	lambdin	0	n -> U362490(n, 3)	"1,1,1"
+A362846	rowsum	0	new A362787()
+A363800	multrar	0	(self, n) -> SU(1, n, k -> E363803(k).*(self.a(n - k)))./(-n)	"1"
+A363801	multrar	0	(self, n) -> SU(1, n, k -> E363804(k).*(self.a(n - k)))./(-n)	"1"
+A364250	sintrif	1	(term, n) -> F000035(term)	""	new A364249()	_
+A365425	sintrif	0	(term, n) -> D046523(D064989(term))	""	new A163511()	_
+A368918	partsun	0	new A368916()			Partial sums of A368916.
+A369002	union2	1	new A373138()	new A373267()	Disjoint union of A373138 and A373267.
+A371028	rowsum	0	new A370983()
+A371125	lingf	0	1,-5,10,-10,5,-1	1,-7,15,-20,15,-6,1	0
+A371902	lingf	1	0,1,1,0,1,1,1	1,-2,0,0,0,0,0,-1,2	0
+A372751	lingf	1	0,1,15,28,15,1	1,-6,15,-20,15,-6,1	0
+A372782	lingf	1	0,2,2,-3	1,-1,-3,3	0
+A372855	lingf	1	0,0,33,537,450,-51,3	1,-5,10,-10,5,-1	0
+A372866	partsun	1	new A001616()			Partial sums of A001616.
+A373080	lingf	0	1,2,3,4,3,2,1	1,0,-1,-2	0
+A373098	sintrif	0	(term, n) -> E010879(term)	""	new A036289()	_
+A373099	lingf	0	1,3,8,2,-3,-2,5,0,-1,4,2,3,3	1,0,-1,0,1,-1,-1,1,1,-1,0,1,0,-1	0
+A373100	lingf	1	0,1,7,2,-4,7,6,-9,-2,13,2,-8,1,9	1,0,-1,0,1,-1,-1,1,1,-1,0,1,0,-1	0
+A373293	lingf	1	0,16,-22,42	1,-11,31,-21	0
+A373302	lingf	1	0,1,-1	1,-7,15,-20,15,-6,1	0
+A373309	convprod	0	3	new A018819()	(4) Convolution cube of A018819, which is the number of partitions of n into powers of 2.						Number of binary partitions of n into three kinds of parts.
+A373358	lingf	0	0,0,1	1,-4,5,-2,-2	0
+A373369	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A001414(), new A059975()
+A373377	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A059975(), new A083345()
+A373378	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A003415(), new A059975()
+A373392	lingf	0	1,4,5,3	1,4,5,2,-2	0
+A373445	lingf	0	0,0,0,0,0,0,1	1,-3,0,-1,12,3,-2,-17,-11,-6	0
+A373447	lingf	0	1,3,5,4,1,-1,-1	1,0,-1,-2,-1,0,1	0
+A373554	lingf	0	1,3,3,0,-1	1,0,-2,-1,1	0
+A373629	lingf	1	0,1	1,-3,-3,6,4	0
+A373662	lingf	1	0,2,3,0,-3,2	1,-1,-2,2,1,-1	0
+A373663	lingf	1	0,6,2,-7,2,1	1,-1,-2,2,1,-1	0
+A373699	partsun	3	new A024675()			Partial sums of A024675.
+A373709	partsun	0	new A119387()			Partial sums of A119387.
+A373890	lingf	0	1,-7,21,-35,35,-21,7,-1	1,-9,28,-56,70,-56,28,-8,1	0
+A373952	lingf	0	0,0,0,3,-1,-1,-1	1,-1,-1,0,1,1,-1	0
+A373985	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A108951(), new A373158()
+A374084	lingf	1	0,3,2,-3,2	1,-1,-2,2,1,-1	0
+A374096	lingf	1	0,1	1,-4,0,5,2	0
+A374126	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A000203(), new A001414()
+A374165	lingf	0	1,-7,14,-8	1,-8,20,-18,3	0
+A374243	lingf	1	0,0,0,0,0,1,0,1,0,1,1	1,-1,0,-1,1,0,-1,1,0,1,-1	0
+A374352	partsun	1	new A061884()			Partial sums of A061884.
+A374359	lingf	1	0,2,3	1,-1	0
+A374456	sintrif	1	(term, n) -> F000010(term)	""	new A268335()	_
+A374457	sintrif	1	(term, n) -> F001615(term)	""	new A268335()	_
+A374458	sintrif	1	(term, n) -> D000290(term)	""	new A268335()	_
+A374487	holos	0	[[0],[7,7],[1,2],[0,-1]]	1	0	0	(2*n+3)*a(n)+(7*n+14)*a(n-1)+(-n-1)*a(n+1) = 0
+A374488	holos	0	[[0],[11,11],[1,2],[0,-1]]	1	0	0	(2*n+3)*a(n)+(11*n+22)*a(n-1)+(-n-1)*a(n+1) = 0
+A374497	holos	0	[[0],[4,4],[2,4],[0,-1]]	1	0	0	(4*n+6)*a(n)+(4*n+8)*a(n-1)+(-n-1)*a(n+1) = 0

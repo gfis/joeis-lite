@@ -1,0 +1,117 @@
+---- 2024-06-21 21:02:06
+---- 2024-06-21 23:31:50
+A073411	simtraf	1	new A046315()	v -> F051953(v).-(1)	F051953(J046315(n)) - 1
+A076890	simtraf	1	new A002113().skip(1)	v -> F000720(v)	F000720(J002113(n))
+A078773	lambdan	1	n -> { if (n <= 2) { return Z.ZERO; } else { final Z t = F007917(F000010(n)); return t.isZero() ? Z.TWO : t; }}
+A080813	prepend	1	new A010060()	1, 1, 0, 1, 1, 0	followed by F010060
+A082968	lambdan	1	n -> SU(1, n, k -> ZV(k).mod(SU(0, k - 1, i -> ZV(1).-(F010060(i)))))	sum(k=1,n, k mod sum(i=0,k-1,1-t(i))) where t(i)=F010060(i) is the Thue-Morse sequence
+A085122	simtraf	0	new A051612()	(n, v) -> F000720(v).-(E070803(n).-(E070804(n))) 
+A091336	simtraf	0	new A000058()	v -> F001221(v.-(1))
+A095209	simtraf	0	new A020522()	v -> M057335(v)
+A101564	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k)).*(IV[(n + 1) % (k + 1) == 0]).*(Z.TEN.^(k)))	, where [] denotes the Iverson bracket	Sum_{k=0..n} (-1)^F010060(n-k)*[(n+1) mod (k+1) = 0]*10^k, where [] denotes the Iverson bracket
+A101565	lambdan	0	n -> SU(0, n, k -> Z_1(F010060(n - k)).*(IV[(n + 1) % (k + 1) == 0]))	, where [] denotes the Iverson bracket	Sum_{k=0..n} (-1)^F010060(n-k)*[(n+1) mod (k+1) = 0], where [] denotes the Iverson bracket
+A101678	lambdan	0	n -> SU(0, n/2, k -> Z_1(F010060(n - 2 * k)).*(BI(n - k, k).and(ZV(1)).*(Z.TEN.^(k))))	sum{k=0..floor(n/2), (-1)^F010060(n-2k)*mod(BI(n-k, k), 2)10^k}
+A103827	simtraf	0	new A103826()	(n, v) -> F034448(v)./(F034444(v))	F034448(J103826(n))/F034444(J103826(n))
+A109181	simtraf	1	new A052034()	v -> F003132(v)	F003132(J052034(n))
+A112342	simtraf	1	new A002808()	(n, v) -> F000720(v.^(2)).-(F000720((v.-(1)).^(2)))	F000720(J002808(n)^2) - F000720((J002808(n)-1)^2)
+A112642	simtraf	1	new A007684()	(n, v) -> F002110(v)./(F002110(n - 1))	F002110(J007684(n))/F002110(n-1)
+A112875	simtraf	1	new A002113()	v -> F007954(v)	F007954(J002113(n))
+A127236	trilambn	0	0	0	(n, k) -> F010060(BI(n, k))
+A127237	lambdan	0	n -> SU(0, n, k -> F010060(BI(n, k)))	sum{k=0..n, F010060(BI(n,k))}
+A127238	lambdan	0	n -> SU(0, n/2, k -> F010060(BI(n - k, k)))	sum{k=0..floor(n/2), F010060(BI(n-k,k))}
+A127240	lambdan	0	n -> SU(0, n, k -> F010060(BI(2*k, k)))	sum{k=0..n, F010060(BI(2k,k))
+A127241	trilambn	0	0	0	(n, k) -> F010060(BI(k, n - k))
+A127242	lambdan	0	n -> SU(0, n/2, k -> F010060(BI(k, n - 2*k)))	sum{k=0..floor(n/2), F010060(BI(k,n-2k))}
+A127244	trilambn	0	0	0	(n, k) -> Z_1(n - k).*(PR(0, n - k - 1, j -> F010060(n - j)))
+A127245	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(PR(0, n - k - 1, j -> F010060(n - j))))	Sum_{k=0..n} ((-1)^(n-k) * Product_{j=0..n-k-1} F010060(n-j))
+A127246	lambdan	0	n -> SU(0, n, k -> PR(0, n - k - 1, j -> F010060(n - j)))	Sum_{k=0..n} Product_{j=0..n-k-1} F010060(n-j)
+A127247	trilambn	0	0	0	(n, k) -> PR(0, n - k - 1, j -> F010060(n - j))
+A138758	simtraf	1	new A001203()	(n, v) -> F000720(v).*(D010051(v))	F000720(J001203(n)) * D010051(J001203(n))
+A139689	simtraf	1	new A139690()	v -> D010051(v)
+A140816	simtraf	0	new A140814()	v -> E010878(v)./(3)
+A143466	trilambn	1	1	1	(n, k) -> F010060(n).*(F010060(k))
+A144026	multrar	0	(self, n) -> SU(0, n - 1, k -> F010060(n - k).*(self.a(k)))	"1"	Sum_{k=0..n-1} F010060(n-k)*a(k) with a(0) = 1
+A161175	simtraf	1	new A010060().skip(1)	v -> v.isZero() ? ZV(2) : v	Given F010060 starting with offset 1, change zeros to 2, retain 1s
+A161570	simtraf	1	new A018252()	(n, v) -> F000217(v).-(F000217(n - 1))	F000217(J018252(n)) - F000217(n-1)
+A161627	filnumo	1	n -> F010060(n).equals(F010060(n + 4))
+A161639	filnumo	1	n -> F010060(n).equals(F010060(n + 8))
+A161756	simtraf	1	new A002808()	(n, v) -> F000217(v.-(3)).-(F000217(n - 1))	F000217(J002808(n)-3)-F000217(n-1)
+A161890	filnumo	0	n -> F010060(n).equals(F010060(n + 9))
+A162311	filnumo	1	n -> F010060(n).equals(F010060(n + 7))
+A181815	simtraf	1	new A181820()	v -> D122111(v)	D122111(J181820(n))
+A229268	simtraf	0	new A065061()	(n, v) -> F000203(v).-(F000005(v))	F000203(J065061(n)) - F000005(J065061(n))
+A229340	lambdan	1	n -> (n == 1) ? Z.ZERO : F000010(F003415(n))
+A245097	simtraf	0	new A007535()	(n, v) -> F000720(v).-(F000720(n))	F000720(J007535(n)) - F000720(n)
+A247815	simtraf	0	new A069213()	(n, v) -> F000720(v).-(F001221(n))	F000720(J069213(n)) - F001221(n)
+A249664	lambdan	0	n -> SU(0, n, i -> F010060(BI(n,i)).*(Z2(i)))	sum {i=0,...,n} F010060(BI(n,i)))*2^i
+A252461	simtraf	1	new A055396()	(n, v) -> (n == 1) ? Z.ONE : D008578(v).*(D032742(n))
+A253473	simtraf	1	new A002808()	(n, v) -> F000010(v).-(F000005(F000010(v)))	F000010(J002808(n)) - F000005(F000010(J002808(n)))
+A253560	lambdan	1	n -> (n == 1) ? Z.ONE : F006530(n).*(n)
+A253565	simtraf	0	new A163511()	v -> D122111(v)	D122111(J163511(n))
+A253884	simtraf	1	new A243506()A161974	lambdan	0	n ->{ final Z tm = F010060(n); return SU(1, 3, k -> IV[tm.equals(F010060(n + k))]); }	 = F010060(n), k=1,2,3	number of equalities of the form F010060(n+k) = F010060(n), k=1,2,3
+A253884	simtraf	0	new A243506()	v -> D122111(v)	D122111(J243506(n))
+A262902	simtraf	0	new A045765()	v -> D049820(v)
+A265398	simtraf	1	new A065331()	(n, v) -> (n == 1) ? Z.ONE : D064989(D064989(E065330(n))).*(D064989(E065330(n))).*(v)
+A268676	lambdan	0	n -> F010060(n).*(2).+(1)	1 + 2 * F010060(n)
+A270418	mulr	1	(p, e) -> p.^(F010060(e).*(M065620(e)))	a(p^e) = p^(F010060(e)*(M065620(e)))
+A277331	simtraf	0	new A277006()	v -> D122111(v)	D122111(J277006(n))
+A277825	simtraf	1	new A277823()	v -> D048724(v)
+A285093	simtraf	0	new A061383()	(n, v) -> F007953(v)./(F055642(v))	for n >= 1	F007953(J061383(n)) / F055642(J061383(n)) for n >= 1
+A295890	lambdan	0	n -> F010060(n).xor(F010060(3*n))	1 if binary weights of n and 3n have different parity, 0 otherwise; a(n) = F010060(n) XOR F010060(3n)
+A295891	lambdan	1	n -> F010060(n).xor(F010060(D003961(n)))	1 if binary weights of n and D003961(n) are of the different parity, 0 otherwise; a(n) = F010060(n) XOR F010060(D003961(n))
+A296077	lambdan	1	n -> D010051(ZV(1).+(F002322(n)))	D010051(J263027(n)) = D010051(1+F002322(n))
+A297166	lambdan	0	n -> (n == 1) ? Z.ZERO : D005940(D156552(n))
+A302786	simtraf	0	new A052331()	(n, v) -> (n == 1) ? Z.ZERO : D001511(v)
+A302847	lambdan	1	n -> (n == 1) ? Z.ONE : D064989(D003961(n - 1).+(2))
+A302848	lambdan	1	n -> (n == 1) ? Z.ONE : D064989(D003961(n).-(2)).+(1)
+A302849	lambdan	1	n -> (n <= 2) ? ZV(n) : D064989(D003961(n - 2).+(4))
+A302850	lambdan	1	n -> (n <= 2) ? ZV(n) : D064989(D003961(n).-(4)).+(2)
+A308901	prepend	1	new LambdaSequence(0, n -> ZV(1).-(F010060(n)))	0,0,1,0,0,1	followed by a version of the Thue-Morse sequence F010060
+A318762	simtraf	0	new A181821()	v -> D008480(v)	D008480(J181821(n))
+A322129	simtraf	1	new A041025()	(n, v) -> D010888(v)	D010888(J041025(n)) for n > 0
+A322817	simtraf	0	new A065642()	(n, v) -> F001222(v).-(F001222(n))
+A322864	lambdan	1	n -> (n == 1) ? Z.ZERO : D122111(D156552(n))
+A322993	lambdan	0	n -> (n == 1) ? Z.ZERO : F000265(D156552(n))
+A323243	lambdan	0	n -> (n == 1) ? Z.ZERO : F000203(D156552(n))
+A323244	lambdan	0	n -> (n == 1) ? Z.ZERO : D033879(D156552(n))
+A324105	lambdan	0	n -> (n == 1) ? Z.ZERO : F000005(D156552(n))
+A324381	simtraf	0	new A002182()	v -> E267263(v)	E267263(J002182(n))
+A324382	simtraf	0	new A002182()	v -> E276150(v)	E276150(J002182(n))
+A324387	simtraf	0	new A025487()	v -> E276150(v)	E276150(J025487(n))
+A324396	lambdan	0	n -> (n == 1) ? Z.ZERO : D009194(D156552(n))
+A324574	simtraf	0	new A087207()	(n, v) -> (n == 1) ? Z.ZERO : D033879(v)
+A324581	simtraf	0	new A002182()	v -> F276086(v)	F276086(J002182(n))
+A324582	simtraf	0	new A002182()	v -> E324580(v)	E324580(J002182(n))
+A328311	lambdan	1	n -> (n == 1) ? Z.ZERO : D051903(F003415(n)).-(D051903(n)).+(1)
+A328464	simtraf	0	new A135764()	v -> E328461(v)
+A331602	lambdan	0	n -> (n == 1) ? Z.ZERO : F007947(D156552(n))
+A339822	simtraf	0	new A339821()	v -> D007814(v)
+A343639	simtraf	0	new A008591()	v -> F007953(v)./(9)
+A346529	simtraf	0	new A002182()	(n, v) -> D010051(v.-(1)).+(D010051(v.+(1)))	D010051(J002182(n)-1) + D010051(J002182(n)+1)
+A348750	lambdan	1	n -> D064989(D064989(F000203(D003961(D003961(n)))))
+A350289	arrlamb	0	0	0	1	(i, j) -> ZV(Integer.bitCount(i & j) & 1)	A(i,j) = F010060(J004198(i,j)) = hamMINgweight(i AND j) mod 2
+A353282	simtraf	1	new A013929()	v -> D046951(v).-(1)	D046951(J013929(n)) - 1
+A354196	lambdan	1	n -> D064989(D064989(F000203(F000203(D003961(D003961(n))))))
+A354198	lambdan	1	n -> D064989(D064989(F000203(F000203(F000203(D003961(D003961(n)))))))
+A355498	multraf	1	(self, n) -> F000217(self.s(0)).*(F000217(self.s(1)))	""	new A033676(), new A033677()
+A355825	mulr	1	(p, e) -> F010060(e)	a(p^e) = F010060(e)
+A361466	simtraf	1	new A341525()	v -> D209229(v)
+A363743	simtraf	0	new A034886()	v -> F000196(v.-(1))	F000196(J034886(n) - 1)
+A365458	simtraf	1	new A062153()	v -> D000244(v)	D000244(J062153(n))
+A365716	simtraf	1	new A033676()	v -> D209229(v)	D209229(J033676(n))
+A365807	simtraf	0	new A163511()	v -> D010052(v)	D010052(J163511(n))
+A366274	simtraf	1	new A001043()	(n, v) -> F000720(v.-(1)).-(n)
+A366807	simtraf	1	new A120944()	(n, v) -> F020639(v).*(v)	F020639(J120944(n))*J120944(n)
+A367514	mulr	1	(p, e) -> p.^(F010060(e).intValueExact() * e)	a(p^e) = p^(F010060(e)*(e))
+A368912	lambdan	1	n -> (n == 1) ? Z.ZERO : D008966(D342001(n))
+A368914	lambdan	1	n -> (n == 1) ? Z.ZERO : D359550(D342001(n))
+A368915	lambdan	1	n -> (n == 1) ? Z.ZERO : D359550(F003415(n))
+A369006	simtraf	1	new A083345()	(n, v) -> (n == 1) ? Z.ZERO : D359550(v)
+A373855	lambdan	0	n -> SU(1, n, k -> FA(k).*(ZV(k).^(n - 1)).*(S1(n, k).abs()))
+A373856	lambdan	0	n -> SU(1, n, k -> FA(k).*(ZV(k).^(2*n - 1)).*(S1(n, k).abs()))
+A373857	lambdan	0	n -> SU(1, n, k -> FA(k).*(ZV(k).^(n - 1)).*(S1(n, k)))
+A373858	lambdan	0	n -> SU(1, n, k -> FA(k).*(ZV(k).^(2*n - 1)).*(S1(n, k)))
+A373861	lambdan	0	n -> SU(0, n, k -> ZV(k).^(2*n).*(S1(n, k).abs()))
+A110676	lambdan	0	n -> (n == 1) ? Z.ONE : F001222(ZV(n).^(n + 1).+(1))
+A112884	lambdan	0	n -> ZV(BI(Z2(n), Z2(n - 1)).bitLength())	Number of bits required to represent binomial(2^n, 2^(n-1)).
+A276127	simtraf	0	new A064413()	(n, v) -> (n == 1) ? Z.ONE : F001414(v)	F001414(J064413(n)) for n > 1

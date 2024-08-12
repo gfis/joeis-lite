@@ -1,0 +1,81 @@
+---- 2024-07-16 22:31:19
+A076244	distinct	1	new A051547()
+A084543	holos	0	[[0],[6,-2,-4],[3],[1]]	3,-9,69	0	0
+A087251	distinct	1	new A025586()
+A111735	lambdan	1	n -> { final Z kn = Functions.PRIME.z(n).*(3); return Functions.NEXT_PRIME.z(kn).-(kn); }	k*(n-th prime) and next prime, k=3 case.	nonn	1..100	nyi	_Zak Seidov_
+A111736	lambdan	1	n -> { final Z kn = Functions.PRIME.z(n).*(4); return Functions.NEXT_PRIME.z(kn).-(kn); }	k*(n-th prime) and next prime, k=4 case.	nonn	1..99	nyi	_Zak Seidov_
+A111737	lambdan	1	n -> { final Z kn = Functions.PRIME.z(n).*(5); return Functions.NEXT_PRIME.z(kn).-(kn); }	k*(n-th prime) and next prime, k=5 case.	nonn	1..99	nyi	_Zak Seidov_
+A111738	lambdan	1	n -> { final Z kn = Functions.PRIME.z(n).*(6); return Functions.NEXT_PRIME.z(kn).-(kn); }	k*(n-th prime) and next prime, k=6 case.	nonn	1..99	nyi	_Zak Seidov_
+A111739	lambdan	1	n -> { final Z kn = Functions.PRIME.z(n).*(7); return Functions.NEXT_PRIME.z(kn).-(kn); }	k*(n-th prime) and next prime, k=7 case.	nonn	1..1000	nyi	_Zak Seidov_
+A111740	lambdan	1	n -> { final Z kn = Functions.PRIME.z(n).*(8); return Functions.NEXT_PRIME.z(kn).-(kn); }	k*(n-th prime) and next prime, k=8 case.	nonn	1..99	nyi	_Zak Seidov_
+A111741	lambdan	1	n -> { final Z kn = Functions.PRIME.z(n).*(9); return Functions.NEXT_PRIME.z(kn).-(kn); }	k*(n-th prime) and next prime, k=9 case.	nonn	1..95	nyi	_Zak Seidov_
+A111742	lambdan	1	n -> { final Z kn = Functions.PRIME.z(n).*(10); return Functions.NEXT_PRIME.z(kn).-(kn); }	k*(n-th prime) and next prime, k=10 case.	nonn	1..97	nyi	_Zak Seidov_
+A127481	trilambn	1	1	1	(n, k) -> SU(k, n, j -> T127093(n, j).*(T054522(j, k)))	, the matrix product of the infinite lower triangular matrices
+A127574	trilambn	1	1	1	(n, k) -> SU(k, n, j -> H130208(n, j).*(T127093(j, k)))	, product of the two infinite lower triangular matrices
+A143326	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> H143324(j, k))
+A143327	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> H143325(j, k))
+A143328	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> H074650(j, k))
+A154883	distinct	0	new A001203()
+A174934	lambdan	1	n -> SU(1, n, k -> F007955(k).*(n - k + 1))	= Sum_{k<=n} F007955(k) * (n-k+1), where F007955(m) = product of divisors of m.	nonn	1..30	nyi	_Jaroslav Krizek_
+A174938	lambdan	1	n -> SU(1, n, k -> F007955(k).*(F007955(n-k+1)))	, where F007955(m) = product of divisors of m.	nonn	1..30	nyi	_Jaroslav Krizek_
+A174942	lambdan	1	n -> SU(1, n, k -> F007955(k).*(F008683(n-k+1)))	= Sum_{k<=n} F007955(k) * mu(n-k+1), where F007955(m) = product of divisors of m.	sign	1..30	nyi	_Jaroslav Krizek_
+A174943	lambdan	1	n -> SU(1, n, k -> F007955(k).*(F008683(k)))	= Sum_{k<=n} F007955(k) * mu(k), where F007955(m) = product of divisors of m.	sign	1..30	nyi	_Jaroslav Krizek_
+A175318	lambdan	1	n -> SU(1, n, k -> F007955(k))	, where F007955(m) = product of divisors of m.	nonn	1..39	nyi	_Jaroslav Krizek_
+A220347	multraf	1	(self, n) -> Predicates.TRIANGULAR.is(n) ? self.a(Functions.TRINV.i(n)).*(2).-(1)      : self.a(self.s(0).IVE()).*(2)	"1"	new A083920()	n > 1: if J010054(n) = 1 [i.e., if n is triangular], then a(n) = (2*a(Functions.TRINV.i(n)))-1, otherwise a(n) = 2*a(J083920(n))
+A254040	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(1) : ((k == 0) ? ZV(0) : SU(0, k, j -> Z_1(j).*(BI(k, j)).*(H074650(n, k - j))))	T(n,k) = Sum_{j=0..k} (-1)^j * C(k,j) * A074650(n,k-j).
+A255704	trilambn	1	1	1	(n, k) -> (k == 1) ? H255636(n, 1) : H255636(n, k).-(H255636(n, k - 1))	T(n,1) = H255636(n,1), k>=2 T(n,1) = A255636(n,1), T(n,k) = A255636(n,k) - A255636(n,k-1) for k>1.
+A257797	multraf	1	(self, n) -> Predicates.TRIANGULAR.is(n) ? self.a(Functions.TRINV.i(n) - 1).*(2).+(1) : self.a(self.s(0).IVE()).*(2)	"1"	new A083920()	n > 1: if J010054(n) = 1 [when n is triangular], then a(n) = 1+(2*a(Functions.TRINV.i(n)-1)), otherwise a(n) = 2*a(J083920(n))
+A266498	lambdan	0	n -> CR.THREE.pow(n).multiply(2).add(CR.ONE.divide(CR.FOUR)).sqrt().round()	a(n) = round( sqrt(2*3^n+1/4) );
+A284821	distinct	0	new A284761()
+A288778	trilambn	1	1	1	(n, k) -> FA(k).*(n - k + 1).-(FA(k - 1))	T(n,k) = (n-k+1)*k! - (k-1)!
+A290266	distinct	1	new A007944()
+A292744	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(Functions.PRIME.z(k + 1)))	"1"
+A295027	trilambn	1	1	1	(n, k) -> H295028(n, k).-(H295028(n, k-1))
+A295087	distinct	1	new A002487()
+A308445	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(GCD(n, k)))	"1"
+A324866	lambdin	1	n -> D156552(n).or(E324865(n))	"0"
+A324867	lambdin	1	n -> D156552(n).xor(E324865(n))	"0"
+A330263	distinct	1	new A308551()
+A331632	distinct	1	new A055945()
+A331633	distinct	1	new A055944()
+A335849	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(n, k).*(Functions.BELL.z(k - 1))))	"1"
+A337909	distinct	1	new A080079()
+A339330	rowsum	1	new A283681()
+A339331	rowsum	1	new A283682()
+A339332	rowsum	1	new A283683()
+A340903	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(n, k).*(Functions.SIGMA0.z(k))))	"1"	sigma_0(k) * a(n-k).	nonn	0..413	nyi	_Ilya Gutkovskiy_
+A340904	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(n, k).*(Functions.SIGMA1.z(k))))	"1"	sigma_1(k) * a(n-k).	nonn	0..404	nyi	_Ilya Gutkovskiy_
+A342196	multrar	0	(self, n) -> SU(1, n, k -> self.a(k - 1).*(BI(n, k).^(2)))	"1"
+A342197	multrar	0	(self, n) -> SU(1, n, k -> self.a(k - 1).*(BI(n, k).^(3)))	"1"
+A342198	multrar	0	(self, n) -> SU(1, n, k -> self.a(k - 1).*(BI(n, k).^(4)))	"1"
+A342199	multrar	0	(self, n) -> SU(1, n, k -> self.a(k - 1).*(BI(n, k).^(5)))	"1"
+A343489	arrlamb	0	0	0	-1	(n, k) -> (n == 0) ? ZV(0) : SD(n, d -> PHI(n/d).*(ZV(k).^(d - 1)))	SU(H185651(n, k)./(k)	if(n==0, 0, sumdiv(n, d, eulerphi(n/d)*k^(d-1)));
+A350192	distinct	0	new A350090()
+A352467	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(2*n, 2*k).^(2)))	"1"
+A352468	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(2*n, 2*k).^(3)))	"1"
+A353954	prepend	0	new SingleTransformSequence(1, (term, n) -> D019565(term), "2", new A109812())	1
+A358386	distinct	1	new A030717()
+A359609	distinct	0	new A358777()
+A364933	lambdan	1	n -> SU(1, n, k -> U191898(n, k).*(IV[H191904(n, k).equals(U191898(n, k))]))
+A368610	lambdan	1	n -> SU(1, n, k -> Functions.PRIME_PI.z(k).*(new Q(n, k).ceiling()))	* ceiling(n/k).	nonn,easy	1..55	nyi	_Wesley Ivan Hurt_
+A368611	lambdan	1	n -> SU(1, n, k -> Functions.PRIME_PI.z(k).*(new Q(n, k).floor()))	* floor(n/k).	nonn,easy	1..58	nyi	_Wesley Ivan Hurt_
+A368612	lambdan	1	n -> SU(2, n, k -> Functions.PRIME_PI.z(k-1).*(new Q(n, k).ceiling()))	* ceiling(n/k).	nonn,easy	1..56	nyi	_Wesley Ivan Hurt_
+A368613	lambdan	1	n -> SU(2, n, k -> Functions.PRIME_PI.z(k-1).*(new Q(n, k).floor()))	* floor(n/k).	nonn,easy	1..58	nyi	_Wesley Ivan Hurt_
+A368625	charfunc	1	new A159973()
+A368653	decexp	1	() -> CV( 58291)./(CV(21444))
+A368654	decexp	1	() -> CV(158452)./(CV(21444))
+A368685	lambdan	0	n -> PR(1, n, j -> PR(1, n, k -> ZV(j + k + n)))
+A368686	lambdan	0	n -> PR(0, n, j -> PR(0, n, k -> ZV(j + k + n)))
+A368875	lambdan	0	n  -> ZV(24).*(FA(3*n + 1))./(FA(n).*(FA(n + 2).^(2)))	.	nonn	0..18	nyi	_Karol A. Penson_
+A368994	lambdan	1	n -> D342001(n).and(ZV(3)).isZero() ? ZV(1) : ZV(0)	is a multiple of four, and 0 otherwise.	nonn	1..65537	nyi	_Antti Karttunen_
+A369001	lambdan	1	n  -> { final Z ardn = ARD(n); return !ardn./(Functions.GCD.z(n, ardn)).testBit(0) ? ZV(1) : ZV(0); }	n' / gcd(n,n') is even, otherwise 0, where n' stands for the arithmetic derivative of n, F003415.	nonn	1..65537	2024-07-15/lambd	_Antti Karttunen_
+A369002	filnum	1	1	k -> { final Z ardk = ARD(k); return !ardk./(Functions.GCD.z(k, ardk)).testBit(0); }	e	Numbers k for which k' / gcd(k,k') is even, where k' stands for the arithmetic derivative of k, F003415.	nonn	1..10000	2024-07-11/union	_Antti Karttunen_
+A369003	filnum	1	1	k -> { final Z ardk = ARD(k); return ardk./(Functions.GCD.z(k, ardk)).testBit(0); }	nyi o	Numbers k for which k' / gcd(k,k') is odd, where k' stands for the arithmetic derivative of k, F003415.	nonn	1..78	nyi	_Antti Karttunen_
+A369004	lambdan	1	n  -> { final Z ardn = ARD(n); return ardn./(Functions.GCD.z(n, ardn)).and(ZV(3)).isZero() ? ZV(1) : ZV(0); }	nyi n' / gcd(n,n') is a multiple of 4, otherwise 0, where n' stands for the arithmetic derivative of n, F003415(n).	nonn	1..65537	2024-06-01/lambd	_Antti Karttunen_
+A369005	filnum	1	1	k -> { final Z ardk = ARD(k); return ardk./(Functions.GCD.z(k, ardk)).and(ZV(3)).isZero(); }	nyi o	Numbers k for which k' / gcd(k,k') is a multiple of four, where k' stands for the arithmetic derivative of k, F003415(k).	nonn	1..10000	nyi	_Antti Karttunen_
+A369007	filnum	1	1	k -> { final Z ardk = ARD(k); return ardk./(Functions.GCD.z(k, ardk)).mod(27) == 0; }	nyi o	Numbers k for which k' / gcd(k,k') is a multiple of 27, where k' stands for the arithmetic derivative of k, F003415(k).	nonn	1..57	nyi	_Antti Karttunen_
+A372867	distinct	0	new A242017()
+A374574	lambdan	0	n -> SU(n, 2*n, j -> FA(j))	a(n) = Sum_{j=n..2n} j!
+A374614	lambdan	1	n -> RU(0, n, k -> new Q(k, n).^(2).*(BI(n, k).^(5))).num()
+A374615	lambdan	1	n -> RU(0, n, k -> new Q(k, n).^(3).*(BI(n, k).^(5))).num()
+A374616	lambdan	1	n -> RU(0, n, k -> new Q(k, n).^(4).*(BI(n, k).^(5))).num()

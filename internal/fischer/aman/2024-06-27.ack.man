@@ -1,0 +1,39 @@
+---- 2024-06-27 15:13:55
+---- 2024-06-27 15:28:24
+---- 2024-06-27 16:06:50
+A071932	lambdan	0	n -> SU(1, n, i -> Functions.KRONECKER.z(i, i + 1)).*(4).-(n)	where K(x,y) is the Kronecker symbol (x/y).
+A071933	lambdan	1	n -> SU(1, n, i -> Functions.KRONECKER.z(i, i + 1))	, where K(x,y) is the Kronecker symbol (x/y).
+A071961	lambdan	0	n -> SU(0, n, i -> Functions.KRONECKER.z(n, i))	 where K(x, y) is the Kronecker symbol (x / y).
+A089509	lambdan	1	n -> Functions.KRONECKER.z(7, n)
+A091338	lambdan	1	n -> Functions.KRONECKER.z(3, n)	, where (k/n) is the Kronecker symbol.
+A110243	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n, k -> Functions.JACOBI.z(n, 2*n - 2*k + 1))
+A110244	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n/2, k -> Functions.JACOBI.z(n-k, 2*n - 4*k + 1))
+A110248	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n, k -> Functions.JACOBI.z(k, 2*n - 2*k + 1))
+A110249	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n/2, k -> Functions.JACOBI.z(k, 2*n - 4*k + 1))
+A110251	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n, k -> Functions.JACOBI.z(k, 2*n - 2*k + 1).*(ZV(10).^(k)))
+A110252	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n, k -> Functions.JACOBI.z(n, 2*n - 2*k + 1).*(ZV(10).^(k)))
+A110436	lambdan	1	n -> (n == 0) ? ZV(1) : SU(0, n, k -> Functions.JACOBI.z(n-k, 2*k + 1).abs().*(Z2(k)))
+A110437	lambdan	1	n -> SU(0, n, k -> Functions.JACOBI.z(n-k, 2*k + 1).abs().*(ZV(10).^(k)))
+A152968	sintrif	1	(term, n) -> term./(2)	""	new A139251().skip(1)	/2	""			J139251(n+1)/2
+A157524	sintrif	0	(term, n) -> term./(9)	""	new A140783().skip(4)	/9	""			J140783(n+4)/9
+A166050	lambdan	0	n -> SU(0, 2*n + 1, i -> Functions.JACOBI.z(i, 12*n + 7))	Sum_{i=0..(2n+1)} J(i,12n+7)
+A208357	sintrif	1	(term, n) -> term.^(2)	""	new A005315().skip(1)	^2	""			J005315(n+1)^2
+A215283	lambdan	0	n -> SU(1, n, k -> Functions.KRONECKER.z(n - k, k))		 where (i | j) is the Kronecker symbol.
+A228131	lambdan	1	n -> SU(0, n - 1, i -> Functions.KRONECKER.z(i,n).*(i))	, where K(,) is Kronecker symbol.
+A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()
+A253179	lambdan	1	n -> SU(1, n, k -> Functions.KRONECKER.z(n, k)).*(MU(n))	where mu(n) is M√∂bius (or Moebius) function and (x/y) is Kroneckers symbol.
+A285113	lambdan	0	n -> (n <= 1) ? ZV(n + 1) : SU(1, n - 1, k -> BI(n - 1, k - 1).or(BI(n - 1, k))).+(2)	.or( C(n-1,k)	whereC(n,k) is BI coefficient and .or( is bitwise-.or( (J003986)
+A285114	lambdan	0	n -> (n <= 1) ? ZV(n + 1) : SU(1, n - 1, k -> BI(n - 1, k - 1).xor(BI(n - 1, k))).+(2)	.xor( C(n-1,k)	whereC(n,k) is a BI coefficient and .xor( is bitwise-.xor( (J003987)
+A285720	lambdan	1	n -> (n <= 2) ? ZV(0) : SU(1, n/2, i -> MU(i).*(MU(n - i)).abs().*(IV[(i ^ (n-i)) == n]))
+A298945	sintrif	1	(term, n) -> FI(term.-(Functions.KRONECKER.z(5, term))).mod(term.^(2))	""	new A002808()	where c is the n-th composite number, F_i = F000045(i) and (5/c) is the Kronecker symbol.
+A324816	lambdan	0	n -> F000120(E324815(n))	""			F000120(E324815(n))
+A353529	lambdan	1	n -> (n <= 1) ? ZV(0) : E353489(n).xor(E353489(n - 2))	where.xor( is bitwise-.xor(, J003987
+A367512	lambdan	1	n -> F001221(E367513(n))	""			F001221(E367513(n))
+A367544	lambdan	0	n -> SU(0, n, k -> Z2(k).*(Functions.KRONECKER.z(n - k, k).abs()))	, where (a | b) denotes the Kronecker symbol.
+A367545	lambdan	0	n -> SU(0, n, k -> ZV(-2).^(k).*(Functions.KRONECKER.z(n - k, k).abs()))	, where (a | b) denotes the Kronecker symbol.
+A367546	lambdan	0	n -> SU(0, n, k -> ZV(n).^(k).*(Functions.KRONECKER.z(n - k, k).abs()))	, where (a | b) denotes the Kronecker symbol.
+A373158	lambdan	1	n -> F276085(D003961(n))	""			F276085(D003961(n))
+A355846	sintrif	0	(term, n) -> term./(3)	""	new A066653().skip(1)	/3	""			J066653(n+1)/3
+A177679	sintrif	0	(term, n) -> term./(30)	""	new A066388().skip(1)	/30	""			J066388(n+1)/30
+A129150	sintrif	0	(term, n) -> term	""	new A090636().skip(1)		""			J090636(n+2)
+A275896	sintrif	0	(term, n) -> term.-(1)	""	new A065189()	"0"			J065189(n+1)-1

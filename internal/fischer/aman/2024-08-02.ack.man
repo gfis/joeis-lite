@@ -1,0 +1,180 @@
+---- 2024-08-02 10:58:45
+---- 2024-08-02 23:46:00
+A079078	multraf	0	(self, n) -> PM(n).*(self.a(n-2))	"1,2"		a(0)=1,a(1)=2;forn>1,a(n)=prime(n)*self.a(n-2)
+A079078	multraf	0	(self, n) -> PM(n).*(self.a(n-2))	"1,2"		a(0)=1,a(1)=2;forn>1,a(n)=prime(n)*self.a(n-2)
+A079883	multrar	1	(self, n) -> F000040(n).-(F000040(n-1).*(self.a(n-1)))	"1"
+A079897	multrar	1	(self, n) -> F000203(n).-(F000203(n-1).*(self.a(n-1)))	"1"
+A080669	multrar	1	(self, n) -> F000045(self.a(n-1).+(self.a(n-2)))	"1,2"
+A081460	multraf	1	(self, n) -> self.a(n-1).*(2).*(E081459(n-1))	"1"		a(n)=2*self.a(n-1)*E081459(n-1)
+A081476	multraf	0	(self, n) -> self.a(n-1).*(2).*(self.a(n-2)).+(self.a(n-1).^(2)./(self.a(n-2)))	"2,4"		a(0)=2,a(1)=4,a(n)=2*self.a(n-1)*self.a(n-2)+(self.a(n-1).^(2)./(self.a(n-2) for n>=2
+A081476	multraf	0	(self, n) -> self.a(n-1).*(2).*(self.a(n-2)).+(self.a(n-1).^(2)./(self.a(n-2)))	"2,4"		a(0)=2,a(1)=4,a(n)=2*self.a(n-1)*self.a(n-2)+(self.a(n-1).^(2)./(self.a(n-2) for n>=2
+A081544	decexp	1	() -> X073115.+(1)		J014565+2=X073115+1
+A081973	multrar	1	(self, n) -> self.a(n-1).+(F000203(self.a(n-1)))	"1"
+A082094	multraf	0	(self, n) -> PM(self.a(n-1)).+(PPI(self.a(n-2)))	"1,1"		A2nd-orderrecursion:a(1)=a(2)=1;a(n)=prime(self.a(n-1))+primepi(self.a(n-2))=F000040(self.a(n-1))+F000720(self.a(n-2))
+A082095	multraf	1	(self, n) -> PM(self.a(n-2)).+(Functions.PRIME_PI.z(self.a(n-1)))	"1,1"		A2ndorderrecursion:a(1)=a(2)=1,a(n)=prime(self.a(n-2))+pi(self.a(n-1))=F000040(self.a(n-2))+F000720(self.a(n-1))
+A082097	multrar	1	(self, n) -> F000005(self.a(n-1)).+(n)	"1,1,1"			a(n) = d(a(n-1)) + n = A000005(a(n-1)) + n, with a(1)=1.
+A083236	multrar	0	(self, n) -> F000040(n).-(self.a(n-1))	"2"
+A083237	multrar	0	(self, n) -> F000040(n).-(self.a(n-1))	"5"
+A083238	multrar	0	(self, n) -> F000203(n).-(self.a(n-1))	"1"
+A083242	multraf	0	(self, n) -> PM(n).-(self.a(n-3).+(self.a(n-2)).+(self.a(n-1)))	"0,1,1"		Forn>=3,a(n)=+;a(0)=0,a(1)=1,a(2)=1
+A083242	multraf	0	(self, n) -> PM(n).-(self.a(n-3).+(self.a(n-2)).+(self.a(n-1)))	"0,1,1"		Forn>=3,a(n)=+;a(0)=0,a(1)=1,a(2)=1
+A083272	multrar	0	(self, n) -> ZV(n).*(F000005(self.a(n-1))).+(1)	"1"
+A084662	multrar	1	(self, n) -> self.a(n-1).+(GCD(self.a(n-1), n))	"4"
+A086912	multraf	1	(self, n) -> PM(self.a(n-1)).+(PM(n).-(self.a(n-1)).abs())	"1"		a(n)=prime(self.a(n-1))+abs(prime(n)-self.a(n-1))
+A089067	multraf	1	(self, n) -> self.a(n-1).*(2).+(Z_1(n).*(self.a(n/2)))	"1"		a(n)=2*self.a(n-1)+(-1)^n*a(floor(n/2));a(1)=1
+A092678	decexp	0	() -> X069286.*(CR.SQRT2)
+A095267	multraf	0	(self, n) -> self.a(n-1).*(self.s(0))	"12"	new A002476()	a(n)=3*A095288(n)=self.a(n-1)*J002476(n)
+A095288	multraf	0	(self, n) -> self.a(n-1).*(self.s(0))	"4"	new A002476()	a(n)=A095267(n)/3=self.a(n-1)*J002476(n)
+A096422	multrar	1	(self, n) -> self.a(n-1).*(2).*(self.a(n-3)).+(self.a(n-3).^(2))	"1,1,1"		a(1)=a(2)=a(3)=1,a(n)=2*self.a(n-1)*self.a(n-3)+self.a(n-2)^2forn>3
+A098780	multrar	1	(self, n) -> ZV(n).*(D000079(F070939(self.a(n-1)))).+(self.a(n-1))	"1"
+A100340	multrar	1	(self, n) -> self.a(n-1).*(D006519(n)).+(self.a(n-2))	"1,3"		a(1)=1,a(2)=3,a(n)=self.a(n-1)*D006519(n)+self.a(n-2)
+A100341	multrar	1	(self, n) -> self.a(n-1).*(D006519(n)).+(self.a(n-2))	"1,2"		a(1)=1,a(2)=2,a(n)=self.a(n-1)*D006519(n)+self.a(n-2)
+A100478	multrar	1	(self, n) -> F000720(self.a(n-1).+(self.a(n-2)).+(self.a(n-3)).+(self.a(n-4)).+(self.a(n-5)))	"1,1,1,1,1"
+A100554	decexpr	0	() -> CR.PI.*(REALS.coth(CR.PI))./(2).-(1)
+A109214	multrar	1	(self, n) -> self.a(n-1).*(Functions.REVERSE.z(10, self.a(n-2)))	"1,2"		a(n)=self.a(n-1)*R(self.a(n-2))
+A109365	multraf	0	(self, n) -> PM(n).*(self.a(n-1).+(self.a(n-2)))	"1,4"		a(-1)=a(0)=1andrecursivelya(n)=prime(n)*(self.a(n-1)+self.a(n-2))
+A109366	multraf	0	(self, n) -> PM(n).*(self.a(n-1).+(self.a(n-2)))	"1,2"		a(-1)=0,a(0)=1andrecursivelya(n)=prime(n)*(self.a(n-1)+self.a(n-2))
+A111964	holos	0	[[0],[672,-208,16],[-1344,416,-32],[-1836,528,-36],[-372,208,-28],[-1182,456,-42],[24,-31,7],[-198,118,-16],[12,-19,7],[-6,8,-2],[0,-1,1]]	1, -1, 0, 1, 1, -4, -1, 11, 2, -35, -1, 112	0	0	1/(sqrt(1+4*x^2)+x*(1-x))
+A112278	multraf	0	(self, n) -> PM(self.a(n-1).mod(100)).+(1)	"1,2"		a(0)=1,a(1)=2;thereaftera(n)=prime(mod(self.a(n-1),100))+1
+A112278	multraf	0	(self, n) -> PM(self.a(n-1).mod(100)).+(1)	"1,2"		a(0)=1,a(1)=2;thereaftera(n)=prime(mod(self.a(n-1),100))+1
+A113605	multrar	1	(self, n) -> self.a(n-3).+(GCD(self.a(n-1), self.a(n-2)))	"1,1,1"
+A114707	multrar	1	(self, n) -> F001221(self.a(n-1).*(n)).-(F001221(self.a(n-1))).+(self.a(n-1))	"1,2"		a(n) = A001221(n*a(n-1)) - A001221(a(n-1)) + a(n-1)
+A114990	multrar	0	(self, n) -> self.a(n-2).+(F000265(self.a(n-1)))	"0,1"
+A115399	lambdan	0	n -> SU(0, n/2, k -> Z_1(n - k).*(BI(2*k, k))./(k + 1).*(BI(k, n - 2*k)))
+A116457	multraf	1	(self, n) -> PM(self.a(n-1).+(3)./(2))	"1"		a(1)=1;a(n)=prime((self.a(n-1)+3)/2)
+A116918	multrar	1	(self, n) -> F020639(self.a(n-1)).+(F006530(self.a(n-2)))	"1,1"
+A116919	multrar	0	(self, n) -> F006530(self.a(n-1)).+(n)	"1"
+A116920	multrar	0	(self, n) -> F020639(self.a(n-1)).+(n)	"1"
+A121879	multrar	1	(self, n) -> F000045(n-1).*(self.a(n-1)).-(self.a(n-2))	"0,1"
+A124139	multrar	1	(self, n) -> F000265(self.a(n-1).+(self.a(n-2)).*(3)./(2).+(1))	"1,11"		a(n) = A000265(3*(a(n-1) + a(n-2))/2 + 1)
+A126084	multrar	0	(self, n) -> self.a(n-1).xor(F000040(n))	"0"
+A126850	multrar	2	(self, n) -> E107749(self.a(n-1))	"2"		a(n)= A107749(a(n-1))
+A129831	multrar	1	(self, n) -> F006882(n).-(self.a(n-1))	"1"
+A130166	multraf	1	(self, n) -> PM(self.a(n-1).mod(1000))	"1"		a(1)=1;a(n)=prime(mod(self.a(n-1),1000))
+A130166	multraf	1	(self, n) -> PM(self.a(n-1).mod(1000))	"1"		a(1)=1;a(n)=prime(mod(self.a(n-1),1000))
+A131183	multrar	1	(self, n) -> (n % 4 == 3) ? self.a(n-1).+(self.a(n-2)) : ((n % 4 == 0) ? self.a(n-1).-(self.a(n-2)) : ((n % 4 == 1) ? self.a(n-1).*(self.a(n-2)) : self.a(n-1)./(self.a(n-2))))	"1,1"
+A132857	multrar	0	(self, n) -> F000010(self.a(n-1).+(n))	"1"
+A133741	decexp	0	() -> X086751.*(2)		sqrt(1+J003957)-sqrt(1-J003957)=sqrt(2-2*sqrt(1-J003957^2))=2*X086751
+A139376	holos	0	[[0],[72,-34,4],[-108,105,-21],[-300,173,-23],[384,-311,59],[96,1,-13],[-432,310,-52],[228,-207,45],[-24,36,-12],[0,-1,1]]	1,1,3,5	0	0	1/((1-x^2*catalan(x))(1-x-x^2))
+A139759	multrar	0	(self, n) -> self.a(n-1).+(self.a(n-2)).+(GCD(n, self.a(n-1))).-(GCD(n, self.a(n-2)))	"1,1"		a(n) = a(n-1) + a(n-2) + gcd(n,a(n-1)) - gcd(n,a(n-2)).
+A140131	multrar	0	(self, n) -> self.a(n-1).+(self.a(n-2)).+(F007953(self.a(n-1))).+(F007953(self.a(n-2)))	"0,1"
+A143684	multraf	0	(self, n) -> self.a(n-1).*(2).*(self.a(n-2)).+(1)	"0,0"		a(0)=a(1)=0;thereaftera(n)=2*self.a(n-1)*self.a(n-2)+1
+A145429	decexp	1	() -> CR.TEN./(135).*(CR.NINE.+(X000796.*(CR.THREE.sqrt())))
+A146887	multraf	0	(self, n) -> PM(n).*(self.a(n-1)).-(self.a(n-2))	"1,1"		a(n)=prime(n)*self.a(n-1)-self.a(n-2)
+A146887	multraf	0	(self, n) -> PM(n).*(self.a(n-1)).-(self.a(n-2))	"1,1"		a(n)=prime(n)*self.a(n-1)-self.a(n-2)
+A152445	multrar	0	(self, n) -> Functions.NEXT_PRIME.z(self.a(n-1).*(self.a(n-2)).-(1))	"1,1"		a(0)=a(1)=1.Forn>=2,a(n)=thesmallestprime>=self.a(n-1)*self.a(n-2)
+A152446	multrar	0	(self, n) -> Functions.PREV_PRIME.z(self.a(n-1).*(self.a(n-2)).+(1))	"1,2"		a(0)=1.a(1)=2.Forn>=2,a(n)=thelargestprime<=self.a(n-1)*self.a(n-2)
+A160649	multrar	1	(self, n) -> self.a(n-1).+(F001222(self.a(n-1)))	"2"
+A162482	holos	0	[[0],[90,-28,2],[-458,159,-13],[1059,-412,39],[-1255,563,-63],[631,-337,45],[-156,93,-8],[4,-4,-8],[1,4,7],[0,-2,-1]]	1	0	0	(1/(1-x)^3)*catalan((x/(1-x)^3)^2/(1-(x/(1-x)^3))^2)/(1-(x/(1-x)^3))
+A167197	multrar	6	(self, n) -> self.a(n-1).+(GCD(n, self.a(n-1)))	"7"
+A169734	multrar	1	(self, n) -> self.a(n-1).+(F007953(self.a(n-1)))	"1000"
+A169737	multrar	1	(self, n) -> self.a(n-1).+(F007953(self.a(n-1)))	"100"
+A173099	multraf	1	(self, n) -> self.a(n-2).*(2).*(self.a(n-1)).-(self.a(n-2)).-(self.a(n-1))	"1,3"		a(1)=1,a(2)=3,a(n)=2*self.a(n-2)*self.a(n-1)-self.a(n-2)-self.a(n-1)
+A173100	multraf	1	(self, n) -> self.a(n-2).*(2).*(self.a(n-1)).-(self.a(n-2)).-(self.a(n-1))	"2,2"		a(1)=2,a(2)=2,a(n)=2*self.a(n-2)*self.a(n-1)-self.a(n-2)-self.a(n-1)
+A174442	multrar	1	(self, n) -> ((n & 1) == 1) ? self.a(n-1).+(self.a(n-2)) : self.a(n-1).*(self.a(n-2))	"3,5"		a(n)=self.a(n-1)+self.a(n-2)ifnisodd,otherwisea(n)=self.a(n-1)*self.a(n-2)witha(1)=3anda(2)=5
+A179513	multraf	1	(self, n) -> PM(self.a(n-1)).+(self.a(n-1).*(3))	"1"		a(1)=1,a(n)=prime(self.a(n-1))+3*self.a(n-1)
+A180170	multrar	0	(self, n) -> self.a(n-1).*(D014963(n)).*(n)	"1"
+A181179	multraf	1	(self, n) -> FA(self.a(n-1)).*(2)	"1"		a(1)=1;forn>=2,a(n)=2*self.a(n-1)!
+A195187	multrar	1	(self, n) -> F004086(ZV(1).+(self.a(n-1).^(3)))	"1"
+A197070	decexp	0	() -> Zeta.zeta(3).*(3)./(4)                            	3*zeta(3)/4=3*J002117/4
+A206160	decexp	0	() -> X205885.*(CR.THREE.sqrt())
+A210462	decexp	0	() -> X075778.*(2).*(X075778.+(1)).inverse().+(CR.HALF)
+A213053	decexp	0	() -> X115365.cos().negate()		-1/sqrt(1+X115365^2)=cos(X115365)
+A214936	multrar	0	(self, n) -> self.a(n-1).*(F070939(n))	"1"		new A	a(0)=1,forn>0:a(n)=self.a(n-1)*(Lengthofbinaryrepresentationofn)=self.a(n-1)*F070939(n)
+A226959	multraf	0	(self, n) -> PM(n).*(LCM(PM(n).-(1), self.a(n-1)))	"1"		a(0)=1anda(n)=prime(n)*lcm(prime(n)-1,self.a(n-1))forn>0
+A226959	multraf	0	(self, n) -> PM(n).*(LCM(PM(n).-(1), self.a(n-1)))	"1"		a(0)=1anda(n)=prime(n)*lcm(prime(n)-1,self.a(n-1))forn>0
+A239545	decexp	0	() -> CR.PI./(8).-(CR.ONE_THIRD)	Pi/8-1/3=X019675-J010701		Pi/8-1/3=X019675-J010701
+A241995	decexp	1	() -> X006752.*(2)./(CR.PI).+(CR.HALF).exp()
+A247038	decexp	0	() -> CR.TWO.log().*(X002210.log())
+A252738	multrar	0	(self, n) -> E267096(n-2).*(self.a(n-1).^(2))	"1,2"
+A255986	decexp	0	() -> Zeta.zeta(3)./(4)	=J002117/4		zeta(3)/4=J002117/4
+A257407	decexp	1	() -> CR.ONE.agm(CR.SQRT2).+(CR.PI./(CR.ONE.agm(CR.SQRT2)))./(CR.EIGHT.sqrt())	(agm(1,sqrt(2))+CR.PI/agm(1,sqrt(2)))/sqrt(8)	(agm(1,sqrt(2))+CR.PI/agm(1,sqrt(2)))/sqrt(8)=(X053004+X062539)/J010466
+A258125	multrar	1	(self, n) -> self.a(n-1).+(F006530(self.a(n-2)))	"2,2"
+A260681	multrar	1	(self, n) -> self.a(n-1).+(F006530(ZV(1).+(PR(1, n-2, k -> self.a(k)))))	"1,1"
+A260815	multrar	2	(self, n) -> self.a(n-1).+(GCD(n,self.a(n-1)).^(2))	"3"
+A263353	decexp	1	() -> CR.PI.*(CR.TWO.log())./(4).+(X006752)./(CR.SQRT2)		(Pi*log(2)/4+Catalan)/sqrt(2)=(X003881*X002162+X006752)*X010503
+A265750	multrar	0	(self, n) -> D003961(self.a(n-1)).*(Z2(4*n + 2))	"2"
+A276483	decexp	1	() -> CR.PI.*(2)./(CR.THREE.sqrt().*(9)).-(CV(4).*(CV(3).*(CR.FIVE.sqrt()).*(CR.PHI.log()).-(40))./(125))	2*Pi/(9*sqrt(3)) - 4*(3*sqrt(5)*log(phi) - 40)/125
+A276484	decexp	1	() -> CR.PI.*(2)./(CR.THREE.sqrt().*(9)).+(CV(6).*(CV(2).*(CR.FIVE.sqrt()).*(CR.PHI.log()).+(15))./(125))	2*Pi/(9*sqrt(3)) + 6*(2*sqrt(5)*log(phi) + 15)/125
+A276709	decexp	1	() -> X091723.inverse()
+A282098	multrar	0	(self, n) -> F006530(self.a(n-1)).+(F006530(self.a(n-2))).+(F006530(self.a(n-3)))	"1,1,1"
+A285008	multrar	0	(self, n) -> ZV(6*n-3).*(self.a(n-1))./(F000265(n))	"1"
+A290518	multraf	0	(self, n) -> self.a(n-1).*(self.s(0))	"1"	new A004736()	forn>0	"1"		a(0)=1,a(n)=self.a(n-1)*J004736(n)forn>0
+A293816	decexp	50	() -> X292525.^(3)
+A307799	multrar	0	(self, n) -> F004086(self.a(n-1)).*(self.a(n-1)).+(self.a(n-2))	"0,3"
+A308469	multrar	1	(self, n) -> self.a(n-1).+(GCD(self.a(n-2), n-2))	"1,2"
+A320357	multrar	0	(self, n) -> self.a(n-1).+(self.a(n - Functions.SIGMA0.i(n)))	"1,1"
+A330822	multrar	0	(self, n) -> F007953(Z.TWO.^(self.a(n-1)))	"0"
+A330890	decexp	1	() -> X006752.*(12)./(CR.PI.square())
+A343299	multrar	1	(self, n) -> ZV(n).+(F000120(self.a(n-1))).-(self.a(n-1))	"1"
+A344323	decexp	1	() -> X292525./(Z.valueOf(299792458L).multiply(Z.valueOf(36525)).multiply(Z.valueOf(24 * 6 * 6)))
+A344967	decexp	0	() -> CR.PI.^(2)./(CR.GAMMA.*(12)).+(CR.GAMMA./(2)).-(1)
+A346062	decexp	1	() -> X069855.^(2).*(8)./(X069855.^(2).+(1).sqrt())
+A348371	decexp	1	() -> CV(48)./(CR.PI).-(CV(16).*(CR.ONE.-(CR.TWO.log()))).-(X006752.*(32)./(CR.PI))
+A348563	decexp	1	() -> X006752.*(4).-(CR.PI.*(CR.TWO.log()))
+A349850	decexp	1	() -> CR.PHI.^(CV(12)./(CR.FIVE.sqrt())).*(4).log()		log( 4*phi^(12/sqrt(5)))=2*log(2)+12*log(phi)/sqrt(5)
+A349851	decexp	1	() -> CR.PHI.^(CR.FOUR.*(CR.FIVE.sqrt())).*(64).log()		log(64*phi^( 4*sqrt(5)))=6*log(2)+4*sqrt(5)*log(phi)
+A352453	decexp	0	() -> CR.PI./(3).+(CR.ONE).-(CR.THREE.sqrt())	1+Pi/3-sqrt(3)=1+X019670-J002194		1+Pi/3-sqrt(3)=1+X019670-J002194
+A354633	decexpr	1	() -> CR.SQRT2.*(REALS.asinh(CR.ONE)).-(CR.FOUR.*(CR.TWO.log())).-(CR.SQRT2.-(1).*(CR.PI)./(2)).-(CR.GAMMA).negate()	sqrt(2)*arcsinh(1) - 4*log(2) - (sqrt(2)-1)*Pi/2 - gamma
+A354634	decexpr	1	() -> CR.SQRT2.*(REALS.asinh(CR.ONE)).-(CR.FOUR.*(CR.TWO.log())).+(CR.SQRT2.-(1).*(CR.PI)./(2)).-(CR.GAMMA).negate()	sqrt(2)*arcsinh(1) - 4*log(2) + (sqrt(2)-1)*Pi/2 - gamma
+A355178	decexp	1	() -> X235362.*(X175379)./(X073005.*(X203145))
+A355500	decexp	0	() -> CR.TWO.^(CR.GAMMA.*(2).+(CR.TWO.log())).inverse()
+A356891	multrar	0	(self, n) -> ((n & 1) == 0) ? self.a(n-1).*(self.a(n-2)).+(1) : self.a(n-3).+(1)	"1,1"
+A357319	decexp	0	() -> X000796.*(6).*(X073006.square())./(CR.THREE.sqrt().*(X073005.^(4)))
+A360464	multrar	1	(self, n) -> self.a(n-1).+(self.a(n-2)).-(self.a(n-3)).+(GCD(self.a(n-1),self.a(n-3)))	"1,1,1"
+A360884	multrar	1	(self, n) -> self.a(n-1).+(self.a(n-2)).+(GCD(self.a(n-1), n))	"1,1"
+A366836	multraf	1	(self, n) -> PM(self.a(n-1).+(n)).mod(self.a(n-1).+(n))	"1"		a(1)=1,a(n)=prime(self.a(n-1)+n)mod(self.a(n-1)+n)
+A367430	multrar	1	(self, n) -> self.a(n-1).*(self.a(n-2)).*(self.a(n-3)).+(self.a(n-1)).+(self.a(n-2)).+(self.a(n-3))	"1,1,1"		a(1)=a(2)=a(3)=1;forn>3,a(n)=self.a(n-1)*self.a(n-2)*self.a(n-3)+self.a(n-1)+self.a(n-2)+self.a(n-3)
+A368491	multrar	0	(self, n) -> self.a(n-1).or(self.a(n-1).*(Z.TWO.^(F000040(n))))	"1"
+A370202	multrar	1	(self, n) -> self.a(n-3).+(self.a(n-2)).+(GCD(self.a(n-2), self.a(n-1)))	"1,1,1"
+A371252	holos	0	[[0],[-3888,42120,-154548,238302,-174636,60750,-8100],[4338,-43839,162865,-274917,233053,-97800,16300],[-738,7263,-29297,60393,-66698,37350,-8300],[0,0,0,-78,281,-300,100]]	1,9,297,13833,748521
+A371456	holos	0	[[0],[-20520,9738,-1539,81],[-184680,87642,-13851,729],[1704,-1236,270,-18],[35856,-20862,3969,-243],[-16,26,-11,1],[-1848,1470,-369,27],[0],[16,-26,11,-1]]	1,1,1,4,7,28,58,223,505
+A371458	holos	0	[[0],[-43740,12150,-810],[0],[0],[7614,-2835,261],[0],[0],[-344,192,-28],[0],[0],[2,-3,1]]	1,1,1,1,4,7,10,31,61,100,274
+A371749	decexp	0	() -> X273413.^(2)
+A372255	holos	1	[[-13,4],[-4,1],[0],[1,-1],[1]]	1,3,5,11,34
+A372858	decexp	0	() -> X019798.log()
+A373083	multrar	1	(self, n) -> self.a(n-1).+(E117818(n))	"1"
+A373207	decexp	1	() -> CR.TWO.^(CR.GAMMA.*(2).-(CR.TWO.log()))
+A373278	holos	0	[[0],[-14580,7290,-810],[0],[0],[3078,-1809,261],[0],[0],[-182,138,-28],[0],[0],[2,-3,1]]	1,1,1,10,13,16,100,148,205,1000,1606
+A373706	holos	0	[0,1,0,0,0,2,0,0,0,1,-1]	1	0	0	1/(1 - x * (1 + x^4)^2)
+A373707	holos	0	[[0],[-7],[0],[0],[-8],[0],[0],[-1],[0,1]]	1,1,1,1,49,241,721,6721,124321	0	1	0
+A373708	holos	0	[[0],[-9],[0],[0],[0],[-10],[0],[0],[0],[-1],[0,1]]	1,1,1,1,1,241,1441,5041,13441,393121,10946881	0	1	0
+A373718	holos	0	[0,1,0,3,0,3,0,1,-1]	1	0	0	1/(1 - x * (1 + x^2)^3)
+A373720	holos	0	[[0],[-7],[0],[-15],[0],[-9],[0],[-1],[0,1]]	1,1,1,19,73,541,5761,35911,515089	0	1	0
+A373740	holos	0	[[0],[-3],[-2],[0],[0,2]]	1,0,1,3,3	0	1	0
+A373741	holos	0	[[0],[-5],[-12],[-9],[-2],[0],[0,2]]	1,0,1,9,39,150,1365	0	1	0
+A373742	holos	0	[[0],[-4],[-3],[0],[0],[0,6]]	1,0,0,1,4,0	0	1	0
+A373743	holos	0	[[0],[-5],[-8],[-3],[0],[0],[0,6]]	1,0,0,1,8,20,10	0	1	0
+A373757	holos	0	[[0],[-1],[-15,6],[36,-18],[-18,18],[0,-6]]	1,0,0,1,8,60	0	1	0
+A373758	holos	0	[[0],[-1],[2],[-36,12],[72,-36],[-36,36],[0,-12]]	1,0,0,0,1,10,90	0	1	0
+A373759	holos	0	[[0],[1],[-100,24],[288,-96],[-288,144],[96,-96],[0,24]]	1,0,0,0,1,15,180	0	1	0
+A373770	holos	0	[[0],[1],[-4,2],[2,-4],[0,2]]	1,1,3,12,63	0	1	0
+A373771	holos	0	[[0],[-6,2],[17,-8],[-20,12],[6,-8],[0,2]]	1,1,3,18,147,1425	0	1	0
+A373772	holos	0	[[0],[2],[-3],[-6,6],[6,-12],[0,6]]	1,1,2,7,32,180	0	1	0
+A373773	holos	0	[[0],[-1],[-9,6],[24,-18],[-12,18],[0,-6]]	1,1,2,7,36,240	0	1	0
+A374149	decexp	1	() -> X134944.*(10).+(CR.THREE./(CR.TWO))
+A374172	decexp	-1	() -> X049541./(6)
+A374506	holos	0	[[0],[15,3],[5,2],[0,-1]]	1,7,42,210	0	0	0
+A374508	holos	0	[[0],[15,5],[-3,-2],[0,1]]	1,5,5,-35	0	0	0
+A374509	holos	0	[[0],[25,5],[-5,-2],[0,1]]	1,7,14,-42	0	0	0
+A374511	holos	0	[[0],[12,4],[6,4],[0,-1]]	1,10,80,560	0	0		0
+A374513	holos	0	[[0],[20,4],[10,4],[0,-1]]	1,14,140,1176	0	0		0
+A374541	holos	0	[[0],[28167141168889995523253336798607360,-35371643052585084182299188930932352,15886376897787488023605484973338416,-3275584575058926284496621999298248,314460270831845621414280331146720,-11378542636220640967597431530184],[-83674723277629137583312362763160832,109879282627733576909139801412562016,-52132705528056873559212808267344952,11490529242362147708023868641844636,-1194343617971040263428105649601248,47302676488383841631869924216156],[-32992442864718714482921453220883776,36862907033317778615475089221000380,-14759065538528990231535766752047738,2570705639141797126904772986075236,-179249665051660493644700788527742,2671748283542082850559085350456],[96260238466819759768617670567045824,-134597617696220845608055814199467736,70904210626678807196788136834326856,-17929227679403863572405579261357274,2193652966231843182826681877570554,-104251123215351484581661456202072],[194373455933238487335628136680520448,-270233483746199207138354063881140612,140092456473181710687912384870041826,-34260152337825186468610474802363784,3962900356693829467847875941747930,-172698415278232643405236999746096],[20591708758965848101623639399482688,-15917736834198442911723917897994540,-1933221170747435779717804056611562,4613704248877861283162337921085656,-1343239034920382172908668695512154,118293133608322697366232951621324],[-8020134563405326192020403033612992,16658138713747395105744380420856012,-14117711024319763355603129837071942,6151798487539411516538774209447400,-1351811291830886341877509308766628,113873289796295056733149008932974],[73466790571048631419529002789056,-511271776606699338659085562591944,1019298552408570449091756485004142,-742400385313337115745145921980901,190505272362978094637444778237788,-15899321872218080521626271255801],[0,-18185483948089898030087482673436,-84356126163879743293193632901956,-12807374239180509091028006690617,57162589371549435280943274602278,-10309262772112485980996703347969],[0,20607374124563631154193622822084,19871491671995874463547666937114,-8299067023944633446635504441308,-6172360121653234240675156734774,1390824449723642515314391821564]]	1,1,2,5,14,40,121,373,1181,3796,12391
+A374542	holos	0	[[100830,-21060],[-294630,155454,-20364],[520290,-430394,60299],[-136533,377288,-54702],[-159699,-104929,16281],[40323,8899,-1514]]	1,1,2,6,22,87
+A374598	holos	0	[[0],[-12,8],[0],[-2,4],[0,-1]]	1	0	0	1/sqrt(1 - 4*x - 8*x^3)
+A374599	holos	0	[[0],[-16,8],[0],[0],[-2,4],[0,-1]]	1	0	0	1/sqrt(1 - 4*x - 8*x^4)
+A374643	decexp	0	() -> X076788.*(12)
+A374644	decexp	2	() -> X099217.*(24)
+A374677	decexp	0	() -> X096615.-(X253191./(8))
+A374771	decexp	1	() -> CV(new Q(4, 3)).*(CR.PI).*(X237603.^(3))	=10*X019699*X237603^3		(4/3)*Pi*X237603^3=10*X019699*X237603^3
+A374775	decexp	0	() -> CR.ONE.-(X256921)
+A374883	decexp	1	() -> X090550.+(1)	=X134973+5		X090550+1=X134973+5
+A374957	decexp	1	() -> X121598./(2)		csc(Pi/7)/2=X121598/2
+A374971	decexp	1	() -> X178818./(2)		cot(Pi/7)/2=X178818/2
+A374972	decexp	0	() -> X343059./(2)		tan(Pi/14)/2=X343059/2
+A375015	parmof2	1	A375012	"12959170560000"
+A375067	decexpr	0	() -> REALS.cot(CR.PI./(5))./(2)
+A375068	decexp	0	() -> X179050./(5)			X179050/5=sqrt(X229760)/10
+A375069	decexp	0	() -> CR.ONE.-(CR.THREE.sqrt()./(2))	1-sqrt(3)/2=1-J010527		1-sqrt(3)/2=1-J010527
+A375070	decexp	-1	() -> X343060./(2)		tan(Pi/16)/2=X343060/2
+A375090	sintrif	0	(term, n) -> term./(10)	""	new A003010()	Omit the trailing 4 from the terms of the Lucas-Lehmer sequence A003010

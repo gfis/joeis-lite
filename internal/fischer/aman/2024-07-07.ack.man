@@ -1,0 +1,60 @@
+---- 2024-07-07 23:05:29
+A075890	lambdan	1	n -> D001405(Functions.PRIME.i(n))
+A079708	multrar	0	(self, n) -> M052330(self.a(n - 1))	"0"
+A105700	lambdan	0	n -> F001222(n).compareTo(ZV(2)) <= 0  ? F001222(n) : ZV(0)
+A110963	multrar	1	(self, n) -> ((n & 1) == 0) ? self.a(n/2) : D003602((1 + n)/2)	""
+A118306	lambdin	1	n -> D055396(n).testBit(0) ? D003961(n) : D064989(n)	"1"
+A133516	multrar	0	(self, n) -> BI(self.a(n - 1), self.a(n - 2))	"2,5"	Recurring combinations: C(self.a(n - 1),a(n-2))
+A133923	multrar	1	(self, n) -> { final Z prev = self.a(n - 1); return prev.testBit(0) ? F000005(self.a(n - 1).*(n)) : self.a(n - 1)./(2); }	"1"
+A136437	lambdan	1	n -> E212598(Functions.PRIME.i(n))
+A140664	lambdan	1	n -> D014963(n).*(Functions.MOEBIUS.z(n))
+A153013	multrar	0	(self, n) -> D005940(self.a(n - 1).+(1))	"0"
+A159006	lambdan	1	n -> D036044(Functions.PRIME.i(n))
+A171435	lambdan	1	n -> ZV(n).IPP() ? ZV(1) : F000265(n)
+A207332	lambdan	1	n -> F006882(Functions.PRIME.i(n) - 2)
+A216685	multrar	0	(self, n) -> F000120(self.a(n - 1).+(n))	"0"
+A245471	lambdan	1	n -> ((n & 1) == 1) ? D065621(n + 1) : ZV(n/2)
+A245908	lambdan	0	n -> E082863(Functions.PRIME.i(n))
+A246342	multrar	0	(self, n) -> D048673(self.a(n - 1))	"12"
+A246344	multrar	0	(self, n) -> D048673(self.a(n - 1))	"16"
+A256994	multrar	1	(self, n) -> D005187(self.a(n - 1))	"2"
+A260773	lambdin	0	n -> E260771(n - 1)	"1"	
+A285722	arrlamb	1	1	1	-1	(n, k) -> (n == k) ? ZV( 0) : ((n > k) ? Functions.ONE_BASED_PAIRING.z(n - k, k) : Functions.ONE_BASED_PAIRING.z(n, k - n))	T(n-k,k), otherwise [when n < k], A(n,k) = T(n,k-n), where T(n,k) is sequence A000027 considered as a two-dimensional table, that is, as a pairing f
+A285724	arrlamb	1	1	1	-1	(n, k) -> (n > k) ? Functions.ONE_BASED_PAIRING.z(Functions.LCM.i(n, k), Functions.GCD.i(n, k)) : Functions.ONE_BASED_PAIRING.z(Functions.GCD.i(n, k), Functions.LCM.i(n, k))
+A285732	arrlamb	1	1	1	-1	(n, k) -> (n == k) ? ZV(-n) : ((n > k) ? Functions.ONE_BASED_PAIRING.z(n - k, k) : Functions.ONE_BASED_PAIRING.z(n, k - n))	T(n-k,k), otherwise [when n < k], A(n,k) = T(n,k-n), where T(n,k) is sequence A000027 considered as a two-dimensional table, that is, as a pairing
+A286098	arrlamb	0	0	0	-1	(n, k) -> Functions.CANTOR_PAIRING.z(n & k, n | k)	T(n & k, n | k)
+A286099	arrlamb	0	0	0	-1	(n, k) -> Functions.CANTOR_PAIRING.z(n | k, n & k)	T(n | k, n & k)
+A286101	arrlamb	1	1	1	+1	(n, k) -> Functions.ONE_BASED_PAIRING.z(Functions.GCD.i(n, k), Functions.LCM.i(n, k))	T(gcd(n,k), lcm(n,k))
+A286102	arrlamb	1	1	1	+1	(n, k) -> Functions.ONE_BASED_PAIRING.z(Functions.LCM.i(n, k), Functions.GCD.i(n, k))	T(lcm(n,k), gcd(n,k)), where T(n,k) is sequence A000027 considered as a two-dimensional table, that is, as a pairing function from N x N to N.
+A286108	arrlamb	0	0	0	-1	(n, k) -> Functions.CANTOR_PAIRING.z((n & k)*2, n ^ k)	T(2*(n AND k), n XOR k)
+A286109	arrlamb	0	0	0	-1	(n, k) -> Functions.CANTOR_PAIRING.z(n ^ k, (n & k)*2)	T(n ^ k, 2*(n & k))
+A286145	arrlamb	0	0	0	-1	(n, k) -> Functions.CANTOR_PAIRING.z(n ^ k, k)	T(n ^ k, k)
+A286147	arrlamb	0	0	0	-1	(n, k) -> Functions.CANTOR_PAIRING.z(n ^ k, n)	T(n ^ k, n)
+A286150	arrlamb	0	0	0	-1	(n, k) -> Functions.CANTOR_PAIRING.z(n ^ k, (n < k) ? n : k)	T(n ^ k, MIN(n,k))
+A286151	arrlamb	0	0	0	-1	(n, k) -> (n > k) ? Functions.CANTOR_PAIRING.z(n ^ k, k) : Functions.CANTOR_PAIRING.z(n, n ^ k)	n > k, A(n,k) = T(J003987(n,k),k), otherwise A(n,k) = T(n,J003987(n,k))	,
+A286153	arrlamb	1	1	1	-1	(n, k) -> (n > k) ? Functions.CANTOR_PAIRING.z(n ^ k, k) : Functions.CANTOR_PAIRING.z(n, n ^ k)	n > k, A(n,k) = T(J003987(n,k),k), otherwise A(n,k) = T(n,J003987(n,k))	,
+A286155	arrlamb	1	1	1	-1	(n, k) -> (n == k) ? ZV(-n) : ((n > k) ? Functions.ONE_BASED_PAIRING.z(n ^ k, k) : Functions.ONE_BASED_PAIRING.z(n, n ^ k))	n = k, A(n,k) = -n, if n > k, A(n,k) = T(J003987(n,k),k), otherwise [when n < k], A(n,k) = T(n,J003987(n,k))	whereT(n,k) is sequence J000027 considered as a two-dimensional table, that is, as a pairing function from N x N to N
+A286156	arrlamb	1	1	1	-1	(n, k) -> Functions.CANTOR_PAIRING.z(n % k, n / k)	A(n,k) = T(remainder(n,k), quotient(n,k)), where T(n,k) is sequence A001477
+A286234	arrlamb	1	1	1	-1	(n, k) -> Functions.ONE_BASED_PAIRING.z(Functions.PHI.i(k), (n + k - 1)/k)	Square array A(n,k) = P(A000010(k), floor((n+k-1)/k)), read by descending antidiagonals as A(1,1), A(1,2), A(2,1), etc. Her
+A286235	arrlamb	1	1	1	-1	(n, k) -> Functions.ONE_BASED_PAIRING.z(Functions.PHI.i(n), (n + k - 1)/n)	square array A(n,k) = P(A000010(n), floor((n+k-1)/n)), read by descending antidiagonals as A(1,1), A(1,2), A(2,1),
+A286236	arrlamb	1	1	1	-1	(n, k) -> ((n + k - 1) % k != 0) ? ZV(0) : Functions.ONE_BASED_PAIRING.z(Functions.PHI.i(k), (n + k - 1)/k)	Square array A(n,k) = P(A000010(k), (n+k-1)/k) if k divides (n+k-1), 0 otherwise, read by descending antidiagonals as A(1,1
+A286237	arrlamb	1	1	1	-1	(n, k) -> ((n + k - 1) % n != 0) ? ZV(0) : Functions.ONE_BASED_PAIRING.z(Functions.PHI.i(n), (n + k - 1)/n)	square array A(n,k) = P(A000010(n), (n+k-1)/n) if n divides (n+k-1), 0 otherwise, read by descending antidiagonals
+A286239	trilambn	1	1	1	(n, k) -> (n % k != 0) ? ZV(0) : Functions.ONE_BASED_PAIRING.z(Functions.PHI.i(n/k), k)	Triangular table: T(n,k) = 0 if k does not divide n, otherwise T(n,k) = P(A000010(n/k), k), where P is sequence A000027 use
+A286244	arrlamb	1	1	1	-1	(n, k) -> Functions.ONE_BASED_PAIRING.z(D046523(k).IVE(), (n + k - 1)/k)	Square array A(n,k) = P(A046523(k), floor((n+k-1)/k)), read by descending antidiagonals as A(1,1), A(1,2), A(2,1), etc. Here P is a two-argument form of s
+A286245	arrlamb	1	1	1	-1	(n, k) -> Functions.ONE_BASED_PAIRING.z(D046523(n).IVE(), (n + k - 1)/n)	square array A(n,k) = P(A046523(n), (n+k-1)/n), read by descending antidiagonals as A(1,1), A(1,2), A(2,1), etc. Here P is a two-argument
+A286246	arrlamb	1	1	1	-1	(n, k) -> ((n + k - 1) % k != 0) ? ZV(0) : Functions.ONE_BASED_PAIRING.z(D046523(k).IVE(), (n + k - 1)/k)	Square array A(n,k) = P(A046523(k), (n+k-1)/k) if k divides (n+k-1), 0 otherwise, read by descending antidiagonals as A(1,1), A(1,2), A(2,1), etc. Here P
+A286247	arrlamb	1	1	1	-1	(n, k) -> ((n + k - 1) % n != 0) ? ZV(0) : Functions.ONE_BASED_PAIRING.z(D046523(n).IVE(), (n + k - 1)/n)	square array A(n,k) = P(A046523(n), (n+k-1)/n) if n divides (n+k-1), 0 otherwise, read by descending antidiagonals as A(1,1), A(1,2), A(2,1), etc
+A286249	trilambn	1	1	1	(n, k) -> (n % k != 0) ? ZV(0) : Functions.ONE_BASED_PAIRING.z(D046523(n/k).IVE(), k)	Triangular table: T(n,k) = 0 if k does not divide n, otherwise T(n,k) = P(A046523(n/k), k), where P is sequence A000027 used as a pairing function N x N -
+A286382	lambdan	1	n -> Functions.ONE_BASED_PAIRING.z(D257993(n), E278226(n))
+A307294	lambdan	0	n -> ((n & 1) == 0) ? D000201(n/2 + 1) : D000201((n - 1)/2 + 1).+(1)
+A307295	lambdan	0	n -> ((n & 1) == 0) ? D001950(n/2 + 1) : D001950((n - 1)/2 + 1).+(1)
+A322982	lambdan	1	n -> ZV(n).IPP() ? ZV(2*n - 1) : D032742(n)
+A323519	lambdan	1	n -> Predicates.SQUARE.is(F001222(n)) ? D008480(n) : ZV(0)
+A325392	lambdan	1	n -> ((n & 1) == 1) ? D008480(n) : D008480(n).-(D008480(n/2))
+A335487	lambdan	1	n -> Predicates.SQUARE_FREE.is(n) ? ZV(0) : D008480(n)
+A335510	lambdan	1	n -> Predicates.CUBE_FREE.is(n) ? ZV(0) : D008480(n)
+A335511	lambdan	1	n -> Predicates.CUBE_FREE.is(n) ? D008480(n) : ZV(0)
+A349676	multrar	1	(self, n) -> D018804(self.a(n - 1))	"2"
+A353517	lambdin	0	n -> E353487(n - 1)	"1"
+A358847	lambdan	1	n -> E358755(6*n)
+A366371	lambdan	1	n -> ((n & 1) == 1) ? F001222(n) : F001222(F000265(n)).*(2)

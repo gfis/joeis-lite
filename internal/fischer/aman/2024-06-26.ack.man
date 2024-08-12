@@ -1,0 +1,93 @@
+---- 2024-06-26 16:55:08
+A101080	arrlamb	0	0	0	1	(i, j) -> F000120(i ^ j)
+A111395	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A000351()	SimpleTransformSequence	First digit of powers of 5.	easy,nonn,base	0..10000	knowna4/simtraf	Almerio A. Castro (almerio.castro(AT)gmail.com)
+A120843	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A006988()	SimpleTransformSequence	Initial digit of the (10^n)-th prime.	base,nonn	0..1000	known/simtraf	_Cino Hilliard_
+A122587	lambdan	1	n -> Functions.LEADING_DIGIT.z(4, n)	new ()	nyi Fpto	Leading digit of n in base 4.	easy,nonn,base	1..105	nyi	Peter C. Heinig (algorithms(AT)gmx.de)
+A125575	sintraf	1	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A001248()	NestedSequence	Initial digit of squares of primes.	easy,nonn,base	1..100	nest	Anonymous
+A131836	sintrif	1	(term, n) -> F031346(term)	""	new A014566()		F031346(J014566(n))
+A135613	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A000668()	SimpleTransformSequence	Initial digit of Mersenne primes J000668.	nonn,base,more	1..47	knowna4/simtraf	_Omar E. Pol_
+A138124	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A061652()	Initial digit of n-th even superperfect number J061652(n).	base,nonn	1..39	unkn	_Omar E. Pol_ and _Robert G. Wilson v_
+A153726	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A000108()	SimpleTransformSequence	Initial digit of Catalan number F000108(n).	base,nonn	0..10000	knowna4/simtraf	_Omar E. Pol_
+A165794	lambdan	0	n -> F000032(n).xor(F000032(n + 1))	J003987(F000032(n), F000032(n+1))
+A175919	lambdan	0	n -> ZV(n).xor(D030101(n))	J003987(n, D030101(n))
+A239634	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A001358()	NestedSequence	Initial digits of semiprimes in decimal representation.	nonn,base	1..10000	nest	_Reinhard Zumkeller_
+A254397	sintraf	1	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A237424()	SimpleTransformSequence	Initial digits of J237424 in decimal representation.	nonn,base	1..10000	2024-04-10/simtr	_Reinhard Zumkeller_
+A263846	lambdan	1	n -> F048766(F000040(n))	""			F048766(F000040(n))
+A280172	arrlamb	1	1	1	1	(n, k) -> ZV((n - 1) ^ (k-1)).+(1)
+A283979	sintraf	0	(term, n) -> (ZV(n).xor(term))./(4)	new A264977()
+A283997	lambdan	0	n -> ZV(n).xor(D005187(n/2))	where.xor(isbitwise-xor(J003987)	n .xor( D005187(floor(n/2))	where.xor( is bitwise-xor (J003987)
+A283998	lambdan	0	n -> ZV(n).and(D005187(n/2))	where.and(isbitwise-and(J004198)	n .and( D005187(floor(n/2))	where.and( is bitwise-and (J004198)
+A285099	lambdan	0	n -> Integer.bitCount(n) < 2 ? ZV(0) : Functions.VALUATION.z(n & (n - 1), 2)
+A285115	lambdan	0	n -> (n <= 1) ? ZV(0) : SU(1, n - 1, k -> BI(n - 1, k - 1).and(BI(n - 1, k)))	whereC(n,k) is a BI coefficient & .and( is bitwise-.and( (J004198)
+A293444	lambdan	1	n -> E293442(E293442(n))	""			E293442(E293442(n))
+A295868	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A000041()	SimpleTransformSequence	Initial digit of the number of partitions of n.	nonn,base	0..99	knowna4/simtraf	_Jos‚ąö¬© Hern‚ąö¬įndez_
+A296442	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A001348()	SimpleTransformSequence	Initial digit of n-th Mersenne number.	nonn,base	1..10000	knowna4/simtraf	_Michel Marcus_
+A318460	lambdan	1	n -> SD(n, d -> ZV((d <  n/d) ? (d ^ (n/d)) : 0))	where.xor(isbitwise-xor(J003987)	Sum_{d|n, d < n/d} (d .xor( n/d)	where.xor( is bitwise-xor (J003987)
+A318461	lambdan	1	n -> SD(n, d -> ZV((d <= n/d) ? (d | (n/d)) : 0))	where.or(isbitwise-or(J003986)	Sum_{d|n, d <= n/d} (d .or( n/d)	where.or( is bitwise-or (J003986)
+A318463	lambdan	1	n -> SD(n, d -> ZV((d <  n/d) ? (d & (n/d)) : 0))	where.and(isbitwise-and(J004198)	Sum_{d|n, d < n/d} (d .and( n/d)	where.and( is bitwise-and (J004198)
+A318506	lambdan	1	n -> (n == 1) ? ZV(1) : D032742(n) .or(D001065(n).-(D032742(n)))	1	where.or(isbitwise-or(J003986)andD001065=sumofproperdivisorsandD032742=thelargestproperdivisorofn	D032742(n) .or( D001065(n)-D032742(n)	where.or( is bitwise-or (J003986) and D001065 = sum of proper divisors and D032742 = the largest proper divisor of n
+A318507	lambdan	1	n -> (n == 1) ? ZV(1) : D032742(n).xor(D001065(n).-(D032742(n)))	1	where.xor(isbitwise-or(J003987)andD001065=sumofproperdivisorsandD032742=thelargestproperdivisorofn	D032742(n) .xor( D001065(n)-D032742(n)	where.xor( is bitwise-or (J003987) and D001065 = sum of proper divisors and D032742 = the largest proper divisor of n
+A318508	lambdan	1	n -> (n == 1) ? ZV(0) : D032742(n).and(D001065(n).-(D032742(n)))	1	where.and(isbitwise-and(J004198)andD001065=sumofproperdivisorsandD032742=thelargestproperdivisorofn	D032742(n) .and( D001065(n)-D032742(n)	where.and( is bitwise-and (J004198) and D001065 = sum of proper divisors and D032742 = the largest proper divisor of n
+A318514	lambdan	1	n -> ZV(n).or(D032742(n))	J003986(n, D032742(n))
+A318515	lambdan	1	n -> ZV(n).and(D032742(n))	J004198(n, D032742(n))
+A318516	lambdan	1	n -> D032742(n).or(ZV(n).-(D032742(n)))	where.or(isbitwise-or(J003986)andD032742=thelargestproperdivisorofn	D032742(n) .or( n-D032742(n)	where.or( is bitwise-or (J003986) and D032742 = the largest proper divisor of n
+A318516	sintraf	1	(term, n) -> D032742(n) .or(term)	new A060681()
+A318517	lambdan	1	n -> D032742(n).xor(ZV(n).-(D032742(n)))	where.xor(isbitwise-xor(J003987)andD032742=thelargestproperdivisorofn	D032742(n) .xor( n-D032742(n)	where.xor( is bitwise-xor (J003987) and D032742 = the largest proper divisor of n
+A318518	lambdan	1	n -> D032742(n).and(ZV(n).-(D032742(n)))	where.and(isbitwise-and(J004198)andD032742=thelargestproperdivisorofn	D032742(n) .and( n-D032742(n)	where.and( is bitwise-and (J004198) and D032742 = the largest proper divisor of n
+A318518	sintraf	1	(term, n) -> D032742(n).and(term)	new A060681()
+A324716	lambdan	0	n -> D156552(n).*(2).-(D156552(n).*(2).and(E323243(n)))	where.and(isbitwise-.and(,J004198	2*D156552(n) - .and((2*D156552(n), E323243(n))	where.and( is bitwise-.and(, J004198
+A324815	lambdan	0	n -> D156552(n).*(2).and(E323243(n))	where.and(isbitwise-and,J004198	2*D156552(n) .and( E323243(n)	where.and( is bitwise-and, J004198
+A324819	lambdan	0	n -> D156552(n).*(2).or(E323243(n))	where.or(isbitwise-.or(,J003986	2*D156552(n) .or( E323243(n)	where.or( is bitwise-.or(, J003986
+A325317	sintraf	1	(term, n) -> E048250(n).xor(term)	new A162296()
+A325318	sintraf	1	(term, n) -> E048250(n).and(term)	new A162296()
+A332842	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A000178()	SimpleTransformSequence	Initial digit of n-th superfactorial.	easy,nonn,base	0..10000	knowna4/simtraf	_Eder Vanzei_
+A339255	lambdan	1	n -> Functions.LEADING_DIGIT.z(5, n)	new ()	nyi Fto	Leading digit of n in base 5.	base,nonn	1..10000	nyi	_Kevin Ryde_
+A339256	lambdan	1	n -> Functions.LEADING_DIGIT.z(6, n)	new ()	nyi Fto	Leading digit of n in base 6.	base,nonn	1..10000	nyi	_Kevin Ryde_
+A350093	lambdan	0	n -> SU(0, n, k -> ZV(n | k))	.or(kwhere.or(isthebitwiselogical.or(operator(J003986)	Sum_{k=0..n} n .or( k where .or( is the bitwise logical .or( operator (J003986)
+A355340	multrar	0	(self, n) -> self.a(n-1).xor(D001511(n))	"0"		where.xor( denotes bitwise exclusive-or (J003987) and D001511 is the binary ruler function
+A358755	lambdan	1	n -> IV[D053669(n).mod(6) == 5]	[the smallest prime not dividing n] is of the form 6m-1, otherwise a(n) = 0.
+A362871	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A000400()	SimpleTransformSequence	Leading digit of 6^n.	nonn,base,easy	0..100	knowna4/simtraf	_Seiichi Manyama_
+A363093	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A000420()	SimpleTransformSequence	Leading digit of 7^n.	nonn,base,easy	0..100	knowna4/simtraf	_Seiichi Manyama_
+A363249	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A001019()	SimpleTransformSequence	Leading digit of 9^n.	nonn,base,easy	0..10000	knowna4/simtraf	_Seiichi Manyama_
+A364185	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A001020()	SimpleTransformSequence	Leading digit of 11^n.	nonn,base,easy	0..10000	knowna4/simtraf	_Seiichi Manyama_
+A364271	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A030198()	nyi Fto	Initial digit of n^((n + 1)^(n + 2)).	nonn,base	0..86	nyi	_Marco Rip?_
+A364789	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A002489()	SimpleTransformSequence	Initial digit of (n^n)^n (J002489(n)).	base,easy,nonn	0..1000	knowna4/simtraf	_Marco Rip?_
+A364837	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A001146()	SimpleTransformSequence	Initial digit of 2^(2^n)  J001146(n).	nonn,base	0..87	knowna4/simtraf	_Marco Rip?_
+A364855	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A055777()	SimpleTransformSequence	Initial digit of 3^(3^n) (J055777(n)).	nonn,base	0..87	knowna4/simtraf	_Marco Rip?_
+A365707	sintraf	0	(term, n) -> Functions.LEADING_DIGIT.z(10, term)	new A007778()	SimpleTransformSequence	Initial digit of n^(n+1) (J007778(n)).	nonn,base	0..10000	knowna4/simtraf	_Marco Rip?_
+A373907	lambdan	0	n -> SU(0, n, k -> BI(n + 6*k, n - k))
+A373908	lambdan	0	n -> SU(0, n/2, k -> BI(n + 5*k, n - 2*k))
+A373909	lambdan	0	n -> SU(0, n/3, k -> BI(n + 4*k, n - 3*k))
+A373910	lambdan	0	n -> SU(0, n/4, k -> BI(n + 3*k, n - 4*k))
+A373911	lambdan	0	n -> SU(0, n/5, k -> BI(n + 2*k, n - 5*k))
+A373912	lambdan	0	n -> SU(0, n/6, k -> BI(n + k, n - 6*k))
+A373913	lambdan	0	n -> SU(0, n/7, k -> BI(n + k, n - 7*k))
+A373923	lambdan	1	n -> SD(n, d -> Z_1(PI(d)))
+A373924	lambdan	1	n -> SD(n, d -> Z_1(PI(d)).*(MU(n/d)))
+A373925	lambdan	1	n -> SD(n, d -> Z_1(PHI(d)))
+A373926	lambdan	1	n -> SD(n, d -> Z_1(PHI(d)).*(MU(n/d)))
+A373928	lambdan	1	n -> SU(0, n, k -> BI(n + 4 + 6*k, n - 1 - k))
+A373929	lambdan	1	n -> SU(0, n, k -> BI(n + 3 + 6*k, n - 1 - k))
+A373930	lambdan	1	n -> SU(0, n, k -> BI(n + 2 + 6*k, n - 1 - k))
+A373931	lambdan	1	n -> SU(0, n, k -> BI(n + 1 + 6*k, n - 1 - k))
+A373932	lambdan	1	n -> SU(0, n, k -> BI(n + 6*k, n - 1 - k))
+A373933	lambdan	1	n -> SU(0, n/6, k -> BI(n + k, n - 1 - 6*k))
+A373934	lambdan	1	n -> SU(0, n/6, k -> BI(n + k, n - 2 - 6*k))
+A373935	lambdan	1	n -> SU(0, n/6, k -> BI(n + k, n - 3 - 6*k))
+A373936	lambdan	1	n -> SU(0, n/6, k -> BI(n + k, n - 4 - 6*k))
+A373937	lambdan	1	n -> SU(0, n/6, k -> BI(n + k, n - 5 - 6*k))
+A373958	lambdan	1	n -> SU(0, n, k -> BI(n + 2 + 5*k, n - 1 - k))
+A373959	lambdan	1	n -> SU(0, n, k -> BI(n + 1 + 5*k, n - 1 - k))
+A373960	lambdan	1	n -> SU(0, n, k -> BI(n + 5*k, n - 1 - k))
+A373961	lambdan	1	n -> SU(0, n/5, k -> BI(n + k, n - 1 - 5*k))
+A373962	lambdan	1	n -> SU(0, n/5, k -> BI(n + k, n - 2 - 5*k))
+A373963	lambdan	1	n -> SU(0, n/5, k -> BI(n + k, n - 3 - 5*k))
+A373964	lambdan	1	n -> SU(0, n/5, k -> BI(n + k, n - 4 - 5*k))
+A373976	lambdan	1	n -> F001222(n).-(F001222(F001414(n)))	, where A001222 is bigomega, the number of prime factors with multiplicity, and A001414 is sopfr, sum of prime factors with multiplicity. a(1) = 0 by convention.	sign,new	1..65537	nyi	_Antti Karttunen_
+A374004	lambdan	1	n -> ZV(n + 3).^(2).-(Z_1(n).*(n - 4)).+(1)./(2)	nonn,easy,new	1..53	nyi	_Wesley Ivan Hurt_
+A374005	lambdan	1	n -> ZV(n + 4).^(2).+(Z_1(n).*(n - 5)).+(1)./(2)	nonn,easy,new	1..53	nyi	_Wesley Ivan Hurt_
+A374007	lambdan	1	n -> ZV(n + 5).^(2).-(Z_1(n).*(n - 6)).+(1)./(2)	nonn,easy,new	1..52	nyi	_Wesley Ivan Hurt_
+A374008	lambdan	1	n -> ZV(n + 6).^(2).+(Z_1(n).*(n - 7)).+(1)./(2)	nonn,easy,new	1..52	nyi	_Wesley Ivan Hurt_
+A374009	lambdan	1	n -> ZV(n + 7).^(2).-(Z_1(n).*(n - 8)).+(1)./(2)	nonn,easy,new	1..52	nyi	_Wesley Ivan Hurt_
+A374010	lambdan	1	n -> ZV(n + 8).^(2).+(Z_1(n).*(n - 9)).+(1)./(2)	nonn,easy,new	1..52	nyi	_Wesley Ivan Hurt_
+A374011	lambdan	1	n -> ZV(n + 9).^(2).-(Z_1(n).*(n -10)).+(1)./(2)	nonn,easy,new	1..51	nyi	_Wesley Ivan Hurt_

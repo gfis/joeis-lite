@@ -1,0 +1,78 @@
+---- 2024-07-10 23:34:24
+A078491	lambdan	0	n -> D003418(F000108(n))	D003418(F000108(n))
+A085288	lambdan	0	n -> D000688(FA(n))
+A088956	trilambn	0	0	0	(n, k) -> H095890(n + 1,k + 1).*(BI(n, k))./(n - k + 1)
+A093880	lambdan	1	n -> D003418(2*n)./(D003418(n))
+A104488	lambdan	1	n -> (n % 8) == 0 ? D000688(F000265(n)) : ZV(0)		Number of Hamiltonian groups of order n.
+A106465	trilamb0	0	(n, k) -> ZV(((n & 1) == 1) ? 1 : (k + 1) & 1)	
+A127475	trilambn	0	1	1	(n, k) -> H054522(n, k).*(F008683(n))
+A127504	trilambn	1	1	1	(n, k) -> (n % k == 0) ? PHI(n) : Z.ZERO
+A132775	trilambn	0	0	0	(n, k) -> BI(n, k).*(2*n + 1)
+A133138	trilambn	0	0	0	(n, k) -> BI(n, k).+(H097806(n, k))
+A133603	lambdin	0	n -> ((n & 1) == 1) ? Functions.CATALAN.z(n) : Functions.CATALAN.z(n).+(Functions.CATALAN.z(n - 1))	"1,1,3"	For odd n, a(n) = C(n). For even n, a(n) = C(n) + C(n-1)H133566 * F000108
+A136255	trilambn	1	1	0	(n, k) -> H137276(n, k + 1).*(k + 1)
+A140883	trilambn	0	0	0	(n, k) -> H053120(n, k).+(H053120(n, n - k))
+A152204	tablamb	0	0	n -> new Integer[] { 1, n/2 + 1 }	(n, k) -> H099375(n - k + 1, k - 1)	, n >= 0  1 <= k <= 1+floor(n/2))
+A156367	trilambn	0	0	0	(n, k) -> H155856(n, n - k)
+A161642	trilamb0	0	(n, k) -> BI(n, k)./(Functions.GCD.z(n - k + 1, k + 1))
+A163077	filnum	0	0	k -> D056040(k).+(1).IPP()	 Numbers k such that k$ + 1 is prime. Here '$' denotes the swinging factorial function (D056040)
+A163078	filnum	0	0	k -> D056040(k).-(1).IPP()	 Numbers k such that k$ - 1 is prime. Here '$' denotes the swinging factorial function (D056040)
+A163086	lambdan	0	n -> PR(0, n, i -> D056040(i + 1).^(n - i))	product_{i=0..n}  D056040(i+1)^(n-i)
+A163590	lambdan	0	n -> Functions.MAKE_ODD.z(D056040(n))
+A163640	lambdan	0	n -> RAD(D056040(2*n + 1))
+A163641	lambdan	0	n -> RAD(D056040(n))
+A163649	trilamb0	0	(n, k) -> Z_1(n - k).*(FA(n))./(FA(n - k))./(FA(k/2).^(2))	*n!/(n-k)!Triangle interpolating between (-1)^n (D033999) and D056040(n), read by rows
+A163770	trilamb0	0	(n, k) -> SU(k, n, i -> Z_1(n - i).*(BI(n - k, n - i)).*(D056040(i)))	*i$ where i$ denotes the swinging factorial of i (D056040)
+A163773	lambdan	0	n -> SU(0, n, k -> SU(k, n, i -> Z_1(n - i).*(BI(n - k, n - i)).*(D056040(i))))	wherei$denotestheswingingfactorialofi(D056040)	Sum_{k=0..n} Sum_{i=k..n} (-1)^(n-i)*BI(n-k,n-i)*i$ where i$ denotes the swinging factorial of i (D056040)
+A163774	lambdan	0	n -> SU(0, n, k -> SU(k, n, i -> Z_1(n - i).*(BI(n - k, n - i)).*(D056040(2*i))))	$,wherei$denotestheswingingfactorialofi(D056040)	Sum_{k=0..n} Sum_{i=k..n} (-1)^(n-i)*BI(n-k,n-i)*(2i)$, where i$ denotes the swinging factorial of i (D056040)
+A163775	lambdan	0	n -> SU(0, n, k -> SU(k, n, i -> Z_1(n - i).*(BI(n - k, n - i)).*(D056040(2*i + 1))))	$wherei$denotestheswingingfactorialofi(D056040)	Sum_{k=0..n} Sum_{i=k..n} (-1)^(n-i)*BI(n-k,n-i)*(2i+1)$ where i$ denotes the swinging factorial of i (D056040)
+A163840	trilamb0	0	(n, k) -> SU(k, n, i -> BI(n - k, n - i).*(D056040(i)))	*i$ where i$ denotes the swinging factorial of i (D056040), for n >= 0, k >= 0
+A163843	lambdan	0	n -> SU(0, n, k -> SU(k, n, i -> BI(n - k, n - i).*(D056040(i))))	*i$wherei$denotestheswingingfactorialofi(D056040)	Sum_{k=0..n} Sum_{i=k..n} BI(n-k,n-i)*i$ where i$ denotes the swinging factorial of i (D056040)
+A163844	lambdan	0	n -> SU(0, n, k -> SU(k, n, i -> BI(n - k, n - i).*(D056040(2*i))))	wherei$denotestheswingingfactorialofi(D056040)	Sum_{k=0..n} Sum_{i=k..n} BI(n-k,n-i)*(2i)$ where i$ denotes the swinging factorial of i (D056040)
+A171180	lambdan	1	n -> H193376(n, n)
+A174554	lambdan	2	n -> D003418(n).+(2)
+A176079	trilambn	1	1	1	(n, k) -> ZV((n % k == 0) ? k - 1 : -1)
+A180000	lambdan	0	n -> D003418(n)./(D056040(n))
+A181088	lambdan	0	n -> (H060821(2*n + 1, n).+(H060821(2*n + 1, n + 1)))./(n + 2)
+A182910	lambdan	0	n -> D056169(D056040(n))
+A182921	lambdan	0	n -> Functions.BIG_OMEGA.z(D056040(n))	Sum of exponents in prime-power factorization of the swinging factorial (D056040) n$ = n!/floor(n/2)!^2; also bigomega(n$)
+A182923	sintrif	0	(term, n) -> D056040(n)./(term)	""	new A055773()
+A188023	trilambn	0	1	1	(n, k) -> H115361(n - 1,k-1).*(k)	
+A190789	filnum	1	1	n -> Functions.OMEGA.i(n - 1) + Functions.OMEGA.i(n + 1) == Functions.OMEGA.i(n)
+A192005	sintrif	1	(term, n) -> D000688(term).-(1)	"1"	new A013929()
+A193477	lambdan	0	n -> new Q(D056040(n).^(2), FA(n)).den()	DenoMINator(D056040(n)^2/n!)
+A195009	trilamb0	0	(n, k) -> D056040(n).*(ZV(k).^(n))	Triangle read by rows, T(n,k) = k^n*D056040(n), n>=0, 0<=k<=n
+A209634	tablamb	1	1	n -> new Integer[] { 1, (n + 1)/2 }	(n, k) -> H143971(n - k+1, k)	,	n >= 1  1 <= k <= floor((n+1)/2)
+A212646	sintrif	0	(term, n) -> D000688(term)	""	new A181800()
+A213028	arrlamb	0	0	0	-1	(n, k) -> (n > 0 && k > 1) ? H213027(n, k).*(k) : H213027(n, k)
+A229265	filnum	1	1	n -> Functions.SIGMA1.z(n).+(Functions.TAU.z(n)).+(PHI(n)).IPP()
+A255903	trilambn	0	0	0	(n, k) -> SU(0, k, i -> Z_1(i).*(BI(k, i)).*(H075196(n, k - i)))
+A255970	trilambn	0	0	0	(n, k) -> SU(0, k, i -> Z_1(i).*(BI(k, i)).*(H246935(n, k - i)))
+A258170	trilambn	0	0	0	(n, k) -> SU(0, k, i -> Z_1(k - i).*(BI(k,i)).*(H185651(n, i)))./(FA(k))	; triangle T(n, k), n >= 0, 0 <= k <= n, read by rows	
+A275938	filnum	1	1	n -> TAU(n).IPP() && !Functions.SIGMA1.z(n).IPP()	Numbers n such that d(n) is prime while sigma(n) is not prime (where d(n) = F000005(n) and sigmF000203(n)).
+A286837	filnum	0	1	n -> Functions.USIGMA1.z(n).equals(Functions.USIGMA1.z(2*n + 1))	N
+A294038	lambdan	0	n -> PR(0, n - 1, k -> ZV(n)./(GCD(n, D056040(k))))	Product_{k=0..n-1} n/GCD(n, D056040(k))
+A298410	sintrif	1	(term, n) -> D003418(term)	""	new A134459()
+A299824	lambdan	0	n -> H189233(n + 1, n)
+A303914	lambdan	0	n -> SU(0, n, j ->  H246935(j, n))
+A318160	lambdin	0	n -> H180281(n, ((n & 1) == 0) ? n/2 : (n + 1)/2)	"1,1,1,6"
+A318161	lambdin	0	n -> H180281(2*n, n)	"1"
+A318162	lambdan	0	n -> H180281(2*n - 1, n)
+A319498	trilambn	0	0	0	(n, k) -> (n ==0) ? D000007(n) : H292795(n, k).-(H292795(n, k-1))	 , T(n,0) = D000007(n)	k>=1
+A322765	arrlamb	0	0	0	1	(n, k) -> H346500(n + k, k)
+A328001	trilamb0	0	(n, k) -> D056040(k).*(D056040(n - k))	= s(k)*s(n-k) where s(n) = D056040(n)
+A338572	lambdan	1	n -> SU(1, n , j -> IV[D000688(j).equals(D000688(n))]).-(1)	|{j < n : J000688(j) = J000688(n)}|
+A346521	lambdan	0	n -> SU(0, n, j ->  H346520(n - j, j))
+A346654	lambdan	0	n -> H189233(2*n, n)
+A346655	lambdan	0	n -> H189233(3*n, n)
+A359421	sintrif	1	(term, n) -> D000688(term)	""	new A084920()
+A368777	sintrif	1	(term, n) -> D003418(term)	""	new A055874()
+A369162	lambdan	1	n -> D000688(D000688(n))
+A369166	filnum	1	1	k -> D000688(k).equals(D000688(k + 1))
+A369167	lambdan	1	n -> D000688(D000688(n).+(n))
+A369168	filnum	0	1	k -> F000005(k).equals(D000688(k))
+A369170	filnum	0	1	k -> F000005(k).compareTo(D000688(k)) <= 0
+A370961	lambdan	0	n -> H267383(3*n, 3)
+A372084	lambdin	0	n -> H267383(n*n, n)	"1,1,14"
+A374357	decexp	1	CR.valueOf(109).pow(new Q(1,5))	Decimal expansion of the 5th root of 109.
+A374358	cofract	0	new A374357()
