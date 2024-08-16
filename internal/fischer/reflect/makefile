@@ -365,7 +365,7 @@ offin_eval4: # select those with all subclasses needing the same offset patch, o
 #----
 offpack: # pack all jOEIS sources that have wrong offsets - edit them
 	perl queue.pl -p offin.tmp > $@.pack
-	uedit64 $@.pack
+	e $@.pack
 offunpack: # unpack the edited sources into joeis-lite/src
 	perl queue.pl -uf offpack.pack
 #----
