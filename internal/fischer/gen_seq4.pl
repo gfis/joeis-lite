@@ -251,7 +251,7 @@ while (<>) { # read inputfile
                 $do_generate = 0;
                 $fatal = 1;
             }
-            $parm =~ s{ZV\(}            {Z.valueOf\(}g; $parm =~  s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .  $zhash{$1}}eg; # after the previous statement!
+            $parm =~ s{ZV\(}           {Z.valueOf\(}g; $parm =~  s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .  $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{CV\(}           {CR.valueOf\(}g; $parm =~ s{CR\.valueOf\((\-1|[0-9]|10)\)}{"CR." . $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
