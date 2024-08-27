@@ -643,6 +643,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WMorphismFixedPointSequence}   ) { $imports{"irvine.oeis.base.MorphismFixedPointSequence"  } = $itype; }
     if ($line =~ m{\WMultiplicativeSequence}       ) { $imports{"irvine.oeis.MultiplicativeSequence"           } = $itype; }
     if ($line =~ m{\WMultiTransformSequence\(}     ) { $imports{"irvine.oeis.transform.MultiTransformSequence"}  = $itype; }
+    if ($line =~ m{\WObverseConvolutionSequence}   ) { $imports{"irvine.oeis.ObverseConvolutionSequence"}        = $itype; }
     if ($line =~ m{\WPaddingSequence}              ) { $imports{"irvine.oeis.recur.PaddingSequence" }            = $itype; }
     if ($line =~ m{\WPair}                         ) { $imports{"irvine.util.Pair" }                             = $itype; }
     if ($line =~ m{\WPartialSumSequence}           ) { $imports{"irvine.oeis.PartialSumSequence"}                = $itype; }
