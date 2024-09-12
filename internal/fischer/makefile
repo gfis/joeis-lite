@@ -8751,4 +8751,3 @@ fractal3:
 	wc -l $@.tmp
 fractal4:
 	echo
-#----
