@@ -220,6 +220,9 @@ genall2:
 	cut -f1 offin.tmp > $@.tmp
 genall3: # count the callcodes
 	cut -f2 genall.gen | sort | uniq -c | sort | tee $@.tmp
+#================
+queue: # LIST=
+	perl queue.pl -p $(LIST) > $(LIST).pack
 #----
 GREP=NestedSequence
 pack_nest: pack_nest1 pack_nest2 pack_nest3 pack_nest4 # GREP= pack all extending $(GREP)
@@ -362,6 +365,7 @@ offin_eval4: # select those with all subclasses needing the same offset patch, o
 	  ORDER BY 9,7,5,3,1;" \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+
 #----
 offpack: # pack all jOEIS sources that have wrong offsets - edit them
 	perl queue.pl -p offin.tmp > $@.pack

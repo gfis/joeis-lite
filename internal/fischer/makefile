@@ -1302,6 +1302,11 @@ A289064: # 2021-12-05
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
+#----
+A329963_gen: # Antti, filtpos from charfuns
+	grep -P "^%o A\d+ \(PARI\) is€\d+(\(n\))? *\= *A\d+(\(n\))?\;" $(COMMON)/jcat25.txt \
+	| perl -ne 'm{^%o A\d+ \(PARI\) is€(\d+)(\(n\))? *\= *(A\d+)}; print join("\t", "A$$1", "parmof3", "0", "A329963", "1", "new $$3()") . "\n";' \
+	| tee aman/A329963.tmp
 #================================
 adiveo0:
 	grep -P "\ba\([i-n] *\/ *\d+\)" $(COMMON)/joeis_names.txt | grep nyi | cut -f1-5 | grep -vP "[Ss]um|[Ll]east|A\d+\(" \
@@ -1337,7 +1342,7 @@ alsoprime:
 	| grep -v revers \
 	| perl alsoprime.pl \
 	>        $@.gen
-	head -n4 $@.gen
+	head -n4 $@.gengrep -P "^%o A\d+ \(PARI\) is€\d+(\(n\))? *\= *A\d+(\(n\))?\;" jcat25.txt
 	wc -l    $@.gen
 #----------------
 amoda: # simple formula a(n) = Aqseno(n...) op Arseqno(n...)
