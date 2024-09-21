@@ -287,9 +287,9 @@ while (<>) { # read inputfile
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z\(}g;
+            $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PM\(}           {Functions.PRIME.z\(}g;
             $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
-            $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
             $parm =~ s{PD\(}           {Integers.SINGLETON.productdiv\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z(}g;   
