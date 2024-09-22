@@ -1,0 +1,117 @@
+---- 2024-09-12 19:41:50
+A073069	filtpos	1	1	new A000040()	v -> { final int[] dc = ZUtils.digitCounts(v); boolean busy = false; int idc = 0; while (!busy && idc <= 9) { busy = dc[idc++] >= 2; } return busy; }
+A075133	filtpos	1	1	new A000040()	p -> { final Z q = p.-(1)./(2); final Z r = q.-(1)./(2); return q.IPP() && r.IPP(); }	double-safe primes: p=prime(n) is double-safe: q=(p-1)/2 & r=(q-1)/2 are both prime (and q is safe).
+A075134	filtpos	1	1	new A000040()	p -> { final Z q = p.-(1)./(2); final Z r = q.-(1)./(2); final Z s = r.-(1)./(2); return q.IPP() && r.IPP() && s.IPP(); }	triple-safe primes: p=prime(n) is double-safe: q=(p-1)/2, r=(q-1)/2 and s=(r-1)/2 are all prime (and q is double-safe).
+A075177	sintrif	1	(term, n) -> Functions.PRIME_PI.z(term)	""	new A046704()	Indices of additive primes - primes with prime sum-of-digits, see J046704.
+A075541	filtpos	1	1	new A000040()	v -> { final Z np = Functions.NEXT_PRIME.z(v); return v.+(np).+(Functions.NEXT_PRIME.z(np)).mod(3) == 0; }	p(i) such that (1/3) (p(i)+p(i+1)+p(i+2)) is an integer.
+A080161	filtpos	1	1	new A002477()	v -> Predicates.SQUARE.is(Functions.DIGIT_SUM.z(v))	Wonderful Demlo numbers J002477 whose digit sums are squares.
+A091158	filtpos	1	1	new PrependSequence(1, new A000285(), 3)	PRIME	sequence 3, 1, 4, 5, 9, 14, 23, ... (J000285 prefixed with 3) which are prime numbers.
+A091273	filtpos	1	1	new A000040()	v -> Predicates.SQUARE.is(v.+(11))		of the form k^2 - 11.
+A096274	filtpos	1	0	new A096535()	v -> v.equals(ZV(0))	zeros in J096535.
+A096650	filtpos	1	0	new A000129()	PRIME	Pell numbers.
+A105191	lambdan	0	n -> Functions.SIGMA0.z(new Z(n + "100000000001"))	n100000000001.
+A105192	lambdan	0	n -> Functions.SIGMA0.z(new Z(n + "101"))	n101.
+A105193	lambdan	0	n -> Functions.SIGMA0.z(new Z(n + "1001"))	n1001.
+A107036	filtpos	1	0	new A001045()	PRIME	Jacobsthal numbers.
+A116990	filtpos	1	0	new A000217()	v -> Predicates.SQUARE.is(Functions.SIGMA1.z(v))	triangular numbers whose sum of divisors is square.
+A128301	filtpos	1	1	new A001358()	v -> Predicates.SQUARE.is(v)	squares (of primes) in the semiprimes.
+A128303	filtpos	1	1	new A014613()	v -> Predicates.SQUARE.is(v)	squares (of semiprimes) in the 4-almost primes.
+A129296	lambdan	1	n -> SD(n*n - 1, d -> (d <= n) ? ZV(1) : ZV(0))	n^2 - 1 that are not greater than n.
+A133179	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).and(ZV(1)).*(Z2(k)))	""		a(n) = Sum_{k=0..floor(n/2)} mod(binomial(n,k),2) * Z2(k)	_	_	_
+A135570	lambdan	0	n -> ZV(1).+(SU(1, n, i -> Functions.DIGIT_SUM.z(2, i).*(Z2(i))))	""		a(n) = 1 + Sum_{i=1..n} S2(i)*2^i	_	_	_
+A138670	filtpos	0	0	new A116178()	v -> v.equals(ZV(0))	0's in   A116178	Stewart's choral sequence.
+A138671	filtpos	0	0	new A116178()	v -> v.equals(ZV(1))	1's in   A116178	Stewart's choral sequence.
+A146977	lambdan	1	n -> SU(1, Functions.PRIME.i(n), k -> BI(2*k, k))	""		a(n) = Sum_{k=1..prime(n)} binomial(2k,k)	_	_	_
+A147297	filter	1	new LambdaSequence(1, k -> ZV(2*k).^(2).+(ZV(2*k+1).^(2).*(3)))	v -> v.IPP()
+A152689	lambdan	0	n -> SU(0, n - 1, j -> SU(0, j - 1, m -> D003422(m)))	a(n) = Sum_{j=0..(n-1)} Sum_{m=0..(j-1)} !m
+A154907	recpos	1	new A063375()	,1	Where records occur in (J063375: Number of divisors of Fibonacci(n)).
+A155544	filtpos	1	1	new A000040()	v -> { final int[] dc = ZUtils.digitCounts(v); boolean busy = false; int idc = 0; while (!busy && idc <= 9) { busy = dc[idc++] >= 3; } return busy; }	having three or more identical digits.
+A155730	filtpos	1	0	new A000110()	v -> v.mod(5) == 0	Bell numbers divisible by 5.
+A158464	lambdan	0	n -> SU(0, n/2, k -> D010052(BI(n, k)))	""		a(n) = Sum_{k=0..floor(n/2)} D010052(F007318(n,k));
+A164978	lambdan	1	n -> SD(n*(n + 1)/2, d -> (d >= n) ? ZV(1) : ZV(0))	n*(n+1)/2 that are >= n.
+A171244	lambdan	1	n -> ZV(2).^(F000045(n)).mod(F000045(n))	""		a(n)=Mod(2^Fibonacci(n),Fibonacci(n))	_	_	_
+A171961	lambdan	1	n -> ZV(3).^(F000045(n)).mod(F000045(n))	""		a(n)=Mod(3^Fibonacci(n),Fibonacci(n))	_	_	_
+A174375	lambdan	0	n -> ZV(n).^(2).-(ZV(n).^(2).xor(ZV(n)))		a(n) = n^2 - XOR(n^2, n)	_	_	_		a(n) = n^2 - XOR(n^2, n).
+A175130	filtpos	1	0	new A000045()	v -> !Predicates.CUBE_FREE.is(v)	that are not cubefree.
+A178966	filter	1	new LambdaSequence(1, k -> ZV(2*k-1).^(2*k - 1).mod(Z2(2*k - 1)))	PRIME
+A179005	filtpos	1	0	new A002275()	v -> !v.IPP()
+A182126	lambdan	1	n -> Functions.PRIME.z(n).*(Functions.PRIME.z(n + 1)).mod(Functions.PRIME.z(n + 2))	a(n) = prime(n)*prime(n+1) mod prime(n+2)	_	_	_		a(n) = prime(n)*prime(n+1) mod prime(n+2).
+A183039	sintrif	1	(term, n) -> term.*(ZV(3).^(term))	""	new A051064()	a(n) = J051064(n)*3^J051064(n)	_	_	_
+A183896	lambdan	0	n -> BI(n+1, 2).modZ(2).*(E183895(n))	""		a(n) = mod(binomial(n+1,2), 2)*E183895(n)	_	_	_
+A184899	filtpos	1	1	new A003154()	PRIME
+A186253	filtpos	1	1	new A261301()	v -> v.equals(ZV(0))
+A200817	filter	1	new LambdaSequence(0, k -> Z2(k).-(k).*(Z2(k)).+(1)   )	v -> v.IPP()
+A207136	lambdan	0	n -> SU(0, n, k -> BI(n*n, k*(n - k)))	""		a(n) = Sum_{k=0..n} binomial(n^2, k*(n-k))	_	_	_
+A214852	filtpos	1	1	new A000045().skip(1)	v -> v.bitCount()*2 == v.bitLength()
+A224218	filtpos	1	0	new A000217()	(k, v) -> Predicates.TRIANGULAR.is(v.xor(ZV(k + 1).*(k + 2)./(2)))	numbers n such that triangular(n) XOR triangular(n+1) is a triangular number, where XOR is the bitwise logical XOR operator.
+A227790	sintrif	1	(term, n) -> MIN(term.-(E022838(n).^(2)), ZV(1).+(E022838(n)).^(2).-(term))	""	new A033428()	a(n) = min (J033428(n)-E022838(n)^2, (1+E022838(n))^2-J033428(n)) = min [3*n^2 - (floor[n*sqrt(3)])^2, (1 + floor[n*sqrt(3)])^2 - 3*n^2]	_	_	_
+A229018	filter	1	new LambdaSequence(1, k -> ZV(3*k + 2).*(Z2(k)).-(1))	v -> v.IPP()
+A230777	recpos	1	new A228098()	,1
+A231755	parmof3	1	A086122	k -> Z2(k).-(1).-(3*k)	3
+A232205	lambdan	0	n -> FA(n).*(Z2((n + 1)/2))	a(n) = n!*2^floor((n+1)/2)	_	_	_		a(0)=1; thereafter a(n) = n*a(n-1) if n is even, otherwise a(n) = 2*n*a(n-1).
+A242342	sintrif	1	(term, n) -> BI(ZV(n), term)	"0,0,3"	new A007978()	a(n) = F007318(n, J007978(n)) for n > 2	_	_	_
+A245290	sintrif	1	(term, n) -> Z2(n*(n - 1)).*(term).-(1)	""	new A229865()	a(n) = 2^(n*(n-1))*J229865(n)-1	_	_	_
+A245291	sintrif	1	(term, n) -> Z2(n*(2*n - 1)).-((Z2(n*(n - 1))).*(term))	""	new A229865()	a(n) = 2^(n*(2*n-1))-2^(n*(n-1))*J229865(n)	_	_	_
+A249635	filtpos	1	0	new A001592()	PRIME	Fibonacci 6-step numbers, J001592.
+A253275	lambdan	1	n -> SU(1, D004526(n).intValueExact(), i -> F000005(i *(n - i)))	""		a(n) = Sum_{i=1..D004526(n)} F000005( i*(n-i) )	_	_	_
+A255541	lambdan	0	n -> ZV(1).+(SU(1, (1 << n) - 1, k -> F000010(k)))	""		a(n) = 1+Sum_{k=1..2^n-1} F000010(k)	_	_	_
+A258216	lambdan	0	n -> FA(n - n/3).*(F008279(n + 1 - n/3, n/3))	""		a(n) = factorial(n-floor(n/3))*fallfac(n+1-floor(n/3),floor(n/3))	_	_	_
+A258376	lambdan	1	n -> SU(1, n, i -> MAX(ZV(0), M005206(i).-(n - i)))	""		a(n) = Sum_{i=1..n} max(0,M005206(i)-n+i)	_	_	_
+A258450	lambdan	0	n -> SU(0, n/2, i -> T255903(n - i, i))	""		a(n) = Sum_{i=0..floor(n/2)} T255903(n-i,i)	_	_	_
+A260626	sintrif	1	(term, n) -> GCD(term, ZV(2).^(term).-(1))	""	new A018252()	a(n) = gcd(J018252(n), 2^J018252(n)-1)	_	_	_
+A261030	sintrif	1	(term, n) -> ZV(2) .^(term.-(2)).*((ZV(2) .^(term).-(2))).*((ZV(2) .^(term).-(1))).*((ZV(2) .^(term).+(1)))	""	new A000043()	a(n) = 2^(J000043(n) - 2)*(2^J000043(n) - 2)*(2^J000043(n) - 1)*(2^J000043(n) + 1)	_	_	_
+A264440	lambdan	1	n -> MAX(ZV(1), F000005(n).-(2))	""		a(n) = max(1, F000005(n)-2)	_	_	_
+A268641	filter	1	new A005117().skip(1)	v -> { final Z v2 = v.square(); return Predicates.SQUARE_FREE.is(v2.+(1)) && Predicates.SQUARE_FREE.is(v2.-(1)); }	Squarefree numbers k such that k^2 + 1 and k^2 - 1 are also squarefree.	nonn	1..10000	nyi	_K. D. Bajpai_
+A270528	lambdan	1	n -> SU(1, n/2, i -> F000203(i*(n - i)))	""		a(n) = Sum_{i=1..floor(n/2)} sigma(i*(n-i))	_	_	_
+A278818	lambdan	0	n -> Functions.CEIL_SQRT.z(2*n + 1).^(2).-(n)	""		a(n) = ceiling(sqrt(2n+1))^2 - n
+A293419	sintrif	0	(term, n) -> CR.SQRT2.*(term).ceil()	""	new A000045()	a(n) = ceiling(Fibonacci(n)*sqrt(2))	_	_	_
+A294642	lambdan	0	n -> SU(0, n/2, k -> Z2(k).*(ZV(n).^(n - 2*k)).*(BI(n, 2*k)).*(F000108(k)))	""		a(n) = Sum_{k=0..floor(n/2)} Z2(k)*n^(n-2*k)*binomial(n,2*k)*F000108(k)	_	_	_
+A309309	recpos	1	new A309004()	,1
+A309341	lambdan	1	n -> SU(1, n*(n - 1), j -> ZV(n*j).modZ(n + j))	""		a(n) = Sum_{j=1..n*(n-1)} (n*j mod (n+j))	_	_	_
+A319855	lambdan	1	n -> (n == 1) ? Z.ZERO : MAX(D056239(n).-(D007814(n)), ZV(1))	a(1) = 0, a(n) = max(D056239(n) - D007814(n), 1)
+A320565	lambdan	0	n -> new Q(2).^(1 - n).*(SU(0, n/2, k -> BI(n, 2*k + 1).*((ZV(n).^(2).*(4)).+(1).^(k)))).num()	""		a(n) = 2^(1 - n) * Sum_{k=0..floor(n/2)} binomial(n, 2*k + 1)*(4*n^2 + 1)^k	_	_	_
+A324057	multraf	0	(self, n) -> D005940(n + 1).*(self.s(0)).mod(self.s(1))	""	new A106737(), new A324054()		(n) = D005940(1+n)*J106737(n) mod J324054(n)	_	_	_
+A324725	lambdan	1	n -> D324543(n).isZero() ? ZV(0) : D001511(D324543(n)).*(D324543(n).signum())	""		If D324543(n) = 0, then a(n) = 0, otherwise a(n) = sign(D324543(n)) * D001511(D324543(n))	_	_	_
+A326046	multraf	1	(self, n) -> GCD(ZV(n).-(self.s(0)), self.s(1).-(n))	""	new A326039(), new A326040()	a(n) = gcd(n-J326039(n), J326040(n)-n)	_	_	_
+A326227	filtpos	1	1	new A001008()	v -> !Predicates.SQUARE_FREE.is(v)	nonsquarefree numerators (J001008) of harmonic numbers H(n) = Sum_{k=1..n} 1/k.
+A329071	sintrif	1	(term, n) -> F000010(term).-(F008683(term))	""	new A275314()	a(n) = phi(J275314(n)) - mu(J275314(n))	_	_	_
+A330413	sintrif	1	(term, n) -> ZV(2).^(term).*(ZV(17).*(ZV(2).^(term)).-(1))	""	new A001774()	a(n) = 2^J001774(n) * (17*2^J001774(n) - 1)	_	_	_
+A330819	sintrif	1	(term, n) -> term.^(2).*((term.+(2)).^(2))	""	new A000668()	a(n) = J000668(n)^2*(J000668(n)+2)^2	_	_	_
+A330830	sintrif	1	(term, n) -> (term.-(2)).^(2).*(term.^(2))	""	new A019434()	a(n) = (J019434(n)-2)^2*J019434(n)^2	_	_	_
+A331167	sintrif	0	(term, n) -> MIN(ZV(n), term)	""	new A193231()	a(n) = min(n, J193231(n))	_	_	_
+A334728	recpos	1	new A091719()	,0
+A338610	sintrif	1	(term, n) -> term.+(1).*((term).^(2))	""	new A111251()	a(n) = (J111251(n) + 1)*(J111251(n))^2	_	_	_
+A342024	sintrif	1	(term, n) -> MIN(ZV(1), term)	""	new A276077()	a(n) = min(1, J276077(n))	_	_	_
+A345957	lambdan	1	n -> { final int bon = Functions.BIG_OMEGA.i(n); return SD(n, d -> (Functions.BIG_OMEGA.i(d)*2 == bon) ? ZV(1) : ZV(0)); }	n with exactly half as many prime factors as n, counting multiplicity.
+A348299	filtpos	1	0	new A348295()	v -> v.equals(ZV(0))
+A349243	filtpos	1	0	new A000217()	v -> { final int[] dc = ZUtils.digitCounts(v); return dc[0] + dc[2] + dc[4] + dc[6] + dc[8] == 0; }	triangular numbers F000217 with only odd digits.
+A351833	lambdan	1	n -> SU(1, n/2, k -> F008683(k).^(2).+(F008683(n - k).^(2)).-(F008683(k).^(2).*(F008683(n - k).^(2))))	""		a(n) = Sum_{k=1..floor(n/2)} (mu(k)^2 + mu(n-k)^2 - mu(k)^2*mu(n-k)^2)	_	_	_
+A353243	recpos	1	new A070266()	,1	.
+A353899	recpos	1	new A353898()	,1
+A358448	recpos	1	new A036450()	,1
+A359486	filtpos	1	1	new A087712()	PRIME	in D087712.
+A359629	filtpos	1	1	new A007442()	v -> v.abs().IPP()	primes of |J007442|.
+A360303	lambdan	0	n -> SU(1, Functions.SQRT.i(n), k -> Z2(n/k - k))	""		a(n) = Sum_{k=1..floor(sqrt(n))} 2^floor(n/k - k)	_	_	_
+A361897	gilbreath	1	new A000005()
+A361936	filtpos	1	1	new A001694()	v -> Predicates.SQUARE.is(v)	squares in the sequence of powerful numbers (J001694).
+A362453	filtpos	1	1	new A361897()	v -> v.equals(ZV(0))	0's in   J361897.
+A362454	filtpos	1	1	new A361897()	v -> v.equals(ZV(1))	1's in   J361897.
+A362459	recpos	1	new A362452()	,1
+A363189	filtpos	1	1	new A001694()	v -> v.testBit(0)	odd terms in the sequence of powerful numbers (J001694).
+A363735	lambdin	0	n -> ZV(1 - n).*(F000005(n)).+(ZV(n).*(n + 1))	"1"		a(n) = (1 - n) * tau(n) + n * (1 + n) for n >= 1	_	_	_
+A366563	lambdan	1	n -> SU(1, n, k -> ZV(T366561(n, k).abs().signum()))	""		a(n) = Sum_{k=1..n} abs(sign(T366561(n,k)))	_	_	_
+A371186	filtpos	1	1	new A036966()	v -> Predicates.CUBE.is(v)	cubes in the sequence of cubefull numbers.
+A372241	lambdan	0	n -> PR(1, n, j -> ZV(j).^(Functions.CEIL_SQRT.i(j)))	""		a(n) = Product_{j=1..n} j^(ceiling(sqrt(j)))	_	_	_
+A373656	sintrif	1	(term, n) -> F000040(n + Functions.PRIME_PI.i(term))	""	new A001358()	a(n) = F000040(n + F000720(J001358(n)))	_	_	_
+A373940	lambdan	0	n -> SU(0, n/5, k -> FA(5*k).*(S2(n, 5*k)))	""		a(n) = Sum_{k=0..floor(n/5)} (5*k)! * Stirling2(n,5*k)	_	_	_
+A373942	recpos	1	new A045537()	,0
+A374232	recpos	1	new A028832()	,1
+A374460	filtpos	1	1	new A268335()	v -> !Predicates.SQUARE_FREE.is(v)	nonsquarefree terms in the sequence of exponentially odd numbers (J268335).
+A374865	obvecon	0	new A000045()	new A000032()		, L          s**t = A374865
+A374866	obvecon	0	new A001477()	new A016789()		, 3n+2              s**t = A374866
+A374867	obvecon	0	new A005408()	new A000045()		, F          s**t = A374867
+A374868	obvecon	0	new A005408()	new A000032()		, L          s**t = A374868
+A374869	obvecon	0	new A005408()	new A000079()		, 2^n        s**t = A374869
+A374871	obvecon	0	new A001477()	new A000142()		, n!         s**t = A374871
+A374872	obvecon	0	new A005408()	new A000142()		, n!         s**t = A374872
+A374969	lambdan	1	n -> ZV(n + 1).*(F000005(n)).-(ZV(2).*(F000203(n)))	""		a(n) = (n+1)*F000005(n)-2*F000203(n)	_	_	_

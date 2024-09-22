@@ -1,0 +1,203 @@
+---- 2024-07-01 18:05:21
+
+#A080290	sintrif	0	(term, n) -> n^n(n+2-(1/12)(n^2-1)).a(n)=n^n-n^(n-1)term-n^(n-2)J002415	""	new A002378()		n^n(n+2-(1/12)(n^2-1)). a(n)=n^n-n^(n-1)J002378(n)-n^(n-2)J002415
+#A106828 T(n, k) = Sum_{j=0..n-k} BI(j, n-2*k)*E2(n-k, j), where E2 are the second-order Eulerian numbers (J008517)
+#A112008 Fourth diagonal of second-order Eulerian triangle J008517. Fourth column (m=3) of triangle J112007
+#A112485 Fifth diagonal of second-order Eulerian triangle J008517. Fifth column (m=4) of triangle J112007
+#A112499 Fourth column of second-order Eulerian triangle J008517 divided by 4
+#A112499 G.f.: x^4*(6-9*x-70*x^2+163*x^3-42*x^4-72*x^5)/product((1-j*x)^(5-j), j=1..4). See the comment on column g.f.s under
+#A112632	lambdan	0	n -> SU( ,  ,   -> primes p<=n} Functions.KRONECKER.z(-3, Functions.PRIME.z(i))).negate()
+#A123489	lambdan	0	n -> SU(0, p - 1, k -> Functions.KRONECKER.z(4k^3+1, p) where p is the n-th prime of the form 6k+1.
+#A139711	mfiltpos	1	1	new A033676()	term {k: F000035(J033676(k) + J033677(k)) = 0}
+#A156141 T(n,k)= J008517(n,k+1)+J008517(n,n+1-k), n>1, 0<k<n
+#A156529 T(n, k) = J008517(n+1, k+1)*J008517(n+1, n-k+1)
+#A156529 Triangle, T(n, k) = J008517(n+1, k+1)*J008517(n+1, n-k+1), read by rows
+#A236862	multraf	0	(self, n) -> { if (ZV(n).IPP()) { return self.s(0); } else { return self.s(0).or(bitOr); }	"1,1"	new A091255()	composite n, a(n) = J091225(n) bitor (BIT.or(_{1<d<n,d|n} a(d)*a(n/d). [Here bitor stands for a dyadic bitwise-or function (J003986), and BIT.or(_{1<d<n,d|n} a cumulative version of the same	whered ranges over all proper factors of n. J091225 is a characteristic function for (binary codes of) irreducible polynomials in ring GF(2)[X], J014580.]
+#A260728	If n < 3, a(n) = 0; thereafter, for any even n: a(n) = a(n/2), for any n with its smallest prime factor (F020639) of the form 4k+1: a(n) = a(D032742(n)), otherwise [when F020639(n) is of the form 4k+3] a(n) = J003986(D067029(n),a(D028234(n)))
+#A267115	If D028234(n) = 1 [when n is a power of prime, in J000961], a(n) = D067029(n), otherwise a(n) = D067029(n) .and( a(D028234(n)). [Here .and( stands for bitwise-and, J004198.]
+#A277707	multraf	0	(self, n) -> a(1) = 0; for n > 1, !D067029(n)and(ZV(1)).isZero() a(n) = D055396(n), otherwise a(n) = a(D028234(n))
+#A278720	lambdan	0	n -> SU(1, p - 3, k -> Functions.KRONECKER.z(ZV(k).*(k + 1).*(k + 2), p).negate()	 where (x/y) is the Kronecker symbol. - _Michel Marcus_, Nov 06 2020
+#A283472	a(1) = a(2) = 0; for n > 2, a(n) = M004001(M004001(n-1)).and( M004001(J080677(n-1))	where.and( is bitwise-and (J004198)
+#A283974	Numbers n for which D002487(n-1) .and( D002487(n) > 0 where .and( is bitwise-and (J004198)
+#A324639	Numbers k such that .and((2k,sigma(k)) = 2*.and((k,sigma(k)-k)	where.and( is bitwise-.and(, J004198
+#A324643	Numbers k such that .and((2k,sigma(k))/2 = k = .and((k,sigma(k)-k)	where.and( is bitwise-.and(, J004198
+#A324718	Odd numbers n for which .and((2n,sigma(n)) = 2*.and((n,sigma(n)-n)	where.and( is bitwise-.and(, J004198
+#A324719	Odd numbers n for which bitor(2n,sigma(n)) = 2*bitor(n,sigma(n)-n)	wherebitor is bitwise-.or(, J003986
+#A325565	lambdan	0	n -> SD(n,d-> IV[J048720(D065621(d),n/d) == n]
+#A330988 a(n+1) = J056240(F001414(a(n)) + F001414(a(n-1)))
+#A332823 a(1) = 0; for n > 1, a(n) = J102283[(D067029(n) * (2-(F000035(D055396(n))))) + a(D028234(n))]
+#A334348	T(n, k) = D022290(J003714(n) .and( J003714(k)) (where .and( denotes the bitwise .and( operator, J004198)
+#A336434	T(n, k) = J003987(n, Sum_{m=1..M/2)} J003987(J030308(n,J133457(K,m)), J030308(n,J133457(K,M - (m - 1))))* (2^J133457(K,m) + 2^J133457(K,M - (m - 1))))	whereK = J057716(k) and M = F000120(J057716(k))
+#A338756	lambdan	0	n -> SU(1, p - 3, k -> (1+Functions.KRONECKER.z(k/p))*(1+((k+1)/p))*(1+((k+2)/p))/8 where (x/y) is the Kronecker symbol and p is the n-th prime. See Andrews pp. 133-134.
+#A356969	A(n, k) = D022290(J003754(n+1) .and( J003754(k+1)) (where .and( denotes the bitwise .and( operator, J004198)
+#A361789	A(n, k) = D022290(J003754(n+1) .or( J003754(k+1)) (where .or( denotes the bitwise .or( operator, J004198)
+#A372358	lambdan	0	n -> ZV(n).xor(J086893(1+D000523(n))	where.xor(isabitwise-.xor(,J003987	n .xor( J086893(1+D000523(n))	where.xor( is a bitwise-.xor(, J003987
+A072411	sintrif	0	(term, n) -> LCM(D067029(n), term)	"1"	new A028234()
+A076567	lambdan	0	n -> F006530(4* + 6)
+A090870	sintrif	0	(term, n) -> Functions.PRIME_PI.z(term)	""	new A016045()
+A095120	sintrif	0	(term, n) -> F151799(term)	""	new A038833()		F151799(J038833(n))
+A099825	lambdan	0	n -> D007504(D000079(n))	""			D007504(D000079(n))
+A099826	lambdan	0	n -> D007504(D000244(n))	""			D007504(D000244(n))
+A103416	lambdan	0	n -> ZV(n).-(E104103(n))
+A105554	lambdan	0	n -> F000040(F000045(n + 3).-(1))
+A107349	sintrif	0	(term, n) -> Functions.PRIME_PI.z(term)	""	new A106807()
+A107609	lambdan	0	n -> new Q(ZV(n), Functions.PRIME_PI.z(n)).round()
+A107799	sintrif	0	(term, n) -> Functions.PRIME_PI.z(term)	""	new A030284()
+A110089	multraf	0	(self, n) -> MIN(self.s(0), self.s(1))	""	new A005602(), new A005603()
+A110251	lambdan	0	n -> SU(0, n, k -> Functions.JACOBI.z(k, 2*n - 2*k + 1).*(ZV(1).^(k)))
+A110252	lambdan	0	n -> SU(0, n, k -> Functions.JACOBI.z(n, 2*n - 2*k + 1).*(ZV(1).^(k)))
+A113332	sintrif	0	(term, n) -> term.*(2*n + 3).*(n + 2)./(3*n + 3)	""	new A000699().skip(1)	*	""			M000699(n+1)*(2*n+3)*(n+2)/(3*(n+1))
+A113588	multrar	0	(self, n) -> F000142(F007953(self.a(n - 1)))	"1"
+A120114	multraf	0	(self, n) -> self.s(1)./(self.s(0))	""	new A099996().skip(2), PREVIOUS	/J099996(n+1)	""			J099996(n+2)/J099996(n+1)
+A129251	multrar	0	(self, n) -> self.a(D028234(n).IVE()).+(IV[D067029(n).compareTo(F020639(n)) >= 0])	"0"
+A138789	sintrif	0	(term, n) -> F001221(term)	""	new A104759()		F001221(J104759(n))
+A145040	sintrif	0	(term, n) -> term	""	new A112634().skip(1)		""			J112634(n+1)
+A147645	multrar	0	(self, n) -> self.a(Functions.MAKE_ODD.i(n))	"1"
+A147760	lambdan	0	n -> ZV(n).-(F000120(n))
+A161654	lambdan	0	n -> new Q(n, F000005(n)).floor()	
+A163639	sintrif	0	(term, n) -> Functions.MIN.z(F000040(n), term)	""	new A014076()
+A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()		B171252(J014132(n))
+A173053	sintrif	0	(term, n) -> term./(2)	""	new A061422()
+A200947	sintrif	0	(term, n) -> Functions.DIGIT_LENGTH.z(term)	""	new A007924()
+A232597	lambdan	0	n -> SU(1, n, k -> Functions.KRONECKER.i(k, n) == 1 ? Z.ONE : Z.ZERO)
+A232733	sintrif	0	(term, n) -> Functions.PRIME.z(term)	""	new A125828()
+A232822	sintrif	0	(term, n) -> Functions.PRIME.z(term)	""	new A125828()
+A232865	sintrif	0	(term, n) -> Functions.PRIME.z(term)	""	new A125826()
+A238690	multrar	0	(self, n) -> self.a(D122111(n).IVE())	"1"
+A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()
+A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()
+A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()		D002371(J002496(n))
+A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()		D002371(J002496(n))
+A253566	sintrif	0	(term, n) -> D054429(term)	""	new A253564()		D054429(J253564(n))
+A265339	lambdan	0	n -> D263273(D004526(D263273(n)))	""			D263273(D004526(D263273(n)))
+A267113	multrar	0	(self, n) -> self.a(E170818(n).IVE())	"1"
+A270419	multraf	0	(self, n) -> self.a(D028234(n).IVE()).*(F020639(n).^(D010059(D067029(n)))).*(M065620(D067029(n)).negate())	"1"
+A277707	lambdan	0	n -> D055396(F007913(n))	""			D055396(F007913(n))
+A283468	lambdin	0	n -> M004001(M004001(n - 1)).-(M004001(D080677(n - 1)))  	"1"
+A283469	lambdin	0	n -> M004001(M004001(n - 1)).or(M004001(D080677(n - 1))) 	"1"
+A283469	sintrif	0	(term, n) -> (n <= 2) ? ZV(1) : M004001(M004001(n - 1)).or(M004001(term))	""	new A080677()	n - 1)))	where.or( is bitwise-or (J003986)
+A283470	lambdan	0	n -> M004001(M004001(n - 1)).xor(M004001(D080677(n - 1)))	
+#A283470	sintrif	0	(term, n) -> M004001(M004001(n - 1)).xor(M004001(term))	"1"	new A080677()	(n-1))	where.xor(isbitwise-xor(J003987)	M004001(M004001(n-1)) .xor( M004001(J080677(n-1))	where.xor( is bitwise-xor (J003987)
+A283472	lambdin	0	n -> M004001(M004001(n - 1)).and(M004001(D080677(n - 1)))	"0"
+A283677	lambdan	0	n -> LCM(M004001(M004001(n)), M004001(D080677(n)))
+A285760	multrar	0	(self, n) -> self.a(n - 2 - self.a(n - 2).IVE()).+(self.a(n - 2 - self.a(n - 4).IVE()))	"1,1,2,2"	a(n-2-a(n-2))+a(n-2-a(n-4))
+A289623	lambdan	0	n -> D055396(D048673(n))	""			D055396(D048673(n))
+A292410	sintrif	0	(term, n) -> D053645(term)	""	new A016754()		D053645(J016754(n))
+A307836	lambdan	0	n -> SU(1, 9, i -> Functions.KRONECKER.z(E003173(n), Functions.PRIME.z(n)))	, where Functions.KRONECKER.z(a, p) is the Kronecker symbol is the i-th Heegner number (J003173 multiplied by -1).
+A308866	lambdan	0	n -> D000670(D000079(n))	""			D000670(D000079(n))
+A316524	multrar	0	(self, n) -> self.a(Functions.CORE.i(n))	"1"
+A320390	multrar	0	(self, n) -> self.a(D046523(n).IVE())	"1"
+A320887	multrar	0	(self, n) -> self.a(D046523(n).IVE())	"1"
+A326072	sintrif	2	(term, n) -> ZV(term.signum())	""	new A325978()	, otherwise a(n)
+A334109	multrar	0	(self, n) -> self.a(E008833(n).IVE())	"1"
+A335064	sintrif	0	(term, n) -> D002378(term)	""	new A024619()		D002378(J024619(n))
+A336361	multrar	0	(self, n) -> self.a(Functions.MAKE_ODD.i(n))	"1"
+A336363	multrar	0	(self, n) -> self.a(Functions.MAKE_ODD.i(n))	"1"
+A339872	sintrif	0	(term, n) -> D055396(term)	""	new A160595()		D055396(J160595(n))
+A344617	multrar	0	(self, n) -> self.a(D046523(n).IVE())	"1"
+A353337	multrar	0	(self, n) -> self.a(D046523(n).IVE())	"1"
+A353786	multrar	0	(self, n) -> self.a(Functions.MAKE_ODD.i(n))	"1"
+A357526	lambdin	0	n -> SU(1, n - 1, j -> IV[F051801(j).equals(F051801(n))])	"1"
+A363017	sintrif	0	(term, n) -> Functions.PRIME_PI.z(term)	""	new A057632()
+A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()		F000030(J004231(n))
+A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()		F000030(J004231(n))
+A364271	sintrif	0	(term, n) -> F000030(term)	""	new A030198()		F000030(J030198(n))
+A365461	sintrif	0	(term, n) -> E276150(term)	""	new A181821()		E276150(J181821(n))
+A367512	lambdan	0	n -> F001221(E367513(n))	""			F001221(E367513(n))
+A369059	lambdan	0	n -> D002620(F002110(n))	""			D002620(F002110(n))
+A373158	lambdan	0	n -> F276085(D003961(n))	""			F276085(D003961(n))
+A373438	sintrif	0	(term, n) -> F000217(term)	""	new A051064()		F000217(J051064(n))
+A374132	lambdan	0	n -> D007814(F276085(n))	""			D007814(F276085(n))
+A374133	lambdan	0	n -> D007949(F276085(n))	""			D007949(F276085(n))
+A374150	sintrif	0	(term, n) -> F000040(term)	""	new A033844()		F000040(J033844(n))
+A374151	sintrif	0	(term, n) -> F000720(term)	""	new A007053()		F000720(J007053(n))
+A353338	multrar	0	(self, n) -> self.a(D046523(n).IVE())	"1"
+A336362	multrar	0	(self, n) -> self.a(Functions.MAKE_ODD.i(n))	"1"
+A328569	lambdan	0	n -> E276088(F276086(n))	=D067029(E276087(n))    E276088(F276086(n)) = D067029(E276087(n))
+-A095120	sintrif	0	(term, n) -> F151799(term)	""	new A038833()		F151799(J038833(n))
+-A099825	lambdan	0	n -> D007504(D000079(n))	""			D007504(D000079(n))
+-A099826	lambdan	0	n -> D007504(D000244(n))	""			D007504(D000244(n))
+-A100639	sintrif	0	(term, n) -> E010879(term)	""	new A000928()		E010879(J000928(n))
+-A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()		B171252(J014132(n))
+-A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()		F000030(J002488(n))
+-A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()		D002371(J002496(n))
+-A324547	lambdan	0	n -> E324543(F002110(n))	""			E324543(F002110(n))
+-A324547	lambdan	0	n -> E324543(F002110(n))	""			E324543(F002110(n))
+-A329891	lambdan	0	n -> E329644(Z2(n))	""			E329644(2^n)
+-A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()		F000030(J004231(n))
+-A365461	sintrif	0	(term, n) -> E276150(term)	""	new A181821()		E276150(J181821(n))
+-A374151	sintrif	0	(term, n) -> F000720(term)	""	new A007053()		F000720(J007053(n))
+-A374216	lambdan	0	n -> D007814(F001414(n))	""			D007814(F001414(n))
+-A374217	lambdan	0	n -> D007949(F001414(n))	""			D007949(F001414(n))
+A086690	sintrif	0	(term, n) -> F000720(term)	""	new A034785()		F000720(J034785(n))
+A265353	lambdan	0	n -> E264985(D263273(n))	""			E264985(D263273(n))
+A265354	lambdan	0	n -> D263273(E264985(n))	""			D263273(E264985(n))
+A265355	lambdan	0	n -> D263272(E264985(n))	""			D263272(E264985(n))
+A265356	lambdan	0	n -> E264985(D263272(n))	""			E264985(D263272(n))
+A266189	lambdan	0	n -> D263273(E264985(D263273(n)))	""			D263273(E264985(D263273(n)))
+A266190	lambdan	0	n -> E264985(D263273(E264985(n)))	""			E264985(D263273(E264985(n)))
+A284009	sintrif	0	(term, n) -> F001222(term)	""	new A284008()		F001222(J284008(n))
+A372544	lambdan	0	n -> F000035(E022843(n))	""			F000035(E022843(n))
+A373098	sintrif	0	(term, n) -> E010879(term)	""	new A036289()		E010879(J036289(n))
+A373099	sintrif	0	(term, n) -> E010879(term)	""	new A002064()		E010879(J002064(n))
+A373100	sintrif	0	(term, n) -> E010879(term)	""	new A003261()		E010879(J003261(n))
+----
+A086690	sintrif	0	(term, n) -> F000720(term)	""	new A034785()		F000720(J034785(n))
+A095120	sintrif	0	(term, n) -> F151799(term)	""	new A038833()		F151799(J038833(n))
+A099825	lambdan	0	n -> D007504(D000079(n))	""			D007504(D000079(n))
+A099826	lambdan	0	n -> D007504(D000244(n))	""			D007504(D000244(n))
+A100639	sintrif	0	(term, n) -> E010879(term)	""	new A000928()		E010879(J000928(n))
+A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()		B171252(J014132(n))
+A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()		F000030(J002488(n))
+A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()		D002371(J002496(n))
+A265353	lambdan	0	n -> E264985(D263273(n))	""			E264985(D263273(n))
+A265354	lambdan	0	n -> D263273(E264985(n))	""			D263273(E264985(n))
+A265355	lambdan	0	n -> D263272(E264985(n))	""			D263272(E264985(n))
+A265356	lambdan	0	n -> E264985(D263272(n))	""			E264985(D263272(n))
+A266189	lambdan	0	n -> D263273(E264985(D263273(n)))	""			D263273(E264985(D263273(n)))
+A266190	lambdan	0	n -> E264985(D263273(E264985(n)))	""			E264985(D263273(E264985(n)))
+A284009	sintrif	0	(term, n) -> F001222(term)	""	new A284008()		F001222(J284008(n))
+A324547	lambdan	0	n -> E324543(F002110(n))	""			E324543(F002110(n))
+A324547	lambdan	0	n -> E324543(F002110(n))	""			E324543(F002110(n))
+A329891	lambdan	0	n -> E329644(Z2(n))	""			E329644(2^n)
+A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()		F000030(J004231(n))
+A365461	sintrif	0	(term, n) -> E276150(term)	""	new A181821()		E276150(J181821(n))
+A372544	lambdan	0	n -> F000035(E022843(n))	""			F000035(E022843(n))
+A373098	sintrif	0	(term, n) -> E010879(term)	""	new A036289()		E010879(J036289(n))
+A373099	sintrif	0	(term, n) -> E010879(term)	""	new A002064()		E010879(J002064(n))
+A373100	sintrif	0	(term, n) -> E010879(term)	""	new A003261()		E010879(J003261(n))
+A374151	sintrif	0	(term, n) -> F000720(term)	""	new A007053()		F000720(J007053(n))
+A374216	lambdan	0	n -> D007814(F001414(n))	""			D007814(F001414(n))
+A374217	lambdan	0	n -> D007949(F001414(n))	""			D007949(F001414(n))
+#----#---- 2024-07-09
+A078491	lambdan	0	n -> D003418(F000108(n))	""			D003418(F000108(n))
+A086690	sintrif	0	(term, n) -> F000720(term)	""	new A034785()		F000720(J034785(n))
+A095120	sintrif	0	(term, n) -> F151799(term)	""	new A038833()		F151799(J038833(n))
+A099825	lambdan	0	n -> D007504(D000079(n))	""			D007504(D000079(n))
+A099826	lambdan	0	n -> D007504(D000244(n))	""			D007504(D000244(n))
+A100639	sintrif	0	(term, n) -> E010879(term)	""	new A000928()		E010879(J000928(n))
+A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()		B171252(J014132(n))
+A212646	sintrif	0	(term, n) -> D000688(term)	""	new A181800()		D000688(J181800(n))
+A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()		F000030(J002488(n))
+A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()		D002371(J002496(n))
+A265353	lambdan	0	n -> E264985(D263273(n))	""			E264985(D263273(n))
+A265354	lambdan	0	n -> D263273(E264985(n))	""			D263273(E264985(n))
+A265355	lambdan	0	n -> D263272(E264985(n))	""			D263272(E264985(n))
+A265356	lambdan	0	n -> E264985(D263272(n))	""			E264985(D263272(n))
+A266189	lambdan	0	n -> D263273(E264985(D263273(n)))	""			D263273(E264985(D263273(n)))
+A266190	lambdan	0	n -> E264985(D263273(E264985(n)))	""			E264985(D263273(E264985(n)))
+A284009	sintrif	0	(term, n) -> F001222(term)	""	new A284008()		F001222(J284008(n))
+A298410	sintrif	0	(term, n) -> D003418(term)	""	new A134459()		D003418(J134459(n))
+A324547	lambdan	0	n -> E324543(F002110(n))	""			E324543(F002110(n))
+A324547	lambdan	0	n -> E324543(F002110(n))	""			E324543(F002110(n))
+A329891	lambdan	0	n -> E329644(Z2(n))	""			E329644(2^n)
+A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()		F000030(J004231(n))
+A365461	sintrif	0	(term, n) -> E276150(term)	""	new A181821()		E276150(J181821(n))
+A369162	lambdan	0	n -> D000688(D000688(n))	""			D000688(D000688(n))
+A372544	lambdan	0	n -> F000035(E022843(n))	""			F000035(E022843(n))
+A373098	sintrif	0	(term, n) -> E010879(term)	""	new A036289()		E010879(J036289(n))
+A373099	sintrif	0	(term, n) -> E010879(term)	""	new A002064()		E010879(J002064(n))
+A373100	sintrif	0	(term, n) -> E010879(term)	""	new A003261()		E010879(J003261(n))
+A374151	sintrif	0	(term, n) -> F000720(term)	""	new A007053()		F000720(J007053(n))
+A374216	lambdan	0	n -> D007814(F001414(n))	""			D007814(F001414(n))
+A374217	lambdan	0	n -> D007949(F001414(n))	""			D007949(F001414(n))

@@ -1,0 +1,188 @@
+---- 2024-07-03 22:22:45
+-A081431	lambdan	0	n -> D030101(F004086(n))	""	
+-A093046	sintrif	0	(term, n) -> F000040(term)	""	new A058328()
+-A095120	sintrif	0	(term, n) -> F151799(term)	""	new A038833()
+-A099825	lambdan	0	n -> D007504(D000079(n))	""	
+-A099826	lambdan	0	n -> D007504(D000244(n))	""	
+-A107482	sintrif	0	(term, n) -> F001222(term)	""	new A007539()
+-A120355	sintrif	0	(term, n) -> D002034(term)	""	new A007677()
+-A145343	sintrif	0	(term, n) -> F007917(term)	""	new A005179()
+-A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()
+-A186963	sintrif	0	(term, n) -> E162642(term)	""	new A007357()
+-A225017	sintrif	0	(term, n) -> E132740(term)	""	new A055566()
+-A235224	lambdan	0	n -> E061395(F276086(n))	""	
+-A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()
+-A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()
+-A273258	sintrif	0	(term, n) -> D019565(D030101(term))	""	new A087207()
+-A275380	lambdin	0	n -> F001222(E078304(n))	"0"		
+-A277195	sintrif	0	(term, n) -> D022290(term)	""	new A277010()
+-A279904	sintrif	0	(term, n) -> F000040(term)	""	new A058781()
+-A324115	lambdan	0	n -> D002487(E323244(n))	""	
+-A324547	lambdan	0	n -> E324543(F002110(n))	""	
+-A324865	lambdin	0	n -> D001065(D156552(n))	"0"		
+-A324888	lambdan	0	n -> E276150(E108951(n))	""	
+-A324888	lambdan	0	n -> F001222(E324886(n))	""	
+-A327522	sintrif	0	(term, n) -> F000041(F001222(term))	""	new A000961()
+-A328317	sintrif	0	(term, n) -> D053669(term)	"1"	new A328316()
+-A328318	sintrif	0	(term, n) -> E267263(term)	""	new A328316()
+-A328319	sintrif	0	(term, n) -> E276150(term)	""	new A328316()
+-A328322	sintrif	0	(term, n) -> E328114(term)	""	new A328316()
+-A328392	lambdan	0	n -> E328114(E327860(n))	""	
+-A328394	lambdan	0	n -> E328114(E276087(n))	""	
+-A328843	lambdan	0	n -> E328841(F276086(n))	""	
+-A328844	lambdan	0	n -> E328842(F276086(n))	""	
+-A329040	lambdan	0	n -> E267263(E108951(n))	""	
+-A329040	lambdan	0	n -> F001221(E324886(n))	""	
+-A330681	sintrif	0	(term, n) -> E283980(term)	""	new A025487()
+-A332462	lambdan	0	n -> D019565(D156552(n))	""	
+-A338792	sintrif	0	(term, n) -> F000720(term)	"1"	new A007138()
+-A342920	lambdan	0	n -> E342002(E108951(n))	""	
+-A345201	sintrif	0	(term, n) -> D022290(D057889(term))	""	new A003714()
+-A350700	lambdin	0	n -> E145037(F000045(n))	"-1"		
+-A353954	sintrif	0	(term, n) -> D019565(term)	"1"	new A109812()
+-A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()
+-A365425	sintrif	0	(term, n) -> D046523(F000265(term))	""	new A163511()
+-A365460	sintrif	0	(term, n) -> E267263(term)	""	new A181821()
+-A365461	sintrif	0	(term, n) -> E276150(term)	""	new A181821()
+-A366276	sintrif	0	(term, n) -> D057889(term)	""	new A243071()
+-A373601	lambdan	0	n -> E373371(F276086(n))	""	
+-A374148	lambdin	0	n -> CR.THREE.sqrt().*(Z2(n - 1).-(1)).+(CR.ONE).floor()	Integer part of (2^(n - 1) - 1)*sqrt(3) + 1	"0"
+-A374150	sintrif	0	(term, n) -> F000040(term)	""	new A033844()
+-A374151	sintrif	0	(term, n) -> F000720(term)	""	new A007053()
+
+-A367430	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 2)).*(self.a(n - 3).+(self.a(n - 1)).+(self.a(n - 2)).+(self.a(n - 3)))	"1,1,1"
+-A321475	multrar	0	(self, n) -> D004719(self.a(n - 1).*(n))	"1"		Zeroless factorials (version 2): a(0) = 1, and for any n > 0, a(n) = noz(1 * noz(2 * ... * noz((n-1) * n))), where noz(n) = J004719(n) omits the zeros from n.
+-A321480	multrar	0	(self, n) -> D004719(self.a(n - 1).+(n))	"0"		Zeroless analog of triangular numbers (version 2): a(0) = 0, and for any n > 0, a(n) = noz(1 + noz(2 + ... + noz((n-1) + n))), where noz(n) = J004719(n) omits the zeros from n.
+-A355898	multrar	0	(self, n) -> GCD(self.a(n - 1), self.a(n - 2)).+(self.a(n - 1).+(self.a(n - 2)))./(GCD(self.a(n - 1), self.a(n - 2)))	"1,1"
+-A351871	multrar	0	(self, n) -> GCD(self.a(n - 1), self.a(n - 2)).+(self.a(n - 1).+(self.a(n - 2)))./(GCD(self.a(n - 1), self.a(n - 2)))	"1,2"
+-A133904	multrar	0	(self, n) -> self.a(n - 1).testBit(0) ? GCD(self.a(n - 1), n - 1).*(self.a(n - 1)).+(Functions.SIGMA0.z(n - 1)) : self.a(n - 1)./(2)	"1,2"		if a(n-1) is not divisible by 2, otherwise a(n) = a(n-1)/2	
+---- 2024-07-03 22:01:15
++A074465	lambdan	0	n -> { final Z n2 = ZV(n).^(2); return GCD(n2, Functions.SIGMA1.z(n2), PHI(n2)); }
++A074466	lambdan	0	n -> { final Z n3 = ZV(n).^(3); return GCD(n3, Functions.SIGMA1.z(n3), PHI(n3)); }
++A077623	multrar	1	(self, n) -> (self.a(n - 1).-(self.a(n - 2)).-(self.a(n - 3))).abs()	"1,2,4"
++A078772	lambdan	1	n -> F000010(D049711(n))	"1,1,1"
++A080096	multrar	1	(self, n) -> (self.a(n - 1).-(self.a(n - 2)).-(self.a(n - 3))).abs()	"1,1,2"
++A082066	lambdan	1	n -> F006530(E179931(n))	""
++A082072	lambdan	1	n -> F020639(E179931(n))	""
++A084594	multrar	0	(self, n) -> self.a(n - 1).^(2).+(E084595(n - 1).^(2).*(3))	"1"
++A086420	sintrif	1	(term, n) -> F000010(term)	""	new A003586()
++A092501	multrar	0	(self, n) -> self.a(n - 1).^(2).+(10)	"0,1,10"
++A097009	lambdan	1	n -> GCD(PM(2*n).-(1), PM(n).-(1))
++A102846	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 2)).+(2)	"1,1"
++A111288	multrar	1	(self, n) -> self.a(n - 1).*(self.a(n - 3)).+(self.a(n - 2).*(self.a(n - 4)))	"1,1,1,1"
++A111289	multrar	1	(self, n) -> self.a(n - 1).*(self.a(n - 4)).+(self.a(n - 2).*(self.a(n - 3)))	"1,1,1,1"
++A117030	multrar	1	(self, n) -> self.a(n - 1).*(self.a(n - 2)).-(SU(1, n - 3, k -> self.a(n - 2 - k)))	"1,1"
++A117157	multrar	1	(self, n) -> self.a(n - 1).*(self.a(n - 2)).+(SU(1, n - 3, k -> self.a(n - 2 - k)))	"1,1"
++A119557	multrar	0	(self, n) -> self.a(n - 1).-(self.a(n - 2)).abs().-(self.a(n-3))	"0,0,1"
++A120759	multrar	0	(self, n) -> self.a(n - 1).^(2).+(ZV(1).-(SU(0, n - 2, k -> Z_1(n - k).*(self.a(k)).*(BI(self.a(k), ZV(n - k))))))	"1"
++A123137	multrar	1	(self, n) -> self.a(n - 1).^(2).+(Functions.DIGIT_SUM.z(self.a(n - 1)))	"1"
++A126604	multrar	1	(self, n) -> self.a(n - 1).^(2).+(self.a(n - 1)).-(1)	"4,3"
++A129088	multrar	1	(self, n) -> GCD(self.a(n - 1), n).+(GCD(self.a(n - 2), n))	"1,1"
++A129089	multrar	0	(self, n) -> GCD(self.a(n - 1), n).+(GCD(self.a(n - 2), n))	"1,1"
++A129090	multrar	1	(self, n) -> GCD(self.a(n - 1), n).+(LCM(self.a(n - 1), n))	"1"
++A129091	multrar	0	(self, n) -> GCD(self.a(n - 1), n).+(LCM(self.a(n - 1), n))	"1"
++A130426	lambdan	1	n -> RU(1, n, k -> new Q(1, ZV(k).^(n + 1 - k))).den()
++A130492	lambdan	1	n -> RU(1, n, k -> new Q(k).^(Functions.MOEBIUS.i(n + 1 - k))).den()
++A138789	sintrif	1	(term, n) -> F001221(term)	""	new A104759()
++A139244	multrar	0	(self, n) -> self.a(n - 1).^(2).-(1)	"4"
++A141522	multrar	1	(self, n) -> self.a(n - 1).*(self.a(n - 2)).+(self.a(n-1).*(self.a(n -3)))	"0,1,1"
++A142471	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 2)).+(2)	"0,0"
++A145343	sintrif	0	(term, n) -> F007917(term)	"2"	new A005179()
++A156748	multrar	1	(self, n) -> (self.a(n - 1).-(self.a(n - 2)).+(self.a(n - 3).*(2)).-(self.a(n - 4))).abs().-(self.a(n -3)).-(1)	"0,0,0,0"
++A163167	lambdan	1	n -> E289627(F000010(n))
++A166471	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 2))	"18,24"
++A177904	multrar	1	(self, n) -> GPF(self.a(n - 1).+(self.a(n-2)).+(self.a(n-3)))	"1,1,1"
++A177923	multrar	1	(self, n) -> GPF(self.a(n - 1).+(self.a(n-2)).+(self.a(n-3)))	"19,13,37"
++A178174	multrar	1	(self, n) -> GPF(self.a(n - 1).+(self.a(n-2)).+(self.a(n-3)).+(self.a(n-4)))	"1,1,1,1"
++A179931	lambdan	1	n -> GCD(Functions.SIGMA1.z(n), Functions.SIGMA.z(2, n))
++A180322	sintrif	1	(term, n) -> term.*(n)./(2)	""	new A056493()
++A186751	multrar	0	(self, n) -> self.a(n - 1).^(2).-(4)	"3"
++A192083	sintrif	1	(term, n) -> F003415(term)	""	new A056798()
++A213681	multrar	0	(self, n) -> self.a(n - 1).^(2)./(2).-(4)	"6"
++A221183	multrar	0	(self, n) -> GPF(self.a(n - 1).*(2).+(self.a(n-2)))	"0,1"
++A243290	sintrif	1	(term, n) -> E061395(term)	""	new A005117()
++A256581	sintrif	1	(term, n) ->F000005(term).-(1)	"2"	new A064538()
++A258594	lambdan	0	n -> F001222(F000009(n))
++A258804	multrar	0	(self, n) -> GPF(self.a(n - 3)).*(GPF(self.a(n-2))).+(GPF(self.a(n-1)))	"1,1,2"
++A260725	multrar	0	(self, n) -> GPF(ZV(1).+(PR(1, 5, k -> self.a(n - k))))	"2,2,2,2,2"		Product_{k=1..5} a(n-k))
++A265340	lambdan	0	n -> F070939(D263273(n))	"0"
++A265385	multrar	0	(self, n) -> Functions.GRAY_ENCODE.z(self.a(n - 1).+(self.a(n - 2)))	"1,1"
++A265386	multrar	0	(self, n) -> Functions.GRAY_ENCODE.z(Functions.GRAY_ENCODE.z(self.a(n - 1)).+(Functions.GRAY_ENCODE.z(self.a(n - 2))))	"1,1"
++A265387	multrar	0	(self, n) -> Functions.GRAY_ENCODE.z(self.a(n - 1)).+(Functions.GRAY_ENCODE.z(self.a(n-2)))	"1,1"
++A265392	lambdan	1	n -> RD(n, d -> new Q(1 , TAU(d))).den()
++A265710	lambdan	1	n -> RD(n, d -> new Q(1, Functions.SIGMA1.z(d))).den()
++A268021	multrar	1	(self, n) -> self.a(n - 1).*(self.a(n - 2)).-(self.a(n - 2)).-(self.a(n - 1))	"1,1"
++A284650	lambdan	0	n -> RU(1, n, k -> new Q(Functions.SIGMA1.z(k), k)).den()
++A290091	lambdan	0	n -> D278222(D289813(n))
++A292238	multrar	1	(self, n) -> GPF(LPF(Z2(Functions.PRIME.i(n)).-(1)).-(1))	""
++A299788	lambdan	1	n -> Rationals.SINGLETON.productdiv(n, d -> new Q(Functions.SIGMA1.z(d), d)).den()
++A302045	sintrif	0	(term, n) -> D001511(term)	"0"	new A078898()
++A306671	lambdan	1	n -> GCD(TAU(n), POD(n))
++A306682	lambdan	1	n -> GCD(Functions.SIGMA1.z(n), POD(n))
++A307892	lambdan	1	n -> LCM(TAU(n), POD(n))./(n)
++A307893	lambdan	1	n -> LCM(Functions.SIGMA1.z(n), POD(n))./(n)
++A318492	lambdan	1	n -> RD(n, d -> new Q(Functions.SIGMA1.z(d), d)).den()
++A323707	lambdan	1	n -> RD(n, d -> new Q(TAU(d), POD(d))).den()
++A323780	lambdan	1	n -> RD(n, d -> new Q(TAU(d), Functions.SIGMA1.z(d))).den()
++A324364	lambdan	1	n -> RD(n, d -> new Q(Functions.SIGMA1.z(d), POD(d))).den()
++A324384	lambdan	0	n -> GCD(n, E276154(n))
++A324500	lambdan	1	n -> RD(n, d -> new Q(Functions.SIGMA1.z(d), TAU(d))).den()
++A324504	lambdan	1	n -> RD(n, d -> new Q(d, TAU(d))).den()
++A324507	lambdan	1	n -> Rationals.SINGLETON.productdiv(n, d -> new Q(d, TAU(d))).den()
++A324510	lambdan	1	n -> Rationals.SINGLETON.productdiv(n, d -> new Q(Functions.SIGMA1.z(d), TAU(d))).den()
++A324528	lambdan	1	n -> LCM(TAU(n), POD(n))
++A324529	lambdan	1	n -> LCM(Functions.SIGMA1.z(n), POD(n))
++A324884	lambdin	0	n -> D001511(E324819(n))	"0"
++A324885	lambdin	0	n -> D001511(E323243(n))	"0"
++A324983	lambdan	1	n -> RD(n, d -> new Q(POD(d), TAU(d))).den()
++A324985	lambdan	1	n -> RD(n, d -> new Q(POD(d), Functions.SIGMA1.z(d))).den()
++A327965	lambdin	0	n -> E327938(F003415(n))	"0,0"
++A329929	lambdan	1	n -> LCM(TAU(n), Functions.SIGMA1.z(n), POD(n))./(GCD(TAU(n), Functions.SIGMA1.z(n), POD(n)))
++A331591	sintrif	1	(term, n) -> F000120(term)	""	new A267116()
++A333696	lambdan	1	n -> RD(n, d -> new Q(PHI(n/d), d)).den()
++A334031	lambdan	0	n -> M057335(D059893(n))
++A334748	lambdan	1	n -> E334747(E334747(n))
++A334985	lambdan	1	n -> LCM(TAU(n), Functions.SIGMA1.z(n), POD(n))./(GCD(ZV(n), TAU(n), Functions.SIGMA1.z(n)))
++A336642	lambdin	1	n -> E008833(n).-(1)	""
++A336723	lambdan	1	n -> LCM(TAU(n), Functions.SIGMA1.z(n), POD(n))
++A338293	multrar	0	(self, n) -> self.a(n - 1).^(2).+(self.a(n - 1).*(2).*(self.a(n-2).^(2)))	"1,1"
++A339964	lambdan	1	n -> GCD(Functions.SIGMA1.z(n), n + 1)
++A339967	lambdan	1	n -> GCD(Functions.SIGMA1.z(n), n + 2)
++A340676	sintrif	1	(term, n) -> E104117(term)	"0,1"	new A267116()
++A342477	sintrif	0	(term, n) -> F007913(term)	""	new A001694()
++A344500	holos	0	[[0],[192,-64,-944,752,272,-208],[88,-60,-460,452,84,-104],[60,-94,-320,525,44,-143],[20,36,-66,-124,10,52]]	1, 1, 2, 7, 21	0	0
++A348417	sintrif	1	(term, n) -> E046073(term)	""	new A081754()
++A350071	lambdan	0	n -> GCD(Functions.SIGMA1.z(ZV(n).*(n)), D003961(ZV(n).*(n)))
++A350700	sintrif	0	(term, n) -> { final int[] dc = ZUtils.digitCounts(term, 2); return Z.valueOf(dc[1] - dc[0]); }	"-1"	new A000045()
++A352890	lambdan	0	n -> D006577(D156552(n))	"0,0"
++A353270	lambdan	0	n -> GCD(n, E332449(n))
++A356425	sintrif	1	(term, n) -> F000203(term)	""	new A025487()
++A356757	lambdan	0	n -> D004719(F000142(n))
++A359182	sintrif	1	(term, n) -> F000010(term)	""	new A025487()
++A360122	lambdan	1	n -> F000035(E360121(n))
++A360123	lambdan	1	n -> F000035(E347389(n))
++A362138	multrar	1	(self, n) -> GPF(self.a(n - 1).+(PM(n)))	"2"
++A363347	lambdan	3	n -> { final Z gp = GPF(ZV(n).*(n + 2).-(4)); return (gp.compareTo(ZV(n)) > 0) ? gp : ZV(1); }	""	if gpf(n^2 + 2*n - 4) > n, otherwise a(n) = 1
++A365454	lambdan	0	n -> GCD(Functions.SIGMA1.z(n), D156552(2*n))
++A366885	sintrif	0	(term, n) -> E347385(term)	""	new A163511()
++A370130	lambdin	0	n -> E085731(E327860(n))	"0"
++A370812	multrar	1	(self, n) -> D004719(self.a(n - 1).+(2*n - 1))	"1"
++A370869	multraf	0	(self, n) -> self.a(n - 1).^(2).-(self.s(0).*(3))	"0,-3"	new A058891()
++A371358	holos	0	[[0],[64,-48,8],[-72,64,-12],[20,-28,6],[-14,22,-5],[7,-15,4],[0,3,-1]]	0,0,1,2,4	0	0
++A373171	multrar	1	(self, n) -> D004719(self.a(n - 1).+(3*n - 2))	"1"
++A373172	multrar	1	(self, n) -> D004719(self.a(n - 1).+(4*n - 3))	"1"
++A373246	lambdan	0	n -> GCD(n, D181819(n))
++A373833	lambdan	0	n -> GCD(n, E276150(n))
++A373838	lambdan	0	n -> E079978(E373833(n))	""
++A373840	lambdan	0	n -> E079978(E276150(n))
++A373842	lambdan	1	n -> F003415(F276085(n))
++A373843	lambdan	0	n -> GCD(n, F003415(F276085(n)))
++A374132	lambdan	2	n -> D007814(F276085(n))
++A374133	lambdan	2	n -> D007949(F276085(n))
++A374150	sintrif	0	(term, n) -> F000040(term)	""	new A033844()
++A374157	lambdan	0	n -> Z_1(n/2).*(n)	a(n) = (-1)^floor(n/2)*n.
++A374180	filnum	1	1	k -> KS( 3, k) != KS((((k/2) & 1) == 0) ? k : -k, 3 )	Numbers k such that K(3 / k) != K((-1)^floor(k/2)*k / 3)
++A374181	filnum	1	1	k -> KS( 7, k) != KS((((k/2) & 1) == 0) ? k : -k, 7 )
++A374182	filnum	1	1	k -> KS(11, k) != KS((((k/2) & 1) == 0) ? k : -k, 11)
++A374183	filnum	1	1	k -> KS(15, k) != KS((((k/2) & 1) == 0) ? k : -k, 15)
++A374184	filnum	1	1	k -> KS(19, k) != KS((((k/2) & 1) == 0) ? k : -k, 19)

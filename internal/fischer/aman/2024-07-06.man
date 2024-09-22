@@ -1,0 +1,156 @@
+
+
+
+
+ A072350 lsm     0       (2*n-1)!*T(2*n-1,1), T(n,k)=if n=k then 1 else 1/2*(T059419(n,k)*k!/n!-sum(i=k+1..n-1, T(n,i)*T(i,k))). [_Vladimir Kruchinin_, Nov 11 2011]
+ A075182 lsm     0       gcd(T075181(n, m), m=1..n) = gcd(|J048594(n, m)|, m=1..n), n>=1
+ A078502	lambdan	0	n -> =0(modD003418(n))becauseofthedivisibilitycondition(D003418(n)=LCM(1,2,...,n))	= 0 (mod D003418(n)) because of the divisibility condition (D003418(n) = LCM(1,2,...,n))
+ A094307	T(n,k) = D003418(n)/p if k = p^m for some m and n < 2*p^m and D003418(n) otherwise
+ A094308	lambdan	0	n -> D003418(n).*(n-Sum_{frac(log_p(n))<log_p(2)}(1-1/p))	D003418(n) * (n - Sum_{frac(log_p(n)) < log_p(2)} (1 - 1/p))
+ A096180	Triangle read by rows: fraction of integers having k of the first n positive integers as divisors is T(n,k)/D003418(n)
+ A105774 lsm     0       F000045(2+S072649(n-1)) - a(n-F000045(1 + S072649(n-1)))        "1"
+ A106441	a(n) is the least k > 1 such that sum_{i = 1..n} k^(D003418(n)/i) is divisible by n
+ A112637	lambdan	0	n -> (J059415(n)/J059416(n))*D003418(n)^3	(J059415(n)/J059416(n))*D003418(n)^3
+ A117531 lsm     0       Sum(D010051(T117530(n,k)): 1 <= k <= n)
+ A119243 lsm     0       Sum_{k=0..floor(n/2)} S118919(n,k)*a(k)
+ A119244 lsm     0       Sum_{k=0..floor(n/2)} S119245(n,k)*a(k)
+ A119365 lsm     0       T119335(2*n,n) - T119335(2*n,n+1)
+ A121934	For n>=2, a(n) = D003418(n+1)-1
+ A123618 lsm     0       T123610(2*n+2,n)
+ A133232	Triangle T(n,k) read by rows with a MINimum number of prime powers J100994 for which the least common multiple of T(n,1),..,T(n,n) is D003418(n)
+ A133255	Triangle with a MINimum occurrence of prime powers for which the least common multiple of the rows will give the terms in D003418
+ A138607 lsm     0       n. If n-2 = D007504(S083375(n-2)), then a(n) = a(n-1-F000040(S083375(n-2)))+2, otherwise a(n) = a(n-1)+2
+ A138608 lsm     0       n. If n = F000045(S072649(n)+1), then a(n) = a(n-1-F000045(S072649(n)))+3, otherwise a(n) = a(n-1)+3
+ A163074	Swinging primes: primes which are within 1 of a swinging factorial (D056040)
+ A163075	Primes of the form k$ + 1. Here '$' denotes the swinging factorial function (D056040)
+ A163076	Primes of the form k$ - 1. Here '$' denotes the swinging factorial function (D056040)
+ A163079	Primes p such that p$ + 1 is also prime. Here '$' denotes the swinging factorial function (D056040)
+ A163080	Primes p such that p$ - 1 is also prime. Here '$' denotes the swinging factorial function (D056040)
+ A163081	Primes of the form p$ + 1 where p is prime, where '$' denotes the swinging factorial (D056040)
+ A163082	Primes of the form p$ - 1 where p is prime, where '$' denotes the swinging factorial (D056040)
+ A163083	Primes of the form k$ + 1 which are the greater of twin primes. Here '$' denotes the swinging factorial function (D056040)
+ A163210	Swinging Wilson quotients ((p-1)$ +(-1)^floor((p+2)/2))/p, p prime. Here '$' denotes the swinging factorial function (D056040)
+ A163213	Swinging Wilson remainders ((p-1)$ + (-1)^floor((p+2)/2))/p mod p, p prime. Here '$' denotes the swinging factorial function (D056040)
+ A163644	Product of primes which do not exceed n and do not divide the swinging factorial n$ (D056040)
+ A163770	trilamb0	0	(n, k) -> D056040(n).*(ZV(k).^(n))	Triangle read by rows interpolating the swinging subfactorial (J163650) with the swinging factorial (D056040)
+ A163771	Triangle interpolating the swinging factorial (D056040) restricted to even indices with its BI inverse. Same as interpolating the central trinomial coefficients (J002426) with the central BI coefficients (D000984)
+ A163772	Triangle interpolating the swinging factorial (D056040) restricted to odd indices with its BI inverse
+ A163840	Triangle interpolating the BI transform of the swinging factorial (J163865) with the swinging factorial (D056040)
+ A163841	Triangle interpolating the swinging factorial (D056040) restricted to even indices with its BI transform. Same as interpolating bilateral Schroeder paths (J026375) with the central BI coefficients (D000984)
+ A163842	Triangle interpolating the swinging factorial (D056040) restricted to odd indices with its BI transform. Same as interpolating the beta numbers 1/beta(n,n) (J002457) with (J163869)
+ A163945	Triangle interpolating between (-1)^n (D033999) and the swinging factorial function (D056040) restricted to odd indices (2n+1)$ (J002457)
+ A169858	a(n) <= D003418(n)
+ A178629	Numbers k such that D003418(k-1) = LCM(1,2,...,k-1) is congruent to 1 modulo k
+ A180000	lambdan	0	n -> D003418(n)./(term)/J056040(n)	LCM{1,2,...,n} / swinging_factorial(n) = D003418(n) / J056040(n)
+ A180170	lambdan	0	n -> FA(n)*LCM(1,2,...,n)=FA(n)*D003418(n),n>0	n! * LCM(1,2,...,n) = n! * D003418(n), n > 0
+ A181121	If J181062(n) = 2^(e-1), then a(n) = D003418(2^e) = J051451(n+1)
+ A181666 lsm     0       (4 * 2^J055086(n-1) - 2^S082375(n-1))/3. - _André Hallqvist_, Jul 17 2019
+ A181813	If D003418(n) = Product p(i)^e(i), then a(n) = Product F002110(i-1)^e(i). I.e., a(n) = J181811(D003418(n))
+ A181814	If D003418(n) = Product p(i)^e(i), then a(n) = Product F002110(i)^e(i). I.e., a(n) = E108951(D003418(n))
+ A187284	lambdan	0	n -> round(log(D003418(n)))-n	round(log(D003418(n))) - n
+ A193477	lambdan	0	n -> new Q(D056040(n), /floorFA(n/2)^2)	DenoMINator(D056040(n)/floor(n/2)!^2)
+ A194588	lambdan	0	n -> ZV((n+1) & 1).+(1/2)*SU(1, n, k -> Z_1(k)*BI(n,k).*((k+1)/2).^(k.modZ(2)).*(k+1)$+2*Z_1(n).*(2*k)$/(k+1)),wheren$denotestheswingingfactorialD056040(n)	((n+1) mod 2) + (1/2)*sum_{k=1..n}((-1)^k*BI(n,k)*((k+1)/2)^(k mod 2)*(k+1)$+2*(-1)^n*(2*k)$/(k+1)), where n$ denotes the swinging factorial D056040(n)
+ A200649 lsm     0       a(n - S130312(n-1)) + (S072649(n-1) - S072649(n - S130312(n-1) - 1)) mod 2 for n > 2    "0,1"
+ A204087	Reduced Pascal triangle: C_R(n,m) = D003418(n) / MAX(D003418(m), D003418(n-m)), m=0,...,n
+ A211168	lambdan	0	n -> D003418(n)./(1+[ninJ228693])forn>1	D003418(n)/(1 + [n in J228693]) for n > 1
+ A215259	Nearest integer to log(D003418(n))
+ A217710 lsm     0       S072649(n) - D029837(n)
+ A232747 lsm     0       S232746(n) * (S232746(n)-S232746(n-1))  "1"
+ A237451 lsm     0       (J064866(n)-1) modulo S074279(n)
+ A237452 lsm     0       floor((J064866(n)-1)/S074279(n))
+ A246663	Products of swinging factorials D056040
+ A250270	Products of terms of D003418
+ A253139	If n = Product_ prime(i)^e(i), then a(n) = Product_ D003418(e(i)+1)
+ A285721 lsm     0       0 if U285722(n) = 0, otherwise a(n) = 1 + a(U285722(n)). [Here U285722 is also used as an one-dimensional sequence.]
+ A305820 lsm     0       2 if n is a Fibonacci number > 1, otherwise a(n) = 2+n-S072649(n) = running count from 3 onward for non-Fibonacci numbers       "0,1"
+ A307803	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(n, k)).*(D003418(k + 1)))
+ A309765	a(n) is the least k>=1 such that k*(k+1) is divisible by D003418(n)
+ A321625	The Riordan square of the swinging factorial (D056040), triangle read by rows, T(n, k) for 0 <= k<= n
+ A326778	a(n) is a multiple if D003418(n)
+ A328449	lambdan	0	n -> LCM(1,2,...,n)=D003418(n)ifn+1isaprimepower,otherwisea(n)=0	LCM(1,2,...,n) = D003418(n) if n + 1 is a prime power, otherwise a(n) = 0
+ A343555 lsm     0       numerator(max_{k=2..n}(U191898(n, k)/k)), n>=2
+ A343556 lsm     0       denominator(max_{k=2..n}(U191898(n, k)/k)), n>=2
+ A345022	lambdan	0	n -> 0ifndividesf(n),f(n)otherwise,wheref(n)=LCM(D003418(n-1),n+1)	0 if n divides f(n), f(n) otherwise, where f(n) = LCM(D003418(n-1), n+1)
+ A346418	a(n) is the exponent of the largest power of n that divides the least common multiple of {1,2,...,n} (D003418). a(1) = 1
+ A346971	a(n) <= D003418(n) and a(n) <= a(n+1)
+ A348366 lsm     0       2*a(n - S130312(n)) + (S072649(n) - S072649(n - S130312(n))) mod 2 for n > 1    "0,1"
+ A350174 lsm     0       S083375(n+1) - 1
+ A350464	Table read by  rows. Interpolating the swinging factorial (D056040) and the double factorial (J001147)
+ A350464	The partial Bell polynomials Y_{2*n, k}(Z) applied to the list Z of the aerated swinging factorials (D056040)
+ A350634 lsm     0       ((J027434(n))^2 - (S082375(n))^2)/4
+ A352363	trilamb0	0	(n, k) -> D056040(n).*(BI(n, k)).*(k & 1)	Triangle read by rows. The incomplete Bell transform of the swinging factorials D056040
+ A357217	T(n,k+D003418(n)) = T(n,k), i.e., the n-th row is periodic with period D003418(n)
+ A357927 lsm     0       Sum_{j>=0} binomial(S072649(n),j)*binomial(n-S072649(n),j)
+ A357927 lsm     0       binomial(n,S072649(n))
+ A360845	Triangle read by rows: T(n,k) is the state of the k-th light after n steps of the light switch problem, 1 <= k <= D003418(n)
+ A361989 lsm     0       F000045(S072649(n)) - J194029(n)        n>=1
+ A361989 lsm     0       S130312(n) - J194029(n) n>=1
+ A362532	Trivial bounds: a(n-1) <= a(n) <= 2*D003418(n)
+ A362846 lsm     0       Sum_{k=0..n-1} Gamma(n + k) / Gamma(n - k) for n > 0, . Row sums of T362787     "1"
+ A364933 lsm     0       Sum_{k=1..n} U191898(n,k)*[J191904(n,k) = U191898(n,k)]
+ A366066 lsm     0       S083375(n) - 1 if  only if n = 7, 12, 14, 19, 21, 23, 30, 32, 34, 43, 45, 47, 60, 62, 79; otherwise, a(n) = S083375(n)
+ A366450 lsm     0       Sum_{k=1..n} T366362(n,k)*D023900(k)/n
+ A366562 lsm     0       Sum_{k=1..n} T366561(n,k)*D023900(k)/n
+ A366563 lsm     0       Sum_{k=1..n} abs(sign(T366561(n,k)))
+ A368777	a(n) is the largest divisor of n that is a term of the sequence D003418, the least common multiple of the first k natural numbers
+ A371028 lsm     0       Sum_{k=1..n} (n + k - 1)! / (k!*(n - k)!) if n > 0  . Row sums of T370983       "1"
+ A371399 lsm     0       2^n * Sum_{k=0..n} T371400(n, k) * (-1/2)^k
+#A131103	a(n, k) = sum_{j=1..MIN(floor(k/2), n)} J008299(k, j)*n!/(n-j)!
+#A131104	a(n, 1) = n. For k > 1, a(n, k) = sum_{j=1..MIN(floor((k-1)/2), n-1)} J008299(k-1, j)*n!*k*/(n-j-1)!
+#A131105	a(n, 2) = n^2-n. For k > 2, a(n, k) = sum_{j=1..MIN(floor(k/2)-1, n-2)} J008299(k-2, j)*n!*(k^2-k)/(2*(n-j-2)!)
+#A143806	Triangle read by rows, J130534 * (J143805 * 0^(n-k)); 0<=k<=n
+#A171738	lambdan	0	n -> SU(0,9,k->FA(k)*C(9,k).*(S_2(n,k)+k*S_2(n,k+1))=9*SU(0,9,k->FA(k)*C(9,k)*S_2(n,k+1),whereS_2(n,k)=J008299(n,k)	Sum_{k=0..9} k!*C(9,k)*(S_2(n,k) + k*S_2(n,k+1)) = 9*Sum_{k=0..9} k!*C(9,k)*S_2(n,k+1), where S_2(n,k) = J008299(n,k)
+#A280202	lambdan	0	n -> SU(0,floor(n/2),k->J008299(n,k)*J001035(k)	Sum_{k=0..floor(n/2)} J008299(n,k)*J001035(k)
+#A290586	lambdan	0	n -> 2*n^n-FA(n)+SU(0,n-1,k->Sum_{r=2*k..n-1}BI(n,k)*BI(n,r)*FA(k)*J008299(r,k)*c(n-k,n-r)wherec(m,n)=SU(0,m-1,i->BI(n,i).*(n^i-FA(n)*S2(i,n))	2*n^n - n! + Sum_{k=0..n-1} Sum_{r=2*k..n-1} BI(n,k) * BI(n,r) * k! * J008299(r,k) * c(n-k,n-r) where c(m,n) = Sum_{i=0..m-1} BI(n,i) * (n^i - n!*S2(i, n))
+#A291104	lambdan	0	n -> 2*n^n-FA(n)+SU(2,n-2,k->SU(2,n-k,j->BI(n,k)*BI(n,j)*FA(k)*J008299(n-j,k-1)*FA(j)*S2(n-k,j-1)	2*n^n - n! + Sum_{k=2..n-2} Sum_{j=2..n-k} BI(n,k) * BI(n,j) * k! * J008299(n-j,k-1) * j! * S2(n-k,j-1)
+#A330056	lambdan	0	n -> SU(0,n,k->SU(0,floor(k/2),j->SU(0,k-2*j,i->Z_1(k)*BI(n,k)*Z2(Z2(n-k).-(n-k)-1)*BI(k,i)*AS2(k-i,j).*(Z2(n-k)-1)^i*Z2(j*(n-k))whereAS2(n,k)aretheassociatedSnumbersofthe2*ndkind(J008299)	Sum_{k=0..n} Sum_{j=0..floor(k/2)} Sum_{i=0..k-2*j} (-1)^k * BI(n,k) * 2^(2^(n-k)-(n-k)-1) * BI(k,i) * AS2(k-i, j) * (2^(n-k)-1)^i * 2^(j*(n-k)) where AS2(n,k) are the associated S numbers of the 2*nd kind (J008299)
+---- 2024-07-08 15:17:13
+-A109162	multrar	0	(self, n) -> D019565(self.a(n - 1))	"1"
+-A113332	lambdan	0	n -> M000699(n + 1).*(2*n + 3).*(n + 2)./(3*(n + 1))
+-A117409	lambdin	0	n -> F000009(n - 2)	"0,0"
+-A119741	multraf	0	(self, n) -> FA(self.s(0))./(FA(self.s(1)))	""	new A003057(), new A004736()
+-A126850	multrar	0	(self, n) -> E107749(self.a(n - 1))	""
+-A130067	sintrif	0	(term, n) -> ZV(n - 1).-(term)	""	new A001855()
+-A133487	multrar	0	(self, n) -> M052330(self.a(n - 1))	"256"
+-A145061	multraf	0	(self, n) -> self.s(0).-(self.s(1)).+(2)./(2)	""	new A001359().skip(1), PREVIOUS
+-A157754	lambdin	0	n -> LCM(D051904(n), D051903(n))	"0,1"
+-A159477	lambdan	0	n -> n == 1 ? ZV(1) : F007918(n)
+-A171386	padding	0	0,1,1	0
+-A171387	lambdin	0	n -> ZV(n).IPP() ? Z.ONE : Z.ZERO	"0,0,0"
+-A178411	lambdin	0	n -> Integer.bitCount(n) == 1 ? ZV(n) : F008683(n)	"2,1"
+-A183205	lambdan	0	n -> E183204(n)./(n + 1)
+-A268935	multrar	0	(self, n) -> F001414(self.a(n - 1).+(self.a(n - 2)))	"1"
+-A344878	multraf	0	(self, n) -> LCM(self.s(0), self.a(Functions.MAKE_ODD.i(n)))	"1,3,2"	new A038712()
+-A369638	multrar	0	(self, n) -> F003415(self.a(n - 1))	"128"
+=A008299 = Stirling.associatedSecondKind(_V1, _V2)
+=A130534	Know2		Stirling.firstKind(_V1, _V2).abs()
+A097346	lambdan	0	n -> D003418(n).*(SU(0, n/2, k -> BI(n - k, k)./(k + 1)))
+A104488	lambdan	0	n -> (n % 8) == 0 ? D000688(F000265(n)) : ZV(0)		Number of Hamiltonian groups of order n.
+A163087	lambdan	0	n -> PD(n, d -> D056040(d))	Product{k|n} k$. Here '$' denotes the swinging factorial function (D056040)
+A163088	lambdan	0	n -> PD(n, d -> D056040(d)./(D056040(n)))	(Product{k|n} k$) / n$. Here '$' denotes the swinging factorial function (D056040)
+A163089	lambdan	0	n -> FA(n)./(PD(n, d -> D056040(d)))
+A190789	filnum	0	1	n -> Functions.OMEGA.i(n - 1) + Functions.OMEGA.i(n + 1) == Functions.OMEGA.i(n)
+A192005	sintrif	0	(term, n) -> D000688(term).-(1)	"1"	new A013929()
+A194586	trilamb0	0	(n, k) -> D056040(n).*(BI(n, k)).*(k & 1)	Triangle read by rows, T(n,k) the coefficients of the polynomials Sum_{k=0..n} BI(n,k)*D056040(k)*(k mod 2)*q^k
+A196747	filtpos	0	0	new A056040()	term -> term.mod(3) != 0	Numbers n such that 3 does not divide swing(n) = D056040(n)
+A196748	filtpos	0	0	new A056040()	term -> term.mod(3) != 0 && term.mod(5) != 0	Numbers n such that 3 and 5 do not divide swing(n) = D056040(n)
+A196749	filtpos	0	0	new A056040()	term -> term.mod(3) != 0 && term.mod(5) != 0 && term.mod(7) != 0	Numbers n such that 3, 5 and 7 do not divide swing(n) = D056040(n)
+A225774	filter	0	new A000040()	term -> F000203(F000203(term)).equals(PHI(term).*(2))
+A229265	filnum	0	1	n -> Functions.SIGMA1.z(n).+(Functions.TAU.z(n)).+(PHI(n)).IPP()
+A253666	trilamb0	0	(n, k) -> BI(n, k).*(D056040(k))
+A264012	filnum	0	1	n -> GCD(PHI(n), n - 1).equals(F002322(n)) && ZV(n).IPP()	Composite numbers n such that gcd(phi(n), n-1) = lambda(n), where lambdF002322(n).
+A268512	trilamb0	0	(n, i) -> D003418(2*(n - 1)).*(BI(2*n - 1, n - i)).*(2*i - 1)./(i)./(BI(2*n - 1, n))
+A275938	filnum	0	1	n -> TAU(n).IPP() && !Functions.SIGMA1.z(n).IPP()	Numbers n such that d(n) is prime while sigma(n) is not prime (where d(n) = F000005(n) and sigmF000203(n)).
+A329385	multrar	1	(self, n) -> SD(n, d -> (d >= n) ? ZV(1) : D000688(n/d).*(self.a(d)))	"1"
+A334224	lambdin	0	n -> D003418(2*n-1)	"2"
+A350152	filtpos	0	0	new A000001()	(k, term) -> term.compareTo(Z.ONE) > 0 && term.equals(D000688(k))	m such that J000001(m) = J000688(m) > 1
+A354911	lambdan	0	n -> ZV(n).IPP() ? ZV(0) : D000688(n)	J000688(n) if n is nonprime, otherwise a(n) = 0
+A355266	trilamb0	0	(n, k) -> F000110(k).*(S1(n, k).abs())
+A359421	sintrif	0	(term, n) -> D000688(term)	""	new A084920()
+A369162	lambdan	0	n -> D000688(D000688(n))
+A369166	filnum	0	1	k -> D000688(k).equals(D000688(k + 1))
+A369167	lambdan	0	n -> D000688(D000688(n).+(n))
+A369169	filtpos	0	1	new A025487()	(k, term) -> F000005(k).equals(D000688(k))
+A369171	filtpos	0	1	new A046660()	(k, term) -> D000688(k).equals(term)
+A374357	decexp	0	CR.valueOf(109).pow(new Q(1,5))	Decimal expansion of the 5th root of 109.
+A374358	cofract	0	new A374357()

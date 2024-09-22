@@ -1,0 +1,105 @@
+---- 2024-09-21 22:05:55
+A073050	lambdan	1	n -> F000040(Z2(n).+(ZV(2))).-(F000040(Z2(n).+(ZV(1)))).-(1)	""		a(n) = prime(2^n + 2) - prime(2^n + 1) - 1	_	_	_
+A073715	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A000668(), new A365161()	a(n) = J000668(n) - J365161(n)	_	_	_
+A074329	sintrif	1	(term, n) -> term.-(F000720(term)).-(ZV(1))	""	new A002182()	a(n) = J002182(n) - F000720(J002182(n)) - 1	_	_	_
+A074626	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A000668(), new A365160()	a(n) = J000668(n) + J365160(n)	_	_	_
+A074840	lambdan	1	n -> CR.TWO.-(CR.SQRT2).*(n).floor()	""		a(n) = floor(n*(2-sqrt(2)))	_	_	_
+A076252	filnum	1	5	n -> Functions.OMEGA.i(n) == Functions.OMEGA.i(n - 1) + Functions.OMEGA.i(n - 2) + Functions.OMEGA.i(n - 3)	""		omega(n) = omega(n-1) + omega(n-2) + omega(n-3)	_	_	_
+A077005	sintrif	2	(term, n) -> PM(n).-(term)	""	new PrependSequence(1, new A069830(), 1)	""		a(n) = prime(n+1) - J069830(n)	_	_
+A077645	lambdan	1	n -> D007504(F000720(ZV(10).^(n))).-(D007504(F000720(ZV(10).^((ZV(n-1))))))	""		a(n) = Sum_{10^(n-1) <= p <= 10^n, p prime} p = D007504(F000720(10^n)) - D007504(F000720(10^(n-1)))	_	_	_
+A078883	sintrif	1	(term, n) -> term.-(ZV(1))	""	new A027856()	a(n) = J027856(n)-1 = J078884(n)-2	_	_	_
+A079532	lambdan	1	n -> CV(n).-(CV(n).sqrt()).-(Functions.PHI.z(n)).floor()	""		a(n) = floor(n - sqrt(n)) - phi(n)	_	_	_
+A079565	sintrif	1	(term, n) -> term.+(M005142(n))	"1,1,2,6,16"	new A079571()	For n >= 5, a(n) = J079571(n) + M005142(n)	_	_	_
+A080883	lambdan	0	n -> SQRT(n).+(1).^(2).-(n)	""		a(n) = floor( sqrt(n)+1 )^2 - n	_	_	_
+A081240	multraf	1	(self, n) -> self.s(0).^(2).+(self.s(1).^(2))	""	new A070548(), new A070549()	a(n) = J070548(n)^2 + J070549(n)^2	_	_	_
+A081414	lambdan	0	n -> E081412(Z2(n))	""		a(n) = F006530(D001223(D000079(n))) = E081412(2^n) = F006530(J074325(n))	_	_	_
+# A090460	multraf	15	(self, n) -> self.s(0).-((ZV(n-1)).*(self.s(1)))	""	new A071983(), new A071984()	a(n) = J071983(n) - (n-1)*J071984(n)	_	_	_
+A093051	lambdin	0	n -> E090740(n).+(ZV(n)).-(ZV(1))	"0"		a(n) = E090740(n) + n - 1, for n >= 1	_	_	_
+A095256	sintrif	1	(term, n) -> term.-((ZV(n+1)).^(2))	""	new A057494()	a(n) = J057494(n) - (n+1)^2	_	_	_		Number of numbers not divisible by 10 that stay multiples of themselves when freed of their last n digits.
+A096324	lambdan	1	n -> PM(ZV(3).^(PM(n)))	""		a(n) = prime(3^prime(n))	_	_	_		a(n) = prime(3^prime(n)).
+A096484	lambdan	1	n -> F000196(D002275(2*n-1))	""		a(n) = F000196(D002275(2*n-1))	_	_	_
+A097604	lambdan	1	n -> CV(2*n).sqrt().*(F000010(n)).floor().-(n)	""		a(n) = floor( phi(n)*sqrt(2*n) ) - n	_	_	_
+A097850	lambdan	1	n -> CV(n).sqrt().*(2).*(F000010(n)).floor().-(n)	""		a(n) = floor(2*sqrt(n)*phi(n)) - n	_	_	_
+A101341	lambdan	0	n -> F000045(Z2(Z2(n)).+(ZV(1)))	""		a(n) = Fibonacci(2^(2^n)+1) = F000045(J000215(n))	_	_	_
+A103462	trilambn	0	0	0	(n, k) -> ZV(k).^(n - k).+((n == k) ? 0 : 1)	(T(n, k)=if(k<=n, k^(n-k)+1-0^(n-k), 0);
+A103943	lambdan	1	n -> Z2(2*n-1).-(BI(2*n-1, n-1)).+(BI(n-1, (ZV(n/2))))./(2)	""		2a(n) = 2^(2n-1) - binomial(2n-1, n-1) + binomial(n-1, floor(n/2))	_	_	_
+A104137	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(ZV(1))	"4"	new A007663().skip(1), new A061285().skip(1)	a(n) = (2^(p-1) - 1)/p + 2^{(p-1)/2} + 1 = J007663(n) + J061285(n) + 1	_	_	_
+A105091	lambdan	1	n -> F000040(9*n-6).+(F000040(9*n-4)).+(F000040(9*n-2))	""		a(n) = F000040(9*n-6) + F000040(9*n-4) + F000040(9*n-2)	_	_	_
+A109654	lambdan	1	n -> F000040(D003622(n).+(ZV(1)))	""		a(n) = F000040(D003622(n) + 1) = prime(floor(n*phi^2))	_	_	_		Primes A000040(i) such that A003849(i-1) = 1.
+A112987	lambdan	0	n -> Z.TWO.pow((n == 0) ? Z.ONE : Z.TWO.modPow(ZV(n), ZV(n)))		a(n) = 2^(2^n mod n) for n > 0; a(0) = 2.
+A113396	lambdan	1	n -> F000040(n+1).-(E167770(n))	""		a(n) = prime(n+1) - E167770(n)	_	_	_
+A113661	sintrif	1	(term, n) -> term./(6)	"1"	new A113660()
+A114761	lambdan	0	n -> CR.SQRT2.*(CV(10).^(n)).floor().^(2)	a(n) = (floor(sqrt(2)*10^n))^2.
+A115836	lambdin	1	n -> M007378(n - 1).-(2)	"1,2"		a(n) = M007378(n+1) - 2	_	_	_
+A116527	sintrif	1	(term, n) -> E094000(n).-(term)	""	new A088389()	a(n) = E094000(n) - J088389(n)	_	_	_
+A120864	lambdan	1	n -> ZV(n).*(3*n).-(CV(n).*(CR.THREE.sqrt()).floor().^(2))	""		a(n) = 3*n^2 - floor(n*sqrt(3))^2	_	_	_
+A120866	lambdan	1	n -> ZV(n).*(5*n).-(CV(n).*(CR.FIVE.sqrt()).floor().^(2))	""		a(n) = 5*n^2 - floor(n*sqrt(5))^2	_	_	_
+A129870	sintrif	1	(term, n) -> term.-(F151799(term))	""	new A006988()	a(n) = J006988(n)-F151799(J006988(n))	_	_	_
+A131703	lambdan	1	n -> SU(1, Functions.SQRT.i(n), k -> CV(n).sqrt().*(k).floor())	""		a(n) = Sum_{k=1..floor(sqrt(n))} floor(k*sqrt(n))	_	_	_
+A132635	lambdan	0	n -> (n <= 1) ? ZV(n) : F000720(n*n).+(2)	""		a(n) = pi(n^2) + 2 = J038107(n) + 2, n > 1	_	_	_
+A135939	lambdan	3	n -> D051903(F000045(n))	""		a(n) = D051903(F000045(n))	_	_	_
+A135964	lambdin	0	n -> BI(CR.SQRT2.*(n).floor().intValueExact(), n)	""		a(n) = binomial(floor(n*sqrt(2)),n) for n>=0	_	_	_
+A135965	lambdin	0	n -> BI(CR.SQRT2.+(CR.ONE).*(n).floor().intValueExact(), n)	""		a(n) = binomial(floor(n*(1+sqrt(2))),n) for n>=0	_	_	_
+A138466	lambdin	1	n -> CR.THREE.sqrt().-(CR.ONE).*(n + 1).floor()	"1"		For n >= 1, a(n) = floor((sqrt(3)-1)*(n+1))	_	_	_
+A141087	lambdan	1	n -> F000040(Z2(ZV(n).^(2))).-(Z2(ZV(n).^(2)))	""		a(n) = prime(2^(n^2)) - 2^(n^2)	_	_	_		a(n) = prime(2^(n^2)) - 2^(n^2).
+A141102	lambdan	1	n -> F000040(Z2(n)).-(ZV(n).^(2))	""		a(n) = prime(2^n) - n^2	_	_	_
+A145826	lambdan	1	n -> CV(PM(n).+(2)).sqrt().*(2).floor().+(PM(n)).+(1)	""		a(n) = prime(n) + floor(2*(sqrt(prime(n)+2))) + 1	_	_	_
+A154393	lambdan	1	n -> CV(F000045(n + 1)).^(CR.FIVE.sqrt().+(1)).floor()	""		a(n) = floor(fibonacci(n+1)^(1+sqrt(5)))	_	_	_
+A156296	lambdin	0	n -> ZV(2).*(M015502(n))	"1,2"		a(n) = 2*M015502(n+1) for n>1	_	_	_
+A165994	sintrif	1	(term, n) -> CV(term).-(CV(term).sqrt()).floor()	""	new A000040()	a(n) = floor(F000040(n) - sqrt(F000040(n)))	_	_	_
+A168510	lambdan	1	n -> RQ(1, n, k -> new Q(k).^(2*k - n - 1)).*(FA(n)).num()	""		a(n) = n!*Product_{k=1..n} k^(2k-n-1)	_	_	_
+A171405	sintrif	1	(term, n) -> F000203(n).-(term)	""	new A178142()	a(n) = F000203(n) - J178142(n)	_	_	_
+A173178	sintrif	1	(term, n) -> term.*(3).+(1)	""	new A059325()	a(n) = 3*J059325(n) + 1	_	_	_
+A179241	lambdan	1	n -> CV(5).sqrt().-(1).^(n).floor()	""		a(n) = floor((sqrt(5)-1)^n)	_	_	_
+A187666	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(F008297(2*k, k)).*(S1(2*n-2*k, n - k).abs()))	""		a(n) = Sum_{k=0..n} binomial(n,k) * Lah(2k,k) * Stirling1(2n-2k,n-k)	_	_	_
+A191599	filtpos	1	1	new A000594()	(k, v) -> v.mod(k) != 0	Numbers k that do not divide Ramanujans tau(k).
+A192186	lambdan	0	n -> BI(2*n, CR.SQRT2.*(n).floor().intValueExact())	""		a(n) = binomial(2*n, floor(n*sqrt(2)))	_	_	_
+A192573	lambdan	0	n -> SU(0, n, k -> (SQRT(F000110(k))).*(F000196(F000110(n - k))))	""		a(n) = Sum_{k=0..n} floor(sqrt(Bell(k)))*floor(sqrt(Bell(n-k)))	_	_	_
+A192657	lambdan	0	n -> SU(0, n, k -> SQRT(BI(2*k, k)).*(SQRT(BI(2*n - 2*k, n - k))))	""		a(n) = Sum_{k=0..n} floor(sqrt(binomial(2*k,k)))*floor(sqrt(binomial(2*n-2*k,n-k)))	_	_	_
+A195207	lambdin	0	n -> D183063(D000166(n))	"0"		a(n) = D183063(D000166(n)), for n != 1	_	_	_
+A200324	lambdan	1	n -> CV(PM(n + 1)).sqrt().-(CV(PM(n)).sqrt()).*(10).floor()	""		a(n) = floor(10*(sqrt(F000040(n+1)) - sqrt(F000040(n))))	_	_	_
+A213707	sintrif	0	(term, n) -> ZV(n).+(term)	""	new A213706()	a(n) = n+J213706(n)	_	_	_
+A216209	lambdan	0	n -> { final Z sqn = SQRT(n); return sqn.-(sqn.^(2)).+(n); }	""		a(n) = floor(sqrt(n)) - floor(sqrt(n))^2 + n	_	_	_
+A224832	sintrif	1	(term, n) -> ZV(2).*(term)	""	new A325637()	a(n) = 2*J325637(n)	_	_	_
+A244416	sintrif	1	(term, n) -> ZV(6).^(term)	""	new A244417()	a(n) = 6^J244417(n)	_	_	_
+A248729	lambdan	0	n -> F055642(E248728(n))	""		a(n) = F055642(E248728(n))	_	_	_
+A248762	lambdan	1	n -> E008834(FA(n))	""		a(n) = E008834(n!)	_	_	_
+A248764	lambdan	1	n -> E008835(FA(n))	""		a(n) = E008835(n!)	_	_	_
+A260803	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A071693(), new A008619()	a(n) = J071693(n) - J008619(n) = J071693(n) - floor(n/2) - 1	_	_	_
+A262765	sintrif	2	(term, n) -> term.-(ZV(n))	""	new A071810()	a(n) = J071810(n) - n	_	_	_
+A268870	multraf	3	(self, n) -> self.s(0).-(self.s(1))	""	new A239299(), new A239295()	a(n) = J239299(n) - J239295(n)	_	_	_
+A270543	lambdan	0	n -> E226355(n).-(E270544(n))	""		a(n) = E226355(n) - E270544(n)	_	_	_
+A273190	lambdin	0	n -> SQRT(2*n - 1).-(SQRT(n - 1))	"0"		a(n) = floor(sqrt(2*n-1))-floor(sqrt(n-1)) for n > 0	_	_	_
+A277946	sintrif	1	(term, n) -> term.^(2)	""	new A277959()	a(n) = J277959(n)^2	_	_	_
+A278565	lambdan	0	n -> SU(1, n, t -> BI(n, t).*(ZV(t).^(1 + (n - t)*(n - t))))	""		a(n) = Sum_{t=1..n} binomial(n,t)*t^(1+(n-t)^2)	_	_	_
+A279135	multraf	0	(self, n) -> self.s(0).+(self.s(1))./(3)	"1"	new A053262(), new A259910()
+A279186	lambdan	1	n -> D007733(F002322(n))	""		a(n) = D007733(F002322(n))	_	_	_
+A287960	sintrif	1	(term, n) -> ZV(10).+(ZV(3).*(term))./(8)	""	new A097269()	8*a(n) = 10+3*J097269(n)	_	_	_
+A293418	lambdan	0	n -> CR.SQRT2.*(FI(n)).floor()	""		a(n) = floor(Fibonacci(n)*sqrt(2))	_	_	_
+A293433	lambdan	1	n -> E293431(n).-(E147612(n))	""		a(n) = E293431(n) - E147612(n)	_	_	_
+A293434	lambdan	1	n -> E293432(n).-((E147612(n).*(ZV(n))))	""		a(n) = E293432(n) - (E147612(n)*n)	_	_	_
+A293469	lambdan	0	n -> SU(0, n, k -> DF(2*k-1).*(BI(2*n-k, n)))	""		a(n) = Sum_{k=0..n} (2*k-1)!!*binomial(2*n-k, n)	_	_	_
+A296991	filtpos	1	1	new A000594()	(k, v) -> v.mod(ZV(k).^(2)).isZero()	Numbers k such that k^2 divides tau(k), where tau(k) = A000594(k) is Ramanujans tau function.
+A296993	filtpos	1	1	new A000594()	(k, v) -> v.mod(ZV(k).^(3)).isZero()	Numbers k such that k^3 divides tau(k), where tau(k) = A000594(k) is Ramanujans tau function.
+A305426	sintrif	1	(term, n) -> E154402(n).-(term)	""	new A036987()	a(n) = E154402(n) - J036987(n)	_	_	_
+A320278	lambdan	0	n -> SQRT(MAX(0, 2*n - 1)).-(SQRT(n))	""		a(n) = floor(sqrt(max(0,2*n-1))) - floor(sqrt(n))	_	_	_
+A328404	lambdan	0	n -> Functions.PRIME_PI.z(Functions.GPF.z(E276087(n)))	""		a(n) = E235224(F276086(n)) = E061395(E276087(n))	_	_	_
+A328405	lambdan	0	n -> Functions.PRIME_PI.z(Functions.GPF.z(E328403(n)))	""		a(n) = E235224(E276087(n)) = E061395(E328403(n))	_	_	_
+A328843	lambdan	0	n -> Functions.PRIMORIAL_BASE_LOG.z(Functions.SQUARE_FREE_KERNEL.z(Functions.PRIMORIAL_BASE_EXP.z(F276086(n))))	""		a(n) = E328841(F276086(n))	_	_	_
+A338236	lambdan	1	n -> F000196(n).-(D046951(n))	""		a(n) = F000196(n) - D046951(n)	_	_	_
+A339363	lambdan	1	n -> SU(1, Functions.SQRT.i(n), k -> SQRT(n - k))	""		a(n) = Sum_{k=1..floor(sqrt(n))} floor(sqrt(n-k))	_	_	_
+A343193	lambdan	0	n -> E082540(ZV(10).^(n))	""		a(n) = E082540(10^n)	_	_	_
+A344038	lambdan	0	n -> E343978(ZV(10).^(n))	""		a(n) = E343978(10^n)	_	_	_
+A345678	sintrif	0	(term, n) -> E345677(n).-(term).+(ZV(2))	""	new A000058()	a(n) = E345677(n) - J000058(n) + 2	_	_	_
+A354187	sintrif	1	(term, n) -> E348717(n).+(term)	""	new A354186()	a(n) = E348717(n) + J354186(n)	_	_	_
+A356645	sintrif	1	(term, n) -> term.^(2).-(ZV(4).*(ZV(n).^(11)))	""	new A000594()	a(n) = tau(n)^2 - 4*n^11	_	_	_
+A359428	sintrif	1	(term, n) -> E358764(n).+(term)	""	new A359427()	a(n) = E358764(n) + J359427(n)	_	_	_
+A362570	lambdan	1	n -> CV(PM(n)).sqrt().*(2).floor().*(2).+(1)	""		a(n) = 2*floor(2*sqrt(prime(n))) + 1	_	_	_
+A364087	filtpos	1	1	new A000594()	(k, v) -> v.^(2).compareTo(ZV(4).*(ZV(k).^(11))) > 0	Integers k for which A000594(k)^2 > 4 k^11, where A000594 is Ramanujans tau function.
+A372240	lambdan	0	n -> PR(1, n, j -> ZV(j).^(((SQRT(j)))))	""		a(n) = Product_{j=1..n} j^(floor(sqrt(j)))	_	_	_
+A372847	lambdan	1	n -> SU(1, n - 1, k -> CV(n*n - k*k).sqrt().*(2).floor()).*(2)	""		a(n) = 2*Sum_{k=1..n-1} floor(2*sqrt(n^2 - k^2))	_	_	_
+A373459	lambdan	1	n -> SD(n, p -> ZV(p).IPP() ? ZV(p).^(n - p) : ZV(0))	""		a(n) = Sum_{p|n prime} p^(n - p)	_	_	_
+A373651	lambdan	0	n -> BI(n+2, 2).*(SU(0, n, k -> BI(n, k).*(BI(k, n-k))))	""		a(n) = binomial(n+2,2) * Sum_{k=0..n} binomial(n,k) * binomial(k,n-k)	_	_	_
+A375034	lambdan	1	n -> E375032(n).-(E375033(n))	""		a(n) = E375032(n) - E375033(n)	_	_	_
+A375246	lambdan	0	n -> E375245(ZV(10).^(n))	""		a(n) = E375245(10^n)	_	_	_
+A376270	lambdan	0	n -> F000030(n).*(F003132(n))	""		a(n) = F000030(n)*F003132(n)	_	_	_

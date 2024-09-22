@@ -1,0 +1,47 @@
+# 2024-07-16
+# 2024-07-17
+#A374609	filnum	0	0	k -> Predicates.PRIMORIAL.is(ZV(k).*(k+1))	nyi Ft	Numbers k such that k*(k+1) is primorial (a term in A002110).	nonn,hard,new	1..5	nyi	_David James Sycamore_ and _Michael De Vlieger_
+%F A368663 Equals (20-6*Pi)/(24-7*Pi) = 1 - €368664.
+%F A368664 Equals (4-Pi)/(24-7*Pi) = 1 - €368663.
+%F A368665 Equals (4644864 - 9252864*Pi + 7592128*Pi^2 - 3288992*Pi^3 + 794310*Pi^4 - 101490*Pi^5 + 5364*Pi^6)/(19267584 - 39854080*Pi + 33814528*Pi^2 - 15105856*Pi^3 + 3754992*Pi^4 - 493215*Pi^5 + 26775*Pi^6).
+%F A368666 Equals (7680 - 10744*Pi + 5572*Pi^2 - 1272*Pi^3 + 108*Pi^4)/(21504 - 32000*Pi + 17368*Pi^2 - 4101*Pi^3 + 357*Pi^4).
+%F A368667 Equals (286720 - 520576*Pi + 365408*Pi^2 - 125052*Pi^3 + 20982*Pi^4 - 1386*Pi^5)/(1204224 - 2114560*Pi + 1452608*Pi^2 - 490176*Pi^3 + 81507*Pi^4 - 5355*Pi^5).
+%F A368668 Equals (3200 - 5560*Pi + 3370*Pi^2 - 867*Pi^3 + 81*Pi^4)/(21504 - 32000*Pi + 17368*Pi^2 - 4101*Pi^3 + 357*Pi^4).
+%F A368669 Equals (320 - 256*Pi + 68*Pi^2 - 6*Pi^3)/(21504 - 18752*Pi + 5440*Pi^2 - 525*Pi^3).
+-
+- A257505	disperd	1	new €255411()	
+- A283734  column 1; column 1 is given by r(n) = r(n-1) + 1 + L(n), where L = lower Wythoff sequence (A000201).
+- A283961  column 1, where column 1 is given by c(n) = c(n-1) + 1 + U(n), where U = upper Wythoff sequence (A001950).
+- A283962 (column 1 = A022776).
+-# A257503	dispera	0	new A255411()	n -> CV(n).floor()	new A065091()	(row,col) read by antidiagonals: A(1,col) = A256450(col-1), and for row > 1, A(row,col) = A255411(A(row-1,col)); disperdion of factorial base shift A255411 (array transposed).	nonn,base,tabl	1..1275	nyi	_Antti Karttunen_
+-# A257505	disperd	0	n -> CV(n).floor()	new A065091()	(row,col): A(row,1) = A256450(row-1), and for col > 1, A(row,col) = A255411(A(row,col-1)); disperdion of factorial base shift A255411.	nonn,base,tabl	1..1275	nyi	_Antti Karttunen_
+-# A276953	disperd	0	n -> CV(n).floor()	new A065091()	(row,col) read by antidiagonals: A(1,col) = A273670(col-1), and for row > 1, A(row,col) = A153880(A(row-1,col)); disperdion of factorial base shift A153880 (array transposed).	nonn,base,tabl	1..1830	nyi	_Antti Karttunen_
+-# A276955	disperd	0	n -> CV(n).floor()	new A065091()	(row,col): A(row,1) = A273670(row-1), and for col > 1, A(row,col) = A153880(A(row,col-1)); disperdion of factorial base left shift A153880.	nonn,base,tabl	1..1830	nyi	_Antti Karttunen_
+---- 2024-07-21 21:16:42
+-A087465	disperd	0	new A077043()	 Rank array R of 3/2 read by antidiagonals; this array is the dispersion of the complement of the sequence given by r(n) = r(n-1) + 1 + floor(3n/2) for n>=1, with r(0) = 1; that is, A077043(n+1).
+-A114537	disperd	0	new A000040()	the primes (an array read by downward antidiagonals).	nonn,tabl,nice	1..172	nyi	_Clark Kimberling_
+-A114538	dispera	0	new A000040()	new A114537()
+-A114578	dispera	1	new A002808()	the composite numbers.	nonn,tabl	1..4950	nyi	_Clark Kimberling_
+-A120858	dispera	0	new A190337()	CR.EIGHT.sqrt().+(3).*(n).floor()	the Beatty sequence ([r*n]: n >= 1), where r = 3 +  8^(1/2): square array D(n,m) (n, m >= 1), read by ascending antidiagonals.	nonn,tabl	1..49	nyi	_Clark Kimberling_
+-A120859	dispera	0	n -> CR.EIGHT.sqrt().+(3).*(n).floor().+(1)	the sequence ([r*n] + 1: n >= 1), where r = 3 + 8^(1/2): square array D(n,m) (n, m >= 1), read by ascending antidiagonals.	nonn,tabl	1..50	nyi	_Clark Kimberling_
+-A120874	null	Fractal sequence of the Fraenkel array (J038150).	nonn	1..79
+-A140589	disperd	0	new SingleTransformSequence(1, (term, n) -> ((term.bitLength() & 1) == 1) ? term : term.negate(), "1", new A140513())	 dispersion of 2, -4, -4, 8, 8, 8, ... (a signed version of A140513) with -5, 5, -23, 17, -95, 65,... The latter sequence is A(k,0)-2*A(k-1,k-1), an alternation of the negative of A140529 with each second element of A000051.
+-A144580	holos	[[0],[8],[12],[102,-56,8],[73,-60,12],[-18,22,-4],[0,4,-4]]	8*a(n)+12*a(n+1)+(22+8*n^2+24*n)*a(n+2)+(73+12*n^2+60*n)*a(n+3)+(-18*n-8-4*n^2)*a(n+4)+(-4*n^2-36*n-80)*a(n+5)
+-A167969	rowix	0	new A082154()	Dispersion of the complement of the hexagonal numbers.           |		Signature sequence of phi^3 = 0.23606797749979..., where phi is
+-A191426	disperd	0	n -> CR.PHI.*(n).+(CR.THREE).floor()	(3+[nr]), where r=(golden ratio)=(1+CR.FIVE.sqrt())/2 and [ ]=floor, by antidiagonals.	nonn,tabl	1..78	nyi	_Clark Kimberling_
+-A191429	disperd	0	n -> CR.SQRT2.*(n).+(CR.TWO).floor()	([n*CR.SQRT2+2]), where [ ]=floor, by antidiagonals.	nonn,tabl	1..78	nyi	_Clark Kimberling_
+-A191441	disperd	0	n -> CR.SQRT2.*(n + 1).+(n).floor()	new A003622()	([n*x+n+x]), where x=CR.SQRT2 and [ ]=floor, by antidiagonals.	nonn,tabl	1..58	nyi	_Clark Kimberling_
+-A194959	rowix	0	new A057027()
+-A248513	disperd	0	new A181155()	 ("odious numbers").
+-A248514	rowix	0	new A248513()	Fractal sequence of the dispersion of the "odious numbers".
+-A254051	dispera	1	new A016789()	(3n-1), read by antidiagonals.	nonn,tabl	1..10440	nyi	_Clark Kimberling_
+-A254107	dispera	1	new A055938()
+-A255555	disperd	1	new A005187()	, for n>=1: A005187[2..] = [3, 4, 7, 8, 10, 11, ...]. The left column is the complement of that sequence, which is {1} followed by A055938. - _Antti Karttunen_, Apr 17 2015
+-A258033	null	Fractal sequence derived from J022328.	nonn	1..10000
+-A258051	null	Fractal sequence derived from A258033.	nonn	1..10000
+-A276943	dispera	0	new A276154()	(row,col) read by antidiagonals: A(1,col) = A276155(col), and for row > 1, A(row,col) = E276154(A(row-1,col)); disperdion of primorial base left shift E276154 (array transposed).	nonn,base,tabl	1..630	nyi	_Antti Karttunen_
+-A284457	disperd	0	new A065642()
+-J191428	Dispersion of ([nr+r]), where r=(golden ratio)=(1+sqrt(5))/2 and |	A167198	Fractal sequence of the interspersion A083047.
+-nj A167198	rowix	0	new A083047()	 €083047 is an interspersion (hence a dispersion), with fractal sequence €167198
+-nj A276951	rowix	0	new A276953()	 (equally: ro
+fa	A331124	multrar	0	(self, n) -> self.a(n - 1).testBit(0) ? self.a((n + 1)/2).+(self.a((n - 1)/2)).+(1) : self.a(n/2).+(self.a(n/2 - 1)).+(self.a(n/2 + 1)).+(1)	"1,1,1"

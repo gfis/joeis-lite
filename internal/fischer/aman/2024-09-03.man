@@ -1,0 +1,112 @@
+---- 2024-09-12 17:17:45
+ A109380	lambdan	0	n -> LD(FA(n), FA(n+1))	""		a(n) = LD(n!,(n+1)!)	_	_	_		Levenshtein distance between successive factorials when considered as decimal strings.
+A121841	lambdan	1	n -> F000040(ZV(10).^(9).*(n))	""		a(n) = prime(n*10^9)	_	_	_		a(n) = prime(n*10^9).
+A121843	lambdan	1	n -> F000040(ZV(10).^(12).*(n))	""		a(n) = F000040(n*10^12)	_	_	_		a(n) is the (n*10^12)-th prime.
+ A174059	lambdan	0	n -> (-(-(SU(1, n, k -> F000196(k)))))	""		a(n) = ceiling(Sum_{k=1..n} sqrt(k))	_	_	_		a(n) = ceiling(Sum_{k=1..n} sqrt(k)).
+A196222	sintraf	0	(term, n) -> (n == 0) ? ZV(1) : term.^(term)	new A047726()	a(n) = J047726(n)^J047726(n)	
+ A217710	lambdan	1	n -> S072649(n).-(D029837(n))	""		a(n) = S072649(n) - D029837(n)	_	_	_		Cardinality of the set of possible heights of AVL trees with n (leaf-) nodes.
+ A222062	lambdan	0	n -> SU(0, n, k -> S2(n, k).*(FA(k)).*(H2(k)))	""		a(n) = Sum_{k=0..n} S2(n,k)*FA(k)*H2(k)	_	_	_		a(n) = n-th second-order hypergeometric-harmonic number.
+ A222064	lambdan	0	n -> SU(0, n, k -> S2(n, k).*(FA(k)).*(H3(k)))	""		a(n) = Sum_{k=0..n} S2(n,k)*FA(k)*H3(k)	_	_	_		a(n) = n-th third-order hypergeometric-harmonic number.
+ A222145	lambdan	0	n -> (SU(0, n, k -> S2(n, k).*(H2(k))).*(FA(n)))	""		a(n) = (Sum_{k=0..n} S2(n,k) * H2(k)) * FA(n)	_	_	_		a(n) = n-th second-order hyperharmonic-exponential number, multiplied by n!.
+ A222146	lambdan	0	n -> (SU(0, n, k -> S2(n, k).*(H3(k))).*(FA(n)))	""		a(n) = (Sum_{k=0..n} S2(n,k) * H3(k)) * FA(n)	_	_	_		a(n) = n-th third-order hyperharmonic-exponential number, multiplied by n!.
+A230773	sintrif	1	(term, n) -> D010051(n).*(term.+(ZV(n).^(2).mod(ZV(3)))).+((ZV(1).-(D010051(n))).*(D055396(n)))	""	new A056811()	a(n) = D010051(n)*(J056811(n) + mod(n^2,3))+(1-D010051(n))*D055396(n)	_	_	_		Minimum number of steps in an alternate definition of the Sieve of Eratosthenes needed to identify n as prime or composite.
+ A232747	lambdin	1	n -> S232746(n).*((S232746(n).-(S232746(n-1))))	"1"		a(1)=1, and for n>1, a(n) = S232746(n) * (S232746(n)-S232746(n-1))	_	_	_		Inverse function to Hofstadters A005228.
+A238454	lambdan	1	n -> Functions.CEIL_SQRT.z(Z2(2*n - 1)).^(2).-(Z2(2*n - 1))	""		a(n) = ceiling(sqrt(2^(2*n-1)))^2 - 2^(2*n-1)	_	_	_		Difference between 2^(2*n-1) and the next larger square.
+ A244333	lambdin	1	n -> NCD(n).-(ZV(2).*(NCD(n-1))).-(ZV(3).*((ZV(n-2)))).+(4)	"0,1,1,4,5"		It appears that: Define NCD(N)=3-N+(sum{m=1..(N-3)} 2*m*3^(m-1)); then for n>=5, a(n) = NCD(n)-2*NCD(n-1)-3*(n-2)+4	_	_	_		Number of ternary digits in the high-water marks of the terms of the continued fraction of the base 3 Champernowne constant (A077772).
+A253608	lambdan	1	n -> new Z(Integer.toString(n, 2) + Integer.toString(n ^0xfffffff, 2), 2)		The binary representation of a(n) is the concatenation of n and the binary complement of n, A035327(n).
+A281626	lambdin	1	n -> ZV(n + 1).-(F000203(n).-(n).-(1))	"1"		a(1) = 1; for n>1, a(n) = (n+1) - (sigma(n) - n - 1) = 2*(n+1) - sigma(n) = n + 1 - F048050(n)	_	_	_		a(n) = (sum of trivial divisors of n) - (sum of nontrivial divisors of n).
+A295875	sintrif	0	(term, n) -> term.+(F000203(D005940(1 + n)).and(ZV(1)))	""	new A295894()	a(n) = J295894(n) + F000203(D005940(1+n)) mod 2	_	_	_		Let p = A295895(n) = parity of the binary weight of A005940(1+n). If A005940(1+n) is a square or twice a square (in A028982) then a(n) = 1 - p, otherwise a(n) = p.
+ A309040	lambdan	1	n -> MPR2(n, 4)	""		a(n) = MPR2(n, 4)	_	_	_		a(n) = MPR2(n, 4), where MPR2(n, x) is the (monic) minimal polynomial of 2*cos(2*Pi/n) as defined in A232624.
+ A321675	lambdan	0	n -> SU(1, ZV(10).^(n), k -> ZV(k).*(F000203(k)))	""		a(n) = Sum_{k=1..10^n} k*sigma(k)	_	_	_		a(n) = Sum_{k=1..10^n} k*sigma(k).
+A326086	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(Z2(k*(k + 1))).*(Z2(k).+(n -k).^(n - k - 1 )))	""		a(n) = Sum_{k=0..n} binomial(n,k) * 2^(k*(k+1)) * (Z2(k) + n-k)^(n-k-1)	_	_	_		E.g.f.: Sum_{n>=0} 2^(n^2) * W(x)^(2^n) * x^n/n!, where W(x) = LambertW(-x)/(-x).
+A329009	lambdan	1	n -> new Q(2).^(n - 1 - D001511(n).intValueExact()).*(ZV(3).^(n - 1)).num()	""		a(n) = 2^(n - 1 - D001511(n))*(3^n - 1)
+ A344501	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(HT(n, k)))	""		a(n) = Sum_{k=0..n} binomial(n, k)*HT(n, k) = Sum_{k=0..n} (-1)^(n-k)*binomial(n, k)*HT(n, k)	_	_	_		a(n) = Sum_{k=0..n} binomial(n, k)*HT(n, k) = Sum_{k=0..n} (-1)^(n-k)*binomial(n, k)*HT(n, k), where HT(n, k) is the Hermite triangle A099174.
+ A350174	lambdan	0	n -> S083375(n+1).-(1)	""		a(n) = S083375(n+1) - 1	_	_	_		For k = 0, 1, 2, 3, ... write k prime(k+1) times.
+ A356984	lambdan	0	n -> ZV(1).+(ZV(3).*(ZV(n).^(2))).-(T3(n)).-(ZV(3).*(T4(n)))	""		a(n) = 1 + 3*n + T2(n) + 2*T3(n) + 3*T4(n); a(n) = 1 + 3*n^2 - T3(n) - 3*T4(n)	_	_	_		Number of regions in an equilateral triangle when n internal equilateral triangles are drawn between the 3n points that divide each side into n+1 equal parts.
+ A357927	lambdan	0	n -> BI(n, S072649(n))	""		a(n) = binomial(n,S072649(n))	_	_	_		Number of subsets of [n] in which exactly half of the elements are Fibonacci numbers.
+ A361989	sintrif	0	(term, n) -> F000045(S072649(n)).-(term)	"0"	new A194029()	a(n) = F000045(S072649(n)) - J194029(n) for n > 0	_	_	_		a(n) is the sum of the Fibonacci numbers missing from the dual Zeckendorf representation of n; a(0) = 0, and for n > 0, a(n) = A022290(A035327(A003754(n+1))).
+A366867	sintrif	1	(term, n) -> (term.-(6)).*(term).*(term.+(6))	""	new A006489()	a(n) = (J006489(n) - 6)*J006489(n)*(J006489(n) + 6)	_	_	_		Products of sexy prime triples: sphenic numbers with prime factorization (p - 6)*p*(p + 6).
+ A370821	lambdan	1	n -> F001615(3, n).+(SU(1, n-1, i -> (ZV(3-1)).*(ZV(3).^((ZV(i-1)))).*(F001615(3, n-i))))	""		a(n) = psi(3, n) + Sum_{i=1..n-1} (3-1)*3^(i-1)*psi(3, n-i)	_	_	_		Number of minimal deterministic Mealy automata with n states outputting ternary strings
+A371401	lambdan	0	n -> ZV(n + 1).*(BI(2*n - 1, n))	""		Sum_{k=0..n} a(n) = (n + 1)*binomial(2*n - 1, n)	_	_	_		Triangle read by rows: T(n, k) = [x^k] (n*x + 1)*Hypergeometric([-n, -n + 1], [1], x).
+A371964	sintrif	0	(term, n) -> ZV(3*n - 2).*(F000108(n - 1)).-(term)	"0"	new A079309()	a(n) = (3*n - 2)*F000108(n-1) - J079309(n) for n > 0	_	_	_		a(n) is the sum of all symmetric valleys in the set of Catalan words of length n.
+ A373666	lambdan	1	n -> (-(-(F000196(n))))	""		a(n) = min(d) such that d^2 - n*b^2 == 0 (mod 2*b + 1) and d >= ceiling(sqrt(n))	_	_	_		Smallest positive integer whose square can be written as the sum of n positive perfect squares whose square roots differ by no more than 1.
+
+Primes of the form
+A117921	filter	0	new LambdaSequence(1, k -> Z2(k).-(1).^(3).-(2))	v -> v.IPP()
+A118813	filter	0	new LambdaSequence(1, k -> FA(2*k).-(FA(k)).-(1))	v -> v.IPP()
+
+
+A260898	parmof3	1	A086122	k -> ZV(10).^(k + 1).+(107)	9	,(k>0)
+ A088553	parmof3	1	A086122	k -> ZV(3^k-1)/2 or (3^k+1)/2
+ A088554	parmof3	1	A086122	k -> ZV(5^k-1)/4 or (5^k+3)/4
+
+A177504	filter	1	new LambdaSequence(1, k -> Z.TEN.^(k).*(5).-(9))	v -> v.IPP()	Primes of the form 5*10^n-9
+ A256975	ogf	0	(1 + x^4 + x^5 + x^6 + x^10 + x^11 + x^12 + x^16)/((1-x)*(1-x^2)*(1-x^3)*(1-x^4)*(1-x^5)*(1-x^6)*(1-x^7)*(1-x^8))	Product_{i=1..8} (1 - x^i).	nonn	0..43	nyi	_N. J. A. Sloane_
+
+
+A177120	filnum	1	0	k -> ZV(10).^(k).*( 5).+( 3).IPP()
+
+
+A256880	lambdan	0	n -> ((n & 1) == 0) ? FA(2*n).*(2) : FA(n).*(n).*((n + 2)/2)	n*n!/round(n/2).	nonn,easy	1..20	nyi	_M. F. Hasler_
+A256967	sintrif	0	(term, n) -> term.+(1)	"1"	new A256966()
+A375536	sintrif	0	(term, n) ->  Functions.MAX.z(D007814(n), D007949(n), term)	""	new A112765()
+A375683	multrar	0	(self, n) -> SU(2, n, k -> BI(n - 1, k - 1).*(self.a(n - k))).*(-n)	"1"
+A375684	multrar	0	(self, n) -> RU(2, n, k -> new Q(1, k - 1).*(self.a(n - k))./(FA(n - k))).*(FA(n).negate()).num()	"1"
+A375780	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(FA(k).*(S2(n, k))).^(2))	a375780(n) = sum(k=0, n, binomial(n, k) * (FA(k)*stirling(n, k, 2))^2)	a(n) = Sum_{k=0..n} binomial(n,k) * (FA(k) * S(n,k))^2
+
+
+ A363850	A359212	Number of divisors of 7*n-3 of form 7*k+1.	nonn	1..100	2023-09-02/parm5	_Seiichi Manyama_
+%N A154906 Records in (J063375: Number of divisors of Fibonacci(n)).
+
+Numbers of divisors of ...
+ A339558	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 2n that are the average of a pair of twin primes.
+ A108504	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 J025487(n) that are at most sqrt(J025487(n)).
+ A342929	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 J025487(n), counting divisor multiplicity in J025487(n).
+ A098109	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 a(n)! exceeds 10^n.
+ A101756	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 highly composite triangular numbers.
+ A334925	lambdan	0	n -> SD(n, d -> (d % 3 == 1) ? ZV(1) : ZV(0))	 n of the form k*(k^2 + 1)/2 (J006003).
+A353328	lambdan	0	n -> SD(n, d -> D048673(d).mod(3) == 1 ? ZV(1) : ZV(0))	 n such that D048673(d) == +1 (mod 3).
+A353329	lambdan	0	n -> SD(n, d -> D048673(d).mod(3) == 2 ? ZV(1) : ZV(0))	 n such that D048673(d) == -1 (mod 3).
+ A327530	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are 1 or whose prime indices are relatively prime.
+ A327657	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are 1 or whose prime indices have a common divisor > 1.
+ A327513	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are 1, 2, or a nonprime number whose prime indices are pairwise coprime.
+ A327391	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are 1, prime, or whose prime indices are pairwise coprime.
+ A327536	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are 1, prime, or whose prime indices are relatively prime.
+A095999	lambdan	0	n -> { final Z lg = CV(n).log().floor(); return SD(n, d -> (ZV(d).compareTo(lg) < 0) ? ZV(1) : ZV(0)); }	 n that are < log(n).
+ A138707	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are also divisors of some d(k)*10^k, where n=Sum(d(k)*10^k).
+ A368216	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are antiharmonic numbers (J020487).
+ A294880	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are in Perrin sequence, J001608.
+ A294883	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are irreducible when their binary expansion is interpreted as polynomial over GF(2).
+ A294884	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are not irreducible when their binary expansion is interpreted as polynomial over GF(2).
+ A326197	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are not reachable from n with any combination of transitions x -> gcd(x,sigma(x)) and x -> gcd(x,phi(x)).
+A091050	lambdan	0	n -> SD(n, d -> Predicates.POWER.is(d) ? ZV(1) : ZV(0))	 n that are perfect powers.
+ A090329	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are prefixes of other divisors of n in binary representation.
+ A294890	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are primitively abundant (J091191).
+ A326196	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are reachable from n with some combination of transitions x -> gcd(x,sigma(x)) and x -> gcd(x,phi(x)).
+ A361788	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that are totient values (J002202).
+ A089371	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n that do not exceed the abundance of n.
+ A073182	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n which are not greater than the cubefree kernel of n.
+ A167447	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n which are not multiples of 3 consecutive primes.
+ A166469	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n which are not multiples of consecutive primes.
+ A356224	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n whose prime indices cover an initial interval of positive integers.
+ A356069	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n whose prime indices cover an interval of positive integers (€073491).
+ A356225	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n whose prime indices do not cover an initial interval of positive integers.
+ A318979	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n with relatively prime prime indices, meaning they belong to €289509.
+ A095997	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n! that are coprime to n.
+ A336414	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n! with distinct prime multiplicities.
+ A336415	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n! with equal prime multiplicities.
+ A169594	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n, counting divisor multiplicity in n.
+ A217984	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n^3 + 1 of the form a^3 + 1.
+ A129294	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n^3 - 1 that are not greater than n.
+ A325339	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n^3 that are <= n.
+ A129292	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 n^4 - 1 that are not greater than n.
+ A103886	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 p-1 (less than, equals and larger than) number of divisors of p+1. €103887 - position of p(n) in the sequence.
+ A078809	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 the average of consecutive odd primes.
+ A216325	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 the degree of the minimal polynomial for 2*cos(Pi/n), n >= 1.
+ A216326	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 the degree of the minimal polynomial of 2*cos(Pi/prime(n)), with prime = F000040, n >= 1.
+ A091220	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 the n-th GF(2)[X]-polynomial.
+ A117215	lambdan	0	n -> SD(n, d -> ? ZV(1) : ZV(0))	 x^n-1 having the maximal height €114536(n).
+
+A073804	filnum	0	1	k -> { final Z sig = Functions.SIGMA1.z(k); return Functions.SIGMA0.z(k).compareTo(sig) > 0; }	 n is greater than that of sigma[n].
+A073803	filnum	0	1	k -> { final Z sig = Functions.SIGMA1.z(k); return Functions.SIGMA0.z(k).compareTo(sig) < 0; }	 n is smaller than that of sigma(n).
+A366979	lambdan	0	n -> { final int dn = Functions.TAU.i(n); return SD(n, d -> n <= dn ? ZV(1) : ZV(0)); }	 n less than or equal to d(n).

@@ -1,0 +1,209 @@
+
+
+
+
+
+
+
+
+
+
+
+
+ 079715	sintrif	0	(term, n) -> F000720(n)-term+1	""	new AJ056811()	_
+ A046024	sintrif	0	(term, n) -> F000720(term)+1	""	new AJ096232()	_
+ A071585	sintrif	0	(term, n) -> D059893(term),n>0	""	new AJ086592()	_
+ A072455	sintrif	0	(term, n) -> F000010(n)-[A072451(n)-1+term]	""	new AJ072453()	_
+ A072628	sintrif	0	(term, n) -> F000005(n)-term<F000005(n)	""	new AJ072627()	_
+ A073087	sintrif	0	(term, n) -> F002110(term)	n>=4	new AJ112873()	_	_
+ A073426	sintrif	0	(term, n) -> F000720[F000040(n)]-F000720[term],;a(n)	n>=5	new AJ002808()	_	_
+ A073426	sintrif	0	(term, n) -> F000720[term]-n+1*forn	n>=5	new AJ002808()	_	_
+ A078266	sintrif	0	(term, n) -> F007953(term)*(10^F055642(term)-1)/(9*F055642(term))	""	new AJ007908(), new AJ007908(), new AJ007908()	_
+ A082735	sintrif	0	(term, n) -> F006882[term]/F006882[J074148(n-2)].a(2*n-1)	""	new AJ074148()	_	_
+ A083266	sintrif	0	(term, n) -> F000203(n)+term-1;related	""	new AJ023896()	_
+ A097946	sintrif	0	(term, n) -> F008683(n)*term	""	new AJ014197()	_
+ A117214	sintrif	0	(term, n) -> F002110(F000720(term)))/term.a(F002110(n))=1.a(F000040(n)	n>=0	new AJ005117(), new AJ005117()	_	_
+ A119281	sintrif	0	(term, n) -> F007953(n)-4*term	""	new AJ102677()	_
+ A124270	sintrif	0	(term, n) -> F000040(term)-J014612(F000040(n))	""	new AJ014612()	_
+ A124284	sintrif	0	(term, n) -> F000040(term)-J014613(F000040(n))	""	new AJ014613()	_
+ A126289	sintrif	0	(term, n) -> F006530(n-1)*term	n>=3	new AJ052126()	_	_
+ A127171	sintrif	0	(term, n) -> F006530(J014612(n+1))-F006530(term)	""	new AJ014612()	_
+ A127722	sintrif	0	(term, n) -> F000196[term]	""	new AJ000447()	_
+ A128886	sintrif	0	(term, n) -> F000040(term)-J000959(F000040(n))	""	new AJ000959()	_
+ A130407	sintrif	0	(term, n) -> F(n+1)*a(n-1)+F(n+2)*term	""	new AJ003266()	_
+ A136021	sintrif	0	(term, n) -> D006880(n)*10^n-J024934(10^n)-term	""	new AJ046731()	_
+ A137379	sintrif	0	(term, n) -> F000720(J061294(n+1))-F000720(term)	""	new AJ061294()	_
+ A147877	sintrif	0	(term, n) -> F000041(2*n)-F000041(2*n-1)-term+F000041(n)+F000041(n-1)	""	new AJ000070()	_
+ A147878	sintrif	0	(term, n) -> F000041(2*n)-2*term+2*F000041(n)+F000041(n-1)	""	new AJ000070()	_
+ A157848	sintrif	0	(term, n) -> F000203((term)/F000005(term)	""	new AJ007340(), new AJ007340()	_
+ A157890	sintrif	0	(term, n) -> F000720(J000043(n+1))-F000720(term)-1	""	new AJ000043()	_
+ A161763	sintrif	0	(term, n) -> F000040(term)*F000040(D006519(n))	""	new AJ001359()	_
+ A164266	sintrif	0	(term, n) -> F000720(J000396(n+1))-F000720(term)	""	new AJ000396()	_
+ A174435	sintrif	0	(term, n) -> F002322(term)/J002326((term+1)/2)	""	new AJ046388(), new AJ046388()	_
+ A174883	sintrif	0	(term, n) -> F(n)/term	""	new AJ060865()	_
+ A175064	sintrif	0	(term, n) -> F000005(J253641(term))	""	new AJ001597()	_
+ A178646	sintrif	0	(term, n) -> F007955(n)/term	""	new AJ157068()	_
+ A180111	sintrif	0	(term, n) -> F000142(n)/2+term/2	""	new AJ056876()	_
+ A180112	sintrif	0	(term, n) -> F000142(n)/2-term/2	""	new AJ056876()	_
+ A183196	sintrif	0	(term, n) -> F055642(J183195(term))	""	new AJ019518()	_
+ A189357	sintrif	0	(term, n) -> F000009(2*n)+termforn>	"1"	new AJ000700()	_	_
+ A190620	sintrif	0	(term, n) -> D000225(F002024(n)+2)-D000079(term)	""	new AJ004736()	_
+ A194439	sintrif	0	(term, n) -> F000041(n)-term,ifn>	""	new AJ027336()	_
+ A207339	sintrif	0	(term, n) -> F000217(K(n)))/2,m(n)giveninterm	K(n)=(m(n)-1	new AJ002733()	_	_
+ A208449	sintrif	0	(term, n) -> D010786(n+1)/term	""	new AJ208448()	_
+ A210249	sintrif	0	(term, n) -> F000041(n)-term,n>	""	new AJ025065()	_
+ A216868	sintrif	0	(term, n) -> F002110(n)-floor(term*log(log(F002110(n)))*e^gamma)	""	new AJ005867()	_
+ A226524	sintrif	0	(term, n) -> F000720(term)	i=J071220	new AJ061308()	_	_
+ A230773	sintrif	0	(term, n) -> D010051(n)*(term+mod(n^2,3))+(1-D010051(n))*D055396(n)	""	new AJ056811()	_
+ A231117	sintrif	0	(term, n) -> D008966(n)*A073311(n)+term*A073312(n)	""	new AJ107078()	_
+ A232395	sintrif	0	(term, n) -> D000290(J135034(term))-term	""	new AJ053698(), new AJ053698()	_
+ A242342	sintrif	0	(term, n) -> F007318(n,term)	n>=3	new AJ007978()	_	_
+ A242411	sintrif	0	(term, n) -> E061395(n)-E061395(term)	""	new AJ051119()	_
+ A253642	sintrif	0	(term, n) -> F000005(J253641(term))-1	""	new AJ001597()	_
+ A253888	sintrif	0	(term, n) -> D048673(1+(2*term))	"1"	new AJ064216()	_	_
+ A253889	sintrif	0	(term, n) -> D048673(floor(term/2))	""	new AJ064216()	_
+ A260262	sintrif	0	(term, n) -> F055642(J002109(term))	""	new AJ002109()	_
+ A265708	sintrif	0	(term, n) -> E265709(n)*term/E265710(n)	""	new AJ069934()	_
+ A269027	sintrif	0	(term, n) -> F000035(J268643(term))	""	new AJ039724()	_
+ A269847	sintrif	0	(term, n) -> D003961(a(term)),elsea(n)	"1"	new AJ026233()	_	_
+ A271591	sintrif	0	(term, n) -> E079944(term-2)	""	new AJ000073()	_
+ A276147	sintrif	0	(term, n) -> D053669(n)*a(term)	""	new AJ111701()	_
+ A284578	sintrif	0	(term, n) -> F000196(term/A284577(n))	""	new AJ277324()	_
+ A292258	sintrif	0	(term, n) -> F000040(term-1)*a(D004526(n))	"1"	new AJ101296()	_	_
+ A293447	sintrif	0	(term, n) -> D005187(term)+a(D003557(n))	"0"	new AJ087207()	_	_
+ A293899	sintrif	0	(term, n) -> term.+(1)	""	new A002324()	_
+ A295893	sintrif	0	(term, n) -> F000035(term+J295894(2*n))	""	new AJ295894()	_
+ A302776	sintrif	0	(term, n) -> E302023(J052126(term))	""	new AJ302024()	_
+ A317595	sintrif	0	(term, n) -> F000720(term)-J020482(2*n)	""	new AJ020482()	_
+ A326466	sintrif	0	(term, n) -> E326464(n)-term-A326467(n)-A326468(n)-A326469(n)-A326470(n)-A326471(n)-A326472(n)-E326473(n)	""	new AJ326465()	_
+ A326467	sintrif	0	(term, n) -> E326464(n)-term-A326466(n)-A326468(n)-A326469(n)-A326470(n)-A326471(n)-A326472(n)-E326473(n)	""	new AJ326465()	_
+ A326468	sintrif	0	(term, n) -> E326464(n)-term-A326466(n)-A326467(n)-A326469(n)-A326470(n)-A326471(n)-A326472(n)-E326473(n)	""	new AJ326465()	_
+ A326469	sintrif	0	(term, n) -> E326464(n)-term-A326466(n)-A326467(n)-A326468(n)-A326470(n)-A326471(n)-A326472(n)-E326473(n)	""	new AJ326465()	_
+ A326470	sintrif	0	(term, n) -> E326464(n)-term-A326466(n)-A326467(n)-A326468(n)-A326469(n)-A326471(n)-A326472(n)-E326473(n)	""	new AJ326465()	_
+ A326471	sintrif	0	(term, n) -> E326464(n)-term-A326466(n)-A326467(n)-A326468(n)-A326469(n)-A326470(n)-A326472(n)-E326473(n)	""	new AJ326465()	_
+ A326472	sintrif	0	(term, n) -> E326464(n)-term-A326466(n)-A326467(n)-A326468(n)-A326469(n)-A326470(n)-A326471(n)-E326473(n)	""	new AJ326465()	_
+ A328105	sintrif	0	(term, n) -> F000120(J163617(term))	""	new AJ110240()	_
+ A328105	sintrif	0	(term, n) -> F000120(termOR2*term)	""	new AJ110240(), new AJ110240()	_
+ A328107	sintrif	0	(term, n) -> F000120(termXOR2*J110240(n-1))	""	new AJ110240()	_
+ A333725	sintrif	0	(term, n) -> F000720(J002182(n+1))-F000720(term)	n>=2	new AJ002182()	_	_
+ A337337	sintrif	0	(term, n) -> GCD(term, E336844((long) n * n))	""	new A337336()	_
+ A338553	sintrif	0	(term, n) -> F000005(n)+term-1	n>=1	new AJ000837()	_	_
+ A342013	sintrif	0	(term, n) -> D156552(J319626(term))	""	new AJ004490()	_
+ A345063	sintrif	0	(term, n) -> E206369(n)/GCD(term,E206369(n))	""	new AJ071324()	_
+ A347605	sintrif	0	(term, n) -> E347607(n)+A347606(n)-term	""	new AJ238000()	_
+ A347871	sintrif	0	(term, n) -> F000035(n)XORterm	""	new AJ347870()	_
+ A356771	sintrif	0	(term, n) -> D022290(termANDJ003754(n+1))(	""	new AJ003714()	_
+ A360067	sintrif	0	(term, n) -> F000178(n-1)*term	n>=1	new AJ089064()	_	_
+ A360543	sintrif	0	(term, n) -> F051953(n)-F000005(n)-term-A360480(n)	""	new AJ243822()	_
+ A360543	sintrif	0	(term, n) -> F051953(n)-term-A360480(n)	""	new AJ010846()	_
+ A360614	sintrif	0	(term, n) -> E061395(n)/term	"0"	new AJ366785()	_	_
+ A361235	sintrif	0	(term, n) -> F051953(n)-F000005(n)-term-A355432(n)+1	""	new AJ243823()	_
+ A361989	sintrif	0	(term, n) -> F000045(S072649(n))-term	n>=1	new AJ194029()	_	_
+ A363844	sintrif	0	(term, n) -> F002110(n)-term-A363061(n)+1	""	new AJ005867()	_
+ A364568	sintrif	0	(term, n) -> F000010(D005940(1+n))-2^term	n>=1	new AJ033265()	_	_
+ A365161	sintrif	0	(term, n) -> D001223(term-1)	""	new AJ059305()	_
+ A367392	sintrif	0	(term, n) -> F000142(n)*term	""	new AJ247238()	_
+ A370483	sintrif	0	(term, n) -> E371643(n)/(FA(n^2)^(n+1)*term)	""	new AJ255322()	_
+ A371981	sintrif	0	(term, n) -> F000720(J005384(n+1))-F000720(term)-1	""	new AJ005384()	_
+ A372263	sintrif	0	(term, n) -> F020639(MAX(F000265(term),2))	""	new AJ001043()	_
+ A373656	sintrif	0	(term, n) -> F000040(n+F000720(term))	""	new AJ001358()	_
+ A374395	sintrif	0	(term, n) -> D022290(A374355(1+term),k)	""	new AJ003754()	_
+ A374396	sintrif	0	(term, n) -> D022290(A374356(1+term),k)	""	new AJ003754()	_
+ A374466	sintrif	0	(term, n) -> F000035(F001222(n))*F000035(term)	""	new AJ064547()	_
+ A374577	sintrif	0	(term, n) -> D007814(term-1)	""	new AJ005109()	_
+#A127266	decexprb	0	CR.PI.inverse()	2	(term, n) -> term.and(Z.ONE)	""	new A024810()	_
+-
+---- 2024-07-19 23:56:00
+-A135764	arrlambn	1	1	1	(n, k) -> Z.ONE.shiftLeft(n).multiply(2L * k + 1)
+-A136256	trilambn	0	0	0	(n, k) -> H137276(n - 1, k - 1).-(H137276(n, k + 1).*(k))
+-A140876	trilambn	1	0	0	(n, k) -> H053120(n + 2, k).-(H053120(n + 1, k).*(2)).+(H053120(n, k))
+-A164295	trilambn	1	1	1	(n, k) -> (k == 1) ? ZV(2) : T054521(n, k).+(H051731(n, k))
+-A173284	tablamb	0	0	n -> new Integer[] { 0, n/2 }	(n, k) -> Functions.FIBONACCI.z(n - 2*k + 1)	H104762(n - k, k)	T(n,k) = A000045(n-2*k+1), n >= 0 and 0 <= k <= floor(n/2).
+-A190620	filnum	1	1	n -> ZUtils.digitCounts(2L*n - 1, 2)[0] == 1
+-A217916	multraf	0	(self, n) -> Functions.PRIME.z(n).-(SU(1, Functions.TRINV.i(n) - 1, k-> self.a(n - k)))	"2"	
+-A218036	lambdan	0	n -> ZV(n + 1).+(Functions.TRINV.z(n).*(2*n + 3).-(Functions.TRINV.z(n).^(3))./(2))	a(n) = (n+1) + (n+3/2)*H(n) - (H(n)^3)/2, where H(n)=A002024(n).
+-A243987	trilambn	1	1	1	(n, k) -> SU(1, k, j -> H051731(n, j))
+-A277537	arrlamb	0	1	1	1	(n, k) -> (n == 0) ? ZV(1) : ((k == 0) ? ZV(0) : H295028(n, k).*(n))	k>=1
+-A308104	distinct	0	new A073053()
+-A335848	multrar	0	(self, n) -> SU(1, n, k -> self.a(k - 1).*(BI(n, k).*(DF(k))))	"1"
+-A343458	distinct	0	new A025487()
+-A368995	filnum	0	0	k -> D342001(k).and(ZV(3)).isZero()	  is a multiple of four.	nonn	1..67	nyi	_Antti Karttunen_
+-A368997	lambdan	0	n -> D342001(n).testBit(0) ? ZV(1) : ZV(0)	is even, otherwise 0.	nonn	1..65537	nyi	_Antti Karttunen_
+-A368999	filnum	0	0	k -> D342001(k).testBit(0)	  is odd.	nonn	1..78	nyi	_Antti Karttunen_
+-A369291	arrlamb	0	0	0	-1	(n, k) -> PHI(ZV(k).^(n).-(1))./(n)	Array read by antidiagonals: T(n,k) = phi(k^n-1)/n, where phi is Euler''s totient function (F000010), n >= 1, k >= 2.	nonn,tabl,easy	1..1275	nyi	_Andrew Howroyd_
+-A372326	arrlamb	0	0	1	-1	(n, k) -> H267383(k*n, n)
+-A374588	filnum	0	4	k -> !GPF(k).IPP()
+-A374589	filnum	0	1	k -> A001694.isPowerful(GPF(k))
+-A374590	filnum	0	0	k -> !Functions.DIGIT_SUM.z(2, GPF(k)).testBit(0)	is an evil number 
+f	A081414	lambdan	0	n -> { final Z n2 = Z2(n); return LPF(PM(n2.+(1)).-(PM(n2))); }
+f	A086690	sintrif	0	(term, n) -> F000720(term)	""	new A034785()	_
+f	A087335	sintrif	0	(term, n) -> term.+(1)	""	new A068859()	_
+f	A088258	sintrif	0	(term, n) -> F000142(term)	""	new A088412()	_
+f	A092252	sintrif	0	(term, n) -> F000040(term)	""	new A006988()	_
+f	A092871	sintrif	0	(term, n) -> term.-(1)	"1"	new A065894()	_	_
+f	A093046	sintrif	0	(term, n) -> F000040(term)	""	new A058328()	_
+f	A095120	sintrif	0	(term, n) -> F151799(term)	""	new A038833()	_
+f	A096329	sintrif	0	(term, n) -> F000040(term)	""	new A030629()	_
+f	A107482	sintrif	0	(term, n) -> F001222(term)	""	new A007539()	_
+f	A117370	lambdan	0	n -> PPI(GPF(n)).-(PPI(SPF(n)).-(1)).abs()
+f	A121280	sintrif	0	(term, n) -> term.-(1)	""	new A068987()	_
+f	A128972	sintrif	0	(term, n) -> E062378(term)	""	new A068601()	_
+f	A129870	sintrif	0	(term, n) -> term.-(F151799(term))	""	new A006988()
+f	A139564	sintrif	0	(term, n) -> D006880(2*n).-(term)	""	new A046731()	_
+f	A181887	sintrif	0	(term, n) -> term.-(F000041(n))	"0"	new A002956()	_	_
+f	A186963	sintrif	0	(term, n) -> E162642(term)	""	new A007357()	_
+f	f1	A188951	sintrif	0	(term, n) -> term.-(1)	"1"	new A070228()	_	_
+f	A224851	sintrif	0	(term, n) -> term.+(1)	""	new A054781()	_
+f	A224852	sintrif	0	(term, n) -> term.-(1)	""	new A054870()	_
+f	A225017	sintrif	0	(term, n) -> E132740(term)	""	new A055566()	_
+f	A227185	sintrif	0	(term, n) -> term.+(1)	"0"	new A092339()	_	_
+f	A235642	sintrif	0	(term, n) -> term.mod(Z.TEN.^(n))	""	new A006988()	_
+f	A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()	_
+f	A262689	sintrif	0	(term, n) -> term.-(1)	""	new A002828()	_
+f	A262690	sintrif	0	(term, n) -> term.-(1)	""	new A002828()	_
+f	A264440	sintrif	0	(term, n) -> term.-(1)	"1"	new A032741()	_	_
+f	A266875	sintrif	0	(term, n) -> term.modZ(n)	"0"	new A001035()	_	_
+f	A293899	sintrif	0	(term, n) -> term.-(E010872(n).modZ(3))	""	new A002324()	_
+f	A299204	sintrif	0	(term, n) -> term.modZ(n - 1)	"0,0"	new A000594()	_
+f	A327516	sintrif	0	(term, n) -> term.-(1)	"1,1"	new A051424()	_	_
+f	A328317	sintrif	0	(term, n) -> D053669(term)	"1"	new A328316()	_	_
+f	A328318	sintrif	0	(term, n) -> E267263(term)	""	new A328316()	_
+f	A333995	sintrif	0	(term, n) -> term.-(D010051(n))	"0"	new A062854()	_	_
+f	A334360	sintrif	0	(term, n) -> term.+(1)	""	new A001661()	_
+f	A339580	sintrif	0	(term, n) -> term.+(1)	"1"	new A339581()	_	_
+fd	A347883	sintrif	0	(term, n) -> term.modZ(3)	"2,2"	new A342926()	_
+f	A359604	sintrif	0	(term, n) -> { Z r = term.modZ(60); return (r.signum() < 0) ? r.+(60) : r; }	""	new A359603()	_
+f	A359826	sintrif	0	(term, n) -> term.and(Z.ONE)	""	new A353348()	_
+f	A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()	_
+f	A365042	sintrif	0	(term, n) -> term.-(1)	""	new A088314()	_
+f	A369975	sintrif	0	(term, n) -> term.and(Z.ONE)	""	new A369978()	_
+f	A372428	sintrif	0	(term, n) -> term.-(D056239(n))	""	new A029931()	_
+f	A373338	sintrif	0	(term, n) -> term.and(Z.ONE)	""	new A078442()	_
+f	A373716	sintrif	0	(term, n) -> term.-(D005408(n-1))	""	new A027424()	_
+f	A374151	sintrif	0	(term, n) -> F000720(term)	""	new A007053()	_
+f1	A253888	sintrif	0	(term, n) -> D254049(term.+(1))	"1"	new A064216()	_	_
+f1	A256967	sintrif	0	(term, n) -> term.+(1)	""	new A256966()	_
+f1	A327522	sintrif	0	(term, n) -> F000041(F001222(term))	""	new A000961()	_
+f1	A338792	sintrif	0	(term, n) -> F000720(term)	"1"	new A007138()	_	_
+f1	A360010	sintrif	0	(term, n) -> term.+(1)	""	new A056556()	_
+f1	A365045	sintrif	0	(term, n) -> term.+(1)	"1"	new A070880()	_	_
+f1	A372302	sintrif	0	(term, n) -> term.+(1)	""	new A035338()	_
+fa	A080368	sintrif	0	(term, n) -> F000040(term)	""	new A277697()	_
+fa	A120355	sintrif	0	(term, n) -> D002034(term)	""	new A007677()	_
+fd	A122060	sintrif	0	(term, n) -> term.+(1)	""	new A121341()	_
+fd	A135549	sintrif	0	(term, n) -> term.-(1)	"1"	new A065531()	_	_
+fd	A237448	sintrif	0	(term, n) -> term.-(1)	""	new A002260()	_
+fd	A246277	sintrif	0	(term, n) -> F000040(term.+(1))	""	new A243055()	_
+fd	A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()	_
+fd	A279904	sintrif	0	(term, n) -> F000040(term)	""	new A058781()	_
+fd	A289633	sintrif	0	(term, n) -> term.modZ(11)	""	new A000594()	_
+fd	A302257	sintrif	0	(term, n) -> F000010(term)	""	new A033948()	_
+fd	A324200	sintrif	0	(term, n) -> D007814(term)	""	new A000396()	_
+fd	A351394	sintrif	0	(term, n) -> D048105(n).+(term)	""	new A046660()	_
+fd	A366389	sintrif	0	(term, n) -> D057889(term)	""	new A073675()	_
+fd	A373989	sintrif	0	(term, n) -> E276150(term)	""	new A373985()	_
+fe	A254410	sintrif	0	(term, n) -> term.modZ(n)	""	new A007013()	_
+fe	A254411	sintrif	0	(term, n) -> term.modZ(n)	""	new A254429()	_
+ff	A358530	sintrif	0	(term, n) -> term.+(2)	""	new A051634()	_
+fl	A277195	sintrif	0	(term, n) -> D022290(D156552(term))	""	new A005117()	_
+fs	A051236	sintrif	0	(term, n) -> term.-(1)	""	new A013588()	_

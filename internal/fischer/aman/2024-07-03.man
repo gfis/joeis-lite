@@ -1,0 +1,191 @@
+---- 2024-07-05 12:04:07
+ ? A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()		B171252(J014132(n))
+ ? A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()		D002371(J002496(n))
+ ? A099825	lambdan	0	n -> D007504(D000079(n))	""			D007504(D000079(n))
+ ? A099826	lambdan	0	n -> D007504(D000244(n))	""			D007504(D000244(n))
+ ? A374216	lambdan	0	n -> D007814(F001414(n))	""			D007814(F001414(n))
+ ? A374217	lambdan	0	n -> D007949(F001414(n))	""			D007949(F001414(n))
+ ? A100639	sintrif	0	(term, n) -> E010879(term)	""	new A000928()		E010879(J000928(n))
+ ? A365461	sintrif	0	(term, n) -> E276150(term)	""	new A181821()		E276150(J181821(n))
+ ? A324547	lambdan	0	n -> E324543(F002110(n))	""			E324543(F002110(n))
+ ? A324547	lambdan	0	n -> E324543(F002110(n))	""			E324543(F002110(n))
+ ? A329891	lambdan	0	n -> E329644(Z2(n))	""			E329644(2^n)
+ ? A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()		F000030(J002488(n))
+ ? A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()		F000030(J004231(n))
+ ? A374151	sintrif	0	(term, n) -> F000720(term)	""	new A007053()		F000720(J007053(n))
+ ? A095120	sintrif	0	(term, n) -> F151799(term)	""	new A038833()		F151799(J038833(n))
+
+
+
+%N A373707 Expansion of e.g.f. exp(x * (1 + x^3)^2).
+%N A373708 Expansion of e.g.f. exp(x * (1 + x^4)^2).
+%N A373720 Expansion of e.g.f. exp(x * (1 + x^2)^3).
+%N A373740 Expansion of e.g.f. exp(x^2/2 * (1 + x)).
+%N A373741 Expansion of e.g.f. exp(x^2/2 * (1 + x)^3).
+%N A373742 Expansion of e.g.f. exp(x^3/6 * (1 + x)).
+%N A373743 Expansion of e.g.f. exp(x^3/6 * (1 + x)^2).
+%N A373757 Expansion of e.g.f. exp(x^3/(6 * (1 - x)^2)).
+%N A373758 Expansion of e.g.f. exp(x^4/(24 * (1 - x)^2)).
+%N A373759 Expansion of e.g.f. exp(x^4/(24 * (1 - x)^3)).
+%N A373770 Expansion of e.g.f. exp(x^2 / (2 * (1 - x))) / (1 - x).
+%N A373771 Expansion of e.g.f. exp(x^2 / (2 * (1 - x)^3)) / (1 - x).
+%N A373772 Expansion of e.g.f. exp(x^3 / (6 * (1 - x))) / (1 - x).
+%N A373773 Expansion of e.g.f. exp(x^3 / (6 * (1 - x)^2)) / (1 - x).
+
+A373832	lambdan	0	n -> ZV(n).mod(E276150(n))
+A373834	lambdan	0	n -> ZV(n).mod(E276150(n)).isZero() ? ZV(1) : ZV(0)
+A373835	lambdan	0	n -> GCD(Functions.BIG_OMEGA.z(n), Functions.PRIMORIAL_BASE_LOG.z(n))
+ A373836	lambdan	0	n -> 1 if Functions.BIG_OMEGA.z(n) and Functions.PRIMORIAL_BASE_LOG.z(n) are both multiples of 3, otherwise 0, where Functions.BIG_OMEGA.z (F001222) and Functions.PRIMORIAL_BASE_LOG.z are fully additive with a(p) = 1 and a(p) = p#/p respectively.	nonn,new	1..100000	nyi	_Antti Karttunen_
+ A373849	lambdan	0	n -> Functions.PRIMORIAL_BASE_EXP.z(n) - F003415(n)
+ A373850	lambdan	0	n -> Functions.PRIMORIAL_BASE_LOG.z(n) mod Functions.BIG_OMEGA.z(n)
+ A373851	lambdan	0	n -> 1 if Functions.PRIMORIAL_BASE_LOG.z(n) is a multiple of Functions.BIG_OMEGA.z(n), otherwise 0, where Functions.BIG_OMEGA.z (F001222) and Functions.PRIMORIAL_BASE_LOG.z are fully additive with a(p) = 1 and a(p) = p#/p respectively.	nonn,new	1..100000	nyi	_Antti Karttunen_
+
+ A373844	nyi Fo	Triangle read by rows: T(n,k) = Functions.PRIMORIAL_BASE_EXP.z(1 + F002110(n) + F002110(k)), 1 <= k <= n, where Functions.PRIMORIAL_BASE_EXP.z is the primorial base exp-function.	nonn,easy,tabl,new	1..10585	nyi	_Antti Karttunen_
+ A373845	nyi Fo	Triangle read by rows: T(n,k) = arithmetic derivative of (1 + F002110(n) + F002110(k)), 1 <= k <= n, where F002110(n) is the n-th primorial number.	nonn,tabl,new	1..1035	nyi	_Antti Karttunen_
+A373852	filnum	0	1	k -> Functions.PRIMORIAL_BASE_LOG.z(k).mod(Functions.BIG_OMEGA.z(k)).isZero()
+A373837	filnum	0	1	k -> Functions.BIG_OMEGA.z(k).mod(ZV(3)).isZero() && Functions.PRIMORIAL_BASE_LOG.z(k).mod(ZV(3)).isZero()
+ A373839	filnum	0	1	k -> Numbers k such that k and E276150(k) are both multiples of 3, where E276150 is the digit sum in the primorial base.	nonn,base,new	1..12000	nyi	_Antti Karttunen_
+ A373841	filnum	0	1	k -> Numbers whose digital sum in the primorial base is a multiple of 3.	nonn,base,new	1..12000	nyi	_Antti Karttunen_
+ A373846	filnum	0	1	k -> Numbers k for which Functions.PRIMORIAL_BASE_LOG.z(k) is a prime, where Functions.PRIMORIAL_BASE_LOG.z is the primorial base log-function.	nonn,new	1..346	nyi	_Antti Karttunen_
+ A373847	filnum	0	1	k -> Numbers k for which E373842(k) <= k, where E373842 is the arithmetic derivative of the primorial base log-function.	nonn,new	1..74	nyi	_Antti Karttunen_
+ A373848	filnum	0	1	k -> Numbers k such that k is not divisible by p^p for any prime p, and for which 1 < E373842(k) <= k, where E373842 is the arithmetic derivative of the primorial base log-function.	nonn,new	1..1565	nyi	_Antti Karttunen_
+
+
+A290247	lambdan	0	n -> M023358(D000578(n))	, 0, 0); 
+A062984	lambdan	0	n -> Functions.MERTENS.z(Functions.CHOWLA.z(n))	    super(0, new PrependSequence(new F002321(), 0), new F048050(), 0, 0);
+A067792	lambdan	0	n -> Functions.NEXT_PRIME.z(Functions.SIGMA1.z(n))	(F000203(n))	, 0, 1); 
+A080396	sintrif	0	(term, n) -> F007947(term)	""	new A007318()	, 1, 0); 
+ A108047	    super(1, new J000042(), new F000045(), 1, 0); 
+ A111425	    super(0, new J000073(), new F000045(), 0, 0); 
+ A275992	    super(0, new J000119(), new D022290(), 0, 0); 
+ A161744	    super(1, new J000166(), new F000040(), 0, 1); 
+ A161745	    super(0, new J000166(), new F000045(), 0, 0); 
+ A130614	    super(1, new J000272(), new F000040(), 0, 1); 
+ A051674	    super(1, new J000312(), new F000040(), 0, 1); 
+ A267144	    super(1, new J000567(), new F000040(), 0, 1); 
+ A092463	    super(1, new J000961(), new F000217(), 1, 0); 
+ A267217	    super(1, new J001107(), new F000040(), 0, 1); 
+ A114574	    super(1, new J001563(), new F000040(), 0, 1); 
+ A299795	    super(1, new J001787(), new F000040(), 0, 1); 
+ A301797	    super(1, new J002450(), new F000040(), 0, 1); 
+ A066872	    super(1, new J002522(), new F000040(), 0, 1); 
+ A060607	    super(1, new J003434(), new F000040(), 1, 1); 
+ A133836	    super(1, new J003618(), new F000040(), 1, 1); 
+ A074461	    super(1, new J004426(), new F000040(), 0, 1); 
+ A074462	    super(1, new J004427(), new F000040(), 0, 1); 
+ A267898	    super(1, new J005095(), new F000040(), 0, 1); 
+ A267897	    super(1, new J005096(), new F000040(), 0, 1); 
+ A071828	    super(1, new J005165(), new B001272(), 0, 1); 
+ A253769	    super(1, new J006218(), new F000040(), 0, 1); 
+ A262248	    super(1, new J006561(), new F000040(), 1, 1); 
+ A332452	    super(1, new J006666(), new F000203(), 1, 1); 
+ A332453	    super(1, new J006667(), new F000203(), 1, 1); 
+ A182535	    super(1, new J007895(), new F000040(), 0, 1); 
+ A295313	    super(1, new J009195(), new F000203(), 1, 1); 
+ A122895	    super(1, new J010056(), new F000005(), 0, 1); 
+ A078782	    super(1, new J018252(), new F000040(), 1, 1); 
+ A305659	    super(0, new J024629(), new D000079(), 0, 0); 
+ A244583	    super(1, new J024916(), new F000040(), 1, 1); 
+ A227192	    super(1, new J029931(), new F003188(), 0, 0); 
+ A089241	    super(1, new J029933(), new F000040(), 1, 1); 
+ A079281	    super(0, new J032020(), new D000079(), 0, 0); 
+ A246010	    super(1, new J032527(), new F000040(), 0, 1); 
+ A072344	    super(1, new J034693(), new F000010(), 1, 1); 
+ A072341	    super(1, new J034693(), new F000203(), 1, 1); 
+ A259369	    super(1, new J060883(), new F000203(), 0, 1); 
+ A122255	    super(1, new J065333(), new F000010(), 1, 1); 
+ A120437	    super(1, new J066443(), new D007949(), 0, 1); 
+ A298269	    super(0, new J068980(), new F000292(), 0, 0); 
+ A123927	    super(1, new J102460(), new F000005(), 0, 1); 
+ A144570	    super(1, new J141468(), new F000040(), 1, 1); 
+ A298642	    super(0, new J280129(), new D000290(), 0, 0); 
+ A084686	    super(1, new J283001(), new F000040(), 0, 1); 
+
+
+A072800	sintrif	0	(term, n) -> D030101(term)	""	new A014486()		, 0, 0); 
+A096215	sintrif	0	(term, n) -> F007917(term)	""	new A001043()		, 2, 1); 
+A118749	sintrif	0	(term, n) -> F007917(term)	""	new A008585()		, 2, 0); 
+A050329	sintrif	0	(term, n) -> M050328(term)	""	new A025487()	, 1, 1);
+A050355	sintrif	0	(term, n) -> M050354(term)	""	new A025487()	, 1, 1);
+A050357	sintrif	0	(term, n) -> M050356(term)	""	new A025487()	, 1, 1);
+A050359	sintrif	0	(term, n) -> M050358(term)	""	new A025487()	, 1, 1);
+
+
+ A049068	    super(1, new J000037(), new J000037(), 1, 1); 
+ A232637	    super(1, new J000069(), new J000069(), 1, 1); 
+ A111427	    super(0, new J000073(), new J000078(), 0, 0); 
+ A111428	    super(0, new J000073(), new J001591(), 0, 0); 
+ A111429	    super(0, new J000073(), new J001592(), 0, 0); 
+ A111430	    super(0, new J000073(), new J066178(), 0, 0); 
+ A101758	    super(1, new J000073(), new J101757(), 0, 1); 
+ A116852	    super(1, new J000161(), new J001358(), 0, 1); 
+ A116905	    super(1, new J000161(), new J014612(), 0, 1); 
+ A050360	    super(1, new J000688(), new J025487(), 1, 1);
+ A091022	    super(1, new J001358(), new J001358(), 1, 1);
+ A088460	    super(1, new J001359(), new J001359(), 1, 1);
+ A171833	    super(1, new J002144(), new J002144(), 1, 1); 
+ A171836	    super(1, new J002476(), new J002476(), 1, 1); 
+ A050435	    super(1, new J002808(), new J002808(), 1, 1);
+ A050436	    super(1, new J002808(), new J050435(), 1, 1);
+ A050438	    super(1, new J002808(), new J050436(), 1, 1);
+ A050439	    super(1, new J002808(), new J050438(), 1, 1);
+ A050440	    super(1, new J002808(), new J050439(), 1, 1);
+ A319966	    super(1, new J003144(), new J003146(), 1, 1); 
+ A319968	    super(1, new J003145(), new J003145(), 1, 1); 
+ A319969	    super(1, new J003145(), new J003146(), 1, 1); 
+ A319970	    super(1, new J003146(), new J003144(), 1, 1); 
+ A319971	    super(1, new J003146(), new J003145(), 1, 1); 
+ A319972	    super(1, new J003146(), new J003146(), 1, 1); 
+ A056528	    super(1, new J004159(), new J004159(), 0, 0); 
+ A229483	    super(1, new J005117(), new J000959(), 1, 1); 
+ A061072	    super(1, new J005179(), new J002191(), 1, 1);
+ A061218	    super(1, new J005179(), new J014613(), 1, 1);
+ A065743	    super(1, new J005179(), new J025475(), 1, 1);
+ A052384	    super(2, new J005589(), new X000796(), 0, 1); 
+ A174991	    super(0, new J005606(), new J005606(), 0, 0); 
+ A168222	    super(0, new J006369(), new J006369(), 0, 0); 
+ A100567	    super(1, new J006450(), new J032766(), 1, 0); 
+ A088463	    super(1, new J006512(), new J006512(), 1, 1);
+ A240983	    super(1, new J007758(), new J001359(), 0, 1); 
+ A048741	    super(1, new J007956(), new J002808(), 1, 1); 
+ A126306	    super(0, new J014081(), new J014486(), 0, 0); 
+ A105346	    super(1, new J014612(), new J014612(), 1, 1); 
+ A141086	    super(1, new J014689(), new J001105(), 1, 0); 
+ A124965	    super(1, new J015910(), new J015911(), 1, 1); 
+ A290599	    super(1, new J016035(), new J002808(), 1, 1); 
+ A059994	    super(1, new J024994(), new J024995(), 1, 1);
+ A306396	    super(1, new J025427(), new J024796(), 0, 1); 
+ A305747	    super(1, new J033677(), new J002808(), 1, 1); 
+ A117180	    super(1, new J034684(), new J013929(), 1, 1); 
+ A117181	    super(1, new J034699(), new J013929(), 1, 1); 
+ A050323	    super(1, new J045778(), new J025487(), 1, 1);
+ A066420	    super(2, new J049283(), new J007374());
+ A050325	    super(1, new J050320(), new J025487(), 1, 1);
+ A050327	    super(1, new J050326(), new J025487(), 1, 1);
+ A050331	    super(1, new J050330(), new J025487(), 1, 1);
+ A050333	    super(1, new J050332(), new J025487(), 1, 1);
+ A050335	    super(1, new J050334(), new J025487(), 1, 1);
+ A050337	    super(1, new J050336(), new J025487(), 1, 1);
+ A050339	    super(1, new J050338(), new J025487(), 1, 1);
+ A050341	    super(1, new J050340(), new J025487(), 1, 1);
+ A050346	    super(1, new J050345(), new J025487(), 1, 1);
+ A050348	    super(1, new J050347(), new J025487(), 1, 1);
+ A050350	    super(1, new J050349(), new J025487(), 1, 1);
+ A050362	    super(1, new J050361(), new J025487(), 1, 1);
+ A050364	    super(1, new J050363(), new J025487(), 1, 1);
+ A050371	    super(1, new J050370(), new J025487(), 1, 1);
+ A050373	    super(1, new J050372(), new J025487(), 1, 1);
+ A050375	    super(1, new J050374(), new J025487(), 1, 1);
+ A050378	    super(1, new J050377(), new J025487(), 1, 1);
+ A050380	    super(1, new J050379(), new J025487(), 1, 1);
+ A082315	    super(0, new J057501(), new J057501(), 0, 0);
+ A082316	    super(0, new J057502(), new J057502(), 0, 0);
+ A245448	    super(1, new J064216(), new J064216(), 1, 1);
+ A064558	    super(1, new J064553(), new J064553(), 1, 1); 
+ A249142	    super(1, new J068527(), new J068527(), 0, 0);
+ A303365	    super(1, new J073576(), new J005117(), 0, 1); 
+ A050324	    super(1, new J074206(), new J025487(), 0, 1);
+ A176363	    super(1, new J100959(), new J100959(), 1, 1); 
+ A175018	    super(1, new J110654(), new M005185(), 0, 1); 
+ A152560	    super(0, new J131205(), new J005578(), 1, 0); 
+ 

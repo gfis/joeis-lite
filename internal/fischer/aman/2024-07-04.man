@@ -1,0 +1,103 @@
+---- 2024-07-15 17:36:42
+-A076716	lambdan	0	n -> D001055(FA(n))
+-A080799	lambdan	0	n -> D023416(n + 1).+(Functions.DIGIT_LENGTH.i(n + 1) - 1).+(4)
+-A081414	lambdan	0	n -> E081412(Z2(n))
+-A081431	lambdan	0	n -> D030101(F004086(n))
+-A084756	lambdan	0	n -> D000522(n - 1).+(FA(n - 1).*(n - 1))
+-A090226	lambdin	0	n -> D006880(n - 1).+(1)	"1"	n>=1
+-A096501	lambdin	0	n -> D010051(n).*(D001223(Functions.PRIME_PI.i(n)-1))	"0,0"	n>=3
+-A097053	lambdin	0	n -> D053644(n).*(n)./(2)	"1"
+-A097346	lambdan	0	n -> RU(0, n/2, k -> new Q(BI(n - k, k), k + 1)).*(D003418(n)).num()
+-A098226	lambdin	0	n -> D006880(n).-(283086)		"0,1,47,598,6432,65099,617230,5623596,50564448,454769425"	because the total number of distinct-digit primes equals 283086. See E098224	n>=10
+-A098957	lambdan	0	n -> D030101(F000040(n))
+-A099826	lambdan	0	n -> D007504(D000244(n))
+-A106665	multrar	0	(self, n) -> ((n & 3) == 0) ? ZV(1) : (((n & 1) == 1) ? ZV(1).-(self.a((n - 1)/2)) : ZV(0))	"1"	
+-A109162	multrar	0	(self, n) -> D019565(self.a(n - 1))	"1"
+-A113634	lambdan	0	n -> D007504(ZV(6).^(n))
+-A117499	lambdin	0	n -> D010051(n-1).+(D010051(n)).+(D010051(n + 1)).+(D010051(2*n - 1)).+(D010051(2*n)).+(D010051(2*n + 1))	"4"
+-A121934	prepend	0	new A070198().skip(1)	1	
+-A126287	lambdin	0	n -> D032742(n).*(F020639(n - 1))	"0,0"	n>=3
+-A128972	lambdan	0	n -> E062378(ZV(n).^(3).-(1))
+-A129101	lambdan	0	n -> E129094(n+1).-(E129093(n))	;	lsm	0	M030067(2^(n+1)+2^n-1) - M030067(2^(n+1)-3)	n>=0
+-A151552	lambdan	0	n -> D000523(n + 1)
+-A182095	lambdin	0	n -> E075084(Z2(n)).-(2)	"0,0"	n>=1
+-A183205	lambdan	0	n -> E183204(n)./(n+1)
+-A201689	multraf	0	(self, n) -> D000085(n).-(SU(0, n - 1, k -> self.a(k).*(D000085(n - 1 - k))))	"0"		_
+-A205958	multrar	0	(self, n) -> E180000(n).*(self.a(n/2).^(2))	"1"		_	_
+-A220314	lambdin	0	n -> n -> D000984(n).-((2*n).^(Functions.PRIME_PI.i(n)))	"1"		_
+-A228926	lambdan	0	n -> E121706(n).modZ(n - 1)
+-A235224	lambdan	0	n -> E061395(F276086(n))
+-A252738	multrar	0	n -> (self, n) -> E267096(n - 2).*(self.a(n - 1).^(2))	"1,2"		_	_
+-A252750	lambdan	0	n -> D003961(D005940(n + 1)).-(D005940(n + 1).*(2))
+-A266402	lambdan	0	n -> D064989(D030101(D003961(n)))
+-A266402	lambdan	0	n -> D064989(D057889(D003961(n)))
+-A276048	lambdin	0	n -> D014963(n).^(D014963(n).-(1))	"0"	, n > 1
+-A281640	lambdan	0	n -> E260649(3*n + 2)
+-A295893	lambdan	0	n -> E295891(D005940(1+n))
+-A297165	lambdan	0	n -> D005940(D156552(n).+(2))	"1"
+-A307707	multrar	0	(self, n) -> F002024(n - 1).-(self.a(n - 1))	"1"	
+-A324115	lambdan	0	n -> D002487(E323244(n))
+-A324118	lambdin	0	n -> D000593(D156552(n))	"0"
+-A324348	lambdan	0	n -> E324055(n).-(F000120(D005940(1+n)))
+-A324547	lambdan	0	n -> E324543(F002110(n))
+-A324865	lambdin	0	n -> D001065(D156552(n))	"0"
+-A324867	lambdan	0	n -> D156552(n).xor(E323243(n).-(D156552(n)))
+-A324888	lambdan	0	n -> E276150(E108951(n))
+-A324890	multrar	0	n -> (self, n) -> E276150(n).+(self.a(D064989(n).IVE()))	"0"		_	_
+-A328392	lambdan	0	n -> E328114(E327860(n))
+-A328392	lambdan	0	n -> E328114(F003415(F276086(n)))
+-A328392	lambdan	0	n -> E328390(F276086(n))
+-A328398	lambdan	0	n -> E328114(E328403(n))
+-A328398	lambdan	0	n -> E328389(E276087(n))
+-A328404	lambdan	0	n -> E061395(E276087(n))
+-A328405	lambdan	0	n -> E061395(E328403(n))
+-A328843	lambdan	0	n -> E328841(F276086(n))
+-A328844	lambdan	0	n -> E328842(F276086(n))
+-A329030	lambdan	0	n -> E134193(E276087(n))
+-A329030	lambdan	0	n -> E329028(F276086(n))
+-A329040	lambdan	0	n -> E267263(E108951(n))
+-A329259	multrar	0	(self, n) -> new Q(SU(1, n - 1, k -> BI(n, k).*(D010052(n - k).*(k).*(self.a(k)))), n).+(D010052(n)).num()	"0"
+-A329260	multrar	0	(self, n) -> new Q(SU(1, n - 1, k -> BI(n, k).*(D209229(n - k).*(k).*(self.a(k)))), n).+(D209229(n)).num()	"0"
+-A329261	multrar	0	(self, n) -> new Q(SU(1, n - 1, k -> BI(n, k).*(D010051(n - k).*(k).*(self.a(k)))), n).+(D010051(n)).num()	"0"
+-A329619	lambdan	0	n -> E328114(E108951(n)).-(D007814(E108951(n)))
+-A329891	lambdan	0	n -> E329644(ZV(2).^(n))
+-A329891	lambdin	0	n -> E323244(Z2(n)).-(E323244(Z2(n - 1)))	"0"
+-A329892	lambdan	0	n -> E329644(ZV(3).^(n))
+-A332223	lambdin	0	n -> D005940(1 + Functions.SIGMA1.i(D156552(n)))	"1"
+-A332462	lambdan	0	n -> D019565(D156552(n))
+-A332814	lambdan	0	n -> D156552(n).modZ(3)
+-A332823	lambdan	0	n -> D048675(n).mod(ZV(3))
+-A334224	lambdin	0	n -> D003418(2*n-1)	"2"	n>=2
+-A334864	lambdan	0	n -> E334863(n).-(D064097(n))
+-A335529	lambdan	0	n -> E317172(n).-(n)	"1"	/n 	n>=2
+-A336556	lambdan	0	n -> E335915(F000203(F000203(n)))
+-A337909	lambdin	0	n -> D054429(n - 1).+(1)	"1"
+-A340085	lambdan	0	n -> E336466(n)./(E340084(n))
+-A340085	lambdan	0	n -> E336466(n)./(GCD(n - 1, E336466(n)))
+-A341354	lambdan	0	n -> D007949(D156552(n).*(2).+(1))
+-A342026	lambdan	0	n -> E328310(F276086(n))
+-A342026	lambdan	0	n -> E328391(n).-(E328114(n))
+-A342461	lambdan	0	n -> E267263(E329886(n))
+-A342462	lambdan	0	n -> E276150(E329886(n))
+-A342463	lambdan	0	n -> E342002(E329886(n))
+-A342464	lambdan	0	n -> E328114(E329886(n))
+-A342920	lambdan	0	n -> E342002(E108951(n))
+-A343193	lambdan	0	n -> E082540(ZV(10).^(n))
+-A343282	lambdan	0	n -> E082544(ZV(10).^(n))
+-A346635	lambdin	0	n -> E129597(n)./(2)	"1"	n>=2
+-A346720	lambdan	0	n -> D000166(2*n) 
+-A347769	multrar	0	(self, n) -> D001065(self.a(n - 1))	"0,1"
+-A350063	lambdin	0	n -> D046523(E322993(n))	"0"
+-A350063	lambdin	0	n -> D046523(F000265(D156552(n)))	"0"
+-A350782	lambdan	0	n -> D002375(FA(n))
+-A352892	lambdin	0	n -> D005940(E139391(D156552(n)).+(1))	"1"	n>=2
+-A353529	lambdin	0	n -> E353489(n).xor(E353489(n-2))	"1"	n>=2
+-A360111	lambdin	0	n -> D359550(n).-(E368915(n))	"0"	n>=2
+-A360614	lambdin	0	n -> E061395(n)./(GCD(F001222(n), E061395(n)))	"0"
+-A367581	lambdan	0	n -> D055396(n).*(F001222(n))
+-A368905	lambdin	0	n -> E368914(D005940(1+n))	"0"
+-A369034	lambdan	0	n -> E369004(F276086(n))
+-A371998	lambdan	0	n -> ((n & 1) == 0) ? D000166(n/2) : D000240((n + 1)/2)
+-A372442	lambdin	0	n -> D029837(n).-(E061395(n))	"1"		n>=2
+-A373249	lambdan	0	n -> D181819(n)./(GCD(n, D181819(n)))
+-A373989	lambdan	0	n -> E276150(GCD(E108951(n), E373158(n)))

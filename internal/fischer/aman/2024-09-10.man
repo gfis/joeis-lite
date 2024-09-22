@@ -1,0 +1,135 @@
+---- 2024-09-20 11:57:34
+ A007873 Indices of last windows of trapezoidal maps.
+ A073957 Indices of records of the sum of the anti-divisors function.
+ A076180 Indices of spheres mentioned in J071609.
+ A084375	filtpos	0	0	new A000040()	PRIME	which remain prime if any one digit is deleted (leading zeros allowed).
+ A084907	filtpos	0	0	new A000045()	v -> 	that satisfy: Sum_{k>=1} 1/F(a(k)) = 1, where F(k) gives the k-th Fibonacci number with F(0)=1, such that the partial sums are nearest to, but never exceed, unity.
+ A084909	filtpos	0	0	new A000045()	v -> 	that satisfy: Sum_{k>=1} 1/F(a(k)) = tau-1, where F(k) gives the k-th Fibonacci number with F(0)=1, such that the partial sums are nearest to, but never exceed, tau-1 = (sqrt(5)-1)/2.
+ A085500	filtpos	0	0	new A000040()	PRIME	where nondecreasing gaps occur.
+ A085809 Indices of semiprimes where largest gap occurs. Or, positions of records in J065516.
+ A091207	filtpos	0	0	new A000040()	PRIME	that are also irreducible GF(2)[X]-polynomials.
+ A091210	filtpos	0	0	new A000040()	PRIME	that are composite GF(2)[X]-polynomials.
+ A100205 Indices of Kimberling centers incidents on central line called the Fermat axis.
+ A101755 Indices of highly composite triangular numbers.
+ A102106	filtpos	0	0	new A000045()	v -> 	that can be expressed as the sum of two (but no fewer) primes.
+ A102107	filtpos	0	0	new A000045()	v -> 	that can be expressed as the sum of three (but no fewer) primes.
+ A102250 Indices of semiprime Haüy rhombic dodecahedral numbers.
+ A103518 Indices of increasing partial quotients PQ_i of the continued fraction for the prime constant (J051006).
+ A103655	filtpos	0	0	new A000040()	PRIME	which are the average of two successive semiprimes.
+ A104623 Indices of semiprime (J001358) values of Heptanacci-Lucas numbers J104621.
+ A105018 Indices of the irregular primes.
+ A105285 Indices of Lucas 3-step numbers J001644 which have a nontrivial divisor in common with index.
+ A105289 Indices of Lucas 5-step numbers J074048 which have a nontrivial divisor in common with index.
+ A105935 Indices of Lucas 7-step numbers J104621 which have a nontrivial divisor in common with index.
+ A118420 Indices of Glaisher-primes: values n such that the concatenation of the first n decimal digits of the Glaisher-Kinkelin constant is prime.
+ A119334 Indices of Apery-primes: numbers n such that the concatenation of the first n decimal digits of Apery's constant zeta(3) is prime.
+ A119642	filtpos	0	0	new A000040()	PRIME	numbers of trees with n unlabeled nodes.
+ A124288 Indices of unstable zeros of the Riemann zeta function.
+ A124873 Indices of local maxima in sequence J007408.
+ A128304 Indices of 4th powers (of primes) in the 4-almost primes.
+ A131188 Indices of products of twin primes in the semiprimes.
+ A135768 Indices of pentagonal numbers > 0 which are not the difference of 2 other pentagonal numbers > 0.
+ A136112 Indices of pentagonal numbers > 0 which are not the difference of two larger pentagonal numbers.
+ A136116 Indices of pentagonal numbers (F000326) which are the sum of 2 other positive pentagonal numbers.
+ A136335 Indices of the primes p for which the number of representations of p as the sum of a perfect prime power (J025475: q^e with e>1) and an integer k which is less than q exceeds one.
+ A139484 Indices of Mersenne primes among primes of the form 24k + 7 (J107006).
+ A139539 Indices of numbers of form 12k+1 which are prime and have representation x^2+32xy+y^2.
+ A139540	filtpos	0	0	new A000040()	PRIME	of the form 12k+1 which have representation x^2+32xy+y^2.
+ A145092 Indices of the prime numbers after mapping the positive integers onto successive rings of length {1, 5, 30, 180, 1080, ...} and assigning index 0 to the smallest value in each.
+ A147971 Indices of the records in the sequence of smallest positive quadratic nonresidues (J053760).
+ A153815 Indices of nontrivial zeros of the Riemann zeta function where the real part of zeta'(s) becomes negative.
+ A155125 Indices of Bernoulli numbers of the form 4k+2 whose fractional part is < 2/3.
+ A155126 Indices of Bernoulli numbers of the form 4k+2 whose fractional part is < 2/3 and is incrementally smallest.
+ A158866 Indices of twin primes if the sum of these twin primes+1 is an upper twin prime.
+ A161163 Indices of the isolated primes in the prime sequence, if indices are odd.
+ A172437 Indices of pentagonal pyramidal numbers which are the sum of two other such numbers: k such that J002411(k) = J002411(i)+J002411(j) for some i,j>0.
+ A175439	filtpos	0	0	new A000040()	PRIME	with even and odd digits separately in ascending order.
+ A176507 Indices of products of 2 single (or isolated or non-twin) primes in the composites.
+ A176512 Indices of products of 2 single (or isolated or non-twin) primes in the semiprimes.
+ A176539 Indices of nonprime numbers in the products of two noncomposite numbers.
+ A178909 Indices of perfect polynomials over GF(2).
+ A178971	filtpos	0	0	new A000040()	PRIME	that are the sum of two Fibonacci numbers.
+ A183990 Indices of pairs with (odd i, even j) in list of pairs (i,j) ordered by value of i+j*r, where r=(1+sqrt(5))/2, i>=0, j>=0.
+ A199134 Indices of Greedy Queens (see J065188) below main diagonal.
+ A199635	filtpos	0	0	new A000045()	v -> 	containing an equal number of odd and even digits.
+ A199639 Indices of hexagonal numbers that are not the difference of two positive hexagonal numbers.
+ A203924 Indices of terms which appear at least twice already earlier in J061205.
+ A208436 Indices of maximal gaps between consecutive nontrivial zeros of the Riemann zeta function.
+ A218076 Indices of positive Fibonacci numbers whose binary expansions have record numbers of consecutive zeros.
+ A225620 Indices of partitions in the table of compositions of J228351.
+ A247250 Indices of Pell numbers having exactly one primitive prime factor.
+ A253919 Indices of products of four distinct primes (J046386) in the sequence of products of 4 primes (J014613).
+ A255739 Indices of nontrivial zeros of Riemann zeta function whose imaginary part sets a record for the absolute minimal difference from an integer.
+ A256563 Indices of semiprimes in J166133.
+ A258157 Indices of the start of 10 successive distinct digits in the decimal expansion of Pi.
+ A258158 Indices of the start of 9 successive distinct digits in the decimal expansion of Pi.
+ A258166 Indices of the start of 10 successive distinct digits in the decimal expansion of e (2.718281828...).
+ A258167 Indices of the start of 9 successive distinct digits in the decimal expansion of e (2.718281828...).
+ A260251 Indices of terms in Recamán's sequence J005132 that do not appear for the first time.
+ A261514 Indices of Mersenne numbers (D000225) of the form x^2 + xy + y^2.
+ A261991 Indices of abundant repunits: numbers n such that sigma((10^n-1)/9) > 2*(10^n-1)/9.
+ A263467 Indices of Fibonacci primes equal to a sum of squares of two Fibonacci numbers at least one of which is also prime.
+ A267431 Indices of Catalan numbers that are not of the form x^2 + y^2 + z^2 where x, y and z are integers.
+ A267756 Indices of Euclid numbers (J006862) of the form x^2 + y^2 + z^2 where x, y and z are integers.
+ A269871 Indices of square pyramidal numbers (F000330) that are the sum of 4 but no fewer nonzero squares.
+ A270122	filtpos	0	0	new A000040()	PRIME	numbers of the form x^2 + x + x*y + y + y^2 where x and y are integers.
+ A270238 Indices of Pell numbers of the form x^2 + xy + y^2.
+ A270311	filtpos	0	0	new A000040()	PRIME	ending with the same decimal digit as the previous or next prime.
+ A274333 Indices of Lucas numbers having exactly one primitive prime factor.
+ A275884 Indices of Greedy Queens (see J065188) on or above the main diagonal.
+ A307329 Indices of twin Ulam primes: numbers k such that both u(k) and u(k+1) are primes, where u(k) = J002858(k) are the Ulam numbers.
+ A307330 Indices of Ulam prime triples, where u(k), u(k+1) and u(k+2) are all primes, and u(k) = J002858(k) are the Ulam numbers.
+ A308412 Indices of Gaussian primes on a square spiral.
+ A319502 Indices of Mertens's function M(n) (F002321) whose nearest neighbors have value 0.
+ A319504 Indices of valleys (i.e. local minima) in J064800.
+ A323492 Indices of the sign changes of the sequence c(n) satisfying Sum_{k=0..n} c(k)/(n+k+1) = 0 with c(0)=1.
+ A326502 Indices of records of minimal distance between successive Riemann zeta zeros.
+ A326980 Indices of the compositions (ordered partitions) that are not in nonincreasing order in the list of compositions of j in colexicographic order, if 1 <= k <= 2^(j-1), j >= 1.
+ A327284 Indices of terms of the Hofstadter Q-sequence (M005185) not used in generating a later term.
+ A331119 Indices of J025487(n) in J055932.
+ A331938 Indices of F002110(n) in J055932.
+ A332034 Indices of J002182(n) in J055932.
+ A332035 Indices of J004394(n) in J055932.
+ A332938 Indices of the primitive rows of the Wythoff array (J035513); see Comments.
+ A333364	filtpos	0	0	new A000040()	PRIME	p whose order of primeness J078442(p) is prime.
+ A339738 Indices of distinct Gregorian calendar year types in a 400-year period, indexed in order of occurrence in the 3rd millennium CE.
+ A339806 Indices of vertex points of the upper convex hull of the squarefree number graph.
+ A346544 Indices of repeated digits of Champernownes constant.
+ A352403 Indices of metallic means that are powers of other metallic means.
+ A355318 Indices of the primes that have the same base-10 digits as the corresponding prime number (with multiplicity), disregarding zero digits.
+ A358110 Indices of the harmonic numbers in the Stern-Brocot sequence (D002487).
+ A360374 Indices of the nonprimitive rows of the Wythoff array (J035513); see Comments.
+ A363636 Indices of numbers of the form k^2+1, k >= 0, that can be written as a product of smaller numbers of that same form.
+ A363637 Indices of numbers of the form k^2-1, k >= 2, that can be written as a product of smaller numbers of that same form.
+ A369648 Indices of novel terms in E351073, where E351073 is the maximal exponent in the prime factorization of the numbers that are sums of distinct primorial numbers.
+ A372886	filtpos	0	0	new A000040()	PRIME	numbers whose binary indices (positions of ones in reversed binary expansion) sum to another prime number.
+ A375713 Indices of consecutive non-prime-powers (J361102) differing by 1. Numbers k such that the k-th and (k+1)-th non-prime-powers differ by just one.
+ A375734 Indices of consecutive prime-powers (exclusive) differing by 1. Positions of 1s in J246655.
+#A152012	filtpos	0	0	new A000045()	v -> Functions.OMEGA.l(v) == 1	having exactly one primitive prime factor.
+#A152013	filtpos	0	0	new A000045()	v -> Functions.OMEGA.l(v) >= 2	having at least two distinct primitive prime factors.
+A072190	filtpos	0	1	new A000040()	v -> ZUtils.isPrimitiveRoot(ZV(2), v)
+A089920	filtpos	0	1	new A000040()	v -> ZV(7).^(v).-(2).IPP()	p such that 7^p - 2 is prime.
+A092825	filtpos	0	0	new A005259()	PRIME	Apéry numbers.
+A092837	filtpos	0	0	new A046976()	PRIME	Indices of terms in the series for sec(x) that have prime numerators.    
+A105758	filtpos	0	-4	new A001592()	PRIME	hexanacci (or Fibonacci 6-step) numbers J001592 (using offset -4).
+A107040	filtpos	0	1	new A000129()	v -> Predicates.SQUARE_FREE.is(v)
+A107349	filtpos	0	0	new A000040()	v -> Functions.DIGIT_SUM.l(v) == 67
+A107611	filtpos	0	1	new A000040()	v -> Functions.DIGIT_PRODUCT.l(v) == 2	PRIME	with digit product = 2.
+A111019	filtpos	0	0	new A000108()	PRIME	Catalan numbers that are == 1 mod 3 (cf. F000108).
+A120819	filtpos	0	0	new A057137()	PRIME	in J057137.
+A124077	filtpos	0	1	new A072762()	PRIME	primes in J072762; b(i=a(n)) is prime, b(i) coded as binary word of length=i with k-th bit set iff k is prime (1<=k<=i).
+A144641	filtpos	0	0	new A001599()	v -> Predicates.PERFECT.is(v)	harmonic (or Ore) numbers (J001599) that are also perfect numbers.
+A147782	filter	0	new A000040()	v -> ZV(7).^(v).-(2).IPP()
+A153800	filtpos	0	0	new A007691()	v -> Predicates.PERFECT.is(v)	perfect numbers (J000396) in the sequence of multiply-perfect numbers (J007691).
+A156793	filtpos	0	0	new A000108()	v -> {final Z rev = Functions.REVERSE.z(10, v); return !rev.equals(v) && rev.IPP(); }	whose reversal is a different prime.
+A225906	sintrif	0	(term, n) -> F000720(term)	""	new A050299().skip()	PRIME	whose Wilson quotients are also prime.
+A232448	filtpos	0	0	new A232449()	PRIME	Belphegor primes: numbers k such that the decimal number 1 0...0(k 0's) 666 0...0(k 0's) 1 (i.e., J232449(k)) is prime.
+A248700	filtpos	0	0	new A122189()	PRIME	in the Heptanacci numbers sequence J122189.
+A249635	filtpos	0	0	new A001592()	PRIME	hexanacci (or Fibonacci 6-step) numbers J001592 (using offset -4).
+A256561	filtpos	0	1	new A166133()	PRIME	in J166133.
+A257227	filtpos	0	0	new A122265()	PRIME	in the 10th-order Fibonacci number sequence, J122265.
+A319393	filtpos	0	1	new A000045()	(k, v) -> v.IPP() && ZV(k).IPP() && Functions.DIGIT_SUM.z(v).IPP()	numbers k such that (1) Fibonacci(k) is prime, (2) k is prime, and (3) the sum of the digits of Fibonacci(k) is prime.
+A321058	recpos	0	new A067849()	,1	
+A321866	filtpos	0	0	new A000292()	v -> ZV(2).^(v.-(1)).mod(v).equals(ZV(1))	Indices of tetrahedral numbers that are Fermat pseudoprimes to base 2.
+A324790	filtpos	0	0	new A022837()	v -> v.equals(ZV(0))	zeros in M022837.
+A358417	filtpos	0	1	new A189475()	v -> Predicates.TRIANGULAR.is(v)	triangular numbers in J189475.

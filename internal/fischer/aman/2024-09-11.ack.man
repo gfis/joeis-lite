@@ -1,0 +1,102 @@
+A076481	parmof3	1	A086122	k -> ZV( 3).^(k).-(  1)	2
+A080942	lambdan	1	n -> SD(n, d -> Long.toString(n, 2).endsWith(Long.toString(d, 2)) ? ZV(1) : ZV(0))	n that are also suffixes of n in binary representation.
+A084294	lambdan	1	n -> F000720(n + Functions.PRIME.i(n)).-(n - 1)	""		a(n) = Pi(n+prime(n)) - n + 1 = F000720(n+F000040(n)) - n + 1	_	_	_
+A087133	lambdan	1	n -> n == 1 ? Z.ONE : SD(n, d -> ZV(d).compareTo(GPF(n)) <= 0 ? ZV(1) : ZV(0))	n that are not greater than the greatest prime-factor of n; a(1)=1.
+A087321	lambdan	1	n -> F007947(n).^(Functions.MAX.i(D051903(n), Z.TWO))	""		a(n) = F007947(n)^max(D051903(n), 2)	_	_	_
+A090704	filnum	1	0	n -> FA(n).*(n).-(1).IPP()	""		a(n) = J049433(n)-1 because n!-(n-1)!-1 = (n-1)*(n-1)!-1	_	_	_
+A092751	filter	1	new LambdaSequence(1, k -> FA(2*k)./(FA(k).^(2)).-(1) )	v -> v.IPP()
+A093625	parmof3	1	A086122	k -> ZV( 3).^(k).+(1  )	2
+A093640	lambdan	1	n -> SD(n, d -> Long.toString(n, 2).indexOf(Long.toString(d, 2)) >= 0 ? ZV(1) : ZV(0))	n whose binary representation is contained in that of n.
+A093672	parmof3	1	A086122	k -> ZV(10).^(k).*( 7).-(  1)	3
+A093993	lambdan	1	n -> SD(n, d -> Functions.DIGIT_SUM.z(d).IPP() ? ZV(1) : ZV(0))	n with a prime digital sum.
+A100288	filter	1	new LambdaSequence(1, k -> SU(1, k, i -> FA(i).^(2)))	v -> v.IPP()	(1!)^2+(2!)^2+(3!)^2+...+(FA(k))^2
+A106033	lambdan	1	n -> { final Z np = Functions.PRIME.z(n).*(n); return Functions.SQRT.z(np).+(1).^(2).-(np); }	""		a(n) = (floor(sqrt(n*prime(n)))+1)^2 - n*prime(n)	_	_	_
+A108062	filnum	1	1	k -> Z2(2*k - 1).+(Z2(k)).+(1).IPP()	2^(2n-1) + 2^n + 1 is prime.	base,nonn	1..13	nyi	_Alexandre Wajnberg_
+A111010	parmof3	1	A086122	k -> ZV(3).^(k).-(Z_1(k))	4
+A111210	parmof3	1	A086122	k -> Z2(k).-(Functions.PRIME.z(k))	3
+A112854	filter	1	new LambdaSequence(1, k -> FA(2*k)./(FA(k)).-(1)      )	v -> v.IPP()
+A112856	filter	1	new LambdaSequence(1, k -> FA(2*k)./(FA(k)).+(1)      )	v -> v.IPP()
+A117131	lambdan	1	n -> ZV(n).^(n).mod(F000040(n))	""		a(n) = mod(n^n, prime(n))	_	_	_
+A117280	lambdin	0	n -> ZV(n).^((n - 1) % 9 + 1)	"1"		for n>0, a(n) = n^(mod(n-1,9)+1)	_	_	_
+A118136	lambdan	0	n -> ZV(2).+(FA(n).*(2).mod(ZV(n + 1)))	""		a(n) = 2 + (2*n! mod n+1)	_	_	_
+A118812	filter	1	new LambdaSequence(1, k -> FA(2*k).-(FA(k)).+(1)          )	v -> v.IPP()
+A119993	lambdan	1	n -> F000040(F001221(n).+(n))	""		a(n) = F000040(n + F001221(n))	_	_	_
+A121041	lambdan	1	n -> SD(n, d -> Long.toString(n, 10).indexOf(Long.toString(d, 10)) >= 0 ? ZV(1) : ZV(0))	n that are also contained in the decimal representation of n.
+A121938	parmof3	1	A086122	k -> ZV(3).^(k).+(ZV(5).^(k))	8	/2^3=A074606(n)/8
+A123077	parmof3	1	A086122	k -> ZV(1 + 2*k).+(ZV(k).^(2).*(3)).+(ZV(k).^(3).*(4))	2	3*n^2+4*n^3)/2
+A123100	parmof3	1	A086122	k -> ZV(1 + 2*k).+(ZV(k).^(2).*(3)).+(ZV(k).^(3).*(4))	5	3*n^2+4*n^3)/5
+A123370	parmof3	1	A086122	k -> ZV( 2).^(k).+(7  )	3
+A123663	lambdan	1	n -> ZV(2*n).-(Functions.CEIL_SQRT.z(4*n))	""		a(n) = 2n - ceiling(2*sqrt(n))	_	_	_
+A126836	lambdan	1	n -> Functions.SIGMA.z(3, n).*(n).modZ(7)	""		a(n) = n*sigma_3(n) mod 7	_	_	_
+A132995	lambdan	1	n -> Functions.GCD.z(SU(1, n, k -> F000040(k)), PR(1, n, j -> F000040(j)))	""		a(n) = gcd(Sum_{k=1..n} prime(k), Product{j=1..n} prime(j))	_	_	_
+A138917	parmof3	1	A086122	k -> ZV( 7).^(k).-(ZV(3).^(k))	4
+A138930	parmof3	1	A086122	k -> ZV( 8).^(k).-(ZV(3).^(k))	5
+A138931	parmof3	1	A086122	k -> ZV(10).^(k).-(ZV(3).^(k))	7
+A138932	parmof3	1	A086122	k -> ZV(11).^(k).-(ZV(3).^(k))	8
+A138942	parmof3	1	A086122	k -> ZV(14).^(k).-(ZV(3).^(k))	11
+A138956	parmof3	1	A086122	k -> ZV( 4).^(k).+(ZV(5).^(k))	9
+A154402	lambdan	1	n -> SD(n, d -> ZV(d).bitCount() == ZV(d).bitLength() ? ZV(1) : ZV(0))	n of the form 2^k - 1 (D000225) for k >= 1. - _Jeffrey Shallit_, Jan 23 2017
+A154616	parmof3	1	A086122	k -> ZV(k).^(2).*(4).-(8*k + 9)	3	4*n^2-8*n-9)/3
+A154619	parmof3	1	A086122	k -> ZV(k).^(2).*(4).+(4*k - 5)	5
+A161506	lambdan	1	n -> SD(n, d -> 2*d > Functions.PHI.l(n) ? ZV(1) : ZV(0))	n that are greater than phi(n)/2, where phi is Eulers totient function.
+A163512	parmof3	1	A086122	k -> ZV(1 + k).+(ZV(k).^(3))	3	+k^3)/3
+A165210	parmof3	1	A086122	k -> ZV( 6).^(k).-(1)	5
+A171748	filter	1	new LambdaSequence(1, k -> ZV(2 + k).*(1 + 2*k).+(ZV(1 + k).*(2 + 2*k)))	v -> v.IPP()
+A177417	filter	1	new LambdaSequence(2, n -> Z.TEN.^(n).-(57))	v -> v.IPP()
+A177419	parmof3	1	A086122	k -> ZV(10).^(k).*( 7).+( 17)	3
+A177440	parmof3	1	A086122	k -> ZV(10).^(k).*( 8).+(  7)	3
+A177465	parmof3	1	A086122	k -> ZV(10).^(k).*(35).-( 71)	9
+A177488	parmof3	1	A086122	k -> ZV(10).^(k).*(37).+( 17)	9
+A177489	parmof3	1	A086122	k -> ZV(10).^(k).*(13).+( 17)	3
+A177490	parmof3	1	A086122	k -> ZV(10).^(k).*(41).-( 23)	9
+A177491	parmof3	1	A086122	k -> ZV(10).^(k).*(14).-( 17)	3
+A177503	parmof3	1	A086122	k -> ZV(10).^(k).*(44).+(  1)	9
+A177509	parmof3	1	A086122	k -> ZV(10).^(k).*( 4).+( 11)	3
+A178608	parmof3	1	A086122	k -> ZV(k).^(3).*(2).+(ZV(k).^(2).*(3)).+(k - 12)	6	(2*k^3+3*k^2+k-12)/6
+A198725	parmof3	1	A086122	k -> ZV(6).^(k).-(11)	5
+A200819	filter	1	new LambdaSequence(1, k -> Z2(k).-(k).*(Z2(k)).-(1)   )	v -> v.IPP()
+A200822	filter	1	new LambdaSequence(1, k -> Z2(k).+(k).*(Z2(k)).-(1)   )	v -> v.IPP()
+A200832	filter	1	new LambdaSequence(1, k -> Z2(k).+(k).*(Z2(k)).+(1)   )	v -> v.IPP()
+A233011	filter	1	new LambdaSequence(1, k -> FA(2*k).-(FA(k).^(2)).-(1) )	v -> v.IPP()
+A249610	parmof3	1	A086122	k -> ZV(k).^(3).*(2).-(ZV(k).^(2).*(2)).+(k + 2)	2	(2k^3-2k^2+k+2)/2
+A268620	filnum	1	0	k -> Functions.DIGIT_SUM.l(10, k) % 4 == 0	Numbers whose digital sum is a multiple of 4.	nonn,base	1..10000	nyi	_Bruno Berselli_
+A268692	filnum	1	1	k -> Z2(k - 1).*(Z2(k).-(1)).+(1).IPP()	Numbers k such that 2^(k-1)*(2^k - 1) + 1 is prime (see J134169).	nonn,more	1..33	nyi	_Jeppe Stig Nielsen_
+A268714	arrlamb	0	0	0	-1	(i, j) -> F006068(i).+(F006068(j))	0..15050	nyi	_Antti Karttunen_
+A268715	arrlamb	0	0	0	-1	(i, j) -> F003188(F006068(i).+(F006068(j)))	nonn,tabl	0..15050	nyi	_Antti Karttunen_
+A286900	lambdan	1	n -> SU(n, Functions.NEXT_PRIME.i(n), i -> ZV(i))	""		a(n) = Sum_{i=n..nextprime(n)} i	_	_	_
+A292069	parmof3	1	A086122	k -> ZV(24).^(k).-(1  )	23
+A292070	parmof3	1	A086122	k -> ZV(40).^(k).-(1  )	39
+A292071	parmof3	1	A086122	k -> ZV(46).^(k).-(1  )	45
+A319995	lambdan	1	n -> SD(n, d -> (d % 6 == 5) ? ZV(1) : ZV(0))	n of the form 6*k+5.
+A364209	lambdan	1	n -> SD(n, d -> (d % 3 == 1 && d <= Functions.SQRT.l(n)) ? ZV(1) : ZV(0))	n of the form 3*k+1 that are at most sqrt(n).
+A364357	lambdan	1	n -> SD(n, d -> (d % 3 == 2 && d <= Functions.SQRT.l(n)) ? ZV(1) : ZV(0))	n of the form 3*k+2 that are at most sqrt(n).
+A364358	lambdan	1	n -> SD(n, d -> (d % 4 == 1 && d <= Functions.SQRT.l(n)) ? ZV(1) : ZV(0))	n of the form 4*k+1 that are at most sqrt(n).
+A364387	lambdan	1	n -> SD(n, d -> (d % 4 == 3 && d <= Functions.SQRT.l(n)) ? ZV(1) : ZV(0))	n of the form 4*k+3 that are at most sqrt(n).
+A364388	lambdan	1	n -> SD(n, d -> (d % 5 == 1 && d <= Functions.SQRT.l(n)) ? ZV(1) : ZV(0))	n of the form 5*k+1 that are at most sqrt(n).
+A364389	lambdan	1	n -> SD(n, d -> (d % 5 == 2 && d <= Functions.SQRT.l(n)) ? ZV(1) : ZV(0))	n of the form 5*k+2 that are at most sqrt(n).
+A364419	lambdan	1	n -> SD(n, d -> (d % 5 == 3 && d <= Functions.SQRT.l(n)) ? ZV(1) : ZV(0))	n of the form 5*k+3 that are at most sqrt(n).
+A364420	lambdan	1	n -> SD(n, d -> (d % 5 == 4 && d <= Functions.SQRT.l(n)) ? ZV(1) : ZV(0))	n of the form 5*k+4 that are at most sqrt(n).
+A367098	lambdan	1	n -> SD(n, d -> Functions.OMEGA.l(d) == 2L ? ZV(1) : ZV(0))	n with exactly two distinct prime factors.
+A368684	alter	1	new A057427()	new A000005()
+A368911	lambdan	1	n -> SU(1, ZV(10).^(n).intValueExact(), k -> E360111(k))	""		a(n) = Sum_{k=1..10^n} E360111(k)	_	_	_
+A374195	lambdan	1	n -> SU(1, n - 1, k -> ZV(10*k).modZ(n))	""		a(n) = Sum_{k=1..n-1} (k*10 mod n)	_	_	_
+A375558	lambdan	0	n -> RU(0, n/4, k -> new Q(FA(n - 4*k).*(S1(k, n - 4*k).abs()), ZV(24).^(k).*(FA(k)))).*(FA(n)).num()	n! * Sum_{k=0..floor(n/4)} (n-4*k)! * |Stirling1(k,n-4*k)|/(24^k*k!).
+A375560	lambdan	0	n -> RU(0, n/4, k -> new Q(FA(n - 4*k).*(S1(k, n - 4*k)), ZV(24).^(k).*(FA(k)))).*(FA(n)).num()
+A375839	lambdan	0	n -> PR(0, n, k -> ZV(k).^(2).+(n))	_
+A375840	lambdan	0	n -> PR(0, n, k -> ZV(k).^(3).+(n))	_
+A375841	lambdan	0	n -> PR(0, n, k -> ZV(k).^(4).+(n))	_
+A375842	lambdan	0	n -> PR(0, n, k -> ZV(k).^(5).+(n))	_
+A375843	lambdan	0	n -> PR(0, n, k -> ZV(k).^(6).+(n))	_
+A375844	lambdan	0	n -> PR(0, n, k -> ZV(k).^(7).+(n))	_
+A375845	lambdan	0	n -> PR(0, n, k -> ZV(k).^(8).+(n))
+---- 2024-09-11 23:27:11
+A075840	filter	1	new LambdaSequence(0, k -> FA(2*k)./(FA(k).^(2)).+(1) )	v -> v.IPP()
+A091514	filter	1	new LambdaSequence(0, k -> Z2(k).+(1).^(2).-(2)       )	v -> v.IPP()
+A112862	filter	1	new LambdaSequence(1, k -> FA(2*k)./(FA(k).^(2).*(2)).-(1))	v -> v.IPP()
+A112864	filter	1	new LambdaSequence(1, k -> FA(2*k)./(FA(k).^(2).*(2)).+(1))	v -> v.IPP()
+A113925	multrar	1	(self, n) -> Functions.GCD.z(self.a(n - 1).+(self.a(n - 2)), ZV(n - 2))	"0,1"		a(1)=0. a(1)=1. a(n+2) = gcd(a(n+1) + a(n), n).	nonn	1..1000	nyi	_Leroy Quet_
+A159049	filter	1	new LambdaSequence(0, k -> ZV(k).*(k + 1)./(2).+(5))	v -> v.IPP()
+A233906	filter	1	new LambdaSequence(1, k -> ZV(3).^(k).mod(ZV(k).^(3)).+(1))	v -> v.IPP()
+A279060	lambdan	0	n -> n == 0 ? ZV(0) : SD(n, d -> (d % 6 == 1) ? ZV(1) : ZV(0))	n of the form 6*k+1.
+A279061	lambdan	0	n -> n == 0 ? ZV(0) : SD(n, d -> (d % 7 == 1) ? ZV(1) : ZV(0))	n of the form 7*k+1.
+A325914	filter	1	new LambdaSequence(1, k -> Z2(k).-(1).*(Z2(k + 1)).+(1))	v -> v.IPP()

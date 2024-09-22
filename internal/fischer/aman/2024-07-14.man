@@ -1,0 +1,208 @@
+---- 2024-07-16 09:07:10
+ A072273	lambdan	0	n -> E060594(n)	""		_
+ A074002	lambdan	0	n -> D000244(n)	""		_
+ A074587	lambdan	0	n -> D008966(n). a(n)is asymptotic to c*2^n with c	""		_
+ A075743	lambdan	0	n -> D010051(J007310(n+2))	""		_
+ A076116	lambdan	0	n -> D007814(n). If v	""		_
+ A076448	lambdan	0	n -> D000051(J005126(n-2))	""		_
+ A077267	lambdan	0	n -> E079978(n)if n < 3, E079978(n)+ a(floor(n/3))otherwise	""		_
+ A077645	lambdan	0	n -> D007504(F000720(10^n))- D007504(F000720(10^(n-1)))	""		_
+ A078349	lambdin	0	n -> D010051(n)+ a(floor(n/2))	"0"		_	_
+ A081537	lambdan	0	n -> D003418(n)if n is odd or n is even  n+1 is not a prime power	""		_
+ A084484	lambdan	0	n -> D007088(n)iff F000120(n)	""		_
+ A084984	lambdan	0	n -> D007092(n-1)iff the digits of D007092(n-1)are 0 or 1, a(n)>D007092(n-1), else	""		_
+ A085756	lambdan	0	n -> D004526(n-1)+J001399(n-6)+J001401(n-15)+J008636(n-28)+	""		_
+ A085910	lambdan	0	n -> D001223(n), i.e., prime(k+1)- prime(k)	""		_
+ A087095	lambdan	0	n -> E077503(n)- n*10^d	""		_
+ A087179	lambdin	0	n -> D067029(n)[i.e., when n is a prime power, p^k,	lsm		k], otherwise a(n) = a(J051119(n)) ^ D071178(n)	_	_	_
+ A088334	lambdan	0	n -> E101342(n)	""		_
+ A088444	lambdan	0	n -> D008578(n)	""		_
+ A088529	lambdin	0	n -> E181591(n)<	n:2		_	_
+ A101119	lambdan	0	n -> D006519(16*n)- J003484(16*n)for n>	""		_	_
+ A101864	lambdin	0	n -> D001950(k)(Wythoff B-numbers).  with B(0)	"0"		_	_
+ A102050	lambdan	0	n -> E185121(n)	""		_
+ A106151	lambdan	0	n -> D000225(n)	""		_
+ A109163	lambdan	0	n -> D019565(n-th prime)	""		_
+ A110254	lambdan	0	n -> E110243(n^2)	""		_
+ A114015	lambdin	0	n -> D007090(i)for some i in J001358  R(a(n))	lsm		D007090(i) for some i in J001358  F004086(a(n)) = D007090(j) for some j =/= i in J001358	_	_	_
+ A114015	lambdin	0	n -> D007090(j)for some j 	lsm		D007090(i) for some i in J001358  F004086(a(n)) = D007090(j) for some j =/= i in J001358	_	_	_
+ A115082	lambdan	0	n -> E115081(n)+ n*E115081(n-1)	""		_
+ A119684	lambdin	0	n -> D007089(i)for some i in J001358  R(a(n))	lsm		D007089(i) for some i in J001358  F004086(a(n)) = D007089(j) for some j =/= i in J001358	_	_	_
+ A119684	lambdin	0	n -> D007089(j)for some j 	lsm		D007089(i) for some i in J001358  F004086(a(n)) = D007089(j) for some j =/= i in J001358	_	_	_
+ A121659	lambdin	0	n -> E121081(n)- J008483(n-3)	n>=3		_	_
+ A122198	lambdin	0	n -> E122155(D053644(n)+a(D053645(n)))	"0"		_	_
+ A122199	lambdin	0	n -> D053644(E122155(n))+ a(D053645(E122155(n)))	"0"		_	_
+ A123477	lambdan	0	n -> E113063(n)	""		_
+ A126850	lambdan	0	n -> E107749(a(n-1))	""		_
+ A128474	lambdan	0	n -> D007814(n)+ J011371(n-3)	""		_
+ A131822	lambdan	0	n -> D003961(J036035(n-1))	""		_
+ A134129	lambdan	0	n -> D007504(J134126(n+1))	""		_
+ A136021	sintrif	0	(term, n) -> D006880(n)*10^n - J024934(10^n).-(term)	""	new A046731()	_
+ A138607	lambdin	0	n -> D007504(S083375(n-2)), then	lsm		a(n-1-F000040(S083375(n-2)))+2, otherwise a(n) = a(n-1)+2	_	_	_
+ A141256	lambdin	0	n -> D032742  GCD	IP=F049084		_	_
+ A143629	lambdin	0	n -> E143628(n)C(n)	lsm		E143628(n) - D000587(n)	initialconditionsA(0	_	_	_
+ A143629	lambdin	0	n -> E143630(n). The values of B(n)are recorded in E143631. Compare with J143818. Also	lsm		E143628(n) - D000587(n)	initialconditionsA(0	_	_	_
+ A151905	lambdin	0	n -> E151904(j)	"0,1,0"		_	_
+ A154333	lambdan	0	n -> D000578(n).-(J048760(n^3-1). a(k^2))	""		_
+ A158619	multraf	0	(self, n) -> D007088(self.s(0))CONCATENATE D007088(self.s(1))	""	new A001359(), new A006512()	_
+ A158819	lambdan	0	n -> D013928(n + 1).-(new Q(n, RU(m_{i>=1}1/(i^2)	""		_
+ A158819	lambdan	0	n -> D013928(n+1)- 6*n/(Pi^2)	""		_
+ A161903	lambdan	0	n -> D057889(J269174(D057889(n)))	""		_
+ A162455	lambdan	0	n -> D002061(F000142(J051856(n+1))+1)	""		_
+ A163356	multraf	0	(self, n) -> D000695(self.s(0))+ 2*D000695(self.s(1))	""	new A059253(), new A059252()	_
+ A163540	multraf	0	(self, n) -> E010873(self.s(0)+self.s(2)+abs(self.s(2))+3)	""	new A163538(), new A163539(), new A163539()	_
+ A163541	multraf	0	(self, n) -> E010873(self.s(2)+ self.s(1)+ abs(self.s(2))+ 3)	""	new A163538(), new A163539(), new A163538()	_
+ A163824	lambdan	0	n -> D000984(n).-(J027649(n-1)	""		_
+ A163900	multraf	0	(self, n) -> D000290(abs(self.s(0)-self.s(1)))+ D000290(abs(self.s(2)-self.s(3)))	""	new A059906(), new A059252(), new A059905(), new A059253()	_
+ A171387	lambdin	0	n -> D010051(n), otherwise	lsm		0	_	_	_
+ A176894	lambdan	0	n -> D007088(n)+J002276(F070939(n))	""		_
+ A178106	lambdan	0	n -> D002894(8)	""		_	_
+ A181363	lambdan	0	n -> D008578(J025480(n-1)+1)	""		_
+ A182857	lambdin	0	n -> D181819(a(n+1)). For n > 1,	lsm		J181821(a(n-1))	n>=1	_	_	_
+ A184726	lambdin	0	n -> D005408(n-1)/J090368(n-1)	lsm		0 for n <= 2	n>=3	_	_	_
+ A189936	lambdan	0	n -> D005408(k)	""		_
+ A202267	lambdan	0	n -> D007092(n-1)iff the digits of D007092(n-1)are <	""		_
+ A206296	lambdin	0	n -> D003961(a(n-1))* a(n-2)	"1,2"		_	_
+ A211168	lambdin	0	n -> D003418(n)/(1 + [n in J228693])	n>=2		_	_
+ A219839	lambdin	0	n -> D004526   delta(n)	"1"		_	_
+ A227428	sintrif	0	(term, n) -> E206424(n)* ((3^term)-1)/ ((3^term)+1)	""	new A081603(), new A081603()	_
+ A232395	sintrif	0	(term, n) -> D000290(⌈sqrt(term)⌉).-(term). Where ⌈x⌉ stands for ceiling(x). This further reduces as	""	new A053698(), new A053698()	_
+ A237649	lambdan	0	n -> E163659(ZV(n).^(3))	""		_
+ A239130	lambdan	0	n -> E239131(n), n >	""		_
+ A242415	lambdan	0	n -> D122111(J069799(D122111(n)))	""		_
+ A243503	lambdan	0	n -> E061395(n)* F001222(n)+ E061395(n)- D056239(n)+ F001222(n)- 1	""		_
+ A245525	lambdan	0	n -> E094252(n)or E094252(n)-F000040(n), depending on whether E094252(n)<	""		_
+ A245812	lambdin	0	n -> D065621(1+a(-(M065620(n)))), otherwise	lsm		D048724(a(M065620(n)-1))	"0,1"	_	_	_
+ A245812	sintrif	0	(term, n) -> D065621(1+a(term)), otherwise	lsm	new A246159()	D048724(a(J246160(n)-1)). [Note how J246159 is an inverse function for D048724, while J246160 is an inverse function for D065621]	"0,1"	_	_	_
+ A246165	lambdin	0	n -> D064989(n)-th integer among those positive integers not occurring earlier in the sequence. [D064989(n)shifts the prime factorization of n one step right]	"1"		_	_
+ A246379	lambdin	0	n -> D003961(1+a(F000720(n))), otherwise	lsm		2*a(J065855(n))	"1"	_	_	_
+ A246681	lambdin	0	n -> D003961(a(F000720(n))), otherwise	lsm		2*a(J065855(n))	"1,2"	_	_	_
+ A247425	lambdin	0	n -> D000201(n)- 1 (J003234(j))+ 1;	lsm		D000201(n) for other n. [Carlitz, Thm. 4.6]	noftheformD000201	_	_	_
+ A247426	lambdin	0	n -> D001950(n);	lsm		D001950(n) + 1 for other n. [Carlitz, Thm. 4.7]	ninJ003233	_	_	_
+ A249336	lambdin	0	n -> D056239(a(n-1))	"1"		_	_
+ A249337	lambdin	0	n -> D056239(a(n-1))	"1,2"		_	_
+ A249812	lambdan	0	n -> D000079(D055396(n+1)-1)* ((2*J078898(n+1))-1)	""		_
+ A249813	lambdin	0	n -> D000079(D055396(n+1)-1)* ((2 * a(J078898(n+1)))- 1)	"1"		_	_
+ A250469	lambdin	0	n -> D055396(n).+(1)	"1"		_	_
+ A252462	multraf	0	(self, n) -> D008578(1 + self.s(0))* self.s(1)	""	new A252735(), new A052126()	_
+ A253141	lambdin	0	n -> D014963(F000005(n)); otherwise,	lsm		1	_	_	_
+ A253892	lambdan	0	n -> D054429(J253792(D054429(n)))	""		_
+ A255560	lambdin	0	n -> D005187(h)for some h, in which case	lsm		a(h-1)	"1"	_	_	_
+ A256990	lambdin	0	n -> D005187(h)for some h, in which case	lsm		a(h)	"0"	_	_	_
+ A262680	lambdin	0	n -> D010052(n)+ a(D049820(n))	"0"		_	_
+ A264024	lambdan	0	n -> D049559(k)./(F002322(k)	""		_
+ A265574	lambdin	0	n -> D014963(n+1)	n>=2		_	_
+ A265750	lambdin	0	n -> D003961(a(n-1))* 2^((4*n)+2)	"2"		_	_
+ A266413	lambdin	0	n -> D002487(n)-th number selected from those not yet in the sequence	"1"		_	_
+ A267115	lambdin	0	n -> D067029(n), otherwise	lsm		D067029(n) AND a(D028234(n)). [Here AND stands for bitwise-, J004198.]	_	_	_
+ A268674	lambdin	0	n -> D055396(n)-1,  for even numbers:	lsm		a(F000265(n))	"1"	_	_	_
+ A269847	lambdin	0	n -> D003961(a(F000720(n))), otherwise	lsm		2*a(n-F000720(n))	"1"	_	_	_
+ A269847	lambdin	0	n -> D003961(a(F000720(n))), otherwise [when n is 2 or composite]	lsm		2*a(n-F000720(n))	"1"	_	_	_
+ A269847	sintrif	0	(term, n) -> D003961(a(term)), else	lsm	new A026233()	J005843(a(J026233(n)))	"1"	_	_	_
+ A270198	lambdan	0	n -> D054429(J055938(D054429(n)))	""		_
+ A270200	lambdin	0	n -> D054429(D005187(1+D054429(n-1)))	"0"		_	_
+ A276976	lambdin	0	n -> D051903(n)or	lsm		F002322(n) + A(n) otherwise	n<>=9	_	_	_
+ A277333	lambdin	0	n -> D048675(n), otherwise	lsm		0	_	_	_
+ A277896	lambdan	0	n -> D048675(n), 0 if no such number exists (when n is a power of 2)	""		_
+ A277901	sintrif	0	(term, n) -> D065621(term), otherwise	lsm	new A115384()	D048724(a(floor(n/2)))	_	_	_
+ A282329	lambdan	0	n -> D007504(n+1)- 2*J071148(n-1)	""		_
+ A285327	lambdan	0	n -> D048675(J065642(J065642(D019565(n))))	""		_
+ A292608	lambdan	0	n -> D007814(n)	""		_
+ A293414	lambdin	0	n -> E293412(n)if (fractional part of e*n^2)< 1/2, else	lsm		E293413(n)	_	_	_
+ A295079	lambdan	0	n -> D002487(n)	""		_
+ A295101	lambdan	0	n -> D013928(n+1)- Sum_{prime p > sqrt(n)}D013928(floor(n/p)+1)	""		_
+ A295881	lambdin	0	n -> D048724(-D033879(n)), otherwise	lsm		D065621(D033879(n))	_	_	_
+ A297109	lambdan	0	n -> D055396(n)	""		_
+ A297109	sintrif	0	(term, n) -> D001511(term), otherwise 0	""	new A297108()	_
+ A297153	lambdin	0	n -> D065621(D083254(n)), otherwise	lsm		D048724(-D083254(n))	_	_	_
+ A302437	lambdan	0	n -> D053644(n)	""		_
+ A302776	sintrif	0	(term, n) -> E302023(J052126(term))	""	new A302024()	_
+ A302846	multraf	0	(self, n) -> D000695(F003188(self.s(0)))+ 2*D000695(F003188(self.s(1)))	""	new A059253(), new A059252()	_
+ A306363	sintrif	0	(term, n) -> D000522(k-1)*term; k	""	new A066504()	_
+ A308974	lambdan	0	n -> D010051	""		_
+ A317947	lambdin	0	n -> D007088(n-1)+10^(1+D000523(n-1))*D007088(n)	n>=2		_	_
+ A319225	lambdan	0	n -> D056239(n)* (Omega(n)- 1)! / Product c_i!	""		_
+ A320118	lambdin	0	n -> D181819(n)* a(D181819(n))	"1,1"		_	_
+ A320465	lambdin	0	n -> D000225(n)U J001567 (odd prime or pseudoprime to base 2 =Sarrus or Poulet number)	ninJ065091		_	_
+ A322827	lambdan	0	n -> D046523(a(n))	""		_
+ A323511	lambdan	0	n -> D008966(n)* J079559(D048675(n))	""		_
+ A324115	lambdan	0	n -> D002487(E323244(n)), with the definition of D002487 extended to the negative arguments so that D002487(-n)	""		_
+ A324537	lambdan	0	n -> D003557(k)	""		_
+ A326958	lambdan	0	n -> E073118(n)+ J000070(n-1), n >	""		_
+ A328317	lambdin	0	n -> E326810(J328316(n-1))	n>=1		_	_
+ A328322	lambdan	0	n -> D051903(J328316(1+n))	""		_
+ A328449	lambdin	0	n -> D003418(n)if n + 1 is a prime power, otherwise	lsm		0	_	_	_
+ A328509	lambdin	0	n -> D000670(n)- J007052(n-1)	n>=1		_	_
+ A329899	sintrif	0	(term, n) -> D064989(term), otherwise	lsm	new A025487()	J025487(n)/2	_	_	_
+ A330342	lambdin	0	n -> D051903(n)or	lsm		F002322(n) + A(n) otherwise	_	_	_
+ A332223	lambdin	0	n -> D005940(1 + (Sum_{d|D156552(n)}d))	n>=2		_	_
+ A332873	lambdin	0	n -> D000670(n)+ D000225(n)- 2*J007052(n-1)	n>=1		_	_
+ A333267	lambdan	0	n -> D005361(n)* Product_{p|n, p prime}a(pi(p))	""		_
+ A334097	lambdin	0	n -> D007814(n), otherwise	lsm		a(n+J052126(n)), or equally, a(n) = a(n+(n/J078701(n)))	_	_	_
+ A335427	lambdan	0	n -> D048675(J052126(k))	""		_
+ A335427	lambdan	0	n -> D048675(k)+ 2 * a(m)	""		_
+ A335434	lambdan	0	n -> D001055(n)	""		_
+ A337150	lambdan	0	n -> D006577(n)for 1 <	""		_
+ A339948	lambdan	0	n -> E286779(n)	""		_
+ A342013	sintrif	0	(term, n) -> D156552(J319626(term))	""	new A004490()	_
+ A342920	lambdan	0	n -> E327860(E108951(n))./(E328572(E108951(n)))	""		_
+ A343622	lambdan	0	n -> D008578(n)- (1/n)* Sum_{k=1..n-1}binomial(n,k)* D008578(n-k)* k * a(k)	""		_
+ A343623	lambdan	0	n -> D008578(n)+ (1/n)* Sum_{k=1..n-1}binomial(n,k)* D008578(n-k)* k * a(k)	""		_
+ A344682	lambdin	0	n -> D022290(D059893(J003754(n+1)))	"0"		_	_
+ A345290	lambdan	0	n -> D022290(n)iff n belongs to J062880	""		_
+ A345290	multraf	0	(self, n) -> D022290(self.s(0))- D022290(self.s(1))	""	new A063695(), new A063694()	_
+ A346089	lambdan	0	n -> D002034(n)	""		_
+ A347602	lambdan	0	n -> D000166(n)	""		_
+ A348717	lambdan	0	n -> D122111(J243074(D122111(n)))	""		_
+ A350070	lambdan	0	n -> D051903(n), otherwise 0	""		_
+ A354197	lambdan	0	n -> D064989(J066971(D003961(n)))	""		_
+ A356759	lambdan	0	n -> D022290(D057889(J003754(n+1)))	""		_
+ A366389	lambdin	0	n -> D057889(n), otherwise	lsm		J073675(D057889(n)) = D057889(J073675(n))	_	_	_
+ A367587	lambdan	0	n -> E061395(n)	""		_
+ A370239	lambdan	0	n -> E071327(n)+ 1 if  only if n is not in J036785	""		_
+ A371014	lambdan	0	n -> D046951(n)if  only if n is in J004614	""		_
+ A371908	lambdan	0	n -> D007814(J008336(2*n))	""		_
+ A372095	lambdan	0	n -> D007949(J008336(3*n))	""		_
+ A372720	lambdin	0	n -> E095960(n), i.e., for squarefree n or prime powers n	ninJ303554		_	_
+-A071585	sintrif	0	(term, n) -> D059893(term)	"1"	new A086592()	_
+-A120355	sintrif	0	(term, n) -> D002034(term)	""	new A007677()	_
+-A128972	sintrif	0	(term, n) -> E062378(term)	""	new A068601()	_
+-A139564	sintrif	0	(term, n) -> D006880(2*n).-(term)	""	new A046731()	_
+-A186963	sintrif	0	(term, n) -> E162642(term)	""	new A007357()	_
+-A190620	sintrif	0	(term, n) -> D000225(Functions.TRINV.i(n) + 2).-(D000079(term))	""	new A004736()	_
+-A225017	sintrif	0	(term, n) -> E132740(term)	""	new A055566()	_
+-A229742	sintrif	0	(term, n) -> D002487(D059893(term).+(1))	"1"	new A233279()	_
+-A230773	sintrif	0	(term, n) -> D010051(n).*(term.+(ZV(n).^(2).mod(3))).+(ZV(1).-(D010051(n)).*(D055396(n)))	""	new A056811()	_
+-A241917	sintrif	0	(term, n) -> E061395(n).-(E061395(term))	""	new A052126()	_
+-A241919	sintrif	0	(term, n) -> E061395(n).-(E061395(term))	""	new A051119()	_
+-A245326	sintrif	0	(term, n) -> D002487(D059893(term).+(1))	""	new A180200()	_
+-A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()	_
+-A253888	sintrif	0	(term, n) -> D048673(term.*(2).+(1))	"1"	new A064216()	_	_
+-A253888	sintrif	0	(term, n) -> D254049(term.+(1))	"1"	new A064216()	_	_
+-A273258	sintrif	0	(term, n) -> D019565(D030101(term))	""	new A087207()	_
+-A277195	sintrif	0	(term, n) -> D022290(D156552(term))	""	new A005117()	_
+-A277195	sintrif	0	(term, n) -> D022290(term)	""	new A277010()	_
+-A324057	multraf	0	(self, n) -> D005940(1 + n).*(self.s(0).mod(self.s(1)))	""	new A106737(), new A324054()	_
+-A324200	sintrif	0	(term, n) -> D007814(term)	""	new A000396()	_
+-A325223	sintrif	0	(term, n) -> D056239(n).-(term)	""	new A263297()	_
+-A325224	sintrif	0	(term, n) -> D056239(n).-(term)	""	new A325225()	_
+-A328317	sintrif	0	(term, n) -> D053669(term)	"1"	new A328316()	_	_
+-A328318	sintrif	0	(term, n) -> E267263(term)	""	new A328316()	_
+-A328319	sintrif	0	(term, n) -> E276150(term)	""	new A328316()	_
+-A328322	sintrif	0	(term, n) -> E328114(term)	""	new A328316()	_
+-A328323	sintrif	0	(term, n) -> E324198(term)	""	new A328316()	_
+-A330681	sintrif	0	(term, n) -> E283980(term)	""	new A025487()	_
+-A334871	multrar	0	(self, n) -> D048675(F007913(n)).+(self.a(E008833(n).IVE()))	""		_
+-A351394	sintrif	0	(term, n) -> D048105(n).+(term)	""	new A046660()	_
+-A353954	sintrif	0	(term, n) -> D019565(term)	"1"	new A109812()	_	_
+-A356771	sintrif	0	(term, n) -> D022290(term).and(term)	""	new A003714()	_
+-A365161	sintrif	0	(term, n) -> D001223(term.-(1))	""	new A059305()	_
+-A365460	sintrif	0	(term, n) -> E267263(term)	""	new A181821()	_
+-A365461	sintrif	0	(term, n) -> E276150(term)	""	new A181821()	_
+-A366276	sintrif	0	(term, n) -> D057889(term)	""	new A243071()	_
+-A369658	sintrif	0	(term, n) -> E011655(n).*(term)	""	new A359430()	_
+-A373155	sintrif	0	(term, n) -> E011655(n).*(term)	""	new A035263()	_
+-A373986	sintrif	0	(term, n) -> E373158(n)./(term)	""	new A373985()	_
+-A373987	sintrif	0	(term, n) -> E108951(n)./(term)	""	new A373985()	_
+-A373989	sintrif	0	(term, n) -> E276150(term)	""	new A373985()	_
+-A329344	lambdan	0	n -> E328114(E108951(n))

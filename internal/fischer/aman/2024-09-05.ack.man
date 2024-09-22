@@ -1,0 +1,109 @@
+---- 2024-09-01 21:20:01
+---- 2024-09-01 21:31:25
+---- 2024-09-01 22:24:17
+---- 2024-09-02 21:47:17
+---- 2024-09-02 22:04:40
+A113669	multrar	0	(self, n) -> SU(0, n-1, i -> SU(0, n-i-1, j -> self.a(i).*(self.a(j)).*(self.a(n - i - j - 1)))).*(n)	"1"		a(0) = 1; a(n) = n * Sum_{i=0..n-1} Sum_{j=0..n-i-1} a(i) * a(j) * a(n-i-j-1).
+A113887	filnum	1	1	n -> CV(n).sqrt().exp().floor().IPP()		Numbers n such that floor(exp(sqrt(n))) is a prime number.	nonn	1..56	nyi	_Stefan Steinerberger_
+A256866	parmof3	1	A256865	1	6	Numbers divisible by prime(d+1) for each digit d of their base-6 representation.	nonn,base	1..50	nyi	_M. F. Hasler_
+A256867	parmof3	1	A256865	1	7	Numbers divisible by prime(d+1) for each digit d of their base-7 representation.	nonn,base	1..1000	nyi	_M. F. Hasler_
+A256868	parmof3	1	A256865	1	8	Numbers divisible by prime(d+1) for each digit d of their base-8 representation.	nonn,base	1..57	nyi	_M. F. Hasler_
+A256869	parmof3	1	A256865	1	9	Numbers divisible by prime(d+1) for each digit d of their base-9 representation.	nonn,base	1..3000	nyi	_M. F. Hasler_
+A256870	parmof3	1	A256865	1	10	Numbers divisible by prime(d+1) for each digit d of their base-10 representation.	nonn,base	1..41	nyi	_M. F. Hasler_
+A256874	parmof3	1	A256865	0	4	Numbers divisible by prime(d)   for each digit d in their base-4 representation, none of which may be zero.	nonn,base	1..57	nyi	_M. F. Hasler_
+A256875	parmof3	1	A256865	0	5	Numbers divisible by prime(d)   for each digit d in their base-5 representation, none of which may be zero.	nonn,base	1..10000	nyi	_M. F. Hasler_
+A256876	parmof3	1	A256865	0	6	Numbers divisible by prime(d)   for each digit d in their base-6 representation, none of which may be zero.	nonn,base	1..10000	nyi	_M. F. Hasler_
+A256877	parmof3	1	A256865	0	7	Numbers divisible by prime(d)   for each digit d in their base-7 representation, none of which may be zero.	nonn,base	1..49	nyi	_M. F. Hasler_
+A256878	parmof3	1	A256865	0	8	Numbers divisible by prime(d)   for each digit d in their base-8 representation, none of which may be zero.	nonn,base	1..50	nyi	_M. F. Hasler_
+A256879	parmof3	1	A256865	0	9	Numbers divisible by prime(d)   for each digit d in their base-9 representation, none of which may be zero.	nonn,base	1..53	nyi	_M. F. Hasler_
+A256882	parmof3	1	A256865	1	2	Numbers divisible by prime(d+1) for each digit d of their base-2 representation.	nonn,base	1..72	nyi	_M. F. Hasler_
+A256883	parmof3	1	A256865	1	3	Numbers divisible by prime(d+1) for each digit d of their base-3 representation.	nonn,base	1..67	nyi	_M. F. Hasler_
+A256884	parmof3	1	A256865	1	4	Numbers divisible by prime(d+1) for each digit d of their base-4 representation.	nonn,base	1..63	nyi	_M. F. Hasler_
+A321126	arrlamb	0	0	0	-1	(n, k) -> Functions.MAX.z(n + k - 1, n + 1, k + 1)	, square array read by antidiagonals (n >= 0, k >= 0).	nonn,tabl,easy	0..11475	nyi
+A321384	multrar	1	(self, n) -> SD(n - 1, d -> self.a(d).*(d)).negate()	"1"		nyi Fto	a(1) = 1; a(n+1) = -Sum_{d|n} d*a(d).	sign	1..450	nyi
+A321789	trilambn	1	0	0	(n, k) -> FA(BI(n, k))	Factorials of terms of Pascals triangle by row.	nonn,tabl	1..36	nyi	_Kei Ryan_
+A322015	lambdan	0	n -> (Functions.GRAY_ENCODE.z(n + 1).compareTo(Functions.GRAY_ENCODE.z(n)) < 0) ? ZV(n + 1) : Z.ZERO	If F003188(n+1) < F003188(n), then a(n) = n+1, otherwise a(n) = 0.	nonn	0..16383	nyi	_Antti Karttunen_
+A322016	lambdan	0	n -> (n == 0) ? Z.ZERO : ((Functions.GRAY_ENCODE.z(n).compareTo(Functions.GRAY_ENCODE.z(n - 1)) > 0) ? ZV(n - 1) : Z.ZERO)	a(0) = 0; for n > 0, if F003188(n) > F003188(n-1) then a(n) = n-1, otherwise a(n) = 0.	nonn	0..16383	nyi	_Antti Karttunen_
+A322017	lambdan	0	n -> (n == 0) ? Z.ZERO : ((Functions.GRAY_ENCODE.z(n).compareTo(Functions.GRAY_ENCODE.z(n - 1)) > 0) ? ZV(n - 1) : ((Functions.GRAY_ENCODE.z(n + 1).compareTo(Functions.GRAY_ENCODE.z(n)) < 0) ? ZV(n + 1) : Z.ZERO))	a(0) = 0; for n > 0, if F003188(n) > F003188(n-1) then a(n) = n-1, else if F003188(n+1) < F003188(n) then a(n) = n+1, otherwise a(n) = 0.	nonn	0..16383	nyi	_Antti Karttunen_
+A374858	obvecon	0	new A001477()	new A000032()		, L                 s**t = A374858
+A374859	obvecon	0	new A001477()	new A000079()		, 2^n               s**t = A374859
+A374860	obvecon	0	new A000012()	new PrependSequence(0, new A000201(), 0)		, LW                s**t = A374860
+A374861	obvecon	0	new A001477()	new PrependSequence(0, new A000201(), 0)		, LW                s**t = A374861
+A374862	obvecon	0	new PrependSequence(0, new A000201(), 0)	new PrependSequence(0, new A000201(), 0)		s = t = D000201, LW            s**s = A374862
+A374863	obvecon	0	new PrependSequence(0, new A000201(), 0)	new PrependSequence(0, new A001950(), 0)		, UW         s**t = A374863
+A374864	obvecon	0	new A000012()	new PrependSequence(0, new A001950(), 0)	, UW                s**t = A374864
+A375536	lambdan	1	n ->  D051903(E355582(n))
+A375556	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(n - 3*k).*(S1(k,n-3*k).abs()), ZV(6).^(k).*(FA(k)))).*(FA(n)).num()
+A375557	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k).*(S1(k, n - 2*k)), Z2(k).*(FA(k)))).*(FA(n)).num()
+A375561	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k).*(S1(k, n - 2*k).abs()), FA(k))).*(FA(n)).num()
+A375562	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(n - 3*k).*(S1(k,n-3*k).abs()), FA(k))).*(FA(n)).num()
+A375586	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k).*(S2(k, n - 2*k)), Z2(k).*(FA(k)))).*(FA(n)).num()
+A375587	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(n - 3*k).*(S2(k,n-3*k)), ZV(6).^(k).*(FA(k)))).*(FA(n)).num()
+A375588	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k).*(S2(k, n - 2*k)), FA(k))).*(FA(n)).num()
+A375589	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(n - 3*k).*(S2(k,n-3*k)), FA(k))).*(FA(n)).num()
+A375591	lambdan	0	n -> RU(0, n/2, k -> new Q(S2(k, n - 2*k), Z2(k).*(FA(k)))).*(FA(n)).num()
+A375592	lambdan	0	n -> RU(0, n/3, k -> new Q(S2(k, n - 3*k), ZV(6).^(k).*(FA(k)))).*(FA(n)).num()
+A375604	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n - 2*k + 1).^(k), FA(k))).*(FA(n)).num()
+A375607	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n - 3*k + 1).^(k), FA(k))).*(FA(n)).num()
+A375608	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(- n + 2*k - 1).^(k), FA(k))).*(FA(n)).num()
+A375609	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(- n + 3*k - 1).^(k), FA(k))).*(FA(n)).num()
+A375610	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k + 1).^(n - 3*k), FA(n - 3*k))).*(FA(n)).num()
+A375627	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n - 2*k + 2).^(k), FA(k))).*(FA(n)).num()
+A375628	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n - 3*k + 2).^(k), FA(k))).*(FA(n)).num()
+A375629	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k + 2).^(n - 2*k), FA(n - 2*k))).*(FA(n)).num()
+A375630	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k + 2).^(n - 3*k), FA(n - 3*k))).*(FA(n)).num()
+A375631	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k + 2).^(n - 2*k), Z2(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375632	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(k + 2).^(n - 3*k), ZV(6).^(k).*(FA(n - 3*k)))).*(FA(n)).num()
+A375633	lambdan	0	n -> RU(0, n/2, k -> new Q(n - 2*k + 2, 2).^(k)./(FA(k))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..floor(n/2)} ((n-2*k+2)/2)^k/k!.
+A375634	lambdan	0	n -> RU(0, n/3, k -> new Q(n - 3*k + 6, 6).^(k)./(FA(k))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..floor(n/3)} ((n-3*k+6)/6)^k/k!.
+A375635	lambdan	0	n ->  D037445(FA(n))
+A375639	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(k + 1).*(S1(n-2*k,k).abs()), FA(n - 2*k))).*(FA(n)).num()
+A375651	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k + 1).^(n - 2*k), FA(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375652	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k + 2).^(n - 2*k), FA(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375653	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n - 2*k + 1).^(k), FA(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375654	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n - 2*k + 2).^(k), FA(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375655	lambdan	0	n -> RU(0, n/2, k -> new Q(n - 2*k + 2, 2).^(k)./(FA(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375656	lambdan	0	n -> RU(0, n/3, k -> new Q(n - 3*k + 6, 6).^(k)./(FA(k).*(FA(n - 3*k)))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..floor(n/3)} ((n-3*k+6)/6)^k / (k! * (n-3*k)!).
+A375660	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(k+1).*(S2(n - k, k)), FA(n - k))).*(FA(n)).num()
+A375661	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(k + 2).*(S2(n-k,k)), FA(n - k)))./(2).*(FA(n)).num()
+A375662	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(k + 1).*(S2(n-2*k,k)), FA(n - 2*k))).*(FA(n)).num()
+A375663	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(k + 2).*(S2(n - 2*k,k)), FA(n - 2*k)))./(2).*(FA(n)).num()
+A375664	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k + 1).*(S2(k, n - 2*k)), FA(k))).*(FA(n)).num()
+A375665	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k + 2).*(S2(k, n - 2*k)), FA(k)))./(2).*(FA(n)).num()
+A375667	sintrif	1	(term, n) ->  D051903(term)	""	new A007310()
+A375668	sintrif	1	(term, n) ->  D051903(term)	""	new A007775()
+A375669	lambdan	1	n ->  D051903(F000265(n))
+A375670	lambdan	1	n ->  D051903(E065330(n))
+A375679	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(k + 2).*(S1(n - 2*k,k).abs()), FA(n - 2*k)))./(2).*(FA(n)).num()
+A375680	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k + 1).*(S1(k, n - 2*k).abs()), FA(k))).*(FA(n)).num()
+A375681	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k + 2).*(S1(k, n - 2*k).abs()), FA(k)))./(2).*(FA(n)).num()
+A375682	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k + 2).*(S1(k, n - 2*k).abs()), (Z2(k).*(FA(k)))))./(2).*(FA(n)).num()
+A375683	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(FA(k)).*(S2(n - k, k)      ),  FA(n - k))).*(FA(n)).num()
+A375684	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(FA(k)).*(S1(n - k, k).abs()),  FA(n - k))).*(FA(n)).num()
+A375685	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(k + 1).*(S1(n-2*k,k).abs()), Z2(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375686	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(k + 2).*(S1(n - 2*k,k).abs()), (Z2(k).*(FA(n - 2*k)))))./(2).*(FA(n)).num()
+A375687	lambdan	0	n -> RU(0, n/2, k -> new Q(DF(2*k - 1).*(S1(n - k, k).abs()), FA(n - k))).*(FA(n)).num()
+A375688	lambdan	0	n -> RU(0, n/2, k -> new Q(PR(0, k - 1, j -> ZV(3*j + 1)).*(S1(n - k, k).abs()  ), FA(n - k)          )           ).*(FA(n)).num()
+A375689	lambdan	0	n -> RU(0, n/2, k -> new Q(PR(0, k - 1, j -> ZV(3*j + 2)).*(S1(n - k, k).abs()  ), FA(n - k)          )           ).*(FA(n)).num()
+A375693	lambdan	0	n -> RU(0, n, j -> new Q(Z_1(n - j).*(BI(n, j)).*(FA(n*j)), FA(n).^(j))).num()
+A375695	lambdan	0	n -> RU(0, n/2, k -> new Q(DF(2*k - 1).*(S2(n - k, k)), FA(n - k))).*(FA(n)).num()
+A375696	lambdan	0	n -> RU(0, n/2, k -> new Q(PR(0, k - 1, j -> ZV(3*j + 1)).*(S2(n - k, k)        ), FA(n - k)          )           ).*(FA(n)).num()
+A375697	lambdan	0	n -> RU(0, n/2, k -> new Q(PR(0, k - 1, j -> ZV(3*j + 2)).*(S2(n - k, k)        ), FA(n - k)          )           ).*(FA(n)).num()
+A375698	lambdan	0	n -> RU(0, n/3, k -> new Q(DF(2*k - 1).*(S1(n - 2*k, k).abs()), Z2(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375699	lambdan	0	n -> RU(0, n/4, k -> new Q(PR(0, k - 1, j -> ZV(6*j + 1)).*(S1(n - 3*k, k).abs()), ZV(6).^(k).*(FA(n - 3*k))   )  ).*(FA(n)).num()
+A375700	lambdan	0	n -> RU(0, n/4, k -> new Q(PR(0, k - 1, j -> ZV(6*j + 2)).*(S1(n - 3*k, k).abs()), ZV(6).^(k).*(FA(n - 3*k))   )  ).*(FA(n)).num()
+A375701	lambdan	0	n -> RU(0, n/4, k -> new Q(PR(0, k - 1, j -> ZV(6*j + 3)).*(S1(n - 3*k, k).abs()), ZV(6).^(k).*(FA(n - 3*k))   )  ).*(FA(n)).num()
+A375715	lambdan	0	n -> RU(0, n/3, k -> new Q(DF(2*k - 1).*(S2(n - 2*k, k)      ), Z2(k).*(FA(n - 2*k)))).*(FA(n)).num()
+A375716	lambdan	0	n -> RU(0, n/4, k -> new Q(PR(0, k - 1, j -> ZV(6*j + 1)).*(S2(n - 3*k, k)      ), ZV(6).^(k).*(FA(n - 3*k))   )  ).*(FA(n)).num()
+A375717	lambdan	0	n -> RU(0, n/4, k -> new Q(PR(0, k - 1, j -> ZV(6*j + 2)).*(S2(n - 3*k, k)      ), ZV(6).^(k).*(FA(n - 3*k))   )  ).*(FA(n)).num()
+A375718	lambdan	0	n -> RU(0, n/4, k -> new Q(PR(0, k - 1, j -> ZV(6*j + 3)).*(S2(n - 3*k, k)      ), ZV(6).^(k).*(FA(n - 3*k))   )  ).*(FA(n)).num()
+A375721	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(FA(k + 1)).*(S1(n, k).abs()))
+A375722	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(FA(k + 2)).*(S1(n, k).abs()))./(2)
+A375751	sintrif	0	(term, n) ->  F000045(n).-(term)	""	new A138184()
+A375752	sintrif	2	(term, n) ->  F000217(n).-(term)	""	new A065384()
+A375773	lambdan	0	n -> RU(0, n/5, k -> new Q(FA(5*k).*(S2(n, 5*k)), FA(k))).num()
+A375795	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k).*(S2(n- k, n - 2*k)), FA(n - k))).*(FA(n)).num()
+A375796	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(n - 3*k).*(S2(n-2*k,n-3*k)), FA(n - 2*k))).*(FA(n)).num()
+A375798	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(n - 2*k).*(S1(n - k, n - 2*k).abs()), FA(n - k))).*(FA(n)).num()
+A375799	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(n - 3*k).*(S1(n-2*k,n-3*k).abs()), FA(n - 2*k))).*(FA(n)).num()
+---- 2024-09-04 21:33:28

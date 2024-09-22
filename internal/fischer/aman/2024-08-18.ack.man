@@ -1,0 +1,44 @@
+---- 2024-08-18 21:30:43
+A097872	multraf	1	(self, n) -> new Q(self.s(0), self.s(1)).num()	""	new A000356(), new A000309()	(average number of 4-colorings of rank 0 in a rooted nonseparable map which is trivalent and has 2n nodes).	nonn,frac	1..24	nyi	_N. J. A. Sloane_
+A097875	multraf	1	(self, n) -> new Q(self.s(0), self.s(1)).den()	""	new A000356(), new A000309()	(average number of 4-colorings of rank 0 in a rooted nonseparable map which is trivalent and has 2n nodes).	nonn,frac	1..24	nyi	_N. J. A. Sloane_
+A264763	multrar	0	(self, n) -> self.a(n - 1).+(self.a(n - 2).mod(5))	"1,1"		a(0) = a(1) = 1; for n>1, a(n) = a(n-1) + (a(n-2) mod 5).	nonn,easy	0..56	nyi	_Anders Hellstr‚ąö‚ąām_
+A271393	multrar	1	(self, n) -> Z.THREE.pow(self.a(n - 1)).-(1)./(2)	"3"		a(1) = 3, a(n+1) = (3^a(n)-1)/2.	nonn	1..3	nyi	_Thomas Ordowski_
+A271422	lambdan	1	n -> { final Z p = Functions.PRIME.z(n); return new Z(p.toString() + p.^(2).toString()); }	Concatenation of prime(n) and its square.	nonn,easy,base	1..33	nyi	_Giovanni Teofilatto_
+A271655	filter	1	new A000040()	p -> Functions.PHI.z(p.+(1)).equals(Functions.PHI.z(Functions.PHI.z(p.-(1)).+(1)))	Primes p such that phi(p+1)          = phi(phi(p-1)+1).	nonn	1..33	nyi	_Jaroslav Krizek_
+A271656	filter	1	new A000040()	p -> Functions.PHI.z(p.+(1)).equals(Functions.PHI.z(Functions.PHI.z(p.-(2)).+(1)))	Odd primes p such that phi(p+1)      = phi(phi(p-2)+1).	nonn	1..70	nyi	_Jaroslav Krizek_
+A271657	filter	0	new A000040().skip(2)	p -> Functions.PHI.z(p.-(3)).equals(Functions.PHI.z(Functions.PHI.z(p.-(1)).-(1)))	Primes p such that phi(p-3)          = phi(phi(p-1)-1).	nonn	1..33	nyi	_Jaroslav Krizek_
+A271658	filter	0	new A000040().skip(2)	p -> Functions.PHI.z(p.-(3)).equals(Functions.PHI.z(Functions.PHI.z(p.-(2)).-(1)))	Primes p such that phi(p-3)          = phi(phi(p-2)-1).	nonn	1..39	nyi	_Jaroslav Krizek_
+A271659	filter	0	new A000040().skip(1)	p -> Functions.PHI.z(Functions.PHI.z(p.-(1)).+(1)).equals(Functions.PHI.z(Functions.PHI.z(p.-(2)).+(1)))	Primes p such that phi(phi(p-1)+1)   = phi(phi(p-2)+1).	nonn	1..38	nyi	_Jaroslav Krizek_
+A271660	filter	0	new A000040().skip(2)	p -> Functions.PHI.z(Functions.PHI.z(p.-(2)).-(1)).equals(Functions.PHI.z(Functions.PHI.z(p.-(1)).-(1)))	Primes p such that phi(phi(p-2)-1)   = phi(phi(p-1)-1).	nonn	1..35	nyi	_Jaroslav Krizek_
+A271666	filter	1	new A000040()	p -> p.^(2).+(p).*(4).-(1).IPP()	4*p^2+4*p-1 is prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_                                                                                                         -
+A271667	filter	1	new A000040()	p -> p.^(2).+(p).*(6).-(1).IPP()	6*p^2+6*p-1 is prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A271834	lambdan	1	n -> Z2(n).-(SU(0, n, m -> { final int g = Functions.GCD.i(n, m); return BI(n/g, m/g); }))	a(n) = 2^n - Sum_{m=0..n} binomial(n/gcd(n,m), m/gcd(n,m)) = 2^n - A082906.	nonn,easy	1..1000	nyi	_Stanislav Sykora_
+A271909	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) == Functions.BIG_OMEGA.i(3*k + 1)	Numbers k such that bigomega(k) = bigomega(3*k+1).
+A271919	lambdan	1	n -> RQ(1, n - 1, j -> new Q(3*j + 1, 3*j + 2)).num()	Numerator of          Product_{j=1..n-1} ((3*j+1)          /(3*j+2)).	nonn,frac	1..33	nyi	_N. J. A. Sloane_
+A271920	lambdan	1	n -> RQ(1, n - 1, j -> new Q(3*j + 1, 3*j + 2)).den()	Denominator of        Product_{j=1..n-1} ((3*j+1)          /(3*j+2)).	nonn,frac	1..33	nyi	_N. J. A. Sloane_
+A271921	lambdan	1	n -> RQ(1, n - 1, j -> new Q(3*j + 1, 3*j + 2)).*(n).num()	Numerator of        n*Product_{j=1..n-1} ((3*j+1)          /(3*j+2)).	nonn,frac	1..31	nyi	_N. J. A. Sloane_
+A271922	lambdan	1	n -> RQ(1, n - 1, j -> new Q(3*j + 1, 3*j + 2)).*(n).den()	Denominator of      n*Product_{j=1..n-1} ((3*j+1)          /(3*j+2)).	nonn,frac	1..33	nyi	_N. J. A. Sloane_
+A271923	lambdan	1	n -> RQ(0, n - 1, j -> new Q(ZV(2*j + 1).*(3*j + 4), ZV(j + 1).*(6*j+1))).-(1)./(3).num()	Numerator of   (1/3)*(Product_{j=0..n-1} (((2*j+1)*(3*j+4))/((j+1)*(6*j+1))) - 1).	nonn,frac	1..26	nyi	_N. J. A. Sloane_
+A271924	lambdan	1	n -> RQ(0, n - 1, j -> new Q(ZV(2*j + 1).*(3*j + 4), ZV(j + 1).*(6*j+1))).-(1)./(3).den()	Denominator of (1/3)*(Product_{j=0..n-1} (((2*j+1)*(3*j+4))/((j+1)*(6*j+1))) - 1).	nonn,frac	1..26	nyi	_N. J. A. Sloane_
+A271925	lambdan	1	n -> RQ(0, n - 1, j -> new Q(ZV(2*j + 1).*(3*j + 4), ZV(j + 1).*(6*j+1))).-(1).num()	Numerator of              (Product_{j=0..n-1} (((2*j+1)*(3*j+4))/((j+1)*(6*j+1))) - 1).	nonn,frac	1..26	nyi	_N. J. A. Sloane_
+A271926	lambdan	1	n -> RQ(0, n - 1, j -> new Q(ZV(2*j + 1).*(3*j + 4), ZV(j + 1).*(6*j+1))).-(1).den()	Denominator of            (Product_{j=0..n-1} (((2*j+1)*(3*j+4))/((j+1)*(6*j+1))) - 1).	nonn,frac	1..27	nyi	_N. J. A. Sloane_
+A271938	multrar	1	(self, n) -> self.a(n - 1).^(self.a(n - 2))	"1,3"		a(1) = 1, a(2) = 3, a(n) = a(n-1)^a(n-2).	nonn	1..6	nyi	_Natan Arie Consigli_
+A272044	filnum	1	1	k -> Functions.BIG_OMEGA.l(k) == Functions.BIG_OMEGA.l((long) k * k + 1)	Numbers n such that n and n^2+1 have the same number of prime factors (including multiplicities).	nonn	1..10000	nyi	_Benjamin Przybocki_
+A272136	multrar	1	(self, n) -> self.a(n - 2).+(F001414(self.a(n - 1)))	"1,2"		a(n+1) = a(n-1) + F001414(a(n)) with a(1)=1, a(2)=2.	nonn	1..10000	nyi	_David James Sycamore_
+A272137	filter	1	new LambdaSequence(1, n -> ZV(n).^(16).+(1))	v -> v.IPP()	Primes of the form n^16 + 1.	nonn	1..100	nyi	_Jaroslav Krizek_
+A375286	lambdan	1	n -> SU(1, n, k -> ZV(-2).^(Functions.BIG_OMEGA.i(k)))	a(n) = f(1) + f(2) + ... + f(n), where f(n) = (-2)^Omega(n) = A165872(n).	sign,new	1..64	nyi	_Charles R Greathouse IV_
+A375307	lambdan	0	n -> SU(0, 3*n/5, k -> BI(3*n - 3*k, 2*k))
+A375308	lambdan	0	n -> SU(0, 2*n/3, k -> BI(4*n - 4*k, 2*k))
+A375349	parity	1	new A004709()
+---- 2024-08-18 22:01:34
+A271376	filnum	1	3	n -> FA(n)./(n - 2).+(1).IPP()	Integers n such that n!/(n-2) + 1 is prime.	nonn	1..34	nyi	_Altug Alkan_
+A272076	filnum	1	0	k -> ZV(k).*(7*k - 371).+(4871).abs().IPP()
+A374982	lambdan	0	n -> PR(0, n, k -> Functions.FIBONACCI.z(k).+(3))./(3)	*Product_{k=0..n} (F(k)+3), where F=F000045 (Fibonacci numbers).	nonn,new	0..17	nyi	_Clark Kimberling_
+A374984	lambdan	0	n -> PR(0, n, k -> Functions.FIBONACCI.z(k).+(4))./(4)	*Product_{k=0..n} F(k)+4, where F=F000045 (Fibonacci numbers).	nonn,new	0..17	nyi	_Clark Kimberling_
+A374986	lambdan	0	n -> PR(0, n, k -> Functions.FIBONACCI.z(k).+(5))./(5)	*Product_{k=0..n} F(k)+5, where F=F000045 (Fibonacci numbers).	nonn,new	0..17	nyi	_Clark Kimberling_
+A375178	lambdan	0	n -> SU(0, n - 1, k -> BI(n + k - 1, k).^(3))
+A375179	lambdan	0	n -> SU(0, n - 1, k -> Z_1(n + k + 1).*(BI(2*n, k).^(3)))
+A375180	lambdan	0	n -> SU(0, n - 1, k -> Z_1(n + k + 1).*(BI(3*n, k).^(3)))
+A375239	filnum	1	1	k -> SU(0, 5, m -> (Functions.BIG_OMEGA.i(k + m) == 3) ? Z.ONE : Z.ZERO).equals(Z.SIX)	Numbers k such that k, k+1, ..., k+5 all have 3 prime factors (counted with multiplicity).	nonn,new	1..10000	nyi	_Zak Seidov_ and _Robert Israel_
+A375265	lambdan	1	n -> ZV((n % 3 == 0) ? n/3 : (((n & 1) == 0) ? n >> 1 : 3*n + 1))	a(n) = n/3 if n mod 3 = 0; otherwise a(n) = n/2 if n mod 2 = 0; otherwise a(n) = 3*n + 1.	nonn,easy,new	1..69	nyi	_Paolo Xausa_
+---- 2024-08-18 22:07:28

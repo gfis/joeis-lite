@@ -1,0 +1,4 @@
+A375172	bva	0	(-4*n-1)*a(n)+(n-2)*a(n-3)+(-4*n+4)*a(n-2)+(6*n-5)*a(n-1)+(n+1)*a(n+1)		0	1	e.g.f. exp( x^2/(1-x)^3 ) / (1-x)
+hfre(A375026, 2/(3*sqrt(4*x^2 + 1) + 6*x - 1));
+A375021	nyi Fo	Expansion of 1/sqrt(1 - 2*x + 3*x^2 + 2*x^3 + x^4)
+A374928	nyi to	a(n) = binomial(n+1,2)!/(2*n-1)!!.	nonn,easy	1..10	nyi	_Eric W. Weisstein_

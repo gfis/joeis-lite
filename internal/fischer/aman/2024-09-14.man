@@ -1,0 +1,44 @@
+---- 2024-09-20 10:00:11
+ A375430	lambdan	0	n -> S130312(1.+(D051903(n)))	""		a(n) = S130312(1 + D051903(n))
+ A375431	lambdin	0	n -> S072649(1.+(D051903(n)))	"0,2"		a(n) = S072649(1 + D051903(n)) for n >= 2
+# A107785	holos	0	[[0],[6],[-2],[-1],[-1]]	0,1,1	0	0	absolute value of the coefficients of the gf x*(1+2*x)/(1 +x +2*x^2 -6*x^3)
+# A376098	lambdan	0	n -> E352448(n - 1).*(n)	""		a(n) = n * E352448(n-1)
+#A084225	lambdan	0	n -> RU(0, n, k -> new Q(1, 72).*(Z_1(k)).*(ZV(5265).*(ZV(k).^(4)).+(ZV(13878).*(ZV(k).^(3))).+(ZV(13761).*ZV(k).^(2)).+(6120*k + 1040))./(BI(3*k, k).*(BI(4*k, k)).*(4*k + 1).*(4*k + 3).*(k + 1).*(ZV(3*k + 1).^(2)).*(ZV(3*k + 2).^(2)))).num()
+#A084226	lambdan	0	n -> RU(0, n, k -> new Q(1, 72).*(Z_1(k)).*(ZV(5265).*(ZV(k).^(4)).+(ZV(13878).*(ZV(k).^(3))).+(ZV(13761).*ZV(k).^(2)).+(6120*k + 1040))./(BI(3*k, k).*(BI(4*k, k)).*(4*k + 1).*(4*k + 3).*(k + 1).*(ZV(3*k + 1).^(2)).*(ZV(3*k + 2).^(2)))).den()
+%
+%F A088494	lambdan	0	n -> SU(1, 8, k -> floor(p(n,k)/p(n-1,k)), where p(n, k) = n!/( Product_{j=1..PrimePi(n)/2^(k-1)} Prime(j))
+%F A120081	lambdan	0	n -> den( 3*Bernoulli(n)/((n+3)*n!)), n >= 0
+= A373255	A373254
+= A373257	A373256
+= A373259	A373258
+= A373265	A373264
+= A373482	A373481
+= A373484	A373483
+= A373490	A373489
+= A373599	A373598
+= A373602	A373601
+= A373837	A373836
+= A373839	A373838
+= A373841	A373840
+= A373992	A373991
+= A374042	A374041
+= A374044	A374043
+= A374223	A374222
+= A374472	A374471
+ A270655	forw#rar	0	(self, n) -> (n % 3 == 0) ? self.a(n/3) : ((n % 3 == 1) ? self.a(n - 1) : self.a(n - 2).negate())	"0,1"		a(3n)=a(n), a(3n+1)=a(3n)+a(3(n+1)), a(3n+2)=a(3(n+1))-a(3n); a(0)=0, a(1)=1.
+ A270656	forw#rar	0	(self, n) -> (n % 3 == 0) ? self.a(n/3) : ((n % 3 == 1) ? self.a(n - 1) : self.a(n - 2))	"2,1"		a(3n)=a(n), a(3n+1)=a(3n)-a(3(n+1)), a(3n+2)=a(3n)+a(3(n+1)); a(0)=2, a(1)=1.
+ A270657	forw#rar	0	(self, n) -> (n % 3 == 0) ? self.a(n/3) : ((n % 3 == 1) ? self.a(n - 1) : self.a(n - 2))	"0,1"		a(3n)=a(n), a(3n+1)=a(3(n+1))-a(3n), a(3n+2)=a(3n)+a(3(n+1)); a(0)=0, a(1)=1.
+ A270658	forw#rar	0	(self, n) -> (n % 3 == 0) ? self.a(n/3) : ((n % 3 == 1) ? self.a(n - 1) : self.a(n - 2))	"0,1"		a(3n)=a(n), a(3n+1)=a(3n)+a(3(n+1)), a(3n+2)=a(3n)-a(3(n+1)); a(0)=0, a(1)=1.
+ A309154	forw#rar	0	n -> 	a(n) = -3*(n mod 2) + 2*a(A014682(n))
+# A309154	multrar	0	(self, n) -> { final int n2 = n/2; return ((n & 1) == 0) ? self.a(n2).*(2) : self.a(n + n2 + 1).*(2).-(3); }	"0,1"		a(2*n) = 2*a(n); a(2*n+1) = -3 + 2*a(3*n+2).  `if`(irem(n, 2, 'r')=0, 2*a(r), 2*a(n+r+1)-3))
+
+a[0] = 0; a[1] = 1; a[n_] := a[n] = Switch[Mod[n, 3], 0, a[n/3], 1, a[3((n-1)/3 + 1)] + a[n-1], 2, a[3((n-2)/3 + 1)] - a[n-2]];
+a /@ Range[0, 16]
+
+a[0] = 0; a[1] = 1; a[n_] := a[n] = Switch[Mod[n, 3], 0, a[n/3], 1, a[n+3] + a[n-1], 2, a[n+2] - a[n-2]];
+a /@ Range[0, 16]
+
+ A270655	multrar	0	(self, n) -> { final int n3 = n/3; return (n % 3 == 0) ? self.a(n3) : ((n % 3 == 1) ? self.a(n3 + 3)         .+(self.a(n3 - 1)) : self.a(n3 + 2)         .-(self.a(n3 - 2)) ); }	"0,1,1,1"		a(3n)=a(n), a(3n+1)=a(3n)+a(3(n+1)), a(3n+2)=a(3(n+1))-a(3n); a(0)=0, a(1)=1.
+ A270656	multrar	0	(self, n) -> { final int n3 = n/3; return (n % 3 == 0) ? self.a(n3) : ((n % 3 == 1) ? self.a(n3 + 3).negate().+(self.a(n3 - 1)) : self.a(n3 + 2)         .+(self.a(n3 - 2)) ); }	"2,1"		a(3n)=a(n), a(3n+1)=a(3n)-a(3(n+1)), a(3n+2)=a(3n)+a(3(n+1)); a(0)=2, a(1)=1.
+ A270657	multrar	0	(self, n) -> { final int n3 = n/3; return (n % 3 == 0) ? self.a(n3) : ((n % 3 == 1) ? self.a(n3 + 3)         .-(self.a(n3 - 1)) : self.a(n3 + 2)         .+(self.a(n3 - 2)) ); }	"0,1"		a(3n)=a(n), a(3n+1)=a(3(n+1))-a(3n), a(3n+2)=a(3n)+a(3(n+1)); a(0)=0, a(1)=1.
+ A270658	multrar	0	(self, n) -> { final int n3 = n/3; return (n % 3 == 0) ? self.a(n3) : ((n % 3 == 1) ? self.a(n3 + 3)         .+(self.a(n3 - 1)) : self.a(n3 + 2).negate().+(self.a(n3 - 2)) ); }	"0,1"		a(3n)=a(n), a(3n+1)=a(3n)+a(3(n+1)), a(3n+2)=a(3n)-a(3(n+1)); a(0)=0, a(1)=1.

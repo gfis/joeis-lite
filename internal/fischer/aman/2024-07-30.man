@@ -1,0 +1,36 @@
+---- 2024-08-09 23:11:59
+	A114875	decexp	0	() -> ((2*CR.GAMMA+CR.PI+2*log(8*CR.PI))*zeta(1/2))/4
+	A175616	decexp	0	() -> 1/(Gamma(2+CR.PHI/2-i*(5^(1/4)/(2*sqrt(CR.PHI))))*Gamma(2+CR.PHI/2+i*(5^(1/4)/(2*sqrt(CR.PHI))))*Gamma(2-1/(2*CR.PHI)-i*5^(1/4)*(sqrt(CR.PHI)./(2)))*Gamma(2-1/(2*CR.PHI)+i*5^(1/4)*(sqrt(CR.PHI)./(2))))
+	A181122	decexp	0	() -> CR.PI*sqrt(CR.PHI)/5^(5/4)+log(CR.PHI)/CR.FIVE.sqrt()+CR.TWO.log()/5
+	A193009	decexp	0	() -> (4^(CR.PHI.-(1))*(5+3*CR.FIVE.sqrt())+CR.FIVE.sqrt())/(5*CR.PHI*2^(CR.PHI))
+	A193031	decexp	0	() -> (1+(3+4^CR.PHI)/CR.FIVE.sqrt())./(CR.PHI*2^CR.PHI)
+	A193087	decexp	0	() -> 1+(cos(2*CR.PHI)-2*CR.PHI.pow(2)*sin(CR.PHI.-(1)).square().-(1))/(5+CR.FIVE.sqrt())
+	A193089	decexp	0	() -> (1+2*CR.PHI.pow(2)*sin(CR.PHI-1).square()-cos(2*CR.PHI))/(5+CR.FIVE.sqrt())
+	A224268	decexp	0	() -> Gamma(1/4).square()/(8*sqrt(CR.PI))=L/(4*sqrt(2))
+	A265162	decexp	0	() -> ((3-sqrt(2))*CR.TWO.log()./(2)-(sqrt(2)-1)*(2*CR.GAMMA+CR.PI+2*log(CR.PI))/4)*zeta(1/2)
+	A280630	decexp	0	() -> (24+16*CR.TWO.log()-16*X006752)/CR.PI+8*CR.TWO.log()-12
+	A307216	decexp	0	() -> 1/(Gamma(1/(2*CR.PHI.pow(2))-i*(5^(1/4)/(2*sqrt(CR.PHI))))*Gamma(CR.PHI.pow(2)./(2)+i*5^(1/4)*(sqrt(CR.PHI)./(2)))*Gamma(CR.PHI.pow(2)./(2)-i*5^(1/4)*(sqrt(CR.PHI)./(2)))*Gamma(1/(2*CR.PHI.pow(2))+i*(5^(1/4)/(2*sqrt(CR.PHI)))))
+	A340127	decexp	0	() -> (1/C(5,4).square()*CR.PI*sqrt(3*exp(-CR.GAMMA)/(4*log(2+CR.FIVE.sqrt())))
+	A344965	decexp	0	() -> -CR.GAMMA*CR.PI.pow(2)./(2)-4*zeta(3)-CR.GAMMA.pow(3)
+	A344966	decexp	0	() -> CR.PI.pow(4)/9+2*CR.GAMMA.pow(2)*CR.PI.pow(2)/3+4*CR.GAMMA*zeta(3)+CR.GAMMA.pow(4)
+	A355499	decexp	0	() -> (3^(1/4)*exp(-CR.GAMMA/2)*Gamma(1/3)^3/(4*CR.PI.pow(2)))^(CR.PI/CR.THREE.sqrt())/3^(3*(log(3)+2*CR.GAMMA)/4)
+	A356528	decexp	0	() -> B213611/B072915
+	A368211	decexp	0	() -> (-8*exp(-CR.PI/16)*X292863.pow(8)+sqrt(X292862^24/X292863.pow(8)+64*exp(-CR.PI/8)*X292863^16))^(1/8)
+	A371824	decexp	0	() -> CR.PHI*Gamma(1/5)*Gamma(2/5).square()/(2^(6/5)*CR.FIVE.sqrt()*CR.PI)
+	A371859	decexp	0	() -> 2^(2/5)*Gamma(1/5).square()/(5*CR.PHI*Gamma(2/5))
+	A371983	decexp	0	() -> Gamma(7/30)*Gamma(11/30)*Gamma(13/30)/(2*CR.PI*J019815)
+
+ A123636	lambdan	0	 n -> 1 + 1*n + 1*n*2 + 1*n*2*(n-1) + 1*n*2*(n-1)*3 + 1*n*2*(n-1)*3*(n-2) + ... + n!
+# SEMI? A123754	filter	1	new LambdaSequence(1, n -> ZV(n).*(4*n).-(1))	term -> !Predicates.SEMI_PRIME.is(term)		Positive numbers of the form 4*n.pow(2) - 1 which are not semiprimes.
+A182430	lambdin	0	n -> FA(n + 1).-(SU(0, n - 1, k -> FA(k).*(FA(n - 1 -k))))	"1,0,0,1"
+A193015	decexpr	0	() -> REALS.sinh(CR.PHI).*(2).-(CR.THREE.+(CR.FIVE.sqrt()).*(REALS.sinh(CR.PHI.inverse()))./(CR.FIVE.+(CR.FIVE.sqrt())))	(2 * sinh(phi) - (3+sqrt(5))*sinh(1/phi))/(5+sqrt(5))
+A193017	decexpr	0	() -> REALS.cosh(CR.PHI).*(2).+(CR.THREE.+(CR.FIVE.sqrt()).*(REALS.cosh(CR.PHI.inverse()))./(CR.FIVE.+(CR.FIVE.sqrt())))
+A210463	decexp	0	() -> X075778.-(X210462.^(2)).inverse().sqrt()
+A238258	decexp	0	() -> CV(2)./(X226775.*(CR.TWO.+(X226775)))
+A343143	decexpr	0	() -> X046095./(REALS.asin(CV(2))).*(2)
+A361918	decexp	0	() -> X363766.inverse()
+A363766	decexp	0	() -> X081823.*(CV(299792458L))./(X254181)
+#A374384	holos	0	[[0],[-3],[-32,3],[-67,14],[-23,11],[0,1]]	1,12,51,134,281,508	0	1	E.g.f.: exp(x)*(1 + 11*x + 14*x^2 + 3*x^3). (End)	0		
+#A374882	holos	0	[[0],[-1],[-1008,1314,-567,81],[72,-144,90,-18],[0,2,-3,1]]	1,1,7,109,2665	0	1	Expansion of e.g.f. exp( (1 - (1 - 9*x)^(1/3))/3 ).	0		
+#A375173	holos	0	[[0],[480,-352,64],[-191,192,-48],[18,-30,12],[0,1,-1]]	1,1,7,79,1225	0	1
+#A375174	holos	0	[[0],[-320760,263898,-72171,6561],[79703,-79056,26244,-2916],[-6192,7956,-3402,486],[144,-288,180,-36],[0,2,-3,1]]	1,1,13,289,9073,367681	0	1	

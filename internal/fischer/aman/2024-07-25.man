@@ -1,0 +1,155 @@
+---- 2024-08-02 17:40:15
+%F A371252	holdfin	0	n^3*(2*n-1)*(5*n-6)*(10*n-13)*a(n) = (8300*n^6 - 37350*n^5 + 66698*n^4 - 60393*n^3 + 29297*n^2 - 7263*n + 738)*a(n-1) - (n-1)*(16300*n^5 - 81500*n^4 + 151553*n^3 - 123364*n^2 + 39501*n - 4338)*a(n-2) + 162*(n-2)^3*(n-1)*(5*n-1)*(10*n-3)*a(n-3)
+%F A371456	holdfin	0	-(n-1)*(n-2)*(n-8)*a(n) +3*(9*n^3-123*n^2+490*n-616)*a(n-2) +(n-1)*(n-2)*(n-8)*a(n-3) +9*(-27*n^3+441*n^2-2318*n+3984)*a(n-4) +6*(-3*n^3+45*n^2-206*n+284)*a(n-5) +81*(3*n-20)*(n-6)*(3*n-19)*a(n-6) +9*(3*n-20)*(n-6)*(3*n-19)*a(n-7)
+%F A371458	holdfin	0	(n-1)*(n-2)*a(n) +4*(-7*n^2+48*n-86)*a(n-3) +9*(29*n-141)*(n-6)*a(n-6) -810*(n-6)*(n-9)*a(n-9)
+%F A372255	holdfin	0	a(n) +(-n+1)*a(n-1) +(n-4)*a(n-3) +(4*n-13)
+%F A373278	holdfin	0	(n-1)*(n-2)*a(n) +2*(-14*n^2+69*n-91)*a(n-3) +9*(n-3)*(29*n-114)*a(n-6) -810*(n-3)*(n-6)*a(n-9)
+%F A374541	holdfin	0	+6*n*(2*n+3)*(n+1)*( 115902037476970209609532651797*n^2 -804118437163528377413428024057*n +1144854118031312841899645712338)*a(n) -n*(10309262772112485980996703347969*n^4  -57162589371549435280943274602278*n^3 +12807374239180509091028006690617*n^2 +84356126163879743293193632901956*n +18185483948089898030087482673436)*a(n-1) +(-15899321872218080521626271255801*n^5 +190505272362978094637444778237788*n^4 -742400385313337115745145921980901*n^3 +1019298552408570449091756485004142*n^2 -511271776606699338659085562591944*n +73466790571048631419529002789056)*a(n-2) +2*(56936644898147528366574504466487*n^5 -675905645915443170938754654383314*n^4 +3075899243769705758269387104723700*n^3 -7058855512159881677801564918535971*n^2 +8329069356873697552872190210428006*n -4010067281702663096010201516806496)*a(n-3) +6*(19715522268053782894372158603554*n^5 -223873172486730362151444782585359*n^4 +768950708146310213860389653514276*n^3 -322203528457905963286300676101927*n^2 -2652956139033073818620652982999090*n +3431951459827641350270606566580448)*a(n-4) +6*(-28783069213038773900872833291016*n^5 +660483392782304911307979323624655*n^4 -5710025389637531078101745800393964*n^3 +23348742745530285114652064145006971*n^2 -45038913957699867856392343980190102*n +32395575988873081222604689446753408)*a(n-5) +2*(-52125561607675742290830728101036*n^5 +1096826483115921591413340938785277*n^4 -8964613839701931786202789630678637*n^3 +35452105313339403598394068417163428*n^2 -67298808848110422804027907099733868*n +48130119233409879884308835283522912)*a(n-6) +2*(1335874141771041425279542675228*n^5 -89624832525830246822350394263871*n^4 +1285352819570898563452386493037618*n^3 -7379532769264495115767883376023869*n^2 +18431453516658889307737544610500190*n -16496221432359357241460726610441888)*a(n-7) +4*(n-8)*(11825669122095960407967481054039*n^4 -203980551515992382593286563968000*n^3 +1240787898462597866259674648717159*n^2 -3106873194313435459725804877098966*n +2614835102425910549478511336348776)*a(n-8) -24*(n-5)*(n-8)*(n-9)*(474105943175860040316559647091*n^2 -2672180534791313338630701561778*n +3260085783436342074450617685024)*a(n-9)
+%F A374542	holdfin	0	-(n+3)*(1514*n-13441)*a(n) +(16281*n^2-104929*n-159699)*a(n-1) +(-54702*n^2+377288*n-136533)*a(n-2) +(60299*n^2-430394*n+520290)*a(n-3) -6*(2*n-7)*(1697*n-7015)*a(n-4) +30*(-702*n+3361)
+ A164961 Triangle read by rows: T[n,m] = quadruple factorials A001813(n) * binomials A007318(n,m)
+ A371456	Expansion of 1/(1 - x/(1 - 9*x^2)^(1/3)).	nonn	0..29	nyi	_Seiichi Manyama_
+ A371458	Expansion of 1/(1 - x/(1 - 9*x^3)^(1/3)).	nonn	0..33	nyi	_Seiichi Manyama_
+ A371927	Expansion of 1/(1 - x/(1 - 8*x^2)^(1/4)).	nonn	0..30	nyi	_Seiichi Manyama_
+ A373292	Expansion of 1/(1 - x/(1 - 8*x^3)^(1/4)).	nonn	0..35	nyi	_Seiichi Manyama_
+ A373707	Expansion of e.g.f. exp(x * (1 + x^3)^2).	nonn	0..21	nyi	_Seiichi Manyama_
+ A373708	Expansion of e.g.f. exp(x * (1 + x^4)^2).	nonn	0..22	nyi	_Seiichi Manyama_
+ A373720	Expansion of e.g.f. exp(x * (1 + x^2)^3).	nonn	0..21	nyi	_Seiichi Manyama_
+ A373740	Expansion of e.g.f. exp(x^2/2 * (1 + x)).	nonn	0..24	nyi	_Seiichi Manyama_
+ A373741	Expansion of e.g.f. exp(x^2/2 * (1 + x)^3).	nonn	0..21	nyi	_Seiichi Manyama_
+ A373742	Expansion of e.g.f. exp(x^3/6 * (1 + x)).	nonn	0..25	nyi	_Seiichi Manyama_
+ A373743	Expansion of e.g.f. exp(x^3/6 * (1 + x)^2).	nonn	0..24	nyi	_Seiichi Manyama_
+ A373757	Expansion of e.g.f. exp(x^3/(6 * (1 - x)^2)).	nonn	0..21	nyi	_Seiichi Manyama_
+ A373758	Expansion of e.g.f. exp(x^4/(24 * (1 - x)^2)).	nonn	0..22	nyi	_Seiichi Manyama_
+ A373759	Expansion of e.g.f. exp(x^4/(24 * (1 - x)^3)).	nonn	0..21	nyi	_Seiichi Manyama_
+ A373770	Expansion of e.g.f. exp(x^2 / (2 * (1 - x))) / (1 - x).	nonn	0..21	nyi	_Seiichi Manyama_
+ A373771	Expansion of e.g.f. exp(x^2 / (2 * (1 - x)^3)) / (1 - x).	nonn	0..19	nyi	_Seiichi Manyama_
+ A373772	Expansion of e.g.f. exp(x^3 / (6 * (1 - x))) / (1 - x).	nonn	0..21	nyi	_Seiichi Manyama_
+ A373773	Expansion of e.g.f. exp(x^3 / (6 * (1 - x)^2)) / (1 - x).	nonn	0..21	nyi	_Seiichi Manyama_
+ A374506	Expansion of 1/(1 - 2*x - 3*x^2)^(7/2)
+ A374508	Expansion of 1/(1 - 2*x + 5*x^2)^(5/2)
+ A374509	Expansion of 1/(1 - 2*x + 5*x^2)^(7/2)
+ A374511	Expansion of 1/(1 - 4*x - 4*x^2)^(5/2)
+ A374513	Expansion of 1/(1 - 4*x - 4*x^2)^(7/2)
+ A374598	Expansion of 1/sqrt(1 - 4*x - 8*x^3).	nonn,new	0..1000	nyi	_Seiichi Manyama_
+ A374599	Expansion of 1/sqrt(1 - 4*x - 8*x^4).	nonn,new	0..1000	nyi	_Seiichi Manyama_
+ 
+ A255556	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A255558	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A256996	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+4	"1"		(1/2)*((c+r)^2-r-3*c+4)
+ A256998	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+4	"1"		(1/2)*((c+r)^2-r-3*c+4)
+ A257504	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A257506	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A265346	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A265348	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A267102	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A267104	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A276954	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A276956	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A277821	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A277881	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A277883	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A278504	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A278506	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+ A278512	noroot	0	({A}/{B})*(({C})^{D})    ;A=N/1;B=N/2;C=N/c+r;D=N/2-r-3*c+2	""		(1/2)*((c+r)^2-r-3*c+2)
+
+#A286382 lambdan 1       n -> Functions.ONE_BASED_PAIRING.z(D257993(n), E278226(n))
+?A286149	sintrif	1	(term, n) -> Functions.ONE_BASED_PAIRING.z(D046523(n), term)	""	new A109395()	(1/2)*(2+((D046523(n)+J109395(n))^2)-D046523(n)-3*J109395(n))
+?A286541	lambdan	1	n -> Functions.ONE_BASED_PAIRING.z(M004001(M004001(n - 1)), M004001(ZV(n).-(M004001(n - 1))))	"0,0"		(1/2)*(2+((M004001(M004001(n-1))+M004001(n-M004001(n-1)))^2)-M004001(M004001(n-1))-3*M004001(n-M004001(n-1)))
+?A286559	lambdan	1	n -> Functions.ONE_BASED_PAIRING.z(M005185(ZV(n).-(M005185(n-1))), M005185(ZV(n).-(M005185(n-2))))	"0,0"		(1/2)*(2+((M005185(n-M005185(n-1))+M005185(n-M005185(n-2)))^2)-M005185(n-M005185(n-1))-3*M005185(n-M005185(n-2)))
+?A290093	sintrif	1	(term, n) -> Functions.ONE_BASED_PAIRING.z(E290091(n), term)	""	new A290092()	(1/2)*(2+((E290091(n)+J290092(n))^2)-E290091(n)-3*J290092(n))
+?A294933	lambdan	1	n -> Functions.ONE_BASED_PAIRING.z(E294932(n), E294931(n))	""		(1/2)*(2+((E294932(n)+E294931(n))^2)-E294932(n)-3*E294931(n))
+?A295885	lambdan	1	n -> Functions.ONE_BASED_PAIRING.z(F051953(n), D001065(n))	""		(1/2)*(2+((F051953(n)+D001065(n))^2)-F051953(n)-3*D001065(n))
+?A295886	rgs1	1	new SingleTransformSequence(1, (term, n) -> Functions.ONE_BASED_PAIRING.z(D003557(n), term), "", new A295876())	(1/2)*(2+((D003557(n)+J295876(n))^2)-D003557(n)-3*J295876(n))
+?
+?A208772	sintrif	0	(term, n) -> SD(n, d -> F000010(n/d).*(term))./(n)	"3"	new A124696()
+?A208773	sintrif	0	(term, n) -> SD(n, d -> F000010(n/d).*(term))./(n)	"4"	new A124697()
+?A208774	sintrif	0	(term, n) -> SD(n, d -> F000010(n/d).*(term))./(n)	"5"	new A124698()
+?A208775	sintrif	0	(term, n) -> SD(n, d -> F000010(n/d).*(term))./(n)	"6"	new A124699()
+?A208776	sintrif	0	(term, n) -> SD(n, d -> F000010(n/d).*(term))./(n)	"7"	new A124700()
+?
+
+?A226973	lambdin	0	n -> F000142(n).-(E214083(n).^(3))	"1,1"		a(n) = n! - floor (n!^(1/3))^3 = F000142(n) - E214083(n)^3		
+?A243503	lambdin	0	n -> E061395(n).*(F001222(n)).+(E061395(n)).-(D056239(n)).+(F001222(n)).-(1)	"0,1"		a(n) = E061395(n) * F001222(n) + E061395(n) - D056239(n) + F001222(n) - 1		
+?A295893	sintrif	0	(term, n) -> E295891(term)	""	new A005940().skip(1)	E295891(D005940(n+1))
+?A328319	sintrif	0	(term, n) -> Functions.BIG_OMEGA.z(term)	""	new A328316().skip(1)	a(n) = A001222(A328316(1+n))
+?A329892	lambdin	0	n -> Z2(n + 1).-(SIGMA(Z2(n).-(1)).-(SIGMA(Z2(n - 1).-(1))).*(3))	"0,1"		a(0) = 0, a(1) = 1, for n > 1, a(n) = 2^(n+1) - 3*(sigma((2^n)-1) - sigma((2^(n-1))-1)).
+?fa	A295893 8176    FATAL   Excepti
+?fa	A351159	sintrif	1	(term, n) -> term	""	new A056878()	J056878(n);forevenn,a(n)	_	_	_
+?
+?A176591	sintrif	0	(term, n) -> term	"1"	new PrependSequence(0, new A027760(), 1)
+?# A176591	sintrif	0	(term, n) -> term	"1"	new A141056()
+?A317189	sintrif	0	(term, n) -> term	"2"	new PrependSequence(0, new A036577(), 2)
+?A369197	multraf	0	(self, n) -> self.s(0).+(self.s(1))	""	new A000169(), new A129271()	a(n) = J000169(n) + J129271(n)
+?A299204	sintrif	0	(term, n) -> term.modZ(n - 1)	""	new A000594()
+?A228926	lambdan	0	n -> E121706(n).modZ(n - 1)
+?A354443	lambdan	0	n -> Functions.FIBONACCI.z(ZV(n).^(n)).modZ(n)
+A332409	lambdan	0	n -> DF(n).mod(Functions.FIBONACCI.z(n))
+A265694	lambdin	0	n -> DF(n).mod(ZV(n).square())	"0,2"
+? A176823	lambdan	0	n -> n^(n+1) mod (n+1)^n
+? A235642	lambdan	0	n -> prime(10^n) mod 10^n
+? A192326	lambdan	0	n -> prime(n) mod (2*n-1)
+? A275111	lambdan	0	n -> prime(n)! mod prime(n+1)
+
+
+
+
+
+
+
+
+ 
+ A114875	decexp	0	() -> ((2*CR.GAMMA+CR.PI+2*log(8*CR.PI))*zeta(1/2))/4
+ A175616	decexp	0	() -> 1/(Gamma(2+CR.PHI/2-i*(5^(1/4)/(2*sqrt(CR.PHI))))*Gamma(2+CR.PHI/2+i*(5^(1/4)/(2*sqrt(CR.PHI))))*Gamma(2-1/(2*CR.PHI)-i*5^(1/4)*(sqrt(CR.PHI)/2))*Gamma(2-1/(2*CR.PHI)+i*5^(1/4)*(sqrt(CR.PHI)/2)))
+ A181122	decexp	0	() -> CR.PI*sqrt(CR.PHI)/5^(5/4)+log(CR.PHI)/CR.FIVE.sqrt()+log(2)/5
+ A193009	decexp	0	() -> (4^(CR.PHI.-(1))*(5+3*CR.FIVE.sqrt())+CR.FIVE.sqrt())/(5*CR.PHI*2^CR.PHI)
+ A193031	decexp	0	() -> (1+(3+4^CR.PHI)/CR.FIVE.sqrt())/(CR.PHI*2^CR.PHI)
+ A193032	decexp	0	() -> (2^CR.FIVE.sqrt()-1)/(CR.FIVE.sqrt()*2^(CR.PHI.-(1)))
+ A193033	decexp	0	() -> (9^CR.PHI+3*CR.PHI^2)/(CR.FIVE.sqrt()*CR.PHI*3^CR.PHI)
+ A193034	decexp	0	() -> (3^CR.FIVE.sqrt()-1)/(CR.FIVE.sqrt()*3^(CR.PHI.-(1)))
+ A193035	decexp	0	() -> -(2^CR.FIVE.sqrt()-1)/(CR.FIVE.sqrt()*2^CR.PHI)
+ A193087	decexp	0	() -> 1+(cos(2*CR.PHI)-2*CR.PHI^2*sin(CR.PHI.-(1))^2-1)/(5+CR.FIVE.sqrt())
+ A193089	decexp	0	() -> (1+2*CR.PHI^2*sin(CR.PHI.-(1))^2-cos(2*CR.PHI))/(5+CR.FIVE.sqrt())
+ A224268	decexp	0	() -> Gamma(1/4)^2/(8*sqrt(CR.PI))=L/(4*sqrt(2))
+ A224268	decexp	0	() -> Gamma(1/4)^2/(8*sqrt(CR.PI))=L/(4*sqrt(2))          	Gamma(1/4)^2/(8*sqrt(CR.PI))=L/(4*sqrt(2))
+ A265162	decexp	0	() -> ((3-sqrt(2))*log(2)/2-(sqrt(2)-1)*(2*CR.GAMMA+CR.PI+2*log(CR.PI))/4)*zeta(1/2)
+ A280630	decexp	0	() -> (24+16*log(2)-16*Catalan)/CR.PI+8*log(2)-12
+ A307216	decexp	0	() -> 1/(Gamma(1/(2*CR.PHI^2)-i*(5^(1/4)/(2*sqrt(CR.PHI))))*Gamma(CR.PHI^2/2+i*5^(1/4)*(sqrt(CR.PHI)/2))*Gamma(CR.PHI^2/2-i*5^(1/4)*(sqrt(CR.PHI)/2))*Gamma(1/(2*CR.PHI^2)+i*(5^(1/4)/(2*sqrt(CR.PHI)))))
+ A332645	decexp	0	() -> X006752-4+(CR.PI^2-(CR.GAMMA+CR.PI/2+log(8*CR.PI))^2)/8+zeta''(1/2)/(2*zeta(1/2))
+ A340127	decexp	0	() -> (1/C(5,4)^2)*CR.PI*sqrt(3*exp(-CR.GAMMA)/(4*log(2+CR.FIVE.sqrt())))
+ A344965	decexp	0	() -> -CR.GAMMA*CR.PI^2/2-4*zeta(3)-CR.GAMMA^3
+ A344966	decexp	0	() -> CR.PI^4/9+2*CR.GAMMA^2*CR.PI^2/3+4*CR.GAMMA*zeta(3)+CR.GAMMA^4
+ A349274	decexp	0	() -> sqrt((17+7*CR.FIVE.sqrt())/22)*sqrt(1+b^2)/b
+ A349850	decexp	0	() -> log(4*CR.PHI^(12/CR.FIVE.sqrt()))=2*log(2)+12*log(CR.PHI)/CR.FIVE.sqrt()
+ A349851	decexp	0	() -> log(64*CR.PHI^(4*CR.FIVE.sqrt()))=6*log(2)+4*CR.FIVE.sqrt()*log(CR.PHI)
+ A350762	decexp	0	() -> 7*log(2)^2/8+CR.PI*log(2)/8-X006752/2-CR.PI^2/48
+ A352453	decexp	0	() -> 1+CR.PI/3-sqrt(3)=1+X019670-CR.THREE.sqrt()
+ A354635	decexp	0	() -> (sqrt(2)+1)*CR.PI/2-sqrt(2)*REALS.arcsinh(1)-4*log(2)-CR.GAMMA
+ A355415	decexp	0	() -> 3*((Im(Li_2((3-2*sqrt(2))*i))-X006752)/CR.PI-log(17-12*sqrt(2))/8)
+ A355499	decexp	0	() -> (3^(1/4)*exp(-CR.GAMMA/2)*Gamma(1/3)^3/(4*CR.PI^2))^(CR.PI/sqrt(3))/3^(3*(log(3)+2*CR.GAMMA)/4)
+ A368211	decexp	0	() -> (-8*exp(-CR.PI/16)*X292863^8+sqrt(X292862^24/X292863^8+64*exp(-CR.PI/8)*X292863^16))^(1/8)
+ A371824	decexp	0	() -> CR.PHI*Gamma(1/5)*Gamma(2/5)^2/(2^(6/5)*CR.FIVE.sqrt()*CR.PI)
+ A371859	decexp	0	() -> 2^(2/5)*Gamma(1/5)^2/(5*CR.PHI*Gamma(2/5))
+ A371983	decexp	0	() -> Gamma(7/30)*Gamma(11/30)*Gamma(13/30)/(2*CR.PI*J019815)
+# A357319	decexp	0	() -> (8*CR.PI^3)/(sqrt(3)*Gamma(1/3)^6)                  	(8*CR.PI^3)/(sqrt(3)*Gamma(1/3)^6)=X212003/(CR.THREE.sqrt()*X073005^6)
+# A357319	decexp	0	() -> (8*CR.PI^3)/(sqrt(3)*Gamma(1/3)^6)=X212003/(CR.THREE.sqrt()*X073005^6)
+%F A077761	decexp	0	() -> X001620.-(Sum_{n>=2} zeta_prime(n)/n where the zeta prime sequence is X085548, X085541, X085964, X085965, X
+A082096	multraf	0	(self, n) -> PM(self.a(n-2).+(self.a(n-1)))	"1,1"		A2ndorderrecursion:a(1)=a(2)=1;a(n)=prime(self.a(n-2)+self.a(n-1))=F000040(self.a(n-2)+self.a(n-1))
+A094199	multrar	0	(self, n) -> ZV((5*n - 4)*2).*(ZV(5*n - 6)).*(self.a(n - 1)).+(SU(1, n, k -> self.a(k).*(self.a(n - k))))	"-1"		Witha(0)=-1/2onehasforn>0therecurrencea(n)=2*(5*n-4)*(5*n-6)*self.a(n-1)+sum(a(k)*a(n-k),k=1..n-1)
+A095900	lambdan	0	n -> M004001(ZV(10).^(n))	""		a(n) = M004001(10^n)
+A104297	multrar	0	(self, n) -> PM(self.a(n-1).+(1)./(2))	"21"		a(n)=prime((self.a(n-1)+1)/2),a(1)=21
+A122594	multraf	0	(self, n) -> PM(self.a(n-1)).+(PM(self.a(n-2)))	"2,5"		a(0)=2;a(1)=5;a(n)=prime(self.a(n-1))+prime(self.a(n-2))ifn>1
+A179511	multraf	0	(self, n) -> PM(self.a(n-1)).+(self.a(n-1).*(2))	"1"		a(1)=1,a(n)=prime(self.a(n-1))+2*self.a(n-1)
+A193015	decexpr	0	() -> REALS.sinh(CR.PHI).*(2).-(CR.THREE.+(CR.FIVE.sqrt())).*(REALS.sinh(CR.PHI.inverse()))./(CR.FIVE.+(CR.FIVE.sqrt()))	(2 * sinh(phi) - (3+sqrt(5))*sinh(1/phi))/(5+sqrt(5))
+A193017	decexpr	0	() -> REALS.cosh(CR.PHI).*(2).+(CR.THREE.+(CR.FIVE.sqrt())).*(REALS.cosh(CR.PHI.inverse()))./(CR.FIVE.+(CR.FIVE.sqrt()))	(2 * cosh(phi) + (3+sqrt(5))*cosh(1/phi))/(5+sqrt(5))
+A195629	multrar	0	(self, n) -> PM(PM(n).mod(10)).+(Functions.PRIME_PI.z(self.a(n-1)))	"2"		Sequencewithchaoticfirstdifferences:a(1)=2;a(n)=prime((prime(n)mod10)+pi(self.a(n-1)))
+A206160	decexp	0	() -> X205885.*(CR.THREE.sqrt())
+A238258	decexp	0	() -> CV(-2)./(X226775.*(X226775.+(2)))
+A291933	multraf	0	(self, n) -> PM(n).+(self.a(n-1).mod(10))	"1"		a(n)=prime(n)+self.a(n-1)mod10
+A292433	multraf	0	(self, n) -> PM(self.a(n-1)).*(self.a(n-1)).+(self.a(n-2))	"0,1"		a(0)=0,a(1)=1;a(n)=prime(self.a(n-1))*self.a(n-1)+self.a(n-2)
+A334066	multraf	0	(self, n) -> self.a(n-1).*(2).+(ZV(2*n - 3).^(2).*(self.a(n-2))).+(DF(2*n - 1))	"1,1"		Recurrence:a(n)=2*self.a(n-1)+(2*n-3)^2*self.a(n-2)+(2*n-1)!!
+A356082	multrar	0	(self, n) -> PM(self.a(n-1)).^(2)	"1,4"		a(n)=prime(self.a(n-1))^2,forn>=2
+A356083	multrar	0	(self, n) -> PM(self.a(n-1)).^(3)	"1,8"		a(n)=prime(self.a(n-1))^3,forn>=2
+A366349	decexp	0	() -> CR.THREE.*(CR.TWO.log()).^(2).-(CR.GAMMA.*(2).*(CR.TWO.log())./(4))
+A371441	multrar	0	(self, n) -> self.a(n-1).*(ZV(3).^(n).+(1))	"1"		a(n)=self.a(n-1)*3^n+1
+A374512	multraf	0	(self, n) -> self.a(n-2).*(2).+(self.a(n-3).*(4).+(self.a(n-4).*(2))	"1, 0, 2, 4"		a(n)=2*self.a(n-2)+4*self.a(n-3)+2*self.a(n-4)
+A374755	decexp	0	() -> CR.THREE.-(X001622.sqrt()).*(60)./(X098317)

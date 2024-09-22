@@ -1,0 +1,66 @@
+ A258581	multrar	0	(self, n) -> GPF(1 + Product_{odd m,m<n}a(m)), while if n is odd a(n) = gpf(1 + Product_{even m,m<n}a(m))	"2"
+ A260724	multrar	0	(self, n) -> GPF(1 + Product_{m modulo 3=2,m<n} a(m)), if n modulo 3=1 a(n) = gpf(1 + Product_{m modulo 3=0,m<n} a(m)), if n modulo 3=2 a(n) = gpf(1 + Product_{m modulo 3=1,m<n} a(m))	"2"
+ A362086	lambdan	0	n -> GPF(n^2 + n - 3)
+ A363482	lambdan	0	n -> GPF(n^2 + 3*n - 5)
+#A374188	arrlamb	1	1	1	(n, k) -> KS(n*4 - 1, k) != KS((((k/2) & 1) == 0) ? k : -k, n*4 - 1)
+#A264024	lambdan	0	n -> GCD(PHI(k), k - 1)./(Functions.CARMICHAEL_LAMBDA.z(k))	 ; k = A002997
+---- 2024-07-03 08:21:20
+-A080254	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).*(Z2(k)).*(self.a(n - k))).+(1)	"1"	a(n)=1 + sum('2^r*binomial(n, r)*a(n-r)', 'r'=1..n)     "1,1"
+-A081431	lambdan	0	n -> D030101(F004086(n))
+-A093046	sintrif	0	(term, n) -> F000040(term)	""	new A058328()
+-A095120	sintrif	0	(term, n) -> F151799(term)	""	new A038833()
+-A099825	lambdan	0	n -> D007504(D000079(n))
+-A099826	lambdan	0	n -> D007504(D000244(n))
+-A107482	sintrif	0	(term, n) -> F001222(term)	""	new A007539()
+-A119558	multrar	0	(self, n) -> self.a(n - 1).-(self.a(n - 2)).abs().+(Z_1(n).*(self.a(n - 3)))	"0,0,1"
+-A120355	sintrif	0	(term, n) -> D002034(term)	""	new A007677()
+-A128779	lambdan	0	 n -> RU(1, n, k -> new Q(n, k).+(1)).den()
+-A130089	lambdan	0	 n -> RU(1, n, k -> new Q(k).^(Functions.MOEBIUS.i(n + 1 - k))).den()
+-A166869	sintrif	1	(term, n) -> term.*(n)	""	new A056219()
+-A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()
+-A186963	sintrif	0	(term, n) -> E162642(term)	""	new A007357()
+-A197927	sintrif	0	(term, n) -> term.*(n)	""	new A002416()
+-A202709	lambdin	0	n -> E120390(n)./(9)	"2,2,2,2,2,2,4,5,5,4,5"
+-A209122	lambdin	0	n -> F000041(n).+(n)	"4,5"
+-A225017	sintrif	0	(term, n) -> E132740(term)	""	new A055566()
+-A235224	lambdan	0	n -> E061395(F276086(n))
+-A241299	sintrif	0	(term, n) -> F000030(term)	""	new A002488()
+-A245695	sintrif	1	(term, n) -> term.*(n)	"0"	new A033932()
+-A247585	sintrif	0	(term, n) -> D002371(term)	""	new A002496()
+-A277195	sintrif	0	(term, n) -> D022290(term)	""	new A277010()
+-A279904	sintrif	0	(term, n) -> F000040(term)	""	new A058781()
+-A324115	lambdan	0	n -> D002487(E323244(n))
+-A324547	lambdan	0	n -> E324543(F002110(n))
+-A324888	lambdan	0	n -> E276150(E108951(n))
+-A324888	lambdan	0	n -> F001222(E324886(n))
+-A328317	sintrif	0	(term, n) -> D053669(term)	"1"	new A328316()
+-A328318	sintrif	0	(term, n) -> E267263(term)	""	new A328316()
+-A328319	sintrif	0	(term, n) -> E276150(term)	""	new A328316()
+-A328322	sintrif	0	(term, n) -> E328114(term)	""	new A328316()
+-A328392	lambdan	0	n -> E328114(E327860(n))
+-A328394	lambdan	0	n -> E328114(E276087(n))
+-A328843	lambdan	0	n -> E328841(F276086(n))
+-A328844	lambdan	0	n -> E328842(F276086(n))
+-A329040	lambdan	0	n -> E267263(E108951(n))
+-A329040	lambdan	0	n -> F001221(E324886(n))
+-A330681	sintrif	0	(term, n) -> E283980(term)	""	new A025487()
+-A332462	lambdan	0	n -> D019565(D156552(n))
+-A338792	sintrif	0	(term, n) -> F000720(term)	"1"	new A007138()
+-A342920	lambdan	0	n -> E342002(E108951(n))
+-A353954	sintrif	0	(term, n) -> D019565(term)	"1"	new A109812()
+-A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()
+-A365460	sintrif	0	(term, n) -> E267263(term)	""	new A181821()
+-A365461	sintrif	0	(term, n) -> E276150(term)	""	new A181821()
+-A366276	sintrif	0	(term, n) -> D057889(term)	""	new A243071()
+-A372342	sintrif	0	(term, n) -> term.*(n)	"0"	new A005043()
+-A373601	lambdan	0	n -> E373371(F276086(n))
+-A374151	sintrif	0	(term, n) -> F000720(term)	""	new A007053()
+-A082887	lambdan	0	n -> GCD(FA(n).mod(Z2(n)), FA(n + 1).mod(Z2(n)), FA(n + 1).mod(Z2(n + 1)))
+-A089966	lambdan	0	n -> GPF(n).mod(SPF(n))
+-A089967	lambdan	0	n -> GPF(n).mod(SPF(n))
+-A243405	lambdin	0	n -> { final Z gp = GPF(n); return gp.compareTo(ZV(3)) > 0 ? gp.^(ZV(n))./(gp) : (((n & 1) == 0) ? Z2(n/2) : ZV(3).^(n/3)); }	"1"	n>=2
+-A272887	lambdin	1	n -> D001227(F000040(n).+(1))	"0"
+-A275380	lambdin	0	n -> F001222(E078304(n))	"0"
+-A306709	lambdin	0	n -> GCD(Functions.SOPFR.z(n), E003958(n).*(E003959(n))).-(1)	"0"
+-A324865	lambdin	0	n -> D001065(D156552(n))	"0"
+#sort A346635	lambdin	0	n -> E129597(n)./(2)	"1,2"

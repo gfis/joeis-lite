@@ -1,0 +1,24 @@
+---- 2024-09-13 09:22:31
+A095368	lingf	3	0,0,0,1,-1	1,-1,-5,4,5,-2					0
+A113663	convprod	0	3	new A113669()	Self-convolution cube of A113669, where a(n) = A113669(n+1)/(n+1).
+A267958	lingf	1	0,0,4,8,4	1,-1,0,-1,1					0
+A373046	lingf	0	0,0,0,0,1	1,-4,4,0,1,-2					0
+A374737	lingf	0	1,2,2,2,2,4,3,2,1,1	1,0,-1,-1,-1,1,-1,-1,-1,0,-1					0
+A375185	lingf	0	1,1,1,1,0,1	1,-1,0,0,-1,1,-1					0
+A375186	lingf	0	1,1,1,0,1,1	1,-1,0,-1,1,0,-1					0
+A375476	lingf	0	1,1,1,0,0,1,0,1	1,0,0,-1,0,0,-2					0
+A375764	lingf	0	0,0,3,3,-8,7,-2	1,-5,10,-10,5,-1					0
+A375803	lingf	1	0,0,20,-65,-195,84,13,-1	1,-13,-104,260,260,-104,-13,1					0
+---- 2024-09-13 09:39:53
+A376086	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(3*k + 2).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376087	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(4*k + 1).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376095	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).^(2).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376096	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).^(3).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376097	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).^(4).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376111	multrar	0	(self, n) -> SU(1, n    , k -> ZV(2).^(k).-(1).*(self.a(k - 1)).*(self.a(n - k)))	"1"
+A376112	multrar	0	(self, n) -> SU(1, n    , k -> ZV(3).^(k).-(1).*(self.a(k - 1)).*(self.a(n - k)))./(2)	"1"
+A376125	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(2*k + 1).*(self.a(k)).*(self.a(n - k - 1))).+(1)	""
+A376126	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).^(2).*(self.a(k)).*(self.a(n - k - 1))).+(1)	""
+A376127	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).^(3).*(self.a(k)).*(self.a(n - k - 1))).+(1)	""
+---- 2024-09-13 09:41:36
+A376113	multrar	0	(self, n) -> SU(1, n    , k -> ZV(4).^(k).-(1).*(self.a(k - 1)).*(self.a(n - k)))./(3)	"1"
