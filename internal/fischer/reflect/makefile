@@ -1113,3 +1113,19 @@ ratpow:
 	>        $@.tmp
 	cp -v $(COMMON)/$@.tmp .
 	wc -l    $@.tmp
+#----
+gen_lambdin: # extract all CCs "lambdin" from../*.gen
+	grep -h lambdin ../*.gen | endirect | sort | uniq | tee gen_lambdin.tmp
+conv_lambdin: # convert CC=lambdin -> CC=lambdan
+	grep -P "^[^A]" gen_lambdin.tmp \
+	| grep -vP "^.(352892|135964|135965|336642)\t" \
+	| lambdian | tee ../aman/$@.tmp
+	wc -l            ../aman/$@.tmp
+	grep -P "\#2"    ../aman/$@.tmp
+move_lambdin: # make it "manual" for addpass target
+	cp -v ../aman/conv_lambdin.tmp ../aman/conv_lambdin.man
+#f	A067792 1       FAIL    ,2,3,5,7,7      computed:       ,3,5,5,11,7
+#f	A073170 3       FAIL    ,1,2,3  computed:       ,-1,0,1
+#f	A083242 3       FAIL    ,3,2    computed:       ,5,7
+#f	A093051 3       FATAL   Exception Division by zero.     , irvine.math.z.Div.divideAndRemainder(Unknown Source), irvine.m
+#f	A156296 2       FAIL    ,10,140,5740    computed:       ,140,5740,700280
