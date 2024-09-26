@@ -316,7 +316,7 @@ while (<>) { # read inputfile
             $parm =~ s{SQRT\(}         {Functions.SQRT.z\(}g;
             $parm =~ s{SU\(}           {Integers.SINGLETON.sum\(}g;
             $parm =~ s{S1\(}           {Functions.STIRLING1.z\(}g;
-            $parm =~ s{SA\(([^\)]+)\)} {Functions.STIRLING1.z\(\($1\)\.abs\(\)}g;
+            $parm =~ s{SA\(([^\)]+)\)} {Functions.STIRLING1.z\($1\)\.abs\(\)}g;
             $parm =~ s{S2\(}           {Functions.STIRLING2.z\(}g;
             $parm =~ s{TAU\(}          {Functions.TAU.z(}g;
             $parm =~ s{ZE\(}           {Zeta.zeta\(}g;
