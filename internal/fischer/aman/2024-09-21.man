@@ -1,3 +1,4 @@
+---- 2024-09-28 22:48:36
 
 %F A297494 a(n) = b(prime(n)) - tau(prime(n)) where tau(n)=A000594(n) is Ramanujans tau function.
 %N A079394 Compare t(n) and t(n+1) where t = Ramanujans tau function (A000594); a(n) = pq where p and q are given below.
@@ -6,14 +7,12 @@
 %N A289981 Coefficients in expansion of 236364091*E_24/Delta^2 where Delta is the generating function of Ramanujans tau function (A000594).
 %N A296992 Largest number m such that n^m divides tau(n), where tau(n)=A000594(n) is Ramanujans tau function.
 %N A297424 a(n) = tau((10^n)-th prime) where tau(n)=A000594(n) is Ramanujans tau function.
----- 2024-09-21 20:40:20
 A073843	multraf	1	(self, n) -> self.s(0).^((self.s(1).-(1)))	""	new A052410(), new A052409()	If J052409(n) is odd, a(n) = J052410(n)^(J052409(n) + 1); otherwise a(n) = J052410(n)^(J052409(n) - 1)	_	_	_		a(1) = 1; for n > 1 a(n) = smallest number of the form n^r (with r rational != 1) not included earlier.
 A076252	filnum	1	5	n -> Functions.OMEGA.i(n) == Functions.OMEGA.i(n - 1) + Functions.OMEGA.i(n - 2) + Functions.OMEGA.i(n - 3)	""		omega(n) = omega(n-1) + omega(n-2) + omega(n-3)	_	_	_		omega(n) = omega(n-1) + omega(n-2) + omega(n-3), where omega(n) is the number of distinct prime factors of n.
-A076368	lambdin	1	n -> F000040(n).-(F000040(n-1)).+(ZV(1))	"1"		a(1) = 1; for n > 1, a(n) = prime(n) - prime(n-1) + 1	_	_	_		a(1) = 1; for n > 1, a(n) = prime(n) - prime(n-1) + 1.
-A076667	lambdan	1	n -> D024816(n).+(D024816(n+3))	""		antisigma(n) + antisigma(n+3) = antisigma(n+1) + antisigma(n+2)	_	_	_		antisigma(n) + antisigma(n+3) = antisigma(n+1) + antisigma(n+2), where antisigma(n) = sum of the non-divisors of n that are between 1 and n.
+A076667	lambdan	1	n -> D024816(n).+(D024816(n + 3))	""		antisigma(n) + antisigma(n+3) = antisigma(n+1) + antisigma(n+2)	_	_	_		antisigma(n) + antisigma(n+3) = antisigma(n+1) + antisigma(n+2), where antisigma(n) = sum of the non-divisors of n that are between 1 and n.
 A079392	filter	0	new A000594()	v -> v.compareTo(Z.ZERO) > 0	Numbers n such that A000594(n) > 0 (Ramanujans tau function is positive).
 A079393	filter	0	new A000594()	v -> v.compareTo(Z.ZERO) < 0	Numbers for which Ramanujans tau function is negative.
-A079396	sintrif	0	(term, n) -> term.^(2)	""	new A000594()	 Ramanujans tau function squared.
+A079396	sintrif	0	(term, n) -> term.^(2)	""	new A000594().skip(1)	 Ramanujans tau function squared.
 A081063	multraf	1	(self, n) -> self.s(0).+(self.s(1)).-(D000523(n)).-(self.s(2)).+(ZV(1))	""	new A071521(), new A065515(), new A062153()	a(n)=J071521(n)+J065515(n)-D000523(n)-J062153(n)+1	_	_	_		Number of numbers <= n that are 3-smooth or prime powers.
 A084293	sintrif	1	(term, n) -> ZV(2).*(ZV(n)).+(term)	""	new A054905()	a(n) = 2n + J054905(n)	_	_	_		a(n) = 2n + A054905(n).
 A084757	lambdan	1	n -> SU(1, n, k -> (D000522(n-1).+(FA(n-1).*((ZV(k-1))))))	""		a(n) = Sum_{k=1..n} (D000522(n-1) + (n-1)!*(k-1))	_	_	_		For n, k > 0, let T(n, k) be given by T(n, 1) = n and T(n, k+1) = k*T(n, k) + 1. a(n) is the sum of the n-th antidiagonal.
@@ -33,20 +32,19 @@ A103480	rowsum	0	new A103480()	Row sums of A103462.
 A104137	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(ZV(1))	"4"	new A007663().skip(1), new A061285().skip(1)	a(n) = (2^(p-1) - 1)/p + 2^{(p-1)/2} + 1 = J007663(n) + J061285(n) + 1	_	_	_		Number of distinct necklaces with p beads of two possible colors, allowing turning over, p being a prime greater than 2.
 A105554	lambdan	1	n -> PPI(SU(1, n, i -> Functions.FIBONACCI.z(i)))	""		a(n) = prime(F(n+3) - 1) = F000040(F000045(n+3)-1)	_	_	_		Primes whose indices are the sum of the first n+1 Fibonacci numbers.
 A105758	sintrif	1	(term, n) -> term.-(ZV(4))	""	new A249635()	a(n) = J249635(n) - 4	_	_	_		Indices of prime hexanacci (or Fibonacci 6-step) numbers A001592 (using offset -4).
-A106743	lambdin	1	n -> ZV(1).-(ZV(0)).^((F001222(n).-(F001221(n)))).-(ZV(0).^((F001222(n).-(1))))	"0,-1"		a(n) = 1 - 0^(F001222(n)-F001221(n)) - 0^(F001222(n)-1), for n>1	_	_	_		a(n) = -1 iff n is prime, a(n) = 1 iff n is not squarefree, otherwise (n is nonprime and squarefree) a(n) = 0.
-A113170	lambdin	1	n -> SU(1, n, i -> (ZV(2*n+1)).^((ZV(2*n-i))))	"1"		a(1) = 1. For n>1: a(n) = Sum_{i=1..n} (2n+1)^(2n-i)	_	_	_		Ascending descending base exponent transform of odd numbers A005408.
+A106743	lambdan	1	n -> (n <= 1) ? ZV(-n) : ZV(1).-(ZV(0)).^((F001222(n).-(F001221(n)))).-(ZV(0).^((F001222(n).-(1))))	"0,-1"		a(n) = 1 - 0^(F001222(n)-F001221(n)) - 0^(F001222(n)-1), for n>1	_	_	_		a(n) = -1 iff n is prime, a(n) = 1 iff n is not squarefree, otherwise (n is nonprime and squarefree) a(n) = 0.
+A113170	lambdan	1	n -> (n == 1) ? ZV(1) : SU(1, n, i -> (ZV(2*n+1)).^((ZV(2*n-i))))	"1"		a(1) = 1. For n>1: a(n) = Sum_{i=1..n} (2n+1)^(2n-i)	_	_	_		Ascending descending base exponent transform of odd numbers A005408.
 A114761	lambdan	0	n -> CR.SQRT2.*(CV(10).^(n)).floor().^(2)	a(n) = (floor(sqrt(2)*10^n))^2.
 A115082	lambdan	0	n -> E115081(n).+(ZV(n).*(E115081(n-1)))	""		a(n) = E115081(n) + n*E115081(n-1)	_	_	_		Column 1 of triangle A115080.
 A115244	sintrif	0	(term, n) -> F000720((term).abs())	""	new A050268()	a(n) = PrimePi(Abs(J050268(n)))	_	_	_		Indices of primes generated by Fung and Rubys prime generating polynomial A050268.
 A120475	lambdan	1	n -> SU(1, n, m -> F000045(m).*(M004001(m + 1).-(M004001(m).*(2)).+(M004001(m-1))))	""		a(n) = Sum_{m=1..n} F000045(m)*(M004001(m+1) - 2*M004001(m) + M004001(m-1))	_	_	_		a(n) = Sum_{m=1..n} A000045(m)*(A004001(m+1) - 2*A004001(m) + A004001(m-1)).
 A121280	sintrif	1	(term, n) -> term.-(1)	""	new A068987()	a(n) = J068987(n) - 1	_	_	_		Position where concatenate(1,...,n) occurs for the first time in the decimals of Pi (where 3, 1, 4,... are at position 0, 1, 2,...).
-A121934	lambdin	1	n -> D003418(n+1).-(1)	"1,1"		For n>=2, a(n) = D003418(n+1)-1	_	_	_		Smallest positive number m such that m == i (mod i+1) for all 1<=i<=n.
+A121934	lambdan	1	n -> (n <= 1) ? ZV(1) : D003418(n + 1).-(1)	"1,1"		For n>=2, a(n) = D003418(n+1)-1	_	_	_		Smallest positive number m such that m == i (mod i+1) for all 1<=i<=n.
 A122086	sintrif	1	(term, n) -> ZV(2).*(term)	"2,1"	new A000055()	For n even, a(n) = 2*J000055(n) - M000081(n/2), for n odd, a(n) = 2*J000055(n)	_	_	_		Number of unlabeled free bicolored trees with n nodes (the colors are not interchangeable).
 A126990	lambdan	1	n -> F007917(E073273(n))	""		a(n) = F007917(E073273(n))	_	_	_		Largest prime preceding geometric mean of prime(n) and prime(n+2).
 A128972	lambdan	2	n -> E062378(ZV(n).^(3).-(1))	""		a(n) = E062378(J068601(n)) = E062378(n^3-1)	_	_	_		n^3 - 1 divided by its largest cube divisor.
-A129101	lambdin	0	n -> M030067(Z2(n+1).+(Z2(n)).-(1)).-(M030067(Z2(n+1).-(3)))	""		a(n) = E129094(n+1) - E129093(n); a(n) = M030067(2^(n+1)+2^n-1) - M030067(2^(n+1)-3) for n>=0	_	_	_		Column 1 of triangle A129100; also equals column 0 of the matrix square of A129100.
+A129101	lambdan	0	n -> M030067(Z2(n+1).+(Z2(n)).-(1)).-(M030067(Z2(n+1).-(3)))	""		a(n) = E129094(n+1) - E129093(n); a(n) = M030067(2^(n+1)+2^n-1) - M030067(2^(n+1)-3) for n>=0	_	_	_		Column 1 of triangle A129100; also equals column 0 of the matrix square of A129100.
 A129843	sintrif	1	(term, n) -> ZV(1).+(term)	""	new A056171()	If n > 2 is even, a(n) = 1 + J056171(n)	_	_	_		a(n) = number of positive integers that are <= n and are coprime to n!! (n!! = A006882(n)).
-A136364	sintrif	1	(term, n) -> term.-(ZV(2).*(ZV(10).^(n))).+(ZV(1))	""	new A057494()	a(n) = J057494(n) - 2*10^n + 1	_	_	_		a(n) = Sum_{ composite k, 1 <= k <= 10^n} (Number of divisors d of k with 1 < d < k).
 # wrong formula A138953	sintrif	0	(term, n) -> term.-(ZV(n))	""	new A071980()	a(n) = J071980(n) - n	_	_	_		Sum of numbers from all substrings of n.
 A141103	lambdan	1	n -> F000040(ZV(n).^(n)).-(ZV(n).^(n))	""		a(n) = prime(n^n) - n^n	_	_	_		a(n) = prime(n^n) - n^n.
 A145486	sintrif	1	(term, n) -> ZV(2).*(term).-(ZV(37))	""	new A145480()	a(n)=2*J145480(n)-37	_	_	_		Primes p such that 2p - 37 is prime.
@@ -58,10 +56,10 @@ A164955	lambdan	0	n -> D061602(F000045(n))	""		a(n) = D061602(F000045(n))	_	_	_	
 A166281	sintrif	1	(term, n) -> M002033(term.-(1))	""	new A018252()	a(n) = M002033(J018252(n)-1)	_	_	_		Number of perfect partitions of the nonprimes A018252.
 A166475	lambdan	0	n -> RQ(1, n, k -> new Q(F000040(k)).^((n - k + 1)*(n - k + 1))).num()	""		a(n) = Product_{k=1..n} prime(k)^((n-k+1)^2)	_	_	_		4th level primorials: product of first n superduperprimorials.
 A167657	lambdan	1	n -> (n == 1) ? ZV(0) : ZV(n).^(Functions.PRIME.i(n + 1) - Functions.PRIME.i(n))	""		a(n) = n^(F000040(n+1)-F000040(n))	_	_	_		Product of n-th block of identical consecutive values of A000720.
-A168043	lambdin	1	n -> F000032(n+1).-(ZV(n))	"1,2"		and a(n) = F000032(n+1) - n for n>1	_	_	_		Let S(1)={1} and, for n>1 let S(n) be the smallest set containing x+1, x+2, and 2*x for each element x in S(n-1). a(n) is the number of elements in S(n).
+A168043	lambdan	1	n -> (n <= 1) ? ZV(n + 1) : F000032(n+1).-(ZV(n))	"1,2"		and a(n) = F000032(n+1) - n for n>1	_	_	_		Let S(1)={1} and, for n>1 let S(n) be the smallest set containing x+1, x+2, and 2*x for each element x in S(n-1). a(n) is the number of elements in S(n).
 A173146	filnum	1	1	k -> F000203(F000010(k)).equals(RAD(k))	sigma(phi(n)) = rad(n)
 A175213	multrar	0	(self, n) -> { final int r = Functions.SQRT.i(n - 1); final int s = Functions.SQRT.i(n) - 1; return self.a(r*r).+(self.a(s*s)); }	"1,2"		ZV(n).-(SQRT(n).^(2))	""		a(n)= a(r)+a(s) ; (r+s)<=n ; r=(floor(sqrt(n-1)))^2 ; s=n-(floor(sqrt(n)))^2	_	_	_		a(n)= a(r)+a(s) ; (r+s)<=n ; r=(floor(sqrt(n-1)))^2 ; s=n-(floor(sqrt(n)))^2.
-A175218	lambdin	1	n -> F000040(n).+(ZV(2)).+(D010051(F000040(n).+(ZV(2))))	"8,8,9"		For n>2: a(n) = F000040(n) + 2 + D010051(F000040(n) + 2)	_	_	_		The third nonprimes after the primes.
+A175218	lambdan	1	n -> (n <= 2) ? ZV(8) : F000040(n).+(ZV(2)).+(D010051(F000040(n).+(ZV(2))))	"8,8,9"		For n>2: a(n) = F000040(n) + 2 + D010051(F000040(n) + 2)	_	_	_		The third nonprimes after the primes.
 A179115	lambdan	0	n -> SD(n, d -> F000010(ZV(d).^(Functions.SIGMA0.i(d))))	""		a(n) = Sum_{d|n} phi(d^tau(d))	_	_	_		a(n) = Sum_{d|n} phi(d^tau(d)).
 A179431	lambdan	0	n -> BI(ZV(3).^(n - 1), ZV(n))	""		a(n) = binomial(3^(n-1), n)	_	_	_		a(n) = binomial(3^(n-1), n).
 A182209	lambdan	0	n -> ZV(n).+(Z2(D007814(n + 1).-(2)))	""		If n==i mod 8, then a(n) = n-2*i+7, i=0,1,2,3;  if n==4 mod 16, then a(n) = n+5; if n==12 mod 16, then  a(n) = n+2^(D007814(n+4)-2); if n==5 mod 16, then a(n) = n+3; if n==13 mod 16, then  a(n) = n+2^(D007814(n+3)-2); if n==6 mod 8, then a(n) = n+2^(D007814(n+2)-2); if n==7 mod 8, then a(n) = n+2^(D007814(n+1)-2)	_	_	_		a(n) is the least m >= n, such that the Hamming distance D(n,m) = 3.
@@ -72,9 +70,7 @@ A193428	multraf	1	(self, n) -> self.s(0).+(self.s(1)).+(self.s(2)).+(self.s(3)).
 A195208	lambdan	0	n -> F000005(F000265(D000166(n)))	""		a(n) = F000005(F000265(D000166(n)))	_	_	_		Number of odd divisors of !n.
 A196222	sintrif	0	(term, n) -> term.^(term)	""	new A047726()	a(n) = J047726(n)^J047726(n)	_	_	_		a(n) = A047726(n)^A047726(n), where A047726(n) is the number of numbers which can be written with ns digits.
 A197072	lambdan	0	n -> F000040(Z2(n+1)).-(ZV(2).*(F000040(Z2(n))))	""		a(n) = prime(2^(n+1)) - 2*prime(2^n)	_	_	_		a(n) = prime(2^(n+1)) - 2*prime(2^n).
-A199323	lambdin	1	n -> F000720(n*n + 3*n - 1).-(F000720(n*n + n - 2))	"1,2"		a(n) = pi(n^2 + 3n - 1) - pi(n^2 + n - 2) for n > 1	_	_	_		Number of primes of the form n*(n+1)+2*k-3 with k from 1 to n+1.
-A200213	lambdin	1	n -> F000005(n).-(D010052(n)).-(2)	"0"		a(1) = 0; for n > 1, a(n) = F000005(n) - D010052(n) - 2	_	_	_		Ordered factorizations of n with 2 distinct parts, both > 1.
-A206350	lambdin	1	n -> ZV(2).*(SU(1, n-1, k -> F000010(k)))	"1"		a(n) = 2*Sum_{k=1..n-1} F000010(k), a(1) = 1	_	_	_		Position of 1/n in the canonical bijection from the positive integers to the positive rational numbers.
+A199323	lambdan	1	n -> (n <= 1) ? ZV(n + 1) : F000720(n*n + 3*n - 1).-(F000720(n*n + n - 2))	"1,2"		a(n) = pi(n^2 + 3n - 1) - pi(n^2 + n - 2) for n > 1	_	_	_		Number of primes of the form n*(n+1)+2*k-3 with k from 1 to n+1.
 A210530	multraf	1	(self, n) -> self.s(0).-(self.s(2)).*((ZV(2).*(self.s(2)).-(3))).-(1)	""	new A000027(), new A204164(), new A204164()	a(n) = J000027(n) - J204164(n)*(2*J204164(n)-3) - 1	_	_	_		T(n,k) = (k + 3*n - 2 - (k+n-2)*(-1)^(k+n))/2 n, k > 0, read by antidiagonals.
 A213369	sintrif	0	(term, n) -> E287729(n).-(term)	"0"	new A287730()	a(n) = E287729(n) - J287730(n) for n > 0	_	_	_		The twisted Stern sequence: a(0) = 0, a(1) = 1 and a(2n) = -a(n), a(2n + 1) = -a(n)-a(n + 1) for n>=1.
 A216982	sintrif	1	(term, n) -> D066417(n).-(term)	""	new A066481()	a(n) = D066417(n) - J066481(n)	_	_	_		Anti-Chowlas function: sum of anti-divisors of n except the largest.
@@ -82,50 +78,44 @@ A219706	sintrif	0	(term, n) -> ZV(n).^(n+1).-(term)	""	new A063169()	a(n) = n^(n
 A220002	sintrif	0	(term, n) -> Z2(term)	""	new A004134()	Note that a(n) = r(n)*J123854(n) and J123854(n) = 2^J004134(n) = 8^n/2^F000120(n)	_	_	_		Numerators of the coefficients of an asymptotic expansion in even powers of the Catalan numbers.
 A220371	sintrif	0	(term, n) -> PR(1, 2*n, i -> (ZV(4*i+2)).*(term))	""	new A060818()	a(n) = Product_{i=1..2*n} (4*i+2)*J060818(n)	_	_	_		a(n) = Product_{i=1..2*n} (4*i+2)*A060818(n).
 A224837	lambdan	1	n -> CR.THREE.sqrt().+(1).*(n).*(n).floor()	""		a(n) = floor((1+sqrt(3))*n^2)	_	_	_		Surface area of Johnson square pyramid (rounded down) with all the edge-lengths equal to n.
-A224851	sintrif	1	(term, n) -> term.-(1)	""	new A054781()	a(n) = J054781(n) - 1	_	_	_		First position of n in continued fraction for Khinchin's constant.
-A224852	sintrif	0	(term, n) -> term.-(1)	""	new PrependSequence(0, new A054870(), 0)	a(n) = J054870(n) - 1	_	_	_		Positions of the incrementally largest terms in the continued fraction for Khinchin's constant.
+A224851	sintrif	1	(term, n) -> term.-(1)	""	new A054781()	a(n) = J054781(n) - 1	_	_	_		First position of n in continued fraction for Khinchin_s constant.
+A224852	sintrif	0	(term, n) -> term.-(1)	""	new PrependSequence(0, new A054870(), 0)	a(n) = J054870(n) - 1	_	_	_		Positions of the incrementally largest terms in the continued fraction for Khinchin_s constant.
 A225497	lambdan	1	n -> SU(1, n, k -> BI(n, k).*(ZV(n).^((ZV(n-k)))).*(ZV(k).^(2)))	""		a(n) = Sum_{k=1..n} binomial(n,k)*n^(n-k)*k^2 = ((1 + 1/n)^n n^(1 + n) (-1 + 5 n))/(1 + n)^3	_	_	_		Total number of rooted labeled trees over all forests on {1,2,...,n} in which one tree has been specially designated.
 A226973	lambdan	1	n -> F000142(n).-(E214083(n).^(3))	""		a(n) = n! - floor (n!^(1/3))^3 = F000142(n) - E214083(n)^3	_	_	_		Difference between n! and the largest cube < n!.
-A229347	lambdin	1	n -> ZV(n).*(Z2(F001221(n).-(1)))	"1"		a(1) = 1, for n > 1 a(n) = n*2^(omega(n)-1)	_	_	_		a(1) = 1, for n > 1 a(n) = n*2^(omega(n)-1) where omega is A001221.
 A231812	lambdan	0	n -> FA(n).+(ZV(n))	""		a(n) = n! + n = J005095(n) for prime n	_	_	_		Number of endofunctions on [n] where all nonempty preimages have the same cardinality.
 A235249	sintrif	1	(term, n) -> ZV(24).*(ZV(5)).^((term.-(1)))	"1,24"	new A001179()	a(n) = 24*5^(J001179(n)-1) for n > 1	_	_	_		Fixed point when A001175 (Pisano periods) is iterated with starting value n.
 A236863	sintrif	0	(term, n) -> ZV(n).-(term)	"0"	new A192512()	a(0)=0, a(n) = n - J192512(n)	_	_	_		Number of nonludic numbers (A192607) not greater than n.
 A236959	lambdan	1	n -> F000040(n).-(1)	""		If prime(n)-1=3k then a(n)=k otherwise a(n)=prime(n)-1	_	_	_		Number of nonzero cubic residues modulo the n-th prime.
 A242411	sintrif	1	(term, n) -> E061395(n).-(E061395(term))	""	new A051119()	If F001221(n) = 1, then a(n) = 0, otherwise a(n) = J241919(n) = E061395(n) - E061395(J051119(n))	_	_	_		If n is a prime power, p_i^e, a(n) = 0, otherwise difference (i-j) of the indices of the two largest distinct primes p_i, p_j, i > j in the prime factorization of n: a(n) = A061395(n) - A061395(A051119(n)).
 A243035	lambdan	1	n -> ZV(9).*(ZV(10)).^((F000120(n).-(1)))	""		a(n) = 9*10^(F000120(n)-1)	_	_	_		Number of entries of length n in A240601.
-A243056	lambdin	1	n -> E061395(n).-(D055396(n))	"0"		a(1) = 0, for n>1, if n = F000040(i), a(n) = i, otherwise a(n) = E061395(n) - D055396(n) = J243055(n)	_	_	_		If n is the i-th prime, p_i = A000040(i), then a(n) = i, otherwise the difference between the indices of the smallest and the largest prime dividing n: for n = p_i * ... * p_k, where p_i <= ... <= p_k, a(n) = (k-i); a(1) = 0 by convention.
-A243503	lambdin	1	n -> E061395(n).*(F001222(n)).+(E061395(n)).-(D056239(n)).+(F001222(n)).-(1)	"0"		a(n) = E061395(n) * F001222(n) + E061395(n) - D056239(n) + F001222(n) - 1	_	_	_		Sums of parts of partitions (i.e., their sizes) as ordered in the table A241918: a(n) = Sum_{i=A203623(n-1)+2..A203623(n)+1} A241918(i).
+A243056	lambdan	1	n -> (n <= 1) ? ZV(0) : E061395(n).-(D055396(n))	"0"		a(1) = 0, for n>1, if n = F000040(i), a(n) = i, otherwise a(n) = E061395(n) - D055396(n) = J243055(n)	_	_	_		If n is the i-th prime, p_i = A000040(i), then a(n) = i, otherwise the difference between the indices of the smallest and the largest prime dividing n: for n = p_i * ... * p_k, where p_i <= ... <= p_k, a(n) = (k-i); a(1) = 0 by convention.
 A252750	lambdan	0	n -> D003961(D005940(n+1)).-(ZV(2).*(D005940(n+1)))	""		a(n) = D003961(D005940(n+1)) - 2 * D005940(n+1)	_	_	_		a(n) = A003961(A005940(n+1)) - 2 * A005940(n+1).
 A253179	lambdan	1	n -> F008683(n).*(E071961(n))	"1"		a(n) = F008683(n)*E071961(n)	_	_	_		a(n) = mu(n)*Sum_{k=1..n} (n/k) where mu(n) is M√∂bius (or Moebius) function and (x/y) is Kroneckers symbol.
-A256162	lambdin	1	n -> ZV(10).^((ZV(n/2))).-(ZV(2).*((ZV(n/2)))).+(ZV(n)).-(2)	"1"		a(n) = 10^floor(n/2) - 2*floor(n/2) + n - 2 = 10^floor(n/2)-(1+(-1)^n)/2 - 1 for n>1, a(1) = 1	_	_	_		Positive integers a(n) such that number of digits in decimal expansion of a(n)^a(n) is divisible by a(n).
 A256967	sintrif	1	(term, n) -> term.+(ZV(1))	""	new A256966()	a(n) = J256966(n) + 1	_	_	_		a(n) = A256966(n) + 1.
 A263882	sintrif	2	(term, n) -> F000040(n).*(term)	"1,5,35"	new A034602()	a(n) = prime(n)*J034602(n) for n > 2	_	_	_		Babbage quotients b_p = (binomial(2p-1, p-1) - 1)/p^2 with p = prime(n).
 A265913	filter	0	new A000594()	v -> v.IPP()	Values of Ramanujans tau function that are prime.
-A266348	lambdin	1	n -> M004001(n+1).-(E072376(n))	"1"		a(1) = 1; for n > 1, a(n) = M004001(n+1) - E072376(n)	_	_	_		a(1) = 1; for n > 1, a(n) = A004001(n+1) - A072376(n).
+A266348	lambdan	1	n -> (n <= 1) ? ZV(1) : M004001(n+1).-(E072376(n))	"1"		a(1) = 1; for n > 1, a(n) = M004001(n+1) - E072376(n)	_	_	_		a(1) = 1; for n > 1, a(n) = A004001(n+1) - A072376(n).
 A267110	lambdan	1	n -> ZV(n).-(M004001(n))	""		If J051135(n) = 1 [Equally: if J265332(n) = 1], then a(n) = M004001(n) - 1, otherwise a(n) = n - M004001(n)	_	_	_		If A051135(n) = 1, then a(n) = A004001(n) - 1, otherwise a(n) = n - A004001(n).
 A268837	lambdan	0	n -> SU(0, n, k -> F003188(F006068(n).+(F006068(n-k))))	""		a(n) = Sum_{k=0..n} F003188(F006068(n)+F006068(n-k))	_	_	_		Antidiagonal sums of array A268715: a(n) = Sum_{k=0..n} A003188(A006068(n)+A006068(n-k)).
-A271479	lambdin	1	n -> F000120(n-1).+(ZV(3).*(D023416(n-1)))	"0,1"		a(n) = F000120(n-1) + 3*D023416(n-1), for n>=2	_	_	_		Number of steps for the trajectory of n under the map k -> A271478(k) to reach 1.
+A271479	lambdan	1	n -> (n <= 1) ? ZV(n) : F000120(n-1).+(ZV(3).*(D023416(n-1)))	"0,1"		a(n) = F000120(n-1) + 3*D023416(n-1), for n>=2	_	_	_		Number of steps for the trajectory of n under the map k -> A271478(k) to reach 1.
 A271591	sintrif	4	(term, n) -> E079944(term.-(2))	""	new A000073()	a(n) = E079944(J000073(n)-2)	_	_	_		Second most significant bit of the tribonacci number A000073(n).
 A274139	lambdan	1	n -> Z2(D007814(n))	""		a(n) = 2^(n/2^valuation(n,2)) = 2^D007814(n)	_	_	_		a(n) = 2^A000265(n) = 2^numerator(n/2^n), a sequence related to Oresme numbers.
 A274760	lambdan	0	n -> (DF(2*n-1)).^(2)	""		a(n) = n!*P(n), with P(n) = (1/n)*(Sum_{k=0..n-1}(b(n-k) * P(k))), n >= 1 and P(0) = 1, with b(n) = J001818(n) = ((2*n-1)!!)^2	_	_	_		The multinomial transform of A001818(n) = ((2*n-1)!!)^2.
-A275380	lambdin	0	n -> F001222(E078304(n))	"0"		a(n) = F001222(E078304(n)) for n > 0	_	_	_		Number of odd prime factors (with multiplicity) of generalized Fermat number 7^(2^n) + 1.
+A275380	lambdan	0	n -> (n <= 0) ? ZV(0) : F001222(E078304(n))	"0"		a(n) = F001222(E078304(n)) for n > 0	_	_	_		Number of odd prime factors (with multiplicity) of generalized Fermat number 7^(2^n) + 1.
 A276755	sintrif	0	(term, n) -> ZV(4).*(term).+(ZV(1))	""	new A038505()	a(n+1)/a(n) = 4*J038505(n) + 1	_	_	_		a(n) = A275706(n)^2 + A276688(n)^2 = [n]_{1+i}! * [n]_{1-i}!, where [n]_q! is the q-factorial, i = sqrt(-1).
 A277195	sintrif	1	(term, n) -> D022290(D156552(term))	""	new A005117()	a(n) = D022290(J277010(n)) = D022290(D156552(J005117(n)))	_	_	_		Permutation of nonnegative integers: a(n) = A022290(A277010(n)).
 A278049	lambdan	1	n -> ZV(3).*((SU(1, n, k -> F000010(k)).-(1)))	""		a(n) = 3*(Sum_{k=1..n} phi(k)) - 1	_	_	_		a(n) = 3*(Sum_{k=1..n} phi(k)) - 1, where phi = A000010.
-A279481	lambdin	1	n -> SU(2, n, i -> D010051(i).*(D010051(2*n - i)).*(F000720(2*n - i).-(F000720(i - 1))))	"0,0,1"		a(n) = Sum_{i=2..n} D010051(i)*D010051(2*n-i)*(pi(2*n-i)-pi(i-1)) for n > 2	_	_	_		Count the primes appearing in each interval [p,q] where (p,q) is a Goldbach partition of 2n, and then add the results.
 A280246	lambdan	1	n -> PD(n, d -> F001615(d))	""		a(n) = Product_{d|n} psi(d)	_	_	_		a(n) = Product_{d|n} psi(d), where psi(m) is the sum of totatives of m (A023896).
-A280510	lambdin	1	n -> ZV(3).*(D053644(n-1))	"3,3"		a(n) = 3*D053644(n-1) for n >= 2	_	_	_		Index sequence of the Thue-Morse sequence (A010060) as a block-fractal sequence.
 A283427	lambdan	1	n -> F000720(MIN(F000040(n+1).^(2), PR(1, n, k -> (F000040(k)))).-(ZV(n)))	""		a(n) = pi(min(prime(n+1)^2, Product_{k=1..n} ( prime(k) ) )) - n	_	_	_		a(n) is the number of consecutive smallest prime totatives of primorial A002110(n).
-A283468	lambdin	1	n -> M004001(M004001(n-1)).-(M004001(D080677(n-1)))	"1,1"		a(1) = a(2) = 1; for n > 2, a(n) = M004001(M004001(n-1)) - M004001(D080677(n-1))	_	_	_		a(n) = A004001(A004001(n-1)) - A004001(n-A004001(n-1)), a(1) = a(2) = 1.
+A283468	lambdan	1	n -> (n <= 2) ? ZV(1) : M004001(M004001(n-1)).-(M004001(D080677(n-1)))	"1,1"		a(1) = a(2) = 1; for n > 2, a(n) = M004001(M004001(n-1)) - M004001(D080677(n-1))	_	_	_		a(n) = A004001(A004001(n-1)) - A004001(n-A004001(n-1)), a(1) = a(2) = 1.
 A283478	lambdan	1	n -> E097248(E108951(n))	""		a(n) = E097248(E108951(n))	_	_	_		a(n) = A097248(A108951(n)).
 A284437	multraf	0	(self, n) -> self.s(0).+(self.s(1))	"0"	new A284275(), new A080339()	a(n) = J284275(n) + J080339(n) for n >= 1	_	_	_		Number of primes between n and 2^n inclusive.
 A285097	lambdan	0	n -> D007814(E129760(n)).-(D007814(n))	""		If F000120(n) < 2, a(n) = 0, otherwise a(n) = E285099(n) - D007814(n) = D007814(E129760(n)) - D007814(n)	_	_	_		a(n) = difference between the positions of two least significant 1-bits in base-2 representation of n, or 0 if there are less than two 1-bits in n (when n is either zero or a power of 2).
 A293899	sintrif	1	(term, n) -> term.+(ZV(1))	""	new A002324()	When n = 3k, a(n) = J002324(n), when n = 3k+1, a(n) = J002324(n) - 1, when n = 3k+2, a(n) = J002324(n) + 1	_	_	_		Number of proper divisors of the form 3k+1 minus number of proper divisors of the form 3k+2.
 A299205	filtpos	1	1	new A000594()	(k, v) -> v.mod(k - 1) == 0	Numbers k such that k-1 divides tau(k), where tau(k)=A000594(k) is Ramanujans tau function.
 A302446	lambdan	2	n -> ZV(2).*(F007917(n)).-(3)	""		If F007917(n) is in J006512, then a(n) = 2*F007917(n) - 3	_	_	_		a(n) is the maximum remainder of p*q divided by p+q where p and q are primes with p <= q <= n.
-A306709	lambdin	1	n -> GCD(F001414(n), E167344(n))	"0,1"		For n > 1, a(n) = gcd(F001414(n), E167344(n))	_	_	_		For n > 1, a(n) = gcd(A001414(n), A167344(n)) where A001414(n) is the sum of primes p dividing n (with repetition) and A167344(n) = b(n) is the totally multiplicative sequence with b(p) = (p-1)*(p+1) = p^2 - 1; a(1) = 0.
-A307120	lambdin	1	n -> F000005(n-1).+(F000005(n)).+(F000005(n+1))	"3"		a(1) = 3, for n>1, a(n) = F000005(n-1) + F000005(n) + F000005(n+1)	_	_	_		a(1) = 3, for n>1, a(n) = A000005(n-1) + A000005(n) + A000005(n+1).
-A317947	lambdin	1	n -> D007088(n-1).+(ZV(10)).^((ZV(1).+(D000523(n-1)))).*(D007088(n))	"10,101"		a(n) = D007088(n-1)+10^(1+D000523(n-1))*D007088(n) for n >= 2	_	_	_		Concatenate n and n-1 in binary.
+A306709	lambdan	1	n -> (n <= 1) ? ZV(n) : GCD(F001414(n), E167344(n))	"0,1"		For n > 1, a(n) = gcd(F001414(n), E167344(n))	_	_	_		For n > 1, a(n) = gcd(A001414(n), A167344(n)) where A001414(n) is the sum of primes p dividing n (with repetition) and A167344(n) = b(n) is the totally multiplicative sequence with b(p) = (p-1)*(p+1) = p^2 - 1; a(1) = 0.
+A317947	lambdan	1	n -> (n <= 1) ? ZV(10).^(n + 1).+(n) : D007088(n-1).+(ZV(10)).^((ZV(1).+(D000523(n-1)))).*(D007088(n))	"10,101"		a(n) = D007088(n-1)+10^(1+D000523(n-1))*D007088(n) for n >= 2	_	_	_		Concatenate n and n-1 in binary.
 A318129	sintrif	0	(term, n) -> term.-(Z2(Z2(n-1).-(1)))	""	new A318130()	a(n) = J318130(n) - 2^(2^(n - 1) - 1)	_	_	_		Number of sets of nonempty subsets of {1,...,n} with intersection {}.
 A324115	lambdan	1	n -> D002487(D323244(n))	""		a(n) = D002487(D323244(n))	_	_	_		a(n) = A002487(A323244(n)).
 A324798	lambdan	1	n -> (SQRT(2).*(F000040(n))).-(F000040(n+1))	""		a(n) = floor(sqrt(2)*prime(n)) - prime(n+1)	_	_	_		a(n) = floor(sqrt(2)*prime(n)) - prime(n+1).
@@ -143,12 +133,11 @@ A328844	lambdan	0	n -> E328842(F276086(n))	""		a(n) = E328842(F276086(n))	_	_	_	
 A329030	lambdan	0	n -> E134193(E276087(n))	""		a(n) = E329028(F276086(n)) = E134193(E276087(n))	_	_	_		The least missing nonzero digit in the primorial base expansion of A276086(n).
 A329619	lambdan	1	n -> E328114(E108951(n)).-(D007814(E108951(n)))	""		a(n) = E328114(E108951(n)) - D007814(E108951(n))	_	_	_		Difference between the maximal digit value used when A108951(n) is written in primorial base and its 2-adic valuation.
 A331622	sintrif	1	(term, n) -> term.-(F000720(n).*(2)).+(n - 3)	"0,0,0"	new A073610()	For n >= 3, a(n) = J073610(n) + n - 3 - 2*F000720(n)	_	_	_		a(n) is the number of k such that k and n-k are both composite.
-A332053	lambdin	1	n -> ZV(n).*(F000203(n).-(F000005(n)).-(ZV(n)).+(n & 1))	"0,0,0"		a(n) = n*(sigma(n) - tau(n) - n + (n mod 2)) for n > 2	_	_	_		a(n) is the number of sets modulo n which can be formed by a finite arithmetic sequence, whose complement cannot be formed by a finite arithmetic sequence.
-A332681	lambdin	1	n -> ZV(2).+(SU(2, n, k -> (ZV(2).*(F000010(k-1)).+(F008683(k)))))	"1,3"		a(n) = 2 + Sum_{k=2..n} (2 * phi(k-1) + mu(k)) for n > 1	_	_	_		a(n) = Sum_{k=1..n} mu(k) * ceiling(n/k)^2.
+A332053	lambdan	1	n -> (n <= 2) ? ZV(0) : ZV(n).*(F000203(n).-(F000005(n)).-(ZV(n)).+(n & 1))	"0,0,0"		a(n) = n*(sigma(n) - tau(n) - n + (n mod 2)) for n > 2	_	_	_		a(n) is the number of sets modulo n which can be formed by a finite arithmetic sequence, whose complement cannot be formed by a finite arithmetic sequence.
+A332681	lambdan	1	n -> (n <= 1) ? ZV(1 + 2*n) : ZV(2).+(SU(2, n, k -> (ZV(2).*(F000010(k-1)).+(F008683(k)))))	"1,3"		a(n) = 2 + Sum_{k=2..n} (2 * phi(k-1) + mu(k)) for n > 1	_	_	_		a(n) = Sum_{k=1..n} mu(k) * ceiling(n/k)^2.
 A334307	lambdan	1	n -> ZV(4).*(E339891(n)).*(FA(n))	"12"		If n>1, a(n) = 4*E339891(n)*n!	_	_	_		Number of graceful labelings for the complete tripartite graph K_1,1,n.
 A334360	sintrif	2	(term, n) -> term.+(ZV(1))	""	new A001661()	a(n) = J001661(n) + 1	_	_	_		Anti-Waring numbers: least number k such that k and all larger numbers can be expressed as the sum of one or more distinct n-th powers.
-A335529	lambdin	0	n -> SU(0, n, k -> FA(k).*(ZV(n).^(k - 1)).*(S1(n, k)))	"1,1"		a(n) = E317172(n)/n = Sum_{k=0..n} k!*n^(k-1)*Stirling1(n,k) for n > 1	_	_	_		a(n) = n! * [x^n] (1 - (n-1)*log(1 + x))/(1 - n*log(1 + x)).
-A337566	lambdin	1	n -> F000005(2*n).-(3)	"0"		a(1) = 0 then, for n >= 2, a(n) = tau(2n) - 3 = J099777(n) - 3	_	_	_		a(n) is the number of possible decompositions of the polynomial n * (x + x^2 + ... + x^q), where q > 1, into a sum of k polynomials, not necessarily all different; each of these polynomials is to be of the form b_1 * x + b_2 * x^2 + ... + b_q * x^q where e
+A335529	lambdan	0	n -> (n <= 1) ? ZV(1) : SU(0, n, k -> FA(k).*(ZV(n).^(k - 1)).*(S1(n, k)))	"1,1"		a(n) = E317172(n)/n = Sum_{k=0..n} k!*n^(k-1)*Stirling1(n,k) for n > 1	_	_	_		a(n) = n! * [x^n] (1 - (n-1)*log(1 + x))/(1 - n*log(1 + x)).
 A342005	lambdan	0	n -> E342004(F276086(n))	""		a(n) = E342004(F276086(n))	_	_	_		a(n) = A342004(A276086(n)).
 A342026	lambdan	1	n -> E328310(F276086(n))	""		a(n) = E328310(F276086(n)) = E328391(n) - E328114(n)	_	_	_		Difference in the maximal prime exponents between the arithmetic derivative of A276086(n) and A276086(n) itself, which is the prime product form of primorial base expansion of n.
 A342461	lambdan	0	n -> E267263(E329886(n))	""		a(n) = E267263(E329886(n)) = E329040(D005940(1+n))	_	_	_		Number of nonzero digits when A329886(n) is written in primorial base, where A329886 is the primorial inflation of Doudna-tree.
@@ -160,8 +149,7 @@ A343935	lambdan	1	n -> BI(F000203(n).+(n - 1), ZV(n))	""		a(n) = ((sigma(n), n))
 A343936	lambdan	1	n -> BI(F000203(n).+(n - 1), ZV(n - 1))	""		a(n) = ((sigma(n - 1), n)) = binomial(sigma(n - 1) + n - 1, n)	_	_	_		Number of ways to choose a multiset of n divisors of n - 1.
 A344662	sintrif	1	(term, n) -> FA(n-1).^(n).*(term)	""	new A002860()	a(n) = (n-1)!^n * J002860(n) = J343696(n)/n^n	_	_	_		a(n) is the number of preference profiles in the stable marriage problem with n men and n women so that they form n pairs of people of different genders who rank each other first, and so that the men s preferences arranged in a matrix form a Latin square.
 A345876	lambdan	0	n -> SU(0, n, k -> BI(2*n, n - k).*(ZV(k).^(n)))	""		a(n) = Sum_{k=0..n} binomial(2*n, n-k) * k^n	_	_	_		a(n) = Sum_{k=0..n} binomial(2*n, n-k) * k^n.
-A350063	lambdin	1	n -> D046523(E322993(n))	"0"		a(1) = 0; for n > 1, a(n) = D046523(E322993(n)) = D046523(F000265(D156552(n)))	_	_	_		a(n) is the smallest number with the same prime signature as A322993(n), with a(1) = 0.
-A352227	lambdin	1	n -> ZV(2).*(M006165(n - 1))	"0,2"		For n>=2, a(n) = 2*M006165(n-1)	_	_	_		Number of length-n blocks in the Thue-Morse sequence with intertwining pattern AB AB AB... .
+A352227	lambdan	1	n -> (n <= 1) ? ZV(2*n) : ZV(2).*(M006165(n - 1))	"0,2"		For n>=2, a(n) = 2*M006165(n-1)	_	_	_		Number of length-n blocks in the Thue-Morse sequence with intertwining pattern AB AB AB... .
 A354463	sintrif	0	(term, n) -> Z2(n-2).-(term)	"0,0"	new A055223()	a(n) = 2^(n-2) - J055223(n) for n >= 2	_	_	_		a(n) is the number of trailing zeros in (2^n)!.
 A356655	lambdan	0	n -> PD(n, d -> { final Z d1 = ZV(d + 1); return (d1.IPP() && 1 < d && d < n) ? d1 : Z.ZERO; } )	""		a(n) = Product_{d | n} (d + 1)	a(n) = Product_{d | n} (d + 1), where d + 1 is prime and 1 < d < n
 A358530	filter	1	new A000040()	(n, v) -> { final Z pm1 = PPM(v); return v.compareTo(pm1.*(2).-(PPM(pm1))) < 0; }	a(n) = n-th prime p(k) such that p(k) - p(k-1) < p(k-1) - p(k-2).
@@ -182,7 +170,7 @@ A369289	multraf	0	(self, n) -> self.s(0).+(M000081(n)).+(self.s(1))	"1"	new A000
 A370255	sintrif	0	(term, n) -> term.^(n*10)	"1"	new A004151()	a(n) = J004151(n)^(n*10), for n >= 1	_	_	_		(n*10)^(n*10) omitting its rightmost trailing 0 s.
 A371201	sintrif	0	(term, n) -> F000040(n).+(term)	"1"	new A054265()	a(n) = prime(n) + J054265(n), for n >= 1	_	_	_		a(n) = Sum_{k=prime(n)..prime(n+1)-1} k, with a(0) = 1.
 A371627	lambdan	1	n -> ZV(n).-(E371628(n))	""		a(n)=n-E371628(n)	_	_	_		The x-coordinate of the point where x + y = n, x is an integer and x/y is as close as possible to 1/phi.
-A372442	lambdin	2	n -> D029837(n).-(E061395(n))	"1,0"		a(n) = F070939(n) - E061395(n) = D029837(n) - E061395(n) for n > 1	_	_	_		(Greatest binary index of n) minus (greatest prime index of n).
+A372442	lambdan	2	n -> (n <= 1) ? ZV(1 - n) : D029837(n).-(E061395(n))	"1,0"		a(n) = F070939(n) - E061395(n) = D029837(n) - E061395(n) for n > 1	_	_	_		(Greatest binary index of n) minus (greatest prime index of n).
 A373046	sintrif	0	(term, n) -> Z2(n + 1).+(1).-(term)./(2)	""	new A000213()	1+2^(n+1)-J000213(n+3). - _R. J. Mathar_, Aug 28 2024
 A374148	lambdan	0	n -> CV(3).sqrt().*(Z2(n - 1).-(1)).+(1).floor()	""		a(n) = floor(sqrt(3)*(2^(n - 1) - 1) + 1)	_	_	_		Integer part of (2^(n - 1) - 1)*sqrt(3) + 1.
 A375849	lambdan	2	n -> E375032(FA(n))	""		a(n) = E375032(n!)	_	_	_		The maximum odd exponent in the prime factorization of n!.
