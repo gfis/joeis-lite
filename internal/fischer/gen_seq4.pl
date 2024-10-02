@@ -612,7 +612,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WDirectSequence}               ) { $imports{"irvine.oeis.DirectSequence"                   } = $itype; }
     if ($line =~ m{\WDirectTransformSequence}      ) { $imports{"irvine.oeis.transform.DirectTransformSequence"} = $itype; }
     if ($line =~ m{\WEuler\.}                      ) { $imports{"irvine.math.z.Euler"           }                = $itype; }
-#   if ($line =~ m{\WFACTORIAL\.}                  ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
+    if ($line =~ m{\WEulerTransform\(}             ) { $imports{"irvine.oeis.transform.EulerTransform"         } = $itype; }
     if ($line =~ m{\WFactorSequence}               ) { $imports{"irvine.factor.util.FactorSequence"}             = $itype; }
     if ($line =~ m{\WFactorUtils}                  ) { $imports{"irvine.factor.util.FactorUtils"               } = $itype; }
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }
