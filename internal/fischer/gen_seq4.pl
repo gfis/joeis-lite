@@ -236,8 +236,8 @@ while (<>) { # read inputfile
         $parms[$iparm] =~ s{ +\)}{\)}g;  # spaces before ")"
         $parms[$iparm] =~ s{\. +}{\.}g;  # spaces after  "."
         $parms[$iparm] =~ s{ +\.}{\.}g;  # spaces before "."
-        $parms[$iparm] =~ s{ *\, *}{\, }g;  # spaces around ","
         if (($parms[$iparm] =~ m{\-\>}) || ($callcode =~ m{\A(lpf|spf)\Z})) { # with lambda expression: replace shortcuts and check bracketing, accumulate $static_dirs
+            $parms[$iparm] =~ s{ *\, *}{\, }g;  # spaces around ","
             my $parm = $parms[$iparm];
         #   if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
         #       print STDERR "# $aseqno, unknown shortcut: $aseqno $parm\n";
@@ -611,6 +611,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WDirectArray}                  ) { $imports{"irvine.oeis.triangle.DirectArray"             } = $itype; }
     if ($line =~ m{\WDirectSequence}               ) { $imports{"irvine.oeis.DirectSequence"                   } = $itype; }
     if ($line =~ m{\WDirectTransformSequence}      ) { $imports{"irvine.oeis.transform.DirectTransformSequence"} = $itype; }
+    if ($line =~ m{\WEtaProductSequence}           ) { $imports{"irvine.oeis.transform.EtaProductSequence"     } = $itype; }
     if ($line =~ m{\WEuler\.}                      ) { $imports{"irvine.math.z.Euler"           }                = $itype; }
     if ($line =~ m{\WEulerTransform\(}             ) { $imports{"irvine.oeis.transform.EulerTransform"         } = $itype; }
     if ($line =~ m{\WFactorSequence}               ) { $imports{"irvine.factor.util.FactorSequence"}             = $itype; }

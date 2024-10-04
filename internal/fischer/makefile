@@ -51,7 +51,7 @@ EL=0
 TO=4
 TOADD=4000
 WAITM=100
-GU=0
+GU=65536
 N=1000
 NUM=999
 EIT=
@@ -3763,7 +3763,6 @@ holref1: # select sequences which are holonomic
 	      , 'ContinuedFractionOfSqrtSequence' \
 	      , 'CoordinationSequence' \
 	      , 'CoxeterSequence'\
-	      , 'FiniteSequence'\
 	      , 'GeneratingFunctionSequence' \
 	      , 'HolonomicRecurrence' \
 	      , 'LatticeCoordinationSequence' \
@@ -3772,9 +3771,11 @@ holref1: # select sequences which are holonomic
 	      , 'PeriodicSequence' \
 	      , 'PolynomialRootSequence' \
 	      , 'PrependSequence' \
-	      , 'WeylGroupSequence' \
 	      )" \
 	>        $@.tmp
+#      , 'FiniteSequence' separate -> reflection
+#      , 'WeylGroupSequence' -> reflection of EulerTransforms
+
 	head -n4 $@.tmp
 	cut -f2  $@.tmp | sort | uniq -c
 	wc -l    $@.tmp
@@ -3844,7 +3845,7 @@ holref_populate:
 	$(DBAT) -4 holref
 #----
 holrefhy: # sort hypergeom parameters
-	perl hypergeom_eval.pl holrefl1.tmp \
+	perl hypergeom_eval.pl holref4.tmp \
 	| sort -k2n -k3n \
 	>        $@.tmp
 	head -n4 $@.tmp
@@ -3891,7 +3892,6 @@ holrefix1:
 	      , 'ContinuedFractionOfSqrtSequence' \
 	      , 'CoordinationSequence' \
 	      , 'CoxeterSequence'\
-	      , 'FiniteSequence'\
 	      , 'GeneratingFunctionSequence' \
 	      , 'HolonomicRecurrence' \
 	      , 'LatticeCoordinationSequence' \
@@ -3901,6 +3901,7 @@ holrefix1:
 	      , 'PrependSequence' \
 	      ) ORDER BY 1" \
 	>        $@.tmp
+#      , 'FiniteSequence'\
 	head -n4 $@.tmp
 	wc -l    $@.tmp
 holrefix2:
@@ -4653,16 +4654,19 @@ multnyi:
 #----
 beattycheck: # run a test for methods a() over all BeattySequences 
 	grep BeattySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=8 
+	make CC=$@ test2 log TO=8 GU=$(GU) 
 directcheck:
 	cut -f1 reflect/direct.tmp > ghead.tmp
+	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=8
+	make CC=$@ test2 log TO=8 GU=$(GU)
 hypercheck: # run a test for methods a() over all HypergeometricSequences 
 	grep HypergeometricSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=8 
+	make CC=$@ test2 log TO=8 GU=$(GU) 
 hypergeon:
 	perl hypergeon.pl hypercheck.corr.pack \
 	>        $@.gen
@@ -4673,24 +4677,29 @@ mult0check:
 	$(DBAT) "SELECT s.aseqno, SUBSTR(d.data, 1, 64) FROM seq2 s, asdata d where s.aseqno = d.aseqno "
 multcheck: # run a test for methods a() over all MultiplicativeSequences 
 	grep MultiplicativeSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=16
+	make CC=$@ test2 log TO=8 GU=$(GU)
 lambdacheck: # run a test for methods a() over all LambdaSequences 
 	grep LambdaSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=8
+	make CC=$@ test2 log TO=8 GU=$(GU)
 memocheck: # run a test for methods a() over all MemorySequences 
 	grep MemorySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=4
+	make CC=$@ test2 log TO=8 GU=$(GU)
 morphcheck: # run a test over all MorphismFixedPointSequences 
 	grep MorphismFixedPointSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=16
+	make CC=$@ test2 log TO=8 GU=$(GU)
 paddingcheck: # run a test for methods a() over all PaddingSequences 
 	grep PaddingSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
+	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=16
+	make CC=$@ test2 log TO=8 GU=$(GU)
 #--------------------------------
 n2:
 	cat $(COMMON)/jcat25.txt \

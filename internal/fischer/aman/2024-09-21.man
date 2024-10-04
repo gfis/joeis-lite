@@ -56,7 +56,6 @@ A164955	lambdan	0	n -> D061602(F000045(n))	""		a(n) = D061602(F000045(n))	_	_	_	
 A166281	sintrif	1	(term, n) -> M002033(term.-(1))	""	new A018252()	a(n) = M002033(J018252(n)-1)	_	_	_		Number of perfect partitions of the nonprimes A018252.
 A166475	lambdan	0	n -> RQ(1, n, k -> new Q(F000040(k)).^((n - k + 1)*(n - k + 1))).num()	""		a(n) = Product_{k=1..n} prime(k)^((n-k+1)^2)	_	_	_		4th level primorials: product of first n superduperprimorials.
 A167657	lambdan	1	n -> (n == 1) ? ZV(0) : ZV(n).^(Functions.PRIME.i(n + 1) - Functions.PRIME.i(n))	""		a(n) = n^(F000040(n+1)-F000040(n))	_	_	_		Product of n-th block of identical consecutive values of A000720.
-A168043	lambdan	1	n -> (n <= 1) ? ZV(n + 1) : F000032(n+1).-(ZV(n))	"1,2"		and a(n) = F000032(n+1) - n for n>1	_	_	_		Let S(1)={1} and, for n>1 let S(n) be the smallest set containing x+1, x+2, and 2*x for each element x in S(n-1). a(n) is the number of elements in S(n).
 A173146	filnum	1	1	k -> F000203(F000010(k)).equals(RAD(k))	sigma(phi(n)) = rad(n)
 A175213	multrar	0	(self, n) -> { final int r = Functions.SQRT.i(n - 1); final int s = Functions.SQRT.i(n) - 1; return self.a(r*r).+(self.a(s*s)); }	"1,2"		ZV(n).-(SQRT(n).^(2))	""		a(n)= a(r)+a(s) ; (r+s)<=n ; r=(floor(sqrt(n-1)))^2 ; s=n-(floor(sqrt(n)))^2	_	_	_		a(n)= a(r)+a(s) ; (r+s)<=n ; r=(floor(sqrt(n-1)))^2 ; s=n-(floor(sqrt(n)))^2.
 A175218	lambdan	1	n -> (n <= 2) ? ZV(8) : F000040(n).+(ZV(2)).+(D010051(F000040(n).+(ZV(2))))	"8,8,9"		For n>2: a(n) = F000040(n) + 2 + D010051(F000040(n) + 2)	_	_	_		The third nonprimes after the primes.

@@ -24,19 +24,21 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 my $line = "";
 my ($aseqno, $callcode, $offset, $matrix, @rest);
 
+# while (<DATA>) {
 while (<>) {
     next if ! m{\AA\d+}; # no A-number
     s/\s+\Z//; # chompr
     $line = $_;
-    ($aseqno, $callcode, $offset, $matrix, @rest) = split(/\t/, $line);
+    ($aseqno, $callcode, $offset, @rest) = split(/\t/, $line);
+    $matrix = $rest[0];
     if ($matrix =~ s{\A\[\[}{}) {
         $matrix =~ s{\]\]\Z}{};
         $matrix =~ s{\s}{}g;
         my @rows = split(/\]\,\[/, $matrix);
         if (scalar(@rows) == 3 && $rows[0] eq "0" && ($rows[2] ne "1" && $rows[2] ne "-1")) {
-        	my @r1 = split(/\,/, $rows[1]);
-        	my @r2 = split(/\,/, $rows[2]);
-            print join("\t", $aseqno, scalar(@r1), scalar(@r2), $rows[1], $rows[2]) . "\n";
+            my @r1 = split(/\,/, $rows[1]);
+            my @r2 = split(/\,/, $rows[2]);
+            print join("\t", $aseqno, $matrix, splice(@rest, 0, 4), scalar(@r1), scalar(@r2), $rows[1], $rows[2]) . "\n";
         }
     } 
 } # while <>
