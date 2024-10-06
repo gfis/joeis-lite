@@ -3469,7 +3469,7 @@ REC=aman/findre.man
 holos:
 	grep -P "^A\d+" $(REC) \
 	| $(JPREP) -cc bva -f - \
-	| perl -pe"s/\t[^\t]+\t/\tholos\t/" \
+	| perl -pe "s/\t[^\t]+\t/\tholos\t/; s/\"//g;" \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
@@ -3759,6 +3759,7 @@ holref1: # select sequences which are holonomic
 	  FROM joeis j, asinfo i \
 	  WHERE j.aseqno = i.aseqno \
 	    AND superclass IN ('UndefinedClass' \
+	      , 'A157052' \
 	      , 'BlockMultAddSequence' \
 	      , 'ContinuedFractionOfSqrtSequence' \
 	      , 'CoordinationSequence' \
@@ -5778,7 +5779,7 @@ lrixamine1: # select the eligible programs
 lrixamine2: #   run the LinearRecurrenceInspector and determine the parameters for HolonomicRecurrence
 	cat lrixamine1.tmp \
 	| grep -vE "A001224" \
-	| grep -vE "A005784|A005785|A005943|A036517|A048345|A068616|A068617|A079921"
+	| grep -vE "A005784|A005785|A005943|A036517|A048345|A068616|A068617|A071460|A079921" \
 	| $(JAVA) irvine.oeis.LinearRecurrenceInspector -f - -n 16 \
 	2>       $@.err.tmp \
 	| tee    $@.tmp
@@ -5791,7 +5792,9 @@ lrixamine3:
 	| grep -vE "A005785|A157074" \
 	| uniq -w7 > $@.gen
 lrixamine4: # full test
-	make CC=lrixamine3 select EX=xx gener distel
+	make CC=lrixamine3 select EX=xx geditel
+lrixamine_eval: # which non.recurrent jOEIS superclasses are used
+	cut -f6 lrixamine1.tmp | perl  -pe "s/DirectSequence|Conjectural|Serializable//"| sort | uniq -c | sort -n
 #--------
 # Check whether SequenceWithOffset returns the proper offset
 offinspect: offinspect_update offinspect1 offinspect2
