@@ -310,6 +310,7 @@ while (<>) { # read inputfile
             $parm =~ s{SDD\(}          {Functions.DIGIT_SORT_DESCENDING\(}g;
 #           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
             $parm =~ s{\bSIGMA\(}      {Functions.SIGMA1.z(}g;
+            $parm =~ s{SOPFR\(}        {Functions.SOPFR.z\(}g;
             $parm =~ s{SOPF\(}         {Functions.SOPF.z\(}g;
             $parm =~ s{SP\(}           {Functions.SOPF.z\(}g;
             $parm =~ s{SPF\(}          {Functions.LPF.z\(}g;

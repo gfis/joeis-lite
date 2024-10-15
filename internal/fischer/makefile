@@ -592,14 +592,15 @@ dist1:
 deploy:
 	cd ../.. ; ant         deploy 2>&1
 #--
-pegel:   purge select gener dist test log
-segel:   select gener dist test log
+megel:   purge select gener man dist test    log
+pegel:   purge select gener     dist test    log
+segel:         select gener     dist test    log
 distel:
-ditel:   dist       test    log
-geditel: gener dist test    log
-maditel: man dist   test    log
-madital: man dist   testall log
-tel:                test    log
+ditel:                          dist test    log
+geditel:              gener     dist test    log
+maditel:                    man dist test    log
+madital:                    man dist testall log
+tel:                                 test    log
 #--
 batest: # parameter: CC
 	# ---- $@ CC=$(CC)
