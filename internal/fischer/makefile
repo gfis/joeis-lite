@@ -3967,8 +3967,13 @@ hygsolve0:
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
-hygsolve:
+hygsolvem:
 	grep -E "^A[0-9]" hygsolve2.man \
+	>        $@.gen
+	head -n4 $@.gen
+	wc -l    $@.gen
+hygsolve:
+	grep -E "^A[0-9]" $(HOLREC)/hygsolve2.tmp \
 	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen
