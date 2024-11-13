@@ -259,6 +259,7 @@ while (<>) { # read inputfile
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
             $parm =~ s{CESQ\(}         {Functions.CEIL_SQRT.z\(}g;
             $parm =~ s{CML\(}          {Functions.CARMICHAEL_LAMBDA.z\(}g;
+            $parm =~ s{CONC\(}         {ZUtils.concatenate\(}g;
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
             $parm =~ s{\bF\.}          {Functions.}g;
             $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
