@@ -288,6 +288,7 @@ while (<>) { # read inputfile
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z\(}g;
+            $parm =~ s{PP\(}           {Predicates.PRIME.is\(}g;
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PM\(}           {Functions.PRIME.z\(}g;
             $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
@@ -299,7 +300,7 @@ while (<>) { # read inputfile
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
             $parm =~ s{PR\(}           {Integers.SINGLETON.product\(}g;
             $parm =~ s{PT\(}           {Functions.PARTITIONS.z\(}g;
-            $parm =~ s{QV\(}           {Q.valueOf\(}g;
+            $parm =~ s{QV\(}           {new Q\(}g;
             $parm =~ s{RAD\(}          {Functions.RAD.z\(}g;
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
