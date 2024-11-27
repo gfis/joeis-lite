@@ -614,6 +614,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WDirectArray}                  ) { $imports{"irvine.oeis.triangle.DirectArray"             } = $itype; }
     if ($line =~ m{\WDirectSequence}               ) { $imports{"irvine.oeis.DirectSequence"                   } = $itype; }
     if ($line =~ m{\WDirectTransformSequence}      ) { $imports{"irvine.oeis.transform.DirectTransformSequence"} = $itype; }
+    if ($line =~ m{\WDoubledSequence}              ) { $imports{"irvine.oeis.DoubledSequence"                  } = $itype; }
     if ($line =~ m{\WEtaProductSequence}           ) { $imports{"irvine.oeis.transform.EtaProductSequence"     } = $itype; }
     if ($line =~ m{\WEuler\.}                      ) { $imports{"irvine.math.z.Euler"           }                = $itype; }
     if ($line =~ m{\WEulerTransform\(}             ) { $imports{"irvine.oeis.transform.EulerTransform"         } = $itype; }
