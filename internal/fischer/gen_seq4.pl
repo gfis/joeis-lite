@@ -626,6 +626,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WFunctions}                    ) { $imports{"irvine.math.function.Functions"               } = $itype; }
     if ($line =~ m{\WGaussianIntegers\.}           ) { $imports{"irvine.math.group.GaussianIntegers"}            = $itype; }
     if ($line =~ m{\WGeneratingFunctionSequence}   ) { $imports{"irvine.oeis.recur.GeneratingFunctionSequence" } = $itype; }
+    if ($line =~ m{\WGroupFactory}                 ) { $imports{"irvine.math.group.GroupFactory"               } = $itype; }
     if ($line =~ m{\WHankelTransformSequence}      ) { $imports{"irvine.oeis.transform.HankelTransformSequence"} = $itype; }
     if ($line =~ m{\WHolonomicRecurrence}          ) { $imports{"irvine.oeis.recur.HolonomicRecurrence"}         = $itype; }
     if ($line =~ m{\WIntegerPartition}             ) { $imports{"irvine.math.partitions.IntegerPartition"}       = $itype; }

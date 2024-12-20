@@ -5689,7 +5689,7 @@ knestm:
 	head -n4 $@.gen
 	wc   -l  $@.gen
 known: 
-	cp -v $(ROBOT)/$@.gen .
+	grep -P "^[A-Z]\d{6}" $@.man > $@.gen
 	head -n2 $@.gen
 	wc   -l  $@.gen
 dirtraf_old:
