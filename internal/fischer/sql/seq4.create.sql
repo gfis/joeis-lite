@@ -14,7 +14,7 @@
 DROP    TABLE  IF EXISTS seq4;
 CREATE  TABLE            seq4
     ( aseqno   VARCHAR(10) NOT NULL  -- A322469
-    , callcode VARCHAR(16)           -- cfsnum
+    , callcode VARCHAR(48)           -- cfsnum
     , offset1  VARCHAR(16)           -- offset1
     , parm1    VARCHAR(12000)
     , parm2    VARCHAR(2048)

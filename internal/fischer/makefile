@@ -2627,6 +2627,7 @@ deriv3: # add offset1 from asinfo; aseqno, md5sum, offset1, ~~form, form, cond
 	    WHERE s.aseqno = i.aseqno \
 	      AND i.keyword NOT LIKE '%dead%' \
 	      AND s.aseqno NOT IN (SELECT aseqno FROM joeis) \
+	      AND LENGTH(i.offset1) <= 4 \
 	    ORDER BY 1" \
 	| sed -e "s/\r//" \
 	>        $@.tmp
