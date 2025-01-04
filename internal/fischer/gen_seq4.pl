@@ -1,7 +1,8 @@
 #!perl
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
-# @(#) $Id$    
+# @(#) $Id$
+# 2025-01-03, V8.4: R+-*^ Rsub Rshi for PoylynomialRingSequence
 # 2024-07-10, V8.3: read hasram.txt
 # 2024-07-02, V8.2: fails if pattern not found
 # 2024-05-27, V8.1: suppress comments starting with "#" in the pattern
@@ -147,7 +148,7 @@ open(FUN, "<", "reflect/funct.txt") || die "# cannot read reflect/funct.txt";
 while (<FUN>) {
     s/\s+\Z//; # chompr
     if (m{\AA\d+}) { # starts with A-number
-        my ($aseqno, $code, $prefix) = split(/\t/);  
+        my ($aseqno, $code, $prefix) = split(/\t/);
         if ($prefix =~ m{\(\d+\Z}) {
             $prefix .= ",";
         }
@@ -165,7 +166,7 @@ open(RAM, "<", "reflect/hasram.txt") || die "# cannot read reflect/hasram.txt";
 while (<RAM>) {
     s/\s+\Z//; # chompr
     if (m{\AA\d+}) { # starts with A-number
-        my ($aseqno, $code, $method) = split(/\t/); 
+        my ($aseqno, $code, $method) = split(/\t/);
         $method =~ s{trianglelement}{triangleElement}ig;
         $hasram{$aseqno} = $method;
     } # with A-number
@@ -236,8 +237,7 @@ while (<>) { # read inputfile
         $parms[$iparm] =~ s{ +\)}{\)}g;  # spaces before ")"
         $parms[$iparm] =~ s{\. +}{\.}g;  # spaces after  "."
         $parms[$iparm] =~ s{ +\.}{\.}g;  # spaces before "."
-        if (($parms[$iparm] =~ m{\-\>}) || ($callcode =~ m{\A(lpf|spf)\Z})) { # with lambda expression: replace shortcuts and check bracketing, accumulate $static_dirs
-            $parms[$iparm] =~ s{ *\, *}{\, }g;  # spaces around ","
+        if (($parms[$iparm] =~ m{\-\>}) || ($callcode =~ m{\A(lpf|spf|satis|decexpr?)\Z})) { # with lambda expression: replace shortcuts and check bracketing, accumulate $static_dirs
             my $parm = $parms[$iparm];
         #   if ($parm =~ s{(BI|FA|FD|FI|MU|PR|SU|S1|S2|ZV|Z\_1|n_1|Z2|\.[\+\-\*\/])([^\(])} {$1\<--HERE$2}g) {
         #       print STDERR "# $aseqno, unknown shortcut: $aseqno $parm\n";
@@ -294,7 +294,7 @@ while (<>) { # read inputfile
             $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
             $parm =~ s{PD\(}           {Integers.SINGLETON.productdiv\(}g;
-            $parm =~ s{PHI\(}          {Functions.PHI.z(}g;   
+            $parm =~ s{PHI\(}          {Functions.PHI.z(}g;
             $parm =~ s{PI\(}           {Functions.PRIME_PI.z(}g;
             $parm =~ s{POD\(}          {Functions.POD.z\(}g;
             $parm =~ s{isPDP\((\d+)\)} {\{ final FactorSequence fs = Jaguar.factor(v); return fs.omega() == $1 && fs.bigOmega() == $1; \}}g;
@@ -337,6 +337,16 @@ while (<>) { # read inputfile
             $parm =~ s{\.\+\(}         {.add\(}g;
             $parm =~ s{\.\-\(}         {.subtract\(}g;
             $parm =~ s{\.\^\(}         {.pow\(}g;
+            $parm =~ s{\bR\*\(}        {RING.multiply\(}g;
+            $parm =~ s{\bR\/\(}        {RING.series\(}g;
+            $parm =~ s{\bR\+\(}        {RING.add\(}g;
+            $parm =~ s{\bR\-\(}        {RING.subtract\(}g;
+            $parm =~ s{\bR\^\(}        {RING.pow\(}g;
+            $parm =~ s{\bR1\(}         {RING.one\(}g;
+            $parm =~ s{\bRx\(}         {RING.x\(}g;
+            $parm =~ s{\bRPC\(}        {Polynomial.create\(}g;
+            $parm =~ s{\bRshi\(}       {RING.shift\(}g;
+            $parm =~ s{\bRsub\(}       {RING.substitute\(}g;
             $parm =~ s{\.(\d|10)\b}    {"Z.$zhash{$1}"}eg;
         #   bad for lambdaQ expressions:
         #   $parm =~ s{\.multiply\(2\)}{.multiply2\(\)}g;
@@ -344,7 +354,8 @@ while (<>) { # read inputfile
             $parm =~ s{\.pow\(2\)}     {.square\(\)}g;
             $parm =~ s{\.pow\(1\)}     {}g;
             $parm =~ s{ *\( *}         {\(}g;
-            $parm =~ s{ *\, +}         {\, }g;
+            $parm =~ s{ *\, *}         {\, }g;
+            $parm =~ s{ *\. *}         {\.}g;
             $parms[$iparm] = $parm;
             #                      1            1
             $parms[$iparm] =~ s{\(\) *\-\> *}{}; # remove dummy lambda prefix
@@ -396,7 +407,7 @@ while (<>) { # read inputfile
                 }
             }
             $parms[$iparm] = $parmi;
-        } # lambda parameter 
+        } # lambda parameter
         if ($parms[$iparm] !~ m{\~\~}) { # with statement separator
             @terms = map {
                 if (length > $max_term_len) {
