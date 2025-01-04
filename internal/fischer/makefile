@@ -157,7 +157,10 @@ invtest:
 invitest:
 	$(JAVA) irvine.oeis.transform.InverseInvertTransform -n $(NT) -a "$(A)" -o $(OFFSET) -d $(D) -s $(S)
 mortest:
-	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence -n $(NT) -i "$(INIT)" -a "$(ANCH)" -m "$(MAP)" -o $(OFFSET)
+	$(JAVA) irvine.oeis.base.MorphismFixedPointSequence  -n $(NT) -i "$(INIT)" -a "$(ANCH)" -m "$(MAP)" -o $(OFFSET)
+POLYS="[[0]]"
+prs: # test PolynomialRingSequence
+	$(JAVA) irvine.oeis.PolynomialRingSequence           -n $(NT) -d $(D) -o $(OFFSET) $(BF) -p $(POLYS) -x $(X)
 LOOP=64
 ristest:
 	$(JAVA) irvine.oeis.triangle.RowIndexSequence -d $(D) -n $(NT) -l $(LOOP) -o $(OFFSET) -a $(A)
