@@ -1,0 +1,63 @@
+---- 2024-11-04 10:49:29
+---- 2024-11-05 14:28:16
+---- 2024-11-05 16:43:03
+A078568	multraf	1	(self, n) -> new Z(self.s(0).toString() + self.s(1).toString())	""	new A002275(), new A000422()
+A084010	lambdan	0	n -> { final Z t = Z2(n); return new Z(t.toString() + Functions.REVERSE.z(t).toString())./(11); }	(2^n concatenated with Reverse(2^n)) divided by 11.
+A084342	lambdan	1	n -> new Z(Functions.REVERSE.z(n).toString() + Integer.toString(n)).modZ(n)	Digit reversal of n concatenated with n mod n.
+A084854	trilambn	1	1	1	(n, k) -> new Z(Integer.toString(n) + Integer.toString(k))	of n and k, 1<=k<=n.
+A084855	trilambn	1	1	1	(n, k) -> new Z(Integer.toString(k) + Integer.toString(n))	of k and n, 1<=k<=n.
+A085016	filnum	0	1	k -> { final Z p = PM(k); return new Z(PM(k).toString() + Functions.REVERSE.z(p).toString()).mod(k) == 0; }	Prime(n) concatenated with Reverse(Prime(n)) (a palindrome) is divisible by n.
+A085017	filnum	0	1	k -> { final Z p = PM(k); return new Z(Functions.REVERSE.z(p).toString() + PM(k).toString()).mod(k) == 0; }	Reverse(Prime(n)) concatenated with Prime(n) (a palindrome) is divisible by n.
+A088712	filter	1	new A000040()	p -> new Z(p.toString() + Functions.PREV_PRIME.z(p).toString()).IPP()	Primes which when concatenated with the previous prime form a new prime.
+A088883	filter	1	new A000040()	p -> new Z(p.toString() + Functions.REVERSE.z(p).toString()).+(2).IPP()	Primes which when concatenated with their reverse and incremented by 2 yield a new prime.
+A088884	filter	1	new A000040()	p -> new Z(p.toString() + Functions.REVERSE.z(p).toString()).-(2).IPP()	Primes which when concatenated with their reverse and decremented by 2 yield a new prime.
+A089432	filnum	1	1	k -> new Z(Integer.toString(k) + Integer.toString(k/2)).IPP()	Numbers n such that n concatenated with floor(n/2) is prime.
+A089767	filter	1	new A000290()	s -> new Z(s.toString() + "1").IPP()	Squares which when concatenated with a 1 gives prime.
+A091338	lambdan	1	n -> Functions.KRONECKER.z(3, n)	a(n) = (3/n), where (k/n) is the Kronecker symbol.	sign,mult	1..1000	nyi	_Eric W. Weisstein_
+A091513	filnum	1	0	k -> Z2(k).+(1).^(2).-(2).IPP()
+A091515	filnum	1	1	k -> Z2(k).-(1).^(2).-(2).IPP()
+A092340	filter	0	new A000040()	p -> { final Z p2 = p.^(2); final Z pm2 = p.*(2); return FI(p2).+(FI(pm2)).mod(p2.+(pm2)).isZero(); }	Prime numbers n such that n^2+2*n divides (Fibonacci(n^2) + Fibonacci(2*n)).
+A094609	filnum	1	1	k -> Predicates.TRIANGULAR.is(new Z(Integer.toString(k) + Integer.toString(k + 1)))	Numbers n such that n concatenated with n+1 is triangular.
+A101223	filnum	1	1	k -> D033880(k).equals(ZV(-10))	, or: sigma(m) = 2m - 10.
+A101260	filnum	1	1	k -> D033880(k).equals(ZV(56))	.
+A102245	parmof3	1	A101081	new A000040()	1	prime p concatenated p+1 times.     nonn,base       1..17   nyi     _Parthasarathy Nambi_
+A102246	parmof3	1	A101081	new A000040()	-1	prime p concatenated p-1 times.     nonn,base       1..16   nyi     _Parthasarathy Nambi_
+A102621	parmof3	1	A101081	new A018252()	0	(nonprime A018252(n) concatenated A018252(n) times).        nonn,base,less  1..28   nyi     _Parthasarathy Nambi_
+A103195	sintrif	1	(term, n) -> new Z(term.toString() + term.+(4).toString())	""	new A023200()	concatenated with A023200(n)+4. - _Jonathan
+A103206	sintrif	0	(term, n) -> new Z(term.toString() + term.+(6).toString())	""	new A023201()	concatenated with A023201(n)+6.
+A104381	filnum	1	1	k -> k == 1 || ZV(10).^(k - 1).mod(k) == 1	nonn	1..10000	nyi	_Eric W. Weisstein_
+A104718	sintrif	1	(term, n) -> new Z(term.toString() + term.+(8).toString())	""	new A023202()	concatenated with A023202(n)+8.
+A104719	sintrif	1	(term, n) -> new Z(term.toString() + term.+(10).toString())	""	new A023203()	concatenated with A023203(n)+10.
+A109510	filnum	1	1	k -> { final Z ab = Functions.SIGMA1.z(k).-(2*k); return ab.signum() >= 0 && Predicates.SQUARE.is(ab); }	sigma(n)-2n (the abundance of n) is a (nonnegative) square.	nonn	1..10000	nyi	_Eric W. Weisstein_
+A111441	filnum	1	1	k -> SU(1, k, j -> PM(j).^(2)).mod(k) == 0
+A118841	filnum	1	1	k -> CR.PHI.^(k).ceil().IPP()
+A119276	filnum	1	1	k -> ZV(k).^(6).+(new Z("29450922301244534")).IPP()
+A125246	filnum	1	1	k -> D033880(k).equals(ZV(-4))	.
+A125247	filnum	1	1	k -> D033880(k).equals(ZV(-8))	.
+A125248	filnum	1	1	k -> D033880(k).equals(ZV(-16))	.
+A128165	filnum	1	1	k -> SU(1, k, j -> PM(j)).+(1).mod(k) == 0
+A134715	lambdan	1	n -> Functions.BELL.z((6*n - 7 - ((n & 1) == 0 ? 1 : -1))/4)
+A141547	filnum	1	1	k -> D033880(k).equals(ZV(16))	.
+A141548	filnum	1	1	k -> D033880(k).equals(ZV(-6))	.
+A188484	filnum	1	1	k -> { final Z ab = D033880(k).abs(); return Integer.bitCount(k) != 1 && ab.testBit(0) && Predicates.SQUARE.is(ab); }	Numbers n (other than powers of 2) such that abs(abundance(n)) is an odd square
+A223606	filnum	1	1	k -> D033880(k).equals(ZV(-22))	: sigma(n) - 2*n = -22.
+A223607	filnum	1	1	k -> D033880(k).equals(ZV(-20))	: sigma(n) - 2*n = -20.
+A223611	filnum	1	1	k -> D033880(k).equals(ZV(20))	: sigma(k) - 2*k = 20.
+A227980	filnum	1	1	k -> Functions.SIGMA1.z(k - 1).-(Functions.SIGMA1.z(k + 1)).compareTo(Functions.SIGMA1.z(k)) >= 0	sigma(n-1) - sigma(n+1) >= sigma(n); where sigma(n) = A000203(n) = sum of the divisors of n.	nonn	1..2000	nyi	_Jaroslav Krizek_
+A227981	filnum	1	1	k -> Functions.SIGMA1.z(k - 1).-(Functions.SIGMA1.z(k + 1)).compareTo(Functions.SIGMA1.z(k)) <  0	sigma(n-1) - sigma(n+1) < sigma(n); where sigma(n) = A000203(n) = sum of the divisors of n.	nonn	1..2000	nyi	_Jaroslav Krizek_
+A227982	filnum	1	1	k -> Functions.SIGMA1.z(k + 1).-(Functions.SIGMA1.z(k - 1)).compareTo(Functions.SIGMA1.z(k)) >  0	sigma(n+1) - sigma(n-1) > sigma(n); where sigma(n) = A000203(n) = sum of the divisors of n.	nonn	1..2000	nyi	_Jaroslav Krizek_
+A227983	filnum	1	1	k -> Functions.SIGMA1.z(k + 1).-(Functions.SIGMA1.z(k - 1)).compareTo(Functions.SIGMA1.z(k)) <  0	sigma(n+1) - sigma(n-1) < sigma(n); where sigma(n) = A000203(n) = sum of the divisors of n.	nonn	1..2000	nyi	_Jaroslav Krizek_
+A228131	lambdan	1	n -> SU(0, n - 1, i -> Functions.KRONECKER.z(i, n).*(i))
+A228140	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(ZV(k).*(k).-(2))	Numbers n such that n^2 - 2 is not squarefree.
+A228145	filnum	1	1	k -> FI(k).*(2).-(1).IPP()	Numbers k such that 2*Fibonacci(k) - 1 is prime.
+A228146	trilambn	0	0	0	(n, k) -> new Q(Z2(n - k + 1).+(1), ZV(1).-(Z2(k + 1))).num()
+A228147	trilambn	0	0	0	(n, k) -> new Q(Z2(n - k + 1).+(1), ZV(1).-(Z2(k + 1))).den()
+A232823	filnum	1	1	k -> SU(1, k, j -> PM(j).^(8)).+(1).mod(k) == 0	Numbers k such that k divides 1 + Sum_{j=1..k} (prime(j)^8).
+A238401	lambdan	0	n -> RU(1, n, i -> new Q(i, i + 1)).floor()	Floor(sum(i/(i+1)),i=1..n).
+A239874	filnum	1	1	k -> { final Z k22 = ZV(2*k).*(k); return k22.+(1).IPP() && k22.*(k).+(1).IPP(); }	Integers k such that 2*k^2 + 1 and 2*k^3 + 1 are prime.
+A253976	filter	1	new A000040()	p -> { final Z p2 = p.^(2); final Z p4 = p2.^(2); return p2.mod(6) == 1 && p4.mod(6) == 1 && p2.*(p4).mod(6) == 1 && p4.*(p4).mod(6) == 1 && p2.+(5)./(6).IPP() && p4.+(5)./(6).IPP() && p2.*(p4).+(5)./(6).IPP() && p4.*(p4).+(5)./(6).IPP(); }	Primes p such that (p^2 + 5)/6, (p^4 + 5)/6, (p^6 + 5)/6 and (p^8 + 5)/6 are prime.
+A275702	filnum	1	1	k -> D033880(k).equals(ZV(-26))	: 2n - sigma(n) = 26.
+A275997	filnum	1	1	k -> D033880(k).equals(ZV(-64))	: 2k - sigma(k) = 64.
+A320008	multrar	0	(self, n) -> { final int bc = Integer.bitCount(n); return self.a(n - bc).*(bc); }	"1"		a(0) = 1; for n > 0, a(n) = A000120(n) * a(n-A000120(n)), where A000120(n) is the binary weight of n.
+A377501	holos	1	[0,-8,26,-26,9,-1]	1,2,6,26	0	0	a(n) = 9*a(n-1)-26*a(n-2)+26*a(n-3)-8*a(n-4).
+A377641	holos	1	[0,96,-68,15,-1]	11,105,923	0	0	a(n) = 15*a(n-1)-68*a(n-2)+96*a(n-3).

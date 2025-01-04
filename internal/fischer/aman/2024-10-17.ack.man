@@ -1,0 +1,42 @@
+---- 2024-10-17 20:48:44
+A078559	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A054640(), new A078558()
+A078560	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A005867(), new A078558()
+A090901	lambdan	1	n -> CV(F000178(n)).^(new Q(1, n)).floor()	a(n)=floor(Annn(n)^((\d+)/n))	1	F000178
+A146768	sintrif	1	(term, n) -> term.-(1)./(2)	""	new A000043().skip(1)
+A159721	parmof2	2	A159715	3
+A159727	parmof2	2	A159715	4
+A159733	parmof2	2	A159715	5
+A159736	parmof2	2	A159715	6
+A159738	parmof2	2	A159715	7
+A159739	parmof2	2	A159715	8
+A159740	parmof2	2	A159715	9
+A244413	lambdan	1	(n) -> D007814(n)./(3)	""	a(n)=floor(Annn(n)/(\d+))	3	D007814
+A246277	lambdan	1	(n) -> E348717(n)./(2)	""	a(n)=floor(Annn(n)/(\d+))	2	E348717
+A317044	filtpos	1	1	new A125238()	v -> v.equals(ZV(1))	Sequenceis{k|Annn(k)=(\d+)}	1	J125238
+A317045	filtpos	1	1	new A125238()	v -> v.equals(ZV(2))	Sequenceis{k|Annn(k)=(\d+)}	2	J125238
+A317046	filtpos	1	1	new A125238()	v -> v.equals(ZV(3))	Sequenceis{k|Annn(k)=(\d+)}	3	J125238
+A318199	sintrif	1	(term, n) -> CV(term).^(new Q(1, n)).floor()	""	new A062481()	a(n)=floor(Annn(n)^((\d+)/n))	1	J062481
+A348194	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A348193().skip(1), new A348193()
+A355823	mulr	1	(p, e) -> D209229(e)	Multiplicativewitha(p^e)=Annn(e)		D209229
+A362870	mulr	1	(p, e) -> p.^(29*e + 29).-(1)./(p.^(29).-(1))
+A363895	lambdan	2	n -> F008472(n)./(F001221(n))
+A367862	binomx	0	A367863
+A367904	binomx	0	A003024
+A367916	binomx	0	A054780
+A369198	binomx	0	A368597
+A373048	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A055226().skip(1), new A055226()
+A373383	sintrif	1	(term, n) -> IV[term.modZ(3).isZero()]	""	new A373368()
+A373491	sintrif	1	(term, n) -> IV[term.modZ(3).isZero()]	""	new A373377()
+A373493	sintrif	1	(term, n) -> IV[term.modZ(3).isZero()]	""	new A373378()
+A374474	lambdan	1	n -> IV[F020639(F000203(n)).equals(D053669(n))]	,where[]istheIversonbracket		F020639,F000203,D053669
+A375240	mulr	1	(p, e) -> p.^(F000120(e))	Multiplicativewitha(p^e)=p^Annn(e)		F000120
+A376714	sintrif	1	(term, n) -> F003132(term)	""	new A000040()
+A376830	filnum	1	1	k -> TAU(TAU(k).+(k)).equals(TAU(TAU(k)).+(TAU(k)))	Numbers k such that tau(k + tau(k)) = tau(k) + tau(tau(k)), where tau = A000005.	nonn,new	1..10000	nyi	_Robert Israel_
+A376843	filnum	1	1	k -> Functions.BIG_OMEGA.z(Functions.BIG_OMEGA.z(k).+(k)).equals(Functions.BIG_OMEGA.z(Functions.BIG_OMEGA.z(k)).+(Functions.BIG_OMEGA.z(k)))	Omega(k + Omega(k)) = Omega(k) + Omega(Omega(k)), where Omega = A001222.	nonn,new	1..10000	nyi	_Robert Israel_
+A376844	filnum	1	1	k -> ARD(ARD(k).+(k)).equals(ARD(ARD(k)).+(ARD(k)))	(k + k')' = k' + k'', where ' denotes the arithmetic derivative A003415.	nonn,new	1..41	nyi	_Robert Israel_
+A376848	filnum	1	1	k -> PHI(PHI(k).+(k)).equals(PHI(PHI(k)).+(PHI(k)))	phi(k + phi(k)) = phi(k) + phi(phi(k)), where phi = A000010.	nonn,new	1..10000	nyi	_Robert Israel_
+A376849	filnum	1	1	k -> Functions.CARMICHAEL_LAMBDA.z(Functions.CARMICHAEL_LAMBDA.z(k).+(k)).equals(Functions.CARMICHAEL_LAMBDA.z(Functions.CARMICHAEL_LAMBDA.z(k)).+(Functions.CARMICHAEL_LAMBDA.z(k)))	psi(k + psi(k)) = psi(k) + psi(psi(k)), where psi = A002322.	nonn,new	1..1000	nyi	_Robert Israel_
+A376850	filnum	1	1	k -> ZV(85).^(k).-(2).IPP()
+A376851	filnum	1	1	k -> SOPFR(SOPFR(k).+(k)).equals(SOPFR(SOPFR(k)).+(SOPFR(k)))
+A376901	lambdan	0	n -> ZV(n).*(n - 1).+(Z_1(n)).+(5)./(2)
+A376994	decexp	3	() -> CR.PI.^(4).*(CR.PI.+(1))	Decimal expansion of Pi^4 + Pi^5.	nonn,cons,new	3..102	nyi	_Stefano Spezia_

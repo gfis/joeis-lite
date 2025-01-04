@@ -1,0 +1,26 @@
+---- 2024-11-28 12:39:11
+A318949	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), Functions.PARTITIONS.z(mN)))	1 / (1 - k^(-s))^A000041(k)
+A328853	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(mN - 1)))	1 / (1 - k^(-s))^(k - 1)
+A329124	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(mN*(mN + 1)/2)))	1 / (1 - k^(-s))^(k*(k + 1)/2)
+A329125	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(mN).^(2)))	1 / (1 - k^(-s))^(k^2)
+A339717	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetap(mN), 2))	1 / (1 + k^(-s))^2
+A339718	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetap(mN), 3))	1 / (1 + k^(-s))^3
+A339719	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetap(mN), 4))	1 / (1 + k^(-s))^4
+A339720	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetap(mN), 5))	1 / (1 + k^(-s))^5
+A339721	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetap(mN), 6))	1 / (1 + k^(-s))^6
+A339722	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetap(mN), 7))	1 / (1 + k^(-s))^7
+A339734	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetap(mN), 8))	1 / (1 + k^(-s))^8
+A343287	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(mN).^(7)))	1 / (1 - k^(-s))^(k^7)
+A343288	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(mN).^(8)))	1 / (1 - k^(-s))^(k^8)
+A343289	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(mN).^(9)))	1 / (1 - k^(-s))^(k^9)
+A344247	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(3).^(mN - 1)))	1 / (1 - k^(-s))^(3^(k-1))
+A344248	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(4).^(mN - 1)))	1 / (1 - k^(-s))^(4^(k-1))
+A344249	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(5).^(mN - 1)))	1 / (1 - k^(-s))^(5^(k-1))
+A344250	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(6).^(mN - 1)))	1 / (1 - k^(-s))^(6^(k-1))
+A344251	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(7).^(mN - 1)))	1 / (1 - k^(-s))^(7^(k-1))
+A344252	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(8).^(mN - 1)))	1 / (1 - k^(-s))^(8^(k-1))
+A344253	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), ZV(9).^(mN - 1)))	1 / (1 - k^(-s))^(9^(k-1))
+A301830	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), 2))	1 / (1 - k^(-s))^2
+A242649	dgfpow	0	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), Functions.TAU.z(mN)))	1/(1-1/n^s)^d(n), where d(n) = A000005(n) is the number of divisors of n.
+A242648	dgfpow	0	() -> Dgf.*(mDs, Dgf.^(Dgf.zetam(mN), Functions.SIGMA1.z(mN)))	1/(1-1/n^s)^sigma(n).
+A344369	dgfpow	0	() -> Dgf.*(mDs, Dgf.shift(Dgf.zetap(mN), 1))	1 / (1 + k^(1-s))

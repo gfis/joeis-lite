@@ -1,0 +1,128 @@
+---- 2024-11-14 23:14:10
+A086330	lambdan	2	n -> SU(2, n, m -> FA(m).mod(ZV(n)))	""		a(n) = sum(m=2, n, m! % n)
+A088531	lambdan	2	n -> { final Z f = FA(n); return new Q(Functions.BIG_OMEGA.z(f), Functions.OMEGA.z(f)).num(); }
+A103445	lambdan	0	n -> SU(0, n, k -> Z2(F001221(BI(n, k))))	""		a(n) = sum(k = 0, n, 2^omega(binomial(n, k)))
+A108639	lambdan	1	n -> SU(1, n, k -> Functions.SIGMA.z(n - k, k))	""		a(n) = sum(k=1, n, sigma(k, n-k))
+A111114	lambdan	2	n -> Functions.PRIME.z(n)./(Functions.PRIME_PI.z(n))	(floor(prime(x)/primepi(x))","))
+A111685	lambdan	1	n -> SU(0, n-1, k -> PR(0, k, j -> ZV(n+j)))	""		a(n) = sum(k=0,n-1,prod(j=0,k,n+j))
+A112962	lambdan	1	n -> SU(1, n-1, i -> F008683(i).*(F000010(n-i)))	""		a(n)=sum(i=1,n-1,moebius(i)*eulerphi(n-i))
+A112964	lambdan	1	n -> SU(1, n-1, i -> F008683(i).*(F000203(n-i)))	""		a(n)=sum(i=1,n-1,moebius(i)*sigma(n-i))
+A112965	lambdan	1	n -> SU(2, n-2, i -> F001221(i).*(F001221(n-i)))	""		a(n) = sum(i=2, n-2, omega(i)*omega(n-i))
+A118259	lambdan	1	n -> SU(1, n, i -> SU(1, n, j -> F008683(i*j).^(2)))	""		a(n)=sum(i=1,n,sum(j=1,n,moebius(i*j)^2))
+A123553	lambdan	1	n -> ZV(n).*(SU(0, n-1, k -> BI(n-1, k).*(Z2(BI(k, 2).+(BI(n-1-k, 2)))).*((Z2(k).-(ZV(1))).^((ZV(n-1-k))))))	""		a(n)=n*sum(k=0,n-1,binomial(n-1,k)*2^(binomial(k,2)+binomial(n-1-k,2))*(2^k-1)^(n-1-k))
+A174972	lambdan	0	n -> SU(1, 1 << n, i -> ZV(i).*(BI(Z2(n).-(ZV(1)), i-1)))	""		a(n) = sum(i=1, 2^n, i*binomial(2^n-1, i-1))
+A176500	lambdan	1	n -> ZV(2).*(SU(1, Functions.FIBONACCI.i(n + 1), k -> F000010(k))).-(ZV(1))	""		a(n) = 2*sum(k=1,fibonacci(n+1),eulerphi(k))-1
+A180151	filnum	1	2	k -> Functions.BIG_OMEGA.i(k) == 5 && Functions.BIG_OMEGA.i(k + 2) == 5
+A189416	lambdan	1	n -> SU(1, n - 1, a -> SU(1, n - 1, b -> (ZV(n - a)).*((ZV(n-b))).*((ZV(2).*(ZV(a)).*(ZV(b)).-(GCD(a, b))))))	""		a(n) = sum(a=1, n-1, sum(b=1, n-1, (n-a)*(n-b)*(2*a*b - gcd(a,b)) ))
+A244576	lambdan	1	n -> SU(2, Functions.PRIME.i(n), i -> F000203(i).-(ZV(i)).-(ZV(1)))	""		a(n) = sum(i=2, prime(n), sigma(i)-i-1)
+A244578	lambdan	1	n -> SU(1, Functions.PRIME.i(n), i -> F000203(i).-(ZV(i)))	""		a(n) = sum(i=1, prime(n), sigma(i)-i)
+A260509	lambdan	0	n -> SU(0, n, k -> PR(1, k, i -> Z2(i+1)).*(PR(k+1, n, i -> ZV(1).-(Z2(i)))))	""		a(n) = sum(k=0, n, prod(i=1, k, 2^(i+1))*prod(i=k+1, n, 1 - 2^i))
+A271564	lambdan	1	n -> ZV(2).*(PR(3, n, k -> F000040(k).-(ZV(2)))).-(ZV(2).*(PR(3, n, k -> F000040(k).-(ZV(3)))))	""		a(n) = 2*prod(k=3, n, prime(k)-2) - 2*prod(k=3, n, prime(k)-3)
+A271565	lambdan	1	n -> PR(3, n, k -> F000040(k).-(ZV(2))).-(ZV(2).*(PR(3, n, k -> F000040(k).-(ZV(3))))).+(PR(3, n, k -> F000040(k).-(ZV(4))))	""		a(n) = prod(k=3, n, prime(k)-2) - 2*prod(k=3, n, prime(k)-3) + prod(k=3, n, prime(k)-4)
+A282704	lambdan	0	n -> ZV(2).*(PR(1, n, i -> F000040(i))).-(ZV(1))	""		a(n)=2*prod(i=1,n,prime(i))-1
+A291140	lambdan	1	n -> SU(1, n, i -> F000040(i).^(n))	""		a(n) = sum(i=1, n, prime(i)^n)
+A293075	lambdan	1	n -> SU(0, n, i -> SU(0, n - i, j -> SU(0, Functions.MIN.i(n-i, n - j), k -> BI(n, i).^(2).*(BI(n, j)).*(BI(n-i, j)).*(BI(n-i, k)).*(BI(n-j, k)).*(FA(i)).*(FA(j)).*(FA(k)))))	""		a(n) = sum(i=0, n, sum(j=0, n-i, sum(k=0, min(n-i, n-j), binomial(n, i)^2 * binomial(n, j) * binomial(n-i, j) * binomial(n-i, k) * binomial(n-j, k) * i!*j!*k!)))
+A316322	lambdan	1	n -> SU(1, n, i -> F000040(i).*(2*i-1))	""		a(n) = sum(i=1, n, prime(i)*(2*i-1))
+A348675	lambdan	1	n -> SU(0, n-1, k -> F001222(ZV(n).^(2).-(ZV(k).^(2))))	""		a(n) = sum(k=0, n-1, bigomega(n^2-k^2))
+A372700	lambdan	1	n -> SU(1, n, j -> SU(1, n, k -> F008683(j*k)))	""		a(n) = sum(j=1, n, sum(k=1, n, moebius(j*k)))
+A372701	lambdan	1	n -> SU(1, n, i -> SU(1, n, j -> SU(1, n, k -> F008683(i*j*k))))	""		a(n) = sum(i=1, n, sum(j=1, n, sum(k=1, n, moebius(i*j*k))))
+A373796	lambdan	0	n -> PR(1, n, k -> ZV(k).^(S2(n, k)))	""		a(n)=prod(k=1,n,k^stirling(n,k,2))
+---- 2024-11-16 12:10:14
+A088529	lambdan	2	n -> new Q(Functions.BIG_OMEGA.z(n), Functions.OMEGA.z(n)).num()
+A088530	lambdan	2	n -> new Q(Functions.BIG_OMEGA.z(n), Functions.OMEGA.z(n)).den()
+A234568	lambdan	0	n -> SU(0, n, k -> (ZV(n - k)).^(2*k))	""		a(n)=sum(k=0, n, (n-k+1)^(2*k))
+A318896	filnum	1	1	n -> Functions.OMEGA.i(n) == 4 && Functions.OMEGA.i(n + 1) == 4 && Functions.BIG_OMEGA.i(n) == 4 && Functions.BIG_OMEGA.i(n + 1) == 4
+A318964	filnum	1	1	n -> Functions.OMEGA.i(n) == 5 && Functions.OMEGA.i(n + 1) == 5 && Functions.BIG_OMEGA.i(n) == 5 && Functions.BIG_OMEGA.i(n + 1) == 5
+A324175	filnum	1	1	n -> n % (Functions.SQRT.i(n) + CV(new Q(n, 2)).sqrt().floor().intValueExact()) == 0	floor(sqrt(n)) + floor(sqrt(n/2))) == 0
+A324176	filnum	1	1	n -> n % (Functions.SQRT.i(n) + CV(new Q(n, 3)).sqrt().floor().intValueExact()) == 0	floor(sqrt(n)) + floor(sqrt(n/3))) == 0
+A324177	filnum	1	1	n -> n % (Functions.SQRT.i(n) + CV(new Q(n, 4)).sqrt().floor().intValueExact()) == 0	floor(sqrt(n)) + floor(sqrt(n/4))) == 0
+A324178	filnum	1	1	n -> n % (Functions.SQRT.i(n) + CV(new Q(n, 5)).sqrt().floor().intValueExact()) == 0	floor(sqrt(n)) + floor(sqrt(n/5))) == 0
+A341089	filnum	1	1	n -> Functions.OMEGA.i(n) <= 1 && Functions.OMEGA.i(Functions.REVERSE.i(n)) <=1
+A360840	filnum	1	1	n -> PP(n - 1) && PP(n + 1) && Jaguar.factor(n).minExponent() > 2	is(n) = isprime(n-1) && isprime(n+1) && vecmin(factor(n)[,2]) > 2;
+---- 2024-11-18 18:44:24
+A076483	lambdan	0	n -> QV(FA(n)).*(RU(1, n, k -> QV(k-1).^(k)./(FA(k)))).num()	""		a(n) = n!*sum(k=1, n, (k-1)^k/k!)	_	_	_
+A086190	lambdan	0	n -> RU(1, n, r -> QV(r).*(RQ(0, (r-1), j -> (QV(3).^(n).-(QV(3).^(j))).^(2)./(QV(3).^(r).-(QV(3).^(j)))))).num()	""		a(n)=sum(r=1,n, r*prod(j=0,(r-1),(3^n-3^j)^2/(3^r-3^j)))	_	_	_
+A091530	lambdan	1	n -> RU(1, n, k -> RU(1, k, i -> QV(1)./(i)).*(QV(FA(k)).*(FA(n-k)))).num()	""		a(n) = sum(k=1, n, sum(i=1, k, 1/i)*k!*(n-k)!)	_	_	_
+A109719	lambdan	1	n -> RU(1, n/2, k -> RU(1, k, j -> QV(1)./(j)).*(FA(n-k))).num()	""		a(n) = sum(k=1, n\2, sum(j=1, k, 1/j)*(n-k)!)	_	_	_
+A110489	lambdan	0	n -> RU(0, n, k -> RU(0, (n-k), j -> QV(2).*(j+1).*(QV(k-1).^(j)).*(BI(QV(2).*(n-k).+(1), n-k-j))./(n-k+j+2))).num()	""		a(n) = sum(k=0, n, sum(j=0, (n-k), 2*(j+1)*(k-1)^j*binomial(2*(n-k)+1, n-k-j)/ (n-k+j+2)))	_	_	_
+A129653	lambdan	0	n -> RU(0, n/2, k -> (QV(FA(n-k))./(FA(k))).*(RU(0, n-2*k, i -> QV(BI(n-2*k-1, i))./(FA(n-2*k-i))))).num()	""		a(n) = sum(k=0, n\2, ((n-k)!/k!)*sum(i=0, n-2*k, binomial(n-2*k-1,i)/(n-2*k-i)!))	_	_	_
+A189423	lambdan	0	n -> RU(0, n, k -> QV(FA(k)).*(RU(0, k/2, j -> QV(1)./(QV(FA(j)).*(FA(k-2*j))))).*(S1(n, k))).num()	""		a(n) = sum(k=0, n, k!*sum(j=0, k\2, 1/(j!*(k-2*j)!))*stirling(n, k, 1))	_	_	_
+A234568	lambdan	0	n -> SU(0, n, k -> ZV(n-k).^(2*k))	""		a(n)=sum(k=0, n, (n-k)^(2*k))	_	_	_
+A342967	lambdan	0	n -> RU(0, n, j -> RQ(0, n-1, k -> QV(BI(n+k, j))./(BI(j+k, j)))).num()	""		a(n) = sum(j=0, n, prod(k=0, n-1, binomial(n+k, j)/binomial(j+k, j)))	_	_	_
+A343032	lambdan	0	n -> RU(0, n, k -> RQ(1, k, i -> RQ(1, i, j -> QV(n-k+i+j-1)./(i+j-1)))).num()	""		a(n) = sum(k=0, n, prod(i=1, k, prod(j=1, i, (n-k+i+j-1)/(i+j-1))))	_	_	_
+A355400	lambdan	0	n -> RQ(1, n-1, i -> RQ(i, n-1, j -> QV(i+j+2*n)./(i+j))).num()	""		a(n) = prod(i=1, n-1, prod(j=i, n-1, (i+j+2*n)/(i+j)))	_	_	_
+A365554	lambdan	2	n -> SU(n/2, n-1, k -> ZV(k).*(BI(k+1, n-k).-(BI(k-1, n-k))).*(FA(k).*(FA(n-k))))	""		a(n) = sum(k=n\2, n-1, k*(binomial(k+1,n-k)-binomial(k-1,n-k))*k!*(n-k)!)	_	_	_
+A370321	lambdan	0	n -> QV(FA(n)).*(RU(0, n, j -> RU(0, j/2, k -> QV(BI(j-k, n-j-k)).*(S1(j-k, k))./(FA(j-k))))).num()	""		a(n) = n!*sum(j=0, n, sum(k=0, j\2, binomial(j-k, n-j-k)*stirling(j-k, k, 1)/(j-k)!))	_	_	_
+A371023	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(2*n+1).^(k-1).*(S2(n-k, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n\2, (2*n+1)^(k-1)*stirling(n-k, k, 2)/(n-k)!)	_	_	_
+A371269	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(FA(2*n-k)).*(S2(n-k, k))./(QV(FA(n-k)).*(FA(2*n-2*k+1))))).num()	""		a(n) = n!*sum(k=0, n\2, (2*n-k)!*stirling(n-k, k, 2)/((n-k)!*(2*n-2*k+1)!))	_	_	_
+A372250	lambdan	0	n -> QV(FA(n)).*(RU(0, n/3, k -> QV(n-k+1).^(n-2*k-1)./(QV(FA(k)).*(FA(n-3*k))))).num()	""		a(n) = n!*sum(k=0, n\3, (n-k+1)^(n-2*k-1)/(k!*(n-3*k)!))	_	_	_
+A373796	lambdan	0	n -> PR(1, n, k -> ZV(k).^(S2(n, k)))	""		a(n)=prod(k=1,n,k^stirling(n,k,2))	_	_	_
+A377549	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(2*n+3*k+1, k))./(QV(2*n+3*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(2*n+3*k+1, k)/((2*n+3*k+1)*(n-k)!))	_	_	_
+A377550	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*n-3*k+1, k))./(QV(4*n-3*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*n-3*k+1, k)/((4*n-3*k+1)*(n-k)!))	_	_	_
+A377553	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(2*n+2, k))./(FA(n-k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(2*n+2, k)/(n-k)!)/(n+1)	_	_	_
+A377554	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(3*n+3, k))./(FA(n-k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(3*n+3, k)/(n-k)!)/(n+1)	_	_	_
+A377574	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(2*k+2, k))./(QV(k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(2*k+2, k)/((k+1)*(n-k)!))	_	_	_
+A377575	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(3*k+3, k))./(QV(k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(3*k+3, k)/((k+1)*(n-k)!))	_	_	_
+A377576	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*k+4, k))./(QV(k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*k+4, k)/((k+1)*(n-k)!))	_	_	_
+A377577	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*k+2, k))./(QV(2*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*k+2, k)/((2*k+1)*(n-k)!))	_	_	_
+A377578	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(3*n-3*k+3, k))./(QV(n-k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(3*n-3*k+3, k)/((n-k+1)*(n-k)!))	_	_	_
+A377579	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*n-4*k+4, k))./(QV(n-k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*n-4*k+4, k)/((n-k+1)*(n-k)!))	_	_	_
+A377580	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*n-4*k+2, k))./(QV(2*n-2*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*n-4*k+2, k)/((2*n-2*k+1)*(n-k)!))	_	_	_
+A377581	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*n-4*k+1, k))./(QV(4*n-4*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*n-4*k+1, k)/((4*n-4*k+1)*(n-k)!))	_	_	_
+A377595	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(n+k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(n+k, n-k)/k!)	_	_	_
+A377599	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(n+2*k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(n+2*k, n-k)/k!)	_	_	_
+A377608	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(n+2*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(n+2*k+1, n-k)/k!)	_	_	_
+A377630	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*n+4, k))./(FA(n-k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*n+4, k)/(n-k)!)/(n+1)	_	_	_
+A377631	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*n+k+1, k))./(QV(4*n+k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*n+k+1, k)/((4*n+k+1)*(n-k)!))	_	_	_
+A377633	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(4*n+2, k))./(FA(n-k))))./(2*n+1).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(4*n+2, k)/(n-k)!)/(2*n+1)	_	_	_
+A377646	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(FA(k)).*(BI(2, k)).*(S2(n-k, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n\2, k!*binomial(2, k)*stirling(n-k, k, 2)/(n-k)!)	_	_	_
+A377680	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(FA(k)).*(BI(3, k)).*(S2(n-k, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n\2, k!*binomial(3, k)*stirling(n-k, k, 2)/(n-k)!)	_	_	_
+A377681	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(FA(k)).*(BI(4, k)).*(S2(n-k, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n\2, k!*binomial(4, k)*stirling(n-k, k, 2)/(n-k)!)	_	_	_
+A377690	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(FA(3*n-3*k)).*(S2(n-k, k))./(QV(FA(n-k)).*(FA(3*n-4*k+1))))).num()	""		a(n) = n!*sum(k=0, n\2, (3*n-3*k)!*stirling(n-k, k, 2)/((n-k)!*(3*n-4*k+1)!))	_	_	_
+A377740	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(n-k-1).*(BI(2*k+2, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(n-k-1)*binomial(2*k+2, k)/(n-k)!)	_	_	_
+A377741	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(n-k-1).*(BI(3*k+3, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(n-k-1)*binomial(3*k+3, k)/(n-k)!)	_	_	_
+A377742	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(n-k-1).*(BI(3*k+1, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(n-k-1)*binomial(3*k+1, k)/(n-k)!)	_	_	_
+A377743	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(n-k-1).*(BI(4*k+2, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(n-k-1)*binomial(4*k+2, k)/(n-k)!)	_	_	_
+A377744	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(n-k-1).*(BI(5*k+3, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(n-k-1)*binomial(5*k+3, k)/(n-k)!)	_	_	_
+A377745	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*k+1).^(n-k-1).*(BI(5*k+1, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (2*k+1)^(n-k-1)*binomial(5*k+1, k)/(n-k)!)	_	_	_
+A377746	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*k+1).^(n-k-1).*(BI(4*k+2, k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (2*k+1)^(n-k-1)*binomial(4*k+2, k)/(n-k)!)	_	_	_
+A377810	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(n+k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(n+k+1, n-k)/k!)	_	_	_
+A377811	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(n+2*k+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(n+2*k+2, n-k)/k!)	_	_	_
+A377826	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(k+1, n-k)/k!)	_	_	_
+A377827	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(2*k+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(2*k+2, n-k)/k!)	_	_	_
+A377828	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(3*k+3, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(3*k+3, n-k)/k!)	_	_	_
+A377829	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+1).^(k-1).*(BI(2*n+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (n+1)^(k-1)*binomial(2*n+2, n-k)/k!)	_	_	_
+A377830	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+1).^(k-1).*(BI(3*n+3, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (n+1)^(k-1)*binomial(3*n+3, n-k)/k!)	_	_	_
+A377831	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+1).^(k-1).*(BI(2*n-k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (n+1)^(k-1)*binomial(2*n-k, n-k)/k!)	_	_	_
+A377832	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+1).^(k-1).*(BI(3*n-k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (n+1)^(k-1)*binomial(3*n-k+1, n-k)/k!)	_	_	_
+A377833	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+1).^(k-1).*(BI(4*n-k+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (n+1)^(k-1)*binomial(4*n-k+2, n-k)/k!)	_	_	_
+A377888	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n-k+1).^(k-1).*(BI(3*n-2*k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*n-k+1)^(k-1)*binomial(3*n-2*k, n-k)/k!)	_	_	_
+A377889	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*n-2*k+1).^(k-1).*(BI(4*n-3*k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*n-2*k+1)^(k-1)*binomial(4*n-3*k, n-k)/k!)	_	_	_
+A377890	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n-k+1).^(k-1).*(BI(2*n-k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*n-k+1)^(k-1)*binomial(2*n-k+1, n-k)/k!)	_	_	_
+A377891	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*n-2*k+1).^(k-1).*(BI(3*n-2*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*n-2*k+1)^(k-1)*binomial(3*n-2*k+1, n-k)/k!)	_	_	_
+A377892	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n+1).^(k-1).*(BI(2*n+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*n+1)^(k-1)*binomial(2*n+1, n-k)/k!)	_	_	_
+A377893	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*n+1).^(k-1).*(BI(3*n+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*n+1)^(k-1)*binomial(3*n+1, n-k)/k!)	_	_	_
+A377894	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*k+1).^(k-1).*(BI(2*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*k+1)^(k-1)*binomial(2*k+1, n-k)/k!)	_	_	_
+A377895	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*k+1).^(k-1).*(BI(3*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*k+1)^(k-1)*binomial(3*k+1, n-k)/k!)	_	_	_
+A377954	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(BI(k+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, binomial(k+2, n-k)/k!)	_	_	_
+A377955	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(BI(k+3, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, binomial(k+3, n-k)/k!)	_	_	_
+A377956	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(BI(k+4, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, binomial(k+4, n-k)/k!)	_	_	_
+A377958	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(BI(n-2*k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, binomial(n-2*k, n-k)/k!)	_	_	_
+A377959	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(BI(n-2*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, binomial(n-2*k+1, n-k)/k!)	_	_	_
+A377960	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(BI(n-2*k+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, binomial(n-2*k+2, n-k)/k!)	_	_	_
+A378016	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(3*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(3*k+1, n-k)/k!)	_	_	_
+A378017	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(3*k+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(3*k+2, n-k)/k!)	_	_	_
+A378019	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(2*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(2*k+1, n-k)/k!)	_	_	_
+A378041	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*k+1).^(k-1).*(BI(n+2*k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*k+1)^(k-1)*binomial(n+2*k, n-k)/k!)	_	_	_
+A378042	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*k+1).^(k-1).*(BI(n+3*k, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*k+1)^(k-1)*binomial(n+3*k, n-k)/k!)	_	_	_
+A378043	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*k+1).^(k-1).*(BI(3*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*k+1)^(k-1)*binomial(3*k+1, n-k)/k!)	_	_	_
+A378044	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*k+1).^(k-1).*(BI(4*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*k+1)^(k-1)*binomial(4*k+1, n-k)/k!)	_	_	_
+A378045	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*k+1).^(k-1).*(BI(k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*k+1)^(k-1)*binomial(k+1, n-k)/k!)	_	_	_
+A378046	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*k+1).^(k-1).*(BI(k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*k+1)^(k-1)*binomial(k+1, n-k)/k!)	_	_	_
+A378047	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(k+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(k+2, n-k)/k!)	_	_	_
+A378090	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(n+2, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(n+2, n-k)/k!)	_	_	_
+A378091	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(k-1).*(BI(n+3, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(k-1)*binomial(n+3, n-k)/k!)	_	_	_
+A378092	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*k+1).^(k-1).*(BI(n, k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*k+1)^(k-1)*binomial(n, k)/k!)	_	_	_
+A378093	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*k+1).^(k-1).*(BI(n, k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*k+1)^(k-1)*binomial(n, k)/k!)	_	_	_
+A378094	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(k+1).^(k-1).*(BI(n, 2*k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n\2, (k+1)^(k-1)*binomial(n, 2*k)/k!)	_	_	_
+A378095	lambdan	0	n -> QV(FA(n)).*(RU(0, n/3, k -> QV(k+1).^(k-1).*(BI(n, 3*k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n\3, (k+1)^(k-1)*binomial(n, 3*k)/k!)	_	_	_

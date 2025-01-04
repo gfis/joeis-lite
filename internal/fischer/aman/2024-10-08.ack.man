@@ -1,0 +1,44 @@
+---- 2024-10-08 23:46:07
+A108430	lambdan	1	n -> SU(n, 2*n, k -> BI(n, 2*n - k).*(k).*(BI(n + k, n - 1)))./(n)	a(n) = (1/n)*sum(k*binomial(n,2n-k)*binomial(n+k,n-1), k=n..2n).
+A111402	lambdan	0	n -> Functions.BELL.z(Functions.BELL.z(n+1)).-(Functions.BELL.z(Functions.BELL.z(n)))	, where f() = Bell numbers = A000110.
+A113409	lambdan	0	n -> SU(0, n/2, k -> BI(n - k, k).*(BI(k, k/2)))	a(n) = Sum_{k=0..floor(n/2)} C(n-k, k)*C(k, floor(k/2)).
+A121285	lambdan	0	n -> (n <= 1) ? ZV(1) : Z2(n - 2).*(n + 3).-(ZV(n).*(BI(n - 1, (n - 1)/2))).-(ZV(n - 1).*(BI(n - 2, (n - 2)/2)))	(n+3)*2^(n-2)-n*binomial(n-1, floor( (n-1)/2 ))-(n-1)*binomial(n-2,floor((n-2)/2)).
+A124753	lambdan	0	n -> { final int n3 = n/3; return ZV(n%3 + 1).*(BI(4*n3 + n%3, n3))./(3*n3 + 1 + n%3); }		a(n) = ((mod(n,3)+1)*C(4*floor(n/3)+mod(n,3), floor(n/3))/ (3*floor(n/3) + 1 + mod(n, 3))).
+A163824	holos	0	[[0],[13104,-3888,288],[-25464,8712,-744],[22920,-9708,1032],[-11716,6324,-860],[3352,-2363,421],[-482,473,-117],[26,-43,17],[0,1,-1]]	1,1,2	0	0
+A180195	lambdan	1	n -> SU(1, n, j -> Z_1(j).*(FA(j - 1)).*(j*j - j + 1)).*(Z_1(n))	, j=1..n), where b(n)=(n-1)!*(n^2 - n + 1) = A001564(n-1) (n>=1).
+A189600	holos	1	[[0],[-1],[-1],[-1],[-1],[-1],[-1],[0],[-1],[1]]	1,1,2,4,7,12,21,37	0	0	a(n) = a(n-1) + a(n-3) + a(n-4) + a(n-5) + a(n-6) + a(n-7) + a(n-8).
+A252354	holos	0	[[0],[4950,-945,45],[-16230,3033,-141],[10254,-1296,24],[49098,-11034,618],[-30750,6462,-318],[-42080,12387,-907],[25146,-7422,528],[11594,-4803,493],[-8266,3660,-392],[-230,216,-40],[762,-606,102],[-104,141,-31],[0,-9,3]]	1,1,2,4	0	0	G.f: 1/(1-x-x^2(1/(1-x-x^2*((1 + x - sqrt(1-2*x-3*x^2))/(2*x*(1+x)))))), where R(x) is the g.f. of Riordan numbers (A005043).
+A257300	holos	0	[[0],[1134,-288,18],[-288,36],[2016,-400,16],[-252,-171,33],[-2910,1042,-88],[2466,-919,85],[-168,-16,16],[-576,444,-84],[276,-255,57],[-30,44,-14],[0,-1,1]]	1,1	0	0	G.f.: 1/(1-x-x^2/(1-x+x^2*(1-(( 1 - x - (1-2*x-3*x^2)^(1/2) ) / (2*x^2))))), where M(x) is the g.f. of Motzkin numbers A001006.
+A259869	multrar	0	(self, n) -> self.a(n - 1).*(n - 1).+(self.a(n - 2).*(n -3)).+(SU(1, n - 1, j -> self.a(j).*(self.a(n - j))))	"-1,0"		The recurrence is a(0)=-1, a(1)=0; a(n) = (n-1)*a(n-1) + (n-3)*a(n-2) + Sum_{j=1..n-1} a(j)*a(n-j).
+A261463	prepend	1	new A069142()	3	, n>=1. - _G. C. Greubel_, Aug 23 2015
+A271217	multrar	0	(self, n) -> ((n&1) == 1) ? self.a(n - 1).*(2).+(self.a(n - 2)) : self.a(n - 1).*(n - 1).+(self.a(n - 3).*(n - 2))	"1,2,2,6"		a(2k+1) = 2*a(2k) + a(2k-1) and a(2k) = (2k-1)*a(2k-1)+(2k-2)*a(2k-3)
+A294159	holos	0	[[0],[48,-20,2],[0,5,-1],[84,-41,5],[-132,74,-10],[48,-40,8],[-6,11,-5],[0,-1,1]]	1,1	0	0	Conjecture: n*a(n) +(-3*n+1)*a(n-1) +2*(-n+3)*a(n-2) +2*(n-5)*a(n-3) +(n-4)*a(n-4) +(n-5)*a(n-5)=0
+A372991	multrar	0	(self, n) -> FA(2*n)./(self.a(n - 1).*(self.a(n - 2)))	"1,1"		a(n) = (2n)!/(a(n-1)*a(n-2)), where a(0)=1, a(1) = 1.
+A374928	lambdan	1	n -> FA(BI(n + 1, 2))./(DF(2*n - 1))		nonn,easy	1..10	nyi	_Eric W. Weisstein_
+A375021	holos	0	[[0],[-2,1],[-3,2],[-3,3],[1,-2],[0,1]]	1	0	0	Expansion of 1/sqrt(1 - 2*x + 3*x^2 + 2*x^3 + x^4).	sign	0..33	nyi
+A375026	holos	0	[[0],[288,-168,24],[300,-256,52],[90,-120,30],[12,-25,13],[0,-6,6]]	1,-3	0	0
+A375172	holos	0	[[0],[-3,1],[8,-4],[-11,6],[3,-4],[0,1]]	1	0	1	Expansion of e.g.f. exp( x^2/(1-x)^3 ) / (1-x).	nonn	0..19	nyi
+A375393	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(4*k + 3).*(self.a(k)).*(self.a(n - k - 1)))	"1"		(4*k+3) * a(k) * a(n-k-1).	nonn	0..18	nyi	_Ilya Gutkovskiy_
+A375434	holos	0	[[0],[-84,94,-34,4],[-152,156,-48,4],[-472,910,-522,84],[0,-129,352,-223],[0,-14,0,14]]	1,4	0	0	Expansion of g.f. A(x) satisfying A(x) = (1 + x*A(x)) * (1 + 3*x*A(x)^2).
+A375691	holos	0	[[0],[2640,-1215,135],[5040,-2808,378],[2790,-2025,351],[384,-432,108],[0],[20,30,-20],[40,-4,-36],[0,-32,-16]]	1,0,0,0	0	0
+A375777	filnum	1	0	k -> ZV(k).-(RAD(k)).-(1).IPP()	Numbers k such that k - rad(k) - 1 is prime, where rad(k) is A007947(k).	nonn,new	1..58	nyi	_Arsen Vardanyan_
+A375780	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(FA(k).*(S2(n, k)).^(2)))	a(n) = Sum_{k=0..n} binomial(n,k) * (k! * S(n,k))^2, where S(,) are Stirling numbers of second kind.	nonn	0..17	nyi	_Max Alekseyev_
+A375820	decexp	1	() -> CV(new Q(333, 106))	Decimal expansion of 333/106.	nonn,cons,easy	1..100	nyi	_Stefano Spezia_
+A376086	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(3*k + 2).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376087	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(4*k + 1).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376095	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).^(2).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376096	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).^(3).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376097	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(k + 1).^(4).*(self.a(k)).*(self.a(n - k - 1)))	"1"
+A376134	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(k).*(k + 1).*(self.a(k)).*(self.a(n - k -1)))	"1"		nyi Ft	a(0) = 1; a(n) = Sum_{k=0..n-1} (-1)^k * (k+1) * a(k) * a(n-k-1).	sign,new	0..22	nyi
+A376135	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(k).*(2*k + 1).*(self.a(k)).*(self.a(n - k -1)))	"1"		nyi Ft	a(0) = 1; a(n) = Sum_{k=0..n-1} (-1)^k * (2*k+1) * a(k) * a(n-k-1).	sign,new	0..19	nyi
+A376137	multrar	0	(self, n) -> SU(0, n - 1, k -> Z_1(k).*(ZV(k + 1).^(2)).*(self.a(k)).*(self.a(n - k -1)))	"1"		a(n) = Sum_{k=0..n-1} (-1)^k * (k+1)^2 * a(k) * a(n-k-1).
+A376145	lambdan	0	n -> RU(0, n, k -> QV(k + 1).^(k - 1).*(BI(3*k, n - k))./(FA(k))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..n} (k+1)^(k-1) * binomial(3*k,n-k)/k!.
+A376146	lambdan	0	n -> RU(0, n, k -> QV(k + 1).^(k - 1).*(BI(4*k, n - k))./(FA(k))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..n} (k+1)^(k-1) * binomial(4*k,n-k)/k!.
+A376252	lambdan	1	n -> new Z(Integer.toString(n + 1) + Integer.toString(n)).modZ(n)	Concatenated (n+1)||n modulo n.	nonn,base,easy,new	1..80	nyi	_Stuart Coe_
+A376279	filnum	1	0	k -> Predicates.CUBE.is(ZV(k).^(k))	Numbers k such that k^k is a cube.	nonn	1..61	nyi	_Chai Wah Wu_
+A376830	filnum	1	0	k -> TAU(TAU(k).+(k)).equals(TAU(TAU(k)).+(TAU(k)))	Numbers k such that tau(k + tau(k)) = tau(k) + tau(tau(k)), where tau = A000005.	nonn,new	1..10000	nyi	_Robert Israel_
+A376831	filnum	1	0	k -> SIGMA(SIGMA(k).+(k)).equals(SIGMA(SIGMA(k)).+(SIGMA(k)))	Numbers k such that sigma(k + sigma(k)) = sigma(k) + sigma(sigma(k)), where sigma = A000203.	nonn,more,new	1..17	nyi	_Robert Israel_
+A376835	holos	0	[[0],[-21,7],[-9,4],[9,-6],[-3,4],[0,-1]]	1	0	0	nyi Fto	Expansion of 1/((1-x)^4 - 8*x^4)^(1/4).	nonn,new	0..31
+A376836	holos	0	[[0],[-105,15],[-49,8],[147,-28],[-245,56],[245,-70],[-147,56],[49,-28],[-7,8],[0,-1]]	1	0	0	nyi Fto	Expansion of 1/((1-x)^8 - 16*x^8)^(1/8).	nonn,new	0..35
+A376868	lambdan	0	n -> FA(n).*(Z2((n - 1)*n))	n! * 4^binomial(n, 2).	nonn,easy,new	0..55	nyi	_Charles R Greathouse IV_
+A375824	filter	0	new A000217()	v -> Functions.DIGIT_SUM.i(v) == 9	Triangular numbers whose sum of digits is 9

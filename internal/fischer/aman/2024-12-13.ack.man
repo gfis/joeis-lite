@@ -1,0 +1,71 @@
+---- 2024-12-10 09:41:50
+A073826	filter	1	new A001923()	PRIME	Sum_{k=1..n} k^k, i.e., primes in J001923
+A096210	filprof	1	2	k -> ZV(10).^(k).+(ZV(10).^(k - 2)).-(1)
+A096212	filprof	1	4	k -> ZV(10).^(k).+(ZV(10).^(k - 4)).-(1)
+A096213	filprof	1	5	k -> ZV(10).^(k).+(ZV(10).^(k - 5)).-(1)
+A101302	filprof	1	1	n -> SU(1, n, k -> PHI(PM(k)))
+A173840	filprof	1	1	k -> ZV(10).^(k).+(2*k + 1)
+A178178	filprof	1	1	k -> E177353(k).+(1)	sorted with respect to increasing n
+A197421	filprof	1	1	n -> SU(1, n, k -> PM(k).*(PM(k + 1)))	Sum_{k=1..n} prime(k)*prime(k+1)
+A205719	filprof	1	1	k -> FI(k).+(3)
+A096211	filprof	0	3	k -> ZV(10).^(k).+(ZV(10).^(k - 3)).-(1)
+A322421	filter	0	new A322420()	PRIME	 or the sum of the first k*(k+1) primes
+---- 2024-12-10 12:54:52
+A298699	filter	1	new SingleTransformSequence(0, (term, n) -> term.*(42).-(43), "", new A132583())	PRIME	*42 - 43
+---- 2024-12-13 19:28:38
+A163150	filter	1	new SingleTransformSequence(1, (p, n) -> F000041(p).+(p), "", new A000040())	PRIME
+A163153	filter	1	new SingleTransformSequence(1, (p, n) -> F000009(p).+(p), "", new A000040())	PRIME
+A378805	lambdan	0	n -> Z2(n).*(n).*(n).*(BI(4*n, n))	n^2 * 2^n * binomial(4*n, n).	nonn,easy,new	0..500	nyi	_Amiram Eldar_
+---- 2024-12-13 21:34:11
+A378752	lambdan	1	n -> Functions.SIGMA1.z(n).*(2).-(Functions.SIGMA1.z(D003961(n)))	, where D003961 is fully multiplicative with a(prime(i)) = prime(i+1).	sign,new	1..20000	nyi	_Antti Karttunen_
+A378867	filnum	1	1	k -> PP(ZV(5).^(k).+(86))	Numbers k such that 5^k + 86 is prime.	nonn,more,new	1..4	nyi	_Robert Price_
+A378887	lambdan	1	n -> GCD(ZV(n), D001511(n))	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A378888	lambdan	1	n -> GCD(ZV(n), D007814(n))	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A378909	decexpr	1	() -> REALS.tanh(CR.ONE).sqrt().inverse()	1/sqrt(tanh(1)).	nonn,cons,new	1..100	nyi	_Stefano Spezia_
+A378910	decexp	0	() -> X006752.*(2)./(CR.PI)	2*G/Pi, where G = X006752.	nonn,cons,new	0..99	nyi	_Stefano Spezia_
+A378911	decexp	1	() -> CR.SQRT2.*(X006752.*(2)./(CR.PI).exp())	sqrt(2)*exp(2*G/Pi), where G = X006752.	nonn,cons,new	1..100	nyi	_Stefano Spezia_
+A378967	decexp	0	() -> CR.SQRT2.*(4).-(CV(6).sqrt().*(6)./(CR.PI))	4*sqrt(2) - 6*sqrt(6)/Pi.	nonn,cons,easy,new	0..99	nyi	_Stefano Spezia_
+A378968	decexp	0	() -> CV(4).-(CR.PHI).log()	log(4 - phi), where phi = X001622.	nonn,cons,new	0..99	nyi	_Stefano Spezia_
+A378969	decexp	0	() -> CV(4).-(CR.PHI).log().*(CR.PHI).inverse()	1/(phi*log(4 - phi)).	nonn,cons,new	0..99	nyi	_Stefano Spezia_
+---- 2024-12-13 22:15:07
+A074220	filprof	1	1	k -> CV(k).^(CR.PI).ceil()	ceiling(n^Pi).
+A074224	filprof	1	1	k -> CV(k).^(CR.E).ceil()	ceiling(n^e).
+A077545	filprof	1	1	k -> CR.E.*(k).floor()	floor(k*e)
+A077546	filprof	1	1	k -> CR.PI.*(k).floor()	floor(n*Pi).
+A077547	filprof	1	1	k -> CR.PI.^(k).floor()	floor(Pi^n).
+A108221	filprof	1	1	k -> CV(PM(k)).sqrt().ceil()	ceiling(sqrt(prime(n))).
+A118842	filprof	1	1	k -> CR.PHI.^(CV(k)).ceil()	ceiling(phi^k).
+A157417	filprof	1	1	k -> ZV(k).^(2).*(4).-(8*k + 9)./(3)	floor((4*n^2-8*n-9)/3).
+A163158	filprof	1	1	k -> FI(k).square().-(2)	f^2-2, where f is a Fibonacci number.
+A163580	filprof	1	1	k -> CR.PI.*(F000217(k - 1)).+(k).floor()	floor(k+F000217(k-1)*Pi), Pi = X000796, k integer.
+A171574	filprof	1	1	k -> BI(k, 2)./(4)	floor(binomial(k,2)/4).
+A180450	filprof	1	1	k -> CV(k).^(CR.SQRT2).+(k)./(CR.SQRT2).floor()	floor( (n^sqrt(2) + n)/sqrt(2) ).
+A180451	filprof	1	1	k -> CV(k).^(CR.SQRT2).*(2).-(k).floor()	floor(2*n^sqrt(2) - n).
+A184774	filprof	1	1	k -> CR.SQRT2.*(k).floor()	floor(k*sqrt(2)).
+A184796	filprof	1	1	k -> CV(3).sqrt().*(k).floor()	floor(k*sqrt(3)).
+A184799	filprof	1	1	k -> CV(3).sqrt().+(3)./(2).*(k).floor()	floor(k*s), where s=(3+sqrt(3))/2.
+A184802	filprof	1	1	k -> CV(5).sqrt().*(k).floor()	floor(k*sqrt(5)).
+A184805	filprof	1	1	k -> CV(5).sqrt().+(5)./(4).*(k).floor()	floor(k*s), where s=(5+sqrt(5))/4.
+A291139	filprof	1	1	k -> CV(k).^(new Q(3, 2)).floor()	floor(k^(3/2)) for some integer k.
+A339342	filprof	1	1	k -> CV(k).^(new Q(12, 11)).floor()	floor(k^(12/11)).
+A378823	decexro	2	-39517632,0,185328,0,-3060,0,1	54	55	x^6 - 3060*x^4 + 185328*x^2 - 39517632surface area of a pentagonal icositetrahedron with unit shorter edge length.	nonn,cons,easy,new	2..10000	nyi	_Paolo Xausa_
+A378824	decexro	2	-121,0,-649,0,-1269,0,1	35	36	x^6 - 1269*x^4 - 649*x^2 - 121	volume of a pentagonal icositetrahedron with unit shorter edge length.	nonn,cons,easy,new	2..10000	nyi
+---- 2024-12-13 22:48:22
+A079595	filter	1	new SingleTransformSequence(1, (p, n) -> CV(p).^(CR.PI).floor(), "", new A000040())	PRIME	floor(x^Pi) where x is prime.
+A134075	filter	1	new SingleTransformSequence(1, (p, n) -> CR.PI.*(p. ^(2)).floor(), "", new A000040())	PRIME	floor(Pi*p^2) where p is a prime.
+A136669	filter	1	new SingleTransformSequence(1, (v, n) -> v.-(1), "", new A004490())	PRIME	colossally abundant number - 1.
+A154506	filter	1	new SingleTransformSequence(1, (v, n) -> new Z(v.toString() + Integer.toString(n)), "", new A141468())	PRIME	concatenation(J141468(k), k).
+A163430	filter	1	new SingleTransformSequence(1, (p, n) -> p.^(3)./(8), "", new A000040())	PRIME	floor(p^3/8), where p is any prime number.
+A163442	filter	1	new SingleTransformSequence(1, (p, n) -> QV(p, 3).^(3).floor(), "", new A000040())	PRIME	floor((p/3)^3), where p is prime.
+A163579	filprof	1	1	k -> CR.PI.*(k).*(k + 1)./(2).floor()	floor(k*(k+1)*Pi/2), k>=0, where Pi = 3.1415.. = X000796.
+A171600	filprof	1	1	k -> ZV(k).*(k + 1)./(16)	.floor()floor(T/8) where T is a triangular number.
+A176903	filter	1	new SingleTransformSequence(1, (v, n) -> v.+(1), "", new A004490())	PRIME	A004490	colossally abundant number + 1.
+A180448	filprof	1	1	k -> CV(k).^(CR.SQRT2).floor()	floor(n^sqrt(2)).
+A180449	filprof	1	1	k -> CV(3).sqrt().*(k).-(1).*(k)./(CR.SQRT2).floor()	floor( (n*(sqrt(3)*n-1))/sqrt(2) ).
+A180452	filprof	1	1	k -> CV(k).^(CR.PI.sqrt()).floor()	floor(n^sqrt(Pi)).
+A184859	filprof	1	1	k -> CR.PHI.*(k).+(CR.HALF).floor()	floor(kr+h), where r=(1+sqrt(5))/2 and h=1/2.
+A184862	filprof	1	1	k -> CR.PHI.*(k).+(k).-(CR.PHI./(2)).floor()	floor(n+nr-r/2), where r=(1+sqrt(5))/2.
+A184865	filprof	1	1	k -> CR.SQRT2.*(k).+(CR.HALF).floor()	floor(nr+h), where r=sqrt(2), h=1/2.
+A378825	decexro	1	-1,0,28,0,-1712,0,448	1	2	448*x^6 - 1712*x^4 + 28*x^2 - 1	inradius of a pentagonal icositetrahedron with unit shorter edge length.	nonn,cons,easy,new	1..10000	nyi
+A378826	decexro	1	-1,0,12,0,-144,0,32	2	3	32*x^6 - 144*x^4 + 12*x^2 - 1	midradius of a pentagonal icositetrahedron with unit shorter edge length.	nonn,cons,easy,new	1..10000	nyi
+A378868	filnum	1	1	k -> PP(ZV(5).^(k).-(22))	Numbers k such that 5^k - 22 is prime.	nonn,more,new	1..7	nyi	_Robert Price_

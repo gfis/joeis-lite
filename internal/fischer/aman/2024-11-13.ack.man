@@ -1,0 +1,101 @@
+---- 2024-11-13 21:25:38
+---- 2024-11-13 22:10:16
+A051236	sintrif	1	(term, n) -> term.-(ZV(1))	""	new A013588()	a(n) = J013588(n) - 1	_	_	_
+A084008	lambdan	0	n -> { final Z t = Functions.TRIANGULAR.z(n); return new Z(t.toString() + new StringBuilder(t.toString()).reverse().toString())./(11); }	a(n) = T(n) concatenated with reverse(T(n)) divided by 11, where T(n) is the n-th triangular number.
+A085301	lambdan	1	n -> (n <= 2) ? ZV(new int[]{0,2,2,1}[n]) : D084558(F002110(n)).-(D084558(F002110(n-1)))	#n:2,2,1//		a(n) = D084558(F002110(n)) - D084558(F002110(n-1)) for n >= 3	_	_	_
+A085776	filnum	1	1	k -> Predicates.SEMIPRIME.is(new Z(Integer.toString(k) + Integer.toString(k + 1)))	Numbers k such that k concatenated with k+1 is a semiprime.
+A085777	filter	1	new A001358()	s -> Predicates.SEMIPRIME.is(new Z(s.toString() + Functions.REVERSE.z(s).toString()))	Semiprimes such that when they are concatenated with their reversal are semiprime.
+A098534	lambdan	0	n -> (n <= 0) ? ZV(0) : SU(0, (n - 1)/2, k -> BI(n - k - 1, k).modZ(3))	""		a(n) = Sum_{k=0..floor((n-1)/2)} mod(binomial(n-k-1, k), 3)	_	_	_
+A101259	filnum	1	1	k -> D033880(k).equals(ZV(-54))	.
+A101694	lambdan	0	n -> F001045(ZV(2).*((Z2(n-1).+(1)))).-((n == 0) ? 0 : 0)	""		a(n)=F001045(2*(2^(n-1)+1))-2*0^n	_	_	_
+A103746	filnum	1	0	k -> Predicates.SEMIPRIME.is(PM(k).*(PM(k + 1)).-(1))	n such that prime(n)*prime(n+1) - 1 is semiprime.
+A103767	filnum	1	0	k -> Predicates.SEMIPRIME.is(PM(k).*(PM(k+1)).*(PM(k+2)).-(1))
+A105311	lambdan	0	n -> { final Z s = CONC(1, n, k -> ZV(k)); return CONC(1, n, k -> s); }	a(n) = n concatenations of numbers from 1 to n, concatenated.
+A108302	sintrif	0	(term, n) -> new Z(Integer.toString(n) + term.toString())	""	new A045503()	Concatenate n and the sum of the digits of n raised to their own power (A045503).
+A108814	filnum	1	1	k -> Predicates.SEMIPRIME.is(ZV(k).^(4).+(4))	k^4 + 4 is semiprime.
+A108868	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(5).+(3))
+A109958	lambdan	1	n -> new Z(Integer.toString(n) + Functions.SOPFR.z(n).toString())	Concatenate n and the sum of primes dividing n (counting multiplicity).
+A110208	sintrif	0	(term, n) -> ZV(1).+(term)	"1"	new PrependSequence(0, new A062198(), 0)	a(0) = 1; for n>0, a(n) = 1 + J062198(n)	_	_	_
+A110209	sintrif	0	(term, n) -> ZV(1).+(term)	"1"	new PrependSequence(0, new A086062(), 0)	a(0) = 1; for n>0, a(n) = 1 + J086062(n)	_	_	_
+A110226	sintrif	0	(term, n) -> ZV(1).+(term)	"1"	new PrependSequence(0, new A086046(), 0)	a(0) = 1; for n>0, a(n) = 1 + J086046(n)	_	_	_
+A111875	lambdan	1	n -> CONC(Functions.PRIME.i(n), Functions.PRIME.i(n + 1), k -> ZV(k))	Concatenate the consecutive increasing numbers starting with prime(n) and ending with prime(n+1).
+A112775	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(6*k + 1))
+A112776	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(6*k + 5))
+A114776	lambdan	1	n -> CV(CONC(1, n, k -> ZV(n))).pow(new Q(1, n)).*(10).floor().^(n)	Floor[ {n concatenated with n n times }^(1/n)*10]^n.
+A114777	lambdan	0	n -> CV(CONC(1, n, k -> ZV(n))).sqrt().*(10).floor().^(2)	Floor[ {n concatenated with n n times }^(1/2)*10]^2.
+A116505	lambdan	1	n -> Functions.OMEGA.z(CONC(1, n, k -> ZV(k)))	""	new A107908()	of the concatenation of 1..n. nonn,base       1..100  nyi     _Parthasarathy Nambi_
+A116899	filnum	0	1	n -> CONC(1, n, k -> ZV(n)).+(1).IPP()	Numbers k such that (k concatenated k times) + 1 = A000461(k) + 1 is a prime number.
+A118116	lambdan	1	n -> CONC(1, n*n, k -> ZV(n))	a(n) = n concatenated n^2 times.
+A118117	lambdan	1	n -> CONC(1, Functions.FIBONACCI.i(n), k -> ZV(n))	Concatenate n F(n) times.
+A119720	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(7).^(k).+(2))
+A119739	filnum	1	1	k -> Predicates.SEMIPRIME.is(ZV(7).^(k).+(3))
+A122116	filnum	1	1	k -> Predicates.SEMIPRIME.is(ZV(2).^(k).+(ZV(5).^(k)))
+A122488	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).*(3).+(2*k+1))	1 + 2*k + 3*k^2 is semiprime.
+A127423	lambdan	1	n -> (n == 1) ? ZV(1) : new Z(Integer.toString(n) + Integer.toString(n - 1))	a(1) = 1; for n > 1, a(n) = n concatenated with n - 1.
+A130618	multrar	1	(self, n) -> SU(0, self.a(n - 1).modZ(n - 1).intValueExact(), k -> self.a(n - 1 - k))	"1"		a(1)=1; a[n] = Sum[a[n-1-k], {k, 0, Mod[a[n-1], n-1]}]
+A134549	lambdan	0	n -> new Z(FI(n+4).toString() + FI(n+2).toString() + FI(n  ).toString())	Concatenate Fibonacci(n+4), Fibonacci(n+2) and Fibonacci(n  ).
+A134550	lambdan	0	n -> new Z(FI(n  ).toString() + FI(n+2).toString() + FI(n+4).toString())	Concatenate Fibonacci(n  ), Fibonacci(n+2) and Fibonacci(n+4).
+A134551	lambdan	0	n -> new Z(FI(n+2).toString() + FI(n  ).toString() + FI(n+4).toString())	Concatenate Fibonacci(n+2), Fibonacci(n  ) and Fibonacci(n+4).
+A134553	lambdan	0	n -> new Z(FI(n  ).toString() + FI(n+4).toString() + FI(n+2).toString())	Concatenate Fibonacci(n  ), Fibonacci(n+4) and Fibonacci(n+2).
+A137465	lambdan	1	n -> new Z("1" + CONC(1, n, k -> ZV(n)).toString() + "1")	1 concatenated with n ns concatenated with 1.
+A137521	lambdan	1	n -> new Z(PM(n) + "45")	Prime numbers concatenated with 45.
+A139328	lambdan	1	n -> (n <= 1) ? ZV(0) : F000720(n * n * 2 - 1).-(1)	a(n) = F000720(2*n^2 - 1) - 1	_	_	_		Sums of rows of the triangle in A139325.
+A141546	filnum	1	1	k -> D033880(k).equals(ZV(14))	.
+A141549	filnum	1	1	k -> D033880(k).equals(ZV(-12))	: 2n - sigma(n) = 12.
+A141550	filnum	1	1	k -> D033880(k).equals(ZV(-14))	.
+A162473	lambdan	1	n -> new Z(CONC(1, n, k -> new Z(Integer.toString(n, 2))).toString(), 2)	Write n in binary n times and concatenate (see example). a(n) is the decimal equivalent.
+A165265	lambdan	0	n -> { final int bc = Functions.DIGIT_SUM.i(2, n); return (n == 0) ? ZV(1) : new Z(Integer.toString(bc) + Integer.toString(Functions.DIGIT_LENGTH.i(2, n) - bc)); }	Concatenate the number of 1's and number of 0's in the binary expansion of n.
+A168327	filter	1	new LambdaSequence(1, n -> new Z("1" + ZV(n).^(3).toString()))	v -> v.IPP()	Primes of concatenated form "1 n^3".
+A168417	filter	1	new A000040()	p -> new Z("1" + p.^(3).toString()).IPP()	Primes q for which 1 concatenated with q^3 (?168327) is prime.
+A175463	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(8*k + 5))
+A177088	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(5).-(ZV(k).^(3)).-(ZV(k).^(2).*(2)).+(1))	n such that n^5-n^3-2*n^2+1 is semiprime.
+A180748	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).-(k - 1))	k^2 - k + 1 is semiprime.
+A180941	filnum	1	1	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).-(ZV(k).*(2999)).+(2248541))	is semiprime.
+A181113	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(6).+(1091))
+A181868	multrar	1	(self, n) -> CONC(1, n - 1, k -> self.a(n - k))./(self.a(n - 1))	"10,1"		a(1) = 10, a(2) = 1. For n >= 3, a(n) = concatenate a(n-1), a(n-2), ..., a(1) and then divide the resulting number by a(n-1).
+A196222	sintrif	0	(term, n) -> term.^(term)	""	new PrependSequence(0, new A047726(), 1)	a(n) = J047726(n)^J047726(n)	_	_	_
+A213650	filnum	1	0	k -> Predicates.SEMIPRIME.is(SU(1, k, i -> PM(i)))	sum of the first k primes is semiprime.
+A223608	filnum	1	1	k -> D033880(k).equals(ZV(-18))	: sigma(n) - 2*n = -18.
+A223610	filnum	1	1	k -> D033880(k).equals(ZV(18))	: sigma(k) - 2*k = 18.
+A226116	filnum	1	0	k -> { final Z k2 = Z2(k); final boolean m1 = Predicates.SEMIPRIME.is(k2.-(1)); final boolean p1 = Predicates.SEMIPRIME.is(k2.+(1)); return m1 ^ p1; }
+A227019	filnum	1	1	k -> { final Z k2 = Z2(k); final boolean m1 = Predicates.SEMIPRIME.is(k2.-(1)); final boolean p1 = Predicates.SEMIPRIME.is(k2.+(1)); final boolean p3 = Predicates.SEMIPRIME.is(k2.+(3)); return m1 && !p1 && !p3 || !m1 && p1 && !p3 || !m1 && !p1 && p3; }	exactly one of {2^n-1, 2^n+1, 2^n+3} is semiprime.
+A228184	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).+(k + 41))	k^2 + k + 41 is semiprime.
+A228761	filter	1	new LambdaSequence(1, n -> new Z("149" + Integer.toString(n) + "149"))	v -> v.IPP()	Primes of the concatenated form 149x149 for some number x.
+A233358	filnum	1	1	k -> new Z(ZV(k).*(k).toString() + Integer.toString(k + 1)).IPP()	Numbers n such that n^2 concatenated with n + 1 is prime.
+A235497	lambdan	1	n -> new Z(Integer.toString(2*n) + Integer.toString(n))	concatenated with n.
+A242203	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(3).^(k).*(k).+(1))
+A242204	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(4).^(k).*(k).+(1))
+A242205	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(5).^(k).*(k).+(1))
+A242269	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(6).^(k).*(k).+(1))
+A242270	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(7).^(k).*(k).+(1))
+A242271	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(8).^(k).*(k).+(1))
+A242272	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(9).^(k).*(k).+(1))
+A242335	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(4).^(k).*(k).-(1))
+A242336	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(5).^(k).*(k).-(1))
+A242337	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(6).^(k).*(k).-(1))
+A242338	filnum	0	0	k -> Predicates.SEMIPRIME.is(ZV(7).^(k).*(k).-(1))
+A242339	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(8).^(k).*(k).-(1))
+A242340	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(9).^(k).*(k).-(1))
+A242936	filnum	1	0	k -> Predicates.SEMIPRIME.is(PM(k).*(k).+(PM(k + 1).*(k + 1)))	n such that n*prime(n) + (n+1)*(prime(n+1)) is semiprime.
+A242937	filnum	1	0	k -> Predicates.SEMIPRIME.is(PM(k).*(k).+(PM(k + 1).*(k + 1)).+(PM(k + 2).*(k + 2)))	n such that n*prime(n) + (n+1)*(prime(n+1)) + (n+2)*(prime(n+2)) is semiprime.
+A243436	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).-(k + 1))
+A249166	lambdan	1	n -> new Z(Integer.toString(2*n - 1) + Integer.toString(2*n - 1))	Odd integers concatenated with themselves.
+A258080	lambdan	1	n -> new Z(Integer.toString(n) + Integer.toString(n + 1)).+(new Z(Integer.toString(n + 1) + Integer.toString(n))).mod(ZV(n).*(n + 1))	a(n) = ((n concatenated with n+1) + (n+1 concatenated with n)) mod n*(n+1).
+A259026	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(23).^(k).*(k).-(1))
+A260523	filnum	1	0	k -> Predicates.SEMIPRIME.is(Functions.DIGIT_SUM.z(k).+(Functions.DIGIT_PRODUCT.z(k)))	(sum of digits of n) + (product of digits of n) is semiprime.
+A264814		1	0	1	k -> new Z(Integer.toString(k) + Integer.toString(k + 1) + Integer.toString(k)).IPP()	Numbers k such that concatenate(k,k+1,k) is prime.
+A276962	filnum	0	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(17).-(1))
+A316650	lambdan	1	n -> { final Z quot[] = ZV(n).divideAndRemainder(Functions.DIGIT_SUM.z(n)); return new Z(quot[0].toString() + quot[1].toString()); }	Result when n is divided by the sum of its digits and the resulting integer is concatenated to the remainder.
+A321985	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).+(1)) && ZV(k - 1).^(2).+(1).IPP() && ZV(k + 1).^(2).+(1).IPP()	k^2 + 1 is semiprime with (k-1)^2+1 and (k+1)^2+1 primes.
+A327092	filnum	1	0	k -> !ZV(k).IPP() && !Predicates.SEMIPRIME.is(k) && (ZV(k - 1).IPP() && Predicates.SEMIPRIME.is(k + 1) || ZV(k + 1).IPP() && Predicates.SEMIPRIME.is(k - 1))	neither prime nor semiprime, and one of k-1 and k+1 is prime while the other is semiprime.
+A328089		1	0	1	k -> Predicates.SQUARE.is(new Z(Integer.toString(k + 1)))	Numbers k such that k+1 concatenated with k is a square.
+A333250	multrar	0	(self, n) -> new Z(Integer.toString(n - 1) + self.a(n - 1).toString()).modZ(n)	"0"		0	n -> CONC(1, n, k -> )	a(n) = concatenate(n-1, a(n-1)) mod n, with initial condition a(0) = 0.
+A339713		1	0	(self, n) -> new Z(self.a(n - 2).toString() + self.a(n - 1).toString())	"1,10"		a(n) = (a(n-2) concatenate a(n-1)) for n > 2, with a(1)=1, a(2)=10.
+A353004	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(k).^(2).*(2).+(29))	2*k^2 + 29 is semiprime.
+A358873	multrar	1	(self, n) -> new Z(CONC(1, n, k -> ZV(n + 1 - k)).toString() + CONC(1, n - 1, k -> self.a(k)).toString())	"1"		a(1) = 1. For n >= 2, to obtain a(n), concatenate the numbers n,...,1,a(1),...,a(n-1).
+A359149	lambdan	1	n -> (n == 1) ? ZV(1) : new Z(CONC(1, n, k -> new Z(Integer.toString(k, 2))).toString() + CONC(1, n - 1, k -> new Z(Integer.toString(n - k, 2))).toString())	Concatenate the binary strings for 1,2,...,n-1, n, n-1, ..., 2,1.
+A360502	lambdan	1	n -> CONC(1, n, k -> new Z(Integer.toString(k, 3)))	Concatenate the ternary strings for 1,2,...,n.
+A360504	lambdan	1	n -> (n == 1) ? ZV(1) : new Z(CONC(1, n, k -> new Z(Integer.toString(k, 3))).toString() + CONC(1, n - 1, k -> new Z(Integer.toString(n - k, 3))).toString())	Concatenate the ternary strings for 1,2,...,n-1, n, n-1, ..., 2,1.
+A360505	lambdan	1	n -> CONC(1, n, k -> new Z(Integer.toString(n + 1 - k, 3)))	Concatenate the ternary strings for n, n-1, n-2, ..., 2, 1.
+A362119	lambdan	1	n -> CONC(1, n, k -> new Z(Integer.toString(k, 6)))		Concatenate the base-6 strings for 1,2,...,n.
+A375313	filter	1	new A000040()	p -> p.+(6).IPP() && (p.+(2).IPP() || p.+(4).IPP()) && new Z(p.toString() + (p.+(2).IPP() ? p.+(2) : p.+(4).toString()) + p.+(6).toString()).IPP()	Primes p such that the prime triple (p, p+2 or p+4, p+6) generates a prime number when the digits are concatenated.

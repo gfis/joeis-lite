@@ -1,0 +1,115 @@
+---- 2024-12-15 23:04:53
+A119448	filprof	1	k -> ZV(k).^(k).+(ZV(k).^(2).+(1))
+A127332	lambdan	1	n -> SU(1, n, k -> F008683(k/(Functions.GCD.i(n, k))).*(F000010(k))./(F000010(k/Functions.GCD.i(n, k))))	""		a(n) = sum(k=1, n, moebius(k / gcd(n, k)) * eulerphi(k) / eulerphi(k / gcd(n, k)))	_	_	_
+A131384	lambdan	1	n -> PR(2, n, k -> Functions.DIGIT_SUM.z(k, n))	""		a(n) = prod(k=2, n, sumdigits(n,k))	_	_	_
+A141022	lambdan	0	n -> ZV(n % (Functions.DIGIT_SUM.i(n) + 1))	""		a(n) = n % (1+sumdigits(n))	_	_	_
+A159048	filprof	1	0	k -> ZV(k).*(k + 1)./(2).+(4)
+A161473	filprof	0	k -> ZV(k).^(k + 1).+(ZV(k + 1).^(k))
+A162307	filprof	1	k -> ZV(k).*(ZV(k + 2))./(3).-(2)
+A168010	lambdan	1	n -> SU(n*n, (n + 1)*(n + 1) - 1, k -> F000005(k))	""		a(n)=sum(k=n^2,(n+1)^2-1,numdiv(k))	_	_	_
+A175493	lambdan	1	n -> PR(1, n, k -> ZV(k).^(F000005(k)))	""		a(n) = prod(k=1, n, k^numdiv(k))	_	_	_
+A182343	filprof	1	k -> ZV(k).^(4).+(2)
+A194185	filprof	1	k -> ZV(k).^(16).+(ZV(k + 1).^(16))
+A194216	filprof	1	k -> ZV(k).^(32).+(ZV(k + 1).^(32))
+A216420	filnum	1	0	k -> PP(ZV(13).^(k).+(ZV(k).^(13)).-(1))
+A216422	filnum	1	0	k -> PP(ZV(19).^(k).+(ZV(k).^(19)).-(1))
+A216423	filnum	1	0	k -> PP(ZV(4).^(k).+(ZV(k).^(4)).+(1))
+A216424	filnum	1	0	k -> PP(ZV(4).^(k).+(ZV(k).^(4)).-(1))
+A216425	filnum	1	0	k -> PP(ZV(6).^(k).+(ZV(k).^(6)).-(1))
+A221055	filprof	1	k -> ZV(k).*(k + 1).*(k + 2)./(6).+(2)
+A225751	lambdan	0	n -> SU(((n&1) == 0) ? n/2 : n/2 + 1, n, k -> F000041(k))	""		a(n)=sum(k=ceil(n/2),n,numbpart(k))	_	_	_
+A229203	filprof	1	k -> ZV(k).^(3).-(PM(k))
+A238115	lambdan	1	n -> RU(1, n, k -> QV(BI(n, k)).^(2).*(BI(2*k, k))./(k+1)).num()	""		a(n)=sum(k=1,n,binomial(n,k)^2*binomial(2*k,k)/(k+1))	_	_	_
+A259401	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(F000041(k)))	""		a(n) = sum(k=0, n, 2^(n-k)*numbpart(k))	_	_	_
+A261587	lambdan	0	n -> Functions.DIGIT_SUM.z(60, F000045(n))	""		a(n) = sumdigits(fibonacci(n), 60)	_	_	_
+A261792	filprof	1	k -> ZV(k).*(PI(k)).-(1)
+A267252	filprof	1	0	k -> ZV(103*k - 4707).*(k).+(50383).abs()
+A268465	filprof	1	0	k -> ZV(k).*(PM(k)).+(PM(k + 1).*(k + 1)).+(PM(k + 2).*(k + 2))	prime(m) + (m + 1)*prime(m + 1) + (m + 2)*prime(m + 2).
+A268987	filprof	1	k -> ZV(k).^(k + 1).+(k - 1)
+A272077	filprof	1	0	k -> ZV(7*k - 371).*(k).+(4871).abs()
+A272160	filprof	1	0	k -> ZV(8*k - 488).*(k).+(7243).abs()
+A272324	filprof	1	0	k -> ZV(82*k - 1228).*(k).+(6130).*(k).-(5861).abs()
+A272326	filprof	1	0	k -> ZV(k + 853).*(k).+(2636).*(k).+(3536).*(k).+(1753).abs()
+A272401	filprof	1	0	k -> ZV(3*k - 183).*(k).+(3318).*(k).-(18757).abs()
+A272410	filprof	1	0	k -> ZV(k - 97).*(k).+(3294).*(k).-(45458).*(k).+(213589L).abs()
+A272438	filprof	1	0	k -> ZV(-66*k + 3845).*(k).-(60897).*(k).+(251831).abs()
+A272444	filprof	1	0	k -> ZV(k - 99).*(k).+(3588).*(k).-(56822).*(k).+(348272L).*(k).-(286397L).abs()
+A272555	filprof	1	0	k -> ZV(k - 126).*(k).+(6217).*(k).-(153066).*(k).+(1987786L).*(k).-(13055316L).*(k).+(34747236L)./(36).abs()
+A272710	filprof	1	0	k -> ZV(k - 133).*(k).+(6729).*(k).-(158379).*(k).+(1720294L).*(k).-(6823316L)./(4).abs()
+A286946	multrar	1	(self, n) -> SU(1, n - 1, k -> LCM(self.a(k), self.a(n - 1))./(self.a(k)))	"1"
+A287006	multrar	1	(self, n) -> SU(1, n - 1, k -> LCM(self.a(k), self.a(n - 1))./(self.a(n - 1)))	"1"
+A287894	lambdan	1	n -> SU(1, n, k -> Functions.DIGIT_SUM.z(10, ZV(k).^(n)))	""		a(n) = sum(k=1, n, sumdigits(k^n))	_	_	_
+A289472	lambdan	1	n -> RU(0, n/2-1, s -> QV(Z2(s*s + 3*s)).*(RQ(0, 2*s-1, i -> (QV(Z2(n - 2 - i)).-(1))))./(RQ(1, s, i -> QV(Z2(2*i)).-(1)))).num()	""		a(n) = sum(s=0, n\2-1, 2^(s^2+3*s)*prod(i=0, 2*s-1, (2^(n-2-i)-1))/prod(i=1, s, 2^(2*i)-1))	_	_	_
+A292303	multrar	1	(self, n) -> SU(1, n - 1, k -> LCM(self.a(k), n - 1)./(n - 1))	"1"
+A307248	multrar	1	(self, n) -> SU(1, n - 1, k -> BI(n, k).*(Z2(k*k).-(self.a(k)))).+(1)	"1"
+A308475	multrar	1	(self, n) -> SU(1, n - 1, k -> Functions.GCD.i(n, k) != 1 ? ZV(0) : BI(n, k).*(self.a(k)))	"1"
+A319733	lambdan	0	n -> SU(0, 1 << n, k -> F007953(k))	""		a(n) = sum(k=0, 2^n, sumdigits(k))	_	_	_
+A326746	lambdan	0	n -> ZV(Functions.DIGIT_SUM.i(n) % Functions.DIGIT_SUM.i(n + 1))	""		a(n) = sumdigits(n) % sumdigits(n+1)	_	_	_
+A331404	multrar	0	(self, n) -> SU(1, n, k -> Z_1(n - k).*(BI(n, k)).*(self.a(k - 1)).*(self.a(n - k)))	"1"
+A331519	multrar	0	(self, n) -> SU(1, n, k -> BI(n, k).and(ZV(1)).*(self.a(k - 1)).*(self.a(n - k)))	"1"
+A333293	lambdan	2	n -> RU(1, n-1, k -> QV(k).^(2).*(F000010(k))).+(QV(n).^(2).*(F000010(n))./(2)).num()	""		a(n) = sum(k=1, n-1, k^2*eulerphi(k)) + n^2*eulerphi(n)/2	_	_	_
+A336195	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(3).*(self.a(k)))	"1"
+A336196	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(4).*(self.a(k)))	"1"
+A336197	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(5).*(self.a(k)))	"1"
+A336228	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(n - k).*(self.a(k)))	"1"
+A336243	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(FA(n - k - 1)).*(self.a(k)))	"1"
+A337944	lambdan	1	n -> SU(1, n/2, i -> F000005(ZV(i).^(2).+(ZV(n-i).^(2))))	""		a(n) = sum(i=1, n\2, numdiv(i^2+(n-i)^2))	_	_	_
+A340886	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(ZV(2).^(n - k - 1)).*(self.a(k)))	"1"
+A340887	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(ZV(3).^(n - k - 1)).*(self.a(k)))	"1"
+A340888	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(ZV(4).^(n - k - 1)).*(self.a(k)))	"1"
+A346052	multrar	0	(self, n) -> SU(0, n - 3, k -> BI(n - 3, k).*(self.a(k))             )	"1,1,0"
+A346053	multrar	0	(self, n) -> SU(0, n - 1, k->  BI(n + 1, k + 2).*(self.a(k))).negate()	"1"
+A346059	multrar	0	(self, n) -> SU(0, n - 1, k->  BI(n + 2, k + 3).*(self.a(k))).negate()	"1"
+A346060	multrar	0	(self, n) -> SU(0, n - 1, k->  BI(n + 3, k + 4).*(self.a(k))).negate()	"1"
+A346145	filprof	1	k -> ZV(k).^(2).+(25)
+A346185	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n - 1, k).^(3).*(self.a(k)))	"1"
+A351283	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n + 1, k + 3).*(self.a(k))           )	"1,1"
+A351437	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n - 1, k + 1).*(self.a(k))           )	"1,1"
+A351438	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n, k + 2).*(self.a(k))               )	"1,1"
+A351648	multrar	0	(self, n) -> SU(0, n - 2, k -> BI(n + 2, k + 4).*(self.a(k))           )	"1,1"
+A351660	multrar	0	(self, n) -> SU(0, n - 3, k -> BI(n - 2, k + 1).*(self.a(k))           )	"1,1,1"
+A351813	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n + 2*k - 1, n - k - 1).*(self.a(k)))	"1"
+A351814	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n + 3*k - 1, n - k - 1).*(self.a(k)))	"1"
+A351815	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n + 4*k - 1, n - k - 1).*(self.a(k)))	"1"
+A351816	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n + 2*k + 1, n - k - 1).*(self.a(k)))	"1"
+A351817	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n + 3*k + 2, n - k - 1).*(self.a(k)))	"1"
+A351818	multrar	0	(self, n) -> SU(0, n - 1, k -> BI(n + 4*k + 3, n - k - 1).*(self.a(k)))	"1"
+A354695	multrar	0	(self, n) -> SU(0, (n - 1)/3, k-> BI(n + 1, 3*k + 2).*(self.a(k)))	"1"
+A354696	multrar	0	(self, n) -> SU(0, (n - 1)/4, k-> BI(n + 2, 4*k + 3).*(self.a(k)))	"1"
+A354728	multrar	0	(self, n) -> SU(1, n, k -> ZV(k).*(S1(n, k)).*(self.a(k - 1)))	"1"
+A355081	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(3).^(k).*(BI(n - 1, k)).*(self.a(k)))	"1"
+A355082	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(4).^(k).*(BI(n - 1, k)).*(self.a(k)))	"1"
+A355088	multrar	0	(self, n) -> SU(0, n - 1, k -> ZV(3).^(k).*(BI(n, k)).*(self.a(k)))	"1"
+A355120	multrar	0	(self, n) -> SU(1, n, k -> ZV(k).*(Z2(k - 1)).*(S1(n, k)).*(self.a(k - 1)))	"1"
+A355121	multrar	0	(self, n) -> SU(1, n, k -> ZV(k).*(Z2(k - 1)).*(SA(n, k)).*(self.a(k - 1)))	"1"
+A355122	multrar	0	(self, n) -> SU(1, n, k -> ZV(k).*(Z2(k - 1)).*(S2(n, k)).*(self.a(k - 1)))	"1"
+A355123	multrar	0	(self, n) -> SU(1, n, k -> Z_1(n - k).*(k).*(Z2(k - 1)).*(S2(n, k)).*(self.a(k - 1)))	"1"
+A355131	multrar	0	(self, n) -> SU(1, n, k -> ZV(k).*(Z2(k)).*(S2(n, k)).*(self.a(k - 1)))	"1"
+A355132	multrar	0	(self, n) -> SU(1, n, k -> Z_1(n - k).*(k).*(Z2(k)).*(S2(n, k)).*(self.a(k - 1)))	"1"
+A355133	multrar	0	(self, n) -> SU(1, n, k -> ZV(k).*(Z2(k)).*(S1(n, k)).*(self.a(k - 1)))	"1"
+A355134	multrar	0	(self, n) -> SU(1, n, k -> ZV(k).*(Z2(k)).*(SA(n, k)).*(self.a(k - 1)))	"1"
+A367637	multrar	0	(self, n) -> SU(0, (n - 1)/6, k -> self.a(k).*(self.a(n - 1 - 6*k)))	"1"
+A367666	multrar	0	(self, n) -> SU(0, (n - 2)/3, k -> self.a(k).*(self.a(n - 2 - 3*k))).+(self.a(n - 1))	"1,1,2"
+A367667	multrar	0	(self, n) -> SU(0, (n - 3)/3, k -> self.a(k).*(self.a(n - 3 - 3*k))).+(self.a(n - 1))	"1,1,1,2"
+A367794	multrar	0	(self, n) -> SU(0, (n - 1)/4, k -> self.a(k).*(self.a(n - 1 - 4*k))                 )	"1"
+A367800	multrar	0	(self, n) -> SU(0, (n - 1)/8, k -> self.a(k).*(self.a(n - 1 - 8*k))                 )	"1"
+A378957	lambdan	0	n -> RU(0, n, k -> BI(new Q(2*n + 7*k + 1, 2), n).*(BI(n, k))./(2*n + 7*k + 1)).num()	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+7*k/2+1/2, n)/(2*n+7*k+1))	_	_	_
+A378986	lambdan	1	n -> PHI(2*n).*(2).-(2*n)	2*phi(2*n) - 2*n, where phi is Euler totient function.	sign,new	1..32769	nyi	_Antti Karttunen_
+A378987	lambdan	1	n -> PHI(2*n - 1).*(2).-(2*n - 1)	Odd bisection of D083254, where D083254(n) = 2*phi(n)-n.	sign,new	1..32769	nyi	_Antti Karttunen_
+A378994	lambdan	1	n -> GCD(2*n, SIGMA(2*n))	a(n) = gcd(2*n, sigma(2*n)).	nonn,new	1..32769	nyi	_Antti Karttunen_
+A378995	lambdan	1	n -> new Q(SIGMA(2*n), ZV(2*n)).num()	Numerator of sigma(2*n)/(2*n).	nonn,frac,easy,new	1..32769	nyi	_Antti Karttunen_
+A378996	lambdan	1	n -> new Q(SIGMA(2*n), ZV(2*n)).den()	Denominator of sigma(2*n)/(2*n).	nonn,frac,easy,new	1..32769	nyi	_Antti Karttunen_
+A379016	decexp	0	() -> CR.PI.*(50)./(1296)	Decimal expansion of 50*Pi/1296.	nonn,cons,new	0..99	nyi	_Stefano Spezia_
+A379021	lambdan	0	n -> QV(2).*(RU(0, n, k -> QV(BI(2*n+k+2, k)).*(BI(2*n+k+2, n-k))./(2*n+k+2))).num()	""		a(n) = 2*sum(k=0, n, binomial(2*n+k+2, k)*binomial(2*n+k+2, n-k)/(2*n+k+2))	_	_	_
+A379022	lambdan	0	n -> SU(0, n, k -> BI(2*n+k-1, k).*(BI(2*n+k, n-k)))	""		a(n) = sum(k=0, n, binomial(2*n+k-1, k)*binomial(2*n+k, n-k))	_	_	_
+A379023	lambdan	0	n -> QV(3).*(RU(0, n, k -> QV(BI(3*n+k+3, k)).*(BI(3*n+k+3, n-k))./(3*n+k+3))).num()	""		a(n) = 3*sum(k=0, n, binomial(3*n+k+3, k)*binomial(3*n+k+3, n-k)/(3*n+k+3))	_	_	_
+A379024	lambdan	0	n -> QV(4).*(RU(0, n, k -> QV(BI(4*n+k+4, k)).*(BI(4*n+k+4, n-k))./(4*n+k+4))).num()	""		a(n) = 4*sum(k=0, n, binomial(4*n+k+4, k)*binomial(4*n+k+4, n-k)/(4*n+k+4))	_	_	_
+A379025	lambdan	0	n -> SU(0, n, k -> BI(3*n+k-1, k).*(BI(3*n+k, n-k)))	""		a(n) = sum(k=0, n, binomial(3*n+k-1, k)*binomial(3*n+k, n-k))	_	_	_
+A379026	lambdan	0	n -> SU(0, n, k -> BI(4*n+k-1, k).*(BI(4*n+k, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+k-1, k)*binomial(4*n+k, n-k))	_	_	_
+A379037	lambdan	0	n -> QV(2).*(RU(0, n, k -> QV(BI(3*k+2, k)).*(BI(3*k+2, n-k))./(3*k+2))).num()	""		a(n) = 2*sum(k=0, n, binomial(3*k+2, k)*binomial(3*k+2, n-k)/(3*k+2))	_	_	_
+A379038	lambdan	0	n -> QV(3).*(RU(0, n, k -> QV(BI(4*k+3, k)).*(BI(4*k+3, n-k))./(4*k+3))).num()	""		a(n) = 3*sum(k=0, n, binomial(4*k+3, k)*binomial(4*k+3, n-k)/(4*k+3))	_	_	_
+A379039	lambdan	0	n -> RU(0, n, k -> QV(BI(4*k+2, k)).*(BI(4*k+2, n-k))./(2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(4*k+2, k)*binomial(4*k+2, n-k)/(2*k+1))	_	_	_
+---- 2024-12-15 23:08:36
+A182357	filprof	1	0	k -> ZV(2).^(k).+(ZV(k).^(2)).+(2)	nonn	1..11	nyi	_Alex Ratushnyak_
+A182359	filprof	1	0	k -> ZV(5).^(k).+(ZV(k).^(4))	nonn	1..9	nyi	_Alex Ratushnyak_
+A182360	filprof	1	0	k -> ZV(2).^(k).-(ZV(k).^(4))	nonn	1..6	nyi	_Alex Ratushnyak_

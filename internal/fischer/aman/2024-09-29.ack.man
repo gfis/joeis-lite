@@ -1,0 +1,112 @@
+A227904	filnum	0	1	k -> SU(1, k, j -> F024816(j)).mod(Functions.SIGMA1.z(k)).isZero()	Numbers k such that Sum_{j=1..k} antisigma(j) == 0 (mod sigma(k)).
+A229114	filnum	0	1	k -> F024816(k).modZ(k).equals(F024816(k + 1).modZ(k + 1))	Numbers k such that antisigma(k) mod k = antisigma(k+1) mod (k+1).
+---- 2024-09-29 21:08:50
+A062984	lambdan	1	n -> SU(1, Functions.SIGMA1.i(n) - n - 1, k -> MU(k))	a=sum(k=1, sigma(n) - n - 1, moebius(k))
+A076368	lambdan	1	n -> (n == 1) ? ZV(1) : F000040(n).-(F000040(n-1)).+(ZV(1))	"1"		a(1) = 1; for n > 1, a(n) = prime(n) - prime(n-1) + 1	_	_	_
+A076646	filnum	0	1	k -> Predicates.SQUARE.is(F000203(k).*(F024816(k)))	Numbers n such that sigma(n) * antisigma(n) is a perfect square, where antisigma(n) = sum of the non-divisors of n that are between 1 and n.
+A076667	filnum	0	1	k -> F024816(k).+(F024816(k + 3)).equals(F024816(k + 1).+(F024816(k + 2)))	antisigma(n) + antisigma(n+3) = antisigma(n+1) + antisigma(n+2), where antisigma(n) = sum of the non-divisors of n that are between 1 and n.
+A076847	filter	1	new A000594()	(k, v) -> ZV(k).IPP()	Ramanujan function tau(p) as p runs through the primes.
+A079392	filtpos	1	1	new A000594()	v -> v.compareTo(Z.ZERO) > 0	Numbers n such that J000594(n) > 0 (Ramanujan_s tau function is positive).
+A098746	lambdan	0	n -> { final int m = 2; return (n == 0) ? ZV(1) : RU(1, n, k -> new Q(BI(n*(m + 1) - m*k - 1, n - k).*(k))./(n*m - (m - 1)*k)).num(); }
+A121284	trilambn	1	1	1	(n, k) -> D003266(n)./(F000045(k))	Triangle T(n,k), 1<=k<=n, read by rows given by T(n,k) = D003266(n)/F000045(k).
+A126813	parmof2	1	A126812	8
+A126837	parmof2	1	A126812	49
+A126838	parmof2	1	A126812	343
+A126840	parmof2	1	A126812	121
+A126841	parmof2	1	A126812	Z.valueOf(11).pow(3)
+A126843	parmof2	1	A126812	Z.valueOf(13).pow(2)
+A126844	parmof2	1	A126812	Z.valueOf(13).pow(3)
+A126846	parmof2	1	A126812	Z.valueOf(23).pow(2)
+A126847	parmof2	1	A126812	Z.valueOf(23).pow(3)
+A130406	lambdan	0	n -> RU(0, n, k -> new Q(F000045(k), F000045(k + 1))).*(F000045(n + 2)).+(F000045(n + 1)).*(D003266(n + 1)).num()	where F(n)=F000045(n) is the n-th Fibonacci number.
+A130407	multrar	0	(self, n) -> F000045(n + 1).*(self.a(n - 1)).+(F000045(n + 2).*(D003266(n)))	"1"	a(n) = F(n+1)*a(n-1) + F(n+2)*A003266(n)
+A130458	lambdan	0	n -> { final int m = 3; return (n == 0) ? ZV(1) : RU(1, n, k -> new Q(BI(n*(m + 1) - m*k - 1, n - k).*(k))./(n*m - (m - 1)*k)).num(); }
+A136364	sintrif	1	(term, n) -> term.-(ZV(2).*(ZV(10).^(n))).+(ZV(1))	""	new A057494()	a(n) = J057494(n) - 2*10^n + 1	_	_	_
+A154389	filter	1	new A018252()	v -> { final long d = Functions.DIGIT_MAX.i(v); return d == 1 || d == 9; }	Nonprimes whose largest digit is an odd nonprime.
+A154390	filter	1	new A002808()	v -> { final long d = Functions.DIGIT_MAX.i(v); return d == 2 || d == 3 || d == 5 || d == 7; }	Composites whose largest digit is prime.
+A156753	filter	1	new A000040()	v -> { final long d = Functions.DIGIT_MAX.i(v); return Functions.DIGIT_SUM.i(v) - d == d; }	Primes whose largest digit is equal to the sum of all the other digits.
+A186182	lambdan	0	n -> { final int m = 4; return (n == 0) ? ZV(1) : RU(1, n, k -> new Q(BI(n*(m + 1) - m*k - 1, n - k).*(k))./(n*m - (m - 1)*k)).num(); }
+A186183	lambdan	0	n -> { final int m = 5; return (n == 0) ? ZV(1) : RU(1, n, k -> new Q(BI(n*(m + 1) - m*k - 1, n - k).*(k))./(n*m - (m - 1)*k)).num(); }
+A186184	lambdan	0	n -> { final int m = 6; return (n == 0) ? ZV(1) : RU(1, n, k -> new Q(BI(n*(m + 1) - m*k - 1, n - k).*(k))./(n*m - (m - 1)*k)).num(); }
+A200213	lambdan	1	n -> (n <= 1) ? ZV(0) : F000005(n).-(D010052(n)).-(2)	"0"		a(1) = 0; for n > 1, a(n) = F000005(n) - D010052(n) - 2	_	_	_
+A206350	lambdan	1	n -> (n <= 1) ? ZV(1) : ZV(2).*(SU(1, n-1, k -> F000010(k)))	"1"		a(n) = 2*Sum_{k=1..n-1} F000010(k), a(1) = 1	_	_	_
+A227221	lambdan	1	n -> CR.SQRT2./(6).+(1).*(ZV(n).^(3)).floor()	sqrt(2)/6*k^3 + k^3	a:=evalf(sqrt(2))/6*k^3 + k^3;
+A227794	filter	1	new LambdaSequence(1, n -> CR.PI.*(ZV(n).^(2)).floor())	v -> v.IPP()	Primes of the form: floor(Pi*n^2).
+A229088	filnum	0	1	k -> Functions.SIGMA1.z(k).modZ(k).compareTo(Functions.ANTISIGMA.z(k).modZ(k)) == 0	Numbers k such that sigma(k) mod k = antisigma(k) mod k, where sigma(k) = A000203(k) = sum of divisors of k, antisigma(k) = A024816(k) = sum of non-divisors of k.
+A229089	filnum	1	1	k -> Functions.SIGMA1.z(k).modZ(k).compareTo(Functions.ANTISIGMA.z(k).modZ(k)) <  0	Numbers n such that sigma(n) mod n < antisigma(n) mod n, where sigma(n) = A000203(n) = sum of divisor of n, antisigma(n) = A024816(n) = sum of non-divisors of n.
+A229090	filnum	1	1	k -> Functions.SIGMA1.z(k).modZ(k).compareTo(Functions.ANTISIGMA.z(k).modZ(k)) >  0	Numbers n such that sigma(n) mod n > antisigma(n) mod n, where sigma(n) = A000203(n) = sum of divisors of n, antisigma(n) = A024816(n) = sum of non-divisors of n.
+A229347	lambdan	1	n -> (n <= 1) ? ZV(1) : ZV(n).*(Z2(F001221(n).-(1)))	"1"		a(1) = 1, for n > 1 a(n) = n*2^(omega(n)-1)	_	_	_
+A237719	filnum	1	1	k -> F000217(k).mod(k) == F024816(k).mod(k) + F000203(k).mod(k)	Numbers n such that k(n) = (n(n+1)/2 mod n) = (antisigma(n) mod n) + (sigma(n) mod n).
+A239941	filter	1	new LambdaSequence(1, n -> Functions.SQRT.z(PM(n).^(3).+(PM(n + 1).^(3)).+(PM(n + 2).^(3))./(3)))	v -> v.IPP()	Primes p which are floor of Root-mean-cube (RMC) of prime(n), prime(n+1) and prime(n+2).
+A240339	filter	1	new LambdaSequence(1, n -> Functions.SQRT.z(PM(n).^(3).+(PM(n + 1).^(3))./(2)))	v -> v.IPP()	Primes p which are floor of Root-Mean-Cube (RMC) of prime(n) and prime(n+1).
+A242481	lambdan	1	n -> Functions.TRIANGULAR.z(n).modZ(n).+(Functions.SIGMA1.z(n).modZ(n)).+(Functions.ANTISIGMA.z(n).modZ(n))./(n)	((n*(n+1)/2) mod n + sigma(n) mod n + antisigma(n) mod n) / n.
+A242482	filnum	1	1	k -> Functions.TRIANGULAR.z(k).modZ(k).+(Functions.SIGMA1.z(k).modZ(k)).+(Functions.ANTISIGMA.z(k).modZ(k))./(k).equals(ZV(1))		Numbers n such that A242481(n) = ((n*(n+1)/2) mod n + sigma(n) mod n + antisigma(n) mod n) / n = 1.
+A242483	filnum	1	1	k -> Functions.TRIANGULAR.z(k).modZ(k).+(Functions.SIGMA1.z(k).modZ(k)).+(Functions.ANTISIGMA.z(k).modZ(k))./(k).equals(ZV(2))		Numbers n such that A242481(n) = ((n*(n+1)/2) mod n + sigma(n) mod n + antisigma(n) mod n) / n = 2.
+A243503	lambdan	1	n -> (n <= 1) ? ZV(0) : E061395(n).*(F001222(n)).+(E061395(n)).-(D056239(n)).+(F001222(n)).-(1)	"0"		a(n) = E061395(n) * F001222(n) + E061395(n) - D056239(n) + F001222(n) - 1	_	_	_
+A244324	filnum	1	1	k -> F024816(k)./(k).equals(F024816(k).modZ(k))	Numbers n such that floor(antisigma(n) / n) = antisigma(n) mod n.
+A244325	lambdan	1	n -> Functions.ANTISIGMA.z(n)./(n)	Floor(antisigma(n) / n), where antisigma(n) = A024816(n) = the sum of the non-divisors of n that are between 1 and n.
+A244326	filnum	1	2	k -> F024816(k)./(k).compareTo(F024816(k - 1)./(k - 1)) < 0	Numbers n such that floor(antisigma(n)/n) < floor(antisigma(n - 1)/(n - 1)).
+A244329	lambdan	1	n -> Functions.ANTISIGMA.z(n)./(Functions.SIGMA1.z(n))	floor(antisigma(n) / sigma(n)) = floor(A024816(n) / A000203(n)).
+A244666	filnum	1	1	k -> F024816(k)./(F000203(k)).equals(F024816(k + 1)./(F000203(k + 1)))	Numbers n such that floor(antisigma(n) / sigma(n)) = floor(antisigma(n+1) / sigma(n+1)).
+A249688	sintrif	1	(term, n) -> term.^(2)	""	new A000594()	a(n) = n-th Ramanujan number A000594(n), squared.
+A255968	filnum	1	1	k -> F024816(k).toString().indexOf(Integer.toString(k)) >= 0	Numbers n such that antisigma(n) contains n as a substring.
+A256162	lambdan	1	n -> (n <= 1) ? ZV(1) : ZV(10).^((ZV(n/2))).-(ZV(2).*((ZV(n/2)))).+(ZV(n)).-(2)	"1"		a(n) = 10^floor(n/2) - 2*floor(n/2) + n - 2 = 10^floor(n/2)-(1+(-1)^n)/2 - 1 for n>1, a(1) = 1	_	_	_
+A258413	filnum	0	1	k -> F024816(k).toString().indexOf(F000203(k).toString()) >= 0	Numbers m such that antisigma(m) contains sigma(m) as a substring.
+A259541	filnum	1	1	k -> Predicates.PALINDROME.is(F024816(k))	Numbers n such that antisigma(n) is palindromic.
+A270532	filnum	1	0	k -> { final Z p = PM(k); return !D003266(p).mod(Functions.TRIANGULAR.z(p)).isZero(); }	is not divisible by p*(p+1)/2 where p is the k-th prime.
+A270839	filnum	1	2	k -> D003266(k)./(F000045(k - 1)).mod(k) != 0
+A271421	lambdan	1	n -> D003266(3*n)./(D003266(2*n + 1).*(D003266(n + 1)))	Fibonorial(3*n)/(fibonorial(2*n+1)*fibonorial(n+1)),
+A272337	filnum	1	1	k -> F024816(k).mod(F000203(k)).equals(Functions.TAU.z(k))	Numbers such that antisigma(n) mod sigma(n) = d(n), where antisigma(n) is the sum of the numbers less than n that do not divide n, sigma(n) is the sum of the divisors of n and d(n) is the number of divisors of n.
+A272338	filnum	1	1	k -> F024816(k).mod(F000203(k)).equals(Functions.PHI.z(k))	Numbers such that antisigma(n) mod sigma(n) = phi(n), where antisigma(n) is the sum of the numbers less than n that do not divide n, sigma(n) is the sum of the divisors of n and phi(n) is the Euler totient function of n.
+A276499	decexp	0	() -> CR.PHI.pow(new Q(3, 8)).*(X062073)./(CR.FIVE.^(new Q(1, 4)))	Decimal expansion of Fibonorial(1/2).
+A277946	filter	1	new A000290()	v -> Functions.DIGIT_MAX.i(v) == 2	Squares whose largest decimal digit is 2.
+A277947	filter	1	new A000290()	v -> Functions.DIGIT_MAX.i(v) == 3	Squares whose largest decimal digit is 3.
+A277948	filter	1	new A000290()	v -> Functions.DIGIT_MAX.i(v) == 4	Squares whose largest decimal digit is 4.
+A279481	lambdan	1	n -> (n <= 2) ? ZV(0) : SU(2, n, i -> D010051(i).*(D010051(2*n - i)).*(F000720(2*n - i).-(F000720(i - 1))))	"0,0,1"		a(n) = Sum_{i=2..n} D010051(i)*D010051(2*n-i)*(pi(2*n-i)-pi(i-1)) for n > 2	_	_	_
+A280510	lambdan	1	n -> (n <= 1) ? ZV(3) : ZV(3).*(D053644(n-1))	"3,3"		a(n) = 3*D053644(n-1) for n >= 2	_	_	_
+A294663	filter	1	new A000578()	v -> Functions.DIGIT_MAX.i(v) == 4	Cubes whose largest digit is 4.
+A294664	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(3)) == 4	Numbers n such that the largest digit of n^3 is 4.
+A294665	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(3)) == 5	Numbers n such that the largest digit of n^3 is 5.
+A294996	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(3)) == 6	Numbers n such that the largest digit of n^3 is 6.
+A294997	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(3)) == 7	Numbers n such that the largest digit of n^3 is 7.
+A294998	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(3)) == 8	Numbers n such that the largest digit of n^3 is 8.
+A294999	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(3)) == 9	Numbers n such that the largest digit of n^3 is 9.
+A295005	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(2)) == 5	Numbers n such that the largest digit of n^2 is 5.
+A295006	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(2)) == 6	Numbers n such that the largest digit of n^2 is 6.
+A295007	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(2)) == 7	Numbers n such that the largest digit of n^2 is 7.
+A295009	filnum	1	1	k -> Functions.DIGIT_MAX.i(ZV(k).^(2)) == 9	Numbers k such that the largest digit of k^2 is 9.
+A295015	filter	1	new A000290()	v -> Functions.DIGIT_MAX.i(v) == 5	Squares whose largest digit is 5.
+A295016	filter	1	new A000290()	v -> Functions.DIGIT_MAX.i(v) == 6	Squares whose largest digit is 6.
+A295017	filter	1	new A000290()	v -> Functions.DIGIT_MAX.i(v) == 7	Squares whose largest digit is 7.
+A295018	filter	1	new A000290()	v -> Functions.DIGIT_MAX.i(v) == 8	Squares whose largest digit is 8.
+A295019	filter	1	new A000290()	v -> Functions.DIGIT_MAX.i(v) == 9	Squares whose largest digit is 9.
+A295021	filter	1	new A000578()	v -> Functions.DIGIT_MAX.i(v) == 6	Cubes whose largest digit is 6.
+A295022	filter	1	new A000578()	v -> Functions.DIGIT_MAX.i(v) == 7	Cubes whose largest digit is 7.
+A295023	filter	1	new A000578()	v -> Functions.DIGIT_MAX.i(v) == 8	Cubes whose largest digit is 8.
+A295024	filter	1	new A000578()	v -> Functions.DIGIT_MAX.i(v) == 9	Cubes whose largest digit is 9.
+A295025	filter	1	new A000578()	v -> Functions.DIGIT_MAX.i(v) == 5	Cubes whose largest digit is 5.
+A299204	sintrif	2	(term, n) -> { final Z md = term.modZ(n - 1); return md.compareTo(ZV(0)) < 0 ? md.+(n - 1) : md; }	""	new A000594()	a(n) = J000594(n) mod (n-1).
+A307120	lambdan	1	n -> (n <= 1) ? ZV(3) : F000005(n-1).+(F000005(n)).+(F000005(n+1))	"3"		a(1) = 3, for n>1, a(n) = F000005(n-1) + F000005(n) + F000005(n+1)	_	_	_
+A336480	lambdan	1	n -> { final Z ff = D003266(n); return Functions.NEXT_PRIME.z(ff).-(ff); }	the smallest positive k such that D003266(n) + k is a prime.
+A336481	lambdan	4	n -> { final Z ff = D003266(n); return ff.-(Functions.PREV_PRIME.z(ff)); }	the smallest positive k such that D003266(n) - k is a prime, for n>3.
+A337566	lambdan	1	n -> (n <= 2) ? ZV(0) : F000005(2*n).-(3)	"0"		a(1) = 0 then, for n >= 2, a(n) = tau(2n) - 3 = J099777(n) - 3	_	_	_
+A350063	lambdan	1	n -> (n <= 1) ? ZV(0) : D046523(E322993(n))	"0"		a(1) = 0; for n > 1, a(n) = D046523(E322993(n)) = D046523(F000265(D156552(n)))	_	_	_
+A353000	sintrif	1	(term, n) -> F024816(term)./(F000203(term))	""	new A076617()	a(n) = A024816(A076617(n)) / A000203(A076617(n)).
+A370223	lambdan	1	n -> D000071(n + 2).^(n).-(D000312(n).*(D003266(n)))
+A372949	lambdan	1	n -> D003266(2*n).*(2)./(D003266(n).*(D003266(n + 2)))	where f = D003266.
+A376356	filtpos	0	1	new A000462()	v -> v.mod(10) == 2	Positions of numbers in A000462 that end in 2.
+A376357	filtpos	0	1	new A007961()	v -> v.mod(10) == 0	Positions of numbers in A007961 that end in 0.
+A376358	filtpos	0	1	new A007961()	v -> v.mod(10) == 1	Numbers in A007961 that end in 1.
+A376359	filtpos	0	1	new A007961()	v -> v.mod(10) == 2	Numbers in A007961 that end in 2.
+A376360	filtpos	0	1	new A007961()	v -> v.mod(10) == 3	Numbers in A007961 that end in 3.
+A376447	lambdan	0	n -> { final int m = 7; return (n == 0) ? ZV(1) : RU(1, n, k -> new Q(BI(n*(m + 1) - m*k - 1, n - k).*(k))./(n*m - (m - 1)*k)).num(); }
+A376470	filter	1	new A000040()	v -> { final int p = v.intValueExact(); final Z t = ZV(29).^(p).-(Z2(p)); return t.mod(27) == 0 && t./(27).IPP(); }	Numbers k such that (29^k - 2^k)/27 is prime.	nonn,hard,more,new	1..9	nyi	_Robert Price_
+A376478	lambdan	1	n -> (n <= 2) ? ZV(n) : ZV(3).^(n - 2)		a(1) = 1, a(2) = 2, and a(n) = 3^(n-2) for n > 2.	nonn,easy,new	1..30	nyi	_Stefano Spezia_
+A376482	lambdan	1	n -> Functions.PHI.z(Z2(2*n).+(Z2(n)).+(1))./(6*n)	a(n) = phi( 2^(2*n) + 2^n + 1 ) / (6*n),
+---- 2024-09-29 21:31:41
+A226327	filnum	1	1	k -> Functions.DIGIT_SUM.z(k).equals(Functions.DIGIT_SUM.z(F024816(k)))	Sum of digits of n equals sum of digits of its antisigma (A024816).
+A227231	filnum	1	1	k -> F024816(k).modZ(k).equals(ZV(k - 1))	Numbers n such that antisigma(n) mod n = n - 1.
+A227757	filnum	1	1	k -> F024816(k).equals(F024816(k + 1).+(12))	Numbers n such that antisigma(n) = antisigma(n+1) + 12; where antisigma(n) = A024816(n).
+A248819	filnum	1	1	k -> F024816(k).toString().endsWith(Functions.SIGMA1.z(k).toString())		Numbers n such that the digits of antisigma(n) end in sigma(n).
+A299205	filtpos	1	2	new A299204()	v -> v.isZero()	Numbers k such that k-1 divides tau(k), where tau(k)=J000594(k) is Ramanujan_s tau function.
+A286125	filnum	0	1	k -> { final Z as = F024816(k); return !as.isZero() && F000045(k).mod(F024816(k)).isZero(); }	Numbers n such that antisigma(n) divides Fibonacci(n).

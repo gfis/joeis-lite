@@ -1,0 +1,178 @@
+---- 2024-12-23 13:19:20
+A074218	filprof	0	1	k -> CV(k).^(CR.PI).floor()	floor(k^Pi).
+A074222	filprof	0	1	k -> CV(k).^(CR.E).floor()	floor(n^e).
+A085191	diffs	0	new A071156()
+A090146	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 9).mod(100); return self.a(n - 9).-(m % 10).*(10).+(m); }, "3,13,23,33,43,53,63,73,83,93")	PRIME		identical digits followed by a 3
+A090147	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 9).mod(100); return self.a(n - 9).-(m % 10).*(10).+(m); }, "7,17,27,37,47,57,67,77,87,97")	PRIME		identical digits followed by a 7
+A090148	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 9).mod(100); return self.a(n - 9).-(m % 10).*(10).+(m); }, "9,19,29,39,49,59,69,79,89,99")	PRIME		identical digits followed by a 9
+A090151	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 2).mod(10); return self.a(n - 2).*(10).+(m); }, "3,31,37")	PRIME		identical digits preceded by a 3
+A090152	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 4).mod(10); return self.a(n - 4).*(10).+(m); }, "41,43,47,49")	PRIME		identical digits preceded by a 4
+A090153	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 4).mod(10); return self.a(n - 4).*(10).+(m); }, "5,51,53,57,59")	PRIME		identical digits preceded by a 5
+A090154	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 2).mod(10); return self.a(n - 2).*(10).+(m); }, "61,67")	PRIME		identical digits preceded by a 6
+A090155	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 4).mod(10); return self.a(n - 4).*(10).+(m); }, "7,71,73,77,79")	PRIME		identical digits preceded by a 7
+A090156	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 4).mod(10); return self.a(n - 4).*(10).+(m); }, "81,83,87,89")	PRIME		identical digits preceded by a 8
+A090157	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 2).mod(10); return self.a(n - 2).*(10).+(m); }, "91,97")	PRIME		identical digits preceded by a 9
+A102022	diffs	1	new A109652()
+A109615	filprof	1	1	k -> CR.PI./(2).^(k).floor()	floor((Pi/2)^n).
+A120389	lambdan	1	n -> D065855(F000040(n).^(2))
+A120742	diffs	0	new A073029()
+A134734	diffs	1	new A084662()
+A141076	filter	1	new A000040()	p -> PP(ZV(2310).-(p))
+A152850	diffs	0	new A152737()
+A155845	filter	1	new SingleTransformSequence(1, (p, n) -> ZV(2).^(p).-(p.*(3)), "", new A000040())	v -> PP(v.abs())	where p is prime,q=3
+A155846	filter	1	new SingleTransformSequence(1, (p, n) -> ZV(2).^(p).-(p.*(5)), "", new A000040())	v -> PP(v.abs())	where p is prime,q=5
+A155847	filter	1	new SingleTransformSequence(1, (p, n) -> ZV(2).^(p).-(p.*(7)), "", new A000040())	v -> PP(v.abs())	where p is prime,q=7
+A155848	filter	1	new SingleTransformSequence(1, (p, n) -> ZV(2).^(p).-(p.*(9)), "", new A000040())	v -> PP(v.abs())	where p is prime,q=9
+A167130	filter	0	new MultiTransformSequence(1, (self, n) -> self.s(0).+(self.s(1)), "", new A002808(), new A062502().skip(1))	PRIME
+A169837	parmof2nx	1	A064413	3
+A169838	inverse	2	new A169837()	2	1
+A169839	parmof2nx	1	A064413	4
+A169840	inverse	2	new A169839()	2	1
+A169841	parmof2nx	1	A064413	5
+A169842	inverse	2	new A169841()	2	1
+A169843	parmof2nx	1	A064413	6
+A169844	inverse	2	new A169843()	2	1
+A169845	parmof2nx	1	A064413	7
+A169846	inverse	2	new A169845()	2	1
+A169847	parmof2nx	1	A064413	8
+A169848	inverse	2	new A169847()	2	1
+A169849	parmof2nx	1	A064413	9
+A169850	inverse	2	new A169849()	2	1
+A169851	parmof2nx	1	A064413	10
+A169852	inverse	2	new A169851()	2	1
+A169853	parmof2nx	1	A064413	11
+A169854	inverse	2	new A169853()	2	1
+A169855	parmof2nx	1	A064413	12
+A169856	inverse	2	new A169855()	2	1
+A171001	lambdan	0	n -> { final int k = ((n&3) == 0) ? n/4 : n/4 + 1; return BI(n - k, k).^(2); }	where k = ceiling(n/4)	nonn	0..31	nyi	_John P. Linderman_
+A171002	lambdan	1	n -> { final int k = ((n&3) == 0) ? n/4 : n/4 + 1; return BI(n - k, k).*(BI(n - k - 1, k + 1)); }	where k = ceiling(n/4)	nonn	1..32	nyi	_John P. Linderman_
+A171006	lambdan	0	n -> { final int k = ((n&3) == 0) ? n/4 : n/4 + 1; return BI(n - k - 1, k).*(BI(n - k, k + 1)); }	where k = ceiling(n/4)	nonn	0..31	nyi	_John P. Linderman_
+A181548	sintrif	0	(term, n) -> Functions.DIGIT_SUM.z(term)	""	new A064413()	 Digital sum of EKG sequence.
+A181561	filter	1	new SingleTransformSequence(1, (v, n) -> v.+(1), "", new A002093())	PRIME	A002093 highly abundant number + 1.
+A181562	filter	1	new SingleTransformSequence(1, (v, n) -> v.-(1), "", new A002093())	PRIME	highly abundant number - 1.
+A199977	filter	1	new A000040()	p -> Functions.DIGIT_PRODUCT_ROOT.l(p) == 0L
+A199978	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_ROOT.l(c) == 0L	nonn,base	1..56	nyi	_Jaroslav Krizek_
+A199980	filter	1	new A000040()	p -> Functions.DIGIT_PRODUCT_ROOT.l(p) == 2L
+A199981	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_ROOT.l(c) == 2L
+A199982	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT.l(c) == 3L
+A199983	filter	1	new A000040()	p -> Functions.DIGIT_PRODUCT_ROOT.l(p) == 4L
+A199984	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_ROOT.l(c) == 4L
+A199985	filnum	1	1	k -> Functions.DIGIT_PRODUCT.l(k) == 5L
+A199986	filnum	1	1	k -> Functions.DIGIT_PRODUCT.l(k) == 2L
+A199987	filnum	1	1	k -> Functions.DIGIT_PRODUCT.l(k) == 4L
+A199988	filnum	1	1	k -> Functions.DIGIT_PRODUCT.l(k) == 6L
+A199989	filnum	1	1	k -> Functions.DIGIT_PRODUCT.l(k) == 8L
+A199990	filnum	1	1	k -> Functions.DIGIT_PRODUCT.l(k) == 10L
+A199991	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_PERSISTENCE.l(c) == 1L	Nonprime numbers whose multiplicative persistence is 1.	nonn,base	1..56	nyi	_Jaroslav Krizek_
+A199992	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_PERSISTENCE.l(c) == 2L
+A199993	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_PERSISTENCE.l(c) == 3L
+A199994	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_PERSISTENCE.l(c) == 4L
+A199995	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_PERSISTENCE.l(c) == 5L
+A199996	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_PERSISTENCE.l(c) == 6L
+A199997	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_PERSISTENCE.l(c) == 7L
+A199998	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_PERSISTENCE.l(c) == 8L
+A201015	filter	1	new A002808()	v -> Functions.DIGIT_PRODUCT.l(v) == 2	Composite numbers whose product of digits is 2	nonn,base	1..10000	nyi	_Jaroslav Krizek_
+A201018	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_ROOT.l(c) == 5L
+A201020	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_ROOT.l(c) == 6L
+A201021	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_ROOT.l(c) == 7L
+A201023	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_ROOT.l(c) == 8L
+A201024	filter	1	new A002808()	c -> Functions.DIGIT_PRODUCT_ROOT.l(c) == 9L
+A201054	filter	1	new A002808()	v -> Functions.DIGIT_PRODUCT.l(v) == 5	Composite numbers whose product of digits is 5	nonn,base	1..10000	nyi	_Jaroslav Krizek_
+A201055	filter	1	new A002808()	v -> Functions.DIGIT_PRODUCT.l(v) == 6	Composite numbers whose product of digits is 6	nonn,base	1..10860	nyi	_Jaroslav Krizek_
+A201965	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 4).mod(10); return self.a(n - 4).*(10).+(m); }, "101,103,107,109")	PRIME		identical digits preceded by a 10
+A201966	filter	0	new MultiTransformSequence(1, (self, n) -> { final long m = self.a(n - 4).mod(10); return self.a(n - 4).*(10).+(m); }, "11,111,113,117,119")	PRIME		identical digits preceded by an 11
+A217019	diffs	1	new A128301()
+A225625	filter	1	new SingleTransformSequence(1, (p, n) -> CV(p).log().floor().+(p.^(2)), "", new A000040())	PRIME	floor(log(p)) + p^2, where p is prime.
+A239712	filter	0	new SingleTransformSequence(1, (term, n) -> term.-(1), "", new A018900())	PRIME	m = 2^i + 2^j - 1, where i > j >= 0.
+A239713	filter	0	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(2), 3).-(1), "", new A018900())	PRIME	m = 3^i + 3^j - 1, where i > j >= 0.
+A239714	filter	0	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(2), 4).-(1), "", new A018900())	PRIME	m = 4^i + 4^j - 1, where i > j >= 0.
+A239715	filter	0	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(2), 5).-(1), "", new A018900())	PRIME	m = 5^i + 5^j - 1, where i > j >= 0.
+A239716	filter	0	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(2), 6).-(1), "", new A018900())	PRIME	m = 6^i + 6^j - 1, where i > j >= 0.
+A239717	filter	0	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(2), 7).-(1), "", new A018900())	PRIME	m = 7^i + 7^j - 1, where i > j >= 0.
+A239718	filter	0	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(2), 8).-(1), "", new A018900())	PRIME	m = 8^i + 8^j - 1, where i > j >= 0.
+A239719	filter	0	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(2), 9).-(1), "", new A018900())	PRIME	m = 9^i + 9^j - 1, where i > j >= 0.
+A239720	filter	0	new SingleTransformSequence(1, (term, n) -> new Z(term.toString(2), 10).-(1), "", new A018900())	PRIME	m = 10^i + 10^j - 1, where i > j >= 0.
+A246348	multrar	1	(self, n) -> Predicates.PRIME.is(n) ? self.a(Functions.PRIME_PI.i(n)).+(1) : self.a(n - Functions.PRIME_PI.i(n) - 1).+(1)	"1"
+A246377	multrar	1	(self, n) -> Predicates.PRIME.is(n) ? self.a(Functions.PRIME_PI.i(n)).*(2).+(1) : self.a(n - Functions.PRIME_PI.i(n) - 1).*(2)	"1"
+A246379	multrar	1	(self, n) -> Predicates.PRIME.is(n) ? D003961(self.a(Functions.PRIME_PI.i(n)).+(1)) : self.a(n - Functions.PRIME_PI.i(n) - 1).*(2)	"1"
+A246681	multrar	0	(self, n) -> Predicates.PRIME.is(n) ? D003961(self.a(Functions.PRIME_PI.i(n))) : self.a(n - Functions.PRIME_PI.i(n) - 1).*(2)	"1"
+A247379	sintrif	1	(term, n) -> GCD(term, ZV(n))	""	new A064413()
+A283479	diffs	1	new A283474()
+A286299	diffs	0	new A286298()
+A370951	diffs	1	new A112877()
+A373470	diffs	0	new A043555()
+A376690	diffs	1	new A055932()
+A377781	diffs	1	new A065514()
+A378832	filnum	1	1	k -> Predicates.PRIME.is(ZV(5).^(k).+(68))	Numbers k such that 5^k + 68 is prime.	nonn,more,new	1..6	nyi	_Robert Price_
+A378866	filnum	1	0	k -> Predicates.PRIME.is(ZV(5).^(k).+(72))	Numbers k such that 5^k + 72 is prime.	nonn,more,new	1..7	nyi	_Robert Price_
+A379021	lambdan	0	n -> QV(2).*(RU(0, n, k -> QV(BI(2*n+k+2, k)).*(BI(2*n+k+2, n-k))./(2*n+k+2))).num()	""		a(n) = 2*sum(k=0, n, binomial(2*n+k+2, k)*binomial(2*n+k+2, n-k)/(2*n+k+2))	_	_	_
+A379022	lambdan	0	n -> SU(0, n, k -> BI(2*n+k-1, k).*(BI(2*n+k, n-k)))	""		a(n) = sum(k=0, n, binomial(2*n+k-1, k)*binomial(2*n+k, n-k))	_	_	_
+A379023	lambdan	0	n -> QV(3).*(RU(0, n, k -> QV(BI(3*n+k+3, k)).*(BI(3*n+k+3, n-k))./(3*n+k+3))).num()	""		a(n) = 3*sum(k=0, n, binomial(3*n+k+3, k)*binomial(3*n+k+3, n-k)/(3*n+k+3))	_	_	_
+A379024	lambdan	0	n -> QV(4).*(RU(0, n, k -> QV(BI(4*n+k+4, k)).*(BI(4*n+k+4, n-k))./(4*n+k+4))).num()	""		a(n) = 4*sum(k=0, n, binomial(4*n+k+4, k)*binomial(4*n+k+4, n-k)/(4*n+k+4))	_	_	_
+A379025	lambdan	0	n -> SU(0, n, k -> BI(3*n+k-1, k).*(BI(3*n+k, n-k)))	""		a(n) = sum(k=0, n, binomial(3*n+k-1, k)*binomial(3*n+k, n-k))	_	_	_
+A379026	lambdan	0	n -> SU(0, n, k -> BI(4*n+k-1, k).*(BI(4*n+k, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+k-1, k)*binomial(4*n+k, n-k))	_	_	_
+A379037	lambdan	0	n -> QV(2).*(RU(0, n, k -> QV(BI(3*k+2, k)).*(BI(3*k+2, n-k))./(3*k+2))).num()	""		a(n) = 2*sum(k=0, n, binomial(3*k+2, k)*binomial(3*k+2, n-k)/(3*k+2))	_	_	_
+A379038	lambdan	0	n -> QV(3).*(RU(0, n, k -> QV(BI(4*k+3, k)).*(BI(4*k+3, n-k))./(4*k+3))).num()	""		a(n) = 3*sum(k=0, n, binomial(4*k+3, k)*binomial(4*k+3, n-k)/(4*k+3))	_	_	_
+A379039	lambdan	0	n -> RU(0, n, k -> QV(BI(4*k+2, k)).*(BI(4*k+2, n-k))./(2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(4*k+2, k)*binomial(4*k+2, n-k)/(2*k+1))	_	_	_
+A379080	lambdan	0	n -> QV(2).*(RU(0, n/2, k -> QV(BI(2*n+k+2, k)).*(BI(2*n+k+2, n-2*k))./(2*n+k+2))).num()	""		a(n) = 2*sum(k=0, n\2, binomial(2*n+k+2, k)*binomial(2*n+k+2, n-2*k)/(2*n+k+2))	_	_	_
+A379081	lambdan	0	n -> QV(3).*(RU(0, n/2, k -> QV(BI(3*n+k+3, k)).*(BI(3*n+k+3, n-2*k))./(3*n+k+3))).num()	""		a(n) = 3*sum(k=0, n\2, binomial(3*n+k+3, k)*binomial(3*n+k+3, n-2*k)/(3*n+k+3))	_	_	_
+A379082	lambdan	0	n -> QV(2).*(RU(0, n/3, k -> QV(BI(2*n+k+2, k)).*(BI(2*n+k+2, n-3*k))./(2*n+k+2))).num()	""		a(n) = 2*sum(k=0, n\3, binomial(2*n+k+2, k)*binomial(2*n+k+2, n-3*k)/(2*n+k+2))	_	_	_
+A379083	lambdan	0	n -> QV(3).*(RU(0, n/3, k -> QV(BI(3*n+k+3, k)).*(BI(3*n+k+3, n-3*k))./(3*n+k+3))).num()	""		a(n) = 3*sum(k=0, n\3, binomial(3*n+k+3, k)*binomial(3*n+k+3, n-3*k)/(3*n+k+3))	_	_	_
+A379084	lambdan	0	n -> SU(0, n/2, k -> BI(2*n+k-1, k).*(BI(2*n+k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(2*n+k-1, k)*binomial(2*n+k, n-2*k))	_	_	_
+A379085	lambdan	0	n -> SU(0, n/3, k -> BI(2*n+k-1, k).*(BI(2*n+k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(2*n+k-1, k)*binomial(2*n+k, n-3*k))	_	_	_
+A379086	lambdan	0	n -> SU(0, n/2, k -> BI(3*n+k-1, k).*(BI(3*n+k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(3*n+k-1, k)*binomial(3*n+k, n-2*k))	_	_	_
+A379087	lambdan	0	n -> SU(0, n/3, k -> BI(3*n+k-1, k).*(BI(3*n+k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(3*n+k-1, k)*binomial(3*n+k, n-3*k))	_	_	_
+A379088	lambdan	0	n -> RU(0, n/2, k -> QV(BI(3*n+k+1, k)).*(BI(3*n+k+1, n-2*k))./(3*n+k+1)).num()	""		a(n) = sum(k=0, n\2, binomial(3*n+k+1, k)*binomial(3*n+k+1, n-2*k)/(3*n+k+1))	_	_	_
+A379089	lambdan	0	n -> RU(0, n/3, k -> QV(BI(2*n+k+1, k)).*(BI(2*n+k+1, n-3*k))./(2*n+k+1)).num()	""		a(n) = sum(k=0, n\3, binomial(2*n+k+1, k)*binomial(2*n+k+1, n-3*k)/(2*n+k+1))	_	_	_
+A379090	lambdan	0	n -> RU(0, n/3, k -> QV(BI(3*n+k+1, k)).*(BI(3*n+k+1, n-3*k))./(3*n+k+1)).num()	""		a(n) = sum(k=0, n\3, binomial(3*n+k+1, k)*binomial(3*n+k+1, n-3*k)/(3*n+k+1))	_	_	_
+A379139	lambdan	0	n -> QV(3).*(RU(0, n, k -> QV(BI(n+k+3, k)).*(BI(n+k+3, n-k))./(n+k+3))).num()	""		a(n) = 3*sum(k=0, n, binomial(n+k+3, k)*binomial(n+k+3, n-k)/(n+k+3))	_	_	_
+A379159	lambdan	0	n -> RU(0, n/3, k -> QV(BI(3*n-9*k+1, k)).*(BI(3*n-9*k+1, n-3*k))./(3*n-9*k+1)).num()	""		a(n) = sum(k=0, n\3, binomial(3*n-9*k+1, k)*binomial(3*n-9*k+1, n-3*k)/(3*n-9*k+1))	_	_	_
+A379160	lambdan	0	n -> RU(0, n/4, k -> BI(QV(3).*(n).-(QV(12).*(k)).+(1), k).*(BI(QV(3).*(n).-(QV(12).*(k)).+(1), n-4*k))./(QV(3).*(n).-(QV(12).*(k)).+(1))).num()	""		a(n) = sum(k=0, n\4, binomial(3*n-12*k+1, k)*binomial(3*n-12*k+1, n-4*k)/(3*n-12*k+1))	_	_	_
+A379171	lambdan	0	n -> RU(0, n, k -> QV(BI(n-k+1, k)).*(BI(4*n-4*k+2, n-k))./(n-k+1)).num()	""		a(n) = sum(k=0, n, binomial(n-k+1, k)*binomial(4*n-4*k+2, n-k)/(n-k+1))	_	_	_
+A379172	lambdan	0	n -> RU(0, n, k -> QV(BI(n+2*k+1, k)).*(BI(4*n+5*k+2, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k)*binomial(4*n+5*k+2, n-k)/(n+2*k+1))	_	_	_
+A379173	lambdan	0	n -> RU(0, n, k -> QV(BI(n-k+1, k)).*(BI(3*n-3*k+1, n-k))./(n-k+1)).num()	""		a(n) = sum(k=0, n, binomial(n-k+1, k)*binomial(3*n-3*k+1, n-k)/(n-k+1))	_	_	_
+A379174	lambdan	0	n -> RU(0, n, k -> QV(BI(n+2*k+1, k)).*(BI(3*n+3*k+1, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k)*binomial(3*n+3*k+1, n-k)/(n+2*k+1))	_	_	_
+A379185	lambdan	0	n -> RU(0, n, k -> QV(BI(n+2*k+1, k)).*(BI(3*n+k+1, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k)*binomial(3*n+k+1, n-k)/(n+2*k+1))	_	_	_
+A379186	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(3*n+3*k+1, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(3*n+3*k+1, n-k)/(n+3*k+1))	_	_	_
+A379187	lambdan	0	n -> RU(0, n, k -> QV(BI(n+2*k+1, k)).*(BI(4*n+2*k+2, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k)*binomial(4*n+2*k+2, n-k)/(n+2*k+1))	_	_	_
+A379188	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(4*n+5*k+2, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(4*n+5*k+2, n-k)/(n+3*k+1))	_	_	_
+A379189	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(2*n+k, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(2*n+k, n-k)/(n+3*k+1))	_	_	_
+A379190	lambdan	0	n -> RU(0, n, k -> QV(BI(n+2*k+1, k)).*(BI(3*n+6*k+3, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k)*binomial(3*n+6*k+3, n-k)/(n+2*k+1))	_	_	_
+A379191	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(3*n+6*k+3, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(3*n+6*k+3, n-k)/(n+3*k+1))	_	_	_
+A379192	lambdan	0	n -> RU(0, n, k -> QV(BI(n+2*k+1, k)).*(BI(3*n+3*k+3, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k)*binomial(3*n+3*k+3, n-k)/(n+2*k+1))	_	_	_
+A379193	lambdan	0	n -> RU(0, n, k -> QV(BI(n+2*k+1, k)).*(BI(2*n+2*k+2, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k)*binomial(2*n+2*k+2, n-k)/(n+2*k+1))	_	_	_
+A379194	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(2*n+4*k+2, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(2*n+4*k+2, n-k)/(n+3*k+1))	_	_	_
+A379209	holos	0	[[0],[106920000,-91314000,29106000,-4104000,216000],[-19465920,17564400,-5864400,856800,-46080],[5515272,-5194980,1655360,-186480,2548],[-161064,119468,18092,-29972,5596],[-7056,25066,-30615,15182,-2577],[0,-248,906,-940,282],[0,4,8,-4,-8]]	1,2	0	0
+A379244	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+4*k+2, k)).*(BI(3*n+3*k+1, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+4*k+2, k)*binomial(3*n+3*k+1, n-k)/(n+2*k+1))	_	_	_
+A379245	lambdan	0	n -> RU(0, n, k -> QV(BI(3*n+3*k+3, k)).*(BI(4*n+2*k+2, n-k))./(n+k+1)).num()	""		a(n) = sum(k=0, n, binomial(3*n+3*k+3, k)*binomial(4*n+2*k+2, n-k)/(n+k+1))	_	_	_
+A379246	lambdan	0	n -> RU(0, n, k -> QV(BI(3*n+6*k+3, k)).*(BI(4*n+5*k+2, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(3*n+6*k+3, k)*binomial(4*n+5*k+2, n-k)/(n+2*k+1))	_	_	_
+A379247	lambdan	0	n -> RU(0, n, k -> QV(BI(n, k)).*(BI(4*n+5*k+1, n))./(4*n+5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(4*n+5*k+1, n)/(4*n+5*k+1))	_	_	_
+A379249	lambdan	0	n -> RU(0, n, k -> QV(BI(n+2*k+1, k)).*(BI(2*n+4*k+2, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+2*k+1, k)*binomial(2*n+4*k+2, n-k)/(n+2*k+1))	_	_	_
+A379251	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+3*k+1, k)).*(BI(2*n+2*k+2, n-k))./(n+k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+3*k+1, k)*binomial(2*n+2*k+2, n-k)/(n+k+1))	_	_	_
+A379252	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+5*k+1, k)).*(BI(2*n+4*k+2, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+5*k+1, k)*binomial(2*n+4*k+2, n-k)/(n+2*k+1))	_	_	_
+A379253	lambdan	0	n -> RU(0, n, k -> QV(BI(n, k)).*(BI(2*n+5*k+1, n))./(2*n+5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(2*n+5*k+1, n)/(2*n+5*k+1))	_	_	_
+A379254	lambdan	0	n -> RU(0, n, k -> QV(BI(3*n+4*k+2, k)).*(BI(3*n+3*k+3, n-k))./(n+k+1)).num()	""		a(n) = sum(k=0, n, binomial(3*n+4*k+2, k)*binomial(3*n+3*k+3, n-k)/(n+k+1))	_	_	_
+A379255	lambdan	0	n -> RU(0, n, k -> QV(BI(3*n+7*k+2, k)).*(BI(3*n+6*k+3, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(3*n+7*k+2, k)*binomial(3*n+6*k+3, n-k)/(n+2*k+1))	_	_	_
+A379256	lambdan	0	n -> RU(0, n, k -> QV(BI(n, k)).*(BI(3*n+4*k+1, n))./(3*n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(3*n+4*k+1, n)/(3*n+4*k+1))	_	_	_
+A379257	lambdan	0	n -> RU(0, n, k -> QV(BI(n, k)).*(BI(3*n+7*k+1, n))./(3*n+7*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(3*n+7*k+1, n)/(3*n+7*k+1))	_	_	_
+A379267	filnum	1	1	n -> Functions.DIGIT_LENGTH.i(2, n) - Functions.DIGIT_SUM.i(2, n) == 2	two zeros.	nonn,base,new	1..58	nyi	_Chai Wah Wu_
+A379268	sintrif	1	(term, n) -> new Z(term.toString(2))	""	new A379267()
+A379269	filnum	1	1	n -> Functions.DIGIT_LENGTH.i(2, n) - Functions.DIGIT_SUM.i(2, n) == 3	three zeros.	nonn,base,new	1..58	nyi	_Chai Wah Wu_
+A379270	sintrif	1	(term, n) -> new Z(term.toString(2))	""	new A379269()
+A379279	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+2*k+2, k)).*(BI(2*n+2*k+2, n-k))./(n+k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+2*k+2, k)*binomial(2*n+2*k+2, n-k)/(n+k+1))	_	_	_
+A379280	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+4*k+2, k)).*(BI(2*n+4*k+2, n-k))./(n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+4*k+2, k)*binomial(2*n+4*k+2, n-k)/(n+2*k+1))	_	_	_
+A379281	lambdan	0	n -> QV(2).*(RU(0, n, k -> QV(BI(2*n-k+2, k)).*(BI(3*n-3*k+1, n-k))./(2*n-k+2))).num()	""		a(n) = 2*sum(k=0, n, binomial(2*n-k+2, k)*binomial(3*n-3*k+1, n-k)/(2*n-k+2))	_	_	_
+A379282	lambdan	0	n -> QV(2).*(RU(0, n, k -> QV(BI(2*n+3*k+2, k)).*(BI(3*n+k+1, n-k))./(2*n+3*k+2))).num()	""		a(n) = 2*sum(k=0, n, binomial(2*n+3*k+2, k)*binomial(3*n+k+1, n-k)/(2*n+3*k+2))	_	_	_
+A379283	lambdan	0	n -> QV(2).*(RU(0, n, k -> QV(BI(2*n+5*k+2, k)).*(BI(3*n+3*k+1, n-k))./(2*n+5*k+2))).num()	""		a(n) = 2*sum(k=0, n, binomial(2*n+5*k+2, k)*binomial(3*n+3*k+1, n-k)/(2*n+5*k+2))	_	_	_
+A379284	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+3*k+1, k)).*(BI(3*n+k, n-k))./(2*n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+3*k+1, k)*binomial(3*n+k, n-k)/(2*n+3*k+1))	_	_	_
+A379285	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+2*k+1, k)).*(BI(3*n, n-k))./(2*n+2*k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+2*k+1, k)*binomial(3*n, n-k)/(2*n+2*k+1))	_	_	_
+A379286	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+4*k+1, k)).*(BI(3*n+2*k, n-k))./(2*n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+4*k+1, k)*binomial(3*n+2*k, n-k)/(2*n+4*k+1))	_	_	_
+A379287	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+5*k+1, k)).*(BI(3*n+3*k, n-k))./(2*n+5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+5*k+1, k)*binomial(3*n+3*k, n-k)/(2*n+5*k+1))	_	_	_
+A379326	lambdan	0	n -> QV(Z2(n)).*(RU(0, n, k -> BI(new Q(n - k + 1, 2), k).*(BI(new Q(n - k + 1, 2), n - k))./(n - k+1))).num()	""		a(n) = 2^n*sum(k=0, n, binomial(n/2-k/2+1/2, k)*binomial(n/2-k/2+1/2, n - k)/(n - k+1))	_	_	_
+A379327	lambdan	0	n -> QV(Z2(n)).*(RU(0, n, k -> BI(new Q(n + k + 1, 2), k).*(BI(new Q(n + k + 1, 2), n - k))./(n+k+1))).num()	""		a(n) = 2^n*sum(k=0, n, binomial(n/2+k/2+1/2, k)*binomial(n/2+k/2+1/2, n - k)/(n+k+1))	_	_	_
+A379328	lambdan	0	n -> QV(Z2(n)).*(RU(0, n, k -> BI(new Q(n + 2*k + 1, 2), k).*(BI(new Q(n + 2*k + 1, 2), n - k))./(n+2*k+1))).num()	""		a(n) = 2^n*sum(k=0, n, binomial(n/2+k+1/2, k)*binomial(n/2+k+1/2, n - k)/(n+2*k+1))	_	_	_
+A379330	lambdan	0	n -> QV(Z2(n)).*(RU(0, n, k -> BI(new Q(n + 3*k + 1, 2), k).*(BI(new Q(3*n - k - 1, 2), n - k))./(n+3*k+1))).num()	""		a(n) = 2^n*sum(k=0, n, binomial(n/2+3*k/2+1/2, k)*binomial(3*n/2-k/2-1/2, n - k)/(n+3*k+1))	_	_	_
+A379331	lambdan	0	n -> QV(Z2(n)).*(RU(0, n, k -> BI(new Q(n + 4*k + 1, 2), k).*(BI(new Q(3*n - 1, 2), n - k))./(n+4*k+1))).num()	""		a(n) = 2^n*sum(k=0, n, binomial(n/2+2*k+1/2, k)*binomial(3*n/2-1/2, n - k)/(n+4*k+1))	_	_	_
+---- 2024-12-23 23:07:30
+A199979	filter	1	new A002275().skip()	v -> !PP(v)
+A379329	lambdan	0	n -> QV(Z2(n)).*(RU(0, n, k -> BI(new Q(n + k + 1, 2), k).*(BI(new Q(3*n - 3*k - 1, 2), n - k))./(n+k+1))).num()	""		a(n) = 2^n*sum(k=0, n, binomial(n/2+k/2+1/2, k)*binomial(3*n/2-3*k/2-1/2, n - k)/(n+k+1))	_	_	_

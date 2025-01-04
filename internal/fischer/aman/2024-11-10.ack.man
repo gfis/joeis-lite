@@ -1,0 +1,114 @@
+---- 2024-11-10 19:06:57
+A197563	partsun	0	new A073212()			Partial sums of A073212 (n-th digit of Pi plus n-th digit of e).
+A229364	lingf	1	0,1,3,4,4,4,4,14,30,20,-10,-20,-20,-20,-20,-10	1,0,-1,0,0,0,0,0,-10,0,10					0
+A355824	dirichinv	1	new A355823()	1	Dirichlet inverse of A355823, characteristic function of exponentially 2^n-numbers.
+A364091	multraf	1	(self, n) -> self.s(0).min(self.s(1))	""	new A005602(), new A005603()
+A375852	lingf	1	0,0,1,1,2,-1,3,0,3	1,-2,2,-2,2,-2,2,-2,1					0
+A375995	lingf	0	0,0,0,0,1,1,-1	1,-6,11,-6,1					0
+A376283	lingf	0	1,-24	1,-48,1600					0
+A376285	lingf	0	1,-16	1,-32,400					0
+A376397	partsun	1	new A276075()			Partial sums of A276075.
+A376398	partsun	1	new A276085()			Partial sums of A276085.
+A376837	lingf	1	0,2,-8,-22,102,22,-286,84,156,-24,-16	1,-5,-9,69,-21,-225,171,162,-108,-32,16					0
+A377016	lingf	0	1,-13,-41,21	1,-41,246,-246,41,-1					0
+A377017	lingf	0	0,84,84	1,-204,1190,-204,1					0
+A377018	lingf	1	0,6,-14,-142,78,780,188,-968,-480	1,-3,-27,29,162,-42,-276,-16,96					0
+A377067	lingf	0	1,-1,1	1,-2,-1,3,1,-1,-3,1,2,-1					0
+A377118	lingf	0	0,1,2	1,0,-6,-6					0
+A377119	lingf	0	0,1,1	1,0,-6,-6					0
+A377192	lingf	0	0,10,-100,-900	1,-111,1110,-1000					0
+A377226	lingf	0	1,5,-3,7,3,-1	1,0,0,-2,0,0,1					0
+A377314	lingf	0	1,-2,-1	1,-3,-3,-1					0
+A377315	lingf	0	0,1,1	1,-3,-3,-1					0
+A377582	lingf	0	1,-17,127,-542,1453,-2543,2973,-2478,1626,-648	1,-20,175,-878,2779,-5744,7737,-6534,3132,-648					0
+A377583	lingf	0	1,-36,595,-5970,40543,-196752,702365,-1871250,3740456,-5614440,6362360,-5588880,3979680,-2196672,663552	1,-40,735,-8218,62419,-340428,1373657,-4161914,9504084,-16258424,20481056,-18394368,11114496,-4036608,663552					0
+A377715	lingf	0	1,0,0,-1,0,-1,-1,0,0,1	1,0,0,-1,0,-2,-2,0,1,2,1,1,1,0,0,-1					0
+---- 2024-11-10 20:06:52
+A091513	filnum	1	0	k -> Z2(k).+(1).^(2).-(2).IPP()
+A094609	filnum	1	1	k -> Predicates.TRIANGULAR.is(new Z(Integer.toString(k) + Integer.toString(k + 1)))	Numbers n such that n concatenated with n+1 is triangular.
+A125248	filnum	1	1	k -> D033880(k).equals(ZV(-16))	.
+A188484	filnum	1	1	k -> { final Z ab = D033880(k).abs(); return Integer.bitCount(k) != 1 && ab.testBit(0) && Predicates.SQUARE.is(ab); }	Numbers n (other than powers of 2) such that abs(abundance(n)) is an odd square
+A223606	filnum	1	1	k -> D033880(k).equals(ZV(-22))	: sigma(n) - 2*n = -22.
+A275997	filnum	1	1	k -> D033880(k).equals(ZV(-64))	: 2k - sigma(k) = 64.
+A283167	multrar	0	(self, n) -> (n&1) == 0 ? self.a(n/2).*(2) : Functions.SIGMA1.z(self.a(n/2))	"1"		a(0) = 1; a(2*n) = 2*a(n), a(2*n+1) = sigma(a(n)).
+A369066	lambdan	0	n -> D369069(D005940(n + 1))	a(n) = A369069(A005940(1+n)).	Dirichlet convolution of Liouville's lambda (A008836) with A083345, as reordered by the Doudna sequence.				Dirichlet convolution of Liouville's lambda (A008836) with A083345, as reordered by the Doudna sequence.
+A370774	lambdan	1	n -> RU(1, n, k -> RU(1, k, i -> new Q(1, i*i))).den()	partsun	a(n) = denominator(sum(k=1, n, sum(i=1, k, 1/i^2)));
+A372568	moebiusix	1	0	0	new A346242()	0	a(n) = Sum_{d|n} A346242(d), where A346242 is the Dirichlet inverse of gcd(n, A276086(n)).
+A377722	tablamb	1	1	n -> new Integer[] {1, n * n * n * n}, (n, k) -> Z.valueOf(n)
+---- 2024-11-10 23:18:27
+A076663	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A024916(), new A007429()	a(n) = J024916(n) - J007429(n)	_	_	_
+A078588	lambdan	0	n -> ZV(n).+(CV(5).sqrt().*(n).floor()).and(Z.ONE)	""		a(n) = (n+floor(n*sqrt(5))) mod 2	_	_	_
+A078707	lambdan	0	n -> ZV(n).^((n + 1)/2)	""		a(n) = n^(floor((n+1)/2)) = n^ceiling(n/2)	_	_	_
+A079010	sintrif	1	(term, n) -> F007918(term.+(16)).-(term.+(16))	""	new A022008()	a(n) = nextprime(16 + J022008(n)) - (16 + J022008(n))	_	_	_
+A082854	sintrif	0	(term, n) -> term.+(ZV(1))	""	new A082853()	a(n) = J082853(n)+1	_	_	_
+A083925	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A083923(), new A072771()	a(n) = J083923(n)*J072771(n)	_	_	_
+A087968	lambdan	1	n -> GCD(ZV(1).+(Z2(n)), ZV(n).^(2))	""		a(n) = gcd(1 + 2^n, n^2)	_	_	_
+A100659	lambdan	3	n -> new Q(180*n - 360, n).floor()	""		a(n) = floor(180 - 360/n)	_	_	_
+A101776	lambdan	0	n -> Functions.CEIL_SQRT.z(2*n + 1)	""		a(n) = ceiling(sqrt(2*n+1))	_	_	_
+A102286	lambdan	1	n -> SU(0, (n - 1)/2, k -> BI(n, 2*k + 1).*(F000110(n - 2*k - 1)))	""		a(n) = Sum_{k=0..floor((n-1)/2)} binomial(n,2*k+1) * Bell(n-2*k-1)	_	_	_
+A106264	lambdan	0	n -> SU(0, n/2, k -> (Z2(n-2*k).mod((ZV(k+2)))))	""		a(n) = Sum_{k=0..floor(n/2)} ( 2^(n-2*k) mod (k+2) )	_	_	_
+A106345	lambdan	0	n -> SU(0, n/2, k -> (BI(k, n-2*k).mod(ZV(2))))	""		a(n) = Sum_{k=0..floor(n/2)} (binomial(k, n-2k) mod 2)	_	_	_
+A113046	lambdan	0	n -> SU(0, n/2, k -> BI(n - k, (n - 2*k)/2).modZ(3))	""		a(n) = Sum_{k=0..floor(n/2)} binomial(n-k, floor((n-2k)/2)) mod 3	_	_	_
+A113790	lambdan	1	n -> { final int m = ((n - 1)/5) * 5 + 3; return ZV(m).+(ZV(n - m).*(ZV(5).-(ZV(n - m).^(2)))./(2)); }
+A124230	lambdan	1	n -> F000045(F070939(n))	""		a(n) = F000045(F070939(n))	_	_	_
+A135708	lambdan	1	n -> Functions.CEIL_SQRT.z(12*n - 3).+(3*n)	a(n) = 3*n + ceiling(sqrt(12*n - 3))	_	_	_		Minimal total number of edges in a polyhex consisting of n hexagonal cells.
+A167761	lambdan	1	n -> F000196(E167657(n))	""		a(n) = sqrt(E167657(n))	_	_	_
+A173631	lambdan	0	n -> Functions.CEIL_SQRT.z(F002110(n).*(4))	""		a(n) = ceiling(sqrt(4*F002110(n)))	_	_	_
+A178537	lambdan	0	n -> ZV(2*n+1).^(2*n+1).mod(Z2(2*n+1))	""		a(n) = (2n+1)^(2n+1) mod 2^(2n+1)	_	_	_
+A184011	multraf	0	(self, n) -> self.s(0).*(Z2(2*n - 2 - self.s(1).intValueExact()))	""	new A052122(), new A052123()	a(n) = J052122(n) * 2^(2*n - 2 - J052123(n))	_	_	_
+A197072	lambdan	0	n -> F000040(Z2(n+1)).-(ZV(2).*(F000040(Z2(n))))	""		a(n) = prime(2^(n+1)) - 2*prime(2^n)	_	_	_
+A220656	lambdan	1	n -> D003422(ZV(1).+(D084558(n))).+(F000142(D084558(n)).+(E212598(n)))	""		a(n) = D003422(1+D084558(n)) + F000142(D084558(n)) + E212598(n)	_	_	_
+A224271	lambdan	1	n -> SU(0, (n - 1)/2, k -> BI(n - 1, 2*k).*(F000110(n - 2*k - 1)))	""		a(n) = Sum_{k=0..floor((n-1)/2)} binomial(n-1,2*k) * Bell(n-2*k-1)	_	_	_
+A225578	lambdan	1	n -> { final int p1 = Functions.PRIME.i(n) - 1; return SU(1, p1, i -> ZV(i).^(p1)); }	""		a(n) = Sum_{i=1..prime(n)-1} i^(prime(n) - 1)	_	_	_
+A226721	lambdan	1	n -> ZV(1).+(E066344(n))	""		a(n) = 1 + E066344(n)	_	_	_
+A230366	lambdan	1	n -> SU(1, n/2, k -> (ZV(k).^(2).mod(ZV(n))))	""		a(n) = Sum_{k=1..floor(n/2)} (k^2 mod n)	_	_	_
+A234017	multraf	0	(self, n) -> (ZV(1).-(self.s(0))).*(self.s(1))	""	new A079559(), new A234016()	a(n) = (1-J079559(n)) * J234016(n)	_	_	_
+A238454	lambdan	1	n -> Functions.CEIL_SQRT.z(Z2(2*n-1)).^(2).-(Z2(2*n-1))	""		a(n) = ceiling(sqrt(2^(2*n-1)))^2 - 2^(2*n-1)	_	_	_
+A246675	lambdan	1	n -> D000079(D055396(n+1).-(ZV(1))).*(((ZV(2).*(E246277(n+1))).-(ZV(1))))	""		a(n) = D000079(D055396(n+1)-1)  * ((2*E246277(n+1))-1)	_	_	_
+A251984	multraf	1	(self, n) -> (ZV(10).-(self.s(0).mod(ZV(10)))).*(ZV(10).^(self.s(1)))	""	new A004151(), new A122840()	a(n) = (10 - J004151(n) mod 10) * 10^J122840(n)	_	_	_
+A268214	sintrif	0	(term, n) -> BI(2*n, n).-(term)	""	new A268213()	a(n) = binomial(2*n,n) - J268213(n)	_	_	_
+A273820	lambdan	0	n -> D003418(Z2(n+1).-(ZV(1)))	""		a(n) = D003418(2^(n+1)-1)	_	_	_
+A277780	sintrif	1	(term, n) -> term.*(D000578(ZV(1).+(F048766(E008834(n)))))	""	new A050985()	a(n) = J050985(n) * D000578(1+F048766(E008834(n)))	_	_	_
+A280492	sintrif	1	(term, n) -> E246277(n).-(term)	"0"	new A078898()	a(1) = 0; for n > 1, a(n) = E246277(n) - J078898(n)	_	_	_
+A282319	lambdan	1	n -> ZV(2097203).modZ(n).^(2).+(ZV(2097203).modZ(n)).+(41)	""		a(n) = (2097203 mod n)^2 + (2097203 mod n) + 41	_	_	_
+A291553	lambdan	1	n -> SU(3, n, k -> ((ZV(k/2)).-((k - 1)/3)).*(F000041(n - k)))	""		a(n) = Sum_{k=3..n} (floor(k/2) - floor((k-1)/3)) * F000041(n-k)	_	_	_
+A302604	lambdan	1	n -> SU(1, (n - 1)/2, i -> F008683(n - 2*i).^(2))	""		a(n) = Sum_{i=1..floor((n-1)/2)} mu(n-2i)^2	_	_	_
+A302643	lambdan	1	n -> SU(1, (n - 1)/2, i -> D280710(n - 2*i))	""		a(n) = Sum_{i=1..floor((n-1)/2)} D280710(n-2i)	_	_	_
+A319391	multrar	1	(self, n) -> (n % 3 == 0) ? self.a(n - 3).+(ZV(2*n - 3).^(n)) : self.a(n - 1).+(n)	"1"		a(n) = Sum_{i=1..n} (floor(i/3)-floor((i-1)/3))*(6*floor((i+2)/3)-3)^(3*floor((i+2)/3)) + i*(floor((i-1)/3)-floor((i-2)/3))+i*(floor((i+1)/3)-floor(i/3))-(6*floor((i+2)/3)-3)*(floor(i/3)-floor((i-1)/3))	_	_	_
+A326073	lambdan	1	n -> GCD(ZV(n + 1).-(F020639(n)), F000203(n).-(F020639(n)).-(ZV(n - 1)))	""		a(n) = gcd(1+n-F020639(n), 1+F000203(n)-F020639(n)-n)	_	_	_
+A326243	sintrif	0	(term, n) -> F000110(n).-(term)	""	new A054391()	a(n) = F000110(n) - J054391(n)	_	_	_
+A326248	sintrif	0	(term, n) -> F000110(n).-(ZV(2).*(F000108(n))).+(term)	""	new A001519()	a(n) = F000110(n) - 2*F000108(n) + J001519(n)	_	_	_
+A329465	lambdan	1	n -> SD(n, d -> D007294(d))	""		a(n) = Sum_{d|n} D007294(d)	_	_	_
+A340343	lambdan	1	n -> ZV(48*n % 604).+(ZV(70*n %  426)).+(ZV(46*n % 47)).+(ZV(93*n % 1766))	""		a(n) = (48*n mod 604) + (70*n mod 426) + (46*n mod 47) + (93*n mod 1766)	_	_	_
+A343245	lambdan	0	n -> SU(0, 2*n, i -> BI(BI(n, 2).^(2).*(2).+(BI(n, 2).*(2)), i))	""		a(n) = Sum_{i=0..2*n} binomial(2*binomial(n,2)^2 + 2*binomial(n,2), i)	_	_	_
+A351834	lambdan	1	n -> SU(1, (n-1)/2, k -> (F008683(k).^(2).+(F008683(n - k).^(2)).-(F008683(k).^(2).*(F008683(n-k).^(2)))))	""		a(n) = Sum_{k=1..floor((n-1)/2)} (mu(k)^2 + mu(n-k)^2 - mu(k)^2*mu(n-k)^2)	_	_	_
+A355432	sintrif	1	(term, n) -> term.-(D005361(n))	""	new A008479()	a(n) = J008479(n) - D005361(n)	_	_	_
+A355447	sintrif	1	(term, n) -> (ZV(1).-(D008966(n))).*((ZV(1).-(term)))	""	new A010055()	a(n) = (1-D008966(n)) * (1-J010055(n))	_	_	_
+A357907	lambdan	1	n -> (ZV(2).*(ZV(75).^(n - 1)).-(1)).mod(ZV(65537))	""		a(n) = (2*75^(n-1) - 1) mod 65537	_	_	_
+A358051	sintrif	1	(term, n) -> term.^(2)	""	new A114076()	a(n) = J114076(n)^2	_	_	_
+A361003	lambdan	1	n -> F000005(n).+((n-1)/2)	""		a(n) = F000005(n) + floor((n-1)/2)	_	_	_
+A367733	lambdan	1	n -> ZV(n).+((n-1)/9).+(ZV((n - 1)/81).*(10))	""		a(n) = n + floor((n-1)/9) + floor((n-1)/81)*10	_	_	_
+A370048	lambdan	0	n -> (n <= 1) ? ZV(0) : SU(0, (n - 1)/3, m -> BI(2*m, m + 1).*(BI(n - 1 - 2*m, m)).+(BI(2*m+1, m).*(BI(n-2-2*m, m))))			For n >= 2, a(n) = Sum_{m=0..floor((n-1)/3)} binomial(2*m,m+1) * binomial(n-1-2*m,m) + binomial(2*m+1,m) * binomial(n-2-2*m,m)	_	_	_
+A371084	lambdan	1	n -> (ZV(1).-(D008966(n))).*(D359550(n))	""		a(n) = (1-D008966(n)) * D359550(n)	_	_	_
+A372504	lambdan	1	n -> E355823(n).*(D005361(n))	""		a(n) = E355823(n) * D005361(n)	_	_	_
+A375218	lambdan	0	n -> SU(0, n/2, k -> (ZV(k+1)).*(BI(k, n-2*k).^(2)))	""		a(n) = Sum_{k=0..floor(n/2)} (k+1) * binomial(k,n-2*k)^2	_	_	_
+A375470	lambdan	0	n -> SU(0, n/3, k -> (ZV(k+1)).*(BI(k, n-3*k).^(2)))	""		a(n) = Sum_{k=0..floor(n/3)} (k+1) * binomial(k,n-3*k)^2	_	_	_
+A375565	lambdan	0	n -> SU(0, n/3, k -> (ZV(n-2*k+1)).*(BI(n-2*k, k).^(2)))	""		a(n) = Sum_{k=0..floor(n/3)} (n-2*k+1) * binomial(n-2*k,k)^2	_	_	_
+A376228	sintrif	0	(term, n) -> ZV(6*n+1).*(term)	""	new A002897()	a(n) = (6*n+1) * J002897(n)	_	_	_
+A376286	sintrif	0	(term, n) -> term.mod(F151800(n))	""	new A004154()	a(n) = J004154(n) mod F151800(n)	_	_	_
+A376398	lambdan	1	n -> F276085(F000142(n))	""		a(n) = F276085(F000142(n))	_	_	_
+A376418	lambdan	1	n -> ZV(n).-(F276086(F276085(n)))	""		a(n) = n - F276086(F276085(n))	_	_	_
+A376448	lambdan	0	n -> (n <= 0) ? ZV(1) : ZV(2).*(E293313(n-1)).+(ZV(1))			a(n) = 2*E293313(n-1) + 1, for n > 0	_	_	_
+A376567	lambdan	1	n -> BI(F001222(n).+(F001221(n)), F001221(n))	""		a(n) = binomial(bigomega(n) + omega(n), omega(n))	_	_	_
+A376645	lambdan	1	n -> MAX(ZV(2).*(D007814(n)), D051903(F000265(n)))	""		a(n) = max(2*D007814(n), D051903(F000265(n))) = max(2*D007814(n), E375669(n))	_	_	_
+A376735	lambdan	0	n -> SU(0, n/4, k -> (ZV(n-3*k+1)).*(BI(n-3*k, k).^(2)))	""		a(n) = Sum_{k=0..floor(n/4)} (n-3*k+1) * binomial(n-3*k,k)^2	_	_	_
+A376759	lambdan	1	n -> F000720(n).-(F000720(2*n)).+(ZV(n))	""		a(n) = F000720(n) - F000720(2*n) + n	_	_	_
+A376760	sintrif	1	(term, n) -> ZV(2).*(term).-(F000720(term.*(2))).-(n)	""	new A002808()	a(n) = 2*J002808(n) - F000720(2*J002808(n)) - n	_	_	_
+A376884	lambdan	0	n -> SU(1, (n+1)/3, k -> BI(2*k - 1, k).*(BI(n-2*k, k-1)))	""		a(n) = Sum_{k=1..floor((n+1)/3)} binomial((2*k)-1,k) * binomial(n-2*k,k-1)	_	_	_
+A377043	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001597(), new A000961()	a(n) = J001597(n) - J000961(n)	_	_	_
+A377044	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001597(), new A246655()	a(n) = J001597(n) - J246655(n)	_	_	_
+A377071	lambdan	1	n -> BI(F001222(n).+(F001221(n)).-(1), F001221(n).-(ZV(1)))	""		a(n) = binomial(bigomega(n) + omega(n) - 1, omega(n) - 1)	_	_	_
+A377253	lambdan	0	n -> SU(0, n/2, k -> BI(n, 2*k).*((ZV(3).^(n)).^(n-2*k)).*((ZV(9).^(n).-(1)).^(k)))	""		a(n) = Sum_{k=0..floor(n/2)} binomial(n,2*k) * (3^n)^(n-2*k) * (9^n - 1)^k	_	_	_
+A377289	sintrif	1	(term, n) -> F000040(n).-(term)	""	new A065514()	a(n) = prime(n) - J065514(n)	_	_	_
+A377351	lambdan	1	n -> M033808(n).-(M033808(n - 1))	""		a(n) = M033808(n) - M033808(n-1)	_	_	_
+A377601	sintrif	0	(term, n) -> term.-(F000142(n))	""	new A034841()	a(n) = J034841(n) - F000142(n)	_	_	_

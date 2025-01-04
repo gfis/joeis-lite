@@ -1,0 +1,94 @@
+---- 2024-10-15 21:14:30
+A054247	lambdan	0	n -> { final int k = 2; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A054739	lambdan	0	n -> { final int k = 3; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A054751	lambdan	0	n -> { final int k = 4; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A054752	lambdan	0	n -> { final int k = 5; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A067080	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i(10, n) - 1, k -> ZV(n)./(ZV(10).^(k)))
+A085723	sintrif	1	(term, n) -> F001222(term)	""	new A014566()
+A098844	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 2, n) - 1, k -> ZV(n)./(ZV( 2).^(k)))
+A105032	sintrif	1	(term, n) -> D007088(term)	""	new A103745()
+A132027	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 3, n) - 1, k -> ZV(n)./(ZV( 3).^(k)))
+A132028	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 4, n) - 1, k -> ZV(n)./(ZV( 4).^(k)))
+A132029	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 5, n) - 1, k -> ZV(n)./(ZV( 5).^(k)))
+A132030	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 6, n) - 1, k -> ZV(n)./(ZV( 6).^(k)))
+A132031	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 7, n) - 1, k -> ZV(n)./(ZV( 7).^(k)))
+A132032	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 8, n) - 1, k -> ZV(n)./(ZV( 8).^(k)))
+A132033	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i( 9, n) - 1, k -> ZV(n)./(ZV( 9).^(k)))
+A132263	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i(11, n) - 1, k -> ZV(n)./(ZV(11).^(k)))
+A132264	lambdan	1	n -> PR(0, Functions.DIGIT_LENGTH.i(12, n) - 1, k -> ZV(n)./(ZV(12).^(k)))
+A135249	sintrif	1	(term, n) -> F070939(term)	""	new A046967()
+A163755	sintrif	0	(term, n) -> M057335(term)	""	new A341915()
+A234022	sintrif	0	(term, n) -> F000120(term)	""	new A193231()
+A234612	sintrif	0	(term, n) -> F003188(term)	""	new A193231()
+A234613	sintrif	0	(term, n) -> F006068(term)	""	new A193231()
+A245610	sintrif	1	(term, n) -> D048673(term)	""	new A244319()
+A258570	sintrif	1	(term, n) -> F020639(term)	""	new A069492()
+A258571	sintrif	1	(term, n) -> F020639(term)	""	new A069493()
+A259407	sintrif	1	(term, n) -> F000045(term)	""	new A214852()
+A278231	sintrif	1	(term, n) -> D046523(term)	""	new A193231()
+A286392	lambdan	0	n -> { final int k = 6; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A286393	lambdan	0	n -> { final int k = 7; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A286394	lambdan	0	n -> { final int k = 8; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A286396	lambdan	0	n -> { final int k = 9; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A286397	lambdan	0	n -> { final int k = 10; final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n+1)/2).*(2)).+( ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A286601	sintrif	0	(term, n) -> D278222(term)	""	new A193231()
+A303760	sintrif	0	(term, n) -> D019565(term)	""	new A303767()
+A304747	sintrif	0	(term, n) -> D007088(term)	""	new A303767()
+A343097	arrlamb	0	0	0	-1	(n, k) -> { final long n2 = (long) n * n; return ZV(k).^(n2).+(ZV(k).^((n2 + 3*(n&1))/4).*(2)).+(ZV(k).^((n2 + (n%2))/2)).+(ZV(k).^(n*(n + 1)/2).*(2)).+(ZV(k).^(n*(n + (n&1))/2).*(2))./(8); }
+A346867	sintrif	1	(term, n) -> F000203(term)	""	new A071562()
+A358530	sintrif	1	(term, n) -> F151800(term)	""	new A051634()
+A366254	sintrif	0	(term, n) -> F000120(term)	""	new A303767()
+A366261	sintrif	0	(term, n) -> D278222(term)	""	new A303767()
+A369043	sintrif	1	(term, n) -> D014963(term)	""	new A193231()
+A373016	sintrif	1	(term, n) -> E080883(term)	""	new A045944()
+A374015	sintrif	0	(term, n) -> E010874(term)	""	new A004154()
+A375359	sintrif	1	(term, n) -> D051903(term)	""	new A019554()
+A375360	sintrif	1	(term, n) -> D051903(term)	""	new A356191()
+A376295	sintrif	1	(term, n) -> D030101(term)	""	new A047778()
+A376361	sintrif	1	(term, n) -> F001221(term)	""	new A001694()
+A376363	sintrif	1	(term, n) -> F001221(term)	""	new A036966()
+A376365	sintrif	1	(term, n) -> F001221(term)	""	new A004709()
+---- 2024-10-15 21:47:18
+A110014	sintrif	1	(term, n) -> term.-(7)./(6)	""	new A110015()	7,6	J110015
+A132896	trilambn	0	0	0	(n,k) -> F001222(BI(n,k))		F001222,F007318
+A145489	sintrif	1	(term, n) -> term.-(5)./(12)	""	new A145475()	5,12	J145475
+A166473	sintrif	1	(term, n) -> term./(12)	""	new A166471()
+A217710	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A072649(), new A029837()
+A255737	sintrif	0	(term, n) -> term.-(1)./(4)	""	new A162795()
+A264989	sintrif	0	(term, n) -> term.-(1)./(2)	""	new A264987()	1,2	E264987
+A268514	sintrif	0	(term, n) -> term.-(1)./(2)	""	new A064194()
+A307936	sintrif	1	(term, n) -> term./(2)	""	new A234633()
+A328844	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A276086(), new A328843()
+A329619	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A329344(), new A001222()
+A362046	sintrif	0	(term, n) -> term.-(1)./(2)	""	new A070925()	1,2	J070925
+A365461	sintrif	1	(term, n) -> D276150(term)	""	new A181821()
+A367947	sintrif	1	(term, n) -> term.-(1)./(2)	""	new A063640()	1,2	J063640
+A372684	sintrif	1	(term, n) -> F000720(term)	""	new A104080()
+A374263	sintrif	2	(term, n) -> term.-(1)./(2)	""	new A049690()	1,2	J049690
+A374414	sintrif	1	(term, n) -> term.-(1)./(6)	""	new A022008()	1,6	J022008
+
+A083787	sintrif	0	(term, n) -> D046523(term)	""	new A034173()
+A086690	sintrif	0	(term, n) -> F000720(term)	""	new A034785()
+A120355	sintrif	0	(term, n) -> D002034(term)	""	new A007677()
+A093046	sintrif	0	(term, n) -> F000040(term)	""	new A058328()
+---- 2024-10-15 22:21:18
+A085191		0	0	(self, n) -> self.s(0).-(self.s(1))	""	new A071156().skip(1), new A071156()
+A181813	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A181814(), new A003418()
+A181816	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A181817(), new A025487()
+A195508	sintrif	1	(term, n) -> term.-(1)./(2)	""	new A090368().skip(1)
+A212307	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A000142(), new A060828()
+A244508		0	0	(self, n) -> self.s(0).-(self.s(1))	""	new A182908().skip(1), new A182908()
+A252741	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A252738(), new A000142()
+A265754		1	0	(self, n) -> self.s(0).-(self.s(1))	""	new A265332().skip(1), new A036987()
+A266639	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A252738(), new A191555()
+A290104	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A003963(), new A290103()
+A290105	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A156061(), new A290103()
+A290517	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A000142(), new A290518()
+A294194		0	0	(self, n) -> self.s(0).-(self.s(1))	""	new A063959().skip(1), new A063959()
+A339901	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A339971(), new A339899()
+A350072	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A065764(), new A350071()
+A360612		1	0	(self, n) -> self.s(0).-(self.s(1))	""	new A008793().skip(1), new A071095()
+A363521	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A007956(), new A072499()
+A364868	sintrif	1	(term, n) -> term.-(1)./(4)	""	new A055025().skip(1)
+A364869	sintrif	1	(term, n) -> term.-(1)./(6)	""	new A055664().skip(2)
+A365455	multraf	1	(self, n) -> self.s(0)./(self.s(1))	""	new A000203(), new A365454()

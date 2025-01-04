@@ -1,0 +1,42 @@
+---- 2024-10-10 11:10:09
+A113663	convprod	0	3	new A113669()	Self-convolution cube of A113669, where a(n) = A113669(n+1)/(n+1).
+A127467	triprod	1	A054525	A127466	Mobius transform of A127466; (A054525 * A127466 as infinite lower triangular matrices).
+A163020	lingf	1	0,1,2,-5,0,-1,0,-1	1,-10,33,-45,21,15,-29,9,6,-1					0
+A248425	lingf	1	0,0,0,0,0,1,0,-1,0,1	1,-4,4,2,-4,0,1					0
+A279617	partsun	1	new A279481()			Partial sums of A279481.
+A376139	m1pow	1	A051903	a(n) = (-1)^A051903(n).
+A376467	triprod	0	A063007	A007318	Triangular array read by rows: A063007 * A007318.
+A118601	partsun	1	new A058129().skip(1)			Partial sums of A058129.					Partial sums of A058129.
+---- 2024-10-10 19:01:41
+A100612	lambdan	1	n -> E236399(n).mod(F000040(n))	""		a(n) = E236399(n) mod prime(n)	_	_	_
+A101896	sintrif	1	(term, n) -> F004086(Z2(term))	""	new A057708()	a(n) = reverse(2^J057708(n))	_	_	_
+A103480	lambdan	0	n -> SU(0, n, k -> ZV(n - k).^(k)).+(n)	sum{k=0..n, (n-k)^k}+n=sum{k=0..n, k^(n-k)}+n; a(n+1)=J026898(n)+n+1	_	_	_		Row sums of A103462.
+A112983	lambdan	1	n -> Z2(n + 1).mod(ZV(n))	""		a(n) = 2^(n+1) mod n	_	_	_
+A126868	lambdan	1	n -> DF(n + 1).mod(ZV(n))	""		a(n) = (n+1)!! mod n	_	_	_
+A129491	lambdan	0	n -> F007953(E068413(n))	""		a(n) = F007953(F000041(D000079(n))) = F007953(E068413(n))	_	_	_
+A138871	sintrif	1	(term, n) -> Z.TWO.pow(term.-(1)).mod(ZV(1000))	""	new A000043()	a(n) = 2^(J000043(n)-1) mod 1000	_	_	_
+A143234	sintrif	0	(term, n) -> term.mod(ZV(32))	""	new A065072()	a(n) = J065072(n) mod 32	_	_	_
+A167657	lambdan	1	n -> (n == 1) ? ZV(0) : ZV(n - 1).^(Functions.PRIME.l(n) - Functions.PRIME.l(n - 1))	""		a(n) = n^(F000040(n+1)-F000040(n))	_	_	_
+A175803	lambdan	1	n -> Z2(Functions.PRIME.i(n) - 2).mod(PM(n + 2))	""		a(n) = 2^(F000040(n)-2) mod F000040(n+2)	_	_	_
+A176083	lambdan	1	n -> Z2(2*n - 2).mod(PM(2*n))	""		a(n) = 2^(2n-2) mod F000040(2n)	_	_	_
+A179115	lambdan	1	n -> SD(n, d -> F000010(ZV(d).^(F000005(d))))	""		a(n) = Sum_{d|n} phi(d^tau(d))	_	_	_
+A179431	lambdan	0	n -> (n == 0) ? ZV(1) : BI(ZV(3).^(n - 1), n)	""		a(n) = binomial(3^(n-1), n)	_	_	_
+A192326	lambdan	1	n -> F000040(n).modZ(2*n - 1)	""		a(n) = prime(n) mod (2n-1)	_	_	_
+A232701	lambdan	1	n -> DF(2*n-1).mod(FA(n))	""		a(n) = (2*n-1)!! mod n!	_	_	_
+A255484	lambdan	0	n -> PR(0, n, k -> F000040(k+1).*((BI(n, k).and(Z.ONE))))	""		a(n) = Product_{k=0..n} prime(k+1)*(binomial(n,k) mod 2)	_	_	_
+A284214	lambdan	1	n -> (SU(0, n-1, k -> M006949(k)).mod(ZV(n)))	""		a(n) = (Sum_{k=0..n-1} M006949(k)) mod n	_	_	_
+A320465	lambdan	1	n -> Z2(n).-(Z2(n-1).mod(ZV(n)))	""		a(n) = 2^n - (2^(n-1) mod n)	_	_	_
+A327141	lambdan	1	n -> F000217(n).+(E327142(n))	""		a(n) = F000217(n) + E327142(n)	_	_	_
+A338820	lambdan	1	n -> SU(1, n-1, i -> (F000040(i).^(2).mod(F000040(n))))	""		a(n) = Sum_{i=1..n-1} (prime(i)^2 mod prime(n))	_	_	_
+A339327	lambdan	1	n -> (F001414(F000040(n).-(1)).*(F001414(F000040(n).+(1)))).mod(F000040(n))	""		a(n) = (F001414(prime(n)-1)*F001414(prime(n)+1)) mod prime(n)	_	_	_
+A340344	lambdan	1	n -> ((((((((ZV(1723).*(ZV(n)).mod(ZV(1657))).mod(ZV(861))).mod(ZV(753))).mod(ZV(95))).*(ZV(1602))).+(ZV(505))).mod(ZV(786))).mod(ZV(506))).mod(ZV(488))	""		a(n) = ((((((((1723*n mod 1657) mod 861) mod 753) mod 95) * 1602) + 505) mod 786) mod 506) mod 488	_	_	_
+A343282	lambdan	0	n -> E082544(ZV(10).^(n))	""		a(n) = E082544(10^n)	_	_	_
+A353138	lambdan	1	n -> { final String digs = ZV(n).toString(); final int l = digs.length(); final Z zl = ZV(l); return SU(1, l, k -> zl.^(digs.charAt(k - 1) - '0')); }	""		a(n) = Sum_{k=1..F055642(n)} (F055642(n))^(floor(n*10^(1-k)) mod 10)	_	_	_
+A354975	lambdan	1	n -> SU(1, n, i -> (F000040(i+n).mod(F000040(i))))	""		a(n) = Sum_{i=1..n} (prime(i+n) mod prime(i))	_	_	_
+A360825	lambdan	0	n -> (n <= 3) ? ZV(new int[]{1,1,2,2}[n]) : FA(n).mod(F151800(n))	#n:1,1,2,2//		a(n) = n! mod F151800(n) for n > 3	_	_	_
+A361612	lambdan	0	n -> CV(10).sqrt().*(ZV(10).^(n)).floor()	""		a(n) = floor(sqrt(10) * 10^n)	_	_	_
+A363482	lambdan	3	n -> { final Z n2 = ZV(n).*(n).+(3*n - 5); return n2./(GCD(n2, D051403(n-3).*(5).+(D051403(n-4).*(n)))); }	_	_	_		Denominator of the continued fraction 1/(2-3/(3-4/(4-5/(...(n-1)-n/(-5))))).
+A366867	sintrif	1	(term, n) -> (term.-(ZV(6))).*(term).*((term.+(6)))	""	new A006489()	a(n) = (J006489(n) - 6)*J006489(n)*(J006489(n) + 6)	_	_	_
+A371402	lambdan	0	n -> GCD(2*n, ZV(4).^(n)).^(2*n + 1).mod((Z2(2*n+1).-(ZV(1))).^(2))	""		a(n) = gcd(2*n, 4^n)^(2*n + 1) mod (2^(2*n + 1) - 1)^2	_	_	_
+A376554	lambdan	0	n -> F000196(E376553(n))	""		a(n) = sqrt(E376553(n))	_	_	_
+A376714	lambdan	1	n -> F003132(F000040(n))	""		a(n) = F003132(F000040(n))	_	_	_

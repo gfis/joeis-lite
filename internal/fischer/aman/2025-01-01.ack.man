@@ -1,0 +1,170 @@
+---- 2025-01-01 22:19:42
+---- 2025-01-01 22:39:54
+---- 2025-01-01 23:24:07
+A079621	parmof2	1	A111594	new A002866().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A079638	parmof2	1	A111594	new A029767().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A079639	parmof2	1	A111594	new A006252().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A079640	parmof2	1	A111594	new A007840().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A079642	parmof2	1	A111594	new A089064().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A088729	parmof2	1	A111594	new A000670().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A088814	parmof2	1	A111594	new A000262().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A092082	parmof2	1	A111594	new A008542().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A105819	parmof2	1	A111594	new A055860()	. For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 27 2016
+A111593	parmof2	0	A111594	new A155585().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 26 2016
+A121408	parmof2	1	A111594	new A177145()	. For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 27 2016
+A129979	moetrafi	1	new SingleTransformSequence(1, (term, n) -> (n == 1) ? term : term.negate(), "", new A007427())	, 0	with changed signs except for J007427(1) = 1;
+A130597	binomtraf	0	new A000796()	0	true		decimal expansion of Pi.
+A130878	moetrafi	1	new A100107()	, 0	.
+A131222	parmof2	0	A111594	new A029767().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 18 2016
+A132290	binomtraf	0	new A125276()	0	false	.
+A133726	moetraf	1	new A000129()	, 1		).
+A135494	parmof2	1	A111594	new A153881()	. For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 27 2016
+A136630	parmof2	0	A111594	new A000035().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 27 2016
+A143543	parmof2	1	A111594	new A001187().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 17 2016
+A185422	parmof2	1	A111594	new A080635().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 18 2016
+A186366	parmof2	1	A111594	new A000111()	. For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 18 2016
+A187761	rowsum	0	new A264428()	Also the row sums of the Bell transform of the Bell numbers. Since the Bell numbers are the row sums of the Bell transform of the Stirling_2 numbers they might also be called second order Bell numbers. (Also note that the Stirling_2 numbers are the row sums of the Bell transform of the simplest sequence of positive numbers 1,1,1,... which in turn are the row sums of the Bell transform of the characteristic function of 0. See the link 'Bell Transform' for more about this hierarchy which might be called the Bell hierarchy.) - _Peter Luschny_, Jan 23 2016
+A195204	parmof2	1	A111594	new A076726()	. For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 29 2016
+A215771	parmof2	0	A111594	new A001710()	. For the definition of the Bell transform see J264428 and the links given there. - _Peter Luschny_, Jan 21 2016
+A217756	parmof2	1	A111594	new A129271().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 18 2016
+A223511	parmof2	1	A111594	new A045755().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 29 2016
+A227450	parmof2	1	A111594	new A007395()		the constant sequence "a(n) = 2". For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 29 2016
+A247232	parmof2	1	A111594	new A001929().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 18 2016
+A256041	parmof2	0	A111594	new A005212().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 29 2016
+A256281	moetrafi	1	new A000129()	, 1	Pell numbers.
+A256892	parmof2	0	A111594	new A000262().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 29 2016
+A256893	parmof2	0	A111594	new A000670().skip(1)	For the definition of the Bell transform see J264428. - _Peter Luschny_, Jan 29 2016
+A264435	parmof2	0	A111594	new A000587()
+A265606	parmof2	0	A111594	new A007696()
+A265608	parmof2	0	A111594	new A000262()
+A274108	moetraf	1	new A002133()	, 0		. - _Andrew Howroyd_, Nov 10 2024
+A279495	moetrafi	1	new A023533()	, 1	. - _Antti Karttunen_, Oct 01 2018
+A286378	rgs1	0	new A278243()	Restricted growth sequence transform of J278243.
+A286448	rgs1	1	new A252748()	Restricted growth sequence transform of J252748 (= D003961(n) - 2*n).
+A286545	rgs1	1	new A278245()	(prime signature of Fibonacci numbers).
+A286547	rgs1	0	new A286546()	(F006068(n) - n).
+A286549	rgs1	0	new A286548()	(F003188(n) - n).
+A286565	rgs1	1	new A278165()	(= D046523(F001045(n))).
+A286602	rgs1	0	new A286601()	.
+A286603	rgs1	1	new A000203()	.
+A286605	rgs1	1	new A000005()
+A286610	rgs1	1	new A000010()	.
+A286614	rgs1	0	new A286613()	.
+A286626	rgs1	0	new A278226()	.
+A290094	rgs1	0	new A290093()	.
+A291764	rgs1	1	new A291784()	, (psi(n) + phi(n))/2.
+A294467	binomtraf	0	new A088311()	0	false	.
+A294468	binomtraf	0	new A088311()	0	true	.
+A295885	rgs1	1	new LambdaSequence(1, n -> ZV(2).+((F051953(n).+(D001065(n))).^(2)).-(F051953(n)).-(D001065(n).*(3))./(2))
+A302180	binomtraf	0	new A145867()	0	true	(Number of 3D walks of type aae). - _M√©lika Tebni_, Nov 05 2024
+A302186	binomtraf	0	new A145847()	0	false	. - _M√©lika Tebni_, Nov 29 2024
+A302188	binomtraf	0	new A150500()	0	false	(Number of 3D walks of type bcd). - _M√©lika Tebni_, Nov 28 2024
+A302549	moetrafi	1	new A000219()	, 1	.
+A302550	moetrafi	1	new A026007()	, 1	.
+A304112	rgs1	1	new SingleTransformSequence(1, (term, n) -> E246277(term), "", new A064413())	, related to indices in the prime factorization of EKG sequence.
+A304745	rgs1	0	new LambdaSequence(0, n -> D046523(E207901(n)))	.
+A318025	moetrafi	1	new A006906()	, 1	.
+A318290	moetrafi	1	new A022629()	, 1	.
+A318500	rgs2	1	new A000035()	new A246277()	or equally, of ordered pair [D007814(n), E246277(n)].
+A318835	rgs1	1	new A318834()	, product_{d|n, d<n} D019565(F000010(d)).
+A319339	rgs2	1	new A081373()	new A246277()
+A319681	rgs1	1	new A319680()
+A319704	rgs1	1	new LambdaSequence(1, n -> PP(n) ? E010873(n) : ZV(-n))	function f defined as f(n) = E010873(n) when n is a prime, otherwise -n.
+A319706	rgs1	1	new LambdaSequence(1, n -> PP(n) ? D046523(2*n + 1) : ZV(-n))	when n is a prime, otherwise -n.
+A319707	rgs1	1	new LambdaSequence(1, n -> PP(n) ? E010875(n) : ZV(-n))	function f defined as f(n) = E010875(n) when n is a prime, otherwise -n.
+A319712	moetrafi	1	new A034968()	, 1	.
+A319717	rgs3	1	new A319716()	new A319710()
+A320004	rgs2	1	new A319714()	new A319710()
+A320014	rgs3	1	new A319990()	new A319991()	new A319992()	or equally, of ordered pair [J320010(n), J320013(n)].
+A320109	rgs1	1	new A320108()	Restricted growth sequence transform of E320108.
+A320113	rgs1	1	new A320112()	Restricted growth sequence transform of E320112.
+A320115	rgs1	1	new A320114()	Restricted growth sequence transform of E320114.
+A320117	rgs1	1	new A320116()	Restricted growth sequence transform of E320116.
+A320942	moetrafi	1	new A015128()	, 1	.
+A322866	rgs1	1	new LambdaSequence(1, n -> D046523(E322863(n)))	.
+A323245	rgs1	1	new LambdaSequence(1, n -> (n == 1) ? ZV(-1) : D033879(D156552(n)))
+A326888	moetraf	1	new A326895()	, 0		.
+A327229	binomtraf	0	new A327228()	0	true	.
+A328471	rgs1	1	new LambdaSequence(1, n -> D046523(E276156(n)./(F002110(D007814(n)))))
+A328472	rgs1	1	new LambdaSequence(1, n -> D046523(F276086(E276156(n)./(F002110(D007814(n))))))
+A329045	rgs1	1	new LambdaSequence(1, n -> D046523(E329044(n)))	.
+A329434	moetrafi	1	new A000700()	, 1	.
+A329435	moetrafi	1	new A002865()	, 1	.
+A329436	moetrafi	1	new A025147()	, 1	.
+A329437	moetrafi	1	new A000607()	, 1	.
+A329438	moetrafi	1	new A000586()	, 1	.
+A329439	moetrafi	1	new A001156()	, 1	.
+A329462	moetrafi	1	new A033461()	, 1	.
+A329466	moetrafi	1	new A024940()	, 1	.
+A331303	rgs1	0	new A331173()	Restricted growth sequence transform of J331173. See comments in that sequence.
+A335425	rgs2	1	new A000188()	new SingleTransformSequence(1, (term, n) -> D046523(term), "", new A335423())
+A336395	rgs1	1	new LambdaSequence(1, n -> D278221(F000265(n)))	, the prime signature of the conjugated prime factorization of the odd part of n.
+A337201	rgs1	1	new SingleTransformSequence(1, (term, n) -> D278221(term), "", new A337194())
+A337345	moetrafi	1	new A252742()	, 0	.
+A338805	parmof2	1	A111594	new A318249()	.
+A338813	parmof2	1	A111594	new A338814()	.
+A338870	parmof2	1	A111594	new A000005()	.
+A338871	parmof2	1	A111594	new A000203()	.
+A347115	moetraf	1	new A341515()	, 0		.
+A349626	moetraf	1	new A326042()	, 0		, where J326042(n) = D064989(sigma(D003961(n))).
+A350065	rgs1	1	new A350063()	Restricted growth sequence transform of E350063.
+A350067	rgs2	1	new PrependSequence(1, new A342666(), 0)	new A350063()	when assuming that J342666(1) = 0.
+A350068	rgs2	1	new A046523()	new A350063()
+A351578	rgs2	1	new SingleTransformSequence(1, (term, n) -> D007814(term), "", new A109812())	new SingleTransformSequence(1, (term, n) -> D046523(D005940(term.+(1))), "", new A109812())
+A351955	rgs1	1	new A346091()	Restricted growth sequence transform of E346091, or equally, of E346093.
+A352899	rgs1	1	new LambdaSequence(1, n -> (n < 3) ? ZV(-n) : E352892(n))
+A357238	moetrafi	1	new A000073()	, 1	).
+A357239	moetrafi	1	new A000078()	, 1	).
+A359586	moetrafi	1	new A359581()	, 0	.
+A366262	rgs1	0	new A366261()	Restricted growth sequence transform of J366261.
+A366874	rgs1	0	new A366873()	Restricted growth sequence transform of J366873.
+A369067	rgs1	0	new A369066()	Restricted growth sequence transform of E369066.
+A369068	moetraf	1	new A083345()	, 0		, where J083345(n) = n' / gcd(n,n'), and n' stands for the arithmetic derivative of n, F003415.
+A369795	binomtraf	0	new A355408()	0	false	.
+A370165	binomtraf	0	new A079491()	0	true	.
+A370456	binomtraf	0	new A370092()	0	false	.
+A371460	binomtraf	0	new A355409()	0	false	.
+A372570	rgs4	1	new A009194()	new A009195()	new A009223()	new A322361(), new A342671()
+A373250	rgs2	1	new A181819()	new A373247()
+A374479	rgs2	1	new A001065()	new A343223()
+A374480	rgs2	1	new A083345()	new A343223()
+A374485	rgs2	1	new A350388()	new A351569()
+A374980	binomtraf	0	new A000680()	0	true	.
+A377535	binomtraf	0	new A000169()	0	true	.
+A378223	moetrafi	1	new A345182()	, 0	.
+A378224	moetraf	1	new A378218()	, 0		.
+A378436	moetrafi	1	new A033630()	, 1	, where J033630 is the number of partitions of n into distinct divisors of n.
+A378439	moetraf	1	new A033630()	, 1		, where J033630 is the number of partitions of n into distinct divisors of n.
+A378443	moetrafi	1	new A372573()	, 0	.
+A378444	moetrafi	1	new A369001()	, 0	.
+A378445	moetrafi	1	new A377874()	, 0	.
+A378521	moetraf	1	new A048673()	, 0		.
+A378522	rgs1	1	new A378518()	Restricted growth sequence transform of E378518.
+A378528	moetraf	1	new A369974()	, 0		.
+A378607	moetrafi	1	new A349388()	, 0	.
+A378662	moetrafi	1	new A341612()	, 0	.
+A378663	moetrafi	1	new A341613()	, 0	.
+A378991	moetrafi	1	new A346237()	, 0	.
+A379001	rgs4	1	new A046523()	new A007814()	new A007949()	new A112765()
+A379002	rgs2	1	new A046523()	new A112765()
+A379004	rgs1	1	new A132741()	Restricted growth sequence transform of E132741, or equally, of the ordered pair [D007814(n), J112765(n)].
+A379005	rgs1	1	new A355582()	Restricted growth sequence transform of E355582.
+A379456	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n-k+1).^(k).*(BI(n+1, n-k))./(FA(k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, (2*n-k+1)^k*binomial(n+1, n-k)/k!)/(n+1)	_	_	_
+A379530	lambdan	0	n -> D135318(3*n).+(D135318(3*n + 1)).+(D135318(3*n + 2))./(3)	a(n) = (A135318(3*n) + A135318(3*n+1) + A135318(3*n+2))/3.
+A379611	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(2) : ((n == 1) ? ZV(1) : ZV(n + 1).^(n - 1).-(ZV(n + 1).^(n - 2).*(k - 1)))	T := (n, k) -> ifelse(n=1 and k=0, 1, (n + 1)^(n - 1) - (k - 1)*(n + 1)^(n - 2)):
+A379612	lambdan	0	n -> (n == 1) ? ZV(1) : ZV(n + 1).^(n - 1).+(ZV(n + 1).^(n - 2))	, by convention a(1) = 1.	nonn,new	0..20	nyi	_Peter Luschny_
+A379613	lambdan	0	n -> (n <= 2) ? ZV(0) : ZV(n).^(n - 1).-(ZV(n + 1).^(n - 2).*(2))	a(n) = n^(n - 1) - 2*(n + 1)^(n - 2), by convention a(0) = 0.
+A379614	lambdan	0	n -> RU(0, n, k -> new Q(Z.TWO.^(((n + k - 1)*(n - k))/2).*(FA(n)), FA(n - k))).num()	Sum_{k=0..n} 2^(((n + k - 1)*(n - k))/2) * n! / (n - k)!. Row sums of A365638.	nonn,new	0..16	nyi	_Peter Luschny_
+A379659	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(n-k)).*(QV(2*n-k+1).^(k-1)).*(BI(2*n-k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, 2^(n-k)*(2*n-k+1)^(k-1)*binomial(2*n-k+1, n-k)/k!)	_	_	_
+A379660	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(n-k).*(QV(2*n-k+1).^(k-1)).*(BI(2*n-k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, 3^(n-k)*(2*n-k+1)^(k-1)*binomial(2*n-k+1, n-k)/k!)	_	_	_
+A379661	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(2*n-k+1).^(k-1)).*(BI(2*n-k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, 2^k*(2*n-k+1)^(k-1)*binomial(2*n-k+1, n-k)/k!)	_	_	_
+A379662	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(2*n-k+1).^(k-1)).*(BI(2*n-k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, 3^k*(2*n-k+1)^(k-1)*binomial(2*n-k+1, n-k)/k!)	_	_	_
+A379685	lambdan	0	n -> RU(0, n, k -> QV(3*n-k+2).^(k).*(FA(2*n-k))./(QV(FA(k)).*(FA(n-k))))./(n+1).num()	""		a(n) = sum(k=0, n, (3*n-k+2)^k*(2*n-k)!/(k!*(n-k)!))/(n+1)	_	_	_
+A379688	lambdan	0	n -> RU(0, n, k -> QV(Z2(n-k)).*(QV(n-k).^(k)).*(FA(2*n-k))./(QV(FA(k)).*(FA(n-k))))./(n+1).num()	""		a(n) = sum(k=0, n, 2^(n-k)*(n-k)^k*(2*n-k)!/(k!*(n-k)!))/(n+1)	_	_	_
+A379689	lambdan	0	n -> RU(0, n, k -> QV(n-2*k-1).^(k).*(FA(2*n-k))./(QV(FA(k)).*(FA(n-k))))./(n+1).num()	""		a(n) = sum(k=0, n, (n-2*k-1)^k * (2*n-k)!/(k!*(n-k)!))/(n+1)	_	_	_
+A379690	lambdan	0	n -> RU(0, n, k -> QV(2*n-2*k).^(k).*(FA(2*n-k))./(QV(FA(k)).*(FA(n-k))))./(n+1).num()	""		a(n) = sum(k=0, n, (2*n-2*k)^k * (2*n-k)!/(k!*(n-k)!))/(n+1)	_	_	_
+A379691	lambdan	0	n -> RU(0, n, k -> QV(3*n-2*k+1).^(k).*(FA(2*n-k))./(QV(FA(k)).*(FA(n-k))))./(n+1).num()	""		a(n) = sum(k=0, n, (3*n-2*k+1)^k * (2*n-k)!/(k!*(n-k)!))/(n+1)	_	_	_
+A379699	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(n-k)).*(QV(2*n-k+1).^(k)).*(BI(n+1, n-k))./(FA(k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, 2^(n-k)*(2*n-k+1)^k*binomial(n+1, n-k)/k!)/(n+1)	_	_	_
+A379700	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(n-k).*(QV(2*n-k+1).^(k)).*(BI(n+1, n-k))./(FA(k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, 3^(n-k)*(2*n-k+1)^k*binomial(n+1, n-k)/k!)/(n+1)	_	_	_
+A379701	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n-2*k-1).^(k).*(BI(n+1, n-k))./(FA(k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, (n-2*k-1)^k*binomial(n+1, n-k)/k!)/(n+1)	_	_	_
+A379702	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n-3*k-1).^(k).*(BI(n+1, n-k))./(FA(k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, (2*n-3*k-1)^k*binomial(n+1, n-k)/k!)/(n+1)	_	_	_

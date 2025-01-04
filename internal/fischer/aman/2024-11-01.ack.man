@@ -1,0 +1,142 @@
+---- 2024-11-01 22:03:18
+A098231	lambdan	1	n -> Z2(Functions.PRIME.i(n)).-(11)	2^p - 11
+A100016	multrar	0	(self, n) -> self.a(n - 1).*(Functions.NEXT_PRIME.z(self.a(n - 1)))	"1"		a(0) = 1; a(n+1) = a(n) * (next prime larger than a(n))
+A100533	sintrif	1	(term, n) -> ZV(3).^(term.^(2))	""	new A000040()	3^(p^2) where p = prime(n).     nonn    1..6    nyi
+A100750	filter	1	new A000040()	p -> p.+(100).IPP() || (p.compareTo(ZV(102)) >= 0 && p.-(100).IPP())	Primes p such that p-100 or p+100 (or both) is prime.
+A100931	lambdan	1	n -> FI(FA(n)).*(Functions.LUCAS.z(FA(n)))	F(n!) * L(n!) where F(n) are Fibonacci numbers and L(n) are Lucas numbers.	nonn	1..5	nyi	_Parthasarathy Nambi_
+A101218	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("23"  + term.toString()), "", new A000040())	PRIME	Primes that are a concatenation of 2, 3 and a prime.
+A101219	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("35"  + term.toString()), "", new A000040())	PRIME	3, 5 and a prime.    nonn,base,easy  1..1000
+A101249	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("57"  + term.toString()), "", new A000040())	PRIME	5, 7 and a prime.    nonn,base,easy  1..10000
+A101250	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("711" + term.toString()), "", new A000040())	PRIME	7, 11 and a prime.   nonn,easy,base  1..10000
+A101251	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("235" + term.toString()), "", new A000040())	PRIME	2, 3, 5 and a prime. nonn,easy,base  1..10000
+A101252	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("357" + term.toString()), "", new A000040())	PRIME	3, 5, 7 and a prime. nonn,easy,base  1..10000
+A101293	lambdan	0	n -> Functions.LUCAS.z(FA(n))	Lucas(n!).	nonn	0..5	nyi	_Parthasarathy Nambi_
+A102546	filnum	1	1	k -> ZV(k*10 + 1).IPP() && k % 10 == 0	t such that t1 is prime and t is a multiple of 10.	nonn,base	1..1000	nyi	_Parthasarathy Nambi_
+A102606	filnum	1	1	k -> new Z("1" + Integer.toString(k) + Integer.toString(k) + Integer.toString(k) + "1").IPP()	k such that 1kkk1 is prime.	nonn,base	1..10000	nyi	_Parthasarathy Nambi_
+A102607	filnum	1	1	k -> new Z("1" + Integer.toString(k) + Integer.toString(k + 1) + Integer.toString(k + 2) + "1").IPP()	L such that 1LMN1 is prime, where M=L+1 and N=M+1.	nonn,base	1..60	nyi	_Parthasarathy Nambi_
+A102608	filnum	1	1	k -> new Z("1" + Integer.toString(k) + Integer.toString(k + 1) + "1").IPP()	L such that 1LM1 is prime and M=L+1.	nonn,base	1..51	nyi	_Parthasarathy Nambi_
+A102745	sintrif	1	(term, n) -> Functions.OMEGA.z(term)	""	new A132904()	of four consecutively concatenated primes.     nonn,base       1..1000 nyi     _Parthasarathy Nambi_
+A102746	sintrif	1	(term, n) -> Functions.OMEGA.z(term)	""	new A019518()	of concatenation of first n primes.    nonn,base       1..40   nyi     _Parthasarathy Nambi_
+A103590	filnum	1	1	k -> new Z(Integer.toString(k) + "23571113").IPP()	k23571113 represents a prime number.	base,nonn	1..1000	nyi	_Parthasarathy Nambi_
+A103888	filnum	1	1	k -> new Z("100" + Integer.toString(k) + "001").IPP()	100k001 is prime.	base,nonn,less	1..57	nyi	_Parthasarathy Nambi_
+A103965	filnum	1	1	k -> new Z(Integer.toString(k) + "10" + Integer.toString(k)).IPP()	n10n is the decimal expansion of a prime number.	base,nonn	1..52	nyi	_Parthasarathy Nambi_
+A103967	filnum	1	1	k -> new Z(Integer.toString(k) + "1" + Integer.toString(k)).IPP()	n1n is the decimal expansion of a prime number.	base,nonn	1..10000	nyi	_Parthasarathy Nambi_
+A103991	holos	1	[[0],[-24,3],[6,-1],[12,-3],[75,-24],[-9,-4],[-27],[-105,21],[-15,5],[-3,3]]	3,5,21,9,11,39,15,17,57,21	0	0	-x*(3*x^5-x^4-3*x^3-21*x^2-5*x-3)/(x-1)^2/(x^2+x+1)^2
+A104186	lambdan	1	n -> Functions.OMEGA.z(new Z(Integer.toString(2*n - 1) + Integer.toString(2*n + 1) + Integer.toString(2*n + 3) + Integer.toString(2*n + 5)))	four consecutive concatenated odd numbers.    nonn,base       1..10000        nyi     _Parthasarathy Nambi_
+A104239	sintrif	1	(term, n) -> Functions.OMEGA.z(term)	""	new A019519()	of 135...(2n-1) (concatenation of n odd numbers).      nonn,base       1..50   nyi     _Parthasarathy Nambi_
+A104377	lambdan	1	n -> Functions.OMEGA.z(new Z(Integer.toString(2*n - 1) + Integer.toString(2*n + 1) + Integer.toString(2*n + 3)))	three consecutive concatenated odd numbers.   nonn,base       1..10000        nyi     _Parthasarathy Nambi_
+A104458	multrar	1	(self, n) -> new Z(self.a(n - 2).toString() + self.a(n - 1).toString())	"2,3"		Define the first two terms to be 2 and 3. All the other terms are obtained by concatenating the two previous terms.
+A105079	lambdan	1	n -> Functions.OMEGA.z(ZV(1000).^(n).-(3))	of 1000^n - 3 where n = 1,2,3,....    nonn    1..60   nyi     _Parthasarathy Nambi_
+A105190	lambdan	0	n -> Functions.OMEGA.z(new Z(Integer.toString(n) + "100000000001"))	of n100000000001.     nonn,base       0..40   nyi     _Parthasarathy Nambi_
+A105194	lambdan	1	n -> Functions.OMEGA.z(new Z(Integer.toString(4*n - 3) + Integer.toString(4*n - 1)))	(of the concatenation of two consecutive odd numbers.   nonn,base       1..105  nyi     _Parthasarathy Nambi_
+A111036	filnum	1	1	k -> Functions.PARTITIONS.z(6*k).IPP()
+A111045	filnum	1	1	k -> Functions.PARTITIONS.z(4*k).IPP()
+A111353	lambdan	1	n -> Functions.OMEGA.z(Functions.PARTITIONS.z(6*n + 1))	of P(6*n+1) where P(m) is the partition number.        nonn    1..80   nyi     _Parthasarathy Nambi_
+A111370	lambdan	0	n -> PT(6*n + 1)	partitions of (6*n + 1).	nonn	0..27	nyi	_Parthasarathy Nambi_
+A111389	filnum	1	1	k -> Functions.PARTITIONS.z(3*k).IPP()
+A111451	lambdan	0	n -> ((n & 1) == 0) ? PT(5*n + 1) : PT((5*n + 1)/2)	partitions of P where P=(5*n + 1) if n is even and P=((5*n + 1)/2) if n is odd.	nonn	0..28	nyi	_Parthasarathy Nambi_
+A111515	lambdan	0	n -> ((n & 1) == 0) ? PT(7*n + 1) : PT((7*n + 1)/2)	partitions of T where T=(7*n + 1) if n is even and T=((7*n + 1)/2) if n is odd.	nonn	0..28	nyi	_Parthasarathy Nambi_
+A111751	filnum	1	1	k -> Functions.OMEGA.i(PT(3*k + 1)) == 2	has exactly two distinct prime factors, where P(m) is the partition number A000041.	nonn	1..45	nyi	_Parthasarathy Nambi_
+A113499	filnum	0	1	k -> PT(11*k).IPP()
+A113518	filnum	1	1	k -> PT(13*k).IPP()	is prime, where P(n) is the unre
+A113526	multrar	1	(self, n) -> new Z(self.a(n - 2).toString() + self.a(n - 1).toString())	"1,3"	1 and 3. All the other term
+A113765	multrar	0	(self, n) -> new Z(self.a(n - 2).toString() + self.a(n - 1).toString())	"1,7"	1 and 7. All the other terms
+A114020	multraf	0	(self, n) -> FA(self.a(n - 1)).+(FA(self.a(n - 2)))	"0,1"		a(n) = a(n-1)! + a(n-2)! with a(0) = 0, a(1) = 1.	nonn	0..5	nyi	_Parthasarathy Nambi_
+A114045	multraf	0	(self, n) -> FA(self.a(n - 1)).*(n)	"0,1"		a(n) = n*a(n-1)! with a(0) = 0, a(1) = 1.
+A114056	filnum	1	1	k -> Z2(Functions.PRIME.i(k)).-(1).+(ZV(10).^(k)).IPP()	2^prime(k) - 1 + 10^k is prime.	nonn,more	1..11	nyi	Joao Carlos Leandro da Silva (zxawyh66(AT)yahoo.com)
+A114063	filnum	1	1	k -> PHI(k).equals(TAU(k).^(4))
+A114064	filnum	1	1	k -> !SIGMA(k).*(PHI(k)).mod(TAU(k)).isZero()	, where tau(k) = A000005(k).	nonn	1..54	nyi	_Giovanni Resta_
+A114066	filnum	1	1	k -> ZV(k).+(PM(k)).root(4).auxiliary() == 1 	a fourth power.	nonn	1..23	nyi	_Giovanni Resta_
+A114067	filnum	1	1	k -> PM(k).-(k).root(4).auxiliary() == 1 	a fourth power.	nonn	1..13	nyi	_Giovanni Resta_
+A114068	filnum	1	1	k -> SIGMA(k).+(PHI(k)).root(4).auxiliary() == 1	is a fourth power.	nonn	1..1000	nyi	_Giovanni Resta_
+A114069	filnum	1	1	k -> Predicates.SQUARE.is(SIGMA(k).+(k))	is a square.	nonn	1..10000	nyi	_Giovanni Resta_
+A114070	filnum	1	1	k -> Predicates.CUBE.is(SIGMA(k).+(k))	is a cube.	nonn	1..36	nyi	_Giovanni Resta_
+A114071	filnum	1	1	k -> SIGMA(k).+(k).root(4).auxiliary() == 1	is a fourth power.	nonn	1..26	nyi	_Giovanni Resta_
+A114072	filnum	1	1	k -> PHI(k)  .+(k).root(4).auxiliary() == 1	is a fourth power.	nonn	1..500	nyi	_Giovanni Resta_
+A114073	filnum	1	1	k -> Predicates.SQUARE.is(PHI(k).+(k))	is a square.	nonn	1..10000	nyi	_Giovanni Resta_
+A114074	filnum	1	1	k -> Predicates.CUBE.is(PHI(k).+(k))	is a cube.	nonn	1..250	nyi	_Giovanni Resta_
+A114075	filnum	1	1	k -> Predicates.CUBE.is(SIGMA(k).*(k))	is a cube.	nonn,more	1..7	nyi	_Giovanni Resta_
+A114076	filnum	1	1	k -> Predicates.CUBE.is(PHI(k).*(k))	is a cube.	nonn	1..8565	nyi	_Giovanni Resta_
+A114077	filnum	1	1	k -> Predicates.CUBE.is(PHI(k).*(SIGMA(k)))	is a cube.	nonn	1..6000	nyi	_Giovanni Resta_
+A114078	filnum	1	1	k -> PHI(k).*(SIGMA(k)).root(4).auxiliary() == 1 	 is a fourth power.	nonn	1..600	nyi	_Giovanni Resta_
+A114079	filnum	1	1	k -> Predicates.SQUARE.is(SIGMA(k).*(PHI(k)).*(k))	is a square.	nonn	1..100	nyi	_Giovanni Resta_
+A114081	filnum	1	1	k -> Predicates.CUBE.is(SIGMA(k).+(PM(k)))	a cube.	nonn	1..27	nyi	_Giovanni Resta_
+A114082	filnum	1	1	k -> Predicates.SQUARE.is(SIGMA(k).+(PM(k)))	a square.	nonn	1..10000	nyi	_Giovanni Resta_
+A114083	filnum	1	1	k -> SIGMA(k).+(PM(k)).root(4).auxiliary() == 1 	a fourth power.	nonn	1..7	nyi	_Giovanni Resta_
+A114084	filnum	1	1	k -> PHI(k)  .+(PM(k)).root(4).auxiliary() == 1	a fourth power.	nonn	1..13	nyi	_Giovanni Resta_
+A114085	filnum	1	1	k -> Predicates.CUBE.is(PHI(k).+(PM(k)))	a cube.	nonn	1..30	nyi	_Giovanni Resta_
+A114103	trilambn	1	1	1	(n, k) -> LCM(ZV(n), Functions.TRIANGULAR.z(n - 1).+(k))
+A114104	sintrif	1	(term, n) -> term./(n)	""	new A114103()
+A114165	filnum	1	1	k -> Functions.PARTITIONS.z(2*k).IPP()	is prime, where p(n) is the number of partitions of n.	nonn	1..2451	nyi	_Robert G. Wilson v_
+A114166	filnum	1	1	k -> Functions.PARTITIONS.z(5*k).IPP()	is prime, where p(n) is the number of partitions of n.	nonn	1..1252	nyi	_Robert G. Wilson v_
+A114167	filnum	1	1	k -> Functions.PARTITIONS.z(7*k).IPP()	is prime, where p(n) is the number of partitions of n.	nonn	1..810	nyi	_Robert G. Wilson v_
+A114168	filnum	1	1	k -> Functions.PARTITIONS.z(8*k).IPP()	is prime, where p(n) is the number of partitions of n.	nonn	1..630	nyi	_Robert G. Wilson v_
+A114169	filnum	1	1	k -> Functions.PARTITIONS.z(9*k).IPP()	is prime, where p(n) is the number of partitions of n.	nonn	1..555	nyi	_Robert G. Wilson v_
+A114170	filnum	1	1	k -> Functions.PARTITIONS.z(10*k).IPP()	is prime, where p(n) is the number of partitions of n.	nonn	1..607	nyi	_Robert G. Wilson v_
+A114204	lambdan	0	n -> SU(0, n, k -> BI(n, k).^(2).*(Functions.JACOBSTHAL.z(k + 1)))
+A115018	filnum	1	0	k -> ZV(k + 2).^(2).*(k + 1).+(1).IPP()	k such that (k+1)*(k+2)^2 + 1 is prime.	nonn,easy	1
+A115051	lambdan	2	n -> Functions.OMEGA.z(Functions.FIBONACCI.z(Functions.LUCAS.z(n).+(n)))	of F(n + L(n)) where F(n) is the Fibonacci number and L(n) is the Lucas number and n >= 2.     nonn,more       2..18   nyi     _Parthasarath
+A116370	lambdan	2	n -> Functions.OMEGA.z(Functions.PARTITIONS.z(Functions.LUCAS.z(n)))	of P(L(n)) where L(n) is the Lucas number and P(n) is the unrestricted partition number.       more,nonn       2..21   nyi     _Parthasarath
+A116504	sintrif	1	(term, n) -> Functions.OMEGA.z(term)	""	new A000422()	of the concatenation of n,...,1.      nonn,base       1..93   nyi     _Parthasarathy Nambi_
+A121781	holos	1	[[0],[-24,4],[100,-22],[-132,36],[78,-27],[-12,15],[8,-4]]	0,8,66,366,1640,6404,22696	0	0	5/16-1/8*x+1/16*(144*x^4-256*x^3+92*x^2-52*x+5)/(2*x-1)^5
+A133304	sintrif	1	(term, n) -> Functions.OMEGA.z(term)	""	new A101291()	.    nonn,base       1..40   nyi     _Parthasarathy Nambi_
+A143075	holos	1	[0,-1,2,1,-6,6,0,-5,4,-1]	1	0	0	1/(x^8-2*x^7-x^6+6*x^5-6*x^4+5*x^2-4*x+1)
+A143075	holos	1	[0,-1,2,1,-6,6,0,-5,4,-1]	1	0	0	1/(x^8-2*x^7-x^6+6*x^5-6*x^4+5*x^2-4*x+1)
+A165243	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("2"  + term.toString()), "", new A000040())	PRIME	"2" + v.toString()).IPP()
+A165292	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("3"  + term.toString()), "", new A000040())	PRIME	"3" + v.toString()).IPP()
+A165444	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("4"  + term.toString()), "", new A000040())	PRIME	"4" + v.toString()).IPP()
+A165531	holos	0	[[0],[356161536,-12552192,110592],[-26494239744,952912896,-8567808],[907216610688,-33294075264,305438976],[-19209894637824,719320115520,-6733037376],[284704863428832,-10878093670048,103895174464],[-3167117485809984,123486131744848,-1203518762896],[27679368054747144,-1101413679747944,10955300905136],[-196340720721336432,7974384399188716,-80959004730700],[1158481065391126770,-48032090496289734,497805161970132],[-5795928693775600488,245357880276981563,-2596381712571599],[24967485564806168748,-1079404308316137258,11665215098019030],[-93768498766028290482,4141126172206476529,-45718073474808493],[310183802387488839198,-13998311443289271453,157924439804445123],[-911493000885000306906,42050482039243049846,-484970230176188696],[2396329303585527263952,-113061276537963472796,1333573115538584222],[-5670162232362746946444,273730266814249940916,-3303652711532957628],[12136559623840436929698,-599809730061125944284,7411118175872134824],[-23599840393696079111730,1194723842734504635828,-15121181884317899718],[41842606014566726847300,-2171131809110591154081,28165672082279488155],[-67853198437317240627306,3611046833773976159991,-48047236060334017959],[100903502677402173502848,-5511481307496272460141,75267639616819919973],[-137908964281521271040472,7737053753649094922586,-108527889790378448694],[173556350035224178303530,-10008859954458816762601,144316361644988519755],[-201430245170989272118998,11950576257862918042724,-177273420978735275654],[215872134555997409891292,-13187431670394437214744,201427066216992691020],[-213843623548360107648192,13463585575449689783158,-211944500553359187814],[195957268649084626150512,-12727753986155653625086,206700672882614652076],[-166201005495474853729518,11148111784283533661533,-186969689669858336917],[130516147515276103667844,-9050848535559006986314,156934661487537107068],[-94911073754650265189622,6812575079213368147814,-122267877219677547572],[63910110259005654310188,-4754235812332519144136,88430177445290952278],[-39839581002313175093586,3075597233625533444322,-59368297665045859284],[22980428329520762842002,-1843772209822473834503,36988650184394269799],[-12257886994890291935148,1023716203006895429957,-21377506553953592177],[6041003438045349216480,-526046304115513189407,11453904361620131445],[-2747640908783735071638,249933789971571867702,-5684673347872573392],[1151810537973237292668,-109664756207877436872,2610772654423661418],[-444289138540079588838,44373707018267524903,-1108157489014541557],[157388995916210548566,-16529347863805980672,434062058511573618],[-51087822288539811216,5656877835886970275,-156620578768323301],[15154210193782183944,-1774414767792139373,51950040822733151],[-4095069583172871378,508721621227018528,-15801638834080630],[1004398047095225736,-132872487133241946,4394994400883160],[-222633885673180092,31496221364067952,-1114054283127568],[44371238677782846,-6745204428366777,256359692295411],[-7903158415814580,1298166307815820,-53307974967448],[1248889087907850,-223101094815064,9962519551492],[-173550608768382,33976427262069,-1662476641689],[20978066145948,-4542408294101,245774726489],[-2175610250928,526943437755,-31880758551],[190193969562,-52261035896,3585118826],[-13690247412,4346323193,-344176355],[785399322,-295255801,27641059],[-34236282,15781767,-1806045],[1050630,-626740,92194],[-19734,16762,-3448],[162,-246,84],[0,1,-1]]	1,1,2,6,22,87,348,1374,5335,20462,77988,296787,1130969,4321239,16559467,63633036,245113705,946140207,3658715938,14170931497,54966429252,213487762758,830195102515,3232062132146,12596093756080,49137833964185,191862494482159,
+A165555	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("5"  + term.toString()), "", new A000040())	PRIME	"5" + v.toString()).IPP()
+A167187	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("7"  + term.toString()), "", new A000040())	PRIME	"7" + v.toString()).IPP()
+A167199	holos	0	[[0],[0,1],[0,4],[0,2]]	1,-2,7,-36	0	1	2/(x^2+4*x+2)
+A201996	holos	0	[[0],[180,-105,15],[138,-103,19],[-144,143,-35],[24,-39,15],[0,2,-2]]	1,1,4,27,252,3000	0	1	1/(1-(1-x-(-x^2-2*x+1)^(1/2))/x)
+A225034	holos	0	[[0],[18,-15,3],[-2,-9,5],[0,5,1],[0,-1,-1]]	1	0	0	2/(3*x^2-4*x+1+((-x^2+1)^2+4*x^2-4)^(1/2))
+A232224	holos	0	[[0],[2600,-2340,520],[260,858,-182],[-208,-57,1],[-27,0,3]]	0,0,0,1	0	0	1/64*(1-(-4*x^2+1)^(1/2))^6/x^6/(-4*x^2+1)^(5/2)
+A257557	holos	0	[[0],[-2,1],[0,-1],[-4,2],[0,-2],[-4,2],[2,-3],[0,1]]	1,1,2,6,14,33,79,188	0	0	(x-1)/(x^5+2*x^3+2*x-1)
+A268213	holos	0	[[0],[5068800,-4328960,1379840,-194560,10240],[-1589760,1805952,-761728,141312,-9728],[-98304,121792,-56288,12032,-1024],[34056,-67712,44792,-12352,1216],[0,624,-392,24,8],[288,-220,-250,220,-38],[0,4,-4,-1,1]]	1,2,5,16,51,180,622,2288	0	0	-1/16*(-1+(1-4*x)^(1/2)+2*x)*(4+1/(1-4*x)^(1/2)+2*(1-4*x)^(1/2)+(1+4*x)^(1/2))/x^2
+A268407	holos	0	[[0],[72,-34,4],[102,3,-9],[-804,576,-102],[234,-196,34],[-12,10,2],[0,1,-1]]	1,2	0	0	2/(1-(1-4*x)^(1/2)+(-5+(1-4*x)^(1/2))*x)
+A277663	holos	0	[[0],[4480,-1200,80],[-91980,24480,-1620],[693408,-187089,12621],[-2334912,658197,-45849],[3418190,-987414,68668],[-1090110,217350,-3660],[-383794,283008,-43298],[376842,-216504,29058],[-111238,36150,6028],[11298,12330,-3288],[3402,-2079,189],[30,-45,15]]	0,0,10,378,7048,96000,1092460,11060700,103150528,905077728,7576640950,61098854454,477942694136	0	0	-2*x*(2*x^3-9*x^2+19*x+3)/(x^2-6*x+1)^(7/2)-2*x*(6*x^4-5*x^3+9*x^2-15*x-3)/(x^2-6*x+1)^4
+A289866	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("1"  + term.toString()), "", new A000040())	PRIME	"1" + v.toString()).IPP()	Primes obtained from other primes by prefixing a 1.
+A289867	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("6"  + term.toString()), "", new A000040())	PRIME	"6" + v.toString()).IPP()
+A290407	filter	1	new SingleTransformSequence(1, (term, n) -> new Z("8"  + term.toString()), "", new A000040())	PRIME	"8" + v.toString()).IPP()
+A302189	holos	0	[[0],[1],[3,1],[1,3],[0,1]]	1,-4,23,-184,1933	0	1	1/exp(x)/(x^2+3*x+1)
+A302195	holos	0	[[0],[1],[4,1],[2,4],[0,2]]	1,-3,12,-64,441	0	1	1/exp(x)/(1+2*x+1/2*x^2)
+A302870	holos	0	[[0],[1],[6,1],[7,6],[1,7],[0,1]]	1,-8,101,-1840,44441,-1340696	0	1	1/exp(x)/(x^3+6*x^2+7*x+1)
+A325918	holos	0	[[0],[-179400,21876,-888,12],[446400,-58056,2508,-36],[2346552,-294764,12336,-172],[-10875396,1442194,-63720,938],[16385094,-2240721,101988,-1545],[-15157998,2148481,-101241,1586],[30493428,-4836677,255657,-4504],[-70459728,12131983,-695019,13250],[101461692,-18820320,1158957,-23703],[-92029332,18578586,-1240074,27396],[54996648,-12310801,904158,-21845],[-19332420,4961793,-409857,10986],[-15246714,3293097,-243663,6210],[48448998,-11868421,986067,-27800],[-63324384,16364724,-1427865,42189],[53353428,-14618034,1340898,-41400],[-31192998,9222791,-902892,29443],[12133614,-3928653,415755,-14460],[-635148,102651,8367,-1326],[-3683568,1771733,-280287,14536],[3013572,-1688950,308199,-18311],[-1187100,823598,-182904,13066],[247968,-231613,66738,-6053],[-23388,35843,-15033,1888],[90,-2299,1911,-392],[90,-47,-93,50],[0,6,-3,-3]]	1,1,1,1,1,1,2,6,19,57,161,433,1122,2826,6968,16916,40630,96958,230732,549278,1311473,3146659,7596281,18460921,45163078,111164142,275067208,683577528	0	0	1/4*(x^3-2*x^2+2*x-1+(x^6-4*x^5+4*x^4-2*x^3+4*x^2-4*x+1)^(1/2))/(x^2-x)/x+1/4*(-x^3-2*x^2-1+(x^6+4*x^5-4*x^4+2*x^3+4*x^2-4*x+1)^(1/2)+2*x)/(x^2-x)/x
+A325925	holos	0	[[0],[16208180352000,-1602029404800,59364590400,-977443200,6033600],[-144751324723200,14766815642880,-564646105920,9591371520,-61068480],[321958324396800,-34225299834720,1362445464720,-24073335840,159310320],[-30141337786560,6863878038624,-415617679776,9810463584,-80979936],[-1122477088526400,111323251822712,-4110398078468,66875501512,-403802908],[2782756430055840,-286824665261912,11027027692636,-187248848872,1183713956],[-4764067705579320,507607410132082,-20180422239933,354519515270,-2319836907],[7929588110921760,-891704388237072,37496959336672,-698627080560,4864598144],[-12654658733509920,1509040660846344,-67362829057116,1334102513112,-9890398596],[16422420362961432,-2059198302327020,96630990589440,-2011564128220,15675265632],[-14347184139067584,1886673586738090,-92741450642739,2020412404838,-16464318693],[3721661543808936,-556622488046836,30537359465540,-732421032920,6504307048],[11661250176439344,-1506799745169136,73099972582692,-1577983312256,12787989900],[-23061636257068992,3130070637996088,-159507181902544,3616987772012,-30793344452],[23756492435069808,-3309412451513040,173067660249956,-4026969991896,35177341012],[-14549888310573312,2051931842089432,-108588438112224,2556045121436,-22583428380],[2483159156106864,-312208478112752,14349740929948,-283195793968,1993701524],[5404164889039296,-855703717176200,50516155860560,-1317527736532,12805977196],[-6946805734464432,1071086949861744,-61424469984796,1550115625368,-14490362636],[4553043974930112,-671905605753448,36110048629472,-825971053652,6603732388],[-1654001222634576,202058560209024,-7255714222116,27772715952,1813947924],[66242710315008,34424313308232,-5684900325528,279334490508,-4468825164],[183808348146048,-36954754773212,2810895316866,-96141366940,1250106438],[165494206412352,-55966789108168,5945524776832,-257448748244,3970770260],[-464810552024016,122541521660704,-11663035905852,480530463200,-7283996244],[472938212144304,-120179802892736,11290804891504,-466308748348,7160986748],[-280393991055600,71830932407124,-6850038630458,288602502036,-4538403646],[73300818980688,-19793540313648,1974513922536,-86374326612,1399915236],[41993879425296,-10561129209104,1014205673900,-44351388928,748469476],[-65897251721280,17970654974376,-1851677613520,85718181252,-1508593772],[45697139822736,-13204847198368,1437307886340,-70078414808,1295670372],[-20652074968320,6328939226568,-729200952288,37589578452,-734606484],[5808222505680,-1876589635856,227738568212,-12384702736,256509436],[-370476460032,97272853576,-8722203536,321099428,-4893628],[-581117024784,247243522368,-38749654908,2647282584,-66364092],[356138376000,-162311506168,27333544352,-2016731036,54988492],[-121866026160,61692333832,-11505927336,939146504,-28336488],[28587815520,-16443422928,3462669532,-317925012,10768088],[-4747197000,3186234842,-773822765,81358534,-3141139],[543599520,-442958024,127594336,-15699244,703196],[-39331920,41904472,-14943576,2215688,-117624],[1401720,-2398484,1147664,-214456,13876],[2160,61362,-49035,12534,-1029],[-1080,36,756,-324,36]]	0,0,0,0,0,2,14,68,274,986,3288,10416,31872,95382,281762,827084,2423078,7102598,20852296,61323328,180581128,532199414,1569071842,4626551740,13641716894,40223795038,118614194080,349847093824,1032173428200,
+A338193	holos	0	[[0],[8,-14,7,-1],[2,3,-7,2],[-24,35,-12],[-1,2]]	1,1,2,10,100	0	0	1/2*8^(1/4)*(x^2*(x-3+(x^2-6*x+1)^(1/2))^3/(3*x-1+(x^2-6*x+1)^(1/2)))^(1/4)*exp(1/4+1/4*x-1/4*(x^2-6*x+1)^(1/2))
+A338193	holos	0	[[0],[8,-14,7,-1],[2,3,-7,2],[-24,35,-12],[-1,2]]	1,1,2,10,100	0	0	1/2*8^(1/4)*(x^2*(x-3+(x^2-6*x+1)^(1/2))^3/(3*x-1+(x^2-6*x+1)^(1/2)))^(1/4)*exp(1/4+1/4*x-1/4*(x^2-6*x+1)^(1/2))
+A377379	lambdan	1	n -> { final int om =  Functions.OMEGA.i(n); return RAD(n).^(BI(Functions.BIG_OMEGA.i(n) + om, om + 1)); }	a(n) = rad(n)^binomial(bigomega(n) + omega(n), omega(n) + 1)
+A377428	lambdan	0	n -> SU(0, n, k -> FA(4*n + k + 3).*(S2(n, k))).*(4)./(FA(4*n + 4))
+A377429	lambdan	0	n -> SU(0, n, k -> FA(4*n + k + 3).*(SA(n, k))).*(4)./(FA(4*n + 4))
+A377445	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*k + 1), FA(2*k + 2)).*(2).*(SA(n, k))).num()
+A377446	lambdan	0	n -> RU(0, n, k -> new Q(FA(4*k + 2), FA(3*k + 3)).*(3).*(SA(n, k))).num()
+A377447	lambdan	0	n -> RU(0, n, k -> new Q(FA(4*k), FA(3*k+1)).*(SA(n, k))).num()
+A377448	lambdan	0	n -> RU(0, n, k -> new Q(FA(5*k), FA(4*k+1)).*(SA(n, k))).num()
+A377449	lambdan	0	n -> RU(0, n, k -> new Q(FA(5*k + 3), FA(4*k + 4)).*(4).*(SA(n, k))).num()
+A377450	lambdan	0	n -> RU(0, n, k -> new Q(FA(4*k), FA(3*k+1)).*(S2(n, k))).num()
+A377451	lambdan	0	n -> RU(0, n, k -> new Q(FA(5*k), FA(4*k+1)).*(S2(n, k))).num()
+A377452	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*k + 1), FA(2*k + 2)).*(2).*(S2(n, k))).num()
+A377453	lambdan	0	n -> RU(0, n, k -> new Q(FA(4*k + 2), FA(3*k + 3)).*(3).*(S2(n, k))).num()
+A377454	lambdan	0	n -> RU(0, n, k -> new Q(FA(5*k + 3), FA(4*k + 4)).*(4).*(S2(n, k))).num()
+A377472	diffseq	1	A003052	First differences of Colombian or self numbers A003052.	nonn,new	1..104	nyi	_M. F. Hasler_
+A377489	lambdan	0	n -> RU(0, n, k -> new Q(FA(5*k + 1))./(FA(4*k + 2)).*(S2(n, k))).*(2).num()
+A377490	lambdan	0	n -> RU(0, n, k -> new Q(FA(2*n + 3*k + 1))./(FA(2*n + 2*k + 2)).*(S2(n, k))).*(2).num()
+A377491	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*n + 4*k + 2))./(FA(3*n + 3*k + 3)).*(S2(n, k))).*(3).num()
+A377492	lambdan	0	n -> RU(0, n, k -> new Q(FA(2*n + 3*k + 1))./(FA(2*n + 2*k + 2)).*(SA(n, k))).*(2).num()
+A377493	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*n + 4*k + 2))./(FA(3*n + 3*k + 3)).*(SA(n, k))).*(3).num()
+A377494	lambdan	0	n -> RU(0, n, k -> new Q(FA(2*n + 3*k))./(FA(2*n + 2*k + 1)).*(SA(n, k))).num()
+A377495	lambdan	0	n -> RU(0, n, k -> new Q(FA(2*n + 3*k))./(FA(2*n + 2*k + 1)).*(S2(n, k))).num()
+A377497	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*n + 4*k))./(FA(3*n + 3*k + 1)).*(SA(n, k))).num()
+A377498	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*n + 4*k))./(FA(3*n + 3*k + 1)).*(S2(n, k))).num()
+A377503	lambdan	0	n -> RU(0, n, k -> new Q(ZV(k).^(n - k).*(BI(3*k + 1, k)))./(ZV(k + 1).*(FA(n - k)))).*(FA(n)).num()
+A377504	lambdan	0	n -> RU(0, n, k -> new Q(ZV(k).^(n - k).*(BI(4*k + 2, k)))./(ZV(k + 1).*(FA(n - k)))).*(FA(n)).num()
+A377526	lambdan	0	n -> RU(0, n, k -> new Q(ZV(k).^(n - k).*(BI(5*k, k)))./(ZV(4*k + 1).*(FA(n - k)))).*(FA(n)).num()
+A377527	lambdan	0	n -> RU(0, n, k -> new Q(ZV(k).^(n - k).*(BI(5*k + 1, k)))./(ZV(2*k + 1).*(FA(n - k)))).*(FA(n)).num()
+A377528	lambdan	0	n -> RU(0, n, k -> new Q(ZV(k).^(n - k).*(BI(5*k + 3, k)))./(ZV(k + 1).*(FA(n - k)))).*(FA(n)).num()
+A377529	lambdan	0	n -> RU(0, n, k -> new Q(ZV(k).^(n - k).*(ZV(k+1)))./(FA(n-k))).*(FA(n)).num()
+A377530	lambdan	0	n -> RU(0, n, k -> new Q(ZV(k).^(n - k).*(BI(k+2, 2)))./(FA(n-k))).*(FA(n)).num()
+A377531	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k).^(n - 2*k).*(ZV(k+1)))./(FA(n-2*k))).*(FA(n)).num()
+A377532	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(k).^(n - 2*k).*(BI(k+2, 2)))./(FA(n-2*k))).*(FA(n)).num()
+A377533	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n-2*k).^(k).*(n - 2*k + 1))./(FA(k))).*(FA(n)).num()
+A377534	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n-2*k).^(k).*(BI(n - 2*k + 2, 2)))./(FA(k))).*(FA(n)).num()

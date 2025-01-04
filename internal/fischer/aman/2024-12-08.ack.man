@@ -1,0 +1,74 @@
+---- 2024-12-05 10:33:12
+A089764	filter	1	new LambdaSequence(1, n -> new Z(FA(n).toString() + "1"))	PRIME	Primes of the form k! followed by a 1.
+A202424	filter	1	new LambdaSequence(0, n -> FA(n).*(DF(n)).-(1))	PRIME	Primes of the form k!*k!! - 1.
+A290116	filter	1	new LambdaSequence(2, n -> FA(n)./(2).-(1))	PRIME	Primes of the form k! / 2 - 1.
+A290117	filter	1	new LambdaSequence(4, n -> FA(n)./(4).-(1))	PRIME	Primes of the form k! / 4 - 1.
+A290118	filter	1	new LambdaSequence(5, n -> FA(n)./(5).-(1))	PRIME	Primes of the form k! / 5 - 1.
+A290120	filter	1	new LambdaSequence(7, n -> FA(n)./(7).-(1))	PRIME	Primes of the form k! / 7 - 1.
+A290188	filter	1	new LambdaSequence(0, n -> FA(n).*(ZV(3).^(n)).+(1))	PRIME	Primes of the form k!*3^k + 1.
+A290189	filter	1	new LambdaSequence(0, n -> FA(n).*(ZV(3).^(n)).-(1))	PRIME	Primes of the form k!*3^k - 1.
+---- 2024-12-05 21:20:47
+A180149	filtpos	1	0	new A002635()	v -> v.equals(ZV(2))	two partitions into sums of four squares of nonnegative numbers.	easy,nonn	1..65	nyi	_Ant King_
+A245022	filtpos	1	0	new A002635()	v -> v.equals(ZV(3))	three partitions into sums of four squares of nonnegative numbers.	nonn	1..55	nyi	_Reinhard Zumkeller_
+A290119	filter	1	new LambdaSequence(3, n -> FA(n)./(6).-(1))	PRIME	Primes of the form k! / 6 - 1.
+A290121	filter	1	new LambdaSequence(4, n -> FA(n)./(8).-(1))	PRIME	Primes of the form k! / 8 - 1.
+A290122	filter	1	new LambdaSequence(6, n -> FA(n)./(9).-(1))	PRIME	Primes of the form k! / 9 - 1.
+A290123	filter	1	new LambdaSequence(5, n -> FA(n)./(10).-(1))	PRIME	Primes of the form k! / 10 - 1.
+A293175	filtpos	1	0	new A002635()	v -> v.equals(ZV(6))	six partitions into sums of four squares of nonnegative numbers.	nonn	1..48	nyi	_Robert Price_
+A294282	filtpos	1	0	new A002635()	v -> v.equals(ZV(4))	four partitions into sums of four squares of nonnegative numbers.	nonn	1..54	nyi	_Robert Price_
+A294297	filtpos	1	0	new A002635()	v -> v.equals(ZV(5))	five partitions into sums of four squares of nonnegative numbers.	nonn	1..81	nyi	_Robert Price_
+A294308	filtpos	1	0	new A002635()	v -> v.equals(ZV(7))	seven partitions into sums of four squares of nonnegative numbers.	nonn	1..74	nyi	_Robert Price_
+A294310	filtpos	1	0	new A002635()	v -> v.equals(ZV(9))	nine partitions into sums of four squares of nonnegative numbers.	nonn	1..60	nyi	_Robert Price_
+A294311	filtpos	1	0	new A002635()	v -> v.equals(ZV(10))	ten partitions into sums of four squares of nonnegative numbers.	nonn	1..98	nyi	_Robert Price_
+---- 2024-12-06 12:06:01
+A098727	sintrif	1	(term, n) -> term.+(n)	""	new A007376()	(A007376); a(n) = b(n) + n
+A098733	sintrif	1	(term, n) -> term.*(n)	""	new A007376()	(A007376); a(n) = n*b(n)
+A110962	multrar	0	(self, n) -> ((n&1) == 0) ? D025480(n/2) : self.a((n - 1)/2)	""		For even n, a(n) = J025480(n/2), for odd n, a(n) = a((n-1)/2). -
+A294309	filtpos	1	0	new A002635()	v -> v.equals(ZV(8))	eight partitions into sums of four squares of nonnegative numbers.	nonn	1..44	nyi	_Robert Price_
+A308217	holos	0	[0,1,0,-3,0,3,0,-1]	1,8,2,23,3,46	0	0
+A316988	filter	1	new A007376()	v -> v.testBit(0)	The odd members of the "Almost natural numbers" (A007376)
+A378566	lambdan	0	n -> SU(0, n, k -> BI(n+k-1, k).*(BI(n+2*k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n+k-1, k)*binomial(n+2*k-1, n-k))	_	_	_
+A378567	lambdan	0	n -> SU(0, n, k -> BI(n+k-1, k).*(BI(n+3*k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n+k-1, k)*binomial(n+3*k-1, n-k))	_	_	_
+A378611	lambdan	0	n -> SU(0, n, k -> BI(2*n+k-1, k).*(BI(n-1, n-k)))	""		a(n) = sum(k=0, n, binomial(2*n+k-1, k)*binomial(n-1, n-k))	_	_	_
+A378612	lambdan	0	n -> SU(0, n, k -> BI(3*n+k-1, k).*(BI(n-1, n-k)))	""		a(n) = sum(k=0, n, binomial(3*n+k-1, k)*binomial(n-1, n-k))	_	_	_
+A378613	lambdan	0	n -> SU(0, n, k -> BI(4*n+k-1, k).*(BI(n-1, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+k-1, k)*binomial(n-1, n-k))	_	_	_
+---- 2024-12-08 21:50:20
+A254671	prepend	1	new A061743()	8	Apparently 8 and the elements of J061743
+A259457	holos	0	[[0],[72,75,26,3],[0,-5,-3]]	3	0	0
+A259458	holos	0	[[0],[64,48,12,1],[0,-2,-1]]	18	0	0
+A259459	holos	0	[[0],[12,16,7,1],[0,-2]]	1	0	0
+A378551	lambdan	0	n -> RU(0, n, k -> QV(4).^(k).*(BI(QV(n, 2).+(k).-(1), k)).*(BI(n-1, n - k))).num()	""		a(n) = sum(k=0, n, 4^k*binomial(n/2+k-1, k)*binomial(n-1, n-k))	_	_	_
+A378552	lambdan	0	n -> RU(0, n, k -> QV(9).^(k).*(BI(QV(n, 3).+(k).-(1), k)).*(BI(n-1, n - k))).num()	""		a(n) = sum(k=0, n, 9^k*binomial(n/3+k-1, k)*binomial(n-1, n-k))	_	_	_
+A378554	lambdan	0	n -> RU(0, n, k -> QV(4).^(n - k).*(BI(n + k - 1, k)).*(BI(QV(k, 2), n - k))).num()	""		a(n) = sum(k=0, n, 4^(n-k)*binomial(n+k-1, k)*binomial(k/2, n-k))	_	_	_
+A378555	lambdan	0	n -> RU(0, n, k -> QV(9).^(n - k).*(BI(n + k - 1, k)).*(BI(QV(k, 3), n - k))).num()	""		a(n) = sum(k=0, n, 9^(n-k)*binomial(n+k-1, k)*binomial(k/3, n-k))	_	_	_
+A378565	lambdan	0	n -> SU(0, n, k -> BI(n + k - 1, k).*(BI(n + k - 1, n - k)))	""		a(n) = sum(k=0, n, binomial(n+k-1, k)*binomial(n+k-1, n-k))	_	_	_
+A378777	lambdan	0	n -> ZV(n).^(2).*(BI(3*n, n))	nonn,easy,new	0..500	nyi	_Amiram Eldar_
+A378778	lambdan	0	n -> ZV(n).^(2).*(Z2(n)).*(BI(3*n, n))	nonn,easy,new	0..500	nyi	_Amiram Eldar_
+A378779	lambdan	0	n -> ZV(n).^(2).*(ZV(4).^(n)).*(BI(3*n, n))	nonn,easy,new	0..500	nyi	_Amiram Eldar_
+A378780	lambdan	0	n -> ZV(n).*(Z2(n)).*(BI(3*n, n))	nonn,easy,new	0..500	nyi	_Amiram Eldar_
+A378781	lambdan	0	n -> ZV(n).^(3).*(Z2(n)).*(BI(3*n, n))./(3)	nonn,easy,new	0..500	nyi	_Amiram Eldar_
+---- 2024-12-08 22:30:09
+A100840	filprof	1	1	k -> ZV(k).^(k).+(4)
+A100841	filprof	1	1	k -> ZV(k).^(k).+(7)
+A100842	filprof	1	1	k -> ZV(k).^(k).+(10)
+A118743	filprof	1	1	n -> DF(n).+(n + 1)
+A118744	filprof	1	1	n -> DF(n).+(n - 1)
+A118769	filprof	1	1	n -> FA(n).-(DF(n)).+(1)
+A119497	filprof	1	1	n -> FA(n).+(DF(n)).+(1)
+A125174	filprof	1	1	n -> FA(n).+(FA(n+1)).-(1)
+A144957	filprof	1	1	n -> FA(n).-(ZV(n).^(2)).-(1)
+A161472	filprof	1	1	k -> ZV(k).^(k).-(k + 1)
+A162004	filprof	1	1	n -> ZV(n).+(ZV(n+3).^(3))
+A162604	filprof	1	1	k -> ZV(k).^(k).-(FA(k)).-(9)
+A162605	filprof	1	1	k -> ZV(k).^(k).-(FA(k)).+(2)
+A162606	filprof	1	1	k -> ZV(k).^(k).-(FA(k)).+(6)
+A182352	filprof	1	1	n -> ZV(n).*(ZV(2).^(n)).-(3)
+A182374	filprof	1	1	n -> ZV(n).*(ZV(3).^(n)).+(1)
+A187605	filprof	1	1	k -> ZV(k).^(k).+(k - 1)
+A187628	filprof	1	1	k -> ZV(k).^(k).+(FA(k - 1))
+A196273	filprof	1	1	n -> ZV(n).*(ZV(2).^(n-1)).+(1)
+A202422	filprof	1	1	n -> FA(n).*(DF(n)).+(1)
+A216346	filprof	1	1	n -> ZV(n).*(ZV(10).^(n)).-(1)
+A216347	filprof	1	1	n -> ZV(n).*(ZV(10).^(n)).+(1)
+A245528	filprof	1	1	n -> FA(n).-(FA(n + 1)).+(FA(n + 2)).-(1)
+A264723	filprof	1	1	n -> FA(n).-(PM(n))

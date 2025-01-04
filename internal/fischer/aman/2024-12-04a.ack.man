@@ -1,0 +1,67 @@
+---- 2024-12-04 00:00:15
+A175297	lambdan	1	n -> ZV(n).and(Functions.REVERSE.z(2, n))	Convert n to binary. AND each respective digit of binary n and binary D030101(n), where D030101(n) is the reversal of the order of the digits in the binary representation of n (given in decimal). a(n) is the decimal value of the result.	base,nonn	1..10000	nyi	_Leroy Quet_
+A232982	lambdan	0	n -> PR(1, n, j -> (Functions.GCD.i(j, 6) == 1) ? ZV(j) : ZV(1))	n_6!.	nonn	0..36	nyi	_N. J. A. Sloane_
+A232983	lambdan	0	n -> PR(1, n, j -> (Functions.GCD.i(j, 7) == 1) ? ZV(j) : ZV(1))	n_7!.	nonn	0..25	nyi	_N. J. A. Sloane_
+A232984	lambdan	0	n -> PR(1, n, j -> (Functions.GCD.i(j, 10) == 1) ? ZV(j) : ZV(1))	n_10!.	nonn	0..33	nyi	_N. J. A. Sloane_
+A232985	lambdan	0	n -> PR(1, n, j -> (Functions.GCD.i(j, 11) == 1) ? ZV(j) : ZV(1))	n_11!.	nonn	0..24	nyi	_N. J. A. Sloane_
+
+---- 2024-12-03 13:51:11
+A089989	lambdan	0	n -> ZV(5).^((n + 1)*(n + 1)).*(PR(1, n, j -> ZV(25).^(j).-(1)))	5^(n^2+2n+1)*Product_{j=1..n} (25^j-1)	nonn	0..7	nyi	_N. J. A. Sloane_
+A090768	lambdan	0	n -> ZV(7).^((n + 1)*(n + 1)).*(PR(1, n, j -> ZV(49).^(j).-(1))).*(4)	4*7^(n^2+2n+1)*Product_{j=1..n} (49^j-1)	nonn	0..7	nyi	_N. J. A. Sloane_
+A092299	lambdan	0	n -> ZV(3).^((n + 1)*(n + 1)).*(PR(1, n, j -> ZV(9).^(j).-(1))).*(4)	4*3^(n^2+2n+1)*Product_{j=1..n} (9^j-1)	nonn	0..8	nyi	_N. J. A. Sloane_
+A095191	filnum	1	4	k -> !PP(k) && Predicates.SEMIPRIME.is(F001414(k).+(k))	Composites k such that k + F001414(k) is a semiprime.	easy,nonn	1..10000	nyi	_Jason Earls_
+A102654	parmof3	0	A103693	7	0	Add 7 to each of the preceding digits, beginning with 0	base,easy,nonn	0..83	nyi	_Alexandre Wajnberg_
+A103694	parmof3	0	A103693	2	0	Add 2 to each of the preceding digits, beginning with 0	base,nonn	0..10000	nyi	_Robert G. Wilson v_
+A103695	parmof3	0	A103693	3	0	Add 3 to each of the preceding digits, beginning with 0	base,nonn	0..10000	nyi	_Robert G. Wilson v_
+A103696	parmof3	0	A103693	4	0	Add 4 to each of the preceding digits, beginning with 0	base,nonn	0..89	nyi	_Robert G. Wilson v_
+A103697	parmof3	0	A103693	5	0	Add 5 to each of the preceding digits, beginning with 0	base,nonn	0..90	nyi	_Robert G. Wilson v_
+A103698	parmof3	0	A103693	6	0	Add 6 to each of the preceding digits, beginning with 0	base,nonn	0..86	nyi	_Robert G. Wilson v_
+A103699	parmof3	0	A103693	8	0	Add 8 to each of the preceding digits, beginning with 0	base,nonn	0..81	nyi	_Robert G. Wilson v_
+A103700	parmof3	0	A103693	9	0	Add 9 to each of the preceding digits, beginning with 0	base,nonn	0..75	nyi	_Robert G. Wilson v_
+A103701	parmof3	0	A103693	2	1	Add 2 to each of the preceding digits, beginning with 1	base,nonn	1..98	nyi	_Robert G. Wilson v_
+A103702	parmof3	0	A103693	3	1	Add 3 to each of the preceding digits, beginning with 1	base,nonn	1..94	nyi	_Robert G. Wilson v_
+A103703	parmof3	0	A103693	4	1	Add 4 to each of the preceding digits, beginning with 1	base,nonn	1..90	nyi	_Robert G. Wilson v_
+A103704	parmof3	0	A103693	5	1	Add 5 to each of the preceding digits, beginning with 1	base,nonn	1..91	nyi	_Robert G. Wilson v_
+A103705	parmof3	0	A103693	6	1	Add 6 to each of the preceding digits, beginning with 1	base,nonn	1..87	nyi	_Robert G. Wilson v_
+A103706	parmof3	0	A103693	7	1	Add 7 to each of the preceding digits, beginning with 1	base,nonn	1..83	nyi	_Robert G. Wilson v_
+A103707	parmof3	0	A103693	8	1	Add 8 to each of the preceding digits, beginning with 1	base,nonn	1..82	nyi	_Robert G. Wilson v_
+A131844	sintrif	0	(term, n) -> term.*(3).-(2)	""	new A131821()
+A134898	lambdan	1	n -> ComputableReals.SINGLETON.sec(CV(n)).exp().*(n).+(CV("0.0000001")).ceil()	Ceiling(n*exp(sec n)).	nonn	1..1000	nyi	_Mohammad K. Azarian_
+A134910	lambdan	1	n -> ComputableReals.SINGLETON.sec(CV(n)).negate().exp().*(n).+(CV("0.0000001")).ceil()	Ceiling(n*exp(-sec(n))).	nonn,easy	1..1000	nyi	_Mohammad K. Azarian_
+A134912	lambdan	1	n -> ComputableReals.SINGLETON.csc(CV(n)).negate().exp().*(n).+(CV("0.0000001")).ceil()	Ceiling(n*exp(-csc(n))).	nonn,easy	1..299	nyi	_Mohammad K. Azarian_
+A135176	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return ZV(5).^(p).+(ZV(3).^(p)).+(ZV(2). ^(p)); }	5^p + 3^p + 2^p, where p = prime(n)	nonn,easy	1..200	nyi	_Omar E. Pol_
+A146534	lambdan	0	n -> BI(2*n, n).*(4).-(n == 0 ? 3 : 0)	4*C(2n,n)-3*0^n	nonn	0..21	nyi	_Philippe Del‚ąö¬©ham_
+A171148	lambdan	0	n -> ZV(10).^(n).+(3).+(ZV(100).^(n).*(3))	3+10^n+3*100^n	easy,nonn	0..11	nyi	_Jason Earls_
+A174166	filnum	1	4	k -> !PP(k) && PP(2*k - 1)	Composites n such that 2*n-1 is prime.	nonn	1..1000	nyi	_Juri-Stepan Gerasimov_
+A174300	lambdan	0	n -> CV(FA(n)).*(CV(-n).exp()).ceil()	Ceiling(n!*exp(-n)).	nonn	0..200	nyi	_Roger L. Bagula_
+A204768	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return ZV(7).^(p).-(ZV(6).^(p)).-(ZV(1)); }	7^p - 6^p - 1,  with p = prime(n)	nonn	1..100	nyi	_Vincenzo Librandi_
+A220105	lambdan	1	n -> Z2(n - 1).mod(ZV(n).*(n))	2^(n-1) mod n^2	nonn	1..10000	nyi	_Franz Vrabec_
+A239230	lambdan	0	n -> RU(1, n, k -> RU(0, n - k, j -> new Q(BI(n + 2*j - 1, j + n - 1).*(Z_1(k + j + n)).*(BI(2*n - k, j + n)), 2*n - k))).*(n).num()	a(n) = n*sum(k=1..n, sum(j=0..n-k, C(n+2*j-1,j+n-1)*(-1)^(k+j+n) *C(2*n-k,j+n)) /(2*n-k)).
+A246669	lambdan	1	n -> Functions.CATALAN.z(PM(n))	nonn	1..100	nyi	_Vincenzo Librandi_
+A246714	lambdan	1	n -> Functions.CATALAN.z(n).mod(PM(n))	Catalan(n) mod prime(n).	nonn	1..10000	nyi	_Vincenzo Librandi_
+A246763	lambdan	1	n -> Functions.CATALAN.z(n).^(2).mod(PM(n))	Catalan(n)^2 mod prime(n).	nonn	1..10000	nyi	_Vincenzo Librandi_
+A259327	lambdan	1	n -> QV(FA(Z2(n)), ZV(4).^(n).*(FA(n).^(2))).ceiling()	Ceiling of ((2^n)!)/(4^n*(n!)^2).	nonn	1..6	nyi	_N. J. A. Sloane_
+A259329	lambdan	1	n -> QV(FA(Z2(n)), ZV(4).^(n*n)).ceiling()	Ceiling of ((2^n)!)/(4^(n^2)).	nonn	1..6	nyi	_N. J. A. Sloane_
+A271234	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return Z2(p - 1).mod(ZV(p).^(3)); }	modulo p^3, where p = prime(n)	nonn	1..10000	nyi	_Felix Fr‚ąö‚ąāhlich_
+---- 2024-12-03 22:40:51
+A077686	lambdan	1	n -> Z2(n - 1).-(PM(n).modZ(n))	2^(n-1) - (prime(n) mod n)	nonn	1..34	nyi	_N. J. A. Sloane_
+A135175	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return ZV(5).^(p).+(ZV(3).^(p)).-(ZV(2). ^(p)); }	5^p + 3^p - 2^p, where p = prime(n)	nonn,easy	1..200	nyi	_Omar E. Pol_
+A144568	filnum	1	4	k -> !PP(k) && PP(Functions.SOPFR.z(k)) &&  !PP(GPF(k).-(LPF(k)))	Composites with prime sum of prime factors of n and nonprime difference largest prime factor of n - smallest prime factor of n.	nonn,easy,less	1..56	nyi	_Juri-Stepan Gerasimov_
+A147666	tablamb	0	0	n -> new Integer[] {0, 2}	(n, k) -> ZV((k == 0) ? 0 : 6*n + ((k == 1) ? 1 : 5))	List of triples (0, 6n+1, 6n+5) for n = 0, 1, 2, ...
+A147765	sintrif	2	(term, n) -> (term.mod(5) != 0 && term.mod(7) != 0) ? term : ZV(0)	""	new A147666().skip(3)	a(n) = A147666(n+3) if A147666(n+3) is not a multiple of 5 or 7, otherwise a(n) = 0.
+A154965	filnum	1	4	k -> !PP(k) && PP(new Z(Integer.toString(k, 10) + PM(k).toString()))	Composites n such that concatenation of n and n-th prime is prime.	nonn,base,easy,less	1..1000	nyi	_Juri-Stepan Gerasimov_
+A161372	holos	1	[0,1,-1,-2,2,1,-1]	107,101,121,103,143	0	0
+A162001	filter	1	new A000040()	p -> PP(p.+(2)) && PP(p.+(6)) && PP(p.*(3).+(8))	Initial members of prime triples (p, p+2, p+6) for which also the sum 3p+8 is prime.
+A213255	lambdan	2	n -> Z2(n - 1).-(Z2(n - 1).-(1)./(n - 1))	- floor((2^(n-1) - 1)/(n-1))	easy,nonn	2..800	nyi	_Arkadiusz Wesolowski_
+---- 2024-12-03 23:38:41
+A077562	filter	1	new A025487()	(n, v) -> v.mod(n) == 0	which are a multiple of their indices.	nonn	1..10000	nyi	_Amarnath Murthy_
+A077578	filter	1	new A062273()	(n, v) -> v.mod(n) == 0	which are multiples of their indices.	base,nonn	1..11	nyi	_Amarnath Murthy_
+A111005	filter	1	new A062234()	v -> v.compareTo(ZV(1)) > 0 && Predicates.POWER.is(v)	that are powers > 1.	nonn	1..10000	nyi	_Walter Kehowski_
+A133395	filter	1	new A061725()	v -> v.mod(3) == 0 && PP(v./(3))	that are of form 3*prime.	nonn	1..36	nyi	_Zak Seidov_
+A134245	filter	1	new A007468()	(n, v) -> v.mod(n) == 0	which are multiples of their indices.	nonn	1..28	nyi	_Enoch Haga_, Oct 16 2007
+A155963	sintrif	1	(term, n) -> term./(3)	""	new FilterSequence(1, new A064413(), v -> v.mod(3) == 0)	that are divisible by 3, divided by 3.	nonn	1..72	nyi	_Thomas Ordowski_
+A163780	filter	1	new A054639()	v -> v.mod(4) == 3	equal to 3 mod 4.	nonn	1..3378	nyi	_Peter R. J. Asveld_
+A185893	filter	1	new A048398()	v -> v.mod(10) == 1	ending with 1.	nonn,base	1..10000	nyi	_Zak Seidov_
+A216268	filter	1	new LambdaSequence(0, n -> ZV(n).*(n + 1).*(n + 2)./(6))	v -> Predicates.SQUARE.is(v.+(1))
+A261749	filnum	1	0	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(2)).equals(Functions.DIGIT_SORT_ASCENDING.z(ZV(k + 2).^(2)))	Numbers k where k^2 is an anagram of (k+2)^2.
+A134908	lambdan	0	n -> ComputableReals.SINGLETON.cot(CV(n)).negate().exp().*(n).+(CV("0.0000001")).ceil()	Ceiling(n*exp(-cot(n))).	nonn,easy	1..1000	nyi	_Mohammad K. Azarian_

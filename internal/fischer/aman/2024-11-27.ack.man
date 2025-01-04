@@ -1,0 +1,147 @@
+---- 2024-11-27 14:09:35
+A080736	mulr	1	(p, e) -> p.equals(ZV(2)) ? ((e == 1) ? ZV(0) : Z2(e - 1)) : p.-(1).*(p.^(e - 1))	a(2) = 0, a(2^e) = 2^(e-1) for e >= 2, and a(p^e) = (p-1)*p^(e-1) for an odd prime p.
+A088840	mulr	1	(p, e) -> p.equals(ZV(2)) ? Z_1(e).+(2).*(Z2(e + 1).-(1))./(3) : ZV(1)	a(2^e) = (((-1)^e+2)*(2^(e+1)-1))/3 = J213243(e+1), and a(p^e) = 1 for an odd prime p.
+A089774	filter	1	new LambdaSequence(0, n -> new Z("1" + ZV(3).^(n).toString()))	v -> Predicates.PRIME.is(v)	Primes of the form 1 followed by powers of 3.
+A092506	prepend	1	new A019434()	2
+A111087	prepend	1	new A033942()	1	together with J033942.
+A124588	prepend	1	new A001359()	2	the lower members of twin primes, J001359. See the latter entry for references.
+A162802	prepend	1	new A079424()	2	the numbers J079424.
+A166080	filter	1	new LambdaSequence(1, n -> ZV(2*n - 1).^(2).+(1)./(2))	v -> !Predicates.PRIME.is(v)	1	together with composite numbers of the form i^2+(i+1)^2. See J012132. - _N. J. A. Sloane_, Feb 29 2020
+A171993	prepend	1	new FilterSequence(1, new A002808(), v -> v.mod(3) != 0)	1	composite numbers that are not multiples of 3.
+A172170	prepend	0	new DoubledSequence(1, new A090368())	1	1 followed by the duplicated entries of J090368.
+A176540	prepend	1	new A001358()	1	the semiprimes.
+A181747	prepend	1	new A001359()	1	lesser of twin primes.
+A216277	filter	1	new A000040()	p -> { final long m = p.mod(20); return m != 1 && m != 5 && m != 9; }	Primes which are not congruent to 1, 5, or 9 (mod 20).
+A216277	filter	1	new A000040()	p -> { final long m = p.mod(20); return m != 1 && m != 5 && m != 9; }	Primes which are not congruent to 1, 5, or 9 (mod 20).
+A216286	prepend	1	new A216277().skip(2)	2,3,5
+A227499	mulr	1	(p, e) -> p.equals(ZV(2)) ? Z2(4*e - 1) : p.^(4*e - 3).*(p.-(1).^(2)).*(p.+(1))	a(2^e) = 2^(4*e-1), and a(p^e) = p^(4*e-3) * (p-1)^2 * (p+1) for an odd prime p.
+A270419	mulr	1	(p, e) -> ((Integer.bitCount(e)&1) == 0) ? p.^(M065620(e).negate().IVE()) : ZV(1)	for evil e, a(p^e)=1 for odious e, or equally, a(p^e) = p^(D010059(e) * -M065620(e)).
+A367926	mulr	2	(p, e) -> p.^(4*(e - 1)).*(p.^(4).-(p.^(3).*(3)).+(p.^(2).*(9)).-(p.*(17)).+(10))
+A368171	mulr	1	(p, e) -> (e <= 2) ? p.^(e) : (((e&1) == 1) ? ZV(1) : p)	if e <= 2, a(p^e) = 1 if e is odd and e > 1, and p otherwise.
+A368471	mulr	1	(p, e) -> ((e&1) == 1) ? p.^(e + 2).-(p)./(p.^(2).-(1)).+(1) : ZV(1)	(p^(e+2) - p)/(p^2 - 1) + 1 if e is odd and 1 otherwise.
+A368544	mulr	1	(p, e) -> Predicates.SQUARE.is(p.-(1)) ? ZV(e + 1) : ZV(1)	if p is of the form k^2+1, and 1 otherwise.
+A369100	mulr	1	(p, e) -> p.equals(ZV(2)) ? ZV((e*e - 5*e + 2)/2) : ZV((e + 1)*(e + 2)/2)	a(2^e) = (e^2-5*e+2)/2, and a(p^e) = (e+1)*(e+2)/2 for an odd prime p. - _Amiram Eldar_, Jan 13 2024
+A369101	mulr	1	(p, e) -> p.equals(ZV(2)) ? ZV(8).^(e - 1).*(ZV(- 7*e + 6)) : p.^(3*e - 3).*(p.^(3).-(1).*(e + 1).+(1))	a(2^e) = -(7*e-6)*8^(e-1), and a(p^e) = p^(3*e-3) * (1 + (e+1)*(p^3-1)) for an odd prime p. - _Amiram Eldar_, Jan 13 2024
+A369306	mulr	1	(p, e) -> (e == 1) ? ZV(2) : ((e <= 4) ? ZV(5 - e) : ZV(0))	a(p) = 2, a(p^2) = 3, a(p^3) = 2, a(p^4) = 1, and a(p^e) = 0 for e >= 5.
+A372379	mulr	1	(p, e) -> p.^(Z2(Functions.DIGIT_LENGTH.i(2, e + 1) - 1).-(1))	a(p^e) = p^(2^floor(log_2(e+1)) - 1).
+A372380	mulr	1	(p, e) -> Functions.DIGIT_LENGTH.z(2, e + 1)	floor(log_2(e+1)) + 1.
+A372381	mulr	1	(p, e) -> Z2(Functions.DIGIT_LENGTH.i(2, e + 1) - 1)	2^floor(log_2(e+1)).
+A373059	mulr	1	(p, e) -> p.^(2*e).*(ZV(e + 1).*(p.^(2)).+(p.*(2).-(e))).+(1)./(p.+(1).^(2))	a(p^e) = (p^(2*e)*((e+1)*p^2 + 2*p-e) + 1)/(p+1)^2.
+A373061	mulr	1	(p, e) -> p.^(3*e    ).*(p.+(1).^(3)).-(p.^(2*e).*(p.^(2).+(p).+(1))).+(1)./((p.^(2).+(p).+(1)).*(p.+(1)))
+A373129	mulr	1	(p, e) -> p.^(3*e + 2).*(p.+(1)) .-(p.^(2*e).*(p.^(2).+(p.+(1)))).+(p)./(p.^(3).-(1))
+A373130	mulr	1	(p, e) -> p.^(4*e + 2).*(p.^(2).+(p).+(1)).-(p.^(3*e).*(p.^(3).+(p.^(2).+(p).+(1)))).+(p)./(p.^(4).-(1))
+A373131	mulr	1	(p, e) -> p.^(5*e + 3).*(p.^(2).+(p).+(1)).-(p.^(3*e).*(p.^(4).+(p.^(3).+(p.^(2).+(p).+(1))))).+(p.^(2).+(p))./(p.^(5).-(1))
+A373132	mulr	1	(p, e) -> p.^(4*e + 3).*(p.+(1)).-(p.^(2*e).*(p.^(3).+(p.^(2).+(p).+(1)))).+(p.^(2).+(p))./(p.^(4).-(1))
+A373133	mulr	1	(p, e) -> p.^(6*e + 4).*(p.+(1)).-(p.^(3*e).*(p.^(4).+(p.^(3).+(p).+(1)))).+(p.^(2).+(p))./((p.^(2).-(1)).*(p.^(3).+(1)))
+A373135	mulr	1	(p, e) -> p.^(8*e + 5).*(p.+(1)).-(p.^(4*e).*(p.^(5).+(p.^(4).+(p).+(1)))).+(p.^(2).+(p))./((p.^(2).-(1)).*(p.^(4).+(1)))
+A374537	mulr	1	(p, e) -> p.^(2).*(p.^(4*((e - 1)/2) + 4).-(1))./(p.^(4).-(1)).+(1)	a(p^e) = 1 + p^2 * (p^(4*floor((e-1)/2)+4) - 1) / (p^4 - 1).
+A374914	prepend	1	new A002515()	2	Lucasian primes (J002515).
+A378319	decexp	0	() -> CR.SQRT2.*(CR.SIX.sqrt().-(CR.ONE))./(CR.FIVE)	Decimal expansion of sqrt(2)*(sqrt(6) - 1)/5.	nonn,cons,easy,new	0..99	nyi	_Stefano Spezia_
+---- 2024-11-27 14:25:56
+A197562	partsun	0	new A073177()			Partial sums of A073177 (product of n-th digit of Pi and n-th digit of e).
+A305796	dirichcon2	1	new A246277()	1	new A246277()	1	Dirichlet convolution of A246277 with A246277.
+A377857	lingf	0	0,0,0,1,-1,-1,1	1,-6,11,-6,1					0
+A377866	lingf	0	0,0,0,1,-1,-1	1,-6,11,-6,1					0
+A377867	lingf	0	0,0,0,0,1,-3,2,0,1	1,-10,39,-74,69,-28,4					0
+A378216	dirichinv	1	new A174725()	1	Dirichlet inverse of A174725.
+A378218	dirichinv	1	new A345182()	1	Dirichlet inverse of A345182.
+A378219	dirichinv	1	new A253249()	1	Dirichlet inverse of A253249.
+A378225	dirichinv	1	new A067824()	1	Dirichlet inverse of A067824.
+A378228	dirichinv	1	new A341528()	1	Dirichlet inverse of A341528, where A341528(n) = n * sigma(A003961(n)), and A003961 is fully multiplicative with a(prime(i)) = prime(i+1).
+A378229	dirichinv	1	new A341529()	1	Dirichlet inverse of A341529, where A341529(n) = sigma(n) * A003961(n), and A003961 is fully multiplicative with a(prime(i)) = prime(i+1).
+A173052	partsun	1	new A072857()			Partial sums of A072857.					Partial sums of A072857.
+---- 2024-11-27 15:21:09
+A136483	lambdan	1	n ->SU(1, n/2, k -> F000196(QV(n, 2).^(2).-(k*k).floor()))	""		a(n) = sum(k=1, n\2, sqrtint((n/2)^2 - k^2))	_	_	_
+A136513	lambdan	1	n -> ZV(2).*(SU(1, n/2, k -> F000196(QV(n, 2).^(2).-(k*k).floor())))	""		a(n) = 2*sum(k=1, n\2, sqrtint((n/2)^2-k^2))	_	_	_
+A136515	lambdan	0	n -> ZV(2).*(SU(1, n, k -> F000196(QV(2*n + 1, 2).^(2).-(k*k).floor())))	""		a(n) = 2*sum(k=1, n, sqrtint((n+1/2)^2-k^2))	_	_	_
+A279881	lambdan	0	n -> RQ(1, n, k -> QV(FA(2*k+1))).*(RU(0, n, k -> QV(Z2(k)).*(FA(k).^(2))./(FA(2*k + 1)))).num()	""		a(n) = prod(k=1, n, (2*k+1)!) * sum(k=0, n, 2^k * (k!)^2 / (2*k+1)!)	_	_	_
+A300270	lambdan	1	n -> SU(1, n, j -> SU(1, j, i -> F008683(i*j).*(n/i/j)))	""		a(n) = sum(j=1, n, sum(i=1, j, moebius(i*j)*floor(n/i/j)))	_	_	_
+A333473	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+2*k-1, 2*k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+2*k-1, 2*k))	_	_	_
+A333690	lambdan	1	n -> ZV(n).*(PR(2, n - 1, k -> ZV(k).^(n - k).root(n - k + 1)))	""		a(n) = n*prod(k=2, n-1, floor(k^((n-k)/(n-k+1))))	_	_	_
+A356521	lambdan	0	n -> SU(-(-(n/3)), n/2, j -> BI(n-j, n-2*j).*(BI(j, n-2*j)).*(BI(n, j)))	""		a(n) = sum(j=ceil(n/3), floor(n/2), binomial(n-j,n-2*j)*binomial(j,n-2*j)*binomial(n,j))	_	_	_
+A371146	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(2*n+1).^(k-1).*((S1(n-k, k)).abs())./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n\2, (2*n+1)^(k-1)*abs(stirling(n-k, k, 1))/(n-k)!)	_	_	_
+A378378	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+3*k-1, 3*k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+3*k-1, 3*k))	_	_	_
+A378402	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+3*k, n)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+3*k, n))	_	_	_
+A378403	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+2*k, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+2*k, n-k))	_	_	_
+A378404	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+3*k, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+3*k, n-k))	_	_	_
+A378405	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n+k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n+k, n-2*k))	_	_	_
+A378406	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n+2*k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n+2*k, n-2*k))	_	_	_
+A378407	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n+2*k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n+2*k, n-3*k))	_	_	_
+A378427	lambdan	0	n -> RU(0, n/3, k -> QV(BI(n+1, k)).*(BI(n+2*k+1, n-3*k)))./(n+1).num()	""		a(n) = sum(k=0, n\3, binomial(n+1, k)*binomial(n+2*k+1, n-3*k))/(n+1)	_	_	_
+---- 2024-11-27 15:27:08
+A300270	lambdan	1	n -> SU(1, n, j -> SU(1, j, i -> F008683(i*j).*(n/i/j)))	""		a(n) = sum(j=1, n, sum(i=1, j, moebius(i*j)*floor(n/i/j)))	_	_	_
+A333473	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+2*k-1, 2*k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+2*k-1, 2*k))	_	_	_
+A356521	lambdan	0	n -> SU(-(-(n/3)), n/2, j -> BI(n-j, n-2*j).*(BI(j, n-2*j)).*(BI(n, j)))	""		a(n) = sum(j=ceil(n/3), floor(n/2), binomial(n-j,n-2*j)*binomial(j,n-2*j)*binomial(n,j))	_	_	_
+A371146	lambdan	0	n -> QV(FA(n)).*(RU(0, n/2, k -> QV(2*n+1).^(k-1).*((S1(n-k, k)).abs())./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n\2, (2*n+1)^(k-1)*abs(stirling(n-k, k, 1))/(n-k)!)	_	_	_
+A378378	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+3*k-1, 3*k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+3*k-1, 3*k))	_	_	_
+A378402	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+3*k, n)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+3*k, n))	_	_	_
+A378403	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+2*k, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+2*k, n-k))	_	_	_
+A378404	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+3*k, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+3*k, n-k))	_	_	_
+A378405	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n+k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n+k, n-2*k))	_	_	_
+A378406	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n+2*k, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n+2*k, n-2*k))	_	_	_
+A378407	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n+2*k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n+2*k, n-3*k))	_	_	_
+A378427	lambdan	0	n -> RU(0, n/3, k -> QV(BI(n+1, k)).*(BI(n+2*k+1, n-3*k)))./(n+1).num()	""		a(n) = sum(k=0, n\3, binomial(n+1, k)*binomial(n+2*k+1, n-3*k))/(n+1)	_	_	_
+---- 2024-11-27 19:38:06
+A141642	filter	1	new A002808()	v -> Functions.DIGIT_SUM.z(v).IPP()	Composite numbers whose sum of digits is a prime.	nonn,base	1..1000	nyi	_Juri-Stepan Gerasimov_
+A175297	lambdan	1	n -> ZV(n &  Functions.REVERSE.i(2, n))	Convert n to binary. AND each respective digit of binary n and binary D030101(n), where D030101(n) is the reversal of the order of the digits in the binary representation of n (given in decimal). a(n) is the decimal value of the result.	base,nonn	1..10000	nyi	_Leroy Quet_
+A201016	filter	1	new A002808()	v -> Functions.DIGIT_PRODUCT.l(v) == 4	Composite numbers whose product of digits is 4.	nonn,base	1..41	nyi	_Jaroslav Krizek_
+A201056	filter	1	new A002808()	v -> Functions.DIGIT_PRODUCT.l(v) == 8	Composite numbers whose product of digits is 8.	nonn,base	1..43	nyi	_Jaroslav Krizek_
+A201057	filter	1	new A002808()	v -> Functions.DIGIT_PRODUCT.l(v) == 10	Composite numbers whose product of digits is 10.	nonn,base	1..41	nyi	_Jaroslav Krizek_
+A228019	filter	1	new A002808()	v -> { final Z ds = Functions.DIGIT_SUM.z(v); return !ds.equals(ZV(1)) && !Predicates.PRIME.is(ds); }	Composite numbers whose sum of digits is a composite number.	nonn,base,easy	1..10000	nyi	_Derek Orr_
+A229906	filter	1	new A002808()	v -> Functions.DIGIT_SUM.l(v) == 19	Composite numbers whose sum of digits is 19.	nonn,base,easy	1..5000	nyi	_Jahangeer Kholdi_
+A329522	filter	1	new A002808()	v -> { final Z ds = Functions.DIGIT_SUM.z(v); return  ds.equals(ZV(1)) ||  Predicates.PRIME.is(ds); }	Composite numbers whose sum of digits is not composite.	nonn,base,easy	1..60	nyi	_Ali Adams_
+---- 2024-11-27 20:22:12
+A075713	filnum	1	1	n -> PP(ZV(n).^(19).+(n + 1))	is a prime.	nonn,easy	1..1700	nyi	_Zak Seidov_
+A075714	filnum	1	1	n -> PP(ZV(n).^(18).+(n + 1))	is a prime, s=18.	nonn,easy	1..1500	nyi	_Zak Seidov_
+A075716	filnum	1	1	n -> PP(ZV(n).^(15).+(n + 1))	is a prime, s=15.	nonn,easy	1..2000	nyi	_Zak Seidov_
+A075717	filnum	1	1	n -> PP(ZV(n).^(13).+(n + 1))	is a prime.	nonn,easy	1..1900	nyi	_Zak Seidov_
+A075718	filnum	1	1	n -> PP(ZV(n).^(12).+(n + 1))	is a prime, s=12.	nonn,easy	1..2200	nyi	_Zak Seidov_
+A080212	lambdan	1	n -> BI(n, Functions.LPF.i(Functions.MAKE_ODD.l(n)))	smallest odd prime factor of n).	nonn	1..45	nyi	_Reinhard Zumkeller_
+A119552	lambdan	0	n -> BI(BI(2*n, n).*(ZV(n)), ZV(n))	easy,nonn	0..9	nyi	_Zerinvary Lajos_
+A119553	lambdan	0	n -> BI(BI(2*n, n).*(ZV(n).^(2)), ZV(n))	easy,nonn	0..8	nyi	_Zerinvary Lajos_
+A119554	lambdan	0	n -> BI(BI(2*n, n).*(ZV(n).^(3)), ZV(n))	easy,nonn	0..8	nyi	_Zerinvary Lajos_
+A123977	complem	1	new A061909()	, Z.ONE	(skinny numbers).	nonn,base	1..74	nyi	_N. J. A. Sloane_
+A171630	lambdan	0	n -> { final Z n10 = ZV(10).^(n); return n10.*(n10.*(3).+(5)).+(3); }
+A171718	lambdan	0	n -> { final Z n10 = ZV(10).^(n); return n10.*(n10.*(3).+(8)).+(3); }
+A171736	lambdan	0	n -> { final Z n10 = ZV(10).^(n); return n10.*(n10.*(7).+(2)).+(7); }	10^n*(2+7*10^n)+7.
+A175969	complem	1	new A014284()	, Z.ONE	(n), where J014284(n) = the lexicographically earliest sequence with first differences as increasing sequence of primes F000040.	nonn	1..62	nyi	_Jaroslav Krizek_
+A175970	complem	1	new A051349()	, Z.ONE	(n), where J051349(n) = the lexicographically earliest sequence with first differences as increasing sequence of composites J002808(n).	nonn	1..62	nyi	_Jaroslav Krizek_
+A192070	lambdan	1	n -> E192251(n)./(2)	nonn	1..23	nyi	_Clark Kimberling_
+A204292	lambdan	1	n -> BI(n, Functions.TAU.i(n))	, where d(n) = F000005(n) is the number of divisors of n.	nonn	1..45	nyi	_Franklin T. Adams-Watters_
+A276155	complem	1	new A276154()	, Z.ONE	; numbers that cannot be obtained by shifting left the primorial base representation (F049345) of some number.	nonn,base	1..10000	nyi	_Antti Karttunen_
+A360393	complem	1	new A360392()	, Z.ONE	.	nonn,easy	1..5000	nyi	_Clark Kimberling_
+A376047	complem	1	new A092433()	, Z.ONE	.	nonn,base	1..10000	nyi	_N. J. A. Sloane_
+---- 2024-11-27 20:30:06
+A092773	lambdan	1	n -> PM(PM(n)).^(2).+(1)./(2)	nonn	1..36	nyi	_Jorge Coveiro_
+A092776	lambdan	3	n -> PM(PM(n)).^(12).-(1)./(FA(6))	nonn	3..11	nyi	_Jorge Coveiro_
+A094921	lambdan	1	n -> ZV(6).^(n).-(1)./(5).modZ(n)
+A094923	lambdan	1	n -> ZV(8).^(n).-(1)./(7).modZ(n)
+A097130	filter	1	new A002997()	v -> v.mod(24) != 1	Carmichael numbers that are not == 1 mod 24.	nonn	1..236823	nyi	Rob Hoogers (chimera(AT)chimera.fol.nl)
+A110889	filter	1	new A002997()	v -> v.mod(12) != 1	Carmichael numbers that are not == 1 mod 12. There are 69 Carmichael numbers out to 2*m+1, m=2*10^6 and all but the above 9 are 1 mod 12.	nonn	1..25567	nyi	_Walter Kehowski_
+A182090	filter	1	new A002997()	v -> v.mod(11) == 0	Carmichael numbers divisible by 11.	nonn	1..10000	nyi	_Marius Coman_
+A182151	filter	1	new A002997()	v -> v.mod(31) == 0	Carmichael numbers divisible by 31.	nonn	1..10000	nyi	_Marius Coman_
+A182208	filter	1	new A002997()	v -> v.mod(7) == 0	Carmichael numbers divisible by 7.	nonn	1..10000	nyi	_Marius Coman_
+---- 2024-11-27 20:59:33
+A101613	lambdan	1	n -> RU(n, 2*n, k -> new Q(1, k)).*(FA(2*n)).num()
+A211173	lambdan	0	n -> FA(2*n).^(n).modZ(2*n + 1)	.	nonn,easy	0..10000	nyi	Larry Riddle (LRiddle(AT)AgnesScott.edu) and _Robert G. Wilson v
+A212920	filter	1	new A002997()	v -> v.mod(1729) == 0	Carmichael numbers divisible by 1729.	nonn	1..10000	nyi	_Marius Coman_
+A241098	lambdan	0	n -> ZV(4).^(n).-(1).^(n)	nonn	0..10	nyi	_Hannah Ko_
+A255590	lambdan	0	n -> (n < 5) ? ZV(n) : new Z(Integer.toString(n % 5) + Integer.toString(n/5, 5), 5)	Convert n to base 5, move least significant digit to most significant digit and convert back to base 10.	nonn,easy,base	0..19683	nyi	_Paolo P. Lava_
+A255591	lambdan	0	n -> (n < 6) ? ZV(n) : new Z(Integer.toString(n % 6) + Integer.toString(n/6, 6), 6)	Convert n to base 6, move least significant digit to most significant digit and convert back to base 10.	nonn,easy,base	0..46656	nyi	_Paolo P. Lava_
+A255592	lambdan	0	n -> (n < 7) ? ZV(n) : new Z(Integer.toString(n % 7) + Integer.toString(n/7, 7), 7)	Convert n to base 7, move least significant digit to most significant digit and convert back to base 10.	nonn,easy,base	0..1000	nyi	_Paolo P. Lava_
+A255593	lambdan	0	n -> (n < 8) ? ZV(n) : new Z(Integer.toString(n % 8) + Integer.toString(n/8, 8), 8)	Convert n to base 8, move least significant digit to most significant digit and convert back to base 10.	nonn,easy,base	0..1000	nyi	_Paolo P. Lava_
+A255594	lambdan	0	n -> (n < 9) ? ZV(n) : new Z(Integer.toString(n % 9) + Integer.toString(n/9, 9), 9)	Convert n to base 9, move least significant digit to most significant digit and convert back to base 10.	nonn,easy,base	0..1000	nyi	_Paolo P. Lava_
+A255689	lambdan	0	n -> { String s = Integer.toString(n, 4); return (n < 4) ? ZV(n) : new Z(s.substring(1) + s.substring(0, 1), 4); }	Convert n to base 4, move the most significant digit to the least significant one and convert back to base 10.	nonn,easy,base	0..65536	nyi	_Paolo P. Lava_
+A255690	lambdan	0	n -> { String s = Integer.toString(n, 5); return (n < 5) ? ZV(n) : new Z(s.substring(1) + s.substring(0, 1), 5); }	Convert n to base 5, move the most significant digit to the least significant one and convert back to base 10.	nonn,easy,base	0..1000	nyi	_Paolo P. Lava_
+A255691	lambdan	0	n -> { String s = Integer.toString(n, 6); return (n < 6) ? ZV(n) : new Z(s.substring(1) + s.substring(0, 1), 6); }	Convert n to base 6, move the most significant digit to the least significant one and convert back to base 10.	nonn,easy,base	0..1000	nyi	_Paolo P. Lava_
+A255692	lambdan	0	n -> { String s = Integer.toString(n, 7); return (n < 7) ? ZV(n) : new Z(s.substring(1) + s.substring(0, 1), 7); }	Convert n to base 7, move the most significant digit to the least significant one and convert back to base 10.	nonn,easy,base	0..1000	nyi	_Paolo P. Lava_
+A255693	lambdan	0	n -> { String s = Integer.toString(n, 8); return (n < 8) ? ZV(n) : new Z(s.substring(1) + s.substring(0, 1), 8); }	Convert n to base 8, move the most significant digit to the least significant one and convert back to base 10.	nonn,easy,base	0..1000	nyi	_Paolo P. Lava_
+---- 2024-11-27 22:03:52
+A339702	dgf	1	Dgf.pow(Dgf.xi(), 3)	Product_{k>=2} (1 - k^(-s))^3.
+A339703	dgf	1	Dgf.pow(Dgf.xi(), 4)	Product_{k>=2} (1 - k^(-s))^4.
+A339704	dgf	1	Dgf.pow(Dgf.xi(), 5)	Product_{k>=2} (1 - k^(-s))^5.
+A339705	dgf	1	Dgf.pow(Dgf.xi(), 6)	Product_{k>=2} (1 - k^(-s))^6.
+A339706	dgf	1	Dgf.pow(Dgf.xi(), 7)	Product_{k>=2} (1 - k^(-s))^7.
+A339707	dgf	1	Dgf.pow(Dgf.xi(), 8)	Product_{k>=2} (1 - k^(-s))^8.
+A358780	dgf	1	Dgf.multiply(Dgf.multiply(Dgf.multiply(Dgf.zeta(), Dgf.zeta(2)), Dgf.zeta(3)), Dgf.zeta(4))	zeta(s) * zeta(2*s) * zeta(3*s) * zeta(4*s).
+A370240	dgf	1	Dgf.multiply(Dgf.multiply(Dgf.zeta(), Dgf.zeta(3, 3)), Dgf.inverseZeta(6, 6))

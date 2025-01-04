@@ -1,0 +1,69 @@
+---- 2024-12-02 23:38:22
+A074100	filter	1	new A000578()	c -> c.toString().matches("[12357]+")	only digits 1, 2, 3, 5 and 7.	nonn,base	1..359	nyi	_Amarnath Murthy_
+A077654	filnum	1	4	k -> !PP(k) && !PP(2*k + 1)	Composites k such that 2k+1 is also composite.	nonn	1..10000	nyi	_Lior Manor_
+A079656	filter	1	new A000578()	c -> c.toString().matches("[03689]+")	only the digits 0, 3, 6, 8 and 9.	base,nonn	1..21	nyi	_Shyam Sunder Gupta_
+A081946	lambdan	1	n -> SU(1, n, i -> CR.SQRT2.*(CV(i)./(CR.SQRT2).floor()).floor())	a(n) = sum(i=1,n,floor(sqrt(2)*floor(i/sqrt(2))))	_	_	_
+A088035	filter	1	new A000578()	c -> !Predicates.CUBE_FREE.is(c.-(1))		Cubes k such that k-1 is divisible by a cube >1.	nonn	1..30	nyi	_Amarnath Murthy_
+A089354	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n - 2, i -> ZV(-2).^(i).*(i + 1).*(BI(3*n + 1, n - 2 - i))).*(2)./(n)	a(n) = (2/n)*Sum_{i=0..(n-2)} (-2)^i*(i+1)*binomial(3n+1, n-2-i), n >= 1.
+A095191	filnum	1	4	k -> !PP(k) && Predicates.SEMIPRIME.is(F001414(k).+(k))	Composites k such that k + F001414(k) is a semiprime.	easy,nonn	1..10000	nyi	_Jason Earls_
+A107026	lambdan	0	n -> BI(4*n, n).*(3).-(SU(0, n, k -> BI(4*n, k)).*(2))	sum{k=0..n, binomial(4n, k)}.
+A109408	filter	1	new A000578()	c -> PP(Functions.DIGIT_SUM.z(c))	digits sum to a prime.	base,nonn	1..29	nyi	_Zak Seidov_
+A114520	filter	1	new A114518()	v -> !PP(v)	nonn	1..56	nyi	_Leroy Quet_
+A117688	filter	0	new A000578()	c -> Predicates.SQUARE.is(Functions.DIGIT_SUM.i(c))		Cubes for which the sum of the digits is a square.	nonn,base	0..27	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117689	filter	0	new A000578()	c -> Predicates.SQUARE.is(Functions.DIGIT_PRODUCT.z(c))		Cubes for which the product of the digits is a square.	nonn,base	0..10000	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117690	filter	0	new A000578()	c -> Predicates.SQUARE.is(Functions.DIGIT_SUM.i(c)) && Predicates.SQUARE.is(Functions.DIGIT_PRODUCT.i(c))	Cubes for which both the sum of the digits and the product of the digits are squares.	nonn,base	0..24	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A118545	filter	1	new A000578()	(k, c) -> (k > 0) && Predicates.CUBE.is(Functions.DIGIT_PRODUCT.z(c))		Cubes for which the product of the digits is also a cube.	base,nonn	1..2500	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A127347	filter	1	new A127345()	v -> !PP(v)	nonn	1..1000	nyi	_Artur Jasinski_
+A129695	lambdan	0	n -> RU(0, n, k -> new Q(BI(n, k), FA(k)).*(FA(n)).*(F001045(k))).num()	add(binomial(n,k)*n!*F001045(k)/k!,k=0..n)
+A134424	holos	0	[[0],[96,-20,1],[363,-77,4],[-438,85,-4],[-1650,328,-16],[1070,-191,8],[383,105,-20],[492,-260,26],[567,-295,20],[-40,31,8],[-30,8,16],[12,-5,-4],[7,3,-4],[-4,0,1]]	0,0,1
+A145920	lambdan	1	n -> F000326(D001318(n - 1))
+A154369	filnum	1	4	k -> !PP(k) && PP(GPF(k).mod(LPF(k)))	Composites k such that gpf(k) mod lpf(k) is prime.	nonn	1..54	nyi	_Juri-Stepan Gerasimov_
+A154373	filnum	1	4	k -> { if (PP(k)) { return false; } else { final Z d = GPF(k).-(LPF(k)); return d.testBit(0) && !PP(d); }}	Composites k such that gpf(k) - lpf(k) is an odd nonprime.	nonn	1..1000	nyi	_Juri-Stepan Gerasimov_
+A154709	filter	1	new A000578()	c -> PP(c.+(2)) && PP(c.-(2))	Cubes such that cube-+2 are primes.	nonn	1..19	nyi	_Vladimir Joseph Stephan Orlovsky_
+A154710	filter	1	new A000578()	c -> PP(c.+(3)) && PP(c.-(3))	Cubes such that cube-+3 are primes.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A154713	filter	1	new A000578()	c -> PP(c.+(5)) && PP(c.-(5))	Cubes such that cube-+5 are primes.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A155930	filter	1	new A000578()	(k, c) -> { final Z k2 = ZV(k).^(2).+(1); return PP(c.-(k2)) && PP(c.+(k2)); }	Cubes c(n) such that cube(n)-square(n)-1 and cube(n)+square(n)+1 are primes.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A159769	holos	1	[[0],[364,-108,8],[-508,132,-8],[-1122,522,-60],[1348,-738,98],[204,-114,18],[-352,399,-101],[12,-102,54],[8,0,-8]]	1,1,2	0	0
+A159864	trilambn	0	0	0	(n, k) -> FI(n - 2*k)
+A161354	filter	1	new A000578()	c -> PP(Functions.REVERSE.z(c))	reversal is a prime number.	nonn,base	1..4050	nyi	_Claudio Meller_
+A163030	holos	1	[[0],[1],[13],[-71],[7],[-113],[22],[222],[-210],[-19],[97],[-59],[15],[-1]]	10,88,920,9362,94280,947760,9528128,95797726,963186740,9684246062,97369020768,978984263266	0	0
+A163289	insect2	1	new A000578()	new A050936()	can be written as sum of consecutive primes.	nonn	1..36	nyi	_Gaurav Kumar_
+A171849	holos	0	[[0],[45,-14,1],[-168,53,-4],[78,-17,1],[30,-29,4],[291,-108,9],[0],[-3,36,-9],[-54,35,-4],[-6,-1,-1],[0,-11,4],[3,2,-1]]	0,0,0,1	0	0
+A171851	holos	0	[[0],[264,-57,3],[-1050,235,-13],[492,-88,4],[768,-295,25],[1272,-244,4],[-66,-33,15],[-1230,628,-70],[-108,-43,19],[-312,240,-60],[222,-209,29],[-60,124,-28],[-60,-47,23],[30,5,-5]]	0,0,0,1
+A173207	filter	1	new A000045()	v -> Predicates.CUBE_FREE.is(v) && !Predicates.SQUARE_FREE.is(v)	Cubefree Fibonacci numbers which are not squarefree.	nonn,changed	1..21	nyi	_Vladimir Joseph Stephan Orlovsky_
+A179458	filnum	1	1	k -> Z2(2*k).-(1).mod(2*k) - Z2(2*k - 1).mod(2*k) == 1	Numbers k such that ((2^(2k) - 1) mod 2k) - (2^(2k-1) mod 2k) = 1.
+A181142	lambdan	1	n -> SU(0, n - 1, k -> BI(n - 1, k).*(ZV(-2).^(k)).*(FA(2*n - k)))	a(n) = Sum_{k=0}^{n-1} binomial(n -1,k) (-2)^k (2n - k)!
+A226524	insect2	0	new A000578()	new A001043()	are the sum of two consecutive primes.	nonn,easy	1..10000	nyi	_K. D. Bajpai_
+A227475	insect2	0	new A000578()	new A034961()	are sum of three consecutive primes.	nonn	1..1000	nyi	_K. D. Bajpai_
+A234240	insect2	1	new A000578()	new A024675()	are arithmetic mean of two consecutive primes.	nonn	1..1000	nyi	_K. D. Bajpai_
+A236334	filter	1	new A000578()	c -> PP(c.-(2))	Cubes k such that k-2 is prime.	nonn	1..538	nyi	_K. D. Bajpai_
+A238497	filter	1	new A000045()	v -> !v.isZero() && Predicates.CUBE_FREE.is(v)	Cubefree Fibonacci numbers.	nonn	1..165	nyi	_Carmine Suriano_
+A240859	filter	1	new A000578()	(k, c) -> Predicates.SEMIPRIME.is(c.+(ZV(k + 1).^(3)))	Cubes k^3 such that k^3 + (k+1)^3 is semiprime.	nonn,easy	1..3689	nyi	_K. D. Bajpai_
+A241537	filter	1	new A000578()	c -> PP(c.+(ZV(1234567890L)))	Cubes c such that c + 1234567890 is prime where 1234567890 is the first pandigital number with digits in order.	nonn	1..10000	nyi	_K. D. Bajpai_
+A245591	insect2	0	new A000578()	new A054735()	are the sum of twin prime pairs A054735.	nonn	1..10000	nyi	_Derek Orr_
+A254961	filter	1	new A000578()	c -> c.mod(10) != 0 && Predicates.CUBE.is(Functions.DIGIT_SUM_CUBES.z(c))	Cubes not divisible by 10 with digits d_1, d_2, ... d_k such that d_1^3 + ... + d_k^3 is a cube.	nonn,base	1..26	nyi	_Derek Orr_
+A255588	lambdan	0	n -> (n < 3) ? ZV(n) : new Z(Integer.toString(n % 3) + Integer.toString(n/3, 3), 3)
+A255589	lambdan	0	n -> (n < 4) ? ZV(n) : new Z(Integer.toString(n % 4) + Integer.toString(n/4, 4), 4)
+A272885	filter	1	new A001235()	v -> Predicates.CUBE_FREE.is(v)	Cubefree taxi-cab numbers.	nonn	1..32	nyi	_Altug Alkan_
+A272889	filter	1	new A001235()	v -> Predicates.CUBE_FREE.is(v) && !Predicates.SQUARE_FREE.is(v)	Cubefree taxi-cab numbers that are not squarefree.	nonn	1..25	nyi	_Altug Alkan_
+A275023	filter	1	new A000578()	c -> Predicates.SEMIPRIME.is(c.+(2)) && Predicates.SEMIPRIME.is(c.-(2))	Cubes c such that c + 2 and c - 2 are semiprime.	nonn	1..10000	nyi	_K. D. Bajpai_
+A278936	filter	1	new A000578()	c -> Functions.DIGIT_SORT_ASCENDING.z(c).mod(10) == 3	largest decimal digit is 3.	nonn,base	1..17	nyi	_Colin Barker_
+A289483	lambdan	1	n -> RU(0, n/2 - 1, s -> QV(Z2((s*s + 3*s)/2)).*(RQ(0, 2*s-1, i -> Q.TWO.^(n - 2 - i).-(1)))./(RQ(1, s, i -> Q.TWO.^(2*i).-(1)))).num()	""		a(n) = sum(s=0, n\2-1, 2^((s^2+3*s)/2)*prod(i=0, 2*s-1, (2^(n-2-i)-1))/prod(i=1, s, 2^(2*i)-1))	_	_	_
+A309672	filter	1	new A007755().skip(1)	v -> !PP(v)	nonn	1..23	nyi	_Jeppe Stig Nielsen_
+A333039	filnum	1	4	k -> !PP(k) && SIGMA(k).compareTo(SIGMA(k - 1)) < 0	Composites m such that sigma(m) < sigma(m-1).	nonn	1..10000	nyi	_Bernard Schott_
+A342975	filter	1	new A000578()	c -> c.toString().matches("[013]+")	Cubes composed of digits {0, 1, 3}.	nonn,base	1..22	nyi	_Daniel Blam_
+A357695	filter	1	new A005101()	v -> Predicates.CUBE_FREE.is(v)	Cubefree abundant numbers.	nonn	1..10000	nyi	_Amiram Eldar_
+A357696	filter	1	new A091191()	v -> Predicates.CUBE_FREE.is(v)	Cubefree primitive abundant numbers: cubefree abundant numbers having no abundant proper divisor.	nonn	1..10000	nyi	_Amiram Eldar_
+A368780	filter	1	new A004709().skip(1)	v -> v.mod(GPF(v).^(2)).isZero()	Predicates.CUBE_FREE.is(v)	Cubefree numbers divisible by the square of their largest prime factor.	nonn,easy	1..10000	nyi	_Amiram Eldar_
+A374641	decexp	0	() -> CV(new Q(9, 10)).log().negate()	log(9/10), negated	nonn,cons,changed	0..10000	nyi	_Paolo Xausa_
+A375370	decexp	0	() -> CR.TWO.log()./(3).+(Zeta.zeta(3)./(CR.PI.^(2).*(2)))	log(2)/3 + zeta(3)/(2*Pi^2)	nonn,cons	0..87	nyi	_R. J. Mathar_
+A378425	lambdan	0	n -> SU(0, n/2, k ->BI(n+1, k).*(BI(n+2*k+1, n-2*k)))./(n+1)	""		a(n) = sum(k=0, n\2, binomial(n+1, k)*binomial(n+2*k+1, n-2*k))/(n+1)	_	_	_
+A378426	lambdan	0	n -> SU(0, n/2, k -> BI(n+1, k).*(BI(n + k+1, n-2*k)))./(n+1)	""		a(n) = sum(k=0, n\2, binomial(n+1, k)*binomial(n + k+1, n-2*k))/(n+1)	_	_	_
+A378460	lambdan	0	n -> SU(0, n, k -> BI(n + k-1, k).*(BI(2*n + k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n + k-1, k)*binomial(2*n + k-1, n-k))	_	_	_
+A378461	lambdan	0	n -> SU(0, n, k -> BI(n + k-1, k).*(BI(2*n+2*k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n + k-1, k)*binomial(2*n+2*k-1, n-k))	_	_	_
+A378462	lambdan	0	n -> SU(0, n/2, k -> BI(n + k-1, k).*(BI(2*n + k-1, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n + k-1, k)*binomial(2*n + k-1, n-2*k))	_	_	_
+A378463	lambdan	0	n -> SU(0, n/3, k -> BI(n + k-1, k).*(BI(2*n-k-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n + k-1, k)*binomial(2*n-k-1, n-3*k))	_	_	_
+A378464	lambdan	0	n -> SU(0, n/3, k -> BI(n + k-1, k).*(BI(2*n-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n + k-1, k)*binomial(2*n-1, n-3*k))	_	_	_
+A378465	lambdan	0	n -> SU(0, n, k -> BI(n + k, k).*(BI(2*n + k, n-k)))./(n+1)	""		a(n) = sum(k=0, n, binomial(n + k, k)*binomial(2*n + k, n-k))/(n+1)	_	_	_
+A378466	lambdan	0	n -> SU(0, n, k -> BI(n + k, k).*(BI(2*n+2*k, n-k)))./(n+1)	""		a(n) = sum(k=0, n, binomial(n + k, k)*binomial(2*n+2*k, n-k))/(n+1)	_	_	_
+A378467	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(2*n + k, n-2*k)))./(n+1)	""		a(n) = sum(k=0, n\2, binomial(n + k, k)*binomial(2*n + k, n-2*k))/(n+1)	_	_	_

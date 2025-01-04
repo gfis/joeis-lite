@@ -1,0 +1,185 @@
+---- 2025-01-03 12:36:20
+---- 2025-01-03 19:25:52
+A075896	filprof	1	0	k -> Z2(k).-(ZV(k).*(k))	Primes of the form 2^n - n^2.	nonn,easy	1..20	nyi	_Zak Seidov_
+A075980	filprof	1	0	k -> ZV(k).^(5).-(Z2(k)).abs()	Primes of the form | n^5-2^n |.	nonn	1..12	nyi	_Zak Seidov_, 2002
+A075996	filprof	1	0	k -> Z2(k).+(ZV(3).^(k)).+(2)	Primes of the form 2 + 2^n + 3^n.	nonn	1..7	nyi	_Zak Seidov_
+A076727	filprof	1	0	k -> ZV(k).*(k).+(ZV(k + 3).^(2))	Primes of the form x^2 + (x+3)^2.	easy,nonn	1..1000	nyi	_Cino Hilliard_
+A078622	filprof	1	1	k -> PM(k).*(PM(k*2)).+(2)	Primes of the form prime(n)*prime(n*2)+2.	nonn	1..5000	nyi	_Reinhard Zumkeller_
+A078917	filprof	1	0	k -> PM(k).+(2*k)	Primes of the form prime(k) + 2*k.	nonn,easy	1..10000	nyi	_Reinhard Zumkeller_
+A081506	filprof	1	0	k -> Z2(k).+(ZV(3).^(k)).+(ZV(4).^(k))	Primes of the form 2^k + 3^k + 4^k.	nonn	1..9	nyi	_Labos Elemer_
+A081508	filprof	1	0	k -> ZV(1).+(ZV(3).^(k)).+(ZV(5).^(k))		Primes of form 1 + 3^k + 5^k.	nonn	1..6	nyi	_Labos Elemer_
+A081509	filprof	1	0	k -> ZV(1).+(Z2(k)).+(ZV(4).^(k)).+(ZV(6).^(k))	Primes of the form 1 + 2^k + 4^k + 6^k.	nonn	1..4	nyi	_Labos Elemer_
+A082102	filprof	1	0	k -> Z2(k - 1).+(ZV(3).^(k))	Primes of the form 2^(k-1) + 3^k.	nonn	1..30	nyi	_Labos Elemer_
+A085704	filprof	1	2	k -> PM(k).*(2).-(PM(k - 1))	Primes of the form prime(k)*2 - prime(k-1), k>1.	nonn	1..2000	nyi	_Reinhard Zumkeller_
+A086877	filprof	1	0	k -> ZV(k + 1).^(k).-(ZV(k).^(k))	Primes of the form (k+1)^k - k^k.	nonn	1..4	nyi	_Cino Hilliard_
+A087857	filprof	1	1	k -> ZV(k).*(16*k).+(25)	Primes of the form 16*m^2 + 25 for m=1,2,3,...	nonn,easy	1..5000	nyi	_Cino Hilliard_
+A088348	filprof	1	0	k -> PM(k).+(PI(k).*(2))	Primes of the form prime(n) + 2pi(n), where pi is F000720.	nonn,easy	1..56	nyi	_Roger L. Bagula_
+A088547	filprof	1	0	k -> ZV(k).*(ZV(k).*(ZV(k).+(1)).+(1)).+(2)	Primes of the form x^3+x^2+x+2.	nonn,easy	1..1000	nyi	_Cino Hilliard_
+A088549	filprof	1	0	k -> ZV(k).*(ZV(k).*(ZV(k).*(ZV(k).*(ZV(k).+(1)).+(1)).+(1)).+(1)).+(2)	Primes of the form x^5 + x^4 + x^3 + x^2 + x + 2.	nonn	1..1000	nyi	_Cino Hilliard_
+A089130	filprof	1	2	k -> FA(k).+(2)./(2)	Primes of the form (k! + 2)/2.	nonn	1..13	nyi	_Cino Hilliard_
+A089131	filprof	1	3	k -> FA(k).+(3)./(3)	Primes of the form (k! + 3)/3.	nonn	1..13	nyi	_Cino Hilliard_
+A089786	filprof	1	2	k -> new Z(PM(2*k).toString() + PM(k).toString())	Primes of the form prime(2k) followed by prime(k).	base,nonn	1..1000	nyi	_Amarnath Murthy_
+A091516	filprof	1	0	k -> ZV(4).^(k).-(Z2(k + 1)).-(1)	Primes of the form 4^n - 2^(n+1) - 1.	nonn	1..25	nyi	_Eric W. Weisstein_
+A092738	filprof	1	0	k -> PM(k).+(PM(k + 1)).+(1)	Primes of the form prime(x)+prime(x+1)+1.	nonn,easy	1..1000	nyi	_Jorge Coveiro_
+A093343	filprof	1	1	k -> PM(k).^(2).+(PM(k + 1).^(2))./(2)	Primes of form (prime(n)^2 + prime(n+1)^2)/2.	nonn	1..1000	nyi	_Giovanni Teofilatto_
+A094104	filprof	1	0	k -> PM(k).*(2).+(PM(k + 1))	Primes of the form 2*prime(n) + prime(n+1).	nonn,easy	1..1000	nyi	_Giovanni Teofilatto_
+A094105	filprof	1	1	k -> PM(k).+(PM(k + 1).*(2))		Primes of the form prime(n) + 2*prime(n+1).	nonn,easy	1..1000	nyi	_Giovanni Teofilatto_
+A094108	filprof	1	1	k -> FA(PM(k)).+(PM(k + 1))	Primes of form prime(n)!+prime(n+1).	nonn	1..5	nyi	_Giovanni Teofilatto_
+A096218	filprof	1	1	k -> PM(k).*(3).+(PM(k + 1).*(2))	Primes of the form 3*prime(n) + 2*prime(n+1).	nonn	1..1000	nyi	_Giovanni Teofilatto_
+A097938	filprof	1	0	k -> PM(k).^(2).-(PM(k + 1)).-(1)	Primes of the form prime(n)^2 - prime(n+1) - 1.	nonn,easy	1..1000	nyi	_Giovanni Teofilatto_
+A097997	filprof	1	0	k -> PM(k).+(PM(k + 1)).+(PM(k + 4))	Primes of the form prime(n) + prime(n+1) + prime(n+4).	nonn,easy	1..1000	nyi	_Giovanni Teofilatto_
+A098029	filprof	1	1	k -> PM(k).+(PM(k + 3))./(2)	Primes of the form (prime(n)+ prime(n+3))/2.	easy,nonn	1..1000	nyi	_Cino Hilliard_.
+A098042	filprof	1	1	k -> PM(PM(k)).+(PM(PM(k + 1)))./(2)	Primes of the form (prime(prime(k)) + prime(prime(k+1)))/2.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A098043	filprof	1	0	k -> PM(PM(k + 1)).-(PM(PM(k)))./(2)	Primes of the form (prime(prime(k+1)) - prime(prime(k)))/2.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A098761	filprof	1	0	k -> PM(k).+(PM(k + 1)).-(PM(k + 2))	Primes of the form prime(n) + prime(n+1) - prime(n+2) with multiplicity, ordered by increasing n.	nonn,easy	1..1000	nyi	_Giovanni Teofilatto_
+A100362	filprof	1	0	k -> Z2(k).-(k - 1)	Primes of the form 2^k - k + 1.	nonn,easy	1..14	nyi	_Labos Elemer_
+A100662	filprof	1	0	k -> ZV(k).^(3).+(ZV(k + 1).^(2))	Primes of the form n^3 + (n+1)^2.	nonn,easy	1..1000	nyi	_Giovanni Teofilatto_
+A100917	filprof	1	0	k -> PI(k).+(PM(k))	Primes of the form pi(n) + prime(n).	nonn	1..1000	nyi	_Ray Chandler_
+A108562	filprof	1	1	k -> PM(k).+(PM(k + 1)).-(2*k + 1)	Primes of the form prime(n) + prime(n+1) - 2n - 1.	easy,nonn	1..1000	nyi	_Giovanni Teofilatto_
+A112885	filprof	1	2	k -> ZV(k).+(PM(k - 1))	Primes of the form k + prime(k-1).	easy,nonn	1..46	nyi	_Jonathan Vos Post_
+A117049	filprof	1	0	k -> ZV(k).^(2).*(22).+(1)	Primes of the form 22*(n^2)+1.	nonn	1..34	nyi	Luc Stevens (lms022(AT)yahoo.com)
+A117839	filprof	1	0	k -> CR.PI.^(k).+(CR.E.^(k)).floor()	Primes of the form floor(Pi^k + e^k).	nonn	1..5	nyi	_Jonathan Vos Post_
+A117921	filprof	1	0	k -> Z2(k).-(1).^(3).-(2)	Primes of the form (2^k - 1)^3 - 2.	nonn	1..10	nyi	_Jonathan Vos Post_
+A118624	filprof	1	0	k -> PM(k + 1).*(PM(k + 3)).-(PM(k).*(PM(k + 2))).-(1)	Primes of the form prime(n+1)*prime(n+3) - prime(n)*prime(n+2) - 1, ordered by n.	nonn,easy	1..10000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A118813	filprof	1	0	k -> FA(2*k).-(FA(k)).-(1)	Primes of the form (2n)! - n! - 1.	nonn	1..6	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A118913	filprof	1	0	k -> FA(k).+(FA(k + 1)).+(1)	Primes of the form k! + (k+1)! + 1.	nonn	1..5	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A119488	filprof	1	1	k -> PM(k + 1).*(k + 1).-(PM(k).*(k))	Primes of the form prime(i+1)*(i+1) - prime(i)*i, for increasing values of i.	nonn,easy	1..1000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A121616	filprof	1	0	k -> ZV(k + 1).^(5).-(ZV(k).^(5))	Primes of form (k+1)^5 - k^5 = J022521(k).	nonn	1..2000	nyi	_Alexander Adamchuk_
+A123366	filprof	1	1	k -> ZV(10).^(k + 1).+(ZV(10).^(k)).-(1).*(10).+(7)	Primes of the form 10*(10^(x+1)+10^x-1)+7.	nonn	1..8	nyi	_Cino Hilliard_
+A124199	filprof	1	0	k -> Functions.TRIANGULAR.z(k).-(2)	Primes of the form k(k+1)/2-2 (i.e., two less than triangular numbers).	easy,nonn	1..2000	nyi	Peter Pein (petsie(AT)dordos.net)
+A131875	triprod	0	A000012	A131844	Triangle, A000012 * A131844 as infinite lower triangular matrices.
+A134671	filprof	1	0	k -> ZV(2*k*691 - 1)	Primes of the form 2m*691 - 1.	nonn,easy	1..10000	nyi	_Alexander Adamchuk_
+A140120	filprof	1	0	k -> PM(k).*(PM(k + 1)).-(PM(k + 1).-(PM(k)))	Primes of the form prime(x)*prime(x+1) - (prime(x+1)-prime(x)).	nonn	1..38	nyi	_Vladimir Joseph Stephan Orlovsky_
+A140121	filprof	1	1	k -> PM(k).*(PM(k + 1)).+(PM(k + 1).-(PM(k)))	Primes of the form prime(x)*prime(x+1) + (prime(x+1)-prime(x)).	nonn	1..46	nyi	_Vladimir Joseph Stephan Orlovsky_
+A140433	filprof	1	0	k -> ZV(2 + k).+(ZV(k + 2).^(2)).+(ZV(k + 3).^(3)).+(ZV(k + 4).^(4))	Primes of the form n^0+(n+1)^1+(n+2)^2+(n+3)^3+(n+4)^4.	nonn	1..26	nyi	_Vladimir Joseph Stephan Orlovsky_, Jan 30 2009
+A140970	filprof	1	1	k -> FA(k - 1).+(ZV(k).^(k - 1))	Primes of the form (n-1)! + n^(n-1).	nonn,less,more	1..4	nyi	_Alexander R. Povolotsky_
+A141561	filprof	1	1	k -> ZV(7*k).-(PM(k))	Primes of the form 7*k - prime(k) (terms can be repeated).	sign,less,dumb	1..1000	nyi	_Juri-Stepan Gerasimov_
+A168011	partsun	1	new A168010()			Partial sums of A168010.
+A181385	lingf	0	0,1,0,-1,0,2,-1	1,-2,0,2,-1					0
+A186240	holos	0	[[0],[-9792,17952,-9792,1632],[-4152,2876,2952,-1676],[-252,902,-750,100],[0,42,-171,-411],[0,162,270,108]]	1	0	0
+A186242	holos	0	[[0],[-61791967435177877040,57129962743681550808,-21037436206563408280,3856996672333040240,-352090982536626080,12803308455877312],[12260157646828322880,-14337485648741905116,6670735012774846968,-1541848137860121612,176928294791120448,-8060886955016016],[-13726699394519136672,14196855476265728208,-5848095153340685218,1197562182046281032,-121648751257464866,4888422201233044],[3116070381704703192,-3987648120422595588,2045347373935392370,-525478571992983140,67597272379420538,-3482104912896052],[-143138793119263920,217565271424618542,-128445949729256631,36509674137021768,-4928532427683009,246624364522170],[-982091476357920,2400896078363544,-2268007987470204,1022037214350132,-214355491061316,15823721001684],[-559880190720,3870240160320,-10016169161760,12057928034400,-6666363099360,1303715898720],[0,-47001600,-195840000,979200000,4896000000,4896000000]]	1	0	0
+A186305	lambdan	0	n -> ZV(n).^(14).modZ(29)	n^((p-1)/2) (mod p) for p = 29.
+A194279	convprod	0	3	new A073711()	Self-convolution cube of A073711.
+A215111	filnum	1	9	k -> DF(k).mod(ZV(k).*(k).+(1)).isZero()	Numbers n such that n^2+1 divides n!!.	nonn,easy	1..10000	nyi	_Michel Lagneau_
+A217629	trilambn	0	0	0	(n, k) -> FA(k).*(BI(n, k)).*(ZV(3).^(n - k))
+A218016	trilambn	0	0	0	(n, k) -> FA(k).*(BI(n, k)).*(ZV(5).^(n - k))	Triangle, read by rows, where T(n,k) = k!*C(n, k)*5^(n-k) for n>=0, k=0..n.	nonn,tabl,easy	0..100	nyi	_Vincenzo Librandi_
+A218017	trilambn	0	0	0	(n, k) -> FA(k).*(BI(n, k)).*(ZV(7).^(n - k))	Triangle, read by rows, where T(n,k) = k!*C(n, k)*7^(n-k) for n>=0, k=0..n.	nonn,tabl,easy	0..100	nyi	_Vincenzo Librandi_
+A218018	trilambn	0	0	0	(n, k) -> FA(k).*(BI(n, k)).*(ZV(11).^(n - k))	Triangle, read by rows, where T(n,k) = k!*C(n, k)*11^(n-k) for n>=0, k=0..n.	nonn,tabl,easy	0..100	nyi	_Vincenzo Librandi_
+A218036	trilambn	1	1	1	(n, k) -> ZV(n + 1).*(k + 1)	n -> ZV(n + 1).+(ZV(2*n + 3).*(F002024(n)).-(F002024(n).^(3))./(2))	yi Ft	a(n) = (n+1) + (n+3/2)*H(n) - (H(n)^3)/2, where H(n)=F002024(n).	nonn,tabl	1..64
+A238688	trilambn	0	0	0	(n, k) -> PR(1, n, i -> D007434(i))./(PR(1, k, i -> D007434(i)).*(PR(1, n - k, i -> D007434(i))))	T(n,k) = prod_{i=1..n} A007434(i)/(prod_{i=1..k} A007434(i)*prod_{i=1..n-k} A007434(i)).
+A238743	trilambn	0	0	0	(n, k) -> PR(1, n, i -> D059376(i))./(PR(1, k, i -> D059376(i)).*(PR(1, n - k, i -> D059376(i))))
+A238754	trilambn	0	0	0	(n, k) -> PR(1, n, i -> E059377(i))./(PR(1, k, i -> E059377(i)).*(PR(1, n - k, i -> E059377(i))))
+A239672	lambdan	1	n -> PR(1, n, i -> E069091(i))	Product_{i=1..n} J_6(i) where J_6(i) = E069091(i).
+A255915	trilambn	0	0	0	(n, k) -> PR(1, n, i -> E069091(i))./(PR(1, k, i -> E069091(i)).*(PR(1, n - k, i -> E069091(i))))
+A259035	partsun	1	new A073602()			Partial sums of A073602.
+A295538	holos	0	[[0],[8142104621303452800,-8025585491732851440,3406031297153958636,-813163213409073732,119493959878355733,-11072367548201124,632077302644478,-20334926626632,282429536481],[55985668101184852800,-56284207418426729040,24422222526882775416,-5976663264156859884,902686911975271278,-86206281230691720,5086116617188284,-169583246127036,2447722649502],[165764899213203628800,-170569043202138819840,75958868517334109136,-19132105897881843984,2982749506433061804,-294901220345010444,18066159699726924,-627300408015108,9456159295512],[274841897525716046400,-290856048063953947920,133621377002167386528,-34829272309889013300,5637211830331856208,-580463750386137600,37152797364935496,-1352027770921980,21425902723656],[277260582234726518400,-303869813149465593696,145077775456185397368,-39436986171880543752,6679950694811047890,-722331246216186756,48717923999974416,-1874465850020436,31510458052326],[172353799348108963200,-197760173815650665520,99237992836725373680,-28463134504783353732,5106183988183244316,-586964045285653896,42236611212132792,-1739972052423108,31426000385724],[63140553480148300800,-77321699921572529472,41584145761094768496,-12833113314186725112,2486406358335318552,-309791768508951372,24245467253828100,-1089995148345852,21554526326004],[11861197983089683200,-16182687050983420848,9716885473228421616,-3353874805385884908,727912825746760296,-101745249729278544,8946834969498984,-452651251573908,10091528897472],[721773122257756800,-1295134816982858640,987493249495827756,-422598214902515940,111827546943468561,-18831216846791160,1978028368847586,-118837360795860,3133844335521],[-19485963172085760,10481135299305552,10872958358156724,-13406120383771386,6156270028135890,-1542112635459708,223881384902688,-17829627055578,607398398298],[-2161245780691200,4117236417364320,-3225410318395944,1298990886312132,-259133323379364,10358820505548,5784599850084,-1092744886896,62633905128],[-26639209134720,79826427720864,-101868171042816,71652806299800,-29916222767496,7366806086904,-971474845896,47189335248,1142625744],[-29355540480,163297453536,-387295460496,509898745552,-405375351248,197248834384,-56153397104,8116839808,-382123952],[0,-332640,2044896,11579680,-95041184,228575200,-252239456,131766880,-26353376]]	1,1	0	0
+A298039	partsun	0	new A298038()			Partial sums of A298038.
+A326828	lambdan	1	n -> SD(n, d -> MU(n/d).*(PHI(d).+(D007434(d))))./(2)	a(n) = (1/2) * Sum_{d|n} mu(n/d) * (phi(d) + J_2(d)), where J_2 = J007434.
+A336538	holos	0	[[0],[21504,-35200,21440,-5760,576],[-15680,27904,-16944,3744,-144],[-280,1912,-4116,3528,-1044],[0,20,25,-90,45]]	1,3	0	0
+A336539	holos	0	[[0],[1320,-1526,659,-126,9],[-80424,99444,-45056,8784,-612],[-390184,859580,-702828,252900,-33804],[5504,-25696,49136,-45216,16272],[0,-64,64,576,-576]]	1,3	0	0
+A336540	holos	0	[[0],[-60964208640,68160585728,-30434918400,6784286720,-754974720,33554432],[-104591032320,148728307712,-85351329792,24651812864,-3575943168,208031744],[-37536645120,63929126912,-43221123072,14493237248,-2408881152,158606336],[783985152,-1680882320,1446519480,-629410280,139680648,-12747080],[-1280280,4990594,-7451085,5376085,-1913835,278521],[0,40,-120,-560,1920,-1280]]	1,3	0	0
+A368743	lambdan	1	n -> SD(n, d -> ZV(d).^(3).*(D007434(n/d)))	a(n) = Sum_{d divides n} d^3 * J_2(n/d) = Sum_{d divides n} d^2 * J_3(n/d), where the Jordan totient functions J_2(n) = J007434(n) and J_3(n) = J059376(n).
+A372976	lingf	0	0,3,17,1,3	1,-1,-2,2,1,-1					0
+A374367	dirichinv0	1	new A101455()	0	Dirichlet inverse of A101455.
+A377500	lingf	0	1,-18,103,-176,0,32,16	1,-24,215,-896,1808,-1760,784,-128					0
+A377638	lingf	0	1,-9,30,6	1,-14,55,-58,16					0
+A377754	lingf	1	0,31,-459,8302,-77054,4700,-2304	1,-112,3705,-41870,87500,-37704,4608					0
+A377759	lingf	0	1,-23,144,190,-388,-360,16	1,-35,408,-1898,3980,-3880,1680,-256					0
+A377769	lingf	1	0,314,-4164,15608,-12848,2944	1,-21,150,-404,296,-64					0
+A377771	lingf	0	1,-26,209,-296,-636,248,80	1,-39,531,-2997,6588,-5956,2128,-256					0
+A377773	lingf	0	1,-16,129,-330,100,52,4	1,-28,242,-888,1481,-1196,452,-64					0
+A377851	lingf	3	0,0,0,8,1,24,8,24,1,8	1,0,0,0,-2,0,0,0,1					0
+A377917	lingf	1	0,10,16,9,-4,-9,-5,-1	1,-5,-15,-20,-15,-6,-1					0
+A378005	lingf	0	1,0,0,-1,0,0,-1,-2,0,1,1,0,0,0,1	1,0,0,-1,0,0,-2,-3,0,2,2,0,1,2,3,-1,-1,-1,0,0,0,-1					0
+A378105	lingf	0	1,0,-3,0,-2	1,-2,-1,2					0
+A378248	lingf	0	1	1,-1,0,-2,2,-1,2,-1,2,-3,1,-1,3,-2,1,-2,1,-2,2,0,1,-1					0
+A378383	lingf	0	0,0,0,1,-5,8,-5,2,-1	1,-10,39,-74,69,-28,4					0
+A378437	dirichinv0	1	new A033630()	0	Dirichlet inverse of A033630, where A033630 is the number of partitions of n into distinct divisors of n.
+A378493	partsun	1	new A196421()			Partial sums of A196421.
+A378497	lingf	1	0,1,2,0,2	1,-4,0,-1,4					0
+A378499	lingf	1	0,1,0,3,1	1,-4,0,-1,4					0
+A378502	lingf	1	0,1,3,2,-1	1,-4,0,-1,4					0
+A378606	dirichcon2	1	new A046692()	1	new A003961()	1	Dirichlet convolution of A046692 and A003961, where A046692 is the Dirichlet inverse of sigma, and A003961 is fully multiplicative with a(prime(i)) = prime(i+1).
+A378676	lingf	0	0,3,-4	1,-3,-6,8					0
+A378701	lingf	1	0,25,-34,-108,-34,237,385,69,-481,-599,-162,280,235,-101,-322,-285,-146,-44,-7	1,-4,-1,12,15,-24,-49,-6,73,76,-5,-80,-72,-14,30,34,19,6,1					0
+A378750	dirichinv	1	new A377984()	1	Dirichlet inverse of A377984, where A377984(n) = 2*sigma(n) - A003961(n).
+A378753	dirichinv	1	new A378752()	1	Dirichlet inverse of A378752, where A378752(n) = 2*sigma(n) - sigma(A003961(n)), and A003961 is fully multiplicative with a(prime(i)) = prime(i+1).
+A378755	dirichcon2	1	new A033879()	1	new A346248()	1	Dirichlet convolution of A033879 and A346248.
+A378756	dirichcon2	1	new A046692()	1	new A005187()	0	Dirichlet convolution of A046692 and A005187, where A046692 is the Dirichlet inverse of sigma.
+A378788	lingf	1	0,1,1,2,0,2	1,-1,0,-2,2,0,1,-1					0
+A378790	lingf	1	0,0,2,1,1,1,1	1,-1,-1,1,-1,1,1,-1					0
+A378796	lingf	1	0,1,2,-7	1,-4,2,4,-3					0
+A378817	lingf	0	-1,-5,8,0,-4,4,-1,-1	1,0,-2,0,3,0,-2,0,1					0
+A378848	lingf	0	26,-23,-82,105,178,56	1,-11,24,21,-33,-34,-8					0
+A378923	lingf	3	0,0,0,0,2,2,-8,7,5,-6	1,-4,5,-2					0
+A378924	lingf	0	12,-38,36,-11	1,-5,9,-7,2					0
+A378933	lingf	1	0,2,3,-9,6	1,-6,14,-16,9,-2					0
+A378934	lingf	1	0,3,-2,-23,26,32,-2,-29,-18,-3	1,-10,37,-59,27,25,-21,-5,4,1					0
+A378937	lambdan	1	n -> Z2(2*n - 1).-(ZV(3).^(n)).+(Z2(n - 1).*(5)).-(3)	- 3^n + 5*2^(n-1) - 3.
+A378990	dirichinv0	1	new A000120()	0	Dirichlet inverse of the binary weight of n (A000120).
+A378997	dirichinv	1	new A057723()	1	Dirichlet inverse of A057723.
+A379106	dirichcon2	1	new A000120()	0	new A323910()	1	Dirichlet convolution of A000120 and A323910, where A323910 is the Dirichlet inverse of the deficiency of n, and A000120 is the binary weight of n.
+A379109	dirichcon2	1	new A046692()	1	new A336923()	1	Dirichlet convolution of A046692 (inverse of sigma) with A336923, where A336923(n) = 1 if sigma(2n) - sigma(n) is a power of 2, otherwise 0.
+A379110	dirichinv	1	new A324892()	1	Dirichlet inverse of A324892, where A324892 is multiplicative with a(p^e) = p^e if sigma(p^e) is prime, and 1 otherwise.
+A379182	lingf	0	0,1,17,-26,-81,33,-39,118,-312,461,-260,183,-211,33,10,3,0,-2	1,-4,0,2,21,-8,-8,-34,12,-20,28,-6,24,-20,13,-12,4,-2,1					0
+A379211	lingf	1	0,2,5,1,5,2	1,-1,0,0,-1,1					0
+A379215	lingf	1	0,1,-2,-3,18,-8	1,-8,21,-22,8					0
+A379540	lingf	0	0,0,3,1,10,-2	1,-5,10,-10,5,-1					0
+A379611	trilambn	0	0	0	(n, k) -> (n == 1 && k == 0) ? ZV(1) : ZV(n + 1).^(n - 1).-(ZV(k - 1).*(ZV(n + 1).^(n - 2)))	Table read by rows: T(n, k) = (n + 1)^(n - 1) - (k - 1)*(n + 1)^(n - 2), by convention T(1, 0) = 1.	nonn,tabl,new	0..44	nyi	_Peter Luschny_
+A379612	lambdan	0	n -> (n == 1) ? ZV(1) : ZV(n + 1).^(n - 1).+(ZV(n + 1).^(n - 2))	, by convention a(1) = 1.	nonn,new	0..20	nyi	_Peter Luschny_
+A379614	lambdan	0	n -> RU(0, n, k -> QV(2).^((n + k - 1)*(n - k)/2).*(FA(n))./(FA(n - k))).num()	Sum_{k=0..n} 2^(((n + k - 1)*(n - k))/2) * n! / (n - k)!. Row sums of A365638.	nonn,new	0..16	nyi	_Peter Luschny_
+A379677	filnum	1	1	k -> PP(10*k + 1) && PP(10*k + 3) && PP(10*k + 7) && PP(10*k + 9) && PP(10*k + 31) && PP(10*k + 33) && PP(10*k + 37) && PP(10*k + 39)	Numbers k for which 10k+1, 10k+3, 10k+7, 10k+9, 10k+31, 10k+33, 10k+37, and 10k+39
+A379715	sintrif	1	(term, n) -> D007434(term)	""	new A005117()	The second Jordan totient function applied to the squarefree numbe: a(n) = J007434(J005117(n)).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A379716	sintrif	1	(term, n) -> D007434(term)	""	new A001694()	The second Jordan totient function applied to the powerful numbers: a(n) = J007434(J001694(n)).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A379717	sintrif	1	(term, n) -> D007434(term)	""	new A004709()	The second Jordan totient function applied to the cubefree numbers: a(n) = J007434(J004709(n)).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A379718	sintrif	1	(term, n) -> D007434(term)	""	new A036966()	The second Jordan totient function applied to the cubefull numbers: a(n) = J007434(J036966(n)).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+---- 2025-01-03 21:20:14
+A275759	egfsi	0	RING.add(RING.one(), RING.reversion(RING.log(RING.pow(RING.series(RING.exp(RING.multiply(RING.log(RING.onePlusXToTheN(1), mN), RING.oneMinusXToTheN(1), mN), mN), RING.exp(RING.multiply(RING.log(RING.oneMinusXToTheN(1), mN), RING.onePlusXToTheN(1), mN), mN), mN), Q.HALF, mN), mN), mN))		1 + reverse( log( sqrt( (1+x)^(1-x) / (1-x)^(1+x) ) ) )					0
+A318599	egfsi	0	RING.series(RING.add(RING.one(), RING.pow(RING.subtract(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.sin(RING.monomial(new Q(2),1), mN), mN)), Q.HALF, mN)), RING.multiply(RING.monomial(new Q(2), 0), RING.cos(RING.x(), mN), mN), mN)		(1 + sqrt(1-2*sin(2*x)))/(2*cos(x))					0
+A369795	egfsi	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(x)/(1 + exp(x) - exp(3*x))					0
+A370163	egfsi	0	RING.series(RING.multiply(RING.monomial(new Q(2), 0), RING.add(RING.one(), RING.exp(RING.x(), mN)), mN), RING.subtract(RING.add(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		2*(1 + exp(x))/(1 + exp(x) + exp(2*x) - exp(3*x))					0
+A370456	egfsi	0	RING.series(RING.multiply(RING.monomial(new Q(2), 0), RING.exp(RING.monomial(new Q(2),1), mN), mN), RING.subtract(RING.add(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		2*exp(2*x)/(1 + exp(x) + exp(2*x) - exp(3*x))					0
+A371460	egfsi	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(x)/(1 + exp(2*x) - exp(3*x))					0
+A371984	egfsi	0	RING.series(RING.exp(RING.monomial(new Q(2),1), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(2*x)/(1 + exp(2*x) - exp(3*x))					0
+A372508	egfsi	0	RING.subtract(RING.exp(RING.sinh(RING.x(), mN), mN), RING.exp(RING.subtract(RING.cosh(RING.x(), mN), RING.one()), mN))		exp(sinh(x)) - exp(cosh(x) - 1)					0
+A372738	egfsi	0	RING.series(RING.exp(RING.monomial(new Q(2),1), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(2*x)/(1 + exp(x) - exp(3*x))					0
+A372803	egfsi	0	RING.multiply(RING.multiply(RING.exp(RING.subtract(RING.one(), RING.exp(RING.subtract(RING.zero(), RING.x()), mN)), mN), RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.one()), mN), RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.monomial(new Q(2), 0)), mN)		exp(1 - exp(-x)) * (exp(-x) - 1) * (exp(-x) - 2)					0
+A375175	egfsi	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.series(RING.subtract(RING.exp(RING.monomial(new Q(4),1), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN)		exp( (exp( (exp(4*x) - 1)/2 ) - 1)/2 )					0
+A375176	egfsi	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.series(RING.subtract(RING.exp(RING.monomial(new Q(9),1), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN)		exp( (exp( (exp(9*x) - 1)/3 ) - 1)/3 )					0
+A375381	egfsi	0	RING.series(RING.subtract(RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.exp(RING.x(), mN)), RING.monomial(new Q(2), 0)), RING.subtract(RING.add(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.exp(RING.x(), mN)), RING.monomial(new Q(4), 0)), mN)		(exp(-x) - exp(x) - 2)/(exp(-x) + exp(x) - 4)					0
+A375945	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 2 * log(1 - x))^(3/2)					0
+A375946	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(3), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(4), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (1 + 3 * log(1 - x))^(4/3)					0
+A375947	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(4), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 4 * log(1 - x))^(3/2)					0
+A375949	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(4), 0), RING.multiply(RING.monomial(new Q(3), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(4), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (4 - 3 * exp(x))^(4/3)					0
+A375950	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(5), 0), RING.multiply(RING.monomial(new Q(4), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (5 - 4 * exp(x))^(3/2)					0
+A375951	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(3), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (1 + 3 * log(1 - x))^(5/3)					0
+A375952	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(4), 0), RING.multiply(RING.monomial(new Q(3), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (4 - 3 * exp(x))^(5/3)					0
+A375953	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 2 * log(1 - x))^(5/2)					0
+A375954	egfsi	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(3), 0), RING.multiply(RING.monomial(new Q(2), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (3 - 2 * exp(x))^(5/2)					0
+A376544	egfsi	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.one(), RING.multiply(RING.exp(RING.x(), mN), RING.subtract(RING.subtract(RING.exp(RING.x(), mN), RING.x()), RING.one()), mN)), mN)		exp(x)/(1 - exp(x)*(exp(x)-x-1))					0
+A376551	egfsi	0	RING.multiply(RING.multiply(RING.multiply(RING.x(), RING.exp(RING.x(), mN), mN), RING.exp(RING.multiply(RING.x(), RING.exp(RING.x(), mN), mN), mN), mN), RING.add(RING.x(), RING.one()), mN)		x*exp(x)*exp(x*exp(x))*(x+1)					0
+---- 2025-01-03 21:39:32
+A275759	egfu	0	RING.add(RING.one(), RING.reversion(RING.log(RING.pow(RING.series(RING.exp(RING.multiply(RING.log(RING.onePlusXToTheN(1), mN), RING.oneMinusXToTheN(1), mN), mN), RING.exp(RING.multiply(RING.log(RING.oneMinusXToTheN(1), mN), RING.onePlusXToTheN(1), mN), mN), mN), Q.HALF, mN), mN), mN))		1 + reverse( log( sqrt( (1+x)^(1-x) / (1-x)^(1+x) ) ) )					0
+A318599	egfu	0	RING.series(RING.add(RING.one(), RING.pow(RING.subtract(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.sin(RING.monomial(new Q(2),1), mN), mN)), Q.HALF, mN)), RING.multiply(RING.monomial(new Q(2), 0), RING.cos(RING.x(), mN), mN), mN)		(1 + sqrt(1-2*sin(2*x)))/(2*cos(x))					0
+A369795	egfu	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(x)/(1 + exp(x) - exp(3*x))					0
+A370163	egfu	0	RING.series(RING.multiply(RING.monomial(new Q(2), 0), RING.add(RING.one(), RING.exp(RING.x(), mN)), mN), RING.subtract(RING.add(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		2*(1 + exp(x))/(1 + exp(x) + exp(2*x) - exp(3*x))					0
+A370456	egfu	0	RING.series(RING.multiply(RING.monomial(new Q(2), 0), RING.exp(RING.monomial(new Q(2),1), mN), mN), RING.subtract(RING.add(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		2*exp(2*x)/(1 + exp(x) + exp(2*x) - exp(3*x))					0
+A371460	egfu	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(x)/(1 + exp(2*x) - exp(3*x))					0
+A371984	egfu	0	RING.series(RING.exp(RING.monomial(new Q(2),1), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(2*x)/(1 + exp(2*x) - exp(3*x))					0
+A372508	egfu	0	RING.subtract(RING.exp(RING.sinh(RING.x(), mN), mN), RING.exp(RING.subtract(RING.cosh(RING.x(), mN), RING.one()), mN))		exp(sinh(x)) - exp(cosh(x) - 1)					0
+A372738	egfu	0	RING.series(RING.exp(RING.monomial(new Q(2),1), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(2*x)/(1 + exp(x) - exp(3*x))					0
+A372803	egfu	0	RING.multiply(RING.multiply(RING.exp(RING.subtract(RING.one(), RING.exp(RING.subtract(RING.zero(), RING.x()), mN)), mN), RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.one()), mN), RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.monomial(new Q(2), 0)), mN)		exp(1 - exp(-x)) * (exp(-x) - 1) * (exp(-x) - 2)					0
+A375175	egfu	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.series(RING.subtract(RING.exp(RING.monomial(new Q(4),1), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN)		exp( (exp( (exp(4*x) - 1)/2 ) - 1)/2 )					0
+A375176	egfu	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.series(RING.subtract(RING.exp(RING.monomial(new Q(9),1), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN)		exp( (exp( (exp(9*x) - 1)/3 ) - 1)/3 )					0
+A375381	egfu	0	RING.series(RING.subtract(RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.exp(RING.x(), mN)), RING.monomial(new Q(2), 0)), RING.subtract(RING.add(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.exp(RING.x(), mN)), RING.monomial(new Q(4), 0)), mN)		(exp(-x) - exp(x) - 2)/(exp(-x) + exp(x) - 4)					0
+A375945	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 2 * log(1 - x))^(3/2)					0
+A375946	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(3), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(4), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (1 + 3 * log(1 - x))^(4/3)					0
+A375947	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(4), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 4 * log(1 - x))^(3/2)					0
+A375949	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(4), 0), RING.multiply(RING.monomial(new Q(3), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(4), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (4 - 3 * exp(x))^(4/3)					0
+A375950	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(5), 0), RING.multiply(RING.monomial(new Q(4), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (5 - 4 * exp(x))^(3/2)					0
+A375951	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(3), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (1 + 3 * log(1 - x))^(5/3)					0
+A375952	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(4), 0), RING.multiply(RING.monomial(new Q(3), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (4 - 3 * exp(x))^(5/3)					0
+A375953	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 2 * log(1 - x))^(5/2)					0
+A375954	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(3), 0), RING.multiply(RING.monomial(new Q(2), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (3 - 2 * exp(x))^(5/2)					0
+A376544	egfu	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.one(), RING.multiply(RING.exp(RING.x(), mN), RING.subtract(RING.subtract(RING.exp(RING.x(), mN), RING.x()), RING.one()), mN)), mN)		exp(x)/(1 - exp(x)*(exp(x)-x-1))					0
+A376551	egfu	0	RING.multiply(RING.multiply(RING.multiply(RING.x(), RING.exp(RING.x(), mN), mN), RING.exp(RING.multiply(RING.x(), RING.exp(RING.x(), mN), mN), mN), mN), RING.add(RING.x(), RING.one()), mN)		x*exp(x)*exp(x*exp(x))*(x+1)					0

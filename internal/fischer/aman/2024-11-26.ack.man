@@ -1,0 +1,59 @@
+---- 2024-11-26 21:44:43
+---- 2024-11-26 22:09:19
+---- 2024-11-26 22:34:27
+---- 2024-11-26 22:44:33
+---- 2024-11-26 23:00:13
+---- 2024-11-26 23:03:43
+A293303	mulr	1	(p, e) -> SD(e, d -> F008683(e/d).*(p.^(d)))
+A351347	mulr	1	(p, e) -> Functions.JACOBSTHAL.z(e + 1)
+A359586	mulr	1	(p, e) -> (!D329697(p).testBit(0)) ? ZV(e + 1) : ((e&1) == 1 ? ZV(0) : ZV(1))	is even, and if D329697(p) is odd, 0 if e is odd and 1 if e is even.
+A361174	mulr	1	(p, e) -> SD(e, d -> Predicates.SQUARE_FREE.is(d) ? p.^(d) : ZV(0))	a(p^e) = Sum_{d|e, d squarefree} p^d.
+A363825	mulr	1	(p, e) -> ((e&1) == 0) ? ZV(1) : ZV(2).^(Functions.DIGIT_SUM.i(2, e - 1)).+(1)	a(p^e) = 1 if e is even, and a(p^e) = 2^A000120(e-1) + 1 if e is odd
+A365680	mulr	1	(p, e) -> D013928(e + 1).+(1)
+A365682	mulr	1	(p, e) -> SU(1, e, k -> Predicates.SQUARE_FREE.is(k) ? p.^(k) : ZV(0)).+(1)	1 + Sum_{k=1..e, k squarefree} p^k.
+A366763	mulr	1	(p, e) -> MAX(e, 2)
+A366764	mulr	1	(p, e) -> (e == 1) ? p.+(1) : (p.^(e + 1).-(1))./(p.-(1)).-(p.^(2))
+A366765	mulr	1	(p, e) -> (e <= 2) ? p : p.^(e)	p if e <= 2 and p^e otherwise.
+A366903	mulr	1	(p, e) -> SU(1, e, k -> ((Integer.bitCount(k) & 1) == 1) ? p.^(k) : ZV(0)).+(1)	1 + Sum_{k = 1..e, k is odious} p^k.
+A366904	mulr	1	(p, e) -> SU(1, e, k -> ((Integer.bitCount(k) & 1) == 0) ? p.^(k) : ZV(0)).+(1)	1 + Sum_{k = 1..e, k is evil} p^k.
+A366990	mulr	1	(p, e) -> SU(2, e, q -> Predicates.PRIME.is(q) ? p.^(q) : ZV(0)).+(1)	1 + Sum_{primes q <= e} p^q.
+A366992	mulr	1	(p, e) -> SU(2, e, q -> Predicates.PRIME.is(q) ? p.^(q) : ZV(0)).+(1).+(p)
+A366993	mulr	1	(p, e) -> (e == 1) ? ZV(1) : p.^(F007917(e + 1))	a(p) = 1 and a(p^e) = p^F007917(e).
+A366994	mulr	1	(p, e) -> (e == 1) ? p : p.^(F007917(e + 1))	for e >= 2.
+A367197	mulr	1	(p, e) -> ((e&1) == 0) ? (p.^(e + 1).-(1))./(p.-(1)) :  ZV(2).*(p.^(e + 1).-(1))./(p.^(2).-(1))	if e is even and a(p^e) = 2*(p^(e+1)-1)/(p^2-1) otherwise. - _Chai Wah Wu_, Nov 19 2023
+A368105	mulr	1	(p, e) -> ((e&1) == 1 || e == 2) ? ZV(e) : ZV(e - 1)	if e = 2 or e is odd, and e-1 otherwise.
+A368170	mulr	1	(p, e) -> (e <= 2) ? ZV(1) : (((e&1) == 1 && e > 1) ? p.^(e) : p.^(e - 1))	if e <= 2, a(p^e) = p^e if e is odd and e > 1, and p^(e-1) otherwise.
+A368172	mulr	1	(p, e) -> (e <= 2) ? ZV(1) : (((e&1) == 1 && e > 1) ? ZV(e + 1) : ZV(e))	a(p^e) = 1 if e <= 2, a(p^e) = e+1 if e is odd and e > 1, and a(p^e) = e otherwise
+A368328	mulr	1	(p, e) -> (ZV(e).compareTo(p) <= 0) ? ZV(1) : ZV(e + 1).-(p)	if e <= p, and a(p^e) = e - p + 1 if e > p.
+A368329	mulr	1	(p, e) -> (ZV(e).compareTo(p) <= 0) ? ZV(1) : p.^(e)	if e <= p, and a(p^e) = p^e if e > p.
+A368330	mulr	1	(p, e) -> (ZV(e).compareTo(p) <= 0) ? ZV(1) : ZV(2)	if e <= p, and a(p^e) = 2 if e > p.
+A368331	mulr	1	(p, e) -> (ZV(e).compareTo(p) <= 0) ? ZV(1) : ZV(e + 1)	if e <= p, and a(p^e) = e+1 if e > p.
+A368332	mulr	1	(p, e) -> (ZV(e).compareTo(p) < 0) ? ZV(1) : ZV(e + 2).-(p)	if e < p, and a(p^e) = e - p + 2 if e >= p.
+A368333	mulr	1	(p, e) -> (ZV(e).compareTo(p) < 0) ? ZV(1) : p.^(e)	if e < p, and a(p^e) = p^e if e >= p.
+A368335	mulr	1	(p, e) -> (ZV(e).compareTo(p) < 0) ? ZV(1) : ZV(e + 1)	if e < p, and a(p^e) = e+1 if e >= p.
+A368470	mulr	1	(p, e) -> ZV(((e&1) == 1) ? (e + 3)/2 : 1)	if e is odd and 1 otherwise.
+A368883	mulr	1	(p, e) -> (e%4 == 1 || e%4 == 2) ? ZV(2) : (((e % 4) == 3) ? ZV(3) : ZV(1))	a(p^e) = 2 if e == 1 or 2 (mod 4), 3 if e == 3 (mod 4), and 1 if e == 0 (mod 4).
+A368884	mulr	1	(p, e) -> (e == 2) ? p.^(2) : ZV(1)	if e = 2, and 1 otherwise.
+A368885	mulr	1	(p, e) -> (e == 2) ? ZV(2) : ZV(1)	if e = 2, and 1 otherwise.
+A368886	mulr	1	(p, e) -> (e == 2) ? ZV(1) : p.^(e)	a(p^2) = 1, and a(p^e) = p^e if e != 2.
+A368977	mulr	1	(p, e) -> ZV(((e&1) == 1) ? (e + 3)/2 : 2*(e/4) + 1)	if e is even.
+A368978	mulr	1	(p, e) -> ZV(((e&1) == 1) ? (e + 1)/2 : 2*((e + 2)/4))	if e is even.
+A368980	mulr	1	(p, e) -> D183063(e)	, or equivalently, a(p^e) = 0 if e is odd, and F000005(e/2) if e is even.
+A369307	mulr	1	(p, e) -> ((e&1) == 1) ? ZV(2) : ZV(e/2)	a(p^e) = 2 is e is odd, and e/2 if e is even.
+A369309	mulr	1	(p, e) -> (e == 2) ? ZV(2) : ZV(e - 1)	a(p^2) = 2 and a(p^e) = e-1 if e != 2.
+A369310	mulr	1	(p, e) -> (e <= 3) ? ZV(2) : ZV(e  - 1)	if e <= 3, and e-1 otherwise.
+A369319	mulr	1	(p, e) -> SU(1, e, k -> p.^(GCD(e, k)))	= Sum_{d|e} p^d * phi(e/d), where phi is the Euler totient function (F000010).
+A370240	mulr	1	(p, e) -> (e <= 2) ? ZV(1) : p.^(3).+(1)	for e <= 2, and a(p^e) = 1 + p^3 for e >= 3.
+A370598	mulr	1	(p, e) -> MU(e).^(2)	, where mu is the M√∂bius function (F008683).
+A371014	mulr	1	(p, e) -> p.and(ZV(3)).equals(ZV(3)) ? ZV(e/2 + 1) : ZV(e + 1)	floor(e/2) + 1 if p == 3 (mod 4), and e+1 otherwise.
+A371242	mulr	1	(p, e) -> (e <= 2) ? p.^(e).+(1) : ZV(1)	a(p^e) = p^e + 1 for e <= 2, and a(p^e) = 1 for e >= 3.
+A372331	mulr	1	(p, e) -> ZV(2).^(D023416(e))	a(p^e) = 2^A023416(e) = A080100(e).
+A372574	mulr	1	(p, e) -> (p.compareTo(ZV(3)) <= 0) ? ZV((e&1) == 0 ? 1 : 0) : ZV(1)	if p <= 3 and a(p^e) = 1 if p > 3, where [ ] is the Iverson bracket.
+A377515	mulr	1	(p, e) -> p.^(MIN(Functions.PRIME_PI.i(p), e))	, where pi(n) = F000720(n).
+A377516	mulr	1	(p, e) -> MIN(Functions.PRIME_PI.i(p), e).+(1)	, where pi(n) = F000720(n).
+A377517	mulr	1	(p, e) -> p.^(Functions.MIN.i(Functions.PRIME_PI.i(p), e) + 1).-(1)./(p.-(1))
+A377518	mulr	1	(p, e) -> p.^(MIN(p, ZV(e)))
+A377519	mulr	1	(p, e) -> MIN(p, ZV(e)).+(1)
+A377520	mulr	1	(p, e) -> p.^(Functions.MIN.i(p.IVE(), e) + 1).-(1)./(p.-(1))
+A378220	mulr	1	(p, e) -> ZV(1).-(F151800(p))	(1-q), where q = F151800(p), i.e., the least prime > p.
+A378221	mulr	1	(p, e) -> (e == 1) ? Z.NEG_ONE.-(F151800(p)) : ((e == 2) ? F151800(p) : ZV(0))	a(p) = -q-1, a(p^2) = q, a(p^k) = 0 for k > 2, where q = F151800(p), the least prime > p.

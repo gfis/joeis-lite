@@ -1,0 +1,56 @@
+---- 2024-10-20 00:08:56
+A096295	multrar	1	(self, n) -> self.a(n - 1).+(self.a(n - 1).-(self.a(n - 1).root(3).^(3)).*(3))	"2"		nyi_t___	a(1) = 2, a(n) = a(n-1) + 3*(a(n-1)-floor(a(n-1)^(1/3))^3).	nonn,easy	1..40	nyi
+A096297	multrar	1	(self, n) -> self.a(n - 1).+(self.a(n - 1).-(self.a(n - 1).root(3).^(3)).*(4))	"3"		nyi_t___	a(1) = 3, a(n) = a(n-1) + 4*(a(n-1)-floor(a(n-1)^(1/3))^3).	nonn,easy	1..38	nyi
+A098749	lambdan	0	n -> new Q(ZV(n).^(4).-(ZV(n).^(3)).-(1), ZV(n).^(3).-(n + 1)).^(2).floor()	((n^4-n^3-1)/ (n^3-n-1))^2;a(n) = Floor[f[n]].	nonn,easy,less	0..50	nyi	_Roger L. Bagula_
+A098858	filter	1	new A000040()	p -> CR.SQRT2.*(p).floor().IPP()	Primes p such that floor(sqrt(2)*p) is also a prime.	nonn	1..10000	nyi	_Roger L. Bagula_
+A106796	morfps	0	1	1	1->112,2->3,3->14,4->1	Fixed point of the morphism  1 -> 1,1,2; 2 -> 3;  3 -> 1,4; 4 -> 1, starting with a(0) = 1.
+A109535	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(n/2).+(n) : ZV(2*n).-(self.a((n - 1)/2))	"1"		a(n) = n+a(floor(n/2)) if n mod 2 = 0, a(n) = 2n-a(floor((n-1)/2)) if n mod 2 = 1.	nonn	0..69	nyi	_Roger L. Bagula_
+A109536	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(n/2).+(n) : ZV(n).-(self.a((n - 1)/2))	"1"		a(n) = n+a(floor(n/2)) if n mod 2 = 0, a(n) = n-a(floor((n-1)/2)) if n mod 2 = 1.	nonn	0..9999	nyi	_Roger L. Bagula_
+A109554	lambdan	1	n -> PPI(n).*(PM(n + 1).-(PM(n)))	nyi_pt__	pi(n)[prime(n+1)-prime(n)],
+A118604	multrar	0	(self, n) -> self.a(n - 1).modZ(13).+(self.a(n - 2).modZ(8))	"0,1"		a(n) = a(n-1) mod 13 + a(n-2) mod 8, with a(0) = 0 and a(1) = 1.
+A120309	filnum	1	1	k -> PPI(k).mod(4) == 0	Numbers k such that pi(k) == 0 (mod 4), where pi() = A000720.	nonn	1..53	nyi	_Roger L. Bagula_
+A120311	filnum	1	1	k -> PPI(k).mod(4) == 0 && PM(k).mod(4) == 3	Numbers k such that pi(k) == 0 (mod 4), where pi() = A000720, and such that prime(k) == 3 (mod 4).	nonn	1..50	nyi	_Roger L. Bagula_
+A120312	filnum	1	1	k -> PPI(k).mod(4) == 0 && PM(k).mod(4) == 1	Numbers k such that pi(k) == 0 (mod 4), where pi() = A000720, and such that prime(k) == 1 (mod 4).	nonn	1..42	nyi	_Roger L. Bagula_
+A120458	trilambn	0	0	0	(n, k) -> (n == 0) ? ZV(1) : ((k == 0) ? ZV(1) : PM(k).^(n))	Triangle read by rows: row 0 is 1; for n>0, row n gives 1^n, prime(1)^n, prime(2)^n, ..., prime(n)^n.	no
+A120459	rowsum	0	new A120458()
+A120666	trilambn	1	1	1	(n, k) -> FA(n*k)./(FA(n).^(k))		Triangle read by rows:  T(n, k) = (n*k)!/(n!)^k.	nonn,tabl	1..26	nyi
+A120728	lambdan	1	n -> CR.E.^(n).floor().modZ(3)	a(n) = floor(e^n) modulo 3.	nonn,less	1..50	nyi	_Roger L. Bagula_
+A121057	trilambn	1	1	1	(n, m) -> PM(n).^(m).*(PM(n).-(1))./(2)	nyi_to__	Triangle read by rows: T(n,m) = Prime[m]^n*(Prime[m] - 1)/2
+A121978	filnum	1	1	k -> ZV(k).^(2).*(2).^(8).+(1).IPP()	Numbers n such that (2n^2)^8 + 1 is prime.	nonn,easy	1..5000	nyi	_Alexander Adamchuk_
+A121979	filnum	1	1	k -> ZV(k).^(2).*(2).^(4).+(1).IPP()	Numbers n such that (2n^2)^4 + 1 is prime.	nonn,easy	1..5000	nyi	_Alexander Adamchuk_
+A122017	multrar	0	(self, n) -> ((n & 1) == 0) ? self.a(n - 1).-(self.a(n - 2).*(n - 1)) : self.a(n - 1).+(self.a(n - 2).*(n - 1)).*(2)	"1,2"		a(n) = if n even then a(n - 1) - (n - 1)*a(n - 2) otherwise 2*(a(n - 1) + (n - 1)*a(n - 2)).	nonn,easy	0..24	nyi	_R
+A122263	multrar	1	(self, n) -> self.a(n - 1).*(2).-(self.a(n - 2)).+(PM(n + 1).-(PM(n)).*(2))	"2,3"		a(n) = 2*a(n-1)-a(n-2)+2*(Prime[n+1]-Prime[n]).	nonn	1..30	nyi	_Roger L. Bagula_
+A122578	multrar	0	(self, n) -> ((n & 1) == 0) ? self.a(n - 1).*(n - 1).-(self.a(n - 2)) : self.a(n - 1).-(self.a(n - 2).*(n - 2))	"1,2"			a(0)=1, a(1)=2 continued recursively a(n) = (n-1)*a(n-1) - a(n-2) if n is even and a(n) = a(n-1) - (n-2)*a(n-2) if n is odd.	sign,easy	0..38	nyi
+A122598	multrar	0	(self, n) -> ((n & 1) == 1) ? self.a(n - 1).*(2).-(self.a(n - 2).*(n - 1)) : (self.a(n - 1).-(self.a(n - 2).*(n - 2)).*(2))	"0,1"	a(0) = 0; a(1) = 1; if n is odd then a(n) = 2*a(n-1) - (n-1)*a(n-2) otherwise a(n) = 2*(a(n-1) - (n-2)*a(n-2)).	sign,easy	0..804	nyi	_Roger L. Bagula_
+A122759	trilambn	1	0	0	(n, m) -> ((n & 1) == 0) ? ZV(3).^(m) : ZV(0)	Triangle T(n,m) read by rows: 3^n if m is odd, 0 if m is even.	nonn,tabl,easy,less	1..66	nyi	_Roger L. Bagula_
+A122761	trilambn	0	0	0	(n, k) -> ZV(3).^(k).*(1 + (n & 1))	Triangular read by rows: T(n, k) = 3^k * (1 + (n mod 2)).	nonn,tabl,easy	0..50	nyi	_Roger L. Bagula_
+A123246	lambdan	1	n -> {final Z pi = Functions.PRIME_PI.z(n); return pi.+(pi.+(1).testBit(0) ? Z.NEG_ONE : Z.ONE); }	a(n) = PrimePi(n) + (-1)^(PrimePi(n) + 1)
+A152428	lambdan	0	n -> Functions.DIGIT_LENGTH.z(2, (FA(Z2(n))))		Number of binary digits in (2^n)!.
+ A152298 a(n) = (3^n - 1)/(2^(3 - 2*Mod[n, 2])) {0, 1, 1, 13}); (0,10,0,-9).
+ A152417 a(n) = (5^n - 1)/(2^(3 -   (n mod 2))). {-25, 0, 26, 0}, new long[] {0, 1, 3, 31});
+ A152418 a(n) = (7^n - 1)/(2^(4 - 3*(n mod 2))). {-49, 0, 50, 0}, new long[] {0, 3, 3, 171});
+A152435	holos	0	[0,-121,0,122,0,-1]	0,1,3,133	0	0	a(n)=(11^n - 1)/(5*2^(3 - 2*Mod[n, 2])).
+A152436	holos	0	[0,-169,0,170,0,-1]	0,1,7,183	0	0	a(n)=(13^n - 1)/(3*2^(3 - Mod[n, 2])).
+ A152437	(17^n - 1)/(2^(5 - (n % 2))). 0, 1, 9, 307
+A152438	holos	0	[0,-361,0,362,0,-1]	0,1,5,381	0	0	a(n)=(19^n - 1)/(9*2^(3 - 2*Mod[n, 2])).
+
+A152670	filter	1	new A000108()	v -> !v.testBit(0)
+A152671	sintrif	1	(term, n) -> term.divide2()	""	new A152670()	Even Catalan numbers divided by 2.	easy,nonn	1..23	nyi	_Omar E. Pol_
+A152716	trilambn	0	0	0	(n, k) -> ZV(4).^(Functions.MIN.z(k, n - k))	Triangle T(n,k) read by rows: T(n,k) = 4^min(k, n-k) = 4^A004197(n,k).	nonn,easy,tabl	0..65	nyi	_Roger L. Bagula_ and _Gary W. Adamson_
+A152717	trilambn	0	0	0	(n, k) -> ZV(5).^(Functions.MIN.z(k, n - k))	Triangle T(n,k) read by rows: T(n,k) = 5^min(k, n-k) = 5^A004197(n,k).	nonn,easy,tabl	0..65	nyi	_Roger L. Bagula_ and _Gary W. Adamson_
+A152753	sintrif	1	(term, n) -> term.modZ(10)	""	new A152670()	Last digit of even Catalan number A152670(n).	base,easy,nonn	1..83	nyi	_Omar E. Pol_
+A155124	trilambn	0	0	0	(n, k) -> (k == 0) ? ZV(1).-(n) : ZV(2)	1-n if k=0 else 2
+A247585	sintrif	1	(term, n) -> D002371(PPI(term))	""	new A002496()
+A377145	lambdan	0	n -> SU(0, n, k -> BI(k + 2, 2).*(BI(k, n - k).^(2)))
+A377146	lambdan	0	n -> SU(0, n/2, k -> BI(k + 2, 2).*(BI(k, n - 2*k).^(2)))
+A377147	lambdan	0	n -> SU(0, n/3, k -> BI(k + 2, 2).*(BI(k, n - 3*k).^(2)))
+A377148	lambdan	0	n -> SU(0, n, k -> BI(k + 3, 3).*(BI(k, n - k).^(2)))
+A377149	lambdan	0	n -> SU(0, n/2, k -> BI(k + 3, 3).*(BI(k, n - 2*k).^(2)))
+A377150	lambdan	0	n -> SU(0, n/3, k -> BI(k + 3, 3).*(BI(k, n - 3*k).^(2)))
+A377152	lambdan	0	n -> SU(0, n, k -> BI(k + 4, 4).*(BI(k, n - k).^(2)))
+A377153	lambdan	0	n -> SU(0, n, k -> BI(k + 5, 5).*(BI(k, n - k).^(2)))
+A377158	lambdan	0	n -> SU(0, n, k -> BI(k + 6, 6).*(BI(k, n - k).^(2)))
+A377159	lambdan	0	n -> SU(0, n, k -> BI(k + 7, 7).*(BI(k, n - k).^(2)))
+A377160	filnum	1	1	k -> !Predicates.CUBE_FREE.is(Functions.TRIANGULAR.z(k))	Numbers k such that A000217(k) is not cubefree.	nonn,new	1..59	nyi	_Hugo Pfoertner_
+A377165	lambdan	0	n -> ZV(n).*(275).+(76)	a(n) = 76 + 275*n.	nonn,easy,new	0..43	nyi	_Stefano Spezia_
+A377166	holos	0	[0,1,-1,0,0,-2,2,0,0,1,-1]	0,21,144,273,277,448,817,1096	0	0	Expansion of g.f. x*(21 + 123*x + 129*x^2 + 4*x^3 + 129*x^4 + 123*x^5 + 21*x^6)/((1 - x)^3*(1 + x + x^2 + x^3)^2).	nonn,easy,new	0..45	nyi

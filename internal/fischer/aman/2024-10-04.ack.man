@@ -1,0 +1,51 @@
+---- 2024-10-04 13:41:29
+---- 2024-10-04 23:19:49
+A004009	lambdan	0	n -> (n == 0) ? ZV(            1)  : ZV(    240).*(Functions.SIGMA.z( 3, n))	E_4
+A006352	lambdan	0	n -> (n == 0) ? ZV(            1)  : ZV(    -24).*(Functions.SIGMA.z( 1, n))	E_2
+A008410	lambdan	0	n -> (n == 0) ? ZV(            1)  : ZV(    480).*(Functions.SIGMA.z( 7, n))	E_6
+A013973	lambdan	0	n -> (n == 0) ? ZV(            1)  : ZV(   -504).*(Functions.SIGMA.z( 5, n))	E_5
+A013974	lambdan	0	n -> (n == 0) ? ZV(            1)  : ZV(   -264).*(Functions.SIGMA.z( 9, n))	E_10
+A029828	lambdan	0	n -> (n == 0) ? ZV(          691)  : ZV(  65520).*(Functions.SIGMA.z(11, n))	E_12
+A029829	lambdan	0	n -> (n == 0) ? ZV(         3617)  : ZV(  16320).*(Functions.SIGMA.z(15, n))	E_16
+A029830	lambdan	0	n -> (n == 0) ? ZV(       174611)  : ZV(  13200).*(Functions.SIGMA.z(19, n))	E_20
+A029831	lambdan	0	n -> (n == 0) ? ZV(    236364091L) : ZV( 131040).*(Functions.SIGMA.z(23, n))	E_24
+A058550	lambdan	0	n -> (n == 0) ? ZV(            1)  : ZV(    -24).*(Functions.SIGMA.z(13, n))	E_14
+A066101	dead	0	A063784	dupl	AbstractSequence	Duplicate of A063784.
+A085136	dead	0	A068868	dupl	NotYetImplemented	Duplicate of A068868.
+A089798	etaprod	0	[2,2;4,-1]	Expansion of Jacobi theta function theta_4(q^2).  EPSIG(theta_4)="[1,2;2,-1]"
+A089803	etaprod	0	[5,2;10,-1]	Expansion of Jacobi theta function theta_4(q^5).
+A089804	etaprod	0	[5,6;10,-3]	Expansion of Jacobi theta function theta_4^3(q^5).
+A122163	convprod	0	2,1	new A010815(), new A006352()	Expansion of f(-q)^2*P(q) in powers of q.
+A122267	convprod	0	2,1	new A010815(), new A013973()	Expansion of f(-q)^2*R(q) in powers of q.
+A122268	convprod	0	2,2	new A010815(), new A004009()	Expansion of f(-q)^2*Q(q)^2 in powers of q.
+A122269	convprod	0	10,1	new A010815(), new A004009()	Expansion of f(-q)^10*Q(q) in powers of q.
+A131018	etaprod	-3	[2,2;1,-1;50,-2;25,1]	1	Expansion of (q^-3) * psi(q) / psi(q^25)
+A133227	dead	0	A133221	erro	NotYetImplemented	Incorrect duplicate of A133221.
+A134390	dead	0	A131416	dupl	A131416	Duplicate of A131416.
+A135098	dead	0	A136488	dupl	LinearRecurrence	Duplicate of A136488.
+A136277	sintrif	0	(term, n) -> BI(Integer.bitCount(n), term.intValue())	""	new A069010()
+A143378	etaprod	0	[2,5;1,-1;4,-2]	-/24	Expansion of q^(-1/24) * eta(q^2)^5 / (eta(q) * eta(q^4)^2) in powers of q.
+A143379	etaprod	0	[1,1;4,2;2,-1]	-7/24	Expansion of q^(-7/24) * eta(q) * eta(q^4)^2 / eta(q^2) in powers of q.
+A160832	etaprod	0	[1,1;2,1;4,1]		Expansion of eta(q)*eta(q^2)*eta(q^4),
+A187429	convprod	0	1,1	new A004016(), new EtaProductSequence(0, "[3,-3]", "3/8")	Expansion of q^(3/8) * a(q) / eta(q^3)^3
+A231948	convprod	0	2,1	new A004016(), new A005928()	Expansion of a(q)^2 * b(q)
+A235391	dead	0	A129775	dupl	HolonomicRecurrence	Duplicate of A129775.
+A267176	lingf	0	1,8,35,112,294,672,1386,2640,4718,8000,12978,20272,30645,45016,64470,90264,123829,166768,220849,287992,370250,469784,588833,729680,894613,1085880,1305640,1555912,1838523,2155056,2506798,2894688,3319268,3780640,4278429,4811752,5379194,5978792,6608029,7263840,7942628,8640288,9352240,10073472,10798593,11521896,12237428,12939064,13620586,14275768,14898464,15482696,16022740,16513208,16949127,17326016,17639957,17887656,18066494,18174568,18210722,18174568,18066494,17887656,17639957,17326016,16949127,16513208,16022740,15482696,14898464,14275768,13620586,12939064,12237428,11521896,10798593,10073472,9352240,8640288,7942628,7263840,6608029,5978792,5379194,4811752,4278429,3780640,3319268,2894688,2506798,2155056,1838523,1555912,1305640,1085880,894613,729680,588833,469784,370250,287992,220849,166768,123829,90264,64470,45016,30645,20272,12978,8000,4718,2640,1386,672,294,112,35,8,1	1,-1,0,0,0,0,0,-1,1,0,0,-1,1,-1,1,0,0,-1,2,-2,2,-1,0,-1,3,-2,1,-1,1,-2,4,-4,2,-1,1,-2,4,-5,2,-1,3,-4,4,-5,3,0,1,-5,6,-5,4,-2,2,-5,6,-4,3,-2,2,-5,8,-5,2,-2,3,-4,6,-5,2,-2,4,-5,6,-5,1,0,3,-5,4,-4,3,-1,2,-5,4,-2,1,-1,2,-4,4,-2,1,-1,1,-2,3,-1,0,-1,2,-2,2,-1,0,0,1,-1,1,-1,0,0,1,-1,0,0,0,0,0,-1,1					0
+A279892	lambdan	0	n -> (n == 0) ? ZV(        43867)  : ZV( -28728).*(Functions.SIGMA.z(17, n))	E_18
+A279893	lambdan	0	n -> (n == 0) ? ZV(        77683)  : ZV(   -552).*(Functions.SIGMA.z(21, n))	E_22
+A282182	lambdan	0	n -> (n == 0) ? ZV(1723168255201L) : ZV(-171864).*(Functions.SIGMA.z(29, n))	E_30
+A282356	lambdan	0	n -> (n == 0) ? ZV(       657931L) : ZV(    -24).*(Functions.SIGMA.z(25, n))	E_26
+A282401	lambdan	0	n -> (n == 0) ? ZV(   3392780147L) : ZV(   6960).*(Functions.SIGMA.z(27, n))	E_28
+A282540	lambdan	0	n -> (n == 0) ? ZV(7709321041217L) : ZV(  32640).*(Functions.SIGMA.z(31, n))	E_32
+A320676	convprod	0	3,3	new A004016(), new A005928()	Expansion of (r(q) * s(q))^3 where r(), s() are cubic AGM theta functions.
+A373535	etaprod	0	[2,2;4,-1;1,-1;20,5]	-19/6	1	G.f.: chi(q) * f(-q^20)^5, where chi(q) is Ramanujan's chi function (see A000700) and f(q) is Ramanujan's theta function f(q) (see A121373).
+A376647	lambdan	0	n -> SU(0, n/3, k -> BI(k/2, n - 3*k))
+A376648	lambdan	0	n -> SU(0, n/4, k -> BI(k/2, n - 4*k))
+A376649	lambdan	0	n -> SU(0, n/3, k -> BI(k/3, n - 3*k))
+A376650	lambdan	0	n -> SU(0, n/4, k -> BI(k/3, n - 4*k))
+A376695	lambdan	0	n -> SU(0, n/2, k -> BI(n - 2*k, k/3))
+A376696	lambdan	0	n -> SU(0, n/3, k -> BI(n - 3*k, k/3))
+A376699	filtpos	1	1	new A069353()	PRIME	Positions of primes in the sequence of numbers of the form 2^i * 3^j - 1 (A069353).
+A376721	holos	0	[[0],[-4,1],[7,-2],[-3,1],[0],[4,-2],[3,-2],[0],[0],[0,1]]	1	0	0		1/sqrt((1 - x^3 - x^4)^2 - 4*x^7).	nonn,new	0..45
+A376722	holos	0	[[0],[-5,1],[9,-2],[-4,1],[0],[0],[5,-2],[4,-2],[0],[0],[0],[0,1]]	1	0	0	1/sqrt((1 - x^4 - x^5)^2 - 4*x^9).	nonn,new	0..53	nyi
+AA168043	lambdan	1	n -> (n <= 1) ? ZV(n) : F000032(n+1).-(ZV(n))	"1,2"		and a(n) = F000032(n+1) - n for n>1	_	_	_

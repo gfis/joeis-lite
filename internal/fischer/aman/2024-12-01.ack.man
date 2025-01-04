@@ -1,0 +1,89 @@
+---- 2024-12-01 11:49:33
+---- 2024-12-01 12:22:02
+---- 2024-12-01 19:58:36
+---- 2024-12-01 21:05:21
+A081946	lambdan	1	n -> SU(1, n, i -> CR.SQRT2.*(CV(i)./(CR.SQRT2).floor()).floor())	a(n) = sum(i=1,n,floor(sqrt(2)*floor(i/sqrt(2))))	_	_	_
+A166530	decexp	70	() -> CR.PI.*(CV(163).sqrt()).*(4).exp()	exp(4*Pi*sqrt(163)) (or X060295^4)	nonn,cons	70..174	nyi	_Mark A. Thomas_
+A289483	lambdan	1	n -> RU(0, n/2 - 1, s -> QV(Z2((s*s + 3*s)/2)).*(RQ(0, 2*s-1, i -> Q.TWO.^(n - 2 - i).-(1)))./(RQ(1, s, i -> Q.TWO.^(2*i).-(1)))).num()	""		a(n) = sum(s=0, n\2-1, 2^((s^2+3*s)/2)*prod(i=0, 2*s-1, (2^(n-2-i)-1))/prod(i=1, s, 2^(2*i)-1))	_	_	_
+A328710	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), Functions.TAU.z(mN)))	(1 + k^(-s))^tau(k)
+A328711	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), Functions.SIGMA1.z(mN)))	(1 + k^(-s))^sigma(k)
+A328744	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), Functions.DISTINCT_PARTITIONS.z(mN)))	(1 + k^(-s))^A000009(k)
+A328877	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), mN - 1))	(1 + k^(-s))^(k - 1)
+A342934	decexp	0	() -> CR.GAMMA.^(CR.GAMMA.inverse())	gamma^(1/gamma), where gamma is the Euler-Mascheroni constant	nonn,cons	0..89	nyi	_Christoph B. Kassir_
+A344266	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), ZV(3).^(mN - 1)))	(1 + k^(-s))^(3^(k-1))
+A344267	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), ZV(4).^(mN - 1)))	(1 + k^(-s))^(4^(k-1))
+A344268	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), ZV(5).^(mN - 1)))	(1 + k^(-s))^(5^(k-1))
+A344269	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), ZV(6).^(mN - 1)))	(1 + k^(-s))^(6^(k-1))
+A344270	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), ZV(7).^(mN - 1)))	(1 + k^(-s))^(7^(k-1))
+A344271	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), ZV(8).^(mN - 1)))	(1 + k^(-s))^(8^(k-1))
+A344298	dgfpow	1	() -> Dgf.*(mDs, Dgf.^(Dgf.simple(mN), ZV(9).^(mN - 1)))	(1 + k^(-s))^(9^(k-1))
+A347197	decexpr	1	() -> REALS.acosh(CR.PHI)	arccosh(phi) where phi is the golden ratio (1 + sqrt(5))/2.	nonn,cons,changed	1..87	nyi	_Peter Kagey_
+A347952	decexp	1	() -> CR.E.*(CR.GAMMA.-(CV(-1).ei()))	exp(1) * (gamma - Ei(-1))	nonn,cons	1..110	nyi	_Ilya Gutkovskiy_
+A348362	decexp	0	() -> CR.GAMMA.^(CR.GAMMA)	gamma^gamma, where gamma is the Euler-Mascheroni constant.	nonn,cons	0..83	nyi	_Christoph B. Kassir_
+A348573	decexp	0	() -> CR.E.inverse().*(CR.ONE.ei().-(CR.GAMMA))	exp(-1) * (Ei(1) - gamma)	nonn,cons	0..109	nyi	_Ilya Gutkovskiy_
+A349804	decexp	1	() -> CR.ONE.cosh().-(CR.ONE.cos())	cosh(1) - cos(1).	nonn,cons	1..82	nyi	_Christoph B. Kassir_
+A349923	dgfpow	1	() -> Dgf.*(mDs, Dgf.simple(ZV(mN), ZV(2)))	(1 + 2 * k^(-s))
+A349924	dgfpow	1	() -> Dgf.*(mDs, Dgf.simple(ZV(mN), ZV(3)))	(1 + 3 * k^(-s))
+A349925	dgfpow	1	() -> Dgf.*(mDs, Dgf.simple(ZV(mN), ZV(-2)))	(1 - 2 * k^(-s))
+A349926	dgfpow	1	() -> Dgf.*(mDs, Dgf.simple(ZV(mN), ZV(-3)))	(1 - 3 * k^(-s))
+A353781	decexp	0	() -> CR.TWO.sin()./(2).log().negate()	log(sin(2)/2) (negated)	nonn,cons	0..93	nyi	_Bernard Schott_
+A355819	dirichinv	1	new A270419()	, denominator of the rational number obtained when the exponents in prime factorization of n are reinterpreted as alternating binary sums (M065620).
+A356418	decexp	1	() -> CV(new Q(4, 3)).+(CV(3).sqrt().inverse()).sqrt()	R.	sqrt(4/3 + 1/sqrt(3)).	nonn,cons,easy	1..97	nyi	_Christoph B. Kassir_
+A356580	decexp	0	() -> CR.TWO.log().-(CR.GAMMA).-(CR.HALF).negate()	log(2) - gamma - 1/2 (negated)	nonn,cons	0..104	nyi	_Amiram Eldar_
+A356581	decexp	0	() -> CR.GAMMA.-(CV(2).log().*(3)).+(CR.THREE.log()).+(CV(new Q(17, 24)))	gamma - 3*log(2) + log(3) + 17/24.	nonn,cons	0..104	nyi	_Amiram Eldar_
+A357330	decexp	1	() -> CV(Functions.SIGMA1.z(5040))./(CV(5040).log().log().*(5040))	sigma(N) / (N * log(log(N))) for N = 5040, where sigma = F000203	nonn,cons	1..90	nyi	_Jianing Song_
+A357331	decexp	1	() -> CV(Functions.SIGMA1.z(5040))./(CR.GAMMA.exp().*(CV(5040).log().log()).*(5040))		sigma(N) / (exp(gamma) * N * log(log(N))) for N = 5040, where sigma = F000203 and gamma = X001620 is the Euler-Mascheroni constant	nonn,cons	1..90	nyi	_Jianing Song_
+A360700	decexpr	1	() -> REALS.asec(CR.PI)	arcsec(Pi).	cons,nonn	1..105	nyi	_Wolfe Padawer_
+A360701	decexpr	0	() -> REALS.acsc(CR.PI)	arccsc(Pi).	cons,nonn	0..104	nyi	_Wolfe Padawer_
+A360938	decexpr	1	() -> REALS.asinh(CR.PI)	arcsinh(Pi).	cons,nonn	1..105	nyi	_Wolfe Padawer_
+A367961	decexp	1	() -> CR.PI./(2).coth()	coth(Pi/2).	nonn,cons	1..76	nyi	_R. J. Mathar_
+A369026	lambdan	0	n -> (n == 0) ? ZV(0) : ZV(n).^(n - 1)./(2)	a(n) = floor(n^(n - 1) / 2) for n > 0 and otherwise 0.	nonn	0..18	nyi	_Peter Luschny_
+A369027	lambdan	0	n -> ZV(n).^(2).*(ZV(n - 1).^(n - 1))./(2)	a(n) = floor(n^2 * (n - 1)^(n - 1) / 2).	nonn	0..18	nyi	_Peter Luschny_
+A369035	filtpos	1	0	new A327860()	v -> v.mod(4) == 0	n -> Numbers k for which E327860(k) is a multiple of 4, where E327860 is the arithmetic derivative of the primorial base exp-function.	nonn	1..66	nyi	_Antti Karttunen_
+A369037	filtpos	1	0	new A327860()	v -> v.mod(4) == 2	Numbers k for which E327860(k) is of the form 4m+2, where E327860 is the arithmetic derivative of the primorial base exp-function.	nonn	1..66	nyi	_Antti Karttunen_
+A369093	filnum	1	1	k -> ZV(k + 1).^(2).mod(Functions.SIGMA1.z(k)).isZero()	Numbers k >= 1 such that sigma(k) divides the sum of the triangular numbers T(k) and T(k+1), where sigma(k) = F000203(k) is the sum of the divisors of k.	nonn,easy	1..65	nyi	_Claude H. R. Dequatre_
+A369096	filnum	1	2	k -> ZV(k + 1).^(2).mod(Functions.OMEGA.z(k)).isZero()	Numbers k >= 2 such that omega(k) divides the sum of the triangular numbers T(k) and T(k+1), where omega(k) is the number of distinct primes dividing k (F001221).	nonn,easy	1..71	nyi	_Claude H. R. Dequatre_
+A369103	decexp	1	() -> CR.PI.*(2)./(CR.PI.-(CR.TWO).square().+(CR.FOUR))	Decimal expansion of 2*Pi/(4+(Pi-2)^2).	nonn,cons	1..97	nyi	_Bence Bern‚ąö¬įth_
+A369106	decexp	0	() -> CR.E.^(CR.GAMMA)./(CR.PI).sqrt()	sqrt(e^gamma/Pi).	nonn,cons	0..87	nyi	_Stefano Spezia_
+A369139	filnum	1	1	k -> Functions.BIG_OMEGA.i(k) == 1 + Functions.BIG_OMEGA.i(k + 1)	Numbers k such that Omega(k) = 1 + Omega(k + 1)	nonn	1..10000	nyi	_Zak Seidov_ and _Robert Israel_
+A369182	filnum	1	1	k -> { final long d = Functions.SIGMA0.l(k); return d > Functions.SIGMA0.l(k - 2) && d > Functions.SIGMA0.l(k - 1) && d > Functions.SIGMA0.l(k + 1) && d > Functions.SIGMA0.l(k + 2); }	d(k) is greater than d(k-2), d(k-1), d(k+1) and d(k+2) where d(k) is the number of divisors of k	nonn,changed	1..57	nyi	_Zhicheng Wei_
+A369185	filnum	1	1	k -> { final int ok1 = Functions.BIG_OMEGA.i(k + 1); return Functions.BIG_OMEGA.i(k) == 1 + ok1 && ok1 == 1 + Functions.BIG_OMEGA.i(k + 2); }	Numbers k such that Omega(k) = 1 + Omega(k+1) = 2 + Omega(k+2)	nonn	1..10000	nyi	_Zak Seidov_ and _Robert Israel_
+A369209	filnum	1	1	k -> Functions.GPF.z(Functions.SIGMA0.z(k)).equals(ZV(3))	Numbers whose number of divisors has the largest prime factor 3.	nonn,easy	1..10000	nyi	_Amiram Eldar_
+A369274	filnum	1	1	k -> { final CR sk1 = CV(k + 1).sin(); final CR sk2 = CV(k + 2).sin(); return CV(k).sin().compareTo(sk1) < 0 && sk1.compareTo(sk2) < 0 && sk2.compareTo(CV(k + 3).sin()) < 0; }	sin(k) < sin(k+1) < sin(k+2) < sin(k+3).	nonn,easy	1..10000	nyi	_R. J. Mathar_
+A369275	filnum	1	1	k -> { final CR sk1 = CV(k + 1).sin(); final CR sk2 = CV(k + 2).sin(); final CR sk3 = CV(k + 3).sin(); return CV(k).sin().compareTo(sk1) < 0 && sk1.compareTo(sk2) < 0 && sk2.compareTo(sk3) < 0 && sk3.compareTo(CV(k + 4).sin()) < 0; }	sin(k) < sin(k+1) < sin(k+2) < sin(k+3) < sin(k+4).	nonn,easy	1..52	nyi	_R. J. Mathar_
+A369499	decexp	1	() -> CV(3).sqrt().*(CR.PI)./(18).exp()./(CV(3).pow(new Q(1, 4)))	exp(sqrt(3)*Pi/18)/3^(1/4)	nonn,cons	1..120	nyi	_Amiram Eldar_
+A369882	decexp	0	() -> CR.TWO.log().-(CV(new Q(1, 4)))	log(2) - 1/4.	nonn,cons,changed	0..105	nyi	_Claude H. R. Dequatre_
+A372047	decexp	1	() -> CV(3).sqrt().*(CV(new Q(1,3)).gamma())./(4)	sqrt(3)*Gamma(1/3)/4	nonn,cons	1..96	nyi	_R. J. Mathar_
+A373053	decexp	1	() -> CV(26).sqrt()./(CV(2))	sqrt(26)/2.	nonn,cons,easy	1..87	nyi	_Gonzalo Mart‚ąö‚Č†nez_
+A373166	decexp	0	() -> CV(3).sqrt()./(CV(7))	sqrt(3)/7.	nonn,cons	0..85	nyi	_Clark Kimberling_
+A374322	decexp	1	() -> CR.SQRT2.*(new Q(9801, 4412))	sqrt(2)*9801/4412.	nonn,cons	1..10000	nyi	_Paolo Xausa_
+A376404	dirichinv	1	new LambdaSequence(1, n -> PHI(n).*(2).-(PHI(D003961(n))))	2*phi(n) - phi(D003961(n)), where phi is Euler totient function and D003961(n) is fully multiplicative function with a(prime(i)) = prime(i+1).
+A376414	dirichinv	1	new A343224()	.
+A378102	decexp	-1	() -> CR.E.^(CR.PI.^(2).negate()./(CR.TWO.log().*(6)))	e^(-Pi^2/(6*log(2))).	nonn,cons,new	-1..98	nyi	_Stefano Spezia_
+A378220	dirichinv	1	new A003972()	.
+A378221	dirichinv	1	new A003973()	.
+A378425	lambdan	0	n -> SU(0, n/2, k ->BI(n+1, k).*(BI(n+2*k+1, n-2*k)))./(n+1)	""		a(n) = sum(k=0, n\2, binomial(n+1, k)*binomial(n+2*k+1, n-2*k))/(n+1)	_	_	_
+A378426	lambdan	0	n -> SU(0, n/2, k -> BI(n+1, k).*(BI(n + k+1, n-2*k)))./(n+1)	""		a(n) = sum(k=0, n\2, binomial(n+1, k)*binomial(n + k+1, n-2*k))/(n+1)	_	_	_
+A378432	dirichinv	1	new A296075()	, where J296075 is the sum of deficiencies of divisors of n.
+A378433	dirichinv	1	new A325973()	, where J325973 is the arithmetic mean of {sum of unitary divisors} and {sum of squarefree divisors}.
+A378452	dirichinv	1	new A007875()	, where J007875(n) = phi(2^omega(n)).
+A378453	dirichinv	1	new A018892()	, where J018892(n) = (tau(n^2)+1)/2.
+A378460	lambdan	0	n -> SU(0, n, k -> BI(n + k-1, k).*(BI(2*n + k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n + k-1, k)*binomial(2*n + k-1, n-k))	_	_	_
+A378461	lambdan	0	n -> SU(0, n, k -> BI(n + k-1, k).*(BI(2*n+2*k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n + k-1, k)*binomial(2*n+2*k-1, n-k))	_	_	_
+A378462	lambdan	0	n -> SU(0, n/2, k -> BI(n + k-1, k).*(BI(2*n + k-1, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n + k-1, k)*binomial(2*n + k-1, n-2*k))	_	_	_
+A378463	lambdan	0	n -> SU(0, n/3, k -> BI(n + k-1, k).*(BI(2*n-k-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n + k-1, k)*binomial(2*n-k-1, n-3*k))	_	_	_
+A378464	lambdan	0	n -> SU(0, n/3, k -> BI(n + k-1, k).*(BI(2*n-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n + k-1, k)*binomial(2*n-1, n-3*k))	_	_	_
+A378465	lambdan	0	n -> SU(0, n, k -> BI(n + k, k).*(BI(2*n + k, n-k)))./(n+1)	""		a(n) = sum(k=0, n, binomial(n + k, k)*binomial(2*n + k, n-k))/(n+1)	_	_	_
+A378466	lambdan	0	n -> SU(0, n, k -> BI(n + k, k).*(BI(2*n+2*k, n-k)))./(n+1)	""		a(n) = sum(k=0, n, binomial(n + k, k)*binomial(2*n+2*k, n-k))/(n+1)	_	_	_
+A378467	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(2*n + k, n-2*k)))./(n+1)	""		a(n) = sum(k=0, n\2, binomial(n + k, k)*binomial(2*n + k, n-2*k))/(n+1)	_	_	_
+A378518	lambdan	1	n -> ZV(n).-(D019565(D048675(n)))
+A378520	dirichinv	1	new A336840()	, where J336840 is the inverse M√∂bius transform of D048673.
+A378523	dirichinv	1	new A332993()	, where J332993 is defined as a(1) = 1, and for n > 1, a(n) = n + a(D032742(n)), and D032742 is the largest proper divisor.
+---- 2024-12-01 23:01:55
+A343876	lambdan	1	n -> QV(n).*(RD(n, d -> QV(d).^(Functions.MOEBIUS.i(d)))).num()	""		a(n) = n*sumdiv(n, d, d^moebius(d))	_	_	_
+A344033	lambdan	1	n -> QV(n).*(RD(n, d -> QV(d).^(Functions.MOEBIUS.i(n/d)))).num()	""		n*sumdiv(n, d, d^moebius(n/d))
+A351432	decexpr	1	() -> CV(3).sqrt()./(2).+(CR.PI.*(REALS.tanh(CR.PI.*(CV(3).sqrt()./(2)))./(2)))	sqrt(3)/2 + Pi*tanh(Pi*sqrt(3)/2)/2	cons,nonn	1..106	nyi	_Artur Jasinski_
+A357771	lambdan	0	n -> RU(0, n, k -> QV(BI(n, k)).*(RU(0, n, j -> QV(BI(n, j)).*(RU(0, j, i -> QV(ZV(1), Z2(j)).*(BI(2*i, j)).*(BI(2*i, i)).*(BI(2*(j - i), j - i))))))).num()	""		a(n) = sum(k=0, n, binomial(n, k) * sum(j=0, n, binomial(n, j) * sum(i=0, j, (1/(2^j)*binomial(2*i, j)*binomial(2*i, i)*binomial(2*(j-i), j-i)))))	_	_	_
+A371348	decexp	1	() -> CV(new Q(7, 4)).*(CV(new Q(4, 7)).exp().-(1)).sqrt()	sqrt(7*(exp(4/7)-1)/4)
+A377813	decexpr	0	() -> REALS.atanh(CR.PHI.-(1))	arctanh(phi-1)	nonn,cons,new	0..76	nyi	_Colin Linzer_
+A378129	decexp	0	() -> CR.PI.divide(CR.ONE.agm(CR.TWO.sqrt())).^(2)./(CR.PI).log()	log(L^2/Pi), where L is the lemniscate constant (X062539)	nonn,cons,easy,new	0..89	nyi	_Paolo Xausa_

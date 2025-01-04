@@ -1,0 +1,121 @@
+---- 2024-09-26 15:33:48
+---- 2024-09-26 16:13:29
+---- 2024-09-26 17:42:45
+---- 2024-09-26 17:56:08
+---- 2024-09-26 21:44:14
+A064553	mulr	1	(p, e) -> PPI(p).+(1).^(e)
+A066872	sintrif	1	(term, n) -> term.^(2).+(1)	""	new A000040()	p^2 + 1 as p runs through the primes.	easy,nonn	1..1000	nest	_Joseph L. Pe_
+A089241	filnum	1	1	k -> (k & 1) == 0 && ZV(k/2).-(1).IPP()	Even numbers k such that k/2 - 1 is prime.	easy,nonn	1..5000	nest	_Giovanni Teofilatto_
+A108047	multrar	1	(self, n) -> new Z(self.a(n - 2).toString() + self.a(n - 1).toString())	"1,1"		Concatenation of the previous pair of numbers, with the first two terms both 1.	nonn,easy,base	1..11	nest	_Parthasarathy Nambi_
+A114574	lambdan	1	n -> { final Z p = PM(n); return p.*(FA(p)); }
+A130614	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return ZV(p).^(p - 2); }	a(n) = p^(p-2), where p = prime(n).	easy,nonn	1..77	nest	_Jonathan Vos Post_
+A141086	lambdan	1	n -> PM(n*n*2).-(n*n*2)	a(n) = prime(2*n^2) - 2*n^2.	nonn	1..41	nest	_Juri-Stepan Gerasimov_
+A154389	filter	1	new A018252()	v -> { final long d = Functions.DIGIT_SORT_ASCENDING.z(v).mod(10); return d == 1 || d == 9; }	Nonprimes whose largest digit is an odd nonprime.
+A154390	filter	1	new A002808()	v -> { final long d = Functions.DIGIT_SORT_ASCENDING.z(v).mod(10); return d == 2 || d == 3 || d == 5 || d == 7; }	Composites whose largest digit is prime.
+A156976	filter	1	new A000040()	v -> v.toString().matches("[2357]+[014689]")	Primes whose last digit is not a prime but all the other digits are primes.
+A157529	filter	1	new A002808()	v -> { final int d = Functions.LEADING_DIGIT.i(v); return Functions.DIGIT_SUM.i(v) - d == d; }	Composite numbers whose first digit is equal to the sum of all the other digits.
+A175018	lambdan	1	n -> M005185(n).-(M005185(n)./(2))
+A221651	filnum	1	1	k -> { final int d = Functions.LEADING_DIGIT.i(k); return d > 1 && k % (d*d) == 0; }	Numbers divisible by their first digit squared (excluding those whose first digit is 1).
+A223458	filter	1	new A000040()	v -> { final int d = Functions.LEADING_DIGIT.i(v); return d == 9 || (d & 1) == 0 && d >= 4; }	Primes whose first digit is a composite number.
+A225296	filnum	1	1	k -> { final int d = Functions.LEADING_DIGIT.i(k); return d > 1 && k % (d*d*d) == 0; }	Numbers divisible by their first digit cubed (excluding those whose first digit is 1).
+A225722	filnum	1	1	k -> { final int d = k % 10; return d > 1 && k % (d*d*d) == 0; }	Numbers divisible by their last digit cubed, excluding those whose last digit is 1.
+A226217	filter	1	new A000040()	v -> { final int d = Functions.LEADING_DIGIT.i(v); return d == 1 || d == 4 || d == 9; }	Primes whose first digit is a square.
+A228189	lambdan	1	n -> CR.PI.*(ZV(n).^(3))./(12).floor()	floor((Pi*n^3)/12).
+A228272	lambdan	1	n -> CR.PI.*(ZV(n).^(3))./(6).floor()	floor((Pi*n^3)/6)).
+A228641	lambdan	1	n -> CR.PI.^(2).*(ZV(n).^(3)).*(2)./(9).floor()	floor( 2/9 * Pi^2  * n^3 ).
+A230087	filter	1	new A000040()	v -> Predicates.SQUARE.is(v.+(Functions.DIGIT_SUM.z(v)))	Primes such that prime plus its digit sum is a perfect square.
+A234729	lambdan	1	n -> CR.THREE.sqrt().*(new Q(3, 2)).*(ZV(n).^(3))./(3).floor()	floor(n^2*evalf(sqrt(3)*3/2)*n/3) = floor(0.8660254040* n^3).
+A246010	lambdan	1	n -> PM(n).^(2).*(5)./(4)
+A259369	lambdan	1	n -> { final Z s3 = Functions.SIGMA1.z(n).^(3); return s3.+(s3.^(2)).+(1); }	1 + sigma(n)^3 + sigma(n)^6.	easy,nonn	1..10000	nest	_Robert Price_
+A267144	lambdan	1	n -> { final Z p = PM(n); return p.*(3).-(2).*(p); }	Octagonal numbers with prime indices.	nonn,easy	1..41	nest	_Ilya Gutkovskiy_
+A267217	lambdan	1	n -> { final Z p = PM(n); return p.*(4).-(3).*(p); }	10-gonal (or decagonal) numbers with prime indices.	nonn,easy	1..45	nest	_Ilya Gutkovskiy_
+A267897	lambdan	1	n -> { final Z p = PM(n); return FA(p).-(p); }	a(n) = prime(n)! - prime(n).	nonn,easy	1..12	nest	_Vincenzo Librandi_
+A267898	lambdan	1	n -> { final Z p = PM(n); return FA(p).+(p); }	a(n) = prime(n)! + prime(n).	nonn,easy	1..12	nest	_Vincenzo Librandi_
+A277946	filter	1	new A000290()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 2	Squares whose largest decimal digit is 2.
+A277947	filter	1	new A000290()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 3	Squares whose largest decimal digit is 3.
+A277948	filter	1	new A000290()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 4	Squares whose largest decimal digit is 4.
+A294663	filter	1	new A000578()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 4	Cubes whose largest digit is 4.
+A294664	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(3)).mod(10) == 4	Numbers n such that the largest digit of n^3 is 4.
+A294665	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(3)).mod(10) == 5	Numbers n such that the largest digit of n^3 is 5.
+A294996	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(3)).mod(10) == 6	Numbers n such that the largest digit of n^3 is 6.
+A294997	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(3)).mod(10) == 7	Numbers n such that the largest digit of n^3 is 7.
+A294998	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(3)).mod(10) == 8	Numbers n such that the largest digit of n^3 is 8.
+A294999	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(3)).mod(10) == 9	Numbers n such that the largest digit of n^3 is 9.
+A295005	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(2)).mod(10) == 5	Numbers n such that the largest digit of n^2 is 5.
+A295006	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(2)).mod(10) == 6	Numbers n such that the largest digit of n^2 is 6.
+A295007	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(2)).mod(10) == 7	Numbers n such that the largest digit of n^2 is 7.
+A295009	filnum	1	1	k -> Functions.DIGIT_SORT_ASCENDING.z(ZV(k).^(2)).mod(10) == 9	Numbers k such that the largest digit of k^2 is 9.
+A295015	filter	1	new A000290()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 5	Squares whose largest digit is 5.
+A295016	filter	1	new A000290()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 6	Squares whose largest digit is 6.
+A295017	filter	1	new A000290()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 7	Squares whose largest digit is 7.
+A295018	filter	1	new A000290()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 8	Squares whose largest digit is 8.
+A295019	filter	1	new A000290()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 9	Squares whose largest digit is 9.
+A295021	filter	1	new A000578()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 6	Cubes whose largest digit is 6.
+A295022	filter	1	new A000578()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 7	Cubes whose largest digit is 7.
+A295023	filter	1	new A000578()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 8	Cubes whose largest digit is 8.
+A295024	filter	1	new A000578()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 9	Cubes whose largest digit is 9.
+A295025	filter	1	new A000578()	v -> Functions.DIGIT_SORT_ASCENDING.z(v).mod(10) == 5	Cubes whose largest digit is 5.
+A295313	lambdan	1	n -> { final Z sg = Functions.SIGMA1.z(n); return Functions.GCD.z(sg, Functions.PHI.z(sg)); }	a(n) = gcd(sigma(n), phi(sigma(n))).	nonn	1..16384	nest	_Antti Karttunen_
+A298075	filter	1	new A000040()	v -> { final long d = v.mod(10); return d == Functions.NEXT_PRIME.z(v).mod(10) && d == Functions.PREV_PRIME.z(v).mod(10); }	Primes p whose last digit is the same as that of both its predecessor prime and its successor prime.
+A320584	filnum	1	1	k -> { final int d = Functions.LEADING_DIGIT.i(k); return d == 2 || d == 3 || d == 5 || d == 7; }	; }	Numbers whose first digit is prime.
+A320585	filter	1	new A000040()	v -> { final int d = Functions.LEADING_DIGIT.i(v); return d == 2 || d == 3 || d == 5 || d == 7; }	; }	Primes whose first digit is prime.
+A331194	filnum	1	1	k -> Functions.OMEGA.i(k) == k % 10	Numbers whose last digit is the number of their distinct prime factors.
+A375051	obvecon	0	new LambdaSequence(0, n -> ZV(n).*(n).-(1))	new LambdaSequence(0, n -> ZV(n).*(n).-(1))		s = t = J005563, n^2-1         s**s = A375051
+A375056	obvecon	0	new A279019()	new A279019()	Obverse convolution (n^2 - n)**(n^2 - n); see Comments.
+A375058	obveconf	0	new A002378()	new A002378()	4	(1/4)*(obverse convolution (n^2 + n)**(n^2 + n)); see Comments.
+A375059	obvecon	0	new A002061().skip(1)	new A002061().skip(1)	Obverse convolution (n^2 + n + 1)**(n^2 + n + 1); see Comments.
+A376159	lambdan	0	n -> RU(0, n, k -> new Q(BI(n +  5*k + 2, n - k).*(BI(2*k, k)), ZV(k + 1))).num()
+A376160	lambdan	0	n -> RU(0, n, k -> new Q(BI(n + 11*k + 2, n - k).*(BI(4*k, k)), ZV(3*k + 1))).num()
+A376290	lambdan	1	n -> SU(1, n-1, k -> Functions.SIGMA.z(2, k).*(Functions.SIGMA.z(3, n - k)))
+A376292	lambdan	0	n -> RU(0, n/4, k -> new Q(SA(n - 3*k, k), FA(n - 3*k).*(FA(n - k + 1)))).*(FA(n).^(2)).num()
+A376293	lambdan	0	n -> RU(0, n/4, k -> new Q(S2(n - 3*k, k), FA(n - 3*k).*(FA(n - k + 1)))).*(FA(n).^(2)).num()
+A376321	obvecon	0	new A002522()	new A002522()	Obverse convolution (n^2 + 1)**(n^2 + 1); see Comments.
+A376322	obveconf	0	new A007395()	new A000051()	4	(1/4) times obverse convolution (2)**(2^n + 1); see Comments.
+A376323	obveconf	0	new A010701()	new A000051()	5	(1/5) times obverse convolution (3)**(2^n + 1); see Comments.
+A376324	obveconf	0	new A010709()	new A000051()	6	(1/6) times obverse convolution (4)**(2^n + 1); see Comments.
+A376344	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n - 2*k).*(SA(k, n - 2*k)), FA(k)))./(n + 1).num()
+A376345	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n - 2*k).*(S2(k, n - 2*k)), FA(k)))./(n + 1).num()
+A376346	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(2*n - 3*k).*(SA(k, n - 3*k)), FA(k)))./(n + 1).num()
+A376347	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(2*n - 3*k).*(S2(k, n - 3*k)), FA(k)))./(n + 1).num()
+A376350	lambdan	0	n -> RU(0, n/2, k -> new Q(n + 1).^(n - 2*k - 1).*(SA(k, n - 2*k))./(FA(k))).*(FA(n)).num()
+A376351	lambdan	0	n -> RU(0, n/2, k -> new Q(n + 1).^(n - 2*k - 1).*(S2(k, n - 2*k))./(FA(k))).*(FA(n)).num()
+A376381	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n + k + 1).*(S2(n - k, k)), FA(n - k))).*(FA(n)).*(2)./(FA(2*n + 2)).num()
+A376382	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n + k + 2).*(S2(n - k, k)), FA(n - k))).*(FA(n)).*(3)./(FA(3*n + 3)).num()
+A376383	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n + k + 1).*(S2(n - k, k)), FA(n - k))).*(FA(n)).*(2)./(FA(3*n + 2)).num()
+A376385	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(2*n + k + 1).*(SA(n - k, k)), FA(n - k))).*(FA(n)).*(2)./(FA(2*n + 2)).num()
+A376386	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n + k + 2).*(SA(n - k, k)), FA(n - k))).*(FA(n)).*(3)./(FA(3*n + 3)).num()
+A376387	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n + k + 1).*(SA(n - k, k)), FA(n - k))).*(FA(n)).*(2)./(FA(3*n + 2)).num()
+A376389	lambdan	0	n -> RU(0, n, k -> new Q(FA(2*n + k + 1).*(S2(n, k)))).*(2)./(FA(2*n + 2)).num()
+A376390	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*n + k + 2).*(S2(n, k)))).*(3)./(FA(3*n + 3)).num()
+A376391	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*n + k + 1).*(S2(n, k)))).*(2)./(FA(3*n + 2)).num()
+A376392	lambdan	0	n -> RU(0, n, k -> new Q(FA(2*n + k + 1).*(SA(n, k)))).*(2)./(FA(2*n + 2)).num()
+A376393	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*n + k + 2).*(SA(n, k)))).*(3)./(FA(3*n + 3)).num()
+A376394	lambdan	0	n -> RU(0, n, k -> new Q(FA(3*n + k + 1).*(SA(n, k)))).*(2)./(FA(3*n + 2)).num()
+A376436	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(2*n + k + 1).*(SA(n - 2*k, k)), FA(n - 2*k))).*(FA(n)).*(2)./(FA(2*n + 2)).num()
+A376437	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(3*n + k + 2).*(SA(n - 2*k, k)), FA(n - 2*k))).*(FA(n)).*(3)./(FA(3*n + 3)).num()
+A376438	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(2*n + k + 1).*(S2(n - 2*k, k)), FA(n - 2*k))).*(FA(n)).*(2)./(FA(2*n + 2)).num()
+A376439	lambdan	0	n -> RU(0, n/3, k -> new Q(FA(3*n + k + 2).*(S2(n - 2*k, k)), FA(n - 2*k))).*(FA(n)).*(3)./(FA(3*n + 3)).num()
+A376441	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n - 2*k+1).*(SA(k, n - 2*k)), FA(k))).*(FA(n)).*(2)./(FA(2*n + 2)).num()
+A376442	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(4*n - 2*k+2).*(SA(k, n - 2*k)), FA(k))).*(FA(n)).*(3)./(FA(3*n + 3)).num()
+A376443	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(3*n - 2*k+1).*(S2(k, n - 2*k)), FA(k))).*(FA(n)).*(2)./(FA(2*n + 2)).num()
+A376444	lambdan	0	n -> RU(0, n/2, k -> new Q(FA(4*n - 2*k+2).*(S2(k, n - 2*k)), FA(k))).*(FA(n)).*(3)./(FA(3*n + 3)).num()
+A376474	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n+1)).^(k-1).*(BI(n-k-1, n-2*k))./(FA(k))).*(FA(n)).num()
+A376475	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n+1)).^(k-1).*(BI(n-2*k-1, n-3*k))./(FA(k))).*(FA(n)).num()
+A376476	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(n+1)).^(k-1).*(BI(k, n-2*k))./(FA(k))).*(FA(n)).num()
+A376477	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(n+1)).^(k-1).*(BI(k, n-3*k))./(FA(k))).*(FA(n)).num()
+A376486	lambdan	0	n -> RU(0, n/3, k -> new Q(BI(4*k, k).*(BI(k, n-3*k))./(3*k+1))).num()
+A376487	lambdan	0	n -> RU(0, n/4, k -> new Q(BI(5*k, k).*(BI(k, n-4*k))./(4*k+1))).num()
+A376489	lambdan	0	n -> RU(0, n/2, k -> new Q(BI(3*k, k).*(BI(n-k-1, n-2*k))./(2*k+1))).num()
+A376490	lambdan	0	n -> RU(0, n/3, k -> new Q(BI(4*k, k).*(BI(n-2*k-1, n-3*k))./(3*k+1))).num()
+A376491	lambdan	0	n -> RU(0, n/4, k -> new Q(BI(5*k, k).*(BI(n-3*k-1, n-4*k))./(4*k+1))).num()
+A376492	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(2*k+1)).^(k-1).*(BI(k, n-2*k))./(FA(k))).*(FA(n)).num()
+A376493	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(3*k+1)).^(k-1).*(BI(k, n-3*k))./(FA(k))).*(FA(n)).num()
+A376494	lambdan	0	n -> RU(0, n/2, k -> new Q(ZV(2*k+1)).^(k-1).*(BI(n-k-1, n-2*k))./(FA(k))).*(FA(n)).num()
+A376495	lambdan	0	n -> RU(0, n/3, k -> new Q(ZV(3*k+1)).^(k-1).*(BI(n-2*k-1, n-3*k))./(FA(k))).*(FA(n)).num()
+---- 2024-09-26 22:02:09
+A156753	filter	1	new A000040()	v -> { final long d = Functions.DIGIT_SORT_ASCENDING.z(v).mod(10); return Functions.DIGIT_SUM.i(v) - d == d; }	Primes whose largest digit is equal to the sum of all the other digits.
+A224837	lambdan	1	n -> CR.THREE.sqrt().+(1).*(n).*(n).floor()	""		a(n) = floor((1+sqrt(3))*n^2)	_	_	_
+A236077	filter	1	new A000578().skip(1)	v -> Predicates.CUBE.is(v./(Functions.DIGIT_SUM.z(v)))	Cubes which remain (integer) cubes when divided by their digital sum.
+A236220	filter	1	new A000578().skip(1)	v -> Predicates.SQUARE.is(v./(Functions.DIGIT_SUM.z(v)))	Cubes which when divided by their digital sum, become square.
+A272623	filter	1	new A000045()	(n, v) -> n != 1 && Functions.LEADING_DIGIT.i(v) == v.mod(10)	Fibonacci numbers whose first digit is equal to its last digit.
+---- 2024-09-26 23:05:19

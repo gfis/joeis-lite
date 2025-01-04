@@ -1,0 +1,30 @@
+---- 2024-11-25 14:08:45
+A378181	lambdan	1	n -> (n == 1) ? ZV(0) : BI(Functions.BIG_OMEGA.i(n) + Functions.OMEGA.i(n) - 1, Functions.OMEGA.i(n))	, where bigomega = F001222 and omega = F001221.	nonn,easy,new	1..10000	nyi	_Michael De Vlieger_
+A378183	lambdan	1	n -> RAD(n).^(BI(Functions.OMEGA.i(n) + Functions.BIG_OMEGA.i(n) - 1, Functions.BIG_OMEGA.i(n) - 2))
+A378216	dirichinv	1	new A174725()	.	sign,new	1..65537	nyi	_Antti Karttunen_
+A378218	dirichinv	1	new A345182()	.	sign,new	1..65537	nyi	_Antti Karttunen_
+A378219	dirichinv	1	new A253249()	.	sign,new	1..20000	nyi	_Antti Karttunen_
+A378220	dirichinv	1	new LambdaSequence(1, n -> PHI(D003961(n)))
+A378221	dirichinv	1	new LambdaSequence(1, n -> Functions.SIGMA1.z(D003961(n)))
+A378228	dirichinv	1	new A341528()	, where J341528(n) = n * sigma(D003961(n)), and D003961 is fully multiplicative with a(prime(i)) = prime(i+1).	sign,mult,new	1..20000	nyi	_Antti Karttunen_
+A378229	dirichinv	1	new A341529()	, where J341529(n) = sigma(n) * D003961(n), and D003961 is fully multiplicative with a(prime(i)) = prime(i+1).	sign,mult,new	1..20000	nyi	_Antti Karttunen_
+A378231	lambdan	1	n -> { final Z term = D003961(ZV(n).^(2)); return term.*(2).-(Functions.SIGMA.z(term)); }	Deficiency of prime-shifted squares: a(n) = 2*D003961(n^2) - sigma(D003961(n^2)), where D003961 is fully multiplicative function with a(prime(i)) = prime(i+1).	sign,new	1..20000	nyi	_Antti Karttunen_
+A378309	lambdan	1	n -> D010051(n).+(F001222(n))
+A378326	lambdan	0	n -> RU(0, n,  k -> new Q(BI(n - 1, k - 1).*(BI(n*k, k)), ZV((n - 1)*k + 1))).num()	nonn,new	0..338	nyi	_Vaclav Kotesovec_
+A378327	lambdan	0	n -> RU(0, n,  k -> new Q(BI(n, k).*(BI(n*k, k)), ZV((n-1)*k + 1))).num()	nonn,new	0..338	nyi	_Vaclav Kotesovec_
+A378378	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n + 3*k - 1, 3*k)))
+---- 2024-11-25 16:55:05
+A378236	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n, r).*(BI(n + 2*r + k, n)), ZV(n + 2*r + k))).*(k).num()	> 0.	nonn,tabl,new	0..65	nyi
+A378237	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n, r).*(BI(n + 3*r + k, n)), ZV(n + 3*r + k))).*(k).num()	> 0.	nonn,tabl,new	0..65	nyi
+A378238	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n, r).*(BI(3*n + r + k, n)), ZV(3*n + r + k))).*(k).num()	> 0.	nonn,tabl,new	0..54	nyi
+A378239	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n, r).*(BI(2*n + 2*r + k, n)), ZV(2*n + 2*r + k))).*(k).num()	> 0.	nonn,tabl,new	0..54	nyi
+A378240	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n, r).*(BI(3*n + 3*r + k, n)), ZV(3*n + 3*r + k))).*(k).num()	> 0.	nonn,tabl,new	0..54	nyi
+A378289	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n + r + k, r).*(BI(r, n - r)), ZV(n + r + k))).*(k).num()	> 0.	nonn,tabl,new	0..65	nyi
+A378290	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n + 2*r + k, r).*(BI(r, n - r)), ZV(n + 2*r + k))).*(k).num()	> 0.	nonn,tabl,new	0..65	nyi
+A378291	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(3*n - 2*r + k, r).*(BI(r, n - r)), ZV(3*n - 2*r+k))).*(k).num()	> 0.	nonn,tabl,new	0..65	nyi
+A378292	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(2*n + k, r).*(BI(r, n - r)), ZV(2*n + k))).*(k).num()		> 0.	nonn,tabl,new	0..65
+A378317	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n, r).*(BI(2*r + k, n)), ZV(2*r + k))).*(k).num()	> 0.	nonn,tabl,new	0..65	nyi
+A378318	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(n, r).*(BI(3*r + k, n)), ZV(3*r + k))).*(k).num()	> 0.	nonn,tabl,new	0..65	nyi
+A378320	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(2*n - 2*r + k, r).*(BI(r, n - r)), ZV(2*n - 2*r+k))).*(k).num()		> 0.	nonn,tabl,new	0..77
+A378321	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(3*n - 3*r + k, r).*(BI(r, n - r)), ZV(3*n - 3*r+k))).*(k).num()	> 0.	nonn,tabl,new	0..77	nyi
+A378323	arrlamb	0	0	0	-1	(n, k) -> (k == 0) ? ZV(n == 0 ? 1 : 0) : RU(0, n, r -> new Q(BI(3*r + k, r).*(BI(r, n - r)), ZV(3*r +k))).*(k).num()	> 0.	nonn,tabl,new	0..65	nyi

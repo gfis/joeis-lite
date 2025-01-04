@@ -1,0 +1,69 @@
+---- 2024-12-04 14:32:54
+A078699	filter	1	new A006452()	PRIME
+A078784	filter	1	new A039823()	PRIME
+A080166	filter	1	new A004760()	PRIME
+A096478	filter	1	new A029707()	PRIME
+A097453	filter	1	new A014237()	PRIME
+A104802	filter	1	new A104801()	PRIME
+A104913	filter	1	new A104912()	PRIME
+A104915	filter	1	new A104914()	PRIME
+A109580	filter	1	new A109579()	PRIME
+A122126	filter	1	new A122103()	PRIME
+A122128	filter	1	new A122102()	PRIME
+A123206	filter	1	new A045575()	PRIME
+A123993	filter	1	new A075190()	PRIME
+A128466	filter	1	new A060073()	PRIME
+A143245	filter	1	new A098957()	PRIME
+A152913	filter	1	new A008514()	PRIME
+A154936	filter	1	new A154935()	PRIME
+A172979	filter	1	new A033638()	PRIME
+A174288	filter	1	new A139481()	PRIME
+A175283	filter	1	new A175282()	PRIME
+A184856	filter	1	new A054385()	PRIME
+A184868	filter	1	new A063957()	PRIME
+A204231	filtpos	1	1	new A127345()	PRIME
+A207432	filtpos	1	1	new A066680()	PRIME
+A213734	filter	1	new A213650()	PRIME
+A240693	filter	1	new A162862()	PRIME
+A244677	filtil	1	new A033307()	1	n -> ZV(n).*( 4*n - 11).+( 8 -1)	E spoke
+A244678	filtil	1	new A033307()	1	n -> ZV(n).*(16*n - 37).+(22 -1)	East-Northeast ray.
+A244679	filtil	1	new A033307()	1	n -> ZV(n).*( 4*n - 10).+( 7 -1)	Northeast ray.
+A244680	filtil	1	new A033307()	1	n -> ZV(n).*(16*n - 35).+(20 -1)	North-Northeast ray.
+A244681	filtil	1	new A033307()	1	n -> ZV(n).*( 4*n -  9).+( 6 -1)	North ray.
+A244682	filtil	1	new A033307()	1	n -> ZV(n).*(16*n - 33).+(18 -1)	North-Northwest ray.
+A244683	filtil	1	new A033307()	1	n -> ZV(n).*( 4*n -  8).+( 5 -1)	Northwest ray.
+A244684	filtil	1	new A033307()	1	n -> ZV(n).*(16*n - 31).+(16 -1)	West-Northwest ray.
+A244685	filtil	1	new A033307()	1	n -> ZV(n).*( 4*n -  7).+( 4 -1)	West ray.
+A244686	filtil	1	new A033307()	1	n -> ZV(n).*(16*n - 29).+(14 -1)	West-Southwest ray.
+A244687	filtil	1	new A033307()	1	n -> ZV(n).*( 4*n -  6).+( 3 -1)	Southwest ray.
+A244688	filtil	1	new A033307()	1	n -> ZV(n).*(16*n - 27).+(12 -1)	South-Southwest ray.
+A244690	filtil	1	new A033307()	1	n -> ZV(n).*(16*n - 25).+(10 -1)	South-Southeast ray.
+A244691	filtil	1	new A033307()	1	n -> ZV(n).*( 4*n -  4).+( 1 -1)	Southeast ray.
+A244692	filtil	1	new A033307()	1	n -> ZV(n).*(16*n - 39).+(24 -1)	ESE
+A244807	filtil	1	new A033307()	1	n -> ZV(n).*( 3*n -  8).+( 6 -1)	East (or 90-degree) ray.
+A244808	filtil	1	new A033307()	1	n -> ZV(n).*(12*n - 27).+(16 -1)	60-degree ray.
+A244809	filtil	1	new A033307()	1	n -> ZV(n).*( 3*n -  7).+( 5 -1)	30-degree ray.
+A244810	filtil	1	new A033307()	1	n -> ZV(n).*(12*n - 25).+(14 -1)	North (or 360-degree) ray.
+A244811	filtil	1	new A033307()	1	n -> ZV(n).*( 3*n -  6).+( 4 -1)	330-degree ray.
+A244812	filtil	1	new A033307()	1	n -> ZV(n).*(12*n - 23).+(12 -1)	300-degree ray.
+A244813	filtil	1	new A033307()	1	n -> ZV(n).*( 3*n -  5).+( 3 -1)	West (or 270-degree) ray.
+A244814	filtil	1	new A033307()	1	n -> ZV(n).*(12*n - 21).+(10 -1)	240-degree ray.
+A244815	filtil	1	new A033307()	1	n -> ZV(n).*( 3*n -  4).+( 2 -1)	210-degree ray.
+A244816	filtil	1	new A033307()	1	n -> ZV(n).*(12*n - 19).+( 8 -1)	South (or 180-degree) ray.
+A244817	filtil	1	new A033307()	1	n -> ZV(n).*( 3*n -  3)	150-degree ray.
+A244818	filtil	1	new A033307()	1	n -> ZV(n).*(12*n - 17).+( 6 -1)	120-degree ray.
+A267438	filter	1	new A267437()	PRIME
+A318568	filter	1	new A057708()	PRIME
+A360591	filter	1	new A360464()	PRIME
+---- 2024-12-04 22:10:54
+A105762	filter	1	new A001644().skip(2)	PRIME
+A179245	sintrif	1	(term, n) -> D048680(term)	""	new A014313()
+A227352	lambdan	0	n -> D048680(F003188(n))
+A265358	sintrif	0	(term, n) -> D263272(term)	""	new A264989()
+A372604	lambdan	1	n -> D051903(E372379(n))
+A375028	filter	1	new A374965()	PRIME
+A376122	sintrif	1	(term, n) -> D033880(term)	""	new A071395()
+A377879	lambdan	1	n -> D033879(D000290(n))
+A378157	lambdan	3	n -> F020639(D000166(n))
+A378160	lambdan	2	n -> F001221(D000166(n))
+A378161	lambdan	0	n -> F001222(D000166(n))

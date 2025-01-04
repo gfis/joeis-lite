@@ -1,0 +1,47 @@
+---- 2024-10-29 22:11:58
+---- 2024-10-29 23:10:12
+A074787	lambdan	1	n -> SU(1, n, k -> F034444(k).^(2))	a(n) = Sum_{k=1..n} ud(k)^2 = Sum_{k=1..n} F034444(k)^2 . a(n) = Sum_{k=1..n} 2^(2*omega(k)) = Sum_{k=1..n} 2^(2*F001221(k)).
+A089266	sintrif	1	(term, n) -> F034444(2*n + 1).+(term)./(2)	""	new A037225()
+A118682	trilambn	0	1	1	(n, k) -> { final long last = PM(n).*(PM(k)).mod(10L); return (last == 1L || last == 9L) ? ZV(1) : ((last == 3L || last == 7L) ? ZV(2) : ZV(0)); }	nyi_Ft__	Triangle where T(n,k) depends on the last digit of prime(n)*prime(k). If this is 1 or 9, T(n,k) = 1; if 3 or 7, T(n,k) = 2; otherwise T(n,k) = 0.	nonn,tabl,base	0..54	nyi	_Roger L. Bagula_
+A122523	holos	1	[[0],[-1,-2],[13,-6,-48,32],[9,-6,-48,32],[3,-2]]	7,497,71071	0	0
+A122533	holos	1	[[0],[-1,-2],[13,-6,-48,32],[9,-6,-48,32],[3,-2]]	57,3667,525153	0	0
+A133799	lambdan	2	n -> (n <= 3) ? FA(n)./(2) : FA(n)./(4)	a(2) = 1, a(3)=3; for n >= 4, a(n) = (n-2)!*Stirling_2(n,n-1)/2 = n!/4.
+A152752	filter	0	new A118962()	v -> v.mod(10) == 9	Terms of A118962 that are == 9 (mod 10).	nonn	1..11	nyi	_Paul Curtz_
+A165976	holos	0	[[0],[59427648,-64851600,26333680,-4716480,314432],[-14005824,18700544,-9385224,2095624,-175440],[1041240,-1802306,1174699,-341938,37505],[-24168,62842,-59571,24698,-3801],[0,-394,949,-734,179],[0,-6,3,6,-3]]	1,3,17,117,887,7131,59661	0	0	1/16*(3+(1-8*x)^(1/2)-(10-136*x+6*(1-8*x)^(1/2))^(1/2))/x
+A216053	multrar	1	(self, n) -> self.a(n - 1).+(Functions.PARTITIONS.z(n - 1))	"2"		RecurrenceTable[{a[n+1] == a[n] + PartitionsP[(n)], a[1] == 2}, a, {n, 1, 44}]
+A220673	holos	0	[[0],[-20,5],[140,-60],[-204,126],[20,-60],[0,5]]	5,40,376,3560,33720,319400	0	0	(x^2-10*x+5)/(5*x^2-10*x+1)
+A257386	holos	0	[[0],[630,-87,3],[-26208,4112,-160],[-149268,23027,-883],[-108774,13965,-417],[773328,-130206,5478],[106440,-19097,853],[-1242510,241231,-11645],[270324,-50800,2276],[805242,-190298,11092],[-378636,93862,-5600],[-178116,55199,-4153],[148578,-50003,3949],[-10494,3571,-257],[-14574,7524,-810],[4338,-3034,380],[-372,463,-71],[0,-25,5]]	1,1,2,4,9,21,51,126,316,799,2034,5202,13357,34407,88888,230237,597829,1555962	0	0	1/(1-x-x^2/(1-x-x^2/(1-x-1/2*x*(1+x-(-3*x^2-2*x+1)^(1/2))/(x+1))))
+A257387	holos	0	[[0],[36936,-3996,108],[-145152,17136,-504],[-686502,83679,-2553],[1535076,-192360,6024],[3691722,-487884,16122],[-7199856,972810,-32814],[-8055882,1163320,-41974],[17015118,-2533263,93717],[5314278,-893554,37486],[-19766100,3347887,-139783],[3126906,-508244,19250],[10574736,-2117516,103232],[-5268324,1115799,-56193],[-1735386,438947,-26495],[1980834,-537517,33505],[-350658,105212,-6884],[-157374,60186,-4782],[82710,-38864,3404],[-14394,9374,-938],[912,-1081,127],[0,49,-7]]	1,1,2,4,9,21,51,127,323,834,2179,5743,15238,40637,108800,292200,786703,2122387,5735596,15522682,42064028,114117541	0	0	1/(1-x-x^2/(1-x-x^2/(1-x-x^2/(1-x-1/2*x*(1+x-(-3*x^2-2*x+1)^(1/2))/(x+1)))))
+A257519	holos	0	[[0],[2160,-279,9],[5220,-708,24],[-1902,300,-12],[-8616,1934,-98],[12414,-2700,144],[-6552,-2039,221],[-70662,15026,-788],[174978,-31299,1377],[98598,-21414,1194],[-486060,105036,-5652],[248514,-55478,2984],[230304,-63952,4438],[-263874,77518,-5512],[58824,-17095,1027],[29106,-13863,1605],[-18606,10120,-1246],[3768,-2752,400],[-270,345,-63],[0,-16,4]]	1,1,2,4,9,21,51,127,322,827,2145,5607,14751,39020,103713,276848,741901,1995340,5384554,14576673	0	0	1/(1-x-x^2/(1-x-x^2/(1-x-x^2/(1-x+x^2*(1-1/2*(1-x-(-3*x^2-2*x+1)^(1/2))/x^2)))))
+A275771	multrar	0	(self, n) -> (n - 3 == 0) ? ZV(1) : PM(n - 3).-(self.a(n - 3))	"0,0,0"		RecurrenceTable[{a[n + 3] == If[n == 0, 1, Prime[n]] - a[n], a[0] == 0, a[1] == 0, a[2] == 0}, a, {n, 0, 52}]
+A319676	lambdan	1	n -> new Q(Functions.UPHI.z(n), ZV(n)).num()	Numerator of F047994(n)/n where F047994 is the unitary totient function.
+A329729	filnum	1	0	k -> Functions.UPHI.z(k).+(PHI(k)).equals(ZV(k))	Numbers k such that phi(k) + uphi(k) = k, where phi is the Euler totient function (F000010) and uphi is the unitary totient function (F047994).
+A329730	filnum	1	1	k -> Functions.USIGMA1.z(Functions.UPHI.z(k)).equals(Functions.UPHI.z(Functions.USIGMA1.z(k)))	Numbers k such that usigma(uphi(k)) = uphi(usigma(k)), where usigma is the sum of unitary divisors function (F034448) and uphi is the unitary totient function (F047994).
+A329855	filnum	1	0	k -> Functions.UPHI.z(Functions.USIGMA1.z(k)).equals(ZV(k))	Numbers k such that uphi(usigma(k)) = k where usigma is the sum of unitary divisors of k (F034448) and uphi is the unitary totient function (F047994).
+A329856	filnum	1	0	k -> Functions.USIGMA1.z(Functions.UPHI.z(k)).equals(ZV(k))	Numbers k such that usigma(uphi(k)) = k where usigma is the sum of unitary divisors of k (F034448) and uphi is the unitary totient function (F047994).
+A333576	lambdan	1	n -> (n == 1) ? ZV(1) : Functions.UPHI.z(n).*(n)./(2)	a(1) = 1; thereafter a(n) = n * uphi(n) / 2.
+A345938	lambdan	1	n -> Functions.UPHI.z(n)./(GCD(ZV(n - 1), Functions.UPHI.z(n)))	a(n) = uphi(n) / gcd(n-1, uphi(n)), where uphi is unitary totient (or unitary phi) function, F047994.
+A348506	filnum	1	1	k -> Functions.SIGMA1.z(k).mod(Functions.USIGMA1.z(k)).isZero()	Numbers k such that sigma(k) is a multiple of usigma(k), where sigma is the sum of divisors function, F000203, and usigma is the unitary sigma, F034448.
+A348947	lambdan	1	n -> { final Z am = E003959(n).+(F034448(n))./(2); return am./(GCD(Functions.SIGMA1.z(n), am)); }	a(n) = J348944(n) / gcd(sigma(n), J348944(n)), where J348944 is the arithmetic mean of E003959 and F034448, and sigma is the sum of divisors function.
+A354924	sintrif	1	(term, n) -> Functions.UPHI.z(n).equals(term) ? ZV(1) : ZV(0)	""	new A344005()		a(n) = 1 if F047994(n) is equal to J344005(n), otherwise 0.
+A371114	holos	0	[[0],[54,-81,45,-11,1],[56,-70,29,-4],[27,-25,6],[7,-4],[1]]	0,1,1,-1	0	0
+A371965	holos	0	[[0],[12,-14,4],[-12,17,-5],[0,-3,1]]	0,0,0,1	0	0	1/2*(1-3*x-(1-x)*(-4*x+1)^(1/2))/(1-x)/(-4*x+1)^(1/2)
+A376057	multrar	0	(self, n) -> self.a(n - 1).^(2).*(2*n - 1).+(self.a(n - 1))	"1"			RecurrenceTable[{a[n+1] == (2*n+1)*a[n]^2 + a[n], a[1] == 2}, a, {n, 1, 7}] (* _Amiram Eldar_, Sep 15 2024 *)
+A376059	multrar	0	(self, n) -> self.a(n - 1).^(2).*(FI(n)).+(self.a(n - 1))	"1"		RecurrenceTable[{a[n+1] == Fibonacci[n+1]*a[n]^2 + a[n], a[0] == 1}, a, {n, 0, 8}] (* _Amiram Eldar_, Sep 15 2024 *)
+A376061	multrar	0	(self, n) -> self.a(n - 1).^(2).*(Functions.CATALAN.z(n)).+(self.a(n - 1))	"2"		RecurrenceTable[{a[n+1] == CatalanNumber[n+1]*a[n]^2 + a[n], a[0] == 2}, a, {n, 0, 6}] (* _Amiram Eldar_, Sep 15 2024 *)
+A376062	multrar	1	(self, n) -> self.a(n - 1).^(2).-(self.a(n - 1)).+(1)	"2,4"		Join[{2}, RecurrenceTable[{a[n+1] == a[n]^2 - a[n] + 1, a[2] == 4}, a, {n, 2, 9}]] (* _Amiram Eldar_, Sep 15 2024 *)
+A376743	holos	0	[[0],[-18,1],[0],[0],[30,-2],[0],[44,-3],[30,-2],[0],[-50,4],[-66,6],[-34,3],[-34,4],[-6],[20,-2],[34,-6],[50,-7],[14,-2],[14,-1],[-6,2],[0,1],[-8,2],[-6,2],[0],[0],[0,-1]]	1,0,0,0,0,1,1,1,1,1,1,5,5,6,8,11,15,25,35,46,61,85,125,175,245,341	0	0	(x^9-x^6-x^4-x^3+1)/(-x^15+x^12+2*x^10+2*x^9-x^7-2*x^6-x^5-x^4-x^3+1)
+A377109	holos	0	[0,23,-8,-14,8,-1]	1,2,9,38	0	0
+A377110	holos	0	[0,23,-8,-14,8,-1]	0,1,4,23	0	0
+A377111	holos	0	[0,23,-8,-14,8,-1]	0,1,4,21	0	0
+A377112	holos	0	[0,23,-8,-14,8,-1]	0,0,2,12	0	0
+A377113	holos	0	[0,8,48,-44,12,-1]	1,3,14,72	0	0
+A377114	holos	0	[0,8,48,-44,12,-1]	0,1,6,38	0	0
+A377115	holos	0	[0,8,48,-44,12,-1]	0,1,6,36	0	0
+A377116	holos	0	[0,8,48,-44,12,-1]	0,0,2,18	0	0
+A377117	holos	0	[0,6,6,0,-1]	1,1,4,6,24	0	0
+A377401	lambdan	0	n -> RU(1, n, k -> new Q(1, 2*k))./(FA(n)).den()
+A377424	lambdan	0	n -> RU(0, n, k -> new Q(FA(4*n + k)).*(S2(n, k)))./(FA(4*n + 1)).num()
+A377425	lambdan	0	n -> RU(0, n, k -> new Q(FA(4*n + k + 1)).*(S2(n, k)))./(FA(4*n + 2)).*(2).num()
+A377426	lambdan	0	n -> RU(0, n, k -> new Q(FA(4*n + k)).*(SA(n, k)))./(FA(4*n + 1)).num()
+A377427	lambdan	0	n -> RU(0, n, k -> new Q(FA(4*n + k + 1)).*(SA(n, k)))./(FA(4*n + 2)).*(2).num()
