@@ -1,6 +1,7 @@
 package irvine.oeis;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import irvine.math.group.IntegerField;
 import irvine.math.group.PolynomialRingField;
@@ -11,16 +12,9 @@ import irvine.oeis.AbstractSequence;
 
 /**
  * Compute the coefficients of a generating function A(x) given by some equation that A(x) satifies.
- * The equation is written in the form of an <code>annihilator</code>:
- * <pre>
- * p[0]*1 + p[1]*a[n-k+1] + p[2]*a[n-k+2] + ...+ p[k-1]*a[n-k+k-1] + p[k]*a[n] = 0
- * </pre>
- * <code>k-1</code> is the order of the recurrence,
- * and <code>p[i], i= 0..k</code> are the polynomials (or constants) in <code>n</code>.
- * <code>a[n]</code> is the next term to be computed.
  * @author Georg Fischer
  */
-public class PolynomialRingSequence extends AbstractSequence {
+public class PolynomialFieldSequence extends AbstractSequence {
 
   protected static int sDebug = 0;
   private static final PolynomialRingField<Z> RING = new PolynomialRingField<>(IntegerField.SINGLETON);
@@ -31,42 +25,33 @@ public class PolynomialRingSequence extends AbstractSequence {
   private final Polynomial<Z>[] mStack; // stack where the final expression is computed
 
   /**
-   * Construct a holonomic recurrence sequence from String parameters, with a specified type of the generating function.
-   * @param offset first valid term has this index
+   * Compute successive coefficients for a generating function A(x) defined by a condition that A(x) must satisfy.
+   * @param offset first index
    * @param polys array of polynomials, the coefficients of <code>x^i, i=0..m</code>
-   * are given as comma-separated lists, enclosed in square brackets,
-   * for example "[[0],[0,1,2],[17,0,18]]"
+   * are given as comma-separated lists, enclosed in square brackets, for example "[[0],[0,1,2],[17,0,18]]"
    * @param postfix the equation with operands and operators in postfix polish notation, separated by the first character in
    * the string, for example <code>A(x) = 1 + x*A(x*A(x))^2</code> -&gt; <code>;1;x;x;ax;*;A(;2;^;*;+</code>,
    * with "ax" for <code>A(x)</code> and "A(" for substitution.
    */
   @SuppressWarnings("unchecked")
-  public PolynomialRingSequence(final int offset, final String polys, final String postfix) {
+  public PolynomialFieldSequence(final int offset, final String polys, final String postfix) {
     super(offset);
-
-    mPostfix = postfix.substring(1).split("\\,");
+    String post = trimQuotes(postfix);
+    mPostfix = post.substring(1).split(Pattern.quote(post.substring(0, 1)));
     if (sDebug >= 1) {
-      System.err.print("mPostfix=");
+      System.out.print("# mPostfix=");
       for (int k = 0; k < mPostfix.length; ++k) {
-        System.err.print(mPostfix[k] + ";");
+        System.out.print(mPostfix[k] + ";");
       }
-      System.err.println();
+      System.out.println();
     }
 
-    int start = 0;
-    while (start < polys.length() && (polys.charAt(start) == '[' || polys.charAt(start) == '"')) {
-      ++start;
-    }
-    int behind = polys.length();
-    while (behind > 0 && (polys.charAt(behind - 1) == ']' || polys.charAt(behind - 1) == '"')) {
-      --behind;
-    }
     ArrayList<Z[]> mPolyList = new ArrayList<>(16);// array of polynomials as arrays of coefficients of <code>x^i, i=0..m</code>
-    final String[] polarr = polys.substring(start, behind).split("]\\s*,\\s*\\[");
+    final String[] polarr = trimQuotes(polys).split("]\\s*,\\s*\\[");
     for (int k = 0; k < polarr.length; ++k) {
       mPolyList.add(ZUtils.toZ(polarr[k]));
       if (sDebug >= 1) {
-        System.err.println("polarr[" + k + "]=" + polarr[k]);
+        System.out.println("# polarr[" + k + "]=" + polarr[k]);
       }
     } // for k
     mPolys = new Polynomial[mPolyList.size()]; 
@@ -74,7 +59,7 @@ public class PolynomialRingSequence extends AbstractSequence {
     for (int k = 0; k < mPolyList.size(); ++k) {
       mPolys[k] = Polynomial.create(mPolyList.get(k));
       if (sDebug >= 1) {
-        System.err.println("mPolys[" + k + "]=" + mPolys[k].toString());
+        System.out.println("# mPolys[" + k + "]=" + mPolys[k].toString());
       }
     }
 
@@ -82,31 +67,48 @@ public class PolynomialRingSequence extends AbstractSequence {
     mA = mPolys[0];
   } // Constructor
 
+  /**
+   * Return the inner content of a String without surrounding square brackets, quotes or apostrophes, with all spaces removed.
+   * @param str full String
+   * @return String with surrounding characters removed
+   */
+  protected static String trimQuotes(final String str) {
+    int start = 0;
+    while (start < str.length() && (str.charAt(start) == '[' || str.charAt(start) == '"' || str.charAt(start) == '\'')) {
+      ++start;
+    }
+    int behind = str.length();
+    while (behind > start && (str.charAt(behind - 1) == ']' || str.charAt(behind - 1) == '"' || str.charAt(behind - 1) == '\'')) {
+      --behind;
+    }
+    return str.substring(start, behind).replaceAll(" ", "");
+  }
+    
   @Override
   public Z next() {
     ++mN;
     // now perform a statement like "mA = RING.add(RING.one(), RING.multiply(RING.x(), RING.pow(RING.substitute(mA, RING.multiply(RING.x(), mA, mN), mN), mExpon, mN), mN));"
     // for example A143013: A(x) = 1 + x + A(x)*x + (A(x)*x)^2
-    // polring  -p '"[[0],[1,1]]"' -d 2 -x '",p1,a,x,*,+,a,x,*,i2,^,+"'
+    // polring  -p '"[[0],[1,1]]"'  -x '"p1,A,x,*,+,A,x,*,i2,^,+"' -b -d 0 -n 1000
     int ifix = 0;
-    int top = 0; // index of top element of <code>mStack</code>. Initially, the stack is empty.
+    int top = -1; // index of top element of <code>mStack</code>. Initially, the stack is empty.
     try {
       while (ifix < mPostfix.length) { // scan over the operaands and operators
         String pfix = mPostfix[ifix++];
-        if (sDebug >= 2) {
-          System.err.println("pfix=" + pfix + ",  \t mStack[" + top + "]=" + mStack[top] + "\t before");
+        if (sDebug >= 2 && top >= 0) {
+          System.out.println("# pfix=" + pfix + ",  \t mStack[" + top + "]=" + mStack[top] + "\t before");
         } 
         switch (pfix.charAt(0)) {
           default: // should not occur
-          
+            throw new RuntimeException("invalid postfix code " + pfix);
         // operands
-          case 'a': // this means A(x), the currently accumulated Polynomial mA
+          case 'A': // this means A(x), the currently accumulated Polynomial mA
             mStack[++top] = mA;
             break;
-          case 'i': // a (small) integer follows
+          case 'i': // "i(\d+)" = push(int $1)
             mStack[++top] = Polynomial.create(Integer.parseInt(pfix.substring(1)));
             break;
-          case 'p': // the (small) index of a polynomial in mPolys follows
+          case 'p': // "p(\d+)"  = mPolys[$1], one of the predefined polynomials
             mStack[++top] = mPolys[Integer.parseInt(pfix.substring(1))];
             break;
           case 'x': // this means the independant variable x
@@ -114,7 +116,13 @@ public class PolynomialRingSequence extends AbstractSequence {
             break;
 
         // operations
-          case 'A': // replace the current top element by a substitution
+          case 'e': // "exp", preplace the current top elementte by exp(te)
+            mStack[top] = RING.diff(mStack[top]);
+            break;
+          case 'r': // "rev", replace the current top element by its series reversion
+            mStack[top] = RING.diff(mStack[top]);
+            break;
+          case 's': // "sub", replace the current top element by a substitution
             mStack[top] = RING.substitute(mA, mStack[top], mN);
             break;
           case '+':
@@ -132,21 +140,28 @@ public class PolynomialRingSequence extends AbstractSequence {
           case '/':
             --top;
             mStack[top] = RING.series(mStack[top], mStack[top + 1], mN);
+          case '<': // "<(\d+)" = shift x -> x^$1 (may be negative)
+            mStack[top] = RING.shift(mStack[top], (pfix.length() <= 1) ? 1 : Integer.parseInt(pfix.substring(1)));
             break;
-          case '^':
-            --top;
-            mStack[top] = RING.pow(mStack[top], Long.valueOf(mStack[top + 1].toString()), mN);
+          case '^': // P, m -> P^m, or "^(\d+)" P -> P^$1
+            if (pfix.length() == 1) {
+              --top;
+              mStack[top] = RING.pow(mStack[top], Long.valueOf(mStack[top + 1].toString()), mN);
+            } else {
+              mStack[top] = RING.pow(mStack[top], Long.parseLong(pfix.substring(1)), mN);
+            }
             break;
         } // switch
         if (sDebug >= 3) {
-          System.err.println("     " + "  " + "   \t       [" + top + "]=" + mStack[top] + "\t after");
+          System.out.println("#      " + "  " + "   \t       [" + top + "]=" + mStack[top] + "\t after");
         } 
       } // while
     } catch (Exception exc) { // will never be reached with a proper generator
       System.err.println("# unexpected exception: " + exc.getMessage());
+      exc.printStackTrace();
     }
     // mTop should be 0 here
-    mA = mStack[1];
+    mA = mStack[top];
     return mA.coeff(mN);
   } // next
 
@@ -194,8 +209,8 @@ public class PolynomialRingSequence extends AbstractSequence {
     } // while args
 
     if (postfix != null) {
-      PolynomialRingSequence.sDebug = debug;
-      PolynomialRingSequence prs = new PolynomialRingSequence(offset, polyList, postfix);
+      PolynomialFieldSequence.sDebug = debug;
+      PolynomialFieldSequence prs = new PolynomialFieldSequence(offset, polyList, postfix);
       int ind = offset - 1;
       boolean busy = true;
       while (--numTerms >= 0) {
@@ -209,7 +224,7 @@ public class PolynomialRingSequence extends AbstractSequence {
       } // while
       System.out.println();
     } else {
-      System.err.println("Usage: java -cp joeis.jar irvine.oeis.PolynomialRingSequence"
+      System.out.println("Usage: java -cp joeis.jar irvine.oeis.PolynomialFieldSequence"
           + " [-b] [-d mode] [-n noterms] [-o offset] [-p polys] -x postfix");
     }
   } // main
