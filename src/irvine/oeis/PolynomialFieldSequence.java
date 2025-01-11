@@ -1,5 +1,6 @@
 package irvine.oeis;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.regex.Pattern;
@@ -23,13 +24,13 @@ public class PolynomialFieldSequence extends AbstractSequence {
   public static final int OGF = 0;
   public static final int EGF = 1;
   private static final PolynomialRingField<Q> RING = new PolynomialRingField<>(Rationals.SINGLETON);
-  private final Polynomial<Q>[] mPolys; // Polynomials referenced in the postfix string as "p0" (the initial value), "p1", "p2" and so on.
+  private final ArrayList<Polynomial<Q>> mPolys; // Polynomials referenced in the postfix string as "p0" (the initial value), "p1", "p2" and so on.
   private final String[] mPostfix; // list of operands and operators
   private int mDist; // addititional degree
   private int mGfType; // type of the generating function: 0 = ordinary, 1 = exponential
   private int mN; // index of the next sequence element to be computed
   private Polynomial<Q> mA; // the generating function A(x)
-  private final Polynomial<Q>[] mStack; // stack where the final expression is computed
+  private final ArrayList<Polynomial<Q>> mStack; // stack where the final expression is computed
   private Z mFactorial;
 
   /**
@@ -57,7 +58,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
    * @param dist additional degree
    * @param gfType type of the generating function: 0 = ordinary, 1 = exponential
    */
-  @SuppressWarnings("unchecked")
+  // SuppressWarnings("unchecked")
   public PolynomialFieldSequence(final int offset, final String polys, final String postfix, final int dist, final int gfType) {
     super(offset);
     mDist = dist;
@@ -73,10 +74,14 @@ public class PolynomialFieldSequence extends AbstractSequence {
       }
       System.out.println();
     }
-    mStack = new Polynomial[mPostfix.length]; // <- how to avoid the 2 "unchecked" warnings?
+    mStack = new ArrayList<Polynomial<Q>>(mPostfix.length);
+    for (int k = 0; k < mPostfix.length; ++k) {
+      mStack.add(null);
+    } // for k
+
 
     final String[] polarr = trimQuotes(polys).split("]\\s*,\\s*\\["); // the individual vectors
-    mPolys = new Polynomial[polarr.length];
+    mPolys = new ArrayList<>(polarr.length);
     for (int k = 0; k < polarr.length; ++k) {
       if (sDebug >= 1) {
         System.out.println("# polarr[" + k + "]=" + polarr[k]);
@@ -89,11 +94,11 @@ public class PolynomialFieldSequence extends AbstractSequence {
           System.out.println("# k=" + k + ", qvect[" + j + "]=" + qvect[j].toString());
         }
       }
-      mPolys[k] = RING.create(Arrays.asList(qvect));
+      mPolys.add(RING.create(Arrays.asList(qvect)));
     } // for k
 
     mN = offset - 1;
-    mA = mPolys[0];
+    mA = mPolys.get(0);
   } // Constructor
 
   /**
@@ -122,8 +127,8 @@ public class PolynomialFieldSequence extends AbstractSequence {
   protected void debugStack(final String pfix, int top, final String str) {
     System.out.print("# pfix=" + pfix + " \t");
     for (int is = 0; is <= top + 1 ; ++is) {
-      if (mStack[is] != null) {
-        System.out.print (" [" + (is == top ? "top" : String.valueOf(is)) + "]" + mStack[is].toString());
+      if (mStack.get(is) != null) {
+        System.out.print (" " + (is == top ? "top" : String.valueOf(is)) + ":" + mStack.get(is).toString());
       }
     }
     System.out.println("\t" + str);
@@ -148,52 +153,58 @@ public class PolynomialFieldSequence extends AbstractSequence {
             throw new RuntimeException("invalid postfix code " + pfix);
         // operands
           case 'A': // this means A(x), the currently accumulated Polynomial mA
-            mStack[++top] = mA;
+            mStack.set(++top, mA);
             break;
           case 'i': // "i(\d+)" = push(int $1)
-            mStack[++top] = RING.create(Collections.singletonList(new Q(pfix.substring(1))));
+            mStack.set(++top, RING.create(Collections.singletonList(new Q(pfix.substring(1)))));
             break;
           case 'p': // "p(\d+)"  = mPolys[$1], one of the predefined polynomials
-            mStack[++top] = mPolys[Integer.parseInt(pfix.substring(1))];
+            mStack.set(++top, mPolys.get(Integer.parseInt(pfix.substring(1))));
             break;
           case 'x': // this means the independant variable x
-            mStack[++top] = RING.create(Arrays.asList(Q.ZERO, Q.ONE)); // 0, 1);
+            mStack.set(++top, RING.create(Arrays.asList(Q.ZERO, Q.ONE))); // 0, 1);
             break;
 
         // operations
-          case 'e': // "exp", preplace the current top elementte by exp(te)
-            mStack[top] = RING.diff(mStack[top]);
+          case 'd': // "dif", replace the current top element by its derivative
+            mStack.set(top, RING.diff(mStack.get(top)));
             break;
-          case 'd': // "rev", replace the current top element by its series reversion
-            mStack[top] = RING.diff(mStack[top]);
+          case 'e': // "exp", preplace the current top element te by exp(te)
+            mStack.set(top, RING.exp(mStack.get(top), mN + mDist));
+            break;
+          case 'l': // "log", preplace the current top element te by log(te)
+            mStack.set(top, RING.log(mStack.get(top), mN + mDist));
+            break;
+          case 'r': // "rev", replace the current top element its the series reversion
+            mStack.set(top, RING.reversion(mStack.get(top), mN + mDist));
             break;
           case 's': // "sub", replace the current top element by a substitution
-            mStack[top] = RING.substitute(mA, mStack[top], mN + mDist);
+            mStack.set(top, RING.substitute(mA, mStack.get(top), mN + mDist));
             break;
           case '+':
             --top;
-            mStack[top] = RING.add(mStack[top], mStack[top + 1]);
+            mStack.set(top, RING.add(mStack.get(top), mStack.get(top + 1)));
             break;
           case '-':
             --top;
-            mStack[top] = RING.subtract(mStack[top], mStack[top + 1]);
+            mStack.set(top, RING.subtract(mStack.get(top), mStack.get(top + 1)));
             break;
           case '*':
             --top;
-            mStack[top] = RING.multiply(mStack[top], mStack[top + 1], mN + mDist);
+            mStack.set(top, RING.multiply(mStack.get(top), mStack.get(top + 1))); // , mN + mDist);
             break;
           case '/':
             --top;
-            mStack[top] = RING.series(mStack[top], mStack[top + 1], mN + mDist);
+            mStack.set(top, RING.series(mStack.get(top), mStack.get(top + 1), mN + mDist));
           case '<': // "<(\d+)" = shift x -> x^$1 (may be negative)
-            mStack[top] = RING.shift(mStack[top], (pfix.length() <= 1) ? 1 : Integer.parseInt(pfix.substring(1)));
+            mStack.set(top, RING.shift(mStack.get(top), (pfix.length() <= 1) ? 1 : Integer.parseInt(pfix.substring(1))));
             break;
           case '^': // P, m -> P^m, or "^(\d+)" P -> P^$1
             if (pfix.length() == 1) {
               --top;
-              mStack[top] = RING.pow(mStack[top], Long.valueOf(mStack[top + 1].toString()), mN + mDist);
+              mStack.set(top, RING.pow(mStack.get(top), Long.valueOf(mStack.get(top + 1).toString()), mN + mDist));
             } else {
-              mStack[top] = RING.pow(mStack[top], Long.parseLong(pfix.substring(1)), mN + mDist);
+              mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(pfix.substring(1)), mN + mDist));
             }
             break;
         } // switch
@@ -206,15 +217,15 @@ public class PolynomialFieldSequence extends AbstractSequence {
       exc.printStackTrace();
     }
     // mTop should be 0 here
-    mA = mStack[top];
-    Z result = mA.coeff(mN).toZ();
+    mA = mStack.get(top);
+    Q result = mA.coeff(mN);
     if (mGfType == EGF) {
+      result = result.multiply(mFactorial);
       if (mN > 0) {
         mFactorial = mFactorial.multiply(mN);
       }
-      result = result.multiply(mFactorial);
     }
-    return result;
+    return result.num();
   } // next
 
   /**
