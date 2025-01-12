@@ -138,8 +138,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
   public Z next() {
     ++mN;
     // now perform a statement like "mA = RING.add(RING.one(), RING.multiply(RING.x(), RING.pow(RING.substitute(mA, RING.multiply(RING.x(), mA, mN), mN), mExpon, mN), mN));"
-    // for example A143013: A(x) = 1 + x + A(x)*x + (A(x)*x)^2
-    // polring  -p '"[[0],[1,1]]"'  -x '"p1,A,x,*,+,A,x,*,i2,^,+"' -b -d 0 -n 1000
+    // for example: A143046 poly -p "[[0],[1],[0,-1]]" -x ",p1,p2,sub,^3,<1,+"; G.f. satisfies A(x) = 1 + x*A(-x)^3.
     int ifix = 0;
     int top = -1; // index of top element of <code>mStack</code>. Initially, the stack is empty.
     try {
@@ -148,66 +147,91 @@ public class PolynomialFieldSequence extends AbstractSequence {
         if (sDebug >= 2 && top >= 0) {
           debugStack(pfix, top, "before");
         }
-        switch (pfix.charAt(0)) {
-          default: // should not occur
-            throw new RuntimeException("invalid postfix code " + pfix);
-        // operands
-          case 'A': // this means A(x), the currently accumulated Polynomial mA
-            mStack.set(++top, mA);
-            break;
-          case 'i': // "i(\d+)" = push(int $1)
-            mStack.set(++top, RING.create(Collections.singletonList(new Q(pfix.substring(1)))));
-            break;
-          case 'p': // "p(\d+)"  = mPolys[$1], one of the predefined polynomials
-            mStack.set(++top, mPolys.get(Integer.parseInt(pfix.substring(1))));
-            break;
-          case 'x': // this means the independant variable x
-            mStack.set(++top, RING.create(Arrays.asList(Q.ZERO, Q.ONE))); // 0, 1);
-            break;
+        final char ch = pfix.charAt(0);
+        if (ch >= '0' && ch <= '9') { // operand that is a single natural number
+          final ArrayList<Q> num = new ArrayList<>();
+          num.add(new Q(Integer.parseInt(pfix)));
+          mStack.set(++top, RING.create(num));
+        } else {
+          switch (ch) { // discriminate with the first character
+            default: // should not occur with proper postfix expressions
+              throw new RuntimeException("invalid postfix code " + pfix);
 
-        // operations
-          case 'd': // "dif", replace the current top element by its derivative
-            mStack.set(top, RING.diff(mStack.get(top)));
-            break;
-          case 'e': // "exp", preplace the current top element te by exp(te)
-            mStack.set(top, RING.exp(mStack.get(top), mN + mDist));
-            break;
-          case 'l': // "log", preplace the current top element te by log(te)
-            mStack.set(top, RING.log(mStack.get(top), mN + mDist));
-            break;
-          case 'r': // "rev", replace the current top element its the series reversion
-            mStack.set(top, RING.reversion(mStack.get(top), mN + mDist));
-            break;
-          case 's': // "sub", replace the current top element by a substitution
-            mStack.set(top, RING.substitute(mA, mStack.get(top), mN + mDist));
-            break;
-          case '+':
-            --top;
-            mStack.set(top, RING.add(mStack.get(top), mStack.get(top + 1)));
-            break;
-          case '-':
-            --top;
-            mStack.set(top, RING.subtract(mStack.get(top), mStack.get(top + 1)));
-            break;
-          case '*':
-            --top;
-            mStack.set(top, RING.multiply(mStack.get(top), mStack.get(top + 1))); // , mN + mDist);
-            break;
-          case '/':
-            --top;
-            mStack.set(top, RING.series(mStack.get(top), mStack.get(top + 1), mN + mDist));
-          case '<': // "<(\d+)" = shift x -> x^$1 (may be negative)
-            mStack.set(top, RING.shift(mStack.get(top), (pfix.length() <= 1) ? 1 : Integer.parseInt(pfix.substring(1))));
-            break;
-          case '^': // P, m -> P^m, or "^(\d+)" P -> P^$1
-            if (pfix.length() == 1) {
+          // operands
+            case 'A': // this means A(x), the currently accumulated Polynomial mA for the generating function
+              mStack.set(++top, mA);
+              break;
+            case 'p': // "p(\d+)"  = mPolys[$1], one of the predefined polynomials, numbered p0, p1, ...
+              mStack.set(++top, mPolys.get(Integer.parseInt(pfix.substring(1))));
+              break;
+          
+          // operations with 1 operand
+            case 'd': // "dif", replace the current top element by its derivative
+              mStack.set(top, RING.diff(mStack.get(top)));
+              break;
+            case 'e': // "exp", preplace the current top element te by exp(te)
+              mStack.set(top, RING.exp(mStack.get(top), mN + mDist));
+              break;
+            case 'i': 
+              if (pfix.equals("inv")) { // "inv", replace the current top element te by 1/te
+                mStack.set(top, RING.inverse(mStack.get(top)));
+              } else if (pfix.equals("int")) { // "int", replace the current top element by its derivative
+                mStack.set(top, RING.integrate(mStack.get(top)));
+              } else {
+                throw new RuntimeException("invalid postfix code with \"i\":" + pfix);
+              }
+              break;
+            case 'l': // "log", preplace the current top element te by log(te)
+              mStack.set(top, RING.log(mStack.get(top), mN + mDist));
+              break;
+            case 'n': // "neg", replace the current top element by its negation
+              mStack.set(top, RING.negate(mStack.get(top)));
+              break;
+            case 'r': // "rev", replace the current top element its the series reversion
+              mStack.set(top, RING.reversion(mStack.get(top), mN + mDist));
+              break;
+            case 's': 
+              if (pfix.equals("sub")) { // "sub", replace the current top element by a substitution
+                mStack.set(top, RING.substitute(mA, mStack.get(top), mN + mDist));
+              } else if (pfix.equals("sin")) { // sin
+                mStack.set(top, RING.sin(mStack.get(top), mN + mDist));
+              } else if (pfix.equals("sqrt")) { // sqrt
+                mStack.set(top, RING.sqrt(mStack.get(top), mN + mDist));
+              } else {
+                throw new RuntimeException("invalid postfix code with \"s\":" + pfix);
+              }
+              break;
+            case '<': // "<(\d+)" = shift x -> x^$1 (may be negative)
+              mStack.set(top, RING.shift(mStack.get(top), (pfix.length() <= 1) ? 1 : Integer.parseInt(pfix.substring(1))));
+              break;
+            case '^': // P, m -> P^m, or "^(\d+)" P -> P^$1
+              if (pfix.length() == 1) { // 2 operands
+                --top;
+                mStack.set(top, RING.pow(mStack.get(top), Long.valueOf(mStack.get(top + 1).toString()), mN + mDist));
+              } else { // operation contains the 2nd operand
+                mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(pfix.substring(1)), mN + mDist));
+              }
+              break;
+
+          // arithmetic operations with 2 operands
+            case '+':
               --top;
-              mStack.set(top, RING.pow(mStack.get(top), Long.valueOf(mStack.get(top + 1).toString()), mN + mDist));
-            } else {
-              mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(pfix.substring(1)), mN + mDist));
-            }
-            break;
-        } // switch
+              mStack.set(top, RING.add(mStack.get(top), mStack.get(top + 1)));
+              break;
+            case '-':
+              --top;
+              mStack.set(top, RING.subtract(mStack.get(top), mStack.get(top + 1)));
+              break;
+            case '*':
+              --top;
+              mStack.set(top, RING.multiply(mStack.get(top), mStack.get(top + 1))); // , mN + mDist);
+              break;
+            case '/':
+              --top;
+              mStack.set(top, RING.series(mStack.get(top), mStack.get(top + 1), mN + mDist));
+              break;
+          } // switch
+        }
         if (sDebug >= 3) {
           debugStack(pfix, top, "after");
         }
