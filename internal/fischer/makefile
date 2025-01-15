@@ -6399,6 +6399,7 @@ egfu1:
 	| perl egfsi.pl \
 	2>       $@.rest.tmp \
 	| sed -e "s/\tegfsi/\tegfu/" \
+	| grep -v A370327 \
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@*.tmp
