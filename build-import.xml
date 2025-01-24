@@ -268,6 +268,20 @@
             </classpath>
         </javac>
     </target>
+
+  <target name="compile-test" description="Compile the tests">
+    <javac srcdir="${test.home}" source="1.10" destdir="${build.classes}" includeantruntime="false">
+      <classpath>
+        <pathelement path="${src.home}"/>
+        <pathelement path="${internal.home}"/>
+        <fileset dir="${lib.home}" includes="**/*.jar" />
+                <path refid="compile.classpath"/>
+      </classpath>
+      <compilerarg value="-Xlint:unchecked" />
+    </javac>
+  </target>
+  
+
     <!-- ============= manifest =========================================
     -->
     <target name="manifest">
@@ -302,7 +316,7 @@
         create the binary distributions: jar and war
         target core.jar must be defined somehow (maybe empty) in build.xml
     -->
-    <target name="dist"     depends="prepare,compile,compile-internal"><!-- ,manifest,core.jar" -->
+    <target name="dist"     depends="prepare,compile,compile-internal,compile-test"><!-- ,manifest,core.jar" -->
     <!--
         <antcall target="manifest">
             <param name="core" value="-core"  />
