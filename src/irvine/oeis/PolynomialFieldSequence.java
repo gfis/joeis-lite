@@ -11,7 +11,7 @@ import irvine.math.q.Rationals;
 import irvine.math.z.Z;
 
 /**
- * Compute the coefficients of a generating function A(x) given by some equation that A(x) satifies.
+ * Compute the coefficients of a generating function A(x) given by some equation that is satisfied by A(x).
  * @author Georg Fischer
  */
 public class PolynomialFieldSequence extends AbstractSequence {
@@ -73,7 +73,6 @@ public class PolynomialFieldSequence extends AbstractSequence {
       mStack.add(null);
     } // for k
 
-
     final String[] polarr = trimQuotes(polys).split("]\\s*,\\s*\\["); // the individual vectors
     mPolys = new ArrayList<>(polarr.length);
     for (int k = 0; k < polarr.length; ++k) {
@@ -133,11 +132,11 @@ public class PolynomialFieldSequence extends AbstractSequence {
     ++mN;
     // now perform a statement like "mA = RING.add(RING.one(), RING.multiply(RING.x(), RING.pow(RING.substitute(mA, RING.multiply(RING.x(), mA, mN), mN), mExpon, mN), mN));"
     // for example: A143046 poly -p "[[0],[1],[0,-1]]" -x ",p1,p2,sub,^3,<1,+"; G.f. satisfies A(x) = 1 + x*A(-x)^3.
-    int ifix = 0;
+    int ipfix = 0;
     int top = -1; // index of top element of <code>mStack</code>. Initially, the stack is empty.
     try {
-      while (ifix < mPostfix.length) { // scan over the operaands and operators
-        String pfix = mPostfix[ifix++];
+      while (ipfix < mPostfix.length) { // scan over the operaands and operators
+        String pfix = mPostfix[ipfix++];
         if (sDebug >= 2 && top >= 0) {
           debugStack(pfix, top, "before");
         }
@@ -158,6 +157,9 @@ public class PolynomialFieldSequence extends AbstractSequence {
             case 'p': // "p(\d+)"  = mPolys[$1], one of the predefined polynomials, numbered p0, p1, ...
               mStack.set(++top, mPolys.get(Integer.parseInt(pfix.substring(1))));
               break;
+            case 'x': // the monic polynomial x
+              mStack.set(++top, RING.x());
+              break;
           
           // operations with 1 operand
             case 'd': // "dif", replace the current top element by its derivative
@@ -167,12 +169,15 @@ public class PolynomialFieldSequence extends AbstractSequence {
               mStack.set(top, RING.exp(mStack.get(top), mN + mDist));
               break;
             case 'i': 
-              if (pfix.equals("inv")) { // "inv", replace the current top element te by 1/te
-                mStack.set(top, RING.inverse(mStack.get(top)));
-              } else if (pfix.equals("int")) { // "int", replace the current top element by its derivative
-                mStack.set(top, RING.integrate(mStack.get(top)));
-              } else {
-                throw new RuntimeException("invalid postfix code with \"i\":" + pfix);
+              switch (pfix) {
+                case "inv": // "inv", replace the current top element te by 1/te
+                  mStack.set(top, RING.inverse(mStack.get(top)));
+                  break;
+                case "int": // "int", replace the current top element by its formal integral
+                  mStack.set(top, RING.integrate(mStack.get(top)));
+                  break;
+                default:
+                  throw new RuntimeException("invalid postfix code with \"i\":" + pfix);
               }
               break;
             case 'l': // "log", preplace the current top element te by log(te)
@@ -181,18 +186,22 @@ public class PolynomialFieldSequence extends AbstractSequence {
             case 'n': // "neg", replace the current top element by its negation
               mStack.set(top, RING.negate(mStack.get(top)));
               break;
-            case 'r': // "rev", replace the current top element its the series reversion
+            case 'r': // "rev", replace the current top element by its series reversion
               mStack.set(top, RING.reversion(mStack.get(top), mN + mDist));
               break;
             case 's': 
-              if (pfix.equals("sub")) { // "sub", replace the current top element by a substitution
-                mStack.set(top, RING.substitute(mA, mStack.get(top), mN + mDist));
-              } else if (pfix.equals("sin")) { // sin
-                mStack.set(top, RING.sin(mStack.get(top), mN + mDist));
-              } else if (pfix.equals("sqrt")) { // sqrt
-                mStack.set(top, RING.sqrt(mStack.get(top), mN + mDist));
-              } else {
-                throw new RuntimeException("invalid postfix code with \"s\":" + pfix);
+              switch(pfix) {
+                case "sub": // "sub", replace the current top element by a substitution
+                  mStack.set(top, RING.substitute(mA, mStack.get(top), mN + mDist));
+                  break;
+                case "sin":
+                  mStack.set(top, RING.sin(mStack.get(top), mN + mDist));
+                  break;
+                case "sqrt":
+                  mStack.set(top, RING.sqrt(mStack.get(top), mN + mDist));
+                  break;
+                default:
+                  throw new RuntimeException("invalid postfix code with \"s\":" + pfix);
               }
               break;
             case '<': // "<(\d+)" = shift x -> x^$1 (may be negative)
@@ -203,7 +212,11 @@ public class PolynomialFieldSequence extends AbstractSequence {
                 --top;
                 mStack.set(top, RING.pow(mStack.get(top), Long.valueOf(mStack.get(top + 1).toString()), mN + mDist));
               } else { // operation contains the 2nd operand
-                mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(pfix.substring(1)), mN + mDist));
+                if (pfix.indexOf('/') >= 0) { // e.g. "^2/3"
+                  mStack.set(top, RING.pow(mStack.get(top), new Q(pfix.substring(1)), mN + mDist));
+                } else {
+                  mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(pfix.substring(1)), mN + mDist));
+                }
               }
               break;
 
@@ -231,8 +244,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
         }
       } // while
     } catch (Exception exc) { // will never be reached with a proper generator
-      System.err.println("# unexpected exception: " + exc.getMessage());
-      exc.printStackTrace();
+      throw new RuntimeException("# unexpected exception: " + exc.getMessage());
     }
     // mTop should be 0 here
     mA = mStack.get(top);
@@ -244,6 +256,6 @@ public class PolynomialFieldSequence extends AbstractSequence {
       }
     }
     return result.num();
-  } // next
+   } // next
 
 }
