@@ -668,6 +668,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPhysicsConstants}             ) { $imports{"irvine.math.r.PhysicsConstants"}                = $itype; }
     if ($line =~ m{\WPolynomialUtils}              ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
     if ($line =~ m{\WPolynomial}                   ) { $imports{"irvine.math.polynomial.Polynomial"}             = $itype; }
+    if ($line =~ m{\WPolynomialFieldSequence}      ) { $imports{"irvine.oeis.PolynomialFieldSequence"}           = $itype; }
     if ($line =~ m{\WPredicates}                   ) { $imports{"irvine.math.predicate.Predicates"             } = $itype; }
     if ($line =~ m{\WPrependSequence}              ) { $imports{"irvine.oeis.PrependSequence"   }                = $itype; }
     if ($line =~ m{\WProduct}                      ) { $imports{"irvine.oeis.triangle.Product"  }                = $itype; }

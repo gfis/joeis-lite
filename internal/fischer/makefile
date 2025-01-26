@@ -210,7 +210,7 @@ joeis_pull:
 	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
 #----
 from_joeis:
-	cp -v ../../../joeis/src/main/java/irvine/oeis/HolonomicRecurrence.java     .. /../src/irvine/oeis
+	cp -v ../../../joeis/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
 from_ramath:
 	cp -v ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
 	cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test
@@ -233,9 +233,12 @@ diff_joeis:
 	>> $@.tmp
 diffrec:
 	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/transform/InverseMobiusTransformSequence.java ../../src/irvine/oeis/transform || :
-diffhr:
-	diff -wy  ../../../joeis/src/irvine/oeis/HolonomicRecurrence.java   ../../src/irvine/oeis || :
-#	diff -wC0 ../../../joeis/src/irvine/oeis/CompementaryEquationSequence.java   ../../src/irvine/oeis || :
+diffpfs:
+	diff -wy --suppress-common-lines ../../../joeis/src/irvine/oeis/PolynomialFieldSequence.java    ../../src/irvine/oeis      || :
+	diff -wy --suppress-common-lines ../../../joeis/internal/irvine/oeis/PolynomialFieldTest.java   ../../internal/irvine/oeis || :
+copypfs:
+	cp -v ../../../joeis/src/irvine/oeis/PolynomialFieldSequence.java    ../../src/irvine/oeis      || :
+	cp -v ../../../joeis/internal/irvine/oeis/PolynomialFieldTest.java   ../../internal/irvine/oeis || :
 update:
 	cp -v     ../../../joeis/src/irvine/oeis/EulerTransform.java      ../../src/irvine/oeis || :
 #	cd ../.. ; find src | xargs -l -i{} cp -pv ../../gits/joeis/{} {}

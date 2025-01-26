@@ -13,6 +13,6 @@ public class $(ASEQNO) extends PolynomialFieldSequence {
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM1=polys), $(PARM2=sepPostfix), 0, EGF);
+    super($(OFFSET), $(PARM1=polys), $(PARM2=sepPostfix), $(PARM3=dist), $(PARM4=gfType));
   }
 }

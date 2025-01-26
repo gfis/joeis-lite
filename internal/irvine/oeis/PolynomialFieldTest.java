@@ -1,6 +1,5 @@
 package irvine.oeis;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import irvine.math.z.Z;
@@ -10,13 +9,13 @@ import irvine.math.z.Z;
  * given by some equation that is satisfied by A(x).
  * @author Georg Fischer
  */
-public class PolynomialFieldTest {
+public final class PolynomialFieldTest {
 
-  protected static int sDebug = 0;
+  static int sDebug = 0;
   private final HashMap<String, Integer> mPrios = new HashMap<>(16);
   private int mPrio;
-  private String mSep = ","; // default separator for postfix polish notation
-  
+  private final String mSep = ","; // default separator for postfix polish notation
+
   /**
    * Store priorities for various operators in the HashMap
    */
@@ -28,13 +27,13 @@ public class PolynomialFieldTest {
     setPrio("\'");
     setPrio("~", "(", ")"); // unary minus
   } // assignPrios
-  
+
   /**
    * Store priorities for various operators in the HashMap
    */
-  private void setPrio(String... opers) {
+  private void setPrio(final String... opers) {
     ++mPrio;
-    for (String oper : opers) {
+    for (final String oper : opers) {
       mPrios.put(oper, mPrio);
     }
   } // setPrio
@@ -51,24 +50,20 @@ public class PolynomialFieldTest {
    * @param expr the expression to be parsed
    * @return postfix polish notation
    */
-  private String getPostfix(String expr) {
-  	String result = mSep;
-  	int ie = 0;
-  	
-  	
-  	return result;
+  private String getPostfix(final String expr) {
+    String result = mSep;
+    return result;
   } // getPostfix
-  
+
   /**
    * Reconstruct the equation from the postfix string.
    * @param polys array of polynomials, the coefficients of <code>x^i, i=0..m</code>.
    * are given as comma-separated lists, enclosed in square brackets, for example "[[0],[0,1,2],[17,0,18]]".
-   * @param postfix the equation with operands and operators in postfix polish notation, separated by the first character. 
+   * @param postfix the equation with operands and operators in postfix polish notation, separated by the first character.
    */
-  private String buildInfix(String polys, String postfix) {
-    int ipfix = 0;
-    int top = -1; // index of top element of <code>mStack</code>. Initially, the stack is empty.
-    try {
+  private String buildInfix(final String polys, final String postfix) {
+    final int ipfix = 0;
+    final int top = -1; // index of top element of <code>mStack</code>. Initially, the stack is empty.
 /*
       while (ipfix < mPostfix.length) { // scan over the operaands and operators
         String pfix = mPostfix[ipfix++];
@@ -172,9 +167,6 @@ public class PolynomialFieldTest {
         }
       } // while
 */
-    } catch (Exception exc) { // will never be reached with a proper generator
-      throw new RuntimeException("# unexpected exception: " + exc.getMessage());
-    }
     // mTop should be 0 here
 /*
     mA = mStack.get(top);
@@ -193,71 +185,73 @@ public class PolynomialFieldTest {
    * Main method, generate the coefficients of a generating function.
    * @param args command line arguments:
    * <ul>
+   * <li>polyList, list of vectors for polynomials in x (mandatory)</li>
+   * <li>expression in postfix notation (mandatory)</li>
    * <li>-b print in b-file format instead of comma separated list (default false)</li>
    * <li>-d level debugging level (default 0=none), 1=some, 2=more</li>
    * <li>-i additional degree (default 0)</li>
    * <li>-n numTerms number of terms to be computed (default: 16)</li>
    * <li>-o offset, first index (default 0)</li>
-   * <li>-p polyList, list of vectors for polynomials in x (default [[0]])</li>
    * <li>-t type of the generating function: 0 = ordinary (default), 1 = exponential</li>
-   * <li>-x expression in postfix notation</li>
    * </ul>
    */
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     boolean bfile = false;
-    int debug     = 0;
-    int dist      = 0;
-    int gfType    = 0;
-    int numTerms  = 16;
-    int offset    = 0;
-    String polyList  = "[[0]]";
-    String postfix = null;
+    if(args.length < 2) {
+      System.out.println("Usage: java -cp joeis.jar irvine.oeis.PolynomialFieldTest"
+        + " polys postfix [-b] [-d mode] [-i dist] [-n noterms] [-o offset] [-t gftype]");
+      System.exit(1);
+    }
+    int debug = 0;
+    int dist = 0;
+    int gfType = 0;
+    int numTerms = 16;
+    int offset = 0;
     int iarg = 0;
+    String polyList = args[iarg++];
+    String postfix  = args[iarg++];
     while (iarg < args.length) { // consume all arguments
-      String opt = args[iarg ++];
+      final String opt = args[iarg++];
       try {
-        if (false) {
-        } else if (opt.equals    ("-b")     ) {
-          bfile    = true;
-        } else if (opt.equals    ("-d")     ) {
-          debug    = Integer.parseInt(args[iarg ++]);
-        } else if (opt.equals    ("-i")     ) {
-          dist     = Integer.parseInt(args[iarg ++]);
-        } else if (opt.equals    ("-n")     ) {
-          numTerms = Integer.parseInt(args[iarg ++]);
-        } else if (opt.equals    ("-o")     ) {
-          offset   = Integer.parseInt(args[iarg ++]);
-        } else if (opt.equals    ("-p")     ) {
-          polyList = args[iarg ++];
-        } else if (opt.equals    ("-t")     ) {
-          gfType   = Integer.parseInt(args[iarg ++]);
-        } else if (opt.equals    ("-x")     ) {
-          postfix  = args[iarg ++];
-        } else {
-          System.err.println("??? invalid option: \"" + opt + "\"");
+        switch (opt) {
+          case "-b":
+            bfile = true;
+            break;
+          case "-d":
+            debug = Integer.parseInt(args[iarg++]);
+            break;
+          case "-i":
+            dist = Integer.parseInt(args[iarg++]);
+            break;
+          case "-n":
+            numTerms = Integer.parseInt(args[iarg++]);
+            break;
+          case "-o":
+            offset = Integer.parseInt(args[iarg++]);
+            break;
+          case "-t":
+            gfType = Integer.parseInt(args[iarg++]);
+            break;
+          default:
+            System.err.println("??? invalid option: \"" + opt + "\"");
+            break;
         }
-      } catch (Exception exc) { // take default
+      } catch (final RuntimeException exc) { // take default
       }
     } // while args
 
-    if (postfix != null) {
-      PolynomialFieldSequence.sDebug = debug;
-      PolynomialFieldSequence prs = new PolynomialFieldSequence(offset, polyList, postfix, dist, gfType);
-      int ind = offset - 1;
-      boolean busy = true;
-      while (--numTerms >= 0) {
-        ++ind;
-        Z term = prs.next();
-        if (bfile) {
-          System.out.print(String.valueOf(ind) + " " + term.toString() + "\n");
-        } else {
-          System.out.print((ind == offset ? "" : ", ") + term.toString());
-        }
-      } // while
-      System.out.println();
-    } else {
-      System.out.println("Usage: java -cp joeis.jar irvine.oeis.PolynomialFieldTest"
-          + " [-b] [-d mode] [-i dist] [-n noterms] [-o offset] [-p polys] [-t gftype] -x postfix");
-    }
+    PolynomialFieldSequence.sDebug = debug;
+    final PolynomialFieldSequence prs = new PolynomialFieldSequence(offset, polyList, postfix, dist, gfType);
+    int ind = offset - 1;
+    while (--numTerms >= 0) {
+      ++ind;
+      final Z term = prs.next();
+      if (bfile) {
+        System.out.print(ind + " " + term.toString() + "\n");
+      } else {
+        System.out.print((ind == offset ? "" : ", ") + term.toString());
+      }
+    } // while
+    System.out.println();
   } // main
 }
