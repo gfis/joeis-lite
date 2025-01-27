@@ -182,10 +182,19 @@ public final class PolynomialFieldTest {
   } // build
 
   /**
+   * Print a message for the parameter usage and exit.
+   */
+  private static void usage() {
+    System.out.println("Usage: java -cp joeis.jar irvine.oeis.PolynomialFieldTest"
+        + " [polys] postfix [-b] [-d mode] [-i dist] [-n noterms] [-o offset] [-t gftype]");
+    System.exit(1);
+  }
+
+  /**
    * Main method, generate the coefficients of a generating function.
    * @param args command line arguments:
    * <ul>
-   * <li>polyList, list of vectors for polynomials in x (mandatory)</li>
+   * <li>polyList, list of vectors for polynomials in x (default "[[1]]")</li>
    * <li>expression in postfix notation (mandatory)</li>
    * <li>-b print in b-file format instead of comma separated list (default false)</li>
    * <li>-d level debugging level (default 0=none), 1=some, 2=more</li>
@@ -197,10 +206,8 @@ public final class PolynomialFieldTest {
    */
   public static void main(final String[] args) {
     boolean bfile = false;
-    if(args.length < 2) {
-      System.out.println("Usage: java -cp joeis.jar irvine.oeis.PolynomialFieldTest"
-        + " polys postfix [-b] [-d mode] [-i dist] [-n noterms] [-o offset] [-t gftype]");
-      System.exit(1);
+    if(args.length == 0) {
+      usage();
     }
     int debug = 0;
     int dist = 0;
@@ -208,37 +215,49 @@ public final class PolynomialFieldTest {
     int numTerms = 16;
     int offset = 0;
     int iarg = 0;
-    String polyList = args[iarg++];
-    String postfix  = args[iarg++];
-    while (iarg < args.length) { // consume all arguments
-      final String opt = args[iarg++];
-      try {
-        switch (opt) {
-          case "-b":
-            bfile = true;
-            break;
-          case "-d":
-            debug = Integer.parseInt(args[iarg++]);
-            break;
-          case "-i":
-            dist = Integer.parseInt(args[iarg++]);
-            break;
-          case "-n":
-            numTerms = Integer.parseInt(args[iarg++]);
-            break;
-          case "-o":
-            offset = Integer.parseInt(args[iarg++]);
-            break;
-          case "-t":
-            gfType = Integer.parseInt(args[iarg++]);
-            break;
-          default:
-            System.err.println("??? invalid option: \"" + opt + "\"");
-            break;
+    String polyList = "[[1]]";
+    String postfix  = null;
+    if (args.length == 1) {
+      postfix  = args[iarg++];
+    } else {
+      if (!args[iarg].startsWith("-")) {
+        if (!args[iarg + 1].startsWith("-")) {
+          polyList   = args[iarg++];
         }
-      } catch (final RuntimeException exc) { // take default
+        postfix = args[iarg++];
+      } else {
+        usage();
       }
-    } // while args
+      while (iarg < args.length) { // consume all arguments
+        final String opt = args[iarg++];
+        try {
+          switch (opt) {
+            case "-b":
+              bfile = true;
+              break;
+            case "-d":
+              debug = Integer.parseInt(args[iarg++]);
+              break;
+            case "-i":
+              dist = Integer.parseInt(args[iarg++]);
+              break;
+            case "-n":
+              numTerms = Integer.parseInt(args[iarg++]);
+              break;
+            case "-o":
+              offset = Integer.parseInt(args[iarg++]);
+              break;
+            case "-t":
+              gfType = Integer.parseInt(args[iarg++]);
+              break;
+            default:
+              System.err.println("??? invalid option: \"" + opt + "\"");
+              break;
+          }
+        } catch (final RuntimeException exc) { // take default
+        }
+      } // while args
+    } // more than 1 argument
 
     PolynomialFieldSequence.sDebug = debug;
     final PolynomialFieldSequence prs = new PolynomialFieldSequence(offset, polyList, postfix, dist, gfType);
