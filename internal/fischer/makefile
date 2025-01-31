@@ -6396,8 +6396,11 @@ egfsi:
 	wc -l    $@.gen
 #----
 egfu0: egfu1 egfu2 egfu3 egfu4
+egfux:
+	grep -P "^\%[NF] A\d+ *((Expansion of e|E)\.g\.f\.|InverseSeries|serreverse)" $(COMMON)/jcat25.txt \
+	| grep 052894
 egfu1:
-	grep -P "^\%[NF] A\d+ *(Expansion of e|E)\.g\.f\.|InverseSeries|serreverse" $(COMMON)/jcat25.txt \
+	grep -P "^\%[NF] A\d+ *((Expansion of e|E)\.g\.f\.|InverseSeries|serreverse)" $(COMMON)/jcat25.txt \
 	| cut -b4- \
 	| perl egfsi.pl \
 	2>       $@.rest.tmp \

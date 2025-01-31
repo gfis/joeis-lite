@@ -182,12 +182,11 @@ public final class PolynomialFieldTest {
   } // build
 
   /**
-   * Print a message for the parameter usage and exit.
+   * Print a message for the parameter usage.
    */
   private static void usage() {
     System.out.println("Usage: java -cp joeis.jar irvine.oeis.PolynomialFieldTest"
         + " [polys] postfix [-b] [-d mode] [-i dist] [-n noterms] [-o offset] [-t gftype]");
-    System.exit(1);
   }
 
   /**
@@ -208,6 +207,7 @@ public final class PolynomialFieldTest {
     boolean bfile = false;
     if(args.length == 0) {
       usage();
+      return;
     }
     int debug = 0;
     int dist = 0;
@@ -227,6 +227,7 @@ public final class PolynomialFieldTest {
         postfix = args[iarg++];
       } else {
         usage();
+        return;
       }
       while (iarg < args.length) { // consume all arguments
         final String opt = args[iarg++];
