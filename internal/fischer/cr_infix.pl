@@ -2,6 +2,7 @@
 
 # Prepare formulas for decimal expansion using CR functions
 # @(#) $Id$
+# 2025-02-02: Functions.*.z()
 # 2020-04-03, Georg Fischer: copied from infix_dex.pl
 #
 #:# Usage:
@@ -49,9 +50,9 @@ my %hash =
     , "sec",    "$CRS.sec"
     , "csch",   "$CRS.csch"
 
-    , "omega",  "irvine.factor.factor.Cheetah.factor(mN).omega()" 
-    , "phi",    "irvine.math.LongUtils.phi(mN)"
-    , "sigma",  "irvine.factor.factor.Cheetah.factor(mN).sigma()"
+    , "omega",  "Functions.OMEGA.z(mN)" 
+    , "phi",    "Functions.PHI.z(mN)"
+    , "sigma",  "Functions.SIGMA1.z(mN)"
     );
 my @number_words = qw(ZERO ONE TWO THREE FOUR FIVE);  # SIX SEVEN EIGHT NINE TEN => undefined
 my $line;
