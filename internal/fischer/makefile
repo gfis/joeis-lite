@@ -1878,7 +1878,7 @@ ca.1m:
 	wc -l    $@.gen
 #--------------------------------
 decexp: # decimal expansion of expression
-	grep -E "^A[0-9]" $(CONSTANT)/decexp4.tmp \
+	grep -E "^A[0-9]" $(CONSTANT)/decexp5.tmp \
 	| grep -vEE "A084257|A114041" \
 	>        $@.gen
 	head -n4 $@.gen
@@ -8457,6 +8457,7 @@ seqix:
 	$(DBAT) -f sql/seqix.create.sql
 	seq 1 64 | $(DBAT) -r seqix
 	$(DBAT) -4 seqix
+seq1: seq
 seq: # parameter: $(LIST)
 	$(DBAT) -f $(COMMON)/seq.create.sql
 	cut -b1-7 $(LIST) | grep -E "^A" | $(DBAT) -m csv -r seq

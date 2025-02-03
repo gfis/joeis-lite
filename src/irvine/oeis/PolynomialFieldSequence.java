@@ -192,7 +192,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
         mStack.set(++top, Polynomial.create(new Q(Integer.parseInt(pfix))));
       } else {
         final int m = mN + mDist; // Number of terms to expand to
-        // Operations are either single strings of constructions like "p(\d+)"
+        // Operations are either single strings or constructions like "p(\d+)"
         switch (pfix.substring(0, getTokenLength(pfix))) {
           // operands
           case "A": // this means A(x), the currently accumulated Polynomial mA for the generating function
