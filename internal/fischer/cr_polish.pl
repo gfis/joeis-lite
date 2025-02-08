@@ -2,6 +2,7 @@
 
 # Polish CR expressions
 # @(#) $Id$
+# 2025-02-07: $parm1 =~ s{CR\.valueOf\((\d{6})\)\.getCR}{X$1\.getCR}g; *KFF=1
 # 2021-07-16, Georg Fischer: copied from de_zeta.pl
 #
 #:# Usage:
@@ -84,6 +85,7 @@ sub polish {
         # ---- general polishing ----
         $parm1 =~ s{\.gamma\(\)\.log\(\)}{\.lnGamma\(\)}g;
         $parm1 =~ s{\.pow\(CR\.valueOf\((\-?\d+|mN)\)\)}{\.pow\($1\)}g; # pow(int)
+        $parm1 =~ s{CR\.valueOf\((\d{6})\)\.getCR\(\)}{X$1}g;
         $parm1 =~ s{CR\.valueOf\((\d|10)\)}{CR\.$anum[$1]}g;
         $parm1 =~ s{CR\.ONE\.divide\(CR\.TWO\)}{CR\.HALF}g;
         $parm1 =~ s{CR\.ONE\.divide\(CR\.THREE\)}{CR\.ONE_THIRD}g;
