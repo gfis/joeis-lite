@@ -71,17 +71,23 @@ while (<>) {
 #----
 sub polish {
         my ($parm1) = @_;
+        if ($parm1    =~ m{\<\?}) {
+            $nok = 2; # error in expression
+        }
         # ---- zeta shielding/polishing ----
+        #                       (            (1     1 )
         while ($parm1 =~ m{zeta\(CR\.valueOf\((\d|10)\)}) {
-            $parm1    =~ s{zeta\(CR\.valueOf\((\d|10)\)}{zzzz\($1\)};
+            #                   (            (1     1 )
+            $parm1    =~ s{zeta\(CR\.valueOf\((\d|10)\)}{zetz\($1}g;
         }
         if ($parm1    =~ m{zeta\(}) {
             $nok = 1; # zeta with fraction, expression
         }
-        if ($parm1    =~ m{\<\?}) {
-            $nok = 2; # error in expression
+        #                (1  1 )       (   )
+        $parm1 =~ s{zetz\((\d+)\)}{zeta\($1\)}g; # unshield
+        if ($parm1    =~ m{zetz\(}) {
+            $nok = 3; # zeta with fraction, expression
         }
-        $parm1 =~ s{zzzz\(}{zeta\(}g; # unshield
         # ---- general polishing ----
         $parm1 =~ s{\.gamma\(\)\.log\(\)}{\.lnGamma\(\)}g;
         $parm1 =~ s{\.pow\(CR\.valueOf\((\-?\d+|mN)\)\)}{\.pow\($1\)}g; # pow(int)

@@ -1,5 +1,6 @@
 # CR.xpat - Mapping table seqdb -> irvine.math.cr.CR infix expression generation
 # @(#) $Id$
+# 2025-02-07: all trigon. functions in REALS.; *KFF=1
 # 2021-07-27: Gamma, lnGamma
 # 2021-07-19: root
 # 2021-07-08, Georg Fischer
@@ -33,10 +34,12 @@ n	name	0	CR.valueOf(mN)	0
 #x	name	0	mX	0
 Pi	name	0	CR.PI	0
 pi	name	0	CR.PI	0
+E	name	0	CR.E	0
 e	name	0	CR.E	0
 phi	name	0	CR.PHI	0
 gamma	name	0	CR.GAMMA	0
 eulergamma	name	0	CR.GAMMA
+EulerGamma	name	0	CR.GAMMA
 sqrt_2	name	0	CR.SQRT2
 
 +	meth	2	.add(	0
@@ -77,17 +80,19 @@ log_3)	meth	1	.log().divide(CR.THREE.log()	0
 log_5)	meth	1	.log().divide(CR.FIVE.log()	0
 log10)	meth	1	.log().divide(CR.TEN.log()	0
 log_10)	meth	1	.log().divide(CR.TEN.log()	0
+# Psi)	func	1	REALS.psi(	1
+# psi)	func	1	REALS.psi(	1
 root)	meth	2	.root(	0
 round)	meth	1	.round(	0
 sqrt)	meth	1	.sqrt(	0
 Sqrt)	meth	1	.sqrt(	0
 
-sin)	meth	1	.sin(	0
-cos)	meth	1	.cos(	0
+sin)	func	1	REALS.sin(	1
+cos)	func	1	REALS.cos(	1
 tan)	func	1	REALS.tan(	1
 cot)	func	1	REALS.cot(	1
-sec)	meth	1	.cos().inverse(	0
-csc)	meth	1	.sin().inverse(	0
+sec)	func	1	REALS.sec(	1
+csc)	func	1	REALS.csc(	1
 arcsin)	func	1	REALS.asin(	1
 arccos)	func	1	REALS.acos(	1
 arctan)	func	1	REALS.atan(	1
@@ -100,13 +105,13 @@ atan)	func	1	REALS.atan(	1
 acot)	func	1	REALS.acot(	1
 asec)	func	1	REALS.asec(	1
 acsc)	func	1	REALS.acsc(	1
-sinh)	meth	1	.sinh(	1
-cosh)	meth	1	.cosh(	1
-tanh)	meth	1	.tanh(	1
-coth)	meth	1	.coth(	1
-sech)	meth	1	.sech(	1
-csch)	meth	1	.csch(	1
-cosech)	meth	1	.csch(	1
+sinh)	func	1	REALS.sinh(	1
+cosh)	func	1	REALS.cosh(	1
+tanh)	func	1	REALS.tanh(	1
+coth)	func	1	REALS.coth(	1
+sech)	func	1	REALS.sech(	1
+csch)	func	1	REALS.csch(	1
+cosech)	func	1	REALS.csch(	1
 arcsinh)	func	1	REALS.asinh(
 arccosh)	func	1	REALS.acosh(
 arctanh)	func	1	REALS.atanh(
