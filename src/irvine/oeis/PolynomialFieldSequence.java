@@ -20,10 +20,12 @@ public class PolynomialFieldSequence extends AbstractSequence {
 
   protected static int sDebug = 0;
   private static final PolynomialRingField<Q> RING = new PolynomialRingField<>(Rationals.SINGLETON);
-  /** Constant indicating an ordinary generating function. */
+  /** Value indicating an ordinary (non-exponential) generating function. */
   protected static final int OGF = 0;
-  /** Constant indicating an exponential generating function. */
+  /** Bit mask indicating an exponential generating function. */
   protected static final int EGF = 1;
+  /** Bit mask indicating an non-iterating computation. */
+  protected static final int NO_ITER = 2;
   private final String[] mPostfix; // list of operands and operators
   private final int mDist; // additional degree
   private final int mGfType; // type of the generating function: 0 = ordinary, 1 = exponential
@@ -42,7 +44,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
    * @param postfix the equation with operands and operators in postfix polish notation, separated by the first character
    */
   public PolynomialFieldSequence(final int offset, final String postfix) {
-    this(offset, "[[1]]", postfix, 0, OGF, 1, 1);
+    this(offset, (offset == 0) ? "[[1]]" : "[[0,1]]", postfix, 0, OGF, 1, 1);
   }
 
   /**
@@ -209,6 +211,9 @@ public class PolynomialFieldSequence extends AbstractSequence {
           case "neg": // "neg", replace the current top element by its negation
             mStack.set(top, RING.negate(mStack.get(top)));
             break;
+          case "abs":
+            mStack.set(top, RING.abs(mStack.get(top)));
+            break;
           case "sqrt":
             mStack.set(top, RING.sqrt(mStack.get(top), m));
             break;
@@ -352,6 +357,13 @@ public class PolynomialFieldSequence extends AbstractSequence {
             --top;
             mStack.set(top, RING.series(mStack.get(top), mStack.get(top + 1), m));
             break;
+
+          // other two argument functions
+          case "agm":
+            --top;
+            mStack.set(top, RING.agm(mStack.get(top), mStack.get(top + 1), m));
+            break;
+
           default: // should not occur with proper postfix expressions
             throw new RuntimeException("invalid postfix code " + pfix);
         } // switch
@@ -363,7 +375,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
     // mTop should be 0 here
     mA = mStack.get(top).truncate(mN + mDist);
     Q result = mA.coeff(mN);
-    if (mGfType == EGF) {
+    if ((mGfType & EGF) != 0) {
       if (mN > 0) {
         mFactorial = mFactorial.multiply(mN);
       }
