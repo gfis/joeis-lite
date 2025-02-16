@@ -20,12 +20,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
 
   protected static int sDebug = 0;
   private static final PolynomialRingField<Q> RING = new PolynomialRingField<>(Rationals.SINGLETON);
-  /** Value indicating an ordinary (non-exponential) generating function. */
+  /** Constant indicating an ordinary generating function. */
   protected static final int OGF = 0;
-  /** Bit mask indicating an exponential generating function. */
+  /** Constant indicating an exponential generating function. */
   protected static final int EGF = 1;
-  /** Bit mask indicating an non-iterating computation. */
-  protected static final int NO_ITER = 2;
   private final String[] mPostfix; // list of operands and operators
   private final int mDist; // additional degree
   private final int mGfType; // type of the generating function: 0 = ordinary, 1 = exponential
@@ -44,7 +42,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
    * @param postfix the equation with operands and operators in postfix polish notation, separated by the first character
    */
   public PolynomialFieldSequence(final int offset, final String postfix) {
-    this(offset, (offset == 0) ? "[[1]]" : "[[0,1]]", postfix, 0, OGF, 1, 1);
+    this(offset, "[[1]]", postfix, 0, OGF, 1, 1);
   }
 
   /**
@@ -217,11 +215,14 @@ public class PolynomialFieldSequence extends AbstractSequence {
           case "sqrt":
             mStack.set(top, RING.sqrt(mStack.get(top), m));
             break;
-          case "exp": // "exp", preplace the current top element te by exp(te)
+          case "exp":
             mStack.set(top, RING.exp(mStack.get(top), m));
             break;
-          case "log": // "log", replace the current top element te by log(te)
+          case "log":
             mStack.set(top, RING.log(mStack.get(top), m));
+            break;
+          case "eta":
+            mStack.set(top, RING.eta(mStack.get(top), m));
             break;
 
           // Trig
@@ -375,7 +376,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
     // mTop should be 0 here
     mA = mStack.get(top).truncate(mN + mDist);
     Q result = mA.coeff(mN);
-    if ((mGfType & EGF) != 0) {
+    if (mGfType == EGF) {
       if (mN > 0) {
         mFactorial = mFactorial.multiply(mN);
       }
