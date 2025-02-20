@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2025-02-20, V8.5: CNT, CND = Integers.SINGLETON.count, countdiv
 # 2025-01-03, V8.4: R+-*^ Rsub Rshi for PoylynomialRingSequence
 # 2024-07-10, V8.3: read hasram.txt
 # 2024-07-02, V8.2: fails if pattern not found
@@ -79,7 +80,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V8.2";
+my $version_id  = "gen_seq4.pl V8.5";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -259,6 +260,8 @@ while (<>) { # read inputfile
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
             $parm =~ s{CESQ\(}         {Functions.CEIL_SQRT.z\(}g;
             $parm =~ s{CML\(}          {Functions.CARMICHAEL_LAMBDA.z\(}g;
+            $parm =~ s{CND\(}          {Integers.SINGLETON.countdiv\(}g;
+            $parm =~ s{CNT\(}          {Integers.SINGLETON.count\(}g;
             $parm =~ s{CONC\(}         {ZUtils.concatenate\(}g;
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
             $parm =~ s{\bF\.}          {Functions.}g;
