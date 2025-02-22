@@ -2,6 +2,8 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2025-02-21, V8.7: FFAC = FALLING_FACTORIAL, ZRE, ZIM
+# 2025-02-20, V8.6: a185951, a136630
 # 2025-02-20, V8.5: CNT, CND = Integers.SINGLETON.count, countdiv
 # 2025-01-03, V8.4: R+-*^ Rsub Rshi for PoylynomialRingSequence
 # 2024-07-10, V8.3: read hasram.txt
@@ -80,7 +82,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V8.5";
+my $version_id  = "gen_seq4.pl V8.6";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -252,6 +254,14 @@ while (<>) { # read inputfile
                 $do_generate = 0;
                 $fatal = 1;
             }
+            if ($parm =~ m{a136630\(}) {
+                my $repl = 'SU(0, k, j -> Z_1(k - j).*(ZV(2*j - k).^(n)).*(BI(k, j)))./(Z2(k).*(FA(k)))';
+                $parm =~ s{a136630\(n\, *k\)}{$repl}g;
+            }
+            if ($parm =~ m{a185951\(}) {
+                my $repl = 'SU(0, k, j -> ZV(2*j - k).^(n - k).*(BI(k, j))).*(BI(n, k))./(Z2(k))';
+                $parm =~ s{a185951\(n\, *k\)}{$repl}g;
+            }
             $parm =~ s{ZV\(}           {Z.valueOf\(}g; $parm =~  s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .  $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{CV\(}           {CR.valueOf\(}g; $parm =~ s{CR\.valueOf\((\-1|[0-9]|10)\)}{"CR." . $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
@@ -268,6 +278,7 @@ while (<>) { # read inputfile
             $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
             $parm =~ s{FD\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\(2, $1}g;
             $parm =~ s{DF\(([^\)]+)}   {Functions.MULTIFACTORIAL.z\(2, $1}g;
+            $parm =~ s{FFAC\(}         {Functions.FALLING_FACTORIAL.z\(}g;
             $parm =~ s{FM\(}           {Functions.MULTIFACTORIAL.z\(}g;
             $parm =~ s{FI\(}           {Functions.FIBONACCI.z\(}g;
             $parm =~ s{GCDi\(}         {Functions.GCD.i\(}g;
@@ -333,6 +344,9 @@ while (<>) { # read inputfile
             $parm =~ s{ZNO\(([^\,]+)\, *([^\)]+)\)([^\)])}  {new IntegersModMul\($2\)\.order\($1\)$3}g; # PARI's znorder(Mod(b,s)) -> new IntegersModMul(s).order(b)
             $parm =~ s{Z\_1\(}         {Z.NEG_ONE.pow\(}g;
             $parm =~ s{n\_1\(}         {(((n & 1) == 0) ? 1 : -1)}g;
+            #               1   1   2      2
+            $parm =~ s{ZRE\((\d+), *([^\)]+)\)} {Z.valueOf(((($2) & 1) == $1) ? 0 : (((($2) & 2) == 0) ? $1 : -$1))}g;
+            $parm =~ s{ZIM\((\d+), *([^\)]+)\)} {Z.valueOf(((($2) & 1) == 0 ) ? 0 : (((($2) & 2) == 0) ? $1 : -$1))}g;
             $parm =~ s{Z2\(}           {Z.TWO.pow\(}g;
 
             $parm =~ s{\.\*\(}         {.multiply\(}g;
