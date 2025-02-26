@@ -1,0 +1,46 @@
+---- 2025-02-23 21:58:06
+A194665	parmof3	1	A194662	() -> CR.SQRT2	+1	<n*r>+<k*r>  > 1, where < > = fractional part and r = sqrt(2); row sums of J164664.	nonn	1..10000
+A194666	parmof3	1	A194663	() -> CV(3).sqrt()	+1	<r^n>+<r^k>  > 1, where < > = fractional part and r = sqrt(3).	nonn	1..86
+A194668	parmof3	1	A194662	() -> CV(3).sqrt()	+1	<n*r>+<k*r>  > 1, where < > = fractional part and r = sqrt(3); row sums of J164667.	nonn	1..76
+A194669	parmof3	1	A194663	() -> CV(5).sqrt()	+1	<r^n>+<r^k>  > 1, where < > = fractional part and r = sqrt(5).	nonn	1..88
+A194671	parmof3	1	A194662	() -> CV(5).sqrt()	+1	<n*r>+<k*r>  > 1, where < > = fractional part and r = sqrt(5); row sums of J164670.	nonn	1..76
+A194676	parmof3	1	A194663	() -> CR.E	+1	<e^n>+<e^k>  > 1, where < > = fractional part.	nonn	1..79
+A194678	parmof3	1	A194662	() -> CR.E	+1	<n*e>+<k*e>  > 1	sums of J164677.	nonn	1..76
+A194680	parmof3	1	A194663	() -> CV(3).-(CR.SQRT2)	+1	<r^n>+<r^k>  > 1, where < > = fractional part and r = 3-sqrt(2).	nonn	1..5000
+A194682	parmof3	1	A194662	() -> CV(3).-(CR.SQRT2)	+1	<n*r>+<k*r>  > 1, where < > = fractional part and r = 3-sqrt(2); row sums of J164681.	nonn	1..5000
+A194684	parmof3	1	A194663	() -> CV(3).sqrt().+(1)./(2)	+1	<r^n>+<r^k>  > 1, where < > = fractional part and r = (1+sqrt(3))/2.	nonn	1..75
+A194686	parmof3	1	A194662	() -> CV(3).sqrt().+(1)./(2)	+1	<n*r>+<k*r>  > 1, where < > = fractional part and r = (1+sqrt(3))/2; row sums of J164685.	nonn	1..76
+A194734	parmof3	1	A194733	() -> CR.PHI.negate()	+1	{-k*r}       > {-n*r}            r = (1+sqrt(5))/2 (the golden ratio).	nonn	1..77
+A194736	parmof3	1	A194733	() -> CR.SQRT2.negate()	-1	{-k*sqrt(2)} < {-n*sqrt(2)}
+A194737	parmof3	1	A194733	() -> CR.SQRT2.negate()	+1	{-k*sqrt(2)} > {-n*sqrt(2)}
+A194738	parmof3	1	A194733	() -> CV(3).sqrt()	-1	{k*sqrt(3)}  < {n*sqrt(3)}
+A194739	parmof3	1	A194733	() -> CV(3).sqrt()	+1	{k*sqrt(3)}  > {n*sqrt(3)}
+A194740	parmof3	1	A194733	() -> CV(3).sqrt().negate()	-1	{-k*sqrt(3)} < {-n*sqrt(3)}
+A194741	parmof3	1	A194733	() -> CV(3).sqrt().negate()	+1	{-k*sqrt(3)} > {-n*sqrt(3)}
+A194742	parmof3	1	A194733	() -> CV(5).sqrt()	-1	{k*sqrt(5)}  < {n*sqrt(5)}
+A194743	parmof3	1	A194733	() -> CV(5).sqrt()	+1	{k*sqrt(5)}  > {n*sqrt(5)}
+A194744	parmof3	1	A194733	() -> CV(5).sqrt().negate()	-1	{-k*sqrt(5)} < {-n*sqrt(5)}
+A194745	parmof3	1	A194733	() -> CV(5).sqrt().negate()	+1	{-k*sqrt(5)} > {-n*sqrt(5)}
+A194746	parmof3	1	A194733	() -> CV(6).sqrt()	-1	{k*sqrt(6)}  < {n*sqrt(6)}
+A194747	parmof3	1	A194733	() -> CV(6).sqrt()	+1	{k*sqrt(6)}  > {n*sqrt(6)}
+A194748	parmof3	1	A194733	() -> CV(6).sqrt().negate()	-1	{-k*sqrt(6)} < {-n*sqrt(6)}
+A194749	parmof3	1	A194733	() -> CV(6).sqrt().negate()	+1	{-k*sqrt(6)} > {-n*sqrt(6)}
+A194750	parmof3	1	A194733	() -> CR.E	-1	{k*e}        < {n*e}
+A194751	parmof3	1	A194733	() -> CR.E	+1	{k*e}        > {n*e}
+A194752	parmof3	1	A194733	() -> CR.E.negate()	-1	{-k*e}       < {-n*e}
+A194753	parmof3	1	A194733	() -> CR.E.negate()	+1	{-k*e}       > {-n*e}
+A194754	parmof3	1	A194733	() -> CR.PI	-1	{k*Pi}       < {n*Pi}
+A194755	parmof3	1	A194733	() -> CR.PI	+1	{k*Pi}       > {n*Pi}
+A194756	parmof3	1	A194733	() -> CR.PI.negate()	-1	{-k*Pi}      < {-n*Pi}
+A194757	parmof3	1	A194733	() -> CR.PI.negate()	+1	{-k*Pi}      > {-n*Pi}
+A194758	parmof3	1	A194733	() -> CV(2).log()	-1	{k*log(2)}   < {n*log(2)}
+A194759	parmof3	1	A194733	() -> CV(2).log()	+1	{k*log(2)}   > {n*log(2)}
+A194760	parmof3	1	A194733	() -> CV(2).log().negate()	-1	{-k*log(2)}  < {-n*log(2)}
+A194761	parmof3	1	A194733	() -> CV(2).log().negate()	+1	{-k*log(2)}  > {-n*log(2)}
+A194762	parmof3	1	A194733	() -> CV(2).^(new Q(1,3))	-1	{k*2^(1/3)}  < {n*2^(1/3)}
+A194763	parmof3	1	A194733	() -> CV(2).^(new Q(1,3))	+1	{k*2^(1/3)}  > {n*2^(1/3)}, where { } = fractional part.	nonn,look	1..10000
+A194764	parmof3	1	A194733	() -> CV(2).^(new Q(1,3)).negate()	-1	{-k*2^(1/3)} < {-n*2^(1/3)}
+A194765	parmof3	1	A194733	() -> CV(2).^(new Q(1,3)).negate()	+1	{-k*2^(1/3)} > {-n*2^(1/3)}
+A194816	parmof3	1	A194814	() -> CR.SQRT2	+1	{n*r+k*r}    > {n*r-k*r}         r = sqrt(2).	nonn	1..73
+A194818	parmof3	1	A194814	() -> CV(3).sqrt()	+1	{n*r+k*r}    > {n*r-k*r}         r = sqrt(3).	nonn	1..73
+A194820	parmof3	1	A194814	() -> CR.E	+1	{n*e+k*e}    > {n*e-k*e}

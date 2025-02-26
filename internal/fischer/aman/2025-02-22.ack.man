@@ -1,0 +1,106 @@
+---- 2025-02-22 19:41:23
+---- 2025-02-22 19:54:24
+A035342	parmof3	1	A078739	3	1
+A076256	trilamb0	0	(n, k) -> ((n + k) & 1) == 0 ? Z_1((n + k)/2).*(FA(n)).*(BI(n + 1, k)) : ZV(0)
+A076257	trilamb0	0	(n, k) -> ((2*n - k) & 1) == 0 ? Z_1((2*n - k)/2).*(FA(n)).*(BI(n + 1, n - k)) : ZV(0)
+A076741	filter	0	new A076256()	NONZERO
+A076743	filter	0	new A076257()	NONZERO
+A078740	parmof3	1	A078739	3	2
+A078741	parmof3	1	A078739	3	3
+A090214	parmof3	1	A078739	4	4	{4,4}(n,k).       nonn,easy,tabf  1..10011        nyi     _Wolfdieter Lang_
+A090216	parmof3	1	A078739	5	5	{5,5}(n,k).       nonn,easy,tabf  1..28   nyi     _Wolfdieter Lang_
+A090216	parmof3	1	A078739	5	5	{5,5}(n,k).       nonn,easy,tabf  1..28   nyi     _Wolfdieter Lang_
+A090438	parmof3	1	A078739	4	2	(4,2).      nonn,easy,tabf  1..36   nyi     _Wolfdieter Lang_
+A090440	parmof3	1	A078739	4	3	(4,3).      nonn,easy,tabf  1..33   nyi     _Wolfdieter Lang_
+A091534	parmof3	1	A078739	5	2	(5,2).      nonn,easy,tabf  1..33   unkn    _Wolfdieter Lang_
+A091746	parmof3	1	A078739	6	2	(6,2).      nonn,easy,tabf  1..31   nyi     _Wolfdieter Lang_
+A091747	parmof3	1	A078739	7	2	(7,2).      nonn,easy,tabf  1..30   nyi     _Wolfdieter Lang_
+A091752	parmof3	1	A078739	-1	2	(-1,2) S2. Irregular triangle a(n, m) for n >= 1 and 2 <= m <= 2*n.  sign,easy,tabf  1
+A092077	parmof3	1	A078739	8	2	(8,2).      nonn,easy,tabf  1..36   nyi     _Wolfdieter Lang_
+A099174	trilamb0	0	(n, k) -> (((n - k) & 1) != 0) ? ZV(0) : FA(n)./(Z2((n - k)/2))./(FA((n - k)/2))./(FA(k))	T(n,k) = n!/(2^((n-k)/2)*((n-k)/2)!k!) if n-k >= 0 is even; 0 otherwise.	HermiteE_Triangle
+A136630	trilambn	0	0	0	(n, k) -> SU(0, k, j -> Z_1(k - j).*(ZV(2*j - k).^(n)).*(BI(k, j)))./(Z2(k).*(FA(k)))
+A137452	trilamb0	0	(n, k) -> (n == 0 && k == 0) ? ZV(1) : BI(n - 1, k - 1).*(ZV(-n).^(n - k))	if n = 0 and k = 0 then 1 else binomial(n-1, k-1)*(-n)^(n-k) fi	Abel_Triangle
+A154602	trilamb0	0	(n, k) -> SU(k, n, i -> Z2(n - i).*(BI(i, k)).*(S2(n, i)))
+A172094	trilamb0	0	(n, k) -> SU(0, n - k, j -> BI(n - 1, j).*(BI(n + 1, k + j + 1)).-(BI(n, j).*(BI(n, k + j + 1))).*(Z2(j)))	SchroederL_Triangle
+A185951	trilambn	1	1	1	(n, k) -> (k == n) ? ZV(1) : RU(0, k, j -> QV(2*j - k).^(n - k).*(BI(k, j))).*(BI(n, k))./(Z2(k)).num()
+A239204	holos	0	[[0],[2,-3,1],[0,9,-9],[2,27,19],[0,-9,-3]]	1	0	0
+A262704	trilamb0	0	(n, m) -> SU(0, n, j -> Z_1(n - j).*(BI(n, j)).*(BI(j, m).^(3)))	T_3(n,m) = Sum_{j=0..n} (-1)^(n-j)*C(n,j)*C(j,m)^3.
+A262705	trilamb0	0	(n, m) -> SU(0, n, j -> Z_1(n - j).*(BI(n, j)).*(BI(j, m).^(4)))	T_4(n,m) = Sum_{j=0..n} (-1)^(n-j)*C(n,j)*C(j,m)^3.
+A262706	trilamb0	0	(n, m) -> SU(0, n, j -> Z_1(n - j).*(BI(n, j)).*(BI(j, m).^(5)))	T_5(n,m) = Sum_{j=0..n} (-1)^(n-j)*C(n,j)*C(j,m)^3.
+A269940	trilamb0	0	(n, k) -> SU(0, k, m -> Z_1(m + k).*(BI(n + k, n + m)).*(SA(n + m, m)))	CentralCycle_Triangle
+A282132	lambdan	1	n -> RU(1, n, k -> (((k - 1) & 1) == 0) ? Q.ZERO : new Q((((k - 1) & 2) == 0) ? 1 : -1, k)).*(FA(n)).num()	a(n) = imag(n!*sum(k=1, n, I^(k-1)/k));
+A344392	tablamb	0	0	n -> new Integer[]{ 0, n/2 }	(n, k) -> FA(k).*(S2(n - k, k))	T(n, k) = k!*Stirling2(n - k, k), for n >= 0 and 0 <= k <= floor(n/2)
+A352687	trilamb0	0	(n, k) -> (k == n) ? ZV(1) : ((n > 0 && k == 0) ? ZV(0) : BI(n, k).*(BI(n - 1, k - 1))./(n - k + 1).-(BI(n - 1, k).*(2).*(BI(n - 1, k - 2))./(n - 1)))	T(n, n) = 1, T(n > 0, 0) = 0 and otherwise T(n, k) = binomial(n, k)*binomial(n - 1, k - 1)/(n - k + 1) - 2*binomial(n - 1, k)*binomial(n - 1, k - 2)/(n - 1) Narayana2_Triangle
+A354794	trilamb0	0	(n, k) -> (n == k) ? ZV(1) : RU(0, k - 1, j -> new Q(Z_1(j).*(ZV(n - j - 1).^(n-1)), FA(j).*(FA(k - 1 - j)))).num()	Lehmer_Triangle
+A355172	trilamb0	0	(n, k) -> (k == 0) ? ((n == 0) ? ZV(1) : ZV(0)) : ZV(2*n - 2*k + 3).*(FA(2*n + k - 1))./(FA(2*n + 1).*(FA(k - 1)))	for k > 0; T(n, 0) = 0^n.
+A356546	trilamb0	0	(n, k) -> Functions.POCHHAMMER.z(n + 1, n)./(FA(k).*(FA(n - k)))	k!*(n-k)!)	(n, k) -> pochhammer(n+1, n)/(k!*(n-k)!) Levin_Triangle
+A359760	trilamb0	0	(n, k) -> ((k & 1) != 0) ? ZV(0) : BI(n, k).*(FA(k))./(FA(k/2))./(Z2(k/2))	oddfactorial(k/2) if k is even, otherwise 0, where oddfactorial(z) := (2*z)!/(2^z*z!).	Bessel2_Triangle
+A361262	filnum	1	1	k -> CNT(0, 6, i -> Predicates.SEMIPRIME.is(k + i*i)).equals(ZV(7))	Numbers k such that k+i^2, i=0..6 are all semiprimes.	nonn	1..34	nyi	_Alexandru Petrescu_
+A361506	lambdan	0	n -> new Q(4,5).*(new Q(9, 4).^(n + 1) .-(1)).floor()	a(n) = floor( (4/5)*( (9/4)^(n+1)-1 ) ).	nonn	0..3
+A369381	trilambn	0	0	0	(n, k) -> BI(n + 1, k + 1).*(S2(n + k, k))	Triangle of numbers read by rows T(n,k) = binomial(n+1,k+1)*Stirling2(n+k,k).	nonn,tabl	0..33	nyi	_Igor Victorovich Statsenko_
+A370516	trilambn	0	0	0	(n, k) -> SU(0, n - k, j -> BI(n + 1, n - k - j).*(S2(j + 3, j + 1)).*(Z_1(j)))	T(n,k) = Sum_{i=0..n-k} binomial(n+1,n-k-i)*Stirling2(i+3,i+1)*(-1)^i for n >= 0, 0 <= k <= n.	tabl,sign	0..64	nyi	_Igor Victorovich Statsenko_
+A370518	trilambn	0	0	0	(n, k) -> SU(0, n, i -> BI(n, i).*(FA(n - i)).*(S1(i, k)).*(SU(0, n - i, j -> BI(n + 1, n - i - j).*(S2(j + 3, j + 1)).*(Z_1(j)))))	T(n,k) = Sum_{i=0..n} binomial(n,i)*(n-i)!*Stirling1(i,k)*TC(n,i) where TC(n,k) = Sum_{i=0..n-k} binomial(n+1,n-k-i)*Stirling2(i+3,i+1)*(-1)^(i) for n >= 0, 0 <= k <= n.	tabl,sign	0..65	nyi	_Igor Victorovich Statsenko_
+A371761	arrlamb	0	0	0	1	(n, k) -> SU(0, k, j -> Z_1(j - k).*(S2(k + 1, j + 1)).*(FA(j)).*(ZV(j).^(n)))	Parades_Triangle
+A374439	trilamb0	0	(n, k) -> { final int k1 = ((k & 1) == 1) ? 1 : 0; return Z2(k1).*(BI(n - k1 - (k - k1)/2, (k - k1)/2)); }	2^k' * binomial(n - k' - (k - k') / 2, (k - k') / 2) where k' = 1 if k is odd and otherwise 0.'
+A374440	trilamb0	0	(n, k) -> { final int ek = ((k & 1) == 0) ? 1 : 0; return (k == 0) ? ZV(1) : BI(n - k/2, (k + 1 - ek)/2).-(BI(n - (k + ek + 1)/2, k/2)); }	if k > 0, T(n, 0) = 1, where even(k) = 1 if k is even, otherwise 0.LucasPoly_Triangle
+A376582	trilambn	0	0	0	(n, k) -> RU(0, n - k, i -> new Q(S1(i + 1, 1).*(BI(n + 2, n - k - i)).*(FA(n + 1 - k)), FA(i + 1))).num()	T(m,n,k) = Sum_{i=0..n-k} Stirling1(i+m,m)*binomial(n+m+1,n-k-i)*(n+m-k)!/(i+m)!, for m=1.
+A376634	trilambn	0	0	0	(n, k) -> RU(0, n - k, i -> new Q(S1(i + 2, 2).*(BI(n + 3, n - k - i)).*(FA(n + 2 - k)), FA(i + 2))).num()	Triangle read by rows: T(n, k) = Sum_{i=0..n-k} Stirling1(i + m, m)*binomial(n+m+1, n-k-i)*(n + m - k)!/(i + m)!, for m = 2.	nonn,tabl	0..65	nyi	_Igor Victorovich Statsenko_
+A376863	trilambn	0	0	0	(n, k) -> SU(0, n, i -> SU(i, n, j -> S1(n - j, k).*(BI(n + 1, i)).*(BI(n, j)).*(BI(j, i)).*(FA(i))))	T(m, n, k) = Sum_{i=0..n} Sum_{j=i..n} Stirling1(n-j, k) * binomial(n+m, i) * binomial(n, j)* binomial(j, i) * i! * m^(j - i), for m = 1.
+A377058	trilambn	0	0	0	(n, k) -> SU(0, n, i -> SU(i, n, j -> S1(n - j, k).*(BI(n + 2, i)).*(BI(n, j)).*(BI(j, i)).*(FA(i)).*(Z2(j - i))))	T(m, n, k) = Sum_{i=0..n} Sum_{j=i..n} Stirling1(n-j, k)*binomial(n+m, i)*binomial(n, j)* binomial(j, i)*i!*m^(j-i), for m = 2.
+A381140	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(ZV(k+1).^(k-1)))
+A381141	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a185951(n, k)).*(ZV(k+1  ).^(k-1)))
+A381142	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a136630(n, k)).*(ZV(k+1  ).^(k-1)))
+A381143	lambdan	0	n -> RU(0, n, k -> QV(a185951(n, k)).*(QV(n+1).^(k-1))).num()
+A381144	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(QV(a185951(n, k)).*(QV(n+1  ).^(k-1)))).num()
+A381145	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(QV(a136630(n, k)).*(QV(n+1  ).^(k-1)))).num()
+A381146	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(QV(a185951(n, k)).*(QV(n-k+1).^(k-1)))).num()
+A381147	lambdan	0	n -> RU(0, n, k -> QV(a136630(n, k)).*(QV(n-k+1).^(k-1))).num()
+A381148	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(QV(a136630(n, k)).*(QV(n-k+1).^(k-1)))).num()
+A381171	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(FA(k).*(BI(n+1, k))./(n+1)))
+A381172	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(FA(k).*(BI(n+2*k+1, k))./(n+2*k+1)))
+A381173	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a185951(n, k)).*(FA(k).*(BI(n+1,     k))./(n+1    )))
+A381174	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a185951(n, k)).*(FA(k).*(BI(n+k+1,   k))./(n+k+1  )))
+A381175	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a185951(n, k)).*(FA(k).*(BI(n+2*k+1, k))./(n+2*k+1)))
+A381176	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a185951(n, k)).*(FA(k).*(BI(n-k+1,   k))./(n-k+1  )))
+A381177	lambdan	0	n -> SU(0, n, k -> a136630(n, k).*(FA(k).*(BI(n+2*k+1, k))./(n+2*k+1)))
+A381179	lambdan	0	n -> SU(0, n, k -> a136630(n, k).*(FA(k).*(BI(n-k+1, k))./(n-k+1)))
+A381180	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a136630(n, k)).*(FA(k).*(BI(n-k+1,   k))./(n-k+1  )))
+A381181	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a136630(n, k)).*(FA(k).*(BI(n+1,     k))./(n+1    )))
+A381182	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a136630(n, k)).*(FA(k).*(BI(n+2*k+1, k))./(n+2*k+1)))
+A381206	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(FA(k+1)))
+A381207	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(FA(k+2)))./(2)
+A381208	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a185951(n, k)).*(FA(k+1)))
+A381209	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a185951(n, k)).*(FA(k+2)))./(2)
+A381210	lambdan	0	n -> SU(0, n, k -> a136630(n, k).*(FA(k+2)))./(2)
+A381211	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a136630(n, k)).*(FA(k+2)))./(2)
+A381260	lambdan	0	n -> RU(0, n, k -> QV(2*k + 1).^(k - 1).*(a185951(n, k))).num()	Sum{k=0..n} (2*k+1)^(k-1) * A185951(n,k).
+A381260	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(ZV(2*k+1).^(k-1)))
+A381261	lambdan	0	n -> RU(0, n, k -> QV(2*k + 1).^(k - 1).*(a185951(n, k)).*(new Zi(0, 1).^(n - k).re())).num()	Sum{k=0..n} (2*k+1)^(k-1) * i^(n-k) * A185951(n,k)
+A381261	lambdan	0	n -> SU(0, n, k -> new Zi(0, 1).^(n-k).re().*(a185951(n, k)).*(ZV(2*k+1).^(k-1)))
+A381262	lambdan	0	n -> RU(0, n, k -> QV(2*k + 1).^(k - 1).*(a136630(n, k))).num()	sum(k=0, n, (2*k+1)^(k-1)*a136630(n, k));
+A381263	lambdan	0	n -> RU(0, n, k -> QV(2*k + 1).^(k - 1).*(a136630(n, k)).*(new Zi(0, 1).^(n - k).re())).num()	sum(k=0, n, (2*k+1)^(k-1)*I^(n-k)*a136630(n, k))
+A381264	decexp	0	() -> CV(2)./(CR.PHI.*(CV(3).sqrt()))	2/(sqrt(3)*A001622)
+A381273	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(ZV(2).^(n-k)))
+A381274	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(ZV(3).^(n-k)))
+A381275	lambdan	0	n -> SU(0, n, k -> new Zi(0, 2).^(n-k).re().*(a185951(n, k)))
+A381276	lambdan	0	n -> SU(0, n, k -> new Zi(0, 3).^(n-k).re().*(a185951(n, k)))
+A381277	lambdan	0	n -> SU(0, n, k -> a136630(n, k).*(ZV(3).^(n-k)))
+A381278	lambdan	0	n -> SU(0, n, k -> new Zi(0, 3).^(n-k).re().*(a136630(n, k)))
+A381280	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(ZV(2).^(n-k)).*(FA(k)))
+A381281	lambdan	0	n -> SU(0, n, k -> a185951(n, k).*(ZV(3).^(n-k)).*(FA(k)))
+A381282	lambdan	0	n -> SU(0, n, k -> new Zi(0, 2).^(n-k).re().*(a185951(n, k)).*(FA(k)))
+A381283	lambdan	0	n -> SU(0, n, k -> new Zi(0, 3).^(n-k).re().*(a185951(n, k)).*(FA(k)))
+A381284	lambdan	0	n -> SU(0, n, k -> a136630(n, k).*(ZV(3).^(n-k)).*(FA(k)))
+A381285	lambdan	0	n -> SU(0, n, k -> new Zi(0, 2).^(n-k).re().*(a136630(n, k)).*(FA(k)))
+A381286	lambdan	0	n -> SU(0, n, k -> new Zi(0, 3).^(n-k).re().*(a136630(n, k)).*(FA(k)))
+A381300	lambdan	0	n -> RU(0, n, k -> QV(FA(k)).*(BI(new Q(n + k + 2, 2), k))./(new Q(n + k + 2, 2)).*(a185951(n, k))).num()
+A381301	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(FA(k)).*(BI(new Q(n - k + 2, 2), k)./(new Q(n - k + 2, 2)).*(a185951(n, k)))).num()	a(n) = sum(k=0, n, k!*binomial(n/2-k/2+1, k)/(n/2-k/2+1)*I^(n-k)*a185951(n, k))
+A381302	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(FA(k)).*(BI(new Q(n + k + 2, 2), k)./(new Q(n + k + 2, 2)).*(a185951(n, k)))).num()
+A381303	lambdan	0	n -> RU(0, n, k -> QV(FA(k)).*(BI(new Q(n - k + 2, 2), k))./(new Q(n - k + 2, 2)).*(a136630(n, k))).num()
+A381304	lambdan	0	n -> RU(0, n, k -> QV(FA(k)).*(BI(new Q(n + k + 2, 2), k))./(new Q(n + k + 2, 2)).*(a136630(n, k))).num()
+A381305	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(BI(new Q(n - k + 2, 2), k)./(new Q(n - k + 2, 2)).*(FA(k)).*(a136630(n, k)))).num()	a(n) = sum(k=0, n, k!*binomial(n/2-k/2+1, k)/(n/2-k/2+1)*I^(n-k)*a136630(n, k));
+A381306	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(BI(new Q(n + k + 2, 2), k)./(new Q(n + k + 2, 2)).*(FA(k)).*(a136630(n, k)))).num()
+A381307	lambdan	0	n -> RU(0, n, k -> new Q(n - k + 2, 2).^(k-1).*(a185951(n, k))).num()	a(n) = sum(k=0, n, (n/2-k/2+1)^(k-1)*a185951(n, k));
+A381308	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(new Q(n - k + 2, 2).^(k-1).*(a185951(n, k)))).num()	a(n) = sum(k=0, n, (n/2-k/2+1)^(k-1)*I^(n-k)*a185951(n, k));
+A381309	lambdan	0	n -> RU(0, n, k -> new Q(n - k + 2, 2).^(k-1).*(a136630(n, k))).num()
+A381310	lambdan	0	n -> RU(0, n, k -> QV(new Zi(0, 1).^(n-k).re()).*(new Q(n - k + 2, 2).^(k-1).*(a136630(n, k)))).num()

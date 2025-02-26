@@ -1,0 +1,192 @@
+---- 2025-02-10 20:10:56
+---- 2025-02-10 20:15:11
+---- 2025-02-10 20:51:06
+---- 2025-02-10 21:25:55
+A078995	holos	0	[[0],[-276480,1511424,-2752512,2031616,-524288],[29160,-176304,378624,-345600,110592],[0,1782,-9315,13851,-5832]]	1,8	0	0
+A137721	partsun	1	new A137794()			Partial sums of A137794. - _Reinhard Zumkeller_, Feb 11 2008
+A145161	convprod	0	3	new A145160()	Self-convolution cube of A145160.
+A239108	poly	0	"[[1]]"	",1,A,^4,<1,+,1,A,^5,<1,+,*"	A(x) = (1 + x*A(x)^4) * (1 + x*A(x)^5).
+A239109	poly	0	"[[1]]"	",1,A,^5,<1,+,1,A,^6,<1,+,*"	A(x) = (1 + x*A(x)^5) * (1 + x*A(x)^6).A(x) = (1 + x*A(x)^5) * (1 + x*A(x)^6).
+A258925	polyz	0	"[[1],[1,0,0,0,0,1]]"	",1,p1,/,int,rev"	0	1	1	5	(1) A(x) = Series_Reversion( Integral 1/(1+x^5) dx ).
+A264224	polyx	1	"[[0,1],[0,0,1],[1,-4]]"	",p1,p2,/,sub,sqrt"	1	0	A(x)^2 = A( x^2/(1-4*x) )
+A264225	polyx	1	"[[0,1],[0,0,1],[1,-6]]"	",p1,p2,/,sub,sqrt"	1	0	A(x)^2 = A( x^2/(1-6*x) )
+A264226	polyx	1	"[[0,1],[0,0,1],[1,-8]]"	",p1,p2,/,sub,sqrt"	1	0	A(x)^2 = A( x^2/(1-8*x) )
+A264227	polyx	1	"[[0,1],[0,0,1],[1,-10]]"	",p1,p2,/,sub,sqrt"	1	0	A(x)^2 = A( x^2/(1-10*x) )
+A279843	polyx	1	"[[1],[0,-2]]"	",p1,x,A,int,-,rev,3,*,+"	0	1	A(x) = -2*x + 3 * Series_Reversion(x - Integral A(x) dx).
+A280570	polyx	1	"[[1],[0,-3]]"	",p1,x,A,int,-,rev,4,*,+"	0	1	A(x) = -3*x + 4 * Series_Reversion(x - Integral A(x) dx).
+A280572	polyx	1	"[[1],[0,-4]]"	",p1,x,A,int,-,rev,5,*,+"	0	1	A(x) = -4*x + 5 * Series_Reversion(x - Integral A(x) dx).
+A292396	polyz	1	"[[1]]"	",A,cosh,x,cos,/,int"	0	1	1	2	A(x) = Integral cosh(A(x)) / cos(x) dx.
+A302101	poly	0	"[[1]]"	",1,A,A,dif,x,*,4,*,+,<1,A,A,dif,<1,+,/,+"	G.f. A(x) satisfies: A(x) = 1 + x * (A(x) + 4*x*A'(x)) / (A(x) + x*A'(x)).
+A343439	poly	0	"[[1],[0,2]]"	",1,x,p1,sub,/,+"	G.f.: 1 + 2^0*x/(1 + 2^1*x/(1 + 2^2*x/(1 + 2^3*x/(1 + 2^4*x/(1 + ...))))).
+A350106	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> ZV(n/j).^(k).*(j))
+A350122	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> ZV(n/(2*j-1)).^(k))
+A350161	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> Z_1(j + 1).*(ZV(n/(2*j-1)).^(k)))
+A350900	trilambn	1	1	1	(n, k) -> SU(1, n, i -> GCD(i,n)./(GCD(GCD(i, k), ZV(n))))
+A351339	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> ZV(k).^(j).*(ZV(j).^(n - j)))
+A351839	trilambn	1	1	1	(n, k) -> SD(k, d -> Z2(k/d).*(MU(d))).*(SU(1, n/k, m -> BI(n, k*m)))
+A354810	filtpos	1	1	new A346242()	v -> v.equals(ZV(0))
+A354811	filtpos	1	1	new A346242()	v -> v.equals(ZV(1))
+A354812	filtpos	1	1	new A346242()	v -> v.equals(ZV(2))
+A354813	filtpos	1	1	new A346242()	v -> v.equals(ZV(3))
+A354814	filtpos	1	1	new A346242()	v -> v.equals(ZV(4))
+A354815	filtpos	1	1	new A354347()	v -> v.equals(ZV(0))
+A354816	filtpos	1	1	new A354347()	v -> v.equals(ZV(-1))
+A354822	filtpos	1	1	new A346242()	v -> v.equals(ZV(-2))
+A355607	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> QV(S1(n - k*j, j))./(FA(n - k*j))                             ).*(FA(n)).num()
+A355609	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> QV(SA(n - k*j, j))./(FA(n - k*j))                             ).*(FA(n)).num()
+A355610	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> QV(SA(n - k*j, j))./(FA(k).^(j).*(FA(n - k*j))          )         ).*(FA(n)).num()
+A355619	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> QV(S1(n - k*j, j))./(FA(k).^(j).*(FA(n - k*j))          )         ).*(FA(n)).num()
+A355650	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> QV(S2(n - k*j, j))./(FA(k).^(j).*(FA(n - k*j))          )         ).*(FA(n)).num()
+A355652	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> QV(SA(n - k*j, j)).*(FA(j))./(FA(k).^(j).*(FA(n - k*j)) )         ).*(FA(n)).num()
+A355665	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> QV(SA(n - k*j, j)).*(FA(j))./(FA(n - k*j))                    ).*(FA(n)).num()
+A355666	arrlamb	0	0	0	-1	(n, k) -> RU(0, n/(k+1), j -> QV(S2(n - k*j, j)).*(FA(j))./(FA(k).^(j).*(FA(n - k*j))  )        ).*(FA(n)).num()
+A355996	trilambn	1	1	1	(n, k) -> FA(n)./(FA(k).*(FA(n/k)))	Triangle T(n,k), n >= 1, 1 <= k <= n, read by rows, where T(n,k) = n!/(k! * floor(n/k)!).
+A356013	trilambn	1	1	1	(n, k) -> FA(n)./(FA(k).*(n/k))	Triangle T(n,k), n >= 1, 1 <= k <= n, read by rows, where T(n,k) = n!/(k! * floor(n/k)).
+A356070	decexp	5	() -> CV(new Z("9460730472580800"))./(CV(149597870700L))
+A356526	decexp	3	() -> CV(101325)./(CV("133.322387415"))
+A357119	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> SA(n, k*j))	T(n,k) = Sum_{j=0..n} |Stirling1(n,k*j)|.
+A357293	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> S2(n, k*j))
+A357681	arrlamb	0	0	0	-1	(n, k) -> SU(0, n/2, j -> ZV(k).^(j).*(S2(n, 2*j)))
+A357712	arrlamb	0	0	0	-1	(n, k) -> SU(0, n/2, j -> ZV(k).^(j).*(SA(n, 2*j)))
+A357720	arrlamb	0	0	0	-1	(n, k) -> SU(0, n/2, j -> ZV(-k).^(j).*(S1(n, 2*j)))
+A357728	arrlamb	0	0	0	-1	(n, k) -> SU(0, n/2, j -> ZV(-k).^(j).*(S2(n, 2*j)))
+A357868	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> FA(k*j).*(S2(n, k*j)))
+A357869	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> QV(FA(k*j)).*(S2(n, k*j))./(FA(j))).num()
+A357881	arrlamb	0	0	0	-1	(n, k) -> SU(0, n, j -> FA(k*j).*(SA(n, k*j)))
+A357882	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> QV(FA(k*j)).*(SA(n, k*j))./(FA(j))).num()
+A357883	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> QV(FA(k*j)).*(SA(n, k*j))./(FA(k).^(j).*(FA(j)))).num()
+A360962	arrlamb	0	0	0	1	(n, k) -> ZV(k).*((3+6*n)*k-1)./(2)
+A361654	trilambn	1	1	1	(n, k) -> SU(0, n-k, j -> BI(2*j+k-2, j))
+A361839	arrlamb	0	0	0	-1	(n, k) -> RU(0, n, j -> BI(new Q(-1, 3), j).*(BI(k*j, n - j)).*(ZV(-9).^(j))).num()	T(n,k) = Sum_{j=0..n} (-9)^j * binomial(-1/3,j) * binomial(k*j,n-j).
+A363418	arrlamb	1	1	1	1	(n, k) -> SU(0, k, j -> BI(k, j).*(BI((n + 1)*k - j - 1, n*k - j)))
+A364390	trilambn	1	1	1	(n, k) -> ZV(n).*(n + 1)./(2).+((n - 1)*(n & 1) - 2*k + 3 - (k & 1))	T(n, k) = n*(n+1)/2 + (n-1)*(n mod 2) - 2*k + 3 - (k mod 2)
+A364518	arrlamb	0	0	0	1	(n, k) -> SU(0, 2*k, j -> BI((n+2)*k, j).*(BI(n*k-j-1, 2*k-j)))
+A364519	arrlamb	0	0	0	1	(n, k) -> SU(0, 3*k, j -> BI((n+3)*k, j).*(BI(n*k-j-1, 3*k-j)))
+A364898	decexp	2	() -> CV("0.45359237")./(CV("0.3048").^(3))
+A364899	decexp	1	() -> CV("28.349523125")./(CV("2.54").^(3))
+A365962	trilambn	0	0	0	(n, k) -> SU(k, n, j -> FI(j - k + 1).*(BI(2, n - j))).*(FA(n))./(FA(k))	n!/k!*SU(j=k, n, fibonacci(j-k+1)*BI(2,n-j))
+A365968	tablamb	0	0	n -> new Integer[]{ 0, (1 << n) - 1 }	(n, k) -> SU(0, n-1, i -> ZV(k).testBit(i) ? ZV(i + 1) : ZV(-i - 1))	if(bittest(k,i), i+1, -(i+1)))
+A366159	trilambn	2	2	2	(n, k) -> SU(0, k - 2, i -> Z_1(i + 2).*(ZV(k - i - 1).^(n)).*(BI(k, i)))	T(n, k) = Sum_{i=0..k-2} (-1)^(i+2) * (k-i-1)^n * binomial(k,i).
+A366256	filtpos	1	0	new A303767()	v -> v.testBit(0)	(A303767(n)%2)
+A366257	filtpos	1	0	new A303767()	v -> !v.testBit(0)	!(A303767(n)%2)
+A366292	dirichinv	1	new A353271()	1	Dirichlet inverse of A353271, where A353271(n) is the numerator of n / A005940(1+(3*A156552(n))).
+A368809	lingf	1	0,1,5,-22,8	1,-36,413,-1642,2536,-1152					0
+A370374	decexp	0	() -> CV(2).log().*(2).-(X006752.*(4)./(CR.PI))	2*log(2) - 4*Catalan/Pi
+A370477	holos	0	[[0],[30,-22,4],[12,16,-9],[-6,10,6],[0,-4,-1]]	1	0	0
+A370478	holos	0	[[0],[30,-22,4],[35,8,-9],[-5,20,6],[0,-6,-1]]	1	0	0
+A370527	trilambn	1	1	1	(n, k) -> RU(0, n/k-1, j -> QV(Z_1(j)).*(FA(n-(k-1)*(j+1)))./(FA(j))).num()
+A370797	polyx	0	"[[1],[1,-1,0,-1]]"	",x,x,1,p1,/,+,/,rev,x,/"	1	0	reverse(x/(x+1/(1-x-x^3)))/x)
+A370798	polyx	0	"[[1],[1,-1,0,0,-1]]"	",x,x,1,p1,/,+,/,rev,x,/"	1	0	reverse(x/(x+1/(1-x-x^4)))/x)
+A370799	polyx	0	"[[1],[1,-1,1]]"	",x,x,1,p1,/,+,/,rev,x,/"	1	0	reverse(x/(x+1/(1-x+x^2)))/x)
+A370800	polyx	0	"[[1],[1,-1,0,1]]"	",x,x,1,p1,/,+,/,rev,x,/"	1	0	reverse(x/(x+1/(1-x+x^3)))/x)
+A370801	polyx	0	"[[1],[1,-1,0,0,1]]"	",x,x,1,p1,/,+,/,rev,x,/"	1	0	reverse(x/(x+1/(1-x+x^4)))/x)
+A370825	lambdan	1	n -> new Q(ZV(3).^(n).-(1), Z2(n).-(1)).*(new Q(3, 4)).num()	numerator((3/4) * (3^n - 1) / (2^n - 1));
+A370826	lambdan	1	n -> new Q(ZV(3).^(n).-(1), Z2(n).-(1)).*(new Q(3, 4)).den()	denominator((3/4) * (3^n - 1) / (2^n - 1));
+A370827	lambdan	1	n -> new Q(3, 5).^(n).*(new Q(5, 2).^(n).-(1))./(QV(1).-(new Q(3, 5).^(n))).*(new Q(2, 3)).num()	numerator((2/3) * (3/5)^n * ((5/2)^n - 1) / (1 - (3/5)^n))
+A370828	lambdan	1	n -> new Q(3, 5).^(n).*(new Q(5, 2).^(n).-(1))./(QV(1).-(new Q(3, 5).^(n))).*(new Q(2, 3)).den()	denominat((2/3) * (3/5)^n * ((5/2)^n - 1) / (1 - (3/5)^n))
+A372606	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> PHI(k*j))
+A372619	arrlamb	1	1	1	-1	(n, k) -> SU(1, n, j -> PHI(k*j))./(PHI(k))
+A373050	trilambn	0	0	0	(n, k) -> RU(0, n-k, i -> new Q(Z_1(i).*(BI(n - k, i)).*(FA(n + 2 - i)).*(BI(n, k)), ZV(k + 1).*(k + 2))).num()
+A373384	filtpos	1	1	new A373383()	v -> v.testBit(0)	A373383
+A373492	filtpos	1	1	new A373491()	v -> v.testBit(0)	A373491
+A373494	filtpos	1	1	new A373493()	v -> v.testBit(0)	A373493
+A373717	arrlamb	0	0	0	-1	(n, k) -> SU(0, k*n/(2*k+1), j -> BI(k*(n-2*j), j))
+A373847	filtpos	1	1	new A373842()	(n, v) -> v.compareTo(ZV(n)) <= 0	(A373842(n)<=n)
+A374473	filtpos	1	1	new A374471()	v -> !v.testBit(0)	A374471(n)
+A375853	trilambn	2	2	1	(n, k) -> ZV(k).*(n - k).*(BI(2*n + 2, 2*k + 1))./(4*n + 2)	T(n, k) = k*(n - k)*binomial(2*n+2, 2*k+1)/(4*n + 2) for 1 <= k <= n-1.
+A375901	decexp	0	() -> CR.ONE.-(CV("0.75").*(Zeta.zeta(2))).+(Zeta.zeta(2).*(Zeta.zeta(3)./(6)))	1 - 3/4 * zeta(2) + 1/6 * zeta(2) * zeta(3).
+A375959	partprod	1	new A006257().skip(1)			Partial products of A006257.
+A376330	decexp	-23	() -> CV("1.380649").*(CV(2).log())./(CV(10).^(23))	e-23*log(2)
+A377918	holos	1	[0,-1,-5,-9,-5,5,10,6,-1]	1,11,77,566,4197,31148,231193,1716043	0	0	a(n) = index in A377912 (or, equally, in A342042) of the first n-digit term.
+A378213	dirichinv	1	new A140773()	1	Dirichlet inverse of A140773.
+A378455	lingf	1	0,1272,2644,1412,497,460,44,40	1,0,-1					0
+A378483	convprod	0	3	new A005809()
+A378484	convprod	0	4	new A005810()
+A378503	convprod	0	3	new A005810()
+A378504	convprod	0	4	new A005809()
+A378569	lingf	0	7,-8,7	1,-3,3,-1					0
+A378685	lambdan	0	n -> { final int r=1; final int s= 1; final int t=7; final int u=3; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378686	lambdan	0	n -> { final int r=3; final int s= 1; final int t=7; final int u=3; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378690	lambdan	0	n -> { final int r=2; final int s= 1; final int t=7; final int u=2; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378692	lambdan	0	n -> { final int r=1; final int s= 1; final int t=7; final int u=1; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378693	lambdan	0	n -> { final int r=6; final int s= 1; final int t=7; final int u=6; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378694	lambdan	0	n -> { final int r=1; final int s= 1; final int t=7; final int u=6; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378730	lambdan	0	n -> { final int r=2; final int s= 1; final int t=0; final int u=3; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378731	lambdan	0	n -> { final int r=3; final int s= 1; final int t=0; final int u=4; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378732	lambdan	0	n -> { final int r=4; final int s= 1; final int t=0; final int u=4; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378733	lambdan	0	n -> { final int r=1; final int s= 4; final int t=0; final int u=2; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378754	dirichcon2	1	new SingleTransformSequence(1, (term, n) -> term.negate(), "", new A252748())	1	new A323910()	1	Dirichlet convolution of -A252748 and A323910.
+A378757	dirichcon2	1	new A000203()	1	new A346237()	1	Dirichlet convolution of sigma and the Dirichlet inverse of A005187 (A346237).
+A378801	lambdan	0	n -> { final int r=3; final int s= 1; final int t=0; final int u=2; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378828	lambdan	0	n -> { final int r=3; final int s= 1; final int t=2; final int u=4; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378858	lambdan	0	n -> { final int r=4; final int s= 1; final int t=0; final int u=3; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378882	lambdan	0	n -> { final int r=3; final int s= 1; final int t=3; final int u=5; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(n+(s-1)*k-1, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378889	lambdan	0	n -> { final int r=3; final int s=-1; final int t=4; final int u=1; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(s*k, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378890	lambdan	0	n -> { final int r=3; final int s=-1; final int t=5; final int u=2; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(s*k, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378891	lambdan	0	n -> { final int r=3; final int s=-1; final int t=6; final int u=3; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(s*k, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378947	lambdan	0	n -> RU(1, (n+1)/2, k -> QV(BI(n+1, 2*k).+(BI(n,2*k).*(2)).+(BI(n-1,2*k))).*(BI(2*k, k))./(k+1)).num().+(1)
+A378951	lambdan	0	n -> { final int r=3; final int s=-1; final int t=5; final int u=3; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(s*k, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378952	lambdan	0	n -> { final int r=3; final int s=-1; final int t=6; final int u=4; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(s*k, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A378954	lambdan	0	n -> { final int r=2; final int s=-1; final int t=6; final int u=4; return RU(0, n, k -> QV(BI(t*k+u*(n-k)+r, k)).*(BI(s*k, n-k))./(t*k+u*(n-k)+r)).*(r).num(); }
+A380040	lambdan	0	n -> RU(0, n, k -> QV(3).^(k).*(ZV(k).^(n-k)).*(BI(new Q(2*n+k+2, 3), k))./(ZV(2*n+k+2).*(FA(n - k)))).*(FA(n)).*(2).num()
+A380192	sintrif	1	(term, n) -> term.mod(Z.TEN)	""	new A007605()
+A380237	multraf	1	(self, n) -> self.s(0).+(self.s(1))./(2)	""	new A210736(), new A060404()
+A380288	lambdan	1	n -> SD(n, d -> IV[!Z2(d).-(1).IPP()])
+A380339	lambdan	0	n -> RU(1, n/3, k -> QV(Z_1(k-1).*(FA(k - 1)).*(SA(n-2*k, k)))./(Z2(k).*(FA(n-2*k)))).*(FA(n)).num()
+A380353	lingf	1	0,1,7,14,7,1	1,-5,10,-10,5,-1					0
+A380370	lambdan	0	n -> RU(1, n/5, k -> QV(Z_1(k-1).*(FA(5*k)).*(SA(n, 5*k)))./(QV(120).^(k).*(k))).num()
+A380384	lingf	0	0,1,0,1	1,-3,1,3,-2					0
+A380398	lambdan	1	n -> SD(n, d -> IV[Functions.GCD.i(d, n/d) == 1 && (d == 1 || Predicates.POWER.is(d))])
+A380399	lambdan	1	n -> SD(n, d -> IV[Functions.GCD.i(d, n/d) >  1 && (d == 1 || Predicates.POWER.is(d))])
+A380400	lambdan	1	n -> SD(n, d -> IV[Functions.GCD.i(d, n/d) == 1 && (d == 1 || Predicates.POWER.is(d))].*(d))
+A380502	lingf	0	1,-6,48,118,303,132,34	1,-7,21,-35,35,-21,7,-1					0
+A380511	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(BI(2*n+k, k))./(FA(n - k -1).*(2*n+k))).*(FA(n).*(2)).num()
+A380513	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(BI(n+3*k, k)  )./(FA(n - k -1).*(n+3*k))).*(FA(n)).num()
+A380514	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(BI(2*n+2*k, k))./(FA(n - k -1).*(2*n+2*k))).*(FA(n).*(2)).num()
+A380515	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(BI(3*n+k, k)  )./(FA(n - k -1).*(3*n+k)  )).*(FA(n).*(3)).num()
+A380603	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(2).^(n-k).*(BI(2*n+k, k))./(FA(n - k -1).*(2*n+k)  )).*(FA(n).*(2)).num()
+A380605	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(2).^(n-k).*(BI(3*n+k, k))./(FA(n - k -1).*(3*n+k)  )).*(FA(n).*(3)).num()
+A380606	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(3).^(n-k).*(BI(3*n+k, k))./(FA(n - k -1).*(3*n+k)  )).*(FA(n).*(3)).num()
+A380640	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(2).^(k)  .*(BI(2*n+k, k))./(FA(n - k -1).*(2*n+k)  )).*(FA(n).*(2)).num()
+A380643	lambdan	0	n -> (n==0) ? ZV(1) : RU(0, n-1, k -> QV(3).^(k)  .*(BI(3*n+k, k))./(FA(n - k -1).*(3*n+k)  )).*(FA(n).*(3)).num()
+A380646	lambdan	0	n -> RU(0, n, k -> QV(2*n+2).^(k-1).*(BI(2*n+2, n-k))./(FA(k))).*(FA(n).*(2)).num()
+A380647	lambdan	0	n -> RU(0, n, k -> QV(3*n+3).^(k-1).*(BI(3*n+3, n-k))./(FA(k))).*(FA(n).*(3)).num()
+A380648	lambdan	0	n -> RU(0, n, k -> QV(4*n+4).^(k-1).*(BI(4*n+4, n-k))./(FA(k))).*(FA(n).*(4)).num()
+A380651	lingf	0	1,-7,13	1,-10,33,-36					0
+A380762	lambdan	0	n -> { final int q=1; final int r=1; final int s=1; final int t= 2; final int u=1; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380764	lambdan	0	n -> { final int q=1; final int r=1; final int s=0; final int t=-1; final int u=2; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380765	lambdan	0	n -> { final int q=1; final int r=1; final int s=0; final int t=-2; final int u=2; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380768	lambdan	0	n -> { final int q=1; final int r=2; final int s=1; final int t= 1; final int u=1; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380769	lambdan	0	n -> { final int q=1; final int r=2; final int s=0; final int t= 1; final int u=1; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380771	lambdan	0	n -> { final int q=1; final int r=2; final int s=1; final int t= 1; final int u=1; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380772	lambdan	0	n -> { final int q=1; final int r=2; final int s=0; final int t= 1; final int u=1; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380773	lambdan	0	n -> { final int q=1; final int r=1; final int s=0; final int t=-1; final int u=2; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380774	lambdan	0	n -> { final int q=1; final int r=1; final int s=0; final int t=-2; final int u=2; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380778	lambdan	0	n -> { final int q=1; final int r=1; final int s=1; final int t=-2; final int u=2; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380779	lambdan	0	n -> { final int q=1; final int r=1; final int s=1; final int t=-1; final int u=2; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380780	lambdan	0	n -> { final int q=1; final int r=1; final int s=1; final int t= 1; final int u=2; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380781	lambdan	0	n -> { final int q=1; final int r=1; final int s=1; final int t= 2; final int u=2; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI( r*u *n+((s-r)*u+t)*k+q*u, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380800	lambdan	0	n -> { final int q=2; final int r=1; final int s=1; final int t= 2; final int u=3; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380801	lambdan	0	n -> { final int q=2; final int r=1; final int s=1; final int t= 2; final int u=0; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380808	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+k+2).^(k).*(BI(n, k))./(FA(k+1)))).num()	""		a(n) = n!*RU(k=0, n, (n+k+2)^k*BI(n, k)/(k+1)!)	_	_	_
+A380826	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+2*k+3).^(k).*(BI(n, k))./(FA(k+1)))).num()	""		a(n) = n!*RU(k=0, n, (n+2*k+3)^k*BI(n, k)/(k+1)!)	_	_	_
+A380828	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n+2).^(k).*(BI(n, k))./(FA(k+1)))).num()	""		a(n) = n!*RU(k=0, n, (2*n+2)^k*BI(n, k)/(k+1)!)	_	_	_
+A380829	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n+k+3).^(k).*(BI(n, k))./(FA(k+1)))).num()	""		a(n) = n!*RU(k=0, n, (2*n+k+3)^k*BI(n, k)/(k+1)!)	_	_	_
+A380830	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*n+3).^(k).*(BI(n, k))./(FA(k+1)))).num()	""		a(n) = n!*RU(k=0, n, (3*n+3)^k*BI(n, k)/(k+1)!)	_	_	_
+A380842	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(k+n-1, k))./(FA(n-k)))).num()	""		a(n) = n!*RU(k=0, n, k^(n-k)*BI(k+n-1, k)/(n-k)!)	_	_	_
+A380844	lambdan	0	n -> { final int h = Functions.DIGIT_SUM.i(2, n); return SD(n, d -> IV[Functions.DIGIT_SUM.i(2, d) == h]); }
+A380845	lambdan	0	n -> { final int h = Functions.DIGIT_SUM.i(2, n); return SD(n, d -> IV[Functions.DIGIT_SUM.i(2, d) == h].*(d)); }	Sum_{d|n} d * [A000120(d) = A000120(n)]
+A380846	filnum	0	1	k -> { final int h = Functions.DIGIT_SUM.i(2, k); return SD(k, d -> IV[Functions.DIGIT_SUM.i(2, d) == h].*(d)).compareTo(ZV(2*k)) == 0; }
+A380847	filnum	0	1	k -> { final int h = Functions.DIGIT_SUM.i(2, k); return SD(k, d -> IV[Functions.DIGIT_SUM.i(2, d) == h].*(d)).compareTo(ZV(3*k)) == 0; }
+A380853	lingf	1	0,0,0,0,0,0,0,0,0,1,4,8,16,18,18,15,10	1,1,0,-2,-3,-2,0,3,4,3,0,-2,-3,-2,0,1,1					0
+A380879	lambdan	0	n -> RU(0, n, k -> QV(k).^(n-k).*(QV(2*n+2).^(k-1)).*(BI(n, k))).*(2).num()	""		a(n) = 2*RU(k=0, n, k^(n-k)*(2*n+2)^(k-1)*BI(n, k))	_	_	_
+A380880	lambdan	0	n -> RU(0, n, k -> QV(k).^(n-k).*(QV(3*n+3).^(k-1)).*(BI(n, k))).*(3).num()	""		a(n) = 3*RU(k=0, n, k^(n-k)*(3*n+3)^(k-1)*BI(n, k))	_	_	_
+A380881	lambdan	0	n -> RU(0, n, k -> QV(k).^(n-k).*(QV(3*n+1).^(k-1)).*(BI(n, k))).num()	""		a(n) = RU(k=0, n, k^(n-k)*(3*n+1)^(k-1)*BI(n, k))	_	_	_
+A380914	lambdan	0	n -> { final int q=1; final int r=1; final int s=0; final int t=1; final int u=1  ; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380915	lambdan	0	n -> { final int q=1; final int r=3; final int s=0; final int t=1; final int u=1  ; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380916	lambdan	0	n -> RU(0, n, k -> QV(2*n-2*k+2).^(k-1).*(BI(2*n-k, n-k))./(FA(k))).*(FA(n).*(2)).num()
+A380917	lambdan	0	n -> RU(0, n, k -> QV(3*n-3*k+3).^(k-1).*(BI(2*n-k, n-k))./(FA(k))).*(FA(n).*(3)).num()
+A380918	lambdan	0	n -> RU(0, n, k -> QV(2*n+2).^(k-1).*(BI(2*n, n-k))./(FA(k))).*(FA(n).*(2)).num()
+A380919	lambdan	0	n -> RU(0, n, k -> QV(3*n+3).^(k-1).*(BI(2*n, n-k))./(FA(k))).*(FA(n).*(3)).num()
+A380945	lambdan	0	n -> { final int q=2; final int r=2; final int s=2; final int t=0; final int u=1  ; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }
+A380946	lambdan	0	n -> { final int q=3; final int r=3; final int s=3; final int t=0; final int u=1  ; return RU(0, n, k -> QV(r*n+(s-r)*k+q).^(k-1).*(BI((r*u+1)*n+((s-r)*u+t-1)*k+q*u-1, n-k))./(FA(k))).*(FA(n).*(q)).num(); }

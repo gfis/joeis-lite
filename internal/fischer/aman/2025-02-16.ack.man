@@ -1,0 +1,147 @@
+---- 2025-02-15 11:46:19
+---- 2025-02-15 12:19:25
+---- 2025-02-16 11:52:10
+---- 2025-02-16 12:02:18
+---- 2025-02-16 12:06:08
+---- 2025-02-16 12:34:26
+---- 2025-02-16 15:33:32
+---- 2025-02-16 20:47:40
+---- 2025-02-16 21:43:11
+A089602	rootet	0	A053175	0	1	4
+A091600	polyx	0	"[[0,1,1,1,2,4]]"	",x,A,<1,sub,A,<1,-,A,<1,/,+"	4	0	A(x)= x +(A(x*A(x))-x*A(x))/(x*A(x))
+A101923	polyz	1	"[[0,1]]"	",x,sin,1,x,sin,^2,2,/,-,/"	0	1	1	2	A(x) = sin(x)/(1-(1/2)*sin(x)^2)
+A102075	polyz	0	"[[1]]"	",x,atanh,sec"	0	1	0	2	Expansion of sec(arctanh(x)).
+A112808	polyz	0	"[[1]]"	",x,A,<1,^2,1,A,<1,^6,-,/,+"	0	0	1	3	x + (x*A(x))^2/(1 - (x*A(x))^6)
+A120056	poly	0	"[[1],[1,1]]"	",p1,A,<1,sub,*,A,/"	A(x) = (1+x)*A(x*A(x))/A(x)
+A135644	lingf	1	0,1	1,-40,218,-492,553,-308,54,248,-984,1604,-1178,324,55,-592,1644,-1732,625,0,-100,688,-1208,620,0,0,95,-392,330,0,0,0,-46,88,0,0,0,0,9
+A135645	lingf	1	0,1	1,-110,1239,-6364,18983,-36030,45065,-37144,19464,-5888,758,1182,-10920,47588,-119706,187446,-186292,114600,-39888,6016,189,-5496,41748,-151884,313785,-389484,288486,-117768,20424,0,-696,14616,-90552,268340,-437740,404076,-198356,40312,0,0,1554,-24612,122010,-283540,342825,-209334,51097,0,0,0,-2268,27300,-104664,179244,-142938,43326,0,0,0,0,2226,-19992,55860,-62788,24791,0,0,0,0,0,-1464,9336,-16968,9404,0,0,0,0,0,0,621,-2526,2247,0,0,0,0,0,0,0,-154,302,0,0,0,0,0,0,0,0,17
+A135648	lingf	1	0,1	1,-1922,53393,-686576,5398022,-28988300,112569690,-326439304,719656933,-1215833506,1573996453,-1548613816,1137222356,-603452832,218487024,-48276864,4908264,55934,-1096950,11676544,-79561496,376316292,-1292341972,3305433640,-6378228432,9314866958,-10235149318,8324126568,-4857247760,1922011488,-461646432,50785920,14640,-581266,9401587,-86565600,518907004,-2168806420,6565441698,-14691654176,24497204900,-30356698122,27565799795,-17810368112,7748409144,-2033664480,243159408,0,-102200,3340974,-46691996,377930432,-2000752600,7368094140,-19507585392,37710338848,-53341220576,54614658950,-39391635060,18972483088,-5473964432,715105824,0,0,442260,-12489386,153388521,-1096134160,5111584170,-16459538040,37637820948,-61710226928,72110039190,-58634821030,31521652795,-10067299032,1445580692,0,0,0,-1325688,32902870,-356748106,2245396032,-9154359984,25456042920,-49364840952,66854945584,-62034842128,37592989866,-13399831718,2129671304,0,0,0,0,2914912,-63881818,610078755,-3357000768,11818549512,-27868732584,44636913972,-47999776160,33190826452,-13335029038,2365167053,0,0,0,0,0,-4856280,93761382,-782897544,3720140160,-11106010608,21629587320,-27506548848,22041252256,-10104066240,2019865922,0,0,0,0,0,0,6241950,-105388998,759991947,-3062459664,7551147450,-11676468540,11064858642,-5877792968,1340629901,0,0,0,0,0,0,0,-6240520,91012922,-556632362,1852674560,-3627128120,4179381140,-2625502548,693919208,0,0,0,0,0,0,0,0,4852848,-60033974,303301713,-801593056,1169457212,-893321220,279214762,0,0,0,0,0,0,0,0,0,-2911272,29754634,-119377180,235122624,-227413816,86433292,0,0,0,0,0,0,0,0,0,0,1323140,-10740366,32115707,-41938160,20183254,0,0,0,0,0,0,0,0,0,0,0,-441000,2668274,-5290326,3437632,0,0,0,0,0,0,0,0,0,0,0,0,101760,-408286,402841,0,0,0,0,0,0,0,0,0,0,0,0,0,-14536,29026,0,0,0,0,0,0,0,0,0,0,0,0,0,0,969
+A135679	lambdan	1	n -> { final Z nn = ZV(n); return (n == 1 || nn.IPP()) ? nn : ZV(((n & 1) == 0) ? 2 : 3); }	a(n) = n if n = 1 or if n is prime. Otherwise, a(n) = 2 if n is even and a(n) = 3 if n is odd.	nonn,easy	1..1000	nyi	_Mohammad K. Azarian_
+A135680	lambdan	1	n -> { final Z nn = ZV(n); return (n == 1 || nn.IPP()) ? nn : ZV(((n & 1) == 0) ? 4 : 5); }	a(n) = n if n = 1 or if n is prime. Otherwise, n = 4 if n is even and n = 5 if n is odd.	nonn,easy	1..1000	nyi	_Mohammad K. Azarian_
+A135681	lambdan	1	n -> { final Z nn = ZV(n); return (n == 1 || nn.IPP()) ? nn : ZV(((n & 1) == 0) ? 4 : 1); }	a(n) = n if n = 1 or if n=   prime. Otherwise, n=4 if n is even and n=1 if n is odd.	nonn	1..1000	nyi	_Mohammad K. Azarian_
+A135682	lambdan	1	n -> { final Z nn = ZV(n); return (n == 1 || nn.IPP()) ? nn : ZV(((n & 1) == 0) ? 4 : 7); }	a(n) = n if n = 1 or if n=   prime. Otherwise, n=4 if n is even and n=7 if n is odd.	nonn	1..1000	nyi	_Mohammad K. Azarian_
+A135684	lambdan	1	n -> { final Z nn = ZV(n); return nn.IPP() ? ZV(11) : nn; }	a(n)=11 if n is a prime number. Otherwise, a(n)=n.	nonn,easy	1..1000	nyi	_Mohammad K. Azarian_
+A135767	lambdan	1	n -> Functions.SIGMA0.z(n).-(Functions.OMEGA.z(n)).-(Functions.BIG_OMEGA.z(n))	sigma_0(n)-omega(n)-Omega(n) (sigma_0 = F000005 = # divisors, omega = F001221 = # prime factors, Omega = F001222 = # prime factors with multiplicity).	easy,nonn	1..10000	nyi	_M. F. Hasler_
+A135779	filnum	1	1	k -> Functions.SIGMA0.i(k) == ZV(k).toString(9).length()	Numbers having number of divisors equal to number of digits in base 9.	base,easy,nonn	1..1500	nyi	_M. F. Hasler_
+A135937	multrar	1	(self, n) -> PD(self.a(n - 1).longValueExact(), d -> ZV(d + 1))	"1"		a(1)=1; for n>=2, a(n) = Product_{d|a(n-1)} (d+1), where the product is over all positive divisors d of a(n-1).	nonn	1..5	nyi	_Leroy Quet_
+A135947	lambdan	0	n -> ZV((Functions.DIGIT_SUM.i(2, n) * 3 / 2) & 1)	a(n)=(floor(3*S2(n)/2)) mod 2, where S2(n) is the binary weight of n.	easy,nonn	0..83	nyi	_Ctibor O. Zizka_
+A135953	filter	1	new A050937()	v -> Functions.OMEGA.i(v) == 2	(Nonprime Fibonacci numbers with prime indices) that have exactly 2 prime factors.	nonn	1..42	nyi	_Artur Jasinski_
+A135954	filter	1	new A050937()	v -> Functions.OMEGA.i(v) == 3	(Nonprime Fibonacci numbers with prime indices, J050937) which have exactly 3 prime factors.	nonn	1..6	nyi	_Artur Jasinski_
+A135955	filter	1	new A050937()	v -> Functions.OMEGA.i(v) == 4	(Nonprime Fibonacci numbers with prime indices, J050937) which have exactly 4 prime factors.	nonn	1..5	nyi	_Artur Jasinski_
+A135962	lambdan	0	n -> BI(CR.PHI.*(n).floor(), n)	a(n) = binomial(floor(n*(sqrt(5)+1)/2), n) for n>=0.	nonn	0..27	nyi	_Paul D. Hanna_
+A135966	trilamb0	0	(n, k) -> FI(k*(n - k) + 1)	Triangle, read by rows, where T(n,k) = fibonacci(k(n-k) + 1) for n>=k>=0.	nonn,tabl	0..65	nyi	_Paul D. Hanna_
+A135972	filter	1	new A000225()	v -> !v.IPP()	Nonprime numbers of the form 2^n - 1.	nonn	1..3301	nyi	_Artur Jasinski_
+A135976	filter	1	new A065341()	v -> Functions.OMEGA.i(v) == 2	Mersenne composites (J065341) with exactly 2 prime factors.	nonn	1..39	nyi	_Artur Jasinski_
+A135977	filter	1	new A065341()	v -> Functions.OMEGA.i(v) == 3	Mersenne composites (J065341) with exactly 3 prime factors.	nonn	1..42	nyi	_Artur Jasinski_
+A135978	filter	1	new A000040()	v -> Functions.BIG_OMEGA.i(Z.ONE.shiftLeft(v.longValueExact()).-(1)) == 2	Primes p such that 2^p-1 has exactly 2 prime factors.	nonn,more	1..39	nyi	_Artur Jasinski_
+A135981	sintrif	2	(term, n) -> Functions.OMEGA.z(term)	""	new A135972()	Number of distinct prime factors of A135972(n).	nonn	2..1193	nyi	_Artur Jasinski_
+A135997	tablamb	0	0	k -> new Integer[] {1, 3 }	(k, m) -> (m == 1) ? ZV(k) : ((m == 2 ) ? ZV(2 - k) : ZV(1 - k))	Table of triples T(k,m) = k (m=1), 2-k (m=2) and 1-k (m=3).	sign,tabf,less,easy	0..9002	nyi	_Paul Curtz_
+A178693	poly	0	"[[1],[1,-1,-1]]"	",2,p1,sqrt,-"
+A181713	filtpos	1	1	new A181712()	v -> v.equals(ZV(0))	Solutions of      J181712(n)=0.	nonn	1..66
+A181714	filtpos	1	1	new A181712()	v -> v.equals(ZV(1))	Solutions of      J181712(n)=1.	nonn	1..65
+A206804	sintrif	2	(term, n) -> term./(2)	""	new A206803()
+A238085	polyx	0	"[[1]]"	";0;0;x;sinh;-;lambertW;-"	0	1	-lambertW(-sinh(x))
+A238085	polyx	0	"[[1]]"	";0;0;x;sinh;-;lambertW;-"	0	1	-lambertW(-sinh(x))
+A246393	filnumr	0	0	k -> REALS.cos(CV(k)).compareTo(CR.ZERO) >= 0 && REALS.cos(CV(k + 1)).compareTo(CR.ZERO) <= 0
+A246394	filnumr	0	0	k -> REALS.cos(CV(k)).compareTo(CR.ZERO) <= 0 && REALS.cos(CV(k + 1)).compareTo(CR.ZERO) >= 0
+A246395	filnumr	0	0	k -> REALS.cos(CV(k)).compareTo(CR.ZERO) >= 0 && REALS.cos(CV(k + 1)).compareTo(CR.ZERO) >= 0
+A246396	filnumr	0	0	k -> REALS.cos(CV(k)).compareTo(CR.ZERO) <= 0 && REALS.cos(CV(k + 1)).compareTo(CR.ZERO) <= 0
+A246404	filnumr	1	0	k -> REALS.sec(CV(k)).compareTo(REALS.sec(CV(k + 1))) <  0
+A246405	filnumr	1	0	k -> { final CR sk1 = REALS.sec(CV(k + 1)); return REALS.sec(CV(k)).compareTo(sk1) > 0 && sk1.compareTo(REALS.sec(CV(k + 2))) < 0; }
+A246406	filnumr	1	0	k -> { final CR sk1 = REALS.sec(CV(k + 1)); final CR sk2 = REALS.sec(CV(k + 2)); return REALS.sec(CV(k)).compareTo(sk1) > 0 && sk1.compareTo(sk2) > 0 && sk2.compareTo(REALS.sec(CV(k + 3))) < 0; }
+A246407	filnumr	1	0	k -> REALS.sec(CV(k)).compareTo(REALS.sec(CV(k + 1))) >  0
+A246408	filnumr	1	0	k -> { final CR sk1 = REALS.sec(CV(k + 1)); return REALS.sec(CV(k)).compareTo(sk1) < 0 && sk1.compareTo(REALS.sec(CV(k + 2))) > 0; }
+A246409	filnumr	1	0	k -> { final CR sk1 = REALS.sec(CV(k + 1)); final CR sk2 = REALS.sec(CV(k + 2)); return REALS.sec(CV(k)).compareTo(sk1) < 0 && sk1.compareTo(sk2) < 0 && sk2.compareTo(REALS.sec(CV(k + 3))) > 0; }
+A246410	filnumr	1	1	k -> REALS.csc(CV(k)).compareTo(REALS.csc(CV(k + 1))) <  0
+A246411	filnumr	1	1	k -> { final CR sk1 = REALS.csc(CV(k + 1)); return REALS.csc(CV(k)).compareTo(sk1) > 0 && sk1.compareTo(REALS.csc(CV(k + 2))) < 0; }
+A246412	filnumr	1	1	k -> { final CR sk1 = REALS.csc(CV(k + 1)); final CR sk2 = REALS.csc(CV(k + 2)); return REALS.csc(CV(k)).compareTo(sk1) > 0 && sk1.compareTo(sk2) > 0 && sk2.compareTo(REALS.csc(CV(k + 3))) < 0; }
+A246413	filnumr	1	1	k -> REALS.csc(CV(k)).compareTo(REALS.csc(CV(k + 1))) >  0
+A246414	filnumr	1	1	k -> { final CR sk1 = REALS.csc(CV(k + 1)); return REALS.csc(CV(k)).compareTo(sk1) < 0 && sk1.compareTo(REALS.csc(CV(k + 2))) > 0; }
+A246440	filnumr	1	0	k -> REALS.cos(CV(k)).compareTo(REALS.sec(CV(k + 1))) >  0
+A246441	filnumr	1	0	k -> REALS.cos(CV(k)).compareTo(REALS.sec(CV(k + 1))) <  0
+A246442	filnumr	1	0	k -> REALS.cos(CV(k)).*(REALS.sin(CV(k + 1))).compareTo(CR.ZERO) < 0
+A246443	filnumr	1	0	k -> REALS.cos(CV(k)).*(REALS.sin(CV(k + 1))).compareTo(CR.ZERO) > 0
+A284882	filtpos	1	1	new A284881()	v -> v.equals(ZV(-1))	Positions of-1 in J284881.	nonn,easy	1..10000
+A284883	filtpos	1	1	new A284881()	v -> v.equals(ZV(0))	Positions of 0 in J284881.	nonn,easy	1..10000
+A284884	filtpos	1	1	new A284881()	v -> v.equals(ZV(1))	Positions of 1''s J284881.	nonn,easy	1..10000
+A295268	polyx	0	"[[1]]"	";2;1;1;4;x;lambertW;*;-;sqrt;+;/"	0	1	2/(1+sqrt(1-4*lambertW(x)))
+A295268	polyx	0	"[[1]]"	";2;1;1;4;x;lambertW;*;-;sqrt;+;/"	0	1	2/(1+sqrt(1-4*lambertW(x)))
+A349874	convprod	0	3	new A000312()	Expansion of A(x)^3, where A(x) is g.f. of n^n (A000312).
+A350971	polyx	0	"[[1]]"	";x;sec;x;tan;*;^2;1;x;sin;+;*"	0	1	(sec(x)*tan(x))^2*(1+sin(x))
+A350971	polyx	0	"[[1]]"	";x;sec;x;tan;*;^2;1;x;sin;+;*"	0	1	(sec(x)*tan(x))^2*(1+sin(x))
+A351513	polyx	2	"[[0,0,1]]"	";x;exp;1;-;exp;1;-;exp;1;-;^2;2;/"	0	1	(exp(exp(exp(x)-1)-1)-1)^2/2
+A351513	polyx	2	"[[0,0,1]]"	";x;exp;1;-;exp;1;-;exp;1;-;^2;2;/"	0	1	(exp(exp(exp(x)-1)-1)-1)^2/2
+A351514	polyx	2	"[[0,0,1]]"	";x;exp;1;-;exp;1;-;exp;1;-;exp;1;-;^2;2;/"	0	1	(exp(exp(exp(exp(x)-1)-1)-1)-1)^2/2
+A351514	polyx	2	"[[0,0,1]]"	";x;exp;1;-;exp;1;-;exp;1;-;exp;1;-;^2;2;/"	0	1	(exp(exp(exp(exp(x)-1)-1)-1)-1)^2/2
+A351515	polyx	2	"[[0,0,1]]"	";x;exp;1;-;exp;1;-;exp;1;-;exp;1;-;exp;1;-;^2;2;/"	0	1	(exp(exp(exp(exp(exp(x)-1)-1)-1)-1)-1)^2/2
+A351515	polyx	2	"[[0,0,1]]"	";x;exp;1;-;exp;1;-;exp;1;-;exp;1;-;exp;1;-;^2;2;/"	0	1	(exp(exp(exp(exp(exp(x)-1)-1)-1)-1)-1)^2/2
+A354290	polyx	0	"[[1]]"	";1;3;2;x;exp;*;-;/;1;-;exp"	0	1	exp(1/(3-2*exp(x))-1)
+A354290	polyx	0	"[[1]]"	";1;3;2;x;exp;*;-;/;1;-;exp"	0	1	exp(1/(3-2*exp(x))-1)
+A354291	polyx	0	"[[1]]"	";1;4;3;x;exp;*;-;/;1;-;exp"	0	1	exp(1/(4-3*exp(x))-1)
+A354291	polyx	0	"[[1]]"	";1;4;3;x;exp;*;-;/;1;-;exp"	0	1	exp(1/(4-3*exp(x))-1)
+A357591	polyx	0	"[[1]]"	";x;exp;1;-;x;exp;1;-;2;/;tan;*"	0	1	(exp(x)-1)*tan((exp(x)-1)/2)
+A357591	polyx	0	"[[1]]"	";x;exp;1;-;x;exp;1;-;2;/;tan;*"	0	1	(exp(x)-1)*tan((exp(x)-1)/2)
+A360991	polyx	0	"[[1]]"	";x;exp;1;-;x;^2;2;/;+;exp"	0	1	exp(exp(x)-1+x^2/2)
+A360991	polyx	0	"[[1]]"	";x;exp;1;-;x;^2;2;/;+;exp"	0	1	exp(exp(x)-1+x^2/2)
+A361047	polyz	1	"[[0,1]]"	";x;x;^3;A;dif;^2;*;-;rev"	0	0	1	2	rev(x-x^3*dif(A(x))^2)
+A361493	polyx	0	"[[1]]"	";x;exp;1;-;x;^3;+;exp"	0	1	exp(exp(x)-1+x^3)
+A361493	polyx	0	"[[1]]"	";x;exp;1;-;x;^3;+;exp"	0	1	exp(exp(x)-1+x^3)
+A362835	polyx	0	"[[1]]"	";1;1;x;1;x;-;log;*;lambertW;+;/"	0	1	1/(1+lambertW(x*log(1-x)))
+A362835	polyx	0	"[[1]]"	";1;1;x;1;x;-;log;*;lambertW;+;/"	0	1	1/(1+lambertW(x*log(1-x)))
+A362891	polyx	0	"[[1]]"	";1;1;x;^2;1;x;-;log;*;lambertW;+;/"	0	1	1/(1+lambertW(x^2*log(1-x)))
+A362891	polyx	0	"[[1]]"	";1;1;x;^2;1;x;-;log;*;lambertW;+;/"	0	1	1/(1+lambertW(x^2*log(1-x)))
+A369091	polyx	1	"[[0,1]]"	";x;x;^2;x;exp;*;sub;+"	0	1	x+A(x^2*exp(x))
+A369550	polyx	0	"[[1]]"	";x;exp;x;^2;x;exp;*;sub;*"	0	1	exp(x)*A(x^2*exp(x))
+A369551	polyx	0	"[[1]]"	";1;x;x;exp;*;x;^2;x;exp;*;sub;*;+"	0	1	1+x*exp(x)*A(x^2*exp(x))
+A372623	polyx	0	"[[1]]"	";x;exp;1;x;^2;2;/;+;*;1;-;exp"	0	1	exp(exp(x)*(1+x^2/2)-1)
+A373065	polyx	0	"[[1]]"	";1;2;/;x;^2;x;exp;*;*;x;cosh;^2;*"	0	1	(1/2)*(x^2*exp(x))*(cosh(x))^2
+A373065	polyx	0	"[[1]]"	";1;2;/;x;^2;x;exp;*;*;x;cosh;^2;*"	0	1	(1/2)*(x^2*exp(x))*(cosh(x))^2
+A373121	convprod	0	2	new A230322()	Expansion of B(x)^2, where B(x) is the g.f. of A230322.
+A373122	convprod	0	2	new A108483()	Expansion of B(x)^2, where B(x) is the g.f. of A108483.
+A380636	polyx	0	"[[1]]"	";x;1;1;8;x;*;-;sqrt;-;4;x;*;/;^2;*;exp"	0	1	exp(x*((1-sqrt(1-8*x))/(4*x))^2)
+A381004	filter	1	new A000040()	v -> v.mod(1000) == 777	Primes ending in 777
+A381016	lambdan	0	n -> SU(1, n/2, k -> Z_1(k).*(FA(n - 2*k)).*(BI(n, 2*k - 1))).negate()
+A381017	filter	1	new A000328()	PRIME
+A381018	lambdan	1	n -> SU(0, n, k -> SU(0, k*k/4, j -> ZV(k).*(k)./(4*j + 1).-(ZV(k).*(k)./(4*j + 3))).*(4).+(1).IPP() ? ZV(1) : ZV(0))
+A381021	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(SA(k, 2)))
+A381022	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(SA(k, 3)))
+A381023	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(SA(k, 4)))
+A381024	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(SA(k+1, 3)))
+A381025	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(SA(k+1, 4)))
+A381064	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(n, k)).*(SA(k, 2)))
+A381065	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(n, k)).*(SA(k, 3)))
+A381066	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(n, k)).*(SA(k, 4)))
+A381067	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(n, k)).*(SA(k+1, 3)))
+A381068	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(n, k)).*(SA(k+1, 4)))
+A381105	lambdan	0	n -> SU(0, n-1, k -> BI(n, k).*((S1(k, 2)).abs()))	""		a(n) = sum(k=0, n-1, binomial(n, k)*abs(stirling(k, 2, 1)))	_	_	_
+A381106	lambdan	0	n -> SU(0, n-1, k -> BI(n, k).*((S1(k, 3)).abs()))	""		a(n) = sum(k=0, n-1, binomial(n, k)*abs(stirling(k, 3, 1)))	_	_	_
+A381107	lambdan	0	n -> SU(0, n-1, k -> BI(n, k).*((S1(k+1, 2)).abs()))	""		a(n) = sum(k=0, n-1, binomial(n, k)*abs(stirling(k+1, 2, 1)))	_	_	_
+A381108	lambdan	0	n -> SU(0, n-1, k -> BI(n, k).*((S1(k+1, 3)).abs()))	""		a(n) = sum(k=0, n-1, binomial(n, k)*abs(stirling(k+1, 3, 1)))	_	_	_
+A381122	filnum	1	0	k -> ZV(k).^(k + 1).mod(k + 2) == k	Numbers k such that k^(k+1) == k (mod k+2).	nonn,new	1..10000	nyi	_Robert Israel_
+A381152	decexpr	0	() -> CR.PI./(CV(5).*(REALS.tan(CR.PI./(5))))	Pi/( 5*tan(Pi/ 5))	isoperimetric quotient of a regular pentagon.	nonn,cons,easy,new	0..10000	nyi	_Paolo Xausa_
+A381153	decexpr	0	() -> CR.PI./(CV(7).*(REALS.tan(CR.PI./(7))))	Pi/( 7*tan(Pi/ 7))	isoperimetric quotient of a regular heptagon.	nonn,cons,easy,new	0..10000	nyi	_Paolo Xausa_
+A381154	decexpr	0	() -> CR.PI./(CV(9).*(REALS.tan(CR.PI./(9))))	Pi/( 9*tan(Pi/ 9))	isoperimetric quotient of a regular 9-gon.	nonn,cons,easy,new	0..10000	nyi	_Paolo Xausa_
+A381155	decexpr	0	() -> CR.PI./(CV(10).*(REALS.tan(CR.PI./(10))))	Pi/(10*tan(Pi/10))	isoperimetric quotient of a regular 10-gon.	nonn,cons,easy,new	0..10000	nyi	_Paolo Xausa_
+A381156	decexpr	0	() -> CR.PI./(CV(11).*(REALS.tan(CR.PI./(11))))	Pi/(11*tan(Pi/11))	isoperimetric quotient of a regular 11-gon.	nonn,cons,easy,new	0..10000	nyi	_Paolo Xausa_
+A381157	decexpr	0	() -> CR.PI./(CV(12).*(REALS.tan(CR.PI./(12))))	Pi/(12*tan(Pi/12))	isoperimetric quotient of a regular 12-gon.	nonn,cons,easy,new	0..10000	nyi	_Paolo Xausa_
+---- 2025-02-16 22:40:27
+A135979	filtpos	1	1	new A000040()	v -> Functions.OMEGA.i(Z.ONE.shiftLeft(v.longValueExact()).-(1)) == 2	Indices n such that 2^prime(n)-1 has exactly 2 distinct prime factors.	nonn,more	1..39	nyi	_Artur Jasinski_
+A135980	filtpos	1	1	new A000040()	v -> !Z.ONE.shiftLeft(v.longValueExact()).-(1).IPP()	Numbers k such that the Mersenne number 2^prime(k)-1 is composite.	nonn	1..66	nyi	_Artur Jasinski_
+A182944	arrlamb	1	1	1	-1	(i, j) -> PM(i).^(j)		Square array A(i,j), i >= 1, j >= 1, of prime powers prime(i)^j, by descending antidiagonals.	nonn,tabl	1..11325
+A187334	lambdan	0	n -> SU(1, 5, k -> ZV(n).*(k)./(5))	Sum{floor(k*n/5), k=1,2,3,4,5}; complement of A187335.	nonn	0..100
+A211707	arrlamb	1	1	1	1	(n, k) -> SU(1, k, j -> ZV((2*n + j) / (2*j)))	R(n,k)=n+[n/2+1/2]+...+[n/k+1/2], where [ ]=floor and k>=1, by antidiagonals.	nonn,tabl	1..81
+A211782	arrlamb	1	1	1	1	(n, k) -> SU(2, k + 1, j -> ZV(n)./(FI(j)))	R(n,k)=[n/F(2)]+[n/F(3)]+...+[n/F(k+1)], where [ ]=floor and F=F000045 (Fibonacci numbers), by antidiagonals.	nonn,tabl	1..84
+A211783	arrlamb	0	1	1	1	(n, k) -> { final Z np = ZV(n).^(2); return SU(1, k, j -> np./(j)); }	R(n,k)=n^2+[(n^2)/2]+...+[(n^2)/k], where [ ]=floor, by antidiagonals.	nonn,tabl	0..68
+A211785	arrlamb	1	1	1	1	(n, k) -> { final Z np = ZV(n).^(3); return SU(1, k, j -> np./(j)); }	R(n,k)=n^3+[(n^3)/2]+...+[(n^3)/k], where [ ]=floor, by antidiagonals.	nonn,tabl	1..58
+---- 2025-02-16 22:49:42
+A184910	lambdan	1	n -> { final CR r = CV(2).^(new Q(1, 5)); final CR s = r.^(2)  ; final CR t = r.^(3)  ; return ZV(n).+(CV(n).*(r)./(s).floor()).+(CV(n).*(t)./(s).floor()); }	t = .	nonn	1..61
+A184911	lambdan	1	n -> { final CR r = CV(2).^(new Q(1, 5)); final CR s = r.^(2)  ; final CR t = r.^(3)  ; return ZV(n).+(CV(n).*(r)./(t).floor()).+(CV(n).*(s)./(t).floor()); }	t =	nonn	1..62
+A211702	arrlamb	1	1	1	1	(n, k) -> SU(1, k, j -> ZV(n)./(FI(j)))	R(n,k)=[n/F(1)]+[n/F(2)]+...+[n/F(k)], where [ ]=floor and F=F000045 (Fibonacci numbers), by antidiagonals.	nonn,tabl	1..79
+A379409	lambdan	1	n -> { final CR u = CR.PHI; final CR r = u.^(new Q(1, 4)); final CR s = u.^(new Q(1, 2)); final CR t = u.^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(s).floor()).+(CV(n).*(t)./(s).floor()); }	t = , u = golden ratio (X001622).	nonn	1..59
+A379410	lambdan	1	n -> { final CR u = CR.PHI; final CR r = u.^(new Q(1, 4)); final CR s = u.^(new Q(1, 2)); final CR t = u.^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(t).floor()).+(CV(n).*(s)./(t).floor()); }	t = , u = golden ratio (X001622).	nonn	1..64
+A379412	lambdan	1	n -> { final CR r = CR.E.^(new Q(1, 4)); final CR s = CR.E.^(new Q(1, 2)); final CR t = CR.E.^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(s).floor()).+(CV(n).*(t)./(s).floor()); }	t =	nonn	1..59
+A379413	lambdan	1	n -> { final CR r = CR.E.^(new Q(1, 4)); final CR s = CR.E.^(new Q(1, 2)); final CR t = CR.E.^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(t).floor()).+(CV(n).*(s)./(t).floor()); }	t =	nonn	1..61
+A379415	lambdan	1	n -> { final CR r = CV(3).^(new Q(1, 4)); final CR s = CV(3).^(new Q(1, 2)); final CR t = CV(3).^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(s).floor()).+(CV(n).*(t)./(s).floor()); }	t =	nonn	1..59
+A379421	lambdan	1	n -> { final CR r = CV(5).^(new Q(1, 4)); final CR s = CV(5).^(new Q(1, 2)); final CR t = CV(5).^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(s).floor()).+(CV(n).*(t)./(s).floor()); }	t =	nonn	1..58
+A379422	lambdan	1	n -> { final CR r = CV(5).^(new Q(1, 4)); final CR s = CV(5).^(new Q(1, 2)); final CR t = CV(5).^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(t).floor()).+(CV(n).*(s)./(t).floor()); }	t =	nonn	1..62
+A379510	lambdan	1	n -> { final CR r = CV(2).^(new Q(1, 4)); final CR s = CV(2).^(new Q(1, 2)); final CR t = CV(2).^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(t).floor()).+(CV(n).*(s)./(t).floor()); }	t =	nonn	1..60

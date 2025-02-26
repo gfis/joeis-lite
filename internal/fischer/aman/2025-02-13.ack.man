@@ -1,0 +1,106 @@
+---- 2025-02-13 23:17:14
+A080645	prepend	1	new A007378().skip(1)	1,2	.
+A080776	prepend	0	new A053646().skip(1)	0	.
+A084176	prepend	1	new A059389().skip(0)	0,1	Cf. F000045. Essentially the same as J059389.
+A087116	prepend	0	new A033264().skip(0)	1	.
+A089080	prepend	1	new A085058()	1	(with prepended 1 and different indexing).
+A090970	prepend	1	new A065382().skip(1)	1	and E066888.
+A091088	prepend	0	new A068695().skip(0)	3	, which is the main entry for this sequence.
+A097610	trilamb0	0	(n, k) -> (((n - k) & 1) == 0) ? BI(n + 1, k).*(BI(n + 1 - k, (n - k)/2))./(n + 1) : ZV(0)	T(n,k) = binomial(n+1,k)binomial(n+1-k,(n-k)/2)/(n+1) if n-k is even; otherwise, T(n,k) = 0
+A097987	prepend	1	new A066499().skip(0)	1,2	.
+A098842	prepend	1	new A050815().skip(1)	7	, which is the main entry for this sequence. Cf. F000045, J060384.
+A107817	prepend	0	new A062042().skip(0)	0	. [_Zak Seidov_, Nov 04 2009]
+A107818	prepend	0	new A070916().skip(1)	2	. [From _R. J. Mathar_, Aug 24 2008]
+A111398	prepend	1	new A030626().skip(0)	1	Cf. J048945, ?111399. Essentially the same as J030626.
+A114187	prepend	0	new A085747().skip(3)	3,3,2,0	. - _Georg Fischer_, Oct 07 2018
+A116071	trilamb0	0	(n, k) -> SU(0, n - k, j -> BI(n, j) .*(BI(n - j, k)).*(ZV(j).^(n - k - j)))
+A118742	prepend	0	new A072668().skip(1)	0	.
+A119736	polyx	1	"[[0,1]]"	";x;2;x;*;A;sub;*;+;x;A;*;A;sub;sub;*;-"	0	0	x+2*x*A(A(x))-x*A(x)*A(A(A(x)))
+A121448	trilamb0	0	(n, k) -> (((n - k) & 1) == 0) ? BI(n + 1, k).*(BI(n + 1 - k, (n - k)/2))./(n + 1).*(Z2(k)) : ZV(0)	T(n,k) = 2^k*binomial(n+1,k)binomial(n+1-k,(n-k)/2)/(n+1) if n-k is even; otherwise, T(n,k) = 0
+A121538	sintrif	1	(term, n) -> term.-(1)	""	new A053661().skip(1)
+A129293	prepend	1	new A070155()	3	, since m^4-1=(m-1)(m+1)(1+m^2). - _R. J. Mathar_, Jun 14 2008
+A130291	prepend	1	new A006254()	2	.
+A130460	trilambn	1	1	1	(n, k) -> (n == 1) ? ZV(1) : ((k == n - 1) ? ZV(n - 1) : ZV(0))	Infinite lower triangular matrix,(1,0,0,0,...) in the main diagonal and (1,2,3,...) in the subdiagonal.
+A130477	trilamb0	0	(n, k) -> ZV(n - k + 1 + ((k == 0) ? 1 : 0)).*(FA(n + 1))./(FA(n - k + 2))	T := (n, k) -> (n-k+1+0^k)*((n+1)!/(n-k+2)!)
+A132440	trilamb0	0	(n, k) -> (n <= 0) ? Z.ZERO : ((k == n - 1) ? ZV(n) : Z.ZERO)
+A132681	trilamb0	0	(n, k) -> (n <= 0) ? Z.ZERO : ((k == n - 1) ? ZV(n + 1) : Z.ZERO)
+A132710	trilamb0	0	(n, k) -> (n <= 0) ? Z.ZERO : ((k == n - 1) ? ZV((n + 1)*n) : Z.ZERO)
+A132955	prepend	2	new A073887().skip(2)	17	.
+A135551	prepend	0	new A065531().skip(1)	0,0	.
+A143917	polyx	0	"[[1]]"	";1;1;x;-;/;x;^2;A;*;A;dif;*;+"	0	0	1/(1-x)+x^2*A(x)*dif(A(x))
+A145158	polyx	0	"[[1]]"	",1,1,x,A,^2,/,rev,-,/"	0	0	x*A(1-1/A(x))^2
+A145162	polyx	0	"[[1]]"	",1,1,x,A,^4,/,rev,-,/"	0	0	x*A(1-1/A(x))^4
+A145165	polyx	0	"[[1]]"	",1,1,x,A,^5,/,rev,-,/"	0	0	x*A(1-1/A(x))^5
+A145167	polyx	0	"[[1]]"	",1,1,x,A,^6,/,rev,-,/"	0	0	x*A(1-1/A(x))^6
+A153851	polyz	1	"[[0,1]]"	";x;A;^3;-;rev"	0	0	1	2	rev(x-A(x)^3)
+A159606	polyx	0	"[[1]]"	";1;x;1;x;A;/;+;log;dif;*;+"	0	0	1+x*diflog(1+x/A(x))
+A159607	polyx	0	"[[1]]"	";1;x;A;^2;*;2;A;-;*;+;2;x;^2;*;A;dif;*;A;*;+"	0	0	1+x*A(x)^2*(2-A(x))+2*x^2*dif(A(x))*A(x)
+A160663	sintrif	1	(term, n) -> term.-(1)	""	new A047800()	77	: a(n) = J047800(n) - 1.
+A166127	prepend	1	new A104103().skip(1)	0	. - _R. J. Mathar_, Jul 21 2015
+A171731	trilamb0	0	(n, k) -> BI(n, k).*(FI(n - k))
+A173390	prepend	1	new A066875()	1	. - _R. J. Mathar_, Feb 21 2010
+A173472	prepend	1	new A137291().skip(2)	1	.
+A175093	prepend	1	new A072999()	1	. [_R. J. Mathar_, Feb 01 2010]
+A204539	prepend	2	new A028914()	1	.
+A213333	polyx	1	"[[0,1]]"	";x;A;^2;1;A;-;A;^2;+;/;sub;+"	0	0	x+A(A(x)^2/(1-A(x)+A(x)^2))           newpoly
+A213905	polyx	2	"[[0,0,1]]"	";x;^2;x;^3;+;A;sub;+"	0	0	x^2+x^3+A(A(x))
+A213906	polyx	2	"[[0,0,1]]"	";x;^2;1;x;-;/;A;sub;+"	0	0	x^2/(1-x)+A(A(x))
+A215093	polyx	1	"[[0,1]]"	";x;A;sinh;^2;2;/;+"	0	1	x+sinh(A(x))^2/2                              newpoly
+A215652	trilamb0	0	(n, k) -> BI(n, k).*(SU(0, n - k, j -> ZV(-j).^(n - k - j).*(BI(n - k, j))))	T(n,k) = binomial(n,k)*A003725(n-k).a(n) = Sum_{j=0..n} (-j)^(n-J)*binomial(n, j)
+A216066	prepend	1	new A003558().skip(1)	1	: a(n) is equal to the minimal value r in N for which either 2^r is congruent to 1 modulo 2*n-1 or 2^r is congruent to -1 modulo 2*n-1.
+A216973	trilamb0	0	(n, k) -> ZV(n - k).*(BI(n, k))
+A218234	trilamb0	0	(n, k) -> (n <= 1) ? Z.ZERO : ((k == n - 1) ? ZV(n - 1) : Z.ZERO)
+A219226	polyz	0	"[[0,1]]"	";x;x;^2;1;x;^2;-;/;sub;+"	0	0	0	2	x+A(x^2/(1-x^2))
+A224715	prepend	1	new A062302().skip(2)	0,0	.
+A231209	prepend	0	new A002110().skip(2)	1	and ?121069.
+A231619	polyx	0	"[[1]]"	",1,x,A,/,rev,x,/,int,+"	0	1	difA(x/A(x))	1+intformal(1/x*serreverse(x/A +x*O(x^n)))
+A231866	polyx	0	"[[1]]"	",1,x,A,^2,/,rev,x,/,sqrt,int,+"	0	1
+A231899	polyx	0	"[[1]]"	",1,x,A,^3,/,rev,x,/,^1/3,int,+"	0	1	difA(x/A(x)^3)
+A232686	polyx	0	"[[1]]"	",1,x,A,^2,/,rev,x,/,int,+"	0	1
+A232694	polyx	0	"[[1]]"	",1,x,A,^4,/,rev,x,/,^1/4,int,+"	0	1	difA(x/A(x)^4)
+A232695	polyx	0	"[[1]]"	",1,x,A,^5,/,rev,x,/,^1/5,int,+"	0	1	difA(x/A(x)^5)
+A233319	polyx	0	"[[1]]"	",1,x,A,^3,/,rev,x,/,int,+"	0	1	difA(x/A(x)^3)
+A240571	lambdan	0	n -> { final Q nd = new Q(ZV(n).^(n), FA(n)); return nd.den().equals(ZV(2)) ? nd.floor() : nd.round(); }	a(n) = round(n^n/n!) where round(1/2)=0.a(n) = round(n^n/n!) where round(1/2)=0.prepend	0	new A235496().skip(1)	0	. - _Altug Alkan_, Dec 13 2015
+A242240	polyx	0	"[[0,1],[1,0,0,0,1]"	",1,p1,sqrt,/,int,rev"	0	1	serreverse( intformal( (1 + x^4 + x * O(x^n))^(-1/2))
+A243695	lambdan	0	n -> RU(0, n, k -> QV(5).^(k).*(ZV(-4).^(n - k)).*(BI(n, k)).*(BI(2*n + k + 1, n))./(2*n + k + 1)).num()	a(n) = Sum_{k=0..n} 5^k * (-4)^(n-k) * binomial(n,k) * binomial(2*n+k+1,n) / (2*n+k+1).
+A244739	prepend	1	new A049508().skip(1)	2,3	Cf. J039703, J244738, J024707, ?244741, J244735. Essentially the same as J049508.
+A244741	prepend	1	new A049509()	1	Cf. J039703, J244738, ?244739, J024707, J244735. Essentially the same as J049509.
+A258662	polyz	0	"[[1]]"	";A;1;A;^2;/;int;*;int;exp"	0	1	0	2	exp(int(A(x)*int(1/A(x)^2)))
+A259112	polyz	0	"[[1]]"	";1;A;^7;+;int"	0	1	1	7	int(1+A(x)^7)
+A259113	polyz	0	"[[1]]"	";1;A;^8;+;int"	0	1	1	8	int(1+A(x)^8)
+A259608	polyz	1	"[[0,1]]"	";x;x;^2;A;*;-;x;2;A;*;int;*;-;rev"	0	0	1	2	rev(x-x^2*A(x)-x*int(2*A(x)))
+A261130	prepend	0	new A068111().skip(2)	1,2	. - _R. J. Mathar_, Nov 23 2015
+A266328	polyx	0	"[[1]]"	",1,x,exp,x,-,/,int,rev,exp"	0	1
+A271989	prepend	0	new A056193().skip(1)	8	.
+A272485	polyx	1	"[[0,1],[0,0,1,1]]"	",x,^3,p1,sub,/,rev"	1	0	x*A(A(x)^2+A(x)^3)                    newpoly
+A274738	polyz	0	"[[1]]"	";x;A;int;*;exp"	0	1	0	2	exp(x*int(A(x)))
+A275699	filter	1	new A046660()	v -> !v.isZero()	with the 0s removed.
+A275765	polyx	1	"[[0,1]]"	",x,x,A,+,2,/,sub,^2,2,*,+"	1	0	x+2*A(x/2+A(x)/2)^2                       newpoly
+A276360	polyx	1	"[[0,1]]"	";x;3;2;x;*;3;/;A;3;/;+;sub;^2;*;+"	0	0	x+3*A(2*x/3+A(x)/3)^2             newpoly
+A276364	polyz	1	"[[0,1]]"	";x;2;x;2;/;A;2;/;+;sub;^3;*;+"	0	0	1	2	x+2*A(x/2+A(x)/2)^3
+A276370	polyx	2	"[[0,0,1]]"	";x;A;sqrt;sub;+;^2"	0	0	(x+A(sqrt(A(x))))^2
+A282537	prepend	0	new A053267().skip(1)	1	.
+A283150	trilamb0	0	(n, k) -> BI(new Q(-3*k - 1, 3), n - k).*(Z_1(n)).*(ZV(9).^(n - k)).num()	a(m,n) = binomial(-n-1/3, m-n)*(-1)^m*9^(m-n) .Riordan array (1/(1-9x)^(1/3), x/(9x-1)).
+A288313	prepend	1	new A063534().skip(1)	2,4	Cf. F000040, J001748, J056240, J098090. Essentially the same as J063534.
+A295762	polyx	1	"[[0,1]]"	";x;3;x;2;A;*;+;^2;9;/;sub;*;+"	0	0	x+3*A((x+2*A(x))^2/9)                 newpoly
+A301729	prepend	0	new A047273().skip(1)	1	.
+A317352	poly	0	"[[1]]"	",1,A,<1,A,^2,<1,dif,*,+"	A(x) = 1 + x*A(x) * ( d/dx x*A(x)^2 ).
+A317353	poly	0	"[[1]]"	",1,A,<1,A,^3,<1,dif,*,+"	A(x) = 1 + x*A(x) * ( d/dx x*A(x)^3 ).
+A317354	poly	0	"[[1]]"	",1,A,<1,A,^4,<1,dif,*,+"	A(x) = 1 + x*A(x) * ( d/dx x*A(x)^4 ).
+A317450	lambdan	1	n -> (n <= 2) ? ZV(1) : Z_1((n - 2)*(n - 1)/2).*(Z2((n - 1)*(n - 1))).*(ZV(n).^(n - 3))	(-1)^((n-2)*(n-1)/2)*2^((n-1)^2)*n^(n-3).
+A321086	polyx	1	"[[0,1]]"	";x;x;^2;+;x;A;*;A;dif;*;+"	0	0	x+x^2+x*A(x)*dif(A(x))
+A321087	polyx	1	"[[0,1]]"	";x;1;x;-;/;x;A;*;A;dif;*;+"	0	0	x/(1-x)+x*A(x)*dif(A(x))
+A321087	polyx	1	"[[0,1]]"	";x;1;x;-;/;x;A;*;A;dif;*;+"	0	0	x/(1-x)+x*A(x)*dif(A(x))
+A342851	prepend	1	new A067251()	0	Cf. F004086. Essentially the same as J067251.
+A350174	sintrif	0	(term, n) -> term.-(1)	""	new A083375()	0,0,1	.
+A352298	prepend	0	new A000954().skip(2)	-1,-1	.
+A355322	prepend	1	new A062954().skip(3)	1,3	Cf. F000032, J035105 (LCM of Fibonacci numbers), essentially the same as J062954.
+A355902	sintrif	0	(term, n) -> term./(2).+(n)	""	new A306302()
+A357785	polyx	1	"[[0,1],[1,-4,-4],[0,0,1]]"	",p2,p1,/,sub,p1,sqrt,*,sqrt"	1	0	-A(-x/(1-4*x))*sqrt(1-4*x)
+A357786	polyx	1	"[[0,1],[1,-4,-8],[0,0,1]]"	",p2,p1,/,sub,p1,sqrt,*,sqrt"	1	0	A(x)^2 = A( x^2/(1 - 4*x - 8*x^2) ) * sqrt(1 - 4*x - 8*x^2).
+A363832	prepend	0	new A004233().skip(1)	1,1	. - _R. J. Mathar_, Oct 23 2023
+A376176	polyx	1	"[[0,1,1,6]]"	",x,A,^4,x,^2,/,-,rev"	2	0	x*A(x)^2+A(A(x))^4                        newpoly
+A376583	prepend	1	new A177990()	1	. - _R. J. Mathar_, Oct 24 2024
+A380972	polyx	0	"[[1]]"	";x;A;*;2;x;*;A;*;exp;*;exp"	0	1	exp(x*A(x)*exp(2*x*A(x)))
+A380973	polyx	0	"[[1]]"	";x;A;*;3;x;*;A;*;exp;*;exp"	0	1	exp(x*A(x)*exp(3*x*A(x)))
+

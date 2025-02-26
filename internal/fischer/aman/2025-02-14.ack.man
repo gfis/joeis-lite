@@ -1,0 +1,90 @@
+---- 2025-02-14 22:37:18
+---- 2025-02-14 22:44:25
+---- 2025-02-14 22:52:14
+A108522	polyx	1	"[0,1]"	";1;A;+;2;A;exp;-;/;int"	0	1	intformal((1+A)/(2-exp(A))))	[0,1]	(A=x)
+A138293	polyx	0	"[1]"	";x;x;A;*;exp;+"	0	1	x+exp(x*A))	[1]	(A=1)
+A141140	polyx	1	"[0,1,1]"	";x;A;rev;^2;sub;+"	0	0	x+subst(A,x,serreverse(A)^2))	[0,1,1]	(A=x+x^2)
+A141203	polyx	1	"[0,1,1]"	";x;x;2;/;A;0;x;-;sub;-;*;-;rev"	0	0	serreverse(x-x/2*(A-subst(A,x,-x))))	[0,1,1]	(A=x+x^2)
+A143739	polyx	0	"[1,1]"	";1;x;^2;A;dif;*;A;/;+;1;x;-;^3;/"	0	0	(1+x^2*deriv(A)/A)/(1-x)^3)	[1,1]	(A=1+x)
+A143921	polyx	0	"[1,1]"	";x;x;A;int;*;+;exp"	0	1	exp(x+x*intformal(A)))	[1,1]	(A=1+x)
+A143925	polyx	0	"[1,1]"	";x;x;^2;A;dif;*;+;exp"	0	1	exp(x+x^2*deriv(A)))	[1,1]	(A=1+x)
+A144682	polyx	0	"[1,1]"	";x;A;^2;/;rev;exp"	0	1	exp(serreverse(x/A^2)))	[1,1]	(A=1+x)
+A144683	polyx	0	"[1,1]"	";x;A;^3;/;rev;exp"	0	1	exp(serreverse(x/A^3)))	[1,1]	(A=1+x)
+A144684	polyx	0	"[1,1]"	";x;A;^4;/;rev;exp"	0	1	exp(serreverse(x/A^4)))	[1,1]	(A=1+x)
+A154677	polyx	0	"[1,1]"	";1;A;^2;x;A;/;rev;*;+"	0	0	1+A^2*serreverse(x/(A)))	[1,1]	(A=1+x)
+A158100	polyx	0	"[[1]]"	";1;1;1;8;x;*;A;/;-;agm;/"	0	0	1/agm(1,1-8*x/A(x))
+A158122	polyx	0	"[[1]]"	";1;1;1;8;x;*;A;^2;/;-;agm;/;^1/2"	0	0	1/agm(1,1-8*x/A(x)^2)
+A163598	prepend	1	new A062690().skip(2)	1	. - _Georg Fischer_, Oct 01 2018
+A166955	prepend	1	new A065528()	1,2	.
+A168449	polyx	0	"[1,1]"	";1;A;x;A;/;rev;*;+;^2"	0	0	(1+A*serreverse(x/(A)))^2)	[1,1]	(A=1+x)
+A168479	polyx	0	"[1,1]"	";1;A;x;A;/;rev;*;+;^3"	0	0	(1+A*serreverse(x/(A)))^3)	[1,1]	(A=1+x)
+A168653	polyx	0	"[1,1]"	";1;A;^3;x;A;*;rev;*;+"	0	0	1+A^3*serreverse(x*(A)))	[1,1]	(A=1+x)
+A171454	polyx	0	"[[1]]"	";1;4;x;*;1;A;^2;agm;*;+"	0	0	1+4*x*agm(1,A(x)^2)
+A171455	polyx	0	"[[1]]"	";1;2;x;*;1;A;^4;agm;*;+"	0	0	1+2*x*agm(1,A(x)^4)
+A189424	polyx	0	"[[1],[1,1]]"	",p1,log,p1,log,^2,2,*,+,exp"	0	1
+A198198	polyx	0	"[1,1]"	";x;A;*;exp;x;0;x;-;sub;*;exp;+;2;/"	0	1	(exp(x*A)+exp(x*subst(A,x,-x)))/2)	[1,1]	(A=1+x)
+A211828	polyx	1	"[0,1,1]"	";x;x;^2;A;sub;dif;*;+"	0	0	x+x^2*deriv(subst(A,x,A)))	[0,1,1]	(A=x+x^2)
+A212910	polyx	2	"[0,0,1]"	";x;^2;x;-;x;x;A;*;-;rev;+"	0	0	x^2-x+serreverse(x-x*A))	[0,0,1]	(A=x^2)
+A212919	polyx	3	"[0,0,0,1]"	";x;^3;x;-;x;x;A;*;-;rev;+"	0	0	x^3-x+serreverse(x-x*A))	[0,0,0,1]	(A=x^3)
+A212923	polyx	1	"[0,1,1]"	";x;^2;x;x;A;*;-;rev;+"	0	0	x^2+serreverse(x-x*A))	[0,1,1]	(A=x+x^2)
+A214404	polyx	1	"[0,1,1]"	";x;x;A;^2;-;rev;^2;+"	0	0	x+serreverse(x-A^2)^2)	[0,1,1]	(A=x+x^2)
+A214645	polyx	1	"[0,1,1]"	";A;sub;exp;int"	0	1	intformal(exp(subst(A,x,A))))	[0,1,1]	(A=x+x^2)
+A218168	polyx	0	"[1,1]"	";1;x;x;A;^3;*;dif;*;A;^4;/;+"	0	0	1+x*deriv(x*A^3)/(A)^4)	[1,1]	(A=1+x)
+A218222	polyx	1	"[0,1,1]"	";x;x;A;^2;dif;*;+"	0	0	x+x*deriv(A^2))	[0,1,1]	(A=x+x^2)
+A226067	polyx	0	"[1,1]"	";1;x;x;A;^8;*;dif;^1/4;*;+"	0	0	1+x*deriv(x*A^8)^(1/4))	[1,1]	(A=1+x)
+A229559	polyx	0	"[1,1]"	";1;A;x;sub;^2;-;A;^3;+;int;+"	0	1	1+intformal(A-A^2+A^3))	[1,1]	(A=1+x)
+A229808	polyx	1	"[0,1]"	";x;2;x;^2;*;1;3;A;*;+;*;1;5;A;*;+;*;1;15;A;^2;*;-;^2;/;+"	0	0	x+2*x^2*(1+3*A)*(1+5*A)/(1-15*A^2)^2)	[0,1]	(A=x)
+A229811	polyx	1	"[0,1]"	";x;x;^2;1;2;A;*;+;*;1;3;A;*;+;*;1;6;A;^2;*;-;^2;/;+"	0	0	x+x^2*(1+2*A)*(1+3*A)/(1-6*A^2)^2)	[0,1]	(A=x)
+A232696	polyx	0	"[1,1]"	";1;x;x;A;*;rev;/;int;+"	0	1	1+intformal(x/serreverse(x*A)))	[1,1]	(A=1+x)
+A233537	polyx	0	"[1,1]"	";1;1;x;A;*;+;1;2;x;*;A;*;+;*;int;+"	0	1	1+intformal((1+x*A)*(1+2*x*A)))	[1,1]	(A=1+x)
+A234313	polyx	0	"[1]"	";1;A;^5;0;x;-;sub;*;int;+"	0	1	1+intformal(A^5*subst(A,x,-x)))	[1]	(A=1)
+A234797	polyx	1	"[0,1]"	";1;A;+;2;A;^2;*;+;int"	0	1	intformal(1+A+2*A^2))	[0,1]	(A=x)
+A234854	polyx	1	"[0,1]"	";1;4;A;*;+;A;^2;+;int"	0	1	intformal(1+4*A+A^2))	[0,1]	(A=x)
+A235129	polyx	1	"[0,1]"	";1;A;A;exp;*;+;int"	0	1	intformal(1+A*exp(A)))	[0,1]	(A=x)
+A235166	polyx	0	"[1]"	";1;1;3;1;1;9;x;^2;*;-;^2/3;/;int;rev;*;-;^1/3;/"	0	1	A=1/(1-3*serreverse(intformal(1/(1-9*x^2)^(2/3))))^(1/3)	[1]	(A=1)
+A235359	polyx	0	"[1]"	";1;A;^5;0;x;-;sub;^3;*;int;+"	0	1	1+intformal(A^5*subst(A,x,-x)^3))	[1]	(A=1)
+A235360	polyx	0	"[1]"	";1;1;2;1;4;x;^2;*;-;int;rev;*;-;sqrt;/"	0	1	A=1/sqrt(1-2*serreverse(intformal(1-4*x^2)))	[1]	(A=1)
+A238302	polyx	0	"[1,1]"	";1;1;1;x;A;*;-;^3;/;int;+"	0	1	1+intformal(1/(1-x*A)^3))	[1,1]	(A=1+x)
+A238426	poly	0	"[[1],[0,-1],[0,0,-1]]"	",1,x,1,A,<1,p2,sub,*,-,/,+"	F(x) = 1 + x / (1 - x * F(x) * F(-x^2) ).
+A238427	poly	0	"[[1],[0,1],[0,0,1]]"	",1,x,1,A,<1,p2,sub,*,-,/,+"	F(x) = 1 + x / (1 - x * F(x) * F(+x^2) ).
+A238428	poly	0	"[[1],[0,1],[0,0,1]]"	",1,x,1,A,<1,-,p2,sub,<2,-,/,+"	F(x) = 1 + x / (1 - x * F(x) - x^2 * F(x^2) ).
+A238429	poly	0	"[[1],[0,0,1]]"	",1,x,1,p1,p1,sub,/,-,/,+"	F(x) = 1 + x / (1            - x^2 / F(x^2) ).
+A238430	poly	0	"[[1],[0,0,-1]]"	",1,x,1,x,p1,sub,/,-,/,+"	F(x) = 1 + x / (1              - x / F(-x^2) ).
+A238431	poly	0	"[[1],[0,0,1]]"	",1,x,1,x,p1,sub,^2,*,-,/,+"	F(x) = 1 + x / (1              - x * F(x^2)^2 ).
+A245928	polyx	0	"[[1]]"	";1;x;A;^4;0;x;-;sub;^4;+;2;/;A;^2;0;x;-;sub;^2;*;agm;*;+"	0	0	1+x*agm((A(x)^4+A(-x)^4)/2,A(x)^2*A(-x)^2)
+A247019	polyx	0	"[1,1]"	";1;1;x;1;4;A;*;+;*;-;1;x;-;1;x;1;4;A;*;+;^2;*;-;*;sqrt;agm;/"	0	0	1/agm(1-x*(1+4*A),sqrt((1-x)*(1-x*(1+4*A)^2))))	[1,1]	(A=1+x)
+A247020	polyx	0	"[[1]]"	";1;1;1;16;x;*;A;*;-;sqrt;agm;/"	0	0	1/agm(1,sqrt(1-16*x*A(x)))
+A259267	polyx	1	"[0,1,1]"	";2;A;sub;*;exp;int"	0	1	intformal(exp(2*subst(A,x,A))))	[0,1,1]	(A=x+x^2)
+A272822	polyx	0	"[[1]]"	";1;2;x;*;1;A;0;x;-;sub;*;A;^2;0;x;-;sub;^2;+;*;2;/;sqrt;agm;*;+"	0	0	1+2*x*agm(1,sqrt(A(x)*A(-x)*(A(x)^2+A(-x)^2)/2))
+A272823	polyx	0	"[[1]]"	";1;4;x;1;4;x;*;+;1;4;x;*;+;^3;agm;/;rev;*;+"	0	0	1+4*rev(x/agm(1+4*x,(1+4*x)^3))
+A274279	polyx	1	"[[0,1],[0,-1]]"	",p1,lambertW,p1,/,<1,tanh"	0	1	tanh(x*W(x)), where W(x) = LambertW(-x)/(-x).
+A276365	polyx	1	"[[0,1]]"	";x;2;A;*;x;-;sub;^2;+"	0	0	x+A(2*A(x)-x)^2
+A277465	polyx	0	"[[1]]"	";1;x;+;log;1;0;x;-;lambertW;+;/"	0	1	log(1+x)/(1+lambertW(-x))
+A277509	polyx	0	"[[1]]"	";1;1;0;x;-;lambertW;+;1;x;+;*;/"	0	1	1/((1+lambertW(-x))*(1+x))
+A278079	polyz	0	"[[1]]"	",x,sin,^3,x,cos,/,6,/"	0	1	1	2	e.g.f.     A(x) = (1/3!)*sin^3(x)/cos(x) (coefficients of odd powers only).
+A278080	polyz	0	"[[1]]"	",x,sin,^4,x,cos,/,24,/"	0	1	0	2	e.g.f. A(x) = (1/4!)*sin^4(x)/cos(x) (coefficients of even powers only).
+A278194	polyz	0	"[[1]]"	",x,sin,^5,x,cos,/,120,/"	0	1	1	2	E.g.f.        (1/5!)*sin^5(x)/cos(x) (coefficients of odd powers only).
+A278195	polyz	0	"[[1]]"	",x,sin,^6,x,cos,/,720,/"	0	1	0	2	e.g.f. A(x) = (1/6!)*sin^6(x)/cos(x) (coefficients of even powers only).
+A295267	polyx	0	"[[1]]"	";2;1;1;4;0;x;-;lambertW;*;+;sqrt;+;/"	0	1	2/(1+sqrt(1+4*lambertW(-x)))
+A300282	polyx	1	"[0,1]"	";1;A;-;^2;int;rev"	0	1	serreverse(intformal((1-A)^2)))	[0,1]	(A=x)
+A308506	polyx	0	"[[1]]"	";0;1;1;0;2;x;*;-;lambertW;-;/;-"	0	1	-1/(1-lambertW(-2*x))
+A308863	polyx	0	"[[1]]"	";1;0;x;-;lambertW;+;1;2;0;x;-;lambertW;*;+;/"	0	1	(1+lambertW(-x))/(1+2*lambertW(-x))
+A323619	polyx	0	"[[1]]"	";1;0;1;x;+;log;-;lambertW;2;0;1;x;+;log;-;lambertW;+;*;2;/;-"	0	1	1-lambertW(-log(1+x))*(2+lambertW(-log(1+x)))/2
+A323673	polyx	0	"[[1]]"	";1;0;x;-;lambertW;2;0;x;-;lambertW;+;*;2;/;-;log"	0	1	log(1-lambertW(-x)*(2+lambertW(-x))/2)
+A323772	polyx	0	"[[1]]"	";1;0;x;1;x;-;/;-;lambertW;2;0;x;1;x;-;/;-;lambertW;+;*;2;/;-"	0	1	1-lambertW(-x/(1-x))*(2+lambertW(-x/(1-x)))/2
+A351525	polyx	2	"[[0,0,1]]"	";1;1;1;x;+;log;+;log;+;log;^2;2;/"	0	1	(log(1+log(1+log(1+x))))^2/2
+A351526	polyx	2	"[[0,0,1]]"	";1;1;1;1;x;+;log;+;log;+;log;+;log;^2;2;/"	0	1	(log(1+log(1+log(1+log(1+x)))))^2/2
+A351527	polyx	2	"[[0,0,1]]"	";1;1;1;1;1;x;+;log;+;log;+;log;+;log;+;log;^2;2;/"	0	1	(log(1+log(1+log(1+log(1+log(1+x))))))^2/2
+A355284	polyx	0	"[[1]]"	";1;1;x;+;x;^2;2;/;+;1;x;-;log;+;/"	0	1	1/(1+x+x^2/2+log(1-x))
+A355285	polyx	0	"[[1]]"	";1;1;x;+;x;^2;2;/;+;x;^3;3;/;+;1;x;-;log;+;/"	0	1	1/(1+x+x^2/2+x^3/3+log(1-x))
+A369536	polyx	0	"[[1]]"	";1;4;x;1;1;4;x;*;+;^4;agm;/;rev;*;+"	0	0	1+4*rev(x/agm(1,(1+4*x)^4))
+A369537	polyx	0	"[[1]]"	";1;4;x;1;4;x;*;+;^2;1;4;x;*;+;^4;agm;/;rev;*;+"	0	0	1+4*rev(x/agm((1+4*x)^2,(1+4*x)^4))
+A369538	polyx	0	"[[1]]"	";1;8;x;1;8;x;*;+;1;8;x;*;+;^2;agm;/;rev;*;+"	0	0	1+8*rev(x/agm(1+8*x,(1+8*x)^2))
+A369539	polyx	0	"[[1]]"	";1;8;x;1;8;x;*;+;^2;1;8;x;*;+;^3;agm;/;rev;*;+"	0	0	1+8*rev(x/agm((1+8*x)^2,(1+8*x)^3))
+A374621	polyx	0	"[[1]]"	";1;x;^4;24;/;-;1;x;-;log;-"	0	1	1-x^4/24-log(1-x)
+A376327	polyx	0	"[[1]]"	";0;0;x;1;x;^2;-;/;-;lambertW;-"	0	1	-lambertW(-x/(1-x^2))
+A377376	polyx	0	"[[1]]"	";1;1;x;-;log;^3;6;/;-;log"	0	1	log(1-log(1-x)^3/6)
+A379684	lambdan	0	n -> RU(0, n, k -> QV(-k-1).^(k).*(FA(2*n-k))./(FA(k).*(FA(n-k))))./(n+1).num()	sum(k=0, n, (-k-1)^k*(2*n-k)!/(k!*(n-k)!))/(n+1);
+A379686	multrar	1	(self, n) -> self.a(n-1).+(1).*(self.a(n-2).+(1)).*(self.a(n-3).+(1)).*(self.a(n-4).+(1))./(self.a(n-5))	"1,2,6,42,1806"		a(n) = (a(n-1)+1)*(a(n-2)+1)*(a(n-3)+1)*(a(n-4)+1)/a(n-5), with a(1)=1, a(2)=2, a(3)=6, a(4)=42, a(5)=1806.	nonn	1..14	nyi	_Antoine de Saint Germain_
+A379687	lambdan	0	n -> RU(0, n, k -> QV(-k-1).^(k).*(Z2(n-k)).*(FA(2*n-k))./(FA(k).*(FA(n-k))))./(n+1).num()	sum(k=0, n, 2^(n-k)*(-k-1)^k*(2*n-k)!/(k!*(n-k)!))/(n+1);
+A380970	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return SU(1, p - 1, k -> ZV(k).^(p)./(p)); }	my(p=prime(n)); sum(k=1, p-1, k^p\p);

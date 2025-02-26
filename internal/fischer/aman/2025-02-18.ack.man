@@ -1,0 +1,126 @@
+---- 2025-02-18 07:29:59
+---- 2025-02-18 09:00:49
+---- 2025-02-18 09:02:05
+---- 2025-02-18 09:03:12
+---- 2025-02-18 22:08:00
+---- 2025-02-18 22:54:54
+---- 2025-02-18 23:08:12
+A098087	polyx	0	"[[1,0,1],[0,-2]]"	";x;<1;1;p1;exp;-;^2;/;"	2	0	x^2/(1-exp(-2*x))^2
+A103816	polyx	0	"[[1]]"	";1;0;x;-;exp;-;1;x;-;/"	0	0	(1-exp(-x))/(1-x)
+A104007	polyx	0	"[[1,0,1],[0,-2]]"	";x;<1;1;p1;exp;-;^2;/;"	2	4	x^2/(1-exp(-2*x))^2
+A104042	polyx	0	"[[1]]"	";1;0;2;x;*;-;exp;-;^2;x;^2;/"	2	0	(1-exp(-2*x))^2/(x^2)
+A104097	polyx	0	"[[1]]"	";1;0;2;x;*;-;exp;-;^2;x;^2;/"	2	4	(1-exp(-2*x))^2/(x^2)
+A180736	lambdan	1	n -> PR(1, n, k -> CV(k).*(CR.SQRT2).floor())	[r]*[2r]*...[nr], where r=sqrt(2) and []=floor.	nonn,nice	1..425
+A183136	lambdan	1	n -> SU(1, n, k -> CV(k)./(CR.PHI).floor())	[1/r]+[2/r]+...+[n/r], where r = golden ratio = (1+sqrt(5))/2 and []=floor.	nonn	1..53
+A183139	lambdan	1	n -> SU(1, n, k -> CV(k)./(CR.SQRT2).floor())	[1/r]+[2/r]+...+[n/r], where r=sqrt(2) and []=floor.	nonn	1..10000
+A184792	filnum	1	1	k -> { final CR s = CR.PHI; return s.*(CV(k)).floor().IPP(); }	floor(k*s) is prime, where s = golden ratio=(1+sqrt(5))/2.	nonn	1..97
+A184794	filnum	1	1	k -> { final CR s = CV(5).sqrt().+(3)./(2); return s.*(CV(k)).floor().IPP(); }	floor(k*s) is prime, where s = (3 + sqrt(5))/2.	nonn	1..98
+A184800	filnum	1	1	k -> { final CR s = CV(3).sqrt().+(3)./(2); return s.*(CV(k)).floor().IPP(); }	floor(k*s) is prime, where s = (3 + sqrt(3))/2.	nonn	1..102
+A184806	filnum	1	1	k -> { final CR s = CV(5).sqrt().+(5)./(4); return s.*(CV(k)).floor().IPP(); }	floor(k*s) is prime, where s = (5 + sqrt(5))/4.	nonn	1..99
+A184857	filnum	1	1	k -> CR.E.*(k)./(CR.E.-(1)).floor().IPP()	floor(k*e/(e-1)) is prime.	nonn	1..106
+A184860	filnum	1	1	n -> { final CR r = CR.PHI; return r.*(CV(n)).+(CR.HALF).floor().IPP(); }	floor(nr+h) is prime, where r=(1+sqrt(5))/2 and h=1/2.	nonn	1..105
+A184863	filnum	1	1	n -> { final CR r = CR.PHI; return r.+(1).*(n).-(r./(2)).floor().IPP(); }	floor(n+nr-r/2) are prime, where r=(1+sqrt(5))/2.	nonn	1..92
+A184909	lambdan	1	n -> { final CR r = CV(2).^(new Q(1, 5)); final CR s = r.^(2)  ; final CR t = r.^(3)  ; return ZV(n).+(CV(n).*(s)./(r).floor()).+(CV(n).*(t)./(r).floor()); }	t =
+A194661	trilambn	1	1	1	(n, k) -> { final CR r = CR.PHI; return r.*(n).frac().+(r.*(k).frac()).floor(); }	<n*r>+<k*r>], where [ ] = floor, < > =  fractional part, and r = (1+sqrt(5))/2 (the golden ratio).	nonn,tabl	1..99
+A194664	trilambn	1	1	1	(n, k) -> { final CR r = CR.SQRT2; return r.*(n).frac().+(r.*(k).frac()).floor(); }	<n*r>+<k*r>], where [ ] = floor, < > =  fractional part, and r = sqrt(2).	nonn,tabl	1..99
+A194667	trilambn	1	1	1	(n, k) -> { final CR r = CV(3).sqrt(); return r.*(n).frac().+(r.*(k).frac()).floor(); }	<n*r>+<k*r>], where [ ] = floor, < > =  fractional part, and r = sqrt(3).	nonn,tabl	1..99
+A194670	trilambn	1	1	1	(n, k) -> { final CR r = CV(5).sqrt(); return r.*(n).frac().+(r.*(k).frac()).floor(); }	<n*r>+<k*r>], where [ ] = floor, < > =  fractional part, and r = sqrt(5).	nonn,tabl	1..99
+A194675	trilambn	1	1	1	(n, k) -> { final CR r = CR.E; return r.^(n).frac().+(r.^(k).frac()).floor(); }	<e^n>+<e^k>], where [ ] = floor, < > =  fractional part.	nonn,tabl	1..99
+A194677	trilambn	1	1	1	(n, k) -> { final CR r = CR.E; return r.*(n).frac().+(r.*(k).frac()).floor(); }	<n*e>+<k*e>], where [ ] = floor, < > =  fractional part.	nonn,tabl	1..99
+A194681	trilambn	1	1	1	(n, k) -> { final CR r = CV(3).-(CR.SQRT2); return r.*(n).frac().+(r.*(k).frac()).floor(); }	<n*r>+<k*r>], where [ ] = floor, < > =  fractional part, and r = 3-sqrt(2).	nonn,tabl	1..99
+A194685	trilambn	1	1	1	(n, k) -> { final CR r = CV(3).sqrt().+(1)./(2); return r.*(n).frac().+(r.*(k).frac()).floor(); }	<n*r>+<k*r>], where [ ] = floor, < > =  fractional part, and r = (1+sqrt(3))/2.	nonn,tabl	1..99
+A214585	filnum	1	1	k -> GCD(DF(k).+(1), ZV(k - 1)).compareTo(1)  > 0
+A214586	filnum	1	1	k -> GCD(DF(k).+(1), ZV(k - 1)).compareTo(1) == 0
+A216254	polyz	0	"[[1]]"	";x;x;^2;1;+;x;atan;*;/"	1	0	0	2	x/((x^2+1)*atan(x))
+A216272	polyz	1	"[[0,1]]"	";x;x;atan;/;1;-"	1	0	0	2	x/atan(x)-1
+A216879	poly	0	"[[1]]"	",A,<1,neg,eta,^2,A,^4,<4,eta,*,A,^2,<2,eta,^3,/"
+A225149	polyz	0	"[[1]]"	";x;x;^2;1;+;x;atan;*;/"	1	4	0	2	x/((x^2+1)*atan(x))
+A227830	polyx	0	"[[1]]"	";x;x;exp;1;-;/"	2	4	x/(exp(x)-1)
+A233671	filnum	1	1	k -> PM(k).^(2).compareTo(PM(k - 1).*(PM(k + 1))) < 0	prime(k)^2 < prime(k-1)*prime(k+1).	nonn,easy	1..10000
+A258026	filnum	1	1	k -> PM(k + 2).-(PM(k + 1).*(2)).+(PM(k)).compareTo(ZV(0)) < 0	prime(k+2) - 2*prime(k+1) + prime(k) < 0.	nonn,easy	1..1000
+A259584	filnum	1	1	k -> { final CR s = CV(3).sqrt(); final CR r = CR.SQRT2; return r.*(s.*(k).floor()).floor().-(s.*(r.*(k).floor()).floor()).compareTo(ZV(-2)) == 0; }	[r[s*k]] - [s[r*k]] = -2, where r = sqrt(2), s=sqrt(3), and [ ] = floor.	nonn,easy	1..10000
+A259585	filnum	1	1	k -> { final CR s = CV(3).sqrt(); final CR r = CR.SQRT2; return r.*(s.*(k).floor()).floor().-(s.*(r.*(k).floor()).floor()).compareTo(Z.NEG_ONE) == 0; }	[r[s*k]] - [s[r*k]] = -1, where r = sqrt(2), s=sqrt(3), and [ ] = floor.	nonn,easy	1..10000
+A259586	filnum	1	1	k -> { final CR s = CV(3).sqrt(); final CR r = CR.SQRT2; return r.*(s.*(k).floor()).floor().-(s.*(r.*(k).floor()).floor()).compareTo(ZV(2)) == 0; }	[r[s*k]] - [s[r*k]] = 2, where r = sqrt(2), s=sqrt(3), and [ ] = floor.	nonn,easy	1..10000
+A259724	filnum	1	1	k -> { final CR s = CV(3).sqrt(); final CR r = CR.SQRT2; return r.*(s.*(k).floor()).floor().compareTo(s.*(r.*(k).floor()).floor()) < 0; }	[r[s*k]] < [s[r*k]], where r = sqrt(2), s=sqrt(3), and [ ] = floor.	nonn,easy	1..1000
+A259725	filnum	1	1	k -> { final CR s = CV(3).sqrt(); final CR r = CR.SQRT2; return r.*(s.*(k).floor()).floor().compareTo(s.*(r.*(k).floor()).floor()) == 0; }	[r[s*k]] = [s[r*k]], where r = sqrt(2), s=sqrt(3), and [ ] = floor.	nonn,easy	1..1000
+A279107	polyx	0	"[[1]]"	";1;1;x;sin;-;/"	2	4	1/(1-sin(x))
+A279109	polyz	0	"[[1]]"	";1;1;x;cos;+;/"	2	4	0	2	1/(1+cos(sqrt(x)))
+A279110	polyz	0	"[[1]]"	";2;1;x;cos;+;/"	2	4	0	2	2/(1+cos(sqrt(x)))
+A279120	polyz	0	"[[1]]"	";1;1;2;x;cos;*;+;/"	1	0	0	2	1/(1+2*cos(sqrt(x)))
+A279121	polyz	0	"[[1]]"	";1;1;2;x;cos;*;+;/"	1	4	0	2	1/(1+2*cos(sqrt(x)))
+A279122	polyz	0	"[[1]]"	";3;1;2;x;cos;*;+;/"	1	4	0	2	3/(1+2*cos(sqrt(x)))
+A279181	polyz	0	"[[1]]"	";1;2;x;cos;*;1;-;/"	1	0	0	2	1/(2*cos(sqrt(x))-1)
+A279182	polyz	0	"[[1]]"	";1;2;x;cos;*;1;-;/"	1	4	0	2	1/(2*cos(sqrt(x))-1)
+A279232	polyz	0	"[[1]]"	";1;2;x;cos;+;/"	1	0	0	2	1/(2+cos(sqrt(x)))
+A279233	polyz	0	"[[1]]"	";1;2;x;cos;+;/"	1	4	0	2	1/(2+cos(sqrt(x)))
+A279234	polyz	0	"[[1]]"	";3;2;x;cos;+;/"	1	4	0	2	3/(2+cos(sqrt(x)))
+A279235	polyz	0	"[[1]]"	";1;2;x;cos;-;/"	1	0	0	2	1/(2-cos(sqrt(x)))
+A279236	polyz	0	"[[1]]"	";1;2;x;cos;-;/"	1	4	0	2	1/(2-cos(sqrt(x)))
+A279238	polyz	0	"[[1],[0,0,1]]"	",p1,cos,1,x,cos,+,/"	1	0	0	2	(cos(x))/(1+cos(sqrt(x)))
+A279239	polyz	0	"[[1],[0,0,1]]"	",p1,cos,1,x,cos,+,/"	1	4	0	2	(cos(x))/(1+cos(sqrt(x)))
+A279240	polyz	0	"[[1],[0,0,1]]"	",p1,cos,2,*,1,x,cos,+,/"	1	4	0	2	(2*cos(x))/(1+cos(sqrt(x)))
+A279242	polyz	0	"[[0,1]]"	";x;<1;sin;1;x;cos;+;/"	1	0	0	2	(sin(x))/(1+cos(sqrt(x)))
+A279243	polyz	0	"[[0,1]]"	";x;<1;sin;1;x;cos;+;/"	1	4	0	2	(sin(x))/(1+cos(sqrt(x)))
+A279256	polyz	0	"[[1]]"	";x;<1;exp;1;x;cos;+;/"	1	0	0	2	exp(x)/(1+cos(sqrt(x)))
+A279257	polyx	0	"[[1]]"	";1;x;cos;x;sin;-;/"	0	0	1/(cos(x)-sin(x))
+A279258	polyx	0	"[[1]]"	";1;x;cos;x;sin;-;/"	1	4	1/(cos(x)-sin(x))
+A279287	lambdan	1	n -> new Q(PHI(n), TAU(n)).num()	(phi(n)/tau(n)).	nonn,frac	1..1000	nyi	_Jaroslav Krizek_
+A279288	lambdan	1	n -> new Q(PHI(n), TAU(n)).den()	f (phi(n)/tau(n)).	nonn,frac	1..1000	nyi	_Jaroslav Krizek_
+A279306	polyz	0	"[[1]]"	";x;<1;cosh;1;x;cos;+;/"	1	0	0	2	(cosh(x))/(1+cos(sqrt(x)))
+A279307	polyz	0	"[[0,1],[0,0,1]]"	",p1,sinh,1,x,cos,+,/"	1	0	0	2	(sinh(x)/(1+cos(sqrt(x)))
+A279308	polyz	0	"[[1],[0,0,1]]"	",1,x,cos,+,p1,cosh,/"	0	0	0	2	num A(x) =(1 + cos(sqrt(x)))/(cosh(x))
+A279309	polyz	0	"[[1],[0,0,1]]"	",1,x,cos,+,p1,cosh,/"	0	4	0	2	den A(x) =(1 + cos(sqrt(x)))/(cosh(x))
+A279310	polyx	0	"[[1]]"	";x;cos;1;x;-;x;^2;-;/"	0	0	(cos(x))/(1-x-x^2)
+A279311	polyx	0	"[[1]]"	";x;cos;1;x;-;x;^2;-;/"	1	4	(cos(x))/(1-x-x^2)
+A279332	polyx	0	"[[1]]"	";x;sin;1;x;-;x;^2;-;/"	0	0	(sin(x))/(1-x-x^2)
+A279333	polyx	0	"[[1]]"	";x;sin;1;x;-;x;^2;-;/"	1	4	(sin(x))/(1-x-x^2)
+A279334	polyx	0	"[[1]]"	";x;exp;1;x;-;x;^2;-;/"	0	0	exp(x)/(1-x-x^2)
+A279335	polyx	0	"[[1]]"	";x;exp;1;x;-;x;^2;-;/"	1	4	exp(x)/(1-x-x^2)
+A279370	polyz	0	"[[1]]"	";x;cos;1;x;cos;+;/"	1	0	0	2	(cos(sqrt(x)))/(1+cos(sqrt(x))
+A279434	polyx	0	"[[1]]"	";1;1;x;exp;+;2;x;*;exp;-;/"	0	0	1/(1+exp(x)-exp(2*x))
+A279435	polyx	0	"[[1]]"	";1;1;x;exp;+;2;x;*;exp;-;/"	0	4	1/(1+exp(x)-exp(2*x))
+A296628	polyz	0	"[[1]]"	";x;sin;x;cosh;*;x;sinh;x;cos;*;/"	1	1	0	2	sin(x)*cosh(x)/(sinh(x)*cos(x))
+A336367	filnum	1	1	k -> GCD(ZV(k), PM(k).+(PM(k+1))).compareTo(Z.ONE) >  0
+A336370	filnum	1	2	k -> GCD(ZV(k), PM(k).+(PM(k-1))).compareTo(Z.ONE) == 0
+A336371	filnum	1	1	k -> GCD(ZV(k), PM(k).+(PM(k-1))).compareTo(Z.ONE) >  0
+A336374	filnum	1	1	k -> GCD(ZV(k), PM(k).+(PM(k+2))).compareTo(Z.ONE) == 0
+A336375	filnum	1	1	k -> GCD(ZV(k), PM(k).+(PM(k+2))).compareTo(Z.ONE) >  0
+A336378	filnum	1	2	k -> GCD(ZV(k), PM(k - 1).+(PM(k+1))).compareTo(Z.ONE) == 0
+A336379	filnum	1	1	k -> GCD(ZV(k), PM(k - 1).+(PM(k+1))).compareTo(Z.ONE) > 0
+A336411	sintrif	1	(term, n) -> term.-(3)	""	new A029707().skip(2)	a(n) = J029707(n+2) - 3 for n >= 1.	nonn	1..57
+A347426	polyx	0	"[[1]]"	";x;1;2;x;*;+;x;exp;-;/"	1	1	x/(1+2*x-exp(x))
+A347427	polyx	0	"[[1]]"	";x;1;2;x;*;+;x;exp;-;/"	1	5	x/(1+2*x-exp(x))
+A357547	polyx	1	"[[0,1],[1,-4,-4],[0,0,1]]"	",p2,p1,/,sub,sqrt"	2	0
+A358895	filnum	1	1	k -> PM(k).^(PM(k + 1)).compareTo(PM(k + 2).^(PM(k))) < 0	p(k)^p(k + 1) < p(k + 2)^p(k), where p(k) = prime(k).	nonn	1..51
+A358897	filnum	1	1	k -> PM(k).^(PM(k)).compareTo(PM(k + 1).^(PM(k - 1))) < 0	p(k)^p(k) < p(k+1)^p(k-1), where p(k) = prime(k).	nonn	1..46
+A358899	filnum	1	2	k -> PM(k).^(PM(k)).compareTo(PM(k - 1).^(PM(k + 1))) > 0	p(k)^p(k) > p(k-1)^p(k+1), where p(k) = prime(k).	nonn	1..48
+A360124	filnum	1	1	k -> E360121(k).testBit(0) && !E347389(k).testBit(0)	nyi Fo	Numbers k such that E360121(k) is odd, but E347389(k) is even.	nonn	1..54	nyi	_Antti Karttunen_
+A364658	lambdan	0	n -> BI(new Q(2, 3), n).num()	Numerators of coefficients in expansion of (1 + x)^(2/3).
+A364660	lambdan	0	n -> BI(new Q(1, 4), n).num()	Numerators of coefficients in expansion of (1 + x)^(1/4).
+A364661	lambdan	0	n -> BI(new Q(3, 4), n).num()	Numerators of coefficients in expansion of (1 + x)^(3/4).
+A364703	poly	0	"[[1],[1,-1]]"	",1,x,p1,^2,/,+,sqrt"	sqrt(1 + x/(1 - x)^2) num A(x) =sqrt( 1 + x + 2*x^2 + 3*x^3 + 4*x^4 + ... )
+A371050	filnum	1	1	k -> ZV(k).toString(3).matches("1+2+0+")	Numbers whose ternary representation consists of a run of 1''s, then a run of 2''s, then a run of 0''s.	nonn,base	1..47
+A371051	filter	1	new A007089().skip(1)	v -> v.toString().matches("1+2+0+")	Ternary numbers consisting of a run of 1''s, then a run of 2''s, then a run of 0''s.	nonn,base	1..32
+A371053	filter	1	new A007089().skip(1)	v -> v.toString().matches("2+1+0+")	Ternary numbers consisting of a run of 2''s, then a run of 1''s, then a run of 0''s.	nonn,base	1..32
+A371054	filnum	1	1	k -> ZV(k).toString(3).matches("1+0+2+")	Numbers whose ternary representation consists of a run of 1''s, then a run of 0''s, then a run of 2''s.	nonn,base	1..49
+A371055	filter	1	new A007089().skip(1)	v -> v.toString().matches("1+0+2+")	Ternary numbers consisting of a run of 1''s, then a run of 0''s, then a run of 2''s.	nonn,base	1..32
+A371056	filnum	1	1	k -> ZV(k).toString(3).matches("2+0+1+")	Numbers whose ternary representation consists of a run of 2''s, then a run of 0''s, then a run of 1''s.	nonn,base	1..47
+A371057	filter	1	new A007089().skip(1)	v -> v.toString().matches("2+0+1+")	Ternary numbers consisting of a run of 2''s, then a run of 0''s, then a run of 1''s.	nonn,base	1..32
+A371105	filter	1	new A007089().skip(1)	v -> v.toString().matches("(1+0+2+)+")	Ternary numbers that are concatenated runs A(1)B(1)C(1)A(2)B(2)C(2)...A(k)B(k)C(k), where A(i) is a run of 1''s, B(i) a run of 0''s, and C(i) a run of 2''s, for i = 1..k.	nonn,base	1..32
+A371107	filter	1	new A007089().skip(1)	v -> v.toString().matches("(1+2+0+)+")	Ternary numbers that are concatenated runs A(1)C(1)B(1)A(2)C(2)B(2)...A(k)C(k)B(k), where A(i) is a run of 1''s, B(i) a run of 0''s, and C(i) a run of 2''s, for i = 1..k.	nonn,base	1..32
+A371109	filter	1	new A007089().skip(1)	v -> v.toString().matches("(2+0+1+)+")	Ternary numbers that are concatenated runs C(1)B(1)A(1)C(2)B(2)A(2)...C(k)B(k)A(k), where A(i) is a run of 1''s, B(i) a run of 0''s, and C(i) a run of 2''s, for i = 1..k.	nonn,base	1..32
+A371111	filter	1	new A007089().skip(1)	v -> v.toString().matches("(2+1+0+)+")	Ternary numbers that are concatenated runs C(1)A(1)B(1)C(2)A(2)B(2)...C(k)A(k)B(k), where A(i) is a run of 1''s, B(i) a run of 0''s, and C(i) a run of 2''s, for i = 1..k.	nonn,base	1..32
+A378142	lambdan	1	n -> { final CR r = CV(2).^(new Q(1, 4)); final CR s = CV(2).^(new Q(1, 2)); final CR t = CV(2).^(new Q(3, 4)); return ZV(n).+(CV(n).*(s)./(r).floor()).+(CV(n).*(t)./(r).floor()); }	t =	nonn	1..57
+A378185	lambdan	1	n -> { final CR r = CV(2).^(new Q(1, 4)); final CR s = CR.SQRT2; final CR t = CV(2).^(new Q(3, 4)); return ZV(n).+(CV(n).*(r)./(s).floor()).+(CV(n).*(t)./(s).floor()); }	t =	nonn	1..59
+A379408	lambdan	1	n -> { final CR u = CR.PHI; final CR r = u.^(new Q(1, 4)); final CR s = u.^(new Q(1, 2)); final CR t = u.^(new Q(3, 4)); return ZV(n).+(CV(n).*(s)./(r).floor()).+(CV(n).*(t)./(r).floor()); }	t = , u = golden ratio (X001622).	nonn	1..58
+A379411	lambdan	1	n -> { final CR r = CR.E.^(new Q(1, 4)); final CR s = CR.E.^(new Q(1, 2)); final CR t = CR.E.^(new Q(3, 4)); return ZV(n).+(CV(n).*(s)./(r).floor()).+(CV(n).*(t)./(r).floor()); }	t =	nonn	1..57
+A379414	lambdan	1	n -> { final CR r = CV(3).^(new Q(1, 4)); final CR s = CV(3).^(new Q(1, 2)); final CR t = CV(3).^(new Q(3, 4)); return ZV(n).+(CV(n).*(s)./(r).floor()).+(CV(n).*(t)./(r).floor()); }	t =	nonn	1..57
+A381140	polyx	0	"[[1],[0,-1]]"	",x,cosh,p1,*,lambertW,neg,exp"	0	1	A(x) = exp( -LambertW(-x * cosh(x)) ).	nonn,new	0..19	nyi
+A381141	polyx	0	"[[1],[0,-1]]"	",x,cos,p1,*,lambertW,neg,exp"	0	1	A(x) = exp( -LambertW(-x * cos(x)) ).	nonn,new	0..20	nyi
+A381142	polyx	0	"[[1]]"	",x,sin,neg,lambertW,neg,exp"	0	1	A(x) = exp( -LambertW(-sin(x)) ).	nonn,new	0..19	nyi
+A381143	polyx	0	"[[1],[0,-1]]"	",x,cosh,p1,*,exp,<1,rev,x,/"	1	1	A(x) = (1/x) * Series_Reversion( x * exp(-x * cosh(x)) ).	nonn,new	0..19	nyi
+A381144	polyx	0	"[[1],[0,-1]]"	",x,cos,p1,*,exp,<1,rev,x,/"	1	1	A(x) = (1/x) * Series_Reversion( x * exp(-x * cos(x)) ).	sign,new	0..19	nyi
+A381145	polyx	0	"[[1]]"	",x,sin,neg,exp,<1,rev,x,/"	1	1	A(x) = (1/x) * Series_Reversion( x * exp(-sin(x)) ).	sign,new	0..20	nyi
+A381146	polyx	0	"[[1]]"	",A,<1,cos,<1,exp"	0	1	A(x) = exp( x * cos(x * A(x)) ).	sign,new	0..20	nyi
+A381147	polyx	0	"[[1]]"	",A,<1,sinh,A,/,exp"	0	1	A(x) = exp( sinh(x * A(x)) / A(x) ).	nonn,new	0..21	nyi
+A381148	polyx	0	"[[1]]"	",A,<1,sin,A,/,exp"	0	1	A(x) = exp( sin(x * A(x)) / A(x) ).	sign,new	0..21	nyi

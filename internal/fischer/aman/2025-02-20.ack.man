@@ -1,0 +1,100 @@
+---- 2025-02-20 12:23:44
+A138916	polyx	1	"[[0,1,1],[0,6,1]]"	";A;sub;sub;sub;sub;sub;p1;+;A;6;*;-"	1	0	A(A(A(A(A(A(x))))))+6*x+x^2
+A259587	filnum	1	1	k -> { final CR s = CV(3).sqrt(); final CR r = CR.SQRT2; return r.*(s.*(k).floor()).floor().-(s.*(r.*(k).floor()).floor()).compareTo(ZV(1)) == 0; }	[r[s*k]] - [s[r*k]] = 2, where r = sqrt(2), s=sqrt(3), and [ ] = floor.	nonn,easy	1..10000
+A336368	filter	1	new A000040()	(k, v) -> GCD(ZV(k), PM(k).+(PM(k + 1))).equals(ZV(1))	Primes p(n) such that gcd(n, prime(n)+prime(n+1)) = 1.	nonn	1..54
+A336369	filter	1	new A000040()	(k, v) -> GCD(ZV(k), PM(k).+(PM(k + 1))).compareTo(ZV(1)) > 0	Primes p(n) such that gcd(n, prime(n)+prime(n+1)) > 1.	nonn	1..55
+A336372	filter	1	new A000040()	(k, v) -> k != 1 && GCD(ZV(k), PM(k).+(PM(k - 1))).equals(ZV(1))	Primes p(k) such that gcd(k, prime(k)+prime(k-1)) = 1.	nonn	1..54
+A336373	filter	1	new A000040()	(k, v) -> GCD(ZV(k), PM(k).+(PM(k - 1))).compareTo(ZV(1)) > 0	Primes p(k) such that gcd(k, prime(k)+prime(k-1)) > 1.	nonn	1..55
+A336376	filter	1	new A000040()	(k, v) -> GCD(ZV(k), PM(k).+(PM(k + 2))).equals(ZV(1))	Primes p(n) such that gcd(n, prime(n)+prime(n+2)) = 1.	nonn	1..54
+A336377	filter	1	new A000040()	(k, v) -> GCD(ZV(k), PM(k).+(PM(k + 2))).compareTo(ZV(1)) > 0	Primes p(n) such that gcd(n, prime(n)+prime(n+2)) > 1.	nonn	1..55
+A336380	filter	1	new A000040()	(k, v) -> k != 1 && GCD(ZV(k), PM(k - 1).+(PM(k + 1))).equals(ZV(1))	Primes p(k) such that gcd(k, prime(k-1)+prime(k+1)) = 1.	nonn	1..53
+A336381	filter	1	new A000040()	(k, v) -> GCD(ZV(k), PM(k - 1).+(PM(k + 1))).compareTo(ZV(1)) > 0	Primes p(n) such that gcd(n, prime(n-1)+prime(n+1)) > 1.	nonn	1..10000
+A358896	filter	1	new A000040()	(k, p) -> p.^(PM(k + 1)).compareTo(PM(k + 2).^(PM(k))) < 0	Primes p(k) such that p(k)^p(k + 1) < p(k + 2)^p(k).	nonn	1..1000
+A358898	filter	1	new A000040()	(k, p) -> p.^(p).compareTo(PM(k + 1).^(PM(k - 1))) < 0	Primes p(k) such that p(k)^p(k) < p(k+1)^p(k-1).	nonn	1..40
+A358900	filter	1	new A000040()	(k, v) -> k != 1 && PM(k).^(PM(k)).compareTo(PM(k - 1).^(PM(k + 1))) > 0	Primes p(k) such that prime(k)^prime(k) > prime(k-1)^prime(k+1).	nonn	1..2000
+A372982	multrar	1	(self, n) -> new Q(self.a(n - 1).+(self.a(n - 2)).+(n), self.a(n - 3).+(1)).floor()	"1,2,3"		a(n) = floor((a(n-1)+a(n-2)+n)/(a(n-3)+1), where a(1)=1, a(2)=2, a(3)=3.
+A372983	multrar	1	(self, n) -> new Q(self.a(n - 1).+(self.a(n - 2)).+(n), self.a(n - 3).+(1)).floor()	"1,2,4"		floor((a(n-1)+a(n-2)+n)/(a(n-3)+1)), with a(1)=1, a(2)=2, a(3)=4.	nonn,easy	1..10000
+A372984	multrar	1	(self, n) -> new Q(self.a(n - 1).+(self.a(n - 2)).+(n), self.a(n - 3).+(1)).floor()	"1,3,4"		floor((a(n-1)+a(n-2)+n)/(a(n-3)+1)), with a(1)=1, a(2)=3, a(3)=4.	nonn	1..1000
+A372985	multrar	1	(self, n) -> new Q(self.a(n - 1).+(self.a(n - 2)).+(n), self.a(n - 2)).floor()	"1,2"		0	n -> floor((a(n-1)+a(n-2)+n)/a(n-2)), with a(1)=1, a(2)=2.	nonn	1..82
+A372989	multrar	0	(self, n) -> new Q(FA(2*n), FA(n).^(2).*(self.a(n - 1))).floor()	"1"		0	n -> floor((2*n)!/(n!^2*a(n-1))), with a(0)=1.	nonn	0..34
+A372990	multrar	0	(self, n) -> new Q(FA(3*n), FA(n).^(3).*(self.a(n - 1))).floor()	"1"		0	a(n) = floor((3n)!/(n!^3 a(n-1)), where a(0)=1.
+A381161	lambdan	0	n -> FA(10*n)./(FA(n).^(3).*(FA(2*n)).*(FA(5*n)))
+A381162	lambdan	0	n -> FA(8*n)./(FA(n).^(4).*(FA(4*n)))
+A381163	lambdan	0	n -> RU(0, n, k -> QV(BI(n, k)).*(FA(4*k)).*(FA(2*k))./(FA(k).^(6))).num()	a(n) = Sum_{k=0..n} binomial(n,k)*(4*k)!*(2*k)!/(k!)^6.
+A381164	lambdan	0	n -> RU(0, n, k -> QV(BI(n, k)).*(            FA(5*k))       ./(FA(k).^(5))).num()
+A381165	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n, n)).*(BI(n, k)).*(FA(5*k))./(FA(k).^(3))./(FA(2*k))).num()
+A381171	lambdan	0	n -> RU(0, n, k -> QV(FA(k)).*(BI(n + 1, k))./(n + 1).*(SU(0, k, j -> ZV(2*j - k).^(n - k).*(BI(k, j))).*(BI(n, k))./(Z2(k)))).num()
+A381172	lambdan	0	n -> RU(0, n, k -> QV(FA(k)).*(BI(n + 2*k + 1, k))./(n + 2*k + 1).*(SU(0, k, j -> ZV(2*j - k).^(n - k).*(BI(k, j))).*(BI(n, k))./(Z2(k)))).num()
+A381173	polyx	0	"[[1]]"	",x,1,x,cos,<1,+,/,rev,x,/"	1	1	e.g.f. (1/x) * Series_Reversion( x / (1 + x*cos(x)) ).
+A381174	polyx	0	"[[1]]"	",x,1,x,cos,<1,-,*,rev,x,/"	1	1	e.g.f. (1/x) * Series_Reversion( x * (1 - x*cos(x)) )   A(x) = 1/( 1 - x * A(x) * cos(x * A(x)) ).
+A381175	polyx	0	"[[1]]"	",1,1,A,^2,<1,A,<1,cos,*,-,/"	1	1	A(x) = 1/( 1 - x * A(x)^2 * cos(x * A(x)) ).
+A381176	polyx	0	"[[1]]"	",1,A,<1,cos,<1,+"	1	1	E.g.f. A(x) satisfies A(x) = 1 + x*cos(x*A(x)).	sign,new	0..21	nyi
+A381177	lambdan	0	n -> RU(0, n, k -> QV(FA(k)).*(BI(n + 2*k + 1, k))./(n + 2*k + 1).*(SU(0, k, j -> Z_1(k - j).*(ZV(2*j - k).^(n)).*(BI(k, j)))./(Z2(k).*(FA(k))))).num()
+A381179	lambdan	0	n -> RU(0, n, k -> QV(FA(k)).*(BI(n - k + 1, k))./(n - k + 1).*(SU(0, k, j -> Z_1(k - j).*(ZV(2*j - k).^(n)).*(BI(k, j)))./(Z2(k).*(FA(k))))).num()
+A381180	polyx	0	"[[1]]"	",1,A,<1,sin,A,/,+"	1	1	E.g.f. A(x) satisfies A(x) = 1 + sin(x*A(x)) / A(x).	sign,new	0..23	nyi
+A381181	polyx	0	"[[1]]"	",x,1,x,sin,+,/,rev,x,/"	1	1	e.g.f. (1/x) * Series_Reversion( x / (1 + sin(x)) )
+A381182	polyx	0	"[[1]]"	",1,1,A,A,<1,sin,*,-,/"	0	1	E.g.f. A(x) satisfies A(x) = 1/( 1 - A(x) * sin(x * A(x)) ).	nonn,new	0..18	nyi
+A381193	lambdan	1	n -> ZV(n).-(18).*(n).+(179).*(n).-(582).*(n).+(720).*(3*n - 1)./(120)	((3*n-1)*(n^4-18*n^3+179*n^2-582*n+720)/120.	nonn,easy,new	1..39	nyi	_Eric W. Weisstein_
+A381195	holos	0	[[0],[0,-864,1728],[0,-1,-1]]	1
+A381199	lambdan	0	n -> SU(0, n, k -> BI(n, k).^(2).*(BI(2*k, k))).*(FA(4*n))./(FA(n).^(2).*(FA(2*n)))	a(n) = (4*n)!/((n!)^2*(2*n)!)*Sum_{k=0..n} binomial(n,k)^2*binomial(2*k,k).	nonn,new	0..14	nyi	_Stefano Spezia_
+A381206	lambdan	0	n -> RU(0, n, k -> QV(FA(k + 1)).*(SU(0, k, j -> ZV(2*j - k).^(n - k).*(BI(k, j))).*(BI(n, k))./(Z2(k)))).num()
+A381207	lambdan	0	n -> RU(0, n, k -> QV(FA(k + 2)).*(SU(0, k, j -> ZV(2*j - k).^(n - k).*(BI(k, j))).*(BI(n, k))./(Z2(k))))./(2).num()
+A381208	polyx	0	"[[1]]"	",1,1,x,cos,<1,-,^2,/"	1	1	Expansion of e.g.f. 1/(1 - x*cos(x))^2
+A381209	polyx	0	"[[1]]"	",1,1,x,cos,<1,-,^3,/"	1	1	Expansion of e.g.f. 1/(1 - x*cos(x))^3
+A381210	lambdan	0	n -> RU(0, n, k -> QV(FA(k + 2)).*(SU(0, k, j -> Z_1(k - j).*(ZV(2*j - k).^(n)).*(BI(k, j)))./(Z2(k).*(FA(k)))))./(2).num()
+A381211	polyx	0	"[[1]]"	",1,1,x,sin,-,^3,/"	0	1	Expansion of e.g.f. 1/(1 - sin(x))^3.
+A381218	filnum	1	1	k -> (k & 1) == 1 && (Functions.OMEGA.i(k) & 1) == 1 && (Functions.BIG_OMEGA.i(k) & 1) == 1	Odd numbers with both an odd number of prime factors (counted with multiplicity) and an odd number of distinct prime factors. (Intersection of J067019 and A098903.)	nonn,easy,new	1..1000	nyi	_Harvey P. Dale_
+A381219	lambdan	1	n -> ZV(6).^(n).+(Z2(n)).-(ZV(3).^(n).*(2)).*(FA(n - 1))./(2)	a(n) = (6^n+2^n-2*3^n)*(n-1)!/2
+A381260	polyx	0	"[[1],[0,-2]]"	",p1,x,cosh,*,lambertW,neg,2,/,exp"	1	1	Expansion of e.g.f. exp( -LambertW(-2 * x * cosh(x)) / 2 ).	nonn,new	0..18	nyi
+A381261	polyx	0	"[[1],[0,-2]]"	",p1,x,cos,*,lambertW,neg,2,/,exp"	1	1	Expansion of e.g.f. exp( -LambertW(-2 * x * cos(x)) / 2 ).	nonn,new	0..18	nyi
+A381262	polyx	0	"[[1],[-2]]"	",p1,x,sinh,*,lambertW,neg,2,/,exp"	1	1	Expansion of e.g.f. exp( -LambertW(-2 * sinh(x)) / 2 ).	nonn,new	0..18	nyi
+A381263	polyx	0	"[[1],[-2]]"	",p1,x,sin,*,lambertW,neg,2,/,exp"	1	1	Expansion of e.g.f. exp( -LambertW(-2 * sin(x)) / 2 ).	nonn,new	0..18	nyi
+---- 2025-02-20 16:51:46
+---- 2025-02-20 17:12:19
+A380678	polyx	1	"[[0,1]]"	";x;A;sub;^2;1;A;sub;^2;-;/;+"	0	0	x+A(A(x))^2/(1-A(A(x))^2)
+---- 2025-02-20 19:49:34
+A078801	poly	0	"[[1]]"	";1;2;x;*;+;x;^2;1;2;x;*;+;^2;/;sub;*"
+A226968	polyx	0	"[[0,1],[0,1],[1,0,-1]]"	",1,1,p1,p2,/,-,/,log"	0	1	x/(1-x^2)
+A245312	poly	0	"[[1],[1,1,1]]"	",p1,A,dif,3,*,<3,A,A,dif,<1,-,/,+,A,dif,^2,2,*,<4,A,A,dif,<1,-,^2,/,+,A,^2,<4,A,dif,dif,*,A,A,dif,<1,-,^3,/,+"
+A245313	poly	0	"[[1]]"	",1,A,<1,+,A,^2,<2,+,A,A,dif,*,3,*,<3,+,A,A,dif,dif,*,<4,+"
+A338301	poly	0	"[[1],[1,-1]]"	",1,p1,A,dif,<2,dif,<1,-,/"
+A338306	poly	0	"[[1]]"	",1,1,x,A,<2,+,dif,<1,-,/"
+A360974	polyx	0	"[[1]]"	",x,A,^2,<2,-,rev,dif"	1	0
+A360975	polyx	0	"[[1]]"	",x,A,^3,<2,-,rev,dif"	1	0
+A360976	polyz	1	"[[0,1]]"	",x,A,dif,<3,-,rev"	0	0	1	2
+A360977	polyx	1	"[[0,1]]"	",x,A,dif,^2,<2,-,rev"
+A360978	polyx	1	"[[0,1]]"	",x,A,dif,^3,<2,-,rev"
+A361114	sintrif	0	(term, n) -> ZV(term.testBit(0) ? 1 : 0)	""	new A361102()	a(n)=1 if J361102(n) is odd, otherwise 0.	nonn	0..93	nyi	_Scott R. Shannon_ and _N. J. A. Sloane_
+A361115	sintrif	0	(term, n) -> ZV(term.mod(3) == 0 ? 1 : 0)	""	new A361102()	a(n)=1 if J361102(n) is divisible by 3, otherwise 0.	nonn	0..92	nyi	_Scott R. Shannon_ and _N. J. A. Sloane_
+A361116	sintrif	0	(term, n) -> ZV(term.mod(3) == 0 ? 0 : 1)	""	new A361102()	a(n)=0 if J361102(n) is divisible by 3, otherwise 1.	nonn	0..92	nyi	_Scott R. Shannon_ and _N. J. A. Sloane_
+---- 2025-02-20 20:03:29
+A361032	arrlamb	0	0	0	1	(n, k) -> FA(4*n + 4).*(FA(4*k))./(FA(k).*(FA(k + n + 1).^(3)).*(FA(n + 1).*(8)))	T(n,k) = F(n) * (4*k)!/(k!*(k + n + 1)!^3), where F(n) = (1/8)*(4*n + 4)!/(n + 1)!; n, k >= 0.	nonn,tabl,easy	0..1325	nyi
+A361153	multrar	0	(self, n) -> FA(self.a(n - 1)).*(n - 1).+(FA(self.a(n - 2)).*(n - 2))	"0,1"		a(0)=0, a(1)=1; thereafter a(n) = (n-1)*a(n-1)! + (n-2)*a(n-2)!.	nonn	0..5	nyi	_N. J. A. Sloane_, following a suggestion from _Akshat Kadia_, F
+A361204	filnum	1	1	k -> 2*Functions.OMEGA.i(k) <= Functions.BIG_OMEGA.i(k)	Positive integers k such that 2*omega(k) <= bigomega(k).	nonn	1..10000	nyi	_Gus Wiseman_
+A361226	arrlamb	0	0	0	1	(n, k) -> ZV(k).*((1 + 2*n)*k - 1)./(2)
+---- 2025-02-20 20:32:21
+A361253	multrar	0	(self, n) -> (n > 1 && Predicates.SQUARE.is(n)) ? self.a(Functions.SQRT.i(n)) : ZV(n)	"0"		If n = m^2 for some m > 1 then a(n) = a(m), otherwise a(n) = n.
+A361302	polyz	1	"[[0,1]]"	",x,A,dif,^3,<3,-,rev"	0	0	1	2
+A361303	polyx	0	"[[1],[0,1,-1,-3,-3,-1]]"	",p1,rev,dif"	1	0
+A361304	polyx	0	"[[1],[0,1,-1,-4,-6,-4,-1]]"	",p1,rev,dif"	1	0
+A361307	polyz	1	"[[0,1]]"	",x,A,dif,^4,<3,-,rev"	0	0	1	2
+---- 2025-02-20 21:26:10
+A361309	polyz	1	"[[0,1]]"	",x,A,dif,^2,<4,-,rev"	0	0	1	3	A(x) = Series_Reversion(x - x^4*A'(x)^2).	nonn
+A361310	polyz	1	"[[0,1]]"	",x,A,dif,^3,<4,-,rev"	0	0	1	3	A(x) = Series_Reversion(x - x^4*A'(x)^3).	nonn
+A361311	polyz	1	"[[0,1]]"	",x,A,dif,<5,-,rev"	0	0	1	4	A(x) = Series_Reversion(x - x^5*A'(x)).	nonn
+A361352	decexp	0	() -> CV(new Z("5521725026748260492435541"))./(new Z("5521725125000000000000000"))
+A361393	filnum	1	1	k -> 2*Functions.OMEGA.i(k) > Functions.BIG_OMEGA.i(k)	k such that 2*omega(k) > bigomega(k).	nonn	1..66	nyi	_Gus Wiseman_
+A361395	filnum	1	1	k -> 2*Functions.OMEGA.i(k) >= Functions.BIG_OMEGA.i(k)	k such that 2*omega(k) >= bigomega(k).	nonn	1..67	nyi	_Gus Wiseman_
+---- 2025-02-20 22:05:32
+A108870	lambdan	0	n -> new Q(9,4).^(n).*(9).-(4)./(5).ceiling()	a(n) = ceiling((9*(9/4)^n - 4) / 5).
+A117513	sintrif	1	(term, n) -> term.*(Z2(n - 1))	""	new A110501()
+A361462	sintrif	1	(term, n) -> term.modZ(4)	""	new A135506()	a(n) = J135506(n) mod 4.	nonn	1..65537	nyi	_Antti Karttunen_
+A361463	sintrif	1	(term, n) -> term.mod(4) == 3 ? ZV(1) : ZV(0)	""	new A135506()	a(n) = 1 if J135506(n) == 3 (mod 4), otherwise 0.	nonn	1..65537	nyi	_Antti Karttunen_
+A361483	filter	1	new A000040()	p -> p.+(256).IPP()	Primes p such that p + 256 is also prime.	nonn,easy	1..52	nyi	_Elmo R. Oliveira_
+A361484	filter	1	new A000040()	p -> p.+(512).IPP()	Primes p such that p + 512 is also prime.	nonn,easy	1..51	nyi	_Elmo R. Oliveira_
+A361485	filter	1	new A000040()	p -> p.+(1024).IPP()	Primes p such that p + 1024 is also prime.	nonn,easy	1..10000	nyi	_Elmo R. Oliveira_
+A361507	multrar	0	(self, n) -> new Q(9, 4).*(self.a(n - 1)).floor().+(1)	"1"		a(0) = 1; thereafter a(n) = floor((9/4)*a(n-1)) + 1.
+A361522	lambdan	0	n -> ((n & 1) == 0) ? FA(n/2) : ZV(0)	The aerated factorial numbers.
+A361627	filnum	1	1	k -> !GCD(D007504(k), ZV(k)).equals(ZV(1))	Positive integers such that GCD(D007504(n),n) != 1
+A361649	holos	0	[[0],[2,1,-1],[2,2],[-1]]	1,1	0	0	a(n) = (1+n)*(2*a(n-1) - (n-2)*a(n-2)) with a(0) = a(1) = 1.
+A362685	trilambn	1	1	1	(n, k) -> S2(k, 2).*(n).*(n - 1)	Triangle of numbers read by rows, T(n, k) = (n*(n-1))*Stirling2(k, 2), for n >= 1 and 1 <= k <= n.	nonn,tabl	1..55	nyi	_Igor Victorovich Statsenko_

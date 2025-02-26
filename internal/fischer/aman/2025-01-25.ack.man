@@ -1,0 +1,187 @@
+---- 2025-01-24 19:09:22
+---- 2025-01-24 22:43:56
+---- 2025-01-24 23:59:29
+---- 2025-01-25 09:43:17
+---- 2025-01-25 21:04:54
+---- 2025-01-25 21:08:57
+---- 2025-01-25 21:23:23
+---- 2025-01-25 21:26:26
+A088695	lambdan	0	n -> RU(n/2, n, k -> QV(BI(k, n - k)).*(QV(n + 1).^(k - 1)./(FA(k)))).*(FA(n)).num()	a(n) = n! * Sum_{k=floor(n/2)..n} binomial(k,n-k)*(n+1)^(k-1)/k!.
+A112970	poly	0	"[[1,1,0,0,1],[0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^4) * A(x^2). - _Ilya Gutkovskiy_, Jul 09 2019
+A117535	poly	0	"[[1,1,1,1,1],[0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 + x^4) * A(x^3). - _Ilya Gutkovskiy_, Jul 09 2019
+A120970	poly	0	"[[0],[1]]"	",p1,A,p1,-,sub,^2,<1,+"	G.f. satisfies: A(x) = 1 + x*A(A(x) - 1)^2.
+A121687	poly	0	"[[1]]"	",p0,A,<1,A,<1,sub,^2,*,+"	G.f. satisfies A(x) = 1 + x*A(x) * A( x*A(x) )^2.
+A124824	lambdan	0	n -> SU(0, n, k -> BI(n - 1, k - 1).*(ZV(n).^(n - k)).*(Functions.BELL.z(k)))	a(n) = Sum_{k=0..n} C(n-1,k-1)*n^(n-k)*Bell(k).
+A135868	poly	0	"[[1],[0,2]]"	",p0,p1,sub,<1,+,^2"	G.f. satisfies: A(x) = (1 + x*A(2x))^2
+A143046	poly	0	"[[0],[1],[0,-1]]"	",p1,p2,sub,^3,<1,+"	G.f. satisfies A(x) = 1 + x*A(-x)^3.
+A143047	poly	0	"[[0],[1],[0,-1]]"	",p1,p2,sub,^4,<1,+"	G.f. satisfies A(x) = 1 + x*A(-x)^4.
+A143048	poly	0	"[[0],[1],[0,-1]]"	",p1,p2,sub,^5,<1,+"	G.f. satisfies A(x) = 1 + x*A(-x)^5.
+A143049	poly	0	"[[0],[1],[0,-1]]"	",p1,p2,sub,^6,<1,+"	G.f. satisfies A(x) = 1 + x*A(-x)^6.
+A143426	poly	0	"[[1]]"	",p0,A,<1,sub,^2,<1,+"	G.f. satisfies: A(x) = 1 + x*A(x*A(x))^2.
+A143435	poly	0	"[[1]]"	",p0,A,<1,sub,^3,<1,+"	G.f. satisfies: A(x) = 1 + x*A(x*A(x))^3.
+A143436	poly	0	"[[1]]"	",p0,A,<1,sub,^4,<1,+"	G.f. satisfies: A(x) = 1 + x*A(x*A(x))^4.
+A143437	poly	0	"[[1]]"	",p0,A,<1,sub,^5,<1,+"	G.f. satisfies: A(x) = 1 + x*A(x*A(x))^5.
+A143500	poly	0	"[[1]]"	",p0,A,^2,<1,sub,<1,+"	G.f. satisfies: A(x) = 1 + x*A(x*A(x)^2).
+A143501	poly	0	"[[1]]"	",p0,A,^3,<1,sub,<1,+"	G.f. satisfies: A(x) = 1 + x*A(x*A(x)^3).
+A143508	poly	0	"[[1]]"	",p0,A,^2,<1,sub,^2,<1,+"	G.f. satisfies: A(x) = 1 + x*A(x*A(x)^2)^2
+A143561	poly	0	"[[1,2,9],[1],[0,-1]]"	",p1,A,<1,p2,sub,/,+,^2"	G.f. satisfies: A(x) = ( 1 + x*A(x)/A(-x) )^2.
+A171192	poly	0	"[[1],[0,2]]"	",p0,p0,p1,sub,^2,<1,-,/"	G.f. satisfies A(x) = 1/(1 - x*A(2x)^2).
+A171193	poly	0	"[[1],[0,2]]"	",p0,p0,p1,sub,^3,<1,-,/"	G.f. satisfies A(x) = 1/(1 - x*A(2x)^3).
+A171194	poly	0	"[[1],[0,2]]"	",p0,p0,p1,sub,^4,<1,-,/"	G.f. satisfies A(x) = 1/(1 - x*A(2x)^4).
+A171195	poly	0	"[[1],[0,2]]"	",p0,p0,p1,sub,^5,<1,-,/"	G.f. satisfies A(x) = 1/(1 - x*A(2x)^5).
+A171196	poly	0	"[[1],[0,2]]"	",p0,p0,p1,sub,^6,<1,-,/"	G.f. satisfies A(x) = 1/(1 - x*A(2x)^6).
+A171197	poly	0	"[[1],[0,2]]"	",p0,p0,p1,sub,^7,<1,-,/"	G.f. satisfies A(x) = 1/(1 - x*A(2x)^7).
+A171198	poly	0	"[[1],[0,2]]"	",p0,p0,p1,sub,^8,<1,-,/"	G.f. satisfies A(x) = 1/(1 - x*A(2x)^8).
+A171200	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,^3,<1,+"	G.f. satisfies  A(x) = 1 + x*A(2*x)^3.
+A171201	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,<1,+,^3"	G.f. satisfies: A(x) = (1 + x*A(2*x))^3.
+A171202	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,^4,<1,+"	G.f. satisfies A(x) = 1 + x*A(2*x)^4.
+A171203	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,<1,+,^4"	G.f. satisfies: A(x) = (1 + x*A(2*x))^4.
+A171204	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,^5,<1,+"	G.f. satisfies A(x) = 1 + x*A(2*x)^5.
+A171205	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,<1,+,^5"	G.f. satisfies: A(x) = (1 + x*A(2*x))^5.
+A171206	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,^6,<1,+"	G.f. satisfies A(x) = 1 + x*A(2*x)^6.
+A171207	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,<1,+,^6"	G.f. satisfies: A(x) = (1 + x*A(2*x))^6.
+A171208	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,^7,<1,+"	G.f. satisfies A(x) = 1 + x*A(2*x)^7.
+A171209	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,<1,+,^7"	G.f. satisfies: A(x) = (1 + x*A(2*x))^7.
+A171210	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,^8,<1,+"	G.f. satisfies A(x) = 1 + x*A(2*x)^8.
+A171211	poly	0	"[[0],[1],[0,2]]"	",p1,p2,sub,<1,+,^8"	G.f. satisfies: A(x) = (1 + x*A(2*x))^8.
+A177383	poly	0	"[[1]]"	",p0,A,A,dif,<1,-,<1,A,^3,/,+"	G.f. satisfies: A(x) = 1 + x * (A(x) - x*A'(x)) / A(x)^3. 	'
+A182953	poly	0	"[[0],[1]]"	",p1,A,<1,A,<1,sub,^3,*,+"	G.f. satisfies: A(x) = 1 + x*A(x) * A( x*A(x) )^3.
+A182954	poly	0	"[[0],[1]]"	",p1,A,<1,A,<1,sub,^4,*,+"	G.f. satisfies: A(x) = 1 + x*A(x) * A( x*A(x) )^4.
+A182955	poly	0	"[[0],[1]]"	",p1,A,<1,A,<1,sub,^5,*,+"	G.f. satisfies: A(x) = 1 + x*A(x) * A( x*A(x) )^5.
+A191373	poly	0	"[[1,1,0,0,0,1],[0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^5) * A(x^2). - _Ilya Gutkovskiy_, Jul 09 2019
+A211824	poly	0	"[[1]]"	",p0,A,A,dif,<1,+,^3,<1,+"	G.f. satisfies: A(x) = 1 + x*(A(x) + x*A'(x))^3.
+A211825	poly	0	"[[1]]"	",p0,A,A,dif,<1,+,^4,<1,+"	G.f. satisfies: A(x) = 1 + x*(A(x) + x*A'(x))^4.
+A211826	poly	0	"[[1]]"	",p0,A,A,dif,<1,+,^5,<1,+"	G.f. satisfies: A(x) = 1 + x*(A(x) + x*A'(x))^5.		'
+A213094	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^4,p2,*,sub,^2,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^4)^2.
+A213095	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^5,p2,*,sub,^2,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^5)^2.
+A213096	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^6,p2,*,sub,^3,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^6)^3.
+A213098	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^6,p2,*,sub,^2,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^6)^2.
+A213099	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^7,p2,*,sub,^3,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^7)^3.
+A213100	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^9,p2,*,sub,^3,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^9)^3.
+A213101	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^8,p2,*,sub,^4,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^8)^4.
+A213102	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^9,p2,*,sub,^4,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^9)^4.
+A213103	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^12,p2,*,sub,^4,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^12)^4.
+A213104	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^10,p2,*,sub,^5,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^10)^5.
+A213105	poly	0	"[[1],[0,1],[0,-1]]"	",p0,p1,A,^12,p2,*,sub,^6,/,+"	G.f. satisfies: A(x) = 1 + x/A(-x*A(x)^12)^6.
+A213225	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^4,<1,neg,sub,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^4)).
+A213226	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^5,<1,neg,sub,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^5)).
+A213227	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^6,<1,neg,sub,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^6)).
+A213228	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^6,<1,neg,sub,^2,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^6)^2).
+A213229	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^7,<1,neg,sub,^2,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^7)^2).
+A213230	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^8,<1,neg,sub,^2,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^8)^2).
+A213231	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^8,<1,neg,sub,^3,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^8)^3).
+A213232	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^9,<1,neg,sub,^3,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^9)^3).
+A213233	poly	0	"[[1],[0,1]]"	",p0,p0,p1,A,^10,<1,neg,sub,^4,/,-,/"	G.f. satisfies: A(x) = 1/(1 - x/A(-x*A(x)^10)^4).
+A237647	poly	0	"[[1,1,1],[0,0,1]]"	",p0,^7,p1,sub,^4,*"	G.f. satisfies: A(x) = (1 + x + x^2)^7 * A(x^2)^4.
+A237648	poly	0	"[[1,1,1],[0,0,1]]"	",p0,p1,sub,^4,*"	G.f. satisfies: A(x) = (1 + x + x^2) * A(x^2)^4.
+A237650	poly	0	"[[1,1,1],[0,0,1]]"	",p0,^3,p1,sub,^2,*"	G.f. satisfies: A(x) = (1 + x + x^2)^3 * A(x^2)^2.
+A237651	poly	0	"[[1,1,1],[0,0,1]]"	",p0,p1,sub,^2,*"	G.f. satisfies: A(x) = (1 + x + x^2) * A(x^2)^2.
+A276134	poly	0	"[[0,1],[1,1,1,1,1],[0,0,0,0,0,1],[0,1,1,1,1],[1,0,0,0,0,-1]]"	",p1,p2,sub,*,p3,p4,/,+"	G.f. g(x) satisfies  g(x) = (1+x+x^2+x^3+x^4)*g(x^5) + (x+x^2+x^3+x^4)/(1-x^5). - _Robert Israel_, Sep 07 2016
+A277872	poly	0	"[[1,1,1,1,1],[0,0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 + x^4) * A(x^4). - _Ilya Gutkovskiy_, Jul 09 2019
+A277873	poly	0	"[[1,1,1,1,1,1],[0,0,0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 + x^4 + x^5) * A(x^5). - _Ilya Gutkovskiy_, Jul 09 2019
+A300987	poly	1	"[[1],[0,2],[0,3]]"	",p0,p1,A,dif,*,-,p0,p2,A,dif,*,-,/,<1"	O.g.f. A(x) satisfies: A(x) = x * (1 - 2*x*A'(x)) / (1 - 3*x*A'(x)).
+A300989	poly	1	"[[1],[0,3],[0,4]]"	",p0,p1,A,dif,*,-,p0,p2,A,dif,*,-,/,<1"	O.g.f. A(x) satisfies: A(x) = x * (1 - 3*x*A'(x)) / (1 - 4*x*A'(x)).
+A300991	poly	1	"[[1],[0,4],[0,5]]"	",p0,p1,A,dif,*,-,p0,p2,A,dif,*,-,/,<1"	O.g.f. A(x) satisfies: A(x) = x * (1 - 4*x*A'(x)) / (1 - 5*x*A'(x)).
+A300993	poly	1	"[[1],[0,5],[0,6]]"	",p0,p1,A,dif,*,-,p0,p2,A,dif,*,-,/,<1"	O.g.f. A(x) satisfies: A(x) = x * (1 - 5*x*A'(x)) / (1 - 6*x*A'(x)).
+A301363	poly	0	"[[1,1],[1]]"	",p1,A,^3,<1,dif,<1,A,<1,dif,/,+"	G.f. A(x) satisfies: A(x) = 1 + x * (x*A(x)^3)' / (x*A(x))'. - _Paul D. Hanna_, Apr 01 2018
+A302102	poly	0	"[[1]]"	",p0,A,^4,<1,dif,<1,A,<1,dif,/,+"	G.f. A(x) satisfies: A(x) = 1 + x * (x*A(x)^4)' / (x*A(x))'.
+A303824	poly	0	"[[1,1,1,1,1,1,1],[0,0,0,0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 + x^4 + x^5 + x^6) * A(x^6). - _Ilya Gutkovskiy_, Jul 09 2019
+A303825	poly	0	"[[1,1,1,1,1,1,1,1],[0,0,0,0,0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 + x^4 + x^5 + x^6 + x^7) * A(x^7). - _Ilya Gutkovskiy_, Jul 09 2019
+A303827	poly	0	"[[1,1,1,1,1,1],[0,0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 + x^4 + x^5) * A(x^4). - _Ilya Gutkovskiy_, Jul 09 2019
+A303828	poly	0	"[[1,1,1,1,1,1,1],[0,0,0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 + x^4 + x^5 + x^6) * A(x^5). - _Ilya Gutkovskiy_, Jul 09 2019
+A309045	poly	0	"[[1,1,1,1],[0,0,0,1]]"	",p0,p1,sub,^2,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3) * A(x^3)^2.
+A309046	poly	0	"[[1,1,1,1],[0,0,0,1]]"	",p0,p1,sub,^3,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3) * A(x^3)^3.
+A309048	poly	0	"[[1,1,1,-1],[0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 - x^3) * A(x^3).
+A341642	lambdan	1	n -> SD(n, d -> IV[ZV(d).^(2).compareTo(ZV(n)) > 0 && PP(d)])	#select(x ->(x^2 > n), factor(n)[, 1]); a(n) = sumdiv(n, d, d^2 > n && issquarefree(d));
+A341677	lambdan	1	n -> SD(n, d -> IV[ZV(d).^(2).compareTo(ZV(n)) < 0 && Predicates.PRIME_POWER.is(d)])	sumdiv(n, d, d^2 < n && isprimepower(d)); \\ _Amiram Eldar_, Nov 01 2024
+A345008	poly	0	"[[1,1,1,1,-1],[0,0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 - x^4) * A(x^4).
+A345009	poly	0	"[[1,1,1,1,1,-1],[0,0,0,0,0,1]]"	",p0,p1,sub,*"	G.f. A(x) satisfies: A(x) = (1 + x + x^2 + x^3 + x^4 - x^5) * A(x^5).
+A351756	poly	0	"[[1],[0,1],[1,-2]]"	",p0,p1,p2,/,sub,<1,p2,^2,/,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x/(1 - 2*x)) / (1 - 2*x)^2.
+A351757	poly	0	"[[1],[0,1],[1,-3]]"	",p0,p1,p2,/,sub,<1,p2,^2,/,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x/(1 - 3*x)) / (1 - 3*x)^2.
+A351810	poly	0	"[[1],[0,1],[1,-4]]"	",p0,p1,p2,/,sub,<1,p2,^2,/,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x/(1 - 4*x)) / (1 - 4*x)^2.
+A351811	poly	0	"[[1],[0,1],[1,-5]]"	",p0,p1,p2,/,sub,<1,p2,^2,/,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x/(1 - 5*x)) / (1 - 5*x)^2.
+A351812	poly	0	"[[1],[0,1],[1,-6]]"	",p0,p1,p2,/,sub,<1,p2,^2,/,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x/(1 - 6*x)) / (1 - 6*x)^2.
+A351970	poly	0	"[[1],[1,-1]]"	",p0,x,^3,p1,^3,/,sub,p1,/"	G.f. A(x) satisfies: A(x) = A(x^3/(1 - x)^3) / (1 - x).
+A351971	poly	0	"[[1],[1,-1]]"	",p0,x,^4,p1,^4,/,sub,p1,/"	G.f. A(x) satisfies: A(x) = A(x^4/(1 - x)^4) / (1 - x).
+A352039	poly	0	"[[1],[1,-1]]"	",p0,x,^3,p1,/,sub,p1,/"	G.f. A(x) satisfies: A(x) = A(x^3/(1 - x)  ) / (1 - x).
+A352041	poly	0	"[[1],[1,-1]]"	",p0,x,^4,p1,/,sub,p1,/"	G.f. A(x) satisfies: A(x) = A(x^4/(1 - x)  ) / (1 - x).
+A352042	poly	0	"[[1],[1,-1]]"	",p0,x,^3,p1,/,sub,p1,/,<1,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x^3/(1 - x)) / (1 - x).
+A352043	poly	0	"[[1],[1,-1]]"	",p0,x,^4,p1,/,sub,p1,/,<1,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x^4/(1 - x)) / (1 - x).
+A352044	poly	0	"[[1],[1,-1]]"	",p0,x,^2,p1,^2,/,sub,p1,/,<1,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x^2/(1 - x)^2) / (1 - x).
+A352045	poly	0	"[[1],[1,-1]]"	",p0,x,^3,p1,^3,/,sub,p1,/,<1,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x^3/(1 - x)^3) / (1 - x).
+A352066	poly	0	"[[1],[1,-1]]"	",p0,x,^4,p1,^4,/,sub,p1,/,<1,+"	G.f. A(x) satisfies: A(x) = 1 + x * A(x^4/(1 - x)^4) / (1 - x).
+A352235	poly	0	"[[1],[1,-1]]"	",p0,A,<1,A,A,dif,<1,3,*,-,/,+"	G.f. A(x) satisfies: A(x) = 1 + x*A(x)   / (A(x) - 3*x*A'(x)).
+A352236	poly	0	"[[1],[1,-1]]"	",p0,A,^2,<1,A,A,dif,<1,2,*,-,/,+"	G.f. A(x) satisfies: A(x) = 1 + x*A(x)^2 / (A(x) - 2*x*A'(x)).
+A352237	poly	0	"[[1],[1,-1]]"	",p0,A,^2,<1,A,A,dif,<1,3,*,-,/,+"	G.f. A(x) satisfies: A(x) = 1 + x*A(x)^2 / (A(x) - 3*x*A'(x)).
+A352238	poly	0	"[[1],[1,-1]]"	",p0,A,^2,<1,A,A,dif,<1,4,*,-,/,+"	G.f. A(x) satisfies: A(x) = 1 + x*A(x)^2 / (A(x) - 4*x*A'(x)).
+A360894	poly	0	"[[1],[1,-1]]"	",p0,p1,<1,sub,<1,+"	G.f. satisfies A(x) = 1 + x * A(x * (1 - x)).
+A360896	poly	0	"[[1],[0,1,0,-1]]"	",p0,p1,sub,<1,+"	G.f. satisfies A(x) = 1 + x * A(x * (1 - x^2)).
+A360897	poly	0	"[[1],[0,1,0,0,-1]]"	",p0,p1,sub,<1,+"	G.f. satisfies A(x) = 1 + x * A(x * (1 - x^3)).
+A374628	poly	0	"[[1],[1,1],[0,0,0,1]"	",p1,^3,p2,sub,*"	G.f. A(x) satisfies A(x) = (1 + x)^3 * A(x^3).
+A377458	holos	0	[[0],[15927408,-8690550,1764445,-158010,5267],[-41561856,28125504,-6971484,752814,-29958],[-2425752,2682114,-946385,136008,-6925],[15428520,-12241164,3648972,-483666,24018],[-3065328,2239896,-611839,75210,-3587],[-964224,1162386,-507648,95250,-6492],[104832,-157656,87836,-21504,1948],[10800,-21204,13382,-3198,220],[0,906,-1630,876,-128],[0,18,-24,-30,12]]	1,1,1,4	0	0
+A379859	lambdan	0	n -> RU(0, n, k -> QV(-n+k-1    ).^(n - k).*(BI(2*n+k+1, k    ))./(FA(n - k)))./(n + 1).*(FA(n)).num()	a(n) = n!*sum(k=0, n, (-n+k-1)^(n-k)*binomial(2*n+k+1, k)/(n-k)!)/(n+1);
+A379861	lambdan	0	n -> RU(0, n, k -> QV(-n+k-1    ).^(n - k).*(BI(2*n+2, k      ))./(FA(n - k))).*(FA(n))./(n + 1).num()	a(n) = (n!/(n+1)) * Sum_{k=0..n} (-n+k-1)^(n-k) * binomial(2*n+2,k)/(n-k)!.
+A379864	lambdan	0	n -> RU(0, n, k -> QV(3*n-k+2   ).^(k - 1).*(BI(3*n-k+2, n-k  ))./(FA(k))).*(FA(n)).*(2).num()	2 * n! * Sum_{k=0..n} (3*n-k+2)^(k-1) * binomial(3*n-k+2,n-k)/k!.
+A379875	lambdan	0	n -> RU(0, n, k -> QV(-n+2*k-1  ).^(n - k).*(BI(n-k+1, k      ))./(FA(n - k).*(n - k + 1))).*(FA(n)).num()	a(n) = n!*sum(k=0, n, (-n+2*k-1)^(n-k)*binomial(n-k+1, k)/((n-k+1)*(n-k)!));
+A379915	sintrif	1	(term, n) -> term.*(2).-(Functions.SIGMA1.z(term))./(2)	""	new A046388()	a(n) is the deficiency of the odd squarefree semiprime J046388(n), divided by 2: (2*A046388(n) - sigma(A046388(n))/2
+A379916	sintrif	1	(term, n) -> term.*(2).-(Functions.SIGMA1.z(term))./(2)	""	new A046389()	a(n) is the deficiency of J046389(n), divided by 2.	nonn,new	1..10000	nyi	_Hugo Pfoertner_
+A379917	sintrif	1	(term, n) -> term.*(2).-(Functions.SIGMA1.z(term))./(2)	""	new A046390()	a(n) is the deficiency of J046390(n), divided by 2.	nonn,look,new	1..10000	nyi	_Hugo Pfoertner_
+A380035	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n -k)).*(BI(QV(n + k + 1, 2), k))./(QV(n+k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(n/2+k/2+1/2, k)/((n+k+1)*(n-k)!))	_	_	_
+A380039	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(n + 2*k + 1, 3), k))./(QV(n+2*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(n/3+2*k/3+1/3, k)/((n+2*k+1)*(n-k)!))	_	_	_
+A380041	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(2*n + k + 1, 3), k))./(QV(2*n+k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(2*n/3+k/3+1/3, k)/((2*n+k+1)*(n-k)!))	_	_	_
+A380042	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n -k)).*(BI(QV(2*n + 1, 2), k))./(FA(n-k))))./(2*n+1).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(n+1/2, k)/(n-k)!)/(2*n+1)	_	_	_
+A380043	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(3*n + 1, 3), k))./(FA(n-k))))./(3*n+1).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(n+1/3, k)/(n-k)!)/(3*n+1)	_	_	_
+A380044	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n -k)).*(BI(QV(3*k + 1, 2), k))./(QV(3*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(3*k/2+1/2, k)/((3*k+1)*(n-k)!))	_	_	_
+A380045	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(4*k + 1, 3), k))./(QV(4*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(4*k/3+1/3, k)/((4*k+1)*(n-k)!))	_	_	_
+A380046	egfu	0	RING.exp(RING.multiply(RING.monomial(new Q(2), 0), RING.asinh(RING.multiply(RING.x(), RING.exp(RING.x(), mN), mN), mN), mN), mN)		exp( 2*arcsinh(x*exp(x)) )					0
+A380047	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n - k)).*(BI(QV(k + 3, 3), k))./(QV(k + 3, 3).*(FA(n - k))))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(k/3+1, k)/((k/3+1)*(n-k)!))	_	_	_
+A380050	egfu	0	RING.exp(RING.asinh(RING.multiply(RING.x(), RING.exp(RING.x(), mN), mN), mN), mN)		exp( arcsinh(x*exp(x)) )					0
+A380050	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n -k)).*(BI(QV(k + 1, 2), k))./(QV(k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(k/2+1/2, k)/((k+1)*(n-k)!))	_	_	_
+A380051	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(k + 1, 3), k))./(QV(k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(k/3+1/3, k)/((k+1)*(n-k)!))	_	_	_
+A380077	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n -k)).*(BI(QV(n + 2*k + 1, 2), k))./(QV(n+2*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(n/2+k+1/2, k)/((n+2*k+1)*(n-k)!))	_	_	_
+A380078	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(n + 3*k + 1, 3), k))./(QV(n+3*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(n/3+k+1/3, k)/((n+3*k+1)*(n-k)!))	_	_	_
+A380080	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n -k)).*(BI(QV(n + 1, 2), k))./(FA(n-k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(n/2+1/2, k)/(n-k)!)/(n+1)	_	_	_
+A380081	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(n + 1, 3), k))./(FA(n-k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(n/3+1/3, k)/(n-k)!)/(n+1)	_	_	_
+A380093	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n -k)).*(BI(QV(n - k + 1, 2), k))./(QV(n-k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(n/2-k/2+1/2, k)/((n-k+1)*(n-k)!))	_	_	_
+A380094	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(n - k + 1, 3), k))./(QV(n-k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(n/3-k/3+1/3, k)/((n-k+1)*(n-k)!))	_	_	_
+A380095	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n-k)).*(BI(QV(2*n + 2*k + 1, 2), k))./(QV(2*n+2*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(n+k+1/2, k)/((2*n+2*k+1)*(n-k)!))	_	_	_
+A380096	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(3*n + 3*k + 1, 3), k))./(QV(3*n+3*k+1).*(FA(n-k))))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(n+k+1/3, k)/((3*n+3*k+1)*(n-k)!))	_	_	_
+A380097	lambdan	0	n -> RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(FA(n+k))./(QV(FA(k)).*(FA(n-k))))./(n+1).num()	""		a(n) = sum(k=0, n, 3^k*k^(n-k)*(n+k)!/(k!*(n-k)!))/(n+1)	_	_	_
+A380097	lambdan	0	n -> RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(FA(n+k))./(QV(FA(k)).*(FA(n-k))))./(n+1).num()	""		a(n) = sum(k=0, n, 3^k*k^(n-k)*(n+k)!/(k!*(n-k)!))/(n+1)	_	_	_
+A380133	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n -k)).*(BI(QV(1, 2), k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(1/2, k)/(n-k)!)	_	_	_
+A380133	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(k).^(n-k)).*(BI(QV(1)./(2), k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, 2^k*k^(n-k)*binomial(1/2, k)/(n-k)!)	_	_	_
+A380134	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(1)./(3), k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(1/3, k)/(n-k)!)	_	_	_
+A380134	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(k).^(n-k)).*(BI(QV(1, 3), k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, 3^k*k^(n-k)*binomial(1/3, k)/(n-k)!)	_	_	_
+A380155	egfu	0	RING.series(RING.one(), RING.pow(RING.subtract(RING.one(), RING.multiply(RING.monomial(new Q(2),1), RING.exp(RING.monomial(new Q(2),1), mN), mN)), Q.HALF, mN), mN)		1/sqrt(1 - 2*x*exp(2*x))					0
+A380156	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.multiply(RING.monomial(new Q(3),1), RING.exp(RING.monomial(new Q(3),1), mN), mN)), mN), RING.series(RING.one(), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1/(1 - 3*x*exp(3*x))^(1/3)					0
+A380158	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(2*k-1).^(n -k)).*(BI(QV(1, 2), k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, 2^k*(2*k-1)^(n-k)*binomial(1/2, k)/(n-k)!)	_	_	_
+A380158	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(Z2(k)).*(QV(2*k-1).^(n-k)).*(BI(QV(1)./(2), k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, 2^k*(2*k-1)^(n-k)*binomial(1/2, k)/(n-k)!)	_	_	_
+A380159	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(3*k-1).^(n-k)).*(BI(QV(1)./(3), k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, 3^k*(3*k-1)^(n-k)*binomial(1/3, k)/(n-k)!)	_	_	_
+A380159	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3).^(k).*(QV(3*k-1).^(n-k)).*(BI(QV(1, 3), k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, 3^k*(3*k-1)^(n-k)*binomial(1/3, k)/(n-k)!)	_	_	_
+A380208	egfu	0	RING.exp(RING.subtract(RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.monomial(new Q(3),1)), mN), RING.series(RING.one(), RING.monomial(new Q(3), 0), mN), mN), mN), RING.one()), mN)		exp( (1+3*x)^(1/3) - 1 )					0
+A380209	egfu	0	RING.exp(RING.subtract(RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.monomial(new Q(2),1)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), RING.one()), mN)		exp( (1+2*x)^(3/2) - 1 )					0
+A380210	egfu	0	RING.exp(RING.subtract(RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.monomial(new Q(2),1)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(2), 0), mN), mN), mN), RING.one()), mN)		exp( (1+2*x)^(5/2) - 1 )					0
+A380212	egfu	0	RING.exp(RING.subtract(RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(2),1)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN), RING.one()), mN)		exp( 1/(1-2*x)^(3/2) - 1 )					0
+A380213	egfu	0	RING.exp(RING.subtract(RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(2),1)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN), RING.one()), mN)		exp( 1/(1-2*x)^(5/2) - 1 )					0
+A380214	egfu	0	RING.exp(RING.subtract(RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(3),1)), mN), RING.series(RING.monomial(new Q(2), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN), RING.one()), mN)		exp( 1/(1-3*x)^(2/3) - 1 )					0
+A380215	egfu	0	RING.exp(RING.subtract(RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.monomial(new Q(3),1)), mN), RING.series(RING.monomial(new Q(2), 0), RING.monomial(new Q(3), 0), mN), mN), mN), RING.one()), mN)		exp( (1+3*x)^(2/3) - 1 )					0
+A380228	egfu	0	RING.exp(RING.subtract(RING.exp(RING.series(RING.subtract(RING.exp(RING.monomial(new Q(2),1), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN), RING.one()), mN)		exp( exp( (exp(2*x)-1)/2 ) - 1 )					0
+A380229	egfu	0	RING.exp(RING.subtract(RING.exp(RING.series(RING.subtract(RING.exp(RING.monomial(new Q(3),1), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN), RING.one()), mN)		exp( exp( (exp(3*x)-1)/3 ) - 1 )					0
+A380257	egfu	0	RING.exp(RING.series(RING.subtract(RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(3),1)), mN), RING.series(RING.monomial(new Q(2), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN)		exp( (1/(1-3*x)^(2/3) - 1)/2 )					0
+A380258	egfu	0	RING.exp(RING.series(RING.subtract(RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(5),1)), mN), RING.series(RING.monomial(new Q(2), 0), RING.monomial(new Q(5), 0), mN), mN), mN), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN)		exp( (1/(1-5*x)^(2/5) - 1)/2 )					0
+A380259	egfu	0	RING.exp(RING.series(RING.subtract(RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(2),1)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN)		exp( (1/(1-2*x)^(3/2) - 1)/3 )					0
+A380260	egfu	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.monomial(new Q(2),1)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN)		exp( ((1+2*x)^(3/2) - 1)/3 )					0
+A380261	egfu	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.monomial(new Q(3),1)), mN), RING.series(RING.monomial(new Q(2), 0), RING.monomial(new Q(3), 0), mN), mN), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN)		exp( ((1+3*x)^(2/3) - 1)/2 )					0
+A380262	egfu	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.monomial(new Q(5),1)), mN), RING.series(RING.monomial(new Q(2), 0), RING.monomial(new Q(5), 0), mN), mN), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN)		exp( ((1+5*x)^(2/5) - 1)/2 )					0
+A380307	egfu	0	RING.exp(RING.subtract(RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.monomial(new Q(5),1)), mN), RING.series(RING.one(), RING.monomial(new Q(5), 0), mN), mN), mN), RING.one()), mN)		exp( (1+5*x)^(1/5) - 1 )					0
+A380308	egfu	0	RING.exp(RING.subtract(RING.one(), RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(2),1)), mN), RING.series(RING.one(), RING.monomial(new Q(2), 0), mN), mN), mN), mN)), mN)		exp( 1 - 1/(1-2*x)^(1/2) )					0
+A380309	egfu	0	RING.exp(RING.subtract(RING.one(), RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(3),1)), mN), RING.series(RING.one(), RING.monomial(new Q(3), 0), mN), mN), mN), mN)), mN)		exp( 1 - 1/(1-3*x)^(1/3) )					0
+A380310	egfu	0	RING.exp(RING.subtract(RING.one(), RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.one(), RING.monomial(new Q(5),1)), mN), RING.series(RING.one(), RING.monomial(new Q(5), 0), mN), mN), mN), mN)), mN)		exp( 1 - 1/(1-5*x)^(1/5) )					0
+A380338	egfu	0	RING.log(RING.subtract(RING.one(), RING.multiply(RING.x(), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN)		log(1 - x * log(1 - x))					0
+
+A264412	poly	0	"[[1],[0,0,1],[0,6]]"	",p1,sub,p2,+,sqrt"	G.f. A(x) satisfies: A(x)^2 = A(x^2) + 6*x.
+A264413	poly	0	"[[1],[0,0,1],[0,12]]"	",p1,sub,p2,+,sqrt"	G.f. A(x) satisfies: A(x)^2 = A(x^2) + 12*x.
+A264414	poly	0	"[[1],[0,0,1],[0,20]]"	",p1,sub,p2,+,sqrt"	G.f. A(x) satisfies: A(x)^2 = A(x^2) + 20*x.
+A264415	poly	0	"[[1],[0,0,1],[0,30]]"	",p1,sub,p2,+,sqrt"	G.f. A(x) satisfies: A(x)^2 = A(x^2) + 30*x.
+---- 2025-01-25 22:42:00
+A088223	poly	0	"[[1,1]]"	",A,<1,sub,A,x,-,/,x,+"	A(x) = A(x*A(x))/(A-x)+x	(cf. PARI)

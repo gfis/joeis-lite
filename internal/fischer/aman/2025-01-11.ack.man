@@ -1,0 +1,76 @@
+---- 2025-01-11 21:57:20
+A275759	egfu	0	RING.add(RING.one(), RING.reversion(RING.log(RING.pow(RING.series(RING.exp(RING.multiply(RING.log(RING.onePlusXToTheN(1), mN), RING.oneMinusXToTheN(1), mN), mN), RING.exp(RING.multiply(RING.log(RING.oneMinusXToTheN(1), mN), RING.onePlusXToTheN(1), mN), mN), mN), Q.HALF, mN), mN), mN))		1 + reverse( log( sqrt( (1+x)^(1-x) / (1-x)^(1+x) ) ) )					0
+A318599	egfu	0	RING.series(RING.add(RING.one(), RING.pow(RING.subtract(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.sin(RING.monomial(new Q(2),1), mN), mN)), Q.HALF, mN)), RING.multiply(RING.monomial(new Q(2), 0), RING.cos(RING.x(), mN), mN), mN)		(1 + sqrt(1-2*sin(2*x)))/(2*cos(x))					0
+A341592	lambdan	1	n -> SD(n, d -> IV[ZV(d).^(2).compareTo(ZV(n)) >= 0 && Predicates.SQUARE_FREE.is(d)])	sumdiv(n, d, d^2 >= n && issquarefree(d)); \\ _Amiram Eldar_, Nov 01 2024
+A341593	lambdan	1	n -> SD(n, d -> IV[ZV(d).^(2).compareTo(ZV(n)) >= 0 && Predicates.PRIME_POWER.is(d)])	sumdiv(n, d, d^2 >= n && isprimepower(d)); \\ _Amiram Eldar_, Nov 01 2024
+A341595	lambdan	1	n -> SD(n, d -> IV[ZV(d).^(2).compareTo(ZV(n)) >  0 && Predicates.SQUARE_FREE.is(d)])	sumdiv(n, d, d^2 > n && issquarefree(d)); \\ _Amiram Eldar_, Nov 01 2024
+A341596	lambdan	1	n -> SD(n, d -> IV[ZV(d).^(2).compareTo(ZV(n)) <  0 && Predicates.SQUARE_FREE.is(d)])	sumdiv(n, d, d^2 < n && issquarefree(d)); \\ _Amiram Eldar_, Nov 01 2024
+A341644	lambdan	1	n -> SD(n, d -> IV[ZV(d).^(2).compareTo(ZV(n)) >  0 && Predicates.PRIME_POWER.is(d)])	sumdiv(n, d, d^2 > n && isprimepower(d)); \\ _Amiram Eldar_, Nov 01 2024
+A344133	lambdan	1	n -> SD(n, i -> SD(n, j -> (SD(n, k -> ZV(i).*(j).*(k)./(GCD(i, j, k))))))	sumdiv(n, i, sumdiv(n, j, sumdiv(n, k, i*j*k/gcd([i, j, k]))));
+A344134	lambdan	1	n -> SD(n, i -> SD(n, j -> (SD(n, k -> LCM(i, j, k)))))	sumdiv(n, i, sumdiv(n, j, sumdiv(n, k, lcm([i, j, k]))));
+A344135	lambdan	1	n -> SD(n, i -> SD(n, j -> (SD(n, k -> ZV(i).*(j).*(k)./(LCM(i, j, k))))))	sumdiv(n, i, sumdiv(n, j, sumdiv(n, k, i*j*k/lcm([i, j, k]))));
+A369795	egfu	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(x)/(1 + exp(x) - exp(3*x))					0
+A370163	egfu	0	RING.series(RING.multiply(RING.monomial(new Q(2), 0), RING.add(RING.one(), RING.exp(RING.x(), mN)), mN), RING.subtract(RING.add(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		2*(1 + exp(x))/(1 + exp(x) + exp(2*x) - exp(3*x))					0
+A370456	egfu	0	RING.series(RING.multiply(RING.monomial(new Q(2), 0), RING.exp(RING.monomial(new Q(2),1), mN), mN), RING.subtract(RING.add(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		2*exp(2*x)/(1 + exp(x) + exp(2*x) - exp(3*x))					0
+A371460	egfu	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(x)/(1 + exp(2*x) - exp(3*x))					0
+A371984	egfu	0	RING.series(RING.exp(RING.monomial(new Q(2),1), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.monomial(new Q(2),1), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(2*x)/(1 + exp(2*x) - exp(3*x))					0
+A372508	egfu	0	RING.subtract(RING.exp(RING.sinh(RING.x(), mN), mN), RING.exp(RING.subtract(RING.cosh(RING.x(), mN), RING.one()), mN))		exp(sinh(x)) - exp(cosh(x) - 1)					0
+A372738	egfu	0	RING.series(RING.exp(RING.monomial(new Q(2),1), mN), RING.subtract(RING.add(RING.one(), RING.exp(RING.x(), mN)), RING.exp(RING.monomial(new Q(3),1), mN)), mN)		exp(2*x)/(1 + exp(x) - exp(3*x))					0
+A372803	egfu	0	RING.multiply(RING.multiply(RING.exp(RING.subtract(RING.one(), RING.exp(RING.subtract(RING.zero(), RING.x()), mN)), mN), RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.one()), mN), RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.monomial(new Q(2), 0)), mN)		exp(1 - exp(-x)) * (exp(-x) - 1) * (exp(-x) - 2)					0
+A375175	egfu	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.series(RING.subtract(RING.exp(RING.monomial(new Q(4),1), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN), RING.one()), RING.monomial(new Q(2), 0), mN), mN)		exp( (exp( (exp(4*x) - 1)/2 ) - 1)/2 )					0
+A375176	egfu	0	RING.exp(RING.series(RING.subtract(RING.exp(RING.series(RING.subtract(RING.exp(RING.monomial(new Q(9),1), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN), RING.one()), RING.monomial(new Q(3), 0), mN), mN)		exp( (exp( (exp(9*x) - 1)/3 ) - 1)/3 )					0
+A375381	egfu	0	RING.series(RING.subtract(RING.subtract(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.exp(RING.x(), mN)), RING.monomial(new Q(2), 0)), RING.subtract(RING.add(RING.exp(RING.subtract(RING.zero(), RING.x()), mN), RING.exp(RING.x(), mN)), RING.monomial(new Q(4), 0)), mN)		(exp(-x) - exp(x) - 2)/(exp(-x) + exp(x) - 4)					0
+A375945	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 2 * log(1 - x))^(3/2)					0
+A375946	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(3), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(4), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (1 + 3 * log(1 - x))^(4/3)					0
+A375947	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(4), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 4 * log(1 - x))^(3/2)					0
+A375949	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(4), 0), RING.multiply(RING.monomial(new Q(3), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(4), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (4 - 3 * exp(x))^(4/3)					0
+A375950	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(5), 0), RING.multiply(RING.monomial(new Q(4), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(3), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (5 - 4 * exp(x))^(3/2)					0
+A375951	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(3), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (1 + 3 * log(1 - x))^(5/3)					0
+A375952	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(4), 0), RING.multiply(RING.monomial(new Q(3), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(3), 0), mN), mN), mN), mN)		1 / (4 - 3 * exp(x))^(5/3)					0
+A375953	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.add(RING.one(), RING.multiply(RING.monomial(new Q(2), 0), RING.log(RING.oneMinusXToTheN(1), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (1 + 2 * log(1 - x))^(5/2)					0
+A375954	egfu	0	RING.series(RING.one(), RING.exp(RING.multiply(RING.log(RING.subtract(RING.monomial(new Q(3), 0), RING.multiply(RING.monomial(new Q(2), 0), RING.exp(RING.x(), mN), mN)), mN), RING.series(RING.monomial(new Q(5), 0), RING.monomial(new Q(2), 0), mN), mN), mN), mN)		1 / (3 - 2 * exp(x))^(5/2)					0
+A376544	egfu	0	RING.series(RING.exp(RING.x(), mN), RING.subtract(RING.one(), RING.multiply(RING.exp(RING.x(), mN), RING.subtract(RING.subtract(RING.exp(RING.x(), mN), RING.x()), RING.one()), mN)), mN)		exp(x)/(1 - exp(x)*(exp(x)-x-1))					0
+A376551	egfu	0	RING.multiply(RING.multiply(RING.multiply(RING.x(), RING.exp(RING.x(), mN), mN), RING.exp(RING.multiply(RING.x(), RING.exp(RING.x(), mN), mN), mN), mN), RING.add(RING.x(), RING.one()), mN)		x*exp(x)*exp(x*exp(x))*(x+1)					0
+A379846	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*n-2*k+1).^(k).*(BI(n+1, n-k))./(FA(k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, (3*n-2*k+1)^k*binomial(n+1, n-k)/k!)/(n+1)	_	_	_
+A379847	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(4*n-3*k+1).^(k).*(BI(n+1, n-k))./(FA(k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, (4*n-3*k+1)^k*binomial(n+1, n-k)/k!)/(n+1)	_	_	_
+A379856	lambdan	0	n -> RU(0, n, k -> QV(-2*n+3*k-1).^(n - k    ).*(BI(2*n-2*k+1, k  ))./(FA(n - k).*(2*n-2*k+1))).*(FA(n)).num()
+A379858	lambdan	0	n -> RU(0, n, k -> QV(-3*n+4*k-1).^(n - k    ).*(BI(3*n-3*k+1, k  ))./(FA(n - k).*(3*n-3*k+1))).*(FA(n)).num()
+A379860	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+k+1).^(n-k).*(BI(2*n+k+1, k))./(FA(n-k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, (n+k+1)^(n-k)*binomial(2*n+k+1, k)/(n-k)!)/(n+1)	_	_	_
+A379862	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+k+1).^(n-k).*(BI(2*n+2, k))./(FA(n-k))))./(n+1).num()	""		a(n) = n!*sum(k=0, n, (n+k+1)^(n-k)*binomial(2*n+2, k)/(n-k)!)/(n+1)	_	_	_
+A379866	lambdan	0	n -> RU(0, n, k -> QV(-2*n+k-2  ).^(n - k - 1).*(BI(2*n+1, k      ))./(FA(n - k)))             .*(FA(n).*(2).negate()).num()
+A379867	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*n-k+1).^(k-1).*(BI(3*n-k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*n-k+1)^(k-1)*binomial(3*n-k+1, n-k)/k!)	_	_	_
+A379868	lambdan	0	n -> RU(0, n, k -> QV(-2*n+k-1  ).^(n - k - 1).*(BI(2*n, k        ))./(FA(n - k)))             .*(FA(n).negate()).num()
+A379870	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(4*n-k+1).^(k-1).*(BI(4*n-k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (4*n-k+1)^(k-1)*binomial(4*n-k+1, n-k)/k!)	_	_	_
+A379871	lambdan	0	n -> RU(0, n, k -> QV(-3*n+k-1  ).^(n - k - 1).*(BI(3*n, k        ))./(FA(n - k)))             .*(FA(n).negate()).num()
+A379876	lambdan	0	n -> RU(0, n, k -> QV(-n-k-1    ).^(n - k - 1).*(BI(n+2*k, k      ))./(FA(n - k)))             .*(FA(n).negate()).num()
+A379877	lambdan	0	n -> RU(0, n, k -> QV(-2*n-1    ).^(n - k - 1).*(BI(2*n+k, k      ))./(FA(n - k)))             .*(FA(n).negate()).num()
+A379878	lambdan	0	n -> RU(0, n, k -> QV(-2*k-1    ).^(n - k - 1).*(BI(3*k, k        ))./(FA(n - k)))             .*(FA(n).negate()).num()
+A379879	lambdan	0	n -> RU(0, n, k -> QV(-k-1      ).^(n - k - 1).*(BI(2*k, k        ))./(FA(n - k)))             .*(FA(n).negate()).num()
+A379884	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+k+1).^(k-1).*(BI(n+k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (n+k+1)^(k-1)*binomial(n+k+1, n-k)/k!)	_	_	_
+A379885	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n-2*k+1).^(k-1).*(BI(2*n-2*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*n-2*k+1)^(k-1)*binomial(2*n-2*k+1, n-k)/k!)	_	_	_
+A379886	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(3*n-3*k+1).^(k-1).*(BI(3*n-3*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (3*n-3*k+1)^(k-1)*binomial(3*n-3*k+1, n-k)/k!)	_	_	_
+A379897	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(n+2*k+1).^(k-1).*(BI(n+2*k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (n+2*k+1)^(k-1)*binomial(n+2*k+1,n-k)/k!)	_	_	_
+A379912	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(2*n+k+1).^(k-1).*(BI(2*n+k+1, n-k))./(FA(k)))).num()	""		a(n) = n!*sum(k=0, n, (2*n+k+1)^(k-1)*binomial(2*n+k+1, n-k)/k!)	_	_	_
+A379933	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).*(QV(k+2).^(n-k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)*(k+2)^(n-k)/(n-k)!)	_	_	_
+A379942	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+3).^(n-k).*(BI(k+2, 2))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+3)^(n-k)*binomial(k+2, 2)/(n-k)!)	_	_	_
+A379943	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+4).^(n-k).*(BI(k+3, 3))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+4)^(n-k)*binomial(k+3, 3)/(n-k)!)	_	_	_
+A379990	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(n-k).*(BI(k+2, 2))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(n-k)*binomial(k+2, 2)/(n-k)!)	_	_	_
+A379991	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+2).^(n-k).*(BI(k+2, 2))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+2)^(n-k)*binomial(k+2, 2)/(n-k)!)	_	_	_
+A379992	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).*(QV(k-1).^(n-k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)*(k-1)^(n-k)/(n-k)!)	_	_	_
+A379993	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k).^(n-k).*(BI(k+3, 3))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, k^(n-k)*binomial(k+3, 3)/(n-k)!)	_	_	_
+A379994	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).^(n-k).*(BI(k+3, 3))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)^(n-k)*binomial(k+3, 3)/(n-k)!)	_	_	_
+A379995	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+2).^(n-k).*(BI(k+3, 3))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+2)^(n-k)*binomial(k+3, 3)/(n-k)!)	_	_	_
+A379996	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+3).^(n-k).*(BI(k+3, 3))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+3)^(n-k)*binomial(k+3, 3)/(n-k)!)	_	_	_
+A379997	lambdan	0	n -> QV(FA(n)).*(RU(0, n, k -> QV(k+1).*(QV(k-2).^(n-k))./(FA(n-k)))).num()	""		a(n) = n!*sum(k=0, n, (k+1)*(k-2)^(n-k)/(n-k)!)	_	_	_
+A380014	lambdan	0	n -> RU(0, n, k -> QV(-2).^(k).*(ZV(2*k + 1).^(n - k)).*(BI(new Q(-1, 2), k))./(FA(n - k))).*(FA(n)).num()
+A380015	lambdan	0	n -> RU(0, n, k -> QV(-2).^(k).*(ZV(k    ).^(n - k)  ).*(BI(new Q(-1, 2), k))./(FA(n - k))).*(FA(n)).num()
+A380016	lambdan	0	n -> RU(0, n, k -> QV(-3).^(k).*(ZV(3*k + 1).^(n - k)).*(BI(new Q(-1, 3), k))./(FA(n - k))).*(FA(n)).num()
+A380017	lambdan	0	n -> RU(0, n, k -> QV(-3).^(k).*(ZV(k    ).^(n - k)  ).*(BI(new Q(-1, 3), k))./(FA(n - k))).*(FA(n)).num()
+A380018	lambdan	0	n -> RU(0, n, k -> QV(-4).^(k).*(ZV(4*k + 1).^(n - k)).*(BI(new Q(-1, 4), k))./(FA(n - k))).*(FA(n)).num()
+A380019	lambdan	0	n -> RU(0, n, k -> QV(-4).^(k).*(ZV(k    ).^(n - k)  ).*(BI(new Q(-1, 4), k))./(FA(n - k))).*(FA(n)).num()
+A380020	lambdan	0	n -> RU(0, n, k -> QV(-2).^(k).*(ZV(k + 1).^(n - k)  ).*(BI(new Q(-1, 2), k))./(FA(n - k))).*(FA(n)).num()
+A380021	lambdan	0	n -> RU(0, n, k -> QV(-3).^(k).*(ZV(k + 1).^(n - k)  ).*(BI(new Q(-1, 3), k))./(FA(n - k))).*(FA(n)).num()
+A380022	lambdan	0	n -> RU(0, n, k -> QV(-4).^(k).*(ZV(k + 1).^(n - k)  ).*(BI(new Q(-1, 4), k))./(FA(n - k))).*(FA(n)).num()
+A380028	lambdan	0	n -> RU(0, n, k -> QV(-2).^(k).*(ZV(k    ).^(n - k)  ).*(BI(new Q( 1, 2), k))./(FA(n - k))).*(FA(n)).num()
+A380029	lambdan	0	n -> RU(0, n, k -> QV(-3).^(k).*(ZV(k    ).^(n - k)  ).*(BI(new Q( 1, 3), k))./(FA(n - k))).*(FA(n)).num()
+A380030	lambdan	0	n -> RU(0, n, k -> QV(-3).^(k).*(ZV(k    ).^(n - k)  ).*(BI(new Q( 2, 3), k))./(FA(n - k))).*(FA(n)).num()

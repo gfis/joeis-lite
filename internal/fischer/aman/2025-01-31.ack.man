@@ -1,0 +1,109 @@
+---- 2025-01-31 23:19:19
+A107086	poly	0	"[[1],[0,0,1],[0,4]]"	",p1,sub,^2,p2,+,^1/4"	G.f. A(x) satisfies: A(x)^4 = A(x^2)^2     + 4*x.	sign	0..1000	nyi	_Paul D. Hanna_
+A107087	poly	0	"[[1],[0,0,1],[0,4]]"	",p1,sub,p2,+,^1/2"	G.f. A(x) satisfies: A(x)^2 = A(x^2)       + 4*x.	sign	0..30	nyi	_Paul D. Hanna_
+A107088	poly	0	"[[1],[0,0,1],[0,4]]"	",p1,sub,^1/2,p2,+"	G.f. A(x) satisfies: A(x)   = A(x^2)^(1/2) + 4*x.	sign	0..53	nyi	_Paul D. Hanna_
+A107089	poly	0	"[[1],[0,0,0,1],[0,9]]"	",p1,sub,^3,p2,+,^1/9"	G.f. A(x) satisfies: A(x)^9 = A(x^3)^3     + 9*x.	sign	0..21	nyi	_Paul D. Hanna_
+A107090	poly	0	"[[1],[0,0,0,1],[0,9]]"	",p1,sub,p2,+,^1/3"	G.f. A(x) satisfies: A(x)^3 = A(x^3)       + 9*x.	sign	0..21	nyi	_Paul D. Hanna_
+A107091	poly	0	"[[1],[0,0,0,1],[0,9]]"	",p1,sub,^1/3,p2,+"	G.f. A(x) satisfies: A(x)   = A(x^3)^(1/3) + 9*x.	sign	0..56	nyi	_Paul D. Hanna_
+A107092	poly	0	"[[1],[0,0,0,1],[0,3]]"	",p1,sub,p2,+,^1/3"	G.f. A(x) satisfies  A(x)^3 = A(x^3)       + 3*x.	sign	0..1000	nyi	_Paul D. Hanna_
+A107093	poly	0	"[[1],[0,0,0,1],[0,3]]"	",p1,sub,^1/3,p2,+"	G.f. A(x) satisfies: A(x)   = A(x^3)^(1/3) + 3*x.	sign	0..74	nyi	_Paul D. Hanna_
+A121627	polyx	1	"[[0,1],[0,1,-2],[1,-2,2]]"	",p1,p2,/"	0	1
+A133297	lambdan	0	n -> RU(1, n, k -> QV(n).^(n - k - 1).*(Z_1(k + 1))./(FA(n - k))).*(FA(n)).num()	n!*Sum_{k=1..n} (-1)^(k+1)*n^(n-k-1)/(n-k)!.
+A141370	poly	1	"[[0,1,1]]"	",x,A,^2,sub,sub,+"	G.f. satisfies: A(x) = x + A(A(A(x)^2)).	nonn	1..24	nyi	_Paul D. Hanna_
+A141371	poly	1	"[[0,1,1]]"	",x,A,sub,^2,sub,+"	G.f. satisfies: A(x) = x + A(A(A(x))^2).	nonn	1..20	nyi	_Paul D. Hanna_
+A141372	poly	1	"[[0,1,1]]"	",x,A,sub,sub,^2,+"	G.f. satisfies: A(x) = x + A(A(A(x)))^2.	nonn	1..18	nyi	_Paul D. Hanna_
+A141380	poly	1	"[[0,1,1]]"	",x,A,^2,sub,sub,sub,+"	G.f. satisfies: A(x) = x + A(A(A(A(x)^2))).	nonn	1..24	nyi	_Paul D. Hanna_
+A141381	poly	1	"[[0,1,1]]"	",x,A,sub,^2,sub,sub,+"	G.f. satisfies: A(x) = x + A(A(A(A(x))^2)).	nonn	1..19	nyi	_Paul D. Hanna_
+A141382	poly	1	"[[0,1,1]]"	",x,A,sub,sub,^2,sub,+"	G.f. satisfies: A(x) = x + A(A(A(A(x)))^2).	nonn	1..18	nyi	_Paul D. Hanna_
+A141383	poly	1	"[[0,1,1]]"	",x,A,sub,sub,sub,^2,+"	G.f. satisfies: A(x) = x + A(A(A(A(x)))^2).	nonn	1..18	nyi	_Paul D. Hanna_
+A144681	polyx	0	"[[1,1]]"	",x,A,/,rev,exp"	0	1
+A183611	polyx	0	"[[1]]"	",1,A,^2,A,^3,<1,+,int,+"	0	1
+A192007	polyz	0	"[[1]]"	",x,cos,1,-,sin"	0	1	0	2	E.g.f.: sin(cos(x)-1)
+A192060	polyz	0	"[[1]]"	",x,cos,1,-,cos"	0	1	0	2	E.g.f.: cos(cos(x)-1)
+A192063	polyz	0	"[[1],[0,2]]"	",1,p1,cos,sqrt,-"	0	1	0	2	E.g.f.: 1-sqrt(cos(2*x)) (even part)
+A195135	polyx	0	"[[1]]"	",x,x,cos,x,sin,+,<1,rev,/"	1	1	E.g.f. A(x) satisfies: A(x) = cos(x/A(x)) + sin(x/A(x)).
+A210672	polyz	0	"[[1]]"	",1,3,2,x,cosh,*,-,/"	0	1	0	2	1/(3-2*cosh(x)) (even coefficients)
+A210674	polyz	0	"[[1]]"	",1,4,3,x,cosh,*,-,/"	0	1	0	2	1/(4-3*cosh(x)) (even coefficients)
+A210676	polyz	0	"[[1]]"	",1,3,x,cosh,*,2,-,/"	0	1	0	2	1/(3*cosh(x)-2) (even coefficients)
+A213108	polyx	0	"[[1]"	",x,A,<1,neg,sub,/,exp"	1	1	exp( x/A(-x*A(x)) )
+A213109	polyx	0	"[[1]"	",x,A,^3,<1,neg,sub,/,exp"	1	1	exp( x/A(-x*A(x)^3) )
+A213110	polyx	0	"[[1]"	",x,A,^5,<1,neg,sub,^2,/,exp"	1	1	exp( x/A(-x*A(x)^5)^2 )
+A213111	polyx	0	"[[1]"	",x,A,^6,<1,neg,sub,^2,/,exp"	1	1	exp( x/A(-x*A(x)^6)^2 )
+A213112	polyx	0	"[[1]"	",x,A,^7,<1,neg,sub,^3,/,exp"	1	1	exp( x/A(-x*A(x)^7)^3 )
+A213113	polyx	0	"[[1]"	",x,A,^9,<1,neg,sub,^3,/,exp"	1	1	exp( x/A(-x*A(x)^9)^3 )
+A235370	polyx	0	"[[1],[1,0,-36]]"	",1,1,1,p1,^1/6,/,int,rev,6,*,-,/,^1/6"	1	1	1/(1 - 6*reverse( Integral 1/(1 - 36*x^2)^(1/6) dx ))^(1/6)
+A235371	polyx	0	"[[1],[0,-1]]"	",p1,sub,A,^6,*,int,1,+"	1	1	E.g.f. satisfies: A'(x) = A(x)^6 * A(-x) with A(0) = 1.
+A235372	polyx	0	"[[1],[0,-1]]"	",p1,sub,^2,A,^6,*,int,1,+"	1	1	E.g.f. satisfies: A'(x) = A(x)^6 * A(-x)^2 with A(0) = 1.	nonn	0..365	nyi
+A235373	polyx	0	"[[1],[0,-1]]"	",p1,sub,^3,A,^6,*,int,1,+"	1	1	E.g.f. satisfies: A'(x) = A(x)^6 * A(-x)^3 with A(0) = 1.	nonn	0..370	nyi
+A235374	polyx	0	"[[1],[1,0,-1]]"	",1,1,p1,^4,int,rev,-,/"	1	1	E.g.f.: 1/(1 - Series_Reversion( Integral (1-x^2)^4 dx ))
+A236953	polyx	0	"[[1],[1,0,-49]]"	",1,1,1,p1,^1/7,/,int,rev,7,*,-,/,^1/7"	1	1	1/(1 - 7*reverse( Integral 1/(1 - 49*x^2)^(1/7) dx ))^(1/7)
+A236954	polyx	0	"[[1],[1,0,-25]]"	",1,1,p1,^1/5,int,rev,5,*,-,/,^1/5"	1	1	1/(1 - 5*reverse( Integral (1 - 25*x^2)^(1/5)   dx ))^(1/5)
+A236955	polyx	0	"[[1],[1,0,-16]]"	",1,1,p1,^1/2,int,rev,4,*,-,/,^1/4"	1	1	1/(1 - 4*reverse( Integral (1 - 16*x^2)^(1/2)   dx ))^(1/4)
+A236956	polyx	0	"[[1],[1,0,-9]]"	",1,1,p1,int,rev,3,*,-,/,^1/3"	1	1	1/(1 - 3*reverse( Integral (1 - 9*x^2 )         dx ))^(1/3)
+A236957	polyx	0	"[[1],[1,0,-4]]"	",1,1,p1,^2,int,rev,2,*,-,/,^1/2"	1	1	1/(1 - 2*reverse( Integral (1 - 4*x^2 )^2       dx ))^(1/2)
+A236958	polyx	0	"[[1],[1,0,-1]]"	",1,1,p1,^5,int,rev,-,/"	1	1	1/(1 -   reverse( Integral (1 - x^2   )^5       dx ))
+A258880	polyz	0	"[[1],[1,0,0,1]]"	",1,p1,/,int,rev"	0	1	1	3	reverse( Integral 1/(1+x^3) dx )
+A258900	polyz	0	"[[1],[1,0,0,0,-1]]"	",1,p1,^1/4,/,int,rev"	0	1	1	4
+A258924	polyz	0	"[[1],[1,0,0,0,0,-1]]"	",1,p1,^1/5,/,int,rev"	0	1	1	5
+A258926	polyz	0	"[[1],[1,0,0,0,0,0,-1]]"	",1,p1,^1/6,/,int,rev"	0	1	1	6
+A273030	polyx	1	"[[0,1],[0,0,0,1],[0,1,1],[0,0,1]]"	",p1,p2,^2,sub,/,rev"	2	0	G.f. A(x) satisfies: A(x)^3 = x * A( (A(x) + A(x)^2)^2 ).
+A273434	lambdan	3	n -> { final int k = 3; return SU(0, n - 1, j -> BI(n - 1, j).*(ZV(n).^(n - 1 - j)).*(Z_1(k + j + 1)).*(S1(j + 1, k))); }
+A273435	lambdan	4	n -> { final int k = 4; return SU(0, n - 1, j -> BI(n - 1, j).*(ZV(n).^(n - 1 - j)).*(Z_1(k + j + 1)).*(S1(j + 1, k))); }
+A273436	lambdan	5	n -> { final int k = 5; return SU(0, n - 1, j -> BI(n - 1, j).*(ZV(n).^(n - 1 - j)).*(Z_1(k + j + 1)).*(S1(j + 1, k))); }
+A273437	lambdan	6	n -> { final int k = 6; return SU(0, n - 1, j -> BI(n - 1, j).*(ZV(n).^(n - 1 - j)).*(Z_1(k + j + 1)).*(S1(j + 1, k))); }
+A273438	lambdan	7	n -> { final int k = 7; return SU(0, n - 1, j -> BI(n - 1, j).*(ZV(n).^(n - 1 - j)).*(Z_1(k + j + 1)).*(S1(j + 1, k))); }
+A273439	lambdan	8	n -> { final int k = 8; return SU(0, n - 1, j -> BI(n - 1, j).*(ZV(n).^(n - 1 - j)).*(Z_1(k + j + 1)).*(S1(j + 1, k))); }
+A273440	lambdan	9	n -> { final int k = 9; return SU(0, n - 1, j -> BI(n - 1, j).*(ZV(n).^(n - 1 - j)).*(Z_1(k + j + 1)).*(S1(j + 1, k))); }
+A273441	lambdan	10	n -> { final int k =10; return SU(0, n - 1, j -> BI(n - 1, j).*(ZV(n).^(n - 1 - j)).*(Z_1(k + j + 1)).*(S1(j + 1, k))); }
+A355338	polyx	0	"[[1],[-1,0,-1]"	",x,exp,p1,+,exp"	0	1	Expansion of e.g.f.: exp(exp(x) - x^2 - 1).
+A360432	polyx	0	"[[0],[0,0,1]]"	",A,p1,+,exp,<1"	0	1	-LambertW( -x*exp(x^2) )
+A360433	polyx	0	"[[0],[0,0,0,1]]"	",A,p1,+,exp,<1"	0	1	-LambertW( -x*exp(x^3) )
+A362682	polyx	0	"[[1],[0,-1],[0,1,1]]"	",p1,lambertW,p2,/"	1	1	-LambertW(-x)/(x * (1+x))
+A377705	lambdan	0	n -> (n == 0) ? ZV(1) : SU(0, n, k -> Z_1(k).*(BI(n, k)).*(BI(n - 3*k, n - k - 1)))./(n)	if(n==0, 1, sum(k=0, n, (-1)^k*binomial(n, k)*binomial(n-3*k, n-k-1))/n)
+A377748	sintrif	0	(term, n) -> F000217(n).-(term)./(2)	""	new A005132()
+A378255	poly	1	"[[0,1]]"	",x,A,^2,sub,+,A,^3,sub,+"	G.f. A(x) satisfies A(x) = x + A(A(x)^2) + A(A(x)^3).	nonn	1..520	nyi	_Paul D. Hanna_
+A378256	polyx	1	"[[0,1],[0,0,0,1],[0,0,1]]"	",p1,sub,p2,sub,/,p2,-"	2	0	G.f. A(x) satisfies A(x) = A(x^3)/A(x^2) - x^2.	sign	1..4300	nyi
+A378409	lambdan	0	n -> RU(0, n, k -> QV(Z_1(n - k)).*(BI(n, k)).*(BI(n*k, k))./((n - 1)*k + 1)).num()
+A378410	lambdan	0	n -> RU(0, n, k -> QV(Z_1(n - k)).*(BI(n - 1, k - 1)).*(BI(n*k,k))./((n - 1)*k + 1)).num()
+A378411	poly	0	"[[1]]"	",1,1,A,^3/2,<1,+,<1,+,^2"	G.f. A(x) satisfies A(x) = ( 1 + x * (1 + x*A(x)^(3/2)) )^2.	nonn	0..29	nyi	_Seiichi Manyama_
+A378575	poly	1	"[[0,1]]"	",x,A,sub,sub,sub,sub,<1,+"	G.f. satisfies A(x) = x + x*A(A(A(A(A(x))))), so that this sequence shifts left under the 5th self-COMPOSE.	nonn	1..400	nyi	_Paul D. Hanna_
+A378576	poly	1	"[[0,1]]"	",x,A,sub,sub,sub,sub,sub,<1,+"	G.f. satisfies A(x) = x + x*A(A(A(A(A(A(x)))))), so that this sequence shifts left under the 6th self-COMPOSE.	nonn	1..400	nyi	_Paul D. Hanna_
+A378610	lambdan	0	n -> SU(0, n, k -> BI(4*n + k + 3, k).*(BI(n - 1, n - k)))./(n + 1)	(1/(n+1)) * Sum_{k=0..n} binomial(4*n+k+3,k) * binomial(n-1,n-k).
+A378624	filnum	1	0	n -> new Z(ZV(n).toString(2), 3).mod(5) == 0L	nyi to	Numbers whose binary representation interpreted as being base-3 is divisible by 5.	nonn,base	1..10000	nyi	_Kyle David Krueger_
+A378747	lambdan	1	n -> D048673(n).-(F001065(n))	a(n) = D048673(n) - F001065(n).	nonn	1..20000	nyi	_Antti Karttunen_
+A378983	filtpos	1	1	new A003961()	(k, v) -> v.-(SIGMA(k).+(1)).mod(v.-(2*k)).isZero()	Numbers k such that (D003961(k)-2*k) divides (D003961(k)-(1+sigma(k))), where D003961 is fully multiplicative with a(prime(i)) = prime(i+1), and sigma is the sum of divisors function.	nonn	1..20000	nyi	_Antti Karttunen_
+A378988	lambdan	1	n -> ZV(2*n).xor(SIGMA(n).+(1))	a(n) = 2*n XOR 1+sigma(n), where XOR is bitwise-xor, J003987.	nonn,look	1..32768	nyi	_Antti Karttunen_
+A378992	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A011371(), new A048881()	a(n) = J011371(n) - J048881(n); The exponent of the highest power of 2 dividing the n-th factorial minus the exponent of the highest power of 2 dividing n-th Catalan number.	nonn,easy	0..20000	nyi	_Antti Karttunen_
+A378993	lambdan	1	n -> ZV(n).-(Functions.OMEGA.z(n))	a(n) = n - omega(n), where omega = F001221.	nonn,easy	1..68	nyi	_Torlach Rush_
+A378998	lambdan	1	n -> Functions.VALUATION.z(SIGMA(n).add(1), Z.TWO)	Number of trailing 1-bits in the binary representation of sigma(n).	nonn	1..100000	nyi	_Antti Karttunen_
+A379006	ordtraf	1	new A355582()		Ordinal transform of E355582, where E355582 is the largest 5-smooth divisor of n.	nonn	1..20000	nyi	_Antti Karttunen_
+A379007	lambdan	1	n -> { final Z sq = ZV(n).^(2); return sq.xor(sq.-(1)); }	a(n) = (n^2) XOR ((n^2)-1).	nonn,mult	1..20000	nyi	_Antti Karttunen_
+A379009	lambdan	1	n -> { final Z sq = ZV(n).^(2); return sq.*(2).xor(SIGMA(sq).+(1)); }	a(n) = 2*n^2 XOR 1+sigma(n^2).	nonn	1..32768	nyi	_Antti Karttunen_
+A379012	lambdan	1	n -> A001694.isPowerful(ZV(n)) ? F034444(n) : ZV(0)	a(n) = F034444(n) if n is powerful (J001694), and 0 otherwise.	nonn,easy,mult	1..10000	nyi	_Amiram Eldar_
+A379029	filnum	1	1	k -> E241405(k).compareTo(ZV(2*k)) > 0	Modified exponential abundant numbers: numbers k such that E241405(k) > 2*k.	nonn,easy	1..10000	nyi	_Amiram Eldar_
+A379030	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(k) && E241405(k).compareTo(ZV(2*k)) > 0	Nonsquarefree modified exponential abundant numbers: nonsquarefree numbers k such that E241405(k) > 2*k.	nonn,easy	1..10000	nyi	_Amiram Eldar_
+A379031	filnum	1	1	k -> (k & 1) == 1 && E241405(k).compareTo(ZV(2*k)) > 0	Odd modified exponential abundant numbers: odd numbers k such that E241405(k) > 2*k.	nonn,easy	1..10000	nyi	_Amiram Eldar_
+A379032	filnum	1	1	k -> E241405(k).equals(E241405(k + 1))	Numbers k such that k and k+1 have an equal sum of modified exponential divisors: E241405(k) = E241405(k+1).	nonn	1..1918	nyi	_Amiram Eldar_
+A379111	lambdan	1	n -> (Functions.BIG_OMEGA.i(Functions.SIGMA1.i(n)) == Functions.OMEGA.i(n)) ? ZV(1) : ZV(0)	a(n) = 1 if bigomega(sigma(n)) is equal to omega(n), otherwise 0.	nonn,mult	1..102400	nyi	_Antti Karttunen_
+A379351	lambdan	0	n -> Functions.GPF.z(ZV(n).*(n).+(2))	a(n) is the greatest prime factor of n^2 + 2.	nonn	0..1000	nyi	_Andrew Howroyd_
+A379373	filtpos	1	1	new A050252()	(k, v) -> v.compareTo(F055642(k)) <= 0	Numbers k such that J050252(k) <= F055642(k).	nonn,base	1..10000	nyi	_Paolo Xausa_
+A379635	trilambn	1	1	1	(n, k) -> F000203(k).*(F000203(n - k + 1))	Triangle read by rows: T(n,k) = F000203(k)*F000203(n-k+1), n >= 1, k >= 1.	nonn,tabl	1..78	nyi	_Omar E. Pol_
+A379800	decexp	1	() -> CV(6).sqrt().+(1)./(2)	Decimal expansion of (1+sqrt(6))/2.	nonn,cons,new	1..110	nyi	_N. J. A. Sloane_
+A379801	lambdan	0	n -> CV(6).sqrt().+(1).*(n)./(2).round()	earest integer to n*(1+sqrt(6))/2.	nonn,new	0..10000	nyi	_N. J. A. Sloane_
+A379805	lambdan	0	n -> CV(6).sqrt().+(1).*(n)./(2).floor()	Floor of n*(1+sqrt(6))/2.	nonn,new	0..10000	nyi	_N. J. A. Sloane_
+A379812	lambdan	1	n -> Functions.SIGMA.z(1, n).*(Functions.SIGMA.z(2, n))	a(n) = sigma_1(n) * sigma_2(n).	nonn,easy,mult	1..10000	nyi	_Amiram Eldar_
+A379813	lambdan	1	n -> Functions.SIGMA.z(1, n).*(Functions.SIGMA.z(3, n))	a(n) = sigma_1(n) * sigma_3(n).	nonn,easy,mult	1..10000	nyi	_Amiram Eldar_
+A379814	lambdan	1	n -> Functions.SIGMA.z(2, n).*(Functions.SIGMA.z(3, n))	a(n) = sigma_2(n) * sigma_3(n).	nonn,easy,mult	1..10000	nyi	_Amiram Eldar_
+A379865	lambdan	1	n -> { final Z p2 = Z.TWO.pow(PM(n).-(1)); return Functions.DIGIT_LENGTH.z(p2.*(p2.*(2).-(1))); }	Number of base 10 digits of 2^(p-1)*(2^p-1) where p = prime(n).	nonn,easy,base	1..10000	nyi	_Dar‚ąö‚Č†o Clavijo_
+A379980	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM_SQUARES.z(k).^(2)).isZero()	Numbers that are divisible by the square of the sum of the squares of their digits.	nonn,base,easy	1..10000	nyi	_Amiram Eldar_
+A379982	filnum	1	1	k -> k % 10 != 0 && ZV(k).mod(Functions.DIGIT_SUM_SQUARES.z(k).^(2)).isZero()	Nonmultiples of 10 that are divisible by the square of the sum of the squares of their digits.	nonn,base	1..10000	nyi	_Amiram Eldar_
+A380048	sintrif	0	(term, n) -> FI(n).*(term)	""	new A001003()	a(n) = F000045(n) * J001003(n)
+A380053	polyx	1	"[[0,1]]"	",x,exp,1,-,x,cos,/"	0	1
+A380056	polyx	1	"[[0,1],[0,2]]"	",x,exp,1,-,p1,cos,/"	0	1	E.g.f. (exp(x) - 1)/cos(2*x).	nonn,new	1..400	nyi
+A380109	decexp	1	() -> CV(223)./(71)	Decimal expansion of 223/71.	n
+A380152	decexp	1	() -> CV(864)./(275)		Decimal expansion of 864/275.	nonn,cons,easy	1..100	nyi	_Stefano Spezia_
+A380230	lambdan	0	n -> F070939(n).*(n)	a(n) = n*F070939(n).	nonn,base,new	0..10000	nyi	_Paolo Xausa_
+A380329	lambdan	0	n -> F151800(F151800(n).*(n - 1))	a(n) = F151800((n-1)*F151800(n)).	nonn,new	0..10000	nyi	_Clark Kimberling_
+A380330	lambdan	1	n -> F151800(PM(n).*(F151800(n)))	a(n) = F151800(prime(n)*F151800(n)).	nonn,new	1..47	nyi	_Clark Kimberling_
+A380439	lambdan	1	n -> D003557(n).^(2).compareTo(ZV(n)) > 0 ? ZV(1) : ZV(0)	a(n) = 1 if D003557(n)^2 > n, otherwise 0, where D003557(n) is n divided by its squarefree kernel.	nonn,new	1..100000	nyi	_Antti Karttunen_
+A380490	lambdan	1	n -> new Z(ZV(n).toString().replaceAll("[2357]", "0"))	Replace prime digits of n by 0's.	nonn,base,look,new	1..82	nyi	_Ctibor O. Zizka_
