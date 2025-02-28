@@ -135,7 +135,7 @@ dirman: # DirectSequences in ../manual
 	wc -l dirseq.man
 dirdate: # grep LambdaSequences from aman/date.man
 	grep -P "^A\d{6}\s+lambdan" ../aman/`date +%Y-%m-%d`.man | cut -b1-9 | sed -e "s/l/E/" \
-	| tee -a dirseq.man 
+	| tee -a dirseq.man
 	wc -l    dirseq.man
 dirseq: # DirectSequences 'D', explicit "implementing D.S.", not inherited
 	grep DirectSequence $(COMMON)/joeis_list.txt | grep -P "^A\d+\s" \
@@ -188,7 +188,7 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	head -n2 $@.txt
 	wc -l    $@.txt
 funct: # extract from jOEIS source
-	cp $(JOEIS)/src/irvine/math/function/Functions.java $@.tmp 
+	cp $(JOEIS)/src/irvine/math/function/Functions.java $@.tmp
 	cat $(LITE)/src/irvine/math/function/Functions.java >> $@.tmp || :
 	perl read_functions.pl $@.tmp \
 	| grep -vP "A007919" \
@@ -198,7 +198,7 @@ funct: # extract from jOEIS source
 known: # extract known functions
 	grep -P "^[A-Z]\d+\tK" $@.man \
 	| tee $@.txt
-	wc -l $@.txt 
+	wc -l $@.txt
 #========
 finite1:     # select the eligable programs
 	$(DBAT) -x "SELECT i.aseqno, i.termno,  j.superclass FROM asinfo i, joeis j WHERE i.aseqno = j.aseqno \
@@ -224,18 +224,31 @@ genall3: # count the callcodes
 queue: # LIST=
 	perl queue.pl -p $(LIST) > $(LIST).pack
 #----
+BASE=PolynomialFieldSequence
+pack_base: # BASE= pack all jOEIS programs that extend same base class $(BASE)
+	grep -P "\t$(BASE)" $(COMMON)/joeis_names.txt \
+	| perl -pe 's/^([B-Z])/A/;' \
+	>                 list.$(BASE).tmp
+	wc -l             list.$(BASE).tmp
+	perl queue.pl -p  list.$(BASE).tmp >  pack.$(BASE).tmp
+	grep -P "super\(" pack.$(BASE).tmp > super.$(BASE).tmp
+	wc -l *.$(BASE).tmp
+#----
 GREP=NestedSequence
 pack_nest: pack_nest1 pack_nest2 pack_nest3 pack_nest4 # GREP= pack all extending $(GREP)
 pack_nest1: # pack the relevant *.java
-	grep -P "\t$(GREP)\t" $(COMMON)/joeis_names.txt \
+	wc -l $(COMMON)/joeis_names.txt
+	grep -P "\t$(GREP)" $(COMMON)/joeis_names.txt \
+	| perl -pe 's/^([B-Z])/A/;' \
 	| tee    $@.tmp
 	perl queue.pl -p $@.tmp > $@.pack
+	cp -v $@.pack pack.$(GREP).tmp
 pack_nest2: # grep super calls and encode them
 	grep -P " class |super\(" pack_nest1.pack \
 	| perl -pe 's/\{ *\r?\n/\t/; s/ extends \w+ *//; s/public class //;' \
 	| endirect \
 	| tee    $@.super.tmp
-pack_nest3: # extract the underlying DirectSequences [DEFK] 
+pack_nest3: # extract the underlying DirectSequences [DEFK]
 	grep -P "\d\,\s*new [B-FKM]\d{6}" pack_nest2.super.tmp \
 	| sort -k4,4 \
 	| tee    $@.direct.tmp
@@ -373,7 +386,7 @@ offpack: # pack all jOEIS sources that have wrong offsets - edit them
 offunpack: # unpack the edited sources into joeis-lite/src
 	perl queue.pl -uf offpack.pack
 #----
-pack: # GREP=A018940 pack all sources that extend $(A)
+pack_grep: # GREP=A018940 pack all sources that extend $(GREP)
 	grep -P "$(GREP)" offin.tmp \
 	| perl queue.pl -p > set.pack
 unpackall:
@@ -670,7 +683,7 @@ trionk: # insert an IIB into those stemming from callcode=trionk
 	>        $@.pack
 	uedit64  $@.pack
 #--
-triangle1:
+triangle1: # extends Triangle
 	grep -P "\bTriangle" offin.tmp \
 	>        $@.tmp
 	tail -n2 $@.tmp
@@ -681,7 +694,7 @@ triangle1:
 	>        $@.pack
 	uedit64  $@.pack
 #--
-wrapcon:
+wrapcon: # extends WrappedConstantTriangle
 	$(DBAT) -x "SELECT i.aseqno, 0, '->', i.offset1, j.superclass FROM asinfo i, joeis j \
 	  WHERE i.aseqno = j.aseqno \
 	    AND j.superclass = 'WrappedConstantTriangle' ORDER BY 1" > $@.tmp
@@ -689,7 +702,7 @@ wrapcon:
 	wc -l    $@.tmp
 	perl queue.pl -p $@.tmp > $@.pack
 	uedit64 $@.pack
-wraprec:
+wraprec: # extends WrappedRecurrence
 	$(DBAT) -x "SELECT i.aseqno, 0, '->', i.offset1, j.superclass FROM asinfo i, joeis j \
 	  WHERE i.aseqno = j.aseqno \
 	    AND j.superclass = 'WrappedRecurrence' ORDER BY 1" > $@.tmp
@@ -1129,3 +1142,8 @@ move_lambdin: # make it "manual" for addpass target
 #f	A083242 3       FAIL    ,3,2    computed:       ,5,7
 #f	A093051 3       FATAL   Exception Division by zero.     , irvine.math.z.Div.divideAndRemainder(Unknown Source), irvine.m
 #f	A156296 2       FAIL    ,10,140,5740    computed:       ,140,5740,700280
+#----
+gen_pfs: # generate code from/for PolynomialFieldSequence; 2025-02-28 BP
+	perl gen_pfs.pl -d 1 ../../../src/irvine/oeis/PolynomialFieldSequence.java \
+	| tee   gen_pfs.txt
+
