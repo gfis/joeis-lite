@@ -77,15 +77,16 @@ print <<'GFis';
   
   {
     int ix = 0;
-    setPost1(++ix, "p"     , (stack, m) -> RING.one()); // 1
-    setPost1(++ix, "s"     , (stack, m) -> RING.one()); // 2
-    setPost1(++ix, "A"     , (stack, m) -> RING.one()); // 3
+    setPost1(++ix, "A"     , (stack, m) -> null; // 1
+    setPost1(++ix, "sub"   , (stack, m) -> null; // 2
+    setPost1(++ix, "p"     , (stack, m) -> null; // 3
+    setPost1(++ix, "<"     , (stack, m) -> null; // 4
+    setPost1(++ix, "^"     , (stack, m) -> { Polynomial<Q> op2 = stack.pop(); return RING.pow(stack.pop(), Long.parseLong(op2.toString()), m); });
     setPost1(++ix, "x"     , (stack, m) -> RING.x());   // 4
     setPost1(++ix, "+"     , (stack, m) -> { Polynomial<Q> op2 = stack.pop(); return RING.add(stack.pop(), op2); });
     setPost1(++ix, "-"     , (stack, m) -> { Polynomial<Q> op2 = stack.pop(); return RING.subtract(stack.pop(), op2); });
     setPost1(++ix, "*"     , (stack, m) -> { Polynomial<Q> op2 = stack.pop(); return RING.multiply(stack.pop(), op2, m + 1); });
     setPost1(++ix, "/"     , (stack, m) -> { Polynomial<Q> op2 = stack.pop(); return RING.series(stack.pop(), op2, m); });
-    setPost1(++ix, "^"     , (stack, m) -> { Polynomial<Q> op2 = stack.pop(); return RING.pow(stack.pop(), Long.parseLong(op2.toString()), m); });
  
 GFis
 my $ihop = 16; # leave the lower elements for complicated formulas to be set manually
