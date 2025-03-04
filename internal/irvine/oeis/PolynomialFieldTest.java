@@ -5,7 +5,7 @@ import java.util.HashMap;
 import irvine.math.z.Z;
 
 /**
- * Test the computation of the coefficients of a generating function A(x) 
+ * Test the computation of the coefficients of a generating function A(x)
  * given by some equation that is satisfied by A(x).
  * @author Georg Fischer
  */
@@ -100,20 +100,12 @@ public final class PolynomialFieldTest {
     int numTerms = 16;
     int offset = 0;
     int iarg = 0;
-    String polyList = "[[1]]";
+    String polyList = null;
     String postfix  = null;
     if (args.length == 1) {
       postfix  = args[iarg++];
+      polyList = "[[1]]";
     } else {
-      if (!args[iarg].startsWith("-")) {
-        if (!args[iarg + 1].startsWith("-")) {
-          polyList   = args[iarg++];
-        }
-        postfix = args[iarg++];
-      } else {
-        usage();
-        return;
-      }
       while (iarg < args.length) { // consume all arguments
         final String opt = args[iarg++];
         try {
@@ -137,7 +129,12 @@ public final class PolynomialFieldTest {
               gfType = Integer.parseInt(args[iarg++]);
               break;
             default:
-              System.err.println("??? invalid option: \"" + opt + "\"");
+              if (polyList == null) {
+                polyList = opt;
+              } else {
+                postfix = opt;
+              }
+              // System.err.println("??? invalid option: \"" + opt + "\"");
               break;
           }
         } catch (final RuntimeException exc) { // take default

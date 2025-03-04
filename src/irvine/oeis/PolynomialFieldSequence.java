@@ -19,8 +19,9 @@ import irvine.math.z.Z;
  */
 public class PolynomialFieldSequence extends AbstractSequence {
 
-  protected static int sDebug = 0;
+  protected static int sDebug;
   protected static final PolynomialRingField<Q> RING = new PolynomialRingField<>(Rationals.SINGLETON);
+  private static final HashMap<String, Integer> sPostMap = new HashMap<>(64); // map a postfix string to an int for switch() statement
 
   /* Caution, the following are bitmasks, c.f. usage at the end of <code>compute()</code>: */
   /** Constant indicating the numerators of an ordinary generating function. */
@@ -35,7 +36,6 @@ public class PolynomialFieldSequence extends AbstractSequence {
   private final String[] mPostStrings; // list of operands and operators
   private final int[] mPostInts; // list of operands and operators converted to integer codes
   private int mPostLen; // length of mPostInts array generated from the postfix String
-  private int mPostIx; // current index in mPostInt
   private final int mDist; // additional degree
   private final int mGfType; // type of the generating function: 0 = ordinary, 1 = exponential
   private final int mModulus; // for example 1 for odd, 0 for even if factor = 2
@@ -47,18 +47,14 @@ public class PolynomialFieldSequence extends AbstractSequence {
   private final List<Polynomial<Q>> mStack; // stack where the final expression is computed
   private Z mFactorial;
 
-  { 
-  	fillMap();
-  }
- 
-  public Polynomial<Q> getPoly(final int ix) {
-  	return mPolys.get(ix);
+  {
+    fillMap();
   }
 
-  public int advance() {
-  	return mPostInts[++mPostIx];
+  public Polynomial<Q> getPoly(final int ix) {
+    return mPolys.get(ix);
   }
-  
+
   /**
    * Compute successive coefficients for a generating function A(x) defined by a condition that A(x) must satisfy.
    * @param offset first index
@@ -74,14 +70,13 @@ public class PolynomialFieldSequence extends AbstractSequence {
   public PolynomialFieldSequence(final int offset, final String polys, final String postfix,
                                  final int dist, final int gfType, final int modulus, final int factor) {
     super(offset);
-    mPostIx = 0;
     mDist = dist;
     mGfType = gfType;
     mModulus = modulus;
     mFactor = factor;
 
-    final String post = trimQuotes(postfix);
-    mPostStrings = post.substring(1).split(Pattern.quote(post.substring(0, 1)));
+    final String postr = trimQuotes(postfix);
+    mPostStrings = postr.substring(1).split(Pattern.quote(postr.substring(0, 1)));
     if (sDebug >= 1) {
       System.out.print("# mPostStrings=");
       for (final String s : mPostStrings) {
@@ -89,24 +84,49 @@ public class PolynomialFieldSequence extends AbstractSequence {
       }
       System.out.println();
     }
-    mPostInts = new int[mPostStrings.length * 2];
+    mPostInts = new int[mPostStrings.length * 2]; // should normally be sufficient even with some ^\d+, <\d+, p\d+
     mPostLen = 0;
     for (int k = 0; k < mPostStrings.length; ++k) {
-      final String postr = mPostStrings[k];
-      final Integer ix = sPostMap.get(postr);
+      String pelem = mPostStrings[k];
+      String parms = "";
+      if (Character.isDigit(pelem.charAt(0))) { // single non-negative number, prefix with i
+        parms = pelem;
+        pelem = "i";
+      } else if (pelem.length() >= 2 && Character.isDigit(pelem.charAt(1))) { // one of p, i, <, ^ with 1 or 2 additional int parameter(s)
+        parms = pelem.substring(1);
+        pelem = pelem.substring(0, 1); // single character code
+      }
+      Integer ix = sPostMap.get(pelem);
       if (ix != null) {
-        mPostInts[mPostLen ++] = ix;
-      } else { // wrong postfix element - ignore it
-      }                               vg** 
-      System.out.println("# loop mPostInts[" + (mPostLen - 1) + "]=" + mPostInts[mPostLen - 1]);   
+        if (parms.length() > 0) { // with additional parameter(s)
+          if (pelem.equals("^")) {
+            final int slashPos = parms.indexOf('/');
+            if (slashPos >= 0) { // is a fraction
+               mPostInts[mPostLen++] = sPostMap.get("^q");
+               mPostInts[mPostLen++] = Integer.parseInt(parms.substring(0, slashPos)); // num
+               mPostInts[mPostLen++] = Integer.parseInt(parms.substring(slashPos + 1)); // den
+            } else { // plain natural number
+               mPostInts[mPostLen++] = sPostMap.get("^i");
+               mPostInts[mPostLen++] = Integer.parseInt(parms);
+            }
+          } else { // p, i, <
+            mPostInts[mPostLen++] = ix;
+            mPostInts[mPostLen++] = Integer.parseInt(parms);
+          }
+        } else {
+          mPostInts[mPostLen++] = ix;
+        }
+      } else {
+        throw new RuntimeException("postfix code \"" + mPostStrings[k] + "\" -> \"" + pelem + "\" not found in static map");
+      }
     }
     if (sDebug >= 1) {
       for (int k = 0; k < mPostLen; ++k) {
         System.out.println("# mPostInts[" + k + "]=" + mPostInts[k]);
       }
     }
- 
-    mStack = new ArrayList<>(mPostStrings.length);
+
+    mStack = new ArrayList<>(mPostInts.length);
     for (int k = 0; k < mPostStrings.length; ++k) {
       mStack.add(null);
     } // for k
@@ -196,23 +216,14 @@ public class PolynomialFieldSequence extends AbstractSequence {
    * @param top index of top stack element
    * @param str call point
    */
-  protected void debugStack(final String pfix, final int top, final String str) {
-    System.out.print("# pfix=" + pfix + " \t");
+  protected void debugStack(final int ix, final int top, final String str) {
+    System.out.print("# ix=" + ix + " \t");
     for (int is = 0; is <= top + 1; ++is) {
       if (mStack.get(is) != null) {
         System.out.print(" " + (is == top ? "top" : String.valueOf(is)) + ":" + mStack.get(is).toString());
       }
     }
     System.out.println("\t" + str);
-  }
-
-  // Find operator part of the token (i.e., up to the first digit, if any)
-  private int getTokenLength(final String pfix) {
-    int k = 0;
-    while (k < pfix.length() && !Character.isDigit(pfix.charAt(k))) {
-      ++k;
-    }
-    return k;
   }
 
   /**
@@ -222,194 +233,191 @@ public class PolynomialFieldSequence extends AbstractSequence {
   private Z compute() {
     // now perform a statement like "mA = RING.add(RING.one(), RING.multiply(RING.x(), RING.pow(RING.substitute(mA, RING.multiply(RING.x(), mA, mN), mN), mExpon, mN), mN));"
     // for example: A143046 poly -p "[[0],[1],[0,-1]]" -x ",p1,p2,sub,^3,<1,+"; G.f. satisfies A(x) = 1 + x*A(-x)^3.
-    int ipfix = 0;
+    final int m = mN + mDist; // Number of terms to expand to
+    int ipost = 0;
     int top = -1; // index of top element of <code>mStack</code>. Initially, the stack is empty.
-    while (ipfix < mPostStrings.length) { // scan over the operands and operators
-      final String pfix = mPostStrings[ipfix++];
+    while (ipost < mPostLen) { // scan over the operands and operators
+      final int ix = mPostInts[ipost++];
       if (sDebug >= 2 && top >= 0) {
-        debugStack(pfix, top, "before");
+        debugStack(ix, top, "before");
       }
-      if (Character.isDigit(pfix.charAt(0))) { // operand that is a single natural number
-        mStack.set(++top, Polynomial.create(new Q(Integer.parseInt(pfix))));
-      } else {
-        final int m = mN + mDist; // Number of terms to expand to
-        // Operations are either single strings of constructions like "p(\d+)"
-        switch (pfix.substring(0, getTokenLength(pfix))) {
-          // operands
-          case "A": // this means A(x), the currently accumulated Polynomial mA for the generating function
-            mStack.set(++top, mA);
-            break;
-          case "p": // "p(\d+)"  = mPolys[$1], one of the predefined polynomials, numbered p0, p1, ...
-            mStack.set(++top, mPolys.get(Integer.parseInt(pfix.substring(1))));
-            break;
-          case "x": // the monic polynomial x
-            mStack.set(++top, RING.x());
-            break;
-          case "sub": // "sub", replace the current top element by a substitution
-            mStack.set(top, RING.substitute(mA, mStack.get(top), m));
-            break;
-          case "<": // "<(\d+)" = shift x -> x^$1 (may be negative)
-            mStack.set(top, RING.shift(mStack.get(top), (pfix.length() <= 1) ? 1 : Integer.parseInt(pfix.substring(1))));
-            break;
+      switch (ix) { //!
+        // operands
+        case 0:  // "A"  A(x), the currently accumulated Polynomial mA for the generating function
+          mStack.set(++top, mA);
+          break;
+        case 1:  // "i"  an integer constant >= 0
+          mStack.set(++top, Polynomial.create(new Q(mPostInts[ipost++])));
+          break;
+        case 2:  // "p"  mPolys[$1], one of the predefined polynomials, numbered p0, p1, ...
+          mStack.set(++top, mPolys.get(mPostInts[ipost++]));
+          break;
+        case 3:  // "x"  the monic polynomial x
+          mStack.set(++top, RING.x());
+          break;
+        case 4:  // "<"  shift x, multiply by some power of x
+          mStack.set(top, RING.shift(mStack.get(top), mPostInts[ipost++]));
+          break;
+        case 5:  // "^"  exponent on the stack
+          --top;
+          mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(mStack.get(top + 1).toString()), m));
+          break;
+        case 6:  // "^i"  integer exponent e
+          mStack.set(top, RING.pow(mStack.get(top), mPostInts[ipost++], m));
+          break;
+        case 7:  // "^q"  rational exponent, num/den
+          mStack.set(top, RING.pow(mStack.get(top), new Q(mPostInts[ipost], mPostInts[ipost + 1]), m));
+          ipost += 2;
+          break;
+        case 8:  // "sub"  replace the current top element by a substitution
+          mStack.set(top, RING.substitute(mA, mStack.get(top), m));
+          break;
 
-          case "^": // P, m -> P^m, or "^(\d+)" P -> P^$1
-            if (pfix.length() == 1) { // 2 operands
-              --top;
-              mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(mStack.get(top + 1).toString()), m));
-            } else { // operation contains the 2nd operand
-              if (pfix.indexOf('/') >= 0) { // e.g. "^2/3"
-                mStack.set(top, RING.pow(mStack.get(top), new Q(pfix.substring(1)), m));
-              } else {
-                mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(pfix.substring(1)), m));
-              }
-            }
-            break;
-          // arithmetic operations with 2 operands
-          case "+":
-            --top;
-            mStack.set(top, RING.add(mStack.get(top), mStack.get(top + 1)));
-            break;
-          case "-":
-            --top;
-            mStack.set(top, RING.subtract(mStack.get(top), mStack.get(top + 1)));
-            break;
-          case "*":
-            --top;
-            mStack.set(top, RING.multiply(mStack.get(top), mStack.get(top + 1), m + 1));
-            break;
-          case "/":
-            --top;
-            mStack.set(top, RING.series(mStack.get(top), mStack.get(top + 1), m));
-            break;
+        // arithmetic operations with 2 operands on the stack
+        case 9:  // "+"
+          --top;
+          mStack.set(top, RING.add(mStack.get(top), mStack.get(top + 1)));
+          break;
+        case 10:  // "-"
+          --top;
+          mStack.set(top, RING.subtract(mStack.get(top), mStack.get(top + 1)));
+          break;
+        case 11:  // "*"
+          --top;
+          mStack.set(top, RING.multiply(mStack.get(top), mStack.get(top + 1), m + 1));
+          break;
+        case 12:  // "/"
+          --top;
+          mStack.set(top, RING.series(mStack.get(top), mStack.get(top + 1), m));
+          break;
 
-          // other two argument functions
-          case "agm":
-            --top;
-            mStack.set(top, RING.agm(mStack.get(top), mStack.get(top + 1), m));
-            break;
+        // other two argument functions
+        case 13:  // "agm"
+          --top;
+          mStack.set(top, RING.agm(mStack.get(top), mStack.get(top + 1), m));
+          break;
 
-          // operations with 1 operand
-          case "neg": // "neg", replace the current top element by its negation
-            mStack.set(top, RING.negate(mStack.get(top)));
-            break;
-          case "abs":
-            mStack.set(top, RING.abs(mStack.get(top)));
-            break;
-          case "sqrt":
-            mStack.set(top, RING.sqrt(mStack.get(top), m));
-            break;
-          case "exp":
-            mStack.set(top, RING.exp(mStack.get(top), m));
-            break;
-          case "log":
-            mStack.set(top, RING.log(mStack.get(top), m));
-            break;
-          case "eta":
-            mStack.set(top, RING.eta(mStack.get(top), m));
-            break;
+        // operations with 1 operand
+        case 14:  // "neg"  replace the current top element by its negation
+          mStack.set(top, RING.negate(mStack.get(top)));
+          break;
+        case 15:  // "abs"
+          mStack.set(top, RING.abs(mStack.get(top)));
+          break;
+        case 16:  // "sqrt"
+          mStack.set(top, RING.sqrt(mStack.get(top), m));
+          break;
+        case 17:  // "exp"
+          mStack.set(top, RING.exp(mStack.get(top), m));
+          break;
+        case 18:  // "log"
+          mStack.set(top, RING.log(mStack.get(top), m));
+          break;
+        case 19:  // "eta"
+          mStack.set(top, RING.eta(mStack.get(top), m));
+          break;
 
-          // Trig
-          case "cosh":
-            mStack.set(top, RING.cosh(mStack.get(top), m));
-            break;
-          case "cos":
-            mStack.set(top, RING.cos(mStack.get(top), m));
-            break;
-          case "coth":
-            mStack.set(top, RING.series(RING.one(), RING.tanh(mStack.get(top), m), m));
-            break;
-          case "cot":
-            mStack.set(top, RING.series(RING.one(), RING.tan(mStack.get(top), m), m));
-            break;
-          case "csch":
-            mStack.set(top, RING.series(RING.one(), RING.sinh(mStack.get(top), m), m));
-            break;
-          case "csc":
-            mStack.set(top, RING.series(RING.one(), RING.sin(mStack.get(top), m), m));
-            break;
-          case "sech":
-            mStack.set(top, RING.sech(mStack.get(top), m));
-            break;
-          case "sec":
-            mStack.set(top, RING.sec(mStack.get(top), m));
-            break;
-          case "sinh":
-            mStack.set(top, RING.sinh(mStack.get(top), m));
-            break;
-          case "sin":
-            mStack.set(top, RING.sin(mStack.get(top), m));
-            break;
-          case "tanh":
-            mStack.set(top, RING.tanh(mStack.get(top), m));
-            break;
-          case "tan":
-            mStack.set(top, RING.tan(mStack.get(top), m));
-            break;
+        // Trig
+        case 20:  // "cosh"
+          mStack.set(top, RING.cosh(mStack.get(top), m));
+          break;
+        case 21:  // "cos"
+          mStack.set(top, RING.cos(mStack.get(top), m));
+          break;
+        case 22:  // "coth"
+          mStack.set(top, RING.series(RING.one(), RING.tanh(mStack.get(top), m), m));
+          break;
+        case 23:  // "cot"
+          mStack.set(top, RING.series(RING.one(), RING.tan(mStack.get(top), m), m));
+          break;
+        case 24:  // "csch"
+          mStack.set(top, RING.series(RING.one(), RING.sinh(mStack.get(top), m), m));
+          break;
+        case 25:  // "csc"
+          mStack.set(top, RING.series(RING.one(), RING.sin(mStack.get(top), m), m));
+          break;
+        case 26:  // "sech"
+          mStack.set(top, RING.sech(mStack.get(top), m));
+          break;
+        case 27:  // "sec"
+          mStack.set(top, RING.sec(mStack.get(top), m));
+          break;
+        case 28:  // "sinh"
+          mStack.set(top, RING.sinh(mStack.get(top), m));
+          break;
+        case 29:  // "sin"
+          mStack.set(top, RING.sin(mStack.get(top), m));
+          break;
+        case 30:  // "tanh"
+          mStack.set(top, RING.tanh(mStack.get(top), m));
+          break;
+        case 31:  // "tan"
+          mStack.set(top, RING.tan(mStack.get(top), m));
+          break;
 
-          // Inverse trig
-          case "asin":
-            mStack.set(top, RING.asin(mStack.get(top), m));
-            break;
-          case "atan":
-            mStack.set(top, RING.atan(mStack.get(top), m));
-            break;
-          case "acosh":
-            mStack.set(top, RING.acosh(mStack.get(top), m));
-            break;
-          case "asinh":
-            mStack.set(top, RING.asinh(mStack.get(top), m));
-            break;
-          case "atanh":
-            mStack.set(top, RING.atanh(mStack.get(top), m));
-            break;
-          // The following cannot be done exactly over the rationals or are not yet available
-//              case "acsch":
-//                mStack.set(top, RING.acsch(mStack.get(top), m));
-//                break;
-//              case "acsc":
-//                mStack.set(top, RING.acsc(mStack.get(top), m));
-//                break;
-//              case "acos":
-//                mStack.set(top, RING.acos(mStack.get(top), m));
-//                break;
-//              case "acoth":
-//                mStack.set(top, RING.acoth(mStack.get(top), m));
-//                break;
-//              case "acot":
-//                mStack.set(top, RING.acot(mStack.get(top), m));
-//                break;
-//              case "asech":
-//                mStack.set(top, RING.asech(mStack.get(top), m));
-//                break;
-//              case "asec":
-//                mStack.set(top, RING.asec(mStack.get(top), m));
-//                break;
+        // Inverse trig
+        case 32:  // "asin"
+          mStack.set(top, RING.asin(mStack.get(top), m));
+          break;
+        case 33:  // "atan"
+          mStack.set(top, RING.atan(mStack.get(top), m));
+          break;
+        case 34:  // "acosh"
+          mStack.set(top, RING.acosh(mStack.get(top), m));
+          break;
+        case 35:  // "asinh"
+          mStack.set(top, RING.asinh(mStack.get(top), m));
+          break;
+        case 36:  // "atanh"
+          mStack.set(top, RING.atanh(mStack.get(top), m));
+          break;
+        // The following cannot be done exactly over the rationals or are not yet available
+//            case "acsch":
+//              mStack.set(top, RING.acsch(mStack.get(top), m));
+//              break;
+//            case "acsc":
+//              mStack.set(top, RING.acsc(mStack.get(top), m));
+//              break;
+//            case "acos":
+//              mStack.set(top, RING.acos(mStack.get(top), m));
+//              break;
+//            case "acoth":
+//              mStack.set(top, RING.acoth(mStack.get(top), m));
+//              break;
+//            case "acot":
+//              mStack.set(top, RING.acot(mStack.get(top), m));
+//              break;
+//            case "asech":
+//              mStack.set(top, RING.asech(mStack.get(top), m));
+//              break;
+//            case "asec":
+//              mStack.set(top, RING.asec(mStack.get(top), m));
+//              break;
 
-          case "dif": // "dif", replace the current top element by its derivative
-            mStack.set(top, RING.diff(mStack.get(top)));
-            break;
-          case "int": // "int", replace the current top element by its formal integral
-            mStack.set(top, RING.integrate(mStack.get(top)).truncate(m));
-            break;
+        case 37:  // "dif"  replace the current top element by its derivative
+          mStack.set(top, RING.diff(mStack.get(top)));
+          break;
+        case 38:  // "int"  replace the current top element by its formal integral
+          mStack.set(top, RING.integrate(mStack.get(top)).truncate(m));
+          break;
 
-          case "inv": // "inv", replace the current top element te by 1/te
-            mStack.set(top, RING.inverse(mStack.get(top)));
-            break;
-          case "rev": // "rev", replace the current top element by its series reversion
-            mStack.set(top, RING.reversion(mStack.get(top), m));
-            break;
-          case "lambertW": // current definition of LambertW works
-            mStack.set(top, RING.lambertW(mStack.get(top), m));
-            break;
-          case "lambNegW": // workaround if only the "negated" version works - normally this should be identical with <code>lambertW</code>
-            mStack.set(top, RING.negate(RING.lambertW(mStack.get(top), m)));
-            break;
-          default: // should not occur with proper postfix expressions
-            throw new RuntimeException("invalid postfix code " + pfix);
-        } // switch
-      }
+        case 39:  // "inv"  replace the current top element te by 1/te
+          mStack.set(top, RING.inverse(mStack.get(top)));
+          break;
+        case 40:  // "rev"  replace the current top element by its series reversion
+          mStack.set(top, RING.reversion(mStack.get(top), m));
+          break;
+        case 41:  // "lambertW"  normal definition
+          mStack.set(top, RING.lambertW(mStack.get(top), m));
+          break;
+        case 42:  // "lambNegW"  workaround if only the "negated" version works - normally this should be identical with <code>lambertW</code>
+          mStack.set(top, RING.negate(RING.lambertW(mStack.get(top), m)));
+          break;
+        default: // should not occur with proper postfix expressions
+          throw new RuntimeException("invalid postfix code " + ix);
+      } //! switch
       if (sDebug >= 3) {
-        debugStack(pfix, top, "after");
+        debugStack(ix, top, "after");
       }
     } // while
     // mTop should be 0 here
@@ -427,54 +435,52 @@ public class PolynomialFieldSequence extends AbstractSequence {
     return ((mGfType & DEN_OGF) == 0) ? result.num() : result.den();
   } // compute
 
-  private static final HashMap<String, Integer> sPostMap = new HashMap<>(64);
-  private static void fillMap1(final int ix, final String key, final PolynomialFieldFunction<PolynomialFieldSequence, Integer, Polynomial<Q>> lambda) {
-    sPostMap.put(key, ix);
-  }
-  private void fillMap() {
-    fillMap1(17, "p"       );
-    fillMap1(17, "<"       );
-    fillMap1(17, "A"       );
-    fillMap1(17, "x"       );
-    fillMap1(17, "i"       );
-    fillMap1(17, "l"       );
-    fillMap1(17, "^"       );
-    fillMap1(17, "^/"      );
-    fillMap1(17, "sub"     );
-    fillMap1(17, "+"       );
-    fillMap1(17, "-"       );
-    fillMap1(17, "*"       );
-    fillMap1(17, "/"       );
-    fillMap1(17, "abs"     );
-    fillMap1(17, "acosh"   );
-    fillMap1(17, "asin"    );
-    fillMap1(17, "asinh"   );
-    fillMap1(17, "atan"    );
-    fillMap1(17, "atanh"   );
-    fillMap1(17, "cos"     );
-    fillMap1(17, "cosh"    );
-    fillMap1(17, "cot"     );
-    fillMap1(17, "coth"    );
-    fillMap1(17, "csc"     );
-    fillMap1(17, "csch"    );
-    fillMap1(17, "dif"     );
-    fillMap1(17, "eta"     );
-    fillMap1(17, "exp"     );
-    fillMap1(17, "int"     );
-    fillMap1(17, "inv"     );
-    fillMap1(17, "lambNegW");
-    fillMap1(17, "lambertW");
-    fillMap1(17, "log"     );
-    fillMap1(17, "neg"     );
-    fillMap1(17, "rev"     );
-    fillMap1(17, "sec"     );
-    fillMap1(17, "sech"    );
-    fillMap1(17, "sin"     );
-    fillMap1(17, "sinh"    );
-    fillMap1(17, "sqrt"    );
-    fillMap1(17, "tan"     );
-    fillMap1(17, "tanh"    );
-  } // fillMap
+  private void fillMap() { //!
+    // Updated by gits/joeis-lite/internal/fischer/reflect/update_PolynomialFieldSequence.pl at 2025-03-04 21:37
+    sPostMap.put("*", 11);
+    sPostMap.put("+", 9);
+    sPostMap.put("-", 10);
+    sPostMap.put("/", 12);
+    sPostMap.put("<", 4);
+    sPostMap.put("A", 0);
+    sPostMap.put("^", 5);
+    sPostMap.put("^i", 6);
+    sPostMap.put("^q", 7);
+    sPostMap.put("abs", 15);
+    sPostMap.put("acosh", 34);
+    sPostMap.put("agm", 13);
+    sPostMap.put("asin", 32);
+    sPostMap.put("asinh", 35);
+    sPostMap.put("atan", 33);
+    sPostMap.put("atanh", 36);
+    sPostMap.put("cos", 21);
+    sPostMap.put("cosh", 20);
+    sPostMap.put("cot", 23);
+    sPostMap.put("coth", 22);
+    sPostMap.put("csc", 25);
+    sPostMap.put("csch", 24);
+    sPostMap.put("dif", 37);
+    sPostMap.put("eta", 19);
+    sPostMap.put("exp", 17);
+    sPostMap.put("i", 1);
+    sPostMap.put("int", 38);
+    sPostMap.put("inv", 39);
+    sPostMap.put("lambNegW", 42);
+    sPostMap.put("lambertW", 41);
+    sPostMap.put("log", 18);
+    sPostMap.put("neg", 14);
+    sPostMap.put("p", 2);
+    sPostMap.put("rev", 40);
+    sPostMap.put("sec", 27);
+    sPostMap.put("sech", 26);
+    sPostMap.put("sin", 29);
+    sPostMap.put("sinh", 28);
+    sPostMap.put("sqrt", 16);
+    sPostMap.put("sub", 8);
+    sPostMap.put("tan", 31);
+    sPostMap.put("tanh", 30);
+    sPostMap.put("x", 3);
+  } //! fillMap
 
   @Override
   public Z next() {

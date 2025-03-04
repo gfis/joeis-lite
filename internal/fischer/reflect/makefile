@@ -1143,7 +1143,9 @@ move_lambdin: # make it "manual" for addpass target
 #f	A093051 3       FATAL   Exception Division by zero.     , irvine.math.z.Div.divideAndRemainder(Unknown Source), irvine.m
 #f	A156296 2       FAIL    ,10,140,5740    computed:       ,140,5740,700280
 #----
-gen_pfs: # generate code from/for PolynomialFieldSequence; 2025-02-28 BP
-	perl gen_pfs.pl -d 1 ../../../src/irvine/oeis/PolynomialFieldSequence.java \
-	| tee   gen_pfs.txt
-
+update_pfs: # generate code from/for PolynomialFieldSequence; 2025-02-28 BP
+	perl update_PolynomialFieldSequence.pl -d 0 ../../../src/irvine/oeis/PolynomialFieldSequence.java \
+	> update_pfs.tmp 
+	diff -w -y --suppress-common-lines ../../../src/irvine/oeis/PolynomialFieldSequence.java  update_pfs.tmp
+copy_pfs:
+	cp -v  update_pfs.tmp ../../../src/irvine/oeis/PolynomialFieldSequence.java
