@@ -2,6 +2,7 @@
 <!--
     ant-buildfile for commandline, web application and web service
     @(#) $Id: 08b49ddc73ef271c7054bb70acb278bcff247562 $
+    2025-03-05: source="1.10"
     2023-10-18: depends compile,compile-internal
     2022-08-14: compile internal/irvine also; CK=65
     2022-05-08: compile with -Xdiags:verbose
@@ -235,6 +236,7 @@
     <target name="compile"  depends="generate">
         <depend srcdir="${src.home}" destdir="${build.classes}" cache="${build.home}" dump="yes" />
         <javac  srcdir="${src.home}" destdir="${build.classes}" listfiles="yes"
+                source="1.10"
                 encoding="utf8"
                 includeantruntime="false"
                 

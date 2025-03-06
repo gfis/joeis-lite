@@ -8789,3 +8789,9 @@ fractal3:
 	wc -l $@.tmp
 fractal4:
 	echo
+#----
+CLASS=../../target/WEB-INF/classes/irvine/oeis/PolynomialFieldSequence.class
+pfsdis: # disassemble PolynomialFieldSequence, look for tableswitch
+	ls -al $(CLASS)
+	javap -c -l -p $(CLASS) > $@.tmp
+	grep -P "switch" $@.tmp

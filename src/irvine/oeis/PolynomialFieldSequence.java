@@ -272,6 +272,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
         case 8:  // "sub"  replace the current top element by a substitution
           mStack.set(top, RING.substitute(mA, mStack.get(top), m));
           break;
+//      case 43: // "dup"  push a copy of the current top element
+//        ++top;
+//        mStack.set(top, mStack.get(top - 1));
+//        break;
 
         // arithmetic operations with 2 operands on the stack
         case 9:  // "+"
@@ -480,6 +484,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
     sPostMap.put("tan", 31);
     sPostMap.put("tanh", 30);
     sPostMap.put("x", 3);
+//  sPostMap.put("dup", 43);
   } //! fillMap
 
   @Override
