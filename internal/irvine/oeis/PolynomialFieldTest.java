@@ -5,7 +5,7 @@ import java.util.HashMap;
 import irvine.math.z.Z;
 
 /**
- * Test the computation of the coefficients of a generating function A(x)
+ * Test the computation of the coefficients of a generating function A(x) 
  * given by some equation that is satisfied by A(x).
  * @author Georg Fischer
  */
@@ -63,6 +63,120 @@ public final class PolynomialFieldTest {
   private String buildInfix(final String polys, final String postfix) {
     final int ipfix = 0;
     final int top = -1; // index of top element of <code>mStack</code>. Initially, the stack is empty.
+/*
+      while (ipfix < mPostfix.length) { // scan over the operaands and operators
+        String pfix = mPostfix[ipfix++];
+        if (sDebug >= 2 && top >= 0) {
+          debugStack(pfix, top, "before");
+        }
+        final char ch = pfix.charAt(0);
+        if (ch >= '0' && ch <= '9') { // operand that is a single natural number
+          final ArrayList<Q> num = new ArrayList<>();
+          num.add(new Q(Integer.parseInt(pfix)));
+          mStack.set(++top, RING.create(num));
+        } else {
+          switch (ch) { // discriminate with the first character
+            default: // should not occur with proper postfix expressions
+              throw new RuntimeException("invalid postfix code " + pfix);
+
+          // operands
+            case 'A': // this means A(x), the currently accumulated Polynomial mA for the generating function
+              mStack.set(++top, mA);
+              break;
+            case 'p': // "p(\d+)"  = mPolys[$1], one of the predefined polynomials, numbered p0, p1, ...
+              mStack.set(++top, mPolys.get(Integer.parseInt(pfix.substring(1))));
+              break;
+          
+          // operations with 1 operand
+            case 'd': // "dif", replace the current top element by its derivative
+              mStack.set(top, RING.diff(mStack.get(top)));
+              break;
+            case 'e': // "exp", preplace the current top element te by exp(te)
+              mStack.set(top, RING.exp(mStack.get(top), mN + mDist));
+              break;
+            case 'i': 
+              switch (pfix) {
+                case "inv": // "inv", replace the current top element te by 1/te
+                  mStack.set(top, RING.inverse(mStack.get(top)));
+                  break;
+                case "int": // "int", replace the current top element by its formal integral
+                  mStack.set(top, RING.integrate(mStack.get(top)));
+                  break;
+                default:
+                  throw new RuntimeException("invalid postfix code with \"i\":" + pfix);
+              }
+              break;
+            case 'l': // "log", preplace the current top element te by log(te)
+              mStack.set(top, RING.log(mStack.get(top), mN + mDist));
+              break;
+            case 'n': // "neg", replace the current top element by its negation
+              mStack.set(top, RING.negate(mStack.get(top)));
+              break;
+            case 'r': // "rev", replace the current top element by its series reversion
+              mStack.set(top, RING.reversion(mStack.get(top), mN + mDist));
+              break;
+            case 's': 
+              switch(pfix) {
+                case "sub": // "sub", replace the current top element by a substitution
+                  mStack.set(top, RING.substitute(mA, mStack.get(top), mN + mDist));
+                  break;
+                case "sin":
+                  mStack.set(top, RING.sin(mStack.get(top), mN + mDist));
+                  break;
+                case "sqrt":
+                  mStack.set(top, RING.sqrt(mStack.get(top), mN + mDist));
+                  break;
+                default:
+                  throw new RuntimeException("invalid postfix code with \"s\":" + pfix);
+              }
+              break;
+            case '<': // "<(\d+)" = shift x -> x^$1 (may be negative)
+              mStack.set(top, RING.shift(mStack.get(top), (pfix.length() <= 1) ? 1 : Integer.parseInt(pfix.substring(1))));
+              break;
+            case '^': // P, m -> P^m, or "^(\d+)" P -> P^$1
+              if (pfix.length() == 1) { // 2 operands
+                --top;
+                mStack.set(top, RING.pow(mStack.get(top), Long.valueOf(mStack.get(top + 1).toString()), mN + mDist));
+              } else { // operation contains the 2nd operand
+                mStack.set(top, RING.pow(mStack.get(top), Long.parseLong(pfix.substring(1)), mN + mDist));
+              }
+              break;
+
+          // arithmetic operations with 2 operands
+            case '+':
+              --top;
+              mStack.set(top, RING.add(mStack.get(top), mStack.get(top + 1)));
+              break;
+            case '-':
+              --top;
+              mStack.set(top, RING.subtract(mStack.get(top), mStack.get(top + 1)));
+              break;
+            case '*':
+              --top;
+              mStack.set(top, RING.multiply(mStack.get(top), mStack.get(top + 1))); // , mN + mDist);
+              break;
+            case '/':
+              --top;
+              mStack.set(top, RING.series(mStack.get(top), mStack.get(top + 1), mN + mDist));
+              break;
+          } // switch
+        }
+        if (sDebug >= 3) {
+          debugStack(pfix, top, "after");
+        }
+      } // while
+*/
+    // mTop should be 0 here
+/*
+    mA = mStack.get(top);
+    Q result = mA.coeff(mN);
+    if (mGfType == EGF) {
+      result = result.multiply(mFactorial);
+      if (mN > 0) {
+        mFactorial = mFactorial.multiply(mN);
+      }
+    }
+*/
     return "";
   } // build
 
@@ -100,12 +214,20 @@ public final class PolynomialFieldTest {
     int numTerms = 16;
     int offset = 0;
     int iarg = 0;
-    String polyList = null;
+    String polyList = "[[1]]";
     String postfix  = null;
     if (args.length == 1) {
       postfix  = args[iarg++];
-      polyList = "[[1]]";
     } else {
+      if (!args[iarg].startsWith("-")) {
+        if (!args[iarg + 1].startsWith("-")) {
+          polyList   = args[iarg++];
+        }
+        postfix = args[iarg++];
+      } else {
+        usage();
+        return;
+      }
       while (iarg < args.length) { // consume all arguments
         final String opt = args[iarg++];
         try {
@@ -129,16 +251,10 @@ public final class PolynomialFieldTest {
               gfType = Integer.parseInt(args[iarg++]);
               break;
             default:
-              if (polyList == null) {
-                polyList = opt;
-              } else {
-                postfix = opt;
-              }
-              // System.err.println("??? invalid option: \"" + opt + "\"");
+              System.err.println("??? invalid option: \"" + opt + "\"");
               break;
           }
         } catch (final RuntimeException exc) { // take default
-          System.err.println("wrong option value: -" + opt + " " + args[iarg - 1]);
         }
       } // while args
     } // more than 1 argument

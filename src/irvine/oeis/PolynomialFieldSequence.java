@@ -21,7 +21,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
 
   protected static int sDebug;
   protected static final PolynomialRingField<Q> RING = new PolynomialRingField<>(Rationals.SINGLETON);
-  private static final HashMap<String, Integer> sPostMap = new HashMap<>(64); // map a postfix string to an int for switch() statement
+  private static final HashMap<String, Integer> POST_MAP = new HashMap<>(64); // map a postfix string to an int for switch() statement
 
   /* Caution, the following are bitmasks, c.f. usage at the end of <code>compute()</code>: */
   /** Constant indicating the numerators of an ordinary generating function. */
@@ -51,7 +51,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
     fillMap();
   }
 
-  public Polynomial<Q> getPoly(final int ix) {
+  protected Polynomial<Q> getPoly(final int ix) {
     return mPolys.get(ix);
   }
 
@@ -96,18 +96,18 @@ public class PolynomialFieldSequence extends AbstractSequence {
         parms = pelem.substring(1);
         pelem = pelem.substring(0, 1); // single character code
       }
-      Integer ix = sPostMap.get(pelem);
+      final Integer ix = POST_MAP.get(pelem);
       if (ix != null) {
-        if (parms.length() > 0) { // with additional parameter(s)
+        if (!parms.isEmpty()) { // with additional parameter(s)
           if (pelem.equals("^")) {
             final int slashPos = parms.indexOf('/');
             if (slashPos >= 0) { // is a fraction
-               mPostInts[mPostLen++] = sPostMap.get("^q");
-               mPostInts[mPostLen++] = Integer.parseInt(parms.substring(0, slashPos)); // num
-               mPostInts[mPostLen++] = Integer.parseInt(parms.substring(slashPos + 1)); // den
+              mPostInts[mPostLen++] = POST_MAP.get("^q");
+              mPostInts[mPostLen++] = Integer.parseInt(parms.substring(0, slashPos)); // num
+              mPostInts[mPostLen++] = Integer.parseInt(parms.substring(slashPos + 1)); // den
             } else { // plain natural number
-               mPostInts[mPostLen++] = sPostMap.get("^i");
-               mPostInts[mPostLen++] = Integer.parseInt(parms);
+              mPostInts[mPostLen++] = POST_MAP.get("^i");
+              mPostInts[mPostLen++] = Integer.parseInt(parms);
             }
           } else { // p, i, <
             mPostInts[mPostLen++] = ix;
@@ -414,7 +414,8 @@ public class PolynomialFieldSequence extends AbstractSequence {
         case 41:  // "lambertW"  normal definition
           mStack.set(top, RING.lambertW(mStack.get(top), m));
           break;
-        case 42:  // "lambNegW"  workaround if only the "negated" version works - normally this should be identical with <code>lambertW</code>
+        case
+          42:  // "lambNegW"  workaround if only the "negated" version works - normally this should be identical with <code>lambertW</code>
           mStack.set(top, RING.negate(RING.lambertW(mStack.get(top), m)));
           break;
         default: // should not occur with proper postfix expressions
@@ -441,49 +442,49 @@ public class PolynomialFieldSequence extends AbstractSequence {
 
   private void fillMap() { //!
     // Updated by gits/joeis-lite/internal/fischer/reflect/update_PolynomialFieldSequence.pl at 2025-03-04 21:37
-    sPostMap.put("*", 11);
-    sPostMap.put("+", 9);
-    sPostMap.put("-", 10);
-    sPostMap.put("/", 12);
-    sPostMap.put("<", 4);
-    sPostMap.put("A", 0);
-    sPostMap.put("^", 5);
-    sPostMap.put("^i", 6);
-    sPostMap.put("^q", 7);
-    sPostMap.put("abs", 15);
-    sPostMap.put("acosh", 34);
-    sPostMap.put("agm", 13);
-    sPostMap.put("asin", 32);
-    sPostMap.put("asinh", 35);
-    sPostMap.put("atan", 33);
-    sPostMap.put("atanh", 36);
-    sPostMap.put("cos", 21);
-    sPostMap.put("cosh", 20);
-    sPostMap.put("cot", 23);
-    sPostMap.put("coth", 22);
-    sPostMap.put("csc", 25);
-    sPostMap.put("csch", 24);
-    sPostMap.put("dif", 37);
-    sPostMap.put("eta", 19);
-    sPostMap.put("exp", 17);
-    sPostMap.put("i", 1);
-    sPostMap.put("int", 38);
-    sPostMap.put("inv", 39);
-    sPostMap.put("lambNegW", 42);
-    sPostMap.put("lambertW", 41);
-    sPostMap.put("log", 18);
-    sPostMap.put("neg", 14);
-    sPostMap.put("p", 2);
-    sPostMap.put("rev", 40);
-    sPostMap.put("sec", 27);
-    sPostMap.put("sech", 26);
-    sPostMap.put("sin", 29);
-    sPostMap.put("sinh", 28);
-    sPostMap.put("sqrt", 16);
-    sPostMap.put("sub", 8);
-    sPostMap.put("tan", 31);
-    sPostMap.put("tanh", 30);
-    sPostMap.put("x", 3);
+    POST_MAP.put("*", 11);
+    POST_MAP.put("+", 9);
+    POST_MAP.put("-", 10);
+    POST_MAP.put("/", 12);
+    POST_MAP.put("<", 4);
+    POST_MAP.put("A", 0);
+    POST_MAP.put("^", 5);
+    POST_MAP.put("^i", 6);
+    POST_MAP.put("^q", 7);
+    POST_MAP.put("abs", 15);
+    POST_MAP.put("acosh", 34);
+    POST_MAP.put("agm", 13);
+    POST_MAP.put("asin", 32);
+    POST_MAP.put("asinh", 35);
+    POST_MAP.put("atan", 33);
+    POST_MAP.put("atanh", 36);
+    POST_MAP.put("cos", 21);
+    POST_MAP.put("cosh", 20);
+    POST_MAP.put("cot", 23);
+    POST_MAP.put("coth", 22);
+    POST_MAP.put("csc", 25);
+    POST_MAP.put("csch", 24);
+    POST_MAP.put("dif", 37);
+    POST_MAP.put("eta", 19);
+    POST_MAP.put("exp", 17);
+    POST_MAP.put("i", 1);
+    POST_MAP.put("int", 38);
+    POST_MAP.put("inv", 39);
+    POST_MAP.put("lambNegW", 42);
+    POST_MAP.put("lambertW", 41);
+    POST_MAP.put("log", 18);
+    POST_MAP.put("neg", 14);
+    POST_MAP.put("p", 2);
+    POST_MAP.put("rev", 40);
+    POST_MAP.put("sec", 27);
+    POST_MAP.put("sech", 26);
+    POST_MAP.put("sin", 29);
+    POST_MAP.put("sinh", 28);
+    POST_MAP.put("sqrt", 16);
+    POST_MAP.put("sub", 8);
+    POST_MAP.put("tan", 31);
+    POST_MAP.put("tanh", 30);
+    POST_MAP.put("x", 3);
 //  sPostMap.put("dup", 43);
   } //! fillMap
 
