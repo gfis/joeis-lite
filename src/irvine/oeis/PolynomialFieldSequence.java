@@ -414,9 +414,11 @@ public class PolynomialFieldSequence extends AbstractSequence {
         case 41:  // "lambertW"  normal definition
           mStack.set(top, RING.lambertW(mStack.get(top), m));
           break;
-        case
-          42:  // "lambNegW"  workaround if only the "negated" version works - normally this should be identical with <code>lambertW</code>
+        case 42:  // "lambNegW"  workaround if only the "negated" version works - normally this should be identical with <code>lambertW</code>
           mStack.set(top, RING.negate(RING.lambertW(mStack.get(top), m)));
+          break;
+        case 43:  // "n"  push the current index
+          mStack.set(++top, Polynomial.create(new Q(mN)));
           break;
         default: // should not occur with proper postfix expressions
           throw new RuntimeException("invalid postfix code " + ix);
@@ -485,6 +487,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
     POST_MAP.put("tan", 31);
     POST_MAP.put("tanh", 30);
     POST_MAP.put("x", 3);
+    POST_MAP.put("n", 43);
 //  sPostMap.put("dup", 43);
   } //! fillMap
 
