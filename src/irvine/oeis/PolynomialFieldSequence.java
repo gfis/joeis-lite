@@ -495,7 +495,6 @@ public class PolynomialFieldSequence extends AbstractSequence {
     POST_MAP.put("x", 3);
     POST_MAP.put("n", 43);
     POST_MAP.put("catalan", 44);
-//  sPostMap.put("dup", 43);
   } //! fillMap
 
   @Override
