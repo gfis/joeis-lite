@@ -8802,11 +8802,12 @@ sumpart1: # extract from jcat25
 	>        $@.tmp
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
-sumpart2: # preprocess
-	perl sumpart.pl sumpart1.tmp \
-	| grep -vP "^#  OEIS" \
+sumpart2: # preprocess  
+	cut -b4- sumpart1.tmp \
 	| grep -vP "^A0" \
-	| sort -k7,7 \
+	| perl sumpart.pl \
+	| grep -vP "^#  OEIS" \
+	| sort -k5,5 \
 	>        $@.tmp
 	tail -n8 $@.tmp
 	wc -l    $@.tmp

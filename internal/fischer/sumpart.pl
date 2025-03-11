@@ -23,56 +23,83 @@ for (my $nsum = 2; $nsum <= 10; $nsum ++) {
     print "#  OEIS[$nsum]: $noeis\n";
 } # for nsum
 # exit(0);
-               
-my $nsum;
+
+my $nsum;  
 while (<>) {
     s/\s+\Z//; # chompr
-    s{^[\#\%][NFC] }{}; # remove type
-    my $line = $_;  
+    s{^[\#\%][NFC] }{}; # remove any type
+    my $line = $_;
+    my ($aseqno, $callcode, @parms) = ("", "#nyi", 0, "");
+    my ($sx, $funct) = ("SX?", "");
+    #                1    1              2  2
+    if ($line =~ m{\A(A\d+) *a\(n\) *\= *(.*)}) {
+    	$aseqno = $1;
+    	$line = $2;
+    }
+
     $line =~ s{\(n\-1\)\/4}{(n-l)/4}g; # correction!
     $line =~ s{\(n\-k\-l\-m\-o\)\/3\}}{(n-k-l-m-o)/3)\}}g; # correction!
     $line =~ s{\. *\(End\) *}{};
-    
-    if ($line =~ m{\/(\d+)}) {
+
+    if ($line =~ m{\/(\d+)}) { # first number - 1 yields the number of nested sums
       $nsum = $1 - 1;
-      $line =~ s{$nsu[$nsum]}{SX_$nsum\(};
-    }                      
+    }
+    if ($line =~ s{$nsu[$nsum]}{\(}) {
+    	$callcode = "wihpart";
+    	$sx = "SX_$nsum";  
+    	if ($line =~ s{\A *n *\* *}{}) {
+    		$callcode = "wihparn";
+    	}
+    }
 
     if ($line =~ s{\, where mu.*}{}) {
-      $line =~ s{mu\(([^\)]+)\)\^2}{F008966\($1\)}g;      # SQUARE_FREE.is
+      $line =~ s{mu\(([^\)]+)\)\^2}{eval\($1\)}g;      # SQUARE_FREE.is
+      $funct = "f008966";
     }
     if ($line =~ s{\, where omega.*}{}) {
-      $line =~ s{mu\(([^\)]+)\)\^2}{F008966\($1\)}g;      # SQUARE_FREE.is
-    }                                                
-    #                 1      1 2             3     3                             2  
-    if ($line =~ s{\, (where )?(c = A010051|c(\(n\))? is the prime characteristic).*}{}) {
-      $line =~ s{c\(([^\)]+)\)}{A010051\($1\)}g;          # PRIME.is
+      $line =~ s{mu\(([^\)]+)\)\^2}{eval\($1\)}g;      # omega
+      $funct = "f001221";
     }
- 
-    #                 1      1 2             3     3                             2  
+    #                 1      1 2             3     3                             2
     if ($line =~ s{\, (where )?(c = A010051|c(\(n\))? is the prime characteristic).*}{}) {
-      $line =~ s{c\(([^\)]+)\)}{A010051\($1\)}g;          # PRIME.is
-    } 
-    
+      $line =~ s{c\(([^\)]+)\)}{eval\($1\)}g;          # PRIME.is
+      $funct =    "f010051";
+    }
+    if ($line =~ m{A010051\(}) {
+      $line =~   s{A010051\(([^\)]+)\)}{eval\($1\)}g;          # PRIME.is
+      $funct =    "f010051";
+    }
+
+    #                 1      1 2             3     3     2
+    if ($line =~ s{\, (where )?(c = A010052|c(\(n\))? is ).*}{}) {
+      $line =~ s{c\(([^\)]+)\)}{wval\($1\)}g;          # PRIME.is
+      $funct =    "f010052";
+    }
+    if ($line =~ m{A010052\(}) {
+      $line =~   s{A010052\(([^\)]+)\)}{eval\($1\)}g;          # PRIME.is
+      $funct =    "f010052";
+    }
+
+
     # where c(n) = 1 - ceiling(n) + floor(n))
     #                       1 2  2 1
     if ($line =~ s{\, where (c(hi)?)\(n\) (is|\=) 1 \- ceiling.*}{ }) { # add a space for match below
-      my $repl = $1;                  
+      my $repl = $1;
       #                 1     2     2 1
-      while ($line =~ m{($repl(\(\S+) )}) {        
+      while ($line =~ m{($repl(\(\S+) )}) {
         my $chi  = quotemeta($1);
         my $parm = $2;
         $parm =~ s{\/}{\,};
-        $line =~ s{$chi}{CHI$parm }; 
-        # print "chi=$chi, parm=$parm, line=$line\n"; 
+        $line =~ s{$chi}{eval$parm };
+        # print "chi=$chi, parm=$parm, line=$line\n";
       }
+      $funct = "f1chi";
     }
 
     if ($line =~ s{sign\(floor\(}{Integer\.signum\(}) {
       $line =~ s{\)\)\)}{\)\)};
-    }                                           
+    }
     $line =~ s{sign\(}{Integer\.signum\(}g;
-    $line =~ s{ a\(n\) \= }                               {\tlambdan\t0\tn \-\> };
     $line =~ s{ mod 2\)}{ \& 1\)}g;
     if ($line !~ m{Sum_|Integer}) {
       $line =~ s{\..*}{};
@@ -80,20 +107,17 @@ while (<>) {
     if (1 && ($line =~ s{SX_(\d+)\(\(}{SX_$1\(})) {
     } else {
       $line .= ")";
-    } 
-    $line =~ s{[ \.]\)}{\)}g;
-  if (0) {
-    $line =~ s{\, *where.*}{}; 
-    #                1   1  2   2           3      3
-    $line =~ s{Sum_\{(\w+)\=(\w+)\.\.floor\((\D+\d+)\)\}} {SU\($2, $3, $1 \-\>}g;
-    #             1      1
-    $line =~ s{c\(([^\)]+)\)}                             {\(\(Functions\.GCD\.i\(n, $1\) == 1) \? 1 \: 0\)}g;
-    #          1         1
-    $line =~ s{(\-\>\s*\()}                               {\-\> ZV\(}g;
-  }
-    my $sucount = ($line =~ s{SU}{SU}g);
-    $line .= ")" x $sucount;
-    print "$line\n";
+    }
+    $line =~ s{[ \.]\)}{\)}g; # remove trailing dot
+    # $line =~ s{\, *where.*}{}; 
+
+    $parms[1] = $sx;
+    $parms[2] = "ZV$line";  
+    if (length($funct) > 0) {
+    	$parms[3] = $funct;
+    	$callcode =~ s{wihpar}{wihpax};
+    }
+    print join("\t", $aseqno, $callcode, @parms) . "\n";
 }
 #----
 sub lowix { # return variable and lower index, i=j, j=k, k=1 etc., irsum = 0 for rightmost sum.
@@ -131,7 +155,7 @@ __DATA__
 %F A363326 a(n) = Sum_{p=1..floor(n/8)} Sum_{o=p..floor((n-p)/7)} Sum_{m=o..floor((n-o-p)/6)} Sum_{l=m..floor((n-m-o-p)/5)} Sum_{k=l..floor((n-l-m-o-p)/4)} Sum_{j=k..floor((n-k-l-m-o-p)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p)/2)} (c(i) + c(j) + c(k) + c(l) + c(m) + c(o) + c(p) + c(n-i-j-k-l-m-o-p)), where c(x) = [gcd(n,x) = 1] and [ ] is the Iverson bracket.
 %F A363327 a(n) = Sum_{q=1..floor(n/9)} Sum_{p=q..floor((n-q)/8)} Sum_{o=p..floor((n-p-q)/7)} Sum_{m=o..floor((n-o-p-q)/6)} Sum_{l=m..floor((n-m-o-p-q)/5)} Sum_{k=l..floor((n-l-m-o-p-q)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q)/2)} (c(i) + c(j) + c(k) + c(l) + c(m) + c(o) + c(p) + c(q) + c(n-i-j-k-l-m-o-p-q)), where c(x) = [gcd(n,x) = 1] and [ ] is the Iverson bracket.
 %F A363328 a(n) = Sum_{r=1..floor(n/10)} Sum_{q=r..floor((n-r)/9)} Sum_{p=q..floor((n-q-r)/8)} Sum_{o=p..floor((n-p-q-r)/7)} Sum_{m=o..floor((n-o-p-q-r)/6)} Sum_{l=m..floor((n-m-o-p-q-r)/5)} Sum_{k=l..floor((n-l-m-o-p-q-r)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q-r)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q-r)/2)} (c(i) + c(j) + c(k) + c(l) + c(m) + c(o) + c(p) + c(q) + c(r) + c(n-i-j-k-l-m-o-p-q-r)), where c(x) = [gcd(n,x) = 1] and [ ] is the Iverson bracket.
-                  Sum_{r=1..floor(n/10)} Sum_{q=r..floor((n-r)/9)} Sum_{p=q..floor((n-q-r)/8)} Sum_{o=p..floor((n-p-q-r)/7)} Sum_{m=o..floor((n-o-p-q-r)/6)} Sum_{l=m..floor((n-m-o-p-q-r)/5)} Sum_{k=l..floor((n-l-m-o-p-q-r)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q-r)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q-r)/2)} 
+                  Sum_{r=1..floor(n/10)} Sum_{q=r..floor((n-r)/9)} Sum_{p=q..floor((n-q-r)/8)} Sum_{o=p..floor((n-p-q-r)/7)} Sum_{m=o..floor((n-o-p-q-r)/6)} Sum_{l=m..floor((n-m-o-p-q-r)/5)} Sum_{k=l..floor((n-l-m-o-p-q-r)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q-r)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q-r)/2)}
 %F A309436  lambdan 0 n -> Sum_{o=1..floor(n/7)} Sum_{m=o..floor((n-o)/6)} Sum_{l=m..floor((n-m-o)/5)} Sum_{k=l..floor((n-l-m-o)/4)} Sum_{j=k..floor((n-k-l-m-o)/3)} Sum_{i=j..floor((n-j-k-l-m-o)/2)} (A010051(i) + A010051(j) + A010051(k) + A010051(l) + A010051(m) + A010051(o) + A010051(n-i-j-k-l-m-o)).
 %F A309437  lambdan 0 n -> Sum_{p=1..floor(n/8)} Sum_{o=p..floor((n-p)/7)} Sum_{m=o..floor((n-o-p)/6)} Sum_{l=m..floor((n-m-o-p)/5)} Sum_{k=l..floor((n-l-m-o-p)/4)} Sum_{j=k..floor((n-k-l-m-o-p)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p)/2)} (A010051(i) + A010051(j) + A010051(k) + A010051(l) + A010051(m) + A010051(o) + A010051(p) + A010051(n-i-j-k-l-m-o-p)).
 %F A309438  lambdan 0 n -> Sum_{q=1..floor(n/9)} Sum_{p=q..floor((n-q)/8)} Sum_{o=p..floor((n-p-q)/7)} Sum_{m=o..floor((n-o-p-q)/6)} Sum_{l=m..floor((n-m-o-p-q)/5)} Sum_{k=l..floor((n-l-m-o-p-q)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q)/2)} (c(q) + c(p) + c(o) + c(m) + c(l) + c(k) + c(j) + c(i) + c(n-i-j-k-l-m-o-p-q)), where c = A010051.
