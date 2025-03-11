@@ -21,9 +21,8 @@ for (my $nsum = 2; $nsum <= 10; $nsum ++) {
   } # for irsum
   $nsu[$nsum] = quotemeta($noeis);
   $jsu[$nsum] =          ($joeis);
-  # print "# jOEIS[$nsum]: $jsu[$nsum]\n";
-  # print "#  OEIS[$nsum]: $nsu[$nsum]\n";
-    print "#  OEIS[$nsum]: $noeis\n";
+  print "# jOEIS[$nsum]: $jsu[$nsum]\n";
+  print "#  OEIS[$nsum]: $nsu[$nsum]\n";
 } # for nsum
 # exit(0);
 
@@ -114,26 +113,30 @@ while (<>) {
     $line =~ s{[ \.]\)}{\)}g; # remove trailing dot
     # $line =~ s{\, *where.*}{};
 
-    $parms[1] = $sx;
-    $parms[2] = "ZV$line";
-    $parms[4] = $withN; 
-    $callcode = "wpartsf1";
-    if (length($funct) == 0) {
-      $callcode = "wpartsum";
-    } elsif ($funct eq "f008966") {
-      $funct = "~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966"; 
-    } elsif ($funct eq "f010051") {
-      $funct = "~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051"; 
-    } elsif ($funct eq "f010052") {
-      $funct = "~~    ~~return Predicates.SQUARE.is(i) ? 1 : 0; // A010052"; 
-    } elsif ($funct eq "f1chi") {
-      $callcode = "wpartsf2";
-      $funct = "~~    ~~final Q qv = new Q(i, j);~~return 1 - (qv(i,j).ceiling.intValue()) + qv(floor(intValue()); // f1chi";
-    } else {
-      print STDERR "unknown function \"$funct\"\n";
-    }                                              
-    $parms[3] = $funct;
-    print join("\t", $aseqno, $callcode, @parms) . "\n";
+    if ($sx =~ m{SX_(\d+)}) {
+    	$nsum = $1;
+    	$parms[1] = "n -> " . $jsu[$nsum] . "ZV$line" .substr("))))))))))))))))", 0, $nsum);
+    	$parms[2] = "";
+      # $parms[2] = "ZV$line";
+      $parms[4] = $withN; 
+      $callcode = "wpartsf1";
+      if (length($funct) == 0) {
+        $callcode = "wpartsum";
+      } elsif ($funct eq "f008966") {
+        $funct = "~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966"; 
+      } elsif ($funct eq "f010051") {
+        $funct = "~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051"; 
+      } elsif ($funct eq "f010052") {
+        $funct = "~~    ~~return Predicates.SQUARE.is(i) ? 1 : 0; // A010052"; 
+      } elsif ($funct eq "f1chi") {
+        $callcode = "wpartsf2";
+        $funct = "~~    ~~final Q qv = new Q(i, j);~~return 1 - (qv(i,j).ceiling.intValue()) + qv(floor(intValue()); // f1chi";
+      } else {
+        print STDERR "unknown function \"$funct\"\n";
+      }                                              
+      $parms[3] = $funct;
+      print join("\t", $aseqno, $callcode, @parms) . "\n";
+    }
 }
 #----
 sub lowix { # return variable and lower index, i=j, j=k, k=1 etc., irsum = 0 for rightmost sum.

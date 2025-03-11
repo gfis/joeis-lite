@@ -8811,7 +8811,10 @@ wpartsum2: # preprocess
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
 wpartsum3:       
-	cp -v wpartsum2.tmp aman/wpartsum.man
-	make CC=wpartsum select gener
+	grep -vP "SX\?" wpartsum2.tmp \
+	| grep -P "01005" \
+	>        aman/wpartsum.man
+	wc -l    aman/wpartsum.man
+	make CC=wpartsum pegel
 #	| sort -k5,5 \
 #
