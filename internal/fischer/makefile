@@ -8796,7 +8796,8 @@ pfsdis: # disassemble PolynomialFieldSequence, look for tableswitch
 	javap -c -l -p $(CLASS) > $@.tmp
 	grep -P "switch" $@.tmp
 #----
-wpartsum: wpartsum0 wpartsum1 wpartsum2 wpartsum3 wpartsum4 # extract Wesley Hurt's nested sums for partitions
+# Generate for W.I.H.'s sequences "Number of partitions ..." implemented by nested sums
+wpartsum: wpartsum0 wpartsum1 wpartsum2 wpartsum3 wpartsum4
 wpart:                        wpartsum2 wpartsum3
 wpartsum0: # extract from jcat25
 	grep -P "Sum_\{i=j\.\.floor\(" $(COMMON)/jcat25.txt \
@@ -8804,29 +8805,46 @@ wpartsum0: # extract from jcat25
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
 wpartsum1: # replace some with corrections
-	cut -b1-7 aman/wpartsum.corr.man | tr -d "\r" | tee wpartsum.corr.tmp
-	grep -vf wpartsum.corr.tmp wpartsum0.tmp > $@.tmp
+	cut -b1-10 aman/wpartsum.corr.man | tr -d "\r" \
+	| sed -e "s/^/\^/" \
+	| tee wpartsum.corr.tmp
+	grep -vf wpartsum.corr.tmp wpartsum0.tmp \
+	| grep -vf wpartsum6.grep.tmp > $@.tmp
 	cat aman/wpartsum.corr.man              >> $@.tmp
-	wc -l $@.tmp
-wpartsum2: # preprocess
+	wc -l    wpartsum0.tmp $@.tmp
+wpartsum2: # run the Perl generator
 	cat wpartsum1.tmp \
 	| grep -vP "^.. A0" \
 	| sort \
 	| perl wpartsum.pl \
+	2>       $@.rest.tmp \
 	| grep -vP "^#  OEIS" \
 	>        $@.tmp
 	tail -n8 $@.tmp
-	wc -l    $@.tmp
+	wc -l    $@.*tmp
 wpartsum3: # generate, compile and test
 	grep  -P "SX\?|Sum_|\[" wpartsum2.tmp > $@.rest.tmp
 	wc -l    $@.rest.tmp
-	grep -vP "SX\?|Sum_|\[|A348541|A340489" wpartsum2.tmp \
-	| grep -P "01005|1chi|08966|void" \
+	grep   -vP "SX\?|Sum_|\[" wpartsum2.tmp \
+	| grep -vP "A343100|A343248|A343281|A348541|A340489" \
+	| grep -P  "01005[12]|008966|00122[12]|f1?chi|void" \
 	>        aman/wparts.man
 	wc -l    aman/wparts.man
-	make       CC=wparts pegel TO=8 GU=32
+	make       CC=wparts todaz pegel EX=xx TO=8 GU=64
 wpartsum4: # evaluate, remove the passed ones
 	cut -b1-7 wparts.pass.log | tr -d "\r" > $@.1.tmp
 	grep -vf $@.1.tmp wpartsum2.tmp \
-	| tee    $@.tmp
+	>        $@.tmp
+	head -n8 $@.tmp
+	wc -l    wpart*
+wpartsum5: # get the records from joeis_names.txt (1st column with "A" replaced)
+	cut -b1-7 wpartsum2.tmp | tr -d "\r" | sed -e "s/^/\^/;" > $@.grep.tmp
+	sed -e "s/^./A/"  $(COMMON)/joeis_names.txt  > $@.name.tmp
+	grep -f $@.grep.tmp $@.name.tmp > $@.tmp
+	tail -n8 $@.tmp
 	wc -l    $@.tmp
+wpartsum6: # select the existing ones which can be kept
+	grep -P "HolonomicRecurrence|EulerTransform" wpartsum5.tmp \
+	| cut -b1-7 | tr -d "\r" > $@.grep.tmp
+	wc -l $@.grep.tmp
+

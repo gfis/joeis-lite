@@ -34,9 +34,11 @@ for (my $nsum = 2; $nsum <= 10; $nsum ++) {
     $noeis = "Sum_{$i=$j..floor(" . &uppix($nsum, $irsum) . ")} "      . $noeis;
   } # for irsum
   $nsu[$nsum] = quotemeta($noeis);
-  $jsu[$nsum] =          ($joeis);
-  print "# jOEIS[$nsum]: $jsu[$nsum]\n";
-  print "#  OEIS[$nsum]: $nsu[$nsum]\n";
+  $jsu[$nsum] =          ($joeis); 
+  if ($debug >= 1) {
+    print STDERR "# jOEIS[$nsum]: $jsu[$nsum]\n";
+    print STDERR "#  OEIS[$nsum]: $nsu[$nsum]\n";
+  }
 } # for nsum
 # exit(0);
 
@@ -79,25 +81,25 @@ while (<>) {
     }
 
     # , where [ ] is the Iverson bracket
-    if ($line =~ s{(\, where|and) \[ *\] is the .*}{}) {  # and [ ] is the (generalized) Iverson bracket
+    if ($line =~ s{\, where \[ *\] is the .*}{}) {  # and [ ] is the (generalized) Iverson bracket
       #                  [1      1 ]
       while ($line =~ m{\[([^\]]+)\]}) {
         my $bracket = $1;
-        # print "# bracket1=\"$bracket\"\n";
+        # print STDERR "# bracket1=\"$bracket\"\n";
         #             1      1  2     2
         $bracket =~ s{ \= }{ == }g;
-        # print "# bracket2=\"$bracket\"\n";
+        # print STDERR "# bracket2=\"$bracket\"\n";
         $line =~ s{\[([^\]]+)\]}{($bracket \? 1 \: 0\)};
       }
     }
 
-    if ($line =~ s{\, where mu.*}{}) {
-      $line =~ s{mu\(([^\)]+)\)\^2}     {eval1\($1\)}g; # SQUARE_FREE.is
-      $funct =    "f008966";
-    }
     if ($line =~ s{\, where omega.*}{}) {
-      $line =~ s{mu\(([^\)]+)\)\^2}     {eval1\($1\)}g;
-      $funct =    "f001221";
+      $line =~   s{omega\(([^\)]+)\)}   {eval1\($1\)}g; 
+      $funct =    "f0001221";
+    }
+    if ($line =~ s{\, where mu.*}{}) {
+      $line =~   s{mu\(([^\)]+)\)\^2}   {eval1\($1\)}g; # MU().abs()
+      $funct =    "f008966";
     }
     #                 1      1 2             3     3                             2
     if ($line =~ s{\, (where )?(c = A010051|c(\(n\))? is the prime characteristic).*}{}) {
@@ -129,7 +131,7 @@ while (<>) {
         my $parm = $2;
         $parm =~ s{\/}{\,};
         $line =~ s{$chi}                {eval2$parm };
-        # print "chi=$chi, parm=$parm, line=$line\n";
+        # print STDERR "chi=$chi, parm=$parm, line=$line\n";
       }
       $funct =    "f1chi";
     }
@@ -140,7 +142,9 @@ while (<>) {
       $evparm =~ s{\/}{\,};
       my $s =
       $line =~      s{\(1 *\- *ceiling\((\S+) *\+ *floor\(\1\)}{eval2\($evparm};
-      print "# standalone f1chi, evparm=\"$evparm\", s=$s, line=$line\n";
+      if ($debug >= 1) {
+        print STDERR "# $aseqno: standalone f1chi, evparm=\"$evparm\", s=$s, line=$line\n";
+      }
       $funct =    "f1chi";
     }
 
@@ -154,7 +158,7 @@ while (<>) {
         my $parm = $2;
         $parm =~ s{\/}{\,};
         $line =~ s{$chi}                {eval2$parm };
-        # print "chi=$chi, parm=$parm, line=$line\n";
+        # print STDERR "chi=$chi, parm=$parm, line=$line\n";
       }
       $funct =    "fchi";
     }
@@ -166,7 +170,9 @@ while (<>) {
       #                     1   1
       my $s =
       $line =~      s{\(ceiling\((\S+) *\- *floor\(\1\)}{eval2\($evparm};
-      print "# standalone fchi, evparm=\"$evparm\", s=$s, line=$line\n";
+      if ($debug >= 1) {
+        print STDERR "# $aseqno: standalone fchi, evparm=\"$evparm\", s=$s, line=$line\n"; 
+      }
       $funct =    "fchi";
     }
 
@@ -199,13 +205,14 @@ while (<>) {
       $callcode =   "wpartsf1";
       if (length($funct) == 0) {
         $callcode = "wpartsum";
+      } elsif ($funct eq "f001221") {
       } elsif ($funct eq "f008966") {
       } elsif ($funct eq "f010051") {
       } elsif ($funct eq "f010052") {
       } elsif ($funct eq "f1chi") {
         $callcode = "wpartsf2";
       } else {
-        print STDERR "# unknown function \"$funct\"\n";
+        print STDERR "# $aseqno: unknown function \"$funct\"\n";
       }
     } elsif ($sx =~ m{SX_(\d+)}) { # productive branch
       $nsum = $1;
@@ -218,8 +225,11 @@ while (<>) {
         if (($line !~ m{\w\w}) || ($line !~ m{signum\(\([i-r]})) {
           $funct = "void";
         }
+      } elsif ($funct eq "f001221") {
+        $funct = "~~    ~~return Functions.OMEGA.i(i);";
       } elsif ($funct eq "f008966") {
-        $funct = "~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966";
+        # $funct = "~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966";
+        $funct = "~~    ~~return Math.abs(Functions.MOEBIUS.i(i)); // A008966";
       } elsif ($funct eq "f010051") {
         $funct = "~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051";
       } elsif ($funct eq "f010052") {
@@ -231,7 +241,7 @@ while (<>) {
         $callcode = "wpartsf2";
         $funct = "~~    ~~final Q qv = new Q(i, j);~~return qv.ceiling().intValue() - qv.floor().intValue(); // fchi";
       } else {
-        print STDERR "unknown function \"$funct\"\n";
+        print STDERR "# $aseqno: unknown function \"$funct\"\n";
       }
     }
 
@@ -250,7 +260,7 @@ while (<>) {
 #     $parms[1] =~ s{$repl}{(j*j + i*i + (n-i-j)*(n-i-j)), n};
       $parms[1] =~ s{\(j\^2 *\+ *i\^2 *\+\(n\-i\-j\)\^2\)\/n}{(j*j + i*i + (n-i-j)*(n-i-j)), n};
     } else {
-      print STDERR "# invalid correction code $corr_code in $aseqno\n";
+      print STDERR "# $aseqno: invalid correction code $corr_code in $aseqno\n";
     }
     $parms[3] = $funct; 
     $parms[5] = $type;

@@ -20,6 +20,6 @@ $(PARM3=functbody)
 
   /** Construct the sequence. */
   public $(ASEQNO)() {
-    super($(OFFSET), $(PARM1=lambda));
+    super($(OFFSET), $(PARM1=lambda)$(PARM4=multiply));
   }
 }
