@@ -2,12 +2,26 @@
 
 # wpartsum.pl
 # Generate for Wesley's sequences "Number of partitions ..." realized with nested sums
-# 2025-03-10, Georg Fischer
+# 2025-03-11, Georg Fischer
 use strict;
 use warnings;
 use integer;
 
-my $letters = "ijklmopqrstuvwxyz";
+my $debug   = 0;       
+my $expand  = 1;
+while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
+    my $opt = shift(@ARGV);
+    if (0) {
+    } elsif ($opt  =~ m{d}) {
+        $debug     =  shift(@ARGV);
+    } elsif ($opt  =~ m{x}) {
+        $expand    = 0;
+    } else {
+        die "invalid option \"$opt\"\n";
+    }
+} # while $opt
+#----------------
+my $letters = "ijklmopqrstuvwxyz"; # n is missing!
 #          0        1                                  2 3 4 5 6 7 8 9 10
 my @nsu = ("dummy", quotemeta("Sum_{i=1..floor(n/2)}"),0,0,0,0,0,0,0,0,0);
 my @jsu = ("dummy",           "Sum_{i=1..floor(n/2)}" ,0,0,0,0,0,0,0,0,0);
@@ -26,6 +40,9 @@ for (my $nsum = 2; $nsum <= 10; $nsum ++) {
 } # for nsum
 # exit(0);
 
+my %corr_hash;
+&corrections;
+
 my $nsum;
 while (<>) {
     s/\s+\Z//; # chompr
@@ -40,8 +57,12 @@ while (<>) {
       $line = $2;
     }
 
+    # polish the input
     $line =~ s{\(n\-1\)\/4}{(n-l)/4}g; # correction!
-    $line =~ s{\(n\-k\-l\-m\-o\)\/3\}}{(n-k-l-m-o)/3)\}}g; # correction!
+    $line =~ s{\(n\-k\-l\-m\-o\)\/3\}}{(n-k-l-m-o)/3)\}}g; # correction!   
+    if ($aseqno eq "A308975") {
+      $line =~ s{o\) *o}{o\) \* o}; # correction!
+    }
     $line =~ s{\. *\(End\) *}{};
 
     if ($line =~ m{\/(\d+)}) { # first number - 1 yields the number of nested sums
@@ -95,7 +116,15 @@ while (<>) {
         $line =~ s{$chi}                {eval2$parm };
         # print "chi=$chi, parm=$parm, line=$line\n";
       }
-      $funct = "f1chi";
+      $funct =    "f1chi";
+    }
+    # (1 - ceiling(n/(n-i-j)) + floor(n/(n-i-j))
+    #                                   1  1
+    while ($line =~ m{\(1 *\- *ceiling\((\S)+ *\+ *floor\(\1\)}) {
+      my $evparm = $1;
+      $evparm =~ s{\/}{\,};
+      $line =~ s{\(1 *\- *ceiling\((\S)+ *\+ *floor\(\1\)}{eval2\($evparm}; 
+      $funct =    "f1chi";
     }
 
     if ($line =~ s{sign\(floor\(}{Integer\.signum\(}) {
@@ -112,14 +141,29 @@ while (<>) {
     }
     $line =~ s{[ \.]\)}{\)}g; # remove trailing dot
     # $line =~ s{\, *where.*}{};
-
-    if ($sx =~ m{SX_(\d+)}) {
-    	$nsum = $1;
-    	$parms[1] = "n -> " . $jsu[$nsum] . "ZV$line" .substr("))))))))))))))))", 0, $nsum);
-    	$parms[2] = "";
-      # $parms[2] = "ZV$line";
+    
+    if ($expand == 0) { # do not expand
+      $nsum = $1;
+      $parms[1] = $sx;
+      $parms[2] = $line;
       $parms[4] = $withN; 
-      $callcode = "wpartsf1";
+      $callcode =   "wpartsf1";
+      if (length($funct) == 0) {
+        $callcode = "wpartsum";
+      } elsif ($funct eq "f008966") {
+      } elsif ($funct eq "f010051") {
+      } elsif ($funct eq "f010052") {
+      } elsif ($funct eq "f1chi") {
+        $callcode = "wpartsf2";
+      } else {
+        print STDERR "# unknown function \"$funct\"\n";
+      }                                              
+    } elsif ($sx =~ m{SX_(\d+)}) {
+      $nsum = $1;
+      $parms[1] = "n -> " . $jsu[$nsum] . "ZV$line" .substr("))))))))))))))))", 0, $nsum);
+      $parms[2] = "";
+      $parms[4] = $withN; 
+      $callcode =   "wpartsf1";
       if (length($funct) == 0) {
         $callcode = "wpartsum";
       } elsif ($funct eq "f008966") {
@@ -130,14 +174,49 @@ while (<>) {
         $funct = "~~    ~~return Predicates.SQUARE.is(i) ? 1 : 0; // A010052"; 
       } elsif ($funct eq "f1chi") {
         $callcode = "wpartsf2";
-        $funct = "~~    ~~final Q qv = new Q(i, j);~~return 1 - (qv(i,j).ceiling.intValue()) + qv(floor(intValue()); // f1chi";
+        $funct = "~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi";
       } else {
         print STDERR "unknown function \"$funct\"\n";
       }                                              
-      $parms[3] = $funct;
-      print join("\t", $aseqno, $callcode, @parms) . "\n";
-    }
-}
+    }   
+    
+    # now apply the corrections,.c.f. sub below
+    my $corr_code = $corr_hash{$aseqno};
+    if (! defined($corr_code)) {
+      # ignore
+    } elsif ($corr_code == 1) { 
+      $funct = "~~    ~~return Functions.PrimePi.i(i) - Functions.PrimePi.i(i - 1); // corr. $corr_code";
+    } elsif ($corr_code == 2) { 
+      $parms[1] =~ s{mu\(}{eval1\(};
+    } elsif ($corr_code == 3) { 
+      $parms[1] =~ s{d\(}{Functions.SIGMA0.i\(}g;
+    } elsif ($corr_code == 4) {  
+#    	my $repl = quotemeta("(j^2 + i^2 +(n-i-j)^2)/n");
+#     $parms[1] =~ s{$repl}{(j*j + i*i + (n-i-j)*(n-i-j)), n};
+      $parms[1] =~ s{\(j\^2 *\+ *i\^2 *\+\(n\-i\-j\)\^2\)\/n}{(j*j + i*i + (n-i-j)*(n-i-j)), n};
+    } else {
+      print STDERR "# invalid correction code $corr_code in $aseqno\n";
+    } 
+    $parms[3] = $funct;
+    print join("\t", $aseqno, $callcode, @parms) . "\n";
+} 
+#----
+sub corrections {
+%corr_hash = qw(
+A308809 1
+A308854 1
+A308919 1
+A308974 1
+A326455 1
+A326540 1
+A326678 1
+A355199 1
+A308903 2
+A335230 3
+A348541 4
+
+); # corr_hash
+} # corrections
 #----
 sub lowix { # return variable and lower index, i=j, j=k, k=1 etc., irsum = 0 for rightmost sum.
   my ($nsum, $irsum) = @_;
@@ -180,5 +259,14 @@ __DATA__
 %F A309438  lambdan 0 n -> Sum_{q=1..floor(n/9)} Sum_{p=q..floor((n-q)/8)} Sum_{o=p..floor((n-p-q)/7)} Sum_{m=o..floor((n-o-p-q)/6)} Sum_{l=m..floor((n-m-o-p-q)/5)} Sum_{k=l..floor((n-l-m-o-p-q)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q)/2)} (c(q) + c(p) + c(o) + c(m) + c(l) + c(k) + c(j) + c(i) + c(n-i-j-k-l-m-o-p-q)), where c = A010051.
 %F A309439  lambdan 0 n -> Sum_{r=1..floor(n/10)} Sum_{q=r..floor((n-r)/9)} Sum_{p=q..floor((n-q-r)/8)} Sum_{o=p..floor((n-p-q-r)/7)} Sum_{m=o..floor((n-o-p-q-r)/6)} Sum_{l=m..floor((n-m-o-p-q-r)/5)} Sum_{k=l..floor((n-l-m-o-p-q-r)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q-r)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q-r)/2)} (A010051(r) + A010051(q) + A010051(p) + A010051(o) + A010051(m) + A010051(l) + A010051(k) + A010051(j) + A010051(i) + A010051(n-i-j-k-l-m-o-p-q-r)).
 
+the following with $funct = PrimePi(i) - PrimePi(i - 1)
+A308809  8  FAIL  ,8,9,10,22,24,26,42,30... ,1,1,1,2,2,2,3,2
+A308854 10  FAIL  ,10,11,12,26,28,45,48,51... ,1,1,1,2,2,3,3,3
+A308919 12  FAIL  ,12,13,14,30,32,51,72,57... ,1,1,1,2,2,3,4,3
+A308974 14  FAIL  ,14,15,16,34,36,57,80,84... ,1,1,1,2,2,3,4,4
+A326455 16  FAIL  ,16,17,18,38,40,63,88,92... ,1,1,1,2,2,3,4,4
+A326540 18  FAIL  ,18,19,20,42,44,69,96,100...  ,1,1,1,2,2,3,4,4
+A326678 20  FAIL  ,20,21,22,46,48,75,104,108... ,1,1,1,2,2,3,4,4
+A355199  6  FAIL  ,6,7,8,18,10,22,24,26...  ,1,1,1,2,1,2,2,2
 
 

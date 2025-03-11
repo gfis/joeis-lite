@@ -4,7 +4,7 @@
 # @(#) $Id$
 # 2024-04-11: select2, SQL=
 # 2023-10-31: uptlfail, regen
-# 2023-01-24: extract ./aman, ./sql subdirectories 
+# 2023-01-24: extract ./aman, ./sql subdirectories
 # 2022-07-13: MariaDB 10.6 has 'offset' as keyword
 # 2022-06-21: old poeis -> noeis, new poeis for OEIS-prog
 # 2022-06-17: select3, gengp
@@ -72,7 +72,7 @@ endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 JJAVA=java $(JOPT) -cp "$(JOEIS)/build.tmp/joeis.jar"
 COMPA=-dir 16
-BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU) $(COMPA) 
+BATLIT=$(JAVA) irvine.test.BatchTest -vv $(WITHB) -d $(D) -t $(TO) -u $(GU) $(COMPA)
 INSPECTOR=$(JAVA) irvine.oeis.AbstractInspector
 INIT="1"
 START=`grep -E "^A" batch.log | tail -n1 | cut -b1-7`
@@ -86,7 +86,7 @@ OFFSET=0
 	wc -l $@.*
 #----------------
 all: # all possible targets:
-	grep -P "^\w[^\:]*\:" makefile | sort 
+	grep -P "^\w[^\:]*\:" makefile | sort
 #----
 killmake:
 	cmd /c tasklist | grep make | cut -b28-34 | xargs -l -innn cmd /c taskkill /F /PID nnn
@@ -117,7 +117,7 @@ spectest:
 #	$(JAVA) irvine.oeis.cons.FoldedContinuedFraction $(ARGS)
 crtest:
 	$(JAVA) irvine.math.cr.CR $(NUM)
-URI=https://oeis.org/b303116.txt 
+URI=https://oeis.org/b303116.txt
 uritest:
 	$(JAVA) org.teherba.common.URIReader $(URI) UTF-8
 ebtest:
@@ -132,13 +132,13 @@ asutest:
 	$(JAVA) irvine.oeis.AlternatingSumSequence -d $(D) -n $(NT) -a "$(A)" -p "$(P)"
 cptest:
 	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)"
-eps: epstest # 
+eps: epstest #
 epstest:
-	$(JAVA) irvine.oeis.transform.EtaProductSequence  -d $(D) -n $(NT) -p "$(P)" -q $(Q) 
+	$(JAVA) irvine.oeis.transform.EtaProductSequence  -d $(D) -n $(NT) -p "$(P)" -q $(Q)
 ettest:
-	cat et.data.txt  | $(JAVA) irvine.oeis.transform.EulerTransform 
+	cat et.data.txt  | $(JAVA) irvine.oeis.transform.EulerTransform
 iettest:
-	cat iet.data.txt | $(JAVA) irvine.oeis.transform.InverseEulerTransform 
+	cat iet.data.txt | $(JAVA) irvine.oeis.transform.InverseEulerTransform
 #	$(JAVA) irvine.test.EulerTransformTest -n $(NT) -p $(P) -o 0
 gfttest:
 	$(JAVA) irvine.oeis.triangle.GeneratingFunctionTriangle $(NT) $(NUM) $(DEN)
@@ -165,9 +165,9 @@ LOOP=64
 ristest:
 	$(JAVA) irvine.oeis.triangle.RowIndexSequence -d $(D) -n $(NT) -l $(LOOP) -o $(OFFSET) -a $(A)
 rstest:
-	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)" 
+	$(JAVA) irvine.oeis.transform.RootSequence  -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" -s "$(S)"
 sstest:
-	$(JAVA) irvine.oeis.SequenceSum  -d $(D) -n $(NT) -s "$(S)" 
+	$(JAVA) irvine.oeis.SequenceSum  -d $(D) -n $(NT) -s "$(S)"
 tptest:
 	$(JAVA) irvine.oeis.triangle.Product -d $(D) -n $(NT) -a "$(A)"
 titest:
@@ -314,7 +314,7 @@ rename:
 	  perl -i.bak -pe "s{ContinuedFractionOfSqrt([^S])}{ContinuedFractionOfSqrtSequence$1}g;"
 #----
 movejav: # move base classes *.java to *.jav
-	find ../../src/irvine/oeis -iname "*.java" | sed -e "s/.java//" | xargs -innn mv -v nnn.java nnn.jav 
+	find ../../src/irvine/oeis -iname "*.java" | sed -e "s/.java//" | xargs -innn mv -v nnn.java nnn.jav
 #--------
 noeis: nocre nodir # create a list of freshly implmented classes
 nocre:
@@ -372,11 +372,11 @@ mangen: # parameter: CC; copy all in CC.gen to fischer/manual
 	cat coplist.tmp | xargs -l -i{} cp -v ../../../joeis/src/irvine/oeis/{} manual
 	ls -al manual
 sumall: # copy all generated in joeis-lite/src to ./manual
-	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual 
+	find ../../src/irvine/oeis/a* -iname "*.java" | xargs -innn cp -pv nnn manual
 sumpass: # copy all with passed test in joeis-lite/src to ./manual
 	cut -b1-7 $(CC).pass.log \
 	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
-	| xargs -innn cp -pv nnn manual 
+	| xargs -innn cp -pv nnn manual
 techo: # append timestamp
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).man
 #-----
@@ -399,21 +399,21 @@ todaz: # zero today.txt
 	touch today.txt
 #----
 sumfato: # copy all with PASSed or FATO test in joeis-lite/src to ./manual
-	cut -b1-7 $(CC).pass.log   >  $@.tmp 
+	cut -b1-7 $(CC).pass.log   >  $@.tmp
 	grep -P "\tFATO\t" $(CC).fail.log \
 	| tee \
-	| cut -b1-7                >> $@.tmp 
+	| cut -b1-7                >> $@.tmp
 	cat                           $@.tmp \
 	| perl -ne 'use strict; s/\s+\Z//; my $$asn = substr($$_, 0, 7); print "../../src/irvine/oeis/a" . substr($$asn, 1, 3) . "/$$asn.java\n";' \
-	| xargs -innn cp -pv nnn manual 
-catpass: # copy all OEIS definitions for passed tests 
+	| xargs -innn cp -pv nnn manual
+catpass: # copy all OEIS definitions for passed tests
 	perl $(DATA)/catex_select.pl -f $(CC).pass.log $(COMMON)/jcat25.txt > $(CC).catex.tmp
 	uedit64 $(CC).catex.tmp
 copall: # LIST= ; copy all in LIST from joeis/src to ./manual
-	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f $(LIST) | xargs -innn cp -pv nnn manual 
+	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f $(LIST) | xargs -innn cp -pv nnn manual
 sumfail: # CC= copy all FAILed to ./manual
 	grep FAIL $(CC).fail.log | cut -b1-7 | sed -e "s/\r//" | tee grep.tmp
-	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f grep.tmp | xargs -innn cp -pv nnn manual 
+	find ../../src/irvine/oeis/a* -iname "*.java" | grep -f grep.tmp | xargs -innn cp -pv nnn manual
 	cat grep.tmp | xargs -innn uedit64 manual/nnn.java
 s4diff: # compare existing seqs. in joeis/src with selected ones in seq4
 	$(DBAT) -x "SELECT LOWER(SUBSTR(aseqno, 1, 4)) || '/' || aseqno FROM seq4 WHERE aseqno IN (SELECT aseqno FROM joeis) ORDER BY 1" \
@@ -804,7 +804,7 @@ robot2: # make an individual robot
 	grep -vf $@.v.tmp $(ROBOT)/$(CC).gen > $(CC).gen || :
 	grep -E "^A[0-9]" aman/$(CC).man    >> $(CC).gen || :
 	wc -l                                  $(CC).gen
-	make purge 
+	make purge
 	make select2 select3 gener maditel TO=$(TO) GU=$(GU)
 robot3: # compile and test all
 	#-- postlude
@@ -827,7 +827,7 @@ ropl: # CC= standalone Perl robot
 	grep -vf roplv.tmp $(ROBOT)/$(CC).rob.gen > $(CC).rob.gen
 	cat aman/$(CC).rob.man                   >> $(CC).rob.gen || :
 	wc -l                                       $(CC).rob.gen
-	make CC=$(CC).rob select2 select3 geditel 
+	make CC=$(CC).rob select2 select3 geditel
 #--------
 seqlist:
 	cat $@.man | xargs -t -l -innn grep -iH Librandi $(COMMON)/ajson/nnn.json
@@ -837,7 +837,7 @@ similar:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #================================================================
-anabuild: # .2023-03-16: 
+anabuild: # .2023-03-16:
 	make purge
 	git add -v aman/A*.man sql/*.sql *.pl *.jpat
 	rm -f aman/build.man build.tmp || :
@@ -849,8 +849,8 @@ anabuild: # .2023-03-16:
 	make CC=simbinom   select gener
 	cp -pv hold/*.java manual || :
 	make CC=man        man
-	make CC=$@ dist testall TO=8 pack 
-anabuild.2023-02-23: 
+	make CC=$@ dist testall TO=8 pack
+anabuild.2023-02-23:
 	make purge
 	git add -v aman/A*.man sql/*.sql *.pl *.jpat
 	rm -f aman/build.man build.tmp || :
@@ -865,7 +865,7 @@ anabuild.2023-02-23:
 	make CC=finifull   select gener
 	cp -pv hold/*.java manual || :
 	make CC=man        man
-	make CC=$@ dist testall TO=8 pack 
+	make CC=$@ dist testall TO=8 pack
 anabuild.2023-02-14: # *GH
 	make purge
 	git add -v aman/A*.man sql/*.sql *.pl *.jpat
@@ -878,7 +878,7 @@ anabuild.2023-02-14: # *GH
 	make CC=prisuba    select gener
 	cp -pv hold/*.java manual || :
 	make CC=man        man
-	make CC=$@ dist testall GU=3 pack 
+	make CC=$@ dist testall GU=3 pack
 anabuild.2022-12-31:
 	make purge
 	git add -v aman/A*.man sql/*.sql *.pl *.jpat
@@ -890,7 +890,7 @@ anabuild.2022-12-31:
 	make CC=build      select gener EX=xx
 	cp -pv hold/*.java manual || :
 	make CC=man        man
-	make CC=$@ dist testall pack 
+	make CC=$@ dist testall pack
 	make CC=A093211 man dist testall pack
 future:
 	grep -P "power of \d+ dividing n\!\." jcat25.txt
@@ -907,7 +907,7 @@ exprs:
 	grep -v "€" $(COMMON)/../robot/expr_gen.gen | cut -f1-4 \
 	| sed -e "s/lambda\t0\t/lambdan\t0\tn \-\> /" \
 	| grep -vP "[^A]\d{6}" \
-	>        $@.gen 
+	>        $@.gen
 	tail -n2 $@.gen
 	wc -l    $@.gen
 #----
@@ -1379,7 +1379,7 @@ amodn: # simple formula a(n) = Aqseno(n...) op n
 	head -n2 $@.gen
 	wc -l    $@.gen
 #---------------
-andiv0: # simple formula: a(n) = Annnnnn(n) / n 
+andiv0: # simple formula: a(n) = Annnnnn(n) / n
 	grep -E "^\%" $(COMMON)/jcat25.txt | grep -E "a\(n\) *\=" | grep -P "a\(n\) *\= *A\d+\(n\) *[\+\-\*\/] *n" \
 	| cut -b 4- | sed -e "s/ /\t/" \
 	| perl -ne 'if (m{\A(A\d+)\s+a\([^\)]+\) *\= *(A\d+)\(n\) *([\+\-\*\/]) *(n)}i) {'\
@@ -2082,7 +2082,7 @@ bisect0: # either take the 1st or the 2nd term from pairs of terms in the base s
 	$(DBAT)  -x "SELECT aseqno, callcode, offset1, parm1, parm2, parm3, parm4, parm5 FROM seq4 ORDER BY 1" \
 	>        $@.tmp
 	head -n4 $@.tmp
-	wc -l    $@.tmp $@.rest.tmp 
+	wc -l    $@.tmp $@.rest.tmp
 bisect:
 	perl bisect.pl bisect0.tmp \
 	2>       $@.rest.tmp \
@@ -2412,7 +2412,7 @@ concsim0:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-	
+
 # A030465 Numbers n such that n concatenated with n+1 is a square.
 # A030466 Squares that are concatenations of two consecutive nonzero numbers.
 # A030467 Numbers n such that n^2 is a concatenation of two successive numbers.
@@ -2453,7 +2453,7 @@ concmul:
 	2>       $@.rest.tmp
 	head -n4 $@.gen
 	wc -l    $@*
-concprod_eval: 
+concprod_eval:
 	make batlog_populate PAT=concprod.fail.log
 	make batlog_eval \
 	| grep -E "^A[0-9]" \
@@ -2904,10 +2904,10 @@ etaprod: # EtaProductSequence
 	head -n4 $@.gen
 	wc -l    $@.gen
 etalists: # lists from the literature
-	# perl $(ETA)/acres.pl 
-	# perl $(ETA)/martin.pl 
-	# perl $(ETA)/moy.pl 
-	# perl $(ETA)/williams2.pl 
+	# perl $(ETA)/acres.pl
+	# perl $(ETA)/martin.pl
+	# perl $(ETA)/moy.pl
+	# perl $(ETA)/williams2.pl
 	cat $(ETA)/etalists.lst \
 	| grep -v A999999 | sort | uniq -w7 \
 	>        $@.gen
@@ -2922,7 +2922,7 @@ eisenprod:
 	grep -P "\bE_(\d\d?)\b" $(COMMON)/jcat25.txt | grep -E "^\%[NFC]" \
 	| perl eisenprod.pl \
 	2>       $@.rest.tmp \
-	>        $@.gen 
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.*tmp
 #	| grep -vE "A288472|A288989|A289981|A290009|A290010|A290049|A290050" \
@@ -2934,7 +2934,7 @@ convprom:
 convprod:
 	perl convprod.pl $(COMMON)/convprod.tmp \
 	2>       $@.rest.tmp \
-	>        $@.gen 
+	>        $@.gen
 	head -n4 $@.gen
 	wc -l    $@.gen $@.*tmp
 #--------------------------------
@@ -2997,7 +2997,7 @@ finifubf1:
 finiload: # LIST= ; refresh the b-files for all in LIST
 	grep -E "^A[0-9] $(LIST) | cut -b2-7 | xargs -innn make finiload1 S=nnn
 finiload1:
-	cd $(CONTRIB) ; make wgeto 
+	cd $(CONTRIB) ; make wgeto
 #----
 noncomp: # similar to finifull and bref
 	cat $(CONSTANT)/noncomp.man \
@@ -3282,7 +3282,7 @@ holt: # parameter GEN=
 	$(HOLT) -d $(D) -n $(NT) -f $(GEN)
 P=1
 Q=1
-hgs: # HypergeometricSequence -p -q -h 
+hgs: # HypergeometricSequence -p -q -h
 	$(JAVA) irvine.oeis.HypergeometricSequence -n $(NT) -p "$(P)" -q "$(Q)" -i "$(INIT)" -o $(OFFSET) -d $(D) -h "$(MATRIX)"
 #----------------
 runbva:
@@ -3350,7 +3350,7 @@ urlprep2:
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
-	
+
 maprep:
 	$(JPREP) -cc fract1 -f $(LINREC)/long/$@.tmp \
 	>        $@.tmp
@@ -3361,7 +3361,7 @@ maprep:
 	>        $@.gen
 	head -n2 $@.gen
 	wc -l    $@.gen
-	
+
 ogf:
 	perl aman/ogf.man \
 	| grep -E "^A[0-9]+" \
@@ -3967,7 +3967,7 @@ holsig2: # get signatures from jcat25
 	2>       $@.holo.run \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen	
+	wc -l    $@.gen
 #--------------------------------
 hygsolve0:
 	grep -E "runholo" $(HOLREC)/hygsolve2.tmp \
@@ -4454,7 +4454,7 @@ modi:
 #--------------------------------
 TF=Mobius
 trafo0: # select all transforms
-	# grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " (Binomial|Euler|M..?bius|Invert|Logarithmic|Revert|Weigh|Witt) transform" 
+	# grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " (Binomial|Euler|M..?bius|Invert|Logarithmic|Revert|Weigh|Witt) transform"
 	grep -E "^%[NFC]" $(COMMON)/jcat25.txt | grep -Pi " \w+ transform" \
 	>        $@.tmp
 	wc -l    $@.tmp
@@ -4602,7 +4602,7 @@ mult1: # grep nyi from jcat25
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-mult2: 
+mult2:
 	make seq LIST=mult1.tmp
 	$(DBAT) -x "SELECT i.aseqno, n.name \
 	  FROM asinfo i, asname n \
@@ -4614,7 +4614,7 @@ mult2:
 	>        $@.tmp
 	head -n4 $@.tmp
 	wc -l    $@.tmp
-mult3: 
+mult3:
 	sort -k2 mult1.tmp \
 	| perl multprep.pl \
 	>        $@.tmp
@@ -4669,21 +4669,21 @@ multnyi:
 	| tee    $@.tmp
 	wc -l    $@.tmp
 #----
-beattycheck: # run a test for methods a() over all BeattySequences 
+beattycheck: # run a test for methods a() over all BeattySequences
 	grep BeattySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=$(GU) 
+	make CC=$@ test2 log TO=8 GU=$(GU)
 directcheck:
 	cut -f1 reflect/direct.tmp > ghead.tmp
 	wc -l ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log TO=8 GU=$(GU)
-hypercheck: # run a test for methods a() over all HypergeometricSequences 
+hypercheck: # run a test for methods a() over all HypergeometricSequences
 	grep HypergeometricSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	wc -l ghead.tmp
 	rm -f batch.log
-	make CC=$@ test2 log TO=8 GU=$(GU) 
+	make CC=$@ test2 log TO=8 GU=$(GU)
 hypergeon:
 	perl hypergeon.pl hypercheck.corr.pack \
 	>        $@.gen
@@ -4692,27 +4692,27 @@ hypergeon:
 mult0check:
 	make seq2 LIST=mult0.man
 	$(DBAT) "SELECT s.aseqno, SUBSTR(d.data, 1, 64) FROM seq2 s, asdata d where s.aseqno = d.aseqno "
-multcheck: # run a test for methods a() over all MultiplicativeSequences 
+multcheck: # run a test for methods a() over all MultiplicativeSequences
 	grep MultiplicativeSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	wc -l ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log TO=8 GU=$(GU)
-lambdacheck: # run a test for methods a() over all LambdaSequences 
+lambdacheck: # run a test for methods a() over all LambdaSequences
 	grep LambdaSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	wc -l ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log TO=8 GU=$(GU)
-memocheck: # run a test for methods a() over all MemorySequences 
+memocheck: # run a test for methods a() over all MemorySequences
 	grep MemorySequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	wc -l ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log TO=8 GU=$(GU)
-morphcheck: # run a test over all MorphismFixedPointSequences 
+morphcheck: # run a test over all MorphismFixedPointSequences
 	grep MorphismFixedPointSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	wc -l ghead.tmp
 	rm -f batch.log
 	make CC=$@ test2 log TO=8 GU=$(GU)
-paddingcheck: # run a test for methods a() over all PaddingSequences 
+paddingcheck: # run a test for methods a() over all PaddingSequences
 	grep PaddingSequence $(COMMON)/joeis_names.txt | cut -f1 > ghead.tmp
 	wc -l ghead.tmp
 	rm -f batch.log
@@ -5696,7 +5696,7 @@ knestm:
 	grep -E "^A[0-9]" aman/$@.man > $@.gen
 	head -n4 $@.gen
 	wc   -l  $@.gen
-known: 
+known:
 	grep -P "^[A-Z]\d{6}" $@.man > $@.gen
 	head -n2 $@.gen
 	wc   -l  $@.gen
@@ -5754,7 +5754,7 @@ cofrefl1:
 	wc -l    $@.tmp
 cofrefl2:
 	cat cofrefl1.tmp \
-	| $(JAVA) irvine.oeis.ConstantReflector -f - 
+	| $(JAVA) irvine.oeis.ConstantReflector -f -
 	2>       $@.err.tmp \
 	| tee    $@.tmp
 	wc -l    $@*.tmp
@@ -5910,7 +5910,7 @@ packprep:
 #--------------------------------
 wraptr: # WrappedRecurrence
 	cd $(TRIREC); make wraptr
-	head -n4 $@.gen 
+	head -n4 $@.gen
 	wc   -l  $@.gen
 #--
 tricodiff: # ConstantDifferenceTriangle
@@ -6006,7 +6006,7 @@ tricolk:
 	wc -l    $@.gen
 tricolar: # extract those implementing DirectArray
 	cd $(TRIREC) ; make tricolk
-	make CC=tricolk select 
+	make CC=tricolk select
 	$(DBAT) -x "SELECT * FROM seq4 s WHERE s.parm1 IN (SELECT aseqno FROM dirarr)\
 	  ORDER BY 1" \
 	>        $@.gen
@@ -6271,7 +6271,7 @@ tricut1: # target triangle results from source by removing the leading column
 	wc -l    $@.gen
 tricut2: # target triangle results from source by adding a leading column
 	# grep -P              "\ttricut1yn\t" $(TRIREC)/trixcut3.tmp \
-	# | sed -e "s/\r//" -e "s/tricut1yn/tricut2/" 
+	# | sed -e "s/\r//" -e "s/tricut1yn/tricut2/"
 	grep new aman/tricut2.man \
 	| grep -vE "A304042|A354487" \
 	>        $@.gen
@@ -6941,7 +6941,7 @@ nest0:
 	wc -l    $@.tmp
 nest:
 	cp -v nest0.tmp nest.gen
-nesta: 
+nesta:
 	grep -P "\tnesta\t" aman/nest2.man \
 	>        $@.gen
 	head -n2 $@.gen
@@ -8737,7 +8737,7 @@ ordsum6:
 	| perl -ne 's/\)/\)\.skip\(\)/; print;' \
 	>        $@.gen
 	head -n4 $@.gen
-	wc -l    $@.gen 
+	wc -l    $@.gen
 ordsum7:
 	grep -E "^A[0-9]" aman/2024-04-29.man | cut -f1 > $@.tmp
 	grep -vf $@.tmp ordsum0.tmp > ordsum0.man
@@ -8796,13 +8796,13 @@ pfsdis: # disassemble PolynomialFieldSequence, look for tableswitch
 	javap -c -l -p $(CLASS) > $@.tmp
 	grep -P "switch" $@.tmp
 #----
-wpartsum: wpartsum1 wpartsum2 # extract Wesley Hurt's nested sums for partitions
+wpartsum: wpartsum1 wpartsum2 wpartsum3 # extract Wesley Hurt's nested sums for partitions
 wpartsum1: # extract from jcat25
 	grep -P "Sum_\{i=j\.\.floor\(" $(COMMON)/jcat25.txt \
 	>        $@.tmp
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
-wpartsum2: # preprocess  
+wpartsum2: # preprocess
 	cut -b4- wpartsum1.tmp \
 	| grep -vP "^A0" \
 	| perl wpartsum.pl \
@@ -8810,11 +8810,13 @@ wpartsum2: # preprocess
 	>        $@.tmp
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
-wpartsum3:       
-	grep -vP "SX\?" wpartsum2.tmp \
-	| grep -P "01005" \
-	>        aman/wpartsum.man
-	wc -l    aman/wpartsum.man
-	make CC=wpartsum pegel
+wpartsum3: # generate, compile and test
+	grep  -P "SX\?|Sum_" wpartsum2.tmp > $@.rest.tmp
+	wc -l    $@.rest.tmp
+	grep -vP "SX\?|Sum_|A348541" wpartsum2.tmp \
+	| grep -P "01005|1chi|08966" \
+	>        aman/wparts.man
+	wc -l    aman/wparts.man
+	make       CC=wparts pegel
 #	| sort -k5,5 \
 #
