@@ -8796,27 +8796,37 @@ pfsdis: # disassemble PolynomialFieldSequence, look for tableswitch
 	javap -c -l -p $(CLASS) > $@.tmp
 	grep -P "switch" $@.tmp
 #----
-wpartsum: wpartsum1 wpartsum2 wpartsum3 # extract Wesley Hurt's nested sums for partitions
-wpartsum1: # extract from jcat25
+wpartsum: wpartsum0 wpartsum1 wpartsum2 wpartsum3 wpartsum4 # extract Wesley Hurt's nested sums for partitions
+wpart:                        wpartsum2 wpartsum3
+wpartsum0: # extract from jcat25
 	grep -P "Sum_\{i=j\.\.floor\(" $(COMMON)/jcat25.txt \
 	>        $@.tmp
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
+wpartsum1: # replace some with corrections
+	cut -b1-7 aman/wpartsum.corr.man | tr -d "\r" | tee wpartsum.corr.tmp
+	grep -vf wpartsum.corr.tmp wpartsum0.tmp > $@.tmp
+	cat aman/wpartsum.corr.man              >> $@.tmp
+	wc -l $@.tmp
 wpartsum2: # preprocess
-	cut -b4- wpartsum1.tmp \
-	| grep -vP "^A0" \
+	cat wpartsum1.tmp \
+	| grep -vP "^.. A0" \
+	| sort \
 	| perl wpartsum.pl \
 	| grep -vP "^#  OEIS" \
 	>        $@.tmp
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
 wpartsum3: # generate, compile and test
-	grep  -P "SX\?|Sum_" wpartsum2.tmp > $@.rest.tmp
+	grep  -P "SX\?|Sum_|\[" wpartsum2.tmp > $@.rest.tmp
 	wc -l    $@.rest.tmp
-	grep -vP "SX\?|Sum_|A348541" wpartsum2.tmp \
-	| grep -P "01005|1chi|08966" \
+	grep -vP "SX\?|Sum_|\[|A348541|A340489" wpartsum2.tmp \
+	| grep -P "01005|1chi|08966|void" \
 	>        aman/wparts.man
 	wc -l    aman/wparts.man
-	make       CC=wparts pegel
-#	| sort -k5,5 \
-#
+	make       CC=wparts pegel TO=8 GU=32
+wpartsum4: # evaluate, remove the passed ones
+	cut -b1-7 wparts.pass.log | tr -d "\r" > $@.1.tmp
+	grep -vf $@.1.tmp wpartsum2.tmp \
+	| tee    $@.tmp
+	wc -l    $@.tmp

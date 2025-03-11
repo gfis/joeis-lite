@@ -7,7 +7,7 @@ use strict;
 use warnings;
 use integer;
 
-my $debug   = 0;       
+my $debug   = 0;
 my $expand  = 1;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
@@ -45,11 +45,13 @@ my %corr_hash;
 
 my $nsum;
 while (<>) {
-    s/\s+\Z//; # chompr
-    s{^[\#\%][NFC] }{}; # remove any type
+    s/\s+\Z//; # chompr 
+    #  1           1
+    s{^([\#\%][NFC]) }{}; # remove any type 
+    my $type = $1;
     my $line = $_;
-    #                                  aseqno cc      p0 parm1 parm2   parm3    parm4
-    my ($aseqno, $callcode, @parms) = ("",    "#nyi", 0, "sx", "form", "funct", "withN");
+    #                                  aseqno cc      p0 parm1 parm2   parm3    parm4    parm5
+    my ($aseqno, $callcode, @parms) = ("",    "#nyi", 0, "sx", "form", "funct", "withN", "??");
     my ($sx, $funct, $withN) = ("SX?", "", "");
     #                1    1              2  2
     if ($line =~ m{\A(A\d+) *a\(n\) *\= *(.*)}) {
@@ -59,7 +61,7 @@ while (<>) {
 
     # polish the input
     $line =~ s{\(n\-1\)\/4}{(n-l)/4}g; # correction!
-    $line =~ s{\(n\-k\-l\-m\-o\)\/3\}}{(n-k-l-m-o)/3)\}}g; # correction!   
+    $line =~ s{\(n\-k\-l\-m\-o\)\/3\}}{(n-k-l-m-o)/3)\}}g; # correction!
     if ($aseqno eq "A308975") {
       $line =~ s{o\) *o}{o\) \* o}; # correction!
     }
@@ -73,6 +75,19 @@ while (<>) {
       $sx = "SX_$nsum";
       if ($line =~ s{\A *n *\* *}{}) {
         $withN = ".multiply(n)";
+      }
+    }
+
+    # , where [ ] is the Iverson bracket
+    if ($line =~ s{(\, where|and) \[ *\] is the .*}{}) {  # and [ ] is the (generalized) Iverson bracket
+      #                  [1      1 ]
+      while ($line =~ m{\[([^\]]+)\]}) {
+        my $bracket = $1;
+        # print "# bracket1=\"$bracket\"\n";
+        #             1      1  2     2
+        $bracket =~ s{ \= }{ == }g;
+        # print "# bracket2=\"$bracket\"\n";
+        $line =~ s{\[([^\]]+)\]}{($bracket \? 1 \: 0\)};
       }
     }
 
@@ -104,7 +119,7 @@ while (<>) {
       $funct =    "f010052";
     }
 
-    # where c(n) = 1 - ceiling(n) + floor(n))
+    # , where c(n) = 1 - ceiling(n) + floor(n)
     #                       1 2  2 1
     if ($line =~ s{\, where (c(hi)?)\(n\) (is|\=) 1 \- ceiling.*}{ }) { # add a space for match below
       my $repl = $1;
@@ -119,12 +134,40 @@ while (<>) {
       $funct =    "f1chi";
     }
     # (1 - ceiling(n/(n-i-j)) + floor(n/(n-i-j))
-    #                                   1  1
-    while ($line =~ m{\(1 *\- *ceiling\((\S)+ *\+ *floor\(\1\)}) {
+    #                                   1   1
+    while ($line =~ m{\(1 *\- *ceiling\((\S+) *\+ *floor\(\1\)}) {
       my $evparm = $1;
       $evparm =~ s{\/}{\,};
-      $line =~ s{\(1 *\- *ceiling\((\S)+ *\+ *floor\(\1\)}{eval2\($evparm}; 
+      my $s =
+      $line =~      s{\(1 *\- *ceiling\((\S+) *\+ *floor\(\1\)}{eval2\($evparm};
+      print "# standalone f1chi, evparm=\"$evparm\", s=$s, line=$line\n";
       $funct =    "f1chi";
+    }
+
+    # , where c(n) = ceiling(n) - floor(n)
+    #                       1 2  2 1
+    if ($line =~ s{\, where (c(hi)?)\(n\) (is|\=) ceiling.*}{ }) { # add a space for match below
+      my $repl = $1;
+      #                 1     2     2 1
+      while ($line =~ m{($repl(\(\S+) )}) {
+        my $chi  = quotemeta($1);
+        my $parm = $2;
+        $parm =~ s{\/}{\,};
+        $line =~ s{$chi}                {eval2$parm };
+        # print "chi=$chi, parm=$parm, line=$line\n";
+      }
+      $funct =    "fchi";
+    }
+    # (ceiling(n/(n-i-j)) - floor(n/(n-i-j))
+    #                            1   1
+    while ($line =~ m{\(ceiling\((\S+) *\- *floor\(\1\)}) {
+      my $evparm = $1;
+      $evparm =~ s{\/}{\,};
+      #                     1   1
+      my $s =
+      $line =~      s{\(ceiling\((\S+) *\- *floor\(\1\)}{eval2\($evparm};
+      print "# standalone fchi, evparm=\"$evparm\", s=$s, line=$line\n";
+      $funct =    "fchi";
     }
 
     if ($line =~ s{sign\(floor\(}{Integer\.signum\(}) {
@@ -132,21 +175,27 @@ while (<>) {
     }
     $line =~ s{sign\(}{Integer\.signum\(}g;
     $line =~ s{ mod 2\)}{ \& 1\)}g;
+    $line =~ s{floor}{/* floor */}g;
     if ($line !~ m{Sum_|Integer}) {
       $line =~ s{\..*}{};
     }
+
     if (1 && ($line =~ s{SX_(\d+)\(\(}{SX_$1\(})) {
     } else {
       $line .= ")";
     }
     $line =~ s{[ \.]\)}{\)}g; # remove trailing dot
+    $line =~     s{gcd\(}{Functions\.GCD\.i\(}g;
+    $line =~     s{sqrt\(}{Functions\.SQRT\.i\(}g;
+    # $line =~     s{floor\(}{\(}g; # remove remaining floors
+
     # $line =~ s{\, *where.*}{};
-    
-    if ($expand == 0) { # do not expand
+
+    if ($expand == 0) { # -x : do not expand, for teseting
       $nsum = $1;
       $parms[1] = $sx;
       $parms[2] = $line;
-      $parms[4] = $withN; 
+      $parms[4] = $withN;
       $callcode =   "wpartsf1";
       if (length($funct) == 0) {
         $callcode = "wpartsum";
@@ -157,49 +206,56 @@ while (<>) {
         $callcode = "wpartsf2";
       } else {
         print STDERR "# unknown function \"$funct\"\n";
-      }                                              
-    } elsif ($sx =~ m{SX_(\d+)}) {
+      }
+    } elsif ($sx =~ m{SX_(\d+)}) { # productive branch
       $nsum = $1;
       $parms[1] = "n -> " . $jsu[$nsum] . "ZV$line" .substr("))))))))))))))))", 0, $nsum);
       $parms[2] = "";
-      $parms[4] = $withN; 
+      $parms[4] = $withN;
       $callcode =   "wpartsf1";
       if (length($funct) == 0) {
         $callcode = "wpartsum";
+        if (($line !~ m{\w\w}) || ($line !~ m{signum\(\([i-r]})) {
+          $funct = "void";
+        }
       } elsif ($funct eq "f008966") {
-        $funct = "~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966"; 
+        $funct = "~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966";
       } elsif ($funct eq "f010051") {
-        $funct = "~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051"; 
+        $funct = "~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051";
       } elsif ($funct eq "f010052") {
-        $funct = "~~    ~~return Predicates.SQUARE.is(i) ? 1 : 0; // A010052"; 
+        $funct = "~~    ~~return Predicates.SQUARE.is(i) ? 1 : 0; // A010052";
       } elsif ($funct eq "f1chi") {
         $callcode = "wpartsf2";
         $funct = "~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi";
+      } elsif ($funct eq "fchi") {
+        $callcode = "wpartsf2";
+        $funct = "~~    ~~final Q qv = new Q(i, j);~~return qv.ceiling().intValue() - qv.floor().intValue(); // fchi";
       } else {
         print STDERR "unknown function \"$funct\"\n";
-      }                                              
-    }   
-    
+      }
+    }
+
     # now apply the corrections,.c.f. sub below
     my $corr_code = $corr_hash{$aseqno};
     if (! defined($corr_code)) {
       # ignore
-    } elsif ($corr_code == 1) { 
+    } elsif ($corr_code == 1) {
       $funct = "~~    ~~return Functions.PrimePi.i(i) - Functions.PrimePi.i(i - 1); // corr. $corr_code";
-    } elsif ($corr_code == 2) { 
+    } elsif ($corr_code == 2) {
       $parms[1] =~ s{mu\(}{eval1\(};
-    } elsif ($corr_code == 3) { 
+    } elsif ($corr_code == 3) {
       $parms[1] =~ s{d\(}{Functions.SIGMA0.i\(}g;
-    } elsif ($corr_code == 4) {  
-#    	my $repl = quotemeta("(j^2 + i^2 +(n-i-j)^2)/n");
+    } elsif ($corr_code == 4) {
+#     my $repl = quotemeta("(j^2 + i^2 +(n-i-j)^2)/n");
 #     $parms[1] =~ s{$repl}{(j*j + i*i + (n-i-j)*(n-i-j)), n};
       $parms[1] =~ s{\(j\^2 *\+ *i\^2 *\+\(n\-i\-j\)\^2\)\/n}{(j*j + i*i + (n-i-j)*(n-i-j)), n};
     } else {
       print STDERR "# invalid correction code $corr_code in $aseqno\n";
-    } 
-    $parms[3] = $funct;
+    }
+    $parms[3] = $funct; 
+    $parms[5] = $type;
     print join("\t", $aseqno, $callcode, @parms) . "\n";
-} 
+}
 #----
 sub corrections {
 %corr_hash = qw(
