@@ -8795,3 +8795,19 @@ pfsdis: # disassemble PolynomialFieldSequence, look for tableswitch
 	ls -al $(CLASS)
 	javap -c -l -p $(CLASS) > $@.tmp
 	grep -P "switch" $@.tmp
+#----
+sumpart: sumpart1 sumpart2 # extract Wesley Hurt's nested sums for partitions
+sumpart1: # extract from jcat25
+	grep -P "Sum_\{i=j\.\.floor\(" $(COMMON)/jcat25.txt \
+	>        $@.tmp
+	tail -n8 $@.tmp
+	wc -l    $@.tmp
+sumpart2: # preprocess
+	perl sumpart.pl sumpart1.tmp \
+	| grep -vP "^#  OEIS" \
+	| grep -vP "^A0" \
+	| sort -k7,7 \
+	>        $@.tmp
+	tail -n8 $@.tmp
+	wc -l    $@.tmp
+
