@@ -1,44 +1,23 @@
-%N A213069 Expansion of e.g.f. A(x) = asinh(cos(x)*sech(x)), even powers only.
 %N A215880 Expansion of e.g.f. A(x) =  sqrt( -LambertW(x)*LambertW(-x)/x^2 ).
 %N A215881 Expansion of e.g.f. A(x) =  sqrt( -LambertW(-x) / LambertW(x) ).
 %N A243280 Expansion of log'(1/2-sqrt((5*x+2*sqrt(1-4*x)-2)/x)/2).	'
 %N A258260 Expansion of (x / (1 + x^2)) + 2*(x^2 / (1 + x^4)) + 3*(x^9 / (1 + x^18)) + 6*(x^18 / (1 + x^36)) in powers of x where f(x) := x / (1 + x^2).
-%N A259647 Expansion of exp(x*asin(x)) (even powers only).
 %N A275209 ((( 1 - x - (1-2*x-3*x^2)^(1/2) ) / (2*x^2) - 1)^2 + (( 1 - x^2 - (1-2*x^2-3*x^4)^(1/2) ) / (2*x^4) -1))/2
 %N A275210 ((( 1 - x - (1-2*x-3*x^2)^(1/2) ) / (2*x^2) - 1)^2 - (( 1 - x^2 - (1-2*x^2-3*x^4)^(1/2) ) / (2*x^4) -1))/2
-%N A292221 Expansion of the exponential generating function (1/2)*(1 + 4*x)*(1 - (1 + 4*x)^(-3/2))/x.
-%N A292759 Expansion of e.g.f. A(x) = exp(x)*(tan(x) + sec(x))^3.
 %N A292760 Expansion of e.g.f. A(x) = (tan(x) + sec(x))*(E.g.f. for J000738).
 %N A292761 Expansion of e.g.f. A(x) = (tan(x) + sec(x))^2*(E.g.f. for J000738).
 %N A295237 Expansion of e.g.f. A(x) = csc(x)*(1 - sqrt(1 - 4*sin(x)))/2.
 %N A295254 Expansion of e.g.f. A(x) = csch(x)*(1 - sqrt(1 - 4*sinh(x)))/2.
 %N A295257 Expansion of e.g.f. A(x) = cot(x)*(1 - sqrt(1 - 4*tan(x)))/2.
 %N A295258 Expansion of e.g.f. A(x) = coth(x)*(1 - sqrt(1 - 4*tanh(x)))/2.
-%N A342161 Expansion of e.g.f. A(X) = (tanh(x) - sech(x) + 1) * exp(x).
-%N A343482 Expansion of e.g.f. sqrt(-1 + 2 / (1 - x) / exp(x)).
-%N A345652 Expansion of e.g.f. exp(-1 + (x + 1)*exp(-x)).
-%N A345697 Expansion of e.g.f. sqrt(1 / (2*exp(x) - 2*x*exp(x) - 1)).
-%N A345969 Expansion of e.g.f. 1 / sqrt(3 - 2 / ((1 - x)*exp(x))).
-%N A346119 Expansion of e.g.f. sqrt(2*x*exp(x) - 2*exp(x) + 3).
-%N A352164 Expansion of e.g.f. A(x) = 1/(cosh(x) - tanh(x)).
-%N A352606 Expansion of e.g.f. A(x) = tan(cos(x) - 1) (even part).
-%N A354429 Expansion of e.g.f. A(x) = tanh(x)^3 (odd powers only).
-%N A361763 Expansion of g.f.  A(x)^3 = A( x^3/(1 - 3*x)^3 ).
-%N A361765 Expansion of g.f.  A(x)^5 = A( x^5/(1 - 5*x)^5 ).
 %N A362293 Expansion of e.g.f. A(x) = exp( (-LambertW(-x^3))^(1/3) ).
-%N A366228 Expansion of e.g.f. A(x) = 1 + Integral A(x)^A(x) dx.
-%N A367386 Expansion of g.f.  A(x)^2 = (1+x) * A(x*A(x)) with A(0) = 0.
-%N A367387 Expansion of g.f.  A(x)^2 = A(x*A(x)) / (1-x) with A(0) = 0.
-%N A367390 Expansion of e.g.f.  A(x)^2 = exp(x) * A(x*A(x)) with A(0) = 0.
-%N A367391 Expansion of e.g.f.  A(x)^2 = exp(x) * A(x*A(x)) with A(0) = 1.
-%N A369090 Expansion of e.g.f. A(x) = A( x^2*exp(x) ) / x, with A(0) = 0.
+
+
 %N A370439 Expansion of g.f. A(x) = A( x*A(x)^2 + 3*x*A(x)^3 )^(1/3).
-%N A370440 Expansion of g.f. A(x) = A( x^3 + 3*x^2*A(x)^2 )^(1/3), with A(0)=0, A'(0)=1.
-%N A370441 Expansion of g.f. A(x) = A( x^3 + 3*A(x)^4 )^(1/3), with A(0)=0, A'(0)=1.
-%N A370446 Expansion of g.f.  A(x)^3 + x^4/A(x)^3 = A(x^3) + x^4/A(x^3) - 3*x^2.
-%N A370540 Expansion of g.f.  A(x)^2 = A(x^2) * (1 - x*C(x)) * (1 - x*C(x^2)) / (1 - 4*x) where C(x) = 1 + x*C(x)^2 is the Catalan function (F000108).
+%N A370440 Expansion of g.f. A(x) = A( x^3 + 3*x^2*A(x)^2 )^(1/3), with A(0)=0, A'(0)=1. '
+%N A370441 Expansion of g.f. A(x) = A( x^3 + 3*A(x)^4 )^(1/3), with A(0)=0, A'(0)=1. '
 %N A370545 Expansion of g.f. A(x) = A( x^5 + 5*A(x)^6 )^(1/5).
-%N A370546 Expansion of g.f. satisfying A(x) = A( x*A(x)^4 + 5*x*A(x)^5 )^(1/5).
+%N A370546 Expansion of g.f. A(x) = A( x*A(x)^4 + 5*x*A(x)^5 )^(1/5).
 %N A371713 Expansion of g.f.  A(x)^2 = A( A(x)*(x + A(x)^2) ).
 %N A372530 Expansion of g.f.  A(x)^2 = A( x*A(x)/(1 - A(x)) ).
 %N A372531 Expansion of g.f.  A(x)^3 = A( x*A(x)^2/(1 - A(x)) ).
@@ -51,11 +30,13 @@
 %N A374566 Expansion of g.f.  A(x)^2 = A( x^2 + 2*(1+x)*A(x)^3 ).
 %N A374567 Expansion of g.f.  A(x)^2 = A( x^2 + 2*x*A(x)^2 + 2*A(x)^3 ).
 %N A374570 Expansion of g.f.  A(x)^2 = A( A(x)*C(x) ), where C(x) = x + C(x)^2 is the Catalan function (F000108).
+%N A370446 Expansion of g.f.  A(x)^3 + x^4/A(x)^3 = A(x^3) + x^4/A(x^3) - 3*x^2.
+%N A370540 Expansion of g.f.  A(x)^2 = A(x^2) * (1 - x*C(x)) * (1 - x*C(x^2)) / (1 - 4*x) where C(x) = 1 + x*C(x)^2 is the Catalan function (F000108).
 %N A374572 Expansion of g.f.  A(x)^2 = A( x*(1+x)*A(x) ).
 %N A375453 Expansion of g.f.  A(x)^2 = A( x^2/(1-2*x)^3 ).
 %N A375454 Expansion of g.f.  A(x)^2 = A( x^2/(1-2*x)^4 ).
 %N A375455 Expansion of g.f.  A(x)^2 = A( x^2/(1-2*x)^5 ).
 %N A376230 Expansion of g.f.  A(x)^2 = A( x*A(x) + x*A(x)^2 + x*A(x)^3 ).
-%N A378816 Expansion of 2*(x - 1)^3/(3*x^3 - 5*x^2 + x + 1 + sqrt(-(x - 1)^3*(x + 1)^2*(3*x + 1)))	
-%N A380512 Expansion of e.g.f. A(x) = exp(x*((2/sqrt(3*x))*sin((1/3)*asin(sqrt(27*x/4))))^3)
-%N A380637 Expansion of e.g.f. A(x) = exp(x*((2/sqrt(9*x))*sin((1/3)*asin(sqrt(81*x/4))))^3)
+%N A367386 Expansion of g.f.  A(x)^2 = (1+x) * A(x*A(x)) with A(0) = 0.
+%N A361763 Expansion of g.f.  A(x)^3 = A( x^3/(1 - 3*x)^3 ).
+%N A361765 Expansion of g.f.  A(x)^5 = A( x^5/(1 - 5*x)^5 ).
