@@ -1,4 +1,7 @@
 #!perl
+
+# wpartsum.pl
+# Generate for Wesley's sequences "Number of partitions ..." realized with nested sums
 # 2025-03-10, Georg Fischer
 use strict;
 use warnings;
@@ -24,17 +27,18 @@ for (my $nsum = 2; $nsum <= 10; $nsum ++) {
 } # for nsum
 # exit(0);
 
-my $nsum;  
+my $nsum;
 while (<>) {
     s/\s+\Z//; # chompr
     s{^[\#\%][NFC] }{}; # remove any type
     my $line = $_;
-    my ($aseqno, $callcode, @parms) = ("", "#nyi", 0, "");
-    my ($sx, $funct) = ("SX?", "");
+    #                                  aseqno cc      p0 parm1 parm2   parm3    parm4
+    my ($aseqno, $callcode, @parms) = ("",    "#nyi", 0, "sx", "form", "funct", "withN");
+    my ($sx, $funct, $withN) = ("SX?", "", "");
     #                1    1              2  2
     if ($line =~ m{\A(A\d+) *a\(n\) *\= *(.*)}) {
-    	$aseqno = $1;
-    	$line = $2;
+      $aseqno = $1;
+      $line = $2;
     }
 
     $line =~ s{\(n\-1\)\/4}{(n-l)/4}g; # correction!
@@ -45,41 +49,40 @@ while (<>) {
       $nsum = $1 - 1;
     }
     if ($line =~ s{$nsu[$nsum]}{\(}) {
-    	$callcode = "wihpart";
-    	$sx = "SX_$nsum";  
-    	if ($line =~ s{\A *n *\* *}{}) {
-    		$callcode = "wihparn";
-    	}
+      $callcode = "wpartsum";
+      $sx = "SX_$nsum";
+      if ($line =~ s{\A *n *\* *}{}) {
+        $withN = ".multiply(n)";
+      }
     }
 
     if ($line =~ s{\, where mu.*}{}) {
-      $line =~ s{mu\(([^\)]+)\)\^2}{eval\($1\)}g;      # SQUARE_FREE.is
-      $funct = "f008966";
+      $line =~ s{mu\(([^\)]+)\)\^2}     {eval1\($1\)}g; # SQUARE_FREE.is
+      $funct =    "f008966";
     }
     if ($line =~ s{\, where omega.*}{}) {
-      $line =~ s{mu\(([^\)]+)\)\^2}{eval\($1\)}g;      # omega
-      $funct = "f001221";
+      $line =~ s{mu\(([^\)]+)\)\^2}     {eval1\($1\)}g;
+      $funct =    "f001221";
     }
     #                 1      1 2             3     3                             2
     if ($line =~ s{\, (where )?(c = A010051|c(\(n\))? is the prime characteristic).*}{}) {
-      $line =~ s{c\(([^\)]+)\)}{eval\($1\)}g;          # PRIME.is
+      $line =~ s{c\(([^\)]+)\)}         {eval1\($1\)}g;
       $funct =    "f010051";
     }
     if ($line =~ m{A010051\(}) {
-      $line =~   s{A010051\(([^\)]+)\)}{eval\($1\)}g;          # PRIME.is
+      $line =~   s{A010051\(([^\)]+)\)} {eval1\($1\)}g;
       $funct =    "f010051";
     }
 
     #                 1      1 2             3     3     2
     if ($line =~ s{\, (where )?(c = A010052|c(\(n\))? is ).*}{}) {
-      $line =~ s{c\(([^\)]+)\)}{wval\($1\)}g;          # PRIME.is
+      $line =~ s{c\(([^\)]+)\)}         {eval1\($1\)}g; # SQUARE.is
       $funct =    "f010052";
     }
     if ($line =~ m{A010052\(}) {
-      $line =~   s{A010052\(([^\)]+)\)}{eval\($1\)}g;          # PRIME.is
+      $line =~   s{A010052\(([^\)]+)\)} {eval1\($1\)}g;
       $funct =    "f010052";
     }
-
 
     # where c(n) = 1 - ceiling(n) + floor(n))
     #                       1 2  2 1
@@ -90,7 +93,7 @@ while (<>) {
         my $chi  = quotemeta($1);
         my $parm = $2;
         $parm =~ s{\/}{\,};
-        $line =~ s{$chi}{eval$parm };
+        $line =~ s{$chi}                {eval2$parm };
         # print "chi=$chi, parm=$parm, line=$line\n";
       }
       $funct = "f1chi";
@@ -109,14 +112,27 @@ while (<>) {
       $line .= ")";
     }
     $line =~ s{[ \.]\)}{\)}g; # remove trailing dot
-    # $line =~ s{\, *where.*}{}; 
+    # $line =~ s{\, *where.*}{};
 
     $parms[1] = $sx;
-    $parms[2] = "ZV$line";  
-    if (length($funct) > 0) {
-    	$parms[3] = $funct;
-    	$callcode =~ s{wihpar}{wihpax};
-    }
+    $parms[2] = "ZV$line";
+    $parms[4] = $withN; 
+    $callcode = "wpartsf1";
+    if (length($funct) == 0) {
+      $callcode = "wpartsum";
+    } elsif ($funct eq "f008966") {
+      $funct = "~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966"; 
+    } elsif ($funct eq "f010051") {
+      $funct = "~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051"; 
+    } elsif ($funct eq "f010052") {
+      $funct = "~~    ~~return Predicates.SQUARE.is(i) ? 1 : 0; // A010052"; 
+    } elsif ($funct eq "f1chi") {
+      $callcode = "wpartsf2";
+      $funct = "~~    ~~final Q qv = new Q(i, j);~~return 1 - (qv(i,j).ceiling.intValue()) + qv(floor(intValue()); // f1chi";
+    } else {
+      print STDERR "unknown function \"$funct\"\n";
+    }                                              
+    $parms[3] = $funct;
     print join("\t", $aseqno, $callcode, @parms) . "\n";
 }
 #----
@@ -160,3 +176,6 @@ __DATA__
 %F A309437  lambdan 0 n -> Sum_{p=1..floor(n/8)} Sum_{o=p..floor((n-p)/7)} Sum_{m=o..floor((n-o-p)/6)} Sum_{l=m..floor((n-m-o-p)/5)} Sum_{k=l..floor((n-l-m-o-p)/4)} Sum_{j=k..floor((n-k-l-m-o-p)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p)/2)} (A010051(i) + A010051(j) + A010051(k) + A010051(l) + A010051(m) + A010051(o) + A010051(p) + A010051(n-i-j-k-l-m-o-p)).
 %F A309438  lambdan 0 n -> Sum_{q=1..floor(n/9)} Sum_{p=q..floor((n-q)/8)} Sum_{o=p..floor((n-p-q)/7)} Sum_{m=o..floor((n-o-p-q)/6)} Sum_{l=m..floor((n-m-o-p-q)/5)} Sum_{k=l..floor((n-l-m-o-p-q)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q)/2)} (c(q) + c(p) + c(o) + c(m) + c(l) + c(k) + c(j) + c(i) + c(n-i-j-k-l-m-o-p-q)), where c = A010051.
 %F A309439  lambdan 0 n -> Sum_{r=1..floor(n/10)} Sum_{q=r..floor((n-r)/9)} Sum_{p=q..floor((n-q-r)/8)} Sum_{o=p..floor((n-p-q-r)/7)} Sum_{m=o..floor((n-o-p-q-r)/6)} Sum_{l=m..floor((n-m-o-p-q-r)/5)} Sum_{k=l..floor((n-l-m-o-p-q-r)/4)} Sum_{j=k..floor((n-k-l-m-o-p-q-r)/3)} Sum_{i=j..floor((n-j-k-l-m-o-p-q-r)/2)} (A010051(r) + A010051(q) + A010051(p) + A010051(o) + A010051(m) + A010051(l) + A010051(k) + A010051(j) + A010051(i) + A010051(n-i-j-k-l-m-o-p-q-r)).
+
+
+
