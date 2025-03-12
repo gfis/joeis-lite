@@ -635,6 +635,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WCR\W}                         ) { $imports{"irvine.math.cr.CR"}                             = $itype; }
     if ($line =~ m{\WComputableReals}              ) { $imports{"irvine.math.cr.ComputableReals"}                = $itype; }
     if ($line =~ m{\WContinuedFractionSequence}    ) { $imports{"irvine.oeis.cons.ContinuedFractionSequence"   } = $itype; }
+    if ($line =~ m{\WContinuedFractionNumeratorSequence}    ) { $imports{"irvine.oeis.cons.ContinuedFractionNumeratorSequence"   } = $itype; }
+    if ($line =~ m{\WContinuedFractionDenominatorSequence}  ) { $imports{"irvine.oeis.cons.ContinuedFractionDenominatorSequence" } = $itype; }
     if ($line =~ m{\WConvolutionProduct}           ) { $imports{"irvine.oeis.transform.ConvolutionProduct"}      = $itype; }
     if ($line =~ m{\WCyclotomic}                   ) { $imports{"irvine.nt.cyclotomic.Cyclotomic"}               = $itype; }
     if ($line =~ m{\WDecimalExpansionSequence}     ) { $imports{"irvine.oeis.cons.DecimalExpansionSequence"    } = $itype; }

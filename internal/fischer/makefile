@@ -8800,7 +8800,8 @@ pfsdis: # disassemble PolynomialFieldSequence, look for tableswitch
 wpartsum: wpartsum0 wpartsum1 wpartsum2 wpartsum3 wpartsum4
 wpart:                        wpartsum2 wpartsum3
 wpartsum0: # extract from jcat25
-	grep -P "Sum_\{i=j\.\.floor\(" $(COMMON)/jcat25.txt \
+	grep -P "Sum_\{i *= *[1j]\.\.floor\(" $(COMMON)/jcat25.txt \
+	| grep -P "^\%[NF]" \
 	>        $@.tmp
 	tail -n8 $@.tmp
 	wc -l    $@.tmp
@@ -8809,9 +8810,11 @@ wpartsum1: # replace some with corrections
 	| sed -e "s/^/\^/" \
 	| tee wpartsum.corr.tmp
 	grep -vf wpartsum.corr.tmp wpartsum0.tmp \
-	| grep -vf wpartsum6.grep.tmp > $@.tmp
+	> $@.tmp
 	cat aman/wpartsum.corr.man              >> $@.tmp
 	wc -l    wpartsum0.tmp $@.tmp
+#	| grep -vf wpartsum6.grep.tmp 
+#
 wpartsum2: # run the Perl generator
 	cat wpartsum1.tmp \
 	| grep -vP "^.. A0" \
@@ -8847,4 +8850,4 @@ wpartsum6: # select the existing ones which can be kept
 	grep -P "HolonomicRecurrence|EulerTransform" wpartsum5.tmp \
 	| cut -b1-7 | tr -d "\r" > $@.grep.tmp
 	wc -l $@.grep.tmp
-
+# grep "Sum_" jcat25.txt | perl -ne "if ((s{Sum_}{Sum_}g) >= 6) { print; }"
