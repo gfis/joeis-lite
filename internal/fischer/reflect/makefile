@@ -23,7 +23,7 @@ JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis
 ABSINSPECT=$(JAVA) irvine.oeis.AbstractInspector
 D=0
 #--------
-all: absref_stat direct dirarr
+all: absref_stat direct_db dirarr_db
 	# grep -P "^\w" makefile
 help:
 	grep -E "^[a-z]" makefile | sort
