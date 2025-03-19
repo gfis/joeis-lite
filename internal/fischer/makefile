@@ -902,7 +902,9 @@ A136test:
 #================================================================
 2023-09-21: # replace special abbreviations
 	perl aman/exprep.pl aman/$@.man > $@.gen
-
+2025-03-13:
+	cd aman ; perl $@.pl
+	cp -v aman/$@.man $@.gen
 exprs:
 	grep -v "€" $(COMMON)/../robot/expr_gen.gen | cut -f1-4 \
 	| sed -e "s/lambda\t0\t/lambdan\t0\tn \-\> /" \
