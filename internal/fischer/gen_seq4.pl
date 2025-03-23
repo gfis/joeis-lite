@@ -651,6 +651,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WFactorSequence}               ) { $imports{"irvine.factor.util.FactorSequence"}             = $itype; }
     if ($line =~ m{\WFactorUtils}                  ) { $imports{"irvine.factor.util.FactorUtils"               } = $itype; }
     if ($line =~ m{\WFibonacci\.}                  ) { $imports{"irvine.math.z.Fibonacci"}                       = $itype; }
+    if ($line =~ m{\WFilterNumberSequence}         ) { $imports{"irvine.oeis.FilterNumberSequence"             } = $itype; }
     if ($line =~ m{\WFilterPositionSequence}       ) { $imports{"irvine.oeis.FilterPositionSequence"           } = $itype; }
     if ($line =~ m{\WFilterSequence}               ) { $imports{"irvine.oeis.FilterSequence"                   } = $itype; }
     if ($line =~ m{\WFunctions}                    ) { $imports{"irvine.math.function.Functions"               } = $itype; }
@@ -681,6 +682,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WMultiTransformSequence\(}     ) { $imports{"irvine.oeis.transform.MultiTransformSequence"}  = $itype; }
     if ($line =~ m{\WObverseConvolutionSequence}   ) { $imports{"irvine.oeis.ObverseConvolutionSequence"}        = $itype; }
     if ($line =~ m{\WOrdinalTransformSequence}     ) { $imports{"irvine.oeis.transform.OrdinalTransformSequence"}= $itype; }
+    if ($line =~ m{\WPattern}                      ) { $imports{"java.util.regex.Pattern"           }            = $itype; }
     if ($line =~ m{\WPaddingSequence}              ) { $imports{"irvine.oeis.recur.PaddingSequence" }            = $itype; }
     if ($line =~ m{\WPair}                         ) { $imports{"irvine.util.Pair" }                             = $itype; }
     if ($line =~ m{\WPartialSumSequence}           ) { $imports{"irvine.oeis.PartialSumSequence"}                = $itype; }
