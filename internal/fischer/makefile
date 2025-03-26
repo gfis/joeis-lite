@@ -231,8 +231,8 @@ diff_joeis:
 	| grep -vP "oeis/a|\$\d+\." | cut -f9 | sed -e "s/.class/.java/" | tee $@.tmp \
 	| xargs -innn diff -ws -C0 ../../../joeis/src/nnn ../../src/nnn \
 	>> $@.tmp
-diffrec:
-	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/transform/InverseMobiusTransformSequence.java ../../src/irvine/oeis/transform || :
+diffx:
+	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/math/predicate/Predicates.java ../../src/irvine/math/predicate || :
 diffpfs:
 	diff -wy --suppress-common-lines ../../../joeis/src/irvine/oeis/PolynomialFieldSequence.java    ../../src/irvine/oeis      || :
 	diff -wy --suppress-common-lines ../../../joeis/internal/irvine/oeis/PolynomialFieldTest.java   ../../internal/irvine/oeis || :
