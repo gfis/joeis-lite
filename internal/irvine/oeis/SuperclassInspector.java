@@ -55,24 +55,25 @@ public final class SuperclassInspector {
         while ((line = lineReader.readLine()) != null) { // read and process lines
           if (!line.matches("\\s*#.*")) { // is not a comment
             ++total;
-            final String aNumber = line.trim();
-            if (total % 32768 == 0) {
-              System.err.print("# +" + total + "\t" + aNumber + "\n");
+            final String aseqno = line.trim();
+            if (total % 16384 == 0) {
+              System.err.print("# +" + total + "\t" + aseqno + "\n");
             }
-            try {
-              final Sequence seq = SequenceFactory.sequence(aNumber);
-              final Class cl = seq.getClass();
+            try { 
+              // final seq = (Sequence) Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno).getDeclaredConstructor().newInstance();
+              // final Sequence seq = SequenceFactory.sequence(aseqno);
+              final Class cl = Class.forName("irvine.oeis.a" + aseqno.substring(1, 4) + '.' + aseqno);
               sb.setLength(0);
               sb.append(bareName(cl.getSuperclass()));
               for (Class clif : cl.getInterfaces()) {
                 sb.append(' ');
                 sb.append(bareName(clif));
               }
-              System.out.print(aNumber + "\t" + sb.toString() + "\n");
-            } catch (final UnimplementedException exc) {
-              //System.out.println("# " + aNumber + " nyi");
+              System.out.print(aseqno + "\t" + sb.toString() + "\n");
+            } catch (final ClassNotFoundException exc) {
+              //System.out.println("# " + aseqno + " nyi");
             } catch (final RuntimeException exc) {
-              System.out.println("#?? " + aNumber + ": " + exc.getMessage());
+              System.out.println("#?? " + aseqno + ": " + exc.getMessage());
             }
           } // is not a comment
         } // while ! eof
