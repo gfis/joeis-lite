@@ -319,6 +319,7 @@ while (<>) { # read inputfile
             $parm =~ s{RD\(}           {Rationals.SINGLETON.sumdiv\(}g;
             $parm =~ s{RP\(}           {Rationals.SINGLETON.sopf\(}g;
             $parm =~ s{RQ\(}           {Rationals.SINGLETON.product\(}g;
+            $parm =~ s{RQD\(}          {Rationals.SINGLETON.productdiv\(}g;
             $parm =~ s{RR\(}           {Functions.REVERSE.z\(}g;
             $parm =~ s{RU\(}           {Rationals.SINGLETON.sum\(}g;
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
