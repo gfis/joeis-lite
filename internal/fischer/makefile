@@ -8853,3 +8853,11 @@ wpartsum6: # select the existing ones which can be kept
 	| cut -b1-7 | tr -d "\r" > $@.grep.tmp
 	wc -l $@.grep.tmp
 # grep "Sum_" jcat25.txt | perl -ne "if ((s{Sum_}{Sum_}g) >= 6) { print; }"
+#----
+# check old sintrif
+osintrif0:
+	grep -h "sintrif" aman/20* | endirect \
+	| perl -ne 'if (s{^([^A]*)(A\d{6})}{$$2}) { s/\"\"/\"asis\"/; print; }' \
+	| tee    aman/$@.man
+	wc -l    aman/$@.man
+
