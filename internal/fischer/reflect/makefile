@@ -119,7 +119,20 @@ hasram: # extract all that extend Triangle with hasRAM()=true
 	| grep -vP "\bget\(\t" | sed -e "s/\t/\tH\t/" \
 	>        $@.txt
 	head -n4 $@.txt
-	wc -l    $@.txt
+	wc -l    $@.txt   
+#----
+joeis_list: # create a list of all A-numbers with their superclasses and implemented interfaces
+	head -n999999 $(COMMON)/joeis_names.txt \
+	| perl -pe 's/^.(\d+).*/A$$1/' \
+	| $(JAVA) irvine.oeis.SuperclassInspector \
+	>        $@.txt
+	head -n8 $@.txt
+	tail -n8 $@.txt
+	wc       $@.txt
+diff_joeis_list: # compare with $(COMMON)
+	diff -y --suppress-common-lines $(COMMON)/joeis_list.txt joeis_list.txt \
+	| tee    $@.tmp
+	wc       $@.tmp
 #========
 K=
 vector: dirseq dirman dirdate dirimp hasram known funct # prepare for and create file vector.txt for the classification of all A-numbers
