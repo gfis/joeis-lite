@@ -1,5 +1,6 @@
 --  Table for OEIS - working table for sequence numbers and 8 parameter fields
---  @(#) $Id$
+--  @(#) $Id$ 
+--  2025-04-29: parm2 longer
 --  2022-10-16: parm4 longer
 --  2022-09-06: parm7 longer
 --  2022-07-13: MariaDB 10.6 has 'offset1' as keyword
@@ -17,7 +18,7 @@ CREATE  TABLE            seq4
     , callcode VARCHAR(48)           -- cfsnum
     , offset1  VARCHAR(16)           -- offset1
     , parm1    VARCHAR(12000)
-    , parm2    VARCHAR(4048)
+    , parm2    VARCHAR(4096)
     , parm3    VARCHAR(1024)
     , parm4    VARCHAR(1024)
     , parm5    VARCHAR(2048) -- holos remark
