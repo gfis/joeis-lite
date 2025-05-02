@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2025-05-01, V8.8: HW hammingweight -> int!
 # 2025-02-21, V8.7: FFAC = FALLING_FACTORIAL, ZRE, ZIM
 # 2025-02-20, V8.6: a185951, a136630
 # 2025-02-20, V8.5: CNT, CND = Integers.SINGLETON.count, countdiv
@@ -82,7 +83,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V8.6";
+my $version_id  = "gen_seq4.pl V8.8";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -287,6 +288,7 @@ while (<>) { # read inputfile
             $parm =~ s{GP\(}           {GaussianIntegers.SINGLETON.product\(}g;
             $parm =~ s{GPF\(}          {Functions.GPF.z\(}g;
             $parm =~ s{GU\(}           {GaussianIntegers.SINGLETON.sum\(}g;
+            $parm =~ s{HW\(}           {Functions.DIGIT_SUM.i\(}g; # hammingweight -> int!
             $parm =~ s{IPP\(}          {isProbablePrime\(}g;
             $parm =~ s{IV\[([^\]]+)\]} {\($1 \? Z\.ONE \: Z\.ZERO\)}g;
             $parm =~ s{IVE\(}          {intValueExact\(}g;
