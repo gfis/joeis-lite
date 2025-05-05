@@ -185,8 +185,14 @@ public class PolynomialFieldSequence extends AbstractSequence {
     } // for k
 
     mFactorial = Z.ONE;
-    for (int i = offset - 1; i > 0; --i) {
-      mFactorial = mFactorial.multiply(i);
+    for (int i = 1; i <= offset; ++i) {
+      mFactorial = mFactorial.multiply(i); 
+      for (int iseq = 1; iseq <= mTerms.size(); ++i) { 
+        Polynomial<Q> pseq = mTerms.get(iseq);
+        pseq = RING.add(pseq, RING.monomial(Q.valueOf(mSeqs.get(iseq).next()), iseq + 1)); 
+        // System.err.println("pseq[" + iseq + "] = " + pseq);
+        mTerms.set(iseq, pseq);
+      }
     }
     mN = offset - 1;
     mA = mPolys.get(0);
@@ -470,7 +476,8 @@ public class PolynomialFieldSequence extends AbstractSequence {
           mStack.set(++top, RING.series(RING.subtract(Polynomial.create(Q.ONE), RING.sqrt(x14, m)), x2, m));
           break;
         case 45:  // "s"  additional g.f. as a sequence
-          mStack.set(++top, mTerms.get(mPostInts[ipost++]));
+          // mStack.set(++top, mTerms.get(mPostInts[ipost++]));
+          mStack.set(top, RING.substitute(mTerms.get(mPostInts[ipost++]), mStack.get(top), m));
           break;
         default: // should not occur with proper postfix expressions
           throw new RuntimeException("invalid postfix code " + ix);
