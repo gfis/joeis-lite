@@ -43,7 +43,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
   private final int mFactor; //  multiplicity when zeroes should be left out
 
   private final List<Polynomial<Q>> mPolys; // Polynomials referenced in the postfix string as "p0" (the initial polynomial), "p1", "p2" and so on.
-  private final List<Sequence> mSeqs; // sequences for additional generating functions referenced in the postfix string as "s0", "s1", "s2" and so on.
+  private final List<AbstractSequence> mSeqs; // sequences for additional generating functions referenced in the postfix string as "s0", "s1", "s2" and so on.
   private final ArrayList<Polynomial<Q>> mTerms;
   private int mN; // index of the next sequence element to be computed
   private Polynomial<Q> mA; // the generating function A(x)
@@ -142,7 +142,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
     if (polyString.length() == 0) {
       polyString = "1"; // empty -> "1"
     }
-    mSeqs = new ArrayList<Sequence>();
+    mSeqs = new ArrayList<AbstractSequence>();
     mTerms = new ArrayList<Polynomial<Q>>(); // indexed by s0, s1 ...
     final int apos = polyString.indexOf('A');
     if (apos >= 0) { // with A-numbers
@@ -151,10 +151,11 @@ public class PolynomialFieldSequence extends AbstractSequence {
       polyString = polyString.replaceAll(" *\\, *\\Z", ""); // remove trailing comma
       try {
         for (int iseq = 0; iseq < aNums.length; iseq ++) {
-          final Sequence seq = SequenceFactory.sequence(aNums[iseq]);
+          final AbstractSequence seq = (AbstractSequence) SequenceFactory.sequence(aNums[iseq]);
           final Q[] terms = new Q[mDist + 1];
-          for (int iterm = 0; iterm <= mDist; ++iterm) {
-            terms[iterm] = Q.valueOf(seq.next());
+          final int soff = seq.getOffset();
+          for (int ix = 0; ix <= mDist; ++ix) {
+            terms[ix] = ix < soff ? Q.ZERO : Q.valueOf(seq.next());
           }
           mTerms.add(Polynomial.create(terms));
           mSeqs.add(seq);
