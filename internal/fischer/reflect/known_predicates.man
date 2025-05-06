@@ -149,3 +149,27 @@ A052414	v -> v.toString().indexOf('6') < 0
 A052419	v -> v.toString().indexOf('7') < 0
 A052421	v -> v.toString().indexOf('8') < 0
 A007095	v -> v.toString().indexOf('9') < 0
+ 
+# A003586 3-smooth numbers
+# A051037 5-smooth numbers: generic
+# A002473 7-smooth numbers
+# A051038 11-smooth numbers
+# A080197 13-smooth numbers whose prime divisors are all <= 13
+# A080681 17-smooth numbers whose prime divisors are all <= 17
+# A080682 19-smooth numbers whose prime divisors are all <= 19
+# A080683 23-smooth numbers whose prime divisors are all <= 23 
+
+A014190	v -> Predicates.PALINDROME.is(3, v)
+A014192	v -> Predicates.PALINDROME.is(4, v)
+A029952	v -> Predicates.PALINDROME.is(5, v)
+A029953	v -> Predicates.PALINDROME.is(6, v)
+A029954	v -> Predicates.PALINDROME.is(7, v)
+A029803	v -> Predicates.PALINDROME.is(8, v) 
+A029955	v -> Predicates.PALINDROME.is(9, v)
+A002113	v -> Predicates.PALINDROME.is(10, v)
+A029956	v -> Predicates.PALINDROME.is(11, v)
+A029957	v -> Predicates.PALINDROME.is(12, v)
+A029958	v -> Predicates.PALINDROME.is(13, v)
+A029959	v -> Predicates.PALINDROME.is(14, v)
+A029960	v -> Predicates.PALINDROME.is(15, v)
+A029730	v -> Predicates.PALINDROME.is(16, v)

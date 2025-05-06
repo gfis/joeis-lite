@@ -200,6 +200,7 @@ dirimp: # DirectSequences 'E', inherited from LambdaSequence etc., and 'M', 'X',
 	>        $@.txt
 	head -n2 $@.txt
 	wc -l    $@.txt
+#----
 funct: # extract from jOEIS source
 	cp $(JOEIS)/src/irvine/math/function/Functions.java $@.tmp
 	cat $(LITE)/src/irvine/math/function/Functions.java >> $@.tmp || :
@@ -208,6 +209,16 @@ funct: # extract from jOEIS source
 	| sort | uniq -w7 \
 	| tee    funct.txt
 	wc -l    funct.txt
+predt: # extract from jOEIS source
+	cat $(JOEIS)/src/irvine/math/predicate/Predicates.java \
+	| perl read_predicates.pl $@.tmp \
+	>        $@.tmp   
+	grep -P "^A" known_predicates.man \
+	>>       $@.tmp
+	sort $@.tmp | uniq -w7 \
+	| tee    $@.txt
+	wc -l    $@.txt
+#-----
 known: # extract known functions
 	grep -P "^[A-Z]\d+\tK" $@.man \
 	| tee $@.txt
