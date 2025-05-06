@@ -5510,16 +5510,6 @@ compseqm:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #----
-insect:
-	grep -iE "(Intersection|Union) of" $(COMMON)/jcat25.txt \
-	| grep -E "^\%[NFC]" | cut -b 4- | sed -e "s/ /\t/" \
-	| perl insect.pl -d 0 \
-	| grep -VE "A185188|A281627"
-	| sort | uniq -w7 \
-	>        $@.gen
-	head -n4 $@.gen
-	wc -l    $@.gen
-#----
 xfmpad0:
 	grep -E "^\%[NCF] A[0-9]*" $(COMMON)/jcat25.txt \
 	| grep -iE " transform of[\(\[\{ ]*\-?[0-9][0-9]*\," \
