@@ -1,5 +1,42 @@
 # known_predicates.man - maps A-numbers to lambda expressions for FilterSequence
 # 2025-05-06: Georg Fischer
+
+A000037	v -> !Predicates.SQUARE.is(v)	Numbers that are not squares (or, the nonsquares).
+A000204	v -> Predicates.LUCAS.is(v)	beginning with 1
+A001043	v -> v.equals(Z.FIVE) || !v.testBit(0) && Predicates.PRIME.is(v.divide2().subtract(1)) && Predicates.PRIME.is(v.divide2().add(1))	Sum of 2 successive primes
+A001359	v -> Predicates.PRIME.is(v.add(2))	Lesser of twin primes.
+A001567	v -> Z.TWO.modPow(v.subtract(1), v).equals(Z.ONE) && !Predicates.PRIME.is(v)	Fermat pseudoprimes to base 2, also called Sarrus numbers or Poulet numbers.
+A002145	v -> v.mod(4) == 3 && Predicates.PRIME.is(v)	Primes of the form 4*k + 3.
+A002328	v -> Predicates.PRIME.is(v.square().subtract(v).subtract(1))	Numbers n such that n^2 - n - 1 is prime.
+A002385	v -> Predicates.PALINDROME.is(10, v) && Predicates.PRIME.is(v)	Palindromic primes: prime numbers whose decimal expansion is a palindrome.
+A002778	v -> Predicates.PALINDROME.is(v.square())	Numbers whose square is a palindrome.
+A002808	v -> !Predicates.PRIME.is(v) && !v.equals(Z.ONE)
+A004767	v -> v.mod(4) == 3	a(n) = 4*n + 3.
+A005384	v -> Predicates.PRIME.is(v.multiply2().add(1))	Sophie Germain primes p: 2p+1 is also prime.
+A005408	v -> v.testBit(0)	the odd numbers
+A005563	v -> Predicates.SQUARE.is(v.add(1))	a(n) = n*(n+2) = (n+1)^2 - 1.
+A005843	v -> !v.testBit(0)	the even numbers
+A006881	v -> Predicates.SQUARE_FREE.is(v) && Predicates.SEMIPRIME.is(v)	Squarefree semiprimes: Numbers that are the product of two distinct primes.
+A007304	v -> Functions.BIG_OMEGA.l(v) == 3 && Functions.OMEGA.l(v) == 3	Sphenic numbers: products of 3 distinct primes.
+A007691	v -> Functions.SIGMA.z(v).mod(v).isZero()	Multiply-perfect numbers: n divides sigma(n).
+A008585	v -> v.mod(3) == 0	a(n) = 3*n.
+A013929	v -> !Predicates.SQUARE_FREE.is(v)	Numbers that are not squarefree. Numbers that are divisible by a square greater than 1. The complement of P005117.
+A014574	v -> Predicates.PRIME.is(v.add(1)) && Predicates.PRIME.is(v.subtract(1))	Average of twin prime pairs.A11780
+A018252	v -> Predicates.PRIME.is(v) || v.equals(Z.ONE)	The nonprime numbers: 1 together with the composite numbers, A002808.
+A023200	v -> Predicates.PRIME.is(v.add(4))	Primes p such that p + 4 is also prime.
+A024619	v -> !Predicates.PRIME_POWER.is(v)	Numbers that are not powers of primes p^k (k >= 0); complement of P000961.
+A024675	v -> v.subtract(Functions.PREV_PRIME.z(v)).equals(Functions.NEXT_PRIME.z(v).subtract(v))	Average of two consecutive odd primes.
+A026424	v -> (Functions.BIG_OMEGA.l(v) & 1) == 1	Number of prime divisors (counted with multiplicity) is odd; Liouville function lambda(n) (A008836) is negative.
+A028260	v -> (Functions.BIG_OMEGA.l(v) & 1) == 0	Numbers with an even number of prime divisors (counted with multiplicity); numbers k such that the Liouville function lambda(k) (A008836) is positive.
+A033950	v -> v.mod(Functions.TAU.z(v)).isZero()	Refactorable numbers: number of divisors of k divides k. Also known as tau numbers.
+A040976	v -> Predicates.PRIME.is(v.add(2))	a(n) = prime(n) - 2.
+A046034	v -> v.toString().matches("[2357]+")	Numbers whose digits are primes.
+A046386	v -> Functions.BIG_OMEGA.l(v) == 3 && Functions.OMEGA.l(v) == 3	Products of exactly four distinct primes.
+A134808	v -> Predicates.CYCLOPS.is(v)	Cyclops numbers.
+A191218	v -> v.testBit(0) && Functions.SIGMA.z(v).mod(4) == 2	Odd numbers n such that sigma(n) is congruent to 2 modulo 4.
+A246655	v -> !v.equals(Z.ONE) && Predicates.PRIME_POWER.is(v)	Prime powers: numbers of the form p^k where p is a prime and k >= 1.
+A286708	v -> Predicates.POWERFUL.is(v) && !Predicates.PRIME_POWER.is(v)	Powerful numbers (P001694) that are not prime powers (P000961).
+
 # r-almost primes
 A014612	v -> Functions.BIG_OMEGA.i(v) == 3
 A014613	v -> Functions.BIG_OMEGA.i(v) == 4
@@ -151,14 +188,15 @@ A052419	v -> v.toString().indexOf('7') < 0
 A052421	v -> v.toString().indexOf('8') < 0
 A007095	v -> v.toString().indexOf('9') < 0
 
-# A003586 3-smooth numbers
-# A051037 5-smooth numbers: generic
-# A002473 7-smooth numbers
-# A051038 11-smooth numbers
-# A080197 13-smooth numbers whose prime divisors are all <= 13
-# A080681 17-smooth numbers whose prime divisors are all <= 17
-# A080682 19-smooth numbers whose prime divisors are all <= 19
-# A080683 23-smooth numbers whose prime divisors are all <= 23
+# p-smooth numbers
+A003586	v -> Predicates.SMOOTH.is(3)
+A051037	v -> Predicates.SMOOTH.is(5)
+A002473	v -> Predicates.SMOOTH.is(7)
+A051038	v -> Predicates.SMOOTH.is(11)
+A080197	v -> Predicates.SMOOTH.is(13)
+A080681	v -> Predicates.SMOOTH.is(17)
+A080682	v -> Predicates.SMOOTH.is(19)
+A080683	v -> Predicates.SMOOTH.is(23)
 
 A014190	v -> Predicates.PALINDROME.is(3, v)
 A014192	v -> Predicates.PALINDROME.is(4, v)
