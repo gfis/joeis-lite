@@ -2,6 +2,7 @@
 
 # makefile for reflections about jOEIS programs
 # @(#) $Id$
+# 2025-05-06: knopre
 # 2023-06-17, Georg Fischer
 #
 GITS=../../../..
@@ -119,7 +120,7 @@ hasram: # extract all that extend Triangle with hasRAM()=true
 	| grep -vP "\bget\(\t" | sed -e "s/\t/\tH\t/" \
 	>        $@.txt
 	head -n4 $@.txt
-	wc -l    $@.txt   
+	wc -l    $@.txt
 #----
 joeis_list: # create a list of all A-numbers with their superclasses and implemented interfaces
 	head -n999999 $(COMMON)/joeis_names.txt \
@@ -209,15 +210,25 @@ funct: # extract from jOEIS source
 	| sort | uniq -w7 \
 	| tee    funct.txt
 	wc -l    funct.txt
-predt: # extract from jOEIS source
+knopre: knopre1 knopre2 knopre3 # extract Predicates from jOEIS source
+knopre1: # extract
 	cat $(JOEIS)/src/irvine/math/predicate/Predicates.java \
-	| perl read_predicates.pl $@.tmp \
-	>        $@.tmp   
+	| perl read_predicates.pl -d 2 \
+	>        $@.tmp
+	head -n2 $@.tmp
+	wc -l    $@.tmp
+knopre2:
 	grep -P "^A" known_predicates.man \
 	>>       $@.tmp
-	sort $@.tmp | uniq -w7 \
-	| tee    $@.txt
-	wc -l    $@.txt
+	sort knopre1.tmp $@.tmp | uniq -w7 \
+	| tee    knopre.txt
+	wc -l    knopre.txt
+knopre3: # load db table
+	sed -e "s/seq2/knopre/g" $(COMMON)/seq2.create.sql \
+	| tee    knopre.create.sql
+	$(DBAT) -f knopre.create.sql
+	$(DBAT) -r -t knopre < knopre.txt
+	$(DBAT) -4 knopre
 #-----
 known: # extract known functions
 	grep -P "^[A-Z]\d+\tK" $@.man \
@@ -1169,7 +1180,7 @@ move_lambdin: # make it "manual" for addpass target
 #----
 update_pfs: # generate code from/for PolynomialFieldSequence; 2025-02-28 BP
 	perl update_PolynomialFieldSequence.pl -d 0 ../../../src/irvine/oeis/PolynomialFieldSequence.java \
-	> update_pfs.tmp 
+	> update_pfs.tmp
 	diff -w -y --suppress-common-lines ../../../src/irvine/oeis/PolynomialFieldSequence.java  update_pfs.tmp
 copy_pfs:
 	cp -v  update_pfs.tmp ../../../src/irvine/oeis/PolynomialFieldSequence.java

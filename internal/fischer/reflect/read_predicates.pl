@@ -7,7 +7,6 @@
 #:# Usage:
 #:#   perl read_predicates.pl [-d debug] infile.java > outfile.gen
 #:#
-
 #--------------------------------------------------------
 use strict;
 use integer;
@@ -39,7 +38,6 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 
 my $aseqno;
 my $parm;
-my ($varph1, $varph2) = ("_V1", "_V2"); # 1st and 2nd placeholder for parameters
 while (<>) { # read inputfile
     s{\s+\Z}{}; # chompr
     my $line = $_;
@@ -56,7 +54,7 @@ while (<>) { # read inputfile
                 if ($parm =~ m{\d\Z}) {
                    $parm .= ", ";
                 }
-              print join("\t", $aseqno, "v -> Predicates.$funame.is${parm}v)") . "\n";
+                print join("\t", $aseqno, "v -> Predicates.$funame.is${parm}v)") . "\n";
             } # foreach seq
         } else {
             print "2: $line\n" if $debug >= 1;
