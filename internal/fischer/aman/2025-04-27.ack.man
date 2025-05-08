@@ -1,0 +1,84 @@
+---- 2025-04-28 09:06:21
+A143633	polyx	0	"[[1],[1,1]"	",p1,^2,1,-,2,/,sub,<1,exp"	0	1
+A143634	polyx	0	"[[1],[1,1]"	",p1,^3,1,-,3,/,sub,<1,exp"	0	1
+A143635	polyx	0	"[[1],[1,1]"	",p1,^4,1,-,4,/,sub,<1,exp"	0	1
+A143636	polyx	0	"[[1],[1,1]"	",p1,^5,1,-,5,/,sub,<1,exp"	0	1
+A143637	polyx	0	"[[1],[1,1]"	",p1,^6,1,-,6,/,sub,<1,exp"	0	1
+A143638	polyx	0	"[[1],[1,1]"	",p1,^7,1,-,7,/,sub,<1,exp"	0	1
+A143639	polyx	0	"[[1],[1,1]"	",p1,^8,1,-,8,/,sub,<1,exp"	0	1
+A143640	polyx	0	"[[1],[1,1]"	",p1,^9,1,-,9,/,sub,<1,exp"	0	1
+A159316	polyx	0	"[[1],[0,2]"	",p1,sub,^2,int,exp"	0	1
+A161567	polyx	0	"[[1]"	",A,^2,<1,exp,<1,exp"	0	1
+A161605	polyx	0	"[[1]"	",A,^3,<1,exp,<1,exp"	0	1
+A161629	polyx	0	"[[1]"	",A,<1,catalan,<1,exp"	0	1
+A161968	prepend	1	new PolynomialFieldSequence(1, "[[1]]", ",A,<1,exp,<1,dif", 0, 1)	1
+A162161	polyx	0	"[[1],[0,1,1]"	",p1,A,<3,+,exp"	0	1
+A162167	polyx	0	"[[1],[0,2],[0,3]"	",p2,A,*,exp,p1,*,exp,<1,exp"	0	1
+A162649	polyx	0	"[[1]"	",A,<1,cosh,<1,exp"	0	1
+A162650	polyx	0	"[[1]"	",A,<1,sinh,exp"	0	1
+A162654	polyx	0	"[[1]"	",1,A,<1,cosh,<1,+"	0	1
+A162697	polyx	0	"[[1],[1,1]]"	",p1,A,<1,exp,<2,+"	0	1
+A174846	polyx	0	"[[1],[0,4]"	",1,p1,exp,agm"	0	1
+A176785	polyx	0	"[[0,1],[0,-2]]"	",2,p1,exp,*,1,-,sqrt,neg,1,+,2,/"	0	1
+A179199	sintrif	0	(term, n) -> Z_1(n - 1).*(n).*(term)	""	new PrependSequence(0, new A005119(), 1)	(-1)^(n-1)*n*A005119(n),
+A180515	polyx	0	"[[0,0,1]]"	",2,A,^3,*,A,<1,+,1,+,int,int"	0	1
+A193098	polyx	1	"[[0,1]]"	",1,A,sub,sub,+,int"	0	1	E.g.f. A(x) satisfies: A'(x) = 1 + A(A(A(x))).	nonn	1..18	nyi
+A193099	polyx	1	"[[0,1]]"	",1,A,sub,sub,sub,+,int"	0	1		E.g.f. A(x) satisfies: A'(x) = 1 + A(A(A(A(x)))).
+A194957	polyx	0	"[[1]]"	",x,cos,A,^2,<1,+"	0	1
+A194958	polyx	0	"[[1]]"	",x,cosh,A,^2,<1,+"	0	1
+A195134	polyx	0	"[[1]]"	",A,<1,cosh,A,<1,sin,+"	0	1
+A195510	polyx	0	"[[1]]"	",A,<1,exp,x,A,/,exp,+,2,/"	0	1
+A195511	polyx	0	"[[1]]"	",x,exp,A,^2,<1,exp,+,2,/"	0	1	E.g.f. satisfies: A(x) = (exp(x) + exp(x*A(x)^2))/2.	nonn	0..100	nyi
+A195513	polyx	0	"[[1]]"	",A,<1,exp,A,^2,<1,exp,-,A,^3,<1,exp,+"	0	1	E.g.f. satisfies: A(x) = exp(x*A(x)) - exp(x*A(x)^2) + exp(x*A(x)^3).	nonn	0..100	nyi
+A195514	polyx	0	"[[1]]"	",x,A,/,exp,x,exp,-,A,<1,exp,+"	0	1	E.g.f. satisfies: A(x) = exp(x/A(x)) - exp(x) + exp(x*A(x)).
+A198631	polyx	0	"[[1],[0,-1]]"	",1,1,p1,exp,+,/"	0	1
+A198865	polyx	0	"[[1]]"	",1,A,^2,<1,sinh,+"	0	1	E.g.f. satisfies: A(x) = 1 + sinh(x*A(x)^2).
+A198887	polyx	0	"[[1],[0,-1]]"	",A,^2,<1,p1,sub,*,exp"	0	1	E.g.f. satisfies: A(x) = exp(x*A(x)^2*A(-x)).
+A201470	polyx	0	"[[1],[0,2]]"	",1,1,p1,A,<1,exp,*,-,/"	0	1
+A215880	polyx	0	"[[1],[0,-1],[0,0,1]]"	",x,lambertW,neg,p1,lambertW,*,p2,/,sqrt"	1	1	Expansion of e.g.f.: sqrt( -LambertW(x)*LambertW(-x)/x^2 ).
+A216409	polyz	1	"[[0,-1]]"	",x,x,cos,/,x,tan,<1,exp,*"	0	1	1	2
+A217061	polyx	0	"[[1],[1,1]]"	",2,p1,log,*,x,-,rev,exp"	1	1
+A225109	polyx	0	"[[1],[0,3],[0,4]]"	",p1,sin,x,cos,+,p2,cos,/"	0	1
+A227278	polyx	1	"[[0,1],[0,-1]]"	",p1,lambertW,lambertW,lambertW,neg"	0	1	-(lambertW(lambertW(lambertW(-x))))
+A228608	polyx	0	"[[1]]"	",A,A,^3,+,int,exp"	0	1	E.g.f. A(x) satisfies: dif(A(x)) = A(x)^2 + A(x)^4.
+A228841	polyz	0	"[[1]]"	",x,sec,1,-,sec"	0	1	0	2
+A245115	polyx	0	"[[1]]"	",1,x,cos,x,sin,A,*,+,x,cos,A,*,x,sin,-,/,int,+"	0	1
+A245265	polyx	0	"[[1]]"	",x,1,A,^4,<1,-,/,exp"	0	1
+A268654	polyx	0	"[[1],[0,-1]]"	",p1,lambertW,lambertW,lambertW,neg,A,*,exp"	0	1
+A274482	polyx	1	"[[0,1],[0,2],[0,0,1]]"	",p2,p1,exp,*,sub,sqrt"	2	1
+A277457	polyx	0	"[[1],[0,-1],[0,2]]"	",p2,exp,1,p1,lambertW,+,/"	0	1	E.g.f.: exp(2*x)/(1+LambertW(-x)).	nonn	0..385	nyi
+A277461	polyx	0	"[[1],[0,-1]]"	",x,sin,1,p1,lambertW,+,/"	0	1	E.g.f.: sin(x)/(1+LambertW(-x)).	nonn	0..385	nyi
+A277462	polyx	0	"[[1],[0,-1]]"	",x,cos,1,p1,lambertW,+,/"	0	1	E.g.f.: cos(x)/(1 + LambertW(-x)).	nonn	0..385	nyi
+A277463	polyx	0	"[[1],[0,-1]]"	",x,sinh,1,p1,lambertW,+,/"	0	1	E.g.f.: sinh(x)/(1+LambertW(-x)).	nonn	0..385	nyi
+A277466	polyx	0	"[[1],[0,-1],[1,-1]]"	",p2,log,neg,1,p1,lambertW,+,/"	0	1	E.g.f.: -log(1-x)/(1+LambertW(-x)).	nonn	0..385	nyi
+A277467	polyx	0	"[[1],[0,-1]]"	",x,tan,1,p1,lambertW,+,/"	0	1	E.g.f.: tan(x)/(1+LambertW(-x)).	nonn	0..385	nyi
+A277468	polyx	0	"[[0],[0,-1]]"	",x,tanh,1,p1,lambertW,+,/"	1	1	E.g.f.: tanh(x)/(1+LambertW(-x)).	nonn	0..385	nyi
+A277469	polyx	0	"[[1],[0,-1]]"	",x,asin,1,p1,lambertW,+,/"	0	1	E.g.f.: arcsin(x)/(1 + LambertW(-x)).	nonn	0..385	nyi
+A277470	polyx	0	"[[1],[0,-1]]"	",x,asinh,1,p1,lambertW,+,/"	0	1	E.g.f.: arcsinh(x)/(1+LambertW(-x)).	nonn	0..385	nyi
+A277475	polyx	0	"[[1],[0,-1]]"	",x,sin,neg,p1,lambertW,*"	0	1	E.g.f.: -sin(x)*LambertW(-x).	nonn	0..385	nyi
+A277477	polyx	0	"[[1],[0,-1]]"	",x,cos,neg,p1,lambertW,*"	0	1	E.g.f.: -cos(x)*LambertW(-x).	nonn	0..385	nyi
+A277479	polyx	0	"[[1],[0,-1]]"	",x,tan,neg,p1,lambertW,*"	0	1	E.g.f.: -tan(x)*LambertW(-x).	nonn	0..385	nyi
+A277480	polyx	0	"[[1],[0,-1]]"	",x,tanh,neg,p1,lambertW,*"	0	1	E.g.f.: -tanh(x)*LambertW(-x).	nonn	0..387	nyi
+A277481	polyx	0	"[[1],[0,-1],[1,1]]"	",p2,log,neg,p1,lambertW,*"	0	1	E.g.f.: -log(1+x)*LambertW(-x).	nonn	0..385	nyi
+A277482	polyx	0	"[[1],[0,-1],[1,-1]]"	",p2,log,p1,lambertW,*"	0	1	E.g.f.: log(1-x)*LambertW(-x).	nonn	0..385	nyi
+A277483	polyx	0	"[[1],[0,-1]]"	",x,asin,neg,p1,lambertW,*"	0	1	E.g.f.: -arcsin(x)*LambertW(-x).	nonn	0..385	nyi
+A277484	polyx	0	"[[1],[0,-1]]"	",x,asinh,neg,p1,lambertW,*"	0	1	E.g.f.: -arcsinh(x)*LambertW(-x).	nonn	0..385	nyi
+A277485	polyx	0	"[[1],[0,-1],[0,2]]"	",p2,exp,neg,p1,lambertW,*"	0	1	E.g.f.: -exp(2*x)*LambertW(-x).	nonn	0..385	nyi
+A277490	polyx	0	"[[1],[0,-1]]"	",1,neg,1,p1,lambertW,^2,+,/"	0	1	E.g.f.: -1/(1+LambertW(-x)^2).	sign	0..385	nyi
+A277498	polyx	0	"[[1]]"	",x,sin,neg,lambertW,neg"	0	1	E.g.f.: -LambertW(-sin(x)).	nonn	0..385	nyi
+A277499	polyx	0	"[[1],[0,-1]]"	",p1,lambertW,sin,neg"	0	1	E.g.f.: -sin(LambertW(-x)).	nonn	0..387	nyi
+A277500	polyx	0	"[[1]"	",x,tan,neg,lambertW,neg"	0	1	E.g.f.: -LambertW(-tan(x)).	nonn	0..384	nyi
+A277501	polyx	0	"[[1],[0,-1]]"	",x,tanh,neg,lambertW,neg"	0	1	E.g.f.: -LambertW(-tanh(x)).	nonn	0..389	nyi
+A277502	polyx	0	"[[1],[0,-1]]"	",x,asin,neg,lambertW,neg"	0	1	E.g.f.: -LambertW(-arcsin(x)).	nonn	0..385	nyi
+A277503	polyx	0	"[[1],[0,-1]]"	",x,atan,neg,lambertW,neg"	0	1	E.g.f.: -LambertW(-arctan(x)).	nonn	0..385	nyi
+A277507	polyx	0	"[[1],[0,-1],[1,-1]]"	",1,neg,1,p1,lambertW,-,p2,*,/"	0	1	E.g.f.: -1/((1-LambertW(-x))*(1-x)).	sign	0..385	nyi
+A277508	polyx	0	"[[1],[0,-1],[1,1]]"	",1,neg,1,p1,lambertW,-,p2,*,/"	0	1	E.g.f.: -1/((1-LambertW(-x))*(1+x)).	sign	0..385	nyi
+A277510	polyx	0	"[[1],[0,-1]]"	",1,neg,1,p1,lambertW,-,^2,/"	0	1	E.g.f.: -1/(1-LambertW(-x))^2.	sign	0..385	nyi
+A277511	polyx	0	"[[1],[0,-1],[1,1]]"	",p1,lambertW,neg,p2,/"	0	1	E.g.f.: -LambertW(-x)/(1+x).
+A279840	polyx	0	"[[1],[0,0,1]]"	",p1,exp,int,exp"	0	1
+A279844	polyx	1	"[[0,1],[0,-1]]"	",p1,x,A,2,*,int,-,rev,3,*,+,2,/"	0	1	A(x) = -x/2 + 3/2 * Series_Reversion(x - Integral 2*A(x) dx).
+A279845	polyx	1	"[[0,1],[0,1]]"	",p1,x,A,2,*,int,-,rev,+,2,/"	0	1	A(x) = x/2 + 1/2 * Series_Reversion(x - Integral 2*A(x) dx)
+A280571	polyx	1	"[[0,1],[0,-1]]"	",p1,x,A,3,*,int,-,rev,4,*,+,3,/"	0	1	A(x) = -x/3 + 4/3 * Series_Reversion(x - Integral 3*A(x) dx).
+A280573	polyx	1	"[[0,1],[0,-3]]"	",p1,x,A,2,*,int,-,rev,5,*,+,2,/"	0	1	A(x) = -3*x/2 + 5/2 * Series_Reversion(x - Integral 2*A(x) dx).
+A280574	polyx	1	"[[0,1],[0,-2]]"	",p1,x,A,3,*,int,-,rev,5,*,+,3,/"	0	1	A(x) = -2*x/3 + 5/3 * Series_Reversion(x - Integral 3*A(x) dx).
+A280575	polyx	1	"[[0,1],[0,-1]]"	",p1,x,A,4,*,int,-,rev,5,*,+,4,/"	0	1	A(x) = -x/4 + 5/4 * Series_Reversion(x - Integral 4*A(x) dx)

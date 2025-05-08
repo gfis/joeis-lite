@@ -1,0 +1,86 @@
+---- 2025-03-06 08:58:34
+A103916	polyz	0	"[[1],[1,0,-1],[1,1],[1,-1]]"	",1,p1,sqrt,/,p2,p3,/,sqrt,log,^2,*,2,/,dif,dif"	2	1	0	2	((1/sqrt(1-x^2)*log(sqrt((1+x)/(1-x)))^2/2)')'
+A132070	polyx	0	"[[1,1]]"	",x,1,A,<1,+,A,dif,<2,+,/,rev,x,/"	1	0	reversion(x/(1 + x*A(x) + x^2*dif(A(x))))/x
+A153302	polyz	0	"[[1],[0,2]]"	",1,p1,cosh,sqrt,/,int,rev,dif"	1	1	0	2	dif(reversion(integral(1/sqrt(cosh(2*x)))))
+A162162	poly	0	"[[1],[0,1,1]]"	",1,p1,A,^2,*,+,A,^3,<3,+"	1 + (x+x^2)*A(x)^2 + x^3*A(x)^3
+A183607	poly	0	"[[1],[1,-1],[0,0,1]]"	",1,p1,A,dif,A,/,<2,dif,<1,-,/"	A(x) = 1/(1 - x - x*{d/dx x^2*A'(x)/A(x)}). '
+A185386	polyx	0	"[[1]]"	",A,exp,<1,A,^2,exp,<1,+,2,/"	0	1	E.g.f. A(x) = (x*e^A(x) + x*e^(A(x)^2))/2.
+A212381	polyx	2	"[[0,0,1],[0,0,1]]"	",p1,A,sub,dif,2,/,+"	1	0
+A229619	poly	1	"[[0,1]]"	",x,A,dif,<2,-,rev"
+A231690	poly	1	"[[0,1],[0,1,-3,-1,1],[1,3,1,-1]]"	",p1,p2,/,rev"
+A292758	polyx	0	"[[1]]"	",x,tan,x,sec,+,^3"	0	1
+A316598	holos	1	[[0],[246343680,-189858816,54660096,-6967296,331776],[-933120,4593024,-2747520,580608,-41472],[-4587840,4201200,-1357344,176256,-6912],[365040,-480600,227568,-45792,3264],[-8640,18960,-14376,4584,-528],[0,-152,304,-190,38],[0,-2,1,2,-1]]	5,38	0	0	(1-x-3*x*(1-sqrt(1-12*x))/(6*x) - sqrt(1-4*x-4*x*(1-sqrt(1-12*x))/(6*x)))/x, where c=(1-sqrt(1-12*x))/(6*x)
+A326564	poly	0	"[[1],[0,0,2]]"	",1,A,2,-,^2,<1,A,1,-,A,2,-,^2,*,p1,*,+,+"	1 + x*(A(x) - 2)^2 + (A(x) - 1)*(A(x) - 2)^2*2*x^2
+A362283	polyx	0	"[[1],[0,0,-1]]"	",p1,lambertW,neg,sqrt,exp"	2	1
+A369934	sintrif	2	(term, n) -> ZV(term.bitLength() - 1)	""	new A369933()	a(n) = log_2(J369933(n)).
+A372419	sintrif	1	(term, n) -> term.*(term.+(4)).*(term.+(6))	""	new A022005()	Products of prime triples (p, p+4, p+6) where p = J022005(n)
+A372467	sintrif	1	(term, n) -> ZV(D051903(term).+(1).bitLength() - 1)	""	new A036537()	a(n) = log_2(D051903(J036537(n)) + 1).
+A372469	sintrif	1	(term, n) -> ZV(term.bitLength() - 1)	""	new A372468()	a(n) = log_2(J372468(n)).
+A372505	sintrif	1	(term, n) -> ZV(D005361(term).bitLength() - 1)	""	new A138302()	a(n) = log_2(D005361(J138302(n))).
+A372529	polyx	1	"[[0,1,1],[0,0,0,1,1],[0,0,1]]"	",p1,sub,p2,sub,/"	2	0	A(x^3+x^4)/A(x^2)
+A372533	polyx	1	"[[0,1,1],[0,0,0,1],[0,0,1,-1,-1]]"	",p1,sub,p2,sub,/"	2	0	A(x^3)/A(x^2-x^3-x^4)
+A381360	polyx	0	"[[1]]"	",x,2,A,^3,*,1,+,3,A,^2,*,/,int,int,+,exp"	0	1	exp(x + integral(integral((2*A(x)^3 + 1)/(3*A(x)^2))))
+A381649	poly	0	"[[1]]"	",1,A,^2,<1,A,^3,<1,sub,^3,*,+"
+A381679	eulerx	0			new A000056()		Euler transform of J000056
+A381680	eulerx	0			new A115224()		Euler transform of J115224
+---- 2025-03-06 10:19:28
+A191161	multrar	1	(self, n) -> SD(n, d -> (d < n) ? self.a(d).+(d) : ZV(n))	"1"		sumdiv(n, d, if(d<n, d+a(d), n))
+A277065	lambdan	1	n -> SD(n, d -> Functions.DIGIT_SUM_CUBES.z(d))	Sum of cubes of the digits of all divisors of n.
+A284167	lambdan	1	n -> SD(n, d -> Functions.SIGMA0.z(d + n))	sumdiv(n, d, numdiv(d + n))
+A333177	lambdan	1	n -> SD(n, d -> (Functions.GCD.i(d, n/d) == 1) ? Z_1(Functions.OMEGA.i(n/d)).*(PM(d)) : Z.ZERO)	a(n) = Sum_{d|n, gcd(d, n/d) = 1} (-1)^omega(n/d) * prime(d).
+---- 2025-03-06 11:02:28
+A095999	lambdan	1	n -> CND(n, d -> CV(d).exp().compareTo(CV(n)) < 0)	Number of divisors of n that are < log(n).
+A304575	lambdan	1	n -> SD(n, d -> CNT(1, d, k -> Functions.GCD.i(k, d) == 1 && Predicates.SQUARE_FREE.is(k)))	sumdiv(n, d, #select(k->(issquarefree(k) && (gcd(k, d)==1)), [1..d]));
+A357665	lambdan	0	n -> RU(0, (n - 1)/2, k -> QV(3).^(n - 1 - k).*(S2(n, 2*k + 1))).num()	Sum_{k=0..floor((n-1)/2)} 3^(n-1-k) * Stirling2(n,2*k+1).
+---- 2025-03-06 18:19:14
+A308064	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(D010052(i)).*(D010052(k)).*(D010052(n-i-k))))
+A308069	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(D064911(i)).*(D064911(k)).*(D064911(n-i-k))))
+A308253	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(D005171(i)).*(D005171(k)).*(D005171(n-i-k))))	corr!
+A308276	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(D010052(i)).*(D010052(k)).*(D010052(n-i-k)).*(k)))
+A308277	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(D010052(i)).*(D010052(k)).*(D010052(n-i-k)).*(n-i-k)))
+A308278	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(D010052(i)).*(D010052(k)).*(D010052(n-i-k)).*(i)))
+---- 2025-03-06 18:34:01
+A279792	lambdan	1	n -> SU(3, n - 1, i -> D010051(i).*(D010051(2*n-i)).*(Integer.signum(n/(2*(n-i)))))
+A279794	lambdan	1	n -> SU(3, n - 1, i -> D010051(i).*(D010051(2*n-i)).*(1 - Integer.signum(n/(2*(n-i)))))
+A280634	lambdan	1	n -> SU(1, n, i -> ZV(1).-(ZV(i).mod(TAU(i)).signum()).*(ZV(1).-(ZV(2*n - i).mod(TAU(2*n - i)).signum())))	where d(n) is the number of divisors of n.
+A308147	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(D010051(i)).*(D010051(k)).*(D010051(n-i-k)).*(n).*(((i == k) ? 1 : 0) + ((i == n-i-k) ? 1 : 0) - ((k ==  n-i-k) ? 1 : 0))))	, where c is the prime characteristic (D010051) and [] is the Iverson bracket.
+A308209	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*((Functions.GCD.i(n-i-k, n) == 1) ? Z.ONE : Z.ZERO)))	, where [] is the Iverson bracket.
+A308275	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(D010052(i)).*(D010052(k)).*(D010052(n-i-k)).*(n)))
+A308302	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(ZV(1).-(D010052(i).*(D010052(k)).*(D010052(n-i-k))))))
+A308303	lambdan	1	n -> SU(1, n/3, k -> SU(k, (n - k)/2, i -> ZV(Integer.signum((i+k)/(n-i-k+1))).*(ZV(1).-((i & 1) * (k & 1) * ((n-i-k) & 1)))))
+A344229	multrar	0	(self, n) -> self.a(n-1).*(n).+((n % 4 > 0) ? n : 1)	"1"	+ n^signum(n mod 4), a(0) = 1.
+A373971	sintrif	0	(term, n) -> ZV(term.signum())	""	new A025468()
+---- 2025-03-06 21:31:25
+A192280	charfunc	1	new A073485()
+A319237	filtpos	1	1	new A114592()	NONZERO	Positions of nonzero terms in J114592, the list of coefficients in the expansion of Product_{n > 1} (1 - 1/n^s).
+A324551	filtpos	1	1	new A323244()	v -> v.compareTo(Z.ZERO) < 0	Positions of negative terms in D323244.
+A324720	filtpos	1	1	new A323244()	v -> v.compareTo(Z.ZERO) >= 0	Positions of nonnegative terms in D323244; numbers n for which 2*D156552(n) >= D323243(n).
+A324721	filtpos	1	1	new A323244()	v -> v.compareTo(Z.ZERO) > 0	Positions of positive terms in D323244; numbers n for which 2*D156552(n) > D323243(n).
+A359585	filtpos	1	1	new A329697()	EVEN	Positions of even terms in D329697
+A369256	filtpos	1	1	new A140773()	ODD	Positions of odd terms in J140773.
+---- 2025-03-06 22:07:18
+A087429	charfunc	1	new A070089()	Characteristic function of J070089.
+A295309	lambdan	1	n -> (PHI(SIGMA(n)).compareTo(n) < 0) ? ZV(1) : ZV(0)	Characteristic function for ?295307: a(n) = 1 if n > phi(sigma(n)), 0 otherwise.
+A337380	charfunc	1	new A337378()	Characteristic function of J337378.
+A337383	charfunc	1	new A337381()	Characteristic function of J337381.
+A342025	charfunc	1	new A072202()	Characteristic function of J072202.
+A343219	charfunc	1	new A343218()	Characteristic function of J343218.
+A353495	charfunc	0	new A327862()	Characteristic function of J327862.
+A353760	charfunc	1	new A353758()	Characteristic function of J353758.
+A353766	charfunc	1	new A353764()	Characteristic function of J353764.
+A353809	charfunc	1	new A084109()	Characteristic function of J084109.
+A354817	charfunc	1	new A354816()	Characteristic function of J354816.
+A354820	charfunc	1	new A354810()	Characteristic function of J354810, zeros of J346242.
+A355450	charfunc	1	new A106571()	Characteristic function of J106571.
+A356170	charfunc	1	new A072978()	Characteristic function of J072978.
+A365429	charfunc	1	new A174973()	Characteristic function of J174973.
+A369048	charfunc	0	new A083348()	Characteristic function of J083348.
+A374016	charfunc	0	new A000583()	Characteristic function of D000583.
+A380372	charfunc	1	new A082851()	Characteristic function of J082851.
+A378448	charfunc	0	new A064771()	Characteristic function of J064771.
+---- 2025-03-06 22:40:49
+A324824	charfunc	1	new A324814()	Characteristic function of J324814.
+A341781	filter	1	new A033950()	v -> { final Q q = new Q(v, TAU(v)); return q.isInteger() && !q.num().testBit(0); }	Refactorable numbers (or tau numbers, A033950) k such that k/tau(k) is even, where tau(k) = A000005(k).
+A342704	charfunc	1	new PrependSequence(1, new A067139().skip(1), 0)	Characteristic function of J067139.
+A342969	filnum	1	3	k -> { final Z m2 = ZV(k).^(2); return m2.mod(TAU(m2)).isZero() && m2.-(1).mod(TAU(m2.-(1))).isZero(); }	Numbers m such that both m^2-1 and m^2 are refactorable numbers (A033950).
+A342970	filnum	1	1	k -> { final Z m2 = ZV(k).^(2); return m2.mod(TAU(m2)).isZero() && m2.-(1).mod(TAU(m2.-(1))).isZero() && TAU(m2).compareTo(TAU(m2.-(1))) > 0; }	Numbers m such that both m^2-1 and m^2 are refactorable numbers (A033950) and that m^2 has more divisors than m^2-1.

@@ -1,0 +1,77 @@
+---- 2025-03-07 21:10:48
+A129230	partsun	0	new A129229()	n -> SU(n & 1, (n + (n & 1))/2, k -> CR.PHI.*(2*k + (n & 1)).floor())	floor(n*r) + floor((n-2)*r) + floor((n-4)*r) + ... + floor(k*r), where r = golden ratio = (1 + sqrt(5))/2 and k = n mod 2.	nonn	0..10000
+A183143	lambdan	1	n -> { final CR r = CV(3).sqrt(); return SU(1, n, k -> CV(k)./(r).floor()); }	[1/r]+[2/r]+...+[n/r], where r=sqrt(3) and []=floor.	nonn	1..54
+A194683	trilambn	1	1	1	(n, k) -> { final CR r = CV(3).sqrt().+(1)./(2); return r.^(n).frac().+(r.^(k).frac()).floor(); }	Triangular array: T(n,k)=[<r^n>+<r^k>], where [ ] = floor, < > =  fractional part, and r=(1+sqrt(3))/2.	nonn,tabl	1..99
+A196734	polyx	0	"[[1],[0,2]]"	",p1,sub,sqrt,<1,exp"	0	1	A(x) = exp(x*A(2*x)^(1/2)).
+A196735	polyx	0	"[[1],[0,3]]"	",p1,sub,^1/3,<1,exp"	0	1	A(x) = exp(x*A(3*x)^(1/3)).
+A201990	polyx	0	"[[1]]"	",1,A,^2,<1,cos,A,^2,<1,sin,-,/"	0	1	A(x) = 1/(cos(x*A(x)^2) - sin(x*A(x)^2)).
+A215001	lambdan	1	n -> CR.E.^(RU(1, n, k -> new Q(1, k))).floor().+(1)	a(n) = 1 + floor(e^(1 + 1/2 + 1/3 + ... + 1/n)).	nonn	1..10000
+A243280	lambdan	0	n -> SU(0, n, k -> BI(2*k - 1, k).*(BI(2*n, n - k)))
+A243952	polyx	0	"[[1],[1,1],[1,6,7,4,1]]"	",1,p1,p2,/,int,rev,+"	0	1	A=exp(serreverse(intformal(1/(1+2*sinh(2*X)))))	[0]	(A,X=x)
+A248169	poly	0	"[[1],[1,-1],[1,1],[1,3],[1,-3]]"	",p1,p2,/,p3,p4,/,agm"	0	0	A=agm((1-x)/(1+X),(1+3*x)/(1-3*X))	[0]	(A,X=x)
+A248230	lambdan	1	n -> CV(1)./(Zeta.zeta(4).-(CV(RU(1, n, h -> new Q(Z.ONE, ZV(h).^(4)))))).floor()	floor(1/(zeta(4) - Sum_{h=1..n} 1/h^4)).	nonn,easy	1..1000
+A248234	lambdan	1	n -> CV(1)./(Zeta.zeta(5).-(CV(RU(1, n, h -> new Q(Z.ONE, ZV(h).^(5)))))).floor()	floor(1/(zeta(5) - Sum_{h=1..n} 1/h^5)).	nonn,easy	1..2000
+A251185	polyx	1	"[[0,1]]"	",x,2,x,exp,-,log,neg,sub,<1,+"	0	1	x+x*subst(A,x,-log(2-exp(X))))	[0,1]	(A=x,X=x)
+A259611	poly	2	"[[0,0,1]]"	",x,A,dif,<1,-,A,-,rev,2,*,int"	2*intformal(serreverse(x-x*A'-A)))	'
+A259611	poly	2	"[[0,0,1]]"	",x,A,dif,<1,-,A,-,rev,2,*,int"	2*intformal(serreverse(x-x*A'-A)))	'
+A259612	convprod	1	1/2	new A259611()
+A283968	lambdan	0	n -> { final CR r = CV(5).sqrt().+(3)./(2); return SU(0, n, k -> CV(n - k)./(r).floor()).+(n + 1); }	"1"	+ 1 + floor(n*(3 + sqrt(5))/2), a(0) = 1.	nonn,easy	0..1000
+A317923	filtpos	1	1	new A345060()	FilterSequence.ZERO	(positions of zeros),
+A323274	lambdan	0	n -> CV(1)./(CR.E.-(CV(RU(0, n, k -> new Q(Z.ONE, FA(k)))))).ceil()	ceiling(1/(e - 1/0! - 1/1! - 1/2! - ... - 1/n!)).	nonn	0..1000
+A324584	complem	1	new A324583()			(complement),
+A324732	charfunc	1	new A324721()	(characteristic function).
+A325755	filtpos	1	1	new A373247()	FilterSequence.ZERO	(positions of 0s),
+A336355	charfunc	1	new A336357()
+A336356	charfunc	1	new A336359()
+A336357	filnum	1	1	k -> F001221(F000203(k)).compareTo(F001221(k)) < 0	numbers k for which F001221(F000203(k)) < F001221(k).
+A336359	filnum	1	1	k -> F001222(F000203(k)).compareTo(F001222(k)) < 0	numbers k for which F001222(F000203(k)) < F001222(k).
+A336548	complem	1	new A336547()	,Z.ONE		(complement).
+A337372	filtpos	1	1	new A337345()	ONE	(positions of ones),
+A340784	filtpos	1	1	new A373381()	FilterSequence.EVEN	(positions of even terms)
+A341609	sintrif	1	(term, n) -> term.equals(Z.ONE) ? Z.ONE : Z.ZERO	""	new A337345()	(their characteristic function),
+A341610	filtpos	1	1	new A337345()	v -> v.compareTo(Z.ONE) > 0	(positions of terms > 1)
+A344624	lambdan	1	n -> SU(1, n, k -> Predicates.SQUARE.is(k) ? ZV(k) : ZV(1))	k=1..n} k^c(k), where c(n) is the characteristic function of squares.
+A344884	sintrif	1	(term, n) -> E344875(n).mod(term).isZero() ? ZV(1) : ZV(0)	""	new A011772()	1 if J011772(n) divides E344875(n), otherwise 0; characteristic function of ?344974.
+A345064	sintrif	1	(term, n) -> term.equals(E206369(n)) ? ZV(1) : ZV(0)	""	new A071324()	1 if J071324(n) is equal to E206369(n), otherwise 0; characteristic function of ?317923.
+A345452	filnum	1	1	k -> (Functions.BIG_OMEGA.i(k) & 1) == 0 && (Functions.VALUATION.i(k, 2) & 1) == 0	(positions of even terms)
+A347873	filtpos	1	1	new A347871()	FilterSequence.ONE	Positions of ones in J347871 (the characteristic function). ?347872 gives the complement.
+A348738	filtpos	1	1	new A348736()	FilterSequence.POSITIVE	Positions of positive terms in E348736, positions of 1s in ?348737 (characteristic function).
+A349322	lambdan	1	n -> SD(n, d -> ZV(d).mod(TAU(d)).isZero() ? ZV(d) : ZV(1))	ZV(d). d^c(d), where c is the characteristic function of refactorable numbers (J336040).
+A350070	charfunc	1	new A350076()	(their characteristic function),
+A350075	filtpos	1	1	new A350074()	FilterSequence.NEGATIVE	(positions of negative terms),
+A350076	filtpos	1	1	new A350074()	v -> v.compareTo(Z.ZERO) >= 0		(of terms >= 0),
+A350526	lambdan	1	n -> CR.PHI.*(n).floor().*(CV(n)./(CR.PHI).ceil())	f(n*r)*c(n/r), where f = floor, c = ceiling, and r = golden ratio (X001622).	nonn	1..50
+A350527	lambdan	1	n -> CR.PHI.*(n).ceil().*(CV(n)./(CR.PHI).floor())	c(n*r)*f(n/r), where f = floor, c = ceiling, and r = golden ratio (X001622).	nonn	1..50
+A351038	filtpos	1	1	new A350074()	v -> v.compareTo(Z.ZERO) <= 0	(positions of terms <= 0),
+A351039	charfunc	1	new A351038()	(their characteristic function).
+A351075	filtpos	1	1	new A351074()	FilterSequence.NEGATIVE	(positions of negative terms),
+A351076	filtpos	1	1	new A351074()	v -> v.compareTo(Z.ZERO) >= 0		(of terms >= 0),
+A351077	charfunc	1	new A351076()	(their characteristic function).
+A351115	lambdan	1	n -> CNT(1, n, k -> SIGMA(k).mod(PHI(k)).isZero())	c(k), where c is the characteristic function of balanced numbers (J351114).
+A352718	lambdan	0	n -> CV(n).^(new Q(3, 2)).floor().-(CV(n).sqrt().floor().^(3))	floor(n^(3/2)) - floor(n^(1/2))^3.	nonn,easy	0..66
+A353566	charfunc	1	new A325755()	(their characteristic function).
+A355822	complem	1	new A355821()	,Z.ONE
+A355946	charfunc	1	new A349756()	(characteristic function).
+A368999	complem	1	new A368998()	,Z.ONE		(complement).
+A372986	multrar	0	(self, n) -> FA(2*n)./(self.a(n-1))	"1"	with a(0)=1.	nonn	0..19	nyi	_Clark Kimberling_
+A372987	multrar	0	(self, n) -> FA(2*n)./(FA(n).*(self.a(n-1)))	"1"	, with a(0)=1.	nonn	0..23	nyi	_Clark Kimberling_
+A372988	multrar	0	(self, n) -> FA(2*n)./(FA(n).*(self.a(n-2)))	"1,1"	, with a(0) = 1, a(1) = 1.	nonn	0..23	nyi	_Clark Kimberling_
+A372992	lambdan	0	n -> { final int[] fact = new int[] {1,1,2,6,24,120,720,5040}; return (n == 0) ? ZV(1) : PR(fact[n - 1] + 1, fact[n], k -> ZV(k)); }	(n!)!/((n-1)!)!.	nonn	0..4	nyi	_Clark Kimberling_
+A372993	multrar	0	(self, n) -> FA(n).*(self.a(n-1))./(self.a(n-2))	"1,1"	, where a(0) = 1, a(1) = 1.	nonn	0..21	nyi	_Clark Kimberling_
+A372994	multrar	0	(self, n) -> FA(n).*(self.a(n-1))./(self.a(n-2))	"1,2"	, where a(0) = 1, a(1) = 2.	nonn	0..21	nyi	_Clark Kimberling_
+A372995	multrar	0	(self, n) -> FA(n)./(self.a(n-1).*(self.a(n-2)).*(self.a(n-3)))	"1,1,1"	, where a(0) = a(1) = a(2) = 1.	nonn	0..35	nyi	_Clark Kimberling_
+A378816	holos	0	[[0],[18,-15,3],[8,6,-5],[4,7,1],[0,2,1]]	-1	0	0
+A379511	lambdan	1	n -> CV(n).*(CV(2).^(new Q(1,4)).+(CV(2).^(new Q(-1, 4)))).floor()	floor(n*(2^(1/4) + 2^(-1/4))); Beatty sequence for 2^(1/4) + 2^(-1/4).	nonn	1..10000
+A380703	decexpr	1	() -> REALS.acos(CR.HALF.-(CR.SQRT2)./(2))	CR.PI.-(X380702.*(2))
+A380908	decexp	0	() -> CR.GAMMA.-(CR.PI.*(4).log())./(2).negate()	(gamma - log(4*Pi))/2.
+A380965	decexp	0	() -> CR.PI.-(CR.E.*(CR.PI.log()))./(CR.PI.log().-(1))	(Pi - e*log(Pi))/(log(Pi) - 1).
+A381653	decexp	0	() -> Zeta.zeta(6).*(3)./(16)	3*zeta(6)/16.
+A381671	decexp	0	() -> CR.PI./(CV(3).sqrt().*(6))	Pi/(6*sqrt(3)) = X019673/J002194.
+A381672	decexp	0	() -> CR.PI.*(CR.PHI.^(4))./(CV(3).sqrt().*(15))	Pi*phi^4/(15*sqrt(3)) = X000796*X374883/(15*J002194).
+A381684	decexp	0	() -> CR.PI.*(529)./(CV(3).sqrt().*(2058))	529*Pi/(2058*sqrt(3)) = 529*X000796/(2058*J002194).
+A381685	decexp	0	() -> CR.PI.*(25)./(CV(3).sqrt().+(3).^(3))	25*Pi/((3 + sqrt(3))^3) = 25*X000796/((3 + J002194)^3).
+A381686	decexp	0	() -> CR.PI.*(49).*(CR.SQRT2.*(12).+(17))./(CR.SQRT2.*(6).+(CR.SIX).+(CV(3).sqrt()).^(3).*(2))	49*Pi*(17 + 12*sqrt(2))/(2*(6 + 6*sqrt(2) + sqrt(3))^3) = 49*X000796*X156164/(2*(6 + J010524 + J002194)^3).
+A381687	decexp	0	() -> CR.PI.*(64)./(CV(3).sqrt().*(2).+(1).^(3).*(3))	64*Pi/(3*(1 + 2*sqrt(3))^3) = 64*X000796/(3*(1 + J010469)^3).
+A381688	decexp	0	() -> CR.PI.*(4).*(CR.SQRT2.*(30).+(43))./(CV(3).sqrt().+(9).^(3))	4*Pi*(43 + 30*sqrt(2))/((9 + sqrt(3))^3) = 4*X000796*(43 + 30*J002193)/((9 + J002194)^3).
+A381738	sintrif	1	(term, n) -> Functions.SQRT.z(term)	""	new A063734()
+A381744	convprod	0	2	new A182960()

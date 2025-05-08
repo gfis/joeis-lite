@@ -1,0 +1,33 @@
+---- 2025-04-17 12:05:24
+---- 2025-04-17 17:13:26
+A341658	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(2).-(1)) == 32	Primes p such that p^2 - 1 has 32  divisors.
+A341659	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(3).-(1)) == 8	Primes p such that p^3 - 1 has 8   divisors.
+A341662	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(4).-(1)) == 160	Primes p such that p^4 - 1 has 160 divisors.
+A341665	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(5).-(1)) == 8	Primes p such that p^5 - 1 has 8   divisors.
+A341666	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(6).-(1)) == 384	Primes p such that p^6 - 1 has 384 divisors.
+A341669	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(7).-(1)) == 8	Primes p such that p^7 - 1 has 8 divisors.	nonn	1..38	nyi	_Jon E. Schoenfield_
+A342064	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(8).-(1)) == 384	Primes p such that p^8 - 1 has 384 divisors.
+A342065	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(9).-(1)) == 16  	Primes p such that p^9 - 1 has 16   divisors.  
+A342066	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(10).-(1)) == 256	Primes p such that p^10 - 1 has 256 divisors.
+A342067	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(11).-(1)) == 8  	Primes p such that p^11 - 1 has 8   divisors.  
+A382641	holos	0	[0,1,0,1,-1]	1,1,2,3,5,7,10,15,21	0	0	a(n) = round(c^n), where c is the supergolden ratio X092526.	nonn,easy,new	0..43	nyi
+A382910	lambdan	0	n -> D003266(n).^(2)
+A383050	lambdan	0	n -> SU(0, n, k -> ZV(k + 1).^(6).*(S1(n, k)))	a(n) = Sum_{k=0..n} (k+1)^6 * Stirling1(n,k).
+A383052	lambdan	0	n -> SU(0, n, k -> ZV(k + 1).^(3).*(S2(n, k)))	a(n) = Sum_{k=0..n} (k+1)^3 * Stirling2(n,k).
+A383053	lambdan	0	n -> SU(0, n, k -> ZV(k + 1).^(4).*(S2(n, k)))	a(n) = Sum_{k=0..n} (k+1)^4 * Stirling2(n,k).
+A383054	lambdan	0	n -> SU(0, n, k -> ZV(k + 1).^(5).*(S2(n, k)))	a(n) = Sum_{k=0..n} (k+1)^5 * Stirling2(n,k).
+---- 2025-04-17 21:54:14
+A127525	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a((n - 1)/d).^(d))
+A214833	multia	1	"1"	(self, n) -> SU(1, n - 1, i -> self.a(i).*(self.a(n - i))).+(SD(n, d -> 1 < d && d < n ? self.a(d).*(self.a(n/d)) : ZV(0)))
+A300647	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 || (d&1) == 0 ? ZV(0) : self.a(n/d).^(d)).+(1)	where the sum is over odd divisors of n greater than 1.
+A325303	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))).negate()
+A341697	multia	1	"1,1"	(self, n) -> SD(n - 1, d -> d < n - 1 ? self.a((n - 1)/d).*(self.a(d)) : ZV(0))
+A341698	multia	1	"1,1"	(self, n) -> SD(n - 1, d -> d < n - 1 ? self.a((n - 1)/d).*(self.a(d)) : ZV(0)).negate()
+A383051	lambdan	0	n -> SU(0, n, k -> ZV(k+1).^(n).*(S1(n, k)))	""		a(n) = sum(k=0, n, (k+1)^n*stirling(n, k, 1))
+---- 2025-04-17 22:09:39
+A197953	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 ? ZV(0) : self.a(n/d).*(d)).+(1)
+A295583	multia	1	"1"	(self, n) -> RD(n - 1, d -> new Q(FA(n - 1), FA(d).*(FA((n - 1)/d))).*(Z2(d)).*(self.a((n - 1)/d))).num()	SD (n!/(d!*(n/d)!))*2^d*a(n/d).
+A305572	multia	1	"1"	(self, n) -> Z_1(n-1).+(SD(n, d -> d <= 1 ? ZV(0) : self.a(n/d).^(d)))
+A305610	multia	1	"1"	(self, n) -> Z_1(n-1).+(SD(n, d -> d <= 1 ? ZV(0) : BI(self.a(n/d).intValueExact() + d - 1, d)))
+A307607	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 ? ZV(0) : self.a(n/d).*(d).*(d)).+(1)
+A307992	multia	1	"1,1"	(self, n) -> SD(n - 2, d -> self.a((n - 2)/d).*(d))

@@ -1,0 +1,67 @@
+---- 2025-03-02 22:12:08
+---- 2025-03-02 22:49:53
+---- 2025-03-02 23:00:20
+A191405	lambdan	0	n -> E001951(n).+(E001951(n+1))
+A191406	lambdan	0	n -> E001951(n).+(E001951(n+2))
+A191407	lambdan	0	n -> E001951(n).+(E001951(n+3))
+A192375	sintrif	1	(term, n) -> term./(2)	""	new A192374()	J192374(n)/2.	nonn	1..25
+A257984	lambdan	1	n -> CV(n).-(CR.HALF).*(CR.PI).ceil()	((n - 1/2)*Pi).	nonn,easy	1..10000
+A258048	lambdan	0	n -> CV(n).+(CR.HALF).*(CR.PI)./(CR.PI.-(1)).ceil()	((n + 1/2)*Pi/(Pi- 1))	nonn,easy	0..10000
+A258833	lambdan	0	n -> CV(n).+(CV(1)./(4)).*(CR.SQRT2).ceil()	((n + 1/4)*sqrt(2)).	nonn,easy	0..10000
+A258834	lambdan	0	n -> CV(n).-(CV(1)./(4)).*(CR.SQRT2.+(2)).ceil()	((n - 1/4)*(2 + sqrt(2))).	nonn,easy	0..10000
+A307135	polyx	1	"[[0,1],[0,-1]]"	",1,p1,exp,<1,sub,+,int"	0	1	E.g.f. A(x) satisfies: d/dx A(x) = 1 + A(x*exp(-x)).
+A307355	polyx	1	"[[0,1],[1,1]]"	",1,x,p1,/,sub,+,int"	0	1	E.g.f. A(x) satisfies: d/dx A(x) = 1 + A(x/(1 + x)).
+A331661	polyx	1	"[[0,1],[1,1]]"	",1,1,p1,/,x,p1,/,sub,*,+,int"	0	1	E.g.f. A(x) satisfies: d/dx A(x) = 1 + (1/(1 + x)) * A(x/(1 + x)).	sign	1..20	nyi
+A332236	polyx	1	"[[1],[0,-1]]"	",2,1,p1,lambertW,1,+,/,-,log,neg"	0	1	E.g.f.: -log(2 - 1 / (1 + LambertW(-x)))
+A332237	polyx	1	"[[1],[0,-1]]"	",p1,lambertW,p1,lambertW,2,+,*,2,/,1,+,log,neg"	0	1	E.g.f.: -log(1 + LambertW(-x) * (2 + LambertW(-x)) / 2)
+A339051	lambdan	0	n -> CR.PHI.*(2*n + 1).floor().-(CR.PHI.*(2*n).floor()).-(1)	a(n) = [(2n+1)r] - [2nr] - 1, where [ ] = floor and r = golden ratio (A001622)Even bisection of the infinite Fibonacci word J096270.	nonn,easy	0..20000
+A339824	lambdan	0	n -> ZV(2).-(CR.PHI.*(2*n + 2).floor()).+(CR.PHI.*(2*n + 1).floor())	a(n) = 2 - [(2n+2)r] + [(2n+1)r]Even bisection of the infinite Fibonacci word J003849.	nonn	0..85
+A352673	decexp	1	() -> CV(3).sqrt().+(4).*(QV(3, 13))	Decimal expansion of r = (3/13)(4+sqrt(3)).	nonn,cons	1..86
+A359277	insect2	1	new A026430()	new SingleTransformSequence(1, (term, n) -> term.+(1), "", new A026430())	INtersection of J026430 and (1 + J285953).	nonn,easy	1..58
+A360394	insect2	1	new A026430()	new A360392()	Intersection of A026430 and A360392.
+A360396	insect2	1	new A356133()	new A360392()	Intersection of J356133 and J360392.	nonn,easy	1..56
+A360397	insect2	1	new A356133()	new A360393()	Intersection of J356133 and J360393.	nonn,easy	1..54
+A380636	holos	0	[[0],[960,-704,128],[-164,176,-48],[11,-16,4],[0,1]]	1,1	0	1
+A380725	filnum	1	1	k -> { final int dl = Functions.DIGIT_LENGTH.i(k); return Functions.DIGIT_SUM.i(k) == dl*dl; }	Positive integers k whose sum of digits equals the square of their number of digits.	nonn,base,fini,full,easy,new	1..74583	nyi	_Anwar Hahj Jefferson-George_
+A380730	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.largestPrimeFactor().compareTo(ZV(fs.minExponent())) < 0; }	Numbers k such that the greatest prime dividing k is smaller than the minimum exponent in the prime factorization of k.	nonn	1..10000	nyi	_Amiram Eldar_
+A380731	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.largestPrimeFactor().compareTo(ZV(fs.minExponent())) <= 0; }	Numbers k such that the largest prime dividing k is smaller than or equal to the minimum exponent in the prime factorization of k.	nonn	1..5416	nyi	_Amiram Eldar_
+A380732	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return PI(fs.largestPrimeFactor()).compareTo(ZV(fs.minExponent())) < 0; }	Numbers k such that the prime index of the largest prime dividing k is smaller than the minimum exponent in the prime factorization of k.	nonn	1..12735	nyi	_Amiram Eldar_
+A380733	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return PI(fs.largestPrimeFactor()).compareTo(ZV(fs.minExponent())) <= 0; }	Numbers k such that the prime index of the largest prime dividing k is smaller than or equal to the minimum exponent in the prime factorization of k; a(1) = 1 by convention.	nonn	1..10226	nyi	_Amiram Eldar_
+A380786	filnum	1	1	k -> { final int wt = Functions.DIGIT_SUM.i(2, k); final int len = Functions.DIGIT_LENGTH.i(2, k); return ZV(len).IPP() && ZV(wt).IPP() && ZV(len - wt).IPP(); }	Numbers with a prime number of bits, prime number of ones, and prime number of zeros in their binary representation.	nonn,base,new	1..10000	nyi	_Marc Morgenegg_
+A380788	filnum	1	1	k -> Functions.DIGIT_LENGTH.z(2, k).IPP()	Numbers with a prime number of binary digits.
+A380802	sintrif	1	(term, n) -> Functions.DIGIT_LENGTH.z(2, term).-(1)	""	new A053026()	a(n) = log_2(J053026(n)).	nonn	1..10000	nyi	_Amiram Eldar_
+A380804	sintrif	1	(term, n) -> CR.PHI.*(term).floor()	""	new A007064()	a(n) = floor(A001622*A007064(n)).
+A380820	multrar	0	(self, n) -> (self.a(n - 1).compareTo(ZV(n)) < 0) ? self.a(n - 1).+(self.a(n - 2)) : self.a(n - 1) .-(n)	"0,1"		a(0) = 0, a(1) = 1, and for n >= 2, a(n) = a(n-1) + a(n-2) if a(n-1) < n, otherwise a(n-1) - n.	nonn,easy	0..67	nyi	_Ya-Ping Lu_
+A380861	decexpr	1	() -> REALS.acos(CV(5).sqrt().*(9).-(5)./(40))	arccos((9*sqrt(5) - 5)/40)	nyi Ft	Decimal expansion of the smallest acute vertex angle, in radians, in a deltoidal hexecontahedron face.	nonn,cons,easy	1..10000	nyi	_Paolo Xausa_
+A380862	decexpr	1	() -> REALS.acos(CR.HALF.-(CV(5).sqrt().inverse()))	arccos(1/2 - 1/sqrt(5))		Decimal expansion of the largest acute angles, in radians, in a deltoidal hexecontahedron face.	nonn,cons,easy	1..10000	nyi	_Paolo Xausa_
+A380863	decexpr	1	() -> REALS.acos(CV(-5).-(CV(5).sqrt().*(2))./(20))	arccos((-5 - 2*sqrt(5))/20)	Decimal expansion of the obtuse vertex angle, in radians, in a deltoidal hexecontahedron face.	nonn,cons,easy	1..10000	nyi	_Paolo Xausa_
+A380906	filter	1	new A000040()	v -> v.toString().matches("[0-246-9]+")	Primes avoiding the digits 3 and 5.	base,nonn	1..10000	nyi	_Vincenzo Librandi_
+A380907	decexp	0	() -> CV(2).^(new Q(1, 4)).*(CR.PI./(4).+(1).sqrt()).inverse()	Decimal expansion of 1/(2^(1/4)*sqrt(1+Pi/4)).	nonn,cons	0..99	nyi	_Stefano Spezia_
+A380940	decexpr	0	() -> REALS.acos(CV(2).+(CR.PHI.*(5))./(12))	arccos((2 + 5*A001622)/12)	Decimal expansion of the smallest vertex angle, in radians, in a disdyakis triacontahedron face.	nonn,cons,easy	0..10000	nyi	_Paolo Xausa_
+A380941	decexpr	1	() -> REALS.acos(CV(17).-(CR.PHI.*(4))./(20))	arccos((17 - 4*A001622)/20)	Decimal expansion of the middle vertex angle, in radians, in a disdyakis triacontahedron face.	nonn,cons,easy	1..10000	nyi	_Paolo Xausa_
+A380942	decexpr	1	() -> REALS.acos(CV(7).-(CR.PHI.*(4))./(30))	arccos((7 - 4*A001622)/30)	Decimal expansion of the largest vertex angle, in radians, in a disdyakis triacontahedron face.	nonn,cons,easy	1..10000	nyi	_Paolo Xausa_
+A380954	lambdan	0	n -> RU(0, n, k -> BI(new Q(n - k + 2, 2), k).*(FA(k))./(new Q(n - k + 2, 2)).*(a185951(n, k))).num()
+A380981	decexp	1	() -> CV(5).sqrt().+(3).*(new Q(3, 10))	(3/10)*(3 + sqrt(5))
+A380982	decexp	1	() -> CV(5).sqrt().inverse().+(new Q(7, 5))	1/sqrt(5) + 7/5
+A381020	lambdan	0	n -> E381018(100*n)	nonn	1..54	nyi	_Michel Marcus_
+A381029	poly	0	"[[1]]"	",1,1,A,^2,<1,sub,^2,<1,-,/"
+A381059	arrlamb	0	0	0	1	(n, k) -> BI(new Q(2*n - 1, 2), k).num()	Array read by ascending antidiagonals: A(n,k) = numerator(binomial(n-1/2,k)) with k >=0.	sign,frac,look,tabl,new	0..11324	nyi
+A381134	lambdan	1	n -> ZV(-3).^(n).*(4).+(ZV(-2).^(n).*(3)).+(Z2(n).*(3)).-(ZV(-3).^(n).*(Z2(n + 1))).+(ZV(3).^(n).*(2).*(Z2(n).-(2)))
+A381331	multrar	1	(self, n) -> self.a(n - 1).*(n - 2)./(self.a(n - 2)).+(GCD(ZV(n - 2), self.a(n - 2)))	"1,1"		a(1) = a(2) = 1; for n > 2, a(n) = floor((n - 2)*a(n - 1)/a(n - 2)) + GCD(n - 2, a(n - 2)).	nonn,easy,new	1..1000	nyi	_Ctibor O. Zizka_
+A381465	filter	1	new A001358()	(k, v) -> Predicates.SEMIPRIME.is(v.*(6).+(1))	Semiprimes k such that 6*k + 1 is also a semiprime.
+A381477	lambdan	0	n -> RU(0, n, k -> new Q(FA(k).*(BI(2*n+k+1, k)), ZV(2*n+k+1)).*(a185951(n, k))).num()	sum(k=0, n, k!*binomial(2*n+k+1, k)/(2*n+k+1)*a185951(n, k));
+A381485	decexp	0	() -> CV(13).sqrt()./(6)	Decimal expansion of sqrt(13)/6.	nonn,cons,easy,new	0..104	nyi	_Amiram Eldar_
+A381515	multrar	0	(self, n) -> SU(1, n, j -> S2(n - 1, j - 1).*(self.a(n - j)))	"1"		a(n) = Sum_{j=1..n} Stirling2(n-1,j-1) * a(n-j) for n>=1, starting with a(0) = 1.	nonn,new	0..129	nyi	_Alois P. Heinz_
+A381518	lambdan	0	n -> SU(0, n, k -> FA(k).*(BI(2*n+1, k)).*(new Zi(0, 1).^(n-k).re()).*(a136630(n, k)))./(2*n+1)
+A381519	lambdan	0	n -> SU(0, n, k -> FA(k).*(BI(2*n+2, k)).*(new Zi(0, 1).^(n-k).re()).*(a136630(n, k)))./(n+1)
+A381520	lambdan	0	n -> SU(0, n, k -> FA(k).*(BI(2*n+1, k)).*(new Zi(0, 1).^(n-k).re()).*(a185951(n, k)))./(2*n+1)
+A381521	lambdan	0	n -> SU(0, n, k -> FA(k).*(BI(2*n+2, k)).*(new Zi(0, 1).^(n-k).re()).*(a185951(n, k)))./(n+1)
+A381568	convprod	0	2	new A143508()
+A381570	convprod	0	3	new A212029()
+A381572	convprod	0	2	new A381029()
+A381574	convprod	0	3	new A381615()
+A381593	convprod	0	2	new A381600()
+A381595	convprod	0	3	new A381601()
+A381600	poly	0	"[[1]]"	",1,1,A,^2,<1,sub,^2,A,^2,<1,*,-,/"
+A381601	poly	0	"[[1]]"	",1,1,A,^3,<1,sub,^3,A,^3,<1,*,-,/"
+A381615	poly	0	"[[1]]"	",1,1,A,^3,<1,sub,^3,<1,-,/"

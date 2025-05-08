@@ -1,0 +1,134 @@
+---- 2025-03-14 13:34:15
+A045345	parmof3	1	A128171	0	1
+A111441	parmof3	1	A128171	0	2
+A122140	parmof3	1	A128171	0	3
+A122142	parmof3	1	A128171	0	5
+A125826	parmof3	1	A128171	0	7
+A125827	parmof3	1	A128171	0	11
+A128165	parmof3	1	A128171	1	1
+A128166	parmof3	1	A128171	1	2
+A128167	parmof3	1	A128171	1	3
+A128168	parmof3	1	A128171	1	4
+A128169	parmof3	1	A128171	1	5
+A128170	parmof3	1	A128171	1	6
+A131135	polyx	0	"[[1],[-2,1],[-2,2]]"	",p1,p2,/,log"	2	4
+A131137	polyx	0	"[[1],[-3,2],[-3,3]]"	",p1,p2,/,log"	2	5
+A131138	sintrif	0	(term, n) -> Functions.VALUATION.z(term, 3)	""	new A131137()
+A131182	trilambn	0	0	0	(n, k) -> FA(n).*(ZV(k).^(n))	nyi Fpo	Table T(n,k) = n!*k^n, read by upwards antidiagonals.	nonn,tabl	0..65	nyi
+A131199	multrar	0	(self, n) -> self.a(n - 1).IPP() ? self.a(n - 1).*(n) : self.a(n - 1).+(n)	"2"		a(0)=2. For n>=1, a(n) = a(n-1) + n if a(n-1) is composite; a(n) = a(n-1)*n if a(n-1) is prime.	nonn	0..1000	nyi	_Leroy Quet_
+A131273	parmof3	1	A128171	0	13
+A131274	parmof3	1	A128171	0	14
+A131275	parmof3	1	A128171	0	15
+A131278	parmof3	1	A128171	0	18
+A131279	parmof3	1	A128171	0	19
+A232823	parmof3	1	A128171	1	8
+A232964	parmof3	1	A128171	1	9
+A232966	parmof3	1	A128171	1	14
+A233133	parmof3	1	A128171	1	10
+A233193	parmof3	1	A128171	1	11
+A233264	parmof3	1	A128171	1	12
+A233349	parmof3	1	A128171	1	13
+A233413	parmof3	1	A128171	1	15
+A233461	parmof3	1	A128171	1	16
+A233556	parmof3	1	A128171	1	17
+A233576	parmof3	1	A128171	1	18
+A233768	parmof3	1	A128171	1	19
+---- 2025-03-14 14:25:18
+A217599	sintrif	1	(term, n) -> PM(term)	""	new A111441()
+A223936	sintrif	1	(term, n) -> PM(term)	""	new A122140()
+A224083	sintrif	1	(term, n) -> PM(term)	""	new A122142()
+A232770	sintrif	1	(term, n) -> PM(term)	""	new A131273()
+A232824	sintrif	1	(term, n) -> PM(term)	""	new A232823()
+A232848	sintrif	1	(term, n) -> PM(term)	""	new A131275()
+A232865	sintrif	1	(term, n) -> PM(term)	""	new A125826()
+A232963	sintrif	1	(term, n) -> PM(term)	""	new A131274()
+A233041	sintrif	1	(term, n) -> PM(term)	""	new A128170()
+A233042	sintrif	1	(term, n) -> PM(term)	""	new A232964()
+A233043	sintrif	1	(term, n) -> PM(term)	""	new A232966()
+A233134	sintrif	1	(term, n) -> PM(term)	""	new A233133()
+A233194	sintrif	1	(term, n) -> PM(term)	""	new A233193()
+A233265	sintrif	1	(term, n) -> PM(term)	""	new A233264()
+A233350	sintrif	1	(term, n) -> PM(term)	""	new A233349()
+A233414	sintrif	1	(term, n) -> PM(term)	""	new A233413()
+A233462	sintrif	1	(term, n) -> PM(term)	""	new A233461()
+A233523	sintrif	1	(term, n) -> PM(term)	""	new A128165()
+A233557	sintrif	1	(term, n) -> PM(term)	""	new A233556()
+A233575	sintrif	1	(term, n) -> PM(term)	""	new A131278()
+A233577	sintrif	1	(term, n) -> PM(term)	""	new A233576()
+A233767	sintrif	1	(term, n) -> PM(term)	""	new A131279()
+A233769	sintrif	1	(term, n) -> PM(term)	""	new A233768()
+A233862	sintrif	1	(term, n) -> PM(term)	""	new A128166()
+A233863	sintrif	1	(term, n) -> PM(term)	""	new A128167()
+A233893	sintrif	1	(term, n) -> PM(term)	""	new A128168()
+A234003	sintrif	1	(term, n) -> PM(term)	""	new A128169()
+A327986	polyz	0	"[[1]]"	",x,2,*,cosh,x,cosh,2,*,-,1,+,x,/"	2	4	1	2
+---- 2025-03-14 22:28:09
+A143382	lambdan	0	n -> RU(0, n, k -> new Q(1, DF(k))).num()
+A143383	lambdan	0	n -> RU(0, n, k -> new Q(1, DF(k))).den()
+A156033	lambdan	0	n -> RU(1, n, k -> new Q(ZV(k).^(3), FA(n))).num()
+A156034	lambdan	0	n -> RU(1, n, k -> new Q(ZV(k).^(3), FA(n))).den()
+A215712	lambdan	1	n -> RU(1, n, i -> new Q(3*i, ZV(4).^(i))).num()
+A215713	lambdan	1	n -> RU(1, n, i -> new Q(3*i, ZV(4).^(i))).den()
+A225697	lambdan	0	n -> new Q(DF(4*n - 1), ZV(24).^(n).*(FA(n))).num()
+A225698	lambdan	0	n -> new Q(DF(4*n - 1), ZV(24).^(n).*(FA(n))).den()
+A229726	lambdan	0	n -> RU(1, 2*n+1, k -> new Q(Z2(k), k)).den()
+A229727	lambdan	0	n -> RU(1, 2*n+1, k -> new Q(Z2(k), k)).num()
+A237872	lambdan	1	n -> RU(1, n, i -> new Q(ZV(n).^(i), i)).num()
+A237873	lambdan	1	n -> RU(1, n, i -> new Q(ZV(n).^(i), i)).den()
+A241189	lambdan	1	n -> RU(1, n, i -> new Q(1, PM(i).*(PM(i+1)))).num()
+A241190	lambdan	1	n -> RU(1, n, i -> new Q(1, PM(i).*(PM(i+1)))).den()
+A241191	lambdan	1	n -> RU(1, n, i -> new Q(1, PM(i).*(PM(i+1)).*(PM(i+2)))).num()
+A241192	lambdan	1	n -> RU(1, n, i -> new Q(1, PM(i).*(PM(i+1)).*(PM(i+2)))).den()
+A245784	lambdan	1	n -> new Q(n, TAU(n)).+(new Q(SIGMA(n), n)).num()
+A245785	lambdan	1	n -> new Q(n, TAU(n)).+(new Q(SIGMA(n), n)).den()
+A276399	lambdan	2	n -> new Q(FA(n), ZV(n).^(n).-(n)).num()
+A276400	lambdan	2	n -> new Q(FA(n), ZV(n).^(n).-(n)).den()
+A280656	lambdan	1	n -> RU(0, n*n-1, k -> new Q(BI(2*k, k), ZV(4).^(k)).-(n)).den()
+A282501	lambdan	1	n -> RU(1, n, i -> ZV(i).IPP() ? Q.ZERO : new Q(1, i)).num()
+A282503	lambdan	1	n -> RU(1, n, i -> ZV(i).IPP() ? Q.ZERO : new Q(1, i)).den()
+A285020	lambdan	0	n -> new Q(BI(2*n, n),  ZV(20).^(n)).num()
+A285021	lambdan	0	n -> new Q(BI(2*n, n),  ZV(20).^(n)).den()
+A289381	lambdan	1	n -> RU(1, n, k -> new Q(1, DF(2*k-1))).num()
+A295126	lambdan	1	n -> RD(n, d -> new Q(MU(n/d), d)).den()
+A295127	lambdan	1	n -> RD(n, d -> new Q(MU(n/d), d)).num()
+A298754	lambdan	1	n -> new Q(Functions.SIGMA.z(3, n), Functions.SIGMA.z(2, n)).num()
+A302974	lambdan	1	n -> new Q(TAU(n).^(n), ZV(n).^(Functions.TAU.i(n))).num()
+A302975	lambdan	1	n -> new Q(TAU(n).^(n), ZV(n).^(Functions.TAU.i(n))).den()
+A304581	lambdan	0	n -> RU(1, n-1, k -> new Q(1, ZV(k).*(ZV(n-k)).^(2))).num()
+A304582	lambdan	0	n -> RU(1, n-1, k -> new Q(1, ZV(k).*(ZV(n-k)).^(2))).den()
+A324003	lambdan	4	n -> new Q(S2(n,4).*( 24), FA(n)).num()
+A324004	lambdan	4	n -> new Q(S2(n,4).*( 24), FA(n)).den()
+A324005	lambdan	5	n -> new Q(S2(n,5).*(120), FA(n)).num()
+A324006	lambdan	5	n -> new Q(S2(n,5).*(120), FA(n)).den()
+A324800	lambdan	1	n -> RU(1, n, k -> new Q(1, ZV(k).*(PM(k+1).-(PM(k))))).num()
+A324801	lambdan	1	n -> RU(1, n, k -> new Q(1, ZV(k).*(PM(k+1).-(PM(k))))).den()
+A349506	lambdan	1	n -> new Q(FA(n).^(2*n), ZV(n).^(n*n)).num()
+A349507	lambdan	1	n -> new Q(FA(n).^(2*n), ZV(n).^(n*n)).den()
+A354298	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k+1), DF(2*k-1))).num()
+A354299	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k+1), DF(2*k-1))).den()
+A354302	lambdan	0	n -> RU(0, n, k -> new Q(1, FA(k).^(2))).num()
+A354303	lambdan	0	n -> RU(0, n, k -> new Q(1, FA(k).^(2))).den()
+A354304	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(k), FA(k).^(2))).num()
+A354305	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(k), FA(k).^(2))).den()
+A354478	lambdan	1	n -> RU(1, n, k -> new Q(1, S1(n, k))).num()
+A354479	lambdan	1	n -> RU(1, n, k -> new Q(1, S1(n, k))).den()
+---- 2025-03-14 23:03:50
+A134357	lambdan	0	n -> new Q(BI(6*n-2, 2*n), BI(4*n-1,2*n).*(2)).den()
+A160144	lambdan	0	n -> new Q(2*n+1, Z2(2*n+1).-(1)).num()
+A192986	lambdan	0	n -> RU(0, n-1, i -> new Q(Functions.BELL.z(i), Functions.BELL.z(n))).num()
+A192987	lambdan	0	n -> RU(0, n-1, i -> new Q(Functions.BELL.z(i), Functions.BELL.z(n))).den()
+A195603	lambdan	0	n -> { final Z c10 = Z.TEN.^(n); return new Q(CR.PI.*(c10).floor(), c10).num(); }	floor(Pi*10^n)/10^n
+A195604	lambdan	0	n -> { final Z c10 = Z.TEN.^(n); return new Q(CR.E.*(c10).floor(), c10).num(); }	floor(e*10^n)/10^n, where e = exp(1) = A001113
+A195606	lambdan	0	n -> { final Z c10 = Z.TEN.^(n); return new Q(CR.GAMMA.*(c10).floor(), c10).num(); }	floor(gamma*10^n)/10^n, where gamma=A001620 = Euler-Mascheroni constant
+A195607	lambdan	0	n -> { final Z c10 = Z.TEN.^(n); return new Q(CR.PHI.*(c10).floor(), c10).num(); }	floor(Phi*10^n)/10^n, where phi = (sqrt(5) + 1)/2 = A001622 = Golden Ratio
+A201058	lambdan	1	n -> new Q(BI(2*n, n), 2*n).num()
+A211306	lambdan	1	n -> RU(1, n, k -> new Q(1, Functions.CARMICHAEL_LAMBDA.z(k))).num()
+A212716	lambdan	1	n -> RU(1, n, k -> new Q(1, Functions.CARMICHAEL_LAMBDA.z(k))).den()
+A212717	lambdan	1	n -> RU(1, n, k -> new Q(1, Functions.SIGMA1.z(k))).num()
+A212718	lambdan	1	n -> RU(1, n, k -> new Q(1, Functions.SIGMA1.z(k))).den()
+A214401	lambdan	1	n -> RU(0, n, k -> QV(n).^(k)./(FA(k))).den()
+A225101	lambdan	1	n -> new Q(Z2(n).-(2), ZV(n)).num()
+A230339	lambdan	0	n -> RU(1, n, k -> new Q(1, ZV(k).*(k+1).*(k+2).*(k+3))).num()
+A230340	lambdan	0	n -> RU(1, n, k -> new Q(1, ZV(k).*(k+1).*(k+2).*(k+3))).den()
+A236435	lambdan	1	n -> RQ(1, n-1, k -> Q.ONE.+(new Q(1, PM(k)))).num()
+A236436	lambdan	1	n -> RQ(1, n-1, k -> Q.ONE.+(new Q(1, PM(k)))).den()

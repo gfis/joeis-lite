@@ -1,0 +1,31 @@
+---- 2025-03-29 12:15:54
+A162598	ordtraf	1	new A265332()		Ordinal transform of A265332.
+A322317	ordtraf	1	new A322316()		Ordinal transform of A322316.
+A322872	ordtraf	1	new A171462()		Ordinal transform of A171462, where A171462(n) = n - A052126(n).
+A335286	ordtraf	1	new A071364()		Ordinal transform of A071364. - _Alois P. Heinz_, Jun 01 2020
+A344771	ordtraf	1	new A342915()		Ordinal transform of A342915, where A342915(n) = gcd(1+n, psi(n)).
+A377375	lingf	0	0,0,0,4,3,-1,-3,1	1,-2,-1,4,-1,-2,1					0
+A379703	lingf	0	0,0,0,6,12,-5,-10,2,3	1,-1,-3,3,3,-3,-1,1					0
+A381421	lingf	0	1,-2,-1,6,1	1,-4,2,0,11,0,2,-4,1					0
+A381863	lingf	6	0,0,0,0,0,0,120,375,-270,55	1,-10,45,-120,210,-252,210,-120,45,-10,1					0
+A382470	holos	0	[[0],[2268,2223,814,132,8],[-2538,-2706,-1124,-216,-16],[2034,861,-118,-84,-8],[450,150,-212,-120,-16],[0,-105,-2,36,8]]	1	0	0
+A382471	holos	0	[[0],[2340,1608,413,47,2],[-2700,-2022,-586,-78,-4],[1620,386,-93,-31,-2],[360,-14,-146,-46,-4],[0,-60,13,15,2]]	1	0	0
+A382472	holos	0	[[0],[26520,14051,2782,244,8],[-31140,-17982,-4004,-408,-16],[15540,2309,-742,-164,-8],[3300,-742,-1124,-248,-16],[0,-429,142,84,8]]	1	0	0
+A382473	holos	0	[[0],[15120,6522,1051,75,2],[-17955,-8439,-1526,-126,-4],[7875,771,-307,-51,-2],[1575,-531,-458,-78,-4],[0,-168,67,27,2]]	1	0	0
+A382474	holos	0	[[0],[119700,43551,5918,356,8],[-143262,-56778,-8644,-600,-16],[57078,3797,-1830,-244,-8],[10710,-4418,-2708,-376,-16],[0,-969,430,132,8]]	1	0	0
+A382478	lingf	0	1,2,1,2,0,1,0,1	1,0,-1,0,-1,0,-1,0,-1					0
+A382479	lingf	0	1,2,1,2,1,2,0,1,0,1,0,1	1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1					0
+---- 2025-03-29 18:44:23
+A083289	lambmin11	0	(n, k) -> Predicates.BRILLIANT.is(ZV(10).^(n).+(k))	Least k such that 10^n+k is a brilliant number (cf. A078972).	base,nonn	0..42	nyi	_Jason Earls_
+A083396	lambmin11	1	(n, k) -> Predicates.BRILLIANT.is(k) && Predicates.BRILLIANT.is(k + 2*n)	Least n such that n and 2k+n are both brilliant numbers.	base,nonn	1..61	nyi	_Jason Earls_
+A115674	filter	1	new A000578()	v -> Predicates.BRILLIANT.is(Functions.REVERSE.z(v))	Cubes whose digit reversal is a brilliant number (A078972).	nonn,base	1..21	nyi	_Giovanni Resta_
+A115676	filter	1	new A001694()	v -> Predicates.BRILLIANT.is(Functions.REVERSE.z(v))	Powerful(1) numbers (J001694) whose digit reversal is a brilliant number (A078972).	nonn,base	1..36	nyi	_Giovanni Resta_
+A304734	ordtraf	1	new A304733()		Ordinal transform of the largest prime factor of the n-th term of EKG-sequence.
+A375216	ordtraf	0	new A073137()		Ordinal transform of A073137.
+---- 2025-03-29 20:54:55
+A092934	sintrif	1	(term, n) -> Z2(n).*(term)./(D001147(n))	"asis"	new A057003()	a(n) = floor(2^n*J057003(n)/D001147(n))	_	_	_
+A121948	sintrif	1	(term, n) -> term./(n)	"asis"	new A014612()	a(n) = floor((n-th 3-almost prime)/n) = floor(J014612(n)/n)	_	_	_
+A129843	lambdan	1	n -> { final Z df = DF(n); return CNT(1, n, k -> GCD(ZV(k), df).equals(ZV(1))); }
+A132307	sintrif	0	(term, n) -> term.*(2).-(1)	"asis"	new A038207()	2*F007318^(2) - F000012	nonn,tabl	0..54	nyi	_Gary W. Adamson_
+A135250	sintrif	1	(term, n) -> F055642(term)	"asis"	new A046967()
+A157524	sintrif	0	(term, n) -> term./(9)	"asis"	new A140783().skip(4)	/9	""			J140783(n+4)/9

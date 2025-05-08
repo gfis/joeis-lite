@@ -1,0 +1,28 @@
+---- 2025-04-15 12:25:03
+A382300	lambdan	0	n -> SU(0, n/2, k -> BI(2*k, 2*n - 4*k).*(k + 1))	""		a(n) = sum(k=0, n\2, (k+1)*binomial(2*k, 2*n-4*k))	_	_	_
+A382847	lambdan	0	n -> SU(0, n, k -> BI(n + k - 1, k).*((FA(k).*(S2(n, k))).^(2)))	""		a(n) = sum(k=0, n, binomial(n+k-1, k)*(k!*stirling(n, k, 2))^2)	_	_	_
+A382987	holos	0	[[0],[18,-15,3],[0,-10,5],[10,3,1],[8,-2,-1]]	0,0,1	0	0
+A382988	holos	0	[[0],[78,-117,39],[12,-65,53],[36,35,5],[18,-9,-9]]	0,2	0	0
+A382989	holos	0	[[0],[1188,-990,198],[396,-474,138],[252,325,-131],[-76,-49,-33],[-92,55,33],[20,-15,-5]]	0,1	0	0
+A382990	holos	0	[[0],[27216,-8424,648],[40176,-15768,1512],[11178,-6183,945],[-3186,3363,-321],[-402,1739,-455],[-606,-387,35],[-480,6,74],[168,-14,-14]]	0,0,0,2	0	0
+A382997	lambdan	1	n -> SD(n, d -> PHI(n/d).*(ZV(-n).^(d))).negate()	-Sum_{d|n} phi(n/d) * (-n)^d.	sign,new	1..19	nyi	_Seiichi Manyama_
+A382998	lambdan	1	n -> SD(n, d -> PHI(n/d).*(ZV(-n).^(d - 1)))	Sum_{d|n} phi(n/d) * (-n)^(d-1).	sign,new	1..19	nyi	_Seiichi Manyama_
+A382999	lambdan	1	n -> SD(n, d -> PHI(n/d).*(ZV(-2).^(d - 1)))	Sum_{d|n} phi(n/d) * (-2)^(d-1).	sign,new	1..33	nyi	_Seiichi Manyama_
+A383000	lambdan	1	n -> SD(n, d -> PHI(n/d).*(ZV(-3).^(d - 1)))	Sum_{d|n} phi(n/d) * (-3)^(d-1).	sign,new	1..29	nyi	_Seiichi Manyama_
+A383003	lambdan	1	n -> SD(n, d -> ZV(-n).^(d - 1))	Sum_{d|n} (-n)^(d-1).	sign,easy,new	1..19	nyi	_Seiichi Manyama_
+A383010	lambdan	1	n -> SD(n, d -> ZV(-n).^(d)).negate()	-Sum_{d|n} (-n)^d.	sign,easy,new	1..19	nyi	_Seiichi Manyama_
+A383012	lambdan	1	n -> SD(n, d -> MU(n/d).*(ZV(-n).^(d - 1)))	Sum_{d|n} mu(n/d) * (-n)^(d-1).	sign,new	1..19	nyi	_Seiichi Manyama_
+---- 2025-04-15 13:16:22
+A382993	arrlamb	1	1	1	-1	(n,k) -> SD(n, d -> PHI(n/d).*(ZV(-k).^(d)))./(-n)	-(1/n) * Sum_{d|n} phi(n/d) * (-k)^d.	sign,tabl,new	1..66	nyi
+A382994	arrlamb	1	1	1	-1	(n,k) -> SD(n, d -> PHI(n/d).*(ZV(-k).^(d))).negate()	-Sum_{d|n} phi(n/d) * (-k)^d.	sign,tabl,new	1..55	nyi
+A382995	arrlamb	1	1	1	-1	(n,k) -> SD(n, d -> PHI(n/d).*(ZV(-k).^(d - 1)))	Sum_{d|n} phi(n/d) * (-k)^(d-1).	sign,tabl,new	1..66	nyi
+A383004	sintrif	1	(term, n) -> Functions.VALUATION.z(term, 2)	""	new A004709()	Exponent of the highest power of 2 dividing the n-th cubefree number.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A383005	sintrif	1	(term, n) -> Functions.VALUATION.z(term, 2)	""	new A046100()	Exponent of the highest power of 2 dividing the n-th biquadratefree number.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A383007	sintrif	1	(term, n) -> Functions.VALUATION.z(term, 2)	""	new A036966()	Exponent of the highest power of 2 dividing the n-th cubefull number.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A383008	filtpos	1	1	new A005117()	v -> !v.testBit(0)	Indices of the even terms in the sequence of squarefree numbers.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A383009	filtpos	1	1	new A004709()	v -> !v.testBit(0)	Indices of the even terms in the sequence of cubefree numbers.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A383011	arrlamb	1	1	1	-1	(n,k) -> SD(n, d -> MU(n/d).*(ZV(-k).^(d)))./(-n)	-(1/n) * Sum_{d|n} mu(n/d) * (-k)^d.	sign,tabl,new	1..66	nyi
+---- 2025-04-15 13:20:34
+A382491	lambdan	1	n -> SD(n, d -> Z2(n-d).*(ZV(3).^(n - n/d)))	""		a(n) = sumdiv(n, d, 2^(n-d)*3^(n-n/d))	_	_	_
+A382934	holos	0	[[0],[32,-128,104,-24],[-24,116,-120,36],[28,-152,231,-99],[0,0,-4,3]]	1	0	0
+A382967	filter	1	new A046100()	v -> !Predicates.SQUARE_FREE.is(v)	Biquadratefree numbers (J046100) that are not squarefree (J005117).	nonn,easy,new	1..10000

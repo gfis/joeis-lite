@@ -1,0 +1,110 @@
+---- 2025-04-01 20:36:37
+---- 2025-04-01 21:02:36
+---- 2025-04-01 22:03:32
+---- 2025-04-04 19:01:23
+---- 2025-04-04 19:30:56
+#f A083289	lambmin1	0	(n, k) -> Predicates.BRILLIANT.is(ZV(10).^(n).+(k))	0	Least k such that 10^n+k is a brilliant number (cf. A078972).	base,nonn	0..42	nyi	_Jason Earls_
+A087335	multraf	1	(self, n) -> self.s(0).+(1)	""	new A068859()	J068859(n)+1
+A088141	multraf	2	(self, n) -> self.s(0).-(1)	""	new A033810()	1,2	.
+A096447	multraf	0	(self, n) -> F151800(self.s(0))	""	new A007351()	
+A097383	multraf	1	(self, n) -> self.s(0).-(3*(n + 1)/2)	""	new A123753()	a(n) = J123753(n) - floor(3*(n+1)/2)	_	_	_
+A097714	multrar	1	(self, n) -> self.a(n - 1)./(60).*(100).+(self.a(n - 1).mod(ZV(60)))	"60"	a(n) = 100*floor(a(n-1)/60) + mod(a(n-1), 60).
+A102084	multraf	1	(self, n) -> ZV(n).^(2).-(self.s(0).^(2))	"0"	new A047160()	a(n) = n^2 - J047160(n)^2	_	_	_
+#f A107799	multraf	0	(self, n) -> Functions.PRIME_PI.z(self.s(0))	""	new A030284()
+A119592	multrar	0	(self, n) -> self.a(n - 1).+(1).+(self.a(n - 2).+(1)./(6))	"1,2,3,5,7,10"	a(n) = floor(a(n-1) + 1 + (a(n-2) + 1)/6) for n>=6.
+A122991	multraf	1	(self, n) -> self.s(0).-(1)	""	new A092835()	a(n) = J303263(n) - 2 = J092835(n) - 1	_	_	_		Indices of primes in tribonacci sequence J000073, minus 2.
+A124592	multraf	1	(self, n) -> self.s(0).+(n - 1)	""	new A072875()	a(n) = J072875(n)+n-1	_	_	_
+A127722	multraf	1	(self, n) -> F000196(self.s(0))	""	new A000447()	_
+A131207	filnum	1	0	k -> Predicates.PALINDROME.is(ZV(k).-(Functions.REVERSE.z(k)).abs())	Nonnegative integers n such that the difference between n and its reverse is a palindrome.
+A134915	multrar	0	(self, n) -> CR.PI.*(self.a(n - 1)).floor()	"1"	a(0) = 1, a(n) = floor(a(n - 1)*Pi).
+A135549	multraf	0	(self, n) -> self.s(0).-(1)	"0,0,0"	new A065531()	_	_
+A136363	multraf	1	(self, n) -> self.s(0).-(ZV(10).^(n).*(ZV(10).^(n).+(3))./(2)).+(1)	""	new A072692()	a(n) = J072692(n) - 10^n*(10^n+3)/2 + 1	_	_	_
+A136670	multrar	0	(self, n) -> CR.PI.exp().*(self.a(n - 1)).floor()	"0,1"	a(n) = floor(a(n-1) * exp(Pi)), starting 0, 1.
+A138621	multrar	1	(self, n) -> { final Z pn = PM(n); return pn.*(self.a(n - 1)./(pn).+(2)); }	"2"	a(1) =2 a(n) = p(n) *(floor(a(n-1)/p(n)) +2), where p(n) is the n-th prime.
+A145040	multraf	0	(self, n) -> self.s(0)	""	new A112634().skip(1)		""			J112634(n+1)
+A145315	multraf	1	(self, n) -> self.s(0).+(13)./(30)	""	new A022012()	a(n) = (J022012(n) + 13)/30	_	_	_		Numbers k for which the set {30*k-13, 30*k-11, 30*k-7, 30*k-1, 30*k+1, 30*k+7, 30*k+11, 30*k+13} forms a symmetrical prime octuplet.
+A152968	multraf	1	(self, n) -> self.s(0)./(2)	""	new A139251().skip(1)	/2	""			J139251(n+1)/2
+A163575	multraf	1	(self, n) -> ZV(n)./(ZV(2).^(self.s(0)))	""	new A136480()	a(n) = floor(n/(2^J136480(n)))	_	_	_
+A176591	multraf	0	(self, n) -> self.s(0)	"1,1"	new A141056()
+A177679	multraf	1	(self, n) -> self.s(0)./(30)	""	new A066388().skip(1)	/30	""			J066388(n+1)/30
+A180086	multrar	1	(self, n) -> SU(1, n - 1, k -> self.a(n - k)./(k)).+(n)	"1"	a(n) = n + floor(a(n-1)/1) + floor(a(n-2)/2) + ... + floor(a(1)/(n-1))
+A181887	multraf	0	(self, n) -> self.s(0).-(F000041(n))	"0"	new A002956()	_	_
+A207339	filter	1	new A000217().skip(3)	v -> PP(v.*(4).+(1)./(5))	Triangular numbers T from A000217 such that (4*T+1)/5 is prime.
+A208357	multraf	1	(self, n) -> self.s(0).^(2)	""	new A005315().skip(1)		_
+A210249	multraf	0	(self, n) -> F000041(n).-(self.s(0))	"1,0"	new A025065()	_
+A213369	multraf	0	(self, n) -> E287729(n).-(self.s(0))	""	new A287730()	a(n) = E287729(n) - J287730(n) for n > 0	_	_	_
+A219706	multraf	0	(self, n) -> ZV(n).^(n+1).-(self.s(0))	""	new A063169()	a(n) = n^(n+1) - J063169(n)	_	_	_
+A220371	multraf	0	(self, n) -> PR(1, 2*n, i -> ZV(4*i+2)).*(self.s(0))	""	new A060818()	a(n) = Product_{i=1..2*n} (4*i+2)*J060818(n)	_	_	_
+A232395	multraf	0	(self, n) -> D000290(Functions.CEIL_SQRT.i(self.s(0))).-(self.s(0))	""	new A053698()
+A235224	lambdan	0	n -> E061395(F276086(n))	""	new
+A235249	multraf	1	(self, n) -> ZV(5).^(self.s(0).-(1)).*(24)	"1,24"	new A001179()	a(n) = 24*5^(J001179(n)-1) for n > 1	_	_	_
+A235642	multraf	0	(self, n) -> self.s(0).mod(Z.TEN.^(n))	""	new A006988()	_
+A236863	multraf	0	(self, n) -> ZV(n).-(self.s(0))	"0"	new A192512()	a(0)=0, a(n) = n - J192512(n)	_	_	_
+A242411	multraf	1	(self, n) -> F001221(n).equals(ZV(1)) ? ZV(0) : E061395(n).-(E061395(self.s(0)))	""	new A051119()	If F001221(n) = 1, then a(n) = 0, otherwise a(n) = J241919(n) = E061395(n) - E061395(J051119(n))	_	_	_
+A253889	multraf	1	(self, n) -> D048673(self.s(0)./(2))	""	new A064216()	a(n) = D048673(floor(J064216(n)/2))	_	_	_
+A260189	multraf	1	(self, n) -> self.s(0)./(Z2(n/4))	""	new A033148()	a(n) = J033148(n) / 2^floor(n/4)	_	_	_
+A262444	multraf	0	(self, n) -> self.s(0).*(3)./(2)	""	new A070933()	a(n) = floor(3/2*J070933(n))	_	_	_
+A263882	multraf	2	(self, n) -> F000040(n).*(self.s(0))	"1,5,35"	new A034602()	a(n) = prime(n)*J034602(n) for n > 2	_	_	_
+A271591	multraf	4	(self, n) -> E079944(self.s(0).-(2))	""	new A000073()	a(n) = E079944(J000073(n)-2)	_	_	_
+A273555	multraf	1	(self, n) -> self.s(0).-(self.s(0).root(3).^(3))	""	new A001235()	a(n) = J001235(n) - floor(J001235(n)^(1/3))^3	_	_	_
+A293077	multrar	1	(self, n) -> self.a(n - 1).*(2).-(self.a(n - 2)).+(self.a(n -2)./(4).*(2))	"2,4"	a(n) = 2 a(n-1) - a(n-2) + 2 floor(a(n-2)/4) - _Michel Dekking_, Mar 20 2022
+A294816	holos	0	[[2314272,-356728],[128787480,-44340864,3622560],[-916661556,333582120,-28964064],[2687902068,-1043070614,96497810],[-4076783688,1719014757,-170919433],[3373207356,-1594763358,172514038],[-1489917672,839178568,-100584032],[323980392,-244146701,33091613],[-27042972,36106145,-5644101],[0,-2095145,385609]]	1, 1, 2, 6, 21, 75, 267, 951, 3407	0	0
+A298945	multraf	1	(self, n) -> FI(self.s(0).-(Functions.KRONECKER.z(5, self.s(0)))).mod(self.s(0).^(2))	""	new A002808()	where c is the n-th composite number, F_i = F000045(i) and (5/c) is the Kronecker symbol.
+A300840	multraf	1	(self, n) -> M052330(self.s(0)./(2))	""	new A052331()	a(n) = M052330(floor(J052331(n)/2))	_	_	_
+A302748	multrar	0	(self, n) -> self.a(n - 1).*(3)./(2).+(1)	"6"		a(0) = 6, a(n) = floor( 3*a(n-1)/2 ) + 1 for
+A307152	multraf	1	(self, n) -> self.s(0).+(19)./(24)	""	new A002144()	a(n) = floor((J002144(n)+19)/24)	_	_	_
+A308699	multraf	0	(self, n) -> self.s(0).+(1)	"0,1"	new A072829()	a(n) = J072829(n)+1 for n>1	_	_	_
+A317189	multraf	0	(self, n) -> self.s(0)	""	new PrependSequence(0, new A036577(), 1)
+A325142	multraf	0	(self, n) -> ZV(n).-(self.s(0))	"-1,-1,0"	new A112823()	a(n) = n - J112823(n) = J234345(n) - n (= n - J002374(n) for n > 2)	_	_	_
+A328318	multraf	0	(self, n) -> E267263(self.s(0))	""	new A328316()
+A328322	multraf	0	(self, n) -> E328114(self.s(0))	""	new A328316()	_
+A328323	multraf	0	(self, n) -> E324198(self.s(0))	""	new A328316()
+A330252	multrar	1	(self, n) -> PP(n) ? self.a(n - 1).*(n) : self.a(n - 1)./(Functions.LPF.z(n))	"1"	a(1) = 1; for n > 1, a(n) = n*a(n-1) if n is a prime, otherwise a(n) = floor(a(n-1)/A020639(n)), where A020639(n) is the smallest prime divisor of n.
+A330681	multraf	1	(self, n) -> E283980(self.s(0))	""	new A025487()
+A333589	multrar	1	(self, n) -> self.a(n - 1).*(3)./(2).or(self.a(n - 1).*(n).and(ZV(1)))	"2"	a(n) = floor(a(n-1)*3/2) bitwise-OR LSB(a(n-1)*n), with a(1)=2 (LSB = Least Significant Bit).
+A338852	multrar	1	(self, n) -> self.a(n - 1)./(3).*(7).+(self.a(n - 1).modZ(3))	"3"	a(n) = (7*floor(a(n-1)/3)) + (a(n-1) mod 3) with a(1) = 3.
+A348709	multraf	0	(self, n) -> self.s(0).+(E084237(n))./(2)	""	new A071172()	a(n) = (J071172(n) + E084237(n)) / 2	_	_	_
+A349304	multraf	0	(self, n) -> new Z(self.s(0).toString(), 2)	""	new A133342()	v ->	interpreted as numbers written in base 2 and converted here to base 10.	nonn,base	0..15	nyi
+#f A351159	multraf	1	(self, n) -> self.s(0)	""	new A056878()	J056878(n);forevenn,a(n)	_	_	_
+A354463	multraf	0	(self, n) -> Z2(n-2).-(self.s(0))	"0,0"	new A055223()	a(n) = 2^(n-2) - J055223(n) for n >= 2	_	_	_
+A355846	multraf	1	(self, n) -> self.s(0)./(3)	""	new A066653().skip(1)	/3	""			J066653(n+1)/3
+A360614	multraf	1	(self, n) -> E061395(n)./(self.s(0))	"0"	new A366785()	_	_
+A364297	multraf	0	(self, n) -> E348717(self.s(0))	""	new A163511()
+A364535	multraf	0	(self, n) -> Z2(n).-(self.s(0))	""	new A071810()	a(n) = 2^n - J071810(n)	_	_	_
+A364567	multraf	0	(self, n) -> ZV(2).^(self.s(0))	"0"	new A033265()	For n > 0, a(n) = 2^J033265(n)	_	_	_
+A365460	multraf	1	(self, n) -> E267263(self.s(0))	""	new A181821()	_
+A366860	multrar	0	(self, n) -> ZV(n).-(self.a(self.a(n - 1)./(3).intValueExact()))	"0"		a(0) = 0; a(n) = n - a(floor(a(n-1)/4)).
+A366870	multrar	0	(self, n) -> ZV(n).-(self.a(self.a(n - 1)./(4).intValueExact()))	"0"		a(0) = 0; a(n) = n - a(floor(a(n-1)/4)).
+A366871	multrar	0	(self, n) -> ZV(n).-(self.a(self.a(n - 1)./(5).intValueExact()))	"0"		a(0) = 0; a(n) = n - a(floor(a(n-1)/5)).
+A370255	multraf	0	(self, n) -> self.s(0).^(n*10)	""	new A004151()	a(n) = J004151(n)^(n*10), for n >= 1	_	_	_
+A372263	multraf	1	(self, n) -> F020639(MAX(F000265(self.s(0)), ZV(2)))	""	new A001043()
+A372302	filtpos	1	0	new A014417()	(k,v) -> v.mod(10000) == 1001
+A381677	multrar	1	(self, n) -> self.a(n - 1).*(3)./(2)	"5"		a(n) = floor(a(n-1)*3/2) with a(1) = 5.
+A382353	filnum	1	1	m -> RU(1, m, k -> QV(ZV(m)./(k)))./(RD(m, d -> new Q(PHI(d).*(m), ZV(d)))).isInteger()	m\k)/sumdiv(m, d, m*eulerphi(d)/d)) == 1; new A006218()	(k, v) -> v.mod(D018804(k)).isZero()	Numbers k > 0 such that D006218(k) / D018804(k) is an integer.	nonn,more,new	1	nyi
+A382487	lambdan	1	n -> CND(n, d -> GPF(d).equals(ZV(3)))	The number of divisors of n whose largest prime factor is 3.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A382496	holos	0	[0,-1,4,-6,4,3,-4,-4,4,-6,-4,-6,0,4,4,0,0,-1]	1,0,0,2,2,0,3,18,3	0	0
+A382514	holos	0	[[0],[896,-256],[-722,252],[215,-95],[-26,16],[1,-1]]	1,1,7,43,255	0	0	Expansion of 1/(1 - x/(1 - 4*x)^(3/2)).	nonn,easy,new	0..23	nyi
+A382515	holos	0	[[0],[18432,-4096],[-24064,6144],[12800,-3840],[-3502,1276],[519,-239],[-38,24],[1,-1]]	1,1,11,91,691,5101,37323	0	0	Expansion of 1/(1 - x/(1 - 4*x)^(5/2)).	nonn,easy,new	0..22	nyi
+A382516	holos	0	[[0],[67315860,-20726199,1594323],[-24259716,7266186,-531684],[1560654,-19386,-59076],[466212,-339084,54690],[-93746,64398,-10936],[6804,-5319,1053],[-210,207,-51],[2,-3,1]]	1,1,13,151,1693,18688,204631,2230498	0	0	Expansion of 1/(1 - x/(1 - 9*x)^(4/3)).	nonn,easy,new	0..20	nyi
+A382517	holos	0	[[0],[-1253520515520,404294803632,-43391094768,1549681956],[658614831300,-216525006630,23675696550,-860934420],[-121827505680,37999563858,-3803195187,119600469],[5918431860,-399034350,-212583690,21257640],[1011121380,-714225060,140558895,-8268075],[-161749980,93892644,-15983001,734877],[8002620,-3837480,255015,51045],[-32400,-115562,90723,-16201],[-8640,14760,-8100,1440],[180,-390,270,-60],[0,2,-3,1]]	1,1,16,211,2611,31426,373099,4397527,51623530,604629688,7072089076,82652922457	0	0	Expansion of 1/(1 - x/(1 - 9*x)^(5/3)).	nonn,easy,new	0..20	nyi
+A382612	holos	0	[0,-1,6,-15,20,-15,6,-1]	0,1,24,189,832,2625	0	0
+A382613	holos	0	[0,-1,-6,-15,-20,-13,0,5,2,-1]	1	0	0
+A382614	holos	0	[0,1,9,36,84,123,108,39,-24,-33,-8,6,3,-1]	1	0	0
+A382615	holos	0	[0,1,-9,39,-102,174,-195,139,-57,12,-1]	1,3,15,64,261,1032,3982,15066,56094,206068	0	0
+A382616	holos	0	[0,-1,6,-17,26,-22,8,-1]	1,2,9,34,124,444,1567,5466	0	0
+A382647	holos	0	[[0],[96,-240,96],[24,-100,64],[0,-6,14],[-168,133,-23],[-24,34,-10],[0,1,-1]]	1,2	0	0
+A382648	holos	0	[[0],[-48,48,96],[0,68,64],[12,26,14],[-166,135,-23],[-24,34,-10],[0,1,-1]]	1,3	0	0
+A382649	holos	0	[[0],[-2560,-3840,2560],[-1920,-3776,2816],[-480,-1328,1216],[-40,-180,256],[0,-2,26],[-360,261,-39],[-40,54,-14],[0,1,-1]]	1,2	0	0
+A382650	holos	0	[[0],[3840,8960,2560],[1920,8384,2816],[560,3120,1216],[192,596,256],[36,62,26],[-358,263,-39],[-40,54,-14],[0,1,-1]]	1,3	0	0
+A382656	holos	0	[0,-1,5,-8,5,-1]	3,10,21,43	0	0	a(n) = 5*a(n-1)-8*a(n-2)+5*a(n-3)-a(n-4).
+A382660	multraf	1	(self, n) -> Functions.UPHI.z(self.s(0))	""	new A268335()	The unitary totient function applied to the exponentially odd numbers (J268335).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_()
+A382661	multraf	1	(self, n) -> E191414(self.s(0))	""	new A268335()	The unitary Jordan totient function applied to the exponentially odd numbers (J268335).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_()
+A382662	multraf	1	(self, n) -> Functions.UPHI.z(self.s(0))	""	new A004709()	The unitary totient function applied to the cubefree numbers (J004709).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_                ()
+A382663	multraf	1	(self, n) -> E191414(self.s(0))	""	new A004709()	The unitary Jordan totient function applied to the cubefree numbers (J004709).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_        ()
+A382664	partsun	1	new A268335()	Partial sums of the exponentially odd numbers	Partial sums of the exponentially odd numbers (J268335).	nonn,easy,new	1..10000	nyi	_Amiram Eldar_                         (J268335).	nonn,easy,new
+---- 2025-04-04 19:49:06
+A382536	holos	0	[[0],[-896,256],[-736,256],[-216,96],[-26,16],[-1,1],[14,-4],[1,-1]]	1,1,7	0	0	1/(1 - x*(1 + 4*x)^(3/2)).
+A382537	holos	0	[[0],[630784,-430080,57344],[845824,-613376,90112],[465920,-364544,59904],[134400,-115840,21760],[21280,-20880,4640],[1736,-2060,576],[56,-94,38],[-616,419,-55],[-56,74,-18],[0,1,-1]]	1,1,11,51	0	0	1/(1 - x*(1 + 4*x)^(5/2)).
+A382538	holos	0	[[0],[-360448,65536],[-647168,131072],[-501760,114688],[-218624,57344],[-58240,17920],[-9632,3584],[-952,448],[-50,32],[-1,1],[22,-4],[1,-1]]	1,1,15	0	0	1/(1 - x*(1 + 4*x)^(7/2)).
+A382539	holos	0	[[0],[6,-4],[41,-15],[-14,8],[1,-1]]	1,2,7,28	0	0	1/(1 - x/(1 - 4*x)^(1/2))^2.
+A382544	holos	0	[[0],[-3919104,2227824,-419904,26244],[1024164,-824418,211410,-17496],[-69350580,31482216,-4761909,240813],[32557140,-17470908,3112587,-184311],[-5844312,3814224,-824526,59088],[493128,-408350,111453,-10045],[-19008,21564,-7938,954],[252,-474,270,-48],[0,2,-3,1]]	1,3,15	0	0	1/(1 - x/(1 - 9*x)^(1/3))^3.
