@@ -1,0 +1,129 @@
+---- 2025-03-12 19:30:33
+A078736	cfnum	1	new A019774()
+A078737	cfden	1	new A019774()
+A078976	cfnum	1	new DecimalExpansionSequence(() -> CR.E.^(new Q(2, 3)))
+A078977	cfden	1	new DecimalExpansionSequence(() -> CR.E.^(new Q(2, 3)))
+A078980	cfnum	0	new A073742()
+A078981	cfden	0	new A073742()
+A078982	cfden	0	new A073743()
+A078983	cfnum	0	new A073743()
+A078984	cfnum	0	new DecimalExpansionSequence(() -> Zeta.zeta(3))
+A078985	cfden	0	new DecimalExpansionSequence(() -> Zeta.zeta(3))
+A079144	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(M002439(k)))./(ZV(24).^(n))	a(n) = (1/(24^n))*Sum_{k=0..n} binomial(n, k)*A002439(k)
+A079942	cfnum	1	new DecimalExpansionSequence(() -> CR.TWO.log())
+A080016	cfnum	0	new DecimalExpansionSequence(() -> CR.PI.^(2)./(6))
+A080017	cfden	0	new DecimalExpansionSequence(() -> CR.PI.^(2)./(6))
+A096456	cfnum	1	new DecimalExpansionSequence(() -> CR.PI./(2))
+A100949	wpartsf1	1	n -> SU(1, n/2, i -> ZV(eval1(i) * (Predicates.SEMIPRIME.is(n-i) ? 1 : 0) + eval1(n-i) * (Predicates.SEMIPRIME.is(i) ? 1 : 0)))		~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051		%F
+A109714	multrar	1	(self, n) -> SU(1, n/2, i -> BI(n, i).*(self.a(i)).*(self.a(n - i)))	"1,1"		a(1) = 1, a(2) = 1 and a(n) = Sum_{i=1..floor(n/2)} binomial(n, i) * a(i) * a(n-i) for n >= 3.
+A116985	cfnum	1	new DecimalExpansionSequence(() -> CR.FIVE.log()./(CR.TWO.log()))
+A154741	prepend	-2	new ContinuedFractionNumeratorSequence( 0, new A154739())	0, 1
+A154742	prepend	-2	new ContinuedFractionDenominatorSequence( 0, new A154739())	1, 0
+A154745	prepend	-2	new ContinuedFractionNumeratorSequence( 0, new A154743())	0, 1
+A154746	prepend	-2	new ContinuedFractionDenominatorSequence( 0, new A154743())	1, 0
+A154749	prepend	-2	new ContinuedFractionNumeratorSequence( 0, new A154747())	0, 1
+A154750	prepend	-2	new ContinuedFractionDenominatorSequence( 0, new A154747())	1, 0
+A172398	wpartsf2	1	n -> SU(1, n/2, i -> ZV(eval2(i, Functions.SIGMA0.i(i)) * eval2(n - i, Functions.SIGMA0.i(n - i))))		~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi		%F		%F
+A177235	wpartsum	1	n -> SU(1, n/2, i -> ZV(Functions.SIGMA0.i(n-i) - Functions.SIGMA0.i(i)))		void		%F
+A185279	wpartsf1	1	n -> SU(1, n/2, i -> ZV((Functions.GCD.i(i, n-i) == 1 ? 1 : 0) * eval1(i) * eval1(n-i)))		~~    ~~return Z.valueOf(i).isProbablePrime() ? 0 : 1; // A005171		%F
+A197220	cfnum	1	new DecimalExpansionSequence(() -> CR.E.+(CR.ONE./(CR.E)))
+A197221	cfden	1	new DecimalExpansionSequence(() -> CR.E.+(CR.ONE./(CR.E)))
+A197222	cfnum	1	new DecimalExpansionSequence(() -> CR.E.-(CR.ONE./(CR.E)))
+A197223	cfden	1	new DecimalExpansionSequence(() -> CR.E.-(CR.ONE./(CR.E)))
+A217685	cfnum	0	new DecimalExpansionSequence(() -> CR.PHI.log()./(CV(10).log()))
+A217686	cfden	0	new DecimalExpansionSequence(() -> CR.PHI.log()./(CV(10).log()))
+A219723	cfnum	1	new DecimalExpansionSequence(() -> CR.PI.log()./(CV(10).log()))
+A219724	cfden	1	new DecimalExpansionSequence(() -> CR.PI.log()./(CV(10).log()))
+A224224	cfnum	1	new DecimalExpansionSequence(() -> CR.THREE.sqrt().*(4).-(3).sqrt().-(1)./(4))
+A225204	cfnum	0	new DecimalExpansionSequence(() -> CR.PHI.sqrt())
+A225205	cfden	0	new DecimalExpansionSequence(() -> CR.PHI.sqrt())
+A242859	cfden	1	new DecimalExpansionSequence(() -> CR.PI.*(2))
+A243485	wpartsf1	1	n -> SU(1, n/2, i -> ZV(i * (n-i) * eval1(i) * eval1(n-i)))		~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051		%F
+A285720	wpartsf1	1	n -> SU(1, n/2, i -> ZV(eval1(i)*eval1(n-i)*((i ^ (n-i)) == n ? 1 : 0)))		~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966		%F
+A294100	wpartsf1	1	n -> SU(1, n/2, i -> ZV(eval1(i) == eval1(n-i) ? 1 : 0))		~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966		%F
+A294101	wpartsf1	1	n -> ZV(n/2).-(SU(1, n/2, i -> ZV(eval1(i) == eval1(n-i) ? 1 : 0)))		~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966		%F
+A294104	wpartsf1	1	n -> SU(1, n/2, i -> ZV((n - 2*i) * (eval1(i) == eval1(n-i) ? 1 : 0)))		~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966		%F
+A294209	wpartsf1	1	n -> SU(1, n/2, i -> ZV(i * (eval1(i) == eval1(n-i) ? 1 : 0)))		~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966		%F
+A294210	wpartsf1	1	n -> SU(1, n/2, i -> ZV((n-i) * (eval1(i) == eval1(n-i) ? 1 : 0)))		~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966		%F
+A294211	wpartsf1	1	n -> SU(1, n/2, i -> eval1(i) == eval1(n-i) ? Z.ONE : Z.ZERO)		~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966	.multiply(n)	%F
+A303119	wpartsf1	1	n -> SU(1, n/2, i -> ZV(eval1(n-i) * (Functions.BIG_OMEGA.i(i) == 2 ? 1 : 0)))		~~    ~~return Predicates.SQUARE_FREE.is(i) ? 1 : 0; // A008966		%F
+A307727	wpartsf1	0	n -> SU(1, n/3, j -> SU(j, (n-j)/2, i -> ZV(eval1(i) * eval1(j) * eval1(n-i-j) == 1 ? 1 : 0)))		~~    ~~return Functions.OMEGA.i(i);		%F
+A307857	wpartsf1	1	n -> ZV(eval1(n)).+(SU(1, n/2, i -> ZV(eval1(i) * eval1(n-i)))).+(SU(1, n/3, j -> SU(j, (n-j)/2, i -> ZV(eval1(i) * eval1(j) * eval1(n-i-j)))))		~~    ~~return Z.valueOf(i).isProbablePrime() ? 0 : 1; // A005171		%F
+A308867	wpartsum	0	n -> SU(1, n/6, m -> SU(m, (n-m)/5, l -> SU(l, (n-l-m)/4, k -> SU(k, (n-k-l-m)/3, j -> SU(j, (n-j-k-l-m)/2, i -> ZV(1))))))		void	.multiply(n)	#F
+A308868	wpartsum	0	n -> SU(1, n/6, m -> SU(m, (n-m)/5, l -> SU(l, (n-l-m)/4, k -> SU(k, (n-k-l-m)/3, j -> SU(j, (n-j-k-l-m)/2, i -> ZV(m))))))		void		#F
+A308974	wpartsf1	0	n -> SU(1, n/7, o -> SU(o, (n-o)/6, m -> SU(m, (n-m-o)/5, l -> SU(l, (n-l-m-o)/4, k -> SU(k, (n-k-l-m-o)/3, j -> SU(j, (n-j-k-l-m-o)/2, i -> ZV(eval1(i) * eval1(j) * eval1(k) * eval1(l) * eval1(m) * eval1(o) * eval1(n-i-j-k-l-m-o))))))))		~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A01005 corr. 1	.multiply(n)	%F
+A309513	wpartsum	0	n -> SU(1, n/3, j -> SU(j, (n-j)/2, i -> ZV((((i - 1) & 1) + ((j - 1) & 1) + ((n-i-j-1) & 1)))))		void		#F
+A309659	wpartsum	0	n -> SU(1, n/9, q -> SU(q, (n-q)/8, p -> SU(p, (n-p-q)/7, o -> SU(o, (n-o-p-q)/6, m -> SU(m, (n-m-o-p-q)/5, l -> SU(l, (n-l-m-o-p-q)/4, k -> SU(k, (n-k-l-m-o-p-q)/3, j -> SU(j, (n-j-k-l-m-o-p-q)/2, i -> ZV(q * ((q-1) & 1) + p * ((p-1) & 1) + o * ((o-1) & 1) + m * ((m-1) & 1) + l * ((l-1) & 1) + k * ((k-1) & 1) + j * ((j-1) & 1) + i * ((i-1) & 1) + (n-i-j-k-l-m-o-p-q) * ((n-i-j-k-l-m-o-p-q-1) & 1))))))))))		void		%F
+A309664	wpartsum	0	n -> SU(1, n/10, r -> SU(r, (n-r)/9, q -> SU(q, (n-q-r)/8, p -> SU(p, (n-p-q-r)/7, o -> SU(o, (n-o-p-q-r)/6, m -> SU(m, (n-m-o-p-q-r)/5, l -> SU(l, (n-l-m-o-p-q-r)/4, k -> SU(k, (n-k-l-m-o-p-q-r)/3, j -> SU(j, (n-j-k-l-m-o-p-q-r)/2, i -> ZV(r * ((r-1) & 1) + q * ((q-1) & 1) + p * ((p-1) & 1) + o * ((o-1) & 1) + m * ((m-1) & 1) + l * ((l-1) & 1) + k * ((k-1) & 1) + j * ((j-1) & 1) + i * ((i-1) & 1) + (n-i-j-k-l-m-o-p-q-r) * ((n-i-j-k-l-m-o-p-q-r-1) & 1)))))))))))		void		%F
+A331503	wpartsum	1	n -> ZV(Functions.SIGMA1.i(n)).+(ZV(n).*(ZV(Functions.SIGMA0.i(n) - 1 - 3*(n/2)).+(SU(1, n/2, i -> ZV(n/Functions.GCD.i(n,i))))))		void		%F
+A333701	wpartsum	1	n -> SU(1, n/2, i -> ZV((Functions.OMEGA.i(i) == Functions.OMEGA.i(n-i) ? 1 : 0)))		void		%F
+A334628	wpartsum	1	n -> SU(1, n/2, i -> ZV((Functions.GCD.i(i, n-i) == 1 ? 1 : 0) * i * (n-i)))		void		%F
+A337101	wpartsf2	1	n -> SU(1, n/2, i -> ZV(eval2(2*i*(n-i), n)))		~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi		%F
+A337102	wpartsf2	1	n -> SU(1, n/2, i -> ZV(eval2(2*i*(n-i), n)))		~~    ~~final Q qv = new Q(i, j);~~return qv.ceiling().intValue() - qv.floor().intValue(); // fchi		%F
+A337926	wpartsum	1	n -> SU(1, n/2, i -> ZV(1 - (Functions.OMEGA.i(i) == Functions.OMEGA.i(n - i) ? 1 : 0)))		void		%F
+A337930	wpartsum	1	n -> SU(1, n/2, i -> ZV(Functions.PHI.i(i) == Functions.PHI.i(n - i) ? 1 : 0))		void		%F
+A337931	wpartsum	1	n -> SU(1, n/2, i -> ZV(1 - (Functions.PHI.i(i) == Functions.PHI.i(n - i) ? 1 : 0)))
+A337943	wpartsf2	1	n -> SU(1, n/2, i -> SU(1, n, k -> ZV(eval2(i*i + (n - i)*(n - i), k))))		~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi		%F
+A338021	wpartsf2	1	n -> SU(1, n/2, i -> ZV(eval2(n*i, n-i)))		~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi		%F
+A338768	wpartsf1	1	n -> SU(1, n/2, i -> ZV((i*(n-i) % n) * eval1(i) * eval1(n-i)))		~~    ~~return Z.valueOf(i).isProbablePrime() ? 1 : 0; // A010051		%F
+A339183	wpartsum	0	n -> SU(1, n/2, i -> Predicates.SQUARE.is(i) ? Z.ONE : Z.ZERO)		void		%F
+A339184	wpartsum	0	n -> SU(1, n/2, i -> Predicates.SQUARE.is(n -i) ? Z.ONE : Z.ZERO)		void		%F
+A340589	wpartsum	0	n -> SU(1, n/4, k -> SU(k, (n-k)/3, j -> SU(j, (n-j-k)/2, i -> ZV(Integer.signum((k & 1) + (j & 1) + (i & 1) + ((n-i-j-k) & 1))))))		void		%F
+A340756	wpartsf1	16	n -> SU(1, n/4, k -> SU(k, (n-k)/3, j -> SU(j, (n-j-k)/2, i -> ZV((eval1(k) == 2 && eval1(j) == 2 && eval1(i) == 2 && eval1(n-i-j-k) == 2 ? 1 : 0)))))		~~    ~~return Functions.BIG_OMEGA.i(i);		%F
+A340758	wpartsf1	0	n -> SU(1, n/4, k -> SU(k, (n-k)/3, j -> SU(j, (n-j-k)/2, i -> { final int omk = eval1(k); return ZV((omk == eval1(j) && omk == eval1(i) && omk == eval1(n-i-j-k) ? 1 : 0));} )))		~~    ~~return Functions.OMEGA.i(i);		%F
+A340760	wpartsum	0	n -> SU(1, n/4, k -> SU(k, (n-k)/3, j -> SU(j, (n-j-k)/2, i -> ZV((j & 1) == (i & 1) && (i & 1) == ((n-i-j-k) & 1) ? 1 : 0))))		~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi		%F		#F
+A341113	prepend	0	new ContinuedFractionNumeratorSequence( 0, new A010774())	1
+A341114	prepend	0	new ContinuedFractionDenominatorSequence( 0, new A010774())	0
+A343127	wpartsf2	1	n -> SU(1, n/3, j -> SU(j, (n-j)/2, i -> ZV(eval2(i*j,(i+j)) * eval2(i*(n-i-j),(n-j)) * eval2(j*(n-i-j),(n-i)))))		~~    ~~final Q qv = new Q(i, j);~~return qv.ceiling().intValue() - qv.floor().intValue(); // fchi		%F
+A343399	wpartsf2	1	n -> SU(1, n/3, j -> SU(j, (n-j)/2, i -> ZV(Integer.signum(eval2(i,j) + eval2((n-i-j),i) + eval2((n-i-j),j)) * (1 - (j == i ? 1 : 0)) * (1 - (n-j == 2*i ? 1 : 0)))))		~~    ~~final Q qv = new Q(i, j);~~return qv.ceiling().intValue() - qv.floor().intValue(); // fchi		%F
+A344245	wpartsf1	20	n -> SU(1, n/5, l -> SU(l, (n-l)/4, k -> SU(k, (n-k-l)/3, j -> SU(j, (n-j-k-l)/2, i -> ZV((eval1(l) == 2 && eval1(k) == 2 && eval1(j) == 2 && eval1(i) == 2 && eval1(n-i-j-k-l) == 2 ? 1 : 0))))))		~~    ~~return Functions.BIG_OMEGA.i(i);		%F
+A344246	wpartsf1	24	n -> SU(1, n/6, m -> SU(m, (n-m)/5, l -> SU(l, (n-l-m)/4, k -> SU(k, (n-k-l-m)/3, j -> SU(j, (n-j-k-l-m)/2, i -> ZV((eval1(m) == 2 && eval1(l) == 2 && eval1(k) == 2 && eval1(j) == 2 && eval1(i) == 2 && eval1(n-i-j-k-l-m) == 2 ? 1 : 0)))))))		~~    ~~return Functions.BIG_OMEGA.i(i);		%F
+A344254	wpartsf1	28	n -> SU(1, n/7, o -> SU(o, (n-o)/6, m -> SU(m, (n-m-o)/5, l -> SU(l, (n-l-m-o)/4, k -> SU(k, (n-k-l-m-o)/3, j -> SU(j, (n-j-k-l-m-o)/2, i -> ZV((eval1(o) == 2 && eval1(m) == 2 && eval1(l) == 2 && eval1(k) == 2 && eval1(j) == 2 && eval1(i) == 2 && eval1(n-i-j-k-l-m-o) == 2 ? 1 : 0))))))))		~~    ~~return Functions.BIG_OMEGA.i(i);		%F
+A344255	wpartsf1	32	n -> SU(1, n/8, p -> SU(p, (n-p)/7, o -> SU(o, (n-o-p)/6, m -> SU(m, (n-m-o-p)/5, l -> SU(l, (n-l-m-o-p)/4, k -> SU(k, (n-k-l-m-o-p)/3, j -> SU(j, (n-j-k-l-m-o-p)/2, i -> ZV((eval1(p) == 2 && eval1(o) == 2 && eval1(m) == 2 && eval1(l) == 2 && eval1(k) == 2 && eval1(j) == 2 && eval1(i) == 2 && eval1(n-i-j-k-l-m-o-p) == 2 ? 1 : 0)))))))))		~~    ~~return Functions.BIG_OMEGA.i(i);		%F
+A344256	wpartsf1	36	n -> SU(1, n/9, q -> SU(q, (n-q)/8, p -> SU(p, (n-p-q)/7, o -> SU(o, (n-o-p-q)/6, m -> SU(m, (n-m-o-p-q)/5, l -> SU(l, (n-l-m-o-p-q)/4, k -> SU(k, (n-k-l-m-o-p-q)/3, j -> SU(j, (n-j-k-l-m-o-p-q)/2, i -> ZV((eval1(q) == 2 && eval1(p) == 2 && eval1(o) == 2 && eval1(m) == 2 && eval1(l) == 2 && eval1(k) == 2 && eval1(j) == 2 && eval1(i) == 2 && eval1(n-i-j-k-l-m-o-p-q) == 2 ? 1 : 0))))))))))		~~    ~~return Functions.BIG_OMEGA.i(i);		%F
+A344257	wpartsf1	40	n -> SU(1, n/10, r -> SU(r, (n-r)/9, q -> SU(q, (n-q-r)/8, p -> SU(p, (n-p-q-r)/7, o -> SU(o, (n-o-p-q-r)/6, m -> SU(m, (n-m-o-p-q-r)/5, l -> SU(l, (n-l-m-o-p-q-r)/4, k -> SU(k, (n-k-l-m-o-p-q-r)/3, j -> SU(j, (n-j-k-l-m-o-p-q-r)/2, i -> ZV((eval1(r) == 2 && eval1(q) == 2 && eval1(p) == 2 && eval1(o) == 2 && eval1(m) == 2 && eval1(l) == 2 && eval1(k) == 2 && eval1(j) == 2 && eval1(i) == 2 && eval1(n-i-j-k-l-m-o-p-q-r) == 2 ? 1 : 0)))))))))))		~~    ~~return Functions.BIG_OMEGA.i(i);		%F
+A348541	wpartsf2	1	n -> SU(1, n/3, j -> SU(j, (n-j)/2, i -> ZV(eval2(j*j + i*i + (n-i-j)*(n-i-j), n))))		~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi		%F
+A355248	wpartsum	0	n -> SU(1, n/3, j -> SU(j, (n-j)/2, i -> ZV(Functions.SIGMA0.i(j) == Functions.SIGMA0.i(i) && Functions.SIGMA0.i(i) == Functions.SIGMA0.i(n-i-j) ? 1 : 0)))		void		%F
+A356919	wpartsf2	1	n -> SU(1, n/5, l -> SU(l, (n-l)/4, k -> SU(k, (n-k-l)/3, j -> SU(j, (n-j-k-l)/2, i -> ZV(eval2(n,l) * eval2(n,k) * eval2(n,j) * eval2(n,i) * eval2(n,(n-i-j-k-l)))))))		~~    ~~final Q qv = new Q(i, j);~~return 1 - qv.ceiling().intValue() + qv.floor().intValue(); // f1chi		%F
+A363322	wpartsf2	1	n -> SU(1, n/4, k -> SU(k, (n-k)/3, j -> SU(j, (n-j-k)/2, i -> ZV(eval2(n, i) + eval2(n, j) + eval2(n, k) + eval2(n, n-i-j-k)))))		~~    ~~return Functions.GCD.i(i, j) == 1 ? 1 : 0;		%F
+A363323	wpartsf2	1	n -> SU(1, n/5, l -> SU(l, (n-l)/4, k -> SU(k, (n-k-l)/3, j -> SU(j, (n-j-k-l)/2, i -> ZV(eval2(n, i) + eval2(n, j) + eval2(n, k) + eval2(n, l) + eval2(n, n-i-j-k-l))))))		~~    ~~return Functions.GCD.i(i, j) == 1 ? 1 : 0;		%F
+A363324	wpartsf2	1	n -> SU(1, n/6, m -> SU(m, (n-m)/5, l -> SU(l, (n-l-m)/4, k -> SU(k, (n-k-l-m)/3, j -> SU(j, (n-j-k-l-m)/2, i -> ZV(eval2(n, i) + eval2(n, j) + eval2(n, k) + eval2(n, l) + eval2(n, m) + eval2(n, n-i-j-k-l-m)))))))		~~    ~~return Functions.GCD.i(i, j) == 1 ? 1 : 0;		%F
+A363325	wpartsf2	1	n -> SU(1, n/7, o -> SU(o, (n-o)/6, m -> SU(m, (n-m-o)/5, l -> SU(l, (n-l-m-o)/4, k -> SU(k, (n-k-l-m-o)/3, j -> SU(j, (n-j-k-l-m-o)/2, i -> ZV(eval2(n, i) + eval2(n, j) + eval2(n, k) + eval2(n, l) + eval2(n, m) + eval2(n, o) + eval2(n, n-i-j-k-l-m-o))))))))		~~    ~~return Functions.GCD.i(i, j) == 1 ? 1 : 0;		%F
+A363326	wpartsf2	1	n -> SU(1, n/8, p -> SU(p, (n-p)/7, o -> SU(o, (n-o-p)/6, m -> SU(m, (n-m-o-p)/5, l -> SU(l, (n-l-m-o-p)/4, k -> SU(k, (n-k-l-m-o-p)/3, j -> SU(j, (n-j-k-l-m-o-p)/2, i -> ZV(eval2(n, i) + eval2(n, j) + eval2(n, k) + eval2(n, l) + eval2(n, m) + eval2(n, o) + eval2(n, p) + eval2(n, n-i-j-k-l-m-o-p)))))))))		~~    ~~return Functions.GCD.i(i, j) == 1 ? 1 : 0;		%F
+A363327	wpartsf2	1	n -> SU(1, n/9, q -> SU(q, (n-q)/8, p -> SU(p, (n-p-q)/7, o -> SU(o, (n-o-p-q)/6, m -> SU(m, (n-m-o-p-q)/5, l -> SU(l, (n-l-m-o-p-q)/4, k -> SU(k, (n-k-l-m-o-p-q)/3, j -> SU(j, (n-j-k-l-m-o-p-q)/2, i -> ZV(eval2(n, i) + eval2(n, j) + eval2(n, k) + eval2(n, l) + eval2(n, m) + eval2(n, o) + eval2(n, p) + eval2(n, q) + eval2(n, n-i-j-k-l-m-o-p-q))))))))))		~~    ~~return Functions.GCD.i(i, j) == 1 ? 1 : 0;		%F
+A363328	wpartsf2	1	n -> SU(1, n/10, r -> SU(r, (n-r)/9, q -> SU(q, (n-q-r)/8, p -> SU(p, (n-p-q-r)/7, o -> SU(o, (n-o-p-q-r)/6, m -> SU(m, (n-m-o-p-q-r)/5, l -> SU(l, (n-l-m-o-p-q-r)/4, k -> SU(k, (n-k-l-m-o-p-q-r)/3, j -> SU(j, (n-j-k-l-m-o-p-q-r)/2, i -> ZV(eval2(n, i) + eval2(n, j) + eval2(n, k) + eval2(n, l) + eval2(n, m) + eval2(n, o) + eval2(n, p) + eval2(n, q) + eval2(n, r) + eval2(n, n-i-j-k-l-m-o-p-q-r)))))))))))		~~    ~~return Functions.GCD.i(i, j) == 1 ? 1 : 0;		%F
+A376110	multrar	0	(self, n) -> FA(n).-(SU(1, n/2, i -> FA(i).+(self.a(i)).*(FA(n-2*i))))	""		a(n) = n! - Sum_{i=1..floor(n/2)} (i! + a(i))*(n-2*i)!.
+A381860	lambdan	0	n -> RU(0, n, k -> QV(BI(3*k+1, k)).*(BI(3*k+3, n-k))./(3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(3*k+1, k)*binomial(3*k+3, n-k)/(3*k+1))	_	_	_
+A381861	lambdan	0	n -> RU(0, n, k -> QV(BI(n+k+1, k)).*(BI(4*n-4*k+4, n-k))./(n+k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+k+1, k)*binomial(4*n-4*k+4, n-k)/(n+k+1))	_	_	_
+A381867	lambdan	0	n -> RU(0, n, k -> QV(BI(3*k+1, k)).*(BI(n+k+1, n-k))./(3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(3*k+1, k)*binomial(n+k+1, n-k)/(3*k+1))	_	_	_
+A381875	lambdan	0	n -> RU(0, n, k -> QV(BI(n+k+1, k)).*(BI(3*n-3*k+1, n-k))./(n+k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+k+1, k)*binomial(3*n-3*k+1, n-k)/(n+k+1))	_	_	_
+A381876	lambdan	0	n -> RU(0, n, k -> QV(BI(n+k+1, k)).*(BI(4*n-4*k+2, n-k))./(n+k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+k+1, k)*binomial(4*n-4*k+2, n-k)/(n+k+1))	_	_	_
+A381877	lambdan	0	n -> RU(0, n, k -> QV(BI(n+k+1, k)).*(BI(5*n-5*k+3, n-k))./(n+k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+k+1, k)*binomial(5*n-5*k+3, n-k)/(n+k+1))	_	_	_
+A381905	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(n+1, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(n+1, n-k)/(n+3*k+1))	_	_	_
+A381906	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(2*n+2, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(2*n+2, n-k)/(n+3*k+1))	_	_	_
+A381907	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(3*n+3, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(3*n+3, n-k)/(n+3*k+1))	_	_	_
+A381908	lambdan	0	n -> RU(0, n, k -> QV(BI(n+4*k+1, k)).*(BI(n+1, n-k))./(n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+4*k+1, k)*binomial(n+1, n-k)/(n+4*k+1))	_	_	_
+A381909	lambdan	0	n -> RU(0, n, k -> QV(BI(n+4*k+1, k)).*(BI(2*n+2, n-k))./(n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+4*k+1, k)*binomial(2*n+2, n-k)/(n+4*k+1))	_	_	_
+A381910	lambdan	0	n -> RU(0, n, k -> QV(BI(n+4*k+1, k)).*(BI(3*n+3, n-k))./(n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+4*k+1, k)*binomial(3*n+3, n-k)/(n+4*k+1))	_	_	_
+A381911	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(2*n-k, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(2*n-k, n-k)/(n+3*k+1))	_	_	_
+A381912	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(3*n-k+1, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(3*n-k+1, n-k)/(n+3*k+1))	_	_	_
+A381913	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(4*n-k+2, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(4*n-k+2, n-k)/(n+3*k+1))	_	_	_
+A381914	lambdan	0	n -> RU(0, n, k -> QV(BI(n+4*k+1, k)).*(BI(2*n-k, n-k))./(n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+4*k+1, k)*binomial(2*n-k, n-k)/(n+4*k+1))	_	_	_
+A381915	lambdan	0	n -> RU(0, n, k -> QV(BI(n+4*k+1, k)).*(BI(3*n-k+1, n-k))./(n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+4*k+1, k)*binomial(3*n-k+1, n-k)/(n+4*k+1))	_	_	_
+A381916	lambdan	0	n -> RU(0, n, k -> QV(BI(n+4*k+1, k)).*(BI(4*n-k+2, n-k))./(n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+4*k+1, k)*binomial(4*n-k+2, n-k)/(n+4*k+1))	_	_	_
+A381937	lambdan	0	n -> RU(0, n, k -> QV(BI(4*k+1, k)).*(BI(k+1, n-k))./(4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(4*k+1, k)*binomial(k+1, n-k)/(4*k+1))	_	_	_
+A381938	lambdan	0	n -> RU(0, n, k -> QV(BI(4*k+1, k)).*(BI(2*k+2, n-k))./(4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(4*k+1, k)*binomial(2*k+2, n-k)/(4*k+1))	_	_	_
+A381939	lambdan	0	n -> RU(0, n, k -> QV(BI(4*k+1, k)).*(BI(3*k+3, n-k))./(4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(4*k+1, k)*binomial(3*k+3, n-k)/(4*k+1))	_	_	_
+A381940	lambdan	0	n -> RU(0, n, k -> QV(BI(5*k+1, k)).*(BI(k+1, n-k))./(5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(5*k+1, k)*binomial(k+1, n-k)/(5*k+1))	_	_	_
+A381941	lambdan	0	n -> RU(0, n, k -> QV(BI(5*k+1, k)).*(BI(2*k+2, n-k))./(5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(5*k+1, k)*binomial(2*k+2, n-k)/(5*k+1))	_	_	_
+A381942	lambdan	0	n -> RU(0, n, k -> QV(BI(5*k+1, k)).*(BI(3*k+3, n-k))./(5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(5*k+1, k)*binomial(3*k+3, n-k)/(5*k+1))	_	_	_
+A381943	lambdan	0	n -> RU(0, n, k -> QV(BI(4*k+1, k)).*(BI(n+k+1, n-k))./(4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(4*k+1, k)*binomial(n+k+1, n-k)/(4*k+1))	_	_	_
+A381944	lambdan	0	n -> RU(0, n, k -> QV(BI(4*k+1, k)).*(BI(n+2*k+2, n-k))./(4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(4*k+1, k)*binomial(n+2*k+2, n-k)/(4*k+1))	_	_	_
+A381945	lambdan	0	n -> RU(0, n, k -> QV(BI(5*k+1, k)).*(BI(n+k+1, n-k))./(5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(5*k+1, k)*binomial(n+k+1, n-k)/(5*k+1))	_	_	_
+A381947	lambdan	0	n -> RU(0, n, k -> QV(BI(5*k+1, k)).*(BI(n+2*k+2, n-k))./(5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(5*k+1, k)*binomial(n+2*k+2, n-k)/(5*k+1))	_	_	_
+---- 2025-03-12 19:40:00
+A343100	wpartsum	1	n -> SU(1, n/3, j -> SU(j, (n-j)/2, i -> ZV(Integer.signum(1/Functions.GCD.i(i, j) + 1/Functions.GCD.i(i, n-i-j) + 1/Functions.GCD.i(j, n-i-j)))))		void		%F
+---- 2025-03-12 20:33:27
+A326455	sintrif	0	(term, n) -> term.*(n)	""	new PrependSequence(0, new A259198(), 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0)
+A326540	sintrif	0	(term, n) -> term.*(n)	""	new PrependSequence(0, new A259200(), 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0)
+A326678	sintrif	0	(term, n) -> term.*(n)	""	new PrependSequence(0, new A259201(), 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0)

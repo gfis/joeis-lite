@@ -1,0 +1,117 @@
+---- 2025-04-09 18:55:23
+A190530	filnum	1	2	k -> !Predicates.SQUARE_FREE.is(Z2(k).-(3))	Numbers k such that 2^k - 3 is not squarefree.
+A190608	multia	1	"1,1"	(self, n) -> self.a(n/2 + ((n & 1) == 1 ? 1 : 0)).-(self.a(n/2)).*(2)	(a(ceiling(n/2))-a(floor(n/2))).	sign	1..93	nyi	_N. J. A. Sloane_, based on a posting by Benoit CLOITRE to the S
+A190609	multia	1	"1,1"	(self, n) -> self.a(n/2 + ((n & 1) == 1 ? 1 : 0)).-(self.a(n/2)).*(3)	(a(ceiling(n/2))-a(floor(n/2))).	sign	1..88	nyi	_N. J. A. Sloane_, based on a posting by Benoit CLOITRE to the S
+A190610	multia	1	"1,1"	(self, n) -> self.a(n/2 + ((n & 1) == 1 ? 1 : 0)).-(self.a(n/2))	a(ceiling(n/2))-a(floor(n/2)).	sign	1..101	nyi	_N. J. A. Sloane_, based on a posting by Benoit CLOITRE to the S
+A190612	filnum	1	2	k -> TAU(k - 1).+(TAU(k + 1)).mod(TAU(k)).isZero()	Numbers k such that (tau(k-1) + tau(k+1))/tau(k) is an integer, where tau(k)=F000005(k).	nonn	1..10000	nyi	_Juri-Stepan Gerasimov_
+A190614	filtpos	1	0	new A190613()	v -> v.compareTo(Z.ZERO) < 0	Values of n where E190613(n) < 0.	nonn	1..57	nyi	_Franklin T. Adams-Watters_
+A190907	trilambn	0	0	0	(n,k) -> BI(n + k, n - k).*(FA(k))./(FA(k/2).*(FA((k + 2)/2)))	nonn,tabl	0..54	nyi	_Peter Luschny_
+A190908	lambdan	0	n -> SU(0, n, k -> BI(n + k, n - k).*(FA(k))./(FA(k/2).*(FA((k + 2)/2))))	nonn	0..23	nyi	_Peter Luschny_
+A190909	trilambn	0	0	0	(n,k) -> BI(n + k, n - k).*(FA(k))./(FA(k/2).^(2))	nonn,tabl	0..54	nyi	_Peter Luschny_
+A190910	lambdan	0	n -> SU(0, n, k -> BI(n + k, n - k).*(FA(k))./(FA(k/2).^(2)))	nonn	0..24	nyi	_Peter Luschny_
+A191300	lambdan	0	n -> n == 0 ? ZV(1) : SU(1, n, k -> Z_1(n-k).*(RU(0, 2*n, i -> QV(Z2(i)).*(S1(i + k, k)).*(BI(2*n - k - 1, i + k - 1))./(FA(i + k))).*(FA(2*n - 1)).num()))	n>0, a(0)=1.
+A293665	multia	0	"1"	(self, n) -> SD(n, d -> self.a(n-d)).negate()	sign    0..65   nyi     _Ilya Gutkovskiy_
+A307776	multia	1	"1"	(self, n) -> SD(n - 1, d -> Z_1((n - 1)/d+1).*(self.a(d)))	sign    1..75   nyi     _Ilya Gutkovskiy_
+A307777	multia	1	"1"	(self, n) -> SD(n - 1, d -> Z_1((n - 1)/d+d).*(self.a(d)))	sign    1..71   nyi     _Ilya Gutkovskiy_
+A307778	multia	1	"1"	(self, n) -> SD(n - 1, d -> Z_1(d+1).*(self.a(d)))	sign    1..77   nyi     _Ilya Gutkovskiy_
+A307779	multia	1	"1"	(self, n) -> SD(n - 1, d -> ((n - 1)/d & 1) == 0 ? ZV(0) : self.a(d))	nonn    1..65   nyi     _Ilya Gutkovskiy_
+A307780	multia	1	"1"	(self, n) -> SD(n - 1, d -> ((n - 1)/d & 1) == 0 ? ZV(0) : self.a(d).^((n - 1)/d))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A307817	multia	1	"1"	(self, n) -> SD(n - 1, d -> SIGMA((n - 1)/d).*(self.a(d)))	where sigma = sum of divisors (F000203))	nonn    1..50   nyi     _Ilya Gutkovskiy_
+A307837	multia	1	"1"	(self, n) -> SD(n - 1, d -> Functions.LIOUVILLE_LAMBDA.z(d).*(self.a(d)))	(F008836))	sign    1..100  nyi     _Ilya Gutkovskiy_
+A318372	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a(d).*(d))
+A318583	multia	1	"1,1"	(self, n) -> SD(n - 2, d -> MU((n - 2)/d).*(self.a(d)))
+A318845	multia	1	""	(self, n) -> SD(n, d -> Z_1(n/d + 1).*(SD(d, j -> SIGMA(j))))	nonn,mult       1..70   nyi     _Ilya Gutkovskiy_
+A319133	multia	1	"1,1"	(self, n) -> SD(n - 2, d -> TAU((n - 2)/d).*(self.a(d)))	where tau = number of divisors (F000005). nonn    1..4240 nyi     _Ilya Gutkovskiy_
+A325211	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : TAU(n/d).*(self.a(d)))	where tau = F000005)	nonn    1..70   nyi     _Ilya Gutkovskiy_
+A325212	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : SIGMA(n/d).*(self.a(d)))	where sigma = F000203)	nonn    1..60   nyi     _Ilya Gutkovskiy_
+A325257	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PM(n/d).*(self.a(d)))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A325891	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PM(n/d).*(self.a(d))).negate()	sign    1..55   nyi     _Ilya Gutkovskiy_
+A326824	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PHI(n/d).*(d).*(self.a(d)))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A327243	multia	1	""	(self, n) -> RD(n, d -> new Q(Z_1(n - d), FA(n/d))).*(FA(n)).num()	nonn    1..22   nyi     _Ilya Gutkovskiy_
+A327275	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : F001615(n/d).*(self.a(d)))	where psi = F001615)	nonn    1..60   nyi     _Ilya Gutkovskiy_
+A327587	multia	1	""	(self, n) -> RD(n, d -> new Q(Z_1(n - d), FA(n/d).^(d))).*(FA(n)).num()	nonn    1..22   nyi     _Ilya Gutkovskiy_
+A328967	multia	1	"1"	(self, n) -> ZV(1).-(SU(1, n - 1, k -> self.a((n - 1)/k)))
+A330017	multia	1	"1"	(self, n) -> SD(n - 1, d -> BI(n - 1, d).*(self.a(d)))	nonn    1..30   nyi     _Ilya Gutkovskiy_
+A331520	multia	0	"1,1"	(self, n) -> SU(0, n - 2, k -> (BI(n - 2, k).and(ZV(1))).*(self.a(k)))	nonn    0..47   nyi     _Ilya Gutkovskiy_
+A332238	multia	1	""	(self, n) -> ZV(n).^(n - 1).-(SU(1, n - 1, k -> ZV(k).^(k - 1).*(self.a(n - k))))	nonn    1..20   nyi     _Ilya Gutkovskiy_
+A332239	multia	1	""	(self, n) -> ZV(n).^(n - 2).-(SU(1, n - 1, k -> ZV(k).^(k - 2).*(self.a(n - k))))	nonn    1..20   nyi     _Ilya Gutkovskiy_
+A332791	multia	1	"1"	(self, n) -> SD(n - 1, d -> PHI(d).*(self.a(d)))	nonn    1..495  nyi     _Ilya Gutkovskiy_
+A332792	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PHI(d).*(self.a(d)))	nonn    1..20000        nyi     _Ilya Gutkovskiy_
+A332846	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> self.a(k).*(new Q(n - 1, k).ceiling()))	nonn    1..33   nyi     _Ilya Gutkovskiy_
+A333050	multia	1	"1"	(self, n) -> SD(n - 1, d -> Functions.GCD.i(d, (n - 1)/d) != 1 ? ZV(0) : self.a(d))	nonn    1..60   nyi     _Ilya Gutkovskiy_
+A333051	multia	1	"1"	(self, n) -> SD(n - 1, d -> Functions.GCD.i(d, (n - 1)/d) != 1 ? ZV(0) : self.a((n - 1)/d).*(self.a(d)))	nonn    1..3320 nyi     _Ilya Gutkovskiy_
+A333120	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a(d).^(2))	nonn    1..11   nyi     _Ilya Gutkovskiy_
+A333121	multia	1	"1"	(self, n) -> PD(n - 1, d -> self.a(d).+(1))	nonn    1..19   nyi     _Ilya Gutkovskiy_
+A333392	multia	0	"1"	(self, n) -> Z2(Functions.PRIME.i(n) - 1).+(SU(1, n, k -> Z2(Functions.PRIME.i(n) -Functions.PRIME.i(k))))	nonn    0..21   nyi     _Ilya Gutkovskiy_
+A333981	multia	0	"0"	(self, n) -> ZV(2).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(2).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	a(0) = 0; a(n) = 2^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 2^(k-1) * (n-k) * a(n-k).   nonn    0..245  nyi     _Ilya Gutkovskiy_
+A333982	multia	0	"0"	(self, n) -> ZV(3).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(3).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	a(0) = 0; a(n) = 3^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 3^(k-1) * (n-k) * a(n-k).   nonn    0..18   nyi     _Ilya Gutkovskiy_
+A333983	multia	0	"0"	(self, n) -> ZV(4).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(4).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	a(0) = 0; a(n) = 4^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 4^(k-1) * (n-k) * a(n-k).   nonn    0..17   nyi     _Ilya Gutkovskiy_
+A333984	multia	0	"0"	(self, n) -> ZV(5).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(5).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	a(0) = 0; a(n) = 5^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 5^(k-1) * (n-k) * a(n-k).   nonn    0..17   nyi     _Ilya Gutkovskiy_
+A333985	multia	0	"0"	(self, n) -> ZV(6).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(6).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	a(0) = 0; a(n) = 6^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 6^(k-1) * (n-k) * a(n-k).   nonn    0..17   nyi     _Ilya Gutkovskiy_
+A335062	multia	1	""	(self, n) -> ZV(1).-(SD(n, d -> d <= 1 ? ZV(0) : Z_1(d).*(self.a(n/d))))	sign    1..20000        nyi     _Ilya Gutkovskiy_
+A336271	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k+1).*(BI(n,k).^(2)).*(BI(2*k, k)).*(self.a(n - k)))	nonn    0..17   nyi     _Ilya Gutkovskiy_
+A336436	multia	0	"0"	(self, n) -> FA(n - 1).^(3).+(SU(1, n - 1, k -> BI(n,k).*(FA(n - k - 1)).^(3).*(k).*(self.a(k)))./(n))	nonn    0..14   nyi     _Ilya Gutkovskiy_
+A337151	multia	0	""	(self, n) -> RU(0, n, k -> QV(Z_1(n - k)).*(k + 1)./(FA(n - k).^(2))).*(FA(n).^(2)).num()
+A339755	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))).+(1)	nonn    1..35   nyi     _Ilya Gutkovskiy_
+A340789	multia	0	""	(self, n) -> RU(1, n, k -> QV(Z_1(k + 1))./(FA(k).^(2))).*(FA(n).^(2)).num()	nonn    0..17   nyi     _Ilya Gutkovskiy_
+A341639	multia	1	"1"	(self, n) -> SD(n - 1, d -> PHI(d).*(self.a(d)).*(self.a((n - 1)/d)))	nonn    1..25   nyi     _Ilya Gutkovskiy_
+A343190	multia	1	"1,1,1,1,1"	(self, n) -> SD(n - 5, d -> MU((n - 5)/d).*(self.a(d)))	sign    1..75   nyi     _Ilya Gutkovskiy_
+A345136	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : BI(n,d).*(self.a(d)))	nonn    1..35   nyi     _Ilya Gutkovskiy_
+A345138	multia	1	"1,0"	(self, n) -> SD(n - 2, d -> d == n - 2 ? ZV(0) : self.a(d))	nonn    1..95   nyi     _Ilya Gutkovskiy_
+A345139	multia	1	"1"	(self, n) -> self.a(n - 1).+(SD(n, d -> d == n ? ZV(0) : self.a(d)))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A345141	multia	1	"1,0"	(self, n) -> SD(n - 2, d -> self.a(d))	nonn    1..70   nyi     _Ilya Gutkovskiy_
+A346034	multia	1	"1,0"	(self, n) -> SD(n - 2, d -> MU((n - 2)/d).*(self.a(d)))	sign    1..70   nyi     _Ilya Gutkovskiy_
+A346118	multia	1	"1"	(self, n) -> SD(n - 1, d -> MU((n - 1)/d).*(self.a(d))).+(1)	sign    1..70   nyi     _Ilya Gutkovskiy_
+A346188	multia	1	"1"	(self, n) -> SD(n - 1, d -> BI(n - 1, d).*(self.a((n - 1)/d)))	nonn    1..23   nyi     _Ilya Gutkovskiy_
+A347031	multia	1	""	(self, n) -> ZV(1).-(SU(2, n, k -> Z_1(k).*(self.a(n/k))))	sign    1..10000        nyi     _Ilya Gutkovskiy_
+A347667	trilambn	0	0	0	(n, k) -> SU(0, k, j -> BI(n,j).*(FA(j)))	nonn,tabl       0..54   nyi     _Ilya Gutkovskiy_
+A348597	multia	0	""	(self, n) -> RU(0, n/3, k -> new Q(Z_1(k), FA(3*k))).*(FA(n)).num()	nonn    0..22   nyi     _Ilya Gutkovskiy_
+A348661	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : ZV(d).*(self.a(d).^(n/d)))	nonn    1..52   nyi     _Ilya Gutkovskiy_
+A351407	multia	1	"1"	(self, n) -> SD(n - 1, d -> Z_1((n - 1)/d).*(self.a(d)))	sign    1..54   nyi     _Ilya Gutkovskiy_
+A351620	multia	1	"1"	(self, n) -> self.a(n - 1).+(SU(2, n, k -> self.a(n/k)))	nonn    1..50   nyi     _Ilya Gutkovskiy_
+A351621	multia	1	"1"	(self, n) -> self.a(n - 1).+(1).+(SU(2, n, k -> self.a(n/k)))	nonn    1..50   nyi     _Ilya Gutkovskiy_
+A351787	multia	1	"1"	(self, n) -> self.a(n - 1).+(SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))))	nonn    1..29   nyi     _Ilya Gutkovskiy_
+A351788	multia	1	"1"	(self, n) -> self.a(n - 1).+(SD(n, d -> d == 1 || d == n ? ZV(0) : self.a(n/d).*(self.a(d))))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A351797	multia	1	"1"	(self, n) -> self.a(n - 1).negate().+(SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))).*(2))	nonn    1..29   nyi     _Ilya Gutkovskiy_
+A352860	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> BI(n, k).*(Z2(k)).*(self.a(k)))	nonn    0..77   nyi     _Ilya Gutkovskiy_
+A353156	multia	0	"1"	(self, n) -> SU(1, n, k -> PM(k+1).*(self.a(n-k))).negate()	sign    0..38   nyi     _Ilya Gutkovskiy_
+A362430	polyx	0	"[[1]]"	",x,A,<3,-,exp"	0	1	E.g.f. satisfies A(x) = exp(x - x^3 * A(x)).
+A362431	polyx	0	"[[1]]"	",x,A,<4,-,exp"	0	1	E.g.f. satisfies A(x) = exp(x - x^4 * A(x)).
+A362480	polyx	0	"[[1]]"	",x,A,^2,<2,-,exp"	0	1	E.g.f. satisfies A(x) = exp(x - x^2 * A(x)^2).
+A362481	polyx	0	"[[1]]"	",x,A,^3,<3,-,exp"	0	1	E.g.f. satisfies A(x) = exp(x - x^3 * A(x)^3).
+A362482	polyx	0	"[[1]]"	",x,A,^4,<4,-,exp"	0	1	E.g.f. satisfies A(x) = exp(x - x^4 * A(x)^4).
+A362492	polyx	0	"[[1]]"	",x,A,^2,<2,2,/,-,exp"	0	1	E.g.f. satisfies A(x) = exp(x - x^2/2 * A(x)^2).
+A362493	polyx	0	"[[1]]"	",x,A,^3,<3,3,/,-,exp"	0	1	E.g.f. satisfies A(x) = exp(x - x^3/3 * A(x)^3).
+A362494	polyx	0	"[[1]]"	",x,A,^4,<4,4,/,-,exp"	0	1	E.g.f. satisfies A(x) = exp(x - x^4/4 * A(x)^4).
+A362673	polyx	0	"[[1],[0,0,1]]]"	",x,p1,exp,*,A,/,exp"	0	1	E.g.f. satisfies A(x) = exp( x * exp(x^2) / A(x) ).
+A362674	polyx	0	"[[1],[0,0,0,1]]]"	",x,p1,exp,*,A,/,exp"	0	1	E.g.f. satisfies A(x) = exp( x * exp(x^3) / A(x) ).
+A362736	polyx	0	"[[1],[0,0,1]]"	",p1,x,A,/,+,exp"	0	1	E.g.f. satisfies A(x) = exp(x^2 + x / A(x)).
+A362737	polyx	0	"[[1],[0,0,0,1]]"	",p1,x,A,/,+,exp"	0	1	E.g.f. satisfies A(x) = exp(x^3 + x / A(x)).
+A366298	polyx	0	"[[1],[-1],[-2],[-3]]"	",1,p2,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,/"	0	1	e.g.f. 1 / (-2 + Sum_{k=1..3} exp(-k*x)).  nonn    0..18   nyi     _Ilya Gutkovskiy_
+A366299	polyx	0	"[[1],[-1],[-2],[-3],[-4]]"	",1,p3,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,p4,<1,exp,+,/"	0	1	Expansion of e.g.f. 1 / (-3 + Sum_{k=1..4} exp(-k*x)).  nonn    0..17   nyi     _Ilya Gutkovskiy_
+A366300	polyx	0	"[[1],[-1],[-2],[-3],[-4],[-5]]"	",1,p4,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,p4,<1,exp,+,p5,<1,exp,+,/"	0	1	Expansion of e.g.f. 1 / (-4 + Sum_{k=1..5} exp(-k*x)).  nonn    0..16   nyi     _Ilya Gutkovskiy_
+A366301	polyx	0	"[[1],[-1],[-2],[-3],[-4],[-5],[-6]]"	",1,p5,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,p4,<1,exp,+,p5,<1,exp,+,p6,<1,exp,+,/"	0	1	Expansion of e.g.f. 1 / (-5 + Sum_{k=1..6} exp(-k*x)).  nonn    0..15   nyi     _Ilya Gutkovskiy_
+A366302	polyx	0	"[[1],[-1],[-2],[-3],[-4],[-5],[-6],[-7]"	",1,p6,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,p4,<1,exp,+,p5,<1,exp,+,p6,<1,exp,+,p7,<1,exp,+,/"	0	1	Expansion of e.g.f. 1 / (-6 + Sum_{k=1..7} exp(-k*x)).  nonn    0..15   nyi     _Ilya Gutkovskiy_
+A372618	multia	1	"1,1"	(self, n) -> SU(1, n - 2, k -> self.a(Functions.GCD.i(n - 2, k)))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A382709	lambdan	0	n -> new Q(Z2(n).-(1).*(FA(n)), Z2(n + 1)).num()	Numerator of (2^n - 1)*n! / 2^(n+1)
+A382797	filter	1	new A002858()	ODD	Odd Ulam numbers.	nonn,new	1..9957	nyi	_Shyam Sunder Gupta_
+A382798	filter	1	new A002858()	EVEN	Even Ulam numbers.	nonn,new	1..10160	nyi	_Shyam Sunder Gupta_
+A382805	lambdan	0	n -> SU(0, n, k -> Z_1(n-k).*(S1(n, k).*(FA(k)).^(2)))	sign,new	0..17	nyi	_Ilya Gutkovskiy_
+A382807	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(FA(k)).^(3))	sign,new	0..14	nyi	_Ilya Gutkovskiy_
+A382808	lambdan	0	n -> SU(0, n, k -> SA(n, k).*(FA(k)).^(3))	nonn,new	0..14	nyi	_Ilya Gutkovskiy_
+A382809	lambdan	0	n -> ZV(6*n + 1).*(12*n + 1).*(18*n + 1)	nonn,easy,new	0..30	nyi	_Stefano Spezia_
+A382826	lambdan	0	n -> SU(0, n, k -> FA(k).*(S1(n+1, k+1)).^(2))	nonn,new	0..15	nyi	_Seiichi Manyama_
+A382827	lambdan	0	n -> SU(0, n, k -> FA(k).*(FA(k+1).*(S1(n+1, k+1).^(2))))	nonn,new	0..15	nyi	_Seiichi Manyama_
+A382828	lambdan	0	n -> SU(0, n, k -> FA(k).^(2).*(BI(k+2,2)).*(S1(n+1, k+1).^(2)))	nonn,new	0..15	nyi	_Seiichi Manyama_
+A382830	lambdan	0	n -> SU(0, n, k -> BI(n + k - 1, k).*(SA(n, k)).*(FA(k)))	nonn,new	0..18	nyi	_Ilya Gutkovskiy_
+A382830	multia	0	""	(self, n) -> SU(0, n, k -> BI(n + k - 1, k).*(SA(n,k)).*(FA(k)))	nonn,new        0..18   nyi     _Ilya Gutkovskiy_
+A382853	lambdan	0	n -> SU(0, n, k -> BI(n + k - 1, k).*(FA(k).*(S1(n, k)).^(2)))	nonn,new	0..15	nyi	_Seiichi Manyama_
+A382859	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI((n - 1)*(k + 1), n - k)))	nonn,easy,new	0..19	nyi	_Seiichi Manyama_
+---- 2025-04-09 19:14:25
+A161632	polyx	0	"[[1]]"	",1,A,<1,exp,<1,+,^2"	0	1	E.g.f. satisfies A(x) = (1 + x*exp(x*A(x)))^2.
+A161633	polyx	0	"[[1]]"	",1,1,A,<1,exp,<1,-,/"	0	1	E.g.f. satisfies A(x) = 1/(1 - x*exp(x*A(x))).
+A162659	polyx	0	"[[1]]"	",A,<1,sub,<1,exp"	0	1	E.g.f. satisfies A(x) = exp(x*A(x*A(x))).
+A190503	filnum	1	1	k -> SIGMA(k).mod(SIGMA(PHI(k))).isZero()	Numbers k such that sigma(phi(k)) divides sigma(k).
+A190645	filnum	1	3	k -> { final Z tk = TAU(k); return tk.equals(ZV(12)) && TAU(k - 2).equals(tk) && tk.equals(TAU(k + 2)); }	Numbers n such that d(n-2) = d(n) = d(n+2) = 12 where d(n)=F000005(n).	nonn	1..5000	nyi	_Juri-Stepan Gerasimov_
+A191368	lambdan	0	n -> n == 0 ? ZV(1) : RU(1, n, k -> new Q(S1(k + 2, 2).*(S2(n, k)), ZV(k + 1).*(k + 2))).*(FA(n + 1)).*(Z_1(n)).*(2).num()	Expansion of (x*exp(x)/(exp(x)-1))^2 = sum(n>=0, a(n)/(n!*(n+1)!)*x^n).	sign	0..20	nyi	_Vladimir Kruchinin_
+A320155	polyx	1	"[[1],[-1,-1]]"	",x,x,exp,p1,+,sub,+"	0	1	E.g.f. satisfies A(x) = x + A(exp(x)-x-1). - _Ira M. Gessel_, Nov 17 2021

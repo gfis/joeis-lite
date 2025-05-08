@@ -1,0 +1,82 @@
+---- 2025-03-28 09:20:08
+A077053	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	""	new A075768(), new A075769()
+A108577	lingf	1	0,0,0,0,0,0,0,0,0,0,1,0,2	1,-2,1,0,-1,2,-2,2,-1,0,1,-2,1
+A133296	lingf	0	0,2,2,2,2,11,20,20,20,20	1,-1,0,0,0,0,0,0,0,-100,100
+A137222	partsun	1	new A087429()			Partial sums of A087429.
+A145163	convprod	0	2	new A145162()	Self-convolution square of A145162.
+A145168	convprod	0	2	new A145167()	Self-convolution square of A145167.
+A145169	convprod	0	3	new A145167()	Self-convolution cube of A145167.
+A180584	lingf	1	0,1,-13,122,-515,284,164,23,4151,4808,4528,-371,-3646,-5785,1951,-340,-3396,1918,232,-180,136,40	1,-23,34,345,218,-22,-2919,-5041,-8806,-11998,-5873,1318,4467,11373,3848,-584,1018,-928,84,72,-40
+A212013	partsun	1	new A004736()			Partial sums of A004736. Other versions are A210983, A212123, A213363, A213373.
+A247884	lingf	1	0,9,-67,24,14,-56,21,7,5	1,-12,21,-9,-12,21,-10
+A306771	lingf	1	0,3,12,3	1,-1,-1,1
+A377322	lingf	0	1,2,4,2,1	1,-2,0,-2,1
+A378211	dirichinv	1	new A191161()	1	Dirichlet inverse of A191161, hypersigma variant 2.
+A380024	lingf	0	0,1,-7,13	1,-13,63,-135,108
+A380187	lingf	1	0,1,2,1,1,2,-5,7,-3,1,1	1,-1,0,0,0,0,0,0,-1,1
+A380249	lingf	0	1,-9,26,-23	1,-13,63,-135,108
+A380286	lingf	1	0,1,-1,2,-1,2,-2,1,-1	1,-2,2,-2,1
+A380696	lingf	0	1,1,-2,-1,-1	1,0,-2,0,-2,0,1
+A380823	lingf	0	15,-54,34,35,-28	1,-4,2,6,-4,-2,1
+A380996	lingf	0	3,-20,22	1,-9,20,-12
+A381196	lingf	0	1,26,13	1,-3,3,-1
+A381289	lingf	7	0,0,0,0,0,0,0,1,1,3,0,2,4,1,-1,1	1,-2,-1,3,1,-1,-4,3,3,-4,-1,1,3,-1,-2,1
+A381290	lingf	7	0,0,0,0,0,0,0,1,2,0,3,2,2,1,1	1,-2,-1,3,1,-1,-4,3,3,-4,-1,1,3,-1,-2,1
+A381291	lingf	9	0,0,0,0,0,0,0,0,0,1,1,-1,7,-4,6,4,-4,3,5,-3,1	1,-4,4,4,-11,8,0,-8,10,0,-8,0,10,-8,0,8,-11,4,4,-4,1
+A381350	lingf	9	0,0,0,0,0,0,0,0,0,1,1,-1,6,0,2,0,6,-1,1,1	1,-4,4,4,-11,8,0,-8,10,0,-8,0,10,-8,0,8,-11,4,4,-4,1
+A381351	lingf	10	0,0,0,0,0,0,0,0,0,0,1,-1,4,-6,15,-17,15,-6,4,-1,1	1,-6,15,-22,27,-36,42,-36,27,-23,21,-21,23,-27,36,-42,36,-27,22,-15,6,-1
+A381424	lingf	0	1,28,19	1,-3,3,-1
+A381534	lingf	1	0,1,2,1,-2,2	1,0,-3,0,3,0,-1
+A381643	lingf	0	0,0,0,3,-8	1,-14,77,-208,276,-144
+A381646	lingf	0	0,0,0,0,6,-16	1,-16,105,-362,692,-696,288
+A381705	lingf	1	0,3,-9,4	1,-5,7,-3
+A381794	lingf	1	0,8,-60,99,224,-832,707,-10,-76	1,-12,52,-88,-2,176,-161,-10,60,-16
+A381858	lingf	0	1	1,-1,-1,-2,-3,-2
+A381859	lingf	0	1,-1	1,-2,0,-1,0,1
+A381862	lingf	5	0,0,0,0,0,15,-5	1,-7,21,-35,35,-21,7,-1
+A382081	lingf	0	0,0,0,1,3,6,5	1,-7,21,-35,35,-21,7,-1
+A382084	lingf	0	1,-6,18,-32,51,-54,112	1,-7,21,-35,35,-21,7,-1
+A382154	lingf	0	1,4,2,4,1	1,0,-2,0,1
+A382155	lingf	0	1,2,4,2,5,0,-2	1,0,-2,0,1
+A382170	lingf	0	0,1,0,-5	1,-4,-2,-20,25
+A382171	lingf	0	0,1,0,-3	1,-4,6,-12,9
+---- 2025-03-28 10:15:10
+A382412	filnum	1	0	k -> Predicates.ZEROLESS.is(7, k)	Numbers with no zeros in their base-7 representation.	nonn,
+A382413	filnum	1	0	k -> !Predicates.ZEROLESS.is(7, k)	Numbers with at least one zero in their base-7 representation
+A382415	filnum	1	0	k -> !Predicates.ZEROLESS.is(5, k)	Numbers with at least one zero in their base-5 representation
+A382416	filnum	1	0	k -> !Predicates.ZEROLESS.is(6, k)	Numbers with at least one zero in their base-6 representation
+A382417	filnum	1	0	k -> !Predicates.ZEROLESS.is(8, k)	Numbers with at least one zero in their base-8 representation
+A382418	filnum	1	0	k -> !Predicates.ZEROLESS.is(9, k)	Numbers with at least one zero in their base-9 representation
+---- 2025-03-27 19:32:34
+A113850	sintrif	1	(term, n) -> term.^(5)	""	new A005117().skip()	Numbers whose prime factors are raised to the fifth power.
+A375073	filnum	1	1	k -> { final FactorSequence fs = Jaguar.factor(k); return fs.minExponent() == 2 && fs.maxExponent() == 3; }	Numbers whose prime factorization exponents include at least one 2, at least one 3 and no other exponents.
+A380638	lambdan	0	n -> (n == 0) ? Z.ONE : RU(0, n - 1, k -> new Q(ZV(4).^(k).*(BI(4*n, k)), FA(n - k - 1))).*(FA(n - 1)).num()	a(n) = (n-1)! * Sum_{k=0..n-1} 4^k * binomial(4*n,k)/(n-k-1)! for n > 0.
+A382116	lambdan	0	n -> CR.PHI.*(n).+(CR.PHI.-(1)./(2)).floor()	a(n) = floor(n*g+(g-1)/2), where g is the golden ratio
+A382132	filter	1	new A005891()	v -> Predicates.SEMIPRIME.is(v)	Centered pentagonal numbers which are semiprimes.	nonn,new	1..47	nyi	_Massimo Kofler_
+A382196	poly	0	"[[1],[0,0,0,1],[0,9]]"	",p1,sub,^3,p2,+,^1/3"
+A382225	trilamb0	0	(n, k) -> SU(k, n, i -> BI(i - 1, i - k).*(BI(i, k)))	Triangle read by rows: T(n,k) = Sum_{i=k..n} C(i-1,i-k)*C(i,k).	nonn,tabl,new	0..11475	nyi	_Vladimir Kruchinin_
+A382280	decexp	2	() -> CV(new Z("12823413011547414368862997525616691741041579688920794331363953564934456759066858494476606822552437442098640979"))./(new Z("877512406035620068631903180662851572553488753575243048137500508983979170248733422547196905684808937723408093"))
+A382365	poly	0	"[[1],[0,0,1],[0,4],[1,-1]]"	",1,1,p1,sub,^2,/,p2,p3,/,-,^1/2,/"
+A382366	poly	0	"[[1],[0,0,1],[0,9],[1,-1]]"	",1,1,p1,sub,^3,/,p2,p3,/,-,^1/3,/"		1/( 1 - 9 * Sum_{k>=0} x^(2^k) / (1 - x^(2^k)) )^(1/3).	nonn,new	0..20	nyi	_Seiichi Manyama_
+A382367	poly	0	"[[1],[0,0,0,1],[0,1],[1,-1]]"	",1,1,p1,sub,/,p2,p3,/,-,/"		1/( 1 - Sum_{k>=0} x^(3^k) / (1 - x^(3^k)) ).	nonn,new	0..33	nyi	_Seiichi Manyama_
+A382368	poly	0	"[[1],[0,0,0,1],[0,4],[1,-1]]"	",1,1,p1,sub,^2,/,p2,p3,/,-,^1/2,/"		1/( 1 - 4 * Sum_{k>=0} x^(3^k) / (1 - x^(3^k)) )^(1/2).	nonn,new	0..24	nyi	_Seiichi Manyama_
+A382369	poly	0	"[[1],[0,0,0,1],[0,9],[1,-1]]"	",1,1,p1,sub,^3,/,p2,p3,/,-,^1/3,/"		1/( 1 - 9 * Sum_{k>=0} x^(3^k) / (1 - x^(3^k)) )^(1/3).	nonn,new	0..21	nyi	_Seiichi Manyama_
+A382372	poly	0	"[[1],[0,0,0,0,1],[0,1],[1,-1]]"	",1,1,p1,sub,/,p2,p3,/,-,/"		1/( 1 - Sum_{k>=0} x^(4^k) / (1 - x^(4^k)) ).	nonn,new	0..33	nyi	_Seiichi Manyama_
+A382373	poly	0	"[[1],[0,0,0,0,0,1],[0,1],[1,-1]]"	",1,1,p1,sub,/,p2,p3,/,-,/"	"[[1],[0,0,0,0,1],[0,1],[1,-1]]"	",1,1,p1,sub,/,p2,p3,/,-,/"		1/( 1 - Sum_{k>=0} x^(5^k) / (1 - x^(5^k)) ).	nonn,new	0..34
+A382378	poly	0	"[[1],[0,0,0,0,0,0,1],[0,1],[1,-1]]"	",1,1,p1,sub,/,p2,p3,/,-,/"		1/( 1 - Sum_{k>=0} x^(6^k) / (1 - x^(6^k)) ).	nonn,new	0..35	nyi	_Seiichi Manyama_
+A382433	lambdan	0	n -> SU(0, n, k -> BI(n, k).*((BI(n, k).-(BI(n, k-1))).^(5)))	""		a(n) = sum(k=0, n, binomial(n, k)*(binomial(n, k)-binomial(n, k-1))^5)	_	_	_
+A382434	lambdan	0	n -> SU(0, n, k -> (BI(n, k).-(BI(n, k-1))).^(4))	""		a(n) = sum(k=0, n, (binomial(n, k)-binomial(n, k-1))^4)	_	_	_
+A382435	lambdan	0	n -> SU(0, n, k -> (BI(n, k).-(BI(n, k-1))).^(6))	""		a(n) = sum(k=0, n, (binomial(n, k)-binomial(n, k-1))^6)	_	_	_
+---- 2025-03-27 20:19:44
+A381631	filnum	1	1	k -> Functions.DIGIT_PRODUCT.z(k).*(k).mod(Functions.DIGIT_SUM.i(k)) == 0	Numbers k such that the product of k and its digits is divisible by the sum of its digits.	nonn,base	1..64	nyi	_Jakub Buczak_
+A381676	lambdan	0	n -> SU(0, n, k -> BI(n, k).*((BI(n, k).-(BI(n, k-1))).^(2)))	""		a(n) = sum(k=0, n, binomial(n, k)*(binomial(n, k)-binomial(n, k-1))^2)	_	_	_
+A381698	filter	1	new LambdaSequence(2, k -> Z2(k).-(1).^(2).-(2))	v -> Predicates.SQUARE_FREE.is(v)	nyi to	Numbers of the form (2^k-1)^2 - 2 that are squarefree.	nonn	1..25	nyi	_Massimo Kofler_
+A381733	lambdan	1	n -> SD(n, d -> Z2(Functions.OMEGA.z(n + d)).equals(TAU(n + d)) ? ZV(1) : ZV(0))	Number of divisors d of n such that 2^omega(n + d) = tau(n + d)
+A381754	filnum	1	0	k -> Functions.DIGIT_LENGTH.i(2, k) - Functions.DIGIT_SUM.i(2, k) == Functions.DIGIT_LENGTH.i(2, 3*k) - Functions.DIGIT_SUM.i(2, 3*k)	Numbers k such that k and 3*k have the same number of zeros in their binary expansions.
+A381817	holos	0	[[0],[-6443299498232270520,8115987212471329080,-4084022708023401250,1026260571203153750,-128780138861843750,6455815546731250],[1396951578665634600,-2600033697542217984,2050839577410776298,-831532000830577962,169470078411289278,-13709372358868518],[-153683482287306096,370762762031723274,-360669855974794759,173554734639707111,-40768871113864973,3703469060597227],[5008953152153268,-19250302908606750,26925584860377798,-17010319360951878,4799776611862470,-473692354834908],[0,170336749761144,-574565963444244,548724542447844,-147134204145684,2638875380940],[0,3337129304010,5354820917550,-5976004684950,-5354820917550,2638875380940]]	1,2,8,41,239	0	0
+A381818	lambdan	0	n -> RU(0, n, k -> new Q(BI(2*n+2*k+1, k).*(BI(3*n-k, n-k)), ZV(2*n+2*k+1))).num()
+A381819	lambdan	0	n -> RU(0, n, k -> new Q(BI(3*n+2*k+1, k).*(BI(4*n-k, n-k)), ZV(3*n+2*k+1))).num()
+A381820	lambdan	0	n -> RU(0, n, k -> new Q(BI(4*n+2*k+1, k).*(BI(5*n-k, n-k)), ZV(4*n+2*k+1))).num()
+A382443	lambdan	0	n -> SU(0, n, k -> BI(n, k).*((BI(n, k).-(BI(n, k-1))).^(4)))	""		a(n) = sum(k=0, n, binomial(n, k)*(binomial(n, k)-binomial(n, k-1))^4)	_	_	_
+A382446	lambdan	0	n -> SU(0, n, k -> BI(n, k).*((BI(n, k).-(BI(n, k-1))).^(6)))	""		a(n) = sum(k=0, n, binomial(n, k)*(binomial(n, k)-binomial(n, k-1))^6)	_	_	_
+A145875	filter	0	new A006886()	v -> Predicates.REPDIGIT.is(v)    

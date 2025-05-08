@@ -1,0 +1,104 @@
+---- 2025-03-31 19:27:45
+A083396	lambmin11	1	(n, k) -> Predicates.BRILLIANT.is(k) && Predicates.BRILLIANT.is(k + 2*n)	Least n such that n and 2k+n are both brilliant numbers.	base,nonn	1..61	nyi	_Jason Earls_
+A092934	sintrif	1	(term, n) -> Z2(n).*(term)./(D001147(n))	"asis"	new A057003()	a(n) = floor(2^n*J057003(n)/D001147(n))	_	_	_
+A096447	sintrif	1	(term, n) -> F151800(term)	"asis"	new A007351()
+A115674	filter	1	new A000578()	v -> Predicates.BRILLIANT.is(Functions.REVERSE.z(v))	Cubes whose digit reversal is a brilliant number (A078972).	nonn,base	1..21	nyi	_Giovanni Resta_
+A115676	filter	1	new A001694()	v -> Predicates.BRILLIANT.is(Functions.REVERSE.z(v))	Powerful(1) numbers (J001694) whose digit reversal is a brilliant number (A078972).	nonn,base	1..36	nyi	_Giovanni Resta_
+A121948	sintrif	1	(term, n) -> term./(n)	"asis"	new A014612()	a(n) = floor((n-th 3-almost prime)/n) = floor(J014612(n)/n)	_	_	_
+A127722	sintrif	1	(term, n) -> F000196(term)	"asis"	new A000447().skip(1)	_
+A129150	sintrif	0	(term, n) -> term	"asis"	new A090636().skip(1)		""			J090636(n+2)
+A129843	lambdan	1	n -> { final Z df = DF(n); return CNT(1, n, k -> GCD(ZV(k), df).equals(ZV(1))); }
+A132307	sintrif	0	(term, n) -> term.*(2).-(1)	"asis"	new A038207()	2*F007318^(2) - F000012	nonn,tabl	0..54	nyi	_Gary W. Adamson_
+A135250	sintrif	1	(term, n) -> F055642(term)	"asis"	new A046967()
+A145469	filnum	1	3	k -> TAU(k).equals(TAU(k - 1).+(TAU(k - 2)))	Positive integers k such that d(k) = d(k-1) + d(k-2), where d(k) is the number of divisors of k.	nonn	1	nyi	_Leroy Quet_
+A145470	filnum	1	1	k -> TAU(k).equals(TAU(k + 1).+(TAU(k + 2)))	A positive integer k is included if d(k) = d(k+1) + d(k+2), where d(k) is the number of divisors of k.	nonn	1	nyi	_Leroy Quet_
+A145472	filter	1	new A000040()	p -> PP(p.+(7)./(2))	Primes p such that (p + 7)/2 is prime.	nonn,easy	1	nyi	_Artur Jasinski_
+A145473	filter	1	new A000040()	p -> PP(p.+(11)./(2))	Primes p such that (11 + p)/2 is prime.	nonn	1	nyi	_Artur Jasinski_
+A145476	filter	1	new A000040()	p -> PP(p.+(19)./(2))	Primes p such that (19 + p)/2 is prime.	nonn	1	nyi	_Artur Jasinski_
+A145478	filter	1	new A000040()	p -> PP(p.+(29)./(2))	Primes p such that (29 + p)/2 is prime.	nonn	1	nyi	_Artur Jasinski_
+A145486	filter	1	new A000040().skip(11)	p -> PP(p.*(2).-(37))
+A145488	filnum	1	0	k -> PP(6*k + 13) && PP(12*k + 13)	Numbers k such that 6k+13 is prime and 12k+13 is also prime.	nonn	1	nyi	_Artur Jasinski_
+A157524	sintrif	0	(term, n) -> term./(9)	"asis"	new A140783().skip(4)	/9	""			J140783(n+4)/9
+A162598	ordtraf	1	new A265332()		Ordinal transform of A265332.
+A179186	filnum	1	1	k -> PHI(k).equals(PHI(k + 4))	Numbers n such that phi(n) = phi(n+4), with Eulers totient function phi=F000010.	nonn	1..10000	nyi	_M. F. Hasler_
+A179187	filnum	1	1	k -> PHI(k).equals(PHI(k + 5))	Numbers n such that phi(n) = phi(n+5), with Eulers totient function phi=F000010.	nonn	1..1843	nyi	_M. F. Hasler_
+A179188	filnum	1	1	k -> PHI(k).equals(PHI(k + 6))	Numbers n such that phi(n) = phi(n+6), with Eulers totient function phi=F000010.	nonn	1..10000	nyi	_M. F. Hasler_
+A179189	filnum	1	1	k -> PHI(k).equals(PHI(k + 7))	Numbers n such that phi(n) = phi(n+7), with Eulers totient function phi = F000010.	nonn	1..6606	nyi	_M. F. Hasler_
+A179204	multrar	1	(self, n) -> LCM(self.a(n - 1), Functions.SQRT.z(self.a(n - 1)))	"11"		a(1)=11. For n>1, a(n) is LCM of a(n-1) and largest integer <= sqrt(a(n-1)).	nonn	1..20	nyi	_J. Lowell_
+A179274	multrar	1	(self, n) -> PM(self.a(n - 1)).-(self.a(n - 1))	"5"		a(1) = 5, a(n) = prime(a(n-1)) - a(n-1).	nonn	1..17	nyi	_Zak Seidov_
+A179320	sintrif	0	(term, n) -> Z_1(n - 1).*(2).*(term)	""	new PrependSequence(0, new A027614(), 0)	a(n) = (-1)^(n-1)*2*A027614(n) @1!
+A179399	lambdan	5	n -> PM(n).^(2).mod(PM(n - 4))	Prime(n)^2 mod prime(n-4).	nonn	5..1000	nyi	_Umut Uludag_
+A179401	filnum	1	1	k -> PHI(PHI(k)).equals(Functions.CARMICHAEL_LAMBDA.z(Functions.CARMICHAEL_LAMBDA.z(k)))	Numbers k such that phi(phi(k)) = lambda(lambda(k)).	nonn	1..10000	nyi	_Michel Lagneau_
+A179432	lambdan	0	n -> BI(QV(3).^(n - 1).*(2), ZV(n)).num()	a(n) = C(2*3^(n-1), n).	nonn	0..10	nyi	_Paul D. Hanna_
+A179443	filter	1	new A002808()	v -> !PP(v.*(10).+(1))	Numbers m such that m and 10*m + 1 are both composites.	nonn	1..1000	nyi	_Jaroslav Krizek_
+A179443	filter	1	new A002808()	v -> !PP(v.*(10).+(1))	Numbers m such that m and 10*m + 1 are both composites.	nonn	1..1000	nyi	_Jaroslav Krizek_
+A179444	filter	1	new A002808()	v -> v.mod(10) == 1 && !PP(v./(10))	Composite numbers m of the form m = 10k + 1 where k is also composite.	nonn	1..10000	nyi	_Jaroslav Krizek_
+A179445	filter	1	new A018252()	v -> PP(v.*(10).+(1))	Nonprimes m such that 10m + 1 are primes.	nonn	1..61	nyi	_Jaroslav Krizek_
+A179445	filter	1	new A018252()	v -> PP(v.*(10).+(1))	Nonprimes m such that 10m + 1 are primes.	nonn	1..61	nyi	_Jaroslav Krizek_
+A179446	filter	1	new A000040()	p -> p.mod(10) == 1 && !PP(p./(10))	Primes p of form p = 10k + 1, where k is nonprime.	nonn	1..10000	nyi	_Jaroslav Krizek_
+A179446	filter	1	new A000040()	p -> p.mod(10) == 1 && !PP(p./(10))	Primes p of form p = 10k + 1, where k is nonprime.	nonn	1..10000	nyi	_Jaroslav Krizek_
+A179511	multrar	0	(self, n) -> PM(self.a(n - 1)).+(self.a(n - 1).*(2))	"1"		a(1) = 1, a(n) = prime(a(n-1)) + 2*a(n-1).	nonn,more	1..14	nyi	_Robert G. Wilson v_
+A179523	lambdan	-2	n -> new Q(3, 2).^(n).round()	Round (3/2)^n.	nonn	-2..1000	nyi	_Robert G. Wilson v_
+A179531	multrar	0	(self, n) -> { final Z an = self.a(n - 2).-(MIN(self.a(n - 1), ZV(n))); return an.compareTo(ZV(0)) > 0 ? an : self.a(n - 2).+(MAX(self.a(n - 1), ZV(n))); }	"0,1"		a(0)= 0, a(1)= 1; for n>1, a(n) = a(n-2) - min{a(n-1),n} if that number is positive, otherwise a(n) = a(n-2) + max{a(n-1),n}.	nonn	0..5000	nyi	_Michel Lagneau_
+A179539	holos	0	[[0],[0,2],[0,2],[-1]]	1,0	0	0	a(0)=1, a(1)=0, a(n)=2n(a(n-1)+a(n-2)), n>1.	nonn	0..15	nyi
+A179549	filter	1	new A000040()	p -> PP(p.-(Functions.DIGIT_SUM_SQUARES.z(p)))	Primes p such that p - the sum of the square of its digits yields a prime.	nonn,base	1..1000	nyi	_Carmine Suriano_
+A179549	filter	1	new A000040()	p -> PP(p.-(Functions.DIGIT_SUM_SQUARES.z(p)))	Primes p such that p - the sum of the square of its digits yields a prime.	nonn,base	1..1000	nyi	_Carmine Suriano_
+A179550	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SUM_SQUARES.z(p))) && PP(p.-(Functions.DIGIT_SUM_SQUARES.z(p)))	Primes p such that p +-the sum of its digits squared yields a prime in both cases.	nonn,base	1..10000	nyi	_Carmine Suriano_
+A179550	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SUM_SQUARES.z(p))) && PP(p.-(Functions.DIGIT_SUM_SQUARES.z(p)))	Primes p such that p +-the sum of its digits squared yields a prime in both cases.	nonn,base	1..10000	nyi	_Carmine Suriano_
+A179551	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SUM_CUBES.z(p)))	Primes p such that p + the sum of cubes of its digits yields a prime.	nonn,base	1..10000	nyi	_Carmine Suriano_
+A179551	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SUM_CUBES.z(p)))	Primes p such that p + the sum of cubes of its digits yields a prime.	nonn,base	1..10000	nyi	_Carmine Suriano_
+A179554	multrar	1	(self, n) -> self.a(n - 1).*(self.a(n - 5)).^(2).+(self.a(n - 2).*(self.a(n - 3).^(2)).*(self.a(n - 4)).^(2))./(self.a(n - 6))	"1,1,1,1,1,1"		a(n) = ( ( a(n-1) * a(n-5) )^2 + ( a(n-2) * a(n-3)^2 * a(n-4) )^2 ) / a(n-6), a(1) = ... = a(6) = 1.	nonn	1..17	nyi	_Michael Somos_
+A179629	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SUM.z(p)).+(Functions.DIGIT_SUM_SQUARES.z(p)))	Primes p such that p + the sum of its decimal digits + the sum of the squares of its digits is prime.	nonn,base	1..50	nyi	_Carmine Suriano_
+A179629	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SUM.z(p)).+(Functions.DIGIT_SUM_SQUARES.z(p)))	Primes p such that p + the sum of its decimal digits + the sum of the squares of its digits is prime.	nonn,base	1..50	nyi	_Carmine Suriano_
+A179630	filter	1	new A000040()	p -> PP(p.-(Functions.DIGIT_SUM.z(p)).-(Functions.DIGIT_SUM_SQUARES.z(p)))		Primes p such that p - sum of its digits minus sum of the square of its digits is a prime.	nonn,base	1..54	nyi	_Carmine Suriano_
+A179630	filter	1	new A000040()	p -> PP(p.-(Functions.DIGIT_SUM.z(p)).-(Functions.DIGIT_SUM_SQUARES.z(p)))		Primes p such that p - sum of its digits minus sum of the square of its digits is a prime.	nonn,base	1..54	nyi	_Carmine Suriano_
+A179631	filter	1	new A000040()	p -> { final Z ds = Functions.DIGIT_SUM.z(p).+(Functions.DIGIT_SUM_SQUARES.z(p)); return PP(p.+(ds)) && PP(p.-(ds)); }	Primes p such that p +-(sum of its digits and sum of squares of its digits) is a prime.	nonn,base	1..1000	nyi	_Carmine Suriano_
+A179631	filter	1	new A000040()	p -> { final Z ds = Functions.DIGIT_SUM.z(p).+(Functions.DIGIT_SUM_SQUARES.z(p)); return PP(p.+(ds)) && PP(p.-(ds)); }	Primes p such that p +-(sum of its digits and sum of squares of its digits) is a prime.	nonn,base	1..1000	nyi	_Carmine Suriano_
+A179635	lambdan	0	n -> { final int len = Functions.DIGIT_LENGTH.i(n); return ZV(Integer.toString(n).charAt(((len & 1) == 1) ? len/2 : len/2 - 1) - '0'); }	Median of the digits in n (rounding down).	easy,nonn,base	1..105	nyi	_Dominick Cancilla_
+A179636	lambdan	0	n -> ZV(Integer.toString(n).charAt(Functions.DIGIT_LENGTH.i(n)/2) - '0')	Median of the digits in n (rounding up).	easy,nonn,base	1..105	nyi	_Dominick Cancilla_
+A179655	sintrif	1	(term, n) -> Functions.DIGIT_SUM_ROOT.z(term)	""	new A005101()	Digital root of n-th abundant number.	nonn,base	1..105	nyi	_Jason G. Wurtzel_
+A179656	sintrif	1	(term, n) -> term.mod(Functions.DIGIT_SUM_ROOT.z(term))	""	new A000040()	prime(n) mod (digital root(prime(n))).	nonn,base	1..105	nyi	_Jason G. Wurtzel_
+A180111	sintrif	1	(term, n) -> F000142(n).+(term)./(2)	"asis"	new A056876()	a(n) = F000142(n)/2 + J056876(n)/2	_	_	_
+A180114	sintrif	1	(term, n) -> Functions.SIGMA1.z(term)	""	new A001694()	a(n) = sigma(J001694(n)), sum of divisors of the powerful number J001694(n).	easy,nonn	1..10000	nyi	_Walter Kehowski_
+A188897	lambdan	0	n -> LCM(ZV(n), ZV(n + 1), ZV(n+1), ZV(n+2), ZV(n+3), ZV(n+4), ZV(n+5), ZV(n+6), ZV(n+7))./(840)	nonn	0..29	nyi	_Gary Detlefs_
+A189144	lambdan	0	n -> LCM(ZV(n), ZV(n + 1), ZV(n+1), ZV(n+2), ZV(n+3), ZV(n+4), ZV(n+5), ZV(n+6))./(420)	nonn,look	0..10000	nyi	_Gary Detlefs_
+A208768	distinct	1	new A070198()	The distinct values of J070198
+A209081	sintrif	1	(term, n) -> term./(ZV(n).^(n))	""	new A152170()	Floor(E152170(n)/n^n)
+A209081	sintrif	1	(term, n) -> term./(ZV(n).^(n))	""	new A152170()	Floor(E152170(n)/n^n)
+A209300	lambdan	0	n -> ZV(n + 1).^(FA(n + 1)).mod(FA(n).^(n))	(n+1)^((n+1)!) mod (n!)^n
+A209330	trilamb0	0	(n, k) -> BI(n*n, n*k)	T(n,k) = binomial(n^2, n*k), for n>=0, k=0..n, as read by rows.	nonn,tabl	0..30	nyi	_Paul D. Hanna_
+A209427	trilamb0	0	(n, k) -> BI(n, k).^(n)	T(n,k) = binomial(n,k)^n.	nonn,tabl	0..30	nyi	_Paul D. Hanna_
+A209658	filter	1	new A000041()	(k, v) -> (v.testBit(0) ? 1 : 0) == (k & 1)	Partition numbers p(n) having the same parity as n.	nonn	1..37	nyi	_Omar E. Pol_
+A209659	filter	1	new A000041()	(k, v) -> (v.testBit(0) ? 0 : 1) == (k & 1)	Partition numbers p(n) having opposite parity of n.	nonn	1..37	nyi	_Omar E. Pol_
+A209663	filter	1	new A000040()	p -> { final Z p18 = p.+(18); return PP(p18) && Functions.DIGIT_SUM.l(p) == Functions.DIGIT_SUM.l(p18); }	Numbers n with property that n is prime, n+18 is prime and both have equal sum of digits.	nonn,base	1..52	nyi	_Antonio Rold‚ąö¬įn_
+A209884	multrar	0	(self, n) -> RU(0, n - 1, k -> new Q(BI(n, k).*(2).*(self.a(k)), FA(k))).*(FA(n - 1)).num()	"1"		a(n) = (n-1)! * Sum_{k=0..n-1} 2*binomial(n,k)*a(k)/k! for n>0 with a(0)=1.
+A213060	lambdan	1	n -> Functions.LUCAS.z(n).modZ(n)	Lucas(n) mod n, Lucas(n)= F000032(n).	nonn,easy	1..10000	nyi	_Gary Detlefs_
+A220371	sintrif	0	(term, n) -> PR(1, 2*n, i -> ZV(4*i+2)).*(term)	"asis"	new A060818()	a(n) = Product_{i=1..2*n} (4*i+2)*J060818(n)	_	_	_
+A232395	sintrif	0	(term, n) -> D000290(Functions.CEIL_SQRT.i(term)).-(term)	"asis"	new A053698()
+A244626	filter	0	new A004770()	v -> !PP(v) && ZV(2).^(v.-(1)./(2)).mod(v).equals(v.-(1))	Composite numbers k congruent to 5 (mod 8) such that 2^((k-1)/2) mod k = k-1.	nonn	1..10000	nyi	_Gary Detlefs_      
+A244628	filter	0	new A017101()	v -> !PP(v) && ZV(2).^(v.-(1)./(2)).mod(v).equals(v.-(1))	Composite numbers n such that n == 3 (mod 8) and 2^((n-1)/2) == -1 (mod n).	nonn	1..10000	nyi	_Gary Detlefs_      
+A270539	filter	1	new A000040()	p -> GCD(PHI(p.-(1)), SIGMA(p.-(1))).equals(Z.ONE)	Primes p such that gcd(phi(p-1), sigma(p-1)) = 1 with phi = F000010, sigma = F000203.	nonn	1..200	nyi	_Jaroslav Krizek_
+A304734	ordtraf	1	new A304733()		Ordinal transform of the largest prime factor of the n-th term of EKG-sequence.
+A306199	filnum	1	1	k -> TAU(4*k).compareTo(TAU(3*k)) < 0	Numbers k having the property that tau(4*k) < tau(3*k)
+A322317	ordtraf	1	new A322316()		Ordinal transform of A322316.
+A322872	ordtraf	1	new A171462()		Ordinal transform of A171462, where A171462(n) = n - A052126(n).
+A335286	ordtraf	1	new A071364()		Ordinal transform of A071364. - _Alois P. Heinz_, Jun 01 2020
+A343688	holos	1	[[0],[1],[-2,4],[-1]]	1,0	0	0	a(1)=1, a(2)=0, a(n) = (4*n-2)*a(n-1) + a(n-2), n > 2.
+A344771	ordtraf	1	new A342915()		Ordinal transform of A342915, where A342915(n) = gcd(1+n, psi(n)).
+A358551	sintrif	1	(term, n) -> term.+(1)	"asis"	new A072643()	a(n) = J072643(n) + 1	_	_	_
+A360010	sintrif	1	(term, n) -> term.+(1)	"asis"	new A056556()	_
+A363017	sintrif	1	(term, n) -> Functions.PRIME_PI.z(term)	"asis"	new A057632()
+A375216	ordtraf	0	new A073137()		Ordinal transform of A073137.
+A377375	lingf	0	0,0,0,4,3,-1,-3,1	1,-2,-1,4,-1,-2,1					0
+A379703	lingf	0	0,0,0,6,12,-5,-10,2,3	1,-1,-3,3,3,-3,-1,1					0
+A381421	lingf	0	1,-2,-1,6,1	1,-4,2,0,11,0,2,-4,1					0
+A381863	lingf	6	0,0,0,0,0,0,120,375,-270,55	1,-10,45,-120,210,-252,210,-120,45,-10,1					0
+A382470	holos	0	[[0],[2268,2223,814,132,8],[-2538,-2706,-1124,-216,-16],[2034,861,-118,-84,-8],[450,150,-212,-120,-16],[0,-105,-2,36,8]]	1	0	0
+A382471	holos	0	[[0],[2340,1608,413,47,2],[-2700,-2022,-586,-78,-4],[1620,386,-93,-31,-2],[360,-14,-146,-46,-4],[0,-60,13,15,2]]	1	0	0
+A382472	holos	0	[[0],[26520,14051,2782,244,8],[-31140,-17982,-4004,-408,-16],[15540,2309,-742,-164,-8],[3300,-742,-1124,-248,-16],[0,-429,142,84,8]]	1	0	0
+A382473	holos	0	[[0],[15120,6522,1051,75,2],[-17955,-8439,-1526,-126,-4],[7875,771,-307,-51,-2],[1575,-531,-458,-78,-4],[0,-168,67,27,2]]	1	0	0
+A382474	holos	0	[[0],[119700,43551,5918,356,8],[-143262,-56778,-8644,-600,-16],[57078,3797,-1830,-244,-8],[10710,-4418,-2708,-376,-16],[0,-969,430,132,8]]	1	0	0
+A382478	lingf	0	1,2,1,2,0,1,0,1	1,0,-1,0,-1,0,-1,0,-1					0
+A382479	lingf	0	1,2,1,2,1,2,0,1,0,1,0,1	1,0,-1,0,-1,0,-1,0,-1,0,-1,0,-1					0
+A382494	holos	0	[0,-1,6,-15,26,-33,18,-4,-6,12,32,-3,12,5,-18,-15,6,6,0,-1]	1,0,3,3,6,36,16,150,165,430	0	0
+A382495	holos	0	[0,-1,8,-28,64,-110,128,-96,40,35,0,-68,56,-114,-80,20,16,2,72,28,-40,-28,8,8,0,-1]	1,0,4,4,10,60,30,300,335,1000,2506,3500,11879	0	0

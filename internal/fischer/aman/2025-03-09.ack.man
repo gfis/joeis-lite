@@ -1,0 +1,210 @@
+
+
+
+
+
+# A000045	parmof2	0	A274156	CR.TWO.pow(new Q(1, 2))		2^(1/2)      (Fibonacci numbers)
+# A000930	parmof2	0	A274156	CR.TWO.pow(new Q(1, 3))		2^(1/3)     
+# A003269	parmof2	0	A274156	CR.TWO.pow(new Q(1, 4))		2^(1/4)     
+#ok A129230	#partsun	0	new A129229()	n -> SU(n & 1, (n + (n & 1))/2, k -> CR.PHI.*(2*k + (n & 1)).floor())	floor(n*r) + floor((n-2)*r) + floor((n-4)*r) + ... + floor(k*r), where r = golden ratio = (1 + sqrt(5))/2 and k = n mod 2.	nonn	0..10000
+#ok A183143	#lambdan	1	n -> { final CR r = CV(3).sqrt(); return SU(1, n, k -> CV(k)./(r).floor()); }	[1/r]+[2/r]+...+[n/r], where r=sqrt(3) and []=floor.	nonn	1..54
+#ok A194683	#trilambn	1	1	1	(n, k) -> { final CR r = CV(3).sqrt().+(1)./(2); return r.^(n).frac().+(r.^(k).frac()).floor(); }	Triangular array: T(n,k)=[<r^n>+<r^k>], where [ ] = floor, < > =  fractional part, and r=(1+sqrt(3))/2.	nonn,tabl	1..99
+#ok A196734	#polyx	0	"[[1],[0,2]]"	",p1,sub,sqrt,<1,exp"	0	1	A(x) = exp(x*A(2*x)^(1/2)).
+#ok A196735	#polyx	0	"[[1],[0,3]]"	",p1,sub,^1/3,<1,exp"	0	1	A(x) = exp(x*A(3*x)^(1/3)).
+#ok A201990	#polyx	0	"[[1]]"	",1,A,^2,<1,cos,A,^2,<1,sin,-,/"	0	1	A(x) = 1/(cos(x*A(x)^2) - sin(x*A(x)^2)).
+#ok A215001	#lambdan	1	n -> CR.E.^(RU(1, n, k -> new Q(1, k))).floor().+(1)	a(n) = 1 + floor(e^(1 + 1/2 + 1/3 + ... + 1/n)).	nonn	1..10000
+#ok A243280	#lambdan	0	n -> SU(0, n, k -> BI(2*k - 1, k).*(BI(2*n, n - k)))
+#ok A243952	#polyx	0	"[[1],[1,1],[1,6,7,4,1]]"	",1,p1,p2,/,int,rev,+"	0	1	A=exp(serreverse(intformal(1/(1+2*sinh(2*X)))))	[0]	(A,X=x)
+#ok A248169	#poly	0	"[[1],[1,-1],[1,1],[1,3],[1,-3]]"	",p1,p2,/,p3,p4,/,agm"	0	0	A=agm((1-x)/(1+X),(1+3*x)/(1-3*X))	[0]	(A,X=x)
+#ok A248230	#lambdan	1	n -> CV(1)./(Zeta.zeta(4).-(CV(RU(1, n, h -> new Q(Z.ONE, ZV(h).^(4)))))).floor()	floor(1/(zeta(4) - Sum_{h=1..n} 1/h^4)).	nonn,easy	1..1000
+#ok A248234	#lambdan	1	n -> CV(1)./(Zeta.zeta(5).-(CV(RU(1, n, h -> new Q(Z.ONE, ZV(h).^(5)))))).floor()	floor(1/(zeta(5) - Sum_{h=1..n} 1/h^5)).	nonn,easy	1..2000
+#ok A251185	#polyx	1	"[[0,1]]"	",x,2,x,exp,-,log,neg,sub,<1,+"	0	1	x+x*subst(A,x,-log(2-exp(X))))	[0,1]	(A=x,X=x)
+#ok A259611	#poly	2	"[[0,0,1]]"	",x,A,dif,<1,-,A,-,rev,2,*,int"	2*intformal(serreverse(x-x*A'-A)))	'
+#ok A259611	#poly	2	"[[0,0,1]]"	",x,A,dif,<1,-,A,-,rev,2,*,int"	2*intformal(serreverse(x-x*A'-A)))	'
+#ok A259612	#convprod	1	1/2	new A259611()
+#ok A283968	#lambdan	0	n -> { final CR r = CV(5).sqrt().+(3)./(2); return SU(0, n, k -> CV(n - k)./(r).floor()).+(n + 1); }	"1"	+ 1 + floor(n*(3 + sqrt(5))/2), a(0) = 1.	nonn,easy	0..1000
+#ok A317923	#filtpos	1	1	new A345060()	FilterSequence.ZERO	(positions of zeros),
+#ok A323274	#lambdan	0	n -> CV(1)./(CR.E.-(CV(RU(0, n, k -> new Q(Z.ONE, FA(k)))))).ceil()	ceiling(1/(e - 1/0! - 1/1! - 1/2! - ... - 1/n!)).	nonn	0..1000
+#ok A324584	#complem	1	new A324583()			(complement),
+#ok A324732	#charfunc	1	new A324721()	(characteristic function).
+#ok A325755	#filtpos	1	1	new A373247()	FilterSequence.ZERO	(positions of 0s),
+#ok A336355	#charfunc	1	new A336357()
+#ok A336356	#charfunc	1	new A336359()
+#ok A336357	#filnum	1	1	k -> F001221(F000203(k)).compareTo(F001221(k)) < 0	numbers k for which F001221(F000203(k)) < F001221(k).
+#ok A336359	#filnum	1	1	k -> F001222(F000203(k)).compareTo(F001222(k)) < 0	numbers k for which F001222(F000203(k)) < F001222(k).
+#ok A336548	#complem	1	new A336547()	,Z.ONE		(complement).
+#ok A337372	#filtpos	1	1	new A337345()	ONE	(positions of ones),
+#ok A340784	#filtpos	1	1	new A373381()	FilterSequence.EVEN	(positions of even terms)
+#ok A341609	#sintrif	1	(term, n) -> term.equals(Z.ONE) ? Z.ONE : Z.ZERO	""	new A337345()	(their characteristic function),
+#ok A341610	#filtpos	1	1	new A337345()	v -> v.compareTo(Z.ONE) > 0	(positions of terms > 1)
+#ok A344624	#lambdan	1	n -> SU(1, n, k -> Predicates.SQUARE.is(k) ? ZV(k) : ZV(1))	k=1..n} k^c(k), where c(n) is the characteristic function of squares.
+#ok A344884	#sintrif	1	(term, n) -> E344875(n).mod(term).isZero() ? ZV(1) : ZV(0)	""	new A011772()	1 if J011772(n) divides E344875(n), otherwise 0; characteristic function of ?344974.
+#ok A345064	#sintrif	1	(term, n) -> term.equals(E206369(n)) ? ZV(1) : ZV(0)	""	new A071324()	1 if J071324(n) is equal to E206369(n), otherwise 0; characteristic function of ?317923.
+#ok A345452	#filnum	1	1	k -> (Functions.BIG_OMEGA.i(k) & 1) == 0 && (Functions.VALUATION.i(k, 2) & 1) == 0	(positions of even terms)
+#ok A347873	#filtpos	1	1	new A347871()	FilterSequence.ONE	Positions of ones in J347871 (the characteristic function). ?347872 gives the complement.
+#ok A348738	#filtpos	1	1	new A348736()	FilterSequence.POSITIVE	Positions of positive terms in E348736, positions of 1s in ?348737 (characteristic function).
+#ok A349322	#lambdan	1	n -> SD(n, d -> ZV(d).mod(TAU(d)).isZero() ? ZV(d) : ZV(1))	ZV(d). d^c(d), where c is the characteristic function of refactorable numbers (J336040).
+#ok A350070	#charfunc	1	new A350076()	(their characteristic function),
+#ok A350075	#filtpos	1	1	new A350074()	FilterSequence.NEGATIVE	(positions of negative terms),
+#ok A350076	#filtpos	1	1	new A350074()	v -> v.compareTo(Z.ZERO) >= 0		(of terms >= 0),
+#ok A350526	#lambdan	1	n -> CR.PHI.*(n).floor().*(CV(n)./(CR.PHI).ceil())	f(n*r)*c(n/r), where f = floor, c = ceiling, and r = golden ratio (X001622).	nonn	1..50
+#ok A350527	#lambdan	1	n -> CR.PHI.*(n).ceil().*(CV(n)./(CR.PHI).floor())	c(n*r)*f(n/r), where f = floor, c = ceiling, and r = golden ratio (X001622).	nonn	1..50
+#ok A351038	#filtpos	1	1	new A350074()	v -> v.compareTo(Z.ZERO) <= 0	(positions of terms <= 0),
+#ok A351039	#charfunc	1	new A351038()	(their characteristic function).
+#ok A351075	#filtpos	1	1	new A351074()	FilterSequence.NEGATIVE	(positions of negative terms),
+#ok A351076	#filtpos	1	1	new A351074()	v -> v.compareTo(Z.ZERO) >= 0		(of terms >= 0),
+#ok A351077	#charfunc	1	new A351076()	(their characteristic function).
+#ok A351115	#lambdan	1	n -> CNT(1, n, k -> SIGMA(k).mod(PHI(k)).isZero())	c(k), where c is the characteristic function of balanced numbers (J351114).
+#ok A352718	#lambdan	0	n -> CV(n).^(new Q(3, 2)).floor().-(CV(n).sqrt().floor().^(3))	floor(n^(3/2)) - floor(n^(1/2))^3.	nonn,easy	0..66
+#ok A353566	#charfunc	1	new A325755()	(their characteristic function).
+#ok A355822	#complem	1	new A355821()	,Z.ONE
+#ok A355946	#charfunc	1	new A349756()	(characteristic function).
+#ok A368999	#complem	1	new A368998()	,Z.ONE		(complement).
+#ok A372986	#multrar	0	(self, n) -> FA(2*n)./(self.a(n-1))	"1"	with a(0)=1.	nonn	0..19	nyi	_Clark Kimberling_
+#ok A372987	#multrar	0	(self, n) -> FA(2*n)./(FA(n).*(self.a(n-1)))	"1"	, with a(0)=1.	nonn	0..23	nyi	_Clark Kimberling_
+#ok A372988	#multrar	0	(self, n) -> FA(2*n)./(FA(n).*(self.a(n-2)))	"1,1"	, with a(0) = 1, a(1) = 1.	nonn	0..23	nyi	_Clark Kimberling_
+#ok A372992	#lambdan	0	n -> { final int[] fact = new int[] {1,1,2,6,24,120,720,5040}; return (n == 0) ? ZV(1) : PR(fact[n - 1] + 1, fact[n], k -> ZV(k)); }	(n!)!/((n-1)!)!.	nonn	0..4	nyi	_Clark Kimberling_
+#ok A372993	#multrar	0	(self, n) -> FA(n).*(self.a(n-1))./(self.a(n-2))	"1,1"	, where a(0) = 1, a(1) = 1.	nonn	0..21	nyi	_Clark Kimberling_
+#ok A372994	#multrar	0	(self, n) -> FA(n).*(self.a(n-1))./(self.a(n-2))	"1,2"	, where a(0) = 1, a(1) = 2.	nonn	0..21	nyi	_Clark Kimberling_
+#ok A372995	#multrar	0	(self, n) -> FA(n)./(self.a(n-1).*(self.a(n-2)).*(self.a(n-3)))	"1,1,1"	, where a(0) = a(1) = a(2) = 1.	nonn	0..35	nyi	_Clark Kimberling_
+#ok A378816	#holos	0	[[0],[18,-15,3],[8,6,-5],[4,7,1],[0,2,1]]	-1	0	0
+#ok A379511	#lambdan	1	n -> CV(n).*(CV(2).^(new Q(1,4)).+(CV(2).^(new Q(-1, 4)))).floor()	floor(n*(2^(1/4) + 2^(-1/4))); Beatty sequence for 2^(1/4) + 2^(-1/4).	nonn	1..10000
+#ok A380703	#decexpr	1	() -> REALS.acos(CR.HALF.-(CR.SQRT2)./(2))	CR.PI.-(X380702.*(2))
+#ok A380908	#decexp	0	() -> CR.GAMMA.-(CR.PI.*(4).log())./(2).negate()	(gamma - log(4*Pi))/2.
+#ok A380965	#decexp	0	() -> CR.PI.-(CR.E.*(CR.PI.log()))./(CR.PI.log().-(1))	(Pi - e*log(Pi))/(log(Pi) - 1).
+#ok A381653	#decexp	0	() -> Zeta.zeta(6).*(3)./(16)	3*zeta(6)/16.
+#ok A381671	#decexp	0	() -> CR.PI./(CV(3).sqrt().*(6))	Pi/(6*sqrt(3)) = X019673/J002194.
+#ok A381672	#decexp	0	() -> CR.PI.*(CR.PHI.^(4))./(CV(3).sqrt().*(15))	Pi*phi^4/(15*sqrt(3)) = X000796*X374883/(15*J002194).
+#ok A381684	#decexp	0	() -> CR.PI.*(529)./(CV(3).sqrt().*(2058))	529*Pi/(2058*sqrt(3)) = 529*X000796/(2058*J002194).
+#ok A381685	#decexp	0	() -> CR.PI.*(25)./(CV(3).sqrt().+(3).^(3))	25*Pi/((3 + sqrt(3))^3) = 25*X000796/((3 + J002194)^3).
+#ok A381686	#decexp	0	() -> CR.PI.*(49).*(CR.SQRT2.*(12).+(17))./(CR.SQRT2.*(6).+(CR.SIX).+(CV(3).sqrt()).^(3).*(2))	49*Pi*(17 + 12*sqrt(2))/(2*(6 + 6*sqrt(2) + sqrt(3))^3) = 49*X000796*X156164/(2*(6 + J010524 + J002194)^3).
+#ok A381687	#decexp	0	() -> CR.PI.*(64)./(CV(3).sqrt().*(2).+(1).^(3).*(3))	64*Pi/(3*(1 + 2*sqrt(3))^3) = 64*X000796/(3*(1 + J010469)^3).
+#ok A381688	#decexp	0	() -> CR.PI.*(4).*(CR.SQRT2.*(30).+(43))./(CV(3).sqrt().+(9).^(3))	4*Pi*(43 + 30*sqrt(2))/((9 + sqrt(3))^3) = 4*X000796*(43 + 30*J002193)/((9 + J002194)^3).
+#ok A381738	#sintrif	1	(term, n) -> Functions.SQRT.z(term)	""	new A063734()
+---- 2025-03-07 21:10:48
+---- 2025-03-08 15:00:17
+---- 2025-03-09 13:02:27
+---- 2025-03-09 13:15:52
+---- 2025-03-09 14:32:28
+---- 2025-03-09 21:20:25
+---- 2025-03-09 21:24:03
+---- 2025-03-09 21:40:38
+A109245	holos	0	[[0],[440,-168,16],[572,-176,12],[-1264,712,-108],[-496,370,-66],[1500,-887,167],[-460,192,-32],[-468,529,-133],[104,-177,73],[0,10,-10]]	1,1	0	0
+A206743	parmof2	0	A274160	new CC(CR.ZERO, CR.TWO)	2i          
+A259647	polyz	0	"[[1]]"	",x,asin,<1,exp"	0	1	0	2
+A273958	polyx	1	"[[0,1],[0,0,1,0,1]]"	",p1,sqrt,p1,-,rev,^2,x,/"	1	0
+A274142	parmof2	0	A274142	new Q( 1, 2)
+A274143	parmof2	0	A274142	new Q( 1, 3)
+A274144	parmof2	0	A274142	new Q( 1, 4)
+A274145	parmof2	0	A274142	new Q( 2, 3)
+A274146	parmof2	0	A274142	new Q( 3, 4)
+A274147	parmof2	0	A274142	new Q(-1, 2)
+A274148	parmof2	0	A274142	new Q(-1, 3)
+A274149	parmof2	0	A274142	new Q(-1, 4)
+A274149	parmof2	0	A274160	new CC(CR.ZERO, CR.HALF)	i/2         
+A274150	parmof2	0	A274142	new Q(-2, 3)
+A274151	parmof2	0	A274142	new Q(-3, 4)
+A274152	parmof2	0	A274142	new Q( 3, 2)
+A274153	parmof2	0	A274142	new Q( 5, 2)
+A274154	parmof2	0	A274142	new Q(-3, 2)
+A274155	parmof2	0	A274142	new Q(-5, 2)
+A274156	parmof2	0	A274156	CR.TWO.pow(new Q(-1, 2))		2^(-1/2)    
+A274157	parmof2	0	A274156	CR.THREE.pow(new Q(-1, 2))		3^(-1/2)    
+A274158	parmof2	0	A274156	CR.TWO.pow(new Q(-1, 3))		2^(-1/3)    
+A274159	parmof2	0	A274156	CR.THREE.pow(new Q(-1, 3))		3^(-1/3)    
+A274160	parmof2	0	A274160	new CC(CR.ZERO, CR.ONE)	i           
+A274162	parmof2	0	A274160	new CC(CR.ZERO, CR.THREE)	3i          
+A274163	parmof2	0	A274160	new CC(CR.ZERO, CR.FOUR)	4i          
+A274165	parmof2	0	A274160	new CC(CR.ZERO, CR.ONE_THIRD)	i/3         
+A274166	parmof2	0	A274160	new CC(CR.ONE, CR.ONE)	i+1         
+A274167	parmof2	0	A274160	new CC(CR.NEG_ONE, CR.ONE)	i-1         
+A274168	parmof2	0	A274160	new CC(CR.HALF.negate(), CR.THREE.divide(2))	(-1+3i)/2   
+A279330	polyz	0	"[[1],[1,0,-1,0,-1]]"	",x,cos,p1,/"	0	0	0	2
+A279331	polyz	0	"[[1],[1,0,-1,0,-1]]"	",x,cos,p1,/"	0	4	0	2
+A281181	polyz	0	"[[1]]"	",A,^3,int,cosh"	0	1	0	2
+A281183	polyz	0	"[[1],[0,2]]"	",p1,p1,sin,+,4,/,rev,dif"	1	1	0	2	(reversion((2*x + sin(2*x))/4))'	'
+A281428	polyz	0	"[[1]]"	",A,^4,int,cosh"	0	1	0	2
+A281432	polyz	0	"[[1]]"	",A,^5,int,cosh"	0	1	0	2
+A281436	polyz	0	"[[1]]"	",A,^6,int,cosh"	0	1	0	2
+A281440	polyz	0	"[[1]]"	",A,^7,int,cosh"	0	1	0	2
+A281444	polyz	0	"[[1]]"	",A,^8,int,cosh"	0	1	0	2
+A289695	polyz	1	"[[0,1]]"	",1,A,^2,+,1,A,^2,2,*,+,*,sqrt,int"	0	1	1	2
+A290879	polyz	1	"[[0,1]]"	",1,2,A,*,cosh,sqrt,/,int"	0	1	1	2
+A290880	polyz	0	"[[1],[0,2]]"	",p1,cosh,sqrt,int,rev,cosh"	0	1	0	2
+A290881	polyz	1	"[[1],[0,2]]"	",p1,cosh,sqrt,int,rev,sinh"	0	1	1	2
+A290882	polyx	0	"[[1],[0,2]]"	",p1,cosh,sqrt,int,rev,exp"	0	1
+A292221	holos	0	[[0],[16,-40,16],[0,-6,8],[0,1,1]]	3	0	1
+A292759	polyx	0	"[[1]]"	",x,exp,x,tan,x,sec,+,^3,*"	0	1
+A331660	polyx	1	"[[0,1],[1,-1]]"	",1,1,p1,/,x,p1,/,sub,*,+,int"	0	1
+A342161	polyx	0	"[[0,1]]"	",x,tanh,x,sech,-,1,+,x,exp,*"	1	1
+A343482	polyx	0	"[[1],[1,-1]]"	",2,p1,/,x,exp,/,1,-,sqrt"	0	1
+A345652	polyx	0	"[[1],[1,1],[0,-1]]"	",p1,p2,exp,*,1,-,exp"	0	1
+A345697	polyx	0	"[[1]]"	",1,2,x,exp,*,x,exp,<1,2,*,-,1,-,/,sqrt"	0	1
+A345969	polyx	0	"[[1],[1,-1]]"	",1,3,2,p1,x,exp,*,/,-,sqrt,/"	0	1
+A346119	polyx	0	"[[1]]"	",x,exp,<1,2,*,x,exp,2,*,-,3,+,sqrt"	0	1
+A352164	polyx	0	"[[1]]"	",1,x,cosh,x,tanh,-,/"	2	1
+A352606	polyz	0	"[[0,-1]]"	",x,cos,1,-,tan"	0	1	0	2
+A354429	polyz	0	"[[0]]"	",x,tanh,^3"	0	1	1	2	Expansion of e.g.f. tanh(x)^3 (odd powers only).
+A367387	polyx	1	"[[0,1],[1,-1]]"	",A,<1,sub,p1,/,A,/"	2	0
+A367390	polyx	1	"[[0,1]]"	",A,<1,sub,x,exp,*,A,/"	2	1
+A367391	polyx	0	"[[1]]"	",A,<1,sub,x,exp,*,A,/"	0	1
+A369090	polyx	1	"[[0,1]]"	",x,exp,<2,sub,x,/"	2	1	Expansion of e.g.f. A(x) = A( x^2*exp(x) ) / x, with A(0) = 0.
+A370539	holos	0	[[0],[108810240,-40597504,5675008,-352256,8192],[-134507520,54753792,-8349184,565248,-14336],[-23070720,12374272,-2435584,209408,-6656],[93233280,-49838336,9985152,-888064,29568],[-34067520,21043392,-4884224,503808,-19456],[-6825600,4014848,-856736,77632,-2464],[6334080,-4775552,1353664,-170848,8096],[-1009680,928584,-326048,51696,-3112],[-83400,86000,-30680,4240,-160],[34320,-49060,25470,-5660,450],[-2280,5100,-3940,1260,-140],[0,-98,191,-112,19],[0,-3,1,3,-1]]	1,2,8,30	0	0
+A373095	multrar	0	(self, n) -> { int q = 4; Z sum = self.a(n/q); while (q < n) { q *= 2; sum = sum.+(self.a(n/q)); } return sum; }	"0,1"	a[n/4] + a[n/8] + a[n/16] + ..., where a(0) = 0, a(1) = 1, and [ ] = floor.	nonn	0..85
+A373096	multrar	0	(self, n) -> { int q = 9; Z sum = self.a(n/q); while (q < n) { q *= 3; sum = sum.+(self.a(n/q)); } return sum; }	"0,1"	a([n/9]) + a([n/27]) + a([n/81]) + ..., where a(0) = 0, a(1) = 1, and [ ] = floor().	nonn	0..85
+A373097	multrar	0	(self, n) -> { int p = 3; int q = 2; Z sum = self.a(n*q/p); while (p/q < n) { p *= 3; q *= 2; sum = sum.+(self.a(n*q/p)); } return sum; }	"0,1"	a[n/r] + a[n/r^2] + a[n/r^3] + ... , where a(0) = 0, a(1) = 1, r = 3/2, and [ ] = floor.	nonn	0..60
+A373719	lambdan	0	n -> SU(0, n*n/(2*n+1), k -> BI(n*(n-2*k), k))
+A374835	lambdan	0	n -> RU(0, n-1, k -> new Q(Z_1(k).*(k+1).*(k+2), ZV(2*n-k)).*(BI(3*n-2-2*k, n-1-k))).num()	sum(k=0, n-1, (-1)^k*(k+1)*(k+2)/(2*n-k)*binomial(3*n-2-2*k, n-1-k))
+A374836	lambdan	0	n -> RU(0, n-2, k -> new Q(Z_1(k).*(k+1).*(k+2).*(k+3), ZV(2*(2*n-1-k))).*(BI(3*n-4-2*k, n-2-k))).num()
+A376178	lambdan	1	n -> RU(0, 2*n, k -> new Q(BI(2*n, k).mod(Z2(n)), Z2(n))).num()
+A376179	lambdan	1	n -> SU(0, 2*n-1, k -> BI(2*n-1, k).mod(Z2(n)))./(Z2(n))
+A376531	lambdan	1	n -> RU(0, n*n, k -> new Q(BI(n*n, k).mod(Z2(n)), Z2(n))).num()
+A376532	lambdan	1	n -> RU(0, n*n, k -> new Q( BI(n*n, k).*(Z2(k)).mod(ZV(3).^(n)))./(ZV(3).^(n))).num()
+A376533	lambdan	1	n -> SU(0, n*n, k -> BI(n*n, k).*(ZV(3).^(k) ).mod(ZV(4).^(n)))./(ZV(4).^(n))
+A376534	lambdan	1	n -> SU(0, n*n, k -> BI(n*n, k).*(ZV(4).^(k) ).mod(ZV(5).^(n)))./(ZV(5).^(n))
+A376534	lambdan	1	n -> SU(0, n*n, k -> BI(n*n, k).*(ZV(4).^(k) ).mod(ZV(5).^(n)))./(ZV(5).^(n))
+A376536	lambdan	1	n -> SU(0, n*n*n, k -> BI(n*n*n, k).*(Z2(k)                ).mod(ZV(3).^(n)))./(ZV(3).^(n))	(1/3^n) * Sum_{k=0..n^3} ( (binomial(n^3, k) * 2^k) (mod 3^n) ).
+A380512	lambdan	0	n -> (n== 0) ? ZV(1) : RU(0, n - 1, k -> new Q(BI(3*n, k), FA(n - k - 1)).*(FA(n - 1))).num()	a(n) = (n-1)! * Sum_{k=0..n-1} binomial(3*n,k)/(n-k-1)!
+A380635	multrar	1	(self, n) -> SD(n - 1, d -> Predicates.SQUARE.is(d) ? self.a((n - 1)/d) : ZV(0))	"1"	a(1) = 1; a(n+1) = Sum_{d^2|n} a(n/d^2). add(`if`(issqr(d), a((n-1)/d), 0), d=divisors(n-1))
+A380637	lambdan	0	n -> (n== 0) ? ZV(1) : RU(0, n - 1, k -> new Q(BI(3*n, k), FA(n - k - 1)).*(FA(n - 1)).*(ZV(3).^(k))).num()	a(n) = (n-1)! * Sum_{k=0..n-1} 3^k * binomial(3*n,k)/(n-k-1)! for n > 0.
+A381704	filter	1	new A000045().skip(2)	v -> Predicates.FIBONACCI.is(Functions.DIGIT_SUM.l(2, v))	Fibonacci numbers having a Fibonacci number of 1s in their binary representation.	nonn,base,new	1..25	nyi	_Ctibor O. Zizka_
+A381713	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A069094(), new A059376()
+A381720	filnum	1	0	k -> Predicates.CUBE.is(Functions.DIGIT_SUM.l(2, k))	Integers whose Hamming weight is a cube.	nonn,base,new	1..53	nyi	_Ctibor O. Z
+A381725	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(5).^(k).-(ZV(4).^(k)))	Numbers k such that 5^k - 4^k is a semiprime.
+A381738	filnum	0	1	k -> Predicates.ABUNDANT.is(ZV(k).*(k))	Numbers k such that k^2 is abundant.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A381739	filnum	1	1	k -> Predicates.ABUNDANT.is(ZV(k).*(k)) && CND(k, d -> d > 1 && d < k && Predicates.ABUNDANT.is(ZV(d).*(d))).isZero()	Number k such that k^2 is abundant, and d^2 is nonabundant for any proper divisor d of k.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A381740	filnum	1	1	k -> Predicates.SQUARE_FREE.is(k) && Predicates.ABUNDANT.is(ZV(k).*(k))	Squarefree numbers k such that k^2 is abundant.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A381741	filnum	0	1	k -> Predicates.SQUARE_FREE.is(k) && Predicates.ABUNDANT.is(ZV(k).*(k)) && CND(k, d -> d > 1 && d < k && Predicates.ABUNDANT.is(ZV(d).*(d))).isZero()		Squarefree numbers k such that k^2 is abundant, and d^2 is nonabundant for any proper divisor d of k.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A381742	filnum	0	1	k -> Predicates.ABUNDANT.is(ZV(k).*(k)) && CND(k, d -> d > 1 && d < k && Predicates.ABUNDANT.is(ZV(d).*(k))).isZero()		Numbers k such that k^2 is abundant but d*k is nonabundant for any proper divisor d of k.	nonn,new	1..775	nyi	_Amiram Eldar_
+A381743	lambdan	0	n -> CND(n, d -> Predicates.ABUNDANT.is(ZV(d).*(n)))	The number of divisors d of n such that d*n is abundant.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A381744	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(6*k - 1, 2*k)))./(n)	"1"	exp( Sum_{k>=1} binomial(6*k-1,2*k) * x^k/k ).	nonn,easy,new	0..605	nyi	_Seiichi Manyama_
+A381745	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(8*k - 1, 2*k)))./(n)	"1"	exp( Sum_{k>=1} binomial(8*k-1,2*k) * x^k/k ).	nonn,easy,new	0..514	nyi	_Seiichi Manyama_
+A381746	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(10*k- 1, 2*k)))./(n)	"1"	exp( Sum_{k>=1} binomial(10*k-1,2*k) * x^k/k ).	nonn,easy,new	0..462	nyi	_Seiichi Manyama_
+A381751	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(8*k-1, 2*k-1)))./(n)	"1"	exp( Sum_{k>=1} binomial(8*k-1,2*k-1) * x^k/k ).	nonn,easy,new	0..16	nyi	_Seiichi Manyama_
+A381752	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(10*k-1,2*k-1)))./(n)	"1"	exp( Sum_{k>=1} binomial(10*k-1,2*k-1) * x^k/k ).	nonn,easy,new	0..15	nyi	_Seiichi Manyama_
+A381753	lambdan	0	n -> RU(0, n, k -> QV(BI(5*n+2*k+2, k)).*(BI(5*n+2, n-k))./(5*n+2*k+2)).*(2).num()	""		a(n) = 2*sum(k=0, n, binomial(5*n+2*k+2, k)*binomial(5*n+2, n-k)/(5*n+2*k+2))	_	_	_
+A381756	decexpr	1	() -> REALS.acos(CV(2).^(new Q(3, 2)).+(1).inverse())	arccos(1/(2^(3/2)+1))
+A381757	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(7*k-1, 2*k-1)))./(n)	"1"	(7*k-1,2*k-1) * x^k/k ).	nonn,easy,new	0..16	nyi	_Seiichi Manyama_
+A381758	multrar	0	(self, n) -> SU(1, n, k -> self.a(n - k).*(BI(9*k-1, 2*k-1)))./(n)	"1"	(9*k-1,2*k-1) * x^k/k ).	nonn,easy,new	0..15	nyi	_Seiichi Manyama_
+A381772	lambdan	0	n -> RU(0, n, k -> new Q(BI(2*n+2*k+1,k).*(BI(2*n+1,n-k)), ZV(2*n+2*k+1))).num()
+A381773	lambdan	0	n -> RU(0, n, k -> new Q(BI(3*n+2*k+1,k).*(BI(3*n+1,n-k)), ZV(3*n+2*k+1))).num()
+A381774	lambdan	0	n -> RU(0, n, k -> new Q(BI(4*n+2*k+1,k).*(BI(4*n+1,n-k)), ZV(4*n+2*k+1))).num()
+A381775	lambdan	0	n -> RU(0, n, k -> new Q(BI(6*n+2*k+1,k).*(BI(6*n+1,n-k)), ZV(6*n+2*k+1))).num()
+A381778	lambdan	0	n -> RU(0, n, k -> QV(BI(n+3*k+1, k)).*(BI(n+k+1, n-k))./(n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+3*k+1, k)*binomial(n+k+1, n-k)/(n+3*k+1))	_	_	_
+A381779	lambdan	0	n -> RU(0, n, k -> QV(BI(n+4*k+1, k)).*(BI(n+2*k+1, n-k))./(n+4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(n+4*k+1, k)*binomial(n+2*k+1, n-k)/(n+4*k+1))	_	_	_
+A381780	lambdan	0	n -> RU(0, n, k -> QV(BI(2*n+3*k+1, k)).*(BI(2*n+k+1, n-k))./(2*n+3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(2*n+3*k+1, k)*binomial(2*n+k+1, n-k)/(2*n+3*k+1))	_	_	_
+A381782	lambdan	0	n -> RU(0, n, k -> QV(BI(3*n-k+1, k)).*(BI(3*n-3*k+1, n-k))./(3*n-k+1)).num()	""		a(n) = sum(k=0, n, binomial(3*n-k+1, k)*binomial(3*n-3*k+1, n-k)/(3*n-k+1))	_	_	_
+A381783	lambdan	0	n -> RU(0, n, k -> QV(BI(3*n+1, k)).*(BI(3*n-2*k+1, n-k)))./(3*n+1).num()	""		a(n) = sum(k=0, n, binomial(3*n+1, k)*binomial(3*n-2*k+1, n-k))/(3*n+1)	_	_	_
+A381784	lambdan	0	n -> RU(0, n, k -> QV(BI(4*n+1, k)).*(BI(4*n-2*k+1, n-k)))./(4*n+1).num()	""		a(n) = sum(k=0, n, binomial(4*n+1, k)*binomial(4*n-2*k+1, n-k))/(4*n+1)	_	_	_
+A381785	lambdan	0	n -> RU(0, n, k -> QV(BI(4*k+1, k)).*(BI(2*k+1, n-k))./(4*k+1)).num()	""		a(n) = sum(k=0, n, binomial(4*k+1, k)*binomial(2*k+1, n-k)/(4*k+1))	_	_	_
+A381786	lambdan	0	n -> RU(0, n, k -> QV(BI(5*k+1, k)).*(BI(3*k+1, n-k))./(5*k+1)).num()	""		a(n) = sum(k=0, n, binomial(5*k+1, k)*binomial(3*k+1, n-k)/(5*k+1))	_	_	_
+A381787	lambdan	0	n -> RU(0, n, k -> QV(BI(3*k+1, k)).*(BI(k+1, n-k))./(3*k+1)).num()	""		a(n) = sum(k=0, n, binomial(3*k+1, k)*binomial(k+1, n-k)/(3*k+1))	_	_	_
+A381790	lambdan	0	n -> Z2(n).*(3).+(2*n - 2)	3*2^n + 2*n - 2.	nonn,easy,new	0..32	nyi	_Eric W. Weisstein_
+A381791	lambdan	0	n -> (n == 0) ? ZV(25) : Z2(n - 1).*(17).+(4).*(2)	2*(4 + 17*2^(n-1)).	nonn,easy,new	0..30	nyi	_Eric W. Weisstein_
+A381816	lambdan	1	n -> ZV(n).*(4*n).-(Z_1(n)).-(2*n + 7)./(4)	(4*n^2 - (-1)^n - 2*n - 7)/4.	sign,easy,new	1..50	nyi	_Eric W. Weisstein_
+A381826	lambdan	0	n -> RU(0, n, k -> new Q(BI(2*n+1,   k)  .*(BI(3*n-3*k,   n-k)), ZV(2*n+1))).num()
+A381827	lambdan	0	n -> RU(0, n, k -> new Q(BI(3*n-k+1, k)  .*(BI(4*n-4*k,   n-k)), ZV(3*n-k+1))).num()
+A381829	lambdan	0	n -> RU(0, n, k -> new Q(BI(3*n+1,   k)  .*(BI(4*n-3*k,   n-k)), ZV(3*n+1))).num()
+A381830	lambdan	0	n -> RU(0, n, k -> new Q(BI(n+3*k+1, k)  .*(BI(2*n,       n-k)), ZV(n+3*k+1))).num()
+A381832	lambdan	0	n -> RU(0, n, k -> new Q(BI(5*k+1,   k)  .*(BI(n+2*k,     n-k)), ZV(5*k+1))).num()
+A381840	lambdan	0	n -> RU(0, n/2, k -> new Q(Z_1(k).*(BI(3*n+k,  k)).*(BI(4*n-k, n-2*k)), ZV(3*n+1))).num()

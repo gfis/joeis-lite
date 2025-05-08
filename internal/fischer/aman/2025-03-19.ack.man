@@ -1,0 +1,100 @@
+---- 2025-03-19 22:33:59
+A144231	filter	1	new LambdaSequence(3, n -> ZV( 3).^(n/2).+((n & 1) == 0 ?  -2 :  2))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 3^k +- 2 for k >= 1.	nonn	1..48	nyi	_Reikku Kulon_
+A144232	filter	1	new LambdaSequence(3, n -> ZV( 4).^(n/2).+((n & 1) == 0 ?  -3 :  3))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 4^k +- 3.	nonn	1..19	nyi	_Reikku Kulon_
+A144233	filter	1	new LambdaSequence(3, n -> ZV( 5).^(n/2).+((n & 1) == 0 ?  -4 :  4))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 5^k +- 4 for k >= 1.	nonn	1..9	nyi	_Reikku Kulon_
+A144234	filter	1	new LambdaSequence(3, n -> ZV( 6).^(n/2).+((n & 1) == 0 ?  -5 :  5))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 6^k +- 5.	nonn	1..14	nyi	_Reikku Kulon_
+A144236	filter	1	new LambdaSequence(3, n -> ZV( 7).^(n/2).+((n & 1) == 0 ?  -6 :  6))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 7^k +- 6.	nonn	1..11	nyi	_Reikku Kulon_
+A144242	filter	1	new LambdaSequence(3, n -> ZV( 8).^(n/2).+((n & 1) == 0 ?  -7 :  7))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 8^k +- 7.	nonn	1..7	nyi	_Reikku Kulon_
+A144245	filter	1	new LambdaSequence(3, n -> ZV( 9).^(n/2).+((n & 1) == 0 ?  -8 :  8))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 9^k +- 8.	nonn	1..20	nyi	_Reikku Kulon_
+A144246	filter	1	new LambdaSequence(3, n -> ZV(10).^(n/2).+((n & 1) == 0 ?  -9 :  9))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 10^k +- 9.	nonn	1..12	nyi	_Reikku Kulon_
+A144247	filter	1	new LambdaSequence(3, n -> ZV(11).^(n/2).+((n & 1) == 0 ? -10 : 10))	v -> Predicates.STRONG_PSEUDOPRIME.is(v)	Prime numbers of the form 11^k +- 10.	nonn	1..7	nyi	_Reikku Kulon_
+A165550	filnum	1	0	k -> Functions.DIGIT_SUM.z(ZV(k).^(2)).equals(Functions.DIGIT_SUM_SQUARES.z(k))	Sum of digits of square is sum of square of digits.	base,easy,nonn	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A165551	filnum	0	0	k -> Functions.DIGIT_SUM.z(ZV(k).^(3)).equals(Functions.DIGIT_SUM_CUBES.z(k))	Sum of cube of digits is sum of digits of cube.	base,easy,nonn	0..1000	nyi	_R‚ąö¬©my Sigrist_
+A230076	sintrif	1	(term, n) -> term.-(1).shiftRight(2)	""	new A007521()	a(n) = (A007521(n)-1)/4.
+A277450	multrar	1	(self, n) -> RU(1, n - 1, k -> new Q(self.a(k).*(n), Z2(k))).-(SU(1, n - 1, k -> self.a(k))).floor()	"1"	a(1) = 1, a(n) = floor(n*Sum_{k=1..n-1} a(k)/2^k - Sum_{k=1..n-1} a(k)) for n > 1.	nonn,base,cons	1..87	nyi	_R‚ąö¬©my Sigrist_
+A306572	filnum	1	1	k -> Integer.toString(k).endsWith(PI(k).toString())	Numbers k whose decimal representation ends with that of pi(k) (where pi denotes the prime counting function F000720).	nonn,base	1..310	nyi	_R‚ąö¬©my Sigrist_
+A308262	filnum	1	0	k -> D048385(k).toString().endsWith(Integer.toString(k))	Numbers m such that D048385(m) ends with m.	nonn,base	1..51	nyi	_R‚ąö¬©my Sigrist_
+A309087	lambdan	0	n -> { Z v = ZV(0); Q d = QV(1); int k = 1; while (true) { if (d.compareTo(Q.ONE) < 0) { return v; } v = v.+(d.floor()); d = d.*(new Q(n, k)); ++k;}}	(v=0, d=1); for (k=1, oo, if (d<1, return (v), v += floor(d); d *= n/k))
+A309103	lambdan	0	n -> { Z v = ZV(0); Q d = QV(1); int k = 1; int s = 1; while (true) { if (d.compareTo(Q.ONE) < 0) { return v; } v = v.+(d.floor().*(s)); d = d.*(new Q(n, k)); ++k; s = -s; }}	(v=0, d=1); for (k=1, oo, if (d<1, return (v), v += floor(d); d *= n/k))
+A309104	lambdan	0	n -> { Z v = ZV(0); Q d = QV(n); int k = 2; while (true) { if (d.compareTo(Q.ONE) < 0) { return v; } v = v.+(d.floor()); d = d.*(new Q(n*n, k*(k + 1))); k += 2;}}	(v=0, d=1); for (k=1, oo, if (d<1, return (v), v += floor(d); d *= nn*n/k))
+A309105	lambdan	0	n -> { Z v = ZV(0); Q d = QV(1); int k = 1; while (true) { if (d.compareTo(Q.ONE) < 0) { return v; } v = v.+(d.floor()); d = d.*(new Q(n*n, k*(k + 1))); k += 2;}}	(v=0, d=1); for (k=1, oo, if (d<1, return (v), v += floor(d); d *= n/k))
+A309119	lambdan	0	k -> SU(0, k, j -> { final int[] c = ZUtils.digitCounts(j, 3); return ZV(c[1] - c[2]); })	a(n) is the number of 1's minus the number of 2's among the ternary representations of the integers in the interval [0..n].	nonn,look,base	0..6560	nyi	_R‚ąö¬©my Sigrist_
+A317419	multrar	1	(self, n) -> CNT(1, n - 1, k -> self.a(k).and(self.a(n - k)).isZero())	""	a(k) AND a(n-k) = 0 (where AND denotes the bitwise AND operator).	nonn,base	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A317420	multrar	1	(self, n) -> CNT(1, n - 1, k -> self.a(k).and(self.a(n - k)).equals(self.a(k)))	""	a(k) AND a(n-k) = a(k) (where AND denotes the bitwise AND operator).	nonn,base	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A317582	multrar	1	(self, n) -> CNT(1, n - 1, k -> self.a(k).*(self.a(n - k)).compareTo(ZV(n)) <= 0)	""	a(k) * a(n-k) <= n.	nonn	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A317585	multrar	1	(self, n) -> CNT(1, n - 1, k -> self.a(k).-(self.a(n - k)).abs().compareTo(ZV(2)) <= 0)	""	abs(a(k) - a(n-k)) <= 2.	nonn	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A317596	multrar	1	(self, n) -> CNT(1, n - 1, k -> self.a(k).+(self.a(n - k).*(2)).compareTo(ZV(n)) <= 0)	""	a(k) + 2 * a(n-k) <= n.	nonn	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A317638	multrar	1	(self, n) -> CNT(1, n - 1, k -> self.a(k).^(2).+(self.a(n - k).^(2)).compareTo(ZV(n)) <= 0)	""	a(k)^2 + a(n-k)^2 <= n.	nonn,look	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A333922	lambdan	0	n -> Z.ONE.-(new Q(Z2(n).*(D002487(n)), D002487(n + 1)).floor().and(Z.ONE))	1 - (floor(2^n*D002487(n)/D002487(n+1)) mod 2).	nonn,base	0..86	nyi	_R‚ąö¬©my Sigrist_
+A338129	filnum	1	0	k -> ZV(k).^(k).toString(2).endsWith(Integer.toString(k, 2))	Positive numbers k such that the binary representation of k^k ends with that of k.	nonn,base	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A338130	filnum	1	0	k -> ZV(k).^(k).toString(3).endsWith(Integer.toString(k, 3))	Positive numbers k such that the ternary representation of k^k ends with that of k.	nonn,base	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A338251	filter	0	new A317050()	v -> v.compareTo(Z.ZERO) >= 0	Nonnegative values in J317050, in order of appearance.	nonn,look,base	0..5461	nyi	_R‚ąö¬©my Sigrist_
+A339388	multrar	1	(self, n) -> CNT(1, n - 1, k -> self.a(k).*(self.a(n - k)).compareTo(self.a(n - 1)) <= 0)	""	a(n) is the number of k in the range 1..n-1 such that a(k)*a(n-k) <= a(n-1).	nonn	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A344834	arrlamb	0	0	0	1	(n, k) -> ZV(n).*(Z2(MAX(ZV(0), F070939(k).-(F070939(n))))).and(ZV(k).*(Z2(MAX(ZV(0), F070939(n).-(F070939(k))))))	where AND denotes the bitwise AND operator and w = F070939).	nonn,base,tabl	0..10010	nyi
+A344835	arrlamb	0	0	0	1	(n, k) -> ZV(n).*(Z2(MAX(ZV(0), F070939(k).-(F070939(n))))).or (ZV(k).*(Z2(MAX(ZV(0), F070939(n).-(F070939(k))))))	where OR denotes the bitwise OR operator and w = F070939).	nonn,base,tabl	0..10010	nyi
+A344836	arrlamb	0	0	0	1	(n, k) -> ZV(n).*(Z2(MAX(ZV(0), F070939(k).-(F070939(n))))).xor(ZV(k).*(Z2(MAX(ZV(0), F070939(n).-(F070939(k))))))	where XOR denotes the bitwise XOR operator and w = F070939).	nonn,base,tabl	0..10010	nyi
+A344837	arrlamb	0	0	0	1	(n, k) -> MIN(ZV(n).*(Z2(MAX(ZV(0), F070939(k).-(F070939(n))))), ZV(k).*(Z2(MAX(ZV(0), F070939(n).-(F070939(k))))))	where w = F070939).	nonn,base,tabl	0..10010	nyi
+A344838	arrlamb	0	0	0	1	(n, k) -> MAX(ZV(n).*(Z2(MAX(ZV(0), F070939(k).-(F070939(n))))), ZV(k).*(Z2(MAX(ZV(0), F070939(n).-(F070939(k))))))	where w = F070939).	nonn,base,tabl	0..10010	nyi
+A344839	arrlamb	0	0	0	1	(n, k) -> ZV(n).*(Z2(MAX(ZV(0), F070939(k).-(F070939(n))))).-(ZV(k).*(Z2(MAX(ZV(0), F070939(n).-(F070939(k)))))).abs()	where w = F070939).	nonn,base,tabl	0..10010	nyi
+A351886	multrar	0	(self, n) -> CNT(0, n - 1, k -> self.a(k).and(ZV(n)).isZero())	""	a(n) is the number of k < n such that a(k) AND n = 0 (where AND denotes the bitwise AND operator).	nonn,base	0..10000	nyi	_R‚ąö¬©my Sigrist_
+A351887	multrar	0	(self, n) -> CNT(0, n - 1, k -> self.a(k).and(ZV(n)).equals(self.a(k)))	""	a(n) is the number of k < n such that a(k) AND n = a(k) (where AND denotes the bitwise AND operator).	nonn,base	0..10000	nyi	_R‚ąö¬©my Sigrist_
+A361121	sintrif	1	(term, n) -> (term.testBit(0)) ? ZV(0) : ZV(1)	""	new A002808()		1 if n-th composite number J002808(n) is even, otherwise 0.	nonn	1..94	nyi
+A361122	sintrif	1	(term, n) -> (term.mod(3) == 0) ? ZV(0) : ZV(1)	""	new A002808()		0 if n-th composite number J002808(n) is divisible by 3, otherwise 1.	nonn	1..93	nyi
+A361123	sintrif	1	(term, n) -> (term.mod(3) == 0) ? ZV(1) : ZV(0)	""	new A002808()		1 if n-th composite number J002808(n) is divisible by 3, otherwise 0.	nonn	1..1000	nyi
+A374797	distinct	1	new A003990()	Distinct value of F003990 (LCM table read by antidiagonals) in order of appearance.	nonn,look	1..10000	nyi	_R‚ąö¬©my Sigrist_
+A377930	arrlamb	1	1	1	1	(n, k) -> MAX(D007814(n), D007814(k))
+A380049	partsun	1	new A072203()
+A380069	filter	1	new A051624()	v -> Predicates.SEMIPRIME.is(v)
+A380070	filter	0	new A000330()	(n, v) -> v.toString().indexOf('0') < 0 && Functions.DIGIT_PRODUCT.z(v).modZ(n).isZero()
+A380082	lambdan	2	n -> FA(n).*(BI(n - 1, 2)).*(Z2(n - 2))	(PARI) a(n) = n! * binomial(n-1, 2) * 2^(n-2);
+A380085	mulr	1	(p, e) -> ZV(e).compareTo(Functions.PRIME_PI.z(p)) <= 0 ? p.^(e) : ZV(1)
+A380086	mulr	1	(p, e) -> ZV(e).compareTo(Functions.PRIME_PI.z(p)) <= 0 ? ZV(2) : ZV(1)	2 if e <= pi(p) = A000720(p), and 1 otherwise.
+A380087	mulr	1	(p, e) -> ZV(e).compareTo(Functions.PRIME_PI.z(p)) <= 0 ? p.^(e).+(1) : ZV(1)	p^e + 1 if e <= pi(p)
+A380088	mulr	1	(p, e) -> ZV(e).compareTo(p) <= 0 ? p.^(e) : ZV(1)	p^e if e <= p, and 1 otherwise.
+A380089	mulr	1	(p, e) -> ZV(e).compareTo(p) <= 0 ? ZV(2) : ZV(1)	a(p^e) = 2 if e <= p, and 1 otherwise
+A380090	mulr	1	(p, e) -> ZV(e).compareTo(p) <= 0 ? p.^(e).+(1) : ZV(1)	a(p^e) = p^e + 1 if e <= p, and 1 otherwise.
+A380191	trilambn	0	0	0	(n, k) -> (k == n) ? ZV(1) : BI(3*n-2*k, n-k).*(n*k+4*k-3*n)./((3*n-2*k) * (2*n-k+1))
+A380232	filter	1	new A020338()	v -> v.testBit(0) && Predicates.ABUNDANT.is(v)	Odd abundant numbers that are also doublets (cf. A020338).
+A380233	filter	1	new A020338()	v -> v.testBit(0) && !v.mod(Z.FIVE).isZero() && Predicates.ABUNDANT.is(v)	Odd abundant numbers that are also doublets (cf. A020338).
+A380241	arrlamb	0	0	0	-1	(n,k) -> (k == 0) ? ZV(1) : BI(2*k-1, k).^(n).*(2).*(FA(n*k))./(FA(n).*(FA(n*k - n + 2)))	T(n, k)=if(k==0, 1, 2*binomial(2*k-1, k)^n*(n*k)!/(n!*(n*k - n + 2)!))
+A380395	mulr	1	(p, e) -> (e % 3) == 0 ? ZV(2) : ZV(1)	2 is e is divisible by 3, and 1 otherwise.
+A380396	mulr	1	(p, e) -> (e % 3) == 0 ? p.^(e).+(1) : ZV(1)	p^e + 1 if e is divisible by 3, and 1 otherwise
+A380397	lambdan	1	n -> SD(n, d -> (Functions.GCD.i(n/d, d) > 1 && Predicates.CUBE.is(d)) ? ZV(1) : ZV(0))	a(n) = Sum_{d|n, gcd(d, n/d) > 1} [d is cube]
+A380397	lambdan	1	n -> SD(n, d -> (Functions.GCD.i(n/d, d) > 1 && Predicates.CUBE.is(d)) ? ZV(1) : ZV(0))	a(n) = Sum_{d|n, gcd(d, n/d) > 1} [d is cube]
+A380607	lambdan	0	n -> (n == 0) ? ZV(1) : BI(6*(n-1), n-1).*(5)
+A380612	lambdan	0	n -> Z_1(n).*(PR(1, n, k -> ZV(2*k+1).*(2*k-3)))
+A381005	lambdan	1	n -> Z2(4*n).-(Z2(4*n-2)).-(Z2(2*n)).-(1)
+A381006	lambdan	1	n -> Z2(4*n).+(Z2(2*n+1))
+A381007	lambdan	1	n -> Z2(4*n).+(Z2(4*n-2)).+(Z2(2*n)).+(1)
+A381008	lambdan	1	n -> Z2(4*n+1).+(Z2(2*n+1)).+(Z2(4*n))
+A381009	lambdan	1	n -> Z2(4*n).+(Z2(2*n+1)).*(Z2(4*n).-(Z2(4*n-2)).-(Z2(2*n)).-(1))./(2)
+A381015	lambdan	1	n -> D122840(n).+(n)
+A381605	lambdan	1	n -> Functions.OMEGA.z(ZV(n).^(3).+(1))	a(n) = omega(n^3+1); \\ _Michel Marcus_, Mar 01 2025
+A381608	filnum	0	0	k -> !Pattern.compile("21*2").matcher(Integer.toString(k, 3)).find()	Nonnegative integers whose ternary expansion does not contain pairs of 2's only separated by (zero or more) 1's, with offset 0.	nonn,base,new	0..6560	nyi	_R‚ąö¬©my Sigrist_
+A381822	filnum	1	0	k -> (k & 1) == 1 && Predicates.CUBE_FREE.is(k)	Odd cubefree numbers: odd numbers that are not divisible by any cube greater than 1.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A381823	filnum	1	0	k -> (k & 1) == 1 && Predicates.CUBE_FREE.is(k) && !Predicates.SQUARE_FREE.is(k)	Odd cubefree numbers that are not squarefree.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A381828	polyx	0	"[[1]]"	",A,<1,catalan,1,A,^2,<1,-,/"	1	0
+A381831	polyx	0	"[[1]]"	",A,^2,<1,catalan,1,A,^3,<1,-,/"	1	0
+A381833	sintrif	1	(term, n) -> term./(25)	""	new FilterNumberSequence(0, 1, k -> Functions.DIGIT_SUM.i(5, k) == Functions.VALUATION.i(k, 5))
+A381834	sintrif	1	(term, n) -> term./(16)	""	new FilterNumberSequence(0, 1, k -> Functions.DIGIT_SUM.i(4, k) == Functions.VALUATION.i(k, 4))
+A381835	sintrif	0	(term, n) -> term./(9 )	""	new FilterNumberSequence(0, 0, k -> k > 3 && Functions.DIGIT_SUM.i(3, k) == Functions.VALUATION.i(k, 3))
+A382029	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(2*k+1).^(n-k-1).*(BI(n+k, k))./(ZV(n+k).*(FA(n-k-1)))).*(FA(n)).num()
+A382030	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(2*k+1).^(n-k-1).*(BI(n+2*k, k))./(ZV(n+2*k).*(FA(n-k-1)))).*(FA(n)).num()
+A382031	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(2*k+1).^(n-k-1).*(BI(n+3*k, k))./(ZV(n+3*k).*(FA(n-k-1)))).*(FA(n)).num()
+A382032	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(k+1).^(n-k-1).*(BI(2*n, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382033	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(k+1).^(n-k-1).*(BI(3*n, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382034	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(k+1).^(n-k-1).*(BI(4*n, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382036	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(n+1).^(n-k-1).*(BI(2*n, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382037	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(n+1).^(n-k-1).*(BI(3*n, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382038	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(n+1).^(n-k-1).*(BI(4*n, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382042	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(3*k+1).^(n-k-1).*(BI(n+k, k))./(ZV(n+k).*(FA(n-k-1)))).*(FA(n)).num()
+A382058	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(k+1).^(n-k-1).*(BI(2*n+k, k))./(ZV(2*n+k).*(FA(n-k-1)))).*(FA(n).*(2)).num()
+A382059	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(k+1).^(n-k-1).*(BI(3*n+k, k))./(ZV(3*n+k).*(FA(n-k-1)))).*(FA(n).*(3)).num()
+A382059	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(k+1).^(n-k-1).*(BI(3*n+k, k))./(ZV(3*n+k).*(FA(n-k-1)))).*(FA(n).*(3)).num()
+A382061	filnum	1	1	k -> TAU(k).mod(Functions.USIGMA0.z(k)).isZero()	isok(k) = {my(f = factor(k)); !(numdiv(f) % (1<<omega(f)));}
+A382086	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(n+1).^(n-k-1).*(BI(n+k-1, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382087	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(n+1).^(n-k-1).*(BI(2*n+k-1, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382088	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(n+1).^(n-k-1).*(BI(3*n+k-1, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+A382089	lambdan	0	n -> (n == 0) ? ZV(1) : RU(0, n - 1, k -> QV(n+1).^(n-k-1).*(BI(4*n+k-1, k))./(FA(n-k-1))).*(FA(n - 1)).num()
+---- 2025-03-19 23:16:45
+A143779	multrar	1	(self, n) -> self.a(n - 1).^(2).-(ZV(n - 1).^(2))	"0"	Numbers of the form   k=k^2-n^2.	sign	1..11	nyi	_Vladimir Joseph Stephan Orlovsky_

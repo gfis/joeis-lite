@@ -1,0 +1,125 @@
+---- 2025-03-24 19:34:53
+---- 2025-03-25 12:01:53
+---- 2025-03-25 13:15:44
+---- 2025-03-25 14:44:48
+---- 2025-03-25 15:50:02
+---- 2025-03-25 16:08:33
+A076810	lambmin11	1	(n, k) -> { final Z knn = ZV(n).^(n).*(k); return PP(knn.+(1)) && PP(knn.-(1)); }	Least k such that k*n^n +/- 1 are twin primes.
+A079115	lambmin11	1	(n, k) -> Functions.GCD.i(n + k, n) == 1 && Predicates.SQUARE_FREE.is(n + k)	Least k such that n+k is squarefree and coprime to n.
+A083663	lambmin11	1	(n, k) -> PP(FA(n).*(k).-(1))	Least k such that k*n!-1 is prime.
+A084740	lambmin11	2	(n, k) -> { final Q q = new Q(ZV(n).^(k).-(1), n - 1); return q.isInteger() && PP(q.num()); }	Least k such that (n^k-1)/(n-1) is prime, or 0 if no such prime exists.
+A084742	lambmin11	2	(n, k) -> { final Q q = new Q(ZV(n).^(k).+(1), n + 1); return q.isInteger() && PP(q.num()); }	Least k such that (n^k+1)/(n+1) is prime, or 0 if no such prime exists.
+A085427	lambmin11	0	(n, k) -> PP(Z2(n).*(k).-(1))	Least k such that k*2^n - 1 is prime.
+A093312	lambmin11	1	(n, k) -> PP(2*n + 2*k + 1) && PP(ZV(2*n).*(2*k).+(1))	Least k such that (2n + 2k) + 1 and (2n*2k) + 1 are both primes.
+A093481	lambmin11	1	(n, k) -> PP(ZV(2*n).+(k).+(1)) && PP(ZV(2*n).*(k).+(1))	Least k such that (2n + k) + 1 and (2n*k) + 1 are both primes.
+A094331	lambmin11	1	(n, k) -> FA(n).compareTo(PR(1, k, i -> ZV(n + i))) < 0	Least k such that n! < (n+1)(n+2)(n+3)...(n+k).
+A096937	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k)./(2); return PP(pmn.-(2)) && PP(pmn.+(2)); }	1	ONE		Least k such that k*P(n)#/2 - 2 and k*P(n)#/2 + 2 are both primes, where P(i)= i-th prime, P(i)# = i-th primorial.
+A097525	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 1); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+1) and k*P(n)#+P(n+1) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097526	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 2); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+2) and k*P(n)#+P(n+2) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097527	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 3); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+3) and k*P(n)#+P(n+3) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097528	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 4); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+4) and k*P(n)#+P(n+4) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097529	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 5); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+5) and k*P(n)#+P(n+5) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097530	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 6); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+6) and k*P(n)#+P(n+6) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097531	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 7); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+7) and k*P(n)#+P(n+7) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097532	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 8); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+8) and k*P(n)#+P(n+8) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097533	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 9); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+9) and k*P(n)#+P(n+9) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A097534	lambmin1k	1	(n, k) -> { final Z pmn = Functions.PRIMORIAL.z(Functions.PRIME.i(n)).*(k); final Z pni = PM(n + 10); return PP(pmn.-(pni)) && PP(pmn.+(pni)); }	1	ONE	that k*P(n)#-P(n+9) and k*P(n)#+P(n+9) are both primes with P(i)=i-th prime and P(i)#=i-th primorial.
+A101406	lambmin11	1	(n, k) -> { final Z kp = ZV(k).^(n); return PP(kp.*(kp.-(1)).-(1)); }	Least k such that k^n*(k^n-1)-1 is prime.
+A202448	lambmin1k	1	(n, k) -> PP(DF(n).*(k).+(1))	1	ZERO	Least k such that k*n!! +1 is a prime number.
+A202449	lambmin1k	1	(n, k) -> PP(DF(n).*(k).-(1))	1	ZERO	Least k such that k*n!! - 1 is a prime number.
+A376703	filnum	1	1	k -> Predicates.BRILLIANT.is(3, k)	3-brilliant numbers: numbers which are the product of three primes having the same number of decimal digits.    nonn,base       1..10000        nyi     _Paolo Xausa_
+A376704	filnum	1	1	k -> Predicates.BRILLIANT.is(4, k)	4-brilliant numbers: numbers which are the product of four primes having the same number of decimal digits. A078972	nyi Fto	Brilliant numbers: semiprimes (products of two primes, J001358) whose prime factors have the same number of decimal digits.	base,easy,nonn	1..10537	nyi
+A376952	lambmin	0	(n, k) -> CR.HALF_PI.multiply(n).pow(2*k).divide(Functions.FACTORIAL.z(2*k)).floor().compareTo(Z.ZERO) <= 0
+A376953	lambmin	0	(n, k) -> CR.PI.divide(3).multiply(n).pow(2*k).divide(Functions.FACTORIAL.z(2*k)).floor().compareTo(Z.ZERO) <= 0	least k such that (n*Pi/3)^(2k)/(2 k)! < 1.	nonn	0..66	nyi	_Clark Kimberling_
+A376954	lambmin	0	(n, k) -> CR.PI.divide(3).multiply(2*n).pow(2*k).divide(Functions.FACTORIAL.z(2*k)).floor().compareTo(Z.ZERO) <= 0	least k such that (2n*Pi/3)^(2k)/(2 k)! < 1.	nonn	0..59	nyi	_Clark Kimberling_
+A376955	lambmin	0	(n, k) -> CR.PI.divide(4).multiply(3*n).pow(2*k).divide(Functions.FACTORIAL.z(2*k)).floor().compareTo(Z.ZERO) <= 0	least k such that (3n*Pi/4)^(2k)/(2 k)! < 1.	nonn	0..58	nyi	_Clark Kimberling_
+A376956	lambmin	0	(n, k) -> CV(n).pow(2*k).divide(Functions.FACTORIAL.z(2*k)).floor().compareTo(Z.ZERO) <= 0	least k such that n^(2k)/(2 k)! < 1.	non	n	0..66	nyi	_Clark Kimberling_
+A376957	lambmin1	0	(n, k) -> CR.HALF_PI.multiply(n).pow(2*k + 1).divide(Functions.FACTORIAL.z(2*k + 1)).floor().compareTo(Z.ZERO) <= 0	1	least k such that (n Pi/2)^(2k+1)/(2k+1)! < 1.	nonn	0..61	nyi	_Clark Kimberling_
+A376958	lambmin1	0	(n, k) -> CR.PI.divide(3).multiply(n).pow(2*k + 1).divide(Functions.FACTORIAL.z(2*k + 1)).floor().compareTo(Z.ZERO) <= 0	1	least k such that (n Pi/3)^(2k+1)/(2k+1)! < 1.	nonn	0..66	nyi	_Clark Kimberling_
+A376959	lambmin1	0	(n, k) -> CR.PI.divide(3).multiply(2*n).pow(2*k + 1).divide(Functions.FACTORIAL.z(2*k + 1)).floor().compareTo(Z.ZERO) <= 0	1	least k such that (2n Pi/3)^(2k+1)/(2k+1)! < 1.	nonn	0..59	nyi	_Clark Kimberling_
+A376960	lambmin1	0	(n, k) -> CR.PI.divide(4).multiply(3*n).pow(2*k + 1).divide(Functions.FACTORIAL.z(2*k + 1)).floor().compareTo(Z.ZERO) <= 0	1	least k such that (3n Pi/4)^(2k+1)/(2k+1)! < 1.	nonn	0..58	nyi	_Clark Kimberling_
+---- 2025-03-25 16:45:43
+A078972	filnum	1	0	k -> Predicates.BRILLIANT.is(k)
+A087758	lambmin11	1	(n, k) -> M005229(k).equals(ZV(n))	Least k such that M005229(k) = n.
+A100967	lambmin11	1	(n, k) -> BI(2*k + 1, k - n).compareTo(BI(2*k, k)) >= 0	Least k such that BI(2k + 1, k - n) >= BI(2k, k).
+A102601	lambmin11	1	(n, k) -> PP(ZV(k + 1).^(n).*(ZV(k).^(n).-(1)).-(1))	Least k such that ((k+1)^n)*(k^n-1)-1 is prime.
+A113516	lambmin11	2	(n, k) -> PP(ZV(n).^(k).-(n - 1))	Least k such that n^k-n+1 is prime.
+A113517	lambmin11	2	(n, k) -> PP(ZV(k).^(n).-(k - 1))	Least k such that k^n-k+1 is prime, or 0 if there is no such k.
+A153436	lambmin11	1	(n, k) -> { final Z kp = ZV(k).^(n); return PP(kp.*(kp.+(1)).-(1)); }	Least k such that k^n*(k^n+1)-1 is prime.
+A259089	lambmin	0	(n, k) -> Z2(k).toString().indexOf(StringUtils.rep('2', n)) >= 0	Least k such that 2^k has at least n consecutive 2s in its decimal representation.
+A270440	lambmin11	0	(n, k) -> BI(k, 2).compareTo(BI(2*n, n)) >= 0	Least k such that BI(k, 2) >= BI(2*n, n).
+A274721	lambmin11	1	(n, k) -> D051903(k*k+1).equals(ZV(n))	Least k such that D051903(k^2+1) = n.
+A275463	lambmin11	1	(n, k) -> F000005(k*n).mod(n) == 0	Least k such that n divides d(k*n) (d = F000005).
+A275476	lambmin11	1	(n, k) -> F000005(FA(k)).mod(n) == 0	Least k such that n divides d(k!) where d = F000005 (k > 0).
+A275520	lambmin11	1	(n, k) -> F000005(ZV(k).^(k)).mod(n) == 0	Least k such that n divides d(k^k) (d = F000005, k > 0).
+A276035	lambmin11	1	(n, k) -> F000005(PHI(ZV(k).^(k))).mod(n) == 0	Least k such that n divides phi(k^k) (k > 0).
+A276040	lambmin11	1	(n, k) -> PHI(ZV(k).^(k)).mod(ZV(n).^(n)).isZero()	Least k such that n^n divides phi(k^k) (k > 0).
+A276043	lambmin11	1	(n, k) -> F000005(SIGMA(k)).mod(n) == 0	Least k such that n divides d(sigma(k)) (d = F000005).
+A287621	lambmin11	1	(n, k) -> E287620(k).equals(ZV(n))	Least k such that E287620(k) = n.
+A319067	lambmin11	1	(n, k) -> F047994(k).mod(n) == 0	Least k such that n divides F047994(k) where F047994 is the unitary totient function.
+A341860	lambmin11	1	(n, k) -> E341857(k).equals(ZV(n))	Least k such that E341857(k) = psi(k^2)/k = n, or 0 if no such k exists.
+---- 2025-03-25 16:51:06
+A078972	filnum	1	0	k -> Predicates.BRILLIANT.is(k)
+A087758	lambmin11	1	(n, k) -> M005229(k).equals(ZV(n))	Least k such that M005229(k) = n.
+A100967	lambmin11	1	(n, k) -> BI(2*k + 1, k - n).compareTo(BI(2*k, k)) >= 0	Least k such that BI(2k + 1, k - n) >= BI(2k, k).
+A102601	lambmin11	1	(n, k) -> PP(ZV(k + 1).^(n).*(ZV(k).^(n).-(1)).-(1))	Least k such that ((k+1)^n)*(k^n-1)-1 is prime.
+A113516	lambmin11	2	(n, k) -> PP(ZV(n).^(k).-(n - 1))	Least k such that n^k-n+1 is prime.
+A113517	lambmin11	2	(n, k) -> PP(ZV(k).^(n).-(k - 1))	Least k such that k^n-k+1 is prime, or 0 if there is no such k.
+A153436	lambmin11	1	(n, k) -> { final Z kp = ZV(k).^(n); return PP(kp.*(kp.+(1)).-(1)); }	Least k such that k^n*(k^n+1)-1 is prime.
+A246005	lambmin11	1	(n, k) -> { final Q q = new Q(ZV(2*n + 1).^(k).-(1), ZV(2*n)); return q.isInteger() && PP(q.num()); }	Least k such that ((2n+1)^k-1)/2n is prime, or 0 if no such k exists.
+A259089	lambmin	0	(n, k) -> Z2(k).toString().indexOf(StringUtils.rep('2', n)) >= 0	Least k such that 2^k has at least n consecutive 2s in its decimal representation.
+A270440	lambmin11	0	(n, k) -> BI(k, 2).compareTo(BI(2*n, n)) >= 0	Least k such that BI(k, 2) >= BI(2*n, n).
+A274721	lambmin11	1	(n, k) -> D051903(k*k+1).equals(ZV(n))	Least k such that D051903(k^2+1) = n.
+A275463	lambmin11	1	(n, k) -> F000005(k*n).mod(n) == 0	Least k such that n divides d(k*n) (d = F000005).
+A275476	lambmin11	1	(n, k) -> F000005(FA(k)).mod(n) == 0	Least k such that n divides d(k!) where d = F000005 (k > 0).
+A275520	lambmin11	1	(n, k) -> F000005(ZV(k).^(k)).mod(n) == 0	Least k such that n divides d(k^k) (d = F000005, k > 0).
+A276035	lambmin11	1	(n, k) -> F000005(PHI(ZV(k).^(k))).mod(n) == 0	Least k such that n divides phi(k^k) (k > 0).
+A276040	lambmin11	1	(n, k) -> PHI(ZV(k).^(k)).mod(ZV(n).^(n)).isZero()	Least k such that n^n divides phi(k^k) (k > 0).
+A276043	lambmin11	1	(n, k) -> F000005(SIGMA(k)).mod(n) == 0	Least k such that n divides d(sigma(k)) (d = F000005).
+A287621	lambmin11	1	(n, k) -> E287620(k).equals(ZV(n))	Least k such that E287620(k) = n.
+A319067	lambmin11	1	(n, k) -> F047994(k).mod(n) == 0	Least k such that n divides F047994(k) where F047994 is the unitary totient function.
+A341860	lambmin11	1	(n, k) -> E341857(k).equals(ZV(n))	Least k such that E341857(k) = psi(k^2)/k = n, or 0 if no such k exists.
+A351913	lambmin11	1	(n, k) -> E352483(k).equals(ZV(n))	Least k such that E352483(k) = n, or -1 if no such k exists.
+A352710	lambmin11	1	(n, k) -> E352483(k).equals(ZV(2*n-1))	Least k such that E352483(k) = 2*n-1, or -1 if no such k exists.
+A363873	lambmin11	1	(n, k) -> Z2(k).toString().startsWith(Integer.toString(n)) && !Z2(k).equals(ZV(n))	Least k such that 2^k begins with n but is not exactly n.
+A376455	lambmin11	0	(n, k) -> new Q(ZV(n).^(2*k + 1), FA(2*k + 1)).floor().compareTo(Z.ONE) < 0	Least k such that n^(2k+1)/(2k+1)! < 1.
+A381702	lambmin11	1	(n, k) -> E277847(k).equals(ZV(2*n))	Least k such that E277847(k) = 2*n.
+---- 2025-03-25 17:16:23
+A086837	filter	1	new A001567()	v -> Predicates.BRILLIANT.is(v)	Brilliant Sarrus numbers.	base,nonn	1..10000	nyi	_Jason Earls_
+A108770	filnum	1	0	k -> Predicates.BRILLIANT.is(ZV(k).^(2).+(ZV(k + 1).^(2)))	Numbers n such that n^2 + (n+1)^2 is a brilliant number.	base,easy,nonn	1..51	nyi	_Jason Earls_
+A113940	filter	1	new A000217()	v -> Predicates.BRILLIANT.is(v)	Ft	Triangular numbers that are also brilliant (A078972).	base,nonn	1..1000	nyi	_Giovanni Resta_
+A113941	filter	1	new A000326()	v -> Predicates.BRILLIANT.is(v)		F	Pentagonal numbers (F000326) that are also brilliant numbers (A078972).	base,nonn	1..32	nyi
+A114080	filnum	1	0	k -> Predicates.BRILLIANT.is(SIGMA(k).*(PM(k)))	t	Numbers k such that sigma(k) times the k-th prime is a brilliant number (A078972).	nonn,base	1..8	nyi	_Giovanni Resta_
+A115655	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.BRILLIANT.is(Functions.REVERSE.z(k))	Both n and the reverse of n are brilliant numbers (A078972).	base,nonn	1..41	nyi	_Giovanni Resta_
+A115663	filter	1	new A000040()	p -> Predicates.BRILLIANT.is(Functions.REVERSE.z(p))	Prime numbers whose digit reversal is a brilliant number (A078972).	nonn,base	1..42	nyi	_Giovanni Resta_
+A115664	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && PP(Functions.REVERSE.z(k))	Brilliant numbers (A078972) whose digit reversal is a prime number.	nonn,base	1..42	nyi	_Giovanni Resta_
+A115665	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.SEMIPRIME.is(Functions.REVERSE.z(k))	Brilliant numbers (A078972) whose digit reversal is a semiprime (J001358).	nonn,base	1..49	nyi	_Giovanni Resta_
+A115666	filter	1	new A001358()	v -> Predicates.BRILLIANT.is(Functions.REVERSE.z(v))	Semiprimes (J001358) whose digit reversal is a brilliant number (A078972).	nonn,base	1..49	nyi	_Giovanni Resta_
+A115667	filter	1	new A000290()	v -> Predicates.BRILLIANT.is(Functions.REVERSE.z(v))	Squares whose digit reversal is a brilliant number (A078972).	nonn,base	1..34	nyi	_Giovanni Resta_
+A115668	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.SQUARE.is(Functions.REVERSE.z(k))	Brilliant numbers (A078972) whose digit reversal is a square.	nonn,base	1..30	nyi	_Giovanni Resta_
+---- 2025-03-25 17:34:28
+A083284	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.BRILLIANT.is(k + 2)	Numbers m such that m and m+2 are both brilliant numbers, where brilliant numbers are semiprimes whose prime factors have an equal number of decimal digits, or whose prime factors are equal.	base,easy,nonn	1..10000	nyi	_Jason Earls_
+A083285	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.BRILLIANT.is(k + 4)	Numbers n such that n and n+4 are both brilliant numbers (A078972).	base,nonn	1..38	nyi	_Jason Earls_
+A084350	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.PALINDROME.is(k)	Palindromic brilliant numbers.	base,nonn	1..38	nyi	_Jason Earls_
+A085648	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.BRILLIANT.is(Functions.DIGIT_SUM.z(k))	Brilliant numbers (A078972) whose digital sum is also brilliant.	base,nonn	1..10000	nyi	_Amarnath Murthy_, _Jason Earls_
+A085649	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.BRILLIANT.is(2*k + 1)	o	Brilliant numbers k such that 2k+1 is also brilliant.	base,nonn	1..36	nyi	_Jason Earls_, _Amarnath Murthy_
+A115669	filnum	1	0	k -> Predicates.BRILLIANT.is(Functions.REVERSE.z(ZV(k).*(k)))	Numbers the reversal of whose square is a brilliant number (A078972).	nonn,base	1..1000	nyi	_Giovanni Resta_
+A115673	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.CUBE.is(Functions.REVERSE.z(k))	t	Brilliant numbers (A078972) whose digit reversal is a cube.	nonn,base	1..1000	nyi	_Giovanni Resta_
+A115677	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.TRIANGULAR.is(Functions.REVERSE.z(k))	t	Brilliant numbers (A078972) whose digit reversal is a triangular number.	nonn,base	1..31	nyi	_Giovanni Resta_
+A115678	filter	1	new A000217()	v -> Predicates.BRILLIANT.is(Functions.REVERSE.z(v))	t	Triangular numbers whose digit reversal is a brilliant number (A078972).	nonn,base	1..1000	nyi	_Giovanni Resta_
+A115679	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.POLYGONAL.is(5, Functions.REVERSE.z(k))	Brilliant numbers (A078972) whose digit reversal is a pentagonal number (F000326).	nonn,base	1..31	nyi	_Giovanni Resta_
+A115680	filter	1	new A000326()	v -> Predicates.BRILLIANT.is(Functions.REVERSE.z(v))	Pentagonal numbers (F000326) whose digit reversal is a brilliant number (A078972).	nonn,base	1..31	nyi	_Giovanni Resta_
+A115912	filnum	1	0	k -> Predicates.BRILLIANT.is(PM(k).+(k))	Numbers k such that k + prime(k) is a brilliant number (A078972).	nonn,base	1..48	nyi	_Giovanni Resta_
+A115913	filnum	1	0	k -> Predicates.BRILLIANT.is(PM(k).-(k))	Numbers k such that prime(k) - k is a brilliant number (A078972).	nonn,base	1..51	nyi	_Giovanni Resta_
+A115914	filnum	1	0	k -> Predicates.BRILLIANT.is(SIGMA(k).+(k))	Numbers k such that k + sigma(k) is a brilliant number (A078972).	nonn,base	1..52	nyi	_Giovanni Resta_
+A115915	filnum	1	0	k -> Predicates.BRILLIANT.is(PHI(k).+(k))	Numbers k such that k + phi(k) is a brilliant number (A078972).	nonn,base	1..54	nyi	_Giovanni Resta_
+A115916	filnum	1	0	k -> Predicates.BRILLIANT.is(SIGMA(k).+(PHI(k)))	Numbers k such that sigma(k) + phi(k) is a brilliant number (A078972).	nonn,base	1..35	nyi	_Giovanni Resta_
+A115917	filnum	1	0	k -> Predicates.BRILLIANT.is(SIGMA(k).-(PHI(k)))	Numbers k such that sigma(k) - phi(k) is a brilliant number (A078972).	nonn,base	1..35	nyi	_Giovanni Resta_
+A116038	filnum	1	0	k -> Predicates.BRILLIANT.is(PM(PM(k)).+(PM(k)).+(k))	n+p(n)+p(p(n)) is a brilliant number (A078972), where p(n) denotes the n-th prime.	nonn,base	1..48	nyi	_Giovanni Resta_
+A116047	filnum	1	0	k -> Predicates.BRILLIANT.is(PHI(PHI(k)).+(PHI(k)).+(k))	n+phi(n)+phi(phi(n)) is a brilliant number (A078972).	nonn,base	1..53	nyi	_Giovanni Resta_
+A116052	filnum	1	0	k -> Predicates.BRILLIANT.is(SIGMA(SIGMA(k)).+(SIGMA(k)).+(k))	Numbers k such that k + sigma(k) + sigma(sigma(k)) is a brilliant number (A078972).	nonn,base	1..51	nyi	_Giovanni Resta_
+A121209	filnum	1	0	k -> Predicates.BRILLIANT.is(k) && Predicates.PALINDROME.is(k) && Predicates.BRILLIANT.is(Functions.DIGIT_SUM.i(2, k))	Palindromic brilliant numbers whose number of binary ones is also brilliant.	base,nonn	1..30	nyi	_Jason Earls_
+A376800	filnum	1	0	k -> Predicates.BRILLIANT.is(3, k) && Functions.OMEGA.i(k) >= 3	3-brilliant numbers with distinct prime factors.	nonn,base,easy	1..10000	nyi	_Paul Duckett_
+A376864	filnum	1	0	k -> Predicates.BRILLIANT.is(4, k) && Functions.OMEGA.i(k) >= 4	4-brilliant numbers with distinct prime factors.	nonn,base,easy	1..10000	nyi	_Paul Duckett_
+---- 2025-03-25 17:53:49
+A276758	filnum	1	0	k -> D045876(k).equals(D045876(k + 1))	Numbers n such that A045876(n) = A045876(n+1).
