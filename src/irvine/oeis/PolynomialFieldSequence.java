@@ -69,9 +69,11 @@ public class PolynomialFieldSequence extends AbstractSequence {
    * @param gfType type of the generating function: 0 = ordinary, 1 = exponential (integer or numerators), 4 ordinary, 5 exponential (denominators)
    * @param modulus for example 1 for odd, 0 for even if factor = 2
    * @param factor multiplicity when zeroes should be left out
+   * @param seqs list of optional sequences whose generating functions are used in the postfix expression
    */
   public PolynomialFieldSequence(final int offset, final String polys, final String postfix,
-                                 final int dist, final int gfType, final int modulus, final int factor) {
+                                 final int dist, final int gfType, final int modulus, final int factor,
+                                 final AbstractSequence... seqs) {
     super(offset);
     mDist = dist;
     mGfType = gfType;
@@ -145,7 +147,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
     mSeqs = new ArrayList<AbstractSequence>();
     mTerms = new ArrayList<Polynomial<Q>>(); // indexed by s0, s1 ...
     final int apos = polyString.indexOf('A');
-    if (apos >= 0) { // with A-numbers
+    if (apos >= 0) { // with A-numbers at the end of the polynomials
       String aNums[] = polyString.substring(apos).split("\\,"); // split into A-numbers
       polyString = polyString.substring(0, apos - 1); // keep polynomials only
       polyString = polyString.replaceAll(" *\\, *\\Z", ""); // remove trailing comma
@@ -163,6 +165,15 @@ public class PolynomialFieldSequence extends AbstractSequence {
       } catch (final UnimplementedException exc) {
         System.err.println(exc.getMessage());
       }
+    }
+    for (AbstractSequence seq: seqs) { // and also from the trailing parameter list
+          final Q[] terms = new Q[mDist + 1];
+          final int soff = seq.getOffset();
+          for (int ix = 0; ix <= mDist; ++ix) {
+            terms[ix] = ix < soff ? Q.ZERO : Q.valueOf(seq.next());
+          }
+          mTerms.add(Polynomial.create(terms));
+          mSeqs.add(seq);
     }
 
     polyString = trimQuotes(polyString);
@@ -187,10 +198,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
 
     mFactorial = Z.ONE;
     for (int i = 1; i <= offset; ++i) {
-      mFactorial = mFactorial.multiply(i); 
-      for (int iseq = 1; iseq <= mTerms.size(); ++i) { 
+      mFactorial = mFactorial.multiply(i);
+      for (int iseq = 1; iseq <= mTerms.size(); ++i) {
         Polynomial<Q> pseq = mTerms.get(iseq);
-        pseq = RING.add(pseq, RING.monomial(Q.valueOf(mSeqs.get(iseq).next()), iseq + 1)); 
+        pseq = RING.add(pseq, RING.monomial(Q.valueOf(mSeqs.get(iseq).next()), iseq + 1));
         // System.err.println("pseq[" + iseq + "] = " + pseq);
         mTerms.set(iseq, pseq);
       }
@@ -203,16 +214,16 @@ public class PolynomialFieldSequence extends AbstractSequence {
   } // Constructor
 
   /**
-   * Compute successive coefficients for a generating function A(x) defined by a condition that A(x) must satisfy.
+   * Constructor with postfix only, and default of all other parameters.
    * @param offset first index
    * @param postfix the equation with operands and operators in postfix polish notation, separated by the first character
    */
   public PolynomialFieldSequence(final int offset, final String postfix) {
-    this(offset, "[[1]]", postfix, 0, OGF, 1, 1);
+    this(offset, "[1]", postfix, 0, OGF, 1, 1);
   }
 
   /**
-   * Compute successive coefficients for a generating function A(x) defined by a condition that A(x) must satisfy.
+   * Constructor with polynomials and postfix only, and default of all other parameters.
    * @param offset first index
    * @param polys array of polynomials, the coefficients of <code>x^i, i=0..m</code>
    * are given as comma-separated lists, enclosed in square brackets, for example "[[0],[0,1,2],[17,0,18]]"
@@ -223,7 +234,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
   }
 
   /**
-   * Compute successive coefficients for a generating function A(x) defined by a condition that A(x) must satisfy.
+   * Constructor with gfType in addition.
    * @param offset first index
    * @param polys array of polynomials, the coefficients of <code>x^i, i=0..m</code>
    * are given as comma-separated lists, enclosed in square brackets, for example "[[0],[0,1,2],[17,0,18]]"
@@ -234,6 +245,23 @@ public class PolynomialFieldSequence extends AbstractSequence {
   public PolynomialFieldSequence(final int offset, final String polys, final String postfix,
                                  final int dist, final int gfType) {
     this(offset, polys, postfix, dist, gfType, 1, 1);
+  }
+
+  /**
+   * Constructor with modulus and factor in addition.
+   * @param offset first index
+   * @param polys array of polynomials, the coefficients of <code>x^i, i=0..m</code>
+   * are given as comma-separated lists, enclosed in square brackets, for example "[[0],[0,1,2],[17,0,18]]"
+   * @param postfix the equation with operands and operators in postfix polish notation, separated by the first character in
+   * the String, for example A213091 <code>satisfies: A(x) = 1 + x/A(-x*A(x)^2)</code> -&gt; <code>",1,x,A,^2,<1,neg,sub,/,+"</code>
+   * @param dist additional degree
+   * @param gfType type of the generating function: 0 = ordinary, 1 = exponential (integer or numerators), 4 ordinary, 5 exponential (denominators)
+   * @param modulus for example 1 for odd, 0 for even if factor = 2
+   * @param factor multiplicity when zeroes should be left out
+   */
+  public PolynomialFieldSequence(final int offset, final String polys, final String postfix,
+                                 final int dist, final int gfType, final int modulus, final int factor) {
+    this(offset, polys, postfix, dist, gfType, modulus, factor, new AbstractSequence[0]);
   }
 
   /**
@@ -277,10 +305,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
   private Z compute() {
     // now perform a statement like "mA = RING.add(RING.one(), RING.multiply(RING.x(), RING.pow(RING.substitute(mA, RING.multiply(RING.x(), mA, mN), mN), mExpon, mN), mN));"
     // for example: A143046 poly -p "[[0],[1],[0,-1]]" -x ",p1,p2,sub,^3,<1,+"; G.f. satisfies A(x) = 1 + x*A(-x)^3.
-    final int m = mN + mDist; // Number of terms to expand to 
-    for (int iseq = 0; iseq < mTerms.size(); ++iseq) { 
+    final int m = mN + mDist; // Number of terms to expand to
+    for (int iseq = 0; iseq < mTerms.size(); ++iseq) {
       Polynomial<Q> pseq = mTerms.get(iseq);
-      pseq = RING.add(pseq, RING.monomial(Q.valueOf(mSeqs.get(iseq).next()), m + 1)); 
+      pseq = RING.add(pseq, RING.monomial(Q.valueOf(mSeqs.get(iseq).next()), m + 1));
       // System.err.println("pseq[" + iseq + "] = " + pseq);
       mTerms.set(iseq, pseq);
     }
@@ -476,9 +504,12 @@ public class PolynomialFieldSequence extends AbstractSequence {
           // System.out.println("x14=" + x14 + ", x2= " + x2);
           mStack.set(++top, RING.series(RING.subtract(Polynomial.create(Q.ONE), RING.sqrt(x14, m)), x2, m));
           break;
-        case 45:  // "s"  additional g.f. as a sequence
-          // mStack.set(++top, mTerms.get(mPostInts[ipost++]));
-          mStack.set(top, RING.substitute(mTerms.get(mPostInts[ipost++]), mStack.get(top), m));
+        case 45:  // "S"  1st additional g.f. as a sequence
+        case 46:  // "T"  2nd additional g.f. as a sequence
+        case 47:  // "U"  3rd additional g.f. as a sequence
+        case 48:  // "V"  4th additional g.f. as a sequence  
+          // Caution, this code is dirty (dependant on the "45")!
+          mStack.set(top, RING.substitute(mTerms.get(ix - 45), mStack.get(top), m));
           break;
         default: // should not occur with proper postfix expressions
           throw new RuntimeException("invalid postfix code " + ix);
@@ -549,7 +580,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
     POST_MAP.put("x", 3);
     POST_MAP.put("n", 43);
     POST_MAP.put("catalan", 44);
-    POST_MAP.put("s", 45);
+    POST_MAP.put("S", 45);
+    POST_MAP.put("T", 46);
+    POST_MAP.put("U", 47);
+    POST_MAP.put("V", 48);
   } //! fillMap
 
   @Override
