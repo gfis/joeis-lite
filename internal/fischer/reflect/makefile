@@ -212,8 +212,10 @@ funct: # extract from jOEIS source
 	wc -l    funct.txt
 knopre: knopre1 knopre2 knopre3 # extract Predicates from jOEIS source
 knopre1: # extract
-	cat $(JOEIS)/src/irvine/math/predicate/Predicates.java \
-	| perl read_predicates.pl -d 2 \
+	cat $(LITE)/src/irvine/math/predicate/Predicates.java \
+	| perl read_predicates.pl -d 0 \
+	| grep -P "^A" \
+	| cut -f1,2 \
 	>        $@.tmp
 	head -n2 $@.tmp
 	wc -l    $@.tmp
@@ -224,10 +226,8 @@ knopre2:
 	| tee    knopre.txt
 	wc -l    knopre.txt
 knopre3: # load db table
-	sed -e "s/seq2/knopre/g" $(COMMON)/seq2.create.sql \
-	| tee    knopre.create.sql
 	$(DBAT) -f knopre.create.sql
-	$(DBAT) -r -t knopre < knopre.txt
+	$(DBAT) -m csv -s "\t" -r knopre < knopre.txt
 	$(DBAT) -4 knopre
 #-----
 known: # extract known functions

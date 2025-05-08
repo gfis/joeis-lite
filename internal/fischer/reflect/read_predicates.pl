@@ -6,7 +6,7 @@
 #
 #:# Usage:
 #:#   perl read_predicates.pl [-d debug] infile.java > outfile.gen
-#:#
+#:#       -d debug mode: 0=none, 1=some, 2=more
 #--------------------------------------------------------
 use strict;
 use integer;
