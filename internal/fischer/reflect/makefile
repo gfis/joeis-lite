@@ -212,7 +212,7 @@ funct: # extract from jOEIS source
 	wc -l    funct.txt
 knopre: knopre1 knopre2 knopre3 # extract Predicates from jOEIS source
 knopre1: # extract
-	cat $(LITE)/src/irvine/math/predicate/Predicates.java \
+	cat $(JOEIS)/src/irvine/math/predicate/Predicates.java \
 	| perl read_predicates.pl -d 0 \
 	| grep -P "^A" \
 	| cut -f1,2 \
