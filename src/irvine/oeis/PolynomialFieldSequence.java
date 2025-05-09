@@ -148,12 +148,12 @@ public class PolynomialFieldSequence extends AbstractSequence {
     mTerms = new ArrayList<Polynomial<Q>>(); // indexed by s0, s1 ...
     final int apos = polyString.indexOf('A');
     if (apos >= 0) { // with A-numbers at the end of the polynomials
-      String aNums[] = polyString.substring(apos).split("\\,"); // split into A-numbers
+      final String[] aNums = polyString.substring(apos).split("\\,"); // split into A-numbers
       polyString = polyString.substring(0, apos - 1); // keep polynomials only
       polyString = polyString.replaceAll(" *\\, *\\Z", ""); // remove trailing comma
       try {
-        for (int iseq = 0; iseq < aNums.length; iseq ++) {
-          final AbstractSequence seq = (AbstractSequence) SequenceFactory.sequence(aNums[iseq]);
+        for (final String aNum : aNums) {
+          final AbstractSequence seq = (AbstractSequence) SequenceFactory.sequence(aNum);
           final Q[] terms = new Q[mDist + 1];
           final int soff = seq.getOffset();
           for (int ix = 0; ix <= mDist; ++ix) {
@@ -166,19 +166,19 @@ public class PolynomialFieldSequence extends AbstractSequence {
         System.err.println(exc.getMessage());
       }
     }
-    for (AbstractSequence seq: seqs) { // and also from the trailing parameter list
-          final Q[] terms = new Q[mDist + 1];
-          final int soff = seq.getOffset();
-          for (int ix = 0; ix <= mDist; ++ix) {
-            terms[ix] = ix < soff ? Q.ZERO : Q.valueOf(seq.next());
-          }
-          mTerms.add(Polynomial.create(terms));
-          mSeqs.add(seq);
+    for (AbstractSequence seq : seqs) { // and also from the trailing parameter list
+      final Q[] terms = new Q[mDist + 1];
+      final int soff = seq.getOffset();
+      for (int ix = 0; ix <= mDist; ++ix) {
+        terms[ix] = ix < soff ? Q.ZERO : Q.valueOf(seq.next());
+      }
+      mTerms.add(Polynomial.create(terms));
+      mSeqs.add(seq);
     }
 
     polyString = trimQuotes(polyString);
     final String[] polarr = polyString.indexOf("]") < 0
-      ? new String[] { polyString } // no square brackets: a single coefficient lisst
+      ? new String[] {polyString} // no square brackets: a single coefficient lisst
       : polyString.split("]\\s*,\\s*\\["); // a list of coefficient lists enclosed in square bracket
     mPolys = new ArrayList<>(polarr.length);
     for (int k = 0; k < polarr.length; ++k) {
@@ -197,8 +197,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
     } // for k
 
     mFactorial = Z.ONE;
-    for (int i = 1; i <= offset; ++i) {
+    for (int i = offset - 1; i > 0; --i) {
       mFactorial = mFactorial.multiply(i);
+    }
+    for (int i = 1; i <= offset; ++i) {
       for (int iseq = 1; iseq <= mTerms.size(); ++i) {
         Polynomial<Q> pseq = mTerms.get(iseq);
         pseq = RING.add(pseq, RING.monomial(Q.valueOf(mSeqs.get(iseq).next()), iseq + 1));
