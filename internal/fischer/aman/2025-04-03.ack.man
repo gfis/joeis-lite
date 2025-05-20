@@ -1,0 +1,50 @@
+---- 2025-04-03 21:31:03
+A083534	diffs	1	new A007617()		diffs	0	a(n) = A007617(n+1) - A007617(n).
+A083924	charfunc	0	new A072795()	Characteristic function for J072795.
+A097703	complem	1	new A097702()
+A114708	diffs	2	new A114707()		diffs	0	a(n) = A114707(n) - A114707(n-1) = the number of distinct primes dividing n but not A114707(n-1).
+A132194	charfunc	1	new A133677()	Characteristic function of J133677.
+A160650	diffs	1	new A160649()		diffs	0	a(n) = A001222(A160649(n)) = A160649(n+1) - A160649(n); where A001222(m) is the sum of prime-factorization exponents of m (or, A001222(m) is the number of primes dividing m, counted with multiplicity).
+A162917	complem	1	new A161983()
+A166946	charfunc	0	new A007067()	The characteristic function of J007067.
+A174425	diffs	1	new A057494()		diffs	0	a(n) = A057494(n) - A057494(n-1) - 2*n - 1. (End)
+A177711	complem	1	new A276156()
+A187335	complem	1	new A187334()
+A230412	charfunc	0	new A219650()	The characteristic function of J219650. J219658 gives the positions of zeros.
+A241403	complem	1	new A240878()
+A261812	diffs	1	new A098842()		diffs	0	a(n) = A098842(n+1) - A098842(n).
+A283110	diffs	0	new A001168()		diffs	0	a(n) = A001168(n+1) - A001168(n); this holds for n=0 if A001168(0) is set conventionally to 1, like it is done for free polyominoes in A000105. We say there are exactly 1 fixed polyominoes of order 0.
+A320301	diffs	1	new A320300()		diffs	0	a(n) = A320300(n+1) - A320300(n) (this is about Pi/4, but they are essentially the same).
+A324731	charfunc	1	new A324551()	Characteristic function of J324551: a(n) = 1 if 2*D156552(n) < D323243(n), and 0 otherwise.
+A348737	charfunc	1	new A348738()	Characteristic function of J348738.
+A357385	diffs	1	new A071626()		diffs	0	a(n) = A071626(n+1) - A071626(n).
+A369255	charfunc	1	new A369256()	Characteristic function of J369256.
+A375706	diffs	1	new A007916()		diffs	0	a(n) = A007916(n+1) - A007916(n).
+A376573	complem	1	new A000537()
+A379970	charfunc	1	new A081770()	Characteristic function of J081770, numbers twice their squarefree kernel (F007947).
+A380454	charfunc	1	new A048111()	Characteristic function of J048111.
+A381374	holos	1	[[0],[1],[0],[-5],[0],[10],[0],[-10],[0],[5],[0],[-1]]	1,1,97,49,769,289,2977,961,8161,2401	0	0
+---- 2025-04-03 22:16:58
+A129921	invtraf	0	new A000005()	INVERT transform of tau (A000005). - _Alois P. Heinz_, Feb 11 2021
+A180305	invtraf	0	new A000203()	INVERT transform of sigma (A000203). - _Alois P. Heinz_, Feb 11 2021
+A305532	invtraf	0	new A000182()	Invert transform of tangent numbers (A000182).
+A305533	invtraf	0	new A002105()	Invert transform of reduced tangent numbers (A002105).
+---- 2025-04-03 22:20:06
+A126602	holos	1	[0,1,0,0,0,0,0,0,0,-1]	8120,8736,8784,19140,11200,21750,8624,15950	0	0
+A377030	holos	0	[0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1]	0,3,6,9,7,4,1,2,5,8,8,5,2,1,4,7,9,6,3	0	0
+A377663	holos	0	[0,-1,4,-6,4,-1]	1,0,11,46	0	0
+A377919	holos	0	[0,-100,100,-100,100,1,-1,1,-1]	0,1,2,10,101,21,210,1010,10101	0	0
+A378023	holos	1	[0,1,-5,10,-10,5,-1]	1,7,24,66,155	0	0
+A378943	holos	1	[0,-1,-1,0,2,1,-1]	2,3,7,13,25	0	0
+A379210	holos	1	[0,1,-1,0,0,-2,2,0,0,1,-1]	0,3,4,11,19,32,35,52,68	0	0
+A379825	holos	0	[0,-12,6,-1]	0,1	0	0
+A381109	holos	0	[0,1,-3,3,-1]	1,16,52	0	0
+A382057	holos	0	[0,-6,-12,-7,-1]	8,-37,181,-865	0	0
+A382156	holos	0	[0,1,-1,-2,2,1,-1]	1,3,9,15,31,41,65	0	0
+A382534	holos	0	[0,1,0,0,0,-3,0,0,0,3,0,0,0,-1]	3,9,9,36,15,81,21,36,27,225,33,36	0	0
+---- 2025-04-03 22:42:23
+---- 2025-04-03 22:43:12
+---- 2025-04-03 22:48:50
+A382300	lingf	0	1,0,-2,-2,1,6,1	1,0,-4,-4,6,4,2,4,5,-8,6,-4,1					0
+A382488	lingf	1	0,1,2,2,2,1,4	1,0,0,0,0,0,-1					0
+A382641	lingf	0	1,0,1,0,1,0,0,0,-1	1,-1,0,-1					0

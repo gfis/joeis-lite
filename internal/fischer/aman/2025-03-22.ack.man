@@ -1,0 +1,101 @@
+---- 2025-03-22 18:42:22
+A048594	trilambn	1	1	1	(n, k) -> S1(n, k).*(FA(k))	Triangle T(n,k) = k! * Stirling1(n,k), 1&lt;=k&lt;=n.
+A052382	filnum	1	0	k -> Predicates.ZEROLESS.is(10, k)
+A076375	filnum	1	1	k -> Predicates.BALANCED.is(k) && Predicates.BALANCED.is(2*k)	Numbers k such that both k and 2*k are balanced numbers (A020492).
+A076376	filnum	1	1	k -> Predicates.BALANCED.is(k) && Predicates.BALANCED.is(2*k) && Predicates.BALANCED.is(4*k)	Numbers k such that k, 2*k and 4*k are balanced numbers (A020492).
+A076377	filnum	1	1	k -> Predicates.BALANCED.is(k) && Predicates.BALANCED.is(2*k) && Predicates.BALANCED.is(4*k) && Predicates.BALANCED.is(8*k)	Numbers k such that k, 2*k, 4*k and 8*k are balanced numbers (A020492).
+A076484	filnum	1	0	k -> Predicates.BALANCED.is(k) && !Predicates.BALANCED.is(2*k)	Balanced numbers k such that 2*k is not a balanced number (k is in A020492, 2*k is not).
+A077014	sintrif	0	(term, n) -> (n & 1) == 1 ? term : term.*(2)	""	new A005316()	Equals A005316(n) if n odd, or 2*A005316(n) if n
+A078542	filnum	1	0	k -> !Predicates.BALANCED.is(k) && !ZV(k).IPP()	Unbalanced composite numbers.
+A078543	filter	1	new A033950()	v -> Predicates.BALANCED.is(v)	Balanced refactorable numbers.
+A078550	filter	1	new A015774()	v -> !Predicates.BALANCED.is(v)	Non-balanced numbers in A015774.
+A078557	filnum	1	1	k -> Predicates.BALANCED.is(k) && Predicates.SQUARE_FREE.is(k)	Squarefree balanced numbers (i.e., squarefree members of A020492).
+A082937	insect2	0	new A002113()	new A034838()	 Intersection of A002113 (palindromes in base 10) and A034838.
+A092190	filter	1	new A062198()	v -> Predicates.SEMIPRIME.is(v)	intersect A001358.
+A095998	lambdan	1	n -> RU(1, n, k -> new Q(1, k)).*(FA(n)).num().mod(FA(n))	n!*(sum{k=1 to n} 1/k) (mod n!).
+A107924	filnum	0	1	k -> (k & 1) == 0 && Predicates.ARITHMETIC.is(ZV(k).^(2))	 Even numbers n such that n^2 is an arithmetic number.
+A107925	filnum	0	0	k -> (k & 1) == 1 && Predicates.ARITHMETIC.is(ZV(k).^(2))	 Odd numbers k such that k^2 is an arithmetic number.
+A110590	filnum	1	1	k -> Predicates.BALANCED.is(k) && Functions.PHI.z(k).mod(12) != 0	Balanced numbers k (A020492) such that phi(k) is not divisible by 12.
+A110596	filnum	1	1	k -> k % 12 == 11 && Predicates.BALANCED.is(k)	Balanced numbers n such that n mod 12 = 11.
+A110597	filnum	0	1	k -> k % 12 ==  1 && Predicates.BALANCED.is(k)	Balanced numbers (A020492) k such that k mod 12 = 1.
+A110598	filnum	0	1	k -> k % 12 ==  5 && Predicates.BALANCED.is(k)	Balanced numbers k such that k mod 12 = 5.
+A110599	filnum	0	1	k -> k % 12 ==  7 && Predicates.BALANCED.is(k)	Balanced numbers n such that n mod 12 = 7.
+A112428	filter	0	new A014614()	v -> Predicates.CARMICHAEL.is(v)	€112428 = A002997 intersect A014614. - _M. F. Hasler_, Apr 14 2015
+A122553	lambdan	0	n -> n == 0 ? ZV(1) : ZV(3)
+A123754	filter	0	new A000466().skip(1)	v -> !Predicates.SEMIPRIME.is(v)	Positive numbers of the form 4*n^2 - 1 which are not semiprimes.
+A128896	filter	1	new A007304()	v -> Predicates.TRIANGULAR.is(v)	and A075875 INTERSECT ?121478.
+A130842	filter	1	new A006092()	FilterSequence.EVEN
+A133659	insect2	1	new A034962()	new A060328()
+A135355	filter	1	new A009993()	v -> Predicates.SEMIPRIME.is(v)
+A136152	filter	1	new A033992()	v -> v.-(1).IPP()
+A136153	filter	1	new A033993()	v -> v.-(1).IPP()
+A136154	filter	1	new A051270()	v -> v.-(1).IPP()
+A140749	trilambn	0	0	0	(n, k) -> new Q(S1(n+1, k+1).*(FA(k + 1)), FA(n+1)).num()
+A141412	trilambn	0	0	0	(n, k) -> new Q(S1(n+1, k+1).*(FA(k + 1)), FA(n+1)).den()
+A145424	decexp	0	() -> CR.PHI.log().*(CV(5).sqrt())./(2).-(CV(5).*(CV(2).-(CV(5).log()))./(4))	log(phi)*sqrt(5)/2 - 5*(2 - log(5))/4
+A153508	filter	0	new A001567()	v -> !Predicates.CARMICHAEL.is(v)	Sarrus numbers A001567 that are not Carmichael numbers A002997.
+A153514	filter	0	new A122780()	v -> !Predicates.CARMICHAEL.is(v)	Terms of A122780 which are not Carmichael numbers A002997.
+A153515	filter	0	new A122782()	v -> !Predicates.CARMICHAEL.is(v)	Terms of A122782 which are not Carmichael numbers A002997.
+A155839	trilambn	0	0	0	(n, k) -> SU(k, n, j -> Z_1(n-j).*(BI(j+1, n-j)).*(BI(j, k)).*(Functions.CATALAN.z(j-k)))
+A167171	filter	1	new A037143()	v -> !Predicates.SQUARE.is(v)	\ A000290 = A006881 union A000040.
+A181122	decexp	0	() -> CR.PI.*(CR.PHI.sqrt())./(CV(5).^(new Q(5, 4))).+(CR.PHI.log()./(CV(5).sqrt())).+(CV(2).log()./(5))	Pi*sqrt(phi)/5^(5/4) + log(phi)/sqrt(5) + log(2)/5, where phi = A001622 = (1+sqrt(5))/2 is the golden ratio
+A189686	insect2	0	new A004394()	new A067698()
+A195944	filnum	1	0	k -> Predicates.ZEROLESS.is(ZV(13).^(k))
+A214174	decexp	0	() -> X060294.*(X143233)	= 2*C/Pi^2, where C is Catalans constant (X006752).
+A242822	decexp	1	() -> X377753.inverse()
+A245644	filnum	0	1	k -> Predicates.ARITHMETIC.is(ZV(k).^(3))	 Numbers n such that n^3 is an arithmetic number.
+A247444	decexp	0	() -> X240984./(X240985)	(2^9/9^2)*Pi*exp(7*zeta(3)/(2*Pi^2)).
+A247677	decexp	1	() -> X006752.*(4).*(CR.PI).-(CR.PI.^(2).*(CV(2).log()))	- Pi^2*log(2)
+A247685	decexp	1	() -> X006752.*(4)
+A248210	filnum	1	1	k -> Predicates.ZEROLESS.is(k) && Functions.SYNDROME.l(k - Functions.DIGIT_PRODUCT.l(k)) == Functions.SYNDROME.l(k)	Zeroless numbers k (numbers in A052382) such that k - DigitProduct(k) contains the same distinct digits as k.
+A248910	filnum	1	0	k -> Predicates.ZEROLESS.is(6, k)	(base 6),
+A255805	filnum	1	0	k -> Predicates.ZEROLESS.is(8, k)	(base 8), A052382 (base 10).
+A255808	filnum	1	0	k -> Predicates.ZEROLESS.is(9, k)	(base 9),
+A256318	decexp	0	() -> X006752./(CR.PI).+(CV(2).log()./(4))	/Pi - log(2)/4
+A256319	decexp	0	() -> X006752./(CR.PI.*(3)).-(CV(2).log()./(4)).negate()
+A257763	insect2	1	new A029793()	new A052382()
+A262177	decexpr	1	() -> REALS.hypergeometric(new CR[] { CV(1), CV(1), CV(1), CV(1), CV(1), CV(1) }, new CR[] { CV(new Q(3, 2)), CV(2), CV(2), CV(2), CV(2) }, CV(new Q(-1, 4))).inverse().*(2).*(Zeta.zeta(5))
+A265237	filter	0	new A004431()	v -> Predicates.CARMICHAEL.is(v)	 Carmichael numbers (A002997) that are the sum of two squares.
+A265285	filnum	0	2	k -> Predicates.CARMICHAEL.is(k) && Predicates.SQUARE.is(k - 1)	Carmichael numbers (A002997) k such that k-1 is a square.
+A265328	filnum	0	2	k -> Predicates.CARMICHAEL.is(k) && Predicates.POWER.is(k - 1)	Carmichael numbers (A002997) k such that k-1 is a perfect power (A001597).
+A265628	filnum	0	1	k -> Predicates.CARMICHAEL.is(k) && Predicates.CUBE.is(k - 1)	 Carmichael numbers (A002997) of the form k^3 + 1.
+A270267	filter	0	new A034961()	v -> Predicates.CARMICHAEL.is(v)	 Carmichael numbers (A002997) that are the sum of three consecutive primes.
+A272754	filter	0	new A000040()	p -> Predicates.CARMICHAEL.is(p.+(2))	Primes p such that p + 2 is a Carmichael number (A002997).
+A277553	filter	0	new A020487()	v -> Predicates.ARITHMETIC.is(v)	Intersection of A003601 and A020487. 
+A280630	decexp	-1	() -> CV(24).+(CV(2).log().*(16)).-(X006752.*(16))./(CR.PI).+(CV(2).log().*(8)).-(CV(12))	(24 + 16*log(2) - 16*A006752)/Pi + 8*log(2) - 12
+A290793	filter	0	new A039771()	v -> Predicates.CARMICHAEL.is(v)	Intersection of A002997 (Carmichael numbers) and A039771.
+A291637	filter	0	new A050217()	v -> Predicates.CARMICHAEL.is(v)	Carmichael numbers (A002997) that are super-Poulet numbers (A050217).
+A305885	filter	1	new A068653()	v -> Predicates.ZEROLESS.is(v)
+A325957	insect2	0	new A005384()	new A066819()
+A328557	filnum	1	0	k -> !Predicates.SQUARE.is(k) && Predicates.ARITHMETIC.is(k)	Arithmetic numbers (A003601) that are not squares (A000290).
+A328558	filter	1	new A000290()	v -> !Predicates.ARITHMETIC.is(v)	Squares (A000290) that are not arithmetic numbers (A003601).
+A328559	filnum	1	0	k -> !Predicates.SQUARE.is(k) && !Predicates.ARITHMETIC.is(k)	Numbers m that are neither arithmetic (A003601) nor squares (A000290).
+A335288	filnum	1	1	k -> Functions.USIGMA1.z(k).mod(Functions.UPHI.z(k)).isZero()	Unitary balanced numbers: numbers k such that uphi(k) (A047994) divides usigma(k) (A034448).
+A335319	decexp	0	() -> CV(1).-(X065484./(5))
+A335589	decexp	0	() -> X275647.-(1)
+A342103	filnum	1	1	k -> Predicates.BALANCED.is(k) && Predicates.ARITHMETIC.is(k)	Balanced numbers (A020492) that are also arithmetic numbers (A003601).
+A342104	filnum	1	0	k -> Predicates.BALANCED.is(k) && !Predicates.ARITHMETIC.is(k)	Balanced numbers (A020492) that are not arithmetic numbers (A003601).
+A342105	filnum	1	0	k -> !Predicates.BALANCED.is(k) && Predicates.ARITHMETIC.is(k)	Arithmetic numbers (A003601) that are not balanced numbers (A020492).
+A342106	filnum	1	0	k -> !Predicates.BALANCED.is(k) && !Predicates.ARITHMETIC.is(k)	Numbers that are not arithmetic and not balanced.
+A342358	filnum	0	1	k -> Predicates.BALANCED.is(k) && Predicates.ARITHMETIC.is(k) && Functions.SIGMA0.z(k).*(k).mod(Functions.SIGMA1.z(k)).isZero()	Balanced numbers (A020492) that are also arithmetic numbers (A003601) and harmonic numbers (A001599).
+A367053	decexp	0	() -> X006752.-(CR.PI.*(CV(2).log()./(8)))	- Pi * log(2) / 8
+A367120	decexpr	1	() -> REALS.hypergeometric(new CR[] { CV(1), CV(1) }, new CR[] { CV(new Q(3, 2)), CV(3) }, CV(new Q(-1, 2))).inverse().*(2)
+A367231	filter	0	new A036259()	v -> Predicates.CARMICHAEL.is(v)	Intersection of A002997 and A036259.
+A369883	decexp	0	() -> CR.E.^(2).*(CV(-2).ei()).negate()	- e^2*Ei(-2), where Ei(x)
+A371939	decexpr	0	() -> REALS.hypergeometric(CV(2), CV(new Q(1, 2)), CV(new Q(-1,4)))
+A371940	decexpr	0	() -> REALS.hypergeometric(CV(3), CV(new Q(1, 2)), CV(new Q(-1,4))).*(-2)
+A371946	decexpr	0	() -> REALS.hypergeometric(CV(2), CV(new Q(3, 2)), CV(new Q(-1,4)))
+A371947	decexpr	1	() -> REALS.hypergeometric(CV(3), CV(new Q(3, 2)), CV(new Q(-1,4))).*(2)
+A372773	decexpr	1	() -> REALS.hypergeometric(new CR[] { CV(1), CV(new Q(3, 2)) }, new CR[] { CV(new Q(2, 3)), CV(new Q(4, 3)) }, CV(new Q(4, 27)))
+A372775	decexpr	1	() -> REALS.hypergeometric(new CR[] { CV(1), CV(new Q(3, 2)) }, new CR[] { CV(new Q(1, 3)), CV(new Q(2, 3)) }, CV(new Q(4, 27)))
+A372776	decexpr	1	() -> REALS.hypergeometric(new CR[] { CV(new Q(1, 2)), CV(1) }, new CR[] { CV(new Q(2, 3)), CV(new Q(4, 3)) }, CV(new Q(4, 27)))
+A372863	decexp	0	() -> CR.HALF.li().negate()	-li(0.5)
+A378806	decexpr	0	() -> REALS.hypergeometric(new CR[] { CV(1), CV(new Q(4, 3)), CV(new Q(5, 3)), CV(2) }, new CR[] { CV(new Q(5, 4)), CV(new Q(3, 2)), CV(new Q(7, 4)) }, CV(new Q(27, 256)))./(4)
+A379656	filter	1	new A003325()	v -> Predicates.CARMICHAEL.is(v)	Intersection of A002997 and A003325.
+A381689	decexp	0	() -> CV(36).*(CR.PI).*(X377344.^(2))./(X377343.^(3))
+A381690	decexp	0	() -> CV(36).*(CR.PI).*(X377603.^(2))./(X377602.^(3))
+A381691	decexp	0	() -> CV(36).*(CR.PI).*(X179450.^(2))./(X179451.^(3))
+A381692	decexp	0	() -> CV(36).*(CR.PI).*(X377695.^(2))./(X377694.^(3))
+A381693	decexp	0	() -> CV(36).*(CR.PI).*(X377751.^(2))./(X377750.^(3))
+A381694	decexp	0	() -> CV(36).*(CR.PI).*(X185093.^(2))./(X344149.^(3))
+A381695	decexp	0	() -> CV(36).*(CR.PI).*(X377797.^(2))./(X377796.^(3))

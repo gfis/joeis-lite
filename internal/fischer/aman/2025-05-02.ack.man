@@ -1,0 +1,121 @@
+---- 2025-05-02 10:33:19
+A084821	filnum	1	0	m -> (m & 1) == 1 && SIGMA(m).compareTo(PHI(m).+(m)) > 0	, where sigma=F000203 is the divisor sum and phi=F000010 the totient.
+A087415	filnum	1	0	k -> (k & 1) == 1 && SIGMA(k).-(2*k).abs().compareTo(Functions.SQRT.z(k)) <= 0	<= sqrt(k). Abundance-radius = abs(SIGMA(k)-2k) does not exceed square root of k and k is odd.
+A087915	filnum	1	0	n -> (n & 1) == 0 && PP(2*n+3)	is a prime.
+A088010	filnum	1	0	k -> (k & 1) == 1 && SIGMA(k).-(2*k).abs().compareTo(Functions.CBRT.z(k)) <= 0	<= k^(1/3). Abundance-radius = abs(SIGMA(n)-2n) does not exceed cubic root of n and n is odd.
+A088034	filnum	1	0	k -> (k & 1) == 0 && !Predicates.SQUARE_FREE.is(ZV(k).*(k).-(1))	k^2-1 is divisible by a square > 1.
+A089193	filnum	1	0	n -> (n & 1) == 1 && PP(2*n-7)	is a prime of the form 4*k+3.
+A089255	filnum	1	0	n -> (n & 1) == 1 && PP(2*n-5)	is a prime.
+A089257	filnum	1	0	n -> (n & 1) == 0 && PP(2*n-5) && (2*n - 5) % 4 == 3	is a prime of the form 4k+3.
+A090670	filnum	1	0	k -> (k & 1) == 1 && PP(2*k-3)	is a prime of the form 4*j+3.
+A100319	filnum	1	6	m -> (m & 1) == 0 && (!PP(m - 1) || !PP(m + 1))	at least one of m-1 and m+1 is composite.
+A107795	diffs	0	new A316325()	First differences of J316325.
+A107796	diffs	0	new A316326()	First differences of J316326.
+A108228	sintrif	1	(term, n) -> term.-(1)	""	new A048673()
+A112777	filnum	1	0	k -> Functions.BIG_OMEGA.i(ZV(k).^(2).*(2).+(1)) == 2	eq[1,F001222(n*2*n+1)-1]	1;n;2;n;*;*;1;+;F001222;1;sub;eq
+A115165	filnum	1	0	k -> (k & 1) == 1 && Functions.OMEGA.i(k - 1) == Functions.OMEGA.i(k + 1)	k-1 and k+1 have the same number of distinct prime divisors.
+A115166	filnum	1	0	k -> (k & 1) == 0 && Functions.OMEGA.i(k - 2) == Functions.OMEGA.i(k + 2)	k-2 and k+2 have the same number of distinct prime factors.
+A115167	filnum	1	0	k -> (k & 1) == 1 && Functions.BIG_OMEGA.i(k - 1) == Functions.BIG_OMEGA.i(k + 1)	k-1 and k+1 have the same number of prime divisors with multiplicity.
+A115168	filnum	1	0	n -> (n & 1) == 0 && Functions.BIG_OMEGA.i(n - 2) == Functions.BIG_OMEGA.i(n + 2)	and n+2 have the same number of prime divisors with multiplicity.
+A116518	filnum	1	0	k -> (k & 1) == 1 && TAU(k).equals(TAU(PHI(k)))	have the same number of divisors.
+A127219	filnum	1	0	k -> (k&1) == 0 && !PT(k).testBit(0)
+A127690	multia	1	"3,4"	(self,n) -> self.a(n - 1).+(1).^(2).-(1)./(2)	a(n) = ((a(n-1) + 1)^2 - 1)/2
+A130038	filnum	1	10	n -> (n & 1) == 0 && PP(n - 7) & !PP(n - 3) && ! PP(n - 5)	is prime, but neither n-3 nor n-5 is prime.
+A131133	multia	0	"1"	(self,n) -> ZV(n).+(self.a(n - 1))./(GCD(ZV(n), self.a(n - 1)))	a(0)=1; a(n) = (a(n-1)+n)/gcd(n,a(n-1)).
+A133881	filnum	1	1	k -> (k & 1) == 0 && BI(k + 10, k).mod(k) == 1	mod k = 1, where p=10.
+A139392	filnum	1	0	n -> (n & 1) == 1 && GCD(ZV(n),PHI(n)).compareTo(ZV(1)) > 0	> 1.
+A141544	filnum	1	0	k -> (k & 1) == 1 && PP(2*k + 5)	is a prime.
+A158910	diffs	1	new A061240()	First Differences of J061240.
+A163098	sintrif	1	(term, n) -> term.divide2()	""	new A127219()
+A174830	filnum	1	0	k -> (k & 1) == 1 && Predicates.ABUNDANT.is(ZV(k).*(k))	k^2 is an abundant number.
+A175942	filnum	1	0	k -> (k & 1) == 1 && ZV(4).modPow(k, ZV(3*k)).equals(ZV(4)) && ZV(2).modPow(k - 1, ZV(3*(k - 1))).equals(ZV(4))	4^k == 4 (mod 3*k) and 2^(k-1) == 4 (mod 3*(k-1)).
+A179017	filnum	1	0	c -> (c & 1) == 1 && Predicates.SQUARE_FREE.is(ZV(c).*(c + 1).*(c - 1)./(4))	*(c^2 - 1)/4 is squarefree.
+A182297	filnum	1	0	k -> (k & 1) == 1 && D002326((k*k - 1)/2).compareTo(D002326((k - 1)/2).*(k)) < 0	. Other positive odd integers satisfy the equality. - _Thomas Ordowski_, Feb 03 2014
+A187766	filnum	1	1	k -> (k & 1) == 0 && !PP(PM(k).-(k)) && !PP(PM(k).+(k))	prime(k) -+ k are both composite.
+A191218	filnum	1	0	n -> (n & 1) == 1 && SIGMA(n).mod(4) == 2	is congruent to 2 modulo 4.
+A206349	filnum	1	0	k -> (k & 1) == 0 && PP(6*k+1) && PP(12*k+1) && PP(18*k+1) && PP(36*k+1) && PP(72*k+1)
+A233836	rultraf	1	new A004539()
+A234641	filnum	1	0	n -> (n & 1) == 1 && SIGMA(SIGMA(ZV(n).*(n))).testBit(0)	is odd.
+A236269	diffs	1	new A005487()	First differences of Stanley sequence S(0,4) (J005487).
+A238367	filnum	1	1	n -> (n & 1) == 0 && !ZV(n).mod(Z2(Functions.OMEGA.i(n) - 1)).isZero()	is not divisible by 2^d where d is the number of distinct odd prime factors of n.
+A244222	filtpos	0	0	new A014418()	(k, v) -> v.mod(10) == 0	nyi o	Numbers k which have even representation in Greedy Catalan Base, i.e., where M014418(k) ends with zero.	nonn	0..9679	nyi
+A244223	filtpos	1	0	new A014418()	(k, v) -> v.mod(10) == 1	nyi o	Numbers k which have an odd representation in Greedy Catalan Base, i.e., where M014418(k) ends with digit one.	nonn	1..7118	nyi
+A244226	rultraf	0	new A244221()	Length of runs in A244221
+A244227	filter	0	new A244226()	(k, v) -> (k&1) == 0
+A249032	diffs	0	new A075326()	First differences of J075326.
+A254655	rultraf	1	new A254379()
+A255932	lambdan	1	n -> Z2(Functions.VALUATION.i(n, 2) + 2*n + 1)
+A258062	rultraf	1	new A188967()
+A258383	rultraf	1	new A062234()
+A268304	filnum	1	0	n -> (n & 1) == 1 && BI(6*n, 2*n).mod(8) == 7
+A274478	polyx	1	"[[0,1],[0,0,1],[1,-2,-2]]"	",p1,p2,/,sub,sqrt"	2	0	A(x)^2 = A( x^2/(1 - 2*x - 2*x^2) ).	nonn	1..300	nyi
+A274479	polyx	1	"[[0,1],[0,0,1],[1,-2,-4]]"	",p1,p2,/,sub,sqrt"	2	0	A(x)^2 = A( x^2/(1 - 2*x - 4*x^2) ).	nonn	1..300	nyi
+A274483	polyx	1	"[[0,1],[0,0,1],[1,-4,-2]]"	",p1,p2,/,sub,sqrt"	2	0
+A274484	polyx	1	"[[0,1],[0,0,1],[1,-4,2]]"	",p1,p2,/,sub,sqrt"	2	0
+A274576	multia	0	"0"	(self,n) -> (n&1) == 0 ? ZV(n/4) : self.a(n / 2)	a(2n) = floor(n/2), a(2n+1) = a(n), a(0)=0.	nonn,easy	0..109	nyi	_Ilya Gutkovskiy_
+A274611	lambdan	1	n -> ZV(D007814(n).mod(4) == 3 ? n/8 : 2*n)	a(n) = n/8 if D007814(n) == 3 (mod 4), else a(n) = 2*n
+A274635	arrlamb	0	0	0	1	(m,n) -> Z2(m/2).-(1).*(Z2((n&1) == 0 ? n/2 : n/2 + 1).-(1))
+A274636	arrlamb	0	0	0	1	(m,n) -> Z2(m/2).+(1).*(Z2((n&1) == 0 ? n/2 : n/2 + 1).+(1))
+A274637	arrlamb	0	0	0	1	(m,n) -> Z2(m/2).-(1).*(Z2((n&1) == 0 ? n/2 : n/2 + 1).+(1))
+A274685	filnum	1	0	n -> (n & 1) == 1 && SIGMA(n).mod(5) == 0	is divisible by 5.
+A274698	lambdan	1	n -> { final Z pn = PM(n); return pn.-(pn.mod(10) * 2); }	a(n)=prime(n)-(2*last digit of prime(n))
+A274716	multia	1	"0"	(self,n) -> (n&1) == 0 ? self.a(n/2) : self.a(2*(n/4) + 1).+(n/2)	a(2*n+1) = a(2*floor(n/2)+1) + n, a(2*n) = a(n), for n>=1 with a(1)=0
+A274717	polyx	1	"[[0,1],[0,0,1]]"	",p1,sub,p1,sub,sqrt,+"	2	0
+A274736	polyx	1	"[[0,1],[0,0,1]]"	",p1,sub,A,^3,4,*,+,sqrt"	2	0	G.f. A(x) satisfies: A(x)^2 - 4*A(x)^3 = A(x^2).
+A274737	polyx	1	"[[0,1],[0,0,1]]"	",p1,sub,A,^3,6,*,+,sqrt"	2	0	G.f. A(x) satisfies: A(x)^2 - 6*A(x)^3 = A(x^2).	nonn	1..300	nyi
+A274805	logtraf	1	new A000203()	, 0	The logarithmic transform of sigma(n).	sign	1..451	nyi	_Johannes W. Meijer_
+A274824	trilambn	1	1	1	(n,k) -> SIGMA(k).*(n - k + 1)	Triangle read by rows: T(n,k) = (n-k+1)*sigma(k), n>=1, 1<=k<=n
+A275017	multia	1	"1,2"	(self,n) -> PM(n - 2).-(self.a(n - 2))	a(1)=1, a(2)=2, a(n) = prime(n-2) - a(n-2) for n > 2
+A275111	lambdan	1	n -> FA(PM(n)).mod(PM(n + 1))	a(n) = prime(n)! mod prime(n+1).
+A275212	trilamb0	0	(n,k) -> FA(n + k + 1)./(FA((n - k)/2).*(FA((n + k + 2)/2)))	with [.] the floor function, for n>=0 and 0<=k<=n.
+A277626	filnum	1	0	n -> (n & 1) == 1 && ZV(2).modPow(n, ZV(n)).equals(PHI(n))	Z2(n) == PHI(n) (mod n).
+A284406	filnum	1	0	k -> (k & 1) == 1 && Functions.CARMICHAEL_LAMBDA.z(k).compareTo(PHI(k)) < 0 && GCD(Functions.CARMICHAEL_LAMBDA.z(k), ZV(k -1)).equals(GCD(PHI(k), ZV(k - 1)))
+A287895	diffs	1	new A287894()	Differences of E287894.
+A292608	lambdan	1	n -> Functions.VALUATION.z(n, 2).+(2*n + 1)	a(n) = 2*n + 1 + valuation(n, 2)
+A316327	diffs	0	new A316324()	First differences of J316324.
+A323726	filnum	1	0	k -> (k & 1) == 1 && SIGMA(k - 1).compareTo(SIGMA(k)) < 0 && SIGMA(k).compareTo(SIGMA(k + 1)) < 0
+A328079	diffs	0	new A328078()	First differences of J328078.
+A330902	filnum	1	0	k -> (k & 1) == 1 && E058026(k).equals(E058026(k + 2))	, where s(k) is Schemmels totient function of order 2 (E058026).
+A332227	filnum	1	0	k -> (k & 1) == 1 && SIGMA(k).mod(8) == 2	is congruent to 2 modulo 8.
+A333040	filnum	1	0	m -> (m & 1) == 0 && SIGMA(m).compareTo(SIGMA(m - 1)) < 0
+A333041	filnum	1	0	m -> (m & 1) == 1 && SIGMA(m).compareTo(SIGMA(m - 1)) > 0
+A333326	filnum	1	0	k -> (k & 1) == 1 && TAU(k).compareTo(ZV(5)) >= 0	k is the product of 2 numbers greater than one, in two or more ways.
+A333741	filnum	1	0	k -> (k & 1) == 1 && PHI(k).equals(PHI(k + 2))	, where phi is the Euler totient function (F000010).
+A334214	filnum	1	0	m -> (m & 1) == 1 && CNT(0, (m - 1)/2, k -> !Predicates.SQUARE_FREE.is(ZV(m).^(k).+(1))).isZero()	.m^k + 1 is squarefree for all 0 <= k <= (m - 1)/2.
+A337344	filnum	1	0	k -> (k & 1) == 1 && D064989(Functions.SIGMA.i(k)).compareTo(ZV(k)) >= 0	>= k.
+A341348	rultraf	1	new A341346()
+A347885	filnum	1	0	k -> (k & 1) == 1 && Functions.BIG_OMEGA.z(SIGMA(ZV(k).*(k))).testBit(0)	has an odd number of prime factors when counted with multiplicity.
+A347886	filnum	1	0	k -> (k & 1) == 1 && !Functions.BIG_OMEGA.z(SIGMA(ZV(k).*(k))).testBit(0)	has an even number of prime factors when counted with multiplicity.
+A347890	filnum	1	0	k -> (k & 1) == 1 && SIGMA(k).compareTo(ZV(2*k)) > 0 && F003415(SIGMA(k)).compareTo(ZV(k)) < 0	< k, where F003415 is the arithmetic derivative, and sigma is the sum of divisors function.
+A347891	filnum	1	0	k -> (k & 1) == 1 && SIGMA(ZV(k).*(k)).compareTo(ZV(2*k).*(k)) > 0 && F003415(SIGMA(ZV(k).*(k))).compareTo(ZV(k).*(k)) < 0
+A356447	filnum	1	1	k -> !BI(2*k, k).mod(ZV(k + 1).*(2*k - 1)).isZero()	Integers k such that (k+1)*(2*k-1) does not divide the central binomial coefficient B(k) = binomial(2*k,k) = D000984(k).	nonn,easy	1..56	nyi	_Valerio De Angelis_
+A356448	filnum	1	0	k -> (k & 1) == 0 && GCD(ZV(k*k), SIGMA(k*k)).equals(ZV(1))	k^2 is in J014567.
+A356449	filnum	1	1	k -> { final Z k2 = ZV(k).^(2).*(2); return GCD(k2, SIGMA(k2)).equals(ZV(1)); }	Numbers k such that 2*k^2 is in J014567.	nonn,easy	1..11086	nyi	_Jianing Song_
+A356451	filnum	1	1	k -> { final Z k2 = ZV(k).^(2).*(4); return GCD(k2, SIGMA(k2)).equals(ZV(1)); }
+A356452	filnum	1	1	k -> { if ((k & 1) != 0) { return false; } else { final Z k2 = ZV(k).^(2); return !GCD(k2, SIGMA(k2)).equals(ZV(1)); }}	k^2 is not in J014567; complement of ?356448 in the even numbers.
+A356455	filter	1	new A005940()	(k, v) -> v.compareTo(k - 1) < 0	Numbers m = D005940(n) such that D005940(n) < (n-1), listed in order of appearance in D005940.	nonn	1..13175	nyi	_Michael De Vlieger_
+A356456	filnum	1	1	k -> { if (k % 3 == 0) { return false; } else { final Z k2 = ZV(k).^(2).*(2); return !GCD(k2, SIGMA(k2)).equals(ZV(1)); }}		Numbers k not divisible by 3 such that 2*k^2 is not in J014567.	nonn,easy	1..11669	nyi	_Jianing Song_
+A358395	filnum	1	0	k -> (k & 1) == 1 && SIGMA(k).+(SIGMA(k + 2)).compareTo(SIGMA(k + 1).*(2)) > 0	; odd terms in J053228.
+A358396	filnum	1	0	k -> (k & 1) == 0 && SIGMA(k).+(SIGMA(k + 2)).compareTo(SIGMA(k + 1).*(2)) < 0	; even terms in J053229.
+A360526	filnum	1	0	k -> (k & 1) == 1 && E360522(k).compareTo(ZV(2*k)) > 0	> 2*k.
+A361904	filnum	1	0	k -> (k & 1) == 1 && CND(k*k + 1, d -> (d&1) == 0 && !PP(ZV(d).*(d).+(1))).isZero()	for all even divisors d of k^2+1, d^2+1 is a prime number.
+A364551	filter	1	new A005941()	(k, v) -> (k & 1) == 1 && ZV(k).mod(v).isZero()
+A364959	filnum	1	0	k -> (k & 1) == 1 && D348717(k).equals(D348717(D005940(k)))
+A366833	rultraf	1	new A362965()
+A372781	filnum	1	0	k -> (k & 1) == 1 && F001221(k).compareTo(F001221(E003958(k))) < 0
+A374918	filnum	1	1	k -> (k & 1) == 0 && Functions.CARMICHAEL_LAMBDA.z(SD(k, d -> ZV((d&1) == 0 ? d : 0))).equals(PHI(SD(k, d -> ZV((d&1) == 1 ? d : 0))))	where lambda is the Carmichael function (F002322) and phi the Euler totient function (F000010).
+A375706	diffs	1	new A007916()	First differences of J007916.
+A375708	diffs	1	new A361102()	First differences of J361102, inclusive J024619.
+A375735	diffs	1	new A024619()	First differences of J024619.
+A376129	rultraf	1	new A077648()
+A376559	diffs	1	new A053289()	Second differences of consecutive perfect powers (J001597). First differences of J053289.
+A376590	diffs	1	new A076259()	Second differences of consecutive squarefree numbers (J005117). First differences of J076259.
+A376593	diffs	1	new A078147()	Second differences of consecutive nonsquarefree numbers (J013929). First differences of J078147.
+A376596	diffs	1	new A057820()	Second differences of consecutive prime-powers inclusive (J000961). First differences of J057820.
+A376604	diffs	1	new A054354()	Second differences of the Kolakoski sequence (J000002). First differences of J054354.
+A377435	diffs	0	new A188951()	These are the first differences of J188951.
+A377782	diffs	1	new A031218()	First-differences of J031218(n) = greatest number <= n that is 1 or a prime-power.
+A377933	diffs	1	new A076467()	First differences of consecutive perfect powers m^k with k>=3 (J076467).
+A378085	diffs	1	new A070321()	First differences of J070321 (greatest squarefree number <= n).
+A378087	diffs	1	new A067535()	First-differences of J067535 (least positive integer >= n that is squarefree).
+A380932	filnum	1	0	k -> (k & 1) == 1 && E380845(k).compareTo(ZV(2*k)) > 0	> 2*k.

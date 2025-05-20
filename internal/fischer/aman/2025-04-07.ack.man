@@ -1,0 +1,102 @@
+---- 2025-04-07 23:15:56
+A077382	multrar	1	(self, n) -> n % 3 == 2 ? self.a(n - 1).*(n) : (n % 3 == 0 ? self.a(n - 1).+(n) : self.a(n - 1).-(n))	"1"		a(1) = 1, then multiply, add and subtract 2, 3, 4; 5, 6, 7; ... in that order.
+A077383	multrar	1	(self, n) -> n % 3 == 2 ? self.a(n - 1).+(n) : (n % 3 == 0 ? self.a(n - 1).*(n) : self.a(n - 1).-(n))	"1"		a(1) = 1, then add, multiply and subtract 2, 3, 4; 5, 6, 7; ... in that order.
+A077384	multrar	1	(self, n) -> n % 4 == 2 ? self.a(n - 1).+(n) : (n % 4 == 3 ? self.a(n - 1).*(n) : (n % 4 == 0 ? self.a(n - 1).-(n) : self.a(n - 1).*(n)))	"1"		a(1) = 1, then add, multiply, subtract, multiply 2, 3, 4, 5; 6, 7, 8, 9; ... in that order.
+A085060	multrar	0	(self, n) -> (n & 1) == 0 ? ZV(9*n/2 + 3) : self.a(n/2).*(3).+(3)	""		a(2*n) = 9*n + 3; a(2*n+1) = 3*a(n) + 3.
+A088371	multrar	1	(self, n) -> n < 2 ? ZV(n) : ((n & 1) == 1 ? self.a(n/2 + 1) : self.a(n/2).+(n/2))	""		`if`(n<2, n,`if`(n::odd, a(n/2+1/2), a(n/2)+n/2))
+A088697	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(n/2).*(4).+(2) : self.a(n/2).*(2).+(1)	"0"		a(0)=0, a(2n) = 4a(n) + 2, a(2n+1) = 2a(n) + 1.
+A088698	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(n/2).*(2) : self.a(n/2).*(4).+(3)	"0"		a(0)=0, a(2n) = 2a(n), a(2n+1) = 4a(n) + 3.
+A091856	multrar	1	(self, n) -> (n & 1) == 0 ? self.a(n - 1).+(1) : self.a(n - 1).+(LPF(self.a(n - 1)))	"1"		a(2n) = a(2n-1) + 1, a(2n+1) = a(2n) + LeastPrimeFactor(a(2n)).
+A091959	multrar	1	(self, n) -> (n & 1) == 0 ? self.a(n/2).+(1).and(ZV(1)) : self.a(n - 1).*(2).+(1)	"1"		a(1)=1, a(2n)=(a(n)+1) mod 2, a(2n+1)=2*a(2n)+1.
+A094547	multrar	1	(self, m) -> { final int n = m/2; return (m & 1) == 0 ? self.a(m - 1).*(4).-(self.a(n)) : self.a(m - 1).*(4); }	"1"		a(2n+1) = 4*a(2n); a(2n) = 4*a(2n-1)-a(n). - _David Wasserman_, May 22 2007
+A106404	multrar	1	(self, n) -> (n & 1) == 0 ? Functions.OMEGA.z(n/2) : ZV(0)	""		a(2n) = omega(n), a(2n+1) = 0, where omega(n) is the number of distinct prime divisors of n, F001221. - _Franklin T. Adams-Watters_, Jun 09 2006
+A106665	multrar	0	(self, m) -> { final int n = m/2; return (m & 1) == 1 ? ZV(1).-(self.a(n)) : ((m & 3) == 0 ? ZV(1) : ZV(0)); }	"1,0,0,1"		For n >= 0, a(4n) = 1, a(4n+2) = 0, a(2n+1) = 1 - a(n).
+A110809	multrar	1	(self, m) -> { final int n = m/2; return (m & 1) == 0 ? self.a(m - 1).*(self.a(m -1).+(1))./(2) : self.a(m - 1).*(self.a(m - 1).-(1))./(2); }	"3"		a(1) = 3, a(2n) = a(2n-1)*(a(2n-1)+1)/2, a(2n+1) = a(2n)*(a(2n)-1)/2.
+A111688	lambdan	1	n -> n <= 2 ? ZV(2*n) : PM((n + 3)/2).+(1 - (n & 1))	a(n)=if(n<3, 2*n, prime((n+3)\2) + (1-n%2))
+A114702	multraf	2	(self, n) -> (n & 1) == 1 ? self.s(0) : self.s(1)	""	new A000048(), new A000016()	a(2*n-1) = J000048(2*n-1), a(2*n) = J000016(2*n).
+A116529	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(n/2 - 1).*(2).+(self.a(n/2 - 2)) : self.a(n/2)	"1,1,2,1"		a(2*n + 1) = a(n), a(2*n + 2) = 2*a(n) + a(n-1).
+A123143	multrar	0	(self, n) -> n % 3 == 0 ? self.a(n/3) : (n % 3 == 1 ? self.a((n - 1)/3).+(self.a((n + 2)/3)) : self.a((n + 1)/3).+(self.a((n + 4)/3)))	"0,1,2"		a(0)=0, a(1)=1, a(2)=2; a(3n) = a(n), a(3n+1) = a(n) + a(n+1), a(3n+2) = a(n+1) + a(n+2).
+A129770	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(n - 1).*(3) : self.a(n - 1).*(3).-(self.a((n - 3)/2).*(2))	"0,1"		a(0) = 0, a(1) = 1; for n>0, a(2n) = 3a(2n-1), a(2n+1) = 3a(2n) - 2a(n-1).
+A135564	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(n - 2).-(self.a(n/2)).+(self.a(n/2 - 1).*(2)).-(self.a(n/2 - 2)) : self.a(n - 1).-(self.a(n/2 - 2)).+(self.a(n/2 - 3).*(2)).-(self.a(n/2 - 4))	"0,1,3,-1,-2,-3,4,2"		a(2*n) = a(2*n-2) - (a(n) - 2*a(n-1) + a(n-2)), for n > 2.
+A138002	multrar	0	(self, n) -> n % 3 == 0 ? ZV(n/3).*(2) : (n % 3 == 1 ? self.a(n/3).+(n/3) : self.a(n/3).*(2))	"0,0,0"		a(3*n)=2*n, a(3*n+1)=a(n)+n, a(3*n+2)=2*a(n), a(n)=0 for n<3.
+A139145	multrar	1	(self, n) -> (n & 1) == 0 ? self.a(n/2).^(2) : self.a(n/2).*(self.a(n/2).+(1))	"1"		a(1) = 1, a(2*n) = a(n)^2, a(2*n+1) = a(n)*(a(n)+1).
+A147645	lambdan	1	n -> E154402(n).-(D353786(n))	self.a(Functions.MAKE_ODD.i(n))	"0,0,1"	new A154402(),	a(n) = a(2*n) = a(F000265(n)). a(n) = A154402(n) - A353786(n)
+A154437	multrar	0	(self, n) -> (n & 1) == 0 ? self.a(D065190(n/2).intValueExact()).*(2).+(1) : self.a(n/2).*(2)	"0,1,3,2"		a(1) = 1; for n > 0, a(2*n) = 2*a(J065190(n)) + 1, a(2*n+1) = 2*a(n). (End)
+A161959	multrar	2	(self, n) -> (n & 1) == 1 ? D007504(n) : !PP(D007504(n)) ? D007504(n) : D007504(n + 1).-(2)	""		a(2n+1) = D007504(2n+1)
+A171609	multrar	1	(self, n) -> ((n & 1) == 0 ? self.a(n/2) : self.a(n/2 + 1)).*(n/2 + 1)	"1"		a(2*n) = (n+1)*a(n), a(2*n+1) = (n+1)*a(n+1), with a(1) = 1.
+A176716	multrar	1	(self, m) -> { final int n = m/2; return (m & 1) == 0 ? PM(n).*(self.a(n)) : PM(n).*(self.a(n)).+(self.a(n + 1)); }	"1"		a(1) = 1; a(2*n) = prime(n)*a(n), a(2*n+1) = prime(n)*a(n) + a(n+1), where prime(n) is the n-th prime.
+A177219	multrar	1	(self, m) -> { final int n = m/2; return (m & 1) == 0 ? self.a(n).negate() : self.a(n + 1).-(self.a(n)); }	"1"		a(1) = 1; a(2n) = -a(n); a(2n+1) = -a(n) + a(n+1).
+A178774	multrar	0	(self, m) -> { final int n = m/2; return (m & 1) == 0 ? self.a(n).*(3) : self.a(n).+(self.a(n - 1)); }	"1,1"		a(2n) = 3*a(n), a(2n+1) = a(n) + a(n-1), with a(0)=a(1)=1.
+A200064	psi_neg	0	2	3
+A200134	psi_neg	0	3	4
+A200135	psi_neg	0	1	5
+A200136	psi_neg	0	2	5
+A200137	psi_neg	0	3	5
+A200138	psi_neg	0	4	5
+A215488	multrar	0	(self, n) -> self.a(n - 1).+(self.a(2*n & n))	"1"		a(0)=1, a(n) = a(n-1) + a(2*n AND n), where AND is the bitwise AND operator.
+A215674	multrar	1	(self, n) -> n % 3 == 0 ? self.a(n/3).+(1) : self.a(n/3).+(self.a(n/3 + 1)).+(1)	"1,2,2"		a(1) = 1, a(n) = 2 if 1<n<=3, a(3n) = a(n)+1, a(3n+1) = a(3n+2) = a(n)+a(n+1)+1 otherwise.
+A215676	multrar	1	(self, n) -> n % 3 == 1 ? self.a(n/3).+(1) : ((n % 3 == 2) ? self.a(n/3).+(self.a(n/3 + 1)).+(1) : self.a(n/3 - 1).+(self.a(n/3)).+(1))	"1,2,2,2"		a(1) = 1, a(n) = 2 if 1<n<=4, a(3n+1) = a(n)+1, a(3n+2) = a(3n+3) = a(n)+a(n+1)+1 otherwise.
+A222457	psi_neg	0	1	6
+A222458	psi_neg	0	5	6
+A250129	psi_neg	0	1	8
+A291043	filnum	1	0	k -> D001615(k).equals(D001615(k + 1))	Numbers n such that psi(n) = psi(n+1), where psi(n) is Dedekind psi function (A001615).
+A291164	filnum	1	1	k -> ZV(2).pow(D001615(k)).mod(k) == k - 1	Numbers k such that 2^psi(k) == -1 (mod k) where psi(k) = A001615(k).
+A291167	filnum	1	1	k -> Predicates.SQUARE.is(D001615(k))	Numbers k such that psi(k) is a perfect square where psi(k) = A001615(k).
+A306716	psi_neg	0	1	10
+A333692	multrar	0	(self, m) -> { final int n = m/2; return (m & 1) == 0 ? self.a(n).*(2) : D030101(self.a(n).*(2).+(1)); }	"0,1"		a(2*n) = 2*a(n). a(2*n+1) = D030101(2*a(n)+1).
+A333773	multrar	0	(self, n) -> n % 3 == 0 ? self.a(n/3).*(3) : (n % 3 == 1 ? self.a(n/3).*(3).+(E160384(n/3).testBit(0) ? Z.NEG_ONE : Z.ONE) : self.a(n/3).*(3).-(E160384(n/3).testBit(0) ? Z.NEG_ONE : Z.ONE))	"0,1,-1"		a(3*n)   = 3*a(n).
+A343029	multrar	0	(self, n) -> (n & 1) == 0 ? F000120(n/2).-(self.a(n/2)) : self.a(n/2).+(1)	"0,1"		a(2*n) = F000120(n) - a(n).
+A353786	lambdan	1	n -> CND(n, d -> !PP(d) && Integer.bitCount(d + 1) == 1)	Number of distinct nonprime numbers of the form 2^k - 1 that divide n.
+A354627	psi_neg	0	1	7
+A354628	psi_neg	0	2	7
+A354629	psi_neg	0	3	7
+A354630	psi_neg	0	4	7
+A354631	psi_neg	0	5	7
+A354632	psi_neg	0	6	7
+A354636	psi_neg	0	1	9
+A354637	psi_neg	0	2	9
+A354638	psi_neg	0	4	9
+A354639	psi_neg	0	5	9
+A354640	psi_neg	0	7	9
+A354641	psi_neg	0	8	9
+A354642	psi_neg	0	3	10
+A354643	psi_neg	0	7	10
+A354644	psi_neg	0	9	10
+A362269	multrar	1	(self, n) -> n % 3 == 2 ? self.a(n - 1).-(n) : (n % 3 == 0 ? self.a(n - 1).+(n) : self.a(n - 1).*(n))	"1"		a(1) = 1, then subtract, add, and multiply 2, 3, 4; 5, 6, 7; ... in that order.
+A362270	multrar	1	(self, n) -> n % 3 == 2 ? self.a(n - 1).-(n) : (n % 3 == 0 ? self.a(n - 1).*(n) : self.a(n - 1).+(n))	"1"		a(1) = 1, then subtract, multiply, and add 2, 3, 4; 5, 6, 7; ... in that order.
+A362271	multrar	1	(self, n) -> n % 3 == 2 ? self.a(n - 1).+(n) : (n % 3 == 0 ? self.a(n - 1).-(n) : self.a(n - 1).*(n))	"1"		a(1) = 1, then add, subtract, and multiply 2, 3, 4; 5, 6, 7; ... in that order.
+A362272	multrar	1	(self, n) -> n % 3 == 2 ? self.a(n - 1).*(n) : (n % 3 == 0 ? self.a(n - 1).-(n) : self.a(n - 1).+(n))	"1"		a(1) = 1, then multiply, subtract, and add 2, 3, 4; 5, 6, 7; ... in that order.
+A367531	lambdan	1	n -> { final int n2 = n/2 + (n & 1); return (n <= 3) ? ZV(new int[] { 0,1,6,136 }[n]) : ((n & 1) == 0 ? Z2(n2*n2 - 2).*(Z2(n2*n2).+(ZV(8).^(n2*n2).+(2))) : Z2(2*n2*n2 - 4*n2 - 1).*(ZV(4).^(n2).+(ZV(4).^(n2*n2)))); }	a(2*n)   = 2^(n^2 - 2)*(2 + 2^n^2 + 8^n^2). a(2*n-1) = 2^(2n^2 - 4n - 1)*(4^n + 4^n^2).
+A367532	lambdan	1	n -> { final int n2 = n/2 + (n & 1); return (n & 1) == 1 ? ZV(256).^(n2*(n2 - 1)) : ZV(4).^(n2*n2 - 1).*(ZV(4).^(n2*n2).+(2).+(ZV(64).^(n2*n2))); }
+A382540	holos	0	[[0],[14,-4],[15,33],[-732,176],[398,-142],[-66,36],[3,-3]]	1,3,12,52	0	0	1/(1 - x/(1 - 4*x)^(1/2))^3.
+A382541	holos	0	[[0],[896,-256],[-718,252],[217,-95],[-26,16],[1,-1]]	1,2,15,100,645	0	0	1/(1 - x/(1 - 4*x)^(3/2))^2.
+A382542	holos	0	[[0],[-38944512,17637632,-1996288],[33224488,-17964812,2464552],[-11094204,7215606,-1232462],[1557754,-1357025,310113],[-84424,110478,-39014],[648,-2599,1951]]	1,3,24,172,1191,8091	0	0	1/(1 - x/(1 - 4*x)^(3/2))^3.
+A382543	holos	0	[[0],[7560,-3888,486],[-1134,999,-189],[108876,-43803,4398],[-35909,17739,-2188],[4050,-2565,405],[-174,153,-33],[2,-3,1]]	1,2,9,58,428,3360,27295,226538	0	0	1/(1 - x/(1 - 9*x)^(1/3))^2.
+A382643	holos	0	[[0],[-1421550,492561,-56862,2187],[1064017,-313794,28431,-729],[331889,-251532,49572,-2916],[-523142,277704,-45360,2268],[149530,-62034,4536,378],[3925,-17612,8694,-1134],[-8651,10948,-4452,588],[1392,-1976,936,-148],[-66,137,-90,19],[0,-2,3,-1]]	1,1,9	0	1
+A382652	holos	0	[[0],[0,42456960,-77378976,43238448,-9103752,813564,-26244],[0,-66922200,122384520,-68868630,14696640,-1334070,43740],[0,37130464,-67277076,37096412,-7565805,634230,-18225],[0,-5412800,8484240,-3059560,-128520,126360,-9720],[0,-2773280,6119040,-4710880,1580580,-226800,11340],[0,1331360,-2769816,1956388,-589752,74844,-3024],[0,-197580,391130,-247230,55570,-1260,-630],[0,2402,4957,-18359,15560,-5160,600],[0,1920,-6160,7680,-4660,1380,-160],[0,-120,440,-630,440,-150,20],[0,0,-4,12,-13,6,-1]]	1,1,11	0	1
+A382668	lambdan	2	n -> Functions.CATALAN.z(n + 1).-(Functions.CATALAN.z(n - 1)).-(Functions.CATALAN.z(n - 2).*(2))		a(n) = C(n+1) - C(n-1) - 2*C(n-2)
+A382674	arrlamb	0	0	0	1	(n, k) -> SU(0, Functions.MIN.i(n, k), j -> FA(j).^(2).*(BI(j + 3, 3)).*(S2(n + 1, j + 1)).*(S2(k + 1, j + 1)))
+A382675	lambdan	0	n -> ZV(4).-(Z2(n).*(15)).+(ZV(3).^(n).*(12))	a(n) = 4 - 15 * 2^n + 12 * 3^n.	nonn,easy,new	0..25	nyi	_Seiichi Manyama_
+A382676	lambdan	0	n -> SU(0, n, k -> FA(k).^(2).*(BI(k + 2, 2)).*(S2(n + 1, k + 1).^(2)))	a(n) = Sum_{k=0..n} (k!)^2 * binomial(k+2,2) * Stirling2(n+1,k+1)^2.	nonn,new	0..15	nyi	_Seiichi Manyama_
+A382677	lambdan	0	n -> ZV(9).-(Z2(n).*(28)).+(ZV(3).^(n).*(20))	a(n) = 9 - 28 * 2^n + 20 * 3^n.	nonn,easy,new	0..25	nyi	_Seiichi Manyama_
+A382678	lambdan	0	n -> SU(0, n, k -> FA(k).^(2).*(BI(k + 3, 3)).*(S2(n + 1, k + 1).^(2)))	a(n) = Sum_{k=0..n} (k!)^2 * binomial(k+3,3) * Stirling2(n+1,k+1)^2.	nonn,new	0..15	nyi	_Seiichi Manyama_
+A382697	decexp	1	() -> CV(195).^(QV(1, 7))	0	Decimal expansion of 195^(1/7).	nonn,cons,easy,new	1	nyi	_Stefano Spezia_
+A382702	filtpos	1	1	new A064413()	(k, v) -> v.compareTo(ZV(k)) > 0	Indices k where b(k) > k, where b is the EKG sequence J064413.	nonn,new	1..9296	nyi	_N. J. A. Sloane_
+A382737	lambdan	0	n -> SU(0, n, k -> FA(k).*(FA(k + 1)).*(S2(n, k).^(2)))
+A382738	lambdan	0	n -> SU(0, n, k -> (FA(k)).^(2).*(BI(k + 2, 2)).*(S2(n, k).^(2)))
+A382739	lambdan	0	n -> SU(0, n, k -> (FA(k)).^(2).*(BI(k + 3, 3)).*(S2(n, k).^(2)))
+A382792	lambdan	0	n -> SU(0, n, k -> S1(n,k).*(FA(k)).^(2))	nonn,new	0..16	nyi	_Ilya Gutkovskiy_
+A382793	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(S2(n, k).*(FA(k)).^(2)))	sign,new	0..17	nyi	_Ilya Gutkovskiy_
+A382794	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(S2(n, k)).*(FA(k).^(2)))	sign,new	0..17	nyi	_Ilya Gutkovskiy_
+A382804	lambdan	0	n -> SU(0, n, k -> FA(k).*(FA(k + 1)).*(S1(n,k).^(2)))	nonn,new	0..15	nyi	_Seiichi Manyama_
+A382806	lambdan	0	n -> SU(0, n, k -> FA(k).^(2).*(BI(k + 2, 2)).*(S1(n, k).^(2)))	nonn,new	0..15	nyi	_Seiichi Manyama_
+---- 2025-04-07 23:36:18
+A382406	holos	0	[[0],[6,1],[8,2],[2,1],[0,-1]]	1	0	0
+A382437	multrar	0	(self, n) -> self.a(n - 1).^(2).+(self.a(n - 1).*(4))	"2"		a(n) = a(n-1)^2 + 4 * a(n-1), with a(0) = 2.	nonn,new	0..7	nyi	_V. Barbera_
+A382449	holos	0	[[0],[1056,-368,32],[-1439,528,-48],[483,-120],[123,-160,40],[-89,105,-30],[12,-21,9],[0,1,-1]]	1,1,7	0	1	Expansion of e.g.f. exp( x/(1-2*x)^(3/2) ).
+---- 2025-04-07 23:54:45
+A382230	holos	0	[[0],[60,104,67,19,2],[-63,-117,-86,-30,-4],[87,83,5,-11,-2],[15,23,-2,-14,-4],[0,-6,-5,3,2]]	1	0	0	a(n) = Sum_{k=0..n} binomial(k+2,2) * binomial(2*k,2*n-2*k)
+A382274	holos	0	[[0],[-3,1],[24,-7],[3,7],[0,-1]]	1	0	0	Expansion of 1/(1 - 4*x/(1-x)^2)^(5/2).
+A382332	holos	0	[[0],[-3,1],[28,-7],[7,7],[0,-1]]	1	0	0
+---- 2025-04-07 23:59:23
+A375016	multrar	1	(self, m) -> { final int n = m/2; return (m & 1) == 0 ? self.a(m - 1).*(3).-(self.a(n).*(2)) : self.a(m - 1).*(3); }	"1"		a(1) = 1; a(2*n+1) = 3*a(2*n) for n > 0; a(2*n) = 3*a(2*n-1) - 2*a(n) for n > 0.

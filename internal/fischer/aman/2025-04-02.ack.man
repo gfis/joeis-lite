@@ -1,0 +1,22 @@
+
+
+?A295237	polyx	0	"[[1]]"	",x,csc,1,1,4,sin,*,-,sqrt,-,*,2,/"	0	1	csc(x)*(1-sqrt(1-4*sin(x)))/2	e
+?A295254	polyx	0	"[[1]]"	",x,csch,1,1,4,sinh,*,-,sqrt,-,*,2,/"	0	1	csch(x)*(1-sqrt(1-4*sinh(x)))/2	e
+?A295257	polyx	0	"[[1]]"	",x,cot,1,1,4,tanh,*,-,sqrt,-,*,2,/"	0	1	cot(x)*(1-sqrt(1-4*tan(x)))/2	e
+?A295258	polyx	0	"[[1]]"	",x,coth,1,1,4,tanh,*,-,sqrt,-,*,2,/"	0	1	coth(x)*(1-sqrt(1-4*tanh(x)))/2	e
+?etaprod A366104	poly	0	"[[1],[0,0,1],[0,0,0,0,1]]"	",x,^1/12,p1,eta,^10,p2,eta,^2,x,eta,p2,eta,*,^6,/		x^(1/12)*eta(x^2)^10*eta(x^4)^2/(eta(x)*eta(x^4))^6	o
+A081560	polyx	0	"[[1],[0,2],[-1,1]]"	",p1,cosh,p2,+,exp"	0	1
+A081561	polyx	0	"[[1],[0,2],[-1,2]]"	",p1,cosh,p2,+,exp"	0	1
+A089171	polyz	0	"[[1]]"	",1,1,x,cosh,+,/"	0	0	0	2
+A134761	holos	0	[[0],[32,-40,12],[28,-40,12],[-4,7,-3],[0,7,-3]]	1,1,3	0	0	
+A184362	polyx	0	"[[1]]"	",x,eta,x,eta,dif,<1,+"	0	0	eta(x)+x*eta'(x)	o
+A184363	polyx	0	"[[1]]"	",x,eta,^3,1,x,eta,log,dif,<1,+,*"	0	0	eta(x)^3*(1+x*(log(eta(x))'/eta(x))	o
+A184365	poly	0	"[[1],[0,-1]]"	",x,eta,x,eta,dif,<1,-"
+A184366	polyx	0	"[[1]]"	",x,eta,^3,1,x,eta,dif,<1,x,eta,/,-,*"	0	0	eta(x)^3*(1-x*eta'(x)/eta(x))	o
+A186762	polyx	0	"[[1],[1,-1]]"	",x,sinh,neg,exp,p1,/"	0	1	
+A186767	polyx	0	"[[1],[1,0,-1]"	",x,sinh,exp,p1,sqrt,/"	0	1	exp(sinh(x))/sqrt(1-x^2)	e
+A186770	polyx	0	"[[1],[1,1],[1,-1]]"	",x,cosh,1,-,exp,p1,p2,/,sqrt,*"	0	1	exp(coshx-1)*sqrt((1+x)/(1-x))	e
+A347665	polyx	0	"[[1],[1,1],[0,0,1]]"	",x,exp,p1,p2,2,/,+,*,1,-,exp"	0	1	exp(exp(x)*(1+x+x^2/2)-1)	e          
+A347666	polyx	0	"[[1],[1,1],[0,0,1],[0,0,0,1]]"	",x,exp,p1,p2,2,/,+,p3,6,/,+,*,1,-,exp"	0	1	exp(exp(x)*(1+x+x^2/2+x^3/6)-1)	e    
+A377375	holos	0	[[0],[-1],[2],[1],[-4],[1],[2],[-1]]	0,0,0,4,11,25,42,70	0	0
+A378100	polyx	0	"[[1],[0,2,1],[0,0,1]]"	",p1,2,/,exp,p2,2,/,exp,-"	0	1	exp(x*(2+x)/2)-exp(x^2/2)	e

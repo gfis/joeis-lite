@@ -1,0 +1,6 @@
+---- 2025-05-08 11:04:04
+A102892	trilambn	0	0	0	(n,k) -> (k == 0) ? ((n == 0) ? Z.ONE : BI(3*n - 1, n - 2)./(3*n - 1).*(5)) : (n <= k ? (n == k ? Z2(n - 1) : ZV(0)) : Z2(k - 1).*(BI(3*n - 3*k + 1, n - k))./(n - k + 1).-(Z2(k).*(BI(3*n - 3*k - 2, n - k - 1))./(n - k)))
+A118968	lambdan	0	n -> { final int k = n%4; final int n4 = n/4; return n < 4 ? ZV(1) : ZV(k).*(BI(5*n4 + k, n/4))./(n + k + 1); }	a(4n+k) = (k+1)*binomial(5n+k,n)/(4n+k+1), k=0..3.
+A120013	arrlamb	0	0	0	1	(n,k) -> RU(1, k, j -> QV(n).^(j - 2).*(n - j + 1).*(j).*(FA(2*k - j - 1))./(FA(k - j).*(FA(k)))).num()	T(n,k) = Sum_{j=1..k} n^(j-2)*(n-j+1)*j*(2*k-j-1)!/(k-j)!/k!
+A271959	polyx	1	"[0,1],[0,0,1]"	"p1,A,^3,<1,2,*,+,sub,sqrt"	1	0
+A378026	inverti	0	new A006480()	,0	x

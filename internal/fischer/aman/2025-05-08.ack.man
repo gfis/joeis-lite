@@ -1,0 +1,180 @@
+---- 2025-05-08 11:09:35
+A084092	filter	1	new A000961()	v -> Predicates.PALINDROME.is(10, v)
+A098070	poly	0	"[1],[1,-8],[1,4]"	"2,p1,sqrt,p2,agm,-"	G.f.: 2 - 1/B(x) where B(x) is the g.f. of J094061
+A099958	filter	1	new A049690()	(n,v) -> (n&1) == 1
+A101679	filter	0	new A101678()	(n,v) -> (n&1) == 0
+A101873	filter	0	new A101871()	(n,v) -> (n&1) == 0
+A101874	filter	0	new A101871()	(n,v) -> (n&1) == 1
+A109084	polyx	0	"[1]"	"x,x,eta,<1,rev,/"	1	0	A(x) = x/series_reversion(x*eta(x))	G.f. A(x) satisfies: A(x) = 1/F000041(x/A(x)) where F000041(x) is the g.f. of the partition numbers F000041.
+A109085	polyx	0	"[1]"	"1,x,x,eta,<1,rev,/,/"	1	0	G.f. A(x) satisfies: A(x) = P(x*A(x)) where P(x) = A(x/P(x)) is the g.f. of the partition numbers F000041.
+A112441	filter	1	new A001567()	v -> Functions.BIG_OMEGA.i(v) == 4
+A112443	filter	1	new A001567()	v -> Functions.BIG_OMEGA.i(v) == 5
+A112450	filter	1	new A001262()	v -> Functions.BIG_OMEGA.i(v) == 3
+A113882	sintrif	0	(term, n) -> n == 0 ? ZV(1) : term.*(n)	""	new PrependSequence(0, new A132070(), 1)
+A118753	filter	0	new A060264()	(n,v) -> (n&1) == 0
+A120534	filter	1	new A005114()	v -> Functions.BIG_OMEGA.i(v) == 3
+A121307	filter	1	new A004612()	v -> Functions.BIG_OMEGA.i(v) == 3
+A122086	sintrif	1	(term, n) -> (n&1) == 0 ? term.*(2).-(M000081(n/2)) : term.*(2)	""	new A000055()	a(n) = 2*A000055(n) - A000081(n/2), for n odd, a(n) = 2*A000055(n)
+A158101	filter	0	new A158100()	(n,v) -> (n&1) == 0
+A158102	poly	0	"[1]"	"1,x,eta,/,2,n,^,^"
+A158103	poly	0	"[1]"	"1,x,eta,/,3,n,^,^"
+A158104	poly	0	"[1]"	"1,x,eta,/,4,n,^,^"
+A158105	poly	0	"[1]"	"1,x,eta,/,5,n,^,^"
+A158212	polyz	0	"[[1]]"	";1;1;1;8;x;*;A;^2;/;-;agm;/;^1/2"	0	0	0	4
+A158213	polyz	0	"[[1]]"	";1;1;1;8;x;*;A;^2;/;-;agm;/;^1/2"	0	0	1	4
+A162794	filter	0	new A139251()	(n,v) -> (n&1) == 0
+A174223	filter	0	new A174221()	(n,v) -> (n&1) == 1
+A183055	filter	1	new A000041()	v -> Predicates.PALINDROME.is(10, v)
+A207954	filter	1	new A033075()	v -> Predicates.PALINDROME.is(10, v)
+A210988	filter	1	new A000988().skip(2)	(n,v) -> (n&1) == 0
+A215566	filter	1	new A020231()	v -> Predicates.STRONG_PSEUDOPRIME.is(3, v)
+A229451	multia	0	"1"	(self,n) -> SU(1, n, k -> D006480(k).*(self.a(n - k)))./(n)	a(0) = 1; a(n) = (1/n) * Sum_{k=1..n} A006480(k) * a(n-k).
+A238985	filter	1	new A002473()	v -> Predicates.ZEROLESS.is(10, v)
+A245904	filter	1	new A002083()	(n,v) -> (n&1) == 0
+A246331	filter	0	new A147562()	(n,v) -> (n&1) == 1
+A256943	holos	0	[[0],[37635840,-14503104,2087712,-133056,3168],[-6177600,4241760,-904800,78240,-2400],[-60086160,27532696,-4712248,357104,-10112],[1551600,-1468688,387824,-40192,1456],[22064400,-11727964,2327582,-204536,6718],[-1487640,910732,-197376,17678,-534],[-2321580,1504988,-361269,38662,-1581],[206940,-128570,19800,710,-240],[39960,-39802,15531,-3278,309],[-840,-1292,3156,-1288,144],[120,-298,-201,358,-99],[120,-76,-142,106,-8],[0,36,-43,-6,13],[0,6,2,-6,-2]]	1,1,3	0	0
+A258314	poly	0	"[1]"	"1,A,<1,1,2,A,*,-,^2,*,+,4,A,^4,<2,*,1,A,-,*,+"
+A259504	filter	1	new A045920()	v -> Functions.BIG_OMEGA.i(v) == 3
+A261189	filter	1	new A052413()	v -> Predicates.ZEROLESS.is(10, v)
+A266535	filter	0	new A266540()	(n,v) -> (n&1) == 1
+A268469	filter	1	new A045920()	v -> Functions.BIG_OMEGA.i(v) == 8
+A271930	polyx	1	"[0,1],[0,0,1]"	"p1,A,^2,<1,6,*,+,sub,sqrt"	1	0
+A271935	polyx	1	"[0,1],[0,0,1]"	"p1,A,^2,<1,8,*,+,sub,sqrt"	1	0
+A271957	polyx	1	"[0,1],[0,0,1]"	"p1,A,^2,<1,10,*,+,sub,sqrt"	1	0
+A274478	polyx	1	"[0,1],[0,0,1],[1,-2,-2]"	"p1,p2,/,sub,sqrt"	1	0
+A274479	polyx	1	"[0,1],[0,0,1],[1,-2,-4]"	"p1,p2,/,sub,sqrt"	1	0
+A274484	polyx	1	"[0,1],[0,0,1],[1,-4,2]"	"p1,p2,/,sub,sqrt"	1	0
+A279613	holos	1	[[0],[-38416,76832,-57624,19208,-2401],[-8575,19992,-18130,7644,-1274],[-553,1604,-1870,1068,-267],[-7,32,-58,52,-26],[0,0,0,0,-1]]	1	1	0	-(n^4+4*n^3+6*n^2+4*n+1)*a(n+1)-(26*n^4+52*n^3+58*n^2+32*n+7)*a(n)-(267*n^4+268*n^2+18)*a(n-1)-(1274*n^4-2548*n^3+2842*n^2-1568*n+343)*a(n-2)-2401(n-1)^4*a(n-3)
+A283975	filter	0	new A264977()	(n,v) -> (n&1) == 1
+A284268	filter	0	new A284272()	(n,v) -> (n&1) == 1
+A286290	filter	1	new A064736()	(n,v) -> (n&1) == 1
+A286291	filter	1	new A064736()	(n,v) -> (n&1) == 0
+A287732	filter	1	new A287730()	(n,v) -> (n&1) == 1
+A295218	filter	1	new A002635()	(n,v) -> (n&1) == 1
+A328080	filter	0	new A328078()	(n,v) -> (n&1) == 0
+A341711	filter	0	new A341710()	(n,v) -> (n&1) == 1
+A343942	filter	0	new A067661()	(n,v) -> (n&1) == 1
+A346634	filter	0	new A067659()	(n,v) -> (n&1) == 1
+A347116	filter	1	new A347115()	(n,v) -> (n&1) == 0
+A352735	filter	1	new A011538()	v -> v.toString().indexOf('4') < 0
+A355775	holos	0	[[0],[71303168,-8650752,262144],[-29360128,3932160,-131072],[-77529088,12058624,-458752],[1638400,-2195456,147456],[5898240,-2641920,167936],[61890560,-8069120,243712],[4459520,81920,-44032],[-43096064,7410176,-310528],[-1424384,24832,14592],[12241664,-2683712,144256],[659904,-125888,4608],[-1679936,488720,-34768],[-171664,58768,-4896],[97824,-41240,4188],[14796,-8552,1204],[-1140,835,-133],[-198,296,-98],[0,12,-12]]	1,1	0	0
+A360950	polyx	0	"[1]"	"x,A,<2,-,rev,dif"	1	0
+A360973	polyz	0	"[1]"	"x,A,<3,-,rev,dif"	1	0	0	2
+A361046	polyz	0	"[1]"	"x,A,^2,<3,-,rev,dif"	1	0	0	2
+A361536	polyz	0	"[1]"	"x,A,^3,<3,-,rev,dif"	1	0	0	2
+A361537	polyz	0	"[1]"	"x,A,^4,<3,-,rev,dif"	1	0	0	2
+A361541	polyz	0	"[1]"	"x,A,<4,-,rev,dif"	1	0	0	3
+A361542	polyz	0	"[1]"	"x,A,^2,<4,-,rev,dif"	1	0	0	3
+A361551	polyz	0	"[1]"	"x,A,<5,-,rev,dif"	1	0	0	4
+A365857	filter	1	new A032189()	(n,v) -> (n&1) == 0
+A365858	filter	1	new A032189()	(n,v) -> (n&1) == 1
+A371712	polyx	1	"[0,1],[0,0,2],[1,-2]"	"p1,p2,^2,/,sub,2,/,sqrt"	2	0
+A375039	filter	1	new A051903()	(n,v) -> (n&1) == 1
+A375040	filter	1	new A051903()	(n,v) -> (n&1) == 0
+A377228	filter	1	new A005349()	v -> Predicates.REPDIGIT.is(10, v)
+A377864	filter	1	new A033676()	(n,v) -> (n&1) == 1
+A377865	filter	1	new A033677()	(n,v) -> (n&1) == 1
+A380551	lambdan	1	n -> RD(n, d -> new Q(MU(n/d).*(BI(3*d - 1, d - 1)).*(2), ZV(3*d - 1))).num()	a(n) = Sum_{d|n} mu(n/d) * binomial(3*d-1,d-1)*2/(3*d-1)
+A380552	lambdan	1	n -> RD(n, d -> new Q(MU(n/d).*(BI(4*d - 1, d - 1)).*(3), ZV(4*d - 1))).num()
+A380553	lambdan	1	n -> RD(n, d -> new Q(MU(n/d).*(BI(5*d - 1, d - 1)).*(4), ZV(5*d - 1))).num()
+A383355	lambdan	0	n -> SU(0, n/4, k -> BI(2*k, k).*(BI(n-3*k, k)))	""		a(n) = sum(k=0, n\4, binomial(2*k, k)*binomial(n-3*k, k))	_	_	_
+A383479	lambdan	0	n -> SU(0, n/3, k -> BI(n+k, k).*(BI(2*n-2*k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n+k, k)*binomial(2*n-2*k, n-3*k))	_	_	_
+A383480	lambdan	0	n -> SU(0, n/4, k -> BI(n+k, k).*(BI(2*n-3*k, n-4*k)))	""		a(n) = sum(k=0, n\4, binomial(n+k, k)*binomial(2*n-3*k, n-4*k))	_	_	_
+A383522	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n-2*k, k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n-2*k, k))	_	_	_
+A383523	lambdan	0	n -> SU(0, n/4, k -> BI(n, k).*(BI(n-3*k, k)))	""		a(n) = sum(k=0, n\4, binomial(n, k)*binomial(n-3*k, k))	_	_	_
+A383524	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n-k, k).^(2)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n-k, k)^2)	_	_	_
+A383525	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).^(2).*(BI(n-2*k, k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)^2*binomial(n-2*k, k))	_	_	_
+A383526	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n-2*k, k).^(2)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n-2*k, k)^2)	_	_	_
+A383528	lambdan	0	n -> SU(0, n/3, k -> BI(n+k, k).*(BI(n-2*k, k)))	""		a(n) = sum(k=0, n\3, binomial(n+k, k)*binomial(n-2*k, k))	_	_	_
+A383529	lambdan	0	n -> SU(0, n/4, k -> BI(n+k, k).*(BI(n-3*k, k)))	""		a(n) = sum(k=0, n\4, binomial(n+k, k)*binomial(n-3*k, k))	_	_	_
+A383536	lambdan	0	n -> SU(0, n/2, k -> BI(n+k, k).^(2).*(BI(n-k, k)))	""		a(n) = sum(k=0, n\2, binomial(n+k, k)^2*binomial(n-k, k))	_	_	_
+A383537	lambdan	0	n -> SU(0, n/3, k -> BI(n+k, k).^(2).*(BI(n-2*k, k)))	""		a(n) = sum(k=0, n\3, binomial(n+k, k)^2*binomial(n-2*k, k))	_	_	_
+A383538	lambdan	0	n -> SU(0, n/4, k -> BI(n+k, k).^(2).*(BI(n-3*k, k)))	""		a(n) = sum(k=0, n\4, binomial(n+k, k)^2*binomial(n-3*k, k))	_	_	_
+A383539	lambdan	0	n -> SU(0, n/3, k -> BI(n-k, k).^(2).*(BI(n-2*k, k)))	""		a(n) = sum(k=0, n\3, binomial(n-k, k)^2*binomial(n-2*k, k))	_	_	_
+A383571	lambdan	0	n -> SU(0, n/3, k -> BI(n-2*k, k).*(BI(k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n-2*k, k)*binomial(k, n-3*k))	_	_	_
+A383572	lambdan	0	n -> SU(0, n/4, k -> BI(n-3*k, k).*(BI(k, n-4*k)))	""		a(n) = sum(k=0, n\4, binomial(n-3*k, k)*binomial(k, n-4*k))	_	_	_
+A383573	lambdan	0	n -> SU(0, n/2, k -> BI(n-k, k).*(BI(ZV(2).*(n-2*k), n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n-k, k)*binomial(2*(n-2*k), n-2*k))	_	_	_
+A383577	lambdan	0	n -> SU(0, n/3, k -> BI(n-k, k).*(BI(n-2*k, k).^(2)))	""		a(n) = sum(k=0, n\3, binomial(n-k, k)*binomial(n-2*k, k)^2)	_	_	_
+A383581	lambdan	0	n -> SU(0, n/3, k -> BI(n-2*k, k).*(BI(ZV(2).*(n-3*k), n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n-2*k, k)*binomial(2*(n-3*k), n-3*k))	_	_	_
+A383582	lambdan	0	n -> SU(0, n/4, k -> BI(n-3*k, k).*(BI(ZV(2).*(n-4*k), n-4*k)))	""		a(n) = sum(k=0, n\4, binomial(n-3*k, k)*binomial(2*(n-4*k), n-4*k))	_	_	_
+A383583	lambdan	0	n -> SU(0, n/3, k -> BI(n-2*k-1, k).*(BI(k, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n-2*k-1, k)*binomial(k, n-3*k))	_	_	_
+A383584	lambdan	0	n -> SU(0, n/4, k -> BI(n-3*k-1, k).*(BI(k, n-4*k)))	""		a(n) = sum(k=0, n\4, binomial(n-3*k-1, k)*binomial(k, n-4*k))	_	_	_
+---- 2025-05-08 11:24:09
+A112444	filter	1	new A001567()	v -> Functions.BIG_OMEGA.i(v) == 6
+A112451	filter	1	new A001262()	v -> Functions.BIG_OMEGA.i(v) == 4
+A332240	prepend	1	new FilterSequence(1, new A176995(), v -> Predicates.PALINDROME.is(10, v))	0
+A346919	filter	1	new A072389()	v -> Predicates.PALINDROME.is(10, v)
+A363428	filter	1	new A000290()	v -> Predicates.ZEROLESS.is(3, v)
+---- 2025-05-08 12:13:33
+A107098	polya	0	"[0,1],[1,-1]"	"x,S,p1,/"	new A107097()
+A110120	polya	0	"[1]"	"x,S,sqrt"	new A001405()
+A120895	polya	0	"[1]"	"x,S,x,S,^2,<3,sub,*"	new A001006()
+A125279	polyxa	0	"[1],[0,0,1]"	"p1,x,S,/,rev,x,/"	1	0	new A030266()
+A125280	polyxa	0	"[1]"	"x,S,1,x,S,-,/,x,/"	1	0	new A030266()
+A128327	polya	0	"[1]"	"x,T,S"	new A128326(), new A030266()
+A156214	polyxa	0	"[1]"	"x,x,S,/,rev,x,/"	1	0	new A155200()
+A158884	polya	0	"[1],[0,-1]"	"1,p1,S,/"	new A088715()
+A167750	polya	0	"[1]"	"1,1,x,S,<1,-,/"	new A005169()
+A171151	polyxa	0	"[1]"	"x,S,1,-,x,S,<1,/"	1	0	new A004211()
+A171854	polya	0	"[1],[0,0,1,0,-1]"	"p1,x,S,^2,*,x,S,1,-,*,1,x,S,^2,<2,-,/"	new A004148()
+A172390	polyxa	0	"[1]"	"x,x,S,^2,<1,rev,/"	1	0	new A002894()
+A172391	polya	0	"[1]"	"x,A,/,S,^2"	new A172392()
+A172393	polya	0	"[1]"	"x,A,^2,/,S"	new A172392()
+A184360	polya	0	"[1]"	"x,S,^2"	new A184361()
+A184361	polya	0	"[1]"	"x,A,^2,/,S"	new A184359()
+A186001	polya	0	"[1]"	"1,1,x,1,x,S,<1,-,/,-,/"	new A004211()
+A186186	polya	0	"[1],[1,-1]"	"1,1,x,p1,/,x,p1,/,S,*,-,/"	new A002293()
+A187814	polyxa	0	"[1],[0,16],[0,8]"	"x,S,^2,x,S,^4,p1,-,sqrt,-,p2,/,sqrt"	1	0	new A107086()
+A188193	polya	0	"[1]"	"A,<1,S"	new A014070()
+A188194	polya	0	"[1]"	"A,^2,<1,S"	new A014070()
+A200378	polya	0	"[1]"	"A,<1,S"	new A004016()
+A203067	polya	0	"[1]"	"A,<1,S"	new A003114()
+A203068	polya	0	"[1]"	"A,<1,S"	new A003106()
+A219269	polyxa	0	"[1]"	"x,x,S,<1,rev,/"	1	0	new A000178()
+A228712	polyxa	0	"[1],[0,64],[0,32]"	"x,S,^4,x,S,^8,p1,-,sqrt,-,p2,/,^1/4"	1	0	new A223026()
+A228928	polyxa	0	"[1],[0,256],[0,128]"	"x,S,^8,x,S,^16,p1,-,sqrt,-,p2,/,^1/8"	1	0	new A228927()
+A231498	polya	0	"[1]"	"1,1,x,S,/,-"	new A005130()
+A231499	polya	0	"[1]"	"1,x,S,/,1,x,S,^2,/,-"	new A005130()
+A232192	polya	0	"[1]"	"1,A,1,-,S,<1,+"	new A122400()
+A245932	polyxa	0	"[1]"	"x,S,dif,x,S,/"	1	0	new A245931()
+A253511	polyxa	0	"[1],[1,-1]"	"1,x,S,+,p1,x,S,<1,-,/"	1	0	new A209229()
+A258053	polyxa	0	"[1]"	"x,x,S,<1,rev,/,sqrt"	1	0	new A227845()
+A271235	polya	0	"[1],[0,4]"	"p1,S,sqrt"	new A000041()
+A276408	polya	0	"[1]"	"2,1,x,S,/,-"	new A265434()
+A276421	polya	0	"[1],[0,0,1]"	"1,x,S,+,1,p1,S,-,/"	new A005171()	0	@1!
+A289312	polya	0	"[1],[0,2],[1,1]"	"p1,p2,/,S"	new A022493()
+A339984	polya	0	"[1],[0,0,1]"	"x,S,p1,S,*"	new A000081()
+A342986	polya	0	"[1]"	"A,^2,<1,S,A,^2,<1,2,*,-"	new A004304()
+A342988	polya	0	"[1]"	"A,^2,<1,S,A,^2,<1,-"	new A004304()
+A348197	polya	0	"[1]"	"x,S,S"	new A086246()
+A355488	polya	0	"[0,1]"	"x,S,1,-,1,x,S,1,-,2,*,+,/"	new A000142()
+A359801	polya	0	"[1]"	"2,1,x,S,/,-"	new A039699()
+A359856	polya	0	"[1]"	"2,x,S,*,1,2,x,S,-,/,-"	new A003319()
+A363111	polya	0	"[1]"	"x,S,^7,<1,S"	new A002293()
+A363480	polya	0	"[1]"	"x,S,sqrt"	new A363481()
+A363545	polya	0	"[1],[1,-2]"	"p1,x,S,*"	new A362389()
+A363546	polya	0	"[1],[1,-3]"	"p1,x,S,*"	new A363541()
+A363548	polya	0	"[1],[1,-3,3,-1]"	"p1,x,S,*"	new A363507()
+A363567	polya	0	"[1],[1,2,1]"	"p1,x,S,*"	new A363565()
+A363575	polya	0	"[1],[1,3,3,1]"	"p1,x,S,*"	new A363566()
+A363580	polya	0	"[1],[1,2]"	"p1,x,S,*"	new A363578()
+A363581	polya	0	"[1],[1,3]"	"p1,x,S,*"	new A363579()
+A366104	polyza	0	"[1]"	"x,S,^4,x,neg,S,^4,+,2,/"	0	0	0	2	new A000700()
+A367143	polya	0	"[1],[1,-2]"	"x,p1,x,S,*,+"	new A000088()
+A370540	polya	0	"[1],[0,0,1]"	"p1,sub,x,S,*,sqrt"	new A370539()
+A372215	polya	0	"[1]"	"x,S,n,^"	new A182959()
+A373219	polya	0	"[1]"	"x,S,x,^5,sub,*"	new A000009()
+A373220	polya	0	"[1]"	"x,S,x,^6,sub,*"	new A000009()
+A373221	polya	0	"[1]"	"x,S,x,^7,sub,*"	new A000009()
+A373295	polya	0	"[1]"	"x,S,x,^4,sub,*"	new A000041()
+A374705	polya	0	"[1],[1,1],[1,1,1,1]"	"x,S,<1,p1,/,^2,x,S,<2,p2,/,+"	new A000009()
+A378078	polya	0	"[1]"	"1,x,S,<1,+,x,S,<1,^2,+,x,S,<1,^3,+"	new A122871()
+A378079	polya	0	"[1]"	"1,1,x,S,-,/,x,S,^2,-,"	new A030980()
+A379433	polya	0	"[1],[1,2,1],[1,-1],[1,1]"	"x,x,p1,/,S,p2,*,p3,/,+"	new A000168()
+A379435	polya	0	"[1],[1,4,4],[1,-2],[1,2]"	"2,x,*,x,p1,/,S,p2,*,p3,/,+"	new A000168()
+A380290	polya	0	"[1]"	"x,S,n,^"	new A023871()
+A380291	polya	0	"[1]"	"x,S,n,^"	new A027998()
+A380516	polyxa	0	"[1]"	"x,S,^4,<1,exp"	0	1	new A002293()
+A380581	polya	0	"[1]"	"x,S,n,^"	new A023873()
+A380582	polya	0	"[1]"	"x,S,n,^"	new A206622()
+A383624	holos	0	[[0],[-315,105],[-171,76],[51,-34],[3,-4],[0,1]]	1	0	0

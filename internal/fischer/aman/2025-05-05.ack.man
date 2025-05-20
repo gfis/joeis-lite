@@ -1,0 +1,175 @@
+---- 2025-05-05 23:10:38
+A077680	filter	1	new A217397()	v -> Predicates.SQUARE_FREE.is(v)
+A077683	filter	1	new A217400()	v -> Predicates.SQUARE_FREE.is(v)
+A078324	filter	1	new A224866()	v -> Predicates.PRIME.is(v)
+A078325	filter	1	new A224866()	v -> Predicates.SQUARE_FREE.is(v)
+A078390	filter	1	new A055394()	v -> !Predicates.PRIME.is(v)
+A078393	filter	1	new A055394()	v -> Predicates.SQUARE_FREE.is(v)
+A078443	filter	1	new A024675()	v -> Predicates.SEMIPRIME.is(v)	J024675. - _Zak Seidov_, May 22 2015
+A079095	filter	1	new A079079()	v -> Predicates.SQUARE_FREE.is(v)
+A079652	filter	1	new A072960()	v -> Predicates.PRIME.is(v)	- _K. D. Bajpai_, Sep 01 2014
+A079653	filter	1	new A072960()	v -> Predicates.TRIANGULAR.is(v)
+A079655	filter	1	new A072960()	v -> Predicates.SQUARE.is(v)
+A084349	filter	1	new A018825()	v -> Predicates.SQUARE_FREE.is(v)
+A084983	filter	1	new A046034()	v -> Predicates.PALINDROME.is(v)	J046034.
+A086368	filter	1	new A065300()	v -> !Predicates.SQUARE_FREE.is(v)
+A087244	filter	1	new A005100()	v -> !Predicates.SQUARE_FREE.is(v)
+A087788	filter	1	new A007304()	v -> Predicates.CARMICHAEL.is(v)
+A091214	filter	1	new A014580()	v -> !Predicates.PRIME.is(v)
+A095070	filter	1	new A072600()	v -> Predicates.PRIME.is(v)
+A095083	filter	1	new A020899()	v -> Predicates.PRIME.is(v)
+A095084	filter	1	new A095096()	v -> Predicates.PRIME.is(v)
+A095085	filter	1	new A101345()	v -> Predicates.PRIME.is(v)
+A098835	filter	1	new A006753()	v -> Predicates.ABUNDANT.is(v)
+A098836	filter	1	new A006753()	v -> Predicates.DEFICIENT.is(v)
+A098840	filter	1	new A006753()	v -> Predicates.TRIANGULAR.is(v)
+A101439	filter	1	new A024365()	v -> Predicates.PALINDROME.is(v)	J024365. - _M. F. Hasler_, Jun 06 2024
+A101450	filter	1	new A009112()	v -> Predicates.PALINDROME.is(v)	J009112. - _M. F. Hasler_, Jun 06 2024
+A105991	filter	1	new A007088()	v -> Predicates.SEMIPRIME.is(v)	D007088 (numbers written in base 2). - _Michel Marcus_, Jan 27 2015
+A106543	filter	1	new A007916()	v -> !Predicates.PRIME.is(v)
+A107342	filter	1	new A107665()	v -> Predicates.SEMIPRIME.is(v)	J107665.
+A107666	filter	1	new A107665()	v -> Predicates.PRIME.is(v)	- _K. D. Bajpai_, Sep 08 2014
+A108636	filter	1	new A014263()	v -> Predicates.SEMIPRIME.is(v)	J014263.
+A108989	filter	1	new A167791()	v -> !Predicates.PRIME.is(v)
+A110979	filter	1	new A237589()	v -> Predicates.SQUARE.is(v)
+A110997	filter	1	new A237589()	v -> Predicates.POWER.is(v)
+A111278	filter	1	new A005114()	v -> Predicates.SQUARE.is(v)
+A111483	filter	1	new A046034()	v -> Predicates.TRIANGULAR.is(v)
+A112474	filter	1	new A024975()	v -> Predicates.SQUARE.is(v)
+A116064	filter	1	new A033023()	v -> Predicates.POWER.is(v)
+A117159	filter	1	new A028843()	v -> Predicates.PRIME.is(v)
+A118693	filter	1	new A005349()	v -> Predicates.SEMIPRIME.is(v)	J005349.
+A118695	filter	1	new A064807()	v -> Predicates.SEMIPRIME.is(v)	J064807.
+A118696	filter	1	new A064700()	v -> Predicates.SEMIPRIME.is(v)	J064700.
+A119379	filter	1	new A005114()	v -> Predicates.SEMIPRIME.is(v)	J005114.
+A124143	filter	1	new A002191()	v -> Predicates.POWER.is(v)
+A124581	filter	1	new A005101()	v -> Predicates.CUBE.is(v)
+A124656	filter	1	new A000069()	v -> Predicates.ABUNDANT.is(v)
+A125494	filter	1	new A001969().skip(1)	v -> !Predicates.PRIME.is(v)
+A125495	filter	1	new A000069().skip(1)	v -> !Predicates.PRIME.is(v)
+A125496	filter	1	new A000578()	v -> Predicates.DEFICIENT.is(v)
+A125497	filter	1	new A001969()	v -> Predicates.CUBE.is(v)
+A125498	filter	1	new A000069()	v -> Predicates.CUBE.is(v)
+A129755	filter	1	new A172407()	v -> Predicates.TRIANGULAR.is(v)
+A130178	filter	1	new A024675()	v -> Predicates.TRIANGULAR.is(v)
+A144302	filter	1	new A049445()	v -> v.testBit(0)
+A145292	filter	1	new A202018()	v -> !Predicates.PRIME.is(v)
+A154387	filter	1	new A054683().skip(1)	v -> !Predicates.PRIME.is(v)
+A156903	filter	1	new A028982()	v -> Predicates.ABUNDANT.is(v)
+A158082	filter	1	new A007091()	v -> Predicates.SQUARE.is(v)
+A162710	filter	1	new A003325()	v -> Predicates.PALINDROME.is(v)	J003325.
+A167788	filter	1	new A034961()	v -> Predicates.TRIANGULAR.is(v)
+A168354	filter	1	new A006881()	v -> Predicates.PALINDROME.is(2, v)
+A169663	filter	1	new A034087()	v -> v.mod(Functions.DIGIT_SUM.l(v)) == 0
+A169829	filter	1	new A073485()	v -> Predicates.PALINDROME.is(v)	J073485. - _Reinhard Zumkeller_, May 31 2010
+A171671	filter	1	new A003052()	v -> Predicates.SQUARE.is(v)
+A175188	filter	1	new A064748().skip(1)	v -> !Predicates.PRIME.is(v)
+A212794	filter	1	new A009003()	v -> Predicates.TRIANGULAR.is(v)
+A217973	filter	1	new A052382()	v -> v.mod(Functions.DIGIT_SUM.l(v)) == 0
+A222813	filter	1	new A033015()	v -> Predicates.PALINDROME.is(2, v)
+A223546	filter	1	new A217723().skip(1)	v -> !Predicates.PRIME.is(v)
+A225856	filter	1	new A049533()	v -> Predicates.PRIME.is(v)
+A235488	filter	1	new A072595()	v -> Predicates.SQUARE_FREE.is(v)
+A243008	filter	1	new A072081()	v -> Predicates.TRIANGULAR.is(v)
+A243544	filter	1	new A180748()	v -> Predicates.PRIME.is(v)
+A248021	filter	1	new A069059()	v -> Predicates.POWER.is(v)
+A248407	filter	1	new A165564()	v -> Predicates.SQUARE_FREE.is(v)
+A249510	filter	1	new A000179()	v -> Predicates.PRIME.is(v)	(m√©nage numbers).
+A256395	filter	1	new A002559().skip(1)	v -> !Predicates.PRIME.is(v)
+A262251	filter	1	new A004050()	v -> Predicates.TRIANGULAR.is(v)
+A263090	filter	1	new A236562()	v -> Predicates.PRIME.is(v)
+A263091	filter	1	new A045765()	v -> Predicates.PRIME.is(v)
+A266419	filter	1	new A192607()	v -> v.testBit(0)
+A266420	filter	1	new A050505()	v -> v.testBit(0)
+A282430	filter	1	new A058517()	v -> v.mod(3) != 0	- _Michel Marcus_, Feb 25 2017
+A287473	filter	1	new A039770()	v -> Predicates.TRIANGULAR.is(v)
+A290972	filter	1	new A165550()	v -> Predicates.PRIME.is(v)
+A291052	filter	1	new A165551()	v -> Predicates.PRIME.is(v)
+A292064	filter	1	new A291167()	v -> Predicates.TRIANGULAR.is(v)
+A292989	filter	1	new A030515()	v -> Predicates.TRIANGULAR.is(v)
+A298270	filter	1	new A053767()	v -> Predicates.TRIANGULAR.is(v)
+A302590	filter	1	new A076610()	v -> Predicates.SQUARE_FREE.is(v)
+A308643	filter	1	new A046347()	v -> Predicates.SQUARE_FREE.is(v)
+A308917	filter	1	new A285550()	v -> Predicates.PRIME.is(v)
+A309812	filter	1	new A009003()	v -> v.testBit(0)
+A316481	filter	1	new A061384()	v -> Predicates.SQUARE.is(v)
+A316482	filter	1	new A061385()	v -> Predicates.SQUARE.is(v)
+A316483	filter	1	new A061386()	v -> Predicates.SQUARE.is(v)
+A316485	filter	1	new A061388()	v -> Predicates.SQUARE.is(v)
+A316486	filter	1	new A061423()	v -> Predicates.SQUARE.is(v)
+A316561	filter	1	new A061387()	v -> Predicates.SQUARE_FREE.is(v)
+A319529	filter	1	new A071562()	v -> v.testBit(0)
+A319801	filter	1	new A071561()	v -> v.testBit(0)
+A320969	filter	1	new A010784()	v -> Predicates.SEMIPRIME.is(v)	J010784.
+A321150	filter	1	new A066566()	v -> Predicates.PRIME.is(v)
+A324972	filter	1	new A090466()	v -> Predicates.SQUARE_FREE.is(v)
+A328791	filter	1	new A117950()	v -> Predicates.TRIANGULAR.is(v)
+A330809	filter	1	new A030626()	v -> Predicates.TRIANGULAR.is(v)
+A332970	filter	1	new A003052()	v -> Predicates.PALINDROME.is(v)	J003052 (Colombians).
+A333421	filter	1	new A046807()	v -> Predicates.PRIME.is(v)
+A334403	filter	1	new A235228()	v -> v.mod(Functions.DIGIT_SUM.l(v)) == 0
+A334527	filter	1	new A006753()	v -> v.mod(Functions.DIGIT_SUM.l(v)) == 0
+A334529	filter	1	new A049445()	v -> Predicates.PALINDROME.is(2, v)
+A335140	filter	1	new A293188()	v -> !Predicates.SQUARE_FREE.is(v)
+A340559	filter	1	new A029730()	v -> Predicates.PALINDROME.is(2, v)
+A342262	filter	1	new A055471()	v -> v.mod(Functions.DIGIT_SUM.l(v)) == 0
+A345348	filter	1	new A031443()	v -> Predicates.TRIANGULAR.is(v)
+A346537	filter	1	new A055471()	v -> Predicates.SQUARE.is(v)
+A347889	filter	1	new A343216()	v -> Predicates.ABUNDANT.is(v)
+A349981	filter	1	new A068017()	v -> PP(v.+(1)) && PP(v.-(1))
+A350987	filter	1	new A006995()	v -> Predicates.TRIANGULAR.is(v)
+A350990	filter	1	new A014190()	v -> Predicates.TRIANGULAR.is(v)
+A350991	filter	1	new A029952()	v -> Predicates.TRIANGULAR.is(v)
+A350992	filter	1	new A029954()	v -> Predicates.TRIANGULAR.is(v)
+A350993	filter	1	new A029955()	v -> Predicates.TRIANGULAR.is(v)
+A351336	filter	1	new A271116().skip(1)	v -> !Predicates.PRIME.is(v)
+A351663	filter	1	new A008589()	v -> Predicates.POWER.is(v)
+A353022	filter	1	new A046386()	v -> PP(v.+(1)) && PP(v.-(1))
+A353064	filter	1	new A002413()	v -> Predicates.SQUARE.is(v)
+A353152	filter	1	new A008587()	v -> Predicates.POWER.is(v)
+A353238	filter	1	new A008585()	v -> Predicates.POWER.is(v)
+A353869	filter	1	new A353868()	v -> Predicates.SQUARE_FREE.is(v)
+A357697	filter	1	new A357695()	v -> v.testBit(0)
+A358311	filter	1	new A022544()	v -> Predicates.LUCAS.is(v)	F000032 and J022544.
+A359381	filter	1	new A026424()	v -> v.mod(3) != 0
+A360328	filter	1	new A076610()	v -> Predicates.ABUNDANT.is(v)
+A363101	filter	1	new A177712()	v -> !Predicates.SQUARE_FREE.is(v)
+A364799	filter	1	new A071148()	v -> Predicates.TRIANGULAR.is(v)
+A365535	filter	1	new A268335().skip(1)	v -> !Predicates.PRIME.is(v)
+A368337	filter	1	new A284973()	v -> Predicates.SEMIPRIME.is(v)	J284973.
+A369659	filter	1	new A327863()	v -> v.mod(3) != 0
+A371016	filter	1	new A001844()	v -> Predicates.SEMIPRIME.is(v)	D001844.
+A371083	filter	1	new A048103()	v -> !Predicates.SQUARE_FREE.is(v)
+A371086	filter	1	new A371088()	v -> !Predicates.SQUARE_FREE.is(v)
+A371239	filter	1	new A032924()	v -> Predicates.SQUARE_FREE.is(v)
+A372149	filter	1	new A014261()	v -> Predicates.PALINDROME.is(v)	J014261.
+A373689	filter	1	new A068088()	v -> Predicates.POWER.is(v)
+A374102	filter	1	new A010061()	v -> Predicates.PRIME.is(v)
+A374135	filter	1	new A329963()	v -> v.mod(3) != 0
+A374289	filter	1	new A062739()	v -> v.mod(3) != 0
+A374393	filter	1	new A068088()	v -> Predicates.TRIANGULAR.is(v)
+A374459	filter	1	new A268335()	v -> !Predicates.SQUARE_FREE.is(v)
+A376119	filter	1	new A005101()	v -> Predicates.POWER.is(v)
+A376218	filter	1	new A268335()	v -> v.testBit(0)
+A376380	filter	1	new A046387()	v -> PP(v.+(1)) && PP(v.-(1))
+A376997	filter	1	new A005835()	v -> Predicates.TRIANGULAR.is(v)
+A378097	filter	1	new A067885()	v -> PP(v.+(1)) && PP(v.-(1))
+A378480	filter	1	new A007304()	v -> Predicates.DEFICIENT.is(v)
+A378717	filter	1	new A046386()	v -> Predicates.DEFICIENT.is(v)
+A378795	filter	1	new A002858()	v -> Predicates.SEMIPRIME.is(v)	J002858.
+A378859	filter	1	new A052486()	v -> Predicates.ABUNDANT.is(v)
+A378948	filter	1	new A051624()	v -> Predicates.CUBE.is(v)
+A379164	filter	1	new A052486()	v -> Predicates.DEFICIENT.is(v)
+A379762	filter	1	new A046386()	v -> Predicates.ABUNDANT.is(v)
+A380007	filter	1	new A007304()	v -> Predicates.POLYGONAL.is(6, v)
+A380328	filter	1	new A174973()	v -> Predicates.SQUARE_FREE.is(v)
+A380429	filter	1	new A002858()	v -> PP(v.+(1)) && PP(v.-(1))
+A380892	filter	1	new A005101()	v -> Predicates.POLYGONAL.is(6, v)
+A381488	filter	1	new A000326()	v -> Predicates.DEFICIENT.is(v)
+A381650	filter	1	new A007304()	v -> Predicates.POLYGONAL.is(5, v)
+A381824	filter	1	new A036966()	v -> v.testBit(0)
+A381919	filter	1	new A046386()	v -> Predicates.POLYGONAL.is(5, v)
+A381920	filter	1	new A046386()	v -> Predicates.POLYGONAL.is(6, v)
+A382163	filter	1	new A006886()	v -> Predicates.PALINDROME.is(v)	J006886.
+A382165	filter	1	new A006886()	v -> v.mod(Functions.DIGIT_SUM.l(v)) == 0
+A382166	filter	1	new A003052()	v -> Predicates.CUBE.is(v)
