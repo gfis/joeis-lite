@@ -327,6 +327,7 @@ while (<>) { # read inputfile
             $parm =~ s{SD\(}           {Integers.SINGLETON.sumdiv\(}g;
             $parm =~ s{SDA\(}          {Functions.DIGIT_SORT_ASCENDING\(}g;
             $parm =~ s{SDD\(}          {Functions.DIGIT_SORT_DESCENDING\(}g;
+            $parm =~ s{SEM\(}          {Predicates.SEMIPRIME.is\(}g;
 #           $parm =~ s{Sigma\(([^\)]+)\)}{Jaguar.factor($1).sigma()}g;
             $parm =~ s{\bSIGMA\(}      {Functions.SIGMA1.z(}g;
             $parm =~ s{SOPFR\(}        {Functions.SOPFR.z\(}g;
