@@ -2,6 +2,7 @@
 
 # Read rows from database table 'seq4' and generate corresponding Java sources for jOEIS
 # @(#) $Id$
+# 2025-05-26, V8.9: BELL, PELL
 # 2025-05-01, V8.8: HW hammingweight -> int!
 # 2025-02-21, V8.7: FFAC = FALLING_FACTORIAL, ZRE, ZIM
 # 2025-02-20, V8.6: a185951, a136630
@@ -83,7 +84,7 @@ use English; # PREMATCH
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min);
 # $timestamp = sprintf ("%04d-%02d-%02d ", $year + 1900, $mon + 1, $mday);
-my $version_id  = "gen_seq4.pl V8.8";
+my $version_id  = "gen_seq4.pl V8.9";
 my $max_term = 16;
 my $max_size = 16;
 my $max_line_len = 120;
@@ -266,6 +267,7 @@ while (<>) { # read inputfile
             $parm =~ s{ZV\(}           {Z.valueOf\(}g; $parm =~  s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .  $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{CV\(}           {CR.valueOf\(}g; $parm =~ s{CR\.valueOf\((\-1|[0-9]|10)\)}{"CR." . $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
+            $parm =~ s{BELL\(}         {Functions.BELL.z\(}g;
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BS\(}           {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
@@ -303,6 +305,7 @@ while (<>) { # read inputfile
             $parm =~ s{MIN\(}          {Functions.MIN.z\(}g;
             $parm =~ s{MU\(}           {Functions.MOEBIUS.z\(}g;
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
+            $parm =~ s{PELL\(}         {Functions.PELL.z\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z\(}g;
             $parm =~ s{PP\(}           {Predicates.PRIME.is\(}g;
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
