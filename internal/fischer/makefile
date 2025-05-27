@@ -186,8 +186,10 @@ tritest:
 ej:
 	echo $(JAVA)
 regtest: # CLASS= rerun all these classes
-	grep -P "\AA\d+\t$(CLASS)" $(COMMON)/joeis_names.txt | cut -f1 > $(CLASS).gen
-	wc -l $(CLASS).gen
+	grep -P "\A[A-Z]\d+\t$(CLASS)" $(COMMON)/joeis_names.txt | cut -f1 \
+	| perl -pe 's/^./A/;' > $(CLASS).gen 
+	head -n4 $(CLASS).gen
+	wc -l    $(CLASS).gen
 	make CC=$(CLASS) test log
 dirtest:
 	cut -f1 ./reflect/direct.tmp > $@.gen

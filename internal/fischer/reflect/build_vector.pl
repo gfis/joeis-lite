@@ -3,6 +3,7 @@
 # Build a vector of classification codes for all A-numbers 0..400000
 # @(#) $Id$
 # 2024-05-16, Georg Fischer: copied from scripts/endirect.pl; *HA=67
+# 2025-05-27: add allowance for allocated ones
 #
 #:# Usage:
 #:#   perl build_vector.pl [-f directfile] [-k] infile > outfile
@@ -52,7 +53,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 
 my $last_strip = `tail -n1 $gits/OEIS-mat/common/stripped`;
 if ($last_strip  =~ m{A(\d+)}) {
-    $max_anumber = $1;
+    $max_anumber = $1 + 1024; # add allowance for allocated ones
 }
 my @vector = ();
 for (my $sno = 0; $sno <= $max_anumber; $sno ++) {
@@ -65,6 +66,12 @@ for (my $sno = 0; $sno <= $max_anumber; $sno ++) {
 &read_file("$reflect/known.txt") if $known > 0;
 &read_file("$reflect/funct.txt");
 
+for (my $sno = 0; $sno <= $max_anumber; $sno ++) {
+    if (!defined($vector[$sno])) {
+        print "undefined $sno\n";
+        $vector[$sno] = 'A';
+    }
+}
 open (OUT, ">", "$reflect/vector.txt") || die "cannot write vector.txt";
 print OUT join("", @vector) . "\n";
 close OUT;
