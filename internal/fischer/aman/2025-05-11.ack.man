@@ -1,0 +1,118 @@
+---- 2025-05-11 21:20:35
+A113882	polya	0	"[1]"	"x,A,/,S"	new A132070()
+A213628	polya	1	"[0,1],[0,0,1]"	"p1,x,x,S,^2,-,/"	new A213591()		next();
+A219270	polyxa	0	"[1]"	"x,x,S,/,rev,x,/"	1	0	new A000178()
+A229809	polya	1	"[0,1]"	"1,x,S,3,*,+,<1,1,15,x,S,^2,*,-,/"	new A229808()
+A242637	polya	0	"[0,0,3]"	"3,7,x,S,<1,*,-,x,S,<1,^2,*,1,x,S,<1,-,^3,/"	new A006013()
+A247659	polya	1	"[0,1]"	"x,S,1,-,x,S,/"	new A000798()
+A247660	polya	1	"[0,1],[-2]"	"p1,x,S,3,*,+,x,S,^2,-,x,S,/"	new A000798()
+A327074	polya	0	"[0,0,1],[0,0,1]"	"x,S,^2,p1,S,+,2,/"	new A007145()
+A331233	polya	1	"[1],[0,0,1]"	"x,S,1,x,S,+,x,S,^2,p1,S,+,2,/,+,<1,-"	new A000081()
+A335349	polya	4	"[1]"	"x,S,^5,<4,2,*,x,T,^3,*"	new A002426(), new A001006()
+A338671	polyxa	1	"[1],[0,0,1]"	"x,S,^2,p1,S,+,2,/"	1	0	new A038548()
+A339302	polya	4	"[1],[0,0,1]"	"x,S,^4,p1,S,^2,+,2,/"	new A000081()
+A339479	polya	1	"[1],[1,-1]"	"x,p1,x,S,-,/"	new A002572()
+A345955	polya	1	"[1],[0,0,1]"	"p1,S,x,S,^2,+,<1,2,/"	new A003080()
+A363547	polyxa	0	"[1],[1,-2,1]"	"p1,x,S,x,/,2,-,*"	1	0	new A029857()
+A363689	polya	0	"[1]"	"2,2,1,x,S,/,-,*,x,S,-"	new A005130()
+A368562	polya	2	"[1]"	"x,S,^2,x,S,^3,-"	new A190761()
+A370441	polya	1	"[0,1]"	"A,S,<1"	new A091190()
+A373313	polya	1	"[1]"	"x,S,<1,rev"	new A373308()
+A378579	polya	1	"[0,1]"	"x,S,rev"	new A318636()
+A380256	polya	0	"[1]"	"1,1,x,S,-,/,1,1,x,S,-,^2,/,-,x,S,2,1,x,S,-,^3,*,/,+,x,S,2,1,x,S,-,*,1,x,<1,S,-,*,/,+"	new A001190()
+---- 2025-05-11 21:28:21
+A319649	arrlamb	1	1	1	-1	(n,k) -> SU(1, n, j -> ZV(j).^(k - 1).*(n/j))	nonn,tabl       1..66   nyi
+A322080	arrlamb	1	1	1	-1	(n,k) -> SD(n, p -> !PP(p) ? ZV(0) : ZV(p).^(k - 1))	nonn,tabl       1..1275 nyi
+A322081	arrlamb	1	1	1	-1	(n,k) -> SD(n, d ->Z_1(n/d+1).*(ZV(d).^(k - 1)))	sign,tabl       1..1275 nyi
+A322083	arrlamb	1	1	1	-1	(n,k) -> SD(n, d ->Z_1(n/d+d).*(ZV(d).^(k - 1)))	sign,tabl       1..1275 nyi
+A322103	arrlamb	1	1	1	-1	(n,k) -> SD(n, d ->Functions.SIGMA.z(k - 1, d))	nonn,tabl       1..140  nyi
+A322104	arrlamb	1	1	1	-1	(n,k) -> SD(n, d ->ZV(d).*(Functions.SIGMA.z(k -1, d)))	nonn,tabl       1..1275 nyi
+A322263	arrlamb	1	1	1	-1	(n,k) -> RD(n, d -> QV(1)./(d).^(k - 1)).num()	nonn,tabl,frac  1..78   nyi
+A322264	arrlamb	1	1	1	-1	(n,k) -> RD(n, d -> QV(1)./(d).^(k - 1)).den()	nonn,tabl,frac  1..78   nyi
+A322265	arrlamb	1	1	1	-1	(n,k) -> RU(1, n, j -> QV(1)./(j).^(k - 1)).num()	nonn,tabl,frac  1..55   nyi
+A322266	arrlamb	1	1	1	-1	(n,k) -> RU(1, n, j -> QV(1)./(j).^(k - 1)).den()	nonn,tabl,frac  1..55   nyi
+---- 2025-05-11 21:39:08
+A325303	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))).negate()	a(1) = 1; a(n+1) = -Sum_{d|n} a(n/d) * a(d).
+A341697	multia	1	"1,1"	(self, n) -> SD(n - 1, d -> d == n - 1 ? ZV(0) : self.a((n - 1)/d).*(self.a(d)))	nonn    1..60   nyi
+A341698	multia	1	"1,1"	(self, n) -> SD(n - 1, d -> d == n - 1 ? ZV(0) : self.a((n - 1)/d).*(self.a(d))).negate()	sign    1..70   nyi
+A345137	multia	1	"1,1"	(self, n) -> SD(n - 2, d -> d == n - 2 ? ZV(0) : self.a(d))	nonn    1..95   nyi
+A349088	multia	0	""	(self, n) -> n == 0 ? ZV(0) : RU(0, (n-1)/3, k -> QV(1)./(FA(3*k + 1))).*(FA(n)).num()	nonn    0..22   nyi
+A351405	multia	1	"1"	(self, n) -> SD(n - 1, d -> ZV(2).^((n - 1)/d - 1).*(self.a(d)))	nonn    1..34   nyi
+A355116	multia	1	"1"	(self, n) -> SD(n - 1, d -> ZV(3).^((n - 1)/d - 1).*(self.a(d)))	nonn    1..30   nyi
+A355117	multia	1	"1"	(self, n) -> SD(n - 1, d -> ZV(4).^((n - 1)/d - 1).*(self.a(d)))	nonn    1..27   nyi
+---- 2025-05-11 21:46:27
+A308260	multia	0	""	(self, n) -> PR(1, n, k -> Functions.GCD.i(n, k) == 1 ? PM(k) : ZV(1))	Product_{k=1..n, gcd(n,k) = 1} prime(k). no
+A320973	arrlamb	1	1	1	-1	(n,k) -> RQD(n, p -> !PP(p) ? QV(1) : QV(1).+(QV(1)./(p).^(k - 1))).*(ZV(n).^(k - 1)).num()	nonn,tabl       1..66   nyi
+A321258	arrlamb	1	1	1	-1	(n,k) -> Functions.SIGMA.z(k - 1, n).-(ZV(n).^(k -1))	nonn,tabl       1..78   nyi
+A330436	multia	1	""	(self, n) -> DF(n).*(n).-(SU(1, n - 1, k -> DF(k).*(self.a(n - k))))	nonn    1..26   nyi
+A332778	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PHI(n/d).*(self.a(d).^(2)))	nonn    1..55   nyi
+---- 2025-05-11 21:58:05
+A345140	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a(d)).+(n - 1)	nonn    1..55   nyi
+A347028	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> self.a((n - 1)/k)).negate()	sign    1..65   nyi
+---- 2025-05-11 22:06:01
+A293636	multia	1	"1,1"	(self, n) -> SD(n - 1, i -> self.a(i)).+(SD(n - 2, j -> self.a(j)))	nonn    1..40   nyi
+A332510	multia	1	""	(self, n) -> SU(1, n, k -> F008836(n/k))	, where lambda = F008836. nonn    1..85   nyi
+A333613	multia	1	"1"	(self, n) -> SU(1, n, k -> self.a(k/Functions.GCD.i(n, k)))	nonn    1..3930 nyi
+A336427	multia	0	"0"	(self, n) -> ZV(1).+(SU(1, n - 1, k -> BI(n,k).^(3).*(k).*(self.a(k))./(n)))	nonn    0..14   nyi
+A337590	multia	0	"0"	(self, n) -> ZV(n).-(SU(1, n - 1, k -> BI(n,k).^(2).*(n - k).*(k).*(self.a(k))./(n)))	sign    0..19   nyi
+A337824	multia	0	"0"	(self, n) -> ZV(n).^(2).-(SU(1, n - 1, k -> (BI(n,k).*(n - k)).^(2).*(k).*(self.a(k))./(n)))	sign    0..257  nyi
+---- 2025-05-11 22:30:39
+A307607	multia	1	""	(self, n) -> SD(n, d -> d > 1 ? self.a(n/d).*(ZV(d).^(2)) : ZV(0)).+(1)	1 + Sum_{d|n, d > 1} d.^(2)*a(n/d).
+A308463	multia	1	""	(self, n) -> SU(1, n, k -> Functions.GCD.i(n, k) == 1 ? S2(n, k) : ZV(0))	nonn    1..25   nyi
+A333046	multia	1	"1"	(self, n) -> SD(n, d -> d < n && Functions.GCD.i(n/d, d) == 1 ? self.a(d)./(d) : ZV(0)).*(n)	n * Sum_{d|n, d < n, gcd(d, n/d) = 1} self.a(d) / d)	nonn    1..65   nyi
+A335283	multia	1	""	(self, n) -> SD(n, d -> ((n/d) & 1) == 1 && d < n ? self.a(d) : ZV(0)).+(1)	1 + Sum_{d|n, n/d odd, d < n} self.a(d))	nonn    1..20000        nyi
+A343390	multia	1	""	(self, n) -> PD(n, d -> d < n ? self.a(d) : ZV(1)).+(1)	1 + Product_{d|n, d < n} self.a(d))	nonn    1..959  nyi
+A349785	multia	1	""	(self, n) -> PR(1, n - 1, k -> self.a(Functions.GCD.i(n, k))).+(1)	1 + Product_{k=1..n-1} a(gcd(n,k)))	nonn    1..27   nyi
+---- 2025-05-11 22:37:19
+A080163	lambdan	1	n -> SU(0, n, i -> BI(n, i).*(D000629(n + i)))./(8)	a(n) = (1/8)*Sum_{i=0..n} C(n, i)*A000629(n+i).
+A320354	arrlamb	0	0	0	-1	(n,k) -> PR(1, n, j -> ZV(k + 1).^(j).-(1))	Product_{j=1..n} (k^j - 1))	nonn,tabl       0..54   nyi
+A322082	arrlamb	1	1	1	-1	(n,k) -> SD(n, d -> ((n/d) & 1) == 1 ? ZV(d).^(k - 1) : ZV(0))	odd} d^k)	nonn,tabl       1..1275 nyi
+A322084	arrlamb	1	1	1	-1	(n,k) -> SD(n, d -> (n/d)%4 == 1 ? ZV(d).^(k - 1) : ZV(0)).-(SD(n, d -> (n/d)%4 == 3 ? ZV(d).^(k - 1) : ZV(0)))
+A322143	arrlamb	1	1	1	-1	(n,k) -> SD(n, d -> d%4 == 1 ? ZV(d).^(k - 1) : ZV(0)).-(SD(n, d -> d%4 == 3 ? ZV(d).^(k - 1) : ZV(0)))	=1 (mod 4)} d^k - Sum_{d|n, d==3 (mod 4)} d^k. sign,tabl       1..78   nyi
+A340837	sintrif	0	(term, n) -> n == 0 ? ZV(1) : term.*(2)	""	new PrependSequence(0, new A080163(), 0)
+A380318	partprod	0	new PrependSequence(0, new A001597(), 1)	Product of the first n perfect powers (J001597))	nonn    0..20   nyi
+---- 2025-05-11 22:43:14
+A099218	decexp	0	() -> CrFunctions.POLYLOG.cr(4, CR.HALF)	((\d+),(\d+)/(\d+))	4,1,2
+A099219	decexp	0	() -> CrFunctions.POLYLOG.cr(5, CR.HALF)	((\d+),(\d+)/(\d+))	5,1,2
+A099220	decexp	0	() -> CrFunctions.POLYLOG.cr(6, CR.HALF)	((\d+),(\d+)/(\d+))	6,1,2
+A099221	decexp	0	() -> CrFunctions.POLYLOG.cr(7, CR.HALF)	((\d+),(\d+)/(\d+))	7,1,2
+A099222	decexp	0	() -> CrFunctions.POLYLOG.cr(8, CR.HALF)	((\d+),(\d+)/(\d+))	8,1,2
+A099223	decexp	0	() -> CrFunctions.POLYLOG.cr(9, CR.HALF)	((\d+),(\d+)/(\d+))	9,1,2
+A099224	decexp	0	() -> CrFunctions.POLYLOG.cr(10, CR.HALF)	((\d+),(\d+)/(\d+))	10,1,2
+A126778	lambdan	2	n -> SU(0, 2, k -> Z_1(k).*(BI(2, k)).*(ZV(n - k).^(n)))	a(n)=n^n-2*(n-1)^n+(n-2)^n (n=2,3,...)	2 fixed elements.	nonn	2..19	nyi	Aleksandar M. Janjic and _Milan Janjic_
+A126779	lambdan	3	n -> SU(0, 3, k -> Z_1(k).*(BI(3, k)).*(ZV(n - k).^(n)))	a(n)=n^n-3*(n-1)^n+3*(n-2)^n-(n-3)^n, (n=3,4,...)nyi Fpt	Number of functions f:{1,2,...,n}->{1,2,...,n} such that Im(f) contains 3 fixed elements.	nonn	3..386	nyi	Aleksandar M. Janjic and _Milan Janjic_
+A126780	lambdan	4	n -> SU(0, 4, k -> Z_1(k).*(BI(4, k)).*(ZV(n - k).^(n)))	a(n)=n^n-4*(n-1)^n+6*(n-2)^n-4*(n-3)^n+(n-4)^n, (n=4,5,...)nyi Fpt	Number of functions f:{1,2,...,n}->{1,2,...,n} such that Im(f) contains 4 fixed elements.	nonn	4..18	nyi	Aleksandar M. Janjic and _Milan Janjic_
+A126781	lambdan	6	n -> SU(0, 6, k -> Z_1(k).*(BI(6, k)).*(ZV(n - k).^(n)))	Drop[Table[Sum[(-1)^k Binomial[6, k] (n-k)^n, {k, 0, 6}], {n, 1, 20}], 5]	a(n)=n^n-6*(n-1)^n+15*(n-2)^n-20*(n-3)^n+15*(n-4)^n-6*(n-5)^n+(n-6)^n, (n=6,7,...)	nyi Fpt	Number of functions f:{1,2,...,n}->{1,2,...,n} such that Im(f) contains 6 fixed elements.	nonn	6..19	nyi
+A153118	filter	1	new A000040()	p -> { final Z pp = p.^(2); return pp.+(18).IPP() && pp.-(18).IPP(); }		p^2 +- 18
+A154821	filter	1	new A000040()	p -> { final Z pp = p.^(2).+(p.^(3)).+(p); return pp.+(2).IPP() && pp.-(2).IPP(); }	p+p^2+p^3-+2 are also prime. nonn    1..1000 nyi     _Vladimir Joseph Stephan Orlovsky_
+A163151	filter	1	new A000040()	p -> { final Z pp = F000041(p); return pp.+(p).IPP(); }	F000041(p)+p are also prime numbers. nonn    1..31   nyi     _Vladimir Joseph Stephan Orlovsky_
+A174357	filter	1	new A000040()	p -> { final Z pp = p.^(2).*(2); return pp.+(9).IPP() && pp.-(9).IPP(); }		2*p^2+-9
+A174360	filter	1	new A000040()	p -> { final Z pp = p.^(2).*(2); return pp.+(15).IPP() && pp.-(15).IPP(); }		2*p^2-+15
+A174361	filter	1	new A000040()	p -> { final Z pp = p.^(2).*(2); return pp.+(21).IPP() && pp.-(21).IPP(); }		2*p^2-+21
+A174362	filter	1	new A000040()	p -> { final Z pp = p.^(2).*(2); return pp.+(39).IPP() && pp.-(39).IPP(); }		2*p^2-+39
+A174363	filter	1	new A000040()	p -> { final Z pp = p.^(3).*(2); return pp.+(3).IPP() && pp.-(3).IPP(); }		2*p^3-+ 3
+A174364	filter	1	new A000040()	p -> { final Z pp = p.^(3).*(2); return pp.+(15).IPP() && pp.-(15).IPP(); }		2*p^3-+15
+A174365	filter	1	new A000040()	p -> { final Z pp = p.^(4).*(2); return pp.+(9).IPP() && pp.-(9).IPP(); }		2*p^4+-9
+A174366	filter	1	new A000040()	p -> { final Z pp = p.^(4).*(2); return pp.+(15).IPP() && pp.-(15).IPP(); }		2*p^4-+15
+A174367	filter	1	new A000040()	p -> { final Z pp = p.^(4).*(2); return pp.+(21).IPP() && pp.-(21).IPP(); }		2*p^4-+21
+A174368	filter	1	new A000040()	p -> { final Z pp = p.^(5).*(2); return pp.+(3).IPP() && pp.-(3).IPP(); }		2*p^5-+3
+A226938	filter	1	new A000040()	p -> { final Z pp = p.^(4); return pp.+(p).-(1).IPP() && pp.+(p.^(2)).-(1).IPP() && pp.+(p.^(3)).-(1).IPP(); }	p^4 + p - 1, p^4 + p^2 - 1, p^4 + p^3 - 1 are also prime.    nonn    1..2000 nyi     _Vladimir Shevelev_
+A359424	lambdan	0	n -> E359423(n).modZ(60)	n;E359423;60;%	The least common multiple of the arithmetic derivative and the primorial base exp-function, reduced modulo 60.	nyi	proven
+A383260	lambdan	0	n -> SU(1, n, k -> ZV(k).*(ZV(3).^(n-k)).*(S2(n, k)))	""		a(n) = sum(k=1, n, k*3^(n-k)*stirling(n, k, 2))	_	_	_
+A383261	lambdan	0	n -> SU(1, n, k -> ZV(k).*(Z2(k-1)).*(ZV(3).^(n-k)).*(S2(n, k)))	""		a(n) = sum(k=1, n, k*2^(k-1)*3^(n-k)*stirling(n, k, 2))	_	_	_
+A383262	lambdan	0	n -> SU(2, n, k -> ZV(3).^(n-k).*(BI(k, 2)).*(S2(n, k)))	""		a(n) = sum(k=2, n, 3^(n-k)*binomial(k, 2)*stirling(n, k, 2))	_	_	_
+A383280	lambdan	0	n -> (QV(3)./(2)).^(n).*(RU(0, n, k -> QV(FA(2*k)).*(FA(n-k)).*(QV(BI(n, k)).^(2))./(QV(6).^(k)))).num()	""		a(n) = (3/2)^n*sum(k=0, n, (2*k)!*(n-k)!*binomial(n, k)^2/6^k)	_	_	_
+---- 2025-05-11 22:50:28
+A195512	polyx	0	"[[1]]"	",x,exp,A,<1,exp,-,A,^2,<1,exp,+"	0	1	E.g.f. satisfies: A(x) = exp(x) - exp(x*A(x)) + exp(x*A(x)^2).	nonn	0..100	nyi
+A279844	polyx	1	"[[0,1],[0,-1]]"	",p1,x,A,2,*,int,-,rev,3,*,+,2,/"	0	1	A(x) = -x/2 + 3/2 * Series_Reversion(x - Integral 2*A(x) dx).
+A280575	polyx	1	"[[0,1],[0,-1]]"	",p1,x,A,4,*,int,-,rev,5,*,+,4,/"	0	1	A(x) = -x/4 + 5/4 * Series_Reversion(x - Integral 4*A(x) dx)
+A280794	polyz	0	"[[1],[0,0,1]]"	",p1,exp,int,cosh,^2"	0	1	0	2	E.g.f.: cosh( Integral exp(x^2) dx )^2.
+A281427	polyz	1	"[[0,1]]"	",1,A,^2,+,^5/2,int"	0	1	1	2	E.g.f. S(x) satisfies: S(x) = Integral (1 + S(x)^2)^(5/2) dx.
+A281431	polyz	1	"[[0,1]]"	",1,A,^2,+,^3,int"	0	1	1	2	E.g.f. S(x) satisfies: S(x) = Integral (1 + S(x)^2)^3 dx.	nonn
+A281435	polyz	1	"[[0,1]]"	",1,A,^2,+,^7/2,int"	0	1	1	2	E.g.f. S(x) satisfies: S(x) = Integral (1 + S(x)^2)^(7/2) dx.	nonn
+A281439	polyz	1	"[[0,1]]"	",1,A,^2,+,^4,int"	0	1	1	2	E.g.f. S(x) satisfies: S(x) = Integral (1 + S(x)^2)^4 dx.	nonn
+A281443	polyz	1	"[[0,1]]"	",1,A,^2,+,^9/2,int"	0	1	1	2	E.g.f. S(x) satisfies: S(x) = Integral (1 + S(x)^2)^(9/2) dx.	nonn
+A290579	polyx	0	"[[1]]"	",1,A,<1,sin,+,A,<1,cos,/"	0	1
+A300047	polyx	1	"[[0,1],[0,4]]"	",1,p1,sub,2,/,exp,int,+,log"	0	1
+A318003	polyx	1	"[[0,1]]"	",x,sinh,x,cosh,A,^2,*,+"	0	1
+A354020	polyz	1	"[[0,1]]"	",x,neg,x,tanh,*,exp,x,cosh,/,int"	0	1	1	2

@@ -1,0 +1,153 @@
+---- 2025-04-20 21:59:53
+A079271	multrar	0	(self, n) -> self.a(n - 1).*(4).*(ZV(3).^(Z2(n - 1)).-(self.a(n - 1)))	"1"		a(n) = 4 * a(n-1) * (3^(2^(n-1))-a(n-1)) with a(0)=1.
+A079556	multrar	1	(self, n) -> self.a(n - 2).^(self.a(n - 1))	"2,2"
+A094283	lambdan	1	n -> n <= 3 ? ZV(new int[]{1,5,15}[n - 1]) : ZV(45).shiftLeft(n - 4)
+A109522	prepend	0	new A052959()	0
+A109868	holos	1	[0,10,0,-1]	1,2,11,10	0	0
+A110382	lambdan	1	n -> D007088(n).*(10).-(F000120(n))./(9)
+A114744	holos	0	[0,-2,0,0,1]	1,2,3,5,4,6,10	0	0
+A114745	holos	1	[0,-2,0,0,1]	1,3,2,4,6,10	0	0 
+A114746	holos	1	[0,-2,0,0,1]	1,5,2,3,7,8,6,10,14,16,12,4,20,24,36,60	0	0
+A114751	trilambn	1	1	1	(n, k) -> ZV((n&1) == 1 ? n - 1 + k : 2*n - k )
+A114897	multia	1	"1"	(self, n) -> CNT(1, n - 1, k -> PP(self.a(k).+(n - 1)))		. a(n+1) = number of earlier terms a(k) (1 <= k <= n) where a(k)+n is a prime.	nonn,nice	1..2000	nyi	_Leroy Quet_
+A114898	multia	1	"0"	(self, n) -> CNT(1, n - 1, k -> PP(self.a(k).+(n)))		.   a(n) = number of earlier terms a(k) (1 <= k <= n-1) where a(k)+n is a prime.	nonn	1..10000	nyi	_Leroy Quet_
+A114899	multia	1	"0"	(self, n) -> CNT(1, n - 1, k -> PP(self.a(k).+(n - 1)))		. a(n+1) = number of earlier terms a(k) (1 <= k <= n) where a(k)+n is a prime.	nonn	1..10000	nyi	_Leroy Quet_
+A116453	holos	1	[0,2,-1]	5,9	0	0
+A118701	sintrif	1	(term, n) -> D034699(term)	""	new A014574()
+A122698	lambdan	1	n -> n <= 2 ? ZV(1) : (Integer.bitCount(n) == 1 ? F000108(Integer.numberOfTrailingZeros(n) - 1) : ZV(0))
+A124387	sintrif	1	(term, n) -> D007088(term)	""	new A006992()	D007088(J006992(n)).
+A124387	sintrif	1	(term, n) -> D007088(term)	""	new A006992()	D007088(J006992(n)).
+A127524	multia	1	"1"	(self, n) -> SD(n - 1, d -> BI(self.a((n - 1)/d).+(d-1), ZV(d)))
+A127525	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a((n - 1)/d).^(d))
+A153184	filnum	1	1	k -> !PP(3*k - 2)	Numbers n such that 3*n-2 is not prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153185	filnum	1	1	n -> Predicates.SQUARE.is(Functions.DIGIT_SUM.z(n).+(Functions.DIGIT_SUM.z(ZV(n).*(n))).+(Functions.DIGIT_SUM.z(ZV(n).^(3))))	Numbers n such that Q(n) + Q(n^2) + Q(n^3) is a perfect square where Q(n) is the sum of the digits of n.	easy,nonn,base	1..48	nyi	Neven Juric (neven.juric(AT)apis-it.hr), corrected Jul 09 2010
+A153207	filter	1	new SingleTransformSequence(1, (term, n) -> term.*(2).-(1), "", new A000040())	v -> PP(v) && Predicates.SQUARE_FREE.is(v.+(1)./(2).-(1))	2*p-1  p-1 is squarefree.	nonn	1..44	nyi	_Vladimir Joseph Stephan Orlovsky_
+A153208	filter	1	new SingleTransformSequence(1, (term, n) -> term.*(2).-(1), "", new A000040())	v -> PP(v) && !Predicates.SQUARE_FREE.is(v.+(1)./(2).-(1))	2*p-1  p-1 is not squarefree.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A153209	filter	1	new SingleTransformSequence(1, (term, n) -> term.*(2).+(1), "", new A000040())	v -> PP(v) && Predicates.SQUARE_FREE.is(v.-(1)./(2).+(1))	2*p+1  p+1 is squarefree.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A153210	filter	1	new SingleTransformSequence(1, (term, n) -> term.*(2).+(1), "", new A000040())	v -> PP(v) && !Predicates.SQUARE_FREE.is(v.-(1)./(2).+(1))	2*p+1  p+1 is not squarefree.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A153213	filter	1	new A000040()	p -> p.equals(Z.TWO) || !Predicates.SQUARE_FREE.is(p.-(2)) && !Predicates.SQUARE_FREE.is(p.+(2))	Primes p such that both p-2 and p+2 are not squarefree.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A153214	filter	1	new A153213()	p -> !Predicates.SQUARE_FREE.is(p.-(3)) && !Predicates.SQUARE_FREE.is(p.+(3))	Primes p such that p+-2 and p+-3 are not squarefree.	nonn	1..35	nyi	_Vladimir Joseph Stephan Orlovsky_
+A153215	filter	1	new A153213()	p -> !Predicates.SQUARE_FREE.is(p.-(1)) && !Predicates.SQUARE_FREE.is(p.+(1))	Primes p such that none of p-2, p-1, p+1, and p+2 is squarefree.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A153261	filter	1	new A000040()	p -> !PP(p.*(3).-(2))	Primes p such that 3*p-2 is not prime.	nonn	1..55	nyi	_Vladimir Joseph Stephan Orlovsky_
+A153270	trilambn	0	0	0	(n, k) -> k == 0 ? ZV(3) : PR(0, k, j -> ZV(n).*(j).+(3))	Product_{j=0..k} (j*n + prime(m)), with T(n, 0) = prime(m) and m = 2, read by rows.	nonn,tabl	0..100	nyi	_Roger L. Bagula_
+A153271	trilambn	0	0	0	(n, k) -> k == 0 ? ZV(5) : PR(0, k, j -> ZV(n).*(j).+(5))	Product_{j=0..k} (j*n + prime(m)), with T(n, 0) = prime(m) and m = 3, read by rows.	nonn,tabl	0..100	nyi	_Roger L. Bagula_
+A153272	trilambn	0	0	0	(n, k) -> k == 0 ? ZV(7) : PR(0, k, j -> ZV(n).*(j).+(7))	Product_{j=0..k} (j*n + prime(m)), with T(n, 0) = prime(m) and m = 4, read by rows.	nonn,tabl	0..100	nyi	_Roger L. Bagula_
+A153273	trilambn	2	2	2	(n, k) -> PR(0, k - 2, i -> ZV(n).*(i + 1).-(1))	Product_{i=0..k-2} (i*n + n - 1).	nonn,tabl,easy	2..100	nyi	_Roger L. Bagula_
+A153276	filnum	1	0	k -> !PP(5*k + 6)	Numbers n >= 0 such that 5*n+6 is not prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153319	filter	1	new A000040()	p -> !PP(p.*(6).-(7))	Primes p such that 6*p-7 is not prime.	nonn	1..2000	nyi	_Vladimir Joseph Stephan Orlovsky_, Jan 02 2009
+A153320	filter	1	new A000040()	p -> { final Z pp = p.^(2); return PP(pp.-(48).abs()) && PP(pp.+(48)); }
+A153321	filter	1	new A000040()	p -> { final Z pp = p.^(2); return PP(pp.-(60).abs()) && PP(pp.+(60)); }
+A153323	filter	1	new A000040()	p -> { final Z pp = p.^(3); return PP(pp.-(24)) && PP(pp.+(24)); }
+A153325	filter	1	new A000040()	p -> { final Z pp = p.^(3); return PP(pp.-(30)) && PP(pp.+(30)); }
+A153326	filter	1	new A002808()	v -> CND(v.longValueExact(), d -> d > 1 && ZV(d).compareTo(v) < 0 && PP(v.+(1 + d))).equals(Functions.SIGMA0.z(v).-(2))	Composite numbers k such that k+1+d is prime for all nontrivial divisors d which divide k.	easy,nonn	1..10000	nyi	_J. M. Bergot_
+A153347	filnum	1	1	k -> !PP(7*k - 4)	Numbers n>0 such that 7*n-4 is not prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153350	filnum	1	1	k -> !PP(7*k + 11)	Numbers n such that 7n+11 is not prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153352	filter	1	new A000040()	p -> { final int k = Functions.DIGIT_LENGTH.i(2, p); return CNT(0, k - 1, i -> { final Z i2 = Z2(i); return !PP(p.-(i2)) & !PP(p.+(i2)); }).equals(ZV(k)); }	K-bit primes p such that p-2^i and p+2^i are composite for 0<=i<=K-1.	nonn,base	1..10000	nyi	_Charles R Greathouse IV_
+A153427	filnum	1	1	k -> PHI(k).equals(Functions.DIGIT_PRODUCT.z(k).^(2))	Numbers n such that phi(n)=p^2, where p is product of digits of n.	base,nonn	1..649	nyi	_Farideh Firoozbakht_
+A153428	filnum	1	1	k -> PHI(k).equals(Functions.DIGIT_PRODUCT.z(k).^(3))	Numbers n such that phi(n) = p^3, where p is product of digits of n.	base,nonn	1..404	nyi	_Farideh Firoozbakht_
+A153503	filter	0	new A000040()	p -> PP(ZV(2).^(p.-(1)).+(3))	Primes p such that 2^(p-1)+3 is prime.	nonn,more,hard	1..17	nyi	_Vincenzo Librandi_
+A153504	filnum	1	1	k -> PP(ZV(k).^(8).+(ZV(k + 1).^(8)))	Numbers n such that n^8+(n+1)^8 is a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A154703	lambdan	1	n -> CONC(1, n, i -> D007088(PM(i)))	CONCATENATE[i=1..n] J004676(i) = CONCATENATE[i=1..n] D007088(F000040(i)).
+A182620	sintrif	1	(term, n) -> D007088(term)	""	new A027750()	T(n,k) = D007088(J027750(n,k)).
+A182620	sintrif	1	(term, n) -> D007088(term)	""	new A027750()	T(n,k) = D007088(J027750(n,k)).
+A197953	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 ? ZV(0) : self.a(n/d).*(d)).+(1)
+A214833	multia	1	"1"	(self, n) -> SU(1, n - 1, i -> self.a(i).*(self.a(n - i))).+(SD(n, d -> 1 < d && d < n ? self.a(d).*(self.a(n/d)) : ZV(0)))
+A220655	lambdan	1	n -> E220656(n).-(1)
+A268983	filnum	1	1	k -> RD(k, d -> new Q(SIGMA(k/d).^(d), ZV(d))).isInteger()	Numbers n such that SD(n, d -> } sigma(n/d)^d/d is an integer, where sigma is F000203.
+A275750	filter	1	new LambdaSequence(1, k -> Z2(2*k).-(27))	PRIME	Prime numbers of the form 4^k - 27.
+A282184	multrar	0	(self, n) -> D034699(self.a(n - 1).+(self.a(n - 2)).+(self.a(n - 3)))	"1,1,1"		with a(0) = a(1) = a(2) = 1.
+A289078	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 ? ZV(0) : BI(self.a(n/d).+(d - 1), ZV(d))).+(1)
+A289079	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 ? ZV(0) : BI(self.a(n/d).+(d - 1), ZV(d)))
+A295583	multia	1	"1"	(self, n) -> RD(n - 1, d -> new Q(FA(n - 1), FA(d).*(FA((n - 1)/d))).*(Z2(d)).*(self.a((n - 1)/d))).num()	SD (n!/(d!*(n/d)!))*2^d*a(n/d).
+A300647	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 || (d&1) == 0 ? ZV(0) : self.a(n/d).^(d)).+(1)	where the sum is over odd divisors of n greater than 1.
+A300648	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 || (d&1) == 0 ? ZV(0) : BI(self.a(n/d).+(d - 1), ZV(d))).+(1)	where the sum is over odd divisors of n greater than 1.
+A303759	ordtraf	1	new A034699()		v303759 = ordinal_transform(vector(up_to,n,J034699(n)));
+A305572	multia	1	"1"	(self, n) -> Z_1(n-1).+(SD(n, d -> d <= 1 ? ZV(0) : self.a(n/d).^(d)))
+A305610	multia	1	"1"	(self, n) -> Z_1(n-1).+(SD(n, d -> d <= 1 ? ZV(0) : BI(self.a(n/d).intValueExact() + d - 1, d)))
+A307607	multia	1	"1"	(self, n) -> SD(n, d -> d <= 1 ? ZV(0) : self.a(n/d).*(d).*(d)).+(1)
+A307992	multia	1	"1,1"	(self, n) -> SD(n - 2, d -> self.a((n - 2)/d).*(d))
+A322142	multrar	0	(self,n) -> Z.TWO.^(self.a(n - 1).+(self.a(n - 2)))	"0,1"	Powernacci numbers: a(n) = 2^(a(n-1) + a(n-2))
+A325303	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))).negate()
+A339544	filter	1	new A000040()	p -> PP(D007088(p).mod(p))
+A339566	filter	0	new A000040()	p -> D007088(p).mod(p).equals(Z.ONE)
+A339567	filnum	0	1	k -> k == 1 || D007088(k).mod(k) == 1
+A340051	lambdan	0	n -> D007088(n/3).*(10).+(n%3)
+A340051	lambdan	0	n -> D007088(n/3).*(10).+(n%3)
+A341658	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(2).-(1)) == 32	Primes p such that p^2 - 1 has 32  divisors.
+A341659	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(3).-(1)) == 8	Primes p such that p^3 - 1 has 8   divisors.
+A341662	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(4).-(1)) == 160	Primes p such that p^4 - 1 has 160 divisors.
+A341665	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(5).-(1)) == 8	Primes p such that p^5 - 1 has 8   divisors.
+A341666	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(6).-(1)) == 384	Primes p such that p^6 - 1 has 384 divisors.
+A341669	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(7).-(1)) == 8	Primes p such that p^7 - 1 has 8 divisors.	nonn	1..38	nyi	_Jon E. Schoenfield_
+A341697	multia	1	"1,1"	(self, n) -> SD(n - 1, d -> d < n - 1 ? self.a((n - 1)/d).*(self.a(d)) : ZV(0))
+A341698	multia	1	"1,1"	(self, n) -> SD(n - 1, d -> d < n - 1 ? self.a((n - 1)/d).*(self.a(d)) : ZV(0)).negate()
+A342064	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(8).-(1)) == 384	Primes p such that p^8 - 1 has 384 divisors.
+A342065	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(9).-(1)) == 16  	Primes p such that p^9 - 1 has 16   divisors.  
+A342066	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(10).-(1)) == 256	Primes p such that p^10 - 1 has 256 divisors.
+A342067	filter	1	new A000040()	p -> Functions.SIGMA.i(0, p.^(11).-(1)) == 8	Primes p such that p^11 - 1 has 8   divisors.
+A343446	holos	0	[[0],[-3640,4656,-1920,256],[0],[0],[-1]]	-1,1,4	0	0	4*(4*n-7)*(4*n-10)*(4*n-13)*a(n-3)
+A345952	lambdan	1	n -> D034699(n).compareTo(F006530(n)) > 0 ? ZV(1) : ZV(0)	, 0 otherwise.
+A354837	filnum	1	1	k -> (k&1) == 1 && !GCD(ZV(k), D007088(k)).equals(Z.ONE)
+A355300	multia	0	"0"	(self, n) -> self.a(D007088(n).modZ(n).intValueExact()).+(1)		a(0) = 0; for n >= 1, a(n) = a(D007088(n) mod n) + 1.
+A360372	filnum	0	1	k -> SU(1, k, i -> D007088(i)).mod(k) == 0
+A361543	sintrif	0	(term, n) -> term.*(3*n + 1)	""	new A361310()	(3*n+1)*J361310(n+1)	3;n;*;1;+;n;1;+;J361310;*	proven
+A362884	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 2)).*(self.a(n - 3)).+(64)./(self.a(n - 4).*(4))	"2,16,2,2"		(a(n-1)*a(n-2)*a(n-3)+64)/(4*a(n-4))	2;16;2;2;n;1;sub;a;n;2;sub;a;*;n;3;sub;a;*;64;+;4;n;4;sub;a;*;/	proven
+A367360	lambdan	0	n -> ZV(n).*(n).mod(Z.TEN).*(10).+(Functions.LEADING_DIGIT.z(ZV(n + 1).*(n+1)))	Comma transform of squares.
+A367361	lambdan	0	n -> Z2(n).mod(Z.TEN).*(10).+(Functions.LEADING_DIGIT.z(Z2(n + 1)))	Comma transform of powers of 2.
+A367556	lambdan	0	n -> FI(n).mod(Z.TEN).*(10).+(Functions.LEADING_DIGIT.z(FI(n + 1)))		Comma transform of the Fibonacci numbers.
+A367610	lambdan	1	n -> E367362(n - 1).mod(Z.TEN).*(10).+(Functions.LEADING_DIGIT.z(E367362(n)))		Comma transform of E367362.
+A368359	lambdan	0	n -> F000108(n).mod(Z.TEN).*(10).+(Functions.LEADING_DIGIT.z(F000108(n + 1)))		Comma transform of Catalan numbers.
+A368360	lambdan	0	n -> ZV(2*n).mod(Z.TEN).*(10).+(Functions.LEADING_DIGIT.z(2*n + 2))		Comma transform of the even numbers.
+A368361	lambdan	0	n -> ZV(2*n + 1).mod(Z.TEN).*(10).+(Functions.LEADING_DIGIT.z(2*n + 3))		Comma transform of the odd numbers.
+A371301	holos	0	[0,-2,-1,4,-1]	1,3,10	0	0	add sign.
+A372960	lambdan	1	n -> D037916(2*n - 1)	2;n;*;1;+;J037916	proven
+A374908	multrar	0	(self, n) -> self.a(n - 1).+(D006942(self.a(n - 1)))	"0"		0;n;1;sub;a;n;1;sub;a;D006942;+	proven
+A376951	holos	0	[[0,0,0,0,-6561,0,13851,0,-12393,0,6075,0,-1755,0,297,0,-27,0,1],[-1]]	0	0	0
+A378473	holos	0	[[0,0,0,0,8,0,12,0,8,0,0,0,16,0,0,0,3,0,0,0,0,0,0,0,1],[-48]]	0	0	0	-48*a(n)  + (n^24 + 3*n^16 + 16*n^12 + 8*n^8 + 12*n^6 + 8*n^4)	The number of n-colorings of the vertices of the truncated octahedron up to rotation and reflection.	nonn	0..13
+A378474	holos	0	[[0,0,0,0,0,0,0,0,8,0,0,0,12,0,0,0,8,0,0,0,0,0,0,0,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[-48]]	0	0	0	-48*a(n)  + (n^48 + 19*n^24 + 8*n^16 + 12*n^12 + 8*n^8)	.	The number of n-colorings of the vertices of the truncated cuboctahedron up to rotation and reflection.	nonn,easy
+A378475	holos	0	[[0,0,0,0,0,0,6,0,8,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,1],[-24]]	0	0	0	-24*a(n)  + (n^24 + 9*n^12 + 8*n^8 + 6*n^6)	.	The number of n-colorings of the vertices of the snub cube up to rotation.	nonn
+A378476	holos	0	[[0,0,0,0,0,0,24,0,0,0,20,0,24,0,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,16,0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[-120]]	0	0	0	-120*a(n) + (n^60 + 15*n^32 + 16*n^30 + 20*n^20 + 24*n^12 + 20*n^10 + 24*n^6)	.	The number of n-colorings of the vertices of the truncated dodecahedron up to rotation and reflection.	nonn,easy
+A378477	holos	0	[[0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,20,0,0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[-120]]	0	0	0	-120*a(n) + (n^120 + 31*n^60 + 20*n^40 + 24*n^24 + 20*n^20 + 24*n^12)	.	The number of n-colorings of the vertices of the truncated icosidodecahedron up to rotation and reflection.	nonn
+A378478	holos	0	[[0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],[-60]]	0	0	0	-60*a(n)  + (n^60 + 15*n^30 + 20*n^20 + 24*n^12)	.	The number of n-colorings of the vertices of the snub dodecahedron up to rotation.	nonn
+A378943	holos	1	[0,-1,-1,0,2,1,-1]	2,3	0	0	seqmach
+A379779	filnum	1	1	k -> D007088(k).mod(D007088(F007953(k))).isZero()
+A380001	holos	0	[0,-8,9,-1]	0,1,13	0	0
+A380149	holos	0	[[0,0,0,0,0,0,-4096,0,4352,0,-1792,0,352,0,-32,0,1],[-1]]	0	0	0	a(n) = -4096*n^6 + 4352*n^8 - 1792*n^10 + 352*n^12 - 32*n^14 + n^16.
+A382252	trilambn	0	0	0	(n,k) -> new Q(n + k, n*k + 1).num()	= numerator   of (n+k)/(1+n*k), 0 <= k <= n >= 0, read by rows.	nonn,tabl,frac,new	0..90	nyi	_M. F. Hasler_
+A382253	trilambn	0	0	0	(n,k) -> new Q(n + k, n*k + 1).den()	= denominator of (n+k)/(1+n*k), 0 <= k <= n >= 0, read by rows.	nonn,tabl,frac,new	0..66	nyi	_M. F. Hasler_
+A382314	poly	0	"[[1],[1,-1],[0,2],[0,0,1],[0,0,0,1]]"	",1,p1,/,p2,p3,sub,*,+,p4,sub,<2,3,*,+"	G.f. satisfies A(x) = 1/(1-x) + 2*x*A(x^2) + 3*x^2*A(x^3).	nonn,new	0..1030	nyi	_Paul D. Hanna_
+A382641	holos	0	[0,1,0,1,-1]	1,1,2,3,5,7,10,15,21	0	0	a(n) = round(c^n), where c is the supergolden ratio X092526.	nonn,easy,new	0..43	nyi
+A382644	holos	0	[[0],[-2,1],[3,-1],[3,-1],[1,1],[-1]]	1,0,0,0,2	0	0	a(n) = (n+1)*a(n-1) - (n-3)*(a(n-2)+a(n-3)) + (n-2)*a(n-4) for n>=4.
+A382869	filnum	1	1	k -> Predicates.FIBONACCI.is(D018804(k))	Numbers k >= 1 such that D018804(k) is a Fibonacci number (F000045).	nonn,more,new	1..14	nyi	_Ctibor O. Zizka_
+A382872	lambdan	1	n -> Functions.TAU.z(D018804(n))	For n >= 1, a(n) is the number of divisors (F000005) of the Pillais arithmetical function: Sum_{k=1..n} gcd(k, n) (D018804).	nonn,new	1..80	nyi	_Ctibor O. Zizka_
+A382910	lambdan	0	n -> D003266(n).^(2)
+A383044	filnum	1	1	k -> { final Z phim = PHI(k); return phim.+(PHI(phim.+(k))).equals(ZV(k)); }	Numbers m such that phi(m) + phi(m+phi(m)) = m where phi is the Euler totient function.	nonn,new	1..58	nyi	_Michel Marcus_
+A383045	filnum	1	0	k -> Predicates.FIBONACCI.is(Functions.DIGIT_SUM.z(FI(k)))	Integers k for which the sum of digits of Fibonacci(k) is a Fibonacci number.	nonn,base,more,new	1..39	nyi	_Michel Marcus_
+A383050	lambdan	0	n -> SU(0, n, k -> ZV(k + 1).^(6).*(S1(n, k)))	a(n) = Sum_{k=0..n} (k+1)^6 * Stirling1(n,k).
+A383051	lambdan	0	n -> SU(0, n, k -> ZV(k+1).^(n).*(S1(n, k)))	""		a(n) = sum(k=0, n, (k+1)^n*stirling(n, k, 1))
+A383052	lambdan	0	n -> SU(0, n, k -> ZV(k + 1).^(3).*(S2(n, k)))	a(n) = Sum_{k=0..n} (k+1)^3 * Stirling2(n,k).
+A383053	lambdan	0	n -> SU(0, n, k -> ZV(k + 1).^(4).*(S2(n, k)))	a(n) = Sum_{k=0..n} (k+1)^4 * Stirling2(n,k).
+A383054	lambdan	0	n -> SU(0, n, k -> ZV(k + 1).^(5).*(S2(n, k)))	a(n) = Sum_{k=0..n} (k+1)^5 * Stirling2(n,k).
+A383080	filnum	1	1	k -> { final Z sopfK = Functions.SOPF.z(k); return !sopfK.isZero() && !Functions.SOPFR.z(k).mod(sopfK).isZero(); }	Numbers k such that sopf(k) does not divide evenly sopfr(k).	nonn,new	1..59	nyi	_Torlach Rush_
+A383118	lambdan	0	n -> SU(0, n, k -> Z_1(n-k).*(BI(n,k)).*(BI(3*k,k)))
+A383119	lambdan	0	n -> SU(0, n, k -> Z_1(n-k).*(BI(n,k)).*(BI(4*k,k)))
+A383120	lambdan	0	n -> SU(0, n, k -> BI(n,k).*(BI(n*k, k)))
+A383121	lambdan	0	n -> SU(0, n, k -> Z_1(n-k).*(BI(n,k)).*(BI(n*k,k)))
+A383132	lambdan	0	n -> SU(0, n, k -> BI(n,k).*(BI(n*k, k)).*(ZV(n).^(k)))
+A383133	lambdan	0	n -> SU(0, n, k -> Z_1(n-k).*(BI(n,k)).*(BI(n*k,k)).*(ZV(n).^(k)))
+A383136	lambdan	0	n -> SU(0, n, k -> ZV(k).^(2).*(Z2(n-k)).*(BI(n,k)))
+A383137	lambdan	0	n -> SU(0, n, k -> ZV(k).^(3).*(Z2(n-k)).*(BI(n,k)))
+A383138	lambdan	0	n -> SU(0, n, k -> ZV(k).^(4).*(Z2(n-k)).*(BI(n,k)))
+A383139	lambdan	0	n -> SU(0, n, k -> ZV(k).^(5).*(Z2(n-k)).*(BI(n,k)))
+A383150	lambdan	0	n -> SU(0, n, k -> ZV(k).^(3).*(Z_1(k)).*(ZV(3).^(n-k)).*(BI(n,k)))
+A383151	lambdan	0	n -> SU(0, n, k -> ZV(k).^(4).*(Z_1(k)).*(ZV(3).^(n-k)).*(BI(n,k)))
+A383152	lambdan	0	n -> SU(0, n, k -> ZV(k).^(5).*(Z_1(k)).*(ZV(3).^(n-k)).*(BI(n,k)))
+A383155	lambdan	0	n -> SU(0, n, k -> ZV(k).^(6).*(Z_1(k)).*(ZV(3).^(n-k)).*(BI(n,k)))
+A383163	polyx	0	"[[1],[0,2]]"	",1,p1,exp,1,-,2,/,-,log,^2,2,/"	0	1	log(1 - (exp(2*x) - 1)/2)^2 / 2
+A383164	polyx	0	"[[1],[0,2]]"	",1,p1,exp,1,-,2,/,-,log,^3,6,/,neg"	0	1	-log(1 - (exp(2*x) - 1)/2)^3 / 6
+A383165	polyx	0	"[[1],[0,2]]"	",1,p1,exp,1,-,2,/,+,log,^2,2,/"	0	1	log(1 + (exp(2*x) - 1)/2)^2 / 2
+A383166	polyx	0	"[[1],[0,2]]"	",1,p1,exp,1,-,2,/,+,log,^3,6,/"	0	1	log(1 + (exp(2*x) - 1)/2)^3 / 6
+A383170	polyx	0	"[[1],[1,-2]]"	",1,p1,log,2,/,+,log,neg"	0	1	-log(1 + log(1 - 2*x)/2).	nonn,new	0..20	nyi
+A383171	polyx	0	"[[1],[1,-2]]"	",1,p1,log,2,/,+,log,^2,2,/"	0	1	log(1 + log(1 - 2*x)/2)^2 / 2.	nonn,new	0..19	nyi
+A383172	polyx	0	"[[1],[1,-2]]"	",1,p1,log,2,/,+,log,^3,6,/,neg"	0	1	-log(1 + log(1 - 2*x)/2)^3 / 6.	nonn,new	0..19	nyi
+ 

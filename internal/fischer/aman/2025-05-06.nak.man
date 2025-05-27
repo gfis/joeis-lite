@@ -1,0 +1,23 @@
+---- 2025-05-08 11:24:09
+A101450	filter	0	new A009112()	v -> Predicates.PALINDROME.is(10, v)
+A112445	filter	0	new A001567()	v -> Functions.BIG_OMEGA.i(v) == 7
+A112446	filter	0	new A001567()	v -> Functions.BIG_OMEGA.i(v) == 8
+A112452	filter	0	new A001262()	v -> Functions.BIG_OMEGA.i(v) == 5
+A112453	filter	0	new A001262()	v -> Functions.BIG_OMEGA.i(v) == 6
+A113639	filter	0	new A171102()	v -> Predicates.STRONG_PSEUDOPRIME.is(2, v)
+A113640	filter	0	new A050289()	v -> Predicates.STRONG_PSEUDOPRIME.is(2, v)
+A123322	filter	0	new A005117()	v -> Functions.BIG_OMEGA.i(v) == 8
+A215568	filter	0	new A020231()	v -> Predicates.STRONG_PSEUDOPRIME.is(2, v)
+A259376	filter	0	new A029953()	v -> Predicates.PALINDROME.is(3, v)
+A276142	filter	0	new A005349()	v -> Predicates.PALINDROME.is(10, v)
+A281222	filter	0	new A005117()	v -> Functions.BIG_OMEGA.i(v) == 10
+A334583	filter	0	new A045939()	v -> Functions.BIG_OMEGA.i(v) == 8
+A334822	filter	0	new A229549()	v -> Predicates.PALINDROME.is(10, v)
+A349028	filter	0	new A006972()	v -> Functions.BIG_OMEGA.i(v) == 9
+A349029	filter	0	new A006972()	v -> Functions.BIG_OMEGA.i(v) == 10
+A349030	filter	0	new A006972()	v -> Functions.BIG_OMEGA.i(v) == 11
+A353704	filter	0	new A157037()	v -> Predicates.REPDIGIT.is(10, v)
+A376255	filter	0	new A008585()	v -> Predicates.STRONG_PSEUDOPRIME.is(2, v)
+A376304	filter	0	new A013929()	v -> Predicates.STRONG_PSEUDOPRIME.is(2, v)
+A378088	filter	0	new A005114()	v -> Predicates.REPDIGIT.is(10, v)
+A381046	filter	0	new A007770()	v -> Predicates.REPDIGIT.is(10, v)

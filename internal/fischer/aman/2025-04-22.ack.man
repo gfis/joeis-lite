@@ -1,0 +1,123 @@
+---- 2025-04-22 21:40:19
+A081862	lambdan	1	n -> Functions.SIGMA.z(7, 2*n - 1).-(Functions.SIGMA.z(1, 2*n - 1))./(168)	(1/168)*(sigma_7(2n-1)-sigma_1(2n-1)).	nonn	1..24	nyi	_Benoit Cloitre_
+A081868	filnum	1	1	k -> !SU(1, k, j -> BI(2*j, j).modZ(3)).testBit(0)	Numbers k such that Sum_{j=1..k} (binomial(2*j,j) mod 3) is even.	nonn	1..10000	nyi	_Benoit Cloitre_
+A081869	multia	1	"2"	(self, n) -> { final Z a2 = self.a(n - 1).*(2).-(1); return !PP(a2) ? a2 : self.a(n - 1).+(1); }	2*a(n-1)-1 if that number is composite, a(n)=a(n-1)+1 otherwise.	nonn	1..39	nyi	_Benoit Cloitre_
+A081870	multia	0	"1"	(self, n) -> { final Z a2 = self.a(n - 1).*(2).+(1); return !Predicates.SQUARE_FREE.is(a2) ? a2 : self.a(n - 1).+(1); }	2*a(n-1)+1 if that number is not squarefree, a(n)=a(n-1)+1 otherwise.	nonn	1..750	nyi	_Benoit Cloitre_
+A081871	multia	1	"1"	(self, n) -> { final Z a2 = self.a(n - 1).*(2).+(1); return !PP(a2) ? a2 : self.a(n - 1).+(1); }	2*a(n-1)+1 if that number is composite, a(n)=a(n-1)+1 otherwise.	nonn	1..41	nyi	_Benoit Cloitre_
+A082092	filnum	1	1	k -> !PP(k) && TAU(k).compareTo(TAU(SIGMA(k))) < 0	Composite k such that d(k) < d(sigma(k)), i.e., F000005(k) < F000005(F000203(k)).	nonn	1..10000	nyi	_Labos Elemer_
+A082096	multia	0	"1,1"	(self, n) -> PM(self.a(n - 2).+(self.a(n - 1)))	A 2nd order recursion: a(1)=a(2)=1; a(n) = prime(a(n-2)+a(n-1))
+A082105	arrlamb	0	0	0	+1	(n, k) -> ZV(k*n).^(2).+(4*(k*n) + 1)
+A082130	filnum	1	1	k -> Predicates.SEMIPRIME.is(2*k - 1) && Predicates.SEMIPRIME.is(2*k + 1)	Numbers k such that 2*k-1 and 2*k+1 are semiprimes.	nonn	1..10000	nyi	_Hugo Pfoertner_
+A082282	multia	1	"2"	(self, n) -> Functions.NEXT_PRIME.z(self.a(n - 1).*(n))		a(1) = 2, a(n) is the smallest prime > n*a(n-1).	nonn	1..300	nyi	_Amarnath Murthy_
+A082377	filnum	1	1	k -> RAD(k).-(PHI(k)).compareTo(ZV(1)) <= 0	Numbers k such that rad(k) - phi(k) <= 1, where rad = F007947 and phi = F000010.	nonn	1..10000	nyi	_Reinhard Zumkeller_
+A082400	filnum	1	1	k -> PP(Z2(k).+(ZV(3).^(k - 1)))	Numbers k such that 2^k + 3^(k-1) is prime.	nonn	1..54	nyi	_Labos Elemer_
+A082406	filnum	1	1	k -> SU(1, k, j -> BI(2*j, j)).mod(k) == 0	Numbers k such that k divides Sum_{j=1..k} binomial(2j,j).	nonn	1..4973	nyi	_Benoit Cloitre_
+A082423	multia	1	"1"	(self, n) -> new Q(SU(1, n - 1, k -> self.a(k)).*(n), ZV(n + 1)).ceiling()	a(n)=ceiling(n/(n+1)*sum(k=1,n-1,a(k))).	nonn	1..3300	nyi	_Benoit Cloitre_
+A082432	sintrif	0	(term, n) -> Functions.NEXT_PRIME.z(term.+(1)).-(term)	""	new A072181()	p - J072181(n), where p is the least prime > J072181(n) + 1.	more,nonn	1..48	nyi	_Naohiro Nomoto_
+A082433	sintrif	0	(term, n) -> term.-(Functions.PREV_PRIME.z(term.-(1)))	""	new A072181()	J072181(n) - p, where p is the largest prime < J072181(n) - 1.	nonn,more	3..43	nyi	_Naohiro Nomoto_
+A082463	filtpos	1	1	new A072181()	v -> PP(v.+(1))	Numbers k such that J072181(k) + 1 is prime.	hard,more,nonn	1..9	nyi	_Naohiro Nomoto_
+A082464	filtpos	1	1	new A072181()	v -> PP(v.-(1))	Numbers k such that J072181(k) - 1 is prime.	nonn,hard,more	1..7	nyi	_Naohiro Nomoto_
+A082477	lambdan	1	n -> CND(n, d -> ZV(n + 1).mod(d + 1) == 0)	Number of divisors d of n such that d+1 is also a divisor of n+1.	nonn	1..16384	nyi	_Benoit Cloitre_
+A082478	lambdan	1	n -> CND(n, d -> ZV(n + 1).mod(d + 1) == 0 && ZV(n + 2).mod(d + 2) == 0)	Number of divisors d of n such that (d+1) is a divisor of (n+1) and (d+2) a divisor of (n+2).	nonn	1..65537	nyi	_Benoit Cloitre_
+A082479	multia	1	"1,2,2"	(self, n) -> self.a(n/2).+(self.a(n/3))	a(1)=1, a(n)=a(floor(n/2))+a(floor(n/3)).	nonn	1..77	nyi	_Benoit Cloitre_
+A082519	lambdan	2	n -> CNT(1, n - 1, k -> PP(ZV(k).*(k).+(ZV(n - k).*(n - k))))	Number of times that k^2 + (n-k)^2 is prime for 1 <= k <= n-1.	nonn	2..16384	nyi	CHAUVIN thierry (thierry.chaun2(AT)wanadoo.fr)
+A082523	lambdan	2	n -> CNT(1, n - 1, k -> Predicates.SQUARE.is(ZV(k).*(k).+(ZV(n - k).*(n - k))))	Number of times k^2 + (n-k)^2 is a square for 1 <= k <= n-1.	nonn	2..1000	nyi	CHAUVIN thierry (thierry.chauvin2(AT)wanadoo.fr)
+A083199	sintrif	1	(term, n) -> Functions.VALUATION.z(term, 2)	""	new A061419()	Exponent of largest power of 2 dividing J061419(n).	nonn,easy	1..93	nyi	_Ralf Stephan_
+A083215	lambdan	1	n -> SU(1, n, i -> PM(i).*(2*i - 1)).+(1)	a(n) = 1 + Sum(prime(i)*(2*i-1): 1<=i<=n).	nonn	1..37	nyi	_Reinhard Zumkeller_
+A083263	filnum	1	1	k -> { final Z d = GPF(k).-(LPF(k)); return !d.isZero() && ZV(k).mod(d).isZero(); }	Numbers k such that the difference of the largest and smallest prime factors of k divides k.	nonn	1..10000	nyi	_Labos Elemer_
+A083291	trilambn	0	0	0	(n,k) -> ZV(k).*(n/10).+(n % 10)	= k*floor(n/10) + n mod 10, 0<=k<=n.	nonn,tabl	0..11475	nyi	_Reinhard Zumkeller_
+A083357	filtpos	1	0	new A083356()	v -> Predicates.SQUARE.is(v)	Numbers n such that J083356(n) (the total area of all incongruent integer-sided rectangles of area <= n) is a square.	nonn,more	1..11	nyi	_Dean Hickerson_
+A083371	filter	1	new A000040()	p -> Functions.NEXT_PRIME.z(p.+(1)).-(p).compareTo(ZV(8)) >= 0	Primes p such that q-p >= 8, where q is the next prime after p.	nonn	1..1500	nyi	_Benoit Cloitre_
+A083531	diffseq	1	A002191		First difference sequence of J002191. Differences between possible values for sum of divisors of n.	nonn	1..10000	nyi	_Labos Elemer_
+A083651	trilambn	0	0	0	(n, k) -> ZV(n).testBit(k) ? ZV(1) : ZV(0)	Triangular array, read by rows: T(n,k) = k-th bit in binary representation of n (0<=k<=n).	nonn,tabl,easy	0..104	nyi	_Reinhard Zumkeller_
+A083662	multia	0	"1"	(self, n) -> self.a(n/2).+(self.a(n/4))		a(n) = a(floor(n/2)) + a(floor(n/4)), n > 0; a(0)=1.	nonn	0..10000	nyi	_Benoit Cloitre_
+A083674	filter	1	new A000217().skip(1)	v -> Predicates.TRIANGULAR.is(SIGMA(v))	Triangular numbers whose sum of divisors is also a triangular number.	nonn	1..200	nyi	_Shyam Sunder Gupta_
+A083676	filter	1	new A000217().skip(1)	v -> PP(SIGMA(v).-(v))	Triangular numbers whose sum of aliquot divisors is a prime number.	nonn	1..1000	nyi	_Shyam Sunder Gupta_
+A083704	lambdan	0	n -> SU(1, n, k -> CV(3).sqrt().*(CV(k)./(CV(3).sqrt()).floor()).floor())	a(n)=sum(k=1,n,floor(r*floor(k/r))) where r=sqrt(3).	nonn	0..54	nyi	_Benoit Cloitre_
+A083714	lambdan	1	n -> n == 1 ? ZV(0) : Functions.PREV_PRIME.z(n + 1).-(Functions.GPF.z(n))	(greatest prime <= n) - (greatest prime factor of n).	nonn	1..80	nyi	_Reinhard Zumkeller_
+A083718	lambdan	1	n -> n == 1 ? ZV(2) : Functions.PREV_PRIME.z(n + 1).+(Functions.GPF.z(n))	(greatest prime <= n) + (greatest prime factor of n).	nonn	1..70	nyi	_Reinhard Zumkeller_
+A083719	lambdan	0	n -> SU(1, n - 1, k -> PM(k)).+(1).*(n)	a(n) = n * [1 + sum(k=1 to n-1) prime(k)].	nonn	0..1000	nyi	_N. J. A. Sloane_
+A083721	lambdan	1	n -> CNT(Functions.GPF.i(n) + 1, n, k -> PP(k))	Number of primes greater than the greatest prime factor of n but not greater than n.	nonn	1..91	nyi	_Reinhard Zumkeller_
+A083722	lambdan	1	n -> PR(Functions.GPF.i(n) + 1, n, k -> PP(k) ? ZV(k) : ZV(1))	Product of primes greater than the greatest prime factor of n but not greater than n.	nonn	1..2001	nyi	_Reinhard Zumkeller_
+A083725	lambdan	0	n -> SU(1, n, k -> PM(k)).+(1).*(n)	a(n) = n * [1 + sum(k=1 to n) prime(k)].	nonn	0..1000	nyi	_N. J. A. Sloane_
+A083794	filnum	1	1	k -> k == 1 || !TAU(k).equals(TAU(k - 1))	Numbers n such that tau(n) is different from tau(n-1), where tau(m) = number of divisors of m.	nonn	1..10000	nyi	_Amarnath Murthy_
+A083795	filnum	1	2	k -> TAU(k).equals(TAU(k - 1))	Numbers n such that n and n-1 have the same number of divisors. Numbers not included in A083794.	nonn	1..1000	nyi	_Amarnath Murthy_
+A087734	multrar	0	(self, n) -> self.a(n/2).*(2).+(n&1).-(D036987(n))	"0,0"	a(n) = 2*a(floor(n/2)) + n mod 2 - J036987(n) for n>1 with a(0)=a(1)=0.
+A111982	rowsum	0	new A127822()	-Row sums are A111982. Unsigned version of A111967.
+A115230	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return SU(1, p - 1, k -> D036987(k - 1).*(F000035(p - k)).*(D010055(p - k))); }	a(n) = Sum_{k=1..prime(n)-1} J036987(k-1)*F000035(p-k)*J010055(p-k). - _Reinhard Zumkeller_, Apr 29 2010
+A115367	lambdan	0	n -> SU(0, n, k -> SU(0, k, j -> D036987(j)).*(SU(0, n - k, j -> D036987(j).*(Z_1(n - k - j)))))	a(n)=sum{k=0..n, sum{j=0..k, J036987(j)}*sum{j=0..n-k, J036987(j)*(-1)^(n-k-j)}}.
+A115450	trilambn	0	0	0	(n, k) -> Z_1(k).*(Z2(n - k + 1).-(1).-(k <= n/2 ? Z2(n - 2*k).-(1) : ZV(0)))
+A115452	trinvn	0	new A115450()
+A115606	prepend	0	new PartialSumSequence(0, new A102540())	0	Partial sums of J102540 (primes that are not Chen primes).
+A118483	partsun	0	new FilterSequence(1, new A008578(), p -> !Predicates.CHEN_PRIME.is(p))	Partial sums of primes that are not Chen primes (starting with 1).
+A119969	lambdan	0	n -> SU(0, n/2, k -> BI(k, n - 2*k).*(D036987(k)))	G.f.: sum{k>=0, (x^2*(1+x))^(2k-1)}; a(n)=sum{k=0..floor(n/2), C(k,n-2k)*mod(C(k),2)}; a(n)=sum{k=0..floor(n/2), C(k,n-2k)*J036987(k)}.
+A121050	partsun	1	new LambdaSequence(1, n -> CV(FA(n))./(CR.E.^(n)).floor())	Partial sums of floor(n!/e^n).
+A121226	filnum	1	1	k -> PP(new Z("1712329866165608771").+(ZV(k + 1).*(k)))	Positive integers n for which n^2 + n + 1712329866165608771 is prime.	nonn	1..10000	nyi	_G. L. Honaker, Jr._
+A121237	partsun	1	new A245490().skip(1)	lambdan	0	n -> SU(1, n, k -> ZV(k).^(n*n*n))	new A245490()
+A121618	filter	1	new A022523()	PRIME
+A123737	partsun	1	new LambdaSequence(1, n -> Z_1(CR.SQRT2.*(n).floor()))	Partial sums of (-1)^floor(n*sqrt(2)).
+A123738	partsun	1	new LambdaSequence(1, n -> Z_1(CR.PI.*(n).floor()))	Partial sums of (-1)^floor(n*Pi).
+A123739	partsun	1	new LambdaSequence(1, n -> Z_1(CR.E.*(n).floor()))	Partial sums of (-1)^floor(n*e).
+A127802	lambdan	0	n -> n == 0 ? ZV(1) : D036987(n).*(3)	a(0) = 1, a(n) = 3*J036987(n), n>1.
+A127822	sintrif	0	(term, n) -> term.abs()	""	new A111967()
+A129503	trilambn	1	1	1	(n, k) -> Integer.bitCount(k) == 1 ? BI(n - k + Integer.numberOfTrailingZeros(k), Integer.numberOfTrailingZeros(k)) : ZV(0)	T(n, 2^e) = binomial(n + e - 2^e, e), T(n, k) = 0 otherwise.
+A129504	rowsum	1	new A129503()
+A187646	lambdan	0	n -> S1(2*n, n).abs()
+A187648	partsun	0	new A187646()	Partial sums of the (signless) central Stirling numbers of the first kind.
+A189000	filtpos	0	1	new A188999()	(n, v) -> v.mod(n) == 0	Bi-unitary multiperfect numbers.
+A189055	filter	1	new A022527()	PRIME	LambdaSequence(1, k -> ZV(k + 1).^(11).-(ZV(k).^(11)))	PRIME	Primes of the form (k+1)^11 - k^11.
+A194128	filter	1	new A173143()	v -> PP(v)	(Partial sums of the squarefree integers) that are prime.
+A211184	filnum	1	1	k -> PP(ZV(k + 1).^(11).-(ZV(k).^(11)))
+A221985	partsun	0	new A189055()	Partial sums of primes of the form (n+1)^11 - n^11.
+A243282	partsun	1	new A319988()	Partial sums of the characteristic function for J070003.
+A275974	partsun	1	new A275973()	Partial sums of the Jeffreys binary sequence E275973.
+A276781	multrar	1	(self,n) -> D010055(n).equals(ZV(1)) ? ZV(1) : self.a(n - 1).+(1)	"1"	a(n) = 1, otherwise a(n) = 1 + a(n-1). - _Antti Karttunen_, Jan 21 2020
+A287172	noncomp	0	1841,1850,1865,1881,1901,1923,1945,1963	Years when a President of the USA died in office.	nonn	1..8	nyi	_Felix Fr√∂hlich_
+A287353	multia	0	"0"	(self, n) -> self.a(n - 1).*(10).+(PM(n))		a(0)=0; for n>0, a(n) = 10*a(n-1) + prime(n).	nonn,easy	0..1000	nyi	_Luke Zieroth_
+A292982	filtpos	1	1	new A188999()	(k, v) -> v.compareTo(ZV(2*k)) > 0	Bi-unitary abundant numbers: numbers n such that bsigma(n) > 2n, where bsigma is the sum of the bi-unitary divisors function (E188999).
+A293183	filtpos	1	1	new A188999()	(k, v) -> v.equals(E188999(k + 1))	Numbers k such that bsigma(k) = bsigma(k+1), where bsigma(k) is the sum of the bi-unitary divisors of k (E188999).
+A293186	filtpos	1	1	new A188999()	(k, v) -> (k & 1) == 1 && v.compareTo(ZV(2*k)) > 0	Odd bi-unitary abundant numbers: odd numbers k such that bsigma(k) > 2*k, where bsigma is the sum of the bi-unitary divisors function (E188999).
+A293187	filtpos	1	1	new A188999()	(k, v) -> v.compareTo(ZV(3*k)) > 0	Bi-unitary 3-abundant numbers: numbers k such that bsigma(k) > 3*k, where bsigma is the sum of the bi-unitary divisors function (E188999).
+A294029	filter	1	new A188999()	(n, v) -> v.equals(E188999(n + 1))	Values of bsigma(k) = bsigma(k+1), where bsigma is the sum of the bi-unitary divisors (E188999).
+A305976	multraf	1	(self, n) -> D010055(n).equals(ZV(1)) ? ZV(2) : self.s(0).+(2)	"1"	new A085970()	a(1) = 1, for n > 1, if J010055(n) = 1 [when n is in J246655], a(n) = 2, otherwise a(n) = 2+J085970(n) = running count from 3 onward.
+A307159	partsun	1	new A188999()	Partial sums of the bi-unitary divisors sum function: Sum_{k=1..n} bsigma(k), where bsigma is E188999.
+A307161	filtpos	1	1	new A307159()	(k, v) -> v.mod(k) == 0	Numbers n such that ?307159(n) = Sum_{k=1..n} bsigma(k) is divisible by n, where bsigma(k) is the sum of bi-unitary divisors of k (E188999).
+A307612	partsun	0	new A307485()	Partial sums of the permutation E307485: one odd, two even, four odd, eight even, etc.
+A318167	filtpos	1	1	new A188999()	(k, v) -> v.compareTo(ZV(2*k)) > 0 && E188999(k + 1).compareTo(ZV(2*(k + 1))) > 0	isok(n) = (a188999(n) > 2*n) && (a188999(n+1) > 2*(n+1)); \\ _Michel Marcus_, Aug 21 2018
+A318175	filtpos	1	1	new A188999()	(k, v) -> E188999(v).mod(k) == 0	isok(n) = frac(a188999(a188999(n))/n) == 0;
+A323505	multrar	0	(self, n) -> (n&1) == 0 ? self.a(n/2).*(2) : D001511(n + 1).+(1).-(D036987(n)).*(self.a((n - 1)/2))	"1"	a(0) = 1; and for n > 0, if n is even, a(n) = 2*a(n/2), and if n is odd, a(n) = (D001511(n+1)+1-J036987(n)) * a((n-1)/2).
+A323506	multraf	0	(self, n) -> self.s(0)./(self.s(1))	""	new A323505(), new A246660()
+A326812	lambdan	1	n -> SD(n, d -> D036987(d).*(d))	a(n) = Sum_{d|n} J036987(d) * d.
+A369204	filtpos	1	1	new A188999()	(k, v) -> D034448(v).mod(k) == 0	isok(n) = (a034448(a188999(n))%n) == 0;
+A369205	filtpos	1	1	new A034448()	(k, v) -> E188999(v).mod(k) == 0	isok(n) = (a188999(a034448(n))%n) == 0;
+A370900	partsun	1	new A055231()	Partial sums of the powerfree part function (J055231).
+A370902	partsun	1	new A057521()	Partial sums of the powerful part function (J057521).
+A379617	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), E188999(k))).num()	numerator(Sum_{k=1..n} (-1)^(k+1)/E188999(k)).
+A379618	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), E188999(k))).den()	Denominators of the partial alternating sums of the reciprocals of the sum of bi-unitary divisors function (E188999).
+A379809	holos	1	[[0],[-9072,9216,-2304],[42,-70,28],[0,-1,1]]	1,11	0	0	Coefficient of x^n in (3-sqrt(5+4*sqrt(1-36*x)))/12.
+A381052	lambdan	0	n -> SU(2, n, k -> ZV(3).^(n-k).*(BI(n, k)).*((S1(k, 2)).abs()))	""		a(n) = sum(k=2, n, 3^(n-k)*binomial(n, k)*abs(stirling(k, 2, 1)))
+A382134	holos	0	[[0],[-8,12,-4],[0],[2,-2],[1]]	1	0	0	D-finite with recurrence a(n) +2*(-n+1)*a(n-1) -4*(n-1)*(n-2)*a(n-3)=0.
+A382139	holos	0	[[0],[-8,12,-4],[-2,2],[1,-2],[1]]	1	0	0	D-finite with recurrence a(n) +(-2*n+1)*a(n-1) +2*(n-1)*a(n-2) -4*(n-1)*(n-2)*a(n-3)=0.
+A382156	partsun	0	new A382155()	Partial sums of J382155.
+A382432	holos	1	[[0],[-18,4],[-58,11],[72,-23],[-22,9],[2,-1]]	1,2,8,30	0	0	D-finite with recurrence (-n+2)*a(n) +(9*n-22)*a(n-1) +(-23*n+72)*a(n-2) +(11*n-58)*a(n-3) +2*(2*n-9)*a(n-4)=0.
+A382503	lambdan	1	n -> SD(n, d -> BI(2*d-1, d))	""		a(n) = sumdiv(n, d, binomial(2*d-1,d))
+A382701	lambdan	0	n -> SU(3, n, k -> ZV(3).^(n-k).*(BI(n, k)).*((S1(k, 3)).abs()))	""		a(n) = sum(k=3, n, 3^(n-k)*binomial(n, k)*abs(stirling(k, 3, 1)))
+A382963	diffs	0	new A060257()
+A383163	lambdan	0	n -> SU(2, n, k -> Z2(n-k).*(S2(n, k)).*((S1(k, 2)).abs()))	""		a(n) = sum(k=2, n, 2^(n-k)*stirling(n, k, 2)*abs(stirling(k, 2, 1)))
+A383164	lambdan	0	n -> SU(3, n, k -> Z2(n-k).*(S2(n, k)).*((S1(k, 3)).abs()))	""		a(n) = sum(k=3, n, 2^(n-k)*stirling(n, k, 2)*abs(stirling(k, 3, 1)))
+A383165	lambdan	0	n -> SU(2, n, k -> Z2(n-k).*(S2(n, k)).*(S1(k, 2)))	""		a(n) = sum(k=2, n, 2^(n-k)*stirling(n, k, 2)*stirling(k, 2, 1))
+A383166	lambdan	0	n -> SU(3, n, k -> Z2(n-k).*(S2(n, k)).*(S1(k, 3)))	""		a(n) = sum(k=3, n, 2^(n-k)*stirling(n, k, 2)*stirling(k, 3, 1))
+A383170	lambdan	0	n -> SU(1, n, k -> Z2(n-k).*((S1(n, k).*(S1(k, 1))).abs()))	""		a(n) = sum(k=1, n, 2^(n-k)*abs(stirling(n, k, 1)*stirling(k, 1, 1)))
+A383171	lambdan	0	n -> SU(2, n, k -> Z2(n-k).*((S1(n, k).*(S1(k, 2))).abs()))	""		a(n) = sum(k=2, n, 2^(n-k)*abs(stirling(n, k, 1)*stirling(k, 2, 1)))
+A383172	lambdan	0	n -> SU(3, n, k -> Z2(n-k).*((S1(n, k).*(S1(k, 3))).abs()))	""		a(n) = sum(k=3, n, 2^(n-k)*abs(stirling(n, k, 1)*stirling(k, 3, 1)))
+A383196	holos	0	[[0],[168,-135,27],[-92,99,-27],[12,-21,9],[0,1,-1]]	0,0,0,1	0	1
+A383203	lambdan	0	n -> SU(1, n, k -> ZV(k).*(Z2(n-k)).*(S2(n, k)))	""		a(n) = sum(k=1, n, k*2^(n-k)*stirling(n, k, 2))
+A383204	lambdan	0	n -> SU(2, n, k -> Z2(n-k).*(BI(k, 2)).*(S2(n, k)))	""		a(n) = sum(k=2, n, 2^(n-k)*binomial(k, 2)*stirling(n, k, 2))
+A383205	lambdan	0	n -> SU(3, n, k -> Z2(n-k).*(BI(k, 3)).*(S2(n, k)))	""		a(n) = sum(k=3, n, 2^(n-k)*binomial(k, 3)*stirling(n, k, 2))
+A383206	trilambn	0	0	0	(n, k) -> SU(k, n, j -> Z2(n-j).*(S2(n,j)).*(S2(j,k)))
+A383207	lambdan	0	n -> SU(2, n, k -> Z2(n-k).*(S2(n, k)).*(S2(k, 2)))	""		a(n) = sum(k=2, n, 2^(n-k)*stirling(n, k, 2)*stirling(k, 2, 2))
+A383208	lambdan	0	n -> SU(3, n, k -> Z2(n-k).*(S2(n, k)).*(S2(k, 3)))	""		a(n) = sum(k=3, n, 2^(n-k)*stirling(n, k, 2)*stirling(k, 3, 2))
+A383231	lambdan	0	n -> SU(1, n, k -> ZV(k).*(ZV(5).^(n-k)).*((S1(n, k)).abs()))	""		a(n) = sum(k=1, n, k*5^(n-k)*abs(stirling(n, k, 1)))
+A383232	lambdan	0	n -> SU(1, n, k -> ZV(k).*(Z2(k-1)).*(ZV(5).^(n-k)).*((S1(n, k)).abs()))	""		a(n) = sum(k=1, n, k*2^(k-1)*5^(n-k)*abs(stirling(n, k, 1)))
+A383233	lambdan	0	n -> SU(1, n, k -> ZV(k).*(ZV(3).^(k-1)).*(ZV(5).^(n-k)).*((S1(n, k)).abs()))	""		a(n) = sum(k=1, n, k*3^(k-1)*5^(n-k)*abs(stirling(n, k, 1)))
+A383234	lambdan	0	n -> SU(1, n, k -> ZV(k).*(ZV(4).^(k-1)).*(ZV(5).^(n-k)).*((S1(n, k)).abs()))	""		a(n) = sum(k=1, n, k*4^(k-1)*5^(n-k)*abs(stirling(n, k, 1)))

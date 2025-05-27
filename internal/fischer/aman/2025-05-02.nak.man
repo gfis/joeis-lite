@@ -1,0 +1,9 @@
+---- 2025-05-05 23:46:22
+A090632	filter	0	new A064986()	(n,v) -> (n&1) == 0	.
+A168081	filter	0	new A006921()	(n,v) -> (n&1) == 0	. Cf. J260022. - _N. J. A. Sloane_, Jul 14 2015
+A180056	filter	0	new A006551()	(n,v) -> (n&1) == 0	.
+A301925	filter	0	new A000230().skip(1)	(n,v) -> (n&1) == 0	.
+A329229	filter	0	new A062373()	(n,v) -> (n&1) == 0	 (odd indices).
+A333633	filter	0	new A072808()	(n,v) -> (n&1) == 0	.
+A344650	filter	0	new A067659()	(n,v) -> (n&1) == 0		Even .
+A377310	filter	0	new A210098()	(n,v) -> (n&1) == 0	. The other bisection is J277279.

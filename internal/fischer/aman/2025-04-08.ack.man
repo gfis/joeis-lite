@@ -1,0 +1,73 @@
+---- 2025-04-08 22:47:00
+A337151	multia	0	""	(self, n) -> RU(0, n, k -> QV(Z_1(n - k)).*(k + 1)./(FA(n - k).^(2))).*(FA(n).^(2)).num()
+A348597	multia	0	""	(self, n) -> RU(0, n/3, k -> new Q(Z_1(k), FA(3*k))).*(FA(n)).num()	nonn    0..22   nyi     _Ilya Gutkovskiy_
+A340789	multia	0	""	(self, n) -> RU(1, n, k -> QV(Z_1(k + 1))./(FA(k).^(2))).*(FA(n).^(2)).num()	nonn    0..17   nyi     _Ilya Gutkovskiy_
+A382830	multia	0	""	(self, n) -> SU(0, n, k -> BI(n + k - 1, k).*(SA(n,k)).*(FA(k)))	nonn,new        0..18   nyi     _Ilya Gutkovskiy_
+A336436	multia	0	"0"	(self, n) -> FA(n - 1).^(3).+(SU(1, n - 1, k -> BI(n,k).*(FA(n - k - 1)).^(3).*(k).*(self.a(k)))./(n))	nonn    0..14   nyi     _Ilya Gutkovskiy_
+A293665	multia	0	"1"	(self, n) -> SD(n, d -> self.a(n-d)).negate()	sign    0..65   nyi     _Ilya Gutkovskiy_
+A352860	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> BI(n, k).*(Z2(k)).*(self.a(k)))	nonn    0..77   nyi     _Ilya Gutkovskiy_
+A353156	multia	0	"1"	(self, n) -> SU(1, n, k -> PM(k+1).*(self.a(n-k))).negate()	sign    0..38   nyi     _Ilya Gutkovskiy_
+A336271	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k+1).*(BI(n,k).^(2)).*(BI(2*k, k)).*(self.a(n - k)))	nonn    0..17   nyi     _Ilya Gutkovskiy_
+A333392	multia	0	"1"	(self, n) -> Z2(Functions.PRIME.i(n) - 1).+(SU(1, n, k -> Z2(Functions.PRIME.i(n) -Functions.PRIME.i(k))))	nonn    0..21   nyi     _Ilya Gutkovskiy_
+A331520	multia	0	"1,1"	(self, n) -> SU(0, n - 2, k -> (BI(n - 2, k).and(ZV(1))).*(self.a(k)))	nonn    0..47   nyi     _Ilya Gutkovskiy_
+A327243	multia	1	""	(self, n) -> RD(n, d -> new Q(Z_1(n - d), FA(n/d))).*(FA(n)).num()	nonn    1..22   nyi     _Ilya Gutkovskiy_
+A327587	multia	1	""	(self, n) -> RD(n, d -> new Q(Z_1(n - d), FA(n/d).^(d))).*(FA(n)).num()	nonn    1..22   nyi     _Ilya Gutkovskiy_
+A318845	multia	1	""	(self, n) -> SD(n, d -> Z_1(n/d + 1).*(SD(d, j -> SIGMA(j))))	nonn,mult       1..70   nyi     _Ilya Gutkovskiy_
+A335062	multia	1	""	(self, n) -> ZV(1).-(SD(n, d -> d <= 1 ? ZV(0) : Z_1(d).*(self.a(n/d))))	sign    1..20000        nyi     _Ilya Gutkovskiy_
+A347031	multia	1	""	(self, n) -> ZV(1).-(SU(2, n, k -> Z_1(k).*(self.a(n/k))))	sign    1..10000        nyi     _Ilya Gutkovskiy_
+A332238	multia	1	""	(self, n) -> ZV(n).^(n - 1).-(SU(1, n - 1, k -> ZV(k).^(k - 1).*(self.a(n - k))))	nonn    1..20   nyi     _Ilya Gutkovskiy_
+A332239	multia	1	""	(self, n) -> ZV(n).^(n - 2).-(SU(1, n - 1, k -> ZV(k).^(k - 2).*(self.a(n - k))))	nonn    1..20   nyi     _Ilya Gutkovskiy_
+A333121	multia	1	"1"	(self, n) -> PD(n - 1, d -> self.a(d).+(1))	nonn    1..19   nyi     _Ilya Gutkovskiy_
+A307779	multia	1	"1"	(self, n) -> SD(n - 1, d -> ((n - 1)/d & 1) == 0 ? ZV(0) : self.a(d))	nonn    1..65   nyi     _Ilya Gutkovskiy_
+A307780	multia	1	"1"	(self, n) -> SD(n - 1, d -> ((n - 1)/d & 1) == 0 ? ZV(0) : self.a(d).^((n - 1)/d))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A346188	multia	1	"1"	(self, n) -> SD(n - 1, d -> BI(n - 1, d).*(self.a((n - 1)/d)))	nonn    1..23   nyi     _Ilya Gutkovskiy_
+A330017	multia	1	"1"	(self, n) -> SD(n - 1, d -> BI(n - 1, d).*(self.a(d)))	nonn    1..30   nyi     _Ilya Gutkovskiy_
+A333051	multia	1	"1"	(self, n) -> SD(n - 1, d -> Functions.GCD.i(d, (n - 1)/d) != 1 ? ZV(0) : self.a((n - 1)/d).*(self.a(d)))	nonn    1..3320 nyi     _Ilya Gutkovskiy_
+A333050	multia	1	"1"	(self, n) -> SD(n - 1, d -> Functions.GCD.i(d, (n - 1)/d) != 1 ? ZV(0) : self.a(d))	nonn    1..60   nyi     _Ilya Gutkovskiy_
+A307837	multia	1	"1"	(self, n) -> SD(n - 1, d -> Functions.LIOUVILLE_LAMBDA.z(d).*(self.a(d)))	(F008836))	sign    1..100  nyi     _Ilya Gutkovskiy_
+A346118	multia	1	"1"	(self, n) -> SD(n - 1, d -> MU((n - 1)/d).*(self.a(d))).+(1)	sign    1..70   nyi     _Ilya Gutkovskiy_
+A332791	multia	1	"1"	(self, n) -> SD(n - 1, d -> PHI(d).*(self.a(d)))	nonn    1..495  nyi     _Ilya Gutkovskiy_
+A341639	multia	1	"1"	(self, n) -> SD(n - 1, d -> PHI(d).*(self.a(d)).*(self.a((n - 1)/d)))	nonn    1..25   nyi     _Ilya Gutkovskiy_
+A307817	multia	1	"1"	(self, n) -> SD(n - 1, d -> SIGMA((n - 1)/d).*(self.a(d)))	where sigma = sum of divisors (F000203))	nonn    1..50   nyi     _Ilya Gutkovskiy_
+A351407	multia	1	"1"	(self, n) -> SD(n - 1, d -> Z_1((n - 1)/d).*(self.a(d)))	sign    1..54   nyi     _Ilya Gutkovskiy_
+A307776	multia	1	"1"	(self, n) -> SD(n - 1, d -> Z_1((n - 1)/d+1).*(self.a(d)))	sign    1..75   nyi     _Ilya Gutkovskiy_
+A307777	multia	1	"1"	(self, n) -> SD(n - 1, d -> Z_1((n - 1)/d+d).*(self.a(d)))	sign    1..71   nyi     _Ilya Gutkovskiy_
+A307778	multia	1	"1"	(self, n) -> SD(n - 1, d -> Z_1(d+1).*(self.a(d)))	sign    1..77   nyi     _Ilya Gutkovskiy_
+A339755	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))).+(1)	nonn    1..35   nyi     _Ilya Gutkovskiy_
+A318372	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a(d).*(d))
+A333120	multia	1	"1"	(self, n) -> SD(n - 1, d -> self.a(d).^(2))	nonn    1..11   nyi     _Ilya Gutkovskiy_
+A345136	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : BI(n,d).*(self.a(d)))	nonn    1..35   nyi     _Ilya Gutkovskiy_
+A327275	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : F001615(n/d).*(self.a(d)))	where psi = F001615)	nonn    1..60   nyi     _Ilya Gutkovskiy_
+A332792	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PHI(d).*(self.a(d)))	nonn    1..20000        nyi     _Ilya Gutkovskiy_
+A326824	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PHI(n/d).*(d).*(self.a(d)))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A325257	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PM(n/d).*(self.a(d)))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A325891	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : PM(n/d).*(self.a(d))).negate()	sign    1..55   nyi     _Ilya Gutkovskiy_
+A325212	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : SIGMA(n/d).*(self.a(d)))	where sigma = F000203)	nonn    1..60   nyi     _Ilya Gutkovskiy_
+A325211	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : TAU(n/d).*(self.a(d)))	where tau = F000005)	nonn    1..70   nyi     _Ilya Gutkovskiy_
+A348661	multia	1	"1"	(self, n) -> SD(n, d -> d == n ? ZV(0) : ZV(d).*(self.a(d).^(n/d)))	nonn    1..52   nyi     _Ilya Gutkovskiy_
+A332846	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> self.a(k).*(new Q(n - 1, k).ceiling()))	nonn    1..33   nyi     _Ilya Gutkovskiy_
+A328967	multia	1	"1"	(self, n) -> ZV(1).-(SU(1, n - 1, k -> self.a((n - 1)/k)))
+A351621	multia	1	"1"	(self, n) -> self.a(n - 1).+(1).+(SU(2, n, k -> self.a(n/k)))	nonn    1..50   nyi     _Ilya Gutkovskiy_
+A351787	multia	1	"1"	(self, n) -> self.a(n - 1).+(SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))))	nonn    1..29   nyi     _Ilya Gutkovskiy_
+A351788	multia	1	"1"	(self, n) -> self.a(n - 1).+(SD(n, d -> d == 1 || d == n ? ZV(0) : self.a(n/d).*(self.a(d))))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A345139	multia	1	"1"	(self, n) -> self.a(n - 1).+(SD(n, d -> d == n ? ZV(0) : self.a(d)))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A351620	multia	1	"1"	(self, n) -> self.a(n - 1).+(SU(2, n, k -> self.a(n/k)))	nonn    1..50   nyi     _Ilya Gutkovskiy_
+A351797	multia	1	"1"	(self, n) -> self.a(n - 1).negate().+(SD(n - 1, d -> self.a((n - 1)/d).*(self.a(d))).*(2))	nonn    1..29   nyi     _Ilya Gutkovskiy_
+A346034	multia	1	"1,0"	(self, n) -> SD(n - 2, d -> MU((n - 2)/d).*(self.a(d)))	sign    1..70   nyi     _Ilya Gutkovskiy_
+A345138	multia	1	"1,0"	(self, n) -> SD(n - 2, d -> d == n - 2 ? ZV(0) : self.a(d))	nonn    1..95   nyi     _Ilya Gutkovskiy_
+A345141	multia	1	"1,0"	(self, n) -> SD(n - 2, d -> self.a(d))	nonn    1..70   nyi     _Ilya Gutkovskiy_
+A318583	multia	1	"1,1"	(self, n) -> SD(n - 2, d -> MU((n - 2)/d).*(self.a(d)))
+A319133	multia	1	"1,1"	(self, n) -> SD(n - 2, d -> TAU((n - 2)/d).*(self.a(d)))	where tau = number of divisors (F000005). nonn    1..4240 nyi     _Ilya Gutkovskiy_
+A372618	multia	1	"1,1"	(self, n) -> SU(1, n - 2, k -> self.a(Functions.GCD.i(n - 2, k)))	nonn    1..55   nyi     _Ilya Gutkovskiy_
+A343190	multia	1	"1,1,1,1,1"	(self, n) -> SD(n - 5, d -> MU((n - 5)/d).*(self.a(d)))	sign    1..75   nyi     _Ilya Gutkovskiy_
+A333981	multrar	0	(self, n) -> ZV(2).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(2).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	"0"		a(0) = 0; a(n) = 2^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 2^(k-1) * (n-k) * a(n-k).   nonn    0..245  nyi     _Ilya Gutkovskiy_
+A333982	multrar	0	(self, n) -> ZV(3).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(3).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	"0"		a(0) = 0; a(n) = 3^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 3^(k-1) * (n-k) * a(n-k).   nonn    0..18   nyi     _Ilya Gutkovskiy_
+A333983	multrar	0	(self, n) -> ZV(4).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(4).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	"0"		a(0) = 0; a(n) = 4^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 4^(k-1) * (n-k) * a(n-k).   nonn    0..17   nyi     _Ilya Gutkovskiy_
+A333984	multrar	0	(self, n) -> ZV(5).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(5).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	"0"		a(0) = 0; a(n) = 5^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 5^(k-1) * (n-k) * a(n-k).   nonn    0..17   nyi     _Ilya Gutkovskiy_
+A333985	multrar	0	(self, n) -> ZV(6).^(n - 1).+(SU(1, n - 1, k -> BI(n, k).^(2).*(ZV(6).^(k - 1)).*(n - k).*(self.a(n - k)))./(n))	"0"		a(0) = 0; a(n) = 6^(n-1) + (1/n) * Sum_{k=1..n-1} binomial(n,k)^2 * 6^(k-1) * (n-k) * a(n-k).   nonn    0..17   nyi     _Ilya Gutkovskiy_
+A366302	polyx	0	"[[1],[-1],[-2],[-3],[-4],[-5],[-6],[-7]"	",1,p6,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,p4,<1,exp,+,p5,<1,exp,+,p6,<1,exp,+,p7,<1,exp,+,/"	0	1	Expansion of e.g.f. 1 / (-6 + Sum_{k=1..7} exp(-k*x)).  nonn    0..15   nyi     _Ilya Gutkovskiy_
+A366301	polyx	0	"[[1],[-1],[-2],[-3],[-4],[-5],[-6]]"	",1,p5,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,p4,<1,exp,+,p5,<1,exp,+,p6,<1,exp,+,/"	0	1	Expansion of e.g.f. 1 / (-5 + Sum_{k=1..6} exp(-k*x)).  nonn    0..15   nyi     _Ilya Gutkovskiy_
+A366300	polyx	0	"[[1],[-1],[-2],[-3],[-4],[-5]]"	",1,p4,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,p4,<1,exp,+,p5,<1,exp,+,/"	0	1	Expansion of e.g.f. 1 / (-4 + Sum_{k=1..5} exp(-k*x)).  nonn    0..16   nyi     _Ilya Gutkovskiy_
+A366299	polyx	0	"[[1],[-1],[-2],[-3],[-4]]"	",1,p3,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,p4,<1,exp,+,/"	0	1	Expansion of e.g.f. 1 / (-3 + Sum_{k=1..4} exp(-k*x)).  nonn    0..17   nyi     _Ilya Gutkovskiy_
+A366298	polyx	0	"[[1],[-1],[-2],[-3]]"	",1,p2,p1,<1,exp,+,p2,<1,exp,+,p3,<1,exp,+,/"	0	1	e.g.f. 1 / (-2 + Sum_{k=1..3} exp(-k*x)).  nonn    0..18   nyi     _Ilya Gutkovskiy_
+A347667	trilambn	0	0	0	(n, k) -> SU(0, k, j -> BI(n,j).*(FA(j)))	nonn,tabl       0..54   nyi     _Ilya Gutkovskiy_
