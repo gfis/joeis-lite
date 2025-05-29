@@ -271,6 +271,8 @@ while (<>) { # read inputfile
             $parm =~ s{BI\(}           {Binomial.binomial\(}g;
             $parm =~ s{BS\(}           {BernoulliSequence}g;
             $parm =~ s{CAT\(}          {Functions.CATALAN.z\(}g;
+            #               (1      1  2      2 )
+            $parm =~ s{CEIL\(([^\,]+)\,([^\)]+)\)}  {\($1\%$2 == 0 ? $1\/$2 \: $1\/$2 \+ 1\)}g;
             $parm =~ s{CESQ\(}         {Functions.CEIL_SQRT.z\(}g;
             $parm =~ s{CML\(}          {Functions.CARMICHAEL_LAMBDA.z\(}g;
             $parm =~ s{CND\(}          {Integers.SINGLETON.countdiv\(}g;
@@ -295,8 +297,11 @@ while (<>) { # read inputfile
             $parm =~ s{IV\[([^\]]+)\]} {\($1 \? Z\.ONE \: Z\.ZERO\)}g;
             $parm =~ s{IVE\(}          {intValueExact\(}g;
             $parm =~ s{IU\.}           {IntegerUtils\.}g;
+            $parm =~ s{JS\(}           {Functions.JACOBI.i(}g;
+            $parm =~ s{JSz\(}          {Functions.JACOBI.z(}g;
             $parm =~ s{JF\(}           {Jaguar.factor(}g;
             $parm =~ s{KS\(}           {Functions.KRONECKER.i(}g;
+            $parm =~ s{KSz\(}          {Functions.KRONECKER.z(}g;
             $parm =~ s{LCM\(}          {Functions.LCM.z\(}g;
             $parm =~ s{LPF\(}          {Functions.LPF.z\(}g;
             $parm =~ s{LU\(}           {Functions.LUCAS.z\(}g;
@@ -310,6 +315,7 @@ while (<>) { # read inputfile
             $parm =~ s{PP\(}           {Predicates.PRIME.is\(}g;
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PM\(}           {Functions.PRIME.z\(}g;
+            $parm =~ s{PMi\(}          {Functions.PRIME.i\(}g;
             $parm =~ s{PPI\(}          {Functions.PRIME_PI.z\(}g;
             $parm =~ s{PA\(}           {new Pair<Integer, Integer>(\(}g;
             $parm =~ s{PD\(}           {Integers.SINGLETON.productdiv\(}g;
