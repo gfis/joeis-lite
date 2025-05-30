@@ -1,0 +1,16 @@
+---- 2025-05-26 17:47:10
+ A383055	nyi Fto	Numerators of the partial sums of the reciprocals of the number of unitary divisors function (F034444).	nonn,easy,frac	1..10000	nyi	_Amiram Eldar_
+ A383056	nyi Fto	Denominators of the partial sums of the reciprocals of the number of unitary divisors function (F034444).	nonn,easy,frac	1..10000	nyi	_Amiram Eldar_
+ A383553	nyi Fo	G.f. A(x) satisfies A( x*(1 - x*A(x)) )^2 = A(x) / (1 - x*A(x)).	nonn	0..400	nyi	_Paul D. Hanna_
+ A383555	nyi Fo	G.f. C(x) satisfies C(x) = (1 - x/C(x)) * C(x/C(x))^2.	nonn	0..400	nyi	_Paul D. Hanna_
+ A383556	nyi Fo	G.f. A(x) satisfies [x^n] A(x)^n = [x^n] -1/A(x)^(n+1) for n > 1 with A(0) = 1, A(0) = 1.	nonn,new	0..300	nyi	_Paul D. Hanna_
+ A383559	nyi Fo	O.g.f. A(x) satisfies: [x^n] exp( n*(2*n+1)*x ) / A(x) = 0 for n > 0.	nonn,new	0..400	nyi	_Paul D. Hanna_
+ A383560	nyi Fo	E.g.f. satisfies A(x) = exp(-x*A(x)) * A( x*exp(-x*A(x)) )^2.	nonn	0..300	nyi	_Paul D. Hanna_
+? A383554	nyi Fo	G.f. B(x) satisfies B(x)^2 = B(x*B(x)) / (1 - x*B(x)).	nonn	0..400	nyi	_Paul D. Hanna_
+? A383561	nyi Fo	E.g.f. B(x) satisfies B(x)^2 = exp(x*B(x)) * B(x*B(x)).	nonn	0..300	nyi	_Paul D. Hanna_
+? A383562	nyi Fo	E.g.f. C(x) satisfies C(x) = exp(-x/C(x)) * C(x/C(x))^2.	nonn	0..300	nyi	_Paul D. Hanna_
+? A383681	union2	0	new A383679()	new A383680()
+? A383687	union2	0	new A383685()	new A383686()
+? A358343	filter	1	new A000040().skip(1)	p -> PP(p.+(6)) && PP(p.+(12)) && PP(p.+(18)) && PP(p.+(4)./(5)) && PP(p.+(4)./(5).+(6)) && PP(p.+(4)./(5).+(12)) && PP(p.+(4)./(5).+(18)) 	p + 6, p + 12, p + 18, (p+4)/5, (p+4)/5 + 6, (p+4)/5 + 12 and (p+4)/5 + 18 are also prime.	nonn	1..213	nyi	_J. M. Bergot_ and _Robert Israel_
+? A383065	filnum	0	1	k -> { final Q q = QV(k)./(RAD(k).*(Z.TWO.^(RAD(k)))); return q.isInteger() && PP(q.num().-(1)); }	(k/rad(k))*2^rad(k) - 1 is prime where rad = F007947.	nonn	1..55	nyi	_Juri-Stepan Gerasimov_
+

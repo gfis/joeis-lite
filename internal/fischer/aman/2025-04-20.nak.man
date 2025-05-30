@@ -1,0 +1,48 @@
+---- 2025-05-28 23:45:44
+ A110897	01	10000	1+a(n-a(n-1))-(n-a(n-1))%2+(n-a(n-2))%3	0;1;1;n;n;1;sub;a;sub;a;+;n;n;1;sub;a;sub;2;%;sub;n;n;2;sub;a;sub;3;%;+	a(n) = 1 + a(n - a(n-1)) (n - a(n-1)) mod 2 + (n - a(n-2)) mod 3, with a(0) = 0, a(1) = 1.	nyi	proven
+ A127585	01	17	floor(sqrt(2*?)*n^n*n^(n/2))-n!	2;?;*;sqrt;n;n;^;n;n;2;/;^;*;*;floor;n;!;sub	Exponential error term from Stirling''s Approximation.	nyi	proven
+ A130237	01	5001	n*floor(log(3/2+n*sqrt(5))/log((1+sqrt(5))/2))	n;3;2;/;n;5;sqrt;*;+;log;1;5;sqrt;+;2;/;log;/;floor;*	The ''lower'' Fibonacci Inverse A130233(n) multiplied by n.	nyi	proven
+ A135919	01	22	floor((7+sqrt(1+48*(21*20^n+38*8^n-59)/133))/2)	7;1;48;21;20;n;^;*;38;8;n;^;*;+;59;sub;133;/;*;+;sqrt;+;2;/;floor	Chromatic number of stage-n Menger sponge.	nyi	proven
+ A140474	01	83	a(n-a(n-1))+a(floor(n/8))	1;0;1;n;n;1;sub;a;sub;a;n;8;/;floor;a;+	Fractional noise-like sequence: a(n)=a(n-a(n-1))+a(Floor[a0*n/b0]): a0<b0:a0=1;b0=8.	nyi	proven
+ A161687	01	50	contfrac[(24*sqrt(2)-6*sqrt(3)-2*?)*?/72]	24;2;sqrt;*;6;3;sqrt;*;sub;2;?;*;sub;?;*;72;/;contfrac	Continued fraction for ((24*sqrt(2) - 6*sqrt(3) - 2*Pi)*Pi)/72.	nyi	proven
+ A161975	01	50	F000217(J002808(n+1))-F000217(J046343(n+1)-1)	n;1;+;J002808;F000217;n;1;+;J046343;1;sub;F000217;sub	Sum_{x=sum of prime factors of n-th composite..n-th composite} x.	nyi	proven
+ A171481	01	10000	a(a(n-1))+a(n-a(n-1)-2)	0;1;1;n;1;sub;a;a;n;n;1;sub;a;sub;2;sub;a;+	a(n) = a(a(n-1)) + a(n - a(n-1) - 2) with a(0) = 0, a(1) = a(2) = 1.	nyi	proven
+ A192988	01	12	ceil(a(n-1)/3)*(3*ceil(a(n-1)/3)-1)/2+a(n-1)	1;n;1;sub;a;3;/;ceil;3;n;1;sub;a;3;/;ceil;*;1;sub;2;/;*;n;1;sub;a;+	Smallest number whose representation requires n pentagonal numbers with greedy algorithm.	nyi	proven
+ A257294	01	77	floor(F007954(n)^(1/F055642(n))*10^(F055642(n)-1))	n;F007954;1;n;F055642;/;^;10;n;F055642;1;sub;^;*;floor	The first d decimal digits of the geometric mean of the digits of n, where d is the number of digits of n, without leading zeros.	nyi	proven
+ A283422	01	10000	a(n-a(n-1)-1)+a(n-a(n-2)-4)	1;1;0;1;n;n;1;sub;a;sub;1;sub;a;n;n;2;sub;a;sub;4;sub;a;+	a(1) = a(2) = a(4) = 1; a(3) = 0;  a(n) = a(n-a(n-1)-1) + a(n-a(n-2)-4) for n > 4.	nyi	proven
+ A283426	01	10000	a(n-a(n-2)-1)+a(n-a(n-4)-2)	1;1;1;1;n;n;2;sub;a;sub;1;sub;a;n;n;4;sub;a;sub;2;sub;a;+	a(1) = a(2) = a(3) = a(4) = 1; a(n) = a(n-a(n-2)-1) + a(n-a(n-4)-2) for n > 4.	nyi	proven
+ A284374	01	10000	F007917(a(n-a(n-1))+a(n-a(n-2)))	1;1;n;n;1;sub;a;sub;a;n;n;2;sub;a;sub;a;+;F007917	a(1) = a(2) = 1; a(n) is the largest prime <= (a(n-a(n-1)) + a(n-a(n-2))) for n > 2.	nyi	proven
+ A340298	01	10000	a(floor(n/2))+a(ceil(n/2))+n*floor(log2(n))	0;1;n;2;/;floor;a;n;2;/;ceil;a;+;n;n;log2;floor;*;+	a(n) = a(floor(n/2)) + a(ceiling(n/2)) + n*floor(log_2(n)) for n >= 2, a(n) = n for n <= 1.	nyi	proven
+ A364801	01	10000	a(D022290(n))+1	0;0;0;0;n;D022290;a;1;+	The number of iterations that n requires to reach a fixed point under the map x -> D022290(x).	nyi	proven
+ A378921	01	14	2^n?-2^ceil(n/2)?	2;n;?;^;2;n;2;/;ceil;?;^;sub	Number of binary n X n matrices that do not possess both horizontal and vertical symmetry.	nyi	proven
+
+ A383278	nyi Fto	The number of integers k such that F034444(k) * k <= n.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+?A096725	polyz	0	"[[1]]"	",x,tan,sin,x,sin,tan,-,x,atan,asin,x,asin,atan,-,/"	0	0	1	2
+?A096730	polyz	0	"[[1]]"	",x,tan,sin,x,sin,tan,-,x,atan,asin,x,asin,atan,-,/"	0	4	1	2
+?A132094	polyz	0	"[[0,-1]]"	",x,<1,x,cos,1,-,2,*,/"	0	1	0	2
+?A132095	polyz	0	"[[0,-1]]"	",x,<1,x,cos,1,-,2,*,/"	0	5	0	2
+?A383276	nyi Fto	Numbers of the form F034444(k) * k.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A123535	multrar	0	(self, n) -> self.a(n/3).+(self.a(2*n/3)).+(n + 1)	"1"	a(floor(n/3))+a(floor(2*n/3))+n+1	1;n;3;/;floor;a;2;n;3;/;*;floor;a;+;n;1;+;+	Recurrence from values at floor of a third and two-thirds.	nyi	proven
+A126094	sintrif	0	(term, n) -> F000720(term.+(1))	""	new A123206()	F000720(J123206(n+1)+1)	n;1;+;J123206;1;+;F000720	Numbers k such that prime(k) = J123206(n).	nyi	proven
+A162455	sintrif	0	(term, n) -> D002061(F000142(term).+(1))	""	new A051856().skip(2)	n;2;+;J051856;F000142;1;+;D002061	Primes of the form (n!)^2 + (n!) + 1.	nyi	proven
+A262725	sintrif	0	(term, n) -> term.testBit(0) ? Z.NEG_ONE : Z.ONE	"1"	new A034968()	1;neg;n;J034968;^	The unique function f with f(1)=1 and f(jD!+k)=(-1)^j f(k) for all D, j=1..D, and k=1..D!.	nyi	proven
+A348463	sintrif	0	(term, n) -> term.*(2)	"2"	new A053700()	2;n;1;+;J053700;*	Size of largest bipartite biregular Moore graph of diameter 6 and degrees n and n.	nyi	proven
+
+#	o	J065036	list(lim)=my(v=List(),t);forprime(p=(\d+),(lim\(\d+))^((\d+)/(\d+)),t=p^(\d+);forprime(q=(\d+),lim\t,if(p==q,next);listput(v,t*q)));vecsort(Vec(v))	2,2,1,3,3,2
+A178739	parmof2	1	A065036	4
+A178740	parmof2	1	A065036	5
+A179664	parmof2	1	A065036	7
+A179668	parmof2	1	A065036	8
+A179692	parmof2	1	A065036	9
+A189987	parmof2	1	A065036	6
+A054753	parmof2	1	A065036	2
+
+A099217	decexp	0	() -> CrFunctions.POLYLOG.cr(3, CR.HALF)	X! ((\d+),(\d+)/(\d+))	3,1,2	
+ A093734 nyi t   Primes p such that both prime(p) + prime(p+1) +/-1 are also primes.     nonn    1..1000 nyi     _Robert G. Wilson v_ and _Jorge Coveiro_  #----                                                 
+ A101408 nyi t   Primes p such that p+1000 or p-1000 are also primes.    nonn    1..1000 nyi     _Parthasarathy Nambi_                                     
+
+    nonn    1..21   nyi     _Vladimir Joseph Stephan Orlovsky_                        
+
+
+
+

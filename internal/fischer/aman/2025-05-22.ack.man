@@ -1,0 +1,104 @@
+---- 2025-05-22 22:45:26
+A092095	lingf	5	0,0,0,0,0,9,7,-9,1,-8,-4,8	1,-1,-1,1,-1,1,1,-1					0
+A129253	partsun	1	new A342023()			Partial sums of A342023.
+A132309	triprod	0	A130595	A132307	A130595 * A132307.
+A145164	convprod	0	2	new A145163()	Self-convolution square of A145163.
+A145170	convprod	0	2	new A145169()	Self-convolution square of A145169.
+A146306	lingf	1	0,-5,-1,-1,-1,-1,0,1,1,1,1,5,1,17,4,5,7,13,1,11,5,3,2,7,1	1,0,0,0,0,0,0,0,0,0,0,0,-2,0,0,0,0,0,0,0,0,0,0,0,1					0
+A155039	trisum2	1	1	-1	A155038	A155033
+A174425	diffs	1	new PrependSequence(0, new A095256(), 0)			Partial sums of A095256.					Total number of divisors of all n-digit numbers.
+A234429	lingf	1	0,4,-1,-1,-1,2	1,-2,1					0
+A247049	lingf	0	1,0,0,-1,1,1	1,0,0,-1,0,0,-1					0
+A247050	lingf	0	0,1,0,1,0,1,0,0,1	1,0,0,0,0,0,-2,0,0,-1					0
+A292308	m1mul	0	A076901	a(n) = (-1)^n * A076901(n).
+A321341	lingf	0	1,1,1,2,1,0,2,1,1,-1	1,0,0,0,-1,0,0,0,-1,0,0,0,1					0
+A365711	dirichinv0	1	new A117966()	0	Dirichlet inverse of balanced ternary enumeration of integers (A117966).
+A380707	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(ZV(n).^(2*k)).*((S1(n+1, k+1)).abs()))	""		a(n) = sum(k=0, n, (k+1)*n^(2*k)*abs(stirling(n+1, k+1, 1)))	_	_	_
+A381374	holos	1	[[0],[1],[0],[-5],[0],[10],[0],[-10],[0],[5],[0],[-1]]	1,1,97,49,769,289,2977,961,8161,2401	0	0						0		Little Hankel transform of A317614: a(n) = A317614(n+1)^2 - A317614(n)*A317614(n+2).
+A381459	lambdan	0	n -> RU(0, n, k -> QV(n-2*k).^(2*n).*(BI(n, k)))./(Z2(n)).num()	""		a(n) = sum(k=0, n, (n-2*k)^(2*n)*binomial(n, k))/2^n	_	_	_
+A382057	lingf	0	8,19,18,6	1,7,12,6					0
+A382209	holos	1	[0,1,-1443,1443,-1]	90,136890,197402490	0	0					0		Numbers k such that 10+k and 10*k are perfect squares.
+A382349	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(ZV(3*n).^(k)).*((S1(n+1, k+1)).abs()))	""		a(n) = sum(k=0, n, (k+1)*(3*n)^k*abs(stirling(n+1, k+1, 1)))	_	_	_
+A382488	lingf	1	0,1,2,2,2,1,4	1,0,0,0,0,0,-1					0
+A382534	lingf	1	0,3,9,9,36,6,54,-6,-72,-9,9,-3,36	1,0,0,0,-3,0,0,0,3,0,0,0,-1					0
+A382574	lingf	0	1,-3,0,11,-13,7,6,3	1,-4,2,12,-22,12,2,-4,1					0
+A382618	holos	0	[0,27,-27,9,-1]	1,4,16	0	0				0		a(n) = 3^(n-2)*(binomial(n,2) + 3*n + 9).
+A382640	lingf	0	1,-3,9,-2,21,27,37	1,-7,21,-35,35,-21,7,-1					0
+A382744	filnum	1	1	k -> !Functions.VALUATION.z(k, 5).testBit(0)	If k appears, 5*k does not.
+A382745	filnum	1	1	k -> !Functions.VALUATION.z(k, 7).testBit(0)	If k appears, 7*k does not.
+A382746	filnum	1	1	k -> !Functions.VALUATION.z(k, 8).testBit(0)	If k appears, 8*k does not.     nonn
+A382789	sintrif	0	(term, n) -> Functions.BIG_OMEGA.z(term)	""	new A005867()		0	new A023508()			Partial sums of A023508.					The number of prime factors of Euler phi of the n-th primorial number, counted with multiplicity.
+A382819	lingf	0	1,-1,0,0,2,0,0,-1	1,-2,1,-2,4,-2,1,-2,1					0
+A382925	lambdan	0	n -> SU(0, n, i -> SU(0, n-i, j -> SU(0, n-i-j, k -> (S1(n+1, i+1).*(S1(n+1, j+1)).*(S1(n+1, k+1)).*(S1(n+1, n-i-j-k+1))).abs())))	""		a(n) = sum(i=0, n, sum(j=0, n-i, sum(k=0, n-i-j, abs(stirling(n+1, i+1, 1)*stirling(n+1, j+1, 1)*stirling(n+1, k+1, 1)*stirling(n+1, n-i-j-k+1, 1)))))	_	_	_
+A383070	lingf	1	0,9,28,9,-18,-3	1,-4,-22,-11,14,3					0
+A383071	lingf	1	0,9,22,0,-2	1,-3,-15,-2,1					0
+A383072	lingf	1	0,9,9,-14,-10	1,-3,-8,6,6					0
+A383077	lingf	1	0,9,-2,-7,1,1	1,-3,-3,4,1,-1					0
+A383078	lingf	1	0,9,-2,-9,1,2	1,-2,-3,1,1					0
+A383079	lingf	1	0,9,-9,-5,4	1,-2,-1,1					0
+A383197	lingf	1	0,9,-22,0,2	1,-7,11,0,-1					0
+A383198	lingf	1	0,9,-9,-14,10	1,-7,4,10,-6					0
+A383199	lingf	1	0,9,2,-7,-1,1	1,-7,-3,6,1,-1					0
+A383200	lingf	1	0,9,2,-9,-1,2	1,-8,-3,9,1,-2					0
+A383201	lingf	1	0,9,9,-5,-4	1,-8,-9,5,4					0
+A383202	lingf	1	0,9,5,-6	1,-9,-5,6					0
+A383225	lingf	0	1,6,-1	1,-5,-5,1					0
+A383254	lambdan	0	n -> SU(0, n, k -> ZV(2*k+1).*(BI(2*k, k)).*(BI(n+1, k+1)))	""		a(n) = sum(k=0, n, (2*k+1)*binomial(2*k, k)*binomial(n+1, k+1))	_	_	_
+A383286	dirichcon2	1	new A276086()	0	new A055615()	1	Dirichlet convolution of A276086 (primorial base exp-function) with A055615 (Dirichlet inverse of n).
+A383343	lingf	0	0,0,1,1,4	1,-7,18,-22,13,-3					0
+A383415	lingf	0	7,1	1,-6,9,-4					0
+A383499	lambdan	0	n -> SU(0, n/2, k -> ZV(2*k+1).*(BI(2*k, k)).*(BI(n-k+1, k+1)))	""		a(n) = sum(k=0, n\2, (2*k+1)*binomial(2*k, k)*binomial(n-k+1, k+1))	_	_	_
+A383503	lambdan	0	n -> SU(0, n/3, k -> ZV(2*k+1).*(BI(2*k, k)).*(BI(n-2*k+1, k+1)))	""		a(n) = sum(k=0, n\3, (2*k+1)*binomial(2*k, k)*binomial(n-2*k+1, k+1))	_	_	_
+A383527	partsun	0	new A005773()			Partial sums of A005773.
+A383549	lingf	0	0,0,0,1,1,2,3,1,3,0,1	1,0,0,-2,0,-2,1,0,2,0,1					0
+A383608	lingf	0	1,1,-6,-2,8,8	1,0,-8,0,16					0
+A383623	lingf	0	0,0,2	1,-10,36,-56,32					0
+A383678	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(ZV(2*n).^(k)).*((S1(n+1, k+1)).abs()))	""		a(n) = sum(k=0, n, (k+1)*(2*n)^k*abs(stirling(n+1, k+1, 1)))	_	_	_
+A383719	lingf	5	0,0,0,0,0,1	1,-70,-1015,2436,1015,-70,-1					0
+A383720	lingf	0	3,-10,-5	1,-5,-5,1					0
+A383734	holos	0	[0,1,-35,35,-1]	2,98,3362	0	0	
+A383740	lingf	0	4,-36,-60,12	1,-12,-30,12,1					0
+A383741	lingf	0	5,-116,-522,348,29	1,-29,-174,174,29,-1					0
+A383778	lingf	0	0,1,-4,7	1,-8,24,-32,16					0
+A383839	lambdan	0	n -> SU(0, n, k -> (S1(n, k)).abs().*(S2(k+n, n)))	""		a(n) = sum(k=0, n, abs(stirling(n, k, 1))*stirling(k+n, n, 2))	_	_	_
+A383841	lambdan	0	n -> SU(0, n, k -> S2(k+3, 3).*(S2(n-k+3, 3)))	""		a(n) = sum(k=0, n, stirling(k+3, 3, 2)*stirling(n-k+3, 3, 2))	_	_	_
+A383842	lambdan	0	n -> SU(0, n, k -> S2(k+4, 4).*(S2(n-k+4, 4)))	""		a(n) = sum(k=0, n, stirling(k+4, 4, 2)*stirling(n-k+4, 4, 2))	_	_	_
+A383854	lingf	1	0,8,9,6,1	1,-4,6,-4,1					0
+A383862	lambdan	0	n -> SU(0, n, i -> SU(0, n-i, j -> S2(i+n, n).*(S2(j+n, n)).*(S2(2*n-i-j, n))))	""		a(n) = sum(i=0, n, sum(j=0, n-i, stirling(i+n, n, 2)*stirling(j+n, n, 2)*stirling(2*n-i-j, n, 2)))	_	_	_
+A383868	lingf	0	1,-8,26,-40,30	1,-10,40,-80,80,-32					0
+A383880	lambdan	0	n -> n == 0 ? ZV(1) : SU(0, n, k -> S2(n + k - 1, n - 1).*(S2(2*n - k - 1, n - 1)))	Sum_{k=0..n} Stirling2(n+k-1,n-1) * Stirling2(2*n-k-1,n-1) for n > 0.
+A383881	lambdan	0	n -> S2(4*n, 3*n)
+A383882	lambdan	0	n -> S2(5*n, 4*n)   
+A383883	lambdan	0	n -> n == 0 ? ZV(1) : SU(0, n, k -> S2(n + k - 1, n - 1).*(S2(2*n - k, n)))
+A383892	lambdan	0	n -> SU(0, n, k -> S2(k+4, 4).*(S2(n-k+5, 5)))	""		a(n) = sum(k=0, n, stirling(k+4, 4, 2)*stirling(n-k+5, 5, 2))	_	_	_
+A383893	lambdan	0	n -> SU(0, n, k -> S2(k+5, 5).*(S2(n-k+6, 6)))	""		a(n) = sum(k=0, n, stirling(k+5, 5, 2)*stirling(n-k+6, 6, 2))	_	_	_
+A383910	lambdan	0	n -> n == 0 ? ZV(1) : ZV(3).^(n).*(20).-(Z2(n + 1).*(15)).+(12)	a(n) = if(n==0, 1, 20*3^n-15*2^(n+1)+12);
+A383911	lambdan	0	n -> n == 0 ? ZV(1) : ZV(4).^(n).*(70).-(ZV(3).^(n).*(140)).+(Z2(n + 1).*(45)).-(20)	a(n) = if(n==0, 1, 70*4^n-140*3^n+45*2^(n+1)-20)
+A383912	lambdan	0	n -> ZV(3).^(n).*(10).-(Z2(n + 2).*(3)).+(3)	10*3^n - 3*2^(n+2) + 3.
+A383913	lambdan	0	n -> ZV(4).^(n).*(35).-(ZV(3).^(n + 1).*(20)).+(Z2(n + 1).*(15)).-(4)	a(n) = 35*4^n-20*3^(n+1)+15*2^(n+1)-4;
+A383916	lambdan	0	n -> SU(0, n, k ->BI(2*n, k).*(ZV(n - k).^(3*n)))
+A383917	lambdan	0	n -> SU(0, n, k ->BI(2*n, k).*(ZV(n - k).^(5*n)))
+A383928	holos	0	[[0],[-42467328,9437184],[-9043968,4915200],[1806336,172032],[142848,-23040],[1208,-560],[0,-1]]	1	0	0
+A383929	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(2*n, k)).*(ZV(n - k).^(3*n)))
+A383930	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(BI(2*n, k)).*(ZV(n - k).^(5*n)))
+A383978	filter	1	new LambdaSequence(0, n -> ZV(n/4).*(100).+(new int[] { 11, 33, 77, 99 }[n%4]))	PRIME	Primes with at least two identical trailing digits.
+A384012	lambdan	0	n -> SU(0, n, i -> SU(0, 2*n-i, j -> (S1(n+1, i+1).*(S1(n+1, j+1)).*(S1(n+1, 2*n-i-j+1))).abs()))	""		a(n) = sum(i=0, n, sum(j=0, 2*n-i, abs(stirling(n+1, i+1, 1)*stirling(n+1, j+1, 1)*stirling(n+1, 2*n-i-j+1, 1))))	_	_	_
+A384018	lambdan	0	n -> SU(0, n, i -> SU(0, 2*n-i, j -> (S1(n, i).*(S1(n, j)).*(S1(n, 2*n-i-j))).abs()))	""		a(n) = sum(i=0, n, sum(j=0, 2*n-i, abs(stirling(n, i, 1)*stirling(n, j, 1)*stirling(n, 2*n-i-j, 1))))	_	_	_
+A384019	lambdan	0	n -> n == 0 ? ZV(1) : SU(0, n, i -> SU(0, n - i, j -> S2(i + n - 1, n - 1).*(S2(j + n - 1, n - 1)).*(S2(2*n -1 - i - j, n - 1))))	a(n) = if(n==0, 1, sum(i=0, n, sum(j=0, n-i, stirling(i+n-1, n-1, 2)*stirling(j+n-1, n-1, 2)*stirling(2*n-1-i-j, n-1, 2))))
+A384022	lambdan	0	n -> SU(0, 2*n, i -> SU(0, 2*n-i, j -> S2(i+n, n).*(S2(j+n, n)).*(S2(3*n-i-j, n))))	""		a(n) = sum(i=0, 2*n, sum(j=0, 2*n-i, stirling(i+n, n, 2)*stirling(j+n, n,  2)*stirling(3*n-i-j, n, 2)))	_	_	_
+A384023	lambdan	0	n -> n == 0 ? ZV(1) : SU(0, 2*n, i -> SU(0, 2*n - i, j -> S2(i + n - 1, n - 1).*(S2(j + n - 1, n - 1)).*(S2(3*n - 1 - i - j, n - 1))))
+A384024	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(ZV(n).^(k)).*((S1(n+1, k+1)).abs()))	""		a(n) = sum(k=0, n, (k+1)*n^k*abs(stirling(n+1, k+1, 1)))	_	_	_
+A384025	lambdan	0	n -> SU(0, n, i -> SU(0, n-i, j -> (S1(n+1, i+1).*(S1(n+1, j+1)).*(S1(n+1, n-i-j+1))).abs()))	""		a(n) = sum(i=0, n, sum(j=0, n-i, abs(stirling(n+1, i+1, 1)*stirling(n+1, j+1, 1)*stirling(n+1, n-i-j+1, 1))))	_	_	_
+A384026	lambdan	0	n -> SU(0, n, i -> SU(0, n-i, j -> (S1(n, i).*(S1(n, j)).*(S1(n, n-i-j))).abs()))	""		a(n) = sum(i=0, n, sum(j=0, n-i, abs(stirling(n, i, 1)*stirling(n, j, 1)*stirling(n, n-i-j, 1))))	_	_	_
+A384027	lambdan	0	n -> SU(0, n, i -> SU(0, n-i, j -> SU(0, n-i-j, k -> (S1(n, i).*(S1(n, j)).*(S1(n, k)).*(S1(n, n-i-j-k))).abs())))	""		a(n) = sum(i=0, n, sum(j=0, n-i, sum(k=0, n-i-j, abs(stirling(n, i, 1)*stirling(n, j, 1)*stirling(n, k, 1)*stirling(n, n-i-j-k, 1)))))	_	_	_
+A384029	lambdan	0	n -> SU(0, n, i -> SU(0, 3*n-i, j -> SU(0, 3*n-i-j, k -> (S1(n, i).*(S1(n, j)).*(S1(n, k)).*(S1(n, 3*n-i-j-k))).abs())))	""		a(n) = sum(i=0, n, sum(j=0, 3*n-i, sum(k=0, 3*n-i-j, abs(stirling(n, i, 1)*stirling(n, j, 1)*stirling(n, k, 1)*stirling(n, 3*n-i-j-k, 1)))))	_	_	_
+A384030	lambdan	0	n -> SU(0, n, i -> SU(0, 2*n-i, j -> SU(0, 2*n-i-j, k -> (S1(n, i).*(S1(n, j)).*(S1(n, k)).*(S1(n, 2*n-i-j-k))).abs())))	""		a(n) = sum(i=0, n, sum(j=0, 2*n-i, sum(k=0, 2*n-i-j, abs(stirling(n, i, 1)*stirling(n, j, 1)*stirling(n, k, 1)*stirling(n, 2*n-i-j-k, 1)))))	_	_	_
+A384031	lambdan	0	n -> SU(0, n, i -> SU(0, 3*n-i, j -> SU(0, 3*n-i-j, k -> (S1(n+1, i+1).*(S1(n+1, j+1)).*(S1(n+1, k+1)).*(S1(n+1, 3*n-i-j-k+1))).abs())))	""		a(n) = sum(i=0, n, sum(j=0, 3*n-i, sum(k=0, 3*n-i-j, abs(stirling(n+1, i+1, 1)*stirling(n+1, j+1, 1)*stirling(n+1, k+1, 1)*stirling(n+1, 3*n-i-j-k+1, 1)))))	_	_	_
+A384032	lambdan	0	n -> SU(0, n, i -> SU(0, 2*n-i, j -> SU(0, 2*n-i-j, k -> (S1(n+1, i+1).*(S1(n+1, j+1)).*(S1(n+1, k+1)).*(S1(n+1, 2*n-i-j-k+1))).abs())))	""		a(n) = sum(i=0, n, sum(j=0, 2*n-i, sum(k=0, 2*n-i-j, abs(stirling(n+1, i+1, 1)*stirling(n+1, j+1, 1)*stirling(n+1, k+1, 1)*stirling(n+1, 2*n-i-j-k+1, 1)))))	_	_	_
+A384039	lambdan	1	n -> CNT(1, n, k -> Predicates.POWERFUL.is(GCD(n, k)))	The number of integers k from 1 to n such that gcd(n,k) is a powerful number.	nonn,easy,mult,new	1..10000	nyi	_Amiram Eldar_
+---- 2025-05-22 22:54:41
+A383797	lambdan	0	n-> BI(n, 5).*(10).+(BI(n, 3).*(4)).+(n)	a(n) = 10*binomial(n,5) + 4*binomial(n,3) + n
+A383822	decexp	2	() -> CV(2).log().*(16)./(CV(2).log().*(8).-(5))	16*log(2)/(8*log(2) - 5).	nonn,cons,new	2..101	nyi	_Stefano Spezia_
+A383824	decexp	1	() -> CV(2).log().*(12)./(CV(2).log().*(6).-(3))	12*log(2)/(6*log(2) - 3).	nonn,cons,new	1..100	nyi	_Stefano Spezia_
+A383840	holos	0	[0,14400,-21076,7645,-1023,55,-1]	1	0	0
+A383853	lambdan	0	n -> SU(0, n, k -> BI(2*n, k).*(ZV(n - k).^(4*n)))

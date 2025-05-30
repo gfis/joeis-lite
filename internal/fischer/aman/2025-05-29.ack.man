@@ -1,0 +1,247 @@
+---- 2025-05-29 15:35:45
+A073464	lambdan	2	n -> PHI(n).mod(PI(n))
+A074942	lambdan	1	n -> PHI(n).modZ(3)
+A079578	lambdan	1	n -> ZV(n).+(D053669(n))		a(n)=n+Annn(n)		D053669
+A084300	lambdan	1	n -> PHI(n).modZ(6)
+A088792	poly	0	"[1],[1,-1]"	"A,<1,sub,p1,/,A,/"	g.f. A(x) satisfying A(x)^2 = A(x*A(x)) / (1-x) with A(0) = 1.
+A090351	poly	0	"[1],[1,-1]"	"x,p1,/,sub,^2,p1,/,A,^2,/"
+A090352	poly	0	"[1],[1,-1]"	"x,p1,/,sub,^2,p1,^2,/,A,^2,/"
+A090353	poly	0	"[1],[1,-1]"	"x,p1,/,sub,^3,p1,/,A,^3,/"	A(x)^4 = A(x/(1-x))^3/(1-x).
+A090355	poly	0	"[1],[1,-1]"	"x,p1,/,sub,^3,p1,^3,/,A,^3,/"	A(x)^4 = A(x/(1-x))^3/(1-x)^3.
+A090356	poly	0	"[1],[1,-1]"	"x,p1,/,sub,^4,p1,/,A,^4,/"	A(x)^5 = A(x/(1-x))^4/(1-x).	G.f. A(x) satisfies A(x)^5 = BINOMIAL(A(x)^4);
+A090357	poly	0	"[1],[1,-1]"	"x,p1,/,sub,^4,p1,^4,/,A,^4,/"	A(x)^5 = A(x/(1-x))^4/(1-x)^4.
+A090358	poly	0	"[1],[1,-1]"	"x,p1,/,sub,^5,p1,/,A,^5,/"	A(x)^6 = A(x/(1-x))^5/(1-x).	G.f. satisfies A^6 = BINOMIAL(A^5).
+A097172	polyx	3	"[0,0,0,3],[0,-1]"	"p1,lambertW,neg,p1,lambertW,neg,lambertW,-,p1,lambertW,neg,lambertW,^2,-"	0	1
+A097541	lambdan	1	n -> SU(1, n - 1, k -> JSz(2*n, k).*(k))
+A097542	lambdan	1	n -> SU(1, 2*n-1, k -> JSz(4*n, k).*(k))
+A097543	lambdan	1	n -> SU(1, n - 1, k -> JSz(2*n, k).*(k).*(k))
+A097544	lambdan	1	n -> SU(1, 2*n-1, k -> JSz(4*n, k).*(k).*(k))
+A101053	lambdan	0	n -> RU(0, n, k -> new Q(BELL(k), FA(k))).*(FA(n)).num()	a(n) = n! * Sum_{k=0..n} Bell(k)/k! (cf. F000110).
+A109213	multia	1	"1,2"	(self, n) -> self.a(n - 2).*(Functions.REVERSE.z(self.a(n - 1)))	Product of a(n-2) and digit reversal of a(n-1).	base,nonn	1..13	nyi	_Zak Seidov_
+A109216	lambdan	0	n -> LPF(Z2(2*n + 1).+(ZV(2*n + 1).^(2)))	Smallest factor of 2^(2n+1)+(2n+1)^2.	base,nonn	0..100	nyi	_Zak Seidov_
+A113649	lambdan	1	n -> FI(n - JS(n, 5)).mod(ZV(n).^(2))
+A113650	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return FI(p - JS(p, 5)).mod(ZV(p).^(2)); }
+A117446	trilambn	0	0	0	(n, k) -> BI(JS(k, 3), n - k)
+A117448	lambdan	0	n -> SU(0, n/2, k -> BI(JS(k, 3), n - 2*k))
+A117611	lambdan	0	n -> SU(0, n, k -> JSz(BI(n,k), 3).*(ZV(10).^(k)))
+A117939	trilambn	0	0	0	(n, k) -> SU(0, n, j -> JSz(BI(n, j), 3).*(JSz(BI(n - j, k), 3)))
+A117944	trilambn	0	0	0	(n, k) -> SU(0, n, j -> JSz(BI(n, j), 3).*(JSz(BI(n - j, k), 3))).and(ZV(1))
+A117946	lambdan	0	n -> SU(0, n, k -> JSz(n - k, 3).*(JS(BI(n, k), ZV(3))))
+A117947	trilambn	0	0	0	(n, k) -> JSz(BI(n, k), 3)	where JS(j/p) is the Legendre symbol of j and p.
+A117964	lambdan	0	n -> SU(0, n/2, k -> JSz(BI(n - k, k), 3)).and(ZV(1))
+A117976	lambdan	0	n -> SU(0, n, k -> JSz(BI(n,k), 3).*(ZV(2).^(k)))	where JS(j/p) is the Legendre symbol of j and p.
+A117977	lambdan	0	n -> SU(0, n, k -> JSz(BI(n,k), 3).*(ZV(3).^(k)))	where JS(j/p) is the Legendre symbol of j and p.
+A117979	lambdan	0	n -> SU(0, 9*n, k -> JSz(BI(9*n, k), 3).*(ZV(10).^(k)))
+A117980	lambdan	0	n -> SU(0, n, k -> JSz(BI(n,k), 3).*(Z_1(k)))
+A117981	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(JSz(BI(n,k), 3)).*(Z2(k)))
+A117982	lambdan	0	n -> SU(0, 3*n, k -> Z_1(3*n - k).*(JSz(BI(3*n, k), 3)).*(Z2(k)))
+A117983	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(JSz(BI(n, k), 3)).*(ZV(3).^(k)))
+A117984	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(JSz(BI(n, k), 3)).*(ZV(4).^(k)))
+A118319	lambdan	1	n -> ZV(n).+(D006519(n)).-(F000120(n))
+A129526	sintrif	2	(term, n) -> term.+(FI(n/2 + 2))./(2)	""	new A000358()	a(n) = [J000358(n)+Fib(floor(n/2)+2)]/2. - _Petros Hadjicostas_, Jan 04 2017
+A153125	trilambn	1	1	1	(n, k) -> ZV(n + 3*(k - 1)).-(ZV(1 - (n&1)).*(k == n ? 1 : 0))	- (1 - n Mod 2)*delta_{n,k}, 1<=k<=n; delta is the Kronecker symbol.
+A157412	trilambn	2	2	2	(n, m) -> JSz(PM(n), PM(m))
+A165463	filnum	0	1	k -> { final int n = k/12; return k%12 == 7 && SU(0, 4*n + 2, i -> JSz(i, 12*n + 7)).isZero(); }	form 12n+7 for which Sum_{i=0, (4n+2)} JS(i,12n+7) = 0
+A165603	filnum	0	1	k -> { final int n = k/4; return k%4 == 3 && SU(0, 2*n + 1, i -> JSz(i, 4*n + 3)).isZero(); }	form 4n+3 for which Sum_{i=0, (2n+1)} JS(i,4n+3) = 0
+A166049	filter	1	new A016813()	(k, v) -> CNT(1, 2*k, u -> SU(1, u, i -> JSz(i, 4*k + 1)).compareTo(ZV(0)) < 0).isZero()	is never negative for any u in range [1,(2n)], where J(i,k) is the Jacobi symbol.
+A166050	lambdan	0	n -> SU(0, 2*n + 1, i -> JSz(i, 12*n + 7))
+A166086	lambdan	0	n -> CNT(1, 4*n + 3, u -> SU(1, u, i -> JSz(i, 4*n + 3)).isZero()).-(1)	obtains value zero when u ranges from 1 to (4n+3)
+A166088	filter	1	new A005408()	(k, v) -> CNT(1, 2*k, u -> SU(1, u, i -> JSz(i, 2*k + 1)).isZero()).equals(ZV(8))	obtains value zero exactly 8 times, when u ranges from 1 to (2n+1). Here J(i,k) is the Jacobi symbol.
+A166100	lambdan	0	n -> SU(1, 2*n + 1, i -> (JS(i, 2*n + 1) == +1 ? ZV(i) : ZV(0)))	Sum of those positive i <= 2n+1, for which JS(i,2n+1)=+1. Here J(i,k) is the Jacobi symbol.
+A166405	lambdan	0	n -> SU(1, 2*n + 1, i -> (JS(i, 2*n + 1) == -1 ? ZV(i) : ZV(0)))	Sum of those positive i <= 2n+1, for which JS(i,2n+1)=-1. Here J(i,k) is the Jacobi symbol.
+A175880	multia	1	"1,2"	(self, n) -> ZV(n).-(E010673(n + 1).*(self.a(CEIL(n, 2))))
+A178153	lambdan	2	n -> { final int p = PMi(n); return SU(1, (p-1)/2, j -> JSz(j, p)); }
+A186185	poly	0	"[1],[1,-1],A001764"	"1,1,x,p1,/,S,<1,p1,/,-,/"
+A191363	filnum	0	1	k -> SIGMA(k).equals(ZV(2*k - 2))	Numbers m such that sigma(m) = 2*m - 2.
+A211378	parmof2	0	A056193	19
+A215283	lambdan	1	n -> SU(1, n, k -> KSz(n-k, k))
+A215284	filnum	1	1	m -> SU(1, m, k -> KSz(m - k, k)).isZero()
+A215285	filnum	1	1	m -> SU(1, m, k -> KSz(m - k, k)).equals(PHI(m))
+A215409	parmof2	0	A056193	3
+A222113	parmof2	0	A056193	16
+A222117	parmof2	0	A056193	15
+A222361	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return FI(p).-(JS(p, 5))./(p); }
+A244513	lambdan	1	n -> JSz(PM(n), PM(n + 1))
+A261872	lambdan	1	n -> PHI(n).modZ(5)
+A266204	parmof2	0	A056193	5
+A266205	parmof2	0	A056193	6
+A271554	parmof2	0	A056193	7
+A271555	parmof2	0	A056193	8
+A271556	parmof2	0	A056193	9
+A271557	parmof2	0	A056193	10
+A271558	parmof2	0	A056193	11
+A271559	parmof2	0	A056193	12
+A271560	parmof2	0	A056193	13
+A271561	parmof2	0	A056193	14
+A271562	parmof2	0	A056193	17
+A271975	parmof2	0	A056193	18
+A271976	parmof2	0	A056193	20
+A274504	filter	1	new A000040()	p -> KS(p, 14) != 1
+A278720	lambdan	1	n -> { final int p = PMi(n); return SU(1, p - 3, k -> KSz(ZV(k).*(k+1).*(k+2), p)).negate(); }
+A294905	sintrif	1	(term, n) -> ZV(term.compareTo(F000120(n)) <= 0 ? 1 : 0)	""	new A292257()	a(n) = [J292257(n) <= F000120(n)]
+A307500	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(k, n - k)).*(F000041(k)))	0,1
+A307501	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(k, n - k)).*(F000009(k)))	0,1
+A307816	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> self.a(n - k).*(SD(k, d -> self.a(d).*(self.a(k/d)))))	1..26   nyi
+A323510	multraf	1	(self, n) -> ZV(self.s(0).compareTo(self.s(1)) < 0 ? 1 : 0)	""	new A005179(), new A037019()
+A332623	multia	1	""	(self, n) -> SU(1, n, k -> ZV(CEIL(n,k)).^(2))	nonn    1..50   nyi
+A332682	multia	1	""	(self, n) -> SU(1, n, k -> Z_1(k+1).*(CEIL(n,k)))	nonn    1..10000        nyi
+A333494	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> self.a(k).*(CEIL(n,k)))	nonn    1..29   nyi
+A333505	multia	1	""	(self, n) -> SU(1, n, k -> Z_1(k+1).*(k).*(CEIL(n,k)))	sign    1..75   nyi
+A335812	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(S2(n, k)).*(FA(k)).*(F000041(k)))	0,1,2
+A335813	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(S2(n, k)).*(FA(k)).*(F000009(k)))	0,1,2
+A338756	lambdan	1	n -> { final int p = PMi(n); return SU(1, p - 3, k -> ZV(1+KS(k, p)).*(1 + KS(k + 1, p)).*(1 + KS(k + 2, p))./(8)); }
+A340823	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(Functions.BELL.z(2*n - k)).*(ZV(- n).^(k)))	Sum_{k=0..n} binomial(n,k) * Bell(2*n-k) * (-n)^k.
+A348530	multia	1	"1"	(self, n) -> SU(1, CEIL(n,2), k -> self.a(k).*(self.a(n - k)))	. nonn    1..2238 nyi
+A348952	multia	1	""	(self, n) -> SD(n, d -> d*d >= n ? ZV(0) : Z_1(d + n/d)).negate()	sign    1..20000        nyi
+A348953	multia	1	""	(self, n) -> SD(n, d -> d*d >= n ? ZV(0) : Z_1(d + n/d).*(d)).negate()	sign    1..20000        nyi
+A348955	multia	1	"1"	(self, n) -> SD(n, d -> d*d > n ? ZV(0) : self.a(d).^(2))	nonn    1..20000        nyi
+A351989	lambdan	1	n -> { final int p = Functions.PRIME.i(n); return FI(p - JS(p, 5)).mod(ZV(p).^(3)); }
+A353498	lambdan	1	n -> n == 1 ? ZV(0) : ZV(E053574(n).compareTo(D007814(n-1)) <= 0 ? 1 : 0)
+A353768	lambdan	1	n -> PHI(n).modZ(4)
+A354029	lambdan	1	n -> ZV(E105824(n).isZero() ? 1 : 0).*(ZV(PHI(n).mod(4) == 2 ? 1 : 0))	""
+A358061	lambdan	1	n -> PHI(n).mod(TAU(n))
+A367544	lambdan	0	n -> SU(0, n, k -> Z2(k).*(Math.abs(KS(n - k, k))))
+A367545	lambdan	0	n -> SU(0, n, k -> ZV(-2).^(k).*(Math.abs(KS(n - k, k))))
+A367546	lambdan	0	n -> SU(0, n, k -> ZV(n).^(k).*(Math.abs(KS(n - k, k))))
+A370124	lambdan	0	n -> n <= 1 ? ZV(n) : ZV(F020639(F003415(n)).equals(D053669(n)) ? 1 : 0)
+A372626	multia	1	"1"	(self, n) -> SD(n, d -> d*d > n ? ZV(0) : Z_1(n/d + 1).*(self.a(d)))
+A372724	filnum	1	0	k -> ZV(k).equals(SU(2, k + 2, j -> JSz(k, PM(j))))	such that k = Sum_{j=2, k+2} JS(k/PM(j)) where JS(n/p) is the Legendre symbol. Fixed points of ?372725.
+A372725	lambdan	0	n -> SU(2, n + 2, k -> JSz(n, PM(k)))
+A372728	trilambn	0	0	0	(n, k) -> KSz(n, k)
+A372811	polyz	0	"[1],[0,2]"	"p1,A,*,cosh,<1,cosh"	0	1	0	2	e.g.f. C(x) = cosh( x*cosh(2*x*C(x)) ), where a(n) is the coefficient of x^(2*n)/(2*n)! in C(x) for n >= 0.
+A372812	polyz	0	"[1],[0,2]"	"p1,1,A,^2,+,^1/2,*,cosh,<1,sinh"	0	1	1	2	e.g.f. S(x) = sinh( x*cosh(2*x*sqrt(1 + S(x)^2) ) )
+A372813	polyz	0	"[1],[0,2]"	"p1,A,<1,cosh,*,cosh"	0	1	0	2	e.g.f. D(x) = cosh( 2*x*cosh(x*D(x)) ), where a(n) is the coefficient of x^(2*n)/(2*n)! in D(x) for n >= 0.
+A372814	polyz	0	"[1],[0,2]"	"p1,1,4,A,^2,*,+,^1/2,<1,cosh,*,sinh,2,/"	0	1	1	2	e.g.f. T(x) = (1/2) * sinh( 2*x*cosh( x*sqrt(1 + 4*T(x)^2) ) )
+A372877	trilambn	0	0	0	(n, k) -> (k & 1) == 1 ? JSz(n, k) : ZV(0)		(n, k) = J(n, k) where J(n, k) is the Jacobi symbol (n / k) provided k is odd and otherwise 0.
+A373225	filter	0	new A000040()	(k, p) -> SU(1, k, j -> KSz(p, PM(j)).*(KSz(PM(j), p))).isZero()
+A373834	lambdan	0	n -> n <= 0 ? ZV(1) : ZV(E373832(n).isZero() ? 1 : 0)
+A374130	sintrif	1	(term, n) -> ZV(term.equals(ZV(1)) ? 1 : 0)	""	new A268387()	a(n) = [J268387(n) = 1]
+A376873	lambdan	0	n -> FA(n).*(E187646(n))		a(n)=n!*Annn(n)		E187646
+A377220	polyxa	0	"[1]"	"x,S,<1,rev,x,/"	1	0	new A004009()	Expansion of (1/x) * series_reversion(x*E_4(x))
+A377973	polya	0	"[1]"	"2,x,S,*,x,S,^2,-,^1/96"	new A006352()	Expansion of the 96th root of the series 2*E_2(x) - E_2(x)^2
+A377974	polya	0	"[1]"	"2,x,S,*,x,T,-,^1/1920"	new A004009(), new A008410()	Expansion of the 1920th root of the series 2*E_4(x) - E_8(x)
+A377975	polya	0	"[1]"	"2,x,S,*,x,S,^2,-,^1/6048"	new A013973()	Expansion of the 6048th root of the series 2*E_6(x) - E_6(x)^2
+A377976	polya	0	"[1]"	"2,x,S,*,x,T,-,^1/48"	new A006352(), new A004009()	Expansion of the 48th root of the series 2*E_2(x) - E_4(x)
+A377977	polya	0	"[1]"	"3,x,S,*,x,T,2,*,-,^1/288"	new A004009(), new A013973()	Expansion of the 288th root of the series 3*E_4(x) - 2*E_6(x)
+A378921	lambdan	0	n -> { final int n2 = CEIL(n, 2); return Z2(n*n).-(Z2(n2*n2)); }
+A379361	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), D000688(k))).num()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	D000688
+A379362	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), D000688(k))).den()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	D000688
+A379365	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), D018804(k))).num()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	D018804
+A379366	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), D018804(k))).den()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	D018804
+A379369	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), F007947(k))).num()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	F007947
+A379370	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), F007947(k))).den()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	F007947
+A379515	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), F034448(k))).num()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	F034448
+A379516	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), F034448(k))).den()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	F034448
+A379519	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), F047994(k))).num()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	F047994
+A379520	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), F047994(k))).den()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	F047994
+A379621	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), E206369(k))).num()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	E206369
+A379622	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), E206369(k))).den()	Sum_{k=(\d+),n}(-(\d+))^(k+(\d+))/Annn(k))	1,1,1	E206369
+A379958	sintrif	1	(term, n) -> ZV(term.compareTo(F001221(n)) > 0 ? 1 : 0)	""	new A086971()	a(n) = [J086971(n) > F001221(n)]
+A379959	sintrif	1	(term, n) -> ZV(term.compareTo(ZV(0)) < 0 ? 1 : 0)	""	new A295302()	a(n) = [J295302(n) < 0]
+A379970	lambdan	1	n -> ZV(E280292(n).equals(ZV(2)) ? 1 : 0)
+A380345	lambdan	1	n -> ZV(n).+(D056239(n))		a(n)=n+Annn(n)		D056239
+A380454	lambdan	1	n -> ZV(D005361(n).compareTo(ZV(3)) > 0 ? 1 : 0)
+A380484	lambdan	0	n -> ZV(n % 30 <= 5 ? 1 : 0)
+A380534	lambdan	1	n -> ZV(E276088(n).compareTo(ZV(1)) > 0 ? 1 : 0)
+A381513	holos	0	[0,-11025,12916,-1974,84,-1]	1	0	0
+A381857	sintrif	0	(term, n) -> Z2(n*n).-(term)	""	new A006506()
+A382066	lambdan	2	n -> SU(1, PMi(n) - 1, k -> JSz(-k, PMi(n)).*(ZV(3).^(k - 1)./(2)))
+A383196	holos	0	[[0],[-504,573,-216,27],[276,-389,180,-27],[-36,75,-48,9],[0,-3,4,-1]]	0,0,0,1	0	1
+A383277	lambdan	1	n -> CND(n, d -> F034444(d).*(d).equals(ZV(n)))	The number of divisors d of n for which F034444(d)*d is equal to n.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A383302	lambdan	0	n -> ZV(E276087(n).mod(E327859(n)).isZero() ? 1 : 0)
+A383874	lambdan	0	n -> FA(3*n + 1).*(FA(3*n))./(FA(2*n).*(FA(n + 1).^(2)))
+A384335	polyz	0	"[1],[0,6]"	"p1,atanh,7,*,cosh"	0	0	0	2
+A384362	arrlamb	0	0	0	-1	(n,k) -> SU(0, k*n, i -> ZV(2).^(i).*(SU(0, i, j -> Z_1(j).*(BI(i, j)).*(BI(i - j, n).^(k)))))	Sum_{i=0..k*n} 2^i * Sum_{j=0..i} (-1)^j * binomial(i,j) * binomial(i-j,n)^k.	nonn,tabl,new	0..44	nyi
+A384364	arrlamb	0	0	0	-1	(n,k) -> SU(0, k*n, i -> ZV(3).^(i).*(SU(0, i, j -> Z_1(j).*(BI(i, j)).*(BI(i - j, n).^(k)))))	Sum_{i=0..k*n} 3^i * Sum_{j=0..i} (-1)^j * binomial(i,j) * binomial(i-j,n)^k.	nonn,tabl,new	0..44	nyi
+A384367	holos	0	[0,1,2,1,-1]	1,4,6	0	0	a(n) = a(n-1)+2*a(n-2)+a(n-3) with a(0)=1, a(1)=4, a(2) = 6.
+A384374	holos	0	[0,288,-1560,3644,-4814,3963,-2109,726,-156,19,-1]	0,0,0,0,0,30,390,3080,19236	0	0
+---- 2025-05-29 17:39:44
+A352330	filter	1	new A000290()	v -> Predicates.CUBE.is(ARD(v))	Squares whose arithmetic derivative (F003415) is a cube.	nonn	1..24	nyi	_Marius A. Burtea_
+A352490	filnum	1	1	k -> D122111(k).compareTo(ZV(k)) <  0	Nonexcedance set of D122111. Numbers k > D122111(k), where D122111 represents partition conjugation using Heinz numbers.	nonn	1..2000	nyi	_Gus Wiseman_
+A352580	filnum	1	1	k -> { final Z fk0 = F001414(k); final Z fk1 = F001414(k + 1); return PP(fk0.*(fk1).+(fk0).+(fk1)); }	F001414(k)*F001414(k+1)+F001414(k)+F001414(k+1) is prime.	nonn	1..10000	nyi	_J. M. Bergot_ and _Robert Israel_
+A352581	filnum	1	1	k -> { final Z fk0 = F001414(k); final Z fk1 = F001414(k + 1); return fk1.equals(fk0.+(1)) && PP(fk0.+(3).*(fk0).+(1)); }	F001414(k+1) = F001414(k)+1 and F001414(k)^2+3*F001414(k)+1 is prime.	nonn	1..1000	nyi	_J. M. Bergot_ and _Robert Israel_
+A352607	tablamb	0	0	n -> new Integer[] {0, n/2}	(n, k) -> BELL(k).*(SU(0, k, j -> Z_1(k + j ).*(BI(n, n - k + j)).*(S2(n - k + j, j))))	for n >= 0 and 0 <= k <= floor(n/2).	nonn,tabl	0..48	nyi	_Peter Luschny_ and _M‚ąö¬©lika Tebni_
+A352778	filnum	1	1	k -> { final int wk = Functions.DIGIT_SUM.i(2, k); return wk <  Functions.DIGIT_SUM.i(2, k + wk); }	> w(k), where w(k) is the binary weight of k, F000120(k).	nonn,base,easy	1..73	nyi	_Ctibor O. Zizka_
+A352840	multia	1	"0,1"	(self, n) -> !self.a(n - 1).testBit(0) ? self.a(n - 1)./(2) : self.a(n - 1).+(self.a(n - 1 - self.a(n - 1).intValueExact()))	a(1) = 0; a(2) = 1; thereafter a(n) = a(n-1)/2 if a(n-1) is even, otherwise a(n) = a(n-1) + a((n-1)-a(n-1)).	nonn,look,easy	1..10000	nyi	_Gavin Lupo_
+---- 2025-05-29 17:46:26
+A352475	filnum	1	1	k -> GCD(TAU(k), ZV(6)).equals(ZV(1))	Numbers m such that gcd(d(m),6) = 1.	nonn,easy	1..10000	nyi	_Michael De Vlieger_
+A352487	filnum	1	1	k -> ZV(k).compareTo(D122111(k)) <  0	Excedance set of D122111. Numbers k < D122111(k), where D122111 represents partition conjugation using Heinz numbers.	nonn	1..10000	nyi	_Gus Wiseman_
+A352488	filnum	1	1	k -> ZV(k).compareTo(D122111(k)) >= 0	Weak nonexcedance set of D122111. Numbers k >= D122111(k), where D122111 represents partition conjugation using Heinz numbers.	nonn	1..2000	nyi	_Gus Wiseman_
+A352489	filnum	1	1	k -> ZV(k).compareTo(D122111(k)) <= 0	Weak excedance set of D122111. Numbers k <= D122111(k), where D122111 represents partition conjugation using Heinz numbers.	nonn	1..10000	nyi	_Gus Wiseman_
+A352967	arrlamb	0	0	0	1	(i, j) -> { final int minij = Functions.MIN.i(i, j); final int maxij = Functions.MAX.i(i, j); return minij < maxij && maxij <= 2*minij ? ZV(i - j).abs() : ZV(0); }	Array read by antidiagonals: A(i, j) = abs(i - j) if min(i, j) < max(i, j) <= 2*min(i, j), and otherwise 0, with i >= 0 and j >= 0.	nonn,tabl	0..90	nyi
+---- 2025-05-29 18:47:42
+A352776	filnum	1	0	k -> { final int wk = Functions.DIGIT_SUM.i(2, k); return wk == Functions.DIGIT_SUM.i(2, k + wk); }	= w(k), where w(k) is the binary weight of k, F000120(k).	nonn,base,easy	1..69	nyi	_Ctibor O. Zizka_
+A352785	filnum	1	0	k -> { final int wk = Functions.DIGIT_SUM.i(2, k); return wk == Functions.DIGIT_SUM.i(2, k - wk); }	= w(k), where w(k) is the binary weight of k, F000120(k).	nonn,base,easy	1..10000	nyi	_Ctibor O. Zizka_
+A378215	sintrif	1	(term, n) -> term.and(ZV(1))	""	new A378213()	1	Parity of A378213, where A378213 is the Dirichlet inverse of A140773.
+A383868	polyx	0	"[1],[0,2],[0,0,1]"	"p1,exp,1,p2,2,/,+,^2,*"	0	1
+A384040	mulr	1	(p, e) -> e >= 3 ? (p.^(3).-(p.^(2)).+(1)).*(p.^(e - 3)) : (e == 2 ? p.*(p.-(1)) : p.-(1))
+---- 2025-05-29 19:01:20
+A088758	filnum	1	0	k -> PP(ZV(4*k + 1).^(2).+(ZV(4*k + 2).^(2)))	Numbers k such that (4*k + 1)^2 + (4*k + 2)^2 is prime.	nonn,easy	1..10000	nyi	_Ray Chandler_
+A088759	filnum	1	0	k -> PP(ZV(4*k + 3).^(2).+(ZV(4*k + 2).^(2)))	Numbers n such that (4n+3)^2 + (4n+2)^2 is prime.	nonn,easy	1..5000	nyi	_Ray Chandler_
+A353012	filnum	1	1	k -> { final int d = Functions.TAU.i(k); return Functions.GCD.i(k - d, k*d) >= d*d; }	Numbers N such that gcd(N - d, N*d) >= d^2, where d = F000005(N) is the number of divisors of N.	nonn	1..10000	nyi	_M. F. Hasler_
+A353033	filnum	1	1	k -> TAU(k).equals(TAU(k - 1).*(2)) && SIGMA(k).equals(SIGMA(k - 1).*(2))	= 2 * tau(m - 1) and simultaneously sigma(m) = 2 * sigma(m - 1)
+A353034	filnum	1	1	k -> TAU(k).equals(TAU(k + 1).*(2)) && SIGMA(k).equals(SIGMA(k + 1).*(2))	= 2 * tau(m + 1) and simultaneously sigma(m) = 2 * sigma(m + 1)
+---- 2025-05-29 19:22:17
+A353062	filnum	1	1	k -> { final Z k2 = ZV(k).*(k); return SIGMA(k2).mod(TAU(k2)).isZero() && !Predicates.PRIME_POWER.is(k); }	(sigma(n^2)%numdiv(n^2)==0 && !isprimepower(n)
+A384300	holos	0	[[0],[-2520,11250,-18125,12500,-3125],[60,-81,27]]	1,2	0	0	a(n) = Product_{k=0..2*n-1} (3*n+k-2).	nonn,easy,new	0..12	nyi
+A384301	holos	0	[[0],[-720,4500,-10000,9375,-3125],[24,-54,27]]	1,6	0	0	a(n) = Product_{k=0..2*n-1} (3*n+k-1).	nonn,easy,new	0..12	nyi
+A384302	holos	0	[[0],[-120,1250,-4375,6250,-3125],[6,-27,27]]	1,12	0	0	a(n) = Product_{k=0..2*n-1} (3*n+k).	nonn,easy,new	0..12	nyi
+A384303	holos	0	[[0],[-120,1250,-4375,6250,-3125],[6,-27,27]]	1,20	0	0	a(n) = Product_{k=0..2*n-1} (3*n+k+1).	nonn,easy,new	0..12	nyi
+---- 2025-05-29 20:26:20
+A083346	mulr	1	(p, e) -> ZV(e).mod(p).isZero() ? ZV(1) : p	1 iff p|e, p otherwise
+A293303	mulr	1	(p, e) -> SD(e, d -> F008683(e/d).*(p.^(d)))
+A351346	mulr	1	(p, e) -> Functions.PELL.z(e + 1)
+A351347	mulr	1	(p, e) -> Functions.JACOBSTHAL.z(e + 1)
+A361174	mulr	1	(p, e) -> SD(e, d -> Predicates.SQUARE_FREE.is(d) ? p.^(d) : ZV(0))
+A366763	mulr	1	(p, e) -> MAX(e, 2)
+A366765	mulr	1	(p, e) -> e <= 2 ? p : p.^(e)	p if e <= 2 and p^e otherwise
+A368105	mulr	1	(p, e) -> e == 2 || (e&1) == 1 ? ZV(e) : ZV(e - 1)	e if e = 2 or e is odd, and e-1 otherwise
+A368172	mulr	1	(p, e) -> e <= 2 ? ZV(1) : ((e&1) == 1 ? ZV(e + 1) : ZV(e))	1 if e <= 2, a(p^e) = e+1 if e is odd and e > 1, and a(p^e) = e otherwise
+A368328	mulr	1	(p, e) -> ZV(e).compareTo(p) <= 0 ? ZV(1) : ZV(e + 1).-(p)	1 if e <= p, and a(p^e) = e - p + 1 if e > p
+A368329	mulr	1	(p, e) -> ZV(e).compareTo(p) <= 0 ? ZV(1) : p.^(e)	1 if e <= p, and a(p^e) = p^e if e > p
+A368330	mulr	1	(p, e) -> ZV(e).compareTo(p) <= 0 ? ZV(1) : ZV(2)	1 if e <= p, and a(p^e) = 2 if e > p
+A368331	mulr	1	(p, e) -> ZV(e).compareTo(p) <= 0 ? ZV(1) : ZV(e + 1)	1 if e <= p, and a(p^e) = e+1 if e > p
+A368470	mulr	1	(p, e) -> (e&1) == 1 ? ZV((e + 3)/2) : ZV(1)
+A368883	mulr	1	(p, e) -> e % 4 == 1 || e % 4 == 2 ? ZV(2) : (e % 4 == 3 ? ZV(3) : ZV(1))	2 if e == 1 or 2 (mod 4), 3 if e == 3 (mod 4), and 1 if e == 0 (mod 4)
+A368884	mulr	1	(p, e) -> e == 2 ? p.^(2) : ZV(1)	p^2 if e = 2, and 1 otherwise
+A368885	mulr	1	(p, e) -> e == 2 ? ZV(2) : ZV(1)	2 if e = 2, and 1 otherwise
+A368977	mulr	1	(p, e) -> (e&1) == 1 ? ZV((e + 3)/2) : ZV(e/4).*(2).+(1)
+A369307	mulr	1	(p, e) -> (e&1) == 1 ? ZV(2) : ZV(e/2)
+A369310	mulr	1	(p, e) -> e <= 3 ? ZV(2) : ZV(e - 1)	2 if e <= 3, and e-1 otherwise
+A369319	mulr	1	(p, e) -> SU(1, e, k -> p.^(Functions.GCD.i(e, k)))
+A370598	mulr	1	(p, e) -> MU(e).^(2)
+A371242	mulr	1	(p, e) -> e <= 2 ? p.^(e).+(1) : ZV(1)
+A372331	mulr	1	(p, e) -> Z.TWO.^(D023416(e))
+A377515	mulr	1	(p, e) -> p.^(MIN(PI(p), ZV(e)))
+A377518	mulr	1	(p, e) -> p.^(MIN(p, ZV(e)))
+A377519	mulr	1	(p, e) -> MIN(p, ZV(e)).+(1)
+---- 2025-05-29 20:33:10
+A365680	mulr	1	(p, e) -> D013928(e + 1).+(1)
+A376294	mulr	1	(p, e) -> new Z(p.toString() + Integer.toString(e))
+A379028	mulr	1	(p, e) -> TAU(e + 1)
+A380922	mulr	1	(p, e) -> e <= 2 ? ZV(2) : ZV(3)	2 if e <= 2 and 3 otherwise
+A381481	mulr	1	(p, e) -> e == 1 ? ZV(1) : (e == 2 ? ZV(0) : ZV(-1))	1 if e = 1, 0 if e = 2, and -1 otherwise. - _Amiram Eldar_, Apr 22 2025
+A382489	mulr	1	(p, e) -> p.compareTo(ZV(5)) <= 0 ? ZV(2) : ZV(1)	2 if p <= 5, and 1 otherwise
+A383292	mulr	1	(p, e) -> e < 4 ? ZV(e) : ZV(3)	e if e < 4 and 3 otherwise
+A383717	mulr	1	(p, e) -> e <= 2 ? p : ZV(0)	p is e <= 2, and 0 otherwise
+A383762	mulr	1	(p, e) -> Predicates.SQUARE_FREE.is(e) ? ZV(2) : ZV(1)	2 if e is squarefree (J005117), and 1 otherwise
+A383763	mulr	1	(p, e) -> Predicates.SQUARE_FREE.is(e) ? p.^(e).+(1) : ZV(1)
+A383764	mulr	1	(p, e) -> Predicates.SQUARE_FREE.is(e) ? p.^(e) : ZV(1)	p.^(e) if e is squarefree (J005117), and 1 otherwise
+A384049	mulr	1	(p, e) -> e <= 2 ? p.^(e) : p.^(e).-(1)
+A384053	mulr	1	(p, e) -> e%3 == 0 ? p.^(e) : p.^(e).-(1)
+A384054	mulr	1	(p, e) -> (e&1) == 1 ? p.^(e) : p.^(e).-(1)	p^e if e is odd, and p^e-1 if e is even
+A384057	mulr	1	(p, e) -> p.compareTo(ZV(3)) <= 0 ? p.^(e) : p.^(e).-(1)	p.^(e) if p <= 3, and p^e-1 if p >= 5
+A384058	mulr	1	(p, e) -> p.compareTo(ZV(3)) <= 0 ? p.^(e).-(1) : p.^(e)	if p <= 3, and p^e if p >= 5
+---- 2025-05-29 20:51:59
+A324106	mulr	1	(p, e) -> D005940(p.^(e))
+A324911	mulr	1	(p, e) -> D156552(p.^(e))
+A366423	mulr	1	(p, e) -> ZV(e).mod(p).isZero() ? p.^(e + 1)./(p.^(p)) : p.^(e + 1)
+A366764	mulr	1	(p, e) -> e == 1 ? p.+(1) : p.^(e + 1).-(1)./(p.-(1)).-(p.*(p))
+A380160	mulr	1	(p, e) -> e == 1 ? ZV(1) : (p.-(1)).*(p.^(e - 1))
+A380161	mulr	1	(p, e) -> e == 1 ? p.-(1) : ZV(1)
+A380322	mulr	1	(p, e) -> p.^(2*e + 1).-(p)./(p.*(p).-(1)).+(1)
+A383864	mulr	1	(p, e) -> SD(e, d -> Functions.GCD.i(d, e/d) == 1 ? p.^(d) : ZV(0)).+(1)
+A384042	mulr	1	(p, e) -> p.compareTo(ZV(3)) <= 0 ? (p.-(1)).*(p.^(e -1)) : p.^(e)
+A384050	mulr	1	(p, e) -> e == 1 ? p.-(1) : p.^(e)
+---- 2025-05-29 20:55:36
+A384247	mulr	1	(p, e) -> QV(p.^(e)).*(QV(1).-(new Q(Z.ONE, p.^(D006519(e))))).num()

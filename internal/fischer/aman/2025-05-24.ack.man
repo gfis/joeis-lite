@@ -1,0 +1,112 @@
+---- 2025-05-24 22:16:38
+A194458	partsun	0	new A194459()	Total number of entries in rows 0,1,...,n of Pascals triangle not divisible by  5.	nonn	0..65	nyi	_N. J. A. Sloane_
+A194459	lambdan	0	n -> CNT(0, n, k -> BI(n, k).mod( 5) != 0)	Number of entries in the n-th row of Pascals triangle not divisible by  5.	nonn	0..80	nyi	_N. J. A. Sloane_
+A241493	filter	1	new A000040().skip(1)	p -> SEM(p.+(4)) && SEM(p.+(16)) && SEM(p.+(64)) && SEM(p.+(256)) && SEM(p.+(1024))	p + 4, p + 16, p + 64, p + 256 and p + 1024 are all semiprimes.	nonn	1..10000	nyi	_K. D. Bajpai_
+A274525	filter	1	new A000040().skip(3)	p -> PP(p.-(2)) && PP(p.^(2).-(p).-(1)) && PP(p.^(2).-(p).+(1))	p - 2, p^2 - p - 1, p^2 - p + 1 are prime numbers.	nonn	1..30000	nyi	_Pierre CAMI_
+A370089	lingf	0	2,-15,37,-57,62,135,-111,-119,-30	1,-12,50,-75,-5,66,12,-11,-18,-8
+A382720	lambdan	0	n -> CNT(0, n, k -> BI(n, k).mod( 7) != 0)	Number of entries in the n-th row of Pascals triangle not divisible by  7.	nonn	0..80	nyi	_N. J. A. Sloane_
+A382721	lambdan	0	n -> CNT(0, n, k -> BI(n, k).mod(11) != 0)	Number of entries in the n-th row of Pascals triangle not divisible by 11.	nonn	0..80	nyi	_N. J. A. Sloane_
+A382722	lambdan	0	n -> CNT(0, n, k -> BI(n, k).mod(13) != 0)	Number of entries in the n-th row of Pascals triangle not divisible by 13.	nonn	0..80	nyi	_N. J. A. Sloane_
+A382723	lambdan	0	n -> CNT(0, n, k -> BI(n, k).mod( 4) != 0)	Number of entries in the n-th row of Pascals triangle not divisible by  4.	nonn	0..80	nyi	_N. J. A. Sloane_
+A382724	lambdan	0	n -> CNT(0, n, k -> BI(n, k).mod( 6) != 0)	Number of entries in the n-th row of Pascals triangle not divisible by  6.	nonn	0..80	nyi	_N. J. A. Sloane_
+A382725	lambdan	0	n -> CNT(0, n, k -> BI(n, k).mod( 8) != 0)	Number of entries in the n-th row of Pascals triangle not divisible by  8.	nonn	0..80	nyi	_N. J. A. Sloane_
+A382726	partsun	0	new A382720()	Total number of entries in rows 0,1,...,n of Pascals triangle not divisible by  7.	nonn	0..68	nyi	_N. J. A. Sloane_
+A382727	partsun	0	new A382721()	Total number of entries in rows 0,1,...,n of Pascals triangle not divisible by 11.	nonn	0..67	nyi	_N. J. A. Sloane_
+A382728	partsun	0	new A382722()	Total number of entries in rows 0,1,...,n of Pascals triangle not divisible by 13.	nonn	0..67	nyi	_N. J. A. Sloane_
+A382729	partsun	0	new A382723()	Total number of entries in rows 0,1,...,n of Pascals triangle not divisible by  4.	nonn	0..66	nyi	_N. J. A. Sloane_
+A382730	partsun	0	new A382724()	Total number of entries in rows 0,1,...,n of Pascals triangle not divisible by  6.	nonn	0..67	nyi	_N. J. A. Sloane_
+A382731	partsun	0	new A382725()	Total number of entries in rows 0,1,...,n of Pascals triangle not divisible by  8.	nonn	0..65	nyi	_N. J. A. Sloane_
+A382766	filter	1	new A000040().skip(1)	p -> !PP(p.+(4)) && !PP(p.+( 6)) && !PP(p.+( 8))	p + 4, p +  6 and p +  8 are composite.	nonn	1..50	nyi	_Michel Eduardo Beleza Yamagishi_
+A382810	filter	1	new A000040().skip(1)	p -> PP(p.+(6)) && PP(p.+(10)) && PP(p.+(16))	p + 6, p + 10 and p + 16 are also primes.
+A382984	lambdan	0	n -> SU(3, n, k -> ZV(3).^(n - k).*(BI(k, 3)).*(SA(n, k)))	Sum_{k=3..n} 3^(n-k) * binomial(k,3) * |Stirling1(n,k)|.
+A382985	lambdan	0	n -> SU(4, n, k -> ZV(3).^(n - k).*(BI(k, 4)).*(SA(n, k)))	Sum_{k=4..n} 3^(n-k) * binomial(k,4) * |Stirling1(n,k)|.
+A383074	lambdan	1	n -> E066206(n)./(E066205(n))
+A383221	lambdan	0	n -> SU(3, n, k -> Z2(k - 3).*(ZV(3).^(n - k)).*(BI(k, 3)).*(SA(n, k)))	a(n) = Sum_{k=3..n} 2^(k-3) * 3^(n-k) * BI(k,3) * |Stirling1(n,k)|.
+A383222	lambdan	0	n -> SU(4, n, k -> ZV(3*n - 1).^(k - 4).*(ZV(3).^(n - k)).*(BI(k, 4)).*(S1(n, k)))
+A383323	polyx	0	"[0,1],[1,1],[0,0,1]"	"p1,x,exp,1,-,*,x,exp,x,-,*,x,exp,p2,2,/,-,*"	0	1	Expansion of e.g.f. (1+x)*(exp(x)-1)*(exp(x)-x)*(exp(x)-x^2/2).	nonn	0..28	nyi
+A383393	filter	1	new A000040().skip(1)	p -> PP(p.+(2)) && PP(p.+(8)) && PP(p.+(12)) && PP(p.+(18)) && PP(p.+(20))			p + 2, p +  8, p + 12, p + 18 and p + 20 are also primes.	nonn	1..32	nyi
+A383396	filter	1	new A000040().skip(1)	p -> PP(p.+(6)) && PP(p.+(10)) && PP(p.+(12)) && PP(p.+(16)) && PP(p.+(22))			p + 6, p + 10, p + 12, p + 16 and p + 22 are also primes.	nonn	1..33	nyi
+A383403	lambdan	0	n -> SU(0, n, k -> F000203(6*k+3))	""		a(n) = sum(k=0, n, sigma(6*k+3))	_	_	_
+A383409	holos	0	[[0],[-29952,1152],[-1214400,108576,-2400],[-11485440,1870176,-98304,1680],[1742112,3583096,-567560,28800,-480],[189885344,-43078488,3274748,-79792,-960,48],[-255632664,24524428,3257272,-554732,26768,-432],[-398507560,227949958,-41093569,3321177,-125648,1816],[1762193836,-768604594,125018206,-9686598,361454,-5232],[-3826549224,1660313954,-273080267,21497646,-815514,11989],[6450273552,-2931357764,494862950,-39360042,1488810,-21554],[-11652430464,4924957448,-776427526,56928285,-1926494,23551],[14654098800,-5260670160,659020816,-31070580,136064,18372],[-2737647360,-838876800,585613904,-94452088,6075232,-138536],[-12444075072,8223222336,-2022806952,232305336,-12475800,251400],[14190177024,-8819522208,2045440728,-217223580,10240200,-160260],[-7970434560,4408588800,-785971920,35928960,2911440,-222720],[13253760,1214888544,-805707072,190143288,-19061712,688824],[2610869760,-2885258880,1196484480,-231307200,20891520,-711360],[-673505280,823633920,-362021760,71023680,-6163200,187200],[-17418240,42405120,-36365760,13452480,-2203200,129600],[0,-2799360,4898880,-2604960,544320,-38880]]	0,1,5,19,77,326,1406	0	1
+A383439	lambdan	0	n -> FA(5*n)./(FA(n).^(2).*(FA(3*n + 1)))
+A383440	lambdan	0	n -> FA(5*n + 3)./(ZV(n).^(2).*(8).+(10*n + 3).*(FA(n).^(2).*(FA(3*n + 2))))
+A383456	lambdan	0	n -> BI(2*n+4,n).*(n+3).*(2)./(n+2)	.	nonn,more	0..28	nyi	_N. J. A. Sloane_
+A383468	filter	1	new A001358()	(k, s) -> Predicates.SEMIPRIME.is(k) && Predicates.SEMIPRIME.is(s.+(k)) && Predicates.SEMIPRIME.is(s.-(k))	Semiprimes s = J001358(k) such that k, s - k and s + k are also semiprimes.	nonn	1..10000	nyi	_Zak Seidov_ and _Robert Israel_
+A383469	filtpos	1	1	new A001358()	(k, s) -> Predicates.SEMIPRIME.is(k) && Predicates.SEMIPRIME.is(s.+(k)) && Predicates.SEMIPRIME.is(s.-(k))	Semiprimes k such that J001358(k) + k and J001358(k) - k are also semiprimes.	nonn	1..10000	nyi	_Zak Seidov_ and _Robert Israel_
+A383476	filnum	0	1	k -> PP(BI(2*k, k).+(k))	nyi to	Numbers k such that binomial(2k,k) + k is prime.	nonn,hard,more	1..13	nyi	_Juri-Stepan Gerasimov_
+A383485	lambdan	1	n -> FA(n - 1).*(2).+(n + 2).*(2).mod(ZV(n).*(n + 2))	a(n) = 2*(2*(n - 1)! + n + 2) (mod n*(n + 2)).	nonn	1..68	nyi	_Giorgos Kalogeropoulos_
+A383585	lingf	1	0,0,0,13,-20,13	1,-4,6,-4,1
+A383637	holos	0	[0,-15,13,3,-1]	1	0	0	Expansion of 1/((1-x) * (1+3*x) * (1-5*x))
+A383647	decexp	0	() -> CV(15)./(CR.PI.^(4).*(2))	Decimal expansion of 15/(2*Pi^4).
+A383648	holos	0	[0,945,-789,-230,70,5,-1]	1	0	0
+A383651	holos	0	[0,-24,22,3,-1]	1	0	0
+A383666	filnum	1	1	k -> { final int[] ds = ZUtils.digitCounts(k, 2); return ds[0] != 1 && ds[1] != 1; }	Numbers in whose binary representation no bit (0 or 1) occurs exactly once.	nonn,base,easy,new	1..10000	nyi	_Clark Kimberling_
+A383667	sintrif	1	(term, n) -> new Z(term.toString(2))	""	new A383666()	Binary words beginning with 1 in which no binary digit occurs only once.	nonn,base,new	1..35	nyi	_Clark Kimberling_
+A383679	filter	1	new A000040()	p -> { final Z q = Functions.NEXT_PRIME.z(p); return q.-(p).equals(Math.abs(Functions.DIGIT_SUM.i(p) - Functions.DIGIT_SUM.i(q))); }	The lesser of two consecutive primes whose gap equals the difference between their digital sums.	nonn,base,easy	1..56	nyi	_Stefano Spezia_
+A383680	filter	1	new A000040().skip(1)	p -> { final Z q = Functions.PREV_PRIME.z(p); return p.-(q).equals(Math.abs(Functions.DIGIT_SUM.i(p) - Functions.DIGIT_SUM.i(q))); }	The greater of two consecutive primes whose gap equals the difference between their digital sums.	nonn,base,easy	1..56	nyi	_Stefano Spezia_
+A383685	filter	1	new A000040()	p -> { final Z q = Functions.NEXT_PRIME.z(p); return q.-(p).equals(Math.abs(Functions.DIGIT_SUM_ROOT.i(p) - Functions.DIGIT_SUM_ROOT.i(q))); }	The lesser of two consecutive primes whose gap equals the difference between their digital roots.	nonn,base,easy	1..56	nyi	_Stefano Spezia_
+A383686	filter	1	new A000040().skip(1)	p -> { final Z q = Functions.PREV_PRIME.z(p); return p.-(q).equals(Math.abs(Functions.DIGIT_SUM_ROOT.i(p) - Functions.DIGIT_SUM_ROOT.i(q))); }	The greater of two consecutive primes whose gap equals the difference between their digital roots.	nonn,base,easy	1..56	nyi	_Stefano Spezia_
+A383700	lambdan	0	n -> SU(2, n, k -> ZV(4*n - 3).^(k - 2).*(ZV(4).^(n - k)).*(BI(k, 2)).*(S1(n, k)))
+A383701	lambdan	0	n -> SU(3, n, k -> ZV(4*n - 3).^(k - 3).*(ZV(4).^(n - k)).*(BI(k, 3)).*(S1(n, k)))
+A383702	lambdan	0	n -> SU(2, n, k -> ZV(4*n - 1).^(k - 2).*(ZV(4).^(n - k)).*(BI(k, 2)).*(S1(n, k)))
+A383703	lambdan	0	n -> SU(3, n, k -> ZV(4*n - 1).^(k - 3).*(ZV(4).^(n - k)).*(BI(k, 3)).*(S1(n, k)))
+A383704	lambdan	0	n -> SU(0, n, k -> ZV(4*n - 1).^(k).*(ZV(4).^(n - k)).*(BI(n + k, n)).*(S1(2*n, n + k)))	Sum_{k=0..n} (4*n-1)^k * 4^(n-k) * binomial(n+k,n) * Stirling1(2*n,n+k).
+A383746	filnum	0	1	k -> Functions.DIGIT_SUM.z(ZV(k).^(3*k)).mod(k) == 0	Numbers k such that k divides the sum of the digits of k^(3k).	nonn,base,hard,more,new	1..30	nyi	_J.W.L. (Jan) Eerland_
+A383754	holos	0	[[0],[46656],[-14040],[1482],[-65],[1]]	1	0	0
+A383756	holos	0	[0,1728,-444,37,-1]	1	0	0
+A383757	holos	0	[0,-2985984,302400,-11100,175,-1]	1	0	0
+A383767	lambdan	0	n -> n == 0? ZV(1) : SU(0, n, k -> SA(n, k).*(S2(k + n - 1, n - 1)))	Sum_{k=0..n} |Stirling1(n,k)| * Stirling2(k+n-1,n-1) for n > 0.
+A383783	lambdan	0	n -> SU(1, 1 << n, k -> MU(k).*(Z2(n)./(k).^(4).-(Z2(n).-(1)./(k).^(4))))	a(n) = Sum_{k=1..2^n} mu(k) * (floor(2^n/k)^4 - floor((2^n-1)/k)^4).	nonn,new	0..48	nyi	_Chai Wah Wu_
+A383837	lambdan	0	n -> SU(0, n, k -> Z_1(k).*(ZV(n - 2*k).^(3*n)).*(BI(n, k)))./(Z2(n).*(FA(n)))	(1/(2^n*n!)) * Sum_{k=0..n} (-1)^k * (n-2*k)^(3*n) * binomial(n,k).
+A383838	holos	0	[0,-576,820,-273,30,-1]	1	0	0
+A383869	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(ZV(n + k).^(2*n)).*(BI(n, k)))./(FA(n))
+A383873	holos	0	[0,5,-2,3,-1]	1,2,3	0	0
+A383897	holos	0	[[0],[2,-4,2],[1,1],[-1]]	0,1	0	0	a(n) = (n+1) * a(n-1) + 2 * (n-1)^2 * a(n-2).
+A383914	filter	0	new A000040()	p -> PP(ZV(2).^(p).*(12).+(1))
+A383996	lambdan	0	n -> PR(0, n-1, k -> ZV(n - 4*k))	""		a(n) = prod(k=0, n-1, n-4*k)	_	_	_
+A383997	lambdan	0	n -> PR(0, n-1, k -> ZV(n - 5*k))	""		a(n) = prod(k=0, n-1, n-5*k)	_	_	_
+A384036	decexp	1	() -> CV(5).+(CV(25).+(CV(5).sqrt().*(10)).sqrt()./(2))	5 + (1/2)*sqrt(25 + 10*sqrt(5)).
+A384136	lambdan	1	n -> RU(1, n, k -> new Q(1, 2*n + k)).*(FA(3*n))./(FA(2*n)).num()	a(n) = (3*n)!/(2*n)! * Sum_{k=1..n} 1/(2*n+k).	nonn,new	1..17	nyi	_Seiichi Manyama_
+A384137	lambdan	1	n -> RU(1, n, k -> new Q(1, 3*n + k)).*(FA(4*n))./(FA(3*n)).num()	a(n) = (4*n)!/(3*n)! * Sum_{k=1..n} 1/(3*n+k).	nonn,new	1..17	nyi	_Seiichi Manyama_
+A384163	lambdan	0	n -> PR(0, n-1, k -> ZV(2*n + 3*k))	""		a(n) = prod(k=0, n-1, 2*n+3*k)	_	_	_
+A384164	lambdan	0	n -> PR(0, n-1, k -> ZV(3*n + k))	""		a(n) = prod(k=0, n-1, 3*n+k)	_	_	_
+A384165	lambdan	0	n -> PR(0, n-1, k -> ZV(3*n + 2*k))	""		a(n) = prod(k=0, n-1, 3*n+2*k)	_	_	_
+A384166	lambdan	0	n -> PR(0, n-1, k -> ZV(3*n + 4*k))	""		a(n) = prod(k=0, n-1, 3*n+4*k)	_	_	_
+A384167	lambdan	1	n -> RU(0, n, k -> QV(k).*(QV(n+2).^(k-1)).*(Z2(n-k)).*((S1(n, k)).abs())).num()	""		a(n) = sum(k=0, n, k*(n+2)^(k-1)*2^(n-k)*abs(stirling(n, k, 1)))	_	_	_
+A384168	lambdan	1	n -> RU(0, n, k -> QV(k).*(QV(n+3).^(k-1)).*(ZV(3).^(n-k)).*((S1(n, k)).abs())).num()	""		a(n) = sum(k=0, n, k*(n+3)^(k-1)*3^(n-k)*abs(stirling(n, k, 1)))	_	_	_
+A384169	lambdan	1	n -> RU(0, n, k -> QV(k).*(QV(n+4).^(k-1)).*(ZV(4).^(n-k)).*((S1(n, k)).abs())).num()	""		a(n) = sum(k=0, n, k*(n+4)^(k-1)*4^(n-k)*abs(stirling(n, k, 1)))	_	_	_
+A384170	lambdan	1	n -> RU(0, n, k -> QV(k).*(QV(2*n+3).^(k-1)).*(ZV(3).^(n-k)).*((S1(n, k)).abs())).num()	""		a(n) = sum(k=0, n, k*(2*n+3)^(k-1)*3^(n-k)*abs(stirling(n, k, 1)))	_	_	_
+A384171	lambdan	1	n -> RU(0, n, k -> QV(k).*(QV(3*n+2).^(k-1)).*(Z2(n-k)).*((S1(n, k)).abs())).num()	""		a(n) = sum(k=0, n, k*(3*n+2)^(k-1)*2^(n-k)*abs(stirling(n, k, 1)))	_	_	_
+A384172	lambdan	1	n -> RU(0, n, k -> QV(k).*(QV(3*n+4).^(k-1)).*(ZV(4).^(n-k)).*((S1(n, k)).abs())).num()	""		a(n) = sum(k=0, n, k*(3*n+4)^(k-1)*4^(n-k)*abs(stirling(n, k, 1)))	_	_	_
+A384189	filnum	1	1	k -> Functions.DIGIT_LENGTH.i(2, k) - Functions.DIGIT_SUM.i(2, k) != 1	Numbers whose number of zeros in their binary representation is not equal to 1.	nonn,base,new	1..10000	nyi	_Chai Wah Wu_
+A384199	holos	0	[[0],[3,-6,3],[1,2],[-1]]	0,1	0	0	a(n) = (2*n+1) * a(n-1) + 3 * (n-1)^2 * a(n-2).
+A384200	lambdan	0	n -> RU(1, n, k -> QV(3).^(k-1)./(k)).*(FA(n)).num()	""		a(n) = n!*sum(k=1, n, 3^(k-1)/k)	_	_	_
+A384218	filnum	1	1	k -> PP(new Z(k.toString() + "123456789")) && PP(new Z("123456789" + k.toString()))	Numbers k such that the concatenations of k and 123456789 in both orders are prime.
+A384241	lambdan	0	n -> PR(0, n-1, k -> ZV(3*n - 4*k))	""		a(n) = prod(k=0, n-1, 3*n-4*k)	_	_	_
+A384242	lambdan	0	n -> PR(0, n-1, k -> ZV(4*n - 5*k))	""		a(n) = prod(k=0, n-1, 4*n-5*k)	_	_	_
+A384256	lambdan	0	n -> PR(0, n-1, k -> ZV(n + 3*k + 1))	""		a(n) = prod(k=0, n-1, n+3*k+1)	_	_	_
+A384257	lambdan	0	n -> PR(0, n-1, k -> ZV(n + 3*k + 2))	""		a(n) = prod(k=0, n-1, n+3*k+2)	_	_	_
+A384258	lambdan	0	n -> PR(0, n-1, k -> ZV(n + 4*k + 1))	""		a(n) = prod(k=0, n-1, n+4*k+1)	_	_	_
+A384259	lambdan	0	n -> PR(0, n-1, k -> ZV(n + 4*k + 3))	""		a(n) = prod(k=0, n-1, n+4*k+3)	_	_	_
+---- 2025-05-24 22:38:32
+A258572	filter	1	new A000040().skip(3)	p -> PP(p.-(2)) && PP(p.^(2).-(2)) && PP(p.^(3).-(2)) && PP(p.^(4).-(2)) && PP(p.^(5).-(2))	p - 2, p^2 - 2, p^3 - 2, p^4 - 2 and p^5 - 2 are all prime.	nonn	1..25	nyi	_Juri-Stepan Gerasimov_
+A376503	filter	1	new A000040().skip(1)	p -> Functions.BIG_OMEGA.i(p.+(2)) == 3 && Functions.BIG_OMEGA.i(p.+(4)) == 5 && Functions.BIG_OMEGA.i(p.+(6)) == 7	p + 2, p +  4 and p +  6 are products  of 3, 5 and 7 primes respectively (counted with multiplicity)	nonn	1..10000	nyi	_Zak Seidov_ and _Robert Israel_
+A382642	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n + k, k)).^(2).*(Z2(n - k)))	Sum_{k=0..n} (binomial(n,k) * binomial(n+k,k))^2 * 2^(n-k).
+---- 2025-05-24 22:58:41
+A383568	holos	0	[[0],[-5,1],[0],[0],[0],[0],[5,-2],[0],[0],[4,-4],[0],[0,1]]	1	0	0	1/sqrt((1-x^5)^2 - 4*x^2)
+A383569	holos	0	[[0],[-7,1],[0],[0],[0],[0],[0],[0],[7,-2],[0],[0],[0],[0],[4,-4],[0],[0,1]]	1	0	0	1/sqrt((1-x^7)^2 - 4*x^2)
+A383597	holos	0	[[0],[-10,10],[7,-11],[0,1]]	1	0	0	1/( (1-x)^2 * (1-10*x) )^(1/3)
+A383598	holos	0	[[0],[-2,1],[-12,9],[2,-2],[6,-9],[0,1]]	1	0	0	1/( (1-x^2)^2 * (1-x^2-9*x) )^(1/3)
+A383599	holos	0	[[0],[-3,1],[0],[-15,9],[3,-2],[0],[6,-9],[0,1]]	1	0	0	1/( (1-x^3)^2 * (1-x^3-9*x) )^(1/3)
+A383600	holos	0	[[0],[-9,9],[7,-10],[0,1]]	1	0	0	1/( (1-x)^3 * (1-9*x) )^(1/4)
+A383601	holos	0	[[0],[-10,10],[4,-11],[0,1]]	1	0	0	1/( (1-x) * (1-10*x)^2 )^(1/3)
+A383602	holos	0	[[0],[-9,9],[3,-10],[0,1]]	1	0	0	1/( (1-x) * (1-9*x)^3 )^(1/4)
+A383603	holos	0	[[0],[-15,9],[11,-8],[1,-2],[0,1]]	1	0	0	1/( (1-x)^2 * (1-x-9*x^2) )^(1/3)
+A383604	holos	0	[[0],[-21,9],[18,-9],[-1,1],[1,-2],[0,1]]	1	0	0	1/( (1-x)^2 * (1-x-9*x^3) )^(1/3)
+A383605	holos	0	[[0],[-12,9],[5,-8],[1,-2],[0,1]]	1	0	0	1/( (1-x) * (1-x-9*x^2)^2 )^(1/3)
+A383606	holos	0	[[0],[-15,9],[9,-9],[-1,1],[1,-2],[0,1]]	1	0	0	1/( (1-x) * (1-x-9*x^3)^2 )^(1/3)
+A383610	holos	0	[[0],[-2,1],[-15,9],[2,-2],[3,-9],[0,1]]	1	0	0	1/( (1-x^2) * (1-x^2-9*x)^2 )^(1/3)
+A383611	holos	0	[[0],[-3,1],[0],[-21,9],[3,-2],[0],[3,-9],[0,1]]	1	0	0	1/( (1-x^3) * (1-x^3-9*x)^2 )^(1/3)
+A382370	filnum	1	1	k -> PP(ZV(k - 1).^(k + 1).-(k))	Numbers k such that (k - 1)^(k + 1) - k is prime.	nonn,more	1..11	nyi	_Juri-Stepan Gerasimov_
+---- 2025-05-24 23:04:27
+A383167	filter	1	new A000040().skip(1)	p -> PP(p.+(4)) && PP(p.+(10)) && PP(p.+(12)) && PP(p.+(18)) && PP(p.+(22))	p + 4, p + 10, p + 12, p + 18 and p + 22 are also primes.	nonn	1..31	nyi	_Alexander Yutkin_

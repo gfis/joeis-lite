@@ -1,0 +1,69 @@
+---- 2025-05-26 22:54:41
+ A342649	filtpos	0	1	new A238525().skip(1)	(k, v) -> ZV(k).mod(v).isZero()	 | k		J238525
+ A238764	filtpos	0	1	new A008474().skip(1)	(k, v) -> ZV(k).mod(v).isZero()	 | k		J008474
+ A316530	filtpos	0	1	new A000009()	(k, v) -> v.mod(k) == 0	 | FA(k)       	F000009
+ A337342	filtpos	0	1	new A048673()	(k, v) -> v.mod(k) == 0	 | 1+J003973(k)	D048673
+
+?A127787	filnum	0	1	k -> FI(FI(k)).mod(FI(k)).isZero()
+?A221219	filtpos	0	1	new A007429().skip(1)	(k, v) -> v.mod(F000203(k)).isZero()	 | J007429(k)  	F000203
+?A222948	filnum	0	1	k -> ZV(3).^(k).+(1).mod(3*k + 1) == 0	^k+1
+?A226647	filtpos	0	1	new A024916().skip(1)	(k, v) -> v.mod(D006218(k)).isZero()	 | J024916(k)  	D006218
+?A278919	filnum	0	3	k -> F000203(k  - 1).+(1).mod(F000010(k - 2)).isZero()
+?A279815	filtpos	0	1	new A276984().skip(1)	(k, v) -> v.mod(D049820(k)).isZero()	 | J276984(k)  	D049820
+?A291880	filtpos	0	1	new A109606().skip(1)	(k, v) -> F000203(k).mod(v).isZero()	 | F000203(k)  	J109606
+?A344974	filtpos	0	1	new A011772().skip(1)	(k, v) -> E344875(k).mod(v).isZero()	 | E344875(k)  	J011772
+?A349734	filnum	0	1	k -> D007504(k).mod(E255217(k)).isZero()	 | D007504(k)  	E255217
+?A349738	filnum	0	1	k -> F002110(k).mod(E255217(k)).isZero()	 | F002110(k)  	E255217
+?A358221	filnum	0	1	k -> F276086(k).mod(F003415(k)).isZero()	 | F276086(k)  	F003415
+?A365889	filnum	0	1	k -> D051904(k).mod(F020639(k)).isZero()	 | D051904(k)  	F020639
+?A372945	filnum	0	1	k -> M001190(k).mod(k) == 0	M001190
+?A381256	filnum	0	1	k -> ZV(5).^(k).+(1).mod(5*k + 1) == 0	^k+1
+?A381258	filnum	0	1	k -> ZV(7).^(k).+(1).mod(7*k + 1) == 0	^k+1
+?A382063	filtpos	0	1	new A049419().skip(1)	(k, v) -> D005361(k).mod(v).isZero()	 | D005361(k)  	J049419
+
+A373055	filtpos	1	1	new A000213()	(k, v) -> v.mod(k) == 0	J000213
+
+A078345	filnum	0	2	k -> { final long fk = FI(k).mod(k); return FI(fk).mod(fk) == 0; }	 mod n divides F(F(n) mod n) where F(k) denotes the k-th Fibonacci number
+A080392	filnum	0	1	k -> D000984(k).mod(k) == 0 && ! E080383(k).equals(ZV(7))
+A178502	filnum	0	1	k -> PM(k).mod(k) < k/2	 modulo n is less than n/2
+A216697	filnum	0	1	k -> k % 6 == 0 && !PP(k/6) && SIGMA(k).mod(k) == 12	 mod n = 12, n is divisible by 6, but n/6 is not prime
+A221018	filnum	0	1	k -> { final Z fk = FI(k); return fk.mod(k) == 0 &&  fk.mod(k - 1) == 0 && fk.mod(k + 1) == 0; }	FI(n) mod (n-1) = FI(n) mod (n+1) = 0
+A225297	filnum	0	1	k -> ZV(k).mod(ZV(k % 10).^(3)).isZero()	^3 | k
+A232547	filnum	0	1	k -> SIGMA(ZV(k).*(k)).mod(SIGMA(k)).equals(ZV(k))
+A252849	filnum	0	1	k -> !D046951(k).testBit(0)	 mod 2 = 0
+A257482	filnum	0	1	k -> PM(k).mod(8) == PM(k).mod(27)
+A290281	filnum	0	1	k -> ZV(k - 1).mod(PHI(k)).equals(F002322(k))	, where phi = F000010 and lambda = F002322
+A308150	filnum	0	1	k -> PP(SIGMA(k).modZ(k))	 k is prime, where SIGMA = F000203
+A308169	filnum	0	1	k -> PP(F000010(k).*(k)./(2).mod(F000203(k)))	 is prime
+A308169	filtpos	0	1	new A023896()	(k, v) -> PP(v.mod(F000203(k))
+A354560	filnum	1	1	k -> ZV(k).mod(F006530(k).^(2)).isZero() && ZV(k + 1).mod(F006530(k + 1).^(2)).isZero() && ZV(k + 2).mod(F006530(k + 2).^(2)).isZero()	 | k, P(k+1)^2 | (k+1), and P(k+2)^2 | (k+2), where P(k) = F006530(k)
+A354562	filnum	1	1	k -> ZV(k).mod(F006530(k).^(3)).isZero() && ZV(k + 1).mod(F006530(k + 1).^(3)).isZero()	 | k and P(k+1)^3 | (k+1), where P(k) = F006530(k)
+A354566	filnum	1	1	k -> ZV(k).mod(F006530(k).^(4)).isZero() && ZV(k + 1).mod(F006530(k + 1).^(2)).isZero()	 | k and P(k+1)^2 | (k+1), where P(k) = F006530(k) is the largest prime dividing k
+A355058	filnum	0	1	k -> TAU(k).mod(6) == 3	d(m) mod 6 = 3, where d(m) is the number of divisors of m
+A358228	filnum	0	1	k -> F276086(k).mod(F003415(k)).testBit(0)	 is an odd number, where F003415 is the arithmetic derivative and F276086 is the primorial base exp-function
+A358229	filnum	0	1	k -> !F276086(k).mod(F003415(k)).testBit(0)	 is an even number, where F003415 is the arithmetic derivative and F276086 is the primorial base exp-function
+A363751	filnum	0	1	k -> PP(PM(k).modZ(k))	 k is prime
+A336918	filtpos	0	1	new A336839()	v.equals(Z.ONE)	Numbers k such that F000005(k) | J003973(k); numbers k for which J336839(k) = 1
+
+
+=2J A284288	filtpos	0	1	new A032741()	(k, v) -> v.mod(k) == 0	 | J039653(k)  	J032741
+=2J A378980	filtpos	0	1	new A252748()	(k, v) -> v.mod(k) == 0	 | J286385(k)  	J252748
+=2J A080805	filtpos	0	1	new A072475()	(k, v) -> v.mod(k) == 0	 | J071221(k)  	J072475
+=2J A300906	filtpos	0	1	new A217872()	(k, v) -> v.mod(k) == 0	 | J100879(k)  	J217872
+=2J A303900	filtpos	0	1	new A002541()	(k, v) -> v.mod(k) == 0	 | J024917(k)  	J002541
+? 
+? A294086	filtpos	0	1	new A000219().skip(1)	(k, v) -> v.mod(k) == 0	A000219
+? A372946	filtpos	0	1	new A002315().skip(1)	(k, v) -> v.mod(k) == 0	J002315
+? A349225	filtpos	0	1	new A002619().skip(1)	(k, v) -> v.mod(k) == 0	J002619
+? A373056	filtpos	0	1	new A002858().skip(1)	(k, v) -> v.mod(k) == 0	J002858
+? A341436	filtpos	0	1	new A003101().skip(1)	(k, v) -> v.mod(k) == 0	J003101
+? A372942	filtpos	0	1	new A005259().skip(1)	(k, v) -> v.mod(k) == 0	J005259
+? A344733	filtpos	0	1	new A327573().skip(1)	(k, v) -> v.mod(k) == 0	J327573
+? A353796	filtpos	0	1	new A353790().skip(1)	(k, v) -> v.mod(k) == 0	J353790
+? A353795	filtpos	0	1	new A353794().skip(1)	(k, v) -> v.mod(k) == 0	J353794
+? A379924	filtpos	0	1	new A370898().skip(1)	(k, v) -> v.mod(k) == 0	J370898
+
+ A270997	filtpos	0	1	new J006190(k-1)
+ A328940	filtpos	0	1	new J003754(k+1)
+ A326608	filtpos	0	1	new J000385(k-1)
+       	filtpos	0	1	new 

@@ -1,0 +1,22 @@
+---- 2025-05-24 09:30:40
+# A383608	polyx	0	"[1],[1,1]"	"p1,x,cosh,^2,*"	0	1
+# conj A165105	lingf	1	0,1,1,1,0,-1,1,0,0,-1,0,0,0,0,0,1	1,1,0,-1,-2,-2,-1,1,2,2,1,0,-1,-1					0		Number of n-digit fixed points under the base-8 Kaprekar map A165090
+# sorting? A352810	filter	0	new A002191()	(k, v) -> v.equals(Functions.ANTISIGMA.z(k))	 and A231365.
+?fail A364091	multraf	1	(self, n) -> self.s(0).min(self.s(1))	""	new A005602(), new A005603()
+A143007	triprod	0	A063007	A063007	Let L denote the lower triangular array (l(n,k))n,k >= 0, where l(n, k) = (-1)^(n+k) * binomial(n, k)*binomial(n+k, k). (L is a signed version of A063007 and L = A063007 * A007318 ^(-1).)						Square array, read by antidiagonals, where row n equals the crystal ball sequence for the 2*n-dimensional lattice A_n x A_n.
+A143258	triprov0	1	A054525	A143257	Triangle read by rows, A054525 * A143257, 1<=k<=n.						Triangle read by rows, A054525 * A143257, 1<=k<=n.
+A152230	triprov	0	A007318	A122196	Triangle read by rows, A007318 * A122196						Triangle read by rows, binomial transform of A122196
+A163946	triprov0	0	A033184	A091768	Triangle read by rows, A033184 * A091768 (diagonalized as an infinite lower triangular matrix).						Triangle read by rows, A033184 * A091768 (diagonalized as an infinite lower triangular matrix).
+A238363	triprod	1	A008275	A132440	A)  = [St1]*[dP]*[St2] = [padded A008275]*A132440*A048993						Coefficients for the commutator for the logarithm of the derivative operator [log(D),x^n D^n]=d[(xD)!/(xD-n)!]/d(xD) expanded in the operators :xD:^k.
+A238385	triprod	0	A008275	A132440	A) T = [St1]*[dP]*[St2] + I = [padded A008275]*A132440*A048993 + I						Shifted lower triangular matrix A238363 with a main diagonal of ones.
+A239092	partsun	1	new A076489()			Partial sums of A076489.					Prefix overlap of dictionary consisting of decimal expansions of 0 through n.
+A244218	partsun	0	new PrependSequence(0, new A244226(), 0)			Partial sums of A244226.					The ending points of runs of consecutive terms with the same parity in A014418 (n represented in Greedy Catalan Base).
+A306045	convprod	0	1,1	new A167137(), new A305550()	Convolution of A167137 and A305550.						Expansion of e.g.f. Product_{k>=1} (1 + (exp(x) - 1)^k) / (1 - (exp(x) - 1)^k).
+A322003	partsun	0	new A072170()			Indices where A028897(?322000(n)) increases. Partial sums of A072170(n,10).					Indices where A028897(A322000(n)) increases. Partial sums of A072170(n,10).
+ A347396	dirichcon2	0	new A347395()	1	new A276086()	0	a(n) = A347395(A276086(n)), where A347395 is Dirichlet convolution of Liouville's lambda with A342001.				a(n) = A347395(A276086(n)), where A347395 is Dirichlet convolution of Liouville's lambda with A342001.
+A347962	dirichcon2	0	new A347961()	1	new A276086()	0	a(n) = A347961(A276086(n)), where A347961 is Dirichlet convolution of A342001 with A342001.				a(n) = A347961(A276086(n)), where A347961 is Dirichlet convolution of A342001 with itself.
+A353690	convprod	1	1,1	new A000203(), new A000027()	The alternating sum of the n-th row equals A175254(n), the volume of the stepped pyramid with n levels described in A245092, als						Irregular triangle read by rows: T(n,k), n>=1, k>=1, in which column k lists the numbers of A353689 multiplied by A000330(k), and the first element of column k is in row A000217(k).
+A378440	dirichinv0	1	new A033630()	0	Dirichlet inverse of M√∂bius transform of A033630, where A033630 is the number of partitions of n into distinct divisors of n.						Dirichlet inverse of M√∂bius transform of A033630, where A033630 is the number of partitions of n into distinct divisors of n.
+A383851	decexp	0	() -> X006752.*(8)./(CR.PI).exp().*(CR.ONE.-(CR.PI./(-2).exp()))./(CR.ONE.+(CR.PI./(-2)).exp().^(2))	Decimal expansion of exp(8*G/Pi)*((1 - exp(-Pi/2))/(1 + exp(-Pi/2)))^2
+A384040	lambdan	0	n -> CNT(1, n, k -> !Predicates.CUBE_FREE.is(GCD(n, k)))	The number of integers k from 1 to n such that gcd(n,k) is a cubefull number.	nonn,easy,mult,new	1..10000	nyi	_Amiram Eldar_
+

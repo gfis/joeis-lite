@@ -1,0 +1,100 @@
+---- 2025-05-27 15:53:53
+---- 2025-05-27 22:52:43
+A089811	polya	0	"[1],[0,0,1]"	"3,x,^18,S,*,p1,S,-,2,/"	new A002448()	Expansion of Jacobi theta function (3*theta_4(q^18) - theta_4(q^2))/2.
+A093547	filnum	1	1	k -> ZV(3).^(k*k).-(1).mod(k) == 0
+A094396	filnum	0	1	k -> LU(k - 1).mod(k) == 0
+A094397	filnum	1	1	k -> LU(k + 1).mod(k) == 0
+A123477	polya	1	"[1]"	"1,x,S,-,3,/"	new A005928()	Expansion of (1 - b(q)) / 3 in powers of q where b(q) is a cubic AGM theta function.
+A125907	filnum	0	1	k -> SU(1,k, j -> PM(j).^(4)).mod(k) == 0	2^4 + 3^4 + 5^4 + ... + PM(k)^4
+A128981	filtpos	1	1	new A001923()	(k, v) -> v.mod(k) == 0
+A129066	filnum	1	1	k -> k % 12 != 0 && FI(k).mod(k) == 0	with multiples of 12 excluded
+A129516	filnum	1	1	k -> DF(k - 1).-(1).mod(k) == 0
+A133079	polya	0	"[1],[0,-1]"	"x,S,p1,T,*"	new A121373(), new A004016()	Expansion of f(x) * a(-x) in powers of x where f() is a Ramanujan theta function and a() is a cubic AGM theta function.
+A145452	lambdan	1	n -> Functions.PELL.z(ZV(3).^(n))./(5)	a(n) = A000129(3^n)/5
+A152244	polya	0	"[1],[0,0,0,-1]"	"p1,S,^4,x,T,*"	new A121373(), new A004016()	Expansion of a(x) * f(-x^3)^4 in powers of x where f() is a Ramanujan theta function and a() is a cubic AGM function.
+A169976	polyza	0	"[1],[0,-1]"	"x,S,^24,p1,S,^24,+,2,/"	0	0	0	2	new A010054()
+A181905	polya	1	"[0,1],[0,0,0,1]"	"p1,S,^3,x,S,^3,-,9,/"	new A005928()	Expansion of (b(q^3)^3 - b(q)^3) / 9
+A186103	filnum	1	2	k -> SIGMA(k - 1).+(SIGMA(k + 1)).mod(k) == 0
+A194094	polya	0	"[1],[0,4]"	"x,T,^4,x,S,*,p1,x,S,dif,*,+,x,S,^3,/"	new A000122(), new A002448()
+A202394	polya	0	"[1],[0,0,0,-1]"	"p1,S,x,T,*"	new A121373(), new A004016()
+A204850	polya	0	"[1],[0,9]"	"x,S,^3,p1,x,^9,S,^3,*,-"	new A121373()	Expansion of f(x)^3 - 9 * x * f(x^9)^3 in powers of x
+A205508	multraf	0	(self, n) -> self.s(0).*(self.s(1))	"1"	new A000129(), new A004018()	a(n) = Pell(n) * A004018(n) for n>=1 with a(0)=1,
+A227302	filnum	1	1	k -> SIGMA(2*k).mod(k) == 0
+A227303	filnum	1	1	k -> SIGMA(3*k).mod(k) == 0
+A230057	polya	0	"[1],[0,0,0,1]"	"3,p1,S,^4,*,x,S,^4,-,2,/"	new A000122()	Expansion of (3 * phi(q^3)^4 - phi(q)^4) / 2 in powers of q where phi () is a Ramanujan theta function.
+A240948	polya	0	"[1]"	"x,^5,S,^6,x,S,^6,<1,+"	new A000700()	Expansion of chi(x^5)^6 + x * chi(x)^6 in powers of x where chi() is a Ramanujan theta function.
+A244612	polya	1	"[1]"	"x,S,x,^6,S,-,2,/"	new A000122()	Expansion of (phi(q) - phi(q^6)) / 2 in powers of q where phi() is a Ramanujan theta function.
+A270951	filnum	1	1	k -> PELL(k - 1).mod(k) == 0
+A277166	filnum	1	1	k -> TAU(DF(k)).mod(k) == 0
+A296027	filnum	1	3	k -> SIGMA(k - 2).+(SIGMA(k - 1)).+(SIGMA(k + 1)).+(SIGMA(k + 2)).mod(k) == 0
+A302018	polya	0	"[1]"	"1,1,1,x,S,+,<1,2,/,-,/"	new A000122()	Expansion of 1/(1 - x*(1 + theta_3(x))/2), where theta_3() is the Jacobi theta function.
+A307050	polya	0	"[1]"	"x,S,1,-,S"	new A000122()	Expansion of theta_3(theta_3(x) - 1), where theta_3() is the Jacobi theta function.
+A307186	polya	0	"[1]"	"x,S,1,-,S"	new A002448()	Expansion of theta_4(theta_4(x) - 1), where theta_4() is the Jacobi theta function.
+A307526	polya	0	"[1]"	"1,1,x,S,/,1,-,S,/"	new A002448()	Expansion of 1/theta_4(1/theta_4(x) - 1)
+A307740	filnum	1	1	k -> LCM(TAU(k), SIGMA(k)).mod(k) == 0
+A307901	polya	0	"[1]"	"1,1,x,S,<1,-,/"	new A002448()
+A317645	polya	0	"[1],[0,0,1]"	"1,x,S,+,^3,1,p1,S,+,*,16,/"	new A000122()	Expansion of (1 + theta_3(q))^3*(1 + theta_3(q^2))/16, where theta_3() is the Jacobi theta function.
+A317646	polya	0	"[1],[0,0,1]"	"1,x,S,+,^2,1,p1,S,+,^2,*,16,/"	new A000122()	Expansion of (1 + theta_3(q))^2*(1 + theta_3(q^2))^2/16, where theta_3() is the Jacobi theta function.
+A319222	filnum	1	1	k -> Z2(2*k+1).+(1).mod(k) == 0
+A319538	filnum	1	1	k -> Z2(2*k+1).-(1).mod(k) == 0
+A320898	polyxa	0	"[1]"	"x,S,1,-,exp"	0	1	new A000122()	Expansion of e.g.f. exp(theta_3(x) - 1)
+A320899	polyxa	0	"[1]"	"1,x,S,/,1,-,exp"	0	1	new A002448()	Expansion of e.g.f. exp(1/theta_4(x) - 1),
+A325024	filnum	0	1	k -> SIGMA(k).mod(k) == 0 && !ZV(k).*(ZV(k).-(TAU(k))).mod(SIGMA(k)).isZero()
+A335303	filtpos	1	1	new A054735()	(k, v) -> v.mod(k) == 0
+A341364	polya	3	"[0,0,0,1],A002448"	"1,x,S,/,1,-,^3,8,/"	new A002448()	Expansion of   (1 / theta_4(x) - 1)^3 / 8.
+A341365	polya	4	"[0,0,0,1],A002448"	"1,x,S,/,1,-,^4,16,/"	new A002448()	Expansion of   (1 / theta_4(x) - 1)^4 / 16.
+A341366	polya	5	"[0,0,0,1],A002448"	"1,x,S,/,1,-,^5,32,/"	new A002448()	Expansion of   (1 / theta_4(x) - 1)^5 / 32.
+A341367	polya	6	"[0,0,0,1],A002448"	"1,x,S,/,1,-,^6,64,/"	new A002448()	Expansion of   (1 / theta_4(x) - 1)^6 / 64.
+A341368	polya	7	"[0,0,0,1],A002448"	"1,x,S,/,1,-,^7,128,/"	new A002448()	Expansion of (1 / theta_4(x) - 1)^7 / 128.
+A341369	polya	8	"[0,0,0,1],A002448"	"1,x,S,/,1,-,^8,256,/"	new A002448()	Expansion of (1 / theta_4(x) - 1)^8 / 256.
+A341370	polya	9	"[0,0,0,1],A002448"	"1,x,S,/,1,-,^9,512,/"	new A002448()	Expansion of (1 / theta_4(x) - 1)^9 / 512.
+A341371	polya	10	"[0,0,0,1],A002448"	"1,x,S,/,1,-,^10,1024,/"	new A002448()	Expansion of (1 / theta_4(x) - 1)^10 / 1024.
+A341436	filnum	1	1	k -> SU(1, k, j -> ZV(j).^(k + 1 - j)).mod(k) == 0
+A343977	filnum	1	1	k -> Z2(k).+(ZV(3).^(k)).+(ZV(5).^(k)).+(ZV(7).^(k)).+(ZV(11).^(k)).mod(k) == 0	Numbers k such that k | 11^k + 7^k + 5^k + 3^k + 2^k
+A344732	filnum	1	1	k -> SU(1, k, j -> D048105(j)).mod(k) == 0
+A347806	polya	3	"[1]"	"x,S,1,-,^3,4,3,x,S,-,*,/"	new A000122()	Expansion of (theta_3(x) - 1)^3 / ( 4 * (3 - theta_3(x)))	A122
+A347807	polya	4	"[1]"	"x,S,1,-,^4,8,3,x,S,-,*,/"	new A000122()	Expansion of (theta_3(x) - 1)^4 / ( 8 * (3 - theta_3(x)))	A122
+A347808	polya	5	"[1]"	"x,S,1,-,^5,16,3,x,S,-,*,/"	new A000122()	Expansion of (theta_3(x) - 1)^5 / (16 * (3 - theta_3(x)))	A122
+A347809	polya	6	"[1]"	"x,S,1,-,^6,32,3,x,S,-,*,/"	new A000122()	Expansion of (theta_3(x) - 1)^6 / (32 * (3 - theta_3(x)))	A122
+A369612	filtpos	1	1	new A062918()	(k, v) -> v.mod(k) == 0
+A375454	polyx	1	"[0,1],[0,0,1],[1,-2]"	"p1,p2,^4,/,sub,sqrt"	1	0
+A375455	polyx	1	"[0,1],[0,0,1],[1,-2]"	"p1,p2,^5,/,sub,sqrt"	1	0
+A383624	holos	0	[[0],[-315,105],[-171,76],[51,-34],[3,-4],[0,1]]	1	0	0
+A384201	holos	0	[[0],[-2,4,-2],[2,-1],[1]]	0,1	0	0
+A384202	holos	0	[[0],[-3,6,-3],[3,-2],[1]]	0,1	0	0
+---- 2025-05-27 23:20:29
+A129134	polya	1	"[0,1],[0,-1],[0,0,-1]"	"1,p1,S,p2,S,*,-,2,/"	new A000122()	Expansion of (1 - phi(-q) * phi(-q^2)) / 2 in powers of q where phi() is a Ramanujan theta function.
+A173030	polya	0	"[1],[0,7],[0,-1],[0,0,0,0,0,0,0,-1]"	"p2,S,^4,p1,p3,S,^4,*,+"	new A121373()
+A204059	sintrif	1	(term, n) -> RD(n, d -> new Q(Z_1(n/d + 1), Functions.PELL.z(d))).*(term).num()	""	new A000129()	a(n) = Pell(n) * Sum_{d|n} (-1)^(n/d) / Pell(d), where Pell(n) = A000129(n).
+A261454	polya	0	"[1],[0,0,1],[0,-1]"	"p1,S,p2,T,/"	new A004016(), new A121373()
+A380083	sintrif	1	(term, n) -> Functions.PELL.z(n*n)./(term)	""	new A000129()	a(n) = Pell(n^2)/Pell(n).
+---- 2025-05-27 23:41:05
+A202473	decexpr	1	() -> CR.EIGHT.multiply(CR.PI).subtract(CR.valueOf(18).multiply(REALS.acos(CR.ONE_THIRD)))
+A249283	decexp	1	() -> CR.PI.divide(CR.ONE.agm(CR.TWO))
+A257176	decexp	0	() -> X001620.subtract(X099282).divide(CR.TWO)
+A263183	decexp	0	() -> CR.ONE.divide(X051491.log().divide(CR.TWO.log()))
+A373021	decexp	0	() -> CR.TEN.subtract(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt().divide(CR.EIGHT.subtract(CR.TWO.multiply(CR.FIVE.sqrt())))
+A373022	decexp	0	() -> CR.TWO.multiply(CR.FIVE.add(CR.FIVE.sqrt())).sqrt().divide(CR.valueOf(12).subtract(CR.TWO.multiply(CR.FIVE.sqrt())))
+A373023	decexp	0	() -> CR.TWO.multiply(CR.FIVE.add(CR.FIVE.sqrt())).sqrt().divide(CR.EIGHT.add(CR.TWO.multiply(CR.FIVE.sqrt())))
+A373024	decexp	0	() -> CR.TEN.subtract(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt().divide(CR.valueOf(12).add(CR.TWO.multiply(CR.FIVE.sqrt())))
+A382103	decexp	0	() -> CR.HALF.subtract(CR.ONE.divide(CR.SIX).multiply(CR.FIVE.divide(CR.SIX).sqrt()))
+A382104	decexp	0	() -> CR.HALF.add(CR.ONE.divide(CR.SIX).multiply(CR.FIVE.divide(CR.SIX).sqrt()))
+A382105	decexp	0	() -> CR.valueOf(322).add(CR.valueOf(13).multiply(CR.valueOf(70).sqrt())).divide(CR.valueOf(900))
+A382106	decexp	0	() -> CR.valueOf(322).subtract(CR.valueOf(13).multiply(CR.valueOf(70).sqrt())).divide(CR.valueOf(900))
+A382234	decexp	0	() -> X085548.pow(2).subtract(X085964).divide(CR.TWO)
+A382235	decexp	0	() -> X085541.pow(2).subtract(X085966).divide(CR.TWO)
+A382242	decexp	0	() -> X068466.pow(2).multiply(X231863).divide(CR.EIGHT)
+A382549	decexp	0	() -> X085548.add(X085541)
+A382556	decexp	0	() -> X085548.subtract(X085541)
+A383852	decexp	0	() -> CR.SQRT2.add(CR.THREE.multiply(CR.THREE.sqrt())).divide(CR.valueOf(12))
+A384059	decexp	0	() -> CR.HALF.multiply(CR.THREE.add(CR.TWO.divide(CR.FIVE.sqrt())).sqrt())
+A384138	decexp	1	() -> CR.FIVE.add(CR.FIVE.sqrt()).add(CR.SIX.multiply(CR.valueOf(25).add(CR.TEN.multiply(CR.FIVE.sqrt())).sqrt())).divide(CR.valueOf(24))
+A384139	decexp	0	() -> CR.TWO.multiply(CR.SQRT2).add(CR.THREE.multiply(CR.THREE.sqrt())).divide(CR.valueOf(12))
+A384140	decexp	1	() -> CR.FIVE.add(CR.FIVE.sqrt()).add(CR.THREE.multiply(CR.valueOf(25).add(CR.TEN.multiply(CR.FIVE.sqrt())).sqrt())).divide(CR.valueOf(12))
+A384141	decexp	1	() -> CR.FIVE.multiply(CR.TWO.add(CR.THREE.sqrt())).divide(CR.TWO)
+A384142	decexp	1	() -> CR.SQRT2.add(CR.FOUR.add(CR.THREE.multiply(CR.SQRT2)).sqrt()).divide(CR.THREE)
+A384143	decexp	1	() -> CR.FIVE.multiply(CR.SQRT2).add(CR.NINE.multiply(CR.THREE.sqrt())).divide(CR.SIX)
+A384144	decexp	2	() -> CR.FIVE.add(CR.FOUR.multiply(CR.FIVE.sqrt())).add(CR.valueOf(15).multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).divide(CR.SIX)
+A384213	decexp	2	() -> CR.valueOf(45).add(CR.valueOf(17).multiply(CR.FIVE.sqrt())).add(CR.valueOf(30).multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).divide(CR.valueOf(12))
+A384214	decexp	1	() -> CR.ONE.add(CR.TWO.divide(CR.THREE).multiply(CR.SQRT2)).add(CR.TWO.divide(CR.THREE).multiply(CR.FOUR.add(CR.TWO.multiply(CR.SQRT2)).add(CR.TWO.multiply(CR.valueOf(146).add(CR.valueOf(103).multiply(CR.SQRT2)).sqrt())).sqrt()))
+A384215	decexp	2	() -> CR.SEVEN.add(CR.TWO.multiply(CR.SQRT2)).add(CR.FIVE.multiply(CR.THREE.sqrt()))

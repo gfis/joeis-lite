@@ -1,0 +1,7 @@
+A339748	multia	0	""	(self, n) -> ZV(6).^(Functions.VALUATION.z(6, n).+(1)).-(1)./(5)	6^(valuation(n, 6) + 1) - 1) / 5)	nonn    1..10000        nyi
+A343511	multia	0	""	(self, n) -> SD(n, d -> d == n ? ZV(0) : self.a(d).^(2)).+(1)	nonn    1..3000 nyi
+A343493	multia	0	""	(self, n) -> ZV(1).-(SD(n, d -> d == n ? ZV(0) : self.a(d - 1)))	sign    0..90   nyi
+A329970	multia	0	""	(self, n) -> Z_1(n + 1).*(n).*(CEIL(n,2)).+(SU(1, n, k -> Z_1(k).*(k).^(2).*(n/k)))	sign    1..10000        nyi
+A333372	multia	0	""	(self, n) -> Functions.PRIMORIAL.z(n).-(SU(1, n - 1, k -> Functions.PRIMORIAL.z(k).*(self.a(n - k))))	, where prime()# = F002110. nonn    0..19   nyi
+A337825	multia	0	"0"	(self, n) -> ZV(n).^(3).-(SU(1, n - 1, k -> BI(n,k).^(2).*(n - k).^(3).*(k).*(self.a(k))./(n)))	sign    0..17   nyi
+A337135	multia	0	"1"	(self, n) -> SD(n, d -> d*d > n ? ZV(0) : self.a(d))

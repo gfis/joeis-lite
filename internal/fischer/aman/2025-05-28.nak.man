@@ -1,0 +1,154 @@
+---- 2025-05-29 19:22:18
+
+
+
+
+
+
+ A109182	nyi t	 Numbers k such that the k-th and (k+1)-th primes have the same sum of squares of digits.	base,nonn	1, 42	nyi	_Zak Seidov_
+ A109183	nyi	Numbers n such that n-th and (n+1)-th primes have the same sum of digits squared but different sets of digits.	base,nonn	1, 34	nyi	_Zak Seidov_
+ A109197	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(2).+(k*k))	1
+ A109198	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(3).+(k*k))	1
+ A109199	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(4).+(k*k))	1
+ A109200	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(5).+(k*k))	1
+ A109201	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(6).+(k*k))	1
+ A109202	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(7).+(k*k))	1
+ A109203	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(8).+(k*k))	1
+ A109204	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(9).+(k*k))	1
+ A109205	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(10).+(k*k))	1
+ A109206	lambmin	0	(n, k) -> Predicates.SEMIPRIME.is(ZV(n).^(11).+(k*k))	1
+ A126232	lambdan	0	n -> SU(0, 5, k -> Z_1(k).*(BI(5, k)).*(ZV(n - k).^(n)))
+ A153119	filter	1	new A000040().skip(3)	p -> { final Z pp = p.^(2); return PP(pp.+(30)) && PP(pp.-(30)); }
+ A153120	filter	1	new A000040().skip(1)	p -> { final Z pp = p.^(2); return PP(pp.+(42)) && PP(pp.-(42)); }		p^2 +- 42
+ A157473	filter	1	new A000040().skip(2)	p -> { final Z pp = Functions.CBRT.z(p.-(2)); return PP(pp.+(2)) && PP(pp.-(2)); }	(p-2)^(1/3) -+ 2 are also primes.
+ A165469	filter	0	new A004767()	(k, v) -> CNT(1, 2*k, u -> SU(1, u, i -> JSz(i, 4*k + 3)).isZero()).isZero()	 is never zero for any u in range [1,(2n+1)]
+ A165580	filter	0	new A004767()	(k, v) -> CNT(1, 2*k, u -> SU(1, u, i -> JSz(i, 4*k + 3)).isZero()).isZero()	 is never zero for any u in range [1,(2n+1)],
+ A166051	lambdan	0	n -> Nonsquare integers of the form 4n+1 for which Sum_{i=1, u} JS(i,4*n+1) is never negative for any u in range [1,(2n)]
+ A166089	filter	0	new A005408()	(k, v) -> first odd number 2k+1, for which    SU(1, u, i -> JSz(i, 2*k + 1)) obtains value zero exactly n times when u ranges from 1 to (2k+1). Here J(i,k) is the Jacobi symbol.
+ A166092	filter	0	new A004767()	(k, v) -> 4k+3 of times  SU(1, u, i -> JSz(i, 4*k + 3)) obtains value zero when u ranges from 1 to (4k+3)
+ A177865	lambdan	0	n -> { final int p = PMi(n); final Z mx = Z.NEG_ONE; return max_{0<k<p} |Sum_{i=1, k} JS(i/p)|, where p is the n-th prime, n>1, and JS(i/p) is the Legendre symbol.
+ A185150	lambdan	0	n -> Number of odd primes p between n^2 and (n+1)^2 with JS(n/p) = 1
+ A205882	lambdan	0	n -> G.f.: 1 - 5*Sum_{n>=1} FI(n)*JS(n,5)*n*x^n / (1 - Lucas(n)*x^n + (-1)^n*x^(2*n))
+ A205884	lambdan	0	n -> G.f.: 1 - 5*Sum_{n>=1} PELL(n)*JS(n,5)*n*x^n / (1 - J002203(n)*x^n + (-1)^n*x^(2*n))
+ A207291	lambdan	0	n -> { final int p = PMi(n); final Z mx = Z.NEG_ONE; return max_{0<k<p} |sum_{i=1, k} JS(i/p)|, where p is the n-th prime == 1 (mod 4) and JS(i/p) is the Legendre symbol.
+ A207292	lambdan	0	n -> { final int p = PMi(n); final Z mx = Z.NEG_ONE; return max_{0<k<p} |sum_{i=1, k} JS(i/p)|, where p is the n-th prime == 3 (mod 4) and JS(i/p) is the Legendre symbol.
+ A222304	nyi o	Numbers n such that 2n is in J045980.	nonn	1, 10000	nyi	_N. J. A. Sloane_, based on a suggestion from _Allan C. Wechsler
+ A222305	nyi o	Numbers n such that 9n is in J045980.	nonn	1, 10000	nyi	_N. J. A. Sloane_, based on a suggestion from _Allan C. Wechsler
+ A222306	nyi o	Numbers n such that 4n is in J045980.	nonn	1, 10000	nyi	_N. J. A. Sloane_, based on a suggestion from _Allan C. Wechsler
+ A241505	lambdan	0	n -> Composite integers k satisfying F_k-KS(k, 5) == 0 (mod k)
+ A257978	lambdan	0	n -> For p = PM(n), number of primes k with k < p such that F_{p-JS(p/k)} == 0 (mod p)
+ A258249	lambdan	0	n -> Lexicographically smallest sequence of primes such that Legendre symbol (a(1)*, .*a(n-1) / a(n)) = 1 for all n.
+ A268921	lambdan	0	n -> Irregular triangle read by rows: T(n, k) = Legendre symbol (-k / PM(n)) for k = 0, , ., PM(n)-1, for n >= 1, with T(n, 0) = 0, T(1, 1) = 1.
+ A279550	lambdan	0	n -> Composite numbers m for which JS(p(i)/p(j)) = -1 for all i, j, where p(k) are the prime factors of m and JS(x/y) is the Legendre symbol of x and y, defined to be 1 if x is a quadratic residue (mod y) and -1 if x is a quadratic non-residue (mod y).
+ A308482	lambdan	0	n -> Composites c such that T_{c-1} == KS(c, 3)*3^(c-1) (mod c), where T_i denotes the i-th central trinomial coefficient (J002426) and (/) denotes the Kronecker symbol.
+ A329648	lambdan	0	n -> Let D = J014601(n) be the n-th positive integer congruent to 0 or 3 mod 4, then a(n) = b(D) := -Sum_{i=1, D} Kronecker(-D,i)*i
+ A329649	lambdan	0	n -> Let D = J042948(n) be the n-th positive integer congruent to 0 or 1 mod 4, then a(n) = b(D) := Sum_{i=1, D} Kronecker(D,i)*i^2
+ A353204	multia	0	"1"	(self, n) -> FA(n - 1).negate().*(RU(1, n, k -> new Q(ZV(k), CEIJS(k, 2)).*(self.a(n - k))./(FA(n - k))).num())	-(n-1)! * Sum_{k=1, n} k/J110654(k) * a(n-k)/(n-k)!.
+ A369900	multraf	0	(self, n) -> self.a(n - 1).+(self.s(0).*(2)).-(1)	"0"	new A004593().skip(1)	a(0) = 0, a(n) = a(n-1) + 2*A004593(n+1) - 1 for n>=1.
+ A371627	lambdan	0	n -> ZV(n).-(E371628(n))		a(n)=n-Annn(n)		E371628
+ A372519	lambdan	0	n -> Nonnegative numbers k such that 0 = Sum_{j=0, k} K(k, j) where K(k, j) is the Kronecker symbol (k / j).
+ A373079	lambdan	0	n -> a(n) = the (1 + Sum_{i=1, n-1} a(i) + 10*KS(a(i),0))-th digit in the decimal expansion of Pi, where delta is the Kronecker symbol.
+ A374188	lambdan	0	n -> Array read by ascending antidiagonals: b is a term of row A(a) if and only if  KS(a/b) != KS(E374157(b)/a)
+?A375490	filnum	0	3	k -> (k&1) == 1 && GCDi(3, k) == 1 && ZV(3).^((k - 1)/2).equals(ZV(-KS(3, k) % k))	 == -(3/k) (mod k), where (3/k) is the Jacobi symbol (or Kronecker symbol); Euler pseudoprimes to base 3 (€262051) that are not Euler-Jacobi pseudoprimes to base 3 (J048950).
+?A375816	filnum	0	3	k -> (k&1) == 1 && GCDi(5, k) == 1 && ZV(5).^((k - 1)/2).equals(ZV(-KS(5, k) % k))	 == -(5/k) (mod k), where (5/k) is the Jacobi symbol (or Kronecker symbol); Euler pseudoprimes to base 5 (€262052) that are not Euler-Jacobi pseudoprimes to base 5 (€375914).
+?A097540	lambdan	0	n -> SU(1, 2*n - 1, k -> JSz(n, k).*(k))
+?A097541	lambdan	0	n -> SU(1, n - 1, k -> JSz(2*n, k).*(k))	, where J(i,j) is the Jacobi symbol.
+?A165608	filter	0	new A004767()	(k, v) -> CNT(1, 2*k, u -> SU(1, u, i -> JSz(i, 4*k + 3)).compareTo(ZV(0)) < 0).isZero()	 is never negative for any u in range [1,2n+1], but obtains at least one value zero
+?A165977	filter	0	new A004767()	(k, v) -> CNT(1, 2*k, u -> SU(1, u, i -> JSz(i, 4*k + 3)).compareTo(ZV(0)) < 0).isZero()	 is never negative for any u in range [1,2n+1], but obtains at least one value zero, where J(i,m) is the Jacobi symbol.
+?A166040	lambdan	0	n -> CNT(1, 2*n + 1, u -> SU(1, u, i -> JSz(i, 2*n + 1)).isZero()).-(1)	 obtains value zero when u ranges from 1 to (2n+1)
+?A166085	lambdan	0	n -> CNT(1, 4*n + 1, u -> SU(1, u, i -> JSz(i, 4*n + 1)).isZero()).-(1)	 obtains value zero when u ranges from 1 to (4n+1)
+?A268921	trilambn	1	1	0	(n, k) -> (n == 1 ? ZV(1) : (k == 0 ? ZV(0) : JSz(-k, PM(n))))	 for 1 <= k <= PM(n) - 1, n >= 2, and T(n, 0) = 0, T(1, 1) = +1 (Jacobi symbol).
+?A323703	lambdan	0	n -> { final int p = PMi(n); return ZV(2*p + JS(p, 3))./(2); }	 for n>=3, a(n) = (2*p + JS(p, 3))/3	 with p=PM(n) and where (p/3) is the Legendre symbol. See von Sterneck, Sun, and Brazelton et al. articles. - _Michel Marcus_, Mar 17 2021
+?A327785	arrlamb	1	1	0	-1	(n, k) -> SD(n, d -> KSz(k, d))	, (n>=1, k>=0)
+?A372726	trilambn	0	0	0	(n, k) -> JSz(n, PM(k))	 where JS(n/p) is the Legendre symbol, for n >= 0 and 2 <= k <= n + 2.
+
+A352331	filnum	0	1	k -> PHI(k).equals(ARD(ARD(PHI(k))))	Numbers k for which phi(k) = phi(k''), where phi is the Euler totient function (F000010) and k'' the second arithmetic derivative of k (J068346).	nonn	1..43	nyi	_Marius A. Burtea_
+A352332	filnum	0	1	k -> { final Z ak = ARD(k); return ZV(k).equals(ak.+(ARD(ak))); }	Numbers k for which k = phi(k') + phi(k''), 'where phi is the Euler totient function (F000010), k
+A352479	multia	0	"1,-1,0"	(self, n) -> SU(1, n + 2, k -> (PP(2*k + 3) ? ZV(1) : ZV(0)).*(self.a(n - k))).negate()	""	-Sum_{k=1..n+2} A010051(2*k+3) * a(n-k).
+
+A352974	filnum	1	2	k -> { final Z k2= ZV(k).*(k); final Z tau2 = TAU(k2); return TAU(k2.-(1)).equals(tau2) && tau2.equals(TAU(k2.+(1))); }	Numbers k > 1 such that tau(k^2-1) + 1 = tau(k^2) = tau(k^2+1) - 1, tau = F000005.	nonn,hard	1..51	nyi	_Jianing Song_
+A353054	filnum	1	1	k -> Functions.ROTATE_RIGHT.z(k).equals(ZV(2*k + 1))	Numbers k such that placing the last digit first gives 2k+1.	nonn,base	1..389	nyi	_Tanya Khovanova_
+A384195	lambdan	0	n -> TAU(n + 1).-(TAU(n - 1))	tau(n+1) - tau(n-1), where tau(n) = F000005(n), the number of divisors of n.	sign,new	2..85	nyi	_Dan Dart_
+A384198	lambdan	0	n -> ZV(3).^(n - 3).*(BI(n, 3).+(BI(n, 2).*(3).+(9*n + 27)))	3^(n-3)*(binomial(n,3) + 3*binomial(n,2) + 9*n + 27).	nonn,easy,new	0..26	nyi	_Enrique Navarrete_
+
+
+
+%N A143227	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	(Number of primes between n and 2n) - (number of primes between n^2 and (n+1)^2), if > 0.
+%N A143223	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	(Number of primes between n^2 and (n+1)^2) - (number of primes between n and 2n).
+%N A137379	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between (n + 1)^Pi and n^Pi.
+%N A137380	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between (prime(n + 1))^Pi and (prime(n))^Pi.
+%N A370796	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between (prime(n)+1)^2 and (prime(n+1)-1)^2.
+%N A093538	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between 10^n and 10^n+100.
+%N A131043	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between 10^n and 10^n+10^(n-1).
+%N A093539	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between 10^n-100 and 10^n.
+%N A176811	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between 2*(lesser of n-th twin prime pair) and 2*(greater of n-th twin prime pair).
+%C A176811	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between 2*A001359(n) and 2*A006512(n).
+%C A176811	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between 2*A077800(2n-1) and 2*A077800(2n).
+%N A332079	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between 2^n and the least prime p > 2^n in â‚¬332075, i.e., such that k + 2^m is prime, where k and m are the odd part and 2-valuation, respectively, of p-1.
+?A101909	lambdan	0	n -> (n == 2) ? ZV(2) : PI(2*n).-(PI(4*n))	Number of primes between 2n and 4n.
+%N A176820	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between 3*A171821(2n-1) and 3*A171821(2n).
+?A117757	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(4).pow(n)).-(PI(ZV(4).^(n + 1)))	Number of primes between 4^n and 4^(n+1).
+%N A134851	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between A001605(n) and A001605(n+1).
+%N A258573	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between A002110(n) - A007504(n) and A002110(n) + A007504(n) exclusive where A002110(n) is the primorial numbers and A007504(n) is the sum of first n primes.
+%C A371981	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between A005384(n) and A005384(n+1).
+%N A134850	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between A075737(n) and A075737(n+1), including one bound.
+%C A176811	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between A108605(n) and A176810(n).
+%N A137382	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between Pi^(prime(n)) and Pi^(prime(n+1)).
+%N A378251	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between consecutive perfect powers, zeros omitted.
+%N A123272	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between consecutive terms of â‚¬105575.
+%N A164980	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between consecutive terms of â‚¬164901.
+%N A157890	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between exponents of successive Mersenne primes.
+%N A089994	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between factors of n-th semiprime.
+%N A298071	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between floor(3*n/2) and 2*n (inclusive).
+%N A284437	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n and 2^n inclusive.
+%N A227066	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n and 2n inclusive equals the number of primes between 2n and 3n inclusive.
+%N A354841	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n and n+log(n), exclusive.
+%N A275235	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n and n+log(n)^2.
+%N A080132	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n*10^13 and (n+1)*10^13.
+%N A141061	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n*p(n) and (n+1)*p(n+1), where p(n) is the n-th prime.
+%N A104289	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n*prime(n) and n*prime(n+1).
+%N A188817	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n-sqrt(n) and n+sqrt(n), inclusive.
+%N A217721	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n^2 - log_2(n)^2 and n^2 (inclusive).
+%N A143225	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(ZV(n + 1).^(2)))	Number of primes between n^2 and (n+1)^2, if equal to the number of primes between n and 2n.
+?A089610	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(new Q(2*n + 1, 2).^(2).num())).negate()	Number of primes between n^2 and (n+1/2)^2.
+?A089611	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(new Q(3*n + 1, 3).^(2).num())).negate()	Number of primes between n^2 and (n+1/3)^2.
+?A089614	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(new Q(4*n + 1, 4).^(2).num())).negate()	Number of primes between n^2 and (n+1/4)^2.
+?A089615	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(new Q(5*n + 1, 5).^(2).num())).negate()	Number of primes between n^2 and (n+1/5)^2.
+?A089616	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(new Q(6*n + 1, 6).^(2).num())).negate()	Number of primes between n^2 and (n+1/6)^2.
+?A089617	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(new Q(7*n + 1, 7).^(2).num())).negate()	Number of primes between n^2 and (n+1/7)^2.
+%N A217317	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(QV(5*n + 1).^(2).num()))	Number of primes between n^2 and n^2 + log_2(n)^2 (inclusive).
+?A079648	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).*(n)).-(PI(ZV(n).^(3)))	Number of primes between n^2 and n^3.
+%N A188542	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n^3-n and n^3+n.
+%N A157481	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n^3-n^2 and (n+1)^3-(n+1)^2.
+%N A157482	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n^3-n^2-n^1 and (n+1)^3-(n+1)^2-(n+1)^1.
+%N A143935	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n^K and (n+1)^K, inclusive, where K=log(127)/log(16).
+%N A143898	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n^K and (n+1)^K, where K = log(1151)/log(95).
+%N A134034	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between n^K and (n+1)^K, where K is 1.647862393566467... and n is an integer greater than 0.
+%N A086138	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between p and p+10 if both p and (p+10) are prime, i.e., number of primes somewhere between 10+A023203(n) and A023203(n).
+%N A086137	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between p and p+8 if p is prime, i.e., number of primes between 8+A023202(n) and A023202(n).
+%N A333725	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between pairs of consecutive highly composite numbers (A002182).
+%N A275219	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between prime (n)*prime (n + 1) and prime (n + 1) prime (n + 2).
+%N A366134	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between prime(n) and prime(n)+2*log(prime(n)), exclusive.
+%N A365573	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between prime(n) and prime(n)+log(prime(n)), exclusive.
+%N A079047	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between prime(n) and prime(n)^2.
+%N A098745	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between prime(n)/sqrt(2) and prime(n)*sqrt(2).
+%N A078508	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between sqrt(n^3) and sqrt((n+1)^3).
+%N A082602	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive Fibonacci numbers (including possibly the Fibonacci numbers themselves).
+%N A236452	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive Ramanujan primes.
+%N A145024	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive balanced primes (A006562).
+%N A240592	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive composite squarefree numbers (A120944).
+%N A236575	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive numbers that are not squarefree.
+%N A130973	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive pairs of twin primes, for a(n) > 0.
+%N A240590	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive powerful numbers (A001694).
+%N A378899	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive powerful numbers k that are not prime powers (i.e., k in A286708).
+%N A376316	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between successive primitive practical numbers. That is, number of primes p such that â‚¬267124(n) < p <= â‚¬267124(n+1).
+%N A256520	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between the n-th and (n+1)-st Carmichael numbers.
+%N A376761	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between the n-th composite number c(n) and 2*c(n).
+%N A137859	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between the n-th squared twin prime pair.
+%N A117758	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between the successive central binomial coefficients; i.e., the number of primes in the interval (C(2n,n), C(2n+2,n+1)], with inclusion on the right.
+%N A194643	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between twin prime averages A014574(n) and A014574(k) such that 3*A014574(n)=2*A014574(k).
+%N A212361	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between two consecutive prime triples (p, p+2, p+6).
+%N A205901	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between two consecutive primes of the form n^2 + 1.
+%N A371981	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between two successive Sophie Germain primes, with Sophie Germain primes not themselves included in the count.
+%N A122157	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between two successive numbers congruent to {2, 4} mod 6.
+%N A092850	lambdan	0	n -> (n == 2) ? ZV(2) : PI(ZV(n).pow(n)).-(PI(FA(n)))	Number of primes between â‚¬092800(n) and 10^n.

@@ -1,0 +1,110 @@
+---- 2025-05-26 18:43:48
+A091765	filtpos	1	0	new A007306()	(k, v) -> ZV(k).mod(v).isZero()	| k		J007306
+A097296	filtpos	1	1	new A001055()	(k, v) -> ZV(k).mod(v).isZero()	| k		D001055
+A103208	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(3) == 0	Numbers k such that  3 | A007504(k)
+A111318	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(4) == 0	Numbers k such that  4 | A007504(k)
+A111319	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(5) == 0	Numbers k such that  5 | A007504(k)
+A111320	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(6) == 0	Numbers k such that  6 | A007504(k)
+A111321	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(7) == 0	Numbers k such that  7 | A007504(k)
+A111322	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(8) == 0	Numbers k such that  8 | A007504(k)
+A111323	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(9) == 0	Numbers k such that  9 | A007504(k)
+A111324	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(10) == 0	Numbers k such that 10 | A007504(k)
+A111325	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(11) == 0	Numbers k such that 11 | A007504(k)
+A111326	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(12) == 0	Numbers k such that 12 | A007504(k)
+A111327	filtpos	1	0	new A007504()	(k, v) -> k > 0 && v.mod(13) == 0	Numbers k such that 13 | A007504(k)
+A130073	filtpos	1	1	new A130072()	(k, v) -> v.mod(k) == 0	E130072
+A169665	filtpos	1	1	new A055013().skip(1)	(k, v) -> ZV(k).mod(v).isZero()	| k		J055013
+A179859	filtpos	1	1	new A014284()	(k, v) -> v.mod(k) == 0	J014284
+A188775	filtpos	1	1	new A062970()	(k, v) -> v.mod(k) == 0	J062970
+A227975	filtpos	1	1	new A162578()	(k, v) -> v.mod(k) == 0	A162578
+A237605	filtpos	1	0	new A047842()	(k, v) -> ZV(k).mod(v).isZero()	| k		J047842
+A237877	filtpos	1	1	new A067439()	(k, v) -> v.mod(k) == 0	J067439
+A243018	filtpos	1	1	new A002088().skip(1)	(k, v) -> v.mod(D006218(k)).isZero()	| J002088(k)	D006218	Numbers k such that A006218(k) divides A002088(k).
+A278439	filtpos	1	1	new A047842().skip(1)	(k, v) -> v.mod(k) == 0	J047842
+A279455	filtpos	1	1	new A033273()	(k, v) -> ZV(k).mod(v).isZero()	| k		J033273
+A299961	filtpos	1	1	new A015128().skip(1)	(k, v) -> v.mod(k) == 0	A015128
+A303480	filtpos	1	1	new A073355()	(k, v) -> v.mod(k) == 0	E073355
+A307740	filtpos	1	1	new A009278()	(k, v) -> v.mod(k) == 0	J009278
+A308267	filtpos	1	1	new A048678().skip(1)	(k, v) -> v.mod(k) == 0	J048678
+A308486	filtpos	1	1	new A037278()	(k, v) -> v.mod(F000203(k)).isZero()	| J037278(k)	F000203
+A309272	filtpos	1	1	new A173290()	(k, v) -> v.mod(k) == 0	J173290
+A323721	multia	0	"0"	(self, n) -> Functions.LUCAS.z(n).-(SU(1, n - 1, k -> BI(n, k).*(Functions.LUCAS.z(n - k)).*(k).*(self.a(k)))./(n))
+A323722	multia	0	"0"	(self, n) -> Functions.PELL.z(n).-(SU(1, n - 1, k -> BI(n, k).*(Functions.PELL.z(n - k)).*(k).*(self.a(k)))./(n))
+A333646	filtpos	1	1	new A071190()	(k, v) -> ZV(k).mod(v).isZero()	| k		E071190
+A341045	filtpos	1	1	new A318996()	(k, v) -> v.mod(k) == 0	E318996
+A344731	filtpos	1	1	new A306069()	(k, v) -> v.mod(k) == 0	J306069
+A346014	filtpos	1	1	new A062799()	(k, v) -> v.mod(F000005(k)).isZero()	| J062799(k)	F000005
+A348284	filtpos	1	1	new A068346().skip(1)	(k, v) -> v.mod(k) == 0	A068346
+A348583	filtpos	1	1	new A002129()	(k, v) -> v.mod(k) == 0	J002129
+A348584	filtpos	1	1	new A328258()	(k, v) -> v.mod(k) == 0	J328258
+A351851	filtpos	1	1	new A062327()	(k, v) -> ZV(k).mod(v).isZero()	| k		E062327
+A351853	filtpos	1	1	new A319442()	(k, v) -> ZV(k).mod(v).isZero()	| k		E319442
+A352089	filtpos	1	1	new A278043().skip(1)	(k, v) -> ZV(k).mod(v).isZero()	| k		J278043
+A352107	filtpos	1	1	new A352104().skip(1)	(k, v) -> ZV(k).mod(v).isZero()	| k		J352104
+A352508	filtpos	1	1	new A014420().skip(1)	(k, v) -> ZV(k).mod(v).isZero()	| k		J014420
+A353988	filtpos	1	1	new A011373().skip(1)	(k, v) -> F000045(k).mod(v).isZero()	| F000045(k)	J011373
+A364216	filtpos	1	1	new A364215()	(k, v) -> ZV(k).mod(v).isZero()	| k		J364215
+A364494	filtpos	1	1	new A163511().skip(1)	(k, v) -> v.mod(k) == 0	J163511
+A372898	filtpos	1	1	new A000931().skip(1)	(k, v) -> v.mod(k) == 0	D000931
+A372899	filtpos	1	1	new A002203().skip(1)	(k, v) -> v.mod(k) == 0	J002203
+A372900	filtpos	1	1	new A000930().skip(1)	(k, v) -> v.mod(k) == 0	J000930
+A372901	filtpos	1	1	new A001850().skip(1)	(k, v) -> v.mod(k) == 0	J001850
+A372903	filtpos	1	1	new A001003().skip(1)	(k, v) -> v.mod(k) == 0	J001003
+A372904	filtpos	1	1	new A002426().skip(1)	(k, v) -> v.mod(k) == 0	J002426
+A372940	filtpos	1	1	new A000172().skip(1)	(k, v) -> v.mod(k) == 0	J000172
+A372941	filtpos	1	1	new A002895().skip(1)	(k, v) -> v.mod(k) == 0	J002895
+A372943	filtpos	1	1	new A005258().skip(1)	(k, v) -> v.mod(k) == 0	J005258
+A372944	filtpos	1	1	new A000182().skip(1)	(k, v) -> v.mod(k) == 0	J000182
+A373054	filtpos	1	1	new A000078().skip(1)	(k, v) -> v.mod(k) == 0	J000078
+A374904	filtpos	1	1	new A007425()	(k, v) -> v.mod(F000005(k)).isZero()	| J007425(k)	F000005
+A384201	holos	0	[[0],[-2,4,-2],[2,-1],[1]]	0,1	0	0
+A384202	holos	0	[[0],[-3,6,-3],[3,-2],[1]]	0,1	0	0
+A384205	lambdan	0	n -> SU(0, 2*n, k -> S2(n + k, n).*(S2(3*n - k, n)))
+A384206	lambdan	0	n -> SU(0, 3*n, k -> S2(n + k, n).*(S2(4*n - k, n)))
+A384207	lambdan	0	n -> SU(0, 3*n, i -> SU(0, 3*n - i, j -> S2(i + n, n).*(S2(j + n, n)).*(S2(4*n - i - j, n))))
+A384253	lambdan	1	n -> Z_1(n - 1).+(1).*(FA(n-1))./(n + 1).+(1)
+A384261	lambdan	0	n -> FA(n).*(BI(3*n - 2, n))
+A384262	lambdan	0	n -> FA(n).*(BI(4*n - 3, n))
+A384263	lambdan	0	n -> FA(n).*(BI(4*n - 2, n))
+A384264	poly	0	"[1],[1,1]"	"p1,x,A,/,rev,x,/,x,A,/,rev,x,/,dif,<1,+,1,1,x,A,/,rev,x,/,/,-,^2,*,+"
+---- 2025-05-26 18:48:01
+A224486	filnum	1	1	k -> ZV(2).^(k).+(1).mod(2*k + 1) == 0	^k+1
+A351048	filnum	1	1	k -> F003415(k).mod(F000005(k)).isZero()	| F003415(k)	F000005
+---- 2025-05-26 18:55:51
+A081858	filnum	1	0	k -> ZV(2).^(k).-(1).mod(2*k + 1) == 0	^k-1
+A381257	filnum	1	0	k -> ZV(6).^(k).+(1).mod(6*k + 1) == 0	^k+1
+---- 2025-05-26 19:06:21
+A086486	filnum	1	2	k -> F007947(k).mod(F008472(k)).isZero()	| F007947(k)	F008472
+A256439	filnum	1	2	k -> F000203(k).mod(F000010(k - 1).+(1)).isZero()
+A372902	filnum	1	1	k -> D006318(k).mod(k) == 0	D006318
+A379923	filnum	1	1	k -> E307704(k).mod(k) == 0	E307704
+---- 2025-05-26 19:37:07
+A354558	filnum	1	1	k -> ZV(k).mod(F006530(k).^(2)).isZero() && ZV(k + 1).mod(F006530(k + 1).^(2)).isZero()	| k and P(k+1)^2 | (k+1), where P(k) = F006530(k)
+A354563	filnum	1	1	k -> ZV(k).mod(F006530(k).^(2)).isZero() && ZV(k + 1).mod(F006530(k + 1).^(3)).isZero()	| k and P(k+1)^3 | (k+1), where P(k) = F006530(k) is the largest prime dividing k
+A354564	filnum	1	1	k -> ZV(k).mod(F006530(k).^(3)).isZero() && ZV(k + 1).mod(F006530(k + 1).^(2)).isZero()	| k and P(k+1)^2 | (k+1), where P(k) = F006530(k) is the largest prime dividing k
+A354565	filnum	1	1	k -> ZV(k).mod(F006530(k).^(2)).isZero() && ZV(k + 1).mod(F006530(k + 1).^(4)).isZero()	| k and P(k+1)^4 | (k+1), where P(k) = F006530(k) is the largest prime dividing k
+---- 2025-05-26 19:42:23
+A081339	filnum	1	1	k -> SIGMA(ZV(k).*(k)).mod(4) == 1
+A081354	filnum	1	1	k -> SIGMA(ZV(k).*(k)).mod(4) == 3
+A101318	filnum	1	1	k -> Functions.DIGIT_SUM.i(k) % k <= 2	Sum_of_Digits modulo n <= 2
+A133621	filnum	1	1	k -> BI(k + 10, k).mod(k) == 1	k = 1, where p=10
+A178462	filnum	1	1	k -> PM(k).mod(k) > k/2
+A232538	filnum	1	1	k -> Functions.TRIANGULAR.z(k).mod(SIGMA(k)).equals(ZV(k))
+A232540	filnum	1	1	k -> Functions.TRIANGULAR.z(k).mod(SIGMA(k)).equals(ZV(1))
+A232620	filnum	1	1	k -> DF(2*k).mod(DF(2*k - 1)).compareTo(DF(2*k + 2).mod(DF(2*k + 1))) > 0	mod (2k-1)!! is greater than (2k+2)!! mod (2k+1)!!
+A232863	filnum	1	1	k ->  DF(2*k - 1).mod(FA(k)).compareTo(DF(2*k + 1).mod(FA(k + 1))) > 0	(2*k-1)!! mod k! is greater than (2k+1)!! mod (k+1)!
+A244736	filnum	1	1	k -> (PM(k).mod(5) & 1) == 0	mod 5) is even
+A244737	filnum	1	1	k -> (PM(k).mod(5) & 1) == 1	mod 5) is odd
+A302578	filnum	1	1	k -> Integer.toString(k).indexOf(String.valueOf(k % Functions.DIGIT_SUM.i(k))) >= 0	modulo ks digitsum is a substring of k
+A354561	filnum	1	2	k -> ZV(k).mod(F006530(k).^(3)).isZero()	| k, where P(k) = F006530(k)
+---- 2025-05-26 19:51:57
+A252849	filnum	1	1	k -> !D046951(k).testBit(0)	mod 2 = 0
+A257482	filnum	1	1	k -> PM(k).mod(8) == PM(k).mod(27)
+A308150	filnum	1	1	k -> PP(SIGMA(k).modZ(k))	k is prime, where SIGMA = F000203
+A308169	filnum	1	1	k -> PP(F000010(k).*(k)./(2).mod(F000203(k)))	is prime
+A355058	filnum	1	1	k -> TAU(k).mod(6) == 3	d(m) mod 6 = 3, where d(m) is the number of divisors of m
+A363751	filnum	1	1	k -> PP(PM(k).modZ(k))	k is prime
+---- 2025-05-26 22:54:40
+A178180	filnum	1	1	k -> PM(2*k).mod(PM(k)).equals(PM(2*k+2).mod(PM(k + 1)))
+A288244	filnum	1	1	k -> !PM(k).*(PM(k + 1)).*(PM(k + 2)).mod(PM(k + 3)).testBit(0)	is even
+A367782	filnum	1	1	k -> (BI(2*k, k).mod(k) & 1) == 1	mod k is odd
