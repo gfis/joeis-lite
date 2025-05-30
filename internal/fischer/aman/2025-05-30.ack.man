@@ -1,104 +1,103 @@
 ---- 2025-05-30 21:25:13
-A085315	setdiff	1	new A069494()	new A008592()	new A008592()	}. - _Alois P. Heinz_, Oct 22 2021
-A092920	polya	0	"[1],[1,-1]"	"1,p1,x,S,<2,-,/"	"1,p1,x,S,<2,-,/"	new A006789()	Number of strongly monotone partitions of [n].
-A102221	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(self.a(k)))	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(self.a(k)))	a(n) = Sum_{k=0..n-1} C(n, k)^2*a(k) for n>0, with a(0)=1.
-A133002	polyz	0	"[1],[0,2]"	"x,<1,0,p1,besselI,1,-,/"	"x,<1,0,p1,besselI,1,-,/"	2	0	0	2
-A134809	filter	1	new A134808()	v -> Predicates.PRIME.is(v)	v -> Predicates.PRIME.is(v)	Cyclops numbers that are prime numbers: primes with an odd number of digits with middle digit 0 that have only one digit 0.
-A136098	filter	1	new A134809()	v -> Predicates.PALINDROME.is(v)	v -> Predicates.PALINDROME.is(v)	Prime palindromic cyclops numbers.
-A138131	filter	1	new A134808()	v -> Predicates.PALINDROME.is(v)	v -> Predicates.PALINDROME.is(v)	Palindromic cyclops numbers.
-A138831	sintrif	1	(term, n) -> new Z(term.toString(2))	""	""	new A135627()	Subset of J138148, cyclops numbers with binary digits, only.
-A138837	setdiff	1	new A000040()	new A000668()	new A000668()	.
-A141711	setdiff	1	new A002997()	new A087788()	new A087788()	= J074379 U J112428 U ?112429 U ?112430 U ?112431 U ?112432 U ...
-A146533	poly	0	"[1],[1,-4]"	"7,p1,sqrt,/,5,-,2,/"	"7,p1,sqrt,/,5,-,2,/"
-A160134	setdiff	1	new A054979()	new A054980()	new A054980()	, where \ is the SET-MINUS symbol.
-A160711	filter	1	new A000290()	v -> Predicates.CYCLOPS.is(v)	v -> Predicates.CYCLOPS.is(v)	Cyclops squares: squares (D000290) that are also cyclops numbers (J134808).
-A160712	filter	1	new A134808().skip(1)	v -> !Predicates.PRIME.is(v)	v -> !Predicates.PRIME.is(v)	Composite cyclops numbers (J).
-A160717	filter	1	new A000217()	v -> Predicates.CYCLOPS.is(v)	v -> Predicates.CYCLOPS.is(v)	Triangular numbers (F000217) that are also cyclops numbers (J134808).
-A160725	filter	1	new A134808()	v -> Predicates.SEMIPRIME.is(v)	v -> Predicates.SEMIPRIME.is(v)	Cyclops numbers (J134808) that are also semiprimes (J001358).
-A161641	setdiff	1	new A001477()	new A161627()	new A161627()	.
-A161673	setdiff	1	new A001477()	new A161639()	new A161639()	.
-A162198	filter	1	new A134808()	v -> !v.testBit(0)	v -> !v.testBit(0)	Even cyclops numbers.
-A162199	filter	1	new A134808()	v -> v.testBit(0)	v -> v.testBit(0)	Odd cyclops numbers.
-A162917	setdiff	1	new A000027()	new A161983()	new A161983()	.
-A164368	setdiff	1	new A000040()	new A059788()	new A059788()	= F000040 \ prevprime(2*F000040) = F000040 \ F151799(J005843(F000040)). - _Peter Munn_, Oct 30 2017
-A164977	union2	1	new A005383()	new A077065()	new A077065()	}. - _Alois P. Heinz_, Jan 19 2025
-A165468	filtpos	1	0	new A166086()	new A166086()	v -> v.equals(ZV(1))	nyi	Second row of A166091. Positions of 1s in A166086.	nonn	1..43	nyi
-A165469	sintrif	1	(term, n) -> term.*(4).+(3)	""	""	new A165468()
-A166052	filtpos	1	0	new A166086()	new A166086()	v -> v.equals(ZV(3))	nyi	Second row of A166091. Positions of 3s in A166086.	nonn	1..43	nyi
-A166053	sintrif	1	(term, n) -> term.*(4).+(3)	""	""	new A166052()	Integers of the form 4n+3 for which Sum_{i=1..u} J(i,4n+3) obtains value zero exactly 3 times, when u ranges from 1 to (4n+3). Here J(i,k) is the Jacobi symbol.	nonn	1..40	nyi	_Antti Karttunen_
-A166054	filtpos	1	0	new A166086()	new A166086()	v -> v.equals(ZV(5))	nyi	Third row of A166091. Positions of 5s in A166086.	nonn	1..54	nyi
-A166055	sintrif	1	(term, n) -> term.*(4).+(3)	""	""	new A166054()	Integers of the form 4n+3 for which Sum_{i=1..u} J(i,4n+3) obtains value zero exactly 5 times, when u ranges from 1 to (4n+3). Here J(i,k) is the Jacobi symbol.	nonn	1..45	nyi	_Antti Karttunen_
-A166056	filtpos	1	0	new A166086()	new A166086()	v -> v.equals(ZV(7))	nyi	Fourth row of A166091. Positions of 7s in A166086.	nonn	1..40	nyi
-A166057	sintrif	1	(term, n) -> term.*(4).+(3)	""	""	new A166056()	Integers of the form 4n+3 for which Sum_{i=1..u} J(i,4n+3) obtains value zero exactly 7 times, when u ranges from 1 to (4n+3). Here J(i,k) is the Jacobi symbol.	nonn	1..36	nyi	_Antti Karttunen_
-A166058	filtpos	1	0	new A166086()	new A166086()	v -> v.equals(ZV(9))	nyi	Fifth row of A166091. Positions of 9s in A166086.	nonn	1..42	nyi
-A166059	sintrif	1	(term, n) -> term.*(4).+(3)	""	""	new A166058()	Integers of the form 4n+3 for which Sum_{i=1..u} J(i,4n+3) obtains value zero exactly 7 times, when u ranges from 1 to (4n+3). Here J(i,k) is the Jacobi symbol.	nonn	1..36	nyi	_Antti Karttunen_
-A171253	setdiff	1	new A171252()	new A000688()	new A000688()	.
-A174742	setdiff	1	new A000040()	new A073681()	new A073681()	.
-A179232	setdiff	1	new A075728()	new A006093()	new A006093()	.
-A183058	filter	1	new A005384()	v -> Predicates.CYCLOPS.is(v)	v -> Predicates.CYCLOPS.is(v)	Sophie Germain primes which are also Cyclops numbers.
-A187823	setdiff	1	new A003424()	new A023195()	new A023195()	.
-A201950	polyx	0	"[1],[1,-1]"	"0,p1,log,2,*,besselI"	"0,p1,log,2,*,besselI"	0	1
-A204450	lambdan	0	n -> SU(n/2 + 1, n, k -> BI(n, k).*(LU(k)).*(LU(n - k)))	a(n) = sum(binomial(n,k)*L(k)*L(n-k), k=floor(n/2)+1..n), n>=0,	a(n) = sum(binomial(n,k)*L(k)*L(n-k), k=floor(n/2)+1..n), n>=0,
-A204451	lambdan	0	n -> SU(n/2 + 1, n, k -> BI(n, k).*(FI(k)).*(FI(n - k)))	a(n) = sum(binomial(n,k)*F(k)*F(n-k), k=floor(n/2)+1..n),	a(n) = sum(binomial(n,k)*F(k)*F(n-k), k=floor(n/2)+1..n),
-A216552	setdiff	1	new A001605()	new A047443()	new A047443()	= { n in J001605 | F000045(n) != 2 (mod 3) } = { n in J001605 | F000045(n) is in J003136 } . - _M. F. Hasler_, Sep 29 2012% A223457	setdiff	0	new {n in J002808 : J032741(J032741(J032741(n))) is prime}.
-A239827	filter	1	new A134808()	v -> Predicates.CYCLOPS.is(v.square())	v -> Predicates.CYCLOPS.is(v.square())	Cyclops numbers whose squares are cyclops numbers.
-A239828	filter	1	new A134808()	v -> Predicates.SQUARE.is(v) && Predicates.CYCLOPS.is(Functions.SQRT.z(v))	v -> Predicates.SQUARE.is(v) && Predicates.CYCLOPS.is(Functions.SQRT.z(v))	Cyclops numbers which are squares of cyclops numbers.
-A248963	setdiff	1	new A000961()	new A055638()	new A055638()	, i.e., the complement of J055638 in J000961.
-A277339	polyx	0	"[1],[0,2]"	"x,exp,0,p1,besselI,sqrt,*"	"x,exp,0,p1,besselI,sqrt,*"	0	1
-A281154	polyxa	0	"[1],[1,2]"	"p1,x,S,-,^2,4,/"	"p1,x,S,-,^2,4,/"	1	0	new A000122()
-A281155	polyxa	0	"[1],[-1,-2]"	"p1,x,S,+,^3,8,/"	"p1,x,S,+,^3,8,/"	1	0	new A000122()
-A281704	polya	1	"[0,1]"	"x,S,1,-,2,1,1,x,S,-,2,/,+,^2,*,/"	"x,S,1,-,2,1,1,x,S,-,2,/,+,^2,*,/"	new A000122()
-A286662	filter	1	new A134808()	v -> Predicates.CYCLOPS.is(v) && Predicates.CYCLOPS.is(v.pow(2)) && Predicates.CYCLOPS.is(v.pow(3))	v -> Predicates.CYCLOPS.is(v) && Predicates.CYCLOPS.is(v.pow(2)) && Predicates.CYCLOPS.is(v.pow(3))	Numbers k such that k, k^2 and k^3 are cyclops numbers (J134808).
-A299108	polya	0	"[1]"	"1,1,x,x,S,/,-,/"	"1,1,x,x,S,/,-,/"	new A002448()
-A301335	polya	0	"[1]"	"1,1,1,x,S,-,n,*,2,/,+,/"	"1,1,1,x,S,-,n,*,2,/,+,/"	new A000122()
-A302185	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(D005558(k)).*(D001405(n - k)))		
-A302860	polya	0	"[1],[1,-1]"	"x,S,n,^,p1,/"	"x,S,n,^,p1,/"	new A000122()
-A302862	polya	0	"[1],[1,-1]"	"1,x,S,+,n,^,2,n,^,p1,*,/"	"1,x,S,+,n,^,2,n,^,p1,*,/"	new A000122()
-A304627	polya	0	"[1],[0,2],[1,-1]"	"1,x,S,/,p1,p2,/,-"	"1,x,S,/,p1,p2,/,-"	new A002448()
-A307523	polyxa	0	"[1],[1,1]"	"1,p1,log,S,/"	"1,p1,log,S,/"	0	1	new A002448()
-A307524	polyxa	0	"[1],[1,-1]"	"1,1,p1,/,log,S,/"	"1,1,p1,/,log,S,/"	0	1	new A002448()
-A308847	polyx	0	"[1],[0,2],[0,-2]"	"p2,exp,0,p1,besselI,/"	"p2,exp,0,p1,besselI,/"	0	1	Expansion of e.g.f. exp(-2*x) / BesselI(0,2*x).
-A308848	polyx	0	"[1],[0,2],[0,-1]"	"p2,exp,0,p1,besselI,/"	"p2,exp,0,p1,besselI,/"	0	1	Expansion of e.g.f. exp(-x) / BesselI(0,2*x).
-A309535	polya	0	"[0,1],[1,-2,1],[2,-8,8]"	"x,S,1,-,p1,*,p2,/"	"x,S,1,-,p1,*,p2,/"	new A000122()
-A319672	polya	0	"[1],[1,-1],[1,1]"	"p1,p2,x,S,*,/,n,^"	"p1,p2,x,S,*,/,n,^"	new A002448()
-A323664	polyx	0	"[1],[0,2]"	"x,exp,0,p1,besselI,*,1,-,exp"	"x,exp,0,p1,besselI,*,1,-,exp"	0	1	Expansion of e.g.f. exp(exp(x)*BesselI(0,2*x) - 1).
-A323666	polyx	0	"[1],[0,2]"	"p1,exp,0,p1,besselI,*,1,-,exp"	"p1,exp,0,p1,besselI,*,1,-,exp"	0	1	Expansion of e.g.f. exp(exp(2*x)*BesselI(0,2*x) - 1).
-A328004	polyx	0	"[1],[0,2]"	"1,2,p1,exp,0,p1,besselI,*,-,/"	"1,2,p1,exp,0,p1,besselI,*,-,/"	0	1	E.g.f.: 1 / (2 - exp(2*x) * BesselI(0,2*x)).
-A329760	insect2	1	new A038604()	new A038615()	new A038615()	}.
-A329761	insect2	1	new A000040()	new A174813()	new A174813()	}.
-A329971	polya	0	"[1]"	"1,2,x,S,-,/"	"1,2,x,S,-,/"	new A000122()
-A330505	polyxa	1	"[1]"	"x,S,log,neg,2,/"	"x,S,log,neg,2,/"	0	1	new A002448()
-A338223	polya	2	"[1],[0,16]"	"1,x,S,/,1,-,^2,4,/"	"1,x,S,/,1,-,^2,4,/"	new A002448()
-A342182	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> BI(n, k).*(n - k).^(2).*(self.a(k)))	(self, n) -> SU(0, n - 1, k -> BI(n, k).*(n - k).^(2).*(self.a(k)))	a(0) = 1; a(n) = Sum_{k=0..n-1} (binomial(n,k) * (n-k))^2 * a(k).
-A342445	setdiff	1	new A002796()	new A055471()	new A055471()	and consists of these counterexamples.
-A350152	setdiff	1	new A051532()	new A003277()	new A003277()	.
-A350533	insect2	1	new A005349()	new A007770()	new A007770()	}.
-A350586	setdiff	1	new A054395()	new A350322()	new A350322()	.
-A354170	insect2	1	new A005408()	new A072466()	new A072466()	}. - _Alois P. Heinz_, May 18 2022
-A354227	insect2	1	new A005408()	new A072122()	new A072122()	}.
-A355194	polyx	0	"[1],[0,2]"	"0,p1,besselI,1,-,2,/,x,+,exp"	"0,p1,besselI,1,-,2,/,x,+,exp"	0	1
-A356258	polyz	0	"[1],[0,2]"	"0,p1,besselI,^6"	"0,p1,besselI,^6"	0	1	0	2
-A359777	setdiff	1	new A036349()	new A359775()	new A359775()	.
-A359784	setdiff	1	new A359782()	new A235991()	new A235991()	.
-A362148	setdiff	1	new A046099()	new A036966()	new A036966()	and lists these counterexamples.
-A363280	setdiff	1	new A025487()	new A002182()	new A002182()	.
-A366413	setdiff	1	new A120944()	new A002110()	new A002110()	}.
-A369361	setdiff	1	new A000027()	new A025487()	new A025487()	.
-A369417	setdiff	1	new A286708()	new A055932()	new A055932()	}.
-A369636	setdiff	1	new A286708()	new A025487()	new A025487()	.
-A373479	setdiff	1	new A373478()	new A373475()	new A373475()	.
-A374137	setdiff	1	new A005408()	new A013590()	new A013590()	.
-A379981	setdiff	1	new A379980()	new A005349()	new A005349()	.
-A384243	holos	0	[0,32,-80,80,-40,10,-1]	0,0,1,6,30	0,0,1,6,30	0	0
-A384294	holos	3	[0,1,1,-1,-2,-2,2,1,1,-1]	6,12,30,34,56,108,150,244	6,12,30,34,56,108,150,244	0	0
-A384305	polya	0	"[1]"	"x,S,^30"	"x,S,^30"	new A090358()
-A384324	polya	0	"[1]"	"x,S,^6"	"x,S,^6"	new A090351()
-A384325	polya	0	"[1]"	"x,S,^12"	"x,S,^12"	new A090353()
-A384326	polya	0	"[1]"	"x,S,^20"	"x,S,^20"	new A090356()
-A384332	polya	0	"[0],[0,-1]"	"1,p1,S,/"	"1,p1,S,/"	new A384324()
-A384333	polya	0	"[0],[0,-1]"	"1,p1,S,/"	"1,p1,S,/"	new A384325()
-A384334	polya	0	"[0],[0,-1]"	"1,p1,S,/"	"1,p1,S,/"	new A384326()
-A384335	holos	0	[[0],[-41150592,11757312],[-489888,1306368],[195048,-18144],[1602,-720],[0,-1]]	1	1	0	0
-A384343	polya	0	"[0],[0,-1]"	"1,p1,S,/"	"1,p1,S,/"	new A084784()
-A384344	polya	0	"[0],[0,-1]"	"1,p1,S,/"	"1,p1,S,/"	new A090351()
-A384345	polya	0	"[0],[0,-1]"	"1,p1,S,/"	"1,p1,S,/"	new A090356()
+A085315	setdiff	1	new A069494()	new A008592()	}. - _Alois P. Heinz_, Oct 22 2021
+A092920	polya	0	"[1],[1,-1]"	"1,p1,x,S,<2,-,/"	new A006789()	Number of strongly monotone partitions of [n].
+A102221	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> BI(n, k).^(2).*(self.a(k)))	a(n) = Sum_{k=0..n-1} C(n, k)^2*a(k) for n>0, with a(0)=1.
+A133002	polyz	0	"[1],[0,2]"	"x,<1,0,p1,besselI,1,-,/"	2	0	0	2
+A134809	filter	1	new A134808()	v -> Predicates.PRIME.is(v)	Cyclops numbers that are prime numbers: primes with an odd number of digits with middle digit 0 that have only one digit 0.
+A136098	filter	1	new A134809()	v -> Predicates.PALINDROME.is(v)	Prime palindromic cyclops numbers.
+A138131	filter	1	new A134808()	v -> Predicates.PALINDROME.is(v)	Palindromic cyclops numbers.
+A138831	sintrif	1	(term, n) -> new Z(term.toString(2))	""	new A135627()	Subset of J138148, cyclops numbers with binary digits, only.
+A138837	setdiff	1	new A000040()	new A000668()	.
+A141711	setdiff	1	new A002997()	new A087788()	= J074379 U J112428 U ?112429 U ?112430 U ?112431 U ?112432 U ...
+A146533	poly	0	"[1],[1,-4]"	"7,p1,sqrt,/,5,-,2,/"
+A160134	setdiff	1	new A054979()	new A054980()	, where \ is the SET-MINUS symbol.
+A160711	filter	1	new A000290()	v -> Predicates.CYCLOPS.is(v)	Cyclops squares: squares (D000290) that are also cyclops numbers (J134808).
+A160712	filter	1	new A134808().skip(1)	v -> !Predicates.PRIME.is(v)	Composite cyclops numbers (J).
+A160717	filter	1	new A000217()	v -> Predicates.CYCLOPS.is(v)	Triangular numbers (F000217) that are also cyclops numbers (J134808).
+A160725	filter	1	new A134808()	v -> Predicates.SEMIPRIME.is(v)	Cyclops numbers (J134808) that are also semiprimes (J001358).
+A161641	setdiff	1	new A001477()	new A161627()	.
+A161673	setdiff	1	new A001477()	new A161639()	.
+A162198	filter	1	new A134808()	v -> !v.testBit(0)	Even cyclops numbers.
+A162199	filter	1	new A134808()	v -> v.testBit(0)	Odd cyclops numbers.
+A162917	setdiff	1	new A000027()	new A161983()	.
+A164368	setdiff	1	new A000040()	new A059788()	= F000040 \ prevprime(2*F000040) = F000040 \ F151799(J005843(F000040)). - _Peter Munn_, Oct 30 2017
+A164977	union2	1	new A005383()	new A077065()	}. - _Alois P. Heinz_, Jan 19 2025
+A165468	filtpos	1	0	new A166086()	v -> v.equals(ZV(1))	nyi	Second row of A166091. Positions of 1s in A166086.	nonn	1..43	nyi
+A165469	sintrif	1	(term, n) -> term.*(4).+(3)	""	new A165468()
+A166052	filtpos	1	0	new A166086()	v -> v.equals(ZV(3))	nyi	Second row of A166091. Positions of 3s in A166086.	nonn	1..43	nyi
+A166053	sintrif	1	(term, n) -> term.*(4).+(3)	""	new A166052()	Integers of the form 4n+3 for which Sum_{i=1..u} J(i,4n+3) obtains value zero exactly 3 times, when u ranges from 1 to (4n+3). Here J(i,k) is the Jacobi symbol.	nonn	1..40	nyi	_Antti Karttunen_
+A166054	filtpos	1	0	new A166086()	v -> v.equals(ZV(5))	nyi	Third row of A166091. Positions of 5s in A166086.	nonn	1..54	nyi
+A166055	sintrif	1	(term, n) -> term.*(4).+(3)	""	new A166054()	Integers of the form 4n+3 for which Sum_{i=1..u} J(i,4n+3) obtains value zero exactly 5 times, when u ranges from 1 to (4n+3). Here J(i,k) is the Jacobi symbol.	nonn	1..45	nyi	_Antti Karttunen_
+A166056	filtpos	1	0	new A166086()	v -> v.equals(ZV(7))	nyi	Fourth row of A166091. Positions of 7s in A166086.	nonn	1..40	nyi
+A166057	sintrif	1	(term, n) -> term.*(4).+(3)	""	new A166056()	Integers of the form 4n+3 for which Sum_{i=1..u} J(i,4n+3) obtains value zero exactly 7 times, when u ranges from 1 to (4n+3). Here J(i,k) is the Jacobi symbol.	nonn	1..36	nyi	_Antti Karttunen_
+A166058	filtpos	1	0	new A166086()	v -> v.equals(ZV(9))	nyi	Fifth row of A166091. Positions of 9s in A166086.	nonn	1..42	nyi
+A166059	sintrif	1	(term, n) -> term.*(4).+(3)	""	new A166058()	Integers of the form 4n+3 for which Sum_{i=1..u} J(i,4n+3) obtains value zero exactly 7 times, when u ranges from 1 to (4n+3). Here J(i,k) is the Jacobi symbol.	nonn	1..36	nyi	_Antti Karttunen_
+A174742	setdiff	1	new A000040()	new A073681()	.
+A179232	setdiff	1	new A075728()	new A006093()	.
+A183058	filter	1	new A005384()	v -> Predicates.CYCLOPS.is(v)	Sophie Germain primes which are also Cyclops numbers.
+A187823	setdiff	1	new A003424()	new A023195()	.
+A201950	polyx	0	"[1],[1,-1]"	"0,p1,log,2,*,besselI"	0	1
+A204450	lambdan	0	n -> SU(n/2 + 1, n, k -> BI(n, k).*(LU(k)).*(LU(n - k)))	a(n) = sum(binomial(n,k)*L(k)*L(n-k), k=floor(n/2)+1..n), n>=0,
+A204451	lambdan	0	n -> SU(n/2 + 1, n, k -> BI(n, k).*(FI(k)).*(FI(n - k)))	a(n) = sum(binomial(n,k)*F(k)*F(n-k), k=floor(n/2)+1..n),
+A216552	setdiff	1	new A001605()	new A047443()	= { n in J001605 | F000045(n) != 2 (mod 3) } = { n in J001605 | F000045(n) is in J003136 } . - _M. F. Hasler_, Sep 29 2012% A223457	setdiff	0	new {n in J002808 : J032741(J032741(J032741(n))) is prime}.
+A239827	filter	1	new A134808()	v -> Predicates.CYCLOPS.is(v.square())	Cyclops numbers whose squares are cyclops numbers.
+A239828	filter	1	new A134808()	v -> Predicates.SQUARE.is(v) && Predicates.CYCLOPS.is(Functions.SQRT.z(v))	Cyclops numbers which are squares of cyclops numbers.
+A248963	setdiff	1	new A000961()	new A055638()	, i.e., the complement of J055638 in J000961.
+A277339	polyx	0	"[1],[0,2]"	"x,exp,0,p1,besselI,sqrt,*"	0	1
+A281154	polyxa	0	"[1],[1,2]"	"p1,x,S,-,^2,4,/"	1	0	new A000122()
+A281155	polyxa	0	"[1],[-1,-2]"	"p1,x,S,+,^3,8,/"	1	0	new A000122()
+A281704	polya	1	"[0,1]"	"x,S,1,-,2,1,1,x,S,-,2,/,+,^2,*,/"	new A000122()
+A286662	filter	1	new A134808()	v -> Predicates.CYCLOPS.is(v) && Predicates.CYCLOPS.is(v.pow(2)) && Predicates.CYCLOPS.is(v.pow(3))	Numbers k such that k, k^2 and k^3 are cyclops numbers (J134808).
+A299108	polya	0	"[1]"	"1,1,x,x,S,/,-,/"	new A002448()
+A301335	polya	0	"[1]"	"1,1,1,x,S,-,n,*,2,/,+,/"	new A000122()
+A302185	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(D005558(k)).*(D001405(n - k)))	
+A302860	polya	0	"[1],[1,-1]"	"x,S,n,^,p1,/"	new A000122()
+A302862	polya	0	"[1],[1,-1]"	"1,x,S,+,n,^,2,n,^,p1,*,/"	new A000122()
+A304627	polya	0	"[1],[0,2],[1,-1]"	"1,x,S,/,p1,p2,/,-"	new A002448()
+A307523	polyxa	0	"[1],[1,1]"	"1,p1,log,S,/"	0	1	new A002448()
+A307524	polyxa	0	"[1],[1,-1]"	"1,1,p1,/,log,S,/"	0	1	new A002448()
+A308847	polyx	0	"[1],[0,2],[0,-2]"	"p2,exp,0,p1,besselI,/"	0	1	Expansion of e.g.f. exp(-2*x) / BesselI(0,2*x).
+A308848	polyx	0	"[1],[0,2],[0,-1]"	"p2,exp,0,p1,besselI,/"	0	1	Expansion of e.g.f. exp(-x) / BesselI(0,2*x).
+A309535	polya	0	"[0,1],[1,-2,1],[2,-8,8]"	"x,S,1,-,p1,*,p2,/"	new A000122()
+A319672	polya	0	"[1],[1,-1],[1,1]"	"p1,p2,x,S,*,/,n,^"	new A002448()
+A323664	polyx	0	"[1],[0,2]"	"x,exp,0,p1,besselI,*,1,-,exp"	0	1	Expansion of e.g.f. exp(exp(x)*BesselI(0,2*x) - 1).
+A323666	polyx	0	"[1],[0,2]"	"p1,exp,0,p1,besselI,*,1,-,exp"	0	1	Expansion of e.g.f. exp(exp(2*x)*BesselI(0,2*x) - 1).
+A328004	polyx	0	"[1],[0,2]"	"1,2,p1,exp,0,p1,besselI,*,-,/"	0	1	E.g.f.: 1 / (2 - exp(2*x) * BesselI(0,2*x)).
+A329760	insect2	1	new A038604()	new A038615()	}.
+A329761	insect2	1	new A000040()	new A174813()	}.
+A329971	polya	0	"[1]"	"1,2,x,S,-,/"	new A000122()
+A330505	polyxa	1	"[1]"	"x,S,log,neg,2,/"	0	1	new A002448()
+A338223	polya	2	"[1],[0,16]"	"1,x,S,/,1,-,^2,4,/"	new A002448()
+A342182	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> BI(n, k).*(n - k).^(2).*(self.a(k)))	a(0) = 1; a(n) = Sum_{k=0..n-1} (binomial(n,k) * (n-k))^2 * a(k).
+A342445	setdiff	1	new A002796()	new A055471()	and consists of these counterexamples.
+A350152	setdiff	1	new A051532()	new A003277()	.
+A350533	insect2	1	new A005349()	new A007770()	}.
+A350586	setdiff	1	new A054395()	new A350322()	.
+A354170	insect2	1	new A005408()	new A072466()	}. - _Alois P. Heinz_, May 18 2022
+A354227	insect2	1	new A005408()	new A072122()	}.
+A355194	polyx	0	"[1],[0,2]"	"0,p1,besselI,1,-,2,/,x,+,exp"	0	1
+A356258	polyz	0	"[1],[0,2]"	"0,p1,besselI,^6"	0	1	0	2
+A359777	setdiff	1	new A036349()	new A359775()	.
+A359784	setdiff	1	new A359782()	new A235991()	.
+A362148	setdiff	1	new A046099()	new A036966()	and lists these counterexamples.
+A363280	setdiff	1	new A025487()	new A002182()	.
+A366413	setdiff	1	new A120944()	new A002110()	}.
+A369361	setdiff	1	new A000027()	new A025487()	.
+A369417	setdiff	1	new A286708()	new A055932()	}.
+A369636	setdiff	1	new A286708()	new A025487()	.
+A373479	setdiff	1	new A373478()	new A373475()	.
+A374137	setdiff	1	new A005408()	new A013590()	.
+A379981	setdiff	1	new A379980()	new A005349()	.
+A384243	holos	0	[0,32,-80,80,-40,10,-1]	0,0,1,6,30	0	0
+A384294	holos	3	[0,1,1,-1,-2,-2,2,1,1,-1]	6,12,30,34,56,108,150,244	0	0
+A384305	polya	0	"[1]"	"x,S,^30"	new A090358()
+A384324	polya	0	"[1]"	"x,S,^6"	new A090351()
+A384325	polya	0	"[1]"	"x,S,^12"	new A090353()
+A384326	polya	0	"[1]"	"x,S,^20"	new A090356()
+A384332	polya	0	"[0],[0,-1]"	"1,p1,S,/"	new A384324()
+A384333	polya	0	"[0],[0,-1]"	"1,p1,S,/"	new A384325()
+A384334	polya	0	"[0],[0,-1]"	"1,p1,S,/"	new A384326()
+A384335	holos	0	[[0],[-41150592,11757312],[-489888,1306368],[195048,-18144],[1602,-720],[0,-1]]	1	0	0
+A384343	polya	0	"[0],[0,-1]"	"1,p1,S,/"	new A084784()
+A384344	polya	0	"[0],[0,-1]"	"1,p1,S,/"	new A090351()
+A384345	polya	0	"[0],[0,-1]"	"1,p1,S,/"	new A090356()

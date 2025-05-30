@@ -40,7 +40,7 @@ while (<>) {
             } # with ",A"
         } # CC=poly.?
         $rest[0] = $postfix;
-        $line = join("\t", $aseqno, $callcode, $offset, $polys, $postfix, @rest);
+        $line = join("\t", $aseqno, $callcode, $offset, $polys, @rest);
     }
     print "$line\n";
 } # while <>
