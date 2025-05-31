@@ -384,10 +384,10 @@ techo: # append timestamp
 #-----
 addpass: # append seq4 records with passed tests to TODAY=file
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).ack.man
-	grep -P  "\tpass\t" $(CC).pass.log                | cut -b1-7 | sed -e "s/^/\^/" >  $@.grep.tmp
+	grep -P  "\tpass\t" $(CC).pass.log                | cut -b1-7 | sed -e "s/^/\^/"       >  $@.grep.tmp
 	grep -P  "\AA\d+\t([5-9]|\d\d+)\tFATO\t" $(CC).fail.log | cut -b1-7 | sed -e "s/^/\^/" >> $@.grep.tmp
 	grep -E  -f $@.grep.tmp $(CC).gen | grep -P "[a-z]" | cut -f1-11 | perl -pe 's/[ \t]+\Z//;' >> aman/$(TODAY).ack.man
-	grep -vE -f $@.grep.tmp aman/$(CC).man > $@.tmp
+	grep -vE -f $@.grep.tmp aman/$(CC).man > $@.tmp  || :
 	echo ---- `date +%Y-%m-%d%t%T`  > aman/$(CC).man || :
 	grep -vP "^\-\-\-\-" $@.tmp    >> aman/$(CC).man || :
 	make today

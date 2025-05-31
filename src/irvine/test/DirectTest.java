@@ -9,10 +9,11 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import irvine.math.z.Z;
@@ -64,11 +65,15 @@ public final class DirectTest {
       }
 
       try {
-        return (Sequence) Class.forName("irvine.oeis.a" + canonicalId.substring(1, 4) + '.' + canonicalId).newInstance();
-      } catch (final ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-        System.err.println(e.getMessage());
-        e.printStackTrace();
-        throw new UnsupportedOperationException();
+        return (Sequence) Class.forName("irvine.oeis.a" + canonicalId.substring(1, 4) + '.' + seqId).getDeclaredConstructor().newInstance();
+      } catch (final InvocationTargetException e) {
+        // Catch a failure during construction due to Java exception during construction
+        // In this situation, code for the sequence exists, but for some reason could not be used.
+        // Rather than silently hide this error, pass it back up the chain.
+        throw new RuntimeException(e.getTargetException());
+      } catch (final ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException e) {
+        StringUtils.message("No Java implementation was found for " + seqId);
+        return null;
       }
     }
     throw new UnsupportedOperationException();
