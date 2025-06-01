@@ -197,6 +197,12 @@ dirtest:
 	make CC=$@ test log
 runpari:
 	$(JAVA) org.teherba.extcas.RunPARI  $(CMD)
+forgotten: # probably forgotten production
+	grep -iH -P "^A" aman/*.ack.man | endirect | grep -P "\:A" | cut -b1-23 | sort | uniq 
+	| tee $@.tmp
+overlooked: # probably forgotten production
+	grep -iH -P "^A" aman/*.ack.man | endirect > $@.tmp
+	e $@.tmp
 #----
 ingit:
 	git ls-tree -r master --name-only
