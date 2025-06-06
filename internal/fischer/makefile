@@ -218,7 +218,8 @@ joeis_pull:
 	cd $(JOEIS)/src/irvine/oeis ; pwd ; cp -upv $(SOURCES) ../../../../../gits/joeis-lite/src/irvine/oeis/
 #----
 from_joeis:
-	cp -v ../../../joeis/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
+	cp -v ../../../joeis/src/irvine/oeis/PolynomialFieldSequence.java     ../../src/irvine/oeis
+	e              ../../src/irvine/oeis/PolynomialFieldSequence.java
 from_ramath:
 	cp -v ../../../ramath/src/main/java/irvine/oeis/HolonomicRecurrence.java     ../../src/irvine/oeis
 	cp -v ../../../ramath/src/main/java/irvine/test/HolonomicRecurrenceTest.java ../../src/irvine/test

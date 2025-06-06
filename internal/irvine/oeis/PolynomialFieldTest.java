@@ -197,7 +197,7 @@ public final class PolynomialFieldTest {
    * <li>-b print in b-file format instead of comma separated list (default false)</li>
    * <li>-d level debugging level (default 0=none), 1=some, 2=more</li>
    * <li>-i additional degree (default 0)</li>
-   * <li>-n numTerms number of terms to be computed (default: 32)</li>
+   * <li>-n numTerms number of terms to be computed (default: 10)</li>
    * <li>-o offset, first index (default 0)</li>
    * <li>-t type of the generating function: 0 = ordinary (default), 1 = exponential</li>
    * </ul>
@@ -211,7 +211,7 @@ public final class PolynomialFieldTest {
     int debug = 0;
     int dist = 0;
     int gfType = 0;
-    int numTerms = 32;
+    int numTerms = 10;
     int offset = 0;
     int iarg = 0;
     String polyList = "[[1]]";
