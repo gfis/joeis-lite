@@ -45,7 +45,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
   private final int mFactor; //  multiplicity when zeroes should be left out
 
   private final List<Polynomial<Q>> mPolys; // Polynomials referenced in the postfix string as "p0" (the initial polynomial), "p1", "p2" and so on.
-  private final List<AbstractSequence> mSeqs; // sequences for additional generating functions referenced in the postfix string as "S", "T", "U" or "V".
+  private final List<Sequence> mSeqs; // sequences for additional generating functions referenced in the postfix string as "S", "T", "U" or "V".
   private final ArrayList<Polynomial<Q>> mTerms; // terms of mSeqs[iseq]
   private final ArrayList<Integer> mNix; // index of next free elemen in mTerms[iseq]
   private final ArrayList<Integer> mTypes; // types of additional sequences: 0 = ogf, 1 = egf
@@ -55,11 +55,13 @@ public class PolynomialFieldSequence extends AbstractSequence {
   private Z mFactorial;
 
   /**
-   * Helper method that indicates that an input sequence should be treated as exponential generating function.
+   * Helper method that indicates that the input sequence <code>seq</code> should be converted 
+   * from an exponential generating function to an ordinary generating function. 
+   * The offset will be forced to 0, and all terms will be multiplied by <code>n!</code>.
    * @param seq input sequence
-   * @return sequence wrapped with the property to be an egf.
+   * @return sequence wrapped with the property to be an exponential generating function.
    */
-  public static EgfSequence egf(AbstractSequence seq) {
+  public static EgfSequence egf(Sequence seq) {
     return EgfSequence.wrap(seq); 
   }
 
@@ -86,7 +88,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
    */
   public PolynomialFieldSequence(final int offset, final String polys, final String postfix,
                                  final int dist, final int gfType, final int modulus, final int factor,
-                                 final AbstractSequence... seqs) {
+                                 final Sequence... seqs) {
     super(offset);
     mDist = dist;
     mGfType = gfType;
@@ -174,8 +176,8 @@ public class PolynomialFieldSequence extends AbstractSequence {
             mTypes.set(iseq, EGF);
             aNum = aNum.substring(0, aNum.length() - 1); // remove the "!"
           }
-          final AbstractSequence seq = (AbstractSequence) SequenceFactory.sequence(aNum);
-          final int soff = seq.getOffset();
+          final Sequence seq = SequenceFactory.sequence(aNum);
+          final int sourceOffset = seq.getOffset();
           mSeqs.add(seq);
           mNix.add(0);
           mTerms.add(null);
@@ -183,7 +185,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
           final Q[] terms = new Q[mDist + 1];
           int ix = 0;
           while (ix <= mDist) {
-            terms[ix] = ix < soff ? Q.ZERO : Q.valueOf(seq.next());
+            terms[ix] = ix < sourceOffset ? Q.ZERO : Q.valueOf(seq.next()); // e.g.f.s 
             ++ix;
           }
           mNix.set(iseq, ix);
@@ -194,12 +196,12 @@ public class PolynomialFieldSequence extends AbstractSequence {
         System.err.println(exc.getMessage());
       }
     }
-    for (AbstractSequence seq : seqs) { // and also from the trailing parameter list
+    for (Sequence seq : seqs) { // and also from the trailing parameter list
       final Q[] terms = new Q[mDist + 1];
-      final int soff = seq.getOffset();
+      final int sourceOffset = seq.getOffset();
       int ix = 0;
       while (ix <= mDist) {
-        terms[ix] = ix < soff ? Q.ZERO : Q.valueOf(seq.next());
+        terms[ix] = ix < sourceOffset ? Q.ZERO : Q.valueOf(seq.next());
         ++ix;
       }
       mNix.add(ix);
@@ -309,12 +311,12 @@ public class PolynomialFieldSequence extends AbstractSequence {
    */
   public PolynomialFieldSequence(final int offset, final String polys, final String postfix,
                                  final int dist, final int gfType, final int modulus, final int factor) {
-    this(offset, polys, postfix, dist, gfType, modulus, factor, new AbstractSequence[0]);
+    this(offset, polys, postfix, dist, gfType, modulus, factor, new Sequence[0]);
   }
 
   /**
    * Return the inner content of a String without surrounding square brackets, quotes or apostrophes, with all spaces removed.
-   * @param str full String
+   * @param pstr full String
    * @return String with surrounding characters removed
    */
   protected static String trimQuotes(final String pstr) {
@@ -332,7 +334,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
 
   /**
    * Print the contents of the stack in readable form.
-   * @param pfix current postfix element
+   * @param ix current postfix element
    * @param top index of top stack element
    * @param str call point
    */
@@ -603,11 +605,6 @@ public class PolynomialFieldSequence extends AbstractSequence {
         case 52:  // "ellipticK"
           mStack.set(top, Series.ELLIPTIC_K.s(m, mStack.get(top)));
           break;
-        case 53:  // "ogf - convert from e.g.f. to o.g.f.
-          mStack.set(top, RING.serlaplace(mStack.get(top)));
-        case 54:  // "egf - convert from o.g.f. to e.g.f.
-          mStack.set(top, RING.makeEgf(mStack.get(top)));
-          break;
         default: // should not occur with proper postfix expressions
           throw new RuntimeException("invalid postfix code " + ix);
       } //! switch
@@ -685,8 +682,6 @@ public class PolynomialFieldSequence extends AbstractSequence {
     POST_MAP.put("ellipticD", 50);
     POST_MAP.put("ellipticE", 51);
     POST_MAP.put("ellipticK", 52);
-    POST_MAP.put("ogf", 53);
-    POST_MAP.put("egf", 54);
   } //! fillMap
 
   @Override
