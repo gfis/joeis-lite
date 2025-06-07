@@ -17,10 +17,11 @@ public class EgfSequence implements Sequence {
 
   public EgfSequence(final Sequence seq) {
     // super(); // force offset=0
-    mN = -1; 
-    mOffset = seq.getOffset();
+    mOffset = seq.getOffset(); 
+    mN = mOffset - 1;
     mSeq = seq;
     while (mOffset < 0) {
+      ++mN;
       mSeq.next();
       ++mOffset;
     }
@@ -42,7 +43,8 @@ public class EgfSequence implements Sequence {
     if (terms < 0) {
       throw new IllegalArgumentException();
     }
-    for (long k = 0; k < terms; ++k) {
+    for (long k = 0; k < terms; ++k) { 
+      ++mN;
       if (mSeq.next() == null) {
         return mSeq;
       }

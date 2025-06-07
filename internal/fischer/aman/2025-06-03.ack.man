@@ -1,0 +1,133 @@
+---- 2025-06-03 18:14:52
+#A000265	parmof2	1	A038502	2
+#A004151	parmof2	1	A038502	10
+#A006519	parmof2	1	A038500	2
+#A060904	parmof2	1	A038500	5
+#A065883	parmof2	1	A038502	4
+A077775	sintrif	1	(term, n) -> term.*(2).+(1)	""	new A183174()	+ 1
+A077780	sintrif	1	(term, n) -> term.*(2).+(1)	""	new A107124()	+ 1
+A077784	sintrif	1	(term, n) -> term.*(2).+(1)	""	new A183175()	+ 1
+A077787	sintrif	1	(term, n) -> term.*(2).+(1)	""	new A107126()	+ 1
+A077790	sintrif	1	(term, n) -> term.*(2).+(1)	""	new A183176()	+ 1
+A077791	sintrif	1	(term, n) -> term.*(2).+(1)	""	new A107648()	+ 1
+A077795	sintrif	1	(term, n) -> term.*(2).+(1)	""	new A107649()	+ 1
+A080025	filnum	1	1	k -> { final int hwn = Functions.DIGIT_SUM.i(2, k); return CND(k, d -> hwn == Functions.DIGIT_SUM.i(2, d) && hwn == Functions.DIGIT_SUM.i(2, k/d)).compareTo(ZV(1)) >= 0; }	nyi t	Numbers n having exactly one divisor d such that in binary representation d and n/d have the same number of 1s as n.	nonn	1..34	nyi	_Reinhard Zumkeller_
+A080026	filnum	1	1	k -> { final int hwn = Functions.DIGIT_SUM.i(2, k); return CND(k, d -> hwn == Functions.DIGIT_SUM.i(2, d) && hwn == Functions.DIGIT_SUM.i(2, k/d)).compareTo(ZV(1)) == 0; }	nyi t	Numbers n having exactly one divisor d such that in binary representation d and n/d have the same number of 1s as n.	nonn	1..34	nyi	_Reinhard Zumkeller_
+A095179	filnum	1	0	k -> PP(Functions.REVERSE.z(k))	Numbers whose reversed digit representation is prime.
+A095283	filter	1	new A000040()	p -> ("0" + p.toString(2)).matches("\\d*01(11)*\\Z")	Primes whose binary-expansion ends with an odd number of 1s.
+A104900	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(6))
+A104901	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(8))
+A104903	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(16))	Numbers n such that sigma(n) = 16*phi(n) (where sigma=F000203, phi=F000010).	nonn	1..10000	nyi	_Farideh Firoozbakht_ and _M. F. Hasler_
+A129928	sintrif	1	(term, n) -> term.*(3).-(2)	""	new A129926()	- 2
+A132739	parmof2	1	A038502	5
+A136540	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(7))
+A136547	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(5))
+A138620	filnum	1	0	k -> PP(12*k - 1)	is prime.	nonn	1..10000	_Vladimir Joseph Stephan Orlovsky_
+A138622	filnum	1	0	k -> PP(14*k - 1)	is prime.	nonn	1..10000	_Vladimir Joseph Stephan Orlovsky_
+A138624	filnum	1	0	k -> PP(17*k + 5)	is prime.	nonn	1..10000	_Vladimir Joseph Stephan Orlovsky_
+A138626	filnum	1	0	k -> PP(17*k - 5)	is prime.	nonn	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A138630	filnum	1	0	k -> PP(17*k + 7)	is prime.	nonn	1..10000	_Vladimir Joseph Stephan Orlovsky_
+A138634	filnum	1	0	k -> PP(17*k - 9)	is prime.	nonn	1..10000	_Vladimir Joseph Stephan Orlovsky_
+A138639	filnum	1	0	k -> PP(19*k - 1)	is prime.	nonn	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A138641	filnum	1	0	k -> PP(19*k - 2)	is prime.	nonn	1..55	_Vladimir Joseph Stephan Orlovsky_
+A138643	filnum	1	0	k -> PP(19*k - 3)	is prime.	nonn	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A145385	multia	1	"1"	(self, n) -> self.a(n - 1).+(ZV(n).^(self.a(n - 1)))	for n > 1.	nonn	1..4	_Vladimir Joseph Stephan Orlovsky_
+A145386	multia	1	"1"	(self, n) -> self.a(n - 1).*(self.a(n - 1).+(2*(n - 1)))	for n > 1.	nonn,easy	1..8	_Vladimir Joseph Stephan Orlovsky_
+A145482	filter	1	new A000040().skip(3)	p -> PP(p.*(2).-(19))
+A145484	filter	1	new A000040().skip(6)	p -> PP(p.*(2).-(29))
+A152836	multia	0	"-1"	(self, n) -> ZV(n).^(self.a(n - 1)).-(self.a(n - 1).^(n))	sign,fini,less	0..5	_Vladimir Joseph Stephan Orlovsky_
+A152839	multrar	0	(self, n) -> FA(n).-(FA(self.a(n - 1)))	"0"	_Vladimir Joseph Stephan Orlovsky_
+A152840	multia	0	"-1"	(self, n) -> ZV(n).^(ZV(n).+(self.a(n -1))).-(self.a(n - 1).^(ZV(n).+(self.a(n - 1))))	sign	0..3	_Vladimir Joseph Stephan Orlovsky_
+A160814	multia	1	"1"	(self, n) -> self.a(n - 1).^(n - 1).+(ZV(n - 1).^(self.a(n - 1)))		nonn	1..4	_Vladimir Joseph Stephan Orlovsky_
+A163431	filter	1	new A000040()	p -> PP(p.^(3)./(8))	is also prime.	nonn,easy	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A163443	filter	1	new A000040()	p -> PP(p.^(3)./(27))	is prime.	nonn	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A163667	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(9))
+A167369	lambdan	1	n -> Functions.SIGMA.z(FA(n).intValueExact(), FA(n))	nonn	1..4	_Vladimir Joseph Stephan Orlovsky_
+A167748	lambdan	1	n -> PHI(FA(DF(n)))	nonn,changed	1..7	_Vladimir Joseph Stephan Orlovsky_
+A168031	filter	1	new A000040()	p -> PP(CR.E.*(p).floor())	Primes p for which floor(E*p) is prime.	nonn	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A168032	filter	1	new A000040()	p -> PP(CR.PHI.*(p).floor())	Primes p for which floor(p*phi) is prime, where phi is the golden ratio.	nonn	1..10000	_Vladimir Joseph Stephan Orlovsky_
+A168040	filter	1	new A000040()	p -> PP(CV(p).^(CR.E).floor())	Primes p for which floor(p^E) is prime.	nonn	1..45	_Vladimir Joseph Stephan Orlovsky_
+A168446	filter	1	new A000040()	p -> PP(p./(5))	is also prime.	nonn,easy	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A168447	filter	1	new A000040()	p -> PP(p./(6))	is also prime.	nonn,easy	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A171214	poly	1	"0,1"	"x,x,3,/,sub,sub,<1,+"
+A171228	lambdan	0	n -> ZV(n).^(Functions.NEXT_PRIME.i(n) - n)	n^(p-n) where p is smallest prime > n.
+A171256	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(10))	Numbers n such that sigma(n) = 10*phi(n) (where sigma=F000203, phi=F000010).	nonn	1..10000	nyi	_M. F. Hasler_
+A171257	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(11))	Numbers n such that sigma(n) = 11*phi(n) (where sigma=F000203, phi=F000010).	nonn	1..10000	nyi	_Farideh Firoozbakht_ and _M. F. Hasler_
+A171258	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(13))	Numbers n such that sigma(n) = 13*phi(n) (where sigma=F000203, phi=F000010).	nonn	1..10000	nyi	_Farideh Firoozbakht_ and _M. F. Hasler_
+A171259	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(14))	Numbers n such that sigma(n) = 14*phi(n) (where sigma=F000203, phi=F000010).	nonn	1..10000	nyi	_Farideh Firoozbakht_ and _M. F. Hasler_
+A171260	filnum	1	1	k -> SIGMA(k).equals(PHI(k).*(15))	Numbers n such that sigma(n) = 15*phi(n) (where sigma=F000203, phi=F000010).	nonn	1..10000	nyi	_Farideh Firoozbakht_ and _M. F. Hasler_
+A171261	filnum	1	1	k -> PP(PM(k).^(k).-(k))	Numbers n such that prime(n)^n-n is prime.	nonn	1..4	nyi	_Farideh Firoozbakht_
+A171262	filnum	1	1	k -> PHI(k).equals(PHI(k + 1).*(2))	Numbers n such that phi(n) = 2*phi(n+1).	nonn,easy	1..10000	nyi	_Farideh Firoozbakht_
+A171387	lambdan	1	n -> ZV(n > 3 && PP(n) ? 1 : 0)	The characteristic function of primes > 3: 1 if n is prime such that neither prime+-1 is prime else 0.
+A171424	lambdan	0	n -> ZV(n - 1).^(Functions.NEXT_PRIME.i(n - 1) - n + 1).+(n)	(n-1)^(p-n+1)+n where p is the smallest prime > n-1.
+A171569	filter	1	new A000217()	t -> PP(t.-(2))	Triangular numbers T such that T-2 is a prime.	nonn	1..45	_Vladimir Joseph Stephan Orlovsky_
+A171570	filter	1	new A000217().skip(1)	t -> PP(t.+(2))	Triangular numbers T such that T+2 is a prime.	nonn	1..1000	_Vladimir Joseph Stephan Orlovsky_
+A173096	multia	1	"3,4"	(self, n) -> self.a(n - 2).*(self.a(n - 1)).-(self.a(n - 2)).-(self.a(n - 1))	a(1) = 3, a(2) = 4, a(n) = a(n-2)*a(n-1)-a(n-2)-a(n-1).	nonn	1..13	_Vladimir Joseph Stephan Orlovsky_
+A173392	lambdan	1	n -> PR(1, n, k -> { final int r = n%k; return ZV(r == 0 ? 1 : r); })	Product of nonzero remainders of n mod k, for k = 1,2,3,...,n.
+A173416	filnum	1	1	k -> PP(ZV(k).*(2*k).-(1)) ^ PP(ZV(k).*(2*k).+(1))	Exactly one of 2n^2-1 and 2n^2+1 is prime.
+A173444	filnum	1	1	k -> PP(PM(k).-(1).^(2).-(1)) ^ PP(PM(k).-(1).^(2).+(1))	(n-th prime-1)^2-+1, but not both, is prime.	nonn	1..1000	nyi	_Juri-Stepan Gerasimov_, Mar 27 2010
+A173446	filnum	1	1	k -> PP(PM(k).-(1).^(2).+(1)) && PP(PM(k + 1).-(1).^(2).+(1))	((n+{0,1})-th prime-1)^2+1 are both primes.	nonn	1..10000	nyi	_Juri-Stepan Gerasimov_
+A173468	lambdan	1	n -> SU(0, n + 1, k -> ZV(n).^(k))	Sum n^k, k=0..n+1.
+A175332	filnum	1	1	k -> Integer.toString(k, 2).matches("11+0*")	Numbers whose binary expansion is of the form 11+0*
+A178383	filter	1	new A000040()	p -> PP(p.*(3).+(p.mod(3))) && PP(p.*(3).-(p.mod(3)))	Primes p such that q*p+-Mod(p,q) are primes, for q=3.	nonn	1
+A178385	filter	1	new A000040()	p -> PP(p.*(4).+(p.mod(4))) && PP(p.*(4).-(p.mod(4)))	Primes p such that q*p+-Mod(p,q) are primes, for q=4.	nonn	1
+A178386	filter	1	new A000040()	p -> PP(p.*(6).+(p.mod(6))) && PP(p.*(6).-(p.mod(6)))	Primes p such that q*p+-Mod(p,q) are primes, for q=6.	nonn	1
+A178387	filter	1	new A000040()	p -> PP(p.*(7).+(p.mod(7))) && PP(p.*(7).-(p.mod(7)))	Primes p such that q*p+-Mod(p,q) are primes, for q=7.	nonn	1
+A179620	multraf	1	(self,n) -> { final Z diff = self.s(0).-(self.s(1)); return diff.compareTo(self.s(1)) > 0 ? diff : ZV(0); }	"0"	new A002808(), new A073783()	n) if J002808(n) - J073783(n) > J073783(n), 0 otherwise
+A184728	multraf	1	(self,n) -> { final Z diff = self.s(0).-(self.s(1)); return diff.compareTo(self.s(1)) > 0 ? diff : ZV(0); }	""	new A001358(), new A065516()	n) if J001358(n) - J065516(n) > J065516(n), 0 otherwise
+A234957	parmof2	1	A038500	4
+A234959	parmof2	1	A038500	6
+A242603	parmof2	1	A038502	7
+A244414	parmof2	1	A038502	6
+A247648	filnum	1	1	k -> (k&1) == 1 && Integer.toString(k, 2).indexOf("00") < 0	Numbers whose binary expansion begins and ends with 1 and does not contain two adjacent zeros.
+A264981	parmof2	1	A038500	9
+A268354	parmof2	1	A038500	7
+A268355	parmof2	1	A038500	8
+A268357	parmof2	1	A038500	11
+A277964	filnum	1	0	k -> Functions.DIGIT_MAX.i(k) == 2	Numbers whose largest decimal digit is 2.
+A277965	filnum	1	0	k -> Functions.DIGIT_MAX.i(k) == 3	Numbers whose largest decimal digit is 3.
+A277966	filnum	1	0	k -> Functions.DIGIT_MAX.i(k) == 4	Numbers whose largest decimal digit is 4.
+A280873	filnum	0	0	k -> { final String ks = Integer.toString(k, 2); return ks.indexOf("00") < 0 && !ks.matches("10[01]*"); }	Numbers whose binary expansion does not begin 10 and does not contain 2 adjacent 0s; Ahnentafel numbers of X-chromosome inheritance of a male.
+A283608	filnum	1	0	k -> Functions.DIGIT_MAX.i(k) == 5	Numbers whose largest decimal digit is 5.
+A283609	filnum	1	0	k -> Functions.DIGIT_MAX.i(k) == 6	Numbers whose largest decimal digit is 6.
+A283611	filnum	1	0	k -> Functions.DIGIT_MAX.i(k) == 8	Numbers whose largest decimal digit is 8.
+A284062	filnum	1	0	k -> Functions.DIGIT_MIN.i(k) == 1	Numbers whose smallest decimal digit is 1.
+A284063	filnum	1	0	k -> Functions.DIGIT_MIN.i(k) == 2	Numbers whose smallest decimal digit is 2.
+A284064	filnum	1	0	k -> Functions.DIGIT_MIN.i(k) == 3	Numbers whose smallest decimal digit is 3.
+A284065	filnum	1	0	k -> Functions.DIGIT_MIN.i(k) == 4	Numbers whose smallest decimal digit is 4.
+A284066	filnum	1	0	k -> Functions.DIGIT_MIN.i(k) == 5	Numbers whose smallest decimal digit is 5.
+A284067	filnum	1	0	k -> Functions.DIGIT_MIN.i(k) == 6	Numbers whose smallest decimal digit is 6.
+A284068	filnum	1	0	k -> Functions.DIGIT_MIN.i(k) == 7	Numbers whose smallest decimal digit is 7.
+A284069	filnum	0	0	k -> Functions.DIGIT_MIN.i(k) == 8	Numbers whose smallest decimal digit is 8.
+A300955	mulr	1	(self, p, e) -> E064614(p).^(self.a(e))
+A325448	filter	1	new A000045().skip(2)	v -> v.toString(10).indexOf('1') >= 0	Fibonacci numbers whose decimal expansion contains the digit 1.
+A326304	mulr	1	(self, p, e) -> self.a(p.intValueExact() - 1).^(e).+(1)	a(p^e) = a(p-1)^e + 1 for any k > 0 and any prime number p
+A348556	filnum	1	1	k -> Integer.toString(k, 2).indexOf("1111") >= 0	Binary expansion contains 4 adjacent 1s.
+A348930	mulr	1	(p, e) -> D038502(SU(0, e, k -> p.^(k)).intValueExact())	1 + p + p^2 + ... + p^e)
+A352439	filnum	1	10	k -> { final String ks = Integer.toString(k); return ks.endsWith(Integer.toString((ks.charAt(0) - '0') + (ks.charAt(1) - '0'))); }	Numbers k whose decimal expansion ends in the sum of the first two digits of k.
+A352441	filnum	1	100	k -> { final String ks = Integer.toString(k); return ks.endsWith(Integer.toString((ks.charAt(0) - '0') + (ks.charAt(1) - '0') + (ks.charAt(2) - '0'))); }		Numbers k whose decimal expansion ends in the sum of the first three digits of k.
+A352464	filnum	1	1	k -> { final String ks = Integer.toString(k); return ks.endsWith(Functions.DIGIT_PRODUCT.z(k).toString(10)); }	Numbers k whose decimal expansion ends in the product of digits of k.
+A354355	lambdan	1	n -> ZV(Predicates.SMOOTH.is(3, SIGMA(n)) ? 1 : 0)
+A354356	filnum	1	1	k -> Predicates.SMOOTH.is(3, SIGMA(k))	Numbers k such that sigma(k) is 3-smooth (has no larger prime factors than 3)
+A354357	filnum	1	1	k -> (k&1) != 0 && k%3 != 0 && Predicates.SMOOTH.is(3, SIGMA(k))	Numbers k, not divisible by 2 or 3, such that sigma(k) is 3-smooth (has no larger prime factors than 3)
+A369015	mulr	1	(self, p, e) -> PM(self.a(e))	for prime p
+A375678	decexprb	1	() -> CR.PHI.sqrt()	sqrt(phi)	2	Binary expansion of the square root of the golden ratio.
+A379482	mulr	1	(p, e) -> { final Z q = Functions.NEXT_PRIME.z(p); return q.^(2*e + 1).-(1)./(q.-(1)); }	where q = nextprime(p) = F151800(p)
+A380358	filnum	1	1	k -> (k&3) == 3 && Integer.toString(k, 2).indexOf("00") < 0	Numbers whose binary expansion ends with 11 and does not contain adjacent zeros.
+A383039	sintrif	0	(term, n) -> term.*(2).-(1)	""	new A001254()	- 1
+A383958	sintrif	0	(term, n) -> term.*(2).-(1)	""	new A001246()	- 1
+A384063	partsun	0	new A172471()
+A384470	lambdan	0	n -> RU(0, n, k -> new Q(S2(2*k, k).*(S2(2*n - 2*k, n - k)), BI(n, k))).*(FA(n)).num()
+A384471	lambdan	0	n -> SU(0, n, k -> BI(n, k).^(2).*(S2(2*k, k)).*(S2(2*n - 2*k, n - k)))
+A384472	lambdan	0	n -> SU(0, n, k -> BI(n, k).^(3).*(S2(2*k, k)).*(S2(2*n - 2*k, n - k)))
+A384491	lambdan	0	n -> RU(0, n, k -> new Q(S2(2*k, k).*(S2(2*n - 2*k, n - k)), BI(n, k).^(2))).*(FA(n).^(2)).num()
+A384492	lambdan	0	n -> RU(0, n, k -> new Q(S2(2*k, k).*(S2(2*n - 2*k, n - k)), BI(n, k).^(3))).*(FA(n).^(3)).num()
+A384495	lambdan	0	n -> SU(0, n, k -> BI(n, k).^(2).*(SA(2*k, k)).*(SA(2*n - 2*k, n - k)))
+A384496	lambdan	0	n -> SU(0, n, k -> BI(n, k).^(3).*(SA(2*k, k)).*(SA(2*n - 2*k, n - k)))
+A384501	lambdan	0	n -> SU(0, n, k -> SA(n, k).*(S2(n, n - k)))
+A384504	lambdan	0	n -> S1(n*n, n)
+A384514	polyx	0	"[1],[0,6]"	"6,7,p1,exp,-,/"	0	1	e.g.f. 6/(7 -   exp(6*x)).	nonn,new	0..18	nyi
+A384521	polyx	0	"[1],[0,5]"	"5,7,2,p1,exp,*,-,/"	0	1	e.g.f. 5/(7 - 2*exp(5*x)).	nonn,new	0..18	nyi
+A384522	polyx	0	"[1],[0,4]"	"4,7,3,p1,exp,*,-,/"	0	1	e.g.f. 4/(7 - 3*exp(4*x)).	nonn,new	0..17	nyi
+A384523	polyx	0	"[1],[0,3]"	"3,7,4,p1,exp,*,-,/"	0	1	e.g.f. 3/(7 - 4*exp(3*x)).	nonn,new	0..17	nyi
+A384524	polyx	0	"[1],[0,2]"	"2,7,5,p1,exp,*,-,/"	0	1	e.g.f. 2/(7 - 5*exp(2*x)).	nonn,new	0..17	nyi

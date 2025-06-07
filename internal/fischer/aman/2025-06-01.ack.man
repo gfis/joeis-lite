@@ -1,0 +1,154 @@
+---- 2025-06-01 21:10:29
+A079616	sintrif	1	(term,n) -> term.-(1)	""	new A077462()
+A080101	sintrif	1	(term,n) -> term.-(1)	""	new A366833()
+A080665	sintrif	1	(term, n) -> term.^(2)	""	new A076304()	^ 2
+A080765	sintrif	1	(term,n) -> term.-(1)	""	new A024619()
+A083534	diffs	1	new A007617()		diffs	0	a(n) = A007617(n+1) - A007617(n).
+A083924	charfunc	0	new A072795()	Characteristic function for J072795.
+A088033	sintrif	1	(term, n) -> term.^(2)	""	new A088034()	^ 2
+A089217	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A087915(), new A089193()
+A092573	polya	0	"[1],[0,0,0,1]"	"x,S,1,-,p1,S,1,-,*,4,/"	new A000122()
+A092920	polya	0	"[1],[1,-1]"	"1,p1,x,S,<2,-,/"	new A006789()	Number of strongly monotone partitions of [n].
+A097703	complem	1	new A097702()
+A100563	multraf	1	(self,n) -> self.s(0).-(self.s(1))	""	new A135551(), new A033831()	n)
+A104324	multraf	0	(self, n) -> self.s(0).+(self.s(1))	""	new A007895(), new A213911()
+A106405	multraf	1	(self,n) -> self.s(0).-(self.s(1))	""	new A086971(), new A106404()	n)
+A107782	sintrif	0	(term, n) -> D023416(n).-(term)	""	new A087116()	n); a(J003754(n)) = 0
+A110981	sintrif	1	(term, n) -> D001037(n).-(term)	""	new A107847()	n) ( = D001037(n) - (2^n - J103314(n))/n ). - _M. F. Hasler_, Jan 31 2008
+A114708	diffs	2	new A114707()		diffs	0	a(n) = A114707(n) - A114707(n-1) = the number of distinct primes dividing n but not A114707(n-1).
+A116619	sintrif	1	(term, n) -> term.+(1)	""	new A071681()	+ 1
+A121280	sintrif	1	(term,n) -> term.-(1)	""	new A068987()
+A123151	holos	0	[[0],[2,1,1],[0],[0],[-2]]	1,1,2	0	0	a(n) = n! for n < 3, otherwise a(n) = J000124(n)*a(n-3), where J000124(n) = (n^2 + n + 2)/2
+A126602	holos	1	[0,1,0,0,0,0,0,0,0,-1]	8120,8736,8784,19140,11200,21750,8624,15950	0	0
+A127587	sintrif	0	(term,n) -> term.-(1)	""	new A085427()
+A129921	invtraf	0	new A000005()	INVERT transform of tau (A000005). - _Alois P. Heinz_, Feb 11 2021
+A132194	charfunc	1	new A133677()	Characteristic function of J133677.
+A133002	polyz	0	"[1],[0,2]"	"x,<1,0,p1,besselI,1,-,/"	2	0	0	2
+A143223	multraf	0	(self, n) -> self.s(0).-(self.s(1))	"0"	new A014085(), new A060715()	(for n > 0) = [pi((n+1)^2) - pi(n^2)] - [pi(2n) - pi(n)] (for n > 1)
+A143336	polya	0	"[1],[0,0,1],[0,0,0,0,1]"	"x,S,2,p1,S,*,-,4,p2,S,*,+,3,/"	new A006352()
+A146533	poly	0	"[1],[1,-4]"	"7,p1,sqrt,/,5,-,2,/"
+A152723	lambdan	1	n -> F070939(n).-(E152724(n))
+A156942	sintrif	1	(term, n) -> term.^(2)	""	new A174830()	^ 2
+A159050	multraf	1	(self, n) -> self.s(0).+(self.s(1)).-(1)	""	new A029937(), new A029936()	- 1
+A160145	lambdan	0	n -> D005408(n).-(E160144(n))
+A160650	diffs	1	new A160649()		diffs	0	a(n) = A001222(A160649(n)) = A160649(n+1) - A160649(n); where A001222(m) is the sum of prime-factorization exponents of m (or, A001222(m) is the number of primes dividing m, counted with multiplicity).
+A166406	lambdan	0	n -> E166405(n).-(E166100(n))
+A166946	charfunc	0	new A007067()	The characteristic function of J007067.
+A177236	lambdan	1	n -> D049820(n).-(E177235(n))
+A177711	complem	1	new A276156()
+A180305	invtraf	0	new A000203()	INVERT transform of sigma (A000203). - _Alois P. Heinz_, Feb 11 2021
+A180622	multraf	1	(self, n) -> self.s(0).+(self.s(1).*(2)).-(n)	""	new A263995(), new A002088()	- n = J263995(n) + J018805(n) - n + 1. To see this, terms of the form |i-j| are covered by terms of the form i+j or i*j with the exception of 0. Thus i+j, |i-j| and ij result in J263995(n)+1 distinct terms. Terms i/j where gcd(i,j) > 1 can be reduced to a term i'/j' where gcd(i',j')=1. The only terms left are i/j with gcd(i,j) = 1 for which there are J018805(n) such terms. We need to subtract n terms for the cases where j=1 since i/j=i/1 are integers. This results in the formula. - _Chai Wah Wu_, Aug 21 2024
+A182936	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A020500(), new A061397()
+A187335	complem	1	new A187334()
+A189990	sintrif	1	(term, n) -> term.^(2)	""	new A065036()	^ 2
+A190377	sintrif	1	(term, n) -> term.^(2)	""	new A046386()	^ 2
+A192134	multraf	1	(self,n) -> self.s(0).-(self.s(1))	""	new A000961(), new A192015()	n)
+A192221	sintrif	1	(term, n) -> term.+(2)	""	new A179186()	+ 2
+A201950	polyx	0	"[1],[1,-1]"	"0,p1,log,2,*,besselI"	0	1
+A211489	lambdan	1	n -> E182149(n).-(F000045(n))
+A212326	polya	0	"[1]"	"A,<1,S,^2"	new A000122()
+A218004	lambdan	0	n -> F000041(n).+(F000009(n)).-(1)
+A227239	polya	1	"[1],[0,0,1],[0,0,0,0,1]"	"p1,S,^12,<1,8,<2,p2,S,^12,*,+"	new A010815()
+A230412	charfunc	0	new A219650()	The characteristic function of J219650. J219658 gives the positions of zeros.
+A232342	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A077068(), new A077065()
+A241403	complem	1	new A240878()
+A242858	polyx	0	"0,0,1"	"x,exp,1,-,^2,x,exp,*,2,1,x,exp,1,-,^3,-,*,/"	0	1	((exp(x)-1)^2*exp(x)) / (2*(1-(exp(x)-1)^3))
+A249030	sintrif	0	(term, n) -> term.-(D075774(n))	""	new A005589()
+A256357	lambdan	1	n -> SD(n, d -> ZV(((d&3) == 2) ? d : 0)).+(SD(n, d -> ZV(((d%8)%3) == 1 ? d : 0)).*(2)).-(SIGMA(n))	-sigma(n) + sumdiv(n, d, if(d%4==2, d)) + 2*sumdiv(n, d, if((d%8)%3==1, d))
+A259938	polya	0	"[0,1]"	"x,S,1,-,2,/,rev"	new A000122()
+A260804	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A071689(), new A001399()
+A261812	diffs	1	new A098842()		diffs	0	a(n) = A098842(n+1) - A098842(n).
+A261975	polya	0	"[1],[0,4]"	"x,T,^4,x,S,*,p1,x,S,dif,*,+,x,S,^5,/"	new A000122(), new A002448()
+A280827	sintrif	1	(term, n) -> term.-(F055642(n))	""	new A076649()
+A282031	polya	0	"[1]"	"9,x,^3,S,*,x,S,-,8,/"	new A006352()
+A283110	diffs	0	new A001168()		diffs	0	a(n) = A001168(n+1) - A001168(n); this holds for n=0 if A001168(0) is set conventionally to 1, like it is done for free polyominoes in A000105. We say there are exactly 1 fixed polyominoes of order 0.
+A287154	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A077027(), new A064731()
+A290265	lambdan	0	n -> D001006(n).-(D005773(1 + n/2))
+A295875	sintrif	0	(term, n) -> term.+(E295896(n)).and(ZV(1))	""	new A295895()
+A305532	invtraf	0	new A000182()	Invert transform of tangent numbers (A000182).
+A305533	invtraf	0	new A002105()	Invert transform of reduced tangent numbers (A002105).
+A308307	sintrif	1	(term, n) -> term.-(E308069(n))	""	new A005044()
+A317794	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A000616(), new A000370()
+A320301	diffs	1	new A320300()		diffs	0	a(n) = A320300(n+1) - A320300(n) (this is about Pi/4, but they are essentially the same).
+A323704	sintrif	1	(term, n) -> term.+(1)	""	new A236959()	+ 1
+A324731	charfunc	1	new A324551()	Characteristic function of J324551: a(n) = 1 if 2*D156552(n) < D323243(n), and 0 otherwise.
+A326348	holos	0	[[0],[5137865441280,-653250963456,31133346816,-659183616,5231616],[-204468741734400,26658656993280,-1303066152960,28300646400,-230430720],[3746984018269440,-501818389957888,25199044682048,-562312982528,4704787648],[-42192931968215040,5814345115134208,-300455557323008,6900190033088,-59422902208],[328715244322123680,-46687315349741816,2486757941176056,-58871655466576,522669600576],[-1890360429924846000,277153198769069432,-15239870144607552,372486902473432,-3414435765312],[8351135422082043480,-1265730579040771678,71952921005250613,-1818231393962558,17232692542223],[-29090270349188471520,4563944520109594430,-268575239363165455,7025978619522670,-68940219412205],[81333692253654970800,-13225442633740075154,806681900262434849,-21874053323649154,222485169735859],[-184862960029309580400,31195380578436512812,-1974700420043744772,55573232759278172,-586670229491412],[344895759997718261520,-60480344962197211040,3978585383484875230,-116362970129955520,1276684845875090],[-532257526529510535240,97134871467251766120,-6650177061550382720,202432649258426520,-2311688047688920],[683698338735030814800,-130064937605745442404,9282734547570270644,-294576089131242324,3507019037133364],[-734716626955855408320,145969991118077114824,-10880288248556897644,360610042455664304,-4484051359542764],[663190096283079244560,-137892325995490317244,10756852596595835514,-373132359266093684,4856125495580454],[-504359754119371743480,110009475944063119952,-9002609118146763302,327602630931310312,-4472869602526282],[323835220823853478080,-74295706784047314092,6395162798226741122,-244783944089247172,3515441841579262],[-175729138047491021760,42534637834417100628,-3862614220202053728,155976266370541908,-2363198493682488],[80586788812016247360,-20648653261088127040,1984901122348623040,-84841558432834520,1360602320701160],[-31186690388891803320,8491199161943073516,-867262272296723396,39384181293955236,-670993151031316],[10153756043752303680,-2950054953036152240,321478653825843740,-15574216250574160,283029775781140],[-2766877851562257120,861868860742741060,-100672379701299880,5226555323287220,-101765602369040],[626107711463722680,-210206037726592198,26454698919432333,-1479256339329278,31010847370143],[-116336922376595880,42352342786474762,-5776428351045167,349852357622882,-7939591911637],[17475502566457680,-6947087312628650,1033790743381025,-68254783002850,1687082985595],[-2077559040362160,909455873382176,-148834859199876,10792262009776,-292551942156],[189842049328560,-92457257663408,16799691844778,-1349596628728,40435352638],[-12789045191040,7019662299500,-1432731733860,128816389540,-4301630700],[595690187280,-374616871172,87097518992,-8861122012,332153632],[-17114327760,12585333356,-3381734476,391882996,-16405316],[228918240,-199201680,61057340,-7615680,306100],[303360,-728408,550028,-165208,17188],[-23040,49656,-36636,11256,-1236],[0,-144,264,-144,24]]	1,1,2,6	0	0
+A326763	multraf	0	(self, n) -> self.s(0).+(self.s(1))	""	new A014495(), new A370686()	, where the 1st (resp. 2nd) term counts 132-avoiding permutations of order 2 (resp. 1 or 3). - _Andrey Zabolotskiy_, Apr 13 2025
+A328127	polyz	0	"[1],[0,4]"	"p1,ellipticE,p1,ellipticK,/"	0	0	0	2
+A329029	lambdan	0	n -> E328572(n).*(E329031(n))
+A335182	sintrif	1	(term, n) -> E349322(n).-(term)	""	new A349658()	n)
+A339186	lambdan	0	n -> E339184(n).+(E339183(n))
+A339639	sintrif	1	(term, n) -> term.+(E113650(n)).-(1)	""	new A196202()
+A340362	lambdan	1	n -> D005940(n).-(E324106(n))
+A343030	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A343029(), new A004718()
+A348737	charfunc	1	new A348738()	Characteristic function of J348738.
+A353499	lambdan	1	n -> D008966(n).*(E353498(n))
+A357385	diffs	1	new A071626()		diffs	0	a(n) = A071626(n+1) - A071626(n).
+A358529	sintrif	1	(term, n) -> term.+(1)	""	new A233671()	+ 1
+A358531	sintrif	1	(term, n) -> term.+(2)	""	new A258026()	+ 2
+A363908	polyx	0	"[1],[0,4],[0,5]"	"p1,p2,exp,1,-,5,/,+,exp"	0	1	a(n) = exp(-1/5) * Sum_{k>=0} (5*k + 4)^n / (5^k * k!).
+A364568	multraf	0	(self, n) -> self.s(0).-(self.s(1))	""	new A290077(), new A364567()
+A365712	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A117966(), new A365711()
+A365825	lambdan	0	n -> (n&1) == 1 ? F000041(n).-((n-1)/2) : F000041(n).-(n/2).-(F000041(n/2)).+(1)
+A366903	mulr	1	(p, e) -> SU(1, e, k -> (Integer.bitCount(k)&1) == 1 ? p.^(k) : ZV(0)).+(1)	1 + Sum_{k = 1..e, k is odious} p^k
+A366904	mulr	1	(p, e) -> SU(1, e, k -> (Integer.bitCount(k)&1) == 0 ? p.^(k) : ZV(0)).+(1)	1 + Sum_{k = 1..e, k is evil} p^k
+A366990	mulr	1	(p, e) -> SU(2, e, q -> PP(q) ? p.^(q) : ZV(0)).+(1)	? 1 + Sum_{primes q <= e} p^q
+A366992	mulr	1	(p, e) -> SU(2, e, q -> PP(q) ? p.^(q) : ZV(0)).+(p).+(1)	1 + p + Sum_{primes q <= e} p^q
+A366993	mulr	1	(p, e) -> e == 1 ? ZV(1) : p.^(Functions.PREV_PRIME.i(e + 1))
+A366994	mulr	1	(p, e) -> e == 1 ? p : p.^(Functions.PREV_PRIME.i(e + 1))
+A368333	mulr	1	(p, e) -> ZV(e).compareTo(p) < 0 ? ZV(1) : p.^(e)	1 if e <  p, and a(p^e) = p^e if e >= p
+A368335	mulr	1	(p, e) -> ZV(e).compareTo(p) < 0 ? ZV(1) : ZV(e +1 )	1 if e <  p, and a(p^e) = e+1 if e >= p
+A368886	mulr	1	(p, e) -> e == 2 ? ZV(1) : p.^(e)	a(p^2) = 1, and a(p^e) = p^e if e != 2
+A368978	mulr	1	(p, e) -> (e&1) == 1 ? ZV((e + 1)/2) : ZV((e + 2)/4).*(2)	if e is odd, and 2*floor((e+2)/4) if e is even
+A368980	mulr	1	(p, e) -> (e&1) == 1 ? ZV(0) : TAU(e/2)	D183063(e), or equivalently, a(p^e) = 0 if e is odd, and F000005(e/2) if e is even
+A369255	charfunc	1	new A369256()	Characteristic function of J369256.
+A369309	mulr	1	(p, e) -> e == 2 ? ZV(2) : ZV(e - 1)	a(p^2) = 2 and a(p^e) = e-1 if e != 2
+A371014	mulr	1	(p, e) -> p.mod(4) == 3 ? ZV(e/2 + 1) : ZV(e + 1)	floor(e/2) + 1 if p == 3 (mod 4), and e+1 otherwise
+A372442	lambdan	2	n -> n == 1 ? ZV(1) : F070939(n).-(D061395(n))	for n > 1
+A372574	mulr	1	(p, e) -> p.compareTo(ZV(3)) <= 0 ? ZV((e&1) == 0 ? 1 : 0) : ZV(1)	e == 0 (mod 2)] if p <= 3 and a(p^e) = 1 if p > 3, where [ ] is the Iverson bracket
+A374646	sintrif	0	(term, n) -> term.+(1).modZ(2)	""	new A160381()	+ 1 mod 2
+A375706	diffs	1	new A007916()		diffs	0	a(n) = A007916(n+1) - A007916(n).
+A376366	multraf	1	(self,n) -> self.s(0).-(self.s(1))	""	new A368779(), new A376365()	n)
+A376573	complem	1	new A000537()
+A377030	holos	0	[0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1]	0,3,6,9,7,4,1,2,5,8,8,5,2,1,4,7,9,6,3	0	0
+A377516	mulr	1	(p, e) -> MIN(PI(p), ZV(e)).+(1)	min(pi(p), e) + 1, where pi(n) = F000720(n)
+A377721	sintrif	1	(term,n) -> term.+(n - 1)	""	new A074279()
+A377919	holos	0	[0,-100,100,-100,100,1,-1,1,-1]	0,1,2,10,101,21,210,1010,10101	0	0
+A378023	holos	1	[0,1,-5,10,-10,5,-1]	1,7,24,66,155	0	0
+A378748	sintrif	1	(term, n) -> term.-(F051953(n))	""	new A378521()
+A378879	sintrif	1	(term, n) -> D007814(n).+(term)	""	new A065339()	n)
+A378943	holos	1	[0,-1,-1,0,2,1,-1]	2,3,7,13,25	0	0
+A379210	holos	1	[0,1,-1,0,0,-2,2,0,0,1,-1]	0,3,4,11,19,32,35,52,68	0	0
+A379724	sintrif	1	(term,n) -> term.-(1)	""	new A000668()
+A379970	charfunc	1	new A081770()	Characteristic function of J081770, numbers twice their squarefree kernel (F007947).
+A380118	multraf	1	(self,n) -> self.s(0).-(self.s(1))	""	new A072107(), new A034387()	n)
+A380151	multraf	1	(self,n) -> self.s(0).-(self.s(1))	""	new A035487(), new A380804()	n)
+A380344	sintrif	1	(term, n) -> term.-(F001414(n))	""	new A003963()
+A380409	sintrif	1	(term, n) -> term.+(F001414(n))	""	new A003963()
+A380454	charfunc	1	new A048111()	Characteristic function of J048111.
+A380591	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A001002(), new A217596()
+A380955	sintrif	1	(term, n) -> D056239(n).-(term)	""	new A066328()	n)
+A380960	sintrif	0	(term,n) -> term.+(n)	""	new A003849()
+A380986	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A003963(), new A156061()
+A381109	holos	0	[0,1,-3,3,-1]	1,16,52	0	0
+A381374	holos	1	[[0],[1],[0],[-5],[0],[10],[0],[-10],[0],[5],[0],[-1]]	1,1,97,49,769,289,2977,961,8161,2401	0	0
+A381841	sintrif	1	(term, n) -> term.+(1)	""	new A064105()	+ 1
+A381955	lambdan	1	n -> ZV(Jaguar.factor(n).maxExponent() & 1)
+A382057	holos	0	[0,-6,-12,-7,-1]	8,-37,181,-865	0	0
+A382069	lambdan	1	n -> F000217(n).+(D000290(n)).-(D018804(n))
+A382156	holos	0	[0,1,-1,-2,2,1,-1]	1,3,9,15,31,41,65	0	0
+A382219	lambdan	1	n -> n == 1 ? ZV(1) : D051903(n).*(D051904(n))	for n > 1
+A382411	sintrif	1	(term, n) -> F000142(n).*(term)	""	new A152947()	n)
+A382488	lingf	1	0,1,2,2,2,1,4	1,0,0,0,0,0,-1					0
+A382534	holos	1	[0,1,0,0,0,-3,0,0,0,3,0,0,0,-1]	3,9,9,36,15,81,21,36,27,225,33,36	0	0
+A382545	sintrif	1	(term, n) -> term.-(F000010(n))	""	new A071324()
+A382570	holos	0	[0,1,1,2,-4,4,-1]	1,1,2,5,14,41	0	0
+A382641	lingf	0	1,0,1,0,1,0,0,0,-1	1,-1,0,-1					0
+A383034	sintrif	1	(term, n) -> term.-(D209229(n))	""	new A306156()
+A383035	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A306157(), new A306156()
+A383214	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A067434(), new A383213()
+A383354	sintrif	0	(term, n) -> term.^(2)	""	new A000219()	^ 2
+A384048	mulr	1	(p, e) -> e == 1 ? p : p.^(e).-(1)
+A384055	mulr	1	(p, e) -> p.equals(ZV(2)) ? Z2(e).-(1) : p.^(e)	a(2^e) = 2^e-1, and p^e if p is an odd prime
+A384056	mulr	1	(p, e) -> p.equals(ZV(2)) ? Z2(e) : p.^(e).-(1)	a(2^e) = 2^e, and p^e-1 if p is an odd prime
+A384446	trilambn	0	0	0	(n, k) -> ZV(Math.abs(Functions.GCD.i(n, k) - k))
