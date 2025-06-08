@@ -1,8 +1,8 @@
 #!perl
 
-# Extract A-numbers from polys in (poly|polyx|polyz).jpat and move them to the end for (polya|polyxa|polza).jpat
+# Move A-numbers from polys in (poly|polyx|polyz).jpat to instances at the end for (polya|polyxa|polyza).jpat
 # @(#) $Id$
-# 2025-06-08: e.g.f. handling; *FP=11
+# 2025-06-08: e.g.f. handling and test data; *FP=11
 # 2025-05-30: case were only $(PARM1) is present
 # 2025-05-08, Georg Fischer; +WW2=80
 #
@@ -24,29 +24,36 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     }
 } # while $opt
 
+my %charmap = qw(S B T C U D V E);
 my %restix = ("poly", 1, "polyx", 3, "polyz", 5); # index in @rest of new parameter for seqs
+my ($aseqno, $callcode, $offset, $polys, @rest, $postfix);
 while (<>) {
 #while (<DATA>) {
     s/\s+\Z//; # chompr
     my $line = $_;
     if ($line =~ m{\AA\d+\tpoly}) {
-        my ($aseqno, $callcode, $offset, $polys, @rest) = split(/\t/, $line);
-        my $postfix = $rest[0] || "";
+        ($aseqno, $callcode, $offset, $polys, @rest) = split(/\t/, $line);
+        $postfix = $rest[0] || "";
         if ($callcode =~ m{\A(poly[xz]?)\Z}) {
-            if ($polys =~ s{((\, *A\d+\!?)+)}{}) {
-                my @anos = split(/\,/, substr($1, 1));
-                $rest[$restix{$callcode}] = join(", ", map { 
-                    ($_ =~ s{\!}{}) ? "egf(new $_())" : "new $_()"
-                    } @anos);
-                $postfix =~ s{\,s(\d)}{"\," . chr(ord('S') + $1)}eg;
-                $callcode .= "a";
-            } # with ",A"
+            &extract_seqs();
         } # CC=poly.?
         $rest[0] = $postfix;
         $line = join("\t", $aseqno, $callcode, $offset, $polys, @rest);
     }
     print "$line\n";
 } # while <>
+#----
+sub extract_seqs { # from polys
+            if ($polys =~ s{((\, *A\d+\!?)+)}{}) {
+                my @anos = split(/\,/, substr($1, 1));
+                $rest[$restix{$callcode}] = join(", ", map {
+                    ($_ =~ s{\!}{}) ? "egf(new $_())" : "new $_()"
+                    } @anos);
+              # $postfix =~ s{\,s(\d)}{"\," . chr(ord('S') + $1)}eg;
+                $postfix =~ s{\b([STUV])\b}{%charmap{$1}}eg;
+                $callcode .= "a";
+            } # with ",A"
+} # extract_seqs
 #--------------------------------------------
 __DATA__
 # without A*
@@ -73,7 +80,7 @@ A130524	polyz	0	"[1],A007857,A000108,A001764"	"x,s0,x,s1,*,x,s2,*"	0	0	0	1
 
 # with >=2 A, e.g.f
 A372193	poly	0	"[1],A057500!,A001858!"	"x,S,x,T,*"	0	1	fake
-A372193	polyx	0	"[1],A057500!,A001858!"	"x,S,x,T,*"	0	1	
+A372193	polyx	0	"[1],A057500!,A001858!"	"x,S,x,T,*"	0	1
 A143598	polyz	0	"[1],[0,-1],A143599!,A000001!"	"x,S,p1,S,*,sqrt"	0	1	0	2	fake
 
 # mixed

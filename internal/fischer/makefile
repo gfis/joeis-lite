@@ -7680,7 +7680,7 @@ partralr_eval:
 	wc -l    $@.tmp
 #----
 polya_test: # test polya_split.pl
-	perl polya_split.pl polya_split.pl | grep -P "^A"
+	perl polya_split.pl polya_split.pl | grep -vP "^\s"
 #--------------------------
 polyn0:
 	grep -P "^%[NFCo]" $(COMMON)/jcat25.txt \

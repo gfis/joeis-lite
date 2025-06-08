@@ -592,11 +592,20 @@ public class PolynomialFieldSequence extends AbstractSequence {
           mStack.set(++top, RING.x());
           break;
         case 45:  // "S"  1st additional g.f. as a sequence
+        case 55:  // "B"  1st additional g.f. as a sequence
+          mStack.set(top, RING.substitute(mTerms.get(0), mStack.get(top), m));
+          break;
         case 46:  // "T"  2nd additional g.f. as a sequence
+        case 56:  // "C"  2nd additional g.f. as a sequence
+          mStack.set(top, RING.substitute(mTerms.get(1), mStack.get(top), m));
+          break;
         case 47:  // "U"  3rd additional g.f. as a sequence
+        case 57:  // "D"  3rd additional g.f. as a sequence
+          mStack.set(top, RING.substitute(mTerms.get(2), mStack.get(top), m));
+          break;
         case 48:  // "V"  4th additional g.f. as a sequence
-          // Caution, this code is dirty (dependent on the "45")!
-          mStack.set(top, RING.substitute(mTerms.get(ix - 45), mStack.get(top), m));
+        case 58:  // "E"  4th additional g.f. as a sequence
+          mStack.set(top, RING.substitute(mTerms.get(3), mStack.get(top), m));
           break;
         case 49:  // "besselI"
           --top;
@@ -710,6 +719,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
     POST_MAP.put("ellipticD", 50);
     POST_MAP.put("ellipticE", 51);
     POST_MAP.put("ellipticK", 52);
+    POST_MAP.put("B", 55);
+    POST_MAP.put("C", 56);
+    POST_MAP.put("D", 57);
+    POST_MAP.put("E", 58);
   } //! fillMap
 
   @Override
