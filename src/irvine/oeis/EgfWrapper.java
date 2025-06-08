@@ -9,33 +9,36 @@ import irvine.math.z.Z;
  * some zeros are prepended, while for source offset &lt; 0, some terms are skipped.
  * @author Georg Fischer
  */
-public class EgfSequence implements Sequence {
+public class EgfWrapper implements Sequence {
   
   private int mN;
   private int mOffset;
   private final Sequence mSeq;
 
-  public EgfSequence(final Sequence seq) {
+  public EgfWrapper(final Sequence seq) {
     // super(); // force offset=0
     mOffset = seq.getOffset(); 
-    mN = mOffset - 1;
     mSeq = seq;
+/*
+    mN = mOffset - 1;
     while (mOffset < 0) {
       ++mN;
       mSeq.next();
       ++mOffset;
     }
+*/
   }
 
   @Override
   public int getOffset() {
-    return 0;
+    return mOffset;
   }
 
   @Override
   public Z next() {
-    ++mN;
-    return mN < mOffset ? Z.ZERO : mSeq.next();
+    // ++mN;
+    // return mN < mOffset ? Z.ZERO : mSeq.next();
+    return mSeq.next();
   }
 
   @Override
@@ -57,8 +60,16 @@ public class EgfSequence implements Sequence {
     return skip(1);
   }
 
-  public static EgfSequence wrap(final Sequence seq) {
-    return new EgfSequence(seq);
+  /**
+   * Reflective method for the underlying sequence.
+   * @return the underlying sequence
+   */
+  public Sequence getSequence() {
+    return mSeq;
+  }
+
+  public static EgfWrapper wrap(final Sequence seq) {
+    return new EgfWrapper(seq);
   }
 
 }

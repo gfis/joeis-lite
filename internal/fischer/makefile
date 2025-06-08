@@ -7678,6 +7678,9 @@ partralr_eval:
 	perl partra_join.pl -lr -md $@.2.tmp \
 	| tee    $@.tmp
 	wc -l    $@.tmp
+#----
+polya_test: # test polya_split.pl
+	perl polya_split.pl polya_split.pl | grep -P "^A"
 #--------------------------
 polyn0:
 	grep -P "^%[NFCo]" $(COMMON)/jcat25.txt \

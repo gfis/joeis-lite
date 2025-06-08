@@ -1,7 +1,5 @@
-
----- 2025-06-07 19:56:26
----- 2025-06-07 21:04:14
----- 2025-06-07 21:32:54
+---- 2025-06-07 21:49:42
+A107711	trilambn	0	0	0	(n, k) -> n == 0 ? ZV(1) : BI(n, k).*(GCD(n, k))./(n)	Triangle read by rows: T(0,0)=1, T(n,m) = binomial(n,m) * gcd(n,m)/n.
 A082402	polyx	0	"[1],A003024!"	"x,S,log"	0	1
 A082403	polyx	0	"[1],A003024!"	"1,1,x,S,/,-"	0	1
 A089466	polyx	0	"[1],A000169!"	"x,S,^2,neg,2,/,exp,1,x,S,-,/"	0	1
@@ -37,7 +35,6 @@ A099716	polyx	0	"[1],A014500!,A000272!"	"x,T,1,-,S"	0	1	B(R(x)) where B(x) is th
 A099718	polyx	0	"[1],A014507!,A000272!"	"x,T,1,-,S"	0	1	B(R(x)) where B(x) is the e.g.f. of A014507 and 1 + R(x) is the e.g.f. of A000272. - _Andrew Howroyd_, Jan 12 2021
 A100325	poly	0	"[1],[1,-1],A003169"	"1,x,S,+,p1,x,S,<1,-,/"
 A107094	polya	0	"[1],[1,1]"	"p1,x,S,*"	new A067145()
-A107711	trilambn	0	0	0	(n, k) -> n == 0 ? ZV(1) : BI(n, k).*(GCD(n, k))./(n)	Triangle read by rows: T(0,0)=1, T(n,m) = binomial(n,m) * gcd(n,m)/n.
 A108527	polyx	1	"[0,1],[1,-1],[-2,1]"	"1,A,^2,-,p1,p2,A,*,+,/,int"	0	1
 A111342	polya	0	"[1],[1,-1]"	"x,p1,/,S,p1,/"	new A090351()
 A111343	polya	0	"[1],[1,-1]"	"x,p1,/,S"	new A090351()
@@ -118,6 +115,7 @@ A223889	polyx	0	"[1],[1,1],A001187!,A006125!"	"x,S,p1,-,x,T,*"	0	1	.f.: (A(x) - 
 A224510	polyx	0	"[1],A001187!,A006125!"	"x,S,dif,dif,x,T,*,int,int"	0	1	Double integral of A''(x)*B(x) dx^2 where A(x) is e.g.f. for M001187 and B(x) is e.g.f. for J006125. - _Geoffrey Critzer_, Apr 09 2013
 A226349	polyx	0	"[1],A001865!,A000312!"	"x,S,dif,dif,x,T,*,int,int"	0	1	is the double integral of A''(x)*B(x) dx^2 where A(x) is the e.g.f. for J001865 and B(x) is the e.g.f. for D000312.
 A226358	polyx	0	"[1],A062738!,A002416!"	"x,S,dif,dif,x,T,*,int,int"	0	1	is the double integral of A''(x)*B(x) where A(x) is the e.g.f. for J062738 and B(x) is the e.g.f. for J002416.''
+A227119	multia	0	"1"	(self, n) -> SU(1, n, j -> BI(n - 1, j - 1).*(FI(j + 2)).*(self.a(n - j)))
 A228551	polyx	0	"[1],A001833!"	"1,x,S,log,+"	0	1	1 + log(F(x)), where F(x) is the e.g.f. of J001833.
 A228596	polyx	0	"[1],[0,0,0,-4],A006125!"	"p1,6,/,exp,x,S,*"	0	1	exp(-4*x^3/3!)*A(x) where A(x) is the e.g.f. for J006125.
 A249672	polyx	0	"[1],A079978!,A001187!"	"x,T,1,-,S"	0	1	B(A(x) - 1) where B(x) is the e.g.f. for E079978 and A(x) is the e.g.f. for M001187.
@@ -171,5 +169,3 @@ A378324	polyx	1	"[1],A001187!,A000272!"	"x,S,x,T,-,exp,x,S,-,x,T,+,1,-,x,T,1,-,e
 A380057	polyx	0	"[1]"	"1,A,log,cos,<1,+"	0	1
 A380556	polyx	0	"[1],A380555!"	"x,S,exp"	0	1	(3) A(x) = exp( L(x) ),	L(x) = Series_Reversion( (exp(x) - 1)/cos(2*x) ) is the e.g.f. of J380555.
 A381361	polyx	0	"[1]"	"1,2,4,A,^6,*,1,-,3,/,sqrt,*,int,+,sqrt"	0	1
----- 2025-06-07 21:49:42
-A227119	multia	0	"1"	(self, n) -> SU(1, n, j -> BI(n - 1, j - 1).*(FI(j + 2)).*(self.a(n - j)))
