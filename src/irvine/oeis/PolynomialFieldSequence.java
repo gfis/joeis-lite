@@ -61,7 +61,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
    * @param seq input sequence
    * @return sequence wrapped with the property to be an exponential generating function.
    */
-  public static EgfWrapper egf(Sequence seq) {
+  public static EgfWrapper egf(final Sequence seq) {
     return EgfWrapper.wrap(seq);
   }
 
@@ -91,9 +91,9 @@ public class PolynomialFieldSequence extends AbstractSequence {
    * exponential generating functions are indicated by a trailing "!" mark.
    */
   protected String getSequenceString() {
-    StringBuilder sb = new StringBuilder();
+    final StringBuilder sb = new StringBuilder();
     int iseq = 0;
-    for(Sequence seq : mSeqs) {
+    for (Sequence seq : mSeqs) {
       if (iseq > 0) {
         sb.append(",");
       }
@@ -324,8 +324,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
    * @param dist additional degree
    * @param gfType type of the generating function: 0 = ordinary, 1 = exponential
    */
-  public PolynomialFieldSequence(final int offset, final String polys, final String postfix,
-                                 final int dist, final int gfType) {
+  public PolynomialFieldSequence(final int offset, final String polys, final String postfix, final int dist, final int gfType) {
     this(offset, polys, postfix, dist, gfType, 1, 1);
   }
 
@@ -393,23 +392,6 @@ public class PolynomialFieldSequence extends AbstractSequence {
         fact = fact.multiply(k);
       }
 //    res.add(RING.monomial(p.coeff(k).multiply(fact), k));
-    }
-    return res;
-  }
-
-  /**
-   * Replaces the power series sum of <code>a_n*x^n</code> by sum of <code>a_n*x^n/n!</code>
-   * @param p polynomial
-   * @return Laplace series
-   */
-  public Polynomial<Q> makeEgf(final Polynomial<Q> p) {
-    final Polynomial<Q> res = RING.empty();
-    Q fact = Q.ONE;
-    for (int k = 0; k <= p.degree(); ++k) {
-      if (k > 1) {
-        fact = fact.multiply(k);
-      }
-//    res.add(RING.monomial(p.coeff(k).divide(fact), k));
     }
     return res;
   }
@@ -620,6 +602,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
         case 52:  // "ellipticK"
           mStack.set(top, Series.ELLIPTIC_K.s(m, mStack.get(top)));
           break;
+        case 53:  // "pow" - exponent is no Q constant; [top-1],log,[top],*,exp -> [top-1]
+          --top;
+          mStack.set(top, RING.exp(RING.multiply(RING.log(mStack.get(top), m), mStack.get(top + 1), m), m));
+          break;
         default: // should not occur with proper postfix expressions
           throw new RuntimeException("invalid postfix code " + ix);
 // The following cannot be done exactly over the rationals or are not yet available
@@ -719,6 +705,7 @@ public class PolynomialFieldSequence extends AbstractSequence {
     POST_MAP.put("ellipticD", 50);
     POST_MAP.put("ellipticE", 51);
     POST_MAP.put("ellipticK", 52);
+    POST_MAP.put("pow", 53);
     POST_MAP.put("B", 55);
     POST_MAP.put("C", 56);
     POST_MAP.put("D", 57);
@@ -742,18 +729,10 @@ public class PolynomialFieldSequence extends AbstractSequence {
   } // next
 
   /* reflective methods */
-  /**
-   * Get the postfix polish notation.
-   * @return list of operands and operations.
-   */
   public String[] getPostfix() {
     return mPostStrings;
   }
 
-  /**
-   * Get the type of the generating function.
-   * @return gfType.
-   */
   public int getGfType() {
     return mGfType;
   }

@@ -131,7 +131,8 @@ adictest:
 asutest:
 	$(JAVA) irvine.oeis.AlternatingSumSequence -d $(D) -n $(NT) -a "$(A)" -p "$(P)"
 cptest:
-	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)"
+	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" 
+	perl -ne 'print join("\t","", "convprod", 0, $(Q), "new $(A)()") . "\n";' >> aman/`date +%Y-%m-%d`.man
 eps: epstest #
 epstest:
 	$(JAVA) irvine.oeis.transform.EtaProductSequence  -d $(D) -n $(NT) -p "$(P)" -q $(Q)
