@@ -43,7 +43,7 @@ HOLT=$(RAMATH)   irvine.test.HolonomicRecurrenceTest
 PFRACT=$(RAMATH) org.teherba.ramath.symbolic.PolyFraction
 WORD=$(GITS)/OEIS-mat/word
 BVA=$(RAMATH)    org.teherba.ramath.linear.BigVectorArray
-NT=32
+NT=16
 MANY=999999
 CLASS=dummy.java
 D=0
@@ -3281,6 +3281,8 @@ fholo:
 	$(HOLT) -n $(NT) -f x.tmp
 runholo:
 	$(JAVA) irvine.test.HolonomicRecurrenceTest -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFF) -d $(D) -dist $(DIST) -t $(GFTYPE) $(GF)
+ratrec:
+	$(JAVA) irvine.test.RationalRecurrenceTest  -n $(NT) -p "$(MATRIX)" -i "$(INIT)" -o $(OFF) -d $(D) -dist $(DIST) -t $(GFTYPE) $(GF)
 P=[[0,1,1],[-2]]
 latest:
 	$(JAVA) irvine.oeis.LambdaSequence -n $(NT) -p "$(P)" -o $(OFF)
