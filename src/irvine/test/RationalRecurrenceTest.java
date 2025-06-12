@@ -422,7 +422,7 @@ public class RationalRecurrenceTest {
         } else if (opt.equals    ("-d")     ) {
           sDebug = 0;
           sDebug           = Integer.parseInt(args[iarg ++]);
-          RationalRecurrence.setDebug(sDebug);
+          // RationalRecurrence.setDebug(sDebug);
         } else if (opt.equals    ("-dist")  ) {
           dist             = Integer.parseInt(args[iarg ++]);
         } else if (opt.equals    ("-f")     ) {

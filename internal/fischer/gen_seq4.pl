@@ -710,6 +710,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WProduct}                      ) { $imports{"irvine.oeis.triangle.Product"  }                = $itype; }
     if ($line =~ m{\WPuma}                         ) { $imports{"irvine.factor.prime.Puma"      }                = $itype; }
     if ($line =~ m{\WQ\W}                          ) { $imports{"irvine.math.q.Q"}                               = $itype; }
+    if ($line =~ m{\WRationalRecurrence}           ) { $imports{"irvine.oeis.recur.RationalRecurrence"         } = $itype; }
     if ($line =~ m{\WRationals\.}                  ) { $imports{"irvine.math.q.Rationals"}                       = $itype; }
     if ($line =~ m{\WRecordPositionSequence}       ) { $imports{"irvine.oeis.RecordPositionSequence"}            = $itype; }
     if ($line =~ m{\WSequence(\d|\$\(OFFSET\))}    ) { $imports{"irvine.oeis.Sequence$1" }                       = $itype; }

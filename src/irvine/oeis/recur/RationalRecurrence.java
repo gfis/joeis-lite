@@ -30,7 +30,6 @@ import irvine.oeis.AbstractSequence;
  * @author Georg Fischer
  */
 public class RationalRecurrence extends AbstractSequence implements RationalSequence {
-  static int sDebug = 0;
   /** Bitmask indicating an ordinary generating function. */
   public static final int OGF = 0;
   /** Bitmask indicating an exponential generating function. */
@@ -133,17 +132,11 @@ public class RationalRecurrence extends AbstractSequence implements RationalSequ
     if (start <= 1) { // linear case, simple vector of the form "[0,1,2,...]"
       final String[] polys = matrix.substring(start, behind).split("\\s*,\\s*");
       for (int k = 0; k < polys.length; ++k) {
-        if (sDebug >= 1) {
-          System.out.println("polys[" + k + "]=" + polys[k]);
-        }
         mPolyList.add(new Q[] {new Q(polys[k])});
       } // for k
     } else { // holonomic case, vector list "[[0,1,2],[0],[17,0,18]]"
       final String[] polys = matrix.substring(start, behind).split("]\\s*,\\s*\\[");
       for (int k = 0; k < polys.length; ++k) {
-        if (sDebug >= 1) {
-          System.out.println("polys[" + k + "]=" + polys[k]);
-        }
         mPolyList.add(QUtils.toQ(polys[k]));
       } // for k
     }
@@ -198,30 +191,21 @@ public class RationalRecurrence extends AbstractSequence implements RationalSequ
     this(offset, matrix, initTerms, 0);
   } // Constructor
 
-  /** 
+  /**
    * Get the type of the generating function.
    * @return code for the type: 0 = ordinary, 1 = exponential, 2 = additional function
    */
   public int getGfType() {
     return mGfType;
   }
-  
-  /** 
+
+  /**
    * Set the type of the generating function.
    * @param gfType code for the type: 0 = ordinary, 1 = exponential, 2 = additional function
    */
   public void setGfType(final int gfType) {
     mGfType = gfType;
   }
-  
-  /** 
-   * Set the debugging level.
-   * @param level code for the debugging level: 0 = none, 1 = some, 2 = more.
-   */
-  public static void setDebug(final int level) {
-    sDebug = level;
-  }
-  
 
   /**
    * Initialize the sequence.
@@ -236,9 +220,6 @@ public class RationalRecurrence extends AbstractSequence implements RationalSequ
     mBuffer = new Q[mBufSize];
     Arrays.fill(mBuffer, Q.ZERO);
     mOrder = k - 1;
-    if (sDebug >= 1) {
-      System.out.println("order=" + mOrder);
-    }
     while (k >= 0) { // determine mMaxDegree
       final int klen = mPolyList.get(k).length;
       if (klen > mMaxDegree) {
@@ -260,7 +241,7 @@ public class RationalRecurrence extends AbstractSequence implements RationalSequ
   public Q adjunct(final int n) {
     return Q.ZERO;
   }
-  
+
   /**
    * Gets the next term of the sequence.
    * @return a rational term
@@ -301,9 +282,6 @@ public class RationalRecurrence extends AbstractSequence implements RationalSequ
           }
         } // for i - terms of one polynomial in nd
         pvals[k] = pvalk;
-        if (sDebug >= 1) {
-          System.out.println("pvals[" + k + "]=" + pvals[k]);
-        }
         --k;
       } // while k - coefficients of the recurrence
       // pvals[0..mOrder] now contain the coefficients of the recurrence equation
@@ -317,29 +295,18 @@ public class RationalRecurrence extends AbstractSequence implements RationalSequ
           ibuf += mBufSize;
         }
         ibuf %= mBufSize;
-        if (sDebug >= 1) {
-          System.out.println("mN=" + mN + ", nd=" + nd + ", k=" + k 
-              + ", mBufSize=" + mBufSize + ", mOrder=" + mOrder);
-          System.out.println("    mBuffer[" +  ibuf + "]=" + mBuffer[ibuf] + ", old_sum=" + sum);
-        }
         sum = sum.add(pvals[k].multiply(mBuffer[ibuf]));
-        if (sDebug >= 1) {
-          System.out.println("    new_sum=" + sum);
-        }
       } // for k - summing
       if (!pvals[mOrder + 1].isZero()) {
-        if ((mGfType & EGF) != 0 && mN >= 2) { // exponential: multiply by mN 
+        if ((mGfType & EGF) != 0 && mN >= 2) { // exponential: multiply by mN
           sum = sum.multiply(Q.valueOf(mN));
         }
         result = sum.negate().divide(pvals[mOrder + 1]);
       } else {
-        if (sDebug >= 1) {
-          System.out.println("assertion: division by zero ");
-        }
         result = null;
       }
     }
-    if ((mGfType & EGF) != 0 && result != null) { // exponential: multiply buffer by mN 
+    if ((mGfType & EGF) != 0 && result != null) { // exponential: multiply buffer by mN
       final Q zn = Q.valueOf(mN);
       for (ibuf = 0; ibuf < mBufSize; ++ibuf) {
         if (mBuffer[ibuf] != null) {
@@ -353,18 +320,6 @@ public class RationalRecurrence extends AbstractSequence implements RationalSequ
     }
     ibuf %= mBufSize;
     mBuffer[ibuf] = result;
-    if (sDebug >= 1) {
-      String sep = "[";
-      System.out.print("next.mBuffer = ");
-      for (int jbuf = 0; jbuf < mBufSize; ++jbuf) {
-        System.out.print(sep + mBuffer[jbuf]);
-        if (ibuf == jbuf) {
-          System.out.print('*');
-        }
-        sep = ",";
-      } // for
-      System.out.println(']');
-    }
      return result;
   } // nextQ
 
@@ -445,19 +400,5 @@ public class RationalRecurrence extends AbstractSequence implements RationalSequ
     result.append(']');
     return result.toString();
   } // getInitString()
-  
-  /**
-   * Future shortening of initial terms
-   */
-  public int shorten() {
-    return 0;
-  }
 
-  /**
-   * Future normalization of the annihilator
-   */
-  public void normalize() {
-    return;
-  }
-
-} // RationalRecurrence
+}
