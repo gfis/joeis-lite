@@ -248,8 +248,8 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
         while (iexp <= sourceOffset + mDist) {
           if (iexp < sourceOffset) {
             terms[iexp] = Q.ZERO;
-          } else { 
-          	final int sType = mTypes.get(iseq);
+          } else {
+            final int sType = mTypes.get(iseq);
             terms[iexp] = (sType & RAT) != 0 ? ((RationalSequence) seq).nextQ() : Q.valueOf(seq.next());
             if ((sType & EGF) != 0) {
               terms[iexp] = terms[iexp].divide(Functions.FACTORIAL.z(iexp));
@@ -629,6 +629,10 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
           --top;
           mStack.set(top, RING.exp(RING.multiply(RING.log(mStack.get(top), m), mStack.get(top + 1), m), m));
           break;
+        case 54:  // ".*" - dot product, hadamardMultiply: multiply coefficients
+          --top;
+          mStack.set(top, RING.hadamardMultiply(mStack.get(top), mStack.get(top + 1)));
+          break;
         default: // should not occur with proper postfix expressions
           throw new RuntimeException("invalid postfix code " + ix);
 // The following cannot be done exactly over the rationals or are not yet available
@@ -669,7 +673,7 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
       if (sDebug >= 1) {
         System.out.println("# mFactorial=" + mFactorial + ", mN=" + mN);
       }
-    }  
+    }
     return result;
   } // compute
 
@@ -729,6 +733,7 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
     POST_MAP.put("ellipticE", 51);
     POST_MAP.put("ellipticK", 52);
     POST_MAP.put("pow", 53);
+    POST_MAP.put(".*", 54);
     POST_MAP.put("B", 55);
     POST_MAP.put("C", 56);
     POST_MAP.put("D", 57);
@@ -753,11 +758,10 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
 
   @Override
   public Z next() {
-    Q result = nextQ();
+    final Q result = nextQ();
     return ((mGfType & DEN_OGF) == 0) ? result.num() : result.den();
   } // next
 
-  /* reflective methods */
   public String[] getPostfix() {
     return mPostStrings;
   }

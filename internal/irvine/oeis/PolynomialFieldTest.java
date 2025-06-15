@@ -2,6 +2,7 @@ package irvine.oeis;
 
 import java.util.HashMap;
 
+import irvine.math.q.Q;
 import irvine.math.z.Z;
 
 /**
@@ -22,8 +23,8 @@ public final class PolynomialFieldTest {
   private void assignPrios() {
     mPrio = 0;
     setPrio("+", "-");
-    setPrio("*", "/");
-    setPrio("^");
+    setPrio("*", "/", ".*");
+    setPrio("^", "pow");
     setPrio("\'");
     setPrio("~", "(", ")"); // unary minus
   } // assignPrios
@@ -264,7 +265,7 @@ public final class PolynomialFieldTest {
     int ind = offset - 1;
     while (--numTerms >= 0) {
       ++ind;
-      final Z term = prs.next();
+      final Q term = prs.nextQ();
       if (bfile) {
         System.out.print(ind + " " + term.toString() + "\n");
       } else {

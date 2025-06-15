@@ -147,7 +147,7 @@
 # src/irvine/oeis/transform/MobiusTransformSequence.java
 # src/irvine/oeis/triangle/Triangle.java
 # src/org/teherba/tile/TilingSequence.java
-# 
+#
 # src/irvine/oeis/InverseSequence.java
 # src/irvine/oeis/cons/FoldedContinuedFraction.java
 # src/irvine/oeis/transform/ExponentialRevertTransformSequence.java
@@ -390,7 +390,7 @@
 
 # src/irvine/oeis/transform/InverseInvertTransform.java
 
-# 2024-05-06 
+# 2024-05-06
 # src/irvine/oeis/transform/InvertTransform.java
 
 # 2024-05-13
@@ -483,13 +483,13 @@
 
 # 2025-02-19
 # src/irvine/oeis/triangle/AbstractTriangle.java
-# src/irvine/math/group/AbstractRing.java    
+# src/irvine/math/group/AbstractRing.java
 
 # 2025-03-06: with tableswitch
 
 # 2025-03-09: catalan
 # src/irvine/oeis/PolynomialFieldSequence.java
- 
+
 # 2025-03-21
 # src/irvine/math/predicate/Predicates.java
 # src/irvine/math/predicate/Arithmetic.java
@@ -513,11 +513,11 @@
 # src/irvine/math/predicate/Niven.java
 # src/irvine/math/predicate/Smooth.java
 
-# 2025-05-08 with trailing list of aseqnos 
+# 2025-05-08 with trailing list of aseqnos
 # 2025-05-09 corrected
 # src/irvine/oeis/PolynomialFieldSequence.java
 
-# 2025-05-26: PELL 
+# 2025-05-26: PELL
 # src/irvine/math/function/Functions.java
 # src/irvine/math/function/Pell.java
 
@@ -526,7 +526,7 @@
 
 #~src/irvine/oeis/RootSequence.java
 #~src/irvine/oeis/transform/RootSequence.java
-#~src/irvine/oeis/transform/ConvolutionProduct.java  
+#~src/irvine/oeis/transform/ConvolutionProduct.java
 
 # 2025-06-01 serlaplace
 # src/irvine/oeis/PolynomialFieldSequence.java
@@ -541,8 +541,14 @@
 src/irvine/oeis/PolynomialFieldSequence.java
 
 # 2025-06-12 RationalSequence
+# src/irvine/oeis/PolynomialFieldSequence.java
+# src/irvine/oeis/QuotientSequence.java
+# src/irvine/oeis/recur/RationalRecurrence.java
+# src/irvine/math/q/QUtils
+
+# 2025-06-15
+src/irvine/oeis/RationalLambdaSequence.java
 src/irvine/oeis/PolynomialFieldSequence.java
-src/irvine/oeis/QuotientSequence.java
-src/irvine/oeis/recur/RationalRecurrence.java
-# toQ:
-src/irvine/math/q/QUtils
+internal/irvine/oeis/PolynomialFieldTest.java
+src/irvine/test/RationalRecurrenceTest.java
+src/irvine/test/HolonomicRecurrenceTest.java
