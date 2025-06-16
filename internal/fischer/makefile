@@ -458,8 +458,9 @@ EX=
 PO=1
 SQL=$(CC)
 select2: # require not in joeis: JO= (default) / require not in noeis: PO=1 (default)
-	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO)
-	make seq4 LIST=$(CC).gen
+	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO) 
+	perl keep_last.pl $(CC).gen  > $(CC).tmp
+	make seq4                 LIST=$(CC).tmp
 	$(DBAT) -v -f sql/$(SQL).sql > $(CC).sql.tmp || :
 select3:
 	$(DBAT) -x "SELECT s.aseqno, s.callcode, COALESCE(i.offset1, s.offset1) \
@@ -821,7 +822,7 @@ robot3: # compile and test all
 	# cp -v hold/*.java  manual || :
 	grep -vf robots.fail.lst robot.gen \
 	| grep -vE "A363319|A364463|A364463|A364575|A364671" \
-	>        robots.gen
+	>        robots.gen || :
 	wc -l    robot*
 	make CC=robots purge gener maditel TO=8
 	cp -v   robots.gen robots.`date +%Y-%m-%d.%H`.gen

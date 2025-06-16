@@ -403,18 +403,34 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
   }
 
   /**
-   * Replaces the power series sum of <code>a_n*x^n/n!</code> by sum of <code>a_n*x^n</code>
-   * @param p polynomial
-   * @return Laplace series
+   * Term-wise division of two polynomials.
+   * @param a first polynomial
+   * @param b second polynomial
+   * @return dot quotient
    */
-  public Polynomial<Q> makeOgf(final Polynomial<Q> p) {
-    final Polynomial<Q> res = RING.empty();
-    Q fact = Q.ONE;
+  public Polynomial<Q> dotDivide(final Polynomial<Q> a, final Polynomial<Q> b) {
+    final Polynomial<Q> res = new Polynomial<>("x", Q.ZERO, Q.ONE);
+//  final Polynomial<Q> res = RING.zero();
+    for (int k = 0; k <= Math.min(a.degree(), b.degree()); ++k) {
+      res.add(a.coeff(k).divide(b.coeff(k)));
+    }
+    return res;
+  }
+
+  /**
+   * Replaces the power series sum of <code>a_n*x^n</code> by sum of <code>a_n*x^n/n!</code>
+   * @param p polynomial
+   * @return Laplace series, term-wise divided by n!
+   */
+  public Polynomial<Q> factorialDivide(final Polynomial<Q> p) {
+    final Polynomial<Q> res = new Polynomial<>("x", Q.ZERO, Q.ONE);
+//  final Polynomial<Q> res = RING.zero();
+    Q f = Q.ONE;
     for (int k = 0; k <= p.degree(); ++k) {
       if (k > 1) {
-        fact = fact.multiply(k);
+        f = f.multiply(k);
       }
-//    res.add(RING.monomial(p.coeff(k).multiply(fact), k));
+      res.add(p.coeff(k).divide(f));
     }
     return res;
   }
@@ -468,11 +484,6 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
         case 8:  // "sub"  replace the current top element by a substitution
           mStack.set(top, RING.substitute(mA, mStack.get(top), m));
           break;
-//      case 43: // "dup"  push a copy of the current top element
-//        ++top;
-//        mStack.set(top, mStack.get(top - 1));
-//        break;
-
         // arithmetic operations with 2 operands on the stack
         case 9:  // "+"
           --top;
@@ -578,7 +589,7 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
           mStack.set(top, RING.integrate(mStack.get(top)).truncate(m));
           break;
 
-        case 39:  // "inv"  replace the current top element te by 1/te
+        case 39:  // "inv"  replace the current top element p by 1/p
           mStack.set(top, RING.inverse(mStack.get(top)));
           break;
         case 40:  // "rev"  replace the current top element by its series reversion
@@ -628,11 +639,24 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
         case 53:  // "pow" - exponent is no Q constant; [top-1],log,[top],*,exp -> [top-1]
           --top;
           mStack.set(top, RING.exp(RING.multiply(RING.log(mStack.get(top), m), mStack.get(top + 1), m), m));
-          break;
-        case 54:  // ".*" - dot product, hadamardMultiply: multiply coefficients
+          break;        
+        //   54:  // unused - ignore
+        //   55-58 similar to 45-48
+        case 59:  // ".*"  dot product, hadamardMultiply: multiply coefficients
           --top;
           mStack.set(top, RING.hadamardMultiply(mStack.get(top), mStack.get(top + 1)));
           break;
+        case 60:  // "./"  dot quotient: divide coefficients
+          --top;
+          mStack.set(top, dotDivide(mStack.get(top), mStack.get(top + 1)));
+          break;
+        case 61:  // "*n!"  multiply coefficients with n!
+          mStack.set(top, RING.serlaplace(mStack.get(top)));
+          break;
+        case 62:  // "/n!"  divide coefficients by n!
+          mStack.set(top, factorialDivide(mStack.get(top)));
+          break;
+
         default: // should not occur with proper postfix expressions
           throw new RuntimeException("invalid postfix code " + ix);
 // The following cannot be done exactly over the rationals or are not yet available
@@ -733,11 +757,14 @@ public class PolynomialFieldSequence extends AbstractSequence implements Rationa
     POST_MAP.put("ellipticE", 51);
     POST_MAP.put("ellipticK", 52);
     POST_MAP.put("pow", 53);
-    POST_MAP.put(".*", 54);
     POST_MAP.put("B", 55);
     POST_MAP.put("C", 56);
     POST_MAP.put("D", 57);
     POST_MAP.put("E", 58);
+    POST_MAP.put(".*", 59);
+    POST_MAP.put("./", 60);
+    POST_MAP.put("*n!", 61);
+    POST_MAP.put("/n!", 62);
   } //! fillMap
 
   @Override

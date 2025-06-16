@@ -538,7 +538,7 @@
 # 2025-06-09 pow
 # src/irvine/oeis/PolynomialFieldSequence.java
 # 2025-06-10 negative < and i
-src/irvine/oeis/PolynomialFieldSequence.java
+# src/irvine/oeis/PolynomialFieldSequence.java
 
 # 2025-06-12 RationalSequence
 # src/irvine/oeis/PolynomialFieldSequence.java
@@ -547,8 +547,13 @@ src/irvine/oeis/PolynomialFieldSequence.java
 # src/irvine/math/q/QUtils
 
 # 2025-06-15
-src/irvine/oeis/RationalLambdaSequence.java
-src/irvine/oeis/PolynomialFieldSequence.java
-internal/irvine/oeis/PolynomialFieldTest.java
-src/irvine/test/RationalRecurrenceTest.java
-src/irvine/test/HolonomicRecurrenceTest.java
+# src/irvine/oeis/RationalLambdaSequence.java
+# src/irvine/oeis/PolynomialFieldSequence.java
+# internal/irvine/oeis/PolynomialFieldTest.java
+# src/irvine/test/RationalRecurrenceTest.java
+# src/irvine/test/HolonomicRecurrenceTest.java
+# #~src/irvine/oeis/PolynomialFieldSequence.java
+
+# 2025-06-16; *HA=68
+src/irvine/oeis/recur/HolonomicRecurrence.java
+src/irvine/oeis/recur/RationalRecurrence.java

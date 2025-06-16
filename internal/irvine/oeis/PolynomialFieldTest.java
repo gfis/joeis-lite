@@ -3,7 +3,6 @@ package irvine.oeis;
 import java.util.HashMap;
 
 import irvine.math.q.Q;
-import irvine.math.z.Z;
 
 /**
  * Test the computation of the coefficients of a generating function A(x) 
@@ -12,7 +11,6 @@ import irvine.math.z.Z;
  */
 public final class PolynomialFieldTest {
 
-  static int sDebug = 0;
   private final HashMap<String, Integer> mPrios = new HashMap<>(16);
   private int mPrio;
   private final String mSep = ","; // default separator for postfix polish notation
@@ -23,7 +21,7 @@ public final class PolynomialFieldTest {
   private void assignPrios() {
     mPrio = 0;
     setPrio("+", "-");
-    setPrio("*", "/", ".*");
+    setPrio("*", "/", ".*", "./", "!*", "!/");
     setPrio("^", "pow");
     setPrio("\'");
     setPrio("~", "(", ")"); // unary minus
