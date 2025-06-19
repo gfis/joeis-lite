@@ -12,6 +12,8 @@
 use strict;
 use integer;
 use warnings;
+use feature 'unicode_strings';
+use utf8;
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime (time);
 my $timestamp = sprintf ("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min, $sec);
 $timestamp = sprintf ("%04d-%02d-%02d", $year + 1900, $mon + 1, $mday);
@@ -21,6 +23,7 @@ if (0 and scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
+my $sep = "^^";
 my $create = 0;
 while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
     my $opt = shift(@ARGV);
@@ -58,7 +61,7 @@ while (<>) {
   $line =~ s/\s+\Z//; # chompr 
   my ($aseqno, $cc, $offset1, @rest) = split("\t", $line);
   my $parms = substr(join("\\t", @rest), 0, $MAX);
-  print join("\t", $aseqno, $cc, $offset1, join("\\t", @rest)) . "\n";
+  print join("\t", $aseqno, $cc, $offset1, join($sep, @rest)) . "\n";
 } # while <>
 __DATA__
 A228074	wraptr2	0	new A000045()	new A001477()							A Fibonacci-Pascal triangle read by rows: T(n,0) = Fibonacci(n), T(n,n) = n and for n > 0: T(n,k) = T(n-1,k-1) + T(n-1,k), 0 < k < n.
