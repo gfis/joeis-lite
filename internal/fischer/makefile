@@ -3798,6 +3798,7 @@ holref1: # select sequences which are holonomic
 	      , 'PeriodicSequence' \
 	      , 'PolynomialRootSequence' \
 	      , 'PrependSequence' \
+	      , 'RationalRecurrence' \
 	      )" \
 	>        $@.tmp
 #      , 'FiniteSequence' separate -> reflection
