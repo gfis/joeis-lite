@@ -561,9 +561,11 @@
 # 2025-06-25 Herrsching
 src/irvine/test/RationalRecurrenceTest.java 
 # remove ExponentialGeneratingFunction
-# remove transform/InverseInvertTransform
+# remove transform/InverseInvertTransform  
+# remove ExponentialConvolutionSequence
+# remove ComposeTransformSequence
 src/irvine/oeis/DirectPredicate.java
 src/irvine/oeis/PolynomialFieldSequence.java 
 #   .* ./ *n! /n! negative shifts (with -i ...!)
 +hold
-+2025-06-24.ack 
++2025-06-24.ack            
