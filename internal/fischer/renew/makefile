@@ -37,6 +37,16 @@ invtraf: # get nyi from jcat25
 	chmod 755 $@.html
 	cmd /c start $@.html
 #----
+expconv: # get ari from joeis_names.txt
+	grep -Pi "ExponentialConvolution" $(COMMON)/joeis_names.txt \
+	| endirect \
+	| sed -e  "s/^./A/" \
+	>        $@.tmp
+	wc -l    $@.tmp
+	perl $(FISCHER)/htmlize.pl $@.tmp > $@.html
+	chmod 755 $@.html
+	cmd /c start $@.html
+#----
 exprev: # get nyi from jcat25
 	grep -Pi "ExponentialRevert" $(COMMON)/joeis_names.txt \
 	| endirect \

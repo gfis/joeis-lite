@@ -41,8 +41,9 @@ print "<a href=\"/index\/Rec#order_" . sprintf("%02d", $order) . "\">Index entri
     . join(", ", @terms) . ").\n";
 print "sig=" . join(", ", @terms) . "\n";
 print "rev=" . join(", ", @revte) . "\n";
-print "sig=" . join(",",  @terms) . "\n";
-print "rev=" . join(",",  @revte) . "\n";
-print "    super(0, \"[0,"        . join(",",  @revte) . ",-1]\", \"1\", 0);\n";
-print "make runholo MATRIX=\"[0," . join(",",  @revte) . ",-1]\" INIT=\"1\" OFF=0\n";
+my $record = "holos \"[[0],[" . join("],[",  @revte) . "],[-1]]\" \"1\"\n";
+print $record;
+open (PIPE, "| clip");
+print PIPE $record;
+close(PIPE);
 __DATA__
