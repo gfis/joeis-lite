@@ -4,13 +4,13 @@
 # @(#) $Id$
 # 2025-06-24, Georg Fischer: copied from ../reflect
 #
-GITS=../../../..
-COMMON=$(GITS)/OEIS-mat/common
-LITE=$(GITS)/joeis-lite
+KITS=../../../..
+COMMON=$(KITS)/OEIS-mat/common
+LITE=$(KITS)/joeis-lite
 FISCHER=$(LITE)/internal/fischer
-JOEIS=$(GITS)/joeis
+JOEIS=$(KITS)/joeis
 COHERE=../../joeis-lite/internal/fischer/renew
-DBAT=java -jar $(GITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
+DBAT=java -jar $(KITS)/dbat/dist/dbat-lite.jar -e UTF-8 -c worddb
 SRC=src/irvine/oeis
 # JOPT=-Ddebug=$(D) -Xmx2g -Xss1g -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
 JOPT=-Ddebug=$(D) -Xmx2800m -Xss800m -Duser.language=en -Dprog.root=./prog -Doeis.verbose=$(VERBOSE) -Doeis.priority="java,gp" -Doeis.timeout=$(TO)
@@ -26,16 +26,6 @@ all:
 	# grep -P "^\w" makefile
 help:
 	grep -E "^[a-z]" makefile | sort
-#--------
-invtraf: # get nyi from jcat25
-	grep -Pi "INVERTi? transform" $(COMMON)/jcat25.txt | grep -P "^%"  \
-	| endirect \
-	| cut -b4- | sed -e "s/ /\t/" -e "s/^./A/" \
-	>        $@.tmp
-	wc -l    $@.tmp
-	perl $(FISCHER)/htmlize.pl $@.tmp > $@.html
-	chmod 755 $@.html
-	cmd /c start $@.html
 #----
 expconv: # get ari from joeis_names.txt
 	grep -Pi "ExponentialConvolution" $(COMMON)/joeis_names.txt \
@@ -51,6 +41,38 @@ exprev: # get nyi from jcat25
 	grep -Pi "ExponentialRevert" $(COMMON)/joeis_names.txt \
 	| endirect \
 	| sed -e  "s/^./A/" \
+	>        $@.tmp
+	wc -l    $@.tmp
+	perl $(FISCHER)/htmlize.pl $@.tmp > $@.html
+	chmod 755 $@.html
+	cmd /c start $@.html
+#----
+invtrac: #
+	grep -P "\bInvertTransform" $(COMMON)/joeis_names.txt \
+	| endirect \
+	| sed -e  "s/^./A/" \
+	>        $@.tmp
+	wc -l    $@.tmp
+	perl $(FISCHER)/htmlize.pl $@.tmp > $@.html
+	chmod 755 $@.html
+	cmd /c start $@.html
+invtraf: #
+	grep -P "\bInvertTransform" $(COMMON)/joeis_names.txt \
+	| cut -f1 | sed -e "s/^./A/" \
+	>        $@.tmp
+	wc -l    $@.tmp
+	cd .. ; make seq LIST=renew/$@.tmp
+	$(DBAT) -x "SELECT * FROM gregen WHERE aseqno IN (SELECT aseqno FROM seq) ORDER BY 2,1" \
+	| perl -pe 's/\^\^/\t/g;' \
+	| perl invtraf.pl \
+	| tee    $@.tmp  
+	# thereafter: 
+	# perl invtraf.pl invtraf.tmp >> ../aman/2025-06-27.man
+#--
+invtral: # INVERT,INVERti from jcat25
+	grep -Pi "INVERTi? transform" $(COMMON)/jcat25.txt | grep -P "^%"  \
+	| endirect \
+	| cut -b4- | sed -e "s/ /\t/" -e "s/^./A/" \
 	>        $@.tmp
 	wc -l    $@.tmp
 	perl $(FISCHER)/htmlize.pl $@.tmp > $@.html
@@ -88,8 +110,28 @@ revtraf2:
 # ExponentialRevertTransformSequence
 # InverseInvertTransformSequence
 revtraf:
-
-
+#----
+# Recurrences in A0491xx
+a49: a491 a492 a493 a494
+a491:
+	grep -P "^.F A0491" $(COMMON)/jcat25.txt | grep -Pi recurrence \
+	| cut -b4- \
+	| perl -pe 's/ /\tbva\t0\t/; s/(D\-finite with )?[Rr]ecurrence\:? *//; s/\(for offset \d\)\: //; s/\..*/\n/;' \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+a492:
+	jprep -cc holos -f a491.tmp \
+	| sed -e "s/\tbva/\tholos/" -e "s/\]\t1/\]\t1,1,2/" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	cp -v    $@.tmp ../aman/$@.man
+a493:
+	cut -f1  a492.tmp > $@.tmp
+	holminit $@.tmp | tee $@.tmp
+	cp -v $@.tmp ../sql/a492.sql
+a494:
+	cd .. ; make CC=a492 pegel  EX=xx
+#=========
 absref_stat: absref_statf absref_stato absref_stat9 # 3 AbstractSequence reflections with statistics
 absref_statf:
 	# make finite1
@@ -844,7 +886,7 @@ patch_prepnew: # remove any leading skip parameter in PrependSequence and append
 	cat prepend0.man \
 	| perl -ne 'm{\/(A\d{6})}; print "$$1\n";' \
 	| perl patch_prepend.pl -m new
-	cat $(GITS)/joeis-lite/$(SRC)/a161/A161306.java
+	cat $(KITS)/joeis-lite/$(SRC)/a161/A161306.java
 patch_prepext: # remove any leading skip parameter in the constructor of sequences with "extends PrependSequence" and append ".skip(...)" if not 0
 	grep PrependSequence $(COMMON)/joeis_names.txt \
 	>        $@.tmp
@@ -852,11 +894,11 @@ patch_prepext: # remove any leading skip parameter in the constructor of sequenc
 	wc -l    $@.tmp
 	perl patch_prepend.pl -d 1 -m ext $@.tmp \
 	| tee $@.debug.tmp
-	cat $(GITS)/joeis-lite/$(SRC)/a088/A088802.java
+	cat $(KITS)/joeis-lite/$(SRC)/a088/A088802.java
 patch_prep2: # those without Annnnnn in the super statement
 	perl patch_prepend.pl -d 1 -m ext nosuit.man \
 	| tee $@.debug.tmp
-	cat $(GITS)/joeis-lite/$(SRC)/a325/A325765.java
+	cat $(KITS)/joeis-lite/$(SRC)/a325/A325765.java
 patch_prepend: # prefix if not DEFOFF
 	cd .. ; make purge
 	grep -iP "PrependSequence" offin.tmp\

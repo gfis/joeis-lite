@@ -9,7 +9,7 @@ import java.nio.channels.Channels;
 import irvine.util.string.Date;
 
 /**
- * Generate a report of the superclasses for all A-number sequences.
+ * Generate a report of the superclasses, their offsets and additional constructors for all implemented A-number sequences.
  * @author Georg Fischer
  */
 public final class SuperclassInspector {
