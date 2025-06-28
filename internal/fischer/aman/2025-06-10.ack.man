@@ -1,0 +1,153 @@
+---- 2025-06-10 18:57:10
+A001187	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A006125())	Logarithmic transform of J006125 (labeled graphs).# poly "[1]" "x,B,log"
+A002027	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A047863())	Logarithmic transform of J047863
+A002028	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A191371())	Logarithmic transform of J191371
+A002029	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A223887())	Logarithmic transform of J223887
+A002031	polyxa	2	"[1]"	"x,B,log"	0	1	egf(new A052332())	Logarithmic transform of J052332.
+A007553	polyxa	1	"[1]"	"x,B,log,1,+,abs"	0	1	egf(new A000045().skip(1))	Logarithmic transform of A000045	Fibonacci numbers.
+A058562	polyx	0	"[0,1],[1,1],[0,2]"	"3,p1,log,*,p2,-,rev"	1	1
+A060917	lambdan	3	n -> RU(0, (n-3)/3, i -> QV(1)./(FA(i).*(ZV(3).^(i))).*(ZV(n).^(n - (i + 1) * 3))./(FA(n - (i + 1)*3))).*(FA(n - 1))./(2).num()
+A060918	lambdan	4	n -> RU(0, (n-4)/4, i -> QV(1)./(FA(i).*(ZV(4).^(i))).*(ZV(n).^(n - (i + 1) * 4))./(FA(n - (i + 1)*4))).*(FA(n - 1))./(6).num()
+A062191	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(k).*(FA(n)).*(BI(n + 5, n - k)), FA(k))).num()	a(n) = Sum_{m=0..n} (-1)^m*n!*binomial(n+5, n-m)/m!.
+A066165	polyx	3	"[0,1],[1,-1],[0,0,1]"	"x,p1,log,*,neg,p2,-,exp,1,-"	0	1
+A080108	lambdan	1	n -> SU(1, n, k -> ZV(k).^(n - k).*(BI(n - 1, k - 1)))	a(n) = Sum_{k=1..n} k^(n-k)*binomial(n-1,k-1).
+A081559	polyez	0	"[1],[0,2]"	"p1,cosh,1,-,exp"	0	1	0	2	* E.g.f.: <code>exp(cosh(2*x)-1)</code>.
+A088369	polyx	0	"[1],[1,-1,-1]"	"1,p1,log,x,*,exp,/"	0	1
+A088690	polyx	0	"[1],[0,-1],[1,1]"	"p1,exp,<1,p2,/,rev,x,/"	1	1
+A090681	polyez	0	"[1],[0,1/2]"	"p1,sec,^2,p1,sech,^2,+,2,/"	0	1	0	4	* E.g.f.: <code>(sec(x/2)^2+sech(x/2)^2)/2</code>.
+A096619	polyez	1	"[1]"	"1,2,/,x,cosh,1,-,exp,*,x,sinh,^2,*"	0	1	0	2	* E.g.f.: <code>1/2*exp(cosh(x)-1)*(sinh(x))^2</code>.
+A100872	polyez	1	"[1],[0,2]"	"0,1,2,/,-,1,2,/,x,exp,*,3,x,exp,*,p1,exp,-,1,-,/,+"	0	1	0	2	* E.g.f.: <code>-1/2+1/2*exp(x)/(3*exp(x)-exp(2*x)-1)</code>.
+A107713	convprod	0	1,1	new A000165(), new A000142()	(2)
+A108953	convprod	0	1,1	new A032031(), new A000142()	(3).
+A109777	polya	0	"[1]"	"x,B,sqrt"	new A088313().skip(1)
+A110467	convprod	0	1,1	new A047053(), new A000142()	Convolution of 4^n*n! and n!.
+A112005	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000045())
+A126156	polyz	0	"[1]"	"A,^4,int,int,exp"	0	1	0	2	* E.g.f.: <code>exp(int(int(A(x)^4)))</code>.
+A143137	polyex	1	"[1]"	"0,x,^2,-,x,asinh,+,rev"	0	1	* E.g.f.: <code>reverse(-x^2+asinh(x))</code>.
+A156138	polyez	0	"[1]"	"x,sin,1,3,x,sin,^2,*,-,/"	0	1	1	2	* E.g.f.: <code>sin(x)/(1-3*sin(x)^2)</code>.
+A162653	polyx	0	"[1]"	"x,1,x,sinh,+,/,rev,x,/"	1	1
+A185071	polyez	0	"[1]"	"1,x,cos,x,cosh,*,x,sin,x,sinh,*,-,sqrt,/"	0	1	0	2	* E.g.f.: <code>1/sqrt(cos(x)*cosh(x)-sin(x)*sinh(x))</code>.
+A185190	polyex	1	"[1]"	"x,x,asinh,^2,-,rev"	0	1	* E.g.f.: <code>reverse(x-asinh(x)^2)</code>.
+A185388	sintrif	1	(term, n) -> term./(n)	""	new PolynomialFieldSequence(1, "[0,1]", "A,exp,<1,1,1,A,-,/,log,<1,+", 0, 1)
+A201128	polyx	0	"[1]"	"1,A,<1,tan,+"	0	1
+A201923	polyx	0	"[1]"	"1,A,<1,cos,A,<1,sin,-,/"	0	1
+A205886	polyx	1	"[0,1]"	"x,A,atanh,^2,+"	0	1
+A206304	polyex	1	"[1],[1,1]"	"x,p1,log,^2,-,rev"	0	1	* E.g.f.: <code>reverse(x - log(1+x)^2)</code>
+A206397	polyex	1	"[1],[1,1],[0,0,0,1/3]"	"p1,log,p2,-,rev"	0	1	* E.g.f.: <code>reverse(log(1+x)-x^3/3)</code>
+A207493	polyex	1	"[1],[1,2,-1/2]"	"p1,x,exp,-,rev"	0	1	* E.g.f.: <code>reverse(2*x-1/2*x^2-exp(x)+1)</code>
+A208679	polyez	1	"[1],[0,2],[0,5]"	"1,2,/,p1,sin,*,p2,cos,/"	0	1	1	2	* E.g.f.: <code>1/2*sin(2*x)/cos(5*x)</code>.
+A208680	polyez	1	"[1],[0,2],[0,7]"	"1,2,/,p1,sin,*,p2,cos,/"	0	1	1	2	* E.g.f.: <code>1/2*sin(2*x)/cos(7*x)</code>.
+A208681	polyez	1	"[1],[0,2],[0,9]"	"1,2,/,p1,sin,*,p2,cos,/"	0	1	1	2	* E.g.f.: <code>1/2*sin(2*x)/cos(9*x)</code>.
+A212914	polyx	0	"[1]"	"1,A,^3,<1,+,int,exp"	0	1
+A214688	polyex	1	"[1],[0,2]"	"x,p1,exp,<2,-,rev"	0	1	* E.g.f.: <code>reverse(x - x^2*exp(2*x))</code>
+A215094	polyex	1	"[1]"	"0,x,^2,2,/,-,x,asinh,+,rev"	0	1	* E.g.f.: <code>reverse(-x^2/2+asinh(x))</code>.
+A215364	polyx	0	"[1]"	"1,A,^2,<1,A,<1,cosh,*,+"	0	1
+A217066	polyex	1	"[1]"	"x,sec,x,tan,+,<1,rev"	0	1	* E.g.f.: <code>reverse(x*(sec(x)+tan(x)))</code>
+A217260	polyx	1	"[0,1]"	"x,sec,x,tan,+,1,-,rev"	0	1
+A217502	polyez	0	"[1]"	"x,sec,1,-,exp"	0	1	0	2	* E.g.f.: <code>exp(sec(x)-1)</code>.
+A217582	polyez	0	"[1],[0,2]"	"1,2,/,p1,sec,sqrt,*,1,2,/,-"	0	1	0	2	* E.g.f.: <code>1/2*sqrt(sec(2*x))-1/2</code>.
+A218653	polyx	0	"[1]"	"1,1,A,^2,<2,+,log,x,/,+"	1	1
+A224079	polyex	1	"[1],[1,1]"	"p1,log,x,cosh,/,rev"	0	1	* E.g.f.: <code>reverse(log(1+x)/cosh(x))</code>
+A224080	polyx	1	"[0,1]"	"x,1,A,^2,-,sqrt,/,exp,1,-"	1	1
+A227051	polyez	0	"[1]"	"1,x,cos,x,sin,x,sinh,*,-,/"	0	1	0	2	* E.g.f.: <code>1/(cos(x)-sin(x)*sinh(x))</code>.
+A227457	polyex	1	"[1],[1,1]"	"x,p1,log,<1,-,rev"	0	1	* E.g.f.: <code>reverse(x - x*log(1+x))</code>
+A227458	polyex	1	"[1]"	"x,x,asin,<1,-,rev"	0	1	* E.g.f.: <code>reverse(x - x*asin(x))</code>
+A227459	polyex	1	"[1]"	"x,x,asinh,<1,-,rev"	0	1	* E.g.f.: <code>reverse(x - x*asinh(x))</code>
+A227460	polyex	1	"[1]"	"x,x,atan,<1,-,rev"	0	1	* E.g.f.: <code>reverse(x - x*atan(x))</code>
+A227461	polyex	1	"[1]"	"x,x,atanh,<1,-,rev"	0	1	* E.g.f.: <code>reverse(x - x*atanh(x))</code>
+A227462	polyex	1	"[1],[0,0,1]"	"x,p1,exp,<2,-,rev"	0	1	* E.g.f.: <code>reverse(x - x^2*exp(x^2))</code>
+A227463	polyex	1	"[1]"	"x,asinh,x,exp,/,rev"	0	1	* E.g.f.: <code>reverse(asinh(x) / exp(x))</code>
+A227464	polyex	1	"[1]"	"x,sin,x,exp,/,rev"	0	1	* E.g.f.: <code>reverse(sin(x) / exp(x))</code>
+A227465	polyex	1	"[1]"	"x,atan,x,exp,/,rev"	0	1	* E.g.f.: <code>reverse(atan(x) / exp(x))</code>
+A227466	polyex	1	"[1]"	"x,tanh,x,exp,/,rev"	0	1	* E.g.f.: <code>reverse(tanh(x) / exp(x)</code>
+A249938	polyez	0	"[1]"	"2,x,cosh,-,5,4,x,cosh,*,-,/"	0	1	0	2	* E.g.f.: <code>(2-cosh(x))/(5-4*cosh(x))</code>.
+A249940	polyez	0	"[1]"	"3,5,4,x,cosh,*,-,/"	0	1	0	2	* E.g.f.: <code>3/(5-4*cosh(x))</code>.
+A258922	polyx	0	"[1]"	"1,3,2,A,<1,exp,*,-,/"	0	1
+A258923	polyx	0	"[1]"	"1,4,3,A,<1,exp,*,-,/"	0	1
+A263185	polyez	1	"[1]"	"2,x,*,x,atan,-,rev"	0	1	1	2	* E.g.f.: <code>reverse(2*x-arctan(x))</code>.
+A274377	polyex	0	"[1],[1,1],[1,-1]"	"1,p1,p1,pow,p2,p2,pow,/,sqrt,log,rev,+"	0	1	* E.g.f.: <code>1+reverse(log(sqrt((1+x)^(1+x)/(1-x)^(1-x))))</code>.
+A274704	polyz	0	"[1],[0,2]"	"p1,x,cosh,x,cos,+,/"	0	1	1	4
+A274739	polyx	0	"[1]"	"A,log,x,*,exp,int,exp"	0	1
+A278677	lambdan	0	n -> BELL(n + 2).*(n + 3).-(BELL(n + 3))	a(n) = (n + 3)*b(n + 2) - b(n + 3)
+A281180	polyez	1	"[1]"	"x,1,x,^2,+,/,x,atan,+,2,/,rev"	0	1	1	2	* E.g.f.: <code>reverse((x/(1+x^2)+atan(x))/2)</code>.
+A296853	polyez	0	"[1],[0,1/2]"	"x,p1,tan,*,tanh,1,-"	0	1	0	2	* E.g.f.: <code>tanh(x*tan(x/2))-x</code>.
+A300452	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000578())	Logarithmic transform of D000578.
+A300455	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000217())	Logarithmic transform of F000217.
+A300491	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000254())	Logarithmic transform of J000254.
+A300512	polyxa	0	"[1]"	"x,B,log"	0	1	egf(new A000041())	Logarithmic transform of F000041.
+A300515	polyxa	0	"[1]"	"x,B,log"	0	1	egf(new A000009())	Logarithmic transform of F000009.
+A305618	polyxa	1	"[1]"	"1,x,B,+,log"	0	1	egf(new A010051())	Logarithmic transform of D010051.
+A305922	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A036968())	Logarithmic transform of J036968.
+A316972	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A020555())	Logarithmic transform of J020555.
+A318398	lambdan	1	n -> SU(0, n, k -> S1(n, k).*(F000110(k).^(3)))	[Sum[StirlingS1[n, k]*BellB[k]^3, {k, 0, n}], {n, 10}]
+A318399	polyxa	1	"[1]"	"x,B,1,+,log"	0	1	egf(new A318398())
+A318815	multia	1	""	(self, n) -> F000110(n).^(3).-(SU(1, n - 1, k -> BI(n, k).*(F000110(n - k).^(3)).*(k).*(self.a(k)))./(n)) 	a(n) = Bell(n)^3 - (1/n) * Sum_{k=1..n-1} binomial(n,k) * Bell(n-k)^3 * k * a(k).
+A322513	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000005())	Logarithmic transform of F000005.
+A323817	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A323816())
+A323818	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A003465())	Logarithmic transform of J003465.
+A326948	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A059201())	Logarithmic transform of J059201.
+A328053	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000010())	Logarithmic transform of F000010.
+A328054	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A001563())	Logarithmic transform of J001563.
+A331559	polyxa	1	"[1]"	"x,B,log"	0	1	egf(new A226226())	Logarithmic transform of J226226.
+A334258	lambdan	1	n -> SU(1, n, k -> Z_1(n - k).*(S2(n, k)).*(ZV(n).^(k - 1)))	a(n) = Sum_{k=1..n} (-1)^(n-k) * Stirling2(n,k) * n^(k-1).
+A334854	polyx	1	"[0,1]"	"A,exp,<1,atan"	0	1	* E.g.f.: <code>A(x) satisfies: A(x) = atan(x * exp(A(x)))</code>
+A334855	polyx	1	"[0,1]"	"A,exp,<1,tanh"	0	1	* E.g.f.: <code>A(x) satisfies: A(x) = tanh(x * exp(A(x)))</code>
+A334856	polyx	1	"[0,1]"	"A,exp,<1,sin"	0	1	* E.g.f.: <code>A(x) satisfies: A(x) = sin(x * exp(A(x)))</code>
+A337727	polyez	0	"[1]"	"1,2,/,x,cos,x,cosh,+,*,1,x,^4,-,/"	0	1	0	4	* E.g.f.: <code>(1/2)*(cos(x)+cosh(x))/(1-x^4)</code>.
+A339513	polyx	1	"[0,1],[1,1],[0,2,1]"	"p1,log,2,*,p2,+,4,/,rev"	0	1
+A341769	polyex	1	"[1],[1,-1],[0,2]"	"p1,p2,exp,*,2,x,exp,-,^2,/"	0	1	* E.g.f.: <code>(1-x)*exp(2*x)/(2-exp(x))^2</code>.
+A342282	polya	0	"[1]"	"1,1,x,B,/,-"	new A001181().skip(1)
+A347726	polyex	0	"[1],[1,-1]"	"x,p1,x,pow,/,exp"	0	1	* E.g.f.: <code>exp(x/(1-x)^x)</code>.
+A347978	polyex	0	"[1],[1,1],[1,-1]"	"1,p1,1,p2,/,pow,/"	0	1	* E.g.f.: <code>1/(1+x)^(1/(1-x))</code>.
+A351735	polyex	0	"[1],[1,-3]"	"1,p1,x,pow,/"	0	1	* E.g.f.: <code>1/(1-3*x)^x</code>.
+A351739	polyex	0	"[1],[1,-1]"	"1,1,p1,log,+,x,pow,/"	0	1	* E.g.f.: <code>1/(1+log(1-x))^x</code>.
+A351880	polyex	0	"[1],[1,-1]"	"1,p1,x,cos,pow,/"	0	1	* E.g.f.: <code>1/(1-x)^cos(x)</code>.
+A351881	polyex	0	"[1],[1,-1]"	"1,p1,x,cosh,pow,/"	0	1	* E.g.f.: <code>1/(1-x)^cosh(x)</code>.
+A351882	polyex	0	"[1],[1,-1]"	"1,p1,x,sec,pow,/"	0	1	* E.g.f.: <code>1/(1-x)^sec(x)</code>.
+A351883	polyex	0	"[1],[1,-1]"	"1,p1,x,sech,pow,/"	0	1	* E.g.f.: <code>1/(1-x)^sech(x)</code>.
+A352250	polyez	0	"[1]"	"1,1,x,x,sin,*,-,/"	0	1	0	2	* E.g.f.: <code>1/(1-x*sin(x))</code>.
+A352251	polyez	0	"[1]"	"1,1,x,x,sinh,*,-,/"	0	1	0	2	* E.g.f.: <code>1/(1-x*sinh(x))</code>.
+A352253	polyez	0	"[1]"	"1,1,x,x,sinh,*,2,/,-,/"	0	1	0	2	* E.g.f.: <code>1/(1-x*sinh(x)/2)</code>.
+A352254	polyez	0	"[1]"	"x,x,sinh,*,2,/,exp"	0	1	0	2	* E.g.f.: <code>exp(x*sinh(x)/2)</code>.
+A352277	polyez	0	"[1]"	"2,1,x,cosh,-,*,exp"	0	1	0	2	* E.g.f.: <code>exp(2*(1-cosh(x)))</code>.
+A352278	polyez	0	"[1]"	"3,1,x,cosh,-,*,exp"	0	1	0	2	* E.g.f.: <code>exp(3*(1-cosh(x)))</code>.
+A353155	polyxa	1	"[1]"	"1,x,B,+,log"	0	1	egf(new A065091())	Logarithmic transform of odd primes.
+A354286	polyex	0	"[1],[1,-1]"	"1,p1,2,1,2,p1,log,*,+,/,pow,/"	0	1	* E.g.f.: <code>1/(1-x)^(2/(1+2*log(1-x)))</code>.
+A354287	polyex	0	"[1],[1,-1]"	"1,p1,3,1,3,p1,log,*,+,/,pow,/"	0	1	* E.g.f.: <code>1/(1-x)^(3/(1+3*log(1-x)))</code>.
+A354309	polyex	0	"[1],[1,-2],[0,1/2]"	"1,p1,p2,pow,/"	0	1	* E.g.f.: <code>1/(1-2*x)^(x/2)</code>.
+A354310	polyex	0	"[1],[1,-3],[0,1/3]"	"1,p1,p2,pow,/"	0	1	* E.g.f.: <code>1/(1-3*x)^(x/3)</code>.
+A354311	polyx	0	"[1],[0,1/2],[0,2]"	"p1,p2,exp,1,-,*,exp"	0	1
+A354317	polyex	0	"[1],[1,1]"	"1,p1,p1,log,2,/,pow,/"	0	1	* E.g.f.: <code>1/(1+x)^(log(1+x)/2)</code>.
+A354319	polyex	0	"[1],[1,-2],[0,1/4]"	"1,p1,p2,pow,/"	0	1	* E.g.f.: <code>1/(1-2*x)^(x/4)</code>.
+A354320	polyex	0	"[1],[1,-4],[0,1/8]"	"1,p1,p2,pow,/"	0	1	* E.g.f.: <code>1/(1-4*x)^(x/8)</code>.
+A354412	polyex	0	"[1],[0,1/2]"	"1,2,x,exp,-,p1,pow,/"	0	1	* E.g.f.: <code>1/(2-exp(x))^(x/2)</code>.
+A354413	polyex	0	"[1]"	"1,2,x,exp,-,x,pow,/"	0	1	* E.g.f.: <code>1/(2-exp(x))^x</code>.
+A354517	polyex	0	"[1]"	"x,cos,x,exp,pow"	0	1	* E.g.f.: <code>cos(x)^exp(x)</code>.
+A354518	polyex	0	"[1]"	"x,cosh,x,exp,pow"	0	1	* E.g.f.: <code>cosh(x)^exp(x)</code>.
+A354545	polyex	0	"[1]"	"x,exp,x,cos,x,sin,+,pow"	0	1	* E.g.f.: <code>exp(x)^(cos(x)+sin(x))</code>.
+A354546	polyex	0	"[1]"	"x,exp,x,cos,x,sin,-,pow"	0	1	* E.g.f.: <code>exp(x)^(cos(x)-sin(x))</code>.
+A354611	polyex	0	"[1],[1,-1]"	"1,2,p1,x,pow,-,/"	0	1	* E.g.f.: <code>1/(2-(1-x)^x)</code>.
+A354613	polyex	0	"[1],[1,1]"	"1,2,p1,x,pow,-,/"	0	1	* E.g.f.: <code>1/(2-(1+x)^x)</code>.
+A362237	polyex	0	"[1],[1,-1]"	"1,1,x,p1,x,pow,/,-,/"	0	1	* E.g.f.: <code>1/(1-x/(1-x)^x)</code>.
+A362238	polyex	0	"[1],[1,1]"	"1,1,x,p1,x,pow,*,-,/"	0	1	* E.g.f.: <code>1/(1-x*(1+x)^x)</code>.
+A366228	polyx	0	"[1]"	"1,A,log,A,*,exp,int,+"	0	1
+A380046	polyex	0	"[1]"	"2,x,x,exp,*,asinh,*,exp"	0	1	* E.g.f.: <code>exp(2*asinh(x*exp(x)))</code>.
+A380050	polyex	0	"[1]"	"x,x,exp,*,asinh,exp"	0	1	* E.g.f.: <code>exp(asinh(x*exp(x)))</code>.
+A382126	poly	0	"[1],[0,0,1],[0,0,0,1],[1,-1]"	"p1,sub,p2,sub,*,p3,/"
+A384542	polyz	0	"[1]"	"7,14,x,*,atanh,*,sinh,98,x,*,/"	1	0	0	2
+A384574	poly	0	"[1]"	"1,A,^4,<1,sub,<1,+"
+A384575	poly	0	"[1]"	"1,A,^5,<1,sub,<1,+"
+A384576	poly	0	"[1]"	"1,A,<1,sub,^1/2,<1,+,^2"
+A384577	convprod	0	3	new A143501()
+A384578	convprod	0	4	new A384574()
+A384579	convprod	0	5	new A384575()
+A384585	holos	0	[[0],[24,-176,384,-256],[-3,-3,27,27]]	6	0	0	a(n)*(3*(3*n-1)*(3*n+1)*(n+1))) - 8*(4*n-3)*(2*n-1)*(4*n-1)*a(n-1)
+A384622	poly	0	"[1]"	"1,1,A,<1,A,<1,sub,^5,*,-,/"
+A384649	poly	0	"[1]"	"1,1,A,^4,<1,sub,<1,-,/"
+A384655	lambdan	1	n -> SU(1, n, k -> D051903(GCDi(n, k)))	a(n) = Sum_{k=1..n} D051903(gcd(n,k)).	nonn,new	1..10000	nyi	_Amiram Eldar_
+A384680	poly	0	"[1]"	"1,1,A,<1,A,^3,<1,sub,*,-,/"
+A384689	polyx	0	"[1]"	"A,^2,<1,A,<1,sub,*,exp"	0	1
+A384691	polyx	0	"[1]"	"A,<1,A,<1,sub,^2,*,exp"	0	1
+A384695	convprod	0	1/2	new A169961()
+A384719	polyx	0	"[1]"	"A,<1,sub,^2,<1,exp"	0	1
+A384720	polyx	0	"[1]"	"A,<1,sub,^3,<1,exp"	0	1

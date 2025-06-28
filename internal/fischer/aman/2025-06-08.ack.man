@@ -1,0 +1,210 @@
+---- 2025-06-08 17:35:25
+---- 2025-06-08 17:50:30
+---- 2025-06-08 20:33:50
+---- 2025-06-08 21:36:21
+---- 2025-06-08 21:41:15
+A030019	lambdan	0	n -> n == 0 ? ZV(1) : RU(0, n - 1, i -> QV(n).^(i - 1).*(S2(n - 1, i))).num()	a(n) = Sum_{i=0...n-1} Stirling2(n-1, i) n^(i-1), n >= 1
+A082402	polyxa	0	"[1]"	"x,B,log"	0	1	egf(new A003024())
+A082403	polyxa	0	"[1]"	"1,1,x,B,/,-"	0	1	egf(new A003024())
+A089466	polyxa	0	"[1]"	"x,B,^2,neg,2,/,exp,1,x,B,-,/"	0	1	egf(new A000169())
+A090362	polya	0	"[1]"	"x,B,^5"	new A090358()
+A092043	lambdan	1	n -> new Q(FA(n), ZV(n).*(n)).num()	a(n) = numerator(n!/n^2).
+A096971	multia	0	"1,1"	(self, n) -> SU(0, (n + 1)/2, j -> BI(2*n - 2*j -1, n - 1).*(self.a(j)))	Sum_{j=0..[(n+1)/2]} C(2*n-2*j-1, n-1)*a(j), a(0)=a(1)=1.
+A097514	polyx	0	"[1],[0,0,1]"	"x,exp,1,-,p1,2,/,-,exp"	0	1
+A097628	polyxa	1	"[1],[0,2]"	"p1,B,2,/,p1,B,2,/,neg,B,+"	0	1	egf(new A000169())
+A097998	polyx	0	"[1],[1,5],[1,-6,1]"	"1,x,p1,p2,sqrt,-,8,/,exp,/,rev,x,/,int,+"	0	1
+A098000	polyx	0	"[1],[1,5],[1,-6,1]"	"1,x,p1,p2,sqrt,-,8,/,exp,/,rev,x,/,int,+,1,-,exp"	0	1
+A098620	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014500()), egf(new A000110())
+A098623	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014505()), egf(new A000110())
+A098624	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014500()), egf(new A000166())
+A098626	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014507()), egf(new A000166())
+A098627	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014505()), egf(new A000166())
+A098628	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014500()), egf(new A000079())
+A098636	polyxa	0	"[1]"	"x,sinh,B"	0	1	egf(new A014500())
+A098638	polyxa	0	"[1]"	"x,sinh,B"	0	1	egf(new A014507())
+A098639	polyxa	0	"[1]"	"x,sinh,B"	0	1	egf(new A014505())
+A099692	polyxa	0	"[1],[2,1]"	"2,x,exp,*,p1,-,B"	0	1	egf(new A014500())
+A099694	polyxa	0	"[1],[2,1]"	"2,x,exp,*,p1,-,B"	0	1	egf(new A014507())
+A099695	polyxa	0	"[1],[2,1]"	"2,x,exp,*,p1,-,B"	0	1	egf(new A014505())
+A099696	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014500()), egf(new A000085())
+A099698	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014507()), egf(new A000085())
+A099699	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014505()), egf(new A000085())
+A099700	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014500()), egf(new A006125())
+A099702	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014507()), egf(new A006125())
+A099704	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014500()), egf(new A002416())
+A099706	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014507()), egf(new A002416())
+A099708	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014500()), egf(new A000312())
+A099710	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014507()), egf(new A000312())
+A099712	polyxa	0	"[1]"	"x,C,B"	0	1	egf(new A014500()), egf(new A000169())
+A099714	polyxa	0	"[1]"	"x,C,B"	0	1	egf(new A014507()), egf(new A000169())
+A099716	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014500()), egf(new A000272())
+A099718	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A014507()), egf(new A000272())
+A100325	polya	0	"[1],[1,-1]"	"1,x,B,+,p1,x,B,<1,-,/"	new A003169()
+A107094	polya	0	"[1],[1,1]"	"p1,x,B,*"	new A067145()
+A107711	trilambn	0	0	0	(n, k) -> n == 0 ? ZV(1) : BI(n, k).*(GCD(n, k))./(n)	Triangle read by rows: T(0,0)=1, T(n,m) = binomial(n,m) * gcd(n,m)/n.
+A108527	polyx	1	"[0,1],[1,-1],[-2,1]"	"1,A,^2,-,p1,p2,A,*,+,/,int"	0	1
+A111342	polya	0	"[1],[1,-1]"	"x,p1,/,B,p1,/"	new A090351()
+A111343	polya	0	"[1],[1,-1]"	"x,p1,/,B"	new A090351()
+A112005	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000045())
+A112006	polyxa	0	"[1]"	"1,x,B,-,log,neg"	0	1	egf(new A000045())
+A113299	polya	1	"[1]"	"x,1,x,B,-,^2,x,-,/"	new A001190()
+A113774	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A011655())
+A118968	polya	0	"[1]"	"1,A,<1,x,^4,B,*,+"	new A002294()
+A120899	polya	0	"[1],[0,1]"	"p1,B,^2,p1,B,^4,<3,sub,*"	new A000108()
+A120900	polya	0	"[1],[0,1]"	"p1,B,p1,B,^4,<3,sub,*"	new A000108()
+A120915	polya	0	"[1],[0,2]"	"p1,B,^2,p1,B,^4,<3,sub,*"	new A000108()
+A120916	polya	0	"[1],[0,2]"	"p1,B,p1,B,^4,<3,sub,*"	new A000108()
+A120920	polya	0	"[1]"	"x,B,^3,x,B,^9,<4,sub,*"	new A001764()
+A120921	polya	0	"[1]"	"x,B,x,B,^9,<4,sub,*"	new A001764()
+A121398	polya	0	"[1],[1,-1]"	"x,B,<2,sub,x,B,*,1,x,B,<2,-,*,p1,/"	new A001006()
+A121399	polya	0	"[1]"	"x,B,x,B,<2,sub,*"	new A001006()
+A126151	polyz	0	"[1]"	"A,^3/2,1,A,^3/2,/,int,*,int,exp"	0	1	0	2
+A126352	polyx	0	"[1],[1,-1]"	"1,x,exp,1,p1,log,-,/,-,x,/"	1	5
+A129583	polyxa	0	"[1],[1,1]"	"2,p1,log,*,x,-,B"	0	1	egf(new A006125())
+A129585	polyxa	0	"[1],[1,1]"	"p1,x,B,p1,/,log,+"	0	1	egf(new A129583())
+A133686	polyx	0	"[1],[0,-1]"	"p1,lambertW,neg,1,p1,lambertW,+,<1,/,sqrt,3,p1,lambertW,^2,*,4,/,neg,exp,*"	1	1
+A134362	polyxa	0	"[1]"	"x,B,neg,x,B,^2,2,/,-,exp,1,x,B,-,/"	0	1	egf(new A000169())
+A134954	multia	0	"1"	(self, n) -> SU(1, n, k -> D030019(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))		egf(new A030019())
+A135808	polyx	0	"[1],[1,-1]"	"1,x,exp,1,p1,log,-,/,-,x,/"	1	1
+A137571	polya	0	"[1]"	"1,1,x,B,<1,x,C,^2,*,-,x,C,^3,<1,-,/"	new A000108(), new A002293()
+A137572	polya	0	"[1]"	"x,C,1,x,B,<1,x,C,^2,*,-,x,C,^3,<1,-,/"	new A000108(), new A002293()
+A137573	polya	0	"[1]"	"x,B,x,C,^2,*,1,x,B,<1,x,C,^2,*,-,x,C,^3,<1,-,/"	new A000108(), new A002293()
+A137916	polyxa	0	"[1],[1,-1],[0,0,1]"	"1,1,x,B,-,/,log,x,B,-,x,B,^2,2,/,-,2,/,exp"	0	1	egf(new A000169())
+A139702	polya	1	"[1]"	"x,B,rev"	new A138740()
+A140055	polyxa	1	"[1]"	"x,B,B"	0	1	egf(new A140054())
+A141117	polya	1	"[1]"	"x,B,B"	new A091713()
+A143598	polyza	0	"[1],[0,-1]"	"x,B,p1,B,*,sqrt"	0	1	0	2	egf(new A143599())
+A144636	holos	0	[[0],[35,-36,9],[18,-30,12],[0,-5,5]]	0,1,-1	0	1
+A144637	polyxa	0	"[1]"	"x,B,^2,2,/"	0	1	egf(new A144636())
+A144638	polyxa	0	"[1]"	"x,B,^3,6,/"	0	1	egf(new A144636())
+A144639	polyxa	0	"[1]"	"x,B,^4,24,/"	0	1	egf(new A144636())
+A145345	polya	0	"[1]"	"1,x,B,^2,<1,+"	new A121687()
+A157308	polya	0	"[1],[0,2]"	"p1,x,p1,A,-,/,B,+"	new A155585()
+A157310	polya	0	"[1],[2,1]"	"p1,x,p1,A,-,/,B,-"	new A122045()
+A159315	polyxa	0	"[1]"	"x,2,/,B,^2"	0	1	egf(new A126444())
+A161629	polyxa	0	"[1]"	"A,<1,B,<1,exp"	0	1	new A000108()
+A167939	polyxa	1	"[1]"	"x,exp,x,B,log,*"	0	1	egf(new A006125())
+A168450	polya	0	"[1]"	"A,<1,B"	new A004304()
+A168594	polya	0	"[1]"	"x,A,/,B"	new A133053()
+A171802	polya	0	"[1]"	"A,^2,<1,B"	new A000041()
+A171803	polya	0	"[1]"	"A,<1,B,^2"	new A000041()
+A171804	polya	0	"[1]"	"A,^3,<1,B"	new A000041()
+A181939	polyxa	0	"[1]"	"1,x,B,log,+"	0	1	egf(new A059849())
+A182146	polyxa	1	"[1]"	"x,B,x,B,x,exp,x,<1,2,/,exp,*,/,-"	0	1	egf(new A006125())
+A184949	lambdan	0	n -> RU(0, n, k -> QV(n + 1).^(k - 1).*(SA(n - k, k))./(FA(n - k))).*(FA(n)).num()	a(n) = n! * sum(k=0..n, (n+1)^(k-1)*abs(stirling1(n-k,k))/(n-k)!).
+A186081	polyxa	0	"[1],[1,-1],[0,2]"	"p1,p2,B,+"	0	1	egf(new A003030())
+A188457	multia	0	"1"	(self, n) -> SU(1, n, k -> Z_1(k + 1).*(BI(n, k)).*(ZV(3).^(k*(n - k))).*(self.a(n - k)))	a(n)=if(n<1, n==0, sum(k=1, n, -(-1)^k*binomial(n, k)*3^(k*(n-k))*a(n-k)))
+A192516	polyxa	0	"[1],[0,0,0,-8,-8,-6,-1]"	"p1,48,/,exp,x,B,*"	0	1	egf(new A014500())
+A192666	polyxa	0	"[1]"	"A,<1,B"	0	1	egf(new A014507())
+A193281	multia	0	"1"	(self, n) -> RU(1, n, k -> new Q(ZV(k), D110654(k)).*(self.a(n - k))./(FA(n - k))).*(FA(n - 1)).num()	a(0) = 1; a(n) =  (n-1)! * Sum_{k=1..n} k/A110654(k) * a(n-k)/(n-k)!.
+A193543	polyz	0	"[1],[0,2]"	"1,p1,cosh,sqrt,/,int,rev,cosh"	0	1	0	2
+A196304	multia	1	"1"	(self, n) -> SU(1, n - 1, k -> Z_1(k - 1).*(BI(n - 1, k)).*(BI(n + 1 - k, 2).^(k)).*(self.a(n - k)))	a(n) = Sum_{k=1..n-1} (-1)^(k-1)*binomial(n-1,k)*binomial(n+1-k,2)^k*a(n-k) for n>=2.	polyx	0	"[1]"	"x,cos,x,sech,*,asinh"	0
+A197356	polyxa	0	"[1]"	"x,B,^2"	0	1	egf(new A002416())	convolution
+A197505	multia	0	"1"	(self, n) -> SU(1, n, k -> D006125(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))		egf(new A006125())
+A198046	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A053549())
+A198800	polyxa	0	"[1]"	"x,B,^2"	0	1	egf(new A070190())
+A198802	polyxa	0	"[1]"	"x,B,^3"	0	1	egf(new A002898())
+A198804	polyxa	0	"[1]"	"x,B,^8"	0	1	egf(new A126869())
+A198808	polyxa	0	"[1]"	"x,B,^2"	0	1	egf(new A002898())
+A200793	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A036774())
+A202477	polyxa	0	"[1]"	"x,B,1,x,B,-,/,exp"	0	1	egf(new A000169())
+A204449	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(LU(k)).*(LU(n - k)))
+A204618	lambdan	0	n -> BELL(n).*(n).*(n)
+A206303	polyxa	0	"[1],[0,0,1]"	"x,B,p1,B,sqrt,/"	0	1	egf(new A028342())
+A208240	polyxa	0	"[1]"	"1,1,x,B,-,/,x,B,x,B,^2,2,/,+,exp,-"	0	1	egf(new A000169())
+A210661	polyxa	0	"[1]"	"1,1,1,1,x,B,-,/,log,-,/"	0	1	egf(new A000169())
+A212559	polyxa	0	"[1]"	"1,1,x,B,-,/"	0	1	egf(new A006152())
+A212789	polyxa	0	"[1]"	"x,B,C"	0	1	egf(new A000169()), egf(new A007838())
+A214689	polyxa	0	"[1]"	"2,x,*,A,<1,B,*,exp"	0	1	new A000108()
+A215720	polyxa	0	"[1]"	"1,1,x,B,<1,-,/"	0	1	egf(new A000169())	.f.: 1/(1 - x*T(x)) where T(x) is the e.g.f. for         J000169.
+A216534	polyxa	0	"[1]"	"x,B,exp,1,1,x,B,-,/,log,*,1,x,B,-,/"	0	1	egf(new A000169())	.f.: exp(T(x))*log(1/(1-T(x)))/(1-T(x)), where T(x) is thJ000169.
+A216858	polyxa	0	"[1]"	"1,1,x,exp,<1,B,-,/,log"	0	1	egf(new A000169())	.f.: log(1/(1-T(x*exp(x)))) where T(x) is the e.g.f. for J000169.
+A218374	polyxa	0	"[1]"	"x,B,1,-,cosh"	0	1	egf(new A001187())	.f.: cosh(A(x)-1) where A(x) is the e.g.f. for M         M001187.
+A218375	polyxa	0	"[1]"	"x,B,1,-,sinh"	0	1	egf(new A001187())
+A218378	polyxa	0	"[1],[0,-1]"	"x,B,p1,B,-,2,/,exp"	0	1	egf(new A001187())
+A218688	polyxa	0	"[1]"	"1,1,x,B,-,x,B,^2,2,/,+,/"	0	1	egf(new A000169())	g.f.: 1/(1- T(x) + T(x)^2/2) where T(x) is e.g.f. for  J000169.
+A218691	polyxa	0	"[1]"	"x,B,x,B,^2,2,/,-,exp,^2"	0	1	egf(new A000169())	g.f.: exp(T(x) - T(x)^2/2)^2 where T(x) is e.g.f. for  J000169.
+A221493	polyxa	0	"[1],[0,-1]"	"2,p1,exp,*,1,-,1,x,B,/,-"	0	1	egf(new A047863())
+A223889	polyxa	0	"[1],[1,1]"	"x,B,p1,-,x,C,*"	0	1	egf(new A001187()), egf(new A006125())
+A224510	polyxa	0	"[1]"	"x,B,dif,dif,x,C,*,int,int"	0	1	egf(new A001187()), egf(new A006125())
+A226349	polyxa	0	"[1]"	"x,B,dif,dif,x,C,*,int,int"	0	1	egf(new A001865()), egf(new A000312())
+A226358	polyxa	0	"[1]"	"x,B,dif,dif,x,C,*,int,int"	0	1	egf(new A062738()), egf(new A002416())
+A227119	multia	0	"1"	(self, n) -> SU(1, n, j -> BI(n - 1, j - 1).*(FI(j + 2)).*(self.a(n - j)))
+A228551	polyxa	0	"[1]"	"1,x,B,log,+"	0	1	egf(new A001833())
+A228596	polyxa	0	"[1],[0,0,0,-4]"	"p1,6,/,exp,x,B,*"	0	1	egf(new A006125())
+A249672	polyxa	0	"[1]"	"x,C,1,-,B"	0	1	egf(new A079978()), egf(new A001187())
+A256180	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A000045())
+A269484	polya	0	"[1],[0,0,1]"	"x,^9,x,B,+,3,x,B,^2,*,2,/,-,p1,B,2,/,+"	new A014276()
+A270707	lambdan	0	n -> RU(0, (n - 1)/2, k -> new Q(FA(k).*(S1(n - k, k + 1)).*(Z_1(n + 1)), FA(n- k).*(FA(k + 1)))).*(FA(n + 1)).num()	a(n) = (n+1)!*Sum_{k=0..(n-1)/2}(k!*stirling1(n-k,k+1)*(-1)^(n+1)/(n-k)!/(k+1)!).
+A271974	lambdan	2	n -> { final Z p = PM(n); return p.mod(4) == 1 ? ZV(1).+(p)./(2) : ZV(1).-(p)./(2); }	Let p = prime(n): if p mod 4 == 1 then a(n) = (1+p)/2 otherwise if p mod 4 == 3 then a(n) = (1-p)/2.
+A279271	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A000129())
+A281184	polyz	0	"[1]"	"1,x,cosh,^3,/,int,rev,dif"	1	1	0	2
+A281817	polyx	0	"[0,1],[0,-1]"	"p1,2,x,exp,-,log,-,x,exp,1,-,/"	1	1
+A289739	polyx	0	"[1]"	"1,x,x,exp,+,/,int,rev"	1	1
+A292760	polyxa	0	"[1]"	"x,tan,x,sec,+,x,B,*"	0	1	egf(new A000738())
+A292761	polyxa	0	"[1]"	"x,tan,x,sec,+,^2,x,B,*"	0	1	egf(new A000738())
+A294222	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A000204())
+A295739	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A000005())
+A295812	polya	1	"[1]"	"x,B,log,rev"	egf(new A296170())
+A300011	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A000010())
+A300511	multia	0	"1"	(self, n) -> SU(1, n, k -> F000041(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))
+A300514	multia	0	"1"	(self, n) -> SU(1, n, k -> F000009(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))
+A300632	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A008578())
+A300673	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A008683())
+A301511	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A001615())
+A302197	polyxa	0	"[1]"	"x,exp,x,B,*,log"	0	1	egf(new A005043())
+A302200	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A000594())
+A302201	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A002408())
+A303004	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A014963())
+A304788	multia	0	"1"	(self, n) -> SU(1, n, k -> F000108(k).*(BI(n - 1, k - 1)).*(self.a(n - k)))
+A304911	polyxa	0	"[1],[1,1]"	"x,B,p1,-,exp"	0	1	egf(new A030019())	J030019(x) is the e.g.f. of J030019.
+A307567	polyxa	0	"[1]"	"x,B,1,-,B"	0	1	egf(new A005651())	g(x) = e.g.f. of J005651.
+A307568	polyxa	0	"[1]"	"x,B,1,-,B"	0	1	egf(new A007837())	g(x) = e.g.f. of M007837.
+A308392	polyx	0	"[1],[0,-1]A005388!"	"p1,exp,x,B,^2,*"	0	1	E.g.f.: exp(-x)*g(x)^2,	g(x) = e.g.f. of M005388.
+A308461	polyxa	0	"[1],[0,-1,-1]"	"p1,exp,x,B,^2,*"	0	1	egf(new A005388())	g(x) = e.g.f. of M005388.
+A322751	polyxa	0	"[1]"	"1,x,B,log,+"	0	1	egf(new A000316())	B(x) is the e.g.f. of J000316
+A325664	polya	1	"[1],[1,1]"	"x,p1,/,B,p1,/"	new A001951()
+A331577	polyxa	1	"[1]"	"x,B,1,x,B,+,x,B,^2,2,/,+,<1,-"	0	1	egf(new A000169())	f(x) is the e.g.f. of J000169. - _Andrew Howroyd_, Jan 23 2020
+A332779	polyxa	0	"[1]"	"x,exp,x,B,x,C,-,exp,*,x,C,x,-,*"	0	1	egf(new A001187()), egf(new A000272())	c(x) = M001187 and t(x) is the e.g.f. for J000272.
+A335356	polyxa	0	"[1]"	"1,1,x,B,log,-,/"	0	1	egf(new A006125())	g(x) = J006125.
+A335378	polyxa	0	"[1]"	"x,B,log,dif,1,x,B,log,-,/,int"	0	1	egf(new A006125())	g(x) = J006125.
+A335601	polya	2	"[1],[0,0,1]"	"x,B,^2,p1,B,+,2,/"	new A000151()
+A339299	polyxa	1	"[1]"	"x,B,^2,1,x,B,+,/"	0	1	egf(new A339301())	B(x) is the e.g.f. of J339301.
+A339300	polyxa	1	"[1]"	"x,B,1,x,B,+,/"	0	1	egf(new A339301())	B(x) is the e.g.f. of J339301.
+A346545	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A002746())
+A346546	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A002744())
+A346547	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A002745())
+A346548	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A002743())
+A353079	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A065091())
+A353204	multia	0	"1"	(self, n) -> RU(1, n, k -> new Q(ZV(k), D110654(k)).*(self.a(n - k))./(FA(n - k))).*(FA(n - 1)).num().negate()	a(0) = 1; a(n) = -(n-1)! * Sum_{k=1..n} k/A110654(k) * a(n-k)/(n-k)!.
+A354439	polyxa	0	"[1]"	"x,B,x,C,/"	0	1	egf(new A002416()), egf(new A003024())	A(x) = J002416 and B(x) is the e.g.f. for M003024.
+A354610	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	egf(new A007114())	f(x) = (1 - x)^x = e.g.f. for J007114.
+A354612	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	egf(new A007113())	f(x) = (1 + x)^x = e.g.f. for J007113.
+A361354	polyxa	1	"[1]"	"x,B,exp"	0	1	egf(new A007834())	B(x) is the e.g.f. of J007834.
+A362820	polyxa	0	"[1],[1,-2,1]"	"p1,x,exp,*,x,B,*"	0	1	egf(new A053529())	B(x) is the e.g.f. of J053529.
+A365593	polyxa	0	"[1],[-1,1]"	"x,exp,p1,+,B"	0	1	egf(new A003024())	D(x) = M003024.
+A366218	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	egf(new A070322())	 p(x) = J070322.
+A367869	polyxa	0	"[1],[1,1]"	"x,B,p1,-,exp"	0	1	egf(new A129271())	B(x) is the e.g.f. of J129271. - _Andrew Howroyd_, Dec 30 2023
+A368927	polyx	0	"[1],[0,-1]"	"3,p1,lambertW,*,neg,2,/,p1,lambertW,^2,3,*,4,/,-,exp,1,p1,lambertW,+,sqrt,/"	0	1
+A369140	polyxa	0	"[1],[0,-1]"	"p1,exp,3,x,B,*,2,/,3,x,B,^2,*,4,/,-,exp,*,1,x,B,-,sqrt,/"	0	1	egf(new A000169())	T(x) is the e.g.f. of J000169. - _Andrew Howroyd_, Feb 02 2024
+A369397	polyxa	0	"[1],[0,2]"	"p1,B,x,-,exp"	0	1	egf(new A003030())	s(x) = J003030.
+A370288	polya	0	"[1]"	"x,B,sqrt"	new A229451()
+A370289	polya	0	"[1]"	"x,B,^1/3"	new A229451()
+A372193	polyxa	0	"[1]"	"x,B,x,C,*"	0	1	egf(new A057500()), egf(new A001858())	B(x) is the e.g.f. of J057500 and C(x) is the e.g.f. of J001858. - _Andrew Howroyd_, Jul 31 2024
+A372530	polyx	1	"[0,1]"	"A,<1,1,A,-,/,sub,A,/"	1	0
+A372531	polyx	1	"[0,1]"	"A,^2,<1,1,A,-,/,sub,A,^2,/"	2	0
+A372532	polyx	1	"[0,1]"	"A,^3,<1,1,A,-,/,sub,A,^3,/"	3	0
+A372534	polyx	1	"[0,1],[0,3]"	"A,<1,p1,A,^2,*,+,sub,A,/"	1	0
+A372577	polyx	1	"[0,1]"	"A,<1,A,^2,<1,+,sub,sub,A,/"	1	0
+A372578	polyx	1	"[0,1]"	"A,<1,2,A,^3,*,+,sub,A,/"	1	0
+A373312	polyx	1	"[0,1]"	"A,<1,1,A,-,^2,/,sub,A,/"	1	0
+A374917	multia	0	"1"	(self, n) -> SU(1, n, k -> BI(n, k).*(self.a(n - k)).*(FI(k + 1))).negate()	a(0) = 1, a(n) = -Sum_{k=1..n} binomial(n, k)*a(n - k)*A000045(k+1).
+A378324	polyxa	1	"[1]"	"x,B,x,C,-,exp,x,B,-,x,C,+,1,-,x,C,1,-,exp,*"	0	1	egf(new A001187()), egf(new A000272())	B(x) is the e.g.f. of M001187 and T(x) is the e.g.f. of J000272. - _Andrew Howroyd_, Nov 26 2024
+A380057	polyx	0	"[1]"	"1,A,log,cos,<1,+"	0	1
+A380556	polyxa	0	"[1]"	"x,B,exp"	0	1	egf(new A380555())	L(x) = Series_Reversion( (exp(x) - 1)/cos(2*x) ) is the e.g.f. of J380555.
+A381361	polyx	0	"[1]"	"1,2,4,A,^6,*,1,-,3,/,sqrt,*,int,+,sqrt"	0	1
+A381828	polyxa	0	"[1]"	"A,<1,B,1,A,^2,<1,-,/"	1	0	new A000108()
+A381831	polyxa	0	"[1]"	"A,^2,<1,B,1,A,^3,<1,-,/"	1	0	new A000108()
+---- 2025-06-08 22:22:22
+A120667	polyxa	0	"[1]"	"x,B,sqrt"	1	1	egf(new A052332())
+A131178	polyx	1	"[0,1],[1,2]"	"1,p1,x,<1,2,/,+,/,int,rev"	0	1

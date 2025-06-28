@@ -1,0 +1,279 @@
+---- 2025-06-15 21:08:33
+A167377	complem	1	new A000009()		complement
+A167376	complem	1	new A000041()		complement
+A226946	complem	1	new A034017()		complement
+A365471	complem	1	new A046034()		complement
+A163753	complem	1	new A062115()		complement
+A173671	complem	1	new A192111()		complement
+A202341	complem	1	new A202342()		complement
+A124872	conum	0	A124871
+A143968	conum	0	A143991
+A144578	conum	0	A144577
+A144580	conum	0	A144579
+A241519	conum	0	A242376
+A380271	conum	0	A380171
+A384962	decexpr	1	() -> REALS.coth(CR.PI.*(CV(2)))		Decimal expansion of coth(2*Pi)
+A268412	filtpos	0	0	new A069010()	EVEN	positions of even terms
+A268272	filtpos	0	0	new A269027()	ZERO	positions of 0s
+A094942	filtpos	1	0	new A000164()	ONE	positions of ones
+A227148	filtpos	1	0	new A034968()	EVEN	positions of even terms
+A227130	filtpos	1	0	new A060130()	EVEN	positions of even terms
+A114913	filtpos	1	0	new A114912()	ONE	positions of 1's
+A324199	filtpos	1	0	new A324189()	ZERO	positions of zeros
+A328836	filtpos	1	0	new A328844()	ZERO	positions of zeros
+A364496	filtpos	1	0	new A364492()	ONE	positions of 1's
+A348329	filtpos	1	0	new A368921()	ZERO	positions of 0's
+A334261	filtpos	1	0	new A368922()	v -> v.equals(ZV(-4))	positions of -4's
+A370114	filtpos	1	0	new A370116()	ONE	positions of 1's
+A370115	filtpos	1	0	new A370120()	ZERO	positions of 0's
+A328242	filtpos	1	0	new A370130()	ONE	positions of 1's
+A328233	filtpos	1	0	new A370131()	ONE	positions of 1's
+A379013	filtpos	1	0	new A378505()	ZERO	positions of zeros
+A296655	filtpos	1	1	new A014197()	v -> !v.testBit(0) && v.compareTo(ZV(0)) > 0	positions of positive even terms
+A245388	filtpos	1	1	new A049820()	v -> Predicates.SQUARE.is(v)	positions of squares
+A088359	filtpos	1	1	new A051135()	ONE	positions of ones
+A373385	filtpos	1	1	new A059975()	v -> v.mod(3) == 0	positions of multiples of 3
+A082300	filtpos	1	1	new A082299()	ONE	positions of ones
+A088827	filtpos	1	1	new A094471()	ODD	positions of odd terms
+A161790	filtpos	1	1	new A154402()	ONE	positions of 1's
+A276078	filtpos	1	1	new A276077()	ZERO	positions of zeros
+A174801	filtpos	1	1	new A278228()	v -> v.compareTo(Z.SIX) <= 0	positions of terms <= 6
+A137288	filtpos	1	1	new A278229()	v -> v.equals(ZV(2))	positions of 2's
+A283973	filtpos	1	1	new A283988()	ZERO	positions of zeros
+A276553	filtpos	1	1	new A284570()	ZERO	positions of zeros
+A285100	filtpos	1	1	new A285337()	ONE	positions of ones
+A118363	filtpos	1	1	new A286604()	ZERO	positions of zeros
+A268375	filtpos	1	1	new A289618()	ZERO	positions of zeros
+A175526	filtpos	1	1	new A294905()	ZERO	positions of zeros
+A295661	filtpos	1	1	new A295662()	NONZERO	positions of nonzero terms
+A284288	filtpos	1	1	new A296082()	ONE	positions of ones
+A081375	filtpos	1	1	new A303777()	ONE	positions of ones
+A292315	filtpos	1	1	new A305436()	ZERO	positions of zeros
+A234095	filtpos	1	1	new A319706()	v -> v.equals(ZV(5))	positions of 5's
+A305058	filtpos	1	1	new A322019()	ZERO	positions of zeros
+A098719	filtpos	1	1	new A324387()	ONE	positions of ones
+A306263	filtpos	1	1	new A324393()	ZERO	positions of zeros
+A324540	filtpos	1	1	new A324539()	ZERO	positions of zeros
+A088828	filtpos	1	1	new A324644()	EVEN	positions of even terms
+A235866	filtpos	1	1	new A324873()	ONE	positions of ones
+A324813	filtpos	1	1	new A324885()	v -> v.compareTo(Z.ONE) <= 0	positions of terms <= 1
+A122132	filtpos	1	1	new A326297()	ONE	positions of 1's
+A327165	filtpos	1	1	new A327153()	NONZERO	positions of nonzero terms
+A328387	filtpos	1	1	new A328386()	ZERO	positions of zeros
+A161918	filtpos	1	1	new A328730()	ZERO	positions of 0's
+A330579	filtpos	1	1	new A330578()	ZERO	positions of zeros
+A332443	filtpos	1	1	new A332448()	ZERO	positions of zeros
+A327158	filtpos	1	1	new A332883()	ONE	positions of 1's
+A335431	filtpos	1	1	new A335876()	v -> v.bitCount() == 1 && v.compareTo(Z.TWO) > 0	positions of two's powers > 2
+A336918	filtpos	1	1	new A336839()	ONE	positions of 1's
+A336930	filtpos	1	1	new A336931()	ZERO	positions of zeros
+A330972	filtpos	1	1	new A338568()	ZERO	positions of 0's
+A339963	filtpos	1	1	new A339964()	v -> v.equals(ZV(2))	positions of 2's
+A339968	filtpos	1	1	new A339967()	ONE	positions of ones
+A340076	filtpos	1	1	new A340075()	ONE	positions of ones
+A342018	filtpos	1	1	new A342017()	v -> v.compareTo(Z.ONE) > 0	positions of terms > 1
+A342008	filtpos	1	1	new A342414()	ONE	positions of ones
+A342009	filtpos	1	1	new A342415()	ONE	positions of ones
+A349165	filtpos	1	1	new A342671()	ONE	positions of 1's
+A347877	filtpos	1	1	new A342925()	ODD	positions of odd terms
+A344591	filtpos	1	1	new A344592()	ONE	positions of ones
+A344974	filtpos	1	1	new A344970()	ONE	positions of ones
+A345003	filtpos	1	1	new A345043()	ZERO	positions of zeros
+A345944	filtpos	1	1	new A345935()	ONE	positions of 1's
+A346090	filtpos	1	1	new A346099()	ONE	positions of ones
+A346245	filtpos	1	1	new A346244()	NEGATIVE	positions of negative terms
+A346251	filtpos	1	1	new A346246()	ZERO	positions of zeros
+A348034	filtpos	1	1	new A348033()	NONZERO	positions of nonzero terms
+A347960	filtpos	1	1	new A348039()	v -> v.compareTo(Z.ONE) > 0	positions of terms > 1
+A250094	filtpos	1	1	new A348510()	ZERO	positions of zeros
+A351098	filtpos	1	1	new A351097()	NEGATIVE	positions of negative terms
+A351446	filtpos	1	1	new A351445()	ZERO	positions of zeros
+A088232	filtpos	1	1	new A354099()	ZERO	positions of zeros
+A091855	filtpos	1	1	new A354384()	v -> v.equals(ZV(2))	positions of 2
+A346608	filtpos	1	1	new A354986()	v -> v.compareTo(Z.ONE) > 0	positions of terms > 1
+A355941	filtpos	1	1	new A355934()	ONE	positions of 1's
+A230851	filtpos	1	1	new A357761()	ZERO	positions of 0's
+A358767	filtpos	1	1	new A358766()	POSITIVE	positions of positive terms
+A359167	filtpos	1	1	new A359166()	POSITIVE	positions of positive terms
+A216781	filtpos	1	1	new A361023()	ZERO	positions of 0's
+A361464	filtpos	1	1	new A361462()	v -> v.equals(ZV(3))	positions of 3's
+A286325	filtpos	1	1	new A361783()	ONE	positions of 1's
+A364565	filtpos	1	1	new A364558()	ZERO	positions of 0's
+A340608	filtpos	1	1	new A366785()	ONE	positions of 1's
+A369976	filtpos	1	1	new A369974()	ODD	positions of odd terms
+A369650	filtpos	1	1	new A373146()	ZERO	positions of 0's
+A333426	filtpos	1	1	new A373832()	ZERO	positions of 0's
+A373846	filtpos	1	1	new A373842()	ONE	positions of 1's
+A379486	filtpos	1	1	new A379489()	ZERO	positions of 0's
+A358221	filtpos	1	2	new A328382()	ZERO	positions of 0's
+A327929	filtpos	1	2	new A341997()	v -> v.compareTo(Z.ONE) > 0	positions of terms > 1
+A141828	holos	0	[[-1],[0,0,0,0,1],[1,-1]]	1,5	0	0	a(n) = (n^4*a(n-1)-1)/(n-1) for n >= 2, with a(0) = 1, a(1) = 5.	easy,nonn	0..181	unkn
+A141827	holos	0	[[-1],[0,0,0,1],[1,-1]]	1,4	0	0	a(n) = (n^3*a(n-1) - 1)/(n - 1) for n >= 2, with a(0) = 1, a(1) = 4.	easy,nonn	0..16	unkn
+A068444	holos	0	[[-2,-1],[0,1],[-1]]	10	0	0	a(0) = 10; for n>0, a(n) = n*a(n-1)-n-2.	nonn,easy	0..448	cordrectab/cordr
+A181560	holos	0	[[0],[-1],[0],[2],[1],[0],[-1]]	1,0,0,0,0	0	0	a(n+1) = a(n-1) + 2 a(n-2) - a(n-4) ; a(0)=1, a(n)=0 for 0 < n < 5.	easy,sign,changed	0..42	cordrec
+A190823	holos	0	[[0],[-1],[8,-2],[-16,6],[10,-6],[2,2],[-1]]	1,0,0,1	0	0
+A080599	holos	0	[[0],[0,-1,1],[0,2],[-2]	1,1	0	0
+A158802	holos	0	[[0],[0,-4,8,-5,1],[0,-3,4,-1],[0,-18,21,-8,1],[6,-11,6,-1]]	0,1,-4,0	0	0
+A121956	holos	0	[[0],[1],[-2,1],[1],[-1]]	0,1,1	0	0	a(n) = a(n-1) + (n-2)*a(n-2) + a(n-3) starting a(0)=0, a(1)=a(2)=1.	nonn	0..795	cordrec
+A186738	holos	0	[[1],[-1,1],[1],[-1]]	0,0	0	0	a(0)=0, a(1)=0; for n>1, a(n) = a(n-1) + (n-1)*a(n-2) + 1.	nonn	0..800	cordrectab/cordr
+A121958	holos	1	[[0],[1],[1,-3,1],[-1]]	0,1,1	0	0	a(n) = a(n-2) + (n^2 - 3*n + 1)*a(n-1) with a(1)=0, a(2)=1, a(3)=1.	nonn,easy	1..254	cordrec
+A118449	holos	3	[[0],[254592,-120224,14144],[-471408,265536,-39600],[314748,-151506,11916],[-77970,8615,-2345],[-12240,-1488,1137],[-2196,1281,-183]]	0,488	0	0
+A228698	lambdan	0	n -> PR(1, n, i -> PM(i + 1)).*(8).-(1)	a(n) = 8*Product{i=1..n} p(i) - 1, where p(i) = i-th odd prime.	nonn	0..150	nyi	_N. J. A. Sloane_
+A119390	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(n - k).*(S1(n, k)), FA(k))).*(FA(n)).num()	a(n) = n!*Sum_{k=0..n} (-1)^(n-k)*Stirling1(n,k)/k!
+A347840	lambdan	1	n -> ZV((2*n - 1) >> (Functions.VALUATION.i(3*n - 1, 2)/2 * 2))	a(n) = (2*n-1)>>(valuation(3*n-1, 2)\2*2);
+A107668	multia	0	"1"	(self, n) -> QV(n + 1).^(2*n + 2)./(FA(n + 1)).-(RU(1, n, k -> QV(n + 1).^(2*k)./(FA(k)).*(self.a(n - k)))).num()	a(n) = (n+1)^(2*n+2)/(n+1)! - Sum_{k=1..n} (n+1)^(2*k)/k! * a(n-k) for n > 0 with a(0) = 1.
+A107675	multia	0	"1"	(self, n) -> QV(n + 1).^(3*n + 3)./(FA(n + 1)).-(RU(1, n, k -> QV(n + 1).^(3*k)./(FA(k)).*(self.a(n - k)))).num()	a(n) = (n+1)^(3*n+3)/(n+1)! - Sum_{k=1..n} (n+1)^(3*k)/k! * a(n-k) for n > 0 with a(0) = 1.
+A304394	multia	0	"1"	(self, n) -> QV(n + 1).^(4*n + 4)./(FA(n + 1)).-(RU(1, n, k -> QV(n + 1).^(4*k)./(FA(k)).*(self.a(n - k)))).num()	a(n) = (n+1)^(4*n+4)/(n+1)! - Sum_{k=1..n} (n+1)^(4*k)/k! * a(n-k) for n > 0 with a(0) = 1.
+A304395	multia	0	"1"	(self, n) -> QV(n + 1).^(5*n + 5)./(FA(n + 1)).-(RU(1, n, k -> QV(n + 1).^(5*k)./(FA(k)).*(self.a(n - k)))).num()	a(n) = (n+1)^(5*n+5)/(n+1)! - Sum_{k=1..n} (n+1)^(5*k)/k! * a(n-k) for n > 0 with a(0) = 1.
+A087803	partsun	1	new A000081().skip(1)		partial sums
+A089580	partsun	1	new A060298()		partial sums
+A240542	partsun	1	new A067742()		partial sums
+A232221	partsun	1	new A232342()		partial sums
+A332220	partsun	1	new A332219()		partial sums
+A342678	partsun	1	new A342704()		partial sums
+A384941	poly	0	"[1]"	"1,x,A,<1,neg,sub,^4,/,+"
+A384942	poly	0	"[1]"	"1,x,A,<1,neg,sub,^5,/,+"
+A384943	poly	0	"[1]"	"1,x,A,<1,neg,sub,^6,/,+"
+A143991	poly	0	"[1],[1,-1]"	"1,p1,sqrt,-,exp"
+A381890	polya	0	"[1]"	"1,x,neg,B,/"	new A090353()
+A355281	polya	0	"[1]"	"2,1,x,B,/,-"	new A005700()
+A378114	polya	0	"[1]"	"2,1,x,B,/,-"	new A006149()
+A378026	polya	0	"[1]"	"2,1,x,B,/,-"	new A006480()
+A273396	polya	0	"[1]"	"2,1,x,B,/,-,1,-"	new A255906()
+A110152	polya	0	"[1]"	"x,B,2,*,x,/,int,exp"	new A090879()
+A145166	polya	0	"[1]"	"x,B,^5"	new A145165()
+A217553	polya	0	"[1]"	"x,B,int,exp"	new A059152()
+A218118	polya	0	"[1]"	"x,B,x,/,2,/,int,exp"	new A005261()
+A218120	polya	0	"[1]"	"x,B,x,/,2,/,int,exp"	new A069865()
+A188489	polya	0	"[1]"	"x,B,x,/,int,exp"	new A000275()
+A224734	polya	0	"[1]"	"x,B,x,/,int,exp"	new A002894()
+A224735	polya	0	"[1]"	"x,B,x,/,int,exp"	new A002897()
+A188490	polya	0	"[1]"	"x,B,x,/,int,exp"	new A003024()
+A333042	polya	0	"[1]"	"x,B,x,/,int,exp"	new A008977()
+A333043	polya	0	"[1]"	"x,B,x,/,int,exp"	new A008978()
+A251684	polya	0	"[1]"	"x,B,x,/,int,exp"	new A047863()	the number of labeled graphs with 2-colored nodes where black nodes are only connected to white nodes and vice versa.
+A384351	polya	0	"[1]"	"x,B,x,/,int,exp"	new A055203()	G.f.: exp(Sum_{k>=1} J055203(k) * x^k/k).
+A155202	polya	0	"[1]"	"x,B,x,/,int,exp"	new A055601()
+A226455	polya	0	"[1]"	"x,B,x,/,int,exp"	new A056789()
+A155205	polya	0	"[1]"	"x,B,x,/,int,exp"	new A060613()
+A155203	polya	0	"[1]"	"x,B,x,/,int,exp"	new A060722()
+A155207	polya	0	"[1]"	"x,B,x,/,int,exp"	new A060757()
+A384353	polya	0	"[1]"	"x,B,x,/,int,exp"	new A062205()	G.f.: exp(Sum_{k>=1} J062205(k) * x^k/k).
+A384352	polya	0	"[1]"	"x,B,x,/,int,exp"	new A062208()	G.f.: exp(Sum_{k>=1} J062208(k) * x^k/k).
+A156216	polya	0	"[1]"	"x,B,x,/,int,exp"	new A067961()	[From _Paul D. Hanna_, Sep 13 2010]
+A218119	polya	0	"[1]"	"x,B,x,/,int,exp"	new A069865()
+A363601	polya	0	"[1]"	"x,B,x,/,int,exp"	new A092348()
+A155201	polya	0	"[1]"	"x,B,x,/,int,exp"	new A136516()
+A166168	polya	0	"[1]"	"x,B,x,/,int,exp"	new A166169()
+A167006	polya	0	"[1]"	"x,B,x,/,int,exp"	new A167009()
+A184512	polya	0	"[1]"	"x,B,x,/,int,exp"	new A184513()
+A185301	polya	0	"[1]"	"x,B,x,/,int,exp"	new A185302()
+A224736	polya	0	"[1]"	"x,B,x,/,int,exp"	new A186420()
+A188514	polya	0	"[1]"	"x,B,x,/,int,exp"	new A188458()
+A195734	polya	0	"[1]"	"x,B,x,/,int,exp"	new A195735()
+A197601	polya	0	"[1]"	"x,B,x,/,int,exp"	new A198059()
+A198301	polya	0	"[1]"	"x,B,x,/,int,exp"	new A198302()
+A155204	polya	0	"[1]"	"x,B,x,/,int,exp"	new A202989()
+A203557	polya	0	"[1]"	"x,B,x,/,int,exp"	new A203556()
+A206151	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206152()
+A206153	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206154()
+A206155	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206156()
+A206157	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206158()
+A206177	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206178()
+A206179	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206180()
+A206763	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206764()
+A206765	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206766()
+A206846	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206847()
+A206848	polya	0	"[1]"	"x,B,x,/,int,exp"	new A206849()
+A157317	polya	0	"[1]"	"x,B,x,/,int,exp"	new A209803()
+A209495	polya	0	"[1]"	"x,B,x,/,int,exp"	new A209804()
+A216585	polya	0	"[1]"	"x,B,x,/,int,exp"	new A216584()
+A156217	polya	0	"[1]"	"x,B,x,/,int,exp"	new A217872()
+A224340	polya	0	"[1]"	"x,B,x,/,int,exp"	new A224339()
+A224439	polya	0	"[1]"	"x,B,x,/,int,exp"	new A224440()
+A224732	polya	0	"[1]"	"x,B,x,/,int,exp"	new A224733()
+A225524	polya	0	"[1]"	"x,B,x,/,int,exp"	new A225525()
+A156234	polya	0	"[1]"	"x,B,x,/,int,exp"	new A225528()
+A225604	polya	0	"[1]"	"x,B,x,/,int,exp"	new A225602()
+A225958	polya	0	"[1]"	"x,B,x,/,int,exp"	new A225959()
+A226458	polya	0	"[1]"	"x,B,x,/,int,exp"	new A226459()
+A226560	polya	0	"[1]"	"x,B,x,/,int,exp"	new A226561()
+A227732	polya	0	"[1]"	"x,B,x,/,int,exp"	new A227733()
+A228193	polya	0	"[1]"	"x,B,x,/,int,exp"	new A228192()
+A228809	polya	0	"[1]"	"x,B,x,/,int,exp"	new A228808()
+A155209	polya	0	"[1]"	"x,B,x,/,int,exp"	new A241098()
+A158096	polya	0	"[1]"	"x,B,x,/,int,exp"	new A262826()
+A383796	polya	0	"[1]"	"x,B,x,/,int,exp"	new A295432()	Expansion of g.f.: exp(Sum_{n>=1} A295432(n)*x^n/n).A370327	poly	0	"[1],[1,-27/2],[4,-27]"	"2,p1,acos,6,/,cos,*,p2,sqrt,/,1,-,exp"
+A384957	polya	0	"[1]"	"x,B,x,/,int,exp"	new A295433()
+A205797	polya	0	"[1]"	"x,B,x,/,int,exp"	new A361179()
+A080254	polyx	0	"[1],[0,2]"	"p1,x,exp,-,p1,exp,2,-,/"	0	1
+A102233	polyx	0	"[1],[2,2,1],[4,2,1]"	"1,p1,x,exp,2,*,-,p2,x,exp,2,*,-,/,-"	0	1
+A101611	polyx	1	"[0,1],[1,-1],[1,0,-1]"	"p1,log,p2,log,<1,-,p1,/,neg"	0	1
+A293839	polyxa	0	"[0]"	"x,B,x,/,int,exp"	0	1	new A000009()
+A304322	polyxa	0	"[1]"	"1,1,x,B,<1,-,/"	1	0	new A107668()
+A304323	polyxa	0	"[1]"	"1,1,x,B,<1,-,/"	1	0	new A107675()
+A304324	polyxa	0	"[1]"	"1,1,x,B,<1,-,/"	1	0	new A304394()
+A304325	polyxa	0	"[1]"	"1,1,x,B,<1,-,/"	1	0	new A304395()
+A051573	polyxa	0	"[1]"	"2,1,x,B,x,/,/,-,x,/"	2	0	new A000081()		INVERTI
+A129247	polyxa	0	"[1]"	"x,B,1,-,C"	1	0	new A000110(), new A000012()
+A293840	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	new A000009()
+A293847	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	new A000142()
+A293848	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	new A000312()
+A370327	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	new A005809()
+A294260	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	new A010815()
+A294261	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	new A081362()
+A303943	polyxa	0	"[1]"	"x,B,<1,C"	1	0	new A000364(), new A000012()
+A137551	polyxa	0	"[1]"	"x,B,<1,C,x,/"	1	0	new A000110(), new A000012()
+A293841	polyxa	0	"[1]"	"x,B,<1,dif,x,B,-,exp"	0	1	new A000009()
+A294363	polyxa	0	"[1]"	"x,B,exp"	0	1	new A000005()
+A293849	polyxa	0	"[1]"	"x,B,exp"	0	1	new A000169()
+A294361	polyxa	0	"[1]"	"x,B,exp"	0	1	new A000203()
+A294394	polyxa	0	"[1]"	"x,B,exp"	0	1	new A000593()
+A294362	polyxa	0	"[1]"	"x,B,exp"	0	1	new A001157()
+A377154	polyxa	0	"[1]"	"x,B,exp"	0	1	new A001615()
+A377556	polyxa	0	"[1]"	"x,B,exp"	0	1	new A006519()
+A351940	polyxa	0	"[1]"	"x,B,exp"	0	1	new A010051()
+A347524	polyxa	0	"[1]"	"x,B,exp"	0	1	new A014197()
+A377555	polyxa	0	"[1]"	"x,B,exp"	0	1	new A038500()
+A295794	polyxa	0	"[1]"	"x,B,exp"	0	1	new A048272()
+A307615	polyxa	0	"[1]"	"x,B,exp"	0	1	new A050369()
+A294395	polyxa	0	"[1]"	"x,B,exp"	0	1	new A050999()
+A377585	polyxa	0	"[1]"	"x,B,exp"	0	1	new A057660()
+A293906	polyxa	0	"[1]"	"x,B,int,exp"	0	1	new A000009()
+A293905	polyxa	0	"[1]"	"x,B,int,exp"	0	1	new A000041()
+A343204	polyxa	0	"[1]"	"x,B,sqrt"	0	0	new A000009()	den=A046161
+A274539	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A000110()
+A318913	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A001221()
+A318914	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A001222()
+A319105	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A001511()
+A274760	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A001818()
+A294341	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A010815()
+A327941	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A032741()
+A318912	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A034444()
+A327927	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A038548()
+A319104	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A046951()
+A168243	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A048272()
+A308381	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A053866()
+A327940	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A056924()
+A308457	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A057661()
+A308443	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A060648()
+A294340	polyxa	0	"[1]"	"x,B,x,/,int,exp"	0	1	new A081362()
+A215915	polyxa	0	"[1]"	"x,B,x,/,int,exp"	2	1	new A000041()
+A213528	polyxa	0	"[1]"	"x,B,x,^2,/,int,exp"	2	1	new A000129()
+A380171	polyxa	0	"[1],[-1]"	"p1,x,B,+,exp"	0	0	new A000041()
+A087962	polyxa	0	"[1],[0,-1]"	"p1,B,neg"	0	1	egf(new A140054())
+A087961	polyxa	0	"[1],[0,-1]"	"p1,B,neg,exp"	0	1	egf(new A140054())
+A144023	polyxa	1	"[1]"	"x,B,<1,C"	1	0	new A005614(), new A000012()
+A144031	polyxa	1	"[1]"	"x,B,C"	1	0	new A002321(), new A000012()
+A368342	prepend	0	new PartialSumSequence(1, new A034968())	0	partial sums
+A136013	prepend	0	new PartialSumSequence(1, new A135481())	0	partial sums
+A109804	prepend	0	new PartialSumSequence(1, new A339256())	0	partial sums
+A096431	rambdad	1	A096430
+A096430	rambdan	1	n -> new Q(ZV(9*n).*(ZV(n).*(ZV(n).*(n - 2).+(2)).-(1)).+(2), ZV(2*(2*n - 1)))
+A123026	ratos	0	[[0],[-1,-2,1],[0],[0,1,-1]]	1,1	0	1	a(n) = n!*b(n), where b(n) = ((n-1)^2 - 2)*b(n-2)/(n*(n-1)) and b(0) = b(1) = 1.	sign	0..400	cordrec
+A124871	ratos	0	[[0],[-1],[-2],[-10]]	0,-3/10	0	0
+A072287	ratos	0	[[0],[-3,2],[-1],[5,-4],[-2,2]]	1,2,7/2	0	0
+A144577	ratos	0	[[0],[64],[48],[396,-224,32],[145,-120,24],[-42,54,-12],[0,4,-4]]	1,1/2	0	0
+A144579	ratos	0	[[0],[8],[12],[102,-56,8],[73,-60,12],[-18,22,-4],[0,4,-4]]	1,1/2	0	0
+A242376	ratos	0	[[1],[0,1],[0,-2]	0,1/2	0	0
+A112632	sintrif	1	(term, n) -> term.abs()	""	new PartialSumSequence(1, new A134323())		partial sums

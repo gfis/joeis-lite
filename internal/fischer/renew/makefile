@@ -131,6 +131,27 @@ a493:
 	cp -v $@.tmp ../sql/a492.sql
 a494:
 	cd .. ; make CC=a492 pegel  EX=xx
+#----
+# Recurrences in A0631xx
+a63: a631 a632 a633 a634
+a631:
+	grep -P "^.F A0630[23]" $(COMMON)/jcat25.txt | grep -Pi recurrence \
+	| cut -b4- \
+	| perl -pe 's/ /\tbva\t0\t/; s/(D\-finite with )?[Rr]ecurrence\:? *//; s/\(for offset \d\)\: //; s/\..*/\n/;' \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+a632:
+	jprep -cc holos -f a631.tmp \
+	| sed -e "s/\tbva/\tholos/" -e "s/\]\t1/\]\t1,1,2/" \
+	| tee    $@.tmp
+	wc -l    $@.tmp
+	cp -v    $@.tmp ../aman/$@.man
+a633:
+	cut -f1  a632.tmp > $@.1.tmp
+	holminit $@.1.tmp | tee $@.2.tmp
+	cp -v $@.2.tmp ../sql/a632.sql
+a634:
+	cd .. ; make CC=a632 pegel  EX=xx
 #=========
 absref_stat: absref_statf absref_stato absref_stat9 # 3 AbstractSequence reflections with statistics
 absref_statf:

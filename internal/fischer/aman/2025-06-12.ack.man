@@ -1,0 +1,59 @@
+---- 2025-06-12 16:43:54
+---- 2025-06-12 21:44:21
+A082525	poly	0	"[1],[1,1]"	"p1,p1,pow"
+A082526	polyx	0	"[1],[1,1]"	"p1,p1,pow"	0	4
+A082689	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), ZV(n + k))).*(n).num()	Numerator of n*sum(k=1,(-1)^(k+1)/(n+k)).
+A082690	lambdan	1	n -> RU(1, n, k -> new Q(Z_1(k + 1), ZV(n + k))).*(n).den()	Denominator of n*sum(k=1,(-1)^(k+1)/(n+k)).
+A091154	polyz	1	"[0,1],[1,0,1]"	"p1,sqrt,<1,x,asinh,+,2,/"	0	0	1	2
+A091197	polyz	0	"[1],[0,2]"	"3,p1,sin,*,2,2,p1,cos,+,*,/"	0	4	1	2
+A091198	polyz	0	"[1],[0,2]"	"3,p1,sin,*,2,2,p1,cos,+,*,/"	0	0	1	2
+A093303	holos	0	[[0,2],[-1,2],[-1]]	0	0	0
+A094294	holos	1	[[2,-1],[0,1],[-1]]	1	0	0
+A096949	lambdan	0	n -> RU(0, n, k -> new Q(1, 3).^(2*k)./(2*k + 1)).num()	a(n) = numerator(A(n)) with the rational number A(n) := Sum_{k=0..n} (1/3)^(2*k)/(2*k+1) in lowest terms.
+A096950	lambdan	0	n -> RU(0, n, k -> new Q(1, 3).^(2*k)./(2*k + 1)).den()	a(n) = numerator(A(n)) with the rational number A(n) := Sum_{k=0..n} (1/3)^(2*k)/(2*k+1) in lowest terms.
+A104526	lambdan	1	n -> RU(1, n, k -> new Q(ZV(1), PHI(k).*(SIGMA(k)))).num()	Numerator of sum(1/(phi(k)sigma(k)),k=1..n), where phi(k) is the totient function and sigma(k) is the sum of the divisors function.
+A104527	lambdan	1	n -> RU(1, n, k -> new Q(ZV(1), PHI(k).*(SIGMA(k)))).den()	Denominator of sum(1/(phi(k)sigma(k)),k=1..n), where phi(k) is the totient function and sigma(k) is the sum of the divisors function.
+A104528	lambdan	1	n -> RU(1, n, k -> new Q(ZV(1), TAU(k))).num()	Numerator of Sum_{k=1..n} 1/tau(k), where tau(k) is the number of divisors function.
+A104529	lambdan	1	n -> RU(1, n, k -> new Q(ZV(1), TAU(k))).den()	Denominator of Sum_{k=1..n} 1/tau(k), where tau(k) is the number of divisors function.
+A110114	ratos	0	[[0],[-9,6],[-3,4],[0,-2]]	1	0	0
+A110115	ratos	0	[[0],[-16,8],[-12,8],[1,-2],[0,-2]]	1	0	0
+A130408	polyx	0	"[1],[1,1]"	"x,1,p1,log,+,log,/"	1	1
+A139715	polya	1	"[0,1]"	"x,B,B"	new A139702()
+A167449	holos	0	[[0],[-1,3,-3,1],[1],[-1]	1	0	0
+A168344	polya	0	"[1]"	"A,<1,B"	new A006664()
+A202947	convprod	0	1/2	new A197927().skip(1)	Equals the self-convolution square-root of E197927 (with offset).
+A209429	ratos	1	[[0],[2],[0,1],[0,-1]	1,2	0	0
+A209430	ratos	1	[[0],[2],[0,1],[0,-1]	1,2	0	4
+A228836	trilambn	0	0	0	(n, k) -> BI(n*n, (n - k)*k)	Triangle defined by T(n,k) = binomial(n^2, (n-k)*k), for n>=0, k=0..n, as read by rows.	nonn,tabl	0..495	nyi	_Paul D. Hanna_
+A272108	polyx	0	"[1],[1,-1]"	"p1,log,neg,x,/,sqrt"	1	0
+A272109	polyx	0	"[1],[1,-1]"	"p1,log,neg,x,/,sqrt"	1	4
+A278563	polyx	0	"[1],[1,1]"	"x,asin,p1,log,/,log"	1	4
+A286306	polyz	0	"[1],[1,0,0,0,1]"	"1,p1,sqrt,/,int,rev,int,exp"	0	1	0	2
+A290159	ratos	0	[[0],[-6,2],[-3,2],[0,2]]	1	0	0
+A294816	holos	0	[[0],[5040,-568,16],[-33864,3828,-108],[-66624,11172,-438],[1608300,-232808,8372],[-8656440,1304436,-49008],[26872992,-4297414,171568],[-56263404,9640832,-412706],[84305442,-15599343,721347],[-92823228,18693472,-940900],[75898176,-16790365,928177],[-46156614,11348865,-696981],[20775588,-5765954,399434],[-6846594,2189748,-174666],[1621200,-614626,58060],[-267042,124808,-14516],[28830,-17591,2663],[-1806,1582,-340],[48,-75,27],[0,1,-1]]	1,1	0	0
+A334258	polyx	1	"[1],[1,-1],[0,-1]"	"p1,log,p2,exp,*,neg,rev"	0	1
+A335257	polyz	1	"[1]"	"x,tan,atanh"	0	0	1	2
+A335258	polyz	1	"[1]"	"x,tan,atanh"	0	4	1	2
+A342284	polya	0	"[1],[1,-2]"	"p1,x,B,+"	new A342282()
+A346943	holos	0	[[0],[0,1,1],[1],[-1]	1	0	0
+A360718	polyxa	0	"[1]"	"2,x,B,dif,2,/,<1,exp,1,-,*,x,B,exp,*,x,exp,*,x,B,exp,x,exp,<1,dif,*,+"	0	1	egf(new A002031())
+A383965	convprod	0	1/2	new A004381()	Self-convolution square-root of J004381, where J004381(n) = binomial(8*n,n).
+A384682	decexp	1	() -> CR.PHI.*(new Q(5, 6))	Decimal expansion of (5/6)*phi = 5*(1 + sqrt(5))/12, where phi is the golden ratio.	nonn,cons,easy,new	1..87	nyi	_Kritsada Moomuang_
+A384695	convprod	0	1/2	new A169961()	Self-convolution square-root of J169961, where J169961(n) = binomial(12*n,n).
+A384710	lambdan	0	n -> SU(0, n, k -> ZV(GCDi(n, k) == 1 ? 1 : 0))	a(n) = Sum_{k=0..n} [gcd(k, n) = 1], where [.] are the Iverson brackets.	nonn,new	0..70	nyi	_Peter Luschny_
+A384739	polyx	0	"[1]"	"A,^2,<1,sub,<1,exp"	0	1
+A384740	polyx	0	"[1]"	"A,^3,<1,sub,<1,exp"	0	1
+A384749	polyx	0	"[1]"	"A,^2,<1,sub,^2,<1,exp"	0	1
+A384750	polyx	0	"[1]"	"A,^3,<1,sub,^3,<1,exp"	0	1
+A384757	polyx	0	"[1]"	"A,neg,<1,sub,neg,<1,exp"	0	1
+A384760	polyx	0	"[1]"	"A,neg,<1,A,neg,<1,sub,*,exp"	0	1
+A384787	polyx	0	"[1],[0,2]"	"A,<1,p1,A,*,sub,*,exp"	0	1
+A384803	polyx	0	"[1],[0,-1]"	"x,p1,A,^4,*,sub,/,exp"	0	1
+A384809	polyx	0	"[1],[0,-1]"	"x,p1,A,^2,*,sub,^2,/,exp"	0	1
+A384810	polyx	0	"[1],[0,-1]"	"x,p1,A,^3,*,sub,^2,/,exp"	0	1
+A384836	lambdan	0	n -> SU(0, n/4, k -> SA(n, 4*k))	Sum_{k=0..floor(n/4)} |Stirling1(n,4*k)|.	nonn,new	0..23	nyi	_Vaclav Kotesovec_
+A384837	lambdan	0	n -> SU(0, n/5, k -> SA(n, 5*k))	Sum_{k=0..floor(n/5)} |Stirling1(n,5*k)|.	nonn,new	0..24	nyi	_Vaclav Kotesovec_
+A384855	polyx	0	"[1],[0,-1]"	"x,p1,A,*,sub,^3,/,exp"	0	1
+A384856	polyx	0	"[1],[0,-1]"	"x,p1,A,^2,*,sub,^3,/,exp"	0	1
+A384857	polyx	0	"[1],[0,-1]"	"x,p1,A,^3,*,sub,^3,/,exp"	0	1
+A384858	polyx	0	"[1],[0,-1]"	"x,p1,A,^8,*,sub,^3,/,exp"	0	1

@@ -1,0 +1,40 @@
+---- 2025-06-09 14:06:15
+A001187	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A006125())	Logarithmic transform of J006125 (labeled graphs).# poly "[1]" "x,B,log"
+A002027	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A047863())	Logarithmic transform of J047863
+A002028	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A191371())	Logarithmic transform of J191371
+A002029	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A223887())	Logarithmic transform of J223887
+A002031	polyxa	2	"[1]"	"x,B,log"	0	1	egf(new A052332())	Logarithmic transform of J052332.
+A112005	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000045())
+A274739	polyx	0	"[1]"	"A,log,x,*,exp,int,exp"	0	1
+A300452	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000578())	Logarithmic transform of D000578.
+A300455	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000217())	Logarithmic transform of F000217.
+A300491	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000254())	Logarithmic transform of J000254.
+A300512	polyxa	0	"[1]"	"x,B,log"	0	1	egf(new A000041())	Logarithmic transform of F000041.
+A300515	polyxa	0	"[1]"	"x,B,log"	0	1	egf(new A000009())	Logarithmic transform of F000009.
+A305618	polyxa	1	"[1]"	"1,x,B,+,log"	0	1	egf(new A010051())	Logarithmic transform of D010051.
+A305922	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A036968())	Logarithmic transform of J036968.
+A316972	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A020555())	Logarithmic transform of J020555.
+A318398	lambdan	1	n -> SU(0, n, k -> S1(n, k).*(F000110(k).^(3)))	[Sum[StirlingS1[n, k]*BellB[k]^3, {k, 0, n}], {n, 10}]
+A318399	polyxa	1	"[1]"	"x,B,1,+,log"	0	1	egf(new A318398())
+A318815	multia	1	""	(self, n) -> F000110(n).^(3).-(SU(1, n - 1, k -> BI(n, k).*(F000110(n - k).^(3)).*(k).*(self.a(k)))./(n)) 	a(n) = Bell(n)^3 - (1/n) * Sum_{k=1..n-1} binomial(n,k) * Bell(n-k)^3 * k * a(k).
+A322513	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000005())	Logarithmic transform of F000005.
+A323817	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A323816())
+A323818	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A003465())	Logarithmic transform of J003465.
+A326948	polyxa	0	"[1]"	"x,B,log,1,+"	0	1	egf(new A059201())	Logarithmic transform of J059201.
+A328053	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A000010())	Logarithmic transform of F000010.
+A328054	polyxa	0	"[1]"	"1,x,B,+,log"	0	1	egf(new A001563())	Logarithmic transform of J001563.
+A331559	polyxa	1	"[1]"	"x,B,log"	0	1	egf(new A226226())	Logarithmic transform of J226226.
+A353155	polyxa	1	"[1]"	"1,x,B,+,log"	0	1	egf(new A065091())	Logarithmic transform of odd primes.
+A384542	polyz	0	"[1]"	"7,14,x,*,atanh,*,sinh,98,x,*,/"	1	0	0	2
+A384574	poly	0	"[1]"	"1,A,^4,<1,sub,<1,+"
+A384575	poly	0	"[1]"	"1,A,^5,<1,sub,<1,+"
+A384576	poly	0	"[1]"	"1,A,<1,sub,^1/2,<1,+,^2"
+A384577	convprod	0	3	new A143501()
+A384578	convprod	0	4	new A384574()
+A384579	convprod	0	5	new A384575()
+A384585	holos	0	[[0],[24,-176,384,-256],[-3,-3,27,27]]	6	0	0	a(n)*(3*(3*n-1)*(3*n+1)*(n+1))) - 8*(4*n-3)*(2*n-1)*(4*n-1)*a(n-1)
+A384622	poly	0	"[1]"	"1,1,A,<1,A,<1,sub,^5,*,-,/"
+A384649	poly	0	"[1]"	"1,1,A,^4,<1,sub,<1,-,/"
+A384680	poly	0	"[1]"	"1,1,A,<1,A,^3,<1,sub,*,-,/"
+A384689	polyx	0	"[1]"	"A,^2,<1,A,<1,sub,*,exp"	0	1
+A384691	polyx	0	"[1]"	"A,<1,A,<1,sub,^2,*,exp"	0	1

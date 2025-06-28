@@ -2,35 +2,116 @@
 # A131763	polyx	0	"[1],[0,1,-4],[1,-1]"	"p1,p2,/,rev,<-1"	1	0
 # A235348	polyx	0	"[1],[0,1,-2,-5],[1,0,-1]"	"p1,p2,/,rev"	1	0
 # A369190	polyx	0	"[1],[0,1],[1,2,-1,-4,-1,2,1]"	"p1,p2,/,rev,x,/"	1	0	Expansion of (1/x) * Series_Reversion( x / ((1-x)^2 * (1+x)^4) ). 2x - 1x? - 2?x? - 1x? + 2x? + 1x? + 1      #
+# COMPOSE
+# ExponentialConvolutionSequence renewed
+# ExponentialRevertTransformSequence
+# InverseInvertTransform
+---- 2025-06-24 20:52:50
+---- 2025-06-25 07:26:19
 ---- 2025-06-25 07:32:35
 ---- 2025-06-25 09:52:49
 ---- 2025-06-25 09:59:02
+---- 2025-06-25 10:09:23
+---- 2025-06-25 11:58:13
+---- 2025-06-25 21:45:03
+---- 2025-06-25 22:58:44
+---- 2025-06-25 23:19:35
+A005149	polya	1	"[1]"	"x,B,rev"	new A014103()
+A006195	polyxa	0	"[1]"	"x,B,<1,rev,<-1"	1	0	new A000122()
+A006771	polya	0	"[1]"	"x,B,/n!,^2,*n!"	new A000055()
+A006850	polyxa	0	"[0,1]"	"x,B,>1,/n!,^2,*n!"	1	0	new A000081()
 A007312	polyxa	1	"[0]"	"x,B,1,-,rev"	1	0	new A000041()
+A007465	holos	0	[[0],[-128,-148,-86,-20,-2],[24,14,19,6,1]]	1	0	0
+A007466	lambdan	1	n -> n <= 2 ? ZV(4).^(n - 1) : Z2(n - 3).*(ZV(4*n).+(ZV(n - 1).*(n -2)))	a(n) = 2^(n-1)*n + 2^(n-3)*(n-1)*(n-2)
+A014330	holos	0	[[0],[32,-64,32],[4,-4,-12],[2,3,1]]	1	0	0
+A014333	holos	0	[[0],[1152,-2496,1728,-384],[84,-20,-240,176],[12,-8,-52,-24],[6,11,6,1]]	1	0	0
+A014334	holos	0	[[0],[-4],[2],[3],[-1]]	0,0,2,6,22	0	0
+A014336	holos	0	[[0],[9],[-24],[-1],[6],[-1]]	0,0,0,6	0	0
+A014340	holos	0	[[0],[32],[120],[-70],[-15],[10],[-1]]	0,0,0,0,24	0	0
+A014345	polyxa	0	"[4]"	"x,B,<-1,/n!,^2,*n!"	1	0	new A000040()
+A014347	polyxa	0	"[4]"	"x,B,<-1,/n!,^3,*n!"	1	0	new A000040()
+A014352	polyxa	0	"[4]"	"x,B,<-1,/n!,^4,*n!"	1	0	new A000040()
+A030278	polyxa	1	"[0,4]"	"x,B,B"	1	0	new A000040()
+A030281	polyxa	1	"[0,2]"	"x,B,C"	1	0	new A000040(), new A001477()
+A030282	polyxa	1	"[0,2]"	"x,C,B"	1	0	new A000040(), new A001477()
 A050385	polyxa	1	"[1]"	"x,B,rev"	1	0	new A008683()	Moebius function F008683.	nonn,nice	1..1000
+A050386	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A008683()
 A050387	polyxa	1	"[1]"	"x,B,rev"	1	0	new A008836()	Liouvilles lambda function F008836.	nonn	1..1000
+A050388	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A008836()
 A050389	polyxa	1	"[1]"	"x,B,rev"	1	0	new A000005()	divisor function F000005.	sign	1..21
+A050390	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000005()
 A050391	polyxa	1	"[1]"	"x,B,rev"	1	0	new A000010()	Euler totient function F000010.	sign	1..27
+A050392	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000010()
 A050393	polyxa	0	"[0,1]"	"x,B,1,-,rev"	1	0	new A000009()
+A050394	polya	1	"[0,1]"	"x,B,1,-,/n!,rev,*n!"	new A000009()
 A050395	polyxa	1	"[1]"	"x,B,rev"	1	0	new A000081()	rooted trees M000081.	sign	1..100
+A050396	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000081()
 A050397	polyxa	1	"[0,1]"	"x,B,1,-,rev"	2	0	new A000085()
+A050398	poly	1	"[0,1],[0,1,1/2]"	"p1,exp,1,-,rev,*n!"
 A053550	polyxa	1	"[0,1]"	"x,B,rev,x,C,<1,.*"	1	0	new A053549(), new A033999()
+A058800	polyxa	0	"[1],[1,1]"	"1,1,x,B,x,/,/,-,<1,p1,+"	1	0	new A006966()
 A059372	polyxa	1	"[0,1]"	"x,B,1,-,rev"	1	0	new A000142()
 A066398	polyxa	0	"[0]"	"x,B,<1,rev,<-1"	1	0	new A000041()
+A094060	polyxa	0	"[1]"	"1,1,x,B,/,-,1,+"	1	0	new A002898()
+A095989	polya	1	"[1]"	"1,1,x,B,/,-"	new A000670()
+A100616	polyx	0	"[1]"	"x,x,exp,1,-,/,^2"	1	5
 A113207	poly	1	"[1],[0,1,-2],[1,3,3,1]"	"p1,p2,/,rev"	G.f.: series reversion of -(2*t^2-t)/(1+t)^3.
+A115974	multia	0	""	(self, n) -> M000698(n + 1).-(SU(1, n - 1, m -> self.a(m).*(M000698(n + 1 - m))))	a(n) = A000698(n+1) - Sum_{m=1..n-1} a(m)*A000698(n+1-m)
+A122441	holos	0	[[0],[60,-44,8],[-153,88,-7],[-81,130,-49],[0,6,-6]]	1,-1	0	0
 A131763	holos	0	[[0],[-2,1],[7,-14],[1,1]]	1,3	0	0
+A137644	holos	0	[[0],[516,-1442,1152,-280],[-488,1220,-1012,280],[2064,-7392,7848,-2520],[0,565,-915,350]]	1,3	0	0
+A140456	polya	1	"[1]"	"1,1,x,B,/,-"	new A000085()
+A141319	polya	1	"[1]"	"2,1,x,B,/,-"	new A141318()
+A155728	polya	1	"[1]"	"1,1,x,B,1,+,/,-"	new A054765()
+A156791	polyxa	1	"[0,1]"	"x,B,x,x,B,+,/"	1	0	new A006973()
+A159933	polya	1	"[1]"	"2,1,x,B,1,+,/,-"	new A000005()
 A185966	polyx	0	"[1],[0,1,-1,1],[1,-2,1]"	"p1,p2,/,rev,x,/"	1	0
+A185966	polyx	0	"[1],[0,1,-1,1],[1,-2,1]"	"p1,p2,/,rev,x,/"	1	0
+A188143	#m polya	0	"[1]"	"1,1,x,B,/,-"	new A010842()	skip(2)
+A188144	#m polya	0	"[1]"	"1,1,x,B,/,-"	new A005425()	skip(2)
+A189675	trilambn	1	1	1	(n, k) -> BI(2*n - k, n - k).*(FI(k + 1)).*(Z_1(k + n)).*(k)./(2*n - k)	Table[(-1)^(k + n) k/(2n - k) Binomial[2n - k, n - k] Fibonacci[k + 1], {n, 12}, {k, n}]
 A191241	polyx	1	"[1],[0,1,-1,0,0,-2]"	"p1,rev"	1	0
 A191242	polyx	1	"[1],[0,1,-1,-1,-2]"	"p1,rev"	1	0
 A191243	polyx	1	"[1],[0,1,-1,-1,-1,-1,-1]"	"p1,rev"	1	0
+A200560	polyxa	1	"[0,1]"	"x,sin,B,asin"	0	1	new A057427()
+A210911	parmof2	0	A210913	3	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 3 for all x.	nonn	0..448	unkn	_Alois P. Heinz_
+A210912	parmof2	0	A210913	4	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 4 for all x.	nonn	0..300	unkn	_Alois P. Heinz_
+A210914	parmof2	0	A210913	6	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 6 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
+A210915	parmof2	0	A210913	7	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 7 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
+A210916	parmof2	0	A210913	8	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 8 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
+A210917	parmof2	0	A210913	9	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 9 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
+A210918	parmof2	0	A210913	10	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 10 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
+A232974	polyxa	0	"[1]"	"1,1,x,B,/,-,1,+"	1	0	new A000629()
 A235348	holos	1	[[0],[-42,13,-1],[222,-79,7],[3279,-1352,137],[-1104,776,-134],[-5139,5163,-1266],[-711,1191,-480],[0,-54,54]]	1,2,12,82,636	0	0
 A235350	holos	1	[[0],[-42,13,-1],[222,-79,7],[-321,130,-13],[300,-124,10],[-33,-7,10],[-75,127,-52],[0,-6,6]]	1,2,8,42	0	0
 A243157	holos	1	[[0],[10230,-3751,341],[-2880,1371,-159],[-870,344,-28],[756,-513,81],[-102,132,-36],[0,-9,9],[0,-1,-1]]	1,0,0,-1	0	0
+A257522	arrlamb	1	1	1	1	(i, j) -> new Q(1, i).+(new Q(1, j)).den()	Table T(i,j) = denominator of (1/i + 1/j) = i*j/gcd(i*j,i+j) read by antidiagonals (i >= 1, j >= 1).	nonn,easy,tabl	1..5050	nyi
+A258943	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000045()
 A276989	polyx	1	"[1],[0,1,-1,0,0,0,-1]"	"p1,rev"	1	0
+A277458	polyx	0	"[1],[0,-1]"	"1,1,p1,lambertW,-,/,neg"	0	1
+A291148	convprod	0	-1	new A005169()
 A291488	polyxa	1	"[0]"	"x,B,1,-,rev"	1	0	new A000219()
+A291533	polyxa	1	"[0,1]"	"x,B,rev"	1	0	new A018252()
 A291533	polyxa	1	"[0,1]"	"x,B,rev"	1	0	new A018252()
 A291535	polyx	1	"[1],[0,1,2],[1,-1,-1"	"p1,p2,/,rev"	1	0
 A291536	polyx	1	"[1],[0,1,4,1],[1,-4,6,-4,1]"	"p1,p2,/,rev"	1	0
 A301624	polyxa	0	"[0]"	"x,B,<1,rev,<-1"	1	0	new A000219()
+A305997	ratos	1	[[0],[-69120,766848,-2895680,5222400,-5071040,2716032,-753920,84480],[201600,-2226720,8419776,-15295632,15086784,-8302608,2401920,-285120],[-4878720,56380512,-228607608,451873374,-486675834,291284334,-90798030,11458260],[0,-156960,1121616,-2979774,3861351,-2620269,893025,-120285]]	44,45616/15	0	0
+A305998	conum	1	A305997
+A307132	conum	1	A307131
+A307305	polya	1	"[0,1]"	"x,B,B"	new A000005()
+A307306	polya	1	"[0,1]"	"x,B,B"	new A000203()
+A307308	polya	1	"[0,1]"	"x,B,B"	new A000010()
+A307309	polya	1	"[0,1]"	"x,B,B"	new A001615()
+A316911	ratos	0	[[0],[48,-374,918,-856,264],[1440,-11781,31788,-34209,12474],[0,246,-1305,1998,-891]]	0,25/6	0	0
+A316912	conum	0	A316911
+A333957	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000203()
+A334263	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A008578()
+A334315	polyxa	1	"[1]"	"x,B,/n!,1,-,rev,*n!"	1	0	new A000041()
+A334316	polyxa	1	"[1]"	"x,B,/n!,rev,*n!"	1	0	new A000240()
+A350338	lambdan	1	n -> SD(n, d -> d > 1 && Functions.BIG_OMEGA.i(d) <= 3 ? Z.ONE : Z.ZERO)	a(n) = Sum_{d|n} Sum_{k=1..3} [Omega(d) = k], where [ ] is the Iverson bracket.
+A350339	lambdan	1	n -> SD(n, d -> d > 1 && Functions.BIG_OMEGA.i(d) <= 3 ? ZV(d) : Z.ZERO)	a(n) = Sum_{d|n} (d * Sum_{k=1..3} [Omega(d) = k]), where [ ] is the Iverson bracket.
+A364439	polya	0	"[1]"	"1,1,x,B,/,-,1,+"	new A005789()
 A369190	holos	0	[[0],[276480,-414720,-4635648,2803712,22245376,-5201920,-37486592,2490368,19922944],[6480,17784,-248400,-622232,1975808,5994976,-352000,-10370048,-6381568],[-2160,23940,52080,-430265,-1241995,-67625,2736875,2968750,950000]]	1	0	0
 A370107	polyx	0	"[1],[0,1],[1,1,-2,-2,1,1]"	"p1,p2,/,rev,x,/"	1	0	Expansion of (1/x) * Series_Reversion( x / ((1-x)^2 * (1+x)^3) ). x^5+x^4-2*x^3-2*x^2+x+1
 A371398	polyx	0	"[1],[0,1],[1,7,18,20,8]"	"p1,p2,/,rev,x,/"	1	0	Expansion of (1/x) * Series_Reversion( x / ( (1+x) * (1+2*x)^3 ) ).  7*x + 18*x^2 + 20*x^3 + 8*x^4 + 1
@@ -43,86 +124,3 @@ A371427	polyx	0	"[1],[0,1],[1,2,1,0,-1]"	"p1,p2,/,rev,x,/"	1	0	(1/x) * Series_Re
 A371428	polyx	0	"[1],[0,1],[1,3,2,1]"	"p1,p2,/,rev,x,/"	1	0	(1/x) * Series_Reversion( x / ((1+x)^3 - x^2) ).
 A371429	polyx	0	"[1],[0,1],[1,3,3,1,-1]"	"p1,p2,/,rev,x,/"	1	0	(1/x) * Series_Reversion( x / ((1+x)^3 - x^4) ).
 A371430	polyx	0	"[1],[0,1],[1,4,5,4,1]"	"p1,p2,/,rev,x,/"	1	0	(1/x) * Series_Reversion( x / ((1+x)^4 - x^2) ).
----- 2025-06-25 10:09:23
-A005149	polya	1	"[1]"	"x,B,rev"	new A014103()
-A006195	polyxa	0	"[1]"	"x,B,<1,rev,<-1"	1	0	new A000122()
----- 2025-06-25 11:58:13
-# ExponentialConvolutionSequence renewed
-A006771	polya	0	"[1]"	"x,B,/n!,^2,*n!"	new A000055()
-A007466	lambdan	1	n -> n <= 2 ? ZV(4).^(n - 1) : Z2(n - 3).*(ZV(4*n).+(ZV(n - 1).*(n -2)))	a(n) = 2^(n-1)*n + 2^(n-3)*(n-1)*(n-2)
-A014330	holos	0	[[0],[32,-64,32],[4,-4,-12],[2,3,1]]	1	0	0
-A014333	holos	0	[[0],[1152,-2496,1728,-384],[84,-20,-240,176],[12,-8,-52,-24],[6,11,6,1]]	1	0	0
-A014334	holos	0	[[0],[-4],[2],[3],[-1]]	0,0,2,6,22	0	0
-A014336	holos	0	[[0],[9],[-24],[-1],[6],[-1]]	0,0,0,6	0	0
-A014340	holos	0	[[0],[32],[120],[-70],[-15],[10],[-1]]	0,0,0,0,24	0	0
-A014345	polyxa	0	"[4]"	"x,B,<-1,/n!,^2,*n!"	1	0	new A000040()
-A014347	polyxa	0	"[4]"	"x,B,<-1,/n!,^3,*n!"	1	0	new A000040()
-A014352	polyxa	0	"[4]"	"x,B,<-1,/n!,^4,*n!"	1	0	new A000040()
----- 2025-06-25 21:45:03
-# COMPOSE
-A030278	polyxa	1	"[0,4]"	"x,B,B"	1	0	new A000040()
-A030281	polyxa	1	"[0,2]"	"x,B,C"	1	0	new A000040(), new A001477()
-A030282	polyxa	1	"[0,2]"	"x,C,B"	1	0	new A000040(), new A001477()
-A189675	trilambn	1	1	1	(n, k) -> BI(2*n - k, n - k).*(FI(k + 1)).*(Z_1(k + n)).*(k)./(2*n - k)	Table[(-1)^(k + n) k/(2n - k) Binomial[2n - k, n - k] Fibonacci[k + 1], {n, 12}, {k, n}]
-A200560	polyxa	1	"[0,1]"	"x,sin,B,asin"	0	1	new A057427()
-A307305	polya	1	"[0,1]"	"x,B,B"	new A000005()
-A307306	polya	1	"[0,1]"	"x,B,B"	new A000203()
-A307308	polya	1	"[0,1]"	"x,B,B"	new A000010()
-A307309	polya	1	"[0,1]"	"x,B,B"	new A001615()
----- 2025-06-25 22:58:44
-A257522	arrlamb	1	1	1	1	(i, j) -> new Q(1, i).+(new Q(1, j)).den()	Table T(i,j) = denominator of (1/i + 1/j) = i*j/gcd(i*j,i+j) read by antidiagonals (i >= 1, j >= 1).	nonn,easy,tabl	1..5050	nyi
----- 2025-06-25 23:19:35
-A006850	polyxa	0	"[0,1]"	"x,B,>1,/n!,^2,*n!"	1	0	new A000081()
-A007465	holos	0	[[0],[-128,-148,-86,-20,-2],[24,14,19,6,1]]	1	0	0
----- 2025-06-24 20:52:50
-A100616	polyx	0	"[1]"	"x,x,exp,1,-,/,^2"	1	5
-A122441	holos	0	[[0],[60,-44,8],[-153,88,-7],[-81,130,-49],[0,6,-6]]	1,-1	0	0
-A137644	holos	0	[[0],[516,-1442,1152,-280],[-488,1220,-1012,280],[2064,-7392,7848,-2520],[0,565,-915,350]]	1,3	0	0
-A210911	parmof2	0	A210913	3	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 3 for all x.	nonn	0..448	unkn	_Alois P. Heinz_
-A210912	parmof2	0	A210913	4	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 4 for all x.	nonn	0..300	unkn	_Alois P. Heinz_
-A210914	parmof2	0	A210913	6	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 6 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
-A210915	parmof2	0	A210913	7	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 7 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
-A210916	parmof2	0	A210913	8	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 8 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
-A210917	parmof2	0	A210913	9	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 9 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
-A210918	parmof2	0	A210913	10	Number of transitive reflexive early confluent binary relations R on n labeled elements where |{y : xRy}| <= 10 for all x.	nonn	0..200	unkn	_Alois P. Heinz_
-A277458	polyx	0	"[1],[0,-1]"	"1,1,p1,lambertW,-,/,neg"	0	1
-A305997	ratos	1	[[0],[-69120,766848,-2895680,5222400,-5071040,2716032,-753920,84480],[201600,-2226720,8419776,-15295632,15086784,-8302608,2401920,-285120],[-4878720,56380512,-228607608,451873374,-486675834,291284334,-90798030,11458260],[0,-156960,1121616,-2979774,3861351,-2620269,893025,-120285]]	44,45616/15	0	0
-A305998	conum	1	A305997
-A307132	conum	1	A307131
-A316911	ratos	0	[[0],[48,-374,918,-856,264],[1440,-11781,31788,-34209,12474],[0,246,-1305,1998,-891]]	0,25/6	0	0
-A316912	conum	0	A316911
-A350338	lambdan	1	n -> SD(n, d -> d > 1 && Functions.BIG_OMEGA.i(d) <= 3 ? Z.ONE : Z.ZERO)	a(n) = Sum_{d|n} Sum_{k=1..3} [Omega(d) = k], where [ ] is the Iverson bracket.
-A350339	lambdan	1	n -> SD(n, d -> d > 1 && Functions.BIG_OMEGA.i(d) <= 3 ? ZV(d) : Z.ZERO)	a(n) = Sum_{d|n} (d * Sum_{k=1..3} [Omega(d) = k]), where [ ] is the Iverson bracket.
-
-# InverseInvertTransform
----- 2025-06-25 07:26:19
-A058800	polyxa	0	"[1],[1,1]"	"1,1,x,B,x,/,/,-,<1,p1,+"	1	0	new A006966()
-A094060	polyxa	0	"[1]"	"1,1,x,B,/,-,1,+"	1	0	new A002898()
-A095989	polya	1	"[1]"	"1,1,x,B,/,-"	new A000670()
-A115974	multia	0	""	(self, n) -> M000698(n + 1).-(SU(1, n - 1, m -> self.a(m).*(M000698(n + 1 - m))))	a(n) = A000698(n+1) - Sum_{m=1..n-1} a(m)*A000698(n+1-m)
-A140456	polya	1	"[1]"	"1,1,x,B,/,-"	new A000085()
-A141319	polya	1	"[1]"	"2,1,x,B,/,-"	new A141318()
-A155728	polya	1	"[1]"	"1,1,x,B,1,+,/,-"	new A054765()
-A156791	polyxa	1	"[0,1]"	"x,B,x,x,B,+,/"	1	0	new A006973()
-A159933	polya	1	"[1]"	"2,1,x,B,1,+,/,-"	new A000005()
-A188143	#m polya	0	"[1]"	"1,1,x,B,/,-"	new A010842()	skip(2)
-A188144	#m polya	0	"[1]"	"1,1,x,B,/,-"	new A005425()	skip(2)
-A185966	polyx	0	"[1],[0,1,-1,1],[1,-2,1]"	"p1,p2,/,rev,x,/"	1	0
-A232974	polyxa	0	"[1]"	"1,1,x,B,/,-,1,+"	1	0	new A000629()
-A291148	convprod	0	-1	new A005169()
-A291533	polyxa	1	"[0,1]"	"x,B,rev"	1	0	new A018252()
-A364439	polya	0	"[1]"	"1,1,x,B,/,-,1,+"	new A005789()
-
-# ExponentialRevertTransformSequence
-A050386	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A008683()
-A050388	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A008836()
-A050390	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000005()
-A050392	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000010()
-A050394	polya	1	"[0,1]"	"x,B,1,-,/n!,rev,*n!"	new A000009()
-A050396	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000081()
-A050398	poly	1	"[0,1],[0,1,1/2]"	"p1,exp,1,-,rev,*n!"
-A258943	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000045()
-A333957	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A000203()
-A334263	polya	1	"[0,1]"	"x,B,/n!,rev,*n!"	new A008578()
-A334315	polyxa	1	"[1]"	"x,B,/n!,1,-,rev,*n!"	1	0	new A000041()
-A334316	polyxa	1	"[1]"	"x,B,/n!,rev,*n!"	1	0	new A000240()

@@ -1,0 +1,10 @@
+---- 2025-06-16 21:54:58
+A090460	multraf	15	(self, n) -> self.s(0).-(ZV(n-1).*(self.s(1)))	""	new A071983(), new A071984()	a(n) = J071983(n) - (n-1)*J071984(n)	_	_	_
+A228543	multraf	1	(self, n) -> (QV(self.s(0)).-(2))./(QV(self.s(1)).-(1)).num()	""	new A049038(), new A049036()	a(n) = (J049038(n)-2)/(J049036(n)-1)	_	_	_
+A238815	sintrif	0	(term, n) -> term.+(D006880(n))	""	new A076048()	a(n) = J076048(n) + D006880(n)	_	_	_
+A241842	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A001349(), new A064731()	a(n) = J001349(n) - J064731(n)	_	_	_
+A137515	sintrif	1	(term, n) -> term.-(1)	""	new A072895()	a(n) = J072895(n) - 1	_	_	_
+A141103	lambdan	1	n -> F000040(ZV(n).^(n)).-(ZV(n).^(n))	""		a(n) = prime(n^n) - n^n	_	_	_
+A344662	sintrif	1	(term, n) -> FA(n-1).^(n).*(term)	""	new A002860()	a(n) = (n-1)!^n * J002860(n) = J343696(n)/n^n	_	_	_
+A256623	multraf	1	(self, n) -> (QV(self.s(0)).+(self.s(1)))./(2).num()	""	new A048054(), new A016115()	a(n) = (J048054(n) + J016115(n))/2	_	_	_
+# A101684	sintrif	0	(term, n) -> Functions.VALUATION.z(term, 2)	""	new A101683()	exponent of 2 - man!!
