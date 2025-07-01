@@ -1,0 +1,121 @@
+---- 2025-06-30 18:06:13
+---- 2025-07-01 11:48:01
+---- 2025-07-01 11:48:54
+---- 2025-07-01 14:19:05
+---- 2025-07-01 14:42:54
+A081103	polyx	0	"[0,1],[1,1]"	"p1,log,p1,log,^2,2,/,-,p1,log,^3,6,/,+,p1,/"	0	1
+A129063	polyx	0	"[1]"	"2,x,exp,-,log,neg,^2,dif,dif,2,/"	2	1
+A129064	polyx	0	"[1]"	"2,x,exp,-,log,neg,^3,dif,dif,dif,6,/"	3	1
+A138191	period	1	"1,2,1,1"
+A159601	polyz	1	"[1]"	"1,2,A,^2,*,-,^3/4,int"	0	1	1	2
+A178920	polyx	1	"[0,1]"	"1,A,+,<1,A,1,A,+,*,exp,*"	1	1
+A191415	polyx	1	"[0,1]"	"x,1,A,-,A,neg,pow,*"	0	1
+A193290	polyx	0	"[1]"	"1,1,A,<1,-,1,1,A,/,+,pow,/"	0	1
+A194786	polyx	0	"[1]"	"1,A,A,pow,<1,+"	0	1
+A211393	polyz	0	"[1],[1,0,-1]"	"p1,sqrt,x,atanh,<1,exp,*"	0	1	0	2
+A220433	polyx	0	"[0,1],[0,1,-1,1/6]"	"p1,rev"	0	1
+A232473	poly	3	"[1],[0,3]"	"6,p1,exp,*,2,x,exp,-,^4,/,*n!,<3"
+A232474	poly	4	"[1],[0,4]"	"24,p1,exp,*,2,x,exp,-,^5,/,*n!,<4"
+A258878	polyz	1	"[1],[1,0,0,-1]"	"1,p1,^1/3,/,int,rev"	0	1	1	3
+A275651	lambdan	0	n -> RU(0, n, k -> new Q(Z_1(k), FA(2*k)).*(FA(2*n))).num()	a(n) = (2*n)!*Sum_{k = 0..n} (-1)^k/(2*k)!.
+A276232	polyx	0	"[1],[0,-1]"	"p1,lambertW,^2,x,/,exp"	1	1
+A299920	sintrif	0	(term, n) -> term.modZ(6)	""	new A001006()
+A300014	polyx	0	"[1],[0,-1]"	"1,p1,lambertW,+,x,p1,lambertW,/,pow"	1	1
+A302922	polyx	0	"[1]"	"x,exp,^2,4,2,x,exp,*,-,x,exp,^2,-,/"	0	1
+A302923	polyx	1	"[1]"	"x,exp,^2,4,2,x,exp,*,-,x,exp,^2,-,/,2,/"	0	1
+A302926	polyx	0	"[1]"	"x,exp,^2,4,2,x,exp,*,-,x,exp,^2,-,/,log"	0	1
+A302927	polyx	0	"[1]"	"x,exp,^2,4,2,x,exp,*,-,x,exp,^2,-,/,log,2,/"	0	1
+A337017	polyx	1	"[0,1],[1,0,-1/2],[0,-1]"	"p1,p2,exp,-,rev"	0	1
+A343793	polyx	0	"[1]"	"1,2,x,<9,3628800,/,+,x,exp,-,/"	0	1
+A354083	polyx	0	"[1],[1,-1]"	"1,p1,log,+,x,pow"	0	1
+A354239	polyx	0	"[1],[1,-1]"	"2,x,exp,-,x,2,/,pow"	0	1
+A354288	polyx	0	"[1],[1,1]"	"p1,2,1,2,p1,log,*,-,/,pow"	0	1
+A354289	polyx	0	"[1],[1,1]"	"p1,3,1,3,p1,log,*,-,/,pow"	0	1
+A354416	polyx	0	"[1],[1,-1]"	"1,p1,log,-,x,pow"	0	1
+A354421	polyx	0	"[1]"	"2,x,exp,-,x,pow"	0	1
+A356925	polyx	0	"[1],[1,-1]"	"1,p1,x,exp,A,*,pow,/"	0	1
+A356926	polyx	0	"[1],[1,-1]"	"x,exp,p1,log,*,neg,lambertW,exp"	0	1
+A357537	sintrif	0	(term, n) -> n == 0 ? Z.ONE : term.*(2)	""	new A080635()	a(n) = 2*A080635(n) if n > 0. a(0) = 1.
+A362794	polyx	0	"[1],[1,1]"	"p1,A,x,pow,pow"	0	1
+A362795	polyx	0	"[1],[1,1],[0,0,1]"	"p1,A,p2,pow,pow"	0	1
+A362796	polyx	0	"[1],[1,-1]"	"1,p1,A,x,pow,pow,/"	0	1
+A362798	polyx	0	"[1],[1,-1],[0,0,1]"	"1,p1,A,p2,pow,pow,/"	0	1
+A362799	polyx	0	"[1]"	"x,exp,1,-,A,x,pow,*,exp"	0	1
+A362800	polyx	0	"[1],[0,0,1]"	"x,exp,1,-,A,p1,pow,*,exp"	0	1
+A362968	polyx	1	"[1],[0,-2]"	"p1,lambertW,2,/,neg,p1,lambertW,^2,4,/,-,exp"	0	1
+A363376	lambdan	1	n -> n <= 1 ? Z.ONE : (n == 2 ? ZV(-5) : Z_1(n - 1).*(Z2(n - 3)).*(ZV(2*n).*(n - 1).+(1)).*(FA(n)))	a(n) = (-1)^(n-1)*2^(n-3)*(2*n*(n-1)+1)*(n!)	genf	0	x*(2 + 7*x + 20*x^2 + 12*x^3)/(2*(1 + 2*x)^3)	egf
+A373395	lambdan	2	n -> n <= 2 ? Z.ONE : ZV(n - 1).^(n - 3).*(n)	a(2) = 1, a(n) = n*(n - 1)^(n - 3)
+A380445	lambdan	0	n -> ZV(n).-(7).*(n).+(19).*(n).-(17).*(n).+(4).*(n)./(12)	(1/3)*n - (17/12)*n^2 + (19/12)*n^3 - (7/12)*n^4 + (1/12)*n^5.
+A381359	polyz	0	"[1],[1,0,0,4]"	"1,p1,sqrt,/,int,rev"	0	1	1	3
+A382779	holos	0	[[0],[-65536,327680,-655360,655360,-327680,65536],[96,-576,1408,-1792,1280,-512],[0,0,0,0,0,1]]	1	0	0
+A384617	polyx	0	"[1],[0,-1]"	"x,p1,A,*,sub,^2,/,exp"	0	1
+A384852	lambdan	0	n -> ZV(n).-(3).*(n).+(8).*(n).-(6).*(n)./(6)	1/6*n^4 - 1/2*n^3 + 4/3*n^2 - n.
+A384981	lambdan	1	n -> SU(1, 4, j -> S2(n, j).*(S2(n, 5 - j)))	Sum_{j = 1..4} Stirling2(n, j) * Stirling2(n, 5-j).
+A385029	lambdan	1	n -> ZV(2*n+1).^(3).*(n).*(n + 1)./(3)
+A385047	lambdan	1	n -> (n&1) == 0 ? D006519(n).+(1) : Z.ONE
+A385048	lambdan	1	n -> F034448(n)./(E371242(n))
+A385085	lambdan	0	n -> QV(3*n + 2).^(n - 1).*(2).num()
+A385086	lambdan	0	n -> QV(5*n + 2).^(n - 1).*(2).num()
+A385087	sintrif	1	(term, n) -> Functions.VALUATION.z(term, 2)	""	new A039699()	2-adic valuation of J039699.	nonn,easy,new	1..80	nyi	_Michel Marcus_
+A385106	holos	1	[[0],[1],[1],[-3],[3],[-1]	1,2,4,7	0	0	a(n) = 3*a(n-1) - 3*a(n-2) + a(n-3) + a(n-4) with a(1) = 1, a(2) = 2, a(3) = 4, and a(4) = 7.	nonn,easy,new	1..38	nyi
+A385107	holos	1	[[0],[1],[-1],[4],[-6],[4],[-1]	1,2,4,8,15	0	0	a(n) = 4*a(n-1) - 6*a(n-2) + 4*a(n-3) - a(n-4) + a(n-5) with a(1) = 1, a(2) = 2, a(3) = 4, a(4) = 8, and a(5) = 15.	nonn,easy,new	1..38	nyi
+A385128	lambdan	1	n -> SD(n, d -> Z.ONE.-(D051903(d)).and(Z.ONE))
+A385129	lambdan	1	n -> SD(n, d -> D051903(d).and(Z.ONE))
+A385130	lambdan	1	n -> SD(n, d -> Z.ONE.-(D051903(d).and(Z.ONE)).*(d))
+A385131	lambdan	1	n -> SD(n, d -> D051903(d).and(Z.ONE).*(d))
+A385132	lambdan	1	n -> SU(1, n, k -> Z.ONE.-(D051903(GCDi(n, k)).and(Z.ONE)))
+A385133	lambdan	1	n -> SU(1, n, k -> D051903(GCDi(n, k)).and(Z.ONE))
+A385134	lambdan	1	n -> SD(n, d -> E307430(n/d).*(d))	= n * Sum_{d | n} E307430(d) / d.
+A385140	polyx	0	"[1],[0,2],[0,-1]"	"p1,p2,sub,^1/2,*,exp"	0	1	E.g.f. A(x) satisfies A(x) = exp(2*x*A(-x)^(1/2)).
+A385141	polyx	0	"[1],[0,3],[0,-1]"	"p1,p2,sub,^1/3,*,exp"	0	1	E.g.f. A(x) satisfies A(x) = exp(3*x*A(-x)^(1/3)).
+A385142	lambdan	1	n -> SU(1, (n+1)/5, i -> BI(n - i - 1, 4*i - 2))
+A385177	lambdan	1	n -> E183136(n).+(n)
+A385195	lambdan	1	n -> F047994(n).*((n & 3) == 2 ? 2 : 1)	a(n) = J138191(n) * F047994(n), i.e., a(n) = 2*F047994(n) if n == 2 (mod 4) and F047994(n) otherwise.
+A385203	lambdan	0	n -> BI(new Q(2*n + 1, 5), n)./(2*n+1).*(ZV(25).^(n)).num()
+A385204	lambdan	0	n -> BI(new Q(3*n + 1, 5), n)./(3*n+1).*(ZV(25).^(n)).num()
+A385205	lambdan	0	n -> BI(new Q(4*n + 1, 5), n)./(4*n+1).*(ZV(25).^(n)).num()
+A385206	lambdan	0	n -> BI(new Q(n + 1, 7), n)./(n+1).*(ZV(49).^(n)).num()
+A385207	lambdan	0	n -> BI(new Q(6*n + 1, 7), n)./(6*n+1).*(ZV(49).^(n)).num()
+A385208	lambdan	0	n -> BI(new Q(8*n + 1, 7), n)./(8*n+1).*(ZV(49).^(n)).num()
+A385212	lambdan	1	n -> ZV(n).^(D008966(n))	c(n), where c = D008966.
+A385281	polyx	0	"[1],[0,2]"	"1,1,p1,p1,cosh,*,-,^1/2,/"	0	1	1/(1 - 2 * x * cosh(2*x))^(1/2).
+A385282	polyx	0	"[1],[0,3]"	"1,1,p1,p1,cosh,*,-,^1/3,/"	0	1	1/(1 - 3 * x * cosh(3*x))^(1/3).
+A385283	polyx	0	"[1],[0,2]"	"1,1,p1,p1,cos,*,-,^1/2,/"	0	1	1/(1 - 2 * x * cos(2*x))^(1/2).
+A385284	polyx	0	"[1],[0,3]"	"1,1,p1,p1,cos,*,-,^1/3,/"	0	1	1/(1 - 3 * x * cos(3*x))^(1/3).
+A385304	polyx	0	"[1]"	"1,1,2,x,sinh,*,-,^1/2,/"	0	1	1/(1 - 2 * sinh(x))^(1/2).
+A385305	polyx	0	"[1]"	"1,1,3,x,sinh,*,-,^1/3,/"	0	1	1/(1 - 3 * sinh(x))^(1/3).
+A385306	polyx	0	"[1]"	"1,1,2,x,sin,*,-,^1/2,/"	0	1	1/(1 - 2 * sin(x))^(1/2).
+A385307	polyx	0	"[1]"	"1,1,3,x,sin,*,-,^1/3,/"	0	1	1/(1 - 3 * sin(x))^(1/3).
+A385308	polyx	0	"[1],[0,2]"	"1,1,p1,x,cosh,*,-,^1/2,/"	0	1	1/(1 - 2 * x * cosh(x))^(1/2).
+A385309	polyx	0	"[1],[0,3]"	"1,1,p1,x,cosh,*,-,^1/3,/"	0	1	1/(1 - 3 * x * cosh(x))^(1/3).
+A385310	polyx	0	"[1],[0,2]"	"1,1,p1,x,cos,*,-,^1/2,/"	0	1	1/(1 - 2 * x * cos(x))^(1/2).
+A385311	polyx	0	"[1],[0,3]"	"1,1,p1,x,cos,*,-,^1/3,/"	0	1	1/(1 - 3 * x * cos(x))^(1/3).
+A385346	polyx	0	"[1]"	"1,1,2,x,asin,*,-,/"	0	1	1/(1 - 2 * arcsin(x)).
+A385347	polyx	0	"[1]"	"1,1,3,x,asin,*,-,/"	0	1	1/(1 - 3 * arcsin(x)).
+A385349	lambdan	1	n -> PD(n, d -> d < n && (d&1) == 1 ? ZV(d) : Z.ONE)
+A385367	polyx	0	"[1]"	"1,1,2,x,asinh,*,-,/"	0	1	1/(1 - 2 * arcsinh(x)).
+A385368	polyx	0	"[1]"	"1,1,3,x,asinh,*,-,/"	0	1	1/(1 - 3 * arcsinh(x)).
+A385369	holos	0	[[0],[3,-4,1],[0],[0,-1,1]]	1,1	0	1
+A385371	polyx	0	"[1]"	"1,1,2,x,asinh,*,-,^1/2,/"	0	1	1/(1 - 2 * arcsinh(x))^(1/2).
+A385372	polyx	0	"[1]"	"1,1,3,x,asinh,*,-,^1/3,/"	0	1	1/(1 - 3 * arcsinh(x))^(1/3).
+A385376	polyx	0	"[1]"	"1,1,2,x,asin,*,-,^1/2,/"	0	1	1/(1 - 2 * arcsin(x))^(1/2).
+A385377	polyx	0	"[1]"	"1,1,3,x,asin,*,-,^1/3,/"	0	1	1/(1 - 3 * arcsin(x))^(1/3).
+A385380	partprod	1	new A025475()	Partial products of the sequence nonprime powers of primes (J025475).	nonn,easy,new	1..217	nyi	_Amiram Eldar_
+A385393	lambdan	0	n -> SU(0, n, k -> BI(n, k).modZ(4))./(Z2(Functions.DIGIT_SUM.i(2, n)))	a(n) = (Sum_{k=0..n} (binomial(n, k) mod 4)) / 2^bitcount(n).	nonn,new	0..86	nyi	_Peter Luschny_
+A385394	lambdan	0	n -> SU(0, n, k -> BI(n, k).modZ(8))./(Z2(Functions.DIGIT_SUM.i(2, n)))	a(n) = (Sum_{k=0..n} (binomial(n, k) mod 8)) / 2^bitcount(n).	nonn,new	0..75	nyi	_Peter Luschny_
+A385396	filnum	1	0	k -> CNT(0, k, j -> BI(k, j).mod(8) == 0).isZero()	Numbers k such that 8 does not divide binomial(k, j) for any j in 0..k.	nonn,new	1..54	nyi	_Peter Luschny_
+A385406	trilambn	1	1	1	(n, k) -> Functions.TRIANGULAR.z(n).-((n - 1)/2).-(Z_1(k).*(k/2))	Triangle read by rows: T(n, k) = n*(n+1)/2 - floor((n-1)/2) - (-1)^k * floor(k/2)
+A385419	polyx	0	"[1],[0,2]"	"1,1,p1,asinh,-,^1/2,/"	0	1	1/(1 - arcsinh(2*x))^(1/2).
+A385420	polyx	0	"[1],[0,3]"	"1,1,p1,asinh,-,^1/3,/"	0	1	1/(1 - arcsinh(3*x))^(1/3).
+A385421	polyx	0	"[1],[0,2]"	"1,1,p1,asin,-,^1/2,/"	0	1	1/(1 - arcsin(2*x))^(1/2).
+A385422	polyx	0	"[1],[0,3]"	"1,1,p1,asin,-,^1/3,/"	0	1	1/(1 - arcsin(3*x))^(1/3).
+A385424	polyx	0	"[1]"	"x,asin,neg,lambertW,neg,exp"	0	1	exp( -LambertW(-arcsin(x)) ).
+A385425	polyx	0	"[1]"	"x,asinh,neg,lambertW,neg,exp"	0	1	exp( -LambertW(-arcsinh(x)) ).
+A385426	polyx	0	"[1]"	"x,asin,neg,exp,<1,rev,x,/"	1	1	(1/x) * Series_Reversion( x * exp(-arcsin(x)) ).
+A385427	polyx	0	"[1]"	"A,<1,asin,A,/,exp"	0	1	E.g.f. A(x) satisfies A(x) = exp( arcsin(x * A(x)) / A(x) ).
+A385428	polyx	0	"[1]"	"A,<1,asinh,A,/,exp"	0	1	E.g.f. A(x) satisfies A(x) = exp( arcsinh(x * A(x)) / A(x) ).
+A385440	polyx	0	"[1]"	"A,^2,<1,asinh,exp"	0	1
+A385441	polyx	0	"[1]"	"A,^3,<1,asinh,exp"	0	1
+A385442	polyx	0	"[1]"	"A,^4,<1,asinh,exp"	0	1
+A385443	lambdan	0	n -> BI(new Q(4*n + 1, 6), n).*(FA(n)).*(ZV(6).^(n))./(4*n + 1).num()	6^n * n! * binomial((4*n+1)/6,n)/(4*n+1)
+A385444	lambdan	0	n -> BI(new Q(5*n + 1, 8), n).*(FA(n)).*(ZV(8).^(n))./(5*n + 1).num()	8^n * n! * binomial((5*n+1)/8,n)/(5*n+1).
