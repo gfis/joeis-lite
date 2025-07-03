@@ -21,11 +21,33 @@ else
 endif
 JAVA=java $(JOPT) -cp "$(LITE)/dist/joeis-lite.jar$(CPS)$(JOEIS)/build.tmp/joeis.jar"
 D=0
+RAMATH=java -cp $(KITS)/ramath/dist/ramath.jar
+JPREP=$(RAMATH)  org.teherba.ramath.sequence.JoeisPreparer
 #--------
 all:
 	# grep -P "^\w" makefile
 help:
 	grep -E "^[a-z]" makefile | sort
+#----
+egfsi: egfsi1 egfsi_split egfsi2 # simple e.g.f.s
+egfsi1:
+	$(DBAT) "SELECT * FROM gregen WHERE callcode = 'egfsi'" \
+	| perl -pe 's/\^\^/\t/g;' \
+	| cut -f1,2,3,5 \
+	>        $@.tmp
+	head -n4 $@.tmp
+	wc -l    $@.tmp
+egfsi_split:
+	grep    "(" egfsi1.tmp > $@.tmp
+	grep -v "(" egfsi1.tmp > $@.rest.tmp
+	wc -l    $@*.tmp
+egfsi2:
+	$(JPREP) -p RING.ttab -f egfsi_split.tmp -cc post1 \
+	>        $@.1.tmp
+	grep -E  "\?" $@.1.tmp > $@.rest.tmp || :
+	grep -vE "\?" $@.1.tmp > $@.tmp || :
+	head -n4 $@.tmp
+	wc -l    $@*.tmp
 #----
 expconv: # get ari from joeis_names.txt
 	grep -Pi "ExponentialConvolution" $(COMMON)/joeis_names.txt \

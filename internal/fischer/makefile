@@ -6369,7 +6369,7 @@ egf1:
 #----
 egfsi0: egfsi1 egfsi2 egfsi3 egfsi4
 egfsi1:
-	grep -E "^\%[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
+	grep -E "^\#[A-Za-z] A[0-9][0-9]* (Expansion of e|E)\.g\.f\." $(COMMON)/jcat25.txt \
 	| cut -b4- \
 	| perl egfsi.pl \
 	2>       $@.rest.tmp \
