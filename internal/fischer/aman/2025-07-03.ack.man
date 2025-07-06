@@ -1,0 +1,96 @@
+---- 2025-07-03 20:09:49
+A053442	holos	0	[[0],[-3,1],[0],[0],[3,-2],[4,-4],[0],[0,1]]	1	0	0
+A079651	parmof4	1	A214703	1	4	7
+A080413	holos	0	[[0],[-1],[1],[0],[0],[0],[0],[0],[0],[1],[-1]]	0,2,4,6,1,3,5,7,8	0	0
+A080414	holos	0	[[0],[-1],[1],[0],[0],[0],[0],[0],[0],[1],[-1]]	0,4,1,5,2,6,3,7,8	0	0
+A085141	lambdan	0	n -> Functions.SQRT.z(24*n + 1).-(1)./(6)	floor((sqrt(24n+1)-1)/6).
+A087363	parmof4	1	A214703	3	5	7
+A096817	prisub	1	[[11],[2],[-1]]	[-10]	0
+A096818	prisub	1	[[13],[2],[-1]]	[-12]	0
+A096819	prisub	1	[[19],[2],[-1]]	[-18]	0
+A096820	prisub	1	[[21],[2],[-1]]	[-20]	0
+A130047	sintrif	0	(term, n) -> term.and(Z.ONE)	""	new A034868()	Left half of Pascals triangle (J034868) modulo 2
+A155780	filter	1	new A000040()	p -> ZV(2).^(p).+(11).IPP()
+A157638	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A007318(), new A022166()	Triangle of the elementwise product of binomial coefficients with q-binomial coefficients [n,k] for q = 2.      nonn,tabl       0..49   nyi     _Roger L. Bagula_
+A157640	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A007318(), new A022167()	Triangle of the elementwise product of binomial coefficients with q-binomial coefficients [n,k] for q = 3.      nonn,tabl       0..1274 nyi     _Roger L. Bagula_
+A157641	multraf	0	(self, n) -> self.s(0).*(self.s(1))	""	new A007318(), new A022168()	Triangle of the elementwise product of binomial coefficients with q-binomial coefficients [n,k] for q = 4.      nonn,tabl       0..1274 nyi     _Roger L. Bagula_
+A185654	multrar	0	(self, n) -> SU(1, n, k -> SIGMA(3*k).*(self.a(n - k)))./(-n)	"1"
+A199327	parmof4	1	A214703	0	1	7
+A199341	parmof4	1	A214703	1	3	4
+A199342	parmof4	1	A214703	2	3	4
+A199345	parmof4	1	A214703	3	4	5
+A199347	parmof4	1	A214703	3	4	7
+A213422	sintrif	0	(term, n) -> Z_1(n + 1).*(term)	""	new A307103()
+A216378	filnum	1	0	k -> Predicates.SEMIPRIME.is(ZV(10).^(k).*(k).+(1))
+A224469	filprof	1	0	k -> ZV(8).^(k).-(k)
+A226961	parmof2	1	A226960	3
+A226962	parmof2	1	A226960	4
+A226963	parmof2	1	A226960	5
+A226964	parmof2	1	A226960	6
+A226965	parmof2	1	A226960	7
+A226966	parmof2	1	A226960	8
+A226967	parmof2	1	A226960	9
+A227793	filnum	1	0	k -> Functions.DIGIT_SUM.l(10, k) % 5 == 0
+A247369	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 3)).+(Z_1(n).*(self.a(n - 2).^(2)))./(self.a(n - 4))	"0,-1,1,1,1,0,1,1,1,3,4"	a(n) = (a(n-1) * a(n-3) + (-1)^n * a(n-2)^2) / a(n-4), with a(0) = 0, a(1) = -1, a(2) = a(3) = a(4) = 1, a(9) = 3.	sign	0..400	nyi	_Michael Somos_
+A247370	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 3)).-(Z_1(n).*(self.a(n - 2).^(2)))./(self.a(n - 4))	"1,1,0,1,1,1,2,3"	a(n) = (a(n-1) * a(n-3) - (-1)^n * a(n-2)^2) / a(n-4)  with a(0) = 1, a(1) = 1, a(2) = 0, a(3) = 1, a(6) = 2.	sign	0..300	nyi	_Michael Somos_
+A248049	multrar	0	(self, n) -> self.a(n - 1).+(self.a(n - 2)).*(self.a(n - 2).+(self.a(n - 3)))./(self.a(n - 4))	"2,1,1,1"	a(n) = (a(n-1) + a(n-2)) * (a(n-2) + a(n-3)) / a(n-4) with a(0) = 2, a(1) = a(2) = a(3) = 1.	nonn	0..26	nyi	_Michael Somos_
+A249043	multrar	1	(self, n) -> self.a(n - 1).+(Functions.DIGIT_SUM.z(self.a(n - 1)))	"42"	a(1) = 42; a(n+1) = a(n) + sum of decimal digits of a(n).	easy,nonn,base	1..10000	nyi	_N. J. A. Sloane_
+A249044	filter	0	new A003052()	v -> !v.equals(Z.ONE) && !PP(v)	Composite self-numbers.	nonn,base	1..10000	nyi	_N. J. A. Sloane_
+A249045	filter	0	new A003052()	v -> v.mod(3) == 0	nyi o	Self-numbers (J003052) that are multiples of 3.	nonn,base	1..10000	nyi	_N. J. A. Sloane_
+A249046	filter	0	new A003052()	v -> v.mod(3) == 0 && v.mod(9) != 0			Self-numbers (J003052) that are multiples of 3 but not of 9.	nonn,base	1..1000	nyi	_N. J. A. Sloane_
+A249047	filter	0	new A003052()	v -> v.mod(3) != 0		Self-numbers (J003052) that are not divisible by 3.	nonn,base	1..10000	nyi	_N. J. A. Sloane_
+A249048	filter	0	new A003052()	v -> v.mod(9) == 0		Self-numbers (J003052) that are multiples of 9.	nonn,base	1..10000	nyi	_N. J. A. Sloane_
+A254744	multrar	0	(self, n) -> Z2(n).*(SU(0, n - 1, k -> self.a(k).*(self.a(n - 1 - k))))	"1"		a(n) = 2^n * Sum_{k=1 .. n-1} a(k) * a(n-1-k) with a(0) = 1.	nonn
+A260044	parmof4	1	A214703	0	1	3
+A268199	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 8)).+(self.a(n - 4).*(self.a(n - 5)))./(self.a(n - 9))	"1,1,1,1,1,1,1,1,1"		a(0)=a(1)=...=a(8)=1; for n>=9, a(n)=(a(n-1)*a(n-8)+a(n-4)*a(n-5))/a(n-9).	nonn	0..292	nyi	_Vladimir Shevelev_ and _Peter J. C. Moses_
+A271341	multrar	0	(self, n) -> self.a(n - 1).*(self.a(n - 9)).+(self.a(n - 5).^(2))./(self.a(n - 10))	"1, 1,1,1,1,1, 1,1,1,1"
+A276402	multia	0	"1,1,-1,1,-3,-3"	(self, n) -> self.a(n - 1).*(self.a(n - 5)).+(self.a(n - 2).*(self.a(n - 4)).*(2)).-(self.a(n - 3).^(2).*(2))./(self.a(n - 6))	a(n) = (a(n-1)*a(n-5) + 2*a(n-2)*a(n-4) - 2*a(n-3)^2)/a(n-6)
+A280041	parmof2	1	A226960	19
+A280043	parmof2	1	A226960	43
+A281708	lambdan	1	n -> SU(1, n, k -> ZV(k).^(3).*(PT(k)).*(PT(n - k))).*(2)./(n)	a(n) = (Sum_{k=1..n} k^3 * p(k) * p(n-k)) * 2/n where p = F000041.	nonn	1..5000	nyi	_Michael Somos_
+A283610	filnum	1	0	k -> Functions.DIGIT_MAX.i(k) == 7
+A284380	lambdan	1	n -> new Z(Long.toBinaryString(n + 1).substring(1).replace('1', '7').replace('0', '5'))
+A284381	lambdan	1	n -> new Z(Long.toBinaryString(n + 1).substring(1).replace('1', '8').replace('0', '5'))
+A284382	lambdan	1	n -> new Z(Long.toBinaryString(n + 1).substring(1).replace('1', '9').replace('0', '5'))
+A302343	parmof2	1	A226960	79
+A302344	parmof2	1	A226960	193
+A304454	polyx	0	"[0,1],[1,-1]"	"x,p1,A,sub,<1,-,/"	1	0
+A307103	polya	0	"[1]"	"x,B,rev"	new A027436()
+A330383	multia	0	"1,1,1,1,1,1,1,1"	(self, n) -> self.a(n - 1).*(self.a(n - 7)).+(self.a(n - 2).*(self.a(n - 6))).-(self.a(n - 3).*(self.a(n - 5))).+(self.a(n - 4).^(2))./(self.a(n - 8))	a(n) = (a(n-1)*a(n-7) + a(n-2)*a(n-6) - a(n-3)*a(n-5) + a(n-4)^2) / a(n-8), a(0) = ... = a(7) = 1.	nonn	0..252	nyi	_Michael Somos_
+A334009	trilambn	1	1	1	(n, k) -> BI(n + k - 1, 2*k - 1).*(ZV(4).^(k - 1)).*(n)./(k)	1 <= k <= n.	nonn,tabl	1..46	nyi	_Michael Somos_
+A334317	multia	0	"1,2"	(self, n) -> SU(0, n - 1, k -> BI(n - 1, k).*(self.a(k)).*(self.a(n - 1 - k))).*(3)./(2)	a(n+1) = (3/2) * Sum_{k=0..n-1} binomial(n-1, k) * a(k) * a(n-1-k), with a(0) = 1, a(1) = 2.
+A360187	multia	0	"1,1,3,13,113"	(self, n) -> self.a(n - 1).*(self.a(n - 4).negate()).+(self.a(n - 2).*(self.a(n - 3)).*(42))./(self.a(n - 5))	a(n) = (-a(n-1)*a(n-4) + 42*a(n-2)*a(n-3))/a(n-5), a(-n) = a(n), a(0) = a(1) = 1, a(2) = 3.
+A360381	multia	0	"0,1,-1,1,1,-7,8"	(self, n) -> self.a(n - 1).*(self.a(n - 4)).+(self.a(n - 2).*(self.a(n - 3)))./(self.a(n - 5))	a(n) = (a(n-1)*a(n-4) + a(n-2)*a(n-3))/a(n-5) = -a(-n), a(1) = 1, a(2) = -1, a(3) = a(4) = 1, a(5) = -7
+A362718	polyz	0	"[1],[0,0,1/2]"	"x,cos,p1,exp,*"	0	1	0	2
+A372822	lambdan	0	n -> ComputableReals.SINGLETON.tanh(CR.HALF_PI).*(n).floor()	a(n) = floor(n*tanh(Pi/2)).	nonn,easy	0..10000	nyi	_Paolo Xausa_
+A373347	filnum	1	1	k -> F000120(k).compareTo(D001511(k)) > 0	Positive integers k such that F000120(k) > D001511(k).	nonn,easy,base	1..10000	nyi	_Paolo Xausa_
+A373917	trilambn	1	1	0	(n, k) -> ZV(k).*(10).modZ(n)	Triangle read by rows: T(n,k) = k*10 mod n, with n >= 1, k >= 0.	nonn,tabl	1..150	nyi	_Paolo Xausa_
+A377167	filnum	1	0	k -> k == 0 || Integer.toString(k * 2 + 1, 2).indexOf("101") >= 0	Nonnegative integers containing isolated zeros in their binary representation.	nonn,base,easy	1..10000	nyi	_Paolo Xausa_
+A377169	filnum	1	1	k -> { final String sk = Integer.toString(k * 2, 2); return k == 1 || sk.startsWith("10") || sk.indexOf("010") >= 0; }	Nonnegative integers containing isolated ones in their binary representation.	nonn,base,easy	1..10000	nyi	_Paolo Xausa_
+A377994	filnum	1	1	k -> Functions.PRIME_PI.z(k).+(k).testBit(0)	Numbers k such that k + PrimePi(k) is odd.	nonn,easy	1..10000	nyi	_Paolo Xausa_
+A384875	tablamb	3	3	n -> new Integer[] { 0, n/3 - 1}	(n, k) -> Functions.NEXT_PRIME.z(Z2(n - 2*(n/3 - k))).shiftLeft(n/3 - k)
+A385434	sintrif	0	(term, n) -> term.mod(ZV(3))	""	new A022166()	Triangle of Gaussian binomial coefficients (or q-binomial coefficients) [n,k] for q = 2, reduced mod 3.	nonn,tabl,new	0..77	nyi	_David Radcliffe_
+A385435	rowsum	0	new A385434()	Row sums of A385434.	nonn,tabl,new	0..74	nyi	_David Radcliffe_
+A385456	sintrif	0	(term, n) -> term.and(Z.ONE)	""	new A010048()	Triangle, read by rows, formed by reading Fibonomial coefficients (J010048) mod 2.	nonn,tabl,new	0..77	nyi	_David Radcliffe_
+A385468	polyx	0	"[1],[1,1],[1,-1]"	"1,1,p1,p2,/,log,-,^1/2,/"	0	1
+A385469	polyx	0	"[1],[1,1],[1,-1],[3/2]"	"1,1,p3,p1,p2,/,log,*,-,^1/3,/"	0	1
+A385470	polyx	0	"[1],[1,1],[1,-1]"	"1,1,p1,p2,/,log,-,/"	0	1
+A385471	polyx	0	"[1],[1,1],[1,-1],[3/2]"	"1,1,p3,p1,p2,/,log,*,-,/"	0	1
+A385472	polyx	0	"[1],[1,2],[1,-2],[1/2]"	"1,1,p3,p1,p2,/,log,*,-,^1/2,/"	0	1
+A385473	polyx	0	"[1],[1,3],[1,-3],[1/2]"	"1,1,p3,p1,p2,/,log,*,-,^1/3,/"	0	1
+A385500	polyx	0	"[1]"	"x,atanh,neg,lambertW,neg,exp"	0	1
+A385501	polyx	0	"[1]"	"x,atanh,neg,exp,<1,rev,x,/"	1	1
+A385502	polyx	0	"[1]"	"A,<1,atanh,A,/,exp"	0	1
+A385505	decexp	0	() -> CV(new Q(59, 144)).+(CV(1)./(CV(6).sqrt())).sqrt()
+A385506	decexp	1	() -> CV(1)./(CR.SQRT2).+(CV(3).sqrt()./(4))
+A243589	lambdan	0	n -> D006257(n).xor(D038572(n))	a(n) = ror(n) XOR rol(n)
+---- 2025-07-03 20:36:37
+A234901	filter	1	new A000040()	p -> PP(Functions.ROTATE_RIGHT.z(p))	Primes which remain prime when the digits are rotated once to the right.
+A234925	filter	1	new A000040()	p -> Predicates.SQUARE.is(Functions.ROTATE_RIGHT.z(p))	Primes which become squares when the digits are rotated once to the right.
+A234928	filter	1	new A000040()	p -> Predicates.CUBE.is(Functions.ROTATE_RIGHT.z(p))	Primes which become cubes when the digits are rotated once to the right.
+A235000	filter	1	new A000040()	p -> { final Z rp = Functions.ROTATE_RIGHT.z(p); return Predicates.PALINDROME.is(rp) && PP(rp); }	Primes which become palindromic primes when the digits are rotated once to the right.
+---- 2025-07-03 22:12:05
+A086085	filter	1	new A000040()	p -> PP(p.+(Functions.SQRT.z(p)))	Primes p such that p + floor(sqrt(p)) is prime.	nonn	1..50	nyi	_Chuck Seggelin_
+A086086	filter	1	new A000040()	p -> PP(p.-(Functions.SQRT.z(p)))	Primes p such that p - floor(sqrt(p)) is prime.	nonn	1..1000	nyi	_Chuck Seggelin_
+A086132	filnum	1	2	k -> GPF(k).equals(GPF(ARD(k)))	Numbers that have the same largest prime factor as their arithmetic derivative.	nonn	1..10000	nyi	_Labos Elemer_
+A086133	filnum	1	2	k -> LPF(k).equals(LPF(ARD(k)))	Numbers k such that the smallest prime factor of the arithmetic derivative of k equals that of k.	nonn	1..10000	nyi	_Labos Elemer_

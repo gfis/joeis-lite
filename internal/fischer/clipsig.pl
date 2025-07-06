@@ -32,7 +32,7 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 } # while $opt
 
 my $clip = `powershell -command Get-Clipboard`;
-$clip =~ s{[^\-\d\,]}{}g;
+$clip =~ s{[^\-\d\,]}{}g; # remove "+" and all but numbers and commata
 my @terms = split(/\,/, $clip);
 my @revte = reverse(@terms);
 my $order = scalar(@terms);
@@ -41,7 +41,7 @@ print "<a href=\"/index\/Rec#order_" . sprintf("%02d", $order) . "\">Index entri
     . join(", ", @terms) . ").\n";
 print "sig=" . join(", ", @terms) . "\n";
 print "rev=" . join(", ", @revte) . "\n";
-my $record = "holos \"[[0],[" . join("],[",  @revte) . "],[-1]]\" \"1\"\n";
+my $record = "holos \"[0," . join(",",  @revte) . ",-1]\" \"1\"\n";
 print $record;
 open (PIPE, "| clip");
 print PIPE $record;
