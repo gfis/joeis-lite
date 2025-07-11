@@ -389,7 +389,8 @@ sumpass: # copy all with passed test in joeis-lite/src to ./manual
 	| xargs -innn cp -pv nnn manual
 techo: # append timestamp
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).man
-#-----
+#-----  
+ap: addpass
 addpass: # append seq4 records with passed tests to TODAY=file
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).ack.man
 	grep -P  "\tpass\t" $(CC).pass.log                | cut -b1-7 | sed -e "s/^/\^/"       >  $@.grep.tmp

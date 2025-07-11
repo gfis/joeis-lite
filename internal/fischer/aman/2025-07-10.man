@@ -33,17 +33,15 @@ A325627	sintrif	0	(term, n) -> F006530(term)	""	new A030426().skip(1)
 A329610	sintrif	0	(term, n) -> E329638(term)	""	new A324201()
 A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()
 A379938	sintrif	0	(term, n) -> F000720(term)	""	new A102385()
- 
- 
 A327522	sintrif	0	(term, n) -> F000041(F001222(term))	""	new A000961()
-A109414	convprod	0	3	new A010054()	a(n) equals the (n*(n+1)/2)-th partial sum of the self-convolution cube of A010054, which has the g.f.: Sum_{k>=0} x^(k*(k+1)/2)
-A160708	convprod	0	1/2	new A005130()	Right and left borders = A160707, the convolution square root of A005130.
-A161196	convprod	0	1/2	new A007191()	Triangle read by rows generated from A007249, the convolution square root of A007191.
-A161362	convprod	0	1/2	new A000521()	Antidiagonals of a table, A161361^2, where A161361 = the convolution square root of A000521.
-A247031	convprod	0	3	new A002293()	where A006632 equals the self-convolution cube of A002293.
-A295792	convprod	0	1,1	new A028342(), new A168243()	Convolution of A028342 and A168243. - _Vaclav Kotesovec_, Sep 07 2018
-A306045	convprod	0	1,1	new A167137(), new A305550()	Convolution of A167137 and A305550.
-A340579	convprod	0	1,1	new A000203(), new A000070()	The growth of the volume represents the convolution of A000203 and A000070.
-A353690	convprod	0	1,1	new A000203(), new A000027()	The alternating sum of the n-th row equals A175254(n), the volume of the stepped pyramid with n levels described in A245092, als
-A359279	convprod	0	1,1	new A000041(), new A000027()	Row sums give A014153 (convolution of A000041 and A000027).
+
+nak A109414	convprod	0	3	new A010054()	a(n) equals the (n*(n+1)/2)-th partial sum of the self-convolution cube of A010054, which has the g.f.: Sum_{k>=0} x^(k*(k+1)/2)
+nak A160708	convprod	0	1/2	new A005130()	Right and left borders = A160707, the convolution square root of A005130.
+nak A161196	convprod	0	1/2	new A007191()	Triangle read by rows generated from A007249, the convolution square root of A007191.
+nak A161362	convprod	0	1/2	new A000521()	Antidiagonals of a table, A161361^2, where A161361 = the convolution square root of A000521.
+nak A247031	convprod	0	3	new A002293()	where A006632 equals the self-convolution cube of A002293.
+nak A295792	convprod	0	1,1	new A028342(), new A168243()	Convolution of A028342 and A168243. - _Vaclav Kotesovec_, Sep 07 2018
+nak A340579	convprod	0	1,1	new A000203(), new A000070()	The growth of the volume represents the convolution of A000203 and A000070.
+nak A353690	convprod	0	1,1	new A000203(), new A000027()	The alternating sum of the n-th row equals A175254(n), the volume of the stepped pyramid with n levels described in A245092, als
+nak A359279	convprod	0	1,1	new A000041(), new A000027()	Row sums give A014153 (convolution of A000041 and A000027).
 A359350	convprod	0	1,1	new A000041(), new A000027()	Row sums give A014153 (convolution of A000041 and A000027).
