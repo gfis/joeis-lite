@@ -1,4 +1,4 @@
----- 2025-07-10 23:13:08
+---- 2025-07-12 08:53:43
 ?A261558	lambdan	0	n -> PR(1, n, k -> F000040(k)).+(1)	""		a(n) = prod(k=1, n, prime(k)) + 1	_	_	_
 ?A263015	lambdan	0	n -> SU(1, n, k -> F000040(k))	""		a(n) = sum(k=1, n, prime(k))	_	_	_
 ?A264665	lambdan	0	n -> PR(1, n, k -> F000040(k)).+(2)	""		a(n) = prod(k=1, n, prime(k)) + 2	_	_	_
@@ -15,24 +15,18 @@
 ?A377868	lambdan	0	n -> D359550(F276085(n))	""	
 ?A331292	lambdin	0	n -> D007949(E246277(E324886(n)))	""	
 
-A096329	sintrif	0	(term, n) -> F000040(term)	""	new A030629()
+
 A107482	sintrif	0	(term, n) -> F001222(term)	""	new A007539()
-A129907	sintrif	0	(term, n) -> F006530(term)	""	new A072446()
 A131837	sintrif	0	(term, n) -> F031346(term)	""	new A002064()
 A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()
-A186963	sintrif	0	(term, n) -> E162642(term)	""	new A007357()
 A190940	sintrif	0	(term, n) -> F000005(term)	""	new A002944()
 A225017	sintrif	0	(term, n) -> E132740(term)	""	new A055566()
-A241623	sintrif	0	(term, n) -> F000720(term)	""	new A073861()
-A242016	sintrif	0	(term, n) -> F020639(term)	""	new A135972().skip(2)
 A277195	sintrif	0	(term, n) -> D022290(term)	""	new A277010()
 A277812	sintrif	0	(term, n) -> D000069(term)	""	new A277813()
 A279904	sintrif	0	(term, n) -> F000040(term)	""	new A058781()
 A283458	sintrif	0	(term, n) -> F000040(term)	""	new A093046()
-A325627	sintrif	0	(term, n) -> F006530(term)	""	new A030426().skip(1)
 A329610	sintrif	0	(term, n) -> E329638(term)	""	new A324201()
 A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()
-A379938	sintrif	0	(term, n) -> F000720(term)	""	new A102385()
 A327522	sintrif	0	(term, n) -> F000041(F001222(term))	""	new A000961()
 
 nak A109414	convprod	0	3	new A010054()	a(n) equals the (n*(n+1)/2)-th partial sum of the self-convolution cube of A010054, which has the g.f.: Sum_{k>=0} x^(k*(k+1)/2)
@@ -44,4 +38,4 @@ nak A295792	convprod	0	1,1	new A028342(), new A168243()	Convolution of A028342 a
 nak A340579	convprod	0	1,1	new A000203(), new A000070()	The growth of the volume represents the convolution of A000203 and A000070.
 nak A353690	convprod	0	1,1	new A000203(), new A000027()	The alternating sum of the n-th row equals A175254(n), the volume of the stepped pyramid with n levels described in A245092, als
 nak A359279	convprod	0	1,1	new A000041(), new A000027()	Row sums give A014153 (convolution of A000041 and A000027).
-A359350	convprod	0	1,1	new A000041(), new A000027()	Row sums give A014153 (convolution of A000041 and A000027).
+nap	A359350	convprod	0	1,1	new A000041(), new A000027()	Row sums give A014153 (convolution of A000041 and A000027).
