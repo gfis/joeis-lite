@@ -1,4 +1,4 @@
----- 2025-07-12 08:53:43
+---- 2025-07-14 17:16:45
 ?A261558	lambdan	0	n -> PR(1, n, k -> F000040(k)).+(1)	""		a(n) = prod(k=1, n, prime(k)) + 1	_	_	_
 ?A263015	lambdan	0	n -> SU(1, n, k -> F000040(k))	""		a(n) = sum(k=1, n, prime(k))	_	_	_
 ?A264665	lambdan	0	n -> PR(1, n, k -> F000040(k)).+(2)	""		a(n) = prod(k=1, n, prime(k)) + 2	_	_	_
@@ -16,18 +16,16 @@
 ?A331292	lambdin	0	n -> D007949(E246277(E324886(n)))	""	
 
 
-A107482	sintrif	0	(term, n) -> F001222(term)	""	new A007539()
-A131837	sintrif	0	(term, n) -> F031346(term)	""	new A002064()
-A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()
-A190940	sintrif	0	(term, n) -> F000005(term)	""	new A002944()
-A225017	sintrif	0	(term, n) -> E132740(term)	""	new A055566()
+A107482	sintrif	0	(term, n) -> n == 1 ? Z.ONE : F001222(term)	""	new A007539()
+?? A171253	sintrif	0	(term, n) -> B171252(term)	""	new A014132()
+A225017	lambdan	0	n -> { final Z x = Functions.DIGIT_SUM.z(n); return n <= 1 ? ZV(1) : Functions.MAKE_ODD.z(x./(Functions.VALUATION.z(x, 5))); }
 A277195	sintrif	0	(term, n) -> D022290(term)	""	new A277010()
-A277812	sintrif	0	(term, n) -> D000069(term)	""	new A277813()
-A279904	sintrif	0	(term, n) -> F000040(term)	""	new A058781()
-A283458	sintrif	0	(term, n) -> F000040(term)	""	new A093046()
-A329610	sintrif	0	(term, n) -> E329638(term)	""	new A324201()
-A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()
-A327522	sintrif	0	(term, n) -> F000041(F001222(term))	""	new A000961()
+?? A277812	multia	0	"1"	(self, n) -> (Functions.DIGIT_SUM.i(2, n) & 1) == 1 ? ZV(n) : self.a(Functions.GRAY_ENCODE.i(Functions.GRAY_DECODE.i(n) / 2))
+A279904	sintrif	0	(term, n) -> PM(term)	""	new A058781()
+too high A283458	sintrif	0	(term, n) -> F000040(term)	""	new A093046()
+ive A329610	sintrif	0	(term, n) -> E329638(term)	""	new A324201()
+ive A363746	sintrif	0	(term, n) -> F000030(term)	""	new A004231()
+A327522	softrif	0	(term, n) -> n == 1 ? ZV(0) : F000041(F001222(term))	""	new A000961()
 
 nak A109414	convprod	0	3	new A010054()	a(n) equals the (n*(n+1)/2)-th partial sum of the self-convolution cube of A010054, which has the g.f.: Sum_{k>=0} x^(k*(k+1)/2)
 nak A160708	convprod	0	1/2	new A005130()	Right and left borders = A160707, the convolution square root of A005130.
