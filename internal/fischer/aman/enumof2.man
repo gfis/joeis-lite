@@ -1,0 +1,153 @@
+%N A178458 Abundant numbers of the form k*k + 1
+%N A292245 Base-2 expansion of a(n) encodes the steps where numbers of the form 3*k+1 are encountered when map x -> A253889(x) is iterated down to 1, starting from x=n
+%N A292246 Base-2 expansion of a(n) encodes the steps where numbers of the form 3*k+2 are encountered when map x -> A253889(x) is iterated down to 1, starting from x=n
+%N A292381 Base-2 expansion of a(n) encodes the steps where numbers of the form 4*k+1 are encountered when map x -> €252463(x) is iterated down to 1, starting from x=n
+%N A292382 Base-2 expansion of a(n) encodes the steps where numbers of the form 4*k+2 are encountered when map x -> €252463(x) is iterated down to 1, starting from x=n
+%N A292383 Base-2 expansion of a(n) encodes the steps where numbers of the form 4*k+3 are encountered when map x -> €252463(x) is iterated down to 1, starting from x=n
+%N A292945 Base-2 expansion of a(n) encodes the steps where numbers of the form 6*k+5 are encountered when map x -> €252463(x) is iterated down to 1, starting from x=n
+%N A182085 Carmichael numbers of the form (30*k+7)*(60*k+13)*(150*k+31)
+%N A230722 Carmichael numbers of the form (6*k + 1)*(24*k + 1)*(30*k + 1)
+%N A182416 Carmichael numbers of the form (60*k+13)*(180*k+37)*(300*k+61)
+%N A182133 Carmichael numbers of the form C = (30*n-17)*(90*n-53)*(150*n-89)
+%N A182088 Carmichael numbers of the form C = (30*n-29)*(60*n-59)*(90*n-89)*(180*n-179), where n is a natural number
+%N A182132 Carmichael numbers of the form C = (30*n-7)*(90*n-23)*(300*n-79)
+%N A182515 Carmichael numbers of the form C = 23*67*(66*n+23)
+%N A182206 Carmichael numbers of the form C = 37*73*(18*n+91)
+%N A212882 Carmichael numbers of the form n*(2*n - 1)*(p*n - p + 1)*(2*p*n - 2*p + 1), where p is odd, p from 3 to 23
+%N A383576 Characteristic function of numbers of the form k = m^e, where m is squarefree and (-1)^omega(k) = -mu(e)
+%N A383575 Characteristic function of numbers of the form k = m^e, where m is squarefree and (-1)^omega(k) = mu(e)
+%N A174051 Composite numbers of the form x*x+y*y, gcd(x,y) = 1
+
+%N A291566 Non-primitive balanced numbers: balanced numbers of the form m*n where m, n > 1 are both balanced
+%N A362505 NNmbers of the form x*y where x and y have the same set of decimal digits
+%N A134420 Composite squarefree numbers of the form k*k + 1
+%N A111304 Even numbers of the form floor( binomial(2*k, 2*j)/binomial(k, j))
+
+A177763	enumof2	0	0	0	m^5-s*s	, m>=1, s >= 0                                                                                          	Numbers of the form 
+A253913	enumof2	0	0	0	m^k + m	, with m >= 0 and k > 1                                                                                 	Numbers of the form 
+A247336	enumof2	0	0	0	m^k - k - 1	 with k > 0 and m > 1                                                                               	Numbers of the form 
+A099225	enumof2	0	0	0	m^k+k	, with m and k > 1                                                                                        	Numbers of the form 
+A146748	enumof2	0	0	0	n^k * k^n	, where n,k > 1                                                                                       	Numbers of the form 
+A303434	enumof2	0	0	0	x*(3*x-1)/2 + 3^y	 with x and y nonnegative integers                                                            	Numbers of the form 
+A303234	enumof2	0	0	0	x*(x+1)/2 + 2^y	 with x and y nonnegative integers                                                              	Numbers of the form 
+A303393	enumof2	0	0	0	x*(x+1)/2 + 5^y	 with x and y nonnegative integers                                                              	Numbers of the form 
+A272933	enumof2	0	0	0	x*x + 12*y*y                                                                                                    	Numbers of the form 
+A154777	enumof2	0	0	0	x*x + 2*y*y	 with positive integers x and y                                                                     	Numbers of the form 
+A243175	enumof2	0	0	0	x*x + x*y + 7*y*y                                                                                               	Numbers of the form 
+A166687	enumof2	0	0	0	x*x + y*y + 1	, x, y integers                                                                                   	Numbers of the form 
+A228880	enumof2	0	0	0	x*x*y*(2*x + y)                                                                                                 	Numbers of the form 
+A337133	enumof2	0	0	0	x*x+2*y^3+3*z^4	 for nonnegative x, y, z                                                                        	Numbers of the form 
+A324940	enumof2	0	0	0	x*x+7*y*y+7*z*z                                                                                                 	Numbers of the form 
+A243176	enumof2	0	0	0	x*x+x*y+8*y*y                                                                                                   	Numbers of the form 
+A243178	enumof2	0	0	0	x*x+x*y+9*y*y                                                                                                   	Numbers of the form 
+A336607	enumof2	0	0	0	x^3 + x*x*y + x*y*y + y^3	, where x and y are positive integers                                                 	Numbers of the form 
+A300381	enumof2	0	0	0	x^3+x*y+y^3	 where x,y>0                                                                                        	Numbers of the form 
+A155473	enumof2	0	0	0	x^3+y^5	, with x,y>0 and x<>y                                                                                   	Numbers of the form 
+A227855	enumof2	0	0	0	x^4 + 4*y^4                                                                                                     	Numbers of the form 
+A135797	enumof2	0	0	0	x^4 + 6*x*x y*y + y^4	 (where x,y are positive integers)                                                        	Numbers of the form 
+A299505	enumof2	0	0	0	x^4 + y*x^3 + y*y*x*x + y^3*x + y^4	, where x and y are positive integers                                       	Numbers of the form 
+A281980	enumof2	0	0	0	x^4 + y*y	 with x*x + 24*y a square, where x and y are nonnegative integers                                     	Numbers of the form 
+A135794	enumof2	0	0	0	x^5 + 10*x^3*y*y + 5*x*y^4	 (where x,y are integers)                                                           	Numbers of the form 
+A135793	enumof2	0	0	0	x^5-10*x^3*y*y+5*x*y^4	 (where x,y are integers)                                                               	Numbers of the form 
+A240974	enumof2	0	0	0	x^y - x*y	 for x > 1 and y > 1                                                                                  	Numbers of the form 
+A364000	enumof2	0	0	0	|2^i - 3^j - 1|/2	, i >= 1, j >= 1                                                                              	Numbers of the form 
+A363999	enumof2	0	0	0	|2^i - 3^j|	, for i >= 1, j >= 1                                                                                	Numbers of the form 
+A201544	enumof2	0	0	0	x*x + 2*y*y	 with positive integers x and y                                                                     	Oddbers of the form 
+A139538	enumof2	0	0	0	x*x+5*y*y	 not divisible by 5, with both x and y >== 1                                                          	Oddbers of the form 
+A135782	enumof2	0	0	0	3*x*y*y - x^3	 (where x,y are positive integers)                                                                	Posbers of the form 
+A084917	enumof2	0	0	0	3*y*y - x*x                                                                                                     	Posbers of the form 
+A084916	enumof2	0	0	0	x*x - 3*y*y                                                                                                     	Posbers of the form 
+A093193	enumof2	0	0	0	x^3 + 2*y^3                                                                                                     	Posbers of the form 
+A135781	enumof2	0	0	0	x^3-3*x y*y	 (where x,y are positive integers)                                                                  	Posbers of the form 
+A135789	enumof2	0	0	0	x^4 - 6 * x*x * y*y + y^4	 (where x,y are integers)                                                             	Posbers of the form 
+A080761	enumof2	0	0	0	y*y - x^3	, x and y >= 1                                                                                        	Posbers of the form 
+A103543	enumof2	0	0	0	j*2^(4*k-2) - k	 for k >=2 and j >= 1                                                                           	numbers of the form 
+A380549	enumof2	0	0	0	i + 3*j + 4*i*j	 for i, j >= 1                                                                                  	numbers of the form 
+A243185	enumof2	0	0	0	-2*x*x+3*x*y+3*y*y                                                                                              	NNmbers of the form 
+A243190	enumof2	0	0	0	-2*x*x+6*x*y+3*y*y                                                                                              	NNmbers of the form 
+A243184	enumof2	0	0	0	2*x*x+3*x*y-3*y*y                                                                                               	NNmbers of the form 
+A243189	enumof2	0	0	0	2*x*x + 6*x*y - 3*y*y                                                                                           	NNmbers of the form 
+A326917	enumof2	0	0	0	4*x*(x+1) - y*(y+1)/2	T(y) with 0 <= x, 0 <= y, where T() denotes a triangular number                           	NNmbers of the form 
+A088915	enumof2	0	0	0	m*n*(m+n)	 with integers m,n                                                                                    	NNmbers of the form 
+A152412	enumof2	0	0	0	s*s-m^5	, m>=1                                                                                                  	NNmbers of the form 
+A243188	enumof2	0	0	0	x*x + 6*x*y - 6*y*y                                                                                             	NNmbers of the form 
+A259263	enumof2	0	0	0	(m*k)^2/(m*m-k*k)	 for distinct integers m and k                                                                	Numbers of the form 
+A111261	enumof2	0	0	0	(m/n)^(m-n)	 with m >=n                                                                                         	Numbers of the form 
+A111260	enumof2	0	0	0	(m^n)/(n^m)	 with m > 0 and n>1                                                                                 	Numbers of the form 
+A321491	enumof2	0	0	0	(x+y)*(x*x+y*y)	, with integers x > y > 0                                                                       	Numbers of the form 
+A331531	enumof2	0	0	0	(x*x) | (y*y)	 with x, y >= 0 (where OR denotes the bitwise OR operator)                                        	Numbers of the form 
+A246445	enumof2	0	0	0	(x^y - x)/y	 for positive x,y                                                                                   	Numbers of the form 
+A166265	enumof2	0	0	0	1+x*x+y*y	x, y integers >= 1                                                                                    	Numbers of the form 
+A083909	enumof2	0	0	0	10^(m-k)*(10^(m+k+1)-10^k)	, m, k >= 0                                                                         	Numbers of the form 
+A319281	enumof2	0	0	0	16^i*(16*j + 1)                                                                                                 	Numbers of the form 
+A319282	enumof2	0	0	0	16^i*(16*j + 15)                                                                                                	Numbers of the form 
+A260488	enumof2	0	0	0	2^m * (6*k + 1)	 for m, k >= 0, and 0                                                                           	Numbers of the form 
+A250482	enumof2	0	0	0	2^x + y*y	, with x and y >=0                                                                                    	Numbers of the form 
+A242655	enumof2	0	0	0	2*x*x+2*x*y+3*y*y	 with x and y nonnegative                                                                     	Numbers of the form 
+A243182	enumof2	0	0	0	2*x*x+2*x*y+5*y*y                                                                                               	Numbers of the form 
+A202822	enumof2	0	0	0	3*(x*x + x*y + y*y + x + y) + 1	 where x and y are integers                                                     	Numbers of the form 
+A250483	enumof2	0	0	0	3^x + y^3	  with x, y >= 0                                                                                      	Numbers of the form 
+A135783	enumof2	0	0	0	3*x y*y+x^3	 (where x,y are positive integers)                                                                  	Numbers of the form 
+A243177	enumof2	0	0	0	3*x*x+2*x*y+3*y*y                                                                                               	Numbers of the form 
+A243179	enumof2	0	0	0	3*x*x+x*y+3*y*y                                                                                                 	Numbers of the form 
+A380140	enumof2	0	0	0	4*j*k - j - k	 for j, k >= 2                                                                                    	Numbers of the form 
+A250545	enumof2	0	0	0	4^x + y^4	 with x, y >= 0                                                                                       	Numbers of the form 
+A124934	enumof2	0	0	0	4*m*n - m - n	, where m, n are positive integers                                                                	Numbers of the form 
+A332335	enumof2	0	0	0	4*x*x + 2*x*y + 7*y*y                                                                                           	Numbers of the form 
+A219907	enumof2	0	0	0	4*x*x+2*x*y+7*y*y	, x, y >= 0                                                                                   	Numbers of the form 
+A243181	enumof2	0	0	0	4*x*x+9*x*y-11*y*y                                                                                              	Numbers of the form 
+A135796	enumof2	0	0	0	4*x^3*y+4*y*x^3	 (where x,y are positive integers)                                                              	Numbers of the form 
+A250546	enumof2	0	0	0	5^x + y^5	 with x, y >= 0                                                                                       	Numbers of the form 
+A250547	enumof2	0	0	0	6^x + y^6	 with x, y >= 0                                                                                       	Numbers of the form 
+A250715	enumof2	0	0	0	7^x + y^7	 with x, y >= 0                                                                                       	Numbers of the form 
+A243180	enumof2	0	0	0	8*x*x+x*y-8*y*y                                                                                                 	Numbers of the form 
+A155717	enumof2	0	0	0	a*a + 7*b*b	 for some positive integers a,b                                                                     	Numbers of the form 
+A154778	enumof2	0	0	0	a*a + 5*b*b	 with positive integers a,b                                                                         	Numbers of the form 
+A111925	enumof2	0	0	0	a*a + b^4	, with a,b > 0                                                                                        	Numbers of the form 
+       	enumof2	0	0	0	                                                                                                                	                    
+A188633	enumof2	0	0	0	2^k * m	, with k > 1 and m an odd composite number                                                              	Numbers of the form 
+A095810	enumof2	0	0	0	2^j (mod 10^k)	, where j >= 0 and k >= 1, with leading zeros suppressed                                        	Numbers of the form 
+A303541	enumof2	0	0	0	k*k + BI(2*m, m)	 with k and m nonnegative integers                                                            	Numbers of the form 
+A241662	enumof2	0	0	0	m * 10^k	 where gcd(10, m) = 1 and k >= 0 and m > 0                                                            	Numbers of the form 
+A276281	enumof2	0	0	0	Bell(i)*Bell(j)                                                                                                 	Numbers of the form 
+A276828	enumof2	0	0	0	Bell(i)*Fibonacci(j)                                                                                            	Numbers of the form 
+A169694	enumof2	0	0	0	FI(i).+(FI(j))	, where i and j have opposite parity and |i-j| > 1                                              	Numbers of the form 
+A336192	enumof2	0	0	0	ab such that phi(ab) = a*b - 1 where ab is the concatenation of a and b                                         	Numbers of the form 
+A336237	enumof2	0	0	0	ab such that phi(ab) = a*b where ab is the concatenation of a and b                                             	Numbers of the form 
+A337523	enumof2	0	0	0	ab such that uphi(ab) = a*b where ab is the concatenation of a and b                                            	Numbers of the form 
+A126032	enumof2	0	0	0	b^m/2	 for even b and odd m > 2                                                                                 	Numbers of the form 
+A229153	enumof2	0	0	0	c * m*m	, where m > 0 and c is composite and squarefree                                                         	Numbers of the form 
+A257671	enumof2	0	0	0	floor(r^i + s^j), where r = (1 + sqrt(5))/2, s = r*r, i >= 0, j >= 0                                            	Numbers of the form 
+A257672	enumof2	0	0	0	floor(r^i) + floor(s^j), where r = (1 + sqrt(5))/2, s = r*r, i >= 0, j >= 0                                     	Numbers of the form 
+
+
+%N A331219 Pnmbers of the form u * v where the binary representations of u and of v have the same number of 0's and the same number of 1's
+%N A331221 Pnmbers of the form u * v where the decimal representations of u and of v have the same number of digits d for d = 0..9
+%N A331220 Pnmbers of the form u * v where the ternary representations of u and of v have the same number of digits d for d = 0..2
+%N A304122 Squarefree numbers of the form 2^k + 5^m,  where k is a positive integer and m is a nonnegative integer
+%N A368084 Squarefree numbers of the form k*k + k + 1 such that k*k + k + 2 is also squarefree
+%N A308464 Squarefree numbers of the form m*m + 4
+
+%N A281623 Numbers of the form 2^phi(m) + 1	, where phi = A000010 = Euler totient function
+%N A181711 Numbers of the form m*(2^k-1), where m = 2^(k-1)*(2^k-1) is a perfect number (A000396)
+%N A337455 Numbers of the form m + bigomega(m) with m a positive integer
+%N A358973 Numbers of the form m + omega(m) with m a positive integer
+%F A168027 Positive numbers of the form 4*n*n + 3*n + 1 with no more than two divisors
+%F A168022 Positive numbers of the form 4*n*n - 3*n + 1 with no more than two divisors
+%F A168025 Positive numbers of the form 4*n*n - 7*n + 4 with no more than two divisors
+%F A168023 Positive numbers of the form 4*n*n - 9*n + 6 with no more than two divisors
+%N A081421 Quotient after one division by 2 of numbers of the form 3^(2*n) + 5^(2*n)
+%N A285804 Composite numbers of the form 12*k+5 or 12*k+7 for some k
+%N A079321 Composite numbers of the form 1^1 * 2^2 * 3^3 * 4^4 * ... * n^n + 1
+%N A079322 Composite numbers of the form 1^1 * 2^2 * 3^3 * 4^4 * ... * n^n + 11
+%N A134406 Composite numbers of the form k*k + 1
+%N A339480 Numbers of the form (k*k - 2) / 2 where k - 1 and k + 1 are both odd composite numbers
+%N A272355 Numbers of the form Fibonacci(12*n)/(144*n)
+%N A209303 Numbers of the form x*x + SumOfSquaredDigits(x)
+%N A225065 Numbers of the form n*n plus the sum of squared digits of n*n
+%N A169754 Numbers of the form k^k which contain k as a substring in base 10
+%N A329170 Numbers of the form k*k + 2 that are the sums of two squares
+%N A117746 Numbers of the form k*k - k - 1 whose digit sum is also a number of the form k*k - k - 1
+%N A144858 Numbers of the form 2^(n-1)*(2^n - 1) which are not perfect numbers
+%N A094357 Numbers of the form k*k -1 such that every partial product is also of the form k*k-1
+%N A273999 Numbers of the form n*n+1	 that divide 4^n-1

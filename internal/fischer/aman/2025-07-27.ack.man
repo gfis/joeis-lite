@@ -1,0 +1,27 @@
+---- 2025-07-27 23:07:30
+A088704	polya	0	"[1]"	"1,x,B,log,dif,<1,+"	new A075864()
+A092300	lambdan	0	n -> ZV(2).*(E089989(n))
+A158378	lambdan	1	n -> n == 1 ? ZV(0) : GCD(D051904(n), D051903(n))	for n >= 2	"0"
+A168360	sintrif	0	(term, n) -> ZV(n).-(term)	""	new A079777()	n-b(n), where b(n) = A079777
+A216351	poly	0	"[1],[1,1]"	"p1,p1,n,1,-,pow,pow,*n!"
+A221150	lambdan	0	n -> CV(n + 2)./(CV(2).+(CR.PHI)).floor().-(CV(n + 1)./(CV(2).+(CR.PHI)).floor())
+A221151	lambdan	0	n -> CV(n + 2)./(CV(3).+(CR.PHI)).floor().-(CV(n + 1)./(CV(3).+(CR.PHI)).floor())
+A221152	lambdan	0	n -> CV(n + 2)./(CV(4).+(CR.PHI)).floor().-(CV(n + 1)./(CV(4).+(CR.PHI)).floor())
+A230603	lambdan	0	n -> CV(n + 2)./(CV(3).-(CR.PHI)).floor().-(CV(n + 1)./(CV(3).-(CR.PHI)).floor())
+A265359	lambdan	0	n -> ZV(n).-(E265409(n))	"0"
+A265612	lambdan	0	n -> F000108(n + 1).*(n).*(1 + 3*n)./(6 + 2*n)	a(n) = CatalanNumber(n+1)*n*(1+3*n)/(6+2*n).
+A265613	lambdan	0	n -> F000108(n + 1).*(n).*(1 + n).*(2 + 3*n)./(4 + n)./(3 + n)	a(n) = CatalanNumber(n+1)*n*(3*n^2+5*n+2)/((4+n)*(3+n)).A298244	poly	0	"[1]"	"x,sec,x,tan,+,n,pow,*n!"
+A270919	polya	0	"[1]"	"1,x,B,n,pow,/"	new A002448()
+A320957	poly	0	"[1],[0,3]"	"2,p1,sec,+,p1,tan,+,3,x,sec,*,+,3,x,tan,*,+,*n!,6,/"
+A326718	poly	0	"[1],[0,2]"	"x,tanh,p1,x,tanh,*,1,-,<1,x,sech,^2,*,+,1,-,8,/,*n!"
+A333472	polya	0	"[1],[1,1]"	"x,p1,/,B,n,pow"	new A000108()
+A333579	poly	0	"[1],[1,1,1],[1,-1,1]"	"p1,p2,/,n,pow"
+A343276	poly	0	"[1],[1,1],[-1,1]"	"p1,x,exp,*,<1,p2,^3,/,neg,*n!"
+A360469	lambdan	3	n -> ZV(n).-(D007814(n + 2))	(due to _Jinyuan Wang_)
+A361036	poly	0	"[1],[1,1]"	"p1,p1,n,pow,p1,n,pow,<1,exp,*,*n!"
+A362831	lambdan	1	n -> (E362721(n - 1).-((n - 1) & 1))./(2)
+A362832	lambdan	1	n -> (E362719(n - 1).-((n - 1) & 1))./(2)
+A362833	lambdan	1	n -> (E362806(n - 1).-((n - 1) & 1))./(2)
+---- 2025-07-27 23:11:53
+A370259	lambdan	1	n -> E342205(n).-(1)./(ZV(n).^(3))
+A372332	lambdan	1	n -> ZV(Functions.DIGIT_LENGTH.i(2, E372331(n)) - 1)

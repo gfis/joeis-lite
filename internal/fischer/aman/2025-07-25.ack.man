@@ -1,0 +1,152 @@
+---- 2025-07-25 19:46:04
+A167483	filter	1	new A000040()	(k, p) -> (String.valueOf(k) + String.valueOf(PM(k))).matches("[2357]+")	Primes prime(n) such that n and prime(n) have only prime digits.
+A235154	filter	1	new A000040()	p -> { final int[] cs = ZUtils.digitCounts(p); int sum = 0; for (int ic = 0; ic < 10; ++ic) { if (cs[ic] > 0) { sum++; }} return sum == 2; }	Primes which have one or more occurrences of exactly two different digits.      nonn,base       1..12000        nyi     _Colin Barker_
+A235155	filter	1	new A000040()	p -> { final int[] cs = ZUtils.digitCounts(p); int sum = 0; for (int ic = 0; ic < 10; ++ic) { if (cs[ic] > 0) { sum++; }} return sum == 3; }	Primes which have one or more occurrences of exactly three different digits.    nonn,base       1..10000        nyi     _Colin Barker_
+A235156	filter	1	new A000040()	p -> { final int[] cs = ZUtils.digitCounts(p); int sum = 0; for (int ic = 0; ic < 10; ++ic) { if (cs[ic] > 0) { sum++; }} return sum == 4; }	Primes which have one or more occurrences of exactly four different digits.     nonn,base       1..1000 nyi     _Colin Barker_
+A235157	filter	1	new A000040()	p -> { final int[] cs = ZUtils.digitCounts(p); int sum = 0; for (int ic = 0; ic < 10; ++ic) { if (cs[ic] > 0) { sum++; }} return sum == 5; }	Primes which have one or more occurrences of exactly five different digits.     nonn,base       1..2500 nyi     _Colin Barker_
+A235158	filter	1	new A000040()	p -> { final int[] cs = ZUtils.digitCounts(p); int sum = 0; for (int ic = 0; ic < 10; ++ic) { if (cs[ic] > 0) { sum++; }} return sum == 6; }	Primes which have one or more occurrences of exactly six different digits.      nonn,base       1..2000 nyi     _Colin Barker_
+A235159	filter	1	new A000040()	p -> { final int[] cs = ZUtils.digitCounts(p); int sum = 0; for (int ic = 0; ic < 10; ++ic) { if (cs[ic] > 0) { sum++; }} return sum == 7; }	Primes which have one or more occurrences of exactly seven different digits.    nonn,base       1..2000 nyi     _Colin Barker_
+A301865	decexp	0	() -> CR.valueOf(63).divide(CR.valueOf(64)).pow(4).multiply(CR.FIVE.multiply(CR.PI).divide(CR.valueOf(16)).pow(2))
+A345737	decexpr	0	() -> REALS.atan(X240358)
+A346915	decexp	1	() -> CR.TWO.add(CR.THREE.divide(X051491.subtract(CR.ONE)))
+A346916	decexp	0	() -> CR.ONE.divide(X051491.subtract(CR.ONE))
+A348720	decexp	1	() -> CR.PI./(13).cos().+(CR.PI./(13).*(5).cos()).*(2)	2*(cos(Pi/13) + cos(5*Pi/13))
+A348724	decexp	0	() -> CR.PI./(19).*(3).cos().+(CR.PI./(19).*(5).cos()).-(CR.PI./(19).*(2).cos()).*(2).-(1)	2*(cos(3*Pi/19) + cos(5*Pi/19) - cos(2*Pi/19)) - 1
+A348725	decexp	1	() -> CR.PI./(19).cos().+(CR.PI./(19).*(7).cos()).-(CR.PI./(19).*(8).cos()).*(2).-(1)	2*(cos(Pi/19) + cos(7*Pi/19) - cos(8*Pi/19)) - 1
+A373562	decexp	0	() -> X078127.subtract(X366349)
+A383466	holos	0	[0,1,-3,3,-1]	1,7,32,77	0	0
+A384283	decexp	1	() -> CR.FIVE.add(CR.FOUR.multiply(CR.FIVE.sqrt())).add(CR.FIVE.multiply(CR.TWO.multiply(CR.valueOf(650).add(CR.valueOf(290).multiply(CR.FIVE.sqrt())).sqrt().subtract(CR.FIVE.sqrt()).subtract(CR.ONE)).sqrt())).divide(CR.SIX)
+A384284	decexp	2	() -> CR.valueOf(20).add(CR.valueOf(25).multiply(CR.THREE.sqrt())).add(CR.valueOf(725).add(CR.valueOf(310).multiply(CR.FIVE.sqrt())).sqrt()).divide(CR.FOUR)
+A384285	decexp	2	() -> CR.valueOf(45).add(CR.valueOf(17).multiply(X002163)).add(CR.TEN.multiply(CR.TWO.multiply(CR.valueOf(650).add(CR.valueOf(290).multiply(X002163)).sqrt().subtract(X002163).subtract(CR.ONE)).sqrt())).divide(CR.valueOf(12))
+A384286	decexp	2	() -> CR.valueOf(15).multiply(CR.THREE.sqrt()).add(CR.valueOf(650).add(CR.valueOf(290).multiply(CR.FIVE.sqrt())).sqrt()).divide(CR.TWO)
+A384287	decexp	1	() -> CR.TWO.add(CR.FOUR.divide(CR.THREE).multiply(CR.SQRT2))
+A384307	decexp	1	() -> X132696.sqrt().multiply(X073006).divide(X002581)
+A384425	decexp	1	() -> CR.valueOf(33367).multiply(CR.PI.pow(7)).divide(CR.valueOf(100776960))
+A384457	decexp	1	() -> Zeta.zeta(3).add(CR.PI.pow(2).multiply(CR.TWO.log()).add(CR.TWO.log().pow(3)).divide(CR.THREE))
+A384458	decexp	0	() -> CR.PI.multiply(CR.TWO.log()).pow(2).divide(CR.EIGHT).add(CR.FIVE.multiply(Zeta.zeta(4)).divide(CR.EIGHT)).subtract(CR.NINE.multiply(Zeta.zeta(3)).multiply(CR.TWO.log()).divide(CR.EIGHT)).subtract(CR.TWO.log().pow(4).divide(CR.FOUR))
+A384459	decexp	0	() -> X016578.pow(2)
+A384460	decexp	0	() -> CR.NINE.multiply(Zeta.zeta(3)).add(CR.FOUR.multiply(CR.TWO.log().pow(3))).subtract(CR.PI.pow(2).multiply(CR.TWO.log())).divide(CR.valueOf(12))
+A384461	decexp	2	() -> CR.valueOf(979).multiply(Zeta.zeta(6)).divide(CR.valueOf(24)).add(CR.THREE.multiply(Zeta.zeta(3).pow(2)))
+A384462	decexp	1	() -> CR.valueOf(93).multiply(Zeta.zeta(6)).divide(CR.valueOf(16)).subtract(CR.FIVE.multiply(Zeta.zeta(3).pow(2)).divide(CR.TWO))
+A384473	decexpr	3	() -> CR.PI.add(REALS.atan(CR.THREE.subtract(CR.THREE.sqrt()).add(CR.SIX.multiply(CR.THREE.sqrt()).subtract(CR.FOUR).sqrt()).divide(CR.THREE.subtract(CR.THREE.sqrt()).subtract(CR.SIX.multiply(CR.THREE.sqrt()).subtract(CR.FOUR).sqrt())))).multiply(CR.valueOf(180)).divide(CR.PI)
+A384474	decexpr	1	() -> CR.PI.add(REALS.atan(CR.THREE.subtract(CR.THREE.sqrt()).add(CR.SIX.multiply(CR.THREE.sqrt()).subtract(CR.FOUR).sqrt()).divide(CR.THREE.subtract(CR.THREE.sqrt()).subtract(CR.SIX.multiply(CR.THREE.sqrt()).subtract(CR.FOUR).sqrt()))))
+A384477	decexpr	3	() -> CR.valueOf(90).multiply(CR.PI.add(CR.FOUR.multiply(REALS.acsc(CR.TWO.divide(CR.TWO.subtract(CR.TWO.multiply(CR.FIVE.subtract(CR.TWO.multiply(CR.THREE.sqrt())).add(CR.ZERO.subtract(CR.valueOf(187)).add(CR.valueOf(108).multiply(CR.THREE.sqrt())).sqrt())).sqrt()).sqrt()))))).divide(CR.PI)
+A384478	decexpr	1	() -> CR.PI.add(CR.FOUR.multiply(REALS.acsc(CR.TWO.divide(CR.TWO.subtract(CR.TWO.multiply(CR.FIVE.subtract(CR.TWO.multiply(CR.THREE.sqrt())).add(CR.ZERO.subtract(CR.valueOf(187)).add(CR.valueOf(108).multiply(CR.THREE.sqrt())).sqrt())).sqrt()).sqrt())))).divide(CR.TWO)
+A384624	decexp	1	() -> CR.FIVE.add(CR.FOUR.multiply(CR.FIVE.sqrt())).divide(CR.THREE)
+A384625	decexp	2	() -> CR.TEN.add(CR.FIVE.multiply(CR.TEN.add(X002163).add(CR.valueOf(75).add(CR.valueOf(30).multiply(X002163)).sqrt())).divide(CR.TWO).sqrt())
+A384627	decexp	0	() -> CR.ONE.divide(CR.valueOf(999).pow(2))
+A384694	holos	0	[0,-4,4,-1]	0,0,3,12,35	0	0
+A384853	holos	1	[0,-3,4,-1]	1,5,9	0	0
+A384871	decexp	1	() -> CR.FIVE.divide(CR.valueOf(12)).multiply(CR.valueOf(11).add(CR.FIVE.multiply(X002163)))
+A384872	decexp	2	() -> CR.FIVE.add(CR.valueOf(15).divide(CR.FOUR).multiply(CR.THREE.sqrt())).add(CR.SEVEN.divide(CR.FOUR).multiply(CR.valueOf(25).add(CR.TEN.multiply(CR.FIVE.sqrt())).sqrt()))
+A384909	decexp	2	() -> CR.TEN.add(CR.EIGHT.multiply(CR.FIVE.sqrt())).add(CR.valueOf(15).multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).divide(CR.SIX)
+A384910	decexp	2	() -> CR.FIVE.divide(CR.valueOf(12)).multiply(CR.valueOf(11).add(CR.FIVE.multiply(CR.FIVE.sqrt())).add(CR.SIX.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())))
+A384911	decexp	2	() -> CR.valueOf(60).add(CR.TEN.multiply(CR.valueOf(190).add(CR.valueOf(49).multiply(X002163)).add(CR.valueOf(21).multiply(CR.valueOf(75).add(CR.valueOf(30).multiply(X002163)).sqrt()))).sqrt()).divide(CR.FOUR)
+A384952	decexp	2	() -> CR.valueOf(45).add(CR.valueOf(17).multiply(CR.FIVE.sqrt())).add(CR.valueOf(15).multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).divide(CR.SIX)
+A384988	holos	1	[0,-24,50,-35,10,-1]	0,1,10,55,250	0	0
+A385256	decexp	1	() -> CR.SQRT2.multiply(CR.FIVE.divide(CR.THREE).add(CR.ONE.add(CR.THREE.sqrt()).sqrt()))
+A385257	decexp	2	() -> CR.SIX.add(CR.FIVE.multiply(CR.THREE.sqrt()))
+A385258	decexp	1	() -> CR.TWO.divide(CR.THREE).multiply(CR.THREE.add(CR.TWO.multiply(CR.SQRT2)).add(CR.TWO.multiply(CR.TWO.add(CR.SQRT2).add(CR.valueOf(146).add(CR.valueOf(103).multiply(CR.SQRT2)).sqrt())).sqrt()))
+A385259	decexp	2	() -> CR.TEN.add(CR.SIX.multiply(CR.THREE.sqrt()))
+A385260	decexp	2	() -> CR.TEN.add(CR.EIGHT.multiply(X002163)).add(CR.FIVE.multiply(CR.TWO.multiply(CR.valueOf(650).add(CR.valueOf(290).multiply(X002163)).sqrt().subtract(X002163).subtract(CR.ONE)).sqrt())).divide(CR.SIX)
+A385261	decexp	2	() -> CR.valueOf(20).add(CR.valueOf(15).multiply(CR.THREE.sqrt())).add(CR.valueOf(25).add(CR.TEN.multiply(CR.FIVE.sqrt())).sqrt()).divide(CR.TWO)
+A385262	decexp	2	() -> CR.FIVE.divide(CR.valueOf(12)).multiply(CR.valueOf(11).add(CR.FIVE.multiply(X002163)).add(CR.TWO.multiply(CR.TWO.multiply(CR.valueOf(650).add(CR.valueOf(290).multiply(X002163)).sqrt().subtract(X002163).subtract(CR.ONE)).sqrt())))
+A385263	decexp	2	() -> CR.FIVE.add(CR.valueOf(35).multiply(CR.THREE.sqrt()).add(CR.SEVEN.multiply(CR.valueOf(25).add(CR.TEN.multiply(CR.FIVE.sqrt())).sqrt())).divide(CR.FOUR))
+A385264	decexp	2	() -> CR.valueOf(45).add(CR.valueOf(17).multiply(X002163)).add(CR.FIVE.multiply(CR.TWO.multiply(CR.valueOf(650).add(CR.valueOf(290).multiply(X002163)).sqrt().subtract(X002163).subtract(CR.ONE)).sqrt())).divide(CR.SIX)
+A385450	decexpr	0	() -> CR.TWO.multiply(CR.valueOf(110).add(CR.valueOf(110).multiply(CR.valueOf(75).multiply(CR.FIVE.sqrt()).add(CR.valueOf(151))).sqrt().multiply(REALS.acsc(CR.TWO.multiply(CR.ZERO.subtract(CR.ONE).add(CR.FIVE.sqrt())).sqrt()))).add(CR.valueOf(110).multiply(CR.valueOf(75).multiply(CR.FIVE.sqrt()).subtract(CR.valueOf(151))).sqrt().multiply(REALS.atanh(CR.TWO.multiply(CR.FIVE.sqrt()).subtract(CR.THREE).divide(CR.valueOf(11)).sqrt()))).divide(CR.valueOf(605)))
+A385488	decexp	2	() -> CR.TEN.multiply(CR.THREE.sqrt()).add(CR.THREE.multiply(CR.valueOf(25).add(CR.TEN.multiply(CR.FIVE.sqrt())).sqrt()))
+A385496	decexp	0	() -> CR.ONE.subtract(X019775)
+A385508	decexpr	1	() -> CR.TWO.multiply(CR.valueOf(4015).add(CR.SIX.multiply(CR.valueOf(110).multiply(CR.valueOf(1541).multiply(CR.FIVE.sqrt()).subtract(CR.valueOf(3351))).sqrt()).multiply(REALS.atanh(CR.TWO.multiply(CR.FIVE.sqrt()).subtract(CR.THREE).divide(CR.valueOf(11)).sqrt()))).add(CR.SIX.multiply(CR.valueOf(110).multiply(CR.valueOf(3351).add(CR.valueOf(1541).multiply(CR.FIVE.sqrt()))).sqrt()).multiply(REALS.atan(CR.THREE.add(CR.TWO.multiply(CR.FIVE.sqrt())).divide(CR.valueOf(11)).sqrt())))).divide(CR.valueOf(6655))
+A385509	decexp	1	() -> CR.valueOf(233).add(CR.valueOf(90).multiply(X002163)).add(CR.valueOf(12).multiply(CR.valueOf(50).add(CR.valueOf(20).multiply(X002163)).sqrt())).sqrt().divide(CR.valueOf(12))
+A385510	decexp	1	() -> CR.FOUR.add(CR.THREE.sqrt()).add(CR.valueOf(25).divide(CR.FOUR).add(CR.FIVE.multiply(CR.FIVE.sqrt()).divide(CR.TWO)).sqrt())
+A385534	decexp	1	() -> CR.valueOf(257).add(CR.valueOf(90).multiply(X002163)).add(CR.valueOf(24).multiply(CR.valueOf(50).add(CR.valueOf(20).multiply(X002163)).sqrt())).sqrt().divide(CR.valueOf(12))
+A385535	decexp	1	() -> CR.THREE.add(CR.TWO.multiply(CR.THREE.sqrt())).add(CR.valueOf(25).divide(CR.FOUR).add(CR.FIVE.multiply(CR.FIVE.sqrt()).divide(CR.TWO)).sqrt())
+A385568	decexp	1	() -> X092040.pow(3)
+A385569	decexp	1	() -> CR.SQRT2.add(CR.NINE.multiply(CR.THREE.sqrt())).divide(CR.SIX)
+A385578	decexp	1	() -> X131594.add(X104956)
+A385647	decexp	0	() -> CR.ONE.subtract(X002162.divide(CR.TWO))
+A385695	decexp	1	() -> X102769.add(X179552)
+A385696	decexp	2	() -> CR.FIVE.multiply(CR.THREE.sqrt()).add(CR.valueOf(11).multiply(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt())).divide(CR.FOUR)
+A385802	decexp	1	() -> X102769.add(CR.TWO.multiply(X179552))
+A385803	decexp	2	() -> CR.FIVE.divide(CR.TWO).multiply(CR.THREE.sqrt().add(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt()))
+A385804	decexp	1	() -> X377697.pow(2)
+A385805	decexp	2	() -> CR.THREE.divide(CR.FOUR).multiply(CR.FIVE.multiply(CR.THREE.sqrt()).add(CR.THREE.multiply(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt())))
+A385857	decexp	1	() -> X102208.subtract(CR.TWO.multiply(X179552))
+A385868	holos	0	[0,-1,0,0,0,1,0,0,0,9,0,0,0,32,0,0,0,9,0,0,0,15,0,0,0,-1]	1,1,2,4,7,13,39,66,110,200,604,1032,1741,3149,9476,16202,27337,49461,148841,254466,429308,776774,2337580,3996430	0	0
+A385897	holos	0	[0,1,-5,10,-10,5,-1]	1,61,361,1201,3001	0	0
+A385898	holos	0	[0,-1,6,-15,20,-15,6,-1]	1,272,2763,13024,42125,108576	0	0
+A386000	decexp	1	() -> X102208.subtract(CR.THREE.multiply(X179552))
+A386001	decexp	1	() -> CR.THREE.multiply(X102771).add(CR.FIVE.multiply(X120011))
+A386002	decexp	1	() -> X102208.subtract(CR.THREE.multiply(X179552)).add(X020829)
+A386003	decexp	1	() -> CR.THREE.multiply(X102771).add(CR.SEVEN.multiply(X120011))
+A386014	holos	1	[0,1000,-1000,-110,110,1,-1]	22,832,202,89302,2002	0	0
+A386227	holos	0	[0,64,0,-48,0,12,0,-1]	1,1,3,6,20,40,152,224,1024	0	0
+A386292	holos	9	[0,-1,1,0,0,0,0,0,0,1,-1]	1,5,11,23,34,52,68,94,109,131,151,181,200,226,250,284	0	0
+A386293	holos	0	[0,-36,13,-1]	0,7,73	0	0
+A386341	parmof3	1	A329760	3	6
+A386342	parmof3	1	A329760	3	7
+A386343	parmof3	1	A329760	3	8
+A386344	parmof3	1	A329760	3	9
+A386345	parmof3	1	A329760	4	5
+A386346	parmof3	1	A329760	4	6
+A386347	parmof3	1	A329760	4	7
+A386348	parmof3	1	A329760	4	8
+A386349	parmof3	1	A329760	4	9
+A386350	parmof3	1	A329760	5	6
+A386351	parmof3	1	A329760	5	7
+A386352	parmof3	1	A329760	5	8
+A386353	parmof3	1	A329760	5	9
+A386354	parmof3	1	A329760	6	7
+A386355	parmof3	1	A329760	6	8
+A386356	parmof3	1	A329760	6	9
+A386357	parmof3	1	A329760	7	8
+A386358	parmof3	1	A329760	7	9
+A386359	holos	0	[0,36,-49,14,-1]	0,1,13,151	0	0
+A386379	multia	0	"1"	(self, n) -> SU(0, (n - 1)/5, k -> self.a(5*k).*(self.a(n - 1 - 5*k)))
+A386380	multia	0	"1"	(self, n) -> SU(0, (n - 1)/6, k -> self.a(6*k).*(self.a(n - 1 - 6*k)))
+A386392	convprod	0	4	new A002296()
+A386394	holos	1	[0,-800,57,-1]	7,199	0	0
+A386396	multia	0	"1"	(self, n) -> SU(0, (n-1)/7, k -> self.a(7*k).*(self.a(n - 1 - 7*k)))
+A386397	holos	0	[0,-48,19,-1]	1,7	0	0
+A386401	rambdan	1	n -> new Q(SIGMA(n).*(PHI(n)), (ZV(n).*(n)))	nyi F	a(n) = numerator(sigma(n)*phi(n)/n^2).	nonn,easy,frac,new	1..60	nyi	_Stefano Spezia_
+A386402	rambdad	1	A386401
+A386403	decexp	0	() -> Zeta.zeta(3)./(3)	Decimal expansion of zeta(3)/3.	nonn,cons,new	0..100	nyi	_R. J. Mathar_
+A386404	decexp	0	() -> Zeta.zeta(5)./(5)	Decimal expansion of zeta(5)/5.	nonn,cons,new	0..101	nyi	_R. J. Mathar_
+A386411	decexp	1	() -> X377275.add(CR.TEN.multiply(X020829))
+A386412	decexp	2	() -> CR.THREE.add(CR.valueOf(13).multiply(CR.THREE.sqrt()).divide(CR.TWO))
+A386413	convprod	0	2	new A078532()
+A386414	convprod	0	2	new A008931()
+A386415	convprod	0	2	new A386416()
+A386416	lambdan	0	n -> BI(new Q(8*n + 1, 3), n)./(8*n + 1).*(ZV(9).^(n)).num()	a(n) = 9^n * binomial((8*n+1)/3,n)/(8*n+1).
+A386438	lambdan	1	n -> SIGMA(n).+(Functions.OMEGA.z(n)).-(RD(n, d -> PP(d) ? new Q(1, d) : QV(0)).*(n).num())	a(n) = sigma(n) + omega(n) - n * Sum_{p|n, p prime} 1 / p.	nonn,new	1..90	nyi	_Wesley Ivan Hurt_
+A386443	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(k).^(2).*(self.a(k)).*(self.a(n - 1 - k))))
+A386444	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(k).^(3).*(self.a(k)).*(self.a(n - 1 - k))))
+A386445	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(k).^(4).*(self.a(k)).*(self.a(n - 1 - k))))
+A386446	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(k).^(5).*(self.a(k)).*(self.a(n - 1 - k))))
+A386447	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(k).^(6).*(self.a(k)).*(self.a(n - 1 - k))))
+A386448	poly	0	"[1],[1,-1]"	"1,p1,A,dif,dif,<3,-,/"
+A386449	poly	0	"[1],[1,-1]"	"1,p1,A,dif,dif,dif,<4,-,/"
+A386450	poly	0	"[1],[1,-1]"	"1,p1,A,dif,dif,dif,dif,<5,-,/"
+A386451	poly	0	"[1],[1,-1]"	"1,p1,A,dif,dif,dif,dif,dif,<6,-,/"
+A386452	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> BI(k + 1, 2).*(self.a(k)).*(self.a(n - 1 - k))))
+A386453	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> BI(k + 2, 3).*(self.a(k)).*(self.a(n - 1 - k))))
+A386454	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> BI(k + 3, 4).*(self.a(k)).*(self.a(n - 1 - k))))
+A386455	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> BI(k + 4, 5).*(self.a(k)).*(self.a(n - 1 - k))))
+A386459	decexp	2	() -> X377299.add(X179587)
+A386460	decexp	2	() -> CR.valueOf(15).add(CR.TEN.multiply(CR.SQRT2)).add(CR.THREE.multiply(CR.THREE.sqrt()))
+A386461	decexp	2	() -> CR.TWO.multiply(CR.NINE.add(CR.FOUR.multiply(CR.SQRT2)).add(CR.TWO.multiply(CR.THREE.sqrt())))
+A386467	multia	0	"1,1"	(self, n) -> self.a(n - 1).+(self.a(n - 2)).+(SU(0, n - 1, k ->ZV(k).*(self.a(k)).*(self.a(n - 1 - k))))
+A386477	holos	0	[0,1,-3,3,-1]	1,8,38,92	0	0
+A386502	polyx	0	"[1]"	"x,A,dif,dif,dif,<4,+,exp"	0	1
+A386503	polyx	0	"[1]"	"x,A,dif,dif,dif,dif,<5,+,exp"	0	1
+A386504	polyx	0	"[1]"	"x,A,dif,dif,dif,dif,dif,<6,+,exp"	0	1
+A386505	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(ZV(k).^(2)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386506	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(ZV(k).^(3)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386507	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(ZV(k).^(4)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386508	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(ZV(k).^(5)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386509	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(ZV(k).^(6)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386510	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(BI(k + 1, 2)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386511	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(BI(k + 2, 3)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386512	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(BI(k + 3, 4)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386513	multia	0	"1"	(self, n) -> self.a(n - 1).+(SU(0, n - 1, k -> ZV(1 + k).*(BI(k + 4, 5)).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))))
+A386518	decexp	0	() -> X122914.subtract(CR.ONE).add(X001620)

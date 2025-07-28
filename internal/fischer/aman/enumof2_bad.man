@@ -1,0 +1,12 @@
+A126032	enumof2	0	0	1	(b, m) -> ZV(2*b).^(2*m + 1)./(2)	 for even b and odd m > 2	b^m/2	noZV
+A259263	enumof2	0	1	1	(k, m) -> m == k ? null : ZV(m*k).^(2)./(m*m - k*k)	 for distinct integers m,k	(m*k)^2/(m*m-k*k)	noZV
+A111260	enumof2	0	1	2	(m, n) -> ZV(m).^(n)./(ZV(n).^(m))	 with m > 0 and n>1	(m^n)/(n^m)	noZV
+A155473	enumof2	0	1	1	(x, y) -> x == y ? null : ZV(x).^(3).+(ZV(y).^(5))	,with x,y>0 and x<>y	x^3+y^5	noZV
+A169694	enumof2	0	0	0	(i, j) -> { final Z ri = FI(i); final Z rj = FI(j); return ri.and(ZV(1)).equals(rj.and(ZV(1))) && Math.abs(i - j) > 1 ? ri.+(rj) : null; }	,where i,j have opposite parity and |i-j| > 1	FI(i).+(FI(j))	noZV
+A188633	enumof2	0	2	9	(k, m) -> PP(2*m + 1) ? null : ZV(2).^(k).*(2*m+1)	,with k > 1 and m an odd composite number	2^k * m	noZV
+A241662	enumof2	0	0	1	(k, m) -> GCDi(10, m) != 1 ? null : ZV(m).*(ZV(10).^(k))	 where gcd(10,m) = 1 and k >= 0 and m > 0	m * 10^k	noZV
+A250482	enumof2	0	0	0	(x, y) -> ZV(2).^(x).+(y).*(y)	,with x,y >=0	2^x + y*y	noZV
+A253913	enumof2	0	2	0	(k, m) -> ZV(m).^(k).+(m)	,with m >= 0 and k > 1	m^k + m	noZV
+A281980	enumof2	0	0	0	(x, y) -> !Predicates.SQUARE.is(x*x + 24*y) ? null : ZV(x).^(4).+(y*y)	 with x*x + 24*y a square,where x,y are nonnegative integers	x^4 + y*y	noZV
+A331531	enumof2	0	0	0	(x, y) -> ZV(x).*(x).or(ZV(y).*(y))	 with x,y >= 0 (where OR denotes the bitwise OR operator)	(x*x) | (y*y)	noZV
+ 

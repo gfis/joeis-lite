@@ -1,0 +1,221 @@
+---- 2025-07-21 18:25:08
+---- 2025-07-21 18:32:20
+A030087	parmof2	0	A030086	3
+A108819	parmof3	1	A108818	2	+1	2, 6, 8	Primes such that the outer 2 digits are n and n+1 and all inner digits are 2, where 0 < n < 9.  easy,nonn,base  1..10   nyi     _Cino Hilliard_
+A108820	parmof3	1	A108818	3	+1	2, 6, 8	Primes such that the outer 2 digits are n and n+1 and all inner digits are 3, where 0 < n < 9.  easy,nonn,base  1..40   nyi     _Cino Hilliard_
+A108821	parmof3	0	A108818	4	+1	2, 6, 8	Primes such that the outer 2 digits are n and n+1 and all inner digits are 4, where 0 < n < 9.  easy,nonn,base  1..27   nyi     _Cino Hilliard_
+A108822	parmof3	1	A108818	5	+1	2, 6, 8	Primes such that the outer 2 digits are n and n+1 and all inner digits are 5, where 0 < n < 9.  easy,nonn,base  1..10   nyi     _Cino Hilliard_
+A108823	parmof3	1	A108818	6	+1	2, 6, 8	Primes such that the outer 2 digits are n and n+1 and all inner digits are 6, where 0 < n < 9.  easy,nonn,base  1..16   nyi     _Cino Hilliard_
+A108824	parmof3	1	A108818	7	+1	2, 6, 8	Primes such that the outer 2 digits are n and n+1 and all inner digits are 7, where 0 < n < 9.  easy,nonn,base  1..11   nyi     _Cino Hilliard_
+A108826	parmof3	1	A108818	8	+1	2, 6, 8	Primes such that the outer 2 digits are n and n+1 and all inner digits are 8, where 0 < n < 9.  easy,nonn,base  1..9    nyi     _Cino Hilliard_
+A108828	parmof3	1	A108818	9	+1	2, 6, 8	Primes such that the outer 2 digits are n and n+1 and all inner digits are 9, where 0 < n < 9.  easy,nonn,base  1..13   nyi     _Cino Hilliard_
+A108829	parmof3	1	A108818	1	-1	2, 4, 8	Primes such that the outer 2 digits are n and n-1 and all inner digits are 1, where 0 < n < 9.  easy,nonn,base  1..13   nyi     _Cino Hilliard_
+A108830	parmof3	1	A108818	2	-1	2, 4, 8	Primes such that the outer 2 digits are n and n-1 and all inner digits are 2, where 0 < n < 9.  easy,nonn,base  1..10   nyi     _Cino Hilliard_
+A108831	parmof3	1	A108818	4	-1	2, 4, 8	Primes such that the outer 2 digits are n and n-1 and all inner digits are 4, where 0 < n < 9.  easy,nonn,base  1..13   nyi     _Cino Hilliard_
+A108832	parmof3	1	A108818	3	-1	2, 4, 8	Primes such that the outer 2 digits are n and n-1 and all inner digits are 3, where 0 < n < 9.  easy,nonn,base  1..5    nyi     _Cino Hilliard_
+A108833	parmof3	1	A108818	5	-1	2, 4, 8	Primes such that the outer 2 digits are n and n-1 and all inner digits are 5, where 0 < n < 9.  easy,nonn,base  1..19   nyi     _Cino Hilliard_
+A108834	parmof3	1	A108818	6	-1	2, 4, 8	Primes such that the outer 2 digits are n and n-1 and all inner digits are 6, where 0 < n < 9.  easy,nonn,base  1..10   nyi     _Cino Hilliard_
+A108835	parmof3	1	A108818	7	-1	2, 4, 8	Primes such that the outer 2 digits are n and n-1 and all inner digits are 7, where 0 < n < 9.  easy,nonn,base  1..21   nyi     _Cino Hilliard_
+A108836	parmof3	1	A108818	8	-1	2, 4, 8	Primes such that the outer 2 digits are n and n-1 and all inner digits are 8, where 0 < n < 9.
+A161763	multraf	1	(self, n) -> PM(self.s(0)).*(PM(self.s(1)))	""	new A001359(), new A006512()	a(n)=A000040(A001359(n))*A000040(A006512(n)).
+A161800	polya	0	"[1]"	"x,B,x,C,log,.*,exp"	new A002129(), new A000123()
+A161803	polya	0	"[1]"	"x,B,x,C,log,.*,exp"	new A162552(), new A000123()
+A162552	polyxa	1	"[1]"	"x,B,log,n,*"	1	0	new A010052()
+A165439	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.z(p).*(2).+(3))	Primes p such that 3+2*(sum of digits of p) is also a prime     nonn,base       1..1000 nyi     _Vincenzo Librandi_
+A165440	filter	1	new A000040()	p -> !PP(Functions.DIGIT_SUM.z(p).*(2).+(3))	Primes p such that 3+2*(sum of digits of p) is not a prime.     nonn,base       1..1000 nyi     _Vincenzo Librandi_
+A165459	filter	1	new A000040()	v -> Functions.DIGIT_SUM.l(v.square()) == 16
+A165503	filter	1	new A000040()	v -> Functions.DIGIT_SUM.l(v.square()) == 37
+A165504	filter	1	new A000040()	v -> Functions.DIGIT_SUM.l(v.square()) == 43
+A166559	filter	1	new A000040()	p -> PP(Functions.DIGIT_PRODUCT.z(p).+(10))	Primes p such that product of digits + 10 is prime.     nonn,base       1..1000 nyi     _Vincenzo Librandi_
+A166561	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.z(p).+(1))	Primes p such that sum of digits + 1 is prime.  nonn,base       1..1000 nyi     _Vincenzo Librandi_
+A166565	filter	1	new A000040()	p -> PP(Functions.DIGIT_PRODUCT.z(p).+(1)) && PP(Functions.DIGIT_PRODUCT.z(p).-(1))	Primes p such that product of digits +- 1 is prime.     nonn,base       1..1000 nyi     _Vincenzo Librandi_
+A166566	filter	1	new A000040()	p -> PP(Functions.DIGIT_PRODUCT.z(p).-(1))	Primes p such that product of digits - 1 is prime.      nonn,base       1..1000 nyi     _Vincenzo Librandi_
+A166567	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.z(p).-(1))	Primes p such that sum of digits - 1 is prime.  nonn,base       1..1000 nyi     _Vincenzo Librandi_
+A167412	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM_SQUARES.z(p).+(1))	Primes p such that sum of (digits^2) + 1 is prime.      nonn,base       1..1300 nyi     _Vincenzo Librandi_
+A167414	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM_SQUARES.z(p).-(1))	Primes p such that sum of their squared decimal digits, minus one, is prime.    nonn,base       1..1300 nyi     _Vincenzo Librandi_
+A179024	filter	1	new A000040()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[2] >= 1 && cd[3] == 0 && cd[5] == 0 && cd[7] == 0; }	Primes whose only prime digits are 2s. nonn,base       1..10000        nyi     _Lekraj Beedassy_
+A179025	filter	1	new A000040()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[2] == 1 && cd[3] == 0 && cd[5] == 0 && cd[7] == 0; }	Primes whose only prime digits are 2s. nonn,base       1..10000        nyi     _Lekraj Beedassy_
+A179026	filter	1	new A000040()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[3] >= 1 && cd[2] == 0 && cd[5] == 0 && cd[7] == 0; }	Primes whose only prime digits are 3s. nonn,base       1..1000 nyi     _Lekraj Beedassy_
+A179027	filter	1	new A000040()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[3] == 1 && cd[2] == 0 && cd[5] == 0 && cd[7] == 0; }	Primes whose only prime digits are 3s. nonn,base       1..1000 nyi     _Lekraj Beedassy_
+A179028	filter	1	new A000040()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[5] >= 1 && cd[2] == 0 && cd[3] == 0 && cd[7] == 0; }	Primes whose only prime digits are 5s. nonn,base       1..10000        nyi     _Lekraj Beedassy_
+A179029	filter	1	new A000040()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[5] == 1 && cd[2] == 0 && cd[3] == 0 && cd[7] == 0; }	Primes whose only prime digits are 5s. nonn,base       1..10000        nyi     _Lekraj Beedassy_
+A179030	filter	1	new A000040()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[7] >= 1 && cd[2] == 0 && cd[3] == 0 && cd[5] == 0; }	Primes whose only prime digits are 7s. nonn,base       1..1000 nyi     _Lekraj Beedassy_
+A179031	filter	1	new A000040()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[7] == 1 && cd[2] == 0 && cd[3] == 0 && cd[5] == 0; }	Primes whose only prime digits are 7s. nonn,base       1..1000 nyi     _Lekraj Beedassy_
+A179032	filter	1	new A006567()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[2] >= 1 && cd[3] == 0 && cd[5] == 0 && cd[7] == 0; }	Primes whose only prime digits are 2s. nonn,base       1..10000        nyi     _Lekraj Beedassy_
+A179033	filter	1	new A006567()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[2] == 1 && cd[3] == 0 && cd[5] == 0 && cd[7] == 0; }	Primes whose only prime digits are 2s. nonn,base       1..10000        nyi     _Lekraj Beedassy_
+A179034	filter	1	new A006567()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[3] >= 1 && cd[2] == 0 && cd[5] == 0 && cd[7] == 0; }	Primes whose only prime digits are 3s. nonn,base       1..1000 nyi     _Lekraj Beedassy_
+A179035	filter	1	new A006567()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[3] == 1 && cd[2] == 0 && cd[5] == 0 && cd[7] == 0; }	Primes whose only prime digits are 3s. nonn,base       1..1000 nyi     _Lekraj Beedassy_
+A179036	filter	1	new A006567()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[5] >= 1 && cd[2] == 0 && cd[3] == 0 && cd[7] == 0; }	Primes whose only prime digits are 5s. nonn,base       1..10000        nyi     _Lekraj Beedassy_
+A179037	filter	1	new A006567()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[5] == 1 && cd[2] == 0 && cd[3] == 0 && cd[7] == 0; }	Primes whose only prime digits are 5s. nonn,base       1..10000        nyi     _Lekraj Beedassy_
+A179038	filter	1	new A006567()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[7] >= 1 && cd[2] == 0 && cd[3] == 0 && cd[5] == 0; }	Primes whose only prime digits are 7s. nonn,base       1..1000 nyi     _Lekraj Beedassy_
+A179039	filter	1	new A006567()	p -> { final int[] cd = ZUtils.digitCounts(p); return cd[7] == 1 && cd[2] == 0 && cd[3] == 0 && cd[5] == 0; }	Primes whose only prime digits are 7s. nonn,base       1..1000 nyi     _Lekraj Beedassy_
+A192001	trilambn	1	1	0	(n, m) -> SU(1, n - m, k -> ZV(k).^(m))
+A199169	filter	0	new A000040()	p -> Functions.DIGIT_SUM_SQUARES.z(p).equals(Functions.DIGIT_LENGTH.z(p))	Primes such that the sum of the squares of their digits equals the number of their digits.
+A199346	parmof4	1	A214703	3	4	6
+A199348	parmof4	1	A214703	3	4	8
+A199349	parmof4	1	A214703	3	4	9
+A216703	holos	0	[[0],[-7,49],[0,-1]]	1	0	0	^(6/7)
+A243441	filter	1	new A000040()	p -> PP(p.+(Functions.DIGIT_SUM.z(2, p)))	p such that p + F000120(p) is also a prime, where F000120 = sum of digits in base 2 = Hamming weight.    nonn,base       1..1000 nyi     _Anthony Sand_
+A243442	filter	1	new A000040()	p -> PP(p.-(Functions.DIGIT_SUM.z(2, p)))	p such that, in base 2, p - digitsum(p) is also a prime. nonn,base       1..1000 nyi     _Anthony Sand_
+A243586	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.z(10, p).+(3))	p such that sum of digits + 3 is prime.  nonn,base       1..1000 nyi     _Vincenzo Librandi_
+A243587	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.z(10, p).+(7))	p such that sum of digits + 7 is prime.  nonn,base,less  1..1000 nyi     _Vincenzo Librandi_
+A243588	filter	1	new A000040()	p -> PP(Functions.DIGIT_SUM.z(10, p).+(9))	p such that sum of digits + 9 is prime.  nonn,base       1..10000        nyi     _Vincenzo Librandi_
+A243616	filter	1	new LambdaSequence(0, n -> Functions.DIGIT_SUM.z(n).+(PM(n)))	PRIME	p of the form prime(n) + digitsum(n).    nonn,base       1..2534 nyi     _K. D. Bajpai_
+A253574	parmof2	0	A030086	4
+A253575	parmof2	1	A030086	6
+A253576	parmof2	1	A030086	7
+A253577	parmof2	1	A030086	8
+A253578	parmof2	0	A030086	10
+A285096	filter	1	new A000040()	p -> new Q(Functions.DIGIT_SUM.z(10, p), Functions.DIGIT_LENGTH.z(10, p)).equals(QV(2))	arithmetic mean of digits = 2 in base 10.   nonn,base,changed       1..1000 nyi     _Jaroslav Krizek_
+A285225	filter	1	new A000040()	p -> new Q(Functions.DIGIT_SUM.z(10, p), Functions.DIGIT_LENGTH.z(10, p)).equals(QV(4))	arithmetic mean of digits = 4 in base 10.   nonn,base       1..1000 nyi     _Jaroslav Krizek_
+A285226	filter	1	new A000040()	p -> new Q(Functions.DIGIT_SUM.z(10, p), Functions.DIGIT_LENGTH.z(10, p)).equals(QV(5))	arithmetic mean of digits = 5 in base 10.   nonn,base       1..1000 nyi     _Jaroslav Krizek_
+A285227	filter	1	new A000040()	p -> new Q(Functions.DIGIT_SUM.z(10, p), Functions.DIGIT_LENGTH.z(10, p)).equals(QV(7))	arithmetic mean of digits = 7 in base 10.   nonn,base       1..1000 nyi     _Jaroslav Krizek_
+A285228	filter	1	new A000040()	p -> new Q(Functions.DIGIT_SUM.z(10, p), Functions.DIGIT_LENGTH.z(10, p)).equals(QV(8))	arithmetic mean of digits = 8 in base 10.   nonn,base       1..1000 nyi     _Jaroslav Krizek_
+A318580	polyxa	0	"[1]"	"x,B,1,-,exp"	0	1	new A000219()
+A357246	polyx	0	"[1],[1,-1]"	"p1,x,exp,1,-,*,lambertW,exp"	0	1
+A363023	parmof4	1	A214703	1	6	9
+A375263	sintrif	1	(p, n) -> p.*(p.+(2)).*(p.+(6)).*(p.+( 8)).*(p.+(12))	""	new A022006()
+A375264	sintrif	1	(p, n) -> p.*(p.+(4)).*(p.+(6)).*(p.+(10)).*(p.+(12))	""	new A022007()
+A375418	sintrif	1	(p, n) -> p.*(p.+(4)).*(p.+(6)).*(p.+(10)).*(p.+(12)).*(p.+(16))	""	new A022008()
+A375541	lambdan	0	n -> SU(0, n, k -> ZV(k).^(n).*(Z2(k)).*(BI(n, k)))	a(n) = Sum_{k=0..n} k^n*2^k*binomial(n,k)
+A375542	lambdan	0	n -> SU(0, n, k -> ZV(k).^(n).*(Z2(n - k)).*(BI(n, k)))	a(n) = Sum_{k=0..n} k^n*2^(n-k)*binomial(n,k)
+A375644	sintrif	0	(p, n) -> p.*(p.+(2)).*(p.+(6)).*(p.+( 8)).*(p.+(12)).*(p.+(18)).*(p.+(20))	""	new A022009()
+A375645	sintrif	1	(p, n) -> p.*(p.+(2)).*(p.+(8)).*(p.+(12)).*(p.+(14)).*(p.+(18)).*(p.+(20))	""	new A022010()
+A375646	sintrif	0	(p, n) -> p.*(p.+(2)).*(p.+(6)).*(p.+( 8)).*(p.+(12)).*(p.+(18)).*(p.+(20)).*(p.+(26))	""	new A022011()
+A375647	sintrif	0	(p, n) -> p.*(p.+(2)).*(p.+(6)).*(p.+(12)).*(p.+(14)).*(p.+(20)).*(p.+(24)).*(p.+(26))	""	new A022012()
+A375648	sintrif	1	(p, n) -> p.*(p.+(6)).*(p.+(8)).*(p.+(14)).*(p.+(18)).*(p.+(20)).*(p.+(24)).*(p.+(26))	""	new A022013()
+A375692	lambdan	1	n -> new Z(Integer.toString(n) + Integer.toString(n+ 1) + Integer.toString(n + 2) + Integer.toString(n + 3) + Integer.toString(n + 4))	Decimal concatenation of the 5 numbers n,n+1,n+2,n+3,n+4.	nonn,base,easy	1..25	nyi	_Viljo Huhtala_
+A380906	parmof3	1	A329760	3	5
+A383465	holos	0	[0,1,-3,3,-1]	1,8,40	0	0		
+A384449	parmof4	1	A214703	0	4	7
+A385445	decexp	1	() -> CR.PHI.*(3).-(1).*(CR.THREE.-(CR.PHI).sqrt())	(-1 + 3*phi)*sqrt(3 - phi), with the golden section phi = X001622.	nonn,cons,easy,new	1..84	nyi	_Wolfdieter Lang_
+A385446	decexp	1	() -> CR.PHI.*(10).-(7)	-7 + 10*phi, with the golden section phi = X001622.	nonn,cons,easy,new	1..84	nyi	_Wolfdieter Lang_
+A385447	decexp	1	() -> CR.PHI.*(9).+(8).sqrt()	sqrt(8 + 9*phi), with the golden section X001622.	nonn,cons,easy,new	1..84	nyi	_Wolfdieter Lang_
+A385448	decexp	1	() -> CR.PHI.*(7).+(5).sqrt()./(CV(11).sqrt())	sqrt(5 + 7*phi)/sqrt(11), with the golden section phi = X001622.	nonn,cons,easy,new	1..84	nyi	_Wolfdieter Lang_
+A385869	holos	7	[0,-1,1,0,0,1,-1]	1,4,7,12,17,24,27,32,37,44,47,52,57,64,67,72,77,84	0	0
+A385870	holos	0	[0,-1,1,-2,0,1,-3,4,-2,2,0,-2,4,-2,1,1,0,0,1,-1]	1,2,3,5,8,13,21,29,45,66,99,148,218,337,497,755,1131,1699	0	0
+A385934	filter	1	new SingleTransformSequence(1, (term, n) -> term.+(1), "", new A055932())	PRIME	Numbers that are one greater than terms of J055932, and also prime.	nonn,new	1..54	nyi	_Ken Clements_
+A385935	filter	1	new SingleTransformSequence(1, (term, n) -> term.-(1), "", new A055932())	PRIME	Numbers that are one less than terms of J055932, and also prime.	nonn,new	1..54	nyi	_Ken Clements_
+A386117	parmof5	1	A386017	1	3	7	8
+A386118	parmof5	1	A386017	1	3	8	9
+A386119	parmof5	1	A386017	1	4	5	6
+A386120	parmof5	1	A386017	1	4	5	7
+A386121	parmof5	1	A386017	1	4	5	8
+A386122	parmof5	1	A386017	1	4	5	9
+A386123	parmof5	1	A386017	1	4	6	7
+A386124	parmof5	1	A386017	1	4	6	8
+A386125	parmof5	1	A386017	1	4	6	9
+A386126	parmof5	1	A386017	1	4	7	8
+A386127	parmof5	1	A386017	1	4	7	9
+A386128	parmof5	1	A386017	1	4	8	9
+A386129	parmof5	1	A386017	1	5	6	7
+A386130	parmof5	1	A386017	1	5	6	8
+A386131	parmof5	1	A386017	1	5	6	9
+A386132	parmof5	1	A386017	1	5	7	8
+A386133	parmof5	1	A386017	1	5	7	9
+A386134	parmof5	1	A386017	1	5	8	9
+A386135	parmof5	1	A386017	1	6	7	8
+A386136	parmof5	1	A386017	1	6	7	9
+A386137	parmof5	1	A386017	1	6	8	9
+A386138	parmof5	1	A386017	1	7	8	9
+A386139	parmof5	1	A386017	2	3	4	5
+A386140	parmof5	1	A386017	2	3	4	6
+A386141	parmof5	1	A386017	2	3	4	7
+A386142	parmof5	1	A386017	2	3	4	8
+A386143	parmof5	1	A386017	2	3	4	9
+A386144	parmof5	1	A386017	2	3	5	6
+A386145	parmof5	1	A386017	2	3	5	8
+A386146	parmof5	1	A386017	2	3	5	9
+A386147	parmof5	1	A386017	2	3	6	7
+A386148	parmof5	1	A386017	2	3	6	8
+A386149	parmof5	1	A386017	2	3	6	9
+A386150	parmof5	1	A386017	2	3	7	8
+A386151	parmof5	1	A386017	2	3	7	9
+A386152	parmof5	1	A386017	2	3	8	9
+A386153	parmof5	1	A386017	2	4	5	7
+A386154	parmof5	1	A386017	2	4	5	9
+A386155	parmof5	1	A386017	2	4	6	7
+A386156	parmof5	1	A386017	2	4	6	9
+A386157	parmof5	1	A386017	2	4	7	8
+A386158	parmof5	1	A386017	2	4	7	9
+A386159	parmof5	1	A386017	2	4	8	9
+A386160	parmof5	1	A386017	2	5	6	7
+A386161	parmof5	1	A386017	2	5	6	9
+A386162	parmof5	1	A386017	2	5	7	8
+A386163	parmof5	1	A386017	2	5	7	9
+A386164	parmof5	1	A386017	2	5	8	9
+A386165	parmof5	1	A386017	2	6	7	8
+A386166	parmof5	1	A386017	2	6	7	9
+A386167	parmof5	1	A386017	2	6	8	9
+A386168	parmof5	1	A386017	2	7	8	9
+A386169	parmof5	1	A386017	3	4	5	6
+A386170	parmof5	1	A386017	3	4	5	7
+A386171	parmof5	1	A386017	3	4	5	8
+A386172	parmof5	1	A386017	3	4	5	9
+A386173	parmof5	1	A386017	3	4	6	7
+A386174	parmof5	1	A386017	3	4	6	8
+A386175	parmof5	1	A386017	3	4	6	9
+A386176	parmof5	1	A386017	3	4	7	8
+A386177	parmof5	1	A386017	3	4	8	9
+A386178	parmof5	1	A386017	3	5	6	7
+A386179	parmof5	1	A386017	3	5	6	8
+A386180	parmof5	1	A386017	3	5	6	9
+A386181	parmof5	1	A386017	3	5	7	8
+A386182	parmof5	1	A386017	3	5	7	9
+A386183	parmof5	1	A386017	3	5	8	9
+A386184	parmof5	1	A386017	3	6	7	8
+A386185	parmof5	1	A386017	3	6	7	9
+A386186	parmof5	1	A386017	3	6	8	9
+A386187	parmof5	1	A386017	3	7	8	9
+A386188	parmof5	1	A386017	4	5	6	7
+A386189	parmof5	1	A386017	4	5	6	9
+A386190	parmof5	1	A386017	4	5	7	8
+A386191	parmof5	1	A386017	4	5	7	9
+A386192	parmof5	1	A386017	4	5	8	9
+A386193	parmof5	1	A386017	4	6	7	8
+A386194	parmof5	1	A386017	4	6	7	9
+A386195	parmof5	1	A386017	4	7	8	9
+A386196	parmof5	1	A386017	5	6	7	8
+A386197	parmof5	1	A386017	5	6	7	9
+A386198	parmof5	1	A386017	5	6	8	9
+A386199	parmof5	1	A386017	5	7	8	9
+A386226	holos	8	[0,-1,1,0,0,1,-1]	1,4,10,16,27,34,44,54,69	0	0
+A386263	multia	0	"1"	(self, n) -> SU(0, n- 1, k -> self.a(k).*(self.a(n - 1 - k))).*(n).+(n + 1)	a(n) = n + 1 + n * Sum_{k=0..n-1} a(k) * a(n-1-k).
+A386264	multia	0	"1"	(self, n) -> SU(0, n- 1, k -> self.a(k).*(self.a(n - 1 - k))).*(n).+(BI(n + 2, n))	a(n) = binomial(n+2,2) + n * Sum_{k=0..n-1} a(k) * a(n-1-k)
+A386265	multia	0	"1"	(self, n) -> SU(0, n- 1, k -> self.a(k).*(self.a(n - 1 - k))).*(n - 1).+(Z_1(n))	a(n) = (-1)^n + (n-1) * Sum_{k=0..n-1} a(k) * a(n-1-k).
+A386266	multia	0	"1"	(self, n) -> SU(0, n- 1, k -> self.a(k).*(self.a(n - 1 - k))).*(n).+(Z_1(n))	a(n) = (-1)^n + n * Sum_{k=0..n-1} a(k) * a(n-1-k).
+A386268	rambdan	2	n -> new Q(PM(n).-(2), n - 1)	((prime(n) - 2)/(n - 1)).	nonn,easy,frac,new	2..10000	nyi	_Stefano Spezia_
+A386269	rambdad	2	A386268	nonn,easy,frac,new	2..10000	nyi	_Stefano Spezia_
+A386271	holos	0	[[0],[-35,49],[0,-1]]	1	0	0	^(2/7)
+A386273	holos	0	[[0],[-21,49],[0,-1]]	1	0	0	^(4/7)
+A386274	holos	0	[[0],[-14,49],[0,-1]]	1	0	0	^(5/7)
+A386298	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> ZV(2).^(k).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))).+(1)
+A386299	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> ZV(3).^(k).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))).+(1)
+A386300	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> Z_1(k).*(BI(n - 1, k)).*(self.a(k)).*(self.a(n - 1 - k))).+(1)
+A386301	multia	0	"1"	(self, n) -> SU(0, n - 1, k -> Z_1(k).*(self.a(k)).*(self.a(n - 1 - k))).+(1)
+A386320	parmof3	1	A329760	0	2
+A386321	parmof3	1	A329760	0	3
+A386322	parmof3	1	A329760	0	4
+A386323	parmof3	1	A329760	0	5
+A386324	parmof3	1	A329760	0	6
+A386325	parmof3	1	A329760	0	7
+A386326	parmof3	1	A329760	0	8
+A386327	parmof3	1	A329760	0	9
+A386328	parmof3	1	A329760	1	2
+A386329	parmof3	1	A329760	1	3
+A386330	parmof3	1	A329760	1	4
+A386331	parmof3	1	A329760	1	5
+A386332	parmof3	1	A329760	1	6
+A386333	parmof3	1	A329760	1	7
+A386334	parmof3	1	A329760	1	8
+A386335	parmof3	1	A329760	2	3
+A386336	parmof3	1	A329760	2	4
+A386337	parmof3	1	A329760	2	6
+A386338	parmof3	1	A329760	2	8
+A386339	parmof3	1	A329760	2	9
+A386340	parmof3	1	A329760	3	4
+A386365	polyxa	0	"[1]"	"x,B,^1/3"	0	1	new A005809()
+A386366	polyxa	0	"[1]"	"x,B,^1/4"	0	1	new A005810()
+A386367	lambdan	0	n -> SU(0, n - 1, k -> BI(5*k, k).*(BI(5*n - 5*k - 2, n - k - 1)))
+A386368	lambdan	0	n -> SU(0, n - 1, k -> BI(6*k, k).*(BI(6*n - 6*k - 2, n - k - 1)))
+#--------- 2025-07-21 19:11:33

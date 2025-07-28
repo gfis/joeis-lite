@@ -1,0 +1,141 @@
+---- 2025-07-26 21:07:43
+A088747	lambdan	0	n -> F000040(F000129(n))
+A099225	enumof2	1	2	2	(k, m) -> ZV(m).^(k).+(k)	,with m,k > 1	m^k+k	noZV
+A100291	enumof2	1	1	1	(a, b) -> ZV(a).^(4).+(ZV(b).^(3))	with a, b > 0.
+A100292	enumof2	1	1	1	(a, b) -> ZV(a).^(5).+(ZV(b).^(2))	with a, b > 0.
+A100293	enumof2	1	1	1	(a, b) -> ZV(a).^(5).+(ZV(b).^(3))	with a,b>0.
+A100294	enumof2	1	1	1	(a, b) -> ZV(a).^(5).+(ZV(b).^(4))	with a, b > 0.
+A107326	enumof2	1	0	0	(i, j) -> ZV( 2).^(i).*(ZV(13).^(j))	.
+A107364	enumof2	1	0	0	(i, j) -> ZV( 3).^(i).*(ZV(13).^(j))	.
+A107462	enumof2	1	0	0	(i, j) -> ZV( 4).^(i).*(ZV(13).^(j))	, with i, j >= 0.
+A107466	enumof2	1	0	0	(i, j) -> ZV( 5).^(i).*(ZV(13).^(j))	.
+A107710	enumof2	1	0	0	(i, j) -> ZV( 6).^(i).*(ZV(13).^(j))	, with i, j >= 0.
+A107764	enumof2	1	0	0	(i, j) -> ZV( 8).^(i).*(ZV(13).^(j))	, with i, j >= 0.
+A107788	enumof2	1	0	0	(i, j) -> ZV( 8).^(i).*(ZV(11).^(j))	, with i, j >= 0.
+A107988	enumof2	1	0	0	(i, j) -> ZV( 4).^(i).*(ZV(11).^(j))	, with i, j >= 0.
+A108056	enumof2	1	0	0	(i, j) -> ZV( 7).^(i).*(ZV(13).^(j))	.
+A108090	enumof2	1	0	0	(i, j) -> ZV(11).^(i).*(ZV(13).^(j))	.
+A108201	enumof2	1	0	0	(i, j) -> ZV( 5).^(i).*(ZV(12).^(j))	, with i, j >= 0.
+A108218	enumof2	1	0	0	(i, j) -> ZV(11).^(i).*(ZV(12).^(j))	, with i, j >= 0.
+A108238	enumof2	1	0	0	(i, j) -> ZV( 7).^(i).*(ZV(12).^(j))	, with i, j >= 0.
+A108687	enumof2	1	0	0	(i, j) -> ZV( 9).^(i).*(ZV(11).^(j))	, with i, j >= 0.
+A108698	enumof2	1	0	0	(i, j) -> ZV( 6).^(i).*(ZV(11).^(j))	, with i, j >= 0.
+A108748	enumof2	1	0	0	(i, j) -> ZV( 9).^(i).*(ZV(13).^(j))	, with i, j >= 0.
+A108761	enumof2	1	0	0	(i, j) -> ZV(10).^(i).*(ZV(13).^(j))	, with i, j >= 0.
+A108771	enumof2	1	0	0	(i, j) -> ZV(12).^(i).*(ZV(13).^(j))	, with i, j >= 0.
+A108779	enumof2	1	0	0	(i, j) -> ZV(10).^(i).*(ZV(11).^(j))	, with i, j >= 0.
+A110448	polya	0	"[1]"	"x,B,/n,exp"	new A056045()
+A111925	enumof2	1	1	1	(a, b) -> ZV(a*a).+(ZV(b).^(4))	,with a,b > 0	a*a + b^4	noZV
+A114206	multraf	2	(self, n) -> self.s(0).max(self.s(1))	""	new A004216(), new A051628()
+A117210	polya	0	"[1]"	"x,B,/n,exp"	new A117212()
+A117211	convprod	0	-1	new A117210()
+A124934	enumof2	1	1	1	(m, n) -> ZV(4*m*n - m - n)	,where m,n are positive integers
+A129375	polyxa	0	"[1]"	"x,B,exp"	0	1	new A074206()
+A129985	lambdan	1	n -> F031346(F000040(n))
+A131489	partprod	1	new A092680()			Partial products of A092680.
+A132994	partsun	1	new A078930()			Partial sums of A078930.
+A134774	polya	0	"[1]"	"x,B,/n,exp"	new A105862()
+A135555	sintrif	1	(term, n) -> F007953(term)	""	new A135554()
+A135783	enumof2	1	1	1	(x, y) -> ZV(3*x*y).*(y).+(ZV(x).^(3))	(where x,y are positive integers)	3*x y*y+x^3	noZV
+A135797	enumof2	1	1	1	(x, y) -> ZV(x).^(4).+(ZV(6*x).*(x*y).*(y)).+(ZV(y).^(4))	(where x,y are positive integers)	x^4 + 6*x*x y*y + y^4	noZV
+A146748	enumof2	1	2	2	(k, n) -> ZV(n).^(k).*(ZV(k).^(n))	,where n,k > 1	n^k * k^n	noZV
+A154777	enumof2	1	1	1	(x, y) -> ZV(x*x + 2*y*y)	with positive integers x,y
+A154778	enumof2	1	1	1	(a, b) -> ZV(a*a + 5*b*b)	with positive integers a,b
+A155717	enumof2	1	1	1	(a, b) -> ZV(a*a + 7*b*b)	for some positive integers a,b
+A156211	polya	0	"[1]"	"x,B,x,C,.*,/n,exp"	new A002416(), new A000203()
+A156212	polya	0	"[1]"	"x,B,x,C,.*,/n,exp"	new A002416(), new A000204()
+A156304	polya	0	"[1]"	"x,B,/n,exp"	new A175926()
+A156360	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A179504()
+A158110	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A190539()
+A158341	lambdan	0	n -> D013928(F002110(n))
+A158843	polya	0	"[1]"	"x,B,^n,x,C,1,-,.*,/n,exp"	new A001333(), new A000079()
+A162420	polya	0	"[1]"	"x,B,/n,exp"	new A162419()
+A162553	polya	0	"[1]"	"x,B,x,B,.*,/n,exp"	new A162552()
+A162581	polya	0	"[1]"	"x,B,x,B,.*,/n,2,*,exp"	new A006519()
+A162583	polya	0	"[1]"	"x,B,x,C,.*,/n,6,*,exp"	new A006519(), new A038500()
+A162584	polya	0	"[1]"	"x,B,x,C,.*,/n,2,*,exp"	new A006519(), new A000203()
+A162585	polya	0	"[1]"	"x,B,x,C,.*,/n,exp"	new A006519(), new A000984()
+A162589	polya	0	"[1]"	"x,B,x,C,.*,/n,exp"	new A000079(), new A006519()
+A163658	polya	0	"[1]"	"x,B,x,B,.*,/n,exp"	new A163659()
+A166265	enumof2	1	1	1	(x, y) -> ZV(1+x*x+y*y)	x,y integers >= 1
+A166687	enumof2	1	0	0	(x, y) -> ZV(x*x + y*y + 1)	,x,y integers
+A166990	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A000172()
+A166992	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A005260()
+A167007	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A167010()
+A171776	polyxa	0	"[1]"	"x,B,1,-,/n,exp"	0	1	new A053763()
+A171777	polyxa	0	"[1]"	"x,B,1,-,/n,exp"	0	1	new A006125()
+A172521	partsun	1	new A078902()			Partial sums of A078902.
+A174445	sintrif	1	(term, n) -> ZV(53).^(term).-(1)./(52)	""	new A000040()	Numbers of the form (53^p-1)/52. p prime
+A176166	lambdan	1	n -> D051903(F000217(n + 1))
+A179114	polya	0	"[1]"	"x,B,/n,exp"	new A179115()
+A179116	polya	0	"[1]"	"x,B,/n,2,*,exp"	new A179117()
+A179304	polya	0	"[1]"	"x,B,/n,exp"	new A179305()
+A179306	polya	0	"[1]"	"x,B,/n,exp"	new A179307()
+A202822	filter	1	new A003136()	v -> v.mod(3) == 1	(x, y) -> ZV(3*(x*x + x*y + y*y + x + y) + 1)	where x,y are integers
+A202993	polya	0	"[1]"	"x,B,/n,exp"	new A202994()
+A216352	polya	0	"[1]"	"x,B,1,-,x,B,1,-,.*,/n,exp"	new A000172()
+A216353	polya	0	"[1]"	"x,B,1,-,x,B,1,-,.*,x,B,1,-,.*,/n,exp"	new A000172()
+A216427	enumof2	1	2	2	(a, b) -> ZV(a).^(2).*(ZV(b).^(3))	, where a >= 2 and b >= 2.
+A219907	enumof2	1	0	0	(x, y) -> ZV(4*x*x+2*x*y+7*y*y)	,x,y >= 0
+A227855	enumof2	1	0	0	(x, y) -> ZV(x).^(4).+(ZV(y).^(4).*(4))	Numbers of the form	x^4 + 4*y^4	noZV
+A239659	partsun	1	new A237270()			Partial sums of A237270.
+A242655	enumof2	1	0	0	(x, y) -> ZV(2*x*x+2*x*y+3*y*y)	with x,y nonnegative
+A247033	filter	1	new LambdaSequence(1, k -> { final Z r = ZV(3).^(k).-(3); return r.mod(k) == 0 ? r./(k) : Z.NEG_ONE; })	v -> v.compareTo(ZV(0)) >= 0	Numbers of the form (3^k - 3)/k.
+A247307	filter	1	new LambdaSequence(1, k -> { final Z r = ZV(4).^(k).-(4); return r.mod(k) == 0 ? r./(k) : Z.NEG_ONE; })	v -> v.compareTo(ZV(0)) >= 0	Numbers of the form (4^k - 4)/k.
+A250483	enumof2	1	0	0	(x, y) -> ZV(3).^(x).+(ZV(y).^(3))	with x,y >= 0	3^x + y^3	noZV
+A250545	enumof2	1	0	0	(x, y) -> ZV(4).^(x).+(ZV(y).^(4))	with x,y >= 0	4^x + y^4	noZV
+A250546	enumof2	1	0	0	(x, y) -> ZV(5).^(x).+(ZV(y).^(5))	with x,y >= 0	5^x + y^5	noZV
+A250547	enumof2	1	0	0	(x, y) -> ZV(6).^(x).+(ZV(y).^(6))	with x,y >= 0	6^x + y^6	noZV
+A250715	enumof2	1	0	0	(x, y) -> ZV(7).^(x).+(ZV(y).^(7))	with x,y >= 0	7^x + y^7	noZV
+A255747	partsun	0	new A160552()			Partial sums of A160552.
+A272933	enumof2	1	0	0	(x, y) -> ZV(x*x + 12*y*y)	Numbers of the form
+A276281	enumof2	1	0	0	(i, j) -> BELL(i).*(BELL(j))	Numbers of the form	Bell(i)*Bell(j)	noZV
+A276797	partsun	0	new A276794()			Partial sums of A276794.
+A276828	enumof2	1	1	1	(i, j) -> i == 1 && j == 1 ? ZV(0) : BELL(i).*(FI(j))	Numbers of the form	Bell(i)*Fibonacci(j)	noZV
+A290007	filprof	1	1	k -> ZV(5).^(k).-(6)	.
+A290008	filprof	1	1	k -> ZV(6).^(k).-(5)	.
+A290022	filprof	1	1	k -> ZV(6).^(k).-(7)	.
+A290200	filprof	1	0	k -> ZV(4).^(k).+(1)	.
+A290692	filter	0	new A002997()	v -> PP(v.+(2))	Carmichael numbers of the form p - 2 where p is a prime number.
+A291859	filprof	1	1	k -> ZV(7).^(k).-(12)	2.
+A291860	filprof	1	1	k -> ZV(7).^(k).-(8)	.
+A291861	filprof	1	1	k -> ZV(7).^(k).-(6)	.
+A299505	enumof2	1	1	1	(x, y) -> ZV(x).^(4).+(ZV(y).*(ZV(x).^(3))).+(ZV(y*x).^(2)).+(ZV(y).^(3).*(x)).+(ZV(y).^(4))	,where x,y are positive integers	x^4 + y*x^3 + y*y*x*x + y^3*x + y^4	noZV
+A300381	enumof2	1	1	1	(x, y) -> ZV(x).^(3).+(ZV(x*y)).+(ZV(y).^(3))	where x,y>0	x^3+x*y+y^3	noZV
+A303234	enumof2	1	0	0	(x, y) -> ZV(x).*(x+1)./(2).+(ZV(2).^(y))	with x,y nonnegative integers	x*(x+1)/2 + 2^y	noZV
+A303372	enumof2	1	1	1	(a, b) -> ZV(a).^(2).+(ZV(b).^(6))	, with integers a, b > 0.
+A303373	enumof2	1	1	1	(a, b) -> ZV(a).^(3).+(ZV(b).^(6))	, with integers a, b > 0.
+A303374	enumof2	1	1	1	(a, b) -> ZV(a).^(4).+(ZV(b).^(6))	, with integers a, b > 0.
+A303375	enumof2	1	1	1	(a, b) -> ZV(a).^(5).+(ZV(b).^(6))	, with integers a, b > 0.
+A303376	enumof2	1	1	1	(a, b) -> ZV(a).^(6).+(ZV(b).^(7))	, with integers a, b > 0.
+A303377	enumof2	1	1	1	(a, b) -> ZV(a).^(7).+(ZV(b).^(8))	, with integers a, b > 0.
+A303393	enumof2	1	0	0	(x, y) -> ZV(x).*(x+1)./(2).+(ZV(5).^(y))	with x,y nonnegative integers	x*(x+1)/2 + 5^y	noZV
+A303434	enumof2	1	0	0	(x, y) -> ZV(x).*(3*x-1)./(2).+(ZV(3).^(y))	with x,y nonnegative integers	x*(3*x-1)/2 + 3^y	noZV
+A303541	enumof2	1	0	0	(k, m) -> ZV(k).*(k).+(BI(2*m, m))	with k,m nonnegative integers	k*k + BI(2*m, m)	noZV
+A309575	convprod	0	-1	new A238441()	Convolution inverse of A238441.
+A319281	enumof2	1	0	0	(i, j) -> ZV(16).^(i).*(ZV(16*j+1))	Numbers of the form	16^i*(16*j + 1)	noZV
+A319282	enumof2	1	0	0	(i, j) -> ZV(16).^(i).*(ZV(16*j+15))	Numbers of the form	16^i*(16*j + 15)	noZV
+A336607	enumof2	1	1	1	(x, y) -> ZV(x).^(3).+(ZV(x).*(x).*(y)).+(ZV(x).*(y).*(y)).+(ZV(y).^(3))	,where x,y are positive integers	x^3 + x*x*y + x*y*y + y^3	noZV
+A338758	partsun	1	new A322141()			Partial sums of A322141.
+A355667	sintrif	1	(term, n) -> F000010(term)	""	new A091456()
+A378525	dirichinv	1	new A378542()	1	Dirichlet inverse of A378542, where A378542 is the sum of divisors d of n such that n/d has an even number of prime factors (counted with multiplicity).
+A378527	dirichinv	1	new A378546()	1	Dirichlet inverse of A378546.
+A378531	dirichcon2	1	new A378432()	1	new A378542()	1	Dirichlet convolution of A378432 and A378542.
+A378533	dirichcon2	1	new A323910()	1	new A378542()	1	Dirichlet convolution of A323910 and A378542.
+A380140	enumof2	1	2	2	(j, k) -> ZV(4*j*k - j - k)	for j,k >= 2
+A380545	partsun	2	new A020481()			Partial sums of A020481.
+A380546	partsun	2	new A020482()			Partial sums of A020482.
+A380549	enumof2	1	1	1	(i, j) -> ZV(i + 3*j + 4*i*j)	for i,j >= 1
+A385933	lingf	0	4,5,4,8,0,-3,-8,-1	1,-1,0,-1,1,-1,-1,0,0,1					0
+A386249	sintrif	1	(term, n) -> F000120(term)	""	new A161792()
+A386258	lambdan	1	n -> D007814(D005361(n))
+A386259	lambdan	1	n -> D007814(D051903(n))
+A386261	lambdan	1	n -> D001511(D001511(n))
+A386262	lambdan	1	n -> n == 1 ? ZV(0) : D051903(D051903(n))	for n >= 2, a(1) = 0.	nonn,easy,new	1..10000	nyi	_Amiram Eldar_
+A386272	holos	0	[[0],[-28,49],[0,-1]]	1	0	0	^(2/7)
+A386399	partsun	0	new A005195()			Partial sums of A005195.
+A386473	multia	0	"1"	(self, n) -> self.a(n - 1).-(SU(0, n - 1, k -> ZV(k).*(self.a(k)).*(self.a(n - 1 - k))))	a(0) = 1; a(n) = a(n-1) - Sum_{k=0..n-1} k * a(k) * a(n-1-k).	sign,new	0..25	nyi	_Seiichi Manyama_
+A386531	polyx	0	"[1]"	"x,A,dif,dif,6,/,<3,+,exp"	0	1
+A386532	polyx	0	"[1]"	"x,A,dif,dif,dif,24,/,<4,+,exp"	0	1
+A386533	polyx	0	"[1]"	"A,<1,A,dif,dif,6,/,<3,+,exp"	0	1
+A386534	polyx	0	"[1]"	"A,<1,A,dif,dif,dif,dif,120,/,<5,+,exp"	0	1
