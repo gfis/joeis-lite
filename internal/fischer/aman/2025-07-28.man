@@ -1,0 +1,112 @@
+---- 2025-07-28 09:57:20
+
+  A209917	lambdan	0	n -> (n-1)!* Sum_{k=0..n-1} 3*binomial(n,k)*a(k)/k! for n>0	"1"
+ A073520	lambdan	0	n -> (1/n) * Sum_{m=k..n^2+k-1} F000040(m)	"0"
+ A080817	lambdan	0	n -> (ceiling(sqrt(n(n+1)/2)))^2 - n(n-1)/2	
+ A080819	lambdan	0	n -> (ceiling(sqrt(n*(n+1)/2)))^2	
+ A084423	lambdan	0	n -> (1/n)*Sum_{k=1..n} J162663(gcd(n,k),n/gcd(n,k))	
+ A084423	lambdan	0	n -> (1/n)*Sum_{k=1..n} J162663(n/gcd(n,k),gcd(n,k))*phi(gcd(n,k))/phi(n/gcd(n,k))	
+ A086227	lambdan	0	n -> -E204617(n) if n is even,  E204617(n)/2 if n is odd (Rabinowitz, 1996)	
+ A086675	lambdan	0	n -> (1/n)*Sum_{ d divides n } phi(d)*2^(n^2/d) for n > 0	"1"
+ A086683	lambdan	0	n -> (1/n)*Sum_{ d divides n } phi(d)*3^(n^2/d)	n>=1
+ A102688	lambdan	0	n -> (1/n)*Sum_{k=1..n} k*2^gcd(n,k)	
+ A119273	lambdan	0	n -> (ceiling(10^(n/2)) - 1)^2 - (ceiling(10^(n/3)) - 1)^3	
+ A119901	lsm	0	2*Floor(3^((2*n + 1)/2)) + 1	 
+ A123612	lambdan	0	n -> (1/n) * Sum_{d | n} phi(n/d) * E167539(d)	n>=1
+ A132102	lambdan	0	n -> (1/n)*Sum_{d|n} phi(d)*alpha(d, n/d)	
+ A156305	lambdan	0	n -> (1/n)*Sum_{k=1..n} sigma(k)*C(2*k-1,k)*a(n-k) for n>0	"1"
+ A156334	lambdan	0	n -> (1/n)*Sum_{k=1..n} 2^floor(k^2/2+1) * a(n-k) for n>0	"1"
+ A156335	lambdan	0	n -> (1/n)*Sum_{k=1..n} 2^floor((k^2+1)/2) * a(n-k) for n>0	"1"
+ A156336	lambdan	0	n -> (1/n)*Sum_{k=1..n} 3^floor((k^2+1)/2) * a(n-k) for n>0	"1"
+ A156337	lambdan	0	n -> (1/n)*Sum_{k=1..n} 4^floor((k^2+1)/2) * a(n-k) for n>0	"1"
+ A156340	lambdan	0	n -> (1/n)*Sum_{k=1..n} 2^(k^2-k+1) * a(n-k) for n>0	"1"
+ A158266	lambdan	0	n -> (1/n)*Sum_{k=1..n} C(2*k-1,k)^2 * a(n-k) for n>0	"1"
+ A158267	lambdan	0	n -> (1/n)*Sum_{d|n} sigma(d)*C(2d-1,d)*moebius(n/d)	
+ A158947	lambdan	0	n -> (1/n)*Sum_{d|n} sigma(d)^d*moebius(n/d)	
+ A159309	lambdan	0	n -> ZV(n).*(Sum_{k=0..[n/2]} C(n-k,k)*sigma(n-k)^k/(n-k)	n>=1
+ A166879	lambdan	0	n -> (1/n)*Sum_{k=1..n} J002203(k^2)/2*a(n-k) for n>0	"1"
+ A175032	lambdan	0	n -> (ceiling(sqrt(n*(n+1)/2)))^2 - n*(n+1)/2	
+ A175627	lambdan	0	n -> (ceiling(sqrt(2*a(n-1))))^2	
+ A183128	lambdan	0	n -> (1/n)*Sum_{k=1..n} L(k)*a(n-k) for n>0	"1"
+ A183129	lambdan	0	n -> (1/n)*Sum_{k=1..n} E183130(k)*a(n-k) for n>0	"1"
+ A193161	lambdan	0	n -> (n-1)!* Sum_{k=0..n-1} binomial(n,k)*a(k)/k! for n>0	"1"
+ A201825	lambdan	0	n -> (1/n)*Sum_{k=1..n} (sigma(k)^2 - sigma(k,2))/2 * a(n-k) for n>0	"1"
+ A203534	lambdan	0	n -> (1/n)*Sum_{k=1..n} sigma(k)*J002203(k)*a(n-k) for n>0	"1"
+ A203801	lambdan	0	n -> (1/n)*Sum_{k=1..n} D000593(k)*Lucas(k)*a(n-k) for n>0	"1"
+ A204275	lambdan	0	n -> (1/n)*Sum_{k=1..n} D000593(k) * J002203(k)*a(n-k) for n>0	"1"
+ A206851	lambdan	0	n -> ZV(n).*(Sum_{k=0..[n/2]} binomial((n-k)^2, k^2)/(n-k)	
+ A213409	lambdan	0	n -> (1/n) * Sum_{k=1..n} binomial(3*k^2,k^2) * a(n-k) for n>0	"1"
+ A213410	lambdan	0	n -> (1/n) * Sum_{k=1..n} binomial(3*k,k)^k/3^k * a(n-k) for n>0	"1"
+ A238812	lambdan	0	n -> (1/6)*n^3 + (23/6)*n - 1	
+ A243677	lambdan	0	n -> (1/n) * Sum_{k=1..n} binomial(5*n, k - 1) * binomial(n, k)*2^(k - 1)	n>=1
+ A253076	lambdan	0	n -> (1/8*n) * Sum_{d|n, d odd} mu(d)*(3^(2*n/d) - 1)	
+ A261531	lambdan	0	n -> (1/n) * Sum_{d | n} phi(n/d) * M007837(d)	n>=1   
+ A274018	lambdan	0	n -> (1/n)*Sum_{d|n} phi(n/d)*J215885(d)	n>=1
+ A274055	lsm	0	n for 1 <= n <= 42; a(n) = a(n-a(n-1)) + a(n-a(n-2))	n>=43
+ A276101	lambdan	0	n -> (10*n)!*(n/3)!/((5*n)!*(10*n/3)!*(2*n)!)	
+ A278056	lsm	0	n for 1 <= n <= 4; a(n) = a(n-a(n-1)) + a(n-a(n-2))	n>=5
+ A278057	lsm	0	n for 1 <= n <= 5; a(n) = a(n-a(n-1)) + a(n-a(n-2))	n>=6
+ A278058	lsm	0	n for 1 <= n <= 6; a(n) = a(n-a(n-1)) + a(n-a(n-2))	n>=7
+ A278059	lsm	0	n for 1 <= n <= 7; a(n) = a(n-a(n-1)) + a(n-a(n-2))	n>=8
+ A278060	lsm	0	n for 1 <= n <= 8; a(n) = a(n-a(n-1)) + a(n-a(n-2))	n>=9
+ A278061	lsm	0	n for 1 <= n <= 9; a(n) = a(n-a(n-1)) + a(n-a(n-2))	n>=10
+ A286472	lambdan	0	n -> ZV(2).*(D032742(n) + (1 if n is composite  spf(D032742(n)) > nextprime(spf(n)),  0 otherwise). Here spf is the smallest prime factor, F020639	"1"
+ A287354	lsm	0	n for 1 <= n <= 5; a(n) = a(n-a(n-1)+1) + a(n-a(n-2)+2)	n>=6
+ A295113	lambdan	0	n -> (1/n)*Sum_{k=0..n-1} (8*k + 9)*E295112(k)^2	
+ A306715	lambdan	0	n -> (1/n)*Sum_{d|n} mu(d)*2^(n*(n/d-1)/2 + n*floor(d/2)/d)	n>=1
+ A337202	lambdan	0	n -> ZV(2).*(E246277(J047802(n))	
+ A338810	lambdan	0	n -> (n-1)! * Sum_{k=1..n-1} d(k)*d(n-k)/k	
+ A339667	lambdan	0	n -> -Sum_{d|n, d < n} mu(n/d) * (2^tau(d) - 1)	
+ A352194	lambdan	0	n -> ZV(2).*(D008578(n) - J064955(n-1)	
+ A356274	lambdan	0	n -> (1/n)*Sum_{j=1..n} ((n-1)*(n+1)^D007814(j) + 1)	
+ A356994	lsm	0	2*Fibonacci(k) ), 3*Fibonacci(k)], k >= 2	nintheintegerinterval[Fibonacci(k+2
+ A364179	lambdan	0	n -> (10*n)!*(n/2)!/((5*n)!*(4*n)!*(3*n/2)!)	
+ A371192	lambdan	0	n -> ZV(n).*(Sum_{i=1..k} e[i] * Fibonacci(pi(p[i])) / p[i]	
+ A373227	lsm	0	n for 1 <= n <= 7; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	n>=8
+ A373228	lsm	0	n for 1 <= n <= 8; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	n>=9
+ A373229	lsm	0	n for 1 <= n <= 9; a(n) = a(n-a(n-1)) + a(n-a(n-2)) + a(n-a(n-3))	n>=10
+ A376257	lambdan	0	n -> (n-F007954(n)) * (-1)^F007954(n)	
+ A381170	lambdan	0	n -> (1/n) * Sum_{k=1..n} sigma_3(k^2) * a(n-k)	"1"
+ A381709	lambdan	0	n -> (1/n) * Sum_{k=1..n} sigma_4(k^2) * a(n-k)	"1"
+ A381712	lambdan	0	n -> (1/n) * Sum_{k=1..n} sigma_2(k^3) * a(n-k)	"1"
+ A381714	lambdan	0	n -> (1/n) * Sum_{k=1..n} sigma_3(k^3) * a(n-k)	"1"
+?1535463046144*n^3+16727609301504*n^2-80991531966464*n+147208521154560)*a(n-8)+(62403256320*n^4-1933443973120*n^3+
+?A109586	lambdan	0	n -> n <= 1 ? ZV(n + 2) : (n == 2 ? ZV(25) : M005185(n).*(PM(n)))	a(n)=prime(n)^b(n), where b(n) is the Hofstadter Q-sequence: b(1)= b(2)= 1; b(n)=b(n-b(n-1))+b(n-b(n-2)) for n > 2 (M005185).
+?A158876	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> FA(k).*(self.a(n - k))./(FA(n - k))))
+?A178753	lambdan	0	n -> ZV(n).xor(ZV(Functions.DIGIT_LENGTH.i(n) - 1)).+(1)
+?A178754	lambdan	0	n -> ZV(n).xor(ZV(Functions.DIGIT_LENGTH.i(n) - 1))	   
+?A282891	lambdan	0	n -> SU(1, n, k -> M004001(k)).modZ(n)
+?A282894	lambdan	0	n -> SU(1, n, k -> M004001(k)).mod(M004001(n))
+?A283501	lambdan	0	n -> SU(1, n, k -> M004001(k)).modZ(2*n)
+?A283525	lambdan	0	n -> SU(1, n, k -> M004001(k)).modZ(3*n)
+?A289635	multia	0	"1"	(self, n) -> SU(1, n - 1, k -> E006352(k).*(self.a(n - k)).-(E006352(n).*(n))).negate()	
+?A289636	multia	0	"1"	(self, n) -> SU(1, n - 1, k -> E004009(k).*(self.a(n - k)).-(E004009(n).*(n))).negate()	
+?A289637	multia	0	"1"	(self, n) -> SU(1, n - 1, k -> E013973(k).*(self.a(n - k)).-(E013973(n).*(n))).negate()	
+?A289638	multia	0	"1"	(self, n) -> SU(1, n - 1, k -> E008410(k).*(self.a(n - k)).-(E008410(n).*(n))).negate()	
+?A289639	multia	0	"1"	(self, n) -> SU(1, n - 1, k -> E013974(k).*(self.a(n - k)).-(E013974(n).*(n))).negate()	
+?A289640	multia	0	"1"	(self, n) -> SU(1, n - 1, k -> E058550(k).*(self.a(n - k)).-(E058550(n).*(n))).negate()	
+?A293527	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> ZV(k).*(F000041(k - 1)).*(self.a(n - k))./(FA(n - k))))
+?A293528	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> ZV(k).*(F000009(k - 1)).*(self.a(n - k))./(FA(n - k))))
+?A293731	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> ZV(k).square().*(F000041(k)).*(self.a(n - k))./(FA(n - k))))
+?A302446	lambdan	0	n -> ZV(2).*(F007917(n)).-(3)
+?A324713	lambdan	0	n -> ZV(2).*(D156552(n).xor(D323243(n)))	
+?A324713	lambdan	0	n -> ZV(2).*(D156552(n).xor(D323243(n)))	
+?A326731	lambdan	0	n -> ZV(n).xor(Z.TWO.pow(D029837(n).-(Integer.bitCount(n))))	n>=1
+?A331335	multia	0	"1"	(self, n) -> ZV(n).*(D000670(n).-(SU(1, n - 1, k -> D000670(k).*(self.a(n - k)))))
+?A337340	lambdan	0	n -> E337339(n).-(D003961(n))./(2)
+?A342457	lambdan	0	n -> ZV(2).*(E246277(E342456(n)))	
+?A356538	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> E090879(k).*(self.a(n - k))./(FA(n - k))))
+?A356540	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> E356539(k).*(self.a(n - k))./(FA(n - k))))
+?A356542	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> E356541(k).*(self.a(n - k))./(FA(n - k))))
+?A356560	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> E308688(k).*(self.a(n - k))./(FA(n - k))))
+?A356561	multia	0	"1"	(self, n) -> FA(n - 1).*(SU(1, n, k -> E308689(k).*(self.a(n - k))./(FA(n - k))))
+?A358276	multia	0	"1"	(self, n) -> RD(n, d -> (d == n) ? QV(0) : new Q(Z_1(n/d - 1).*(self.a(d)), ZV(d))).*(n).num()	"1"
+?A364391	lambdan	0	n -> !PP(n) ? ZV(n).-(D032742(n)) : ZV(n)	 if n is composite, n otherwise	
+A084844	poly	0	"1,1,x,n,*,-,x,<1,-,/"	""
+A109516	poly	0	"1,1,x,n,*,-,n,x,<1,*,-,/"	""
+A109519	poly	0	"[1],[-1]"	"1,p1,x,n,*,+,n,x,<1,*,-,/"
+A118790	polya	0	"[1]"	"x,B,n,pow,x,B,*"	new A120010()
+A120955	poly	0	"[1]"	"2,x,A,/,sub,*,1,-,x,A,/,-"
+A136749	poly	0	"[1]"	"2,n,pow,x,atanh,*,exp,*n!"
+
+A294137	polya	0	"[1]"	"1,1,x,B,<1,-,/"	new A048050()
