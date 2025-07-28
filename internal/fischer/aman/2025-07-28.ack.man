@@ -1,7 +1,4 @@
----- 2025-07-27 23:07:30
----- 2025-07-27 23:11:53
----- 2025-07-28 06:57:12
----- 2025-07-28 08:32:24
+---- 2025-07-28 12:13:28
 A088692	polyx	0	"[1]"	"1,2,A,<1,*,+,A,<1,exp,*"	0	1
 A088693	polyx	0	"[1]"	"1,3,A,^2,<1,*,+,A,^2,<1,exp,*"	0	1
 A088694	polyx	0	"[1]"	"1,4,A,^3,<1,*,+,A,^3,<1,exp,*"	0	1
@@ -9,49 +6,28 @@ A088704	polya	0	"[1]"	"1,x,B,log,dif,<1,+"	new A075864()
 A092300	lambdan	0	n -> ZV(2).*(E089989(n))
 A097630	polyxa	1	"[0,1]"	"2,x,B,*,2,x,B,*,x,C,*,-,x,C,+,2,x,B,*,x,C,/,-,x,C,^2,2,/,+"	1	1	egf(new A052746()), egf(new A097627())
 A100281	lambdan	0	n -> ZV(n).xor(ZV((n/4) ^ (n/16)))
+A119020	multia	0	"1"	(self, n) -> RU(0, n/2, k -> new Q(FA(n), FA(n - 2*k).*(FA(k)).*(FA(k + 1))).*(self.a(k))).num()	n==0, 1, sum(k=0, n\2, n!/((n-2*k)!*k!*(k+1)!)*a(k)))
 A158378	lambdan	1	n -> n == 1 ? ZV(0) : GCD(D051904(n), D051903(n))	for n >= 2	"0"
 A168360	sintrif	0	(term, n) -> ZV(n).-(term)	""	new A079777()	n-b(n), where b(n) = A079777
 A216351	poly	0	"[1],[1,1]"	"p1,p1,n,1,-,pow,pow,*n!"
+A216351	poly	0	"[1],[1,1]"	"p1,p1,n,pow,p1,/,pow,*n!"
 A221150	lambdan	0	n -> CV(n + 2)./(CV(2).+(CR.PHI)).floor().-(CV(n + 1)./(CV(2).+(CR.PHI)).floor())
 A221151	lambdan	0	n -> CV(n + 2)./(CV(3).+(CR.PHI)).floor().-(CV(n + 1)./(CV(3).+(CR.PHI)).floor())
 A221152	lambdan	0	n -> CV(n + 2)./(CV(4).+(CR.PHI)).floor().-(CV(n + 1)./(CV(4).+(CR.PHI)).floor())
+A224922	polya	0	"[1]"	"x,B,n,pow,x,B,*,n,1,+,/"	new A000110()
 A230603	lambdan	0	n -> CV(n + 2)./(CV(3).-(CR.PHI)).floor().-(CV(n + 1)./(CV(3).-(CR.PHI)).floor())
+A239761	poly	0	"[1],[0,-1]"	"1,1,p1,lambertW,+,n,pow,/,*n!"
+A245493	poly	0	"[1],[0,0,1/2]"	"x,exp,p1,+,n,pow,*n!"
 A265359	lambdan	0	n -> ZV(n).-(E265409(n))	"0"
 A265612	lambdan	0	n -> F000108(n + 1).*(n).*(1 + 3*n)./(6 + 2*n)	a(n) = CatalanNumber(n+1)*n*(1+3*n)/(6+2*n).
 A265613	lambdan	0	n -> F000108(n + 1).*(n).*(1 + n).*(2 + 3*n)./(4 + n)./(3 + n)	a(n) = CatalanNumber(n+1)*n*(3*n^2+5*n+2)/((4+n)*(3+n)).A298244	poly	0	"[1]"	"x,sec,x,tan,+,n,pow,*n!"
 A270919	polya	0	"[1]"	"1,x,B,n,pow,/"	new A002448()
 A280507	sintrif	0	(term, n) -> ZV(n).xor(term)	""	new A193231()
-A320957	poly	0	"[1],[0,3]"	"2,p1,sec,+,p1,tan,+,3,x,sec,*,+,3,x,tan,*,+,*n!,6,/"
-A326718	poly	0	"[1],[0,2]"	"x,tanh,p1,x,tanh,*,1,-,<1,x,sech,^2,*,+,1,-,8,/,*n!"
-A326729	lambdan	0	n -> ZV(n).xor(Z2(Integer.bitCount(n) - 1))	n>=1
-A333472	polya	0	"[1],[1,1]"	"x,p1,/,B,n,pow"	new A000108()
-A333579	poly	0	"[1],[1,1,1],[1,-1,1]"	"p1,p2,/,n,pow"
-A338749	multia	0	"1"	(self, n) -> RD(n, d -> (d == n) ? QV(0) : new Q(self.a(d - 1), ZV(d))).*(n).num()	"1"
-A343276	poly	0	"[1],[1,1],[-1,1]"	"p1,x,exp,*,<1,p2,^3,/,neg,*n!"
-A344787	lambdan	1	n -> RD(n, d -> new Q(Functions.SIGMA.z(d, d), ZV(d))).*(n).num()	sigma_d(d) / d
-A344867	lambdan	1	n -> RD(n, d -> new Q(SQRT(d), ZV(d))).*(n).num()
-A360469	lambdan	3	n -> ZV(n).-(D007814(n + 2))	(due to _Jinyuan Wang_)
-A361036	poly	0	"[1],[1,1]"	"p1,p1,n,pow,p1,n,pow,<1,exp,*,*n!"
-A362831	lambdan	1	n -> (E362721(n - 1).-((n - 1) & 1))./(2)
-A362832	lambdan	1	n -> (E362719(n - 1).-((n - 1) & 1))./(2)
-A362833	lambdan	1	n -> (E362806(n - 1).-((n - 1) & 1))./(2)
-A363091	lambdan	1	n -> RD(n, d -> d % Functions.TAU.i(d) == 0  && GCDi(d, n/d) == 1 ? new Q(1, d) : QV(0)).*(n).num()
-A363277	lambdan	1	n -> RD(n, d -> d > Functions.SQRT.i(n) ? QV(0) : new Q(MU(d).^(2), ZV(d))).*(n).num()
-A363289	lambdan	1	n -> RD(n, d -> GCDi(d, n/d) ==1 ? new Q(MU(d).^(2), ZV(d)) : QV(0)).*(n).num()
-A370259	lambdan	1	n -> E342205(n).-(1)./(ZV(n).^(3))
-A372332	lambdan	1	n -> ZV(Functions.DIGIT_LENGTH.i(2, E372331(n)) - 1)
----- 2025-07-28 09:22:46
-A119020	multia	0	"1"	(self, n) -> RU(0, n/2, k -> new Q(FA(n), FA(n - 2*k).*(FA(k)).*(FA(k + 1))).*(self.a(k))).num()	n==0, 1, sum(k=0, n\2, n!/((n-2*k)!*k!*(k+1)!)*a(k)))
-A216351	poly	0	"[1],[1,1]"	"p1,p1,n,pow,p1,/,pow,*n!"
-A224922	polya	0	"[1]"	"x,B,n,pow,x,B,*,n,1,+,/"	new A000110()
-A239761	poly	0	"[1],[0,-1]"	"1,1,p1,lambertW,+,n,pow,/,*n!"
-A245493	poly	0	"[1],[0,0,1/2]"	"x,exp,p1,+,n,pow,*n!"
 A290158	poly	0	"[1],[0,-1]"	"p1,n,*,exp,1,p1,lambertW,+,/,*n!"
 A290215	poly	0	"[1],[0,-1]"	"p1,n,*,exp,neg,p1,lambertW,*,*n!"
 A292633	poly	0	"[1],[0,-1]"	"x,n,*,exp,neg,p1,lambertW,*,*n!"
 A292916	poly	0	"[1]"	"x,n,*,exp,2,x,exp,-,/,*n!"
 A292976	poly	0	"[1]"	"x,n,*,exp,x,sec,x,tan,+,*,*n!"
----- 2025-07-28 09:57:20
 A293013	poly	0	"[1],[1,-1]"	"x,p1,n,pow,/,exp,*n!"
 A293020	poly	0	"[1],[1,-1]"	"x,tan,n,*,exp,*n!"
 A293021	poly	0	"[1],[1,-1]"	"x,sin,n,*,exp,*n!"
@@ -72,3 +48,70 @@ A295099	poly	0	"[1],[1,-2]"	"x,n,*,exp,p1,sqrt,/,*n!"
 A295182	poly	0	"[1],[0,-1],[1,-1]"	"p1,n,*,exp,p2,n,pow,/,*n!"
 A295183	poly	0	"[1],[1,-1]"	"x,n,*,exp,p1,n,pow,/,*n!"
 A295384	poly	0	"[1],[0,-1],[1,-1]"	"p1,n,*,p2,/,exp,p2,n,pow,p2,*,/,*n!"
+A299033	poly	0	"[1],A5"	"x,B,/n,n,*,neg,exp,*n!"
+A299034	poly	0	"[1],A5"	"x,B,/n,n,*,exp,*n!"
+A300187	polya	0	"[1]"	"x,B,/n,n,*,exp,*n!"	new A048272()
+A300188	polya	0	"[1]"	"x,B,/n,n,*,neg,exp,*n!"	new A048272()
+A300488	poly	0	"[1],[1,-1]"	"x,n,*,exp,neg,p1,log,p1,/,*,*n!"
+A301770	polya	0	"[1]"	"x,B,n,1,+,pow,n,1,+,/"	new A000085()
+A302584	poly	0	"[1]"	"x,n,*,exp,x,cos,/,*n!"
+A302585	poly	0	"[1]"	"x,n,*,exp,x,cosh,/,*n!"
+A303333	polyza	0	"[1]"	"x,B,sqrt,n,pow,x,C,sqrt,n,pow,+,2,/"	0	0	0	2	new A000122(), new A002448()
+A305537	polya	0	"[1]"	"x,B,n,1,+,pow,n,1,+,/"	new A001515()
+A308332	poly	0	"[1],[1,-1]"	"1,p1,/,x,n,*,exp,pow,*n!"
+A308333	poly	0	"[1],[1,1]"	"p1,x,n,*,exp,pow,*n!"
+A309652	polya	0	"[1]"	"x,B,n,pow"	new A000312()
+A309955	polya	0	"[1]"	"x,B,1,+,n,pow"	new A000040()
+A317171	poly	0	"[1],[1,-1]"	"1,1,p1,log,n,*,+,/,*n!"
+A318615	poly	0	"[1],[1,-1]"	"1,p1,x,n,*,pow,/,*n!"
+A318616	poly	0	"[1],[1,-1]"	"p1,x,n,*,pow,*n!"
+A319508	polyx	0	"[1]"	"1,1,n,+,x,exp,x,n,*,exp,1,-,*,x,exp,1,-,/,-,/,*n!"	1	0
+A319509	polyx	0	"[1]"	"1,1,n,-,x,exp,x,n,*,exp,1,-,*,x,exp,1,-,/,+,/,*n!"	1	0
+A320254	poly	0	"[1]"	"x,n,2,/,1,-,<2,+,x,exp,*,exp,*n!"
+A320255	poly	0	"[1]"	"x,n,2,/,1,-,<2,+,x,exp,*,1,+,log,*n!"
+A320288	polyx	0	"[1]"	"x,exp,x,n,*,exp,1,-,*,x,exp,1,-,/,n,-,exp,*n!"	1	0
+A320957	poly	0	"[1],[0,3]"	"2,p1,sec,+,p1,tan,+,3,x,sec,*,+,3,x,tan,*,+,*n!,6,/"
+A321394	poly	0	"[1],[0,4],[0,2]"	"9,p1,sec,+,p1,tan,+,p2,sec,p2,tan,+,6,*,+,x,sec,x,tan,+,8,*,+,24,/,*n!"
+A326718	poly	0	"[1],[0,2]"	"x,tanh,p1,x,tanh,*,1,-,<1,x,sech,^2,*,+,1,-,8,/,*n!"
+A326729	lambdan	0	n -> ZV(n).xor(Z2(Integer.bitCount(n) - 1))	n>=1
+A328716	poly	0	"[1],[0,2]"	"x,exp,0,p1,besselI,n,pow,*,*n!"
+A330603	poly	0	"[1],[0,-1]"	"p1,n,*,exp,2,x,exp,-,/,*n!"
+A330604	poly	0	"[1],[0,-1]"	"p1,exp,2,x,n,*,exp,-,/,*n!"
+A330605	poly	0	"[1],[-1,-1]"	"x,n,*,exp,p1,+,exp,*n!"
+A331582	polyx	0	"[1]"	"n,x,exp,n,x,*,exp,1,-,*,x,exp,1,-,/,-,exp,*n!"	1	0
+A332048	poly	0	"[1]"	"1,1,x,lambertW,-,n,pow,/,*n!"
+A333091	polya	0	"[1],[1,1]"	"p1,x,p1,/,B,^2,*,n,pow"	new A006318()	a(n) = [x^n] ( (1 + x)*S^2(x/(1 + x)) )^n
+A333094	polya	0	"[1],[1,1]"	"p1,x,p1,/,B,^2,*,n,pow"	new A000108()	a(n) = [x^n] ( (1 + x)*c^2(x/(1 + x)) )^n.
+A333472	polya	0	"[1],[1,1]"	"x,p1,/,B,n,pow"	new A000108()
+A333579	poly	0	"[1],[1,1,1],[1,-1,1]"	"p1,p2,/,n,pow"
+A334240	poly	0	"[1]"	"x,exp,1,-,n,*,x,+,exp,*n!"
+A334241	poly	0	"[1]"	"x,1,x,exp,-,n,*,+,exp,*n!"
+A338749	multia	0	"1"	(self, n) -> RD(n, d -> (d == n) ? QV(0) : new Q(self.a(d - 1), ZV(d))).*(n).num()	"1"
+A343276	poly	0	"[1],[1,1],[-1,1]"	"p1,x,exp,*,<1,p2,^3,/,neg,*n!"
+A344787	lambdan	1	n -> RD(n, d -> new Q(Functions.SIGMA.z(d, d), ZV(d))).*(n).num()	sigma_d(d) / d
+A344867	lambdan	1	n -> RD(n, d -> new Q(SQRT(d), ZV(d))).*(n).num()
+A360469	lambdan	3	n -> ZV(n).-(D007814(n + 2))	(due to _Jinyuan Wang_)
+A361036	poly	0	"[1],[1,1]"	"p1,p1,n,pow,p1,n,pow,<1,exp,*,*n!"
+A362831	lambdan	1	n -> (E362721(n - 1).-((n - 1) & 1))./(2)
+A362832	lambdan	1	n -> (E362719(n - 1).-((n - 1) & 1))./(2)
+A362833	lambdan	1	n -> (E362806(n - 1).-((n - 1) & 1))./(2)
+A363091	lambdan	1	n -> RD(n, d -> d % Functions.TAU.i(d) == 0  && GCDi(d, n/d) == 1 ? new Q(1, d) : QV(0)).*(n).num()
+A363277	lambdan	1	n -> RD(n, d -> d > Functions.SQRT.i(n) ? QV(0) : new Q(MU(d).^(2), ZV(d))).*(n).num()
+A363289	lambdan	1	n -> RD(n, d -> GCDi(d, n/d) ==1 ? new Q(MU(d).^(2), ZV(d)) : QV(0)).*(n).num()
+A370259	lambdan	1	n -> E342205(n).-(1)./(ZV(n).^(3))
+A372332	lambdan	1	n -> ZV(Functions.DIGIT_LENGTH.i(2, E372331(n)) - 1)
+A386565	lambdan	0	n -> SU(0, n - 1, k ->BI(4*k - 1, k).*(BI(4*n - 4*k, n - k - 1)))
+A386566	lambdan	0	n -> SU(0, n - 1, k ->BI(5*k - 1, k).*(BI(5*n - 5*k, n - k - 1)))
+A386567	lambdan	0	n -> SU(0, n - 1, k ->BI(6*k - 1, k).*(BI(6*n - 6*k, n - k - 1)))
+---- 2025-07-28 13:03:47
+A333090	polya	0	"[1],[1,1]"	"p1,x,p1,/,B,*,n,pow"	new A006318()
+A334242	poly	0	"[1],[-1,1]"	"n,x,exp,p1,+,*,exp,*n!"
+A334243	poly	0	"[1],[1,1]"	"n,p1,x,exp,-,*,exp,*n!"
+A335867	poly	0	"[1]"	"n,x,exp,1,-,*,x,-,exp,*n!"
+A335868	poly	0	"[1]"	"n,1,x,exp,-,*,x,-,exp,*n!"
+A337012	poly	0	"[1],[0,2]"	"1,n,x,*,p1,exp,1,-,2,/,+,exp,*n!"
+A337027	poly	0	"[1],[0,2]"	"1,n,x,*,exp,2,p1,exp,-,/,*n!"
+A337057	polyx	0	"[1],[1,1]"	"n,x,exp,p1,-,*,exp,*n!"	1	0
+A339401	poly	0	"[1]"	"n,x,exp,1,-,*,exp"
+A339402	polyx	0	"[1]"	"n,x,exp,1,-,*,exp"	0	4
+A340473	polyx	0	"[1]"	"x,lambertW,neg,lambertW,x,lambertW,neg,/,*n!"	1	0

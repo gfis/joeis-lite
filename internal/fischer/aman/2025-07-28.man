@@ -1,5 +1,24 @@
----- 2025-07-28 09:57:20
+---- 2025-07-28 13:03:48
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
   A209917	lambdan	0	n -> (n-1)!* Sum_{k=0..n-1} 3*binomial(n,k)*a(k)/k! for n>0	"1"
  A073520	lambdan	0	n -> (1/n) * Sum_{m=k..n^2+k-1} F000040(m)	"0"
  A080817	lambdan	0	n -> (ceiling(sqrt(n(n+1)/2)))^2 - n(n-1)/2	
@@ -108,5 +127,21 @@ A109519	poly	0	"[1],[-1]"	"1,p1,x,n,*,+,n,x,<1,*,-,/"
 A118790	polya	0	"[1]"	"x,B,n,pow,x,B,*"	new A120010()
 A120955	poly	0	"[1]"	"2,x,A,/,sub,*,1,-,x,A,/,-"
 A136749	poly	0	"[1]"	"2,n,pow,x,atanh,*,exp,*n!"
-
 A294137	polya	0	"[1]"	"1,1,x,B,<1,-,/"	new A048050()
+A296793	poly	0	"[1]"	"x,exp,x,sec,x,tan,+,n,pow,*,*n!"
+A296793	poly	0	"[1]"	"x,sec,x,tan,+,n,pow,*n!"
+A300631	polya	0	"[1]"	"x,B,/n!,n,pow,*n!"	new A000040()
+A301831	polya	0	"[1]"	"x,B,n,1,+,pow,n,1,+,/"	new A000165()
+A301832	polya	0	"[1]"	"x,B,n,1,+,pow,n,1,+,/"	new A255528()
+A301833	polya	0	"[1]"	"x,B,n,1,+,pow,n,1,+,/"	new A000364()
+A302586	poly	0	"[1]"	"x,n,*,exp,x,tan,/,*n!"
+A302587	poly	0	"[1]"	"x,n,*,exp,x,tanh,/,*n!"	a(n) = n! * [x^n] exp(n*x)*tanh(x).
+A302605	poly	0	"[1]"	"x,n,*,exp,x,asin,/,*n!"	a(n) = n! * [x^n] exp(n*x)*arcsin(x).
+A302606	poly	0	"[1]"	"x,n,*,exp,x,asinh,/,*n!"	a(n) = n! * [x^n] exp(n*x)*arcsinh(x).
+A302608	poly	0	"[1]"	"x,n,*,exp,x,atan,/,*n!"	a(n) = n! * [x^n] exp(n*x)*arctan(x).
+A302609	poly	0	"[1]"	"x,n,*,exp,x,atanh,/,*n!"	a(n) = n! * [x^n] exp(n*x)*arctanh(x).A303333	polya	0	"[1]"	"x,B,n,pow,x,C,n,pow,+,2,/"	new A000122(), new A002448()
+A308330	poly	0	"[1],[1,1]"	"x,n,*,exp,p1,/,1,-,exp,*n!"
+A321968	polyx	0	"[1],[0,-1]"	"p1,lambertW,exp,sqrt,neg,p1,lambertW,1,+,*,2,n,pow,*,*n!"	1	0
+A327006	poly	0	"[1],[-1,1]"	"1,p1,x,exp,*,+,exp,*n!"
+A333092	polya	0	"[1],[1,1]"	"p1,x,p1,/,B,^3,*,n,pow"	new A000108()	a(n) = [x^n] ( (1 + x)*S^3(x/(1 + x)) )^n.
+A334162	polyx	0	"[1]"	"x,x,*n,exp,1,-,/n,+,exp,*n!"	1	0
