@@ -1,0 +1,115 @@
+---- 2025-08-05 22:49:38
+A045920	parmof2	1	A045939	1
+A045940	parmof2	1	A045939	3
+A045941	parmof2	1	A045939	4
+A045942	parmof2	1	A045939	5
+A099612	sintrif	0	(term, n) -> new Q(term, FA(n)).num()	""	new A000111()	a(n)/A099617(n) = A000111(n)/n!.
+A099617	sintrif	0	(term, n) -> new Q(term, FA(n)).den()	""	new A000111()	a(n)/A099617(n) = A000111(n)/n!.
+A100953	moetra	0	new A000837()	, 1, Z.ONE	x
+A104688	binomtraf	1	new A008683()	0	false	sequence.
+A119021	binomtraf	0	new A119020()	0	false	.
+A119970	binomtraf	0	new A119969()	0	false	.
+A123103	parmof2	1	A045939	6
+A123201	parmof2	0	A045939	7
+A127354	sintrif	1	(p, n) -> ZUtils.describe(ZUtils.digitCounts(p))	""	new A000040()	Digit count of prime(n). The digit count numerically summarizes the frequency of digits 0 through 9 in that order when they occur in a number.	nonn,base	1..10000	nyi	_Lekraj Beedassy_
+A127355	filter	1	new A000040()	p -> PP(ZUtils.describe(ZUtils.digitCounts(p)))	Primes with prime digit counts. The digit count numerically summarizes the frequency of digits 0 through 9 in that order when they occur in a number.	nonn,base	1..10000	nyi	_Lekraj Beedassy_
+A127415	lambdan	1	n -> SU(1, n, k -> GCDi(k, n) != 1 ? ZV(0) : F000217(k))	Sum_{1<=k<=n, gcd(k,n)=1}, F000217(k).	nonn,easy	1..10000	nyi	_Gary W. Adamson_
+A127416	lambdan	1	n -> SU(1, n, k -> GCDi(k, n) != 1 ? ZV(0) : SU(1, k, i -> GCD(i, k)))	Sum_{1<=k<=n, gcd(k,n)=1} (Sum_{i=1..k} gcd(i, k)).	nonn	1..10000	nyi	_Gary W. Adamson_
+A127435	filter	1	new A000040()	p -> PP(p.-(1).^(2).+(1))	Primes p such that (p-1)^2 + 1 is prime.	nonn,changed	1..2289	nyi	_Lekraj Beedassy_
+A127436	sintrif	1	(term, n) -> term.-(1).^(2).+(1)	""	new A127435()	Primes associated with A127435.	nonn	1..36	nyi	_Lekraj Beedassy_
+A127510	trilambn	1	1	1	(n, k) -> MU(n).*(k)	Triangle T(n,k) = k*mobius(n).	tabl,easy,sign	1..55	nyi	_Gary W. Adamson_
+A127512	trilambn	1	1	1	(n, k) -> MU(n).*(BI(n - 1, k - 1))	Triangle read by rows: T(n,k)= mobius(n)*binomial(n-1,k-1).	tabl,sign,easy	1..10000	nyi	_Gary W. Adamson_
+A127561	arrlamb	0	0	0	-1	(n, k) -> ZV(n).*(n).+(ZV(5*(n + k)).*(k))	Array T(n,k) = n^2+5*n*k+5*k^2
+A127610	lambdan	0	n -> new Q(n + 1, 2).^(n).floor().-(FA(n))	nyi t	a(n) = floor(( (n+1)/2 )^n) - n!
+A127622	lambdan	1	n -> ZV(n).^(ZV(n).^(n)).-(FA(FA(n)))	n^(n^n) - (n!)!.	nonn	1..4	nyi	_N. J. A. Sloane_
+A127623	lambdan	1	n -> FA(FA(n)).-(ZV(n).^(n))	(n!)! - n^n.	sign	1..4	nyi	_N. J. A. Sloane_
+A166452	binomtraf	-1	new A166242()	0	false	.
+A166991	convprod	0	1/2	new A166990()
+A166993	convprod	0	1/2	new A166992()
+A173172	filnum	1	1	k -> SOPF(k).mod(SOPF(k + 1)).isZero() && SOPF(k + 1).mod(SOPF(k + 2)).isZero()
+A173320	filnum	1	1	k -> TAU(SIGMA(k)).equals(SOPF(k))
+A173326	filnum	1	1	k -> PHI(TAU(k)).equals(SOPF(k))
+A173327	filnum	1	1	k -> TAU(PHI(k)).equals(SOPF(k))
+A173328	filnum	1	2	k -> PHI(TAU(k)).equals(TAU(SOPF(k)))
+A173336	filnum	1	1	k -> TAU(PHI(k)).equals(SIGMA(SOPF(k)))
+A173337	filnum	1	1	k -> PHI(PHI(k)).equals(SIGMA(SOPF(k)))
+A173338	filnum	1	1	k -> TAU(TAU(k)).equals(SOPF(SOPF(k)))
+A175651	filnum	1	1	k -> Predicates.SQUARE.is(SOPF(k).+(SOPF(k + 1)))
+A182184	multia	1	"0"	(self, n) -> { final Z a1 = self.a(n - 1); final Z sn = SOPF(n); return a1.-(sn).compareTo(ZV(0)) >= 0 ? a1.-(sn) : a1.+(sn); }
+A187771	filnum	0	245180	k -> SIGMA(k).equals(SOPF(k).^(3))
+A187877	filnum	1	1	k -> SOPFR(k + Functions.BIG_OMEGA.i(k)).equals(SOPFR(k))
+A187878	filnum	1	2	k -> SOPFR(k + Functions.OMEGA.i(k)).equals(SOPFR(k))
+A188131	filter	1	new A000040()	p -> p.mod(4) == 1 && PP(p.*(6).+(1))	Primes p == 1 (mod 4) such that 6p+1 is prime.	nonn	1..10000	nyi	_M. F. Hasler_
+A188132	filter	1	new A000040()	p -> p.mod(4) == 3 && PP(p.*(6).+(1))	Primes p such that p == 3 (mod 4) and 6p+1 is prime.	nonn	1..10000	nyi	_M. F. Hasler_
+A188133	filter	1	new A000040()	p -> Z.TWO.^(p).-(1).mod(p.*(10).+(1)).isZero()	Primes p such that 10p+1 divides 2^p-1.	nonn	1..10000	nyi	_M. F. Hasler_
+A188166	noncomp	1	1, NONCOMPUTABLE, 14, 23, 34, 42, 57, 72, 86, 96, 110, 116, 125, 155	New York City streets that are 100 feet wide instead of 60.	nonn,less	1..12	nyi	_Barry Tesman_
+A188478	multia	0	"1"	(self, n) -> SU(0, n - 1, i -> BI(n - 1 - i, i).*(self.a(i)).*(self.a(n - i - 1)))	Binomial variation of the Catalan numbers: a(n) = sum( binomial(n-1-i, i)*a(i)*a(n-1-i), i=0..(n-1) ) with a(0)=1.	nonn,easy	0..200	nyi	_Olivier G‚ąö¬©rard_
+A188479	multia	0	"1"	(self, n) -> SU(0, n - 1, i -> BI(n - i, i).*(self.a(i)).*(self.a(n - i - 1)))	Binomial variation of the Catalan numbers: a(n) = sum( binomial(n-i, i)*a(i)*a(n-1-i), i=0..(n-1) ) with a(0)=1.	nonn,easy	0..200	nyi	_Olivier G‚ąö¬©rard_
+A188540	filnum	1	1	k -> TAU(k + 2).equals(TAU(k).*(2))	nyi to	Numbers k such that d(k+2) = 2*d(k) where d(k) is the number of divisors of k (F000005).	nonn,easy	1..10000	nyi	_Juri-Stepan Gerasimov_
+A190680	filter	1	new A000040()	p -> { final Z sp = SOPFR(p.-(1)); return sp.equals(SOPFR(p.+(1))) && PP(sp); }
+A196994	filnum	0	9024	k -> SOPFR(k + 1).+(k).mod(SOPFR(k - 1)).isZero() && SOPFR(k - 1).+(k).mod(SOPFR(k + 1)).isZero()
+A212849	filnum	1	1	k -> Predicates.TRIANGULAR.is(SOPFR(k))
+A212861	filnum	1	1	k -> SOPFR(k).equals(GPF(k).*(3))
+A213015	filnum	1	1	k -> { final Z sk = SOPFR(k); return sk.mod(2) == 0 && PP(sk./(2)); }
+A213016	filnum	1	1	k -> { final Z sk = SOPFR(k); return sk.mod(3) == 0 && PP(sk./(3)); }
+A216893	filter	1	new A000045().skip(3)	v -> { final Z sf = SOPF(v); return !sf.testBit(0) && Predicates.FIBONACCI.is(sf./(2)); }	Fibonacci numbers whose sum of prime divisors equals two times a Fibonacci number
+A217390	filnum	1	1	k -> SOPF(k).equals(Functions.DIGIT_SUM_SQUARES.z(k))	sum of squares of digits of n equals the sum of prime divisors of n
+A217531	filnum	1	1	k -> SOPF(k).equals(Functions.DIGIT_SUM_CUBES.z(k))	sum of cubes of digits of n equals the sum of prime divisors of n
+A225418	filter	1	new A002808()	c -> c.toString().indexOf(SOPF(c).toString()) >= 0	Composite numbers which contain their sum of the distinct prime factors (SOPF function) as a substring
+A226479	filnum	0	22446139	k -> SOPF(k).*(TAU(k)).^(2).equals(SIGMA(k))	 where SOPF(k) = sum of distinct prime factors of n (A008472) and d(k) = number of divisors of n
+A226480	filnum	0	22446139	k -> Predicates.SQUARE_FREE.is(k) && SOPF(k).*(TAU(k)).^(2).equals(SIGMA(k))	
+A228126	filnum	1	2	k -> SOPFR(k).equals(SOPFR(k + 1).-(1))	Sum of prime divisors of n (with repetition) is one less than the sum of prime divisors (with repetition) of n+1
+A229022	lambdan	1	n -> SOPF(n).+(ZV(n)./(RAD(n)))
+A230357	filnum	1	1	k -> { final Z sf = SOPF(k); return !ZV(k).equals(sf) && Functions.DIGIT_SUM.i(k) == Functions.DIGIT_SUM.i(sf); }
+A247048	filnum	1	4	k -> { final Z sk = SOPFR(k); final Z sk2 = SOPFR(k + 2); return sk.-(sk2).abs().equals(ZV(2)) && !PP(k) && !PP(k + 2) && PP(sk) && PP(sk2); }	Composite n+2 is also composite and such that (SOPFR(k), SOPFR(n+2)) is a twin prime pair. A001414 explains notation 'SOPFR(k)'
+A248662	filnum	1	1	k -> TAU(k).compareTo(SOPFR(k)) > 0
+A251364	sintrif	1	(term, n) -> { final Z avg = term.+(Functions.NEXT_PRIME.z(term.+(1)).-(term)./(2)); return avg.-(SOPFR(avg)); }	""	new A000040().skip(1)
+A268935	multia	1	"2,3"	(self, n) -> SOPFR(self.a(n - 1).+(self.a(n - 2)))
+A275665	filnum	1	1	k -> GCD(ZV(k), SOPF(k)).equals(ZV(1))	are relatively prime, where SOPF(k) (A008472) is the sum of the distinct primes dividing n
+A304918	binomtraf	0	new A134954()	0	false	.
+A305026	filnum	1	1	k -> SOPFR(k).equals(TAU(k).^(2))
+A305349	filnum	1	1	k -> SOPFR(k).equals(TAU(k).^(3))
+A318128	binomtraf	0	new A318129()	0	true	.
+A318682	multia	1	"-1"	(self, n) -> self.a(n - 1).+(SOPFR(n).+(1).testBit(0) ? ZV(-1) : ZV(1))	a(n) = a(n-1) + (-1)^(SOPFR(k)+1) with a(1) = (-1)^(SOPFR(1)+1) = -1
+A328736	filnum	1	2	k -> { final Z test = SOPFR(k).*(2); return SOPFR(k - 1).compareTo(test) >= 0 || SOPFR(k + 1).compareTo(test) >= 0; }
+A328737	filnum	1	2	k -> { final Z test = SOPFR(k).*(3); return SOPFR(k - 1).compareTo(test) >= 0 || SOPFR(k + 1).compareTo(test) >= 0; }
+A328738	filnum	1	2	k -> { final Z test = SOPFR(k).*(4); return SOPFR(k - 1).compareTo(test) >= 0 || SOPFR(k + 1).compareTo(test) >= 0; }
+A332004	moetra	0	new A032020()	, 1, Z.ONE	x
+A341274	filnum	1	4	k -> !PP(k) && ZV(k).mod(ZV(k).mod(SOPFR(k)).+(ZV(k)./(SOPFR(k)))).isZero()
+A341321	filnum	1	4	k -> !PP(k) && ZV(k).mod(ZV(k).mod(SOPFR(k)).+(SOPFR(k))).isZero()
+A342035	filnum	1	1	k -> { final Z ks = Functions.BIG_OMEGA.z(k).+(SOPFR(k)); return PP(ks) && PP(ks.+(k)); }	both bigomega(k)+SOPFR(k) and bigomega(k)+SOPFR(k)+k are prime
+A342738	filter	1	new A000040()	p -> SOPFR(p.+(1)).equals(SOPFR(p.-(1)).+(1))
+A342823	filter	1	new A000040()	p -> SOPFR(p.+(1)).equals(SOPFR(p.-(1)).-(1))
+A342825	filter	1	new A000040()	p -> { final Z p41 = SOPFR(p.^(4).-(1)); final Z sqp = SQRT(p41); return sqp.*(sqp).equals(p41) && PP(sqp); }
+A342830	filter	1	new A000040()	p -> { final Z p41 = SOPFR(p.+(Functions.NEXT_PRIME.z(p.+(1)))); final Z sqp = SQRT(p41); return sqp.*(sqp).equals(p41) && PP(sqp); }	SOPFR(p+q) is the square of a prime, where q is the next prime after p
+A343424	filnum	0	1	k -> SOPFR(FA(k - 1)).mod(k) == 0	 is divisible by k, where SOPFR(k) = A001414(k) = sum of primes, with repetition, dividing k
+A351827	sintrif	1	(term, n) -> SIGMA(n).-(SOPF(n)).+(term)	""	new A034387()
+A351847	sintrif	1	(term, n) -> SOPF(term)./(Functions.OMEGA.z(term))	""	new A078174()
+A358017	parmof2	0	A045939	8
+A358018	parmof2	0	A045939	9
+A358019	parmof2	0	A045939	10
+A363896	filnum	1	1	k -> SOPFR(k).equals(PHI(k))
+A363915	trilambn	0	0	0	(n, k) -> ZV(PP(k) && (k == n || (k > 0 && n%k == 0)) ? 1 : 0)
+A372195	binomtraf	0	new A372193()	0	true	. - _Andrew Howroyd_, Jul 31 2024
+A380653	lambdan	1	n -> { final Z sn = SOPFR(n); return CNT(1, n, j -> SOPFR(j).equals(sn)); }
+A380654	lambdan	1	n -> { final Z sn = SOPF(n); return CNT(1, n, j -> SOPF(j).equals(sn)); }
+A381972	filnum	1	3	k -> new Q(ZV(k), SOPFR(k)).compareTo(new Q(ZV(k - 1), SOPFR(k-1)))  > 0
+A384684	filnum	1	1	k -> !PP(k) && SOPF(k).^(k).mod(ZV(k)).equals(SOPF(k))
+A385242	holos	0	[0,-2,0,-3,4,1,-1]	1,0,3,0,12,2	0	0
+A385605	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(4*n+1, k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(4*n+1, k))	_	_	_
+A385632	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(5*n+1, k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(5*n+1, k))	_	_	_
+A386550	holos	1	[0,1,-99,99,-1]	0,2,176,17222	0	0
+A386763	lambdan	0	n -> SU(0, n, k -> ZV(5).^(k).*(ZV(3).^(n-k)).*(BI(n+k-1, k)))	""		a(n) = sum(k=0, n, 5^k*3^(n-k)*binomial(n+k-1, k))	_	_	_
+A386764	lambdan	0	n -> SU(0, n, k -> ZV(5).^(k).*(ZV(3).^(n-k)).*(BI(2*n+k-1, k)))	""		a(n) = sum(k=0, n, 5^k*3^(n-k)*binomial(2*n+k-1, k))	_	_	_
+A386765	lambdan	0	n -> SU(0, n, k -> ZV(5).^(k).*(ZV(3).^(n-k)).*(BI(3*n+k-1, k)))	""		a(n) = sum(k=0, n, 5^k*3^(n-k)*binomial(3*n+k-1, k))	_	_	_
+A386766	lambdan	0	n -> SU(0, n, k -> ZV(5).^(k).*(Z2(n-k)).*(BI(n+k-1, k)))	""		a(n) = sum(k=0, n, 5^k*2^(n-k)*binomial(n+k-1, k))	_	_	_
+A386767	lambdan	0	n -> SU(0, n, k -> ZV(5).^(k).*(Z2(n-k)).*(BI(2*n+k-1, k)))	""		a(n) = sum(k=0, n, 5^k*2^(n-k)*binomial(2*n+k-1, k))	_	_	_
+A386768	lambdan	0	n -> SU(0, n, k -> ZV(5).^(k).*(Z2(n-k)).*(BI(3*n+k-1, k)))	""		a(n) = sum(k=0, n, 5^k*2^(n-k)*binomial(3*n+k-1, k))	_	_	_
+A386769	lambdan	0	n -> RU(0, n, k -> QV(3).^(k).*(Z2(n-k)).*(BI(QV(2).*(n+1), k)).*(BI(2*n-k, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 3^k*2^(n-k)*binomial(2*(n+1), k)*binomial(2*n-k, n-k))/(n+1)	_	_	_
+A386770	lambdan	0	n -> RU(0, n, k -> QV(3).^(k).*(Z2(n-k)).*(BI(QV(3).*(n+1), k)).*(BI(3*n-k+1, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 3^k*2^(n-k)*binomial(3*(n+1), k)*binomial(3*n-k+1, n-k))/(n+1)	_	_	_
+A386771	lambdan	0	n -> RU(0, n, k -> QV(3).^(k).*(Z2(n-k)).*(BI(QV(4).*(n+1), k)).*(BI(4*n-k+2, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 3^k*2^(n-k)*binomial(4*(n+1), k)*binomial(4*n-k+2, n-k))/(n+1)	_	_	_
+A386772	lambdan	0	n -> RU(0, n, k -> QV(Z2(k)).*(QV(3).^(n-k)).*(BI(QV(2).*(n+1), k)).*(BI(2*n-k, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 2^k*3^(n-k)*binomial(2*(n+1), k)*binomial(2*n-k, n-k))/(n+1)	_	_	_
+A386773	lambdan	0	n -> RU(0, n, k -> QV(Z2(k)).*(QV(3).^(n-k)).*(BI(QV(3).*(n+1), k)).*(BI(3*n-k+1, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 2^k*3^(n-k)*binomial(3*(n+1), k)*binomial(3*n-k+1, n-k))/(n+1)	_	_	_
+A386774	lambdan	0	n -> RU(0, n, k -> QV(Z2(k)).*(QV(3).^(n-k)).*(BI(QV(4).*(n+1), k)).*(BI(4*n-k+2, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 2^k*3^(n-k)*binomial(4*(n+1), k)*binomial(4*n-k+2, n-k))/(n+1)	_	_	_
+A386811	lambdan	0	n -> SU(0, n, k -> BI(4*n+1, k))	""		a(n) = sum(k=0, n, binomial(4*n+1, k))	_	_	_
+A386812	lambdan	0	n -> SU(0, n, k -> BI(5*n+1, k))	""		a(n) = sum(k=0, n, binomial(5*n+1, k))	_	_	_

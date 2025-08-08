@@ -1,0 +1,119 @@
+---- 2025-08-08 08:11:06
+---- 2025-08-08 09:55:32
+A094074	sintrif	0	(term, n) -> D001147(n).*(term)	""	new A093620()
+A099585	sintrif	1	(term, n) -> D038502(term)	""	new A006093()
+A103440	lambdan	1	n -> E103637(n).-(E103638(n))
+A106841	sintrif	1	(term, n) -> term.*(8)	""	new A091072()
+A107757	sintrif	1	(term, n) -> term.-(1)	""	new A074939()
+A127318	lambdan	0	n -> n == 0 ? ZV(0) : BI(n, Functions.DIGIT_SUM.i(n)).mod(Functions.DIGIT_SUM.z(n))	] mod (sum of digits of n)}, with n>=1.	easy,nonn,base	0..103	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_    
+A127319	lambdan	0	n -> n == 0 ? ZV(0) : BI(n, Functions.DIGIT_SUM.i(n)).mod(ZV(n))	] mod n}, with n>=1.	easy,nonn,base	0..91	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_                          
+A127350	lambdan	1	n -> SU(n, n + 3, i -> SU(i + 1, n + 4, j -> PM(i).*(PM(j))))	a(n) = Sum_{i=n..n+3} Sum_{j=i+1..n+4} prime(i)*prime(j).	nonn	1..37	nyi	_Artur Jasinski_
+A156910	diffs	0	new PrependSequence(new A155201(), 0)
+A156911	diffs	0	new PrependSequence(new A155204(), 0)
+A185041	lambdan	0	n -> E070177(n).modZ(10)
+A185202	polya	1	"[0,1],[0,-1]"	"x,B,rev,abs"	new A010060()
+A190727	sintrif	1	(term, n) -> term.-(2)	""	new A089898()
+A220880	sintrif	0	(term, n) -> term.-(1)	""	new A007695()
+A221146	sintrif	0	(term, n) -> term.*(2)	""	new A004198()
+A280619	filnum	1	k -> k == 8 || TAU(k).compareTo(ZV(4)) < 0
+A336595	filnum	1	1	k -> TAU(k).mod(5) == 0	Numbers whose number of divisors is divisible by 5.	nonn	1..10000	nyi	_Amiram Eldar_
+A336596	filnum	1	1	k -> TAU(k).mod(7) == 0	Numbers whose number of divisors is divisible by 7.	nonn	1..10000	nyi	_Amiram Eldar_
+A336612	filnum	1	1	k -> ZV(k).mod(SIGMA(TAU(k))).isZero()
+A336613	filnum	1	1	k -> ZV(k).mod(TAU(SIGMA(k))).isZero()
+A337825	multia	0	"0"	(self, n) -> ZV(n).^(3).-(SU(1, n - 1, k -> BI(n,k).^(2).*(ZV(n - k).^(3)).*(k).*(self.a(k)))./(n))
+A338175	filter	1	new A000040()	p -> { Q q = new Q(p.^(2).+(6), ZV(5)); return q.isInteger() && PP(q.num()); }	Primes p such that (p^2+6)/5 is prime.	nonn	1..10000	nyi	_J. M. Bergot_ and _Robert Israel_
+A383326	lambdan	0	n -> SU(0, n, k -> BI(3*n+1, k).*(BI(3*n-k, n-k)))	""		a(n) = sum(k=0, n, binomial(3*n+1, k)*binomial(3*n-k, n-k))	_	_	_
+A383716	lambdan	0	n -> SU(0, n, k -> BI(4*n+1, k).*(BI(4*n-k, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+1, k)*binomial(4*n-k, n-k))	_	_	_
+A383884	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(2*n+1, k)).*(BI(2*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^k*binomial(2*n+1, k)*binomial(2*n-k, n-k))	_	_	_
+A384338	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(3*n+1, k)).*(BI(3*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^k*binomial(3*n+1, k)*binomial(3*n-k, n-k))	_	_	_
+A384366	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(4*n+1, k)).*(BI(4*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^k*binomial(4*n+1, k)*binomial(4*n-k, n-k))	_	_	_
+A384494	trilambn	0	0	0	(n, k) -> Z_1(k).*(k + 1).*(FA(n + 1 - k))	Triangle read by rows: T(n, k) = (-1)^k*(k+1)*(n+1-k)!, n >= 0, k = 0..n.	sign,tabl,easy	0..54	nyi	_Wolfdieter Lang_
+A384667	charfunc	1	new A072774()		Characteristic function of powers of squarefree numbers (J072774).	nonn	1..10000	nyi	_Friedjof Tellkamp_
+A384830	polyx	1	"[0,1],[0,0,0,1],[0,0,1]"	"p1,3,A,^3,*,<1,-,sub,p2,2,A,^2,*,<1,-,sub,/"	3	0
+A384833	poly	0	"[1],[0,0,0,1],[0,0,1]"	"x,p1,sub,p2,sub,*,+"
+A385066	polyx	0	"[1],[0,0,0,1]"	"x,p1,A,dif,dif,*,+,exp"	0	1
+A385101	polyx	0	"[1],[0,0,0,0,1/24]"	"A,<1,p1,A,dif,dif,dif,*,+,exp"	0	1
+A385255	filnum	1	1	k -> SIGMA(k).-(2*k).+(24).isZero()	Numbers m whose deficiency is 24: sigma(m) - 2*m = -24.	bref,nonn,hard,more,new	1..3	nyi	_Max Alekseyev_
+A385287	multia	0	"1,0"	(self, n) -> self.a(n - 2).+(SU(0, n - 1, k -> ZV(k).*(self.a(k)).*(self.a(n - 1 - k))))	0..23	nyi	_Seiichi Manyama_
+A385313	lambdan	1	n -> D010051(n).+(SD(n, d -> ZV(d).*(PHI(n/d)).*(ZV(1).-(D010051(d)))))	* phi(n/d) * (1 - c(d)), where c = D010051.	nonn	1..84	nyi	_Wesley Ivan Hurt_
+A385322	polyx	0	"[1],[0,0,1/2]"	"x,p1,A,dif,*,+,exp"	0	1
+A385514	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(2*n+1, k)).*(BI(2*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(2*n+1, k)*binomial(2*n-k, n-k))	_	_	_
+A385656	filnum	1	1	k -> ZV(k).*(k).mod(Functions.DIGIT_SUM.i(k*k)) == 0	Numbers k such that the sum of the decimal digits of k^2 divides k^2.	nonn,base,easy	1..1000	nyi	_Vighnesh Patil_
+A385667	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(3*n+1, k)).*(BI(3*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(3*n+1, k)*binomial(3*n-k, n-k))	_	_	_
+A385668	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(4*n+1, k)).*(BI(4*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(4*n+1, k)*binomial(4*n-k, n-k))	_	_	_
+A385669	lambdan	0	n -> SU(0, n, k -> Z2(k).*(ZV(3).^(n-k)).*(BI(2*n+1, k)).*(BI(2*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^k*3^(n-k)*binomial(2*n+1, k)*binomial(2*n-k, n-k))	_	_	_
+A385670	lambdan	0	n -> SU(0, n, k -> Z2(k).*(ZV(3).^(n-k)).*(BI(3*n+1, k)).*(BI(3*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^k*3^(n-k)*binomial(3*n+1, k)*binomial(3*n-k, n-k))	_	_	_
+A385671	lambdan	0	n -> SU(0, n, k -> Z2(k).*(ZV(3).^(n-k)).*(BI(4*n+1, k)).*(BI(4*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^k*3^(n-k)*binomial(4*n+1, k)*binomial(4*n-k, n-k))	_	_	_
+A385949	lambdan	0	n -> Functions.DIGIT_LENGTH.z(ZV(7).^(FA(n)))	nonn,base,new	0..22	nyi	_Vincenzo Librandi_
+A385950	lambdan	0	n -> Functions.DIGIT_LENGTH.z(ZV(3).^(FA(n)))	nonn,base,new	0..22	nyi	_Vincenzo Librandi_
+A385951	lambdan	0	n -> Functions.DIGIT_LENGTH.z(ZV(5).^(FA(n)))	nonn,base,new	0..22	nyi	_Vincenzo Librandi_
+A386304	filtpos	1	1	new A067666()	(k, v) -> Predicates.SQUARE.is(ZV(k).-(v))	Numbers k such that k - J067666(k) is a square.	nonn,new	1..10000	nyi	_Will Gosnell_ and _Robert Israel_
+A386548	poly	0	"[1],[1,-1],[1,-1,1]"	"p1,p2,/,n,pow"
+A386699	holos	0	[[0],[-705438720,5734663920,-14545496430,6744016665,29386898820,-56650741875,43842363750,-16112418750,2317612500],[46448640,-353499048,672035976,895035040,-5154790928,8023561744,-6071867360,2285899936,-342458816],[0,-1586304,18811008,-88170240,212006656,-282697728,209720320,-80658432,12500992]]	1,7	0	0
+A386700	holos	0	[[0],[-8640,42864,-72408,49680,-11880],[-9720,46014,-74243,49410,-11605],[0,-2484,8118,-7290,1980]]	1,0,6	0	0
+A386701	holos	0	[[0],[-1088640,9126912,-29039360,45477888,-37338112,15384576,-2506752],[-1837080,15189600,-47631648,73636272,-59842368,24471072,-3965760],[0,-357858,2315709,-5244183,5342112,-2515050,446148]]	1,1	0	0
+A386702	holos	0	[[0],[-940584960,11388418560,-55109600640,141230728320,-211765531040,191751240000,-103089440000,30263400000,-3733100000],[-2380855680,28677229776,-137998180332,351762123620,-524935655069,473415527402,-253684378280,74277961298,-9143593823],[0,-378940032,3791803104,-14499398520,28086358608,-30260584584,18378815760,-5888370816,774095616]]	1,2	0	0
+A386720	polya	0	"[1]"	"x,B,n,pow"	new A023872()
+A386729	polya	0	"[1]"	"x,B,n,pow"	new A248882()
+A386745	lambdan	0	n -> ZV(n).^(2).*(Functions.SIGMA.z(2, n))	n^2*sigma_2(n).	nonn,mult,new	0..10000	nyi	_Vaclav Kotesovec_
+A386746	lambdan	0	n -> ZV(n).^(3).*(Functions.SIGMA.z(2, n))	n^3*sigma_2(n).	nonn,mult,new	0..9000	nyi	_Vaclav Kotesovec_
+A386747	lambdan	0	n -> ZV(n).^(2).*(Functions.SIGMA.z(4, n))	n^2*sigma_4(n).	nonn,mult,new	0..9000	nyi	_Vaclav Kotesovec_
+A386748	lambdan	0	n -> ZV(n).^(3).*(Functions.SIGMA.z(4, n))	n^3*sigma_4(n).	nonn,mult,new	0..8000	nyi	_Vaclav Kotesovec_
+A386749	lambdan	0	n -> ZV(n).*(Functions.SIGMA.z(4, n))	n*sigma_4(n).	nonn,mult,new	0..9000	nyi	_Vaclav Kotesovec_
+A386750	lambdan	0	n -> ZV(n).*(Functions.SIGMA.z(6, n))	n*sigma_6(n).	nonn,mult,new	0..3000	nyi	_Vaclav Kotesovec_
+A386751	lambdan	0	n -> ZV(n).*(Functions.SIGMA.z(8, n))	n*sigma_8(n).	nonn,mult,new	0..3000	nyi	_Vaclav Kotesovec_
+A386777	lambdan	0	n -> ZV(n).^(2).*(Functions.SIGMA.z(6, n))
+A386777	lambdan	0	n -> ZV(n).^(2).*(Functions.SIGMA.z(6, n))
+A386778	lambdan	0	n -> ZV(n).^(2).*(Functions.SIGMA.z(8, n))
+A386778	lambdan	0	n -> ZV(n).^(2).*(Functions.SIGMA.z(8, n))
+A386780	lambdan	0	n -> ZV(n).^(3).*(Functions.SIGMA.z(6, n))
+A386780	lambdan	0	n -> ZV(n).^(3).*(Functions.SIGMA.z(6, n))
+A386781	lambdan	0	n -> ZV(n).^(3).*(Functions.SIGMA.z(7, n))
+A386781	lambdan	0	n -> ZV(n).^(3).*(Functions.SIGMA.z(7, n))
+A386782	lambdan	0	n -> ZV(n).^(3).*(Functions.SIGMA.z(8, n))
+A386782	lambdan	0	n -> ZV(n).^(3).*(Functions.SIGMA.z(8, n))
+A386783	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(2, n))
+A386783	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(2, n))
+A386784	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(4, n))
+A386784	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(4, n))
+A386785	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(5, n))
+A386785	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(5, n))
+A386786	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(6, n))
+A386786	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(6, n))
+A386787	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(7, n))
+A386787	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(7, n))
+A386788	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(8, n))
+A386788	lambdan	0	n -> ZV(n).^(4).*(Functions.SIGMA.z(8, n))
+A386813	convprod	0	3,2	new A006352(), new A004009()
+A386814	convprod	0	4,1	new A006352(), new A013973()
+A386815	convprod	0	4,2	new A006352(), new A004009()
+A386816	convprod	0	2,3	new A006352(), new A004009()
+A386817	convprod	0	3,1,1	new A006352(), new A004009(), new A013973()
+A386817	convprod	0	3,1,1	new A006352(), new A004009(), new A013973()
+A386818	convprod	0	2,2	new A006352(), new A013973()
+A386829	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(Z2(n-k)).*(BI(2*n+1, k)).*(BI(2*n-k, n-k)))	""		a(n) = sum(k=0, n, 3^k*2^(n-k)*binomial(2*n+1, k)*binomial(2*n-k, n-k))	_	_	_
+A386830	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(Z2(n-k)).*(BI(3*n+1, k)).*(BI(3*n-k, n-k)))	""		a(n) = sum(k=0, n, 3^k*2^(n-k)*binomial(3*n+1, k)*binomial(3*n-k, n-k))	_	_	_
+A386831	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(Z2(n-k)).*(BI(4*n+1, k)).*(BI(4*n-k, n-k)))	""		a(n) = sum(k=0, n, 3^k*2^(n-k)*binomial(4*n+1, k)*binomial(4*n-k, n-k))	_	_	_
+A386833	lambdan	0	n -> SU(0, n, k -> BI(3*n+1, k).*(BI(3*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(3*n+1, k)*binomial(3*n-k-1, n-k))	_	_	_
+A386834	lambdan	0	n -> SU(0, n, k -> BI(4*n+1, k).*(BI(4*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+1, k)*binomial(4*n-k-1, n-k))	_	_	_
+A386835	lambdan	0	n -> SU(0, n, k -> BI(2*n+2, k).*(BI(2*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(2*n+2, k)*binomial(2*n-k-1, n-k))	_	_	_
+A386836	lambdan	0	n -> SU(0, n, k -> BI(3*n+2, k).*(BI(3*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(3*n+2, k)*binomial(3*n-k-1, n-k))	_	_	_
+A386837	lambdan	0	n -> SU(0, n, k -> BI(4*n+2, k).*(BI(4*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+2, k)*binomial(4*n-k-1, n-k))	_	_	_
+A386843	lambdan	0	n -> SU(0, n, k -> BI(2*n+2, k).*(BI(2*n-k, n-k)))	""		a(n) = sum(k=0, n, binomial(2*n+2, k)*binomial(2*n-k, n-k))	_	_	_
+A386844	lambdan	0	n -> SU(0, n, k -> BI(3*n+2, k).*(BI(3*n-k, n-k)))	""		a(n) = sum(k=0, n, binomial(3*n+2, k)*binomial(3*n-k, n-k))	_	_	_
+A386845	lambdan	0	n -> SU(0, n, k -> BI(4*n+2, k).*(BI(4*n-k, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+2, k)*binomial(4*n-k, n-k))	_	_	_
+A386862	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(2*n+1, k)).*(BI(2*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(2*n+1, k)*binomial(2*n-k-1, n-k))	_	_	_
+A386863	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(3*n+1, k)).*(BI(3*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(3*n+1, k)*binomial(3*n-k-1, n-k))	_	_	_
+A386864	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(4*n+1, k)).*(BI(4*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(4*n+1, k)*binomial(4*n-k-1, n-k))	_	_	_
+A386865	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(2*n+2, k)).*(BI(2*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(2*n+2, k)*binomial(2*n-k-1, n-k))	_	_	_
+A386866	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(3*n+2, k)).*(BI(3*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(3*n+2, k)*binomial(3*n-k-1, n-k))	_	_	_
+A386867	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(4*n+2, k)).*(BI(4*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(4*n+2, k)*binomial(4*n-k-1, n-k))	_	_	_
+A386868	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(2*n+2, k)).*(BI(2*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(2*n+2, k)*binomial(2*n-k, n-k))	_	_	_
+A386869	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(3*n+2, k)).*(BI(3*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(3*n+2, k)*binomial(3*n-k, n-k))	_	_	_
+A386870	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(4*n+2, k)).*(BI(4*n-k, n-k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(4*n+2, k)*binomial(4*n-k, n-k))	_	_	_
+A386876	lambdan	0	n -> n == 0 ? ZV(1) : FA(3*n)./(FA(n).^(3))./(2)	a(n) = (1/2) * (3*n)! / n!^3 for n > 0, a(0) = 1.	nonn,easy,new	0..650	nyi	_Peter Luschny_
+A386879	lambdan	0	n -> n == 0 ? ZV(1) : BI(n*(n + 1)/2, n).*(n - 1)./(n + 1)
+A386880	lambdan	0	n -> n == 0 ? ZV(1) : BI(n*(n + 3)/2, n).*(n + 1)./(n + 3)
+A386245	filtpos	1	4	new A075255()	(k, v) -> !PP(k) && Predicates.SQUARE.is(v)	 is a square.	nonn	1..10000	nyi	_Will Gosnell_ and _Robert Israel_
+A386246	filtpos	1	4	new A075254()	(k, v) -> !PP(k) && Predicates.SQUARE.is(v)	 is a square.	nonn	1..10000	nyi	_Will Gosnell_ and _Robert Israel_
+A384493	filnum	0	4	k -> !PP(k) && TAU(k).*(k + 1).mod(SIGMA(k)).isZero()	Composite integers k such that sigma(k) | (k + 1)*tau(k) where tau is number of divisors of k.	nonn	1..36	nyi	_David A. Corneth_ and _Ivan N. Ianakiev_

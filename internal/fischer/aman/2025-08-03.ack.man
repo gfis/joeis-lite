@@ -1,0 +1,120 @@
+
+---- 2025-08-02 14:54:18
+---- 2025-08-02 14:57:35
+---- 2025-08-02 15:03:44
+---- 2025-08-02 15:06:44
+---- 2025-08-02 16:30:14
+---- 2025-08-02 16:36:52
+---- 2025-08-02 18:47:19
+---- 2025-08-03 11:26:01
+---- 2025-08-03 12:09:57
+---- 2025-08-03 12:22:44
+---- 2025-08-03 12:43:48
+---- 2025-08-03 12:54:28
+---- 2025-08-03 13:22:51
+---- 2025-08-03 14:05:49
+---- 2025-08-03 17:21:03
+---- 2025-08-03 17:57:51
+---- 2025-08-03 18:15:57
+A079393	filtpos	0	1	new A000594()	v -> v.compareTo(ZV(0)) < 0	Numbers for which Ramanujans tau function is negative.
+A079445	filnum	1	1	k -> { final Z ph = PHI(k); return PP(ph.*(ZV(k).-(ph)).-(1)); }	phi(n)*(n-phi(n))-1 is prime.   nonn    1..1000 nyi     _Jon Perry_
+A079446	filnum	1	1	k -> { final Z ph = PHI(k); return PP(ph.*(ZV(k).-(ph)).+(1)); }	Integers k such that phi(k)*(k-phi(k))+1 is prime.      nonn    1..10000        nyi     _Jon Perry_
+A079481	filter	0	new A000040()	p -> PP(p.*(Functions.NEXT_PRIME.z(p.+(1))).+(FA(p.-(1))))	Primes prime(k) such that prime(k)*prime(k+1)+(prime(k)-1)! is prime.   nonn,hard,more  1..9    nyi     _Jon Perry_
+A085957	filter	1	new A000040()	p -> PP(p.*(6).+(1)) && p.-(1).mod(6) == 0 && PP(p.-(1)./(6))
+A085958	filter	1	new A000040()	p -> PP(p.*(8).+(1)) && p.-(1).mod(8) == 0 && PP(p.-(1)./(8))
+A086172	filnum	1	1	k -> PP(PM(k).*(k).+(1))	Numbers n such that n*prime(n)+1 is prime.	easy,nonn	1..1000	nyi	_Zak Seidov_
+A086173	filnum	1	1	k -> PP(PM(k).*(k).-(1))	Numbers k such that k*prime(k)-1 is prime.	easy,nonn	1..1000	nyi	_Zak Seidov_
+A086174	filnum	1	1	k -> PP(PM(k).*(k).+(2))	Numbers n such that n*prime(n)+2 is a prime.	easy,nonn	1..1000	nyi	_Zak Seidov_
+A086175	filnum	1	1	k -> PP(PM(k).*(k).-(2))	Numbers n such that n*prime(n)-2 is prime.	easy,nonn	1..1000	nyi	_Zak Seidov_
+A086176	filnum	1	1	k -> PP(PM(k).*(k).+(3))	Numbers n such that n*prime(n)+3 is prime.	easy,nonn	1..1000	nyi	_Zak Seidov_
+A086177	filnum	1	1	k -> PP(PM(k).*(k).-(3))	Numbers n such that n*prime(n)-3 is prime.	easy,nonn	1..1000	nyi	_Zak Seidov_
+A086407	multia	1	"1"	(self, n) -> PM(self.a(n - 1)).mod(6) == 5 ? self.a(n - 1).-(1) : self.a(n - 1).+(4)	a[n+1]=a[n]-1 if mod[prime[a[n]],6]=5, else a[n+1]=a[n]+4.	easy,nonn	1..53	nyi	_Zak Seidov_
+A086408	multia	1	"1"	(self, n) -> PM(self.a(n - 1)).mod(6) == 1 ? self.a(n - 1).-(1) : self.a(n - 1).+(4)	a[n+1]=a[n]-1 if mod[prime[a[n]],6]=1, else a[n+1]=a[n]+4.	easy,nonn	1..62	nyi	_Zak Seidov_
+A086476	filter	1	new A000040()	p -> PP(p.*(32).+(1)) && p.-(1).mod(32) == 0 && PP(p.-(1)./(32))	Primes p such that 32p+1 and (p-1)/32 are both prime.	nonn	1..31	nyi	_Amarnath Murthy_ and _Jason Earls_
+A086477	filter	1	new A000040()	p -> PP(p.*(128).+(1)) && p.-(1).mod(128) == 0 && PP(p.-(1)./(128))	Primes p such that 128p+1 and (p-1)/128 are both prime.	nonn	1..27	nyi	_Amarnath Murthy_ and _Jason Earls_
+A086478	filter	1	new A000040()	p -> PP(p.*(512).+(1)) && p.-(1).mod(512) == 0 && PP(p.-(1)./(512))	Primes p such that 512p+1 and (p-1)/512 are both prime.	nonn	1..24	nyi	_Jason Earls_ and _Amarnath Murthy_
+A086739	lambdan	1	n -> F000041(n).-(F000010(n))	1..44	nyi	_Jon Perry_
+A086740	lambdan	1	n -> F000041(n)./(n)	1..52	nyi	_Jon Perry_
+A086813	multia	1	"1"	(self, n) -> self.a(n - 1).testBit(0) ? self.a(n - 1).*(5).+(1)./(2) : self.a(n - 1).*(3)./(2)	a(1)=1 then a(n)= (1/2) *(5*a(n-1)+1) if a(n-1) is odd, a(n)=3/2*a(n-1) otherwise.	nonn	1..32	nyi	_Benoit Cloitre_
+A086861	sintrif	1	(term, n) -> CV(term)./(CV(term).log()).floor()	""	new A000040()	Floor( p/log(p)
+A086881	lambdan	1	n -> RU(1, n, j -> RU(1, n, i -> new Q(1, i + j))).*(FA(2*n)).num()	(nyi Ft	a(n) = (2*n)!*Sum[Sum[1/(i+j),{i,1,n}],{j,1,n}].	nonn,changed	1..13	nyi	_Alexander Adamchuk_
+A086910	multia	1	"1"	(self, n) -> PM(n).-(self.a(n - 1)).abs().+(1)	a(1)=1; a(n) = 1 + abs(prime(n) - a(n-1)).	nonn	1..66	nyi	_Roger L. Bagula_
+A086913	multia	1	"1,1"	(self, n) -> PM(self.a(n - 2)).+(PM(n).-(self.a(n - 2)).abs())	a[n] =Prime[a[n-2]]+Abs[Prime[n]-a[n-2]].	nonn,changed	1..15	nyi	_Roger L. Bagula_
+A086931	multia	0	"1"	(self, n) -> LPF(n).*(self.a(n - Functions.LPF.i(n)))	a(0) = 1, a(n) = spf(n)*a(n-spf(n)), where spf=F020639 (smallest prime factor).	nonn	0..45	nyi	_Reinhard Zumkeller_
+A087095	lambdan	1	n -> E077503(n).-(ZV(10).^(n - Functions.DIGIT_LENGTH.i(n)).*(n))	a(n) = E077503(n) - n*10^d, where d = n-F055642(n), F055642(n) = number of digits in n.	nonn,base	1..26	nyi	_Ray Chandler_
+A087146	filnum	1	0	k -> PP(FA(k).+(FA(k + 1)).-(1))	Numbers k such that k! + (k+1)! - 1 is prime.	nonn	1..26	nyi	_Farideh Firoozbakht_
+A087147	filnum	1	0	k -> PP(FA(k).+(FA(k + 1)).+(1))	Numbers k such that k! + (k+1)! + 1 is prime.	more,nonn	1..9	nyi	_Farideh Firoozbakht_
+A092152	lambdan	1	n -> ZV(E092673(n).signum())
+A100396	lambdan	0	n -> n == 0 ? ZV(1) : Functions.BELL.z(n - 1).+(FI(n))
+A100397	prepend	0	new LambdaSequence(0, n -> n == 0 ? ZV(1) : Functions.BELL.z(n - 1).-(FI(n)))	1
+A100407	filnum	0	1	k -> (k&1) == 1 && PP(ZV(k).^(k).+(2))	Numbers k such that k^k+2 is prime.	more,nonn,hard	1..4	nyi	_Farideh Firoozbakht_     
+A100408	filnum	0	1	k -> PP(ZV(k).^(k).-(2))	Numbers n such that n^n-2 is prime.	more,nonn	1..8	nyi	_Farideh Firoozbakht_           
+A100418	filnum	1	1	k -> { final Z k30 = ZV(30*k); return PP(k30.+(1)) && PP(k30.+(11)) && PP(k30.+(13)) && PP(k30.+(17)) && PP(k30.+(19)) && PP(k30.+(23)) && PP(k30.+(29)) ; }	Numbers k such that 30*k+{1,11,13,17,19,23,29} are all prime
+A100419	filnum	1	1	k -> { final Z k30 = ZV(30*k); return PP(k30.+(1)) && PP(k30.+( 7)) && PP(k30.+(13)) && PP(k30.+(17)) && PP(k30.+(19)) && PP(k30.+(23)) && PP(k30.+(29)) ; }	Numbers k such that 30*k+{1, 7,13,17,19,23,29} are all prime.
+A100420	filnum	1	1	k -> { final Z k30 = ZV(30*k); return PP(k30.+(1)) && PP(k30.+( 7)) && PP(k30.+(11)) && PP(k30.+(17)) && PP(k30.+(19)) && PP(k30.+(23)) && PP(k30.+(29)) ; }	Numbers n such that 30*n+{1, 7,11,17,19,23,29} are all prime.
+A100421	filnum	1	1	k -> { final Z k30 = ZV(30*k); return PP(k30.+(1)) && PP(k30.+( 7)) && PP(k30.+(11)) && PP(k30.+(13)) && PP(k30.+(19)) && PP(k30.+(23)) && PP(k30.+(29)) ; }	Numbers n such that 30*n+{1, 7,11,13,19,23,29} are all prime.
+A100422	filnum	1	1	k -> { final Z k30 = ZV(30*k); return PP(k30.+(1)) && PP(k30.+( 7)) && PP(k30.+(11)) && PP(k30.+(13)) && PP(k30.+(17)) && PP(k30.+(23)) && PP(k30.+(29)) ; }	Numbers n such that 30*n+{1, 7,11,13,17,23,29} are all prime.
+A100423	filnum	1	1	k -> { final Z k30 = ZV(30*k); return PP(k30.+(1)) && PP(k30.+( 7)) && PP(k30.+(11)) && PP(k30.+(13)) && PP(k30.+(17)) && PP(k30.+(19)) && PP(k30.+(29)) ; }	Numbers n such that 30*n+{1, 7,11,13,17,19,29} are all prime.
+A100428	bisect0	1	new A000002()
+A111424	lambdan	1	n -> SU(1, n, i -> FA(2*i)./(FA(i)))	Sum_{i=1..n} (2i)!/i!.
+A120282	bisect1	1	new A027643().skip(2)	a(n) = numerator[Coefficient[Sum[Sum[(i-j)^(2n),{i,1,k}],{j,1,k}],k,2]]. a(n) = J027643(2n+3)
+A128059	lambdan	0	n -> new Q(ZV(2*n - 1).^(2), FA(2*n).*(2)).num()	a(n) = numerator((2*n-1)^2/(2*(2*n)!)).
+A156244	bisect1	1	new A078649()
+A156245	bisect0	1	new A078649()
+A158119	bisect0	0	new SingleTransformSequence(0, (term, n) -> term.abs(), "", new A157308())	Unsigned bisection of J157308 and J157310
+A163228	bisect0	0	new A162584()
+A163229	bisect1	1	new A162584()
+A168081	bisect1	0	new PrependSequence(0, new A006921(), 0, 0)
+A171687	holos	0	[0,10000000000,-11111000000,1122211000,-11222110,11111,-1]	17,24641,204060401,2004006004001,20004000600040001	0	0
+A172678	lambdan	1	n -> (QV(1)./(QV(FA(8)).^(n))).*(RU(0, n, v -> RU(0, n-v, m -> RU(0, n-v-m, g -> RU(0, n-v-m-g, b -> (QV(28).^(b).*(QV(210).^(g)).*(QV(420).^(m)).*(QV(105).^(v)).*(FA(n)).*(FA(4*n)).*(FA(8*n-2*b-4*g-6*m-8*v)))./(QV(FA(n-b-g-m-v)).*(FA(b)).*(FA(g)).*(FA(m)).*(FA(v)).*(FA(4*n-b-2*g-3*m-4*v)).*(Z2(4*n-b-2*g-3*m-4*v)))))))).num()	""		a(n) = (1/(8!)^n)*sum(v=0, n, sum(m=0, n-v, sum(g=0, n-v-m, sum(b=0, n-v-m-g, (28^b*210^g*420^m*105^v*n!*(4*n)!*(8*n-2*b-4*g-6*m-8*v)!)/((n-b-g-m-v)!*b!*g!*m!*v!*(4*n-b-2*g-3*m-4*v)!*2^(4*n-b-2*g-3*m-4*v)) ))))	_	_	_
+A177455	partsun	1	new A079062()			Partial sums of A079062.
+A180056	bisect1	0	new PrependSequence(0, new A006551(), 1, 1)
+A210604	bisect0	1	new A005132()	Bisection of Recam√°ns sequence J005132.
+A212649	lambdan	1	n -> ComputableReals.SINGLETON.sum(0, n-1, k -> CV(n).^(2).-(CV(k).^(2)).sqrt()).floor()	a(n) = floor(Sum_{k=0..n-1} sqrt(n^2 - k^2))	_	_	_		a(n) = floor(Sum_{k=0..n-1} sqrt(n^2 - k^2)).
+A216151	multia	1	"1,2"	(self, n) -> PR(1, n - 1, k -> self.a(k)).*(SU(1, n - 1, k -> self.a(k)))	a(n+1) = (Product_{k=1..n} a(k)) * Sum_{k=1..n} a(k), a(1)=1, a(2)=2
+A216983	lambdan	1	n -> ZV(n % 7 == 1 ? 7 : (n % 5 == 1 ? 5 : (n % 3 == 1 ? 3 : (n % 2 == 1 ? 2 : 1))))
+A216996	filnum	1	1	k -> Functions.DIGIT_SUM.i(k*7) % 7 == 0	Numbers n such that the digit sum of n*7 is a multiple of 7.    nonn,base       1..10000        nyi     _Jon Perry_
+A216998	lambdan	1	n -> ZV(Functions.DIGIT_SUM.i(n*7) % 7)	nyi to  Digit sum of n*7 mod 7. nonn,base       1..88   nyi     _Jon Perry_
+A232180	bisect0	1	new A001008()	First bisection of harmonic numbers (numerators).
+A232181	bisect0	1	new A002805()	First bisection of harmonic numbers (denominators).
+A233809	lambdan	1	n -> SU(1, n, k -> PM(k).*(Z_1(k/2)))	a(n) = Sum_{k=1..n} prime(k) * s(k), where s(k) = (-1)^(floor(k/2))
+A261558	insect2	0	new A006862()	new A202822()	
+A264886	filnum	0	1	k -> PP(F002110(k).-(F002110(k - 1)).+(1)) || PP(F002110(k).-(F002110(k - 1)).-(1))
+A273352	bisect1	1	new A002105()	Bisection of the reduced tangent numbers, J002105.
+A301925	bisect0	1	new A000230().skip(2)	Inspired by J058620. A bisection of J000230.
+A307658	convprod	0	1,1	new A117209(), new A117210()	Convolution of A117209 and A117210.
+A337541	moebtrai	1	0	new A337383()
+A344650	bisect0	0	new A067659()
+A353567	moebtrai	1	0	new A353566()
+A353654	filnum	1	1	k -> { final long kodd = k / Long.lowestOneBit(k); return Long.numberOfTrailingZeros(Long.highestOneBit(kodd)) + 1 - Long.bitCount(kodd) == Long.numberOfTrailingZeros(k); }	Numbers whose binary expansion has the same number of trailing 0 bits as other 0 bits.
+A364446	bisect1	0	new A097514()
+A373974	moebtrai	1	1	new A373971()
+A378217	dirichinv	1	new A330575()	1	Dirichlet inverse of A330575.
+A378440	moebtrai	1	0	new A378437()
+A378532	dirichcon2	1	new A296075()	1	new A378525()	1	Dirichlet convolution of A296075 and A378525.
+A378534	dirichcon2	1	new A033879()	1	new A378525()	1	Dirichlet convolution of A033879 and A378525.
+A378536	moebtrai	1	0	new A378525()
+A378989	moebtrai	1	0	new A378990()
+A379219	moebtrai	1	0	new A379109()
+A379222	lambdan	1	n -> Functions.VALUATION.z(SIGMA(ZV(2*n - 1).^(2)).add(1), Z.TWO)	n -> SIGMA(ZV(2*n - 1).^(2))  
+A383593	lambdan	0	n -> new Z(Integer.toString(n, 2).replaceFirst("0", "1"), 2)	In the binary expansion of n, change the most significant 0 bit to 1, if there is any 0 bit.
+A383888	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n+k-1, k)))	""		a(n) = sum(k=0, n, 3^k * binomial(n+k-1,k))	_	_	_
+A384950	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(2*n+k-1, k)))	""		a(n) = sum(k=0, n, 3^k * binomial(2*n+k-1, k))	_	_	_
+A385004	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(3*n, k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(3*n, k))	_	_	_
+A385251	lambdan	0	n -> SU(0, n-1, k -> BI(4*k-3, k).*(BI(4*n-4*k, n-k-1)))	""		a(n) = sum(k=0, n-1, binomial(4*k-3, k)*binomial(4*n-4*k, n-k-1))	_	_	_
+A385319	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(2*n, k)).*(BI(2*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^k*binomial(2*n,k)*binomial(2*n-k-1, n-k))	_	_	_
+A385320	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(3*n, k)).*(BI(3*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^k*binomial(3*n, k)*binomial(3*n-k-1, n-k))	_	_	_
+A385438	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(3*n+k-1, k)))	""		a(n) = sum(k=0, n, 3^k * binomial(3*n+k-1, k))	_	_	_
+A385474	lambdan	0	n -> RU(0, n, k -> QV(Z2(n-k)).*(BI(QV(3).*(n+1), k)).*(BI(3*n-k+1, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(3*(n+1), k)*binomial(3*n-k+1, n-k))/(n+1)	_	_	_
+A385475	lambdan	0	n -> RU(0, n, k -> QV(Z2(n-k)).*(BI(QV(4).*(n+1), k)).*(BI(4*n-k+2, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(4*(n+1), k)*binomial(4*n-k+2, n-k))/(n+1)	_	_	_
+A385498	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(4*n, k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(4*n, k))	_	_	_
+A385917	holos	1	[0,1,-9603,9603,-1]	0,1,10296,98862891	0	0
+A386480	holos	0	[0,1,-3,3,-1]	1,2,4,8	0	0
+A386670	holos	0	[[0],[4320,-3888,864],[-840,972,-276],[40,-69,29],[0,1,-1]]	0,1	0	0
+A386699	lambdan	0	n -> SU(0, n, k -> ZV( 2).^(n - k).*(BI(5*n, k)))
+A386700	lambdan	0	n -> SU(0, n, k -> ZV(-3).^(n - k).*(BI(3*n, k)))
+A386701	lambdan	0	n -> SU(0, n, k -> ZV(-3).^(n - k).*(BI(4*n, k)))
+A386702	lambdan	0	n -> SU(0, n, k -> ZV(-3).^(n - k).*(BI(5*n, k)))
+A386719	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(4*n, k)).*(BI(4*n-k-1, n-k)))	""		a(n) = sum(k=0, n, 2^k*binomial(4*n, k)*binomial(4*n-k-1, n-k))	_	_	_
+A386722	lambdan	0	n -> RU(0, n, k -> QV(Z2(k)).*(BI(QV(3).*(n+1), k)).*(BI(3*n-k+1, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 2^k*binomial(3*(n+1), k)*binomial(3*n-k+1, n-k))/(n+1)	_	_	_
+A386723	lambdan	0	n -> RU(0, n, k -> QV(Z2(k)).*(BI(QV(4).*(n+1), k)).*(BI(4*n-k+2, n-k)))./(n+1).num()	""		a(n) = sum(k=0, n, 2^k*binomial(4*(n+1), k)*binomial(4*n-k+2, n-k))/(n+1)	_	_	_
