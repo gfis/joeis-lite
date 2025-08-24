@@ -278,6 +278,7 @@ while (<>) { # read inputfile
             $parm =~ s{CND\(}          {Integers.SINGLETON.countdiv\(}g;
             $parm =~ s{CNT\(}          {Integers.SINGLETON.count\(}g;
             $parm =~ s{CONC\(}         {ZUtils.concatenate\(}g;
+            $parm =~ s{CORE\(}         {Functions.CORE.z\(}g;
             $parm =~ s{DL\(}           {Functions.DIGIT_LENGTH.l\(}g;
             $parm =~ s{\bF\.}          {Functions.}g;
             $parm =~ s{FA\(}           {Functions.FACTORIAL.z\(}g;
