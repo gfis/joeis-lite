@@ -131,7 +131,7 @@ adictest:
 asutest:
 	$(JAVA) irvine.oeis.AlternatingSumSequence -d $(D) -n $(NT) -a "$(A)" -p "$(P)"
 cptest:
-	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)" 
+	$(JAVA) irvine.oeis.transform.ConvolutionProduct -d $(D) -n $(NT) -a "$(A)" -q "$(Q)"
 	perl -ne 'print join("\t","", "convprod", 0, $(Q), "new $(A)()") . "\n";' >> aman/`date +%Y-%m-%d`.man
 eps: epstest #
 epstest:
@@ -188,7 +188,7 @@ ej:
 	echo $(JAVA)
 regtest: # CLASS= rerun all these classes
 	grep -P "\A[A-Z]\d+\t$(CLASS)" $(COMMON)/joeis_names.txt | cut -f1 \
-	| perl -pe 's/^./A/;' > $(CLASS).gen 
+	| perl -pe 's/^./A/;' > $(CLASS).gen
 	head -n4 $(CLASS).gen
 	wc -l    $(CLASS).gen
 	make CC=$(CLASS) test log
@@ -199,7 +199,7 @@ dirtest:
 runpari:
 	$(JAVA) org.teherba.extcas.RunPARI  $(CMD)
 forgotten: # probably forgotten production
-	grep -iH -P "^A" aman/*.ack.man | endirect | grep -P "\:A" | cut -b1-23 | sort | uniq 
+	grep -iH -P "^A" aman/*.ack.man | endirect | grep -P "\:A" | cut -b1-23 | sort | uniq
 	| tee $@.tmp
 overlooked: # probably forgotten production
 	grep -iH -P "^A" aman/*.ack.man | endirect > $@.tmp
@@ -389,7 +389,7 @@ sumpass: # copy all with passed test in joeis-lite/src to ./manual
 	| xargs -innn cp -pv nnn manual
 techo: # append timestamp
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).man
-#-----  
+#-----
 ap: addpass
 addpass: # append seq4 records with passed tests to TODAY=file
 	echo ---- `date +%Y-%m-%d%t%T` >> aman/$(TODAY).ack.man
@@ -464,7 +464,7 @@ EX=
 PO=1
 SQL=$(CC)
 select2: # require not in joeis: JO= (default) / require not in noeis: PO=1 (default)
-	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO) 
+	# ---- $@ CC=$(CC) JO=$(EX) PO=$(PO)
 	perl keep_last.pl $(CC).gen  > $(CC).tmp
 	make seq4                 LIST=$(CC).tmp
 	$(DBAT) -v -f sql/$(SQL).sql > $(CC).sql.tmp || :
@@ -4546,7 +4546,8 @@ morfix_grep:
 #--------
 morfps0: morfps1 morfps2
 morfps1:
-	perl morfps.pl $(COMMON)/names \
+	perl morfps.pl $(COMMON)/joeis_names.txt \
+	| grep -vP "^(A191648|A317198|A348126|A367523)" \
 	>        $@.tmp
 	wc -l    $@.tmp
 	make seq4 LIST=$@.tmp
@@ -4561,7 +4562,7 @@ morfps2:
 morfps:
 	CLASS=MorphismFixedPointSequence
 	grep -P "\d\-\>\d" morfps2.tmp > $@.gen
-	cat morfps.man >> $@.gen
+	cat morfps.man >> $@.gen || :
 	head -n4 $@.gen
 	wc -l    $@.gen
 morfpsm:
@@ -8828,7 +8829,7 @@ wpartsum1: # replace some with corrections
 	> $@.tmp
 	cat aman/wpartsum.corr.man              >> $@.tmp
 	wc -l    wpartsum0.tmp $@.tmp
-#	| grep -vf wpartsum6.grep.tmp 
+#	| grep -vf wpartsum6.grep.tmp
 #
 wpartsum2: # run the Perl generator
 	cat wpartsum1.tmp \
