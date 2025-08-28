@@ -241,8 +241,8 @@ public class BatchTest {
       failure = 1; // FAIL
       // failCount ++;
       String trace = getShortTrace(exc);
-      if (trace.length() > 64) {
-          trace = trace.substring(0,64);
+      if (trace.length() > 2048) {
+          trace = trace.substring(0, 2048);
       }
       printLog("FATAL", "Exception " + exc.getMessage(), trace);
     }
