@@ -1,6 +1,7 @@
 package irvine.test;
 /*  Reads a subset of OEIS 'stripped', calls joeis sequences and compares the results
  *  @(#) $Id$
+ *  2025-08-29: V4.4: respect offset in parameter testNext.index
  *  2023-10-18: V4.2: optionally try DirectSequence a-methods
  *  2022-06-20: V4.0: use SequenceFactory
  *  2022-06-18: V3.1: CASBridge removed
@@ -49,7 +50,7 @@ public class BatchTest {
   public final static String CVSID = "@(#) $Id$";
 
   /** This program's version */
-  private static String VERSION = "BatchTest V4.2";
+  private static String VERSION = "BatchTest V4.3";
 
   /** A-number of sequence currently tested */
   private String  aseqno;
@@ -212,11 +213,17 @@ public class BatchTest {
     try {
       Z term = seq.next();
       if (mDirect && mIsDirect && index <= mDirectMax) {
-        Z terma = mDirectSeq.a(index);
-        if (!terma.equals(term)) {
+        final Z termAi = mDirectSeq.a(index);
+        if (!termAi.equals(term)) {
           failure = 1;
           printLog("FATAL", "Difference between next() and a(" + String.valueOf(index) + "): ", 
-              String.valueOf(term) + " != " + String.valueOf(terma));
+              String.valueOf(term) + " != " + String.valueOf(termAi));
+        }
+        final Z termAz = mDirectSeq.a(Z.valueOf(index));
+        if (!termAz.equals(term)) {
+          failure = 1;
+          printLog("FATAL", "Difference between next() and a(Z.valueOf(" + String.valueOf(index) + ")): ", 
+              String.valueOf(term) + " != " + termAz.toString());
         }
       }
       mCount ++; // one more is computed
@@ -314,6 +321,7 @@ public class BatchTest {
       startTime = System.currentTimeMillis();
       sequenceMayRun = true;
 
+      final int offset = seq.getOffset();
       int termNo = terms.length; // Math.min(terms.length, maxTerms());
       int termNoLimit = termNo;
       if (giveUpLimit > 0 && giveUpLimit < termNo) {
@@ -332,7 +340,7 @@ public class BatchTest {
         failure = 0; // assume pass
         while (sequenceMayRun && failure == 0 && mCount < termNoLimit
             ) {
-          failure = testNext(seq, mCount, terms[mCount]);
+          failure = testNext(seq, mCount + offset, terms[mCount]);
           // mCount is incremented in testNext
           timeDiff = System.currentTimeMillis() - startTime;
           if (timeDiff > millisToRun) {
