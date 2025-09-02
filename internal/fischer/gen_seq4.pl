@@ -645,7 +645,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WBinomial\.}                   ) { $imports{"irvine.math.z.Binomial"}                        = $itype; }
     if ($line =~ m{\WCarmichael}                   ) { $imports{"irvine.math.z.Carmichael"                     } = $itype; }
     if ($line =~ m{\WCC\W}                         ) { $imports{"irvine.math.cc.CC"}                             = $itype; }
-    if ($line =~ m{\WComputableComplexField}       ) { $imports{"irvine.math.cr.ComputableComplexField"}         = $itype; }
+    if ($line =~ m{\WComputableComplexField}       ) { $imports{"irvine.math.cc.ComputableComplexField"}         = $itype; }
     if ($line =~ m{\WCR\W}                         ) { $imports{"irvine.math.cr.CR"}                             = $itype; }
     if ($line =~ m{\WComputableReals}              ) { $imports{"irvine.math.cr.ComputableReals"}                = $itype; }
     if ($line =~ m{\WContinuedFractionSequence}    ) { $imports{"irvine.oeis.cons.ContinuedFractionSequence"   } = $itype; }
@@ -714,6 +714,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WRationalRecurrence}           ) { $imports{"irvine.oeis.recur.RationalRecurrence"         } = $itype; }
     if ($line =~ m{\WRationals\.}                  ) { $imports{"irvine.math.q.Rationals"}                       = $itype; }
     if ($line =~ m{\WRecordPositionSequence}       ) { $imports{"irvine.oeis.RecordPositionSequence"}            = $itype; }
+    if ($line =~ m{\WRowSumSequence}               ) { $imports{"irvine.oeis.triangle.RowSumSequence"}           = $itype; }
     if ($line =~ m{\WSequence(\d|\$\(OFFSET\))}    ) { $imports{"irvine.oeis.Sequence$1" }                       = $itype; }
     if ($line =~ m{\WSimpleTransformSequence}      ) { $imports{"irvine.oeis.transform.SimpleTransformSequence"} = $itype; }
     if ($line =~ m{\WSingleTransformSequence}      ) { $imports{"irvine.oeis.transform.SingleTransformSequence"} = $itype; }
