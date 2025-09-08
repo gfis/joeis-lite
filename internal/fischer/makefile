@@ -8729,15 +8729,15 @@ ordsum1:
 ordsum2:
 	cat ordsum1.txt | xargs -i{} make ordsum3 AS={}
 ordsum3:
-	make rstest A=$(AS) Q="2" | tee -a $@.txt
-	make rstest A=$(AS) Q="3" | tee -a $@.txt
-	make rstest A=$(AS) Q="4" | tee -a $@.txt
-	make rstest A=$(AS) Q="5" | tee -a $@.txt
-	make rstest A=$(AS) Q="6" | tee -a $@.txt
-	make rstest A=$(AS) Q="7" | tee -a $@.txt
-	make rstest A=$(AS) Q="8" | tee -a $@.txt
-	make rstest A=$(AS) Q="9" | tee -a $@.txt
-	make rstest A=$(AS) Q="10"| tee -a $@.txt
+	make rstest A=$(AS) Q="2" S="1"| tee -a $@.txt
+	make rstest A=$(AS) Q="3" S="1"| tee -a $@.txt
+	make rstest A=$(AS) Q="4" S="1"| tee -a $@.txt
+	make rstest A=$(AS) Q="5" S="1"| tee -a $@.txt
+	make rstest A=$(AS) Q="6" S="1"| tee -a $@.txt
+	make rstest A=$(AS) Q="7" S="1"| tee -a $@.txt
+	make rstest A=$(AS) Q="8" S="1"| tee -a $@.txt
+	make rstest A=$(AS) Q="9" S="1"| tee -a $@.txt
+	make rstest A=$(AS) Q="10"S="1"| tee -a $@.txt
 ordsum4:
 	grep -P "^\-?\d+\,|^java" ordsum3.txt \
 	| perl -ne 'if (m{^java}) { my $$pos = index($$_, "-a"); $$_ = substr($$_, $$pos + 3); s{ \-s \"\"\s*}{\t}; '\
