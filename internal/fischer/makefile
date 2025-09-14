@@ -258,7 +258,8 @@ list:
 	find ../../src -iname "A??????.java" -ls
 #----
 pack: pack1 pack2 pack3 # pack successful sources into a *.tgz, and check for existence
-pack1: # pack sources into a *.tgz (with packlist.man)
+pack1: # pack sources into a *.tgz (with packlist.man) 
+	rm -rf ../../src/irvine/oeis/a000/A000000.java || :
 	cd ../.. ; find src -iname "A??????.java" > pack.$(CC).lst \
 	; wc -l                                     pack.$(CC).lst \
 	; find internal/fischer/$(CC).*.log      >> pack.$(CC).lst \
