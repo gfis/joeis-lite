@@ -682,10 +682,9 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WIntegersModMul\(}             ) { $imports{"irvine.math.group.IntegersModMul"             } = $itype; }
     if ($line =~ m{\WInverse\b}                    ) { $imports{"irvine.oeis.triangle.Inverse"  }                = $itype; }
     if ($line =~ m{\WJaguar\.}                     ) { $imports{"irvine.factor.factor.Jaguar"   }                = $itype; }
-    if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"        }            = $itype; }
-    if ($line =~ m{\WLeastPrimeFactorizer}         ) { $imports{"irvine.factor.factor.LeastPrimeFactorizer"}     = $itype; }
-    if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"        }            = $itype; }
+    if ($line =~ m{\WLambdaSequence}               ) { $imports{"irvine.oeis.LambdaSequence"                   } = $itype; }
     if ($line =~ m{\WLambdaArray}                  ) { $imports{"irvine.oeis.triangle.LambdaArray"             } = $itype; }
+    if ($line =~ m{\WLeastPrimeFactorizer}         ) { $imports{"irvine.factor.factor.LeastPrimeFactorizer"}     = $itype; }
     if ($line =~ m{\WLinearRecurrence}             ) { $imports{"irvine.oeis.recur.LinearRecurrence"}            = $itype; }
     if ($line =~ m{\WLongUtils\.}                  ) { $imports{"irvine.math.LongUtils"}                         = $itype; }
     if ($line =~ m{\WMemoryFactorial}              ) { $imports{"irvine.math.factorial.MemoryFactorial"}         = $itype; }
@@ -708,7 +707,8 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WPolynomialFieldSequence}      ) { $imports{"irvine.oeis.PolynomialFieldSequence"}           = $itype; }
     if ($line =~ m{\WPredicates}                   ) { $imports{"irvine.math.predicate.Predicates"             } = $itype; }
     if ($line =~ m{\WPrependSequence}              ) { $imports{"irvine.oeis.PrependSequence"   }                = $itype; }
-    if ($line =~ m{\WProduct}                      ) { $imports{"irvine.oeis.triangle.Product"  }                = $itype; }
+    if ($line =~ m{\WProductTransform}             ) { $imports{"irvine.oeis.transform.ProductTransform"       } = $itype; }
+    if ($line =~ m{\WProduct\(}                    ) { $imports{"irvine.oeis.triangle.Product"  }                = $itype; }
     if ($line =~ m{\WPuma}                         ) { $imports{"irvine.factor.prime.Puma"      }                = $itype; }
     if ($line =~ m{\WQ\W}                          ) { $imports{"irvine.math.q.Q"}                               = $itype; }
     if ($line =~ m{\WRationalRecurrence}           ) { $imports{"irvine.oeis.recur.RationalRecurrence"         } = $itype; }
