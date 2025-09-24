@@ -30,18 +30,17 @@ import irvine.oeis.Sequence;
  */
 public class RationalProductTransform extends AbstractSequence implements RationalSequence {
 
-  protected static int sDebug;
+  private static int sDebug = 0;
   private static final int ESTLEN = 16384; // estimated length of arrays
   private final ArrayList<Z[]> mFs = new ArrayList<>(ESTLEN); // first underlying sequence (Manyama's f(k))
   private final ArrayList<Z> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
   private final ArrayList<Z> mBs = new ArrayList<>(ESTLEN); // resulting sequence (Manyama's a(n))
   private final ArrayList<Z> mCs = new ArrayList<>(ESTLEN); // auxiliary sequence (Manyama's b(n))
   private long mStopH; // next term of the sequence h(k)
-  protected Z mFRoot; // constant denominator of f(k), or 0
-  protected Z[] mPreTerms; // initial terms to be prepended
-  protected int mIn; // index for initial terms
-  protected int mK; // current index k >= 1 for f() and g()
-  protected int mKh; // current index for h()
+  private Z mFRoot; // constant denominator of f(k), or 0
+  private int mIn; // index for initial terms
+  private int mK; // current index k >= 1 for f() and g()
+  private int mKh; // current index for h()
   private int mN; // index of resulting term
   private Z mFactorial; // = k!
 
@@ -56,15 +55,9 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   /** Bitmask indicating the denominators of an exponential target generating function. */
   private static final int DEN_EGF = 5;
 
-  protected Sequence mSeqF; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
-  protected Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
-  protected Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
-//*  protected Function<Integer, Z> mLambdaF; // lambda expression k -> f(k)
-//*  protected Function<Integer, Z> mLambdaG; // lambda expression k -> g(k)
-//*  protected Function<Integer, Z> mLambdaH; // lambda expression k -> h(k)
-//*  protected FunctionType mFT_F; // type of function f()
-//*  protected FunctionType mFT_G; // type of function g()
-//*  protected FunctionType mFT_H; // type of function h() 
+  private Sequence mSeqF; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
+  private Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
+  private Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
   private Builder mBuilder; // encapsulates the parameters
   
       /** state of the finite automaton */
@@ -87,6 +80,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     private FunctionType mFT_G; // type of function g()
     private FunctionType mFT_H; // type of function h() 
     private int mGfType; // type of the resulting generating function
+    private Z[] mPreTerms; // initial terms to be prepended
 
     /**
      * Empty constructor, sets the defaults for all optional parameters.
@@ -99,6 +93,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       mFT_G = FunctionType.FT_LAMBDA;
       mFT_H = FunctionType.FT_LAMBDA;
       mGfType = OGF;
+      mPreTerms = ZUtils.toZ(new long[]{ 1 });
     }
 
     public Builder f(Function<Integer, Z> lambdaF) {
@@ -116,6 +111,11 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     public Builder h(Function<Integer, Long> lambdaH) {
       mLambdaH = lambdaH;
       mFT_H = FunctionType.FT_LAMBDA;
+      return this;
+    }
+
+    public Builder prepend(final long... preTerms) {
+      mPreTerms = ZUtils.toZ(preTerms);
       return this;
     }
 
@@ -146,40 +146,32 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     super(offset); 
     mBuilder = builder;
     mN = offset - 1;
-    final int kStart = 1;
-//*    this.mLambdaF = builder.mLambdaF;
-//*    this.mLambdaG = builder.mLambdaG;
-//*    this.mLambdaH = builder.mLambdaH;
-//*    this.mFT_F = builder.mFT_F;
-//*    this.mFT_G = builder.mFT_G;
-//*    this.mFT_H = builder.mFT_H;
-//*    this.mGfType = builder.mGfType;
     mSeqF = null;
     mSeqG = null;
-    mPreTerms = ZUtils.toZ(new long[]{ 1L });
     mFRoot = Z.ZERO; // no root is set so far (maybe overwritten by setFRoot)
     mIn = 0; // for prepending
     mK = 0;
     for (int k = 0; k < 1; ++k) { // kStart; ++k) {
-      mFs.add(new Z[]{Z.ZERO}); // [0] not used
+      mFs.add(new Z[]{ Z.ZERO }); // [0] not used
       mGs.add(Z.ZERO); // [0] not used
       mBs.add(Z.ZERO); // [0] is not returned
       mCs.add(Z.ZERO); // [0] starts the sum
     } // while < kStart
+    final int kStart = 1;
     mKh = (kStart <= 1) ? kStart : 1;
-    mStopH = mKh; // Z.ONE; // for a^k in advanceH(mKh)
+    mStopH = mBuilder.mLambdaH.apply(mKh);
     mFactorial = Z.ONE;
   }
 
   /**
-   * Return a term.
+   * Return a rational term.
    * @return the next term of the transformed sequence.
    */
   @Override
   public Q nextQ() {
     ++mN;
-    if (mIn < mPreTerms.length) { // during prepend phase
-      return new Q(mPreTerms[mIn++]);
+    if (mIn < mBuilder.mPreTerms.length) { // during prepend phase
+      return new Q(mBuilder.mPreTerms[mIn++]);
     }
     ++mK; // starts with 1
     //----------------
@@ -197,7 +189,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       nextG = Z.ZERO; // invalidate this g(k)
     } else { // mK = mNextH : this g(k) is valid
       ++mKh;
-      mStopH = advanceH(mKh); // next stop value
+      mStopH = mBuilder.mLambdaH.apply(mK); // next stop value
     }
     if (nextG == null) {
       nextG = Z.ZERO; // care for finite g returning null
@@ -295,14 +287,4 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     return mBuilder.mLambdaG.apply(k);
   }
 
-  /**
-   * Wrapper around <code>mSeqH.next()</code>, may be overwritten by a subclass.
-   * This sequence most be monotone increasing.
-   * @param k current index, exponent of x.
-   * int is sufficient here since in the OEIS we assume that indexes (exponents of x) remain &lt; 10^6.
-   * @return next term of the underlying sequence h in the definition of the transform
-   */
-  private long advanceH(final int k) {
-    return mBuilder.mLambdaH.apply(k);
-  }
 }
