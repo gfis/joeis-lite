@@ -5,8 +5,8 @@ import java.util.function.Function;
 
 import irvine.math.api.RationalSequence;
 import irvine.math.q.Q;
+import irvine.math.q.QUtils;
 import irvine.math.z.Z;
-import irvine.math.z.ZUtils;
 import irvine.oeis.AbstractSequence;
 import irvine.oeis.Sequence;
 
@@ -32,12 +32,11 @@ public class RationalProductTransform extends AbstractSequence implements Ration
 
   private static int sDebug = 0;
   private static final int ESTLEN = 16384; // estimated length of arrays
-  private final ArrayList<Z[]> mFs = new ArrayList<>(ESTLEN); // first underlying sequence (Manyama's f(k))
-  private final ArrayList<Z> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
-  private final ArrayList<Z> mBs = new ArrayList<>(ESTLEN); // resulting sequence (Manyama's a(n))
-  private final ArrayList<Z> mCs = new ArrayList<>(ESTLEN); // auxiliary sequence (Manyama's b(n))
+  private final ArrayList<Q> mFs = new ArrayList<>(ESTLEN); // first underlying sequence (Manyama's f(k))
+  private final ArrayList<Q> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
+  private final ArrayList<Q> mBs = new ArrayList<>(ESTLEN); // resulting sequence (Manyama's a(n))
+  private final ArrayList<Q> mCs = new ArrayList<>(ESTLEN); // auxiliary sequence (Manyama's b(n))
   private long mStopH; // next term of the sequence h(k)
-  private Z mFRoot; // constant denominator of f(k), or 0
   private int mIn; // index for initial terms
   private int mK; // current index k >= 1 for f() and g()
   private int mKh; // current index for h()
@@ -64,7 +63,9 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   private enum FunctionType
       { FT_NULL      // parameter is absent, take the default (usually 1)
       , FT_INT       // a constant int
-      , FT_LAMBDA    // a lambda expression k -> Z
+      , FT_LAMBDA_L  // a lambda expression k -> Long
+      , FT_LAMBDA_Z  // a lambda expression k -> Z
+      , FT_LAMBDA_Q  // a lambda expression k -> Q
       , FT_SEQUENCE  // successive terms of a sequence
       };
 
@@ -75,47 +76,61 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     private int mOffset; // first index
     private Function<Integer, Z> mLambdaF;
     private Function<Integer, Z> mLambdaG;
+    private Function<Integer, Q> mRambdaF;
+    private Function<Integer, Q> mRambdaG;
     private Function<Integer, Long> mLambdaH;
     private FunctionType mFT_F; // type of function f()
     private FunctionType mFT_G; // type of function g()
     private FunctionType mFT_H; // type of function h() 
     private int mGfType; // type of the resulting generating function
-    private Z[] mPreTerms; // initial terms to be prepended
+    private Q[] mPreTerms; // initial terms to be prepended
 
     /**
      * Empty constructor, sets the defaults for all optional parameters.
      */
     public Builder() {
-      mLambdaF = k -> Z.ONE;
-      mLambdaG = k -> Z.ONE;
+      mRambdaF = k -> Q.ONE;
+      mRambdaG = k -> Q.ONE;
       mLambdaH = k -> (long) k;
-      mFT_F = FunctionType.FT_LAMBDA;
-      mFT_G = FunctionType.FT_LAMBDA;
-      mFT_H = FunctionType.FT_LAMBDA;
+      mFT_F = FunctionType.FT_LAMBDA_Q;
+      mFT_G = FunctionType.FT_LAMBDA_Q;
+      mFT_H = FunctionType.FT_LAMBDA_L;
       mGfType = OGF;
-      mPreTerms = ZUtils.toZ(new long[]{ 1 });
+      mPreTerms = QUtils.toQ("1");
     }
 
     public Builder f(Function<Integer, Z> lambdaF) {
       mLambdaF = lambdaF;
-      mFT_F = FunctionType.FT_LAMBDA;
+      mFT_F = FunctionType.FT_LAMBDA_Z;
+      return this;
+    }
+
+    public Builder fq(Function<Integer, Q> lambdaF) {
+      mRambdaF = lambdaF;
+      mFT_F = FunctionType.FT_LAMBDA_Q;
       return this;
     }
 
     public Builder g(Function<Integer, Z> lambdaG) {
       mLambdaG = lambdaG;
-      mFT_G = FunctionType.FT_LAMBDA;
+      mFT_G = FunctionType.FT_LAMBDA_Z;
+      return this;
+    }
+
+    public Builder gq(Function<Integer, Q> lambdaG) {
+      mRambdaG = lambdaG;
+      mFT_G = FunctionType.FT_LAMBDA_Q;
       return this;
     }
 
     public Builder h(Function<Integer, Long> lambdaH) {
       mLambdaH = lambdaH;
-      mFT_H = FunctionType.FT_LAMBDA;
+      mFT_H = FunctionType.FT_LAMBDA_L;
       return this;
     }
 
-    public Builder prepend(final long... preTerms) {
-      mPreTerms = ZUtils.toZ(preTerms);
+    public Builder prepend(final String preTerms) {
+      mPreTerms = QUtils.toQ(preTerms);
       return this;
     }
 
@@ -148,14 +163,13 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     mN = offset - 1;
     mSeqF = null;
     mSeqG = null;
-    mFRoot = Z.ZERO; // no root is set so far (maybe overwritten by setFRoot)
     mIn = 0; // for prepending
     mK = 0;
     for (int k = 0; k < 1; ++k) { // kStart; ++k) {
-      mFs.add(new Z[]{ Z.ZERO }); // [0] not used
-      mGs.add(Z.ZERO); // [0] not used
-      mBs.add(Z.ZERO); // [0] is not returned
-      mCs.add(Z.ZERO); // [0] starts the sum
+      mFs.add(Q.ZERO); // [0] not used
+      mGs.add(Q.ZERO); // [0] not used
+      mBs.add(Q.ZERO); // [0] is not returned
+      mCs.add(Q.ZERO); // [0] starts the sum
     } // while < kStart
     final int kStart = 1;
     mKh = (kStart <= 1) ? kStart : 1;
@@ -171,46 +185,43 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   public Q nextQ() {
     ++mN;
     if (mIn < mBuilder.mPreTerms.length) { // during prepend phase
-      return new Q(mBuilder.mPreTerms[mIn++]);
+      return mBuilder.mPreTerms[mIn++];
     }
     ++mK; // starts with 1
     //----------------
-    final Z[] nextF = advanceF(mK); // or advanceF(mK) ??? why?
-    if (nextF[0] == null) {
-      nextF[0] = Z.ZERO; // care for finite f returning null
-    }
-    if (nextF.length > 1) {
-      mFRoot = nextF[1];
-    }
+    final Q nextF = advanceF(mK); // or advanceF(mK) ??? why?
+//*    if (nextF[0] == null) {
+//*      nextF[0] = Z.ZERO; // care for finite f returning null
+//*    }
     mFs.add(nextF);
 
-    Z nextG = advanceG(mK); // get next g(k)
+    Q nextG = advanceG(mK); // get next g(k)
     if (mK < mStopH) {
-      nextG = Z.ZERO; // invalidate this g(k)
+      nextG = Q.ZERO; // invalidate this g(k)
     } else { // mK = mNextH : this g(k) is valid
       ++mKh;
       mStopH = mBuilder.mLambdaH.apply(mK); // next stop value
     }
-    if (nextG == null) {
-      nextG = Z.ZERO; // care for finite g returning null
-    }
+//*    if (nextG == null) {
+//*      nextG = Z.ZERO; // care for finite g returning null
+//*    }
     mGs.add(nextG);
     //----------------
 
-    Z cSum = Z.ZERO; // start sum
+    Q cSum = Q.ZERO; // start sum
     final int kd2 = mK >> 1;
     for (int d = 1; d <= mK; ++d) { // compute c[k] = sum ...
       if (d == 1 || d == mK || (d <= kd2 && (mK % d == 0))) { // "did(mK,d)", "does it divide"
         // if (mK % d == 0) { // "did(mK,d)"
         final int idivd = mK / d;
-        final Z[] fTerm = mFs.get(d);
-        if (!fTerm[0].isZero()) { // ends in zero for all finite f(k)
-          Z cTerm = fTerm[0].multiply(d);
-          final Z gTerm = mGs.get(d);
+        final Q fTerm = mFs.get(d);
+        if (!fTerm.isZero()) { // ends in zero for all finite f(k)
+          Q cTerm = fTerm.multiply(d);
+          final Q gTerm = mGs.get(d);
           if (!gTerm.isZero()) {
             //---- start of the generalization
-            if (!gTerm.equals(Z.ONE)) { // != 1
-              if (gTerm.equals(Z.NEG_ONE)) {
+            if (!gTerm.equals(Q.ONE)) { // != 1
+              if (gTerm.equals(Q.NEG_ONE)) {
                 if ((idivd & 1) != 0) {
                   cTerm = cTerm.negate(); // *(-1)^odd
                 } // (-1)^even: ignore
@@ -227,20 +238,20 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     // mCs.set(mK, csum);
     mCs.add(cSum); // = c[k]
 
-    Z bSum = mCs.get(mK);
+    Q bSum = mCs.get(mK);
     for (int d = 1; d < mK; ++d) {
       bSum = bSum.add(mCs.get(d).multiply(mBs.get(mK - d)));
     } // for d
     if (mK > 0) {
       bSum = bSum.divide(mK);
     }
-    if (!mFRoot.isZero()) {
-      final Z[] quotRem = bSum.divideAndRemainder(mFRoot);
-      if (!quotRem[1].isZero()) {
-        System.err.println("assertion in RationalProductTransform: remainder != 0 for k=" + mK);
-      }
-      bSum = quotRem[0];
-    }
+//*    if (!mFRoot.isZero()) {
+//*      final Z[] quotRem = bSum.divideAndRemainder(mFRoot);
+//*      if (!quotRem[1].isZero()) {
+//*        System.err.println("assertion in RationalProductTransform: remainder != 0 for k=" + mK);
+//*      }
+//*      bSum = quotRem[0];
+//*    }
 /*
     if (sDebug > 0) {
       System.err.println("mK=" + mK + "\tmKh=" + mKh 
@@ -259,7 +270,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
         System.out.println("# mFactorial=" + mFactorial + ", mN=" + mN);
       }
     }
-    return new Q(bSum);
+    return bSum;
   } // nextQ
 
   @Override
@@ -274,8 +285,15 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    * @param k current index, exponent of x
    * @return next term of the underlying sequence f in the definition of the transform
    */
-  private Z[] advanceF(final int k) {
-    return new Z[]{mBuilder.mLambdaF.apply(k)};
+  private Q advanceF(final int k) {
+    switch (mBuilder.mFT_F) {
+      case FT_LAMBDA_Z:
+        return Q.valueOf(mBuilder.mLambdaF.apply(k));
+      case FT_LAMBDA_Q:
+        return mBuilder.mRambdaF.apply(k);
+      default:
+        return Q.ONE;
+    }
   }
 
   /**
@@ -283,8 +301,15 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    * @param k current index, exponent of x
    * @return next term of the underlying sequence g in the definition of the transform
    */
-  private Z advanceG(final int k) {
-    return mBuilder.mLambdaG.apply(k);
+  private Q advanceG(final int k) {
+    switch (mBuilder.mFT_G) {
+      case FT_LAMBDA_Z:
+        return Q.valueOf(mBuilder.mLambdaG.apply(k));
+      case FT_LAMBDA_Q:
+        return mBuilder.mRambdaG.apply(k);
+      default:
+        return Q.ONE;
+    }
   }
 
 }
