@@ -36,11 +36,11 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   private final ArrayList<Z> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
   private final ArrayList<Z> mBs = new ArrayList<>(ESTLEN); // resulting sequence (Manyama's a(n))
   private final ArrayList<Z> mCs = new ArrayList<>(ESTLEN); // auxiliary sequence (Manyama's b(n))
-  protected Z mNextH; // next term of the sequence h(k)
+  protected Z mStopH; // next term of the sequence h(k)
   protected Z mFRoot; // constant denominator of f(k), or 0
   protected Z[] mPreTerms; // initial terms to be prepended
   protected int mIn; // index for initial terms
-  protected int mKfg; // current index k >= 1 for f() and g()
+  protected int mK; // current index k >= 1 for f() and g()
   protected int mKh; // current index for h()
   private int mN; // index of resulting term
   private Z mFactorial; // = k!
@@ -131,8 +131,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     public RationalProductTransform build() {
       return new RationalProductTransform(mOffset, this);
     } 
-    // End of inner class Builder
-  }
+  } // Builder inner class
 
   /**
    * Constructor with Builder
@@ -155,7 +154,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     mPreTerms = ZUtils.toZ(new long[]{1L});
     mFRoot = Z.ZERO; // no root is set so far (maybe overwritten by setFRoot)
     mIn = 0; // for prepending
-    mKfg = 0;
+    mK = 0;
     for (int k = 0; k < 1; ++k) { // kStart; ++k) {
       mFs.add(new Z[]{Z.ZERO}); // [0] not used
       mGs.add(Z.ZERO); // [0] not used
@@ -163,7 +162,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       mCs.add(Z.ZERO); // [0] starts the sum
     } // while < kStart
     mKh = (kStart <= 1) ? kStart : 1;
-    mNextH = Z.valueOf(mKh); // Z.ONE; // for a^k in advanceH(mKh)
+    mStopH = Z.valueOf(mKh); // Z.ONE; // for a^k in advanceH(mKh)
     mFactorial = Z.ONE;
   }
 
@@ -178,8 +177,9 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       return new Q(mPreTerms[mIn++]);
     }
     // normal, transform terms
-    ++mKfg; // starts with 1
-    final Z[] nextF = advanceF(mKfg); // or advanceF(mK) ??? why?
+    ++mK; // starts with 1
+    
+    final Z[] nextF = advanceF(mK); // or advanceF(mK) ??? why?
     if (nextF[0] == null) {
       nextF[0] = Z.ZERO; // care for finite f returning null
     }
@@ -188,25 +188,24 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     }
     mFs.add(nextF);
 
-    Z nextG = advanceG(mKfg); // get next g(k)
-    if (Z.valueOf(mKfg).compareTo(mNextH) < 0) {
+    Z nextG = advanceG(mK); // get next g(k)
+    if (Z.valueOf(mK).compareTo(mStopH) < 0) {
       nextG = Z.ZERO; // invalidate this g(k)
-    } else { // mKfg = mNextH : this g(k) is valid
+    } else { // mK = mNextH : this g(k) is valid
       ++mKh;
-      mNextH = advanceH(mKh); // next stop value
+      mStopH = advanceH(mKh); // next stop value
     }
     if (nextG == null) {
       nextG = Z.ZERO; // care for finite g returning null
     }
     mGs.add(nextG);
 
-    final int i = mKfg;
     Z cSum = Z.ZERO; // start sum
-    final int idiv2 = i >> 1;
-    for (int d = 1; d <= i; ++d) { // compute c[k] = sum ...
-      if (d == 1 || d == i || (d <= idiv2 && (i % d == 0))) { // "did(i,d)", "does it divide"
-        // if (i % d == 0) { // "did(i,d)"
-        final int idivd = i / d;
+    final int kd2 = mK >> 1;
+    for (int d = 1; d <= mK; ++d) { // compute c[k] = sum ...
+      if (d == 1 || d == mK || (d <= kd2 && (mK % d == 0))) { // "did(mK,d)", "does it divide"
+        // if (mK % d == 0) { // "did(mK,d)"
+        final int idivd = mK / d;
         final Z[] fTerm = mFs.get(d);
         if (!fTerm[0].isZero()) { // ends in zero for all finite f(k)
           Z cTerm = fTerm[0].multiply(d);
@@ -226,29 +225,29 @@ public class RationalProductTransform extends AbstractSequence implements Ration
             cSum = cSum.add(cTerm);
           } // else g(k) = 0: ignore
         } // else f(k) = 0: ignore
-      } // else not "did(i,d)"
+      } // else not "did(mK,d)"
     } // for d
-    // mCs.set(i, csum);
+    // mCs.set(mK, csum);
     mCs.add(cSum); // = c[k]
 
-    Z bSum = mCs.get(i);
-    for (int d = 1; d < i; ++d) {
-      bSum = bSum.add(mCs.get(d).multiply(mBs.get(i - d)));
+    Z bSum = mCs.get(mK);
+    for (int d = 1; d < mK; ++d) {
+      bSum = bSum.add(mCs.get(d).multiply(mBs.get(mK - d)));
     } // for d
-    if (i > 0) {
-      bSum = bSum.divide(i);
+    if (mK > 0) {
+      bSum = bSum.divide(mK);
     }
     if (!mFRoot.isZero()) {
       final Z[] quotRem = bSum.divideAndRemainder(mFRoot);
       if (!quotRem[1].isZero()) {
-        System.err.println("assertion in RationalProductTransform: remainder != 0 for k=" + mKfg);
+        System.err.println("assertion in RationalProductTransform: remainder != 0 for k=" + mK);
       }
       bSum = quotRem[0];
     }
 /*
     if (sDebug > 0) {
-      System.err.println("mKfg=" + mKfg + "\tmKh=" + mKh 
-          + "\tmNextH=" + mNextH + "\tnextF=" + nextF.toString() + "\tnextG=" + nextG.toString()
+      System.err.println("mK=" + mK + "\tmKh=" + mKh 
+          + "\tmStopH=" + mStopH + "\tnextF=" + nextF.toString() + "\tnextG=" + nextG.toString()
           + "\tc[k]=" + cSum.toString() + "\tb[k]=" + bSum.toString()
           );
     }
