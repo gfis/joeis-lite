@@ -36,7 +36,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   private final ArrayList<Z> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
   private final ArrayList<Z> mBs = new ArrayList<>(ESTLEN); // resulting sequence (Manyama's a(n))
   private final ArrayList<Z> mCs = new ArrayList<>(ESTLEN); // auxiliary sequence (Manyama's b(n))
-  protected Z mStopH; // next term of the sequence h(k)
+  private long mStopH; // next term of the sequence h(k)
   protected Z mFRoot; // constant denominator of f(k), or 0
   protected Z[] mPreTerms; // initial terms to be prepended
   protected int mIn; // index for initial terms
@@ -45,7 +45,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   private int mN; // index of resulting term
   private Z mFactorial; // = k!
 
-  private int mGfType; // 0 = o.g.f., 1 = e.g.f.
+//*  private int mGfType; // 0 = o.g.f., 1 = e.g.f.
   /* Caution, the following are bitmasks, c.f. usage at the end of <code>compute()</code>: */
   /** Bitmask indicating the numerators of an ordinary target generating function. */
   private static final int OGF = 0;
@@ -59,12 +59,13 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   protected Sequence mSeqF; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
   protected Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
   protected Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
-  protected Function<Integer, Z> mLambdaF; // lambda expression k -> f(k)
-  protected Function<Integer, Z> mLambdaG; // lambda expression k -> g(k)
-  protected Function<Integer, Z> mLambdaH; // lambda expression k -> h(k)
-  protected FunctionType mFT_F; // type of function f()
-  protected FunctionType mFT_G; // type of function g()
-  protected FunctionType mFT_H; // type of function h()
+//*  protected Function<Integer, Z> mLambdaF; // lambda expression k -> f(k)
+//*  protected Function<Integer, Z> mLambdaG; // lambda expression k -> g(k)
+//*  protected Function<Integer, Z> mLambdaH; // lambda expression k -> h(k)
+//*  protected FunctionType mFT_F; // type of function f()
+//*  protected FunctionType mFT_G; // type of function g()
+//*  protected FunctionType mFT_H; // type of function h() 
+  private Builder mBuilder; // encapsulates the parameters
   
       /** state of the finite automaton */
   private enum FunctionType
@@ -81,22 +82,19 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     private int mOffset; // first index
     private Function<Integer, Z> mLambdaF;
     private Function<Integer, Z> mLambdaG;
-    private Function<Integer, Z> mLambdaH;
+    private Function<Integer, Long> mLambdaH;
     private FunctionType mFT_F; // type of function f()
     private FunctionType mFT_G; // type of function g()
     private FunctionType mFT_H; // type of function h() 
     private int mGfType; // type of the resulting generating function
 
     /**
-     * Constructor with mandatory parameter(s).
-     * Sets the default for all optional parameters.
-     * @param offset mandatory: first index
+     * Empty constructor, sets the defaults for all optional parameters.
      */
-    public Builder(final int offset) {
-      mOffset = offset;
+    public Builder() {
       mLambdaF = k -> Z.ONE;
       mLambdaG = k -> Z.ONE;
-      mLambdaH = k -> Z.valueOf(k);
+      mLambdaH = k -> (long) k;
       mFT_F = FunctionType.FT_LAMBDA;
       mFT_G = FunctionType.FT_LAMBDA;
       mFT_H = FunctionType.FT_LAMBDA;
@@ -112,6 +110,12 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     public Builder g(Function<Integer, Z> lambdaG) {
       mLambdaG = lambdaG;
       mFT_G = FunctionType.FT_LAMBDA;
+      return this;
+    }
+
+    public Builder h(Function<Integer, Long> lambdaH) {
+      mLambdaH = lambdaH;
+      mFT_H = FunctionType.FT_LAMBDA;
       return this;
     }
 
@@ -140,18 +144,19 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    */
   public RationalProductTransform(final int offset, final Builder builder) { 
     super(offset); 
+    mBuilder = builder;
     mN = offset - 1;
     final int kStart = 1;
-    this.mLambdaF = builder.mLambdaF;
-    this.mLambdaG = builder.mLambdaG;
-    this.mLambdaH = builder.mLambdaH;
-    this.mFT_F = builder.mFT_F;
-    this.mFT_G = builder.mFT_G;
-    this.mFT_H = builder.mFT_H;
-    this.mGfType = builder.mGfType;
+//*    this.mLambdaF = builder.mLambdaF;
+//*    this.mLambdaG = builder.mLambdaG;
+//*    this.mLambdaH = builder.mLambdaH;
+//*    this.mFT_F = builder.mFT_F;
+//*    this.mFT_G = builder.mFT_G;
+//*    this.mFT_H = builder.mFT_H;
+//*    this.mGfType = builder.mGfType;
     mSeqF = null;
     mSeqG = null;
-    mPreTerms = ZUtils.toZ(new long[]{1L});
+    mPreTerms = ZUtils.toZ(new long[]{ 1L });
     mFRoot = Z.ZERO; // no root is set so far (maybe overwritten by setFRoot)
     mIn = 0; // for prepending
     mK = 0;
@@ -162,7 +167,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       mCs.add(Z.ZERO); // [0] starts the sum
     } // while < kStart
     mKh = (kStart <= 1) ? kStart : 1;
-    mStopH = Z.valueOf(mKh); // Z.ONE; // for a^k in advanceH(mKh)
+    mStopH = mKh; // Z.ONE; // for a^k in advanceH(mKh)
     mFactorial = Z.ONE;
   }
 
@@ -176,9 +181,8 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     if (mIn < mPreTerms.length) { // during prepend phase
       return new Q(mPreTerms[mIn++]);
     }
-    // normal, transform terms
     ++mK; // starts with 1
-    
+    //----------------
     final Z[] nextF = advanceF(mK); // or advanceF(mK) ??? why?
     if (nextF[0] == null) {
       nextF[0] = Z.ZERO; // care for finite f returning null
@@ -189,7 +193,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     mFs.add(nextF);
 
     Z nextG = advanceG(mK); // get next g(k)
-    if (Z.valueOf(mK).compareTo(mStopH) < 0) {
+    if (mK < mStopH) {
       nextG = Z.ZERO; // invalidate this g(k)
     } else { // mK = mNextH : this g(k) is valid
       ++mKh;
@@ -199,6 +203,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       nextG = Z.ZERO; // care for finite g returning null
     }
     mGs.add(nextG);
+    //----------------
 
     Z cSum = Z.ZERO; // start sum
     final int kd2 = mK >> 1;
@@ -253,7 +258,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     }
 */
     mBs.add(bSum);
-    if ((mGfType & EGF) != 0) {
+    if ((mBuilder.mGfType & EGF) != 0) {
       if (mN > 0) {
         mFactorial = mFactorial.multiply(mN);
       }
@@ -268,7 +273,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   @Override
   public Z next() {
     final Q result = nextQ();
-    return ((mGfType & DEN_OGF) == 0) ? result.num() : result.den();
+    return ((mBuilder.mGfType & DEN_OGF) == 0) ? result.num() : result.den();
   } // next
 
 
@@ -277,8 +282,8 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    * @param k current index, exponent of x
    * @return next term of the underlying sequence f in the definition of the transform
    */
-  protected Z[] advanceF(final int k) {
-    return new Z[]{mLambdaF.apply(k)};
+  private Z[] advanceF(final int k) {
+    return new Z[]{mBuilder.mLambdaF.apply(k)};
   }
 
   /**
@@ -286,8 +291,8 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    * @param k current index, exponent of x
    * @return next term of the underlying sequence g in the definition of the transform
    */
-  protected Z advanceG(final int k) {
-    return mLambdaG.apply(k);
+  private Z advanceG(final int k) {
+    return mBuilder.mLambdaG.apply(k);
   }
 
   /**
@@ -297,7 +302,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    * int is sufficient here since in the OEIS we assume that indexes (exponents of x) remain &lt; 10^6.
    * @return next term of the underlying sequence h in the definition of the transform
    */
-  protected Z advanceH(final int k) {
-    return mLambdaH.apply(k);
+  private long advanceH(final int k) {
+    return mBuilder.mLambdaH.apply(k);
   }
 }
