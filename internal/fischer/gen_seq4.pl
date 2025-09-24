@@ -636,7 +636,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     my ($line, $itype) = @_; # 1 = permanent for this pattern, 2 = temporary
     my @aseqnos = ($line =~ m{(A\d{6})}g);
     foreach my $aseqno (@aseqnos) {
-        $imports{"irvine.oeis." . lc(substr($aseqno, 0, 4)) . ".$aseqno"}                               = $itype;
+        $imports{"irvine.oeis." . lc(substr($aseqno, 0, 4)) . ".$aseqno"}                                        = $itype;
     } # foreach
     if ($line =~ m{\WAbsoluteSequence}             ) { $imports{"irvine.oeis.AbsoluteSequence"  }                = $itype; }
     if ($line =~ m{\WBaseTriangle}                 ) { $imports{"irvine.oeis.triangle.BaseTriangle"            } = $itype; }
@@ -729,6 +729,7 @@ sub extract_imports { # look for Annnnnnn, ZUtils. StringUtils. CR. etc.
     if ($line =~ m{\WZi\W}                         ) { $imports{"irvine.math.zi.Zi"}                             = $itype; }
     if ($line =~ m{\WZ\W}                          ) { $imports{"irvine.math.z.Z"}                               = $itype; }
     if ($line =~ m{\WZeta\.}                       ) { $imports{"irvine.math.cr.Zeta"}                           = $itype; }
+    delete($imports{"irvine.oeis.Builder"});
     delete($imports{"irvine.oeis.Sequence"});
     if ($line !~ m{\A\s*(\/\/|\/\*|\*)}) { # no comment line
         my @shields = ();

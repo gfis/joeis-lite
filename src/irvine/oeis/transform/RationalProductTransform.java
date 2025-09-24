@@ -3,6 +3,8 @@ package irvine.oeis.transform;
 import java.util.ArrayList;
 import java.util.function.Function;
 
+import irvine.math.api.RationalSequence;
+import irvine.math.q.Q;
 import irvine.math.z.Z;
 import irvine.math.z.ZUtils;
 import irvine.oeis.AbstractSequence;
@@ -26,9 +28,9 @@ import irvine.oeis.Sequence;
  * 4. With the default f(k) := g(k) := A000012 (all 1's), we get A000041 (number of partitions of n). <br />
  * @author Georg Fischer
  */
-public class ProductTransform extends AbstractSequence {
+public class RationalProductTransform extends AbstractSequence implements RationalSequence {
 
-  // protected static String mDebug = System.getProperty("debug", "0");
+  protected static int sDebug;
   private static final int ESTLEN = 16384; // estimated length of arrays
   private final ArrayList<Z[]> mFs = new ArrayList<>(ESTLEN); // first underlying sequence (Manyama's f(k))
   private final ArrayList<Z> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
@@ -40,10 +42,23 @@ public class ProductTransform extends AbstractSequence {
   protected int mIn; // index for initial terms
   protected int mKfg; // current index k >= 1 for f() and g()
   protected int mKh; // current index for h()
+  private int mN; // index of resulting term
+  private Z mFactorial; // = k!
+
+  private int mGfType; // 0 = o.g.f., 1 = e.g.f.
+  /* Caution, the following are bitmasks, c.f. usage at the end of <code>compute()</code>: */
+  /** Bitmask indicating the numerators of an ordinary target generating function. */
+  private static final int OGF = 0;
+  /** Bitmask indicating the numerators of an exponential target or an exponential source generating function. */
+  private static final int EGF = 1;
+  /** Bitmask indicating the denominators of an ordinary target generating function. */
+  private static final int DEN_OGF = 4;
+  /** Bitmask indicating the denominators of an exponential target generating function. */
+  private static final int DEN_EGF = 5;
+
   protected Sequence mSeqF; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
   protected Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
   protected Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
-
   protected Function<Integer, Z> mLambdaF; // lambda expression k -> f(k)
   protected Function<Integer, Z> mLambdaG; // lambda expression k -> g(k)
   protected Function<Integer, Z> mLambdaH; // lambda expression k -> h(k)
@@ -60,33 +75,32 @@ public class ProductTransform extends AbstractSequence {
       };
 
   /**
-   * Constructor with Builder
-   * @param offset first index
-   * @param builder {@link #Builder} inner class for flexible parameter setup
-   */
-  public ProductTransform(final int offset, final Builder builder) { 
-    this(offset, builder.mLambdaF);
-//  this.mLambdaF = builder.mLambdaF;
-    this.mFT_F = builder.mFT_F;
-  }
-
-  /**
    * Builder inner class for flexible parameter setup.
    */
   public static class Builder {
     private int mOffset; // first index
     private Function<Integer, Z> mLambdaF;
     private Function<Integer, Z> mLambdaG;
+    private Function<Integer, Z> mLambdaH;
     private FunctionType mFT_F; // type of function f()
     private FunctionType mFT_G; // type of function g()
-    private FunctionType mFT_H; // type of function h()
+    private FunctionType mFT_H; // type of function h() 
+    private int mGfType; // type of the resulting generating function
 
     /**
-     * Constructor with mandatory parameter(s)
-     * @param offset first index
+     * Constructor with mandatory parameter(s).
+     * Sets the default for all optional parameters.
+     * @param offset mandatory: first index
      */
     public Builder(final int offset) {
       mOffset = offset;
+      mLambdaF = k -> Z.ONE;
+      mLambdaG = k -> Z.ONE;
+      mLambdaH = k -> Z.valueOf(k);
+      mFT_F = FunctionType.FT_LAMBDA;
+      mFT_G = FunctionType.FT_LAMBDA;
+      mFT_H = FunctionType.FT_LAMBDA;
+      mGfType = OGF;
     }
 
     public Builder f(Function<Integer, Z> lambdaF) {
@@ -101,45 +115,41 @@ public class ProductTransform extends AbstractSequence {
       return this;
     }
 
+    public Builder egf() {
+      mGfType |= EGF;
+      return this;
+    }
+
+    public Builder den() {
+      mGfType |= DEN_OGF;
+      return this;
+    }
+
     /**
      * Build the instance.
      */
-    public ProductTransform build() {
-      return new ProductTransform(mOffset, this);
+    public RationalProductTransform build() {
+      return new RationalProductTransform(mOffset, this);
     } 
     // End of inner class Builder
   }
 
   /**
-   * Create a new sequence for the usual Euler transform with default g(k) = 1 and h(k) = k.
-   * @param offset index of first term
-   * @param lambdaF lambda expression <code>k -&gt; f(k)</code> for <code>Product_{k&gt;0} (1 - g(k)*x^k)^(-f(k))</code>.
+   * Constructor with Builder
+   * @param offset first index
+   * @param builder {@link #Builder} inner class for flexible parameter setup
    */
-  public ProductTransform(final int offset, final Function<Integer, Z> lambdaF) {
-    this(offset, lambdaF, k -> Z.ONE, k -> Z.valueOf(k));
-  }
-  /**
-   * Create a new sequence with f(k) and g(k) and default h(k) = k.
-   * @param offset index of first term
-   * @param lambdaF lambda expression <code>k -&gt; f(k)</code>
-   * @param lambdaG lambda expression <code>k -&gt; g(k)</code>
-   */
-  public ProductTransform(final int offset, final Function<Integer, Z> lambdaF, final Function<Integer, Z> lambdaG) {
-    this(offset, lambdaF, lambdaG, k -> Z.valueOf(k));
-  }
-
-  /**
-   * Create a new sequence with additional terms at the front.
-   * @param offset index of first term
-   * @param kStart start value for k
-   * @param preTerms additional terms to be prepended;
-   */
-  public ProductTransform(final int offset, final Function<Integer, Z> lambdaF, final Function<Integer, Z> lambdaG, final Function<Integer, Z> lambdaH) {
-    super(offset);
+  public RationalProductTransform(final int offset, final Builder builder) { 
+    super(offset); 
+    mN = offset - 1;
     final int kStart = 1;
-    mLambdaF = lambdaF;
-    mLambdaG = lambdaG;
-    mLambdaH = lambdaH;
+    this.mLambdaF = builder.mLambdaF;
+    this.mLambdaG = builder.mLambdaG;
+    this.mLambdaH = builder.mLambdaH;
+    this.mFT_F = builder.mFT_F;
+    this.mFT_G = builder.mFT_G;
+    this.mFT_H = builder.mFT_H;
+    this.mGfType = builder.mGfType;
     mSeqF = null;
     mSeqG = null;
     mPreTerms = ZUtils.toZ(new long[]{1L});
@@ -154,6 +164,7 @@ public class ProductTransform extends AbstractSequence {
     } // while < kStart
     mKh = (kStart <= 1) ? kStart : 1;
     mNextH = Z.valueOf(mKh); // Z.ONE; // for a^k in advanceH(mKh)
+    mFactorial = Z.ONE;
   }
 
   /**
@@ -161,9 +172,10 @@ public class ProductTransform extends AbstractSequence {
    * @return the next term of the transformed sequence.
    */
   @Override
-  public Z next() {
+  public Q nextQ() {
+    ++mN;
     if (mIn < mPreTerms.length) { // during prepend phase
-      return mPreTerms[mIn++];
+      return new Q(mPreTerms[mIn++]);
     }
     // normal, transform terms
     ++mKfg; // starts with 1
@@ -229,12 +241,12 @@ public class ProductTransform extends AbstractSequence {
     if (!mFRoot.isZero()) {
       final Z[] quotRem = bSum.divideAndRemainder(mFRoot);
       if (!quotRem[1].isZero()) {
-        System.err.println("assertion in ProductTransform: remainder != 0 for k=" + mKfg);
+        System.err.println("assertion in RationalProductTransform: remainder != 0 for k=" + mKfg);
       }
       bSum = quotRem[0];
     }
 /*
-    if (mDebug.compareTo("0") > 0) {
+    if (sDebug > 0) {
       System.err.println("mKfg=" + mKfg + "\tmKh=" + mKh 
           + "\tmNextH=" + mNextH + "\tnextF=" + nextF.toString() + "\tnextG=" + nextG.toString()
           + "\tc[k]=" + cSum.toString() + "\tb[k]=" + bSum.toString()
@@ -242,8 +254,24 @@ public class ProductTransform extends AbstractSequence {
     }
 */
     mBs.add(bSum);
-    return bSum;
-  }
+    if ((mGfType & EGF) != 0) {
+      if (mN > 0) {
+        mFactorial = mFactorial.multiply(mN);
+      }
+      bSum = bSum.multiply(mFactorial);
+      if (sDebug >= 1) {
+        System.out.println("# mFactorial=" + mFactorial + ", mN=" + mN);
+      }
+    }
+    return new Q(bSum);
+  } // nextQ
+
+  @Override
+  public Z next() {
+    final Q result = nextQ();
+    return ((mGfType & DEN_OGF) == 0) ? result.num() : result.den();
+  } // next
+
 
   /**
    * Wrapper around <code>mSeqF.next()</code>, typically overwritten by a subclass.
