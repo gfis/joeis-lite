@@ -54,19 +54,17 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   /** Bitmask indicating the denominators of an exponential target generating function. */
   private static final int DEN_EGF = 5;
 
-  private Sequence mSeqF; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
-  private Sequence mSeqG; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
-  private Sequence mSeqH; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
   private Builder mBuilder; // encapsulates the parameters
   
       /** state of the finite automaton */
   private enum FunctionType
-      { FT_NULL      // parameter is absent, take the default (usually 1)
-      , FT_INT       // a constant int
-      , FT_LAMBDA_L  // a lambda expression k -> Long
-      , FT_LAMBDA_Z  // a lambda expression k -> Z
-      , FT_LAMBDA_Q  // a lambda expression k -> Q
-      , FT_SEQUENCE  // successive terms of a sequence
+      { FT_NULL       // parameter is absent, take the default (usually 1)
+      , FT_CONST_L    // a constant long
+      , FT_LAMBDA_L   // a lambda expression k -> Long
+      , FT_LAMBDA_Z   // a lambda expression k -> Z
+      , FT_LAMBDA_Q   // a lambda expression k -> Q
+      , FT_SEQUENCE_Z // next,  successive terms of a Sequence
+      , FT_SEQUENCE_Q // nextQ, successive terms of a RationalSequence
       };
 
   /**
@@ -74,14 +72,22 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    */
   public static class Builder {
     private int mOffset; // first index
-    private Function<Integer, Z> mLambdaF;
-    private Function<Integer, Z> mLambdaG;
-    private Function<Integer, Q> mRambdaF;
-    private Function<Integer, Q> mRambdaG;
-    private Function<Integer, Long> mLambdaH;
-    private FunctionType mFT_F; // type of function f()
-    private FunctionType mFT_G; // type of function g()
-    private FunctionType mFT_H; // type of function h() 
+    private FunctionType mFType; // type of function f()
+    private FunctionType mGType; // type of function g()
+    private FunctionType mHType; // type of function h() 
+    private long mFVal;
+    private long mGVal;
+    private long mHVal;
+    private Function<Integer, Z> mFLambdaZ;
+    private Function<Integer, Z> mGLambdaZ;
+    private Function<Integer, Q> mFLambdaQ;
+    private Function<Integer, Q> mGLambdaQ;
+    private Function<Integer, Long> mHLambdaL;
+    private Sequence mFSequenceZ; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
+    private Sequence mGSequenceZ; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
+    private Sequence mHSequenceZ; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
+    private RationalSequence mFSequenceQ; // RationalSequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
+    private RationalSequence mGSequenceQ; // RationalSequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
     private int mGfType; // type of the resulting generating function
     private Q[] mPreTerms; // initial terms to be prepended
 
@@ -89,43 +95,77 @@ public class RationalProductTransform extends AbstractSequence implements Ration
      * Empty constructor, sets the defaults for all optional parameters.
      */
     public Builder() {
-      mRambdaF = k -> Q.ONE;
-      mRambdaG = k -> Q.ONE;
-      mLambdaH = k -> (long) k;
-      mFT_F = FunctionType.FT_LAMBDA_Q;
-      mFT_G = FunctionType.FT_LAMBDA_Q;
-      mFT_H = FunctionType.FT_LAMBDA_L;
+      mHLambdaL = k -> (long) k;     // default: h=k in prod(1/(1 - x^h))
+      mFType = FunctionType.FT_NULL; // default: f=1 in prod(1/(1 - x^k)^f)
+      mGType = FunctionType.FT_NULL; // default: g=1 in prod(1/(1 - g*x^k))
+      mHType = FunctionType.FT_LAMBDA_L;
       mGfType = OGF;
       mPreTerms = QUtils.toQ("1");
     }
 
-    public Builder f(Function<Integer, Z> lambdaF) {
-      mLambdaF = lambdaF;
-      mFT_F = FunctionType.FT_LAMBDA_Z;
+    public Builder f(final long val) {
+      mFVal = val;
+      mFType = FunctionType.FT_CONST_L;
       return this;
     }
 
-    public Builder fq(Function<Integer, Q> lambdaF) {
-      mRambdaF = lambdaF;
-      mFT_F = FunctionType.FT_LAMBDA_Q;
+    public Builder f(Function<Integer, Z> lambda) {
+      mFLambdaZ = lambda;
+      mFType = FunctionType.FT_LAMBDA_Z;
       return this;
     }
 
-    public Builder g(Function<Integer, Z> lambdaG) {
-      mLambdaG = lambdaG;
-      mFT_G = FunctionType.FT_LAMBDA_Z;
+    public Builder f(final Sequence seq) {
+      mFSequenceZ = seq;
+      mFType = FunctionType.FT_SEQUENCE_Z;
       return this;
     }
 
-    public Builder gq(Function<Integer, Q> lambdaG) {
-      mRambdaG = lambdaG;
-      mFT_G = FunctionType.FT_LAMBDA_Q;
+    public Builder fq(final RationalSequence seq) {
+      mFSequenceQ = seq;
+      mFType = FunctionType.FT_SEQUENCE_Q;
       return this;
     }
 
-    public Builder h(Function<Integer, Long> lambdaH) {
-      mLambdaH = lambdaH;
-      mFT_H = FunctionType.FT_LAMBDA_L;
+    public Builder fq(Function<Integer, Q> lambda) {
+      mFLambdaQ = lambda;
+      mFType = FunctionType.FT_LAMBDA_Q;
+      return this;
+    }
+
+    public Builder g(final long val) {
+      mGVal = val;
+      mGType = FunctionType.FT_CONST_L;
+      return this;
+    }
+
+    public Builder g(Function<Integer, Z> lambda) {
+      mGLambdaZ = lambda;
+      mGType = FunctionType.FT_LAMBDA_Z;
+      return this;
+    }
+
+    public Builder gq(Function<Integer, Q> lambda) {
+      mGLambdaQ = lambda;
+      mGType = FunctionType.FT_LAMBDA_Q;
+      return this;
+    }
+
+    public Builder g(final Sequence seq) {
+      mGSequenceZ = seq;
+      mFType = FunctionType.FT_SEQUENCE_Z;
+      return this;
+    }
+
+    public Builder gq(final RationalSequence seq) {
+      mGSequenceQ = seq;
+      mFType = FunctionType.FT_SEQUENCE_Q;
+      return this;
+    }
+
+    public Builder h(Function<Integer, Long> lambda) {
+      mHLambdaL = lambda;
+      mHType = FunctionType.FT_LAMBDA_L;
       return this;
     }
 
@@ -145,7 +185,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     }
 
     /**
-     * Build the instance.
+     * Build the instance (not used).
      */
     public RationalProductTransform build() {
       return new RationalProductTransform(mOffset, this);
@@ -161,8 +201,6 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     super(offset); 
     mBuilder = builder;
     mN = offset - 1;
-    mSeqF = null;
-    mSeqG = null;
     mIn = 0; // for prepending
     mK = 0;
     for (int k = 0; k < 1; ++k) { // kStart; ++k) {
@@ -173,7 +211,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     } // while < kStart
     final int kStart = 1;
     mKh = (kStart <= 1) ? kStart : 1;
-    mStopH = mBuilder.mLambdaH.apply(mKh);
+    mStopH = mBuilder.mHLambdaL.apply(mKh);
     mFactorial = Z.ONE;
   }
 
@@ -189,10 +227,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     }
     ++mK; // starts with 1
     //----------------
-    final Q nextF = advanceF(mK); // or advanceF(mK) ??? why?
-//*    if (nextF[0] == null) {
-//*      nextF[0] = Z.ZERO; // care for finite f returning null
-//*    }
+    final Q nextF = advanceF(mK);
     mFs.add(nextF);
 
     Q nextG = advanceG(mK); // get next g(k)
@@ -200,11 +235,8 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       nextG = Q.ZERO; // invalidate this g(k)
     } else { // mK = mNextH : this g(k) is valid
       ++mKh;
-      mStopH = mBuilder.mLambdaH.apply(mK); // next stop value
+      mStopH = mBuilder.mHLambdaL.apply(mK); // next stop value
     }
-//*    if (nextG == null) {
-//*      nextG = Z.ZERO; // care for finite g returning null
-//*    }
     mGs.add(nextG);
     //----------------
 
@@ -286,11 +318,18 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    * @return next term of the underlying sequence f in the definition of the transform
    */
   private Q advanceF(final int k) {
-    switch (mBuilder.mFT_F) {
+    switch (mBuilder.mFType) {
+      case FT_CONST_L:
+        return Q.valueOf(mBuilder.mFVal);
       case FT_LAMBDA_Z:
-        return Q.valueOf(mBuilder.mLambdaF.apply(k));
+        return Q.valueOf(mBuilder.mFLambdaZ.apply(k));
       case FT_LAMBDA_Q:
-        return mBuilder.mRambdaF.apply(k);
+        return mBuilder.mFLambdaQ.apply(k);
+      case FT_SEQUENCE_Z:
+        return Q.valueOf(mBuilder.mFSequenceZ.next());
+      case FT_SEQUENCE_Q:
+        return mBuilder.mFSequenceQ.nextQ();
+      case FT_NULL:
       default:
         return Q.ONE;
     }
@@ -302,11 +341,18 @@ public class RationalProductTransform extends AbstractSequence implements Ration
    * @return next term of the underlying sequence g in the definition of the transform
    */
   private Q advanceG(final int k) {
-    switch (mBuilder.mFT_G) {
+    switch (mBuilder.mGType) {
+      case FT_CONST_L:
+        return Q.valueOf(mBuilder.mGVal);
       case FT_LAMBDA_Z:
-        return Q.valueOf(mBuilder.mLambdaG.apply(k));
+        return Q.valueOf(mBuilder.mGLambdaZ.apply(k));
       case FT_LAMBDA_Q:
-        return mBuilder.mRambdaG.apply(k);
+        return mBuilder.mGLambdaQ.apply(k);
+      case FT_SEQUENCE_Z:
+        return Q.valueOf(mBuilder.mGSequenceZ.next());
+      case FT_SEQUENCE_Q:
+        return mBuilder.mGSequenceQ.nextQ();
+      case FT_NULL:
       default:
         return Q.ONE;
     }
