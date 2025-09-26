@@ -264,7 +264,7 @@ while (<>) { # read inputfile
                 my $repl = 'SU(0, k, j -> ZV(2*j - k).^(n - k).*(BI(k, j))).*(BI(n, k))./(Z2(k))';
                 $parm =~ s{a185951\(n\, *k\)}{$repl}g;
             }
-            $parm =~ s{ZV\(}           {Z.valueOf\(}g; $parm =~  s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .  $zhash{$1}}eg; # after the previous statement!
+            $parm =~ s{ZV\(}           {Z.valueOf\(}g;  $parm =~  s{Z\.valueOf\((\-1|[0-9]|10)\)}{"Z." .  $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{CV\(}           {CR.valueOf\(}g; $parm =~ s{CR\.valueOf\((\-1|[0-9]|10)\)}{"CR." . $zhash{$1}}eg; # after the previous statement!
             $parm =~ s{ARD\(}          {Functions.ARD.z(}g;
             $parm =~ s{BELL\(}         {Functions.BELL.z\(}g;

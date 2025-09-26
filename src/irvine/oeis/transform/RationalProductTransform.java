@@ -227,10 +227,52 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     }
     ++mK; // starts with 1
     //----------------
-    final Q nextF = advanceF(mK);
+    Q nextF = Q.ONE;
+    switch (mBuilder.mFType) {
+      case FT_CONST_L:
+        nextF =  Q.valueOf(mBuilder.mFVal); 
+        break;
+      case FT_LAMBDA_Z:
+        nextF = Q.valueOf(mBuilder.mFLambdaZ.apply(mK));
+        break;
+      case FT_LAMBDA_Q:
+        nextF = mBuilder.mFLambdaQ.apply(mK);
+        break;
+      case FT_SEQUENCE_Z:
+        nextF = Q.valueOf(mBuilder.mFSequenceZ.next());
+        break;
+      case FT_SEQUENCE_Q:
+        nextF = mBuilder.mFSequenceQ.nextQ();
+        break;
+      case FT_NULL:
+      default:
+        nextF = Q.ONE;
+        break;
+    }
     mFs.add(nextF);
-
-    Q nextG = advanceG(mK); // get next g(k)
+    //----------------
+    Q nextG = Q.ONE;
+    switch (mBuilder.mGType) {
+      case FT_CONST_L:
+        nextG = Q.valueOf(mBuilder.mGVal);
+        break;
+      case FT_LAMBDA_Z:
+        nextG = Q.valueOf(mBuilder.mGLambdaZ.apply(mK));
+        break;
+      case FT_LAMBDA_Q:
+        nextG = mBuilder.mGLambdaQ.apply(mK);
+        break;
+      case FT_SEQUENCE_Z:
+        nextG = Q.valueOf(mBuilder.mGSequenceZ.next());
+        break;
+      case FT_SEQUENCE_Q:
+        nextG = mBuilder.mGSequenceQ.nextQ();
+        break;
+      case FT_NULL:
+      default:
+        nextG = Q.ONE;
+        break;
+    }
     if (mK < mStopH) {
       nextG = Q.ZERO; // invalidate this g(k)
     } else { // mK = mNextH : this g(k) is valid
@@ -310,52 +352,5 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     final Q result = nextQ();
     return ((mBuilder.mGfType & DEN_OGF) == 0) ? result.num() : result.den();
   } // next
-
-
-  /**
-   * Wrapper around <code>mSeqF.next()</code>, typically overwritten by a subclass.
-   * @param k current index, exponent of x
-   * @return next term of the underlying sequence f in the definition of the transform
-   */
-  private Q advanceF(final int k) {
-    switch (mBuilder.mFType) {
-      case FT_CONST_L:
-        return Q.valueOf(mBuilder.mFVal);
-      case FT_LAMBDA_Z:
-        return Q.valueOf(mBuilder.mFLambdaZ.apply(k));
-      case FT_LAMBDA_Q:
-        return mBuilder.mFLambdaQ.apply(k);
-      case FT_SEQUENCE_Z:
-        return Q.valueOf(mBuilder.mFSequenceZ.next());
-      case FT_SEQUENCE_Q:
-        return mBuilder.mFSequenceQ.nextQ();
-      case FT_NULL:
-      default:
-        return Q.ONE;
-    }
-  }
-
-  /**
-   * Wrapper around <code>mSeqG.next()</code>, may be overwritten by a subclass.
-   * @param k current index, exponent of x
-   * @return next term of the underlying sequence g in the definition of the transform
-   */
-  private Q advanceG(final int k) {
-    switch (mBuilder.mGType) {
-      case FT_CONST_L:
-        return Q.valueOf(mBuilder.mGVal);
-      case FT_LAMBDA_Z:
-        return Q.valueOf(mBuilder.mGLambdaZ.apply(k));
-      case FT_LAMBDA_Q:
-        return mBuilder.mGLambdaQ.apply(k);
-      case FT_SEQUENCE_Z:
-        return Q.valueOf(mBuilder.mGSequenceZ.next());
-      case FT_SEQUENCE_Q:
-        return mBuilder.mGSequenceQ.nextQ();
-      case FT_NULL:
-      default:
-        return Q.ONE;
-    }
-  }
 
 }
