@@ -1,0 +1,3 @@
+---- 2025-09-08 22:21:45
+A387608	decexpr	1	() -> REALS.acos(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).divide(CR.valueOf(15)).sqrt()).add(REALS.acos(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt().subtract(CR.FIVE.sqrt()).subtract(CR.ONE).divide(CR.THREE.sqrt())))
+A387609	decexpr	1	() -> REALS.atan(CR.TWO).divide(CR.TWO).add(REALS.acos(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt().subtract(CR.FIVE.sqrt()).subtract(CR.ONE).divide(CR.THREE.sqrt())))

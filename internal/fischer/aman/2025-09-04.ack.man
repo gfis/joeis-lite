@@ -1,0 +1,94 @@
+---- 2025-09-04 21:51:23
+A187544	polyxa	0	"[1]"	"x,exp,1,-,B"	1	1	egf(new A187535())
+A187545	lambdan	0	n -> SU(0, n, k -> SA(n, k).*(D187535(k)))
+A187546	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(SA(n, k)).*(D187535(k)))	a(n) = sum((-1)^(n-k)*s(n,k)*L(k), k=0..n)
+A187547	lambdan	0	n -> RU(1, n + 1, k -> new Q(1, k)).*(D187535(n)).num()
+A187548	lambdan	0	n -> SU(0, n, k -> D187547(k).*(Z_1(n - k)))	a(n) = Sum_{k=0..n} (-1)^(n-k)*A187547(k).
+A284152	polya	0	"[1]"	"x,B,C"	new A284152(), new A010815()
+A292507	polya	0	"[1],[1,1],[1,-1]"	"x,B,p2,*,p1,n,^,*"	new A000041()
+A303070	polya	0	"[1],[1,-1]"	"1,p1,/,x,B,n,^,*"	new A000041()
+A303360	convprod	0	1/4	new A303391()
+A319174	polyxa	0	"[1]"	"x,B,n,^"	0	1	egf(new A005651())
+A319175	polyxa	0	"[1]"	"x,B,n,^"	0	1	egf(new A007837())
+A319176	polyxa	0	"[1]"	"x,B,n,^"	0	1	egf(new A007841())
+A319177	polyxa	0	"[1]"	"x,B,n,^"	0	1	egf(new A007838())
+A319456	polya	0	"[1]"	"x,B,sqrt,n,^"	new A002171()
+A319457	polya	0	"[1]"	"1,x,B,sqrt,/,n,^"	new A002171()
+A319670	polya	0	"[1]"	"x,B,n,^"	new A002865()
+A319671	polya	0	"[1]"	"x,B,n,^"	new A025147()
+A330445	polyxa	0	"[1]"	"x,exp,1,-,B,log"	0	1	egf(new A168243())
+A335643	polyxa	0	"[1]"	"x,tan,B"	0	1	egf(new A005651())
+A341169	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 2
+A341170	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 3
+A341171	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 4
+A341172	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 5
+A341173	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 6
+A341174	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 7
+A341175	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 8
+A341176	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 9
+A341177	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 10
+A341178	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 11
+A341179	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 12
+A341180	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 13
+A341181	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 14
+A341182	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 15
+A341186	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 16
+A341187	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 17
+A341188	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 18
+A341189	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 19
+A341190	filnum	1	1	k -> ZV(k).mod(Functions.DIGIT_SUM.i(k)) == 20
+A345756	polyxa	0	"[1]"	"x,exp,1,-,B"	0	1	egf(new A209902())
+A345759	polyxa	0	"[1]"	"x,exp,1,-,B"	0	1	egf(new A185895())
+A346841	polyxa	0	"[1]"	"x,B,x,sin,pow"	0	1	new A000041()
+A346941	polyxa	0	"[1]"	"x,B,x,cos,pow"	0	1	new A000041()
+A347774	polyxa	0	"[1]"	"x,B,x,tan,pow"	0	1	new A000041()
+A347817	polyx	0	"[1],A9"	"x,B,x,sin,pow"	0	1
+A347893	polyx	0	"[1],A9"	"x,B,x,cos,pow"	0	1
+A347894	polyx	0	"[1],A9"	"x,B,x,tan,pow"	0	1
+A347916	polyx	0	"[1],[0,-1],A9"	"x,B,p1,exp,pow"	0	1
+A356564	polyxa	0	"[1]"	"x,B,exp,x,pow"	0	1	egf(new A338814())
+A356565	polyx	0	"[1],A9"	"x,B,x,pow"	0	1
+A356566	polyxa	0	"[1]"	"x,B,x,pow"	0	1	new A026007()
+A356575	polyxa	0	"[1]"	"x,B,x,pow"	0	1	egf(new A209902())
+A356577	polyxa	0	"[1]"	"x,B,x,pow"	0	1	egf(new A007841())
+A356578	polyxa	0	"[1]"	"x,B,x,pow"	0	1	new A006906()
+A356579	polyxa	0	"[1]"	"x,B,x,pow"	0	1	egf(new A005651())
+A370150	polya	1	"[1]"	"x,B,^3,1,x,C,-,2,/,*"	new A035363(), new A002448()
+A370337	polya	0	"[1]"	"x,C,^2,x,B,/"	new A075900(), new A304961()
+A370338	polya	0	"[1]"	"x,C,^2,x,B,/"	new A300579(), new A344062()
+A370434	polya	0	"[1]"	"x,C,^2,x,B,/"	new A338673(), new A344063()
+A370435	polya	0	"[1]"	"x,C,^2,x,B,/"	new A338674(), new A344064()
+A370709	polya	0	"[1]"	"x,B,^1/2,2,n,^,*"	new A032302()
+A370710	polya	0	"[1]"	"x,B,^1/3,3,n,^,*"	new A242587()
+A370711	polya	0	"[1]"	"x,B,^1/2,4,n,^,*"	new A032308()
+A370712	polya	0	"[1]"	"x,B,^1/3,3,n,^,*"	new A032308()
+A370713	polya	0	"[1]"	"x,B,^1/2,2,n,^,*"	new A070933()
+A370714	polya	0	"[1]"	"x,B,^1/2,4,n,^,*"	new A242587()
+A370715	polya	0	"[1]"	"x,B,^1/3,3,n,2,*,^,*"	new A070933()
+A370716	polya	0	"[1]"	"x,B,^1/3,3,n,2,*,^,*"	new A032302()
+A370732	polya	0	"[1]"	"x,B,^1/4,4,n,^,*"	new A070933()
+A370733	polya	0	"[1]"	"x,B,^1/5,5,n,2,*,^,*"	new A070933()
+A370734	polya	0	"[1]"	"x,B,^1/4,8,n,^,*"	new A242587()
+A370735	polya	0	"[1]"	"x,B,^1/5,5,n,2,*,^,*"	new A242587()
+A370736	polya	0	"[1]"	"x,B,^1/4,4,n,^,*"	new A032302()
+A370737	polya	0	"[1]"	"x,B,^1/5,5,n,2,*,^,*"	new A032302()
+A371485	polyxa	0	"[1],[1,-1]"	"x,B,p1,*"	0	1	egf(new A005651())
+A371487	polyxa	0	"[1],[1,-1]"	"x,B,p1,*"	0	1	egf(new A007841())
+A371493	polyxa	0	"[1],[1,1]"	"x,B,p1,/"	0	1	egf(new A007838())
+A374018	convprod	0	2	new A035386()
+A374019	convprod	0	2	new A035462()
+A374058	convprod	0	1,1	new A010815(), new A035386()
+A374060	convprod	0	1,1	new A010815(), new A035382()
+---- 2025-09-04 22:11:36
+A185895	polyxa	0	"[1]"	"1,x,B,/"	0	1	egf(new A005651())
+A371551	polyxa	0	"[1]"	"x,B,^2"	0	1	egf(new A185895())
+A371552	polyxa	0	"[1]"	"x,B,^3"	0	1	egf(new A185895())
+A387414	filnum	1	1	k -> D003961(k).toString(2).indexOf(Integer.toString(k, 2)) == 0	Numbers k such that the binary expansion of k is a prefix of the binary expansion of D003961(k), where D003961 is fully multiplicative with a(p) = nextprime(p).	nonn,more,new	1..20	nyi	_Antti Karttunen_
+---- 2025-09-04 22:32:32
+A387410	filnum	1	1	k -> Functions.MAKE_ODD.z(E048250(k)).+(1).mod(Functions.MAKE_ODD.i(1 + k)) == 0	Numbers k such that the odd part of (1+k) divides (1 + odd part of E048250(k)), where E048250 is sum of the squarefree divisors of n.	nonn,new	1..45	nyi	_Antti Karttunen_
+A387411	filnum	1	1	k -> D003961(k).+(1).mod(Functions.MAKE_ODD.i(1 + k)) == 0	Numbers k such that the odd part of (1+k) divides (1 + D003961(k)),D003961 is fully multiplicative with a(p) = nextprime(p).	nonn,new	1..159	nyi	_Antti Karttunen_
+A387415	filnum	1	1	k -> Functions.MAKE_ODD.z(F001615(k)).+(1).mod(Functions.MAKE_ODD.i(1 + k)) == 0	Numbers k such that the odd part of (1+k) divides (1 + odd part of F001615(k)), where F001615 is Dedekinds psi-function.	nonn,new	1..44	nyi	_Antti Karttunen_
+A387418	filnum	1	1	k -> Functions.MAKE_ODD.z(F034448(k)).+(1).mod(Functions.MAKE_ODD.i(1 + k)) == 0	Numbers k such that the odd part of (1+k) divides (1 + odd part of F034448(k)), where F034448 is unitary sigma (usigma).	nonn,new	1..44	nyi	_Antti Karttunen_
+A387419	filnum	1	1	k -> Functions.MAKE_ODD.z(E003959(k)).+(1).mod(Functions.MAKE_ODD.i(1 + k)) == 0	Numbers k such that the odd part of (1+k) divides (1 + odd part of E003959(k)), where E003959 is multiplicative with a(p^e) = (p+1)^e.	nonn,new	1..46	nyi	_Antti Karttunen_
+---- 2025-09-04 22:46:14
+A136552	lambdan	0	n -> { final Z n2 = Z2(n); return BI(n2.*(2).+(2*n), n).*(n2)./(n2.+(n)); }	a(n) = C(2*2^n + 2*n, n)*2^n/(2^n + n); a(n) = coefficient of x^n in Catalan(x)^(2*2^n).	nonn	0..11	nyi	_Paul D. Hanna_

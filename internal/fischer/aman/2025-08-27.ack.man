@@ -1,0 +1,109 @@
+---- 2025-08-27 23:56:25
+A080485	multia	1	"1,1"	(self, n) -> self.a(n - 1).+(self.a(n - 1).^(n - 1))	a(1) = 1, a(2) = a(1), a(3) = a(1) + a(2)^2, etc. a(n) = a(n-1) + a(n-1)^(n-1).	nonn	1..7	nyi	_Amarnath Murthy_
+A080497	lambdan	1	n -> { long p = 2; Z pr = Z.ONE; while (p < n) { pr = pr.*(n - p); p = Functions.NEXT_PRIME.l(p); } return pr; }	a(n) = (n-p_1)(n-p_2)...(n-p_k) where p_k is the k-th prime and is also the largest prime < n.	nonn	1..30	nyi	_Amarnath Murthy_
+A080498	lambdan	1	n -> { long c = 4; Z pr = Z.ONE; while (c < n) { if (!PP(c)) { pr = pr.*(n - c); } ++c; } return pr; }	a(n) = (n-c_1)(n-c_2)...(n-c_k) where c_k is the k-th composite number and is also the largest composite number < n.	nonn	1..539	nyi	_Amarnath Murthy_
+A080500	lambdan	1	n -> { long k = 1; Z pr = Z.ONE; while (k*k < n) { pr = pr.*(n - k*k); ++k; } return pr; }	a(n) = (n-1)(n-4)(n-9)...(n-k^2) where k^2 < n <= (k+1)^2.
+A080567	lambdan	1	n -> SU(2, n, k -> Z2((Functions.PRIME.i(k) - 1)/2)).+(1)	1 + Sum_{k=2..n} 2^((prime(k)-1)/2).	nonn,easy	1..25	nyi	_N. J. A. Sloane_, based on information supplied by _Artur Jasin
+A080581	squot	1	new A079269()		Ratios of successive terms of J079269.	nonn	1..9	nyi	_N. J. A. Sloane_
+A080582	squot	1	new A079278()		Ratios of successive terms of J079278.	nonn	1..9	nyi	_N. J. A. Sloane_
+A080909	lambdan	0	n -> { final long v = FA(2*n + 1).mod(4*n + 3); return ZV(2*v > 4*n + 3 ? v - (4*n + 3) : v); }	a(n) = (2n+1)! modulo 4n+3	a(n)= {v =(2*n+1)! % (4*n+3); if (2*v > 4*n+3, v -= 4*n+3); return (v); }
+A080928	trilambn	0	0	0	(n,k) -> SU(0, n, i -> BI(n, 2*i).*(BI(2*i, k)))	T(n,k) = Sum_{i=0..n} C(n,2i)*C(2i,k).	nonn,tabl,easy	0..11475	nyi	_Paul Barry_
+A080943	filtpos	1	1	new A080942()	v -> v.equals(ZV(2))	Numbers having exactly two divisors that are also suffixes in binary representation.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A080945	filtpos	1	1	new A080942()	v -> v.compareTo(ZV(2)) > 0	Numbers having more than two divisors that are also suffixes in binary representation.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A080946	filtpos	1	1	new A080942()	v -> v.equals(ZV(3))	Numbers having exactly three divisors that are also suffixes in binary representation.	nonn,base	1..10000	nyi	_Reinhard Zumkeller_
+A080947	filtpos	1	1	new A080942()	v -> v.compareTo(ZV(3)) > 0	Numbers having more than three divisors that are also suffixes in binary representation.	nonn,base	1..1000	nyi	_Reinhard Zumkeller_
+A081261	morfps	1	4	tri	4 -> 665, 5 -> 56665, 6 -> 566665
+A081322	lambdan	0	n -> FI(PELL(n))	F(P(n)), where F(n) = Fibonacci numbers F000045, P(n) = Pell numbers F000129.	easy,nonn	0..8	nyi	Mario Catalani (mario.catalani(AT)unito.it)
+A081323	lambdan	0	n -> LU(PELL(n))	a(n) = L(P(n)), where L = Lucas numbers F000032, P = Pell numbers F000129.	easy,nonn	0..8	nyi	Mario Catalani (mario.catalani(AT)unito.it)
+A089941	lambdan	0	n -> SU(0, n, k -> BI(n + k, (n - k)/2))	a(n)=sum{k=0..n, Bin(n+k, floor((n-k)/2))}.
+A090074	lambdan	0	n -> n <= 5 ? new Z[] { ZV(3654563L), ZV(678736545637876L), ZV(663305503366L), ZV(663787366L), new Z("88352682264077046228625388"), ZV(365468864563L), ZV(3654566654563L), ZV(36545633654563L) }[n] : Z.TEN.pow(n).*(3654563).+(3654563)	for n > 5.
+A094261	lambdan	1	n -> { int tri = 0; int i = 0; Z pr = Z.ONE; while (tri < n) { pr = pr.*(n - tri); ++i; tri += i; } return pr; }	a(n) = n(n-1)(n-3)(n-6)...(n-t), where t is the largest triangular number less than n; number of factors in the product is ceiling((sqrt(1+8*n)-1)/2).
+A098006	sintrif	2	(p, n) -> p.-(1)./(2).-(PHI(p.-(1)))	""	new A000040()	(p-1)/2 - phi(p-1) as p runs through the odd primes.	nonn,nice	2..10000	nyi	_N. J. A. Sloane_
+A098015	filnum	1	1	k -> { final Z dif = PM(k + 1).-(PM(k)); return dif.mod(2) == 0 && PP(dif./(2)); }	Indices x such that (1/2)(prime(x+1) - prime(x)) is prime.	easy,nonn	1..10000	nyi	_Cino Hilliard_
+A098016	filnum	1	1	k -> { final Z d = PM(k + 1).+(PM(k)); return d.mod(4) == 0 && PP(d./(4)); }	Indices x such that (1/4)(prime(x+1) + prime(x)) is prime.	easy,nonn	1..1000	nyi	_Cino Hilliard_
+A098031	filprof	1	1	k -> PM(k).+(PM(k + 4))./(2)	Primes p such that p = (prime(n)+ prime(n+4))/2.	easy,nonn	1..1000	nyi	_Cino Hilliard_
+A098032	filprof	1	2	k -> PM(k).+(PM(k + 5))./(2)	Primes p such that p = (prime(n)+ prime(n+5))/2.	easy,nonn	1..45	nyi	_Cino Hilliard_
+A098141	multia	1	"1"	(self, n) -> self.a(n - 1).+(Predicates.SQUARE.is(n) ? -n : n)	a(1)=1, then if n not a square a(n)=a(n-1) + n, if n a square then a(n)= a(n-1) - n.	easy,nonn	1..1000	nyi	_Pierre CAMI_
+A098725	multia	0	"0,1,1,1,0"	(self, n) -> (n&1) == 1 ? ZV(1) : ((n&3) == 0 ? ZV(0) : self.a((n - 2)/4 + 1))	a(4n) = 0, a(2n+1) = 1, a(4n+2) = a(n+1).	nonn	0..65537	nyi	_Ralf Stephan_
+A098738	multia	1	"1,2,2,3"	(self, n) -> self.a(n - 1).+(self.a(n - 2).*((n - 2)/2).*((n&1) == 0 ? (n - 2)/2 : (n - 1)/2))	a(1) = 1, a(2) = 2, a(3) = 2, a(4) = 3, for n >= 3, a(n+2) = a(n+1) + a(n)*floor(n/2)*ceiling(n/2).	nonn	1..507	nyi	_Leroy Quet_
+A099181	filter	1	new A000040()	p -> p.compareTo(Functions.REVERSE.z(p).*(2)) > 0	Primes p which are greater than twice p reversed.	base,nonn	1..50	nyi	_Robert G. Wilson v_
+A099934	holos	0	[[1],[-1],[0,1],[-1]	1,2	0	0
+A103438	arrlamb	0	0	0	1	(m, n) -> SU(1, n, k -> ZV(k).^(m))	Square array T(m,n) read by antidiagonals: Sum_{k=1..n} k^m.	nonn,tabl	0..50	nyi
+A104077	lambdan	0	n -> CV(n)./(10).log().*(10000).round(128)	10000 log(n/10), rounded.	sign	0..44	nyi	_Alexandre Wajnberg_
+A104156	multia	1	"0,0"	(self, n) -> self.a(n - 1).*(2).-(self.a(n - 2)).abs().-(1)	a(1)=a(2)=0, a(n) = abs(2*a(n-1) - a(n-2)) - 1.	sign	1..96	nyi	_Benoit Cloitre_
+A104235	filter	1	new A102370()	(k, v) -> v.equals(ZV(k))	Numbers n such that D102370(n) = n.	nonn,base	1..1000	nyi	_N. J. A.
+A104236	sintrif	1	(term, n) -> term.*(n)	""	new A001462()
+A104250	sintrif	1	(term, n) -> { final int[] dc = ZUtils.digitCounts(term); return ZV(dc[2]*2 + dc[3]*3 + dc[5]*5 + dc[7]*7); }	""	new A000040()	Sum of prime digits of n-th prime.	nonn,base	1..97	nyi	_Zak Seidov_
+A104251	sintrif	1	(term, n) -> { final int[] dc = ZUtils.digitCounts(term); return ZV(dc[1] + dc[4]*4 + dc[6]*6 + dc[8]*8 + dc[9]*9); }	""	new A000040()	Sum of nonprime digits of n-th prime.	nonn,base	1..93	nyi	_Zak Seidov_
+A104255	lambdan	1	n -> DF(2*n - 1)./(2*n)	a(n) = floor( (2n-1)!!/(2n) ).	nonn	1..21	nyi	_Ralf Stephan_
+A104256	lambdan	1	n -> DF(2*n - 1)./(4*n)	[ (2n-1)!!/(4n) ].	nonn	1..19	nyi	_Ralf Stephan_
+A104260	sintrif	1	(term, n) -> { final int[] dc = ZUtils.digitCounts(term); return ZV(dc[1] + dc[3]*3 + dc[5]*5 + dc[7]*7 + dc[9]*9); }	""	new A000040()	Sum of odd digits (1,3,5,7,9) of n-th prime.	nonn,base	1..88	nyi	_Zak Seidov_
+A104261	sintrif	1	(term, n) -> { final int[] dc = ZUtils.digitCounts(term); return ZV(dc[2]*2 + dc[4]*4 + dc[6]*6 + dc[8]*8); }	""	new A000040()		Sum of even digits (0,2,4,6,8) of n-th prime.	nonn,base	1..102	nyi
+A104269	filter	1	new A000040()	p -> Predicates.SQUARE.is(PI(p).+(p))	Prime numbers p such that primepi(p) + p is a square
+A104278	filnum	1	1	k -> !PP(2*k + 1) && !PP(2*k - 1)	Numbers m such that 2m+1 and 2m-1 are not primes.	easy,nonn	1..10000	nyi	_Alexandre Wajnberg_
+A104279	filnum	1	1	k -> PP(2*k + 1) && !PP(2*k - 1)	Numbers n such that 2n+1 is prime and 2n-1 is not prime.	easy,nonn	1..10000	nyi	_Alexandre Wajnberg_
+A104296	multia	1	"9"	(self, n) -> PM(self.a(n - 1).+(1)./(2))	a(n) = prime((a(n-1)+1)/2), a(1) = 9.	nonn,more	1..25	nyi	_Zak Seidov_
+A104297	multia	0	"21"	(self, n) -> PM(self.a(n - 1).+(1)./(2))	a(n) = prime((a(n-1) + 1)/2), a(1) = 21.	nonn,more	1..22	nyi	_Zak Seidov_  
+A104420	parmof2	1	A104419	'9'	Numbers n such that n, p[n], p[n]+n, p[n]-n and p[n]*n all are 9-less.	nonn,base	1..1000	nyi	_Zak Seidov_
+A104421	parmof2	1	A104419	'1'	Numbers n such that n, prime(n), prime(n)+n, prime(n)-n and prime(n)*n all numbers without the digit 1.	nonn,base	1..3000	nyi	_Zak Seidov_
+A104422	parmof2	1	A104419	'2'	Numbers n such that n, p[n], p[n]+n, p[n]-n and p[n]*n all are 2-less.	nonn,base	1..1000	nyi	_Zak Seidov_
+A104423	parmof2	1	A104419	'3'	Numbers n such that n, p[n], p[n]+n, p[n]-n and p[n]*n all are 3-less.	nonn,base	1..55	nyi	_Zak Seidov_
+A104424	parmof2	1	A104419	'4'	Numbers n such that n, prime(n), prime(n)+n, prime(n)-n and prime(n)*n all lack the digit 4.	nonn,base	1..10000	nyi	_Zak Seidov_
+A104425	parmof2	1	A104419	'5'	Numbers n such that n, p[n], p[n]+n, p[n]-n and p[n]*n all are 5-less.	nonn,base	1..61	nyi	_Zak Seidov_
+A104426	parmof2	1	A104419	'6'	Numbers k such that the digit 6 does not appear in the decimal expansion of k, Pk, Pk+k, Pk-k, or Pk*k, where Pk is the k-th prime.	nonn,base	1..63	nyi	_Zak Seidov_
+A104427	parmof2	1	A104419	'7'	Numbers n such that n, p[n], p[n]+n, p[n]-n and p[n]*n all are 7-less.	nonn,base	1..58	nyi	_Zak Seidov_
+A104428	parmof2	1	A104419	'8'	Numbers n such that n, p[n], p[n]+n, p[n]-n and p[n]*n all are 8-less.	nonn,base	1..61	nyi	_Zak Seidov_
+A111686	lambdan	1	n -> SU(1, n, j -> FA(n + j))./(FA(n))
+A114348	lambdan	1	n -> ZV(n <= 18 ? new int[] {0, -6, -3, 2, 9, 16, 22, 25, 26, 25, 22, 18, 14, 10, 7, 5, 3, 2, 1}[n] : 0)
+A130740	lambdan	0	n -> Z.TWO.pow(Z.FOUR.pow(n)).+(5)	a(n) = 2^(4^n) + 5
+A131214	morfps	1	1	1357	1->1357,2->1246,3->2357,4->1346,5->2457,6->1356,7->2467			nyi t	Fixed point of the morphism 1 -> 1357, 2 -> 1246, 3 -> 2357, 4 -> 1346, 5 -> 2457, 6 -> 1356, 7 -> 2467.	nonn,easy
+A176826	holos	0	[[0],[624,-200,16],[-2220,854,-82],[2928,-1356,156],[-1878,1115,-163],[624,-524,106],[-78,120,-42],[0,-8,10],[0,-1,-1]]	1	0	0
+A177258	lambdan	0	n -> RU(0, n, s -> RU(0, (n - s)/2, t -> new Q(Z_1(s + t).*(FA(n - t)), FA(s).*(FA(t))))).num()
+A177259	lambdan	0	n -> RU(0, n, s -> RU(0, (n - s)/3, t -> new Q(Z_1(s + t).*(FA(n - 2*t)), FA(s).*(FA(t))))).num()	a(n) = Sum_{s=0..n} Sum_{t=0..floor((n-s)/3)} (-1)^(s+t)*(n-2*t)!/(s!*t!).
+A177260	lambdan	0	n -> RU(0, n, s -> RU(0, (n - s)/4, t -> new Q(Z_1(s + t).*(FA(n - 3*t)), FA(s).*(FA(t))))).num()	a(n) = Sum_{s=0..n} Sum_{t=0..floor((n-s)/4)} (-1)^(s+t)*(n-3*t)!/(s!*t!).
+A182902	holos	0	[[0],[-28,11,-1],[64,-29,3],[8,20,-4],[16,-39,7],[52,10],[-34,-27,7],[54,9,-3]]	0,0,0,0,0,0,1	0	0
+A189286	holos	0	[[0],[-138240,838656,-1741824,1631232,-700416,110592],[960,-6736,18464,-24288,14976,-3456],[0,0,-8,42,-63,27]]	-1	0	0
+A189883	filnum	1	1	k -> E008833(k).-(CORE(k)).equals(ZV(1))
+A190160	poly	0	"[1],[1,-1]"	"1,A,<1,+,A,<2,x,p1,^2,A,A,<1,-,1,-,*,+,p1,/,*,+"
+A191686	lambdan	1	n -> ZV(n).^(n - 1).-(SU(1, n - 1, k -> ZV(n - k).^(n - 1)))	a(n) = n^(n-1) - (n-1)^(n-1) - ... - 2^(n-1) - 1^(n-1)
+A193130	lambdan	1	n -> ZV(n).^(n - 2).*(ZV(n - 1).^(n)).*(ZV(4).^(n - 1))	a(n) = n^(n-2) * (n-1)^n * 4^(n-1). [See "Spectra of graphs", p. 217; also observed by _Joel B. Lewis_, Jun 20 2013] - _Andrey Zabolotskiy_, Mar 18 2021
+A193133	lambdan	3	n -> ZV(n - 2).^(n - 1).*(ZV(n - 1)).*(ZV(n).^(n - 2))	a(n) = (n-2)^(n-1) * (n-1) * n^(n-2). - _Richard Ehrenborg_, Mar 23 2025
+A212350	lambdan	1	n -> n <= 4 ? ZV(new int[] {0,6,8,12,20}[n]) : Z2(n)
+A212351	lambdan	1	n -> n <= 6 ? ZV(new int[] {0,6,8,12,24,40,80}[n]) : Z2(n)	6, 8, 12, 24, 40, 80 a(n) = 2^n for n >= 7.
+A216147	lambdan	0	n -> ZV(n).^(n).*(2).+(1)	2*n^n + 1
+A220898	polya	0	"[1],[1,1]"	"x,p1,/,B"	new A000139()
+A220899	polya	2	"[0,0,2],[1,1]"	"x,p1,/,B,x,p1,/,B,<1,-"	new A000139()
+A226693	sintrif	1	(term, n) -> CORE(term)	""	new A079896()	a(n) = squarefree part of D(n) = J079896(n), n >= 1, the numbers 0 and 1 (mod 4), not a square.
+A230355	filnum	1	1	k -> !Predicates.SQUARE_FREE.is(k) && Functions.DIGIT_SUM.i(k) == Functions.DIGIT_SUM.i(CORE(k))	Nonsquarefree numbers n such that digit sum of n = digit sum of squarefree part of n.
+A271267	filnum	1	1	k -> (k&1) == 0 && ZV(k).^(k).+(2).mod(k + 2) == 0	Even numbers k such that k + 2 divides k^k + 2.	nonn	1..150	nyi	_Altug Alkan_
+A290173	filnum	0	1	k -> { final Z k2 = ZV(k).*(k); return CORE(k2.+(1).+(k2.*(k2))).compareTo(k2) < 0; }	 Equivalently, numbers k such that F007913(1 + k^2 + k^4) < k^2, where F007913(n) is the squarefree part of n. - _Giovanni Resta_, Jul 27 2017
+A292782	lambdan	1	n -> Z_1(n).*(SU(1, n - 1, k -> Z_1(k + 1).*(ZV(k).^(2*n))))	a(n) = (-1)^n*(1^(2*n) - 2^(2*n) + ... +(-1)^n*(n-1)^(2*n))
+A292809	polyx	1	"[0,1],[0,2],[0,2,1]"	"p2,p1,A,-,sub,-"	1	0
+A316346	squot	1	new A316297()		n+1)/J316297(n).
+A319749	multia	0	"3,11"	(self, n) -> self.a(n - 1).^(2).-(2)	a(n+1) = a(n)^2 - 2 for n >= 1.
+A328752	lambdan	1	n -> ZV(n <= 11 ? new int[] { 0, 1, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9 }[n] : n)
+A335023	squot	1	new A334958()		n+1)/J334958(n).
+A335024	squot	1	new A056612()		n+1)/J056612(n).
+A342558	lambdan	1	n -> ZV(n <= 18 ? new int[] { 0, 1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 6, 7, 9, 10, 12, 15, 16, 18}[n] : n)
+A347290	morfps	1	0	0201	0->0201020,1->1020,2->201020			nyi t	Arnoux-Rauzy word sigma_0 x sigma_2 x sigma_1. Fixed point of the morphism 0-> 0201020, 1->1020, 2->201020 startin
+A354896	morfps	1	00	0011	00->001,01->010,10->101,11->110			nyi o	A fixed point of the two-block substitution  00->001, 01->010, 10->101, 11->110.	nonn
+A355007	trilambn	0	0	0	(n, k) -> ZV(n).^(k).*(SA(n, k))
+A357582	squot	0	new A061300()		n+1)/J061300(n).
+A379578	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n, 4), "0123", "1302"), 4)	In the base-4 expansion of n map 0->1, 1->3, 2->0, 3->2.	nonn,base,easy,look	0..16383	nyi	_Dar‚ąö‚Č†o Clavijo_
+A380110	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n, 4), "0123", "0112"), 4)	In the base 4 expansion of n: map 0->0, 1->1, 2->1, 3->2.	nonn,base,easy	0..10000	nyi	_Dar‚ąö‚Č†o Clavijo_
+A380985	lambdan	1	n -> n <= 3 ? ZV(new int[] {0,1,20,110}[n]) : Z.TEN.pow(n - 1).*(2).+(100)	a(n) = 2*10^(n-1) + 100 for n >= 4.
+A381381	holos	4	[0,1,-1]	155,126,183,97,101,91,108,92,98,78,81,108,78,78,91,78,106,81,92,78,80,78,78,78,81,78,108,78,78,92,78	0	0
+A383909	lambdan	0	n -> new Z(StringUtils.translate(Integer.toString(n, 4), "0123", "abcd").replaceAll("a", "20").replaceAll("b", "21").replaceAll("c", "30").replaceAll("d", "31"), 4)	In the base 4 expansion of n, map: 0 -> 20, 1 -> 21, 2 -> 30, 3 -> 31.	nonn,base,easy	0..10000	nyi	_Dar‚ąö‚Č†o Clavijo_
+A383942	holos	1	[0,1000,-1110,111,-1]	78,8778,887778	0	0
+A383953	holos	0	[0,2,1,-1]	4,7	0	0
+A385252	holos	0	[[0],[4105728,-1430784,124416],[-3753216,1569024,-164160],[1260576,-632736,79344],[-194400,121440,-18804],[13908,-11729,2369],[-372,529,-153],[0,-8,4]]	0,0,32	0	0
+A386489	holos	0	[0,-2,7,1,3,-1]	1,2,7,30	0	0
+A387154	lambdan	2	n -> n <= 6 ? ZV(new long[]{0L, 0L, 401120980260L, 360360L, 55440L, 110880L, 100800L}[n]) : Z2(n).*(945)	a(n) = 945 * 2^n for n >= 7.
+A387185	holos	0	[0,-16,32,-24,8,-1]	0,1,5,19,64	0	0
+A387244	holos	0	[[0],[120,-274,225,-85,15,-1],[120,-250,175,-50,5],[56,-104,58,-10],[22,-32,10],[5,-5],[1]]	1	0	0
+A387247	decexp	1	() -> CV(3).log().*(2).+(7)./(8)	Decimal expansion of (2*log(3) + 7)/8.
+---- 2025-08-28 00:16:04
+A123113	lambdan	1	n -> ZV(1).+(SU(1, n, k -> ZV(n).^(Functions.PRIME.i(k))))	a(n) = 1 + n^2 + n^3 + n^5 + ... + n^prime(n).
+A145417	holos	1	[[0],[-1],[14],[61],[-1479],[-348],[66339],[-57030],[-1646233],[1818710],[24542626],[-23823457],[-221656480],[154667330],[1167520145],[-568784352],[-3471750395],[1465977019],[5852097578],[-2653029943],[-5513512152],[2917536240],[2763674623],[-1747850343],[-672927757],[545836271],[60009003],[-85855152],[1905497],[6604103],[-541266],[-237534],[24357],[3474],[-331],[-14],[1]]	0,13,27,2953,24360,972080,13049563,360783593,6044482889,142205412782,2645920282312,57787769198498,1130122135817708,23838761889677477,477334902804794530,9905649696435264827,200572437515846530901,4130348948437378850158,84074883624291031055071,1725061733607816846672084,35201911945083165877105598,721041937227213471236222936,14731026760739434523775920272,301492247130186410656766864436,6162966556594442193757310209147,126086101870795129720839096783333,2578070083185284447937587182277129,52734387801729163635906223494385644,1078388240037660942562424414577181926,22056541466571843558470704997624920958,451070070689312442562501030339580527821,9225477593066296020350369342487285559224,188671988477305551144936342851950180268541,3858726953408688228729004487413425843715888,78916582053879579831149431468113368147807393	0	0
+---- 2025-08-28 00:25:07
+A232994	lambdan	3	n -> n <= 4 ? ZV(0) : ZV(n - 3).*(6*n - 24).*(Z2(n - 3)).*(ZV(n).^(n - 4))	a(n) = 6*(n - 3)*(n - 4)*2^(n-3)*n^(n-4).

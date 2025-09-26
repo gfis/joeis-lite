@@ -1,0 +1,124 @@
+---- 2025-09-21 22:13:47
+A158827	polya	1	"[1]"	"x,C,x,C,B,*"	new A000108(), new A158826()
+A158828	polya	1	"[1]"	"x,C,x,C,B,*"	new A000108(), new A158827()
+A159079	filter	1	new A000040()	p -> PP(p. ^(2).-(p).-(1).*(p).-(4).abs())	Primes p such that |p^3 - p^2 - p - 4| is prime.	nonn	1..49	nyi	_Vladimir Joseph Stephan Orlovsky_
+A159080	filter	1	new A000040()	p -> PP(p. ^(2).-(p).-(1).*(p).-(6))	Primes p such that p^3 - p^2 - p - 6 is also prime.	nonn,easy,changed	1..51	nyi	_Vladimir Joseph Stephan Orlovsky_
+A160596	lambdan	2	n -> new Q(PHI(n), ZV(n - 1)).den()	Denominator of resilience R(n) = phi(n)/(n-1).	nonn,look	2..10000	nyi	_M. F. Hasler_
+A160597	lambdan	2	n -> new Q(ZV(n).-(PHI(n)), ZV(n - 1)).den()	Denominator of coresilience C(n) = (n - phi(n))/(n-1).	nonn,frac,look	2..10000	nyi	_M. F. Hasler_
+A160598	lambdan	2	n -> new Q(ZV(n).-(PHI(n)), ZV(n - 1)).num()	Numerator of coresilience C(n) = (n - phi(n))/(n-1).	nonn,frac	2..10000	nyi	_M. F. Hasler_
+A160600	filnum	1	0	k -> PP(ZV(2*k).^(2*k).*(3).+(1))	Numbers k such that 3*(2k)^(2k)+1 is prime.	hard,more,nonn	1..6	nyi	_M. F. Hasler_
+A160858	filter	1	new A000040()	p -> { final Z q = p.-(1).*(p.^(2)); return PP(q.-(1)) && PP(q.+(1)); }	Primes p such that p^3-p^2-1 and p^3-p^2+1 are prime.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A160859	filter	1	new A000040()	p -> { final Z q = p.+(1).*(p.^(2)); return PP(q.-(1)) && PP(q.+(1)); }	Primes p such that p^3 + p^2 - 1 and p^3 + p^2 + 1 are prime.	nonn	1..43	nyi	_Vladimir Joseph Stephan Orlovsky_
+A160946	filnum	1	1	k -> k % Functions.REVERSE.i(k + 1) == 0	Numbers n that are multiples of the reversal of n+1.	nonn,base	1..31	nyi	_Claudio Meller_
+A160947	filnum	1	1	k -> k % Functions.DIGIT_SUM.i(k + 1) == 0	Numbers k that are multiples of the digital sum of k+1.	nonn,base	1..1900	nyi	_Claudio Meller_
+A161723	filter	1	new A000040()	p -> PP(p.-(18)) && PP(p.+(18))	Middle members p of prime triples (p-18,p,p+18).	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A161724	filter	1	new A000040()	p -> PP(p.-(24)) && PP(p.+(24))	Primes p such that also p-24 and p+24 are primes.	nonn,easy	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A161725	filter	1	new A000040()	p -> PP(p.-(30)) && PP(p.+(30))	Primes p such that also p+30 and p-30 are primes.	nonn	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A161751	sintrif	1	(term, n) -> Functions.DIGIT_SUM_ROOT.z(term)	""	new A051532()	Digital root of Abelian numbers (J051532).	nonn,base	1..66	nyi	_Parthasarathy Nambi_
+A161758	lambdan	5	n -> ZV(n + 1).-(Functions.PREV_PRIME.z(n - 2))	a(n)=n-p+1 where p is the maximal prime less than n-2.	nonn	5..100	nyi	_David Brink_
+A161761	sintrif	1	(term, n) -> new Z(term.toString(2))	""	new A139224()	Binary representation of J139224(n).	nonn,base	1..8	nyi	_Juri-Stepan Gerasimov_
+A161805	filter	0	new A161804()	(k, v) -> k % 3 == 0	A trisection of J161804: a(n) = J161804(3n) for n>=0.	nonn	0..25	nyi	_Paul D. Hanna_
+A161806	filter	0	new A161804()	(k, v) -> k % 3 == 1	A trisection of J161804: a(n) = J161804(3n+1) for n>=0.	nonn	0..24	nyi	_Paul D. Hanna_
+A161807	filter	0	new A161804()	(k, v) -> k % 3 == 2	A trisection of J161804: a(n) = J161804(3n+2) for n>=0.	nonn	0..25	nyi	_Paul D. Hanna_
+A161817	filnum	1	0	k -> F010060(k).equals(F010060(k + 5))
+A162185	multia	0	"3"	(self, n) -> Z.TWO.^(self.a(n - 1))	a(0)=3 and a(n+1)=2^a(n).	nonn	0..3	nyi	_Benoit Jubin_
+A162619	trilambn	1	1	1	(n, k) -> F000040(n).-(n + 1 - k)	Triangle read by rows in which row n lists n consecutive natural numbers J000027, starting with J014689(n) = F000040(n)-n.	easy,nonn,tabl	1..75	nyi	_Omar E. Pol_
+A162620	trilambn	1	1	1	(n, k) -> F000040(n).-(n - k)	easy,nonn,tabl	Triangle read by rows in which row n lists n consecutive natural numbers J000027, starting with F000040(n)-n+1.	easy,nonn,tabl	1..74	nyi
+A163130	filter	0	new A163129()	(k, v) -> k % 3 == 0	A trisection of J163129.	nonn	0..1000	nyi	_Paul D. Hanna_
+A163131	filter	1	new A163129()	(k, v) -> k % 3 == 1	A trisection of J163129.	nonn	1..1001	nyi	_Paul D. Hanna_
+A163132	filter	2	new A163129()	(k, v) -> k % 3 == 2	A trisection of J163129.	nonn	2..1002	nyi	_Paul D. Hanna_
+A163385	filter	1	new A000040()	p -> { final Z q = p.-(3).*(3); return PP(q.-(1)) && PP(q.+(1)); }	Primes p such that 3(p-3)-1 and 3(p-3)+1 are twin primes.	nonn,easy	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163386	filter	1	new A000040()	p -> { final Z q = p.-(4).*(4); return PP(q.-(1)) && PP(q.+(1)); }	Primes p such that 4(p-4)-1 and 4(p-4)+1 are twin primes.	nonn	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163387	filter	1	new A000040()	p -> { final Z q = p.-(5).*(5); return PP(q.-(1)) && PP(q.+(1)); }	Primes p such that 5(p-5)-1 and 5(p-5)+1 are twin primes.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163388	filter	1	new A000040()	p -> { final Z q = p.-(6).*(6); return PP(q.-(1)) && PP(q.+(1)); }	Primes p such that 6*(p-6) is an average of a twin prime pair.	nonn	1..1100	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163418	filprof	1	1	k -> { final Z p = PM(k); return p.-(1)./(2).^(2).+(p.+(1)./(2)); }	Primes of the form ((p-1)/2)^2+((p+1)/2), where p is prime.	nonn,easy	1..1500	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163419	filprof	1	1	k -> { final Z p = PM(k); return p.+(1)./(2).^(2).+(p.-(1)./(2)); }	Primes of the form ((p+1)/2)^2+((p-1)/2), where p is prime.	nonn,easy	1..3000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163420	filter	1	new A000040().skip(1)	p -> PP(p.+(p.^(2).-(1)./(4)))	is also prime.	nonn,easy	1..50000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163421	filprof	1	1	k -> { final Z p = PM(k); return p.-(1)./(2).^(3).+(p.+(1)./(2)); }	Primes of the form ((p-1)/2)^3+((p+1)/2), p are prime numbers.	nonn,easy	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163422	filter	1	new A000040()	p -> PP(D071568(p.-(1)./(2)))	is also prime.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163424	filprof	1	2	k -> { final Z p = PM(k); return p.-(1).^(3)./(8).+(p.+(1).^(2)./(4)); }	Primes of the form (p-1)^3/8 + (p+1)^2/4 where p is prime.	nonn,easy	1..1100	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163425	filter	1	new A000040().skip(1)	p -> PP(p.-(1).^(3)./(8).+(p.+(1).^(2)./(4)))	is also prime.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163426	filprof	1	1	k -> { final Z p = PM(k); return p.+(1)./(2).^(3).+(p.-(1)./(2)); }	Primes of the form ((p+1)/2)^3+((p-1)/2), p is prime.	nonn,easy	1..1500	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163427	filter	1	new A000040().skip(1)	p -> PP(p.+(1).^(3)./(8).+(p.-(1)./(2)))	is also prime.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163428	filprof	1	1	k -> { final Z p = PM(k); return p.+(1)./(2).^(3).+(p.-(1)./(2).^(2)); }	Primes of the form ((p+1)/2)^3+((p-1)/2)^2 where p is prime.	nonn,easy	1..10000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A163429	filter	1	new A000040()	p -> PP(p.+(1)./(2).^(3).+(p.-(1)./(2).^(2)))	is also prime.	nonn,easy	1..1000	nyi	_Vladimir Joseph Stephan Orlovsky_
+A190197	multia	1	"2"	(self, n) -> Functions.NEXT_PRIME.z(self.a(n - 1).*(n)./(2))	a(1) = 2. For n > 1, a(n) is the least prime > a(n-1)*n/2.	nonn	1..26	nyi	_Pierre CAMI_
+A240690	polya	1	"[1],[1,1]"	"x,B,1,-,x,p1,/,*"	new A000041()
+A242615	lambdan	1	n -> CV(PT(n)).log().^(2).-(CV(FA(n)).log()).exp().*(100).round()	a(n) = exp( (log P(n))^2 - log(n!) ), multiplied by 100 and rounded to the nearest integer, where P(n) is the partition number F000041(n).	nonn,uned	1..150	nyi	_Karl Javorszky_
+A244278	poly	0	"[1],[0,-1]"	"1,A,^2,p1,sub,<1,rev,*,+"
+A244340	lambdan	1	n -> CV(n).^(2).*(CV(n).log()).floor().modZ(n)	Floor( n^2*log(n) ) mod n.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A379416	lambdan	1	n -> { final CR r = CV(3).^(new Q(1, 4)); final CR s = CV(3).sqrt(); final CR t = CV(3).^(new Q(3, 4)); return CV(n).*(r)./(t).floor().+(CV(n).*(s)./(t).floor()).+(n); }	n + [n*r/t] + [n*s/t],
+A379417	lambdan	1	n -> { final CR r = CV(new Q(3, 2)).^(new Q(1, 4)); final CR s = CV(new Q(3, 2)).sqrt(); final CR t = CV(new Q(3, 2)).^(new Q(3, 4)); return CV(n).*(s)./(r).floor().+(CV(n).*(t)./(r).floor()).+(n); }	n + [n*s/r] + [n*t/r],
+A379418	lambdan	1	n -> { final CR r = CV(new Q(3, 2)).^(new Q(1, 4)); final CR s = CV(new Q(3, 2)).sqrt(); final CR t = CV(new Q(3, 2)).^(new Q(3, 4)); return CV(n).*(r)./(s).floor().+(CV(n).*(t)./(s).floor()).+(n); }	n + [n*r/s] + [n*t/s],
+A379419	lambdan	1	n -> { final CR r = CV(new Q(3, 2)).^(new Q(1, 4)); final CR s = CV(new Q(3, 2)).sqrt(); final CR t = CV(new Q(3, 2)).^(new Q(3, 4)); return CV(n).*(r)./(t).floor().+(CV(n).*(s)./(t).floor()).+(n); }	n + [n*r/t] + [n*s/t],
+A379420	lambdan	1	n -> { final CR r = CV(5).^(new Q(1, 4)); final CR s = CV(5).sqrt(); final CR t = CV(5).^(new Q(3, 4)); return CV(n).*(s)./(r).floor().+(CV(n).*(t)./(r).floor()).+(n); }	n + [n*s/r] + [n*t/r],
+A379476	sintrif	1	(term, n) -> term.compareTo(ZV(1)) > 0 ? ZV(1) : ZV(0)	""	new A326057()	a(n) = 1 if J326057(n) > 1, otherwise 0, where J326057(n) = gcd(D003961(n)-2n, D003961(n)-sigma(n)).	nonn	1..100000	nyi	_Antti Karttunen_
+A379507	lambdan	1	n -> GCD(FA(2*n)./(FA(n).^(2)), ZV(105))
+A379544	lambdan	1	n -> { final Z p = PM(n); return p.-(1).^(n).+(p.+(1).^(n)).mod(p.^(2)); }	a(n) = ((p-1)^n + (p+1)^n) mod p^2, where p is the n-th prime.	nonn	1..57	nyi	_Do Thanh Nhan_
+A386398	lambdan	0	n -> SU(0, n, k -> ZV(5).^(n-k).*(BI(n, k)).*(BI(n+1, k)))	""		a(n) = sum(k=0, n, 5^(n-k)*binomial(n, k)*binomial(n+1, k))	_	_	_
+A386882	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(n, k)).*(BI(n+4, k)))	""		a(n) = sum(k=0, n, 2^k*binomial(n, k)*binomial(n+4, k))	_	_	_
+A386976	holos	0	[0,64,24,4,-1]	1,6,72	0	0
+A387038	holos	0	[0,8,55,145,5,5,-1]	1,2,57,474,3004	0	0
+A387778	holos	0	[0,1,-3,1,-1,3,-1]	0,1,4,10,27,72	0	0
+A387779	holos	0	[0,1,-3,1,-1,3,-1]	1,2,4,11,28	0	0
+A387833	holos	0	[0,1,-2,1,-3,6,-3,3,-6,3,-1,2,-1]	0,-1,0,3,0,15,48,63,128,243,320,495	0	0
+A387905	holos	0	[0,16,-65,740,130,5,-1]	1,7,254,3004,53143	0	0
+A387906	holos	0	[0,16,-65,740,130,5,-1]	1,22,474,6008,107883	0	0
+A387914	lambdan	1	n -> new Q(BI(2*n + 4, n + 3).*(3), ZV(n + 4)).-(QV(n + 2).*(n + 3)./(2)).num().-(1)
+A387928	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(2*n, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(2*n, k))	_	_	_
+A387929	lambdan	0	n -> SU(0, n, k -> ZV(3).^(n-k).*(BI(n, k)).*(BI(2*n, k)))	""		a(n) = sum(k=0, n, 3^(n-k)*binomial(n, k)*binomial(2*n, k))	_	_	_
+A387930	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(3*n, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(3*n, k))	_	_	_
+A387931	lambdan	0	n -> SU(0, n, k -> ZV(3).^(n-k).*(BI(n, k)).*(BI(3*n, k)))	""		a(n) = sum(k=0, n, 3^(n-k)*binomial(n, k)*binomial(3*n, k))	_	_	_
+A387932	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(4*n, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(4*n, k))	_	_	_
+A387933	lambdan	0	n -> SU(0, n, k -> ZV(3).^(n-k).*(BI(n, k)).*(BI(4*n, k)))	""		a(n) = sum(k=0, n, 3^(n-k)*binomial(n, k)*binomial(4*n, k))	_	_	_
+A388045	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(n, k)).*(BI(3*n+1, k)))	""		a(n) = sum(k=0, n, 2^k*binomial(n, k)*binomial(3*n+1, k))	_	_	_
+A388046	lambdan	0	n -> SU(0, n, k -> Z2(k).*(BI(n, k)).*(BI(4*n+1, k)))	""		a(n) = sum(k=0, n, 2^k*binomial(n, k)*binomial(4*n+1, k))	_	_	_
+A388047	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(n+1, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(n+1, k))	_	_	_
+A388048	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(2*n+1, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(2*n+1, k))	_	_	_
+A388049	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(3*n+1, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(3*n+1, k))	_	_	_
+A388050	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(4*n+1, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(4*n+1, k))	_	_	_
+A388053	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(ZV(n).^(2).+(k).+(1), n)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n^2+k+1, n))	_	_	_
+A388060	lambdan	0	n -> SU(0, n, k -> ZV(4).^(k).*(BI(n, k)).*(BI(n+1, k)))	""		a(n) = sum(k=0, n, 4^k*binomial(n, k)*binomial(n+1, k))	_	_	_
+A388061	lambdan	0	n -> SU(0, n, k -> ZV(5).^(k).*(BI(n, k)).*(BI(n+1, k)))	""		a(n) = sum(k=0, n, 5^k*binomial(n, k)*binomial(n+1, k))	_	_	_
+A388067	mulr	1	(p, e) -> ZV((e/2 + 1)*(e/2 + 2)/2)	Multiplicative sequence a(n) with a(p^e) = (1+floor(e/2)) * (2+floor(e/2)) / 2 for prime p and e >= 0.	nonn,easy,mult,new	1..100	nyi	_Werner Schulte_
+A388129	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(n, k)).*(BI(2*n+1, k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(n, k)*binomial(2*n+1, k))	_	_	_
+A388130	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(n, k)).*(BI(3*n+1, k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(n, k)*binomial(3*n+1, k))	_	_	_
+A388131	lambdan	0	n -> SU(0, n, k -> Z2(n-k).*(BI(n, k)).*(BI(4*n+1, k)))	""		a(n) = sum(k=0, n, 2^(n-k)*binomial(n, k)*binomial(4*n+1, k))	_	_	_
+A388133	lambdan	0	n -> SU(0, n, k -> ZV(3).^(n-k).*(BI(n, k)).*(BI(2*n+1, k)))	""		a(n) = sum(k=0, n, 3^(n-k)*binomial(n, k)*binomial(2*n+1, k))	_	_	_
+A388134	lambdan	0	n -> SU(0, n, k -> ZV(3).^(n-k).*(BI(n, k)).*(BI(3*n+1, k)))	""		a(n) = sum(k=0, n, 3^(n-k)*binomial(n, k)*binomial(3*n+1, k))	_	_	_
+A388135	lambdan	0	n -> SU(0, n, k -> ZV(3).^(n-k).*(BI(n, k)).*(BI(4*n+1, k)))	""		a(n) = sum(k=0, n, 3^(n-k)*binomial(n, k)*binomial(4*n+1, k))	_	_	_
+A388202	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(n+2, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(n+2, k))	_	_	_
+A388203	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(n+3, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(n+3, k))	_	_	_
+A388204	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(n, k)).*(BI(n+4, k)))	""		a(n) = sum(k=0, n, 3^k*binomial(n, k)*binomial(n+4, k))	_	_	_
+A388205	lambdan	0	n -> SU(0, n, k -> ZV(4).^(k).*(BI(n, k)).*(BI(n+2, k)))	""		a(n) = sum(k=0, n, 4^k*binomial(n, k)*binomial(n+2, k))	_	_	_
+A388206	lambdan	0	n -> SU(0, n, k -> ZV(4).^(k).*(BI(n, k)).*(BI(n+3, k)))	""		a(n) = sum(k=0, n, 4^k*binomial(n, k)*binomial(n+3, k))	_	_	_
+A388207	lambdan	0	n -> SU(0, n, k -> ZV(4).^(k).*(BI(n, k)).*(BI(n+4, k)))	""		a(n) = sum(k=0, n, 4^k*binomial(n, k)*binomial(n+4, k))	_	_	_
+A388530	poly	0	"[1],[1,1],[0,0,1]"	"p1,^4,p2,+,n,^"
+A388531	poly	0	"[1],[1,1],[0,0,1]"	"p1,^5,p2,+,n,^"
+A388532	polyx	0	"[1],[1,1],[0,0,1]"	"x,p1,^5,p2,+,/,rev,x,/"	1	0
+A388533	holos	0	[[0],[-210,1055,-1215,370],[192,-1248,1648,-592],[648,-3520,5408,-2368],[0,190,-528,296]]	1	0	0
+A388534	holos	0	[[0],[64914,-581963,1810183,-2574023,1810834,-606050,76105],[-56010,565153,-1962184,3023537,-2268666,806190,-108020],[-2400,21851,51149,-225749,242989,-102570,14730],[-266160,2496477,-8551551,13917322,-11502068,4633310,-716860],[0,-60678,390015,-872499,870063,-395280,66285]]	1	0	0
+A388535	holos	0	[[0],[16291493771400,-220215108492270,1167310494276423,-3272467266457565,5459168947177610,-5730569830942260,3867595682744904,-1668065955784110,442135663436190,-65270104925695,4085985195373],[-13820658123600,199005222124620,-1124343071036016,3342220453038827,-5864067405968362,6426003603680532,-4501609488443655,2007382024919388,-548928918875853,83558091910513,-5399853226394],[-52291915200,940795641810,630149016879,-54869630717892,206056878683972,-339199276432092,305784833605839,-160921990543848,49095659790543,-7999337208558,534210078547],[-1039512171600,17630955877320,-68617263325950,115186498946545,-86165284667140,4257773618340,41897826053265,-33050269778220,11844686823315,-2089792478185,144381102310],[-82836500418000,1148913940225950,-6388921750289295,19092820548741565,-34384209966086240,39368265020872440,-29247327220344960,14008887349886910,-4161261399399210,695063863861835,-49739289745795],[0,-15486343839720,165712998414456,-701809623337080,1576064108467640,-2098682999461080,1737381841098408,-901567778661720,284551739438160,-49802531222400,3696156219136]]	1	0	0
+A388536	poly	0	"[1],[1,1],[0,0,1]"	"p1,^6,x,+,p2,+,n,^"
+A388537	poly	0	"[1],[1,1],[0,0,1]"	"p1,^6,p2,+,n,^"
+A388538	polyx	0	"[1],[1,1],[0,0,1]"	"x,p1,^6,p2,+,/,rev,x,/"	1	0
+A388542	decexp	0	() -> CR.E.^(-8)
+A388543	decexp	0	() -> CR.E.^(-9)
+A388544	decexp	0	() -> CR.E.^(-10)
+A388545	decexp	0	() -> CR.PI.^(-9)
+A388546	decexp	0	() -> CR.PI.^(-10)
+---- 2025-09-21 22:15:41
+A373750	holos	0	[0,-1,0,0,0,2,0,0,0,-1]	0,0,1,1,0,4,3,2,0,7	0	0
+A386709	holos	1	[0,-1,1,0,-1,1,1,-1]	0,0,0,1,1,2,2,3,4	0	0
+A387780	holos	0	[0,1,-3,1,-1,3,-1]	1,4,12,31,82	0	0
+---- 2025-09-21 22:26:17
+A388409	holos	0	[[0],[-4,-4,4,4],[2,0,-12,-8],[0,0,2,1]]	1	0	0
+A388410	holos	0	[[0],[-24,-4,20,8],[6,-26,-48,-16],[0,3,7,2]]	1	0	0
+A388411	holos	0	[[0],[-24,4,16,4],[0,-36,-36,-8],[0,4,5,1]]	1	0	0
+A388412	holos	0	[[0],[-9,-9,9,9],[3,1,-15,-10],[0,0,2,1]]	1	0	0
+A388413	holos	0	[[0],[-54,-9,45,18],[12,-28,-60,-20],[0,3,7,2]]	1	0	0
+A388414	holos	0	[[0],[-54,9,36,9],[6,-41,-45,-10],[0,4,5,1]]	1	0	0
+---- 2025-09-21 22:29:46
+A160945	filnum	1	2	k -> k % Functions.REVERSE.i(k - 1) == 0	Numbers k that are multiples of the reversal of k-1.	nonn,base	1..32	nyi	_Claudio Meller_
+A160948	filnum	1	2	k -> k % Functions.DIGIT_SUM.i(k - 1) == 0	Numbers n that are multiples of the digital sum of n-1.	nonn,base	1..1000	nyi	_Claudio Meller_
+---- 2025-09-21 22:40:29

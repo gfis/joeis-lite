@@ -1,0 +1,102 @@
+---- 2025-09-14 22:09:04
+A095048	lambdan	1	n -> Functions.DISTINCT_DIGIT_COUNT.z(D037278(n))
+A119922	cofract	0	new A119923()	Continued fraction expansion of the value of Minkowskis question mark function at 6/Pi^2.	cofr,nonn	0..99	nyi	Joseph Biberstine (jrbibers(AT)indiana.edu)
+A119924	cofract	0	new A119925()	Continued fraction expansion of the value of Minkowskis question mark function at Pi.	cofr,nonn	0..40	nyi	Joseph Biberstine (jrbibers(AT)indiana.edu)
+A119926	cofract	0	new A119927()	Continued fraction expansion of the value of Minkowskis question mark function at 1/Pi.	cofr,nonn	0..45	nyi	Joseph Biberstine (jrbibers(AT)indiana.edu)
+A119928	cofract	0	new A119929()	Continued fraction expansion of the value of Minkowskis question mark function at Khinchin's constant (X002210).	cofr,nonn	0..92	nyi	Joseph Biberstine (jrbibers(AT)indiana.edu); corrected Jun 04 20
+A120028	cofract	0	new A120029()		Continued fraction expansion of the value of Minkowskis question mark function at Levy's constant (Exp[Pi^2/(12*Log[2])], A086702).	cofr,nonn	0..80	nyi	Joseph Biberstine (jrbibers(AT)indiana.edu)
+A132094	polyz	0	"[0,-1],[0,0,1]"	"p1,x,cos,1,-,2,*,/"	2	1	0	2
+A132095	polyz	0	"[0,-1],[0,0,1]"	"p1,x,cos,1,-,2,*,/"	2	5	0	2
+A172074	cofract	0	new DecimalExpansionSequence(CR.valueOf(12500).sqrt().add(50))	Continued fraction expansion of sqrt(12500)+50 = 100*phi, where phi=(sqrt(5)+1)/2 is the golden ratio.	cofr,nonn,nice,easy	0..62	nyi	_Shane Findley_
+A190998	sintrif	1	(term, n) -> Functions.DIGIT_SUM_ROOT.z(term)	""	new A037278()	Digital root of concatenation of all divisors of n (A037278).
+A231817	sintrif	1	(term, n) -> Functions.DIGIT_PRODUCT_ROOT.z(term)	""	new A037278()	Multiplicative digital root of concatenation of all divisors of n (A037278).
+A241593	multia	0	"-1, 0, 1, 12, -432, 93312"	(self, n) -> self.a(n - 3).*(144).*(self.a(n - 1)).+(self.a(n-2).^(2).*(432))./(self.a(n - 4))
+A241594	multia	0	"1, 0, -1, 1, 8, 57, -455"	(self, n) -> self.a(n - 4).*(8).*(self.a(n - 1)).+(self.a(n - 3).*(57).*(self.a(n - 2))).negate()./(self.a(n - 5))	-(8*a(n-4)*a(n-1) + 57*a(n-3)*a(n-2))/a(n-5)
+A241595	multia	0	"-1, 0, 1, -1, -8, 57, 455"	(self, n) -> self.a(n - 4).*(8).*(self.a(n - 1)).-(self.a(n - 3).*(57).*(self.a(n - 2))).negate()./(self.a(n - 5))	-(8*a(n-4)*a(n-1) - 57*a(n-3)*a(n-2))/a(n-5)
+A241672	filtpos	1	1	new A035014()	v -> Functions.LEADING_DIGIT.i(v) == 4	Numbers k such that J035014(k) begins with a 4. nonn,base       1..69   nyi     _J. Lowell_
+A241687	filtpos	1	1	new A035014()	v -> Functions.LEADING_DIGIT.i(v) == 3	Numbers k such that J035014(k) begins with a 3. nonn,base
+A241755	rambdan	0	n -> new Q(BI(2*n, n).^(2)).*(BI(new Q(2*n - 1, 2), 2*n)).*(new Q(-1, 4).^(n))
+A241756	rambdad	0	A241755
+A241764	filnum	1	4	k -> SP(k) && SP(k - 3)	Semiprimes sp such that sp-3 is also semiprime.	nonn	1..1100	nyi	_K. D. Bajpai_
+A241846	filnum	1	0	k -> Functions.DIGIT_SUM.z(k).^(3).equals(Functions.DIGIT_PRODUCT.z(k).^(2))	Numbers for which the cube of the sum of the digits is equal to the square of the product of their digits.	nonn,base,fini,full	1..1419	nyi	_Michel Lagneau_
+A241885	polyx	0	"[1]"	"x,x,exp,1,-,/,^1/2"	1	1
+A241977	filnum	0	1	k -> ZV(10).^(Functions.PHI.l(k)).mod(ZV(k).*(k)).equals(Z.ONE)	Numbers n such that 6^phi(n) == 1 (mod n^2), where phi(n) is Eulers totient function.	nonn,hard	1..78	nyi	_Felix Fr√∂hlich_
+A241978	filnum	0	1	k -> ZV( 6).^(Functions.PHI.l(k)).mod(ZV(k).*(k)).equals(Z.ONE)	Numbers n such that 10^phi(n) == 1 (mod n^2), where phi(n) is Eulers totient function.	nonn,hard	1..78	nyi	_Felix Fr√∂hlich_
+A242002	lambdan	1	n -> SU(1, n, k -> Z2(k).*(PP(k) ? -1 : 1))	Sum_{k=1..n} (-1)^isprime(k)*2^k.	sign	1..1000	nyi	_M. F. Hasler_
+A242190	filter	1	new A002476()	p -> { final int[] dc = ZUtils.digitCounts(p); return dc[0] + dc[2] + dc[4] + dc[5] + dc[6] + dc[8] == 0; }	Primes congruent to 1 (mod 3) which only have the odd digits {1, 3, 7, 9}.	nonn,easy	1..10000	nyi	_Robert G. Wilson v_
+A242260	filter	1	new A000040()	p -> SP(p.^(2).-(2))	Primes p such that p^2-2 is semiprime.	nonn	1..10000	nyi	_Zak Seidov_
+A242273	filnum	1	1	k -> SP(Z2(k).*(k).-(1))	Numbers n such that n*2^n - 1 is a semiprime.	nonn,more,hard	1..47	nyi	_Vincenzo Librandi_
+A242312	sintrif	0	(term, n) -> Functions.DIGIT_SUM_ROOT.z(term)	""	new A007318()	Digital roots in Pascals triangle, triangle read by rows, 0 <= k <= n.	nonn,tabl,base	0..125	nyi	_Reinhard Zumkeller_
+A242473	lambdan	1	n -> { final long p = Functions.PRIME.l(n); return BI(2*p - 1, p - 1).mod(ZV(p).^(4)); }
+A242517	filter	1	new A000040()	p -> PP(p.-(2)) && PP(p.^(3).-(2)) && PP(p.^(5).-(2))	List of primes p for which p^n - 2 is prime for n = 1, 3, and 5.	nonn,easy	1..10000	nyi	_Abhiram R Devesh_
+A242625	filter	1	new A000040()	p -> Predicates.SQUARE.is(PM(p).+(p))	Primes p such that p + prime(p) is a square.	nonn	1..100	nyi	_Zak Seidov_
+A242643	lambdan	1	n -> SD(n, d -> d <= 6 ? ZV(d).*(d) : ZV(6*d))	a(n) = Sum_{d|n, d <= 6} d^2 + 6*Sum_{d|n, d>6} d.	nonn	1..1000	nyi	_N. J. A. Sloane_
+A242653	trilambn	0	0	0	(n, k) -> (n&1) == (k&1) ? FA((n + k)/2)./(FA(k)) : ZV(0)	if n,k have same parity, otherwise 0.	nonn,tabl,easy	0..10010	nyi	_N. J. A. Sloane_
+A242702	filter	1	new A001358()	(k, p) -> SP(p.+(1).*(p).+(41))	Semiprimes n such that n^2+n+41 is also semiprime.	nonn	1..10000	nyi	_K. D. Bajpai_
+A242708	filter	1	new A000040()	(k, p) -> SP(p.+(1).*(p).+(41))	Primes p such that p^2 + p + 41 is semiprime.	nonn	1..10000	nyi	_K. D. Bajpai_
+A242944	filter	1	new A000040()	(k, p) -> PP(Z2(k).+(p))	Primes prime(k) such that 2^k + prime(k) is also prime.	nonn,more	1..28	nyi	_Robert G. Wilson v_
+A242958	filnum	0	1	k -> ZV( 3).^(Functions.PHI.l(k)).mod(ZV(k).*(k)).equals(Z.ONE)	Numbers n such that 3^phi(n) == 1 (mod n^2), where phi(n) is Eulers totient function.	nonn,hard	1..78	nyi	_Felix Fr√∂hlich_
+A242959	filnum	0	1	k -> ZV( 5).^(Functions.PHI.l(k)).mod(ZV(k).*(k)).equals(Z.ONE)	Numbers n such that 5^F000010(n) == 1 (mod n^2).	nonn	1..479	nyi	_Felix Fr√∂hlich_
+A242960	filnum	0	1	k -> ZV( 7).^(Functions.PHI.l(k)).mod(ZV(k).*(k)).equals(Z.ONE)	Numbers n such that 7^F000010(n) == 1 (mod n^2).	nonn	1..425	nyi	_Felix Fr√∂hlich_
+A242987	filnum	1	1	k -> { final String ks = Integer.toString(k); return PP(new Z("1" + ks + ks)); }	Numbers n such that concatenating 1 with two instances of n produces a prime.	nonn,base,easy	1..10000	nyi	_Harvey P. Dale_
+A242988	filnum	1	1	k -> { final String ks = Integer.toString(k); return PP(new Z("1" + ks + ks + ks)); }	Numbers k such that concatenating 1 with three instances of k produces a prime.	nonn,base,easy	1..10000	nyi	_Harvey P. Dale_
+A242989	filnum	1	1	k -> { final String ks = Integer.toString(k); return PP(new Z("1" + ks + ks + ks + ks)); }	Numbers k such that concatenating 1 with four instances of k produces a prime.	nonn,base,easy	1..10000	nyi	_Harvey P. Dale_
+A243283	sintrif	1	(term, n) -> term.+(1)	""	new A243282()	One more than the partial sums of the characteristic function of J070003.	nonn,changed	1..10000	nyi	_Antti Karttunen_
+A243367	filter	1	new A000040()	p -> PP(p.^(2).+(10))	Primes p such that p^2+10 is prime.	nonn	1..54	nyi	_Zak Seidov_
+A243425	polyxa	0	"[1]"	"x,x,B,1,-,/n,exp,<1,rev,/,sqrt"	1	0	new A005260()
+A243426	polyx	0	"[1],[-1,1]"	"p1,A,<1,rev,x,/,+,x,A,/,rev,x,/,+"	1	0
+A243428	filter	1	new A001358()	(k, v) -> SP(v.+(Z2(k)))	such that J001358(n) + 2^n is also a semiprime.	nonn,less	1..22	nyi	_Juri-Stepan Gerasimov_
+A243457	filter	1	new A000040()	p -> PP(Functions.REVERSE.z(p).-(2))	Primes p such that (p reversed)-2 is also a prime.	nonn,base	1..1000	nyi	_Vincenzo Librandi_
+A243458	filter	1	new A000040()	p -> PP(Functions.REVERSE.z(p).-(3))	Primes p such that (p reversed)-3 is also a prime.	nonn,base	1..1000	nyi	_Vincenzo Librandi_
+A243459	filter	1	new A000040()	p -> PP(Functions.REVERSE.z(p).-(5))	Primes p such that (p reversed)-5 is also a prime.	nonn,base	1..1000	nyi	_Vincenzo Librandi_
+A243460	filter	1	new A000040()	p -> PP(Functions.REVERSE.z(p).-(7))	Primes p such that (p reversed)-7 is also a prime.	nonn,base	1..1000	nyi	_Vincenzo Librandi_
+A243461	filter	1	new A000040()	p -> PP(Functions.REVERSE.z(p).-(9))	Primes p such that (p reversed)-9 is also a prime.	nonn,base	1..1000	nyi	_Vincenzo Librandi_
+A243471	filter	1	new A000040()	p -> PP(p.^(5).*(p.-(1)).+(1))	Primes p such that p^6 - p^5 + 1 is prime.	nonn	1..5457	nyi	_K. D. Bajpai_
+A243472	filter	1	new A000040()	p -> PP(p.^(5).*(p.-(1)).-(1))	Primes p such that p^6 - p^5 - 1 is prime.	nonn	1..4699	nyi	_K. D. Bajpai_
+A243490	filtpos	0	0	new A069787()	(k, v) -> v.equals(ZV(k))	Fixed points of J069787: Numbers n such that J069787(n) = n.	nonn,changed	0..7059	nyi	_Antti Karttunen_
+A243522	filter	1	new A000040()	p -> { final Z p2 = p.^(5).*(p.-(1)); return PP(p2.-(1)) && PP(p2.+(1)); }	p such that p^6 - p^5 + 1 and p^6 - p^5 - 1 are both primes.	nonn	1..1785	nyi	_K. D. Bajpai_
+A243534	prepend	1	new A004022()	1
+A243535	filtpos	1	1	new A095048()	v -> v.equals(ZV(2))
+A243536	filtpos	1	1	new A095048()	v -> v.equals(ZV(3))
+A243537	filtpos	1	1	new A095048()	v -> v.equals(ZV(4))
+A243538	filtpos	1	1	new A095048()	v -> v.equals(ZV(5))
+A243539	filtpos	1	1	new A095048()	v -> v.equals(ZV(6))
+A243540	filtpos	1	1	new A095048()	v -> v.equals(ZV(7))
+A243541	filtpos	1	1	new A095048()	v -> v.equals(ZV(8))
+A243542	filtpos	1	1	new A095048()	v -> v.equals(ZV(9))
+A243630	filter	1	new A000040()	p -> PP(p.^(3).*(2).-(3))	Primes p such that 2*p^3 - 3 is also prime.	nonn,easy,less	1..1000	nyi	_Vincenzo Librandi_
+A243734	filter	1	new A000040()	p -> PP(p.+(4)) && PP(p.^(2).+(4)) && PP(p.^(3).+(4))	Primes p for which p + 4, p^2 + 4 and p^3 + 4 are primes.	nonn,easy	1..1000	nyi	_Abhiram R Devesh_
+A243780	filter	1	new A000040()	p -> PP(p.+(4)) && PP(p.^(3).+(4)) && PP(p.^(5).+(4))	Primes p for which p^i + 4 is prime for i = 1, 3 and 5.	nonn,easy	1..10000	nyi	_Abhiram R Devesh_
+A243817	filter	1	new A000040()	p -> PP(p.-(4)) && PP(p.^(3).-(4))	Primes p for which p - 4 and p^3 - 4 are primes.	nonn,easy	1..1000	nyi	_Abhiram R Devesh_
+A243818	filter	1	new A000040()	p -> PP(p.-(4)) && PP(p.^(3).-(4)) && PP(p.^(5).-(4))	Primes p for which p^i - 4 is prime for i = 1, 3 and 5.	nonn,easy	1..10000	nyi	_Abhiram R Devesh_
+A243844	filter	1	new A000040()	p -> PP(p.*(p.^(2).+(p.^(4)).+(1)).+(2))	Primes p such that p^5 + p^3 + p + 2 is prime.
+A243859	filter	1	new A000040()	p -> PP(p.+(4)) && PP(p.^(3).+(4)) && PP(p.^(5).+(4)) && PP(p.^(7).+(4))	Primes p for which p^i + 4 is prime for i = 1, 3, 5 and 7.	nonn	1..141	nyi	_Abhiram R Devesh_
+A243861	filter	1	new A000040()	p -> PP(p.-(4)) && PP(p.^(3).-(4)) && PP(p.^(5).-(4)) && PP(p.^(7).-(4))	Primes p for which p^i - 4 is prime for i = 1, 3, 5 and 7.	nonn,easy	1..100	nyi	_Abhiram R Devesh_
+A243886	filter	1	new A000040()	(k, p) -> PP(new Z(k.toString() + p.toString())) && PP(new Z(p.toString() + k.toString()))	Primes p = prime(n): such that p.n and n.p both are prime, where (.) indicates concatenation.	nonn,base	1..10000	nyi	_K. D. Bajpai_
+A243897	filter	1	new A000040()	p -> PP(p.*(p.^(4).+(p.^(2)).+(1)).-(2))	p such that p^5 + p^3 + p - 2 is prime.	nonn,easy	1..10000	nyi	_Abhiram R Devesh_
+A243898	filter	1	new A000040()	p -> PP(p.*(p.^(4).+(p.^(2)).+(1)).+(4))	p such that p^5 + p^3 + p + 4 is prime.	nonn,easy	1..10000	nyi	_Abhiram R Devesh_
+A243899	filter	1	new A000040()	p -> PP(p.*(p.^(4).+(p.^(2)).+(1)).-(4))	p such that p^5 + p^3 + p - 4 is prime.	nonn,easy	1..10000	nyi	_Abhiram R Devesh_
+A243900	filter	1	new A000040()	p -> { final Z p2 = p.*(p.^(4).+(p.^(2)).+(1)); return PP(p2.+(4)) && PP(p2.-(4)); }	p such that p^5 + p^3 + p - 4 and p^5 + p^3 + p + 4 are primes.	nonn	1..1000	nyi	_Abhiram R Devesh_
+A243954	polyxa	0	"[1]"	"x,x,B,<1,rev,/"	1	1	egf(new A000312())
+A243962	filter	1	new A000040()	p -> PP(p.*(10).+(1)) && PP(p.*(100).+(1)) && PP(p.*(1000).+(1))	Primes p such that 10p + 1, 100p + 1 and 1000p + 1 are also primes.	nonn	1..10000	nyi	_K. D. Bajpai_
+A244003	arrlamb	0	0	0	-1	(n,k) -> ZV(k).^(FI(n))	square array A(n,k), n>=0, k>=0, read by antidiagonals.	nonn,tabl	0..20	nyi
+A244035	lambdan	1	n -> RD(n, d -> RD(d, t -> new Q(MU(d/t).*(BI(3*t, t)), ZV(d).*(3*d)))).num()	Sum_{d|n} Sum{t|d} moebius(d/t)*binomial(3*t,t)/(3*d^2).	nonn	1..26	nyi	_N. J. A. Sloane_
+A244036	lambdan	1	n -> RD(n, d -> RD(d, t -> new Q(MU(d/t).*(BI(3*t, t)).*(n/d), ZV(d).*(3*d)))).num()	Sum_{d|n} Sum{t|d} (n/d)*moebius(d/t)*binomial(3*t,t)/(3*d^2).	nonn	1..26	nyi	_N. J. A. Sloane_
+A244042	lambdan	0	n -> new Z(Integer.toString(n, 3).replace('2', '0'), 3)	In ternary representation of n, replace 2's with 0's.	nonn,base,look	0..6560	nyi	_Joonas Pohjonen_
+A244083	rambdan	0	n -> QV(n).^(n)./(FA(2*n))	a(n) = numerator( n^n/(2*n)! ).	nonn,frac	0..100	nyi	_Vincenzo Librandi_
+A244084	rambdad	0	A244083	a(n) = denominator( n^n/(2*n)! ).	nonn,frac	0..100	nyi	_Vincenzo Librandi_
+A245529	filnum	0	1	k -> ZV(12).^(Functions.PHI.l(k)).mod(ZV(k).*(k)).equals(Z.ONE)	Numbers n such that 12^F000010(n) == 1 (mod n^2).	nonn	1..425	nyi	_Felix Fr√∂hlich_
+A352179	filnum	1	1	k -> ZV(14).^(k).toString().startsWith("14")	Numbers k such that the decimal expansion of 14^k begins with 14.
+A377523	cofract	0	new A377522()		Continued fraction expansion of 1/3 - sqrt(3)/(4*Pi).	nonn,cofr	0..81	nyi	_Joshua Searle_
+A387455	holos	0	[0,-16,20,16,-25,1,5,-1]	0,1,5,30,130,571,2335	0	0
+A387868	holos	0	[0,4,3,3,-1]	1,2,11	0	0
+A387869	holos	0	[0,16,-4,4,-1]	1,1,6	0	0
+A387870	holos	0	[0,64,24,4,-1]	1,2,36	0	0
+A387871	holos	0	[0,4,15,20,-10,5,-1]	1,1,2,22,127	0	0
+A387872	holos	0	[0,8,55,145,5,5,-1]	1,1,22,254,1574	0	0
+A387873	holos	0	[0,16,-65,740,130,5,-1]	1,2,127,1574,25773	0	0
+A387874	holos	0	[0,36,15,22,-15,6,-1]	1,1,1,8,85	0	0
+A387875	holos	0	[0,216,189,-19,7,-1]	1,1,8,211	0	0
+A387876	holos	0	[0,1296,1359,1366,69,6,-1]	1,1,85,1730,18565	0	0
+A387877	holos	0	[0,7776,-7155,7160,615,6,-1]	1,2,463,9829,349525	0	0
+A387878	holos	0	[0,-1728,1691,38,-1]	1,211,9829	0	0

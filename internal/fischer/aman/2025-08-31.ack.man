@@ -1,0 +1,102 @@
+---- 2025-08-31 22:44:26
+A110885	filter	1	new A006972()	v -> v.mod(12) != 11	Lucas-Carmichael numbers that are not congruent to 11 (mod 12).	nonn	1..333	nyi	_Walter Kehowski_
+A153144	filnum	1	1	k -> !PP(2*k + 19)	Numbers n such that 2*n+19 is not a prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153238	filnum	1	1	k -> !PP(2*k + 3)	Numbers k such that 2*k + 3 is composite.	nonn,easy	1..10000	nyi	_Vincenzo Librandi_
+A153584	filnum	0	1	k -> PP(CR.E.+(CR.PI).^(k).floor())	Integers n such that floor((e + Pi)^n) is prime.	nonn	1..6	nyi	_Dmitry Kamenetsky_
+A153590	filter	1	new A000040()	p -> PP(p.^(2).+(p.*(3)).+(1))	Primes p such that p^2 + 3p + 1 is also prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A153591	filter	1	new A000040()	p -> PP(p.^(2).+(p).*(6).+(1))	Primes p such that 6p^2+6p+1 is also prime.	nonn,easy	1..1000	nyi	_Vincenzo Librandi_
+A174416	filnum	1	1	k -> !PP(new Z(Integer.toString(k, 2)))
+A174417	filter	1	new A007088().skip(1)	v -> !PP(v)
+A174420	lambdan	0	n -> { final Z aa = new Q(3, 2).^(n).floor(); final Z n2 = Z2(n); final Z bb = ZV(3).^(n).-(n2.*(aa)); return n2.-(aa).-(bb).-(2); }	Let A(n) = floor((3/2)^n), B(n)=3^n-2^n*A(n); then a(n)=2^n-A(n)-B(n)-2.	sign	0..39	nyi	_N. J. A. Sloane_
+A174428	trilambn	1	1	1	(n, k) -> SIGMA(n).modZ(k)
+A174430	trilambn	0	0	0	(n, m) -> GCD(FI(n), FI(m))
+A174433	trilambn	1	1	1	(n, k) -> PM(n).mod(D001223(k))
+A174541	lambdan	1	n -> n <= 1 ? ZV(0) : (Predicates.TRIANGULAR.is(n) || Predicates.TRIANGULAR.is(n - 1) || Predicates.SQUARE.is(Functions.TRIANGULAR.z(n)) || Predicates.SQUARE.is(Functions.TRIANGULAR.z(n).-(1)) ? ZV(1) : ZV(2))	Baron Munchhausen s Sequence.
+A174555	trilambn	0	0	0	(n, m) -> SU(0, n, k -> S2(n, k).*(BI(n, k)).*(S1(n - k, m).*(Z_1(m - k)).+(S1(n - k, n - m).*(Z_1(n - m - k)))))	Sum[StirlingS2[n, k]*StirlingS1[n - k, m]* Binomial[n, k]*(-1)^(m - k), {k, 0, n}];t[n,m]=s[n,m]+s[n,n-m].	sign,tabl,uned	0..42	nyi	_Roger L. Bagula_
+A174557	trilambn	1	1	1	(n, k) -> n == k ? ZV(1) : ZV(n/k).negate()	with T(n, n) = 1, read by rows.	sign,tabl	1..30	nyi	_Mats Granvik_, _Paul D. Hanna_
+A214488	parmof3	1	A214218	'1'	'3'
+A214521	parmof3	1	A214218	'1'	'4'
+A214522	parmof3	1	A214218	'1'	'5'
+A214524	parmof3	1	A214218	'1'	'6'
+A214530	parmof3	1	A214218	'1'	'7'
+A214531	parmof3	1	A214218	'1'	'8'
+A214532	parmof3	1	A214218	'1'	'9'
+A216925	filter	1	new A006972()	v -> Functions.OMEGA.i(v) == 3
+A216926	filter	1	new A006972()	v -> Functions.OMEGA.i(v) == 4
+A216927	filter	1	new A006972()	v -> Functions.OMEGA.i(v) == 5
+A217002	filter	0	new A006972()	v -> Functions.OMEGA.i(v) == 6
+A217003	filter	0	new A006972()	v -> Functions.OMEGA.i(v) == 7
+A217091	filter	0	new A006972()	v -> Functions.OMEGA.i(v) == 8
+A277580	insect2	0	new A006753()	new A006972()	.	nonn,base	1..22	nyi	_Max Alekseyev_
+A292021	filter	0	new A006972()	v -> v.mod(4) == 1	Lucas-Carmichael numbers that are congruent to 1 (mod 4).	nonn	1..198	nyi	_Amiram Eldar_
+A292568	multia	0	"1"	(self, n) -> { Z a1 = self.a(n - 1); final Z z1000 = ZV(1000); Z sum = a1; while (!a1.isZero()) { sum = sum.+(a1.mod(z1000)); a1 = a1./(z1000); } return sum; }	a(n) = a(n-1) + sum of base-1000 digits of a(n-1), a(0)=1.
+A292571	filter	0	new A006972()	v -> Predicates.SQUARE.is(Functions.DEDEKIND_PSI.z(v))	Lucas-Carmichael numbers whose Dedekind psi value is a square.	nonn	1..241	nyi	_Amiram Eldar_
+A292572	filter	0	new A006972()	v -> Predicates.CUBE.is(Functions.DEDEKIND_PSI.z(v))	Lucas-Carmichael numbers whose Dedekind psi value is a cube.	nonn	1..89	nyi	_Amiram Eldar_
+A306628	polyxa	1	"[1]"	"x,B,log"	0	1	new A000312()
+A308458	polyxa	1	"[1]"	"x,B,/n!,log"	0	1	new A076113()
+A308499	polyxa	0	"[1]"	"x,B,/n,1,+,log"	0	1	new A000292()
+A316862	polya	0	"[1]"	"1,x,B,/"	new A000442()
+A349028	filter	0	new A006972()	v -> Functions.OMEGA.i(v) == 9
+A349029	filter	0	new A006972()	v -> Functions.OMEGA.i(v) == 10
+A349030	filter	0	new A006972()	v -> Functions.OMEGA.i(v) == 11
+A353186	polyx	0	"[1],A5"	"1,1,x,B,/n,-,/"	0	1
+A353191	polyxa	0	"[1]"	"1,1,x,B,/n,-,/"	0	1	new A008683()
+A353192	polyxa	0	"[1]"	"1,1,x,B,/n,-,/"	0	1	new A000010()
+A375213	filnum	1	0	k -> { if ((k&1) == 0) { final int[] dc = ZUtils.digitCounts(k); return dc[0] + dc[2] + dc[4] + dc[6] + dc[8] == dc[1] + dc[3] + dc[5] + dc[7] + dc[9]; } else { return false; }}	Even numbers with equal numbers of even and odd digits. nonn,base,easy  1..1000 nyi     _Jake L Lande_
+A375214	filnum	1	0	k -> { if ((k&1) == 1) { final int[] dc = ZUtils.digitCounts(k); return dc[0] + dc[2] + dc[4] + dc[6] + dc[8] == dc[1] + dc[3] + dc[5] + dc[7] + dc[9]; } else { return false; }}	Odd numbers with equal numbers of even and odd digits.  nonn,base,easy  1..1000 nyi     _Jake L Lande_
+A383935	holos	0	[[0],[-24,18],[6,-9],[0,1]]	1	0	0
+A383936	holos	0	[[0],[18,-18],[3,-3],[0,1]]	1	0	0
+A383937	holos	0	[[0],[-12,18],[3,-9],[0,1]]	1	0	0
+A385719	polya	0	"[1]"	"x,B,1,x,B,1,-,2,*,3,/,+,sqrt,/"	new A004355()
+A385809	decexp	0	() -> CR.ONE.divide(X376742)
+A386362	holos	0	[[0],[-13,13],[-7,-14],[2,1]]	1	0	0
+A386389	holos	0	[[0],[-17,17],[-9,-18],[2,1]]	1	0	0
+A387026	decexp	1	() -> CR.THREE.divide(CR.FOUR).multiply(CR.valueOf(11).pow(CR.ONE.divide(CR.FOUR)))
+A387248	lambdan	0	n -> ZV(3).*(Functions.CATALAN.z(2*n))./(n + 1)	a(n) = 3/(n + 1) * Catalan(2*n).	nonn,easy,new	0..22	nyi	_Peter Bala_
+A387249	lambdan	0	n -> ZV(10).*(Functions.CATALAN.z(3*n))./(n + 1)	a(n) = 10/(n + 1) * Catalan(3*n).	nonn,easy,new	0..17	nyi	_Peter Bala_
+A387250	lambdan	0	n -> ZV(105).*(Functions.CATALAN.z(4*n))./(n + 1)	a(n) = 105/(n + 1) * Catalan(4*n).	nonn,easy,new	0..14	nyi	_Peter Bala_
+A387264	holos	0	[[0],[-5,1],[21,-5],[-27,10],[20,-10],[-5,5],[0,-1]]	1,0,0,6	0	1
+A387294	decexpr	1	() -> REALS.acos(CR.ONE_THIRD).add(REALS.acos(CR.ONE.subtract(CR.TWO.multiply(CR.THREE.sqrt()).divide(CR.THREE))))
+A387295	decexpr	1	() -> REALS.acos(CR.THREE.sqrt().divide(CR.THREE)).add(REALS.acos(CR.ONE.subtract(CR.TWO.multiply(CR.THREE.sqrt()).divide(CR.THREE))))
+A387320	decexpr	1	() -> REALS.acos(CR.ONE.subtract(CR.TWO.multiply(CR.TWO.add(CR.SQRT2).sqrt())).divide(CR.THREE))
+A387321	decexpr	1	() -> REALS.asec(CR.THREE.sqrt()).add(REALS.acos(CR.ZERO.subtract(CR.SEVEN.add(CR.FOUR.multiply(CR.SQRT2)).subtract(CR.TWO.multiply(CR.valueOf(20).add(CR.valueOf(14).multiply(CR.SQRT2)).sqrt())).divide(CR.THREE).sqrt())))
+A387322	decexpr	0	() -> CR.PI.divide(CR.FOUR).add(REALS.acos(CR.ZERO.subtract(CR.SEVEN.add(CR.FOUR.multiply(CR.SQRT2)).subtract(CR.TWO.multiply(CR.valueOf(20).add(CR.valueOf(14).multiply(CR.SQRT2)).sqrt())).divide(CR.THREE).sqrt())))
+A387323	decexpr	0	() -> REALS.acos(CR.ZERO.subtract(CR.SEVEN.add(CR.FOUR.multiply(CR.SQRT2)).subtract(CR.TWO.multiply(CR.valueOf(20).add(CR.valueOf(14).multiply(CR.SQRT2)).sqrt())).divide(CR.THREE).sqrt()))
+A387337	holos	0	[[0],[2,3,1],[-18,-21,-6],[0,4,1]]	1	0	0
+A387338	holos	0	[[0],[6,5,1],[-45,-33,-6],[0,6,1]]	1	0	0
+A387339	holos	0	[[0],[8,12,4],[-24,-28,-8],[0,4,1]]	1	0	0
+A387340	holos	0	[[0],[24,20,4],[-60,-44,-8],[0,6,1]]	1	0	0
+A387341	holos	0	[[0],[3,1],[-9,-6],[0,1]]	1	0	0
+A387342	holos	0	[[0],[5,1],[-15,-6],[0,1]]	1	0	0
+A387343	holos	0	[[0],[12,4],[-12,-8],[0,1]]	1	0	0
+A387344	holos	0	[[0],[20,4],[-20,-8],[0,1]]	1	0	0
+A387352	filnum	0	0	k -> SIGMA(k).-(2*k).equals(ZV(-32))	Numbers m with deficiency 32: sigma(m) - 2*m = -32.	nonn,new	1..54	nyi	_Max Alekseyev_
+A387362	filnum	1	0	k -> GCDi(ZV(k), PHI(k)) == 1 && GCDi(ZV(k + 2), PHI(k + 2)) == 1	Cyclic numbers k such that k+2 is also a cyclic number.
+A387366	holos	0	[[0],[1,1],[-5,-10],[0,1]]	1	0	0
+A387367	holos	0	[[0],[3,1],[-15,-10],[0,1]]	1	0	0
+A387368	holos	0	[[0],[0,1,1],[-5,-15,-10],[0,2,1]]	1	0	0
+A387369	holos	0	[[0],[2,3,1],[-30,-35,-10],[0,4,1]]	1	0	0
+A387376	lambdan	1	n -> ZV(2).+(ZV(4).^(n)).+(ZV(2*n).*(n - 1))
+A387390	filnum	1	1	k -> { final Z k2 = ZV(28).^(k).+(ZV(3).^(k)); return k2.mod(31) == 0 && PP(k2./(31)); }		
+A387391	lambdan	0	n -> Z2(n).*(49).-(3*n + 18)
+A387392	filnum	1	1	k -> { final Z k2 = ZV(29).^(k).+(ZV(3).^(k)); return k2.mod(32) == 0 && PP(k2./(32)); }		
+A387401	holos	0	[[0],[0,-4,-4],[-2,-6,-4],[0,2,1]]	1	0	0
+A387402	holos	0	[[0],[-8,-12,-4],[-12,-14,-4],[0,4,1]]	1	0	0
+A387403	holos	0	[[0],[-24,-20,-4],[-30,-22,-4],[0,6,1]]	1	0	0
+A387428	holos	0	[[0],[4,-4],[6,-12],[0,1]]	1	0	0	n*a(n) = 6*(2*n-1)*a(n-1) + 4*(n-1)*a(n-2)
+A387439	lambdan	0	n -> ZV(2*n + 1).*(ZV(12 + 11*n).+(ZV(n).^(2).*(93 + 4*n)))./(3)
+A387440	decexp	0	() -> CR.PI./(11).cos()
+A387441	decexp	0	() -> CR.PI./(13).cos()
+A387442	decexp	0	() -> CR.PI./(19).cos()
+A387443	decexp	0	() -> CR.PI./(22).cos()
+A387444	decexp	0	() -> CR.PI./(23).cos()
+A387445	decexp	0	() -> CR.PI./(25).cos()
+A387446	decexp	0	() -> CR.PI./(26).cos()
+A387447	decexp	0	() -> CR.PI./(27).cos()
+A387448	decexp	0	() -> CR.PI./(28).cos()
+A387449	decexp	0	() -> CR.PI./(31).cos()
+A387450	decexp	0	() -> CR.PI./(33).cos()
+A387451	decexp	0	() -> CR.PI./(34).cos()
+A387453	decexp	0	() -> CR.PI./(29).cos()
+A387454	decexp	0	() -> CR.PI./(21).cos()
+A387458	lambdan	1	n->ZV(8*n-17).*(n).+(23).*(4)	a(n) = 4*(23 - 17*n + 8*n^2).	nonn,easy,new	1..40	nyi	_Eric W. Weisstein_

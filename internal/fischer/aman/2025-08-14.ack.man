@@ -1,0 +1,106 @@
+---- 2025-08-14 22:42:39
+A006850	polyxa	0	"[1]"	"x,B,>1,/n!,^2"	1	1	new A000081()
+A091139	polya	0	"[1]"	"1,2,x,B,-,/"	new A075834()
+A101313	polyxa	1	"[1]"	"x,B,1,-,x,B,1,-,exp,*"	0	1	egf(new A000272())
+A128326	polya	0	"[0,1]"	"1,x,B,B,B,+"	new A030266()	regen
+A128328	polya	0	"[1]"	"1,x,B,B,B,B,B,1,+"	new A030266()
+A130524	polyxa	0	"[1]"	"x,B,x,C,*,x,D,*,>1"	1	0	new A007857(), new A000108(), new A001764()
+A130525	polyxa	0	"[1]"	"x,B,x,C,*,>1"	1	0	new A007857(), new A001764()
+A135126	filnum	1	1	k -> { final int s3 = Functions.DIGIT_SUM.i(3, k); return s3 == Functions.DIGIT_SUM.i(3, k) && s3 == Functions.DIGIT_SUM.i(5, k) && s3 == Functions.DIGIT_SUM.i(4, k) && s3 == Functions.DIGIT_SUM.i(6, k); }	3, 4, 5 and 6 all are equal.	nonn,base	1..1400	nyi	_Hieronymus Fischer_
+A135127	filnum	1	0	k -> { final int s3 = Functions.DIGIT_SUM.i(3, k); return s3 == Functions.DIGIT_SUM.i(3, k) && s3 == Functions.DIGIT_SUM.i(5, k) && s3 == Functions.DIGIT_SUM.i(2, k) && s3 == Functions.DIGIT_SUM.i(7, k); }	2, 3, 5 and 7 all are equal.	nonn,base	1..10000	nyi	_Hieronymus Fischer_
+A135128	filnum	1	1	k -> { final int s3 = Functions.DIGIT_SUM.i(3, k); return s3 == Functions.DIGIT_SUM.i(3, k) && s3 == Functions.DIGIT_SUM.i(5, k) && s3 == Functions.DIGIT_SUM.i(2, k) && s3 == Functions.DIGIT_SUM.i(10, k); }	2, 3, 5 and 10 all are equal.	nonn,base	1..700	nyi	_Hieronymus Fischer_
+A135129	filnum	1	1	k -> { final int s3 = Functions.DIGIT_SUM.i(3, k); return s3 == Functions.DIGIT_SUM.i(3, k) && s3 == Functions.DIGIT_SUM.i(5, k) && s3 == Functions.DIGIT_SUM.i(4, k) && s3 == Functions.DIGIT_SUM.i(6, k) && s3 == Functions.DIGIT_SUM.i(7, k); }	3, 4, 5, 6 and 7 all are equal.	nonn,base	1..1700	nyi	_Hieronymus Fischer_
+A140319	multia	0	"1"	(self, n) -> PM(n).^(self.a(n - 1))	Exponential primorial: a(n)=prime(n)^a(n-1), a(0)=1, where prime(n)=A000040(n).
+A159476	polyxa	0	"[1]"	"x,B,<1,/n,exp"	0	1	new A000142()
+A167029	polyx	1	"[1]"	"x,cosh,sqrt,x,^2,4,/,exp,*,*n!,>1"	1	0
+A168598	polya	0	"[1]"	"x,B,1,-,x,B,1,-,.*,/n,exp"	new A002426()
+A171185	polya	0	"[1]"	"x,B,/n,exp"	new A171215()
+A171186	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A171187()
+A176361	polya	0	"[1]"	"x,B,/n,exp"	new A176362()
+A177208	polyxa	0	"[1]"	"x,B,x,C,1,+,./,1,-,/n!,exp"	0	1	new A000012(), new A000027()
+A177209	polyxa	0	"[1]"	"x,B,x,C,1,+,./,1,-,/n!,exp"	0	5	new A000012(), new A000027()
+A180129	polya	1	"[1]"	"x,B,log,*n"	new A300662()
+A181068	polya	0	"[1]"	"x,B,/n,exp"	new A181069()
+A193160	polya	1	"[1]"	"x,B,<1,*n"	new A193161()
+A193161	polyxa	0	"[1]"	"x,B,x,C,1,+,./,1,-,/n!,exp,*n!"	0	1	new A000012(), new A000027()
+A197680	filtpos	1	1	new A049419()	ODD	Numbers with an odd number of exponential divisors (A049419)
+A204384	polya	0	"[1]"	"x,B,x,C,.*,neg,/n,exp"	new A054785(), new A002203()
+A205543	polya	1	"[1]"	"x,B,log,*n"	new A000110()
+A205957	partprod	0	new PrependSequence(0, new A205959(), 1)
+A207135	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A207136()
+A207139	polya	0	"[1]"	"x,B,1,-,/n,exp"	new A207140()
+A208056	polya	0	"[1]"	"x,B,x,C,.^,1,-,2,*,/n,exp"	new A000129(), new A005843()
+A209802	partsun	1	new A166234()		Partial sums of exponential M√∂bius function, E166234.
+A216078	lambdan	1	n -> { final int m = (n - 1) / 2; final int e = (n + 1) & 1; return SU(0, m, k -> BI(m, k).*(BELL(m + k + e))); }	a(n) = Sum_{k=0..m} binomial(m, k)*Bell(m+k+e), with m = floor((n-1)/2), e = (n+1) mod 2
+A219266	polya	1	"[1]"	"x,B,log,*n"	new A000178()
+A219267	polya	1	"[1]"	"x,B,log,*n"	new A002109()
+A219268	polya	1	"[1]"	"x,B,log,*n"	new A001142()
+A220180	multia	0	"1"	(self, n) -> RU(1, n, k -> new Q(FA(n - 1), FA(n - k)).*(ZV(k + 1).^(k - 1)).*(self.a(n - k))).num()	a(n) = Sum_{k=1..n} (n-1)!/(n-k)! * (k+1)^(k-1) * a(n-k) for n>0 with a(0)=1.
+A224902	polya	0	"[1]"	"x,B,/n,exp"	new A224903()
+A228852	polya	0	"[1]"	"x,B,1,-,2,/,/n,exp"	new A207136()
+A231121	polyz	0	"[1]"	"x,atan,^3,>2"	2	4	1	2
+A236474	filnum	1	1	k -> F034448(k).equals(D051377(k))	Numbers such that the sum of unitary divisors (F034448) is equal to the sum of exponential divisors (J051377).
+A258377	poly	0	"[1],[1,-1],[1,-2]"	"1,p1,/,1,p2,/,*,x,p2,/,sub,*,A,/"
+A258378	poly	0	"[1],[1,-1],[1,-2]"	"1,p1,/,1,p2,^2,/,*,x,p2,/,sub,^2,*,A,^2,/"
+A258379	poly	0	"[1],[1,-1],[1,-2]"	"1,p1,/,1,p2,^3,/,*,x,p2,/,sub,^3,*,A,^3,/"
+A258380	poly	0	"[1],[1,-1],[1,-2]"	"1,p1,/,1,p2,^4,/,*,x,p2,/,sub,^4,*,A,^4,/"
+A258381	poly	0	"[1],[1,-1],[1,-2]"	"1,p1,/,1,p2,^5,/,*,x,p2,/,sub,^5,*,A,^5,/"
+A260756	polya	0	"[1]"	"x,B,2,-,/n,exp"	new A100680()
+A262003	polya	1	"[1]"	"x,B,log,*n"	new A262011()
+A262008	polya	0	"[1]"	"x,B,/n,exp"	new A262009()
+A262145	polya	0	"[1]"	"x,B,/n,exp"	new A000182().skip(1)
+A277613	polya	1	"[1]"	"x,B,log,*n"	new A000293()
+A294346	polyxa	0	"[1]"	"x,B,1,-,/n!,exp"	0	1	new A062569()
+A294355	polyxa	0	"[1]"	"x,B,x,C,.*,/n,exp"	0	1	new A062727(), new A000010()
+A304313	polyxa	0	"[1]"	"x,B,log,*n,>1"	1	0	new A304323()
+A304314	polyxa	0	"[1]"	"x,B,log,*n,>1"	1	0	new A304324()
+A304315	polyxa	0	"[1]"	"x,B,log,*n,>1"	1	0	new A304325()
+A306736	recpos	0	new A307848()	,1
+A307043	filtpos	0	1	new A307042()	(k, v) -> v.mod(k) == 0	 = Sum_{k=1..n} esigma(k) is divisible by n
+A307845	recpos	0	new A278908()	,1	increases to a record.
+A318278	recpos	0	new A049419()	,1	Exponential highly composite numbers: where the number of exponential divisors of n (J049419) increases to a record.
+A322241	polya	0	"[1]"	"x,B,1,-,x,B,1,-,.*,/n,exp"	new A084605()
+A344312	filnum	1	1	k -> D049419(k).equals(D049419(k + 1))	Number k such that k and k+1 have the same number of exponential divisors (J049419).
+A348601	filtpos	1	1	new A160135()	(k, v) -> v.mod(k) == 0	Nonexponential multiply-perfect numbers: numbers k such that k | J160135(k).
+A348604	filtpos	1	1	new A160135()	(k, v) -> v.compareTo(ZV(k)) > 0	Nonexponential abundant numbers: numbers k such that A160135(k) > k.
+A348605	filter	1	new A348604()	ODD	Nonexponential abundant numbers: numbers k such that A160135(k) > k.
+A348628	filnum	1	1	k -> D160135(k).equals(D160135(k + 1))
+A348632	recpos	1	new A160097()	,1	Nonexponential highly composite numbers: where the number of nonexponential divisors (J160097) increases to a record.
+A357014	filter	1	new A197680()	ODD	Equivalently, the odd terms of ?197680, i.e., odd numbers with an odd number of exponential divisors (J049419).
+A357015	filtpos	1	1	new A051377()	(k, v) -> v.testBit(0) && !Predicates.SQUARE_FREE.is(k)	Nonsquarefree numbers whose sum of exponential divisors (J051377) is odd.
+A358397	lambdan	0	n -> { final int m = n / 2; final int e = n & 1; return SU(0, m, k -> BI(m, k).*(BI(m + e, k)).*(BELL(n - k))); }	a(n) = Sum_{k=0..m} binomial(m,k)*binomial(m+e,k)*Bell(n-k), with m = floor(n/2), e = n mod 2 and where Bell(n) is the Bell exponential number F000110(n).
+A368541	filter	1	new A049419()	v -> v.compareTo(ZV(1)) > 0	The terms of J049419 that are larger than 1, since J049419(k) = 1 if and only if k is squarefree (J005117).
+A377011	lambdan	0	n -> SU(0, n, k -> ZV(3).^(k).*(BI(2*n+1, n-k)))	""		a(n) = sum(k=0, n, 3^k*binomial(2*n+1, n-k))	_	_	_
+A379714	altsum	1	new A049419()	"+-"	Partial alternating sums of the number of exponential divisors function (J049419).
+A382063	filnum	1	1	k -> D005361(k).mod(D049419(k)).isZero()	Numbers k such that J049419(k) | D005361(k).
+A382124	polya	0	"[1]"	"x,B,/n,exp"	new A382123()
+A382125	polya	0	"[1]"	"x,B,/n,exp,^3"	new A382123()
+A383693	filnum	1	1	k -> E322857(k).compareTo(ZV(2*k)) > 0.
+A383697	filnum	1	1	k -> E361174(k).compareTo(ZV(2*k)) > 0.
+A383832	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(ZV(3).^(k)).*(BI(2*n+2, n-k)))	""		a(n) = sum(k=0, n, (k+1)*3^k*binomial(2*n+2, n-k))	_	_	_
+A384365	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(ZV(3).^(k)).*(BI(2*n+1, n-k)))	""		a(n) = sum(k=0, n, (k+1)*3^k*binomial(2*n+1, n-k))	_	_	_
+A384557	mulr	1	(p, e) -> D068068(e)
+A385639	lambdan	0	n -> SU(0, n, k -> BI(4*n+1, k).*(BI(2*n-k, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+1, k)*binomial(2*n-k, n-k))	_	_	_
+A386851	lambdan	1	n -> ZV(5*n).*(n)./(6)
+A386858	lambdan	1	n -> ZV(5*n).*(n)./(8)
+A386907	holos	0	[0,1,-5,3,-3,5,-1]	75,336,1488,6580,29085,128544,568101	0	0
+A386908	lingf	0	864,-413,-2741,2435,-7893,-5597,36080,-11312,-5968,3475,-3141,-13,859,-125	1,-7,1,25,-31,52,84,-300,84,52,-31,25,1,-7,1					0
+A386921	rambdan	1	n -> RU(1, n, k -> new Q(ZV(1), TAU(PM(k).+(1))))	Numerators of the partial sums of 1/d(prime(k)+1), where d is the number of divisors function.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A386922	rambdad	1	A386921	Denominators of the partial sums of 1/d(prime(k)+1), where d is the number of divisors function.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A386923	rambdan	1	n -> RU(1, n, k -> new Q(TAU(k), TAU(k + 1)))	a(n) = numerator(Sum_{k=1..n} d(k)/d(k+1)), where d is the number of divisors function.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A386924	rambdad	1	A386923	n -> RU(1, n, k -> new Q(TAU(k), TAU(k + 1)))	a(n) = denominator(Sum_{k=1..n} d(k)/d(k+1)), where d is the number of divisors function.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A386925	rambdan	1	n -> RU(1, n, k -> new Q(TAU(k + 1), TAU(k)))	a(n) = numerator(Sum_{k=1..n} d(k+1)/d(k)), where d is the number of divisors function.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A386926	rambdad	1	A386925	n -> RU(1, n, k -> new Q(TAU(k + 1), TAU(k)))	a(n) = denominator(Sum_{k=1..n} d(k+1)/d(k)), where d is the number of divisors function.	nonn,frac,easy,new	1..10000	nyi	_Amiram Eldar_
+A386937	lambdan	0	n -> SU(0, n, k -> BI(3*n+1, k).*(BI(2*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(3*n+1, k)*binomial(2*n-k-1, n-k))	_	_	_
+A386938	lambdan	0	n -> SU(0, n, k -> BI(4*n+1, k).*(BI(2*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+1, k)*binomial(2*n-k-1, n-k))	_	_	_
+A386939	lambdan	0	n -> SU(0, n, k -> BI(4*n+1, k).*(BI(3*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(4*n+1, k)*binomial(3*n-k-1, n-k))	_	_	_
+A386940	lambdan	0	n -> SU(0, n, k -> BI(2*k, k).*(BI(2*n-k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(2*k, k)*binomial(2*n-k-1, n-k))	_	_	_
+A386941	lambdan	0	n -> SU(0, n, k -> ZV(2*k+1).*(BI(2*k, k)).*(BI(2*n-k-1, n-k)))	""		a(n) = sum(k=0, n, (2*k+1)*binomial(2*k, k)*binomial(2*n-k-1, n-k))	_	_	_
+A386942	lambdan	0	n -> SU(0, n, k -> ZV(2*k+1).*(BI(2*k, k)).*(BI(2*n-k, n-k)))	""		a(n) = sum(k=0, n, (2*k+1)*binomial(2*k, k)*binomial(2*n-k, n-k))	_	_	_
+A386955	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(Z2(k)).*(BI(2*n+1, n-k)))	""		a(n) = sum(k=0, n, (k+1)*2^k*binomial(2*n+1, n-k))	_	_	_
+A386956	lambdan	0	n -> SU(0, n, k -> ZV(k+1).*(ZV(8).^(k)).*(BI(2*n+1, n-k)))	""		a(n) = sum(k=0, n, (k+1)*8^k*binomial(2*n+1, n-k))	_	_	_
+A386957	lambdan	0	n -> SU(0, n, k -> ZV(8).^(k).*(BI(2*n+1, n-k)))	""		a(n) = sum(k=0, n, 8^k*binomial(2*n+1, n-k))	_	_	_
+A386958	lambdan	0	n -> RU(0, n, k -> QV(8).^(k).*(BI(new Q(3*k - 2, 3), k)).*(BI(new Q(6*n + 1, 3), n-k))).num()	""		a(n) = sum(k=0, n, 8^k*binomial(k-2/3, k)*binomial(2*n+1/3, n-k))	_	_	_
+A386959	lambdan	0	n -> RU(0, n, k -> QV(8).^(k).*(BI(new Q(3*k - 2, 3), k)).*(BI(new Q(6*n - 2, 3), n-k))).num()	""		a(n) = sum(k=0, n, 8^k*binomial(k-2/3, k)*binomial(2*n-2/3, n-k))	_	_	_
+A386960	lambdan	0	n -> SU(0, n, k -> ZV(8).^(k).*(BI(2*n, n-k)))	""		a(n) = sum(k=0, n, 8^k*binomial(2*n, n-k))	_	_	_
+A386986	lambdan	0	n -> SU(0, n, k -> ZV(8).^(k).*(BI(2*n + 2, n - k)).*(k + 1))	a(n) = Sum_{k=0..n} (k+1) * 8^k * binomial(2*n+2,n-k).	nonn,new	0..19	nyi	_Seiichi Manyama_

@@ -1,0 +1,154 @@
+---- 2025-09-23 19:41:57
+A083401	filtpos	1	1	new A073605()	PRIME	Numbers k such that J073605(k) is prime.
+A095824	filnum	1	1	k -> PP(Functions.DIGIT_MAX.z(k).+(k))	Numbers k such that k + largest digit of k is prime.
+A095918	filnum	1	1	k -> PP(FA(Functions.DIGIT_MAX.z(k)).+(k))	Numbers k such that k + (largest digit of k)! is prime.
+A095994	filnum	1	1	k -> PP(ZV(k).-(Functions.DIGIT_MAX.z(k)))	Numbers k such that k - (largest digit of k) is prime.
+A099381	filnum	1	1	k -> PP(FI(k).-(PM(k)).abs())	Numbers n such that |Fibonacci(n) - prime(n)| is prime.
+A100595	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(9))); }
+A100596	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(10))); }
+A100598	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(8))); }
+A100599	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(7))); }
+A100600	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(6))); }
+A100602	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(5))); }
+A100603	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(4))); }
+A100604	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(3))); }
+A100605	filnum	0	1	k -> { final Z pmk = PM(k); return PP(FA(pmk.-(1)).+(pmk.^(2))); }
+A105962	filnum	1	1	k -> PP(PM(ZV(k).*(k)).-(k))	Numbers k such that prime(k^2) - k is prime.
+A107295	filnum	1	1	k -> PP(PM(ZV(k).*(k)).-(ZV(k).*(k)))	Numbers k such that prime(k^2) - k^2 is prime.
+A111190	filnum	0	1	k -> PP(CR.PI.^(k).-(CR.E.^(k)).floor())	Numbers k such that floor(Pi^k - e^k) is prime.
+A111193	filnum	0	1	k -> PP(CR.PI.^(k).+(CR.E.^(k)).floor())	Numbers k such that floor(Pi^k + e^k) is prime.
+A117092	filnum	1	1	k -> Functions.NEXT_PRIME.z(2*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(2)) > 0	Numbers n such that nextprime(2*n) > 2*nextprime(n) (here nextprime = F007918; if p is prime then nextprime(p) = p).
+A117093	filnum	1	1	k -> Functions.NEXT_PRIME.z(3*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(3)) > 0	Numbers k such that nextprime(3*k) > 3*nextprime(k) (if p is prime then nextprime(p) = p).
+A117094	filnum	1	1	k -> Functions.NEXT_PRIME.z(5*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(5)) > 0	Numbers k such that nextprime(5*k) > 5*nextprime(k) (if p is prime then nextprime(p) = p).
+A117095	filnum	1	1	k -> Functions.NEXT_PRIME.z(7*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(7)) > 0	Numbers k such that nextprime(7*k) > 7*nextprime(k) (if p is prime then nextprime(p) = p).
+A117096	filnum	1	1	k -> Functions.NEXT_PRIME.z(2*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(2)) < 0	Numbers n such that nextprime(2*n) < 2*nextprime(n) (if p is prime then nextprime(p)=p).
+A117097	filnum	1	1	k -> Functions.NEXT_PRIME.z(3*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(3)) < 0	Numbers n such that nextprime(3*n) < 3*nextprime(n) (if p is prime then nextprime(p)=p).
+A117098	filnum	1	1	k -> Functions.NEXT_PRIME.z(5*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(5)) < 0	Numbers k such that nextprime(5*k) < 5*nextprime(k) (if p is prime then nextprime(p)=p).
+A117099	filnum	1	1	k -> !PP(k) && Functions.NEXT_PRIME.z(2*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(2)) > 0	Numbers n such that nextprime(2*n) > 2*nextprime(n) and n is composite (if p is prime then nextprime(p)=p).
+A117100	filnum	1	1	k -> !PP(k) && Functions.NEXT_PRIME.z(3*k - 1).compareTo(Functions.NEXT_PRIME.z(k - 1).*(3)) > 0	Numbers k such that nextprime(3*k) > 3*nextprime(k) and k is composite (if p is prime then nextprime(p) = p).
+A118257	filtpos	1	1	new A118255()	PRIME	Numbers k such that J118255(k) is prime.
+A121617	filnum	1	1	k -> PP(ZV(k).^(5).-(ZV(k - 1).^(5)))	Numbers n such that J022521(n-1) = n^5 - (n-1)^5 is prime.
+A121624	filnum	1	1	k -> PP(new Q(PM(k), ZV(k)).^(k).floor())	Numbers k such that floor((prime(k)/k)^k) is prime.
+A122003	filnum	0	1	k -> PP(ZV(12).^(k).-(ZV(k).^(12)))	Numbers n such that J024152(n) = 12^n - n^12 is prime.
+A127312	filnum	1	1	k -> PP(2*k + 1) && PP(Functions.DIGIT_SUM.i(k) + Functions.DIGIT_SUM.i(k + 1))	Numbers k such that the sum of the digits of k and of k+1 is prime and 2k + 1 is also prime.
+A127483	filnum	1	1	k -> PP(ZV(k).^(3).+(ZV(k + 1).^(2)))	Numbers n such that J100705(n) = n^3 + (n+1)^2 is prime.
+A129977	filtpos	0	1	new A119029()	PRIME	 Numbers m such that J119029(m) = numerator(Sum_{k=1..m} m^(k-1)/k!) is prime.
+A130135	filnum	1	1	k -> PP(PM(ZV(k).^(3)).-(k))	Numbers k such that prime(k^3) - k is prime.
+A132791	filnum	1	1	k -> PP(Functions.DIGIT_SUM.z(ZV(4).^(k)))	Numbers k such that the sum of the digits of 4^k is prime.
+A134313	filnum	1	1	k -> PP(FI(k).*(k).+(1))	Numbers k such that k * Fibonacci(k) + 1 is prime.
+A134532	filnum	1	1	k -> PP(Functions.DIGIT_SUM.z(ZV(5).^(k)))	Numbers k such that the sum of the digits of 5^k is prime.
+A134533	filnum	1	1	k -> PP(Functions.DIGIT_SUM.z(ZV(7).^(k)))	Numbers n such that the sum of the digits of 7^n is prime.
+A134534	filnum	1	1	k -> PP(Functions.DIGIT_SUM.z(ZV(11).^(k)))	Numbers n such that the sum of the digits of 11^n is prime.
+A134535	filnum	1	1	k -> PP(Functions.DIGIT_SUM.z(ZV(13).^(k)))	Numbers n such that the sum of the digits of 13^n is prime.
+A134580	filnum	1	1	k -> PP(FI(k).*(k).-(1))	Numbers k such that k * Fibonacci(k) - 1 is prime.
+A141484	filnum	1	1	k -> PP(PM(k).^(2).+(FA(k)))	Numbers k such that prime(k)^2 + k! is prime.
+A144675	filtpos	1	1	new A090831()	PRIME	Numbers k such that E090831(k) is prime.
+A154865	filnum	1	1	k -> PP(Functions.DIGIT_MIN.z(k)) && PP(Functions.DIGIT_MIN.z(PM(k)))	Numbers k such that smallest digit of k is prime and the smallest digit of prime(k) is also prime.
+A157678	filnum	1	1	k -> PP(ZV(k).+(Functions.DIGIT_SUM.i(k) / Functions.DIGIT_LENGTH.i(k)))	Numbers k such that k + floor(average of digits of k) is prime.
+A158458	filnum	1	1	k -> PP(Functions.BIG_OMEGA.z(k).+(k))	Numbers k such that k + bigomega(k) is prime.
+A159031	filter	1	new LambdaSequence(0, n -> new Z("1" + StringUtils.rep('0', n) + "7"))	PRIME	Primes of the form "1 [0]_n 7" - with zeros between 1 and 7.	nonn,base	1..7	nyi	_Parthasarathy Nambi_
+A161558	filprof	1	1	k -> Z2(k).+(ZV(3).^(k)).-(4)	Primes of form 2^k+3^k-4.	nonn	1..9	nyi	_Vladimir Joseph Stephan Orlovsky_
+A161721	filter	1	new A000040()	p -> { final Z pr = Functions.REVERSE.z(p); return PP(pr) && Predicates.PALINDROME.is(p.*(pr)); }	Primes p such that the reversal of p is prime and the product of p with its reversal is a palindrome.	base,nonn	1..1255	nyi	_Tanya Khovanova_
+A161818	lambdan	2	n -> { final Z[] divisors = Jaguar.factor(n).divisorsSorted(); final int bn = divisors[divisors.length - 2].intValueExact(); return Z2(n).-(1)./(Z2(bn).-(1)); }	If b(n) = the largest proper divisor of n, then a(n) = (2^n - 1)/(2^b(n) - 1).	nonn	2..1000	nyi	_Leroy Quet_
+A162621	trilambn	1	1	1	(n, k) -> F000040(n + 1).-(n + 2 - k)	Triangle read by rows in which row n lists n consecutive natural numbers J000027, starting with J014689(n+1) = F000040(n+1)-n-1.	easy,nonn,tabl	1..74	nyi	_Omar E. Pol_
+A163079	filter	0	new A000040()	p -> PP(D056040(p).+(1))	Primes p such that p$ + 1 is also prime. Here '$' denotes the swinging factorial function (D056040).	nonn,more	1..12	nyi	_Peter Luschny_
+A163080	filter	0	new A000040()	p -> PP(D056040(p).-(1))	Primes p such that p$ - 1 is also prime. Here '$' denotes the swinging factorial function (D056040).	nonn,more	1..18	nyi	_Peter Luschny_
+A163081	filprop	1	1	(p, k) -> D056040(p).+(1)	Primes of the form p$ + 1 where p is prime, where '$' denotes the swinging factorial (D056040).	nonn	1..7	nyi	_Peter Luschny_
+A163087	lambdan	0	n -> PD(n, d -> D056040(d))	Product{k|n} k$. Here '$' denotes the swinging factorial function (D056040).	nonn	0..26	nyi	_Peter Luschny_
+A163088	lambdan	0	n -> PD(n, d -> D056040(d))./(D056040(n))	(Product{k|n} k$) / n$. Here '$' denotes the swinging factorial function (D056040).	nonn	0..40	nyi	_Peter Luschny_
+A163089	lambdan	0	n -> FA(n)./(PD(n, d -> D056040(d)))	n! / (Product{k|n} k$). Here '$' denotes the swinging factorial function (D056040).	nonn	0..26	nyi	_Peter Luschny_
+A165778	filnum	1	1	k -> PP(Z2(k).-(57).abs())	Numbers k such that |2^k - 57| is prime.
+A165779	filnum	1	1	k -> PP(Z2(k).-(993).abs())	Numbers k such that |2^k-993| is prime.
+A165780	filnum	1	1	k -> PP(Z2(k).-(16257).abs())	Numbers n such that |2^n-16257| is prime.
+A173348	parmof3	0	A173348	2	7
+A173349	parmof3	0	A173348	2	9
+A173350	parmof3	0	A173348	2	11
+A173351	parmof3	0	A173348	3	4
+A173352	parmof3	0	A173348	3	5
+A173353	parmof3	0	A173348	3	7
+A173354	parmof3	0	A173348	3	8
+A173355	parmof3	0	A173348	3	10
+A173356	parmof3	0	A173348	3	11
+A173357	parmof3	0	A173348	4	5
+A173358	parmof3	0	A173348	4	7
+A173359	parmof3	0	A173348	4	9
+A173360	parmof3	0	A173348	4	11
+A173361	parmof3	0	A173348	5	6
+A173362	parmof3	0	A173348	5	7
+A173363	parmof3	0	A173348	5	8
+A173364	parmof3	0	A173348	5	9
+A173365	parmof3	0	A173348	5	11
+A173366	parmof3	0	A173348	5	12
+A173367	parmof3	0	A173348	6	7
+A173368	parmof3	0	A173348	6	11
+A173369	parmof3	0	A173348	7	8
+A173370	parmof3	0	A173348	7	9
+A173371	parmof3	0	A173348	7	10
+A173372	parmof3	0	A173348	7	11
+A173373	parmof3	0	A173348	7	12
+A173374	parmof3	0	A173348	8	9
+A173375	parmof3	0	A173348	8	11
+A173376	parmof3	0	A173348	9	10
+A173377	parmof3	0	A173348	9	11
+A173378	parmof3	0	A173348	10	11
+A173379	parmof3	0	A173348	11	12
+A184775	filnum	1	1	k -> PP(CV(2).sqrt().*(k).floor())	Numbers k such that floor(k*sqrt(2)) is prime.
+A184797	filnum	1	1	k -> PP(CV(3).sqrt().*(k).floor())	Numbers k such that floor(k*sqrt(3)) is prime.
+A184803	filnum	1	1	k -> PP(CV(5).sqrt().*(k).floor())	Numbers k such that floor(k*sqrt(5)) is prime.
+A184866	filnum	1	1	k -> PP(CR.HALF.+(CR.SQRT2.*(k)).floor())	Numbers k such that floor(1/2+k*sqrt(2)) is prime.
+A184869	filnum	1	1	k -> PP(CR.SQRT2.+(2).*(CV(k).-(CR.HALF)).+(CR.HALF).floor())	Numbers k such that floor[(k-1/2)*(2+2^(1/2))+1/2] is prime.
+A193351	filtpos	1	1	new A071324()	PRIME	Numbers k such that J071324(k) is prime.
+A201880	filnum	1	1	k -> PP(Functions.SIGMA.z(2, k).-(ZV(k).^(2)))	Numbers n such that sigma_2(n) - n^2 is prime.
+A229221	filnum	1	1	k -> PP(ZV(k).-(Functions.DIGIT_PRODUCT.z(k)))	Numbers k such that k - (product of digits of k) is prime.
+A231587	filnum	1	1	k -> PP(SIGMA(SIGMA(k)).-(SIGMA(k)).+(1))	Numbers k such that sigma(sigma(k)) - sigma(k) + 1 is prime.
+A231627	filnum	1	1	k -> PP(SIGMA(SIGMA(k)).-(SIGMA(k)).-(1))	Numbers k such that sigma(sigma(k)) - sigma(k) - 1 is prime.
+A233865	filnum	1	1	k -> PP(SIGMA(SIGMA(k)).+(1))	Numbers n such that sigma(sigma(n))+1 is prime.
+A244468	lambdan	0	n -> n == 0 ? Z.ONE : RU(0, n, k -> QV(n).^(k - 1).*(ZV(n - k).^(k + 1)).*(BI(n, k))).num()
+A249485	filnum	1	1	k -> PP(SIGMA(k).-(2))	Numbers n such that sigma(n) - 2 is prime.
+A249763	filnum	1	1	k -> PP(SIGMA(k).+(2))	Numbers k such that sigma(k) + 2 is prime.
+A259973	filnum	1	1	k -> PP(SIGMA(k).+(PD(k, d -> ZV(d))))	Numbers n such that sigma(n) + product of divisors of n is prime.
+A266108	lambdan	0	n -> SU(0, n, k -> BI(k, n - k).*(F000009(k)))	*q(k),  where q(n) is F000009.
+A277409	lambdan	0	n -> SU(0, n, k -> BI(FA(n), k).*(FA(k))./(FA(n)).*(Z_1(n - k)).*(S1(n, k)))
+A279096	filnum	1	1	k -> PP(SIGMA(ZV(k).^(3)))	Numbers k such that sigma(k^3) is prime.
+A284123	filtpos	0	1	new A099953()	PRIME	 Numbers n such that J099953(n) = Sum_{i=1..n-1} (2i-1)!! is prime.
+A299043	lambdan	0	n -> n == 0 ? ZV(1) : RU(0, n, k -> new Q(BI(n*(n - k) + k,  k).*(ZV(n - k).^(2)), ZV(n).*(n - k).+(k))).num()
+A299044	lambdan	0	n -> n == 0 ? ZV(1) : RU(0, n, k -> new Q(BI(n*(n - k), k).*(n - k), ZV(n))).num()
+A303371	filnum	0	1	k -> PP(PM(k).^(k).+(2))	Numbers k such that prime(k)^k + 2 is prime.
+A304856	filnum	1	1	k -> PP(PM(k).^(k).-(2))	Numbers k such that prime(k)^k - 2 is prime.
+A306490	filnum	1	1	k -> PP(SIGMA(k).-(k + 2))	Numbers k such that sigma(k) - k - 2 is prime.
+A306492	filnum	1	1	k -> PP(SIGMA(k).-(3*k))	Numbers k such that sigma(k) - 3k is prime.
+A309548	filnum	1	1	k -> PP(FA(SIGMA(k)).-(1))	Numbers k such that sigma(k)! - 1 is prime, where sigma is F000203.
+A324049	lambdan	0	n -> D002487(E324051(n))	""	
+A326086	lambdan	0	n -> n == 0 ? ZV(1) : RU(0, n, k -> QV(BI(n, k)).*(Z2(k*(k + 1))).*(QV(Z2(k).+(n - k)).^(n - k - 1))).num()
+A340618	filtpos	1	1	new A316650()	PRIME	Numbers k such that E316650(k) is prime.
+A340634	filnum	1	1	k -> PP(ZV(k).+(D037276(k)))	Numbers k such that k + D037276(k) is prime.
+A340731	filtpos	1	1	new A067439()	PRIME	Numbers k such that J067439(k) is prime.
+A341044	filtpos	1	1	new A318996()	PRIME	Numbers k such that E318996(k) is prime.
+A343148	filtpos	1	1	new A083266()	PRIME	Numbers k such that J083266(k) is prime.
+A343412	filnum	1	1	k -> PP(ZV(k).+(F000203(k)).+(F001414(F000203(k))))	Numbers k such that k + F000203(k) + F001414(F000203(k)) is prime.
+A353197	filnum	1	1	k -> { final int s = Functions.DIGIT_SUM.i(k); return PP(k + s + k*s); }	PP(ZV(k).+())	Numbers k such that k + s + k*s is prime, where s is the sum of digits of k.
+A354972	filtpos	1	1	new A354975()	PRIME	Numbers k such that E354975(k) is prime.
+A360503	filtpos	0	1	new A048435()	PRIME	 Numbers k such that J048435(k) is prime.
+A360508	filtpos	0	1	new A300570()	PRIME	 Numbers k such that J300570(k) considered simply as a decimal string is prime.
+A360699	lambdan	0	n -> RU(0, n, k -> QV(k).^(n - 2*k).*(BI(k, n - 2*k))).num()
+A360707	lambdan	0	n -> RU(0, n, k -> QV(k).^(n - 3*k).*(BI(k, n - 3*k))).num()
+A364644	filnum	0	1	k -> PP(ZV(10).^(k)./(7))	Numbers k such that floor(10^k/7) is prime.
+A368356	filtpos	1	1	new A121805()	PRIME	Numbers k such that J121805(k) is prime.
+A386536	sintrif	1	(term, n) -> D007814(term)	""	new A067259()
+A386537	sintrif	1	(term, n) -> D007814(term)	""	new A138302()
+A386655	lambdan	0	n -> RU(0, n, k -> QV(2).^(k*(k + 1)).*(QV(2).^(k).-(QV(n - k)).^(n - k - 1)).*(BI(n, k))).num()
+A386656	lambdan	0	n -> RU(0, n, k -> QV(3).^(k*(k + 1)).*(QV(3).^(k).-(QV(n - k)).^(n - k - 1)).*(BI(n, k))).num()
+A386657	lambdan	0	n -> RU(0, n, k -> QV(4).^(k*(k + 1)).*(QV(4).^(k).-(QV(n - k)).^(n - k - 1)).*(BI(n, k))).num()
+A386658	lambdan	0	n -> RU(0, n, k -> QV(5).^(k*(k + 1)).*(QV(5).^(k).-(QV(n - k)).^(n - k - 1)).*(BI(n, k))).num()
+A387042	lambdan	0	n -> SU(0, n, k -> BI((n + k)*n, (n + k)*k))
+A387105	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(2*n + 2*k, k)))
+A387125	lambdan	0	n -> SU(0, n/4, k -> BI(n, k).*(BI(n, 4*k)))	""		a(n) = sum(k=0, n\4, binomial(n, k)*binomial(n, 4*k))	_	_	_
+A387200	lambdan	0	n -> SU(0, n/4, k -> BI(n, k).*(BI(k, n-4*k)))	""		a(n) = sum(k=0, n\4, binomial(n, k)*binomial(k, n-4*k))	_	_	_
+A388725	poly	0	"[1],[1,1]"	"p1,^2,x,p1,^3,+,*,n,^"	((1+x)^2 * (x+(1+x)^3))^n.
+A388726	poly	0	"[1],[1,1]"	"p1,^3,x,p1,^3,+,*,n,^"	((1+x)^3 * (x+(1+x)^3))^n.
+A388727	poly	0	"[1],[1,1]"	"p1,^2,x,p1,^4,+,*,n,^"	((1+x)^2 * (x+(1+x)^4))^n.
+A388728	poly	0	"[1],[1,1]"	"p1,^3,x,p1,^4,+,*,n,^"	((1+x)^3 * (x+(1+x)^4))^n.
+A388729	poly	0	"[1],[1,1]"	"p1,^4,x,p1,^4,+,*,n,^"	((1+x)^4 * (x+(1+x)^4))^n.
+A388730	polyx	0	"[1],[1,1]"	"x,p1,^3,x,p1,^3,+,*,/,rev,x,/"	1	0
+A388731	polyx	0	"[1],[1,1]"	"x,p1,^2,x,p1,^4,+,*,/,rev,x,/"	1	0
+A388732	polyx	0	"[1],[1,1]"	"x,p1,^4,x,p1,^4,+,*,/,rev,x,/"	1	0

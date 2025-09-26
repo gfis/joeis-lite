@@ -1,0 +1,129 @@
+---- 2025-08-28 08:18:16
+---- 2025-08-28 08:27:47
+---- 2025-08-28 08:39:41
+---- 2025-08-28 09:30:07
+---- 2025-08-28 09:40:45
+---- 2025-08-28 10:23:21
+---- 2025-08-28 10:41:08
+A080944	filnum	1	1	k -> E080942(k).compareTo(ZV(2)) <= 0
+A080945	filnum	1	1	k -> E080942(k).compareTo(ZV(2)) > 0	Numbers having more than two divisors that are also suffixes in binary representation.
+A083864	decexp	0	() -> CR.ONE.divide(X081845)
+A090598	holos	1	[[0],[240,-280,80],[22,-18],[1]]	1,14	0	0
+A091324	lambdan	0	n -> (Z2(n)).^(Z2(n)).-((Z2(n).-(1)).^(Z2(n)))	""		a(n)=(2^n)^(2^n)-(2^n-1)^(2^n)	_	_	_
+A092258	lambdan	0	n -> (Z2(n).-(1)).^(Z2(n))	""		a(n)=(2^n-1)^(2^n)	_	_	_
+A106749	morfps	0	1	1	1-> 113, 2->13, 3->2	Define the morphism f: 1->113, 2->13, 3->2; sequence gives trajectory of 1 under f.	nonn,easy
+A106751	morfps	0	1	1	1-> 111112, 2->22223, 3->1	Define the morphism f: 1->111112, 2->22223, 3->1; sequence gives trajectory of 1 under f.	nonn	0..98
+A108551	lambdan	1	n -> n <= 3 ? ZV(new int[] { 0, 100, 136, 1425 }[n]) : ZV(n-1).*(ZV(n+3).^(n+2)).+(ZV(2).*(ZV(n+3).^(n+1))).+(ZV(n+3).^(n)).+(ZV(n+3).^(3))	""		a(n)=(n-1)*(n+3)^(n+2)+2*(n+3)^(n+1)+(n+3)^n+(n+3)^3
+A112658	morfps	1	1	012	0 -> 01, 1 -> 21, 2 -> 03, 3 -> 23	Dean s Word: Omega 2,1: the trajectory of 0 -> 01, 1 -> 21, 2 -> 03, 3 -> 23.	nonn
+A117481	lambdan	1	n -> n <= 2 ? ZV(n) : PR(Functions.PREV_PRIME.i(n), n, k -> ZV(k))	a(n) = n*(n-1)*(n-2)*(n-3)*...*(n-k) such that (n-k) is the largest prime smaller than n.
+A121814	multia	1	"0,1,1,-2"	(self, n) -> self.a(n - 1).*(3).*(self.a(n - 2)).*(self.a(n - 3)).-(self.a(n - 1).^(3)).-(self.a(n - 2).^(3)).-(self.a(n - 3).^(3))	a(n - 2) 3*a(n-1)*a(n-2)*a(n-3)-a(n-1)^3-a(n-2)^3-a(n-3)^3	for n >= 4
+A126952	holos	0	[[0],[-10,5],[-26,9],[12,-17],[0,3]]	1,1,5	0	0
+A132020	decexp	0	() -> CR.TWO.divide(X081845)
+A163437	lambdan	1	n -> n == 1 ? ZV(1) : Z2(ZV(n).^(2)).-(ZV(4).*(Z2(ZV(n-1).*(n)))).+(ZV(4).*(Z2(ZV(n-1).^(2)))).+(ZV(2).*(Z2(ZV(n-2).*(n)))).-(ZV(4).*(Z2(ZV(n-2).*(n-1)))).+(Z2(ZV(n-2).^(2)))	""		a(n)=2^(n^2)-4*2^((n-1)*n)+4*2^((n-1)^2)+2*2^((n-2)*n)-4*2^((n-2)*(n-1))+2^((n-2)^2)	_	_	_
+A171860	lambdan	2	n -> QV(2).^(n-3).*(QV(n).^(n-5)).*(n-2).*(QV(2).*(QV(n).^(2)).-(QV(6).*(n)).+(9)).num()	""		a(n)=2^(n-3)*n^(n-5)*(n-2)*(2*n^2-6*n+9)
+A172556	holos	0	[[0],[-161280000,1384704000,-5040588800,9608140800,-10113894400,6068224000,-2063155200,369459200,-27033600],[17011200,-154780160,601178752,-1242290432,1456444416,-999972480,398789888,-85657088,7670784],[-54720,688128,-3463568,8940064,-13013712,11162112,-5615232,1537536,-177408],[-880,10112,-51372,148960,-267074,300926,-206826,78958,-12804],[0,0,0,0,0,-60,148,-121,33]]	1, 20, 1860, 297200	0	0
+A174608	decexp	1	() -> X081845.log().divide(X002162)
+A194478	holos	1	[[0],[0,-11165504,2750416,17587836,-21989950,12366334,-3599023,381800,69902,-24598,1981,84,-14],[80720640,-376804480,520571776,-348751384,121536562,-15435765,-3762812,1759226,-243684,4977,1806,-126],[167650560,-711686336,956441296,-641663244,237874136,-42982365,-931793,2231762,-468650,37821,581,-294,14]]	0,0,0,1	0	0
+A200462	holos	1	[[0],[1],[-1],[0],[1],[1],[-5],[2],[2],[-2],[-2],[5],[-1],[-2],[2],[0],[-2],[1]]	2, 3, 5, 8, 13, 20, 29, 43, 63, 91, 130, 184, 262, 370, 519, 724	0	0
+A228041	decexp	0	() -> X079586.divide(CR.TWO).subtract(CR.FIVE.divide(CR.FOUR))
+A228042	decexp	0	() -> X079586.divide(CR.THREE).subtract(CR.FIVE.divide(CR.SIX))
+A228043	decexp	0	() -> X079586.divide(CR.FOUR).subtract(CR.FIVE.divide(CR.EIGHT))
+A229830	morfps	1	1	1	1 -> 12, 2 -> 1232, 3 -> 123432, 4 -> 12345432, 5 -> 1234565432, 6 -> 123456765432, 7 -> 12345678765432, 8 -> 1234567898765432	Trajectory of 1 under the morphism 1 -> 12, 2 -> 1232, 3 -> 123432, 4 -> 12345432, etc.	nonn
+A232994	lambdan	3	n -> n <= 4 ? ZV(0) : ZV(n - 3).*(6*n - 24).*(Z2(n - 3)).*(ZV(n).^(n - 4))	a(n) = 6*(n - 3)*(n - 4)*2^(n-3)*n^(n-4).
+A256512	lambdan	0	n -> ZV(2*n).^(n).+(1).*(n)	n*(1+(2*n)^n).
+A258983	decexp	0	() -> CR.THREE.multiply(Zeta.zeta(2)).multiply(Zeta.zeta(3)).subtract(CR.valueOf(11).divide(CR.TWO).multiply(Zeta.zeta(5)))
+A260898	filprof	1	1	k -> Z.TEN.^(k + 2).+(107)./(9)	Primes of the form (10^(k+2) + 107) / 9, (k > 0).
+A261390	decexp	1	() -> CR.TWO.multiply(X079586).subtract(CR.FOUR)
+A276790	morfps	0	1	0	0 -> 0121, 1 -> 0121121, 2 -> 012121	Trajectory of 0 under repeated applications of the map psi: 0 -> 0121, 1 -> 0121121, 2 -> 012121.	nonn	0..99
+A287699	holos	0	[[0],[30408060221521920,-288428949905080320,1259678785235189760,-3360395981298728960,6125405667882389504,-8086760666271537152,7996778644321639424,-6041751615595125248,3524904790924611584,-1593682577248882176,556681196545539072,-148703492407809024,29790750826206720,-4328742971008512,430421938781184,-26177976534528,733961958912],[-12302992275517440,119605499995000320,-536844235860293760,1476268159433457920,-2783111416231338624,3813684015581499776,-3929347847061404728,3105696015871861944,-1903584180361268728,908166923967483720,-336267280669618128,95663477827899288,-20508676973299440,3204637753591512,-344382794639352,22751728520976,-696481485336],[-189625678771200,1970790190866560,-9485867622060960,28055421604320240,-57045748701603984,84532714984195680,-94419070475765578,81087793282788059,-54119417451434602,28170200205875835,-11401019430578058,3551109821532882,-834773586302313,143220001150863,-16918484481990,1229832915129,-41455042083],[4574054714880,-50491775044480,259313519840640,-822311126185120,1801769964078784,-2891864865024712,3516261474581476,-3303218468438722,2422273491685843,-1390775235633963,622952233195566,-215315257854096,56276210317086,-10748138802219,1414085794758,-114458657040,4292199639],[-15996099840,219070671680,-1399314381120,5530219458640,-15122916728976,30307759355500,-45975296379116,53736870766311,-48784446925982,34419651396813,-18761988853698,7801321685850,-2421852815151,542087073297,-82462595292,7616181573,-321810489],[0,0,0,0,0,0,3088189672,-17210186486,42319001977,-60535565829,55852727538,-34768013544,14801795496,-4258869867,793115064,-86373378,4179357]]	1, 4, 52, 1192, 36628	0	0
+A330829	lambdan	0	n -> Z2(ZV(2).*(Z2(n)).+(1)).*((Z2(Z2(n)).+(1)).^(2))	""		a(n)=2^(2*(2^n)+1)*(2^(2^n)+1)^2	_	_	_
+A340434	lambdan	4	n -> ZV(3).*(ZV(31).^(n-1)).-(ZV(11).*(ZV(15).^(n-1))).+(ZV(15).*(ZV(7).^(n-1))).-(ZV(3).^(n+1)).+(2)	""		a(n)=3*31^(n-1)-11*15^(n-1)+15*7^(n-1)-3^(n+1)+2	_	_	_
+A340435	lambdan	4	n -> ZV(7).*(ZV(63).^(n-1)).-(ZV(30).*(ZV(31).^(n-1))).+(ZV(51).*(ZV(15).^(n-1))).-(ZV(43).*(ZV(7).^(n-1))).+(ZV(6).*(ZV(3).^(n))).-(3)	""		a(n)=7*63^(n-1)-30*31^(n-1)+51*15^(n-1)-43*7^(n-1)+6*3^(n)-3	_	_	_
+A340897	lambdan	3	n -> ZV(961).*(ZV(63).^(n-2)).-(ZV(1830).*(ZV(31).^(n-2))).+(ZV(1359).*(ZV(15).^(n-2))).-(ZV(484).*(ZV(7).^(n-2))).+(ZV(79).*(ZV(3).^(n-2))).-(4)	""		a(n)=961*63^(n-2)-1830*31^(n-2)+1359*15^(n-2)-484*7^(n-2)+79*3^(n-2)-4	_	_	_
+A343840	holos	0	[[0],[-24,124,-214,165,-59,8],[-18,32,19,-57,24],[-21,70,-73,24],[0,-11,8]]	1	0	0
+A346366	decexp	0	() -> X077761.multiply(X013661)
+A350821	holos	1	[[0],[1],[0],[0],[0],[-4],[0],[0],[0],[6],[0],[0],[0],[-4],[0],[0],[0],[1]]	1, 3, 10, 29, 1, 2, 11, 46, 1, 3, 12, 60, 1, 4, 16, 78, 1, 5, 21, 103, 1, 6, 27, 134, 1, 7, 34, 172	0	0
+A350822	holos	1	[[0],[-1],[0],[0],[-2],[-1],[0],[0],[1]]	4, 12, 29, 2, 52, 92, 2, 4, 324, 2, 10, 8, 2, 16, 32, 18	0	0
+A370768	holos	0	[[0],[4,-2],[-1],[-8,4],[-4],[0,-2],[1]]	1, 1, 5, 29, 249	0	0
+A383289	decexp	0	() -> CR.ONE.subtract(Zeta.zeta(2).divide(CR.TWO)).subtract(Zeta.zeta(3).divide(CR.TWO)).add(CR.SEVEN.multiply(Zeta.zeta(6)).divide(CR.valueOf(48))).add(Zeta.zeta(2).multiply(Zeta.zeta(3)).divide(CR.valueOf(18))).add(Zeta.zeta(3).pow(2).divide(CR.valueOf(18))).add(Zeta.zeta(3).multiply(Zeta.zeta(4)).divide(CR.valueOf(12)))
+A383944	holos	0	[[0],[0,-7],[-4,-6],[0,1]]	1	0	0
+A383945	holos	0	[[0],[-7,-7],[-11,-6],[0,1]]	1	0	0
+A383946	holos	0	[[0],[0,9],[-4,-10],[0,1]]	1	0	0
+A383947	holos	0	[[0],[0,-7],[4,-6],[0,1]]	1	0	0
+A383948	holos	0	[[0],[0,21],[2,-10],[0,1]]	1	0	0
+A383949	holos	0	[[0],[0,5],[2,-6],[0,1]]	1	0	0
+A383950	holos	0	[[0],[0,12],[2,-8],[0,1]]	1	0	0
+A384475	decexp	3	() -> CR.valueOf(540).subtract(CR.TWO.multiply(X384473)).subtract(X384477).divide(CR.TWO)
+A384476	decexp	1	() -> CR.THREE.multiply(CR.PI).subtract(CR.TWO.multiply(X384474)).subtract(X384478).divide(CR.TWO)
+A384949	decexp	1	() -> CR.valueOf(511).divide(CR.valueOf(512)).multiply(X013667)
+A385405	decexp	0	() -> CR.ONE.divide(CR.TWO.multiply(X073743.pow(2)))
+A385563	holos	0	[[0],[5,5],[-3,-6],[0,1]]	1	0	0
+A385716	holos	0	[[0],[13,13],[-7,-14],[0,1]]	1	0	0
+A385728	holos	0	[[0],[12,12],[-4,-8],[0,1]]	1	0	0
+A385813	holos	0	[[0],[21,21],[-5,-10],[0,1]]	1	0	0
+A386241	decexp	0	() -> X002163.multiply(X182168)
+A386362	holos	0	[[0],[-13,13],[-7,-14],[2,1]]	1	0	0
+A386387	holos	0	[[0],[-17,17],[8,-18],[1,1]]	1	0	0
+A386389	holos	0	[[0],[-17,17],[-9,-18],[2,1]]	1	0	0
+A386435	decexpr	1	() -> REALS.acos(CR.ZERO.subtract(CR.SEVEN.divide(CR.NINE)))
+A386464	decexp	2	() -> X377695.add(X179590)
+A386465	decexp	3	() -> CR.valueOf(20).add(CR.valueOf(25).multiply(CR.THREE.sqrt())).add(CR.valueOf(110).multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).add(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt()).divide(CR.FOUR)
+A386466	decexp	2	() -> X377695.add(CR.TWO.multiply(X179590))
+A386489	holos	0	[[0],[2],[-7],[-1],[-3],[1]]	1,2,7,30	0	0
+A386530	decexpr	1	() -> REALS.acos(CR.ZERO.subtract(CR.TWO.multiply(CR.FIVE.add(X002163)).divide(CR.valueOf(15)).sqrt()))
+A386543	decexp	3	() -> CR.valueOf(20).add(CR.valueOf(15).multiply(CR.THREE.sqrt())).add(CR.valueOf(50).multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).add(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt()).divide(CR.TWO)
+A386544	decexp	2	() -> X377695.add(CR.THREE.multiply(X179590))
+A386545	decexp	3	() -> CR.valueOf(60).add(CR.valueOf(35).multiply(CR.THREE.sqrt())).add(CR.valueOf(90).multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).add(CR.THREE.multiply(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt())).divide(CR.FOUR)
+A386689	decexp	2	() -> X185093.subtract(X179590)
+A386690	decexp	2	() -> CR.valueOf(25).add(CR.valueOf(15).multiply(CR.THREE.sqrt()).add(CR.TEN.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).add(CR.valueOf(11).multiply(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt())).divide(CR.FOUR))
+A386691	decexp	2	() -> X134946.multiply(CR.valueOf(100)).add(CR.TEN)
+A386692	decexp	2	() -> CR.FIVE.divide(CR.TWO).multiply(CR.EIGHT.add(CR.THREE.sqrt()).add(CR.TWO.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).add(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt()))
+A386693	decexp	2	() -> X185093.subtract(CR.THREE.multiply(X179590))
+A386694	decexp	2	() -> CR.valueOf(60).add(CR.FIVE.multiply(CR.THREE.sqrt())).add(CR.valueOf(30).multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).sqrt())).add(CR.NINE.multiply(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt())).divide(CR.FOUR)
+A386713	decexp	0	() -> CR.FOUR.multiply(X345208).subtract(CR.ONE)
+A386715	decexp	0	() -> CR.ONE.subtract(X347213.divide(CR.THREE))
+A386716	decexp	0	() -> CR.ONE.subtract(Zeta.zeta(2).add(Zeta.zeta(3)).add(Zeta.zeta(4)).divide(CR.FOUR))
+A386717	decexp	0	() -> CR.THREE.divide(CR.TWO).subtract(X001620).subtract(X072691)
+A386732	decexpr	0	() -> CR.ZERO.subtract(CR.SIX.multiply(CR.PI)).subtract(CR.FOUR.multiply(CR.THREE.sqrt()).multiply(CR.PI)).add(CR.valueOf(12).multiply(REALS.atan(CR.TWO))).subtract(CR.THREE.multiply(REALS.atan(CR.valueOf(12).divide(CR.FIVE)))).add(CR.SIX.multiply(CR.THREE.sqrt()).multiply(REALS.atan(CR.FIVE.divide(CR.THREE.sqrt())))).add(CR.SIX.multiply(CR.THREE.sqrt()).multiply(REALS.atanh(CR.TWO.multiply(CR.THREE.sqrt()).divide(CR.FIVE)))).add(CR.valueOf(9261).log()).divide(CR.valueOf(72))
+A386733	decexp	0	() -> X016627.subtract(X072691)
+A386734	decexp	0	() -> CR.NINE.multiply(CR.THREE.log()).divide(CR.TWO).subtract(CR.SIX.multiply(CR.TWO.log())).subtract(Zeta.zeta(3).divide(CR.TWO))
+A386735	decexp	0	() -> CR.FIVE.divide(CR.TWO).subtract(CR.TWO.log()).subtract(CR.GAMMA).subtract(CR.PI.pow(2).divide(CR.valueOf(12)))
+A386736	decexp	0	() -> CR.SIX.multiply(CR.TWO.log()).subtract(CR.THREE.multiply(CR.THREE.log())).subtract(Zeta.zeta(2).add(Zeta.zeta(3)).divide(CR.SIX))
+A386737	decexp	0	() -> CR.THREE.log().divide(CR.TWO).subtract(CR.THREE.multiply(CR.TWO.log()).divide(CR.TWO)).add(CR.FIVE.divide(CR.THREE)).subtract(CR.GAMMA.divide(CR.TWO)).subtract(Zeta.zeta(2).divide(CR.FOUR)).subtract(Zeta.zeta(3).divide(CR.SIX))
+A386739	decexp	1	() -> CR.ONE.add(CR.THREE.multiply(CR.THREE.divide(CR.TWO).sqrt())).add(CR.valueOf(13).add(CR.THREE.multiply(CR.SIX.sqrt())).sqrt()).sqrt().divide(CR.TWO)
+A386740	decexp	1	() -> CR.ONE.add(CR.THREE.multiply(CR.THREE.divide(CR.TWO).sqrt())).add(CR.valueOf(13).add(CR.THREE.multiply(CR.SIX.sqrt())).sqrt()).sqrt().divide(CR.TWO).add(CR.ONE.divide(CR.THREE.multiply(CR.SQRT2)))
+A386742	decexp	2	() -> CR.THREE.add(CR.NINE.divide(CR.TWO).multiply(CR.THREE.sqrt()))
+A386753	decexp	2	() -> CR.TWO.add(CR.TWO.multiply(CR.THREE.sqrt())).add(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt())
+A386754	decexp	2	() -> CR.valueOf(12).add(CR.valueOf(19).multiply(CR.THREE.sqrt())).add(CR.THREE.multiply(CR.FIVE.multiply(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt()))).sqrt())).divide(CR.FOUR)
+A386852	decexpr	0	() -> REALS.acos(CR.FIVE.add(CR.TWO.multiply(CR.FIVE.sqrt())).divide(CR.valueOf(15)).sqrt())
+A386853	decexpr	1	() -> REALS.acos(CR.FIVE.subtract(CR.TWO.multiply(CR.FIVE.sqrt())).divide(CR.valueOf(15)).sqrt())
+A386854	decexpr	1	() -> REALS.acos(CR.ZERO.subtract(CR.TWO.multiply(X131594)))
+A387189	decexpr	1	() -> REALS.acos(CR.FOUR.multiply(CR.FIVE.sqrt()).subtract(CR.FIVE).divide(CR.valueOf(15)))
+A387190	decexpr	1	() -> REALS.acos(CR.ZERO.subtract(CR.FIVE.subtract(X002163).divide(CR.TEN).sqrt()))
+A387191	decexpr	1	() -> REALS.acos(CR.ZERO.subtract(CR.TWO.multiply(CR.FIVE.sqrt()).divide(CR.FIVE)))
+A387244	holos	0	[[0],[120,-274,225,-85,15,-1],[120,-250,175,-50,5],[56,-104,58,-10],[22,-32,10],[5,-5],[1]]	1	0	0
+A387272	holos	0	[[0],[24,36,12],[-24,-28,-8],[0,4,1]]	1	0	0
+A387273	holos	0	[[0],[72,60,12],[-60,-44,-8],[0,6,1]]	1	0	0
+A387274	holos	0	[[0],[144,84,12],[-112,-60,-8],[0,8,1]]	1	0	0
+A387275	holos	0	[[0],[42,63,21],[-30,-35,-10],[0,4,1]]	1	0	0
+A387276	holos	0	[[0],[126,105,21],[-75,-55,-10],[0,6,1]]	1	0	0
+A387277	holos	0	[[0],[252,147,21],[-140,-75,-10],[0,8,1]]	1	0	0
+A387278	holos	0	[[0],[0,21,21],[-5,-15,-10],[0,2,1]]	1	0	0
+A387280	holos	0	[[0],[36,12],[-12,-8],[0,1]]	1	0	0
+A387281	holos	0	[[0],[60,12],[-20,-8],[0,1]]	1	0	0
+A387282	holos	0	[[0],[84,12],[-28,-8],[0,1]]	1	0	0
+A387283	holos	0	[[0],[63,21],[-15,-10],[0,1]]	1	0	0
+A387284	holos	0	[[0],[105,21],[-25,-10],[0,1]]	1	0	0
+A387285	holos	0	[[0],[147,21],[-35,-10],[0,1]]	1	0	0
+A387289	decexp	0	() -> CR.THREE.multiply(CR.valueOf(35).multiply(Zeta.zeta(3)).pow(CR.ONE_THIRD)).divide(CR.PI.pow(2)).log()
+A387296	decexpr	1	() -> REALS.acos(CR.ONE.subtract(CR.TWO.multiply(CR.THREE.sqrt())).divide(CR.THREE))
+A387297	decexpr	1	() -> REALS.acos(CR.ONE.subtract(CR.TWO.multiply(CR.THREE.sqrt()).divide(CR.THREE)))
+A387307	holos	0	[[0],[18,27,9],[-30,-35,-10],[0,4,1]]	1	0	0
+A387308	holos	0	[[0],[54,45,9],[-75,-55,-10],[0,6,1]]	1	0	0
+A387309	holos	0	[[0],[0,13,13],[-7,-21,-14],[0,2,1]]	1	0	0
+A387310	holos	0	[[0],[26,39,13],[-42,-49,-14],[0,4,1]]	1	0	0
+A387311	holos	0	[[0],[78,65,13],[-105,-77,-14],[0,6,1]]	1	0	0
+A387313	holos	0	[[0],[27,9],[-15,-10],[0,1]]	1	0	0
+A387314	holos	0	[[0],[45,9],[-25,-10],[0,1]]	1	0	0
+A387315	holos	0	[[0],[39,13],[-21,-14],[0,1]]	1	0	0
+A387316	holos	0	[[0],[65,13],[-35,-14],[0,1]]	1	0	0

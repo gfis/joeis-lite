@@ -1,0 +1,133 @@
+---- 2025-09-12 21:58:07
+A132092	polyz	0	"[-1],[0,0,0,1]"	"p1,x,sin,x,-,6,*,/"	3	1	0	2
+A132093	polyz	0	"[-1],[0,0,0,1]"	"p1,x,sin,x,-,6,*,/"	3	5	0	2
+A132294	multia	1	"1,1,1"	(self, n) -> self.a(n - 1).^(2).-(self.a(n - 2)).-(self.a(n - 3))	The first three terms are 1. After that, a(n)=(a(n-1))^2-a(n-2)-a(n-3).	sign	1..14	nyi	_Ben Branman_, Nov 07 2007
+A132369	lambdan	1	n -> FA(PI(n))	a(n) = PrimePi(n)!.	easy,nonn	1..37	nyi	_Giovanni Teofilatto_
+A132945	trilambn	0	0	0	(n, m) -> m == 0 ? ZV(1) : ZV(m + 1).^(n).*(ZV(m).^(n*(n - 1)/2))
+A132950	trilambn	0	0	0	(m, n) -> n == 0 ? ZV(1) : ZV(m + 1).^(n).*(ZV(m).^(n*(n - 1)/2))	Triangle read by rows: T(n,m) = (m+1)^n*m^(n*(n-1)/2).	nonn,easy,tabl	0..35	nyi	_Roger L. Bagula_
+A132993	trilambn	0	0	0	(n, m) -> PT(n - m + 1).*(PT(m + 1))	Triangle t(n,m) = P(n-m+1) * P(m+1) read by rows, 0<=m<=n, where P=F000041 are the partition numbers.	nonn,tabl	0..65	nyi	_Roger L. Bagula_ and _Gary W. Adamson_
+A133096	multraf	1	(self, n) -> self.s(0).-(self.s(1))	""	new A079848(), new A062294()	sign	1..3600	nyi	_Klaus Brockhaus_
+A133517	sintrif	1	(term, n) -> { final Z q = term.^(3); return q.-(Functions.PREV_PRIME.z(q)); }	""	new A000040()	Smallest k such that p(n)^3 - k is prime where p(n) is the n-th prime.	easy,nonn	1..1000	nyi	_Carl R. White_
+A133518	sintrif	1	(term, n) -> { final Z q = term.^(3); return Functions.NEXT_PRIME.z(q).-(q); }	""	new A000040()	Smallest k such that p(n)^3 + k is prime where p(n) is the n-th prime.	nonn,easy	1..1000	nyi	_Carl R. White_
+A133519	sintrif	1	(term, n) -> { final Z q = term.^(4); return q.-(Functions.PREV_PRIME.z(q)); }	""	new A000040()	Smallest k such that p(n)^4 - k is prime where p(n) is the n-th prime.	easy,nonn	1..1000	nyi	_Carl R. White_
+A133520	sintrif	1	(term, n) -> { final Z q = term.^(4); return Functions.NEXT_PRIME.z(q).-(q); }	""	new A000040()	Smallest k such that p(n)^4 + k is prime where p(n) is the n-th prime.	easy,nonn	1..1000	nyi	_Carl R. White_
+A133521	sintrif	1	(term, n) -> { final Z q = term.^(5); return q.-(Functions.PREV_PRIME.z(q)); }	""	new A000040()	Smallest k such that p(n)^5 - k is prime where p(n) is the n-th prime.	easy,nonn	1..1000	nyi	_Carl R. White_
+A133522	sintrif	1	(term, n) -> { final Z q = term.^(5); return Functions.NEXT_PRIME.z(q).-(q); }	""	new A000040()	Smallest k such that p(n)^5 + k is prime where p(n) is the n-th prime.	easy,nonn	1..81	nyi	_Carl R. White_
+A134009	multia	1	"1"	(self, n) -> CV(3).sqrt().*(self.a(n - 1)).round()	a(1) = 1; a(n+1) = round(sqrt(3)*a(n)).	easy,nonn	1..1000	nyi	_Ben Paul Thurston_
+A134010	lambdan	0	n -> ZV(n).^(Functions.LEADING_DIGIT.i(n))	a(n) = n^(initial digit of n).	nonn,base,look	0..10000	nyi	_Reinhard Zumkeller_
+A135181	sintrif	1	(p, n) -> { final Z p2 = p.^(2); return p2.*(p2.+(1).*(p).-(1)); }	""	new A000040()	p^5 + p^3 - p^2. Exponents are the prime numbers in decreasing order and p is the n-th prime.	nonn,easy	1..1000	nyi	_Omar E. Pol_
+A135187	parmof2	1	A135186	2	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=2.	nonn,base	1..49	nyi	_Paolo P. Lava_ & _Giorgio Balzarotti_
+A135188	parmof2	1	A135186	3	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=3.	nonn,base	1..47	nyi	_Paolo P. Lava_ & _Giorgio Balzarotti_
+A135189	parmof2	1	A135186	4	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=4.	nonn,base	1..1000	nyi	_Paolo P. Lava_ & _Giorgio Balzarotti_
+A135190	parmof2	1	A135186	5	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=5.	nonn,base	1..43	nyi	_Paolo P. Lava_ & _Giorgio Balzarotti_
+A135191	parmof2	1	A135186	6	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=6.	nonn,base	1..42	nyi	_Paolo P. Lava_ & _Giorgio Balzarotti_
+A135192	parmof2	1	A135186	7	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=7.	nonn,base	1..1000	nyi	_Paolo P. Lava_ & _Giorgio Balzarotti_
+A135193	parmof2	1	A135186	8	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=8.	nonn,base	1..38	nyi	_Paolo P. Lava_ & _Giorgio Balzarotti_
+A135194	parmof2	1	A135186	9	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=9.	nonn,base	1..39	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A135195	parmof2	1	A135186	10	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=10.	nonn,base	1..39	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A135196	parmof2	1	A135186	11	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=11.	nonn,base	1..34	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A135197	parmof2	1	A135186	12	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=12.	nonn,base	1..36	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A135198	parmof2	1	A135186	13	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=13.	nonn,base	1..33	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A135199	parmof2	1	A135186	14	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=14.	nonn,base	1..33	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A135200	parmof2	1	A135186	15	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=15.	nonn,base	1..30	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A135201	parmof2	1	A135186	16	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=16.	nonn,base	1..29	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A135202	parmof2	1	A135186	17	Numbers n that raised to the powers from 1 to k (with k>=1) are multiples of the sum of their digits (n raised to k+1 must not be a multiple). Case k=17.	nonn,base	1..25	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A136707	parmof2	0	A136706	3	At step n the sequence lists the number of occurrences of digit (n mod k), with k>0, in all the numbers from 1 to n. Case k=3.	easy,base,nonn	0..82	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A136708	parmof2	0	A136706	4	At step n the sequence lists the number of occurrences of digit (n mod k), with k>0, in all the numbers from 1 to n. Case k=4.	easy,base,nonn	0..81	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A136709	parmof2	0	A136706	5	At step n the sequence lists the number of occurrences of digit (n mod k), with k>0, in all the numbers from 1 to n. Case k=5.	easy,base,nonn	0..83	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A136710	parmof2	0	A136706	6	At step n the sequence lists the number of occurrences of digit (n mod k), with k>0, in all the numbers from 1 to n. Case k=6.	easy,base,nonn	0..1000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A136711	parmof2	0	A136706	7	At step n the sequence lists the number of occurrences of digit (n mod k), with k>0, in all the numbers from 1 to n. Case k=7.	easy,base,nonn	0..1000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A136712	parmof2	0	A136706	8	At step n the sequence lists the number of occurrences of digit (n mod k), with k>0, in all the numbers from 1 to n. Case k=8.	easy,base,nonn	0..85	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A136713	parmof2	0	A136706	9	At step n the sequence lists the number of occurrences of digit (n mod k), with k>0, in all the numbers from 1 to n. Case k=9.	easy,base,nonn	0..1000	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A136714	parmof2	0	A136706	10	At step n the sequence lists the number of occurrences of digit (n mod k), with k>0, in all the numbers from 1 to n. Case k=10.	easy,base,nonn	0..88	nyi	_Paolo P. Lava_ and _Giorgio Balzarotti_
+A186369	polyx	0	"[1]"	"1,x,sin,+,<1,x,cos,x,sec,x,tan,+,log,*,-,x,cos,2,*,1,x,sin,-,*,/"	0	1
+A186451	polyx	0	"[1]"	"A,<1,exp,1,A,<1,+,*,1,A,<1,-,A,^2,<2,-,/"	0	1
+A186491	polyz	0	"[1],[0,2]"	"p1,sec,sqrt"	0	1	0	2
+A187658	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(SA(2*k, k)).*(SA(2*n - 2*k, n - k )))	a(n) = Sum_{k=0..n} binomial(n,k)*s(2*k,k)*s(2*n-2*k,n-k).
+A187667	poly	0	"[1],[0,1,1,1]"	"1,p1,n,*,+,n,^"
+A190088	trilambn	0	0	0	(n, k) -> BI(3*n - k + 1, 3*n - 3*k + 1)	0..54	nyi	_Emanuele Munarini_
+A190152	trilambn	0	0	0	(n, k) -> BI(3*n - k, 3*n - 3*k)	nonn,easy,tabl	0..100	nyi	_Emanuele Munarini_
+A190186	rambdan	1	n -> new Q(SU(0, n - 1, r -> SU(r + 1, n, s -> FA(s).*(ZV(r).^(n - s)))), FA(n))	W_n = Sum_{r=0..(n-1)}( Sum_{s=(r+1)..n} s!*r^(n-s) )/n!.
+A190187	rambdad	1	A190186
+A190194	lambdan	0	n -> SU(0, n - 1, r -> SU(r + 1, n, s -> FA(s).*(ZV(r).^(n - s))))
+A190195	polyz	0	"[1]"	"1,x,cosh,sqrt,/"	0	0	0	2
+A190196	polyz	0	"[1]"	"1,x,cosh,sqrt,/"	0	4	0	2
+A192547	lambdan	0	n -> SU(0, n, k -> S1(n, k).*(S1(n + 1, k + 1)))
+A192559	lambdan	0	n -> SU(0, n, k -> S1(n, k).^(2).*(FA(k)))
+A192572	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(SQRT(BELL(k))))
+A192576	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(SQRT(BELL(k))))
+A233860	polyx	1	"[1]"	"x,eta,int,rev"	0	1
+A233861	polyx	1	"[0,1],A9"	"A,B,int"	0	1
+A245308	polyx	0	"[1]"	"x,exp,1,A,dif,<2,A,/,+,*"	0	1
+A249395	polyx	0	"[1],[1,-1/2]"	"x,sec,x,sec,1,-,p1,x,tan,*,+,exp,*"	0	1
+A254382	polyxa	0	"[1],[1,1]"	"p1,1,x,B,/,-"	0	1	egf(new A231797())
+A263184	polyz	0	"[1]"	"2,x,*,x,atan,-,rev,^2,1,+,sqrt"	2	1	0	2
+A276742	polyx	0	"[1]"	"1,1,A,/,A,int,*,rev,+"	0	1
+A280620	polyx	1	"[1],[1,0,1],[1,0,0,1]"	"1,p1,^1/2,p2,^2/3,*,/,int,rev"	1	1
+A280621	polyxa	0	"[1]"	"1,x,B,^2,+,sqrt"	0	1	egf(new A280620())
+A280622	polyxa	0	"[1]"	"1,x,B,^3,+,^1/3"	0	1	egf(new A280620())
+A280623	polyxa	0	"[1]"	"x,B,x,C,+"	0	1	egf(new A280620()), egf(new A280621())
+A280624	polyxa	0	"[1]"	"1,x,C,x,B,-,/"	0	1	egf(new A280620()), egf(new A280622())
+A280625	polyz	1	"[1],[1,0,1],[1,0,0,0,1]"	"1,p1,^1/2,p2,^3/4,*,/,int,rev"	1	1	1	2
+A284865	polyx	0	"[1],[0,2],[0,3]"	"p1,exp,1,p2,exp,-,exp,*"	0	1
+A288869	lambdan	0	n -> n == 0 ? ZV(1) : RU(0, n - 1, j -> new Q(BI(n - 1, j), FA(j + 2))).*(Z_1(n)).*(FA(n + 1)).num()	a(n) = (-1)^n * (n+1)! * Sum_{j=0..n-1} binomial(n-1, j)/(j+2)!, with a(0) = 1. A289959	polyx	20	"[1],[1,-1]"	"p1,log,x,+,^10,x,exp,*,3628800,/"	0	1
+A290039	polyx	20	"[1],[1,1]"	"x,exp,p1,-,^10,x,exp,*,3628800,/"	0	1
+A294330	polyxa	1	"[1]"	"x,B,log,rev"	0	1	new A121373()
+A354245	polyz	1	"[1],[0,-1]"	"p1,x,tan,*,exp,x,cos,/,int"	0	1	1	2
+A360717	lambdan	1	n -> n <= 2 ? ZV(n - 1) : ZV(n).*(n - 1).*(ZV(5).^(n - 2).+(ZV(3).^(n - 2).*(6)).+(9))./(32)	a(n) = n*(n-1)*2^(-5)*(5^(n-2) + 6*3^(n-2) + 9).
+A367752	polyx	1	"[1],[1,1]"	"p1,log,x,exp,neg,p1,+,exp,*,rev"	0	1
+A367753	polyx	1	"[1],[1,1]"	"p1,1,p1,log,+,log,*,x,neg,exp,*,rev"	0	1
+A368630	polyx	0	"[1]"	"x,A,^2,/,rev,x,/,^1/2,^3,<1,exp"	1	1
+A368631	polyx	0	"[1]"	"x,A,/,rev,x,/,^3,<1,exp"	0	1
+A368632	polyx	0	"[1]"	"x,A,^2,/,rev,x,/,^1/2,^4,<1,exp"	0	1
+A383561	polyx	0	"[1]"	"A,<1,exp,A,<1,sub,*,A,/"	0	1
+A386514	polyx	0	"[1],[0,0,1],[1,-1]"	"p1,p2,^3,/,exp"	0	1
+A386721	holos	0	[[0],[-4251528,1535274,-177147,6561],[0],[0],[944784,-419904,61236,-2916],[0],[0],[-62208,36612,-7290,486],[0],[0],[1079,-1008,324,-36],[0],[0],[0,2,-3,1]]	1,1,1,1,73	0	1
+A386889	holos	0	[0,-1,10,-25,16,-1]	0,3,46,660,9440	0	0
+A387470	lambdan	1	n -> ZV(n).*(Functions.BIG_OMEGA.i(n) - 1)	a(n) = n*(Omega(n) - 1), where Omega = F001222.	sign,easy,new	1..200	nyi	_Joshuva Srinath_
+A387525	holos	0	[0,1,-5,10,-10,5,-1]	1,2,7,34,113	0	0
+A387544	sintrif	1	(term, n) -> term./(2)	""	new FilterSequence(1, new A386482(), v -> !v.testBit(0))	Even terms of A386482, halved
+A387549	holos	1	[0,-1,0,6,0,-1]	3,7,25,45	0	0
+A387655	holos	0	[0,-1,0,0,4,0,0,-6,0,0,4,0,0,-1]	0,1,8,9,64,125,72,343,512,243,1000,1331,576	0	0
+A387742	holos	0	[0,64,12,-1]	0,3,28	0	0
+A387743	holos	0	[0,-32,353,21,-1]	0,1,44,1277	0	0
+A387744	holos	0	[0,-32,353,21,-1]	0,2,33,1399	0	0
+A387745	holos	0	[0,-1728,1691,38,-1]	0,1,134,6735	0	0
+A387746	holos	0	[0,-1728,1691,38,-1]	0,5,187,15657	0	0
+A387747	holos	0	[0,-1728,1691,38,-1]	0,5,110,12563	0	0
+A387748	holos	0	[0,-128,-36991,7585,71,-1]	0,1,431,36825,5846719	0	0
+A387749	holos	0	[0,-128,-36991,7585,71,-1]	0,3,299,44927,5346759	0	0
+A387750	holos	0	[0,-128,-36991,7585,71,-1]	0,5,195,51433,4945863	0	0
+A387751	holos	0	[0,4096,34800,120,-1]	0,1,1432,206704	0	0
+A387752	holos	0	[0,512,-6965249,-6826204,139823,265,-1]	0,1,4864,1184043,986882648,393870724604	0	0
+A387753	holos	0	[0,3200000,-392963125,-75135226,587797,522,-1]	0,1,16798,6893448,13386764876,9777324861855	0	0
+A387754	holos	0	[0,2048,2061791231,-15735018638,-767040961,2452907,1035,-1]	0,1,58788,40670763,185108030865,246239904868235,676789916853575024	0	0
+A387755	holos	0	[0,3200000,-392963125,-75135226,587797,522,-1]	0,63,7752,38850633,20113001532,32728067456378	0	0
+A387762	holos	0	[0,-4,8,-4,4,4,0,-1]	1,0,2,2,4,24	0	0
+A387763	holos	0	[0,-4,8,-4,0,4,4,0,0,-1]	1,0,0,2,2,0,4,24	0	0
+A387764	holos	0	[0,-4,8,0,4,-1]	1,2,10,48	0	0
+A387765	holos	0	[0,-4,8,-4,4,4,0,-1]	1,0,2,6,4,40	0	0
+A387766	holos	0	[0,-4,8,-4,0,4,4,0,0,-1]	1,0,0,2,6,0,4,40	0	0
+A387767	holos	0	[0,-4,8,0,4,-1]	1,6,22,96	0	0
+A387768	holos	0	[0,-4,8,-4,4,4,0,-1]	1,0,6,2,20,40	0	0
+A387769	holos	0	[0,-4,8,-4,0,4,4,0,0,-1]	1,0,0,6,2,0,20,40	0	0
+A387812	holos	0	[0,-32,353,21,-1]	3,36,1807	0	0
+A387813	holos	0	[0,-32,353,21,-1]	4,93,3381	0	0
+A387814	holos	0	[0,-1728,1691,38,-1]	1,8,1730	0	0
+A387815	holos	0	[0,-1728,1691,38,-1]	1,15,2185	0	0
+A387816	holos	0	[0,-128,-36991,7585,71,-1]	1,9,6451,490337	0	0
+A387817	holos	0	[0,-128,-36991,7585,71,-1]	3,55,24463,2043275	0	0
+A387818	holos	0	[0,-128,-36991,7585,71,-1]	5,143,46759,4219605	0	0
+A387843	holos	0	[0,4,3,3,-1]	1,1,5	0	0
+A387844	holos	0	[0,4,15,20,-10,5,-1]	1,1,1,7,57	0	0
+A387845	holos	0	[0,4,35,91,-21,35,-21,7,-1]	1,1,1,1,9,121,793	0	0
+A387846	holos	0	[0,64,24,4,-1]	1,1,16,136	0	0
+A387847	holos	0	[0,8,55,145,5,5,-1]	1,1,7,127,859	0	0
+A387848	holos	0	[0,16,-65,740,130,5,-1]	1,1,57,859,12393	0	0
+A387849	holos	0	[0,1296,1359,1366,69,6,-1]	1,1,29,926,9829,164921	0	0
+A387850	holos	0	[0,7776,-7155,7160,615,6,-1]	1,1,211,5461,164921,5858126	0	0
+---- 2025-09-12 22:19:54
+A190220	filnum	1	1	k -> CND(k, d -> Predicates.DIGIT_NONINCREASING.is(d)).equals(TAU(k))	Numbers all of whose divisors are numbers whose decimal digits are in nonincreasing order.	nonn,base	1..500	nyi	_Jaroslav Krizek_
+A190221	filnum	1	1	k -> CND(k, d -> Predicates.DIGIT_NONDECREASING.is(d)).equals(TAU(k))	Numbers all of whose divisors are numbers whose decimal digits are in nondecreasing order.	nonn,base	1..1000	nyi	_Jaroslav Krizek_
+A190222	filter	1	new A008578()	v -> CND(v.longValueExact(), d -> { final int[] dc = ZUtils.digitCounts(d); return dc[0]+dc[4]+dc[6]+dc[8]+dc[9] == 0; }).equals(TAU(v))	Noncomposite numbers all of whose decimal digits are noncomposite numbers (1,2,3,5,7).	nonn,base	1..1000	nyi	_Jaroslav Krizek_
+A190223	filnum	1	1	k -> CND(k, d -> { final int[] dc = ZUtils.digitCounts(d); return dc[0]+dc[4]+dc[6]+dc[8]+dc[9] == 0; }).equals(TAU(k))	Numbers all of whose divisors are numbers whose decimal digits are noncomposite numbers (1,2,3,5,7).	nonn,base	1..10000	nyi	_Jaroslav Krizek_

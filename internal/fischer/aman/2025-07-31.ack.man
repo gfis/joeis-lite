@@ -1,0 +1,113 @@
+---- 2025-07-31 06:29:30
+---- 2025-07-31 06:45:27
+---- 2025-07-31 06:58:54
+A086369	lambdan	1	n -> ZV(2).*(F000005(n)).+(n%2).-(2)	""		a(n) = 2*tau(n) + (n mod 2) - 2	_	_	_
+A094505	sintrif	1	(term, n) -> ZV(2).^(term)	""	new A078426()	a(n) = 2^J078426(n)	_	_	_
+A106550	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A001358(), new A106554()	a(n) = J001358(n) + J106554(n)	_	_	_
+A119022	sintrif	0	(term, n) -> term.*(F000108(n))	""	new A119020()	a(n) = J119020(n)*C(2n,n)/(n+1) = J119020(n)*F000108(n)	_	_	_
+A131233	sintrif	1	(term, n) -> term.+(F000010(n))	""	new A116512()	a(n) = J116512(n) + F000010(n)	_	_	_
+A131766	holos	0	[0,100,-200,100,0,0,0,0,0,0,-1,2,-1]	0,0,0,0,0,18,36,54,72,180,378
+A131871	holos	0	[0,100,-200,100,0,0,0,0,0,0,-1,2,-1]	0,0,0,0,0,1,2,3,4,10,21,32
+A136495	lambdan	1	n -> M005374(M005374(n-1)).+(n)	""		a(n) = M005374(M005374(n-1)) + n	_	_	_
+A137515	sintrif	1	(term, n) -> term.-(1)	""	new A072895()	a(n) = J072895(n) - 1	_	_	_
+A141103	lambdan	1	n -> F000040(ZV(n).^(n)).-(ZV(n).^(n))	""		a(n) = prime(n^n) - n^n	_	_	_
+A141313	sintrif	1	(term, n) -> Z2(n).*(term)	""	new A122708()	a(n) = 2^n*J122708(n)	_	_	_
+A144623	sintrif	0	(term, n) -> term.-(1)	""	new A078822()	a(n) = J078822(n) - 1	_	_	_
+A144624	sintrif	0	(term, n) -> term.-(n)	""	new A078823()	a(n) = J078823(n) - n	_	_	_
+A156265	sintrif	1	(term, n) -> ZV(3).*(n).-(term)	""	new A078649()	a(n)=3*n-J078649(n)	_	_	_
+A156268	multraf	1	(self, n) -> ZV(2).*(self.s(0)).-(self.s(1))	""	new A054353(), new A078649()	a(n)=2*J054353(n)-J078649(n)	_	_	_
+A157970	sintrif	1	(term, n) -> term.-(1)	""	new A248056()	a(n) = J248056(n) - 1	_	_	_
+A157971	sintrif	1	(term, n) -> term.-(1)	""	new A248057()	a(n) = J248057(n) - 1	_	_	_
+A161356	sintrif	1	(term, n) -> term.*(term.+(1))	""	new A116285()	a(n) = J116285(n)*(J116285(n)+1)	_	_	_
+A178344	sintrif	0	(term, n) -> E089625(n).+(term)	"1"	new A080791()	For n >= 1, a(n) = E089625(n) + J080791(n)	_	_	_
+A178638	sintrif	1	(term, n) -> F000005(n).-(term)	""	new A089723()	a(n) = F000005(n) - J089723(n)	_	_	_
+A188296	sintrif	1	(term, n) -> term.+(2)	""	new A078144()	a(n) = J078144(n) + 2	_	_	_
+A219695	sintrif	1	(term, n) -> F000196(term.^(2).-(2*n-1))	""	new A377499()	a(n) = sqrt(J377499(n)^2 - (2n-1))	_	_	_
+A226249	lambdan	1	n -> M005374(n).+(n)	""		a(n) = M005374(n) + n	_	_	_
+A228543	sintrif	1	(term, n) -> term.+(1)	""	new A049066()	a(n) = J049066(n) + 1	_	_	_
+A232623	lambdan	0	n -> F000041(2*n).-(F000041(n-1))	""		a(n) = F000041(2*n) - F000041(n-1)	_	_	_
+A234649	multraf	8	(self, n) -> self.s(0).-(self.s(1))	""	new A078587(), new A002373()	a(n) = J078587(n) - J002373(n) = J078496(n) - J020482(n)	_	_	_
+A238815	sintrif	0	(term, n) -> term.+(D006880(n))	""	new A076048()	a(n) = J076048(n) + D006880(n)	_	_	_
+A252697	sintrif	0	(term, n) -> ZV(4).^(n).-(term)	"0,4"	new A249629()	a(n) = 4^n - J249629(n) for n > 0	_	_	_
+A252698	sintrif	0	(term, n) -> ZV(5).^(n).-(term)	"0,5"	new A249638()	a(n) = 5^n - J249638(n) for n > 0	_	_	_
+A252699	sintrif	0	(term, n) -> ZV(6).^(n).-(term)	"0,6"	new A249639()	a(n) = 6^n - J249639(n) for n > 0	_	_	_
+A252700	sintrif	0	(term, n) -> ZV(7).^(n).-(term)	"0,7"	new A249640()	a(n) = 7^n - J249640(n) for n > 0	_	_	_
+A252701	sintrif	0	(term, n) -> ZV(8).^(n).-(term)	"0,8"	new A249641()	a(n) = 8^n - J249641(n) for n > 0	_	_	_
+A252702	sintrif	0	(term, n) -> ZV(9).^(n).-(term)	"0,9"	new A249642()	a(n) = 9^n - J249642(n) for n > 0	_	_	_
+A252703	sintrif	0	(term, n) -> ZV(10).^(n).-(term)	"0,10"	new A249643()	a(n) = 10^n - J249643(n) for n > 0	_	_	_
+A259098	holos	0	[0,2,-1]	1,2,3,6,12,26	0	0
+A260489	sintrif	0	(term, n) -> ZV(3).*(n).-(term)	""	new A260488()	a(n) = 3n - J260488(n)	_	_	_
+A276796	multraf	0	(self, n) -> ZV(n).+(1).-(self.s(0).+(self.s(1)))	""	new A276797(), new A276798()	a(n) = n + 1 - (J276797(n) + J276798(n))	_	_	_
+A285324	lambdan	1	n -> D000523(E285327(n).-(n))	""		a(n) = D000523(E285327(n)-n)	_	_	_
+A288162	sintrif	1	(term, n) -> ZV(26).*(term)	""	new A107326()	a(n) = 26 * J107326(n)	_	_	_
+A309891	sintrif	1	(term, n) -> term.-(1)	""	new A169594()	a(n) = J169594(n) - 1	_	_	_
+A316344	lambdan	0	n -> F010060(2*n+2).+(F010060(MAX(2*n+1, 4)))	""		a(n) = F010060(2*n+2) + F010060(max(2*n+1,4))	_	_	_
+A318005	sintrif	1	(term, n) -> Z2(n-1).*(term)	""	new A200560()	a(n) = 2^(n-1) * J200560(n)	_	_	_
+A324391	mulr	1	(p, e) -> F070939(p).^(e)	, where F070939(p) gives the length of the binary representation of p.
+A328406	lambdan	0	n -> E328405(F276086(n))	""		a(n) = E235224(E328403(n)) = E328404(E276087(n)) = E328405(F276086(n))	_	_	_
+A330575	sintrif	1	(term, n) -> ZV(n).+(term)	""	new A255242()	a(n) = n + J255242(n)	_	_	_
+A337174	multraf	1	(self, n) -> self.s(0).+(self.s(1))	""	new A337175(), new A038548()	a(n) = J337175(n) + J038548(n)	_	_	_
+A347822	lambdan	1	n -> SU(1, n/2, k -> ZV(Predicates.BALANCED.is(k) ? 1 : 0).*(Predicates.BALANCED.is(n - k) ? 1 : 0))	a(n) = Sum_{k=1..floor(n/2)} c(k) * c(n-k), where c = A351114.
+A351116	lambdan	1	n -> SU(1, n, k -> ZV(k).*(Predicates.BALANCED.is(k) ? 1 : 0))	a(n) = Sum_{k=1..n} k * c(k), where c is the characteristic function of balanced numbers (A351114).
+A363825	mulr	1	(p, e) -> (e&1) == 0 ? ZV(1) : Z2(Integer.bitCount(e - 1)).+(1)	a(p^e) = 1 if e is even, and a(p^e) = 2^F000120(e-1) + 1 if e is odd.
+A372502	lambdan	1	n -> D064547(n).+(E372332(n))	""		a(n) = D064547(n) + E372332(n)	_	_	_
+A377467	sintrif	0	(term, n) -> term.-(1)	"0,0,0,1"	new A377435()	For n != 1, a(n) = J377435(n) - 1	_	_	_
+A380441	lambdan	1	n -> F000203(n).-(F008472(n)).+(F001221(n))	""		a(n) = sigma(n) - sopf(n) + omega(n)	_	_	_
+A380444	sintrif	1	(term, n) -> term.+(D005063(n))	""	new A023890()	a(n) = J023890(n) + D005063(n)	_	_	_
+A380447	lambdan	1	n -> ZV(n).*(F000005(n)).-(ZV(n-1).*(F001221(n)))	""		a(n) = n*tau(n) - (n-1)*omega(n)	_	_	_
+A380449	sintrif	1	(term, n) -> F000203(n).+(term)	""	new A033273()	a(n) = F000203(n) + J033273(n)	_	_	_
+A380457	lambdan	1	n -> F000203(n).+(F001221(n))	""		a(n) = sigma(n) + omega(n)	_	_	_
+A380481	sintrif	0	(term, n) -> term.-(E011655(n))	""	new A003105()	a(n) = J003105(n) - E011655(n)	_	_	_
+A381096	multraf	1	(self, n) -> ZV(n).-(F000010(n)).-(self.s(0)).+(self.s(1))	"0,0,0,0,0,3,0"	new A008479(), new A355432()	For n > 1, a(n) = n - F000010(n) - J008479(n) + J355432(n)	_	_	_
+A383156	lambdan	1	n -> SD(n, d -> D051903(d))	""		a(n) = Sum_{d|n} D051903(d)	_	_	_
+A384558	mulr	1	(p, e) -> SD(e, d -> (d&1) == 1 ? p.^(d) : ZV(0))	a(p^e) = Sum_{d|e, d odd} p^d.
+A384559	mulr	1	(p, e) -> SD(e, d -> (d&1) == 1 && GCDi(d, e/d) == 1 ? p.^(d) : ZV(0))	a(p^e) = Sum_{d|e, d odd, gcd(d, e/d) = 1} p^d.
+A384966	multraf	1	(self, n) -> self.s(0).-(self.s(1)).-(self.s(2))	""	new A380237(), new A007595(), new A006078()	a(n) = J380237(n) - J007595(n) - J006078(n)	_	_	_
+A385005	mulr	1	(p, e) -> e <= 2 ? ZV(1) : sigmaP(p, e).-(p).-(p.^(2))	a(p^e) = 1 if e <= 2, and a(p^e) = ((p^(e+1)-1) / (p-1)) - p - p^2 if e >= 3.
+A385007	mulr	1	(p, e) -> e >= 4 ? ZV(1) : p.^(e)	a(p^e) = p^e if e <= 3, and 1 otherwise.
+A385044	mulr	1	(p, e) -> p.compareTo(ZV(3)) <= 0 ? ZV(1) : ZV(2)	a(p^e) = 1 if p <= 3, and 2 if p >= 5.
+A385045	mulr	1	(p, e) -> p.compareTo(ZV(3)) <= 0 ? ZV(1) : p.^(e).+(1)	a(p^e) = 1 if p <= 3, and p^e + 1 if p >= 5.
+A385046	mulr	1	(p, e) -> p.compareTo(ZV(3)) > 0 ? ZV(1) : p.^(e).+(1)		a(p^e) = p^e + 1 if p <= 3, and 1 if p >= 5.
+A385049	mulr	1	(p, e) -> e >= 4 ? ZV(1) : p.^(e).+(1)	a(p^e) = p^e + 1 for e <= 3, and a(p^e) = 1 for e >= 4.
+A385076	sintrif	1	(term, n) -> F000005(n).+(ZV(n-1).*(term))	""	new A086971()	a(n) = F000005(n) + (n-1)*J086971(n)	_	_	_
+A385137	mulr	1	(p, e) -> p.compareTo(ZV(3)) <= 0 ? sigmaP(p, e) : p.^(e)	Multiplicative with a(p^e) = (p^(e+1)-1)/(p-1) if p <= 3, and p^e if p >= 5.
+A385454	sintrif	1	(term, n) -> ZV(1).+(n).-(term)	""	new A063655()	a(n) = 1 + n - J063655(n)	_	_	_
+A385542	multraf	1	(self, n) -> self.s(0).-(self.s(1).*(n))	""	new A183097(), new A112526()	a(n) = J183097(n) - J112526(n) * n	_	_	_
+A385555	mulr	1	(p, e) -> is2(p) ? Z2(e + 1) : (is3(p) ? p.^(e + 1) : p.^(e))	a(2^e) = 2^(e+1), a(3^e) = 3^(e+1), and a(p^e) = p^e for primes p >= 5.
+A385556	mulr	1	(p, e) -> is2(p) ? Z2(e + 2) : (is3(p) ? p.^(e + 1) : p.^(e))	a(2^e) = 2^(e+2), a(3^e) = 3^(e+1), and a(p^e) = p^e for primes p >= 5.
+A385557	mulr	1	(p, e) -> is2(p) ? Z2(e + 2) : (is3(p) ? p.^(e + 1) : is5(p) ? p.^(e + 1) : p.^(e))	a(2^e) = 2^(e+2), a(3^e) = 3^(e+1), a(5^e) = 5^(e+1), and a(p^e) = p^e for primes p >= 7.
+A385558	mulr	1	(p, e) -> is2(p) ? Z2(e + 2) : (is3(p) ? p.^(e + 1) : is5(p) || is7(p) ? p.^(e + 1) : p.^(e))	a(2^e) = 2^(e+2), a(3^e) = 3^(e+1), a(5^e) = 5^(e+1), a(7^e) = 7^(e+1), and a(p^e) = p^e for primes p >= 11.
+A385559	mulr	1	(p, e) -> is2(p) ? Z2(e + 3) : (is3(p) ? p.^(e + 1) : is5(p) || is7(p) ? p.^(e + 1) : p.^(e))	a(2^e) = 2^(e+3), a(3^e) = 3^(e+1), a(5^e) = 5^(e+1), a(7^e) = 7^(e+1), and a(p^e) = p^e for primes p >= 11.
+A385560	mulr	1	(p, e) -> is2(p) ? Z2(e + 3) : (is3(p) ? p.^(e + 2) : is5(p) || is7(p) ? p.^(e + 1) : p.^(e))	a(2^e) = 2^(e+3), a(3^e) = 3^(e+2), a(5^e) = 5^(e+1), a(7^e) = 7^(e+1), and a(p^e) = p^e for primes p >= 11.
+A385978	lambdan	1	n -> ZV(10).*(n).*(D122840(n).+(1))	""		a(n) = 10*n*(D122840(n) + 1)	_	_	_
+A386260	lambdan	1	n -> D051903(D001511(2*n))	""		a(n) = D051903(D001511(2*n))	_	_	_
+A386479	holos	0	[0,1,-3,3,-1]	0,4,7,14	0	0
+A386540	filter	1	new A000040()	p -> PP(p.*(2).-(1)) && PP(p.*(3).-(2)) && p.+(2).mod(3) == 0 & PP(p.+(2)./(3)) && PP(p.+(1)./(2))	Primes p such that 2p - 1, 3p - 2, (p + 1)/2, and (p + 2)/3 are also prime.	nonn,easy,new	1..33	nyi	_Holger Wallenta_
+A386541	finite	1	"27, 84, 110, 133, 144"
+A386549	holos	1	[0,1,-99,99,-1]	0,1,72,7031	0	0
+A386558	arrlamb	0	0	0	-1	(n, k) -> BI((k + 1)*n + k - 1, n)./(n + 1)	Square array A(n,k), n >= 0, k >= 0, read by antidiagonals: A(n,k) = binomial((k+1)*n+k-1,n)/(n+1).	nonn,tabl,easy,new	0..65	nyi
+A386573	lambdan	1	n -> SD(n, d -> Predicates.BALANCED.is(d) && Predicates.SQUARE_FREE.is(d) ? ZV(d) : ZV(0))	Sum of the squarefree balanced divisors of n.	nonn,new	1..100	nyi	_Wesley Ivan Hurt_
+A386574	lambdan	1	n -> CND(n, d -> Predicates.BALANCED.is(d) && Predicates.SQUARE_FREE.is(d))	Number of squarefree balanced divisors of n.	nonn,new	1..100	nyi	_Wesley Ivan Hurt_
+A386589	lambdan	1	n -> SD(n, d -> ZV(d).^(Predicates.BALANCED.is(d) ? 1 : 0))	a(n) = Sum_{d|n} d^c(d), where c = J351114.	nonn,new	1..100	nyi	_Wesley Ivan Hurt_
+A386591	lambdan	1	n -> CND(n, d -> !Predicates.BALANCED.is(d))	Number of divisors of n that are not balanced numbers.	nonn,new	1..100	nyi	_Wesley Ivan Hurt_
+A386592	lambdan	1	n -> SD(n, d -> !Predicates.BALANCED.is(d) ? ZV(d) : ZV(0))	Sum of the divisors of n that are not balanced numbers.	nonn,new	1..88	nyi	_Wesley Ivan Hurt_
+A386594	lambdan	1	n -> SD(n, d -> ZV(d).*(Predicates.BALANCED.is(n/d) ? 1 : 0))	a(n) = Sum_{d|n} d * c(n/d), where c = J351114.	nonn,new	1..87	nyi	_Wesley Ivan Hurt_
+A386595	lambdan	1	n -> SD(n, d -> SIGMA(d).*(Predicates.BALANCED.is(d) ? 1 : 0)./(PHI(d)))	a(n) = Sum_{d|n} sigma(d)/phi(d) * c(d), where c = J351114.	nonn,new	1..100	nyi	_Wesley Ivan Hurt_
+A386596	lambdan	1	n -> SD(n, d -> ZV(d).*(PI(n/d)))	a(n) = Sum_{d|n} d * pi(n/d).	nonn,new	1..87	nyi	_Wesley Ivan Hurt_
+A386611	lambdan	0	n -> SU(0, n - 1, k -> BI(4*k, k).*(BI(4*n-4*k, n - k - 1)))	a(n) = Sum_{k=0..n-1} binomial(4*k,  k) * binomial(4*n-4*k,n-k-1).	nonn,new	0..21	nyi	_Seiichi Manyama_
+A386612	lambdan	0	n -> SU(0, n - 1, k -> BI(4*k + 1, k).*(BI(4*n-4*k, n - k - 1)))	a(n) = Sum_{k=0..n-1} binomial(4*k+1,k) * binomial(4*n-4*k,n-k-1).	nonn,new	0..21	nyi	_Seiichi Manyama_
+A386613	lambdan	0	n -> SU(0, n - 1, k -> BI(5*k, k).*(BI(5*n-5*k, n - k - 1)))	a(n) = Sum_{k=0..n-1} binomial(5*k,  k) * binomial(5*n-5*k,n-k-1).	nonn,new	0..21	nyi	_Seiichi Manyama_
+A386614	lambdan	0	n -> SU(0, n - 1, k -> BI(5*k + 1, k).*(BI(5*n-5*k, n - k - 1)))	a(n) = Sum_{k=0..n-1} binomial(5*k+1,k) * binomial(5*n-5*k,n-k-1).	nonn,new	0..21	nyi	_Seiichi Manyama_
+A386615	lambdan	0	n -> SU(0, n - 1, k -> BI(6*k, k).*(BI(6*n-6*k, n - k - 1)))	a(n) = Sum_{k=0..n-1} binomial(6*k,  k) * binomial(6*n-6*k,n-k-1).	nonn,new	0..20	nyi	_Seiichi Manyama_
+A386616	lambdan	0	n -> SU(0, n - 1, k -> BI(6*k + 1, k).*(BI(6*n-6*k, n - k - 1)))	a(n) = Sum_{k=0..n-1} binomial(6*k+1,k) * binomial(6*n-6*k,n-k-1).	nonn,new	0..20	nyi	_Seiichi Manyama_
+A386617	lambdan	0	n -> SU(0, n - 1, k -> BI(3*k + 1, k).*(BI(3*n-3*k, n - k - 1)))	a(n) = Sum_{k=0..n-1} binomial(3*k+1,k) * binomial(3*n-3*k,n-k-1).	nonn,new	0..23	nyi	_Seiichi Manyama_
+A386622	lambdan	1	n -> SD(n, d -> ZV(n).^(Predicates.BALANCED.is(d) ? 1 : 0))	a(n) = Sum_{d|n} n^c(d), where c = J351114.	nonn,new	1..84	nyi	_Wesley Ivan Hurt_
+A386624	lambdan	1	n -> SD(n, d -> SIGMA(d).*(PHI(d)).*(MU(n/d)))	a(n) = Sum_{d|n} sigma(d) * phi(d) * mu(n/d).	nonn,new	1..69	nyi	_Wesley Ivan Hurt_
+A386651	lambdan	1	n -> RU(1, 8*n, k -> { final Z k2 = Z2(k); return new Q(BI(n + k - 1, k).mod(k2), k2); }).round()	a(n) = Sum_{k>=0} (   binomial(n+k-1, k)         (mod 2^k) ) / 2^k.	nonn,new	1..1000	nyi	_Paul D. Hanna_
+A386652	lambdan	1	n -> RU(1, 20*n, k -> new Q(BI(n + k - 1, k).*(ZV(2).^(k)).mod(ZV(3).^(k)), ZV(3).^(k))).round()	a(n) = Sum_{k>=0} ( ( binomial(n+k-1, k) * 2^k ) (mod 3^k) ) / 3^k.	nonn,new	1..1000	nyi	_Paul D. Hanna_
+A386653	lambdan	1	n -> RU(1, 25*n, k -> new Q(BI(n + k - 1, k).*(ZV(3).^(k)).mod(ZV(4).^(k)), ZV(4).^(k))).round()	a(n) = Sum_{k>=0} ( ( binomial(n+k-1, k) * 3^k ) (mod 4^k) ) / 4^k.	nonn,new	1..500	nyi	_Paul D. Hanna_
+A386654	lambdan	1	n -> RU(1, 25*n, k -> new Q(BI(n + k - 1, k).*(ZV(4).^(k)).mod(ZV(5).^(k)), ZV(5).^(k))).round()	a(n) = Sum_{k>=0} ( ( binomial(n+k-1, k) * 4^k ) (mod 5^k) ) / 5^k.	nonn,new	1..500	nyi	_Paul D. Hanna_
+A386660	lambdan	1	n -> SU(1, n, k -> BI(n, k).mod(Z2(k)))	a(n) = Sum_{k=1..n} binomial(n, k) (mod 2^k).	nonn,new	1..1000	nyi	_Paul D. Hanna_
+A386661	lambdan	1	n -> SU(1, n, k -> BI(n, k).*(ZV(2).^(k)).mod(ZV(3).^(k)))	a(n) = Sum_{k=1..n} (binomial(n, k) * 2^k) (mod 3^k).	nonn,new	1..1000	nyi	_Paul D. Hanna_
+A386662	lambdan	1	n -> SU(1, n, k -> BI(n, k).*(ZV(3).^(k)).mod(ZV(4).^(k)))	a(n) = Sum_{k=1..n} (binomial(n, k) * 3^k) (mod 4^k).	nonn,new	1..1000	nyi	_Paul D. Hanna_
+A386663	lambdan	1	n -> SU(1, n, k -> BI(n, k).*(ZV(4).^(k)).mod(ZV(5).^(k)))	a(n) = Sum_{k=1..n} (binomial(n, k) * 4^k) (mod 5^k).	nonn,new	1..1000	nyi	_Paul D. Hanna_

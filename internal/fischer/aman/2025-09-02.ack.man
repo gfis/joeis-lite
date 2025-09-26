@@ -1,0 +1,115 @@
+---- 2025-09-01 11:40:05
+---- 2025-09-01 12:46:37
+---- 2025-09-01 21:34:23
+---- 2025-09-01 22:20:56
+---- 2025-09-01 22:26:45
+---- 2025-09-01 22:50:00
+---- 2025-09-01 23:03:33
+---- 2025-09-02 10:08:32
+---- 2025-09-02 10:29:10
+---- 2025-09-02 10:41:39
+---- 2025-09-02 11:00:47
+---- 2025-09-02 11:04:07
+---- 2025-09-02 11:08:15
+A007308	dead	0	A383108	erro	NotYetImplemented	Erroneous version of A383108.					Erroneous version of A383108.
+A078816	dead	1	A081846	erro	NotYetImplemented	Erroneous version of A081846.					Erroneous version of A081846.
+A081966	rowsum	1	new A081964()	.
+A082258	dead	1	A075361	dupl	NotYetImplemented	Duplicate of A075361.					Duplicate of A075361.
+A082283	dead	1	A065867	dupl	NotYetImplemented	Duplicate of A065867.					Duplicate of A065867.
+A083907	dead	1	A034386	dupl	NotYetImplemented	Duplicate of A034386.					Duplicate of A034386.
+A084414	dead	0	A069691	dupl	NotYetImplemented	Duplicate of A069691.					Duplicate of A069691.
+A086167	partsun	1	new A001359()
+A086400	lambdan	1	n -> { final Z p = PM(n + 1); return D001006(p).-(1)./(p); }	(1/p)*(M(p)-1) where p runs through the odd primes and M(p) = D001006(p) is the p-th Motzkin number.	nonn	1..317	nyi	_Benoit Cloitre_
+A086401	lambdan	1	n -> D001006(n).modZ(n)
+A086457	filnum	1	0	k -> { final Z kp = ZV(k).^(2); return Functions.LEADING_DIGIT.i(k) == Functions.LEADING_DIGIT.i(kp) && k%10 == kp.mod(10); }	Both n and n^2 have the same initial digit and also n and n^2 have the same final digit when expressed in base 10.	base,easy,nonn	1..10000	nyi	_Jeremy Gardiner_
+A086458	filnum	0	0	k -> { final Z kp = ZV(k).^(3); return Functions.LEADING_DIGIT.i(k) == Functions.LEADING_DIGIT.i(kp) && k%10 == kp.mod(10); }	Both n and n^3 have the same initial digit and also n and n^3 have the same final digit when expressed in base 10.	base,easy,nonn	0..2000	nyi	_Jeremy Gardiner_
+A086546	lambdan	1	n -> { final Z p =PM(n); return FI(p.*(2)).-(FI(p))./(p); }	(1/p)*(F(2p)-F(p)) where p runs through the primes and F(k) denotes the k-th Fibonacci number.	nonn	1..357	nyi	_Benoit Cloitre_
+A086655	lambdan	1	n -> { final Z p =PM(n); return BI(p.*(2), p).-(2)./(p.*(2)); }	where p runs through the primes.	nonn	1..263	nyi	_Benoit Cloitre_
+A086665	lambdan	1	n -> F000203(n).-(F001414(n))
+A086678	filnum	1	1	k -> PP(SU(1, k, j -> ZV(j).^(5).*(2)).+(1))	Numbers n such that 1 + Sum_{k=1..n} 2k^5 is a prime.	nonn,easy	1..56	nyi	_Yalcin Aktar_
+A086711	filter	1	new A000040()	p -> F001414(p.-(1)).equals(F001414(p.+(1)))
+A086720	rambdan	0	n -> RU(0, n, k -> new Q(BI(n, k), ZV(n).^(2).+(ZV(k).^(2)).+(1)))	Numerator of Sum(binomial(n,k)/(n^2+k^2+1), k=0..n).	nonn,frac	0..16	nyi	_N. J. A. Sloane_
+A086721	rambdad	0	A086720	Denominator of Sum_{k=0..n} binomial(n,k)/(n^2+k^2+1).
+A086769	lambdan	1	n -> SU(1, n, i -> Z.TWO.pow(D001223(i).-(1)))	a(n) = Sum_{i=1..n} 2^(b(i) - 1)
+A093431	rowsum	1	new A093430()	.
+A105785	lambdan	0	n -> SU(0, n, k -> Z_1(n - k).*(BI(n, k)).*(ZV(k + 1).^(k - 1)))
+A110536	rowsum	1	new A110535()	.
+A119254	rowsum	0	new A071946()	.
+A127804	rowsum	0	new A128807()	.
+A127830	rowsum	0	new A127829()	.
+A130642	filnum	1	0	n -> (n&1) == 0 && ZV(1).+(SU(1, n/2, k -> D001223(2*k - 1).*(Z_1(k)))).isZero()
+A130643	filnum	1	0	n -> (n&1) == 0 && ZV(1).-(SU(1, n/2, k -> D001223(2*k - 1).*(Z_1(k)))).isZero()
+A132745	rowsum	0	new A008550()	formatted as a triangular array).
+A138335	dead	1		posi	NotYetImplemented	Positions of digits after decimal point in decimal expansion of					Positions of digits after decimal point in decimal expansion of Pi where the approximation to Pi by a root of a quadratic polynomial does not improve the accuracy.
+A138336	dead	1	A138335	firs	NotYetImplemented	First occurrence of exactly n consecutive numbers after A138335(					First occurrence of exactly n consecutive numbers after A138335(n) (A138335(n) excluded).
+A138337	dead	1		posi	NotYetImplemented	Positions of digits after decimal point of number Pi where the a					Positions of digits after decimal point of number Pi where the approximation to the number Pi by a root of a polynomial of 3 degree does not improve the accuracy.
+A147966	lambdan	1	n -> ZV(n - 1).+(D001223(n))
+A153151	lambdan	0	n -> n < 2 ? ZV(n) : (Functions.DIGIT_SUM.i(2, n) == 1 ? ZV(2*n - 1) : ZV(n - 1))	Rotated binary decrementing: For n<2 a(n) = n, if n=2^k, a(n) = 2*n-1, otherwise a(n) = n-1.	nonn,base	0..2047	nyi	_Antti Karttunen_
+A153152	lambdan	0	n -> n < 2 ? ZV(n) : (Functions.DIGIT_SUM.i(2, n + 1) == 1 ? ZV((n + 1)/2) : ZV(n + 1))	Rotated binary incrementing: For n<2 a(n)=n, if n=(2^k)-1, a(n)=(n+1)/2, otherwise a(n)=n+1.	nonn,base	0..2047	nyi	_Antti Karttunen_
+A153637	dead	1		a no	NotYetImplemented	A nonsense sequence.					A nonsense sequence.
+A155042	rowsum	1	new A155039()	.
+A161913	filnum	1	0	k -> D001223(k).compareTo(F000005(k)) != 0
+A162188	filnum	1	0	k -> D001223(k).compareTo(F000005(k)) > 0
+A162189	filnum	1	0	k -> D001223(k).compareTo(F000005(k)) < 0
+A176252	dead	1	A062337	erro	NotYetImplemented	Incorrect duplicate of A062337.					Incorrect duplicate of A062337.
+A176254	dead	1	A062343	erro	NotYetImplemented	Incorrect duplicate of A062343.					Incorrect duplicate of A062343.
+A181779	dead	0	A092134	dupl	NotYetImplemented	Duplicate of A092134.					Duplicate of A092134.
+A190992	dead	1	A176035	dupl	NotYetImplemented	Duplicate of A176035.					Duplicate of A176035.
+A193463	rowsum	1	new A076732()	.
+A216430	lambdan	1	n -> D081603(n).testBit(0) ? Z.NEG_ONE : Z.ONE	, parity of the number of 2 s in the ternary expansion of n.	sign,easy,base	1..90	nyi	_R. J. Mathar_
+A216441	lambdan	2	n -> FA(n).mod(D000166(n))	a(n) = n! mod !n.
+A268216	dead	2	A119741	dupl	NotYetImplemented	Duplicate of A119741.					Duplicate of A119741.
+A288621	rowsum	1	new A288620()	.
+A288628	rowsum	1	new A288627()	.
+A308008	multia	0	"1,1"	(self, n) -> ZV(1).+(self.a(n - 1)).+(SU(1, n - 1, m -> BI(2*(n - 1), 2*m - 1).*(self.a(n - m))))	1 + a(n) + Sum_{m=1..n} binomial(2*n, 2*m-1)*a(n+1-m).	nonn	0..296	nyi	_Michael De Vlieger_ and _N. J. A. Sloane_
+A308078	filnum	1	1	k -> Predicates.SQUARE_FREE.is(BI(k*k, k).-(ZV(k).^(k)))	Numbers k such that binomial(k^2,k) - k^k is squarefree.	nonn,hard,more	1..29	nyi	_M. F. Hasler_ (at the suggestion ---- 2025-09-01 21:50:13
+A330620	rowsum	1	new A330618()	.
+A339790	dead	1		erro	NotYetImplemented	Not well defined.					Not well defined.
+A339791	dead	1		erro	NotYetImplemented	Not well defined.					Not well defined.
+A339792	dead	1		erro	NotYetImplemented	Not well defined.					Not well defined.
+A343089	rowsum	2	new A342989()	.
+A343093	rowsum	2	new A343092()	.
+A350354	prepend	0	new RowSumSequence(0, new A079502())	1,1
+A350752	rowsum	0	new A350753()	.
+A358276	multia	1	"1"	(self, n) -> RD(n, d -> d >= n ? QV(0) : new Q(Z_1(n/d - 1).*(self.a(d)), ZV(d))).*(n).num()	sign,easy	1..10000	nyi	_Seiichi Manyama_
+A358292	arrlamb	0	0	0	1	(n,k) -> ZV(n).^(3).*(ZV(k).^(3)).*(ZV(n + k).^(2))	n>=0, k>=0.	nonn,tabl	0..54	nyi
+A358293	arrlamb	1	1	1	1	(n,k) -> ZV(n).^(3).*(ZV(k).^(3)).*(ZV(n + k).^(2))	n>=1, k>=1.	nonn,tabl	1..45	nyi
+A358294	trilambn	0	0	0	(n,k) -> ZV(n).^(3).*(ZV(k).^(3)).*(ZV(n + k).^(2))	n^3*k*3*(n+k)^2, n>=0, 0 <= k <= n.	nonn,tabl	0..44	nyi	_N. J. A. Sloane_
+A358295	trilambn	1	1	1	(n,k) -> ZV(n).^(3).*(ZV(k).^(3)).*(ZV(n + k).^(2))	n^3*k*3*(n+k)^2, n>=1, 1 <= k <= n.	nonn,tabl	1..36	nyi	_N. J. A. Sloane_
+A358308	filnum	1	1	k -> CV(SIGMA(2*k)).compareTo(CV(F007947(2*k)).sqrt().*(2*k)) > 0	Numbers k such that sigma(2*k) > 2*k*sqrt(gamma(2*k)), where sigma(k) = F000203(k) is the sum of the divisors of k and gamma(k) = F007947(k) is the greatest squarefree divisor of k.	nonn	1..400	nyi	_N. J. A. Sloane_
+A358309	lambdan	1	n -> CV(F007947(n)).sqrt().*(n).floor().-(SIGMA(n))	a(n) = floor(n*sqrt(gamma(n))) - sigma(n), where sigma(n) = F000203(n) is the sum of the divisors of n and gamma(n) = F007947(n) is the greatest squarefree divisor of n.	sign	1..10000	nyi	_N. J. A. Sloane_
+A382777	holos	0	[[0],[0,3,0,-27],[4,8]]	1	0	0
+A386371	holos	0	[[0],[304984135290231625596825600,-459676291739221161452390400,204702420750856074958560000,2294592190051933648800000,-21445104448100706252000000,3754160390607370524000000],[756374181497437893385157760,-1143971377324388956002231040,543258458451736545574334520,-62198971993007672574766360,-1159268076487360767574200,-4359973298692383923951080],[-39530305857276050670355320,49760069127090078338544954,62069291513227826684567999,-168380151442376797602371231,130803893690808003041848009,-33979500619583537984836075],[0,474536972169076076442792,-3743449930728730097832888,9525013876734480051824592,-9277921860291566744761728,2810796104769836841803520]]	1,3,31	0	0
+A386486	holos	0	[[0],[1],[-3],[3],[-1]]	1,3,12,29	0	0
+A386825	trilambn	0	0	0	(n,k) -> ZV(3).^(n - k).*(BI(2*n, n - k))
+A386826	holos	0	[[0],[854784,-244224],[-118224,41184],[4034,-1892],[1,1],[0,1]]	1,7,67,694	0	0
+A387083	polyx	0	"[1],[2,-4,2],[2,-4,1]"	"p1,p2,/"	0	1
+A387139	rowsum	0	new A387138()	.
+A387152	arrlamb	0	0	0	1	(n, k) -> SU(0, n, j -> BI(k, j).*(SA(n, j)))	Sum_{j=0..n} binomial(k, j)*|Stirling1(n, j)|.	nonn,tabl,new	0..65	nyi
+A387153	filnum	1	1	k -> Predicates.SQUARE_FREE.is(k) && SIGMA(k).compareTo(ZV(3*k)) > 0	Squarefree 3-abundant numbers: squarefree numbers k such that F000203(k)
+A387173	diffs	0	new A067175()
+A387204	holos	0	[0,1,-5,10,-10,5,-1]	0,6,23,57	0	0
+A387205	lambdan	0	n -> n == 0 ? ZV(1) : RU(1, n - 1, k -> new Q(1, k)).+(2).*(FA(n - 1)).num()	a(n) = (n - 1)!*(2 + Harmonic(n - 1)) if n >= 1, and a(0) = 1.	nonn,new	0..400	nyi	_Peter Luschny_
+A387373	holos	0	[0,16,320,-428,2120,-4479,71,-673,376,209,53,-1]	5,281,15949,905469,51427345,2920698969,165875085993,9420532825569,535019698383817,30385338406252141	0	0
+A387374	holos	1	[0,-464,5170,-10032,4412,1775,-672,651,-666,-241,68,-1]	421,26564,1702720,109099373,6990954434,447974968976,28705909073977,1839453802307198,117870864072599395,7553079389820352025	0	0
+A387375	holos	0	[0,-4,16,-21,10,-1]	3,47,397,3031	0	0
+A387430	lambdan	0	n -> SU(0, n/2, k -> ZV(n).^(n - 2*k).*(BI(2*(n - k), n - k)).*(BI(n - k, k)))	a(n) = Sum_{k=0..floor(n/2)} n^(n-2*k) * binomial(2*(n-k),n-k) * binomial(n-k,k).
+A387433	holos	0	[[0],[-4],[-100],[-452],[-948],[-11884],[-94394],[-359221],[-896221],[-1422260],[-1031036],[-408220],[60684],[3128],[-1630],[-171],[1]]	15,687,123445,22217385,3998015863,719448790681,129465806292261,23297551477617903,4192426713354818233,754433003972842510279,135761265825306788853311,24430428151245174661992773,4396289442536280242818423199,791118384946146380633498854261,142362851031647945042577554446105	0	0
+A387438	holos	0	[0,1,-1,1,-1,1,-5,5,-1]	2,106,614,2658,10406,39298,146618	0	0
+A387456	holos	2	[0,-16,16,12,-16,32,-28,-25,32,-16,8,14,-16,0,4,-1]	48,192,696,1780,4824,11368,27552,62064,141840,312224,690768,1496768,3246096,6956160	0	0
+A387457	holos	3	[[0],[32],[-48],[-8],[44],[-16],[-8],[6],[-1]]	2772,13096,43400,142680,413168,1162304,3080736,7966880	0	0
+A387459	lambdan	0	n -> new Zi(1, n).*(new Zi(n, -1).^(n)).+(new Zi(1, -n).*(new Zi(n, 1).^(n))).re()./(2)	a(n) = ((1 + i*n)*(-i + n)^n + (1 - i*n)*(i + n)^n)/2
+A387466	arrlamb	0	0	0	-1	(n,k) -> SU(0, n/2, j -> ZV(k).^(2*j).*(BI(2*(n - j), n - j)).*(BI(n - j, j)))
+A387467	lambdan	0	n -> SU(0, n/2, k -> ZV(n).^(2*k).*(BI(2*(n - k), n - k)).*(BI(n - k, k)))	Sum_{k=0..floor(n/2)} n^(2*k) * binomial(2*(n-k),n-k) * binomial(n-k,k).
+A387476	holos	0	[[0],[-12,4],[20,-8],[-8,4],[6,-4],[4,-4],[0],[0,1]]	1	0	0
+A387477	holos	0	[[0],[-16,4],[28,-8],[-12,4],[0],[8,-4],[6,-4],[0],[0],[0,1]]	1	0	0
+A387478	holos	0	[[0],[-108,36],[60,-24],[-8,4],[18,-12],[4,-4],[0],[0,1]]	1	0	0
+A387479	holos	0	[[0],[-144,36],[84,-24],[-12,4],[0],[24,-12],[6,-4],[0],[0],[0,1]]	1	0	0
+A387480	holos	0	[[0],[-72,36],[54,-36],[3,-3],[3,-6],[0,1]]	1	0	0
+A387481	holos	0	[[0],[-108,36],[90,-36],[-18,9],[18,-12],[6,-6],[0],[0,1]]	1	0	0
+A387482	holos	0	[[0],[-144,36],[126,-36],[-27,9],[0],[24,-12],[9,-6],[0],[0],[0,1]]	1	0	0
+A387483	holos	0	[[0],[-48,16],[40,-16],[-8,4],[12,-8],[4,-4],[0],[0,1]]	1	0	0
+A387484	holos	0	[[0],[-256,64],[224,-64],[-48,16],[0],[32,-16],[12,-8],[0],[0],[0,1]]	1	0	0
+A387485	holos	0	[[0],[-64,16],[56,-16],[-12,4],[0],[16,-8],[6,-4],[0],[0],[0,1]]	1	0	0
+---- 2025-09-02 11:12:25
+A387489	holos	0	[[0],[-1],[2],[12],[-14],[-31],[24],[-8],[8],[33],[-26],[-4],[6],[-1]]	1,1,2,7,26,71,258,857,3148,11300,41841,154140,573201,2129726,7935779	0	0
