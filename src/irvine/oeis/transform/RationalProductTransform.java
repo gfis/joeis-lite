@@ -1,6 +1,7 @@
 package irvine.oeis.transform;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.function.Function;
 
 import irvine.math.api.RationalSequence;
@@ -36,6 +37,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   private final ArrayList<Q> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
   private final ArrayList<Q> mBs = new ArrayList<>(ESTLEN); // resulting sequence (Manyama's a(n))
   private final ArrayList<Q> mCs = new ArrayList<>(ESTLEN); // auxiliary sequence (Manyama's b(n))
+  private final BitSet mHSet = new BitSet(ESTLEN); // mHset(mH) == true iff the (exponent of x) == mH; g(k) = mHset(k) ? k : 0;
   private long mStopH; // next term of the sequence h(k)
   private int mIn; // index for initial terms
   private int mK; // current index k >= 1 for f() and g()
@@ -80,6 +82,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     private long mFVal;
     private long mGVal;
     private long mHVal;
+    private int mHmin; // minimal number of terms of sequence h(k) to be precomputed
     private Function<Integer, Z> mFLambdaZ;
     private Function<Integer, Z> mGLambdaZ;
     private Function<Integer, Q> mFLambdaQ;
@@ -90,14 +93,16 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     private Sequence mGSequenceZ; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
     private Sequence mHSequenceZ; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
     private RationalSequence mFSequenceQ; // RationalSequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
-    private RationalSequence mGSequenceQ; // RationalSequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
+    private RationalSequence mGSequenceQ; // RationalSequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k) 
+    // no mHSequenceQ: rational exponents of x are not allowed
     private int mGfType; // type of the resulting generating function
     private Q[] mPreTerms; // initial terms to be prepended
 
     /**
      * Empty constructor, sets the defaults for all optional parameters.
      */
-    public Builder() {
+    public Builder() { 
+      mHmin = 4; // precompute 4 terms of h(k)
       mHLambdaL = k -> (long) k;     // default: h=k in prod(1/(1 - x^h))
       mFType = FunctionType.FT_NULL; // default: f=1 in prod(1/(1 - x^k)^f)
       mGType = FunctionType.FT_NULL; // default: g=1 in prod(1/(1 - g*x^k))
@@ -206,6 +211,11 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       return this;
     }
 
+    public Builder hmin(final int m) {
+      mHmin = m;
+      return this;
+    }
+
     public Builder prepend(final String preTerms) {
       mPreTerms = QUtils.toQ(preTerms);
       return this;
@@ -265,6 +275,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     ++mK; // starts with 1
     //----------------
     Q nextF = Q.ONE;
+    Z tempF = null;
     switch (mBuilder.mFType) {
       case FT_NULL:
       default:
@@ -280,13 +291,15 @@ public class RationalProductTransform extends AbstractSequence implements Ration
         nextF = mBuilder.mFLambdaQ.apply(mK);
         break;
       case FT_NEXT_Z:
-        nextF = Q.valueOf(mBuilder.mFSequenceZ.next());
+        tempF = mBuilder.mFSequenceZ.next(); // maybe a FiniteSequence
+        nextF = tempF == null ? Q.ZERO : Q.valueOf(tempF);
         break;
       case FT_NEXT_Q:
         nextF = mBuilder.mFSequenceQ.nextQ();
         break;
       case FT_LAMBDA_NEXT_Z:
-        nextF = Q.valueOf(mBuilder.mFLambdaZ.apply(mK)).multiply(mBuilder.mFSequenceZ.next());
+        tempF = mBuilder.mFSequenceZ.next(); // maybe a FiniteSequence
+        nextF = Q.valueOf(mBuilder.mFLambdaZ.apply(mK)).multiply(tempF == null ? Z.ZERO : tempF);
         break;
       case FT_LAMBDA_NEXT_Q:
         nextF = mBuilder.mFLambdaQ.apply(mK).multiply(mBuilder.mFSequenceQ.nextQ());
@@ -295,6 +308,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     mFs.add(nextF);
     //----------------
     Q nextG = Q.ONE;
+    Z tempG = null;
     switch (mBuilder.mGType) {
       case FT_NULL:
       default:
@@ -310,13 +324,15 @@ public class RationalProductTransform extends AbstractSequence implements Ration
         nextG = mBuilder.mGLambdaQ.apply(mK);
         break;
       case FT_NEXT_Z:
-        nextG = Q.valueOf(mBuilder.mGSequenceZ.next());
+        tempG = mBuilder.mGSequenceZ.next(); // maybe a FiniteSequence
+        nextG = tempG == null ? Q.ZERO : Q.valueOf(tempG);
         break;
       case FT_NEXT_Q:
         nextG = mBuilder.mGSequenceQ.nextQ();
         break;
       case FT_LAMBDA_NEXT_Z:
-        nextG = Q.valueOf(mBuilder.mGLambdaZ.apply(mK)).multiply(mBuilder.mGSequenceZ.next());
+        tempG = mBuilder.mGSequenceZ.next(); // maybe a FiniteSequence
+        nextG = Q.valueOf(mBuilder.mGLambdaZ.apply(mK)).multiply(tempG == null ? Z.ZERO : tempG);
         break;
       case FT_LAMBDA_NEXT_Q:
         nextG = mBuilder.mGLambdaQ.apply(mK).multiply(mBuilder.mGSequenceQ.nextQ());
