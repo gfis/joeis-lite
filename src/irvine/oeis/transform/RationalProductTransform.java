@@ -19,7 +19,7 @@ import irvine.oeis.Sequence;
  * Since Product_{k&gt;=1} (1 - g(k)*x^k)^(-f(k)) = exp(Sum_{n&gt;=1} (Sum_{d|n} d*f(d)*g(d)^(n/d))*x^n/n),  <br />
  * we see that b(n) is given explicitly by b(n) = (1/n) * Sum_{k=1..n} c(k)*b(n-k) <br />
  * where c(n) = Sum_{d|n} d*f(d)*g(d)^(n/d). <br />
- * The algorithm here uses a monotone increasing function h(k) (default: h(k) := k) such that<br />
+ * The algorithm here uses a monotone increasing function h() (default: h(k) := k) such that<br />
  * g(k) := 0 for k != h(k). <br />
  * Examples: <br />
  * 1. If we set g(k) := 1, we get the usual Euler transform. <br />
