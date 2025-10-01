@@ -42,8 +42,6 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   private int mH; // current index for h()
   private Z mNextH; // next term of the sequence h(k)
   private Z mFactorial; // = k!
-  private int mGfType; // type of the resulting generating function
-  private Q[] mPreTerms; // initial terms to be prepended
 
 
   /* Caution, the following are bitmasks, c.f. usage at the end of <code>compute()</code>: */
@@ -57,7 +55,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   private static final int DEN_EGF = 5;
 
   /** Function types for f(), g() and h(). */
-  private enum FunctionType {
+  private static enum FunctionType {
     TYPE_NULL           // parameter is absent, take the default (usually 1)
     , TYPE_CONST_L        // a constant long
     , TYPE_LAMBDA_L       // a lambda expression k -> Long
@@ -69,303 +67,348 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     , TYPE_LAMBDA_NEXT_Q  // LambdaQ * nextQ, function(k) * successive terms of a RationalSequence
   }
 
-  private FunctionType mFType; // type of function f()
-  private long mFVal;
-  private Function<Long, Long> mFLambdaL;
-  private Function<Integer, Z> mFLambdaZ;
-  private Function<Integer, Q> mFLambdaQ;
-  private Sequence mFSequenceZ; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
-  private RationalSequence mFSequenceQ; // RationalSequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
-
-  private FunctionType mGType; // type of function g()
-  private long mGVal;
-  private Function<Long, Long> mGLambdaL;
-  private Function<Integer, Z> mGLambdaZ;
-  private Function<Integer, Q> mGLambdaQ;
-  private Sequence mGSequenceZ; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
-  private RationalSequence mGSequenceQ; // RationalSequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
-
-  private FunctionType mHType; // type of function h()
-  private long mHVal;
-  private Function<Long, Long> mHLambdaL;
-  private Function<Integer, Z> mHLambdaZ;
-  private Sequence mHSequenceZ; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
-  // no mHSequenceQ: rational exponents of x are not allowed
+  /** Encapsulate the parameters. */
+  private Builder mBuilder; //
 
   /**
-   * Specify a constant f value
-   * @param val value
-   * @return this
+   * Builder inner class for flexible parameter setup.
    */
-  public RationalProductTransform f(final long val) {
-    mFVal = val;
-    mFType = FunctionType.TYPE_CONST_L;
-    return this;
-  }
+  public static class Builder {
 
-  /**
-   * Specify a lambda f value
-   * @param lambda value
-   * @return this
-   */
-  public RationalProductTransform fl(final Function<Long, Long> lambda) {
-    mFLambdaL = lambda;
-    mFType = FunctionType.TYPE_LAMBDA_L;
-    return this;
-  }
+    private int mGfType; // type of the resulting generating function
+    private Q[] mPreTerms; // initial terms to be prepended
+    private int mStartK; // starting value for k
+    private int mSkipNo; // how many leading terms to skip from the resulting sequence
 
-  /**
-   * Specify a lambda f value
-   * @param lambda value
-   * @return this
-   */
-  public RationalProductTransform f(final Function<Integer, Z> lambda) {
-    mFLambdaZ = lambda;
-    mFType = FunctionType.TYPE_LAMBDA_Z;
-    return this;
-  }
+    private FunctionType mFType; // type of function f()
+    private long mFVal;
+    private Function<Long, Long> mFLambdaL;
+    private Function<Integer, Z> mFLambdaZ;
+    private Function<Integer, Q> mFLambdaQ;
+    private Sequence mFSequenceZ; // sequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
+    private RationalSequence mFSequenceQ; // RationalSequence for the exponent of the parenthesis: 1/(1-x^k)^f(k)
+  
+    private FunctionType mGType; // type of function g()
+    private long mGVal;
+    private Function<Long, Long> mGLambdaL;
+    private Function<Integer, Z> mGLambdaZ;
+    private Function<Integer, Q> mGLambdaQ;
+    private Sequence mGSequenceZ; // sequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
+    private RationalSequence mGSequenceQ; // RationalSequence for the factor of x^k: 1/(1-g(k)*x^k)^f(k)
+  
+    private FunctionType mHType; // type of function h()
+    private long mHVal;
+    private Function<Long, Long> mHLambdaL;
+    private Function<Integer, Z> mHLambdaZ;
+    private Sequence mHSequenceZ; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
+    // no mHSequenceQ: rational exponents of x are not allowed
 
-  /**
-   * Specify a sequence f value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform f(final Sequence seq) {
-    mFSequenceZ = seq;
-    mFType = FunctionType.TYPE_NEXT_Z;
-    return this;
-  }
+    /**
+     * Empty constructor: set the defaults for all optional parameters.
+     */
+    public Builder() {
+      mHLambdaL = k -> (long) k;     // default: h=k in prod(1/(1 - x^h))
+      mFType = FunctionType.TYPE_NULL; // default: f=1 in prod(1/(1 - x^k)^f)
+      mGType = FunctionType.TYPE_NULL; // default: g=1 in prod(1/(1 - g*x^k))
+      mHType = FunctionType.TYPE_NULL; // default: h=k in prod(1/(1 - g*x^h))
+      mGfType = OGF;
+      mPreTerms = QUtils.toQ("1"); 
+      mStartK = 1; // default: start with k >= 1
+      mSkipNo = 0; // default: do not skip leading terms
+    }
 
-  /**
-   * Specify a lambda and sequence f value
-   * @param lambda value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform f(final Function<Integer, Z> lambda, final Sequence seq) {
-    mFLambdaZ = lambda;
-    mFSequenceZ = seq;
-    mFType = FunctionType.TYPE_LAMBDA_NEXT_Z;
-    return this;
-  }
+    /**
+     * Set the denominator sequence flag.
+     * @return this
+     */
+    public Builder den() {
+      mGfType |= DEN_OGF;
+      return this;
+    } 
 
-  /**
-   * Specify a lambda f value
-   * @param lambda value
-   * @return this
-   */
-  public RationalProductTransform fq(final Function<Integer, Q> lambda) {
-    mFLambdaQ = lambda;
-    mFType = FunctionType.TYPE_LAMBDA_Q;
-    return this;
-  }
-
-  /**
-   * Specify a sequence f value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform fq(final RationalSequence seq) {
-    mFSequenceQ = seq;
-    mFType = FunctionType.TYPE_NEXT_Q;
-    return this;
-  }
-
-  /**
-   * Specify a lambda and sequence f value
-   * @param lambda value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform fq(final Function<Integer, Q> lambda, final RationalSequence seq) {
-    mFLambdaQ = lambda;
-    mFSequenceQ = seq;
-    mFType = FunctionType.TYPE_LAMBDA_NEXT_Q;
-    return this;
-  }
-
-  /**
-   * Specify a constant g value
-   * @param val value
-   * @return this
-   */
-  public RationalProductTransform g(final long val) {
-    mGVal = val;
-    mGType = FunctionType.TYPE_CONST_L;
-    return this;
-  }
-
-  /**
-   * Specify a lambda g value
-   * @param lambda value
-   * @return this
-   */
-  public RationalProductTransform gl(final Function<Long, Long> lambda) {
-    mGLambdaL = lambda;
-    mGType = FunctionType.TYPE_LAMBDA_L;
-    return this;
-  }
-
-  /**
-   * Specify a lambda g value
-   * @param lambda value
-   * @return this
-   */
-  public RationalProductTransform g(final Function<Integer, Z> lambda) {
-    mGLambdaZ = lambda;
-    mGType = FunctionType.TYPE_LAMBDA_Z;
-    return this;
-  }
-
-  /**
-   * Specify a sequence g value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform g(final Sequence seq) {
-    mGSequenceZ = seq;
-    mGType = FunctionType.TYPE_NEXT_Z;
-    return this;
-  }
-
-  /**
-   * Specify a lambda and sequence g value
-   * @param lambda value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform g(final Function<Integer, Z> lambda, final Sequence seq) {
-    mGLambdaZ = lambda;
-    mGSequenceZ = seq;
-    mGType = FunctionType.TYPE_LAMBDA_NEXT_Z;
-    return this;
-  }
-
-  /**
-   * Specify a lambda g value
-   * @param lambda value
-   * @return this
-   */
-  public RationalProductTransform gq(final Function<Integer, Q> lambda) {
-    mGLambdaQ = lambda;
-    mGType = FunctionType.TYPE_LAMBDA_Q;
-    return this;
-  }
-
-  /**
-   * Specify a sequence g value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform gq(final RationalSequence seq) {
-    mGSequenceQ = seq;
-    mGType = FunctionType.TYPE_NEXT_Q;
-    return this;
-  }
-
-  /**
-   * Specify a lambda and sequence g value
-   * @param lambda value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform gq(final Function<Integer, Q> lambda, final RationalSequence seq) {
-    mGLambdaQ = lambda;
-    mGSequenceQ = seq;
-    mGType = FunctionType.TYPE_LAMBDA_NEXT_Q;
-    return this;
-  }
-
-  /**
-   * Specify a lambda h value
-   * @param lambda value
-   * @return this
-   */
-  public RationalProductTransform hl(final Function<Long, Long> lambda) {
-    mHLambdaL = lambda;
-    mHType = FunctionType.TYPE_LAMBDA_L;
-    return this;
-  }
-
-  /**
-   * Specify a lambda h value
-   * @param lambda value
-   * @return this
-   */
-  public RationalProductTransform h(final Function<Integer, Z> lambda) {
-    mHLambdaZ = lambda;
-    mHType = FunctionType.TYPE_LAMBDA_Z;
-    return this;
-  }
-
-  /**
-   * Specify a sequence h value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform h(final Sequence seq) {
-    mHSequenceZ = seq;
-    mHType = FunctionType.TYPE_NEXT_Z;
-    return this;
-  }
-
-  /**
-   * Specify a lambda and sequence h value
-   * @param lambda value
-   * @param seq value
-   * @return this
-   */
-  public RationalProductTransform h(final Function<Integer, Z> lambda, final Sequence seq) {
-    mHLambdaZ = lambda;
-    mHSequenceZ = seq;
-    mHType = FunctionType.TYPE_LAMBDA_NEXT_Z;
-    return this;
-  }
-
-  /**
-   * Prepend terms.
-   * @param preTerms string of prepend terms
-   * @return this
-   */
-  public RationalProductTransform prepend(final String preTerms) {
-    mPreTerms = QUtils.toQ(preTerms);
-    return this;
-  }
-
-  /**
-   * The the <code>egf</code> flag
-   * @return this
-   */
-  public RationalProductTransform egf() {
-    mGfType |= EGF;
-    return this;
-  }
-
-  /**
-   * Set the denominator sequence flag.
-   * @return this
-   */
-  public RationalProductTransform den() {
-    mGfType |= DEN_OGF;
-    return this;
-  }
+    /**
+     * The the <code>egf</code> flag
+     * @return this
+     */
+    public Builder egf() {
+      mGfType |= EGF;
+      return this;
+    }
+  
+    /**
+     * Specify a constant f value
+     * @param val value
+     * @return this
+     */
+    public Builder f(final long val) {
+      mFVal = val;
+      mFType = FunctionType.TYPE_CONST_L;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda f value
+     * @param lambda value
+     * @return this
+     */
+    public Builder fl(final Function<Long, Long> lambda) {
+      mFLambdaL = lambda;
+      mFType = FunctionType.TYPE_LAMBDA_L;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda f value
+     * @param lambda value
+     * @return this
+     */
+    public Builder f(final Function<Integer, Z> lambda) {
+      mFLambdaZ = lambda;
+      mFType = FunctionType.TYPE_LAMBDA_Z;
+      return this;
+    }
+  
+    /**
+     * Specify a sequence f value
+     * @param seq value
+     * @return this
+     */
+    public Builder f(final Sequence seq) {
+      mFSequenceZ = seq;
+      mFType = FunctionType.TYPE_NEXT_Z;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda and sequence f value
+     * @param lambda value
+     * @param seq value
+     * @return this
+     */
+    public Builder f(final Function<Integer, Z> lambda, final Sequence seq) {
+      mFLambdaZ = lambda;
+      mFSequenceZ = seq;
+      mFType = FunctionType.TYPE_LAMBDA_NEXT_Z;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda f value
+     * @param lambda value
+     * @return this
+     */
+    public Builder fq(final Function<Integer, Q> lambda) {
+      mFLambdaQ = lambda;
+      mFType = FunctionType.TYPE_LAMBDA_Q;
+      return this;
+    }
+  
+    /**
+     * Specify a sequence f value
+     * @param seq value
+     * @return this
+     */
+    public Builder fq(final RationalSequence seq) {
+      mFSequenceQ = seq;
+      mFType = FunctionType.TYPE_NEXT_Q;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda and sequence f value
+     * @param lambda value
+     * @param seq value
+     * @return this
+     */
+    public Builder fq(final Function<Integer, Q> lambda, final RationalSequence seq) {
+      mFLambdaQ = lambda;
+      mFSequenceQ = seq;
+      mFType = FunctionType.TYPE_LAMBDA_NEXT_Q;
+      return this;
+    }
+  
+    /**
+     * Specify a constant g value
+     * @param val value
+     * @return this
+     */
+    public Builder g(final long val) {
+      mGVal = val;
+      mGType = FunctionType.TYPE_CONST_L;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda g value
+     * @param lambda value
+     * @return this
+     */
+    public Builder gl(final Function<Long, Long> lambda) {
+      mGLambdaL = lambda;
+      mGType = FunctionType.TYPE_LAMBDA_L;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda g value
+     * @param lambda value
+     * @return this
+     */
+    public Builder g(final Function<Integer, Z> lambda) {
+      mGLambdaZ = lambda;
+      mGType = FunctionType.TYPE_LAMBDA_Z;
+      return this;
+    }
+  
+    /**
+     * Specify a sequence g value
+     * @param seq value
+     * @return this
+     */
+    public Builder g(final Sequence seq) {
+      mGSequenceZ = seq;
+      mGType = FunctionType.TYPE_NEXT_Z;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda and sequence g value
+     * @param lambda value
+     * @param seq value
+     * @return this
+     */
+    public Builder g(final Function<Integer, Z> lambda, final Sequence seq) {
+      mGLambdaZ = lambda;
+      mGSequenceZ = seq;
+      mGType = FunctionType.TYPE_LAMBDA_NEXT_Z;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda g value
+     * @param lambda value
+     * @return this
+     */
+    public Builder gq(final Function<Integer, Q> lambda) {
+      mGLambdaQ = lambda;
+      mGType = FunctionType.TYPE_LAMBDA_Q;
+      return this;
+    }
+  
+    /**
+     * Specify a sequence g value
+     * @param seq value
+     * @return this
+     */
+    public Builder gq(final RationalSequence seq) {
+      mGSequenceQ = seq;
+      mGType = FunctionType.TYPE_NEXT_Q;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda and sequence g value
+     * @param lambda value
+     * @param seq value
+     * @return this
+     */
+    public Builder gq(final Function<Integer, Q> lambda, final RationalSequence seq) {
+      mGLambdaQ = lambda;
+      mGSequenceQ = seq;
+      mGType = FunctionType.TYPE_LAMBDA_NEXT_Q;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda h value
+     * @param lambda value
+     * @return this
+     */
+    public Builder hl(final Function<Long, Long> lambda) {
+      mHLambdaL = lambda;
+      mHType = FunctionType.TYPE_LAMBDA_L;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda h value
+     * @param lambda value
+     * @return this
+     */
+    public Builder h(final Function<Integer, Z> lambda) {
+      mHLambdaZ = lambda;
+      mHType = FunctionType.TYPE_LAMBDA_Z;
+      return this;
+    }
+  
+    /**
+     * Specify a sequence h value
+     * @param seq value
+     * @return this
+     */
+    public Builder h(final Sequence seq) {
+      mHSequenceZ = seq;
+      mHType = FunctionType.TYPE_NEXT_Z;
+      return this;
+    }
+  
+    /**
+     * Specify a lambda and sequence h value
+     * @param lambda value
+     * @param seq value
+     * @return this
+     */
+    public Builder h(final Function<Integer, Z> lambda, final Sequence seq) {
+      mHLambdaZ = lambda;
+      mHSequenceZ = seq;
+      mHType = FunctionType.TYPE_LAMBDA_NEXT_Z;
+      return this;
+    }
+  
+    /**
+     * Prepend terms.
+     * @param preTerms string of prepend terms
+     * @return this
+     */
+    public Builder prepend(final String preTerms) {
+      mPreTerms = QUtils.toQ(preTerms);
+      return this;
+    }
+  
+    /**
+     * Specifify a start value for k different from 1.
+     * @param startK starting value for k in <code>prod_{k &gt;= </code>
+     * @return this
+     */
+    public Builder start(final int startK) {
+      mStartK = startK;
+      return this;
+    }
+  
+    /**
+     * Specifify how many leading terms of the resulting sequence should by skipped.
+     * @param skipNo number of terms to be omitted
+     * @return this
+     */
+    public Builder skip(final int skipNo) {
+      mSkipNo = skipNo;
+      return this;
+    }
+  
+  } // inner class Builder
 
   /**
    * Constructor with Builder
    * @param offset first index
+   * @param builder {@link #Builder} inner class for flexible parameter setup
    */
-  public RationalProductTransform(final int offset) {
+  public RationalProductTransform(final int offset, final Builder builder) {
     super(offset);
-    mGfType = OGF;
-    mPreTerms = QUtils.toQ("1");
+    mBuilder = builder;
     mN = offset - 1;
     mIn = 0; // for prepending of initial terms
     mFactorial = Z.ONE;
-    mFType = FunctionType.TYPE_NULL; // default f=1 in prod(1/(1 - x^k)^f)
-    mGType = FunctionType.TYPE_NULL; // default g=1 in prod(1/(1 - g*x^k))
-    mHType = FunctionType.TYPE_LAMBDA_L; // default h=k in prod(1/(1 - g*x^h))
-    mHLambdaL = k -> (long) k;     // default h=k in prod(1/(1 - x^h))
-    mK = 0;
+    mK = mBuilder.mStartK - 1;
     for (int k = 0; k < 1; ++k) { // kStart; ++k) {
       mFs.add(Q.ZERO); // [0] not used
       mGs.add(Q.ZERO); // [0] not used
@@ -374,43 +417,46 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     } // while < kStart
     mH = 1;
     mNextH = Z.ONE;
+    for (int sk = 0; sk < mBuilder.mSkipNo; ++sk) { // do skip
+      nextQ();
+    }
   }
 
   @Override
   public Q nextQ() {
     ++mN;
-    if (mIn < mPreTerms.length) { // during prepend phase
-      return mPreTerms[mIn++];
+    if (mIn < mBuilder.mPreTerms.length) { // during prepend phase
+      return mBuilder.mPreTerms[mIn++];
     }
     ++mK; // starts with 1
     Q nextF = Q.ONE;
     final Z tempF;
-    switch (mFType) {
+    switch (mBuilder.mFType) {
       case TYPE_CONST_L:
-        nextF = Q.valueOf(mFVal);
+        nextF = Q.valueOf(mBuilder.mFVal);
         break;
       case TYPE_LAMBDA_L:
-        nextF = Q.valueOf(mFLambdaL.apply((long) mK));
+        nextF = Q.valueOf(mBuilder.mFLambdaL.apply((long) mK));
         break;
       case TYPE_LAMBDA_Z:
-        nextF = Q.valueOf(mFLambdaZ.apply(mK));
+        nextF = Q.valueOf(mBuilder.mFLambdaZ.apply(mK));
         break;
       case TYPE_LAMBDA_Q:
-        nextF = mFLambdaQ.apply(mK);
+        nextF = mBuilder.mFLambdaQ.apply(mK);
         break;
       case TYPE_NEXT_Z:
-        tempF = mFSequenceZ.next(); // maybe a FiniteSequence
+        tempF = mBuilder.mFSequenceZ.next(); // maybe a FiniteSequence
         nextF = tempF == null ? Q.ZERO : Q.valueOf(tempF);
         break;
       case TYPE_NEXT_Q:
-        nextF = mFSequenceQ.nextQ();
+        nextF = mBuilder.mFSequenceQ.nextQ();
         break;
       case TYPE_LAMBDA_NEXT_Z:
-        tempF = mFSequenceZ.next(); // maybe a FiniteSequence
-        nextF = Q.valueOf(mFLambdaZ.apply(mK)).multiply(tempF == null ? Z.ZERO : tempF);
+        tempF = mBuilder.mFSequenceZ.next(); // maybe a FiniteSequence
+        nextF = Q.valueOf(mBuilder.mFLambdaZ.apply(mK)).multiply(tempF == null ? Z.ZERO : tempF);
         break;
       case TYPE_LAMBDA_NEXT_Q:
-        nextF = mFLambdaQ.apply(mK).multiply(mFSequenceQ.nextQ());
+        nextF = mBuilder.mFLambdaQ.apply(mK).multiply(mBuilder.mFSequenceQ.nextQ());
         break;
       case TYPE_NULL:
       default:
@@ -419,50 +465,50 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     mFs.add(nextF);
     Q nextG = Q.ONE;
     final Z tempG;
-    switch (mGType) {
+    switch (mBuilder.mGType) {
       case TYPE_CONST_L:
-        nextG = Q.valueOf(mGVal);
+        nextG = Q.valueOf(mBuilder.mGVal);
         break;
       case TYPE_LAMBDA_L:
-        nextG = Q.valueOf(mGLambdaL.apply((long) mK));
+        nextG = Q.valueOf(mBuilder.mGLambdaL.apply((long) mK));
         break;
       case TYPE_LAMBDA_Z:
-        nextG = Q.valueOf(mGLambdaZ.apply(mK));
+        nextG = Q.valueOf(mBuilder.mGLambdaZ.apply(mK));
         break;
       case TYPE_LAMBDA_Q:
-        nextG = mGLambdaQ.apply(mK);
+        nextG = mBuilder.mGLambdaQ.apply(mK);
         break;
       case TYPE_NEXT_Z:
-        tempG = mGSequenceZ.next(); // maybe a FiniteSequence
+        tempG = mBuilder.mGSequenceZ.next(); // maybe a FiniteSequence
         nextG = tempG == null ? Q.ZERO : Q.valueOf(tempG);
         break;
       case TYPE_NEXT_Q:
-        nextG = mGSequenceQ.nextQ();
+        nextG = mBuilder.mGSequenceQ.nextQ();
         break;
       case TYPE_LAMBDA_NEXT_Z:
-        tempG = mGSequenceZ.next(); // maybe a FiniteSequence
-        nextG = Q.valueOf(mGLambdaZ.apply(mK)).multiply(tempG == null ? Z.ZERO : tempG);
+        tempG = mBuilder.mGSequenceZ.next(); // maybe a FiniteSequence
+        nextG = Q.valueOf(mBuilder.mGLambdaZ.apply(mK)).multiply(tempG == null ? Z.ZERO : tempG);
         break;
       case TYPE_LAMBDA_NEXT_Q:
-        nextG = mGLambdaQ.apply(mK).multiply(mGSequenceQ.nextQ());
+        nextG = mBuilder.mGLambdaQ.apply(mK).multiply(mBuilder.mGSequenceQ.nextQ());
         break;
       case TYPE_NULL:
       default:
         break;
     }
     if (mH <= 1) {
-      switch (mHType) {
+      switch (mBuilder.mHType) {
         case TYPE_LAMBDA_L:
-          mNextH = Z.valueOf(mHLambdaL.apply((long) mH));
+          mNextH = Z.valueOf(mBuilder.mHLambdaL.apply((long) mH));
           break;
         case TYPE_LAMBDA_Z:
-          mNextH = mHLambdaZ.apply(mH);
+          mNextH = mBuilder.mHLambdaZ.apply(mH);
           break;
         case TYPE_NEXT_Z:
-          mNextH = mHSequenceZ.next();
+          mNextH = mBuilder.mHSequenceZ.next();
           break;
         case TYPE_LAMBDA_NEXT_Z:
-          mNextH = mHLambdaZ.apply(mH).multiply(mHSequenceZ.next());
+          mNextH = mBuilder.mHLambdaZ.apply(mH).multiply(mBuilder.mHSequenceZ.next());
           break;
         case TYPE_NULL:
         default:
@@ -475,18 +521,18 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     } else { // mK = mNextH : this g(k) is valid, pass nextG = g(k) unchanged
       // advance h(k)
       ++mH;
-      switch (mHType) {
+      switch (mBuilder.mHType) {
         case TYPE_LAMBDA_L:
-          mNextH = Z.valueOf(mHLambdaL.apply((long) mH));
+          mNextH = Z.valueOf(mBuilder.mHLambdaL.apply((long) mH));
           break;
         case TYPE_LAMBDA_Z:
-          mNextH = mHLambdaZ.apply(mH);
+          mNextH = mBuilder.mHLambdaZ.apply(mH);
           break;
         case TYPE_NEXT_Z:
-          mNextH = mHSequenceZ.next();
+          mNextH = mBuilder.mHSequenceZ.next();
           break;
         case TYPE_LAMBDA_NEXT_Z:
-          mNextH = mHLambdaZ.apply(mH).multiply(mHSequenceZ.next());
+          mNextH = mBuilder.mHLambdaZ.apply(mH).multiply(mBuilder.mHSequenceZ.next());
           break;
         case TYPE_NULL:
         default:
@@ -541,7 +587,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     }
 */
     mBs.add(bSum);
-    if ((mGfType & EGF) != 0) {
+    if ((mBuilder.mGfType & EGF) != 0) {
       if (mN > 0) {
         mFactorial = mFactorial.multiply(mN);
       }
@@ -556,7 +602,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   @Override
   public Z next() {
     final Q result = nextQ();
-    return ((mGfType & DEN_OGF) == 0) ? result.num() : result.den();
+    return ((mBuilder.mGfType & DEN_OGF) == 0) ? result.num() : result.den();
   } // next
 
 }
