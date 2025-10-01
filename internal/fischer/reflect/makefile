@@ -708,6 +708,19 @@ overgo2: # repeat the nes that failed
 	# >        $@.3.tmp
 	perl queue.pl -p $@.2.tmp > $@.pack
 	uedit64  $@.pack
+#----
+rpt: rpt_list rpt_aman rpt_diff
+rpt_list: # get all A-numbers implemented with RationalProductTransform
+	grep RationalProductTransform $(COMMON)/joeis_names.txt\
+	| cut -b1-7 | sed -e "s/J/A/" | sort | uniq | tee $@.tmp
+	wc -l $@.tmp
+rpt_aman: # get all A-numbers with RationalProductTransform from aman/2025-(09|10)*.man
+	grep -P "\tra?pt\t" ../aman/2025-09*.man \
+	| perl -ne 'if (m{\.man\:(A\d{6})(.*)}) { print "$$1$$2\n"; }' | tee ../aman/rptall.man
+	cut -b1-7 ../aman/rptall.man > $@.tmp
+	wc -l $@.tmp
+rpt_diff:
+	diff -w -y  rpt_list.tmp rpt_aman.tmp  || :
 #--
 trionk: # insert an IIB into those stemming from callcode=trionk
 	grep -B20 -P "super.compute\(" offin.pack  | grep -P "#!queue" | cut -f2- \
