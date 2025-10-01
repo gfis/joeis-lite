@@ -363,7 +363,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     mFactorial = Z.ONE;
     mFType = FunctionType.TYPE_NULL; // default f=1 in prod(1/(1 - x^k)^f)
     mGType = FunctionType.TYPE_NULL; // default g=1 in prod(1/(1 - g*x^k))
-    mHType = FunctionType.TYPE_NULL; // default h=k in prod(1/(1 - g*x^h))
+    mHType = FunctionType.TYPE_LAMBDA_L; // default h=k in prod(1/(1 - g*x^h))
     mHLambdaL = k -> (long) k;     // default h=k in prod(1/(1 - x^h))
     mK = 0;
     for (int k = 0; k < 1; ++k) { // kStart; ++k) {
@@ -373,7 +373,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       mCs.add(Q.ZERO); // [0] starts the sum
     } // while < kStart
     mH = 1;
-    mNextH = Z.valueOf(mH);
+    mNextH = Z.ONE;
   }
 
   @Override
@@ -450,7 +450,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       default:
         break;
     }
-    if (mH == 1) {
+    if (mH <= 1) {
       switch (mHType) {
         case TYPE_LAMBDA_L:
           mNextH = Z.valueOf(mHLambdaL.apply((long) mH));

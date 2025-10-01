@@ -242,7 +242,7 @@ diff_joeis:
 	| xargs -innn diff -ws -C0 ../../../joeis/src/nnn ../../src/nnn \
 	>> $@.tmp
 diffx:
-	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/math/predicate/Predicates.java ../../src/irvine/math/predicate || :
+	diff -wsy --suppress-common-lines ../../../joeis/src/irvine/oeis/transform/RationalProductTransform.java ../../src/irvine/oeis/transform/RationalProductTransform.java || :
 diffpfs:
 	diff -wy --suppress-common-lines ../../../joeis/src/irvine/oeis/PolynomialFieldSequence.java    ../../src/irvine/oeis      || :
 	diff -wy --suppress-common-lines ../../../joeis/internal/irvine/oeis/PolynomialFieldTest.java   ../../internal/irvine/oeis || :
