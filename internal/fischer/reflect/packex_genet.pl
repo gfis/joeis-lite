@@ -16,6 +16,7 @@ if (0 && scalar(@ARGV) == 0) {
     print `grep -E "^#:#" $0 | cut -b3-`;
     exit;
 }
+my %zhash = qw(ZERO 0 ONE 1 TWO 2 THREE 3 FOUR 4 FIVE 5 SIX 6 SEVEN 7 EIGHT 8 NINE 9 TEN 10 NEG_ONE -1);
 my $mode = "u";
 my $cc = "rpt";
 my $debug = 0;
@@ -35,11 +36,11 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 my $aseqno;
 my $offset;
 my $kstart;
-my $rest; 
+my $rest;
 my $build = ".";
 my $letter; # f, g, h
 my $method;
-my %seqs = (); 
+my %seqs = ();
 
 while (<>) { # read inputfile
     s{\s+\Z}{}; # chompr
@@ -52,11 +53,11 @@ while (<>) { # read inputfile
     } elsif ($line =~ m{\A\s*super\((\d+)\,\s*(\d+)([^\;]+)*\;}) {
         ($offset, $kstart, $rest) = ($1, $2 || 1, $3 || "");
         if ($kstart != 1) {
-            $build .= ".start($kstart)";
+            # $build .= ".start($kstart)"; # must be done by g()
         }
         if ($rest ne ")") {
             $build .= " /* rest=$rest */ ";
-        }                                               
+        }
     #                            1     1         2    2
     } elsif ($line =~ m{\A\s*mSeq([FGH]) *\= new (A\d+)\(}) {
         my ($Letter, $rseqno) = ($1, $2);
@@ -65,14 +66,14 @@ while (<>) { # read inputfile
     } elsif ($line =~ m{advance([FGH])}) {
         $letter = lc($1);
     #                          1      1
-    } elsif ($line =~ m{return ([^\;]+)\;}) { 
+    } elsif ($line =~ m{return ([^\;]+)\;}) {
         my $expr = $1;
-        my $method = ".$letter"; 
+        my $method = ".$letter";
         if (0) {
         } elsif (($letter eq "g") and ($expr =~ m{\A\s*Z\.ONE\s*\Z})) {
             # ignore
         #                                   1      1
-        } elsif ($expr =~ s{new Z\[\] *\{ *([^\}]+)\}}{new Q($1)}) { # for "f" only 
+        } elsif ($expr =~ s{new Z\[\] *\{ *([^\}]+)\}}{new Q($1)}) { # for "f" only
             if ($expr !~ m{\,}) {
                 $expr =~ s{new Q\(}{};
                 $expr =~ s{\)\Z}{};
@@ -85,16 +86,39 @@ while (<>) { # read inputfile
             }
         } else {
             $build .= "$method(k -> $expr)";
-            
+
         }
-    } elsif ($line =~ m{\A\}}) { # end of Java class 
-    	$build =~ s{k *\-\> *mSeq([FGH])\.next\(\)\.negate\(\)}{k -> Z.NEG_ONE\, new $seqs{$1}\(\)}g; # polish mSeqX.next().negate()
-    	$build =~ s{k *\-\> *mSeq([FGH])\.next\(\)}                             {new $seqs{$1}\(\)}g; # polish mSeqX.next()
-        $build =~ s{\A\.+}{};
+    } elsif ($line =~ m{\A\}}) { # end of Java class
+        $build =~ s{\A\.+}{}; # leading dot was for rapt.jpat
+        $build =~ s{mKfg|mKh}{k}g;
+        $build =~ s{k *\-\> *mSeq([FGH])\.next\(\)\.negate\(\)}{k -> Z.NEG_ONE\, new $seqs{$1}\(\)}g; # polish mSeqX.next().negate()
+        $build =~ s{k *\-\> *mSeq([FGH])\.next\(\)}                             {new $seqs{$1}\(\)}g; # polish mSeqX.next()
+        $build =~ s{(irvine\.math\.z\.)?Binomial\.binomial}{BI}g;
+        # (k < 2) ?
+        #               1       1
+        $build =~ s{\(\((k[^\)]+)\) *\?}{\($1 \?}g;
+        #                     1   1      2   2
+        $build =~ s{new Q\(Z\.(\w+)\, *Z\.(\w+)\)}{new Q\($zhash{$1}\, $zhash{$2}\)}g;
+        #            (                    (1      1 ) )  l (          )
+        $build =~ s{\(k *\-\> *Z\.valueOf\((\-?\d+)\)\)}{l\(k \-\> ${1}L\)}g;
+        #            (            (1  1 )  l (          )
+        $build =~ s{\(k *\-\> *Z\.(\w+)\)}{l\(k \-\> $zhash{$1}L\)}g;
+        #            (            (1  1             )  l (                     )
+        $build =~ s{\(k *\-\> *Z\.(\w+)\.negate\(\)\)}{l\(k \-\> \-$zhash{$1}L\)}g;
+        # k -> Z.NEG_ONE, new A000000()
+        #                         1   1
+        $build =~ s{\(k *\-\> *Z\.NEG_ONE\, *new}{\(\(k\, t\) \-\> t\.negate\(\)\, new}g;
+        # k -> Z.THREE, new A000000()
+        #                         1   1
+        $build =~ s{\(k *\-\> *Z\.(\w+)\, *new}{\(\(k\, t\) \-\> t\.\*\($zhash{$1}\)\, new}g;
+        # (new A038548().subtract(1).negate()))
+        #                 1    1    2        3          3 2
+        $build =~ s{\(new (A\d+)\(\)([^\)]+\)(\.[^\)]+\))?)}{\(\(k\, t\) \-\> t$2\, new $1\(\)}g;
+
         print join("\t", $aseqno, $cc, $offset, $build) ."\n";
-        $build = "."; 
+        $build = ".";
         %seqs = ();
-    }  
+    }
     if ($debug >= 1) {
         print "# $aseqno, method=$method, build=$build\n";
     }

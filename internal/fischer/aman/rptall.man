@@ -8,12 +8,12 @@ A134345	rpt	0	g(k -> MU(2*k).^(2))	G.f.: 1/prod(n>=1, 1 - moebius(2*n-1)^2 * x^(
 A151954	rpt	0	fq(k -> new Q(1, k)).g(k -> ZV(k).*(k))	Expansion of Product_{k>0} (1-k^2*x^k)^(-1/k).
 A152006	rpt	0	f(-1).g(k -> (k == 1 ? Z.ONE : PM(k - 1)).negate())	Expansion of Product_{k > 0} (1 + f(k)*x^k)
 A174661	rpt	0	egf().f(k -> ZV(k)).gq(k -> new Q(ZV(1), FA(k)))	E.g.f.: Product_{n>=1} 1/(1 - x^n/n!)^n.
-A182117	rpt	0	f(-1).g(new SingleTransformSequence(0, (term, n) -> term.negate(), "", new A001349()).skip(1))	O.g.f.: prod(n>=1, 1 + J001349(n)*x^n ) where J001349 is the number of connected graphs.
+A182117	rpt	0	f(-1).g((k, t) -> t.negate(), new A001349())	O.g.f.: prod(n>=1, 1 + J001349(n)*x^n ) where J001349 is the number of connected graphs.
 A182124	rpt	0	egf().f(-1).gq(k -> new Q(M001187(k), FA(k)).negate())	E.g.f.: Product_{n>=1} (1+M001187(n)*x^n/n!) where M001187 is the number of connected labeled graphs.
 A186633	rpt	0	fq(k -> new Q(-1, k)).g(k -> ZV(k).^(k).negate())	G.f.: Product_{n>=1} (1 + n^n*x^n)^(1/n).
 A190585	rpt	0	egf().fq(k -> new Q(E076479(k), ZV(k)))	E.g.f. Product_{n>=1} (1 - x^n)^(-u(n)/n) where u(n) is the unitary Moebius function (E076479).
 A199163	rpt	0	egf().f(k -> Z2(k)).gq(k -> new Q(ZV(1), FA(k)))	E.g.f.: Product_{n>=1} 1/(1 - x^n/n!)^(2^n).
-A207828	rpt	0	f(new SingleTransformSequence(0, (term, n) -> term.negate(), "", new A001349()).skip(1)).g(-1)	O.g.f.: Product_{n >=1} (1+x^n)^J001349(n) where J001349 is the number of connected graphs.
+A207828	rpt	0	f((k, t) -> t.negate(), new A001349()).g(-1)	O.g.f.: Product_{n >=1} (1+x^n)^J001349(n) where J001349 is the number of connected graphs.
 A216413	rpt	0	egf().f(-1).gq(k -> new Q(ZV(k).^(k - 2), FA(k)).negate())	E.g.f.: Product_{n>=1} (1 + n^(n-2)*x^n/n!).
 A222006	rpt	0	f(k -> (E126120(k - 1)))	O.g.f.: Product_{i>=1} 1/(1 - x^i)^J126120(i-1).
 A279012	rpt	0	hl(k -> k*(5*k-3)/2)	Expansion of Product_{k>=1} 1/(1 - x^(k*(5*k-3)/2)).
@@ -38,7 +38,7 @@ A295167	rpt	0	fq(k -> new Q(1, k)).g(k -> ZV(k).^(k).negate())	Expansion of Prod
 A295833	rpt	0	egf().fq(k -> new Q(Z_1(k), k).negate()).g(-1)	Expansion of e.g.f. Product_{k>=1} (1 + x^k)^((-1)^k/k).
 A295834	rpt	0	egf().fq(k -> new Q(Z_1(k + 1), k).negate()).g(-1)	Expansion of e.g.f. Product_{k>=1} (1 + x^k)^((-1)^(k+1)/k).
 A298906	rpt	0	egf().fq(k -> new Q(ZV(1), FA(k)).negate()).g(-1)	Expansion of e.g.f. Product_{k>=1} (1 + x^k)^(1/k!).
-A301595	rpt	0	g(new A063834().skip(1))	O.g.f.: Product_{n > 0} 1/(1 - J063834(n) x^n).
+A301595	rpt	0	g(new A063834())	O.g.f.: Product_{n > 0} 1/(1 - J063834(n) x^n).
 A301746	rpt	0	f(k -> TAU(k).^(2).negate()).g(-1)	Expansion of Product_{k>=1} (1 + x^k)^(sigma_0(k)^2).
 A301751	rpt	1	f(-1).g(k -> PT(k - 1).negate())	O.g.f.: x * Product_{n > 0} (1 + F000041(n-1) x^n).
 A301753	rpt	1	g(k -> F000009(k - 1))	O.g.f.: x * Product_{n > 0} 1/(1 - F000009(n-1) x^n).
@@ -49,10 +49,10 @@ A301986	rpt	0	f(k -> PHI(k).*(k).negate()).g(-1)	Expansion of Product_{k>=1} (1 
 A303354	rpt	0	fq(k -> new Q(1, k)).g(k -> ZV(k).^(2).negate())	Expansion of Product_{k>0} (1+k^2*x^k)^(-1/k).
 A303355	rpt	0	fq(k -> new Q(-1, k)).g(k -> ZV(k).^(2).negate())	Expansion of Product_{k>0} (1+k^2*x^k)^(1/k).
 A303970	rpt	0	egf().fq(new A001008())	E.g.f.: Product_{k>=1} 1/(1 - x^k)^(J001008(k)/J002805(k)).
-A304494	rpt	0	egf().fq(k -> QV(-1), new A001008()).g(-1)	E.g.f.: Product_{k>=1} (1 + x^k)^(J001008(k)/J002805(k)).
-A304496	rpt	0	egf().fq(k -> QV(-1), new A001008())	E.g.f.: Product_{k>=1} (1 - x^k)^(J001008(k)/J002805(k)).
+A304494	rpt	0	egf().fq((k, t) -> t.negate(), new A001008()).g(-1)	E.g.f.: Product_{k>=1} (1 + x^k)^(J001008(k)/J002805(k)).
+A304496	rpt	0	egf().fq((k, t) -> t.negate(), new A001008())	E.g.f.: Product_{k>=1} (1 - x^k)^(J001008(k)/J002805(k)).
 A305201	rpt	0	egf().gq(new A001008())	E.g.f.: Product_{k>=1} 1/(1 - (J001008(k)/J002805(k))*x^k).
-A305203	rpt	0	egf().f(-1).gq(k -> QV(-1), new A001008())	E.g.f.: Product_{k>=1} (1 + (J001008(k)/J002805(k))*x^k).
+A305203	rpt	0	egf().f(-1).gq((k, t) -> t.negate(), new A001008())	E.g.f.: Product_{k>=1} (1 + (J001008(k)/J002805(k))*x^k).
 A306831	rpt	0	egf().fq(k -> new Q(Z_1(k).*(F008836(k)), k).negate())	E.g.f.: Product_{k>=1} (1 - x^k)^((-1)^k*lambda(k)/k), where lambda() is the Liouville function (F008836).
 A307497	rpt	0	f(k -> (Z_1(k).*(ZV(k).^(k))).negate()).g(-1)	Expansion of Product_{k>=1} (1+x^k)^((-1)^k*k^k).
 A308396	rpt	0	egf().fq(k -> new Q(F008836(k), -k))	E.g.f.: Product_{k>=1} (1 - x^k)^(lambda(k)/k), where lambda() is the Liouville function (F008836).
@@ -82,9 +82,9 @@ A356540	rpt	0	egf().fq(k -> new Q(Z.ONE, Z.THREE.^(k))).g(k -> Z.THREE.^(k))	Exp
 A356542	rpt	0	egf().fq(k -> new Q(Z.ONE, FA(k))).g(k -> FA(k))	Expansion of e.g.f. Product_{k>0} 1/(1 - k! * x^k)^(1/k!).
 A356560	rpt	0	egf().fq(k -> new Q(Z.ONE, ZV(k).^(2))).g(k -> ZV(k).^(2))	Expansion of e.g.f. Product_{k>0} 1/(1 - k^2 * x^k)^(1/k^2).
 A356561	rpt	0	egf().fq(k -> new Q(Z.ONE, ZV(k).^(3))).g(k -> ZV(k).^(3))	Expansion of e.g.f. Product_{k>0} 1/(1 - k^3 * x^k)^(1/k^3).
-A356932	rpt	0	f(new A027193().skip(1))	G.f.: 1/Product_{k>=1} (1 - x^k)^J027193(k). - _Andrew Howroyd_, Dec 30 2022
-A356941	rpt	0	f(new A034296().skip(1))	G.f.: 1/Product_{k>=1} (1 - x^k)^J034296(k). - _Andrew Howroyd_, Dec 30 2022
-A358334	rpt	0	g(new A027193().skip(1))	G.f.: 1/Product_{k>=1} (1 - J027193(k)*x^k). - _Andrew Howroyd_, Dec 30 2022
+A356932	rpt	0	f(new A027193())	G.f.: 1/Product_{k>=1} (1 - x^k)^J027193(k). - _Andrew Howroyd_, Dec 30 2022
+A356941	rpt	0	f(new A034296())	G.f.: 1/Product_{k>=1} (1 - x^k)^J034296(k). - _Andrew Howroyd_, Dec 30 2022
+A358334	rpt	0	g(new A027193())	G.f.: 1/Product_{k>=1} (1 - J027193(k)*x^k). - _Andrew Howroyd_, Dec 30 2022
 A358828	rpt	0	g(k -> PT(k).-(1))	G.f.: Product_{k>=1} 1/(1-(F000041(k)-1)*x^k).
 A363602	rpt	0	f(k -> ZV(k).*(k).+(1))	G.f.: 1/Product_{k>=1} (1-x^k)^(k^2+1).
 A371308	rpt	0	egf().f(k -> PM(k).negate()).gq(k -> new Q(Z.NEG_ONE, FA(k)))	Expansion of e.g.f. Product_{k>=1} (1 + x^k/k!)^prime(k).
@@ -122,9 +122,3 @@ A298247	rpt	0	h(k -> F000292(k)).f(-1)	G.f.: Product_{k>=1} (1 - x^F000292(k)).
 A298249	rpt	0	h(k -> F000330(k)).f(-1)	G.f.: Product_{k>=1} (1 - x^F000330(k)).
 A305355	rpt	0	h(k -> ZV(k).*(3*k - 1)./(2)).f(-1)	Expansion of Product_{k>=1} (1 - x^(k*(3*k-1)/2)).
 A305355	rpt	0	h(k -> ZV(k).*(3*k - 1)./(2)).f(-1)	Expansion of Product_{k>=1} (1 - x^(k*(3*k-1)/2)).
-A307605	rpt	0	f(k -> M002033(k).multiply(k).negate()).g(-1)
-
-A104510	rpt	1	skip(1).f(k -> D000031(k).subtract(2).negate()).g(k -> Z.NEG_ONE.pow(k))
-A179381	rpt	1	skip(1).g(k -> Functions.CATALAN.z(k - 1))
-A307605	rpt	0	f(k -> M002033(k).multiply(k).negate()).g(-1)
-A318414	rpt	0	f(k -> D007425(k).*(k).negate()).g(-1)	G.f.: Product_{k>=1} (1 + x^k)^(k*tau_3(k)), where tau_3() = D007425.

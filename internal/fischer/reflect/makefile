@@ -721,6 +721,11 @@ rpt_aman: # get all A-numbers with RationalProductTransform from aman/2025-(09|1
 	wc -l $@.tmp
 rpt_diff:
 	diff -w -y  rpt_list.tmp rpt_aman.tmp  || :
+genet_rpt:
+	perl packex_genet.pl pack.GeneralizedEulerTransform.tmp \
+	| grep -vP "\A(A000586|A032178|A280128|A280128|A293735|A293739|A293740|A344063)" \
+	| tee ../aman/$@.man
+	wc -l ../aman/$@.man
 #--
 trionk: # insert an IIB into those stemming from callcode=trionk
 	grep -B20 -P "super.compute\(" offin.pack  | grep -P "#!queue" | cut -f2- \
