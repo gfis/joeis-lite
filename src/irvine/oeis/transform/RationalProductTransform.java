@@ -31,7 +31,7 @@ import irvine.oeis.Sequence;
  */
 public class RationalProductTransform extends AbstractSequence implements RationalSequence {
 
-  private static int sDebug = 0;
+  private static int sDebug = 1;
   private static final int ESTLEN = 1024; // estimated length of arrays
   private final ArrayList<Q> mFs = new ArrayList<>(ESTLEN); // first underlying sequence (Manyama's f(k))
   private final ArrayList<Q> mGs = new ArrayList<>(ESTLEN); // second underlying sequence (Manyama's g(k))
@@ -62,8 +62,8 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     , TYPE_LAMBDA_L   // a lambda expression k -> Long
     , TYPE_LAMBDA_Z   // a lambda expression k -> Z
     , TYPE_LAMBDA_Q   // a lambda expression k -> Q
-    , TYPE_SEQUENCE_Z     // next,  successive terms of a Sequence
-    , TYPE_SEQUENCE_Q     // nextQ, successive terms of a RationalSequence
+    , TYPE_SEQUENCE_Z // next,  successive terms of a Sequence
+    , TYPE_SEQUENCE_Q // nextQ, successive terms of a RationalSequence
     , TYPE_LAMBDA2_Z  // function(k, t) of successive terms t of a Sequence
     , TYPE_LAMBDA2_Q  // function(k, t) of successive terms t of a RationalSequence
   }
@@ -78,7 +78,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
 
     private int mGfType; // type of the resulting generating function
     private Q[] mPreTerms; // initial terms to be prepended
-    private int mStartK; // starting value for k
+    private int mMinK; // starting value for k
     private int mSkipNo; // how many leading terms to skip from the resulting sequence
 
     private FunctionType mFType; // type of function f()
@@ -119,7 +119,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       mHType = FunctionType.TYPE_NULL; // default: h=k in prod(1/(1 - g*x^h))
       mGfType = OGF;
       mPreTerms = QUtils.toQ("1"); 
-      mStartK = 1; // default: start with k >= 1
+      mMinK = 1; // default: start with k >= 1
       mSkipNo = 0; // default: do not skip leading terms
     }
 
@@ -180,7 +180,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
      * @return this
      */
     public Builder f(final Sequence seq) {
-      mFSequenceZ = seq.skip(mStartK - seq.getOffset());
+      mFSequenceZ = seq.skip(mMinK - seq.getOffset());
       mFType = FunctionType.TYPE_SEQUENCE_Z;
       return this;
     }
@@ -193,7 +193,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
      */
     public Builder f(final BiFunction<Integer, Z, Z> lambda2, final Sequence seq) {
       mFLambda2Z = lambda2;
-      mFSequenceZ = seq.skip(mStartK - seq.getOffset());
+      mFSequenceZ = seq.skip(mMinK - seq.getOffset());
       mFType = FunctionType.TYPE_LAMBDA2_Z;
       return this;
     }
@@ -272,7 +272,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
      * @return this
      */
     public Builder g(final Sequence seq) {
-      mGSequenceZ = seq.skip(mStartK - seq.getOffset());
+      mGSequenceZ = seq.skip(mMinK - seq.getOffset());
       mGType = FunctionType.TYPE_SEQUENCE_Z;
       return this;
     }
@@ -285,7 +285,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
      */
     public Builder g(final BiFunction<Integer, Z, Z> lambda2, final Sequence seq) {
       mGLambda2Z = lambda2;
-      mGSequenceZ = seq.skip(mStartK - seq.getOffset());
+      mGSequenceZ = seq.skip(mMinK - seq.getOffset());
       mGType = FunctionType.TYPE_LAMBDA2_Z;
       return this;
     }
@@ -353,7 +353,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
      * @return this
      */
     public Builder h(final Sequence seq) {
-      mHSequenceZ = seq.skip(mStartK - seq.getOffset());
+      mHSequenceZ = seq.skip(mMinK - seq.getOffset());
       mHType = FunctionType.TYPE_SEQUENCE_Z;
       return this;
     }
@@ -366,7 +366,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
      */
     public Builder h(final BiFunction<Integer, Z, Z> lambda2, final Sequence seq) {
       mHLambda2Z = lambda2;
-      mHSequenceZ = seq.skip(mStartK - seq.getOffset());
+      mHSequenceZ = seq.skip(mMinK - seq.getOffset());
       mHType = FunctionType.TYPE_LAMBDA2_Z;
       return this;
     }
@@ -386,8 +386,8 @@ public class RationalProductTransform extends AbstractSequence implements Ration
      * @param startK starting value for k in <code>prod_{k &gt;= </code>
      * @return this
      */
-    public Builder start(final int startK) {
-      mStartK = startK;
+    public Builder kMin(final int minK) {
+      mMinK = minK;
       return this;
     }
   
@@ -438,14 +438,14 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     mN = offset - 1;
     mIn = 0; // for prepending of initial terms
     mFactorial = Z.ONE;
-    mK = mBuilder.mStartK - 1;
+    mK = mBuilder.mMinK - 1;
     for (int k = 0; k < 1; ++k) { // kStart; ++k) {
       mFs.add(Q.ZERO); // [0] not used
       mGs.add(Q.ZERO); // [0] not used
       mBs.add(Q.ZERO); // [0] is not returned
       mCs.add(Q.ZERO); // [0] starts the sum
     } // while < kStart
-    mH = 1;
+    mH = (builder.mMinK <= 1) ? builder.mMinK : 1;
     advanceH();
     for (int sk = 0; sk < mBuilder.mSkipNo; ++sk) { // do skip
       nextQ();
@@ -499,6 +499,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
         break;
     }
     mFs.add(nextF);
+
     Q nextG = Q.ONE;
     Z tempG;
     switch (mBuilder.mGType) {
@@ -538,13 +539,20 @@ public class RationalProductTransform extends AbstractSequence implements Ration
         nextG = mBuilder.mGLambda2Q.apply(mK, mBuilder.mGSequenceQ.nextQ());
         break;
     }
+    if (sDebug > 0) {
+      System.out.println("before: mH=" + mH + ", mK=" + mK + ", mNextH=" + mNextH + ", nextG=" + nextG);
+    }
     if (Z.valueOf(mK).compareTo(mNextH) < 0) { // exponent in x^h(k) not yet reached: invalidate this g(k)
       nextG = Q.ZERO;
     } else { // mK = mNextH : this g(k) is valid, pass nextG = g(k) unchanged
       ++mH;
       advanceH();
     }
+    if (sDebug > 0) {
+      System.out.println("after:  mH=" + mH + ", mK=" + mK + ", mNextH=" + mNextH + ", nextG=" + nextG);
+    }
     mGs.add(nextG);
+ 
     Q cSum = Q.ZERO; // start sum
     final int kd2 = mK >> 1;
     for (int d = 1; d <= mK; ++d) { // compute c[k] = sum ...

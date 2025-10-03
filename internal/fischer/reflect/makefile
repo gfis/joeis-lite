@@ -716,11 +716,12 @@ rpt_list: # get all A-numbers implemented with RationalProductTransform
 	wc -l $@.tmp
 rpt_aman: # get all A-numbers with RationalProductTransform from aman/2025-(09|10)*.man
 	grep -P "\tra?pt\t" ../aman/2025-09*.man \
-	| perl -ne 'if (m{\.man\:(A\d{6})(.*)}) { print "$$1$$2\n"; }' | tee ../aman/rptall.man
-	cut -b1-7 ../aman/rptall.man > $@.tmp
+	| perl -ne 'if (m{\.man\:(A\d{6})(.*)}) { print "$$1$$2\n"; }' \
+	| tee     ../aman/rptall.man
+	cut -b1-7 ../aman/rptall.man | sort | uniq > $@.tmp
 	wc -l $@.tmp
 rpt_diff:
-	diff -w -y  rpt_list.tmp rpt_aman.tmp  || :
+	diff -w -y --width=24 --suppress-common-lines rpt_list.tmp rpt_aman.tmp  || :
 genet_rpt:
 	perl packex_genet.pl pack.GeneralizedEulerTransform.tmp \
 	| grep -vP "\A(A000586|A032178|A280128|A280128|A293735|A293739|A293740|A344063)" \

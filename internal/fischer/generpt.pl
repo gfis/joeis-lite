@@ -1,7 +1,8 @@
 #!perl
 
-# Read a *.pack file and extract *.gen records in seq4 format
+# Read a *.pack file and extract *.gen records in seq4 format with CC=rpt
 # @(#) $Id$
+# 2025-10-03: renamed from reflect/oackex_genet.pl; *D-United=35
 # 2025-10-01, Georg Fischer: copied from packex.pl
 #
 #:# Usage:
@@ -35,12 +36,13 @@ while (scalar(@ARGV) > 0 and ($ARGV[0] =~ m{\A[\-\+]})) {
 
 my $aseqno;
 my $offset;
-my $kstart;
+my $kmin;
 my $rest;
 my $build = ".";
 my $letter; # f, g, h
 my $method;
 my %seqs = ();
+my $comment;
 
 while (<>) { # read inputfile
     s{\s+\Z}{}; # chompr
@@ -49,11 +51,17 @@ while (<>) { # read inputfile
     #                                  1    1
     } elsif ($line =~ m{\A$separator\s*(A\d+)}) {
         ($aseqno) =  ($1);
+    # * G.f.: <code>Product_{k&gt;=1} (1/(1-x^A028260(k)))</code>
+    #        
+    } elsif ($line =~ m{\A *\* *G\.f\.\: *\<code\>([^\<]*)\<}) {
+        ($comment) =  ($1);
     #                               1   1     2   23      3
     } elsif ($line =~ m{\A\s*super\((\d+)\,\s*(\d+)([^\;]+)*\;}) {
-        ($offset, $kstart, $rest) = ($1, $2 || 1, $3 || "");
-        if ($kstart != 1) {
-            # $build .= ".start($kstart)"; # must be done by g()
+        ($offset, $kmin, $rest) = ($1, $2, $3 || "");
+        if ($kmin < 1) {
+            $build .= ".kMin($kmin)"; # kMin = 0
+        } elsif ($kmin > 1) {
+            $build .= "/*.kMin($kmin)*/"; # must be done by g()
         }
         if ($rest ne ")") {
             $build .= " /* rest=$rest */ ";
@@ -90,6 +98,7 @@ while (<>) { # read inputfile
         }
     } elsif ($line =~ m{\A\}}) { # end of Java class
         $build =~ s{\A\.+}{}; # leading dot was for rapt.jpat
+        $build =~ s{\(long\)}{}g;
         $build =~ s{mKfg|mKh}{k}g;
         $build =~ s{k *\-\> *mSeq([FGH])\.next\(\)\.negate\(\)}{k -> Z.NEG_ONE\, new $seqs{$1}\(\)}g; # polish mSeqX.next().negate()
         $build =~ s{k *\-\> *mSeq([FGH])\.next\(\)}                             {new $seqs{$1}\(\)}g; # polish mSeqX.next()
@@ -114,10 +123,20 @@ while (<>) { # read inputfile
         # (new A038548().subtract(1).negate()))
         #                 1    1    2        3          3 2
         $build =~ s{\(new (A\d+)\(\)([^\)]+\)(\.[^\)]+\))?)}{\(\(k\, t\) \-\> t$2\, new $1\(\)}g;
+        # fl(k -> -1L)
+        #           l (        1      1  )
+        $build =~ s{l\(k *\-\> (\-?\d+)L\)}{\($1\)}g;
+        # g(k -> Z.valueOf(3L * k - 1).negate())
+        #            (                   (1      1 )
+        $build =~ s{\(k *\-\> Z\.valueOf\(([^\)]+)\)\.negate\(\)}{l\(k \-\> \-\($1\)}g;
+        # g(k -> Z.valueOf(3L * k - 1)).h(k -> Z.valueOf(3 * k - 1))	Product_{k&gt;=1} (1/(1-(3*k-1)*x^(3*k-1)))
+        #            (                   (1      1 )
+        $build =~ s{\(k *\-\> Z\.valueOf\(([^\)]+)\)}{l\(k \-\> $1}g;
 
-        print join("\t", $aseqno, $cc, $offset, $build) ."\n";
+        print join("\t", $aseqno, $cc, $offset, $build, $comment) ."\n";
         $build = ".";
-        %seqs = ();
+        %seqs = (); 
+        $comment = "";
     }
     if ($debug >= 1) {
         print "# $aseqno, method=$method, build=$build\n";

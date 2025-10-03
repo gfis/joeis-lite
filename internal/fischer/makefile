@@ -3266,6 +3266,15 @@ flosqrt:
 	head -n4 $@.gen
 	wc -l    $@.gen
 #--------------------------------
+generpt0: # regenerate GeneralizedEulerTransforms into RationalProductTransforms
+	perl generpt.pl reflect/pack.GeneralizedEulerTransform.tmp \
+	| grep -vP "\A(A000586|A001316|A032178|A048883|A280128|A280128|A293735|A293739|A293740|A344063)" \
+	| grep -vf today.txt \
+	>        aman/generpt.man
+	head -n4 aman/generpt.man
+	wc -l    aman/generpt.man
+	make CC=generpt EX=xx pegel GU=64 ap
+#--------------------------------
 # %C A000726 Case k=4, i=3 of Gordon Theorem.
 # %C A035937 Case k=3, i=1 of Gordon Theorem.
 gordon: # Gordon Theorem
