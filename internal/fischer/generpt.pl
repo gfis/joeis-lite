@@ -61,7 +61,7 @@ while (<>) { # read inputfile
         if ($kmin < 1) {
             $build .= ".kMin($kmin)"; # kMin = 0
         } elsif ($kmin > 1) {
-            $build .= "/*.kMin($kmin)*/"; # must be done by g()
+            $comment .= " /*.kMin($kmin)*/"; # must be done by g()
         }
         if ($rest ne ")") {
             $build .= " /* rest=$rest */ ";

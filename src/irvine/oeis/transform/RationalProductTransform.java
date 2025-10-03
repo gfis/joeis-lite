@@ -436,17 +436,32 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     super(offset);
     mBuilder = builder;
     mN = offset - 1;
-    mIn = 0; // for prepending of initial terms
     mFactorial = Z.ONE;
     mK = mBuilder.mMinK - 1;
-    for (int k = 0; k < 1; ++k) { // kStart; ++k) {
+    mIn = 0; // for prepending of initial terms
+    mFactorial = Z.ONE;
+    for (int k = 0; k < builder.mMinK; ++k) {
       mFs.add(Q.ZERO); // [0] not used
       mGs.add(Q.ZERO); // [0] not used
       mBs.add(Q.ZERO); // [0] is not returned
       mCs.add(Q.ZERO); // [0] starts the sum
     } // while < kStart
-    mH = (builder.mMinK <= 1) ? builder.mMinK : 1;
-    advanceH();
+
+/*
+    mH = (mBuilder.mMinK <= 1) ? mBuilder.mMinK : 1;
+    mNextH = Z.valueOf(mH); // Z.ONE; // for a^k in advanceH(); because of preTerms = [1]
+*/
+    if (builder.mMinK < 1) {
+      mH = builder.mMinK;
+    } else {
+      mH = 1;
+    }
+    advanceH();  // ??
+/*
+    if (builder.mMinK == 0) {
+      nextQ(); // omit leading zero
+    } 
+*/
     for (int sk = 0; sk < mBuilder.mSkipNo; ++sk) { // do skip
       nextQ();
     }
@@ -455,9 +470,6 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   @Override
   public Q nextQ() {
     ++mN;
-    if (mIn < mBuilder.mPreTerms.length) { // during prepend phase
-      return mBuilder.mPreTerms[mIn++];
-    }
     ++mK; // starts with 1
     Q nextF = Q.ONE;
     Z tempF;
@@ -583,32 +595,27 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     // mCs.set(mK, csum);
     mCs.add(cSum); // = c[k]
 
-    Q bSum = mCs.get(mK);
+    Q result = mCs.get(mK); // bsum
     for (int d = 1; d < mK; ++d) {
-      bSum = bSum.add(mCs.get(d).multiply(mBs.get(mK - d)));
+      result = result.add(mCs.get(d).multiply(mBs.get(mK - d)));
     } // for d
     if (mK > 0) {
-      bSum = bSum.divide(mK);
+      result = result.divide(mK);
     }
-/*
-    if (sDebug > 0) {
-      System.err.println("mK=" + mK + "\tmKh=" + mH
-          + "\tmNextH=" + mNextH + "\tnextF=" + nextF.toString() + "\tnextG=" + nextG.toString()
-          + "\tc[k]=" + cSum.toString() + "\tb[k]=" + bSum.toString()
-          );
-    }
-*/
-    mBs.add(bSum);
+    mBs.add(result);
     if ((mBuilder.mGfType & EGF) != 0) {
       if (mN > 0) {
         mFactorial = mFactorial.multiply(mN);
       }
-      bSum = bSum.multiply(mFactorial);
+      result = result.multiply(mFactorial);
       if (sDebug >= 1) {
         System.out.println("# mFactorial=" + mFactorial + ", mN=" + mN);
       }
     }
-    return bSum;
+    if (mIn < mBuilder.mPreTerms.length) { // during prepend phase
+      return mBuilder.mPreTerms[mIn++];
+    }
+    return result;
   } // nextQ
 
   @Override
