@@ -446,22 +446,12 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       mBs.add(Q.ZERO); // [0] is not returned
       mCs.add(Q.ZERO); // [0] starts the sum
     } // while < kStart
-
-/*
-    mH = (mBuilder.mMinK <= 1) ? mBuilder.mMinK : 1;
-    mNextH = Z.valueOf(mH); // Z.ONE; // for a^k in advanceH(); because of preTerms = [1]
-*/
-    if (builder.mMinK < 1) {
-      mH = builder.mMinK;
+    if (mBuilder.mMinK < 1) {
+      mH = mBuilder.mMinK;
     } else {
       mH = 1;
     }
     advanceH();  // ??
-/*
-    if (builder.mMinK == 0) {
-      nextQ(); // omit leading zero
-    } 
-*/
     for (int sk = 0; sk < mBuilder.mSkipNo; ++sk) { // do skip
       nextQ();
     }
@@ -470,7 +460,10 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   @Override
   public Q nextQ() {
     ++mN;
-    ++mK; // starts with 1
+    if (mIn < mBuilder.mPreTerms.length) { // during prepend phase
+      return mBuilder.mPreTerms[mIn++];
+    }
+    ++mK; // starts with mMinK
     Q nextF = Q.ONE;
     Z tempF;
     switch (mBuilder.mFType) {
@@ -611,9 +604,6 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       if (sDebug >= 1) {
         System.out.println("# mFactorial=" + mFactorial + ", mN=" + mN);
       }
-    }
-    if (mIn < mBuilder.mPreTerms.length) { // during prepend phase
-      return mBuilder.mPreTerms[mIn++];
     }
     return result;
   } // nextQ
