@@ -1,3 +1,1 @@
 ---- 2025-10-02 20:46:58
-A134337	rpt	0	f(-1).g(k -> MU(2*k).^(2).negate())	G.f.: Product_{n>=1} (1 + moebius(2*n)^2 * x^n).
-A134345	rpt	0	g(k -> MU(2*k).^(2))	G.f.: 1/prod(n>=1, 1 - moebius(2*n-1)^2 * x^(2*n-1)) = 1/prod(n>=1, 1 - moebius(2*n)^2 * x^(n)).

@@ -107,7 +107,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     private Function<Integer, Z> mHLambdaZ;
     private BiFunction<Integer, Z, Z> mHLambda2Z;
     private Sequence mHSequenceZ; // monontone increasing (!) sequence for the exponent of x: 1/(1-g(k)*x^h(k))^f(k)
-    // no mHSequenceQ: rational exponents of x are not allowed
+    // no RationalSequence mHSequenceQ: rational exponents of x are not allowed
 
     /**
      * Empty constructor: set the defaults for all optional parameters.
@@ -486,7 +486,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
   @Override
   public Q nextQ() {
     ++mN;
-    if (mIn < mBuilder.mPreTerms.length) { // during prepend phase
+    if (mBuilder.mMinK > 0 && mIn < mBuilder.mPreTerms.length) { // during prepend phase
       return mBuilder.mPreTerms[mIn++];
     }
     ++mK; // starts with mMinK
@@ -622,7 +622,13 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     if (mK > 0) {
       result = result.divide(mK);
     }
-    mBs.add(result);
+    if (mBuilder.mMinK <= 0 && mIn < mBuilder.mPreTerms.length) { // during prepend phase
+      result = mBuilder.mPreTerms[mIn++];
+      mBs.add(result);  
+      return result;
+    } else {
+      mBs.add(result);
+    }
     if ((mBuilder.mGfType & EGF) != 0) {
       if (mN > 0) {
         mFactorial = mFactorial.multiply(mN);
