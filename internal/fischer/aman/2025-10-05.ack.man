@@ -1,0 +1,105 @@
+---- 2025-10-05 11:09:17
+---- 2025-10-05 12:27:19
+A001316	lambdan	0	n -> Z2(Functions.DIGIT_SUM.i(2, n))
+A048883	lambdan	0	n -> ZV(3).^(Functions.DIGIT_SUM.i(2, n))
+A087970	lingf	0	2,10,-28,36,-72,48,0,8844,-18072,-7692,16920,3084,-9252,6168	1,-3,2					0
+A143604	holos	0	[0,-1,0,-1,1,0,1,0,1,-1,0,-1]	1,0,-1,1,1,-1,0,2,-1,-2	0	0
+A143605	holos	0	[0,-1,-1,0,0,0,1,0,0,0,-1,-1]	1,-1,1,-1,1,0,-1,2,-3,3	0	0
+A266124	convprod	0	1,1	new A266108(), new A238441()	Convolution of A266108 and A238441.
+A268403	partsun	1	new A080715()			Partial sums of A080715.
+A285711	multraf	1	(self, n) -> self.s(0).gcd(self.s(1))	"1"	new A051953(), new A079277()
+A287881	partsun	1	new A080670()			Partial sums of A080670.
+A290640	holos	3	[0,1,3,0,-5,0,4,0,-9,-8,3,-7,27,12,-26,7,-21,7,-14,30,-21,15,-5,2,-7,5,-1]	11,32,97,158,324,712,1427,3028,6217,12946,27133,56708,119724,252832,535638,1138703,2425333,5179356,11078564,23733718,50916574,109349066,235069572,505726125,1088725262	0	0
+A291054	holos	3	[0,1,0,0,-8,2,1,28,-10,-7,-59,21,17,90,-25,-24,-120,7,-1,139,20,15,-151,-51,8,115,46,-14,-64,-31,16,32,14,-14,-16,-3,5,5,2,0,-1]	15,28,35,55,175,428,708,1459,3311,6871,13923,28431,61670,127340,263449,547948	0	0
+A291058	holos	3	[0,32,0,-128,-48,288,240,-592,-504,952,796,-1064,-1272,1274,1718,-1842,-1672,1668,1687,-1196,-1907,1675,1578,-1526,-1137,455,1350,-682,-1293,910,504,-34,-638,132,732,-442,-54,-22,208,28,-290,122,8,52,-68,-30,47,-20,7,-17,12,4,-3,1,0,2,-1]	11,28,42,115,226,476,1127,2694,5755,12499,26899,59028	0	0
+A291059	holos	3	[0,32,0,-128,-48,288,240,-592,-504,952,796,-1064,-1272,1274,1718,-1842,-1672,1668,1687,-1196,-1907,1675,1578,-1526,-1137,455,1350,-682,-1293,910,504,-34,-638,132,732,-442,-54,-22,208,28,-290,122,8,52,-68,-30,47,-20,7,-17,12,4,-3,1,0,2,-1]	11,12,42,163,226,572,1127,2574,5755,12243,26899,59840	0	0
+A291065	holos	2	[0,1024,128,-2816,-1184,2488,8,-1872,814,821,-412,-65,-25,1,28,-2,4,-1]	12,124,588,2319,11094,52882,255900,1213693,5681867,26951995,128276070,607245760,2873887210,13621766889,64560977404,305887320978	0	0
+A291100	holos	1	[0,8,0,-8,-20,24,24,-22,-42,8,56,2,-43,34,38,-6,-48,-22,21,-27,-15,-8,19,17,-15,-2,-7,5,0,1,3,1,1,-1]	2,6,9,18,54,99,216,512,1079,2352,5225,11383,24991,54814	0	0
+A291105	holos	3	[0,21,2,54,-76,10,-22,23,65,-48,-14,-26,3,4,-2,4,1,2,-1]	26,58,182,540,1290,3690,10160,28786,80841,223888,624613,1743972,4865441,13595466,37944869,105893100,295608956	0	0
+A299641	lingf	0	4,4,5,4	1,-1,0,0,-1,1
+A309986	convprod	0	1,1	new A270913(), new A008485()	Convolution of A270913 and A008485.
+A359601	dirichinv0	1	new A244042()	0	Dirichlet inverse of A244042, where A244042(n) replaces 2's with 0's in the ternary representation of n.
+A377484	lambdan	1	n -> PD(n, d -> d == 1 ? ZV(1) : ZV(d - 1))	a(n) = Product_{d|n, d>1} (d - 1).	nonn,easy	1..10000	nyi	_Ridouane Oudra_
+A385975	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(2*k, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(2*k, n-k))	_	_	_
+A386542	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(3*n+2*k, k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(3*n+2*k, k))	_	_	_
+A387301	lambdan	0	n -> SU(0, n/2, k -> BI(n+k-1, k).*(BI(n+k-1, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n+k-1, k)*binomial(n+k-1, n-2*k))	_	_	_
+A387353	lambdan	0	n -> SU(0, n/2, k -> BI(n+k-1, k).*(BI(n+2*k-1, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n+k-1, k)*binomial(n+2*k-1, n-2*k))	_	_	_
+A387355	holos	0	[0,1,-3,4,-4,3,-1]	0,1,4,8,13,20	0	0
+A387358	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(3*k, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(3*k, n-k))	_	_	_
+A387427	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(4*n+2*k, k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(4*n+2*k, k))	_	_	_
+A387432	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(4*n+3*k, k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(4*n+3*k, k))	_	_	_
+A387540	padding	0	1, 1, 1, 1, 2, 2, 3, 3, 3	2
+A387598	holos	1	[0,1,0,-2,-1,1,2,0,-1]	0,0,0,1,4,7,13,17,27,32	0	0
+A387617	lambdan	0	n -> SU(0, n/2, k -> BI(n+k-1, k).*(BI(n+3*k-1, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n+k-1, k)*binomial(n+3*k-1, n-2*k))	_	_	_
+A389008	trilambn	0	0	0	(n, k) -> n == 0 ? ZV(1) : (k == 0 ? ZV(0) : SU(k, n, j -> BI(n, j).*(S1(j, k)).*(FA(n - j + k - 1)))./(FA(k - 1)))	(1/(k-1)!) * Sum_{j=k..n} binomial(n,j) * Stirling1(j,k) * (n-j+k-1)!, 0 <= k <= n.	nonn,tabl,new	0..54	nyi	_Ilya Gutkovskiy_
+A389121	holos	0	[0,-1,-1,1,0,0,0,0,0,1,1,-1]	1,1,2,4,6,10,17,28,45,73	0	0
+A389123	holos	0	[0,6,-5,-5,5,-1]	0,2,5,16,45	0	0
+A389124	holos	0	[0,6,-5,-5,5,-1]	1,3,6,17	0	0
+A389142	holos	0	[0,1,-2,1,-1,2,-1]	0,0,2,5,8,13,19	0	0
+A389143	holos	0	[0,1,-2,1,-1,2,-1]	0,1,3,5,9,14	0	0
+A389149	polyx	0	"[1],[0,0,0,1/6]"	"p1,x,cosh,*,exp"	0	1
+A389225	holos	0	[[0],[-340547735228760,3698987790978978,-16137680472454923,37967571973161346,-54036811584637309,49062071893616232,-28981838608544652,11059405346869984,-2620666292605696,349484595520000,-19976906675200],[-873138319143840,9713352462003216,-43229935616760640,103648033283036112,-150373021207239968,139307418026056800,-84076751172122176,32831149606096384,-7975270736447488,1092446282547200,-64282608025600],[-731964395257200,8429010419810376,-38670350523786728,95406987587672208,-142373354335359488,135699875507359104,-84304999295848704,33906286195384320,-8486979176562688,1198126249574400,-72638232985600],[-208206885461400,2545427037132648,-12331421502959664,31994552896093344,-50049638873267264,49877002723988992,-32321519174492160,13526174302846976,-3513475804905472,513190880870400,-32085599846400],[-9312317217000,136749603607344,-773832622689408,2286166870879680,-3980995417775744,4330323325762560,-3013098595276800,1336020473102336,-363813628510208,55238675660800,-3565066649600],[0,-14240156375064,147982991402608,-601344595093152,1280386577430336,-1598355927305216,1227933815811072,-586000603291648,168702134370304,-26728071168000,1782533324800]]	1	0	0
+A389231	lambdan	0	n -> Functions.DIGIT_LENGTH.z(Functions.CATALAN.z(n))	Number of decimal digits in the n-th Catalan number.	nonn,base,easy,new	0..10000	nyi	_Paolo Xausa_
+A389245	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(n-1,n-2*k)))./(n + 1)	Sum_{k=0..floor(n/2)} binomial(n+1,k) * binomial(n-1,n-2*k).
+A389246	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(n+k-1,n-2*k)))./(n + 1)	Sum_{k=0..floor(n/2)} binomial(n+1,k) * binomial(n+k-1,n-2*k).
+A389247	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(n+2*k-1,n-2*k)))./(n + 1)	Sum_{k=0..floor(n/2)} binomial(n+1,k) * binomial(n+2*k-1,n-2*k).
+A389248	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(n+3*k-1,n-2*k)))./(n + 1)	Sum_{k=0..floor(n/2)} binomial(n+1,k) * binomial(n+3*k-1,n-2*k).
+A389249	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(n-k-1,n-3*k)))./(n + 1)	Sum_{k=0..floor(n/3)} binomial(n+1,k) * binomial(n-k-1,n-3*k).
+A389250	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(n-1,n-3*k)))./(n + 1)	Sum_{k=0..floor(n/3)} binomial(n+1,k) * binomial(n-1,n-3*k).
+A389251	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(n+k-1,n-3*k)))./(n + 1)	Sum_{k=0..floor(n/3)} binomial(n+1,k) * binomial(n+k-1,n-3*k).
+A389252	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(n+2*k-1,n-3*k)))./(n + 1)	Sum_{k=0..floor(n/3)} binomial(n+1,k) * binomial(n+2*k-1,n-3*k).
+A389269	holos	0	[0,64,-56,14,-1]	0,16,240,2464	0	0
+A389273	lambdan	0	n -> SU(0, n, k -> BI(n + 1, k).*(BI(7*n - 3*k + 7, n - k)))./(n + 1)	(1/(n+1)) * Sum_{k=0..n} binomial(n+1,k) * binomial(7*n-3*k+7,n-k)
+A389289	lambdan	0	n -> SU(0, n/2, k -> BI(n+k-1, k).*(BI(k, n-2*k)))	a(n) = sum(k=0, n\2, binomial(n+k-1, k)*binomial(k, n-2*k))	_	_	_
+A389290	lambdan	0	n -> SU(0, n/3, k -> BI(n+k-1, k).*(BI(k, n-3*k)))	a(n) = sum(k=0, n\3, binomial(n+k-1, k)*binomial(k, n-3*k))	_	_	_
+A389291	lambdan	0	n -> SU(0, n/4, k -> BI(n+k-1, k).*(BI(k, n-4*k)))	a(n) = sum(k=0, n\4, binomial(n+k-1, k)*binomial(k, n-4*k))	_	_	_
+A389292	lambdan	0	n -> SU(0, n/2, k -> BI(n+k-1, k).*(BI(2*k, n-2*k)))	a(n) = sum(k=0, n\2, binomial(n+k-1, k)*binomial(2*k, n-2*k))	_	_	_
+A389293	lambdan	0	n -> SU(0, n/2, k -> BI(n+k-1, k).*(BI(3*k, n-2*k)))	a(n) = sum(k=0, n\2, binomial(n+k-1, k)*binomial(3*k, n-2*k))	_	_	_
+A389295	lambdan	0	n -> SU(0, n/2, k -> BI(n+k, k).*(BI(3*k, n-2*k)))./(n + 1)	a(n) = (1/(n+1)) * Sum_{k=0..floor(n/2)} binomial(n+k,k) * binomial(3*k,n-2*k).
+A389314	holos	0	[0,1,0,0,0,0,0,-1]	0,0,0,2,9,1,3,7,5	0	0
+A389316	holos	0	[0,1,-2,1,-1,2,-1]	0,1,4,10,17,26	0	0
+A389321	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+2*k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+2*k-1, n-k))	_	_	_
+A389322	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+3*k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+3*k-1, n-k))	_	_	_
+A389323	lambdan	0	n -> SU(0, n, k -> BI(n, k).*(BI(n+4*k-1, n-k)))	""		a(n) = sum(k=0, n, binomial(n, k)*binomial(n+4*k-1, n-k))	_	_	_
+A389324	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n-1, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n-1, n-2*k))	_	_	_
+A389325	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n+k-1, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n+k-1, n-2*k))	_	_	_
+A389326	lambdan	0	n -> SU(0, n/2, k -> BI(n, k).*(BI(n+2*k-1, n-2*k)))	""		a(n) = sum(k=0, n\2, binomial(n, k)*binomial(n+2*k-1, n-2*k))	_	_	_
+A389327	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n-k-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n-k-1, n-3*k))	_	_	_
+A389328	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n-1, n-3*k))	_	_	_
+A389329	lambdan	0	n -> SU(0, n/3, k -> BI(n, k).*(BI(n+k-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n, k)*binomial(n+k-1, n-3*k))	_	_	_
+A389345	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(n + k - 1, n - 2*k)))./(n + 1)
+A389346	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(n + 2*k - 1, n - 2*k)))./(n + 1)
+A389347	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(n + 3*k - 1, n - 2*k)))./(n + 1)
+A389348	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(n - k - 1, n - 3*k)))./(n + 1)
+A389349	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(n - 1, n - 3*k)))./(n + 1)
+A389350	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(n + k - 1, n - 3*k)))./(n + 1)
+A389351	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(n + 2*k - 1, n - 3*k)))./(n + 1)
+A389375	lambdan	0	n -> SU(0, n/3, k -> BI(n+k-1, k).*(BI(n-k-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n+k-1, k)*binomial(n-k-1, n-3*k))	_	_	_
+A389376	lambdan	0	n -> SU(0, n/3, k -> BI(n+k-1, k).*(BI(n-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n+k-1, k)*binomial(n-1, n-3*k))	_	_	_
+A389377	lambdan	0	n -> SU(0, n/3, k -> BI(n+k-1, k).*(BI(n+k-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n+k-1, k)*binomial(n+k-1, n-3*k))	_	_	_
+A389378	lambdan	0	n -> SU(0, n/3, k -> BI(n+k-1, k).*(BI(n+2*k-1, n-3*k)))	""		a(n) = sum(k=0, n\3, binomial(n+k-1, k)*binomial(n+2*k-1, n-3*k))	_	_	_
+A389402	lambdan	0	n -> SU(0, n, k -> BI(n + k, k).*(BI(2*n + 3*k, n - k)))./(n + 1)
+A389403	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(2*n + 2*k, n - 2*k)))./(n + 1)
+A389404	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(2*n + k, n - 3*k)))./(n + 1)
+A389405	lambdan	0	n -> SU(0, n/5, k -> BI(n + k, k).*(BI(2*n - 3*k, n - 5*k)))./(n + 1)
+A389406	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(2*k, n - 3*k)))./(n + 1)
+A389407	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(3*k, n - 3*k)))./(n + 1)
+A389410	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(2*n, n - 2*k)))./(n + 1)
+A389411	lambdan	0	n -> SU(0, n/3, k -> BI(n + 1, k).*(BI(2*n, n - 3*k)))./(n + 1)
+A389435	lambdan	0	n -> SU(0, n, k -> BI(n + 1, k).*(BI(2*n + 2*k, n - k)))./(n + 1)
+A389436	lambdan	0	n -> SU(0, n/2, k -> BI(n + 1, k).*(BI(2*n + k, n - 2*k)))./(n + 1)
+A389437	lambdan	0	n -> SU(0, n, k -> BI(n + k, k).*(BI(n + 2*k + 1, n - k)))./(n + 1)
+A389438	lambdan	0	n -> SU(0, n, k -> BI(n + k, k).*(BI(n + 3*k + 1, n - k)))./(n + 1)
+A389439	lambdan	0	n -> SU(0, n/2, k -> BI(n + k, k).*(BI(n + 3*k+1, n - 2*k)))./(n + 1)
+A389440	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(n + 2*k+1, n - 3*k)))./(n + 1)
+A389441	lambdan	0	n -> SU(0, n/3, k -> BI(n + k, k).*(BI(n + 3*k+1, n - 3*k)))./(n + 1)
+A389444	lambdan	0	n -> SU(0, n/4, k -> BI(n + k, k).*(BI(n + k + 1, n - 4*k)))./(n + 1)
+A389445	lambdan	0	n -> SU(0, n/5, k -> BI(n + k, k).*(BI(n + k + 1, n - 5*k)))./(n + 1)
+A389450	lambdan	1	n -> F034448(E389455(n))
+A389451	lambdan	1	n -> F000203(E389455(n))
+A389452	lambdan	1	n -> F000203(E368333(n))
+A389453	lambdan	1	n -> F003415(E368333(n))
+A389454	lambdan	1	n -> F003415(E389455(n))
+A389455	lambdan	1	n -> ZV(n)./(E368333(n))
+A389456	lambdan	1	n -> F000005(E327937(n))
+A389457	lambdan	1	n -> F000203(E327937(n))

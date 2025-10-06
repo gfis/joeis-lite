@@ -477,7 +477,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     } else {
       mH = 1;
     }
-    advanceH();  // ??
+    advanceH();
     for (int sk = 0; sk < mBuilder.mSkipNo; ++sk) { // do skip
       nextQ();
     }
@@ -574,10 +574,11 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       System.out.println("before: mH=" + mH + ", mK=" + mK + ", mNextH=" + mNextH + ", nextG=" + nextG);
     }
     if (Z.valueOf(mK).compareTo(mNextH) < 0) { // exponent in x^h(k) not yet reached: invalidate this g(k)
-      nextG = Q.ZERO;
+      nextG = Q.ZERO; // invalidate this g(k)
     } else { // mK = mNextH : this g(k) is valid, pass nextG = g(k) unchanged
       ++mH;
-      advanceH();
+      advanceH(); 
+      // and keep this g(k)
     }
     if (sDebug > 0) {
       System.out.println("after:  mH=" + mH + ", mK=" + mK + ", mNextH=" + mNextH + ", nextG=" + nextG);
