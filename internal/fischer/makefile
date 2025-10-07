@@ -233,7 +233,7 @@ diff_ramath:
 diff_reflect:
 	diff -wsy --suppress-common-lines ../../src/irvine/oeis/Complement*.java ../../../joeis/internal/irvine/oeis/
 diff_sup:
-	diff -wsy --suppress-common-lines ../../src/irvine/oeis/$(SUP).java ../../../joeis/src/irvine/oeis/
+	diff -wsy --suppress-common-lines ../../src/irvine/oeis/$(SUP).java ../../../joeis/src/irvine/oeis/$(SUP).java
 diff_factory:
 	diff -wsy --suppress-common-lines ../../src/irvine/oeis/SequenceFactory.java ../../../joeis/src/irvine/oeis/
 diff_joeis:

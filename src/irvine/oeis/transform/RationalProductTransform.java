@@ -577,7 +577,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
       nextG = Q.ZERO; // invalidate this g(k)
     } else { // mK = mNextH : this g(k) is valid, pass nextG = g(k) unchanged
       ++mH;
-      advanceH(); 
+      advanceH();
       // and keep this g(k)
     }
     if (sDebug > 0) {
@@ -601,7 +601,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
               if (gTerm.equals(Q.NEG_ONE)) {
                 if ((idivd & 1) != 0) {
                   cTerm = cTerm.negate(); // *(-1)^odd
-                } // (-1)^even: ignore
+                } // else (-1)^even: ignore
               } else { // != -1
                 cTerm = cTerm.multiply(gTerm.pow(idivd));
               }
@@ -624,7 +624,7 @@ public class RationalProductTransform extends AbstractSequence implements Ration
     }
     if (mBuilder.mMinK <= 0 && mIn < mBuilder.mPreTerms.length) { // during prepend phase
       result = mBuilder.mPreTerms[mIn++];
-      mBs.add(result);  
+      mBs.add(result);
       return result;
     } else {
       mBs.add(result);

@@ -36,11 +36,11 @@ A290808	rpt	0	h(k -> F000129(k)).g(-1).f(-1)	G.f.: Product_{k>=1} (1 + x^F000129
 A294356	rpt	0	egf().fq(k -> new Q(1, k)).g(-1)	E.g.f.: Product_{k>0} (1+x^k)^(-1/k).
 A294464	rpt	0	egf().fq(k -> new Q(-1, k)).g(k -> ZV(-k))	Expansion of e.g.f. Product_{k>0} (1+k*x^k)^(1/k).
 A294465	rpt	0	egf().fq(k -> new Q(1, k)).g(k -> ZV(-k))	Expansion of e.g.f. Product_{k>0} (1+k*x^k)^(-1/k).
-A294469	rpt	0	egf().f(k -> ZV(k)).gq(k -> new Q(1, k))	E.g.f.: 1/Product_{k>0} (1 - x^k/k)^k.
-A294470	rpt	0	egf().f(k -> ZV(-k)).gq(k -> new Q(1, k))	E.g.f.: Product_{k>0} (1-x^k/k)^k.
-A294471	rpt	0	egf().f(k -> ZV(k)).gq(k -> new Q(-1, k))	E.g.f.: 1/Product_{k>0} (1+x^k/k)^k.
-A294494	rpt	0	egf().f(k -> ZV(k)).gq(k -> new Q(ZV(-1), FA(k)))	E.g.f.: 1/Product_{k>0} (1+x^k/k!)^k.
-A294495	rpt	0	egf().f(k -> ZV(-k)).gq(k -> new Q(1, FA(k)))	E.g.f.: Product_{k>0} (1-x^k/k!)^k.
+A294469	rpt	0	egf().fl(k -> k).gq(k -> new Q(1, k))	E.g.f.: 1/Product_{k>0} (1 - x^k/k)^k.
+A294470	rpt	0	egf().fl(k -> -k).gq(k -> new Q(1, k))	E.g.f.: Product_{k>0} (1-x^k/k)^k.
+A294471	rpt	0	egf().fl(k -> k).gq(k -> new Q(-1, k))	E.g.f.: 1/Product_{k>0} (1+x^k/k)^k.
+A294494	rpt	0	egf().fl(k -> k).gq(k -> new Q(-1, FA(k)))	E.g.f.: 1/Product_{k>0} (1+x^k/k!)^k.
+A294495	rpt	0	egf().fl(k -> -k).gq(k -> new Q(1, FA(k)))	E.g.f.: Product_{k>0} (1-x^k/k!)^k.
 A294620	rpt	0	fq(k -> new Q(-1, k)).g(k -> ZV(k).*(k))	Expansion of Product_{k>0} (1 - k^2*x^k)^(1/k).
 A294948	rpt	0	fq(k -> new Q(-1, k)).g(k -> ZV(k).^(k))	Expansion of Product_{n>=1} (1 - n^n*x^n)^(1/n).
 A295167	rpt	0	fq(k -> new Q(1, k)).g(k -> ZV(k).^(k).negate())	Expansion of Product_{k>0} 1/(1 + k^k*x^k)^(1/k).
@@ -127,3 +127,4 @@ A382976	rpt	0	f(-1).g(k -> Z2(k).+(1).negate())	Expansion of Product_{k>=1} (1 +
 A382977	rpt	0	g(k -> Z2(k).-(1))		Expansion of Product_{k>=1} 1/(1 - (2^k - 1) * x^k).
 A382978	rpt	0	f(-1).g(k -> Z2(k).-(1).negate())	Expansion of Product_{k>=1} (1 + (2^k - 1) * x^k).
 A387598	holos	1	[[0],[1],[0],[-2],[-1],[1],[2],[0],[-1]]	0,0,0,1,4,7,13	0	0
+
