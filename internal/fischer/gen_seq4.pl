@@ -313,6 +313,7 @@ while (<>) { # read inputfile
             $parm =~ s{NPM\(}          {Functions.NEXT_PRIME.z\(}g;
             $parm =~ s{PELL\(}         {Functions.PELL.z\(}g;
             $parm =~ s{PHI\(}          {Functions.PHI.z\(}g;
+            $parm =~ s{PSI\(}          {Functions.DEDEKIND_PSI.z\(}g;
             $parm =~ s{PP\(}           {Predicates.PRIME.is\(}g;
             $parm =~ s{PPM\(}          {Functions.PREV_PRIME.z\(}g;
             $parm =~ s{PM\(}           {Functions.PRIME.z\(}g;
